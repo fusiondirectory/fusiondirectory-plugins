@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-10-21 22:10+0200\n"
-"PO-Revision-Date: 2015-10-16 07:47+0000\n"
+"PO-Revision-Date: 2015-10-27 22:40+0000\n"
 "Last-Translator: Penati <penati@avaya.com>\n"
 "Language-Team: Italian (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -68,7 +68,7 @@ msgstr "Importa file LDIF"
 
 #: addons/ldapmanager/class_ldapmanager.inc:104
 msgid "Overwrite existing entries"
-msgstr ""
+msgstr "Sovrascrivere voci esistenti"
 
 #: addons/ldapmanager/class_ldapmanager.inc:104
 msgid ""
@@ -92,7 +92,7 @@ msgstr "Importa"
 
 #: addons/ldapmanager/class_ldapmanager.inc:123
 msgid "Import LDIF file"
-msgstr ""
+msgstr "Importa file LDIF"
 
 #: addons/ldapmanager/class_ldapmanager.inc:151
 #: addons/ldapmanager/class_ldapmanager.inc:193
@@ -121,11 +121,11 @@ msgstr "Errore"
 #: addons/ldapmanager/class_ldapmanager.inc:178
 #, php-format
 msgid "Failed to generate ldap export, error was \"%s\"!"
-msgstr ""
+msgstr "Impossibile generare l'esportazione LDAP, errore '%s' !"
 
 #: addons/ldapmanager/tabs_ldif.inc:31
 msgid "LDAP import/export"
-msgstr ""
+msgstr "LDAP importa/esporta"
 
 #: addons/ldapmanager/tabs_ldif.inc:32
 msgid "Allows the import or export of the ldap tree"
@@ -145,15 +145,15 @@ msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:43
 msgid "Import CSV"
-msgstr ""
+msgstr "Importa CSV"
 
 #: addons/ldapmanager/class_csvimport.inc:46
 msgid "Object type"
-msgstr ""
+msgstr "Tipo di oggetto"
 
 #: addons/ldapmanager/class_csvimport.inc:46
 msgid "Type of objects you wish to import"
-msgstr ""
+msgstr "Tipo di oggetti che si desidera importare"
 
 #: addons/ldapmanager/class_csvimport.inc:50
 msgid "Template"
@@ -165,11 +165,11 @@ msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:54
 msgid "CSV file"
-msgstr ""
+msgstr "File CSV"
 
 #: addons/ldapmanager/class_csvimport.inc:54
 msgid "Import a CSV file into your LDAP"
-msgstr ""
+msgstr "Importa file CSV nel tuo LDAP"
 
 #: addons/ldapmanager/class_csvimport.inc:58
 msgid "Separator"
@@ -177,11 +177,11 @@ msgstr "Separatore"
 
 #: addons/ldapmanager/class_csvimport.inc:58
 msgid "Character used as separator in the CSV file"
-msgstr ""
+msgstr "Carateri utilizzati come separatore nel file CSV"
 
 #: addons/ldapmanager/class_csvimport.inc:64
 msgid "Fixed values"
-msgstr ""
+msgstr "Valori fissi"
 
 #: addons/ldapmanager/class_csvimport.inc:64
 msgid ""
@@ -194,7 +194,7 @@ msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:85
 msgid "Select fields associations"
-msgstr ""
+msgstr "Selezionare associazione di campi"
 
 #: addons/ldapmanager/class_csvimport.inc:204
 msgid "Success"
@@ -203,7 +203,7 @@ msgstr "Completato"
 #: addons/ldapmanager/class_csvimport.inc:204
 #, php-format
 msgid "Successfully imported %d entries"
-msgstr ""
+msgstr "%d di dati importati con successo"
 
 #: addons/ldapmanager/contentcsv.tpl.c:2
 msgid ""

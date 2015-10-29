@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-10-21 22:10+0200\n"
-"PO-Revision-Date: 2015-10-21 20:19+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2015-10-22 05:43+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -150,7 +150,7 @@ msgstr "Minimales Passwort-Alter"
 msgid ""
 "Minimum password age, in seconds (default: 0 => allow immediate password "
 "change)"
-msgstr ""
+msgstr "Minimales Passwortalter in Sekunden (Standard: 0 => sofortige Passwortänderung erlauben)"
 
 #: admin/samba/class_sambaDomain.inc:72
 msgid "Maximum password age"
@@ -159,7 +159,7 @@ msgstr "Maximales Passwort-Alter"
 #: admin/samba/class_sambaDomain.inc:73
 msgid ""
 "Maximum password age, in seconds (default: -1 => never expire passwords)"
-msgstr ""
+msgstr "Maximales Passwortalter in Sekunden (Standard: -1 => nie ablaufende Passwörter)"
 
 #: admin/samba/class_sambaDomain.inc:78
 msgid "Next RID"
@@ -199,7 +199,7 @@ msgstr "Passwortverlauflänge"
 
 #: admin/samba/class_sambaDomain.inc:99
 msgid "Length of Password History Entries (default: 0 => off)"
-msgstr ""
+msgstr "Länge der Passwortchronikeinträge (Standard: 0 => aus)"
 
 #: admin/samba/class_sambaDomain.inc:103
 msgid "Logon to change password"
@@ -247,7 +247,7 @@ msgstr "Verweigere Änderung der Passwörter für Computerkonten"
 
 #: admin/samba/class_sambaDomain.inc:129
 msgid "Allow Machine Password changes (default: 0 => off)"
-msgstr ""
+msgstr "Rechnerpasswortänderungen erlauben (Standard: 0 => aus)"
 
 #: admin/systems/samba/class_winstationGeneric.inc:40
 msgid "Winstation"
@@ -255,7 +255,7 @@ msgstr "Windows-Arbeitsstation"
 
 #: admin/systems/samba/class_winstationGeneric.inc:41
 msgid "Windows workstation information"
-msgstr ""
+msgstr "Windows-Arbeitsstationinformation"
 
 #: admin/systems/samba/class_winstationGeneric.inc:45
 #: admin/systems/samba/class_winstationGeneric.inc:46
@@ -309,7 +309,7 @@ msgstr "Netzwerkeinstellungen"
 msgid ""
 "Your PHP install does not have the mhash() nor the hash function. Cannot do "
 "MD4 hashes."
-msgstr ""
+msgstr "Ihre PHP-Installation hat nicht den mhash() bzw. die hash-Funktion. MD4-Hashes können nicht durchgeführt werden."
 
 #: personal/samba/class_sambaAccount.inc:31
 msgid "Samba Munged Dial"

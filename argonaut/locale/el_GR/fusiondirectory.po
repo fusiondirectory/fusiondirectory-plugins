@@ -4,13 +4,15 @@
 # 
 # Translators:
 # Elissavet Botsaki <elisavet_b@hotmail.com>, 2015
+# geotheod <geotheod77@gmail.com>, 2015
+# Manolis Saldaris <Ustramator@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-10-21 22:10+0200\n"
-"PO-Revision-Date: 2015-10-12 12:32+0000\n"
-"Last-Translator: Elissavet Botsaki <elisavet_b@hotmail.com>\n"
+"PO-Revision-Date: 2015-10-24 11:34+0000\n"
+"Last-Translator: geotheod <geotheod77@gmail.com>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,11 +26,11 @@ msgstr "Ρυθμίσεις πελάτη λογισμικού Argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:121
 msgid "Client port"
-msgstr ""
+msgstr "Θύρα πελάτη"
 
 #: admin/systems/argonaut/class_argonautClient.inc:121
 msgid "Port used by argonaut client for JSON-RPC"
-msgstr ""
+msgstr "Θύρα που χρησιμοποιείται από τον πελάτη argonaut για το JSON-RPC"
 
 #: admin/systems/argonaut/class_argonautClient.inc:126
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
@@ -38,23 +40,23 @@ msgstr "Πρωτόκολλο"
 #: admin/systems/argonaut/class_argonautClient.inc:126
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
 msgid "Protocol to use for argonaut"
-msgstr ""
+msgstr "Πρωτόκολλο για χρήση στο argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:131
 msgid "WakeOnLan interface"
-msgstr ""
+msgstr "Διεπαφή εκκίνησης μέσω δικτύου"
 
 #: admin/systems/argonaut/class_argonautClient.inc:131
 msgid "Interface used by argonaut for WakeOnLan"
-msgstr ""
+msgstr "Η διεπαφή που χρησιμοποιεί το argonaut για εκκίνηση μέσω δικτύου"
 
 #: admin/systems/argonaut/class_argonautClient.inc:136
 msgid "TaskId file"
-msgstr ""
+msgstr "Αρχείο ταυτότητας διαδικασίας"
 
 #: admin/systems/argonaut/class_argonautClient.inc:136
 msgid "File which argonaut will use to store its task id when booting"
-msgstr ""
+msgstr "Αρχείο στο οποίο το argonaut θα αποθηκεύσει της ταυτότητα διαδικασίας του κατά την εκκίνηση"
 
 #: admin/systems/argonaut/class_argonautClient.inc:141
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:55
@@ -65,12 +67,12 @@ msgstr "Κατάλογος καταγραφών"
 
 #: admin/systems/argonaut/class_argonautClient.inc:141
 msgid "Directory in which argonaut client should write its logs"
-msgstr ""
+msgstr "Κατάλογος στον οποίο ο πελάτης argonaut πρέπει να αποθηκεύει τις καταγραφές του"
 
 #: admin/systems/argonaut/class_argonautClient.inc:148
 #: admin/systems/services/argonaut/class_argonautServer.inc:103
 msgid "SSL paths"
-msgstr ""
+msgstr "Διαδρομές SSL"
 
 #: admin/systems/argonaut/class_argonautClient.inc:151
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
@@ -79,7 +81,7 @@ msgstr "Κλειδί"
 
 #: admin/systems/argonaut/class_argonautClient.inc:151
 msgid "Path to the private key file on Argonaut client"
-msgstr ""
+msgstr "Διαδρομή για το αρχείο ιδιωτικού κλειδιού στον πελάτη Argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:156
 #: admin/systems/services/argonaut/class_argonautServer.inc:111
@@ -88,7 +90,7 @@ msgstr "Πιστοποιητικό"
 
 #: admin/systems/argonaut/class_argonautClient.inc:156
 msgid "Path to the certificate file on Argonaut client"
-msgstr ""
+msgstr "Διαδρομή για το αρχείο πιστοποιητικού στον πελάτη Argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:161
 #: admin/systems/services/argonaut/class_argonautServer.inc:116
@@ -97,32 +99,32 @@ msgstr "Πιστοποιητικό CA"
 
 #: admin/systems/argonaut/class_argonautClient.inc:161
 msgid "Path to the CA certificate file on Argonaut client"
-msgstr ""
+msgstr "Διαδρομή για το αρχείο πιστοποιητικού CA στον πελάτη Argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:166
 #: admin/systems/services/argonaut/class_argonautServer.inc:121
 msgid "CN of the certificate"
-msgstr ""
+msgstr "CN πιστοποιητικού"
 
 #: admin/systems/argonaut/class_argonautClient.inc:166
 msgid "The CN in this client certificate"
-msgstr ""
+msgstr "Το CN του πιστοποιητικού αυτού του πελάτη"
 
 #: admin/systems/argonaut/class_argonautClient.inc:172
 msgid "Service names"
-msgstr ""
+msgstr "Ονομασίες υπηρεσιών"
 
 #: admin/systems/argonaut/class_argonautClient.inc:174
 msgid "Argonaut service names"
-msgstr ""
+msgstr "Ονομασίες υπηρεσιών Argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:199
 msgid "Argonaut client"
-msgstr ""
+msgstr "Πελάτης Argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:200
 msgid "Edit argonaut client settings"
-msgstr ""
+msgstr "Επεξεργασία ρυθμίσεων του πελάτη Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:30
 msgid "Argonaut Fuse"
@@ -134,27 +136,27 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:45
 msgid "Basic settings"
-msgstr ""
+msgstr "Βασικές ρυθμίσεις"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:48
 msgid "Default mode"
-msgstr ""
+msgstr "Προκαθορισμένη λειτουργία"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:56
 msgid "Directory in which argonaut-fuse will store its log"
-msgstr ""
+msgstr "Κατάλογος στον οποίο το argonaut-fuse θα αποθηκεύει τις καταγραφές του"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:64
 msgid "TFTP"
-msgstr ""
+msgstr "TFTP"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:67
 msgid "Pxelinux cfg path"
-msgstr ""
+msgstr "Διαδρομή αρχείου διαμόρφωσης Pxelinux"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:68
 msgid "Path where argonaut-fuse should store pxelinux.cfg"
-msgstr ""
+msgstr "Κατάλογος στον οποίο το argonaut-fuse θα αποθηκεύει το pxelinux.cfg"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:29
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:30
@@ -175,15 +177,15 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:55
 msgid "Local packages folder"
-msgstr ""
+msgstr "Φάκελος τοπικών πακέτων"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:56
 msgid "Folder in which the crawler will store packages during analysis"
-msgstr ""
+msgstr "Φάκελος στον οποίο ο crawler θα αποθηκεύσει τα πακέτα κατα τη διάρκεια της ανάλυσης"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:63
 msgid "Argonaut Repository configuration"
-msgstr ""
+msgstr "Ρύθμιση του Argonaut αποθετήριου "
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:66
 msgid "Proxy"
@@ -191,15 +193,15 @@ msgstr "Διαμεσολαβητής"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:67
 msgid "Specifies the http proxy (like Squid) to use for http and hftp method"
-msgstr ""
+msgstr "Καθορίζει τον διαμεσολαβητή του http (π.χ. Squid) που θα χρησιμοποιηθεί για το http και το hfrp πρωτόκολλο"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
 msgid "Directory in which logs should be stored"
-msgstr ""
+msgstr "Φάκελοι στους οποίους θα πρέπει να αποθηκευτούν οι καταγραφές"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:76
 msgid "Ignore errors"
-msgstr ""
+msgstr "Λάθη που αγνοούνται"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:77
 msgid ""
@@ -213,25 +215,25 @@ msgstr "Πηγή"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:82
 msgid "Include source in the mirror"
-msgstr ""
+msgstr "Περιέλαβε την πηγή στον καθρεπτισμό"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
 msgid "GPG Check"
-msgstr ""
+msgstr "Έλεγχος GPG"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
 msgid "Fail if the Release.gpg file is missing"
-msgstr ""
+msgstr "Αποτυχία αν δεν υπάρχει το αρχείο Release.gpg"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:92
 msgid "Contents"
-msgstr ""
+msgstr "Περιεχόμενα"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:93
 msgid ""
 "Additionally download Contents.<arch>.gz files (Note that these files can be"
 " relatively big and can change frequently)"
-msgstr ""
+msgstr "Πρόσθετα κατεβασμένα αρχεία περιεχομένου. <arch>.gz (Προσέξτε ότι αυτά τα αρχεία μπορεί να είναι σχετικά μεγάλα και να αλλάζουν συχνά)"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:98
 msgid "Verbose"
@@ -270,27 +272,27 @@ msgstr ""
 #: admin/systems/services/argonaut/class_argonautServer.inc:32
 #: admin/systems/services/argonaut/class_argonautServer.inc:46
 msgid "Argonaut server"
-msgstr ""
+msgstr "Διακομιστής Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:49
 msgid "Delete finished tasks"
-msgstr ""
+msgstr "Διαγραφή ολοκληρωμένων διεργασιών"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:50
 msgid ""
 "Wether or not argonaut server should delete successfully finished tasks"
-msgstr ""
+msgstr "Αν ο διακομιστής argonaut θα πρέπει να διαγράφει της επιτυχώς ολοκληρωμένες διεργασίες ή όχι"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:55
 msgid "Get packages informations"
-msgstr ""
+msgstr "Πάρε τις πληροφορίες των πακέτων"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:56
 msgid ""
 "Wether or not argonaut server should get packages information from "
 "repositories at start and then once a day. Needed for FAI package list "
 "creation."
-msgstr ""
+msgstr "Αν o argonaut διακομιστής πρέπει ή όχι να πάρει τις πληροφορίες των πακέτων από τα αποθετήρια στην αρχή και μετά μία φορά την ημέρα. Χρειάζεται για τη δημιουργία λίστας των πακέτων FAI."
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:66
 msgid "Port"
@@ -298,7 +300,7 @@ msgstr "Θύρα"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:67
 msgid "Port on which the argonaut server will be listening"
-msgstr ""
+msgstr "Η θύρα στην οποία ο argonaut διακομιστής θα ακούει"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:72
 msgid "Timeout"
@@ -307,47 +309,47 @@ msgstr "Λήξη χρόνου:"
 #: admin/systems/services/argonaut/class_argonautServer.inc:73
 msgid ""
 "Time in seconds before to consider an argonaut client or server as down"
-msgstr ""
+msgstr "Ο χρόνος σε δευτερόλεπτα πριν θεωρήσουμε ότι ο argonaut πελάτης ή διακομιστής έχει πέσει (δεν λειτουργεί)"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:80
 msgid "Directory in which argonaut will store its log"
-msgstr ""
+msgstr "Φάκελος στον οποίο ο argonaut θα αποθηκεύσει τις καταγραφές"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:87
 msgid "Wake on lan"
-msgstr ""
+msgstr "Εκκίνηση μέσω δικτύου"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:90
 msgid "Interface"
-msgstr ""
+msgstr "Διεπαφή"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:91
 msgid "Interface to use for sending WakeOnLan requests"
-msgstr ""
+msgstr "Η διεπαφή που θα χρησιμοποιηθεί για την εκκίνηση μέσω δικτύου"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:96
 msgid "IP tool"
-msgstr ""
+msgstr "Εργαλείο IP"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:96
 msgid "IP tool to use"
-msgstr ""
+msgstr "To εργαλείο IP που θα χρησιμοποιηθεί"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
 msgid "Path to the private key file on Argonaut server"
-msgstr ""
+msgstr "Μονοπάτι στο αρχείο του ιδιωτικού κλειδιού στον Argonaut διακομιστή"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:111
 msgid "Path to the certificate file on Argonaut server"
-msgstr ""
+msgstr "Μονοπάτι στο αρχείο του πιστοποιητικού στον Argonaut διακομιστή"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:116
 msgid "Path to the CA certificate file on Argonaut server"
-msgstr ""
+msgstr "Μονοπάτι στο αρχείο του πιστοποιητικού CA στον Argonaut διακομιστή"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:121
 msgid "The CN in the server certificate"
-msgstr ""
+msgstr "Το CN στο πιστοποιητικό του διακομιστή"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
@@ -356,32 +358,32 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:47
 msgid "OPSI"
-msgstr ""
+msgstr "OPSI"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:50
 msgid "Opsi admin"
-msgstr ""
+msgstr "Διαχειριστής Opsi"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:55
 msgid "Opsi password"
-msgstr ""
+msgstr "Κωδικός Opsi"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:60
 msgid "Opsi server"
-msgstr ""
+msgstr "Διακομιστής Opsi"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:65
 msgid "Opsi lang"
-msgstr ""
+msgstr "Γλώσσα Opsi"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:30
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:31
 msgid "Argonaut DNS settings"
-msgstr ""
+msgstr "Ρυθμίσεις του Argonaut DNS"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:47
 msgid "Argonaut Ldap2zone settings:"
-msgstr ""
+msgstr "Ρυθμίσεις του Argonaut Ldap2zone:"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:50
 msgid "Bind directory"
@@ -389,7 +391,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:51
 msgid "The directory in which conf file must be created"
-msgstr ""
+msgstr "O κατάλογος στον οποίο το αρχείο conf πρέπει να δημιουργηθεί"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:57
 msgid "Bind cache directory"
@@ -397,7 +399,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:58
 msgid "The directory in which zone files must be created"
-msgstr ""
+msgstr "Ο κατάλογος στον οποίο πρέπει να δημιουργηθούν τα αρχεία ζώνης (zone files)"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:64
 msgid "Ignore reverse zone"
