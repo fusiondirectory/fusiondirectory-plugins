@@ -3,74 +3,75 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Penati <penati@avaya.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-10-21 22:10+0200\n"
-"PO-Revision-Date: 2014-08-28 10:29+0000\n"
-"Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
-"Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/it_IT/)\n"
+"PO-Revision-Date: 2015-10-16 11:24+0000\n"
+"Last-Translator: Penati <penati@avaya.com>\n"
+"Language-Team: Italian (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it_IT\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/sudo/class_sudoOption.inc:82
 msgid "Unknown option"
-msgstr ""
+msgstr "Opzione sconosciuta"
 
 #: admin/sudo/class_sudoOption.inc:83
 #, php-format
 msgid "The sudo option '%s' is invalid!"
-msgstr ""
+msgstr "L'opzione di sudo '%s' non è valida !"
 
 #: admin/sudo/class_sudoOption.inc:278
 #, php-format
 msgid "%s (%s)"
-msgstr ""
+msgstr "%s (%s)"
 
 #: admin/sudo/class_sudoOption.inc:481
 msgid "Available options"
-msgstr ""
+msgstr "Opzioni disponibili"
 
 #: admin/sudo/class_sudoOption.inc:484
 msgid "Option"
-msgstr ""
+msgstr "Opzione"
 
 #: admin/sudo/class_sudoOption.inc:484
 msgid "Add a new sudo option"
-msgstr ""
+msgstr "Aggiungi una nuova opzione sudo"
 
 #: admin/sudo/class_sudoOption.inc:489 admin/sudo/class_sudoOption.inc:491
 msgid "Used sudo role options"
-msgstr ""
+msgstr "Opzioni utilizzate del ruolo sudo"
 
 #: admin/sudo/class_sudoOption.inc:563
 msgid "Options"
-msgstr ""
+msgstr "Opzioni"
 
 #: admin/sudo/class_sudoOption.inc:564
 msgid "Sudo options"
-msgstr ""
+msgstr "Opzioni di Sudo"
 
 #: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:121
 #: config/sudo/class_sudoConfig.inc:42
 msgid "Sudo"
-msgstr ""
+msgstr "Sudo"
 
 #: admin/sudo/class_sudoManagement.inc:33
 msgid "Sudo management"
-msgstr ""
+msgstr "Gestione di Sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:122 admin/sudo/class_sudoGeneric.inc:126
 msgid "Sudo role"
-msgstr ""
+msgstr "Ruolo Sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:141
 msgid "Role settings"
-msgstr ""
+msgstr "Impostazioni del ruolo"
 
 #: admin/sudo/class_sudoGeneric.inc:146
 msgid "Name"
@@ -78,7 +79,7 @@ msgstr "Nome"
 
 #: admin/sudo/class_sudoGeneric.inc:146
 msgid "Name of the role"
-msgstr ""
+msgstr "Nome del ruolo"
 
 #: admin/sudo/class_sudoGeneric.inc:151
 msgid "Description"
@@ -86,21 +87,21 @@ msgstr "Descrizione"
 
 #: admin/sudo/class_sudoGeneric.inc:151
 msgid "Description for the new sudo role"
-msgstr ""
+msgstr "Descrizione per il nuovo ruolo di sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:156
 msgid "Commands"
-msgstr ""
+msgstr "comandi"
 
 #: admin/sudo/class_sudoGeneric.inc:157
 msgid ""
 "A Unix command with optional command line arguments, potentially including "
 "globbing characters (aka wild cards)"
-msgstr ""
+msgstr "Un comando Unix con gli argomenti della riga di comando opzionali, potenzialmente compresi i caratteri wildcard (jolly)"
 
 #: admin/sudo/class_sudoGeneric.inc:163
 msgid "Run as (user)"
-msgstr ""
+msgstr "Esegui come utente"
 
 #: admin/sudo/class_sudoGeneric.inc:164
 msgid "User(s) impersonated by sudo"
@@ -108,7 +109,7 @@ msgstr ""
 
 #: admin/sudo/class_sudoGeneric.inc:171
 msgid "Run as (group)"
-msgstr ""
+msgstr "Esegui come gruppo"
 
 #: admin/sudo/class_sudoGeneric.inc:172
 msgid "Group(s) impersonated by sudo"
@@ -116,11 +117,11 @@ msgstr ""
 
 #: admin/sudo/class_sudoGeneric.inc:178
 msgid "Systems"
-msgstr ""
+msgstr "Sistemi"
 
 #: admin/sudo/class_sudoGeneric.inc:178
 msgid "A host name, IP address or IP network"
-msgstr ""
+msgstr "Un nome d'host, indirizzo IP o network IP"
 
 #: admin/sudo/class_sudoGeneric.inc:183
 msgid "Users and groups"
@@ -129,11 +130,11 @@ msgstr "Utenti e gruppi"
 #: admin/sudo/class_sudoGeneric.inc:184
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
-msgstr ""
+msgstr "Un nome utente, ID utente (prefissato da '#'), gruppo Unix (prefissato da '%')"
 
 #: admin/sudo/class_sudoGeneric.inc:188
 msgid "Priority"
-msgstr ""
+msgstr "Priorità"
 
 #: admin/sudo/class_sudoGeneric.inc:188
 msgid "This rule priority compared to others"
@@ -141,15 +142,15 @@ msgstr ""
 
 #: config/sudo/class_sudoConfig.inc:28
 msgid "Sudo configuration"
-msgstr ""
+msgstr "Configurazione di Sudo"
 
 #: config/sudo/class_sudoConfig.inc:29
 msgid "FusionDirectory sudo plugin configuration"
-msgstr ""
+msgstr "Configurazione del plugin Sudo di FusionDirectory"
 
 #: config/sudo/class_sudoConfig.inc:45
 msgid "Sudo RDN"
-msgstr ""
+msgstr "RDN Sudo"
 
 #: config/sudo/class_sudoConfig.inc:45
 msgid "Branch in which sudoers will be stored"
