@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Maria Nomikou <mnomikou@sch.gr>, 2015
 # Nikos Charonitakis <charosn@her.forthnet.gr>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-10-21 22:10+0200\n"
-"PO-Revision-Date: 2015-10-07 10:01+0000\n"
-"Last-Translator: Kostas Papadimas <pkst@eellak.gr>\n"
+"POT-Creation-Date: 2015-11-05 21:18+0100\n"
+"PO-Revision-Date: 2015-11-05 19:48+0000\n"
+"Last-Translator: Maria Nomikou <mnomikou@sch.gr>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -221,7 +222,7 @@ msgstr "Μέγεθος"
 #, php-format
 msgid ""
 "The disk cannot be deleted while it is used in the '%s' disk definition!"
-msgstr ""
+msgstr "Ο δίσκος δεν μπορεί να διαγραφεί, ενώ χρησιμοποιείται στον ορισμό δίσκου '%s'!"
 
 #: admin/fai/class_faiDiskEntry.inc:535
 msgid "encrypted"
@@ -394,7 +395,7 @@ msgstr "Κλάσεις FAI"
 
 #: admin/fai/class_faiProfile.inc:63
 msgid "FAI classes which are part of this profile"
-msgstr ""
+msgstr "Κλάσεις FAI που είναι μέρος αυτού του προφίλ"
 
 #: admin/fai/class_faiPackageConfiguration.inc:88
 #, php-format
@@ -435,7 +436,7 @@ msgstr "Προτεραιότητα"
 
 #: admin/fai/class_faiScript.inc:79
 msgid "Priority of this script (smaller is done first)"
-msgstr ""
+msgstr "Προτεραιότητα αυτού του σεναρίου (το μικρότερο γίνεται πρώτο)"
 
 #: admin/fai/class_faiScript.inc:84
 msgid "The script itself"
@@ -464,7 +465,7 @@ msgstr "Αρχεία προτύπων"
 
 #: admin/fai/class_faiTemplate.inc:190
 msgid "Template files in this class"
-msgstr ""
+msgstr "Αρχεία προτύπων σε αυτή την κλάση"
 
 #: admin/fai/class_faiPartition.inc:176 admin/fai/class_faiPartition.inc:180
 msgid "Logical"
@@ -784,7 +785,7 @@ msgstr "Διανομή"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:72
 msgid "Which distribution is this repository for"
-msgstr ""
+msgstr "Για ποια διανομή είναι αυτό το αποθετήριο"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:141
 msgid "Repositories"
@@ -792,7 +793,7 @@ msgstr "Αποθετήρια"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:146
 msgid "Repositories this server hosts"
-msgstr ""
+msgstr "Αποθετήρια που φιλοξενεί αυτός ο εξυπηρετητής"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:161
 msgid "Package repository"
@@ -867,7 +868,7 @@ msgstr ""
 #: config/fai/class_faiConfig.inc:60
 #, php-format
 msgid "Relative branch in which fai %s will be stored"
-msgstr ""
+msgstr "Σχετικός κλάδος στον οποίο ο fai %s θα αποθηκευτεί"
 
 #: config/fai/class_faiConfig.inc:60
 msgid "s"
@@ -955,4 +956,4 @@ msgstr "Φίλτρο"
 
 #: admin/fai/packageSelect/selectPackage-filter.tpl.c:5
 msgid "A maximum of 200 entries will be shown here."
-msgstr ""
+msgstr "Το μέγιστο 200 εγγραφές θα φαίνονται εδώ."
