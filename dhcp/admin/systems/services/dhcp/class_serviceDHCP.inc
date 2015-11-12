@@ -495,7 +495,7 @@ class serviceDHCP extends simpleService
       }
     }
 
-    parent::ldap_remove();
+    return parent::ldap_remove();
   }
 
   protected function ldap_save($cleanup = TRUE)
