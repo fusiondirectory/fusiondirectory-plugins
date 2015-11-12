@@ -295,6 +295,7 @@ class serviceDNS extends simpleService
         $ldap->rmdir_recursive($zonedn);
       }
     }
+    return TRUE;
   }
 
   /* This function calls ldap2zone */
