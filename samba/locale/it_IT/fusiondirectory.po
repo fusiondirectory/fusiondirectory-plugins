@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Ilaria Montaruli <Ilaria.Montaruli@gmail.com>, 2015
 # Penati <penati@avaya.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-11-05 21:18+0100\n"
-"PO-Revision-Date: 2015-11-05 18:52+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2015-11-07 21:18+0000\n"
+"Last-Translator: Ilaria Montaruli <Ilaria.Montaruli@gmail.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -159,7 +160,7 @@ msgstr "Durata di vita massima della password"
 #: admin/samba/class_sambaDomain.inc:73
 msgid ""
 "Maximum password age, in seconds (default: -1 => never expire passwords)"
-msgstr ""
+msgstr "Anzianità massima della password, in secondi (default: -1 -> la password non ha scadenza)"
 
 #: admin/samba/class_sambaDomain.inc:78
 msgid "Next RID"
@@ -215,7 +216,7 @@ msgstr "Durata del blocco"
 
 #: admin/samba/class_sambaDomain.inc:109
 msgid "Lockout duration in minutes (default: 30, -1 => forever)"
-msgstr ""
+msgstr "Durata del blocco in minuti (default: 30, -1 -> per sempre)"
 
 #: admin/samba/class_sambaDomain.inc:113
 msgid "Lockout observation window"
@@ -223,7 +224,7 @@ msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:114
 msgid "Reset time after lockout in minutes (default: 30)"
-msgstr ""
+msgstr "Tempo di reset dopo il blocco, in minuti (default: 30)"
 
 #: admin/samba/class_sambaDomain.inc:118
 msgid "Lockout threshold"
@@ -235,7 +236,7 @@ msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:123
 msgid "Force logoff"
-msgstr ""
+msgstr "Forza il log off"
 
 #: admin/samba/class_sambaDomain.inc:124
 msgid "Disconnect Users outside logon hours (default: -1 => off, 0 => on)"

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-11-05 21:18+0100\n"
-"PO-Revision-Date: 2015-11-05 21:05+0000\n"
+"PO-Revision-Date: 2015-11-07 21:20+0000\n"
 "Last-Translator: Ilaria Montaruli <Ilaria.Montaruli@gmail.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -140,22 +140,22 @@ msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:118
 msgid "Lock out duration"
-msgstr ""
+msgstr "Durata del blocco"
 
 #: admin/ppolicy/class_ppolicy.inc:118
 msgid ""
 "Time the account remains locked after an automatic lock out (0 means for "
 "ever)"
-msgstr ""
+msgstr "Tempo in cui l'account rimane bloccato dopo un blocco automatico (0 significa per sempre)"
 
 #: admin/ppolicy/class_ppolicy.inc:123
 msgid "Maximum failures"
-msgstr ""
+msgstr "Fallimenti massimi"
 
 #: admin/ppolicy/class_ppolicy.inc:123
 msgid ""
 "Number of consecutive password failures allowed before automatic lock out"
-msgstr ""
+msgstr "Numero di password sbagliate consecutivamente prima del blocco automatico"
 
 #: admin/ppolicy/class_ppolicy.inc:128
 msgid "Failure count interval"
@@ -179,7 +179,7 @@ msgstr ""
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:27
 msgid "Ppolicy"
-msgstr ""
+msgstr "Ppolicy"
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:28
 msgid "Statistics about ppolicy expired users"
@@ -211,15 +211,15 @@ msgstr ""
 
 #: personal/ppolicy/class_ppolicyAccount.inc:30
 msgid "Edit user's password policy"
-msgstr ""
+msgstr "Modifica la politica del cambio password per l'utente"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:47
 msgid "Use a specific policy for this user"
-msgstr ""
+msgstr "Usa una politica specifica per questo utente"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:51
 msgid "Last password change"
-msgstr ""
+msgstr "Ultima modifica della password"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:51
 msgid "Last time the password for the entry was changed"
@@ -227,11 +227,11 @@ msgstr ""
 
 #: personal/ppolicy/class_ppolicyAccount.inc:55
 msgid "Account locked time"
-msgstr ""
+msgstr "Tempo di blocco dell'account"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:55
 msgid "Time the account was locked"
-msgstr ""
+msgstr "Data del blocco dell'account"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:59
 msgid "Reset locking"
@@ -239,15 +239,15 @@ msgstr "Resettare il blocco"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:59
 msgid "Resets the lock status of this account"
-msgstr ""
+msgstr "Resetta lo stato di blocco per questo account"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:62
 msgid "Reset with the same password"
-msgstr ""
+msgstr "Resetta utilizzando la stessa password"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:62
 msgid "Reset and force change"
-msgstr ""
+msgstr "Resetta e forza le modifiche"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:77
 msgid "Use the default"
@@ -275,11 +275,11 @@ msgstr "Ppolicy plugin"
 
 #: config/ppolicy/class_ppolicyConfig.inc:46
 msgid "Ppolicy RDN"
-msgstr ""
+msgstr "Ppolicy RDN"
 
 #: config/ppolicy/class_ppolicyConfig.inc:46
 msgid "Branch in which ppolicies will be stored"
-msgstr ""
+msgstr "Ramo nel quale verranno immagazinate ppolicies"
 
 #: config/ppolicy/class_ppolicyConfig.inc:51
 msgid "Default ppolicy cn"
@@ -318,7 +318,7 @@ msgstr "Numero di telefono"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:23
 msgid "pwdAccountLockedTime"
-msgstr ""
+msgstr "pwdAccountLockedTime"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:26
 msgid "manager"
