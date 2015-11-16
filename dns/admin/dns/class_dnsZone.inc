@@ -169,10 +169,16 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
   }
 
   /* Special LDAP treatment that this attribute does after plugin ldap save */
-  function postLdapSave ($ldap)
+  function postLdapSave ($ldap, $zoneDn = NULL, $zoneName = NULL)
   {
+    if ($zoneDn === NULL) {
+      $zoneDn = $this->plugin->dn;
+    }
+    if ($zoneName === NULL) {
+      $zoneName = $this->plugin->zoneName;
+    }
     /* First delete all old nodes */
-    $ldap->ls('objectClass=dNSZone', $this->plugin->dn, array('dn'));
+    $ldap->ls('objectClass=dNSZone', $zoneDn, array('dn'));
     $delete = array();
     while ($attrs = $ldap->fetch()) {
       $delete[] = $attrs['dn'];
@@ -192,7 +198,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         $nodes[$domain] = array(
           'objectClass'         => array('dNSZone'),
           'relativeDomainName'  => $domain,
-          'zoneName'            => $this->plugin->zoneName,
+          'zoneName'            => $zoneName,
         );
       }
       if (!isset($nodes[$domain][$type])) {
@@ -201,7 +207,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       $nodes[$domain][$type][] = $content;
     }
     foreach ($nodes as $node) {
-      $dn = 'relativeDomainName='.$node['relativeDomainName'].','.$this->plugin->dn;
+      $dn = 'relativeDomainName='.$node['relativeDomainName'].','.$zoneDn;
       $ldap->cd($dn);
       $ldap->add($node);
       if (!$ldap->success()) {

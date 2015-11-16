@@ -18,6 +18,69 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+/* DnsRecords edition showing only records for our host */
+class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
+{
+  protected $zoneDn;
+
+  function __construct ($label, $description, $ldapName, $zoneDn, $defaultValue = array(), $acl = "")
+  {
+    parent::__construct ($label, $description, $ldapName, FALSE, $defaultValue, $acl);
+    $this->zoneDn = $zoneDn;
+    $this->loadRecords();
+  }
+
+  protected function loadAttrValue ($attrs)
+  {
+  }
+
+  function loadRecords ()
+  {
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cat($this->zoneDn);
+    $attrs = $ldap->fetch();
+    parent::loadAttrValue($attrs);
+  }
+
+  protected function getAttributeArrayValue($key, $value)
+  {
+    $values = parent::getAttributeArrayValue($key, $value);
+    $ips    = $this->plugin->parent->getBaseObject()->ipHostNumber;
+    $cn     = $this->plugin->parent->getBaseObject()->cn;
+    if (in_array($values[2], $ips) || ($values[0] == $cn)) {
+      return $values;
+    } else {
+      return array();
+    }
+  }
+
+  function fillLdapValue (&$attrs)
+  {
+    /* Remove crap made by plugin */
+    unset ($attrs[$this->getLdapName()]);
+  }
+
+  /* Special LDAP treatment that this attribute does after plugin ldap save */
+  /* FIXME - We should lock the zone object */
+  function postLdapSave ($ldap, $zoneDn = NULL, $zoneName = NULL)
+  {
+    $attrs = array();
+    parent::fillLdapValue($attrs);
+    if (!empty($attrs)) {
+      $ldap->cd($this->zoneDn);
+      $ldap->modify($attrs);
+      if (!$ldap->success()) {
+        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $this->zoneDn, LDAP_ADD, get_class()), LDAP_ERROR);
+      }
+    }
+    $ldap->cat($this->zoneDn, array('zoneName'));
+    $attrs = $ldap->fetch();
+    parent::postLdapSave($ldap, $this->zoneDn, $attrs['zoneName'][0]);
+  }
+}
+
 class dnsHost extends simplePlugin
 {
   var $objectclasses = array('fdDNSHost');
@@ -52,11 +115,9 @@ class dnsHost extends simplePlugin
         )
       ),
       'records' => array(
-        'name'      => _('DNS Records'),
-        'template'  => get_template_path('dnsrecords.tpl', TRUE, dirname(__FILE__)),
-        'attrs'     => array(
-          new FakeAttribute('dnsRecords'),
-        )
+        'name'  => _('DNS Records'),
+        'class' => array('fullwidth'),
+        'attrs' => array()
       ),
     );
   }
@@ -66,35 +127,34 @@ class dnsHost extends simplePlugin
     parent::__construct($config, $dn, $object);
     $zones = objects::ls('dnsZone');
     $this->attributesAccess['fdDNSZoneDn']->attribute->setChoices(array_keys($zones), array_values($zones));
+    $this->attributesAccess['fdDNSZoneDn']->setSubmitForm('zoneChanged');
+    $this->zoneChanged();
   }
 
-  function execute()
+  function zoneChanged()
   {
-    $smarty = get_smarty();
-    $smarty->assign('usePrototype', 'true');
     $dnsZones   = $this->fdDNSZoneDn;
-    $dnsRecords = array();
-    $ips        = $this->parent->getBaseObject()->ipHostNumber;
-    $cn         = $this->parent->getBaseObject()->cn;
+    $this->attributesInfo['records']['attrs'] = array();
     foreach($dnsZones as $dn) {
-      $tabObject = objects::open($dn, 'dnsZone');
-      $dnsRecords[] = array(
-        'records' => array_filter(
-          $tabObject->getBaseObject()->dnsRecords,
-          function ($record) use ($ips, $cn) {
-            return (in_array($record[2], $ips) || ($record[0] == $cn));
-          }
-        ),
-        'name'    => $tabObject->getBaseObject()->zoneName
+      $name = $this->attributesAccess['fdDNSZoneDn']->attribute->displayValue($dn);
+      $attrId = 'zoneRecords'.$name;
+      $this->attributesInfo['records']['attrs'][$attrId] = new DnsRecordsFilteredAttribute(
+        '', sprintf(_('The DNS records for zone "%s"'), $name),
+        $attrId, $dn
       );
+      $this->attributesAccess[$attrId] =& $this->attributesInfo['records']['attrs'][$attrId];
+      $this->attributesAccess[$attrId]->setParent($this);
+      unset($this->$attrId);
     }
-    $this->dnsRecords = $dnsRecords;
-    return parent::execute();
+    $this->updateAttributesValues();
   }
 
   function save()
   {
     parent::save();
+    foreach ($this->attributesInfo['records']['attrs'] as &$attr) {
+      $attr->postLdapSave($this->config->get_ldap_link());
+    }
     $baseObject = $this->parent->getBaseObject();
     $message    = '';
     if ($baseObject->attributesAccess['cn']->hasChanged()) {
