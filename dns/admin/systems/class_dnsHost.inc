@@ -134,17 +134,25 @@ class dnsHost extends simplePlugin
   function zoneChanged()
   {
     $dnsZones   = $this->fdDNSZoneDn;
-    $this->attributesInfo['records']['attrs'] = array();
-    foreach($dnsZones as $dn) {
-      $name = $this->attributesAccess['fdDNSZoneDn']->attribute->displayValue($dn);
-      $attrId = 'zoneRecords'.$name;
-      $this->attributesInfo['records']['attrs'][$attrId] = new DnsRecordsFilteredAttribute(
-        '', sprintf(_('The DNS records for zone "%s"'), $name),
-        $attrId, $dn
+    if (empty($dnsZones)) {
+      unset($this->attributesInfo['records']);
+    } else {
+      $this->attributesInfo['records'] = array(
+        'name'  => _('DNS Records'),
+        'class' => array('fullwidth'),
+        'attrs' => array()
       );
-      $this->attributesAccess[$attrId] =& $this->attributesInfo['records']['attrs'][$attrId];
-      $this->attributesAccess[$attrId]->setParent($this);
-      unset($this->$attrId);
+      foreach($dnsZones as $dn) {
+        $name = $this->attributesAccess['fdDNSZoneDn']->attribute->displayValue($dn);
+        $attrId = 'zoneRecords'.$name;
+        $this->attributesInfo['records']['attrs'][$attrId] = new DnsRecordsFilteredAttribute(
+          $name, sprintf(_('The DNS records for zone "%s"'), $name),
+          $attrId, $dn
+        );
+        $this->attributesAccess[$attrId] =& $this->attributesInfo['records']['attrs'][$attrId];
+        $this->attributesAccess[$attrId]->setParent($this);
+        unset($this->$attrId);
+      }
     }
     $this->updateAttributesValues();
   }
