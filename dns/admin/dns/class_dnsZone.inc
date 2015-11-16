@@ -92,7 +92,7 @@ class DnsRecordDialog extends GenericDialog
       foreach ($checks as $msg) {
         msg_dialog::display(_('Error'), $msg, ERROR_DIALOG);
       }
-      return $this->dialog->execute();
+      return $this->dialog_execute();
     } else {
       /* add new/edited zone */
       $ret = array_merge(array($this->dialog->relativeSubdomainName), $this->dialog->dnsRecord);
