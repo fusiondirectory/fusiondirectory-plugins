@@ -28,8 +28,6 @@ class phoneGeneric extends simplePlugin
 
   var $inheritance = array('gosaGroupOfNames' => 'member');
 
-  var $preInitAttributes = array('cn', 'networkSettings');
-
   static function plInfo()
   {
     return array(
@@ -81,9 +79,19 @@ class phoneGeneric extends simplePlugin
       ),
       'network' => array(
         'name'      => _('Network settings'),
-        'attrs'     => array(new NetworkSettingsAttribute('cn', array('ipHost', 'ieee802Device'))),
-        'template'  => get_template_path('network_section.tpl', TRUE, dirname(__FILE__)),
         'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
+        'attrs'     => array(
+          new SetAttribute(
+            new IPAttribute(
+              _('IP address'), _('IP addresses this system uses (v4 or v6)'),
+              'ipHostNumber', FALSE
+            )
+          ),
+          new MacAddressAttribute(
+            _('Mac address'), _('Mac address of this system'),
+            'macAddress', FALSE
+          ),
+        ),
       ),
     );
   }
@@ -93,56 +101,11 @@ class phoneGeneric extends simplePlugin
     parent::__construct($config, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
-    $this->netConfigDNS->IPisMust   = FALSE;
-    $this->netConfigDNS->MACisMust  = FALSE;
   }
 
   function compute_dn ()
   {
     return 'cn='.$this->cn.','.get_ou('phoneRDN').$this->base;
-  }
-
-  function resetCopyInfos()
-  {
-    parent::resetCopyInfos();
-    $this->netConfigDNS->resetCopyInfos();
-  }
-
-  function set_acl_base($base)
-  {
-    plugin::set_acl_base($base);
-    $this->netConfigDNS->set_acl_base($base);
-  }
-
-  function set_acl_category($cat)
-  {
-    plugin::set_acl_category($cat);
-    $this->netConfigDNS->set_acl_category($cat);
-  }
-
-  function remove_from_parent()
-  {
-    if (!$this->initially_was_account) {
-      return;
-    }
-
-    if ($this->acl_is_removeable()) {
-      $this->netConfigDNS->remove_from_parent();
-
-      parent::remove_from_parent();
-    }
-  }
-
-  protected function ldap_save($cleanup = TRUE)
-  {
-    parent::ldap_save($cleanup);
-    $this->netConfigDNS->cn = $this->cn;
-    $this->netConfigDNS->save();
-  }
-
-  function is_modal_dialog()
-  {
-    return (isset($this->netConfigDNS->dialog) && $this->netConfigDNS->dialog);
   }
 }
 ?>

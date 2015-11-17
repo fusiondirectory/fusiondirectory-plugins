@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -24,11 +23,7 @@ class winstationGeneric extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $netConfigDNS;
-
   var $objectclasses = array('posixAccount','account','sambaSamAccount','top');
-
-  var $preInitAttributes = array('networkSettings');
 
   static function plInfo()
   {
@@ -93,9 +88,19 @@ class winstationGeneric extends simplePlugin
       ),
       'network' => array(
         'name'      => _('Network settings'),
-        'attrs'     => array(new NetworkSettingsAttribute('uid', array('ipHost', 'ieee802Device'))),
-        'template'  => get_template_path('../network_section.tpl', TRUE, dirname(__FILE__)),
         'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
+        'attrs'     => array(
+          new SetAttribute(
+            new IPAttribute(
+              _('IP address'), _('IP addresses this system uses (v4 or v6)'),
+              'ipHostNumber', TRUE
+            )
+          ),
+          new MacAddressAttribute(
+            _('Mac address'), _('Mac address of this system'),
+            'macAddress', FALSE
+          ),
+        ),
       ),
     );
   }
@@ -144,47 +149,6 @@ class winstationGeneric extends simplePlugin
     $this->attributesAccess['uid']->setValue($this->attributesAccess['cn']->getValue());
   }
 
-  function resetCopyInfos()
-  {
-    parent::resetCopyInfos();
-    $this->netConfigDNS->resetCopyInfos();
-  }
-
-  function set_acl_base($base)
-  {
-    plugin::set_acl_base($base);
-    $this->netConfigDNS->set_acl_base($base);
-  }
-
-  function set_acl_category($cat)
-  {
-    plugin::set_acl_category($cat);
-    $this->netConfigDNS->set_acl_category($cat);
-  }
-
-  function remove_from_parent()
-  {
-    if (!$this->initially_was_account) {
-      return;
-    }
-
-    if ($this->acl_is_removeable()) {
-      $this->netConfigDNS->remove_from_parent();
-
-      parent::remove_from_parent();
-
-      /* Delete references to object groups */
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
-      $ldap->search("(&(objectClass=gosaGroupOfNames)(member=".LDAP::prepare4filter($this->dn)."))", array("cn"));
-      while ($ldap->fetch()) {
-        $og = new ogroup($this->config, $ldap->getDN());
-        unset($og->member[$this->dn]);
-        $og->save();
-      }
-    }
-  }
-
   function prepare_save()
   {
     $this->attributesAccess['uid']->setValue($this->attributesAccess['cn']->getValue());
@@ -211,18 +175,6 @@ class winstationGeneric extends simplePlugin
       $this->attrs['sambaSID']  = $sid;
       $this->attrs['uidNumber'] = $uidNumber + $this->ridBase;
     }
-  }
-
-  protected function ldap_save($cleanup = TRUE)
-  {
-    parent::ldap_save($cleanup);
-    $this->netConfigDNS->cn = preg_replace("/\\\$\$/", "", $this->cn);
-    $this->netConfigDNS->save();
-  }
-
-  function is_modal_dialog()
-  {
-    return (isset($this->netConfigDNS->dialog) && $this->netConfigDNS->dialog);
   }
 
   function compute_dn()
