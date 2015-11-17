@@ -141,6 +141,13 @@ my $term = new Term::ShellUI(
       maxargs => 3,
       proc    => \&command_cat,
     },
+    "lstabs" => {
+      desc    => "List an object activated tabs",
+      doc     => "Usage: lstabs <TYPE> [<DN>]\nLists activated tabs of object DN\nIf DN is not provided, just list tabs activated on creation of an object of type TYPE\nExample: lstabs user uid=fd-admin,dc=example,dc=com\nExample: lstabs user\n",
+      minargs => 1,
+      maxargs => 2,
+      proc    => \&command_lstabs,
+    },
     "infos" => {
       desc    => "Show informations about a type",
       doc     => "Usage: infos <TYPE>\nExample: infos user\n",
@@ -363,6 +370,16 @@ sub ask_field
     }
   }
   die("Don't know how to prompt for the attribute of types ".join(',',@{$field->{'type'}}));
+}
+
+sub command_lstabs
+{
+  my ($type, $path) = @_;
+  $path = complete_dn($path);
+  my $tabs = rpc_call($client, 'listTabs', [$sid,$type,$path]);
+  while (my ($tab, $name) = each(%$tabs)) {
+    printf ("%-30s %s\n", $name, $tab);
+  }
 }
 
 sub command_infos
