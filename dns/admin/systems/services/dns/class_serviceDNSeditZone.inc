@@ -194,11 +194,9 @@ class servdnseditZone extends plugin
     /* Save Zone Entry Edit Dialog */
     if (isset($_POST['SaveZoneEntryChanges'])) {
       $this->dialog->save_object();
-      if (count($this->dialog->check())) {
-        $msgs = $this->dialog->check();
-        foreach ($msgs as $msg) {
-          msg_dialog::display(_("Error"), $msg, ERROR_DIALOG);
-        }
+      $msgs = $this->dialog->check();
+      if (count($msgs)) {
+        msg_dialog::displayChecks($msgs);
       } else {
         $this->zoneEditor = clone $this->dialog;
         $this->dialog     = FALSE;

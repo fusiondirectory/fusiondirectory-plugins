@@ -475,10 +475,9 @@ class printgeneric extends plugin
     /* Save selected ppd */
     if (isset($_POST['SavePPD'])) {
       $this->dialog->save_object();
-      if (count($this->dialog->check())) {
-        foreach ($this->dialog->check() as $msg) {
-          msg_dialog::display(_("Error"), $msg, ERROR_DIALOG);
-        }
+      $msgs = $this->dialog->check();
+      if (count($msgs)) {
+        msg_dialog::displayChecks($msgs);
       } else {
         $this->gotoPrinterPPD = array();
         $this->gotoPrinterPPD = $this->dialog->save();
