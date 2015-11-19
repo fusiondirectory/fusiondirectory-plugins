@@ -24,7 +24,7 @@ class faiPartition extends plugin
   var $attributes = array(
     "cn","description","FAIfsCreateOptions","FAIfsOptions","FAIfsTuneOptions",
     "FAIfsType","FAImountOptions","FAImountPoint","FAIpartitionNr","FAIpartitionFlags","FAIdiskType",
-    "FAIpartitionSize","FAIpartitionType","FAIstate", "bootable","resize", "preserve", "preserveType",
+    "FAIpartitionSize","FAIpartitionType","bootable","resize", "preserve", "preserveType",
     "encrypted"
   );
 
@@ -39,7 +39,6 @@ class faiPartition extends plugin
   var $FAIpartitionNr = "undefined"; // Initial value for new partitions
   var $FAIpartitionSize = "";
   var $FAIpartitionType = "";
-  var $FAIstate = "";
   var $FAIpartitionFlags = "";
 
   var $FAIdiskType = "disk";
@@ -239,7 +238,6 @@ class faiPartition extends plugin
 
     $smarty->assign("FAIfsTypes", $FAIfsTypes);
     $smarty->assign("cn", $this->cn);
-    $smarty->assign("freeze", preg_match("/freeze/i",$this->parent->FAIstate));
 
     $smarty->assign("plist",$this->getRaidlist());
     $smarty->assign("physicalPartitionList",$this->getPartitionlist());
@@ -261,7 +259,7 @@ class faiPartition extends plugin
     foreach($this->parent->parent->disks as $disk){
 
       // Skip ourselves
-      if($disk['cn'] == $this->parent->DISKcn) continue;
+      if($disk['cn'] == $this->parent->cn) continue;
 
       // Add partition from lvm combinations
       if($disk['FAIdiskType'] == "lvm"){

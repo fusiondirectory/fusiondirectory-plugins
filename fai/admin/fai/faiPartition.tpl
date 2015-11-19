@@ -1,7 +1,7 @@
 
 <h2>{t}Partition{/t}</h2>
 
-<table style='width: 100%;' width="100%"> 
+<table style='width: 100%;' width="100%">
   <tr>
 {if $FAIdiskType == "lvm"}
     <td>{t}Name{/t}</td>
@@ -93,7 +93,7 @@
 
   <tr>
     <td colspan="4">
-      <h2>{t}Combined physical partitions{/t}</h2>      
+      <h2>{t}Combined physical partitions{/t}</h2>
 
       <select name='physicalPartition[]' size=5 style="width:100%; font-family: monospace;"
         multiple>
@@ -103,10 +103,10 @@
       <select name='physicalPartitionAdd' style='width:240px;'>
         {html_options options=$physicalPartitionList}
       </select>
-      <input type="submit" name='addPhysicalPartition' value="{msgPool type="addButton"}">&nbsp; 
-      <input type="submit" name='delPhysicalPartition' value="{msgPool type="delButton"}">&nbsp; 
-      <input type="submit" name='toggleMissing' value="{t}Toggle missing{/t}">&nbsp; 
-      <input type="submit" name='toggleSpare' value="{t}Toggle spare{/t}">&nbsp; 
+      <input type="submit" name='addPhysicalPartition' value="{msgPool type="addButton"}">&nbsp;
+      <input type="submit" name='delPhysicalPartition' value="{msgPool type="delButton"}">&nbsp;
+      <input type="submit" name='toggleMissing' value="{t}Toggle missing{/t}">&nbsp;
+      <input type="submit" name='toggleSpare' value="{t}Toggle spare{/t}">&nbsp;
     </td>
   </tr>
   <tr>
@@ -168,7 +168,7 @@
     </td>
   </tr>
 
-  <!-- Table cell sizing  --> 
+  <!-- Table cell sizing  -->
   <tr>
     <td colspan=2 style='width:50%;'></td>
     <td colspan=2 style='width:50%;'></td>
@@ -178,9 +178,6 @@
 <input type='hidden' name='faiPartition' value='1'>
 <p class='seperator'>&nbsp;</p>
 <div style='text-align:right; width:100%; padding:5px'>
-  {if !$freeze}
   <input type='submit' name='PartitionSave' value='{msgPool type=okButton}'>
-  &nbsp;
-  {/if}
   <input type='submit' name='PartitionCancel' value='{msgPool type=cancelButton}'>
 </div>
