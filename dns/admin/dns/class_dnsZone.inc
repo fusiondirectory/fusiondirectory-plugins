@@ -158,13 +158,12 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
           }
         }
       }
-      /* Get reverse zone */
+      /* Get reverse zone
       $ldap->ls('(&(objectClass=dNSZone)(relativeDomainName=@)(zoneName=*))', $attrs['dn'], array('zoneName'));
       $reverseDn = ;
       while ($attrs = ldap->fetch()) {
-
-        $Zones[$zoneName]['ReverseZone']        = DNS::FlipIp(preg_replace('/\.in\-addr\.arpa\.?$/', '', $tmp['zoneName'][0]));
-      }
+        $Zones[$zoneName]['ReverseZone'] = DNS::FlipIp(preg_replace('/\.in\-addr\.arpa\.?$/', '', $tmp['zoneName'][0]));
+      }*/
     }
   }
 
