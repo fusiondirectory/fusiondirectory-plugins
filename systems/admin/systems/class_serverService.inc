@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
@@ -146,7 +145,6 @@ class ServerService extends management
     }
   }
 
-
   /*! \brief    Filter extra POST and GET variables for this plugin.
    */
   function detectPostActions()
@@ -164,7 +162,6 @@ class ServerService extends management
     return $action;
   }
 
-
   /*! \brief  Edit an existing service here.
    *          Somebody clicked on the paper and pencil icon.
    */
@@ -178,7 +175,6 @@ class ServerService extends management
       $this->current      = $s_entry;
     }
   }
-
 
   /*! \brief  Editing an object was caneled.
    *          Close dialogs/tabs and remove locks.
@@ -199,7 +195,6 @@ class ServerService extends management
     $this->current  = "";
     $this->closeDialogs();
   }
-
 
   /*! \brief  Let the user choose the new service to create.
    */
@@ -235,7 +230,6 @@ class ServerService extends management
     }
   }
 
-
   /*!\brief   Close all opened dialogs
    *          And reset "dialog open" flags to display bottom buttons again.
    */
@@ -247,7 +241,6 @@ class ServerService extends management
     $this->dn     = $this->last_dn;
     set_object_info($this->dn);
   }
-
 
   /*! \brief    Remove the selected service(s)
    */
@@ -273,7 +266,6 @@ class ServerService extends management
     }
   }
 
-
   /*! \brief    Returns the list of of services, active services.
    *            Used in the filter class for services.
    *             class_filterServerService.inc
@@ -282,7 +274,6 @@ class ServerService extends management
   {
     return session::get('ServerService');
   }
-
 
   /*! \brief    Returns an image for the service status.
    *            Used in the service list class.
@@ -305,7 +296,6 @@ class ServerService extends management
     }
     return "&nbsp;";
   }
-
 
   /*! \brief  Execute this plugin
    *          Handle actions/events, locking, snapshots, dialogs, tabs,...
@@ -377,7 +367,6 @@ class ServerService extends management
     }
   }
 
-
   /*! \brief    Updates the status for a list of services.
    */
   function updateServiceStatus($action, $target, $all)
@@ -399,7 +388,6 @@ class ServerService extends management
       $this->updateSingleServiceStatus($action, $service);
     }
   }
-
 
   /*! \brief    Updates the status of a service and
    *             calls an external hook if specified in fusiondirectory.conf
@@ -425,7 +413,7 @@ class ServerService extends management
               msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
             );
           } else {
-            $this->plugins[$service]->setStatus($res == "yes"?"running":"stopped");
+            $this->plugins[$service]->setStatus($res == "yes" ? "running" : "stopped");
           }
         } else {
           $res = $s_daemon->append_call("Service.manage", $target, array("args" => array($service, $action)));
@@ -442,7 +430,6 @@ class ServerService extends management
       }
     }
   }
-
 
   /*! \brief   Returns a list of all used services
    *            CLASSNAME => _($this->plugins[*]->DisplayName);
@@ -461,7 +448,6 @@ class ServerService extends management
     }
     return $ret;
   }
-
 
   /*! \brief    Returns a list of all unused services.
    */
@@ -501,14 +487,12 @@ class ServerService extends management
     return $ret;
   }
 
-
   /*! \brief    No checks here.
    */
   function check()
   {
     return array();
   }
-
 
   /*! \brief    Keep posted form values in opened dialogs
    */
@@ -520,7 +504,6 @@ class ServerService extends management
       }
     }
   }
-
 
   /*! \brief    Remove all active services
    */
@@ -536,7 +519,6 @@ class ServerService extends management
       }
     }
   }
-
 
   /*! \brief    Save all active services
    */
@@ -564,7 +546,6 @@ class ServerService extends management
     unset($plugin);
   }
 
-
   /*! \brief    Prepare active services to be copied.
    */
   function postCopyHook()
@@ -574,7 +555,6 @@ class ServerService extends management
     }
     unset($plugin);
   }
-
 
   /*! \brief    Check if there is an active service which prevents
    *             complete service removal.
@@ -589,7 +569,6 @@ class ServerService extends management
     }
   }
 
-
   /*! \brief    Forward plugin acls
    */
   function set_acl_base($base)
@@ -600,7 +579,6 @@ class ServerService extends management
     }
   }
 
-
   /*! \brief    Forward plugin acls
    */
   function set_acl_category($category)
@@ -609,6 +587,14 @@ class ServerService extends management
     foreach ($this->plugins as $name => $obj) {
       $this->plugins[$name]->set_acl_category($category);
     }
+  }
+
+  function setTemplate ($bool)
+  {
+    foreach ($this->plugins as &$plugin) {
+      $plugin->setTemplate($bool);
+    }
+    unset($plugin);
   }
 }
 ?>
