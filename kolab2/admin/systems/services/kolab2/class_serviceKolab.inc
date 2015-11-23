@@ -22,16 +22,16 @@
 
 class RelayHostKolabAttribute extends CompositeAttribute
 {
-  function __construct ($description, $ldapName, $acl = "", $label = "Composite attribute")
+  function __construct ($description, $ldapName, $acl = '', $label = 'Composite attribute')
   {
     $attributes = array(
       new BooleanAttribute (
         _('Enable MX lookup for relayhost'), '', 'RelayMxSupport', FALSE, FALSE,
-        "", TRUE, FALSE
+        '', TRUE, FALSE
       ),
       new StringAttribute (_('Relay host'), _('Host used to relay mails'), 'relayhost')
     );
-    parent::__construct ($description, $ldapName, $attributes, "", "", $acl, $label);
+    parent::__construct ($description, $ldapName, $attributes, '', '', $acl, $label);
   }
 
   function readValues($value)
@@ -46,8 +46,8 @@ class RelayHostKolabAttribute extends CompositeAttribute
   {
     /* Adapt relayhost */
     $value = preg_replace('/[\[\]]/', '', $values[1]);
-    if ($values[0] && ($value != "")) {
-      $value = "[".$value."]";
+    if ($values[0] && ($value != '')) {
+      $value = '['.$value.']';
     }
     return $value;
   }
@@ -55,11 +55,11 @@ class RelayHostKolabAttribute extends CompositeAttribute
 
 class serviceKolab extends simpleService
 {
-  var $objectclasses  = array("top", "kolab");
+  var $objectclasses  = array('top', 'kolab');
   var $displayHeader  = FALSE;
   var $mainTab        = TRUE;
 
-  var $conflicts    = array("fdPostfixServer","GOhard");
+  var $conflicts    = array('fdPostfixServer');
 
   static function plInfo()
   {
@@ -202,13 +202,13 @@ class serviceKolab extends simpleService
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     $this->hostname = preg_replace('/^cn=([^,]+),.*$/', '\1', $dn);
-    $this->dn       = "k=kolab,".$config->current['BASE'];
+    $this->dn       = 'k=kolab,'.$config->current['BASE'];
     parent::__construct($config, $this->dn);
 
-    $this->attributesInfo['section1']['attrs']['k']->setVisible(FALSE);
-    $this->attributesInfo['section1']['attrs']['kolabHost']->setVisible(FALSE);
+    $this->attributesAccess['k']->setVisible(FALSE);
+    $this->attributesAccess['kolabHost']->setVisible(FALSE);
 
-    $this->is_account = in_array($this->hostname, $this->attributesInfo['section1']['attrs']['kolabHost']->getValue());
+    $this->is_account = in_array($this->hostname, $this->attributesAccess['kolabHost']->getValue());
 
     $this->initially_was_account = $this->is_account;
 
@@ -217,10 +217,10 @@ class serviceKolab extends simpleService
 
   function save ()
   {
-    $this->dn = "k=kolab,".$this->config->current['BASE'];
+    $this->dn = 'k=kolab,'.$this->config->current['BASE'];
 
     /* Check if this server was renamed, in this case we have to remove old cn first*/
-    $kolabHost = $this->attributesInfo['section1']['attrs']['kolabHost']->getValue();
+    $kolabHost = $this->attributesAccess['kolabHost']->getValue();
     if ($this->hostname != $this->cn) {
       $key = array_search($this->hostname, $kolabHost);
       if ($key !== FALSE) {
@@ -230,7 +230,7 @@ class serviceKolab extends simpleService
     if (!in_array($this->cn, $kolabHost)) {
       $kolabHost[] = $this->cn;
     }
-    $this->attributesInfo['section1']['attrs']['kolabHost']->setValue($kolabHost);
+    $this->attributesAccess['kolabHost']->setValue($kolabHost);
 
     parent::save();
   }
@@ -247,7 +247,7 @@ class serviceKolab extends simpleService
        cn       -> is the new name of the host, in case that it was renamed.
      */
     $ldap     = $this->config->get_ldap_link();
-    $this->dn = "k=kolab,".$this->config->current['BASE'];
+    $this->dn = 'k=kolab,'.$this->config->current['BASE'];
 
     /* We can't simply remove the whole entry, it is possible that there are
        some other hosts assigned to this object.
@@ -256,7 +256,7 @@ class serviceKolab extends simpleService
        if we aren't alone, only remove host name from hosts entry and save */
     /* Are we alone? Remove complete entry... */
 
-    $kolabHost = $this->attributesInfo['section1']['attrs']['kolabHost']->getValue();
+    $kolabHost = $this->attributesAccess['kolabHost']->getValue();
 
     /* Check if we are definitly in kolabHosts */
     if (!in_array_ics($this->hostname, $kolabHost)) {
@@ -265,11 +265,11 @@ class serviceKolab extends simpleService
 
     /* Integration check, not translated because they can't pop up at all, only for debug */
     if (count($kolabHost) == 0) {
-      msg_dialog::display(_("Internal error"), _("Kolab account does not exist!"), ERROR_DIALOG);
+      msg_dialog::display(_('Internal error'), _('Kolab account does not exist!'), ERROR_DIALOG);
       return;
     }
     if (!isset($this->hostname) || (empty($this->hostname))) {
-      msg_dialog::display(_("Error"), msgPool::required(_("hostname")), ERROR_DIALOG);
+      msg_dialog::display(_('Error'), msgPool::required(_('hostname')), ERROR_DIALOG);
     }
 
     /* Our hostname is in kolabHosts and there is a only one entry
@@ -278,7 +278,7 @@ class serviceKolab extends simpleService
       /* Remove complete entry */
       $ldap->rmdir ($this->dn);
       if (!$ldap->success()) {
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()), LDAP_ERROR);
+        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()), LDAP_ERROR);
       }
     } else {
       /* Only modify kolabHost */
@@ -289,15 +289,14 @@ class serviceKolab extends simpleService
       $this->cleanup();
       $ldap->modify($attrs);
       if (!$ldap->success()) {
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()), LDAP_ERROR);
+        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()), LDAP_ERROR);
       }
     }
 
-    new log("remove", "service/".get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
+    new log('remove', 'service/'.get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
 
     /* Optionally execute a command after we're done */
-    $this->handle_post_events("remove");
+    $this->handle_post_events('remove');
   }
-
 }
 ?>

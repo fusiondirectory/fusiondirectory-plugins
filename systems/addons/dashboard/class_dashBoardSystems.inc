@@ -154,7 +154,7 @@ class dashboardSystems extends simplePlugin
       }
 
       /* request of all computer beginning by the prefix */
-      $request = "(&(|(objectClass=sambaSamAccount)(objectClass=GOhard))(cn=$prefix*)(|(ou:dn:=$winstation_ou)(ou:dn:=systems)))";
+      $request = '(&(cn='.$prefix.'*)(|(ou:dn:='.$winstation_ou.')(ou:dn:=systems)))';
       $ldap->search($request, array("cn"));
       while ($attrs = $ldap->fetch()) {
         /* if a computer is a windows host, we have to delete the $ at the end */

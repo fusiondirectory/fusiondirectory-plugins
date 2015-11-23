@@ -584,6 +584,7 @@ objectclass (1.3.6.1.4.1.10098.1.2.1.42 NAME 'gotoDevice'
 # objectclass for Hardware definitions
 objectclass (1.3.6.1.4.1.10098.1.2.1.3 NAME 'GOhard'
   DESC 'Gonicus Hardware definitions, objectclass' SUP top STRUCTURAL
+  OBSOLETE
   MUST ( cn )
   MAY ( ghGfxAdapter $ ghNetNic $ ghSoundAdapter $ ghIdeDev $ ghScsiDev $
         macAddress $ ghUsbSupport $ ghMemSize $ ghCpuType $ ghInventoryNumber $
