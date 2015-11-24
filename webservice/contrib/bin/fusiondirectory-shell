@@ -596,7 +596,7 @@ fusiondirectory-shell - A shell to act on FusionDirectory handled objects
 
 =head1 SYNOPSIS
 
-B<fusiondirectory-shell> [I<options>]
+B<fusiondirectory-shell> [-h] [-u I<URL>] [-c I<FILE>] -l I<LOGIN> (-p I<PWD> | -P) [-s I<LDAPSERVER>]
 
 =head1 DESCRIPTION
 
@@ -610,9 +610,9 @@ B<fusiondirectory-shell> will connect you to FusionDirectory webservice and allo
 
 Print a brief help message and exits.
 
-=item B<-u>, B<--url>=I<HOST>
+=item B<-u>, B<--url>=I<URL>
 
-Use HOST instead of https://localhost/fusiondirectory/jsonrpc.php
+Use URL instead of https://localhost/fusiondirectory/jsonrpc.php
 
 =item B<-l>, B<--login>=I<LOGIN>
 
