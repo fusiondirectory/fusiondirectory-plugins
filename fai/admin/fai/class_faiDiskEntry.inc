@@ -28,9 +28,12 @@ class PartitionDialog extends GenericDialog
 
   protected $initialDialogValue = NULL;
 
+  protected $plugin;
+
   function __construct($simplePlugin, &$attribute, $partition = array())
   {
-    $this->attribute = $attribute;
+    $this->attribute  = $attribute;
+    $this->plugin     = $simplePlugin;
     $this->dialog = new $this->dialogClass($simplePlugin->config, $partition, $simplePlugin, $simplePlugin->FAIdiskType);
 
     $base = $simplePlugin->dn;
@@ -57,7 +60,7 @@ class PartitionDialog extends GenericDialog
     $msgs = $this->dialog->check();
     if (!count($msgs)) {
       $new_partition = $this->dialog->save();
-      $msgs = $this->attribute->plugin->check_disks($new_partition);
+      $msgs = $this->plugin->check_disks($new_partition);
     }
     if (count($msgs)) {
       msg_dialog::displayChecks($msgs);
@@ -106,8 +109,8 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
     if (isset($value['bootable']) && $value['bootable']) {
       $opt[] = _('bootable');
     }
-    if (isset($value['preserve']) && $value['preserve']) {
-      $opt[] = _('preserve').':'.$value['preserveType'];
+    if (!empty($value['preserve'])) {
+      $opt[] = _('preserve').':'.$value['preserve'];
     }
     return array(
       $value['description'],
@@ -286,6 +289,7 @@ class faiDiskEntry extends simplePlugin
 
       $this->cn          = $disk['cn'];
       $this->description = $disk['description'];
+      $this->attributesAccess['cn']->setInitialValue($this->cn);
 
       /* Get devices used in volume base disks */
       $this->attributesAccess['lvmDevices']->attribute->setChoices($this->getAvailablePartitions());
@@ -330,8 +334,7 @@ class faiDiskEntry extends simplePlugin
             $preserve = preg_split('/,/', $m[1], -1, PREG_SPLIT_NO_EMPTY);
             foreach ($preserve as $presflag) {
               if (isset($disk['partitions'][$presflag])) {
-                $disk['partitions'][$presflag]['preserve']      = TRUE;
-                $disk['partitions'][$presflag]['preserveType']  = 'always';
+                $disk['partitions'][$presflag]['preserve'] = 'always';
               }
             }
             continue;
@@ -341,8 +344,7 @@ class faiDiskEntry extends simplePlugin
             $preserve = preg_split('/,/', $m[1], -1, PREG_SPLIT_NO_EMPTY);
             foreach ($preserve as $presflag) {
               if (isset($disk['partitions'][$bootflag])) {
-                $disk['partitions'][$presflag]['preserve']      = TRUE;
-                $disk['partitions'][$presflag]['preserveType']  = 'reinstall';
+                $disk['partitions'][$presflag]['preserve'] = 'reinstall';
               }
             }
             continue;
@@ -434,16 +436,16 @@ class faiDiskEntry extends simplePlugin
       if (isset($part['resize']) && $part['resize']) {
         $resize .= $id.',';
       }
-      if (isset($part['preserve']) && $part['preserve']) {
-        if ($part['preserveType'] == 'always') {
+      if (isset($part['preserve'])) {
+        if ($part['preserve'] == 'always') {
           $preserve_always .= $id.',';
-        } else {
+        } elseif ($part['preserve'] == 'reinstall') {
           $preserve_reinstall .= $id.',';
         }
       }
 
       /* Unset non valid attributes */
-      foreach (array('bootable','encrypted','preserve','preserveType','resize','FAIdiskType') as $attr) {
+      foreach (array('bootable','encrypted','preserve','resize','FAIdiskType') as $attr) {
         if (isset($tmp['partitions'][$id][$attr])) {
           unset($tmp['partitions'][$id][$attr]);
         }
@@ -512,6 +514,37 @@ class faiDiskEntry extends simplePlugin
       }
     }
     return $ret;
+  }
+
+  /* Checks the disk combinations */
+  function check_disks($disk_to_add = array())
+  {
+    $msgs = array();
+
+    /* Check 'disk' combinations.
+     *  - There can be four primary partitions.
+     *  - If there is at least one 'logical' partition, then there can be only
+     *     three 'primary' partitions.
+     */
+    if ($this->FAIdiskType == 'disk') {
+      $types = array('logical' => array(), 'primary' => array());
+      $types[$disk_to_add['FAIpartitionType']][$disk_to_add['FAIpartitionNr']] = 1;
+      foreach ($this->partitions as $key => $part) {
+        $types[$part['FAIpartitionType']][$part['FAIpartitionNr']] = 1;
+      }
+
+      // There can only be four primary partitions per disk - without any logical partition.
+      if (count($types['logical']) == 0) {
+        if (count($types['primary']) > 4) {
+          $msgs[] = _('You have more than four primary partition table entries in your configuration');
+        }
+      } else {
+        if (count($types['primary']) > 3) {
+          $msgs[] = _('You cannot have more than three primary partition while using logical partitions');
+        }
+      }
+    }
+    return $msgs;
   }
 }
 ?>
