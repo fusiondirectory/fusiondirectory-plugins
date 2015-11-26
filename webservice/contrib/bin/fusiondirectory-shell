@@ -43,6 +43,13 @@ pod2usage(1) if $help;
 pod2usage(2) if not defined $login;
 pod2usage(2) if not defined $password and not $password_ask;
 
+if ($host !~ m/jsonrpc\.php$/) {
+  if ($host !~ m|/$|) {
+    $host .= '/';
+  }
+  $host .= 'jsonrpc.php'
+}
+
 my $current_base;
 
 sub rpc_init {
