@@ -59,7 +59,8 @@ class applicationManagement extends simpleManagement
         )
       );
     } else { /* allowed */
-      $roles = objects::ls(
+      $apps   = array();
+      $roles  = objects::ls(
         'role',
         array('fdApplicationAllowed' => '*'),
         NULL,
