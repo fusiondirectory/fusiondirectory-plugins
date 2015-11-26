@@ -265,6 +265,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
     if (isset($disk['rename'])) {
       unset($this->value[$disk['rename']['from']]);
       $disk['cn'] = $disk['rename']['to'];
+      unset($disk['rename']);
     }
 
     $this->value[$disk['cn']] = $disk;
