@@ -80,7 +80,7 @@ class fiInventory extends simplePlugin
         )
       ),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
@@ -133,7 +133,7 @@ class fiInventory extends simplePlugin
 
   function compute_dn()
   {
-    return 'cn='.$this->cn.','.get_ou("inventoryRDN").$this->config->current['BASE'];
+    return 'cn='.$this->cn.','.get_ou('inventoryRDN').$this->config->current['BASE'];
   }
 
   function execute()
@@ -168,8 +168,8 @@ class fiInventory extends simplePlugin
         return array();
       }
       $matching     = $this->config->get_cfg_value('inventoryMatching', 'mac');
-      $macAddress   = $this->parent->getBaseObject()->netConfigDNS->macAddress;
-      $ipHostNumber = $this->parent->getBaseObject()->netConfigDNS->ipHostNumber;
+      $macAddress   = $this->parent->getBaseObject()->macAddress;
+      $ipHostNumber = $this->parent->getBaseObject()->ipHostNumber;
       if ($macAddress != '') {
         $macfilter = "(macAddress=$macAddress)";
       } else {
@@ -178,8 +178,8 @@ class fiInventory extends simplePlugin
           return array();
         }
       }
-      if ($ipHostNumber != '') {
-        $ipfilter = "(cn=$ipHostNumber)";
+      if (!empty($ipHostNumber)) {
+        $ipfilter = '(|(cn='.implode(')(cn=', $ipHostNumber).'))';
       } else {
         $ipfilter = NULL;
         if (($matching == 'ip') || ($matching == 'both') || ($macfilter === NULL)) {
