@@ -97,6 +97,14 @@ class ldapDump extends simplePlugin
 
     return $node;
   }
+
+  function check()
+  {
+  }
+
+  function save()
+  {
+  }
 }
 
 ?>
