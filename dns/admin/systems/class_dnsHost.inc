@@ -27,11 +27,30 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
   {
     parent::__construct ($label, $description, $ldapName, FALSE, $defaultValue, $acl);
     $this->zoneDn = $zoneDn;
-    $this->loadRecords();
   }
 
   protected function loadAttrValue ($attrs)
   {
+  }
+
+  function setParent (&$plugin)
+  {
+    parent::setParent($plugin);
+    if (is_object($this->plugin)) {
+      if (!$this->plugin->is_template) {
+        $this->loadRecords();
+      } elseif (isset($this->plugin->attrs[$this->getLdapName()]['count'])) {
+        $this->value = array();
+        $this->loadAdditionalTemplatesValues();
+      }
+    }
+  }
+
+  function loadAdditionalTemplatesValues ()
+  {
+    for ($i = 0; $i < $this->plugin->attrs[$this->getLdapName()]['count']; $i++) {
+      $this->value[] = explode('|', $this->plugin->attrs[$this->getLdapName()][$i]);
+    }
   }
 
   function loadRecords ()
@@ -47,6 +66,9 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
   protected function getAttributeArrayValue($key, $value)
   {
     $values = parent::getAttributeArrayValue($key, $value);
+    if ($this->plugin->is_template) {
+      return $values;
+    }
     $ips    = $this->plugin->parent->getBaseObject()->ipHostNumber;
     $cn     = $this->plugin->parent->getBaseObject()->cn;
     if (in_array($values[2], $ips) || ($values[0] == $cn)) {
@@ -60,12 +82,18 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
   {
     /* Remove crap made by plugin */
     unset ($attrs[$this->getLdapName()]);
+    if ($this->plugin->is_template) {
+      $attrs[$this->getLdapName()] = array_map(function ($v) {return implode('|', $v);}, $this->value);
+    }
   }
 
   /* Special LDAP treatment that this attribute does after plugin ldap save */
   /* FIXME - We should lock the zone object */
   function postLdapSave ($ldap, $zoneDn = NULL, $zoneName = NULL)
   {
+    if ($this->plugin->is_template) {
+      return;
+    }
     $attrs = array();
     parent::fillLdapValue($attrs);
     if (!empty($attrs)) {
@@ -163,61 +191,72 @@ class dnsHost extends simplePlugin
     foreach ($this->attributesInfo['records']['attrs'] as &$attr) {
       $attr->postLdapSave($this->config->get_ldap_link());
     }
-    $baseObject = $this->parent->getBaseObject();
-    $message    = '';
-    if ($baseObject->attributesAccess['cn']->hasChanged()) {
+    if ($this->initially_was_account) {
+      $baseObject = $this->parent->getBaseObject();
+      $message    = '';
       $oldcn      = $baseObject->attributesAccess['cn']->getInitialValue();
-      $newcn      = $baseObject->attributesAccess['cn']->getValue();
-      $dnsZones   = $this->fdDNSZoneDn;
-      foreach($dnsZones as $dn) {
-        $tabObject = objects::open($dn, 'dnsZone');
-        $nbRecords = $tabObject->getBaseObject()->cnChanged($oldcn, $newcn);
-        if ($nbRecords > 0) {
-          $message .= sprintf(
-            _('%d records were updated from %s to %s in zone %s')."<br/>\n",
-            $nbRecords,
-            $oldcn,
-            $newcn,
-            $tabObject->getBaseObject()->zoneName
-          );
-        }
-      }
-    }
-    if ($baseObject->attributesAccess['ipHostNumber']->hasChanged()) {
-      $oldips = $baseObject->attributesAccess['ipHostNumber']->getInitialValue();
-      $newips = $baseObject->attributesAccess['ipHostNumber']->getValue();
-      if ((count($oldips) == 1) && (count($newips) == 1)) {
+      if ($baseObject->attributesAccess['cn']->hasChanged() && !empty($oldcn)) {
+        $newcn      = $baseObject->attributesAccess['cn']->getValue();
         $dnsZones   = $this->fdDNSZoneDn;
         foreach($dnsZones as $dn) {
           $tabObject = objects::open($dn, 'dnsZone');
-          $nbRecords = $tabObject->getBaseObject()->ipChanged(reset($oldips), reset($newips));
+          $nbRecords = $tabObject->getBaseObject()->cnChanged($oldcn, $newcn);
           if ($nbRecords > 0) {
             $message .= sprintf(
               _('%d records were updated from %s to %s in zone %s')."<br/>\n",
               $nbRecords,
-              reset($oldips),
-              reset($newips),
-              $tabObject->getBaseObject()->zoneName
-            );
-          }
-        }
-      } else {
-        $dnsZones   = $this->fdDNSZoneDn;
-        foreach($dnsZones as $dn) {
-          $tabObject = objects::open($dn, 'dnsZone');
-          $nbRecords = $tabObject->getBaseObject()->ipRemoved(array_diff($oldips, $newips));
-          if ($nbRecords > 0) {
-            $message .= sprintf(
-              _('%d records were removed in zone %s')."<br/>\n",
-              $nbRecords,
+              $oldcn,
+              $newcn,
               $tabObject->getBaseObject()->zoneName
             );
           }
         }
       }
+      if ($baseObject->attributesAccess['ipHostNumber']->hasChanged()) {
+        $oldips = $baseObject->attributesAccess['ipHostNumber']->getInitialValue();
+        $newips = $baseObject->attributesAccess['ipHostNumber']->getValue();
+        if ((count($oldips) == 1) && (count($newips) == 1)) {
+          $dnsZones   = $this->fdDNSZoneDn;
+          foreach($dnsZones as $dn) {
+            $tabObject = objects::open($dn, 'dnsZone');
+            $nbRecords = $tabObject->getBaseObject()->ipChanged(reset($oldips), reset($newips));
+            if ($nbRecords > 0) {
+              $message .= sprintf(
+                _('%d records were updated from %s to %s in zone %s')."<br/>\n",
+                $nbRecords,
+                reset($oldips),
+                reset($newips),
+                $tabObject->getBaseObject()->zoneName
+              );
+            }
+          }
+        } else {
+          $dnsZones   = $this->fdDNSZoneDn;
+          foreach($dnsZones as $dn) {
+            $tabObject = objects::open($dn, 'dnsZone');
+            $nbRecords = $tabObject->getBaseObject()->ipRemoved(array_diff($oldips, $newips));
+            if ($nbRecords > 0) {
+              $message .= sprintf(
+                _('%d records were removed in zone %s')."<br/>\n",
+                $nbRecords,
+                $tabObject->getBaseObject()->zoneName
+              );
+            }
+          }
+        }
+      }
+      if (!empty($message)) {
+        msg_dialog::display(_('DNS update'), $message, INFO_DIALOG);
+      }
     }
-    if (!empty($message)) {
-      msg_dialog::display(_('DNS update'), $message, INFO_DIALOG);
+  }
+
+  function adapt_from_template($attrs, $skip = array())
+  {
+    parent::adapt_from_template($attrs, $skip);
+    $this->zoneChanged();
+    foreach ($this->attributesInfo['records']['attrs'] as &$attr) {
+      $attr->loadAdditionalTemplatesValues();
     }
   }
 }

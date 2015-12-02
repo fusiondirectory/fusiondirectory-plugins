@@ -72,10 +72,13 @@ class DnsRecordDialog extends GenericDialog
 
   protected $initialDialogValue = NULL;
 
+  protected $plugin;
+
   function __construct($simplePlugin, &$attribute, $value = array())
   {
-    $this->attribute      = $attribute;
-    $this->dialog         = new $this->dialogClass($simplePlugin->config, $simplePlugin->dn, $simplePlugin, $value);
+    $this->attribute  = $attribute;
+    $this->plugin     = $simplePlugin;
+    $this->dialog     = new $this->dialogClass($simplePlugin->config, $simplePlugin->dn, $simplePlugin, $value);
     if (!empty($value)) {
       $this->initialDialogValue = $value;
     }
@@ -96,18 +99,17 @@ class DnsRecordDialog extends GenericDialog
     $this->dialog->save_object();
 
     /* Check for errors */
-    $checks = $this->dialog->check();
-    if (count($checks)) {
-      foreach ($checks as $msg) {
-        msg_dialog::display(_('Error'), $msg, ERROR_DIALOG);
+    if (!$this->plugin->is_template) {
+      $checks = $this->dialog->check();
+      if (count($checks)) {
+        msg_dialog::displayChecks($checks);
+        return $this->dialog_execute();
       }
-      return $this->dialog_execute();
-    } else {
-      /* add new/edited zone */
-      $ret = array_merge(array($this->dialog->relativeSubdomainName), $this->dialog->dnsRecord);
-      $this->attribute->addValue($ret);
-      return FALSE;
     }
+    /* add new/edited zone */
+    $ret = array_merge(array($this->dialog->relativeSubdomainName), $this->dialog->dnsRecord);
+    $this->attribute->addValue($ret);
+    return FALSE;
   }
 
   function handle_cancel ()
