@@ -87,6 +87,14 @@ class fiInventory extends simplePlugin
   static function getAttributesInfo ()
   {
     return array(
+      'match' => array(
+        'name'      => _('Matching system'),
+        'class'     => array('fullwidth'),
+        'attrs'     => array(
+          new DisplayAttribute('matching')
+        ),
+        //~ 'template'  => get_template_path('inventory.tpl', TRUE, dirname(__FILE__)),
+      ),
       'hardware' => array(
         'name'      => _('Hardware'),
         'class'     => array('fullwidth'),
@@ -121,6 +129,8 @@ class fiInventory extends simplePlugin
       $this->mainTab        = TRUE;
       $this->objectclasses  = array('fdInventoryContent');
       $attributesInfo['hardware']['attrs'][] = new HiddenAttribute('cn');
+    } else {
+      unset($attributesInfo['match']);
     }
 
     parent::__construct($config, $dn, $object, $attributesInfo);

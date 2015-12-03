@@ -79,12 +79,6 @@ class addressbook extends plugin
 
     $this->base = $this->config->current['BASE'];
 
-    /* Check if there is a special ldap-sub-tree specified, instead of dc=addressbook, */
-    $aoc = $this->config->search("addressbook", "addressbookBaseDN",array('menu'));
-    if ($aoc != "") {
-      $this->abobjectclass  = $aoc;
-    }
-
     /* Get global filter config */
     if (!session::is_set("phonefilter")) {
       $ui         = get_userinfo();
