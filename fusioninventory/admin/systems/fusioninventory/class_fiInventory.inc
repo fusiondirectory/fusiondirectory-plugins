@@ -179,7 +179,7 @@ class fiInventory extends simplePlugin
         }
       }
       if (!empty($ipHostNumber)) {
-        $ipfilter = '(|(cn='.implode(')(cn=', $ipHostNumber).'))';
+        $ipfilter = '(|(ipHostNumber='.implode(')(ipHostNumber=', $ipHostNumber).'))';
       } else {
         $ipfilter = NULL;
         if (($matching == 'ip') || ($matching == 'both') || ($macfilter === NULL)) {
