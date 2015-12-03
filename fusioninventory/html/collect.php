@@ -1,12 +1,10 @@
 <?php
-# Collect inventory and store them in $dumpDir
+# Collect inventory and store them in the LDAP
 # Usage :
-#  fusioninventory-agent --server http://server/collect.php
-require_once("../include/php_setup.inc");
-require_once("functions.inc");
-require_once("variables.inc");
-
-$dumpDir = '/tmp';
+#  fusioninventory-agent --server http://server/fusiondirectory/collect.php
+require_once('../include/php_setup.inc');
+require_once('functions.inc');
+require_once('variables.inc');
 
 ##########################################################################
 $http_raw_post_data = file_get_contents('php://input');
@@ -18,16 +16,16 @@ if (!$http_raw_post_data) {
 $compressmode = 'none';
 if (strpos($http_raw_post_data, "<?xml") === 0) {
     $xml = $http_raw_post_data;
-} else if ($xml = @gzuncompress($http_raw_post_data)) {
+} elseif ($xml = @gzuncompress($http_raw_post_data)) {
     $compressmode = "gzcompress";
-} else if ($xml = @gzinflate ("\x1f\x8b\x08\x00\x00\x00\x00\x00".$http_raw_post_data)) {
+} elseif ($xml = @gzinflate ("\x1f\x8b\x08\x00\x00\x00\x00\x00".$http_raw_post_data)) {
     // ** OCS agent 2.0 Compatibility, but return in gzcompress
     $compressmode = "gzdeflate";
     if (strstr($xml, "<QUERY>PROLOG</QUERY>")
             AND !strstr($xml, "<TOKEN>")) {
         $compressmode = "gzcompress";
     }
-} else if ($xml = @gzinflate (substr($http_raw_post_data, 2))) {
+} elseif ($xml = @gzinflate (substr($http_raw_post_data, 2))) {
     // ** OCS agent 2.0 Compatibility, but return in gzcompress
     $compressmode = "gzdeflate";
     if (strstr($xml, "<QUERY>PROLOG</QUERY>")
@@ -60,10 +58,9 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
            <PROLOG_FREQ>8</PROLOG_FREQ>
         </REPLY>';
 } else {
-    $reply = "<?xml version='1.0' encoding='UTF-8'?>
+    $reply = '<?xml version="1.0" encoding="UTF-8"?>
        <REPLY>
-       </REPLY>";
-    $invFile = sprintf('%s/%s.xml', $dumpDir, $_SERVER['REMOTE_ADDR']);
+       </REPLY>';
 
     $data = xml::xml2array($xml, 1);
     $data = $data['REQUEST']['CONTENT'];
@@ -76,21 +73,29 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
       $os = array($os);
     }
 
+    /* Check if CONFIG_FILE is accessible */
+    if (!is_readable(CONFIG_DIR.'/'.CONFIG_FILE)) {
+      die(sprintf(_('FusionDirectory configuration %s/%s is not readable. Aborted.'), CONFIG_DIR, CONFIG_FILE));
+    }
+
     $macs = array();
+    $ips  = array();
     foreach ($data['NETWORKS'] as $network) {
-      if (isset($network['MACADDR']) && ($network['MACADDR'] != "00:00:00:00:00:00")) {
+      if (isset($network['MACADDR']) && ($network['MACADDR'] != '00:00:00:00:00:00')) {
         $macs[] = $network['MACADDR'];
+      }
+      if (isset($network['IPADDRESS']) && ($network['IPADDRESS'] != '127.0.0.1')) {
+        $ips[]  = $network['IPADDRESS'];
+      }
+      if (isset($network['IPADDRESS6']) && ($network['IPADDRESS6'] != '::1')) {
+        $ips[]  = $network['IPADDRESS6'];
       }
     }
     $macs = array_values(array_unique($macs));
-
-    /* Check if CONFIG_FILE is accessible */
-    if (!is_readable(CONFIG_DIR."/".CONFIG_FILE)) {
-      die(sprintf(_("FusionDirectory configuration %s/%s is not readable. Aborted."), CONFIG_DIR, CONFIG_FILE));
-    }
+    $ips  = array_values(array_unique($ips));
 
     /* Parse configuration file */
-    $config = new config(CONFIG_DIR."/".CONFIG_FILE, $BASE_DIR);
+    $config = new config(CONFIG_DIR.'/'.CONFIG_FILE, $BASE_DIR);
     /* Set config server to default one */
     $directory = $config->data['MAIN']['DEFAULT'];
     if (!isset($config->data['LOCATIONS'][$directory])) {
@@ -119,14 +124,18 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
     $ldap->cd($dn);
     $ldap->add(
       array(
-        'cn'          => $_SERVER['REMOTE_ADDR'],
-        'objectClass' => array('fdInventoryContent'),
-        'macAddress'  => $macs,
+        'cn'                        => $_SERVER['REMOTE_ADDR'],
+        'objectClass'               => array('fdInventoryContent'),
+        'macAddress'                => $macs,
+        'ipHostNumber'              => $ips,
+        'fdInventoryVERSIONCLIENT'  => $data['VERSIONCLIENT'],
       )
     );
     if (!$ldap->success()) {
       $msg.="error :".$ldap->get_error()."\n";
     }
+    unset($data['VERSIONCLIENT']);
+    unset($data['HARDWARE']['ARCHNAME']);
 
     foreach ($data as $key => $objects) {
       if (!is_numeric(key($objects))) {
@@ -152,8 +161,14 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
       }
     }
 
-    if (!file_put_contents($invFile, "$dn\n$msg\n")) {
-        error_log("Failed to write ");
+    if (!empty($msg)) {
+      $invFile = sprintf('/tmp/%s.xml', $_SERVER['REMOTE_ADDR']);
+      if (!file_put_contents($invFile, "$dn\n$msg\n")) {
+          error_log("Failed to write ");
+      }
+      http_response_code(500);
+      print($msg);
+      exit();
     }
 }
 
