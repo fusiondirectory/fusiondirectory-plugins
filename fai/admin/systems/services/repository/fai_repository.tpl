@@ -55,7 +55,7 @@
       <td>{eval var=$attributes.mirrorMode.input}</td>
 
       {if isset($attributes.mirrorSections_inner)}
-      <td rowspan="2" title="{$attributes.mirrorSections_inner.description}">
+      <td rowspan="3" title="{$attributes.mirrorSections_inner.description}">
         <label for="{$attributes.mirrorSections_inner.htmlid}">
           {eval var=$attributes.mirrorSections_inner.label}
         </label><br/>
@@ -70,6 +70,16 @@
         </label>
       </td>
       <td>{eval var=$attributes.mirrorLocal.input}</td>
+    </tr>
+    <tr>
+      {if isset($attributes.pathMask)}
+      <td title="{$attributes.pathMask.description}">
+        <label for="{$attributes.pathMask.htmlid}">
+          {eval var=$attributes.pathMask.label}
+        </label>
+      </td>
+      <td>{eval var=$attributes.pathMask.input}</td>
+      {/if}
     </tr>
     <tr>
       <td title="{$attributes.FAIrepository_buttons.description}" colspan="3">
