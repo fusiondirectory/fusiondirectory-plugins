@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-11-05 21:18+0100\n"
-"PO-Revision-Date: 2015-10-13 12:20+0000\n"
+"PO-Revision-Date: 2015-12-04 12:10+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: admin/fai/packageSelect/selectPackage-list.xml:14
 #: admin/systems/class_faiStartup.inc:177 config/fai/class_faiConfig.inc:41
 msgid "FAI"
-msgstr ""
+msgstr "FAI"
 
 #: admin/fai/class_faiManagement.inc:118
 msgid "Manage FAI software packages and deployment recipes"
@@ -30,7 +30,7 @@ msgstr "Spravovat FAI balíčky programového vybavení a skripty pro nasazován
 
 #: admin/fai/class_faiManagement.inc:138
 msgid "There are no FAI branches"
-msgstr "Nejsou zde žádné větve FAI"
+msgstr "Nejsou zde žádné FAI větve"
 
 #: admin/fai/class_faiManagement.inc:141
 msgid " Please add at least one repository service to create those."
@@ -378,7 +378,7 @@ msgstr "Verze"
 
 #: admin/fai/class_faiProfile.inc:30
 msgid "Profile"
-msgstr "profil"
+msgstr "Profil"
 
 #: admin/fai/class_faiProfile.inc:31
 msgid "FAI profile"
@@ -435,7 +435,7 @@ msgstr "Pořadí přednosti"
 
 #: admin/fai/class_faiScript.inc:79
 msgid "Priority of this script (smaller is done first)"
-msgstr ""
+msgstr "Pořadí přednosti tohoto skriptu (nižší číslo znamená dřívější spuštění)"
 
 #: admin/fai/class_faiScript.inc:84
 msgid "The script itself"
@@ -480,15 +480,15 @@ msgstr "RAID 0"
 
 #: admin/fai/class_faiPartition.inc:186
 msgid "RAID 1"
-msgstr ""
+msgstr "RAID 1"
 
 #: admin/fai/class_faiPartition.inc:187
 msgid "RAID 5"
-msgstr ""
+msgstr "RAID 5"
 
 #: admin/fai/class_faiPartition.inc:188
 msgid "RAID 6"
-msgstr ""
+msgstr "RAID 6"
 
 #: admin/fai/class_faiPartition.inc:195
 msgid "fixed"
@@ -504,27 +504,27 @@ msgstr "zbývající volná datová kapacita"
 
 #: admin/fai/class_faiPartition.inc:202
 msgid "KB"
-msgstr ""
+msgstr "KB"
 
 #: admin/fai/class_faiPartition.inc:203
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: admin/fai/class_faiPartition.inc:204
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: admin/fai/class_faiPartition.inc:205
 msgid "TB"
-msgstr ""
+msgstr "TB"
 
 #: admin/fai/class_faiPartition.inc:206
 msgid "PB"
-msgstr ""
+msgstr "PB"
 
 #: admin/fai/class_faiPartition.inc:207
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: admin/fai/class_faiPartition.inc:212
 msgid "always"
@@ -540,19 +540,19 @@ msgstr "prostor pro odložení paměťových stránek (swap)"
 
 #: admin/fai/class_faiPartition.inc:218
 msgid "ext2"
-msgstr ""
+msgstr "ext2"
 
 #: admin/fai/class_faiPartition.inc:219
 msgid "ext3"
-msgstr ""
+msgstr "ext3"
 
 #: admin/fai/class_faiPartition.inc:220
 msgid "ext4"
-msgstr ""
+msgstr "ext4"
 
 #: admin/fai/class_faiPartition.inc:221
 msgid "reiser fs"
-msgstr "reiser fs"
+msgstr "reiserfs"
 
 #: admin/fai/class_faiPartition.inc:222
 msgid "xfs"
@@ -564,7 +564,7 @@ msgstr "btrfs"
 
 #: admin/fai/class_faiPartition.inc:224
 msgid "LVM/RAID"
-msgstr ""
+msgstr "LVM/RAID"
 
 #: admin/fai/class_faiPartition.inc:327
 msgid "spare"
@@ -731,7 +731,7 @@ msgstr "Plně samočinná instalace (FAI)"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:31
 msgid "URL"
-msgstr "URL"
+msgstr "URL adresa"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:31
 msgid "Repository url"
@@ -804,28 +804,28 @@ msgstr "Informace o repozitáři balíčků"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:28
 msgid "Argonaut FAI monitor"
-msgstr ""
+msgstr "Argonaut FAI dohledování"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:29
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:40
 msgid "Argonaut FAI monitor settings"
-msgstr ""
+msgstr "Nastavení dohledování v Argonaut FAI"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:43
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:43
 msgid "The port argonaut-fai-monitor should listen on. Default is 4711."
-msgstr ""
+msgstr "Port na kterém má argonaut-fai-monitor očekávat spojení. Výchozí je 4711."
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:48
 msgid "Timeout"
-msgstr ""
+msgstr "Překročení časového limitu"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:48
 msgid "The timeout for bad clients. 0 to disable."
-msgstr ""
+msgstr "Časový limit pro chybné klienty. 0 (nula) znamená neomezovat."
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:53
 msgid "CA certificate"
@@ -833,7 +833,7 @@ msgstr "Certifikát cert. autority"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:53
 msgid "Path to the CA certificate file on Argonaut FAI monitor server"
-msgstr ""
+msgstr "Umístění certifikátu cert. autority na dohledovacím serveru Argonaut FAI"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:58
 msgid "Log directory"
@@ -841,7 +841,7 @@ msgstr "Složka pro záznamy protokolů"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:58
 msgid "Directory in which argonaut-fai-monitor will store its log"
-msgstr ""
+msgstr "Složka ve které argonaut-fai-monitor ukládá své záznamy událostí"
 
 #: config/fai/class_faiConfig.inc:28
 msgid "FAI configuration"
@@ -871,7 +871,7 @@ msgstr "Relativní větev ve které bude uložena fai %s"
 
 #: config/fai/class_faiConfig.inc:60
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #: admin/fai/faiPartition.tpl.c:2
 msgid "Partition"
@@ -911,7 +911,7 @@ msgstr "Souborový systém"
 
 #: admin/fai/faiPartition.tpl.c:38
 msgid "Filesystem create options"
-msgstr "Volby vytváření souborového systému"
+msgstr "Předvolby vytváření souborového systému"
 
 #: admin/fai/faiPartition.tpl.c:41
 msgid "Encrypted"

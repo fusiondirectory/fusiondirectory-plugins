@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-11-05 21:18+0100\n"
-"PO-Revision-Date: 2015-10-13 12:19+0000\n"
+"PO-Revision-Date: 2015-12-04 12:32+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -28,12 +28,12 @@ msgstr "Chyba"
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:59
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:73
 msgid "Cannot delete automatic statements!"
-msgstr "Samočinně vytvářená oznámení nelze mazat!"
+msgstr "Automaticky vytvářená oznámení nelze mazat!"
 
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:89
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:104
 msgid "automatic"
-msgstr "samočinné"
+msgstr "automaticky"
 
 #: admin/systems/services/dhcp/class_dhcpPool.inc:104
 #: admin/systems/services/dhcp/class_dhcpPool.inc:112
@@ -67,7 +67,7 @@ msgstr "Název"
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:161
 #: admin/systems/services/dhcp/dhcp_pool.tpl.c:11
 msgid "Range"
-msgstr "adresní rozsah"
+msgstr "Adresní rozsah"
 
 #: admin/systems/services/dhcp/class_dhcpPool.inc:141
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:176
@@ -90,7 +90,7 @@ msgstr "Síťová maska"
 
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:170
 msgid "Network range"
-msgstr "síťový rozsah"
+msgstr "Rozsah sítě"
 
 #: admin/systems/services/dhcp/class_dhcpDnsZone.inc:150
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:5
@@ -101,16 +101,16 @@ msgstr "DNS zóna"
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:41
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:8
 msgid "DNS server"
-msgstr ""
+msgstr "DNS server"
 
 #: admin/systems/services/dhcp/class_dhcpDnsZone.inc:158
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:11
 msgid "Key DN"
-msgstr "DN klíče"
+msgstr "Rozlišený název klíče"
 
 #: admin/systems/services/dhcp/class_dhcpHost.inc:64
 msgid "Ethernet"
-msgstr ""
+msgstr "Ethernet"
 
 #: admin/systems/services/dhcp/class_dhcpHost.inc:65
 msgid "FDDI"
@@ -138,7 +138,7 @@ msgstr "nejdelší výpůjční doba"
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:26
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:29
 msgid "Default lease time"
-msgstr "výchozí výpůjční doba"
+msgstr "Výchozí výpůjční doba"
 
 #: admin/systems/services/dhcp/class_dhcpService.inc:134
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:38
@@ -151,7 +151,7 @@ msgstr "Rozšířit DHCP podsíť"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:39
 msgid "Expand"
-msgstr ""
+msgstr "Rozbalit"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:48
 msgid "Fold DHCP subnet"
@@ -159,7 +159,7 @@ msgstr "Sbalit DHCP podsíť"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:49
 msgid "Fold"
-msgstr ""
+msgstr "Sbalit"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:107
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:108
@@ -170,7 +170,7 @@ msgstr "Vložit novou DHCP sekci"
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:356
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:460
 msgid "Global options"
-msgstr "globální volby"
+msgstr "Celkové předvolby"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:371
 msgid ""
@@ -186,7 +186,7 @@ msgstr "Sekce DHCP"
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:429
 msgid ""
 "The DN of dhcpService object which contain the configuration information"
-msgstr ""
+msgstr "DN objektu dhcpService, který obsahuje informace o nastavení"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:433
 msgid "The DHCP sections handled by this server"

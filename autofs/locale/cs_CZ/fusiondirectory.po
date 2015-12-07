@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-11-05 21:18+0100\n"
-"PO-Revision-Date: 2015-05-30 14:02+0000\n"
+"PO-Revision-Date: 2015-12-03 09:51+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "Název"
 
 #: admin/autofs/class_nisObject.inc:53
 msgid "Name of this directory"
-msgstr "Název této složky"
+msgstr "Název tohoto adresáře"
 
 #: admin/autofs/class_nisObject.inc:57
 msgid "Automount entry"
@@ -39,7 +39,7 @@ msgstr "Položka automatického připojení (automount)"
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
-msgstr "Položka této složky pro systémovou službu automount.\nNapříklad auto.u nebo -fstype=nfs nazevdomeny.tld:/pripojna/složka"
+msgstr "Položka této složky pro systémovou službu automount.\nNapříklad „auto.u“ nebo „-fstype=nfs nazevdomeny.tld:/pripojna/složka“"
 
 #: admin/autofs/class_nisObject.inc:61 admin/autofs/class_nisMap.inc:31
 #: admin/autofs/class_nisMap.inc:34 admin/autofs/class_nisMap.inc:49
@@ -76,7 +76,7 @@ msgstr "Nastavení zásuvného modulu autofs pro FusionDirectory"
 
 #: config/autofs/class_autofsConfig.inc:42
 msgid "AutoFS"
-msgstr ""
+msgstr "AutoFS"
 
 #: config/autofs/class_autofsConfig.inc:45
 msgid "AutoFS RDN"
@@ -84,4 +84,4 @@ msgstr "Relativní rozlišený název AutoFS"
 
 #: config/autofs/class_autofsConfig.inc:45
 msgid "Branch in which automount info will be stored"
-msgstr "Větev, ve které budou ukládány údaje pro samočinné připojování souborových systémů"
+msgstr "Větev, ve které budou ukládány údaje pro automatické připojování souborových systémů"

@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-11-05 21:18+0100\n"
-"PO-Revision-Date: 2015-10-13 12:20+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2015-12-04 12:33+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +28,7 @@ msgstr "Port klienta"
 
 #: admin/systems/argonaut/class_argonautClient.inc:121
 msgid "Port used by argonaut client for JSON-RPC"
-msgstr "Port používaný klientem argonaut pro JSON-RPC"
+msgstr "Port používaný argonaut klientem JSON-RPC komunikaci"
 
 #: admin/systems/argonaut/class_argonautClient.inc:126
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
@@ -38,7 +38,7 @@ msgstr "Protokol"
 #: admin/systems/argonaut/class_argonautClient.inc:126
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
 msgid "Protocol to use for argonaut"
-msgstr "Protokol, který má být používán argonaut"
+msgstr "Protokol, který má být používán službou argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:131
 msgid "WakeOnLan interface"
@@ -46,7 +46,7 @@ msgstr "Rozhraní pro probouzení po síti (WoL)"
 
 #: admin/systems/argonaut/class_argonautClient.inc:131
 msgid "Interface used by argonaut for WakeOnLan"
-msgstr "Rozhraní, použité komponentou argonaut pro WakeOnLan"
+msgstr "Rozhraní použité komponentou argonaut pro probouzení strojů po síti (WoL)"
 
 #: admin/systems/argonaut/class_argonautClient.inc:136
 msgid "TaskId file"
@@ -54,23 +54,23 @@ msgstr "TaskId soubor"
 
 #: admin/systems/argonaut/class_argonautClient.inc:136
 msgid "File which argonaut will use to store its task id when booting"
-msgstr "Soubor, který bude argonaut používat pro ukládání identifikátorů svých úloh při spouštění"
+msgstr "Soubor, který bude argonaut používat pro ukládání identifikátorů svých úloh při zavádění systému"
 
 #: admin/systems/argonaut/class_argonautClient.inc:141
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:55
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
 #: admin/systems/services/argonaut/class_argonautServer.inc:79
 msgid "Log directory"
-msgstr "Složka pro protokoly"
+msgstr "Složka pro soubory se záznamy událostí"
 
 #: admin/systems/argonaut/class_argonautClient.inc:141
 msgid "Directory in which argonaut client should write its logs"
-msgstr "Složka, do které by argonaut klient měl zapisovat své protokoly"
+msgstr "Složka, do které by argonaut klient měl ukládat své soubory se záznamem událostí"
 
 #: admin/systems/argonaut/class_argonautClient.inc:148
 #: admin/systems/services/argonaut/class_argonautServer.inc:103
 msgid "SSL paths"
-msgstr ""
+msgstr "Umístění SSL"
 
 #: admin/systems/argonaut/class_argonautClient.inc:151
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
@@ -79,7 +79,7 @@ msgstr "Klíč"
 
 #: admin/systems/argonaut/class_argonautClient.inc:151
 msgid "Path to the private key file on Argonaut client"
-msgstr ""
+msgstr "Umístění souboru se soukromou částí klíče na Argonaut klientovi"
 
 #: admin/systems/argonaut/class_argonautClient.inc:156
 #: admin/systems/services/argonaut/class_argonautServer.inc:111
@@ -88,7 +88,7 @@ msgstr "Certifikát"
 
 #: admin/systems/argonaut/class_argonautClient.inc:156
 msgid "Path to the certificate file on Argonaut client"
-msgstr ""
+msgstr "Umístění souboru s certifikátem na Argonaut klientovi"
 
 #: admin/systems/argonaut/class_argonautClient.inc:161
 #: admin/systems/services/argonaut/class_argonautServer.inc:116
@@ -97,16 +97,16 @@ msgstr "Certifikát cert. autority"
 
 #: admin/systems/argonaut/class_argonautClient.inc:161
 msgid "Path to the CA certificate file on Argonaut client"
-msgstr ""
+msgstr "Umístění souboru s certifikátem cert. autority na Argonaut klientovi"
 
 #: admin/systems/argonaut/class_argonautClient.inc:166
 #: admin/systems/services/argonaut/class_argonautServer.inc:121
 msgid "CN of the certificate"
-msgstr ""
+msgstr "CN certifikátu"
 
 #: admin/systems/argonaut/class_argonautClient.inc:166
 msgid "The CN in this client certificate"
-msgstr ""
+msgstr "CN v tomto klientském certifikátu"
 
 #: admin/systems/argonaut/class_argonautClient.inc:172
 msgid "Service names"
@@ -146,7 +146,7 @@ msgstr "Složka, ve které bude argonaut-fuse ukládat svůj protokol"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:64
 msgid "TFTP"
-msgstr ""
+msgstr "TFTP"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:67
 msgid "Pxelinux cfg path"
@@ -187,7 +187,7 @@ msgstr "Nastavení repozitáře Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:66
 msgid "Proxy"
-msgstr "proxy"
+msgstr "Proxy"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:67
 msgid "Specifies the http proxy (like Squid) to use for http and hftp method"
@@ -335,19 +335,19 @@ msgstr "Který IP nástroj použít"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
 msgid "Path to the private key file on Argonaut server"
-msgstr ""
+msgstr "Umístění souboru se soukromou částí klíče na Argonaut serveru"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:111
 msgid "Path to the certificate file on Argonaut server"
-msgstr ""
+msgstr "Umístění souboru s certifikátem na Argonaut serveru"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:116
 msgid "Path to the CA certificate file on Argonaut server"
-msgstr ""
+msgstr "Umístění certifikátu cert. autority na Argonaut serveru"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:121
 msgid "The CN in the server certificate"
-msgstr ""
+msgstr "CN tohoto serverového certifikátu"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
@@ -356,7 +356,7 @@ msgstr "Nastavení Fuse OPSI modulu pro Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:47
 msgid "OPSI"
-msgstr ""
+msgstr "OPSI"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:50
 msgid "Opsi admin"
@@ -401,11 +401,11 @@ msgstr "Složka, ve které je třeba vytvořit soubory s údaji zón"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:64
 msgid "Ignore reverse zone"
-msgstr ""
+msgstr "Nebrat v potaz reverzní zónu"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:64
 msgid "Do not write reverse zone"
-msgstr ""
+msgstr "Nezapisovat do reverzní zóny"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:68
 msgid "Allow notify"
@@ -442,7 +442,7 @@ msgstr "Nastavení Fuse LTSP modulu pro Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:47
 msgid "LTSP"
-msgstr ""
+msgstr "LTSP"
 
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:50
 msgid "LTSP server"
@@ -458,7 +458,7 @@ msgstr "Chyba"
 #: addons/argonaut/class_filterArgonautEvents.inc:40
 #, php-format
 msgid "Cannot load queue entries: %s"
-msgstr "Nelze načíst položky fronty: %s"
+msgstr "Nedaří se načíst položky fronty: %s"
 
 #: addons/argonaut/class_argonautImportFile.inc:44
 #: addons/argonaut/class_argonautImportFile.inc:100
@@ -466,11 +466,11 @@ msgstr "Nelze načíst položky fronty: %s"
 #: addons/argonaut/deploy-list.xml:79
 #: addons/argonaut/argonaut_import_file.tpl.c:68
 msgid "Import"
-msgstr "import(ovat)"
+msgstr "Import"
 
 #: addons/argonaut/class_argonautImportFile.inc:44
 msgid "file is empty"
-msgstr "Soubor je prázdný"
+msgstr "soubor je prázdný"
 
 #: addons/argonaut/class_argonautImportFile.inc:101
 msgid ""
@@ -489,7 +489,7 @@ msgstr "Import byl dokončen: %s událostí úspěšně zasláno, %s se nezdaři
 #: addons/argonaut/class_argonautImportFile.inc:177
 #: addons/argonaut/argonaut_import_file.tpl.c:47
 msgid "MAC"
-msgstr ""
+msgstr "MAC adresa"
 
 #: addons/argonaut/class_argonautImportFile.inc:180
 #: addons/argonaut/deploy-list.xml:14
@@ -553,7 +553,7 @@ msgstr "Informace"
 #: addons/argonaut/class_argonautQueue.inc:257
 #, php-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: addons/argonaut/class_argonautQueue.inc:261
 #, php-format
@@ -651,11 +651,11 @@ msgstr "Název"
 #: addons/argonaut/events/eventTargetSystems-list.xml:89
 #: addons/argonaut/argonaut_import_file.tpl.c:62
 msgid "IP"
-msgstr "IP adres"
+msgstr "IP adresa"
 
 #: addons/argonaut/events/eventTargetSystems-list.xml:97
 msgid "Mac"
-msgstr ""
+msgstr "Apple Mac"
 
 #: addons/argonaut/deploy-list.xml:10
 msgid "List of queued jobs"
@@ -795,7 +795,7 @@ msgstr "Úplné znění doménového názvu (FQDN)"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:65
 msgid "DHCP"
-msgstr ""
+msgstr "DHCP"
 
 #: addons/argonaut/events/target_list.tpl.c:2
 msgid "Apply"
@@ -803,7 +803,7 @@ msgstr "Použít"
 
 #: addons/argonaut/events/target_list.tpl.c:5
 msgid "Cancel"
-msgstr "Zrušit"
+msgstr "Storno"
 
 #: addons/argonaut/events/DaemonEvent.tpl.c:5
 msgid "System list"

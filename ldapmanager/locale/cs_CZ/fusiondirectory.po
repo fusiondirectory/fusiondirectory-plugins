@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-11-05 21:18+0100\n"
-"PO-Revision-Date: 2015-05-30 14:12+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2015-12-03 19:05+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: addons/ldapmanager/class_ldapmanager.inc:45
 msgid "LDIF"
-msgstr ""
+msgstr "LDIF"
 
 #: addons/ldapmanager/class_ldapmanager.inc:46
 msgid "Export/Import the ldap tree to/from LDIF format"
@@ -34,11 +34,11 @@ msgstr "Správce LDAP"
 #: addons/ldapmanager/class_ldapmanager.inc:74
 #: addons/ldapmanager/class_ldapmanager.inc:93
 msgid "Export"
-msgstr "export(ovat)"
+msgstr "Export"
 
 #: addons/ldapmanager/class_ldapmanager.inc:64
 msgid "DN of a single entry to export as ldif"
-msgstr "Rozlišený název jedné položky k exportu v podobě ldif"
+msgstr "Rozlišený název položky, která má být samostatně exportována do ldif"
 
 #: addons/ldapmanager/class_ldapmanager.inc:78
 msgid "Export single entry"
@@ -56,7 +56,7 @@ msgstr "Filtr, který použít pro výběr objektů k exportu"
 msgid ""
 "Download a complete snapshot of the running LDAP directory for this base as "
 "ldif"
-msgstr "Stáhnout úplný zachycený stav běžícího LDAP adresáře tohoto základu do ldif"
+msgstr "Stáhnout si ve formátu ldiff úplný zachycený stav používaného LDAP adresáře tohoto základu"
 
 #: addons/ldapmanager/class_ldapmanager.inc:97
 msgid "Export complete LDIF for"
@@ -80,7 +80,7 @@ msgstr "Odebrat z LDAP položky, které jsou navíc oproti tomu, co je v LDIF."
 msgid ""
 "Import an LDIF file into your LDAP. Remember that FusionDirectory will not "
 "check your LDIFs for FusionDirectory conformance."
-msgstr "Import LDIF souboru do vaší LDAP databáze. Mějte na paměti, že FusionDirectory nebude ověřovat vaše LDIF data, zda jsou vhodná pro FusionDirectory."
+msgstr "Import LDIF souboru do této LDAP databáze. Mějte na paměti, že FusionDirectory nebude ověřovat vaše LDIF data, zda jsou vhodná pro FusionDirectory."
 
 #: addons/ldapmanager/class_ldapmanager.inc:120
 #: addons/ldapmanager/class_csvimport.inc:71
@@ -88,7 +88,7 @@ msgstr "Import LDIF souboru do vaší LDAP databáze. Mějte na paměti, že Fus
 #: addons/ldapmanager/contentcsv.tpl.c:26
 #: addons/ldapmanager/contentcsv.tpl.c:29
 msgid "Import"
-msgstr "import(ovat)"
+msgstr "Import"
 
 #: addons/ldapmanager/class_ldapmanager.inc:124
 msgid "Import LDIF file"

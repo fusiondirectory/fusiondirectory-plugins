@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-11-05 21:18+0100\n"
-"PO-Revision-Date: 2015-05-30 14:12+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2015-12-04 08:36+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +25,7 @@ msgstr "OPSI seznam na vyžádání"
 
 #: admin/opsi/class_opsiOnDemandList.inc:29
 msgid "OPSI on demand software list"
-msgstr "Seznam OPSI programového vybavení na vyžádání"
+msgstr "OPSI seznam na vyžádání: programové vybavení"
 
 #: admin/opsi/class_opsiOnDemandList.inc:47
 #: admin/opsi/class_opsiSoftwareList.inc:51
@@ -36,13 +36,13 @@ msgstr "Informace"
 #: admin/opsi/class_opsiSoftwareList.inc:54
 #: admin/opsi/class_opsiProfile.inc:88
 msgid "OPSI server"
-msgstr ""
+msgstr "OPSI server"
 
 #: admin/opsi/class_opsiOnDemandList.inc:50
 #: admin/opsi/class_opsiSoftwareList.inc:54
 #: admin/opsi/class_opsiProfile.inc:88
 msgid "OPSI server to use for deployment"
-msgstr "OPSI server, který má být použit pro nasazení"
+msgstr "OPSI server pomocí kterého nasadit"
 
 #: admin/opsi/class_opsiOnDemandList.inc:54
 #: admin/opsi/class_opsiSoftwareList.inc:58
@@ -73,20 +73,20 @@ msgstr "Programové vybavení"
 #: admin/opsi/class_opsiOnDemandList.inc:68
 #: admin/opsi/class_opsiSoftwareList.inc:81
 msgid "Localboot products"
-msgstr "Produkty pro místní zavedení"
+msgstr "Produkty pro spuštění z vestavěného datového úložiště stroje"
 
 #: admin/opsi/class_opsiOnDemandList.inc:68
 msgid "The localboot products to put in this list"
-msgstr "Produkty pro místní zavedení pro umístění na tento seznam"
+msgstr "Produkty pro zavedení z vestavěného úložiště stroje, které umístit na tento seznam"
 
 #: admin/opsi/class_opsiSoftwareList.inc:32
 msgid "OPSI list"
-msgstr "Seznam OPSI"
+msgstr "OPSI seznam"
 
 #: admin/opsi/class_opsiSoftwareList.inc:33
 #: admin/opsi/class_opsiSoftwareList.inc:37
 msgid "OPSI software list"
-msgstr "Seznam programového vybavení OPSI"
+msgstr "OPSI seznam programového vybavení"
 
 #: admin/opsi/class_opsiSoftwareList.inc:68
 msgid "The localboot products to install with this list"
@@ -96,7 +96,7 @@ msgstr "Produkty pro místní zavedení pro instalaci prostřednictvím tohoto s
 #: admin/opsi/class_opsiProductProperties.inc:176
 #: admin/opsi/class_opsiProfile.inc:164
 msgid "Could not contact argonaut server"
-msgstr "Nebylo možné kontaktovat argonaut server"
+msgstr "Nedaří se kontaktovat argonaut server"
 
 #: admin/opsi/class_opsiSoftwareList.inc:126
 #: admin/opsi/class_opsiProfile.inc:176 addons/opsi/class_opsiImport.inc:74
@@ -124,7 +124,7 @@ msgstr "Nezdařilo se kontaktovat OPSI server"
 #: admin/opsi/class_opsiProfileManagement.inc:33
 #: config/opsi/class_opsiConfig.inc:42
 msgid "OPSI"
-msgstr ""
+msgstr "OPSI"
 
 #: admin/opsi/class_opsiProfileManagement.inc:34
 msgid "OPSI profile management"
@@ -167,7 +167,7 @@ msgstr "Seznam programového vybavení, který bude nainstalován touto sadou na
 #: admin/opsi/class_opsiProfile.inc:211
 #, php-format
 msgid "%s (%s)"
-msgstr ""
+msgstr "%s (%s)"
 
 #: admin/systems/opsi/class_opsiClient.inc:33
 msgid "OPSI client"

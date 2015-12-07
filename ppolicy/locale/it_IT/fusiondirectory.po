@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-11-05 21:18+0100\n"
-"PO-Revision-Date: 2015-11-24 16:12+0000\n"
+"PO-Revision-Date: 2015-12-02 07:27+0000\n"
 "Last-Translator: Penati <penati@avaya.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -112,11 +112,11 @@ msgstr "Permesso di cambiare utente"
 
 #: admin/ppolicy/class_ppolicy.inc:90
 msgid "Whether users are allowed to change their own passwords"
-msgstr ""
+msgstr "Sia che gli utenti siano autorizzati a modificare le proprie password"
 
 #: admin/ppolicy/class_ppolicy.inc:95
 msgid "Safe modify"
-msgstr ""
+msgstr "Modify sicuro"
 
 #: admin/ppolicy/class_ppolicy.inc:95
 msgid ""
@@ -130,7 +130,7 @@ msgstr "Bloccato"
 
 #: admin/ppolicy/class_ppolicy.inc:113
 msgid "Activate lock out"
-msgstr ""
+msgstr "Attiva blocco"
 
 #: admin/ppolicy/class_ppolicy.inc:113
 msgid ""
@@ -159,7 +159,7 @@ msgstr "Numero di password sbagliate consecutivamente prima del blocco automatic
 
 #: admin/ppolicy/class_ppolicy.inc:128
 msgid "Failure count interval"
-msgstr ""
+msgstr "Intervallo di conteggio fallito"
 
 #: admin/ppolicy/class_ppolicy.inc:128
 msgid ""
@@ -292,8 +292,8 @@ msgstr ""
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:2
 msgid "There is one locked account"
 msgid_plural "There are %1 locked accounts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ci sono %1 di accounts bloccati"
+msgstr[1] "Ci sono %1 di accounts bloccati"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:5
 msgid "There is no locked account"

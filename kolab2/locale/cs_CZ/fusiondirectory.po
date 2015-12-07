@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-11-05 21:18+0100\n"
-"PO-Revision-Date: 2015-09-11 20:23+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2015-12-04 12:10+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,7 +48,7 @@ msgstr "Vytvořit účet pro e-mail"
 
 #: admin/ogroups/kolab2/class_mailogroup.inc:118
 msgid "your-name@your-domain.com"
-msgstr "vase-jmeno@vase-domena.cz"
+msgstr "vase-jmeno@example.com"
 
 #: admin/ogroups/kolab2/class_mailogroup.inc:152
 #: admin/ogroups/kolab2/class_mailogroup.inc:189
@@ -59,11 +59,11 @@ msgstr "Chyba LDAP"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:29
 msgid "Enable MX lookup for relayhost"
-msgstr "zapnout zjišťování předávajícího stroje pomocí MX záznamu"
+msgstr "Zapnout zjišťování předávajícího stroje pomocí MX záznamu"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:32
 msgid "Relay host"
-msgstr "předávající stroj"
+msgstr "Předávající stroj"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:32
 #: admin/systems/services/kolab2/class_serviceKolab.inc:185
@@ -72,11 +72,11 @@ msgstr "Počítač sloužící k předávání zpráv"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:67
 msgid "Kolab 2 mail"
-msgstr ""
+msgstr "Kolab 2 e-mail"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:68
 msgid "Kolab 2 mail service"
-msgstr ""
+msgstr "E-mailová služba Kolab 2"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:82
 msgid "Informations"
@@ -84,7 +84,7 @@ msgstr "Informace"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:87
 msgid "Postfix mydomain"
-msgstr "mydomain Postfix"
+msgstr "Postfix mydomain"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:87
 msgid "Postfix domain name"
@@ -100,7 +100,7 @@ msgstr "Správci Cyrus pro kolab server"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:96
 msgid "Mail domains"
-msgstr "e-mailové domény"
+msgstr "E-mailové domény"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:96
 msgid "Postfix mydestination"
@@ -310,15 +310,15 @@ msgstr "Nejprve prosím odeberte nastavené e-mailu!"
 
 #: personal/kolab2/class_kolabAccount.inc:82
 msgid "Kolab 2"
-msgstr ""
+msgstr "Kolab 2"
 
 #: personal/kolab2/class_kolabAccount.inc:83
 msgid "Kolab 2 account settings"
-msgstr ""
+msgstr "Nastavení účtu v Kolab 2"
 
 #: personal/kolab2/class_kolabAccount.inc:100
 msgid "Kolab 2 account"
-msgstr ""
+msgstr "Účet v Kolab 2"
 
 #: personal/kolab2/class_kolabAccount.inc:104
 msgid "Delegations"
@@ -338,7 +338,7 @@ msgstr "informace o Free/Busy"
 
 #: personal/kolab2/class_kolabAccount.inc:125
 msgid "URL"
-msgstr "URL"
+msgstr "URL adresa"
 
 #: personal/kolab2/class_kolabAccount.inc:130
 msgid "Future"
