@@ -73,6 +73,11 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
           'distribution', TRUE,
           array('debian','centos')
         ),
+        new StringAttribute(
+          _('Path pattern'), _('How this repository is organized (only for RPM repositories)'),
+          'pathMask', FALSE,
+          '%RELEASE%/%SECTION%/%ARCH%/'
+        ),
       ),
       $acl,
       $label
@@ -97,8 +102,10 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
         serviceRepository::getReleaseList($this->attributes[7]->getValue())
       );
       $modeChoices = array_merge(array('install', 'update'), $releaseList);
+      $this->attributes[8]->setVisible(FALSE);
     } else {
       $modeChoices = array('install', 'update');
+      $this->attributes[8]->setVisible(TRUE);
     }
     $this->attributes[4]->setChoices($modeChoices);
   }
@@ -118,6 +125,15 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
     $this->attributes[7]->setValue($arrayValues[7]);
     $this->updateFields();
     parent::setValue($values);
+  }
+
+  function readValues($value)
+  {
+    $values = parent::readValues($value);
+    if (!isset($values[8])) {
+      $values[8] = '%RELEASE%/%SECTION%/%ARCH%/';
+    }
+    return $values;
   }
 
   function resetToDefault ()
