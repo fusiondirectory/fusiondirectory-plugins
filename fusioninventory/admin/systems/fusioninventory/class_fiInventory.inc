@@ -363,6 +363,7 @@ class fiInventory extends simplePlugin
         'matching'
       );
       $this->attributesAccess['matching']->setParent($this);
+      $this->attributesAccess['matching']->setAllowHTML(TRUE);
       $this->updateMatching();
     }
   }
