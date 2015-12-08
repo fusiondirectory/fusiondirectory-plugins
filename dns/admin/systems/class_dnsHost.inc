@@ -255,8 +255,10 @@ class dnsHost extends simplePlugin
   {
     parent::adapt_from_template($attrs, $skip);
     $this->zoneChanged();
-    foreach ($this->attributesInfo['records']['attrs'] as &$attr) {
-      $attr->loadAdditionalTemplatesValues();
+    if (isset($this->attributesInfo['records'])) {
+      foreach ($this->attributesInfo['records']['attrs'] as &$attr) {
+        $attr->loadAdditionalTemplatesValues();
+      }
     }
   }
 }
