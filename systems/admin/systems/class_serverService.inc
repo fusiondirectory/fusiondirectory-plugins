@@ -596,5 +596,18 @@ class ServerService extends management
     }
     unset($plugin);
   }
+
+  function getRequiredAttributes()
+  {
+    return array();
+  }
+
+  function adapt_from_template($attrs, $skip = array())
+  {
+    foreach ($this->plugins as &$plugin) {
+      $plugin->adapt_from_template($attrs, $skip);
+    }
+    unset($plugin);
+  }
 }
 ?>
