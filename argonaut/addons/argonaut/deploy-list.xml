@@ -59,7 +59,7 @@
       <label>Status</label>
       <sortAttribute>uid</sortAttribute>
       <sortType>string</sortType>
-      <value>%{filter:filterStatus(row,STATUS,MACADDRESS,HEADERTAG,ERROR,SUBSTATUS)}</value>
+      <value>%{filter:filterStatus(row,STATUS,SUBSTATUS)}</value>
       <export>true</export>
     </column>
 
@@ -110,7 +110,7 @@
 
   </actionmenu>
 
-  <actiontriggers snapshot="true" copypaste="true">
+  <actiontriggers snapshot="false" copypaste="false">
 
     <action>
       <name>processNow</name>
