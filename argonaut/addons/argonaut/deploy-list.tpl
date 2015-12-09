@@ -1,31 +1,7 @@
-<table style="width:100%;height:100%; vertical-align:top; text-align:left;">
-  <tr>
-    <td style="vertical-align:top; width:100%;">
-      <div class="contentboxh">
-        <p class="contentboxh">&nbsp;{$HEADLINE}&nbsp;{$SIZELIMIT}</p>
-      </div>
-
-      <div class="contentboxb">
-       <div style='background:white;padding:3px;'>
-        <table><tr>
-          <td>{$RELOAD}&nbsp;</td><td>{$SEPARATOR}&nbsp;</td><td><img src='geticon.php?context=types&icon=action&size=16' alt='' class='center'></td><td> {$ACTIONS}</td>
-        </tr></table>
-       </div>
-      </div>
-
-      <div style='height:4px;'>
-      </div>
-      {$LIST}
-    </td>
-  </tr>
-</table>
-
-<input type="hidden" name="ignore">
-
+{include file={filePath file="simple-list.tpl"}}
 
 <!--
 JS to reload the progress bars.
-
 -->
 {literal}
 <script type="text/javascript">

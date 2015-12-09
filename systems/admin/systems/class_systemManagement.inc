@@ -143,25 +143,23 @@ class systemManagement extends management
       $triggered = FALSE;
     }
 
-    // Detect triggere or scheduled actions
+    // Detect triggered or scheduled actions
     $headpage = $this->getHeadpage();
     $event = preg_replace("/^[TS]_/", "", $action);
 
-    // Now send remaining FAI/Argonaut events here.
-    if (count($target) && $this->si_active) {
+    // Now send FAI/Argonaut events here.
+    if (count($target) && $this->siActive) {
       $mac = array();
 
       // Collect target mac addresses
-      $tD       = $this->getObjectDefinitions();
       $events   = DaemonEvent::get_event_types();
       $o_queue  = new supportDaemon();
       foreach ($target as $dn) {
-        $type = $headpage->getType($dn);
-        if ($tD[$type]['sendEvents']) {
-          $obj = $headpage->getEntry($dn);
-          if (isset($obj['macAddress'][0])) {
-            $mac[] = $obj['macAddress'][0];
-          }
+        $obj = $headpage->getEntry($dn);
+        if (isset($obj['macAddress'][0])) {
+          $mac[] = $obj['macAddress'][0];
+        } else {
+          msg_dialog::display(_('Action canceled'), sprintf(_('System %s has no mac address defined, cannot trigger action'), $dn), ERROR_DIALOG);
         }
       }
 
@@ -171,6 +169,7 @@ class systemManagement extends management
       if ($triggered && in_array($event, array("reinstall","update"))) {
         foreach ($mac as $key => $mac_address) {
           if ($o_queue->is_currently_installing($mac_address)) {
+            msg_dialog::display(_('Action canceled'), sprintf(_('System %s is currently installing'), $dn), ERROR_DIALOG);
             unset($mac[$key]);
             new log("security", "systems/".get_class($this), "", array(), "Skip adding 'DaemonEvent::".$type."' for mac '".$mac_address."', there is already a job in progress.");
           }
@@ -207,7 +206,8 @@ class systemManagement extends management
       $o_queue = new supportDaemon();
       $o_queue->append($this->dialogObject);
       if ($o_queue->is_error()) {
-        msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+        msg_dialog::display(_('Infrastructure service'), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+        $this->closeDialogs();
       } else {
         $this->closeDialogs();
       }
