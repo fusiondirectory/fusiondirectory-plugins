@@ -231,6 +231,17 @@ class argonautQueue extends simpleManagement
     return $action;
   }
 
+  protected function _getTabFooter()
+  {
+    if ($this->dialogObject instanceof faiLogView) {
+      return  '<p class="plugbottom">'.
+              ' <input type="submit" name="edit_cancel" value="'.msgPool::backButton().'"/>'.
+              '</p>';
+    } else {
+      return parent::_getTabFooter();
+    }
+  }
+
   /*! \brief  Force queue job to be done as far as possible.
    *  @return Boolean TRUE in case of success, else FALSE.
    */

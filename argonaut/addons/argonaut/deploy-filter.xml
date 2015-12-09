@@ -2,13 +2,17 @@
 
 <filterdef>
   <definition>
-    <category>users</category>
+    <category>argonautQueue</category>
     <initial>true</initial>
   </definition>
 
   <search>
     <query>
       <backend>ArgonautEvents</backend>
+      <filter>(objectClass=*)</filter>
+      <attribute>dn</attribute>
+      <attribute>objectClass</attribute>
     </query>
+    <scope>auto</scope>
   </search>
 </filterdef>
