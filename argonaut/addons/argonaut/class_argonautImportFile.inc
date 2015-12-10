@@ -19,34 +19,151 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class argonautImportFile extends plugin
+class argonautImportFile extends simplePlugin
 {
-  var $events     = array();
-  var $csv_fields = array();
-  var $import_successful = FALSE; // Indicates that we have successfully imported everything.
+  protected $csv_fields = array(
+    '0' => 'TIMESTAMP',
+    '1' => 'MAC',
+    '2' => 'HEADER',
+    '3' => 'OGROUP'
+  );
+
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Argonaut task import'),
+      'plDescription' => _('Imports argonaut tasks from CSV file'),
+      'plObjectType'  => array('argonautQueueImport' => array(
+        'name'        => _('Argonaut task import'),
+        'aclCategory' => 'argonautQueue',
+        'icon'        => 'geticon.php?context=applications&icon=argonaut&size=16',
+      )),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
+  static function getAttributesInfo ()
+  {
+    return array(
+      'main' => array(
+        'name'  => _('Import actions from CSV file'),
+        'class' => array('fullwidth'),
+        'attrs' => array(
+          new CompositeAttribute (
+            _('Import a list of task into argonaut'),
+            'import',
+            array(
+              new FileAttribute (
+                '', '',
+                'import_file', FALSE
+              ),
+              new ButtonAttribute (
+                '', '',
+                'import_submit',
+                _('Upload')
+              )
+            ),
+            '', '%s%s', '',
+            _('Import file')
+          )
+        )
+      ),
+      'events' => array(
+        'name'      => _('Imported tasks'),
+        'attrs'     => array(new FakeAttribute('events')),
+        'template'  => get_template_path('import_events.tpl', TRUE, dirname(__FILE__)),
+      ),
+    );
+  }
 
   public function __construct($config, &$parent)
   {
-    parent::__construct($config, NULL);
-    $this->parent = $parent;
-    $this->daemon_events  = DaemonEvent::get_event_types();
+    parent::__construct($config, $config->current['BASE']);
 
-    $this->csv_fields = array(
-        "0" => "TIMESTAMP","1" => "MAC",  "2" => "HEADER", "3" => "OGROUP",
-        "4" => "BASE", "5" => "FQDN",   "6" => "IP",     "7" => "DHCP");
+    $this->attributesAccess['import']->setInLdap(FALSE);
+    $this->attributesAccess['import']->setLinearRendering(TRUE);
+
+    $this->parent         = $parent;
+    $this->events         = array();
+    $this->daemon_events  = DaemonEvent::get_event_types();
+  }
+
+  function execute()
+  {
+    $smarty = get_smarty();
+    $smarty->assign('jobtypes', join(',',array_keys($this->daemon_events)));
+    return parent::execute().
+    '<p class="plugbottom">'.
+    ' <input type="submit" name="start_import" value="'._('Import').'" >'.
+    ' <input type="submit" name="import_abort" value="'.msgPool::backButton().'">'.
+    '</p>';
+  }
+
+  function handle_import_submit()
+  {
+    $this->parse_csv($this->import);
+  }
+
+  function save_object()
+  {
+    /* Import started */
+    if (isset($_POST['start_import'])) {
+      $events = $this->events;
+      $error  = FALSE;
+      foreach ($events as $event) {
+        if (!empty($event['ERROR'])) {
+          $error = TRUE;
+          break;
+        }
+      }
+      if ($error) {
+        msg_dialog::display(
+          _('Import'),
+          _('Fix the errors in your CSV file first'),
+          ERROR_DIALOG
+        );
+      } else {
+        $success  = 0;
+        $fail     = 0;
+
+        foreach ($events as $key => $event) {
+          /* Create event */
+          $object = new DaemonEvent($this->config, $event['HEADER'], $event);
+          $object->add_targets(array($event['MAC']));
+          if (empty($event['TIMESTAMP'])) {
+            $object->set_type(TRIGGERED_EVENT);
+          } else {
+            $object->set_type(SCHEDULED_EVENT);
+          }
+
+          $this->parent->o_queue->append($object);
+          if ($this->parent->o_queue->is_error()) {
+            msg_dialog::display(_('Infrastructure service'), msgPool::siError($this->parent->o_queue->get_error()), ERROR_DIALOG);
+            $fail++;
+          } else {
+            unset($events[$key]);
+            $success++;
+          }
+        }
+        msg_dialog::display(_('Import'), sprintf(_('Import complete: %s events successfully send, %s failed'), $success, $fail), INFO_DIALOG);
+        $this->events = $events;
+      }
+    }
+    parent::save_object();
   }
 
   private function parse_csv($str)
   {
     /* Some file checks */
-    $lines = preg_split("/\n/", $str);
+    $lines = preg_split('/\n/', $str);
     if (empty($str) || !count($lines)) {
-      msg_dialog::display(_("Import"), msgPool::incorrectUpload(_("file is empty")), ERROR_DIALOG);
+      msg_dialog::display(_('Import'), msgPool::incorrectUpload(_('file is empty')), ERROR_DIALOG);
       return;
     }
 
     /* Reset current events */
-    $this->events = array();
+    $events = array();
 
     /* Parse each line of the given file */
     foreach ($lines as $line) {
@@ -56,131 +173,25 @@ class argonautImportFile extends plugin
       }
 
       /* Load values from file */
-      $fields = explode(";", $line);
+      $fields = explode(';', $line);
       $event  = array();
       foreach ($this->csv_fields as $key => $val) {
-        $event[$val] = "";
+        $event[$val] = '';
         if (isset($fields[$key])) {
           $event[$val] = $fields[$key];
         }
       }
-      $this->events[] = $event;
-    }
-    $this->check_fields();
-  }
-
-
-  public function execute()
-  {
-    /* Import file */
-    if (isset($_POST['import']) && isset($_FILES['file'])) {
-      if (isset($_FILES['file']['tmp_name'])) {
-        $str = file_get_contents($_FILES['file']['tmp_name']);
-        $this->parse_csv($str);
-      }
-    }
-
-    /* Import started */
-    $confirmed = FALSE;
-    foreach ($_POST as $name => $value) {
-      if (preg_match("/^MSG_OK/", $name)) {
-        $confirmed = TRUE;
-      }
-    }
-    if (isset($_POST['start_import']) || $confirmed) {
-      $error = FALSE;
-      if (!$confirmed) {
-        foreach ($this->events as $event) {
-          if (!empty($event['ERROR'])) {
-            $error = TRUE;
-            break;
-          }
-        }
-        if ($error) {
-          msg_dialog::display(_("Import"),
-              _("Selected entries will be skipped because of errors. Do you want to proceed?"), CONFIRM_DIALOG);
-        }
-      }
-      if (!$error) {
-        $success  = 0;
-        $fail     = 0;
-
-        foreach ($this->events as $key => $event) {
-          if (!empty($event['ERROR'])) {
-            $fail++;
-            continue;
-          }
-
-          /* Create event */
-          $o_data = $this->daemon_events[$event['HEADER']];
-          $object = new DaemonEvent($this->config, $event['HEADER']);
-          $object->add_targets(array($event['MAC']));
-          if (empty($event['TIMESTAMP'])) {
-            $object->set_type(TRIGGERED_EVENT);
-          } else {
-            $object->set_type(SCHEDULED_EVENT);
-          }
-
-          /* Update values like fqdn a.s.o */
-          foreach ($this->csv_fields as $name) {
-            if ($name == "TIMESTAMP" && empty($event[$name])) {
-              continue;
-            }
-            $object->set_value($name, $event[$name]);
-          }
-
-          $this->parent->o_queue->append($object);
-          if ($this->parent->o_queue->is_error()) {
-            msg_dialog::display(_("Infrastructure service"), msgPool::siError($this->parent->o_queue->get_error()), ERROR_DIALOG);
-            $fail ++;
-          } else {
-            unset($this->events[$key]);
-            $success ++;
-          }
-        }
-        msg_dialog::display(_("Import"), sprintf(_("Import complete: %s events successfully send, %s failed"), $success, $fail), INFO_DIALOG);
-        $this->import_successful = (count($this->events) == 0);
-      }
-    }
-
-
-    /* Prepare output */
-    $evts = $this->events;
-    foreach ($this->events as $id => $evt) {
-      foreach ($evt as $key => $val) {
-        if (in_array($key, $this->csv_fields)) {
-          $evts[$id][$key] = "<span style=\"white-space: nowrap;\">".strip_tags($val)."</span>";
-        }
-      }
-    }
-
-    $smarty = get_smarty();
-    $smarty->assign("info",   $evts);
-    $smarty->assign("count",  count($evts));
-    return $smarty->fetch(get_template_path('argonaut_import_file.tpl', TRUE));
-  }
-
-
-  public function check()
-  {
-    $message = plugin::check();
-    $this->check_fields();
-    return $message;
-  }
-
-
-  private function check_fields()
-  {
-    foreach ($this->events as $key => $event) {
-      $this->events[$key]['ERROR'] = "";
+      $event['ERROR'] = '';
       if (empty($event['MAC']) || !tests::is_mac($event['MAC'])) {
-        $this->events[$key]['ERROR'] .= msgPool::invalid(_("MAC")).", ";
+        $event['ERROR'] .= msgPool::invalid(_('MAC')).', ';
       }
       if (empty($event['HEADER']) || !isset($this->daemon_events[$event['HEADER']])) {
-        $this->events[$key]['ERROR'] .= msgPool::invalid(_("Event")).", ";
+        $event['ERROR'] .= msgPool::invalid(_('Event')).', ';
       }
-      $this->events[$key]['ERROR'] = trim($this->events[$key]['ERROR'], ", ");
+      $event['ERROR'] = trim($event['ERROR'], ', ');
+      $events[] = $event;
     }
+    $this->attributesAccess['events']->setPostValue($events);
   }
 }
 ?>

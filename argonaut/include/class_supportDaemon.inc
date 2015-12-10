@@ -332,10 +332,10 @@ class supportDaemon
       // TODO : do an ldap search only if we haven't done it for the same mac before
       $ldap = $this->config->get_ldap_link();
       $ldap->cd($this->config->current['BASE']);
-      $ldap->search("(macAddress=".$entry_r['MACADDRESS'].")", array('cn'));
-      $ldap_infos = $ldap->fetch();
-      $ldap_infos['cn'][0];
-      $entry_r['PLAINNAME'] = $ldap_infos['cn'][0];
+      $ldap->search('(macAddress='.$entry_r['MACADDRESS'].')', array('cn'));
+      if ($ldap_infos = $ldap->fetch()) {
+        $entry_r['PLAINNAME'] = $ldap_infos['cn'][0];
+      }
 
       $entry_r['ERROR']     = $entry['error'];
       $entry_r['PROGRESS']  = $entry['progress'];

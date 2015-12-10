@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2006  Fabian Hickert
@@ -70,7 +69,6 @@ class DaemonEvent
     $this->mode = $type;
   }
 
-
   function get_type()
   {
     return $this->mode;
@@ -89,13 +87,13 @@ class DaemonEvent
     $this->timestamp = 0;
 
     /* Load values from given data */
-    if (count($data)) {
+    if (isset($data['ID'])) {
+      $this->id     = $data['ID'];
       $this->is_new = FALSE;
+    }
 
-      $this->id = $data['ID'];
-      if (isset($data['TIMESTAMP'])) {
-        $this->timestamp = $this->_event_to_timestamp($data['TIMESTAMP']);
-      }
+    if (isset($data['TIMESTAMP'])) {
+      $this->timestamp = $this->_event_to_timestamp($data['TIMESTAMP']);
     }
 
     if (isset($data['PERIODIC']) && !preg_match("/none/i", $data['PERIODIC'])) {
@@ -108,7 +106,6 @@ class DaemonEvent
       }
     }
   }
-
 
   /*! \brief  Create the HTML output for the plugin.
     @return String  The generated HTML output.
@@ -150,7 +147,6 @@ class DaemonEvent
     return $str;
   }
 
-
   /*! \brief  Returns the plugin footer (save cancel), displayed in the template.
     @return String  HTML footer part.
    */
@@ -166,7 +162,6 @@ class DaemonEvent
       </div>";
     return $str;
   }
-
 
   /*! \brief  Returns HTML representation of a timestamp using <select> boxes.
     @return Returns HTML content.
@@ -244,7 +239,6 @@ class DaemonEvent
     return $smarty->fetch(get_template_path('timestamp_select.tpl', TRUE, dirname(__FILE__)));
   }
 
-
   /*! \brief  HTML representation of all currently assigned targets using (divSelectBox).
     @return String Returns a listbox with all used targets.
    */
@@ -263,7 +257,6 @@ class DaemonEvent
     return $divselectbox->DrawList().$list_footer;
   }
 
-
   /*! \brief  Returns HTML content, displaying a dialog which allows to add new targets.
     @return String HTML content. (EventAddSystemDialog)
    */
@@ -279,7 +272,6 @@ class DaemonEvent
     $smarty->assign("divselectbox", $this->target_divlist->execute());
     return $smarty->fetch(get_template_path('target_list.tpl', TRUE, dirname(__FILE__)));
   }
-
 
   /*! \brief  Handles all posted HTML data, including target add,remove...
    */
@@ -346,7 +338,6 @@ class DaemonEvent
     }
   }
 
-
   /*! \brief  Converts a daemon timestamp into an unix timestamp. \
     e.g.  20080101125959 -> 1199188799
     @param  A daemon timestamp  YYYYddmmHHiiss
@@ -358,7 +349,6 @@ class DaemonEvent
     return strtotime($str);
   }
 
-
   /*! \brief  Converts a unix timestamp in to a goto-si timestamp. \
     e.g.  1199188799 -> 20080101125959
     @param  A unix timestamp (e.g. 1199188799)
@@ -369,7 +359,6 @@ class DaemonEvent
     timezone::get_default_timezone();
     return date("YmdHis", $stamp);
   }
-
 
   /*! \brief  Returns event information, like menu strings, images ...
     @return   Array Event informations.
@@ -388,7 +377,6 @@ class DaemonEvent
       return FALSE;
     }
   }
-
 
   /*! \brief  Check if we have opened the target add dialog.
     @return   Boolean TRUE if we have opened the target add dialog else FALSE.
@@ -427,7 +415,6 @@ class DaemonEvent
     );
   }
 
-
   /*! \brief  Returns TRUE if this event is new. (Not edited)
     @return Boolean TRUE if new, else FALSE.
    */
@@ -462,7 +449,6 @@ class DaemonEvent
     return $this->s_Action;
   }
 
-
   /*! brief  Returns an array containig all attributes \
     That should be written.
     @return Array e.g. 'status' => 'bla blub'
@@ -488,7 +474,6 @@ class DaemonEvent
     return $ret;
   }
 
-
   /*! \brief  Returns the event targets
     @return Array  All selected targets.
    */
@@ -496,7 +481,6 @@ class DaemonEvent
   {
     return $this->a_targets;
   }
-
 
   /*! \brief  Returns the event timestamp in goto-si format.
     @return Returns the event timestamp (20081231120000)
@@ -510,7 +494,6 @@ class DaemonEvent
     }
   }
 
-
   /*! \brief  Returns the event ID
     @return Returns the event ID
    */
@@ -522,7 +505,6 @@ class DaemonEvent
       return $this->data['ID'];
     }
   }
-
 
   /*! \brief Add a target MAC address
       @param Array A List of all target that should be added.
@@ -541,7 +523,6 @@ class DaemonEvent
     $this->timestamp = time();
   }
 
-
   /*! \brief Add a target MAC address
       @param Array A List of all target that should be added.
    */
@@ -555,17 +536,6 @@ class DaemonEvent
   public function check()
   {
     return array();
-  }
-
-
-  /*! \brief Update a class variable from outside
-   */
-  public function set_value($name, $value)
-  {
-    $name = strtolower($name);
-    if (isset($this->$name) && in_array($name, $this->attributes)) {
-      $this->$name = $value;
-    }
   }
 }
 ?>
