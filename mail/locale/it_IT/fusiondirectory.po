@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-11-05 21:18+0100\n"
-"PO-Revision-Date: 2015-12-02 07:28+0000\n"
+"PO-Revision-Date: 2015-12-10 10:40+0000\n"
 "Last-Translator: Penati <penati@avaya.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -73,7 +73,7 @@ msgstr "L'utente è abilitato a ricevere solo messaggi locali"
 msgid ""
 "Whether this group mail is only allowed to receive messages from local "
 "senders"
-msgstr ""
+msgstr "Questo gruppo email e' autorizzato unicamente a ricevere messaggi da mittenti locali"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:29
 #: admin/systems/services/postfix/class_servicePostfix.inc:30
@@ -157,7 +157,7 @@ msgstr "Restrizioni per il mittente"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:115
 msgid "For sender"
-msgstr ""
+msgstr "Per il mittente"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:120
 msgid "Restrictions for recipient"
@@ -165,7 +165,7 @@ msgstr "Restrizioni per i destinatari"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:129
 msgid "For recipient"
-msgstr ""
+msgstr "Per il destinatario"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:33
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:34
@@ -214,7 +214,7 @@ msgstr "Attiva l'uso di Razor"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:91
 msgid "Enable use of DCC"
-msgstr ""
+msgstr "Attiva l'uso di DCC"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:96
 msgid "Enable use of Pyzor"
@@ -284,7 +284,7 @@ msgstr "Numero massimo di ricorsioni nelle cartelle"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:67
 msgid "Maximum number of directory recursions"
-msgstr ""
+msgstr "Nulero massimo di ricorsioni nel directory"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:72
 msgid "Checks per day"
@@ -551,12 +551,12 @@ msgstr "Errore del server di posta elettronica quando si cercano di salvare le i
 #: personal/mail/class_mailAccount.inc:417
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
-msgstr ""
+msgstr "Impossibile rimuovere la mailbox, il metodo di posta non riesce a connettersi a: %s"
 
 #: personal/mail/class_mailAccount.inc:421
 #, php-format
 msgid "Cannot remove mailbox: %s"
-msgstr ""
+msgstr "Impossibile rimuovere mailbox : %s"
 
 #: config/mail/class_mailPluginConfig.inc:29
 msgid "Mail plugin configuration"

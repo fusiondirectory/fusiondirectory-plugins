@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-11-05 21:18+0100\n"
-"PO-Revision-Date: 2015-12-02 07:27+0000\n"
+"PO-Revision-Date: 2015-12-09 16:49+0000\n"
 "Last-Translator: Penati <penati@avaya.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -83,7 +83,7 @@ msgid ""
 "Maximum time a password is valid, after which it is deemed to be no longer "
 "usable and any bind operations attempted with the expired password will be "
 "treated as invalid"
-msgstr ""
+msgstr "Durata massima di validità di una password, dopo la quale si ritiene non essere più utilizzabile e le eventuali operazioni di associazione tentate con la password scaduta "
 
 #: admin/ppolicy/class_ppolicy.inc:80
 msgid "Expiry warning delay"
@@ -94,7 +94,7 @@ msgid ""
 "Defines the start time - in seconds - prior to the password expiry that "
 "password expiry warning messages are returned in bind responses. 0 to "
 "disable"
-msgstr ""
+msgstr "Definire il tempo d'inizio - in secondi - prima della scadenza della password che i messaggi di avviso di scadenza della password vengono restituiti in risposta bind . 0 per disabilitare"
 
 #: admin/ppolicy/class_ppolicy.inc:85
 msgid "Grace period"
@@ -122,7 +122,7 @@ msgstr "Modify sicuro"
 msgid ""
 "Whether a user must send the current password during a password modification"
 " operation"
-msgstr ""
+msgstr "Se un utente deve inviare la password attuale durante l'operazione di modifica della password"
 
 #: admin/ppolicy/class_ppolicy.inc:109
 msgid "Lock out"
@@ -136,7 +136,7 @@ msgstr "Attiva blocco"
 msgid ""
 "Whether to lock an account that had more consecutive failed bind attempts "
 "with invalid passwords than is defined by \"Maximum failures\""
-msgstr ""
+msgstr "Sia per bloccare un account che aveva più tentativi consecutivi falliti di bind con password non valide che è definito da \"fallimenti massimi\""
 
 #: admin/ppolicy/class_ppolicy.inc:118
 msgid "Lock out duration"
@@ -165,11 +165,11 @@ msgstr "Intervallo di conteggio fallito"
 msgid ""
 "Time after which the count of consecutive password failures is reset even if"
 " no successful authentication has occurred"
-msgstr ""
+msgstr "Tempo dopo il quale il numero di fallimenti di password consecutive viene azzerato anche se non ha subito alcuna autenticazione"
 
 #: admin/ppolicy/class_ppolicy.inc:133
 msgid "Must change"
-msgstr ""
+msgstr "Permesso di cambiare"
 
 #: admin/ppolicy/class_ppolicy.inc:133
 msgid ""
@@ -183,7 +183,7 @@ msgstr "Ppolicy"
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:28
 msgid "Statistics about ppolicy expired users"
-msgstr ""
+msgstr "Statistiche sugli utenti ppolicy scaduti"
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:39
 msgid "Expired accounts"
@@ -202,12 +202,12 @@ msgstr "Errore di configurazione"
 #: addons/dashboard/class_dashBoardPPolicy.inc:71
 #, php-format
 msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
-msgstr ""
+msgstr "La ppolicy \"%s\" predefinta non é stata trovata nell'annuario LDAP"
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:126
 #, php-format
 msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
-msgstr ""
+msgstr "La ppolicy  \"%s\" impostata per l'utente  \"%s\"  non é stata trovata nell'LDAP!"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:30
 msgid "Edit user's password policy"
@@ -223,7 +223,7 @@ msgstr "Ultima modifica della password"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:51
 msgid "Last time the password for the entry was changed"
-msgstr ""
+msgstr "L'ultima volta in cui la password per le voci é stata cambiata"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:55
 msgid "Account locked time"
@@ -263,11 +263,11 @@ msgstr "Sbloccato"
 
 #: config/ppolicy/class_ppolicyConfig.inc:29
 msgid "Ppolicy plugin configuration"
-msgstr ""
+msgstr "Configurazione del plugin Ppolicy"
 
 #: config/ppolicy/class_ppolicyConfig.inc:30
 msgid "FusionDirectory ppolicy plugin configuration"
-msgstr ""
+msgstr "Configurazione del plugin ppolicy di FusionDirectory"
 
 #: config/ppolicy/class_ppolicyConfig.inc:43
 msgid "Ppolicy plugin"
@@ -283,11 +283,11 @@ msgstr "Ramo nel quale verranno immagazinate ppolicies"
 
 #: config/ppolicy/class_ppolicyConfig.inc:51
 msgid "Default ppolicy cn"
-msgstr ""
+msgstr "Cn di ppolicy predefinito"
 
 #: config/ppolicy/class_ppolicyConfig.inc:51
 msgid "What you put as default ppolicy in the overlay config"
-msgstr ""
+msgstr "Ciò che si mette come ppolicy default nella configurazione di sovrapposizione"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:2
 msgid "There is one locked account"
