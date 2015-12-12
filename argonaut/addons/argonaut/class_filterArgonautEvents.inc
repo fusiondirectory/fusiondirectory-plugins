@@ -27,7 +27,7 @@ class filterArgonautEvents extends  filterLDAP
     global $config;
 
     $o_queue = new supportDaemon();
-    $events  = DaemonEvent::get_event_types();
+    $events  = argonautAction::get_event_types();
 
     /* Get tags that will be used in queue searches */
     $event_tags = array("none");

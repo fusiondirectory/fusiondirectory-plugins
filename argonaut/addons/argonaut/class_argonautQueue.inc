@@ -103,7 +103,7 @@ class argonautQueue extends simpleManagement
       $task = $tmp['EVENT'];
 
       /* Create a printable job name/description */
-      $infos = DaemonEvent::get_event_info($task['HEADERTAG']);
+      $infos = argonautAction::get_event_info($task['HEADERTAG']);
       if ($infos) {
         $j_name = $task['ID']." - ".$infos['name']."&nbsp;".$task['MACADDRESS'];
       } else {
@@ -130,7 +130,7 @@ class argonautQueue extends simpleManagement
       foreach ($this->dns as $dn) {
         $tmp  = $this->headpage->getEntry($dn);
         $task = $tmp['EVENT'];
-        $infos = DaemonEvent::get_event_info($task['HEADERTAG']);
+        $infos = argonautAction::get_event_info($task['HEADERTAG']);
         if ($infos) {
           $objects[] = array(
             'name'  => $infos['name'],
@@ -183,10 +183,7 @@ class argonautQueue extends simpleManagement
       $taskids[]  = $tmp['EVENT']['ID'];
     }
 
-    $tmp = new DaemonEvent($this->config, 'wakeup');
-    $tmp->add_targets($macs);
-    $tmp->set_type(TRIGGERED_EVENT);
-    $this->o_queue->append($tmp);
+    $this->o_queue->append_call('wakeup', $macs, array());
     if ($this->o_queue->is_error()) {
       msg_dialog::display(_('Info'), sprintf(_('%s'), $this->o_queue->get_error()), INFO_DIALOG);
     }
@@ -293,7 +290,7 @@ class argonautQueue extends simpleManagement
     /* Check if this event exists as Daemon class
      * In this case, display a more accurate entry.
      */
-    $infos = DaemonEvent::get_event_info($tag);
+    $infos = argonautAction::get_event_info($tag);
     if ($infos) {
       $str = $infos['name'];
 

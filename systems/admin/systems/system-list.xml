@@ -267,14 +267,14 @@
       <type>sub</type>
       <image>geticon.php?context=types&amp;icon=action&amp;size=16</image>
       <label>Trigger action</label>
-      <depends>DaemonEvent</depends>
+      <depends>argonautAction</depends>
     </action>
 
     <action>
      <type>sub</type>
      <image>plugins/systems/images/clock.png</image>
      <label>Schedule action</label>
-      <depends>DaemonEvent</depends>
+      <depends>argonautAction</depends>
     </action>
 
     <action>
