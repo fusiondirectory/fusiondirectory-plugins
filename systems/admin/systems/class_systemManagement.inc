@@ -62,9 +62,9 @@ class systemManagement extends simpleManagement
     $this->listXMLPath    = get_template_path('system-list.xml', TRUE, dirname(__FILE__));
 
     // Check if we are able to communicate with Argonaut server
-    if (class_available("supportDaemon")) {
+    if (class_available('supportDaemon') && class_available('argonautAction')) {
       $o = new supportDaemon();
-      $this->siActive = $o->is_available() && class_available("DaemonEvent");
+      $this->siActive = $o->is_available();
     }
 
     parent::__construct($config, $ui);
@@ -78,10 +78,10 @@ class systemManagement extends simpleManagement
     $this->headpage->registerElementFilter('listServices',  'systemManagement::listServices');
 
     // Register Daemon Events
-    if (class_available('DaemonEvent') && class_available('supportDaemon')) {
+    if (class_available('argonautAction') && class_available('supportDaemon')) {
       $this->headpage->xmlData['actionmenu']['action'][2]['action'] = array();
       $this->headpage->xmlData['actionmenu']['action'][3]['action'] = array();
-      $events = DaemonEvent::get_event_types();
+      $events = argonautAction::get_event_types();
       foreach ($events as $name => $data) {
         $this->registerAction('T_'.$name, 'handleEvent');
         $this->headpage->xmlData['actionmenu']['action'][2]['action'][] = array(
@@ -126,7 +126,7 @@ class systemManagement extends simpleManagement
       $mac = array();
 
       // Collect target mac addresses
-      $events   = DaemonEvent::get_event_types();
+      $events   = argonautAction::get_event_types();
       $o_queue  = new supportDaemon();
       foreach ($target as $dn) {
         $obj = $headpage->getEntry($dn);
@@ -145,18 +145,18 @@ class systemManagement extends simpleManagement
           if ($o_queue->is_currently_installing($mac_address)) {
             msg_dialog::display(_('Action canceled'), sprintf(_('System %s is currently installing'), $dn), ERROR_DIALOG);
             unset($mac[$key]);
-            new log('security', 'systems/'.get_class($this), '', array(), 'Skip adding "DaemonEvent::'.$type.'" for mac "'.$mac_address.'", there is already a job in progress.');
+            new log('security', 'systems/'.get_class($this), '', array(), 'Skip adding "argonautAction::'.$type.'" for mac "'.$mac_address.'", there is already a job in progress.');
           }
         }
       }
 
       // Prepare event to be added
       if (count($mac) && isset($events[$event]) && $this->siActive) {
-        $this->dialogObject = new DaemonEvent($this->config, $event);
-        $this->dialogObject->add_targets($mac);
+        $this->dialogObject = new argonautAction($this->config, array('action' => $event));
+        $this->dialogObject->targets = $mac;
 
         if ($triggered) {
-          $this->dialogObject->set_type(TRIGGERED_EVENT);
+          $this->dialogObject->scheduled = FALSE;
           $o_queue->append($this->dialogObject);
           if ($o_queue->is_error()) {
             msg_dialog::display(_('Infrastructure service'), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
@@ -165,7 +165,7 @@ class systemManagement extends simpleManagement
             $this->closeDialogs();
           }
         } else {
-          $this->dialogObject->set_type(SCHEDULED_EVENT);
+          $this->dialogObject->scheduled = TRUE;
         }
       }
     }

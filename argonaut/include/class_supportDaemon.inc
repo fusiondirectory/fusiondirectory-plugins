@@ -176,7 +176,7 @@ class supportDaemon
   }
 
   /*!
-   * \brief Allows simply appending a new DaemonEvent
+   * \brief Allows simply appending a new argonautAction
    *
    * \param String $event The event to append.
    *
@@ -184,40 +184,12 @@ class supportDaemon
    */
   public function append($event)
   {
-    if (!($event instanceof DaemonEvent)) {
+    if (!($event instanceof argonautAction)) {
       return FALSE;
     }
 
-    /* Add to queue if new
-     */
-    if ($event->is_new()) {
-      $action = $event->get_action();
-
-      /* Get event informations, like targets..
-      */
-      $targets  = $event->get_targets();
-      $data     = $event->save();
-
-      /* Put timestamp back to UTC time
-       */
-      timezone::get_default_timezone();
-      if ($event->get_timestamp(FALSE) != 0) {
-        $data_json['timestamp'] = $event->get_timestamp(FALSE);
-        if (isset($data['periodic'])) {
-          $data_json['periodic'] = $data['periodic'];
-        }
-      }
-      $data_json['args'] = $data;
-      unset($data_json['args']['timestamp']);
-      unset($data_json['args']['periodic']);
-
-      /* Append an entry
-      */
-      return $this->append_call($action, $targets, $data_json);
-    } else {
-      /* Updated edited entry. */
-      trigger_error("Event is not new. This should not happen.");
-    }
+    /* Append an entry */
+    return $this->append_call($event->action, $event->targets, $event->computeData());
 
     return FALSE;
   }
@@ -326,8 +298,8 @@ class supportDaemon
     timezone::get_default_timezone();
     $entries_r = array();
     foreach ($entries as &$entry) {
-      $entry_r['TIMESTAMP'] = DaemonEvent::_timestamp_to_event($entry['data']['timestamp']);
-      $entry_r['MACADDRESS'] = $entry['target'];
+      $entry_r['TIMESTAMP']   = date('YmdHis', $entry['data']['timestamp']);
+      $entry_r['MACADDRESS']  = $entry['target'];
 
       // TODO : do an ldap search only if we haven't done it for the same mac before
       $ldap = $this->config->get_ldap_link();

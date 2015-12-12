@@ -86,7 +86,7 @@ class argonautImportFile extends simplePlugin
 
     $this->parent         = $parent;
     $this->events         = array();
-    $this->daemon_events  = DaemonEvent::get_event_types();
+    $this->daemon_events  = argonautAction::get_event_types();
   }
 
   function execute()
@@ -129,15 +129,12 @@ class argonautImportFile extends simplePlugin
 
         foreach ($events as $key => $event) {
           /* Create event */
-          $object = new DaemonEvent($this->config, $event['HEADER'], $event);
-          $object->add_targets(array($event['MAC']));
           if (empty($event['TIMESTAMP'])) {
-            $object->set_type(TRIGGERED_EVENT);
+            $data = array();
           } else {
-            $object->set_type(SCHEDULED_EVENT);
+            $data = array('timestamp' => $event['TIMESTAMP']);
           }
-
-          $this->parent->o_queue->append($object);
+          $this->parent->o_queue->append_call($event['HEADER'], array($event['MAC']), $data);
           if ($this->parent->o_queue->is_error()) {
             msg_dialog::display(_('Infrastructure service'), msgPool::siError($this->parent->o_queue->get_error()), ERROR_DIALOG);
             $fail++;
