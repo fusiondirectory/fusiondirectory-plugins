@@ -147,7 +147,7 @@ class systemManagement extends management
     $event = preg_replace("/^[TS]_/", "", $action);
 
     // Now send FAI/Argonaut events here.
-    if (count($target) && $this->siActive) {
+    if ($this->siActive) {
       $mac = array();
 
       // Collect target mac addresses
@@ -160,6 +160,10 @@ class systemManagement extends management
         } else {
           msg_dialog::display(_('Action canceled'), sprintf(_('System %s has no mac address defined, cannot trigger action'), $dn), ERROR_DIALOG);
         }
+      }
+
+      if ((count($mac) == 0) && $triggered) {
+        return;
       }
 
       /* Skip installation or update trigerred events,
@@ -176,7 +180,7 @@ class systemManagement extends management
       }
 
       // Prepare event to be added
-      if (count($mac) && isset($events[$event]) && $this->siActive) {
+      if (isset($events[$event]) && $this->siActive) {
         $this->dialogObject = new argonautAction($this->config, array('action' => $event));
         $this->dialogObject->targets = $mac;
 
@@ -201,7 +205,12 @@ class systemManagement extends management
    */
   function saveEventDialog()
   {
-    if ($this->si_active) {
+    $msgs = $this->dialogObject->check();
+    if (count($msgs)) {
+      msg_dialog::displayChecks($msgs);
+      return;
+    }
+    if ($this->siActive) {
       $o_queue = new supportDaemon();
       $o_queue->append($this->dialogObject);
       if ($o_queue->is_error()) {
