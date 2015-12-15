@@ -207,9 +207,9 @@ class systemManagement extends simpleManagement
     return $action;
   }
 
-  function handleSubAction ($all)
+  function handleSubAction($all)
   {
-    if (parent::handleSubAction()) {
+    if (parent::handleSubAction($all)) {
       return TRUE;
     } elseif (preg_match('/^service_([a-zA-Z_]+)$/', $all['subaction'], $m)) {
       $service = $m[1];
