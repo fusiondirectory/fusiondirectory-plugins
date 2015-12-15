@@ -44,7 +44,7 @@ class PackageSelectDialog extends GenericSelectDialog
 
 class PackageConfigDialog extends GenericDialog
 {
-  protected $dialogClass = "faiPackageConfiguration";
+  protected $dialogClass = 'faiPackageConfiguration';
 
   protected $post_cancel = 'CancelObjectConfig';
   protected $post_finish = 'SaveObjectConfig';
@@ -68,11 +68,20 @@ class PackageConfigDialog extends GenericDialog
 
   function dialog_execute ()
   {
+    $this->dialog->save_object();
     return $this->dialog->execute();
   }
 
   function handle_finish ()
   {
+    $this->dialog->save_object();
+
+    $msgs = $this->dialog->check();
+    if (count($msgs)) {
+      msg_dialog::displayChecks($msgs);
+      return $this->dialog->execute();
+    }
+
     $this->attribute->packageConfigured($this->dialog->save());
     return FALSE;
   }
@@ -194,10 +203,10 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
       } elseif (preg_match('/^'.$id.'_removal_/', $name)) {
         $key = preg_replace('/^'.$id.'_removal_/', '', $name);
         $key = base64_decode(preg_replace('/_[xy]$/', '', $key));
-        if (preg_match('/\-$/', $this->value[$key])) {
-          $this->value[$key] = preg_replace('/\-$/', '', $this->value[$key]);
+        if (preg_match('/\-$/', $this->postValue[$key])) {
+          $this->postValue[$key] = preg_replace('/\-$/', '', $this->postValue[$key]);
         } else {
-          $this->value[$key] .= '-';
+          $this->postValue[$key] .= '-';
         }
         break;
       }
@@ -234,7 +243,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
         $attrs['FAIvariable']          = $varname;
         $attrs['FAIvariableType']      = $varinfos['Type'];
         $attrs['FAIvariableContent']   = $varinfos['Value'];
-        $vardn = "FAIvariable=".$varname.",".$this->plugin->dn;
+        $vardn = 'FAIvariable='.$varname.','.$this->plugin->dn;
 
         $ldap->cd($vardn);
         foreach (array_keys($attrs) as $index) {
@@ -244,7 +253,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
         }
         $ldap->add($attrs);
         if (!$ldap->success()) {
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $vardn, LDAP_ADD, get_class()), LDAP_ERROR);
+          msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $vardn, LDAP_ADD, get_class()), LDAP_ERROR);
         }
       }
     }
@@ -269,7 +278,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
 
     $release  = $this->plugin->FAIdebianRelease;
     $q        = new supportDaemon();
-    $customs  = $q->FAI_get_customs($release);
+    $customs  = serviceRepository::getCustomReleases($release);
     for ($i = -1; (count($packages) > 0) && ($i < count($customs)); $i++) {
       if ($i >= 0) { // if release has been handled
         $release = $customs[$i]; // take the next custom
@@ -300,7 +309,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
       }
     }
 
-    return $this->buffer;
+    $this->genConfiguredPackages();
   }
 
   function genConfiguredPackages()
