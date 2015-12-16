@@ -350,8 +350,6 @@ class mailAccount extends simplePlugin
 
     /* sieve submit the form so that managed attributes are correctly updated */
     $this->attributesAccess['flag_sieveownscript']->setSubmitForm(TRUE);
-
-    $this->updateAttributesValues();
   }
 
   /* We need $mailAccount->uid to return the uid for mailMethod */

@@ -211,8 +211,6 @@ class serviceKolab extends simpleService
     $this->is_account = in_array($this->hostname, $this->attributesAccess['kolabHost']->getValue());
 
     $this->initially_was_account = $this->is_account;
-
-    $this->updateAttributesValues();
   }
 
   function save ()

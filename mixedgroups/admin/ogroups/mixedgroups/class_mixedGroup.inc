@@ -170,7 +170,6 @@ class mixedGroup extends simplePlugin
       }
     }
 
-    $this->updateAttributesValues();
     parent::prepare_save();
 
     if ($this->trustMode == 'fullaccess') {

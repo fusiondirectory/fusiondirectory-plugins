@@ -120,8 +120,6 @@ class sambaGroup extends simplePlugin
       );
     }
     $this->attributesAccess['sambaSID']->attributes[1]->setInitialValue($this->getGID());
-
-    $this->updateAttributesValues();
   }
 
   function prepare_save()

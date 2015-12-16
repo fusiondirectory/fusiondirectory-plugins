@@ -97,7 +97,6 @@ class ppolicyAccount extends simplePlugin
   {
     if ($this->dn != 'new') {
       $ldap = $this->config->get_ldap_link();
-      $this->updateAttributesValues();
       $ldap->cat($this->dn, $this->attributes);
       $attrs = $ldap->fetch();
       $this->attrs = array_merge($this->attrs, $attrs);

@@ -80,8 +80,6 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
 
   function fillLdapValue (&$attrs)
   {
-    /* Remove crap made by plugin */
-    unset ($attrs[$this->getLdapName()]);
     if ($this->plugin->is_template) {
       $attrs[$this->getLdapName()] = array_map(function ($v) {return implode('|', $v);}, $this->value);
     }
@@ -182,7 +180,6 @@ class dnsHost extends simplePlugin
         unset($this->$attrId);
       }
     }
-    $this->updateAttributesValues();
   }
 
   function save()

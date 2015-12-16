@@ -171,8 +171,6 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
 
   function fillLdapValue (&$attrs)
   {
-    /* Remove crap made by plugin */
-    unset ($attrs[$this->getLdapName()]);
     foreach ($this->value as $line) {
       list ($domain, $type, $content) = $line;
       // Only save root records here

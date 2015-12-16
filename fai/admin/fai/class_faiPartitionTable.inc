@@ -189,8 +189,6 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
   /* Not saving anything into base node */
   function fillLdapValue (&$attrs)
   {
-    /* Remove crap made by plugin */
-    unset ($attrs[$this->getLdapName()]);
   }
 
   /* Special LDAP treatment that this attribute does after plugin ldap save */
