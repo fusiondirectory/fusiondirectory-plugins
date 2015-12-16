@@ -140,11 +140,6 @@ class dhcpDnsZone extends dhcpPlugin
   {
     $message= array();
 
-    $cache = array();
-    if (isset($this->parent)) {
-      $cache = $this->parent->getCache();
-    }
-
     /* All required fields are set? */
     if ($this->cn == ""){
       $message[]= msgPool::required(_("DNS zone"));
@@ -160,11 +155,14 @@ class dhcpDnsZone extends dhcpPlugin
 
 
     /* cn already used? */
-    if ($this->orig_cn != $this->cn || $this->new){
-
-      foreach($cache as $dn => $dummy){
-        if (preg_match("/^cn=".$this->cn.",/", $dn) && count($dummy)){
-          $message[]= msgPool::duplicated(_("Name"));
+    if (($this->orig_cn != $this->cn) || $this->new) {
+      $cache = array();
+      if (isset($this->parent) && method_exists($this->parent, 'getCache')) {
+        $cache = $this->parent->getCache();
+      }
+      foreach ($cache as $dn => $dummy) {
+        if (preg_match('/^cn='.$this->cn.',/', $dn) && count($dummy)) {
+          $message[] = msgPool::duplicated(_('Name'));
           break;
         }
       }
