@@ -24,6 +24,8 @@ class faiPackageConfiguration extends simplePlugin
   var $ignore_account = TRUE;
 
   protected $packageName;
+  protected $debconfAttributesTypes;
+  protected $generatedDebconfAttributes;
 
   static function plInfo()
   {
@@ -86,7 +88,9 @@ class faiPackageConfiguration extends simplePlugin
     $langcode               = session::global_get('lang').'.UTF-8';
     $in_description         = FALSE;
     $got_local_description  = FALSE;
-    $this->attributesTypes  = array();
+
+    $this->debconfAttributesTypes     = array();
+    $this->generatedDebconfAttributes = array();
 
     foreach ($lines as $line) {
       /* Reset description flag */
@@ -158,10 +162,20 @@ class faiPackageConfiguration extends simplePlugin
         $infos['Choices-local'] = trim(preg_replace('/^Choices-'.$langcode.': /', '', $line));
       }
     }
+
     /* Add the last one */
     if (!empty($infos)) {
       $this->insertDebconfAttribute($attributesInfo, $infos);
     }
+
+    if (!empty($this->generatedDebconfAttributes)) {
+      msg_dialog::display(
+        _('Warning'),
+        sprintf(_('The debconf questions "%s" are dynamically generated during package installation and requires choosing between specific options which cannot be presented here. The entered text needs to be one of the valid choices in order to take effect.'), implode('","', $this->generatedDebconfAttributes)),
+        WARNING_DIALOG
+      );
+    }
+
     return $attributesInfo;
   }
 
@@ -176,7 +190,7 @@ class faiPackageConfiguration extends simplePlugin
             $infos['Default'], 'FAIpackage',
             'true', 'false'
           );
-      break;
+        break;
       case 'password':
         $attribute =
           new PasswordAttribute(
@@ -184,7 +198,7 @@ class faiPackageConfiguration extends simplePlugin
             $infos['Name'], FALSE,
             $infos['Default'], 'FAIpackage'
           );
-      break;
+        break;
       case 'multiselect':
       case 'select':
         if (!preg_match('/\$\{/', $infos['Choices'])) {
@@ -202,6 +216,9 @@ class faiPackageConfiguration extends simplePlugin
               'FAIpackage'
             );
           break;
+        } else {
+          /* Issue a warning about generated choices and show a StringAttribute */
+          $this->generatedDebconfAttributes[$infos['Name']] = $infos['Topic'];
         }
       case 'string':
         $attribute =
@@ -210,7 +227,7 @@ class faiPackageConfiguration extends simplePlugin
             $infos['Name'], FALSE,
             $infos['Default'], 'FAIpackage'
           );
-      break;
+        break;
       case 'note':
         /* Ignore notes, they do not makes sense, since we don't get any
            chance to test entered values... */
@@ -218,14 +235,14 @@ class faiPackageConfiguration extends simplePlugin
         /* Ignore text messages, they are normally used for status hints. */
       case 'title':
       case 'error':
-      return;
+        return;
       default:
         trigger_error('Unknown type '.$infos['Type'].'!');
-      return;
+        return;
     }
     $attribute->setInLdap(FALSE);
-    $attributesInfo['main']['attrs'][]      = $attribute;
-    $this->attributesTypes[$infos['Name']]  = $infos['Type'];
+    $attributesInfo['main']['attrs'][]            = $attribute;
+    $this->debconfAttributesTypes[$infos['Name']] = $infos['Type'];
   }
 
   function execute()
@@ -247,7 +264,7 @@ class faiPackageConfiguration extends simplePlugin
       $tmp[$this->packageName][$name] = array(
         'Name'  => $name,
         'Value' => $attribute->computeLdapValue(),
-        'Type'  => $this->attributesTypes[$name],
+        'Type'  => $this->debconfAttributesTypes[$name],
       );
     }
 
