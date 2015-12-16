@@ -215,6 +215,14 @@ class faiPackageConfiguration extends simplePlugin
               $choices, $infos['Default'], $outputs,
               'FAIpackage'
             );
+          if ($infos['Type'] == 'multiselect') {
+            $attribute = new CommaListAttribute(
+              $infos['Name'],
+              new SetAttribute(
+                $attribute
+              )
+            );
+          }
           break;
         } else {
           /* Issue a warning about generated choices and show a StringAttribute */
