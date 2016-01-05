@@ -168,8 +168,8 @@ class fiInventory extends simplePlugin
         return array();
       }
       $matching     = $this->config->get_cfg_value('inventoryMatching', 'mac');
-      $macAddress   = $this->parent->getBaseObject()->macAddress;
-      $ipHostNumber = $this->parent->getBaseObject()->ipHostNumber;
+      $macAddress   = $this->parent->getBaseObject()->netConfigDNS->macAddress;
+      $ipHostNumber = $this->parent->getBaseObject()->netConfigDNS->ipHostNumber;
       if ($macAddress != '') {
         $macfilter = "(macAddress=$macAddress)";
       } else {
