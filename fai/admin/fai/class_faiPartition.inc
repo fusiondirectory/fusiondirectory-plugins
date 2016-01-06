@@ -35,7 +35,7 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
         new IntAttribute(
           '', '',
           'FAIpartitionSizeStart_size', FALSE,
-          1, FALSE, 0
+          1, FALSE, ''
         ),
         new SelectAttribute(
           '', '',
@@ -46,7 +46,7 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
         new IntAttribute(
           '-', '',
           'FAIpartitionSizeStop_size', FALSE,
-          1, FALSE, 0
+          1, FALSE, ''
         ),
         new SelectAttribute(
           '', '',
@@ -61,6 +61,7 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
     );
     $this->setLinearRendering(TRUE);
     $this->attributes[0]->setSubmitForm(TRUE);
+    $this->updateAttributes();
   }
 
   function readValues($value)
