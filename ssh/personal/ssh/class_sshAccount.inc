@@ -27,9 +27,9 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
   function getArrayValue ()
   {
     if (preg_match($this->format, $this->value, $match)) {
-      $fingerprint  = $this->fingerprint(base64_decode($match[3]));
-      $comment      = (isset($match[5]) ? $match[5] : '');
-      switch ($match[1]) {
+      $fingerprint  = $this->fingerprint(base64_decode($match[4]));
+      $comment      = (isset($match[6]) ? $match[6] : '');
+      switch ($match[2]) {
         case 'ssh-dss':
           $type = 'DSA';
         break;
@@ -37,7 +37,7 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
           $type = 'RSA';
         break;
         default:
-          $type = $match[1];
+          $type = $match[2];
         break;
       }
       return array(
