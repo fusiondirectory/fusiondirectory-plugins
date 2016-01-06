@@ -36,11 +36,7 @@ class PartitionDialog extends GenericDialog
     $this->plugin     = $simplePlugin;
     $this->dialog = new $this->dialogClass($simplePlugin->config, $partition, $simplePlugin, $simplePlugin->FAIdiskType);
 
-    $base = $simplePlugin->dn;
-    if ($base == 'new') {
-      $base = $simplePlugin->base;
-    }
-    $this->dialog->set_acl_base($base);
+    $this->dialog->set_acl_base($simplePlugin->acl_base);
     $this->dialog->set_acl_category('fai');
     if (!empty($partition)) {
       $this->initialDialogValue = $partition;
