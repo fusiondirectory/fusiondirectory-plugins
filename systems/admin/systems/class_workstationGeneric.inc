@@ -60,15 +60,11 @@ class ActionAttribute extends SelectAttribute
       if (in_array($this->postValue, $this->choices)) {
         $action = $this->postValue;
 
-        /* Check if we have an DaemonEvent for this action */
-        if (class_available("supportDaemon") && class_available("DaemonEvent")) {
-          $events = DaemonEvent::get_event_types();
+        if (class_available('supportDaemon')) {
+          $events = argonautAction::get_event_types();
           if (isset($events[$action])) {
-            $tmp = new DaemonEvent($this->plugin->config, $action);
-            $tmp->add_targets(array($this->plugin->netConfigDNS->macAddress));
-            $tmp->set_type(TRIGGERED_EVENT);
             $o_queue = new supportDaemon();
-            if (!$o_queue->append($tmp)) {
+            if (!$o_queue->append_call($action, array($this->plugin->netConfigDNS->macAddress), array())) {
               msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
             }
           } else {
@@ -96,7 +92,7 @@ class ActionAttribute extends SelectAttribute
       return;
     }
     $this->setDisabled(FALSE);
-    //TODO : the list should be based on DaemonEvent::get_event_types
+    //TODO : the list should be based on argonautAction::get_event_types
     /* Check if workstation is online */
     if ($this->isTerminal) {
       $actions = array('' => '');
@@ -435,16 +431,11 @@ class workstationGeneric extends simplePlugin
     $this->netConfigDNS->save();
 
     if ($activate && $this->sdaemon_available) {
-      /* Send installation activation
-       */
-      $events = DaemonEvent::get_event_types();
-      $o_queue = new supportDaemon();
+      /* Send installation activation */
+      $events = argonautAction::get_event_types();
       if (isset($events['installation_activation'])) {
-        $evt = 'installation_activation';
-        $tmp = new DaemonEvent($this->config, $evt);
-        $tmp->set_type(TRIGGERED_EVENT);
-        $tmp->add_targets(array($this->netConfigDNS->macAddress));
-        $o_queue->append($tmp);
+        $o_queue = new supportDaemon();
+        $o_queue->append_call('installation_activation', array($this->netConfigDNS->macAddress), array());
         if ($o_queue->is_error()) {
           msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
         }

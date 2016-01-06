@@ -201,21 +201,17 @@ class termgroup extends plugin
     /* Watch for events */
     if ((isset($_POST['action'])) && ($this->acl_is_writeable("FAIstate")) && isset($this->mapActions[$_POST['saction']])) {
 
-      /* Check if we have an DaemonEvent for this action */
       $action = $this->mapActions[$_POST['saction']];
-      if (class_available("DaemonEvent")) {
-        $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
+      if (class_available('argonautAction')) {
+        $events = argonautAction::get_event_types();
         $macaddresses = array();
         foreach ($this->members as $cn => $macAddress){
           $macaddresses[]= $macAddress;
         }
 
         if (isset($events[$action])) {
-          $tmp = new DaemonEvent($this->config, $action);
-          $tmp->add_targets($macaddresses);
-          $tmp->set_type(TRIGGERED_EVENT);
           $o_queue = new gosaSupportDaemon();
-          $o_queue->append($tmp);
+          $o_queue->append_call($action, $macaddresses, array());
           if ($o_queue->is_error()) {
             msg_dialog::display(_("Infrastructure service"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
           }
