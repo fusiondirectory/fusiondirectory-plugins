@@ -387,6 +387,10 @@ class faiPartition extends simplePlugin
       $types = array();
     }
     $this->attributesAccess['FAIpartitionType']->setChoices(array_keys($types), array_values($types));
+    if (empty($types)) {
+      $this->attributesAccess['FAIpartitionType']->setVisible(FALSE);
+      $this->attributesAccess['FAIpartitionType']->setDisabled(TRUE);
+    }
 
     // Load attributes from existing partition
     if ($object) {
