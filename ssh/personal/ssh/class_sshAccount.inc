@@ -22,7 +22,7 @@
 class SSHPublicKeyAttribute extends FileTextAreaAttribute
 {
   /* cache for key extracted informations */
-  protected $format = '/^([-a-zA-Z0-9]+(=".*")?,?)*\s*(ssh-(dss|rsa)|ecdsa-sha2-nistp\d+)\s+([a-zA-Z0-9+\/.=]+)(\s+([[:graph:][:space:]]+))?\s*$/';
+  protected $format = '/^([-[:alnum:]=",]+\s+)?(ssh-(dss|rsa)|ecdsa-sha2-nistp\d{3})\s+([[:alnum:]+\/.=]+)(\s+([[:graph:][:space:]]+))?\s*$/';
 
   function getArrayValue ()
   {
