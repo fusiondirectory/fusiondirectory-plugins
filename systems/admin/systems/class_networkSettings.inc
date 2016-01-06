@@ -100,14 +100,7 @@ class networkSettings extends plugin
      ************/
 
     /* Hide all dhcp specific code, if dhcp plugin is not present in config */
-    $this->dhcpEnabled = FALSE;
-    if ($this->config->search("serviceDHCP", "class", array("tabs"))) {
-      $this->dhcpEnabled = TRUE;
-    }
-
-    if (!class_available("dhcpHost")) {
-      $this->dhcpEnabled = FALSE;
-    }
+    $this->dhcpEnabled = class_available('dhcpHost');
 
     if ($this->dhcpEnabled) {
       $this->dhcpParentNodes = $this->get_dhcp_parent_nodes();

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-11 22:19+0200\n"
-"PO-Revision-Date: 2015-09-11 20:29+0000\n"
+"POT-Creation-Date: 2016-01-02 22:39+0100\n"
+"PO-Revision-Date: 2016-01-02 21:49+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -37,21 +37,21 @@ msgstr "stránkovat (swap) na místní úložiště"
 #: admin/systems/class_terminalGeneric.inc:108
 #: admin/systems/class_terminalGeneric.inc:124
 msgid "inherited"
-msgstr "zděděné"
+msgstr "převzaté"
 
 #: admin/ogroups/goto/class_termgroup.inc:220
 #: admin/systems/class_workstationGeneric.inc:72
 #: admin/systems/class_workstationGeneric.inc:449
-#: admin/systems/class_systemManagement.inc:189
-#: admin/systems/class_systemManagement.inc:210
+#: admin/systems/class_systemManagement.inc:191
+#: admin/systems/class_systemManagement.inc:217
 msgid "Infrastructure service"
-msgstr "Služba Infrastruktura"
+msgstr "Služba infrastruktury"
 
 #: admin/ogroups/goto/class_termgroup.inc:224
 #: admin/systems/class_workstationGeneric.inc:75
 #: admin/systems/class_workstationGeneric.inc:78
 msgid "Event error"
-msgstr "chyba události"
+msgstr "Chyba události"
 
 #: admin/ogroups/goto/class_termgroup.inc:225
 #, php-format
@@ -87,27 +87,27 @@ msgstr "Přeinstalovat"
 #: admin/ogroups/goto/class_termgroup.inc:279
 #: admin/systems/class_workstationGeneric.inc:108
 msgid "Memory test"
-msgstr "test operační paměti"
+msgstr "Test operační paměti"
 
 #: admin/ogroups/goto/class_termgroup.inc:280
 msgid "System analysis"
 msgstr "Analýza systému"
 
 #: admin/ogroups/goto/class_termgroup.inc:386
-#: admin/systems/class_printGeneric.inc:676
-#: admin/systems/class_printGeneric.inc:976
+#: admin/systems/class_printGeneric.inc:675
+#: admin/systems/class_printGeneric.inc:975
 #: admin/systems/services/class_goService.inc:123
 #: admin/systems/services/class_goService.inc:151
 #: admin/systems/services/class_goService.inc:187
-#: admin/systems/class_networkSettings.inc:467
-#: admin/systems/class_networkSettings.inc:480
-#: admin/systems/class_networkSettings.inc:753
-#: admin/systems/class_networkSettings.inc:812
-#: admin/systems/class_networkSettings.inc:831
-#: admin/systems/class_networkSettings.inc:848
-#: admin/systems/class_networkSettings.inc:857
-#: admin/systems/class_networkSettings.inc:875
-#: admin/systems/class_networkSettings.inc:947
+#: admin/systems/class_networkSettings.inc:460
+#: admin/systems/class_networkSettings.inc:473
+#: admin/systems/class_networkSettings.inc:747
+#: admin/systems/class_networkSettings.inc:806
+#: admin/systems/class_networkSettings.inc:825
+#: admin/systems/class_networkSettings.inc:842
+#: admin/systems/class_networkSettings.inc:851
+#: admin/systems/class_networkSettings.inc:869
+#: admin/systems/class_networkSettings.inc:941
 msgid "LDAP error"
 msgstr "Chyba LDAP"
 
@@ -128,7 +128,7 @@ msgstr "režim"
 #: admin/systems/class_workstationGeneric.inc:189
 #: admin/ogroups/goto/termgroup.tpl.c:23
 msgid "Syslog server"
-msgstr ""
+msgstr "Syslog server"
 
 #: admin/ogroups/goto/class_termgroup.inc:403
 msgid "Action flag"
@@ -220,9 +220,9 @@ msgstr "Počítač"
 msgid "Terminal"
 msgstr "Terminál"
 
-#: admin/systems/system-list.xml:70 admin/systems/class_printGeneric.inc:1011
+#: admin/systems/system-list.xml:70 admin/systems/class_printGeneric.inc:1010
+#: admin/systems/class_printGeneric.inc:1016
 #: admin/systems/class_printGeneric.inc:1017
-#: admin/systems/class_printGeneric.inc:1018
 msgid "Printer"
 msgstr "Tiskárna"
 
@@ -250,15 +250,15 @@ msgstr "Součást"
 
 #: admin/systems/system-list.xml:102 admin/systems/system-list.xml:257
 msgid "IPMI"
-msgstr ""
+msgstr "IPMI"
 
 #: admin/systems/system-list.xml:128
 #: admin/systems/class_workstationGeneric.inc:154
 #: admin/systems/class_phoneGeneric.inc:59
-#: admin/systems/class_printGeneric.inc:758
-#: admin/systems/class_printGeneric.inc:768
-#: admin/systems/class_printGeneric.inc:787
-#: admin/systems/class_printGeneric.inc:1027
+#: admin/systems/class_printGeneric.inc:757
+#: admin/systems/class_printGeneric.inc:767
+#: admin/systems/class_printGeneric.inc:786
+#: admin/systems/class_printGeneric.inc:1026
 #: admin/systems/class_componentGeneric.inc:63
 #: admin/systems/class_mobilePhoneGeneric.inc:63
 #: admin/systems/phoneSelect/phoneSelect-list.xml:48
@@ -271,16 +271,16 @@ msgstr "Název"
 #: admin/systems/system-list.xml:136
 #: admin/systems/phoneSelect/phoneSelect-list.xml:63
 msgid "IP"
-msgstr ""
+msgstr "IP adresa"
 
 #: admin/systems/system-list.xml:144
 msgid "MAC"
-msgstr ""
+msgstr "MAC adresa"
 
 #: admin/systems/system-list.xml:152
 #: admin/systems/class_workstationGeneric.inc:160
 #: admin/systems/class_phoneGeneric.inc:63
-#: admin/systems/class_printGeneric.inc:1029
+#: admin/systems/class_printGeneric.inc:1028
 #: admin/systems/class_componentGeneric.inc:67
 #: admin/systems/class_mobilePhoneGeneric.inc:67
 #: admin/systems/serverService-list.xml:35
@@ -371,7 +371,7 @@ msgid "Wake up"
 msgstr "Zapnout na dálku"
 
 #: admin/systems/class_workstationGeneric.inc:144
-#: admin/systems/class_printGeneric.inc:610
+#: admin/systems/class_printGeneric.inc:609
 msgid "workstation"
 msgstr "Počítač"
 
@@ -393,7 +393,7 @@ msgid "A short description of the %s"
 msgstr "Stručný popis %s"
 
 #: admin/systems/class_workstationGeneric.inc:166
-#: admin/systems/class_printGeneric.inc:1030
+#: admin/systems/class_printGeneric.inc:1029
 msgid "Location"
 msgstr "Umístění"
 
@@ -471,7 +471,7 @@ msgstr "Vyberte akci, která má být spuštěna na tomto terminálu"
 #: admin/systems/class_phoneGeneric.inc:83
 #: admin/systems/class_componentGeneric.inc:74
 #: admin/systems/class_mobilePhoneGeneric.inc:106
-#: admin/systems/class_networkSettings.inc:1012
+#: admin/systems/class_networkSettings.inc:1006
 msgid "Network settings"
 msgstr "Nastavení sítě"
 
@@ -481,19 +481,19 @@ msgstr "Informace o počítači"
 
 #: admin/systems/class_phoneGeneric.inc:37
 msgid "Phone information"
-msgstr ""
+msgstr "Informace o telefonu"
 
 #: admin/systems/class_phoneGeneric.inc:41
 msgid "Phone hardware"
-msgstr ""
+msgstr "Jaký telefonní přístroj"
 
 #: admin/systems/class_phoneGeneric.inc:59
 msgid "The name of the phone"
-msgstr ""
+msgstr "Název telefonu"
 
 #: admin/systems/class_phoneGeneric.inc:63
 msgid "A short description of the phone"
-msgstr ""
+msgstr "Stručný popis telefonu"
 
 #: admin/systems/class_phoneGeneric.inc:73
 #: admin/systems/class_mobilePhoneGeneric.inc:77
@@ -502,7 +502,7 @@ msgstr "Sériové číslo"
 
 #: admin/systems/class_phoneGeneric.inc:73
 msgid "The serial number of the phone"
-msgstr ""
+msgstr "Sériové číslo telefonu"
 
 #: admin/systems/class_phoneGeneric.inc:77
 #: admin/systems/class_mobilePhoneGeneric.inc:95
@@ -511,10 +511,10 @@ msgstr "Telefoní číslo"
 
 #: admin/systems/class_phoneGeneric.inc:77
 msgid "The telephone number of the phone"
-msgstr ""
+msgstr "Telefonní číslo telefonu"
 
 #: admin/systems/class_printGeneric.inc:131
-#: admin/systems/class_printGeneric.inc:1070
+#: admin/systems/class_printGeneric.inc:1069
 msgid "Internal error"
 msgstr "Vnitřní chyba"
 
@@ -541,7 +541,7 @@ msgstr "Nelze inicializovat panel Tiskárna, při vytváření chyběl nadřazen
 
 #: admin/systems/class_printGeneric.inc:326
 msgid "This is a workstation template, printer tab is disabled."
-msgstr "Toto je šablona pracovní stanice, panel Tiskárna je vypnutý."
+msgstr "Toto je šablona pracovní stanice, panel Tiskárna je proto vypnutý."
 
 #: admin/systems/class_printGeneric.inc:331
 msgid "This is a terminal template, printer tab is disabled."
@@ -567,124 +567,123 @@ msgstr "Toto nelze zapnout dokud v položce není přítomen běžný název (cn
 msgid "Remove printer extension"
 msgstr "Odebrat rozšíření tiskárny"
 
-#: admin/systems/class_printGeneric.inc:480
-#: admin/systems/class_printGeneric.inc:658
-#: admin/systems/class_printGeneric.inc:665
-#: admin/systems/class_printGeneric.inc:724
-#: admin/systems/class_printGeneric.inc:1110
-#: admin/systems/class_printGeneric.inc:1121
-#: admin/systems/class_serverService.inc:224
-#: admin/systems/class_serverService.inc:270
-#: admin/systems/class_serverService.inc:393
-#: admin/systems/class_systemManagement.inc:226
-#: admin/systems/services/shares/class_serviceShare.inc:103
-#: admin/systems/class_networkSettings.inc:328
-#: admin/systems/class_networkSettings.inc:580
-#: admin/systems/class_networkSettings.inc:587
-#: admin/systems/class_networkSettings.inc:593
-#: admin/systems/class_networkSettings.inc:600
-msgid "Error"
-msgstr "Chyba"
-
-#: admin/systems/class_printGeneric.inc:583
+#: admin/systems/class_printGeneric.inc:582
 #, php-format
 msgid "Your currently selected PPD file '%s' doesn't exist."
 msgstr "Zvolený PPD soubor %s neexistuje."
 
-#: admin/systems/class_printGeneric.inc:589
+#: admin/systems/class_printGeneric.inc:588
 msgid "Not defined"
 msgstr "Nedefinováno"
 
-#: admin/systems/class_printGeneric.inc:593
+#: admin/systems/class_printGeneric.inc:592
 #: admin/systems/ppd/class_printerPPDDialog.inc:116
 msgid "Can't get ppd informations."
 msgstr "Nelze zjistit informace o PPD souboru."
 
-#: admin/systems/class_printGeneric.inc:608
-#: admin/systems/class_printGeneric.inc:610
+#: admin/systems/class_printGeneric.inc:607
+#: admin/systems/class_printGeneric.inc:609
 #, php-format
 msgid "This printer belongs to %s. You can't rename this printer."
 msgstr "Tato tiskárna přináleží k %s. Proto ji nelze přejmenovat."
 
-#: admin/systems/class_printGeneric.inc:608
+#: admin/systems/class_printGeneric.inc:607
 #: admin/systems/class_terminalGeneric.inc:34
 msgid "terminal"
 msgstr "terminál"
 
-#: admin/systems/class_printGeneric.inc:658
-#: admin/systems/class_printGeneric.inc:665
+#: admin/systems/class_printGeneric.inc:657
+#: admin/systems/class_printGeneric.inc:664
+#: admin/systems/class_printGeneric.inc:723
+#: admin/systems/class_printGeneric.inc:1109
+#: admin/systems/class_printGeneric.inc:1120
+#: admin/systems/class_serverService.inc:224
+#: admin/systems/class_serverService.inc:270
+#: admin/systems/class_serverService.inc:393
+#: admin/systems/class_systemManagement.inc:234
+#: admin/systems/services/shares/class_serviceShare.inc:103
+#: admin/systems/class_networkSettings.inc:321
+#: admin/systems/class_networkSettings.inc:573
+#: admin/systems/class_networkSettings.inc:580
+#: admin/systems/class_networkSettings.inc:586
+#: admin/systems/class_networkSettings.inc:593
+msgid "Error"
+msgstr "Chyba"
+
+#: admin/systems/class_printGeneric.inc:657
+#: admin/systems/class_printGeneric.inc:664
 msgid "Object is no printer!"
 msgstr "Tento objekt není tiskárna!"
 
-#: admin/systems/class_printGeneric.inc:773 admin/systems/printer.tpl.c:23
+#: admin/systems/class_printGeneric.inc:772 admin/systems/printer.tpl.c:23
 msgid "Printer URL"
 msgstr "URL adresa tiskárny"
 
-#: admin/systems/class_printGeneric.inc:995
-#: admin/systems/class_printGeneric.inc:997
+#: admin/systems/class_printGeneric.inc:994
+#: admin/systems/class_printGeneric.inc:996
 msgid "Group"
 msgstr "Skupina"
 
-#: admin/systems/class_printGeneric.inc:1000
+#: admin/systems/class_printGeneric.inc:999
 msgid "User"
 msgstr "Uživatel"
 
-#: admin/systems/class_printGeneric.inc:1012
+#: admin/systems/class_printGeneric.inc:1011
 msgid "Printer information"
 msgstr "Informace o tiskárně"
 
-#: admin/systems/class_printGeneric.inc:1028
+#: admin/systems/class_printGeneric.inc:1027
 #: admin/systems/serverService-list.tpl.c:2
 #: admin/systems/phoneSelect/phoneSelect-list.tpl.c:2
 #: admin/systems/printer.tpl.c:11
 msgid "Base"
 msgstr "Základ"
 
-#: admin/systems/class_printGeneric.inc:1031
+#: admin/systems/class_printGeneric.inc:1030
 msgid "LabeledURL"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1032
+#: admin/systems/class_printGeneric.inc:1031
 msgid "Printer PPD"
 msgstr "PPD soubor pro tiskárnu"
 
-#: admin/systems/class_printGeneric.inc:1033 admin/systems/printer.tpl.c:38
+#: admin/systems/class_printGeneric.inc:1032 admin/systems/printer.tpl.c:38
 msgid "Permissions"
 msgstr "Oprávnění"
 
-#: admin/systems/class_printGeneric.inc:1035
+#: admin/systems/class_printGeneric.inc:1034
 msgid "Windows inf file"
 msgstr ".inf soubor Windows"
 
-#: admin/systems/class_printGeneric.inc:1036
+#: admin/systems/class_printGeneric.inc:1035
 msgid "Windows driver dir"
 msgstr "Složka ovladače pro MS Windows"
 
-#: admin/systems/class_printGeneric.inc:1037 admin/systems/printer.tpl.c:62
+#: admin/systems/class_printGeneric.inc:1036 admin/systems/printer.tpl.c:62
 msgid "Driver printer name"
 msgstr "Název ovladače tiskárny"
 
-#: admin/systems/class_printGeneric.inc:1053
-#: admin/systems/class_printGeneric.inc:1075
+#: admin/systems/class_printGeneric.inc:1052
+#: admin/systems/class_printGeneric.inc:1074
 msgid "Permission error"
 msgstr "Chyba oprávnění"
 
-#: admin/systems/class_printGeneric.inc:1053
-#: admin/systems/class_printGeneric.inc:1075
+#: admin/systems/class_printGeneric.inc:1052
+#: admin/systems/class_printGeneric.inc:1074
 msgid "printer user"
 msgstr "uživatel tiskárny"
 
-#: admin/systems/class_printGeneric.inc:1070
+#: admin/systems/class_printGeneric.inc:1069
 #, php-format
 msgid "Illegal member type '%s'!"
 msgstr "Neplatný člen typu %s!"
 
-#: admin/systems/class_printGeneric.inc:1110
+#: admin/systems/class_printGeneric.inc:1109
 #, php-format
 msgid "'%s' is already used!"
 msgstr "%s je již použito!"
 
-#: admin/systems/class_printGeneric.inc:1121
+#: admin/systems/class_printGeneric.inc:1120
 #, php-format
 msgid "'%s' does not exist!"
 msgstr "%s neexistuje!"
@@ -736,11 +735,11 @@ msgstr "Způsob připojování"
 
 #: admin/systems/class_terminalGeneric.inc:62
 msgid "XDMCP"
-msgstr ""
+msgstr "XDMCP"
 
 #: admin/systems/class_terminalGeneric.inc:62
 msgid "LDM"
-msgstr ""
+msgstr "LDM"
 
 #: admin/systems/class_terminalGeneric.inc:62
 msgid "Shell"
@@ -748,11 +747,11 @@ msgstr "shell"
 
 #: admin/systems/class_terminalGeneric.inc:62
 msgid "Telnet"
-msgstr ""
+msgstr "Telnet"
 
 #: admin/systems/class_terminalGeneric.inc:62
 msgid "Windows RDP"
-msgstr ""
+msgstr "Windows RDP"
 
 #: admin/systems/class_terminalGeneric.inc:66
 msgid "Terminal server"
@@ -781,7 +780,7 @@ msgstr "Informace o terminálu"
 #: admin/systems/ppd/class_printerPPDDialog.inc:580
 #: admin/systems/ppd/class_printerPPDDialog.inc:583
 msgid "PPD error"
-msgstr "Chyba PPD"
+msgstr "Chyba v PPD"
 
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:139
 #, php-format
@@ -802,7 +801,6 @@ msgstr "Zpět"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:74
 #: admin/systems/ppd/class_printerPPDDialog.inc:140
-#: admin/systems/services/class_goService.inc:241
 msgid "Configuration error"
 msgstr "Chyba v nastavení"
 
@@ -819,7 +817,7 @@ msgstr "Umístění PPD souboru %s se nedaří otevřít pro čtení a zápis!"
 #: admin/systems/ppd/class_printerPPDDialog.inc:160
 #: admin/systems/ppd/class_printerPPDDialog.inc:365
 msgid "file is empty"
-msgstr "Soubor je prázdný"
+msgstr "soubor je prázdný"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:314
 #, php-format
@@ -828,7 +826,7 @@ msgstr "PPD soubor %s nebylo možné zpracovat!"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:340
 msgid "Overwrite existing PPD"
-msgstr "Přepsat existující PPD soubor"
+msgstr "Přepsat stávající PPD soubor"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:341
 msgid ""
@@ -952,7 +950,7 @@ msgstr "Server, ze kterého chcete importovat hostitele"
 
 #: admin/systems/class_serverGeneric.inc:34
 msgid "server"
-msgstr ""
+msgstr "server"
 
 #: admin/systems/class_serverGeneric.inc:47
 msgid "Server information"
@@ -996,7 +994,7 @@ msgstr "IMEI identifikátor mobilního telefonu"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:86
 msgid "OS"
-msgstr ""
+msgstr "Operační systém"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:86
 msgid "The Operating System installed on this phone"
@@ -1066,38 +1064,53 @@ msgstr "Číslo"
 msgid "Select this number"
 msgstr "Vyberte toto číslo"
 
-#: admin/systems/class_systemManagement.inc:283
-#: admin/systems/class_systemManagement.inc:358
-#: admin/systems/class_systemManagement.inc:448
-#: admin/systems/class_systemManagement.inc:495
-#: admin/systems/class_systemManagement.inc:516
+#: admin/systems/class_systemManagement.inc:161
+#: admin/systems/class_systemManagement.inc:175
+msgid "Action canceled"
+msgstr ""
+
+#: admin/systems/class_systemManagement.inc:161
+#, php-format
+msgid "System %s has no mac address defined, cannot trigger action"
+msgstr ""
+
+#: admin/systems/class_systemManagement.inc:175
+#, php-format
+msgid "System %s is currently installing"
+msgstr ""
+
+#: admin/systems/class_systemManagement.inc:291
+#: admin/systems/class_systemManagement.inc:366
+#: admin/systems/class_systemManagement.inc:456
+#: admin/systems/class_systemManagement.inc:503
+#: admin/systems/class_systemManagement.inc:524
 msgid "Permission"
 msgstr "Oprávnění"
 
-#: admin/systems/class_systemManagement.inc:448
+#: admin/systems/class_systemManagement.inc:456
 #, php-format
 msgid "You are not allowed to create a snapshot for %s."
 msgstr "Nejste oprávněni pořídit zachycený stav %s."
 
-#: admin/systems/class_systemManagement.inc:495
-#: admin/systems/class_systemManagement.inc:516
+#: admin/systems/class_systemManagement.inc:503
+#: admin/systems/class_systemManagement.inc:524
 #, php-format
 msgid "You are not allowed to restore a snapshot for %s."
 msgstr "Nejste oprávněni obnovit zachycený stav %s."
 
-#: admin/systems/class_systemManagement.inc:733
+#: admin/systems/class_systemManagement.inc:741
 #, php-format
 msgid "Inherited from %s"
 msgstr "Převzato z %s"
 
-#: admin/systems/class_systemManagement.inc:786
-#: admin/systems/class_systemManagement.inc:790
+#: admin/systems/class_systemManagement.inc:794
+#: admin/systems/class_systemManagement.inc:798
 #: addons/dashboard/class_dashBoardSystems.inc:199
 #: config/systems/class_systemsPluginConfig.inc:28
 msgid "Systems"
 msgstr "Systémy"
 
-#: admin/systems/class_systemManagement.inc:787
+#: admin/systems/class_systemManagement.inc:795
 msgid "Systems Management"
 msgstr "Správa systémů"
 
@@ -1167,7 +1180,7 @@ msgstr "Typ kódování znaků v názvech na tomto sdílení"
 
 #: admin/systems/services/shares/class_serviceShare.inc:69
 msgid "Path / Volume"
-msgstr "Cesta / Svazek"
+msgstr "Popis umístění / Svazek"
 
 #: admin/systems/services/shares/class_serviceShare.inc:69
 msgid "Path or volume concerned by this share"
@@ -1175,7 +1188,7 @@ msgstr "Umístění či svazek, související s tímto sdílením"
 
 #: admin/systems/services/shares/class_serviceShare.inc:73
 msgid "Option"
-msgstr "volba"
+msgstr "Předvolba"
 
 #: admin/systems/services/shares/class_serviceShare.inc:73
 msgid "Special option(s) for this share"
@@ -1313,94 +1326,94 @@ msgstr "Určuje, zda kontrolovat, zda nebyla zrušena platnost certifikátu serv
 msgid "LDAP"
 msgstr "LDAP"
 
-#: admin/systems/class_networkSettings.inc:428
+#: admin/systems/class_networkSettings.inc:421
 msgid "Not matching"
 msgstr "Neshoduje se"
 
-#: admin/systems/class_networkSettings.inc:580
+#: admin/systems/class_networkSettings.inc:573
 #, php-format
 msgid "Was not able to contact argonaut server: %s"
 msgstr "Nebyl schopen kontaktovat Argonaut server: %s"
 
-#: admin/systems/class_networkSettings.inc:587
+#: admin/systems/class_networkSettings.inc:580
 #, php-format
 msgid "Was not able to find DNS server for zone %s"
 msgstr "DNS server pro zónu %s nebyl nalezen"
 
-#: admin/systems/class_networkSettings.inc:593
+#: admin/systems/class_networkSettings.inc:586
 #, php-format
 msgid "Was not able to find mac address of DNS server %s"
 msgstr "Nebylo možné zjistit MAC adresu DNS serveru %s"
 
-#: admin/systems/class_networkSettings.inc:600
+#: admin/systems/class_networkSettings.inc:593
 #, php-format
 msgid "Was not able to launch ldap2zone: %s"
 msgstr "Nebylo možné spustit ldap2zone: %s"
 
-#: admin/systems/class_networkSettings.inc:626
+#: admin/systems/class_networkSettings.inc:619
 #, php-format
 msgid "IP address %s"
 msgstr "IP adresa %s"
 
-#: admin/systems/class_networkSettings.inc:634
-#: admin/systems/class_networkSettings.inc:647
-#: admin/systems/class_networkSettings.inc:649
-#: admin/systems/class_networkSettings.inc:1018
+#: admin/systems/class_networkSettings.inc:627
+#: admin/systems/class_networkSettings.inc:640
+#: admin/systems/class_networkSettings.inc:642
+#: admin/systems/class_networkSettings.inc:1012
 msgid "IP address"
 msgstr "IP adresa"
 
-#: admin/systems/class_networkSettings.inc:640
-#: admin/systems/class_networkSettings.inc:656
-#: admin/systems/class_networkSettings.inc:658
-#: admin/systems/class_networkSettings.inc:1019
+#: admin/systems/class_networkSettings.inc:633
+#: admin/systems/class_networkSettings.inc:649
+#: admin/systems/class_networkSettings.inc:651
+#: admin/systems/class_networkSettings.inc:1013
 msgid "MAC address"
 msgstr "MAC adresa"
 
-#: admin/systems/class_networkSettings.inc:672
+#: admin/systems/class_networkSettings.inc:665
 #, php-format
 msgid "The IP address '%s' is not part of the selected reverse zone '%s'!"
 msgstr "IP adresa %s nespadá do zvolené obrácené zóny %s!"
 
-#: admin/systems/class_networkSettings.inc:682
+#: admin/systems/class_networkSettings.inc:675
 #, php-format
 msgid "Record type '%s' is duplicated!"
 msgstr "Záznam typu %s existuje vícekrát!"
 
-#: admin/systems/class_networkSettings.inc:689
+#: admin/systems/class_networkSettings.inc:682
 #, php-format
 msgid "Uniq record type '%s' is duplicated!"
 msgstr "Záznam typu '%s' může správně existovat nejvýše jeden – ale existuje vícekrát!"
 
-#: admin/systems/class_networkSettings.inc:701
+#: admin/systems/class_networkSettings.inc:694
 #, php-format
 msgid ""
 "The IP address '%s' will be added as 'A Record', this will be done "
 "automatically, please remove the record."
 msgstr "IP adresa %s bude přidána jako záznam typu A. Stane se tak samočinně – smažte ho."
 
-#: admin/systems/class_networkSettings.inc:708
+#: admin/systems/class_networkSettings.inc:701
 #, php-format
 msgid "Only lowercase records are allowed, please check your '%ss'."
 msgstr "Dovolena jsou pouze malá písmena – zkontrolujte své %ss."
 
-#: admin/systems/class_networkSettings.inc:974
+#: admin/systems/class_networkSettings.inc:968
 msgid "Delete"
 msgstr "Smazat"
 
-#: admin/systems/class_networkSettings.inc:980
+#: admin/systems/class_networkSettings.inc:974
 msgid "Add"
 msgstr "Přidat"
 
-#: admin/systems/class_networkSettings.inc:1011
+#: admin/systems/class_networkSettings.inc:1005
 #: addons/dashboard/class_dashBoardNetwork.inc:127
 msgid "Network"
 msgstr "Síť"
 
-#: admin/systems/class_networkSettings.inc:1026
+#: admin/systems/class_networkSettings.inc:1020
 msgid "DNS configuration"
 msgstr "Nastavení DNS"
 
-#: admin/systems/class_networkSettings.inc:1029
+#: admin/systems/class_networkSettings.inc:1023
 msgid "DHCP configuration"
 msgstr "Nastavení DHCP"
 
@@ -1446,7 +1459,7 @@ msgstr "Statistiky a informace o systémech"
 
 #: addons/dashboard/class_dashBoardNetwork.inc:111
 msgid "DHCP"
-msgstr ""
+msgstr "DHCP"
 
 #: addons/dashboard/class_dashBoardNetwork.inc:116
 msgid "DNS"
@@ -1514,11 +1527,11 @@ msgstr "Větev, ve které budou uložena síťová zařízení"
 
 #: config/systems/class_systemsPluginConfig.inc:73
 msgid "Phone RDN"
-msgstr ""
+msgstr "Relativní rozlišený název telefonu"
 
 #: config/systems/class_systemsPluginConfig.inc:73
 msgid "Branch in which phones will be stored"
-msgstr ""
+msgstr "Větev ve které budou telefony ukládány"
 
 #: config/systems/class_systemsPluginConfig.inc:78
 msgid "Mobile phone RDN"
@@ -1569,7 +1582,7 @@ msgstr "Obecné"
 
 #: admin/ogroups/goto/termgroup.tpl.c:11
 msgid "NTP server"
-msgstr ""
+msgstr "Časový (NTP) server"
 
 #: admin/ogroups/goto/termgroup.tpl.c:14
 msgid "Choose server to use for synchronizing time"
@@ -1746,7 +1759,7 @@ msgstr "Nahrát"
 
 #: admin/systems/ppd/printerPPDDialog.tpl.c:17
 msgid "Options"
-msgstr "Volby"
+msgstr "Předvolby"
 
 #: admin/systems/ppd/remove_ppd.tpl.c:5
 msgid "The ppd file will be removed from the server and can not be restored."
@@ -1758,7 +1771,7 @@ msgstr "Obecné"
 
 #: admin/systems/printer.tpl.c:5
 msgid "Printer name"
-msgstr "název tiskárny"
+msgstr "Název tiskárny"
 
 #: admin/systems/printer.tpl.c:14
 msgid "Details"
@@ -1819,9 +1832,9 @@ msgstr "Je zde argonaut server, provozovaný na %1 (%3://%2:%4)"
 #: addons/dashboard/systems_stats.tpl.c:8
 msgid "Only one system is configured to run an argonaut client."
 msgid_plural "%1 systems are configured to run an argonaut client."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Jen na jediném systému je nastavený argonaut klient."
+msgstr[1] "%1 systémy mají nastaveného argonaut klienta."
+msgstr[2] "%1 systémů má nastaveného argonaut klienta."
 
 #: addons/dashboard/systems_stats.tpl.c:11
 msgid "But no system is configured to run an argonaut client!"
@@ -1834,6 +1847,6 @@ msgid ""
 msgid_plural ""
 "%1 systems are configured to run an argonaut client, but there is no "
 "argonaut server configured!"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Systém má nastaveného argonaut klienta, ale není zde nastaven žádný argonaut server!"
+msgstr[1] "%1 systémy mají nastaveného argonaut klienta, ale není zde nastaven žádný argonaut server!"
+msgstr[2] "%1 systémů má nastaveného argonaut klienta, ale není zde nastaven žádný argonaut server!"

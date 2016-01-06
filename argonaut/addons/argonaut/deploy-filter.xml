@@ -2,22 +2,17 @@
 
 <filterdef>
   <definition>
-    <category>users</category>
+    <category>argonautQueue</category>
     <initial>true</initial>
   </definition>
 
   <search>
     <query>
       <backend>ArgonautEvents</backend>
-      <filter>(&amp;(objectClass=inetOrgPerson)$TEMPLATES$NAME(|$FUNCTIONAL$SAMBA$POSIX$MAIL))</filter>
+      <filter>(objectClass=*)</filter>
       <attribute>dn</attribute>
       <attribute>objectClass</attribute>
-      <attribute>givenName</attribute>
-      <attribute>sn</attribute>
-      <attribute>uid</attribute>
-      <attribute>userPassword</attribute>
     </query>
     <scope>auto</scope>
   </search>
-
 </filterdef>

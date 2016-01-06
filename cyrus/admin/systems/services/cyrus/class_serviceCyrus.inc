@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -65,7 +65,7 @@ class serviceCyrus extends simpleService
               new SelectAttribute(_('Option'), _('Options for contacting Cyrus server'), 'cyrusConnectOptions1', TRUE, array('notls', 'tls', 'ssl'), 'notls'),
               new SelectAttribute(_('Valide certificats'), _('Weither or not to validate server certificate on connexion'), 'cyrusConnectOptions2', FALSE, array('', '/validate-cert', '/novalidate-cert'), '', array('', 'validate', 'no-validate'))
             ),
-            '/^{(.+):(\\d+)\\/([^\\/]+)(.+)}$/',
+            '/^{(.*):(\\d+)\\/([^\\/]+)(.*)}$/',
             '{%s:%d/%s%s}'
           ),
           new StringAttribute (
@@ -89,7 +89,7 @@ class serviceCyrus extends simpleService
               new IntAttribute(_('Port'), _('Port number on which Cyrus sieve server should be contacted'), 'cyrusSieveConnectPort', FALSE, 0 /*min*/, FALSE /*max*/),
               new SelectAttribute(_('Option'), _('Options for contacting Cyrus sieve server'), 'cyrusSieveConnectOptions', TRUE, array('notls', 'tls', 'ssl'), 'notls'),
             ),
-            '/^{(.+):(\\d+)\\/([^\\/]+)}$/',
+            '/^{(.*):(\\d+)\\/([^\\/]+)}$/',
             '{%s:%d/%s}'
           )
         )

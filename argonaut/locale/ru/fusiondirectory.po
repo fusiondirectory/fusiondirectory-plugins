@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-11 22:18+0200\n"
-"PO-Revision-Date: 2015-09-01 17:22+0000\n"
+"POT-Creation-Date: 2016-01-02 22:39+0100\n"
+"PO-Revision-Date: 2016-01-02 21:42+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Russian (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr ""
 #: admin/systems/argonaut/class_argonautClient.inc:126
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
 msgid "Protocol"
-msgstr ""
+msgstr "Протокол"
 
 #: admin/systems/argonaut/class_argonautClient.inc:126
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
@@ -447,213 +447,142 @@ msgstr ""
 msgid "LTSP server"
 msgstr ""
 
-#: addons/argonaut/class_filterArgonautEvents.inc:40
-#: addons/argonaut/class_argonautQueue.inc:160
+#: addons/argonaut/class_filterArgonautEvents.inc:39
 #: addons/argonaut/class_argonautQueue.inc:260
-#: addons/argonaut/class_argonautQueue.inc:335
+#: addons/argonaut/class_argonautQueue.inc:344
+#: addons/argonaut/import_events.tpl.c:32
 msgid "Error"
 msgstr "Ошибка"
 
-#: addons/argonaut/class_filterArgonautEvents.inc:40
+#: addons/argonaut/class_filterArgonautEvents.inc:39
 #, php-format
 msgid "Cannot load queue entries: %s"
 msgstr ""
 
-#: addons/argonaut/class_argonautImportFile.inc:44
-#: addons/argonaut/class_argonautImportFile.inc:100
-#: addons/argonaut/class_argonautImportFile.inc:141
+#: addons/argonaut/class_argonautImportFile.inc:33
+#: addons/argonaut/class_argonautImportFile.inc:36
+msgid "Argonaut task import"
+msgstr ""
+
+#: addons/argonaut/class_argonautImportFile.inc:34
+msgid "Imports argonaut tasks from CSV file"
+msgstr ""
+
+#: addons/argonaut/class_argonautImportFile.inc:49
+msgid "Import actions from CSV file"
+msgstr ""
+
+#: addons/argonaut/class_argonautImportFile.inc:53
+msgid "Import a list of task into argonaut"
+msgstr ""
+
+#: addons/argonaut/class_argonautImportFile.inc:63
+msgid "Upload"
+msgstr "Загрузить"
+
+#: addons/argonaut/class_argonautImportFile.inc:67
+msgid "Import file"
+msgstr ""
+
+#: addons/argonaut/class_argonautImportFile.inc:72
+msgid "Imported tasks"
+msgstr ""
+
+#: addons/argonaut/class_argonautImportFile.inc:97
+#: addons/argonaut/class_argonautImportFile.inc:121
+#: addons/argonaut/class_argonautImportFile.inc:145
+#: addons/argonaut/class_argonautImportFile.inc:157
 #: addons/argonaut/deploy-list.xml:79
-#: addons/argonaut/argonaut_import_file.tpl.c:68
 msgid "Import"
 msgstr "Импортировать"
 
-#: addons/argonaut/class_argonautImportFile.inc:44
-msgid "file is empty"
-msgstr "файл пустой"
-
-#: addons/argonaut/class_argonautImportFile.inc:101
-msgid ""
-"Selected entries will be skipped because of errors. Do you want to proceed?"
+#: addons/argonaut/class_argonautImportFile.inc:122
+msgid "Fix the errors in your CSV file first"
 msgstr ""
 
-#: addons/argonaut/class_argonautImportFile.inc:134
+#: addons/argonaut/class_argonautImportFile.inc:138
 msgid "Infrastructure service"
 msgstr ""
 
-#: addons/argonaut/class_argonautImportFile.inc:141
+#: addons/argonaut/class_argonautImportFile.inc:145
 #, php-format
 msgid "Import complete: %s events successfully send, %s failed"
 msgstr ""
 
-#: addons/argonaut/class_argonautImportFile.inc:177
-#: addons/argonaut/argonaut_import_file.tpl.c:47
+#: addons/argonaut/class_argonautImportFile.inc:157
+msgid "file is empty"
+msgstr "файл пустой"
+
+#: addons/argonaut/class_argonautImportFile.inc:182
+#: addons/argonaut/import_events.tpl.c:23
 msgid "MAC"
 msgstr "MAC"
 
-#: addons/argonaut/class_argonautImportFile.inc:180
-#: addons/argonaut/deploy-list.xml:14
-#: addons/argonaut/argonaut_import_file.tpl.c:50
+#: addons/argonaut/class_argonautImportFile.inc:185
+#: addons/argonaut/deploy-list.xml:14 addons/argonaut/import_events.tpl.c:26
 msgid "Event"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:35
 #: addons/argonaut/class_argonautQueue.inc:41
+#: addons/argonaut/class_argonautQueue.inc:46
+#: addons/argonaut/class_argonautQueue.inc:49
 msgid "Deployment queue"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:36
+#: addons/argonaut/class_argonautQueue.inc:42
 msgid "Provide a mechanism to automatically activate systems"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:43
-#: addons/argonaut/events/eventTargetSystems-list.xml:81
-msgid "Description"
-msgstr "Описание"
-
-#: addons/argonaut/class_argonautQueue.inc:141
-msgid "immediately"
-msgstr ""
-
-#: addons/argonaut/class_argonautQueue.inc:156
-msgid "Waiting"
-msgstr ""
-
-#: addons/argonaut/class_argonautQueue.inc:159
-msgid "Show error"
-msgstr ""
-
-#: addons/argonaut/class_argonautQueue.inc:163
-msgid "Processed"
-msgstr ""
-
-#: addons/argonaut/class_argonautQueue.inc:172
-msgid "in progress"
-msgstr ""
-
-#: addons/argonaut/class_argonautQueue.inc:180
+#: addons/argonaut/class_argonautQueue.inc:92
 msgid "Permission"
 msgstr "Права"
 
-#: addons/argonaut/class_argonautQueue.inc:210
-#: addons/argonaut/events/class_DaemonEvent.inc:258
+#: addons/argonaut/class_argonautQueue.inc:122
 #: addons/argonaut/deploy-list.xml:86 addons/argonaut/deploy-list.xml:136
 msgid "Remove"
 msgstr "Удалить"
 
-#: addons/argonaut/class_argonautQueue.inc:211
+#: addons/argonaut/class_argonautQueue.inc:123
 #, php-format
 msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:257
+#: addons/argonaut/class_argonautQueue.inc:188
 msgid "Info"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:257
+#: addons/argonaut/class_argonautQueue.inc:188
 #, php-format
 msgid "%s"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:261
-#, php-format
-msgid "Required class '%s' cannot be found: job not aborted!"
-msgstr ""
-
-#: addons/argonaut/class_argonautQueue.inc:293
+#: addons/argonaut/class_argonautQueue.inc:218
 msgid "Error detail"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:335
+#: addons/argonaut/class_argonautQueue.inc:260
 #, php-format
 msgid "Cannot update queue entries."
 msgstr ""
 
-#: addons/argonaut/events/class_DaemonEvent.inc:149
-#, php-format
-msgid "Create '%s' job"
+#: addons/argonaut/class_argonautQueue.inc:328
+msgid "immediately"
 msgstr ""
 
-#: addons/argonaut/events/class_DaemonEvent.inc:220
-msgid "Minutes"
+#: addons/argonaut/class_argonautQueue.inc:340
+msgid "Waiting"
 msgstr ""
 
-#: addons/argonaut/events/class_DaemonEvent.inc:221
-msgid "Hours"
+#: addons/argonaut/class_argonautQueue.inc:343
+msgid "Show error"
 msgstr ""
 
-#: addons/argonaut/events/class_DaemonEvent.inc:222
-msgid "Days"
+#: addons/argonaut/class_argonautQueue.inc:347
+msgid "Processed"
 msgstr ""
 
-#: addons/argonaut/events/class_DaemonEvent.inc:223
-msgid "Weeks"
-msgstr ""
-
-#: addons/argonaut/events/class_DaemonEvent.inc:224
-msgid "Months"
-msgstr ""
-
-#: addons/argonaut/events/class_DaemonEvent.inc:262
-msgid "Add"
-msgstr "Добавить"
-
-#: addons/argonaut/events/class_DaemonEvent.inc:408
-msgid "Switch off"
-msgstr "Выключить"
-
-#: addons/argonaut/events/class_DaemonEvent.inc:412
-msgid "Reboot"
-msgstr "Перезагрузить"
-
-#: addons/argonaut/events/class_DaemonEvent.inc:416
-msgid "Wake up"
-msgstr "Вернуть в обычный режим"
-
-#: addons/argonaut/events/class_DaemonEvent.inc:420
-msgid "Software update"
-msgstr "Обновить программное обеспечение"
-
-#: addons/argonaut/events/class_DaemonEvent.inc:424
-msgid "(Re)Install"
-msgstr ""
-
-#: addons/argonaut/events/eventTargetSystems-list.xml:11
-msgid "List of target systems"
-msgstr ""
-
-#: addons/argonaut/events/eventTargetSystems-list.xml:15
-msgid "Server"
-msgstr "Сервер"
-
-#: addons/argonaut/events/eventTargetSystems-list.xml:23
-msgid "Workstation"
-msgstr "Рабочая станция"
-
-#: addons/argonaut/events/eventTargetSystems-list.xml:31
-msgid "Terminal"
-msgstr "Терминал"
-
-#: addons/argonaut/events/eventTargetSystems-list.xml:39
-msgid "Winstation"
-msgstr "Рабочая станция Windows"
-
-#: addons/argonaut/events/eventTargetSystems-list.xml:47
-#: addons/argonaut/argonaut_import_file.tpl.c:53
-msgid "Object group"
-msgstr "Объект группы"
-
-#: addons/argonaut/events/eventTargetSystems-list.xml:73
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:20
-msgid "Name"
-msgstr "Фамилия"
-
-#: addons/argonaut/events/eventTargetSystems-list.xml:89
-#: addons/argonaut/argonaut_import_file.tpl.c:62
-msgid "IP"
-msgstr "IP"
-
-#: addons/argonaut/events/eventTargetSystems-list.xml:97
-msgid "Mac"
+#: addons/argonaut/class_argonautQueue.inc:356
+msgid "in progress"
 msgstr ""
 
 #: addons/argonaut/deploy-list.xml:10
@@ -661,7 +590,6 @@ msgid "List of queued jobs"
 msgstr ""
 
 #: addons/argonaut/deploy-list.xml:27
-#: addons/argonaut/events/DaemonEvent.tpl.c:17
 msgid "Target"
 msgstr ""
 
@@ -670,16 +598,17 @@ msgid "Task"
 msgstr ""
 
 #: addons/argonaut/deploy-list.xml:43
+#: addons/argonaut/class_argonautAction.inc:132
 msgid "Period"
 msgstr ""
 
 #: addons/argonaut/deploy-list.xml:51
-#: addons/argonaut/events/DaemonEvent.tpl.c:2
+#: addons/argonaut/class_argonautAction.inc:97
+#: addons/argonaut/class_argonautAction.inc:107
 msgid "Schedule"
 msgstr ""
 
 #: addons/argonaut/deploy-list.xml:59
-#: addons/argonaut/events/DaemonEvent.tpl.c:11
 msgid "Status"
 msgstr "Состояние"
 
@@ -703,6 +632,89 @@ msgstr ""
 msgid "View logs"
 msgstr ""
 
+#: addons/argonaut/class_argonautAction.inc:27
+#: addons/argonaut/class_argonautAction.inc:126
+msgid "Hours"
+msgstr ""
+
+#: addons/argonaut/class_argonautAction.inc:32
+#: addons/argonaut/class_argonautAction.inc:126
+msgid "Minutes"
+msgstr ""
+
+#: addons/argonaut/class_argonautAction.inc:37
+msgid "Seconds"
+msgstr ""
+
+#: addons/argonaut/class_argonautAction.inc:53
+msgid "Date"
+msgstr "Дата"
+
+#: addons/argonaut/class_argonautAction.inc:58
+msgid "Time"
+msgstr ""
+
+#: addons/argonaut/class_argonautAction.inc:81
+#: addons/argonaut/class_argonautAction.inc:84
+msgid "Argonaut task"
+msgstr ""
+
+#: addons/argonaut/class_argonautAction.inc:82
+msgid "Schedule an argonaut task"
+msgstr ""
+
+#: addons/argonaut/class_argonautAction.inc:111
+msgid "Periodical job"
+msgstr ""
+
+#: addons/argonaut/class_argonautAction.inc:111
+msgid "Wether this job should repeat in time"
+msgstr ""
+
+#: addons/argonaut/class_argonautAction.inc:115
+msgid "How often this task should be repeated"
+msgstr ""
+
+#: addons/argonaut/class_argonautAction.inc:126
+msgid "Days"
+msgstr ""
+
+#: addons/argonaut/class_argonautAction.inc:126
+msgid "Weeks"
+msgstr ""
+
+#: addons/argonaut/class_argonautAction.inc:126
+msgid "Months"
+msgstr ""
+
+#: addons/argonaut/class_argonautAction.inc:137
+msgid "Targets"
+msgstr ""
+
+#: addons/argonaut/class_argonautAction.inc:140
+msgid "Targets for this task"
+msgstr ""
+
+#: addons/argonaut/class_argonautAction.inc:248
+msgid "Switch off"
+msgstr "Выключить"
+
+#: addons/argonaut/class_argonautAction.inc:252
+msgid "Reboot"
+msgstr "Перезагрузить"
+
+#: addons/argonaut/class_argonautAction.inc:256
+msgid "Wake up"
+msgstr "Вернуть в обычный режим"
+
+#: addons/argonaut/class_argonautAction.inc:260
+msgid "Software update"
+msgstr "Обновить программное обеспечение"
+
+#: addons/argonaut/class_argonautAction.inc:264
+msgid "(Re)Install"
+msgstr ""
+
 #: include/class_supportDaemon.inc:107
 msgid "Multiple argonaut server found. Only one is supported"
 msgstr ""
@@ -711,171 +723,46 @@ msgstr ""
 msgid "There is no argonaut server configured"
 msgstr ""
 
-#: include/class_supportDaemon.inc:627
+#: include/class_supportDaemon.inc:599
 #, php-format
 msgid "Could not read \"%s\"!"
 msgstr ""
 
-#: include/class_supportDaemon.inc:631
+#: include/class_supportDaemon.inc:603
 #, php-format
 msgid "\"%s\" is not a file!"
 msgstr ""
 
-#: addons/argonaut/argonaut_import_file.tpl.c:2
-msgid "Import jobs"
-msgstr ""
-
-#: addons/argonaut/argonaut_import_file.tpl.c:5
+#: addons/argonaut/import_events.tpl.c:2
 msgid ""
 "You can import a list of jobs into the FusionDirectory job queue. This "
 "should be a semicolon seperated list of items in the following format:"
 msgstr ""
 
-#: addons/argonaut/argonaut_import_file.tpl.c:8
+#: addons/argonaut/import_events.tpl.c:5
 msgid "timestamp"
 msgstr "Дата"
 
-#: addons/argonaut/argonaut_import_file.tpl.c:11
+#: addons/argonaut/import_events.tpl.c:8
 msgid "MAC-address"
 msgstr "MAC-адрес"
 
-#: addons/argonaut/argonaut_import_file.tpl.c:14
+#: addons/argonaut/import_events.tpl.c:11
 msgid "job type"
 msgstr ""
 
-#: addons/argonaut/argonaut_import_file.tpl.c:17
+#: addons/argonaut/import_events.tpl.c:14
 msgid "object group"
 msgstr ""
 
-#: addons/argonaut/argonaut_import_file.tpl.c:20
-msgid "import base"
+#: addons/argonaut/import_events.tpl.c:17
+msgid "Available job types: %1"
 msgstr ""
 
-#: addons/argonaut/argonaut_import_file.tpl.c:23
-msgid "full hostname"
-msgstr ""
-
-#: addons/argonaut/argonaut_import_file.tpl.c:26
-msgid "IP-address"
-msgstr "IP-адрес"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:29
-msgid "DHCP group"
-msgstr ""
-
-#: addons/argonaut/argonaut_import_file.tpl.c:32
-msgid "Example"
-msgstr "Пример"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:35
-msgid "Select list to import"
-msgstr ""
-
-#: addons/argonaut/argonaut_import_file.tpl.c:38
-msgid "Browse"
-msgstr "Просмотр"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:41
-msgid "Upload"
-msgstr "Загрузить"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:44
-#: addons/argonaut/events/DaemonEvent.tpl.c:20
+#: addons/argonaut/import_events.tpl.c:20
 msgid "Timestamp"
 msgstr "Дата"
 
-#: addons/argonaut/argonaut_import_file.tpl.c:56
-msgid "Base"
-msgstr "Суффикс"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:59
-msgid "FQDN"
-msgstr ""
-
-#: addons/argonaut/argonaut_import_file.tpl.c:65
-msgid "DHCP"
-msgstr "DHCP"
-
-#: addons/argonaut/events/target_list.tpl.c:2
-msgid "Apply"
-msgstr "Применить"
-
-#: addons/argonaut/events/target_list.tpl.c:5
-msgid "Cancel"
-msgstr "Отмена"
-
-#: addons/argonaut/events/DaemonEvent.tpl.c:5
-msgid "System list"
-msgstr ""
-
-#: addons/argonaut/events/DaemonEvent.tpl.c:8
-msgid "ID"
-msgstr ""
-
-#: addons/argonaut/events/DaemonEvent.tpl.c:14
-msgid "Result"
-msgstr ""
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:2
-msgid "Filter"
-msgstr "Фильтр"
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:5
-msgid "Show servers"
-msgstr "Показывать сервера"
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:8
-msgid "Show workstations"
-msgstr "Показывать рабочие станции"
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:11
-msgid "Show terminals"
-msgstr "Показывать терминалы"
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:14
-msgid "Show winstations"
-msgstr ""
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:17
-msgid "Filter by IP address range"
-msgstr ""
-
-#: addons/argonaut/events/timestamp_select.tpl.c:2
-msgid "Year"
-msgstr ""
-
-#: addons/argonaut/events/timestamp_select.tpl.c:5
-msgid "Month"
-msgstr ""
-
-#: addons/argonaut/events/timestamp_select.tpl.c:8
-msgid "Day"
-msgstr ""
-
-#: addons/argonaut/events/timestamp_select.tpl.c:11
-msgid "Hour"
-msgstr ""
-
-#: addons/argonaut/events/timestamp_select.tpl.c:14
-msgid "Minute"
-msgstr ""
-
-#: addons/argonaut/events/timestamp_select.tpl.c:17
-msgid "Second"
-msgstr ""
-
-#: addons/argonaut/events/timestamp_select.tpl.c:20
-msgid "Periodical job"
-msgstr ""
-
-#: addons/argonaut/events/timestamp_select.tpl.c:23
-msgid "Job intervall"
-msgstr ""
-
-#: addons/argonaut/remove.tpl.c:2
-msgid "Warning"
-msgstr "Предупреждение"
-
-#: addons/argonaut/remove.tpl.c:5
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Итак - если вы уверены - нажмите 'Удалить', чтобы продолжить или 'Отмена' чтобы прервать."
+#: addons/argonaut/import_events.tpl.c:29
+msgid "Object group"
+msgstr "Объект группы"

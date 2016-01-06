@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-11 22:18+0200\n"
-"PO-Revision-Date: 2015-08-18 15:39+0000\n"
+"POT-Creation-Date: 2016-01-02 22:39+0100\n"
+"PO-Revision-Date: 2015-12-07 13:35+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Latvian (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:371
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:48
 msgid "Error"
-msgstr ""
+msgstr "Kļūda"
 
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:59
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:73
@@ -40,12 +40,12 @@ msgstr ""
 #: admin/systems/services/dhcp/class_dhcpSubClass.inc:86
 #: admin/systems/services/dhcp/class_dhcpSubClass.inc:89
 #: admin/systems/services/dhcp/class_dhcpSubClass.inc:97
-#: admin/systems/services/dhcp/class_dhcpDnsZone.inc:167
+#: admin/systems/services/dhcp/class_dhcpDnsZone.inc:165
 #: admin/systems/services/dhcp/class_dhcpGroup.inc:87
 #: admin/systems/services/dhcp/class_dhcpGroup.inc:90
 #: admin/systems/services/dhcp/class_dhcpGroup.inc:98
-#: admin/systems/services/dhcp/class_dhcpHost.inc:132
-#: admin/systems/services/dhcp/class_dhcpHost.inc:140
+#: admin/systems/services/dhcp/class_dhcpHost.inc:127
+#: admin/systems/services/dhcp/class_dhcpHost.inc:138
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:48
 #: admin/systems/services/dhcp/class_dhcpClass.inc:87
 #: admin/systems/services/dhcp/class_dhcpClass.inc:90
@@ -57,7 +57,7 @@ msgstr ""
 #: admin/systems/services/dhcp/dhcp_host.tpl.c:5
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:5
 msgid "Name"
-msgstr ""
+msgstr "Vārds "
 
 #: admin/systems/services/dhcp/class_dhcpPool.inc:119
 #: admin/systems/services/dhcp/class_dhcpPool.inc:123
@@ -91,18 +91,18 @@ msgstr ""
 msgid "Network range"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_dhcpDnsZone.inc:150
+#: admin/systems/services/dhcp/class_dhcpDnsZone.inc:145
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:5
 msgid "DNS zone"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_dhcpDnsZone.inc:154
+#: admin/systems/services/dhcp/class_dhcpDnsZone.inc:149
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:41
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:8
 msgid "DNS server"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_dhcpDnsZone.inc:158
+#: admin/systems/services/dhcp/class_dhcpDnsZone.inc:153
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:11
 msgid "Key DN"
 msgstr ""
@@ -119,7 +119,7 @@ msgstr ""
 msgid "Token Ring"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_dhcpHost.inc:149
+#: admin/systems/services/dhcp/class_dhcpHost.inc:147
 #: admin/systems/services/dhcp/dhcp_host.tpl.c:20
 msgid "Hardware address"
 msgstr ""
@@ -258,7 +258,7 @@ msgstr ""
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:583
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:588
 msgid "LDAP error"
-msgstr ""
+msgstr "LDAP kļūda"
 
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:197
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:14
@@ -290,13 +290,13 @@ msgstr ""
 msgid "DH"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_dhcpTSigKey.inc:114
-#: admin/systems/services/dhcp/class_dhcpTSigKey.inc:127
+#: admin/systems/services/dhcp/class_dhcpTSigKey.inc:109
+#: admin/systems/services/dhcp/class_dhcpTSigKey.inc:125
 #: admin/systems/services/dhcp/dhcp_tsigkey.tpl.c:5
 msgid "Key name"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_dhcpTSigKey.inc:118
+#: admin/systems/services/dhcp/class_dhcpTSigKey.inc:113
 #: admin/systems/services/dhcp/dhcp_tsigkey.tpl.c:14
 msgid "Key"
 msgstr ""
@@ -435,7 +435,7 @@ msgstr ""
 
 #: admin/systems/services/dhcp/remove_dhcp.tpl.c:2
 msgid "Warning"
-msgstr ""
+msgstr "Brīdinājums"
 
 #: admin/systems/services/dhcp/remove_dhcp.tpl.c:5
 msgid ""
@@ -481,7 +481,7 @@ msgstr ""
 
 #: admin/systems/services/dhcp/dhcpNewSection.tpl.c:14
 msgid "Create"
-msgstr ""
+msgstr "Izveidot"
 
 #: admin/systems/services/dhcp/dhcp_advanced.tpl.c:2
 msgid "Hide advanced settings"

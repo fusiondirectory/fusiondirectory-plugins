@@ -277,6 +277,28 @@ class fdRPCService
   }
 
   /*!
+   * \brief List activated tabs on an object
+   */
+  protected function _listTabs($type, $dn = NULL)
+  {
+    $this->checkAccess($type, NULL, $dn);
+
+    if ($dn === NULL) {
+      $tabobject = objects::create($type);
+    } else {
+      $tabobject = objects::open($dn, $type);
+    }
+
+    $tabs = array();
+    foreach ($tabobject->by_object as $tab => $obj) {
+      if ($obj->is_account || $obj->ignore_account) {
+        $tabs[$tab] = $tabobject->by_name[$tab];
+      }
+    }
+    return $tabs;
+  }
+
+  /*!
    * \brief Deactivate a tab of an object
    */
   protected function _removetab($type, $dn, $tab)

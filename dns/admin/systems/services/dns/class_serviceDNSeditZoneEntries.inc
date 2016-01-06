@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -505,7 +505,7 @@ class servDNSeditZoneEntries extends plugin
         if (!tests::is_dns_name($name)) {
           $message[] = sprintf($template, $name, $type, $value, _("Entry should be a DNS name."), "example");
         }
-        if (!tests::is_ip($value)) {
+        if (!tests::is_ipv4($value)) {
           $message[] = sprintf($template, $name, $type, $value, _("Value should be an IPv4 address."), "192.168.1.10");
         }
         break;

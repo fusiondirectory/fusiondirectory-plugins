@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -118,6 +118,24 @@ class SambaFlagsAttribute extends FlagsAttribute
     $value .= ']';
     return $value;
   }
+}
+
+class WinstationsAttribute extends SystemsAttribute
+{
+  protected $dialogClass = 'WinstationSelectDialog';
+}
+
+class WinstationSelectDialog extends GenericSelectDialog
+{
+  protected $dialogClass = 'winstationSelect';
+}
+
+class winstationSelect extends simpleSelectManagement
+{
+  protected $objectTypes = array(
+    'winstation'
+  );
+  protected $autoFilterAttributes = array('dn', 'cn', 'uid', 'description');
 }
 
 class sambaAccount extends simplePlugin
@@ -334,7 +352,7 @@ class sambaAccount extends simplePlugin
         'attrs' => array(
           new CommaListAttribute(
             'sambaUserWorkstations',
-            new SystemsAttribute(
+            new WinstationsAttribute(
               _('Allow connection from these workstations only'), _('Only allow this user to connect to this list of hosts'),
               'sambaUserWorkstations_ta', FALSE
             )

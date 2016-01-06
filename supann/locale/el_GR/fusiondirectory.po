@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Manolis Saldaris <Ustramator@gmail.com>, 2015
 # Nikos Charonitakis <charosn@her.forthnet.gr>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-11 22:19+0200\n"
-"PO-Revision-Date: 2015-10-07 10:01+0000\n"
-"Last-Translator: Kostas Papadimas <pkst@eellak.gr>\n"
+"POT-Creation-Date: 2016-01-02 22:39+0100\n"
+"PO-Revision-Date: 2015-11-09 21:10+0000\n"
+"Last-Translator: Manolis Saldaris <Ustramator@gmail.com>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -97,7 +98,7 @@ msgstr "Τύπος οντότητας"
 
 #: admin/supannStructures/class_entite.inc:85
 msgid "The best SUPANN type that fits this entity"
-msgstr ""
+msgstr "Ο βέλτιστος τύπος SUPANN που ταιριάζει σε αυτή την οντότητα"
 
 #: admin/supannStructures/class_entite.inc:89
 msgid "Entity code"
@@ -105,7 +106,7 @@ msgstr "Κωδικός οντότητα"
 
 #: admin/supannStructures/class_entite.inc:89
 msgid "The SUPANN code of this entity"
-msgstr "Ο κωδικός SUPANN για αυτλη την οντότητα"
+msgstr "Ο κωδικός SUPANN για αυτή την οντότητα"
 
 #: admin/supannStructures/class_entite.inc:94
 msgid "Parent entity"
@@ -121,21 +122,21 @@ msgstr "ID αναφοράς"
 
 #: admin/supannStructures/class_entite.inc:98
 msgid "SUPANN reference ID of this entity"
-msgstr ""
+msgstr "ID αναφοράς του SUPANN για αυτή την οντότητα"
 
 #: admin/supannStructures/class_etablissement.inc:31
 #: personal/supann/class_supannAccount.inc:326
 #: personal/supann/class_supannAccount.inc:365
 msgid "Establishment"
-msgstr ""
+msgstr "Εγκαθίδρυση"
 
 #: admin/supannStructures/class_etablissement.inc:32
 msgid "SUPANN Establishment Settings"
-msgstr ""
+msgstr "Ρυθμίσεις εγκαθίδρυση SUPANN"
 
 #: admin/supannStructures/class_etablissement.inc:35
 msgid "SUPANN Establishment"
-msgstr ""
+msgstr "Εγκαθίδρυση SUPANN"
 
 #: admin/supannStructures/class_etablissement.inc:52
 msgid "Properties"
@@ -143,19 +144,19 @@ msgstr "Ιδιότητες"
 
 #: admin/supannStructures/class_etablissement.inc:55
 msgid "Root Establishment"
-msgstr ""
+msgstr "Κύρια εγκαθίδρυση "
 
 #: admin/supannStructures/class_etablissement.inc:55
 msgid "Set this Establishment as the root one"
-msgstr ""
+msgstr "Ορισρμός αυτής της εγκαθίδρυση σαν κύρια"
 
 #: admin/supannStructures/class_etablissement.inc:59
 msgid "The name to write in the o attribute for this Establishment"
-msgstr ""
+msgstr "Το όνομα που θα εγγράφεται στο γνώρισμα o για αυτή την Τοποθέτηση"
 
 #: admin/supannStructures/class_etablissement.inc:63
 msgid "A short description of this Establishment"
-msgstr ""
+msgstr "Μια σύντομη περιγραφή της Τοποθέτησης"
 
 #: admin/supannStructures/class_etablissement.inc:69
 #: admin/supannStructures/class_etablissement.inc:72
@@ -164,7 +165,7 @@ msgstr "Τοποθεσία"
 
 #: admin/supannStructures/class_etablissement.inc:72
 msgid "Usually the city where this Establishment is"
-msgstr ""
+msgstr "Συνήθως η πόλη όπου βρίσκεται η Τοποθέτηση"
 
 #: admin/supannStructures/class_etablissement.inc:76
 msgid "Address"
@@ -172,15 +173,15 @@ msgstr "Διεύθυνση"
 
 #: admin/supannStructures/class_etablissement.inc:76
 msgid "The postal address of this Establishment"
-msgstr ""
+msgstr "Η ταχυδρομική διεύθυνση της Τοποθέτησης"
 
 #: admin/supannStructures/class_etablissement.inc:80
 msgid "Phone number for this Establishment"
-msgstr ""
+msgstr "Αριθμός τηλεφώνου για αυτή την Τοποθέτηση"
 
 #: admin/supannStructures/class_etablissement.inc:84
 msgid "Fax number for this Establishment"
-msgstr ""
+msgstr "Ο αριθμός φαξ για αυτή την Εγκατάσταση"
 
 #: admin/supannStructures/class_etablissement.inc:90
 msgid "SUPANN properties"
@@ -188,11 +189,11 @@ msgstr "Ιδιότητες SUPANN"
 
 #: admin/supannStructures/class_etablissement.inc:93
 msgid "Establishment code"
-msgstr ""
+msgstr "Κωδικός Εγκατάστασης"
 
 #: admin/supannStructures/class_etablissement.inc:93
 msgid "The code of this Establishment (must have a prefix between {})"
-msgstr ""
+msgstr "Ο κωδικός αυτής της Εγκατάστασης (πρέπει να υπάρχει ένα πρόθεμα μεταξύ {})"
 
 #: admin/supannStructures/class_etablissement.inc:98
 msgid "SUPANN code"
@@ -200,7 +201,7 @@ msgstr "Κωδικός SUPANN"
 
 #: admin/supannStructures/class_etablissement.inc:98
 msgid "The SUPANN code for this Establishment"
-msgstr ""
+msgstr "Ο κωδικός SUPANN για αυτή την Εγκατάσταση"
 
 #: admin/supannStructures/class_etablissement.inc:103
 msgid "Legal name"
@@ -216,7 +217,7 @@ msgstr "URI αρχικής σελίδας"
 
 #: admin/supannStructures/class_etablissement.inc:107
 msgid "The URI of this Establishment website home page"
-msgstr ""
+msgstr "Το URI της αρχικής σελίδας του ιστότοπου της Εγκατάστασης"
 
 #: admin/supannStructures/class_etablissement.inc:111
 msgid "Institution URI"
@@ -224,7 +225,7 @@ msgstr ""
 
 #: admin/supannStructures/class_etablissement.inc:111
 msgid "The URI of this Establishment institution website"
-msgstr ""
+msgstr "Το URI του ιστότοπου της Εγκατάστασης"
 
 #: admin/supannStructures/class_etablissement.inc:115
 msgid "White pages URI"
@@ -232,7 +233,7 @@ msgstr ""
 
 #: admin/supannStructures/class_etablissement.inc:115
 msgid "The URI of this Establishment white pages"
-msgstr ""
+msgstr "Το URI των λευκών σελίδων της Εγκατάστασης"
 
 #: admin/supannStructures/class_etablissement.inc:148
 #: admin/supannStructures/class_etablissement.inc:198
@@ -626,14 +627,24 @@ msgstr "Ρύθμιση SUPANN"
 msgid "FusionDirectory SUPANN plugin configuration"
 msgstr "Ρύθμιση προσθέτου FusionDirectory SUPANN"
 
-#: config/supann/class_supannConfig.inc:42
+#: config/supann/class_supannConfig.inc:41
 msgid "SUPANN"
 msgstr "SUPANN"
 
-#: config/supann/class_supannConfig.inc:45
+#: config/supann/class_supannConfig.inc:44
 msgid "SUPANN RDN"
 msgstr ""
 
-#: config/supann/class_supannConfig.inc:45
+#: config/supann/class_supannConfig.inc:44
 msgid "Branch in which SUPANN structures will be stored"
+msgstr ""
+
+#: config/supann/class_supannConfig.inc:49
+msgid "SUPANN mail for recovery"
+msgstr ""
+
+#: config/supann/class_supannConfig.inc:49
+msgid ""
+"Allow the use of mail addresses from the personal mail address field from "
+"SUPANN account for password recovery"
 msgstr ""

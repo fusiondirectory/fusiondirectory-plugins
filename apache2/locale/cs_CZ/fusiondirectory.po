@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-11 22:18+0200\n"
-"PO-Revision-Date: 2015-05-30 14:12+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2016-01-02 22:39+0100\n"
+"PO-Revision-Date: 2015-12-04 08:41+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +24,7 @@ msgstr "Služba Apache"
 
 #: admin/systems/services/apache2/class_serviceApacheVhost.inc:80
 msgid "Apache virtual host service"
-msgstr "Služba virtuálních strojů Apache"
+msgstr "Služba virtuálních hostitelů Apache"
 
 #: admin/systems/services/apache2/class_serviceApacheVhost.inc:80
 msgid "Services"
@@ -32,7 +32,7 @@ msgstr "Služby"
 
 #: admin/systems/services/apache2/class_serviceApacheVhost.inc:84
 msgid "Virtual hosts"
-msgstr "virtuální stroje"
+msgstr "Virtuální hostitelé"
 
 #: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:11
 msgid "List of Apache Vhost"
@@ -69,11 +69,11 @@ msgstr "Odstranit"
 
 #: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:109
 msgid "Edit host"
-msgstr "Upravit počítač"
+msgstr "Upravit záznam stroje"
 
 #: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:122
 msgid "Remove host"
-msgstr "Odebrat počítač"
+msgstr "Odebrat stroj"
 
 #: admin/systems/services/apache2/class_serviceApacheVhostManagement.inc:24
 msgid "Vhosts"
@@ -86,7 +86,7 @@ msgstr "Správa virtuálních hostitelů Apache"
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:48
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:49
 msgid "Apache2"
-msgstr ""
+msgstr "Apache2"
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:50
 msgid "This Plugin is for Apache server"
@@ -187,4 +187,4 @@ msgstr "Uložit"
 
 #: admin/systems/services/apache2/serviceApacheVhostEditFooter.tpl.c:5
 msgid "Cancel"
-msgstr "Zrušit"
+msgstr "Storno"

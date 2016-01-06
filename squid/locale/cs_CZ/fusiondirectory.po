@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-11 22:19+0200\n"
-"PO-Revision-Date: 2015-05-30 13:53+0000\n"
+"POT-Creation-Date: 2016-01-02 22:39+0100\n"
+"PO-Revision-Date: 2015-12-03 19:04+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -20,15 +20,15 @@ msgstr ""
 
 #: personal/squid/class_proxyAccount.inc:65
 msgid "Proxy"
-msgstr ""
+msgstr "Proxy"
 
 #: personal/squid/class_proxyAccount.inc:66
 msgid "This allow to store basic squid settings in ldap for each user"
-msgstr "Toto umožňuje uchovávat v ldap základní nastavení pro squid pro každého z uživatelů"
+msgstr "Toto umožňuje uchovávat základní nastavení pro squid proxy v ldap, pro každého z uživatelů zvlášť"
 
 #: personal/squid/class_proxyAccount.inc:84
 msgid "Proxy account"
-msgstr "Účet proxy"
+msgstr "Účet pro proxy"
 
 #: personal/squid/class_proxyAccount.inc:90
 msgid "Filter unwanted content (i.e. pornographic or violence related)"
@@ -40,7 +40,7 @@ msgstr ""
 
 #: personal/squid/class_proxyAccount.inc:97
 msgid "Working Start"
-msgstr "Začátek provozní doby"
+msgstr "Začátek pracovní doby"
 
 #: personal/squid/class_proxyAccount.inc:100
 #: personal/squid/class_proxyAccount.inc:112
@@ -53,11 +53,11 @@ msgstr ""
 
 #: personal/squid/class_proxyAccount.inc:106
 msgid "Limit proxy access to working time"
-msgstr "Omezit přístup k proxy jen na pracovní dobu."
+msgstr "Omezit přístup k proxy jen na pracovní dobu"
 
 #: personal/squid/class_proxyAccount.inc:109
 msgid "Working Stop"
-msgstr "Konec provozní doby"
+msgstr "Konec pracovní doby"
 
 #: personal/squid/class_proxyAccount.inc:112
 msgid "-"
@@ -65,7 +65,7 @@ msgstr "–"
 
 #: personal/squid/class_proxyAccount.inc:113
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #: personal/squid/class_proxyAccount.inc:113
 msgid "MinuteStop"

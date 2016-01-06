@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-11 22:18+0200\n"
-"PO-Revision-Date: 2015-05-30 14:02+0000\n"
+"POT-Creation-Date: 2016-01-02 22:39+0100\n"
+"PO-Revision-Date: 2016-01-02 21:41+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Arabic (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/ar/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: admin/debconfProfile/class_debconfProfileManagement.inc:32
-#: admin/systems/debconf/class_debconfStartup.inc:111
+#: admin/systems/debconf/class_debconfStartup.inc:33
 msgid "Debconf"
 msgstr ""
 
@@ -92,44 +92,28 @@ msgstr ""
 msgid "Import"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:65
+#: admin/systems/debconf/class_debconfStartup.inc:34
+msgid "Debconf preseed startup"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:46
 msgid "Debconf settings"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:68
+#: admin/systems/debconf/class_debconfStartup.inc:49
 msgid "Profile"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:68
+#: admin/systems/debconf/class_debconfStartup.inc:49
 msgid "Debconf preseed profile to be used for installation"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:72
+#: admin/systems/debconf/class_debconfStartup.inc:53
 msgid "Release"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:72
+#: admin/systems/debconf/class_debconfStartup.inc:53
 msgid "Debian release to install"
-msgstr ""
-
-#: admin/systems/debconf/class_debconfStartup.inc:77
-msgid "Boot kernel"
-msgstr ""
-
-#: admin/systems/debconf/class_debconfStartup.inc:77
-msgid "Linux kernel to be installed and booted"
-msgstr ""
-
-#: admin/systems/debconf/class_debconfStartup.inc:81
-msgid "Boot kernel parameters"
-msgstr ""
-
-#: admin/systems/debconf/class_debconfStartup.inc:81
-msgid "Linux kernel parameters to be ran"
-msgstr ""
-
-#: admin/systems/debconf/class_debconfStartup.inc:112
-msgid "Debconf preseed startup"
 msgstr ""
 
 #: admin/debconfProfile/debconfProfile-filter.tpl.c:2

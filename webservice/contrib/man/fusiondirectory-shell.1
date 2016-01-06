@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "FUSIONDIRECTORY-SHELL 1"
-.TH FUSIONDIRECTORY-SHELL 1 "2015-09-22" "FusionDirectory 1.0.9" "FusionDirectory Documentation"
+.TH FUSIONDIRECTORY-SHELL 1 "2016-01-05" "FusionDirectory 1.0.9.2" "FusionDirectory Documentation"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -142,7 +142,7 @@
 fusiondirectory\-shell \- A shell to act on FusionDirectory handled objects
 .SH "SYNOPSIS"
 .IX Header "SYNOPSIS"
-\&\fBfusiondirectory-shell\fR [\fIoptions\fR]
+\&\fBfusiondirectory-shell\fR [\-h] [\-u \fI\s-1URL\s0\fR] [\-c \fI\s-1FILE\s0\fR] \-l \fI\s-1LOGIN\s0\fR (\-p \fI\s-1PWD\s0\fR | \-P) [\-s \fI\s-1LDAPSERVER\s0\fR]
 .SH "DESCRIPTION"
 .IX Header "DESCRIPTION"
 \&\fBfusiondirectory-shell\fR will connect you to FusionDirectory webservice and allow you to list, display and alter objects.
@@ -151,9 +151,9 @@ fusiondirectory\-shell \- A shell to act on FusionDirectory handled objects
 .IP "\fB\-h\fR, \fB\-\-help\fR" 8
 .IX Item "-h, --help"
 Print a brief help message and exits.
-.IP "\fB\-u\fR, \fB\-\-url\fR=\fI\s-1HOST\s0\fR" 8
-.IX Item "-u, --url=HOST"
-Use \s-1HOST\s0 instead of https://localhost/fusiondirectory/jsonrpc.php
+.IP "\fB\-u\fR, \fB\-\-url\fR=\fI\s-1URL\s0\fR" 8
+.IX Item "-u, --url=URL"
+Use \s-1URL\s0 instead of https://localhost/fusiondirectory/jsonrpc.php
 .IP "\fB\-l\fR, \fB\-\-login\fR=\fI\s-1LOGIN\s0\fR" 8
 .IX Item "-l, --login=LOGIN"
 User login to send
@@ -177,8 +177,8 @@ Please report any bugs, or post any suggestions, to the fusiondirectory mailing 
 Come Bernigaud
 .SH "LICENCE AND COPYRIGHT"
 .IX Header "LICENCE AND COPYRIGHT"
-.IP "Copyright (C) 2013\-2015 FusionDirectory project" 2
-.IX Item "Copyright (C) 2013-2015 FusionDirectory project"
+.IP "Copyright (C) 2015\-2016 FusionDirectory project" 2
+.IX Item "Copyright (C) 2015-2016 FusionDirectory project"
 .PP
 License \s-1BSD\s0
 .PP

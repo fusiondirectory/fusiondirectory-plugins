@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -73,6 +73,11 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
           'distribution', TRUE,
           array('debian','centos')
         ),
+        new StringAttribute(
+          _('Path pattern'), _('How this repository is organized (only for RPM repositories)'),
+          'pathMask', FALSE,
+          '%RELEASE%/%SECTION%/%ARCH%/'
+        ),
       ),
       $acl,
       $label
@@ -97,8 +102,10 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
         serviceRepository::getReleaseList($this->attributes[7]->getValue())
       );
       $modeChoices = array_merge(array('install', 'update'), $releaseList);
+      $this->attributes[8]->setVisible(FALSE);
     } else {
       $modeChoices = array('install', 'update');
+      $this->attributes[8]->setVisible(TRUE);
     }
     $this->attributes[4]->setChoices($modeChoices);
   }
@@ -118,6 +125,15 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
     $this->attributes[7]->setValue($arrayValues[7]);
     $this->updateFields();
     parent::setValue($values);
+  }
+
+  function readValues($value)
+  {
+    $values = parent::readValues($value);
+    if (!isset($values[8])) {
+      $values[8] = '%RELEASE%/%SECTION%/%ARCH%/';
+    }
+    return $values;
   }
 
   function resetToDefault ()
@@ -236,6 +252,62 @@ class serviceRepository extends simpleService
         msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
       }
     }
+  }
+
+  /*!
+   * \brief Get all configured repository servers
+   *
+   * \return array All configured repository servers
+  */
+  static function getServers()
+  {
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(&(FAIrepository=*)(objectClass=FAIrepositoryServer))', array('FAIrepository'));
+
+    $repos = array();
+    while ($entry = $ldap->fetch()) {
+      if (isset($entry['FAIrepository'])) {
+        // Add an entry for each Repository configured for server
+        unset($entry['FAIrepository']['count']);
+        foreach ($entry['FAIrepository'] as $repo) {
+          $tmp = explode("|", $repo);
+          $infos['URL']           = $tmp[0];
+          $infos['PARENT_SERVER'] = $tmp[1];
+          $infos['FAI_RELEASE']   = $tmp[2];
+          $infos['SECTIONS']      = (empty($tmp[3])?array():explode(',', $tmp[3]));
+          $infos['INSTALL']       = $tmp[4];
+          $infos['LOCAL']         = $tmp[5];
+          $infos['ARCHS']         = (empty($tmp[6])?array():explode(',', $tmp[6]));
+          $infos['DIST']          = (isset($tmp[7])?$tmp[7]:'debian');
+          $repos[] = $infos;
+        }
+      }
+    }
+    return $repos;
+  }
+
+  /*!
+   * \brief Get all configured customs releases based on a given release
+   *
+   * \param string $release The release concerned
+   *
+   * \return array All configured customs releases based on the given release
+  */
+  static function getCustomReleases($release)
+  {
+    $list     = array();
+    $servers  = self::getServers();
+
+    foreach ($servers as $server) {
+      if (strtolower($server['INSTALL']) == strtolower("custom:$release")) {
+        $list[$server['FAI_RELEASE']] = $server['FAI_RELEASE'];
+      }
+    }
+
+    return array_values($list);
   }
 
   static function getParentServers($distribution, $dn = NULL)

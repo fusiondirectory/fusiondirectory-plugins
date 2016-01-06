@@ -1,9 +1,8 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -37,7 +36,6 @@ class FAIreleaseAttribute extends SelectAttribute
     if (isset($this->plugin)) {
       $this->plugin->attributesAccess['FAIclass']->attributes['profil']->setChoices($this->plugin->cache['PROFILES'][$value]);
       $this->plugin->attributesAccess['FAIdebianMirror']->setChoices($this->plugin->cache['SERVERS'][$value]);
-      $this->plugin->attributesAccess['gotoBootKernel']->setRelease($value);
     }
   }
 
@@ -92,19 +90,6 @@ class faiStartup extends simplePlugin
           ),
         )
       ),
-      'startup' => array (
-        'name' => _('Startup parameters'),
-        'attrs' => array (
-          new BootKernelAttribute (
-            _('Boot kernel'),  _('Linux kernel to be installed and booted'),
-            'gotoBootKernel', FALSE
-          ),
-          new StringAttribute (
-            _('Boot kernel parameters'), _('Linux kernel parameters to be ran'),
-            'gotoKernelParameters', FALSE
-          )
-        )
-      ),
     );
   }
 
@@ -123,48 +108,33 @@ class faiStartup extends simplePlugin
    */
   function update_fai_cache()
   {
-    /* Get the list of available servers and their releases.
-     */
+    /* Get the list of available servers and their releases */
     if (!isset($this->cache['SERVERS'])) {
-      $o_queue = new supportDaemon();
-      $tmp = $o_queue->FAI_get_server();
-      if ($o_queue->is_error()) {
-        msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
-        $this->cache = array();
-        return;
-      } else {
-        $this->cache['SERVERS'] = array();
-        foreach ($tmp as $entry) {
-          if ($entry['INSTALL'] != "install") {
-              continue;
-          }
-          $rel = $entry['FAI_RELEASE'];
-          if (!isset($this->cache['SERVERS'][$rel])) {
-            $this->cache['SERVERS'][$rel] = array();
-          }
-          $this->cache['SERVERS'][$rel][] = $entry['URL'];
-          uksort($this->cache['SERVERS'][$rel], 'strnatcasecmp');
+      $tmp = serviceRepository::getServers();
+      $this->cache['SERVERS'] = array();
+      foreach ($tmp as $entry) {
+        if ($entry['INSTALL'] != 'install') {
+            continue;
         }
+        $rel = $entry['FAI_RELEASE'];
+        if (!isset($this->cache['SERVERS'][$rel])) {
+          $this->cache['SERVERS'][$rel] = array();
+        }
+        $this->cache['SERVERS'][$rel][] = $entry['URL'];
+        uksort($this->cache['SERVERS'][$rel], 'strnatcasecmp');
       }
     }
 
     if (!isset($this->cache['PROFILES'])) {
       $this->cache['PROFILES'] = array();
-      $o_queue = new supportDaemon();
       foreach (array_keys($this->cache['SERVERS']) as $release) {
-        /* Get the list of available servers and their releases. */
-        $tmp = $o_queue->FAI_get_profiles($release);
+        /* Get the list of available profiles for each release */
+        $tmp = objects::ls('faiProfile', 'cn', NULL, "(ou:dn:=$release)");
 
-        if ($o_queue->is_error()) {
-          msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
-          $this->cache = array();
-          return;
+        if (empty($tmp)) {
+          unset($this->cache['SERVERS'][$release]);
         } else {
-          if (empty($tmp)) {
-            unset($this->cache['SERVERS'][$release]);
-          } else {
-            $this->cache['PROFILES'][$release] = $tmp;
-          }
+          $this->cache['PROFILES'][$release] = $tmp;
         }
       }
     }

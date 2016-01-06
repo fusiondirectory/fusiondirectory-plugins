@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -45,7 +45,8 @@ class ldapmanager extends simplePlugin
       'plShortName'   => _('LDIF'),
       'plDescription' => _('Export/Import the ldap tree to/from LDIF format'),
       'plObjectType'  => array('ldapmanager' => array(
-        'name'  => _('LDAP Manager')
+        'name'      => _('LDAP Manager'),
+        'mainAttr'  => FALSE
       )),
 
       'plProvidedAcls'  => array()

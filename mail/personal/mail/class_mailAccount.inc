@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2007  Fabian Hicker
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -407,6 +407,24 @@ class mailAccount extends simplePlugin
       }
     }
     $this->mailMethod->disconnect();
+  }
+
+  function post_remove()
+  {
+    /* Let the mailMethod remove this mailbox */
+    if (!$this->is_template) {
+      if (!$this->mailMethod->connect()) {
+        msg_dialog::display(_('Mail error'), sprintf(_('Cannot remove mailbox, mail method cannot connect: %s'),
+              $this->mailMethod->get_error()), ERROR_DIALOG);
+      } else {
+        if (!$this->mailMethod->deleteMailbox()) {
+          msg_dialog::display(_('Mail error'), sprintf(_('Cannot remove mailbox: %s'),
+                $this->mailMethod->get_error()), ERROR_DIALOG);
+        }
+      }
+    }
+    $this->mailMethod->disconnect();
+    parent::post_remove();
   }
 }
 

@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,238 +19,491 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class faiPartition extends plugin
+class FaiPartitionSizeAttribute extends CompositeAttribute
 {
-  var $attributes = array(
-    "cn","description","FAIfsCreateOptions","FAIfsOptions","FAIfsTuneOptions",
-    "FAIfsType","FAImountOptions","FAImountPoint","FAIpartitionNr","FAIpartitionFlags","FAIdiskType",
-    "FAIpartitionSize","FAIpartitionType","FAIstate", "bootable","resize", "preserve", "preserveType",
-    "encrypted"
-  );
+  function __construct ($label, $description, $ldapName, $acl = "")
+  {
+    parent::__construct (
+      $description, $ldapName,
+      array(
+        new SelectAttribute(
+          '', _('Type of sizing - fixed, dynamic or all remaining space'),
+          'FAIpartitionSizeType', TRUE,
+          array('fixed', 'dynamic', 'remaining'), '',
+          array(_('Fixed'), _('Dynamic'), _('Remaining space'))
+        ),
+        new IntAttribute(
+          '', '',
+          'FAIpartitionSizeStart_size', FALSE,
+          1, FALSE, ''
+        ),
+        new SelectAttribute(
+          '', '',
+          'FAIpartitionSizeStart_unit', TRUE,
+          array('KB','MB','GB','TB','PB','%'), 'MB',
+          array(_('KB'),_('MB'),_('GB'),_('TB'),_('PB'),'%')
+        ),
+        new IntAttribute(
+          '-', '',
+          'FAIpartitionSizeStop_size', FALSE,
+          1, FALSE, ''
+        ),
+        new SelectAttribute(
+          '', '',
+          'FAIpartitionSizeStop_unit', TRUE,
+          array('KB','MB','GB','TB','PB','%'), 'MB',
+          array(_('KB'),_('MB'),_('GB'),_('TB'),_('PB'),'%')
+        )
+      ),
+      '',
+      '',
+      $acl, $label
+    );
+    $this->setLinearRendering(TRUE);
+    $this->attributes[0]->setSubmitForm(TRUE);
+    $this->updateAttributes();
+  }
 
-  var $cn  = "";
-  var $description  = "";
-  var $FAIfsCreateOptions = "";
-  var $FAIfsOptions = "";
-  var $FAIfsTuneOptions = "";
-  var $FAIfsType = "";
-  var $FAImountOptions = "";
-  var $FAImountPoint = "";
-  var $FAIpartitionNr = "undefined"; // Initial value for new partitions
-  var $FAIpartitionSize = "";
-  var $FAIpartitionType = "";
-  var $FAIstate = "";
-  var $FAIpartitionFlags = "";
+  function readValues($value)
+  {
+    if (preg_match('/^([0-9]{1,})(KB|MB|GB|TB|PB|%)$/', $value, $m)) {
+      // Fixed
+      return array(
+        'fixed',
+        $m[1],$m[2],
+        0,'',
+      );
+    } elseif (preg_match('/^([0-9]{1,})(KB|MB|GB|TB|PB|%)-([0-9]{1,})(KB|MB|GB|TB|PB|%)$/', $value)) {
+      // Dynamic range
+      return array(
+        'dynamic',
+        $m[1],$m[2],
+        $m[3],$m[4],
+      );
+    } elseif (preg_match('/^0?\-$/', $value)) {
+      // Dynamic range
+      return array(
+        'remaining',
+        0,'',
+        0,'',
+      );
+    }
+  }
 
-  var $FAIdiskType = "disk";
+  protected function updateAttributes()
+  {
+    switch ($this->attributes[0]->getValue()) {
+      case 'remaining':
+        $this->attributes[1]->setVisible(FALSE);
+        $this->attributes[2]->setVisible(FALSE);
+        $this->attributes[3]->setVisible(FALSE);
+        $this->attributes[4]->setVisible(FALSE);
+      break;
+      case 'fixed':
+        $this->attributes[1]->setVisible(TRUE);
+        $this->attributes[2]->setVisible(TRUE);
+        $this->attributes[3]->setVisible(FALSE);
+        $this->attributes[4]->setVisible(FALSE);
+      break;
+      case 'dynamic':
+        $this->attributes[1]->setVisible(TRUE);
+        $this->attributes[2]->setVisible(TRUE);
+        $this->attributes[3]->setVisible(TRUE);
+        $this->attributes[4]->setVisible(TRUE);
+      break;
+    }
+  }
 
-  // Size options.
-  var $FAIpartitionSizeType = "fixed";
-  var $sizeStart = 0;
-  var $sizeStop  = 0;
-  var $sizeStart_Type = "MB";
-  var $sizeStop_Type  = "MB";
+  function check ()
+  {
+    if ($this->isDisabled()) {
+      return;
+    }
+    foreach ($this->attributes as &$attribute) {
+      if (!$attribute->isVisible()) {
+        continue;
+      }
+      $error = $attribute->check();
+      if (!empty($error)) {
+        return $error;
+      }
+    }
+    unset($attribute);
+    if ($this->attributes[0]->getValue() == 'dynamic') {
+      $mp = array(
+        '%'  => 1,
+        'KB' => pow(1024,0),
+        'MB' => pow(1024,1),
+        'GB' => pow(1024,2),
+        'TB' => pow(1024,3),
+        'PB' => pow(1024,4)
+      );
+      $res1 = $this->attributes[1]->getValue() * $mp[$this->attributes[2]->getValue()];
+      $res2 = $this->attributes[3]->getValue() * $mp[$this->attributes[4]->getValue()];
+      if ($res1 > $res2) {
+        return msgPool::toobig(_('Minimum partition size'), '\''._('Maximum partition size').'\'');
+      }
+    }
+  }
 
-  //  Flags
-  var $bootable = false;
-  var $resize = false;
-  var $encrypted = false;
-  var $preserve = false;
-  var $preserveType = "always";
+  function applyPostValue()
+  {
+    parent::applyPostValue();
+    $this->updateAttributes();
+  }
 
-  var $raidDevices = array();
+  function setValue ($values)
+  {
+    parent::setValue($values);
+    $this->updateAttributes();
+  }
 
-  // Once we've exceeded the primary partition limit,
-  //  hide the the 'primary' option from the select box.
-  var $disablePrimary = FALSE;
+  function resetToDefault ()
+  {
+    parent::resetToDefault();
+    $this->updateAttributes();
+  }
+
+  function writeValues($values)
+  {
+    if ($values[0] == 'remaining') {
+      return '-';
+    }
+    $value = $values[1].$values[2];
+    if ($values[0] == 'dynamic') {
+      $value .= '-'.$values[3].$values[4];
+    }
+    return $value;
+  }
+}
+
+class FaiMountPointAttribute extends StringAttribute
+{
+  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = '/', $acl = '')
+  {
+    parent::__construct(
+      $label, $description, $ldapName, $required,
+      $defaultValue, $acl, '/^(\/|\-|swap)[a-z0-9%\/_.+-]*$/i', '/home'
+    );
+  }
+
+  function setPostValue($value)
+  {
+    if ($value == '') {
+      $value = '-';
+    }
+    parent::setPostValue($value);
+  }
+}
+
+class FaiRaidDevices extends OrderedArrayAttribute
+{
+  protected function getAttributeArrayValue($key, $value)
+  {
+    $value = parent::getAttributeArrayValue($key, $value);
+    return array(
+      $value[0],
+      ($value[1] ? 'spare' : ''),
+      ($value[2] ? 'missing' : '')
+    );
+  }
+}
+
+class faiPartition extends simplePlugin
+{
+  static function plInfo()
+  {
+    return array(
+      'plShortName'     => _('Partition entry'),
+      'plDescription'   => _('FAI partition entry'),
+      'plCategory'      => array('fai'),
+      /* No ACL, we use the one for FAIpartitions */
+      'plProvidedAcls'  => array()
+    );
+  }
+
+  static function getAttributesInfo ()
+  {
+    return array(
+      'main' => array(
+        'name'  => _('Partition'),
+        'attrs' => array(
+          new HiddenAttribute ('FAIdiskType'),
+          new HiddenAttribute ('FAIpartitionNr', FALSE, 'undefined'),
+          new SelectAttribute (
+            _('Type'), _('Partition type'),
+            'FAIpartitionType', TRUE,
+            array('primary', 'logical'), '',
+            array(_('Primary'), _('Logical'))
+          ),
+          new StringAttribute (
+            _('Name'), _('Partition name'),
+            'cn', TRUE,
+            '', 'FAIpartitions',
+            '/[a-z0-9_-]/i'
+          ),
+          new StringAttribute (
+            _('Description'), _('Short description'),
+            'description', FALSE
+          ),
+          new FaiPartitionSizeAttribute (
+            _('Size'), _('Size of this partition'),
+            'FAIpartitionSize', FALSE
+          ),
+        )
+      ),
+      'flags' => array(
+        'name'  => _('Flags'),
+        'attrs' => array(
+          new CommaListAttribute(
+            'raidDevices',
+            new FaiRaidDevices(
+              new CompositeAttribute(
+                '', 'raidDevices_composite',
+                array(
+                  new SelectAttribute(
+                    '', _('Combined physical partitions in this RAID'),
+                    'raidDevices_select', FALSE
+                  ),
+                  new BooleanAttribute(
+                    _('Spare'), _(''),
+                    'raidDevices_spare', FALSE,
+                    FALSE, '',
+                    ':spare', ''
+                  ),
+                  new BooleanAttribute(
+                    _('Missing'), _(''),
+                    'raidDevices_missing', FALSE,
+                    FALSE, '',
+                    ':missing', ''
+                  )
+                ),
+                '/^([^:]+)(:spare|)(:missing|)$/',
+                '%s%s%s',
+                '',
+                ''
+              ),
+              FALSE,
+              array(),
+              TRUE
+            )
+          ),
+          new BooleanAttribute (
+            _('Resize'), _('Resize existing partition'),
+            'resize', FALSE
+          ),
+          new BooleanAttribute (
+            _('Bootable'), _('Wether or not this partition can be booted'),
+            'bootable', FALSE
+          ),
+          new SelectAttribute (
+            _('Preserve'), _(''),
+            'preserve', FALSE,
+            array('','always','reinstall'), '',
+            array(_('Never'),_('Always'),_('Reinstall'))
+          ),
+        )
+      ),
+      'fs' => array(
+        'name'  => _('Filesystem'),
+        'attrs' => array(
+          new SelectAttribute (
+            _('Filesystem'), _('The filesystem this partition should be formatted with'),
+            'FAIfsType', TRUE,
+            array('swap','ext2','ext3','ext4','reiserfs','xfs','btrfs','-'), 'ext4',
+            array(_('swap space'),_('ext2'),_('ext3'),_('ext4'),_('reiser fs'),_('xfs'),_('btrfs'),_('LVM/RAID'))
+          ),
+          new BooleanAttribute (
+            _('Encrypted'), _('Wether or not this partition is encrypted'),
+            'encrypted', FALSE
+          ),
+          new FaiMountPointAttribute (
+            _('Mount point'), _('Mount point for this partition'),
+            'FAImountPoint', TRUE
+          ),
+        )
+      ),
+      'options' => array(
+        'name'  => _('Options'),
+        'attrs' => array(
+          new StringAttribute (
+            _('Create options'), _('Filesystem create options'),
+            'FAIfsCreateOptions', FALSE
+          ),
+          new StringAttribute (
+            _('Tune options'), _('Filesystem tune options'),
+            'FAIfsTuneOptions', FALSE
+          ),
+          new StringAttribute (
+            _('Mount options'), _('Filesystem mount options'),
+            'FAIfsOptions', FALSE
+          ),
+        )
+      )
+    );
+  }
 
   function __construct($config, $object, $parent, $type)
   {
+    parent::__construct($config);
+
+    $this->attributesAccess['FAIfsType']->setManagedAttributes(
+      array('disable' => array ('swap' => array ('FAImountPoint')))
+    );
+
     $this->parent       = $parent;
     $this->FAIdiskType  = $type;
 
-    // Check if we should be able to add primary partitions.
-    if(!$object || $object['FAIpartitionType'] == "logical"){
-      if($this->FAIdiskType == "disk"){
+    if ($this->FAIdiskType == 'disk') {
+      /* Check if we should be able to add primary partitions */
+      $disablePrimary = FALSE;
+      if (!$object || ($object['FAIpartitionType'] == 'logical')) {
         $types = array('logical' => array(), 'primary' => array());
-        foreach($this->parent->partitions as $key => $part){
+        foreach ($this->parent->partitions as $key => $part){
           $types[$part['FAIpartitionType']][$part['FAIpartitionNr']] = 1;
         }
-        if(count($types['logical']) && count($types['primary']) >= 3){
-          $this->disablePrimary = TRUE;
-        }elseif(count($types['logical']) >= 4){
-          $this->disablePrimary = TRUE;
+        if (count($types['logical']) && (count($types['primary']) >= 3)) {
+          $disablePrimary = TRUE;
+        } elseif (count($types['logical']) >= 4) {
+          $disablePrimary = TRUE;
         }
       }
+      if ($disablePrimary) {
+        $types = array('logical' => _('Logical'));
+      } else {
+        $types  = array(
+          'primary' => _('Primary'),
+          'logical' => _('Logical')
+        );
+      }
+    } elseif ($this->FAIdiskType == 'raid') {
+      $types  = array(
+        'raid0' => _('RAID 0'),
+        'raid1' => _('RAID 1'),
+        'raid5' => _('RAID 5'),
+        'raid6' => _('RAID 6')
+      );
+    } else {
+      $types = array();
+    }
+    $this->attributesAccess['FAIpartitionType']->setChoices(array_keys($types), array_values($types));
+    if (empty($types)) {
+      $this->attributesAccess['FAIpartitionType']->setVisible(FALSE);
+      $this->attributesAccess['FAIpartitionType']->setDisabled(TRUE);
     }
 
     // Load attributes from existing partition
-    if($object){
-      foreach($this->attributes as $attr){
-        if(isset($object[$attr])){
+    if ($object) {
+      if ($type == 'raid') {
+        $object['raidDevices'] = $object['FAIpartitionSize'];
+        unset($object['FAIpartitionSize']);
+      }
+      foreach ($this->attributes as $attr) {
+        if (isset($object[$attr])) {
           $this->$attr = $object[$attr];
         }
       }
 
-      if($type == "disk" || $type =="lvm"){
-
-        /* Prepare size attribute
-         * This attribute may represent a range, a fixed value
-         *  or a percentage.
-         * fixed is just a number   * 500MB
-         * range                    * 500MB-1TB
-         * remaining                * -
-         */
-        // Fixed
-        if(preg_match("/^[0-9]{1,}(KB|MB|GB|TB|PB|%|)$/",$this->FAIpartitionSize)){
-          $this->sizeStart = preg_replace("/^([0-9]*)(KB|MB|GB|TB|PB|%)$/","\\1",$this->FAIpartitionSize);
-          $this->sizeStart_Type = preg_replace("/^([0-9]*)(KB|MB|GB|TB|PB|%)$/","\\2",$this->FAIpartitionSize);
-          $this->FAIpartitionSizeType = "fixed";
-        }else
-
-        // Dynamic range
-        if(preg_match("/^[0-9]{1,}(KB|MB|GB|TB|PB|%|)-[0-9]{1,}(KB|MB|GB|TB|PB|%|)$/",$this->FAIpartitionSize)){
-          $this->sizeStart = preg_replace("/^([0-9]*)(KB|MB|GB|TB|PB|%).*$/","\\1",$this->FAIpartitionSize);
-          $this->sizeStart_Type = preg_replace("/^([0-9]*)(KB|MB|GB|TB|PB|%).*$/","\\2",$this->FAIpartitionSize);
-          $this->sizeStop = preg_replace("/^[^\-]*\-([0-9]*)(KB|MB|GB|TB|PB|%)$/","\\1",$this->FAIpartitionSize);
-          $this->sizeStop_Type = preg_replace("/^[^\-]*\-([0-9]*)(KB|MB|GB|TB|PB|%)$/","\\2",$this->FAIpartitionSize);
-          $this->FAIpartitionSizeType = "dynamic";
-        }else
-
-        // Dynamic range
-        if(preg_match("/^(0|)\-$/",$this->FAIpartitionSize)){
-          $this->FAIpartitionSizeType = "remaining";
-        }
-
-        // Ensure that we've a valid value type selected.
-        if(!preg_match("/(KB|MB|GB|TB|PB|%)/",$this->sizeStart_Type)){
-          $this->sizeStart_Type = "MB";
-        }
-        if(!preg_match("/(KB|MB|GB|TB|PB|%)/",$this->sizeStop_Type)){
-          $this->sizeStop_Type = "MB";
-        }
-
-        /* Check for encrypted partitions
-         */
-        if(preg_match("/:encrypt$/",$this->FAImountPoint)){
-          $this->FAImountPoint = preg_replace("/:encrypt/","",$this->FAImountPoint);
+      if (($this->FAIdiskType == 'disk') || ($this->FAIdiskType == 'lvm')) {
+        /* Check for encrypted partitions */
+        if (preg_match('/:encrypt$/', $this->FAImountPoint)) {
+          $this->FAImountPoint = preg_replace('/:encrypt/', '', $this->FAImountPoint);
           $this->encrypted = TRUE;
-        }
-
-      }elseif($type == "raid"){
-
-        // Extract raid devices out of the partition size attribute.
-        $usedDisks = explode(",",$this->FAIpartitionSize);
-        foreach($usedDisks as $disk){
-          $name = preg_replace("/:.*$/","",$disk);
-          $spare = preg_match("/:spare/",$disk);
-          $missing = preg_match("/:missing/",$disk);
-          if(!empty($name)){
-            $this->raidDevices[$name] =
-              array(
-                  "name" => $name,
-                  "spare" => $spare,
-                  "missing" => $missing);
-          }
         }
       }
     }
+
+    if ($this->FAIdiskType != 'lvm') {
+      $this->attributesAccess['cn']->setDisabled(TRUE);
+    }
+    if ($this->FAIdiskType == 'raid') {
+      $this->attributesAccess['raidDevices']->attributes[0]->attribute->attributes[0]->setChoices($this->getPartitionList());
+      $this->attributesAccess['FAIpartitionSize']->setDisabled(TRUE);
+      $this->attributesAccess['FAIpartitionSize']->setVisible(FALSE);
+      $this->attributesInfo['flags']['name'] = _('Combined physical partitions');
+      $this->attributesAccess['resize']->setDisabled(TRUE);
+      $this->attributesAccess['resize']->setVisible(FALSE);
+      $this->attributesAccess['preserve']->setDisabled(TRUE);
+      $this->attributesAccess['preserve']->setVisible(FALSE);
+      $this->attributesAccess['bootable']->setDisabled(TRUE);
+      $this->attributesAccess['bootable']->setVisible(FALSE);
+    } else {
+      $this->attributesAccess['raidDevices']->setDisabled(TRUE);
+      $this->attributesAccess['raidDevices']->setVisible(FALSE);
+    }
+  }
+
+  protected function loadAttributes()
+  {
+    foreach ($this->attributesAccess as &$attribute) {
+      //~ $attribute->setInLdap(FALSE);
+      $attribute->setAcl('FAIpartitions');
+    }
+    unset($attribute);
+    parent::loadAttributes();
   }
 
   function execute()
   {
-    plugin::execute();
     $smarty = get_smarty();
+    $acl    = $this->getacl('FAIpartitions');
+    $smarty->assign('FAIpartitionsACL', $acl);
+    parent::execute();
 
-    // Remove partition
-    if(isset($_POST['addPhysicalPartition']) && isset($_POST['physicalPartitionAdd'])){
-      $name = $_POST['physicalPartitionAdd'];
-      $this->raidDevices[$name] = array("name" => $name,"spare"=>false,"missing"=>false);
+    $buttons = '<p class="plugbottom">
+                  <input type="submit" name="PartitionSave" value="'.msgPool::saveButton().'">
+                  <input type="submit" name="PartitionCancel" value="'.msgPool::cancelButton().'" >
+                </p>';
+    if ($this->displayPlugin) {
+      return $this->header.$smarty->fetch($this->templatePath).$buttons;
+    } else {
+      return $this->header;
     }
-
-    // Create a list of selectable partition types
-    if($this->FAIdiskType == "disk"){
-
-      if($this->disablePrimary){
-        $types  = array(
-            "logical" => _("Logical"));
-      }else{
-        $types  = array(
-            "primary" => _("Primary"),
-            "logical" => _("Logical"));
-      }
-
-    }elseif($this->FAIdiskType == "raid"){
-      $types  = array(
-          "raid0" => _("RAID 0"),
-          "raid1" => _("RAID 1"),
-          "raid5" => _("RAID 5"),
-          "raid6" => _("RAID 6"));
-    }else{
-      $types = "";
-    }
-
-    // Create a list of all size options
-    $partitionSizeTypes  = array(
-        "fixed"     => _("fixed"),
-        "dynamic"     => _("dynamic"),
-        "remaining" => _("remaining space")
-        );
-
-    // Create a list of all size options
-    $sizeTypes  = array(
-        "KB"      => _("KB"),
-        "MB"      => _("MB"),
-        "GB"      => _("GB"),
-        "TB"      => _("TB"),
-        "PB"      => _("PB"),
-        "%"      => _("%")
-        );
-
-    // Preserve types
-    $preserveTypes = array(
-        "always" => _("always"),
-        "reinstall" => _("reinstall"));
-
-    // File system types.
-    $FAIfsTypes = array(
-        "swap" => _("swap space"),
-        "ext2" => _("ext2"),
-        "ext3" => _("ext3"),
-        "ext4" => _("ext4"),
-        "reiserfs" => _("reiser fs"),
-        "xfs" => _("xfs"),
-        "btrfs" => _("btrfs"),
-        "-" => _("LVM/RAID")
-      );
-
-    $smarty->assign("partitionTypes", $types);
-    $smarty->assign("partitionSizeTypes", $partitionSizeTypes);
-    $smarty->assign("FAIpartitionSizeType", $this->FAIpartitionSizeType);
-    $smarty->assign("sizeTypes", $sizeTypes);
-
-    $smarty->assign("sizeStart_Type", $this->sizeStart_Type);
-    $smarty->assign("sizeStop_Type", $this->sizeStop_Type);
-    $smarty->assign("sizeStart", $this->sizeStart);
-    $smarty->assign("sizeStop", $this->sizeStop);
-
-    $smarty->assign("preserveTypes", $preserveTypes);
-    $smarty->assign("preserveType", $this->preserveType);
-
-    $smarty->assign("FAIfsTypes", $FAIfsTypes);
-    $smarty->assign("cn", $this->cn);
-    $smarty->assign("freeze", preg_match("/freeze/i",$this->parent->FAIstate));
-
-    $smarty->assign("plist",$this->getRaidlist());
-    $smarty->assign("physicalPartitionList",$this->getPartitionlist());
-    $smarty->assign("disablePrimary", $this->disablePrimary);
-
-    foreach($this->attributes as $attr){
-      $smarty->assign($attr,$this->$attr);
-    }
-    return($smarty->fetch(get_template_path("faiPartition.tpl", TRUE, dirname(__FILE__))));
   }
 
+  function save_object()
+  {
+    parent::save_object();
+    if ($this->FAIfsType == 'swap') {
+      $this->FAImountPoint = 'swap';
+    }
+  }
+
+  function check()
+  {
+    $messages = parent::check();
+
+    if ($this->FAIdiskType == 'raid') {
+      $raidDevices = $this->attributesAccess['raidDevices']->attributes[0]->getValue();
+      if (count($raidDevices) < 2) {
+        $messages[] = _('Raid arrays must contain at least two partitions!');
+      } elseif (($this->FAIpartitionType == 'raid0') && (count($this->raidDevices) != 2)) {
+        $messages[] = _('Raid 0 arrays can only be realized with a combination of two partitions!');
+      }
+    }
+
+    return $messages;
+  }
+
+  function save()
+  {
+    $ret = array();
+    foreach ($this->attributes as $attr) {
+      $ret[$attr] = $this->$attr;
+    }
+
+    if (($this->FAIdiskType == 'disk') || ($this->FAIdiskType == 'lvm')) {
+      /* Add encryption flag to partition mount point */
+      if ($this->encrypted) {
+        $ret['FAImountPoint'] .= ':encrypt';
+      }
+    } elseif($this->FAIdiskType == 'raid') {
+      $ret['FAIpartitionSize'] = $ret['raidDevices'];
+      unset($ret['raidDevices']);
+    }
+
+    return $ret;
+  }
 
   /* Returns a list of all partitions that are useable
    *  for raid arrays.
@@ -258,29 +511,29 @@ class faiPartition extends plugin
   function getPartitionList()
   {
     $may = $used = array();
-    foreach($this->parent->parent->disks as $disk){
-
+    foreach ($this->parent->parent->disks as $disk) {
       // Skip ourselves
-      if($disk['cn'] == $this->parent->DISKcn) continue;
+      if ($disk['cn'] == $this->parent->cn) {
+        continue;
+      }
 
       // Add partition from lvm combinations
-      if($disk['FAIdiskType'] == "lvm"){
+      if ($disk['FAIdiskType'] == 'lvm') {
         $used = array_merge($used,$disk['FAIlvmDevice']);
       }
 
-      foreach($disk['partitions'] as $key => $part){
-
+      foreach ($disk['partitions'] as $key => $part) {
         // Add disks of raid arrays, to the used list.
-        if($disk['FAIdiskType'] == "raid"){
-          foreach(explode(",",$part['FAIpartitionSize']) as $rDevice){
-            $used[] = preg_replace("/:.*$/i","",$rDevice);
+        if ($disk['FAIdiskType'] == 'raid') {
+          foreach (explode(',', $part['FAIpartitionSize']) as $rDevice) {
+            $used[] = preg_replace('/:.*$/i', '', $rDevice);
           }
         }
 
         // Collect all available disks
-        if($disk['FAIdiskType'] == "disk"){
+        if ($disk['FAIdiskType'] == 'disk') {
           $name = $part['cn'];
-          if(!isset($this->raidDevices[$name])){
+          if (!isset($this->raidDevices[$name])) {
             $may[] = $name;
           }
         }
@@ -289,206 +542,12 @@ class faiPartition extends plugin
 
     // Check which of the available disks are unused.
     $ret = array();
-    foreach($may as $val){
-      if(!in_array($val,$used)){
+    foreach ($may as $val) {
+      if (!in_array($val, $used)) {
         $ret[$val] = $val;
       }
     }
-    return($ret);
-  }
-
-
-  /* Creates a human readable list of all used partitions
-   *  of a raid device.
-   */
-  function getRaidList()
-  {
-    $disks = $this->parent->parent->disks;
-    $objs = array();
-    foreach($disks as $disk){
-      if($disk['FAIdiskType'] != "raid"){
-        foreach($disk['partitions'] as $id => $part){
-          $objs[$part['cn']] = $part;
-        }
-      }
-    }
-
-    $list = array();
-    foreach($this->raidDevices as $device){
-      $str = $name = $device['name'];
-      $str = str_pad($str,25," ");
-      if(isset($objs[$device['name']]['FAIpartitionSize'])){
-        $str .= _("Size").":&nbsp;";
-        $str .= $objs[$device['name']]['FAIpartitionSize'];
-      }
-      $str = str_pad($str,60," ");
-      $opt = "";
-      if($device['spare']){
-        $opt.= "&nbsp;"._("spare")."&nbsp;";
-      }
-      if($device['missing']){
-        $opt.= "&nbsp;"._("missing")."&nbsp;";
-      }
-      if($opt){
-        $str .= " &nbsp; "._("Options").": ".$opt;
-      }
-      $str = str_pad($str,80," ");
-      $list[$name] = preg_replace("/ /","&nbsp;",$str);
-    }
-    return $list;
-  }
-
-  function save_object()
-  {
-    if(isset($_POST['faiPartition'])){
-      foreach($this->attributes as $attr){
-        if(isset($_POST[$attr])){
-          $this->$attr = get_post($attr);
-        }
-      }
-      if (empty($this->FAImountPoint)) {
-        $this->FAImountPoint = '-';
-      }
-      foreach(array("FAIpartitionSizeType","sizeStart","sizeStop","sizeStart_Type","sizeStop_Type") as $attr){
-        if(isset($_POST[$attr])){
-          $this->$attr = get_post($attr);
-        }
-      }
-      foreach(array("bootable","preserve","resize","encrypted") as $attr){
-        if(isset($_POST[$attr])){
-          $this->$attr = TRUE;
-        }else{
-          $this->$attr = FALSE;
-        }
-      }
-
-      // Allow user defined partition names for lvm disks.
-      if($this->FAIdiskType == "lvm" && isset($_POST['cn'])){
-        $this->cn = get_post('cn');
-      }
-
-      // Remove partition
-      if(isset($_POST['delPhysicalPartition']) && isset($_POST['physicalPartition'])){
-        foreach($_POST['physicalPartition'] as $key){
-          if(isset($this->raidDevices[$key])){
-            unset($this->raidDevices[$key]);
-          }
-        }
-      }
-
-      // Toggle spare flag for partition entries
-      if(isset($_POST['toggleSpare']) && isset($_POST['physicalPartition'])){
-        $this->raidDevices[$_POST['physicalPartition']]['spare'] =
-            !$this->raidDevices[$_POST['physicalPartition']]['spare'];
-      }
-
-      // Toggle missing flag for partition entries
-      if(isset($_POST['toggleMissing']) && isset($_POST['physicalPartition'])){
-        $this->raidDevices[$_POST['physicalPartition']]['missing'] =
-            !$this->raidDevices[$_POST['physicalPartition']]['missing'];
-      }
-    }
-  }
-
-
-  function check()
-  {
-    $msgs = parent::check();
-
-    // Check the given partition size.
-    if ($this->FAIdiskType == "disk" || $this->FAIdiskType == "lvm") {
-      if($this->FAIpartitionSizeType == "fixed" || $this->FAIpartitionSizeType == "dynamic"){
-        if(!is_numeric($this->sizeStart)){
-          $msgs[] = msgPool::invalid(_("Partition size"),$this->sizeStart,"/[0-9]/i");
-        }
-      }
-      if($this->FAIpartitionSizeType == "dynamic"){
-        if(!is_numeric($this->sizeStop)){
-          $msgs[] = msgPool::invalid(_("Partition size"),$this->sizeStop,"/[0-9]/i");
-        }
-
-        $mp = array(
-                    "%"  => 1,
-                    "KB" => pow(1024,0),
-                    "MB" => pow(1024,1),
-                    "GB" => pow(1024,2),
-                    "TB" => pow(1024,3),
-                    "PB" => pow(1024,4));
-        $res1 = $this->sizeStart * $mp[$this->sizeStart_Type];
-        $res2 = $this->sizeStop * $mp[$this->sizeStop_Type];
-        if($res1 > $res2){
-          $msgs[] = msgPool::toobig(_("Minimum partition size"), "'"._("Maximum partition size")."'");
-        }
-      }
-    }
-
-    // Add raid checks
-    if($this->FAIdiskType == "raid"){
-      if(count($this->raidDevices) < 2){
-        $msgs[] = _("Raid arrays must contain at least two partitions!");
-      }else if($this->FAIpartitionType == "raid0" && count($this->raidDevices) != 2){
-        $msgs[] = _("Raid 0 arrays can only be realized with a combination of two partitions!");
-      }
-    }
-
-    // check mount point
-    if($this->FAIfsType != "swap"){
-      if (($this->FAImountPoint != '-') && !preg_match("#^/#", $this->FAImountPoint)) {
-        $msgs[] = msgPool::invalid(_("Mount point"));
-      }
-    }
-
-    return($msgs);
-  }
-
-
-  function save()
-  {
-    $ret = array();
-    foreach($this->attributes as $attr){
-      $ret[$attr] = $this->$attr;
-    }
-
-    // Save partition size
-    if($this->FAIdiskType == "disk" || $this->FAIdiskType == "lvm"){
-      switch($this->FAIpartitionSizeType){
-        case 'fixed' :
-          $ret['FAIpartitionSize'] = $this->sizeStart.$this->sizeStart_Type;break;
-        case 'dynamic' :
-          $ret['FAIpartitionSize'] = $this->sizeStart.$this->sizeStart_Type."-".
-            $this->sizeStop.$this->sizeStop_Type;break;
-        case 'remaining' :
-          $ret['FAIpartitionSize'] = "0-";break;
-        default: trigger_error("Unknown partition size!");
-      }
-
-      // Add encryption flag to partition mount point
-      if($this->encrypted){
-        $ret['FAImountPoint'] .= ":encrypt";
-      }
-
-    }elseif($this->FAIdiskType == "raid"){
-
-      // Save selected raid partitions in FAIpartitionSize
-      $ret['FAIpartitionSize'] = "";
-      foreach($this->raidDevices as $device){
-        $ret['FAIpartitionSize'] .= $device['name'];
-        if($device['spare']){
-          $ret['FAIpartitionSize'] .= ":spare";
-        }
-        if($device['missing']){
-          $ret['FAIpartitionSize'] .= ":missing";
-        }
-        $ret['FAIpartitionSize'] .= ",";
-      }
-      $ret['FAIpartitionSize'] = trim($ret['FAIpartitionSize'],",");
-    }
-
-    if($this->FAIfsType == "swap"){
-      $ret['FAImountPoint'] = "swap";
-    }
-
-    return($ret);
+    return $ret;
   }
 }
 ?>

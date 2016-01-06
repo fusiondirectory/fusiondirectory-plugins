@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2015  FusionDirectory
+  Copyright (C) 2013-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -80,7 +80,7 @@ class fiInventory extends simplePlugin
         )
       ),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
@@ -133,7 +133,7 @@ class fiInventory extends simplePlugin
 
   function compute_dn()
   {
-    return 'cn='.$this->cn.','.get_ou("inventoryRDN").$this->config->current['BASE'];
+    return 'cn='.$this->cn.','.get_ou('inventoryRDN').$this->config->current['BASE'];
   }
 
   function execute()
@@ -178,8 +178,8 @@ class fiInventory extends simplePlugin
           return array();
         }
       }
-      if ($ipHostNumber != '') {
-        $ipfilter = "(cn=$ipHostNumber)";
+      if (!empty($ipHostNumber)) {
+        $ipfilter = '(|(ipHostNumber='.implode(')(ipHostNumber=', $ipHostNumber).'))';
       } else {
         $ipfilter = NULL;
         if (($matching == 'ip') || ($matching == 'both') || ($macfilter === NULL)) {

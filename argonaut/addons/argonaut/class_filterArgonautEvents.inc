@@ -2,8 +2,7 @@
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -27,7 +26,7 @@ class filterArgonautEvents extends  filterLDAP
     global $config;
 
     $o_queue = new supportDaemon();
-    $events  = DaemonEvent::get_event_types();
+    $events  = argonautAction::get_event_types();
 
     /* Get tags that will be used in queue searches */
     $event_tags = array("none");

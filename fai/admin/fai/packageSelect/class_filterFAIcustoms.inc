@@ -1,8 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -26,7 +25,7 @@ class filterFAIcustoms extends filter {
   function filterFAIcustoms($filename)
   {
     $release = session::get('packageSelect_Release');
-    $this->customs = $this->getCustomList($release);
+    $this->customs = serviceRepository::getCustomReleases($release);
 
     parent::filter($filename);
   }
@@ -56,14 +55,8 @@ class filterFAIcustoms extends filter {
     foreach ($this->customs as $custom) {
       $customs[$custom] = $this->getCheckbox($this->elements[$custom]);
     }
-    $smarty->assign("customs",$customs);
+    $smarty->assign('customs', $customs);
 
     return filter::render();
-  }
-
-  function getCustomList ($release)
-  {
-    $q = new supportDaemon();
-    return $q->FAI_get_customs($release);
   }
 }

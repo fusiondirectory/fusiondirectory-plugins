@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-11 22:19+0200\n"
-"PO-Revision-Date: 2015-09-11 20:28+0000\n"
+"POT-Creation-Date: 2016-01-02 22:39+0100\n"
+"PO-Revision-Date: 2015-12-07 13:35+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Latvian (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr ""
 #: admin/supannStructures/class_entite.inc:55
 #: admin/supannStructures/class_etablissement.inc:59
 msgid "Name"
-msgstr ""
+msgstr "Vārds "
 
 #: admin/supannStructures/class_entite.inc:55
 msgid "The name to write in the ou attribute for this entity"
@@ -63,7 +63,7 @@ msgstr ""
 #: admin/supannStructures/class_entite.inc:68
 #: admin/supannStructures/class_etablissement.inc:84
 msgid "Fax"
-msgstr ""
+msgstr "Fakss"
 
 #: admin/supannStructures/class_entite.inc:68
 msgid "Fax number for this entity"
@@ -71,7 +71,7 @@ msgstr ""
 
 #: admin/supannStructures/class_entite.inc:72
 msgid "Postal address"
-msgstr ""
+msgstr "Pasta adrese"
 
 #: admin/supannStructures/class_entite.inc:72
 msgid "Postal address of this entity"
@@ -80,7 +80,7 @@ msgstr ""
 #: admin/supannStructures/class_entite.inc:76
 #: admin/supannStructures/class_etablissement.inc:63
 msgid "Description"
-msgstr ""
+msgstr "Apraksts"
 
 #: admin/supannStructures/class_entite.inc:76
 msgid "Short description of this entity"
@@ -159,7 +159,7 @@ msgstr ""
 #: admin/supannStructures/class_etablissement.inc:69
 #: admin/supannStructures/class_etablissement.inc:72
 msgid "Location"
-msgstr ""
+msgstr "Atrašanās vieta"
 
 #: admin/supannStructures/class_etablissement.inc:72
 msgid "Usually the city where this Establishment is"
@@ -167,7 +167,7 @@ msgstr ""
 
 #: admin/supannStructures/class_etablissement.inc:76
 msgid "Address"
-msgstr ""
+msgstr "Adrese"
 
 #: admin/supannStructures/class_etablissement.inc:76
 msgid "The postal address of this Establishment"
@@ -237,7 +237,7 @@ msgstr ""
 #: admin/supannStructures/class_etablissement.inc:198
 #: admin/supannStructures/class_etablissement.inc:216
 msgid "LDAP error"
-msgstr ""
+msgstr "LDAP kļūda"
 
 #: admin/supannStructures/class_supann.inc:53
 msgid "File error"
@@ -365,7 +365,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:264
 msgid "Contact"
-msgstr ""
+msgstr "Kontakts"
 
 #: personal/supann/class_supannAccount.inc:268
 msgid "Other phone numbers"
@@ -625,14 +625,24 @@ msgstr ""
 msgid "FusionDirectory SUPANN plugin configuration"
 msgstr ""
 
-#: config/supann/class_supannConfig.inc:42
+#: config/supann/class_supannConfig.inc:41
 msgid "SUPANN"
 msgstr ""
 
-#: config/supann/class_supannConfig.inc:45
+#: config/supann/class_supannConfig.inc:44
 msgid "SUPANN RDN"
 msgstr ""
 
-#: config/supann/class_supannConfig.inc:45
+#: config/supann/class_supannConfig.inc:44
 msgid "Branch in which SUPANN structures will be stored"
+msgstr ""
+
+#: config/supann/class_supannConfig.inc:49
+msgid "SUPANN mail for recovery"
+msgstr ""
+
+#: config/supann/class_supannConfig.inc:49
+msgid ""
+"Allow the use of mail addresses from the personal mail address field from "
+"SUPANN account for password recovery"
 msgstr ""

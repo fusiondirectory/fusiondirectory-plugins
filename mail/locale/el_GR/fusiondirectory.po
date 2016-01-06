@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-11 22:19+0200\n"
-"PO-Revision-Date: 2015-10-12 12:49+0000\n"
+"POT-Creation-Date: 2016-01-02 22:39+0100\n"
+"PO-Revision-Date: 2015-11-06 12:42+0000\n"
 "Last-Translator: Manolis Saldaris <Ustramator@gmail.com>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
@@ -74,7 +74,7 @@ msgstr "Επιτρέπεται να λαμβάνουν μόνο τοπική α�
 msgid ""
 "Whether this group mail is only allowed to receive messages from local "
 "senders"
-msgstr ""
+msgstr "Αν επιτρέπεται σε αυτή την ομάδα να δέχεται μηνύματα από τοπικούς αποστολείς"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:29
 #: admin/systems/services/postfix/class_servicePostfix.inc:30
@@ -130,7 +130,7 @@ msgstr "Καθορίστε το μέγιστο μέγεθος του μηνύμ�
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:74
 msgid "Domains and routing"
-msgstr "Domains και δρομολόγηση"
+msgstr "Τομείς και δρομολόγηση"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:78
 msgid "Domains to accept mail for"
@@ -309,15 +309,15 @@ msgstr "Ενεργοποίηση σάρωσης e-mail για το antivirus"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:89
 msgid "Archive scanning"
-msgstr ""
+msgstr "Αναζήτηση στα αρχεία μηνυμάτων"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:92
 msgid "Enable scanning of archives"
-msgstr ""
+msgstr "Να επιτρέπεται η αναζήτηση στα αρχεία μηνυμάτων"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:97
 msgid "Block encrypted archives"
-msgstr ""
+msgstr "Φραγμός στα κρυπτογραφημένα αρχεία μηνυμάτων"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:102
 msgid "Maximum file size"
@@ -333,7 +333,7 @@ msgstr "Μέγιστη συμπίεση"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:32
 msgid "IMAP/POP3 generic service"
-msgstr ""
+msgstr "Υπηρεσία IMAP/POP3"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:33
 msgid "IMAP/POP3"
@@ -365,7 +365,7 @@ msgstr "Άγνωστο"
 
 #: personal/mail/class_mail-methods.inc:818
 msgid "Unlimited"
-msgstr ""
+msgstr "Απεριόριστο"
 
 #: personal/mail/class_mailAccount.inc:47
 #: personal/mail/class_mailAccount.inc:256
@@ -374,8 +374,10 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:376
 #: personal/mail/class_mailAccount.inc:380
 #: personal/mail/class_mailAccount.inc:384
+#: personal/mail/class_mailAccount.inc:417
+#: personal/mail/class_mailAccount.inc:421
 msgid "Mail error"
-msgstr ""
+msgstr "Σφάλμα αλληλογραφίας"
 
 #: personal/mail/class_mailAccount.inc:47
 #, php-format
@@ -393,15 +395,15 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:80
 #: config/mail/class_mailPluginConfig.inc:41
 msgid "Mail settings"
-msgstr ""
+msgstr "Ρυθμίσεις αλληλογραφίας"
 
 #: personal/mail/class_mailAccount.inc:97
 msgid "Mail account"
-msgstr ""
+msgstr "Λογαριασμός αλληλογραφίας"
 
 #: personal/mail/class_mailAccount.inc:100
 msgid "Primary mail address"
-msgstr ""
+msgstr "Κύρια διεύθυνση αλληλογραφίας"
 
 #: personal/mail/class_mailAccount.inc:104
 msgid "Specify the mail server where the user will be hosted on"
@@ -413,37 +415,37 @@ msgstr ""
 
 #: personal/mail/class_mailAccount.inc:116
 msgid "Other addresses and redirections"
-msgstr ""
+msgstr "Άλλες διευθύνσεις και αναδρομολογήσεις"
 
 #: personal/mail/class_mailAccount.inc:120
 msgid "List of alternative mail addresses"
-msgstr ""
+msgstr "Κατάλογος εναλλακτικών διευθύνσεvn και αναδρομολογήσεvn"
 
 #: personal/mail/class_mailAccount.inc:125
 msgid "Forward messages to"
-msgstr ""
+msgstr "Προώθηση αλληλογραφίας στο"
 
 #: personal/mail/class_mailAccount.inc:125
 msgid "Addresses to which messages should be forwarded"
-msgstr ""
+msgstr "Διευθύνσεις στις οποίες θα πρέπει να προωθείται η αλληλογραφία"
 
 #: personal/mail/class_mailAccount.inc:131
 #: personal/mail/class_mailAccount.inc:150
 msgid "Vacation message"
-msgstr ""
+msgstr "Μήνυμα απουσίας"
 
 #: personal/mail/class_mailAccount.inc:134
 msgid "Activate vacation message"
-msgstr ""
+msgstr "Ενεργοποίηση μηνύματος απουσίας"
 
 #: personal/mail/class_mailAccount.inc:135
 msgid ""
 "Select to automatically response with the vacation message defined below"
-msgstr ""
+msgstr "Επιλέξτε για την αυτόματη απάντηση με το μήνυμα απουίας που καθορίζεται στη συνέχεια"
 
 #: personal/mail/class_mailAccount.inc:140
 msgid "from"
-msgstr ""
+msgstr "από"
 
 #: personal/mail/class_mailAccount.inc:145
 msgid "till"
@@ -451,23 +453,23 @@ msgstr "εως"
 
 #: personal/mail/class_mailAccount.inc:156
 msgid "Spam options"
-msgstr ""
+msgstr "Ρυθμίσεις ανεπιθύμητης αλληλογραφίας"
 
 #: personal/mail/class_mailAccount.inc:159
 msgid "Move mails depending on spam level"
-msgstr ""
+msgstr "Μετακίνηση αλληλογραφίας ανάλογα με το επίπεδο spam"
 
 #: personal/mail/class_mailAccount.inc:164
 msgid "Minimum spam level"
-msgstr ""
+msgstr "Ελάχιστο επίπεδο spam"
 
 #: personal/mail/class_mailAccount.inc:164
 msgid "Spam level above which a mail will be moved"
-msgstr ""
+msgstr "Επίπεδο spam, πάνω από το οποίο θα μετακινείται το μήνυμα"
 
 #: personal/mail/class_mailAccount.inc:169
 msgid "Move spam to folder"
-msgstr ""
+msgstr "Μετακίνηση ανεπιθύμητης αλληλογραφίας σε φάκελο"
 
 #: personal/mail/class_mailAccount.inc:169
 msgid "Folder in which spam will be moved"
@@ -475,19 +477,19 @@ msgstr ""
 
 #: personal/mail/class_mailAccount.inc:174
 msgid "Reject mail depending on their size"
-msgstr ""
+msgstr "Απόρριψη αλληλογραφίας ανάλογα με το μέγεθος"
 
 #: personal/mail/class_mailAccount.inc:174
 msgid "Messages bigger than the chosen size will be rejected"
-msgstr ""
+msgstr "Μηνύματα μεγαλύτερα από το επιλεγμένο μέγεθος θα απορρίπτονται"
 
 #: personal/mail/class_mailAccount.inc:179
 msgid "Minimum size to reject a mail (MB)"
-msgstr ""
+msgstr "Επάχιστο μέγεθος για να απορριφθεί ένα μήνυμα (MB)"
 
 #: personal/mail/class_mailAccount.inc:195
 msgid "Advanced mail options"
-msgstr ""
+msgstr "Προχωρημένες ρυθμίσεις αλληλογραφίας"
 
 #: personal/mail/class_mailAccount.inc:198
 msgid "Use custom sieve script"
@@ -495,7 +497,7 @@ msgstr ""
 
 #: personal/mail/class_mailAccount.inc:198
 msgid "disables all Mail options!"
-msgstr ""
+msgstr "απενεργοποιεί όλες τις ρυθμίσεις αλληλογραφίας!"
 
 #: personal/mail/class_mailAccount.inc:199
 msgid "Use your sieve script with personnal customization"
@@ -503,19 +505,19 @@ msgstr ""
 
 #: personal/mail/class_mailAccount.inc:204
 msgid "User is only allowed to send and receive local mails"
-msgstr ""
+msgstr "Επιτρέπεται στον χρήστη να στέλνει και να λαμβάνει μόνο τοπική αλληλογραφία"
 
 #: personal/mail/class_mailAccount.inc:205
 msgid "Select if user can only send and receive inside his own domain"
-msgstr ""
+msgstr "Επιλέξτε, όταν ο χρήστης επιτρέπεται να στέλνει και να λαμβάνει αλληλογραφία μόνο μέσα στον Τομέα του"
 
 #: personal/mail/class_mailAccount.inc:210
 msgid "No delivery to own mailbox"
-msgstr ""
+msgstr "Χωρίς παράδοση στο δικό του γραμματοκιβώτιο"
 
 #: personal/mail/class_mailAccount.inc:211
 msgid "Select if you want to forward mails without getting own copies of them"
-msgstr ""
+msgstr "Επιλέξτε αν θέλετε να προωθείται η αλληλογραφία χωρίς να λαμβάνονται αντίγραφα αυτών"
 
 #: personal/mail/class_mailAccount.inc:256
 #, php-format
@@ -547,9 +549,19 @@ msgstr ""
 msgid "Mail error saving sieve settings"
 msgstr ""
 
+#: personal/mail/class_mailAccount.inc:417
+#, php-format
+msgid "Cannot remove mailbox, mail method cannot connect: %s"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:421
+#, php-format
+msgid "Cannot remove mailbox: %s"
+msgstr "Αδυναμία διαγραφής γραμματοκιβωτίου: %s"
+
 #: config/mail/class_mailPluginConfig.inc:29
 msgid "Mail plugin configuration"
-msgstr ""
+msgstr "Ρύθμιση προσθέτου αλληλογραφίας"
 
 #: config/mail/class_mailPluginConfig.inc:44
 msgid "Mail method"
@@ -597,13 +609,13 @@ msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:71
 msgid "Delete mailbox on account deletion"
-msgstr ""
+msgstr "Διαγραφή γραμματοκιβωτίου όταν διαγράφεται ο λογαριασμός χρήστη"
 
 #: config/mail/class_mailPluginConfig.inc:72
 msgid ""
 "Determines if the mailbox should be removed from your IMAP server after the "
 "account is deleted in LDAP."
-msgstr ""
+msgstr "Καθορίζεται αν το γραμματοκιβώτιο θα διαγραφεί από τον διακομιστή IMAP, μετά τη διαγραφή του λογαριασμού στον LDAP"
 
 #: config/mail/class_mailPluginConfig.inc:77
 msgid "Cyrus autocreate folders"

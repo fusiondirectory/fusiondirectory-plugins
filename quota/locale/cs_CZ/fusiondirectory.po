@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-11 22:19+0200\n"
-"PO-Revision-Date: 2015-05-30 14:12+0000\n"
+"POT-Creation-Date: 2016-01-02 22:39+0100\n"
+"PO-Revision-Date: 2015-12-03 19:01+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -45,12 +45,12 @@ msgid "Device concerned by this quota"
 msgstr "Zařízení, kterého se tato kvóta týká"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:55
-msgid "Block size"
-msgstr "Velikost bloku"
+msgid "Quota block size"
+msgstr "Velikost bloku kvóty"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:55
-msgid "Block size of this share (dumpe2fs /dev/sdb3 | grep -i 'Block size')"
-msgstr "Velikost bloku pro toto sdílení (dumpe2fs /dev/sdb3 | grep -i 'Block size')"
+msgid "Quota block size on this share (usually 1024)"
+msgstr "V jak velkých blocích je vyjádřena kvóta na tomto sdílení (obvykle 1024)"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:60
 msgid "Comment"
@@ -134,7 +134,7 @@ msgstr "Podpora LDAP zprávy"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:113
 msgid "LDAP server"
-msgstr ""
+msgstr "LDAP server"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:113
 msgid "The LDAP server to bind to"

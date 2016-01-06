@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,15 +22,26 @@
 class SSHPublicKeyAttribute extends FileTextAreaAttribute
 {
   /* cache for key extracted informations */
-  protected $format = '/^([-a-zA-Z0-9]+(=".*")?,?)*\s*(ssh-(dss|rsa))\s+([a-zA-Z0-9+\/.=]+)(\s+([[:graph:]]+))?\s*$/';
+  protected $format = '/^([-[:alnum:]=",]+\s+)?(ssh-(dss|rsa)|ecdsa-sha2-nistp\d{3})\s+([[:alnum:]+\/.=]+)(\s+([[:graph:][:space:]]+))?\s*$/';
 
   function getArrayValue ()
   {
     if (preg_match($this->format, $this->value, $match)) {
-      $fingerprint  = $this->fingerprint(base64_decode($match[5]));
-      $comment      = (isset($match[7]) ? $match[7] : '');
+      $fingerprint  = $this->fingerprint(base64_decode($match[4]));
+      $comment      = (isset($match[6]) ? $match[6] : '');
+      switch ($match[2]) {
+        case 'ssh-dss':
+          $type = 'DSA';
+        break;
+        case 'ssh-rsa':
+          $type = 'RSA';
+        break;
+        default:
+          $type = $match[2];
+        break;
+      }
       return array(
-        ($match[3] == 'ssh-dss'?'DSA':'RSA'),
+        $type,
         $fingerprint,
         $comment
       );

@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -61,10 +61,10 @@ class systemManagement extends management
     $headpage->setFilter($filter);
 
     // Register Daemon Events
-    if (class_available("DaemonEvent") && class_available("supportDaemon")) {
-      $headpage->xmlData['actionmenu']['action'][2]['action'] = array();
-      $headpage->xmlData['actionmenu']['action'][3]['action'] = array();
-      $events = DaemonEvent::get_event_types();
+    if (class_available('argonautAction') && class_available('supportDaemon')) {
+      $this->headpage->xmlData['actionmenu']['action'][2]['action'] = array();
+      $this->headpage->xmlData['actionmenu']['action'][3]['action'] = array();
+      $events = argonautAction::get_event_types();
       foreach ($events as $name => $data) {
         $this->registerAction("T_".$name, "handleEvent");
         $headpage->xmlData['actionmenu']['action'][2]['action'][] = array(
@@ -93,14 +93,13 @@ class systemManagement extends management
     }
 
     // Check if we are able to communicate with Argonaut server
-    if (class_available("supportDaemon")) {
+    if (class_available('supportDaemon') && class_available('argonautAction')) {
       $o = new supportDaemon();
-      $this->si_active = $o->is_available() && class_available("DaemonEvent");
+      $this->siActive = $o->is_available();
     }
 
     parent::__construct($config, $ui, "systems", $headpage);
   }
-
 
   /*! \brief  This method is used to queue and process copy&paste actions.
    *          Allows to copy, cut and paste mutliple entries at once.
@@ -143,26 +142,28 @@ class systemManagement extends management
       $triggered = FALSE;
     }
 
-    // Detect triggere or scheduled actions
+    // Detect triggered or scheduled actions
     $headpage = $this->getHeadpage();
     $event = preg_replace("/^[TS]_/", "", $action);
 
-    // Now send remaining FAI/Argonaut events here.
-    if (count($target) && $this->si_active) {
+    // Now send FAI/Argonaut events here.
+    if ($this->siActive) {
       $mac = array();
 
       // Collect target mac addresses
-      $tD       = $this->getObjectDefinitions();
-      $events   = DaemonEvent::get_event_types();
+      $events   = argonautAction::get_event_types();
       $o_queue  = new supportDaemon();
       foreach ($target as $dn) {
-        $type = $headpage->getType($dn);
-        if ($tD[$type]['sendEvents']) {
-          $obj = $headpage->getEntry($dn);
-          if (isset($obj['macAddress'][0])) {
-            $mac[] = $obj['macAddress'][0];
-          }
+        $obj = $headpage->getEntry($dn);
+        if (isset($obj['macAddress'][0])) {
+          $mac[] = $obj['macAddress'][0];
+        } else {
+          msg_dialog::display(_('Action canceled'), sprintf(_('System %s has no mac address defined, cannot trigger action'), $dn), ERROR_DIALOG);
         }
+      }
+
+      if ((count($mac) == 0) && $triggered) {
+        return;
       }
 
       /* Skip installation or update trigerred events,
@@ -171,19 +172,20 @@ class systemManagement extends management
       if ($triggered && in_array($event, array("reinstall","update"))) {
         foreach ($mac as $key => $mac_address) {
           if ($o_queue->is_currently_installing($mac_address)) {
+            msg_dialog::display(_('Action canceled'), sprintf(_('System %s is currently installing'), $dn), ERROR_DIALOG);
             unset($mac[$key]);
-            new log("security", "systems/".get_class($this), "", array(), "Skip adding 'DaemonEvent::".$type."' for mac '".$mac_address."', there is already a job in progress.");
+            new log('security', 'systems/'.get_class($this), '', array(), 'Skip adding "argonautAction::'.$type.'" for mac "'.$mac_address.'", there is already a job in progress.');
           }
         }
       }
 
       // Prepare event to be added
-      if (count($mac) && isset($events[$event]) && $this->si_active) {
-        $this->dialogObject = new DaemonEvent($this->config, $event);
-        $this->dialogObject->add_targets($mac);
+      if (isset($events[$event]) && $this->siActive) {
+        $this->dialogObject = new argonautAction($this->config, array('action' => $event));
+        $this->dialogObject->targets = $mac;
 
         if ($triggered) {
-          $this->dialogObject->set_type(TRIGGERED_EVENT);
+          $this->dialogObject->scheduled = FALSE;
           $o_queue->append($this->dialogObject);
           if ($o_queue->is_error()) {
             msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
@@ -192,7 +194,7 @@ class systemManagement extends management
             $this->closeDialogs();
           }
         } else {
-          $this->dialogObject->set_type(SCHEDULED_EVENT);
+          $this->dialogObject->scheduled = TRUE;
         }
       }
     }
@@ -203,11 +205,17 @@ class systemManagement extends management
    */
   function saveEventDialog()
   {
-    if ($this->si_active) {
+    $msgs = $this->dialogObject->check();
+    if (count($msgs)) {
+      msg_dialog::displayChecks($msgs);
+      return;
+    }
+    if ($this->siActive) {
       $o_queue = new supportDaemon();
       $o_queue->append($this->dialogObject);
       if ($o_queue->is_error()) {
-        msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+        msg_dialog::display(_('Infrastructure service'), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+        $this->closeDialogs();
       } else {
         $this->closeDialogs();
       }

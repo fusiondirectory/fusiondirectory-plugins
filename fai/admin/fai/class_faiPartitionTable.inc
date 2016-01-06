@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class PartitionDialog extends GenericDialog
+class DiskEntryDialog extends GenericDialog
 {
   protected $dialogClass = 'faiDiskEntry';
 
@@ -56,10 +56,9 @@ class PartitionDialog extends GenericDialog
   function handle_finish ()
   {
     $this->dialog->save_object();
-    if (count($this->dialog->check())) {
-      foreach ($this->dialog->check() as $msg) {
-        msg_dialog::display(_('Error'), $msg, ERROR_DIALOG);
-      }
+    $msgs = $this->dialog->check();
+    if (count($msgs)) {
+      msg_dialog::displayChecks($msgs);
       return $this->dialog->execute();
     }
 
@@ -78,7 +77,7 @@ class PartitionDialog extends GenericDialog
 
 class PartitionTableAttribute extends DialogOrderedArrayAttribute
 {
-  protected $dialogClass = 'PartitionDialog';
+  protected $dialogClass = 'DiskEntryDialog';
   protected $partitionAttributes  = array(
     'cn','description',
     'FAIpartitionNr',   'FAIpartitionSize',   'FAImountPoint',
@@ -266,6 +265,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
     if (isset($disk['rename'])) {
       unset($this->value[$disk['rename']['from']]);
       $disk['cn'] = $disk['rename']['to'];
+      unset($disk['rename']);
     }
 
     $this->value[$disk['cn']] = $disk;

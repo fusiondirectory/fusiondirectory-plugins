@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,15 +19,21 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class argonautQueue extends management
+class argonautQueue extends simpleManagement
 {
-  var $current        = FALSE;
-  var $dialog         = FALSE;
-  var $ids_to_remove  = array();
+  protected $departmentBrowser      = FALSE;
+  protected $departmentRootVisible  = FALSE;
+  protected $baseMode               = FALSE;
+
+  protected $autoFilter       = FALSE;
+  protected $autoActions      = FALSE;
+
+  protected $skipCpHandler    = TRUE;
+  protected $skipSnapHandler  = TRUE;
 
   var $read_only = FALSE;
   var $acl_base;
-  var $acl_category;
+  protected $aclCategory = 'argonautQueue/';
 
   static function plInfo()
   {
@@ -35,49 +41,41 @@ class argonautQueue extends management
       'plShortName'   => _('Deployment queue'),
       'plDescription' => _('Provide a mechanism to automatically activate systems'),
       'plIcon'        => 'plugins/argonaut/images/icon.png',
-      'plSelfModify'  => FALSE,
       'plSection'     => 'systems',
       'plPriority'    => 30,
       'plCategory'    => array('argonautQueue' => array('objectClass' => 'none', 'description' => _('Deployment queue'))),
 
-      'plProvidedAcls' => array('Comment' => _('Description'))
+      'plProvidedAcls' => array(
+        'deploymentQueue' => _('Deployment queue')
+      )
     );
   }
 
   function __construct(&$config, $ui)
   {
-    /* Include config object */
-    $this->config   = &$config;
+    $this->filterXMLPath  = get_template_path('deploy-filter.xml', TRUE, dirname(__FILE__));
+    $this->listXMLPath    = get_template_path('deploy-list.xml', TRUE, dirname(__FILE__));
+
+    parent::__construct($config, $ui);
+
     $this->o_queue  = new supportDaemon();
     $this->acl_base = $config->current['BASE'];
-    $this->acl_category = 'argonautQueue/';
+  }
 
-    // Build filter
-    if (session::global_is_set(get_class($this).'_filter')) {
-      $filter = session::global_get(get_class($this).'_filter');
-    } else {
-      $filter = new filter(get_template_path('deploy-filter.xml', TRUE));
-      $filter->setObjectStorage($this->storagePoints);
-    }
-    $this->setFilter($filter);
+  function configureHeadpage ()
+  {
+    parent::configureHeadpage();
+    $this->registerAction('processNow', 'processNow');
+    $this->registerAction('viewLogs',   'viewLogs');
+    $this->registerAction('abort',      'abortEvent');
+    $this->registerAction('import',     'importEvents');
+    $this->registerAction('showError',  'showErrorEntry');
 
-    // Build headpage
-    $headpage = new listing(get_template_path('deploy-list.xml', TRUE));
-    $headpage->registerElementFilter('hostName',        'argonautQueue::filterHostName');
-    $headpage->registerElementFilter('filterTask',      'argonautQueue::filterTask');
-    $headpage->registerElementFilter('filterPeriod',    'argonautQueue::filterPeriod');
-    $headpage->registerElementFilter('filterSchedule',  'argonautQueue::filterSchedule');
-    $headpage->registerElementFilter('filterStatus',    'argonautQueue::filterStatus');
-    $headpage->setFilter($filter);
-
-    parent::__construct($config, $ui, 'Events', $headpage);
-
-    $this->registerAction('processNow',       'processNow');
-    $this->registerAction('viewLogs',         'viewLogs');
-    $this->registerAction('abort',            'abortEvent');
-    $this->registerAction('import',           'importEvents');
-
-    $this->registerAction('showError', 'showErrorEntry');
+    $this->headpage->registerElementFilter('hostName',        'argonautQueue::filterHostName');
+    $this->headpage->registerElementFilter('filterTask',      'argonautQueue::filterTask');
+    $this->headpage->registerElementFilter('filterPeriod',    'argonautQueue::filterPeriod');
+    $this->headpage->registerElementFilter('filterSchedule',  'argonautQueue::filterSchedule');
+    $this->headpage->registerElementFilter('filterStatus',    'argonautQueue::filterStatus');
   }
 
   function importEvents()
@@ -85,11 +83,200 @@ class argonautQueue extends management
     $this->dialogObject = new argonautImportFile($this->config, $this);
   }
 
-  static function filterHostName($mac, $name = "")
+  /*! \brief    Queue selected objects to be removed.
+   *            Checks ACLs, Locks and ask for confirmation.
+   */
+  protected function removeEntryRequested($action = '', $target = array(), $all = array())
   {
-    if (isset($name[0]) && $name[0] != "none") {
-        // TODO ajouter lien machine.
-      return htmlentities($name[0]." (".$mac[0].")", ENT_COMPAT, 'UTF-8');
+    if (!$this->acl_is_removeable()) {
+      msg_dialog::display(_('Permission'), msgPool::permDelete(), ERROR_DIALOG);
+      return;
+    }
+    $disallowed = array();
+    $this->dns  = array();
+
+    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $target, 'Entry removal requested!');
+
+    // Check permissons for each target
+    foreach ($target as $dn) {
+      $tmp  = $this->headpage->getEntry($dn);
+      $task = $tmp['EVENT'];
+
+      /* Create a printable job name/description */
+      $infos = argonautAction::get_event_info($task['HEADERTAG']);
+      if ($infos) {
+        $j_name = $task['ID']." - ".$infos['name']."&nbsp;".$task['MACADDRESS'];
+      } else {
+        $j_name = $task['ID']." - ".$task['HEADERTAG']."&nbsp;".$task['MACADDRESS'];
+      }
+
+      /* Only remove WAITING or ERROR entries */
+      if (in_array($task['STATUS'], array('waiting','error','processed')) ||
+          ($task['STATUS'] == 'processing' && !preg_match('/install/', $task['HEADERTAG'])) ) {
+        $this->dns[] = $dn;
+      } else {
+        $disallowed[] = $j_name;
+      }
+    }
+    if (count($disallowed)) {
+      msg_dialog::display(_('Remove'),
+          sprintf(_('The following jobs couldn\'t be deleted, they have to be aborted: %s'),
+            '<br/>'.msgPool::buildList($disallowed)), INFO_DIALOG);
+    }
+
+    // We've at least one entry to delete.
+    if (count($this->dns)) {
+      $objects = array();
+      foreach ($this->dns as $dn) {
+        $tmp  = $this->headpage->getEntry($dn);
+        $task = $tmp['EVENT'];
+        $infos = argonautAction::get_event_info($task['HEADERTAG']);
+        if ($infos) {
+          $objects[] = array(
+            'name'  => $infos['name'],
+            'dn'    => LDAP::fix($dn),
+            'icon'  => $infos['img'],
+            'type'  => 'task'
+          );
+        } else {
+          $objects[] = array(
+            'name'  => $task['HEADERTAG'],
+            'dn'    => LDAP::fix($dn),
+            'icon'  => '',
+            'type'  => 'task'
+          );
+        }
+      }
+
+      // Display confirmation dialog.
+      $smarty = get_smarty();
+      $smarty->assign('objects', $objects);
+      $smarty->assign('multiple', TRUE);
+      return $smarty->fetch(get_template_path('simple-remove.tpl'));
+    }
+  }
+
+  function removeEntryConfirmed($action = '', $target = array(), $all = array(),
+                                $altTabClass = '', $altTabType = '', $altAclCategory = '')
+  {
+    if ($this->acl_is_removeable()) {
+      timezone::get_default_timezone();
+      $ids = array();
+      foreach ($this->dns as $dn) {
+        $entry  = $this->headpage->getEntry($dn);
+        $ids[]  = $entry['EVENT']['ID'];
+      }
+      $this->o_queue->remove_entries($ids);
+    }
+  }
+
+  /*! \brief  Force queue job to be aborted.
+   */
+  function abortEvent($action = '', $target = array(), $all = array())
+  {
+    $macs     = array();
+    $taskids  = array();
+    $headpage = $this->getHeadpage();
+    foreach ($target as $id) {
+      $tmp        = $headpage->getEntry($id);
+      $macs[]     = $tmp['MACADDRESS'][0];
+      $taskids[]  = $tmp['EVENT']['ID'];
+    }
+
+    $this->o_queue->append_call('wakeup', $macs, array());
+    if ($this->o_queue->is_error()) {
+      msg_dialog::display(_('Info'), sprintf(_('%s'), $this->o_queue->get_error()), INFO_DIALOG);
+    }
+
+    $this->o_queue->remove_entries($taskids); // Removing the task.
+  }
+
+  function processNow($action = '', $target = array(), $all = array())
+  {
+    $this->execute_queue_entries($target);
+  }
+
+  function viewLogs($action = '', $target = array(), $all = array())
+  {
+    if (count($target) == 1) {
+      $id       = $target[0];
+      $type     = FALSE;
+      $headpage = $this->getHeadpage();
+      $tmp      = $headpage->getEntry($id);
+      $entry    = $tmp['EVENT'];
+      $attrsWrapper = new stdClass();
+      $attrsWrapper->attrs = $entry;
+      $this->dialogObject = new faiLogView($this->config, '', $attrsWrapper, $this);
+    }
+  }
+
+  function showErrorEntry($action = '', $target = array(), $all = array())
+  {
+    if (count($target) == 1) {
+      $entry  = $this->headpage->getEntry($target[0]);
+      $event  = $entry['EVENT'];
+      msg_dialog::display(_('Error detail'), $event['ERROR']);
+    }
+  }
+
+  function detectPostActions()
+  {
+    $action = parent::detectPostActions();
+    if (isset($_POST['import_abort'])) {
+      $action['action'] = 'cancel';
+    }
+    return $action;
+  }
+
+  protected function _getTabFooter()
+  {
+    if ($this->dialogObject instanceof faiLogView) {
+      return  '<p class="plugbottom">'.
+              ' <input type="submit" name="edit_cancel" value="'.msgPool::backButton().'"/>'.
+              '</p>';
+    } else {
+      return parent::_getTabFooter();
+    }
+  }
+
+  /*! \brief  Force queue job to be done as far as possible.
+   *  @return Boolean TRUE in case of success, else FALSE.
+   */
+  private function execute_queue_entries($ids)
+  {
+    /* Only allow execution of paused or waiting entries */
+    $update_ids = array();
+    foreach ($ids as $id) {
+      $tmp    = $this->headpage->getEntry($id);
+      $entry  = $tmp['EVENT'];
+      if (in_array($entry['STATUS'], array('paused','waiting'))) {
+        $update_ids[] = $entry['ID'];
+      }
+    }
+
+    /* Tell the daemon that we want to update some entries */
+    if (count($update_ids)) {
+      if (!$this->o_queue->process_entries_now($update_ids)) {
+        msg_dialog::display(_('Error'), sprintf(_('Cannot update queue entries.')), ERROR_DIALOG);
+        return FALSE;
+      }
+    }
+    return TRUE;
+  }
+
+  private function acl_is_removeable()
+  {
+    if ($this->read_only) {
+      return FALSE;
+    }
+    $ui = get_userinfo();
+    return preg_match('/d/', $ui->get_permissions($this->acl_base, $this->aclCategory.get_class($this), '0'));
+  }
+
+  static function filterHostName($mac, $name = '')
+  {
+    if (isset($name[0]) && $name[0] != 'none') {
+      return htmlentities($name[0].' ('.$mac[0].')', ENT_COMPAT, 'UTF-8');
     }
     return htmlentities($mac[0], ENT_COMPAT, 'UTF-8');
   }
@@ -103,7 +290,7 @@ class argonautQueue extends management
     /* Check if this event exists as Daemon class
      * In this case, display a more accurate entry.
      */
-    $infos = DaemonEvent::get_event_info($tag);
+    $infos = argonautAction::get_event_info($tag);
     if ($infos) {
       $str = $infos['name'];
 
@@ -137,278 +324,38 @@ class argonautQueue extends management
 
   static function filterSchedule($stamp)
   {
-    if ($stamp['0'] == "19700101000000") {
-      return _("immediately");
+    if ($stamp['0'] == '19700101000000') {
+      return _('immediately');
     } else {
-      return date("d.m.Y H:i:s", strtotime($stamp[0]));
+      return date('d.m.Y H:i:s', strtotime($stamp[0]));
     }
   }
 
-  static function filterStatus($row, $status, $mac, $headertag, $error, $substatus)
+  static function filterStatus($row, $status, $substatus)
   {
     $status     = $status[0];
-    $mac        = $mac[0];
-    $headertag  = $headertag[0];
-    $error      = $error[0];
     $substatus  = $substatus[0];
 
-    if ($status == "waiting") {
-      $status = "<img class='center' src='plugins/systems/images/clock.png' alt=''>&nbsp;"._("Waiting");
+    if ($status == 'waiting') {
+      $status = '<img class="center" src="plugins/systems/images/clock.png" alt="clock"/>&nbsp;'._('Waiting');
     }
-    if ($status == "error") {
-      $status = "<input class='center' type='image' src='geticon.php?context=status&icon=task-failure&size=16' title='"._("Show error")."' ".
-               "name='listing_showError_$row' style='padding:1px'>"._("Error");
+    if ($status == 'error') {
+      $status = '<input class="center" type="image" src="geticon.php?context=status&icon=task-failure&size=16" title="'._('Show error').'" '.
+                'name="listing_showError_'.$row.'" style="padding:1px"/>'._('Error');
     }
-    if ($status == "processed") {
-      $status = "<img class='center' src='geticon.php?context=status&icon=task-complete&size=16' alt=''>&nbsp;"._("Processed");
+    if ($status == 'processed') {
+      $status = '<img class="center" src="geticon.php?context=status&icon=task-complete&size=16" alt=""/>&nbsp;'._('Processed');
     }
 
     /* Special handling for all entries that have
        STATUS == "processing" && PROGRESS == NUMERIC
      */
-    if ($status == "processing" && $substatus) {
+    if ($status == 'processing' && $substatus) {
         $status = $substatus;
-    } else if ($status == "processing") {
-        $status = preg_replace('/ /', '&nbsp;', _("in progress"));
+    } elseif ($status == 'processing') {
+        $status = preg_replace('/ /', '&nbsp;', _('in progress'));
     }
     return $status;
-  }
-
-  function removeEntryRequested($action = "", $target = array(), $all = array())
-  {
-    if (!$this->acl_is_removeable()) {
-      msg_dialog::display(_("Permission"), msgPool::permDelete(), ERROR_DIALOG);
-    } else {
-
-      $deleteable_jobs = array();
-      $not_deleteable_jobs = array();
-      $headpage = $this->getHeadpage();
-
-      foreach ($target as $dn) {
-
-        $tmp = $headpage->getEntry($dn);
-        $task = $tmp['EVENT'];
-
-        /* Create a printable job name/description */
-        $infos = DaemonEvent::get_event_info($task['HEADERTAG']);
-        if ($infos) {
-          $j_name   = $task['ID']." - ".$infos['name']."&nbsp;".$task['MACADDRESS'];
-        } else {
-          $j_name = $task['ID']." - ".$task['HEADERTAG']."&nbsp;".$task['MACADDRESS'];
-        }
-
-        /* Only remove WAITING or ERROR entries */
-        if (in_array($task['STATUS'], array("waiting","error","processed")) ||
-            ($task['STATUS'] == "processing" && !preg_match("/install/", $task['HEADERTAG'])) ) {
-          $this->ids_to_remove[]  = $task['ID'];
-          $deleteable_jobs[]      = $j_name;
-        } else {
-          $not_deleteable_jobs[] = $j_name;
-        }
-      }
-      if (count($not_deleteable_jobs)) {
-        msg_dialog::display(_("Remove"),
-            sprintf(_("The following jobs couldn't be deleted, they have to be aborted: %s"),
-              "<br>".msgPool::buildList($not_deleteable_jobs)), INFO_DIALOG);
-      }
-
-      if (count($this->ids_to_remove)) {
-        $smarty = get_smarty();
-        $smarty->assign("multiple", TRUE);
-        $smarty->assign("info", msgPool::deleteInfo($deleteable_jobs));
-        return $smarty->fetch(get_template_path('remove.tpl', TRUE));
-      }
-    }
-  }
-
-  function removeEntryConfirmed($action = "", $target = array(), $all = array(),
-                                $altTabClass = "", $altTabType = "", $altAclCategory = "")
-  {
-    if ($this->acl_is_removeable("")) {
-      timezone::get_default_timezone();
-      $this->o_queue->remove_entries($this->ids_to_remove);
-      $this->save();
-    }
-  }
-
-
-  /*! \brief  Force queue job to be aborted.
-   */
-  function abortEvent($action = "", $target = array(), $all = array())
-  {
-    /* Detect if the ids we got are valid and
-     *  check if the status allows pausing.
-     */
-    $macs = array();
-    $taskids = array();
-    $headpage = $this->getHeadpage();
-    foreach ($target as $id) {
-      $tmp = $headpage->getEntry($id);
-      $macs[] = $tmp['MACADDRESS'][0];
-      $taskids[] = $tmp['EVENT']['ID'];
-    }
-
-    if (class_available("DaemonEvent")) { // Sending a wakeup in order to flag it as localboot
-      $tmp = new DaemonEvent($this->config, 'wakeup');
-      $tmp->add_targets($macs);
-      $tmp->set_type(TRIGGERED_EVENT);
-      $this->o_queue->append($tmp);
-      if ($this->o_queue->is_error()) {
-        msg_dialog::display(_("Info"), sprintf(_("%s"), $this->o_queue->get_error()), INFO_DIALOG);
-      }
-    } else {
-      msg_dialog::display(_("Error"),
-          sprintf(_("Required class '%s' cannot be found: job not aborted!"),
-            "DaemonEvent"), ERROR_DIALOG);
-    }
-
-    $this->o_queue->remove_entries($taskids); // Removing the task.
-  }
-
-  function processNow($action = "", $target = array(), $all = array())
-  {
-    $this->execute_queue_entries($target);
-  }
-
-  function viewLogs($action = "", $target = array(), $all = array())
-  {
-    if (count($target) == 1) {
-      $id       = $target[0];
-      $type     = FALSE;
-      $headpage = $this->getHeadpage();
-      $tmp      = $headpage->getEntry($id);
-      $entry    = $tmp['EVENT'];
-      $this->dialogObject = new faiLogView($this->config, "", $entry, $this);
-    }
-  }
-
-  function showErrorEntry($action = "", $target = array(), $all = array())
-  {
-    if (count($target) == 1) {
-      $id       = $target[0];
-      $type     = FALSE;
-      $headpage = $this->getHeadpage();
-      $tmp      = $headpage->getEntry($id);
-      $entry    = $tmp['EVENT'];
-      msg_dialog::display(_("Error detail"), $entry['ERROR']);
-    }
-  }
-
-  function detectPostActions()
-  {
-    $action = management::detectPostActions();
-    if (isset($_POST['delete_multiple_confirm'])) $action['action'] = "removeConfirmed";
-    if (isset($_POST['delete_cancel'])) $action['action'] = "cancel";
-    if (isset($_POST['import_abort'])) $action['action'] = "cancel";
-    return $action;
-  }
-
-
-  function closeDialogs()
-  {
-    $this->current = FALSE;
-    management::closeDialogs();
-  }
-
-
-  /*! \brief  Force queue job to be done as far as possible.
-   *  @return Boolean TRUE in case of success, else FALSE.
-   */
-  private function execute_queue_entries($ids)
-  {
-    /* Only allow execution of paused or waiting entries
-     */
-    $update_ids = array();
-    $headpage   = $this->getHeadpage();
-    foreach ($ids as $id) {
-      $tmp    = $headpage->getEntry($id);
-      $entry  = $tmp['EVENT'];
-      if (in_array($entry['STATUS'], array("paused","waiting"))) {
-        $update_ids[] = $entry['ID'];
-      }
-    }
-
-    /* Tell the daemon that we want to update some entries
-     */
-    if (count($update_ids)) {
-      if (!$this->o_queue->process_entries_now($update_ids)) {
-        msg_dialog::display(_("Error"), sprintf(_("Cannot update queue entries.")), ERROR_DIALOG);
-        return FALSE;
-      }
-    }
-    return TRUE;
-  }
-
-  function save_object()
-  {
-  }
-
-  function save()
-  {
-  }
-
-
-  function set_acl_base($base)
-  {
-    $this->acl_base = $base;
-  }
-
-
-  function set_acl_category($category)
-  {
-    $this->acl_category = "$category/";
-  }
-
-
-  function acl_is_writeable($attribute, $skip_write = FALSE)
-  {
-    if ($this->read_only) {
-      return FALSE;
-    }
-    $ui = get_userinfo();
-    return preg_match('/w/', $ui->get_permissions($this->acl_base, $this->acl_category.get_class($this), $attribute, $skip_write));
-  }
-
-
-  function acl_is_readable($attribute)
-  {
-    $ui = get_userinfo();
-    return preg_match('/r/', $ui->get_permissions($this->acl_base, $this->acl_category.get_class($this), $attribute));
-  }
-
-  private function _acl_is_ ($mask, $base)
-  {
-    if ($this->read_only) {
-      return FALSE;
-    }
-    $ui = get_userinfo();
-    if ($base == "") {
-      $base = $this->acl_base;
-    }
-    return preg_match($mask, $ui->get_permissions($base, $this->acl_category.get_class($this), '0'));
-  }
-
-  function acl_is_createable($base = "")
-  {
-    return $this->_acl_is_('/c/', $base);
-  }
-
-  function acl_is_removeable($base = "")
-  {
-    return $this->_acl_is_('/d/', $base);
-  }
-
-  function acl_is_moveable($base = "")
-  {
-    return $this->_acl_is_('/m/', $base);
-  }
-
-
-  function getacl($attribute, $skip_write = FALSE)
-  {
-    $ui = get_userinfo();
-    $skip_write |= $this->read_only;
-    return $ui->get_permissions($this->acl_base, $this->acl_category.get_class($this), $attribute, $skip_write);
   }
 }
 ?>

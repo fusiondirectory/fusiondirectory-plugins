@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-11 22:19+0200\n"
-"PO-Revision-Date: 2015-05-30 14:12+0000\n"
+"POT-Creation-Date: 2016-01-02 22:39+0100\n"
+"PO-Revision-Date: 2015-11-05 20:24+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -371,6 +371,8 @@ msgstr "Sin limite"
 #: personal/mail/class_mailAccount.inc:376
 #: personal/mail/class_mailAccount.inc:380
 #: personal/mail/class_mailAccount.inc:384
+#: personal/mail/class_mailAccount.inc:417
+#: personal/mail/class_mailAccount.inc:421
 msgid "Mail error"
 msgstr "Error de correo"
 
@@ -543,6 +545,16 @@ msgstr "No puedo guardar el parámetro de cuota: %s"
 #: personal/mail/class_mailAccount.inc:397
 msgid "Mail error saving sieve settings"
 msgstr "Hay un error de correo al grabar la configuración sieve"
+
+#: personal/mail/class_mailAccount.inc:417
+#, php-format
+msgid "Cannot remove mailbox, mail method cannot connect: %s"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:421
+#, php-format
+msgid "Cannot remove mailbox: %s"
+msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:29
 msgid "Mail plugin configuration"

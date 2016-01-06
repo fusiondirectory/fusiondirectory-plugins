@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -78,12 +78,6 @@ class addressbook extends plugin
     $this->config = &$config;
 
     $this->base = $this->config->current['BASE'];
-
-    /* Check if there is a special ldap-sub-tree specified, instead of dc=addressbook, */
-    $aoc = $this->config->search("addressbook", "addressbookBaseDN",array('menu'));
-    if ($aoc != "") {
-      $this->abobjectclass  = $aoc;
-    }
 
     /* Get global filter config */
     if (!session::is_set("phonefilter")) {

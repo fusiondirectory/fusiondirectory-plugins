@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2015  FusionDirectory
+  Copyright (C) 2013-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -51,7 +51,7 @@ class serviceDovecot extends simpleService
               new SelectAttribute(_('Option'), _('Options for contacting Dovecot server'), 'dovecotConnectOptions1', TRUE, array('notls', 'tls', 'ssl'), 'notls'),
               new SelectAttribute(_('Valide certificats'), _('Weither or not to validate server certificate on connexion'), 'dovecotConnectOptions2', FALSE, array('', '/validate-cert', '/novalidate-cert'), '', array('', 'validate', 'no-validate'))
             ),
-            '/^{(.+):(\\d+)\\/([^\\/]+)(.+)}$/',
+            '/^{(.*):(\\d+)\\/([^\\/]+)(.*)}$/',
             '{%s:%d/%s%s}'
           ),
         )

@@ -1,9 +1,30 @@
 #!/usr/bin/perl
 
+########################################################################
 #
-# fusiondirectory-shell: A shell to act on FusionDirectory handled objects
+# fusiondirectory-shell
+#
+# A shell to act on FusionDirectory handled objects
 # See pod documentation at the end of the file
 #
+#  This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+#  Copyright (C) 2015-2016  FusionDirectory
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+#
+########################################################################
 
 use strict;
 use warnings;
@@ -42,6 +63,13 @@ GetOptions(
 pod2usage(1) if $help;
 pod2usage(2) if not defined $login;
 pod2usage(2) if not defined $password and not $password_ask;
+
+if ($host !~ m/jsonrpc\.php$/) {
+  if ($host !~ m|/$|) {
+    $host .= '/';
+  }
+  $host .= 'jsonrpc.php'
+}
 
 my $current_base;
 
@@ -140,6 +168,13 @@ my $term = new Term::ShellUI(
       minargs => 1,
       maxargs => 3,
       proc    => \&command_cat,
+    },
+    "lstabs" => {
+      desc    => "List an object activated tabs",
+      doc     => "Usage: lstabs <TYPE> [<DN>]\nLists activated tabs of object DN\nIf DN is not provided, just list tabs activated on creation of an object of type TYPE\nExample: lstabs user uid=fd-admin,dc=example,dc=com\nExample: lstabs user\n",
+      minargs => 1,
+      maxargs => 2,
+      proc    => \&command_lstabs,
     },
     "infos" => {
       desc    => "Show informations about a type",
@@ -365,6 +400,16 @@ sub ask_field
   die("Don't know how to prompt for the attribute of types ".join(',',@{$field->{'type'}}));
 }
 
+sub command_lstabs
+{
+  my ($type, $path) = @_;
+  $path = complete_dn($path);
+  my $tabs = rpc_call($client, 'listTabs', [$sid,$type,$path]);
+  while (my ($tab, $name) = each(%$tabs)) {
+    printf ("%-30s %s\n", $name, $tab);
+  }
+}
+
 sub command_infos
 {
   my ($type) = @_;
@@ -579,7 +624,7 @@ fusiondirectory-shell - A shell to act on FusionDirectory handled objects
 
 =head1 SYNOPSIS
 
-B<fusiondirectory-shell> [I<options>]
+B<fusiondirectory-shell> [-h] [-u I<URL>] [-c I<FILE>] -l I<LOGIN> (-p I<PWD> | -P) [-s I<LDAPSERVER>]
 
 =head1 DESCRIPTION
 
@@ -593,9 +638,9 @@ B<fusiondirectory-shell> will connect you to FusionDirectory webservice and allo
 
 Print a brief help message and exits.
 
-=item B<-u>, B<--url>=I<HOST>
+=item B<-u>, B<--url>=I<URL>
 
-Use HOST instead of https://localhost/fusiondirectory/jsonrpc.php
+Use URL instead of https://localhost/fusiondirectory/jsonrpc.php
 
 =item B<-l>, B<--login>=I<LOGIN>
 
@@ -631,7 +676,7 @@ Come Bernigaud
 
 =over 2
 
-=item Copyright (C) 2013-2015 FusionDirectory project
+=item Copyright (C) 2015-2016 FusionDirectory project
 
 =back
 

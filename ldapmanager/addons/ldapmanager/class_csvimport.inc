@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015 FusionDirectory
+  Copyright (C) 2015-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -158,13 +158,24 @@ class csvimport extends simplePlugin
           $value = key($fields);
           next($fields);
         }
-        $attributesObjects[] =
-          new SelectAttribute(
-            $class_infos['name'].' > '.$attr_infos['label'], '',
-            $ldapName, TRUE,
-            array_keys($choices), $value,
-            array_values($choices)
+        if (in_array('SetAttribute', $attr_infos['type'])) {
+          $attributesObjects[] = new SetAttribute(
+            new SelectAttribute(
+              $class_infos['name'].' > '.$attr_infos['label'], '',
+              $ldapName, TRUE,
+              array_keys($choices), $value,
+              array_values($choices)
+            )
           );
+        } else {
+          $attributesObjects[] =
+            new SelectAttribute(
+              $class_infos['name'].' > '.$attr_infos['label'], '',
+              $ldapName, TRUE,
+              array_keys($choices), $value,
+              array_values($choices)
+            );
+        }
       }
     }
     $this->attributesAccess['fields']->setAttributes($attributesObjects);
@@ -179,14 +190,28 @@ class csvimport extends simplePlugin
       foreach ($this->attributesAccess['fields']->attributes as $attribute) {
         preg_match('/^template_([^:]+):(.*)$/', $attribute->getLdapName(), $m);
         $i = $attribute->getValue();
-        if ($i < count($row)) {
-          $values[$m[1]][$m[2]] = $row[$i];
-        } elseif ($i < (count($row) + count($this->fixed_values))) {
-          $values[$m[1]][$m[2]] = $this->fixed_values[$i - count($row)];
+        if (is_array($i)) {
+          foreach ($i as $j) {
+            $values[$m[1]][$m[2]] = array();
+            if ($j < count($row)) {
+              $values[$m[1]][$m[2]][] = $row[$j];
+            } elseif ($j < (count($row) + count($this->fixed_values))) {
+              $values[$m[1]][$m[2]][] = $this->fixed_values[$j - count($row)];
+            } else {
+              $values[$m[1]][$m[2]][] = $this->cachedChoices[$attribute->getLdapName()][$j - count($row) - count($this->fixed_values)];
+            }
+          }
         } else {
-          $values[$m[1]][$m[2]] = $this->cachedChoices[$attribute->getLdapName()][$i - count($row) - count($this->fixed_values)];
+          if ($i < count($row)) {
+            $values[$m[1]][$m[2]] = $row[$i];
+          } elseif ($i < (count($row) + count($this->fixed_values))) {
+            $values[$m[1]][$m[2]] = $this->fixed_values[$i - count($row)];
+          } else {
+            $values[$m[1]][$m[2]] = $this->cachedChoices[$attribute->getLdapName()][$i - count($row) - count($this->fixed_values)];
+          }
         }
       }
+      $this->template_object->reset();
       $this->template_object->deserialize($values);
       $tabObject = $this->template_object->apply();
       $msgs = $tabObject->check();

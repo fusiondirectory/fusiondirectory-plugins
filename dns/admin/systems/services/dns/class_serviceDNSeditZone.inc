@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -194,11 +194,9 @@ class servdnseditZone extends plugin
     /* Save Zone Entry Edit Dialog */
     if (isset($_POST['SaveZoneEntryChanges'])) {
       $this->dialog->save_object();
-      if (count($this->dialog->check())) {
-        $msgs = $this->dialog->check();
-        foreach ($msgs as $msg) {
-          msg_dialog::display(_("Error"), $msg, ERROR_DIALOG);
-        }
+      $msgs = $this->dialog->check();
+      if (count($msgs)) {
+        msg_dialog::displayChecks($msgs);
       } else {
         $this->zoneEditor = clone $this->dialog;
         $this->dialog     = FALSE;

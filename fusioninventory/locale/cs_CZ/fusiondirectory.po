@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-11 22:18+0200\n"
-"PO-Revision-Date: 2015-05-30 14:12+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
+"POT-Creation-Date: 2016-01-02 22:39+0100\n"
+"PO-Revision-Date: 2016-01-02 21:43+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,11 +25,11 @@ msgstr "BEZ POPISKU"
 #: admin/inventory/inventory-list.xml:28
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:56
 msgid "IP"
-msgstr ""
+msgstr "IP adresa"
 
 #: admin/inventory/inventory-list.xml:36
 msgid "Macs"
-msgstr "MAC adresy"
+msgstr "Stroje Apple Mac"
 
 #: admin/inventory/inventory-list.xml:44
 msgid "Operating Systems"
@@ -69,18 +69,22 @@ msgid "Inventory object"
 msgstr "Objekt inventáře"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:91
-msgid "Hardware"
-msgstr "hardware"
+msgid "Matching system"
+msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:97
+#: admin/systems/fusioninventory/class_fiInventory.inc:99
+msgid "Hardware"
+msgstr "Hardware"
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:105
 msgid "Software"
 msgstr "Programové vybavení"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:103
+#: admin/systems/fusioninventory/class_fiInventory.inc:111
 msgid "Users"
 msgstr "Uživatelé"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:109
+#: admin/systems/fusioninventory/class_fiInventory.inc:117
 msgid "Processes"
 msgstr "Procesy"
 
@@ -144,13 +148,13 @@ msgstr "IP adresy počítačů, ze kterých je možné spouštět úkony inventa
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:77
 #: config/fusioninventory/class_fiConfig.inc:41
 msgid "FusionInventory"
-msgstr ""
+msgstr "FusionInventory"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:78
 msgid "FusionInventory agent configuration"
 msgstr "Nastavení agenta FusionInventory"
 
-#: html/collect.php:89
+#: html/collect.php:78
 #, php-format
 msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
 msgstr "Nastavení %s/%s FusionDirectory není čitelné. Akce byla zrušena."

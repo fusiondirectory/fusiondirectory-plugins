@@ -2,7 +2,7 @@
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -176,7 +176,7 @@ class supportDaemon
   }
 
   /*!
-   * \brief Allows simply appending a new DaemonEvent
+   * \brief Allows simply appending a new argonautAction
    *
    * \param String $event The event to append.
    *
@@ -184,40 +184,12 @@ class supportDaemon
    */
   public function append($event)
   {
-    if (!($event instanceof DaemonEvent)) {
+    if (!($event instanceof argonautAction)) {
       return FALSE;
     }
 
-    /* Add to queue if new
-     */
-    if ($event->is_new()) {
-      $action = $event->get_action();
-
-      /* Get event informations, like targets..
-      */
-      $targets  = $event->get_targets();
-      $data     = $event->save();
-
-      /* Put timestamp back to UTC time
-       */
-      timezone::get_default_timezone();
-      if ($event->get_timestamp(FALSE) != 0) {
-        $data_json['timestamp'] = $event->get_timestamp(FALSE);
-        if (isset($data['periodic'])) {
-          $data_json['periodic'] = $data['periodic'];
-        }
-      }
-      $data_json['args'] = $data;
-      unset($data_json['args']['timestamp']);
-      unset($data_json['args']['periodic']);
-
-      /* Append an entry
-      */
-      return $this->append_call($action, $targets, $data_json);
-    } else {
-      /* Updated edited entry. */
-      trigger_error("Event is not new. This should not happen.");
-    }
+    /* Append an entry */
+    return $this->append_call($event->action, $event->targets, $event->computeData());
 
     return FALSE;
   }
@@ -326,16 +298,16 @@ class supportDaemon
     timezone::get_default_timezone();
     $entries_r = array();
     foreach ($entries as &$entry) {
-      $entry_r['TIMESTAMP'] = DaemonEvent::_timestamp_to_event($entry['data']['timestamp']);
-      $entry_r['MACADDRESS'] = $entry['target'];
+      $entry_r['TIMESTAMP']   = date('YmdHis', $entry['data']['timestamp']);
+      $entry_r['MACADDRESS']  = $entry['target'];
 
       // TODO : do an ldap search only if we haven't done it for the same mac before
       $ldap = $this->config->get_ldap_link();
       $ldap->cd($this->config->current['BASE']);
-      $ldap->search("(macAddress=".$entry_r['MACADDRESS'].")", array('cn'));
-      $ldap_infos = $ldap->fetch();
-      $ldap_infos['cn'][0];
-      $entry_r['PLAINNAME'] = $ldap_infos['cn'][0];
+      $ldap->search('(macAddress='.$entry_r['MACADDRESS'].')', array('cn'));
+      if ($ldap_infos = $ldap->fetch()) {
+        $entry_r['PLAINNAME'] = $ldap_infos['cn'][0];
+      }
 
       $entry_r['ERROR']     = $entry['error'];
       $entry_r['PROGRESS']  = $entry['progress'];
@@ -749,60 +721,6 @@ class supportDaemon
     return preg_replace($patterns, $escaped, $str);
   }
 
-  /*!
-   * \brief Get all configured repository servers
-   *
-   * \return array All configured repository servers
-  */
-  public function FAI_get_server()
-  {
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(&(FAIrepository=*)(objectClass=FAIrepositoryServer))", array("FAIrepository"));
-
-    $repos = array();
-    while ($entry = $ldap->fetch()) {
-      if (isset($entry['FAIrepository'])) {
-        // Add an entry for each Repository configured for server
-        unset($entry['FAIrepository']['count']);
-        foreach ($entry['FAIrepository'] as $repo) {
-          $tmp = explode("|", $repo);
-          $infos['URL']           = $tmp[0];
-          $infos['PARENT_SERVER'] = $tmp[1];
-          $infos['FAI_RELEASE']   = $tmp[2];
-          $infos['SECTIONS']      = (empty($tmp[3])?array():explode(",", $tmp[3]));
-          $infos['INSTALL']       = $tmp[4];
-          $infos['LOCAL']         = $tmp[5];
-          $infos['ARCHS']         = (empty($tmp[6])?array():explode(",", $tmp[6]));
-          $infos['DIST']          = (isset($tmp[7])?$tmp[7]:'debian');
-          $repos[] = $infos;
-        }
-      }
-    }
-    return $repos;
-  }
-
-  /*!
-   * \brief Get all configured customs repository servers for a given release
-   *
-   * \param string $release The release concerned
-   *
-   * \return array All configured customs repository servers for the given release
-  */
-  public function FAI_get_customs ($release)
-  {
-    $list     = array();
-    $servers  = $this->FAI_get_server();
-
-    foreach ($servers as $server) {
-      if (strtolower($server['INSTALL']) == strtolower("custom:$release")) {
-        $list[$server['FAI_RELEASE']] = $server['FAI_RELEASE'];
-      }
-    }
-
-    return array_values($list);
-  }
-
   /*! \brief  Get available kernels packages
    *
    * \param string $release The release we want kernels of
@@ -817,27 +735,6 @@ class supportDaemon
     }
     unset($kernel);
     return $kernels;
-  }
-
-  /*!
-   * \brief  Get available profiles
-   *
-   * \param string $release The release we want profiles for
-   *
-   * \return array All FAI profiles for the given release
-  */
-  public function FAI_get_profiles($release)
-  {
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd(get_ou("faiBaseRDN").$this->config->current['BASE']);
-    $ldap->search("(&(objectClass=FAIprofile)(objectClass=FAIclass)(ou:dn:=$release))", array('cn'));
-
-    $res = array();
-    while ($entry = $ldap->fetch()) {
-      $res[] = $entry['cn'][0];
-    }
-
-    return $res;
   }
 
   /*!

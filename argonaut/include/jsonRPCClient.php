@@ -3,7 +3,7 @@
           COPYRIGHT
 
 Copyright 2007 Sergio Vaccaro <sergio@inservibile.org>
-Copyright 2012-2013 FusionDirectory
+Copyright 2012-2016 FusionDirectory
 
 This file is part of JSON-RPC PHP.
 
