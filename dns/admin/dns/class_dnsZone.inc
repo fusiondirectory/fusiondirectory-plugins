@@ -34,6 +34,11 @@ class DnsRecordPlugin extends simplePlugin
             _('Record'), _('DNS Record'),
             'dnsRecord', TRUE
           ),
+          new HiddenAttribute('inReverse')
+          //~ new BooleanAttribute(
+            //~ _('PTR record'), _('Should a PTR record be created in the reverse zone for this record'),
+            //~ 'ptrRecord', FALSE, TRUE
+          //~ )
         )
       ),
     );
@@ -48,6 +53,10 @@ class DnsRecordPlugin extends simplePlugin
     $this->attributesAccess['dnsRecord']->setLinearRendering(FALSE);
     if (!empty($value)) {
       $this->relativeSubdomainName = array_shift($value);
+      if (isset($value[2])) {
+        $this->inReverse = $value[2];
+        unset($value[2]);
+      }
       $this->dnsRecord = $value;
     }
   }
@@ -131,7 +140,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     foreach (array_keys(DnsRecordAttribute::$types) as $type) {
       if (isset($attrs[$type]['count'])) {
         for ($i = 0; $i < $attrs[$type]['count']; $i++) {
-          $this->value[] = array('', $type, $attrs[$type][$i]);
+          $this->value[] = array('', $type, $attrs[$type][$i], FALSE);
         }
       }
     }
@@ -145,9 +154,16 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
             continue;
           }
           for ($j = 0; $j < $subattrs[$type]['count']; $j++) {
-            $this->value[] = array($subattrs['relativeDomainName'][0], $type, $subattrs[$type][$j]);
+            $this->value[] = array($subattrs['relativeDomainName'][0], $type, $subattrs[$type][$j], FALSE);
           }
         }
+      }
+      /* Get reverse zone */
+      $ldap->ls('(&(objectClass=dNSZone)(relativeDomainName=@)(zoneName=*))', $attrs['dn'], array('zoneName'));
+      $reverseDn = ;
+      while ($attrs = ldap->fetch()) {
+
+        $Zones[$zoneName]['ReverseZone']        = DNS::FlipIp(preg_replace('/\.in\-addr\.arpa\.?$/', '', $tmp['zoneName'][0]));
       }
     }
   }
