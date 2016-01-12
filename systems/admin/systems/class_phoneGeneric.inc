@@ -97,6 +97,45 @@ class phoneGeneric extends simplePlugin
     $this->netConfigDNS->MACisMust  = FALSE;
   }
 
+  public function __get($name)
+  {
+    if ($name == 'ipHostNumber') {
+      return array_merge(array($this->netConfigDNS->$name), $this->netConfigDNS->additionalHostNumbers);
+    } elseif ($name == 'macAddress') {
+      return array($this->netConfigDNS->$name);
+    } else {
+      return parent::__get($name);
+    }
+  }
+
+  public function __set($name, $value)
+  {
+    if ($name == 'ipHostNumber') {
+      if (is_array($value)) {
+        $this->netConfigDNS->$name                  = array_shift($value);
+        $this->netConfigDNS->additionalHostNumbers  = $value;
+      } else {
+        $this->netConfigDNS->$name = $value;
+      }
+    } elseif ($name == 'macAddress') {
+      if (is_array($value)) {
+        $value = $value[0];
+      }
+      $this->netConfigDNS->$name = $value;
+    } else {
+      return parent::__set($name, $value);
+    }
+  }
+
+  public function __isset($name)
+  {
+    if (($name == 'ipHostNumber') || ($name == 'macAddress')) {
+      return isset($this->netConfigDNS->$name);
+    } else {
+      return parent::__isset($name);
+    }
+  }
+
   function compute_dn ()
   {
     return 'cn='.$this->cn.','.get_ou('phoneRDN').$this->base;
