@@ -121,7 +121,7 @@ class dnsHost extends simplePlugin
       'plDescription'   => _('Edit the DNS zones of a system'),
       'plIcon'          => 'geticon.php?context=applications&icon=dns&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=dns&size=16',
-      'plObjectType'    => array('server', 'workstation'),
+      'plObjectType'    => array('server','workstation','terminal','printer','component','winstation','phone','mobilePhone');
       'plPriority'      => 5,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
