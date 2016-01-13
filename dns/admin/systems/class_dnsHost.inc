@@ -119,7 +119,7 @@ class dnsHost extends simplePlugin
       'plDescription'   => _('Edit the DNS zones of a system'),
       'plIcon'          => 'geticon.php?context=applications&icon=dns&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=dns&size=16',
-      'plObjectType'    => array('server','workstation','terminal','printer','component','winstation','phone','mobilePhone');
+      'plObjectType'    => array('server','workstation','terminal','printer','component','winstation','phone','mobilePhone'),
       'plPriority'      => 5,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -140,6 +140,10 @@ class dnsHost extends simplePlugin
           )
         )
       ),
+      'soa' => array(
+        'name'  => _('SOA records'),
+        'attrs' => array()
+      ),
       'records' => array(
         'name'  => _('DNS Records'),
         'class' => array('fullwidth'),
@@ -159,10 +163,25 @@ class dnsHost extends simplePlugin
 
   function zoneChanged()
   {
-    $dnsZones   = $this->fdDNSZoneDn;
+    global $config;
+    $ldap     = $config->get_ldap_link();
+    $dnsZones = $this->fdDNSZoneDn;
     if (empty($dnsZones)) {
+      unset($this->attributesInfo['soa']);
       unset($this->attributesInfo['records']);
     } else {
+      if (is_object($this->parent)) {
+        $cn = $this->parent->getBaseObject()->cn;
+      } elseif (isset($this->attrs['cn'][0])) {
+        /* When called by __construct, parent is not set yet */
+        $cn = $this->attrs['cn'][0];
+      } else {
+        $cn = '';
+      }
+      $this->attributesInfo['soa'] = array(
+        'name'  => _('Primary servers'),
+        'attrs' => array()
+      );
       $this->attributesInfo['records'] = array(
         'name'  => _('DNS Records'),
         'class' => array('fullwidth'),
@@ -178,6 +197,25 @@ class dnsHost extends simplePlugin
         $this->attributesAccess[$attrId] =& $this->attributesInfo['records']['attrs'][$attrId];
         $this->attributesAccess[$attrId]->setParent($this);
         unset($this->$attrId);
+
+        /* Fetch SOA record */
+        $ldap->cat($dn);
+        if ($attrs = $ldap->fetch()) {
+          list ($fqdn) = explode(' ', $attrs['sOARecord'][0]);
+          if ($fqdn == $cn.'.'.$attrs['zoneName'][0]) {
+            $fqdn = '<strong>'.$fqdn.'</strong>';
+          }
+          $attrId = 'soaRecord'.$name;
+          $this->attributesInfo['soa']['attrs'][$attrId] = new DisplayAttribute(
+            $name, sprintf(_('The primary server for zone "%s"'), $name),
+            $attrId, FALSE,
+            $fqdn
+          );
+          $this->attributesInfo['soa']['attrs'][$attrId]->setAllowHTML(TRUE);
+          $this->attributesAccess[$attrId] =& $this->attributesInfo['soa']['attrs'][$attrId];
+          $this->attributesAccess[$attrId]->setParent($this);
+          unset($this->$attrId);
+        }
       }
     }
   }
