@@ -51,7 +51,11 @@ class DnsRecordAttribute extends CompositeAttribute
   {
     $attributes = array(
       new SelectAttribute(_('Type'), '', $ldapName.'_type', $required, array_keys(self::$types), '', array_values(self::$types)),
-      new HiddenAttribute($ldapName.'_nofield')
+      new HiddenAttribute($ldapName.'_nofield'),
+      new SelectAttribute(
+        _('Reverse zone'), _('Reverse zone this record should be in, if any'),
+        'reverse', FALSE
+      ),
     );
     parent::__construct($description, $ldapName, $attributes, FALSE, FALSE, $acl, $label);
     $this->setLinearRendering(TRUE);
@@ -128,6 +132,11 @@ class DnsRecordAttribute extends CompositeAttribute
           $this->attributes[1] = new StringAttribute(_('Content'), _('Content of this record'), $ldapName, TRUE);
         break;
       }
+      if (in_array($type, array('aRecord','aAAARecord'))) {
+        $this->attributes[2]->setVisible(TRUE);
+      } else {
+        $this->attributes[2]->setVisible(FALSE);
+      }
     }
     $this->setAttributes($this->attributes); // Update ACLs
   }
@@ -146,6 +155,7 @@ class DnsRecordAttribute extends CompositeAttribute
     $this->attributes[0]->setValue($values[0]);
     $this->updateFields();
     $this->attributes[1]->setValue($values[1]);
+    $this->attributes[2]->setValue($values[2]);
   }
 
   function resetToDefault ()
@@ -153,5 +163,6 @@ class DnsRecordAttribute extends CompositeAttribute
     $this->attributes[0]->resetToDefault();
     $this->updateFields();
     $this->attributes[1]->resetToDefault();
+    $this->attributes[2]->resetToDefault();
   }
 }
