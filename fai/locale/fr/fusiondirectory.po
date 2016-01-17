@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Benoit Mortier <benoit.mortier@opensides.be>, 2015-2016
-# MCMic, 2015
+# MCMic, 2015-2016
 # MCMic, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2016-01-02 22:39+0100\n"
-"PO-Revision-Date: 2016-01-04 11:08+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
+"PO-Revision-Date: 2016-01-13 14:57+0000\n"
+"Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -211,7 +211,7 @@ msgstr "Erreur"
 msgid ""
 "The partition cannot be deleted while it is used in the \"%s\" disk "
 "definition!"
-msgstr "Ce disque ne peut pas être supprimé car il est utilisé par la définition de disque \"%s\" !"
+msgstr "Cette partition ne peut pas être supprimée car elle est utilisée par la définition de disque \"%s\" !"
 
 #: admin/fai/class_faiDiskEntry.inc:218
 msgid "Partition table entry"
@@ -272,13 +272,13 @@ msgstr "Partitions physiques combinées"
 
 #: admin/fai/class_faiDiskEntry.inc:263
 msgid "Physical partitions combined in this LVM volume"
-msgstr "Combination des partitions physiques dans volume LVM"
+msgstr "Partitions physiques combinées dans ce volume LVM"
 
 #: admin/fai/class_faiDiskEntry.inc:539
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration"
-msgstr "Vous avez plus de quatre partitions primaires dans votre configuration."
+msgstr "Vous avez plus de quatre partitions primaires dans votre configuration"
 
 #: admin/fai/class_faiDiskEntry.inc:543
 msgid ""
@@ -373,12 +373,12 @@ msgstr "Configuration des paquets FAI"
 
 #: admin/fai/class_faiPackageConfiguration.inc:34
 msgid "Configure debconf options of a package"
-msgstr "Configurer les options debconf d'un paquet"
+msgstr "Configurer les options debconf d’un paquet"
 
 #: admin/fai/class_faiPackageConfiguration.inc:81
 #, php-format
 msgid "Debconf information for package \"%s\""
-msgstr "Information Debconf pour le paquet \"%s\""
+msgstr "Informations debconf pour le paquet \"%s\""
 
 #: admin/fai/class_faiPackageConfiguration.inc:173
 msgid "Warning"
@@ -391,7 +391,7 @@ msgid ""
 "installation and requires choosing between specific options which cannot be "
 "presented here. The entered text needs to be one of the valid choices in "
 "order to take effect."
-msgstr "les questions debconf \"%s\" sont générée dynamiquement pendant l'installation du paquet et nécessite le choix entre différentes options qui ne peuvent pas être affichées ici. Le texte entré doit être un de ces choix pour être valide."
+msgstr "Les questions debconf \"%s\" sont générées dynamiquement pendant l’installation du paquet et nécessite le choix entre différentes options qui ne peuvent pas être affichées ici. Le texte entré doit être un de ces choix pour être valide."
 
 #: admin/fai/class_faiScript.inc:30 admin/fai/class_faiScript.inc:84
 #: admin/fai/class_faiHook.inc:87
@@ -549,7 +549,7 @@ msgstr "Drapeaux"
 
 #: admin/fai/class_faiPartition.inc:264
 msgid "Combined physical partitions in this RAID"
-msgstr "Combination des partitions physiques dans ce RAID"
+msgstr "Partitions physiques combinées dans ce RAID"
 
 #: admin/fai/class_faiPartition.inc:268
 msgid "Spare"
@@ -573,7 +573,7 @@ msgstr "Amorçable"
 
 #: admin/fai/class_faiPartition.inc:295
 msgid "Wether or not this partition can be booted"
-msgstr "La partition doit elle être bootable"
+msgstr "La partition doit-elle être bootable"
 
 #: admin/fai/class_faiPartition.inc:299
 msgid "Preserve"
@@ -597,7 +597,7 @@ msgstr "Système de fichier"
 
 #: admin/fai/class_faiPartition.inc:310
 msgid "The filesystem this partition should be formatted with"
-msgstr "Le système de fichiers cette partition doit être formatée avec"
+msgstr "Le système de fichiers avec lequel cette partition doit être formatée"
 
 #: admin/fai/class_faiPartition.inc:313
 msgid "swap space"
@@ -637,7 +637,7 @@ msgstr "Chiffré"
 
 #: admin/fai/class_faiPartition.inc:316
 msgid "Wether or not this partition is encrypted"
-msgstr "Si oui ou non cette partition est chiffré"
+msgstr "Si oui ou non cette partition est chiffrée"
 
 #: admin/fai/class_faiPartition.inc:320
 msgid "Mount point"
@@ -653,7 +653,7 @@ msgstr "Options"
 
 #: admin/fai/class_faiPartition.inc:329
 msgid "Create options"
-msgstr "Créer des options"
+msgstr "Options de création"
 
 #: admin/fai/class_faiPartition.inc:329
 msgid "Filesystem create options"
@@ -873,7 +873,7 @@ msgstr "Pour quelle distribution est ce dépôt "
 
 #: admin/systems/services/repository/class_serviceRepository.inc:77
 msgid "Path pattern"
-msgstr "Modèle d’organisation, des répertoires du dépôt"
+msgstr "Modèle d’organisation des répertoires"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:77
 msgid "How this repository is organized (only for RPM repositories)"
