@@ -379,7 +379,9 @@ class dnsZone extends simplePlugin
           new SetAttribute (
             new StringAttribute (
               _('Reverse zones'), _('Reverse zones for this zone in the form xx.xx.in-addr.arpa.'),
-              'reverseZones', FALSE
+              'reverseZones', FALSE,
+              '', '',
+              '/^.*\.in-addr\.arpa$/', '11.168.192.in-addr.arpa'
             )
           ),
         )
