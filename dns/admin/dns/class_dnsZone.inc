@@ -347,7 +347,7 @@ class dnsZone extends simplePlugin
       'plDescription' => _('DNS zone'),
       'plObjectType'  => array('dnsZone' => array(
         'name'        => _('DNS zone'),
-        'filter'      => '(&(objectClass=dNSZone)(relativeDomainName=@))',
+        'filter'      => '(&(objectClass=dNSZone)(relativeDomainName=@)(!(zoneName=*.in-addr.arpa)))',
         'ou'          => 'ou=dns,',
         'icon'        => 'geticon.php?context=applications&icon=dns&size=16',
         'mainAttr'    => 'zoneName'
