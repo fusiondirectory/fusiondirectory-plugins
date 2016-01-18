@@ -177,11 +177,18 @@ class DnsRecordAttribute extends CompositeAttribute
     if (!empty($error)) {
       return $error;
     }
-    if (in_array($this->attributes[0]->getValue(), self::$reverseTypes) && ($this->attributes[2]->getValue() != '')) {
+    $type = $this->attributes[0]->getValue();
+    if (in_array($type, self::$reverseTypes) && ($this->attributes[2]->getValue() != '')) {
       $ip       = $this->attributes[1]->getValue();
       $reverse  = $this->attributes[2]->getValue();
-      $mask     = preg_replace('/\.in-addr\.arpa\.?$/i', '', $reverse);
-      if (!preg_match('/\.'.preg_quote($mask).'$/', implode('.', array_reverse(explode('.', $ip))))) {
+      $mask     = preg_replace('/\.(in-addr|ip6)\.arpa\.?$/i', '', $reverse);
+      if ($type == 'aRecord') {
+        $testString = implode('.', array_reverse(explode('.', $ip)));
+      } elseif ($type == 'aAAARecord') {
+        $testString = implode('.', array_reverse(preg_split('/:|/', expandIPv6($ip), NULL, PREG_SPLIT_NO_EMPTY)));
+      }
+
+      if (!preg_match('/\.'.preg_quote($mask).'$/', $testString)) {
         return _('The entered IP does not match the selected reverse zone');
       }
     }

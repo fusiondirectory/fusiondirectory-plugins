@@ -177,6 +177,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       }
       $this->plugin->reverseZones = array_values($reverseZones);
       foreach ($reverseZones as $reverseZoneDn => $reverseZoneName) {
+        $ipv6 = preg_match('/ip6/', $reverseZoneName);
         $ldap->ls('(objectClass=dNSZone)', $reverseZoneDn, array('relativeDomainName', 'pTRRecord'));
         while ($attrs = $ldap->fetch()) {
           if ($attrs['pTRRecord'][0] == $this->plugin->zoneName) {
@@ -184,7 +185,9 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
           } else {
             $name = preg_replace('/\.'.preg_quote($this->plugin->zoneName).'$/', '', $attrs['pTRRecord'][0]);
           }
-          if (isset($aRecords['aRecord'][$name])) {
+          if ($ipv6 && isset($aRecords['aAAARecord'][$name])) {
+            $this->value[$aRecords['aAAARecord'][$name]][3] = $reverseZoneName;
+          } elseif (!$ipv6 && isset($aRecords['aRecord'][$name])) {
             $this->value[$aRecords['aRecord'][$name]][3] = $reverseZoneName;
           }
         }
@@ -234,12 +237,9 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       list ($domain, $type, $content, $reverse) = $line;
       if (!empty($reverse)) {
         if (!isset($ptrs[$reverse])) {
-          $ptrs[$reverse] = array(
-            'aRecord'     => array(),
-            'aAAARecord'  => array()
-          );
+          $ptrs[$reverse] = array();
         }
-        $ptrs[$reverse][$type][$content] = $domain;
+        $ptrs[$reverse][$content] = $domain;
       }
       if (empty($domain)) {
         /* ignore root records */
@@ -284,10 +284,15 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       }
       /* TODO Copy NS records from zone ? */
       /* Write each needed PTR */
-      $mask = preg_replace('/\.in-addr\.arpa\.?$/i', '', $reverseZone);
+      $mask = preg_replace('/\.(in-addr|ip6)\.arpa\.?$/i', '', $reverseZone);
       if (isset($ptrs[$reverseZone])) {
-        foreach ($ptrs[$reverseZone]['aRecord'] as $ip => $name) {
-          $relativeDomainName = preg_replace('/\.'.preg_quote($mask).'$/', '', implode('.', array_reverse(explode('.', $ip))));
+        $ipv6 = preg_match('/ip6/', $reverseZone);
+        foreach ($ptrs[$reverseZone] as $ip => $name) {
+          if ($ipv6) {
+            $relativeDomainName = preg_replace('/\.'.preg_quote($mask).'$/', '', implode('.', array_reverse(preg_split('/:|/', expandIPv6($ip), NULL, PREG_SPLIT_NO_EMPTY))));
+          } else {
+            $relativeDomainName = preg_replace('/\.'.preg_quote($mask).'$/', '', implode('.', array_reverse(explode('.', $ip))));
+          }
           $dn = 'relativeDomainName='.$relativeDomainName.','.$reverseDn;
           $ldap->cd($dn);
           $ldap->add(
@@ -356,7 +361,7 @@ class dnsZone extends simplePlugin
       'plDescription' => _('DNS zone'),
       'plObjectType'  => array('dnsZone' => array(
         'name'        => _('DNS zone'),
-        'filter'      => '(&(objectClass=dNSZone)(relativeDomainName=@)(!(zoneName=*.in-addr.arpa)))',
+        'filter'      => '(&(objectClass=dNSZone)(relativeDomainName=@)(!(zoneName=*.arpa)))',
         'ou'          => 'ou=dns,',
         'icon'        => 'geticon.php?context=applications&icon=dns&size=16',
         'mainAttr'    => 'zoneName'
@@ -384,10 +389,10 @@ class dnsZone extends simplePlugin
           ),
           new SetAttribute (
             new StringAttribute (
-              _('Reverse zones'), _('Reverse zones for this zone in the form xx.xx.in-addr.arpa.'),
+              _('Reverse zones'), _('Reverse zones for this zone in the form xx.xx.in-addr.arpa or x.x.ip6.arpa'),
               'reverseZones', FALSE,
               '', '',
-              '/^.*\.in-addr\.arpa$/', '11.168.192.in-addr.arpa'
+              '/^.*\.(in-addr|ip6)\.arpa$/i', '11.168.192.in-addr.arpa'
             )
           ),
         )
