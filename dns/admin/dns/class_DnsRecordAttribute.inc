@@ -47,6 +47,11 @@ class DnsRecordAttribute extends CompositeAttribute
     'tXTRecord'   => 'TXT',
   );
 
+  /* Types which might match reverse zone records */
+  public static $reverseTypes = array(
+    'aRecord', 'aAAARecord'
+  );
+
   function __construct($label, $description, $ldapName, $required, $acl = '')
   {
     $attributes = array(
@@ -132,7 +137,7 @@ class DnsRecordAttribute extends CompositeAttribute
           $this->attributes[1] = new StringAttribute(_('Content'), _('Content of this record'), $ldapName, TRUE);
         break;
       }
-      if (in_array($type, array('aRecord','aAAARecord'))) {
+      if (in_array($type, self::$reverseTypes)) {
         $this->attributes[2]->setVisible(TRUE);
       } else {
         $this->attributes[2]->setVisible(FALSE);
