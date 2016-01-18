@@ -146,6 +146,10 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     if (isset($attrs['dn'])) {
       $ldap = $config->get_ldap_link();
       $ldap->ls('objectClass=dNSZone', $attrs['dn'], array_merge(array('relativeDomainName'), array_keys(DnsRecordAttribute::$types)));
+      $records = array(
+        'aRecord'     => array(),
+        'aAAARecord'  => array()
+      );
       while ($subattrs = $ldap->fetch()) {
         for ($i = 0; $i < $subattrs['count']; $i++) {
           $type = $subattrs[$i];
@@ -154,6 +158,10 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
           }
           for ($j = 0; $j < $subattrs[$type]['count']; $j++) {
             $this->value[] = array($subattrs['relativeDomainName'][0], $type, $subattrs[$type][$j], '');
+          }
+          if (in_array($type, DnsRecordAttribute::$reverseTypes)) {
+            end($this->value);
+            $records[$type][$subattrs['relativeDomainName'][0]] = key($this->value);
           }
         }
       }
@@ -168,16 +176,9 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         $ldap->ls('(objectClass=dNSZone)', $reverseZoneDn, array('relativeDomainName', 'pTRRecord'));
         while ($attrs = $ldap->fetch()) {
           $name = preg_replace('/\.'.preg_quote($this->plugin->zoneName).'$/', '', $attrs['pTRRecord'][0]);
-          /* FIXME: highly not optimal POC, MUST be done in an other way */
-          trigger_error('poc '.$name);
-          foreach ($this->value as &$value) {
-            if (($value[0] == $name) && ($value[1] == 'aRecord')) {
-              /* TODO check that IP match too ? */
-              $value[3] = $reverseZoneName;
-              break;
-            }
+          if (isset($records['aRecord'][$name])) {
+            $this->value[$records['aRecord'][$name]][3] = $reverseZoneName;
           }
-          unset($value);
         }
       }
     }
