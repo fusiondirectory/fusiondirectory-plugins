@@ -170,4 +170,20 @@ class DnsRecordAttribute extends CompositeAttribute
     $this->attributes[1]->resetToDefault();
     $this->attributes[2]->resetToDefault();
   }
+
+  function check ()
+  {
+    $error = parent::check();
+    if (!empty($error)) {
+      return $error;
+    }
+    if (in_array($this->attributes[0]->getValue(), self::$reverseTypes) && ($this->attributes[2]->getValue() != '')) {
+      $ip       = $this->attributes[1]->getValue();
+      $reverse  = $this->attributes[2]->getValue();
+      $mask     = preg_replace('/\.in-addr\.arpa\.?$/i', '', $reverse);
+      if (!preg_match('/\.'.preg_quote($mask).'$/', implode('.', array_reverse(explode('.', $ip))))) {
+        return _('The entered IP does not match the selected reverse zone');
+      }
+    }
+  }
 }
