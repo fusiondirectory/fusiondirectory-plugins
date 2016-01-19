@@ -331,6 +331,9 @@ class fiInventory extends simplePlugin
         FALSE, FALSE,
         '', _('No matching system')
       );
+      if (empty($templates)) {
+        $this->attributesAccess['matching']->setDisabled(TRUE);
+      }
       $this->attributesAccess['matching']->setParent($this);
       $this->attributesAccess['matching']->setLinearRendering(TRUE);
     }
