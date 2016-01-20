@@ -53,6 +53,14 @@ class DnsRecordPlugin extends simplePlugin
     if (!empty($value)) {
       $this->relativeSubdomainName  = array_shift($value);
       $this->dnsRecord              = $value;
+    } elseif (!($parent instanceof dnsZone)) {
+      /* Read default values from system: cn and IPs */
+      $this->relativeSubdomainName = $parent->parent->getBaseObject()->cn;
+      $ips = $parent->parent->getBaseObject()->ipHostNumber;
+      $this->attributesAccess['dnsRecord']->setParentIPs(
+        array_filter($ips, 'tests::is_ipv4'),
+        array_filter($ips, 'tests::is_ipv6')
+      );
     }
     $this->attributesAccess['dnsRecord']->attributes[2]->setChoices($parent->reverseZones);
   }
@@ -172,18 +180,18 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       /* Get reverse zone */
       $ldap->ls('(&(objectClass=dNSZone)(relativeDomainName=@)(zoneName=*))', $attrs['dn'], array('zoneName'));
       $reverseZones = array();
-      while ($attrs = $ldap->fetch()) {
-        $reverseZones[$attrs['dn']] = $attrs['zoneName'][0];
+      while ($subattrs = $ldap->fetch()) {
+        $reverseZones[$subattrs['dn']] = $subattrs['zoneName'][0];
       }
       $this->plugin->reverseZones = array_values($reverseZones);
       foreach ($reverseZones as $reverseZoneDn => $reverseZoneName) {
         $ipv6 = preg_match('/ip6/', $reverseZoneName);
         $ldap->ls('(objectClass=dNSZone)', $reverseZoneDn, array('relativeDomainName', 'pTRRecord'));
-        while ($attrs = $ldap->fetch()) {
-          if ($attrs['pTRRecord'][0] == $this->plugin->zoneName) {
+        while ($subattrs = $ldap->fetch()) {
+          if ($subattrs['pTRRecord'][0] == $attrs['zoneName'][0]) {
             $name = '@';
           } else {
-            $name = preg_replace('/\.'.preg_quote($this->plugin->zoneName).'$/', '', $attrs['pTRRecord'][0]);
+            $name = preg_replace('/\.'.preg_quote($attrs['zoneName'][0]).'$/', '', $subattrs['pTRRecord'][0]);
           }
           if ($ipv6 && isset($aRecords['aAAARecord'][$name])) {
             $this->value[$aRecords['aAAARecord'][$name]][3] = $reverseZoneName;
