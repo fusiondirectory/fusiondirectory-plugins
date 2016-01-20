@@ -20,6 +20,9 @@
 
 class DnsRecordAttribute extends CompositeAttribute
 {
+  protected $parentIPs4 = array('');
+  protected $parentIPs6 = array('');
+
   public static $types = array(
     'aRecord'     => 'A',
     'a6Record'    => 'A6',
@@ -69,6 +72,22 @@ class DnsRecordAttribute extends CompositeAttribute
     $this->setRequired($required);
   }
 
+  function setParentIPs($ipv4, $ipv6)
+  {
+    $this->parentIPs4   = $ipv4;
+    $this->parentIPs4[] = '';
+    $this->parentIPs6   = $ipv6;
+    $this->parentIPs6[] = '';
+    if ($this->attributes[0]->getValue() == 'aRecord') {
+      $this->attributes[1]->setDefaultValue(reset($this->parentIPs4));
+    } elseif ($this->attributes[0]->getValue() == 'aAAARecord') {
+      $this->attributes[1]->setDefaultValue(reset($this->parentIPs6));
+    }
+    if ($this->attributes[1]->getValue() == '') {
+      $this->attributes[1]->resetToDefault();
+    }
+  }
+
   protected function updateFields()
   {
     $type = $this->attributes[0]->getValue();
@@ -76,10 +95,10 @@ class DnsRecordAttribute extends CompositeAttribute
     if ($this->attributes[1]->getLdapName() != $ldapName) {
       switch ($type) {
         case 'aRecord':
-          $this->attributes[1] = new IPv4Attribute(_('Target'), '', $ldapName, TRUE);
+          $this->attributes[1] = new IPv4Attribute(_('Target'), '', $ldapName, TRUE, reset($this->parentIPs4));
         break;
         case 'aAAARecord':
-          $this->attributes[1] = new IPv6Attribute(_('Target'), '', $ldapName, TRUE);
+          $this->attributes[1] = new IPv6Attribute(_('Target'), '', $ldapName, TRUE, reset($this->parentIPs6));
         break;
         case 'mXRecord':
           $this->attributes[1] = new CharSeparatedCompositeAttribute(
