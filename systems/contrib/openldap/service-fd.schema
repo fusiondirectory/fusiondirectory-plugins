@@ -21,6 +21,7 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.9.4 NAME 'goExportEntry'
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.9 NAME 'goSyslogSection'
   DESC 'What sections wants the server for its syslog service? i.e. *.*'
+  OBSOLETE
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
@@ -98,12 +99,14 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.9.21 NAME 'goLdapCrlCheck'
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.22 NAME 'goFaxAdmin'
   DESC 'Admin principal for fax server'
+  OBSOLETE
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.23 NAME 'goFaxPassword'
   DESC 'Admin password for fax server'
+  OBSOLETE
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
@@ -138,24 +141,28 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.9.25 NAME 'goLogPassword'
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.26 NAME 'goFonAdmin'
   DESC 'Admin user for fon server'
+  OBSOLETE
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.27 NAME 'goFonPassword'
   DESC 'Admin password for fon server'
+  OBSOLETE
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.28 NAME 'goFonAreaCode'
   DESC 'Store area code'
+  OBSOLETE
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.29 NAME 'goFonCountryCode'
   DESC 'Store country code'
+  OBSOLETE
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
@@ -270,6 +277,7 @@ objectclass (1.3.6.1.4.1.10098.1.2.1.16 NAME 'goTerminalServer' SUP top AUXILIAR
 # NFS Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.19 NAME 'goNfsServer' SUP top AUXILIARY
   DESC 'NFS server description'
+  OBSOLETE
   MUST ( cn )
   MAY  ( goExportEntry $ description ))
 
@@ -282,6 +290,7 @@ objectclass (1.3.6.1.4.1.10098.1.2.1.20 NAME 'goNtpServer' SUP top AUXILIARY
 # Syslog Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.21 NAME 'goSyslogServer' SUP top AUXILIARY
   DESC 'Syslog server description'
+  OBSOLETE
   MUST ( cn )
   MAY  ( goSyslogSection $ description ))
 
@@ -303,8 +312,9 @@ objectclass (1.3.6.1.4.1.10098.1.2.1.23 NAME 'goCupsServer' SUP top AUXILIARY
 # Fax Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.26 NAME 'goFaxServer' SUP top AUXILIARY
   DESC 'Fax server description'
-  MUST ( cn $ goFaxAdmin $ goFaxPassword )
-  MAY  ( description ))
+  OBSOLETE
+  MUST ( cn )
+  MAY  ( description $ goFaxAdmin $ goFaxPassword ))
 
 # Common server class
 objectclass (1.3.6.1.4.1.10098.1.2.1.27 NAME 'goServer' SUP top AUXILIARY
@@ -322,8 +332,9 @@ objectclass (1.3.6.1.4.1.10098.1.2.1.28 NAME 'goLogDBServer' SUP top AUXILIARY
 # Fon Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.29 NAME 'goFonServer' SUP top AUXILIARY
   DESC 'Fon server description'
-  MUST ( cn $ goFonAdmin $ goFonPassword $ goFonAreaCode $ goFonCountryCode $ fdAsteriskDriver)
-  MAY  ( description ))
+  OBSOLETE
+  MUST ( cn )
+  MAY  ( description $ goFonAdmin $ goFonPassword $ goFonAreaCode $ goFonCountryCode $ fdAsteriskDriver ))
 
 # Share Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.33 NAME 'goShareServer' SUP top AUXILIARY
