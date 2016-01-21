@@ -22,14 +22,14 @@
 class SSHPublicKeyAttribute extends FileTextAreaAttribute
 {
   /* cache for key extracted informations */
-  protected $format = '/^([-[:alnum:]=",]+\s+)?(ssh-(dss|rsa)|ecdsa-sha2-nistp\d{3})\s+([[:alnum:]+\/.=]+)(\s+([[:graph:][:space:]]+))?\s*$/';
+  protected $format = '/^([-[:alnum:]=",]+\s+)?(disabled-)?(ssh-(dss|rsa)|ecdsa-sha2-nistp\d{3})\s+([[:alnum:]+\/.=]+)(\s+([[:graph:][:space:]]+))?\s*$/';
 
   function getArrayValue ()
   {
     if (preg_match($this->format, $this->value, $match)) {
-      $fingerprint  = $this->fingerprint(base64_decode($match[4]));
-      $comment      = (isset($match[6]) ? $match[6] : '');
-      switch ($match[2]) {
+      $fingerprint  = $this->fingerprint(base64_decode($match[5]));
+      $comment      = (isset($match[7]) ? $match[7] : '');
+      switch ($match[3]) {
         case 'ssh-dss':
           $type = 'DSA';
         break;
@@ -37,7 +37,7 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
           $type = 'RSA';
         break;
         default:
-          $type = $match[2];
+          $type = $match[3];
         break;
       }
       return array(
