@@ -247,9 +247,10 @@ class dnsHost extends simplePlugin
           }
         }
       }
-      if ($baseObject->attributesAccess['ipHostNumber']->hasChanged()) {
-        $oldips = $baseObject->attributesAccess['ipHostNumber']->getInitialValue();
-        $newips = $baseObject->attributesAccess['ipHostNumber']->getValue();
+
+      if ($baseObject->attributeHaveChanged('ipHostNumber')) {
+        $oldips = $baseObject->attributeInitialValue('ipHostNumber');
+        $newips = $baseObject->attributeValue('ipHostNumber');
         if ((count($oldips) == 1) && (count($newips) == 1)) {
           $dnsZones   = $this->fdDNSZoneDn;
           foreach($dnsZones as $dn) {
