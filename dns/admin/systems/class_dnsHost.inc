@@ -232,9 +232,9 @@ class dnsHost extends simplePlugin
     if ($this->initially_was_account) {
       $baseObject = $this->parent->getBaseObject();
       $message    = '';
-      $oldcn      = $baseObject->attributesAccess['cn']->getInitialValue();
-      if ($baseObject->attributesAccess['cn']->hasChanged() && !empty($oldcn)) {
-        $newcn      = $baseObject->attributesAccess['cn']->getValue();
+      $oldcn      = $baseObject->attributeInitialValue('cn');
+      if ($baseObject->attributeHaveChanged('cn') && !empty($oldcn)) {
+        $newcn      = $baseObject->attributeValue('cn');
         $dnsZones   = $this->fdDNSZoneDn;
         foreach($dnsZones as $dn) {
           $tabObject = objects::open($dn, 'dnsZone');
