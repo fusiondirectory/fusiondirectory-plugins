@@ -491,6 +491,7 @@ class dnsZone extends simplePlugin
   {
     parent::__construct($config, $dn, $object);
     $this->attributesAccess['reverseZones']->setInLdap(FALSE);
+    $this->updateAttributesValues();
   }
 
   function ldap_save ($cleanup = TRUE)
