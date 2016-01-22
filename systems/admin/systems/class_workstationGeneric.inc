@@ -114,7 +114,89 @@ class ActionAttribute extends SelectAttribute
   }
 }
 
-class workstationGeneric extends simplePlugin
+class systemSimplePluginGlue extends simplePlugin
+{
+  protected $previousNetworkSavedAttributes;
+
+  public function __get($name)
+  {
+    if ($name == 'ipHostNumber') {
+      return array_merge(array($this->netConfigDNS->$name), $this->netConfigDNS->additionalHostNumbers);
+    } elseif ($name == 'macAddress') {
+      return array($this->netConfigDNS->$name);
+    } else {
+      return parent::__get($name);
+    }
+  }
+
+  public function __set($name, $value)
+  {
+    if ($name == 'ipHostNumber') {
+      if (is_array($value)) {
+        $this->netConfigDNS->$name                  = array_shift($value);
+        $this->netConfigDNS->additionalHostNumbers  = $value;
+      } else {
+        $this->netConfigDNS->$name = $value;
+      }
+    } elseif ($name == 'macAddress') {
+      if (is_array($value)) {
+        $value = $value[0];
+      }
+      $this->netConfigDNS->$name = $value;
+    } else {
+      return parent::__set($name, $value);
+    }
+  }
+
+  public function __isset($name)
+  {
+    if (($name == 'ipHostNumber') || ($name == 'macAddress')) {
+      return isset($this->netConfigDNS->$name);
+    } else {
+      return parent::__isset($name);
+    }
+  }
+
+  protected function attributeHaveChanged($field)
+  {
+    if ($field == 'ipHostNumber') {
+      return array_differs($this->attributeInitialValue($field), $this->attributeValue($field));
+    } else {
+      return parent::attributeHaveChanged($field);
+    }
+  }
+
+  protected function attributeValue($field)
+  {
+    if ($field == 'ipHostNumber') {
+      return $this->ipHostNumber;
+    } else {
+      return parent::attributeValue($field);
+    }
+  }
+
+  protected function attributeInitialValue($field)
+  {
+    if ($field == 'ipHostNumber') {
+      $initialValue = $this->previousNetworkSavedAttributes['ipHostNumber'];
+      if (is_array($initialValue)) {
+        return $initialValue;
+      } else {
+        return array($initialValue);
+      }
+    } else {
+      return parent::attributeInitialValue($field);
+    }
+  }
+
+  protected function ldap_save($cleanup = TRUE)
+  {
+    $this->previousNetworkSavedAttributes = $this->netConfigDNS->saved_attributes;
+    return parent::ldap_save($cleanup);
+  }
+}
+
+class workstationGeneric extends systemSimplePluginGlue
 {
   var $mainTab = TRUE;
 
@@ -261,45 +343,6 @@ class workstationGeneric extends simplePlugin
 
     $this->updateAttributesValues();
     $this->prepareSavedAttributes();
-  }
-
-  public function __get($name)
-  {
-    if ($name == 'ipHostNumber') {
-      return array_merge(array($this->netConfigDNS->$name), $this->netConfigDNS->additionalHostNumbers);
-    } elseif ($name == 'macAddress') {
-      return array($this->netConfigDNS->$name);
-    } else {
-      return parent::__get($name);
-    }
-  }
-
-  public function __set($name, $value)
-  {
-    if ($name == 'ipHostNumber') {
-      if (is_array($value)) {
-        $this->netConfigDNS->$name                  = array_shift($value);
-        $this->netConfigDNS->additionalHostNumbers  = $value;
-      } else {
-        $this->netConfigDNS->$name = $value;
-      }
-    } elseif ($name == 'macAddress') {
-      if (is_array($value)) {
-        $value = $value[0];
-      }
-      $this->netConfigDNS->$name = $value;
-    } else {
-      return parent::__set($name, $value);
-    }
-  }
-
-  public function __isset($name)
-  {
-    if (($name == 'ipHostNumber') || ($name == 'macAddress')) {
-      return isset($this->netConfigDNS->$name);
-    } else {
-      return parent::__isset($name);
-    }
   }
 
   /* Returns the dn of the entry */

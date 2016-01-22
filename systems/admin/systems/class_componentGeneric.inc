@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class componentGeneric extends simplePlugin
+class componentGeneric extends systemSimplePluginGlue
 {
   var $objectclasses = array("top", "device", "ipHost", "ieee802Device");
 
@@ -84,45 +84,6 @@ class componentGeneric extends simplePlugin
     parent::__construct($config, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
-  }
-
-  public function __get($name)
-  {
-    if ($name == 'ipHostNumber') {
-      return array_merge(array($this->netConfigDNS->$name), $this->netConfigDNS->additionalHostNumbers);
-    } elseif ($name == 'macAddress') {
-      return array($this->netConfigDNS->$name);
-    } else {
-      return parent::__get($name);
-    }
-  }
-
-  public function __set($name, $value)
-  {
-    if ($name == 'ipHostNumber') {
-      if (is_array($value)) {
-        $this->netConfigDNS->$name                  = array_shift($value);
-        $this->netConfigDNS->additionalHostNumbers  = $value;
-      } else {
-        $this->netConfigDNS->$name = $value;
-      }
-    } elseif ($name == 'macAddress') {
-      if (is_array($value)) {
-        $value = $value[0];
-      }
-      $this->netConfigDNS->$name = $value;
-    } else {
-      return parent::__set($name, $value);
-    }
-  }
-
-  public function __isset($name)
-  {
-    if (($name == 'ipHostNumber') || ($name == 'macAddress')) {
-      return isset($this->netConfigDNS->$name);
-    } else {
-      return parent::__isset($name);
-    }
   }
 
   /* Returns the dn of the entry */

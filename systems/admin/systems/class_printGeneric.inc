@@ -243,6 +243,42 @@ class printgeneric extends plugin
     }
   }
 
+  protected function attributeHaveChanged($field)
+  {
+    if ($field == 'ipHostNumber') {
+      return array_differs($this->attributeInitialValue($field), $this->attributeValue($field));
+    } elseif ($field == 'cn') {
+      return ($this->attributeInitialValue($field) != $this->attributeValue($field));
+    } else {
+      return parent::attributeHaveChanged($field);
+    }
+  }
+
+  protected function attributeValue($field)
+  {
+    if (($field == 'ipHostNumber') || ($field == 'cn')) {
+      return $this->$field;
+    } else {
+      return parent::attributeValue($field);
+    }
+  }
+
+  protected function attributeInitialValue($field)
+  {
+    if ($field == 'ipHostNumber') {
+      $initialValue = $this->netConfigDNS->saved_attributes['ipHostNumber'];
+      if (is_array($initialValue)) {
+        return $initialValue;
+      } else {
+        return array($initialValue);
+      }
+    } elseif ($field == 'cn') {
+      return $this->saved_attributes['cn'];
+    } else {
+      return parent::attributeInitialValue($field);
+    }
+  }
+
   /* Returns the dn of the entry */
   function compute_dn()
   {
