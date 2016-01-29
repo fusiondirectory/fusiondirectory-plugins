@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-01-02 22:39+0100\n"
+"POT-Creation-Date: 2016-01-22 11:59+0100\n"
 "PO-Revision-Date: 2016-01-02 21:43+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
@@ -103,10 +103,10 @@ msgstr "Název třídy proměnných"
 
 #: admin/fai/class_faiPackage.inc:404
 #: admin/fai/class_faiPartitionTable.inc:311
-#: admin/fai/class_faiDiskEntry.inc:239
+#: admin/fai/class_faiDiskEntry.inc:235
 #: admin/fai/class_faiTemplateEntry.inc:147 admin/fai/class_faiProfile.inc:56
 #: admin/fai/class_faiScript.inc:57 admin/fai/class_faiScript.inc:75
-#: admin/fai/class_faiTemplate.inc:180 admin/fai/class_faiPartition.inc:245
+#: admin/fai/class_faiTemplate.inc:180 admin/fai/class_faiPartition.inc:246
 #: admin/fai/class_faiHook.inc:57 admin/fai/class_faiHook.inc:75
 #: admin/fai/class_faiVariable.inc:57 admin/fai/class_faiVariable.inc:75
 msgid "Description"
@@ -183,102 +183,102 @@ msgid "Discs"
 msgstr "Jednotky datového úložiště"
 
 #: admin/fai/class_faiPartitionTable.inc:324
-#: admin/fai/class_faiDiskEntry.inc:269
+#: admin/fai/class_faiDiskEntry.inc:265
 msgid "Partitions in this class"
 msgstr "Oddíly v této třídě"
 
-#: admin/fai/class_faiDiskEntry.inc:107
+#: admin/fai/class_faiDiskEntry.inc:103
 msgid "encrypted"
 msgstr "šifrované"
 
-#: admin/fai/class_faiDiskEntry.inc:110
+#: admin/fai/class_faiDiskEntry.inc:106
 msgid "bootable"
 msgstr "zaveditelné"
 
-#: admin/fai/class_faiDiskEntry.inc:113
+#: admin/fai/class_faiDiskEntry.inc:109
 msgid "preserve"
 msgstr "zachovat"
 
-#: admin/fai/class_faiDiskEntry.inc:151 admin/systems/class_faiLogView.inc:207
+#: admin/fai/class_faiDiskEntry.inc:147 admin/systems/class_faiLogView.inc:207
 #: admin/systems/class_faiLogView.inc:242
 msgid "Error"
 msgstr "Chyba"
 
-#: admin/fai/class_faiDiskEntry.inc:152
+#: admin/fai/class_faiDiskEntry.inc:148
 #, php-format
 msgid ""
 "The partition cannot be deleted while it is used in the \"%s\" disk "
 "definition!"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:218
+#: admin/fai/class_faiDiskEntry.inc:214
 msgid "Partition table entry"
 msgstr "Položka tabulky rozdělení úložiště"
 
-#: admin/fai/class_faiDiskEntry.inc:219
+#: admin/fai/class_faiDiskEntry.inc:215
 msgid "FAI partition table entry"
 msgstr "Položka tabulky rozdělení úložiště pro FAI"
 
-#: admin/fai/class_faiDiskEntry.inc:230 admin/fai/class_faiDiskEntry.inc:246
+#: admin/fai/class_faiDiskEntry.inc:226 admin/fai/class_faiDiskEntry.inc:242
 msgid "Device"
 msgstr "Zařízení"
 
-#: admin/fai/class_faiDiskEntry.inc:233
+#: admin/fai/class_faiDiskEntry.inc:229
 #: admin/fai/packageSelect/selectPackage-list.xml:40
-#: admin/fai/class_faiScript.inc:71 admin/fai/class_faiPartition.inc:239
+#: admin/fai/class_faiScript.inc:71 admin/fai/class_faiPartition.inc:240
 #: admin/fai/class_faiHook.inc:71 admin/fai/class_faiVariable.inc:71
 #: admin/fai/class_faiSimplePluginClass.inc:50
 #: admin/fai/packageSelect/selectPackage-filter.tpl.c:8
 msgid "Name"
 msgstr "Název"
 
-#: admin/fai/class_faiDiskEntry.inc:233
+#: admin/fai/class_faiDiskEntry.inc:229
 msgid "Disk name"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:239 admin/fai/class_faiPartition.inc:245
+#: admin/fai/class_faiDiskEntry.inc:235 admin/fai/class_faiPartition.inc:246
 msgid "Short description"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:243
+#: admin/fai/class_faiDiskEntry.inc:239
 msgid "fstab key"
 msgstr "položka v /etc/fstab"
 
-#: admin/fai/class_faiDiskEntry.inc:243
+#: admin/fai/class_faiDiskEntry.inc:239
 msgid "Key to use in fstab file"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:246
+#: admin/fai/class_faiDiskEntry.inc:242
 msgid "Label"
 msgstr "Štítek"
 
-#: admin/fai/class_faiDiskEntry.inc:246
+#: admin/fai/class_faiDiskEntry.inc:242
 msgid "UUID"
 msgstr "Jedinečný identifikátor uživatele (UUID)"
 
-#: admin/fai/class_faiDiskEntry.inc:249
+#: admin/fai/class_faiDiskEntry.inc:245
 msgid "Disk label"
 msgstr "Označení jednotky datového úložiště"
 
-#: admin/fai/class_faiDiskEntry.inc:258
+#: admin/fai/class_faiDiskEntry.inc:254
 msgid "Partition entries"
 msgstr "Položky oddílů"
 
-#: admin/fai/class_faiDiskEntry.inc:263 admin/fai/class_faiPartition.inc:418
+#: admin/fai/class_faiDiskEntry.inc:259 admin/fai/class_faiPartition.inc:423
 msgid "Combined physical partitions"
 msgstr "Kombinované fyzické oddíly"
 
-#: admin/fai/class_faiDiskEntry.inc:263
+#: admin/fai/class_faiDiskEntry.inc:259
 msgid "Physical partitions combined in this LVM volume"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:539
+#: admin/fai/class_faiDiskEntry.inc:535
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:543
+#: admin/fai/class_faiDiskEntry.inc:539
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions"
@@ -492,208 +492,208 @@ msgstr "TB"
 msgid "PB"
 msgstr "PB"
 
-#: admin/fai/class_faiPartition.inc:143
+#: admin/fai/class_faiPartition.inc:144
 msgid "Minimum partition size"
 msgstr "Nejmenší možná velikost oddílu"
 
-#: admin/fai/class_faiPartition.inc:143
+#: admin/fai/class_faiPartition.inc:144
 msgid "Maximum partition size"
 msgstr "největší velikost oddílu"
 
-#: admin/fai/class_faiPartition.inc:216
+#: admin/fai/class_faiPartition.inc:217
 msgid "Partition entry"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:217
+#: admin/fai/class_faiPartition.inc:218
 msgid "FAI partition entry"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:228
+#: admin/fai/class_faiPartition.inc:229
 msgid "Partition"
 msgstr "Oddíl"
 
-#: admin/fai/class_faiPartition.inc:233
+#: admin/fai/class_faiPartition.inc:234
 msgid "Type"
 msgstr "Typ"
 
-#: admin/fai/class_faiPartition.inc:233
+#: admin/fai/class_faiPartition.inc:234
 msgid "Partition type"
 msgstr "Typ oddílu"
 
-#: admin/fai/class_faiPartition.inc:236 admin/fai/class_faiPartition.inc:374
+#: admin/fai/class_faiPartition.inc:237 admin/fai/class_faiPartition.inc:375
 msgid "Primary"
 msgstr "Hlavní"
 
-#: admin/fai/class_faiPartition.inc:236 admin/fai/class_faiPartition.inc:371
-#: admin/fai/class_faiPartition.inc:375
+#: admin/fai/class_faiPartition.inc:237 admin/fai/class_faiPartition.inc:372
+#: admin/fai/class_faiPartition.inc:376
 msgid "Logical"
 msgstr "Logické"
 
-#: admin/fai/class_faiPartition.inc:239
+#: admin/fai/class_faiPartition.inc:240
 msgid "Partition name"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:249
+#: admin/fai/class_faiPartition.inc:250
 msgid "Size"
 msgstr "Velikost"
 
-#: admin/fai/class_faiPartition.inc:249
+#: admin/fai/class_faiPartition.inc:250
 msgid "Size of this partition"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:255
+#: admin/fai/class_faiPartition.inc:256
 msgid "Flags"
 msgstr "Příznaky"
 
-#: admin/fai/class_faiPartition.inc:264
+#: admin/fai/class_faiPartition.inc:265
 msgid "Combined physical partitions in this RAID"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:268
+#: admin/fai/class_faiPartition.inc:269
 msgid "Spare"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:274
+#: admin/fai/class_faiPartition.inc:275
 msgid "Missing"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:291
+#: admin/fai/class_faiPartition.inc:292
 msgid "Resize"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:291
+#: admin/fai/class_faiPartition.inc:292
 msgid "Resize existing partition"
 msgstr "Změnit velikost stávajícího oddílu"
 
-#: admin/fai/class_faiPartition.inc:295
+#: admin/fai/class_faiPartition.inc:296
 msgid "Bootable"
 msgstr "Zaveditelný"
 
-#: admin/fai/class_faiPartition.inc:295
+#: admin/fai/class_faiPartition.inc:296
 msgid "Wether or not this partition can be booted"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:299
+#: admin/fai/class_faiPartition.inc:300
 msgid "Preserve"
 msgstr "Zachovat"
 
-#: admin/fai/class_faiPartition.inc:302
+#: admin/fai/class_faiPartition.inc:303
 msgid "Never"
 msgstr "Nikdy"
 
-#: admin/fai/class_faiPartition.inc:302
+#: admin/fai/class_faiPartition.inc:303
 msgid "Always"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:302
+#: admin/fai/class_faiPartition.inc:303
 msgid "Reinstall"
 msgstr "Přeinstalovat"
 
-#: admin/fai/class_faiPartition.inc:307 admin/fai/class_faiPartition.inc:310
+#: admin/fai/class_faiPartition.inc:308 admin/fai/class_faiPartition.inc:311
 msgid "Filesystem"
 msgstr "Souborový systém"
 
-#: admin/fai/class_faiPartition.inc:310
+#: admin/fai/class_faiPartition.inc:311
 msgid "The filesystem this partition should be formatted with"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:313
+#: admin/fai/class_faiPartition.inc:314
 msgid "swap space"
 msgstr "prostor pro odložení paměťových stránek (swap)"
 
-#: admin/fai/class_faiPartition.inc:313
+#: admin/fai/class_faiPartition.inc:314
 msgid "ext2"
 msgstr "ext2"
 
-#: admin/fai/class_faiPartition.inc:313
+#: admin/fai/class_faiPartition.inc:314
 msgid "ext3"
 msgstr "ext3"
 
-#: admin/fai/class_faiPartition.inc:313
+#: admin/fai/class_faiPartition.inc:314
 msgid "ext4"
 msgstr "ext4"
 
-#: admin/fai/class_faiPartition.inc:313
+#: admin/fai/class_faiPartition.inc:314
 msgid "reiser fs"
 msgstr "reiserfs"
 
-#: admin/fai/class_faiPartition.inc:313
+#: admin/fai/class_faiPartition.inc:314
 msgid "xfs"
 msgstr "xfs"
 
-#: admin/fai/class_faiPartition.inc:313
+#: admin/fai/class_faiPartition.inc:314
 msgid "btrfs"
 msgstr "btrfs"
 
-#: admin/fai/class_faiPartition.inc:313
+#: admin/fai/class_faiPartition.inc:314
 msgid "LVM/RAID"
 msgstr "LVM/RAID"
 
-#: admin/fai/class_faiPartition.inc:316
+#: admin/fai/class_faiPartition.inc:317
 msgid "Encrypted"
 msgstr "Šifrované"
 
-#: admin/fai/class_faiPartition.inc:316
+#: admin/fai/class_faiPartition.inc:317
 msgid "Wether or not this partition is encrypted"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:320
+#: admin/fai/class_faiPartition.inc:321
 msgid "Mount point"
 msgstr "Přípojný bod"
 
-#: admin/fai/class_faiPartition.inc:320
+#: admin/fai/class_faiPartition.inc:321
 msgid "Mount point for this partition"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:326
+#: admin/fai/class_faiPartition.inc:327
 msgid "Options"
 msgstr "Možnosti"
 
-#: admin/fai/class_faiPartition.inc:329
+#: admin/fai/class_faiPartition.inc:330
 msgid "Create options"
 msgstr "Vytvořit předvolby"
 
-#: admin/fai/class_faiPartition.inc:329
+#: admin/fai/class_faiPartition.inc:330
 msgid "Filesystem create options"
 msgstr "Předvolby vytváření souborového systému"
 
-#: admin/fai/class_faiPartition.inc:333
+#: admin/fai/class_faiPartition.inc:334
 msgid "Tune options"
 msgstr "Možnosti vyladění"
 
-#: admin/fai/class_faiPartition.inc:333
+#: admin/fai/class_faiPartition.inc:334
 msgid "Filesystem tune options"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:337
+#: admin/fai/class_faiPartition.inc:338
 msgid "Mount options"
 msgstr "Předvolby připojování (mount)"
 
-#: admin/fai/class_faiPartition.inc:337
+#: admin/fai/class_faiPartition.inc:338
 msgid "Filesystem mount options"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:380
+#: admin/fai/class_faiPartition.inc:381
 msgid "RAID 0"
 msgstr "RAID 0"
 
-#: admin/fai/class_faiPartition.inc:381
+#: admin/fai/class_faiPartition.inc:382
 msgid "RAID 1"
 msgstr "RAID 1"
 
-#: admin/fai/class_faiPartition.inc:382
+#: admin/fai/class_faiPartition.inc:383
 msgid "RAID 5"
 msgstr "RAID 5"
 
-#: admin/fai/class_faiPartition.inc:383
+#: admin/fai/class_faiPartition.inc:384
 msgid "RAID 6"
 msgstr "RAID 6"
 
-#: admin/fai/class_faiPartition.inc:474
+#: admin/fai/class_faiPartition.inc:479
 msgid "Raid arrays must contain at least two partitions!"
 msgstr "Pole RAID nemůže být tvořeno méně než dvěma oddíly!"
 
-#: admin/fai/class_faiPartition.inc:476
+#: admin/fai/class_faiPartition.inc:481
 msgid ""
 "Raid 0 arrays can only be realized with a combination of two partitions!"
 msgstr "Pole RAID 0 může tvořeno jedině a pouze dvěma oddíly!"
