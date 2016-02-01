@@ -45,7 +45,7 @@ class serviceLDAP extends simpleService
             'goLdapURI', TRUE,
             'ldap://'._('fill-in-your-servers-dns-name').':389/',
             '',
-            "/^ldap[si]?:\/\/([0-9a-z_.-]+|\[[0-9a-f:]+\])(:[0-9]+)?\/.*$/"
+            '/^ldap[si]?:\/\/([0-9a-z_.-]+|\[[0-9a-f:]+\])(:[0-9]+)?(\/.*)?$/'
           ),
           new IntAttribute (
             _('Size limit'), _('Limit the number of record returned'),
