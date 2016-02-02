@@ -424,6 +424,10 @@ class dnsZone extends simplePlugin
               '/^.*\.(in-addr|ip6)\.arpa$/i', '11.168.192.in-addr.arpa'
             )
           ),
+          new HiddenAttribute (
+            'dNSClass', TRUE,
+            'IN'
+          ),
         )
       ),
       'soa' => array(
