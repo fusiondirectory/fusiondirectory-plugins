@@ -260,6 +260,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     /* Then add our values */
     $nodes  = array();
     $ptrs   = array();
+    $nsRecords = array();
     foreach ($this->value as $line) {
       list ($domain, $type, $content, $reverse) = $line;
       if (!empty($reverse)) {
@@ -269,6 +270,9 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         $ptrs[$reverse][$content] = $domain;
       }
       if (empty($domain)) {
+        if ($type == 'nSRecord') {
+          $nsRecords[] = $content;
+        }
         /* ignore root records */
         continue;
       }
@@ -301,19 +305,20 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     foreach ($this->reverseZones as $reverseZone) {
       /* Write this reverse under the zone dn */
       $reverseDn = 'zoneName='.$reverseZone.','.$zoneDn;
+      /* Copy NS records and SOA from zone */
       $node = array(
         'objectClass'         => array('dNSZone'),
         'zoneName'            => $reverseZone,
         'relativeDomainName'  => '@',
         'dNSClass'            => 'IN',
         'sOARecord'           => $this->sOARecord,
+        'nSRecord'            => $nsRecords,
       );
       $ldap->cd($reverseDn);
       $ldap->add($node);
       if (!$ldap->success()) {
         msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $reverseDn, LDAP_ADD, get_class()), LDAP_ERROR);
       }
-      /* TODO Copy NS records from zone ? */
       /* Write each needed PTR */
       $mask = preg_replace('/\.(in-addr|ip6)\.arpa\.?$/i', '', $reverseZone);
       if (isset($ptrs[$reverseZone])) {
@@ -443,7 +448,7 @@ class dnsZone extends simplePlugin
           ),
           new SetAttribute (
             new StringAttribute (
-              _('Reverse zones'), sprintf(_('Reverse zones for this zone in the form xx.xx.in-addr.arpa%1$s or x.x.ip6.arpa%1$s'), (dnsZone::finalDot() ? '.' : ''))
+              _('Reverse zones'), sprintf(_('Reverse zones for this zone in the form xx.xx.in-addr.arpa%1$s or x.x.ip6.arpa%1$s'), (dnsZone::finalDot() ? '.' : '')),
               'reverseZones', FALSE,
               '', '',
               '/^.*\.(in-addr|ip6)\.arpa'.(dnsZone::finalDot() ? '\.' : '').'$/i', '11.168.192.in-addr.arpa'.(dnsZone::finalDot() ? '.' : '')
