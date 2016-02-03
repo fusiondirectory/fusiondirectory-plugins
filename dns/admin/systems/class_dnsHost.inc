@@ -112,6 +112,8 @@ class dnsHost extends simplePlugin
   var $objectclasses = array('fdDNSHost');
   var $displayHeader = TRUE;
 
+  protected $zonesCache;
+
   static function plInfo()
   {
     return array(
@@ -155,8 +157,8 @@ class dnsHost extends simplePlugin
   function __construct (&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
-    $zones = objects::ls('dnsZone');
-    $this->attributesAccess['fdDNSZoneDn']->attribute->setChoices(array_keys($zones), array_values($zones));
+    $this->zonesCache = objects::ls('dnsZone');
+    $this->attributesAccess['fdDNSZoneDn']->attribute->setChoices(array_keys($this->zonesCache), array_values($this->zonesCache));
     $this->attributesAccess['fdDNSZoneDn']->setSubmitForm('zoneChanged');
     $this->zoneChanged();
   }
@@ -188,7 +190,12 @@ class dnsHost extends simplePlugin
         'attrs' => array()
       );
       foreach($dnsZones as $dn) {
-        $name = $this->attributesAccess['fdDNSZoneDn']->attribute->displayValue($dn);
+        if (isset($this->zonesCache[$dn])) {
+          $name = $this->zonesCache[$dn];
+        } else {
+          msg_dialog::display(_('Error'), sprintf(_('Zone "%s" could not be found in the LDAP'), $dn), ERROR_DIALOG);
+          continue;
+        }
         $attrId = 'zoneRecords'.$name;
         $this->attributesInfo['records']['attrs'][$attrId] = new DnsRecordsFilteredAttribute(
           $name, sprintf(_('The DNS records for zone "%s"'), $name),
