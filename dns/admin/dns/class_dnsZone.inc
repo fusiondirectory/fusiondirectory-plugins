@@ -379,11 +379,34 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
   }
 }
 
+class ZoneNameAttribute extends StringAttribute
+{
+  function validate ()
+  {
+    if (dnsZone::finalDot()) {
+      $regexp = '/^(([a-z0-9\-]{2,63})\.)+$/';
+      $error  = _('"%s" must contain a domain name and end with a final dot.<br/><br/>Example: example.com.');
+    } else {
+      $regexp = '/^(([a-z0-9\-]{2,63})\.)*[a-z]{2,63}$/';
+      $error  = _('"%s" must contain a domain name.<br/><br/>Example: example.com');
+    }
+    if (!preg_match($regexp, $this->value)) {
+      return sprintf($error, $this->getLabel());
+    }
+  }
+}
+
 class dnsZone extends simplePlugin
 {
   var $mainTab = TRUE;
 
   var $objectclasses = array('dNSZone');
+
+  public static function finalDot()
+  {
+    global $config;
+    return ($config->get_cfg_value('DNSFinalDot', 'TRUE') == 'TRUE');
+  }
 
   public static function plInfo()
   {
@@ -392,7 +415,7 @@ class dnsZone extends simplePlugin
       'plDescription' => _('DNS zone'),
       'plObjectType'  => array('dnsZone' => array(
         'name'        => _('DNS zone'),
-        'filter'      => '(&(objectClass=dNSZone)(relativeDomainName=@)(!(zoneName=*.arpa)))',
+        'filter'      => '(&(objectClass=dNSZone)(relativeDomainName=@)(!(|(zoneName=*.arpa)(zoneName=*.arpa.))))',
         'ou'          => 'ou=dns,',
         'icon'        => 'geticon.php?context=applications&icon=dns&size=16',
         'mainAttr'    => 'zoneName'
@@ -409,7 +432,7 @@ class dnsZone extends simplePlugin
         'name'  => _('Zone'),
         'attrs' => array(
           new BaseSelectorAttribute('ou=dns,'),
-          new HostNameAttribute (
+          new ZoneNameAttribute (
             _('Zone name'), _('Zone name'),
             'zoneName', TRUE
           ),
@@ -420,10 +443,10 @@ class dnsZone extends simplePlugin
           ),
           new SetAttribute (
             new StringAttribute (
-              _('Reverse zones'), _('Reverse zones for this zone in the form xx.xx.in-addr.arpa or x.x.ip6.arpa'),
+              _('Reverse zones'), sprintf(_('Reverse zones for this zone in the form xx.xx.in-addr.arpa%1$s or x.x.ip6.arpa%1$s'), (dnsZone::finalDot() ? '.' : ''))
               'reverseZones', FALSE,
               '', '',
-              '/^.*\.(in-addr|ip6)\.arpa$/i', '11.168.192.in-addr.arpa'
+              '/^.*\.(in-addr|ip6)\.arpa'.(dnsZone::finalDot() ? '\.' : '').'$/i', '11.168.192.in-addr.arpa'.(dnsZone::finalDot() ? '.' : '')
             )
           ),
           new HiddenAttribute (
