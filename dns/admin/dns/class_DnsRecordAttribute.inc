@@ -95,10 +95,18 @@ class DnsRecordAttribute extends CompositeAttribute
     if ($this->attributes[1]->getLdapName() != $ldapName) {
       switch ($type) {
         case 'aRecord':
-          $this->attributes[1] = new IPv4Attribute(_('Target'), '', $ldapName, TRUE, reset($this->parentIPs4));
+          $this->attributes[1] = new IPv4Attribute(
+            _('Target'), _('An IPv4 address'),
+            $ldapName, TRUE,
+            reset($this->parentIPs4)
+          );
         break;
         case 'aAAARecord':
-          $this->attributes[1] = new IPv6Attribute(_('Target'), '', $ldapName, TRUE, reset($this->parentIPs6));
+          $this->attributes[1] = new IPv6Attribute(
+            _('Target'), _('An IPv6 address'),
+            $ldapName, TRUE,
+            reset($this->parentIPs6)
+          );
         break;
         case 'mXRecord':
           $this->attributes[1] = new CharSeparatedCompositeAttribute(
@@ -151,6 +159,9 @@ class DnsRecordAttribute extends CompositeAttribute
             ),
             ' '
           );
+        break;
+        case 'cNAMERecord':
+          $this->attributes[1] = new StringAttribute(_('Redirect to'), _('Domain that this subdomain is an alias of'), $ldapName, TRUE);
         break;
         default:
           $this->attributes[1] = new StringAttribute(_('Content'), _('Content of this record'), $ldapName, TRUE);
