@@ -199,7 +199,8 @@ class dnsHost extends simplePlugin
         $attrId = 'zoneRecords'.$name;
         $this->attributesInfo['records']['attrs'][$attrId] = new DnsRecordsFilteredAttribute(
           $name, sprintf(_('The DNS records for zone "%s"'), $name),
-          $attrId, $dn
+          $attrId, $dn,
+          array(), 'dnsRecords'
         );
         $this->attributesAccess[$attrId] =& $this->attributesInfo['records']['attrs'][$attrId];
         $this->attributesAccess[$attrId]->setParent($this);
@@ -225,6 +226,16 @@ class dnsHost extends simplePlugin
         }
       }
     }
+  }
+
+  function execute()
+  {
+    $smarty     = get_smarty();
+    $ui         = get_userinfo();
+    $skip_write = $this->read_only;
+    $acl        = $ui->get_permissions($this->acl_base, 'dnsZone/'.get_class($this), 'dnsRecords', $this->read_only);
+    $smarty->assign('dnsRecordsACL', $acl);
+    return parent::execute();
   }
 
   function save()
