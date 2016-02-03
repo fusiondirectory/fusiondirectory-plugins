@@ -125,6 +125,9 @@ class dnsHost extends simplePlugin
       'plSmallIcon'     => 'geticon.php?context=applications&icon=dns&size=16',
       'plObjectType'    => array('server','workstation','terminal','printer','component','winstation','phone','mobilePhone'),
       'plPriority'      => 5,
+      'plForeignKeys'  => array(
+        'fdDNSZoneDn' => 'dnsZone'
+      ),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -195,7 +198,6 @@ class dnsHost extends simplePlugin
         if (isset($this->zonesCache[$dn])) {
           $name = $this->zonesCache[$dn];
         } else {
-          msg_dialog::display(_('Error'), sprintf(_('Zone "%s" could not be found in the LDAP'), $dn), ERROR_DIALOG);
           continue;
         }
         $attrId = 'zoneRecords'.$name;
