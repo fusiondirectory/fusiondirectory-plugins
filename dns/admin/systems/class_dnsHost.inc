@@ -21,8 +21,6 @@
 /* DnsRecords edition showing only records for our host */
 class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
 {
-  protected $zoneDn;
-
   function __construct ($label, $description, $ldapName, $zoneDn, $defaultValue = array(), $acl = "")
   {
     parent::__construct ($label, $description, $ldapName, FALSE, $defaultValue, $acl);
@@ -48,6 +46,13 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
 
   function loadAdditionalTemplatesValues ()
   {
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cat($this->getZoneDn());
+    $attrs = $ldap->fetch();
+    $this->zoneName = $attrs['zoneName'][0];
+
     for ($i = 0; $i < $this->plugin->attrs[$this->getLdapName()]['count']; $i++) {
       $this->value[] = explode('|', $this->plugin->attrs[$this->getLdapName()][$i]);
     }
@@ -58,8 +63,9 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     global $config;
 
     $ldap = $config->get_ldap_link();
-    $ldap->cat($this->zoneDn);
+    $ldap->cat($this->getZoneDn());
     $attrs = $ldap->fetch();
+    $this->zoneName = $attrs['zoneName'][0];
     parent::loadAttrValue($attrs);
   }
 
@@ -71,7 +77,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     }
     $ips    = $this->plugin->parent->getBaseObject()->ipHostNumber;
     $cn     = $this->plugin->parent->getBaseObject()->cn;
-    if (in_array($values[2], $ips) || ($values[0] == $cn)) {
+    if (in_array($values[2], $ips) || ($values[0] == $cn) || preg_match('/'.preg_quote($cn.'.'.$this->getZoneName(), '/').'/', $value[2])) {
       return $values;
     } else {
       return array();
@@ -89,7 +95,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
 
   /* Special LDAP treatment that this attribute does after plugin ldap save */
   /* FIXME - We should lock the zone object */
-  function postLdapSave ($ldap, $zoneDn = NULL, $zoneName = NULL)
+  function postLdapSave ($ldap)
   {
     if ($this->plugin->is_template) {
       return;
@@ -97,15 +103,13 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     $attrs = array();
     parent::fillLdapValue($attrs);
     if (!empty($attrs)) {
-      $ldap->cd($this->zoneDn);
+      $ldap->cd($this->getZoneDn());
       $ldap->modify($attrs);
       if (!$ldap->success()) {
-        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $this->zoneDn, LDAP_ADD, get_class()), LDAP_ERROR);
+        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $this->getZoneDn(), LDAP_ADD, get_class()), LDAP_ERROR);
       }
     }
-    $ldap->cat($this->zoneDn, array('zoneName'));
-    $attrs = $ldap->fetch();
-    parent::postLdapSave($ldap, $this->zoneDn, $attrs['zoneName'][0]);
+    parent::postLdapSave($ldap);
   }
 }
 
