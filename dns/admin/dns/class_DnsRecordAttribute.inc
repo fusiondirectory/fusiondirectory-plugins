@@ -18,6 +18,19 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+/* Forces to use a FQDN with final dot */
+class FQDNAttribute extends StringAttribute
+{
+  function validate ()
+  {
+    $regexp = '/^(([a-z0-9\-]{2,63})\.)+$/';
+    $error  = _('"%s" must contain a fully qualified domain name and end with a final dot.<br/><br/>Example: dns1.example.com.');
+    if (!preg_match($regexp, $this->value)) {
+      return sprintf($error, $this->getLabel());
+    }
+  }
+}
+
 class DnsRecordAttribute extends CompositeAttribute
 {
   protected $parentIPs4 = array('');
@@ -127,7 +140,7 @@ class DnsRecordAttribute extends CompositeAttribute
           );
         break;
         case 'nSRecord':
-          $this->attributes[1] = new StringAttribute(
+          $this->attributes[1] = new FQDNAttribute(
             _('Target'), _('Domain name which specifies a host which should be authoritative for the specified class and domain'),
             $ldapName, TRUE
           );
