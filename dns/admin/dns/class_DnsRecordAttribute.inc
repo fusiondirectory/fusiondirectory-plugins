@@ -35,6 +35,7 @@ class DnsRecordAttribute extends CompositeAttribute
 {
   protected $parentIPs4 = array('');
   protected $parentIPs6 = array('');
+  protected $parentFQDN = '';
 
   public static $types = array(
     'aRecord'     => 'A',
@@ -85,16 +86,19 @@ class DnsRecordAttribute extends CompositeAttribute
     $this->setRequired($required);
   }
 
-  function setParentIPs($ipv4, $ipv6)
+  function setParentIPs($ipv4, $ipv6, $fqdn)
   {
     $this->parentIPs4   = $ipv4;
     $this->parentIPs4[] = '';
     $this->parentIPs6   = $ipv6;
     $this->parentIPs6[] = '';
+    $this->parentFQDN   = $fqdn;
     if ($this->attributes[0]->getValue() == 'aRecord') {
       $this->attributes[1]->setDefaultValue(reset($this->parentIPs4));
     } elseif ($this->attributes[0]->getValue() == 'aAAARecord') {
       $this->attributes[1]->setDefaultValue(reset($this->parentIPs6));
+    } elseif ($this->attributes[0]->getValue() == 'cNAMERecord') {
+      $this->attributes[1]->setDefaultValue(reset($this->parentFQDN));
     }
     if ($this->attributes[1]->getValue() == '') {
       $this->attributes[1]->resetToDefault();
@@ -174,7 +178,11 @@ class DnsRecordAttribute extends CompositeAttribute
           );
         break;
         case 'cNAMERecord':
-          $this->attributes[1] = new StringAttribute(_('Redirect to'), _('Domain that this subdomain is an alias of'), $ldapName, TRUE);
+          $this->attributes[1] = new StringAttribute(
+            _('Redirect to'), _('Domain that this subdomain is an alias of'),
+            $ldapName, TRUE,
+            $this->parentFQDN
+          );
         break;
         default:
           $this->attributes[1] = new StringAttribute(_('Content'), _('Content of this record'), $ldapName, TRUE);

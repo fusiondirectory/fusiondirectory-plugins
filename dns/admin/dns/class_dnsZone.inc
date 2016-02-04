@@ -60,7 +60,8 @@ class DnsRecordPlugin extends simplePlugin
       $ips = $parent->parent->getBaseObject()->ipHostNumber;
       $this->attributesAccess['dnsRecord']->setParentIPs(
         array_filter($ips, 'tests::is_ipv4'),
-        array_filter($ips, 'tests::is_ipv6')
+        array_filter($ips, 'tests::is_ipv6'),
+        $parent->parent->getBaseObject()->cn.'.'.$attribute->getZoneName()
       );
     }
     $this->attributesAccess['dnsRecord']->attributes[2]->setChoices($attribute->getReverseZones());
@@ -131,6 +132,26 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
   protected $dialogClass  = 'DnsRecordDialog';
   protected $reverseZones = array();
   protected $sOARecord    = '';
+  protected $zoneName;
+  protected $zoneDn;
+
+  function getZoneName()
+  {
+    if ($this->plugin instanceof dnsZone) {
+      return $this->plugin->zoneName;
+    } else {
+      return $this->zoneName;
+    }
+  }
+
+  function getZoneDn()
+  {
+    if ($this->plugin instanceof dnsZone) {
+      return $this->plugin->dn;
+    } else {
+      return $this->zoneDn;
+    }
+  }
 
   function getReverseZones()
   {
@@ -236,14 +257,10 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
   }
 
   /* Special LDAP treatment that this attribute does after plugin ldap save */
-  function postLdapSave ($ldap, $zoneDn = NULL, $zoneName = NULL)
+  function postLdapSave ($ldap)
   {
-    if ($zoneDn === NULL) {
-      $zoneDn = $this->plugin->dn;
-    }
-    if ($zoneName === NULL) {
-      $zoneName = $this->plugin->zoneName;
-    }
+    $zoneDn   = $this->getZoneDn();
+    $zoneName = $this->getZoneName();
     /* First delete all old nodes */
     $ldap->ls('objectClass=dNSZone', $zoneDn, array('dn'));
     $delete = array();
