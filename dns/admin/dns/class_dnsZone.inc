@@ -173,7 +173,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     }
     if (isset($attrs['dn'])) {
       $ldap = $config->get_ldap_link();
-      $ldap->ls('objectClass=dNSZone', $attrs['dn'], array_merge(array('relativeDomainName'), array_keys(DnsRecordAttribute::$types)));
+      $ldap->ls('(&(objectClass=dNSZone)(zoneName='.$attrs['zoneName'][0].'))', $attrs['dn'], array_merge(array('relativeDomainName'), array_keys(DnsRecordAttribute::$types)));
       while ($subattrs = $ldap->fetch()) {
         for ($i = 0; $i < $subattrs['count']; $i++) {
           $type = $subattrs[$i];
