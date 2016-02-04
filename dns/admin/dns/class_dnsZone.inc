@@ -310,8 +310,10 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         'relativeDomainName'  => '@',
         'dNSClass'            => 'IN',
         'sOARecord'           => $this->sOARecord,
-        'nSRecord'            => $nsRecords,
       );
+      if (!empty($nsRecords)) {
+        $node['nSRecord'] = $nsRecords;
+      }
       $ldap->cd($reverseDn);
       $ldap->add($node);
       if (!$ldap->success()) {
