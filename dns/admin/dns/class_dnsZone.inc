@@ -197,6 +197,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       }
       if ($this->plugin instanceof dnsZone) {
         $this->plugin->reverseZones = array_values($reverseZones);
+        $this->plugin->attributesAccess['reverseZones']->setInitialValue($this->plugin->reverseZones);
       } else {
         $this->reverseZones = array_values($reverseZones);
         $this->sOARecord    = $attrs['sOARecord'][0];
@@ -477,10 +478,10 @@ class dnsZone extends simplePlugin
                 _('Mail address'), _('Domain name which specifies the mailbox of the person responsible for this zone'),
                 'soaRecord_mail', TRUE
               ),
-              new IntAttribute(
+              new DisplayLDAPAttribute(
                 _('Serial number'), _('Version number of the original copy of the zone'),
                 'soaRecord_serial', TRUE,
-                0, FALSE
+                0, FALSE, date('Ymd').'01'
               ),
               new TimeAttribute(
                 _('Refresh'), _('Time interval before the zone should be refreshed'),
@@ -526,6 +527,25 @@ class dnsZone extends simplePlugin
     parent::__construct($config, $dn, $object);
     $this->attributesAccess['reverseZones']->setInLdap(FALSE);
     $this->updateAttributesValues();
+  }
+
+  function prepare_save ()
+  {
+    if (
+      $this->attributesAccess['zoneName']->hasChanged() ||
+      $this->attributesAccess['reverseZones']->hasChanged() ||
+      $this->attributesAccess['sOARecord']->hasChanged() ||
+      $this->attributesAccess['dnsRecords']->hasChanged()
+      ) {
+      $serial = $this->attributesAccess['sOARecord']->attributes[2]->getValue();
+      if (preg_match('/^'.date('Ymd').'/', $serial)) {
+        $serial++;
+      } else {
+        $serial = date('Ymd').'01';
+      }
+      $this->attributesAccess['sOARecord']->attributes[2]->setValue($serial);
+    }
+    parent::prepare_save();
   }
 
   function ldap_save ($cleanup = TRUE)
