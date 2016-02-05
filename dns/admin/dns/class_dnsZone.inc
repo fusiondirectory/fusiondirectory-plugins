@@ -227,15 +227,18 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         $ipv6 = preg_match('/ip6/', $reverseZoneName);
         $ldap->ls('(objectClass=dNSZone)', $reverseZoneDn, array('relativeDomainName', 'pTRRecord'));
         while ($subattrs = $ldap->fetch()) {
-          if ($subattrs['pTRRecord'][0] == $attrs['zoneName'][0]) {
-            $name = '@';
-          } else {
-            $name = preg_replace('/\.'.preg_quote($attrs['zoneName'][0]).'$/', '', $subattrs['pTRRecord'][0]);
-          }
-          if ($ipv6 && isset($aRecords['aAAARecord'][$name])) {
-            $this->value[$aRecords['aAAARecord'][$name]][3] = $reverseZoneName;
-          } elseif (!$ipv6 && isset($aRecords['aRecord'][$name])) {
-            $this->value[$aRecords['aRecord'][$name]][3] = $reverseZoneName;
+          unset($subattrs['pTRRecord']['count']);
+          foreach ($subattrs['pTRRecord'] as $ptrRecord) {
+            if ($ptrRecord == $attrs['zoneName'][0]) {
+              $name = '@';
+            } else {
+              $name = preg_replace('/\.'.preg_quote($attrs['zoneName'][0]).'$/', '', $ptrRecord);
+            }
+            if ($ipv6 && isset($aRecords['aAAARecord'][$name])) {
+              $this->value[$aRecords['aAAARecord'][$name]][3] = $reverseZoneName;
+            } elseif (!$ipv6 && isset($aRecords['aRecord'][$name])) {
+              $this->value[$aRecords['aRecord'][$name]][3] = $reverseZoneName;
+            }
           }
         }
       }
@@ -283,7 +286,10 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         if (!isset($ptrs[$reverse])) {
           $ptrs[$reverse] = array();
         }
-        $ptrs[$reverse][$content] = $domain;
+        if (!isset($ptrs[$reverse][$content])) {
+          $ptrs[$reverse][$content] = array();
+        }
+        $ptrs[$reverse][$content][] = $domain;
       }
       if (empty($domain)) {
         if ($type == 'nSRecord') {
@@ -341,7 +347,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       $mask = preg_replace('/\.(in-addr|ip6)\.arpa\.?$/i', '', $reverseZone);
       if (isset($ptrs[$reverseZone])) {
         $ipv6 = preg_match('/ip6/', $reverseZone);
-        foreach ($ptrs[$reverseZone] as $ip => $name) {
+        foreach ($ptrs[$reverseZone] as $ip => $names) {
           if ($ipv6) {
             $relativeDomainName = preg_replace('/\.'.preg_quote($mask).'$/', '', implode('.', array_reverse(preg_split('/:|/', expandIPv6($ip), NULL, PREG_SPLIT_NO_EMPTY))));
           } else {
@@ -354,7 +360,12 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
               'objectClass'         => array('dNSZone'),
               'zoneName'            => $reverseZone,
               'dNSClass'            => 'IN',
-              'pTRRecord'           => (empty($name) ? '' : $name.'.').$zoneName,
+              'pTRRecord'           => array_map(
+                function ($name) use ($zoneName) {
+                  return (empty($name) ? '' : $name.'.').$zoneName;
+                },
+                $names
+              ),
               'relativeDomainName'  => $relativeDomainName,
             )
           );
