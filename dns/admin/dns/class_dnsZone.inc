@@ -113,7 +113,11 @@ class DnsRecordDialog extends GenericDialog
       }
     }
     /* add new/edited zone */
-    $ret = array_merge(array($this->dialog->relativeSubdomainName), $this->dialog->dnsRecord);
+    $relativeSubdomainName = $this->dialog->relativeSubdomainName;
+    if ($relativeSubdomainName == '@') {
+      $relativeSubdomainName = '';
+    }
+    $ret = array_merge(array($relativeSubdomainName), $this->dialog->dnsRecord);
     $this->attribute->addValue($ret);
     return FALSE;
   }
