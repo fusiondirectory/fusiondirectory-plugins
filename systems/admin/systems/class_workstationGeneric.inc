@@ -213,6 +213,27 @@ class workstationGeneric extends systemSimplePluginGlue
 
   var $preInitAttributes = array('cn', 'networkSettings');
 
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Workstation'),
+      'plDescription' => _('Workstation information'),
+      'plSelfModify'  => FALSE,
+      'plObjectType'  => array('workstation' =>
+        array(
+          'name'        => _('Workstation'),
+          'description' => _('Workstation'),
+          'filter'      => 'objectClass=gotoWorkstation',
+          'ou'          => get_ou('workstationRDN'),
+          'icon'        => 'geticon.php?context=devices&icon=computer&size=16',
+          'mainAttr'    => 'cn',
+        )
+      ),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
   /*!
    *  \brief The main function : information about attributes
    */
@@ -222,7 +243,7 @@ class workstationGeneric extends systemSimplePluginGlue
       $word = _('workstation');
     }
     if ($rdn === NULL) {
-      $rdn = get_ou("workstationRDN");
+      $rdn = get_ou('workstationRDN');
     }
     return array(
       'main' => array(
@@ -343,12 +364,6 @@ class workstationGeneric extends systemSimplePluginGlue
 
     $this->updateAttributesValues();
     $this->prepareSavedAttributes();
-  }
-
-  /* Returns the dn of the entry */
-  function compute_dn()
-  {
-    return 'cn='.$this->cn.','.get_ou('workstationRDN').$this->base;
   }
 
   protected function init_server_section()
@@ -528,27 +543,6 @@ class workstationGeneric extends systemSimplePluginGlue
   function is_modal_dialog()
   {
     return (isset($this->netConfigDNS->dialog) && $this->netConfigDNS->dialog);
-  }
-
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('Workstation'),
-      'plDescription' => _('Workstation information'),
-      'plSelfModify'  => FALSE,
-      'plObjectType'  => array('workstation' =>
-        array(
-          'name'        => _('Workstation'),
-          'description' => _('Workstation'),
-          'filter'      => 'objectClass=gotoWorkstation',
-          'ou'          => get_ou('workstationRDN'),
-          'icon'        => 'geticon.php?context=devices&icon=computer&size=16',
-          'mainAttr'    => 'cn',
-        )
-      ),
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-    );
   }
 }
 ?>

@@ -121,12 +121,6 @@ class buildRepository extends simplePlugin
     $this->attributesAccess['fdRepoDistributionSection']->attribute->setChoices(array_values($choices));
   }
 
-  /* Returns the dn of the entry */
-  function compute_dn()
-  {
-    return 'cn='.$this->attributesAccess['cn']->getValue().','.get_ou('repositoryRDN').$this->base;
-  }
-
   function foreignKeyCheck ($field, $fieldvalue, $source)
   {
     if ($field == 'fdRepoDistributionSection') {

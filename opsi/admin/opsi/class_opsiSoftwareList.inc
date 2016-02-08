@@ -97,11 +97,6 @@ class opsiSoftwareList extends simplePlugin
     $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setSubmitForm('product_changed');
   }
 
-  public function compute_dn ()
-  {
-    return 'cn='.$this->cn.','.get_ou('opsiRDN').$this->config->current['BASE'];
-  }
-
   public function server_changed ($opsi_args = NULL)
   {
     if ($opsi_args == NULL) {

@@ -97,11 +97,6 @@ class phoneGeneric extends systemSimplePluginGlue
     $this->netConfigDNS->MACisMust  = FALSE;
   }
 
-  function compute_dn ()
-  {
-    return 'cn='.$this->cn.','.get_ou('phoneRDN').$this->base;
-  }
-
   function resetCopyInfos()
   {
     parent::resetCopyInfos();

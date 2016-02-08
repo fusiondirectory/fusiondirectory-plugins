@@ -131,11 +131,6 @@ class fiInventory extends simplePlugin
     $this->users_infos    = NULL;
   }
 
-  function compute_dn()
-  {
-    return 'cn='.$this->cn.','.get_ou('inventoryRDN').$this->config->current['BASE'];
-  }
-
   function execute()
   {
     if ($this->hardware_infos === NULL) {

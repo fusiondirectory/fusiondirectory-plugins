@@ -200,11 +200,6 @@ class etablissement extends simplePlugin
     }
   }
 
-  function compute_dn()
-  {
-    return 'supannCodeEntite='.$this->supannCodeEntite.','.get_ou('supannStructuresRDN').$this->config->current['BASE'];
-  }
-
   function get_root_code()
   {
     $ldap = $this->config->get_ldap_link();

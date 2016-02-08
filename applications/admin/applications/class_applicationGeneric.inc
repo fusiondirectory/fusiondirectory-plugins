@@ -119,21 +119,16 @@ class application extends simplePlugin
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
-    $filename = "./plugins/applications/images/default_icon.png";
+    $filename = './plugins/applications/images/default_icon.png';
 
     if (file_exists($filename)) {
-      $fd = fopen ($filename, "rb");
+      $fd = fopen ($filename, 'rb');
       $this->attributesAccess['fdApplicationImage']->setDefaultValue(fread ($fd, filesize ($filename)));
       fclose ($fd);
       if (empty($this->fdApplicationImage)) {
         $this->attributesAccess['fdApplicationImage']->resetToDefault();
       }
     }
-  }
-
-  public function compute_dn()
-  {
-    return 'cn='.$this->attributesAccess['cn']->getValue().','.get_ou('applicationsRDN').$this->base;
   }
 }
 ?>

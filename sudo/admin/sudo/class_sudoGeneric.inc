@@ -229,11 +229,6 @@ class sudo extends simplePlugin
   {
     return preg_match("/^defaults$/i", $this->attributesAccess['cn']->getValue());
   }
-
-  public function compute_dn()
-  {
-    return 'cn='.$this->cn.','.get_ou('sudoRDN').$this->config->current['BASE'];
-  }
 }
 
 ?>

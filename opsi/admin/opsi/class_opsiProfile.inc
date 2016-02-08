@@ -119,11 +119,6 @@ class opsiProfile extends simplePlugin
     $this->attributesAccess['cn']->setUnique(TRUE);
   }
 
-  public function compute_dn ()
-  {
-    return 'cn='.$this->cn.','.get_ou('opsiRDN').$this->config->current['BASE'];
-  }
-
   /* Returns list of all products installed by this profile */
   public function getProductList ()
   {

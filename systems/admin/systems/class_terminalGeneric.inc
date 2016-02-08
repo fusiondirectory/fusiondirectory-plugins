@@ -21,9 +21,30 @@
 
 class terminalGeneric extends workstationGeneric
 {
-  var $objectclasses = array("top", "gotoTerminal", "GOhard");
+  var $objectclasses = array('top', 'gotoTerminal', 'GOhard');
 
-  var $inheritance = array("gotoWorkstationTemplate" => "member", "gotoTerminalTemplate" => "member");
+  var $inheritance = array('gotoWorkstationTemplate' => 'member', 'gotoTerminalTemplate' => 'member');
+
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Terminal'),
+      'plDescription' => _('Terminal information'),
+      'plSelfModify'  => FALSE,
+      'plObjectType'  => array('terminal' =>
+        array(
+          'name'        => _('Terminal'),
+          'description' => _('Terminal'),
+          'filter'      => 'objectClass=gotoTerminal',
+          'icon'        => 'geticon.php?context=devices&icon=terminal&size=16',
+          'ou'          => get_ou('terminalRDN'),
+        )
+      ),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
 
   /*!
    *  \brief The main function : information about attributes
@@ -74,27 +95,6 @@ class terminalGeneric extends workstationGeneric
     return $attributesInfo;
   }
 
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('Terminal'),
-      'plDescription' => _('Terminal information'),
-      'plSelfModify'  => FALSE,
-      'plObjectType'  => array('terminal' =>
-        array(
-          'name'        => _('Terminal'),
-          'description' => _('Terminal'),
-          'filter'      => 'objectClass=gotoTerminal',
-          'icon'        => 'geticon.php?context=devices&icon=terminal&size=16',
-          'ou'          => get_ou('terminalRDN'),
-        )
-      ),
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-    );
-  }
-
   function __construct (&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
@@ -128,12 +128,6 @@ class terminalGeneric extends workstationGeneric
       }
     }
     $this->attributesInfo['servers']['attrs']['gotoSwapServer']->setChoices($tmp, $tmp_output);
-  }
-
-  /* Returns the dn of the entry */
-  function compute_dn()
-  {
-    return 'cn='.$this->cn.','.get_ou('terminalRDN').$this->base;
   }
 
   function execute()
