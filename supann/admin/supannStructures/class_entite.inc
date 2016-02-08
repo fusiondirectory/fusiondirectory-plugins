@@ -134,12 +134,6 @@ class entite extends simplePlugin
     $this->attributesAccess['ou']->setUnique(TRUE);
     $this->attributesAccess['supannCodeEntite']->setUnique(TRUE);
   }
-
-  /* Returns the dn of the entry */
-  function compute_dn()
-  {
-    return 'supannCodeEntite='.$this->supannCodeEntite.','.get_ou('supannStructuresRDN').$this->config->current['BASE'];
-  }
 }
 
 ?>

@@ -126,7 +126,7 @@ class serviceApacheVhostEdit extends simplePlugin
 
   function compute_dn ()
   {
-    return "apacheServerName=".$this->apacheServerName.",".session::get('serviceApacheVhostEditDN');
+    return 'apacheServerName='.ldap_escape($this->apacheServerName, '', LDAP_ESCAPE_DN).','.session::get('serviceApacheVhostEditDN');
   }
 
   function execute ()

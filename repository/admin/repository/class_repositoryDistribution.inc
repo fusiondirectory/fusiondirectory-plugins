@@ -94,12 +94,6 @@ class repositoryDistribution extends simplePlugin
     $sections = objects::ls('repoSection', 'cn');
     $this->attributesAccess['fdRepoSection']->attribute->setChoices(array_values($sections));
   }
-
-  /* Returns the dn of the entry */
-  function compute_dn()
-  {
-    return 'cn='.$this->attributesAccess['cn']->getValue().','.get_ou('repositoryRDN').$this->base;
-  }
 }
 
 ?>

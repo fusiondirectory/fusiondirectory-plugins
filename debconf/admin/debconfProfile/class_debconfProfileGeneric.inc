@@ -209,11 +209,6 @@ class debconfProfileGeneric extends simplePlugin
     }
   }
 
-  function compute_dn()
-  {
-    return 'ou='.$this->attributesAccess['ou']->getValue().','.get_ou("debconfRDN").$this->config->current['BASE'];
-  }
-
   function ldap_save($cleanup = TRUE)
   {
     parent::ldap_save($cleanup);

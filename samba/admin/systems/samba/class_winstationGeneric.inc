@@ -180,7 +180,7 @@ class winstationGeneric extends simplePlugin
   function compute_dn()
   {
     $this->attributesAccess['uid']->setValue($this->attributesAccess['cn']->getValue());
-    return 'uid='.$this->attributesAccess['uid']->getValue().','.get_winstations_ou().$this->base;
+    return 'uid='.ldap_escape($this->attributesAccess['uid']->getValue(), '', LDAP_ESCAPE_DN).','.get_winstations_ou().$this->base;
   }
 }
 ?>
