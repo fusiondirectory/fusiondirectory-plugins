@@ -349,6 +349,10 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       }
       /* Write each needed PTR */
       $mask = preg_replace('/\.(in-addr|ip6)\.arpa\.?$/i', '', $reverseZone);
+      if (preg_match('/^([-\/[:digit:]])+.([\.[:digit:]]+)$/', $mask, $m)) {
+        /* Reverse zone using rfc2317 with - or / */
+        $mask = $m[2];
+      }
       if (isset($ptrs[$reverseZone])) {
         $ipv6 = preg_match('/ip6/', $reverseZone);
         foreach ($ptrs[$reverseZone] as $ip => $names) {

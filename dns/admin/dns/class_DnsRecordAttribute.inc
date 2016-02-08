@@ -233,6 +233,10 @@ class DnsRecordAttribute extends CompositeAttribute
       $ip       = $this->attributes[1]->getValue();
       $reverse  = $this->attributes[2]->getValue();
       $mask     = preg_replace('/\.(in-addr|ip6)\.arpa\.?$/i', '', $reverse);
+      if (preg_match('/^([-\/[:digit:]])+.([\.[:digit:]]+)$/', $mask, $m)) {
+        /* Reverse zone using rfc2317 with - or / */
+        $mask = $m[2];
+      }
       if ($type == 'aRecord') {
         $testString = implode('.', array_reverse(explode('.', $ip)));
       } elseif ($type == 'aAAARecord') {
