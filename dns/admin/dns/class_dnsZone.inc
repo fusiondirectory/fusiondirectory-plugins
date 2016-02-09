@@ -25,6 +25,7 @@ class DnsRecordPlugin extends simplePlugin
     return array(
       'main' => array(
         'name'  => _('Record'),
+        'class' => array('fullwidth'),
         'attrs' => array(
           new StringAttribute (
             _('Subdomain'), _('Relative subdomain name'),
