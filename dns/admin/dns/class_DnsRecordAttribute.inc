@@ -125,6 +125,96 @@ class DnsRecordAttribute extends CompositeAttribute
             reset($this->parentIPs6)
           );
         break;
+        case 'LocRecord':
+          $this->attributes[1] = new CompositeAttribute(
+            _('LOC Record'),
+            $ldapName,
+            array(
+              'lat' => new CharSeparatedCompositeAttribute(
+                _('Latitude'),
+                $ldapName.'_latitude',
+                array(
+                  new IntAttribute(
+                    '', _('Degrees'),
+                    $ldapName.'_lat_degrees', TRUE,
+                    0, 90
+                  ),
+                  new IntAttribute(
+                    '°', _('Minutes'),
+                    $ldapName.'_lat_minutes', FALSE,
+                    0, 59
+                  ),
+                  new FloatAttribute(
+                    '’', _('Seconds'),
+                    $ldapName.'_lat_seconds', FALSE,
+                    0, 59.999
+                  ),
+                  new SelectAttribute(
+                    '', _('North/South'),
+                    $ldapName.'_lat_direction', TRUE,
+                    array('N', 'S'), '',
+                    array(_('North'), _('South'))
+                  ),
+                ),
+                ' ',
+                '', _('Latitude')
+              ),
+              'long' => new CharSeparatedCompositeAttribute(
+                _('Longitude'),
+                $ldapName.'_longitude',
+                array(
+                  new IntAttribute(
+                    '', _('Degrees'),
+                    $ldapName.'_long_degrees', TRUE,
+                    0, 180
+                  ),
+                  new IntAttribute(
+                    '°', _('Minutes'),
+                    $ldapName.'_long_minutes', FALSE,
+                    0, 59
+                  ),
+                  new FloatAttribute(
+                    '’', _('Seconds'),
+                    $ldapName.'_long_seconds', FALSE,
+                    0, 59.999
+                  ),
+                  new SelectAttribute(
+                    '', _('East/West'),
+                    $ldapName.'_long_direction', TRUE,
+                    array('E', 'W'), '',
+                    array(_('East'), _('West'))
+                  ),
+                ),
+                ' ',
+                '', _('Longitude')
+              ),
+              'alt' => new FloatAttribute(
+                _('Altitude (meters)'), '',
+                $ldapName.'_altitude', TRUE,
+                -100000.00, 42849672.95
+              ),
+              'size' => new FloatAttribute(
+                _('Size (meters)'), '',
+                $ldapName.'_size', FALSE,
+                0, 90000000
+              ),
+              'hp' => new FloatAttribute(
+                _('Horizontal precision (meters)'), '',
+                $ldapName.'_hp', FALSE,
+                0, 90000000
+              ),
+              'vp' => new FloatAttribute(
+                _('Vertical precision (meters)'), '',
+                $ldapName.'_vp', FALSE,
+                0, 90000000
+              ),
+            ),
+            '/^(?P<lat>[[:digit:] \.]+ [NS]) (?P<long>[[:digit:] \.]+ [EW]) (?P<alt>[[:digit:]\.]+)m?( (?P<size>[[:digit:]\.]+)m?( (?P<hp>[[:digit:]\.]+)m?( (?P<vp>[[:digit:]\.]+)m?)?)?)?$/',
+            '%s %s %.2fm %.2fm %.2fm %.2fm'
+          );
+          $this->attributes[1]->attributes['lat']->setLinearRendering(TRUE);
+          $this->attributes[1]->attributes['long']->setLinearRendering(TRUE);
+        break;
         case 'mXRecord':
           $this->attributes[1] = new CharSeparatedCompositeAttribute(
             _('MX Record'),
