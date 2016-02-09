@@ -59,6 +59,12 @@ class serverGeneric extends workstationGeneric
     }
     return parent::getAttributesInfo($word, $rdn);
   }
+
+  /* Returns the dn of the entry */
+  function compute_dn()
+  {
+    return 'cn='.ldap_escape_dn($this->cn).','.get_ou('serverRDN').$this->base;
+  }
 }
 
 ?>

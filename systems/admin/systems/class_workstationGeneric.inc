@@ -366,6 +366,12 @@ class workstationGeneric extends systemSimplePluginGlue
     $this->prepareSavedAttributes();
   }
 
+  /* Returns the dn of the entry */
+  function compute_dn()
+  {
+    return 'cn='.ldap_escape_dn($this->cn).','.get_ou('workstationRDN').$this->base;
+  }
+
   protected function init_server_section()
   {
     $this->attributesAccess['inheritTimeServer']->setInLdap(FALSE);

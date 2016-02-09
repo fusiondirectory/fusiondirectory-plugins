@@ -282,7 +282,7 @@ class printgeneric extends plugin
   /* Returns the dn of the entry */
   function compute_dn()
   {
-    return 'cn='.ldap_escape($this->cn, '', LDAP_ESCAPE_DN).','.get_ou('printerRDN').$this->base;
+    return 'cn='.ldap_escape_dn($this->cn).','.get_ou('printerRDN').$this->base;
   }
 
   function set_acl_base($base)

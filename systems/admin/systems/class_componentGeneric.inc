@@ -86,6 +86,12 @@ class componentGeneric extends systemSimplePluginGlue
     $this->attributesAccess['cn']->setUnique(TRUE);
   }
 
+  /* Returns the dn of the entry */
+  function compute_dn()
+  {
+    return 'cn='.ldap_escape_dn($this->cn).','.get_ou('componentRDN').$this->base;
+  }
+
   function resetCopyInfos()
   {
     parent::resetCopyInfos();
