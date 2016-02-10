@@ -456,7 +456,7 @@ class dnsZone extends simplePlugin
   public static function plInfo()
   {
     return array(
-      'plShortName'   => _('DNS zone'),
+      'plShortName'   => _('DNS zone'),
       'plDescription' => _('DNS zone'),
       'plObjectType'  => array('dnsZone' => array(
         'name'        => _('DNS zone'),
