@@ -349,6 +349,12 @@ class DnsRecordAttribute extends CompositeAttribute
             ' '
           );
         break;
+        case 'sSHFPRecord':
+          $this->attributes[1] = new StringAttribute(
+            _('Record'), _('SSHFP record content. Can be obtained using "ssh-keygen -r some.host.tld", or sshfp command for instance'),
+            $ldapName, TRUE
+          );
+        break;
         case 'cNAMERecord':
           $this->attributes[1] = new StringAttribute(
             _('Redirect to'), _('Domain that this subdomain is an alias of'),
