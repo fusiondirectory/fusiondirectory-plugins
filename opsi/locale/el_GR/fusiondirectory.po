@@ -7,12 +7,12 @@
 # Thanasis <akoutsonikolas@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-109\n"
+"Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-01-02 22:39+0100\n"
-"PO-Revision-Date: 2015-10-22 09:43+0000\n"
-"Last-Translator: Manolis Saldaris <Ustramator@gmail.com>\n"
-"Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/el_GR/)\n"
+"POT-Creation-Date: 2016-02-10 16:26+0100\n"
+"PO-Revision-Date: 2016-01-22 16:05+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -93,32 +93,32 @@ msgstr "Λίστα λογισμικού OPSI"
 msgid "The localboot products to install with this list"
 msgstr "Τα προϊόντα τοπικής εκκίνησης που θα εγκατασταθούν με αυτήν τη λίστα"
 
-#: admin/opsi/class_opsiSoftwareList.inc:114
+#: admin/opsi/class_opsiSoftwareList.inc:109
 #: admin/opsi/class_opsiProductProperties.inc:176
-#: admin/opsi/class_opsiProfile.inc:164
+#: admin/opsi/class_opsiProfile.inc:159
 msgid "Could not contact argonaut server"
 msgstr "Δεν ήταν δυνατή η σύνδεση με τον διακομιστή argonaut"
 
-#: admin/opsi/class_opsiSoftwareList.inc:126
-#: admin/opsi/class_opsiProfile.inc:176 addons/opsi/class_opsiImport.inc:74
+#: admin/opsi/class_opsiSoftwareList.inc:121
+#: admin/opsi/class_opsiProfile.inc:171 addons/opsi/class_opsiImport.inc:74
 msgid "No mac address"
 msgstr "Δεν υπάρχει διεύθυνση MAC"
 
-#: admin/opsi/class_opsiSoftwareList.inc:127
-#: admin/opsi/class_opsiProfile.inc:177
+#: admin/opsi/class_opsiSoftwareList.inc:122
+#: admin/opsi/class_opsiProfile.inc:172
 #, php-format
 msgid "Server %s has no mac address configured in the LDAP"
 msgstr "Ο διακομιστής %s δεν έχει κάποια διεύθυνση MAC ρυθμισμένη στον LDAP"
 
-#: admin/opsi/class_opsiSoftwareList.inc:133
-#: admin/opsi/class_opsiProfile.inc:149 admin/opsi/class_opsiProfile.inc:183
+#: admin/opsi/class_opsiSoftwareList.inc:128
+#: admin/opsi/class_opsiProfile.inc:144 admin/opsi/class_opsiProfile.inc:178
 #, php-format
 msgid "Could not find %s in the LDAP"
 msgstr "Δεν βρέθηκε ο %s στον LDAP"
 
-#: admin/opsi/class_opsiSoftwareList.inc:141
+#: admin/opsi/class_opsiSoftwareList.inc:136
 #: admin/opsi/class_opsiProductProperties.inc:192
-#: admin/opsi/class_opsiProfile.inc:191
+#: admin/opsi/class_opsiProfile.inc:186
 msgid "Failed to contact OPSI server"
 msgstr "Αποτυχία σύνδεσης στον διακομιστή OPSI"
 
@@ -165,7 +165,7 @@ msgstr "Λίστες λογισμικού"
 msgid "Software lists that will be installed with this profile"
 msgstr "Λίστες λογισμικού που θα εγκατασταθεί με αυτό το προφίλ"
 
-#: admin/opsi/class_opsiProfile.inc:211
+#: admin/opsi/class_opsiProfile.inc:206
 #, php-format
 msgid "%s (%s)"
 msgstr "%s (%s)"

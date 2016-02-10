@@ -5,12 +5,12 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-109\n"
+"Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-01-02 22:39+0100\n"
-"PO-Revision-Date: 2016-01-02 21:49+0000\n"
+"POT-Creation-Date: 2016-02-10 16:26+0100\n"
+"PO-Revision-Date: 2016-01-22 16:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Polish (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,69 +32,69 @@ msgstr ""
 
 #: admin/ogroups/goto/class_termgroup.inc:124
 #: admin/ogroups/goto/class_termgroup.inc:136
-#: admin/systems/class_workstationGeneric.inc:358
+#: admin/systems/class_workstationGeneric.inc:457
 #: admin/systems/class_terminalGeneric.inc:108
 #: admin/systems/class_terminalGeneric.inc:124
 msgid "inherited"
 msgstr "odziedziczony"
 
-#: admin/ogroups/goto/class_termgroup.inc:220
-#: admin/systems/class_workstationGeneric.inc:72
-#: admin/systems/class_workstationGeneric.inc:449
+#: admin/ogroups/goto/class_termgroup.inc:216
+#: admin/systems/class_workstationGeneric.inc:68
+#: admin/systems/class_workstationGeneric.inc:543
 #: admin/systems/class_systemManagement.inc:191
 #: admin/systems/class_systemManagement.inc:217
 msgid "Infrastructure service"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:224
-#: admin/systems/class_workstationGeneric.inc:75
-#: admin/systems/class_workstationGeneric.inc:78
+#: admin/ogroups/goto/class_termgroup.inc:220
+#: admin/systems/class_workstationGeneric.inc:71
+#: admin/systems/class_workstationGeneric.inc:74
 msgid "Event error"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:225
+#: admin/ogroups/goto/class_termgroup.inc:221
 #, php-format
 msgid "Event '%s' is not available!"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:274
-#: admin/systems/class_workstationGeneric.inc:112
+#: admin/ogroups/goto/class_termgroup.inc:270
+#: admin/systems/class_workstationGeneric.inc:108
 msgid "Switch off"
 msgstr "Wyłącz"
 
-#: admin/ogroups/goto/class_termgroup.inc:274
-#: admin/systems/class_workstationGeneric.inc:113
+#: admin/ogroups/goto/class_termgroup.inc:270
+#: admin/systems/class_workstationGeneric.inc:109
 msgid "Reboot"
 msgstr "Restartuj"
 
-#: admin/ogroups/goto/class_termgroup.inc:275
+#: admin/ogroups/goto/class_termgroup.inc:271
 msgid "Instant update"
 msgstr "Natychmiastowe uaktualnienie"
 
-#: admin/ogroups/goto/class_termgroup.inc:276
+#: admin/ogroups/goto/class_termgroup.inc:272
 msgid "Scheduled update"
 msgstr "Zaplanowana aktualizacja"
 
-#: admin/ogroups/goto/class_termgroup.inc:277
+#: admin/ogroups/goto/class_termgroup.inc:273
 msgid "Wake"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:278
+#: admin/ogroups/goto/class_termgroup.inc:274
 msgid "Reinstall"
 msgstr "Przeinstaluj"
 
-#: admin/ogroups/goto/class_termgroup.inc:279
-#: admin/systems/class_workstationGeneric.inc:108
+#: admin/ogroups/goto/class_termgroup.inc:275
+#: admin/systems/class_workstationGeneric.inc:104
 msgid "Memory test"
 msgstr "Test pamięci"
 
-#: admin/ogroups/goto/class_termgroup.inc:280
+#: admin/ogroups/goto/class_termgroup.inc:276
 msgid "System analysis"
 msgstr "Analiza systemu"
 
-#: admin/ogroups/goto/class_termgroup.inc:386
-#: admin/systems/class_printGeneric.inc:675
-#: admin/systems/class_printGeneric.inc:975
+#: admin/ogroups/goto/class_termgroup.inc:382
+#: admin/systems/class_printGeneric.inc:750
+#: admin/systems/class_printGeneric.inc:1050
 #: admin/systems/services/class_goService.inc:123
 #: admin/systems/services/class_goService.inc:151
 #: admin/systems/services/class_goService.inc:187
@@ -110,41 +110,41 @@ msgstr "Analiza systemu"
 msgid "LDAP error"
 msgstr "błąd LDAP"
 
-#: admin/ogroups/goto/class_termgroup.inc:394
+#: admin/ogroups/goto/class_termgroup.inc:390
 msgid "System"
 msgstr "System"
 
-#: admin/ogroups/goto/class_termgroup.inc:395
+#: admin/ogroups/goto/class_termgroup.inc:391
 msgid "System group"
 msgstr "Grupa systemowa"
 
-#: admin/ogroups/goto/class_termgroup.inc:401
+#: admin/ogroups/goto/class_termgroup.inc:397
 #: admin/ogroups/goto/termgroup.tpl.c:17
 msgid "Mode"
 msgstr "Tryb"
 
-#: admin/ogroups/goto/class_termgroup.inc:402
-#: admin/systems/class_workstationGeneric.inc:189
+#: admin/ogroups/goto/class_termgroup.inc:398
+#: admin/systems/class_workstationGeneric.inc:288
 #: admin/ogroups/goto/termgroup.tpl.c:23
 msgid "Syslog server"
 msgstr "Serwer Syslog"
 
-#: admin/ogroups/goto/class_termgroup.inc:403
+#: admin/ogroups/goto/class_termgroup.inc:399
 msgid "Action flag"
 msgstr "Flaga akcji"
 
-#: admin/ogroups/goto/class_termgroup.inc:404
+#: admin/ogroups/goto/class_termgroup.inc:400
 msgid "Ntp server"
 msgstr "Serwer NTP"
 
-#: admin/ogroups/goto/class_termgroup.inc:405
-#: admin/systems/class_terminalGeneric.inc:41
+#: admin/ogroups/goto/class_termgroup.inc:401
+#: admin/systems/class_terminalGeneric.inc:62
 #: admin/ogroups/goto/termgroup.tpl.c:29
 msgid "Root server"
 msgstr "Serwer NFS"
 
-#: admin/ogroups/goto/class_termgroup.inc:406
-#: admin/systems/class_terminalGeneric.inc:47
+#: admin/ogroups/goto/class_termgroup.inc:402
+#: admin/systems/class_terminalGeneric.inc:68
 #: admin/ogroups/goto/termgroup.tpl.c:35
 msgid "Swap server"
 msgstr "Serwer Swap"
@@ -199,29 +199,29 @@ msgstr "Stacja Windows"
 
 #: admin/systems/system-list.xml:46 admin/systems/system-list.xml:193
 #: admin/systems/class_systemImport.inc:169
-#: admin/systems/class_serverGeneric.inc:46
-#: admin/systems/class_serverGeneric.inc:51
-#: admin/systems/class_serverGeneric.inc:52
+#: admin/systems/class_serverGeneric.inc:32
+#: admin/systems/class_serverGeneric.inc:37
+#: admin/systems/class_serverGeneric.inc:38
 msgid "Server"
 msgstr "Serwer"
 
 #: admin/systems/system-list.xml:54 admin/systems/system-list.xml:201
-#: admin/systems/class_workstationGeneric.inc:464
-#: admin/systems/class_workstationGeneric.inc:469
-#: admin/systems/class_workstationGeneric.inc:470
+#: admin/systems/class_workstationGeneric.inc:220
+#: admin/systems/class_workstationGeneric.inc:225
+#: admin/systems/class_workstationGeneric.inc:226
 msgid "Workstation"
 msgstr "Stacja robocza"
 
 #: admin/systems/system-list.xml:62 admin/systems/system-list.xml:209
-#: admin/systems/class_terminalGeneric.inc:81
-#: admin/systems/class_terminalGeneric.inc:86
-#: admin/systems/class_terminalGeneric.inc:87
+#: admin/systems/class_terminalGeneric.inc:32
+#: admin/systems/class_terminalGeneric.inc:37
+#: admin/systems/class_terminalGeneric.inc:38
 msgid "Terminal"
 msgstr "Terminal"
 
-#: admin/systems/system-list.xml:70 admin/systems/class_printGeneric.inc:1010
-#: admin/systems/class_printGeneric.inc:1016
-#: admin/systems/class_printGeneric.inc:1017
+#: admin/systems/system-list.xml:70 admin/systems/class_printGeneric.inc:1085
+#: admin/systems/class_printGeneric.inc:1091
+#: admin/systems/class_printGeneric.inc:1092
 msgid "Printer"
 msgstr "Drukarka"
 
@@ -252,12 +252,12 @@ msgid "IPMI"
 msgstr ""
 
 #: admin/systems/system-list.xml:128
-#: admin/systems/class_workstationGeneric.inc:154
+#: admin/systems/class_workstationGeneric.inc:253
 #: admin/systems/class_phoneGeneric.inc:59
-#: admin/systems/class_printGeneric.inc:757
-#: admin/systems/class_printGeneric.inc:767
-#: admin/systems/class_printGeneric.inc:786
-#: admin/systems/class_printGeneric.inc:1026
+#: admin/systems/class_printGeneric.inc:832
+#: admin/systems/class_printGeneric.inc:842
+#: admin/systems/class_printGeneric.inc:861
+#: admin/systems/class_printGeneric.inc:1101
 #: admin/systems/class_componentGeneric.inc:63
 #: admin/systems/class_mobilePhoneGeneric.inc:63
 #: admin/systems/phoneSelect/phoneSelect-list.xml:48
@@ -277,9 +277,9 @@ msgid "MAC"
 msgstr ""
 
 #: admin/systems/system-list.xml:152
-#: admin/systems/class_workstationGeneric.inc:160
+#: admin/systems/class_workstationGeneric.inc:259
 #: admin/systems/class_phoneGeneric.inc:63
-#: admin/systems/class_printGeneric.inc:1028
+#: admin/systems/class_printGeneric.inc:1103
 #: admin/systems/class_componentGeneric.inc:67
 #: admin/systems/class_mobilePhoneGeneric.inc:67
 #: admin/systems/serverService-list.xml:35
@@ -348,134 +348,134 @@ msgstr ""
 msgid "Remove system"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:75
+#: admin/systems/class_workstationGeneric.inc:71
 #, php-format
 msgid "Event %s is not available!"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:78
+#: admin/systems/class_workstationGeneric.inc:74
 msgid "Events are not available!"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:106
+#: admin/systems/class_workstationGeneric.inc:102
 msgid "(Re)Install"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:107
+#: admin/systems/class_workstationGeneric.inc:103
 msgid "Software update"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:115
+#: admin/systems/class_workstationGeneric.inc:111
 msgid "Wake up"
 msgstr "Zbudź"
 
-#: admin/systems/class_workstationGeneric.inc:144
-#: admin/systems/class_printGeneric.inc:609
+#: admin/systems/class_workstationGeneric.inc:221
+msgid "Workstation information"
+msgstr ""
+
+#: admin/systems/class_workstationGeneric.inc:243
+#: admin/systems/class_printGeneric.inc:684
 msgid "workstation"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:151
+#: admin/systems/class_workstationGeneric.inc:250
 #: admin/systems/class_phoneGeneric.inc:56
 #: admin/systems/class_componentGeneric.inc:60
 #: admin/systems/class_mobilePhoneGeneric.inc:60
 msgid "Properties"
 msgstr "Właściwości"
 
-#: admin/systems/class_workstationGeneric.inc:155
+#: admin/systems/class_workstationGeneric.inc:254
 #, php-format
 msgid "The name of the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:161
+#: admin/systems/class_workstationGeneric.inc:260
 #, php-format
 msgid "A short description of the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:166
-#: admin/systems/class_printGeneric.inc:1029
+#: admin/systems/class_workstationGeneric.inc:265
+#: admin/systems/class_printGeneric.inc:1104
 msgid "Location"
 msgstr "Lokalizacja"
 
-#: admin/systems/class_workstationGeneric.inc:167
+#: admin/systems/class_workstationGeneric.inc:266
 #, php-format
 msgid "The location of the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:173
+#: admin/systems/class_workstationGeneric.inc:272
 #, php-format
 msgid "Lock this %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:174
+#: admin/systems/class_workstationGeneric.inc:273
 #, php-format
 msgid "This will prevent the %s from being reinstalled"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:185
+#: admin/systems/class_workstationGeneric.inc:284
 #: addons/dashboard/class_dashBoardSystems.inc:48
 msgid "Servers"
 msgstr "Serwery"
 
-#: admin/systems/class_workstationGeneric.inc:190
+#: admin/systems/class_workstationGeneric.inc:289
 #, php-format
 msgid "The syslog server the %s should be using"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:195
+#: admin/systems/class_workstationGeneric.inc:294
 msgid "Inherit NTP servers"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:196
+#: admin/systems/class_workstationGeneric.inc:295
 msgid "Inherit time server attributes from ogroup"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:202
+#: admin/systems/class_workstationGeneric.inc:301
 msgid "NTP servers"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:203
+#: admin/systems/class_workstationGeneric.inc:302
 #, php-format
 msgid "The NTP servers for the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:209
+#: admin/systems/class_workstationGeneric.inc:308
 msgid "Inherit LDAP servers"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:210
+#: admin/systems/class_workstationGeneric.inc:309
 msgid "Inherit LDAP server attributes from ogroup"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:216
+#: admin/systems/class_workstationGeneric.inc:315
 msgid "LDAP servers"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:217
+#: admin/systems/class_workstationGeneric.inc:316
 #, php-format
 msgid "The LDAP servers for the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:225
-#: admin/systems/class_workstationGeneric.inc:229
+#: admin/systems/class_workstationGeneric.inc:324
+#: admin/systems/class_workstationGeneric.inc:328
 #: admin/ogroups/goto/termgroup.tpl.c:41
 msgid "Action"
 msgstr "Akcja"
 
-#: admin/systems/class_workstationGeneric.inc:230
+#: admin/systems/class_workstationGeneric.inc:329
 #: admin/ogroups/goto/termgroup.tpl.c:44
 msgid "Select action to execute for this terminal"
 msgstr "Proszę wybrać akcję do wykonania dla tego terminala"
 
-#: admin/systems/class_workstationGeneric.inc:236
+#: admin/systems/class_workstationGeneric.inc:335
 #: admin/systems/class_phoneGeneric.inc:83
 #: admin/systems/class_componentGeneric.inc:74
 #: admin/systems/class_mobilePhoneGeneric.inc:106
 #: admin/systems/class_networkSettings.inc:1006
 msgid "Network settings"
-msgstr ""
-
-#: admin/systems/class_workstationGeneric.inc:465
-msgid "Workstation information"
 msgstr ""
 
 #: admin/systems/class_phoneGeneric.inc:37
@@ -513,7 +513,7 @@ msgid "The telephone number of the phone"
 msgstr ""
 
 #: admin/systems/class_printGeneric.inc:131
-#: admin/systems/class_printGeneric.inc:1069
+#: admin/systems/class_printGeneric.inc:1144
 msgid "Internal error"
 msgstr "Błąd wewnętrzny"
 
@@ -523,79 +523,79 @@ msgid ""
 "Cannot determine a valid department for this object. Setting base to '%s'!"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:317
-#: admin/systems/class_printGeneric.inc:325
-#: admin/systems/class_printGeneric.inc:330
-#: admin/systems/class_printGeneric.inc:380
-#: admin/systems/class_printGeneric.inc:396
-#: admin/systems/class_printGeneric.inc:399
+#: admin/systems/class_printGeneric.inc:392
+#: admin/systems/class_printGeneric.inc:400
+#: admin/systems/class_printGeneric.inc:405
+#: admin/systems/class_printGeneric.inc:455
+#: admin/systems/class_printGeneric.inc:471
+#: admin/systems/class_printGeneric.inc:474
 msgid "Add printer extension"
 msgstr "Dodaj rozszerzenie drukarki"
 
-#: admin/systems/class_printGeneric.inc:318
+#: admin/systems/class_printGeneric.inc:393
 msgid ""
 "Could not initialize printer tab, parameter parent was missing while "
 "construction."
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:326
+#: admin/systems/class_printGeneric.inc:401
 msgid "This is a workstation template, printer tab is disabled."
 msgstr "To jest szablon stacji roboczej, zakładka drukarek jest wyłączona."
 
-#: admin/systems/class_printGeneric.inc:331
+#: admin/systems/class_printGeneric.inc:406
 msgid "This is a terminal template, printer tab is disabled."
 msgstr "To jest szablon terminala, zakładka drukarek jest wyłączona."
 
-#: admin/systems/class_printGeneric.inc:373
-#: admin/systems/class_printGeneric.inc:381
-#: admin/systems/class_printGeneric.inc:389
-#: admin/systems/class_printGeneric.inc:392
-#: admin/systems/class_printGeneric.inc:397
-#: admin/systems/class_printGeneric.inc:400
+#: admin/systems/class_printGeneric.inc:448
+#: admin/systems/class_printGeneric.inc:456
+#: admin/systems/class_printGeneric.inc:464
+#: admin/systems/class_printGeneric.inc:467
+#: admin/systems/class_printGeneric.inc:472
+#: admin/systems/class_printGeneric.inc:475
 msgid "printer"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:381
+#: admin/systems/class_printGeneric.inc:456
 msgid ""
 "You can't enable it while 'cn' is not present in entry. Possibly you are "
 "currently creating a new terminal template."
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:388
-#: admin/systems/class_printGeneric.inc:391
+#: admin/systems/class_printGeneric.inc:463
+#: admin/systems/class_printGeneric.inc:466
 msgid "Remove printer extension"
 msgstr "Usuń rozszerzenie drukarki"
 
-#: admin/systems/class_printGeneric.inc:582
+#: admin/systems/class_printGeneric.inc:657
 #, php-format
 msgid "Your currently selected PPD file '%s' doesn't exist."
 msgstr "Wybrany plik PPD '%s' nie istnieje."
 
-#: admin/systems/class_printGeneric.inc:588
+#: admin/systems/class_printGeneric.inc:663
 msgid "Not defined"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:592
+#: admin/systems/class_printGeneric.inc:667
 #: admin/systems/ppd/class_printerPPDDialog.inc:116
 msgid "Can't get ppd informations."
 msgstr "Nie można pobrać informacji ppd."
 
-#: admin/systems/class_printGeneric.inc:607
-#: admin/systems/class_printGeneric.inc:609
+#: admin/systems/class_printGeneric.inc:682
+#: admin/systems/class_printGeneric.inc:684
 #, php-format
 msgid "This printer belongs to %s. You can't rename this printer."
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:607
-#: admin/systems/class_terminalGeneric.inc:34
+#: admin/systems/class_printGeneric.inc:682
+#: admin/systems/class_terminalGeneric.inc:55
 msgid "terminal"
 msgstr "Terminal"
 
-#: admin/systems/class_printGeneric.inc:657
-#: admin/systems/class_printGeneric.inc:664
-#: admin/systems/class_printGeneric.inc:723
-#: admin/systems/class_printGeneric.inc:1109
-#: admin/systems/class_printGeneric.inc:1120
+#: admin/systems/class_printGeneric.inc:732
+#: admin/systems/class_printGeneric.inc:739
+#: admin/systems/class_printGeneric.inc:798
+#: admin/systems/class_printGeneric.inc:1184
+#: admin/systems/class_printGeneric.inc:1195
 #: admin/systems/class_serverService.inc:224
 #: admin/systems/class_serverService.inc:270
 #: admin/systems/class_serverService.inc:393
@@ -609,80 +609,80 @@ msgstr "Terminal"
 msgid "Error"
 msgstr "Błąd"
 
-#: admin/systems/class_printGeneric.inc:657
-#: admin/systems/class_printGeneric.inc:664
+#: admin/systems/class_printGeneric.inc:732
+#: admin/systems/class_printGeneric.inc:739
 msgid "Object is no printer!"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:772 admin/systems/printer.tpl.c:23
+#: admin/systems/class_printGeneric.inc:847 admin/systems/printer.tpl.c:23
 msgid "Printer URL"
 msgstr "URL drukarki"
 
-#: admin/systems/class_printGeneric.inc:994
-#: admin/systems/class_printGeneric.inc:996
+#: admin/systems/class_printGeneric.inc:1069
+#: admin/systems/class_printGeneric.inc:1071
 msgid "Group"
 msgstr "Grupa"
 
-#: admin/systems/class_printGeneric.inc:999
+#: admin/systems/class_printGeneric.inc:1074
 msgid "User"
 msgstr "Użytkownik"
 
-#: admin/systems/class_printGeneric.inc:1011
+#: admin/systems/class_printGeneric.inc:1086
 msgid "Printer information"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1027
+#: admin/systems/class_printGeneric.inc:1102
 #: admin/systems/serverService-list.tpl.c:2
 #: admin/systems/phoneSelect/phoneSelect-list.tpl.c:2
 #: admin/systems/printer.tpl.c:11
 msgid "Base"
 msgstr "Kontener"
 
-#: admin/systems/class_printGeneric.inc:1030
+#: admin/systems/class_printGeneric.inc:1105
 msgid "LabeledURL"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1031
+#: admin/systems/class_printGeneric.inc:1106
 msgid "Printer PPD"
 msgstr "PPD drukarki"
 
-#: admin/systems/class_printGeneric.inc:1032 admin/systems/printer.tpl.c:38
+#: admin/systems/class_printGeneric.inc:1107 admin/systems/printer.tpl.c:38
 msgid "Permissions"
 msgstr "Uprawnienia"
 
-#: admin/systems/class_printGeneric.inc:1034
+#: admin/systems/class_printGeneric.inc:1109
 msgid "Windows inf file"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1035
+#: admin/systems/class_printGeneric.inc:1110
 msgid "Windows driver dir"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1036 admin/systems/printer.tpl.c:62
+#: admin/systems/class_printGeneric.inc:1111 admin/systems/printer.tpl.c:62
 msgid "Driver printer name"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1052
-#: admin/systems/class_printGeneric.inc:1074
+#: admin/systems/class_printGeneric.inc:1127
+#: admin/systems/class_printGeneric.inc:1149
 msgid "Permission error"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1052
-#: admin/systems/class_printGeneric.inc:1074
+#: admin/systems/class_printGeneric.inc:1127
+#: admin/systems/class_printGeneric.inc:1149
 msgid "printer user"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1069
+#: admin/systems/class_printGeneric.inc:1144
 #, php-format
 msgid "Illegal member type '%s'!"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1109
+#: admin/systems/class_printGeneric.inc:1184
 #, php-format
 msgid "'%s' is already used!"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1120
+#: admin/systems/class_printGeneric.inc:1195
 #, php-format
 msgid "'%s' does not exist!"
 msgstr ""
@@ -714,51 +714,51 @@ msgstr ""
 msgid "Could not get execute action %s on service %s."
 msgstr ""
 
-#: admin/systems/class_terminalGeneric.inc:42
+#: admin/systems/class_terminalGeneric.inc:33
+msgid "Terminal information"
+msgstr ""
+
+#: admin/systems/class_terminalGeneric.inc:63
 #, php-format
 msgid "The root server the terminal should be using"
 msgstr ""
 
-#: admin/systems/class_terminalGeneric.inc:48
+#: admin/systems/class_terminalGeneric.inc:69
 #, php-format
 msgid "The swap server the terminal should be using"
 msgstr ""
 
-#: admin/systems/class_terminalGeneric.inc:54
+#: admin/systems/class_terminalGeneric.inc:75
 msgid "Remote desktop"
 msgstr "Zdalny pulpit"
 
-#: admin/systems/class_terminalGeneric.inc:58
+#: admin/systems/class_terminalGeneric.inc:79
 msgid "Connect method"
 msgstr "Metoda połączenia"
 
-#: admin/systems/class_terminalGeneric.inc:62
+#: admin/systems/class_terminalGeneric.inc:83
 msgid "XDMCP"
 msgstr ""
 
-#: admin/systems/class_terminalGeneric.inc:62
+#: admin/systems/class_terminalGeneric.inc:83
 msgid "LDM"
 msgstr ""
 
-#: admin/systems/class_terminalGeneric.inc:62
+#: admin/systems/class_terminalGeneric.inc:83
 msgid "Shell"
 msgstr "Shell"
 
-#: admin/systems/class_terminalGeneric.inc:62
+#: admin/systems/class_terminalGeneric.inc:83
 msgid "Telnet"
 msgstr ""
 
-#: admin/systems/class_terminalGeneric.inc:62
+#: admin/systems/class_terminalGeneric.inc:83
 msgid "Windows RDP"
 msgstr "Windows RDP"
 
-#: admin/systems/class_terminalGeneric.inc:66
+#: admin/systems/class_terminalGeneric.inc:87
 msgid "Terminal server"
 msgstr "Serwer terminali"
-
-#: admin/systems/class_terminalGeneric.inc:82
-msgid "Terminal information"
-msgstr ""
 
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:91
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:116
@@ -947,13 +947,13 @@ msgstr "Import"
 msgid "The server you wish to import hosts from"
 msgstr ""
 
-#: admin/systems/class_serverGeneric.inc:34
-msgid "server"
-msgstr "Serwer"
-
-#: admin/systems/class_serverGeneric.inc:47
+#: admin/systems/class_serverGeneric.inc:33
 msgid "Server information"
 msgstr ""
+
+#: admin/systems/class_serverGeneric.inc:55
+msgid "server"
+msgstr "Serwer"
 
 #: admin/systems/class_componentGeneric.inc:37
 msgid "Component information"
