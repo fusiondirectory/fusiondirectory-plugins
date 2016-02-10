@@ -280,6 +280,41 @@ class DnsRecordAttribute extends CompositeAttribute
             ' '
           );
         break;
+        case 'nAPTRRecord':
+          $this->attributes[1] = new CharSeparatedCompositeAttribute(
+            _('NAPTR Record'),
+            $ldapName,
+            array(
+              new IntAttribute(
+                _('Order'), _('Integer specifying the order in which the NAPTR records MUST be processed to ensure the correct ordering of rules.  Low numbers are processed before high numbers.'),
+                $ldapName.'_order', TRUE,
+                0, FALSE
+              ),
+              new IntAttribute(
+                _('Preference'), _('Integer that specifies the order in which NAPTR records with equal "order" values SHOULD be processed, low numbers being processed before high numbers.'),
+                $ldapName.'_pref', TRUE,
+                0, FALSE
+              ),
+              new StringAttribute(
+                _('Flags'), _('Flags to control aspects of the rewriting and interpretation of the fields in the record. Flags are single characters from the set [A-Z0-9].  The case of the alphabetic characters is not significant.'),
+                $ldapName.'_flags', TRUE
+              ),
+              new StringAttribute(
+                _('Service'), _('Specifies the service(s) available down this rewrite path. It may also specify the particular protocol that is used to talk with a service. A protocol MUST be specified if the flags field states that the NAPTR is terminal.'),
+                $ldapName.'_service', TRUE
+              ),
+              new StringAttribute(
+                _('Regular Expression'), _('A STRING containing a substitution expression that is applied to the original string held by the client in order to construct the next domain name to lookup.'),
+                $ldapName.'_regexp', TRUE
+              ),
+              new StringAttribute(
+                _('Replacement'), _('The next NAME to query for NAPTR, SRV, or address records depending on the value of the flags field.'),
+                $ldapName.'_replace', TRUE
+              ),
+            ),
+            ' '
+          );
+        break;
         case 'nSRecord':
           $this->attributes[1] = new FQDNAttribute(
             _('Target'), _('Domain name which specifies a host which should be authoritative for the specified class and domain'),
