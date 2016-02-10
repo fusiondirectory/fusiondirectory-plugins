@@ -143,7 +143,7 @@ class dnsHost extends simplePlugin
         'attrs' => array(
           new SetAttribute(
             new SelectAttribute(
-              '', _('DNS zones for this host'),
+              '', _('DNS zones for this host'),
               'fdDNSZoneDn', TRUE
             )
           )
