@@ -20,7 +20,7 @@
 
 class dnsManagement extends simpleManagement
 {
-  protected $objectTypes  = array('dnsZone');
+  protected $objectTypes  = array('dnsZone', 'dnsView');
 
   protected $departmentBrowser      = TRUE;
   protected $departmentRootVisible  = TRUE;
@@ -36,7 +36,7 @@ class dnsManagement extends simpleManagement
       'plIcon'        => 'geticon.php?context=applications&icon=dns&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 1,
-      'plManages'     => array('dnsZone'),
+      'plManages'     => array('dnsZone', 'dnsView'),
 
       'plProvidedAcls'  => array()
     );
