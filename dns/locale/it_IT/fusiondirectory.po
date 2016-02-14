@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Penati <penati@avaya.com>, 2015
+# Penati <penati@avaya.com>, 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2016-02-10 16:25+0100\n"
-"PO-Revision-Date: 2016-02-10 15:27+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2016-02-12 17:10+0000\n"
+"Last-Translator: Penati <penati@avaya.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +29,7 @@ msgstr "DNS"
 
 #: admin/systems/class_dnsHost.inc:127
 msgid "Edit the DNS zones of a system"
-msgstr ""
+msgstr "Modificare le zone DNS di un sistema"
 
 #: admin/systems/class_dnsHost.inc:144
 msgid "DNS zones"
@@ -37,50 +37,50 @@ msgstr "Zone DNS"
 
 #: admin/systems/class_dnsHost.inc:148
 msgid "DNS zones for this host"
-msgstr ""
+msgstr "Zone DNS per questo host"
 
 #: admin/systems/class_dnsHost.inc:155
 msgid "SOA records"
-msgstr ""
+msgstr "Record SOA"
 
 #: admin/systems/class_dnsHost.inc:159 admin/systems/class_dnsHost.inc:197
 msgid "DNS Records"
-msgstr ""
+msgstr "Records DNS"
 
 #: admin/systems/class_dnsHost.inc:193
 msgid "Primary servers"
-msgstr ""
+msgstr "Servers primari"
 
 #: admin/systems/class_dnsHost.inc:209
 #, php-format
 msgid "The DNS records for zone \"%s\""
-msgstr ""
+msgstr "Records DNS par la zona \"%s\""
 
 #: admin/systems/class_dnsHost.inc:226
 #, php-format
 msgid "The primary server for zone \"%s\""
-msgstr ""
+msgstr "Server primario per la zona \"%s\""
 
 #: admin/systems/class_dnsHost.inc:268 admin/systems/class_dnsHost.inc:288
 #, php-format
 msgid "%d records were updated from %s to %s in zone %s"
-msgstr ""
+msgstr "%d records sono stati aggiornati da %s a %s nella zona %s"
 
 #: admin/systems/class_dnsHost.inc:303
 #, php-format
 msgid "%d records were removed in zone %s"
-msgstr ""
+msgstr "%d records sono stati rimossi nella zona %s"
 
 #: admin/systems/class_dnsHost.inc:312
 msgid "DNS update"
-msgstr ""
+msgstr "Aggiornamento DNS"
 
 #: admin/dns/class_DnsRecordAttribute.inc:27
 #, php-format
 msgid ""
 "\"%s\" must contain a fully qualified domain name and end with a final "
 "dot.<br/><br/>Example: dns1.example.com."
-msgstr ""
+msgstr "\"%s\" deve contenere un nome di dominio completo e terminare con un punto finale <br/> Esempio:. Dns1.example.com."
 
 #: admin/dns/class_DnsRecordAttribute.inc:130
 msgid "Type"
@@ -92,7 +92,7 @@ msgstr "Zona inversa"
 
 #: admin/dns/class_DnsRecordAttribute.inc:133
 msgid "Reverse zone this record should be in, if any"
-msgstr ""
+msgstr "Zona inversa nella quale dovrebbe trovarsi questo record, se ce n'é"
 
 #: admin/dns/class_DnsRecordAttribute.inc:171
 #: admin/dns/class_DnsRecordAttribute.inc:178
@@ -104,24 +104,24 @@ msgstr "Obiettivo"
 
 #: admin/dns/class_DnsRecordAttribute.inc:171
 msgid "An IPv4 address"
-msgstr ""
+msgstr "Un indirizzo IPv4"
 
 #: admin/dns/class_DnsRecordAttribute.inc:178
 msgid "An IPv6 address"
-msgstr ""
+msgstr "Un indirizzo IPv6"
 
 #: admin/dns/class_DnsRecordAttribute.inc:185
 msgid "LOC Record"
-msgstr ""
+msgstr "Record LOC"
 
 #: admin/dns/class_DnsRecordAttribute.inc:189
 msgid "Latitude"
-msgstr ""
+msgstr "Latitudine"
 
 #: admin/dns/class_DnsRecordAttribute.inc:193
 #: admin/dns/class_DnsRecordAttribute.inc:220
 msgid "Degrees"
-msgstr ""
+msgstr "Gradi"
 
 #: admin/dns/class_DnsRecordAttribute.inc:198
 #: admin/dns/class_DnsRecordAttribute.inc:225
@@ -135,51 +135,51 @@ msgstr "Secondi"
 
 #: admin/dns/class_DnsRecordAttribute.inc:208
 msgid "North/South"
-msgstr ""
+msgstr "Nord/Sud"
 
 #: admin/dns/class_DnsRecordAttribute.inc:211
 msgid "North"
-msgstr ""
+msgstr "Nord"
 
 #: admin/dns/class_DnsRecordAttribute.inc:211
 msgid "South"
-msgstr ""
+msgstr "Sud"
 
 #: admin/dns/class_DnsRecordAttribute.inc:216
 msgid "Longitude"
-msgstr ""
+msgstr "Longitudine"
 
 #: admin/dns/class_DnsRecordAttribute.inc:235
 msgid "East/West"
-msgstr ""
+msgstr "Est/Ovest"
 
 #: admin/dns/class_DnsRecordAttribute.inc:238
 msgid "East"
-msgstr ""
+msgstr "Est"
 
 #: admin/dns/class_DnsRecordAttribute.inc:238
 msgid "West"
-msgstr ""
+msgstr "Ovest"
 
 #: admin/dns/class_DnsRecordAttribute.inc:243
 msgid "Altitude (meters)"
-msgstr ""
+msgstr "Altitudine (in metri)"
 
 #: admin/dns/class_DnsRecordAttribute.inc:248
 msgid "Size (meters)"
-msgstr ""
+msgstr "Taglia (in metri)"
 
 #: admin/dns/class_DnsRecordAttribute.inc:253
 msgid "Horizontal precision (meters)"
-msgstr ""
+msgstr "Precisione orizzontale (in metri)"
 
 #: admin/dns/class_DnsRecordAttribute.inc:258
 msgid "Vertical precision (meters)"
-msgstr ""
+msgstr "Precisione verticale (in metri)"
 
 #: admin/dns/class_DnsRecordAttribute.inc:267
 msgid "MX Record"
-msgstr ""
+msgstr "Record MX"
 
 #: admin/dns/class_DnsRecordAttribute.inc:271
 #: admin/dns/class_DnsRecordAttribute.inc:330
@@ -190,21 +190,21 @@ msgstr "Priorità"
 msgid ""
 "Preference given to this RR among others at the same owner, lower values are"
 " preferred"
-msgstr ""
+msgstr "Preferenza data a questo RR tra gli altri allo stesso proprietario, valori più bassi sono preferiti."
 
 #: admin/dns/class_DnsRecordAttribute.inc:276
 msgid ""
 "Domain name which specifies a host willing to act as a mail exchange for the"
 " owner name"
-msgstr ""
+msgstr "Nome a dominio che specifica la volontà di un host ad agire come uno scambio di posta per il nome del proprietario"
 
 #: admin/dns/class_DnsRecordAttribute.inc:285
 msgid "NAPTR Record"
-msgstr ""
+msgstr "Record NAPTR"
 
 #: admin/dns/class_DnsRecordAttribute.inc:289
 msgid "Order"
-msgstr ""
+msgstr "Ordine"
 
 #: admin/dns/class_DnsRecordAttribute.inc:289
 msgid ""
@@ -215,7 +215,7 @@ msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:294
 msgid "Preference"
-msgstr ""
+msgstr "Preferenza"
 
 #: admin/dns/class_DnsRecordAttribute.inc:294
 msgid ""
@@ -249,7 +249,7 @@ msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:307
 msgid "Regular Expression"
-msgstr ""
+msgstr "Espressione regolare"
 
 #: admin/dns/class_DnsRecordAttribute.inc:307
 msgid ""
@@ -260,7 +260,7 @@ msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:311
 msgid "Replacement"
-msgstr ""
+msgstr "Sostituzione"
 
 #: admin/dns/class_DnsRecordAttribute.inc:311
 msgid ""
@@ -276,15 +276,15 @@ msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:326
 msgid "SRV Record"
-msgstr ""
+msgstr "Record SRV"
 
 #: admin/dns/class_DnsRecordAttribute.inc:330
 msgid "Priority of the target host, lower value means more preferred"
-msgstr ""
+msgstr "La priorità del l'host di destinazione, il valore più basso significa più preferito"
 
 #: admin/dns/class_DnsRecordAttribute.inc:335
 msgid "Weight"
-msgstr ""
+msgstr "Peso"
 
 #: admin/dns/class_DnsRecordAttribute.inc:335
 msgid ""
@@ -308,7 +308,7 @@ msgstr ""
 #: admin/dns/class_DnsRecordAttribute.inc:354 admin/dns/class_dnsZone.inc:27
 #: admin/dns/class_dnsZone.inc:35
 msgid "Record"
-msgstr ""
+msgstr "Record"
 
 #: admin/dns/class_DnsRecordAttribute.inc:354
 msgid ""
@@ -322,7 +322,7 @@ msgstr "Reindirizzare verso"
 
 #: admin/dns/class_DnsRecordAttribute.inc:360
 msgid "Domain that this subdomain is an alias of"
-msgstr ""
+msgstr "Dominio di cui questo sottodominio é un alias"
 
 #: admin/dns/class_DnsRecordAttribute.inc:366
 msgid "Content"
@@ -330,30 +330,30 @@ msgstr "Contenuto"
 
 #: admin/dns/class_DnsRecordAttribute.inc:366
 msgid "Content of this record"
-msgstr ""
+msgstr "Contenuto di questo record"
 
 #: admin/dns/class_DnsRecordAttribute.inc:425
 msgid "The entered IP does not match the selected reverse zone"
-msgstr ""
+msgstr "L'IP immesso non corrisponde alla zona inversa selezionata"
 
 #: admin/dns/class_dnsZone.inc:31
 msgid "Subdomain"
-msgstr ""
+msgstr "Sottodominio"
 
 #: admin/dns/class_dnsZone.inc:31
 msgid "Relative subdomain name"
-msgstr ""
+msgstr "Nome relativo di sottodominio"
 
 #: admin/dns/class_dnsZone.inc:35
 msgid "DNS Record"
-msgstr ""
+msgstr "Record DNS"
 
 #: admin/dns/class_dnsZone.inc:433
 #, php-format
 msgid ""
 "\"%s\" must contain a domain name and end with a final "
 "dot.<br/><br/>Example: example.com."
-msgstr ""
+msgstr "\"%s\" deve contenere un nome di dominio e terminare con un punto finale.<br/><br/>Esempio: example.com."
 
 #: admin/dns/class_dnsZone.inc:436
 #, php-format
@@ -375,7 +375,7 @@ msgstr "Nome della zona"
 
 #: admin/dns/class_dnsZone.inc:491
 msgid "Reverse zones"
-msgstr ""
+msgstr "Zone inverse"
 
 #: admin/dns/class_dnsZone.inc:491
 #, php-format
@@ -390,17 +390,17 @@ msgstr "Record SOA"
 
 #: admin/dns/class_dnsZone.inc:507
 msgid "SOA Record"
-msgstr ""
+msgstr "Record SOA"
 
 #: admin/dns/class_dnsZone.inc:511
 msgid "Primary DNS server"
-msgstr ""
+msgstr "Server DNS primario"
 
 #: admin/dns/class_dnsZone.inc:511
 msgid ""
 "Domain name of the name server that was the original or primary source of "
 "data for this zone"
-msgstr ""
+msgstr "Nome di dominio del server che è stato la fonte originale o primaria dei dati per questa zona"
 
 #: admin/dns/class_dnsZone.inc:515
 msgid "Mail address"
@@ -410,15 +410,15 @@ msgstr "Indirizzo di posta elettronica"
 msgid ""
 "Domain name which specifies the mailbox of the person responsible for this "
 "zone"
-msgstr ""
+msgstr "Nome di dominio che specifica la mailbox della persona responsabile di questa zona"
 
 #: admin/dns/class_dnsZone.inc:519
 msgid "Serial number"
-msgstr ""
+msgstr "Numero di serie"
 
 #: admin/dns/class_dnsZone.inc:519
 msgid "Version number of the original copy of the zone"
-msgstr ""
+msgstr "Numero di versione della copia originale della zona"
 
 #: admin/dns/class_dnsZone.inc:524
 msgid "Refresh"
@@ -426,7 +426,7 @@ msgstr "Aggiorna"
 
 #: admin/dns/class_dnsZone.inc:524
 msgid "Time interval before the zone should be refreshed"
-msgstr ""
+msgstr "Intervallo di tempo prima che la zona venga aggiornata"
 
 #: admin/dns/class_dnsZone.inc:529
 msgid "Retry"
@@ -435,7 +435,7 @@ msgstr "Riprova"
 #: admin/dns/class_dnsZone.inc:529
 msgid ""
 "Time interval that should elapse before a failed refresh should be retried"
-msgstr ""
+msgstr "Intervallo di tempo che deve trascorrere prima che un aggiornamento fallito venga ritentato"
 
 #: admin/dns/class_dnsZone.inc:534
 msgid "Expire"
@@ -457,15 +457,15 @@ msgstr ""
 
 #: admin/dns/class_dnsZone.inc:550
 msgid "Records"
-msgstr ""
+msgstr "Records"
 
 #: admin/dns/class_dnsZone.inc:554
 msgid "The DNS records for this zone"
-msgstr ""
+msgstr "Records DNS per questa zona"
 
 #: admin/dns/class_dnsManagement.inc:35
 msgid "DNS Management"
-msgstr ""
+msgstr "Gestione DNS"
 
 #: config/dns/class_dnsConfig.inc:28
 msgid "DNS configuration"
@@ -481,11 +481,11 @@ msgstr "Configurazione del DNS"
 
 #: config/dns/class_dnsConfig.inc:45
 msgid "DNS RDN"
-msgstr ""
+msgstr "DNS RDN"
 
 #: config/dns/class_dnsConfig.inc:45
 msgid "Branch in which DNS zones will be stored"
-msgstr ""
+msgstr "Ramo nel quale le zone DNS verranno immagazzinate"
 
 #: config/dns/class_dnsConfig.inc:50
 msgid "Store final dot in domains"
