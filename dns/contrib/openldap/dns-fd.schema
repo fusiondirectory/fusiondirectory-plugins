@@ -30,6 +30,5 @@ objectclass ( 1.3.6.1.4.1.38414.51.2.1 NAME 'fdDNSHost'
 
 objectclass ( 1.3.6.1.4.1.38414.51.2.2 NAME 'fdDNSView'
   DESC 'FusionDirectory - DNS view for split horizon'
-  SUP top AUXILIARY
   MUST ( cn )
   MAY ( fdDNSZoneDn $ fdDNSViewAclName $ fdDNSViewAcl ) )
