@@ -67,12 +67,6 @@ class mailAccount extends simplePlugin
   var $displayHeader    = TRUE;
   var $objectclasses    = array('gosaMailAccount');
 
-  /* Used by the mail method */
-  var $cn;
-  var $uid;
-  var $uidNumber;
-  var $gidNumber;
-
   static function plInfo()
   {
     return array(
@@ -225,14 +219,6 @@ class mailAccount extends simplePlugin
   {
     parent::__construct($config, $dn, $object);
 
-    foreach (array('cn','uid','uidNumber','gidNumber') as $var) {
-      if (isset($object->$var)) {
-        $this->$var = $object->$var;
-      } elseif (isset($this->attrs[$var])) {
-        $this->$var = $this->attrs[$var][0];
-      }
-    }
-
     /* Intialize the used mailMethod */
     $tmp = new mailMethod($config, $this);
 
@@ -357,8 +343,10 @@ class mailAccount extends simplePlugin
   /* We need $mailAccount->uid to return the uid for mailMethod */
   public function __get($name)
   {
-    if (($name == 'uid') && isset($this->parent)) {
-      return $this->parent->getBaseObject()->uid;
+    if (in_array($name, array('cn','uid')) && isset($this->parent)) {
+      return $this->parent->getBaseObject()->$name;
+    } elseif (in_array($name, array('uidNumber','gidNumber')) && isset($this->parent)) {
+      return $this->parent->by_object['posixAccount']->$name;
     } else {
       /* Calling default behaviour */
       return parent::__get($name);
