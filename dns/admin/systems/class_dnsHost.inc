@@ -218,6 +218,10 @@ class dnsHost extends simplePlugin
           list ($fqdn) = explode(' ', $attrs['sOARecord'][0]);
           if ($fqdn == $cn.'.'.$attrs['zoneName'][0]) {
             $fqdn = '<strong>'.$fqdn.'</strong>';
+            if (class_available('supportDaemon')) {
+              $id = 'ldap2zone_refresh_'.base64_encode($attrs['zoneName'][0]);
+              $fqdn .= ' <input type="submit" name="'.$id.'" id="'.$id.'" value="{t}Refresh zone file{/t}"/>';
+            }
           }
           $attrId = 'soaRecord'.$name;
           $this->attributesInfo['soa']['attrs'][$attrId] = new DisplayAttribute(
@@ -242,6 +246,35 @@ class dnsHost extends simplePlugin
     $acl        = $ui->get_permissions($this->acl_base, 'dnsZone/'.get_class($this), 'dnsRecords', $this->read_only);
     $smarty->assign('dnsRecordsACL', $acl);
     return parent::execute();
+  }
+
+  function save_object ()
+  {
+    parent::save_object();
+    if (isset($_POST[get_class($this).'_posted'])) {
+      foreach ($_POST as $name => $value) {
+        if (preg_match('/^ldap2zone_refresh_(.+)$/', $name, $m)) {
+          $zone = base64_decode($m[1]);
+          if ($this->parent->by_object['argonautClient']->is_account) {
+            $s_daemon = new supportDaemon();
+            if ($s_daemon->is_error()) {
+              msg_dialog::display(_('Could not get run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+              );
+            } else {
+              $target = array($this->parent->getBaseObject()->macAddress);
+              $res    = $s_daemon->append_call('Ldap2Zone.start', $target, array('args' => array($zone)));
+              if ($s_daemon->is_error()) {
+                msg_dialog::display(_('Could not get run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG);
+              } else {
+                msg_dialog::display(_('Ldap2zone'), sprintf(_('Ldap2Zone called for zone "%s"'), $zone), INFO_DIALOG);
+              }
+            }
+          } else {
+            msg_dialog::display(_('Error'), _('Argonaut client needs to be activated to use ldap2zone remotely'), ERROR_DIALOG);
+          }
+        }
+      }
+    }
   }
 
   function save()
