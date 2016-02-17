@@ -123,7 +123,7 @@ class systemSimplePluginGlue extends simplePlugin
     if ($name == 'ipHostNumber') {
       return array_merge(array($this->netConfigDNS->$name), $this->netConfigDNS->additionalHostNumbers);
     } elseif ($name == 'macAddress') {
-      return array($this->netConfigDNS->$name);
+      return $this->netConfigDNS->$name;
     } else {
       return parent::__get($name);
     }
@@ -139,9 +139,6 @@ class systemSimplePluginGlue extends simplePlugin
         $this->netConfigDNS->$name = $value;
       }
     } elseif ($name == 'macAddress') {
-      if (is_array($value)) {
-        $value = $value[0];
-      }
       $this->netConfigDNS->$name = $value;
     } else {
       return parent::__set($name, $value);
