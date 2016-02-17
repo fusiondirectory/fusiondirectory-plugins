@@ -134,6 +134,7 @@ class DnsRecordDialog extends GenericDialog
 
 class DnsRecordsAttribute extends DialogOrderedArrayAttribute
 {
+  protected $height       = 400;
   protected $dialogClass  = 'DnsRecordDialog';
   protected $reverseZones = array();
   protected $sOARecord    = '';
