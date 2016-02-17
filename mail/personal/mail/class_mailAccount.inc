@@ -219,6 +219,10 @@ class mailAccount extends simplePlugin
   {
     parent::__construct($config, $dn, $object);
 
+    if (isset($object->parent)) {
+      $this->parent = $object->parent;
+    }
+
     /* Intialize the used mailMethod */
     $tmp = new mailMethod($config, $this);
 
@@ -350,6 +354,18 @@ class mailAccount extends simplePlugin
     } else {
       /* Calling default behaviour */
       return parent::__get($name);
+    }
+  }
+
+  public function __isset($name)
+  {
+    if (in_array($name, array('cn','uid')) && isset($this->parent)) {
+      return isset($this->parent->getBaseObject()->$name);
+    } elseif (in_array($name, array('uidNumber','gidNumber')) && isset($this->parent)) {
+      return isset($this->parent->by_object['posixAccount']->$name);
+    } else {
+      /* Calling default behaviour */
+      return parent::__isset($name);
     }
   }
 
