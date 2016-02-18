@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014 FusionDirectory
+  Copyright (C) 2014-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -31,10 +31,6 @@ class systemServers extends simplePlugin
         'name'  => _('Servers'),
         'icon'  => 'geticon.php?context=devices&icon=server&size=16',
         'attrs' => array(
-          new SelectAttribute (
-            _('Syslog server'), _('The syslog server the system should be using'),
-            'fdSyslogServer', FALSE
-          ),
           new SetAttribute (
             new SelectAttribute (
               _('NTP servers'), _('The NTP servers for this system'),
@@ -77,14 +73,6 @@ class systemServers extends simplePlugin
       $tmp[] = $server;
     }
     $this->attributesAccess['fdNtpServer']->attribute->setChoices($tmp);
-
-    /* Create an array of all Syslog servers */
-    $tmp        = $this->config->data['SERVERS']['SYSLOG'];
-    $tmp_output = $tmp;
-    if (($key = array_search('default', $tmp)) !== FALSE) {
-      $tmp[$key] = '';
-    }
-    $this->attributesAccess['fdSyslogServer']->setChoices($tmp, $tmp_output);
   }
 }
 
