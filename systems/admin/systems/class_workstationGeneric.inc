@@ -281,12 +281,6 @@ class workstationGeneric extends systemSimplePluginGlue
         'name'  => _('Servers'),
         'icon'  => 'geticon.php?context=devices&icon=server&size=16',
         'attrs' => array(
-          new SelectAttribute (
-            _('Syslog server'),
-            sprintf(_('The syslog server the %s should be using'), $word),
-            'gotoSyslogServer',
-            FALSE
-          ),
           new BooleanAttribute (
             _('Inherit NTP servers'),
             _('Inherit time server attributes from ogroup'),
@@ -444,17 +438,6 @@ class workstationGeneric extends systemSimplePluginGlue
       $this->attributesAccess['inheritLDAPServer']->setValue(TRUE);
       $this->attributesAccess['inheritLDAPServer']->setDisabled(TRUE);
     }
-
-    /* Create an array of all Syslog servers */
-    $tmp        = $this->config->data['SERVERS']['SYSLOG'];
-    $tmp_output = $tmp;
-    if (($key = array_search("default", $tmp)) !== FALSE) {
-      $tmp[$key] = "";
-      if ($this->member_of_group) {
-        $tmp_output[$key] = _('inherited');
-      }
-    }
-    $this->attributesAccess['gotoSyslogServer']->setChoices($tmp, $tmp_output);
   }
 
   function resetCopyInfos()

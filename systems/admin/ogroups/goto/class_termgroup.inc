@@ -29,7 +29,6 @@ class termgroup extends plugin
   var $member_dn = array();
 
   var $gotoMode     = "locked";
-  var $gotoSyslogServer   = "";
   var $gotoNtpServer    = array();
   var $gotoTerminalPath   = array();
   var $gotoSwapServer   = array();
@@ -48,7 +47,7 @@ class termgroup extends plugin
                            # "sysinfo"         => "sysinfo"
          );
 
-  var $attributes     = array("gotoMode","gotoSyslogServer", "gotoNtpServer", "gotoTerminalPath", "gotoSwapServer");
+  var $attributes     = array("gotoMode", "gotoNtpServer", "gotoTerminalPath", "gotoSwapServer");
   var $objectclasses  = array("gotoWorkstationTemplate");
   var $CopyPasteVars  = array("gotoNtpServers","modes","inheritTimeServer","members");
   var $view_logged    = FALSE;
@@ -290,9 +289,6 @@ class termgroup extends plugin
     $smarty->assign("nfsservers",     $this->nfsservers);
     $smarty->assign("swapservers",    $this->swapservers);
 
-    $smarty->assign("syslogservers", $this->config->data['SERVERS']['SYSLOG']);
-    $smarty->assign("gotoSyslogServer_select", $this->gotoSyslogServer);
-
     /* Variables */
     foreach(array("gotoTerminalPath", "gotoSwapServer") as $val){
       $smarty->assign($val."_select", $this->$val);
@@ -339,13 +335,6 @@ class termgroup extends plugin
     /***************
       Prepare special vars
      ***************/
-
-    /* Unset some special vars ... */
-    foreach (array("gotoSyslogServer") as $val){
-      if ($this->attrs[$val] == "default"){
-        $this->attrs[$val]= array();
-      }
-    }
 
     /* Update ntp server settings */
     if($this->inheritTimeServer){
@@ -395,7 +384,6 @@ class termgroup extends plugin
 
       'plProvidedAcls'  => array(
         'gotoMode'          => _('Mode'),
-        'gotoSyslogServer'  => _('Syslog server'),
         'FAIstate'          => _('Action flag'),
         'gotoNtpServer'     => _('Ntp server'),
         'gotoTerminalPath'  => _('Root server'),
@@ -421,7 +409,7 @@ class termgroup extends plugin
     $this->gotoNtpServer= array();
 
     $source_o = new termgroup ($this->config, $source['dn']);
-    foreach(array("gotoTerminalPath","gotoSwapServer","gotoSyslogServer","gotoMode") as $attr){
+    foreach(array("gotoTerminalPath","gotoSwapServer","gotoMode") as $attr){
       $this->$attr = $source_o->$attr;
     }
 

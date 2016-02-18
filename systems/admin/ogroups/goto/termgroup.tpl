@@ -54,16 +54,6 @@
          </td>
         </tr>
         <tr><td colspan="2">&nbsp;</td></tr>
-        <tr>
-         <td><LABEL for="gotoSyslogServer">{t}Syslog server{/t}</LABEL></td>
-         <td>
-{render acl=$gotoSyslogServerACL}
-          <select id="gotoSyslogServer" name="gotoSyslogServer" title="{t}Choose server to use for logging{/t}">
-           {html_options values=$syslogservers output=$syslogservers selected=$gotoSyslogServer_select}
-          </select>
-{/render}
-         </td>
-        </tr>
         {if $is_termgroup}
             <tr>
              <td><LABEL for="gotoTerminalPath">{t}Root server{/t}</LABEL></td>
