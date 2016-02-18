@@ -295,20 +295,6 @@ class workstationGeneric extends systemSimplePluginGlue
               FALSE
             )
           ),
-          new BooleanAttribute (
-            _('Inherit LDAP servers'),
-            _('Inherit LDAP server attributes from ogroup'),
-            'inheritLDAPServer',
-            FALSE
-          ),
-          new OrderedArrayAttribute (
-            new SelectAttribute (
-              _('LDAP servers'),
-              sprintf(_('The LDAP servers for the %s'), $word),
-              'gotoLdapServer',
-              FALSE
-            )
-          ),
         )
       ),
       'actions' => array(
@@ -374,15 +360,6 @@ class workstationGeneric extends systemSimplePluginGlue
       )
     );
 
-    $this->attributesAccess['inheritLDAPServer']->setInLdap(FALSE);
-    $this->attributesAccess['inheritLDAPServer']->setManagedAttributes(
-      array(
-        'erase' => array(
-          TRUE => array('gotoLdapServer'),
-        )
-      )
-    );
-
     /* Create used ntp server array */
     $ntpServers = $this->attributesAccess['gotoNtpServer']->getValue();
     /* Set inherit checkbox state */
@@ -393,21 +370,10 @@ class workstationGeneric extends systemSimplePluginGlue
       $this->attributesAccess['inheritTimeServer']->setValue(FALSE);
     }
 
-    /* Create used ldap server array */
-    $ldapServers = $this->attributesAccess['gotoLdapServer']->getValue();
-    /* Set inherit checkbox state */
-    if ($this->member_of_group && (count($ldapServers) == 0)) {
-      $this->attributesAccess['inheritLDAPServer']->setValue(TRUE);
-    } else {
-      $this->attributesAccess['inheritLDAPServer']->setValue(FALSE);
-    }
-
     /* Disable inheritance if we're not in a group */
     if (!$this->member_of_group) {
       $this->attributesAccess['inheritTimeServer']->setDisabled(TRUE);
       $this->attributesAccess['inheritTimeServer']->setVisible(FALSE);
-      $this->attributesAccess['inheritLDAPServer']->setDisabled(TRUE);
-      $this->attributesAccess['inheritLDAPServer']->setVisible(FALSE);
     }
 
     /* Create available ntp options */
@@ -423,20 +389,6 @@ class workstationGeneric extends systemSimplePluginGlue
       $this->attributesAccess['gotoNtpServer']->setDisabled(TRUE);
       $this->attributesAccess['inheritTimeServer']->setValue(TRUE);
       $this->attributesAccess['inheritTimeServer']->setDisabled(TRUE);
-    }
-
-    /* Create available ldap options */
-    $tmp = array();
-    foreach ($this->config->data['SERVERS']['LDAP'] as $dn => $infos) {
-      $tmp[$dn] = $infos['goLdapURI'][0].$infos['goLdapBase'][0];
-    }
-    $this->attributesAccess['gotoLdapServer']->attribute->setChoices(
-      array_keys($tmp), array_values($tmp)
-    );
-    if (count($tmp) == 0) {
-      $this->attributesAccess['gotoLdapServer']->setDisabled(TRUE);
-      $this->attributesAccess['inheritLDAPServer']->setValue(TRUE);
-      $this->attributesAccess['inheritLDAPServer']->setDisabled(TRUE);
     }
   }
 
