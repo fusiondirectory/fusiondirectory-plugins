@@ -506,11 +506,11 @@ class dnsZone extends simplePlugin
             _('SOA Record'),
             'sOARecord',
             array(
-              new StringAttribute(
+              new FQDNAttribute(
                 _('Primary DNS server'), _('Domain name of the name server that was the original or primary source of data for this zone'),
                 'soaRecord_primary', TRUE
               ),
-              new StringAttribute(
+              new FQDNAttribute(
                 _('Mail address'), _('Domain name which specifies the mailbox of the person responsible for this zone'),
                 'soaRecord_mail', TRUE
               ),
