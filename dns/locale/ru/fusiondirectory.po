@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2016-02-10 16:25+0100\n"
-"PO-Revision-Date: 2016-02-11 19:54+0000\n"
+"PO-Revision-Date: 2016-02-19 11:46+0000\n"
 "Last-Translator: Alexey Matveev\n"
 "Language-Team: Russian (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "DNS"
 
 #: admin/systems/class_dnsHost.inc:127
 msgid "Edit the DNS zones of a system"
-msgstr ""
+msgstr "Редактировать DNS зоны системы"
 
 #: admin/systems/class_dnsHost.inc:144
 msgid "DNS zones"
@@ -37,7 +37,7 @@ msgstr "Зоны DNS"
 
 #: admin/systems/class_dnsHost.inc:148
 msgid "DNS zones for this host"
-msgstr ""
+msgstr "DNS зоны хоста"
 
 #: admin/systems/class_dnsHost.inc:155
 msgid "SOA records"
@@ -64,7 +64,7 @@ msgstr "Первичный сервер для зоны \"%s\""
 #: admin/systems/class_dnsHost.inc:268 admin/systems/class_dnsHost.inc:288
 #, php-format
 msgid "%d records were updated from %s to %s in zone %s"
-msgstr ""
+msgstr "Количество записей, обновленных с %s на %s в зоне %s - %d"
 
 #: admin/systems/class_dnsHost.inc:303
 #, php-format
@@ -163,7 +163,7 @@ msgstr "Запад"
 
 #: admin/dns/class_DnsRecordAttribute.inc:243
 msgid "Altitude (meters)"
-msgstr "Высота (метры)"
+msgstr "Высота (в метрах)"
 
 #: admin/dns/class_DnsRecordAttribute.inc:248
 msgid "Size (meters)"
@@ -266,7 +266,7 @@ msgstr "Replacement"
 msgid ""
 "The next NAME to query for NAPTR, SRV, or address records depending on the "
 "value of the flags field."
-msgstr ""
+msgstr "Следующие НАЗВАНИЕ, запрашиваемое для NAPTR, SRV, или адреса записей, зависит от значения поля флагов."
 
 #: admin/dns/class_DnsRecordAttribute.inc:320
 msgid ""
@@ -303,7 +303,7 @@ msgstr "TCP или UDP порт на котором служба должна б
 #: admin/dns/class_DnsRecordAttribute.inc:345
 msgid ""
 "Canonical hostname of the machine providing the service, ending in a dot"
-msgstr ""
+msgstr "Каноническое имя хоста машины предоставляющей службу, заканчивается точкой."
 
 #: admin/dns/class_DnsRecordAttribute.inc:354 admin/dns/class_dnsZone.inc:27
 #: admin/dns/class_dnsZone.inc:35
@@ -326,11 +326,11 @@ msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:366
 msgid "Content"
-msgstr ""
+msgstr "Содержимое"
 
 #: admin/dns/class_DnsRecordAttribute.inc:366
 msgid "Content of this record"
-msgstr ""
+msgstr "Содержимое записи"
 
 #: admin/dns/class_DnsRecordAttribute.inc:425
 msgid "The entered IP does not match the selected reverse zone"
@@ -338,7 +338,7 @@ msgstr "Введенный IP не соответствует выбранной
 
 #: admin/dns/class_dnsZone.inc:31
 msgid "Subdomain"
-msgstr ""
+msgstr "Поддомен "
 
 #: admin/dns/class_dnsZone.inc:31
 msgid "Relative subdomain name"
@@ -382,7 +382,7 @@ msgstr "Обратные зоны"
 msgid ""
 "Reverse zones for this zone in the form xx.xx.in-addr.arpa%1$s or "
 "x.x.ip6.arpa%1$s"
-msgstr ""
+msgstr "Обратные зоны для зоны в формате xx.xx.in-addr.arpa%1$s или x.x.ip6.arpa%1$s"
 
 #: admin/dns/class_dnsZone.inc:504
 msgid "SOA record"
@@ -489,11 +489,11 @@ msgstr "Ветка в которой DNS зоны будут сохранены"
 
 #: config/dns/class_dnsConfig.inc:50
 msgid "Store final dot in domains"
-msgstr ""
+msgstr "Сохранять точку в конце доменов"
 
 #: config/dns/class_dnsConfig.inc:50
 msgid "Should FD store a final dot at the end of domains?"
-msgstr ""
+msgstr "Должен ли FD сохранять точку на конце доменов?"
 
 #: admin/systems/dnsrecords.tpl.c:2
 msgid "Insufficient rights"
