@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-Dev\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-15 17:47+0100\n"
-"PO-Revision-Date: 2015-02-25 16:04+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory-Dev/language/de/)\n"
+"POT-Creation-Date: 2014-08-28 12:26+0200\n"
+"PO-Revision-Date: 2015-08-12 10:21+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: German (http://www.transifex.com/fusiondirectory/FusionDirectory-Dev/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -64,11 +64,12 @@ msgid "Debconf profile"
 msgstr "Debconf Profil"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:163
-msgid "Debconf profile information"
-msgstr "Debconf-Profilinformation"
+msgid "Debconf profile generic"
+msgstr ""
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:181
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:184
+#: admin/debconfProfile/debconfProfile-filter.tpl.c:5
 msgid "Name"
 msgstr "Name"
 
@@ -131,3 +132,7 @@ msgstr "Linux Kernel Parameter, die gestartet werden sollen"
 #: admin/systems/debconf/class_debconfStartup.inc:112
 msgid "Debconf preseed startup"
 msgstr "Debconf preseed startup"
+
+#: admin/debconfProfile/debconfProfile-filter.tpl.c:2
+msgid "Filter"
+msgstr "Filter"

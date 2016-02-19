@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-Dev\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-15 17:47+0100\n"
-"PO-Revision-Date: 2015-02-25 16:04+0000\n"
+"POT-Creation-Date: 2014-08-28 12:26+0200\n"
+"PO-Revision-Date: 2015-08-12 10:28+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory-Dev/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/fusiondirectory/FusionDirectory-Dev/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -248,11 +248,11 @@ msgid "Allow Machine Password changes (default: 0 => off)"
 msgstr ""
 
 #: admin/systems/samba/class_winstationGeneric.inc:40
-msgid "Winstation"
-msgstr "Stacja Windows"
+msgid "Winstation generic"
+msgstr ""
 
 #: admin/systems/samba/class_winstationGeneric.inc:41
-msgid "Windows workstation information"
+msgid "Windows workstation generic"
 msgstr ""
 
 #: admin/systems/samba/class_winstationGeneric.inc:45
@@ -313,8 +313,8 @@ msgid "Samba settings"
 msgstr "Ustawienia Samba"
 
 #: personal/samba/class_sambaAccount.inc:160
-msgid "Samba profile"
-msgstr ""
+msgid "Generic"
+msgstr "Ogólne"
 
 #: personal/samba/class_sambaAccount.inc:166
 #: personal/samba/class_sambaAccount.inc:199
@@ -635,4 +635,12 @@ msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:72
 msgid "Needed to be compliant with Windows <= 98 or Samba < 3.2"
+msgstr ""
+
+#: personal/samba/sambaLogonHours.tpl.c:2
+msgid "Specify the hours this user is allowed to log in"
+msgstr ""
+
+#: personal/samba/sambaLogonHours.tpl.c:5
+msgid "Hour"
 msgstr ""

@@ -63,7 +63,7 @@ class dnsView extends simplePlugin
           ),
           new SetAttribute(
             new SelectAttribute(
-              _('DNS zones'), _('DNS zones in this view'),
+              _('DNS zones'), _('DNS zones in this view'),
               'fdDNSZoneDn', FALSE
             )
           )

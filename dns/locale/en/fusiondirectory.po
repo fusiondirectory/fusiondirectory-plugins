@@ -6,324 +6,521 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-28 12:26+0200\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2016-02-19 17:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
+"Language-Team: English\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:50
-#: admin/systems/services/dns/class_serviceDNS.inc:512
-#: admin/systems/services/dns/class_serviceDNS.inc:520
-#: admin/systems/services/dns/class_serviceDNS.inc:521
-msgid "DNS service"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:181
-#, php-format
-msgid "You are going to migrate the DNS setup from server '%s'."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:182
-msgid ""
-"The migration will be started when you save this system. To cancel this "
-"action, use the cancel button below."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:201
-#: admin/systems/services/dns/class_serviceDNS.inc:358
-#: admin/systems/services/dns/class_serviceDNS.inc:371
-#: admin/systems/services/dns/class_serviceDNS.inc:377
-#: admin/systems/services/dns/class_DNS.inc:167
-#: admin/systems/services/dns/class_DNS.inc:172
-#: admin/systems/services/dns/class_DNS.inc:617
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:200
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:229
-msgid "Error"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:295
-#: admin/systems/services/dns/class_serviceDNS.inc:532
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:348
-msgid "Reverse zone"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:296
-#: admin/systems/services/dns/class_serviceDNS.inc:541
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:47
-msgid "TTL"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:297
-msgid "Class"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:358
-#, php-format
-msgid "Cannot delete the selected zone. It is still in use by '%s'"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:371
-#, php-format
-msgid "Was not able to contact argonaut server: %s"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:377
-#, php-format
-msgid "Was not able to launch ldap2zone: %s"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:465
-#: admin/systems/services/dns/class_serviceDNS.inc:479
-#: admin/systems/services/dns/class_serviceDNS.inc:496
-#: admin/systems/services/dns/class_serviceDNS.inc:502
-#: admin/systems/services/dns/class_DNS.inc:730
+#: admin/systems/class_dnsHost.inc:107 admin/dns/class_dnsZone.inc:282
+#: admin/dns/class_dnsZone.inc:325 admin/dns/class_dnsZone.inc:350
 msgid "LDAP error"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:521
-msgid "Services"
+#: admin/systems/class_dnsHost.inc:124 admin/dns/class_dnsManagement.inc:34
+msgid "DNS"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:527
-msgid "Start service"
+#: admin/systems/class_dnsHost.inc:125
+msgid "Edit the DNS zones of a system"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:528
-msgid "Stop service"
+#: admin/systems/class_dnsHost.inc:142 admin/dns/class_dnsView.inc:66
+msgid "DNS zones"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:529
-msgid "Restart service"
+#: admin/systems/class_dnsHost.inc:146
+msgid "DNS zones for this host"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:531
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:339
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:344
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:352
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:5
+#: admin/systems/class_dnsHost.inc:153
+msgid "SOA records"
+msgstr ""
+
+#: admin/systems/class_dnsHost.inc:157 admin/systems/class_dnsHost.inc:195
+msgid "DNS Records"
+msgstr ""
+
+#: admin/systems/class_dnsHost.inc:191
+msgid "Primary servers"
+msgstr ""
+
+#: admin/systems/class_dnsHost.inc:207
+#, php-format
+msgid "The DNS records for zone \"%s\""
+msgstr ""
+
+#: admin/systems/class_dnsHost.inc:228
+#, php-format
+msgid "The primary server for zone \"%s\""
+msgstr ""
+
+#: admin/systems/class_dnsHost.inc:261 admin/systems/class_dnsHost.inc:267
+msgid "Could not get run ldap2zone"
+msgstr ""
+
+#: admin/systems/class_dnsHost.inc:269
+msgid "Ldap2zone"
+msgstr ""
+
+#: admin/systems/class_dnsHost.inc:269
+#, php-format
+msgid "Ldap2Zone called for zone \"%s\""
+msgstr ""
+
+#: admin/systems/class_dnsHost.inc:273
+msgid "Error"
+msgstr ""
+
+#: admin/systems/class_dnsHost.inc:273
+msgid "Argonaut client needs to be activated to use ldap2zone remotely"
+msgstr ""
+
+#: admin/systems/class_dnsHost.inc:298 admin/systems/class_dnsHost.inc:318
+#, php-format
+msgid "%d records were updated from %s to %s in zone %s"
+msgstr ""
+
+#: admin/systems/class_dnsHost.inc:333
+#, php-format
+msgid "%d records were removed in zone %s"
+msgstr ""
+
+#: admin/systems/class_dnsHost.inc:342
+msgid "DNS update"
+msgstr ""
+
+#: admin/dns/class_dnsView.inc:30 admin/dns/class_dnsView.inc:31
+#: admin/dns/class_dnsView.inc:33
+msgid "DNS view"
+msgstr ""
+
+#: admin/dns/class_dnsView.inc:47
+msgid "View"
+msgstr ""
+
+#: admin/dns/class_dnsView.inc:51
+msgid "View name"
+msgstr ""
+
+#: admin/dns/class_dnsView.inc:51
+msgid "Name of this view"
+msgstr ""
+
+#: admin/dns/class_dnsView.inc:55
+msgid "ACL name"
+msgstr ""
+
+#: admin/dns/class_dnsView.inc:55
+msgid "ACL name for this view"
+msgstr ""
+
+#: admin/dns/class_dnsView.inc:60
+msgid "ACL values"
+msgstr ""
+
+#: admin/dns/class_dnsView.inc:60
+msgid "ACL values for this view"
+msgstr ""
+
+#: admin/dns/class_dnsView.inc:66
+msgid "DNS zones in this view"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:27
+#, php-format
+msgid ""
+"\"%s\" must contain a fully qualified domain name and end with a final dot."
+"<br/><br/>Example: dns1.example.com."
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:130
+msgid "Type"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:133
+msgid "Reverse zone"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:133
+msgid "Reverse zone this record should be in, if any"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:171
+#: admin/dns/class_DnsRecordAttribute.inc:178
+#: admin/dns/class_DnsRecordAttribute.inc:276
+#: admin/dns/class_DnsRecordAttribute.inc:320
+#: admin/dns/class_DnsRecordAttribute.inc:345
+msgid "Target"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:171
+msgid "An IPv4 address"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:178
+msgid "An IPv6 address"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:185
+msgid "LOC Record"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:189
+msgid "Latitude"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:193
+#: admin/dns/class_DnsRecordAttribute.inc:220
+msgid "Degrees"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:198
+#: admin/dns/class_DnsRecordAttribute.inc:225
+msgid "Minutes"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:203
+#: admin/dns/class_DnsRecordAttribute.inc:230
+msgid "Seconds"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:208
+msgid "North/South"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:211
+msgid "North"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:211
+msgid "South"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:216
+msgid "Longitude"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:235
+msgid "East/West"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:238
+msgid "East"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:238
+msgid "West"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:243
+msgid "Altitude (meters)"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:248
+msgid "Size (meters)"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:253
+msgid "Horizontal precision (meters)"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:258
+msgid "Vertical precision (meters)"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:267
+msgid "MX Record"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:271
+#: admin/dns/class_DnsRecordAttribute.inc:330
+msgid "Priority"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:271
+msgid ""
+"Preference given to this RR among others at the same owner, lower values are "
+"preferred"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:276
+msgid ""
+"Domain name which specifies a host willing to act as a mail exchange for the "
+"owner name"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:285
+msgid "NAPTR Record"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:289
+msgid "Order"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:289
+msgid ""
+"Integer specifying the order in which the NAPTR records MUST be processed to "
+"ensure the correct ordering of rules.  Low numbers are processed before high "
+"numbers."
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:294
+msgid "Preference"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:294
+msgid ""
+"Integer that specifies the order in which NAPTR records with equal \"order\" "
+"values SHOULD be processed, low numbers being processed before high numbers."
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:299
+msgid "Flags"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:299
+msgid ""
+"Flags to control aspects of the rewriting and interpretation of the fields "
+"in the record. Flags are single characters from the set [A-Z0-9].  The case "
+"of the alphabetic characters is not significant."
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:303
+msgid "Service"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:303
+msgid ""
+"Specifies the service(s) available down this rewrite path. It may also "
+"specify the particular protocol that is used to talk with a service. A "
+"protocol MUST be specified if the flags field states that the NAPTR is "
+"terminal."
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:307
+msgid "Regular Expression"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:307
+msgid ""
+"A STRING containing a substitution expression that is applied to the "
+"original string held by the client in order to construct the next domain "
+"name to lookup."
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:311
+msgid "Replacement"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:311
+msgid ""
+"The next NAME to query for NAPTR, SRV, or address records depending on the "
+"value of the flags field."
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:320
+msgid ""
+"Domain name which specifies a host which should be authoritative for the "
+"specified class and domain"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:326
+msgid "SRV Record"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:330
+msgid "Priority of the target host, lower value means more preferred"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:335
+msgid "Weight"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:335
+msgid ""
+"Relative weight for records with the same priority, higher value means more "
+"preferred"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:340
+msgid "Port"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:340
+msgid "TCP or UDP port on which the service is to be found"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:345
+msgid ""
+"Canonical hostname of the machine providing the service, ending in a dot"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:354 admin/dns/class_dnsZone.inc:27
+#: admin/dns/class_dnsZone.inc:35
+msgid "Record"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:354
+msgid ""
+"SSHFP record content. Can be obtained using \"ssh-keygen -r some.host.tld\", "
+"or sshfp command for instance"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:360
+msgid "Redirect to"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:360
+msgid "Domain that this subdomain is an alias of"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:366
+msgid "Content"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:366
+msgid "Content of this record"
+msgstr ""
+
+#: admin/dns/class_DnsRecordAttribute.inc:425
+msgid "The entered IP does not match the selected reverse zone"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:31
+msgid "Subdomain"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:31
+msgid "Relative subdomain name"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:35
+msgid "DNS Record"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:432
+#, php-format
+msgid ""
+"\"%s\" must contain a domain name and end with a final dot.<br/><br/"
+">Example: example.com."
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:435
+#, php-format
+msgid "\"%s\" must contain a domain name.<br/><br/>Example: example.com"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:458 admin/dns/class_dnsZone.inc:459
+#: admin/dns/class_dnsZone.inc:461
+msgid "DNS zone"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:476
+msgid "Zone"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:480
 msgid "Zone name"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:533
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:428
-msgid "Network class"
+#: admin/dns/class_dnsZone.inc:490
+msgid "Reverse zones"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:534
-msgid "Zone entry editor"
+#: admin/dns/class_dnsZone.inc:490
+#, php-format
+msgid ""
+"Reverse zones for this zone in the form xx.xx.in-addr.arpa%1$s or x.x.ip6."
+"arpa%1$s"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:535
-msgid "Primary dns server"
+#: admin/dns/class_dnsZone.inc:503
+msgid "SOA record"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:536
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:32
+#: admin/dns/class_dnsZone.inc:506
+msgid "SOA Record"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:510
+msgid "Primary DNS server"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:510
+msgid ""
+"Domain name of the name server that was the original or primary source of "
+"data for this zone"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:514
 msgid "Mail address"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:537
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
-msgid "Serial"
+#: admin/dns/class_dnsZone.inc:514
+msgid ""
+"Domain name which specifies the mailbox of the person responsible for this "
+"zone"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:538
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:38
+#: admin/dns/class_dnsZone.inc:518
+msgid "Serial number"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:518
+msgid "Version number of the original copy of the zone"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:523
 msgid "Refresh"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:539
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:41
+#: admin/dns/class_dnsZone.inc:523
+msgid "Time interval before the zone should be refreshed"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:528
 msgid "Retry"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:540
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:44
+#: admin/dns/class_dnsZone.inc:528
+msgid ""
+"Time interval that should elapse before a failed refresh should be retried"
+msgstr ""
+
+#: admin/dns/class_dnsZone.inc:533
 msgid "Expire"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:542
-msgid "MX records"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:543
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:17
-msgid "Zone records"
-msgstr ""
-
-#: admin/systems/services/dns/class_DNS.inc:167
-#, php-format
-msgid "Cannot find reverse zone for DNS zone '%s'. Parsing zone aborted."
-msgstr ""
-
-#: admin/systems/services/dns/class_DNS.inc:172
-#, php-format
-msgid "Found more than one reverse zone for '%s'. Parsing zone aborted."
-msgstr ""
-
-#: admin/systems/services/dns/class_DNS.inc:617
-#, php-format
-msgid "Undefined zone name '%s'!"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:244
-msgid "Warning"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:244
-msgid "MxRecord"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:274
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:510
-msgid "Delete"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:352
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:378
-msgid "Only lowercase allowed"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
-msgid "Time to life"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:387
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:407
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:8
-msgid "Network address"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:415
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:420
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:425
-#, php-format
+#: admin/dns/class_dnsZone.inc:533
 msgid ""
-"The specified network address and the network class (%s/%s) do not match!"
+"Time value that specifies the upper limit on the time interval that can "
+"elapse before the zone is no longer authoritative"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:516
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:439
-msgid "Add"
+#: admin/dns/class_dnsZone.inc:538
+msgid "TTL"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:121
-#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:8
-msgid "New entry"
+#: admin/dns/class_dnsZone.inc:538
+msgid "Minimum TTL field that should be exported with any RR from this zone"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:229
-#, php-format
-msgid "Cannot rename '%s' to '%s'. Name is already in use!"
+#: admin/dns/class_dnsZone.inc:549
+msgid "Records"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:260
-msgid "Name"
+#: admin/dns/class_dnsZone.inc:553
+msgid "The DNS records for this zone"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:268
-#, php-format
-msgid "Cannot rename '%s' to '%s'. Entry is already in use."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:274
-#, php-format
-msgid "Cannot create '%s'. Entry is already in use."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:282
-#, php-format
-msgid "Entry '%s' is used more than once."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:299
-#, php-format
-msgid "%s records cannot be used more than once."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:305
-#, php-format
-msgid "Please fix the empty %s record for entry '%s'."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:312
-#, php-format
-msgid "Please fix the duplicate %s record for entry '%s'."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:441
-msgid "Remove"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:492
-#, php-format
-msgid "The syntax of entry %s (record type %s, value %s) is invalid!"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:492
-msgid "Example"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:498
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:506
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:514
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:545
-msgid "Entry should be a DNS name."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:501
-msgid "Value should be an IPv6 address."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:509
-msgid "Value should be an IPv4 address."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:517
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:535
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:540
-msgid "Value should be a DNS name."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:524
-msgid "Value 1 should be a number."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:527
-msgid "Value 2 should be a DNS name."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:530
-msgid "Value should be composed of 'preference target'."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:550
-msgid "Value 1 (priority) should be a number."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:553
-msgid "Value 2 (weight) should be a number."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:556
-msgid "Value 3 (port) should be a number."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:559
-msgid "Value 4 (target) should be a DNS name."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:562
-msgid "Value should be composed of 'priority weight port target'."
+#: admin/dns/class_dnsManagement.inc:35
+msgid "DNS Management"
 msgstr ""
 
 #: config/dns/class_dnsConfig.inc:28
@@ -339,91 +536,21 @@ msgid "DNS config"
 msgstr ""
 
 #: config/dns/class_dnsConfig.inc:45
-msgid "Store final dot in domains"
+msgid "DNS RDN"
 msgstr ""
 
 #: config/dns/class_dnsConfig.inc:45
+msgid "Branch in which DNS zones will be stored"
+msgstr ""
+
+#: config/dns/class_dnsConfig.inc:50
+msgid "Store final dot in domains"
+msgstr ""
+
+#: config/dns/class_dnsConfig.inc:50
 msgid "Should FD store a final dot at the end of domains?"
 msgstr ""
 
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:2
-msgid "Generic"
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:11
-msgid "Netmask"
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:14
-msgid "Zone is in use, network settings can't be modified."
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:20
-msgid "Can't be edited because the zone wasn't saved right now."
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:23
-msgid "Edit"
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:26
-msgid "SOA record"
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:29
-msgid "Primary dns server for this zone"
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:35
-msgid "Serial number (automatically incremented)"
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:50
-msgid "MxRecords"
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:53
-msgid "Global zone records"
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:2
-msgid "DNS take over initiated"
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:5
-msgid ""
-"This includes 'all' DNS zones that are located within this server. Please "
-"double check if your really want to do this."
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:8
-msgid "Following objects will be taken over"
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:11
-msgid "Take over DNS configuration from"
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:14
-msgid "Take over"
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:17
-msgid "Zones"
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:2
-msgid ""
-"This dialog allows you to configure all components of this DNS zone on a "
-"single list."
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:5
-msgid ""
-"This dialog can't be used until the currently edited zone was saved or the "
-"zone entry exists in the ldap database."
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:11
-msgid "Create a new DNS zone entry"
+#: admin/systems/dnsrecords.tpl.c:2
+msgid "Insufficient rights"
 msgstr ""

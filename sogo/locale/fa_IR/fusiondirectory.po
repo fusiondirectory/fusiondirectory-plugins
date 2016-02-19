@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-Dev\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-15 17:47+0100\n"
-"PO-Revision-Date: 2014-12-15 17:04+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Persian (Iran) (http://www.transifex.com/projects/p/FusionDirectory-Dev/language/fa_IR/)\n"
+"POT-Creation-Date: 2014-08-28 12:26+0200\n"
+"PO-Revision-Date: 2015-08-12 10:28+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Persian (Iran) (http://www.transifex.com/fusiondirectory/FusionDirectory-Dev/language/fa_IR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -47,7 +47,7 @@ msgid "Kind"
 msgstr ""
 
 #: admin/sogo/class_sogoManagement.inc:34
-#: admin/sogo/class_sogoManagement.inc:39 config/sogo/class_sogoConfig.inc:42
+#: admin/sogo/class_sogoManagement.inc:39
 msgid "SOGo"
 msgstr ""
 
@@ -63,10 +63,14 @@ msgstr ""
 msgid "FusionDirectory sogo plugin configuration"
 msgstr ""
 
+#: config/sogo/class_sogoConfig.inc:42
+msgid "LDAP tree"
+msgstr ""
+
 #: config/sogo/class_sogoConfig.inc:45
 msgid "SOGo RDN"
 msgstr ""
 
 #: config/sogo/class_sogoConfig.inc:45
-msgid "Branch in which SOGo objects will be stored"
+msgid "Branch in which SOGo objects will be stored (required)"
 msgstr ""

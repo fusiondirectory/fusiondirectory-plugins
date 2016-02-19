@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-Dev\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-15 17:47+0100\n"
-"PO-Revision-Date: 2015-02-25 16:04+0000\n"
+"POT-Creation-Date: 2014-08-28 12:26+0200\n"
+"PO-Revision-Date: 2015-08-12 10:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory-Dev/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/fusiondirectory/FusionDirectory-Dev/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,102 +25,111 @@ msgstr ""
 msgid "Supann structures management"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:31
-#: admin/supannStructures/class_entite.inc:52
+#: admin/supannStructures/class_entite.inc:48
+msgid "File error"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:49
+#, php-format
+msgid "Cannot read file: '%s'"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:88
+#: admin/supannStructures/class_entite.inc:109
 #: personal/supann/class_supannAccount.inc:442
 msgid "Entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:32
+#: admin/supannStructures/class_entite.inc:89
 msgid "SUPANN Entite Settings"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:35
+#: admin/supannStructures/class_entite.inc:92
 msgid "SUPANN Entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:55
+#: admin/supannStructures/class_entite.inc:112
 #: admin/supannStructures/class_etablissement.inc:59
 msgid "Name"
 msgstr "Imię"
 
-#: admin/supannStructures/class_entite.inc:55
+#: admin/supannStructures/class_entite.inc:112
 msgid "The name to write in the ou attribute for this entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:61
+#: admin/supannStructures/class_entite.inc:118
 msgid "Administrative informations"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:64
+#: admin/supannStructures/class_entite.inc:121
 #: admin/supannStructures/class_etablissement.inc:80
 msgid "Telephone"
 msgstr "Telefon"
 
-#: admin/supannStructures/class_entite.inc:64
+#: admin/supannStructures/class_entite.inc:121
 msgid "Phone number for this entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:68
+#: admin/supannStructures/class_entite.inc:125
 #: admin/supannStructures/class_etablissement.inc:84
 msgid "Fax"
 msgstr "Fax"
 
-#: admin/supannStructures/class_entite.inc:68
+#: admin/supannStructures/class_entite.inc:125
 msgid "Fax number for this entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:72
+#: admin/supannStructures/class_entite.inc:129
 msgid "Postal address"
 msgstr "Adres pocztowy"
 
-#: admin/supannStructures/class_entite.inc:72
+#: admin/supannStructures/class_entite.inc:129
 msgid "Postal address of this entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:76
+#: admin/supannStructures/class_entite.inc:133
 #: admin/supannStructures/class_etablissement.inc:63
 msgid "Description"
 msgstr "Opis"
 
-#: admin/supannStructures/class_entite.inc:76
+#: admin/supannStructures/class_entite.inc:133
 msgid "Short description of this entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:82
+#: admin/supannStructures/class_entite.inc:139
 msgid "SUPANN informations"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:85
+#: admin/supannStructures/class_entite.inc:142
 #: personal/supann/class_supannAccount.inc:438
 msgid "Entite type"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:85
+#: admin/supannStructures/class_entite.inc:142
 msgid "The best SUPANN type that fits this entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:89
+#: admin/supannStructures/class_entite.inc:146
 msgid "Entite code"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:89
+#: admin/supannStructures/class_entite.inc:146
 msgid "The SUPANN code of this entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:94
+#: admin/supannStructures/class_entite.inc:151
 msgid "Parent entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:94
+#: admin/supannStructures/class_entite.inc:151
 msgid "The parent entite of this entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:98
+#: admin/supannStructures/class_entite.inc:155
 msgid "Reference ID"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:98
+#: admin/supannStructures/class_entite.inc:155
 msgid "SUPANN reference ID of this entite"
 msgstr ""
 
@@ -236,19 +245,10 @@ msgid "The URI of this etablissement white pages"
 msgstr ""
 
 #: admin/supannStructures/class_etablissement.inc:148
-#: admin/supannStructures/class_etablissement.inc:198
-#: admin/supannStructures/class_etablissement.inc:216
+#: admin/supannStructures/class_etablissement.inc:201
+#: admin/supannStructures/class_etablissement.inc:219
 msgid "LDAP error"
 msgstr "błąd LDAP"
-
-#: admin/supannStructures/class_supann.inc:53
-msgid "File error"
-msgstr ""
-
-#: admin/supannStructures/class_supann.inc:54
-#, php-format
-msgid "Cannot read file: '%s'"
-msgstr ""
 
 #: personal/supann/class_supannAccount.inc:35
 #: personal/supann/class_supannAccount.inc:109
@@ -603,7 +603,7 @@ msgid "FusionDirectory SUPANN plugin configuration"
 msgstr ""
 
 #: config/supann/class_supannConfig.inc:42
-msgid "SUPANN"
+msgid "LDAP tree"
 msgstr ""
 
 #: config/supann/class_supannConfig.inc:45

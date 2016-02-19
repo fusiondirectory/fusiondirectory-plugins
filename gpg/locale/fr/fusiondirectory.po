@@ -3,17 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Éric Deschamps <erdesc@free.fr>, 2013
-# Éric Deschamps <erdesc@free.fr>, 2013
-# fusiondirectory <contact@fusiondirectory.org>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-Dev\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-15 17:47+0100\n"
-"PO-Revision-Date: 2014-08-28 10:28+0000\n"
+"POT-Creation-Date: 2014-08-28 12:26+0200\n"
+"PO-Revision-Date: 2015-08-12 10:24+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-Dev/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-Dev/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,35 +20,35 @@ msgstr ""
 #: addons/gpg/class_pgpServerInfo.inc:34 addons/gpg/class_pgpServerInfo.inc:69
 #: addons/gpg/class_pgpServerInfo.inc:70
 msgid "GPG server info"
-msgstr "Informations sur le serveur GPG"
+msgstr ""
 
 #: addons/gpg/class_pgpServerInfo.inc:38
 msgid "Software"
-msgstr "Logiciel"
+msgstr ""
 
 #: addons/gpg/class_pgpServerInfo.inc:38
 msgid "Which software this GPG key server is running"
-msgstr "Version du logiciel de ce serveur de clés GPG "
+msgstr ""
 
 #: addons/gpg/class_pgpServerInfo.inc:43
 msgid "GPG version"
-msgstr "Version de GPG"
+msgstr ""
 
 #: addons/gpg/class_pgpServerInfo.inc:43
 msgid "Which version of GPG this key server is running"
-msgstr "Version du logiciel de ce serveur de clés GPG "
+msgstr ""
 
 #: addons/gpg/class_pgpServerInfo.inc:48
 msgid "Branch in which keys are stored"
-msgstr "Branches ou seront stockés les clefs GPG"
+msgstr ""
 
 #: addons/gpg/class_pgpServerInfo.inc:52
 msgid "Keys RDN"
-msgstr "RDN des clés"
+msgstr ""
 
 #: addons/gpg/class_pgpServerInfo.inc:52
 msgid "Branch under base in which keys are stored"
-msgstr "Branches ou seront stockés les clefs GPG"
+msgstr ""
 
 #: addons/gpg/class_pgpServerInfo.inc:91
 msgid "LDAP error"
@@ -63,12 +60,12 @@ msgstr "Veuillez sélectionner les entrées désirées"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:14
 msgid "PGP Key"
-msgstr "Clef GPG"
+msgstr ""
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:40
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:128
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:121
 msgid "Key ID"
-msgstr "ID de la clef"
+msgstr ""
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:48
 msgid "User"
@@ -76,7 +73,7 @@ msgstr "Utilisateur"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:56
 msgid "Creation date"
-msgstr "Date de création"
+msgstr ""
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:64
 msgid "Expiration date"
@@ -87,19 +84,19 @@ msgid "Type"
 msgstr "Type"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:80
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:133
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:126
 msgid "Size"
 msgstr "Taille"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:88
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:134
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:127
 msgid "Revoked"
-msgstr "Révoquée"
+msgstr ""
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:135
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:128
 msgid "Disabled"
-msgstr "Désactivé"
+msgstr ""
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:41
 msgid "Configuration error"
@@ -107,36 +104,36 @@ msgstr "Erreur de configuration"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:41
 msgid "You need to configure GPG base dn through the addons section first"
-msgstr "Vous devez configurer d'abord le DN de base de GPG, dans la section Extensions"
+msgstr ""
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:129
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:122
 msgid "User ID"
 msgstr "ID de l'utilisateur"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:130
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:123
 msgid "Creation time"
-msgstr "Date de création"
+msgstr ""
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:131
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:124
 msgid "Expiration"
-msgstr "Date d'expiration"
+msgstr ""
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:132
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:125
 msgid "Algorithm"
-msgstr "Algorithme"
+msgstr ""
 
 #: personal/gpg/class_gpgAccount.inc:31
 msgid "GPG keys"
-msgstr "Clefs GPG"
+msgstr ""
 
 #: personal/gpg/class_gpgAccount.inc:35
 msgid "GPG keys of this user"
-msgstr "Liste des clefs GPG publiques pour cet utilisateur"
+msgstr ""
 
 #: personal/gpg/class_gpgAccount.inc:46
 msgid "GPG"
-msgstr "GPG"
+msgstr ""
 
 #: personal/gpg/class_gpgAccount.inc:47
 msgid "Edit user's GPG IDs"
-msgstr "Modifier les identifiants GPG de l'utilisateur"
+msgstr ""
