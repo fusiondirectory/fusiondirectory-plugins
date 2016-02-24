@@ -43,6 +43,5 @@ attributetype ( 1.3.6.1.4.1.38414.48.1.6 NAME 'fdBadge'
 objectclass (1.3.6.1.4.1.38414.48.2.1 NAME 'fdPersonalInfo' SUP top AUXILIARY
   DESC 'FusionDirectory - User personal tab'
   MUST ( )
-  MAY (
-    fdSocialAccount $ fdNickName $ fdPrivateMail $ fdBadge
-    personalTitle $ dateOfBirth $ gender $ fdContractStartDate $ fdContractEndDate $ co))
+  MAY ( fdSocialAccount $ fdNickName $ fdPrivateMail $ fdBadge $
+        personalTitle $ dateOfBirth $ gender $ fdContractStartDate $ fdContractEndDate $ co ))
