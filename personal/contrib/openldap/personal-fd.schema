@@ -21,13 +21,13 @@ attributetype ( 1.3.6.1.4.1.38414.48.1.3 NAME 'fdPrivateMail'
   SUBSTR caseExactIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
-attributetype ( 1.3.6.1.4.1.38414.48.1.4 NAME 'fdStartDate'
+attributetype ( 1.3.6.1.4.1.38414.48.1.4 NAME 'fdContractStartDate'
   DESC 'FusionDirectory - Contract Starting Date'
   EQUALITY generalizedTimeMatch
   ORDERING generalizedTimeOrderingMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.48.1.5 NAME 'fdEndDate'
+attributetype ( 1.3.6.1.4.1.38414.48.1.5 NAME 'fdContractEndDate'
   DESC 'FusionDirectory - Contract End Date'
   EQUALITY generalizedTimeMatch
   ORDERING generalizedTimeOrderingMatch
@@ -45,4 +45,4 @@ objectclass (1.3.6.1.4.1.38414.48.2.1 NAME 'fdPersonalInfo' SUP top AUXILIARY
   MUST ( )
   MAY (
     fdSocialAccount $ fdNickName $ fdPrivateMail $ fdBadge
-    personalTitle $ dateOfBirth $ gender $ fdStartDate $ fdEndDate $ co))
+    personalTitle $ dateOfBirth $ gender $ fdContractStartDate $ fdContractEndDate $ co))
