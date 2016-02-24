@@ -23,8 +23,8 @@ attributetype ( 1.3.6.1.4.1.38414.54.1.4 NAME 'fdMissionPhone'
 	SYNTAX  1.3.6.1.4.1.1466.115.121.1.15
 	SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.54.1.5 NAME 'fdMissionAdress'
-	DESC  'FusionDirectory - Mission - Adress'
+attributetype ( 1.3.6.1.4.1.38414.54.1.5 NAME 'fdMissionAddress'
+	DESC  'FusionDirectory - Mission - Address'
 	EQUALITY caseIgnoreMatch
 	SYNTAX  1.3.6.1.4.1.1466.115.121.1.15
 	SINGLE-VALUE )
@@ -33,5 +33,5 @@ objectclass ( 1.3.6.1.4.1.38414.54.2.1
 	NAME 'fdSubcontractingPerson'
 	SUP top AUXILIARY
 	DESC 'FusionDirectory - A subcontracting person'
-	MAY ( fdStartDate $ fdMissionIntermediate $ fdMissionFinalCustomer $ fdMissionMail $ fdMissionPhone $ fdMissionAdress ) )
+	MAY ( fdMissionIntermediate $ fdMissionFinalCustomer $ fdMissionMail $ fdMissionPhone $ fdMissionAddress ) )
 
