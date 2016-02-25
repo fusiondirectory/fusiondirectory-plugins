@@ -120,6 +120,10 @@ class personalInfo extends simplePlugin
             'gender', FALSE,
             array('', 'M', 'F'), '', array('', 'male', 'female')
           ),
+          new StringAttribute (
+            _('Badge Number'), _('Company badge number'),
+            'fdBadge', FALSE
+          ),
         )
       ),
       'contact' => array(
