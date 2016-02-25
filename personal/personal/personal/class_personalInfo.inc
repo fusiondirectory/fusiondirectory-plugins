@@ -110,19 +110,19 @@ class personalInfo extends simplePlugin
               'fdNickName'
             )
           ),
+          new StringAttribute (
+            _('Badge Number'), _('Company badge number'),
+            'fdBadge', FALSE
+          ),        
           new DateAttribute (
             _('Date of birth'), _('Date of birth'),
             'dateOfBirth', FALSE,
             'Y-m-d', ''
-          ),
+          ),  
           new SelectAttribute (
             _('Sex'), _('Gender'),
             'gender', FALSE,
             array('', 'M', 'F'), '', array('', 'male', 'female')
-          ),
-          new StringAttribute (
-            _('Badge Number'), _('Company badge number'),
-            'fdBadge', FALSE
           ),
         )
       ),
