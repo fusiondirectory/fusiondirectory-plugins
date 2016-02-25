@@ -110,6 +110,10 @@ class personalInfo extends simplePlugin
               'fdNickName'
             )
           ),
+          new StringAttribute (
+            _('Badge Number'), _('Company badge number'),
+            'fdBadge', FALSE
+          ),
           new DateAttribute (
             _('Date of birth'), _('Date of birth'),
             'dateOfBirth', FALSE,
