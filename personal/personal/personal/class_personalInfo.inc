@@ -124,6 +124,10 @@ class personalInfo extends simplePlugin
             'gender', FALSE,
             array('', 'M', 'F'), '', array('', 'male', 'female')
           ),
+          new StringAttribute (
+            _('Country'), _('Country'),
+            'co', FALSE
+          ), 
         )
       ),
       'contact' => array(
