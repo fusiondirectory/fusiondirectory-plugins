@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2016-02-10 16:25+0100\n"
-"PO-Revision-Date: 2016-02-12 17:10+0000\n"
+"PO-Revision-Date: 2016-02-29 09:56+0000\n"
 "Last-Translator: Penati <penati@avaya.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -211,7 +211,7 @@ msgid ""
 "Integer specifying the order in which the NAPTR records MUST be processed to"
 " ensure the correct ordering of rules.  Low numbers are processed before "
 "high numbers."
-msgstr ""
+msgstr "Integer che specifica l'ordine in cui i record NAPTR devono essere trattati per assicurare il corretto ordine delle regole. I numeri bassi vengono elaborati prima dei numeri alti ."
 
 #: admin/dns/class_DnsRecordAttribute.inc:294
 msgid "Preference"
@@ -222,7 +222,7 @@ msgid ""
 "Integer that specifies the order in which NAPTR records with equal \"order\""
 " values SHOULD be processed, low numbers being processed before high "
 "numbers."
-msgstr ""
+msgstr "Integer che specifica l'ordine in cui i record NAPTR con uguali valori di \"ordine\" dovrebbero essere trattati, i numeri bassi vengono elaborati prima dei numeri alti."
 
 #: admin/dns/class_DnsRecordAttribute.inc:299
 msgid "Flags"
@@ -233,7 +233,7 @@ msgid ""
 "Flags to control aspects of the rewriting and interpretation of the fields "
 "in the record. Flags are single characters from the set [A-Z0-9].  The case "
 "of the alphabetic characters is not significant."
-msgstr ""
+msgstr "Flags per controllare gli aspetti della riscrittura e l'interpretazione dei campi del record. I flags sono singoli caratteri dal set [A - Z0-9 ]. Il caso dei caratteri alfabetici non è significativo."
 
 #: admin/dns/class_DnsRecordAttribute.inc:303
 msgid "Service"
@@ -245,7 +245,7 @@ msgid ""
 "specify the particular protocol that is used to talk with a service. A "
 "protocol MUST be specified if the flags field states that the NAPTR is "
 "terminal."
-msgstr ""
+msgstr "Specifica il servizio ( i ) disponibile su questo path di riscrittura . Può anche specificare il particolare protocollo utilizzato per comunicare con un servizio . Un protocollo DEVE essere specificato se il campo flags afferma che il NAPTR è terminale."
 
 #: admin/dns/class_DnsRecordAttribute.inc:307
 msgid "Regular Expression"
@@ -256,7 +256,7 @@ msgid ""
 "A STRING containing a substitution expression that is applied to the "
 "original string held by the client in order to construct the next domain "
 "name to lookup."
-msgstr ""
+msgstr "Stringa che contiene un'espressione di sostituzione che viene applicato alla stringa originale conservata dal cliente al fine di costruire il prossimo nome di dominio da ricercare."
 
 #: admin/dns/class_DnsRecordAttribute.inc:311
 msgid "Replacement"
@@ -266,13 +266,13 @@ msgstr "Sostituzione"
 msgid ""
 "The next NAME to query for NAPTR, SRV, or address records depending on the "
 "value of the flags field."
-msgstr ""
+msgstr "Il successivo NOME di query per NAPTR , SRV , o record di indirizzo in base al valore del campo flags . "
 
 #: admin/dns/class_DnsRecordAttribute.inc:320
 msgid ""
 "Domain name which specifies a host which should be authoritative for the "
 "specified class and domain"
-msgstr ""
+msgstr "Nome di dominio che specifica un host che dovrebbe essere autorevole per la classe e il dominio specificati"
 
 #: admin/dns/class_DnsRecordAttribute.inc:326
 msgid "SRV Record"
@@ -290,7 +290,7 @@ msgstr "Peso"
 msgid ""
 "Relative weight for records with the same priority, higher value means more "
 "preferred"
-msgstr ""
+msgstr "Peso relativo per i record con la stessa priorità , il valore più alto significa più preferito"
 
 #: admin/dns/class_DnsRecordAttribute.inc:340
 msgid "Port"
@@ -298,12 +298,12 @@ msgstr "Porta"
 
 #: admin/dns/class_DnsRecordAttribute.inc:340
 msgid "TCP or UDP port on which the service is to be found"
-msgstr ""
+msgstr "Port TCP o UDP sui quali i servizi devono essere trovati"
 
 #: admin/dns/class_DnsRecordAttribute.inc:345
 msgid ""
 "Canonical hostname of the machine providing the service, ending in a dot"
-msgstr ""
+msgstr "Hostname canonico della macchina che fornisce il servizio, che termina con un punto"
 
 #: admin/dns/class_DnsRecordAttribute.inc:354 admin/dns/class_dnsZone.inc:27
 #: admin/dns/class_dnsZone.inc:35
@@ -314,7 +314,7 @@ msgstr "Record"
 msgid ""
 "SSHFP record content. Can be obtained using \"ssh-keygen -r some.host.tld\","
 " or sshfp command for instance"
-msgstr ""
+msgstr "Contenuto record SSHFP. Puo' essere ottenuto usando \"ssh-keygen -r some.host.tld\", or sshfp command for instance, o per esempio il comando sshfp"
 
 #: admin/dns/class_DnsRecordAttribute.inc:360
 msgid "Redirect to"
@@ -358,7 +358,7 @@ msgstr "\"%s\" deve contenere un nome di dominio e terminare con un punto finale
 #: admin/dns/class_dnsZone.inc:436
 #, php-format
 msgid "\"%s\" must contain a domain name.<br/><br/>Example: example.com"
-msgstr ""
+msgstr "\"%s\" deve contenere un nome di dominio.<br/><br/>Esempio: esempio.com"
 
 #: admin/dns/class_dnsZone.inc:459 admin/dns/class_dnsZone.inc:460
 #: admin/dns/class_dnsZone.inc:462
@@ -382,7 +382,7 @@ msgstr "Zone inverse"
 msgid ""
 "Reverse zones for this zone in the form xx.xx.in-addr.arpa%1$s or "
 "x.x.ip6.arpa%1$s"
-msgstr ""
+msgstr "Zone inverse per questa zona in forma xx.xx.in-addr.arpa%1$s or x.x.ip6.arpa%1$s"
 
 #: admin/dns/class_dnsZone.inc:504
 msgid "SOA record"
@@ -445,7 +445,7 @@ msgstr "Scadenza"
 msgid ""
 "Time value that specifies the upper limit on the time interval that can "
 "elapse before the zone is no longer authoritative"
-msgstr ""
+msgstr "Valore temporale che specifica il limite superiore dell'intervallo di tempo che può trascorrere prima che la zona non sia più autorevole"
 
 #: admin/dns/class_dnsZone.inc:539
 msgid "TTL"
@@ -453,7 +453,7 @@ msgstr "TTL"
 
 #: admin/dns/class_dnsZone.inc:539
 msgid "Minimum TTL field that should be exported with any RR from this zone"
-msgstr ""
+msgstr "Campo minimo TTL che deve essere esportato con qualsiasi RR da questa zona"
 
 #: admin/dns/class_dnsZone.inc:550
 msgid "Records"
