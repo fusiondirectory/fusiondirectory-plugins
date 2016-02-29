@@ -47,7 +47,7 @@ class termgroup extends plugin
 
   var $attributes     = array("gotoMode", "gotoTerminalPath", "gotoSwapServer");
   var $objectclasses  = array("gotoWorkstationTemplate");
-  var $CopyPasteVars  = array("modes","inheritTimeServer","members");
+  var $CopyPasteVars  = array("modes","members");
   var $view_logged    = FALSE;
   var $nfsservers     = array();
   var $swapservers    = array();
