@@ -91,8 +91,8 @@ class subContractingAccount extends simplePlugin
     'plDescription'     => _('Information needed to sub contracts'),
     'plSelfModify'      => FALSE,                  // Does this plugin have an owner that might be able to edit its entry
     'plObjectType'      => array('user'),
-    'plIcon'          => 'geticon.php?context=types&icon=subcontracting&size=48',
-    'plSmallIcon'     => 'geticon.php?context=types&icon=subcontracting&size=16',  
+    'plIcon'          => 'geticon.php?context=apps&icon=subcontracting&size=48',
+    'plSmallIcon'     => 'geticon.php?context=apps&icon=subcontracting&size=16',  
     // simplePlugin can generate the ACL list for us
     'plProvidedAcls'    => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
