@@ -21,7 +21,7 @@
 
 
 /* Basic setup, remove eventually registered sessions */
-require_once ("php_setup.inc");
+@require_once("../../../include/php_setup.inc");
 require_once ("functions.inc");
 error_reporting(0);
 session::start();
