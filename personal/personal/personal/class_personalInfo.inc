@@ -120,6 +120,16 @@ class personalInfo extends simplePlugin
             'gender', FALSE,
             array('', 'M', 'F'), '', array('', 'male', 'female')
           ),
+          new DateAttribute (
+            _('Start date'), _('Date this user joined the company'),
+            'fdContractStartDate', FALSE,
+            'YmdHis\Z', ''
+          ),
+          new DateAttribute (
+            _('End date'), _('Date this user is supposed to leave the company'),
+            'fdContractEndDate', FALSE,
+            'YmdHis\Z', ''
+          ),
         )
       ),
       'contact' => array(
