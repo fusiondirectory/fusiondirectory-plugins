@@ -113,12 +113,12 @@ class personalInfo extends simplePlugin
           new StringAttribute (
             _('Badge Number'), _('Company badge number'),
             'fdBadge', FALSE
-          ),        
+          ),
           new DateAttribute (
             _('Date of birth'), _('Date of birth'),
             'dateOfBirth', FALSE,
             'Y-m-d', ''
-          ),  
+          ),
           new SelectAttribute (
             _('Sex'), _('Gender'),
             'gender', FALSE,
@@ -127,7 +127,17 @@ class personalInfo extends simplePlugin
           new StringAttribute (
             _('Country'), _('Country'),
             'co', FALSE
-          ), 
+          ),
+          new DateAttribute (
+            _('Start date'), _('Date this user joined the company'),
+            'fdContractStartDate', FALSE,
+            'YmdHis\Z', ''
+          ),
+          new DateAttribute (
+            _('End date'), _('Date this user is supposed to leave the company'),
+            'fdContractEndDate', FALSE,
+            'YmdHis\Z', ''
+          ),
         )
       ),
       'contact' => array(
