@@ -315,8 +315,6 @@ class workstationGeneric extends systemSimplePluginGlue
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
-    $this->init_server_section();
-
     $this->netConfigDNS->MACisMust = FALSE;
 
     $this->updateAttributesValues();
@@ -327,49 +325,6 @@ class workstationGeneric extends systemSimplePluginGlue
   function compute_dn()
   {
     return 'cn='.ldap_escape_dn($this->cn).','.get_ou('workstationRDN').$this->base;
-  }
-
-  protected function init_server_section()
-  {
-    $this->attributesAccess['inheritTimeServer']->setInLdap(FALSE);
-    $this->attributesAccess['inheritTimeServer']->setManagedAttributes(
-      array(
-        'erase' => array(
-          TRUE => array('gotoNtpServer'),
-        )
-      )
-    );
-
-    /* Create used ntp server array */
-    $ntpServers = $this->attributesAccess['gotoNtpServer']->getValue();
-    /* Set inherit checkbox state */
-    if ($this->member_of_group && (in_array("default", $ntpServers) || (count($ntpServers) == 0))) {
-      $this->attributesAccess['inheritTimeServer']->setValue(TRUE);
-      $this->attributesAccess['gotoNtpServer']->setValue(array());
-    } else {
-      $this->attributesAccess['inheritTimeServer']->setValue(FALSE);
-    }
-
-    /* Disable inheritance if we're not in a group */
-    if (!$this->member_of_group) {
-      $this->attributesAccess['inheritTimeServer']->setDisabled(TRUE);
-      $this->attributesAccess['inheritTimeServer']->setVisible(FALSE);
-    }
-
-    /* Create available ntp options */
-    $tmp = array();
-    foreach ($this->config->data['SERVERS']['NTP'] as $key => $server) {
-      if ($server == "default") {
-        continue;
-      }
-      $tmp[] = $server;
-    }
-    $this->attributesAccess['gotoNtpServer']->attribute->setChoices($tmp);
-    if (count($tmp) == 0) {
-      $this->attributesAccess['gotoNtpServer']->setDisabled(TRUE);
-      $this->attributesAccess['inheritTimeServer']->setValue(TRUE);
-      $this->attributesAccess['inheritTimeServer']->setDisabled(TRUE);
-    }
   }
 
   function resetCopyInfos()
