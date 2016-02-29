@@ -29,11 +29,9 @@ class termgroup extends plugin
   var $member_dn = array();
 
   var $gotoMode     = "locked";
-  var $gotoNtpServer    = array();
   var $gotoTerminalPath   = array();
   var $gotoSwapServer   = array();
   var $modes      = array();
-  var $inheritTimeServer  = true;
   var $is_account   = true;
   var $orig_dn      = "";
   var $didAction    = FALSE;
@@ -47,9 +45,9 @@ class termgroup extends plugin
                            # "sysinfo"         => "sysinfo"
          );
 
-  var $attributes     = array("gotoMode", "gotoNtpServer", "gotoTerminalPath", "gotoSwapServer");
+  var $attributes     = array("gotoMode", "gotoTerminalPath", "gotoSwapServer");
   var $objectclasses  = array("gotoWorkstationTemplate");
-  var $CopyPasteVars  = array("gotoNtpServers","modes","inheritTimeServer","members");
+  var $CopyPasteVars  = array("modes","inheritTimeServer","members");
   var $view_logged    = FALSE;
   var $nfsservers     = array();
   var $swapservers    = array();
@@ -98,20 +96,6 @@ class termgroup extends plugin
       }
     }
 
-    /***************
-      Perpare NTP settings
-     ***************/
-
-    /* Create used ntp server array */
-    $this->gotoNtpServer= array();
-    if(isset($this->attrs['gotoNtpServer'])){
-      $this->inheritTimeServer = false;
-      unset($this->attrs['gotoNtpServer']['count']);
-      foreach($this->attrs['gotoNtpServer'] as $server){
-        $this->gotoNtpServer[$server] = $server;
-      }
-    }
-
     /* Get Share servers */
     $tmp2 = array();
     $tmp2['!']= _("Local swap");
@@ -137,20 +121,6 @@ class termgroup extends plugin
       }
     }
     $this->nfsservers= $tmp2;
-
-    /* Set inherit checkbox state */
-    if(in_array("default",$this->gotoNtpServer)){
-      $this->inheritTimeServer = true;
-      $this->gotoNtpServer=array();
-    }
-
-    /* Create available ntp options */
-    $this->gotoNtpServers = $this->config->data['SERVERS']['NTP'];
-    foreach($this->gotoNtpServers as $key => $server){
-      if($server == "default"){
-        unset($this->gotoNtpServers[$key]);
-      }
-    }
   }
 
   function check()
@@ -221,24 +191,6 @@ class termgroup extends plugin
       }
     }
 
-
-    /***************
-      Add remove NTP server
-     ***************/
-
-    /* Add new ntp Server to our list */
-    if((isset($_POST['addNtpServer'])) && (isset($_POST['gotoNtpServers']))){
-      $this->gotoNtpServer[$_POST['gotoNtpServers']] = $_POST['gotoNtpServers'];
-    }
-
-    /* Delete selected NtpServer for list of used servers  */
-    if((isset($_POST['delNtpServer'])) && (isset($_POST['gotoNtpServerSelected']))){
-      foreach($_POST['gotoNtpServerSelected'] as $name){
-        unset($this->gotoNtpServer[$name]);
-      }
-    }
-
-
     /***************
       Prepare smarty
      ***************/
@@ -262,7 +214,7 @@ class termgroup extends plugin
     }
 
     /* Variables */
-    foreach(array("gotoMode","gotoNtpServer") as $val){
+    foreach(array("gotoMode") as $val){
       $smarty->assign($val."_select", $this->$val);
     }
 
@@ -274,17 +226,7 @@ class termgroup extends plugin
           "memcheck" => _("Memory test"),
           "sysinfo"  => _("System analysis")));
 
-    $smarty->assign("inheritTimeServer",$this->inheritTimeServer);
     $smarty->assign("modes", $this->modes);
-
-    $tmp = array();
-    foreach($this->gotoNtpServers as $server){
-      if(!in_array($server,$this->gotoNtpServer)){
-        $tmp[$server] = $server;
-      }
-    }
-
-    $smarty->assign("gotoNtpServers",$tmp);
 
     $smarty->assign("nfsservers",     $this->nfsservers);
     $smarty->assign("swapservers",    $this->swapservers);
@@ -309,12 +251,6 @@ class termgroup extends plugin
 
       /* Handle the inherit to members button */
       $this->members_inherit_from_group = isset($_POST['members_inherit_from_group']);
-
-      if(isset($_POST["inheritTimeServer"])){
-        $this->inheritTimeServer = true;
-      }else{
-        $this->inheritTimeServer = false;
-      }
     }
   }
 
@@ -331,22 +267,6 @@ class termgroup extends plugin
 
     /* Tell members to inherit all attributes if the flag is set  */
     //~ $this->inherit_attributes_to_members();
-
-    /***************
-      Prepare special vars
-     ***************/
-
-    /* Update ntp server settings */
-    if($this->inheritTimeServer){
-      $this->attrs['gotoNtpServer'] = "default";
-    }else{
-      /* Set ntpServers */
-      $this->attrs['gotoNtpServer'] = array();
-      foreach($this->gotoNtpServer as $server){
-        $this->attrs['gotoNtpServer'][] = $server;
-      }
-    }
-
 
     /***************
       Write to ldap
@@ -385,7 +305,6 @@ class termgroup extends plugin
       'plProvidedAcls'  => array(
         'gotoMode'          => _('Mode'),
         'FAIstate'          => _('Action flag'),
-        'gotoNtpServer'     => _('Ntp server'),
         'gotoTerminalPath'  => _('Root server'),
         'gotoSwapServer'    => _('Swap server')
       )
@@ -405,34 +324,9 @@ class termgroup extends plugin
 
   function PrepareForCopyPaste($source)
   {
-    /* Create used ntp server array */
-    $this->gotoNtpServer= array();
-
     $source_o = new termgroup ($this->config, $source['dn']);
     foreach(array("gotoTerminalPath","gotoSwapServer","gotoMode") as $attr){
       $this->$attr = $source_o->$attr;
-    }
-
-    if(isset($source['gotoNtpServer'])){
-      $this->inheritTimeServer = false;
-      unset($source['gotoNtpServer']['count']);
-      foreach($source['gotoNtpServer'] as $server){
-        $this->gotoNtpServer[$server] = $server;
-      }
-    }
-
-    /* Set inherit checkbox state */
-    if(in_array("default",$this->gotoNtpServer)){
-      $this->inheritTimeServer = true;
-      $this->gotoNtpServer=array();
-    }
-
-    /* Create available ntp options */
-    $this->gotoNtpServers = $this->config->data['SERVERS']['NTP'];
-    foreach($this->gotoNtpServers as $key => $server){
-      if($server == "default"){
-        unset($this->gotoNtpServers[$key]);
-      }
     }
   }
 }

@@ -277,26 +277,6 @@ class workstationGeneric extends systemSimplePluginGlue
           ),
         )
       ),
-      'servers' => array(
-        'name'  => _('Servers'),
-        'icon'  => 'geticon.php?context=devices&icon=server&size=16',
-        'attrs' => array(
-          new BooleanAttribute (
-            _('Inherit NTP servers'),
-            _('Inherit time server attributes from ogroup'),
-            'inheritTimeServer',
-            FALSE
-          ),
-          new SetAttribute (
-            new SelectAttribute (
-              _('NTP servers'),
-              sprintf(_('The NTP servers for the %s'), $word),
-              'gotoNtpServer',
-              FALSE
-            )
-          ),
-        )
-      ),
       'actions' => array(
         'name' => _('Action'),
         'icon'  => 'geticon.php?context=types&icon=action&size=16',
