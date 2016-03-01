@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-02-10 16:26+0100\n"
+"POT-Creation-Date: 2016-03-01 18:16+0100\n"
 "PO-Revision-Date: 2016-01-22 17:04+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/es/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/groups/mail/class_groupMail.inc:46
-#: personal/mail/class_mailAccount.inc:79
+#: personal/mail/class_mailAccount.inc:73
 #: config/mail/class_mailPluginConfig.inc:28
 msgid "Mail"
 msgstr "Correo Electrónico"
@@ -33,7 +33,7 @@ msgid "Informations"
 msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:82
-#: personal/mail/class_mailAccount.inc:100
+#: personal/mail/class_mailAccount.inc:94
 msgid "Primary address"
 msgstr "Cuenta Principal"
 
@@ -42,7 +42,7 @@ msgid "The primary mail address"
 msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:86
-#: personal/mail/class_mailAccount.inc:104
+#: personal/mail/class_mailAccount.inc:98
 msgid "Server"
 msgstr "Servidor"
 
@@ -51,7 +51,7 @@ msgid "Server mail"
 msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:92
-#: personal/mail/class_mailAccount.inc:120
+#: personal/mail/class_mailAccount.inc:114
 msgid "Alternative addresses"
 msgstr "Direcciones alternativas"
 
@@ -365,14 +365,14 @@ msgid "Unlimited"
 msgstr "Sin limite"
 
 #: personal/mail/class_mailAccount.inc:47
-#: personal/mail/class_mailAccount.inc:256
-#: personal/mail/class_mailAccount.inc:260
-#: personal/mail/class_mailAccount.inc:263
-#: personal/mail/class_mailAccount.inc:376
+#: personal/mail/class_mailAccount.inc:246
+#: personal/mail/class_mailAccount.inc:250
+#: personal/mail/class_mailAccount.inc:253
 #: personal/mail/class_mailAccount.inc:380
 #: personal/mail/class_mailAccount.inc:384
-#: personal/mail/class_mailAccount.inc:417
+#: personal/mail/class_mailAccount.inc:388
 #: personal/mail/class_mailAccount.inc:421
+#: personal/mail/class_mailAccount.inc:425
 msgid "Mail error"
 msgstr "Error de correo"
 
@@ -389,169 +389,169 @@ msgstr "Uso de Cuota"
 msgid "Part of the quota which is used"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:80
+#: personal/mail/class_mailAccount.inc:74
 #: config/mail/class_mailPluginConfig.inc:41
 msgid "Mail settings"
 msgstr "Parámetros de correo"
 
-#: personal/mail/class_mailAccount.inc:97
+#: personal/mail/class_mailAccount.inc:91
 msgid "Mail account"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:100
+#: personal/mail/class_mailAccount.inc:94
 msgid "Primary mail address"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:104
+#: personal/mail/class_mailAccount.inc:98
 msgid "Specify the mail server where the user will be hosted on"
 msgstr "Especificar el servidor de correo donde el usuario estará hospedado."
 
-#: personal/mail/class_mailAccount.inc:109
+#: personal/mail/class_mailAccount.inc:103
 msgid "Quota size"
 msgstr "Tamaño de la cuota"
 
-#: personal/mail/class_mailAccount.inc:116
+#: personal/mail/class_mailAccount.inc:110
 msgid "Other addresses and redirections"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:120
+#: personal/mail/class_mailAccount.inc:114
 msgid "List of alternative mail addresses"
 msgstr "Lista de direcciones de correo alternativas."
 
-#: personal/mail/class_mailAccount.inc:125
+#: personal/mail/class_mailAccount.inc:119
 msgid "Forward messages to"
 msgstr "reenviar mensajes a"
 
-#: personal/mail/class_mailAccount.inc:125
+#: personal/mail/class_mailAccount.inc:119
 msgid "Addresses to which messages should be forwarded"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:131
-#: personal/mail/class_mailAccount.inc:150
+#: personal/mail/class_mailAccount.inc:125
+#: personal/mail/class_mailAccount.inc:144
 msgid "Vacation message"
 msgstr "Mensaje de ausencia"
 
-#: personal/mail/class_mailAccount.inc:134
+#: personal/mail/class_mailAccount.inc:128
 msgid "Activate vacation message"
 msgstr "Activar mensaje de ausencia"
 
-#: personal/mail/class_mailAccount.inc:135
+#: personal/mail/class_mailAccount.inc:129
 msgid ""
 "Select to automatically response with the vacation message defined below"
 msgstr "Seleccione para responder automáticamente con el mensaje de ausencia definido aquí"
 
-#: personal/mail/class_mailAccount.inc:140
+#: personal/mail/class_mailAccount.inc:134
 msgid "from"
 msgstr "desde"
 
-#: personal/mail/class_mailAccount.inc:145
+#: personal/mail/class_mailAccount.inc:139
 msgid "till"
 msgstr "hasta"
 
-#: personal/mail/class_mailAccount.inc:156
+#: personal/mail/class_mailAccount.inc:150
 msgid "Spam options"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:159
+#: personal/mail/class_mailAccount.inc:153
 msgid "Move mails depending on spam level"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:164
+#: personal/mail/class_mailAccount.inc:158
 msgid "Minimum spam level"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:164
+#: personal/mail/class_mailAccount.inc:158
 msgid "Spam level above which a mail will be moved"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:169
+#: personal/mail/class_mailAccount.inc:163
 msgid "Move spam to folder"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:169
+#: personal/mail/class_mailAccount.inc:163
 msgid "Folder in which spam will be moved"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:174
+#: personal/mail/class_mailAccount.inc:168
 msgid "Reject mail depending on their size"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:174
+#: personal/mail/class_mailAccount.inc:168
 msgid "Messages bigger than the chosen size will be rejected"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:179
+#: personal/mail/class_mailAccount.inc:173
 msgid "Minimum size to reject a mail (MB)"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:195
+#: personal/mail/class_mailAccount.inc:189
 msgid "Advanced mail options"
 msgstr "Opciones de correo avanzadas"
 
-#: personal/mail/class_mailAccount.inc:198
+#: personal/mail/class_mailAccount.inc:192
 msgid "Use custom sieve script"
 msgstr "Usar 'script Sieve' propios"
 
-#: personal/mail/class_mailAccount.inc:198
+#: personal/mail/class_mailAccount.inc:192
 msgid "disables all Mail options!"
 msgstr "¡Desactiva todas las opciones de correo!"
 
-#: personal/mail/class_mailAccount.inc:199
+#: personal/mail/class_mailAccount.inc:193
 msgid "Use your sieve script with personnal customization"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:204
+#: personal/mail/class_mailAccount.inc:198
 msgid "User is only allowed to send and receive local mails"
 msgstr "El usuario solo esta permitido a enviar y recibir correo de forma local"
 
-#: personal/mail/class_mailAccount.inc:205
+#: personal/mail/class_mailAccount.inc:199
 msgid "Select if user can only send and receive inside his own domain"
 msgstr "Seleccione si el usuario solo puede enviar y recibir dentro de su propio dominio"
 
-#: personal/mail/class_mailAccount.inc:210
+#: personal/mail/class_mailAccount.inc:204
 msgid "No delivery to own mailbox"
 msgstr "No se enviara a su propia carpeta de correo"
 
-#: personal/mail/class_mailAccount.inc:211
+#: personal/mail/class_mailAccount.inc:205
 msgid "Select if you want to forward mails without getting own copies of them"
 msgstr "Seleccione si quiere reenviar correos sin quedarse copias de ellos"
 
-#: personal/mail/class_mailAccount.inc:256
+#: personal/mail/class_mailAccount.inc:246
 #, php-format
 msgid "Cannot get list of mailboxes: %s"
 msgstr "No se puede acceder a la lista de buzones de correo: %s"
 
-#: personal/mail/class_mailAccount.inc:260
-#: personal/mail/class_mailAccount.inc:376
+#: personal/mail/class_mailAccount.inc:250
+#: personal/mail/class_mailAccount.inc:380
 #, php-format
 msgid "Mail method cannot connect: %s"
 msgstr "El método de correo no puede conectar: %s"
 
-#: personal/mail/class_mailAccount.inc:263
+#: personal/mail/class_mailAccount.inc:253
 #, php-format
 msgid "Mailbox '%s' doesn't exists on mail server: %s"
 msgstr "El buzón de correo '%s' no existe en el servidor de correo: %s"
 
-#: personal/mail/class_mailAccount.inc:380
+#: personal/mail/class_mailAccount.inc:384
 #, php-format
 msgid "Cannot update mailbox: %s"
 msgstr "No puedo actualizar el buzón de correo: %s"
 
-#: personal/mail/class_mailAccount.inc:384
+#: personal/mail/class_mailAccount.inc:388
 #, php-format
 msgid "Cannot write quota settings: %s"
 msgstr "No puedo guardar el parámetro de cuota: %s"
 
-#: personal/mail/class_mailAccount.inc:397
+#: personal/mail/class_mailAccount.inc:401
 msgid "Mail error saving sieve settings"
 msgstr "Hay un error de correo al grabar la configuración sieve"
 
-#: personal/mail/class_mailAccount.inc:417
+#: personal/mail/class_mailAccount.inc:421
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:421
+#: personal/mail/class_mailAccount.inc:425
 #, php-format
 msgid "Cannot remove mailbox: %s"
 msgstr ""

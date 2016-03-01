@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-02-10 16:26+0100\n"
-"PO-Revision-Date: 2016-01-22 16:06+0000\n"
+"POT-Creation-Date: 2016-03-01 18:16+0100\n"
+"PO-Revision-Date: 2016-03-01 17:15+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Polish (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -17,82 +17,81 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: admin/ogroups/goto/class_termgroup.inc:70
+#: admin/ogroups/goto/class_termgroup.inc:67
 msgid "Activated"
 msgstr "Aktywne"
 
-#: admin/ogroups/goto/class_termgroup.inc:71
+#: admin/ogroups/goto/class_termgroup.inc:68
 msgid "Locked"
 msgstr "Zablokowane"
 
-#: admin/ogroups/goto/class_termgroup.inc:118
-#: admin/systems/class_terminalGeneric.inc:120
+#: admin/ogroups/goto/class_termgroup.inc:101
+#: admin/systems/class_terminalGeneric.inc:126
 msgid "Local swap"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:124
-#: admin/ogroups/goto/class_termgroup.inc:136
-#: admin/systems/class_workstationGeneric.inc:457
-#: admin/systems/class_terminalGeneric.inc:108
-#: admin/systems/class_terminalGeneric.inc:124
+#: admin/ogroups/goto/class_termgroup.inc:107
+#: admin/ogroups/goto/class_termgroup.inc:119
+#: admin/systems/class_terminalGeneric.inc:114
+#: admin/systems/class_terminalGeneric.inc:130
 msgid "inherited"
 msgstr "odziedziczony"
 
-#: admin/ogroups/goto/class_termgroup.inc:216
+#: admin/ogroups/goto/class_termgroup.inc:185
 #: admin/systems/class_workstationGeneric.inc:68
-#: admin/systems/class_workstationGeneric.inc:543
+#: admin/systems/class_workstationGeneric.inc:410
 #: admin/systems/class_systemManagement.inc:191
 #: admin/systems/class_systemManagement.inc:217
 msgid "Infrastructure service"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:220
+#: admin/ogroups/goto/class_termgroup.inc:189
 #: admin/systems/class_workstationGeneric.inc:71
 #: admin/systems/class_workstationGeneric.inc:74
 msgid "Event error"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:221
+#: admin/ogroups/goto/class_termgroup.inc:190
 #, php-format
 msgid "Event '%s' is not available!"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:270
+#: admin/ogroups/goto/class_termgroup.inc:221
 #: admin/systems/class_workstationGeneric.inc:108
 msgid "Switch off"
 msgstr "Wyłącz"
 
-#: admin/ogroups/goto/class_termgroup.inc:270
+#: admin/ogroups/goto/class_termgroup.inc:221
 #: admin/systems/class_workstationGeneric.inc:109
 msgid "Reboot"
 msgstr "Restartuj"
 
-#: admin/ogroups/goto/class_termgroup.inc:271
+#: admin/ogroups/goto/class_termgroup.inc:222
 msgid "Instant update"
 msgstr "Natychmiastowe uaktualnienie"
 
-#: admin/ogroups/goto/class_termgroup.inc:272
+#: admin/ogroups/goto/class_termgroup.inc:223
 msgid "Scheduled update"
 msgstr "Zaplanowana aktualizacja"
 
-#: admin/ogroups/goto/class_termgroup.inc:273
+#: admin/ogroups/goto/class_termgroup.inc:224
 msgid "Wake"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:274
+#: admin/ogroups/goto/class_termgroup.inc:225
 msgid "Reinstall"
 msgstr "Przeinstaluj"
 
-#: admin/ogroups/goto/class_termgroup.inc:275
+#: admin/ogroups/goto/class_termgroup.inc:226
 #: admin/systems/class_workstationGeneric.inc:104
 msgid "Memory test"
 msgstr "Test pamięci"
 
-#: admin/ogroups/goto/class_termgroup.inc:276
+#: admin/ogroups/goto/class_termgroup.inc:227
 msgid "System analysis"
 msgstr "Analiza systemu"
 
-#: admin/ogroups/goto/class_termgroup.inc:382
+#: admin/ogroups/goto/class_termgroup.inc:291
 #: admin/systems/class_printGeneric.inc:750
 #: admin/systems/class_printGeneric.inc:1050
 #: admin/systems/services/class_goService.inc:123
@@ -110,42 +109,32 @@ msgstr "Analiza systemu"
 msgid "LDAP error"
 msgstr "błąd LDAP"
 
-#: admin/ogroups/goto/class_termgroup.inc:390
+#: admin/ogroups/goto/class_termgroup.inc:299
 msgid "System"
 msgstr "System"
 
-#: admin/ogroups/goto/class_termgroup.inc:391
+#: admin/ogroups/goto/class_termgroup.inc:300
 msgid "System group"
 msgstr "Grupa systemowa"
 
-#: admin/ogroups/goto/class_termgroup.inc:397
-#: admin/ogroups/goto/termgroup.tpl.c:17
+#: admin/ogroups/goto/class_termgroup.inc:306
+#: admin/ogroups/goto/termgroup.tpl.c:11
 msgid "Mode"
 msgstr "Tryb"
 
-#: admin/ogroups/goto/class_termgroup.inc:398
-#: admin/systems/class_workstationGeneric.inc:288
-#: admin/ogroups/goto/termgroup.tpl.c:23
-msgid "Syslog server"
-msgstr "Serwer Syslog"
-
-#: admin/ogroups/goto/class_termgroup.inc:399
+#: admin/ogroups/goto/class_termgroup.inc:307
 msgid "Action flag"
 msgstr "Flaga akcji"
 
-#: admin/ogroups/goto/class_termgroup.inc:400
-msgid "Ntp server"
-msgstr "Serwer NTP"
-
-#: admin/ogroups/goto/class_termgroup.inc:401
-#: admin/systems/class_terminalGeneric.inc:62
-#: admin/ogroups/goto/termgroup.tpl.c:29
+#: admin/ogroups/goto/class_termgroup.inc:308
+#: admin/systems/class_terminalGeneric.inc:66
+#: admin/ogroups/goto/termgroup.tpl.c:17
 msgid "Root server"
 msgstr "Serwer NFS"
 
-#: admin/ogroups/goto/class_termgroup.inc:402
-#: admin/systems/class_terminalGeneric.inc:68
-#: admin/ogroups/goto/termgroup.tpl.c:35
+#: admin/ogroups/goto/class_termgroup.inc:309
+#: admin/systems/class_terminalGeneric.inc:72
+#: admin/ogroups/goto/termgroup.tpl.c:23
 msgid "Swap server"
 msgstr "Serwer Swap"
 
@@ -206,9 +195,9 @@ msgid "Server"
 msgstr "Serwer"
 
 #: admin/systems/system-list.xml:54 admin/systems/system-list.xml:201
-#: admin/systems/class_workstationGeneric.inc:220
-#: admin/systems/class_workstationGeneric.inc:225
-#: admin/systems/class_workstationGeneric.inc:226
+#: admin/systems/class_workstationGeneric.inc:217
+#: admin/systems/class_workstationGeneric.inc:222
+#: admin/systems/class_workstationGeneric.inc:223
 msgid "Workstation"
 msgstr "Stacja robocza"
 
@@ -252,7 +241,7 @@ msgid "IPMI"
 msgstr ""
 
 #: admin/systems/system-list.xml:128
-#: admin/systems/class_workstationGeneric.inc:253
+#: admin/systems/class_workstationGeneric.inc:250
 #: admin/systems/class_phoneGeneric.inc:59
 #: admin/systems/class_printGeneric.inc:832
 #: admin/systems/class_printGeneric.inc:842
@@ -277,7 +266,7 @@ msgid "MAC"
 msgstr ""
 
 #: admin/systems/system-list.xml:152
-#: admin/systems/class_workstationGeneric.inc:259
+#: admin/systems/class_workstationGeneric.inc:256
 #: admin/systems/class_phoneGeneric.inc:63
 #: admin/systems/class_printGeneric.inc:1103
 #: admin/systems/class_componentGeneric.inc:67
@@ -291,7 +280,6 @@ msgstr "Opis"
 #: admin/systems/system-list.xml:160 admin/systems/class_serverService.inc:57
 #: admin/systems/services/terminal/class_serviceTerminal.inc:30
 #: admin/systems/services/shares/class_serviceShare.inc:31
-#: admin/systems/services/ntp/class_serviceNTP.inc:30
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 msgid "Services"
 msgstr "Usługi"
@@ -369,108 +357,64 @@ msgstr ""
 msgid "Wake up"
 msgstr "Zbudź"
 
-#: admin/systems/class_workstationGeneric.inc:221
+#: admin/systems/class_workstationGeneric.inc:218
 msgid "Workstation information"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:243
+#: admin/systems/class_workstationGeneric.inc:240
 #: admin/systems/class_printGeneric.inc:684
 msgid "workstation"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:250
+#: admin/systems/class_workstationGeneric.inc:247
 #: admin/systems/class_phoneGeneric.inc:56
 #: admin/systems/class_componentGeneric.inc:60
 #: admin/systems/class_mobilePhoneGeneric.inc:60
 msgid "Properties"
 msgstr "Właściwości"
 
-#: admin/systems/class_workstationGeneric.inc:254
+#: admin/systems/class_workstationGeneric.inc:251
 #, php-format
 msgid "The name of the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:260
+#: admin/systems/class_workstationGeneric.inc:257
 #, php-format
 msgid "A short description of the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:265
+#: admin/systems/class_workstationGeneric.inc:262
 #: admin/systems/class_printGeneric.inc:1104
 msgid "Location"
 msgstr "Lokalizacja"
 
-#: admin/systems/class_workstationGeneric.inc:266
+#: admin/systems/class_workstationGeneric.inc:263
 #, php-format
 msgid "The location of the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:272
+#: admin/systems/class_workstationGeneric.inc:269
 #, php-format
 msgid "Lock this %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:273
+#: admin/systems/class_workstationGeneric.inc:270
 #, php-format
 msgid "This will prevent the %s from being reinstalled"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:284
-#: addons/dashboard/class_dashBoardSystems.inc:48
-msgid "Servers"
-msgstr "Serwery"
-
-#: admin/systems/class_workstationGeneric.inc:289
-#, php-format
-msgid "The syslog server the %s should be using"
-msgstr ""
-
-#: admin/systems/class_workstationGeneric.inc:294
-msgid "Inherit NTP servers"
-msgstr ""
-
-#: admin/systems/class_workstationGeneric.inc:295
-msgid "Inherit time server attributes from ogroup"
-msgstr ""
-
-#: admin/systems/class_workstationGeneric.inc:301
-msgid "NTP servers"
-msgstr ""
-
-#: admin/systems/class_workstationGeneric.inc:302
-#, php-format
-msgid "The NTP servers for the %s"
-msgstr ""
-
-#: admin/systems/class_workstationGeneric.inc:308
-msgid "Inherit LDAP servers"
-msgstr ""
-
-#: admin/systems/class_workstationGeneric.inc:309
-msgid "Inherit LDAP server attributes from ogroup"
-msgstr ""
-
-#: admin/systems/class_workstationGeneric.inc:315
-msgid "LDAP servers"
-msgstr ""
-
-#: admin/systems/class_workstationGeneric.inc:316
-#, php-format
-msgid "The LDAP servers for the %s"
-msgstr ""
-
-#: admin/systems/class_workstationGeneric.inc:324
-#: admin/systems/class_workstationGeneric.inc:328
-#: admin/ogroups/goto/termgroup.tpl.c:41
+#: admin/systems/class_workstationGeneric.inc:281
+#: admin/systems/class_workstationGeneric.inc:285
+#: admin/ogroups/goto/termgroup.tpl.c:29
 msgid "Action"
 msgstr "Akcja"
 
-#: admin/systems/class_workstationGeneric.inc:329
-#: admin/ogroups/goto/termgroup.tpl.c:44
+#: admin/systems/class_workstationGeneric.inc:286
+#: admin/ogroups/goto/termgroup.tpl.c:32
 msgid "Select action to execute for this terminal"
 msgstr "Proszę wybrać akcję do wykonania dla tego terminala"
 
-#: admin/systems/class_workstationGeneric.inc:335
+#: admin/systems/class_workstationGeneric.inc:292
 #: admin/systems/class_phoneGeneric.inc:83
 #: admin/systems/class_componentGeneric.inc:74
 #: admin/systems/class_mobilePhoneGeneric.inc:106
@@ -718,45 +662,50 @@ msgstr ""
 msgid "Terminal information"
 msgstr ""
 
-#: admin/systems/class_terminalGeneric.inc:63
+#: admin/systems/class_terminalGeneric.inc:62
+#: addons/dashboard/class_dashBoardSystems.inc:48
+msgid "Servers"
+msgstr "Serwery"
+
+#: admin/systems/class_terminalGeneric.inc:67
 #, php-format
 msgid "The root server the terminal should be using"
 msgstr ""
 
-#: admin/systems/class_terminalGeneric.inc:69
+#: admin/systems/class_terminalGeneric.inc:73
 #, php-format
 msgid "The swap server the terminal should be using"
 msgstr ""
 
-#: admin/systems/class_terminalGeneric.inc:75
+#: admin/systems/class_terminalGeneric.inc:81
 msgid "Remote desktop"
 msgstr "Zdalny pulpit"
 
-#: admin/systems/class_terminalGeneric.inc:79
+#: admin/systems/class_terminalGeneric.inc:85
 msgid "Connect method"
 msgstr "Metoda połączenia"
 
-#: admin/systems/class_terminalGeneric.inc:83
+#: admin/systems/class_terminalGeneric.inc:89
 msgid "XDMCP"
 msgstr ""
 
-#: admin/systems/class_terminalGeneric.inc:83
+#: admin/systems/class_terminalGeneric.inc:89
 msgid "LDM"
 msgstr ""
 
-#: admin/systems/class_terminalGeneric.inc:83
+#: admin/systems/class_terminalGeneric.inc:89
 msgid "Shell"
 msgstr "Shell"
 
-#: admin/systems/class_terminalGeneric.inc:83
+#: admin/systems/class_terminalGeneric.inc:89
 msgid "Telnet"
 msgstr ""
 
-#: admin/systems/class_terminalGeneric.inc:83
+#: admin/systems/class_terminalGeneric.inc:89
 msgid "Windows RDP"
 msgstr "Windows RDP"
 
-#: admin/systems/class_terminalGeneric.inc:87
+#: admin/systems/class_terminalGeneric.inc:93
 msgid "Terminal server"
 msgstr "Serwer terminali"
 
@@ -1208,26 +1157,6 @@ msgstr "Ostrzeżenie"
 msgid "Invalid value in encodings : %s"
 msgstr ""
 
-#: admin/systems/services/ntp/class_serviceNTP.inc:29
-msgid "Time service"
-msgstr "Usługa czasu"
-
-#: admin/systems/services/ntp/class_serviceNTP.inc:30
-msgid "Time service - NTP"
-msgstr ""
-
-#: admin/systems/services/ntp/class_serviceNTP.inc:41
-msgid "Informations"
-msgstr ""
-
-#: admin/systems/services/ntp/class_serviceNTP.inc:45
-msgid "Time servers"
-msgstr ""
-
-#: admin/systems/services/ntp/class_serviceNTP.inc:45
-msgid "List of time sources to use"
-msgstr ""
-
 #: admin/systems/services/ldap/class_serviceLDAP.inc:35
 #: admin/systems/services/ldap/class_serviceLDAP.inc:96
 msgid "LDAP service"
@@ -1579,31 +1508,19 @@ msgstr "Akcje wybrane tutaj wpływają na wszystkie systemy w tej grupie obiekt�
 msgid "Generic"
 msgstr "Ogólne"
 
-#: admin/ogroups/goto/termgroup.tpl.c:11
-msgid "NTP server"
-msgstr "Serwer NTP"
-
 #: admin/ogroups/goto/termgroup.tpl.c:14
-msgid "Choose server to use for synchronizing time"
-msgstr "Proszę wybrać serwer do synchronizacji czasu"
-
-#: admin/ogroups/goto/termgroup.tpl.c:20
 msgid "Select terminal mode"
 msgstr "Proszę wybrać tryb terminala"
 
-#: admin/ogroups/goto/termgroup.tpl.c:26
-msgid "Choose server to use for logging"
-msgstr "Proszę wybrać serwer do logowania"
-
-#: admin/ogroups/goto/termgroup.tpl.c:32
+#: admin/ogroups/goto/termgroup.tpl.c:20
 msgid "Select NFS root filesystem to use"
 msgstr "Proszę wybrać główny system plików NFS"
 
-#: admin/ogroups/goto/termgroup.tpl.c:38
+#: admin/ogroups/goto/termgroup.tpl.c:26
 msgid "Choose NFS filesystem to place swap files on"
 msgstr "Proszę wybrać system plików NFS dla plików swap"
 
-#: admin/ogroups/goto/termgroup.tpl.c:47
+#: admin/ogroups/goto/termgroup.tpl.c:35
 msgid "Execute"
 msgstr "Uruchom"
 
