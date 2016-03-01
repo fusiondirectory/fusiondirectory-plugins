@@ -58,17 +58,23 @@ class terminalGeneric extends workstationGeneric
       $rdn = get_ou('terminalRDN');
     }
     $attributesInfo = parent::getAttributesInfo($word, $rdn);
-    $attributesInfo['servers']['attrs'][] = new SelectAttribute(
-      _('Root server'),
-      sprintf(_('The root server the terminal should be using'), $word),
-      'gotoTerminalPath',
-      FALSE
-    );
-    $attributesInfo['servers']['attrs'][] = new SelectAttribute(
-      _('Swap server'),
-      sprintf(_('The swap server the terminal should be using'), $word),
-      'gotoSwapServer',
-      FALSE
+    $attributesInfo['servers'] = array(
+      'name'  => _('Servers'),
+      'icon'  => 'geticon.php?context=devices&icon=server&size=16',
+      'attrs' => array(
+        new SelectAttribute(
+          _('Root server'),
+          sprintf(_('The root server the terminal should be using'), $word),
+          'gotoTerminalPath',
+          FALSE
+        ),
+        new SelectAttribute(
+          _('Swap server'),
+          sprintf(_('The swap server the terminal should be using'), $word),
+          'gotoSwapServer',
+          FALSE
+        )
+      )
     );
     $attributesInfo['actions']['attrs'][0]->setIsTerminal(TRUE);
     $attributesInfo['remote_desktop'] = array(
