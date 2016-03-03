@@ -589,7 +589,9 @@ class dnsZone extends simplePlugin
   function ldap_save ($cleanup = TRUE)
   {
     parent::ldap_save($cleanup);
-    $this->attributesAccess['dnsRecords']->postLdapSave($this->config->get_ldap_link());
+    if ($this->attributesAccess['dnsRecords']->hasChanged()) {
+      $this->attributesAccess['dnsRecords']->postLdapSave($this->config->get_ldap_link());
+    }
   }
 
   function cnChanged ($oldcn, $newcn)
