@@ -42,12 +42,12 @@ class communityOrganization extends simplePlugin
         'attrs' => array(
           new DateAttribute (
             _('Start date'), _('Date of the beginning'),
-            'fdContractStartDate', TRUE,
+            'fdCommunityStartDate', TRUE,
             'YmdHis\Z'
           ),
           new DateAttribute (
             _('End date'), _('Date of the end'),
-            'fdContractEndDate', FALSE,
+            'fdCommunityEndDate', FALSE,
             'YmdHis\Z', ''
           ),
         )
