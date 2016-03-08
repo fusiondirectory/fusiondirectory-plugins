@@ -20,6 +20,10 @@
 
 class newsletterSubscriptions extends simplePlugin
 {
+  // We set displayHeader to FALSE, because we don't want a header allowing to activate/deactivate this plugin,
+  // we want it activated on all objects
+  var $displayHeader = TRUE;
+  
   var $objectclasses = array('fdNewsletterAccount');
 
   static function plInfo()
