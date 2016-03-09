@@ -35,7 +35,7 @@ class mailAliasDistribution extends simplePlugin
         'name'        => _('Temporary mail distribution'),
         'filter'      => 'objectClass=mailAliasDistribution',
         'aclCategory' => 'alias',
-        'icon'        => 'plugins/alias/images/iconMiniMailDistribution.png',
+        'icon'        => 'geticon.php?context=applications&icon=alias-distribution&size=16',
         'ou'          => get_ou('aliasRDN'),
       )),
 
