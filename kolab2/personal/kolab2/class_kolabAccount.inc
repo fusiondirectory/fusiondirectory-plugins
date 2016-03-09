@@ -81,8 +81,8 @@ class kolabAccount extends simplePlugin
     return array(
       'plShortName'     => _('Kolab 2'),
       'plDescription'   => _('Kolab 2 account settings'),
-      'plIcon'          => 'plugins/kolab2/images/icon.png',
-      'plSmallIcon'     => 'plugins/kolab2/images/iconMini.png',
+      'plIcon'          => 'geticon.php?context=applications&icon=kolab&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=kolab&size=16',
       'plSelfModify'    => TRUE,
       'plPriority'      => 20,
       'plObjectType'    => array('user'),
