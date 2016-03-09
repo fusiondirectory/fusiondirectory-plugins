@@ -30,7 +30,7 @@ class argonautServer extends simpleService
     return array(
       'plShortName'   => _('Argonaut server'),
       'plDescription' => _('Argonaut server').' ('._('Services').')',
-      'plIcon'        => 'plugins/argonaut/images/iconMini.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=argonaut&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

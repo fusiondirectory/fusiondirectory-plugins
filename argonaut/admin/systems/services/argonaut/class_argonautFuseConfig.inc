@@ -29,7 +29,7 @@ class argonautFuseConfig extends simpleService
     return array(
       'plShortName'     => _('Argonaut Fuse'),
       'plDescription'   => _('Argonaut Fuse settings'),
-      'plIcon'          => 'plugins/argonaut/images/iconMiniFuseConfig.png',
+      'plIcon'          => 'geticon.php?context=applications&icon=argonaut-fuse&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
