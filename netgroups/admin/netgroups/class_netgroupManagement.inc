@@ -33,7 +33,7 @@ class netgroupManagement extends simpleManagement
     return array(
       'plShortName'   => _('NIS Netgroups'),
       'plDescription' => _('NIS Netgroup management'),
-      'plIcon'        => 'plugins/netgroups/images/icon.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=netgroups&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 25,
       'plManages'     => array('netgroup'),
