@@ -47,7 +47,7 @@ class sudoManagement extends simpleManagement
     $this->headpage->xmlData['actionmenu']['action'][0]['action'][] = array(
       'name'  => 'new_default',
       'type'  => 'entry',
-      'image' => 'plugins/sudo/images/iconMiniDefault.png',
+      'image' => 'geticon.php?context=applications&icon=sudo&size=16',
       'label' => 'Default',
       'acl'   => 'sudo/sudo[c]',
     );
