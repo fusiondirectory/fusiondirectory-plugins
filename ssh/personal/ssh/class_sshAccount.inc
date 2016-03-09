@@ -104,8 +104,8 @@ class sshAccount extends simplePlugin
       'plDepends'       => array('posixAccount'),
       'plPriority'      => 6,
       'plObjectType'    => array('user'),
-      'plIcon'          => 'plugins/ssh/images/icon.png',
-      'plSmallIcon'     => 'plugins/ssh/images/iconMini.png',
+      'plIcon'          => 'geticon.php?context=applications&icon=ssh&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=ssh&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
