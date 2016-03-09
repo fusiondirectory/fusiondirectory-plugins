@@ -255,13 +255,15 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
   {
     /* Remove crap made by plugin */
     unset ($attrs[$this->getLdapName()]);
+    foreach (array_keys(DnsRecordAttribute::$types) as $type) {
+      if (!isset($attrs[$type])) {
+        $attrs[$type] = array();
+      }
+    }
     foreach ($this->value as $line) {
       list ($domain, $type, $content) = $line;
       // Only save root records here
       if (empty($domain)) {
-        if (!isset($attrs[$type])) {
-          $attrs[$type] = array();
-        }
         $attrs[$type][] = $content;
       }
     }
@@ -565,6 +567,16 @@ class dnsZone extends simplePlugin
     parent::__construct($config, $dn, $object);
     $this->attributesAccess['reverseZones']->setInLdap(FALSE);
     $this->updateAttributesValues();
+  }
+
+  function prepareSavedAttributes()
+  {
+    parent::prepareSavedAttributes();
+    foreach (array_keys(DnsRecordAttribute::$types) as $type) {
+      if (isset($this->attrs[$type])) {
+        $this->saved_attributes[$type] = $this->attrs[$type];
+      }
+    }
   }
 
   function prepare_save ()
