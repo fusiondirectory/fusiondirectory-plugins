@@ -34,7 +34,7 @@ class nisObject extends simplePlugin
         'name'        => _('Directory'),
         'filter'      => 'objectClass=nisObject',
         'ou'          => get_ou('autofsRDN'),
-        'icon'        => 'plugins/autofs/images/iconMiniNisObject.png',
+        'icon'        => 'geticon.php?context=applications&icon=autofs-nis-object&size=16',
         'mainAttr'    => 'cn',
       )),
 
