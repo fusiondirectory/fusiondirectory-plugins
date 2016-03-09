@@ -100,8 +100,8 @@ class quotaAccount extends simplePlugin
     return array(
       'plShortName'   => _('Quota'),
       'plDescription' => _('Plugin for quota support'),
-      'plIcon'        => 'plugins/quota/images/icon.png',
-      'plSmallIcon'   => 'plugins/quota/images/iconMini.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=quota&size=48',
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=quota&size=16',
       'plSelfModify'  => TRUE,
       'plPriority'    => 8,
       'plObjectType'  => array('user'),
