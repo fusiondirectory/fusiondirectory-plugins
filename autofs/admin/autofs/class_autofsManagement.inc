@@ -30,7 +30,7 @@ class autofsManagement extends simpleManagement
     return array(
       'plShortName'   => _('Auto fs'),
       'plDescription' => _('Auto fs management'),
-      'plIcon'        => 'plugins/autofs/images/icon.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=autofs&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 5,
       'plManages'     => array('nisMap', 'nisObject'),
