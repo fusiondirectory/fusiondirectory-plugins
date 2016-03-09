@@ -34,7 +34,7 @@ class buildRepository extends simplePlugin
         'filter'      => 'objectClass=fdBuildRepository',
         'aclCategory' => 'repository',
         'ou'          => get_ou('repositoryRDN'),
-        'icon'        => 'plugins/repository/images/iconMini.png'
+        'icon'        => 'geticon.php?context=applications&icon=repository&size=16'
       )),
       'plForeignKeys'  => array(
         'fdRepoAdmin'     => 'user',

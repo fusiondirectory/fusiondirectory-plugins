@@ -33,7 +33,7 @@ class repositoryManagement extends simpleManagement
     return array(
       'plShortName'   => _('Repository management'),
       'plDescription' => _('Repository management'),
-      'plIcon'        => 'plugins/repository/images/icon.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=repository&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 22,
       'plCategory'    => array('repository' => array(

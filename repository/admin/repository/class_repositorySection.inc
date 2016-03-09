@@ -34,7 +34,7 @@ class repositorySection extends simplePlugin
         'filter'      => 'objectClass=fdBuildRepositorySection',
         'aclCategory' => 'repository',
         'ou'          => get_ou('repositoryRDN'),
-        'icon'        => 'plugins/repository/images/iconSection.png'
+        'icon'        => 'geticon.php?context=applications&icon=repository-section&size=16',
       )),
       'plForeignKeys'  => array(
         'fdBasedOn' => array(
