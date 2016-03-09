@@ -36,7 +36,7 @@ class entite extends simplePlugin
         'filter'      => '(&(objectClass=supannEntite)(objectClass=organizationalUnit))',
         'ou'          => get_ou('supannStructuresRDN'),
         'mainAttr'    => 'supannCodeEntite',
-        'icon'        => 'plugins/supann/images/iconMiniEntite.png',
+        'icon'        => 'geticon.php?context=applications&icon=supann-entite&size=16',
         'nameAttr'    => 'ou',
       )),
 

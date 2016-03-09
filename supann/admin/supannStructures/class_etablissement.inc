@@ -36,7 +36,7 @@ class etablissement extends simplePlugin
         'filter'      => '(&(objectClass=supannEntite)(objectClass=organization))',
         'ou'          => get_ou('supannStructuresRDN'),
         'mainAttr'    => 'supannCodeEntite',
-        'icon'        => 'plugins/supann/images/iconMiniEtablissement.png',
+        'icon'        => 'geticon.php?context=applications&icon=supann-etablissement&size=16',
         'nameAttr'    => 'o',
       )),
 
