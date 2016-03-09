@@ -47,8 +47,8 @@ class gpgAccount extends simplePlugin
       'plDescription'   => _('Edit user\'s GPG IDs'),
       'plSelfModify'    => TRUE,
       'plObjectType'    => array('user'),
-      'plIcon'          => 'plugins/gpg/images/icon.png',
-      'plSmallIcon'     => 'plugins/gpg/images/iconMini.png',
+      'plIcon'          => 'geticon.php?context=applications&icon=gpg&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=gpg&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

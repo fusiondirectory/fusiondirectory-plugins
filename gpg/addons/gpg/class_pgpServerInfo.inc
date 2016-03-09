@@ -70,7 +70,7 @@ class pgpServerInfo extends simplePlugin
       'plDescription' => _('GPG server info'),
       'plSection'     => 'conf',
       'plPriority'    => 5,
-      'plIcon'        => 'plugins/gpg/images/icon.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=gpg&size=48',
       'plCategory'    => array('configuration'),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
