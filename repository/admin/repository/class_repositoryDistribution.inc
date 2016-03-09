@@ -34,7 +34,7 @@ class repositoryDistribution extends simplePlugin
         'filter'      => 'objectClass=fdBuildRepositoryDistribution',
         'aclCategory' => 'repository',
         'ou'          => get_ou('repositoryRDN'),
-        'icon'        => 'plugins/repository/images/iconDistribution.png'
+        'icon'        => 'geticon.php?context=applications&icon=repository-distribution&size=16'
       )),
       'plForeignKeys'  => array(
         'fdBasedOn' => array(
