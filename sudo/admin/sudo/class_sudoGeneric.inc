@@ -120,7 +120,7 @@ class sudo extends simplePlugin
     return array(
       'plShortName'   => _('Sudo'),
       'plDescription' => _('Sudo role'),
-      'plIcon'        => 'plugins/sudo/images/icon.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=sudo&size=48',
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('sudo' => array(
         'name'      => _('Sudo role'),
