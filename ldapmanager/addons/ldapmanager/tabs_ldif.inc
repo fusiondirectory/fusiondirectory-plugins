@@ -30,7 +30,7 @@ class ldiftab extends simpleTabs_noSpecial
     return array(
       'plShortName'   => _('LDAP import/export'),
       'plDescription' => _('Allows the import or export of the ldap tree'),
-      'plIcon'        => 'plugins/ldapmanager/images/icon.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=ldapmanager&size=48',
       'plSection'     => 'conf',
       'plPriority'    => 10,
       'plCategory'    => array('ldapmanager' => array('objectClass' => 'none', 'description' => _('Ldap manager'))),
