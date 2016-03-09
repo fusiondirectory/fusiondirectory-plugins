@@ -27,13 +27,13 @@ class opsiOnDemandList extends opsiSoftwareList
     return array(
       'plShortName'   => _('OPSI ondemand list'),
       'plDescription' => _('OPSI on demand software list'),
-      'plIcon'        => 'plugins/opsi/images/iconMiniSoftwareOnDemand.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=opsi-on-demand&size=16',
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('opsiOnDemandList' => array(
         'name'    => _('OPSI ondemand list'),
         'filter'  => 'objectClass=opsiOnDemandList',
         'ou'      => get_ou('opsiRDN'),
-        'icon'    => 'plugins/opsi/images/iconMiniSoftwareOnDemand.png'
+        'icon'    => 'geticon.php?context=applications&icon=opsi-on-demand&size=16',
       )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
