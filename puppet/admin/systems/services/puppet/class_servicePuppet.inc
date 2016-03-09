@@ -53,10 +53,11 @@ class servicePuppet extends simpleService {
   static function plInfo ()
   {
     return array(
-      "plShortName"       => _("Puppet server"),
-      "plDescription"     => _("This service allows you to use a puppet server"),
-      "plIcon"            => "plugins/puppet/images/iconMini.png",
-      "plProvidedAcls"    => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'       => _('Puppet server'),
+      'plDescription'     => _('This service allows you to use a puppet server'),
+      'plIcon'            => 'geticon.php?context=applications&icon=puppet&size=16',
+
+      'plProvidedAcls'    => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 }
