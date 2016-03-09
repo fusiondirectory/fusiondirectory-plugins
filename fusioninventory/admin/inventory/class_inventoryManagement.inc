@@ -35,7 +35,7 @@ class inventoryManagement extends simpleManagement
     return array(
       'plShortName'   => _('Inventory objects'),
       'plDescription' => _('Browse inventory objects'),
-      'plIcon'        => 'plugins/fusioninventory/images/icon.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=fusioninventory&size=48',
       'plSection'     => 'reporting',
       'plPriority'    => 5,
       'plManages'     => array('inventory'),
