@@ -54,7 +54,7 @@ class netgroup extends simplePlugin
         'name'    => _('NIS Netgroup'),
         'filter'  => 'objectClass=nisNetgroup',
         'ou'      => get_ou('netgroupRDN'),
-        'icon'    => 'plugins/netgroups/images/iconMini.png'
+        'icon'    => 'geticon.php?context=applications&icon=netgroups&size=16'
       )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -99,7 +99,7 @@ class netgroup extends simplePlugin
       ),
       'netgroups' => array(
         'name'  => _('Netgroup members'),
-        'icon'  => 'plugins/netgroups/images/iconMini.png',
+        'icon'  => 'geticon.php?context=applications&icon=netgroups&size=16',
         'attrs' => array(
           new CnNetgroupsAttribute('', _('NIS netgroup members'), 'memberNisNetgroup'),
         )
