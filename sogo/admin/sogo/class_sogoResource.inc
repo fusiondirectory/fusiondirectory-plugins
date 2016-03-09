@@ -36,7 +36,7 @@ class sogoResource extends simplePlugin
         'filter'      => 'objectClass=CalendarResource',
         'aclCategory' => 'sogo',
         'ou'          => get_ou('sogoRDN'),
-        'icon'        => 'plugins/sogo/images/iconMini.png',
+        'icon'        => 'geticon.php?context=applications&icon=sogo&size=16',
         'mainAttr'    => 'uid'
       )),
 

@@ -33,7 +33,7 @@ class sogoManagement extends simpleManagement
     return array(
       'plShortName'   => _('SOGo'),
       'plDescription' => _('SOGo management'),
-      'plIcon'        => 'plugins/sogo/images/icon.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=sogo&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 50,
       'plCategory'    => array('sogo' => array('description'  => _('SOGo'),
