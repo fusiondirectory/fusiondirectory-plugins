@@ -35,7 +35,7 @@ class simpleSecurityObject extends simplePlugin
         'filter'      => 'objectClass=simpleSecurityObject',
         'aclCategory' => 'dsa',
         'ou'          => get_ou('dsaRDN'),
-        'icon'        => 'plugins/dsa/images/iconMini.png'
+        'icon'        => 'geticon.php?context=applications&icon=dsa&size=16',
       )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())

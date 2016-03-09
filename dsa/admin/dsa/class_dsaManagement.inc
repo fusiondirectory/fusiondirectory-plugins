@@ -33,7 +33,7 @@ class dsaManagement extends simpleManagement
     return array(
       'plShortName'   => _('DSA'),
       'plDescription' => _('DSA management'),
-      'plIcon'        => 'plugins/dsa/images/icon.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=dsa&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 55,
       'plCategory'    => array('dsa' => array('description'  => _('DSA'),
