@@ -44,8 +44,8 @@ class nagiosAccount extends simplePlugin
     return array(
       'plShortName'   => _('Nagios'),
       'plDescription' => _('Nagios account settings'),
-      'plIcon'        => 'plugins/nagios/images/icon.png',
-      'plSmallIcon'   => 'plugins/nagios/images/iconMini.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=nagios&size=48',
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=nagios&size=16',
       'plSelfModify'  => TRUE,
       'plPriority'    => 7,
       'plObjectType'  => array('user'),
