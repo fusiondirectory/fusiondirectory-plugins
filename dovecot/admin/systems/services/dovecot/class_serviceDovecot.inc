@@ -27,7 +27,7 @@ class serviceDovecot extends simpleService
     return array(
       'plShortName'     => _('Dovecot (IMAP/POP3)'),
       'plDescription'   => _('Dovecot (IMAP/POP3)').' ('._('Services').')',
-      'plIcon'          => 'plugins/dovecot/images/iconMini.png',
+      'plIcon'          => 'geticon.php?context=applications&icon=dovecot&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
