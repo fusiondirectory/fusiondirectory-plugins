@@ -125,7 +125,7 @@ class sudo extends simplePlugin
       'plObjectType'  => array('sudo' => array(
         'name'      => _('Sudo role'),
         'filter'    => 'objectClass=sudoRole',
-        'icon'      => 'plugins/sudo/images/iconMini.png',
+        'icon'      => 'geticon.php?context=applications&icon=sudo&size=16',
         'ou'        => get_ou('sudoRDN'),
         'tabClass'  => 'sudotabs',
       )),
