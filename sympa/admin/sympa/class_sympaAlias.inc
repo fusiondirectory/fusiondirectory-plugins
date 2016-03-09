@@ -35,7 +35,7 @@ class sympaAlias extends simplePlugin
         'name'        => _('Sympa list alias'),
         'filter'      => 'objectClass=sympaAlias',
         'aclCategory' => 'alias',
-        'icon'        => 'plugins/sympa/images/iconMini.png',
+        'icon'        => 'geticon.php?context=applications&icon=sympa&size=16',
         'ou'          => get_ou('aliasRDN'),
       )),
 
