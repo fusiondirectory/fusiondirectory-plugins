@@ -35,7 +35,7 @@ class mailAliasRedirection extends simplePlugin
         'name'        => _('Temporary mail redirection'),
         'filter'      => 'objectClass=mailAliasRedirection',
         'aclCategory' => 'alias',
-        'icon'        => 'plugins/alias/images/iconMiniMailredirection.png',
+        'icon'        => 'geticon.php?context=applications&icon=alias-redirection&size=16',
         'ou'          => get_ou('aliasRDN'),
       )),
 
