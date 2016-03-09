@@ -29,14 +29,14 @@ class sudoManagement extends simpleManagement
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Sudo"),
-      "plDescription" => _("Sudo management"),
-      "plIcon"        => "plugins/sudo/images/icon.png",
-      "plSection"     => "accounts",
-      "plPriority"    => 45,
-      "plManages"     => array("sudo"),
+      'plShortName'   => _("Sudo"),
+      'plDescription' => _("Sudo management"),
+      'plIcon'        => 'geticon.php?context=applications&icon=sudo&size=48',
+      'plSection'     => 'accounts',
+      'plPriority'    => 45,
+      'plManages'     => array('sudo'),
 
-      "plProvidedAcls" => array()
+      'plProvidedAcls' => array()
     );
   }
 
