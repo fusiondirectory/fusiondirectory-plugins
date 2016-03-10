@@ -51,15 +51,29 @@ class dnsView extends simplePlugin
             _('View name'), _('Name of this view'),
             'cn', TRUE
           ),
+          new SetAttribute (
+            new StringAttribute (
+              _('Match clients'), _('The address_match_list for the source IP address of the incoming messages. Any IP which matches will use the defined view clause.'),
+              'fdDNSViewMatchClients', FALSE
+            )
+          ),
           new StringAttribute (
-            _('ACL name'), _('ACL name for this view'),
-            'fdDNSViewAclName', FALSE
+            _('Match clients ACL name'), _('Name to use for the ACL for match-clients option'),
+            'fdDNSViewMatchClientsAclName', FALSE
           ),
           new SetAttribute (
             new StringAttribute (
-              _('ACL values'), _('ACL values for this view'),
-              'fdDNSViewAcl', FALSE
+              _('Match destinations'), _('The address_match_list for the destination IP address of the incoming messages. Any IP which matches will use the defined view clause.'),
+              'fdDNSViewMatchDestinations', FALSE
             )
+          ),
+          new StringAttribute (
+            _('Match destinations ACL name'), _('Name to use for the ACL for match-destinations option'),
+            'fdDNSViewMatchDestinationsAclName', FALSE
+          ),
+          new BooleanAttribute (
+            _('Match recursive only'), _('Match only recursive queries in this view'),
+            'fdDNSViewMatchRecursiveOnly', FALSE
           ),
           new SetAttribute(
             new SelectAttribute(

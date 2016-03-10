@@ -9,17 +9,35 @@ attributetype ( 1.3.6.1.4.1.38414.51.1.1 NAME 'fdDNSZoneDn'
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
 
-attributetype ( 1.3.6.1.4.1.38414.51.1.2 NAME 'fdDNSViewAclName'
-  DESC 'FusionDirectory - DNS view ACL name'
+attributetype ( 1.3.6.1.4.1.38414.51.1.2 NAME 'fdDNSViewMatchClientsAclName'
+  DESC 'FusionDirectory - DNS view ACL name for match-clients option'
   EQUALITY caseIgnoreMatch
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE)
 
-attributetype ( 1.3.6.1.4.1.38414.51.1.3 NAME 'fdDNSViewAcl'
-  DESC 'FusionDirectory - DNS view ACL content'
+attributetype ( 1.3.6.1.4.1.38414.51.1.3 NAME 'fdDNSViewMatchClients'
+  DESC 'FusionDirectory - DNS view match-clients option'
   EQUALITY caseIgnoreMatch
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
+
+attributetype ( 1.3.6.1.4.1.38414.51.1.4 NAME 'fdDNSViewMatchDestinationsAclName'
+  DESC 'FusionDirectory - DNS view ACL name for match-destinations option'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.51.1.5 NAME 'fdDNSViewMatchDestinations'
+  DESC 'FusionDirectory - DNS view match-destinations option'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
+
+attributetype ( 1.3.6.1.4.1.38414.51.1.6 NAME 'fdDNSViewMatchRecursiveOnly'
+  DESC 'FusionDirectory - DNS view match-recursive-only option'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
 
 # Object Class
 objectclass ( 1.3.6.1.4.1.38414.51.2.1 NAME 'fdDNSHost'
