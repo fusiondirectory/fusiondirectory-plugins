@@ -2,6 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2009 GONICUS GmbH
+  Copyright (C) 2012 WILLIAME Jeremy
   Copyright (C) 2011-2016  FusionDirectory
  
   This program is free software; you can redistribute it and/or modify
@@ -19,18 +20,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-/*!
- * \file class_freeradiusAccount.inc
- * Source code for class freeradiusAccount
- */
-
-/*!
- * \brief   FreeRadius plugin
- * \author  WILLIAME Jeremy <williamejeremy@hotmail.com>, Alejandro Escanero Blanco <aescanero@gmail.com>
- * \version 0.01
- * \date    25.06.2012
- * \see simplePlugin
- */
 
 class freeradiusAccount extends simplePlugin {
 

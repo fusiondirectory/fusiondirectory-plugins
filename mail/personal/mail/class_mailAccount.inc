@@ -22,12 +22,10 @@
 
 /*!
   \brief   mail plugin
-  \author  Fabian Hicker  <Fabian.Hickert@GONICUS.de>
-  \version 2.6.2
-  \date    03.12.2007
 
   This class provides the functionality to read and write all attributes
-  relevant for gosaMailAccounts from/to the LDAP.
+  relevant for mail accounts from/to the LDAP.
+
   It does syntax checking and displays the formulars required.
   Special handling like sieve or imap actions will be implemented
   by the mailMethods.
