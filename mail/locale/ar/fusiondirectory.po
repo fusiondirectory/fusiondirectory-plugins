@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-03-01 18:16+0100\n"
+"POT-Creation-Date: 2016-03-14 12:06+0100\n"
 "PO-Revision-Date: 2016-01-22 16:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Arabic (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/ar/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: admin/groups/mail/class_groupMail.inc:46
-#: personal/mail/class_mailAccount.inc:73
+#: personal/mail/class_mailAccount.inc:71
 #: config/mail/class_mailPluginConfig.inc:28
 msgid "Mail"
 msgstr ""
@@ -33,7 +33,7 @@ msgid "Informations"
 msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:82
-#: personal/mail/class_mailAccount.inc:94
+#: personal/mail/class_mailAccount.inc:92
 msgid "Primary address"
 msgstr ""
 
@@ -42,7 +42,7 @@ msgid "The primary mail address"
 msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:86
-#: personal/mail/class_mailAccount.inc:98
+#: personal/mail/class_mailAccount.inc:96
 msgid "Server"
 msgstr "خادم"
 
@@ -51,7 +51,7 @@ msgid "Server mail"
 msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:92
-#: personal/mail/class_mailAccount.inc:114
+#: personal/mail/class_mailAccount.inc:112
 msgid "Alternative addresses"
 msgstr ""
 
@@ -364,194 +364,194 @@ msgstr ""
 msgid "Unlimited"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:47
-#: personal/mail/class_mailAccount.inc:246
-#: personal/mail/class_mailAccount.inc:250
-#: personal/mail/class_mailAccount.inc:253
-#: personal/mail/class_mailAccount.inc:380
-#: personal/mail/class_mailAccount.inc:384
-#: personal/mail/class_mailAccount.inc:388
-#: personal/mail/class_mailAccount.inc:421
-#: personal/mail/class_mailAccount.inc:425
+#: personal/mail/class_mailAccount.inc:45
+#: personal/mail/class_mailAccount.inc:244
+#: personal/mail/class_mailAccount.inc:248
+#: personal/mail/class_mailAccount.inc:251
+#: personal/mail/class_mailAccount.inc:378
+#: personal/mail/class_mailAccount.inc:382
+#: personal/mail/class_mailAccount.inc:386
+#: personal/mail/class_mailAccount.inc:419
+#: personal/mail/class_mailAccount.inc:423
 msgid "Mail error"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:47
+#: personal/mail/class_mailAccount.inc:45
 #, php-format
 msgid "Cannot read quota settings: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:57
+#: personal/mail/class_mailAccount.inc:55
 msgid "Quota usage"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:58
+#: personal/mail/class_mailAccount.inc:56
 msgid "Part of the quota which is used"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:74
+#: personal/mail/class_mailAccount.inc:72
 #: config/mail/class_mailPluginConfig.inc:41
 msgid "Mail settings"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:91
+#: personal/mail/class_mailAccount.inc:89
 msgid "Mail account"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:94
+#: personal/mail/class_mailAccount.inc:92
 msgid "Primary mail address"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:98
+#: personal/mail/class_mailAccount.inc:96
 msgid "Specify the mail server where the user will be hosted on"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:103
+#: personal/mail/class_mailAccount.inc:101
 msgid "Quota size"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:110
+#: personal/mail/class_mailAccount.inc:108
 msgid "Other addresses and redirections"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:114
+#: personal/mail/class_mailAccount.inc:112
 msgid "List of alternative mail addresses"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:119
+#: personal/mail/class_mailAccount.inc:117
 msgid "Forward messages to"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:119
+#: personal/mail/class_mailAccount.inc:117
 msgid "Addresses to which messages should be forwarded"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:125
-#: personal/mail/class_mailAccount.inc:144
+#: personal/mail/class_mailAccount.inc:123
+#: personal/mail/class_mailAccount.inc:142
 msgid "Vacation message"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:128
+#: personal/mail/class_mailAccount.inc:126
 msgid "Activate vacation message"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:129
+#: personal/mail/class_mailAccount.inc:127
 msgid ""
 "Select to automatically response with the vacation message defined below"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:134
+#: personal/mail/class_mailAccount.inc:132
 msgid "from"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:139
+#: personal/mail/class_mailAccount.inc:137
 msgid "till"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:150
+#: personal/mail/class_mailAccount.inc:148
 msgid "Spam options"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:153
+#: personal/mail/class_mailAccount.inc:151
 msgid "Move mails depending on spam level"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:158
+#: personal/mail/class_mailAccount.inc:156
 msgid "Minimum spam level"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:158
+#: personal/mail/class_mailAccount.inc:156
 msgid "Spam level above which a mail will be moved"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:163
+#: personal/mail/class_mailAccount.inc:161
 msgid "Move spam to folder"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:163
+#: personal/mail/class_mailAccount.inc:161
 msgid "Folder in which spam will be moved"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:168
+#: personal/mail/class_mailAccount.inc:166
 msgid "Reject mail depending on their size"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:168
+#: personal/mail/class_mailAccount.inc:166
 msgid "Messages bigger than the chosen size will be rejected"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:173
+#: personal/mail/class_mailAccount.inc:171
 msgid "Minimum size to reject a mail (MB)"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:189
+#: personal/mail/class_mailAccount.inc:187
 msgid "Advanced mail options"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:192
+#: personal/mail/class_mailAccount.inc:190
 msgid "Use custom sieve script"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:192
+#: personal/mail/class_mailAccount.inc:190
 msgid "disables all Mail options!"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:193
+#: personal/mail/class_mailAccount.inc:191
 msgid "Use your sieve script with personnal customization"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:198
+#: personal/mail/class_mailAccount.inc:196
 msgid "User is only allowed to send and receive local mails"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:199
+#: personal/mail/class_mailAccount.inc:197
 msgid "Select if user can only send and receive inside his own domain"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:204
+#: personal/mail/class_mailAccount.inc:202
 msgid "No delivery to own mailbox"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:205
+#: personal/mail/class_mailAccount.inc:203
 msgid "Select if you want to forward mails without getting own copies of them"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:246
+#: personal/mail/class_mailAccount.inc:244
 #, php-format
 msgid "Cannot get list of mailboxes: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:250
-#: personal/mail/class_mailAccount.inc:380
+#: personal/mail/class_mailAccount.inc:248
+#: personal/mail/class_mailAccount.inc:378
 #, php-format
 msgid "Mail method cannot connect: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:253
+#: personal/mail/class_mailAccount.inc:251
 #, php-format
 msgid "Mailbox '%s' doesn't exists on mail server: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:384
+#: personal/mail/class_mailAccount.inc:382
 #, php-format
 msgid "Cannot update mailbox: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:388
+#: personal/mail/class_mailAccount.inc:386
 #, php-format
 msgid "Cannot write quota settings: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:401
+#: personal/mail/class_mailAccount.inc:399
 msgid "Mail error saving sieve settings"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:421
+#: personal/mail/class_mailAccount.inc:419
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:425
+#: personal/mail/class_mailAccount.inc:423
 #, php-format
 msgid "Cannot remove mailbox: %s"
 msgstr ""

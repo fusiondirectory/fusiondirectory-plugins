@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-03-07 13:09+0100\n"
-"PO-Revision-Date: 2016-03-07 12:20+0000\n"
+"POT-Creation-Date: 2016-03-14 14:19+0100\n"
+"PO-Revision-Date: 2016-03-14 13:18+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -31,10 +31,18 @@ msgid "Project"
 msgstr "Projet"
 
 #: admin/departments/community/class_communityProject.inc:45
+msgid "Project full name"
+msgstr "Nom complet du projet"
+
+#: admin/departments/community/class_communityProject.inc:45
+msgid "Full name of this project"
+msgstr "Nom complet de ce projet"
+
+#: admin/departments/community/class_communityProject.inc:49
 msgid "Project key"
 msgstr "Clef de projet"
 
-#: admin/departments/community/class_communityProject.inc:45
+#: admin/departments/community/class_communityProject.inc:49
 msgid "ID used for this project in other softwares or databases"
 msgstr "ID utilisé pour ce projet dans d'autres logiciels et bases de données"
 
@@ -79,21 +87,58 @@ msgid "Last name"
 msgstr "Nom de famille"
 
 #: admin/departments/community/class_communityOrganization.inc:67
-msgid "Street"
-msgstr "Rue"
+msgid "Address"
+msgstr "Adresse"
+
+#: admin/departments/community/class_communityOrganization.inc:67
+msgid "A postal address"
+msgstr "Adresse postale"
 
 #: admin/departments/community/class_communityOrganization.inc:71
-msgid "Zip code"
-msgstr "Code Postal"
-
-#: admin/departments/community/class_communityOrganization.inc:75
 msgid "City"
 msgstr "Ville"
 
-#: admin/departments/community/class_communityOrganization.inc:79
+#: admin/departments/community/class_communityOrganization.inc:75
 msgid "State"
 msgstr "Département"
 
-#: admin/departments/community/class_communityOrganization.inc:83
+#: admin/departments/community/class_communityOrganization.inc:79
 msgid "Country"
 msgstr "Pays"
+
+#: personal/community/class_communityAccount.inc:30
+#: config/community/class_communityConfig.inc:41
+msgid "Community"
+msgstr "Projet communautaire"
+
+#: personal/community/class_communityAccount.inc:31
+msgid "Community account"
+msgstr "Compte Communauté"
+
+#: personal/community/class_communityAccount.inc:46
+msgid "Membership"
+msgstr "Adhésion"
+
+#: personal/community/class_communityAccount.inc:50
+msgid "Membership types"
+msgstr "Types adhésion"
+
+#: personal/community/class_communityAccount.inc:50
+msgid "Membership types of this user"
+msgstr "Types d'adhésion de cet utilisateur"
+
+#: config/community/class_communityConfig.inc:28
+msgid "Community configuration"
+msgstr "Configuration de Communauté"
+
+#: config/community/class_communityConfig.inc:29
+msgid "FusionDirectory community plugin configuration"
+msgstr "Configuration du plugin communautaire FusionDirectory"
+
+#: config/community/class_communityConfig.inc:45
+msgid "Membership type choices"
+msgstr "Choix du type d'adhésion"
+
+#: config/community/class_communityConfig.inc:45
+msgid "Community membership types available in the user community tab"
+msgstr "Types d'adhésion disponibles dans l'onglet communauté de cet d'utilisateur"

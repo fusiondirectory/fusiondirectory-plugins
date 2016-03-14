@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-03-07 13:09+0100\n"
-"PO-Revision-Date: 2016-03-07 13:07+0000\n"
+"POT-Creation-Date: 2016-03-14 14:19+0100\n"
+"PO-Revision-Date: 2016-03-14 13:23+0000\n"
 "Last-Translator: Penati <penati@avaya.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -31,10 +31,18 @@ msgid "Project"
 msgstr "Progetto"
 
 #: admin/departments/community/class_communityProject.inc:45
+msgid "Project full name"
+msgstr "Nome completo del progetto"
+
+#: admin/departments/community/class_communityProject.inc:45
+msgid "Full name of this project"
+msgstr "Nome completo di questo progetto"
+
+#: admin/departments/community/class_communityProject.inc:49
 msgid "Project key"
 msgstr "Chiave di progetto"
 
-#: admin/departments/community/class_communityProject.inc:45
+#: admin/departments/community/class_communityProject.inc:49
 msgid "ID used for this project in other softwares or databases"
 msgstr "ID utilizzato per questo progetto in altri software o database"
 
@@ -79,21 +87,58 @@ msgid "Last name"
 msgstr "Cognome"
 
 #: admin/departments/community/class_communityOrganization.inc:67
-msgid "Street"
-msgstr "Via"
+msgid "Address"
+msgstr "Indirizzo"
+
+#: admin/departments/community/class_communityOrganization.inc:67
+msgid "A postal address"
+msgstr "Un indirizzo postale"
 
 #: admin/departments/community/class_communityOrganization.inc:71
-msgid "Zip code"
-msgstr "CAP"
-
-#: admin/departments/community/class_communityOrganization.inc:75
 msgid "City"
 msgstr "Città"
 
-#: admin/departments/community/class_communityOrganization.inc:79
+#: admin/departments/community/class_communityOrganization.inc:75
 msgid "State"
 msgstr "Regione"
 
-#: admin/departments/community/class_communityOrganization.inc:83
+#: admin/departments/community/class_communityOrganization.inc:79
 msgid "Country"
 msgstr "Stato"
+
+#: personal/community/class_communityAccount.inc:30
+#: config/community/class_communityConfig.inc:41
+msgid "Community"
+msgstr "Comunità"
+
+#: personal/community/class_communityAccount.inc:31
+msgid "Community account"
+msgstr "Conto community"
+
+#: personal/community/class_communityAccount.inc:46
+msgid "Membership"
+msgstr "Abbonamento"
+
+#: personal/community/class_communityAccount.inc:50
+msgid "Membership types"
+msgstr "Tipologie di abbonamento"
+
+#: personal/community/class_communityAccount.inc:50
+msgid "Membership types of this user"
+msgstr "Tipologie di abbonamento di questo utente"
+
+#: config/community/class_communityConfig.inc:28
+msgid "Community configuration"
+msgstr "Configurazione community"
+
+#: config/community/class_communityConfig.inc:29
+msgid "FusionDirectory community plugin configuration"
+msgstr "Configurazione del plugin community di FusionDirectory"
+
+#: config/community/class_communityConfig.inc:45
+msgid "Membership type choices"
+msgstr "Scelte tipo di abbonamento"
+
+#: config/community/class_communityConfig.inc:45
+msgid "Community membership types available in the user community tab"
+msgstr "Tipi di abbonamento community disponibili nella tabella community dell'utente"
