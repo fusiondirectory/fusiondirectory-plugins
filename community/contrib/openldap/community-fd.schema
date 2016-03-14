@@ -36,6 +36,12 @@ attributetype ( 1.3.6.1.4.1.38414.52.11.1 NAME 'fdProjectKey'
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.52.11.2 NAME 'fdProjectFullName'
+  DESC 'FusionDirectory - Project full name'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+
 # Dates
 
 attributetype ( 1.3.6.1.4.1.38414.52.12.1 NAME 'fdCommunityStartDate'
@@ -74,7 +80,8 @@ objectClass ( 1.3.6.1.4.1.38414.52.2.2  NAME 'fdCommunityProject'
   MUST ( fdCommunityStartDate )
   MAY ( fdOrganizationAlternateLastName $ fdOrganizationAlternateFirstName $
   fdOrganizationAlternateAddress $ fdOrganizationAlternateZipCode $ fdOrganizationAlternateCity $
-  fdOrganizationAlternateState $ fdOrganizationAlternateCountry $ fdCommunityEndDate $ fdProjectKey  ))
+  fdOrganizationAlternateState $ fdOrganizationAlternateCountry $ fdCommunityEndDate $ fdProjectKey $
+  fdProjectFullName ))
 
 objectClass ( 1.3.6.1.4.1.38414.52.2.3  NAME 'fdCommunityAccount'
   DESC 'FusionDirectory - Community account'
