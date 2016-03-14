@@ -64,12 +64,8 @@ class communityOrganization extends simplePlugin
             'fdOrganizationAlternateLastName', FALSE
           ),
           new TextAreaAttribute(
-            _('Street'), _('Street'),
-            'fdOrganizationAlternateStreet', FALSE
-          ),
-          new StringAttribute(
-            _('Zip code'), _('Zip code'),
-            'fdOrganizationAlternateZipCode', FALSE
+            _('Address'), _('A postal address'),
+            'fdOrganizationAlternateAddress', FALSE
           ),
           new StringAttribute(
             _('City'), _('City'),
