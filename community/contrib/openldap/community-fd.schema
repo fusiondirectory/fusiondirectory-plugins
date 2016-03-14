@@ -8,9 +8,9 @@ attributetype ( 1.3.6.1.4.1.38414.52.10.2 NAME 'fdOrganizationAlternateFirstName
   DESC 'fdOrganization Alternate First Name'
   SUP gn )
 
-attributetype ( 1.3.6.1.4.1.38414.52.10.3 NAME 'fdOrganizationAlternateStreet'
-  DESC 'fdOrganization Alternate Street'
-  SUP street )
+attributetype ( 1.3.6.1.4.1.38414.52.10.3 NAME 'fdOrganizationAlternateAddress'
+  DESC 'fdOrganization Alternate Address'
+  SUP postalAddress )
 
 attributetype ( 1.3.6.1.4.1.38414.52.10.4 NAME 'fdOrganizationAlternateZipCode'
   DESC 'fdOrganization Alternate ZipCode'
@@ -65,7 +65,7 @@ objectClass ( 1.3.6.1.4.1.38414.52.2.1  NAME 'fdCommunityOrganization'
   SUP top AUXILIARY
   MUST ( fdCommunityStartDate )
   MAY ( fdOrganizationAlternateLastName $ fdOrganizationAlternateFirstName $
-  fdOrganizationAlternateStreet $ fdOrganizationAlternateZipCode $ fdOrganizationAlternateCity $
+  fdOrganizationAlternateAddress $ fdOrganizationAlternateCity $
   fdOrganizationAlternateState $ fdOrganizationAlternateCountry $ fdCommunityEndDate))
 
 objectClass ( 1.3.6.1.4.1.38414.52.2.2  NAME 'fdCommunityProject'
@@ -73,7 +73,7 @@ objectClass ( 1.3.6.1.4.1.38414.52.2.2  NAME 'fdCommunityProject'
   SUP top AUXILIARY
   MUST ( fdCommunityStartDate )
   MAY ( fdOrganizationAlternateLastName $ fdOrganizationAlternateFirstName $
-  fdOrganizationAlternateStreet $ fdOrganizationAlternateZipCode $ fdOrganizationAlternateCity $
+  fdOrganizationAlternateAddress $ fdOrganizationAlternateZipCode $ fdOrganizationAlternateCity $
   fdOrganizationAlternateState $ fdOrganizationAlternateCountry $ fdCommunityEndDate $ fdProjectKey  ))
 
 objectClass ( 1.3.6.1.4.1.38414.52.2.3  NAME 'fdCommunityAccount'
