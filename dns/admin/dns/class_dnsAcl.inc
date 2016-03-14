@@ -53,7 +53,7 @@ class dnsAcl extends simplePlugin
           ),
           new SetAttribute (
             new StringAttribute (
-              _('Address match list'), _('The address_match_list for this acl'),
+              _('Address match list'), _('The ip address match list for this acl'),
               'fdDNSAclMatchList', FALSE
             )
           )
