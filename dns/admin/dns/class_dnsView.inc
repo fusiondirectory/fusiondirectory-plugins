@@ -52,11 +52,11 @@ class dnsView extends simplePlugin
             'cn', TRUE
           ),
           new SelectAttribute (
-            _('Match clients ACL'), _('Name of the ACL to use for the source IP address of the incoming messages'),
+            _('Match clients ACL'), _('Name of the ACL to use for the source IP address of the incoming requests'),
             'fdDNSViewMatchClientsAcl', FALSE
           ),
           new SelectAttribute (
-            _('Match destinations ACL'), _('Name of the ACL to use for the source IP address of the incoming messages'),
+            _('Match destinations ACL'), _('Name of the ACL to use for the source IP address of the incoming requests'),
             'fdDNSViewMatchDestinationsAcl', FALSE
           ),
           new BooleanAttribute (
