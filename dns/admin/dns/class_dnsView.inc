@@ -51,25 +51,13 @@ class dnsView extends simplePlugin
             _('View name'), _('Name of this view'),
             'cn', TRUE
           ),
-          new SetAttribute (
-            new StringAttribute (
-              _('Match clients'), _('The address_match_list for the source IP address of the incoming messages. Any IP which matches will use the defined view clause.'),
-              'fdDNSViewMatchClients', FALSE
-            )
+          new SelectAttribute (
+            _('Match clients ACL'), _('Name of the ACL to use for the source IP address of the incoming messages'),
+            'fdDNSViewMatchClientsAcl', FALSE
           ),
-          new StringAttribute (
-            _('Match clients ACL name'), _('Name to use for the ACL for match-clients option'),
-            'fdDNSViewMatchClientsAclName', FALSE
-          ),
-          new SetAttribute (
-            new StringAttribute (
-              _('Match destinations'), _('The address_match_list for the destination IP address of the incoming messages. Any IP which matches will use the defined view clause.'),
-              'fdDNSViewMatchDestinations', FALSE
-            )
-          ),
-          new StringAttribute (
-            _('Match destinations ACL name'), _('Name to use for the ACL for match-destinations option'),
-            'fdDNSViewMatchDestinationsAclName', FALSE
+          new SelectAttribute (
+            _('Match destinations ACL'), _('Name of the ACL to use for the source IP address of the incoming messages'),
+            'fdDNSViewMatchDestinationsAcl', FALSE
           ),
           new BooleanAttribute (
             _('Match recursive only'), _('Match only recursive queries in this view'),
@@ -91,6 +79,9 @@ class dnsView extends simplePlugin
     parent::__construct($config, $dn, $object);
     $zones = objects::ls('dnsZone');
     $this->attributesAccess['fdDNSZoneDn']->attribute->setChoices(array_keys($zones), array_values($zones));
+    $acls = objects::ls('dnsAcl', 'cn');
+    $this->attributesAccess['fdDNSViewMatchClientsAcl']->setChoices($acls);
+    $this->attributesAccess['fdDNSViewMatchDestinationsAcl']->setChoices($acls);
     $this->updateAttributesValues();
   }
 }
