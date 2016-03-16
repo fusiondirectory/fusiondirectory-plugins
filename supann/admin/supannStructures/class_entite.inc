@@ -68,7 +68,7 @@ class entite extends simplePlugin
             _('Fax'), _('Fax number for this entity'),
             'facsimileTelephoneNumber', FALSE
           ),
-          new StringAttribute(
+          new PostalAddressAttribute(
             _('Postal address'), _('Postal address of this entity'),
             'postalAddress', FALSE
           ),
