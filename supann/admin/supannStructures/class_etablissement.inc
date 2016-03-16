@@ -72,7 +72,7 @@ class etablissement extends simplePlugin
             _('Location'), _('Usually the city where this Establishment is'),
             'l', FALSE
           ),
-          new TextAreaAttribute(
+          new PostalAddressAttribute(
             _('Address'), _('The postal address of this Establishment'),
             'postalAddress', FALSE
           ),

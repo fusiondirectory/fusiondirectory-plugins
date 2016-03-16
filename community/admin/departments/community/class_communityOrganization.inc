@@ -63,7 +63,7 @@ class communityOrganization extends simplePlugin
             _('Last name'), _('Last name'),
             'fdOrganizationAlternateLastName', FALSE
           ),
-          new TextAreaAttribute(
+          new PostalAddressAttribute(
             _('Address'), _('A postal address'),
             'fdOrganizationAlternateAddress', FALSE
           ),
