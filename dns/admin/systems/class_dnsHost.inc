@@ -113,6 +113,7 @@ class dnsHost extends simplePlugin
   var $displayHeader = TRUE;
 
   protected $zonesCache;
+  protected $loaded = FALSE;
 
   static function plInfo()
   {
@@ -163,7 +164,6 @@ class dnsHost extends simplePlugin
     $this->zonesCache = objects::ls('dnsZone');
     $this->attributesAccess['fdDNSZoneDn']->attribute->setChoices(array_keys($this->zonesCache), array_values($this->zonesCache));
     $this->attributesAccess['fdDNSZoneDn']->setSubmitForm('zoneChanged');
-    $this->zoneChanged();
   }
 
   function zoneChanged()
@@ -235,8 +235,17 @@ class dnsHost extends simplePlugin
     $this->updateAttributesValues();
   }
 
+  function load()
+  {
+    if (!$this->loaded) {
+      $this->zoneChanged();
+      $this->loaded = TRUE;
+    }
+  }
+
   function execute()
   {
+    $this->load();
     $smarty     = get_smarty();
     $ui         = get_userinfo();
     $skip_write = $this->read_only;
@@ -247,6 +256,7 @@ class dnsHost extends simplePlugin
 
   function save_object ()
   {
+    $this->load();
     parent::save_object();
     if (isset($_POST[get_class($this).'_posted'])) {
       foreach ($_POST as $name => $value) {
