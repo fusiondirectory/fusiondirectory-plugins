@@ -204,7 +204,7 @@ class workstationGeneric extends systemSimplePluginGlue
   var $fai_activated = FALSE;
 
   var $currently_installing = FALSE;
-  var $sdaemon_available    = FALSE;
+  var $sdaemon_available    = TRUE;
 
   var $inheritance = array("gotoWorkstationTemplate" => "member");
 
@@ -299,10 +299,7 @@ class workstationGeneric extends systemSimplePluginGlue
 
   function __construct (&$config, $dn = NULL, $object = NULL)
   {
-    if (class_available('supportDaemon')) {
-      $s_daemon = new supportDaemon();
-      $this->sdaemon_available = $s_daemon->is_available();
-    } else {
+    if (!class_available('supportDaemon')) {
       $this->sdaemon_available = FALSE;
     }
 
