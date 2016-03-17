@@ -30,9 +30,6 @@ class winstationGeneric extends simplePlugin
 
   var $preInitAttributes = array('networkSettings');
 
-  var $currently_installing = FALSE;
-  var $sdaemon_available    = FALSE;
-
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
@@ -95,17 +92,6 @@ class winstationGeneric extends simplePlugin
           new BaseSelectorAttribute(get_winstations_ou()),
         )
       ),
-      'actions' => array(
-        'name' => _('Action'),
-        'icon'  => 'geticon.php?context=types&icon=action&size=16',
-        'attrs' => array(
-          new ActionAttribute(
-            _('Action'),
-            _('Select action to execute for this terminal'),
-            'FAIstate'
-          ),
-        )
-      ),
       'network' => array(
         'name'      => _('Network settings'),
         'attrs'     => array(new NetworkSettingsAttribute('uid', array('ipHost', 'ieee802Device'))),
@@ -117,19 +103,7 @@ class winstationGeneric extends simplePlugin
 
   function __construct (&$config, $dn = NULL, $object = NULL)
   {
-    if (class_available('supportDaemon')) {
-      $s_daemon = new supportDaemon();
-      $this->sdaemon_available = $s_daemon->is_available();
-    } else {
-      $this->sdaemon_available = FALSE;
-    }
-
     parent::__construct($config, $dn, $object);
-
-    /* Check if this host is currently in installation process*/
-    if ($this->sdaemon_available) {
-      $this->currently_installing = $s_daemon->is_currently_installing($this->netConfigDNS->macAddress);
-    }
 
     $this->attributesAccess['cn']->setUnique(TRUE);
     $this->attributesAccess['uid']->setUnique(TRUE);
@@ -163,22 +137,6 @@ class winstationGeneric extends simplePlugin
         $this->SID      = $this->config->get_cfg_value("sambaSid");
       }
     }
-  }
-
-  function ping()
-  {
-    if (!$this->sdaemon_available) {
-      return FALSE;
-    }
-    if ($this->netConfigDNS->macAddress == "") {
-      return FALSE;
-    }
-    $sdaemon = new supportDaemon();
-    if (!$sdaemon->is_available()) {
-      $this->sdaemon_available = FALSE;
-      return FALSE;
-    }
-    return $sdaemon->ping($this->netConfigDNS->macAddress);
   }
 
   function save_object()

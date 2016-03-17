@@ -76,7 +76,6 @@ class terminalGeneric extends workstationGeneric
         )
       )
     );
-    $attributesInfo['actions']['attrs'][0]->setIsTerminal(TRUE);
     $attributesInfo['remote_desktop'] = array(
       'name'  => _('Remote desktop'),
       'icon'  => 'geticon.php?context=devices&icon=server&size=16',

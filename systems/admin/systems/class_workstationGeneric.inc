@@ -20,100 +20,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ActionAttribute extends SelectAttribute
-{
-  private $isTerminal;
-
-  function __construct ($label, $description, $ldapName, $isTerminal = FALSE)
-  {
-    parent::__construct($label, $description, $ldapName, FALSE);
-    $this->setInLdap(FALSE);
-    $this->isTerminal = $isTerminal;
-  }
-
-  function setIsTerminal ($bool)
-  {
-    $this->isTerminal = $bool;
-  }
-
-  function setParent (&$plugin)
-  {
-    parent::setParent($plugin);
-    if (is_object($this->plugin)) {
-      $this->updateChoices();
-    }
-  }
-
-  function loadPostValue ()
-  {
-    $this->postValue = '';
-    $id = $this->getHtmlId();
-    if (isset($_POST[$id.'_action'])) {
-      parent::loadPostValue();
-    }
-  }
-
-  function applyPostValue ()
-  {
-    if (!$this->disabled && $this->postValue != '') {
-      $this->updateChoices();
-      if (in_array($this->postValue, $this->choices)) {
-        $action = $this->postValue;
-
-        if (class_available('supportDaemon')) {
-          $events = argonautAction::get_event_types();
-          if (isset($events[$action])) {
-            $o_queue = new supportDaemon();
-            if (!$o_queue->append_call($action, array($this->plugin->netConfigDNS->macAddress), array())) {
-              msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
-            }
-          } else {
-            msg_dialog::display(_("Event error"), sprintf(_("Event %s is not available!"), $action), ERROR_DIALOG);
-          }
-        } else {
-          msg_dialog::display(_("Event error"), _("Events are not available!"), ERROR_DIALOG);
-        }
-      }
-    }
-  }
-
-  function renderFormInput ()
-  {
-    $id = $this->getHtmlId();
-    $disabled = ($this->plugin->currently_installing?' disabled="disabled"':'');
-    $button = '<input type="submit" name="'.$id.'_action" id="'.$id.'_action" value="{t}Execute{/t}"'.$disabled.'/>';
-    return parent::renderFormInput().$this->renderAcl($button);
-  }
-
-  function updateChoices()
-  {
-    if (isset($this->plugin->gotoMode) && $this->plugin->gotoMode) {
-      $this->setDisabled(TRUE);
-      return;
-    }
-    $this->setDisabled(FALSE);
-    //TODO : the list should be based on argonautAction::get_event_types
-    /* Check if workstation is online */
-    if ($this->isTerminal) {
-      $actions = array('' => '');
-    } else {
-      $actions = array( // TODO : remove these action if there is no deployment plugin to use them (FAI, OPSI, …)
-        ''          => '',
-        'Deployment.reinstall' => _('(Re)Install'),
-        'Deployment.update'    => _('Software update'),
-        'Deployment.memcheck'  => _('Memory test')
-      );
-    }
-    if ($this->plugin->ping()) {
-      $actions['System.halt']         = _('Switch off');
-      $actions['Deployment.reboot']   = _('Reboot');
-    } else {
-      $actions['Deployment.wake'] = _('Wake up');
-    }
-    $this->setChoices(array_keys($actions), array_values($actions));
-  }
-}
-
 class systemSimplePluginGlue extends simplePlugin
 {
   protected $previousNetworkSavedAttributes;
@@ -203,9 +109,6 @@ class workstationGeneric extends systemSimplePluginGlue
 
   var $fai_activated = FALSE;
 
-  var $currently_installing = FALSE;
-  var $sdaemon_available    = TRUE;
-
   var $inheritance = array("gotoWorkstationTemplate" => "member");
 
   var $preInitAttributes = array('cn', 'networkSettings');
@@ -277,17 +180,6 @@ class workstationGeneric extends systemSimplePluginGlue
           ),
         )
       ),
-      'actions' => array(
-        'name' => _('Action'),
-        'icon'  => 'geticon.php?context=types&icon=action&size=16',
-        'attrs' => array(
-          new ActionAttribute(
-            _('Action'),
-            _('Select action to execute for this terminal'),
-            'FAIstate'
-          ),
-        )
-      ),
       'network' => array(
         'name'      => _('Network settings'),
         'template'  => get_template_path('network_section.tpl', TRUE, dirname(__FILE__)),
@@ -299,16 +191,7 @@ class workstationGeneric extends systemSimplePluginGlue
 
   function __construct (&$config, $dn = NULL, $object = NULL)
   {
-    if (!class_available('supportDaemon')) {
-      $this->sdaemon_available = FALSE;
-    }
-
     parent::__construct($config, $dn, $object);
-
-    /* Check if this host is currently in installation process*/
-    if ($this->sdaemon_available) {
-      $this->currently_installing = $s_daemon->is_currently_installing($this->netConfigDNS->macAddress);
-    }
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
@@ -329,20 +212,6 @@ class workstationGeneric extends systemSimplePluginGlue
     parent::resetCopyInfos();
     $this->netConfigDNS->resetCopyInfos();
   }
-
-  function ping()
-  {
-    if (!$this->sdaemon_available) {
-      return FALSE;
-    }
-    $sdaemon = new supportDaemon();
-    if (!$sdaemon->is_available()) {
-      $this->sdaemon_available = FALSE;
-      return FALSE;
-    }
-    return $sdaemon->ping($this->netConfigDNS->macAddress);
-  }
-
 
   function set_acl_base($base)
   {
@@ -397,7 +266,7 @@ class workstationGeneric extends systemSimplePluginGlue
     $this->netConfigDNS->cn = $this->cn;
     $this->netConfigDNS->save();
 
-    if ($activate && $this->sdaemon_available) {
+    if ($activate && class_available('supportDaemon')) {
       /* Send installation activation */
       $events = argonautAction::get_event_types();
       if (isset($events['installation_activation'])) {
