@@ -249,6 +249,22 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         }
       }
     }
+    usort(
+      $this->value,
+      function ($value1, $value2) {
+        if ($value1[0] == $value2[0]) {
+          if ($value1[1] < $value2[1]) {
+            return -1;
+          } else {
+            return 1;
+          }
+        } elseif ($value1[0] < $value2[0]) {
+          return -1;
+        } else {
+          return 1;
+        }
+      }
+    );
   }
 
   function fillLdapValue (&$attrs)
