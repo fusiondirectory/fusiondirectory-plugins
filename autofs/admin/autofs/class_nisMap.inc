@@ -34,7 +34,7 @@ class nisMap extends simplePlugin
         'name'        => _('Mount point'),
         'filter'      => 'objectClass=nisMap',
         'ou'          => get_ou('autofsRDN'),
-        'icon'        => 'plugins/autofs/images/iconMiniNisMap.png',
+        'icon'        => 'geticon.php?context=applications&icon=autofs-nis-netmap&size=16',
         'mainAttr'    => 'nisMapName',
       )),
 
@@ -56,11 +56,6 @@ class nisMap extends simplePlugin
         )
       )
     );
-  }
-
-  function compute_dn()
-  {
-    return "nisMapName=".$this->nisMapName.",".get_ou("autofsRDN").$this->base;
   }
 }
 

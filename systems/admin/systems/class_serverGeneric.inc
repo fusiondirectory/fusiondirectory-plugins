@@ -21,23 +21,9 @@
 
 class serverGeneric extends workstationGeneric
 {
-  var $objectclasses = array("top", "goServer", "GOhard");
+  var $objectclasses = array('top', 'goServer', 'GOhard');
 
   var $inheritance = FALSE;
-
-  /*!
-   *  \brief The main function : information about attributes
-   */
-  static function getAttributesInfo ($word = NULL, $rdn = NULL)
-  {
-    if ($word === NULL) {
-      $word = _('server');
-    }
-    if ($rdn === NULL) {
-      $rdn = get_ou('serverRDN');
-    }
-    return parent::getAttributesInfo($word, $rdn);
-  }
 
   /* Return plugin informations for acl handling */
   static function plInfo()
@@ -60,10 +46,24 @@ class serverGeneric extends workstationGeneric
     );
   }
 
+  /*!
+   *  \brief The main function : information about attributes
+   */
+  static function getAttributesInfo ($word = NULL, $rdn = NULL)
+  {
+    if ($word === NULL) {
+      $word = _('server');
+    }
+    if ($rdn === NULL) {
+      $rdn = get_ou('serverRDN');
+    }
+    return parent::getAttributesInfo($word, $rdn);
+  }
+
   /* Returns the dn of the entry */
   function compute_dn()
   {
-    return 'cn='.$this->cn.','.get_ou('serverRDN').$this->base;
+    return 'cn='.ldap_escape_dn($this->cn).','.get_ou('serverRDN').$this->base;
   }
 }
 

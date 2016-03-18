@@ -22,12 +22,10 @@
 
 /*!
   \brief   mail plugin
-  \author  Fabian Hicker  <Fabian.Hickert@GONICUS.de>
-  \version 2.6.2
-  \date    03.12.2007
 
   This class provides the functionality to read and write all attributes
-  relevant for gosaMailAccounts from/to the LDAP.
+  relevant for mail accounts from/to the LDAP.
+
   It does syntax checking and displays the formulars required.
   Special handling like sieve or imap actions will be implemented
   by the mailMethods.
@@ -66,12 +64,6 @@ class mailAccount extends simplePlugin
 {
   var $displayHeader    = TRUE;
   var $objectclasses    = array('gosaMailAccount');
-
-  /* Used by the mail method */
-  var $cn;
-  var $uid;
-  var $uidNumber;
-  var $gidNumber;
 
   static function plInfo()
   {
@@ -225,12 +217,8 @@ class mailAccount extends simplePlugin
   {
     parent::__construct($config, $dn, $object);
 
-    foreach (array('cn','uid','uidNumber','gidNumber') as $var) {
-      if (isset($object->$var)) {
-        $this->$var = $object->$var;
-      } elseif (isset($this->attrs[$var])) {
-        $this->$var = $this->attrs[$var][0];
-      }
+    if (isset($object->parent)) {
+      $this->parent = $object->parent;
     }
 
     /* Intialize the used mailMethod */
@@ -357,11 +345,25 @@ class mailAccount extends simplePlugin
   /* We need $mailAccount->uid to return the uid for mailMethod */
   public function __get($name)
   {
-    if (($name == 'uid') && isset($this->parent)) {
-      return $this->parent->getBaseObject()->uid;
+    if (in_array($name, array('cn','uid')) && isset($this->parent)) {
+      return $this->parent->getBaseObject()->$name;
+    } elseif (in_array($name, array('uidNumber','gidNumber')) && isset($this->parent)) {
+      return $this->parent->by_object['posixAccount']->$name;
     } else {
       /* Calling default behaviour */
       return parent::__get($name);
+    }
+  }
+
+  public function __isset($name)
+  {
+    if (in_array($name, array('cn','uid')) && isset($this->parent)) {
+      return isset($this->parent->getBaseObject()->$name);
+    } elseif (in_array($name, array('uidNumber','gidNumber')) && isset($this->parent)) {
+      return isset($this->parent->by_object['posixAccount']->$name);
+    } else {
+      /* Calling default behaviour */
+      return parent::__isset($name);
     }
   }
 

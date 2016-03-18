@@ -36,7 +36,7 @@ class entite extends simplePlugin
         'filter'      => '(&(objectClass=supannEntite)(objectClass=organizationalUnit))',
         'ou'          => get_ou('supannStructuresRDN'),
         'mainAttr'    => 'supannCodeEntite',
-        'icon'        => 'plugins/supann/images/iconMiniEntite.png',
+        'icon'        => 'geticon.php?context=applications&icon=supann-entite&size=16',
         'nameAttr'    => 'ou',
       )),
 
@@ -68,7 +68,7 @@ class entite extends simplePlugin
             _('Fax'), _('Fax number for this entity'),
             'facsimileTelephoneNumber', FALSE
           ),
-          new StringAttribute(
+          new PostalAddressAttribute(
             _('Postal address'), _('Postal address of this entity'),
             'postalAddress', FALSE
           ),
@@ -133,12 +133,6 @@ class entite extends simplePlugin
 
     $this->attributesAccess['ou']->setUnique(TRUE);
     $this->attributesAccess['supannCodeEntite']->setUnique(TRUE);
-  }
-
-  /* Returns the dn of the entry */
-  function compute_dn()
-  {
-    return 'supannCodeEntite='.$this->supannCodeEntite.','.get_ou('supannStructuresRDN').$this->config->current['BASE'];
   }
 }
 

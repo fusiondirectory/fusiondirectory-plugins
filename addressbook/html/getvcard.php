@@ -21,7 +21,7 @@
 
 
 /* Basic setup, remove eventually registered sessions */
-require_once ("php_setup.inc");
+@require_once("../../../include/php_setup.inc");
 require_once ("functions.inc");
 error_reporting(0);
 session::start();
@@ -47,13 +47,8 @@ header("Pragma: no-cache");
 header("Cache-Control: post-check=0, pre-check=0");
 header("Content-type: text/x-vcard; charset=utf-8");
 header("Content-type: text/plain");
-if (preg_match('/MSIE 5.5/', $HTTP_USER_AGENT) ||
-    preg_match('/MSIE 6.0/', $HTTP_USER_AGENT)) {
+header('Content-Disposition: attachment; filename="'.$name.'.vcf"');
 
-  header('Content-Disposition: filename="'.$name.'.vcf"');
-} else {
-  header('Content-Disposition: attachment; filename="'.$name.'.vcf"');
-}
 
 /* Get entry */
 $config = session::get('config');

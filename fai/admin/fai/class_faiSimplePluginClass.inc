@@ -56,7 +56,7 @@ class faiSimplePluginClass extends simplePlugin
 
   function compute_dn()
   {
-    return 'cn='.$this->cn.','.get_ou(get_class($this).'RDN').$this->base;
+    return 'cn='.ldap_escape($this->cn, '', LDAP_ESCAPE_DN).','.get_ou(get_class($this).'RDN').$this->base;
   }
 }
 ?>

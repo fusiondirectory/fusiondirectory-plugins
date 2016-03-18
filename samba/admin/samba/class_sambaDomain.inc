@@ -142,6 +142,6 @@ class sambaDomain extends simplePlugin
   function compute_dn ()
   {
     global $config;
-    return 'sambaDomainName='.$this->sambaDomainName.','.$config->current['BASE'];
+    return 'sambaDomainName='.ldap_escape($this->sambaDomainName, '', LDAP_ESCAPE_DN).','.$config->current['BASE'];
   }
 }

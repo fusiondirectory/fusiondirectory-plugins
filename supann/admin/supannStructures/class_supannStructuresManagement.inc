@@ -34,7 +34,7 @@ class supannStructuresManagement extends simpleManagement
     return array(
       'plShortName'   => _('Supann structures'),
       'plDescription' => _('Supann structures management'),
-      'plIcon'        => 'plugins/supann/images/icon.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 40,
       'plManages'     => array('etablissement', 'entite'),

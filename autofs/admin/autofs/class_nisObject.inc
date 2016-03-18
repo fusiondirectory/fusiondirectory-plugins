@@ -34,7 +34,7 @@ class nisObject extends simplePlugin
         'name'        => _('Directory'),
         'filter'      => 'objectClass=nisObject',
         'ou'          => get_ou('autofsRDN'),
-        'icon'        => 'plugins/autofs/images/iconMiniNisObject.png',
+        'icon'        => 'geticon.php?context=applications&icon=autofs-nis-object&size=16',
         'mainAttr'    => 'cn',
       )),
 
@@ -83,7 +83,7 @@ class nisObject extends simplePlugin
   {
     $ldap = $this->config->get_ldap_link();
     $ldap->cd(get_ou('autofsRDN').$this->base);
-    $ldap->search("(objectClass=nisMap)", array('nisMapName'));
+    $ldap->search('(objectClass=nisMap)', array('nisMapName'));
     $nisMaps = array();
     while ($attrs = $ldap->fetch()) {
       $nisMaps[] = $attrs['nisMapName'][0];
@@ -100,11 +100,9 @@ class nisObject extends simplePlugin
 
   function compute_dn()
   {
-    return 'cn='.$this->attributesAccess['cn']->getValue().','.
-            'nisMapName='.$this->nisMapName.','.
-              get_ou("autofsRDN").$this->base;
+    return 'cn='.ldap_escape($this->attributesAccess['cn']->getValue(), '', LDAP_ESCAPE_DN).','.
+            'nisMapName='.ldap_escape($this->nisMapName, '', LDAP_ESCAPE_DN).','.
+              get_ou('autofsRDN').$this->base;
   }
 }
-
-
 ?>

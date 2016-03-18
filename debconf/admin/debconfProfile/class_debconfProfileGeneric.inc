@@ -166,7 +166,7 @@ class debconfProfileGeneric extends simplePlugin
         'name'      => _('Debconf profile'),
         'filter'    => '(&(objectClass=organizationalUnit)(!(objectClass=gosaDepartment)))',
         'ou'        => get_ou('debconfRDN'),
-        'icon'      => 'plugins/debconf/images/iconMini.png',
+        'icon'      => 'geticon.php?context=applications&icon=debconf&size=16',
         'mainAttr'  => 'ou',
       )),
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -207,11 +207,6 @@ class debconfProfileGeneric extends simplePlugin
       $this->attributesAccess['import']->setVisible(FALSE);
       $this->attributesAccess['import']->setDisabled(TRUE);
     }
-  }
-
-  function compute_dn()
-  {
-    return 'ou='.$this->attributesAccess['ou']->getValue().','.get_ou("debconfRDN").$this->config->current['BASE'];
   }
 
   function ldap_save($cleanup = TRUE)

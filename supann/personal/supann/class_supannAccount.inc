@@ -215,8 +215,8 @@ class supannAccount extends simplePlugin
     return array(
       'plShortName'   => _('SupAnn'),
       'plDescription' => _('SupAnn informations management plugin'),
-      'plIcon'        => 'plugins/supann/images/icon.png',
-      'plSmallIcon'   => 'plugins/supann/images/iconMini.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=supann&size=16',
       'plSelfModify'  => TRUE,
       'plPriority'    => 14,
       'plObjectType'  => array('user'),

@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class mobilePhoneGeneric extends simplePlugin
+class mobilePhoneGeneric extends systemSimplePluginGlue
 {
   var $mainTab = TRUE;
 
@@ -122,7 +122,7 @@ class mobilePhoneGeneric extends simplePlugin
 
   function compute_dn ()
   {
-    return "cn=".$this->cn.",".get_ou('mobilePhoneRDN').$this->base;
+    return 'cn='.ldap_escape_dn($this->cn).','.get_ou('mobilePhoneRDN').$this->base;
   }
 
   function resetCopyInfos()

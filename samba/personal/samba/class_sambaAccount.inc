@@ -344,6 +344,8 @@ class sambaAccount extends simplePlugin
           new HiddenAttribute('sambaPasswordHistory'),
           new HiddenAttribute('sambaBadPasswordTime'),
           new HiddenAttribute('sambaBadPasswordCount'),
+          new HiddenAttribute('sambaNTPassword'),
+          new HiddenAttribute('sambaLMPassword'),
         )
       ),
       'system_trust' => array(

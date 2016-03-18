@@ -92,12 +92,6 @@ class systemManagement extends management
       $this->registerAction("new_$type",         "newEntry");
     }
 
-    // Check if we are able to communicate with Argonaut server
-    if (class_available('supportDaemon') && class_available('argonautAction')) {
-      $o = new supportDaemon();
-      $this->siActive = $o->is_available();
-    }
-
     parent::__construct($config, $ui, "systems", $headpage);
   }
 
@@ -147,55 +141,53 @@ class systemManagement extends management
     $event = preg_replace("/^[TS]_/", "", $action);
 
     // Now send FAI/Argonaut events here.
-    if ($this->siActive) {
-      $mac = array();
+    $mac = array();
 
-      // Collect target mac addresses
-      $events   = argonautAction::get_event_types();
-      $o_queue  = new supportDaemon();
-      foreach ($target as $dn) {
-        $obj = $headpage->getEntry($dn);
-        if (isset($obj['macAddress'][0])) {
-          $mac[] = $obj['macAddress'][0];
+    // Collect target mac addresses
+    $events   = argonautAction::get_event_types();
+    $o_queue  = new supportDaemon();
+    foreach ($target as $dn) {
+      $obj = $headpage->getEntry($dn);
+      if (isset($obj['macAddress'][0])) {
+        $mac[] = $obj['macAddress'][0];
+      } else {
+        msg_dialog::display(_('Action canceled'), sprintf(_('System %s has no mac address defined, cannot trigger action'), $dn), ERROR_DIALOG);
+      }
+    }
+
+    if ((count($mac) == 0) && $triggered) {
+      return;
+    }
+
+    /* Skip installation or update trigerred events,
+     *  if this entry is currently processing.
+     */
+    if ($triggered && in_array($event, array("reinstall","update"))) {
+      foreach ($mac as $key => $mac_address) {
+        if ($o_queue->is_currently_installing($mac_address)) {
+          msg_dialog::display(_('Action canceled'), sprintf(_('System %s is currently installing'), $dn), ERROR_DIALOG);
+          unset($mac[$key]);
+          new log('security', 'systems/'.get_class($this), '', array(), 'Skip adding "argonautAction::'.$type.'" for mac "'.$mac_address.'", there is already a job in progress.');
+        }
+      }
+    }
+
+    // Prepare event to be added
+    if (isset($events[$event])) {
+      $this->dialogObject = new argonautAction($this->config, array('action' => $event));
+      $this->dialogObject->targets = $mac;
+
+      if ($triggered) {
+        $this->dialogObject->scheduled = FALSE;
+        $o_queue->append($this->dialogObject);
+        if ($o_queue->is_error()) {
+          msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+          $this->closeDialogs();
         } else {
-          msg_dialog::display(_('Action canceled'), sprintf(_('System %s has no mac address defined, cannot trigger action'), $dn), ERROR_DIALOG);
+          $this->closeDialogs();
         }
-      }
-
-      if ((count($mac) == 0) && $triggered) {
-        return;
-      }
-
-      /* Skip installation or update trigerred events,
-       *  if this entry is currently processing.
-       */
-      if ($triggered && in_array($event, array("reinstall","update"))) {
-        foreach ($mac as $key => $mac_address) {
-          if ($o_queue->is_currently_installing($mac_address)) {
-            msg_dialog::display(_('Action canceled'), sprintf(_('System %s is currently installing'), $dn), ERROR_DIALOG);
-            unset($mac[$key]);
-            new log('security', 'systems/'.get_class($this), '', array(), 'Skip adding "argonautAction::'.$type.'" for mac "'.$mac_address.'", there is already a job in progress.');
-          }
-        }
-      }
-
-      // Prepare event to be added
-      if (isset($events[$event]) && $this->siActive) {
-        $this->dialogObject = new argonautAction($this->config, array('action' => $event));
-        $this->dialogObject->targets = $mac;
-
-        if ($triggered) {
-          $this->dialogObject->scheduled = FALSE;
-          $o_queue->append($this->dialogObject);
-          if ($o_queue->is_error()) {
-            msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
-            $this->closeDialogs();
-          } else {
-            $this->closeDialogs();
-          }
-        } else {
-          $this->dialogObject->scheduled = TRUE;
-        }
+      } else {
+        $this->dialogObject->scheduled = TRUE;
       }
     }
   }
@@ -210,15 +202,13 @@ class systemManagement extends management
       msg_dialog::displayChecks($msgs);
       return;
     }
-    if ($this->siActive) {
-      $o_queue = new supportDaemon();
-      $o_queue->append($this->dialogObject);
-      if ($o_queue->is_error()) {
-        msg_dialog::display(_('Infrastructure service'), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
-        $this->closeDialogs();
-      } else {
-        $this->closeDialogs();
-      }
+    $o_queue = new supportDaemon();
+    $o_queue->append($this->dialogObject);
+    if ($o_queue->is_error()) {
+      msg_dialog::display(_('Infrastructure service'), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+      $this->closeDialogs();
+    } else {
+      $this->closeDialogs();
     }
   }
 

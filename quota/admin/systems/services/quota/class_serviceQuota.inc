@@ -29,7 +29,7 @@ class serviceQuota extends simpleService
     return array(
       'plShortName'   => _('Quota service'),
       'plDescription' => _('Quota service').' ('._('Services').')',
-      'plIcon'        => 'plugins/quota/images/iconMini.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=quota&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

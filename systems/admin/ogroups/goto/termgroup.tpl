@@ -7,38 +7,6 @@
 
 <table width="100%">
   <tr>
-    <td style='width:50%;'>
-    <!-- Upper left -->
-         <table width="100%">
-        <tr>
-         <td colspan="2" style='padding-top:5px;'><LABEL for="gotoNtpServerSelected">{t}NTP server{/t}</LABEL><br>
-{render acl=$gotoNtpServerACL}
-          <select name="gotoNtpServerSelected[]" id="gotoNtpServerSelected" multiple size=5 style="width:100%;"
-            title="{t}Choose server to use for synchronizing time{/t}" {if $inheritTimeServer} disabled {/if}>
-           {html_options options=$gotoNtpServer_select}
-          </select>
-{/render}
-         <br>
-{render acl=$gotoNtpServerACL}
-          <select name="gotoNtpServers" id="gotoNtpServers" {if $inheritTimeServer} disabled {/if} >
-           {html_options output=$gotoNtpServers values=$gotoNtpServers}
-          </select>
-{/render}
-{render acl=$gotoNtpServerACL}
-          <input type="submit" name="addNtpServer" value="{msgPool type=addButton}"     id="addNtpServer"
-           {if ($inheritTimeServer) || (!$gotoNtpServers)} disabled {/if}>
-{/render}
-
-{render acl=$gotoNtpServerACL}
-          <input type="submit" name="delNtpServer" value="{msgPool type=delButton}"  id="delNtpServer"
-           {if ($inheritTimeServer) || (!$gotoNtpServer_select)} disabled {/if} >
-{/render}
-         </td>
-        </tr>
-         </table>
-
-
-    </td>
     <td style="vertical-align:top;border-left:1px solid #A0A0A0;">
     <!-- Upper right -->
 
@@ -54,16 +22,6 @@
          </td>
         </tr>
         <tr><td colspan="2">&nbsp;</td></tr>
-        <tr>
-         <td><LABEL for="gotoSyslogServer">{t}Syslog server{/t}</LABEL></td>
-         <td>
-{render acl=$gotoSyslogServerACL}
-          <select id="gotoSyslogServer" name="gotoSyslogServer" title="{t}Choose server to use for logging{/t}">
-           {html_options values=$syslogservers output=$syslogservers selected=$gotoSyslogServer_select}
-          </select>
-{/render}
-         </td>
-        </tr>
         {if $is_termgroup}
             <tr>
              <td><LABEL for="gotoTerminalPath">{t}Root server{/t}</LABEL></td>

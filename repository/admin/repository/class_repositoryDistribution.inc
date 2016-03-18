@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2013-2015 FusionDirectory
+  Copyright (C) 2013-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ class repositoryDistribution extends simplePlugin
         'filter'      => 'objectClass=fdBuildRepositoryDistribution',
         'aclCategory' => 'repository',
         'ou'          => get_ou('repositoryRDN'),
-        'icon'        => 'plugins/repository/images/iconDistribution.png'
+        'icon'        => 'geticon.php?context=applications&icon=repository-distribution&size=16'
       )),
       'plForeignKeys'  => array(
         'fdBasedOn' => array(
@@ -93,12 +93,6 @@ class repositoryDistribution extends simplePlugin
     $this->attributesAccess['fdBasedOn']->attribute->setChoices(array_values($distros));
     $sections = objects::ls('repoSection', 'cn');
     $this->attributesAccess['fdRepoSection']->attribute->setChoices(array_values($sections));
-  }
-
-  /* Returns the dn of the entry */
-  function compute_dn()
-  {
-    return 'cn='.$this->attributesAccess['cn']->getValue().','.get_ou('repositoryRDN').$this->base;
   }
 }
 

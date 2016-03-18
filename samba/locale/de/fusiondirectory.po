@@ -3,15 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Ettore Atalan <atalanttore@googlemail.com>, 2014-2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-109\n"
+"Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-01-22 11:59+0100\n"
-"PO-Revision-Date: 2015-11-09 10:12+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
-"Language-Team: German (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/de/)\n"
+"POT-Creation-Date: 2016-03-14 12:06+0100\n"
+"PO-Revision-Date: 2016-01-22 16:05+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: German (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -85,14 +84,14 @@ msgid "Special group (%d)"
 msgstr "Spezielle Gruppe (%d)"
 
 #: admin/groups/samba/class_sambaGroup.inc:133
-#: personal/samba/class_sambaAccount.inc:496
-#: personal/samba/class_sambaAccount.inc:522
-#: personal/samba/class_sambaAccount.inc:542
+#: personal/samba/class_sambaAccount.inc:498
+#: personal/samba/class_sambaAccount.inc:524
+#: personal/samba/class_sambaAccount.inc:544
 msgid "Warning"
 msgstr "Warnung"
 
 #: admin/groups/samba/class_sambaGroup.inc:133
-#: personal/samba/class_sambaAccount.inc:496
+#: personal/samba/class_sambaAccount.inc:498
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
 msgstr "Undefinierte Samba SID festgestellt. Bitte beheben Sie dieses Problem manuell!"
 
@@ -558,36 +557,36 @@ msgstr "Was ist die erlaubte Zeit zum Verbinden"
 msgid "Edit settings"
 msgstr "Einstellungen bearbeiten"
 
-#: personal/samba/class_sambaAccount.inc:350
+#: personal/samba/class_sambaAccount.inc:352
 msgid "System trust"
 msgstr "System-Vertrauen"
 
-#: personal/samba/class_sambaAccount.inc:356
+#: personal/samba/class_sambaAccount.inc:358
 msgid "Allow connection from these workstations only"
 msgstr "Erlaube Verbindungen nur von diesen Arbeitsstationen"
 
-#: personal/samba/class_sambaAccount.inc:356
+#: personal/samba/class_sambaAccount.inc:358
 msgid "Only allow this user to connect to this list of hosts"
 msgstr "Nur diesem Benutzer erlauben, dieser Liste von Hosts zu verbinden"
 
-#: personal/samba/class_sambaAccount.inc:472
+#: personal/samba/class_sambaAccount.inc:474
 msgid "Home drive"
 msgstr "Basis-Laufwerk"
 
-#: personal/samba/class_sambaAccount.inc:475
+#: personal/samba/class_sambaAccount.inc:477
 msgid "Home path"
 msgstr "Basis-Pfad"
 
-#: personal/samba/class_sambaAccount.inc:480
+#: personal/samba/class_sambaAccount.inc:482
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr "Der Windows Benutzermanager erlaubt maximal acht Clients!"
 
-#: personal/samba/class_sambaAccount.inc:523
+#: personal/samba/class_sambaAccount.inc:525
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr "Kann primäre Gruppe nicht in Samba-Gruppe überführen: die Gruppe kann nicht identifiziert werden!"
 
-#: personal/samba/class_sambaAccount.inc:543
+#: personal/samba/class_sambaAccount.inc:545
 msgid ""
 "Cannot convert primary group to samba group: group samba tab is disabled!"
 msgstr ""

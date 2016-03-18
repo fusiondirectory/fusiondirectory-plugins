@@ -1,0 +1,13 @@
+
+attributetype ( 1.3.6.1.4.1.38414.56.1.1 NAME 'fdNewsletterSubscriptions'
+  DESC 'FusionDirectory - List of newsletters a user is subscribed to'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+# Object Class
+objectclass ( 1.3.6.1.4.1.38414.56.2.1 NAME 'fdNewsletterAccount'
+  DESC 'FusionDirectory - A user account for newsletter plugin'
+  SUP top AUXILIARY
+  MUST ( )
+  MAY ( fdNewsletterSubscriptions ) )

@@ -22,11 +22,6 @@
 */
 
 /*! \brief   nagios plugin
-  \author  Guillame Delecourt <guillaume@opensides.be>
-  \author  Benoit Mortier <benoit.mortier@opensides.be>
-  \author  Vincent Seynhaeve <vincent@opensides.be>
-  \version 1.00
-  \date    25.09.2005
 
   This class provides the functionality to read and write all attributes
   relevant for nagiosAccount from/to the LDAP. It does syntax checking
@@ -44,8 +39,8 @@ class nagiosAccount extends simplePlugin
     return array(
       'plShortName'   => _('Nagios'),
       'plDescription' => _('Nagios account settings'),
-      'plIcon'        => 'plugins/nagios/images/icon.png',
-      'plSmallIcon'   => 'plugins/nagios/images/iconMini.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=nagios&size=48',
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=nagios&size=16',
       'plSelfModify'  => TRUE,
       'plPriority'    => 7,
       'plObjectType'  => array('user'),

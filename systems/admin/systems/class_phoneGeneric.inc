@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015 FusionDirectory
+  Copyright (C) 2015-2016 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class phoneGeneric extends simplePlugin
+class phoneGeneric extends systemSimplePluginGlue
 {
   var $mainTab = TRUE;
 
@@ -99,7 +99,7 @@ class phoneGeneric extends simplePlugin
 
   function compute_dn ()
   {
-    return 'cn='.$this->cn.','.get_ou('phoneRDN').$this->base;
+    return 'cn='.ldap_escape_dn($this->cn).','.get_ou('phoneRDN').$this->base;
   }
 
   function resetCopyInfos()

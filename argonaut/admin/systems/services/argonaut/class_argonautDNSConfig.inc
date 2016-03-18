@@ -27,12 +27,11 @@ class argonautDNSConfig extends simpleService
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Argonaut DNS settings"),
-      "plDescription"   => _("Argonaut DNS settings")." ("._("Services").")",
-      "plIcon"          => "plugins/argonaut/images/iconMiniDnsConfig.png",
+      'plShortName'     => _('Argonaut DNS settings'),
+      'plDescription'   => _('Argonaut DNS settings').' ('._('Services').')',
+      'plIcon'          => 'geticon.php?context=applications&icon=argonaut-dns&size=16',
 
-
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 

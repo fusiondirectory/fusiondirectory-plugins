@@ -41,6 +41,11 @@ class dnsConfig extends simplePlugin
       'main' => array(
         'name'  => _('DNS config'),
         'attrs' => array(
+          new StringAttribute (
+            _('DNS RDN'), _('Branch in which DNS zones will be stored'),
+            'fdDnsRDN', TRUE,
+            'ou=dns'
+          ),
           new BooleanAttribute (
             _('Store final dot in domains'), _('Should FD store a final dot at the end of domains?'),
             'fdDNSFinalDot', FALSE,

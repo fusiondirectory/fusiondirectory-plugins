@@ -31,13 +31,13 @@ class opsiSoftwareList extends simplePlugin
     return array(
       'plShortName'   => _('OPSI list'),
       'plDescription' => _('OPSI software list'),
-      'plIcon'        => 'plugins/opsi/images/iconMiniSoftwareList.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=opsi-software-list&size=16',
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('opsiSoftwareList' => array(
         'name'    => _('OPSI software list'),
         'filter'  => 'objectClass=opsiSoftwareList',
         'ou'      => get_ou('opsiRDN'),
-        'icon'    => 'plugins/opsi/images/iconMiniSoftwareList.png'
+        'icon'    => 'geticon.php?context=applications&icon=opsi-software-list&size=16',
       )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -95,11 +95,6 @@ class opsiSoftwareList extends simplePlugin
 
     $this->attributesAccess['cn']->setUnique(TRUE);
     $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setSubmitForm('product_changed');
-  }
-
-  public function compute_dn ()
-  {
-    return 'cn='.$this->cn.','.get_ou('opsiRDN').$this->config->current['BASE'];
   }
 
   public function server_changed ($opsi_args = NULL)

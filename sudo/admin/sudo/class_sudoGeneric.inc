@@ -120,12 +120,12 @@ class sudo extends simplePlugin
     return array(
       'plShortName'   => _('Sudo'),
       'plDescription' => _('Sudo role'),
-      'plIcon'        => 'plugins/sudo/images/icon.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=sudo&size=48',
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('sudo' => array(
         'name'      => _('Sudo role'),
         'filter'    => 'objectClass=sudoRole',
-        'icon'      => 'plugins/sudo/images/iconMini.png',
+        'icon'      => 'geticon.php?context=applications&icon=sudo&size=16',
         'ou'        => get_ou('sudoRDN'),
         'tabClass'  => 'sudotabs',
       )),
@@ -228,11 +228,6 @@ class sudo extends simplePlugin
   public function is_default()
   {
     return preg_match("/^defaults$/i", $this->attributesAccess['cn']->getValue());
-  }
-
-  public function compute_dn()
-  {
-    return 'cn='.$this->cn.','.get_ou('sudoRDN').$this->config->current['BASE'];
   }
 }
 

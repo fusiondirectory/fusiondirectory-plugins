@@ -32,7 +32,7 @@ class aliasManagement extends simpleManagement
     return array(
       'plShortName'   => _('Aliases'),
       'plDescription' => _('Alias management'),
-      'plIcon'        => 'plugins/alias/images/icon.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=alias&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 26,
       'plCategory'    => array('alias' => array('description'  => _('Mail aliases'),

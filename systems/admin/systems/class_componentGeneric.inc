@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class componentGeneric extends simplePlugin
+class componentGeneric extends systemSimplePluginGlue
 {
   var $objectclasses = array("top", "device", "ipHost", "ieee802Device");
 
@@ -89,7 +89,7 @@ class componentGeneric extends simplePlugin
   /* Returns the dn of the entry */
   function compute_dn()
   {
-    return 'cn='.$this->cn.','.get_ou('componentRDN').$this->base;
+    return 'cn='.ldap_escape_dn($this->cn).','.get_ou('componentRDN').$this->base;
   }
 
   function resetCopyInfos()

@@ -34,7 +34,7 @@ class buildRepository extends simplePlugin
         'filter'      => 'objectClass=fdBuildRepository',
         'aclCategory' => 'repository',
         'ou'          => get_ou('repositoryRDN'),
-        'icon'        => 'plugins/repository/images/iconMini.png'
+        'icon'        => 'geticon.php?context=applications&icon=repository&size=16'
       )),
       'plForeignKeys'  => array(
         'fdRepoAdmin'     => 'user',
@@ -119,12 +119,6 @@ class buildRepository extends simplePlugin
       }
     }
     $this->attributesAccess['fdRepoDistributionSection']->attribute->setChoices(array_values($choices));
-  }
-
-  /* Returns the dn of the entry */
-  function compute_dn()
-  {
-    return 'cn='.$this->attributesAccess['cn']->getValue().','.get_ou('repositoryRDN').$this->base;
   }
 
   function foreignKeyCheck ($field, $fieldvalue, $source)

@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
   Copyright (C) 2010 Antoine Gallavardin
-  Copyright (C) 2011-2015 FusionDirectory project
+  Copyright (C) 2011-2016 FusionDirectory project
  
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ class opsiImport extends systemImport
     return array(
       'plShortName'   => _('OPSI import'),
       'plDescription' => _('Import windows stations from OPSI into FD'),
-      'plIcon'        => 'plugins/opsi/images/icon.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=opsi&size=48',
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('opsiImport' => array('name' => _('OPSI import'))),
       'plSection'     => 'conf',

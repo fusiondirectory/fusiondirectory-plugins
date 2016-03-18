@@ -65,13 +65,13 @@ class opsiProfile extends simplePlugin
     return array(
       'plShortName'   => _('OPSI profile'),
       'plDescription' => _('OPSI profile'),
-      'plIcon'        => 'plugins/opsi/images/iconMini.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=opsi&size=16',
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('opsiProfile' => array(
         'name'    => _('OPSI profile'),
         'filter'  => 'objectClass=opsiProfile',
         'ou'      => get_ou('opsiRDN'),
-        'icon'    => 'plugins/opsi/images/iconMini.png'
+        'icon'    => 'geticon.php?context=applications&icon=opsi&size=16',
       )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -117,11 +117,6 @@ class opsiProfile extends simplePlugin
     parent::__construct($config, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
-  }
-
-  public function compute_dn ()
-  {
-    return 'cn='.$this->cn.','.get_ou('opsiRDN').$this->config->current['BASE'];
   }
 
   /* Returns list of all products installed by this profile */

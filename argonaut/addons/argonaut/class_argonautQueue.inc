@@ -40,7 +40,7 @@ class argonautQueue extends simpleManagement
     return array(
       'plShortName'   => _('Deployment queue'),
       'plDescription' => _('Provide a mechanism to automatically activate systems'),
-      'plIcon'        => 'plugins/argonaut/images/icon.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=argonaut&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 30,
       'plCategory'    => array('argonautQueue' => array('objectClass' => 'none', 'description' => _('Deployment queue'))),

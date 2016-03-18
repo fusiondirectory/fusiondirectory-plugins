@@ -5,12 +5,12 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-109\n"
+"Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-01-22 11:59+0100\n"
-"PO-Revision-Date: 2015-05-30 13:46+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Persian (Iran) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/fa_IR/)\n"
+"POT-Creation-Date: 2016-03-14 12:06+0100\n"
+"PO-Revision-Date: 2016-01-22 15:53+0000\n"
+"Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
+"Language-Team: Persian (Iran) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fa_IR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -91,32 +91,32 @@ msgstr ""
 msgid "The localboot products to install with this list"
 msgstr ""
 
-#: admin/opsi/class_opsiSoftwareList.inc:114
+#: admin/opsi/class_opsiSoftwareList.inc:109
 #: admin/opsi/class_opsiProductProperties.inc:176
-#: admin/opsi/class_opsiProfile.inc:164
+#: admin/opsi/class_opsiProfile.inc:159
 msgid "Could not contact argonaut server"
 msgstr ""
 
-#: admin/opsi/class_opsiSoftwareList.inc:126
-#: admin/opsi/class_opsiProfile.inc:176 addons/opsi/class_opsiImport.inc:74
+#: admin/opsi/class_opsiSoftwareList.inc:121
+#: admin/opsi/class_opsiProfile.inc:171 addons/opsi/class_opsiImport.inc:74
 msgid "No mac address"
 msgstr ""
 
-#: admin/opsi/class_opsiSoftwareList.inc:127
-#: admin/opsi/class_opsiProfile.inc:177
+#: admin/opsi/class_opsiSoftwareList.inc:122
+#: admin/opsi/class_opsiProfile.inc:172
 #, php-format
 msgid "Server %s has no mac address configured in the LDAP"
 msgstr ""
 
-#: admin/opsi/class_opsiSoftwareList.inc:133
-#: admin/opsi/class_opsiProfile.inc:149 admin/opsi/class_opsiProfile.inc:183
+#: admin/opsi/class_opsiSoftwareList.inc:128
+#: admin/opsi/class_opsiProfile.inc:144 admin/opsi/class_opsiProfile.inc:178
 #, php-format
 msgid "Could not find %s in the LDAP"
 msgstr ""
 
-#: admin/opsi/class_opsiSoftwareList.inc:141
+#: admin/opsi/class_opsiSoftwareList.inc:136
 #: admin/opsi/class_opsiProductProperties.inc:192
-#: admin/opsi/class_opsiProfile.inc:191
+#: admin/opsi/class_opsiProfile.inc:186
 msgid "Failed to contact OPSI server"
 msgstr ""
 
@@ -163,7 +163,7 @@ msgstr ""
 msgid "Software lists that will be installed with this profile"
 msgstr ""
 
-#: admin/opsi/class_opsiProfile.inc:211
+#: admin/opsi/class_opsiProfile.inc:206
 #, php-format
 msgid "%s (%s)"
 msgstr ""

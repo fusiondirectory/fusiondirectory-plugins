@@ -36,7 +36,7 @@ class etablissement extends simplePlugin
         'filter'      => '(&(objectClass=supannEntite)(objectClass=organization))',
         'ou'          => get_ou('supannStructuresRDN'),
         'mainAttr'    => 'supannCodeEntite',
-        'icon'        => 'plugins/supann/images/iconMiniEtablissement.png',
+        'icon'        => 'geticon.php?context=applications&icon=supann-etablissement&size=16',
         'nameAttr'    => 'o',
       )),
 
@@ -72,7 +72,7 @@ class etablissement extends simplePlugin
             _('Location'), _('Usually the city where this Establishment is'),
             'l', FALSE
           ),
-          new TextAreaAttribute(
+          new PostalAddressAttribute(
             _('Address'), _('The postal address of this Establishment'),
             'postalAddress', FALSE
           ),
@@ -198,11 +198,6 @@ class etablissement extends simplePlugin
         msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
       }
     }
-  }
-
-  function compute_dn()
-  {
-    return 'supannCodeEntite='.$this->supannCodeEntite.','.get_ou('supannStructuresRDN').$this->config->current['BASE'];
   }
 
   function get_root_code()

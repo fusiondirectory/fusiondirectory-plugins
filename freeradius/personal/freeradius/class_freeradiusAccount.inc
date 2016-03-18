@@ -2,6 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2009 GONICUS GmbH
+  Copyright (C) 2012 WILLIAME Jeremy
   Copyright (C) 2011-2016  FusionDirectory
  
   This program is free software; you can redistribute it and/or modify
@@ -19,18 +20,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-/*!
- * \file class_freeradiusAccount.inc
- * Source code for class freeradiusAccount
- */
-
-/*!
- * \brief   FreeRadius plugin
- * \author  WILLIAME Jeremy <williamejeremy@hotmail.com>, Alejandro Escanero Blanco <aescanero@gmail.com>
- * \version 0.01
- * \date    25.06.2012
- * \see simplePlugin
- */
 
 class freeradiusAccount extends simplePlugin {
 
@@ -45,8 +34,8 @@ class freeradiusAccount extends simplePlugin {
     return array(
       'plShortName'   => _('Freeradius'),
       'plDescription' => _('This Plugin is for Radius accounting based in FreeRadius'),
-      'plIcon'        => 'plugins/freeradius/images/icon.png',
-      'plSmallIcon'   => 'plugins/freeradius/images/iconMini.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=freeradius&size=48',
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=freeradius&size=16',
       'plSelfModify'  => TRUE,                  // Does this plugin have an owner that might be able to edit its entry
       'plPriority'    => 11,
       'plObjectType'  => array('user'),

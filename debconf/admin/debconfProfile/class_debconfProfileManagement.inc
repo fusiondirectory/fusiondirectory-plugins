@@ -31,7 +31,7 @@ class debconfProfileManagement extends simpleManagement
     return array(
       'plShortName'   => _('Debconf'),
       'plDescription' => _('Debconf profile management'),
-      'plIcon'        => 'plugins/debconf/images/icon.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=debconf&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 21,
       'plManages'     => array('debconfProfile'),

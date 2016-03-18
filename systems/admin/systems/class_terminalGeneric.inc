@@ -21,9 +21,30 @@
 
 class terminalGeneric extends workstationGeneric
 {
-  var $objectclasses = array("top", "gotoTerminal", "GOhard");
+  var $objectclasses = array('top', 'gotoTerminal', 'GOhard');
 
-  var $inheritance = array("gotoWorkstationTemplate" => "member", "gotoTerminalTemplate" => "member");
+  var $inheritance = array('gotoWorkstationTemplate' => 'member', 'gotoTerminalTemplate' => 'member');
+
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Terminal'),
+      'plDescription' => _('Terminal information'),
+      'plSelfModify'  => FALSE,
+      'plObjectType'  => array('terminal' =>
+        array(
+          'name'        => _('Terminal'),
+          'description' => _('Terminal'),
+          'filter'      => 'objectClass=gotoTerminal',
+          'icon'        => 'geticon.php?context=devices&icon=terminal&size=16',
+          'ou'          => get_ou('terminalRDN'),
+        )
+      ),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
 
   /*!
    *  \brief The main function : information about attributes
@@ -37,19 +58,24 @@ class terminalGeneric extends workstationGeneric
       $rdn = get_ou('terminalRDN');
     }
     $attributesInfo = parent::getAttributesInfo($word, $rdn);
-    $attributesInfo['servers']['attrs'][] = new SelectAttribute(
-      _('Root server'),
-      sprintf(_('The root server the terminal should be using'), $word),
-      'gotoTerminalPath',
-      FALSE
+    $attributesInfo['servers'] = array(
+      'name'  => _('Servers'),
+      'icon'  => 'geticon.php?context=devices&icon=server&size=16',
+      'attrs' => array(
+        new SelectAttribute(
+          _('Root server'),
+          sprintf(_('The root server the terminal should be using'), $word),
+          'gotoTerminalPath',
+          FALSE
+        ),
+        new SelectAttribute(
+          _('Swap server'),
+          sprintf(_('The swap server the terminal should be using'), $word),
+          'gotoSwapServer',
+          FALSE
+        )
+      )
     );
-    $attributesInfo['servers']['attrs'][] = new SelectAttribute(
-      _('Swap server'),
-      sprintf(_('The swap server the terminal should be using'), $word),
-      'gotoSwapServer',
-      FALSE
-    );
-    $attributesInfo['actions']['attrs'][0]->setIsTerminal(TRUE);
     $attributesInfo['remote_desktop'] = array(
       'name'  => _('Remote desktop'),
       'icon'  => 'geticon.php?context=devices&icon=server&size=16',
@@ -72,27 +98,6 @@ class terminalGeneric extends workstationGeneric
     );
     $attributesInfo['remote_desktop']['attrs'][0]->setSubmitForm(TRUE);
     return $attributesInfo;
-  }
-
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('Terminal'),
-      'plDescription' => _('Terminal information'),
-      'plSelfModify'  => FALSE,
-      'plObjectType'  => array('terminal' =>
-        array(
-          'name'        => _('Terminal'),
-          'description' => _('Terminal'),
-          'filter'      => 'objectClass=gotoTerminal',
-          'icon'        => 'geticon.php?context=devices&icon=terminal&size=16',
-          'ou'          => get_ou('terminalRDN'),
-        )
-      ),
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-    );
   }
 
   function __construct (&$config, $dn = NULL, $object = NULL)
@@ -133,7 +138,7 @@ class terminalGeneric extends workstationGeneric
   /* Returns the dn of the entry */
   function compute_dn()
   {
-    return 'cn='.$this->cn.','.get_ou('terminalRDN').$this->base;
+    return 'cn='.ldap_escape_dn($this->cn).','.get_ou('terminalRDN').$this->base;
   }
 
   function execute()

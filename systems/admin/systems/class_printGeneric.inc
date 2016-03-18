@@ -204,10 +204,85 @@ class printgeneric extends plugin
     $this->baseSelector->update(TRUE);
   }
 
+  public function __get($name)
+  {
+    if ($name == 'ipHostNumber') {
+      return array_merge(array($this->netConfigDNS->$name), $this->netConfigDNS->additionalHostNumbers);
+    } elseif ($name == 'macAddress') {
+      return array($this->netConfigDNS->$name);
+    } else {
+      return parent::__get($name);
+    }
+  }
+
+  public function __set($name, $value)
+  {
+    if ($name == 'ipHostNumber') {
+      if (is_array($value)) {
+        $this->netConfigDNS->$name                  = array_shift($value);
+        $this->netConfigDNS->additionalHostNumbers  = $value;
+      } else {
+        $this->netConfigDNS->$name = $value;
+      }
+    } elseif ($name == 'macAddress') {
+      if (is_array($value)) {
+        $value = $value[0];
+      }
+      $this->netConfigDNS->$name = $value;
+    } else {
+      return parent::__set($name, $value);
+    }
+  }
+
+  public function __isset($name)
+  {
+    if (($name == 'ipHostNumber') || ($name == 'macAddress')) {
+      return isset($this->netConfigDNS->$name);
+    } else {
+      return parent::__isset($name);
+    }
+  }
+
+  protected function attributeHaveChanged($field)
+  {
+    if ($field == 'ipHostNumber') {
+      return array_differs($this->attributeInitialValue($field), $this->attributeValue($field));
+    } elseif ($field == 'cn') {
+      return ($this->attributeInitialValue($field) != $this->attributeValue($field));
+    } else {
+      return parent::attributeHaveChanged($field);
+    }
+  }
+
+  protected function attributeValue($field)
+  {
+    if (($field == 'ipHostNumber') || ($field == 'cn')) {
+      return $this->$field;
+    } else {
+      return parent::attributeValue($field);
+    }
+  }
+
+  protected function attributeInitialValue($field)
+  {
+    if ($field == 'ipHostNumber') {
+      $initialValue = $this->netConfigDNS->saved_attributes['ipHostNumber'];
+      if (is_array($initialValue)) {
+        return $initialValue;
+      } else {
+        return array($initialValue);
+      }
+    } elseif ($field == 'cn') {
+      return $this->saved_attributes['cn'];
+    } else {
+      return parent::attributeInitialValue($field);
+    }
+  }
+
   /* Returns the dn of the entry */
   function compute_dn()
   {
-    return 'cn='.$this->cn.','.get_ou('printerRDN').$this->base;
+    return 'cn='.ldap_escape_dn($this->cn).','.get_ou('printerRDN').$this->base;
   }
 
   function set_acl_base($base)

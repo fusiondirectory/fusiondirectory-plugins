@@ -32,8 +32,8 @@ class pureftpdAccount extends simplePlugin
     return array(
       'plShortName'     => _('Ftp'),
       'plDescription'   => _('Pure ftp account').'&nbsp;('._('Connectivity addon').')',
-      'plIcon'          => 'plugins/pureftpd/images/icon.png',
-      'plSmallIcon'     => 'plugins/pureftpd/images/iconMini.png',
+      'plIcon'          => 'geticon.php?context=applications&icon=pureftpd&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=pureftpd&size=16',
       'plSelfModify'    => TRUE,
       'plPriority'      => 10,
       'plObjectType'    => array('user'),

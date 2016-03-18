@@ -1,0 +1,13 @@
+
+attributetype ( 1.3.6.1.4.1.38414.53.1.1 NAME 'fdCommunityMembershipTypeChoices'
+  DESC 'FusionDirectory - List of membership types selectable in the community tab on users'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+# Object Class
+objectclass ( 1.3.6.1.4.1.38414.53.2.1 NAME 'fdCommunityPluginConf'
+  DESC 'FusionDirectory community plugin configuration'
+  SUP top AUXILIARY
+  MUST ( )
+  MAY ( fdCommunityMembershipTypeChoices ) )
