@@ -191,10 +191,14 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       if (isset($attrs[$type]['count'])) {
         for ($i = 0; $i < $attrs[$type]['count']; $i++) {
           $this->value[] = array('', $type, $attrs[$type][$i], '');
-        }
-        if (in_array($type, DnsRecordAttribute::$reverseTypes)) {
-          end($this->value);
-          $aRecords[$type]['@'] = key($this->value);
+          if (in_array($type, DnsRecordAttribute::$reverseTypes)) {
+            end($this->value);
+            $ip = $attrs[$type][$i];
+            if ($type == 'aAAARecord') {
+              $ip = expandIPv6($ip);
+            }
+            $aRecords[$type]['@'.$ip] = key($this->value);
+          }
         }
       }
     }
@@ -209,10 +213,14 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
           }
           for ($j = 0; $j < $subattrs[$type]['count']; $j++) {
             $this->value[] = array($subattrs['relativeDomainName'][0], $type, $subattrs[$type][$j], '');
-          }
-          if (in_array($type, DnsRecordAttribute::$reverseTypes)) {
-            end($this->value);
-            $aRecords[$type][$subattrs['relativeDomainName'][0]] = key($this->value);
+            if (in_array($type, DnsRecordAttribute::$reverseTypes)) {
+              end($this->value);
+              $ip = $subattrs[$type][$j];
+              if ($type == 'aAAARecord') {
+                $ip = expandIPv6($ip);
+              }
+              $aRecords[$type][$subattrs['relativeDomainName'][0].$ip] = key($this->value);
+            }
           }
         }
       }
@@ -231,6 +239,16 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       }
       foreach ($reverseZones as $reverseZoneDn => $reverseZoneName) {
         $ipv6 = preg_match('/ip6/', $reverseZoneName);
+        $baseIp = preg_replace('/\.(in-addr|ip6)\.arpa\.?$/i', '', $reverseZoneName);
+        if (preg_match('/^([[:digit:]]+[-\/][[:digit:]]+).([\.[:digit:]]+)$/', $baseIp, $m)) {
+          /* Reverse zone using rfc2317 with - or / */
+          $baseIp = $m[2];
+        }
+        if ($ipv6) {
+          $baseIp = implode(':', array_map('implode', array_chunk(array_reverse(explode('.', $baseIp)), 4)));
+        } else {
+          $baseIp = implode('.', array_reverse(explode('.', $baseIp)));
+        }
         $ldap->ls('(objectClass=dNSZone)', $reverseZoneDn, array('relativeDomainName', 'pTRRecord'));
         while ($subattrs = $ldap->fetch()) {
           unset($subattrs['pTRRecord']['count']);
@@ -240,31 +258,21 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
             } else {
               $name = preg_replace('/\.'.preg_quote($attrs['zoneName'][0]).'$/', '', $ptrRecord);
             }
-            if ($ipv6 && isset($aRecords['aAAARecord'][$name])) {
-              $this->value[$aRecords['aAAARecord'][$name]][3] = $reverseZoneName;
-            } elseif (!$ipv6 && isset($aRecords['aRecord'][$name])) {
-              $this->value[$aRecords['aRecord'][$name]][3] = $reverseZoneName;
+            if ($ipv6) {
+              $ip = $baseIp.':'.implode(':', array_map('implode', array_chunk(array_reverse(explode('.', $subattrs['relativeDomainName'][0])), 4)));
+            } else {
+              $ip = $baseIp.'.'.implode('.', array_reverse(explode('.', $subattrs['relativeDomainName'][0])));
+            }
+            if ($ipv6 && isset($aRecords['aAAARecord'][$name.$ip])) {
+              $this->value[$aRecords['aAAARecord'][$name.$ip]][3] = $reverseZoneName;
+            } elseif (!$ipv6 && isset($aRecords['aRecord'][$name.$ip])) {
+              $this->value[$aRecords['aRecord'][$name.$ip]][3] = $reverseZoneName;
             }
           }
         }
       }
     }
-    usort(
-      $this->value,
-      function ($value1, $value2) {
-        if ($value1[0] == $value2[0]) {
-          if ($value1[1] < $value2[1]) {
-            return -1;
-          } else {
-            return 1;
-          }
-        } elseif ($value1[0] < $value2[0]) {
-          return -1;
-        } else {
-          return 1;
-        }
-      }
-    );
+    sort($this->value);
   }
 
   function fillLdapValue (&$attrs)
