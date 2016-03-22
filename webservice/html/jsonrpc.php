@@ -324,7 +324,7 @@ class fdRPCService
   }
 
   /*!
-   * \brief Update values of an object's attributes
+   * \brief Update values of an object's attributes using POST as if the webpage was sent
    */
   protected function _update($type, $dn, $tab, $values)
   {
@@ -349,6 +349,41 @@ class fdRPCService
       $_POST[$tab.'_modify_state'] = 1;
     }
     $tabobject->save_object();
+    $errors = $tabobject->check();
+    if (!empty($errors)) {
+      return array('errors' => $errors);
+    }
+    $tabobject->save();
+    return $tabobject->dn;
+  }
+
+  /*!
+   * \brief Set internal values of an object's attributes and save it
+   */
+  protected function _setfields($type, $dn, $tab, $values)
+  {
+    $this->checkAccess($type, $tab, $dn);
+
+    if ($dn === NULL) {
+      $tabobject = objects::create($type);
+    } else {
+      $tabobject = objects::open($dn, $type);
+    }
+    if ($tab === NULL) {
+      $tab = $tabobject->current;
+    } else {
+      $tabobject->current = $tab;
+    }
+    if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
+        $tabobject->by_object[$tab]->displayHeader &&
+        !$tabobject->by_object[$tab]->is_account
+      ) {
+      $tabobject->by_object[$tab]->is_account = TRUE;
+    }
+    foreach ($values as $field => $value) {
+      $tabobject->by_object[$tab]->$field = $value;
+    }
+    $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases is needed */
     $errors = $tabobject->check();
     if (!empty($errors)) {
       return array('errors' => $errors);
