@@ -28,7 +28,7 @@ class winstationGeneric extends systemSimplePluginGlue
 
   var $objectclasses = array('posixAccount','account','sambaSamAccount','top');
 
-  var $preInitAttributes = array('cn', 'networkSettings');
+  var $preInitAttributes = array('uid', 'cn', 'networkSettings');
 
   /* Return plugin informations for acl handling */
   static function plInfo()
