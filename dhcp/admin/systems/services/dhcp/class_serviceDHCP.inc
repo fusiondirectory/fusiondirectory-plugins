@@ -526,7 +526,7 @@ class serviceDHCP extends simpleService
           if (in_array($object, $data['objectClass']) && isset($data['dhcpOption'])) {
             foreach ($data['dhcpOption'] as $key => $option) {
               if (preg_match('/^server-name /', $option)) {
-                $data['dhcpOption'][$key] = 'server-name '.$this->getCn();
+                $data['dhcpOption'][$key] = 'server-name '.$this->parent->parent->getBaseObject()->cn;
                 $data['MODIFIED'] = TRUE;
                 break;
               }
