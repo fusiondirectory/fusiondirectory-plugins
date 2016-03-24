@@ -57,12 +57,12 @@ class DnsRecordPlugin extends simplePlugin
       $this->dnsRecord              = $value;
     } elseif (!($parent instanceof dnsZone)) {
       /* Read default values from system: cn and IPs */
-      $this->relativeSubdomainName = $parent->parent->getBaseObject()->cn;
+      $this->relativeSubdomainName = preg_replace('/\$$/', '', $parent->parent->getBaseObject()->cn);
       $ips = $parent->parent->getBaseObject()->ipHostNumber;
       $this->attributesAccess['dnsRecord']->setParentIPs(
         array_filter($ips, 'tests::is_ipv4'),
         array_filter($ips, 'tests::is_ipv6'),
-        $parent->parent->getBaseObject()->cn.'.'.$attribute->getZoneName()
+        $this->relativeSubdomainName.'.'.$attribute->getZoneName()
       );
     }
     $this->attributesAccess['dnsRecord']->attributes[2]->setChoices($attribute->getReverseZones());
