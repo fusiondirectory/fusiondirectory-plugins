@@ -92,6 +92,11 @@ class MungedAttribute extends Attribute
     }
     return $this->mungedObject->getMunged();
   }
+
+  function getAttrList()
+  {
+    return array_merge($this->attrList, $this->flagList);
+  }
 }
 
 class SambaFlagsAttribute extends FlagsAttribute
@@ -590,6 +595,15 @@ class sambaAccount extends simplePlugin
     parent::adapt_from_template($attrs, $skip);
 
     $this->sambaSID = "";
+  }
+
+  /* Returns TRUE if this attribute should be asked in the creation by template dialog */
+  function showInTemplate($attr, $templateAttrs)
+  {
+    if (in_array($attr, $this->attributesAccess['sambaMungedDial']->getAttrList())) {
+      return FALSE;
+    }
+    return parent::showInTemplate($attr, $templateAttrs);
   }
 }
 
