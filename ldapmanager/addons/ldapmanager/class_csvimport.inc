@@ -275,10 +275,8 @@ class csvimport extends simplePlugin
           /* attach all elements to data array */
           if (is_array($cells)) {
             foreach ($cells as $cell) {
-              if (!empty($cell)) {
-                $cnt ++;
-                $line_data[] = trim($cell);
-              }
+              $cnt++;
+              $line_data[] = trim($cell);
             }
           }
 
