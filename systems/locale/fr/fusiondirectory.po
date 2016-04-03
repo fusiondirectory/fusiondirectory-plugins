@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-03-14 12:06+0100\n"
-"PO-Revision-Date: 2016-03-01 17:15+0000\n"
+"POT-Creation-Date: 2016-04-03 16:52+0200\n"
+"PO-Revision-Date: 2016-03-25 18:07+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -27,28 +27,25 @@ msgid "Locked"
 msgstr "Verrouillé"
 
 #: admin/ogroups/goto/class_termgroup.inc:101
-#: admin/systems/class_terminalGeneric.inc:126
+#: admin/systems/class_terminalGeneric.inc:125
 msgid "Local swap"
 msgstr "Swap local"
 
 #: admin/ogroups/goto/class_termgroup.inc:107
 #: admin/ogroups/goto/class_termgroup.inc:119
-#: admin/systems/class_terminalGeneric.inc:114
-#: admin/systems/class_terminalGeneric.inc:130
+#: admin/systems/class_terminalGeneric.inc:113
+#: admin/systems/class_terminalGeneric.inc:129
 msgid "inherited"
 msgstr "hérité"
 
 #: admin/ogroups/goto/class_termgroup.inc:185
-#: admin/systems/class_workstationGeneric.inc:68
-#: admin/systems/class_workstationGeneric.inc:410
-#: admin/systems/class_systemManagement.inc:191
-#: admin/systems/class_systemManagement.inc:217
+#: admin/systems/class_workstationGeneric.inc:276
+#: admin/systems/class_systemManagement.inc:184
+#: admin/systems/class_systemManagement.inc:208
 msgid "Infrastructure service"
 msgstr "Service d’infrastructure"
 
 #: admin/ogroups/goto/class_termgroup.inc:189
-#: admin/systems/class_workstationGeneric.inc:71
-#: admin/systems/class_workstationGeneric.inc:74
 msgid "Event error"
 msgstr "Erreur d'événement"
 
@@ -58,12 +55,10 @@ msgid "Event '%s' is not available!"
 msgstr "L'événement '%s' n'est pas disponible !"
 
 #: admin/ogroups/goto/class_termgroup.inc:221
-#: admin/systems/class_workstationGeneric.inc:108
 msgid "Switch off"
 msgstr "Éteindre"
 
 #: admin/ogroups/goto/class_termgroup.inc:221
-#: admin/systems/class_workstationGeneric.inc:109
 msgid "Reboot"
 msgstr "Redémarrer"
 
@@ -84,7 +79,6 @@ msgid "Reinstall"
 msgstr "Réinstaller"
 
 #: admin/ogroups/goto/class_termgroup.inc:226
-#: admin/systems/class_workstationGeneric.inc:104
 msgid "Memory test"
 msgstr "Test mémoire"
 
@@ -196,9 +190,9 @@ msgid "Server"
 msgstr "Serveur"
 
 #: admin/systems/system-list.xml:54 admin/systems/system-list.xml:201
-#: admin/systems/class_workstationGeneric.inc:217
-#: admin/systems/class_workstationGeneric.inc:222
-#: admin/systems/class_workstationGeneric.inc:223
+#: admin/systems/class_workstationGeneric.inc:120
+#: admin/systems/class_workstationGeneric.inc:125
+#: admin/systems/class_workstationGeneric.inc:126
 msgid "Workstation"
 msgstr "Station de travail"
 
@@ -242,7 +236,7 @@ msgid "IPMI"
 msgstr "IPMI"
 
 #: admin/systems/system-list.xml:128
-#: admin/systems/class_workstationGeneric.inc:250
+#: admin/systems/class_workstationGeneric.inc:153
 #: admin/systems/class_phoneGeneric.inc:59
 #: admin/systems/class_printGeneric.inc:832
 #: admin/systems/class_printGeneric.inc:842
@@ -267,7 +261,7 @@ msgid "MAC"
 msgstr "MAC"
 
 #: admin/systems/system-list.xml:152
-#: admin/systems/class_workstationGeneric.inc:256
+#: admin/systems/class_workstationGeneric.inc:159
 #: admin/systems/class_phoneGeneric.inc:63
 #: admin/systems/class_printGeneric.inc:1103
 #: admin/systems/class_componentGeneric.inc:67
@@ -337,85 +331,53 @@ msgstr "Éditer le système"
 msgid "Remove system"
 msgstr "Supprimer le système"
 
-#: admin/systems/class_workstationGeneric.inc:71
-#, php-format
-msgid "Event %s is not available!"
-msgstr "L'événement '%s' n'est pas disponible !"
-
-#: admin/systems/class_workstationGeneric.inc:74
-msgid "Events are not available!"
-msgstr "Les événements ne sont pas disponibles !"
-
-#: admin/systems/class_workstationGeneric.inc:102
-msgid "(Re)Install"
-msgstr "(Ré)installer"
-
-#: admin/systems/class_workstationGeneric.inc:103
-msgid "Software update"
-msgstr "Mise à jour logicielle"
-
-#: admin/systems/class_workstationGeneric.inc:111
-msgid "Wake up"
-msgstr "Réveiller"
-
-#: admin/systems/class_workstationGeneric.inc:218
+#: admin/systems/class_workstationGeneric.inc:121
 msgid "Workstation information"
 msgstr "Information de la station de travail"
 
-#: admin/systems/class_workstationGeneric.inc:240
+#: admin/systems/class_workstationGeneric.inc:143
 #: admin/systems/class_printGeneric.inc:684
 msgid "workstation"
 msgstr "station de travail"
 
-#: admin/systems/class_workstationGeneric.inc:247
+#: admin/systems/class_workstationGeneric.inc:150
 #: admin/systems/class_phoneGeneric.inc:56
 #: admin/systems/class_componentGeneric.inc:60
 #: admin/systems/class_mobilePhoneGeneric.inc:60
 msgid "Properties"
 msgstr "Propriétés"
 
-#: admin/systems/class_workstationGeneric.inc:251
+#: admin/systems/class_workstationGeneric.inc:154
 #, php-format
 msgid "The name of the %s"
 msgstr "Le nom de ce %s"
 
-#: admin/systems/class_workstationGeneric.inc:257
+#: admin/systems/class_workstationGeneric.inc:160
 #, php-format
 msgid "A short description of the %s"
 msgstr "Une courte description de ce %s"
 
-#: admin/systems/class_workstationGeneric.inc:262
+#: admin/systems/class_workstationGeneric.inc:165
 #: admin/systems/class_printGeneric.inc:1104
 msgid "Location"
 msgstr "Lieu"
 
-#: admin/systems/class_workstationGeneric.inc:263
+#: admin/systems/class_workstationGeneric.inc:166
 #, php-format
 msgid "The location of the %s"
 msgstr "L'emplacement de ce %s"
 
-#: admin/systems/class_workstationGeneric.inc:269
+#: admin/systems/class_workstationGeneric.inc:172
 #, php-format
 msgid "Lock this %s"
 msgstr "Verrouiller ce %s"
 
-#: admin/systems/class_workstationGeneric.inc:270
+#: admin/systems/class_workstationGeneric.inc:173
 #, php-format
 msgid "This will prevent the %s from being reinstalled"
 msgstr "Ceci empêchera ce %s d'être réinstallé"
 
-#: admin/systems/class_workstationGeneric.inc:281
-#: admin/systems/class_workstationGeneric.inc:285
-#: admin/ogroups/goto/termgroup.tpl.c:29
-msgid "Action"
-msgstr "Action"
-
-#: admin/systems/class_workstationGeneric.inc:286
-#: admin/ogroups/goto/termgroup.tpl.c:32
-msgid "Select action to execute for this terminal"
-msgstr "Sélectionnez l'action à exécuter sur le terminal"
-
-#: admin/systems/class_workstationGeneric.inc:292
+#: admin/systems/class_workstationGeneric.inc:184
 #: admin/systems/class_phoneGeneric.inc:83
 #: admin/systems/class_componentGeneric.inc:74
 #: admin/systems/class_mobilePhoneGeneric.inc:106
@@ -544,7 +506,7 @@ msgstr "terminal"
 #: admin/systems/class_serverService.inc:224
 #: admin/systems/class_serverService.inc:270
 #: admin/systems/class_serverService.inc:393
-#: admin/systems/class_systemManagement.inc:234
+#: admin/systems/class_systemManagement.inc:224
 #: admin/systems/services/shares/class_serviceShare.inc:103
 #: admin/systems/class_networkSettings.inc:321
 #: admin/systems/class_networkSettings.inc:573
@@ -678,35 +640,35 @@ msgstr "Le serveur racine que le terminal doit utiliser"
 msgid "The swap server the terminal should be using"
 msgstr "Le serveur de swap que le terminal doit utiliser"
 
-#: admin/systems/class_terminalGeneric.inc:81
+#: admin/systems/class_terminalGeneric.inc:80
 msgid "Remote desktop"
 msgstr "Bureau distant"
 
-#: admin/systems/class_terminalGeneric.inc:85
+#: admin/systems/class_terminalGeneric.inc:84
 msgid "Connect method"
 msgstr "Méthode de connexion"
 
-#: admin/systems/class_terminalGeneric.inc:89
+#: admin/systems/class_terminalGeneric.inc:88
 msgid "XDMCP"
 msgstr "XDMCP"
 
-#: admin/systems/class_terminalGeneric.inc:89
+#: admin/systems/class_terminalGeneric.inc:88
 msgid "LDM"
 msgstr "LDM"
 
-#: admin/systems/class_terminalGeneric.inc:89
+#: admin/systems/class_terminalGeneric.inc:88
 msgid "Shell"
 msgstr "Shell"
 
-#: admin/systems/class_terminalGeneric.inc:89
+#: admin/systems/class_terminalGeneric.inc:88
 msgid "Telnet"
 msgstr "Telnet"
 
-#: admin/systems/class_terminalGeneric.inc:89
+#: admin/systems/class_terminalGeneric.inc:88
 msgid "Windows RDP"
 msgstr "Windows RDP"
 
-#: admin/systems/class_terminalGeneric.inc:93
+#: admin/systems/class_terminalGeneric.inc:92
 msgid "Terminal server"
 msgstr "Serveur de terminaux"
 
@@ -1013,53 +975,53 @@ msgstr "Numéro"
 msgid "Select this number"
 msgstr "Choisir ce numéro"
 
-#: admin/systems/class_systemManagement.inc:161
-#: admin/systems/class_systemManagement.inc:175
+#: admin/systems/class_systemManagement.inc:154
+#: admin/systems/class_systemManagement.inc:168
 msgid "Action canceled"
 msgstr "Action annulée"
 
-#: admin/systems/class_systemManagement.inc:161
+#: admin/systems/class_systemManagement.inc:154
 #, php-format
 msgid "System %s has no mac address defined, cannot trigger action"
 msgstr "Système %s n'a pas d'adresse mac définie, ne peut pas déclencher l'action"
 
-#: admin/systems/class_systemManagement.inc:175
+#: admin/systems/class_systemManagement.inc:168
 #, php-format
 msgid "System %s is currently installing"
 msgstr "Système %s est actuellement en cours d'installation"
 
-#: admin/systems/class_systemManagement.inc:291
-#: admin/systems/class_systemManagement.inc:366
-#: admin/systems/class_systemManagement.inc:456
-#: admin/systems/class_systemManagement.inc:503
-#: admin/systems/class_systemManagement.inc:524
+#: admin/systems/class_systemManagement.inc:281
+#: admin/systems/class_systemManagement.inc:356
+#: admin/systems/class_systemManagement.inc:446
+#: admin/systems/class_systemManagement.inc:493
+#: admin/systems/class_systemManagement.inc:514
 msgid "Permission"
 msgstr "Permission"
 
-#: admin/systems/class_systemManagement.inc:456
+#: admin/systems/class_systemManagement.inc:446
 #, php-format
 msgid "You are not allowed to create a snapshot for %s."
 msgstr "Vous n'êtes pas autorisé à créer un nouvel instantané pour %s."
 
-#: admin/systems/class_systemManagement.inc:503
-#: admin/systems/class_systemManagement.inc:524
+#: admin/systems/class_systemManagement.inc:493
+#: admin/systems/class_systemManagement.inc:514
 #, php-format
 msgid "You are not allowed to restore a snapshot for %s."
 msgstr "Vous n'êtes pas autorisé à restaurer un instantané de %s."
 
-#: admin/systems/class_systemManagement.inc:741
+#: admin/systems/class_systemManagement.inc:731
 #, php-format
 msgid "Inherited from %s"
 msgstr "Hérité de %s"
 
-#: admin/systems/class_systemManagement.inc:794
-#: admin/systems/class_systemManagement.inc:798
+#: admin/systems/class_systemManagement.inc:784
+#: admin/systems/class_systemManagement.inc:788
 #: addons/dashboard/class_dashBoardSystems.inc:199
 #: config/systems/class_systemsPluginConfig.inc:28
 msgid "Systems"
 msgstr "Systèmes"
 
-#: admin/systems/class_systemManagement.inc:795
+#: admin/systems/class_systemManagement.inc:785
 msgid "Systems Management"
 msgstr "Gestion des systèmes"
 
@@ -1520,6 +1482,14 @@ msgstr "Sélectionnez le système de fichier racine NFS à utiliser"
 #: admin/ogroups/goto/termgroup.tpl.c:26
 msgid "Choose NFS filesystem to place swap files on"
 msgstr "Sélectionnez le système de fichier NFS où sera placé le swap"
+
+#: admin/ogroups/goto/termgroup.tpl.c:29
+msgid "Action"
+msgstr "Action"
+
+#: admin/ogroups/goto/termgroup.tpl.c:32
+msgid "Select action to execute for this terminal"
+msgstr "Sélectionnez l'action à exécuter sur le terminal"
 
 #: admin/ogroups/goto/termgroup.tpl.c:35
 msgid "Execute"
