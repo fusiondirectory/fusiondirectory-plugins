@@ -34,7 +34,7 @@ class dnsManagement extends simpleManagement
       'plShortName'   => _('DNS'),
       'plDescription' => _('DNS Management'),
       'plIcon'        => 'geticon.php?context=applications&icon=dns&size=48',
-      'plSection'     => 'systems',
+      'plSection'     => array('systems' => array('name' => _('Systems'), 'priority' => 10)),
       'plPriority'    => 1,
       'plManages'     => array('dnsZone', 'dnsView', 'dnsAcl'),
 

@@ -381,7 +381,7 @@ sub ask_field
     } elsif ($type eq 'SelectAttribute') {
       print $field->{'label'}.":\n";
       my $i = 0;
-      my @keys = keys(%{$field->{'choices'}});
+      my @keys = sort(keys(%{$field->{'choices'}}));
       if (scalar(@keys) eq 0) {
         return '';
       }

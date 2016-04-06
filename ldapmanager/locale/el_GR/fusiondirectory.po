@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-03-14 12:06+0100\n"
-"PO-Revision-Date: 2016-01-22 16:05+0000\n"
+"POT-Creation-Date: 2016-04-05 14:27+0200\n"
+"PO-Revision-Date: 2016-04-05 12:25+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
@@ -114,7 +114,6 @@ msgid "You have no permission to export %s!"
 msgstr "Δεν έχετε άδεια για εξαγωγή %s!"
 
 #: addons/ldapmanager/class_ldapmanager.inc:178
-#: addons/ldapmanager/class_csvimport.inc:220
 msgid "Error"
 msgstr "Σφάλμα"
 
@@ -196,11 +195,16 @@ msgstr "Γέμισμα προτύπων"
 msgid "Select fields associations"
 msgstr "Επιλογή συσχετισμών πεδίων"
 
-#: addons/ldapmanager/class_csvimport.inc:229
+#: addons/ldapmanager/class_csvimport.inc:220
+#, php-format
+msgid "Import failed for line %d"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:228
 msgid "Success"
 msgstr "Επιτυχία"
 
-#: addons/ldapmanager/class_csvimport.inc:229
+#: addons/ldapmanager/class_csvimport.inc:228
 #, php-format
 msgid "Successfully imported %d entries"
 msgstr "Πετυχημένη εισαγωγή %d καταχωρήσεων"

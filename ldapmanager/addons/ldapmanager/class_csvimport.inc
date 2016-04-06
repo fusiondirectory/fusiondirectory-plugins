@@ -185,7 +185,7 @@ class csvimport extends simplePlugin
   function handle_import_submit_fields()
   {
     $success = 0;
-    foreach ($this->csv_data as $row) {
+    foreach ($this->csv_data as $rownumber => $row) {
       $values = array();
       foreach ($this->attributesAccess['fields']->attributes as $attribute) {
         preg_match('/^template_([^:]+):(.*)$/', $attribute->getLdapName(), $m);
@@ -216,9 +216,8 @@ class csvimport extends simplePlugin
       $tabObject = $this->template_object->apply();
       $msgs = $tabObject->check();
       if (count($msgs)) {
-        foreach ($msgs as $msg) {
-          msg_dialog::display(_("Error"), $msg, ERROR_DIALOG);
-        }
+        $msg = '<ul><li>'.implode('</li><li>', $msgs).'</li></ul>';
+        msg_dialog::display(sprintf(_('Import failed for line %d'), $rownumber), $msg, ERROR_DIALOG);
         break;
       } else {
         $tabObject->save();
@@ -275,10 +274,8 @@ class csvimport extends simplePlugin
           /* attach all elements to data array */
           if (is_array($cells)) {
             foreach ($cells as $cell) {
-              if (!empty($cell)) {
-                $cnt ++;
-                $line_data[] = trim($cell);
-              }
+              $cnt++;
+              $line_data[] = trim($cell);
             }
           }
 

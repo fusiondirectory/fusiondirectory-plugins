@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class winstationGeneric extends simplePlugin
+class winstationGeneric extends systemSimplePluginGlue
 {
   var $mainTab = TRUE;
 
@@ -28,7 +28,7 @@ class winstationGeneric extends simplePlugin
 
   var $objectclasses = array('posixAccount','account','sambaSamAccount','top');
 
-  var $preInitAttributes = array('networkSettings');
+  var $preInitAttributes = array('uid', 'cn', 'networkSettings');
 
   /* Return plugin informations for acl handling */
   static function plInfo()
@@ -153,13 +153,13 @@ class winstationGeneric extends simplePlugin
 
   function set_acl_base($base)
   {
-    plugin::set_acl_base($base);
+    parent::set_acl_base($base);
     $this->netConfigDNS->set_acl_base($base);
   }
 
   function set_acl_category($cat)
   {
-    plugin::set_acl_category($cat);
+    parent::set_acl_category($cat);
     $this->netConfigDNS->set_acl_category($cat);
   }
 

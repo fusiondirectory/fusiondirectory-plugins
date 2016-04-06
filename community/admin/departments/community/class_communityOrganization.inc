@@ -36,7 +36,18 @@ class communityOrganization extends simplePlugin
 
   static function getAttributesInfo ()
   {
+    global $config;
     return array(
+      'main' => array(
+        'name'  => _('Membership'),
+        'attrs' => array(
+          new SelectAttribute (
+            _('Membership type'), _('Membership type of this organization'),
+            'fdCommunityMembershipType', FALSE,
+            $config->get_cfg_value('communityMembershipTypeChoices', array())
+          )
+        )
+      ),
       'dates' => array(
         'name'  => _('Dates'),
         'attrs' => array(

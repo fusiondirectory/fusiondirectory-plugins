@@ -77,7 +77,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
       return $values;
     }
     $ips    = $this->plugin->parent->getBaseObject()->ipHostNumber;
-    $cn     = $this->plugin->parent->getBaseObject()->cn;
+    $cn     = preg_replace('/\$$/', '', $this->plugin->parent->getBaseObject()->cn);
     if (in_array($values[2], $ips) || ($values[0] == $cn) || preg_match('/'.preg_quote($cn.'.'.$this->getZoneName(), '/').'/', $value[2])) {
       return $values;
     } else {
@@ -183,6 +183,7 @@ class dnsHost extends simplePlugin
       } else {
         $cn = '';
       }
+      $cn = preg_replace('/\$$/', '', $cn);
       $this->attributesInfo['soa'] = array(
         'name'  => _('Primary servers'),
         'attrs' => array()
@@ -297,9 +298,9 @@ class dnsHost extends simplePlugin
     if ($this->initially_was_account) {
       $baseObject = $this->parent->getBaseObject();
       $message    = '';
-      $oldcn      = $baseObject->attributeInitialValue('cn');
+      $oldcn      = preg_replace('/\$$/', '', $baseObject->attributeInitialValue('cn'));
       if ($baseObject->attributeHaveChanged('cn') && !empty($oldcn)) {
-        $newcn      = $baseObject->attributeValue('cn');
+        $newcn      = preg_replace('/\$$/', '', $baseObject->attributeValue('cn'));
         $dnsZones   = $this->fdDNSZoneDn;
         foreach ($dnsZones as $dn) {
           $tabObject = objects::open($dn, 'dnsZone');

@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Penati <penati@avaya.com>, 2016
+# Paola Penati <penati@avaya.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-03-14 14:19+0100\n"
-"PO-Revision-Date: 2016-03-14 13:23+0000\n"
-"Last-Translator: Penati <penati@avaya.com>\n"
+"POT-Creation-Date: 2016-04-05 14:27+0200\n"
+"PO-Revision-Date: 2016-04-05 14:24+0000\n"
+"Last-Translator: Paola Penati <penati@avaya.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,78 +54,69 @@ msgstr "Organizzazione della comunità"
 msgid "Community organization dates and alternate address"
 msgstr "Date dell'organizzazione della comunità e indirizzo alternativo"
 
-#: admin/departments/community/class_communityOrganization.inc:41
-msgid "Dates"
-msgstr "Date"
-
-#: admin/departments/community/class_communityOrganization.inc:44
-msgid "Start date"
-msgstr "Data d'inizio"
-
-#: admin/departments/community/class_communityOrganization.inc:44
-msgid "Date of the beginning"
-msgstr "Data d'inizio"
-
-#: admin/departments/community/class_communityOrganization.inc:49
-msgid "End date"
-msgstr "Data di fine"
-
-#: admin/departments/community/class_communityOrganization.inc:49
-msgid "Date of the end"
-msgstr "Data di fine"
-
-#: admin/departments/community/class_communityOrganization.inc:56
-msgid "Contact"
-msgstr "Contatto"
-
-#: admin/departments/community/class_communityOrganization.inc:59
-msgid "First name"
-msgstr "Nome"
-
-#: admin/departments/community/class_communityOrganization.inc:63
-msgid "Last name"
-msgstr "Cognome"
-
-#: admin/departments/community/class_communityOrganization.inc:67
-msgid "Address"
-msgstr "Indirizzo"
-
-#: admin/departments/community/class_communityOrganization.inc:67
-msgid "A postal address"
-msgstr "Un indirizzo postale"
-
-#: admin/departments/community/class_communityOrganization.inc:71
-msgid "City"
-msgstr "Città"
-
-#: admin/departments/community/class_communityOrganization.inc:75
-msgid "State"
-msgstr "Regione"
-
-#: admin/departments/community/class_communityOrganization.inc:79
-msgid "Country"
-msgstr "Stato"
-
-#: personal/community/class_communityAccount.inc:30
-#: config/community/class_communityConfig.inc:41
-msgid "Community"
-msgstr "Comunità"
-
-#: personal/community/class_communityAccount.inc:31
-msgid "Community account"
-msgstr "Conto community"
-
-#: personal/community/class_communityAccount.inc:46
+#: admin/departments/community/class_communityOrganization.inc:42
 msgid "Membership"
 msgstr "Abbonamento"
 
-#: personal/community/class_communityAccount.inc:50
-msgid "Membership types"
-msgstr "Tipologie di abbonamento"
+#: admin/departments/community/class_communityOrganization.inc:45
+msgid "Membership type"
+msgstr "Tipologia di abbonamento"
 
-#: personal/community/class_communityAccount.inc:50
-msgid "Membership types of this user"
-msgstr "Tipologie di abbonamento di questo utente"
+#: admin/departments/community/class_communityOrganization.inc:45
+msgid "Membership type of this organization"
+msgstr "Tipologia di abbonamento di questa organizzazione"
+
+#: admin/departments/community/class_communityOrganization.inc:52
+msgid "Dates"
+msgstr "Date"
+
+#: admin/departments/community/class_communityOrganization.inc:55
+msgid "Start date"
+msgstr "Data d'inizio"
+
+#: admin/departments/community/class_communityOrganization.inc:55
+msgid "Date of the beginning"
+msgstr "Data d'inizio"
+
+#: admin/departments/community/class_communityOrganization.inc:60
+msgid "End date"
+msgstr "Data di fine"
+
+#: admin/departments/community/class_communityOrganization.inc:60
+msgid "Date of the end"
+msgstr "Data di fine"
+
+#: admin/departments/community/class_communityOrganization.inc:67
+msgid "Contact"
+msgstr "Contatto"
+
+#: admin/departments/community/class_communityOrganization.inc:70
+msgid "First name"
+msgstr "Nome"
+
+#: admin/departments/community/class_communityOrganization.inc:74
+msgid "Last name"
+msgstr "Cognome"
+
+#: admin/departments/community/class_communityOrganization.inc:78
+msgid "Address"
+msgstr "Indirizzo"
+
+#: admin/departments/community/class_communityOrganization.inc:78
+msgid "A postal address"
+msgstr "Un indirizzo postale"
+
+#: admin/departments/community/class_communityOrganization.inc:82
+msgid "City"
+msgstr "Città"
+
+#: admin/departments/community/class_communityOrganization.inc:86
+msgid "State"
+msgstr "Regione"
+
+#: admin/departments/community/class_communityOrganization.inc:90
+msgid "Country"
+msgstr "Stato"
 
 #: config/community/class_communityConfig.inc:28
 msgid "Community configuration"
@@ -134,6 +125,10 @@ msgstr "Configurazione community"
 #: config/community/class_communityConfig.inc:29
 msgid "FusionDirectory community plugin configuration"
 msgstr "Configurazione del plugin community di FusionDirectory"
+
+#: config/community/class_communityConfig.inc:41
+msgid "Community"
+msgstr "Comunità"
 
 #: config/community/class_communityConfig.inc:45
 msgid "Membership type choices"
