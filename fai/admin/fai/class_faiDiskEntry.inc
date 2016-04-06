@@ -70,7 +70,7 @@ class PartitionDialog extends GenericDialog
   function handle_cancel ()
   {
     if ($this->initialDialogValue !== NULL) {
-      $this->attribute->addValue($this->initialDialogValue);
+      $this->attribute->addPartition($this->initialDialogValue);
     }
     return FALSE;
   }
@@ -185,6 +185,12 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
       $part['cn'] = 'md'.$part['FAIpartitionNr'];
     }
 
+    $this->value[$part['FAIpartitionNr']] = $part;
+  }
+
+  /* Add a partition back */
+  function addPartition($part)
+  {
     $this->value[$part['FAIpartitionNr']] = $part;
   }
 
