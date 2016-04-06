@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Benoit Mortier <benoit.mortier@opensides.be>, 2015
+# Benoit Mortier <benoit.mortier@opensides.be>, 2015-2016
 # fusiondirectory <contact@fusiondirectory.org>, 2013
 # MCMic, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-04-03 16:51+0200\n"
-"PO-Revision-Date: 2016-01-22 16:05+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2016-04-05 14:27+0200\n"
+"PO-Revision-Date: 2016-04-05 14:07+0000\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -116,7 +116,6 @@ msgid "You have no permission to export %s!"
 msgstr "Vous n'avez pas l'autorisation d'exporter '%s' !"
 
 #: addons/ldapmanager/class_ldapmanager.inc:178
-#: addons/ldapmanager/class_csvimport.inc:220
 msgid "Error"
 msgstr "Erreur"
 
@@ -198,11 +197,16 @@ msgstr "Remplissage du modèle"
 msgid "Select fields associations"
 msgstr "Sélectionnez l'association des champs"
 
-#: addons/ldapmanager/class_csvimport.inc:229
+#: addons/ldapmanager/class_csvimport.inc:220
+#, php-format
+msgid "Import failed for line %d"
+msgstr "L'importation à échoué pour la ligne %d"
+
+#: addons/ldapmanager/class_csvimport.inc:228
 msgid "Success"
 msgstr "Succès"
 
-#: addons/ldapmanager/class_csvimport.inc:229
+#: addons/ldapmanager/class_csvimport.inc:228
 #, php-format
 msgid "Successfully imported %d entries"
 msgstr "%d entrées importées avec succès"
