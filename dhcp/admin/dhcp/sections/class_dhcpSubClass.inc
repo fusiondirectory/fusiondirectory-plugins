@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class dhcpSubclass extends dhcpPlugin
+class dhcpSubClass extends dhcpPlugin
 {
-  public $objectclasses = array('dhcpSubclass');
+  public $objectclasses = array('dhcpSubClass');
 }
