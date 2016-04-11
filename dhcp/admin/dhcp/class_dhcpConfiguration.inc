@@ -81,14 +81,14 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
         }
         return array(
           array('html' => $link),
-          array('html' => $dhcpObject->options->get('routers')),
+          array('html' => $dhcpObject->getOption('routers')),
           ''
         );
       }
     } else {
       return array(
         array('html' => $link),
-        array('html' => $dhcpObject->statements->get('fixed-address')),
+        array('html' => $dhcpObject->getStatement('fixed-address')),
         array('html' => preg_replace('/^[^ ]+ /', '', isset($dhcpObject->dhcpHWAddress) ? $dhcpObject->dhcpHWAddress : '')),
       );
     }

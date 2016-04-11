@@ -28,7 +28,7 @@ class dhcpPlugin extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('View'),
+        'name'  => _('DHCP'),
         'attrs' => array(
           new HostNameAttribute (
             _('Name'), _('Name of this DHCP configuration'),
@@ -47,7 +47,11 @@ class dhcpPlugin extends simplePlugin
               'dhcpStatements', FALSE
             ),
             FALSE, array(), TRUE
-          )
+          ),
+          new TextAreaAttribute (
+            _('Comments'), _('Comments about this DHCP object'),
+            'dhcpComments', FALSE
+          ),
         )
       )
     );
@@ -59,13 +63,22 @@ class dhcpPlugin extends simplePlugin
     if (is_array($attrs)) {
       foreach ($attrs as $key => &$value) {
         if (is_array($value)) {
-          $value['count'] = count($value);
+          if (empty($value)) {
+            unset($attrs[$key]);
+          } else {
+            $value['count'] = count($value);
+          }
+        } else {
+          $value = array(
+            $value,
+            'count' => 1
+          );
         }
       }
       unset($value);
       $attrsWrapper = new stdClass();
       $attrsWrapper->attrs = $attrs;
-      $this->base = dn2base($dn, get_ou('dhcpRDN'));
+      $this->base = dn2base($dn);
       parent::__construct($config, $dn, $attrsWrapper);
     } elseif ($dn == 'new') {
       $this->base = $attrs;
@@ -99,6 +112,26 @@ class dhcpPlugin extends simplePlugin
 
   function compute_dn()
   {
-    return 'cn='.ldap_escape_dn($this->attributesAccess['cn']->computeLdapValue()).','.get_ou('dhcpRDN').$this->base;
+    return 'cn='.ldap_escape_dn($this->attributesAccess['cn']->computeLdapValue()).','.$this->base;
+  }
+
+  function getOption($option)
+  {
+    foreach ($this->dhcpOption as $line) {
+      if (preg_match('/^'.preg_quote($option, '/').' (.*)$/', $line, $m)) {
+        return $m[1];
+      }
+    }
+    return NULL;
+  }
+
+  function getStatement($statement)
+  {
+    foreach ($this->dhcpStatements as $line) {
+      if (preg_match('/^'.preg_quote($statement, '/').' (.*)$/', $line, $m)) {
+        return $m[1];
+      }
+    }
+    return NULL;
   }
 }
