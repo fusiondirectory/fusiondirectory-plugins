@@ -58,7 +58,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     $link = $value[1];
 
     $objtype = $this->objectType($dn);
-    $dhcpObject = new $objtype($this, $this->dhcpObjectCache[$dn]);
+    $dhcpObject = new $objtype($this, $dn, $this->dhcpObjectCache[$dn]);
     if (count(dhcpConfiguration::$sectionMap[$objtype])) {
       if ($objtype == 'dhcpService') {
         if ($dn === $this->subnet_expanded) {
@@ -266,56 +266,49 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
         continue;
       }
 
-      $tmp = preg_replace("/".$this->plugin->dhcpServiceDN."/", "", $dn);
-      $indent = substr_count($tmp, ",");
-      if ($type_id == "dhcpSubnet") {
+      $tmp = preg_replace('/'.preg_quote($this->plugin->dn, '/').'/', '', $dn);
+      $indent = substr_count($tmp, ',');
+      if ($type_id == 'dhcpSubnet') {
         $indent--;
       }
       if ($indent > 0) {
         $spaces = "&nbsp;&nbsp;";
       } else {
-        $spaces = "";
+        $spaces = '';
       }
       for ($i = 0; $i < $indent; $i++) {
         $spaces .= "&nbsp;&nbsp;&nbsp;&nbsp;";
       }
 
       /* Prepare for sorting... */
-      $sortpart = explode(",", $dn);
+      $sortpart = explode(',', $dn);
       $sortpart = array_reverse($sortpart);
-      $tmp = implode(",", $sortpart);
-      $final[$dn] = $tmp."!".$spaces.$type." '".$sattrs['cn'][0]."'";
+      $tmp = implode(',', $sortpart);
+      $final[$dn] = $tmp.'!'.$spaces.$type.' "'.$sattrs['cn'][0].'"';
     }
   }
 
   function reload($erase = TRUE)
   {
     global $config;
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $erase, "reload");
+    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $erase, 'reload');
     /* Init LDAP and load list */
     $ldap = $config->get_ldap_link();
-    $ui   = get_userinfo();
-    $me   = $this->plugin->dn;
-    if (empty($me)) {
-      trigger_error('reload launched with empty dn');
-    }
 
-    $filter = "(&(objectClass=dhcpService)(|(dhcpPrimaryDN=$me)(dhcpSecondaryDN=$me)(dhcpServerDN=$me)(dhcpFailOverPeerDN=$me)))";
-
-    $list   = get_list($filter, array("server"), $config->current['BASE'], array("cn"), GL_SIZELIMIT | GL_SUBSEARCH);
     $final  = array();
+    $ldap->cat($this->plugin->dn, array('cn'), '(objectClass=dhcpService)');
 
-    foreach ($list as $value) {
+    if ($value = $ldap->fetch()) {
       /* Set header */
-      $sortpart = explode(",", $value['dn']);
+      $sortpart = explode(',', $value['dn']);
       $sortpart = array_reverse($sortpart);
-      $tmp = implode(",", $sortpart);
+      $tmp = implode(',', $sortpart);
 
-      $final[$value['dn']] = $tmp."!"._("Global options");
+      $final[$value['dn']] = $tmp.'!'._('Global options');
 
       /* Read all sub entries to place here */
       $ldap->cd($value['dn']);
-      $ldap->search("(|(objectClass=dhcpService)(objectClass=dhcpClass)(objectClass=dhcpSubClass)(objectClass=dhcpGroup)(objectClass=dhcpPool)(objectClass=dhcpSubnet)(objectClass=dhcpSharedNetwork)(objectClass=dhcpTSigKey)(objectClass=dhcpDnsZone)(objectClass=dhcpFailOverPeer))", array());
+      $ldap->search('(|(objectClass=dhcpService)(objectClass=dhcpClass)(objectClass=dhcpSubClass)(objectClass=dhcpGroup)(objectClass=dhcpPool)(objectClass=dhcpSubnet)(objectClass=dhcpSharedNetwork)(objectClass=dhcpTSigKey)(objectClass=dhcpDnsZone)(objectClass=dhcpFailOverPeer))', array());
 
       while ($attrs = $ldap->fetch()) {
         $this->reload_readItemFromLDAP($ldap, $attrs, $final, $erase);
@@ -338,10 +331,10 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
   function add_global_node()
   {
     $attrs = array(
-      'dn'              => 'cn=dhcp,'.$this->plugin->dn,
-      'cn'              => array('dhcp'),
+      'dn'              => $this->plugin->dn,
+      'cn'              => array($this->plugin->cn),
       'objectClass'     => array('top', 'dhcpService'),
-      'dhcpPrimaryDN'   => array($this->plugin->dn),
+      //~ 'dhcpPrimaryDN'   => array($this->plugin->dn),
       'dhcpStatements'  => array(
         'default-lease-time 600',
         'max-lease-time 1200',
@@ -351,8 +344,8 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
       'MODIFIED' => TRUE,
     );
 
-    $this->value[] = array('cn=dhcp,'.$this->plugin->dn, _('Global options'));
-    $this->dhcpObjectCache['cn=dhcp,'.$this->plugin->dn]  = $attrs;
+    $this->value[] = array($this->plugin->dn, _('Global options'));
+    $this->dhcpObjectCache[$this->plugin->dn]  = $attrs;
   }
 
   function objectType($dn)
@@ -441,10 +434,11 @@ class dhcpConfiguration extends simplePlugin
         'name'  => _('View'),
         'attrs' => array(
           new BaseSelectorAttribute(get_ou('dhcpRDN')),
-          new HostNameAttribute (
-            _('Name'), _('Name of this DHCP configuration'),
-            'cn', TRUE
-          ),
+          //~ new HostNameAttribute (
+            //~ _('Name'), _('Name of this DHCP configuration'),
+            //~ 'cn', TRUE
+          //~ ),
+          new HiddenAttribute('cn'),
           new DhcpSectionsAttribute (
             '', _('The DHCP sections handled by this server'),
             'dhcpSections', FALSE
@@ -554,6 +548,6 @@ class dhcpConfiguration extends simplePlugin
       }
     }
 
-    parent::ldap_save($cleanup);
+    //~ parent::ldap_save($cleanup);
   }
 }

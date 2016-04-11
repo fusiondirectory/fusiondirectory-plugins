@@ -22,6 +22,8 @@ class dhcpPlugin extends simplePlugin
 {
   public $mainTab = TRUE;
 
+  protected $base;
+
   static function getAttributesInfo ()
   {
     return array(
@@ -32,22 +34,71 @@ class dhcpPlugin extends simplePlugin
             _('Name'), _('Name of this DHCP configuration'),
             'cn', TRUE
           ),
-          new DisplayLDAPArrayAttribute (
-            _('Options'), _('The DHCP options'),
-            'dhcpOption', FALSE
+          new OrderedArrayAttribute (
+            new StringAttribute(
+              _('Options'), _('The DHCP options'),
+              'dhcpOption', FALSE
+            ),
+            FALSE, array(), TRUE // Order disabled, Default values, Edit enabled
           ),
-          new DisplayLDAPArrayAttribute (
-            _('Statements'), _('The DHCP statements'),
-            'dhcpStatements', FALSE
+          new OrderedArrayAttribute (
+            new StringAttribute(
+              _('Statements'), _('The DHCP statements'),
+              'dhcpStatements', FALSE
+            ),
+            FALSE, array(), TRUE
           )
         )
       )
     );
   }
 
-  function __construct ($attribute, $object = NULL)
+  function __construct ($attribute, $dn, $attrs = NULL)
   {
     global $config;
-    parent::__construct($config, 'new', $object);
+    if (is_array($attrs)) {
+      foreach ($attrs as $key => &$value) {
+        if (is_array($value)) {
+          $value['count'] = count($value);
+        }
+      }
+      unset($value);
+      $attrsWrapper = new stdClass();
+      $attrsWrapper->attrs = $attrs;
+      $this->base = dn2base($dn, get_ou('dhcpRDN'));
+      parent::__construct($config, $dn, $attrsWrapper);
+    } elseif ($dn == 'new') {
+      $this->base = $attrs;
+      parent::__construct($config, $dn);
+    } else {
+      trigger_error('Invalid use of dhcpPlugin class');
+    }
+    $this->set_acl_base($this->base);
+  }
+
+  function execute()
+  {
+    return parent::execute()."\n".
+    '<p class="plugbottom">'."\n".
+    '  <input type="submit" name="dhcp_save" value="'.msgPool::addButton().'"/>&nbsp;'."\n".
+    '  <input type="submit" name="dhcp_cancel" value="'.msgPool::cancelButton().'"/>'."\n".
+    '</p>';
+  }
+
+  function save()
+  {
+    $this->dn = $this->compute_dn();
+    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->dn, 'save');
+    $this->prepare_save();
+    $this->attrs['cn']          = array($this->cn);
+    $this->attrs['objectClass'] = $this->objectclasses;
+    $this->attrs['dn']          = $this->dn;
+    $this->attrs['MODIFIED']    = TRUE;
+    return $this->attrs;
+  }
+
+  function compute_dn()
+  {
+    return 'cn='.ldap_escape_dn($this->attributesAccess['cn']->computeLdapValue()).','.get_ou('dhcpRDN').$this->base;
   }
 }
