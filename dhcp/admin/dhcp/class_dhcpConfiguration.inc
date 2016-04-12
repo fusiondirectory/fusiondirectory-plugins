@@ -107,7 +107,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
         'class' => 'center',
       )
     ).'&nbsp;'.$img;
-    $width += 15;
+    $width += 18;
 
     return array ($img, $width);
   }
@@ -272,12 +272,16 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
         $indent--;
       }
       if ($indent > 0) {
-        $spaces = "&nbsp;&nbsp;";
+        if ($type_id == 'dhcpSubnet') {
+          $spaces = "&nbsp;&nbsp;&nbsp;";
+        } else {
+          $spaces = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        }
       } else {
         $spaces = '';
       }
       for ($i = 0; $i < $indent; $i++) {
-        $spaces .= "&nbsp;&nbsp;&nbsp;&nbsp;";
+        $spaces .= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
       }
 
       /* Prepare for sorting... */
@@ -404,7 +408,7 @@ class dhcpConfiguration extends simplePlugin
       'dhcpPool','dhcpGroup',
       'dhcpHost','dhcpClass','dhcpTSigKey','dhcpDnsZone'
     ),
-    'dhcpSharedNetwork' => array('dhcpSubnet', 'dhcpPool','dhcpTsigKey','dhcpDnsZone'),
+    'dhcpSharedNetwork' => array('dhcpSubnet', 'dhcpPool','dhcpTSigKey','dhcpDnsZone'),
     'dhcpTSigKey'       => array(),
     'dhcpDnsZone'       => array()
   );
@@ -431,7 +435,8 @@ class dhcpConfiguration extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('View'),
+        'name'  => _('DHCP Objects'),
+        'class' => array('fullwidth'),
         'attrs' => array(
           new BaseSelectorAttribute(get_ou('dhcpRDN')),
           //~ new HostNameAttribute (
