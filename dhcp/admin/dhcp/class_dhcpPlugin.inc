@@ -57,7 +57,7 @@ class dhcpPlugin extends simplePlugin
     );
   }
 
-  function __construct ($attribute, $dn, $attrs = NULL)
+  function __construct ($plugin, $dn, $attrs = NULL)
   {
     global $config;
     if (is_array($attrs)) {
@@ -78,7 +78,11 @@ class dhcpPlugin extends simplePlugin
       unset($value);
       $attrsWrapper = new stdClass();
       $attrsWrapper->attrs = $attrs;
-      $this->base = dn2base($dn);
+      if ($dn == 'new') {
+        $this->base = get_ou('dhcpRDN').$plugin->base;
+      } else {
+        $this->base = dn2base($dn);
+      }
       parent::__construct($config, $dn, $attrsWrapper);
     } elseif ($dn == 'new') {
       $this->base = $attrs;

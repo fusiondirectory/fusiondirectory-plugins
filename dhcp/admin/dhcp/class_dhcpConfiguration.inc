@@ -58,7 +58,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     $link = $value[1];
 
     $objtype = $this->objectType($dn);
-    $dhcpObject = new $objtype($this, $dn, $this->dhcpObjectCache[$dn]);
+    $dhcpObject = new $objtype($this->plugin, $dn, $this->dhcpObjectCache[$dn]);
     if (count(dhcpConfiguration::$sectionMap[$objtype])) {
       if ($objtype == 'dhcpService') {
         if ($dn === $this->subnet_expanded) {
@@ -179,6 +179,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
           $this->dhcpObjectCache[$key]    = array();
         }
       }
+      $this->dhcpObjectCache[$olddn]    = array();
     }
     $this->reload(FALSE);
   }
@@ -246,9 +247,13 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
   /* Subfonction of reload function */
   protected function reload_refreshListFromCache(&$final)
   {
+    $firstdn = NULL;
     foreach ($this->dhcpObjectCache as $dn => $sattrs) {
       if (empty($sattrs)) {
         continue;
+      }
+      if ($firstdn === NULL) {
+        $firstdn = $dn;
       }
       $type_id = NULL;
       foreach ($this->plugin->types as $key => $val) {
@@ -266,7 +271,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
         continue;
       }
 
-      $tmp = preg_replace('/'.preg_quote($this->plugin->dn, '/').'/', '', $dn);
+      $tmp = preg_replace('/'.preg_quote($firstdn, '/').'/', '', $dn);
       $indent = substr_count($tmp, ',');
       if ($type_id == 'dhcpSubnet') {
         $indent--;
@@ -308,7 +313,9 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
       $sortpart = array_reverse($sortpart);
       $tmp = implode(',', $sortpart);
 
-      $final[$value['dn']] = $tmp.'!'._('Global options');
+      if ($erase || !isset($this->dhcpObjectCache[$value['dn']]) || !empty($this->dhcpObjectCache[$value['dn']])) {
+        $final[$value['dn']] = $tmp.'!'._('Global options');
+      }
 
       /* Read all sub entries to place here */
       $ldap->cd($value['dn']);
