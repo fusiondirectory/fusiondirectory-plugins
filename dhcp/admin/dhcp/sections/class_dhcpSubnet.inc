@@ -41,6 +41,10 @@ class dhcpSubnet extends dhcpPlugin
         ),
       )
     );
+    $attributesInfo['main']['attrs'][0] = new IPAttribute(
+      _('Network address'), _('Network address of this subnet'),
+      'cn', TRUE
+    );
     return $attributesInfo;
   }
 }

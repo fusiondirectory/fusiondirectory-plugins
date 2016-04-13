@@ -21,4 +21,17 @@
 class dhcpSharedNetwork extends dhcpPlugin
 {
   public $objectclasses = array('dhcpSharedNetwork');
+
+  static function getAttributesInfo ()
+  {
+    $attributesInfo = parent::getAttributesInfo();
+    $attributesInfo['main']['attrs'][2]->setDefaultValue(
+      array(
+        'deny unknown-clients',
+        'deny bootp',
+        'deny booting',
+      )
+    );
+    return $attributesInfo;
+  }
 }

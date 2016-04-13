@@ -32,9 +32,10 @@ class dhcpTSigKey extends dhcpPlugin
             _('Name'), _('Name of this DHCP configuration'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new SelectAttribute (
             _('Algorithm'), _('Algorithm to generate TSIG Key'),
-            'dhcpKeyAlgorithm', TRUE
+            'dhcpKeyAlgorithm', TRUE,
+            array('HMAC-MD5','RSAMD5','RSASHA1','DSA','DH')
           ),
           new StringAttribute (
             _('Secret'), _('Secret to generate TSIG Key'),

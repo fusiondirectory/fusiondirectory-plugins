@@ -28,10 +28,32 @@ class dhcpHost extends dhcpPlugin
     $attributesInfo['host'] = array(
       'name'  => _('Host'),
       'attrs' => array(
-        new StringAttribute (
-          _('Hardware address'), _('The client hardware address'),
-          'dhcpHWAddress', FALSE
-        ),
+        new CompositeAttribute(
+          _('The client hardware address'), 'dhcpHWAddress',
+          array(
+            new SelectAttribute (
+              '', _('The hardware address type'),
+              'dhcpHWAddress_type', TRUE,
+              array(  'ethernet',   'fddi',   'token-ring'), 'ethernet',
+              array(_('Ethernet'),_('FDDI'),_('Token Ring'))
+            ),
+            new StringAttribute (
+              '', _('The client hardware address'),
+              'dhcpHWAddress_address', FALSE
+            ),
+          ),
+          '/^([^ ]+) ([^ ]+)$/',
+          '%s %s',
+          '',
+          _('Hardware address')
+        )
+      )
+    );
+    $attributesInfo['host']['attrs'][0]->setLinearRendering(TRUE);
+    $attributesInfo['main']['attrs'][2]->setDefaultValue(
+      array(
+        'host-name cn',
+        'fixed-address ip',
       )
     );
     return $attributesInfo;

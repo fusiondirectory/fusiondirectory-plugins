@@ -21,4 +21,18 @@
 class dhcpService extends dhcpPlugin
 {
   public $objectclasses = array('dhcpService');
+
+  static function getAttributesInfo ()
+  {
+    $attributesInfo = parent::getAttributesInfo();
+    $attributesInfo['main']['attrs'][2]->setDefaultValue(
+      array(
+        'default-lease-time 600',
+        'max-lease-time 1700',
+        'authoritative',
+        'ddns-update-style none'
+      )
+    );
+    return $attributesInfo;
+  }
 }

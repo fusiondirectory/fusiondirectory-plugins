@@ -36,6 +36,10 @@ class dhcpDnsZone extends dhcpPlugin
             _('DNS Zone Server'), _('Master server of the DNS Zone'),
             'dhcpDnsZoneServer', TRUE
           ),
+          new SelectAttribute (
+            _('Tsig key'), _('The TSig key DN'),
+            'dhcpKeyDN', FALSE
+          ),
           new TextAreaAttribute (
             _('Comments'), _('Comments about this DHCP object'),
             'dhcpComments', FALSE
@@ -43,5 +47,18 @@ class dhcpDnsZone extends dhcpPlugin
         )
       )
     );
+  }
+
+  function __construct ($plugin, $dn, $attrs = NULL)
+  {
+    global $config;
+    parent::__construct($plugin, $dn, $attrs);
+    $keys = array();
+    $ldap = $config->get_ldap_link();
+    $ldap->search('(objectClass=dhcpTSigKey)', array('dn','cn'));
+    while ($attrs = $ldap->fetch()) {
+      $keys[$attrs['dn']] = $attrs['cn'][0];
+    }
+    $this->attributesAccess['dhcpKeyDN']->setChoices(array_keys($keys), array_values($keys));
   }
 }
