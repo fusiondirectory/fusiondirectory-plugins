@@ -1,0 +1,44 @@
+##
+## service-fd.schema - Needed by FusionDirectory for spamassasin plugin
+##
+## Maintained by the FusionDirectory Project <contact@fusiondirectory.org>
+##
+
+attributetype ( 1.3.6.1.4.1.10098.1.1.9.62 NAME 'saRewriteHeader'
+  DESC 'Text to place in front of mail subjects'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.10098.1.1.9.63 NAME 'saTrustedNetworks'
+  DESC 'List of trusted networks'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
+attributetype ( 1.3.6.1.4.1.10098.1.1.9.64 NAME 'saRequiredScore'
+  DESC 'Required score to tag a mail as SPAM'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE)
+
+#saFlags   B:    Enable use of bayes filtering
+#          b:    Enable bayes auto learning
+#          C:    Enable RBL checks
+#          R:    Enable use of Razor
+#          D:    Enable use of DDC
+#          P:    Enable use of Pyzor
+attributetype ( 1.3.6.1.4.1.10098.1.1.9.65 NAME 'saFlags'
+  DESC 'Flags for spamassassin'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
+attributetype ( 1.3.6.1.4.1.10098.1.1.9.66 NAME 'saRule'
+  DESC 'Base64 encoded rule text for spamassassin'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+  
+# Spamassassin definitions
+objectclass (1.3.6.1.4.1.10098.1.2.1.38 NAME 'goSpamServer' SUP top AUXILIARY
+  DESC 'Spam server definition'
+  MUST ( cn )
+  MAY  ( saRewriteHeader $ saTrustedNetworks $ saRequiredScore $ saFlags $
+         saRule ) )
