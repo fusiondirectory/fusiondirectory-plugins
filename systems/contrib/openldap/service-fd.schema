@@ -1,5 +1,5 @@
 ##
-## service-fd.schema - Needed by FusionDirectory for systems plugin
+## service-fd.schema - Needed by FusionDirectory for systems plugin services
 ##
 ## Maintained by the FusionDirectory Project <contact@fusiondirectory.org>
 ##
@@ -169,6 +169,7 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.9.29 NAME 'goFonCountryCode'
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.30 NAME 'fdAsteriskDriver'
   DESC 'Driver used for asterisk DB'
+  OBSOLETE
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
