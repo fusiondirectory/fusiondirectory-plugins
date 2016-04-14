@@ -86,14 +86,15 @@ objectclass ( 1.3.6.1.4.1.38414.10.2.2 NAME 'fdImapServer'
   MUST ( cn ) )
 
 objectclass ( 1.3.6.1.4.1.10098.1.2.1.19.5 NAME 'gosaMailAccount' SUP top AUXILIARY
-  DESC 'Class to mark MailAccounts for GOsa'
-  MUST ( mail $ gosaMailServer $ gosaMailDeliveryMode)
-  MAY  ( gosaMailQuota $ gosaMailAlternateAddress $ gosaMailForwardingAddress $
+  DESC 'Basic user mail account'
+  MUST ( mail )
+  MAY  ( gosaMailServer $ gosaMailDeliveryMode $ gosaMailQuota $
+         gosaMailAlternateAddress $ gosaMailForwardingAddress $
          gosaMailMaxSize $ gosaSpamSortLevel $ gosaSpamMailbox $
-         gosaVacationMessage $ gosaVacationStart $ gosaVacationStop $ gosaSharedFolderTarget))
+         gosaVacationMessage $ gosaVacationStart $ gosaVacationStop $ gosaSharedFolderTarget ))
 
 objectclass ( 1.3.6.1.4.1.38414.10.2.5 NAME 'fdGroupMail' SUP top AUXILIARY
   DESC 'Basic user group mailing list'
-  MUST ( mail $ gosaMailServer )
-  MAY  ( gosaMailAlternateAddress $ gosaMailForwardingAddress $
+  MUST ( mail )
+  MAY  ( gosaMailServer $ gosaMailAlternateAddress $ gosaMailForwardingAddress $
          gosaMailMaxSize $ fdGroupMailLocalOnly ))
