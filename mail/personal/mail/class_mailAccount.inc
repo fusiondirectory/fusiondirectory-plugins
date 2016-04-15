@@ -147,37 +147,9 @@ class mailAccount extends simplePlugin
       'options2' => array(
         'name' => _('Spam options'),
         'attrs' => array(
-          new BooleanAttribute (
-            _('Move mails depending on spam level'), 'Check if you want to move mails depending on spam level',
-            'flag_spamlevel', FALSE, FALSE, '',
-            'S', ''
-          ),
-          new SelectAttribute (
-            _('Minimum spam level'), _('Spam level above which a mail will be moved'),
-            'gosaSpamSortLevel', FALSE,
-            array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20), 4
-          ),
-          new SelectAttribute (
-            _('Move spam to folder'), _('Folder in which spam will be moved'),
-            'gosaSpamMailbox', FALSE,
-            array('INBOX')
-          ),
-          new BooleanAttribute (
-            _('Reject mail depending on their size'), _('Messages bigger than the chosen size will be rejected'),
-            'flag_spamsize', FALSE, FALSE, '',
-            'R', ''
-          ),
-          new IntAttribute (
-            _('Minimum size to reject a mail (MB)'), _('Minimum size to reject a mail (MB)'),
-            'gosaMailMaxSize',
-            FALSE, FALSE, FALSE,
-            50
-          ),
           new FlagsAttribute ('gosaMailDeliveryMode', array(
             'flag_ownmailbox',
             'flag_vacation',
-            'flag_spamlevel',
-            'flag_spamsize',
             'flag_localonly',
             'flag_sieveownscript'
           ))
@@ -228,7 +200,6 @@ class mailAccount extends simplePlugin
     $this->mailMethod->fixAttributesOnLoad();
 
     $this->attributesAccess['gosaMailServer']->setChoices($this->mailMethod->getMailServers());
-    $this->attributesAccess['gosaSpamSortLevel']->setChoices($this->mailMethod->getSpamLevels());
 
     /* Initialize configured values */
     if ($this->is_account) {
@@ -237,13 +208,6 @@ class mailAccount extends simplePlugin
         /* Read quota */
         $this->attributesAccess['gosaMailQuota']->setMailMethod($this->mailMethod);
 
-        /* Read mailboxes */
-        $mailBoxes = $this->mailMethod->getMailboxList();
-        $this->attributesAccess['gosaSpamMailbox']->setChoices($mailBoxes);
-        if ($this->mailMethod->is_error()) {
-          msg_dialog::display(_("Mail error"), sprintf(_("Cannot get list of mailboxes: %s"),
-                $this->mailMethod->get_error()), ERROR_DIALOG);
-        }
       } elseif (!$this->mailMethod->is_connected()) {
         msg_dialog::display(_("Mail error"), sprintf(_("Mail method cannot connect: %s"),
               $this->mailMethod->get_error()), ERROR_DIALOG);
@@ -260,8 +224,6 @@ class mailAccount extends simplePlugin
 
     $this->attributesAccess['flag_ownmailbox']->setInLdap(FALSE);
     $this->attributesAccess['flag_vacation']->setInLdap(FALSE);
-    $this->attributesAccess['flag_spamlevel']->setInLdap(FALSE);
-    $this->attributesAccess['flag_spamsize']->setInLdap(FALSE);
     $this->attributesAccess['flag_localonly']->setInLdap(FALSE);
     $this->attributesAccess['flag_sieveownscript']->setInLdap(FALSE);
 
@@ -285,8 +247,6 @@ class mailAccount extends simplePlugin
             TRUE => array (
               'flag_vacation',
               'gosaVacationMessage',
-              'flag_spamlevel','flag_spamsize','gosaMailMaxSize',
-              'gosaSpamMailbox','gosaSpamSortLevel',
               'flag_ownmailbox',
               'flag_localonly'
             )
@@ -309,8 +269,6 @@ class mailAccount extends simplePlugin
             TRUE => array (
               'flag_vacation',
               'gosaVacationStart','gosaVacationStop','gosaVacationMessage',
-              'flag_spamlevel','flag_spamsize','gosaMailMaxSize',
-              'gosaSpamMailbox','gosaSpamSortLevel',
               'flag_ownmailbox',
               'flag_localonly'
             )
@@ -318,23 +276,6 @@ class mailAccount extends simplePlugin
         )
       );
     }
-
-    $this->attributesAccess['flag_spamlevel']->setManagedAttributes (
-      array (
-        'erase' => array (
-          FALSE => array (
-            'gosaSpamMailbox','gosaSpamSortLevel'
-          )
-        )
-      )
-    );
-    $this->attributesAccess['flag_spamsize']->setManagedAttributes (
-      array (
-        'erase' => array (
-          FALSE => array ('gosaMailMaxSize')
-        )
-      )
-    );
 
     /* sieve submit the form so that managed attributes are correctly updated */
     $this->attributesAccess['flag_sieveownscript']->setSubmitForm(TRUE);
