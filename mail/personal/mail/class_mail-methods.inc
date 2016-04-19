@@ -691,20 +691,27 @@ class mailMethod
 
 
   /*! \brief  Returns all mail servers configured in FusionDirectory
-               that are useable with this mailMethod.
-      @return Array  All useable mail servers.
+      @return Array  All useable mail servers
   */
   static public function getMailServers()
   {
     global $config;
+    if (session::global_is_set('mailServers')) {
+      return session::global_get('mailServers');
+    }
     $methods = mailMethod::get_methods();
     $servers = array();
     foreach ($methods as $class) {
      $servers = array_merge($servers, $class::get_server_list($config));
     }
+    session::global_set('mailServers', $servers);
     return $servers;
   }
 
+  static public function resetMailServersCache()
+  {
+    session::global_un_set('mailServers');
+  }
 
   /*! \brief  Returns the available mailMethods
       @return Array   A list of all avaialable mailMethods_

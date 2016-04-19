@@ -91,5 +91,11 @@ class serviceDovecot extends simpleService
   {
     parent::__construct($config, $dn, $object);
   }
+
+  function save()
+  {
+    parent::save();
+    mailMethod::resetMailServersCache();
+  }
 }
 ?>

@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -22,9 +21,7 @@
 
 class serviceCyrus extends simpleService
 {
-
-  /* This plugin only writes its objectClass */
-  var $objectclasses = array("fdCyrusServer");
+  var $objectclasses = array('fdCyrusServer');
 
   /* Return plugin informations for acl handling */
   static function plInfo()
@@ -52,7 +49,7 @@ class serviceCyrus extends simpleService
    */
   static function getAttributesInfo ()
   {
-      return array (
+    return array (
       'cyrus' => array (
         'name'  => _('Cyrus settings'),
         'attrs' => array (
@@ -97,6 +94,10 @@ class serviceCyrus extends simpleService
     );
   }
 
+  function save()
+  {
+    parent::save();
+    mailMethod::resetMailServersCache();
+  }
 }
-
 ?>
