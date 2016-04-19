@@ -71,7 +71,7 @@ class mailAliasDistribution extends simplePlugin
           new SelectAttribute (
             _('Mail server'), _('Mail server for this alias'),
             'gosaMailServer', TRUE,
-            array_keys($config->data['SERVERS']['IMAP'])
+            array_keys(mailMethod::getMailServers())
           ),
           new DateAttribute(
             _('Expiration date'), _('Date after which the alias should be deleted. Leave empty for no deletion.'),

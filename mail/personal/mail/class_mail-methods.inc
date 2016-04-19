@@ -694,9 +694,15 @@ class mailMethod
                that are useable with this mailMethod.
       @return Array  All useable mail servers.
   */
-  public function getMailServers()
+  static public function getMailServers()
   {
-    return array_keys($this->config->data['SERVERS']['IMAP']);
+    global $config;
+    $methods = mailMethod::get_methods();
+    $servers = array();
+    foreach ($methods as $class) {
+     $servers = array_merge($servers, $class::get_server_list($config));
+    }
+    return $servers;
   }
 
 
@@ -715,6 +721,30 @@ class mailMethod
     return $available;
   }
 
+  static public function getServerMethod($server)
+  {
+    $methods = mailMethod::get_methods();
+    foreach ($methods as $class) {
+      if ($class::serverMatch($server)) {
+        return $class;
+      }
+    }
+    return 'mailMethod';
+  }
+
+  static public function serverMatch($server)
+  {
+    global $config;
+    return in_array($server, static::get_server_list());
+  }
+
+  static public function getInstance($class, $parent)
+  {
+    global $config;
+    $obj = new $class($config, $parent);
+    $obj->init();
+    return $obj;
+  }
 
   /* \brief   Some method require special folder types, "kolab" for example.
       !! Those values are dummy values, the base class doesn't use folder types;

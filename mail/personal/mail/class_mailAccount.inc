@@ -94,7 +94,7 @@ class mailAccount extends simplePlugin
           ),
           new SelectAttribute (
             _('Server'), _('Specify the mail server where the user will be hosted on'),
-            'gosaMailServer', TRUE,
+            'gosaMailServer', FALSE,
             array()
           ),
           new MailQuotaAttribute (
@@ -193,26 +193,65 @@ class mailAccount extends simplePlugin
       $this->parent = $object->parent;
     }
 
+    $this->attributesAccess['gosaMailServer']->setChoices(mailMethod::getMailServers());
+    $this->attributesAccess['gosaMailServer']->setSubmitForm('mailServerChanged');
+    $this->mailServerChanged();
+
+    $this->attributesAccess['flag_ownmailbox']->setInLdap(FALSE);
+    $this->attributesAccess['flag_vacation']->setInLdap(FALSE);
+    $this->attributesAccess['flag_localonly']->setInLdap(FALSE);
+    $this->attributesAccess['flag_sieveownscript']->setInLdap(FALSE);
+
+    /* sieve submit the form so that managed attributes are correctly updated */
+    $this->attributesAccess['flag_sieveownscript']->setSubmitForm(TRUE);
+  }
+
+  /* We need $mailAccount->uid to return the uid for mailMethod */
+  public function __get($name)
+  {
+    if (in_array($name, array('cn','uid')) && isset($this->parent)) {
+      return $this->parent->getBaseObject()->$name;
+    } elseif (in_array($name, array('uidNumber','gidNumber')) && isset($this->parent)) {
+      return $this->parent->by_object['posixAccount']->$name;
+    } else {
+      /* Calling default behaviour */
+      return parent::__get($name);
+    }
+  }
+
+  public function __isset($name)
+  {
+    if (in_array($name, array('cn','uid')) && isset($this->parent)) {
+      return isset($this->parent->getBaseObject()->$name);
+    } elseif (in_array($name, array('uidNumber','gidNumber')) && isset($this->parent)) {
+      return isset($this->parent->by_object['posixAccount']->$name);
+    } else {
+      /* Calling default behaviour */
+      return parent::__isset($name);
+    }
+  }
+
+  public function mailServerChanged()
+  {
     /* Intialize the used mailMethod */
-    $tmp = new mailMethod($config, $this);
-
-    $this->mailMethod = $tmp->get_method();
+    if ($this->gosaMailServer == '') {
+      $method = 'mailMethod';
+    } else {
+      $method = mailMethod::getServerMethod($this->gosaMailServer);
+    }
+    $this->mailMethod = mailMethod::getInstance($method, $this);
     $this->mailMethod->fixAttributesOnLoad();
-
-    $this->attributesAccess['gosaMailServer']->setChoices($this->mailMethod->getMailServers());
 
     /* Initialize configured values */
     if ($this->is_account) {
       if ($this->mailMethod->connect() && $this->mailMethod->account_exists()) {
-
         /* Read quota */
         $this->attributesAccess['gosaMailQuota']->setMailMethod($this->mailMethod);
-
       } elseif (!$this->mailMethod->is_connected()) {
-        msg_dialog::display(_("Mail error"), sprintf(_("Mail method cannot connect: %s"),
+        msg_dialog::display(_('Mail error'), sprintf(_('Mail method cannot connect: %s'),
               $this->mailMethod->get_error()), ERROR_DIALOG);
       } elseif (!$this->mailMethod->account_exists()) {
-        msg_dialog::display(_("Mail error"), sprintf(_("Mailbox '%s' doesn't exists on mail server: %s"),
+        msg_dialog::display(_('Mail error'), sprintf(_('Mailbox "%s" doesn\'t exists on mail server: %s'),
               $this->mailMethod->get_account_id(), $this->gosaMailServer), ERROR_DIALOG);
       }
 
@@ -222,16 +261,13 @@ class mailAccount extends simplePlugin
       }
     }
 
-    $this->attributesAccess['flag_ownmailbox']->setInLdap(FALSE);
-    $this->attributesAccess['flag_vacation']->setInLdap(FALSE);
-    $this->attributesAccess['flag_localonly']->setInLdap(FALSE);
-    $this->attributesAccess['flag_sieveownscript']->setInLdap(FALSE);
-
     if (!$this->mailMethod->vacationRangeEnabled()) {
       $this->attributesAccess['gosaVacationStart']->setDisabled(TRUE);
       $this->attributesAccess['gosaVacationStart']->setVisible(FALSE);
+      $this->attributesAccess['gosaVacationStart']->setValue('');
       $this->attributesAccess['gosaVacationStop']->setDisabled(TRUE);
       $this->attributesAccess['gosaVacationStop']->setVisible(FALSE);
+      $this->attributesAccess['gosaVacationStop']->setValue('');
       $this->attributesAccess['flag_vacation']->setManagedAttributes (
         array (
           'erase' => array (
@@ -275,36 +311,6 @@ class mailAccount extends simplePlugin
           )
         )
       );
-    }
-
-    /* sieve submit the form so that managed attributes are correctly updated */
-    $this->attributesAccess['flag_sieveownscript']->setSubmitForm(TRUE);
-
-    $this->updateAttributesValues();
-  }
-
-  /* We need $mailAccount->uid to return the uid for mailMethod */
-  public function __get($name)
-  {
-    if (in_array($name, array('cn','uid')) && isset($this->parent)) {
-      return $this->parent->getBaseObject()->$name;
-    } elseif (in_array($name, array('uidNumber','gidNumber')) && isset($this->parent)) {
-      return $this->parent->by_object['posixAccount']->$name;
-    } else {
-      /* Calling default behaviour */
-      return parent::__get($name);
-    }
-  }
-
-  public function __isset($name)
-  {
-    if (in_array($name, array('cn','uid')) && isset($this->parent)) {
-      return isset($this->parent->getBaseObject()->$name);
-    } elseif (in_array($name, array('uidNumber','gidNumber')) && isset($this->parent)) {
-      return isset($this->parent->by_object['posixAccount']->$name);
-    } else {
-      /* Calling default behaviour */
-      return parent::__isset($name);
     }
   }
 
