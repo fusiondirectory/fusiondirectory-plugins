@@ -43,10 +43,8 @@ class mailMethodCyrus extends mailMethod
 
   protected function init()
   {
-    mailMethod::init();
-    if (isset($this->config->data['SERVERS']['IMAP'])) {
-      $this->ServerList = $this->config->data['SERVERS']['IMAP'];
-    }
+    parent::init();
+    $this->ServerList = parent::getMailServers();
   }
 
 

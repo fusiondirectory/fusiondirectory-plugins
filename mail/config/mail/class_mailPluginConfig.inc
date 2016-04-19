@@ -41,12 +41,6 @@ class mailPluginConfig extends simplePlugin
         'name'  => _('Mail settings'),
         'attrs' => array(
           new SelectAttribute (
-            _('Mail method'),
-            _('Mail method the setup should use to communicate with a possible mail server. Leave this undefined if your mail method does not match the predefined ones.'),
-            'fdMailMethod', FALSE,
-            array('')
-          ),
-          new SelectAttribute (
             _('Account identification attribute'),
             _('Which attribute will be used to create accounts.'),
             'fdMailAttribute', TRUE,
@@ -98,15 +92,6 @@ class mailPluginConfig extends simplePlugin
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
-    $methods = mailMethod::get_methods();
-    $choices = array();
-    foreach ($methods as $method) {
-      $choices[] = preg_replace('/^mailMethod/', '', $method);
-    }
-    $outputs = $choices;
-    array_unshift($choices, '');
-    array_unshift($outputs, _('Generic'));
-    $this->attributesInfo['mail']['attrs']['fdMailMethod']->setChoices($choices, $outputs);
   }
 }
 ?>
