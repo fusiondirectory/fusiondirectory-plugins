@@ -64,7 +64,7 @@ class serviceCyrus extends simpleService
               new IntAttribute(
                 _('Port'), _('Port number on which Cyrus server should be contacted'),
                 'cyrusConnectPort', TRUE,
-                0 /*min*/, FALSE /*max*/
+                0 /*min*/, FALSE /*max*/, 143
               ),
               new SelectAttribute(
                 _('Option'), _('Options for contacting Cyrus server'),
@@ -105,7 +105,7 @@ class serviceCyrus extends simpleService
               new IntAttribute(
                 _('Port'), _('Port number on which Cyrus sieve server should be contacted'),
                 'cyrusSieveConnectPort', TRUE,
-                0 /*min*/, FALSE /*max*/
+                0 /*min*/, FALSE /*max*/, 4190
               ),
               new SelectAttribute(
                 _('Option'), _('Options for contacting Cyrus sieve server'),
