@@ -98,7 +98,7 @@ class mailgroup extends simplePlugin
       $this->cn = $this->attrs['cn'][0];
     }
 
-    $this->attributesAccess['gosaMailServer']->setChoices(mailMethod::getMailServers());
+    $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
     $this->attributesAccess['gosaMailServer']->setSubmitForm('mailServerChanged');
     $this->mailServerChanged();
   }

@@ -742,7 +742,7 @@ class mailMethod
   static public function serverMatch($server)
   {
     global $config;
-    return in_array($server, static::get_server_list());
+    return in_array($server, static::get_server_list($config));
   }
 
   static public function getInstance($class, $parent)
