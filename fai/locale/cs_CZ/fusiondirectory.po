@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-04-05 14:27+0200\n"
+"POT-Creation-Date: 2016-04-19 14:39+0200\n"
 "PO-Revision-Date: 2016-01-22 16:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/cs_CZ/)\n"
@@ -102,7 +102,7 @@ msgstr "Název třídy proměnných"
 
 #: admin/fai/class_faiPackage.inc:404
 #: admin/fai/class_faiPartitionTable.inc:311
-#: admin/fai/class_faiDiskEntry.inc:235
+#: admin/fai/class_faiDiskEntry.inc:241
 #: admin/fai/class_faiTemplateEntry.inc:147 admin/fai/class_faiProfile.inc:56
 #: admin/fai/class_faiScript.inc:57 admin/fai/class_faiScript.inc:75
 #: admin/fai/class_faiTemplate.inc:180 admin/fai/class_faiPartition.inc:246
@@ -182,7 +182,7 @@ msgid "Discs"
 msgstr "Jednotky datového úložiště"
 
 #: admin/fai/class_faiPartitionTable.inc:324
-#: admin/fai/class_faiDiskEntry.inc:265
+#: admin/fai/class_faiDiskEntry.inc:271
 msgid "Partitions in this class"
 msgstr "Oddíly v této třídě"
 
@@ -210,19 +210,19 @@ msgid ""
 "definition!"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:214
+#: admin/fai/class_faiDiskEntry.inc:220
 msgid "Partition table entry"
 msgstr "Položka tabulky rozdělení úložiště"
 
-#: admin/fai/class_faiDiskEntry.inc:215
+#: admin/fai/class_faiDiskEntry.inc:221
 msgid "FAI partition table entry"
 msgstr "Položka tabulky rozdělení úložiště pro FAI"
 
-#: admin/fai/class_faiDiskEntry.inc:226 admin/fai/class_faiDiskEntry.inc:242
+#: admin/fai/class_faiDiskEntry.inc:232 admin/fai/class_faiDiskEntry.inc:248
 msgid "Device"
 msgstr "Zařízení"
 
-#: admin/fai/class_faiDiskEntry.inc:229
+#: admin/fai/class_faiDiskEntry.inc:235
 #: admin/fai/packageSelect/selectPackage-list.xml:40
 #: admin/fai/class_faiScript.inc:71 admin/fai/class_faiPartition.inc:240
 #: admin/fai/class_faiHook.inc:71 admin/fai/class_faiVariable.inc:71
@@ -231,53 +231,53 @@ msgstr "Zařízení"
 msgid "Name"
 msgstr "Název"
 
-#: admin/fai/class_faiDiskEntry.inc:229
+#: admin/fai/class_faiDiskEntry.inc:235
 msgid "Disk name"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:235 admin/fai/class_faiPartition.inc:246
+#: admin/fai/class_faiDiskEntry.inc:241 admin/fai/class_faiPartition.inc:246
 msgid "Short description"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:239
+#: admin/fai/class_faiDiskEntry.inc:245
 msgid "fstab key"
 msgstr "položka v /etc/fstab"
 
-#: admin/fai/class_faiDiskEntry.inc:239
+#: admin/fai/class_faiDiskEntry.inc:245
 msgid "Key to use in fstab file"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:242
+#: admin/fai/class_faiDiskEntry.inc:248
 msgid "Label"
 msgstr "Štítek"
 
-#: admin/fai/class_faiDiskEntry.inc:242
+#: admin/fai/class_faiDiskEntry.inc:248
 msgid "UUID"
 msgstr "Jedinečný identifikátor uživatele (UUID)"
 
-#: admin/fai/class_faiDiskEntry.inc:245
+#: admin/fai/class_faiDiskEntry.inc:251
 msgid "Disk label"
 msgstr "Označení jednotky datového úložiště"
 
-#: admin/fai/class_faiDiskEntry.inc:254
+#: admin/fai/class_faiDiskEntry.inc:260
 msgid "Partition entries"
 msgstr "Položky oddílů"
 
-#: admin/fai/class_faiDiskEntry.inc:259 admin/fai/class_faiPartition.inc:423
+#: admin/fai/class_faiDiskEntry.inc:265 admin/fai/class_faiPartition.inc:423
 msgid "Combined physical partitions"
 msgstr "Kombinované fyzické oddíly"
 
-#: admin/fai/class_faiDiskEntry.inc:259
+#: admin/fai/class_faiDiskEntry.inc:265
 msgid "Physical partitions combined in this LVM volume"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:535
+#: admin/fai/class_faiDiskEntry.inc:541
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:539
+#: admin/fai/class_faiDiskEntry.inc:545
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions"
