@@ -144,19 +144,14 @@ class mailAccount extends simplePlugin
           ),
         )
       ),
-      'options2' => array(
-        'name' => _('Spam options'),
-        'attrs' => array(
+      'advanced' => array (
+         'name' => _('Advanced mail options'),
+         'attrs' => array (
           new FlagsAttribute ('gosaMailDeliveryMode', array(
             'flag_ownmailbox',
             'flag_vacation',
             'flag_localonly'
-          ))
-        )
-      ),
-      'advanced' => array (
-         'name' => _('Advanced mail options'),
-         'attrs' => array (
+          )),
           new BooleanAttribute (
             _('User is only allowed to send and receive local mails'),
             _('Select if user can only send and receive inside his own domain'),
