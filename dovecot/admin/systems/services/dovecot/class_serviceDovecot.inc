@@ -46,10 +46,26 @@ class serviceDovecot extends simpleService
             _('Connect URL for Dovecot server'),
             'fdDovecotConnect',
             array(
-              new StringAttribute(_('Hostname'), _('Hostname of the Dovecot server'), 'dovecotConnectURL'),
-              new IntAttribute(_('Port'), _('Port number on which Dovecot server should be contacted'), 'dovecotConnectPort', FALSE, 0 /*min*/, FALSE /*max*/),
-              new SelectAttribute(_('Option'), _('Options for contacting Dovecot server'), 'dovecotConnectOptions1', TRUE, array('notls', 'tls', 'ssl'), 'notls'),
-              new SelectAttribute(_('Valide certificats'), _('Weither or not to validate server certificate on connexion'), 'dovecotConnectOptions2', FALSE, array('', '/validate-cert', '/novalidate-cert'), '', array('', 'validate', 'no-validate'))
+              new StringAttribute(
+                _('Hostname'), _('Hostname of the Dovecot server'),
+                'dovecotConnectURL', TRUE
+              ),
+              new IntAttribute(
+                _('Port'), _('Port number on which Dovecot server should be contacted'),
+                'dovecotConnectPort', TRUE,
+                0 /*min*/, FALSE /*max*/, 143
+              ),
+              new SelectAttribute(
+                _('Option'), _('Options for contacting Dovecot server'),
+                'dovecotConnectOptions1', TRUE,
+                array('notls', 'tls', 'ssl'), 'notls'
+              ),
+              new SelectAttribute(
+                _('Valide certificats'), _('Weither or not to validate server certificate on connexion'),
+                'dovecotConnectOptions2', FALSE,
+                array('', '/validate-cert', '/novalidate-cert'), '',
+                array('', 'validate',       'no-validate')
+              )
             ),
             '/^{(.*):(\\d+)\\/([^\\/]+)(.*)}$/',
             '{%s:%d/%s%s}'
