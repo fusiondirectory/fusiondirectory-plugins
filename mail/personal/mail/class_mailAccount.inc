@@ -150,20 +150,13 @@ class mailAccount extends simplePlugin
           new FlagsAttribute ('gosaMailDeliveryMode', array(
             'flag_ownmailbox',
             'flag_vacation',
-            'flag_localonly',
-            'flag_sieveownscript'
+            'flag_localonly'
           ))
         )
       ),
       'advanced' => array (
          'name' => _('Advanced mail options'),
          'attrs' => array (
-          new BooleanAttribute (
-            _('Use custom sieve script').' <b>('._('disables all Mail options!').')<b>',
-            _('Use your sieve script with personnal customization'),
-            'flag_sieveownscript', FALSE, FALSE, '',
-            'C', ''
-          ),
           new BooleanAttribute (
             _('User is only allowed to send and receive local mails'),
             _('Select if user can only send and receive inside his own domain'),
@@ -200,10 +193,6 @@ class mailAccount extends simplePlugin
     $this->attributesAccess['flag_ownmailbox']->setInLdap(FALSE);
     $this->attributesAccess['flag_vacation']->setInLdap(FALSE);
     $this->attributesAccess['flag_localonly']->setInLdap(FALSE);
-    $this->attributesAccess['flag_sieveownscript']->setInLdap(FALSE);
-
-    /* sieve submit the form so that managed attributes are correctly updated */
-    $this->attributesAccess['flag_sieveownscript']->setSubmitForm(TRUE);
   }
 
   /* We need $mailAccount->uid to return the uid for mailMethod */
@@ -277,36 +266,12 @@ class mailAccount extends simplePlugin
           )
         )
       );
-      $this->attributesAccess['flag_sieveownscript']->setManagedAttributes (
-        array (
-          'erase' => array (
-            TRUE => array (
-              'flag_vacation',
-              'gosaVacationMessage',
-              'flag_ownmailbox',
-              'flag_localonly'
-            )
-          )
-        )
-      );
     } else {
       $this->attributesAccess['flag_vacation']->setManagedAttributes (
         array (
           'erase' => array (
             FALSE => array (
               'gosaVacationStart','gosaVacationStop','gosaVacationMessage'
-            )
-          )
-        )
-      );
-      $this->attributesAccess['flag_sieveownscript']->setManagedAttributes (
-        array (
-          'erase' => array (
-            TRUE => array (
-              'flag_vacation',
-              'gosaVacationStart','gosaVacationStop','gosaVacationMessage',
-              'flag_ownmailbox',
-              'flag_localonly'
             )
           )
         )
