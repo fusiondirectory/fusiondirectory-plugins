@@ -193,7 +193,7 @@ class mailAccount extends simplePlugin
       $this->parent = $object->parent;
     }
 
-    $this->attributesAccess['gosaMailServer']->setChoices(mailMethod::getMailServers());
+    $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
     $this->attributesAccess['gosaMailServer']->setSubmitForm('mailServerChanged');
     $this->mailServerChanged();
 
