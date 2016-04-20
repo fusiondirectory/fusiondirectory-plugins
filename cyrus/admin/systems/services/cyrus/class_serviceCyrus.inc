@@ -98,9 +98,20 @@ class serviceCyrus extends simpleService
             _('Sieve connect URL for Cyrus server'),
             'fdCyrusSieveServer',
             array(
-              new StringAttribute(_('Hostname'), _('Hostname of the Cyrus sieve server'), 'cyrusSieveConnectURL'),
-              new IntAttribute(_('Port'), _('Port number on which Cyrus sieve server should be contacted'), 'cyrusSieveConnectPort', FALSE, 0 /*min*/, FALSE /*max*/),
-              new SelectAttribute(_('Option'), _('Options for contacting Cyrus sieve server'), 'cyrusSieveConnectOptions', TRUE, array('notls', 'tls', 'ssl'), 'notls'),
+              new StringAttribute(
+                _('Hostname'), _('Hostname of the Cyrus sieve server'),
+                'cyrusSieveConnectURL', TRUE
+              ),
+              new IntAttribute(
+                _('Port'), _('Port number on which Cyrus sieve server should be contacted'),
+                'cyrusSieveConnectPort', TRUE,
+                0 /*min*/, FALSE /*max*/
+              ),
+              new SelectAttribute(
+                _('Option'), _('Options for contacting Cyrus sieve server'),
+                'cyrusSieveConnectOptions', TRUE,
+                array('notls', 'tls', 'ssl'), 'notls'
+              ),
             ),
             '/^{(.*):(\\d+)\\/([^\\/]+)}$/',
             '{%s:%d/%s}'
