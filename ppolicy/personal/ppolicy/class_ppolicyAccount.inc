@@ -88,6 +88,12 @@ class ppolicyAccount extends simplePlugin
     }
     if ($this->pwdAccountLockedTime == '') {
       $this->pwdAccountLockedTime = _('Unlocked');
+    } elseif ($this->pwdAccountLockedTime == '000001010000Z') {
+      $this->pwdAccountLockedTime = _('Locked permanently');
+    } else {
+      $date = DateTime::createFromFormat('YmdHis\Z', $this->pwdAccountLockedTime, new DateTimeZone('UTC'));
+      $date->setTimezone(timezone::getDefaultTimeZone());
+      $this->pwdAccountLockedTime = $date->format('Y-m-d H:i:s');
     }
 
     $this->pwdReset = '';
