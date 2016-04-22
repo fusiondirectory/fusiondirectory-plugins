@@ -227,7 +227,7 @@ class mailAccount extends simplePlugin
     $this->mailMethod->fixAttributesOnLoad();
 
     /* Initialize configured values */
-    if ($this->is_account) {
+    if ($this->initially_was_account) {
       if ($this->mailMethod->connect() && $this->mailMethod->account_exists()) {
         /* Read quota */
         $this->attributesAccess['gosaMailQuota']->setMailMethod($this->mailMethod);
@@ -239,10 +239,8 @@ class mailAccount extends simplePlugin
               $this->mailMethod->get_account_id(), $this->gosaMailServer), ERROR_DIALOG);
       }
 
-      if ($this->initially_was_account) {
-        $this->attributesAccess['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
-        $this->attributesAccess['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
-      }
+      $this->attributesAccess['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
+      $this->attributesAccess['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
     }
 
     if (!$this->mailMethod->vacationRangeEnabled()) {
