@@ -56,10 +56,10 @@ class ppolicyAccount extends simplePlugin
             'pwdAccountLockedTime', FALSE
           ),
           new SelectAttribute(
-            _('Reset locking'), _('Resets the lock status of this account'),
+            _('Reset locking / force change'), _('Resets the lock status of this account and/or force a password change'),
             'pwdReset', FALSE,
-            array('', 'FALSE', 'TRUE'), '',
-            array('', _('Reset with the same password'), _('Reset and force change'))
+            array('', 'TRUE', 'FALSE'), '',
+            array('', _('Force password change (resets locking)'), _('Reset locking (same password)'))
           )
         )
       )
@@ -95,8 +95,6 @@ class ppolicyAccount extends simplePlugin
       $date->setTimezone(timezone::getDefaultTimeZone());
       $this->pwdAccountLockedTime = $date->format('Y-m-d H:i:s');
     }
-
-    $this->pwdReset = '';
   }
 
   protected function loadAttributes()
@@ -123,7 +121,7 @@ class ppolicyAccount extends simplePlugin
 
   function remove_from_parent()
   {
-    /* ppolicy fields are not real fields, they can’t be removed though ldap_modify
+    /* ppolicy fields are not real fields, they can’t be removed through ldap_modify
      * It’s not possible to remove ppolicy info from a user node anyway */
   }
 }
