@@ -124,15 +124,15 @@ class personalInfo extends simplePlugin
             _('Country'), _('Country'),
             'co', FALSE
           ),
-          new DateAttribute (
+          new GeneralizedTimeDateAttribute (
             _('Start date'), _('Date this user joined the company'),
             'fdContractStartDate', FALSE,
-            'YmdHis\Z', ''
+            ''
           ),
-          new DateAttribute (
+          new GeneralizedTimeDateAttribute (
             _('End date'), _('Date this user is supposed to leave the company'),
             'fdContractEndDate', FALSE,
-            'YmdHis\Z', ''
+            ''
           ),
         )
       ),

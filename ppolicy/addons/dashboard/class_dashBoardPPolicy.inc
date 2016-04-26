@@ -3,17 +3,17 @@
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
   Copyright (C) 2014-2015  Dhatim
   Copyright (C) 2014-2016  FusionDirectory project
- 
+
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
- 
+
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
- 
+
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -105,7 +105,7 @@ class dashboardPpolicy extends simplePlugin
     foreach ($users as $user) {
       if (isset($user['pwdAccountLockedTime'])) {
         $locked_user  = dashboardUsers::get_user_infos($user);
-        $lockedTime   = DateTime::createFromFormat('YmdHis\Z', $user['pwdAccountLockedTime'], timezone::utc());
+        $lockedTime   = LdapGeneralizedTime::fromString($user['pwdAccountLockedTime']);
         $lockedTime->setTimezone(timezone::getDefaultTimeZone());
         $locked_user['pwdAccountLockedTime']  = $lockedTime->format('Y-m-d H:i:s');
         $locked_users[]                       = $locked_user;
@@ -140,7 +140,8 @@ class dashboardPpolicy extends simplePlugin
         /* No max age, it can’t be expired */
         continue;
       }
-      $lastChange = DateTime::createFromFormat('YmdHis\Z', $user['pwdChangedTime'], timezone::utc());
+      $lastChange = LdapGeneralizedTime::fromString($user['pwdChangedTime']);
+      $lastChange->setTimezone(timezone::utc());
       if (($lastChange->getTimeStamp() + $maxAge) < $now->getTimeStamp()) {
         $expired_accounts[] = dashboardUsers::get_user_infos($user);
       } elseif (($lastChange->getTimeStamp() + $maxAge) < ($now->getTimeStamp() + $next_expired_days_seconds)) {
