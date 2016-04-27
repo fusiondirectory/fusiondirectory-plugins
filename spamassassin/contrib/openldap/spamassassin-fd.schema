@@ -1,5 +1,5 @@
 ##
-## service-fd.schema - Needed by FusionDirectory for spamassasin plugin
+## spamassassin-fd.schema - Needed by FusionDirectory for spamassasin plugin
 ##
 ## Maintained by the FusionDirectory Project <contact@fusiondirectory.org>
 ##
@@ -35,10 +35,22 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.9.66 NAME 'saRule'
   DESC 'Base64 encoded rule text for spamassassin'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
-  
+
+# spamassassin
+# see http://SpamAssassin.org/ .
+attributetype ( 1.3.6.1.4.1.38414.58.1.1 NAME 'fdSpamAssassinRules'
+  DESC 'SpamAssassin user preferences settings'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
 # Spamassassin definitions
 objectclass (1.3.6.1.4.1.10098.1.2.1.38 NAME 'goSpamServer' SUP top AUXILIARY
   DESC 'Spam server definition'
   MUST ( cn )
   MAY  ( saRewriteHeader $ saTrustedNetworks $ saRequiredScore $ saFlags $
          saRule ) )
+
+objectclass (1.3.6.1.4.1.38414.58.2.1 NAME 'fdSpamAssassinUser' SUP top AUXILIARY
+  DESC 'Spam user rules'
+  MUST ( )
+  MAY  ( fdSpamAssassinRules ) )
