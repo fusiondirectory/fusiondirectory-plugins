@@ -38,9 +38,10 @@ class spamAssassinAccount extends simplePlugin
               _('SpamAssassin user preferences settings'),
             'fdSpamAssassinRules',
               array(
-                new StringAttribute (
+                new SelectAttribute (
                   _('Directive'),    _('The name of a SpamAssassin configuration directive'),
-                  'fdSpamAssassinRules_directive'
+                  'fdSpamAssassinRules_directive', TRUE,
+                  array('score', 'whitelist_from', 'required_score')
                 ),
                 new StringAttribute (
                   _('Value'), _('The value for the directive'),
