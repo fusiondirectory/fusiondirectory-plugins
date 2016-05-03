@@ -37,24 +37,26 @@ class mailMethodDovecot extends mailMethod
 
   public function connect()
   {
-    mailMethod::connect();
+    parent::connect();
 
     if ($this->config->get_cfg_value("mailMethodDisabled", "FALSE") == "TRUE") {
       return FALSE;
     }
 
-    if (!count($this->config->data['SERVERS']['IMAP'])) {
+    $servers = parent::getMailServers();
+
+    if (!count($servers)) {
       $this->error = _("There are no IMAP compatible mail servers defined!");
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
           "<b>IMAP: No mail servers configured, check systems->server->service->imap.</b>", "");
       return FALSE;
-    } elseif (!isset($this->config->data['SERVERS']['IMAP'][$this->parent->gosaMailServer])) {
+    } elseif (!isset($servers[$this->parent->gosaMailServer])) {
       $this->error = _("Mail server for this account is invalid!");
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
           "<b>IMAP: The selected mail server '".$this->parent->gosaMailServer."' is invalid.</b>", "");
       return FALSE;
     } else {
-      $cfg = $this->config->data['SERVERS']['IMAP'][$this->parent->gosaMailServer];
+      $cfg = $servers[$this->parent->gosaMailServer];
     }
 
     /* For some reason, hiding errors with @ does not wor here... */
@@ -176,7 +178,8 @@ class mailMethodDovecot extends mailMethod
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
       "<b>Attempting to create folder through Argonaut</b> on server :".$this->parent->gosaMailServer);
 
-    $cfg = $this->config->data['SERVERS']['IMAP'][$this->parent->gosaMailServer];
+    $servers  = parent::getMailServers();
+    $cfg      = $servers[$this->parent->gosaMailServer];
 
     $o_queue = new supportDaemon();
     if (!$o_queue->is_error()) {

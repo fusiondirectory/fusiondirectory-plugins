@@ -43,10 +43,8 @@ class mailMethodCyrus extends mailMethod
 
   protected function init()
   {
-    mailMethod::init();
-    if (isset($this->config->data['SERVERS']['IMAP'])) {
-      $this->ServerList = $this->config->data['SERVERS']['IMAP'];
-    }
+    parent::init();
+    $this->ServerList = parent::getMailServers();
   }
 
 
@@ -632,7 +630,7 @@ class mailMethodCyrus extends mailMethod
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search ("(objectClass=fdCyrusServer)",
+    $ldap->search ('(objectClass=fdCyrusServer)',
                   array('cn', 'fdCyrusConnect', 'fdCyrusAdmin', 'fdCyrusPassword', 'fdCyrusSieveServer'));
     while ($attrs = $ldap->fetch()) {
 

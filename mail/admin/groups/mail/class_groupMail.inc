@@ -52,26 +52,6 @@ class mailgroup extends simplePlugin
     );
   }
 
-  function __construct(&$config, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($config, $dn, $object);
-
-    /* Intialize the used mailMethod */
-    if (isset($object->cn)) {
-      $this->cn = $object->cn;
-    } elseif (isset($this->attrs['cn'])) {
-      $this->cn = $this->attrs['cn'][0];
-    }
-
-    $tmp = new mailMethod($config, $this);
-
-    $this->mailMethod = $tmp->get_method();
-    $this->mailMethod->fixAttributesOnLoad();
-
-    $this->attributesAccess['gosaMailServer']->setChoices($this->mailMethod->getMailServers());
-  }
-
-
   static function getAttributesInfo ()
   {
     return array(
@@ -105,5 +85,39 @@ class mailgroup extends simplePlugin
         )
       )
     );
+  }
+
+  function __construct(&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+
+    /* Intialize the used mailMethod */
+    if (isset($object->cn)) {
+      $this->cn = $object->cn;
+    } elseif (isset($this->attrs['cn'])) {
+      $this->cn = $this->attrs['cn'][0];
+    }
+
+    $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
+    $this->attributesAccess['gosaMailServer']->setSubmitForm('mailServerChanged');
+    $this->mailServerChanged();
+  }
+
+  public function mailServerChanged()
+  {
+    /* Intialize the used mailMethod */
+    if ($this->gosaMailServer == '') {
+      $method = 'mailMethod';
+    } else {
+      $method = mailMethod::getServerMethod($this->gosaMailServer);
+    }
+    $this->mailMethod = mailMethod::getInstance($method, $this);
+    $this->mailMethod->fixAttributesOnLoad();
+
+    /* Initialize configured values */
+    if ($this->is_account && $this->initially_was_account) {
+      $this->attributesAccess['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
+      $this->attributesAccess['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
+    }
   }
 }

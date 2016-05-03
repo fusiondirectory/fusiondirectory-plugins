@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-04-05 14:27+0200\n"
-"PO-Revision-Date: 2016-01-22 15:55+0000\n"
-"Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2016-05-02 09:31+0200\n"
+"PO-Revision-Date: 2016-04-27 20:17+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Russian Petrine orthography (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/ru@petr1708/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,131 +45,139 @@ msgid "Policy name"
 msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:60
-msgid "Minimum length"
+msgid "Description"
 msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:60
+msgid "A short description of this policy"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:64
+msgid "Minimum length"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:64
 msgid ""
 "Minimum length of the user supplied password - passwords shorter than this "
 "value will be rejected"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:65
+#: admin/ppolicy/class_ppolicy.inc:69
 msgid "Passwords in history"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:65
+#: admin/ppolicy/class_ppolicy.inc:69
 msgid ""
 "Number of passwords that are maintained in a list of previously used "
 "passwords"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:70
+#: admin/ppolicy/class_ppolicy.inc:74
 msgid "Minimum password age"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:70
+#: admin/ppolicy/class_ppolicy.inc:74
 msgid "Minimum time between password changes"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:75
+#: admin/ppolicy/class_ppolicy.inc:79
 msgid "Maximum password age"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:75
+#: admin/ppolicy/class_ppolicy.inc:79
 msgid ""
 "Maximum time a password is valid, after which it is deemed to be no longer "
 "usable and any bind operations attempted with the expired password will be "
 "treated as invalid"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:80
+#: admin/ppolicy/class_ppolicy.inc:84
 msgid "Expiry warning delay"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:80
+#: admin/ppolicy/class_ppolicy.inc:84
 msgid ""
 "Defines the start time - in seconds - prior to the password expiry that "
 "password expiry warning messages are returned in bind responses. 0 to "
 "disable"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:85
+#: admin/ppolicy/class_ppolicy.inc:89
 msgid "Grace period"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:85
+#: admin/ppolicy/class_ppolicy.inc:89
 msgid ""
 "Number of times a user is allowed to successfully bind using an expired "
 "password"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:90
+#: admin/ppolicy/class_ppolicy.inc:94
 msgid "Allow user change"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:90
+#: admin/ppolicy/class_ppolicy.inc:94
 msgid "Whether users are allowed to change their own passwords"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:95
+#: admin/ppolicy/class_ppolicy.inc:99
 msgid "Safe modify"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:95
+#: admin/ppolicy/class_ppolicy.inc:99
 msgid ""
 "Whether a user must send the current password during a password modification"
 " operation"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:109
+#: admin/ppolicy/class_ppolicy.inc:113
 msgid "Lock out"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:113
+#: admin/ppolicy/class_ppolicy.inc:117
 msgid "Activate lock out"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:113
+#: admin/ppolicy/class_ppolicy.inc:117
 msgid ""
 "Whether to lock an account that had more consecutive failed bind attempts "
 "with invalid passwords than is defined by \"Maximum failures\""
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:118
+#: admin/ppolicy/class_ppolicy.inc:122
 msgid "Lock out duration"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:118
+#: admin/ppolicy/class_ppolicy.inc:122
 msgid ""
 "Time the account remains locked after an automatic lock out (0 means for "
 "ever)"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:123
+#: admin/ppolicy/class_ppolicy.inc:127
 msgid "Maximum failures"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:123
+#: admin/ppolicy/class_ppolicy.inc:127
 msgid ""
 "Number of consecutive password failures allowed before automatic lock out"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:128
+#: admin/ppolicy/class_ppolicy.inc:132
 msgid "Failure count interval"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:128
+#: admin/ppolicy/class_ppolicy.inc:132
 msgid ""
 "Time after which the count of consecutive password failures is reset even if"
 " no successful authentication has occurred"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:133
+#: admin/ppolicy/class_ppolicy.inc:137
 msgid "Must change"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:133
+#: admin/ppolicy/class_ppolicy.inc:137
 msgid ""
 "Whether the user must change their password after an account is reset by an "
 "administrator following an automatic lockout"
@@ -232,19 +240,19 @@ msgid "Time the account was locked"
 msgstr ""
 
 #: personal/ppolicy/class_ppolicyAccount.inc:59
-msgid "Reset locking"
+msgid "Reset locking / force change"
 msgstr ""
 
 #: personal/ppolicy/class_ppolicyAccount.inc:59
-msgid "Resets the lock status of this account"
+msgid "Resets the lock status of this account and/or force a password change"
 msgstr ""
 
 #: personal/ppolicy/class_ppolicyAccount.inc:62
-msgid "Reset with the same password"
+msgid "Force password change (resets locking)"
 msgstr ""
 
 #: personal/ppolicy/class_ppolicyAccount.inc:62
-msgid "Reset and force change"
+msgid "Reset locking (same password)"
 msgstr ""
 
 #: personal/ppolicy/class_ppolicyAccount.inc:77
@@ -257,6 +265,10 @@ msgstr ""
 
 #: personal/ppolicy/class_ppolicyAccount.inc:90
 msgid "Unlocked"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:92
+msgid "Locked permanently"
 msgstr ""
 
 #: config/ppolicy/class_ppolicyConfig.inc:29

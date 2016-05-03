@@ -1,0 +1,111 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory-110\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2016-05-02 09:31+0200\n"
+"PO-Revision-Date: 2016-04-13 13:07+0000\n"
+"Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
+"Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el_GR\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:29
+#: admin/systems/services/postfix/class_servicePostfix.inc:30
+msgid "Postfix (SMTP)"
+msgstr "Postfix (SMTP)"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:30
+msgid "Services"
+msgstr "Υπηρεσίες"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:44
+msgid "Informations"
+msgstr "Πληροφορίες"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:47
+msgid "Hostname"
+msgstr "Όνομα συστήματος"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:47
+msgid "The host name."
+msgstr "Όνομα Συστήματος."
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:52
+msgid "Domain"
+msgstr "Τομέας"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:52
+msgid "The domain."
+msgstr "Ο τομέας"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:57
+msgid "Max mail header size (KB)"
+msgstr "Μέγιστο μέγεθος κεφαλίδας email (KB) "
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:57
+msgid "This value specifies the maximal header size."
+msgstr "Αυτή η τιμή καθορίζει το μέγιστο μέγεθος κεφαλίδας."
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:62
+msgid "Max mailbox size (KB)"
+msgstr "Μέγιστο μέγεθος mailbox (KB)"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:62
+msgid "Defines the maximal size of mail box."
+msgstr "Καθορίστε το μέγιστο μέγεθος του mail box."
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:67
+msgid "Max message size (KB)"
+msgstr "Μέγιστο μέγεθος μηνύματος (KB)"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:67
+msgid "Specify the maximal size of a message."
+msgstr "Καθορίστε το μέγιστο μέγεθος του μηνύματος."
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:74
+msgid "Domains and routing"
+msgstr "Τομείς και δρομολόγηση"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:78
+msgid "Domains to accept mail for"
+msgstr "Τομείς για τους οποίους λαμβάνεται αλληλογραφία"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:78
+msgid "Postfix networks"
+msgstr "Δίκτυα Postfix"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:83
+msgid "Transport table"
+msgstr "Πίνακας διακίνησης"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:88
+msgid "Transport rule"
+msgstr "Κανόνας διακίνησης"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:102
+msgid "Restrictions"
+msgstr "Περιορισμοί"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:106
+msgid "Restrictions for sender"
+msgstr "Περιορισμοί για τον αποστολέα"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:115
+msgid "For sender"
+msgstr "Για τον αποστολέα"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:120
+msgid "Restrictions for recipient"
+msgstr "Περιορισμοί για τον παραλήπτη"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:129
+msgid "For recipient"
+msgstr "Για τον παραλήπτη"

@@ -137,9 +137,9 @@ class mailMethod
      */
     if ($this->config->get_cfg_value("cyrusUseSlashes") == "TRUE") {
       $this->cyrusUseSlashes = TRUE;
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "", "<b>MAIL:</b> cyrusUseSlashes: <b>Enabled</b>");
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "Enabled", "<b>MAIL:</b> cyrusUseSlashes");
     } else {
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "", "<b>MAIL:</b> cyrusUseSlashes: <b>Disabled</b>");
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "Disabled", "<b>MAIL:</b> cyrusUseSlashes");
     }
 
     /* Check if the mail account identification attribute
@@ -266,8 +266,8 @@ class mailMethod
   public function connect()
   {
     $this->reset_error();
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "", "<b>MAIL: Connect method</b>: ".get_class($this));
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "", "<b>MAIL: Current server</b>: ".$this->parent->gosaMailServer);
+    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, get_class($this), "<b>MAIL: Connect method</b>");
+    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->parent->gosaMailServer, "<b>MAIL: Current server</b>");
 
     $this->connected = TRUE;
     return TRUE;
@@ -290,7 +290,7 @@ class mailMethod
   {
     $this->reset_error();
     if ($this->is_connected()) {
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "", "<b>MAIL: Disconnect method</b>: ".get_class($this));
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, get_class($this), "<b>MAIL: Disconnect method</b>");
       $this->connected = FALSE;
     }
   }
@@ -417,7 +417,7 @@ class mailMethod
 
     if ($this->account_id != $acc_id) {
       $this->account_id = $acc_id;
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "", "<b>MAIL:</b> AccountID generated: <b>".$acc_id."</b>");
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $acc_id, "<b>MAIL:</b> AccountID generated");
     }
   }
 
@@ -503,7 +503,7 @@ class mailMethod
       $method = $this->config->get_cfg_value("mailmethod");
       $cls = get_correct_class_name("mailMethod$method");
       if (isset($methods[$cls])) {
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "", "<b>MAIL:</b> Selected mailMethod: <b>".$cls."</b>");
+        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $cls, "<b>MAIL:</b> Selected mailMethod");
         $tmp = new $cls($this->config, $this->parent, $this->type);
         $tmp->init();
         return $tmp;
@@ -691,14 +691,27 @@ class mailMethod
 
 
   /*! \brief  Returns all mail servers configured in FusionDirectory
-               that are useable with this mailMethod.
-      @return Array  All useable mail servers.
+      @return Array  All useable mail servers
   */
-  public function getMailServers()
+  static public function getMailServers()
   {
-    return array_keys($this->config->data['SERVERS']['IMAP']);
+    global $config;
+    if (session::global_is_set('mailServers')) {
+      return session::global_get('mailServers');
+    }
+    $methods = mailMethod::get_methods();
+    $servers = array();
+    foreach ($methods as $class) {
+     $servers = array_merge($servers, $class::get_server_list($config));
+    }
+    session::global_set('mailServers', $servers);
+    return $servers;
   }
 
+  static public function resetMailServersCache()
+  {
+    session::global_un_set('mailServers');
+  }
 
   /*! \brief  Returns the available mailMethods
       @return Array   A list of all avaialable mailMethods_
@@ -715,6 +728,32 @@ class mailMethod
     return $available;
   }
 
+  static public function getServerMethod($server)
+  {
+    $methods = mailMethod::get_methods();
+    foreach ($methods as $class) {
+      if ($class::serverMatch($server)) {
+        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $class, 'Mail method for server "'.$server.'"');
+        return $class;
+      }
+    }
+    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '', 'No method found for server "'.$server.'"');
+    return 'mailMethod';
+  }
+
+  static public function serverMatch($server)
+  {
+    global $config;
+    return isset(static::get_server_list($config)[$server]);
+  }
+
+  static public function getInstance($class, $parent)
+  {
+    global $config;
+    $obj = new $class($config, $parent);
+    $obj->init();
+    return $obj;
+  }
 
   /* \brief   Some method require special folder types, "kolab" for example.
       !! Those values are dummy values, the base class doesn't use folder types;

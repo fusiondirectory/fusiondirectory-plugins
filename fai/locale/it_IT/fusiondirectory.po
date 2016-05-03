@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-04-05 14:27+0200\n"
+"POT-Creation-Date: 2016-05-02 09:31+0200\n"
 "PO-Revision-Date: 2016-01-22 16:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
@@ -103,7 +103,7 @@ msgstr "Nome di classe variabile"
 
 #: admin/fai/class_faiPackage.inc:404
 #: admin/fai/class_faiPartitionTable.inc:311
-#: admin/fai/class_faiDiskEntry.inc:235
+#: admin/fai/class_faiDiskEntry.inc:241
 #: admin/fai/class_faiTemplateEntry.inc:147 admin/fai/class_faiProfile.inc:56
 #: admin/fai/class_faiScript.inc:57 admin/fai/class_faiScript.inc:75
 #: admin/fai/class_faiTemplate.inc:180 admin/fai/class_faiPartition.inc:246
@@ -183,7 +183,7 @@ msgid "Discs"
 msgstr "Dischi"
 
 #: admin/fai/class_faiPartitionTable.inc:324
-#: admin/fai/class_faiDiskEntry.inc:265
+#: admin/fai/class_faiDiskEntry.inc:271
 msgid "Partitions in this class"
 msgstr "Partizioni in questa classe"
 
@@ -211,19 +211,19 @@ msgid ""
 "definition!"
 msgstr "La partizione non può essere rimossa mentre é in uso nella definizione del disco '%s' !"
 
-#: admin/fai/class_faiDiskEntry.inc:214
+#: admin/fai/class_faiDiskEntry.inc:220
 msgid "Partition table entry"
 msgstr "Elenco della tavola delle partizioni"
 
-#: admin/fai/class_faiDiskEntry.inc:215
+#: admin/fai/class_faiDiskEntry.inc:221
 msgid "FAI partition table entry"
 msgstr "Elenco della tavola delle partizioni FAI"
 
-#: admin/fai/class_faiDiskEntry.inc:226 admin/fai/class_faiDiskEntry.inc:242
+#: admin/fai/class_faiDiskEntry.inc:232 admin/fai/class_faiDiskEntry.inc:248
 msgid "Device"
 msgstr "Dispositivi"
 
-#: admin/fai/class_faiDiskEntry.inc:229
+#: admin/fai/class_faiDiskEntry.inc:235
 #: admin/fai/packageSelect/selectPackage-list.xml:40
 #: admin/fai/class_faiScript.inc:71 admin/fai/class_faiPartition.inc:240
 #: admin/fai/class_faiHook.inc:71 admin/fai/class_faiVariable.inc:71
@@ -232,53 +232,53 @@ msgstr "Dispositivi"
 msgid "Name"
 msgstr "Nome"
 
-#: admin/fai/class_faiDiskEntry.inc:229
+#: admin/fai/class_faiDiskEntry.inc:235
 msgid "Disk name"
 msgstr "Nome del disco"
 
-#: admin/fai/class_faiDiskEntry.inc:235 admin/fai/class_faiPartition.inc:246
+#: admin/fai/class_faiDiskEntry.inc:241 admin/fai/class_faiPartition.inc:246
 msgid "Short description"
 msgstr "Breve descrizione"
 
-#: admin/fai/class_faiDiskEntry.inc:239
+#: admin/fai/class_faiDiskEntry.inc:245
 msgid "fstab key"
 msgstr "Elenco fstab"
 
-#: admin/fai/class_faiDiskEntry.inc:239
+#: admin/fai/class_faiDiskEntry.inc:245
 msgid "Key to use in fstab file"
 msgstr "Chiave da usare nel file fstab"
 
-#: admin/fai/class_faiDiskEntry.inc:242
+#: admin/fai/class_faiDiskEntry.inc:248
 msgid "Label"
 msgstr "Etichetta"
 
-#: admin/fai/class_faiDiskEntry.inc:242
+#: admin/fai/class_faiDiskEntry.inc:248
 msgid "UUID"
 msgstr "UUID"
 
-#: admin/fai/class_faiDiskEntry.inc:245
+#: admin/fai/class_faiDiskEntry.inc:251
 msgid "Disk label"
 msgstr "Etichetta del disco"
 
-#: admin/fai/class_faiDiskEntry.inc:254
+#: admin/fai/class_faiDiskEntry.inc:260
 msgid "Partition entries"
 msgstr "Elenco delle partizioni"
 
-#: admin/fai/class_faiDiskEntry.inc:259 admin/fai/class_faiPartition.inc:423
+#: admin/fai/class_faiDiskEntry.inc:265 admin/fai/class_faiPartition.inc:423
 msgid "Combined physical partitions"
 msgstr "Combinazione delle partizioni fisiche"
 
-#: admin/fai/class_faiDiskEntry.inc:259
+#: admin/fai/class_faiDiskEntry.inc:265
 msgid "Physical partitions combined in this LVM volume"
 msgstr "Partizioni fisiche combinate in questo volume LVM"
 
-#: admin/fai/class_faiDiskEntry.inc:535
+#: admin/fai/class_faiDiskEntry.inc:541
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration"
 msgstr "Ci sono più di quattro partizioni primarie nella tua configurazione"
 
-#: admin/fai/class_faiDiskEntry.inc:539
+#: admin/fai/class_faiDiskEntry.inc:545
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions"

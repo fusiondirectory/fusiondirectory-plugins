@@ -94,7 +94,7 @@ class mailAccount extends simplePlugin
           ),
           new SelectAttribute (
             _('Server'), _('Specify the mail server where the user will be hosted on'),
-            'gosaMailServer', TRUE,
+            'gosaMailServer', FALSE,
             array()
           ),
           new MailQuotaAttribute (
@@ -144,54 +144,14 @@ class mailAccount extends simplePlugin
           ),
         )
       ),
-      'options2' => array(
-        'name' => _('Spam options'),
-        'attrs' => array(
-          new BooleanAttribute (
-            _('Move mails depending on spam level'), 'Check if you want to move mails depending on spam level',
-            'flag_spamlevel', FALSE, FALSE, '',
-            'S', ''
-          ),
-          new SelectAttribute (
-            _('Minimum spam level'), _('Spam level above which a mail will be moved'),
-            'gosaSpamSortLevel', FALSE,
-            array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20), 4
-          ),
-          new SelectAttribute (
-            _('Move spam to folder'), _('Folder in which spam will be moved'),
-            'gosaSpamMailbox', FALSE,
-            array('INBOX')
-          ),
-          new BooleanAttribute (
-            _('Reject mail depending on their size'), _('Messages bigger than the chosen size will be rejected'),
-            'flag_spamsize', FALSE, FALSE, '',
-            'R', ''
-          ),
-          new IntAttribute (
-            _('Minimum size to reject a mail (MB)'), _('Minimum size to reject a mail (MB)'),
-            'gosaMailMaxSize',
-            FALSE, FALSE, FALSE,
-            50
-          ),
-          new FlagsAttribute ('gosaMailDeliveryMode', array(
-            'flag_ownmailbox',
-            'flag_vacation',
-            'flag_spamlevel',
-            'flag_spamsize',
-            'flag_localonly',
-            'flag_sieveownscript'
-          ))
-        )
-      ),
       'advanced' => array (
          'name' => _('Advanced mail options'),
          'attrs' => array (
-          new BooleanAttribute (
-            _('Use custom sieve script').' <b>('._('disables all Mail options!').')<b>',
-            _('Use your sieve script with personnal customization'),
-            'flag_sieveownscript', FALSE, FALSE, '',
-            'C', ''
-          ),
+          new FlagsAttribute ('gosaMailDeliveryMode', array(
+            'flag_ownmailbox',
+            'flag_vacation',
+            'flag_localonly'
+          )),
           new BooleanAttribute (
             _('User is only allowed to send and receive local mails'),
             _('Select if user can only send and receive inside his own domain'),
@@ -221,125 +181,13 @@ class mailAccount extends simplePlugin
       $this->parent = $object->parent;
     }
 
-    /* Intialize the used mailMethod */
-    $tmp = new mailMethod($config, $this);
-
-    $this->mailMethod = $tmp->get_method();
-    $this->mailMethod->fixAttributesOnLoad();
-
-    $this->attributesAccess['gosaMailServer']->setChoices($this->mailMethod->getMailServers());
-    $this->attributesAccess['gosaSpamSortLevel']->setChoices($this->mailMethod->getSpamLevels());
-
-    /* Initialize configured values */
-    if ($this->is_account) {
-      if ($this->mailMethod->connect() && $this->mailMethod->account_exists()) {
-
-        /* Read quota */
-        $this->attributesAccess['gosaMailQuota']->setMailMethod($this->mailMethod);
-
-        /* Read mailboxes */
-        $mailBoxes = $this->mailMethod->getMailboxList();
-        $this->attributesAccess['gosaSpamMailbox']->setChoices($mailBoxes);
-        if ($this->mailMethod->is_error()) {
-          msg_dialog::display(_("Mail error"), sprintf(_("Cannot get list of mailboxes: %s"),
-                $this->mailMethod->get_error()), ERROR_DIALOG);
-        }
-      } elseif (!$this->mailMethod->is_connected()) {
-        msg_dialog::display(_("Mail error"), sprintf(_("Mail method cannot connect: %s"),
-              $this->mailMethod->get_error()), ERROR_DIALOG);
-      } elseif (!$this->mailMethod->account_exists()) {
-        msg_dialog::display(_("Mail error"), sprintf(_("Mailbox '%s' doesn't exists on mail server: %s"),
-              $this->mailMethod->get_account_id(), $this->gosaMailServer), ERROR_DIALOG);
-      }
-
-      if ($this->initially_was_account) {
-        $this->attributesAccess['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
-        $this->attributesAccess['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
-      }
-    }
+    $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
+    $this->attributesAccess['gosaMailServer']->setSubmitForm('mailServerChanged');
+    $this->mailServerChanged();
 
     $this->attributesAccess['flag_ownmailbox']->setInLdap(FALSE);
     $this->attributesAccess['flag_vacation']->setInLdap(FALSE);
-    $this->attributesAccess['flag_spamlevel']->setInLdap(FALSE);
-    $this->attributesAccess['flag_spamsize']->setInLdap(FALSE);
     $this->attributesAccess['flag_localonly']->setInLdap(FALSE);
-    $this->attributesAccess['flag_sieveownscript']->setInLdap(FALSE);
-
-    if (!$this->mailMethod->vacationRangeEnabled()) {
-      $this->attributesAccess['gosaVacationStart']->setDisabled(TRUE);
-      $this->attributesAccess['gosaVacationStart']->setVisible(FALSE);
-      $this->attributesAccess['gosaVacationStop']->setDisabled(TRUE);
-      $this->attributesAccess['gosaVacationStop']->setVisible(FALSE);
-      $this->attributesAccess['flag_vacation']->setManagedAttributes (
-        array (
-          'erase' => array (
-            FALSE => array (
-              'gosaVacationMessage'
-            )
-          )
-        )
-      );
-      $this->attributesAccess['flag_sieveownscript']->setManagedAttributes (
-        array (
-          'erase' => array (
-            TRUE => array (
-              'flag_vacation',
-              'gosaVacationMessage',
-              'flag_spamlevel','flag_spamsize','gosaMailMaxSize',
-              'gosaSpamMailbox','gosaSpamSortLevel',
-              'flag_ownmailbox',
-              'flag_localonly'
-            )
-          )
-        )
-      );
-    } else {
-      $this->attributesAccess['flag_vacation']->setManagedAttributes (
-        array (
-          'erase' => array (
-            FALSE => array (
-              'gosaVacationStart','gosaVacationStop','gosaVacationMessage'
-            )
-          )
-        )
-      );
-      $this->attributesAccess['flag_sieveownscript']->setManagedAttributes (
-        array (
-          'erase' => array (
-            TRUE => array (
-              'flag_vacation',
-              'gosaVacationStart','gosaVacationStop','gosaVacationMessage',
-              'flag_spamlevel','flag_spamsize','gosaMailMaxSize',
-              'gosaSpamMailbox','gosaSpamSortLevel',
-              'flag_ownmailbox',
-              'flag_localonly'
-            )
-          )
-        )
-      );
-    }
-
-    $this->attributesAccess['flag_spamlevel']->setManagedAttributes (
-      array (
-        'erase' => array (
-          FALSE => array (
-            'gosaSpamMailbox','gosaSpamSortLevel'
-          )
-        )
-      )
-    );
-    $this->attributesAccess['flag_spamsize']->setManagedAttributes (
-      array (
-        'erase' => array (
-          FALSE => array ('gosaMailMaxSize')
-        )
-      )
-    );
-
-    /* sieve submit the form so that managed attributes are correctly updated */
-    $this->attributesAccess['flag_sieveownscript']->setSubmitForm(TRUE);
-
-    $this->updateAttributesValues();
   }
 
   /* We need $mailAccount->uid to return the uid for mailMethod */
@@ -364,6 +212,63 @@ class mailAccount extends simplePlugin
     } else {
       /* Calling default behaviour */
       return parent::__isset($name);
+    }
+  }
+
+  public function mailServerChanged()
+  {
+    /* Intialize the used mailMethod */
+    if ($this->gosaMailServer == '') {
+      $method = 'mailMethod';
+    } else {
+      $method = mailMethod::getServerMethod($this->gosaMailServer);
+    }
+    $this->mailMethod = mailMethod::getInstance($method, $this);
+    $this->mailMethod->fixAttributesOnLoad();
+
+    /* Initialize configured values */
+    if ($this->initially_was_account) {
+      if ($this->mailMethod->connect() && $this->mailMethod->account_exists()) {
+        /* Read quota */
+        $this->attributesAccess['gosaMailQuota']->setMailMethod($this->mailMethod);
+      } elseif (!$this->mailMethod->is_connected()) {
+        msg_dialog::display(_('Mail error'), sprintf(_('Mail method cannot connect: %s'),
+              $this->mailMethod->get_error()), ERROR_DIALOG);
+      } elseif (!$this->mailMethod->account_exists()) {
+        msg_dialog::display(_('Mail error'), sprintf(_('Mailbox "%s" doesn\'t exists on mail server: %s'),
+              $this->mailMethod->get_account_id(), $this->gosaMailServer), ERROR_DIALOG);
+      }
+
+      $this->attributesAccess['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
+      $this->attributesAccess['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
+    }
+
+    if (!$this->mailMethod->vacationRangeEnabled()) {
+      $this->attributesAccess['gosaVacationStart']->setDisabled(TRUE);
+      $this->attributesAccess['gosaVacationStart']->setVisible(FALSE);
+      $this->attributesAccess['gosaVacationStart']->setValue('');
+      $this->attributesAccess['gosaVacationStop']->setDisabled(TRUE);
+      $this->attributesAccess['gosaVacationStop']->setVisible(FALSE);
+      $this->attributesAccess['gosaVacationStop']->setValue('');
+      $this->attributesAccess['flag_vacation']->setManagedAttributes (
+        array (
+          'erase' => array (
+            FALSE => array (
+              'gosaVacationMessage'
+            )
+          )
+        )
+      );
+    } else {
+      $this->attributesAccess['flag_vacation']->setManagedAttributes (
+        array (
+          'erase' => array (
+            FALSE => array (
+              'gosaVacationStart','gosaVacationStop','gosaVacationMessage'
+            )
+          )
+        )
+      );
     }
   }
 

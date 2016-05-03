@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -22,9 +21,7 @@
 
 class serviceCyrus extends simpleService
 {
-
-  /* This plugin only writes its objectClass */
-  var $objectclasses = array("fdCyrusServer");
+  var $objectclasses = array('fdCyrusServer');
 
   /* Return plugin informations for acl handling */
   static function plInfo()
@@ -52,7 +49,7 @@ class serviceCyrus extends simpleService
    */
   static function getAttributesInfo ()
   {
-      return array (
+    return array (
       'cyrus' => array (
         'name'  => _('Cyrus settings'),
         'attrs' => array (
@@ -60,10 +57,26 @@ class serviceCyrus extends simpleService
             _('Connect URL for Cyrus server'),
             'fdCyrusConnect',
             array(
-              new StringAttribute(_('Hostname'), _('Hostname of the Cyrus server'), 'cyrusConnectURL'),
-              new IntAttribute(_('Port'), _('Port number on which Cyrus server should be contacted'), 'cyrusConnectPort', FALSE, 0 /*min*/, FALSE /*max*/),
-              new SelectAttribute(_('Option'), _('Options for contacting Cyrus server'), 'cyrusConnectOptions1', TRUE, array('notls', 'tls', 'ssl'), 'notls'),
-              new SelectAttribute(_('Valide certificats'), _('Weither or not to validate server certificate on connexion'), 'cyrusConnectOptions2', FALSE, array('', '/validate-cert', '/novalidate-cert'), '', array('', 'validate', 'no-validate'))
+              new StringAttribute(
+                _('Hostname'), _('Hostname of the Cyrus server'),
+                'cyrusConnectURL', TRUE
+              ),
+              new IntAttribute(
+                _('Port'), _('Port number on which Cyrus server should be contacted'),
+                'cyrusConnectPort', TRUE,
+                0 /*min*/, FALSE /*max*/, 143
+              ),
+              new SelectAttribute(
+                _('Option'), _('Options for contacting Cyrus server'),
+                'cyrusConnectOptions1', TRUE,
+                array('notls', 'tls', 'ssl'), 'notls'
+              ),
+              new SelectAttribute(
+                _('Valide certificats'), _('Weither or not to validate server certificate on connexion'),
+                'cyrusConnectOptions2', FALSE,
+                array('', '/validate-cert', '/novalidate-cert'), '',
+                array('', 'validate',       'no-validate')
+              )
             ),
             '/^{(.*):(\\d+)\\/([^\\/]+)(.*)}$/',
             '{%s:%d/%s%s}'
@@ -85,9 +98,20 @@ class serviceCyrus extends simpleService
             _('Sieve connect URL for Cyrus server'),
             'fdCyrusSieveServer',
             array(
-              new StringAttribute(_('Hostname'), _('Hostname of the Cyrus sieve server'), 'cyrusSieveConnectURL'),
-              new IntAttribute(_('Port'), _('Port number on which Cyrus sieve server should be contacted'), 'cyrusSieveConnectPort', FALSE, 0 /*min*/, FALSE /*max*/),
-              new SelectAttribute(_('Option'), _('Options for contacting Cyrus sieve server'), 'cyrusSieveConnectOptions', TRUE, array('notls', 'tls', 'ssl'), 'notls'),
+              new StringAttribute(
+                _('Hostname'), _('Hostname of the Cyrus sieve server'),
+                'cyrusSieveConnectURL', TRUE
+              ),
+              new IntAttribute(
+                _('Port'), _('Port number on which Cyrus sieve server should be contacted'),
+                'cyrusSieveConnectPort', TRUE,
+                0 /*min*/, FALSE /*max*/, 4190
+              ),
+              new SelectAttribute(
+                _('Option'), _('Options for contacting Cyrus sieve server'),
+                'cyrusSieveConnectOptions', TRUE,
+                array('notls', 'tls', 'ssl'), 'notls'
+              ),
             ),
             '/^{(.*):(\\d+)\\/([^\\/]+)}$/',
             '{%s:%d/%s}'
@@ -97,6 +121,10 @@ class serviceCyrus extends simpleService
     );
   }
 
+  function save()
+  {
+    parent::save();
+    mailMethod::resetMailServersCache();
+  }
 }
-
 ?>
