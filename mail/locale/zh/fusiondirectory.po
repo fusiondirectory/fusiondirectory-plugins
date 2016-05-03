@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-04-19 14:39+0200\n"
-"PO-Revision-Date: 2016-04-19 12:20+0000\n"
+"POT-Creation-Date: 2016-05-02 09:31+0200\n"
+"PO-Revision-Date: 2016-04-27 20:17+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Chinese (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -87,27 +87,27 @@ msgstr ""
 msgid "Mail method '%s' is unknown!"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:763
-#: personal/mail/class_mail-methods.inc:764
+#: personal/mail/class_mail-methods.inc:765
+#: personal/mail/class_mail-methods.inc:766
 msgid "None"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:853
+#: personal/mail/class_mail-methods.inc:855
 msgid "Unknown"
 msgstr "未知"
 
-#: personal/mail/class_mail-methods.inc:855
+#: personal/mail/class_mail-methods.inc:857
 msgid "Unlimited"
 msgstr ""
 
 #: personal/mail/class_mailAccount.inc:45
-#: personal/mail/class_mailAccount.inc:251
-#: personal/mail/class_mailAccount.inc:254
-#: personal/mail/class_mailAccount.inc:325
-#: personal/mail/class_mailAccount.inc:329
-#: personal/mail/class_mailAccount.inc:333
-#: personal/mail/class_mailAccount.inc:366
-#: personal/mail/class_mailAccount.inc:370
+#: personal/mail/class_mailAccount.inc:235
+#: personal/mail/class_mailAccount.inc:238
+#: personal/mail/class_mailAccount.inc:283
+#: personal/mail/class_mailAccount.inc:287
+#: personal/mail/class_mailAccount.inc:291
+#: personal/mail/class_mailAccount.inc:324
+#: personal/mail/class_mailAccount.inc:328
 msgid "Mail error"
 msgstr ""
 
@@ -184,72 +184,56 @@ msgid "till"
 msgstr "至"
 
 #: personal/mail/class_mailAccount.inc:148
-msgid "Spam options"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:159
 msgid "Advanced mail options"
 msgstr "高级邮件选项"
 
-#: personal/mail/class_mailAccount.inc:162
-msgid "Use custom sieve script"
-msgstr "定制过滤脚本"
-
-#: personal/mail/class_mailAccount.inc:162
-msgid "disables all Mail options!"
-msgstr "禁用所有邮件选项！"
-
-#: personal/mail/class_mailAccount.inc:163
-msgid "Use your sieve script with personnal customization"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:168
+#: personal/mail/class_mailAccount.inc:156
 msgid "User is only allowed to send and receive local mails"
 msgstr "用户只能发送和接收本地邮件"
 
-#: personal/mail/class_mailAccount.inc:169
+#: personal/mail/class_mailAccount.inc:157
 msgid "Select if user can only send and receive inside his own domain"
 msgstr "选择如果用户只能发送和接收本域内邮件"
 
-#: personal/mail/class_mailAccount.inc:174
+#: personal/mail/class_mailAccount.inc:162
 msgid "No delivery to own mailbox"
 msgstr "不要发送到本人邮箱"
 
-#: personal/mail/class_mailAccount.inc:175
+#: personal/mail/class_mailAccount.inc:163
 msgid "Select if you want to forward mails without getting own copies of them"
 msgstr "如果您想转发邮件而且不想保留拷贝的话，请选择"
 
-#: personal/mail/class_mailAccount.inc:251
-#: personal/mail/class_mailAccount.inc:325
+#: personal/mail/class_mailAccount.inc:235
+#: personal/mail/class_mailAccount.inc:283
 #, php-format
 msgid "Mail method cannot connect: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:254
+#: personal/mail/class_mailAccount.inc:238
 #, php-format
 msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:329
+#: personal/mail/class_mailAccount.inc:287
 #, php-format
 msgid "Cannot update mailbox: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:333
+#: personal/mail/class_mailAccount.inc:291
 #, php-format
 msgid "Cannot write quota settings: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:346
+#: personal/mail/class_mailAccount.inc:304
 msgid "Mail error saving sieve settings"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:366
+#: personal/mail/class_mailAccount.inc:324
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:370
+#: personal/mail/class_mailAccount.inc:328
 #, php-format
 msgid "Cannot remove mailbox: %s"
 msgstr ""

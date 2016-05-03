@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-04-19 14:39+0200\n"
+"POT-Creation-Date: 2016-05-02 09:31+0200\n"
 "PO-Revision-Date: 2016-01-22 16:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
@@ -35,75 +35,75 @@ msgstr "Σύνδεση Dovecot "
 msgid "Connect URL for Dovecot server"
 msgstr "URL σύνδεσης σε διακομιστή Dovecot"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:49
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:50
 msgid "Hostname"
 msgstr "Όνομα υπολογιστή"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:49
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:50
 msgid "Hostname of the Dovecot server"
 msgstr "Όνομα συστήματος του διακομιστή Dovecot"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:50
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:54
 msgid "Port"
 msgstr "Θύρα"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:50
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:54
 msgid "Port number on which Dovecot server should be contacted"
 msgstr "Αριθμός θύρας για την επικοινωνία με τον διακομιστή Dovecot"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:51
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:59
 msgid "Option"
 msgstr "Επιλογή"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:51
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:59
 msgid "Options for contacting Dovecot server"
 msgstr "Επιλογές για επικοινωνία με διακομιστή Dovecot"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:52
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:64
 msgid "Valide certificats"
 msgstr "Έγκυρα πιστοποιητικά"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:52
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:64
 msgid "Weither or not to validate server certificate on connexion"
 msgstr "Εάν θα γίνεται επικύρωση ή όχι του πιστοποιητικού του διακομιστή κατά την σύνδεση"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:60
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:76
 msgid "Master credentials"
 msgstr "Κύρια διαπιστευτήρια"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:63
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:79
 msgid "Admin user"
 msgstr "Διαχειριστής"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:63
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:79
 msgid "Dovecot server admin user"
 msgstr "Διαχειριστής διακομιστή Dovecot"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:67
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:83
 msgid "Password"
 msgstr "Κωδικός πρόσβασης"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:67
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:83
 msgid "Admin user password"
 msgstr "Κωδικός διαχειριστή"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:71
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:87
 msgid "Mail directory"
 msgstr "Κατάλογος αλληλογραφίας:"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:71
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:87
 msgid "Path to the directory in which user maildirs must be created"
 msgstr "Διαδρομή για τον κατάλογος στο οποίο θα πρέπει να δημιουργηθούν τα maildirs"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:78
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:94
 msgid "Options"
 msgstr " Επιλογές"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:81
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:97
 msgid "Create the user folder throught Argonaut"
 msgstr "Δημιουργία φακέλου χρήστη για όλο το Argonaut"
 
-#: admin/systems/services/dovecot/class_serviceDovecot.inc:81
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:97
 msgid "Use argonaut to create the user mailbox on the Dovecot server"
 msgstr "Χρήση argonaut για δημιουργία του γραμματοκιβωτίου χρήστη στον διακομιστή Dovecot"
 
