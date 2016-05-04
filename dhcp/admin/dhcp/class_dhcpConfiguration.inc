@@ -460,7 +460,7 @@ class dhcpConfiguration extends simplePlugin
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($unused, $dn = NULL, $object = NULL)
   {
     $this->types = array(
       'dhcpLog'           => _('Logging'),
@@ -477,15 +477,16 @@ class dhcpConfiguration extends simplePlugin
       'dhcpDnsZone'       => _('DNS update zones')
     );
 
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
 
     $this->attributesAccess['dhcpSections']->setHeight(400);
   }
 
   protected function ldap_save($cleanup = TRUE)
   {
+    global $config;
     /* Save dhcp settings */
-    $ldap   = $this->config->get_ldap_link();
+    $ldap   = $config->get_ldap_link();
     $cache  = $this->attributesAccess['dhcpSections']->getCache();
     foreach ($cache as $dn => $data) {
       if ($this->dn != $this->orig_dn) {

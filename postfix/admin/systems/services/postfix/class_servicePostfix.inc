@@ -134,15 +134,16 @@ class servicePostfix extends simpleService
     );
   }
 
-  function __construct(&$config, $dn = NULL, $object = NULL)
+  function __construct($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
   }
 
   function ldap_save ($cleanup = TRUE)
   {
+    global $config;
     parent::ldap_save($cleanup);
-    $this->attributesAccess['fdPostfixTransportTable']->postLdapSave($this->config->get_ldap_link());
+    $this->attributesAccess['fdPostfixTransportTable']->postLdapSave($config->get_ldap_link());
   }
 }
 ?>

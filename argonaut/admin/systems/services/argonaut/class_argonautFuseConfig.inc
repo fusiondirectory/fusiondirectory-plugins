@@ -75,9 +75,10 @@ class argonautFuseConfig extends simpleService
     );
   }
 
-  function __construct(&$config, $dn, $object = NULL, $attributesInfo = NULL)
+  function __construct($unused, $dn, $object = NULL, $attributesInfo = NULL)
   {
-    parent::__construct($config, $dn, $object, $attributesInfo);
+    global $config;
+    parent::__construct($unused, $dn, $object, $attributesInfo);
 
     /* Load modules */
     $this->plugin = array();

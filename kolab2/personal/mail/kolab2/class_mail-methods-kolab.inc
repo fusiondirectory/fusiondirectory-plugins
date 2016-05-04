@@ -217,6 +217,7 @@ class mailMethodKolab extends mailMethodCyrus
    */
   public function setFolderType($type)
   {
+    global $config;
     $type_str = trim($type['CAT'].".".$type['SUB_CAT']);
     $type_str = trim($type_str, ".");
     $attrs = array();
@@ -226,7 +227,7 @@ class mailMethodKolab extends mailMethodCyrus
       $attrs['kolabFolderType'] = $type_str;
     }
 
-    $ldap = $this->config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
     $ldap->cd ($this->parent->dn);
     $ldap->modify($attrs);
     if ($ldap->success()) {
@@ -293,9 +294,10 @@ class mailMethodKolab extends mailMethodCyrus
    */
   public function getKolabHost()
   {
+    global $config;
     $host = array();
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
     $ldap->search("(&(objectClass=kolab)(k=kolab)(kolabHost=*))", array("kolabHost"));
 
     if ($ldap->count() == 1) {

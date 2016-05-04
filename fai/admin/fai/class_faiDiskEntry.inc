@@ -34,7 +34,7 @@ class PartitionDialog extends GenericDialog
   {
     $this->attribute  = $attribute;
     $this->plugin     = $simplePlugin;
-    $this->dialog = new $this->dialogClass($simplePlugin->config, $partition, $simplePlugin, $simplePlugin->FAIdiskType);
+    $this->dialog = new $this->dialogClass(NULL, $partition, $simplePlugin, $simplePlugin->FAIdiskType);
 
     $this->dialog->set_acl_base($simplePlugin->acl_base);
     $this->dialog->set_acl_category('fai');
@@ -273,9 +273,9 @@ class faiDiskEntry extends simplePlugin
     );
   }
 
-  function __construct (&$config, $dn, $parent, $disk, $type)
+  function __construct ($unused, $dn, $parent, $disk, $type)
   {
-    parent::__construct($config, $dn);
+    parent::__construct($unused, $dn);
 
     $this->parent       = $parent;
     $this->FAIdiskType  = $type;

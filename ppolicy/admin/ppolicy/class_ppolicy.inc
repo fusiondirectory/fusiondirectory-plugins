@@ -143,9 +143,10 @@ class ppolicy extends simplePlugin
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    global $config;
+    parent::__construct($unused, $dn, $object);
 
     $this->attributesAccess['pwdMaxAge']->attributes[0]->setManagedAttributes(
       array (
@@ -177,7 +178,7 @@ class ppolicy extends simplePlugin
     );
 
     if (objects::count('ppolicy') == 0) {
-      $this->attributesAccess['cn']->setDefaultValue($this->config->get_cfg_value('ppolicyDefaultCn', 'default'));
+      $this->attributesAccess['cn']->setDefaultValue($config->get_cfg_value('ppolicyDefaultCn', 'default'));
       $this->attributesAccess['cn']->resetToDefault();
     }
   }

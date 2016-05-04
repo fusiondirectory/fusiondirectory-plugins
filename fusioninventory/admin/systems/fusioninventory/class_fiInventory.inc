@@ -125,8 +125,9 @@ class fiInventory extends simplePlugin
     );
   }
 
-  function __construct(&$config, $dn, $object)
+  function __construct($unused, $dn, $object)
   {
+    global $config;
     $attributesInfo = self::getAttributesInfo();
     if (preg_match('/'.preg_quote(get_ou('inventoryRDN').$config->current['BASE'], '/').'$/', $dn)) {
       $this->mainTab        = TRUE;
@@ -137,7 +138,7 @@ class fiInventory extends simplePlugin
       unset($attributesInfo['match']);
     }
 
-    parent::__construct($config, $dn, $object, $attributesInfo);
+    parent::__construct($unused, $dn, $object, $attributesInfo);
 
     $this->hardware_infos = NULL;
     $this->software_infos = NULL;
@@ -168,7 +169,8 @@ class fiInventory extends simplePlugin
 
   function get_inventory_infos()
   {
-    $ldap = $this->config->get_ldap_link();
+    global $config;
+    $ldap = $config->get_ldap_link();
 
     if ($this->mainTab) {
       $dn = $this->dn;
@@ -186,7 +188,7 @@ class fiInventory extends simplePlugin
       }
       $ipHostNumber = $this->parent->getBaseObject()->ipHostNumber;
     }
-    $matching     = $this->config->get_cfg_value('inventoryMatching', 'mac');
+    $matching     = $config->get_cfg_value('inventoryMatching', 'mac');
     if (!empty($macAddress)) {
       $macfilter = '(|(macAddress='.implode(')(macAddress=', $macAddress).'))';
     } else {
@@ -220,7 +222,7 @@ class fiInventory extends simplePlugin
     if ($this->mainTab) {
       $this->updateMatching();
     } else {
-      $ldap->cd(get_ou('inventoryRDN').$this->config->current['BASE']);
+      $ldap->cd(get_ou('inventoryRDN').$config->current['BASE']);
       $ldap->search('(&(objectClass=fdInventoryContent)'.$this->filter.')');
       if ($attrs = $ldap->fetch()) {
         $dn = $attrs['dn'];
@@ -277,9 +279,10 @@ class fiInventory extends simplePlugin
 
   function updateMatching()
   {
+    global $config;
     $systemTypes = array('server','workstation','terminal','printer','component','winstation','phone','mobilePhone');
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd(get_ou('systemRDN').$this->config->current['BASE']);
+    $ldap = $config->get_ldap_link();
+    $ldap->cd(get_ou('systemRDN').$config->current['BASE']);
     $ldap->search($this->filter);
     if ($ldap->count()) {
       $attrs = $ldap->fetch();

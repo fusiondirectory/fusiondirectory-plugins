@@ -74,9 +74,9 @@ class opsiOnDemandList extends opsiSoftwareList
     );
   }
 
-  public function __construct(&$config, $dn = NULL, $object = NULL)
+  public function __construct($unused, $dn = NULL, $object = NULL)
   {
-    simplePlugin::__construct($config, $dn, $object);
+    simplePlugin::__construct($unused, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
   }

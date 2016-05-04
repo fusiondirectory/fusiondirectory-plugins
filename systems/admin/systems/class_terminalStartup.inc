@@ -118,14 +118,15 @@ class terminalStartup extends simplePlugin
     );
   }*/
 
-  function __construct(&$config, $dn = NULL, $object = NULL)
+  function __construct($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    global $config;
+    parent::__construct($unused, $dn, $object);
 
     $this->attributesAccess['gotoXMethod']->setSubmitForm(TRUE);
 
     /* Root server */
-    $tmp        = $this->config->data['SERVERS']['NFS'];
+    $tmp        = $config->data['SERVERS']['NFS'];
     $tmp_output = $tmp;
     if (($key = array_search('default', $tmp)) !== FALSE) {
       if ($this->member_of_group) {
@@ -139,7 +140,7 @@ class terminalStartup extends simplePlugin
     $this->attributesAccess['gotoTerminalPath']->setChoices($tmp, $tmp_output);
 
     /* Swap server */
-    $tmp        = $this->config->data['SERVERS']['NBD'];
+    $tmp        = $config->data['SERVERS']['NBD'];
     $tmp_output = $tmp;
     array_unshift($tmp, '!');
     array_unshift($tmp_output, _('Local swap'));
@@ -157,10 +158,11 @@ class terminalStartup extends simplePlugin
 
   function execute()
   {
+    global $config;
     /* Create a list of useable servers for the currently selected
      *  connection type.
      */
-    $xdmcp_types        = $this->config->data['SERVERS']['TERMINAL_SESSION_TYPES'];
+    $xdmcp_types        = $config->data['SERVERS']['TERMINAL_SESSION_TYPES'];
     $available_servers  = array();
     foreach ($xdmcp_types as $servername => $supported_types) {
       if (in_array(strtoupper($this->attributesAccess['gotoXMethod']), $supported_types)) {

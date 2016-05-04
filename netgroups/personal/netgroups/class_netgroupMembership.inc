@@ -1,20 +1,20 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  
+
   Copyright (C) 2011 Alejandro Escanero Blanco (aescanero@gmail.com)
   Copyright (C) 2011-2016  FusionDirectory
- 
+
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
- 
+
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
- 
+
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
@@ -66,16 +66,17 @@ class netgroupMembership extends simplePlugin {
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    global $config;
+    parent::__construct($unused, $dn, $object);
 
     $groupMembership = array();
 
     /* Groups handling */
     if ($this->dn != 'new') {
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
+      $ldap = $config->get_ldap_link();
+      $ldap->cd($config->current['BASE']);
       $ldap->search('(objectClass=nisNetgroup)', array('cn', 'nisNetgroupTriple'));
       while ($attrs = $ldap->fetch()) {
         if (isset($attrs['nisNetgroupTriple'])) {
@@ -127,13 +128,14 @@ class netgroupMembership extends simplePlugin {
 
   function is_this_account($attrs)
   {
+    global $config;
     $class    = get_class($this);
     $id_attr  = $class::$id_attr;
     if (isset($attrs[$id_attr])) {
       $this->id     = $attrs[$id_attr][0];
       $this->old_id = $this->id;
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
+      $ldap = $config->get_ldap_link();
+      $ldap->cd($config->current['BASE']);
       $ldap->search('(objectClass=nisNetgroup)', array('cn', 'nisNetgroupTriple'));
       while ($attrs = $ldap->fetch()) {
         if (isset($attrs['nisNetgroupTriple'])) {
@@ -151,9 +153,10 @@ class netgroupMembership extends simplePlugin {
   /* Save data to LDAP, depending on is_account we save or delete */
   function ldap_save($cleanup = TRUE)
   {
+    global $config;
     $this->update_id();
     /* Call parents save to prepare $this->attrs */
-    $ldap   = $this->config->get_ldap_link();
+    $ldap   = $config->get_ldap_link();
     $attrs  = array();
     $attrs['objectClass'] = array('top','nisNetgroup');
 
@@ -168,7 +171,7 @@ class netgroupMembership extends simplePlugin {
     }
 
     foreach ($to_add as $val) {
-      $ldap->cd($this->config->current['BASE']);
+      $ldap->cd($config->current['BASE']);
       $ldap->cat($val, array("dn", "cn", "nisNetgroupTriple","memberNisNetgroups"));
       $attrs['nisNetgroupTriple'] = array();
       $attrs['memberNisNetgroup'] = array();
@@ -196,7 +199,7 @@ class netgroupMembership extends simplePlugin {
     }
 
     foreach ($to_del as $val) {
-      $ldap->cd($this->config->current['BASE']);
+      $ldap->cd($config->current['BASE']);
       $ldap->cat($val, array("dn", "cn", "nisNetgroupTriple","memberNisNetgroups"));
       $attrs['nisNetgroupTriple'] = array();
       $attrs['memberNisNetgroup'] = array();

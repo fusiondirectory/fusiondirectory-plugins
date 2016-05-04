@@ -34,7 +34,7 @@ class DiskEntryDialog extends GenericDialog
     if (isset($disk['FAIdiskType'])) {
       $diskType = $disk['FAIdiskType'];
     }
-    $this->dialog = new $this->dialogClass($simplePlugin->config, $simplePlugin->dn, $attribute, $disk, $diskType);
+    $this->dialog = new $this->dialogClass(NULL, $simplePlugin->dn, $attribute, $disk, $diskType);
 
     $base = $simplePlugin->dn;
     if ($base == 'new') {
@@ -134,9 +134,10 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
 
   protected function loadAttrValue ($attrs)
   {
+    global $config;
     if (isset($attrs['dn'])) {
       /* Fetch disks */
-      $ldap = $this->plugin->config->get_ldap_link();
+      $ldap = $config->get_ldap_link();
       $ldap->ls($this->diskFilter, $attrs['dn']);
       $this->value = array();
       while ($subattrs = $ldap->fetch()) {
@@ -326,17 +327,18 @@ class faiPartitionTable extends faiSimplePluginClass
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
   }
 
   function ldap_save ($cleanup = TRUE)
   {
+    global $config;
     parent::ldap_save($cleanup);
-    $this->attributesAccess['FAIpartitions']->postLdapSave($this->config->get_ldap_link());
+    $this->attributesAccess['FAIpartitions']->postLdapSave($config->get_ldap_link());
   }
 
   function getUsedDiskNames()

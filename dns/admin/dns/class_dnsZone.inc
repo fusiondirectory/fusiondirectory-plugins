@@ -46,8 +46,7 @@ class DnsRecordPlugin extends simplePlugin
    * */
   function __construct ($parent, $attribute, $value = NULL)
   {
-    global $config;
-    parent::__construct($config, $parent->dn, $parent);
+    parent::__construct(NULL, $parent->dn, $parent);
 
     $this->attributesAccess['relativeSubdomainName']->setInLdap(FALSE);
     $this->attributesAccess['dnsRecord']->setInLdap(FALSE);
@@ -584,9 +583,9 @@ class dnsZone extends simplePlugin
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
     $this->attributesAccess['reverseZones']->setInLdap(FALSE);
   }
 
@@ -621,13 +620,14 @@ class dnsZone extends simplePlugin
 
   function ldap_save ($cleanup = TRUE)
   {
+    global $config;
     parent::ldap_save($cleanup);
     if (
       $this->attributesAccess['zoneName']->hasChanged() ||
       $this->attributesAccess['reverseZones']->hasChanged() ||
       $this->attributesAccess['dnsRecords']->hasChanged()
       ) {
-      $this->attributesAccess['dnsRecords']->postLdapSave($this->config->get_ldap_link());
+      $this->attributesAccess['dnsRecords']->postLdapSave($config->get_ldap_link());
     }
   }
 

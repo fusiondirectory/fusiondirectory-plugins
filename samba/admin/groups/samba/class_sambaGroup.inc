@@ -72,8 +72,9 @@ class sambaGroup extends simplePlugin
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($unused, $dn = NULL, $object = NULL)
   {
+    global $config;
     // User wants me to fake the idMappings? This is useful for
     //  making winbind resolve the user names in a reasonable amount
     //  of time in combination with larger databases.
@@ -81,26 +82,26 @@ class sambaGroup extends simplePlugin
       $this->objectclasses[] = 'sambaIdmapEntry';
     }
 
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
 
     $this->attributesAccess['sambaDomainName']->setInLdap(FALSE);
-    $this->attributesAccess['sambaDomainName']->setChoices(array_keys($this->config->data['SERVERS']['SAMBA']));
+    $this->attributesAccess['sambaDomainName']->setChoices(array_keys($config->data['SERVERS']['SAMBA']));
 
     /* Get samba Domain in case of samba 3 */
     if ($this->sambaSID != "") {
       /* Get domain name for SID */
       $this->sambaDomainName = "DEFAULT";
 
-      foreach ($this->config->data['SERVERS']['SAMBA'] as $key => $val) {
+      foreach ($config->data['SERVERS']['SAMBA'] as $key => $val) {
         if ($val['SID'] == $this->getSID()) {
           $this->sambaDomainName = $key;
           break;
         }
       }
     } else {
-      if ($this->config->get_cfg_value("sid") != "") {
+      if ($config->get_cfg_value("sid") != "") {
         $this->sambaDomainName  = "DEFAULT";
-        $this->setSID($this->config->get_cfg_value("sid"));
+        $this->setSID($config->get_cfg_value("sid"));
       } else {
         msg_dialog::display(_("Configuration error"), _("Cannot find group SID in your configuration!"), ERROR_DIALOG);
       }
@@ -124,13 +125,14 @@ class sambaGroup extends simplePlugin
 
   function prepare_save()
   {
+    global $config;
     parent::prepare_save();
 
     // Generate rid / primaryGroupId
-    if (!isset($this->config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'])) {
+    if (!isset($config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'])) {
       msg_dialog::display(_("Warning"), _("Undefined Samba SID detected. Please fix this problem manually!"), WARNING_DIALOG);
     } else {
-      $this->setSID($this->config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID']);
+      $this->setSID($config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID']);
     }
 
     if ($this->getGID() == 0) {
@@ -151,7 +153,8 @@ class sambaGroup extends simplePlugin
   /*! \brief Get a new SambaSID for a group */
   function getSambaSID()
   {
-    $ldap       = $this->config->get_ldap_link();
+    global $config;
+    $ldap       = $config->get_ldap_link();
     if (class_available('mixedGroup')) {
       $gidNumber  = $this->parent->by_object['mixedGroup']->gidNumber;
     } else {
@@ -159,7 +162,7 @@ class sambaGroup extends simplePlugin
     }
     do {
       $sid = $this->getSID()."-".($gidNumber * 2 + $this->getRidBase() + 1);
-      $ldap->cd($this->config->current['BASE']);
+      $ldap->cd($config->current['BASE']);
       $ldap->search("(sambaSID=$sid)", array("sambaSID"));
       $gidNumber++;
     } while ($ldap->count() != 0);
@@ -177,7 +180,8 @@ class sambaGroup extends simplePlugin
 
   function getRidBase()
   {
-    return $this->config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
+    global $config;
+    return $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
   }
 
   function getSID()

@@ -23,9 +23,9 @@ class faiSimplePluginClass extends simplePlugin
 {
   public $base;
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
 
     if ($dn == "new") {
       $ui = get_userinfo();
@@ -38,13 +38,14 @@ class faiSimplePluginClass extends simplePlugin
   /* Check supplied data */
   function check()
   {
+    global $config;
     /* Call common method to give check the hook */
     $message = parent::check();
 
     /* Ensure that we do not overwrite an allready existing entry */
     $new_dn   = $this->compute_dn();
     if ($this->dn != $new_dn) {
-      $ldap     = $this->config->get_ldap_link();
+      $ldap     = $config->get_ldap_link();
       $ldap->cat($new_dn);
       if ($ldap->count() != 0) {
         $message[] = msgPool::duplicated(_("Name"));

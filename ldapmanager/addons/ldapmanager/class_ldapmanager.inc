@@ -128,9 +128,9 @@ class ldapmanager extends simplePlugin
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
     $this->ui = get_userinfo();
 
     $this->attributesAccess['single_export']->setInLdap(FALSE);
@@ -145,7 +145,8 @@ class ldapmanager extends simplePlugin
 
   function handle_single_submit()
   {
-    $ldap = $this->config->get_ldap_link();
+    global $config;
+    $ldap = $config->get_ldap_link();
     $dn   = $this->single_export;
     $acl  = $this->attributesAccess['single_export']->getAcl();
     if (!$ldap->dn_exists($dn)) {
@@ -165,6 +166,7 @@ class ldapmanager extends simplePlugin
 
   function save_export($dn, $acl, $scope, $name)
   {
+    global $config;
     if (!empty($dn)) { // An LDIF export was asked
       // Check permissions
       if (!$this->acl_is_writeable($acl, $this->acl_skip_write())) {
@@ -172,7 +174,7 @@ class ldapmanager extends simplePlugin
             sprintf(_('You have no permission to export %s!'), bold(LDAP::fix($dn))),
             ERROR_DIALOG);
       } else {
-        $ldap = $this->config->get_ldap_link();
+        $ldap = $config->get_ldap_link();
         $data = $ldap->generateLdif(LDAP::fix($dn), $this->export_filter, $scope);
         if ($data === NULL) {
           msg_dialog::display(_('Error'),
@@ -187,7 +189,8 @@ class ldapmanager extends simplePlugin
 
   function handle_import_submit()
   {
-    $ldap = $this->config->get_ldap_link();
+    global $config;
+    $ldap = $config->get_ldap_link();
     try {
       $ldap->import_complete_ldif($this->import, !$this->overwrite, FALSE);
     } catch (Exception $e) {
@@ -201,7 +204,8 @@ class ldapmanager extends simplePlugin
 
   function get_allowed_bases()
   {
-    return $this->config->idepartments;
+    global $config;
+    return $config->idepartments;
   }
 }
 

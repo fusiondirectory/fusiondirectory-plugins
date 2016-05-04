@@ -58,9 +58,9 @@ class opsiClient extends simplePlugin
     );
   }
 
-  function __construct(&$config, $dn = NULL, $object = NULL)
+  function __construct($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
     if ($object instanceof ogroup) {
       $this->initialMembers = $object->saved_attributes['member'];
       if (!is_array($this->initialMembers)) {
@@ -71,10 +71,11 @@ class opsiClient extends simplePlugin
 
   function save()
   {
+    global $config;
     if ($this->initially_was_account && $this->editing_group()) {
       $oldMembers = array_diff($this->initialMembers, $this->parent->getBaseObject()->member);
       $macAddresses = array();
-      $ldap = $this->config->get_ldap_link();
+      $ldap = $config->get_ldap_link();
       foreach ($oldMembers as $member) {
         $ldap->cat($member, array('macAddress'), '(&(!(objectClass=opsiClient))(macAddress=*))');
         if (!$ldap->success()) {
@@ -118,10 +119,11 @@ class opsiClient extends simplePlugin
 
   function update_or_insert()
   {
+    global $config;
     $s_daemon   = new supportDaemon();
     $macAddresses = array();
     if ($this->editing_group()) {
-      $ldap = $this->config->get_ldap_link();
+      $ldap = $config->get_ldap_link();
       foreach ($this->parent->getBaseObject()->member as $member) {
         $ldap->cat($member, array('macAddress'), '(macAddress=*)');
         if ($attrs = $ldap->fetch()) {
@@ -166,7 +168,7 @@ class opsiClient extends simplePlugin
 
     $macAddresses = array();
     if ($this->editing_group()) {
-      $ldap = $this->config->get_ldap_link();
+      $ldap = $config->get_ldap_link();
       foreach ($this->initialMembers as $member) {
         $ldap->cat($member, array('macAddress'), '(&(!(objectClass=opsiClient))(macAddress=*))');
         if (!$ldap->success()) {
@@ -200,7 +202,8 @@ class opsiClient extends simplePlugin
 
   public function server_changed ()
   {
-    $ldap = $this->config->get_ldap_link();
+    global $config;
+    $ldap = $config->get_ldap_link();
     $ldap->search('(&(objectClass=opsiProfile)(fdOpsiServerDn='.$this->fdOpsiServerDn.'))', array('cn'));
     $profilesdn    = array();
     $profileslabel = array();

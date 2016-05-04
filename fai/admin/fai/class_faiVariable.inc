@@ -89,9 +89,9 @@ class faiVariable extends faiSimplePluginClass
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
     $this->attributesAccess['variables']->setLinearRendering(FALSE);
@@ -99,8 +99,9 @@ class faiVariable extends faiSimplePluginClass
 
   function ldap_save ($cleanup = TRUE)
   {
+    global $config;
     parent::ldap_save($cleanup);
-    $this->attributesAccess['variables']->postLdapSave($this->config->get_ldap_link());
+    $this->attributesAccess['variables']->postLdapSave($config->get_ldap_link());
   }
 }
 ?>

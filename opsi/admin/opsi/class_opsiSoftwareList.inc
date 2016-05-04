@@ -89,9 +89,9 @@ class opsiSoftwareList extends simplePlugin
     );
   }
 
-  public function __construct(&$config, $dn = NULL, $object = NULL)
+  public function __construct($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
     $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setSubmitForm('product_changed');
@@ -99,6 +99,7 @@ class opsiSoftwareList extends simplePlugin
 
   public function server_changed ($opsi_args = NULL)
   {
+    global $config;
     if ($opsi_args == NULL) {
       $opsi_args = array('id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript','updateScript');
     }
@@ -111,7 +112,7 @@ class opsiSoftwareList extends simplePlugin
         );
         return;
       }
-      $ldap = $this->config->get_ldap_link();
+      $ldap = $config->get_ldap_link();
       $ldap->cat($this->fdOpsiServerDN);
       if ($attrs = $ldap->fetch()) {
         if (isset($attrs['macAddress'])) {

@@ -120,9 +120,9 @@ class etablissement extends simplePlugin
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
 
     $this->attributesAccess['o']->setUnique(TRUE);
     $this->attributesAccess['supannCodeEntite']->setUnique(TRUE);
@@ -137,12 +137,13 @@ class etablissement extends simplePlugin
 
   function remove_from_parent()
   {
+    global $config;
     parent::remove_from_parent();
 
     /* If we're the root etablissement, delete it too */
     $root_code = $this->get_root_code();
     if (($root_code !== FALSE) && ($root_code == $this->supannEtablissement)) {
-      $dn = 'o='.$this->o.','.$this->config->current['BASE'];
+      $dn = 'o='.$this->o.','.$config->current['BASE'];
       $ldap->rmdir($dn);
       if (!$ldap->success()) {
         msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()));
@@ -152,9 +153,10 @@ class etablissement extends simplePlugin
 
   function ldap_save($cleanup = TRUE)
   {
+    global $config;
     parent::ldap_save($cleanup);
 
-    $ldap = $this->config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
 
     $root_mode = FALSE;
     $root_code = $this->get_root_code();
@@ -187,7 +189,7 @@ class etablissement extends simplePlugin
       $root_attrs['objectClass'] = array('top','dcObject','organization','supannOrg','eduOrg');
       $root_attrs['dc'] = $root_attrs['o'];
       unset($root_attrs['supannCodeEntite']);
-      $dn = 'o='.$this->o.','.$this->config->current['BASE'];
+      $dn = 'o='.$this->o.','.$config->current['BASE'];
       if ($root_mode == 'delete') {
         $ldap->rmdir($dn);
       } else {
@@ -202,9 +204,10 @@ class etablissement extends simplePlugin
 
   function get_root_code()
   {
-    $ldap = $this->config->get_ldap_link();
+    global $config;
+    $ldap = $config->get_ldap_link();
 
-    $ldap->cd($this->config->current['BASE']);
+    $ldap->cd($config->current['BASE']);
     $ldap->ls('(objectClass=supannOrg)');
 
     if ($ldap->count() > 1) {

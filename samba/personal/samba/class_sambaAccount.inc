@@ -369,8 +369,9 @@ class sambaAccount extends simplePlugin
     );
   }
 
-  function __construct (&$config, $dn = NULL, $baseobject = NULL)
+  function __construct ($unused, $dn = NULL, $baseobject = NULL)
   {
+    global $config;
     // User wants me to fake the idMappings? This is useful for
     //  making winbind resolve the user names in a reasonable amount
     //  of time in combination with larger databases.
@@ -378,9 +379,9 @@ class sambaAccount extends simplePlugin
       $this->objectclasses[] = 'sambaIdmapEntry';
     }
 
-    parent::__construct($config, $dn, $baseobject);
+    parent::__construct($unused, $dn, $baseobject);
 
-    $this->attributesAccess['sambaDomainName']->setChoices(array_keys($this->config->data['SERVERS']['SAMBA']));
+    $this->attributesAccess['sambaDomainName']->setChoices(array_keys($config->data['SERVERS']['SAMBA']));
     $this->attributesAccess['TsLogin']->setManagedAttributes(
       array(
         'disable' => array (
@@ -421,15 +422,15 @@ class sambaAccount extends simplePlugin
     // Get samba domain and its sid/rid base
     if ($this->sambaSID != "") {
       $this->SID = preg_replace ("/-[^-]+$/", "", $this->sambaSID);
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
+      $ldap = $config->get_ldap_link();
+      $ldap->cd($config->current['BASE']);
       $ldap->search ("(&(objectClass=sambaDomain)(sambaSID=$this->SID))", array("sambaAlgorithmicRidBase","sambaDomainName"));
       if ($ldap->count() != 0) {
         $attrs = $ldap->fetch();
         if (isset($attrs['sambaAlgorithmicRidBase'])) {
           $this->ridBase = $attrs['sambaAlgorithmicRidBase'][0];
         } else {
-          $this->ridBase = $this->config->get_cfg_value("sambaRidBase");
+          $this->ridBase = $config->get_cfg_value("sambaRidBase");
         }
         if ($this->sambaDomainName == "") {
           $this->sambaDomainName = $attrs['sambaDomainName'][0];
@@ -441,15 +442,15 @@ class sambaAccount extends simplePlugin
         }
 
         // Nothing in ldap, use configured sid and rid values.
-        $this->ridBase  = $this->config->get_cfg_value("sambaRidBase");
-        $this->SID      = $this->config->get_cfg_value("sambaSid");
+        $this->ridBase  = $config->get_cfg_value("sambaRidBase");
+        $this->SID      = $config->get_cfg_value("sambaSid");
       }
     }
 
     $this->attributesAccess['sambaDomainName']->setInitialValue($this->sambaDomainName);
 
     // Set kickOffTime to date
-    if ($this->config->get_cfg_value('sambaExpirationSync') == 'posix') {
+    if ($config->get_cfg_value('sambaExpirationSync') == 'posix') {
       if (isset($this->attrs['shadowExpire'][0])) {
         $this->sambaKickoffTime = date('d.m.Y', $this->attrs['shadowExpire'][0] * EpochDaysDateAttribute::$secondsPerDay);
       }
@@ -490,6 +491,7 @@ class sambaAccount extends simplePlugin
 
   function prepare_save()
   {
+    global $config;
     parent::prepare_save();
     /* Load uid and gid of this 'dn' */
     $posixAccount = $this->parent->by_object['posixAccount'];
@@ -497,20 +499,20 @@ class sambaAccount extends simplePlugin
     $gidNumber    = $posixAccount->gidNumber;
 
     // Generate rid / primaryGroupId
-    if (!isset($this->config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'])) {
+    if (!isset($config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'])) {
       msg_dialog::display(_("Warning"), _("Undefined Samba SID detected. Please fix this problem manually!"), WARNING_DIALOG);
     } else {
-      $this->SID      = $this->config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'];
-      $this->ridBase  = $this->config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
+      $this->SID      = $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'];
+      $this->ridBase  = $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
     }
 
     // Need to generate a new uniqe uid/gid combination?
     if (($this->sambaSID == "") || $this->attributesAccess['sambaDomainName']->hasChanged()) {
-      $ldap = $this->config->get_ldap_link();
+      $ldap = $config->get_ldap_link();
       $uidNumber_tmp = $uidNumber;
       do {
         $sid = $this->SID."-".($uidNumber_tmp * 2 + $this->ridBase);
-        $ldap->cd($this->config->current['BASE']);
+        $ldap->cd($config->current['BASE']);
         $ldap->search("(sambaSID=$sid)", array("sambaSID"));
         $uidNumber_tmp++;
       } while ($ldap->count() > 0);
@@ -518,9 +520,9 @@ class sambaAccount extends simplePlugin
     }
 
     if (!$this->is_template) {
-      $ldap = $this->config->get_ldap_link();
+      $ldap = $config->get_ldap_link();
       // Check for users primary group
-      $ldap->cd($this->config->current['BASE']);
+      $ldap->cd($config->current['BASE']);
       $ldap->search("(&(objectClass=posixGroup)(gidNumber=".$gidNumber."))", array("cn"));
       if ($ldap->count() != 1) {
         msg_dialog::display(
@@ -562,7 +564,7 @@ class sambaAccount extends simplePlugin
     if ($this->parent->getBaseObject()->attributesAccess['userPassword']->hasChanged()) {
       $password = $this->parent->getBaseObject()->attributesAccess['userPassword']->getClear();
       $smbHash = new smbHash();
-      if ($this->config->get_cfg_value('sambaGenLMPassword', 'FALSE') == 'TRUE') {
+      if ($config->get_cfg_value('sambaGenLMPassword', 'FALSE') == 'TRUE') {
         $this->attrs['sambaLMPassword'] = $smbHash->lmhash($password);
       } else {
         $this->attrs['sambaLMPassword'] = array();
@@ -575,13 +577,13 @@ class sambaAccount extends simplePlugin
     }
 
     // Handle "sambaKickoffTime"
-    if ($this->config->get_cfg_value('sambaExpirationSync') == 'samba') {
+    if ($config->get_cfg_value('sambaExpirationSync') == 'samba') {
       if ($this->sambaKickoffTime != "") {
         $this->attrs['shadowExpire'] = $this->attrs['sambaKickoffTime'] / EpochDaysDateAttribute::$secondsPerDay;
       } else {
         $this->attrs['shadowExpire'] = $this->attrs['sambaKickoffTime'];
       }
-    } elseif ($this->config->get_cfg_value('sambaExpirationSync') == 'posix') {
+    } elseif ($config->get_cfg_value('sambaExpirationSync') == 'posix') {
       if ($this->parent->by_object['posixAccount']->shadowExpire != "") {
         $this->attrs['sambaKickoffTime'] = $this->parent->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue()->format('U');
       } else {

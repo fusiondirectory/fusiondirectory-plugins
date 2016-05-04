@@ -192,17 +192,18 @@ class faiTemplate extends faiSimplePluginClass
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
   }
 
   function ldap_save ($cleanup = TRUE)
   {
+    global $config;
     parent::ldap_save($cleanup);
-    $this->attributesAccess['templateFiles']->postLdapSave($this->config->get_ldap_link());
+    $this->attributesAccess['templateFiles']->postLdapSave($config->get_ldap_link());
   }
 }
 ?>
