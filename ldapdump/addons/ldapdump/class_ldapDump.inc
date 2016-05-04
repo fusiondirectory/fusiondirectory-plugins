@@ -46,22 +46,23 @@ class ldapDump extends simplePlugin
     );
   }
 
-  function __construct(&$config, $dn = NULL, $object = NULL)
+  function __construct($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
 
     $this->dump = NULL;
   }
 
   function execute()
   {
+    global $config;
     if ($this->dump === NULL) {
       $ui = get_userinfo();
       if (preg_match('/r/', $ui->get_category_permissions($this->acl_base, 'all'))) {
-        $ldap = $this->config->get_ldap_link();
+        $ldap = $config->get_ldap_link();
         $ldap->cat($this->dn);
         if ($attrs = $ldap->fetch()) {
-          $this->dump = array($this->dumpLdapNode($attrs, $this->config->current['BASE']));
+          $this->dump = array($this->dumpLdapNode($attrs, $config->current['BASE']));
         } else {
           $this->dump = array();
         }
@@ -76,6 +77,7 @@ class ldapDump extends simplePlugin
 
   function dumpLdapNode($attrs, $parent_dn = '')
   {
+    global $config;
     $node = array(
       'dn'        => $attrs['dn'],
       'name'      => preg_replace('/,'.preg_quote($parent_dn).'$/', '', $attrs['dn']),
@@ -88,7 +90,7 @@ class ldapDump extends simplePlugin
       unset($node['attrs'][$key]['count']);
     }
 
-    $ldap = $this->config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
     $ldap->cd($attrs['dn']);
     $ldap->ls();
     while ($attrs = $ldap->fetch()) {

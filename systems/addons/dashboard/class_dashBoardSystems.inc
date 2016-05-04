@@ -3,17 +3,17 @@
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
   Copyright (C) 2010 Antoine Gallavardin
   Copyright (C) 2011-2016 FusionDirectory project
- 
+
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
- 
+
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
- 
+
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -24,9 +24,9 @@ class dashboardSystems extends simplePlugin
   /* default values*/
   var $default_start_computer_id = 0;
 
-  function __construct(&$config, $dn = NULL, $object = NULL)
+  function __construct($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
 
     $this->stats = array(
       'systems' => $this->systems_stats(),
@@ -37,8 +37,9 @@ class dashboardSystems extends simplePlugin
 
   function systems_stats ()
   {
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
+    global $config;
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
 
     /* Statistics */
     $stats = array(
@@ -68,7 +69,7 @@ class dashboardSystems extends simplePlugin
             'img' => 'geticon.php?context=devices&icon=phone&size=16'),
     );
 
-    $ldap->cd($this->config->current['BASE']);
+    $ldap->cd($config->current['BASE']);
     foreach ($stats as &$stat) {
       $ldap->search($stat['filter'], array("cn"));
       $stat['nb'] = $ldap->count();
@@ -80,8 +81,9 @@ class dashboardSystems extends simplePlugin
 
   function argonaut_stats ()
   {
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
+    global $config;
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
     $ldap->search("(objectClass=argonautServer)", array('cn','ipHostNumber','argonautProtocol','argonautPort'));
     $nb_argonaut_server = $ldap->count();
     $argonaut_server = array();
@@ -104,8 +106,9 @@ class dashboardSystems extends simplePlugin
 
   function computer_ids_rules ()
   {
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
+    global $config;
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
     /* Begin of code for selecting next computer IDs
     * Global variable is board_next_computer_ids_rule
     * syntax is :
@@ -118,14 +121,14 @@ class dashboardSystems extends simplePlugin
     */
 
     $output_next_computer_ids = "";
-    $computer_ids_rules = $this->config->get_cfg_value('dashboardPrefix', array('PC'));
+    $computer_ids_rules = $config->get_cfg_value('dashboardPrefix', array('PC'));
     if (!is_array($computer_ids_rules)) {
       $computer_ids_rules = array($computer_ids_rules);
     }
 
     /* $get_cfg_value return the OU like ou=computer .. */
-    $winstation_ou  = mb_substr($this->config->get_cfg_value('sambaMachineAccountRDN'), 3); //FIXME use get_ou
-    $nb_digits      = $this->config->get_cfg_value('dashboardNumberOfDigit', 3);
+    $winstation_ou  = mb_substr($config->get_cfg_value('sambaMachineAccountRDN'), 3); //FIXME use get_ou
+    $nb_digits      = $config->get_cfg_value('dashboardNumberOfDigit', 3);
 
     /* running all the table */
     foreach ($computer_ids_rules as $rule) {

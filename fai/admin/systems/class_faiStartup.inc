@@ -93,14 +93,14 @@ class faiStartup extends simplePlugin
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($unused, $dn = NULL, $object = NULL)
   {
     $s_daemon = new supportDaemon();
     $this->sdaemon_available = $s_daemon->is_available();
 
     $this->update_fai_cache();
 
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
   }
 
   /* Updates release and profiles list

@@ -56,8 +56,8 @@ class argonautFuseLTSPConfig extends simplePlugin
     );
   }
 
-  function __construct(&$config, $dn, $object = NULL, $attributesInfo = NULL)
+  function __construct($unused, $dn, $object = NULL, $attributesInfo = NULL)
   {
-    parent::__construct($config, $dn, $object, $attributesInfo);
+    parent::__construct($unused, $dn, $object, $attributesInfo);
   }
 }

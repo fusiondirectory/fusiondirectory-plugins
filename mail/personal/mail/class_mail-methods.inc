@@ -107,14 +107,12 @@ class mailMethod
 
 
   /*! \brief  Constructs the mail class
-      @param  Object  Config  The FusionDirectory configuration object
       @param  Object  Plugin  The initator
       @param  String          Open "user" or "group" account.
    */
-  function __construct(&$config, &$parent, $type = "user")
+  function __construct($unused, &$parent, $type = "user")
   {
     $this->parent = $parent;
-    $this->config = $config;
 
     if (!isset($this->parent->gosaMailServer)) {
       trigger_error("mailMethod with invalid parent object initialized.");
@@ -133,9 +131,10 @@ class mailMethod
    */
   protected function init()
   {
+    global $config;
     /* Get config value for cyrusUseSlashes
      */
-    if ($this->config->get_cfg_value("cyrusUseSlashes") == "TRUE") {
+    if ($config->get_cfg_value("cyrusUseSlashes") == "TRUE") {
       $this->cyrusUseSlashes = TRUE;
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "Enabled", "<b>MAIL:</b> cyrusUseSlashes");
     } else {
@@ -145,8 +144,8 @@ class mailMethod
     /* Check if the mail account identification attribute
        is overridden in the configuration file
      */
-    if ($this->config->get_cfg_value('mailAttribute', '') != '') {
-      $new_uattrib = strtolower($this->config->get_cfg_value("mailAttribute"));
+    if ($config->get_cfg_value('mailAttribute', '') != '') {
+      $new_uattrib = strtolower($config->get_cfg_value("mailAttribute"));
       if (in_array($new_uattrib, array("mail","uid"))) {
         $this->uattrib = $new_uattrib;
       } else {
@@ -164,19 +163,19 @@ class mailMethod
 
     /* Check if we have an individual user/folder creation syntax
      */
-    $tmp = $this->config->get_cfg_value("mailUserCreation");
+    $tmp = $config->get_cfg_value("mailUserCreation");
     if (!empty($tmp)) {
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<i>".$tmp."</i>",
           "<b>MAIL:</b> User creation set to");
       $this->user_id  = $tmp;
     }
-    $tmp = $this->config->get_cfg_value("mailFolderCreation");
+    $tmp = $config->get_cfg_value("mailFolderCreation");
     if (!empty($tmp)) {
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<i>".$tmp."</i>",
           "<b>MAIL:</b> Shared folder creation set to");
       $this->share_id = $tmp;
     }
-    $tmp = $this->config->get_cfg_value("mailSharedPrefix");
+    $tmp = $config->get_cfg_value("mailSharedPrefix");
     if (!empty($tmp)) {
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<i>".$tmp."</i>",
           "<b>MAIL:</b> Shared folder prefix set to");
@@ -498,13 +497,14 @@ class mailMethod
    */
   public function get_method()
   {
+    global $config;
     $methods = mailMethod::get_methods();
-    if ($this->config->get_cfg_value("mailmethod") != "") {
-      $method = $this->config->get_cfg_value("mailmethod");
+    if ($config->get_cfg_value("mailmethod") != "") {
+      $method = $config->get_cfg_value("mailmethod");
       $cls = get_correct_class_name("mailMethod$method");
       if (isset($methods[$cls])) {
         @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $cls, "<b>MAIL:</b> Selected mailMethod");
-        $tmp = new $cls($this->config, $this->parent, $this->type);
+        $tmp = new $cls(NULL, $this->parent, $this->type);
         $tmp->init();
         return $tmp;
       } else {
@@ -702,7 +702,7 @@ class mailMethod
     $methods = mailMethod::get_methods();
     $servers = array();
     foreach ($methods as $class) {
-     $servers = array_merge($servers, $class::get_server_list($config));
+     $servers = array_merge($servers, $class::get_server_list());
     }
     session::global_set('mailServers', $servers);
     return $servers;
@@ -744,13 +744,12 @@ class mailMethod
   static public function serverMatch($server)
   {
     global $config;
-    return isset(static::get_server_list($config)[$server]);
+    return isset(static::get_server_list()[$server]);
   }
 
   static public function getInstance($class, $parent)
   {
-    global $config;
-    $obj = new $class($config, $parent);
+    $obj = new $class(NULL, $parent);
     $obj->init();
     return $obj;
   }
@@ -835,9 +834,9 @@ class mailMethod
   /*! \brief  Returns the configured mailMethod
       @return String  the configured mail method or ""
    */
-  static public function get_current_method($config)
+  static public function get_current_method()
   {
-    global $class_mapping;
+    global $class_mapping, $config;
     $method = $config->get_cfg_value("mailmethod");
     $cls    = get_correct_class_name("mailMethod$method");
     foreach ($class_mapping as $class => $path) {
@@ -861,8 +860,9 @@ class mailMethod
     }
   }
 
-  static public function get_server_list($config)
+  static public function get_server_list()
   {
+    global $config;
     $serverList = array();
 
     $ldap = $config->get_ldap_link();

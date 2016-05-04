@@ -36,7 +36,6 @@ class supportDaemon
   private $host_error   = "";
   private $http_options = array();
   private $ssl_options  = array();
-  private $config;
 
   private $s_error      = "";
   private $b_error      = FALSE;
@@ -51,11 +50,11 @@ class supportDaemon
    */
   public function __construct()
   {
-    $this->config = session::global_get('config');
+    global $config;
     /* This should only be the case if we call this from setup.
     __autoload()
     */
-    if (!is_object($this->config)) {
+    if (!is_object($config)) {
       return;
     }
     $argonautHost = $this->get_argonaut_host();
@@ -63,7 +62,7 @@ class supportDaemon
     if ($argonautHost != "") {
       // load from config, store statically
       $this->s_host = $argonautHost;
-      $this->logdir = $this->config->get_cfg_value("faiLogsDir");
+      $this->logdir = $config->get_cfg_value("faiLogsDir");
       if ($this->logdir == "") {
         $this->logdir = FAI_LOG_DIR;
       }
@@ -75,8 +74,9 @@ class supportDaemon
    */
   public function get_argonaut_host()
   {
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
+    global $config;
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
     $ldap->search(
       "(objectClass=argonautServer)",
       array(
@@ -93,12 +93,12 @@ class supportDaemon
         );
         if ($ldap_infos['argonautProtocol'][0] == 'https') {
           $this->ssl_options = array(
-            'cafile'            => $this->config->get_cfg_value('SslCaCertPath'),
+            'cafile'            => $config->get_cfg_value('SslCaCertPath'),
             'peer_name'         => $ldap_infos['argonautCertCN'][0],
             'verify_peer'       => TRUE,
             'verify_peer_name'  => TRUE,
           );
-          $sshaMethod = new passwordMethodssha($this->config);
+          $sshaMethod = new passwordMethodssha();
           $this->http_options['header'] = 'Authorization: Basic '.base64_encode('fd:'.$sshaMethod->generate_hash($ldap_infos['argonautServerToken'][0]));
         };
       }
@@ -295,6 +295,7 @@ class supportDaemon
    */
   private function format_entries($entries)
   {
+    global $config;
     timezone::get_default_timezone();
     $entries_r = array();
     foreach ($entries as &$entry) {
@@ -302,8 +303,8 @@ class supportDaemon
       $entry_r['MACADDRESS']  = $entry['target'];
 
       // TODO : do an ldap search only if we haven't done it for the same mac before
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
+      $ldap = $config->get_ldap_link();
+      $ldap->cd($config->current['BASE']);
       $ldap->search('(macAddress='.$entry_r['MACADDRESS'].')', array('cn'));
       if ($ldap_infos = $ldap->fetch()) {
         $entry_r['PLAINNAME'] = $ldap_infos['cn'][0];

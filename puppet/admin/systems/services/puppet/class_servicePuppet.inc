@@ -21,10 +21,16 @@
 class servicePuppet extends simpleService {
   var $objectclasses = array('puppetServer');
 
-  /* Construction */
-  function __construct(&$config, $dn, $object = NULL)
+  // We also need this function that return some information about the plugin
+  static function plInfo ()
   {
-    parent::__construct($config, $dn, $object);
+    return array(
+      'plShortName'       => _('Puppet server'),
+      'plDescription'     => _('This service allows you to use a puppet server'),
+      'plIcon'            => 'geticon.php?context=applications&icon=puppet&size=16',
+
+      'plProvidedAcls'    => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
   // The main function : information about attributes
@@ -49,17 +55,9 @@ class servicePuppet extends simpleService {
     );
   }
 
-  // We also need this function that return some information about the plugin
-  static function plInfo ()
+  function __construct($unused, $dn, $object = NULL)
   {
-    return array(
-      'plShortName'       => _('Puppet server'),
-      'plDescription'     => _('This service allows you to use a puppet server'),
-      'plIcon'            => 'geticon.php?context=applications&icon=puppet&size=16',
-
-      'plProvidedAcls'    => parent::generatePlProvidedAcls(self::getAttributesInfo())
-    );
+    parent::__construct($unused, $dn, $object);
   }
 }
-
 ?>

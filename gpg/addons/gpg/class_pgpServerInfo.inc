@@ -79,14 +79,15 @@ class pgpServerInfo extends simplePlugin
 
   protected function ldap_save ($cleanup = TRUE)
   {
+    global $config;
     parent::ldap_save($cleanup);
 
     /* Create the new branch if non-existing */
-    $ldap = $this->config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
     $ldap->cat($this->pgpBaseKeySpaceDN);
     if (!$ldap->count()) {
       @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->pgpBaseKeySpaceDN, "Creating branch");
-      $ldap->cd($this->config->current['BASE']);
+      $ldap->cd($config->current['BASE']);
       $ldap->create_missing_trees($this->pgpBaseKeySpaceDN);
       if (!$ldap->success()) {
         msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(),

@@ -48,21 +48,22 @@ class dashboardPpolicy extends simplePlugin
     );
   }
 
-  function __construct(&$config, $dn = NULL, $object = NULL)
+  function __construct($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
 
     $this->compute_accounts_info();
   }
 
   function compute_accounts_info ()
   {
-    $ldap = $this->config->get_ldap_link();
+    global $config;
+    $ldap = $config->get_ldap_link();
 
     $defaultMaxAge = NULL;
-    $ppolicydn = $this->config->get_cfg_value('ppolicyDefaultCn', '');
+    $ppolicydn = $config->get_cfg_value('ppolicyDefaultCn', '');
     if (!empty($ppolicydn)) {
-      $ppolicydn = 'cn='.$ppolicydn.','.get_ou('ppolicyRDN').$this->config->current['BASE'];
+      $ppolicydn = 'cn='.$ppolicydn.','.get_ou('ppolicyRDN').$config->current['BASE'];
       $ldap->cat($ppolicydn, array('pwdMaxAge'));
       $policy = $ldap->fetch();
       if (!$policy) {
@@ -77,14 +78,14 @@ class dashboardPpolicy extends simplePlugin
     }
 
     /* Fetch global value from configuration */
-    $next_expired_days  = $this->config->get_cfg_value('dashboardExpiredAccountsDays', 15);
+    $next_expired_days  = $config->get_cfg_value('dashboardExpiredAccountsDays', 15);
     /* Convert it to seconds */
     $next_expired_days_seconds = $next_expired_days * 24 * 60 * 60;
     /* Ppolicy stores all dates in UTC */
     $now = new DateTime('now', timezone::utc());
 
     /* search all expired accounts */
-    $ldap->cd($this->config->current['BASE']);
+    $ldap->cd($config->current['BASE']);
     $ldap->search('(&(|(objectClass=posixAccount)(objectClass=sambaSamAccount))(shadowExpire=*))',
                   array('uid','shadowExpire','mail','telephoneNumber','cn','manager'));
     $users = objects::ls('user', array(

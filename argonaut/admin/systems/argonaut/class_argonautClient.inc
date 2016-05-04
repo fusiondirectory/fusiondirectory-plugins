@@ -60,9 +60,10 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
 
   function loadServiceNames ()
   {
+    global $config;
     $this->attributes = array();
     // Get services tabs list from config
-    $services = $this->plugin->config->data['TABS']['SERVERSERVICE'];
+    $services = $config->data['TABS']['SERVERSERVICE'];
     // Add fake "folder" tab at the beginning
     $services = array_merge(array(array('CLASS' => 'folder')), $services);
 
@@ -177,9 +178,9 @@ class argonautClient extends simplePlugin
     );
   }
 
-  function __construct(&$config, $dn = NULL, $object = NULL)
+  function __construct($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
     $this->attributesAccess['argonautClientProtocol']->setManagedAttributes(
       array(
         'disable' => array (

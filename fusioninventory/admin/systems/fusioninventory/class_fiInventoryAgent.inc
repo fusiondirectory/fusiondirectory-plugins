@@ -83,9 +83,9 @@ class fiInventoryAgent extends simplePlugin
     );
   }
 
-  function __construct(&$config, $dn, $object)
+  function __construct($unused, $dn, $object)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
   }
 }
 ?>

@@ -174,7 +174,7 @@ class systemManagement extends management
 
     // Prepare event to be added
     if (isset($events[$event])) {
-      $this->dialogObject = new argonautAction($this->config, array('action' => $event));
+      $this->dialogObject = new argonautAction(array('action' => $event));
       $this->dialogObject->targets = $mac;
 
       if ($triggered) {
@@ -214,6 +214,7 @@ class systemManagement extends management
 
   function saveSnapshot($action = "", $target = array(), $all = array())
   {
+    global $config;
     if (!is_object($this->dialogObject)) {
       return;
     }
@@ -228,8 +229,8 @@ class systemManagement extends management
       $dns      = array($this->dn);
       /* Check if other dns needs to be included in this snapshot */
       $entry = $this->getHeadpage()->getEntry($this->dn);
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
+      $ldap = $config->get_ldap_link();
+      $ldap->cd($config->current['BASE']);
       /* DHCP entry */
       $ldap->search ("(&(objectClass=dhcpHost)(cn=".$entry['cn'][0]."))", array("uid","cn","dn"));
 
@@ -238,7 +239,7 @@ class systemManagement extends management
       }
       /* DNS entry */
       if (class_available('DNS')) {
-        $dnsEntry = DNS::getDNSHostEntries($this->config, $entry['cn'][0]);
+        $dnsEntry = DNS::getDNSHostEntries($entry['cn'][0]);
         if ($dnsEntry['exists']) {
           $dns[]  = "relativeDomainName=".$entry['cn'][0].",".DNS::getDNSZoneDN($this->config, $dnsEntry['zoneName']);
         }

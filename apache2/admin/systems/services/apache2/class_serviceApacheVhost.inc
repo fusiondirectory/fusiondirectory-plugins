@@ -24,15 +24,16 @@ class serviceApache extends simpleService
 {
   var $objectclasses = array("whatever");
 
-  function __construct ($config, $dn = NULL, $parent = NULL)
+  function __construct ($unused, $dn = NULL, $parent = NULL)
   {
-    parent::__construct ($config, $dn, $parent, array());
+    global $config;
+    parent::__construct ($unused, $dn, $parent, array());
 
     if (($dn != 'new') && ($dn != NULL)) {
 
-      $dn_without_base = preg_replace("/,".preg_quote($this->config->current['BASE'], '/')."$/", "", $this->dn);
+      $dn_without_base = preg_replace("/,".preg_quote($config->current['BASE'], '/')."$/", "", $this->dn);
 
-      $this->vhostList = new serviceApacheVhostManagement($this->config, get_userinfo(), $dn_without_base);
+      $this->vhostList = new serviceApacheVhostManagement(NULL, get_userinfo(), $dn_without_base);
 
       /* If there is at least one entry in this -> types, we have apache vhosts enabled */
 

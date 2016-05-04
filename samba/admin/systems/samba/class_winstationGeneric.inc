@@ -101,27 +101,28 @@ class winstationGeneric extends systemSimplePluginGlue
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    global $config;
+    parent::__construct($unused, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
     $this->attributesAccess['uid']->setUnique(TRUE);
-    $this->attributesAccess['sambaDomainName']->setChoices(array_keys($this->config->data['SERVERS']['SAMBA']));
+    $this->attributesAccess['sambaDomainName']->setChoices(array_keys($config->data['SERVERS']['SAMBA']));
     $this->attributesAccess['sambaDomainName']->setInLdap(FALSE);
 
     // Get samba domain and its sid/rid base
     if ($this->sambaSID != "") {
       $this->SID = preg_replace ("/-[^-]+$/", "", $this->sambaSID);
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
+      $ldap = $config->get_ldap_link();
+      $ldap->cd($config->current['BASE']);
       $ldap->search("(&(objectClass=sambaDomain)(sambaSID=$this->SID))", array("sambaAlgorithmicRidBase","sambaDomainName"));
       if ($ldap->count() != 0) {
         $attrs = $ldap->fetch();
         if (isset($attrs['sambaAlgorithmicRidBase'])) {
           $this->ridBase = $attrs['sambaAlgorithmicRidBase'][0];
         } else {
-          $this->ridBase = $this->config->get_cfg_value("sambaRidBase");
+          $this->ridBase = $config->get_cfg_value("sambaRidBase");
         }
         if ($this->sambaDomainName == "") {
           $this->sambaDomainName = $attrs['sambaDomainName'][0];
@@ -133,8 +134,8 @@ class winstationGeneric extends systemSimplePluginGlue
         }
 
         // Nothing in ldap, use configured sid and rid values.
-        $this->ridBase  = $this->config->get_cfg_value("sambaRidBase");
-        $this->SID      = $this->config->get_cfg_value("sambaSid");
+        $this->ridBase  = $config->get_cfg_value("sambaRidBase");
+        $this->SID      = $config->get_cfg_value("sambaSid");
       }
     }
   }
@@ -188,6 +189,7 @@ class winstationGeneric extends systemSimplePluginGlue
 
   function prepare_save()
   {
+    global $config;
     $this->attributesAccess['uid']->setValue($this->attributesAccess['cn']->getValue());
     parent::prepare_save();
 
@@ -196,15 +198,15 @@ class winstationGeneric extends systemSimplePluginGlue
     //no get it from config and generate a new sid
 
     if (($this->sambaSID == "") || (substr_count($this->sambaSID, "-" ) < 7)) {
-      $this->SID      = $this->config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'];
-      $this->ridBase  = $this->config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
+      $this->SID      = $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'];
+      $this->ridBase  = $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
 
       // create sambaSID for workstation
       $uidNumber = $this->uidNumber;
       do {
         $sid = $this->SID."-".($uidNumber * 2 + $this->ridBase);
-        $ldap = $this->config->get_ldap_link();
-        $ldap->cd($this->config->current['BASE']);
+        $ldap = $config->get_ldap_link();
+        $ldap->cd($config->current['BASE']);
         $ldap->search("(sambaSID=$sid)", array("sambaSID"));
         $uidNumber++;
       } while ($ldap->count() != 0);

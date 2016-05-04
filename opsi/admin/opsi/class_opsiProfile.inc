@@ -30,8 +30,9 @@ class OPSIServerAttribute extends SelectAttribute
 
   function updateChoices()
   {
-    $ldap = $this->plugin->config->get_ldap_link();
-    $ldap->cd($this->plugin->config->current['BASE']);
+    global $config;
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
     $ldap->search('(objectClass=opsiServer)', array('cn'));
     $serversdn    = array();
     $serverslabel = array();
@@ -112,9 +113,9 @@ class opsiProfile extends simplePlugin
     );
   }
 
-  public function __construct(&$config, $dn = NULL, $object = NULL)
+  public function __construct($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
   }
@@ -122,13 +123,14 @@ class opsiProfile extends simplePlugin
   /* Returns list of all products installed by this profile */
   public function getProductList ()
   {
+    global $config;
     $products = array();
     $netboot  = $this->fdOpsiNetbootProduct;
     if ($netboot != '') {
       $products[] = $netboot;
     }
     $lists = $this->fdOpsiSoftwareList;
-    $ldap = $this->config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
     foreach ($lists as $list) {
       $ldap->cat($list);
       if ($attrs = $ldap->fetch()) {
@@ -152,6 +154,7 @@ class opsiProfile extends simplePlugin
 
   public function server_changed ()
   {
+    global $config;
     if (!isset($this->products[$this->fdOpsiServerDN])) {
       $s_daemon = new supportDaemon();
       if (!$s_daemon->is_available()) {
@@ -161,7 +164,7 @@ class opsiProfile extends simplePlugin
         );
         return;
       }
-      $ldap = $this->config->get_ldap_link();
+      $ldap = $config->get_ldap_link();
       $ldap->cat($this->fdOpsiServerDN);
       if ($attrs = $ldap->fetch()) {
         if (isset($attrs['macAddress'])) {
@@ -190,7 +193,7 @@ class opsiProfile extends simplePlugin
       }
       $this->products[$this->fdOpsiServerDN]['netboots'] = $netboots;
 
-      $ldap->cd($this->config->current['BASE']);
+      $ldap->cd($config->current['BASE']);
       //~ $ldap->search('(&(|(objectClass=opsiOnDemandList)(objectClass=opsiSoftwareList))(fdOpsiServerDN='.$this->fdOpsiServerDN.'))', array('cn'));
       $ldap->search('(&(objectClass=opsiSoftwareList)(fdOpsiServerDN='.$this->fdOpsiServerDN.'))', array('cn'));
       $lists = array();

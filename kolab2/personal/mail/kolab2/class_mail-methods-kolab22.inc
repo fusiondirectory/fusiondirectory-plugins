@@ -88,9 +88,10 @@ class mailMethodKolab22 extends mailMethodKolab
    */
   public function getMailDomains()
   {
+    global $config;
     $domains = array();
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
     $ldap->search("(&(objectClass=kolab)(k=kolab)(postfix-mydestination=*))", array("postfix-mydestination"));
 
     if ($ldap->count() == 1) {

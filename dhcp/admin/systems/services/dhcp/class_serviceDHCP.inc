@@ -453,7 +453,7 @@ class serviceDHCP extends simpleService
     );
   }
 
-  function __construct (&$config, $dn = NULL, $parent = NULL)
+  function __construct ($unused, $dn = NULL, $parent = NULL)
   {
     $this->types = array(
       'dhcpLog'           => _('Logging'),
@@ -470,7 +470,7 @@ class serviceDHCP extends simpleService
       'dhcpDnsZone'       => _('DNS update zones')
     );
 
-    parent::__construct($config, $dn, $parent);
+    parent::__construct($unused, $dn, $parent);
 
     $this->dhcpServiceDN = 'cn=dhcp,'.$dn;
     $this->attributesAccess['dhcpSections']->setHeight(400);

@@ -114,8 +114,9 @@ class fiInventory extends simplePlugin
     );
   }
 
-  function __construct(&$config, $dn, $object)
+  function __construct($unused, $dn, $object)
   {
+    global $config;
     $attributesInfo = self::getAttributesInfo();
     if (preg_match('/'.preg_quote(get_ou('inventoryRDN').$config->current['BASE'], '/').'$/', $dn)) {
       $this->mainTab        = TRUE;
@@ -123,7 +124,7 @@ class fiInventory extends simplePlugin
       $attributesInfo['hardware']['attrs'][] = new HiddenAttribute('cn');
     }
 
-    parent::__construct($config, $dn, $object, $attributesInfo);
+    parent::__construct($unused, $dn, $object, $attributesInfo);
 
     $this->hardware_infos = NULL;
     $this->software_infos = NULL;
@@ -154,7 +155,8 @@ class fiInventory extends simplePlugin
 
   function get_inventory_infos()
   {
-    $ldap = $this->config->get_ldap_link();
+    global $config;
+    $ldap = $config->get_ldap_link();
 
     if ($this->mainTab) {
       $dn = $this->dn;

@@ -23,17 +23,17 @@ class pgpKeySelect extends management
   protected $skipFooter = TRUE;
   protected $skipHeader = TRUE;
 
-  function __construct($config, $ui)
+  function __construct($unused, $ui)
   {
-    $this->config = $config;
+    global $config;
     $this->ui     = $ui;
 
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cat('cn=pgpServerInfo,'.$this->config->current['BASE']);
+    $ldap = $config->get_ldap_link();
+    $ldap->cat('cn=pgpServerInfo,'.$config->current['BASE']);
     if ($pgpServerInfo = $ldap->fetch()) {
       $this->storagePoints = array(
         preg_replace(
-          '/'.$this->config->current['BASE'].'$/', '',
+          '/'.$config->current['BASE'].'$/', '',
           $pgpServerInfo['pgpBaseKeySpaceDN'][0]
         )
       );
@@ -51,10 +51,10 @@ class pgpKeySelect extends management
     $headpage->registerElementFilter('pgpSize', 'pgpKeySelect::filterPgpSize');
     $headpage->registerElementFilter('pgpDisabled', 'pgpKeySelect::filterPgpRevoked');
     $headpage->registerElementFilter('pgpRevoked', 'pgpKeySelect::filterPgpRevoked');
-    $headpage->setBase($this->config->current['BASE']);
+    $headpage->setBase($config->current['BASE']);
     $headpage->setFilter($filter);
 
-    parent::__construct($config, $ui, '', $headpage);
+    parent::__construct($unused, $ui, '', $headpage);
   }
 
   function renderList()
@@ -146,7 +146,8 @@ class PgpKeyAttribute extends GenericDialogAttribute
 
   protected function fillDisplayValue ($i)
   {
-    $ldap = $this->plugin->config->get_ldap_link();
+    global $config;
+    $ldap = $config->get_ldap_link();
 
     $value = $this->value[$i];
     $ldap->cat($value);

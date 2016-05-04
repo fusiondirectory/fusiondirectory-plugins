@@ -83,9 +83,9 @@ class serviceShare extends simpleService
     );
   }
 
-  function __construct (&$config, $dn = NULL, $parent = NULL)
+  function __construct ($unused, $dn = NULL, $parent = NULL)
   {
-    parent::__construct($config, $dn, $parent);
+    parent::__construct($unused, $dn, $parent);
     $this->attributesAccess['goExportEntry']->setLinearRendering(FALSE);
 
     $charsets = $this->getCharsets();
@@ -96,9 +96,10 @@ class serviceShare extends simpleService
 
   function getCharsets()
   {
+    global $config;
     $charsets = array();
 
-    $configEncodings = $this->config->get_cfg_value('encodings', NULL);
+    $configEncodings = $config->get_cfg_value('encodings', NULL);
     if ($configEncodings === NULL) {
       msg_dialog::display(_('Error'), _('You need to configure encodings first'), ERROR_DIALOG);
     } else {

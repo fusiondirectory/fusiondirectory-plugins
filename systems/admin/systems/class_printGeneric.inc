@@ -80,9 +80,9 @@ class printgeneric extends plugin
   var $userSelect;
   var $adminUserSelect;
 
-  function __construct (&$config, $dn, $baseobject)
+  function __construct ($dn, $baseobject)
   {
-    $this->config = &$config;
+    global $config;
     $this->dn     = $dn;
 
     /* Detect the printer type. */
@@ -100,20 +100,20 @@ class printgeneric extends plugin
     $this->orig_dn = $this->dn;
 
     /* Get printer settings, possibly dn has changed */
-    parent::__construct($config, $this->dn);
+    parent::__construct($this->dn);
 
     /* Get is_account initially_was_account status */
     $this->updateAccountStatus();
 
     /* set orig dn to new if object is new */
-    $ldap = $this->config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
     $ldap->cat($this->dn, array('dn'));
     if (!$ldap->count()) {
       $this->orig_dn = "new";
     }
 
     /* create dns object */
-    $this->netConfigDNS = new networkSettings($this->config, $this, $this->objectclasses);
+    $this->netConfigDNS = new networkSettings($this, $this->objectclasses);
     $this->netConfigDNS->IPisMust = TRUE;
     $this->netConfigDNS->MACisMust = TRUE;
 
@@ -127,7 +127,7 @@ class printgeneric extends plugin
       /* Set base and check if the extracted base exists */
       $this->base = preg_replace("/".preg_quote(get_ou('printerRDN'), '/')."/i",  "", dn2base($this->dn));
 
-      if (!isset($this->config->idepartments[$this->base])) {
+      if (!isset($config->idepartments[$this->base])) {
         msg_dialog::display(_("Internal error"), sprintf(_("Cannot determine a valid department for this object. Setting base to '%s'!"), session::get('CurrentMainBase')), WARNING_DIALOG);
         $this->base  = session::get('CurrentMainBase');
       }
@@ -174,7 +174,7 @@ class printgeneric extends plugin
       $this->member[$type] = array();
 
       if (isset($this->attrs[$attr])) {
-        $ldap->cd($this->config->current['BASE']);
+        $ldap->cd($config->current['BASE']);
         for ($i = 0;  $i < $this->attrs[$attr]['count']; $i++) {
 
           $mem = $this->attrs[$attr][$i];
@@ -333,6 +333,7 @@ class printgeneric extends plugin
 
   function updateAccountStatus ()
   {
+    global $config;
     /* Disable account as default
      */
     $this->is_account = $this->initially_was_account = FALSE;
@@ -361,7 +362,7 @@ class printgeneric extends plugin
 
     /* Detect if this is a valid printer account;
      */
-    $ldap = $this->config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
     $ldap->cat($this->dn, array('objectClass'));
 
     if ($ldap->count()) {
@@ -377,6 +378,7 @@ class printgeneric extends plugin
 
   function execute()
   {
+    global $config;
     /* Call parent execute */
     parent::execute();
 
@@ -487,11 +489,11 @@ class printgeneric extends plugin
 
     // Act on add user/grouo requests
     if (isset($_POST['AddUser'])) {
-      $this->userSelect = new userGroupSelect($this->config, get_userinfo());
+      $this->userSelect = new userGroupSelect();
       $this->dialog = TRUE;
     }
     if (isset($_POST['AddAdminUser'])) {
-      $this->adminUserSelect = new userGroupSelect($this->config, get_userinfo());
+      $this->adminUserSelect = new userGroupSelect();
       $this->dialog = TRUE;
     }
 
@@ -502,15 +504,15 @@ class printgeneric extends plugin
       } else {
 
         if (is_array($this->gotoPrinterPPD)) {
-          $this->dialog = new printerPPDDialog($this->config, $this->dn, "");
+          $this->dialog = new printerPPDDialog($this->dn, "");
         } else {
-          $this->dialog = new printerPPDDialog($this->config, $this->dn, $this->gotoPrinterPPD);
+          $this->dialog = new printerPPDDialog($this->dn, $this->gotoPrinterPPD);
         }
         $this->dialog->cn = $this->cn;
       }
 
       // Detect edit acl base
-      $ldap = $this->config->get_ldap_link();
+      $ldap = $config->get_ldap_link();
       if ($ldap->dn_exists($this->dn)) {
         $acl_base = $this->dn;
       } else {
@@ -712,6 +714,7 @@ class printgeneric extends plugin
 
   function remove_from_parent()
   {
+    global $config;
     /* Only remove if there was initially an account */
     if ($this->initially_was_account) {
 
@@ -726,7 +729,7 @@ class printgeneric extends plugin
       }
 
       /* Check if this dn points to a printer, to avoid deleting something else */
-      $ldap = $this->config->get_ldap_link();
+      $ldap = $config->get_ldap_link();
       $ldap->cat($this->dn, array('dn',"objectClass"));
       if (!$ldap->count()) {
         msg_dialog::display(_("Error"), _("Object is no printer!"), ERROR_DIALOG);
@@ -752,17 +755,17 @@ class printgeneric extends plugin
       $this->handle_post_events("remove", array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
 
       /* Delete references to object groups */
-      $ldap->cd ($this->config->current['BASE']);
+      $ldap->cd ($config->current['BASE']);
       $ldap->search ("(&(objectClass=gosaGroupOfNames)(member=".LDAP::prepare4filter($this->dn)."))", array("cn"));
       while ($ldap->fetch()) {
-        $og = new ogroup($this->config, $ldap->getDN());
+        $og = new ogroup($ldap->getDN());
         unset($og->member[$this->dn]);
         $og->save ();
       }
 
       /* Remove previously selected ppd file.*/
       if (!empty($this->initial_PPD)) {
-        $tmp = new printerPPDDialog($this->config, $this->dn, $this->initial_PPD);
+        $tmp = new printerPPDDialog($this->dn, $this->initial_PPD);
         $tmp->removeModifiedPPD();
       }
     }
@@ -808,6 +811,7 @@ class printgeneric extends plugin
   /* Check supplied data */
   function check()
   {
+    global $config;
     /* Call common method to give check the hook */
     $message = plugin::check();
     if (preg_match("/printer/i", $this->BelongsTo)) {
@@ -849,7 +853,7 @@ class printgeneric extends plugin
 
     /* Check if there is already an entry with this cn*/
     if (($this->orig_dn != $dn) && ( preg_match("/printer/i", $this->BelongsTo))) {
-      $ldap = $this->config->get_ldap_link();
+      $ldap = $config->get_ldap_link();
       $ldap->cd($this->base);
       $ldap->ls("(cn=".$this->cn.")", get_ou('printerRDN').$this->base, array("cn"));
       if ($ldap->count() != 0) {
@@ -880,6 +884,7 @@ class printgeneric extends plugin
   /* Save to LDAP */
   function save()
   {
+    global $config;
     /* Update dn, to ensure storing as printer instead of WS / terminal
      */
     if (preg_match("/terminal/i", $this->BelongsTo)) {
@@ -922,7 +927,7 @@ class printgeneric extends plugin
 
       /* Rename the generated ppd to match the gzip ending '.gz', if necessary.
       */
-      $path = $this->config->get_cfg_value("ppdPath");
+      $path = $config->get_cfg_value("ppdPath");
       if (!preg_match("/\/$/", $path)) {
         $path = $path."/";
       }
@@ -940,7 +945,7 @@ class printgeneric extends plugin
     }
     if ($this->orig_dn != $this->dn && $this->orig_dn != "new") {
       if (!empty($this->gotoPrinterPPD)) {
-        $this->PPDdialogToSave = new printerPPDDialog($this->config, $this->dn, $this->gotoPrinterPPD);
+        $this->PPDdialogToSave = new printerPPDDialog($this->dn, $this->gotoPrinterPPD);
         $this->PPDdialogToSave->cn = $this->cn;
         $this->PPDdialogToSave->generateProperties();
         $this->gotoPrinterPPD = $this->PPDdialogToSave->update_ppd_url();
@@ -950,7 +955,7 @@ class printgeneric extends plugin
     /* Remove previously selected ppd file.*/
     if ($this->initial_PPD != $this->gotoPrinterPPD && $this->initially_was_account) {
       if (!empty($this->initial_PPD)) {
-        $tmp = new printerPPDDialog($this->config, $this->dn, $this->initial_PPD);
+        $tmp = new printerPPDDialog($this->dn, $this->initial_PPD);
         $tmp->removeModifiedPPD();
       }
     }
@@ -966,7 +971,7 @@ class printgeneric extends plugin
     $this->attrs['objectClass'] = $this->objectclasses;
 
     parent::save();
-    $ldap = $this->config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
 
     /* Remove all empty values */
     if ($this->orig_dn == 'new') {
@@ -1022,10 +1027,10 @@ class printgeneric extends plugin
     }
 
     /* Write back to ldap */
-    $ldap = $this->config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
     $ldap->cat($this->dn);
     if (!$ldap->count()) {
-      $ldap->cd($this->config->current['BASE']);
+      $ldap->cd($config->current['BASE']);
       $ldap->create_missing_trees(preg_replace('/^[^,]+,/', '', $this->dn));
       $ldap->cd($this->dn);
 
@@ -1139,6 +1144,7 @@ class printgeneric extends plugin
   /* Add given obejct to members */
   function AddMember($type, $dn)
   {
+    global $config;
     $types = array("AddUser","AddGroup","AddAdminUser","AddAdminGroup");
     if (!in_array_ics($type, $types)) {
       msg_dialog::display(_("Internal error"), sprintf(_("Illegal member type '%s'!"), $type), ERROR_DIALOG);
@@ -1157,7 +1163,7 @@ class printgeneric extends plugin
       $var = "cn";
     }
 
-    $ldap = $this->config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
     $ldap->cd($dn);
     $ldap->cat($dn, array($var, "cn"));
     if ($ldap->count()) {
@@ -1202,7 +1208,6 @@ class printgeneric extends plugin
   {
     $this->gotoPrinterPPD = "";
   }
-
 
   function is_modal_dialog()
   {

@@ -61,17 +61,18 @@ class debugHelp extends simplePlugin
     );
   }
 
-  function __construct(&$config, $dn = NULL, $object = NULL)
+  function __construct($unused, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($unused, $dn, $object);
 
     $this->buildObjectTypesDump();
   }
 
   function buildObjectTypesDump()
   {
+    global $config;
     $dump = array();
-    foreach ($this->config->data['OBJECTS'] as $type => $infos) {
+    foreach ($config->data['OBJECTS'] as $type => $infos) {
       if (isset($infos['icon'])) {
         $img = $infos['icon'];
       } else {
