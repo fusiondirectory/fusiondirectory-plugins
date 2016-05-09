@@ -82,6 +82,5 @@ class dnsView extends simplePlugin
     $acls = objects::ls('dnsAcl', 'cn');
     $this->attributesAccess['fdDNSViewMatchClientsAcl']->setChoices($acls);
     $this->attributesAccess['fdDNSViewMatchDestinationsAcl']->setChoices($acls);
-    $this->updateAttributesValues();
   }
 }
