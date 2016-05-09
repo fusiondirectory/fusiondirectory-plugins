@@ -54,10 +54,5 @@ class servicePuppet extends simpleService {
       ),
     );
   }
-
-  function __construct($unused, $dn, $object = NULL)
-  {
-    parent::__construct($unused, $dn, $object);
-  }
 }
 ?>

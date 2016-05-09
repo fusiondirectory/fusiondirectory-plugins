@@ -67,9 +67,9 @@ class nisObject extends simplePlugin
     );
   }
 
-  function __construct($unused, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($unused, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
     $this->attributesAccess['nisMapName']->setChoices($this->getMountPoints());
   }
 

@@ -58,9 +58,9 @@ class opsiClient extends simplePlugin
     );
   }
 
-  function __construct($unused, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($unused, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
     if ($object instanceof ogroup) {
       $this->initialMembers = $object->saved_attributes['member'];
       if (!is_array($this->initialMembers)) {

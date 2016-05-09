@@ -46,7 +46,6 @@ class terminalGeneric extends workstationGeneric
     );
   }
 
-<<<<<<< HEAD
   /*!
    *  \brief The main function : information about attributes
    */
@@ -159,7 +158,6 @@ class terminalGeneric extends workstationGeneric
     $this->attributesInfo['remote_desktop']['attrs']['gotoXdmcpServer']->attribute->setChoices($available_servers);
     return parent::execute();
   }
-
 }
 
 ?>

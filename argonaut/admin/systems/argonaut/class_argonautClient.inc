@@ -106,10 +106,22 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
 
 class argonautClient extends simplePlugin
 {
-  var $objectclasses  = array("argonautClient");
+  var $objectclasses  = array('argonautClient');
   var $displayHeader  = TRUE;
 
-  var $inheritance = array("gosaGroupOfNames" => "member");
+  var $inheritance = array('gosaGroupOfNames' => 'member');
+
+  static function plInfo ()
+  {
+    return array(
+      'plShortName'     => _('Argonaut client'),
+      'plDescription'   => _('Edit argonaut client settings'),
+      'plSelfModify'    => FALSE,
+      'plObjectType'    => array('workstation','server','ogroup-dynamic'),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
 
   // The main function : information about attributes
   static function getAttributesInfo ()
@@ -178,9 +190,9 @@ class argonautClient extends simplePlugin
     );
   }
 
-  function __construct($unused, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($unused, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
     $this->attributesAccess['argonautClientProtocol']->setManagedAttributes(
       array(
         'disable' => array (
@@ -190,20 +202,6 @@ class argonautClient extends simplePlugin
           )
         )
       )
-    );
-  }
-
-  // We also need this function that return some information about the plugin
-  static function plInfo ()
-  {
-    return array(
-      'plShortName'     => _('Argonaut client'),
-      'plDescription'   => _('Edit argonaut client settings'),
-      'plSelfModify'    => FALSE,
-      'plObjectType'    => array('workstation','server','ogroup-dynamic'),
-
-      // But simplePlugin can generate the ACL list for us
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 }

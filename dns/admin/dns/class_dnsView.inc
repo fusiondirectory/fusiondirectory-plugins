@@ -20,8 +20,6 @@
 
 class dnsView extends simplePlugin
 {
-  var $mainTab = TRUE;
-
   var $objectclasses = array('fdDNSView');
 
   public static function plInfo()
@@ -74,9 +72,9 @@ class dnsView extends simplePlugin
     );
   }
 
-  function __construct ($unused, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($unused, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
     $zones = objects::ls('dnsZone');
     $this->attributesAccess['fdDNSZoneDn']->attribute->setChoices(array_keys($zones), array_values($zones));
     $acls = objects::ls('dnsAcl', 'cn');

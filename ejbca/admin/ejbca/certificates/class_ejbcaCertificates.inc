@@ -23,23 +23,6 @@ class ejbcaCertificates extends simplePlugin
   var $displayHeader = TRUE;
   var $objectclasses = array('fdEjbcaCertificates');
 
-  // The main function : information about attributes
-  static function getAttributesInfo ()
-  {
-    return array(
-      'main' => array(
-        'name'  => _('EJBCA certs'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
-          new EjbcaUserCertsAttribute(
-            '', _('Certificates associated to this object'),
-            'fdEjbcaCertDN', TRUE
-          )
-        )
-      )
-    );
-  }
-
   static function plInfo()
   {
     return array(
@@ -57,9 +40,21 @@ class ejbcaCertificates extends simplePlugin
     );
   }
 
-  function __construct ($unused, $dn = NULL, $object = NULL)
+  // The main function : information about attributes
+  static function getAttributesInfo ()
   {
-    parent::__construct($unused, $dn, $object);
+    return array(
+      'main' => array(
+        'name'  => _('EJBCA certs'),
+        'class' => array('fullwidth'),
+        'attrs' => array(
+          new EjbcaUserCertsAttribute(
+            '', _('Certificates associated to this object'),
+            'fdEjbcaCertDN', TRUE
+          )
+        )
+      )
+    );
   }
 }
 ?>

@@ -55,9 +55,9 @@ class applicationRights extends simplePlugin
     );
   }
 
-  function __construct ($unused, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($unused, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     $apps = objects::ls('application');
     $apps = array_merge($apps, objects::ls('webApplication'));

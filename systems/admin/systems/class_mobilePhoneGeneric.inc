@@ -111,9 +111,9 @@ class mobilePhoneGeneric extends systemSimplePluginGlue
     );
   }
 
-  function __construct ($unused, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL)
   {
-    parent::__construct($unused, $dn, $object);
+    parent::__construct($dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
     $this->netConfigDNS->IPisMust   = FALSE;

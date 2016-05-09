@@ -54,13 +54,13 @@ class ServerService extends management
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Services"),
-      "plDescription" => _("Server services"),
-      "plSelfModify"  => FALSE,
-      "plObjectType"  => array("server"),
-      "plPrority"     => 5,
+      'plShortName'   => _('Services'),
+      'plDescription' => _('Server services'),
+      'plSelfModify'  => FALSE,
+      'plObjectType'  => array('server'),
+      'plPrority'     => 5,
 
-      "plProvidedAcls"  => array()
+      'plProvidedAcls'  => array()
     );
   }
 
@@ -99,7 +99,7 @@ class ServerService extends management
         $name = $plug['CLASS'];
 
         $this->plugin_names[] = $name;
-        $this->plugins[$name] = new $name($config, $dn, $this);
+        $this->plugins[$name] = new $name($dn, $this);
 
         /* Capture all service objectClases, necessary for acl handling */
         if (isset($this->plugins[$name]->objectclasses)) {

@@ -343,15 +343,14 @@ class faiPartition extends simplePlugin
     );
   }
 
-  function __construct($config, $object, $parent, $type)
+  function __construct($object, $parent, $type)
   {
-    parent::__construct($config);
+    parent::__construct(NULL, NULL, $parent);
 
     $this->attributesAccess['FAIfsType']->setManagedAttributes(
       array('disable' => array ('swap' => array ('FAImountPoint')))
     );
 
-    $this->parent       = $parent;
     $this->FAIdiskType  = $type;
 
     if ($this->FAIdiskType == 'disk') {

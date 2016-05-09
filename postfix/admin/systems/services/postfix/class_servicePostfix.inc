@@ -134,11 +134,6 @@ class servicePostfix extends simpleService
     );
   }
 
-  function __construct($unused, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($unused, $dn, $object);
-  }
-
   function ldap_save ($cleanup = TRUE)
   {
     global $config;

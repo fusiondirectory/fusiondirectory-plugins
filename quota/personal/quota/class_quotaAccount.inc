@@ -165,7 +165,7 @@ class quotaAccount extends simplePlugin
     );
   }
 
-  function __construct ($unused, $dn = NULL, $parent = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     global $config;
     /* Get List of server with Quota service */
@@ -192,7 +192,7 @@ class quotaAccount extends simplePlugin
       array_keys($quotaServersList), array_values($quotaServersList)
     );
 
-    parent::__construct($unused, $dn, $parent, $attributesInfo);
+    parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
   }
 
   function getDeviceList($server)

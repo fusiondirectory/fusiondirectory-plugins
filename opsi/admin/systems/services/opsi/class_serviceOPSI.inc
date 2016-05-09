@@ -57,9 +57,9 @@ class serviceOPSI extends simpleService
     );
   }
 
-  function __construct ($unused, $dn = NULL, $parent = NULL)
+  function __construct ($dn = NULL, $parent = NULL)
   {
-    parent::__construct($unused, $dn, $parent);
+    parent::__construct($dn, $parent);
     if ($parent !== NULL) {
       if (isset($parent->parent->netConfigDNS)) {
         $ip = $parent->parent->netConfigDNS->ipHostNumber;

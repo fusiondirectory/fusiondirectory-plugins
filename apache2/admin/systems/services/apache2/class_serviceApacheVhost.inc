@@ -22,12 +22,12 @@
 
 class serviceApache extends simpleService
 {
-  var $objectclasses = array("whatever");
+  var $objectclasses = array('whatever');
 
-  function __construct ($unused, $dn = NULL, $parent = NULL)
+  function __construct ($dn = NULL, $parent = NULL)
   {
     global $config;
-    parent::__construct ($unused, $dn, $parent, array());
+    parent::__construct ($dn, $parent, array());
 
     if (($dn != 'new') && ($dn != NULL)) {
 

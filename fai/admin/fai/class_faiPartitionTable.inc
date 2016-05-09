@@ -28,13 +28,13 @@ class DiskEntryDialog extends GenericDialog
 
   protected $initialDialogValue = NULL;
 
-  function __construct($simplePlugin, &$attribute, $disk = array(), $diskType = 'disk')
+  function __construct($simplePlugin, $attribute, $disk = array(), $diskType = 'disk')
   {
     $this->attribute = $attribute;
     if (isset($disk['FAIdiskType'])) {
       $diskType = $disk['FAIdiskType'];
     }
-    $this->dialog = new $this->dialogClass(NULL, $simplePlugin->dn, $attribute, $disk, $diskType);
+    $this->dialog = new $this->dialogClass($simplePlugin->dn, $attribute, $disk, $diskType);
 
     $base = $simplePlugin->dn;
     if ($base == 'new') {
@@ -275,8 +275,6 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
 
 class faiPartitionTable extends faiSimplePluginClass
 {
-  var $mainTab = TRUE;
-
   var $objectclasses    = array('top','FAIclass','FAIpartitionTable');
 
   static function plInfo()
@@ -329,9 +327,9 @@ class faiPartitionTable extends faiSimplePluginClass
     );
   }
 
-  function __construct ($unused, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($unused, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
   }

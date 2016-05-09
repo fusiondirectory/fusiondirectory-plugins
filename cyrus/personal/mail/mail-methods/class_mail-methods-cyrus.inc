@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -22,7 +21,6 @@
 
 class mailMethodCyrus extends mailMethod
 {
-
   protected $ServerList   = array();
   protected $imap_handle  = NULL;
   protected $quota_loaded = FALSE;
@@ -46,7 +44,6 @@ class mailMethodCyrus extends mailMethod
     parent::init();
     $this->ServerList = parent::getMailServers();
   }
-
 
   public function connect()
   {
@@ -104,7 +101,6 @@ class mailMethodCyrus extends mailMethod
 
     return TRUE;
   }
-
 
   public function account_exists()
   {
@@ -663,5 +659,4 @@ class mailMethodCyrus extends mailMethod
     return $serverList;
   }
 }
-
 ?>

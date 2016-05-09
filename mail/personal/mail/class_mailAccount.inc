@@ -169,17 +169,9 @@ class mailAccount extends simplePlugin
     );
   }
 
-  /*!
-   * \brief Constructor of the freeradiusAccount
-   *        It will build the select groups choices
-   */
-  function __construct($unused, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($unused, $dn, $object);
-
-    if (isset($object->parent)) {
-      $this->parent = $object->parent;
-    }
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
     $this->attributesAccess['gosaMailServer']->setSubmitForm('mailServerChanged');

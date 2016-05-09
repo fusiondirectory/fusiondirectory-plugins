@@ -110,7 +110,7 @@ class mailMethod
       @param  Object  Plugin  The initator
       @param  String          Open "user" or "group" account.
    */
-  function __construct($unused, &$parent, $type = "user")
+  function __construct($parent, $type = 'user')
   {
     $this->parent = $parent;
 
@@ -504,7 +504,7 @@ class mailMethod
       $cls = get_correct_class_name("mailMethod$method");
       if (isset($methods[$cls])) {
         @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $cls, "<b>MAIL:</b> Selected mailMethod");
-        $tmp = new $cls(NULL, $this->parent, $this->type);
+        $tmp = new $cls($this->parent, $this->type);
         $tmp->init();
         return $tmp;
       } else {
@@ -749,7 +749,7 @@ class mailMethod
 
   static public function getInstance($class, $parent)
   {
-    $obj = new $class(NULL, $parent);
+    $obj = new $class($parent);
     $obj->init();
     return $obj;
   }

@@ -48,7 +48,7 @@ class faiPackageConfiguration extends simplePlugin
       @param  String  The release name (e.g. edge)
       @param  Array   The current package configuration.
    */
-  function __construct($unused, $dn = NULL, $packageName, $release, $values)
+  function __construct($dn = NULL, $packageName, $release, $values)
   {
     $this->packageName  = $packageName;
 
@@ -66,7 +66,7 @@ class faiPackageConfiguration extends simplePlugin
 
     $attributesInfo = $this->loadAttributesFromTemplate($tpl);
 
-    parent::__construct($unused, $dn, NULL, $attributesInfo);
+    parent::__construct($dn, NULL, NULL, FALSE, $attributesInfo);
 
     foreach ($values as $var) {
       $this->attributesAccess[$var['Name']]->setValue($var['Value']);

@@ -61,11 +61,6 @@ class ejbcaCertificate extends simplePlugin
     );
   }
 
-  function __construct ($unused, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($unused, $dn, $object);
-  }
-
   function renderAttributes($readOnly = FALSE)
   {
     parent::renderAttributes(TRUE);

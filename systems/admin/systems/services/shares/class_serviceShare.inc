@@ -83,9 +83,9 @@ class serviceShare extends simpleService
     );
   }
 
-  function __construct ($unused, $dn = NULL, $parent = NULL)
+  function __construct ($dn = NULL, $parent = NULL)
   {
-    parent::__construct($unused, $dn, $parent);
+    parent::__construct($dn, $parent);
     $this->attributesAccess['goExportEntry']->setLinearRendering(FALSE);
 
     $charsets = $this->getCharsets();

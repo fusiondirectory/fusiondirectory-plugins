@@ -23,13 +23,13 @@ class faiSimplePluginClass extends simplePlugin
 {
   public $base;
 
-  function __construct ($unused, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($unused, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
 
-    if ($dn == "new") {
+    if ($dn == 'new') {
       $ui = get_userinfo();
-      $this->base = dn2base(session::global_is_set("CurrentMainBase")?"cn=dummy,".session::global_get("CurrentMainBase"):$ui->dn);
+      $this->base = dn2base(session::global_is_set('CurrentMainBase') ? 'cn=dummy,'.session::global_get('CurrentMainBase') : $ui->dn);
     } else {
       $this->base = dn2base($dn, get_ou(get_class($this).'RDN'));
     }

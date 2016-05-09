@@ -369,7 +369,7 @@ class sambaAccount extends simplePlugin
     );
   }
 
-  function __construct ($unused, $dn = NULL, $baseobject = NULL)
+  function __construct ($dn = NULL, $baseobject = NULL, $parent = NULL, $mainTab = FALSE)
   {
     global $config;
     // User wants me to fake the idMappings? This is useful for
@@ -379,7 +379,7 @@ class sambaAccount extends simplePlugin
       $this->objectclasses[] = 'sambaIdmapEntry';
     }
 
-    parent::__construct($unused, $dn, $baseobject);
+    parent::__construct($dn, $baseobject, $parent, $mainTab);
 
     $this->attributesAccess['sambaDomainName']->setChoices(array_keys($config->data['SERVERS']['SAMBA']));
     $this->attributesAccess['TsLogin']->setManagedAttributes(
