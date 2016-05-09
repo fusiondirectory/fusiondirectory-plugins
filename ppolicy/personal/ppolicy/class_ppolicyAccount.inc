@@ -66,7 +66,7 @@ class ppolicyAccount extends simplePlugin
     );
   }
 
-  function __construct ($unused, $dn = NULL, $parent = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     $attributesInfo = $this->getAttributesInfo();
 
@@ -77,7 +77,7 @@ class ppolicyAccount extends simplePlugin
     array_unshift($outputs, _('Use the default'));
     $attributesInfo['main']['attrs'][0]->setChoices($choices, $outputs);
 
-    parent::__construct($unused, $dn, $parent, $attributesInfo);
+    parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
     if ($this->pwdChangedTime == '') {
       $this->pwdChangedTime = _('Never');

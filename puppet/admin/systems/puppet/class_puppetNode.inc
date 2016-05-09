@@ -70,10 +70,10 @@ class puppetNode extends simplePlugin
     );
   }
 
-  function __construct($unused, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     global $config;
-    parent::__construct($unused, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);

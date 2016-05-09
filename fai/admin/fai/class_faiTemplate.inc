@@ -141,8 +141,6 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
 
 class faiTemplate extends faiSimplePluginClass
 {
-  var $mainTab = TRUE;
-
   var $objectclasses    = array('top','FAIclass','FAItemplate');
 
   static function plInfo()
@@ -190,13 +188,6 @@ class faiTemplate extends faiSimplePluginClass
         )
       )
     );
-  }
-
-  function __construct ($unused, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($unused, $dn, $object);
-
-    $this->attributesAccess['cn']->setUnique(TRUE);
   }
 
   function ldap_save ($cleanup = TRUE)

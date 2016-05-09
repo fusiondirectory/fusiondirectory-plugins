@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -137,7 +136,6 @@ class mailMethodKolab extends mailMethodCyrus
     }
   }
 
-
   /* \brief   Some method require special folder types, "kolab" for example.
       !! Those values are dummy values, the base class doesn't use folder types;
      @return  Array Return folder types.
@@ -169,7 +167,6 @@ class mailMethodKolab extends mailMethodCyrus
     return $ret;
   }
 
-
   /*! \brief  Checks whether this account is removeable or not.
               There may be some dependencies left, eg. kolab.
    */
@@ -186,8 +183,6 @@ class mailMethodKolab extends mailMethodCyrus
     }
     return TRUE;
   }
-
-
 
   /* \brief  Returns the selected folder type.
       !! Those values are dummy values, the base class doesn't use folder types;
@@ -209,7 +204,6 @@ class mailMethodKolab extends mailMethodCyrus
       return $default;
     }
   }
-
 
   /* \brief  Returns the selected folder type.
       !! Those values are dummy values, the base class doesn't use folder types;
@@ -239,7 +233,6 @@ class mailMethodKolab extends mailMethodCyrus
     }
   }
 
-
   public function setQuota($number)
   {
     mailMethod::setQuota($number);
@@ -248,7 +241,7 @@ class mailMethodKolab extends mailMethodCyrus
     return TRUE;
   }
 
-  public function  setFolderACLs($permissions)
+  public function setFolderACLs($permissions)
   {
     mailMethod::setFolderACLs($permissions);
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Skipped, part of kolabd!</b>",
@@ -272,7 +265,6 @@ class mailMethodKolab extends mailMethodCyrus
     return TRUE;
   }
 
-
   public function allow_remove(&$reason)
   {
     if (isset($this->parent->attrs)) {
@@ -286,8 +278,6 @@ class mailMethodKolab extends mailMethodCyrus
     }
     return TRUE;
   }
-
-
 
   /*! \brief   Returns all kolabHost entries from the k=kolab object.
       @return  See \brief

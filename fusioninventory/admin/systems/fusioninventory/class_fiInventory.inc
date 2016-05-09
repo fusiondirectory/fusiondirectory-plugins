@@ -125,7 +125,7 @@ class fiInventory extends simplePlugin
     );
   }
 
-  function __construct($unused, $dn, $object)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     global $config;
     $attributesInfo = self::getAttributesInfo();
@@ -138,7 +138,7 @@ class fiInventory extends simplePlugin
       unset($attributesInfo['match']);
     }
 
-    parent::__construct($unused, $dn, $object, $attributesInfo);
+    parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
     $this->hardware_infos = NULL;
     $this->software_infos = NULL;

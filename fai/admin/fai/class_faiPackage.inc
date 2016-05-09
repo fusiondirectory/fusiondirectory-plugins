@@ -52,7 +52,7 @@ class PackageConfigDialog extends GenericDialog
   function __construct($simplePlugin, &$attribute, $key, $pkg_config)
   {
     $this->attribute  = $attribute;
-    $this->dialog     = new $this->dialogClass(NULL, $simplePlugin->dn, $key, $simplePlugin->FAIdebianRelease , $pkg_config);
+    $this->dialog     = new $this->dialogClass($simplePlugin->dn, $key, $simplePlugin->FAIdebianRelease , $pkg_config);
   }
 
   function execute ()
@@ -368,8 +368,6 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
 
 class faiPackage extends faiSimplePluginClass
 {
-  var $mainTab = TRUE;
-
   var $objectclasses = array('top','FAIclass','FAIpackageList','FAIrepository');
 
   static function plInfo()
@@ -442,13 +440,13 @@ class faiPackage extends faiSimplePluginClass
     );
   }
 
-  function __construct ($unused, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($unused, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
-    if ($this->FAIdebianRelease === "") {
+    if ($this->FAIdebianRelease === '') {
       /* Assemble release name */
       $this->updateRelease();
     }

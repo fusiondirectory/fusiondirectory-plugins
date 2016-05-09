@@ -56,11 +56,6 @@ class terminalGeneric extends workstationGeneric
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
-
-  function __construct ($unused, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($unused, $dn, $object);
-  }
 }
 
 ?>

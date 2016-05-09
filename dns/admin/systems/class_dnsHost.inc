@@ -156,9 +156,9 @@ class dnsHost extends simplePlugin
     );
   }
 
-  function __construct ($unused, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($unused, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
     $this->zonesCache = objects::ls('dnsZone');
     $this->attributesAccess['fdDNSZoneDn']->attribute->setChoices(array_keys($this->zonesCache), array_values($this->zonesCache));
     $this->attributesAccess['fdDNSZoneDn']->setSubmitForm('zoneChanged');

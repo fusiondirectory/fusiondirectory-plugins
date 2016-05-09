@@ -113,13 +113,6 @@ class opsiProfile extends simplePlugin
     );
   }
 
-  public function __construct($unused, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($unused, $dn, $object);
-
-    $this->attributesAccess['cn']->setUnique(TRUE);
-  }
-
   /* Returns list of all products installed by this profile */
   public function getProductList ()
   {

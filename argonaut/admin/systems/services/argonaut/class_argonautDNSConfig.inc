@@ -20,7 +20,7 @@
 
 class argonautDNSConfig extends simpleService
 {
-  var $objectclasses  = array("argonautDNSConfig");
+  var $objectclasses  = array('argonautDNSConfig');
   var $showActions    = FALSE;
 
   /* Return plugin informations for acl handling */
@@ -95,7 +95,7 @@ class argonautDNSConfig extends simpleService
             _('path to rndc binary'),
             'argonautLdap2zoneRndc',
             FALSE,
-            "/usr/sbin/rndc"
+            '/usr/sbin/rndc'
           )
         )
       )

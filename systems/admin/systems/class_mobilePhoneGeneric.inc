@@ -114,12 +114,5 @@ class mobilePhoneGeneric extends simplePlugin
       ),
     );
   }
-
-  function __construct ($unused, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($unused, $dn, $object);
-
-    $this->attributesAccess['cn']->setUnique(TRUE);
-  }
 }
 ?>

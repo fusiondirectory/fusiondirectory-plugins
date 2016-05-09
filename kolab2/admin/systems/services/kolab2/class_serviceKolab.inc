@@ -199,12 +199,12 @@ class serviceKolab extends simpleService
     );
   }
 
-  function __construct($unused, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $parent = NULL)
   {
     global $config;
     $this->hostname = preg_replace('/^cn=([^,]+),.*$/', '\1', $dn);
     $this->dn       = 'k=kolab,'.$config->current['BASE'];
-    parent::__construct($unused, $this->dn);
+    parent::__construct($this->dn, $parent);
 
     $this->attributesAccess['k']->setVisible(FALSE);
     $this->attributesAccess['kolabHost']->setVisible(FALSE);

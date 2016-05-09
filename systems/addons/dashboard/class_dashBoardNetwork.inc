@@ -21,9 +21,37 @@
 
 class dashboardNetwork extends simplePlugin
 {
-  function __construct($unused, $dn = NULL, $object = NULL)
+  /* Return plugin informations for acl handling  */
+  static function plInfo()
   {
-    parent::__construct($unused, $dn, $object);
+    return array(
+      'plShortName'   => _('Network'),
+      'plDescription' => _('Statistics and various informations'),
+      'plObjectType'  => array('dashboard'),
+
+      'plProvidedAcls'    => array()
+    );
+  }
+
+  static function getAttributesInfo()
+  {
+    return array(
+      'dhcp' => array(
+        'name'  => _('DHCP'),
+        'attrs' => array(new FakeAttribute('dhcp_infos')),
+        'template' => get_template_path('network_dhcp.tpl', TRUE, dirname(__FILE__)),
+      ),
+      'dns' => array(
+        'name'  => _('DNS'),
+        'attrs' => array(new FakeAttribute('dns_infos')),
+        'template' => get_template_path('network_dhcp.tpl', TRUE, dirname(__FILE__)),
+      ),
+    );
+  }
+
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
+  {
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->dhcp_infos = $this->dhcp_infos();
     if (empty($this->dhcp_infos)) {
@@ -104,34 +132,6 @@ class dashboardNetwork extends simplePlugin
     }
 
     return array_values($servers);
-  }
-
-  static function getAttributesInfo()
-  {
-    return array(
-      'dhcp' => array(
-        'name'  => _('DHCP'),
-        'attrs' => array(new FakeAttribute('dhcp_infos')),
-        'template' => get_template_path('network_dhcp.tpl', TRUE, dirname(__FILE__)),
-      ),
-      'dns' => array(
-        'name'  => _('DNS'),
-        'attrs' => array(new FakeAttribute('dns_infos')),
-        'template' => get_template_path('network_dhcp.tpl', TRUE, dirname(__FILE__)),
-      ),
-    );
-  }
-
-  /* Return plugin informations for acl handling  */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('Network'),
-      'plDescription' => _('Statistics and various informations'),
-      'plObjectType'  => array('dashboard'),
-
-      'plProvidedAcls'    => array()
-    );
   }
 }
 ?>

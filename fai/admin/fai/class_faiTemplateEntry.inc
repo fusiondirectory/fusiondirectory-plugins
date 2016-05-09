@@ -130,7 +130,6 @@ class AccessRightsAttribute extends CompositeAttribute
 
 class faiTemplateEntry extends simplePlugin
 {
-  var $mainTab        = TRUE;
   var $objectclasses  = array('top', 'FAIclass', 'FAItemplateEntry');
 
   static function getAttributesInfo ()
@@ -184,11 +183,6 @@ class faiTemplateEntry extends simplePlugin
         )
       )
     );
-  }
-
-  function __construct ($unused, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($unused, $dn, $object);
   }
 
   function save_object()

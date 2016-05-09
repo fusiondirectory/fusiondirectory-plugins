@@ -54,9 +54,9 @@ class serviceDHCP extends simpleService
     );
   }
 
-  function __construct ($unused, $dn = NULL, $parent = NULL)
+  function __construct ($dn = NULL, $parent = NULL)
   {
-    parent::__construct($unused, $dn, $parent);
+    parent::__construct($dn, $parent);
 
     $this->dhcpServiceDN = 'cn=dhcp,'.$dn;
   }

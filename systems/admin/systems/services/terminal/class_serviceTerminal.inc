@@ -21,7 +21,7 @@
 
 class serviceTerminal extends simpleService
 {
-  var $objectclasses = array("goTerminalServer");
+  var $objectclasses = array('goTerminalServer');
 
   static function plInfo()
   {
@@ -54,9 +54,9 @@ class serviceTerminal extends simpleService
               _('Supported session types'),
               _('The session types supported by this terminal server'),
               'gotoSessionType', FALSE,
-              array("LDM","XDMCP", "SHELL", "RDP", "TELNET"),
+              array('LDM','XDMCP', 'SHELL', 'RDP', 'TELNET'),
               '',
-              array("LDM","XDMCP", "SHELL", "RDP", "TELNET")
+              array('LDM','XDMCP', 'SHELL', 'RDP', 'TELNET')
             )
           )
         )

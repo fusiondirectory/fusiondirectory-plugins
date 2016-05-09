@@ -24,9 +24,38 @@ class dashboardSystems extends simplePlugin
   /* default values*/
   var $default_start_computer_id = 0;
 
-  function __construct($unused, $dn = NULL, $object = NULL)
+  /* Return plugin informations for acl handling  */
+  static function plInfo()
   {
-    parent::__construct($unused, $dn, $object);
+    return array(
+      'plShortName'   => _('Systems'),
+      'plDescription' => _('Statistics and informations about systems'),
+      'plIcon'        => 'plugins/dashboard/images/icon.png',
+      'plObjectType'  => array('dashboard'),
+
+      'plProvidedAcls'  => array()
+    );
+  }
+
+  static function getAttributesInfo()
+  {
+    return array(
+      'stats' => array(
+        'name'  => _('Statistics'),
+        'attrs' => array(new FakeAttribute('stats')),
+        'template' => get_template_path('systems_stats.tpl', TRUE, dirname(__FILE__)),
+      ),
+      'pc_ids' => array(
+        'name'  => _('Computer name to use by unit'),
+        'attrs' => array(new FakeAttribute('pc_ids')),
+        'template' => get_template_path('systems_pcids.tpl', TRUE, dirname(__FILE__)),
+      ),
+    );
+  }
+
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
+  {
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->stats = array(
       'systems' => $this->systems_stats(),
@@ -177,35 +206,6 @@ class dashboardSystems extends simplePlugin
     }
 
     return $output_next_computer_ids;
-  }
-
-  static function getAttributesInfo()
-  {
-    return array(
-      'stats' => array(
-        'name'  => _('Statistics'),
-        'attrs' => array(new FakeAttribute('stats')),
-        'template' => get_template_path('systems_stats.tpl', TRUE, dirname(__FILE__)),
-      ),
-      'pc_ids' => array(
-        'name'  => _('Computer name to use by unit'),
-        'attrs' => array(new FakeAttribute('pc_ids')),
-        'template' => get_template_path('systems_pcids.tpl', TRUE, dirname(__FILE__)),
-      ),
-    );
-  }
-
-  /* Return plugin informations for acl handling  */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('Systems'),
-      'plDescription' => _('Statistics and informations about systems'),
-      'plIcon'        => 'plugins/dashboard/images/icon.png',
-      'plObjectType'  => array('dashboard'),
-
-      'plProvidedAcls'  => array()
-    );
   }
 }
 ?>

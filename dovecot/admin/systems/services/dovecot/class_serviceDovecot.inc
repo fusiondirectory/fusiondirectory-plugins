@@ -39,8 +39,8 @@ class serviceDovecot extends simpleService
   static function getAttributesInfo ()
   {
       return array (
-      'connexion' => array (
-        'name'  => _('Dovecot connexion'),
+      'connection' => array (
+        'name'  => _('Dovecot connection'),
         'attrs' => array (
           new CompositeAttribute (
             _('Connect URL for Dovecot server'),
@@ -101,11 +101,6 @@ class serviceDovecot extends simpleService
         )
       )
     );
-  }
-
-  function __construct($unused, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($unused, $dn, $object);
   }
 
   function save()

@@ -460,7 +460,7 @@ class dhcpConfiguration extends simplePlugin
     );
   }
 
-  function __construct ($unused, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     $this->types = array(
       'dhcpLog'           => _('Logging'),
@@ -477,7 +477,7 @@ class dhcpConfiguration extends simplePlugin
       'dhcpDnsZone'       => _('DNS update zones')
     );
 
-    parent::__construct($unused, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['dhcpSections']->setHeight(400);
   }

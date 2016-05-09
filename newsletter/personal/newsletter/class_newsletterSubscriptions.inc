@@ -56,10 +56,5 @@ class newsletterSubscriptions extends simplePlugin
       ),
     );
   }
-
-  function __construct ($unused, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($unused, $dn, $object);
-  }
 }
 ?>

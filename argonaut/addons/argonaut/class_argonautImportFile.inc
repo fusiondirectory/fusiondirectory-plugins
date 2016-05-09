@@ -76,14 +76,13 @@ class argonautImportFile extends simplePlugin
     );
   }
 
-  public function __construct($config, &$parent)
+  public function __construct($parent)
   {
-    parent::__construct($config, $config->current['BASE']);
+    parent::__construct($config->current['BASE'], NULL, $parent);
 
     $this->attributesAccess['import']->setInLdap(FALSE);
     $this->attributesAccess['import']->setLinearRendering(TRUE);
 
-    $this->parent         = $parent;
     $this->events         = array();
     $this->daemon_events  = argonautAction::get_event_types();
   }

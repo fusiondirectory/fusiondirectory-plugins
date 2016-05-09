@@ -80,7 +80,7 @@ class argonautQueue extends simpleManagement
 
   function importEvents()
   {
-    $this->dialogObject = new argonautImportFile(NULL, $this);
+    $this->dialogObject = new argonautImportFile($this);
   }
 
   /*! \brief    Queue selected objects to be removed.

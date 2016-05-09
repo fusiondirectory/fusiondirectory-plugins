@@ -467,8 +467,6 @@ class ZoneNameAttribute extends StringAttribute
 
 class dnsZone extends simplePlugin
 {
-  var $mainTab = TRUE;
-
   var $objectclasses = array('dNSZone');
 
   public static function finalDot()
@@ -583,9 +581,9 @@ class dnsZone extends simplePlugin
     );
   }
 
-  function __construct ($unused, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($unused, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
     $this->attributesAccess['reverseZones']->setInLdap(FALSE);
   }
 

@@ -20,8 +20,6 @@
 
 class webApplication extends simplePlugin
 {
-  var $mainTab = TRUE;
-
   var $objectclasses = array('fdWebApplication');
 
   public static function plInfo()
@@ -80,11 +78,6 @@ class webApplication extends simplePlugin
         )
       ),
     );
-  }
-
-  function __construct ($unused, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($unused, $dn, $object);
   }
 }
 ?>

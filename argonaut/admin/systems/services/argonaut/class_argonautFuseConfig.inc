@@ -75,10 +75,10 @@ class argonautFuseConfig extends simpleService
     );
   }
 
-  function __construct($unused, $dn, $object = NULL, $attributesInfo = NULL)
+  function __construct ($dn = NULL, $parent = NULL)
   {
     global $config;
-    parent::__construct($unused, $dn, $object, $attributesInfo);
+    parent::__construct($dn, $parent);
 
     /* Load modules */
     $this->plugin = array();
@@ -89,7 +89,7 @@ class argonautFuseConfig extends simpleService
         continue;
       }
       $name = $plug['CLASS'];
-      $this->plugin[$name] = new $name($config, $dn, $object);
+      $this->plugin[$name] = new $name($dn, $object, $parent);
 
       $this->plugin[$name]->set_acl_category($this->acl_category);
       $this->plugin[$name]->set_acl_base($this->dn);
@@ -114,11 +114,6 @@ class argonautFuseConfig extends simpleService
     $display = simplePlugin::execute();
 
     foreach ($this->plugin as &$plugin) {
-      if ($this->parent !== NULL) {
-        $plugin->parent = $this->parent;
-      } else {
-        $plugin->parent = $this;
-      }
       $display .= '<p class="seperator plugbottom">&nbsp;</p><div></div>';
       $display .= $plugin->execute();
     }
