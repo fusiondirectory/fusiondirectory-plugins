@@ -64,10 +64,10 @@ class ServerService extends management
     );
   }
 
-  function __construct ($unused, $dn, $object)
+  function __construct ($dn, $object)
   {
     global $config;
-    $this->ui     = get_userinfo();
+
     $this->dn     = $dn;
     if (isset($object->attrs)) {
       $this->attrs = $object->attrs;
@@ -110,7 +110,7 @@ class ServerService extends management
       }
     }
 
-    parent::__construct($unused, $this->ui, "services", $headpage);
+    parent::__construct("services", $headpage);
     $this->registerAction("new",                "newService");
     foreach ($this->plugins as $name => $obj) {
       $this->registerAction("new_$name",        "newService");

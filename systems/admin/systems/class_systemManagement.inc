@@ -30,7 +30,7 @@ class systemManagement extends management
   protected $objectName       = "system";
   protected $objectInfo       = array();
 
-  function __construct($config, $ui)
+  function __construct()
   {
     $this->config = $config;
     $this->ui     = $ui;

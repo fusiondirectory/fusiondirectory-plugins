@@ -23,10 +23,9 @@ class pgpKeySelect extends management
   protected $skipFooter = TRUE;
   protected $skipHeader = TRUE;
 
-  function __construct($unused, $ui)
+  function __construct()
   {
     global $config;
-    $this->ui     = $ui;
 
     $ldap = $config->get_ldap_link();
     $ldap->cat('cn=pgpServerInfo,'.$config->current['BASE']);
@@ -54,7 +53,7 @@ class pgpKeySelect extends management
     $headpage->setBase($config->current['BASE']);
     $headpage->setFilter($filter);
 
-    parent::__construct($unused, $ui, '', $headpage);
+    parent::__construct('', $headpage);
   }
 
   function renderList()

@@ -33,7 +33,7 @@ class serviceApache extends simpleService
 
       $dn_without_base = preg_replace("/,".preg_quote($config->current['BASE'], '/')."$/", "", $this->dn);
 
-      $this->vhostList = new serviceApacheVhostManagement(NULL, get_userinfo(), $dn_without_base);
+      $this->vhostList = new serviceApacheVhostManagement($dn_without_base);
 
       /* If there is at least one entry in this -> types, we have apache vhosts enabled */
 
