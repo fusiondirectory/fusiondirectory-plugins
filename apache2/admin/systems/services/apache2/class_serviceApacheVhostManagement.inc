@@ -32,10 +32,9 @@ class serviceApacheVhostManagement extends management
   protected $aclPlugin    = "serviceApacheVhostEdit";
   protected $objectName   = "serviceApacheVhostEdit";
 
-  function __construct ($unused, $ui, $storagePoint = NULL)
+  function __construct ($storagePoint = NULL)
   {
     global $config;
-    $this->ui     = $ui;
 
     @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,$storagePoint,"Storage point");
     session::set('serviceApacheVhostEditDN',$storagePoint.','.$config->current['BASE']);
@@ -54,7 +53,7 @@ class serviceApacheVhostManagement extends management
     $headpage = new listing(get_template_path("serviceApacheVhostEdit-list.xml", TRUE, dirname(__FILE__)));
     $headpage->setFilter($filter);
 
-    parent::__construct($unused, $ui, "serviceApacheVhostEdit", $headpage);
+    parent::__construct("serviceApacheVhostEdit", $headpage);
 
     /* We don't want the normal footer, we have our own at the end of the tpl file,
      * that allow us to differenciate plugin saving from service saving */

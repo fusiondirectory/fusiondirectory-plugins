@@ -103,7 +103,7 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
       authenticateHeader('Invalid user or pwd '.$_SERVER['PHP_AUTH_USER'].'/'.$_SERVER['PHP_AUTH_PW']);
     }
     session::global_set('LOGIN', TRUE);
-    $plist = new pluglist($config, $ui);
+    $plist = new pluglist();
     session::global_set('plist', $plist);
     $config->loadPlist($plist);
     $config->get_departments();

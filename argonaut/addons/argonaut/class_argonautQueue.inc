@@ -51,12 +51,12 @@ class argonautQueue extends simpleManagement
     );
   }
 
-  function __construct($unused, $ui)
+  function __construct()
   {
     $this->filterXMLPath  = get_template_path('deploy-filter.xml', TRUE, dirname(__FILE__));
     $this->listXMLPath    = get_template_path('deploy-list.xml', TRUE, dirname(__FILE__));
 
-    parent::__construct($unused, $ui);
+    parent::__construct();
 
     $this->o_queue  = new supportDaemon();
     $this->acl_base = $config->current['BASE'];

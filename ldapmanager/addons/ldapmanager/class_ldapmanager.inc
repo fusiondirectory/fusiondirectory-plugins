@@ -131,7 +131,6 @@ class ldapmanager extends simplePlugin
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
-    $this->ui = get_userinfo();
 
     $this->attributesAccess['single_export']->setInLdap(FALSE);
     $this->attributesAccess['single_export']->setLinearRendering(TRUE);

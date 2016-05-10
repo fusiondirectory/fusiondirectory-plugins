@@ -42,9 +42,9 @@ class dhcpManagement extends simpleManagement
     );
   }
 
-  function __construct($config, $ui)
+  function __construct()
   {
-    parent::__construct($config, $ui);
+    parent::__construct();
   }
 }
 ?>

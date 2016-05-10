@@ -42,10 +42,10 @@ class dnsManagement extends simpleManagement
     );
   }
 
-  function __construct($config, $ui)
+  function __construct()
   {
     //~ $this->listXMLPath    = get_template_path('dns-list.xml', TRUE, dirname(__FILE__));
-    parent::__construct($config, $ui);
+    parent::__construct();
   }
 }
 ?>

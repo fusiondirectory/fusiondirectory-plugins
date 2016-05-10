@@ -57,7 +57,7 @@ class systemManagement extends simpleManagement
     );
   }
 
-  function __construct($config, $ui)
+  function __construct()
   {
     $this->listXMLPath    = get_template_path('system-list.xml', TRUE, dirname(__FILE__));
 
@@ -67,7 +67,7 @@ class systemManagement extends simpleManagement
       $this->siActive = $o->is_available();
     }
 
-    parent::__construct($config, $ui);
+    parent::__construct();
   }
 
   function configureHeadpage ()
