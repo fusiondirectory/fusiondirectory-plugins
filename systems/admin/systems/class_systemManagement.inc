@@ -273,7 +273,7 @@ class systemManagement extends simpleManagement
         if (class_available($plug['CLASS'])) {
           $name = $plug['CLASS'];
 
-          $services[$name] = new $name($config, $dn);
+          $services[$name] = new $name($dn);
         }
       }
     }

@@ -89,7 +89,7 @@ class argonautFuseConfig extends simpleService
         continue;
       }
       $name = $plug['CLASS'];
-      $this->plugin[$name] = new $name($dn, $object, $parent);
+      $this->plugin[$name] = new $name($dn, $parent, $parent);
 
       $this->plugin[$name]->set_acl_category($this->acl_category);
       $this->plugin[$name]->set_acl_base($this->dn);
