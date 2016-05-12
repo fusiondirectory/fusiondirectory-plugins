@@ -32,8 +32,6 @@ class systemManagement extends management
 
   function __construct()
   {
-    $this->config = $config;
-    $this->ui     = $ui;
 
     // Set storage points
     $typeDefs = $this->getObjectDefinitions();
@@ -92,7 +90,7 @@ class systemManagement extends management
       $this->registerAction("new_$type",         "newEntry");
     }
 
-    parent::__construct($config, $ui, "systems", $headpage);
+    parent::__construct("systems", $headpage);
   }
 
   /*! \brief  This method is used to queue and process copy&paste actions.
@@ -237,13 +235,6 @@ class systemManagement extends management
       if ($attr = $ldap->fetch()) {
         $dns[] = $attr['dn'];
       }
-      /* DNS entry */
-      if (class_available('DNS')) {
-        $dnsEntry = DNS::getDNSHostEntries($entry['cn'][0]);
-        if ($dnsEntry['exists']) {
-          $dns[]  = "relativeDomainName=".$entry['cn'][0].",".DNS::getDNSZoneDN($this->config, $dnsEntry['zoneName']);
-        }
-      }
       $this->snapHandler->create_snapshot($dns, $this->dialogObject->CurrentDescription);
       @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->dn, "Snaptshot created!");
       $this->closeDialogs();
@@ -314,6 +305,7 @@ class systemManagement extends management
   function removeEntryConfirmed($action = "", $target = array(), $all = array(),
       $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
+    global $config;
     @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $target, "Entry removel confirmed!");
 
     // Check permissons for each target
@@ -333,14 +325,14 @@ class systemManagement extends management
           // Delete the object
           $this->dn = $dn;
           if ($info['tabClass'] == "phonetabs") {
-             $this->tabObject = new $info['tabClass']($this->config, $this->config->data['TABS'][$info['tabDesc']], $dn,$type);
+             $this->tabObject = new $info['tabClass'](NULL, $config->data['TABS'][$info['tabDesc']], $dn,$type);
              $this->tabObject->set_acl_base($dn);
              $this->tabObject->by_object['phoneGeneric']->remove_from_parent ();
           } else {
-            $this->tabObject = new $info['tabClass']($this->config, $this->config->data['TABS'][$info['tabDesc']],
+            $this->tabObject = new $info['tabClass'](NULL, $config->data['TABS'][$info['tabDesc']],
                 $this->dn, $info['aclCategory']);
             $this->tabObject->set_acl_base($this->dn);
-            $this->tabObject->parent = &$this;
+            $this->tabObject->parent = $this;
             $this->tabObject->delete ();
           }
 
@@ -428,6 +420,7 @@ class systemManagement extends management
    */
   function createSnapshotDialog($action = "", $target = array(), $all = array())
   {
+    global $config;
     @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $target, "Snaptshot creation initiated!");
 
     $pInfo    = $this->getObjectDefinitions();
@@ -440,9 +433,9 @@ class systemManagement extends management
       }
 
       if (!empty($dn) && $this->ui->allow_snapshot_create($dn, $pInfo[$type]['aclCategory'])) {
-        $this->dialogObject = new SnapShotDialog($this->config, $dn, $this);
+        $this->dialogObject = new SnapShotDialog($dn, $this);
         $this->dialogObject->aclCategories  = array($pInfo[$type]['aclCategory']);
-        $this->dialogObject->parent         = &$this;
+        $this->dialogObject->parent         = $this;
       } else {
         msg_dialog::display(_("Permission"), sprintf(_("You are not allowed to create a snapshot for %s."), $dn),
             ERROR_DIALOG);
@@ -485,11 +478,11 @@ class systemManagement extends management
       $entry = $headpage->getBase();
       if (!empty($entry) && $this->ui->allow_snapshot_restore($entry, $cats)) {
         @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $entry, "Snaptshot restoring initiated!");
-        $this->dialogObject = new SnapShotDialog($this->config, $entry, $this);
+        $this->dialogObject = new SnapShotDialog($entry, $this);
         $this->dialogObject->set_snapshot_bases($bases);
         $this->dialogObject->display_all_removed_objects  = TRUE;
         $this->dialogObject->display_restore_dialog       = TRUE;
-        $this->dialogObject->parent                       = &$this;
+        $this->dialogObject->parent                       = $this;
       } else {
         msg_dialog::display(_("Permission"), sprintf(_("You are not allowed to restore a snapshot for %s."), $entry),
             ERROR_DIALOG);
@@ -507,10 +500,10 @@ class systemManagement extends management
 
       if (!empty($dn) && $this->ui->allow_snapshot_create($dn, $pInfo[$type]['aclCategory'])) {
         @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $dn, "Snaptshot restoring initiated!");
-        $this->dialogObject = new SnapShotDialog($this->config, $dn, $this);
+        $this->dialogObject = new SnapShotDialog($dn, $this);
         $this->dialogObject->set_snapshot_bases($bases);
         $this->dialogObject->display_restore_dialog = TRUE;
-        $this->dialogObject->parent                 = &$this;
+        $this->dialogObject->parent                 = $this;
       } else {
         msg_dialog::display(_("Permission"), sprintf(_("You are not allowed to restore a snapshot for %s."), $dn),
             ERROR_DIALOG);

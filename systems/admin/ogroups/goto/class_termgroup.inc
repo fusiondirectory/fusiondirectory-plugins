@@ -54,14 +54,15 @@ class termgroup extends plugin
   var $member_of_ogroup= false;
   var $members_inherit_from_group = false;
 
-  function termgroup (&$config, $dn= NULL, $parent= NULL)
+  function __construct ($dn= NULL, $parent= NULL)
   {
+    global $config;
     /***************
       Some  initialisations
      ***************/
 
-    parent::__construct($config, $dn, $parent);
-    $ldap= $config->get_ldap_link();
+    parent::__construct($dn, $parent);
+    $ldap = $config->get_ldap_link();
 
     $this->is_account = true;
     $this->modes["active"]= _("Activated");
@@ -99,7 +100,7 @@ class termgroup extends plugin
     /* Get Share servers */
     $tmp2 = array();
     $tmp2['!']= _("Local swap");
-    foreach($this->config->data['SERVERS']['NBD'] as $server){
+    foreach($config->data['SERVERS']['NBD'] as $server){
       if($server != "default"){
         $tmp2[$server]= $server;
       }else{
@@ -111,7 +112,7 @@ class termgroup extends plugin
     $this->swapservers= $tmp2;
 
     $tmp2 = array();
-    foreach($this->config->data['SERVERS']['NFS'] as $server){
+    foreach($config->data['SERVERS']['NFS'] as $server){
       if($server != "default"){
         $tmp2[$server]= $server;
       }else{
@@ -135,6 +136,7 @@ class termgroup extends plugin
 
   function remove_from_parent()
   {
+    global $config;
     /* Workstation startup is using gotoWorkstationTemplate too,
         if we remove this oc all other not manged attributes will cause errors */
     if(isset($this->attrs['gotoKernelParameters'])){
@@ -143,7 +145,7 @@ class termgroup extends plugin
 
     /* Remove acc */
     parent::remove_from_parent();
-    $ldap = $this->config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
     $ldap->cd($this->orig_dn);
     $ldap->modify($this->attrs);
     $this->handle_post_events("remove");
@@ -273,7 +275,7 @@ class termgroup extends plugin
      ***************/
 
     /* Write back to ldap */
-    $ldap= $this->config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
     $ldap->cd($this->dn);
     $this->cleanup();
     $ldap->modify ($this->attrs);
@@ -311,25 +313,12 @@ class termgroup extends plugin
     );
   }
 
-  //~ function inherit_attributes_to_members()
-  //~ {
-    //~ if ($this->members_inherit_from_group) {
-      //~ foreach ($this->member_dn as $dn) {
-        //~ $member_obj = new worktabs($this->config, $this->config->data['TABS']['WORKSTATIONTABS'], $dn, "workstation");
-        //~ $member_obj->getBaseObject()->set_everything_to_inherited();
-        //~ $member_obj->save();
-      //~ }
-    //~ }
-  //~ }
-
   function PrepareForCopyPaste($source)
   {
-    $source_o = new termgroup ($this->config, $source['dn']);
+    $source_o = new termgroup ($source['dn']);
     foreach(array("gotoTerminalPath","gotoSwapServer","gotoMode") as $attr){
       $this->$attr = $source_o->$attr;
     }
   }
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

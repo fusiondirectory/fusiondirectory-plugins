@@ -166,6 +166,7 @@ class winstationGeneric extends systemSimplePluginGlue
 
   function remove_from_parent()
   {
+    global $config;
     if (!$this->initially_was_account) {
       return;
     }
@@ -176,11 +177,11 @@ class winstationGeneric extends systemSimplePluginGlue
       parent::remove_from_parent();
 
       /* Delete references to object groups */
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
+      $ldap = $config->get_ldap_link();
+      $ldap->cd($config->current['BASE']);
       $ldap->search("(&(objectClass=gosaGroupOfNames)(member=".LDAP::prepare4filter($this->dn)."))", array("cn"));
       while ($ldap->fetch()) {
-        $og = new ogroup($this->config, $ldap->getDN());
+        $og = new ogroup($ldap->getDN());
         unset($og->member[$this->dn]);
         $og->save();
       }

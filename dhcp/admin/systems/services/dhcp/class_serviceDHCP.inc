@@ -483,8 +483,9 @@ class serviceDHCP extends simpleService
 
   protected function ldap_remove ()
   {
+    global $config;
     /* Remove subtrees */
-    $ldap   = $this->config->get_ldap_link();
+    $ldap   = $config->get_ldap_link();
     $cache  = $this->getCache();
     foreach ($cache as $dn => $content) {
       if ($this->attributesAccess['dhcpSections']->objectType($dn) == 'dhcpService') {
@@ -500,8 +501,9 @@ class serviceDHCP extends simpleService
 
   protected function ldap_save($cleanup = TRUE)
   {
+    global $config;
     /* Save dhcp settings */
-    $ldap   = $this->config->get_ldap_link();
+    $ldap   = $config->get_ldap_link();
     $cache  = $this->getCache();
     foreach ($cache as $dn => $data) {
       if ($this->dn != $this->orig_dn) {

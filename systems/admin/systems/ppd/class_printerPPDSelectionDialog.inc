@@ -31,12 +31,13 @@ class printerPPDSelectionDialog extends plugin
   var $current_del_id       = "";
   var $Vendor               = "";
 
-  function __construct (&$config, $dn = NULL, $list = FALSE, $headers = FALSE, $ppd = FALSE)
+  function __construct ($dn = NULL, $list = FALSE, $headers = FALSE, $ppd = FALSE)
   {
-    parent::__construct($config, $dn);
+    global $config;
+    parent::__construct($dn);
     $this->list       = $list;
     $this->header     = $headers;
-    $this->depselect  = $this->config->current['BASE'];
+    $this->depselect  = $config->current['BASE'];
 
     if (!session::is_set('printerPPDSelectionDialog')) {
       session::set("printerPPDSelectionDialog", array('regex' => "*"));

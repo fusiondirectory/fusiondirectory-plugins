@@ -26,11 +26,8 @@ class phoneSelect extends management
   protected $USE_mobiles;
   public $mobileDialog;
 
-  function __construct($config, $ui, $mobileDialog)
+  function __construct($mobileDialog)
   {
-    $this->config = $config;
-    $this->ui     = $ui;
-
     $this->mobileDialog = $mobileDialog;
     $this->USE_phones   = !$mobileDialog;
     $this->USE_mobiles  = class_available('mobilePhoneGeneric');
@@ -47,7 +44,7 @@ class phoneSelect extends management
     // Build headpage
     $headpage = new listing(get_template_path("phoneSelect-list.xml", TRUE, dirname(__FILE__)));
     $headpage->setFilter($filter);
-    parent::__construct($config, $ui, "phones", $headpage);
+    parent::__construct("phones", $headpage);
   }
 
   function execute()

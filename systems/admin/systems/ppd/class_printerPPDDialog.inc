@@ -49,15 +49,15 @@ class printerPPDDialog extends plugin
   var $add_ppd_later            = "";
   var $add_later_msg_dialog     = NULL;
 
-  function __construct (&$config, $dn = NULL, $ppdfile = NULL )
+  function __construct ($dn = NULL, $ppdfile = NULL )
   {
-    parent::__construct($config, $dn);
-    $this->depselect = $this->config->current['BASE'];
+    global $config;
+    parent::__construct($dn);
+    $this->depselect = $config->current['BASE'];
 
     $this->ui = get_userinfo();
 
     /* Get PPD path and remove double //, and add trailing /  */
-    $config = session::get('config');
     if ($config->get_cfg_value("ppdPath") != "") {
       $this->pathToPPD = $config->get_cfg_value("ppdPath");
       $this->pathToPPD = preg_replace("/\/\//", "/", $this->pathToPPD);
@@ -174,7 +174,7 @@ class printerPPDDialog extends plugin
     /* Open a dialog that allow us to select different PPDs */
     if (preg_match("/w/", $acl)) {
       if (isset($_POST['SelectPPD'])) {
-        $this->dialog = new printerPPDSelectionDialog($this->config, $this->dn, $this->ppdList, $this->ppdListHeader, $this->selectedPPD);
+        $this->dialog = new printerPPDSelectionDialog($this->dn, $this->ppdList, $this->ppdListHeader, $this->selectedPPD);
       }
     }
 
@@ -463,6 +463,7 @@ class printerPPDDialog extends plugin
   /* Display all options from the selected ppd file */
   function generateProperties()
   {
+    global $config;
     /* Set Headline */
     $str  = "";
     $feed = "";
@@ -556,7 +557,7 @@ class printerPPDDialog extends plugin
             }
             $str .= "</select>\n";
 
-          } elseif ($this->config->get_cfg_value("displayerrors") == "TRUE") {
+          } elseif ($config->get_cfg_value("displayerrors") == "TRUE") {
             msg_dialog::display(_("PPD error"), sprintf(_("PPD type '%s' is not supported!"), $type), ERROR_DIALOG);
           }
           $str .= "</td></tr>\n";

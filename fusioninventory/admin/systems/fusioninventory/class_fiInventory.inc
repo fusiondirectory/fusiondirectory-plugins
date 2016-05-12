@@ -164,7 +164,7 @@ class fiInventory extends simplePlugin
       if (!isset($this->parent)) {
         return array();
       }
-      $matching     = $this->config->get_cfg_value('inventoryMatching', 'mac');
+      $matching     = $config->get_cfg_value('inventoryMatching', 'mac');
       $macAddress   = $this->parent->getBaseObject()->netConfigDNS->macAddress;
       $ipHostNumber = $this->parent->getBaseObject()->netConfigDNS->ipHostNumber;
       if ($macAddress != '') {
@@ -197,7 +197,7 @@ class fiInventory extends simplePlugin
           $filter = "(|$macfilter$ipfilter)";
           break;
       }
-      $ldap->cd(get_ou('inventoryRDN').$this->config->current['BASE']);
+      $ldap->cd(get_ou('inventoryRDN').$config->current['BASE']);
       $ldap->search('(&(objectClass=fdInventoryContent)'.$filter.')');
       if ($attrs = $ldap->fetch()) {
         $dn = $attrs['dn'];
