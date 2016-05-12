@@ -40,7 +40,6 @@ class printerPPDDialog extends plugin
 
   /* Object Info */
   var $cn                   = "";          // Used to tag the ppds modified by the printer object,
-  var $ui;
 
   /* If there is already a ppd file for the same type of printer,
    *  remember the path to ppd file and display a dialog which allows
@@ -54,8 +53,6 @@ class printerPPDDialog extends plugin
     global $config;
     parent::__construct($dn);
     $this->depselect = $config->current['BASE'];
-
-    $this->ui = get_userinfo();
 
     /* Get PPD path and remove double //, and add trailing /  */
     if ($config->get_cfg_value("ppdPath") != "") {
@@ -107,6 +104,7 @@ class printerPPDDialog extends plugin
 
   function execute()
   {
+    global $ui;
     /* Call parent execute */
     parent::execute();
 
@@ -116,9 +114,9 @@ class printerPPDDialog extends plugin
     $smarty->assign("ppdString", _("Can't get ppd informations."));
     $smarty->assign("showOptions", "");
     $smarty->assign("path_valid", TRUE);
-    $smarty->assign("acl", $this->ui->get_permissions($this->acl_base, "printer/printgeneric", "gotoPrinterPPD"));
+    $smarty->assign("acl", $ui->get_permissions($this->acl_base, "printer/printgeneric", "gotoPrinterPPD"));
 
-    $acl = $this->ui->get_permissions($this->acl_base, "printer/printgeneric", "gotoPrinterPPD");
+    $acl = $ui->get_permissions($this->acl_base, "printer/printgeneric", "gotoPrinterPPD");
 
     if (empty($this->pathToPPD)) {
 
@@ -414,11 +412,12 @@ class printerPPDDialog extends plugin
   /* Save all options posted from ppd dialog */
   function save_object()
   {
+    global $ui;
     if (!((isset($_POST['PPDDisSubmitted'])) && (is_array($this->ppdConfig)))) {
       return;
     }
 
-    if (preg_match("/w/", $this->ui->get_permissions($this->acl_base, "printer/printgeneric", "gotoPrinterPPD"))) {
+    if (preg_match("/w/", $ui->get_permissions($this->acl_base, "printer/printgeneric", "gotoPrinterPPD"))) {
       foreach ($this->ppdConfig as $cat => $obj) {
         foreach ($obj as $attr => $attributes) {
           if (isset($_POST[base64_encode($attributes['_name'])])) {
@@ -463,7 +462,7 @@ class printerPPDDialog extends plugin
   /* Display all options from the selected ppd file */
   function generateProperties()
   {
-    global $config;
+    global $config, $ui;
     /* Set Headline */
     $str  = "";
     $feed = "";
@@ -523,7 +522,7 @@ class printerPPDDialog extends plugin
           }
 
           $acl = "";
-          if (!preg_match("/w/", $this->ui->get_permissions($this->acl_base, "printer/printgeneric", "gotoPrinterPPD"))) {
+          if (!preg_match("/w/", $ui->get_permissions($this->acl_base, "printer/printgeneric", "gotoPrinterPPD"))) {
             $acl = "disabled";
           }
 

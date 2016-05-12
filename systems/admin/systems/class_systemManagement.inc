@@ -215,6 +215,7 @@ class systemManagement extends management
    */
   protected function removeEntryRequested($action = "", $target = array(), $all = array())
   {
+    global $ui;
     $disallowed = array();
     $this->dns  = array();
 
@@ -229,7 +230,7 @@ class systemManagement extends management
         trigger_error("Unknown object type received '".$type."' please update systemManagement::getObjectDefinitions()!");
       } else {
         $info = $tInfo[$type];
-        $acl  = $this->ui->get_permissions($dn, $info['aclCategory']."/".$info['aclClass']);
+        $acl  = $ui->get_permissions($dn, $info['aclCategory']."/".$info['aclClass']);
         if (preg_match("/d/", $acl)) {
           $this->dns[] = $dn;
         } else {
@@ -253,7 +254,7 @@ class systemManagement extends management
       foreach ($this->dns as $dn) {
         $dns_names[] = LDAP::fix($dn);
       }
-      add_lock ($this->dns, $this->ui->dn);
+      add_lock ($this->dns, $ui->dn);
 
       // Display confirmation dialog.
       $smarty = get_smarty();
@@ -273,7 +274,7 @@ class systemManagement extends management
   function removeEntryConfirmed($action = "", $target = array(), $all = array(),
       $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
-    global $config;
+    global $config, $ui;
     @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $target, "Entry removel confirmed!");
 
     // Check permissons for each target
@@ -287,7 +288,7 @@ class systemManagement extends management
       } else {
 
         $info = $tInfo[$type];
-        $acl = $this->ui->get_permissions($dn, $info['aclCategory']."/".$info['aclClass']);
+        $acl = $ui->get_permissions($dn, $info['aclCategory']."/".$info['aclClass']);
         if (preg_match("/d/", $acl)) {
 
           // Delete the object

@@ -50,7 +50,7 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
       while ($subattrs = $ldap->fetch()) {
         $attrsWrapper = new stdClass();
         $attrsWrapper->attrs = $subattrs;
-        $dialog = new faiTemplateEntry($config, $subattrs['dn'], $attrsWrapper);
+        $dialog = new faiTemplateEntry($subattrs['dn'], $attrsWrapper);
         $value = array();
         foreach ($this->templateAttributes as $attribute) {
           $value[$attribute] = $dialog->$attribute;

@@ -88,9 +88,9 @@ class phoneGeneric extends systemSimplePluginGlue
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
     $this->netConfigDNS->IPisMust   = FALSE;
