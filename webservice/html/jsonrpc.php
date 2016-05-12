@@ -160,9 +160,10 @@ class fdRPCService
 
   protected function checkAccess($type, $tab = NULL, $dn = NULL)
   {
+    global $ui;
     $infos = objects::infos($type);
     $plist = session::global_get('plist');
-    if (($dn !== NULL) && ($plist->ui->dn == $dn)) {
+    if (($dn !== NULL) && ($ui->dn == $dn)) {
       $self = ':self';
     } else {
       $self = '';
@@ -397,15 +398,16 @@ class fdRPCService
    */
   protected function _delete($type, $dn)
   {
+    global $ui;
     $infos = objects::infos($type);
     $plist = session::global_get('plist');
     // Check permissions, are we allowed to remove this object?
-    $acl = $plist->ui->get_permissions($dn, $infos['aclCategory'].'/'.$infos['mainTab']);
+    $acl = $ui->get_permissions($dn, $infos['aclCategory'].'/'.$infos['mainTab']);
     if (preg_match('/d/', $acl)) {
       if ($user = get_lock($dn)) {
         return array('errors' => array(sprintf(_('Cannot delete %s. It has been locked by %s.'), $dn, $user)));
       }
-      add_lock ($dn, $plist->ui->dn);
+      add_lock ($dn, $ui->dn);
 
       // Delete the object
       $tabobject = objects::open($dn, $type);
