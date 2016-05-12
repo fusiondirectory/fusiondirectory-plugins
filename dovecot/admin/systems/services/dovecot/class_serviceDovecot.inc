@@ -61,7 +61,7 @@ class serviceDovecot extends simpleService
                 array('notls', 'tls', 'ssl'), 'notls'
               ),
               new SelectAttribute(
-                _('Valide certificats'), _('Weither or not to validate server certificate on connexion'),
+                _('Validate TLS/SSL Certificates'), _('Weither or not to validate server certificates on connection'),
                 'dovecotConnectOptions2', FALSE,
                 array('', '/validate-cert', '/novalidate-cert'), '',
                 array('', 'validate',       'no-validate')
@@ -94,7 +94,7 @@ class serviceDovecot extends simpleService
         'name'  => _('Options'),
         'attrs' => array (
           new BooleanAttribute (
-            _('Create the user folder throught Argonaut'), _('Use argonaut to create the user mailbox on the Dovecot server'),
+            _('Create the user folder via Argonaut'), _('Use argonaut to create the user mailbox on the Dovecot server'),
             'fdDovecotArgonautMkdir', TRUE,
             TRUE
           ),
