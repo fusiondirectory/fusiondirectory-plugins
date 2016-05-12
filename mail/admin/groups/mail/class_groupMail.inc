@@ -47,7 +47,7 @@ class mailgroup extends simplePlugin
       'plDescription'  => _('Group mail options'),
       'plSelfModify'   => FALSE,
       'plPriority'     => 10,
-      'plObjectType'   => array('group'),
+      'plObjectType'   => array('group', 'ogroup-user'),
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
