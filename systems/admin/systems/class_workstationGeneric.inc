@@ -101,8 +101,6 @@ class systemSimplePluginGlue extends simplePlugin
 
 class workstationGeneric extends systemSimplePluginGlue
 {
-  var $mainTab = TRUE;
-
   var $netConfigDNS;
 
   var $objectclasses = array("top", "gotoWorkstation", "GOhard");

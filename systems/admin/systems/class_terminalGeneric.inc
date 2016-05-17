@@ -100,10 +100,10 @@ class terminalGeneric extends workstationGeneric
     return $attributesInfo;
   }
 
-  function __construct ($dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     global $config;
-    parent::__construct($dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     /* Root server */
     $tmp        = $config->data['SERVERS']['NFS'];
