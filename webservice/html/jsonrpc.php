@@ -442,6 +442,5 @@ $service = new fdRPCService();
 if (!jsonRPCServer::handle($service)) {
   echo "no request\n";
   echo session_id()."\n";
-  print_r($_SERVER);
 }
 ?>
