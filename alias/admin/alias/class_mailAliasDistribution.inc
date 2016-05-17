@@ -70,7 +70,7 @@ class mailAliasDistribution extends simplePlugin
           ),
           new SelectAttribute (
             _('Mail server'), _('Mail server for this alias'),
-            'gosaMailServer', TRUE,
+            'gosaMailServer', FALSE,
             array_keys(mailMethod::getMailServers())
           ),
           new DateAttribute(
