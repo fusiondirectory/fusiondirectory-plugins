@@ -68,7 +68,7 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
   if (session::global_is_set('LOGIN') && session::global_is_set('config') && session::global_is_set('plist')) {
     $config = session::global_get('config');
     $plist  = session::global_get('plist');
-    $ui     = $plist->ui;
+    $ui     = session::global_get('ui');
   } else {
     $config = new config(CONFIG_DIR."/".CONFIG_FILE, $BASE_DIR);
     if ($ldap === NULL) {
@@ -104,11 +104,12 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
     }
     session::global_set('LOGIN', TRUE);
     $plist = new pluglist();
-    session::global_set('plist', $plist);
     $config->loadPlist($plist);
     $config->get_departments();
     $config->make_idepartments();
     session::global_set('config', $config);
+    session::global_set('plist',  $plist);
+    session::global_set('ui',     $ui);
   }
 }
 
@@ -127,6 +128,7 @@ class fdRPCService
 
   function __call($method, $params)
   {
+    global $config;
     if (preg_match('/^_(.*)$/', $method, $m)) {
       throw new Exception("Non existing method '$m[1]'");
     }
@@ -146,7 +148,6 @@ class fdRPCService
       initiateRPCSession(array_shift($params));
     }
 
-    global $config;
     $this->ldap = $config->get_ldap_link();
     if (!$this->ldap->success()) {
       die('Ldap error: '.$this->ldap->get_error());
