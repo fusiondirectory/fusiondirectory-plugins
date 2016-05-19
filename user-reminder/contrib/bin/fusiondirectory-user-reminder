@@ -399,7 +399,7 @@ sub send_alert_mail
     header_str => [
       From    => 'from@mail.com',
       To      => "$user_cn<$user_mail>",
-      Cc      => "$manager_cn<$manager_mail>"
+      Cc      => "$manager_cn<$manager_mail>",
       Subject => 'Your account is about to expire!',
     ],
     #~ attributes => {
