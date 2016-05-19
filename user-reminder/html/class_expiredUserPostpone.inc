@@ -92,12 +92,12 @@ class expiredUserPostpone extends standAlonePage
   function checkToken($token)
   {
     global $config;
-    $sha_token = '{SHA}'.base64_encode(sha256('expired'.$token));
+    $sha_token = '{SHA}'.base64_encode(hash('sha256', 'expired'.$token, TRUE));
 
     /* Retrieve hash from the ldap */
     $ldap = $config->get_ldap_link();
 
-    $dn   = 'ou='.$this->uid.get_ou('tokenRDN').get_ou('fusiondirectoryRDN').$config->current['BASE'];
+    $dn   = 'ou='.$this->uid.','.get_ou('tokenRDN').get_ou('fusiondirectoryRDN').$config->current['BASE'];
     $ldap->cat($dn);
     $attrs = $ldap->fetch();
 
@@ -113,7 +113,9 @@ class expiredUserPostpone extends standAlonePage
   {
     $dn = $this->getUserDn();
     $userTabs = objects::open($dn, 'user');
-    $userTabs->by_object['posixAccount']->shadowExpire = $userTabs->by_object['posixAccount']->shadowExpire + $this->postpone_days;
+    $date = $userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue();
+    $date->add(new DateInterval('P'.$this->postpone_days.'D'));
+    $userTabs->by_object['posixAccount']->shadowExpire = $date;
     $error = $userTabs->check();
     if (!empty($error)) {
       $this->message = $error;
