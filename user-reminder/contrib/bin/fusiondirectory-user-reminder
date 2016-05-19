@@ -402,10 +402,10 @@ sub send_alert_mail
       Cc      => "$manager_cn<$manager_mail>",
       Subject => 'Your account is about to expire!',
     ],
-    #~ attributes => {
-      #~ encoding => 'quoted-printable',
-      #~ charset  => 'ISO-8859-1',
-    #~ },
+    attributes => {
+      encoding => 'quoted-printable',
+      charset  => 'ISO-8859-1',
+    },
     body_str => "Dear $user_cn, your account $uid is about to expire, please use this link to avoid this: \n".
                 $config->{'base_url'}."expired_postpone.php?uid=$uid&token=$token\n",
   );
@@ -436,7 +436,11 @@ sub store_ldap_token
   my ($ldap, $uid, $date) = @_;
 
   my $token_password  = get_random_string(48);
-  my $token_hash      = "{SHA}".sha256_base64('expired'.$token_password);
+  my $token_hash      = sha256_base64('expired'.$token_password);
+  while (length($token_hash) % 4) {
+    $token_hash .= '=';
+  }
+  $token_hash = "{SHA}".$token_hash;
 
   my $dn = "ou=$uid,".$config->{'token_rdn'}.$config->{'fd_rdn'}.$config->{'ldap_base'};
 
