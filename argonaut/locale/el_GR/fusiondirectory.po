@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-05-02 09:31+0200\n"
+"POT-Creation-Date: 2016-05-17 15:32+0200\n"
 "PO-Revision-Date: 2016-01-22 16:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
@@ -21,111 +21,111 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: admin/systems/argonaut/class_argonautClient.inc:117
+msgid "Argonaut client"
+msgstr "Πελάτης Argonaut"
+
 #: admin/systems/argonaut/class_argonautClient.inc:118
+msgid "Edit argonaut client settings"
+msgstr "Επεξεργασία ρυθμίσεων του πελάτη Argonaut"
+
+#: admin/systems/argonaut/class_argonautClient.inc:131
 msgid "Argonaut client settings"
 msgstr "Ρυθμίσεις πελάτη λογισμικού Argonaut"
 
-#: admin/systems/argonaut/class_argonautClient.inc:121
+#: admin/systems/argonaut/class_argonautClient.inc:134
 msgid "Client port"
 msgstr "Θύρα πελάτη"
 
-#: admin/systems/argonaut/class_argonautClient.inc:121
+#: admin/systems/argonaut/class_argonautClient.inc:134
 msgid "Port used by argonaut client for JSON-RPC"
 msgstr "Θύρα που χρησιμοποιείται από τον πελάτη argonaut για το JSON-RPC"
 
-#: admin/systems/argonaut/class_argonautClient.inc:126
+#: admin/systems/argonaut/class_argonautClient.inc:139
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
 msgid "Protocol"
 msgstr "Πρωτόκολλο"
 
-#: admin/systems/argonaut/class_argonautClient.inc:126
+#: admin/systems/argonaut/class_argonautClient.inc:139
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
 msgid "Protocol to use for argonaut"
 msgstr "Πρωτόκολλο για χρήση στο argonaut"
 
-#: admin/systems/argonaut/class_argonautClient.inc:131
+#: admin/systems/argonaut/class_argonautClient.inc:144
 msgid "WakeOnLan interface"
 msgstr "Διεπαφή εκκίνησης μέσω δικτύου"
 
-#: admin/systems/argonaut/class_argonautClient.inc:131
+#: admin/systems/argonaut/class_argonautClient.inc:144
 msgid "Interface used by argonaut for WakeOnLan"
 msgstr "Η διεπαφή που χρησιμοποιεί το argonaut για εκκίνηση μέσω δικτύου"
 
-#: admin/systems/argonaut/class_argonautClient.inc:136
+#: admin/systems/argonaut/class_argonautClient.inc:149
 msgid "TaskId file"
 msgstr "Αρχείο ταυτότητας διαδικασίας"
 
-#: admin/systems/argonaut/class_argonautClient.inc:136
+#: admin/systems/argonaut/class_argonautClient.inc:149
 msgid "File which argonaut will use to store its task id when booting"
 msgstr "Αρχείο στο οποίο το argonaut θα αποθηκεύσει της ταυτότητα διαδικασίας του κατά την εκκίνηση"
 
-#: admin/systems/argonaut/class_argonautClient.inc:141
+#: admin/systems/argonaut/class_argonautClient.inc:154
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:55
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
 #: admin/systems/services/argonaut/class_argonautServer.inc:79
 msgid "Log directory"
 msgstr "Κατάλογος καταγραφών"
 
-#: admin/systems/argonaut/class_argonautClient.inc:141
+#: admin/systems/argonaut/class_argonautClient.inc:154
 msgid "Directory in which argonaut client should write its logs"
 msgstr "Κατάλογος στον οποίο ο πελάτης argonaut πρέπει να αποθηκεύει τις καταγραφές του"
 
-#: admin/systems/argonaut/class_argonautClient.inc:148
+#: admin/systems/argonaut/class_argonautClient.inc:161
 #: admin/systems/services/argonaut/class_argonautServer.inc:103
 msgid "SSL paths"
 msgstr "Διαδρομές SSL"
 
-#: admin/systems/argonaut/class_argonautClient.inc:151
+#: admin/systems/argonaut/class_argonautClient.inc:164
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
 msgid "Key"
 msgstr "Κλειδί"
 
-#: admin/systems/argonaut/class_argonautClient.inc:151
+#: admin/systems/argonaut/class_argonautClient.inc:164
 msgid "Path to the private key file on Argonaut client"
 msgstr "Διαδρομή για το αρχείο ιδιωτικού κλειδιού στον πελάτη Argonaut"
 
-#: admin/systems/argonaut/class_argonautClient.inc:156
+#: admin/systems/argonaut/class_argonautClient.inc:169
 #: admin/systems/services/argonaut/class_argonautServer.inc:111
 msgid "Certificate"
 msgstr "Πιστοποιητικό"
 
-#: admin/systems/argonaut/class_argonautClient.inc:156
+#: admin/systems/argonaut/class_argonautClient.inc:169
 msgid "Path to the certificate file on Argonaut client"
 msgstr "Διαδρομή για το αρχείο πιστοποιητικού στον πελάτη Argonaut"
 
-#: admin/systems/argonaut/class_argonautClient.inc:161
+#: admin/systems/argonaut/class_argonautClient.inc:174
 #: admin/systems/services/argonaut/class_argonautServer.inc:116
 msgid "CA certificate"
 msgstr "Πιστοποιητικό CA"
 
-#: admin/systems/argonaut/class_argonautClient.inc:161
+#: admin/systems/argonaut/class_argonautClient.inc:174
 msgid "Path to the CA certificate file on Argonaut client"
 msgstr "Διαδρομή για το αρχείο πιστοποιητικού CA στον πελάτη Argonaut"
 
-#: admin/systems/argonaut/class_argonautClient.inc:166
+#: admin/systems/argonaut/class_argonautClient.inc:179
 #: admin/systems/services/argonaut/class_argonautServer.inc:121
 msgid "CN of the certificate"
 msgstr "CN πιστοποιητικού"
 
-#: admin/systems/argonaut/class_argonautClient.inc:166
+#: admin/systems/argonaut/class_argonautClient.inc:179
 msgid "The CN in this client certificate"
 msgstr "Το CN του πιστοποιητικού αυτού του πελάτη"
 
-#: admin/systems/argonaut/class_argonautClient.inc:172
+#: admin/systems/argonaut/class_argonautClient.inc:185
 msgid "Service names"
 msgstr "Ονομασίες υπηρεσιών"
 
-#: admin/systems/argonaut/class_argonautClient.inc:174
+#: admin/systems/argonaut/class_argonautClient.inc:187
 msgid "Argonaut service names"
 msgstr "Ονομασίες υπηρεσιών Argonaut"
-
-#: admin/systems/argonaut/class_argonautClient.inc:199
-msgid "Argonaut client"
-msgstr "Πελάτης Argonaut"
-
-#: admin/systems/argonaut/class_argonautClient.inc:200
-msgid "Edit argonaut client settings"
-msgstr "Επεξεργασία ρυθμίσεων του πελάτη Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:30
 msgid "Argonaut Fuse"
@@ -492,37 +492,37 @@ msgstr ""
 msgid "Imported tasks"
 msgstr ""
 
-#: addons/argonaut/class_argonautImportFile.inc:97
-#: addons/argonaut/class_argonautImportFile.inc:121
-#: addons/argonaut/class_argonautImportFile.inc:145
-#: addons/argonaut/class_argonautImportFile.inc:157
+#: addons/argonaut/class_argonautImportFile.inc:96
+#: addons/argonaut/class_argonautImportFile.inc:120
+#: addons/argonaut/class_argonautImportFile.inc:144
+#: addons/argonaut/class_argonautImportFile.inc:156
 #: addons/argonaut/deploy-list.xml:79
 msgid "Import"
 msgstr "Εισαγωγή"
 
-#: addons/argonaut/class_argonautImportFile.inc:122
+#: addons/argonaut/class_argonautImportFile.inc:121
 msgid "Fix the errors in your CSV file first"
 msgstr ""
 
-#: addons/argonaut/class_argonautImportFile.inc:138
+#: addons/argonaut/class_argonautImportFile.inc:137
 msgid "Infrastructure service"
 msgstr "Άγνωτη υποδομή"
 
-#: addons/argonaut/class_argonautImportFile.inc:145
+#: addons/argonaut/class_argonautImportFile.inc:144
 #, php-format
 msgid "Import complete: %s events successfully send, %s failed"
 msgstr "Η εισαγωγή ολοκληρώθηκε:  %s συμβάντα στάλθηκαν με επιτυχία, %s απέτυχαν"
 
-#: addons/argonaut/class_argonautImportFile.inc:157
+#: addons/argonaut/class_argonautImportFile.inc:156
 msgid "file is empty"
 msgstr "Το αρχείο είναι κενό"
 
-#: addons/argonaut/class_argonautImportFile.inc:182
+#: addons/argonaut/class_argonautImportFile.inc:181
 #: addons/argonaut/import_events.tpl.c:23
 msgid "MAC"
 msgstr "MAC"
 
-#: addons/argonaut/class_argonautImportFile.inc:185
+#: addons/argonaut/class_argonautImportFile.inc:184
 #: addons/argonaut/deploy-list.xml:14 addons/argonaut/import_events.tpl.c:26
 msgid "Event"
 msgstr ""
@@ -727,12 +727,12 @@ msgstr ""
 msgid "There is no argonaut server configured"
 msgstr ""
 
-#: include/class_supportDaemon.inc:599
+#: include/class_supportDaemon.inc:600
 #, php-format
 msgid "Could not read \"%s\"!"
 msgstr "Αδύνατη η ανάγνωση του \"%s\"!"
 
-#: include/class_supportDaemon.inc:603
+#: include/class_supportDaemon.inc:604
 #, php-format
 msgid "\"%s\" is not a file!"
 msgstr "Το \"%s\" δεν είναι αρχείο!"

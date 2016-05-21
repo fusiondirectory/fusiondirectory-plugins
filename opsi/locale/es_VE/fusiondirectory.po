@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-05-02 09:31+0200\n"
+"POT-Creation-Date: 2016-05-17 15:32+0200\n"
 "PO-Revision-Date: 2016-01-22 16:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Spanish (Venezuela) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/es_VE/)\n"
@@ -33,26 +33,26 @@ msgstr ""
 
 #: admin/opsi/class_opsiOnDemandList.inc:50
 #: admin/opsi/class_opsiSoftwareList.inc:54
-#: admin/opsi/class_opsiProfile.inc:88
+#: admin/opsi/class_opsiProfile.inc:89
 msgid "OPSI server"
 msgstr ""
 
 #: admin/opsi/class_opsiOnDemandList.inc:50
 #: admin/opsi/class_opsiSoftwareList.inc:54
-#: admin/opsi/class_opsiProfile.inc:88
+#: admin/opsi/class_opsiProfile.inc:89
 msgid "OPSI server to use for deployment"
 msgstr ""
 
 #: admin/opsi/class_opsiOnDemandList.inc:54
 #: admin/opsi/class_opsiSoftwareList.inc:58
 #: admin/opsi/class_opsiProductProperties.inc:117
-#: admin/opsi/class_opsiProfile.inc:85 admin/opsi/class_opsiProfile.inc:92
+#: admin/opsi/class_opsiProfile.inc:86 admin/opsi/class_opsiProfile.inc:93
 msgid "Name"
 msgstr "Nombre"
 
 #: admin/opsi/class_opsiOnDemandList.inc:54
 #: admin/opsi/class_opsiSoftwareList.inc:58
-#: admin/opsi/class_opsiProfile.inc:92
+#: admin/opsi/class_opsiProfile.inc:93
 msgid "Name of this OPSI profile"
 msgstr ""
 
@@ -91,32 +91,32 @@ msgstr ""
 msgid "The localboot products to install with this list"
 msgstr ""
 
-#: admin/opsi/class_opsiSoftwareList.inc:109
+#: admin/opsi/class_opsiSoftwareList.inc:110
 #: admin/opsi/class_opsiProductProperties.inc:176
-#: admin/opsi/class_opsiProfile.inc:159
+#: admin/opsi/class_opsiProfile.inc:155
 msgid "Could not contact argonaut server"
 msgstr ""
 
-#: admin/opsi/class_opsiSoftwareList.inc:121
-#: admin/opsi/class_opsiProfile.inc:171 addons/opsi/class_opsiImport.inc:74
+#: admin/opsi/class_opsiSoftwareList.inc:122
+#: admin/opsi/class_opsiProfile.inc:167 addons/opsi/class_opsiImport.inc:74
 msgid "No mac address"
 msgstr ""
 
-#: admin/opsi/class_opsiSoftwareList.inc:122
-#: admin/opsi/class_opsiProfile.inc:172
+#: admin/opsi/class_opsiSoftwareList.inc:123
+#: admin/opsi/class_opsiProfile.inc:168
 #, php-format
 msgid "Server %s has no mac address configured in the LDAP"
 msgstr ""
 
-#: admin/opsi/class_opsiSoftwareList.inc:128
-#: admin/opsi/class_opsiProfile.inc:144 admin/opsi/class_opsiProfile.inc:178
+#: admin/opsi/class_opsiSoftwareList.inc:129
+#: admin/opsi/class_opsiProfile.inc:139 admin/opsi/class_opsiProfile.inc:174
 #, php-format
 msgid "Could not find %s in the LDAP"
 msgstr ""
 
-#: admin/opsi/class_opsiSoftwareList.inc:136
+#: admin/opsi/class_opsiSoftwareList.inc:137
 #: admin/opsi/class_opsiProductProperties.inc:192
-#: admin/opsi/class_opsiProfile.inc:186
+#: admin/opsi/class_opsiProfile.inc:182
 msgid "Failed to contact OPSI server"
 msgstr ""
 
@@ -138,32 +138,32 @@ msgstr ""
 msgid "Properties of the products of this profile"
 msgstr ""
 
-#: admin/opsi/class_opsiProfile.inc:66 admin/opsi/class_opsiProfile.inc:67
-#: admin/opsi/class_opsiProfile.inc:71
+#: admin/opsi/class_opsiProfile.inc:67 admin/opsi/class_opsiProfile.inc:68
+#: admin/opsi/class_opsiProfile.inc:72
 msgid "OPSI profile"
 msgstr ""
 
-#: admin/opsi/class_opsiProfile.inc:98
+#: admin/opsi/class_opsiProfile.inc:99
 msgid "Entries"
 msgstr ""
 
-#: admin/opsi/class_opsiProfile.inc:101
+#: admin/opsi/class_opsiProfile.inc:102
 msgid "Netboot product"
 msgstr ""
 
-#: admin/opsi/class_opsiProfile.inc:101
+#: admin/opsi/class_opsiProfile.inc:102
 msgid "The netboot product to use for this profile"
 msgstr ""
 
-#: admin/opsi/class_opsiProfile.inc:106
+#: admin/opsi/class_opsiProfile.inc:107
 msgid "Software lists"
 msgstr ""
 
-#: admin/opsi/class_opsiProfile.inc:106
+#: admin/opsi/class_opsiProfile.inc:107
 msgid "Software lists that will be installed with this profile"
 msgstr ""
 
-#: admin/opsi/class_opsiProfile.inc:206
+#: admin/opsi/class_opsiProfile.inc:202
 #, php-format
 msgid "%s (%s)"
 msgstr ""
@@ -196,16 +196,16 @@ msgstr ""
 msgid "The OPSI Profile to apply to this client"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:95
+#: admin/systems/opsi/class_opsiClient.inc:96
 msgid "Could not get macAddress for OPSI server !"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:104
-#: admin/systems/opsi/class_opsiClient.inc:191
+#: admin/systems/opsi/class_opsiClient.inc:105
+#: admin/systems/opsi/class_opsiClient.inc:193
 msgid "Could not remove OPSI informations"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:148
+#: admin/systems/opsi/class_opsiClient.inc:150
 #: addons/opsi/class_opsiImport.inc:89
 msgid "Could not update OPSI informations"
 msgstr ""

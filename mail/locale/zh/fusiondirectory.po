@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-05-02 09:31+0200\n"
+"POT-Creation-Date: 2016-05-17 15:32+0200\n"
 "PO-Revision-Date: 2016-04-27 20:17+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Chinese (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/zh/)\n"
@@ -72,12 +72,12 @@ msgid ""
 "senders"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:155
+#: personal/mail/class_mail-methods.inc:154
 #: personal/mail/class_mail-methods.inc:516
 msgid "Configuration error"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:156
+#: personal/mail/class_mail-methods.inc:155
 #, php-format
 msgid "The configured mail attribute '%s' is unsupported!"
 msgstr ""
@@ -87,27 +87,27 @@ msgstr ""
 msgid "Mail method '%s' is unknown!"
 msgstr ""
 
+#: personal/mail/class_mail-methods.inc:764
 #: personal/mail/class_mail-methods.inc:765
-#: personal/mail/class_mail-methods.inc:766
 msgid "None"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:855
+#: personal/mail/class_mail-methods.inc:854
 msgid "Unknown"
 msgstr "未知"
 
-#: personal/mail/class_mail-methods.inc:857
+#: personal/mail/class_mail-methods.inc:856
 msgid "Unlimited"
 msgstr ""
 
 #: personal/mail/class_mailAccount.inc:45
-#: personal/mail/class_mailAccount.inc:235
-#: personal/mail/class_mailAccount.inc:238
+#: personal/mail/class_mailAccount.inc:227
+#: personal/mail/class_mailAccount.inc:230
+#: personal/mail/class_mailAccount.inc:275
+#: personal/mail/class_mailAccount.inc:279
 #: personal/mail/class_mailAccount.inc:283
-#: personal/mail/class_mailAccount.inc:287
-#: personal/mail/class_mailAccount.inc:291
-#: personal/mail/class_mailAccount.inc:324
-#: personal/mail/class_mailAccount.inc:328
+#: personal/mail/class_mailAccount.inc:316
+#: personal/mail/class_mailAccount.inc:320
 msgid "Mail error"
 msgstr ""
 
@@ -203,37 +203,37 @@ msgstr "不要发送到本人邮箱"
 msgid "Select if you want to forward mails without getting own copies of them"
 msgstr "如果您想转发邮件而且不想保留拷贝的话，请选择"
 
-#: personal/mail/class_mailAccount.inc:235
-#: personal/mail/class_mailAccount.inc:283
+#: personal/mail/class_mailAccount.inc:227
+#: personal/mail/class_mailAccount.inc:275
 #, php-format
 msgid "Mail method cannot connect: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:238
+#: personal/mail/class_mailAccount.inc:230
 #, php-format
 msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:287
+#: personal/mail/class_mailAccount.inc:279
 #, php-format
 msgid "Cannot update mailbox: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:291
+#: personal/mail/class_mailAccount.inc:283
 #, php-format
 msgid "Cannot write quota settings: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:304
+#: personal/mail/class_mailAccount.inc:296
 msgid "Mail error saving sieve settings"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:324
+#: personal/mail/class_mailAccount.inc:316
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:328
+#: personal/mail/class_mailAccount.inc:320
 #, php-format
 msgid "Cannot remove mailbox: %s"
 msgstr ""

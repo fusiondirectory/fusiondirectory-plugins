@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-05-02 09:31+0200\n"
+"POT-Creation-Date: 2016-05-17 15:32+0200\n"
 "PO-Revision-Date: 2016-01-22 16:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
@@ -67,19 +67,19 @@ msgid ""
 "Support for puppet schema in order to edit puppet classes and puppet vars"
 msgstr "Supporto per lo schema di puppet, al fine di modificare le classi e le variabili di puppet"
 
-#: admin/systems/services/puppet/class_servicePuppet.inc:36
-#: admin/systems/services/puppet/class_servicePuppet.inc:56
+#: admin/systems/services/puppet/class_servicePuppet.inc:28
+#: admin/systems/services/puppet/class_servicePuppet.inc:42
 msgid "Puppet server"
 msgstr "Server Puppet"
 
-#: admin/systems/services/puppet/class_servicePuppet.inc:40
+#: admin/systems/services/puppet/class_servicePuppet.inc:29
+msgid "This service allows you to use a puppet server"
+msgstr "Questo servizio permette l'uso di un server puppet"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:46
 msgid "Environments"
 msgstr "Ambienti"
 
-#: admin/systems/services/puppet/class_servicePuppet.inc:41
+#: admin/systems/services/puppet/class_servicePuppet.inc:47
 msgid "Available environments for puppet nodes"
 msgstr "Ambienti disponibili per i nodi puppet"
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:57
-msgid "This service allows you to use a puppet server"
-msgstr "Questo servizio permette l'uso di un server puppet"

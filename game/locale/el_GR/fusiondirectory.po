@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-05-02 09:31+0200\n"
+"POT-Creation-Date: 2016-05-17 15:32+0200\n"
 "PO-Revision-Date: 2016-01-22 15:45+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
@@ -18,69 +18,69 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: addons/game/class_Game.inc:77
+#: addons/game/class_Game.inc:75
 msgid "John Lennon has arrived"
 msgstr "Ο John Lennon έφτασε"
 
-#: addons/game/class_Game.inc:79
+#: addons/game/class_Game.inc:77
 msgid "Create a user for John Lennon with login <b>john</b>"
 msgstr "Δημιουργήστε ένα χρήστη για τον John Lennon με το όνομα <b>john</b>"
 
-#: addons/game/class_Game.inc:82
+#: addons/game/class_Game.inc:80
 msgid "The Beatles are here"
 msgstr "Οι Beatles είναι εδώ"
 
-#: addons/game/class_Game.inc:84
+#: addons/game/class_Game.inc:82
 msgid ""
 "Create a user template named <b>beatle</b>, using "
 "<i>http://%l|givenName%.com</i> as homepage and <i>%l|sn%</i> (lower case "
 "first name) as password"
 msgstr "Δημιουργήστε ένα πρότυπο χρήστη με το όνομα <b>Beatle</b>, χρησιμοποιώντας το <i>http://%l|givenName%.com</i> ως αρχική σελίδα και το <i>%l|sn%</i> (όνομα με πεζά) ως κωδικό πρόσβασης"
 
-#: addons/game/class_Game.inc:85
+#: addons/game/class_Game.inc:83
 msgid "Create a user for Paul McCartney using beatle template (login paul)"
 msgstr "Δημιουργήστε ένα χρήστη με το όνομα Paul McCartney χρησιμοποιώντας το πρότυπο beatle (Είσοδος ως paul)"
 
-#: addons/game/class_Game.inc:86
+#: addons/game/class_Game.inc:84
 msgid "Create a user for George Harrison using beatle template (login george)"
 msgstr "Δημιουργήστε ένα χρήστη με το όνομα George Harrison χρησιμοποιώντας το πρότυπο beatle (Είσοδος ως george)"
 
-#: addons/game/class_Game.inc:87
+#: addons/game/class_Game.inc:85
 msgid "Create a user for Ringo Starr using beatle template (login ringo)"
 msgstr "Δημιουργήστε ένα χρήστη  μετο όνομα Ringo Starr χρησιμοποιώντας το πρότυπο beatle (Είσοδος ως ringo)"
 
-#: addons/game/class_Game.inc:88
+#: addons/game/class_Game.inc:86
 msgid ""
 "Create a POSIX group for The Beatles named <b>beatles</b> and add the 4 "
 "beatles to this group"
 msgstr "Δημιουργήστε μια ομάδα POSIX για τους The Beatles με όνομα <b> beatles </ b> και προσθέστε τους 4 beatles σε αυτήν την ομάδα"
 
-#: addons/game/class_Game.inc:99
+#: addons/game/class_Game.inc:97
 msgid "The Beatles bought computers"
 msgstr "Οι Beatles αγόρασαν υπολογιστές"
 
-#: addons/game/class_Game.inc:101
+#: addons/game/class_Game.inc:99
 msgid ""
 "Create a server named <b>yellow-submarine</b> with IP 192.168.1.129 and MAC "
 "00:11:22:33:44:01"
 msgstr "Δημιουργήστε ένα διακομιστή με όνομα <b>yellow-submarine</b> με IP 192.168.1.129 και MAC 00:11:22:33:44:01"
 
-#: addons/game/class_Game.inc:102
+#: addons/game/class_Game.inc:100
 msgid "Add a DNS service for zone <b>beatles.fake</b> on this server"
 msgstr "Πρόσθεσε μια υπηρεσία DNS για τη ζώνη <b>beatles.fake</b> σε αυτόν τον εξυπηρετή"
 
-#: addons/game/class_Game.inc:103
+#: addons/game/class_Game.inc:101
 msgid ""
 "Add a DHCP service for the network <b>192.168.1.128/26</b> on this server"
 msgstr "Προσθέστε μια υπηρεσία DHCP για το δίκτυο <b>192.168.1.128/26</b> σε αυτόν τον διακομιστή"
 
-#: addons/game/class_Game.inc:104
+#: addons/game/class_Game.inc:102
 msgid ""
 "Create a workstation for John's laptop, with IP 192.168.1.130 and MAC "
 "00:11:22:33:44:02"
 msgstr "Δημιουργήστε ένα σταθμό εργασίας για το laptop του John με IP 192.168.1.130 και MAC 00:11:22:33:44:02"
 
-#: addons/game/class_Game.inc:105
+#: addons/game/class_Game.inc:103
 msgid ""
 "Create a winstation for George's laptop, as he is running windows, with IP "
 "192.168.1.131 and MAC 00:11:22:33:44:03"

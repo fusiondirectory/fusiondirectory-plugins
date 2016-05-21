@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Benoit Mortier <benoit.mortier@opensides.be>, 2016
 # MCMic, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-05-02 09:31+0200\n"
-"PO-Revision-Date: 2016-01-22 16:05+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2016-05-17 15:32+0200\n"
+"PO-Revision-Date: 2016-05-12 16:17+0000\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +29,7 @@ msgid "Services"
 msgstr "Services"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:43
-msgid "Dovecot connexion"
+msgid "Dovecot connection"
 msgstr "Connexion Dovecot"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:46
@@ -60,12 +61,12 @@ msgid "Options for contacting Dovecot server"
 msgstr "Options pour contacter le serveur Dovecot"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:64
-msgid "Valide certificats"
-msgstr "Valider les certificats"
+msgid "Validate TLS/SSL Certificates"
+msgstr "Valider les certificats TLS/SSL"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:64
-msgid "Weither or not to validate server certificate on connexion"
-msgstr "S’il faut ou non valider le certificat du serveur à la connexion"
+msgid "Weither or not to validate server certificates on connection"
+msgstr "Valider ou non le certificat du serveur à la connexion"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:76
 msgid "Master credentials"
@@ -100,22 +101,22 @@ msgid "Options"
 msgstr "Options"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:97
-msgid "Create the user folder throught Argonaut"
+msgid "Create the user folder via Argonaut"
 msgstr "Créer le répertoire utilisateur via Argonaut"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:97
 msgid "Use argonaut to create the user mailbox on the Dovecot server"
 msgstr "Utiliser Argonaut pour créer la boite courriel sur le serveur Dovecot"
 
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:49
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:50
 msgid "There are no IMAP compatible mail servers defined!"
 msgstr "Il n'y a aucun serveur IMAP compatible défini !"
 
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:54
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:55
 msgid "Mail server for this account is invalid!"
 msgstr "Le serveur de courriel pour ce compte est invalide !"
 
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:192
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:194
 #, php-format
 msgid "Error while trying to contact Dovecot server through Argonaut: %s"
 msgstr "Erreur lors de la connexion au serveur Dovecot via Argonaut : %s"

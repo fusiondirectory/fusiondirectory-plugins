@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-05-02 09:31+0200\n"
+"POT-Creation-Date: 2016-05-17 15:32+0200\n"
 "PO-Revision-Date: 2016-01-22 16:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/cs_CZ/)\n"
@@ -66,19 +66,19 @@ msgid ""
 "Support for puppet schema in order to edit puppet classes and puppet vars"
 msgstr "Podpora pro schéma puppet pro úpravy puppet tříd a proměnných"
 
-#: admin/systems/services/puppet/class_servicePuppet.inc:36
-#: admin/systems/services/puppet/class_servicePuppet.inc:56
+#: admin/systems/services/puppet/class_servicePuppet.inc:28
+#: admin/systems/services/puppet/class_servicePuppet.inc:42
 msgid "Puppet server"
 msgstr "Puppet server"
 
-#: admin/systems/services/puppet/class_servicePuppet.inc:40
+#: admin/systems/services/puppet/class_servicePuppet.inc:29
+msgid "This service allows you to use a puppet server"
+msgstr "Pomocí této služby je možné využívat puppet server"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:46
 msgid "Environments"
 msgstr "Prostředí"
 
-#: admin/systems/services/puppet/class_servicePuppet.inc:41
+#: admin/systems/services/puppet/class_servicePuppet.inc:47
 msgid "Available environments for puppet nodes"
 msgstr "Prostředí, dostupná pro uzly puppet"
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:57
-msgid "This service allows you to use a puppet server"
-msgstr "Pomocí této služby je možné využívat puppet server"

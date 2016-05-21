@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-05-02 09:31+0200\n"
-"PO-Revision-Date: 2016-01-22 16:05+0000\n"
+"POT-Creation-Date: 2016-05-17 15:32+0200\n"
+"PO-Revision-Date: 2016-05-12 13:36+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -18,45 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: admin/ogroups/kolab2/class_mailogroup.inc:37
-#: admin/ogroups/kolab2/paste_mail.tpl.c:2
-msgid "Mail"
-msgstr "Courriel"
-
-#: admin/ogroups/kolab2/class_mailogroup.inc:38
-msgid "Mail group"
-msgstr "Groupe de courriel"
-
-#: admin/ogroups/kolab2/class_mailogroup.inc:45
-#: admin/ogroups/kolab2/class_mailogroup.inc:118
-#: admin/ogroups/kolab2/class_mailogroup.inc:125
-msgid "Mail address"
-msgstr "Adresse de courriel"
-
-#: admin/ogroups/kolab2/class_mailogroup.inc:82
-msgid "Remove mail account"
-msgstr "Supprimer le compte de courriel"
-
-#: admin/ogroups/kolab2/class_mailogroup.inc:83
-#: admin/ogroups/kolab2/class_mailogroup.inc:86
-msgid "mail group"
-msgstr "groupe de courriel"
-
-#: admin/ogroups/kolab2/class_mailogroup.inc:85
-msgid "Create mail account"
-msgstr "Créer un compte de courriel"
-
-#: admin/ogroups/kolab2/class_mailogroup.inc:118
-msgid "your-name@your-domain.com"
-msgstr "votre-nom@votre-domaine.com"
-
-#: admin/ogroups/kolab2/class_mailogroup.inc:152
-#: admin/ogroups/kolab2/class_mailogroup.inc:189
-#: admin/systems/services/kolab2/class_serviceKolab.inc:281
-#: admin/systems/services/kolab2/class_serviceKolab.inc:292
-msgid "LDAP error"
-msgstr "Erreur LDAP"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:29
 msgid "Enable MX lookup for relayhost"
@@ -226,86 +187,91 @@ msgstr "Accepter le courrier électronique venant d'internet"
 msgid "Accept mail from other domains over non-authenticated SMTP"
 msgstr "Accepter les messages venant d'autres domaines par du SMTP non authentifié"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:268
+#: admin/systems/services/kolab2/class_serviceKolab.inc:271
 msgid "Internal error"
 msgstr "Erreur interne"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:268
+#: admin/systems/services/kolab2/class_serviceKolab.inc:271
 msgid "Kolab account does not exist!"
 msgstr "Le compte Kolab n'existe pas !"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:272
+#: admin/systems/services/kolab2/class_serviceKolab.inc:275
 msgid "Error"
 msgstr "Erreur"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:272
+#: admin/systems/services/kolab2/class_serviceKolab.inc:275
 msgid "hostname"
 msgstr "Nom d'hôte"
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:148
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:156
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:157
+#: admin/systems/services/kolab2/class_serviceKolab.inc:284
+#: admin/systems/services/kolab2/class_serviceKolab.inc:295
+msgid "LDAP error"
+msgstr "Erreur LDAP"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:146
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:154
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:155
 msgid "Unspecified"
 msgstr "Non spécifié"
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:149
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:147
 msgid "Mails"
 msgstr "Courriels"
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:150
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:148
 msgid "Tasks"
 msgstr "Tâches"
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:151
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:149
 msgid "Journals"
 msgstr "Journaux"
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:152
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:150
 msgid "Calendar"
 msgstr "Calendrier"
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:153
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:151
 msgid "Contacts"
 msgstr "Contacts"
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:154
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:152
 msgid "Notes"
 msgstr "Notes"
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:158
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:156
 msgid "Inbox"
 msgstr "Boite de réception"
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:159
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:157
 msgid "Drafts"
 msgstr "Brouillons"
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:160
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:158
 msgid "Sent"
 msgstr "Messages Envoyés"
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:161
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:159
 msgid "SPAM"
 msgstr "SPAM"
 
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:161
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:162
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:163
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:164
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:165
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:166
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:167
 msgid "Default"
 msgstr "Défaut"
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:182
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:179
 msgid ""
 "Mail settings cannot be removed while there are delegations configured!"
 msgstr "Les paramètres de courriel ne peuvent pas être supprimés quand des délégations sont configurées !"
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:279
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:272
 msgid "Waiting for kolab to remove mail properties..."
 msgstr "En attente de kolab pour la suppression des paramètres de courriel..."
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:282
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:275
 msgid "Please remove the mail settings first!"
 msgstr "Veuillez d'abord supprimer les paramètres de courriel !"
 
@@ -396,19 +362,3 @@ msgstr "adresse de courriel"
 #: personal/kolab2/class_kolabAccount.inc:153
 msgid "policy for this mail address"
 msgstr "politique pour cette adresse de courriel"
-
-#: admin/ogroups/kolab2/mail.tpl.c:2
-msgid "Mail distribution list"
-msgstr "Liste de distribution de courriel"
-
-#: admin/ogroups/kolab2/mail.tpl.c:5
-msgid "Primary address"
-msgstr "Adresse principale"
-
-#: admin/ogroups/kolab2/mail.tpl.c:8
-msgid "Primary mail address for this distribution list"
-msgstr "Adresse de courriel principale pour cette liste de distribution"
-
-#: admin/ogroups/kolab2/paste_mail.tpl.c:5
-msgid "Please enter a mail address"
-msgstr "Veuillez entrer une adresse de courriel"
