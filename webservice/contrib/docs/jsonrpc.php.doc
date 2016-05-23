@@ -107,20 +107,6 @@ class fdRPCService
   }
 
   /*!
-   * \brief Get all fields from an object type
-   *
-   * \param string  $sid the session id
-   * \param string  $type the object type
-   * \param string  $dn   the object to load values from if any
-   * \param string  $tab  the tab to show if not the main one
-   *
-   * \return All attributes organized as sections
-   */
-  function fields($sid, $type, $dn = NULL, $tab = NULL)
-  {
-  }
-
-  /*!
    * \brief List activated tabs on an object
    *
    * \param string  $sid the session id
@@ -134,17 +120,65 @@ class fdRPCService
   }
 
   /*!
-   * \brief Update values of an object's attributes
+   * \brief Get all form fields from an object (or an object type)
    *
-   * \param string  $sid the session id
+   * Fields as they appear in the HTML form
+   *
+   * \param string  $sid  the session id
+   * \param string  $type the object type
+   * \param string  $dn   the object to load values from if any
+   * \param string  $tab  the tab to show if not the main one
+   *
+   * \return All form fields organized as sections
+   */
+  function formfields($sid, $type, $dn = NULL, $tab = NULL)
+  {
+  }
+
+  /*!
+   * \brief Update form values of an object's attributes through POST
+   *
+   * \param string  $sid  the session id
    * \param string  $type the object type
    * \param string  $dn   the object to load values from if any (otherwise it's a creation)
    * \param string  $tab  the tab to modify if not the main one
-   * \param array   $values  the values as an associative array. Keys should be the same returned by fields
+   * \param array   $post the values as a POST array. Keys should be the 'id' returned by formfields.
    *
    * \return An array with errors if any, the resulting object dn otherwise
    */
-  function update($sid, $type, $dn, $tab, $values)
+  function formpost($sid, $type, $dn, $tab, $post)
+  {
+  }
+
+  /*!
+   * \brief Get all internal FD fields from an object (or an object type)
+   *
+   * Fields as they are stored in FusionDirectory
+   *
+   * \param string  $sid  the session id
+   * \param string  $type the object type
+   * \param string  $dn   the object to load values from if any
+   * \param string  $tab  the tab to show if not the main one
+   *
+   * \return All FD attributes organized as sections
+   */
+  function getfields($sid, $type, $dn = NULL, $tab = NULL)
+  {
+  }
+
+  /*!
+   * \brief Update attributes values of an object
+   *
+   * \param string  $sid    the session id
+   * \param string  $type   the object type
+   * \param string  $dn     the object to load values from if any (otherwise it's a creation)
+   * \param string  $tab    the tab to modify if not the main one
+   * \param array   $values the values as an associative array. Keys should be the same keys returned by getfields.
+   * Values should be formed as the internal attribute expects them. See the concerned attribute type for more information.
+   *
+   * \return An array with errors if any, the resulting object dn otherwise
+   */
+  function setfields($sid, $type, $dn, $tab, $post)
   {
   }
 

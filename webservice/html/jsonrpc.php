@@ -230,55 +230,6 @@ class fdRPCService
   }
 
   /*!
-   * \brief Get all fields from an object type
-   */
-  protected function _fields($type, $dn = NULL, $tab = NULL)
-  {
-    $this->checkAccess($type, $tab, $dn);
-
-    if ($dn === NULL) {
-      $tabobject = objects::create($type);
-    } else {
-      $tabobject = objects::open($dn, $type);
-    }
-    if ($tab === NULL) {
-      $object = $tabobject->getBaseObject();
-    } else {
-      $object = $tabobject->by_object[$tab];
-    }
-    if (is_subclass_of($object, 'simplePlugin')) {
-      $fields = $object->attributesInfo;
-      foreach ($fields as &$section) {
-        $attributes = array();
-        foreach ($section['attrs'] as $key => $attr) {
-          if ($object->acl_is_readable($attr->getAcl())) {
-            $attr->serializeAttribute($attributes);
-          }
-        }
-        $section['attrs'] = array_values($attributes);
-      }
-      unset($section);
-      return $fields;
-    } else {
-      /* fallback for old plugins */
-      $fields = array('main' => array('attrs' => array(), 'name' => _('Plugin')));
-      foreach ($object->attributes as $attr) {
-        if ($object->acl_is_readable($attr.'Acl')) {
-          $fields['main']['attrs'][$attr] = array(
-            'value'       => $object->$attr,
-            'required'    => FALSE,
-            'disabled'    => FALSE,
-            'label'       => $attr,
-            'type'        => 'OldPluginAttribute',
-            'description' => '',
-          );
-        }
-      }
-      return $fields;
-    }
-  }
-
-  /*!
    * \brief List activated tabs on an object
    */
   protected function _listTabs($type, $dn = NULL)
@@ -326,9 +277,58 @@ class fdRPCService
   }
 
   /*!
+   * \brief Get all form fields from an object (or object type)
+   */
+  protected function _formfields($type, $dn = NULL, $tab = NULL)
+  {
+    $this->checkAccess($type, $tab, $dn);
+
+    if ($dn === NULL) {
+      $tabobject = objects::create($type);
+    } else {
+      $tabobject = objects::open($dn, $type);
+    }
+    if ($tab === NULL) {
+      $object = $tabobject->getBaseObject();
+    } else {
+      $object = $tabobject->by_object[$tab];
+    }
+    if (is_subclass_of($object, 'simplePlugin')) {
+      $fields = $object->attributesInfo;
+      foreach ($fields as &$section) {
+        $attributes = array();
+        foreach ($section['attrs'] as $key => $attr) {
+          if ($object->acl_is_readable($attr->getAcl())) {
+            $attr->serializeAttribute($attributes, TRUE);
+          }
+        }
+        $section['attrs'] = $attributes;
+      }
+      unset($section);
+      return $fields;
+    } else {
+      /* fallback for old plugins */
+      $fields = array('main' => array('attrs' => array(), 'name' => _('Plugin')));
+      foreach ($object->attributes as $attr) {
+        if ($object->acl_is_readable($attr.'Acl')) {
+          $fields['main']['attrs'][$attr] = array(
+            'value'       => $object->$attr,
+            'required'    => FALSE,
+            'disabled'    => FALSE,
+            'label'       => $attr,
+            'type'        => 'OldPluginAttribute',
+            'description' => '',
+          );
+        }
+      }
+      return $fields;
+    }
+  }
+
+  /*!
    * \brief Update values of an object's attributes using POST as if the webpage was sent
    */
-  protected function _update($type, $dn, $tab, $values)
+  protected function _formpost($type, $dn, $tab, $values)
   {
     $this->checkAccess($type, $tab, $dn);
 
@@ -360,6 +360,47 @@ class fdRPCService
   }
 
   /*!
+   * \brief Get all internal fields from an object (or object type)
+   */
+  protected function _getfields($type, $dn = NULL, $tab = NULL)
+  {
+    $this->checkAccess($type, $tab, $dn);
+
+    if ($dn === NULL) {
+      $tabobject = objects::create($type);
+    } else {
+      $tabobject = objects::open($dn, $type);
+    }
+    if ($tab === NULL) {
+      $object = $tabobject->getBaseObject();
+    } else {
+      $object = $tabobject->by_object[$tab];
+    }
+    if (is_subclass_of($object, 'simplePlugin')) {
+      $fields = $object->attributesInfo;
+      foreach ($fields as &$section) {
+        $attributes = array();
+        foreach ($section['attrs'] as $key => $attr) {
+          if ($object->acl_is_readable($attr->getAcl())) {
+            $attr->serializeAttribute($attributes, FALSE);
+          }
+        }
+        $section['attrs'] = $attributes;
+      }
+      unset($section);
+    } else {
+      /* fallback for old plugins */
+      $fields = array('main' => array('attrs' => array(), 'name' => _('Plugin')));
+      foreach ($object->attributes as $attr) {
+        if ($object->acl_is_readable($attr.'Acl')) {
+          $fields['main']['attrs'][$attr] = $object->$attr;
+        }
+      }
+    }
+    return $fields;
+  }
+
+  /*!
    * \brief Set internal values of an object's attributes and save it
    */
   protected function _setfields($type, $dn, $tab, $values)
@@ -380,10 +421,20 @@ class fdRPCService
         $tabobject->by_object[$tab]->displayHeader &&
         !$tabobject->by_object[$tab]->is_account
       ) {
-      $tabobject->by_object[$tab]->is_account = TRUE;
+      if ($tabobject->by_object[$tab]->acl_is_createable()) {
+        $tabobject->by_object[$tab]->is_account = TRUE;
+      } else {
+        return array('errors' => array('You don\'t have sufficient rights to enable tab "'.$tab.'"'));
+      }
     }
     foreach ($values as $field => $value) {
-      $tabobject->by_object[$tab]->$field = $value;
+      if ($tabobject->by_object[$tab]->acl_is_writeable(
+        $tabobject->by_object[$tab]->attributesAccess[$field]->getAcl()
+      )) {
+        $tabobject->by_object[$tab]->$field = $value;
+      } else {
+        return array('errors' => array('You don\'t have sufficient rights to edit field "'.$field.'"'));
+      }
     }
     $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases is needed */
     $errors = $tabobject->check();
