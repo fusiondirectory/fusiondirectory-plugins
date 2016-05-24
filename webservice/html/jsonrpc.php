@@ -159,7 +159,7 @@ class fdRPCService
     return call_user_func_array(array($this, '_'.$method), $params);
   }
 
-  protected function checkAccess($type, $tab = NULL, $dn = NULL)
+  protected function checkAccess($type, $tabs = NULL, $dn = NULL)
   {
     global $ui;
     $infos = objects::infos($type);
@@ -172,10 +172,15 @@ class fdRPCService
     if (!$plist->check_access($infos['aclCategory'].$self)) {
       throw new Exception("Unsufficient rights for accessing type '$type$self'");
     }
-    if ($tab !== NULL) {
-      $pInfos = pluglist::pluginInfos($tab);
-      if (!$plist->check_access(join($self.',', $pInfos['plCategory']).$self)) {
-        throw new Exception("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
+    if ($tabs !== NULL) {
+      if (!is_array($tabs)) {
+        $tabs = array($tabs);
+      }
+      foreach ($tabs as $tab) {
+        $pInfos = pluglist::pluginInfos($tab);
+        if (!$plist->check_access(join($self.',', $pInfos['plCategory']).$self)) {
+          throw new Exception("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
+        }
       }
     }
   }
@@ -403,35 +408,32 @@ class fdRPCService
   /*!
    * \brief Set internal values of an object's attributes and save it
    */
-  protected function _setfields($type, $dn, $tab, $values)
+  protected function _setfields($type, $dn, $values)
   {
-    $this->checkAccess($type, $tab, $dn);
-
+    $this->checkAccess($type, array_keys($values), $dn);
     if ($dn === NULL) {
       $tabobject = objects::create($type);
     } else {
       $tabobject = objects::open($dn, $type);
     }
-    if ($tab === NULL) {
-      $tab = $tabobject->current;
-    } else {
-      $tabobject->current = $tab;
-    }
-    if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
-        $tabobject->by_object[$tab]->displayHeader &&
-        !$tabobject->by_object[$tab]->is_account
-      ) {
-      if ($tabobject->by_object[$tab]->acl_is_createable()) {
-        $tabobject->by_object[$tab]->is_account = TRUE;
-      } else {
-        return array('errors' => array('You don\'t have sufficient rights to enable tab "'.$tab.'"'));
+    foreach ($values as $tab => $tabvalues) {
+      if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
+          $tabobject->by_object[$tab]->displayHeader &&
+          !$tabobject->by_object[$tab]->is_account
+        ) {
+        if ($tabobject->by_object[$tab]->acl_is_createable()) {
+          $tabobject->by_object[$tab]->is_account = TRUE;
+        } else {
+          return array('errors' => array('You don\'t have sufficient rights to enable tab "'.$tab.'"'));
+        }
       }
+      $error = $tabobject->by_object[$tab]->deserializeValues($tabvalues);
+      if ($error !== TRUE) {
+        return array('errors' => array($error));
+      }
+      $tabobject->current = $tab;
+      $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases is needed */
     }
-    $error = $tabobject->by_object[$tab]->deserializeValues($values);
-    if ($error !== TRUE) {
-      return array('errors' => array($error));
-    }
-    $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases is needed */
     $errors = $tabobject->check();
     if (!empty($errors)) {
       return array('errors' => $errors);

@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013  FusionDirectory
+  Copyright (C) 2013-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -173,12 +173,45 @@ class fdRPCService
    * \param string  $type   the object type
    * \param string  $dn     the object to load values from if any (otherwise it's a creation)
    * \param string  $tab    the tab to modify if not the main one
-   * \param array   $values the values as an associative array. Keys should be the same keys returned by getfields.
+   * \param array   $values the values as an associative array of associative arrays. First level keys are tabs, second level keys should be the same keys returned by getfields.
    * Values should be formed as the internal attribute expects them. See the concerned attribute type for more information.
    *
    * \return An array with errors if any, the resulting object dn otherwise
    */
-  function setfields($sid, $type, $dn, $tab, $post)
+  function setfields($sid, $type, $dn, $values)
+  {
+  }
+
+  /*!
+   * \brief Get needed internal FD fields from a template
+   *
+   * This returns the fields that needs filling for using this template to create an object.
+   * Return value looks like the getfields one, except they are grouped by tab and not by section.
+   * Empty activated tab may also be included.
+   *
+   * \param string  $sid  the session id
+   * \param string  $type the object type
+   * \param string  $dn   the template dn
+   *
+   * \return FD attributes organized as tabs
+   */
+  function gettemplate($sid, $type, $dn)
+  {
+  }
+
+  /*!
+   * \brief Create an object from a template
+   *
+   * This apply the template to the given values and creates an object.
+   *
+   * \param string  $sid    the session id
+   * \param string  $type   the object type
+   * \param string  $dn     the template dn
+   * \param string  $values the values for each tab organised in the same way as for setfields
+   *
+   * \return the created object dn upon success
+   */
+  function usetemplate($sid, $type, $dn, $values)
   {
   }
 
