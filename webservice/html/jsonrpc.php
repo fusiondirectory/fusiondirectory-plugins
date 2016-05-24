@@ -427,16 +427,43 @@ class fdRPCService
         return array('errors' => array('You don\'t have sufficient rights to enable tab "'.$tab.'"'));
       }
     }
-    foreach ($values as $field => $value) {
-      if ($tabobject->by_object[$tab]->acl_is_writeable(
-        $tabobject->by_object[$tab]->attributesAccess[$field]->getAcl()
-      )) {
-        $tabobject->by_object[$tab]->$field = $value;
-      } else {
-        return array('errors' => array('You don\'t have sufficient rights to edit field "'.$field.'"'));
-      }
+    $error = $tabobject->by_object[$tab]->deserializeValues($values);
+    if ($error !== TRUE) {
+      return array('errors' => array($error));
     }
     $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases is needed */
+    $errors = $tabobject->check();
+    if (!empty($errors)) {
+      return array('errors' => $errors);
+    }
+    $tabobject->save();
+    return $tabobject->dn;
+  }
+
+  /*!
+   * \brief Get all internal fields from a template
+   */
+  protected function _gettemplate($type, $dn)
+  {
+    $this->checkAccess($type, NULL, $dn);
+
+    $template = new template($type, $dn);
+    return $template->serialize();
+  }
+
+  /*!
+   * \brief
+   */
+  protected function _usetemplate($type, $dn, $values)
+  {
+    $this->checkAccess($type, NULL, $dn);
+
+    $template = new template($type, $dn);
+    $error    = $template->deserialize($values);
+    if ($error !== TRUE) {
+      return array('errors' => array($error));
+    }
+    $tabobject = $template->apply();
     $errors = $tabobject->check();
     if (!empty($errors)) {
       return array('errors' => $errors);
