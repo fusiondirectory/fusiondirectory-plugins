@@ -28,7 +28,7 @@ class expiredUserPostpone extends standAlonePage
   function readLdapConfig()
   {
     global $config;
-    $this->forward_postpone = ($config->get_cfg_value('userReminderForwardPostpone', 'TRUE') == 'TRUE');
+    $this->forward_postpone = ($config->get_cfg_value('userReminderForwardConfirmation', 'TRUE') == 'TRUE');
     $this->alert_delay      = $config->get_cfg_value('userReminderAlertDelay', 15);
     $this->postpone_days    = $config->get_cfg_value('userReminderPostponeDays', 15);
 

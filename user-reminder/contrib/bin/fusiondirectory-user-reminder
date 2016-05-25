@@ -215,10 +215,11 @@ sub read_config_file {
   my %res = ();
   my $config = Config::IniFiles->new( -file => $configfile, -allowempty => 1, -nocase => 1);
 
-  $res{'ldap_configfile'} = $config->val( ldap    => "config",    "/etc/ldap/ldap.conf");
-  $res{'ldap_dn'}         = $config->val( ldap    => "dn",        "");
-  $res{'ldap_password'}   = $config->val( ldap    => "password",  "");
-  $res{'ldap_tls'}        = $config->val( ldap    => "tls",       "off");
+  $res{'ldap_configfile'} = $config->val( ldap  => "config",    "/etc/ldap/ldap.conf");
+  $res{'ldap_dn'}         = $config->val( ldap  => "dn",        "");
+  $res{'ldap_password'}   = $config->val( ldap  => "password",  "");
+  $res{'ldap_tls'}        = $config->val( ldap  => "tls",       "off");
+  $res{'base_url'}        = $config->val( fd    => "url",       "https://localhost/fusiondirectory/");
 
   if ($res{'ldap_tls'} !~ m/^off|on$/i) {
     warn "Unknown value for option ldap/tls: ".$res{'ldap_tls'}." (valid values are on/off)\n";
@@ -235,19 +236,8 @@ sub read_config_file {
 
   undef $res{'ldap_dn'} if ($res{'ldap_dn'} eq '');
 
-  # Days before expiration to send the first mail
-  $res{'alert_delay'}       = 15;
-  # Days after first mail to send a new one
-  $res{'resend_delay'}      = 7;
-  # Should alert mails be forwarded to the manager
-  $res{'forward_alert'}     = 1;
-  # Should the mail confirming the postpone be forwarded to the manager
-  $res{'forward_postpone'}  = 1;
-
-  $res{'user_rdn'}  = 'ou=people,';
-  $res{'token_rdn'} = 'ou=tokens,';
-  $res{'fd_rdn'}    = 'ou=fusiondirectory,';
-  $res{'base_url'}  = 'https://fusiondirectory.tld/fusiondirectory/';
+  $res{'config_rdn'}  = 'cn=config,ou=fusiondirectory';
+  $res{'fd_rdn'}      = 'ou=fusiondirectory,';
 
   return \%res;
 }
@@ -281,35 +271,41 @@ sub branch_exists {
 
 # Read FD config in the LDAP
 sub read_ldap_config {
-  # initiate the LDAP connexion
-  my %hash_ldap_param = get_ldap_connexion();
+  my ($ldap) = @_;
 
-  # LDAP's connection's parameters
-  my $base = $hash_ldap_param{base};
-  my $ldap = $hash_ldap_param{ldap};
+  my $mesg = $ldap->search (base => $config->{'config_rdn'}.','.$config->{'ldap_base'}, filter => '(objectClass=fusionDirectoryConf)', scope => 'base');
+  die_on_ldap_errors($mesg);
 
-  #~ my $mesg = $ldap->search (base => "$configrdn,$base", filter => '(objectClass=fusionDirectoryConf)', scope => 'base');
-  #~ die_on_ldap_errors($mesg);
 
-  #~ if ($mesg->count > 0) {
-    #~ if (($mesg->entries)[0]->exists('fdUserRDN')) {
-      #~ $userrdn = ($mesg->entries)[0]->get_value('fdUserRDN');
-    #~ }
-    #~ if (($mesg->entries)[0]->exists('fdGroupRDN')) {
-      #~ $grouprdn = ($mesg->entries)[0]->get_value('fdGroupRDN');
-    #~ }
-    #~ if (($mesg->entries)[0]->exists('fdAclRoleRDN')) {
-      #~ $aclrolerdn = ($mesg->entries)[0]->get_value('fdAclRoleRDN');
-    #~ }
-    #~ if (($mesg->entries)[0]->exists('fdSystemRDN')) {
-      #~ $systemrdn = ($mesg->entries)[0]->get_value('fdSystemRDN');
-    #~ }
-    #~ if (($mesg->entries)[0]->exists('fdDnsRDN')) {
-      #~ $dnsrdn = ($mesg->entries)[0]->get_value('fdDnsRDN');
-    #~ }
-  #~ }
+  # Days before expiration to send the first mail
+  $config->{'alert_delay'}       = 15;
+  # Days after first mail to send a new one
+  $config->{'resend_delay'}      = 7;
+  # Should alert mails be forwarded to the manager
+  $config->{'forward_alert'}     = 1;
 
-  #~ return ($mesg->entries)[0];
+  $config->{'user_rdn'}  = 'ou=people,';
+  $config->{'token_rdn'} = 'ou=tokens,';
+
+  if ($mesg->count > 0) {
+    if (($mesg->entries)[0]->exists('fdUserRDN')) {
+      $config->{'user_rdn'} = ($mesg->entries)[0]->get_value('fdUserRDN');
+    }
+    if (($mesg->entries)[0]->exists('fdTokenRDN')) {
+      $config->{'token_rdn'} = ($mesg->entries)[0]->get_value('fdTokenRDN');
+    }
+    if (($mesg->entries)[0]->exists('fdUserReminderAlertDelay')) {
+      $config->{'alert_delay'} = ($mesg->entries)[0]->get_value('fdUserReminderAlertDelay');
+    }
+    if (($mesg->entries)[0]->exists('fdUserReminderResendDelay')) {
+      $config->{'resend_delay'} = ($mesg->entries)[0]->get_value('fdUserReminderResendDelay');
+    }
+    if (($mesg->entries)[0]->exists('fdUserReminderForwardAlert')) {
+      $config->{'forward_alert'} = (($mesg->entries)[0]->get_value('fdUserReminderForwardAlert') eq "TRUE");
+    }
+  }
+
+  return ($mesg->entries)[0];
 }
 
 # function that list variables that can be modified by the user
@@ -322,6 +318,7 @@ sub list_vars {
 
 sub check_expired_users {
   my $ldap = get_ldap_connection($config);
+  read_ldap_config($ldap);
 
   my $today = int(time() / 86400); # 24 * 60 * 60
 
@@ -443,6 +440,10 @@ sub store_ldap_token
   $token_hash = "{SHA}".$token_hash;
 
   my $dn = "ou=$uid,".$config->{'token_rdn'}.$config->{'fd_rdn'}.$config->{'ldap_base'};
+
+  if (!branch_exists($ldap, $config->{'token_rdn'}.$config->{'fd_rdn'}.$config->{'ldap_base'})) {
+    create_branch($ldap, $config->{'fd_rdn'}.$config->{'ldap_base'}, $config->{'token_rdn'});
+  }
 
   my $mesg = $ldap->add(
     $dn,
