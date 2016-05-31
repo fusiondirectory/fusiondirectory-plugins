@@ -134,8 +134,10 @@ class csvimport extends simplePlugin
     $this->template_object = new template($this->type, $this->template_dn);
     $attributes = array();
     $fields = array();
-    foreach ($this->csv_data[0] as $key => $field_value) {
-      $fields[$key] = $key.' - '.$field_value;
+    if (isset($this->csv_data[0])) {
+      foreach ($this->csv_data[0] as $key => $field_value) {
+        $fields[$key] = $key.' - '.$field_value;
+      }
     }
     $fields = array_merge($fields, $this->fixed_values);
     $tpl_attributes = $this->template_object->serialize();
@@ -144,42 +146,70 @@ class csvimport extends simplePlugin
     reset($fields);
     foreach ($tpl_attributes as $class => $class_infos) {
       foreach ($class_infos['attrs'] as $attr => $attr_infos) {
-        $choices  = $fields;
-        $value    = NULL;
-        $ldapName = 'template_'.$class.':'.$attr_infos['id'];
-        if (isset ($attr_infos['choices'])) {
-          $choices = array_merge($choices, array_values($attr_infos['choices']));
-          $this->cachedChoices[$ldapName] = array_keys($attr_infos['choices']);
-          if (isset($attr_infos['value']) && !empty($attr_infos['value'])) {
-            $value = count($fields) + count($this->fixed_values) + array_search($attr_infos['value'], $this->cachedChoices[$ldapName]);
-          }
-        }
-        if ($value === NULL) {
-          $value = key($fields);
-          next($fields);
-        }
-        if (in_array('SetAttribute', $attr_infos['type'])) {
-          $attributesObjects[] = new SetAttribute(
-            new SelectAttribute(
-              $class_infos['name'].' > '.$attr_infos['label'], '',
-              $ldapName, TRUE,
-              array_keys($choices), $value,
-              array_values($choices)
-            )
-          );
-        } else {
-          $attributesObjects[] =
-            new SelectAttribute(
-              $class_infos['name'].' > '.$attr_infos['label'], '',
-              $ldapName, TRUE,
-              array_keys($choices), $value,
-              array_values($choices)
-            );
+        if ($attr_infos['visible']) {
+          $attributesObjects[] = $this->build_attribute($fields, $class, $class_infos, $attr, $attr_infos);
         }
       }
     }
     $this->attributesAccess['fields']->setAttributes($attributesObjects);
     $this->attributesAccess['import_submit_fields']->setDisabled(FALSE);
+  }
+
+  private function build_attribute(&$fields, $class, $class_infos, $attr, $attr_infos)
+  {
+    $choices  = $fields;
+    $value    = NULL;
+    $ldapName = 'template_'.$class.':'.$attr;
+    if (isset ($attr_infos['choices'])) {
+      $choices = array_merge($choices, array_values($attr_infos['choices']));
+      $this->cachedChoices[$ldapName] = array_keys($attr_infos['choices']);
+      if (isset($attr_infos['value']) && !empty($attr_infos['value'])) {
+        $value = count($fields) + count($this->fixed_values) + array_search($attr_infos['value'], $this->cachedChoices[$ldapName]);
+      }
+    }
+    if ($value === NULL) {
+      $value = key($fields);
+      next($fields);
+    }
+    if (isset($attr_infos['attributes'])) {
+      $subattrs = array();
+      foreach ($attr_infos['attributes'] as $subattr => $subattr_infos) {
+        if ($subattr_infos['visible']) {
+          $subattribute = $this->build_attribute($fields, $class, $class_infos, $subattr, $subattr_infos);
+        } else {
+          $this->cachedChoices['template_'.$class.':'.$subattr] = array($attr_infos['value']);
+          $subattribute = new HiddenAttribute('template_'.$class.':'.$subattr, FALSE, count($fields) + count($this->fixed_values));
+        }
+        $subattrs[$subattribute->getLdapName()] = $subattribute;
+      }
+      return new CompositeAttribute(
+        '', $ldapName,
+        $subattrs,
+        FALSE, FALSE
+      );
+    }
+    if ($value === NULL) {
+      $value = key($fields);
+      next($fields);
+    }
+    if (in_array('SetAttribute', $attr_infos['type'])) {
+      return new SetAttribute(
+        new SelectAttribute(
+          $class_infos['name'].' > '.$attr_infos['label'], '',
+          $ldapName, TRUE,
+          array_keys($choices), $value,
+          array_values($choices)
+        )
+      );
+    } else {
+      return
+        new SelectAttribute(
+          $class_infos['name'].' > '.$attr_infos['label'], '',
+          $ldapName, TRUE,
+          array_keys($choices), $value,
+          array_values($choices)
+        );
+    }
   }
 
   function handle_import_submit_fields()
@@ -189,27 +219,7 @@ class csvimport extends simplePlugin
       $values = array();
       foreach ($this->attributesAccess['fields']->attributes as $attribute) {
         preg_match('/^template_([^:]+):(.*)$/', $attribute->getLdapName(), $m);
-        $i = $attribute->getValue();
-        if (is_array($i)) {
-          foreach ($i as $j) {
-            $values[$m[1]][$m[2]] = array();
-            if ($j < count($row)) {
-              $values[$m[1]][$m[2]][] = $row[$j];
-            } elseif ($j < (count($row) + count($this->fixed_values))) {
-              $values[$m[1]][$m[2]][] = $this->fixed_values[$j - count($row)];
-            } else {
-              $values[$m[1]][$m[2]][] = $this->cachedChoices[$attribute->getLdapName()][$j - count($row) - count($this->fixed_values)];
-            }
-          }
-        } else {
-          if ($i < count($row)) {
-            $values[$m[1]][$m[2]] = $row[$i];
-          } elseif ($i < (count($row) + count($this->fixed_values))) {
-            $values[$m[1]][$m[2]] = $this->fixed_values[$i - count($row)];
-          } else {
-            $values[$m[1]][$m[2]] = $this->cachedChoices[$attribute->getLdapName()][$i - count($row) - count($this->fixed_values)];
-          }
-        }
+        $values[$m[1]][$m[2]] = $this->compute_attribute_value($attribute, $row);
       }
       $this->template_object->reset();
       $this->template_object->deserialize($values);
@@ -226,6 +236,35 @@ class csvimport extends simplePlugin
     }
     if ($success > 0) {
       msg_dialog::display(_('Success'), sprintf(_('Successfully imported %d entries'), $success), INFO_DIALOG);
+    }
+  }
+
+  private function compute_attribute_value($attribute, $row, $i = NULL)
+  {
+    if ($attribute instanceof CompositeAttribute) {
+      $value = array();
+      foreach ($attribute->attributes as $key => $subattribute) {
+        $value[$key] = $this->compute_attribute_value($subattribute, $row);
+      }
+      return $value;
+    }
+    if ($i === NULL) {
+      $i = $attribute->getValue();
+    }
+    if (is_array($i)) {
+      $value = array();
+      foreach ($i as $k => $j) {
+        $value[] = $this->compute_attribute_value($attribute, $row, $j);
+      }
+      return $value;
+    } else {
+      if ($i < count($row)) {
+        return $row[$i];
+      } elseif ($i < (count($row) + count($this->fixed_values))) {
+        return $this->fixed_values[$i - count($row)];
+      } else {
+        return $this->cachedChoices[$attribute->getLdapName()][$i - count($row) - count($this->fixed_values)];
+      }
     }
   }
 
