@@ -51,17 +51,17 @@ class userReminderConfig extends simplePlugin
             0, FALSE, 7
           ),
           new IntAttribute (
-            _('Postpone duration'), _('Number of days to postpone the expiration of'),
+            _('Extension of the validity'), _('Extension of the duration of the account in days'),
             'fdUserReminderPostponeDays', TRUE,
             1, FALSE, 15
           ),
           new BooleanAttribute (
-            _('Forward alerts'), _('Whether to forward alerts to manager'),
+            _('Forward alerts to the manager'), _('Forward alerts to manager'),
             'fdUserReminderForwardAlert', TRUE,
             TRUE
           ),
           new BooleanAttribute (
-            _('Forward confirmations'), _('Whether to forward postpone confirmation to manager'),
+            _('Forward prolongation to the manager'), _('Forward extension confirmation to manager'),
             'fdUserReminderForwardConfirmation', TRUE,
             TRUE
           ),
