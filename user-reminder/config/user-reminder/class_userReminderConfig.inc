@@ -41,12 +41,12 @@ class userReminderConfig extends simplePlugin
         'name'  => _('user-reminder'),
         'attrs' => array(
           new IntAttribute (
-            _('Expiration delay'), _('Days before expiration to send the first mail'),
+            _('Delay before expiration'), _('Days before expiration to send the first mail'),
             'fdUserReminderAlertDelay', TRUE,
             1, FALSE, 15
           ),
           new IntAttribute (
-            _('Resend delay'), _('Days before sending a second mail (0 to disable)'),
+            _('Delay before sending again'), _('Days before sending a second mail (0 to disable)'),
             'fdUserReminderResendDelay', TRUE,
             0, FALSE, 7
           ),
@@ -56,12 +56,12 @@ class userReminderConfig extends simplePlugin
             1, FALSE, 15
           ),
           new BooleanAttribute (
-            _('Forward alerts to the manager'), _('Forward alerts to manager'),
+            _('Forward alerts to the manager'), _('Forward alerts to the manager'),
             'fdUserReminderForwardAlert', TRUE,
             TRUE
           ),
           new BooleanAttribute (
-            _('Forward prolongation to the manager'), _('Forward extension confirmation to manager'),
+            _('Forward prolongation to the manager'), _('Forward extension confirmation to the manager'),
             'fdUserReminderForwardConfirmation', TRUE,
             TRUE
           ),
