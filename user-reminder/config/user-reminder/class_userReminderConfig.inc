@@ -25,8 +25,8 @@ class userReminderConfig extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'     => _('User reminder configuration'),
-      'plDescription'   => _('FusionDirectory user-reminder script configuration'),
+      'plShortName'     => _('Configuration reminder of accounts expiration'),
+      'plDescription'   => _('Configuration for the reminder of accounts expiration'),
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 
@@ -38,7 +38,7 @@ class userReminderConfig extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('user-reminder'),
+        'name'  => _('accounts expiration reminder'),
         'attrs' => array(
           new IntAttribute (
             _('Delay before expiration'), _('Days before expiration to send the first mail'),
@@ -61,7 +61,7 @@ class userReminderConfig extends simplePlugin
             TRUE
           ),
           new BooleanAttribute (
-            _('Forward prolongation to the manager'), _('Forward extension confirmation to the manager'),
+            _('Forward confirmation to the manager'), _('Forward account extension confirmation to the manager'),
             'fdUserReminderForwardConfirmation', TRUE,
             TRUE
           ),
