@@ -31,9 +31,9 @@ session::start();
 session::global_set('errorsAlreadyPosted',array());
 
 /* Logged in? Simple security check */
-if (!session::global_is_set('ui')){
-  new log("security","unknown","",array(),"Error: getFAIstatus.php called without session") ;
-  header ("Location: index.php");
+if (!session::global_is_set('ui')) {
+  logging::log('security', 'unknown', '', array(), 'Error: getFAIstatus.php called without session');
+  header ('Location: index.php');
   exit;
 }
 
