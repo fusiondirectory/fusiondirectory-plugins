@@ -214,6 +214,9 @@ sub get_ldap_connection {
 sub read_config_file {
   my %res = ();
   my $config = Config::IniFiles->new( -file => $configfile, -allowempty => 1, -nocase => 1);
+  if (not defined $config) {
+    die "Could not read configuration file $configfile".$die_endl;
+  }
 
   $res{'ldap_configfile'} = $config->val( ldap  => "config",    "/etc/ldap/ldap.conf");
   $res{'ldap_dn'}         = $config->val( ldap  => "dn",        "");
@@ -388,15 +391,17 @@ sub send_alert_mail
   my ($ldap, $uid, $date, $user_cn, $user_mail, $manager_cn, $manager_mail) = @_;
   my $token = store_ldap_token($ldap, $uid, $date);
   print "Sending mail to $user_cn<$user_mail>";
+  my $cc = "";
   if (defined $manager_mail) {
     print ", copy to $manager_cn<$manager_mail>";
+    $cc = "$manager_cn<$manager_mail>";
   }
   print " with token $token\n";
   my $message = Email::MIME->create(
     header_str => [
       From    => 'from@mail.com',
       To      => "$user_cn<$user_mail>",
-      Cc      => "$manager_cn<$manager_mail>",
+      Cc      => $cc,
       Subject => 'Your account is about to expire!',
     ],
     attributes => {
