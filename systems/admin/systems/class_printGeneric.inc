@@ -384,7 +384,7 @@ class printgeneric extends plugin
 
     if ($this->is_account && !$this->view_logged) {
       $this->view_logged = TRUE;
-      new log("view", "printer/".get_class($this), $this->dn);
+      logging::log('view', 'printer/'.get_class($this), $this->dn);
     }
 
     /* If type of printer couldn't be detected (because of missing parent object in construction)
@@ -747,7 +747,7 @@ class printgeneric extends plugin
       $this->netConfigDNS->remove_from_parent();
       $ldap->rmdir($this->dn);
 
-      new log("remove", "printer/".get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
+      logging::log('remove', 'printer/'.get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
 
       if (!$ldap->success()) {
         msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()), LDAP_ERROR);
@@ -1043,13 +1043,13 @@ class printgeneric extends plugin
 
       $ldap->add($this->attrs);
       $this->handle_post_events("add", array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
-      new log("create", "printer/".get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
+      logging::log('create', 'printer/'.get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
     } else {
       $ldap->cd($this->dn);
       $this->cleanup();
       $ldap->modify ($this->attrs);
       $this->handle_post_events("modify", array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
-      new log("modify", "printer/".get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
+      logging::log('modify', 'printer/'.get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
     }
     if (!$ldap->success()) {
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);

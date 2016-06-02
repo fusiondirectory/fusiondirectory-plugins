@@ -296,7 +296,7 @@ class serviceKolab extends simpleService
       }
     }
 
-    new log("remove", "service/".get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
+    logging::log('remove', 'service/'.get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
 
     /* Optionally execute a command after we're done */
     $this->handle_post_events("remove");
