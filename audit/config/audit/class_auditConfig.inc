@@ -40,6 +40,11 @@ class auditConfig extends simplePlugin
       'main' => array(
         'name'  => _('Audit'),
         'attrs' => array(
+          new StringAttribute (
+            _('Audit RDN'), _('Branch in which audit events will be stored'),
+            'fdAuditRDN', TRUE,
+            'ou=audit'
+          ),
           new SetAttribute (
             new SelectAttribute (
               _('Actions to audit'), _('Which actions should be stored in LDAP audit log'),
