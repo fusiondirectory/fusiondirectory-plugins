@@ -32,6 +32,7 @@ class auditEvent extends simplePlugin
         'filter'      => 'objectClass=fdAuditEvent',
         'icon'        => 'geticon.php?context=applications&icon=audit&size=16',
         'ou'          => get_ou('auditRDN'),
+        'mainAttr'    => FALSE,
       )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -60,6 +61,11 @@ class auditEvent extends simplePlugin
         )
       ),
     );
+  }
+
+  function compute_dn()
+  {
+    return $this->create_unique_dn('fdAuditDateTime', get_ou('auditRDN').$this->base);
   }
 }
 ?>
