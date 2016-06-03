@@ -35,6 +35,8 @@ class GeneralizedTimeDisplayAttribute extends GeneralizedTimeDateAttribute
 
 class auditEvent extends simplePlugin
 {
+  public $base;
+
   var $objectclasses = array('fdAuditEvent');
 
   public static function plInfo()
@@ -62,7 +64,6 @@ class auditEvent extends simplePlugin
       'main' => array(
         'name'  => _('Event'),
         'attrs' => array(
-          new HiddenAttribute('base'),
           new GeneralizedTimeDisplayAttribute(
             _('Time'), _('Date and time this event happened'),
             'fdAuditDateTime', TRUE
