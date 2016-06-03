@@ -1,0 +1,515 @@
+#!/usr/bin/perl
+
+########################################################################
+#
+#  fusiondirectory-user-reminder
+#
+#  Check for expired users and send them a mail allowing to postpone expiration
+#
+#  This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+#  Copyright (C) 2016  FusionDirectory
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+#
+########################################################################
+
+use strict;
+use warnings;
+use 5.008;
+
+# used to handle ldap connections
+use Net::LDAP;
+
+use Digest::SHA qw(sha256_base64);
+
+# To hide password input
+use Term::ReadKey;
+
+#~ use Data::Dumper;
+use Config::IniFiles;
+
+# first, create your message
+use Email::MIME;
+
+# send the message
+use Email::Sender::Simple qw(sendmail);
+
+my $yes_flag = 0;
+
+my $configfile = "/etc/fusiondirectory/fusiondirectory-user-reminder.conf";
+
+my $die_endl = "\n"; # Change to "" to have verbose dies
+
+my $config;
+
+##########################################################################################
+
+# ask a question send as parameter, and return true if the answer is "yes"
+sub ask_yn_question {
+  return 1 if ($yes_flag);
+  my ($question) = @_;
+  print ( "$question [Yes/No]?\n" );
+
+  while ( my $input = <STDIN> ) {
+    # remove the \n at the end of $input
+    chomp $input;
+
+    # if user's answer is "yes"
+    if ( lc($input) eq "yes" || lc($input) eq "y") {
+      return 1;
+    # else if he answer "no"
+    } elsif ( lc($input) eq "no" || lc($input) eq "n") {
+      return 0;
+    }
+  }
+}
+
+# function that ask for an user input and do some checks
+sub ask_user_input {
+ my ($thing_to_ask, $default_answer, $hide_input) = @_;
+ my $answer;
+
+ if (defined $default_answer) {
+   $thing_to_ask .= " [$default_answer]";
+ }
+ print $thing_to_ask.":\n";
+
+ if (defined $hide_input && $hide_input) {
+   ReadMode('noecho');
+ }
+
+ do
+ {
+   if ($answer = <STDIN>) {
+     chomp $answer;
+     $answer =~ s/^\s+|\s+$//g;
+   } else {
+     $answer = "";
+   }
+ } while (($answer eq "") && (not defined $default_answer));
+
+ ReadMode('restore');
+
+ if ($answer eq "") {
+   return $default_answer;
+ }
+ return $answer;
+}
+
+# Die on all LDAP error except for «No such object»
+sub die_on_ldap_errors
+{
+  my ($mesg) = @_;
+  if (($mesg->code != 0) && ($mesg->code != 32)) {
+    die $mesg->error;
+  }
+}
+
+######################################################
+
+sub get_random_string {
+  my ($size) = @_;
+  $size = 32 if !$size;
+  my @chars = ("A".."Z", "a".."z", '.', '/', 0..9);
+  my $string;
+  $string .= $chars[rand @chars] for 1..$size;
+  return $string;
+}
+
+#############################################################
+
+# function that initiate the ldap connexion and bind
+sub get_ldap_connection {
+  my ($config)  = @_;
+
+  # Parse ldap config
+  open (LDAPCONF, $config->{'ldap_configfile'}) or die "Could not open ".$config->{'ldap_configfile'}."\n";
+
+  my @content = <LDAPCONF>;
+  close(LDAPCONF);
+
+  my ($ldap_base, @ldap_uris, %tls_options);
+  # Scan LDAP config
+  foreach my $line (@content) {
+    $line =~ /^\s*(#|$)/ && next;
+    chomp($line);
+
+    if ($line =~ /^BASE\s+(.*)$/i) {
+      $ldap_base = $1;
+      next;
+    }
+    if ($line =~ /^URI\s+(.*)\s*$/i) {
+      my (@ldap_servers) = split( ' ', $1 );
+      foreach my $server (@ldap_servers) {
+        if ( $server =~ /^((ldap[si]?:\/\/)([^\/:\s]+)?(:([0-9]+))?\/?)$/ ) {
+          my $ldap_server = $3 ? $1 : $2.'localhost';
+          $ldap_server =~ s/\/\/127\.0\.0\.1/\/\/localhost/;
+          push @ldap_uris, $ldap_server
+          if ( ! grep { $_ =~ /^$ldap_server$/ } @ldap_uris );
+        }
+      }
+      next;
+    }
+    if ($line =~ m/^TLS_(REQCERT|CERT|KEY|CACERTDIR)\s+(.*)\s*$/) {
+      $tls_options{$1} = $2;
+      next;
+    }
+  }
+
+  if ( ! defined $ldap_base ) {
+    die "Couldn't find LDAP base in config!$die_endl";
+  }
+
+  $config->{'ldap_base'} = $ldap_base;
+
+  if ( scalar(@ldap_uris) == 0 ) {
+    die "Couldn't find LDAP URI in config!$die_endl";
+  }
+
+  my $ldap = Net::LDAP->new( \@ldap_uris );
+
+  if ( ! defined $ldap ) {
+    die "LDAP 'new' error: '$@' with parameters '".join(",",@ldap_uris)."'$die_endl";
+  }
+
+  if ($config->{'ldap_tls'}) {
+    $ldap->start_tls(
+      verify      => $tls_options{'REQCERT'},
+      clientcert  => $tls_options{'CERT'},
+      clientkey   => $tls_options{'KEY'},
+      capath      => $tls_options{'CACERTDIR'}
+    );
+  }
+
+  my $mesg;
+  if( defined $config->{'ldap_dn'} ) {
+    if( defined $config->{'ldap_password'} ) {
+      $mesg = $ldap->bind( $config->{'ldap_dn'}, password => $config->{'ldap_password'} );
+    } else {
+      $mesg = $ldap->bind( $config->{'ldap_dn'} );
+    }
+  } else {
+    $mesg = $ldap->bind(); # Anonymous bind
+  }
+
+  if ( $mesg->code != 0 ) {
+    die "LDAP bind error: " . $mesg->error . "(" . $mesg->code . ")$die_endl";
+  }
+
+  return $ldap;
+}
+
+sub read_config_file {
+  my %res = ();
+  my $config = Config::IniFiles->new( -file => $configfile, -allowempty => 1, -nocase => 1);
+  if (not defined $config) {
+    die "Could not read configuration file $configfile".$die_endl;
+  }
+
+  $res{'ldap_configfile'} = $config->val( ldap  => "config",    "/etc/ldap/ldap.conf");
+  $res{'ldap_dn'}         = $config->val( ldap  => "dn",        "");
+  $res{'ldap_password'}   = $config->val( ldap  => "password",  "");
+  $res{'ldap_tls'}        = $config->val( ldap  => "tls",       "off");
+  $res{'base_url'}        = $config->val( fd    => "url",       "https://localhost/fusiondirectory/");
+
+  if ($res{'ldap_tls'} !~ m/^off|on$/i) {
+    warn "Unknown value for option ldap/tls: ".$res{'ldap_tls'}." (valid values are on/off)\n";
+  }
+  $res{'ldap_tls'} = ($res{'ldap_tls'} =~ m/^on$/i);
+
+  if (!defined $res{'ldap_configfile'}) {
+    if (exists $ENV{'LDAPCONF'}) {
+      $res{'ldap_configfile'} = $ENV{'LDAPCONF'};
+    } else {
+      $res{'ldap_configfile'} = "/etc/ldap/ldap.conf";
+    }
+  }
+
+  undef $res{'ldap_dn'} if ($res{'ldap_dn'} eq '');
+
+  $res{'config_rdn'}  = 'cn=config,ou=fusiondirectory';
+  $res{'fd_rdn'}      = 'ou=fusiondirectory,';
+
+  return \%res;
+}
+
+sub create_branch {
+  my ($ldap, $base, $ou) = @_;
+  $ou =~ m/^ou=([^,]*),?$/ or die "Can’t create branch of unknown type $ou\n";
+  my $branch_add = $ldap->add( "$ou,$base",
+    attr => [
+      'ou'  => $1,
+      'objectClass' =>  'organizationalUnit'
+      ]
+  );
+
+  $branch_add->code && die "! failed to add LDAP's $ou,$base branch: ".$branch_add->error."\n";
+}
+
+sub branch_exists {
+  my ($ldap, $branch) = @_;
+
+  # search for branch
+  my $branch_mesg = $ldap->search (base => $branch, filter => '(objectClass=*)', scope => 'base');
+  if ($branch_mesg->code == 32) {
+    return 0;
+  }
+  $branch_mesg->code && die $branch_mesg->error;
+
+  my @entries = $branch_mesg->entries;
+  return (defined ($entries[0]));
+}
+
+# Read FD config in the LDAP
+sub read_ldap_config {
+  my ($ldap) = @_;
+
+  my $mesg = $ldap->search (base => $config->{'config_rdn'}.','.$config->{'ldap_base'}, filter => '(objectClass=fusionDirectoryConf)', scope => 'base');
+  die_on_ldap_errors($mesg);
+
+
+  # Days before expiration to send the first mail
+  $config->{'alert_delay'}       = 15;
+  # Days after first mail to send a new one
+  $config->{'resend_delay'}      = 7;
+  # Should alert mails be forwarded to the manager
+  $config->{'forward_alert'}     = 1;
+
+  $config->{'user_rdn'}  = 'ou=people,';
+  $config->{'token_rdn'} = 'ou=tokens,';
+
+  if ($mesg->count > 0) {
+    if (($mesg->entries)[0]->exists('fdUserRDN')) {
+      $config->{'user_rdn'} = ($mesg->entries)[0]->get_value('fdUserRDN');
+    }
+    if (($mesg->entries)[0]->exists('fdTokenRDN')) {
+      $config->{'token_rdn'} = ($mesg->entries)[0]->get_value('fdTokenRDN');
+    }
+    if (($mesg->entries)[0]->exists('fdUserReminderAlertDelay')) {
+      $config->{'alert_delay'} = ($mesg->entries)[0]->get_value('fdUserReminderAlertDelay');
+    }
+    if (($mesg->entries)[0]->exists('fdUserReminderResendDelay')) {
+      $config->{'resend_delay'} = ($mesg->entries)[0]->get_value('fdUserReminderResendDelay');
+    }
+    if (($mesg->entries)[0]->exists('fdUserReminderForwardAlert')) {
+      $config->{'forward_alert'} = (($mesg->entries)[0]->get_value('fdUserReminderForwardAlert') eq "TRUE");
+    }
+  }
+
+  return ($mesg->entries)[0];
+}
+
+# function that list variables that can be modified by the user
+sub list_vars {
+  while ( my ($key, $value) = each(%$config) ) {
+    print "$key\t[$value]"."\n";
+  }
+  exit 0;
+}
+
+sub check_expired_users {
+  my $ldap = get_ldap_connection($config);
+  read_ldap_config($ldap);
+
+  my $today = int(time() / 86400); # 24 * 60 * 60
+
+  my $next_expired_date = ($today + $config->{'alert_delay'});
+
+  my $filter = '(&(objectClass=person)(shadowExpire=*))';
+  my $mesg = $ldap->search(
+    base    => $config->{'ldap_base'},
+    filter  => $filter,
+    scope   => 'subtree'
+  );
+  die_on_ldap_errors($mesg);
+
+  foreach my $entry ($mesg->entries()) {
+    my $cn = $entry->get_value('cn');
+    if ($entry->get_value('shadowExpire') <= $today) {
+      print "$cn is Expired\n";
+    } elsif ($entry->get_value('shadowExpire') <= $next_expired_date) {
+      #~ Check if we have a mail address for this user.
+      my $mail_address = $entry->get_value('mail');
+      if (not defined $mail_address) {
+        print "User $cn has no mail address, skipping…\n";
+        next;
+      }
+      my ($token_hash, $token_date) = get_ldap_token($ldap, $entry->get_value('uid'));
+      #~ Check if we already sent an email.
+      if ((defined $token_date) && ($token_date + $config->{'resend_delay'} > $today)) {
+        print "User $cn was already sent a mail, not resending yet.\n";
+        next;
+      }
+      my ($manager_cn, $manager_mail);
+      if ($config->{'forward_alert'}) {
+        #~ Find the manager
+        my $manager_dn = $entry->get_value('manager');
+        if (not defined $manager_dn) {
+          my $ou = $entry->dn;
+          $ou =~ s/^[^,]+,$config->{'user_rdn'}//;
+          my $manager_mesg = $ldap->search(
+            base    => $ou,
+            filter  => '(objectClass=*)',
+            scope   => 'base'
+          );
+          if ($manager_mesg->count() > 0) {
+            $manager_dn = ($manager_mesg->entries)[0]->get_value('manager');
+          }
+        }
+        if (not defined $manager_dn) {
+          print "No manager found for $cn\n";
+        }
+        my $manager_mesg = $ldap->search(
+          base    => $manager_dn,
+          filter  => '(objectClass=*)',
+          scope   => 'base'
+        );
+        if ($manager_mesg->count() > 0) {
+          $manager_cn   = ($manager_mesg->entries)[0]->get_value('cn');
+          $manager_mail = ($manager_mesg->entries)[0]->get_value('mail');
+        }
+      }
+      send_alert_mail($ldap, $entry->get_value('uid'), $today, $cn, $mail_address, $manager_cn, $manager_mail);
+    }
+  }
+}
+
+sub send_alert_mail
+{
+  my ($ldap, $uid, $date, $user_cn, $user_mail, $manager_cn, $manager_mail) = @_;
+  my $token = store_ldap_token($ldap, $uid, $date);
+  print "Sending mail to $user_cn<$user_mail>";
+  my $cc = "";
+  if (defined $manager_mail) {
+    print ", copy to $manager_cn<$manager_mail>";
+    $cc = "$manager_cn<$manager_mail>";
+  }
+  print " with token $token\n";
+  my $message = Email::MIME->create(
+    header_str => [
+      From    => 'from@mail.com',
+      To      => "$user_cn<$user_mail>",
+      Cc      => $cc,
+      Subject => 'Your account is about to expire!',
+    ],
+    attributes => {
+      encoding => 'quoted-printable',
+      charset  => 'ISO-8859-1',
+    },
+    body_str => "Dear $user_cn, your account $uid is about to expire, please use this link to avoid this: \n".
+                $config->{'base_url'}."expired_postpone.php?uid=$uid&token=$token\n",
+  );
+  sendmail($message);
+}
+
+sub get_ldap_token
+{
+  my ($ldap, $uid) = @_;
+
+  my $dn = "ou=$uid,".$config->{'token_rdn'}.$config->{'fd_rdn'}.$config->{'ldap_base'};
+
+  my $mesg = $ldap->search(
+    base    => $dn,
+    filter  => "(ou=$uid)",
+    scope   => 'base'
+  );
+
+  if ($mesg->count()) {
+    return (($mesg->entries)[0]->get_value('userPassword'), ($mesg->entries)[0]->get_value('description'));
+  } else {
+    return ();
+  }
+}
+
+sub store_ldap_token
+{
+  my ($ldap, $uid, $date) = @_;
+
+  my $token_password  = get_random_string(48);
+  my $token_hash      = sha256_base64('expired'.$token_password);
+  while (length($token_hash) % 4) {
+    $token_hash .= '=';
+  }
+  $token_hash = "{SHA}".$token_hash;
+
+  my $dn = "ou=$uid,".$config->{'token_rdn'}.$config->{'fd_rdn'}.$config->{'ldap_base'};
+
+  if (!branch_exists($ldap, $config->{'token_rdn'}.$config->{'fd_rdn'}.$config->{'ldap_base'})) {
+    create_branch($ldap, $config->{'fd_rdn'}.$config->{'ldap_base'}, $config->{'token_rdn'});
+  }
+
+  my $mesg = $ldap->add(
+    $dn,
+    attr => [
+      'ou'            => $uid,
+      'objectClass'   => 'organizationalUnit',
+      'userPassword'  => $token_hash,
+      'description'   => $date
+    ]
+  );
+
+  $mesg->code && die "! failed to add LDAP's $dn token: ".$mesg->error."\n";
+
+  return $token_password;
+}
+
+#################### main function #####################
+
+$config = read_config_file();
+
+my @vars_keys = keys %$config;
+
+my %commands = ();
+$commands{"--list-vars"}            = ["List possible vars to give --set",              \&list_vars];
+$commands{"--set-VAR=value"}        = ["Set the variable VAR to value see --list-vars", \&die]; # Won't be called because it contains uppercase
+
+my $usage = 0;
+
+foreach my $arg ( @ARGV ) {
+  if (( lc($arg) =~ m/^--set-(.*)=(.*)$/ ) && (grep {$_ eq lc($1)} @vars_keys)) {
+    $config->{lc($1)} = $2;
+    print "Setting $1 to $2\n";
+  } elsif ( defined $commands { lc ( $arg ) } ) {
+    my @command = @{ $commands{ $arg } };
+    print( $command[0]."\n" );
+    $command[1]();
+  } elsif ( ( lc($arg) eq "--help" ) || ( lc($arg) eq "-h" ) ) {
+    print ( "\nCommands:\n" );
+    while ( my ( $key,$value ) = each %commands ) {
+      print ( "$key\t".$value->[0]."\n" );
+    }
+    print ("--yes\t\t\tAlways answer yes to yes/no questions\n");
+    print ("--help\t\t\tShows this help\n\n");
+    exit 0;
+  } elsif (( lc($arg) eq "--yes" ) || ( lc($arg) eq "-y" )) {
+    $yes_flag = 1;
+  } else {
+    print ("\nInvalid argument\n\n");
+    $usage = 1;
+  }
+}
+
+if( $usage ) {
+  print ( "Usage : $0 [--yes]" );
+  foreach my $command ( keys ( %commands )) {
+    print ( " [$command]" );
+  }
+  print "\n\n";
+} else {
+  check_expired_users();
+}
+exit 0;
+
+__END__

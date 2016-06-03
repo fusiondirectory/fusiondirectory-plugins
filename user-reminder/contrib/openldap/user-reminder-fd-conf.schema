@@ -1,0 +1,43 @@
+##
+## user-reminder-fd-conf.schema - Needed by Fusion Directory for user-reminder configuration
+##
+
+# Attributes
+
+attributetype ( 1.3.6.1.4.1.38414.59.1.1 NAME 'fdUserReminderAlertDelay'
+  DESC 'FusionDirectory - Days before expiration to send the first mail'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.59.1.2 NAME 'fdUserReminderResendDelay'
+  DESC 'FusionDirectory - Days before sending a second mail (0 to disable)'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.59.1.3 NAME 'fdUserReminderPostponeDays'
+  DESC 'FusionDirectory - Number of days to postpone the expiration of'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.59.1.4 NAME 'fdUserReminderForwardAlert'
+  DESC 'FusionDirectory - Forward alerts to manager'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.59.1.5 NAME 'fdUserReminderForwardConfirmation'
+  DESC 'FusionDirectory - Forward postpone confirmations to manager'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
+# Object Class
+
+objectclass ( 1.3.6.1.4.1.38414.59.2.1 NAME 'fdUserReminderPluginConf'
+  DESC 'FusionDirectory user-reminder plugin configuration'
+  SUP top AUXILIARY
+  MUST ( cn $ fdUserReminderAlertDelay $ fdUserReminderResendDelay $
+  fdUserReminderPostponeDays $ fdUserReminderForwardAlert $ fdUserReminderForwardConfirmation ) )

@@ -149,7 +149,7 @@ class systemManagement extends simpleManagement
           if ($o_queue->is_currently_installing($mac_address)) {
             msg_dialog::display(_('Action canceled'), sprintf(_('System %s is currently installing'), $dn), ERROR_DIALOG);
             unset($mac[$key]);
-            new log('security', 'systems/'.get_class($this), '', array(), 'Skip adding "argonautAction::'.$type.'" for mac "'.$mac_address.'", there is already a job in progress.');
+            logging::log('security', 'systems/'.get_class($this), '', array(), 'Skip adding "argonautAction::'.$type.'" for mac "'.$mac_address.'", there is already a job in progress.');
           }
         }
       }

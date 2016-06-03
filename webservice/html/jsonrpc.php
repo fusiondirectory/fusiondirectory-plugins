@@ -68,7 +68,7 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
   if (session::global_is_set('LOGIN') && session::global_is_set('config') && session::global_is_set('plist')) {
     $config = session::global_get('config');
     $plist  = session::global_get('plist');
-    $ui     = $plist->ui;
+    $ui     = session::global_get('ui');
   } else {
     $config = new config(CONFIG_DIR."/".CONFIG_FILE, $BASE_DIR);
     if ($ldap === NULL) {
@@ -104,11 +104,12 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
     }
     session::global_set('LOGIN', TRUE);
     $plist = new pluglist();
-    session::global_set('plist', $plist);
     $config->loadPlist($plist);
     $config->get_departments();
     $config->make_idepartments();
     session::global_set('config', $config);
+    session::global_set('plist',  $plist);
+    session::global_set('ui',     $ui);
   }
 }
 
@@ -127,6 +128,7 @@ class fdRPCService
 
   function __call($method, $params)
   {
+    global $config;
     if (preg_match('/^_(.*)$/', $method, $m)) {
       throw new Exception("Non existing method '$m[1]'");
     }
@@ -146,19 +148,18 @@ class fdRPCService
       initiateRPCSession(array_shift($params));
     }
 
-    global $config;
     $this->ldap = $config->get_ldap_link();
     if (!$this->ldap->success()) {
       die('Ldap error: '.$this->ldap->get_error());
     }
     $this->ldap->cd($config->current['BASE']);
 
-    new log("debug", "JSON-RPC", 'Method '.$method, array(), "Params:".print_r($params, TRUE));
+    logging::log('debug', 'JSON-RPC', 'Method '.$method, array(), 'Params:'.print_r($params, TRUE));
 
     return call_user_func_array(array($this, '_'.$method), $params);
   }
 
-  protected function checkAccess($type, $tab = NULL, $dn = NULL)
+  protected function checkAccess($type, $tabs = NULL, $dn = NULL)
   {
     global $ui;
     $infos = objects::infos($type);
@@ -171,10 +172,15 @@ class fdRPCService
     if (!$plist->check_access($infos['aclCategory'].$self)) {
       throw new Exception("Unsufficient rights for accessing type '$type$self'");
     }
-    if ($tab !== NULL) {
-      $pInfos = pluglist::pluginInfos($tab);
-      if (!$plist->check_access(join($self.',', $pInfos['plCategory']).$self)) {
-        throw new Exception("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
+    if ($tabs !== NULL) {
+      if (!is_array($tabs)) {
+        $tabs = array($tabs);
+      }
+      foreach ($tabs as $tab) {
+        $pInfos = pluglist::pluginInfos($tab);
+        if (!$plist->check_access(join($self.',', $pInfos['plCategory']).$self)) {
+          throw new Exception("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
+        }
       }
     }
   }
@@ -229,55 +235,6 @@ class fdRPCService
   }
 
   /*!
-   * \brief Get all fields from an object type
-   */
-  protected function _fields($type, $dn = NULL, $tab = NULL)
-  {
-    $this->checkAccess($type, $tab, $dn);
-
-    if ($dn === NULL) {
-      $tabobject = objects::create($type);
-    } else {
-      $tabobject = objects::open($dn, $type);
-    }
-    if ($tab === NULL) {
-      $object = $tabobject->getBaseObject();
-    } else {
-      $object = $tabobject->by_object[$tab];
-    }
-    if (is_subclass_of($object, 'simplePlugin')) {
-      $fields = $object->attributesInfo;
-      foreach ($fields as &$section) {
-        $attributes = array();
-        foreach ($section['attrs'] as $key => $attr) {
-          if ($object->acl_is_readable($attr->getAcl())) {
-            $attr->serializeAttribute($attributes);
-          }
-        }
-        $section['attrs'] = array_values($attributes);
-      }
-      unset($section);
-      return $fields;
-    } else {
-      /* fallback for old plugins */
-      $fields = array('main' => array('attrs' => array(), 'name' => _('Plugin')));
-      foreach ($object->attributes as $attr) {
-        if ($object->acl_is_readable($attr.'Acl')) {
-          $fields['main']['attrs'][$attr] = array(
-            'value'       => $object->$attr,
-            'required'    => FALSE,
-            'disabled'    => FALSE,
-            'label'       => $attr,
-            'type'        => 'OldPluginAttribute',
-            'description' => '',
-          );
-        }
-      }
-      return $fields;
-    }
-  }
-
-  /*!
    * \brief List activated tabs on an object
    */
   protected function _listTabs($type, $dn = NULL)
@@ -325,9 +282,58 @@ class fdRPCService
   }
 
   /*!
+   * \brief Get all form fields from an object (or object type)
+   */
+  protected function _formfields($type, $dn = NULL, $tab = NULL)
+  {
+    $this->checkAccess($type, $tab, $dn);
+
+    if ($dn === NULL) {
+      $tabobject = objects::create($type);
+    } else {
+      $tabobject = objects::open($dn, $type);
+    }
+    if ($tab === NULL) {
+      $object = $tabobject->getBaseObject();
+    } else {
+      $object = $tabobject->by_object[$tab];
+    }
+    if (is_subclass_of($object, 'simplePlugin')) {
+      $fields = $object->attributesInfo;
+      foreach ($fields as &$section) {
+        $attributes = array();
+        foreach ($section['attrs'] as $key => $attr) {
+          if ($object->acl_is_readable($attr->getAcl())) {
+            $attr->serializeAttribute($attributes, TRUE);
+          }
+        }
+        $section['attrs'] = $attributes;
+      }
+      unset($section);
+      return $fields;
+    } else {
+      /* fallback for old plugins */
+      $fields = array('main' => array('attrs' => array(), 'name' => _('Plugin')));
+      foreach ($object->attributes as $attr) {
+        if ($object->acl_is_readable($attr.'Acl')) {
+          $fields['main']['attrs'][$attr] = array(
+            'value'       => $object->$attr,
+            'required'    => FALSE,
+            'disabled'    => FALSE,
+            'label'       => $attr,
+            'type'        => 'OldPluginAttribute',
+            'description' => '',
+          );
+        }
+      }
+      return $fields;
+    }
+  }
+
+  /*!
    * \brief Update values of an object's attributes using POST as if the webpage was sent
    */
-  protected function _update($type, $dn, $tab, $values)
+  protected function _formpost($type, $dn, $tab, $values)
   {
     $this->checkAccess($type, $tab, $dn);
 
@@ -359,9 +365,9 @@ class fdRPCService
   }
 
   /*!
-   * \brief Set internal values of an object's attributes and save it
+   * \brief Get all internal fields from an object (or object type)
    */
-  protected function _setfields($type, $dn, $tab, $values)
+  protected function _getfields($type, $dn = NULL, $tab = NULL)
   {
     $this->checkAccess($type, $tab, $dn);
 
@@ -371,20 +377,95 @@ class fdRPCService
       $tabobject = objects::open($dn, $type);
     }
     if ($tab === NULL) {
-      $tab = $tabobject->current;
+      $object = $tabobject->getBaseObject();
     } else {
+      $object = $tabobject->by_object[$tab];
+    }
+    if (is_subclass_of($object, 'simplePlugin')) {
+      $fields = $object->attributesInfo;
+      foreach ($fields as &$section) {
+        $attributes = array();
+        foreach ($section['attrs'] as $key => $attr) {
+          if ($object->acl_is_readable($attr->getAcl())) {
+            $attr->serializeAttribute($attributes, FALSE);
+          }
+        }
+        $section['attrs'] = $attributes;
+      }
+      unset($section);
+    } else {
+      /* fallback for old plugins */
+      $fields = array('main' => array('attrs' => array(), 'name' => _('Plugin')));
+      foreach ($object->attributes as $attr) {
+        if ($object->acl_is_readable($attr.'Acl')) {
+          $fields['main']['attrs'][$attr] = $object->$attr;
+        }
+      }
+    }
+    return $fields;
+  }
+
+  /*!
+   * \brief Set internal values of an object's attributes and save it
+   */
+  protected function _setfields($type, $dn, $values)
+  {
+    $this->checkAccess($type, array_keys($values), $dn);
+    if ($dn === NULL) {
+      $tabobject = objects::create($type);
+    } else {
+      $tabobject = objects::open($dn, $type);
+    }
+    foreach ($values as $tab => $tabvalues) {
+      if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
+          $tabobject->by_object[$tab]->displayHeader &&
+          !$tabobject->by_object[$tab]->is_account
+        ) {
+        if ($tabobject->by_object[$tab]->acl_is_createable()) {
+          $tabobject->by_object[$tab]->is_account = TRUE;
+        } else {
+          return array('errors' => array('You don\'t have sufficient rights to enable tab "'.$tab.'"'));
+        }
+      }
+      $error = $tabobject->by_object[$tab]->deserializeValues($tabvalues);
+      if ($error !== TRUE) {
+        return array('errors' => array($error));
+      }
       $tabobject->current = $tab;
+      $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases is needed */
     }
-    if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
-        $tabobject->by_object[$tab]->displayHeader &&
-        !$tabobject->by_object[$tab]->is_account
-      ) {
-      $tabobject->by_object[$tab]->is_account = TRUE;
+    $errors = $tabobject->check();
+    if (!empty($errors)) {
+      return array('errors' => $errors);
     }
-    foreach ($values as $field => $value) {
-      $tabobject->by_object[$tab]->$field = $value;
+    $tabobject->save();
+    return $tabobject->dn;
+  }
+
+  /*!
+   * \brief Get all internal fields from a template
+   */
+  protected function _gettemplate($type, $dn)
+  {
+    $this->checkAccess($type, NULL, $dn);
+
+    $template = new template($type, $dn);
+    return $template->serialize();
+  }
+
+  /*!
+   * \brief
+   */
+  protected function _usetemplate($type, $dn, $values)
+  {
+    $this->checkAccess($type, NULL, $dn);
+
+    $template = new template($type, $dn);
+    $error    = $template->deserialize($values);
+    if ($error !== TRUE) {
+      return array('errors' => array($error));
     }
-    $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases is needed */
+    $tabobject = $template->apply();
     $errors = $tabobject->check();
     if (!empty($errors)) {
       return array('errors' => $errors);

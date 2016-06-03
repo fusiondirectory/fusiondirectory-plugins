@@ -1,0 +1,22 @@
+##
+## audit-fd-conf.schema - Needed by Fusion Directory for managing audit plugin configuration backend
+##
+
+attributetype ( 1.3.6.1.4.1.38414.61.1.1 NAME 'fdAuditActions'
+  DESC 'FusionDirectory - Actions to be stored by audit plugin'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
+attributetype ( 1.3.6.1.4.1.38414.61.1.2 NAME 'fdAuditRDN'
+  DESC 'FusionDirectory - Audit RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+objectclass ( 1.3.6.1.4.1.38414.61.2.1 NAME 'fdAuditPluginConf'
+  DESC 'FusionDirectory audit plugin configuration'
+  SUP top AUXILIARY
+  MUST ( cn )
+  MAY ( fdAuditActions $ fdAuditRDN ) )

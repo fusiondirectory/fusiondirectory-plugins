@@ -103,7 +103,7 @@ class argonautFuseConfig extends simpleService
   {
     if ($this->is_account && !$this->view_logged) {
       $this->view_logged = TRUE;
-      new log("view", "server/".get_class($this), $this->dn);
+      logging::log('view', 'server/'.get_class($this), $this->dn);
     }
 
     $str = "<div style='width:100%; text-align:right; clear:both; float:none;'>".
