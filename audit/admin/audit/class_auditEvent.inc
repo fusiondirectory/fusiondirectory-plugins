@@ -33,6 +33,14 @@ class GeneralizedTimeDisplayAttribute extends GeneralizedTimeDateAttribute
   }
 }
 
+class UserLinkAttribute extends DisplayLDAPAttribute
+{
+  function renderFormInput ()
+  {
+    return objects::link($this->value, 'user');
+  }
+}
+
 class auditEvent extends simplePlugin
 {
   public $base;
@@ -68,12 +76,12 @@ class auditEvent extends simplePlugin
             _('Time'), _('Date and time this event happened'),
             'fdAuditDateTime', TRUE
           ),
-          new DisplayLDAPAttribute (_('Action'),      _('Action type'),   'fdAuditAction',      TRUE),
-          new DisplayLDAPAttribute (_('Author'),      _('Action author'), 'fdAuditAuthorDN',    TRUE),
-          new DisplayLDAPAttribute (_('Object type'), _('Object type'),   'fdAuditObjectType',  TRUE),
-          new DisplayLDAPAttribute (_('Object'),      _('Target object'), 'fdAuditObject',      TRUE),
-          new DisplayLDAPArrayAttribute (_('Attributes'), _('Target attributes'), 'fdAuditAttributes', FALSE),
-          new DisplayLDAPAttribute (_('Result'), _('Result or error'), 'fdAuditResult', FALSE),
+          new DisplayLDAPAttribute  (_('Action'),       _('Action type'),     'fdAuditAction',      TRUE),
+          new UserLinkAttribute     (_('Author'),       _('Action author'),   'fdAuditAuthorDN',    TRUE),
+          new DisplayLDAPAttribute  (_('Object type'),  _('Object type'),     'fdAuditObjectType',  TRUE),
+          new DisplayLDAPAttribute  (_('Object'),       _('Target object'),   'fdAuditObject',      TRUE),
+          new DisplayLDAPArrayAttribute(_('Attributes'), _('Target attributes'), 'fdAuditAttributes', FALSE),
+          new DisplayLDAPAttribute  (_('Result'),       _('Result or error'), 'fdAuditResult',      FALSE),
         )
       ),
     );
