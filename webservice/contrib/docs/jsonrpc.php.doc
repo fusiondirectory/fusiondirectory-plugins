@@ -107,13 +107,13 @@ class fdRPCService
   }
 
   /*!
-   * \brief List activated tabs on an object
+   * \brief List tabs on an object
    *
    * \param string  $sid the session id
    * \param string  $type the object type
    * \param string  $dn   the object to load values from if any
    *
-   * \return List of all activated tab on the object
+   * \return List of all tabs on the object, keys are ids, values are array with name (string) and active (boolean) keys.
    */
   function listTabs($sid, $type, $dn = NULL)
   {
