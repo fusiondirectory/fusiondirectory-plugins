@@ -51,6 +51,7 @@ class auditManagement extends simpleManagement
     $this->headpage->registerElementFilter('filterDateTime', 'auditManagement::filterDateTime');
     parent::configureHeadpage();
     unset($this->headpage->xmlData['actionmenu']['action'][0]);
+    $this->headpage->sortDirection[1] = TRUE;
   }
 
   function parseXML ($file)
