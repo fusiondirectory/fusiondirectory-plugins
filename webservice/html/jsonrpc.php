@@ -235,7 +235,7 @@ class fdRPCService
   }
 
   /*!
-   * \brief List activated tabs on an object
+   * \brief List tabs on an object
    */
   protected function _listTabs($type, $dn = NULL)
   {
@@ -249,9 +249,10 @@ class fdRPCService
 
     $tabs = array();
     foreach ($tabobject->by_object as $tab => $obj) {
-      if ($obj->is_account || $obj->ignore_account) {
-        $tabs[$tab] = $tabobject->by_name[$tab];
-      }
+      $tabs[$tab] = array(
+        'name'    => $tabobject->by_name[$tab],
+        'active'  => ($obj->is_account || $obj->ignore_account)
+      );
     }
     return $tabs;
   }
