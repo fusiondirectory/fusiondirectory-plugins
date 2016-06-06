@@ -26,7 +26,13 @@ class auditManagement extends simpleManagement
     'dn','fdAuditDateTime','fdAuditAction','fdAuditAuthorDN','fdAuditObjectType',
     'fdAuditObject','fdAuditAttributes','fdAuditResult');
 
-  /* Return plugin informations for acl handling  */
+  protected $departmentBrowser      = FALSE;
+  protected $departmentRootVisible  = FALSE;
+  protected $baseMode               = FALSE;
+  protected $autoActions            = FALSE;
+  protected $skipCpHandler          = TRUE;
+  protected $skipSnapHandler        = TRUE;
+
   public static function plInfo()
   {
     return array(
@@ -44,18 +50,19 @@ class auditManagement extends simpleManagement
   {
     $this->headpage->registerElementFilter('filterDateTime', 'auditManagement::filterDateTime');
     parent::configureHeadpage();
+    unset($this->headpage->xmlData['actionmenu']['action'][0]);
   }
 
   function parseXML ($file)
   {
     $data = parent::parseXML($file);
-    $data['list']['table']['layout'] = '|20px;c||||||150px;r|';
+    $data['list']['table']['layout'] = '|20px;c||||||50px;r|';
     $columns = array (
       array(
         'label'         => _('Time'),
         'sortAttribute' => 'fdAuditDateTime',
         'sortType'      => 'string',
-        'value'         => '%{filter:filterDateTime(row,dn,"%s",fdAuditDateTime)}',
+        'value'         => '%{filter:filterDateTime(pid,row,dn,fdAuditDateTime)}',
         'export'        => 'true',
       ),
       array(
@@ -94,18 +101,19 @@ class auditManagement extends simpleManagement
 
   static function filterDateTime()
   {
-    if (func_num_args() == 0) {
-      return '&nbsp;';
-    }
-    $date = func_get_arg(0);
+    $pid    = func_get_arg(0);
+    $row    = func_get_arg(1);
+    $dn     = func_get_arg(2);
+    $date   = func_get_arg(3);
     if (!is_array($date)) {
-      return '&nbsp;';
+      return '';
     }
     $dateObject = LdapGeneralizedTime::fromString($date[0]);
     if (is_object($dateObject)) {
-      return $dateObject->format('Y-m-d, H:i:s');
+      $dateObject->setTimezone(timezone::getDefaultTimeZone());
+      return '<a href="?plug='.$_GET['plug'].'&amp;PID='.$pid.'&amp;act=listing_edit_'.$row.'" title="'.$dn.'">'.$dateObject->format('Y-m-d, H:i:s').'</a>';
     }
-    return '&nbsp;';
+    return '';
   }
 }
 ?>
