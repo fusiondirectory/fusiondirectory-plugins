@@ -215,6 +215,17 @@ class fdRPCService
   }
 
   /*!
+   * \brief Lock or unlock a user
+   *
+   * \param string  $sid  the session id
+   * \param string  $dns  an array of user dns to be locked, or a single dn of a user to lock
+   * \param string  $type the action to be done. Can be 'lock', 'unlock' or 'toggle'. Defaults to 'toggle'.
+   */
+  function lockUser($sid, $dns, $type = 'toggle')
+  {
+  }
+
+  /*!
    * \brief Get the session ID
    *
    * \return The session ID for the current session. (Mainly useless unless you log in with HTTP auth instead of login method)
