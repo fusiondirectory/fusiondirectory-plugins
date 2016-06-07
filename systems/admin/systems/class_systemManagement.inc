@@ -389,7 +389,7 @@ class systemManagement extends management
    */
   function createSnapshotDialog($action = "", $target = array(), $all = array())
   {
-    global $config;
+    global $config, $ui;
     @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $target, "Snaptshot creation initiated!");
 
     $pInfo    = $this->getObjectDefinitions();
