@@ -98,14 +98,6 @@
       <image>geticon.php?context=devices&amp;icon=network-device&amp;size=16</image>
     </objectType>
 
-    <objectType>
-      <label>IPMI</label>
-      <objectClass>ipmiInterface</objectClass>
-      <category>ipmi</category>
-      <class>ipmiGeneric</class>
-      <image>geticon.php?context=devices&amp;icon=server&amp;size=16</image>
-    </objectType>
-
   </definition>
 
   <table>
@@ -248,14 +240,6 @@
       <image>geticon.php?context=devices&amp;icon=phone&amp;size=16</image>
       <label>Mobile Phone</label>
       <depends>mobilePhoneGeneric</depends>
-     </action>
-
-     <action>
-      <name>new_ipmiInterface</name>
-      <type>entry</type>
-      <image>geticon.php?context=devices&amp;icon=server&amp;size=16</image>
-      <label>IPMI</label>
-      <depends>ipmiGeneric</depends>
      </action>
     </action>
 

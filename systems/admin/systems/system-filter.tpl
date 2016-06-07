@@ -35,9 +35,6 @@
   {if $USE_fdMobilePhone}
   {$MOBILEPHONE}<label for="MOBILEPHONE">&nbsp;{t}Show mobile phones{/t}</label><br>
   {/if}
-  {if $USE_ipmiInterface}
-  {$IPMI}<label for="IPMI">&nbsp;{t}Show IPMI interfaces{/t}</label><br>
-  {/if}
 
   <div style="display:block;width=100%;border-top:1px solid #AAAAAA;"></div>
 

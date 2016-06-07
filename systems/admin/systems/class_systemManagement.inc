@@ -616,15 +616,6 @@ class systemManagement extends management
         'sendEvents'  => FALSE,
         'aclCategory' => 'mobilePhone'
       ),
-      'ipmiInterface'   => array(
-        'ou'          => get_ou('ipmiRDN'),
-        'plugClass'   => 'ipmiGeneric',
-        'tabClass'    => 'simpleTabs',
-        'tabDesc'     => 'IPMITABS',
-        'aclClass'    => 'ipmiGeneric',
-        'sendEvents'  => FALSE,
-        'aclCategory' => 'ipmi'
-      ),
     );
 
     // Now map some special types
