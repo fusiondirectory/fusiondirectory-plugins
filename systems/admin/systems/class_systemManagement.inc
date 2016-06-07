@@ -452,7 +452,7 @@ class systemManagement extends management
       $this->dn = $this->headpage->getBase();
     } else {
       // Display the restore points for a given object.
-      $this->dn = array_pop($target);
+      $this->dn = reset($target);
       $entry    = $this->headpage->getEntry($this->dn);
       $type     = $this->headpage->getType($this->dn);
       if (!isset($pInfo[$type])) {
