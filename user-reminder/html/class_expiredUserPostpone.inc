@@ -31,6 +31,9 @@ class expiredUserPostpone extends standAlonePage
     $this->forward_postpone = ($config->get_cfg_value('userReminderForwardConfirmation', 'TRUE') == 'TRUE');
     $this->alert_delay      = $config->get_cfg_value('userReminderAlertDelay', 15);
     $this->postpone_days    = $config->get_cfg_value('userReminderPostponeDays', 15);
+    $this->mail_subject     = $config->get_cfg_value('userReminderConfirmationSubject', '');
+    $this->mail_body        = $config->get_cfg_value('userReminderConfirmationBody', '');
+    $this->from_mail        = $config->get_cfg_value('userReminderConfirmationEmail');
 
     return TRUE;
   }
@@ -123,29 +126,48 @@ class expiredUserPostpone extends standAlonePage
     }
     $userTabs->save();
     $cn             = $userTabs->getBaseObject()->cn;
+    $manager_dn     = $userTabs->getBaseObject()->manager;
     $email_address  = $userTabs->by_object['mailAccount']->mail;
-    $this->sendConfirmationMail($cn, $email_address);
+
+    $manager_mail = '';
+    if ($this->forward_postpone) {
+      $ldap = $config->get_ldap_link();
+      if (empty($manager_dn)) {
+        $ldap->cat($userTabs->getBaseObject()->base, array('manager'));
+        if ($attrs = $ldap->fetch() && isset($attrs['manager'][0])) {
+          $manager_dn = $attrs['manager'][0];
+        }
+      }
+      if (!empty($manager_dn)) {
+        $ldap->cat($manager_dn, array('cn', 'mail'));
+        if ($attrs = $ldap->fetch() && isset($attrs['mail'][0])) {
+          $manager_mail = $attrs['mail'][0];
+        }
+      }
+    }
+    $this->sendConfirmationMail($cn, $email_address, $manager_mail);
   }
 
-  function sendConfirmationMail($cn, $email_address)
+  function sendConfirmationMail($cn, $email_address, $manager_mail)
   {
     global $config;
 
-    $subject    = $config->get_cfg_value('userReminderConfirmationSubject', '');
-    $body       = $config->get_cfg_value('userReminderConfirmationBody', '');
-    $from_mail  = $config->get_cfg_value('userReminderConfirmationEmail');
-    if (empty($body) || empty($subject)) {
+    if (empty($this->mail_body) || empty($this->mail_subject)) {
       return;
     }
     $body = sprintf($body, $cn, $this->uid);
 
     /* From */
-    $headers = "From: ".$from_mail."\r\n";
-    $headers .= "Reply-To: ".$from_mail."\r\n";
+    $headers = "From: ".$this->from_mail."\r\n";
+    $headers .= "Reply-To: ".$this->from_mail."\r\n";
 
-    $additional_parameters = "-f".$from_mail;
+    $additional_parameters = "-f".$this->from_mail;
 
-    if (!mail($email_address, $subject, $body, $headers, $additional_parameters)) {
+    if (!empty($manager_mail)) {
+      $email_address .= ','.$manager_mail;
+    }
+
+    if (!mail($email_address, $this->mail_subject, $this->mail_body, $headers, $additional_parameters)) {
       $this->message[] = msgPool::invalid(_('Contact your administrator, there was a problem with mail server'));
     }
   }
