@@ -222,7 +222,7 @@ sub read_config_file {
   $res{'ldap_dn'}         = $config->val( ldap  => "dn",        "");
   $res{'ldap_password'}   = $config->val( ldap  => "password",  "");
   $res{'ldap_tls'}        = $config->val( ldap  => "tls",       "off");
-  $res{'base_url'}        = $config->val( fd    => "url",       "https://localhost/fusiondirectory/");
+  #~ $res{'base_url'}        = $config->val( fd    => "url",       "https://localhost/fusiondirectory/");
 
   if ($res{'ldap_tls'} !~ m/^off|on$/i) {
     warn "Unknown value for option ldap/tls: ".$res{'ldap_tls'}." (valid values are on/off)\n";
@@ -306,6 +306,11 @@ sub read_ldap_config {
     if (($mesg->entries)[0]->exists('fdUserReminderForwardAlert')) {
       $config->{'forward_alert'} = (($mesg->entries)[0]->get_value('fdUserReminderForwardAlert') eq "TRUE");
     }
+    $config->{'alert_mailsubject'}  = ($mesg->entries)[0]->get_value('fdUserReminderAlertSubject');
+    $config->{'alert_mailbody'}     = ($mesg->entries)[0]->get_value('fdUserReminderAlertBody');
+    $config->{'alert_mailaddress'}  = ($mesg->entries)[0]->get_value('fdUserReminderEmail');
+  } else {
+    die "Could not find configuration node in the LDAP".$die_endl;
   }
 
   return ($mesg->entries)[0];
@@ -399,17 +404,16 @@ sub send_alert_mail
   print " with token $token\n";
   my $message = Email::MIME->create(
     header_str => [
-      From    => 'from@mail.com',
+      From    => $config->{'alert_mailaddress'},
       To      => "$user_cn<$user_mail>",
       Cc      => $cc,
-      Subject => 'Your account is about to expire!',
+      Subject => $config->{'alert_mailsubject'},
     ],
     attributes => {
       encoding => 'quoted-printable',
       charset  => 'ISO-8859-1',
     },
-    body_str => "Dear $user_cn, your account $uid is about to expire, please use this link to avoid this: \n".
-                $config->{'base_url'}."expired_postpone.php?uid=$uid&token=$token\n",
+    body_str => sprintf($config->{'alert_mailbody'},$user_cn,$uid,$token),
   );
   sendmail($message);
 }

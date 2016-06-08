@@ -34,10 +34,42 @@ attributetype ( 1.3.6.1.4.1.38414.59.1.5 NAME 'fdUserReminderForwardConfirmation
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.59.1.6 NAME 'fdUserReminderEmail'
+  DESC 'Fusion Directory - User reminder sender email'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.59.1.7 NAME 'fdUserReminderAlertSubject'
+  DESC 'Fusion Directory - User reminder alert email subject'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.59.1.8 NAME 'fdUserReminderAlertBody'
+  DESC 'Fusion Directory - User reminder alert email body'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.59.1.9 NAME 'fdUserReminderConfirmationSubject'
+  DESC 'Fusion Directory - User reminder confirmation email subject'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.59.1.10 NAME 'fdUserReminderConfirmationBody'
+  DESC 'Fusion Directory - User reminder confirmation email body'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
 # Object Class
 
 objectclass ( 1.3.6.1.4.1.38414.59.2.1 NAME 'fdUserReminderPluginConf'
   DESC 'FusionDirectory user-reminder plugin configuration'
   SUP top AUXILIARY
   MUST ( cn $ fdUserReminderAlertDelay $ fdUserReminderResendDelay $
-  fdUserReminderPostponeDays $ fdUserReminderForwardAlert $ fdUserReminderForwardConfirmation ) )
+  fdUserReminderPostponeDays $ fdUserReminderForwardAlert $ fdUserReminderForwardConfirmation $
+  fdUserReminderEmail $ fdUserReminderAlertSubject $ fdUserReminderAlertBody)
+  MAY ( fdUserReminderConfirmationSubject $ fdUserReminderConfirmationBody ) )

@@ -122,6 +122,32 @@ class expiredUserPostpone extends standAlonePage
       return;
     }
     $userTabs->save();
+    $cn             = $userTabs->getBaseObject()->cn;
+    $email_address  = $userTabs->by_object['mailAccount']->mail;
+    $this->sendConfirmationMail($cn, $email_address);
+  }
+
+  function sendConfirmationMail($cn, $email_address)
+  {
+    global $config;
+
+    $subject    = $config->get_cfg_value('userReminderConfirmationSubject', '');
+    $body       = $config->get_cfg_value('userReminderConfirmationBody', '');
+    $from_mail  = $config->get_cfg_value('userReminderConfirmationEmail');
+    if (empty($body) || empty($subject)) {
+      return;
+    }
+    $body = sprintf($body, $cn, $this->uid);
+
+    /* From */
+    $headers = "From: ".$from_mail."\r\n";
+    $headers .= "Reply-To: ".$from_mail."\r\n";
+
+    $additional_parameters = "-f".$from_mail;
+
+    if (!mail($email_address, $subject, $body, $headers, $additional_parameters)) {
+      $this->message[] = msgPool::invalid(_('Contact your administrator, there was a problem with mail server'));
+    }
   }
 
   function getUserDn()

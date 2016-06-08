@@ -25,10 +25,9 @@ class userReminderConfig extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'     => _('Configuration reminder of accounts expiration'),
+      'plShortName'     => _('User reminder'),
       'plDescription'   => _('Configuration for the reminder of accounts expiration'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectType'    => array('configuration'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -38,7 +37,7 @@ class userReminderConfig extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('accounts expiration reminder'),
+        'name'  => _('User reminder settings'),
         'attrs' => array(
           new IntAttribute (
             _('Delay before expiration'), _('Days before expiration to send the first mail'),
@@ -55,18 +54,60 @@ class userReminderConfig extends simplePlugin
             'fdUserReminderPostponeDays', TRUE,
             1, FALSE, 15
           ),
+          new MailAttribute (
+            _('Sender email address'), _('Email address from which mails will be sent'),
+            'fdUserReminderEmail', TRUE,
+            'to.be@chang.ed'
+          ),
+        )
+      ),
+      'email1' => array(
+        'name'  => _('Alert email settings'),
+        'attrs' => array(
           new BooleanAttribute (
             _('Forward alerts to the manager'), _('Forward alerts to the manager'),
             'fdUserReminderForwardAlert', TRUE,
             TRUE
           ),
+          new StringAttribute (
+            _('Subject'), _('Subject of the alert email'),
+            'fdUserReminderAlertSubject', TRUE,
+            _('[FusionDirectory] Your account is about to expire')
+          ),
+          new TextAreaAttribute (
+            _('Body (%s are cn, login, and link token)'),
+            _('Body of the alert email, sent when the user is about to expire. Use %s for the cn, uid and token.'),
+            'fdUserReminderAlertBody', TRUE,
+            _('Dear %1$s,'."\n".
+              'your account %2$s is about to expire, please use this link to avoid this: '."\n".
+              'https://'.$_SERVER['SERVER_NAME'].
+              (($_SERVER['SERVER_PORT'] != '80') ? ':'.$_SERVER['SERVER_PORT'] : '').
+              (empty($_SERVER['REQUEST_URI']) ? $_SERVER['PATH_INFO'] : $_SERVER['REQUEST_URI']).
+              '/expired_postpone.php?uid=%2$s&token=%3$s'."\n")
+          )
+        )
+      ),
+      'email2' => array(
+        'name'  => _('Confirmation email settings'),
+        'attrs' => array(
           new BooleanAttribute (
             _('Forward confirmation to the manager'), _('Forward account extension confirmation to the manager'),
             'fdUserReminderForwardConfirmation', TRUE,
             TRUE
           ),
+          new StringAttribute (
+            _('Subject'), _('Subject of the confirmation email'),
+            'fdUserReminderConfirmationSubject', FALSE,
+            _('[FusionDirectory] Your account expiration has been postponed')
+          ),
+          new TextAreaAttribute (
+            _('Body (%s are cn and login)'),
+            _('Body of the confirmation email, sent when the user has postponed expiration. Use %s for the cn and uid.'),
+            'fdUserReminderConfirmationBody', FALSE,
+            _('Dear %1$s,'."\n".' your account %2$s expiration has been successfully postponed.'."\n")
+          )
         )
-      ),
+      )
     );
   }
 }
