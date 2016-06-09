@@ -30,6 +30,7 @@ class auditManagement extends simpleManagement
   protected $departmentRootVisible  = FALSE;
   protected $baseMode               = FALSE;
   protected $autoActions            = FALSE;
+  protected $multiSelect            = FALSE;
   protected $skipCpHandler          = TRUE;
   protected $skipSnapHandler        = TRUE;
 
@@ -50,8 +51,13 @@ class auditManagement extends simpleManagement
   {
     $this->headpage->registerElementFilter('filterDateTime', 'auditManagement::filterDateTime');
     parent::configureHeadpage();
-    unset($this->headpage->xmlData['actionmenu']['action'][0]);
+    unset($this->headpage->xmlData['actionmenu']['action'][0]); // create
+    unset($this->headpage->xmlData['actionmenu']['action'][1]); // edit
+    unset($this->headpage->xmlData['actionmenu']['action'][2]); // remove
     $this->headpage->sortDirection[1] = TRUE;
+    /* Make sure remove actions can’t be triggered */
+    unset($this->actions['remove']);
+    unset($this->actions['removeConfirmed']);
   }
 
   function parseXML ($file)
@@ -94,7 +100,6 @@ class auditManagement extends simpleManagement
         'value'         => '%{filter:link(row,dn,"%s",fdAuditObject)}',
         'export'        => 'true',
       ),
-      $data['list']['table']['column'][3]
     );
     array_splice($data['list']['table']['column'], 1, count($data['list']['table']['column']), $columns);
     return $data;
