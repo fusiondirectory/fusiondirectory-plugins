@@ -169,7 +169,7 @@ class expiredUserPostpone extends standAlonePage
     }
 
     if (!mail($email_address, $this->mail_subject, $this->mail_body, $headers, $additional_parameters)) {
-      $this->message[] = msgPool::invalid(_('Contact your administrator, there was a problem with mail server'));
+      $this->message[] = _('Contact your administrator, there was a problem with mail server');
     }
   }
 

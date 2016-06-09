@@ -41,14 +41,5 @@
       </form>
     </div>
   </div>
-
-  <!-- Place cursor in email field -->
-  <script type="text/javascript">
-    <!-- // First input field on page
-    focus_field('error_accept','uid','directory','username','current_password','email_address');
-    next_msg_dialog();
-    -->
-  </script>
-
 </body>
 </html>
