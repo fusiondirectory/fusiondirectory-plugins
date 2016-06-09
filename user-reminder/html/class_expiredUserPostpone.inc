@@ -59,10 +59,12 @@ class expiredUserPostpone extends standAlonePage
       }
     }
 
+    $success = TRUE;
     /* Do we need to show error messages? */
     if (count($this->message) != 0) {
       /* Show error message and continue editing */
       msg_dialog::displayChecks($this->message);
+      $success = FALSE;
     }
 
     $smarty = get_smarty();
@@ -84,12 +86,10 @@ class expiredUserPostpone extends standAlonePage
     $smarty->display(get_template_path('headers.tpl'));
 
     $smarty->assign('version',        FD_VERSION);
-    $smarty->assign('step',           5);
-    $smarty->assign('delay_allowed',  0);
-    $smarty->assign('changed',        TRUE);
+    $smarty->assign('success',        $success);
     $smarty->assign('activated',      $this->activated);
 
-    $smarty->display(get_template_path('recovery.tpl'));
+    $smarty->display(get_template_path('user-reminder.tpl'));
   }
 
   function checkToken($token)
