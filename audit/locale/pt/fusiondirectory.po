@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-06-03 13:10+0200\n"
-"PO-Revision-Date: 2016-06-03 11:07+0000\n"
+"POT-Creation-Date: 2016-06-09 11:11+0200\n"
+"PO-Revision-Date: 2016-06-09 09:08+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Portuguese (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -17,87 +17,87 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/audit/class_auditEvent.inc:45 admin/audit/class_auditEvent.inc:48
+#: admin/audit/class_auditEvent.inc:53 admin/audit/class_auditEvent.inc:56
 msgid "Audit event"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:46
+#: admin/audit/class_auditEvent.inc:54
 msgid "An event like ldap modification which was registered by audit plugin"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:65
+#: admin/audit/class_auditEvent.inc:73
 msgid "Event"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:68
-#: admin/audit/class_auditManagement.inc:55
+#: admin/audit/class_auditEvent.inc:76
+#: admin/audit/class_auditManagement.inc:69
 msgid "Time"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:68
+#: admin/audit/class_auditEvent.inc:76
 msgid "Date and time this event happened"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:71
-#: admin/audit/class_auditManagement.inc:69
+#: admin/audit/class_auditEvent.inc:79
+#: admin/audit/class_auditManagement.inc:83
 msgid "Action"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:71
+#: admin/audit/class_auditEvent.inc:79
 msgid "Action type"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:72
-#: admin/audit/class_auditManagement.inc:62
+#: admin/audit/class_auditEvent.inc:80
+#: admin/audit/class_auditManagement.inc:76
 msgid "Author"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:72
+#: admin/audit/class_auditEvent.inc:80
 msgid "Action author"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:73
+#: admin/audit/class_auditEvent.inc:81
 msgid "Object type"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:74
+#: admin/audit/class_auditEvent.inc:82
 msgid "Object"
 msgstr "Objeto"
 
-#: admin/audit/class_auditEvent.inc:74
+#: admin/audit/class_auditEvent.inc:82
 msgid "Target object"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:75
+#: admin/audit/class_auditEvent.inc:83
 msgid "Attributes"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:75
+#: admin/audit/class_auditEvent.inc:83
 msgid "Target attributes"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:76
+#: admin/audit/class_auditEvent.inc:84
 msgid "Result"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:76
+#: admin/audit/class_auditEvent.inc:84
 msgid "Result or error"
 msgstr ""
 
-#: admin/audit/class_auditManagement.inc:33
+#: admin/audit/class_auditManagement.inc:40
 #: config/audit/class_auditConfig.inc:41
 msgid "Audit"
 msgstr ""
 
-#: admin/audit/class_auditManagement.inc:34
+#: admin/audit/class_auditManagement.inc:41
 msgid "Audit events display"
 msgstr ""
 
-#: admin/audit/class_auditManagement.inc:76
+#: admin/audit/class_auditManagement.inc:90
 msgid "Type"
 msgstr "Tipo"
 
-#: admin/audit/class_auditManagement.inc:83
+#: admin/audit/class_auditManagement.inc:97
 msgid "Target"
 msgstr ""
 
@@ -123,4 +123,12 @@ msgstr ""
 
 #: config/audit/class_auditConfig.inc:50
 msgid "Which actions should be stored in LDAP audit log"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:57
+msgid "Days to keep"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:57
+msgid "Number of days of audit to keep in the LDAP when cleaning"
 msgstr ""
