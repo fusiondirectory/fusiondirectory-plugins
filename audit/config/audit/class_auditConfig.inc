@@ -52,7 +52,12 @@ class auditConfig extends simplePlugin
               logging::$validActions
             ),
             array('modify','create','remove')
-          )
+          ),
+          new IntAttribute (
+            _('Days to keep'), _('Number of days of audit to keep in the LDAP when cleaning'),
+            'fdAuditRotationDelay', TRUE,
+            1, FALSE, 120
+          ),
         )
       ),
     );
