@@ -33,7 +33,7 @@ class expiredUserPostpone extends standAlonePage
     $this->postpone_days    = $config->get_cfg_value('userReminderPostponeDays', 15);
     $this->mail_subject     = $config->get_cfg_value('userReminderConfirmationSubject', '');
     $this->mail_body        = $config->get_cfg_value('userReminderConfirmationBody', '');
-    $this->from_mail        = $config->get_cfg_value('userReminderConfirmationEmail');
+    $this->from_mail        = $config->get_cfg_value('userReminderEmail');
 
     return TRUE;
   }
