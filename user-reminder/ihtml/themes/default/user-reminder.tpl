@@ -19,10 +19,7 @@
           </p>
         </div>
         <div style="padding-left:10px;padding-right:10px;">
-          <!-- Display SSL warning message on demand -->
-          <p class="warning">{$ssl}</p>
-
-          <!-- Display error message on demand -->
+	   <!-- Display error message on demand -->
           <p class="warning">{$message}</p>
           {if $success}
             <div class="success">
