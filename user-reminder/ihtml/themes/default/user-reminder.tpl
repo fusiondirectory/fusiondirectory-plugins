@@ -33,7 +33,7 @@
             </div>
           {else}
             <div class="error">
-              <img class="center" src="geticon.php?context=status&amp;icon=task-error&amp;size=16" alt="{t}Error{/t}" title="{t}Error{/t}">&nbsp;
+              <img class="center" src="geticon.php?context=status&amp;icon=task-failure&amp;size=16" alt="{t}Error{/t}" title="{t}Error{/t}">&nbsp;
               <b>{t}There was a problem{/t}</b>
             </div>
           {/if}
@@ -42,4 +42,10 @@
     </div>
   </div>
 </body>
+  <script type="text/javascript">
+    <!-- // First input field on page
+    focus_field('error_accept','uid','directory','username','current_password','email_address');
+    next_msg_dialog();
+    -->
+  </script>
 </html>
