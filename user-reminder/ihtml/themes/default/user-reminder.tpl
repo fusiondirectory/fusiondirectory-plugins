@@ -11,7 +11,6 @@
   <div id="window_container">
 
     <div id="window_div">
-      <form action='recovery.php{$params}' method='post' name='mainform' onSubmit='js_check(this);return true;'>
         {$msg_dialogs}
         <div id="window_titlebar">
           <p>
@@ -38,13 +37,11 @@
             </div>
           {/if}
         </div>
-      </form>
     </div>
   </div>
 </body>
   <script type="text/javascript">
-    <!-- // First input field on page
-    focus_field('error_accept','uid','directory','username','current_password','email_address');
+    <!-- // Error Popup
     next_msg_dialog();
     -->
   </script>
