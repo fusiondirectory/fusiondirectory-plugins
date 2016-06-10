@@ -110,7 +110,6 @@ class expiredUserPostpone extends standAlonePage
       return ($token_date + $this->alert_delay >= (time() / 86400)) &&
              ($ldap_token == $sha_token);
     } else {
-      $this->message[] = _('No token found in the LDAP');
       return FALSE;
     }
   }
