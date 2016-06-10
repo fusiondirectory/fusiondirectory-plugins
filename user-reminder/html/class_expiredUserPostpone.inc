@@ -112,6 +112,19 @@ class expiredUserPostpone extends standAlonePage
            ($ldap_token == $sha_token);
   }
 
+  function deleteToken()
+  {
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+
+    $dn   = 'ou='.$this->uid.','.get_ou('tokenRDN').get_ou('fusiondirectoryRDN').$config->current['BASE'];
+    $ldap->rmdir($dn);
+    if (!$ldap->success()) {
+      $this->message[] = $ldap->get_error();
+    }
+  }
+
   function postponeExpiration()
   {
     global $config;
@@ -130,6 +143,8 @@ class expiredUserPostpone extends standAlonePage
       return;
     }
     $userTabs->save();
+    $this->deleteToken();
+
     $cn             = $userTabs->getBaseObject()->cn;
     $manager_dn     = $userTabs->getBaseObject()->manager;
     $email_address  = $userTabs->by_object['mailAccount']->mail;
