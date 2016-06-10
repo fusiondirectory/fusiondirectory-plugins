@@ -405,8 +405,8 @@ sub command_lstabs
   my ($type, $path) = @_;
   $path = complete_dn($path);
   my $tabs = rpc_call($client, 'listTabs', [$sid,$type,$path]);
-  while (my ($tab, %infos) = each(%$tabs)) {
-    printf ("%-30s %s(%s)\n", $infos{'name'}, $tab, $infos{'active'} ? 'active' : 'inactive');
+  while (my ($tab, $infos) = each(%$tabs)) {
+    printf ("%-30s %s(%s)\n", $infos->{'name'}, $tab, $infos->{'active'} ? 'active' : 'inactive');
   }
 }
 
