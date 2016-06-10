@@ -102,14 +102,17 @@ class expiredUserPostpone extends standAlonePage
 
     $dn   = 'ou='.$this->uid.','.get_ou('tokenRDN').get_ou('fusiondirectoryRDN').$config->current['BASE'];
     $ldap->cat($dn);
-    $attrs = $ldap->fetch();
+    if ($attrs = $ldap->fetch()) {
+      $ldap_token = $attrs['userPassword'][0];
+      $token_date = $attrs['description'][0];
 
-    $ldap_token = $attrs['userPassword'][0];
-    $token_date = $attrs['description'][0];
-
-    /* Return TRUE if the token match and is still valid */
-    return ($token_date + $this->alert_delay >= (time() / 86400)) &&
-           ($ldap_token == $sha_token);
+      /* Return TRUE if the token match and is still valid */
+      return ($token_date + $this->alert_delay >= (time() / 86400)) &&
+             ($ldap_token == $sha_token);
+    } else {
+      $this->message[] = _('No token found in the LDAP');
+      return FALSE;
+    }
   }
 
   function deleteToken()
