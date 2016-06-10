@@ -117,6 +117,9 @@ class expiredUserPostpone extends standAlonePage
     global $config;
 
     $dn = $this->getUserDn();
+    if (empty($dn)) {
+      return;
+    }
     $userTabs = objects::open($dn, 'user');
     $date = $userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue();
     $date->add(new DateInterval('P'.$this->postpone_days.'D'));
