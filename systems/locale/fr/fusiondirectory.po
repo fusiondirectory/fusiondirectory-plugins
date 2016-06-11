@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-06-03 13:10+0200\n"
-"PO-Revision-Date: 2016-05-12 13:36+0000\n"
+"POT-Creation-Date: 2016-06-10 13:36+0200\n"
+"PO-Revision-Date: 2016-06-09 09:10+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -176,7 +176,7 @@ msgstr "Terminal verrouillé"
 msgid "Winstation"
 msgstr "PC Windows"
 
-#: admin/systems/system-list.xml:46 admin/systems/system-list.xml:193
+#: admin/systems/system-list.xml:46 admin/systems/system-list.xml:185
 #: admin/systems/class_systemImport.inc:169
 #: admin/systems/class_serverGeneric.inc:32
 #: admin/systems/class_serverGeneric.inc:37
@@ -184,14 +184,14 @@ msgstr "PC Windows"
 msgid "Server"
 msgstr "Serveur"
 
-#: admin/systems/system-list.xml:54 admin/systems/system-list.xml:201
+#: admin/systems/system-list.xml:54 admin/systems/system-list.xml:193
 #: admin/systems/class_workstationGeneric.inc:118
 #: admin/systems/class_workstationGeneric.inc:123
 #: admin/systems/class_workstationGeneric.inc:124
 msgid "Workstation"
 msgstr "Station de travail"
 
-#: admin/systems/system-list.xml:62 admin/systems/system-list.xml:209
+#: admin/systems/system-list.xml:62 admin/systems/system-list.xml:201
 #: admin/systems/class_terminalGeneric.inc:32
 #: admin/systems/class_terminalGeneric.inc:37
 #: admin/systems/class_terminalGeneric.inc:38
@@ -204,7 +204,7 @@ msgstr "Terminal"
 msgid "Printer"
 msgstr "Imprimante"
 
-#: admin/systems/system-list.xml:78 admin/systems/system-list.xml:233
+#: admin/systems/system-list.xml:78 admin/systems/system-list.xml:225
 #: admin/systems/class_phoneGeneric.inc:36
 #: admin/systems/class_phoneGeneric.inc:40
 #: admin/systems/class_phoneGeneric.inc:70
@@ -226,11 +226,7 @@ msgstr "Téléphone portable"
 msgid "Component"
 msgstr "Composant"
 
-#: admin/systems/system-list.xml:102 admin/systems/system-list.xml:257
-msgid "IPMI"
-msgstr "IPMI"
-
-#: admin/systems/system-list.xml:128
+#: admin/systems/system-list.xml:120
 #: admin/systems/class_workstationGeneric.inc:151
 #: admin/systems/class_phoneGeneric.inc:59
 #: admin/systems/class_printGeneric.inc:836
@@ -241,21 +237,21 @@ msgstr "IPMI"
 #: admin/systems/class_mobilePhoneGeneric.inc:63
 #: admin/systems/phoneSelect/phoneSelect-list.xml:48
 #: admin/systems/services/shares/class_serviceShare.inc:52
-#: admin/systems/system-filter.tpl.c:32
+#: admin/systems/system-filter.tpl.c:29
 #: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:11
 msgid "Name"
 msgstr "Nom"
 
-#: admin/systems/system-list.xml:136
+#: admin/systems/system-list.xml:128
 #: admin/systems/phoneSelect/phoneSelect-list.xml:63
 msgid "IP"
 msgstr "IP"
 
-#: admin/systems/system-list.xml:144
+#: admin/systems/system-list.xml:136
 msgid "MAC"
 msgstr "MAC"
 
-#: admin/systems/system-list.xml:152
+#: admin/systems/system-list.xml:144
 #: admin/systems/class_workstationGeneric.inc:157
 #: admin/systems/class_phoneGeneric.inc:63
 #: admin/systems/class_printGeneric.inc:1108
@@ -267,62 +263,62 @@ msgstr "MAC"
 msgid "Description"
 msgstr "Description"
 
-#: admin/systems/system-list.xml:160 admin/systems/class_serverService.inc:57
+#: admin/systems/system-list.xml:152 admin/systems/class_serverService.inc:57
 #: admin/systems/services/terminal/class_serviceTerminal.inc:30
 #: admin/systems/services/shares/class_serviceShare.inc:31
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 msgid "Services"
 msgstr "Services"
 
-#: admin/systems/system-list.xml:168
+#: admin/systems/system-list.xml:160
 msgid "Release"
 msgstr "Version"
 
-#: admin/systems/system-list.xml:176 admin/systems/serverService-list.xml:43
+#: admin/systems/system-list.xml:168 admin/systems/serverService-list.xml:43
 #: admin/systems/phoneSelect/phoneSelect-list.xml:70
 msgid "Actions"
 msgstr "Actions"
 
-#: admin/systems/system-list.xml:187 admin/systems/serverService-list.xml:54
+#: admin/systems/system-list.xml:179 admin/systems/serverService-list.xml:54
 msgid "Create"
 msgstr "Créer"
 
-#: admin/systems/system-list.xml:217
+#: admin/systems/system-list.xml:209
 msgid "winStation"
 msgstr "PC Windows"
 
-#: admin/systems/system-list.xml:225
+#: admin/systems/system-list.xml:217
 msgid "Network printer"
 msgstr "Imprimante réseau"
 
-#: admin/systems/system-list.xml:241
+#: admin/systems/system-list.xml:233
 #: admin/systems/class_componentGeneric.inc:41
 #: admin/systems/class_componentGeneric.inc:42
 msgid "Network device"
 msgstr "Périphérique réseau"
 
-#: admin/systems/system-list.xml:249
+#: admin/systems/system-list.xml:241
 msgid "Mobile Phone"
 msgstr "Téléphone portable"
 
-#: admin/systems/system-list.xml:269
+#: admin/systems/system-list.xml:253
 msgid "Trigger action"
 msgstr "Déclencher une action"
 
-#: admin/systems/system-list.xml:276
+#: admin/systems/system-list.xml:260
 msgid "Schedule action"
 msgstr "Programmer une action"
 
-#: admin/systems/system-list.xml:288 admin/systems/serverService-list.xml:69
+#: admin/systems/system-list.xml:272 admin/systems/serverService-list.xml:69
 #: admin/systems/printer.tpl.c:35
 msgid "Remove"
 msgstr "Supprimer"
 
-#: admin/systems/system-list.xml:319
+#: admin/systems/system-list.xml:303
 msgid "Edit system"
 msgstr "Éditer le système"
 
-#: admin/systems/system-list.xml:332
+#: admin/systems/system-list.xml:316
 msgid "Remove system"
 msgstr "Supprimer le système"
 
@@ -997,19 +993,19 @@ msgstr "Vous n'êtes pas autorisé à créer un nouvel instantané pour %s."
 msgid "You are not allowed to restore a snapshot for %s."
 msgstr "Vous n'êtes pas autorisé à restaurer un instantané de %s."
 
-#: admin/systems/class_systemManagement.inc:674
+#: admin/systems/class_systemManagement.inc:665
 #, php-format
 msgid "Inherited from %s"
 msgstr "Hérité de %s"
 
-#: admin/systems/class_systemManagement.inc:727
-#: admin/systems/class_systemManagement.inc:731
+#: admin/systems/class_systemManagement.inc:718
+#: admin/systems/class_systemManagement.inc:722
 #: addons/dashboard/class_dashBoardSystems.inc:31
 #: config/systems/class_systemsPluginConfig.inc:28
 msgid "Systems"
 msgstr "Systèmes"
 
-#: admin/systems/class_systemManagement.inc:728
+#: admin/systems/class_systemManagement.inc:719
 msgid "Systems Management"
 msgstr "Gestion des systèmes"
 
@@ -1503,10 +1499,6 @@ msgstr "Afficher les périphériques réseau"
 #: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:8
 msgid "Show mobile phones"
 msgstr "Afficher les téléphones portables"
-
-#: admin/systems/system-filter.tpl.c:29
-msgid "Show IPMI interfaces"
-msgstr "Afficher les interfaces IPMI"
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
 msgid "Select objects to add"

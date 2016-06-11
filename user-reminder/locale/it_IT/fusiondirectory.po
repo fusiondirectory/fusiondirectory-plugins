@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-06-09 11:11+0200\n"
-"PO-Revision-Date: 2016-06-09 09:11+0000\n"
+"POT-Creation-Date: 2016-06-10 13:36+0200\n"
+"PO-Revision-Date: 2016-06-09 19:34+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -22,16 +22,16 @@ msgstr ""
 msgid "This token is invalid"
 msgstr "Questo token non è valido"
 
-#: html/class_expiredUserPostpone.inc:171
+#: html/class_expiredUserPostpone.inc:193
 msgid "Contact your administrator, there was a problem with mail server"
 msgstr "Contattare l'amministratore, c'è stato un problema con il server di posta elettronica"
 
-#: html/class_expiredUserPostpone.inc:182
+#: html/class_expiredUserPostpone.inc:204
 #, php-format
 msgid "Did not find an account with login \"%s\""
 msgstr "Alcun account trovato con login \"%s\" "
 
-#: html/class_expiredUserPostpone.inc:185
+#: html/class_expiredUserPostpone.inc:207
 #, php-format
 msgid "Found multiple accounts with login \"%s\""
 msgstr "Trovati più accounts con login \"%s\""
@@ -158,4 +158,35 @@ msgstr ""
 msgid ""
 "Dear %1$s,\n"
 " your account %2$s expiration has been successfully postponed.\n"
+msgstr ""
+
+#: ihtml/themes/default/user-reminder.tpl.c:2
+msgid "FusionDirectory expiration postpone"
+msgstr ""
+
+#: ihtml/themes/default/user-reminder.tpl.c:5
+#: ihtml/themes/default/user-reminder.tpl.c:8
+msgid "User"
+msgstr "Utente"
+
+#: ihtml/themes/default/user-reminder.tpl.c:11
+msgid "Expiration postpone"
+msgstr ""
+
+#: ihtml/themes/default/user-reminder.tpl.c:14
+#: ihtml/themes/default/user-reminder.tpl.c:17
+msgid "Success"
+msgstr "Completato"
+
+#: ihtml/themes/default/user-reminder.tpl.c:20
+msgid "Your expiration has been postponed successfully."
+msgstr ""
+
+#: ihtml/themes/default/user-reminder.tpl.c:23
+#: ihtml/themes/default/user-reminder.tpl.c:26
+msgid "Error"
+msgstr "Errore"
+
+#: ihtml/themes/default/user-reminder.tpl.c:29
+msgid "There was a problem"
 msgstr ""
