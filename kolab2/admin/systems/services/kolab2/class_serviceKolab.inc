@@ -199,11 +199,12 @@ class serviceKolab extends simpleService
     );
   }
 
-  function __construct(&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $parent = NULL)
   {
+    global $config;
     $this->hostname = preg_replace('/^cn=([^,]+),.*$/', '\1', $dn);
-    $this->dn       = "k=kolab,".$config->current['BASE'];
-    parent::__construct($config, $this->dn);
+    $this->dn       = 'k=kolab,'.$config->current['BASE'];
+    parent::__construct($this->dn, $parent);
 
     $this->attributesInfo['section1']['attrs']['k']->setVisible(FALSE);
     $this->attributesInfo['section1']['attrs']['kolabHost']->setVisible(FALSE);
@@ -217,7 +218,8 @@ class serviceKolab extends simpleService
 
   function save ()
   {
-    $this->dn = "k=kolab,".$this->config->current['BASE'];
+    global $config;
+    $this->dn = 'k=kolab,'.$config->current['BASE'];
 
     /* Check if this server was renamed, in this case we have to remove old cn first*/
     $kolabHost = $this->attributesInfo['section1']['attrs']['kolabHost']->getValue();
@@ -237,6 +239,7 @@ class serviceKolab extends simpleService
 
   function remove_from_parent()
   {
+    global $config;
     /* Only walk through following code, if this host was a member of the kolab hosts, else skip this */
     if (!$this->initially_was_account) {
       return;
@@ -246,8 +249,8 @@ class serviceKolab extends simpleService
        hostname -> the initial name of the host
        cn       -> is the new name of the host, in case that it was renamed.
      */
-    $ldap     = $this->config->get_ldap_link();
-    $this->dn = "k=kolab,".$this->config->current['BASE'];
+    $ldap     = $config->get_ldap_link();
+    $this->dn = 'k=kolab,'.$config->current['BASE'];
 
     /* We can't simply remove the whole entry, it is possible that there are
        some other hosts assigned to this object.
@@ -293,7 +296,7 @@ class serviceKolab extends simpleService
       }
     }
 
-    new log("remove", "service/".get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
+    logging::log('remove', 'service/'.get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
 
     /* Optionally execute a command after we're done */
     $this->handle_post_events("remove");

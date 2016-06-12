@@ -20,13 +20,11 @@
 
 class Game
 {
-  private $config;
   private $missions;
   private $mission;
 
-  private function __construct($config, $missions)
+  private function __construct($missions)
   {
-    $this->config   =& $config;
     $this->missions = $missions;
     $this->mission  = 0;
   }
@@ -58,7 +56,7 @@ class Game
   {
     global $config;
     if (isset($_GET['start_game'])) {
-      $instance = new Game($config, self::beatles_scenario());
+      $instance = new Game(self::beatles_scenario());
       session::global_set('game_instance', $instance);
     }
     if (session::global_is_set('game_instance')) {

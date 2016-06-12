@@ -158,9 +158,9 @@ class dnsHost extends simplePlugin
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
     $this->zonesCache = objects::ls('dnsZone');
     $this->attributesAccess['fdDNSZoneDn']->attribute->setChoices(array_keys($this->zonesCache), array_values($this->zonesCache));
     $this->attributesAccess['fdDNSZoneDn']->setSubmitForm('zoneChanged');
@@ -287,10 +287,11 @@ class dnsHost extends simplePlugin
 
   function save()
   {
+    global $config;
     parent::save();
     foreach ($this->attributesInfo['records']['attrs'] as &$attr) {
       if ($attr->hasChanged()) {
-        $attr->postLdapSave($this->config->get_ldap_link());
+        $attr->postLdapSave($config->get_ldap_link());
       }
     }
     unset($attr);

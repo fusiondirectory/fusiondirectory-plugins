@@ -18,5 +18,5 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-simplePlugin::mainInc('ldapmanager', 'new', 'ldiftab', FALSE);
+simplePlugin::mainInc('ldapmanager', 'new', TRUE, FALSE);
 ?>

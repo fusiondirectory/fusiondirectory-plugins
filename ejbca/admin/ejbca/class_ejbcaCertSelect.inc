@@ -50,7 +50,8 @@ class EjbcaUserCertsAttribute extends GenericDialogAttribute
 
   protected function fillDisplayValue ($i)
   {
-    $ldap = $this->plugin->config->get_ldap_link();
+    global $config;
+    $ldap = $config->get_ldap_link();
 
     $value = $this->value[$i];
     $ldap->cat($value);

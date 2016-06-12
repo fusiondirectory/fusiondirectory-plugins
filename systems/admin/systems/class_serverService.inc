@@ -54,20 +54,20 @@ class ServerService extends management
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Services"),
-      "plDescription" => _("Server services"),
-      "plSelfModify"  => FALSE,
-      "plObjectType"  => array("server"),
-      "plPrority"     => 5,
+      'plShortName'   => _('Services'),
+      'plDescription' => _('Server services'),
+      'plSelfModify'  => FALSE,
+      'plObjectType'  => array('server'),
+      'plPrority'     => 5,
 
-      "plProvidedAcls"  => array()
+      'plProvidedAcls'  => array()
     );
   }
 
-  function __construct (&$config, $dn, $object)
+  function __construct ($dn, $object)
   {
-    $this->config = $config;
-    $this->ui     = get_userinfo();
+    global $config;
+
     $this->dn     = $dn;
     if (isset($object->attrs)) {
       $this->attrs = $object->attrs;
@@ -99,7 +99,7 @@ class ServerService extends management
         $name = $plug['CLASS'];
 
         $this->plugin_names[] = $name;
-        $this->plugins[$name] = new $name($config, $dn, $this);
+        $this->plugins[$name] = new $name($dn, $this);
 
         /* Capture all service objectClases, necessary for acl handling */
         if (isset($this->plugins[$name]->objectclasses)) {
@@ -110,7 +110,7 @@ class ServerService extends management
       }
     }
 
-    parent::__construct($config, $this->ui, "services", $headpage);
+    parent::__construct("services", $headpage);
     $this->registerAction("new",                "newService");
     foreach ($this->plugins as $name => $obj) {
       $this->registerAction("new_$name",        "newService");
@@ -186,7 +186,7 @@ class ServerService extends management
   protected function cancelEdit()
   {
     if ($this->backup == NULL && $this->current) {
-      $this->plugins[$this->current] = new $this->current($this->config, $this->dn, $this);
+      $this->plugins[$this->current] = new $this->current(NULL, $this->dn, $this);
       $this->plugins[$this->current]->set_acl_base($this->acl_base);
       $this->plugins[$this->current]->set_acl_category(preg_replace("/\/$/", "", $this->acl_category));
 
@@ -254,7 +254,7 @@ class ServerService extends management
   protected function removeService($action = "", $target = array(), $all = array())
   {
     foreach ($target as $s_entry) {
-      $new_obj = new $s_entry($this->config, $this->dn, $this);
+      $new_obj = new $s_entry(NULL, $this->dn, $this);
       $new_obj->set_acl_base($this->acl_base);
       $new_obj->set_acl_category(preg_replace("/\/$/", "", $this->acl_category));
       $tmp = $new_obj->getListEntry();

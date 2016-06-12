@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013  FusionDirectory
+  Copyright (C) 2013-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -107,44 +107,121 @@ class fdRPCService
   }
 
   /*!
-   * \brief Get all fields from an object type
-   *
-   * \param string  $sid the session id
-   * \param string  $type the object type
-   * \param string  $dn   the object to load values from if any
-   * \param string  $tab  the tab to show if not the main one
-   *
-   * \return All attributes organized as sections
-   */
-  function fields($sid, $type, $dn = NULL, $tab = NULL)
-  {
-  }
-
-  /*!
-   * \brief List activated tabs on an object
+   * \brief List tabs on an object
    *
    * \param string  $sid the session id
    * \param string  $type the object type
    * \param string  $dn   the object to load values from if any
    *
-   * \return List of all activated tab on the object
+   * \return List of all tabs on the object, keys are ids, values are array with name (string) and active (boolean) keys.
    */
   function listTabs($sid, $type, $dn = NULL)
   {
   }
 
   /*!
-   * \brief Update values of an object's attributes
+   * \brief Get all form fields from an object (or an object type)
    *
-   * \param string  $sid the session id
+   * Fields as they appear in the HTML form
+   *
+   * \param string  $sid  the session id
+   * \param string  $type the object type
+   * \param string  $dn   the object to load values from if any
+   * \param string  $tab  the tab to show if not the main one
+   *
+   * \return All form fields organized as sections
+   */
+  function formfields($sid, $type, $dn = NULL, $tab = NULL)
+  {
+  }
+
+  /*!
+   * \brief Update form values of an object's attributes through POST
+   *
+   * \param string  $sid  the session id
    * \param string  $type the object type
    * \param string  $dn   the object to load values from if any (otherwise it's a creation)
    * \param string  $tab  the tab to modify if not the main one
-   * \param array   $values  the values as an associative array. Keys should be the same returned by fields
+   * \param array   $post the values as a POST array. Keys should be the 'id' returned by formfields.
    *
    * \return An array with errors if any, the resulting object dn otherwise
    */
-  function update($sid, $type, $dn, $tab, $values)
+  function formpost($sid, $type, $dn, $tab, $post)
+  {
+  }
+
+  /*!
+   * \brief Get all internal FD fields from an object (or an object type)
+   *
+   * Fields as they are stored in FusionDirectory
+   *
+   * \param string  $sid  the session id
+   * \param string  $type the object type
+   * \param string  $dn   the object to load values from if any
+   * \param string  $tab  the tab to show if not the main one
+   *
+   * \return All FD attributes organized as sections
+   */
+  function getfields($sid, $type, $dn = NULL, $tab = NULL)
+  {
+  }
+
+  /*!
+   * \brief Update attributes values of an object
+   *
+   * \param string  $sid    the session id
+   * \param string  $type   the object type
+   * \param string  $dn     the object to load values from if any (otherwise it's a creation)
+   * \param array   $values the values as an associative array of associative arrays. First level keys are tabs, second level keys should be the same keys returned by getfields.
+   * Values should be formed as the internal attribute expects them. See the concerned attribute type for more information.
+   *
+   * \return An array with errors if any, the resulting object dn otherwise
+   */
+  function setfields($sid, $type, $dn, $values)
+  {
+  }
+
+  /*!
+   * \brief Get needed internal FD fields from a template
+   *
+   * This returns the fields that needs filling for using this template to create an object.
+   * Return value looks like the getfields one, except they are grouped by tab and not by section.
+   * Empty activated tab may also be included.
+   *
+   * \param string  $sid  the session id
+   * \param string  $type the object type
+   * \param string  $dn   the template dn
+   *
+   * \return FD attributes organized as tabs
+   */
+  function gettemplate($sid, $type, $dn)
+  {
+  }
+
+  /*!
+   * \brief Create an object from a template
+   *
+   * This apply the template to the given values and creates an object.
+   *
+   * \param string  $sid    the session id
+   * \param string  $type   the object type
+   * \param string  $dn     the template dn
+   * \param string  $values the values for each tab organised in the same way as for setfields
+   *
+   * \return the created object dn upon success
+   */
+  function usetemplate($sid, $type, $dn, $values)
+  {
+  }
+
+  /*!
+   * \brief Lock or unlock a user
+   *
+   * \param string  $sid  the session id
+   * \param string  $dns  an array of user dns to be locked, or a single dn of a user to lock
+   * \param string  $type the action to be done. Can be 'lock', 'unlock' or 'toggle'. Defaults to 'toggle'.
+   */
+  function lockUser($sid, $dns, $type = 'toggle')
   {
   }
 

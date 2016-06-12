@@ -30,10 +30,8 @@ class systemManagement extends management
   protected $objectName       = "system";
   protected $objectInfo       = array();
 
-  function __construct($config, $ui)
+  function __construct()
   {
-    $this->config = $config;
-    $this->ui     = $ui;
 
     // Set storage points
     $typeDefs = $this->getObjectDefinitions();
@@ -92,7 +90,7 @@ class systemManagement extends management
       $this->registerAction("new_$type",         "newEntry");
     }
 
-    parent::__construct($config, $ui, "systems", $headpage);
+    parent::__construct("systems", $headpage);
   }
 
   /*! \brief  This method is used to queue and process copy&paste actions.
@@ -167,14 +165,14 @@ class systemManagement extends management
         if ($o_queue->is_currently_installing($mac_address)) {
           msg_dialog::display(_('Action canceled'), sprintf(_('System %s is currently installing'), $dn), ERROR_DIALOG);
           unset($mac[$key]);
-          new log('security', 'systems/'.get_class($this), '', array(), 'Skip adding "argonautAction::'.$type.'" for mac "'.$mac_address.'", there is already a job in progress.');
+          logging::log('security', 'systems/'.get_class($this), '', array(), 'Skip adding "argonautAction::'.$type.'" for mac "'.$mac_address.'", there is already a job in progress.');
         }
       }
     }
 
     // Prepare event to be added
     if (isset($events[$event])) {
-      $this->dialogObject = new argonautAction($this->config, array('action' => $event));
+      $this->dialogObject = new argonautAction(array('action' => $event));
       $this->dialogObject->targets = $mac;
 
       if ($triggered) {
@@ -212,49 +210,12 @@ class systemManagement extends management
     }
   }
 
-  function saveSnapshot($action = "", $target = array(), $all = array())
-  {
-    if (!is_object($this->dialogObject)) {
-      return;
-    }
-    $this->dialogObject->save_object();
-    $msgs = $this->dialogObject->check();
-    if (count($msgs)) {
-      foreach ($msgs as $msg) {
-        msg_dialog::display(_("Error"), $msg, ERROR_DIALOG);
-      }
-    } else {
-      $this->dn = $this->dialogObject->dn;
-      $dns      = array($this->dn);
-      /* Check if other dns needs to be included in this snapshot */
-      $entry = $this->getHeadpage()->getEntry($this->dn);
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
-      /* DHCP entry */
-      $ldap->search ("(&(objectClass=dhcpHost)(cn=".$entry['cn'][0]."))", array("uid","cn","dn"));
-
-      if ($attr = $ldap->fetch()) {
-        $dns[] = $attr['dn'];
-      }
-      /* DNS entry */
-      if (class_available('DNS')) {
-        $dnsEntry = DNS::getDNSHostEntries($this->config, $entry['cn'][0]);
-        if ($dnsEntry['exists']) {
-          $dns[]  = "relativeDomainName=".$entry['cn'][0].",".DNS::getDNSZoneDN($this->config, $dnsEntry['zoneName']);
-        }
-      }
-      $this->snapHandler->create_snapshot($dns, $this->dialogObject->CurrentDescription);
-      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->dn, "Snaptshot created!");
-      $this->closeDialogs();
-    }
-  }
-
-
   /*! \brief    Queue selected objects to be removed.
    *            Checks ACLs, Locks and ask for confirmation.
    */
   protected function removeEntryRequested($action = "", $target = array(), $all = array())
   {
+    global $ui;
     $disallowed = array();
     $this->dns  = array();
 
@@ -269,7 +230,7 @@ class systemManagement extends management
         trigger_error("Unknown object type received '".$type."' please update systemManagement::getObjectDefinitions()!");
       } else {
         $info = $tInfo[$type];
-        $acl  = $this->ui->get_permissions($dn, $info['aclCategory']."/".$info['aclClass']);
+        $acl  = $ui->get_permissions($dn, $info['aclCategory']."/".$info['aclClass']);
         if (preg_match("/d/", $acl)) {
           $this->dns[] = $dn;
         } else {
@@ -293,7 +254,7 @@ class systemManagement extends management
       foreach ($this->dns as $dn) {
         $dns_names[] = LDAP::fix($dn);
       }
-      add_lock ($this->dns, $this->ui->dn);
+      add_lock ($this->dns, $ui->dn);
 
       // Display confirmation dialog.
       $smarty = get_smarty();
@@ -313,6 +274,7 @@ class systemManagement extends management
   function removeEntryConfirmed($action = "", $target = array(), $all = array(),
       $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
+    global $config, $ui;
     @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $target, "Entry removel confirmed!");
 
     // Check permissons for each target
@@ -326,20 +288,20 @@ class systemManagement extends management
       } else {
 
         $info = $tInfo[$type];
-        $acl = $this->ui->get_permissions($dn, $info['aclCategory']."/".$info['aclClass']);
+        $acl = $ui->get_permissions($dn, $info['aclCategory']."/".$info['aclClass']);
         if (preg_match("/d/", $acl)) {
 
           // Delete the object
           $this->dn = $dn;
           if ($info['tabClass'] == "phonetabs") {
-             $this->tabObject = new $info['tabClass']($this->config, $this->config->data['TABS'][$info['tabDesc']], $dn,$type);
+             $this->tabObject = new $info['tabClass'](NULL, $config->data['TABS'][$info['tabDesc']], $dn,$type);
              $this->tabObject->set_acl_base($dn);
              $this->tabObject->by_object['phoneGeneric']->remove_from_parent ();
           } else {
-            $this->tabObject = new $info['tabClass']($this->config, $this->config->data['TABS'][$info['tabDesc']],
+            $this->tabObject = new $info['tabClass'](NULL, $config->data['TABS'][$info['tabDesc']],
                 $this->dn, $info['aclCategory']);
             $this->tabObject->set_acl_base($this->dn);
-            $this->tabObject->parent = &$this;
+            $this->tabObject->parent = $this;
             $this->tabObject->delete ();
           }
 
@@ -348,7 +310,7 @@ class systemManagement extends management
 
         } else {
           $disallowed[] = $dn;
-          new log("security", "system/".get_class($this), $dn, array(), "Tried to trick deletion.");
+          logging::log('security', 'system/'.get_class($this), $dn, array(), 'Tried to trick deletion.');
         }
       }
     }
@@ -427,23 +389,27 @@ class systemManagement extends management
    */
   function createSnapshotDialog($action = "", $target = array(), $all = array())
   {
+    global $config, $ui;
     @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $target, "Snaptshot creation initiated!");
 
     $pInfo    = $this->getObjectDefinitions();
     $headpage = $this->getHeadpage();
-    foreach ($target as $dn) {
-      $type = $headpage->getType($dn);
+    if (count($target) == 1) {
+      $this->dn = array_pop($target);
+      if (empty($this->dn)) {
+        return;
+      }
+      $type = $headpage->getType($this->dn);
       if (!isset($pInfo[$type])) {
         trigger_error('Unknown system type \''.$type.'\'!');
         return;
       }
 
-      if (!empty($dn) && $this->ui->allow_snapshot_create($dn, $pInfo[$type]['aclCategory'])) {
-        $this->dialogObject = new SnapShotDialog($this->config, $dn, $this);
-        $this->dialogObject->aclCategories  = array($pInfo[$type]['aclCategory']);
-        $this->dialogObject->parent         = &$this;
+      if ($ui->allow_snapshot_create($this->dn, $pInfo[$type]['aclCategory'])) {
+        $this->dialogObject = new SnapshotCreateDialog($this->dn, $this, $pInfo[$type]['aclCategory']);
+        $this->dialogObject->set_acl_base($this->dn);
       } else {
-        msg_dialog::display(_("Permission"), sprintf(_("You are not allowed to create a snapshot for %s."), $dn),
+        msg_dialog::display(_('Permission'), sprintf(_('You are not allowed to create a snapshot for %s.'), $this->dn),
             ERROR_DIALOG);
       }
     }
@@ -459,80 +425,57 @@ class systemManagement extends management
    */
   function restoreSnapshotDialog($action = "", $target = array(), $all = array())
   {
+    global $ui;
     // Set current restore base for snapshot handling.
-    $headpage = $this->getHeadpage();
     $pInfo    = $this->getObjectDefinitions();
+
+    // Set current restore base for snapshot handling.
     if (is_object($this->snapHandler)) {
       $bases = array();
       foreach ($this->storagePoints as $sp) {
-        $bases[] = $sp.$headpage->getBase();
+        $bases[] = $sp.$this->headpage->getBase();
       }
     }
 
     // No bases specified? Try base
     if (!count($bases)) $bases[] = $this->headpage->getBase();
 
+
     // No target, open the restore removed object dialog.
     if (!count($target)) {
-
       $cats = array();
       foreach ($pInfo as $data) {
         $cats[] = $data['aclCategory'];
       }
       $cats = array_unique($cats);
 
-      $entry = $headpage->getBase();
-      if (!empty($entry) && $this->ui->allow_snapshot_restore($entry, $cats)) {
-        @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $entry, "Snaptshot restoring initiated!");
-        $this->dialogObject = new SnapShotDialog($this->config, $entry, $this);
-        $this->dialogObject->set_snapshot_bases($bases);
-        $this->dialogObject->display_all_removed_objects  = TRUE;
-        $this->dialogObject->display_restore_dialog       = TRUE;
-        $this->dialogObject->parent                       = &$this;
-      } else {
-        msg_dialog::display(_("Permission"), sprintf(_("You are not allowed to restore a snapshot for %s."), $entry),
-            ERROR_DIALOG);
-      }
+      $this->dn = $this->headpage->getBase();
     } else {
-
       // Display the restore points for a given object.
-      $dn = array_pop($target);
-      $entry = $headpage->getEntry($dn);
-      $type = $headpage->getType($dn);
+      $this->dn = reset($target);
+      $entry    = $this->headpage->getEntry($this->dn);
+      $type     = $this->headpage->getType($this->dn);
       if (!isset($pInfo[$type])) {
         trigger_error('Unknown system type \''.$type.'\'!');
         return;
       }
 
-      if (!empty($dn) && $this->ui->allow_snapshot_create($dn, $pInfo[$type]['aclCategory'])) {
-        @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $dn, "Snaptshot restoring initiated!");
-        $this->dialogObject = new SnapShotDialog($this->config, $dn, $this);
-        $this->dialogObject->set_snapshot_bases($bases);
-        $this->dialogObject->display_restore_dialog = TRUE;
-        $this->dialogObject->parent                 = &$this;
-      } else {
-        msg_dialog::display(_("Permission"), sprintf(_("You are not allowed to restore a snapshot for %s."), $dn),
-            ERROR_DIALOG);
-      }
+      $cats = $pInfo[$type]['aclCategory'];
+    }
+    if (empty($this->dn)) {
+      return;
+    }
+
+    if ($ui->allow_snapshot_restore($this->dn, $cats)) {
+      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->dn, 'Snaptshot restoring initiated!');
+      $this->snapHandler->setSnapshotBases($bases);
+      $this->dialogObject = new SnapshotRestoreDialog($this->dn, $this, !count($target), $cats);
+      $this->dialogObject->set_acl_base($this->dn);
+    } else {
+      msg_dialog::display(_('Permission'), sprintf(_('You are not allowed to restore a snapshot for %s.'), $this->dn),
+          ERROR_DIALOG);
     }
   }
-
-
-  /*! \brief  Restores a snapshot object.
-   *          The dn of the snapshot entry has to be given as ['target'] parameter.
-   *
-   *  @param  String  'action'  The name of the action which was the used as trigger.
-   *  @param  Array   'target'  A list of object dns, which should be affected by this method.
-   *  @param  Array   'all'     A combination of both 'action' and 'target'.
-   */
-  function restoreSnapshot($action = "", $target = array(), $all = array())
-  {
-    $dn = array_pop($target);
-    $this->snapHandler->restore_snapshot($dn);
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $dn, "Snaptshot restored!");
-    $this->closeDialogs();
-  }
-
 
   /*! \brief  Detects actions/events send by the ui
    *           and the corresponding targets.
@@ -673,15 +616,6 @@ class systemManagement extends management
         'sendEvents'  => FALSE,
         'aclCategory' => 'mobilePhone'
       ),
-      'ipmiInterface'   => array(
-        'ou'          => get_ou('ipmiRDN'),
-        'plugClass'   => 'ipmiGeneric',
-        'tabClass'    => 'simpleTabs',
-        'tabDesc'     => 'IPMITABS',
-        'aclClass'    => 'ipmiGeneric',
-        'sendEvents'  => FALSE,
-        'aclCategory' => 'ipmi'
-      ),
     );
 
     // Now map some special types
@@ -747,7 +681,7 @@ class systemManagement extends management
         if (class_available($plug['CLASS'])) {
           $name = $plug['CLASS'];
 
-          $services[$name] = new $name($config, $dn);
+          $services[$name] = new $name($dn);
         }
       }
     }

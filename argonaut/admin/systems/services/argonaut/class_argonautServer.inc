@@ -127,9 +127,9 @@ class argonautServer extends simpleService
     );
   }
 
-  function __construct(&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $parent = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($dn, $parent);
     if ($this->argonautServerToken == '') {
       $this->argonautServerToken = md5(mt_rand());
     }

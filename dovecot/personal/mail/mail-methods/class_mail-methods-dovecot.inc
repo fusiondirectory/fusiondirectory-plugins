@@ -37,9 +37,10 @@ class mailMethodDovecot extends mailMethod
 
   public function connect()
   {
+    global $config;
     parent::connect();
 
-    if ($this->config->get_cfg_value("mailMethodDisabled", "FALSE") == "TRUE") {
+    if ($config->get_cfg_value("mailMethodDisabled", "FALSE") == "TRUE") {
       return FALSE;
     }
 
@@ -76,7 +77,7 @@ class mailMethodDovecot extends mailMethod
     /* Setting connect timeout to 10 seconds,
         else the FusionDirectory UI may freeze for 60 seconds.
        (PHP default is 'default_socket_timeout = 60') */
-    $timeout = $this->config->get_cfg_value("imapTimeout", 10);
+    $timeout = $config->get_cfg_value("imapTimeout", 10);
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $timeout,
           "<b>IMAP: Setting imap connect timeout to</b> (seconds)");
     imap_timeout(1, $timeout);
@@ -113,10 +114,11 @@ class mailMethodDovecot extends mailMethod
 
   protected function loadQuota()
   {
+    global $config;
     if (!$this->quotaEnabled()) {
       return TRUE;
     }
-    if ($this->config->get_cfg_value("mailMethodDisabled", "FALSE") == "TRUE") {
+    if ($config->get_cfg_value("mailMethodDisabled", "FALSE") == "TRUE") {
       return FALSE;
     }
     if (!$this->is_connected()) {
@@ -203,8 +205,9 @@ class mailMethodDovecot extends mailMethod
     return FALSE;
   }
 
-  static public function get_server_list($config)
+  static public function get_server_list()
   {
+    global $config;
     $serverList = array();
 
     $ldap = $config->get_ldap_link();

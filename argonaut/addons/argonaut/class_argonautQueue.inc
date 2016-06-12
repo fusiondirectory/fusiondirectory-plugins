@@ -51,12 +51,12 @@ class argonautQueue extends simpleManagement
     );
   }
 
-  function __construct(&$config, $ui)
+  function __construct()
   {
     $this->filterXMLPath  = get_template_path('deploy-filter.xml', TRUE, dirname(__FILE__));
     $this->listXMLPath    = get_template_path('deploy-list.xml', TRUE, dirname(__FILE__));
 
-    parent::__construct($config, $ui);
+    parent::__construct();
 
     $this->o_queue  = new supportDaemon();
     $this->acl_base = $config->current['BASE'];
@@ -80,7 +80,7 @@ class argonautQueue extends simpleManagement
 
   function importEvents()
   {
-    $this->dialogObject = new argonautImportFile($this->config, $this);
+    $this->dialogObject = new argonautImportFile($this);
   }
 
   /*! \brief    Queue selected objects to be removed.
@@ -206,7 +206,7 @@ class argonautQueue extends simpleManagement
       $entry    = $tmp['EVENT'];
       $attrsWrapper = new stdClass();
       $attrsWrapper->attrs = $entry;
-      $this->dialogObject = new faiLogView($this->config, '', $attrsWrapper, $this);
+      $this->dialogObject = new faiLogView(NULL, '', $attrsWrapper, $this);
     }
   }
 

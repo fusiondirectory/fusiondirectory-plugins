@@ -67,9 +67,9 @@ class nisObject extends simplePlugin
     );
   }
 
-  function __construct(&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
     $this->attributesAccess['nisMapName']->setChoices($this->getMountPoints());
   }
 
@@ -81,7 +81,8 @@ class nisObject extends simplePlugin
 
   function getMountPoints ()
   {
-    $ldap = $this->config->get_ldap_link();
+    global $config;
+    $ldap = $config->get_ldap_link();
     $ldap->cd(get_ou('autofsRDN').$this->base);
     $ldap->search('(objectClass=nisMap)', array('nisMapName'));
     $nisMaps = array();

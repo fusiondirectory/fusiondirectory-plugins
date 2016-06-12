@@ -50,7 +50,7 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
       while ($subattrs = $ldap->fetch()) {
         $attrsWrapper = new stdClass();
         $attrsWrapper->attrs = $subattrs;
-        $dialog = new faiTemplateEntry($config, $subattrs['dn'], $attrsWrapper);
+        $dialog = new faiTemplateEntry($subattrs['dn'], $attrsWrapper);
         $value = array();
         foreach ($this->templateAttributes as $attribute) {
           $value[$attribute] = $dialog->$attribute;
@@ -143,8 +143,6 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
 
 class faiTemplate extends faiSimplePluginClass
 {
-  var $mainTab = TRUE;
-
   var $objectclasses    = array('top','FAIclass','FAItemplate');
 
   static function plInfo()
@@ -194,17 +192,11 @@ class faiTemplate extends faiSimplePluginClass
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($config, $dn, $object);
-
-    $this->attributesAccess['cn']->setUnique(TRUE);
-  }
-
   function ldap_save ($cleanup = TRUE)
   {
+    global $config;
     parent::ldap_save($cleanup);
-    $this->attributesAccess['templateFiles']->postLdapSave($this->config->get_ldap_link());
+    $this->attributesAccess['templateFiles']->postLdapSave($config->get_ldap_link());
   }
 }
 ?>

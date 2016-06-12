@@ -134,11 +134,6 @@ class sambaDomain extends simplePlugin
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($config, $dn, $object);
-  }
-
   function compute_dn ()
   {
     global $config;

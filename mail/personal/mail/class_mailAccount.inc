@@ -169,17 +169,10 @@ class mailAccount extends simplePlugin
     );
   }
 
-  /*!
-   * \brief Constructor of the freeradiusAccount
-   *        It will build the select groups choices
-   */
-  function __construct(&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($config, $dn, $object);
-
-    if (isset($object->parent)) {
-      $this->parent = $object->parent;
-    }
+    global $config;
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
     $this->attributesAccess['gosaMailServer']->setSubmitForm('mailServerChanged');
@@ -188,6 +181,11 @@ class mailAccount extends simplePlugin
     $this->attributesAccess['flag_ownmailbox']->setInLdap(FALSE);
     $this->attributesAccess['flag_vacation']->setInLdap(FALSE);
     $this->attributesAccess['flag_localonly']->setInLdap(FALSE);
+
+    /* If mail can be used for login it must be unique */
+    if (in_array('mail', explode(',', $config->get_cfg_value('loginAttribute')))) {
+      $this->attributesAccess['mail']->setUnique('whole');
+    }
   }
 
   /* We need $mailAccount->uid to return the uid for mailMethod */

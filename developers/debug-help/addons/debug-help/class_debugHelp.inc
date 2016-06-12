@@ -20,8 +20,6 @@
 
 class debugHelp extends simplePlugin
 {
-  var $mainTab = TRUE;
-
   static function plInfo()
   {
     return array(
@@ -61,17 +59,18 @@ class debugHelp extends simplePlugin
     );
   }
 
-  function __construct(&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->buildObjectTypesDump();
   }
 
   function buildObjectTypesDump()
   {
+    global $config;
     $dump = array();
-    foreach ($this->config->data['OBJECTS'] as $type => $infos) {
+    foreach ($config->data['OBJECTS'] as $type => $infos) {
       if (isset($infos['icon'])) {
         $img = $infos['icon'];
       } else {

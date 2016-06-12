@@ -23,13 +23,13 @@ class faiSimplePluginClass extends simplePlugin
 {
   public $base;
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
 
-    if ($dn == "new") {
+    if ($dn == 'new') {
       $ui = get_userinfo();
-      $this->base = dn2base(session::global_is_set("CurrentMainBase")?"cn=dummy,".session::global_get("CurrentMainBase"):$ui->dn);
+      $this->base = dn2base(session::global_is_set('CurrentMainBase') ? 'cn=dummy,'.session::global_get('CurrentMainBase') : $ui->dn);
     } else {
       $this->base = dn2base($dn, get_ou(get_class($this).'RDN'));
     }
@@ -38,13 +38,14 @@ class faiSimplePluginClass extends simplePlugin
   /* Check supplied data */
   function check()
   {
+    global $config;
     /* Call common method to give check the hook */
     $message = parent::check();
 
     /* Ensure that we do not overwrite an allready existing entry */
     $new_dn   = $this->compute_dn();
     if ($this->dn != $new_dn) {
-      $ldap     = $this->config->get_ldap_link();
+      $ldap     = $config->get_ldap_link();
       $ldap->cat($new_dn);
       if ($ldap->count() != 0) {
         $message[] = msgPool::duplicated(_("Name"));

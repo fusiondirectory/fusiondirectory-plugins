@@ -40,10 +40,10 @@ class debconfProfileManagement extends simpleManagement
     );
   }
 
-  function __construct($config, $ui)
+  function __construct()
   {
     $this->filterXMLPath  = get_template_path('debconfProfile-filter.xml', TRUE, dirname(__FILE__));
-    parent::__construct($config, $ui);
+    parent::__construct();
   }
 
   function parseXML ($file)

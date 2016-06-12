@@ -2,11 +2,6 @@
 host = https://www.transifex.com
 type = PO
 
-[FusionDirectory-110.addressbook]
-file_filter = addressbook/locale/<lang>/fusiondirectory.po
-source_file = addressbook/locale/en/fusiondirectory.po
-source_lang = en
-
 [FusionDirectory-110.alias]
 file_filter = alias/locale/<lang>/fusiondirectory.po
 source_file = alias/locale/en/fusiondirectory.po
@@ -25,6 +20,11 @@ source_lang = en
 [FusionDirectory-110.argonaut]
 file_filter = argonaut/locale/<lang>/fusiondirectory.po
 source_file = argonaut/locale/en/fusiondirectory.po
+source_lang = en
+
+[FusionDirectory-110.audit]
+file_filter = audit/locale/<lang>/fusiondirectory.po
+source_file = audit/locale/en/fusiondirectory.po
 source_lang = en
 
 [FusionDirectory-110.autofs]
@@ -240,6 +240,11 @@ source_lang = en
 [FusionDirectory-110.systems]
 file_filter = systems/locale/<lang>/fusiondirectory.po
 source_file = systems/locale/en/fusiondirectory.po
+source_lang = en
+
+[FusionDirectory-110.user-reminder]
+file_filter = user-reminder/locale/<lang>/fusiondirectory.po
+source_file = user-reminder/locale/en/fusiondirectory.po
 source_lang = en
 
 [FusionDirectory-110.weblink]

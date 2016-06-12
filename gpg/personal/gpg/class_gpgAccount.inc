@@ -53,10 +53,5 @@ class gpgAccount extends simplePlugin
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
-
-  function __construct (&$config, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($config, $dn, $object);
-  }
 }
 ?>

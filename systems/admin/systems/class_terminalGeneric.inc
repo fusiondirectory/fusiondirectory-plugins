@@ -100,12 +100,13 @@ class terminalGeneric extends workstationGeneric
     return $attributesInfo;
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($config, $dn, $object);
+    global $config;
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     /* Root server */
-    $tmp        = $this->config->data['SERVERS']['NFS'];
+    $tmp        = $config->data['SERVERS']['NFS'];
     $tmp_output = $tmp;
     if (($key = array_search("default", $tmp)) !== FALSE) {
       if ($this->member_of_group) {
@@ -119,7 +120,7 @@ class terminalGeneric extends workstationGeneric
     $this->attributesInfo['servers']['attrs']['gotoTerminalPath']->setChoices($tmp, $tmp_output);
 
     /* Swap server */
-    $tmp        = $this->config->data['SERVERS']['NBD'];
+    $tmp        = $config->data['SERVERS']['NBD'];
     $tmp_output = $tmp;
     array_unshift($tmp, '!');
     array_unshift($tmp_output, _('Local swap'));
@@ -143,10 +144,11 @@ class terminalGeneric extends workstationGeneric
 
   function execute()
   {
+    global $config;
     /* Create a list of useable servers for the currently selected
      *  connection type.
      */
-    $xdmcp_types        = $this->config->data['SERVERS']['TERMINAL_SESSION_TYPES'];
+    $xdmcp_types        = $config->data['SERVERS']['TERMINAL_SESSION_TYPES'];
     $available_servers  = array();
     foreach ($xdmcp_types as $servername => $supported_types) {
       if (in_array(strtoupper($this->attributesInfo['remote_desktop']['attrs']['gotoXMethod']), $supported_types)) {
@@ -156,7 +158,6 @@ class terminalGeneric extends workstationGeneric
     $this->attributesInfo['remote_desktop']['attrs']['gotoXdmcpServer']->attribute->setChoices($available_servers);
     return parent::execute();
   }
-
 }
 
 ?>

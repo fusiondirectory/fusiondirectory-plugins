@@ -22,22 +22,18 @@
 
 class packageSelect extends management
 {
-
   protected $skipFooter = TRUE;
   protected $skipHeader = TRUE;
 
-  function __construct($config, $ui)
+  function __construct()
   {
-    $this->config = $config;
-    $this->ui     = $ui;
-
     $filter = new filterFAIcustoms(get_template_path("selectPackage-filter.xml", TRUE, dirname(__FILE__)));
     $this->setFilter($filter);
 
     // Build headpage
     $headpage = new listing(get_template_path("selectPackage-list.xml", TRUE, dirname(__FILE__)));
     $headpage->setFilter($filter);
-    parent::__construct($config, $ui, "FAI-packages", $headpage);
+    parent::__construct("FAI-packages", $headpage);
   }
 
   function save()

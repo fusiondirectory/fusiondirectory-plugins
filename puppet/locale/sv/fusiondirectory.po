@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-05-02 09:31+0200\n"
+"POT-Creation-Date: 2016-06-10 13:36+0200\n"
 "PO-Revision-Date: 2016-01-22 16:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Swedish (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/sv/)\n"
@@ -66,19 +66,19 @@ msgid ""
 "Support for puppet schema in order to edit puppet classes and puppet vars"
 msgstr "Stöd för puppetschema för att redigera puppet-klasser och puppet-variabler"
 
-#: admin/systems/services/puppet/class_servicePuppet.inc:36
-#: admin/systems/services/puppet/class_servicePuppet.inc:56
+#: admin/systems/services/puppet/class_servicePuppet.inc:28
+#: admin/systems/services/puppet/class_servicePuppet.inc:42
 msgid "Puppet server"
 msgstr "Puppet-server"
 
-#: admin/systems/services/puppet/class_servicePuppet.inc:40
+#: admin/systems/services/puppet/class_servicePuppet.inc:29
+msgid "This service allows you to use a puppet server"
+msgstr "Den här tjänsten låter dig använda en puppet-server"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:46
 msgid "Environments"
 msgstr "Miljöer"
 
-#: admin/systems/services/puppet/class_servicePuppet.inc:41
+#: admin/systems/services/puppet/class_servicePuppet.inc:47
 msgid "Available environments for puppet nodes"
 msgstr "Tillgängliga miljöer för puppet-noder"
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:57
-msgid "This service allows you to use a puppet server"
-msgstr "Den här tjänsten låter dig använda en puppet-server"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-05-02 09:31+0200\n"
-"PO-Revision-Date: 2016-01-22 16:06+0000\n"
+"POT-Creation-Date: 2016-06-10 13:36+0200\n"
+"PO-Revision-Date: 2016-05-12 13:36+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Latvian (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -16,45 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
-
-#: admin/ogroups/kolab2/class_mailogroup.inc:37
-#: admin/ogroups/kolab2/paste_mail.tpl.c:2
-msgid "Mail"
-msgstr "Pasts"
-
-#: admin/ogroups/kolab2/class_mailogroup.inc:38
-msgid "Mail group"
-msgstr ""
-
-#: admin/ogroups/kolab2/class_mailogroup.inc:45
-#: admin/ogroups/kolab2/class_mailogroup.inc:118
-#: admin/ogroups/kolab2/class_mailogroup.inc:125
-msgid "Mail address"
-msgstr "E-pasta adrese"
-
-#: admin/ogroups/kolab2/class_mailogroup.inc:82
-msgid "Remove mail account"
-msgstr ""
-
-#: admin/ogroups/kolab2/class_mailogroup.inc:83
-#: admin/ogroups/kolab2/class_mailogroup.inc:86
-msgid "mail group"
-msgstr ""
-
-#: admin/ogroups/kolab2/class_mailogroup.inc:85
-msgid "Create mail account"
-msgstr ""
-
-#: admin/ogroups/kolab2/class_mailogroup.inc:118
-msgid "your-name@your-domain.com"
-msgstr ""
-
-#: admin/ogroups/kolab2/class_mailogroup.inc:152
-#: admin/ogroups/kolab2/class_mailogroup.inc:189
-#: admin/systems/services/kolab2/class_serviceKolab.inc:281
-#: admin/systems/services/kolab2/class_serviceKolab.inc:292
-msgid "LDAP error"
-msgstr "LDAP kļūda"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:29
 msgid "Enable MX lookup for relayhost"
@@ -224,86 +185,91 @@ msgstr ""
 msgid "Accept mail from other domains over non-authenticated SMTP"
 msgstr ""
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:268
+#: admin/systems/services/kolab2/class_serviceKolab.inc:271
 msgid "Internal error"
 msgstr "Iekšējā kļūda"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:268
+#: admin/systems/services/kolab2/class_serviceKolab.inc:271
 msgid "Kolab account does not exist!"
 msgstr ""
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:272
+#: admin/systems/services/kolab2/class_serviceKolab.inc:275
 msgid "Error"
 msgstr "Kļūda"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:272
+#: admin/systems/services/kolab2/class_serviceKolab.inc:275
 msgid "hostname"
 msgstr ""
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:148
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:156
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:157
+#: admin/systems/services/kolab2/class_serviceKolab.inc:284
+#: admin/systems/services/kolab2/class_serviceKolab.inc:295
+msgid "LDAP error"
+msgstr "LDAP kļūda"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:146
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:154
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:155
 msgid "Unspecified"
 msgstr ""
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:149
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:147
 msgid "Mails"
 msgstr ""
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:150
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:148
 msgid "Tasks"
 msgstr ""
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:151
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:149
 msgid "Journals"
 msgstr ""
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:152
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:150
 msgid "Calendar"
 msgstr ""
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:153
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:151
 msgid "Contacts"
 msgstr ""
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:154
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:152
 msgid "Notes"
 msgstr ""
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:158
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:156
 msgid "Inbox"
 msgstr ""
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:159
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:157
 msgid "Drafts"
 msgstr ""
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:160
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:158
 msgid "Sent"
 msgstr ""
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:161
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:159
 msgid "SPAM"
 msgstr ""
 
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:161
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:162
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:163
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:164
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:165
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:166
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:167
 msgid "Default"
 msgstr ""
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:182
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:179
 msgid ""
 "Mail settings cannot be removed while there are delegations configured!"
 msgstr ""
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:279
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:272
 msgid "Waiting for kolab to remove mail properties..."
 msgstr ""
 
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:282
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:275
 msgid "Please remove the mail settings first!"
 msgstr ""
 
@@ -393,20 +359,4 @@ msgstr ""
 
 #: personal/kolab2/class_kolabAccount.inc:153
 msgid "policy for this mail address"
-msgstr ""
-
-#: admin/ogroups/kolab2/mail.tpl.c:2
-msgid "Mail distribution list"
-msgstr ""
-
-#: admin/ogroups/kolab2/mail.tpl.c:5
-msgid "Primary address"
-msgstr ""
-
-#: admin/ogroups/kolab2/mail.tpl.c:8
-msgid "Primary mail address for this distribution list"
-msgstr ""
-
-#: admin/ogroups/kolab2/paste_mail.tpl.c:5
-msgid "Please enter a mail address"
 msgstr ""

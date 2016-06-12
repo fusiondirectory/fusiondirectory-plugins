@@ -75,9 +75,10 @@ class argonautFuseConfig extends simpleService
     );
   }
 
-  function __construct(&$config, $dn, $object = NULL, $attributesInfo = NULL)
+  function __construct ($dn = NULL, $parent = NULL)
   {
-    parent::__construct($config, $dn, $object, $attributesInfo);
+    global $config;
+    parent::__construct($dn, $parent);
 
     /* Load modules */
     $this->plugin = array();
@@ -88,7 +89,7 @@ class argonautFuseConfig extends simpleService
         continue;
       }
       $name = $plug['CLASS'];
-      $this->plugin[$name] = new $name($config, $dn, $object);
+      $this->plugin[$name] = new $name($dn, $parent, $parent);
 
       $this->plugin[$name]->set_acl_category($this->acl_category);
       $this->plugin[$name]->set_acl_base($this->dn);
@@ -102,7 +103,7 @@ class argonautFuseConfig extends simpleService
   {
     if ($this->is_account && !$this->view_logged) {
       $this->view_logged = TRUE;
-      new log("view", "server/".get_class($this), $this->dn);
+      logging::log('view', 'server/'.get_class($this), $this->dn);
     }
 
     $str = "<div style='width:100%; text-align:right; clear:both; float:none;'>".
@@ -113,11 +114,6 @@ class argonautFuseConfig extends simpleService
     $display = simplePlugin::execute();
 
     foreach ($this->plugin as &$plugin) {
-      if ($this->parent !== NULL) {
-        $plugin->parent = $this->parent;
-      } else {
-        $plugin->parent = $this;
-      }
       $display .= '<p class="seperator plugbottom">&nbsp;</p><div></div>';
       $display .= $plugin->execute();
     }

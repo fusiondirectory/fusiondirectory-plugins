@@ -59,15 +59,16 @@ class debconfStartup extends simplePlugin
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($config, $dn, $object);
+    global $config;
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     /* Fill profile select box */
-    $ldap = $this->config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
     $ldap->ls(
       'objectClass=organizationalUnit',
-      get_ou('debconfRDN').$this->config->current['BASE'],
+      get_ou('debconfRDN').$config->current['BASE'],
       array('ou')
     );
     $profiles = array();

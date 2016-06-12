@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -22,7 +21,6 @@
 
 class mailMethodCyrus extends mailMethod
 {
-
   protected $ServerList   = array();
   protected $imap_handle  = NULL;
   protected $quota_loaded = FALSE;
@@ -47,9 +45,9 @@ class mailMethodCyrus extends mailMethod
     $this->ServerList = parent::getMailServers();
   }
 
-
   public function connect()
   {
+    global $config;
     mailMethod::connect();
 
     if (!count($this->ServerList)) {
@@ -80,7 +78,7 @@ class mailMethodCyrus extends mailMethod
     /* Setting connect timeout to 10 seconds,
         else the FusionDirectory UI may freeze for 60 seconds.
        (PHP default is 'default_socket_timeout = 60') */
-    $timeout = $this->config->get_cfg_value("imapTimeout", 10);
+    $timeout = $config->get_cfg_value("imapTimeout", 10);
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $timeout,
           "<b>IMAP: Setting imap connect timeout to</b> (seconds)");
     imap_timeout(1, $timeout);
@@ -103,7 +101,6 @@ class mailMethodCyrus extends mailMethod
 
     return TRUE;
   }
-
 
   public function account_exists()
   {
@@ -260,6 +257,7 @@ class mailMethodCyrus extends mailMethod
 
   public function updateMailbox()
   {
+    global $config;
     mailMethod::updateMailbox();
 
     if (!$this->is_connected() || !$this->imap_handle) {
@@ -280,7 +278,7 @@ class mailMethodCyrus extends mailMethod
         }
 
         /* Autocreate configured default folders */
-        $folders = $this->config->get_cfg_value("cyrusAutocreateFolders", NULL);
+        $folders = $config->get_cfg_value("cyrusAutocreateFolders", NULL);
         if ($folders !== NULL) {
           $cyrus_delim      = ($this->cyrusUseSlashes?"/":".");
 
@@ -303,6 +301,7 @@ class mailMethodCyrus extends mailMethod
 
   public function deleteMailbox()
   {
+    global $config;
     mailMethod::deleteMailbox();
 
     if (!$this->is_connected() || !$this->imap_handle) {
@@ -315,7 +314,7 @@ class mailMethodCyrus extends mailMethod
     $cfg = $this->ServerList[$this->parent->gosaMailServer];
     @imap_setacl ($this->imap_handle, $this->account_id, $cfg["admin"], "lrswipcda");
 
-    if ($this->config->get_cfg_value("cyrusDeleteMailbox", "TRUE") == "TRUE") {
+    if ($config->get_cfg_value("cyrusDeleteMailbox", "TRUE") == "TRUE") {
       if (!imap_deletemailbox($this->imap_handle, $cfg["connect"].$this->account_id)) {
         $this->error = imap_last_error();
         return FALSE;
@@ -624,8 +623,9 @@ class mailMethodCyrus extends mailMethod
     $sieve->sieve_logout();
   }
 
-  static public function get_server_list($config)
+  static public function get_server_list()
   {
+    global $config;
     $serverList = array();
 
     $ldap = $config->get_ldap_link();
@@ -659,5 +659,4 @@ class mailMethodCyrus extends mailMethod
     return $serverList;
   }
 }
-
 ?>

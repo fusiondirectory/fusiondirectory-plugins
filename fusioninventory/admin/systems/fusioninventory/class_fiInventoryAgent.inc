@@ -79,13 +79,8 @@ class fiInventoryAgent extends simplePlugin
       'plPriority'    => 90,
       'plObjectType'  => array('winstation', 'workstation', 'server'),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
-  }
-
-  function __construct(&$config, $dn, $object)
-  {
-    parent::__construct($config, $dn, $object);
   }
 }
 ?>

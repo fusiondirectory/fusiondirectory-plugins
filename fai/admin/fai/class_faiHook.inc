@@ -20,9 +20,7 @@
 
 class faiHook extends faiSimplePluginClass
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array("top","FAIclass","FAIhook");
+  var $objectclasses = array('top','FAIclass','FAIhook');
 
   static function plInfo()
   {
@@ -97,9 +95,9 @@ class faiHook extends faiSimplePluginClass
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
     $this->attributesAccess['hooks']->setLinearRendering(FALSE);
@@ -107,8 +105,9 @@ class faiHook extends faiSimplePluginClass
 
   function ldap_save ($cleanup = TRUE)
   {
+    global $config;
     parent::ldap_save($cleanup);
-    $this->attributesAccess['hooks']->postLdapSave($this->config->get_ldap_link());
+    $this->attributesAccess['hooks']->postLdapSave($config->get_ldap_link());
   }
 }
 ?>

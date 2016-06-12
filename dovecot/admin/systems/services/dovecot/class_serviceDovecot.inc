@@ -39,8 +39,8 @@ class serviceDovecot extends simpleService
   static function getAttributesInfo ()
   {
       return array (
-      'connexion' => array (
-        'name'  => _('Dovecot connexion'),
+      'connection' => array (
+        'name'  => _('Dovecot connection'),
         'attrs' => array (
           new CompositeAttribute (
             _('Connect URL for Dovecot server'),
@@ -61,7 +61,7 @@ class serviceDovecot extends simpleService
                 array('notls', 'tls', 'ssl'), 'notls'
               ),
               new SelectAttribute(
-                _('Valide certificats'), _('Weither or not to validate server certificate on connexion'),
+                _('Validate TLS/SSL Certificates'), _('Weither or not to validate server certificates on connection'),
                 'dovecotConnectOptions2', FALSE,
                 array('', '/validate-cert', '/novalidate-cert'), '',
                 array('', 'validate',       'no-validate')
@@ -94,18 +94,13 @@ class serviceDovecot extends simpleService
         'name'  => _('Options'),
         'attrs' => array (
           new BooleanAttribute (
-            _('Create the user folder throught Argonaut'), _('Use argonaut to create the user mailbox on the Dovecot server'),
+            _('Create the user folder via Argonaut'), _('Use argonaut to create the user mailbox on the Dovecot server'),
             'fdDovecotArgonautMkdir', TRUE,
             TRUE
           ),
         )
       )
     );
-  }
-
-  function __construct(&$config, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($config, $dn, $object);
   }
 
   function save()

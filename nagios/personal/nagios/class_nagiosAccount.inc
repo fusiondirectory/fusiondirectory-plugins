@@ -110,10 +110,10 @@ class nagiosAccount extends simplePlugin
     return $config->get_cfg_value('lconfPrefix', 'lconf');
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     $prefix = self::get_prefix();
     $this->objectclasses = array($prefix.'Contact');
-    parent::__construct($config, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
   }
 }

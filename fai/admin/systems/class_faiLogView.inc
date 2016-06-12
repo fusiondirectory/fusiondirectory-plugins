@@ -180,19 +180,15 @@ class faiLogView extends simplePlugin
     );
   }
 
-  function __construct(&$config, $dn, $object)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    $this->config = $config;
-
     /* Try to fetch logs for the given event (mac) */
     $this->o_queue = new supportDaemon();
 
-    /* Load ldap object if given and use this macAddress. */
-    if (is_object($object) && $dn != "" && $dn != "new") {
-      parent::__construct($config, $dn, $object);
-    } else {
-      parent::__construct($config, 'new', $object);
+    if ($dn == '') {
+      $dn = 'new';
     }
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     /* Get correct macAddress. Check if an event is given or a ldap object. */
     if (isset($this->attrs['macAddress'][0])) {

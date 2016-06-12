@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-05-02 09:31+0200\n"
+"POT-Creation-Date: 2016-06-10 13:36+0200\n"
 "PO-Revision-Date: 2016-01-22 15:34+0000\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: Uighur (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/ug/)\n"
@@ -26,129 +26,129 @@ msgstr ""
 msgid "Services"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:54
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:45
 msgid "Cyrus settings"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:57
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:48
 msgid "Connect URL for Cyrus server"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:61
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:102
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:52
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:93
 msgid "Hostname"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:61
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:52
 msgid "Hostname of the Cyrus server"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:65
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:106
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:56
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:97
 msgid "Port"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:65
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:56
 msgid "Port number on which Cyrus server should be contacted"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:70
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:111
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:61
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:102
 msgid "Option"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:70
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:61
 msgid "Options for contacting Cyrus server"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:75
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:66
 msgid "Valide certificats"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:75
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:66
 msgid "Weither or not to validate server certificate on connexion"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:85
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:76
 msgid "Admin user"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:85
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:76
 msgid "Imap server admin user"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:89
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:80
 msgid "Password"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:89
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:80
 msgid "Admin user password"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:95
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:86
 msgid "Sieve settings"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:98
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:89
 msgid "Sieve connect URL for Cyrus server"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:102
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:93
 msgid "Hostname of the Cyrus sieve server"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:106
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:97
 msgid "Port number on which Cyrus sieve server should be contacted"
 msgstr ""
 
-#: admin/systems/services/cyrus/class_serviceCyrus.inc:111
+#: admin/systems/services/cyrus/class_serviceCyrus.inc:102
 msgid "Options for contacting Cyrus sieve server"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:56
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:54
 msgid "There are no IMAP compatible mail servers defined!"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:61
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:59
 msgid "Mail server for this account is invalid!"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:249
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:246
 msgid "IMAP error"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:249
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:246
 #, php-format
 msgid "Cannot modify IMAP mailbox quota: %s"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:324
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:323
 msgid "Mail info"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:325
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:324
 #, php-format
 msgid ""
 "LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
 "Please delete it manually!"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:417
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:456
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:416
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:455
 msgid "The module imap_getacl is not implemented!"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:533
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:532
 #, php-format
 msgid "Cannot retrieve SIEVE script: %s"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:613
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:612
 #, php-format
 msgid "Cannot store SIEVE script: %s"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:620
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:619
 #, php-format
 msgid "Cannot activate SIEVE script: %s"
 msgstr ""

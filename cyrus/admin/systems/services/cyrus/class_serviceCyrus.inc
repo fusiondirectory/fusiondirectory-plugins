@@ -36,15 +36,6 @@ class serviceCyrus extends simpleService
   }
 
   /*!
-   * \brief Constructor of the freeradiusAccount
-   *        It will build the select groups choices
-   */
-  function __construct(&$config, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($config, $dn, $object);
-  }
-
-  /*!
    *  \brief The main function : information about attributes
    */
   static function getAttributesInfo ()

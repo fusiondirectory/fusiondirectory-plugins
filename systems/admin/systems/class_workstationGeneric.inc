@@ -101,8 +101,6 @@ class systemSimplePluginGlue extends simplePlugin
 
 class workstationGeneric extends systemSimplePluginGlue
 {
-  var $mainTab = TRUE;
-
   var $netConfigDNS;
 
   var $objectclasses = array("top", "gotoWorkstation", "GOhard");
@@ -189,9 +187,9 @@ class workstationGeneric extends systemSimplePluginGlue
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
@@ -227,6 +225,7 @@ class workstationGeneric extends systemSimplePluginGlue
 
   function remove_from_parent()
   {
+    global $config;
     if (!$this->initially_was_account) {
       return;
     }
@@ -237,11 +236,11 @@ class workstationGeneric extends systemSimplePluginGlue
       parent::remove_from_parent();
 
       /* Delete references to object groups */
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
+      $ldap = $config->get_ldap_link();
+      $ldap->cd($config->current['BASE']);
       $ldap->search("(&(objectClass=gosaGroupOfNames)(member=".LDAP::prepare4filter($this->dn)."))", array("cn"));
       while ($ldap->fetch()) {
-        $og = new ogroup($this->config, $ldap->getDN());
+        $og = new ogroup($ldap->getDN());
         unset($og->member[$this->dn]);
         $og->save();
       }

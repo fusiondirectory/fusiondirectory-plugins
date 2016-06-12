@@ -28,13 +28,13 @@ class DiskEntryDialog extends GenericDialog
 
   protected $initialDialogValue = NULL;
 
-  function __construct($simplePlugin, &$attribute, $disk = array(), $diskType = 'disk')
+  function __construct($simplePlugin, $attribute, $disk = array(), $diskType = 'disk')
   {
     $this->attribute = $attribute;
     if (isset($disk['FAIdiskType'])) {
       $diskType = $disk['FAIdiskType'];
     }
-    $this->dialog = new $this->dialogClass($simplePlugin->config, $simplePlugin->dn, $attribute, $disk, $diskType);
+    $this->dialog = new $this->dialogClass($simplePlugin->dn, $attribute, $disk, $diskType);
 
     $base = $simplePlugin->dn;
     if ($base == 'new') {
@@ -134,9 +134,10 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
 
   protected function loadAttrValue ($attrs)
   {
+    global $config;
     if (isset($attrs['dn'])) {
       /* Fetch disks */
-      $ldap = $this->plugin->config->get_ldap_link();
+      $ldap = $config->get_ldap_link();
       $ldap->ls($this->diskFilter, $attrs['dn']);
       $this->value = array();
       while ($subattrs = $ldap->fetch()) {
@@ -274,8 +275,6 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
 
 class faiPartitionTable extends faiSimplePluginClass
 {
-  var $mainTab = TRUE;
-
   var $objectclasses    = array('top','FAIclass','FAIpartitionTable');
 
   static function plInfo()
@@ -328,17 +327,18 @@ class faiPartitionTable extends faiSimplePluginClass
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
   }
 
   function ldap_save ($cleanup = TRUE)
   {
+    global $config;
     parent::ldap_save($cleanup);
-    $this->attributesAccess['FAIpartitions']->postLdapSave($this->config->get_ldap_link());
+    $this->attributesAccess['FAIpartitions']->postLdapSave($config->get_ldap_link());
   }
 
   function getUsedDiskNames()

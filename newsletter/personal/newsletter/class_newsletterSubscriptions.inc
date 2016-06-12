@@ -21,7 +21,7 @@
 class newsletterSubscriptions extends simplePlugin
 {
   var $displayHeader = TRUE;
-  
+
   var $objectclasses = array('fdNewsletterAccount');
 
   static function plInfo()
@@ -55,11 +55,6 @@ class newsletterSubscriptions extends simplePlugin
         )
       ),
     );
-  }
-
-  function __construct (&$config, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($config, $dn, $object);
   }
 }
 ?>

@@ -149,6 +149,17 @@ class serviceRepository extends simpleService
   var $objectclasses  = array('FAIrepositoryServer');
   var $showActions    = FALSE;
 
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Package repository'),
+      'plDescription' => _('Package repository information'),
+      'plIcon'        => 'geticon.php?context=mimetypes&icon=package-x-generic&size=16',
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
   static function getAttributesInfo ()
   {
     return array(
@@ -171,20 +182,9 @@ class serviceRepository extends simpleService
     );
   }
 
-  static function plInfo()
+  function __construct ($dn = NULL, $parent = NULL)
   {
-    return array(
-      'plShortName'   => _('Package repository'),
-      'plDescription' => _('Package repository information'),
-      'plIcon'        => 'geticon.php?context=mimetypes&icon=package-x-generic&size=16',
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-    );
-  }
-
-  function __construct (&$config, $dn = NULL, $parent = NULL)
-  {
-    parent::__construct($config, $dn, $parent);
+    parent::__construct($dn, $parent);
 
     $this->attributesAccess['FAIrepository']->setLinearRendering(FALSE);
   }

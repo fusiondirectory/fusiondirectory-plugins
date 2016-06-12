@@ -30,11 +30,11 @@ class PartitionDialog extends GenericDialog
 
   protected $plugin;
 
-  function __construct($simplePlugin, &$attribute, $partition = array())
+  function __construct($simplePlugin, $attribute, $partition = array())
   {
     $this->attribute  = $attribute;
     $this->plugin     = $simplePlugin;
-    $this->dialog = new $this->dialogClass($simplePlugin->config, $partition, $simplePlugin, $simplePlugin->FAIdiskType);
+    $this->dialog = new $this->dialogClass($partition, $simplePlugin, $simplePlugin->FAIdiskType);
 
     $this->dialog->set_acl_base($simplePlugin->acl_base);
     $this->dialog->set_acl_category('fai');
@@ -275,11 +275,10 @@ class faiDiskEntry extends simplePlugin
     );
   }
 
-  function __construct (&$config, $dn, $parent, $disk, $type)
+  function __construct ($dn, $parent, $disk, $type)
   {
-    parent::__construct($config, $dn);
+    parent::__construct($dn, NULL, $parent);
 
-    $this->parent       = $parent;
     $this->FAIdiskType  = $type;
     if ($this->FAIdiskType != 'lvm') {
       $this->attributesAccess['lvmDevices']->setDisabled(TRUE);

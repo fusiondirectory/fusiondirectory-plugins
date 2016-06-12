@@ -61,11 +61,6 @@ class ipmiClient extends simplePlugin
       ),
     );
   }
-
-  function __construct(&$config, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($config, $dn, $object);
-  }
 }
 
 ?>

@@ -114,8 +114,9 @@ class fiInventory extends simplePlugin
     );
   }
 
-  function __construct(&$config, $dn, $object)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
+    global $config;
     $attributesInfo = self::getAttributesInfo();
     if (preg_match('/'.preg_quote(get_ou('inventoryRDN').$config->current['BASE'], '/').'$/', $dn)) {
       $this->mainTab        = TRUE;
@@ -123,7 +124,7 @@ class fiInventory extends simplePlugin
       $attributesInfo['hardware']['attrs'][] = new HiddenAttribute('cn');
     }
 
-    parent::__construct($config, $dn, $object, $attributesInfo);
+    parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
     $this->hardware_infos = NULL;
     $this->software_infos = NULL;
@@ -154,7 +155,8 @@ class fiInventory extends simplePlugin
 
   function get_inventory_infos()
   {
-    $ldap = $this->config->get_ldap_link();
+    global $config;
+    $ldap = $config->get_ldap_link();
 
     if ($this->mainTab) {
       $dn = $this->dn;
@@ -162,7 +164,7 @@ class fiInventory extends simplePlugin
       if (!isset($this->parent)) {
         return array();
       }
-      $matching     = $this->config->get_cfg_value('inventoryMatching', 'mac');
+      $matching     = $config->get_cfg_value('inventoryMatching', 'mac');
       $macAddress   = $this->parent->getBaseObject()->netConfigDNS->macAddress;
       $ipHostNumber = $this->parent->getBaseObject()->netConfigDNS->ipHostNumber;
       if ($macAddress != '') {
@@ -195,7 +197,7 @@ class fiInventory extends simplePlugin
           $filter = "(|$macfilter$ipfilter)";
           break;
       }
-      $ldap->cd(get_ou('inventoryRDN').$this->config->current['BASE']);
+      $ldap->cd(get_ou('inventoryRDN').$config->current['BASE']);
       $ldap->search('(&(objectClass=fdInventoryContent)'.$filter.')');
       if ($attrs = $ldap->fetch()) {
         $dn = $attrs['dn'];

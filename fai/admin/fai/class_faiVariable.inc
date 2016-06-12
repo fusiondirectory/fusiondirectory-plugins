@@ -20,9 +20,7 @@
 
 class faiVariable extends faiSimplePluginClass
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array("top","FAIclass","FAIvariable");
+  var $objectclasses = array('top','FAIclass','FAIvariable');
 
   static function plInfo()
   {
@@ -89,9 +87,9 @@ class faiVariable extends faiSimplePluginClass
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
     $this->attributesAccess['variables']->setLinearRendering(FALSE);
@@ -99,8 +97,9 @@ class faiVariable extends faiSimplePluginClass
 
   function ldap_save ($cleanup = TRUE)
   {
+    global $config;
     parent::ldap_save($cleanup);
-    $this->attributesAccess['variables']->postLdapSave($this->config->get_ldap_link());
+    $this->attributesAccess['variables']->postLdapSave($config->get_ldap_link());
   }
 }
 ?>

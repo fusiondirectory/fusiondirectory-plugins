@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-05-02 09:31+0200\n"
-"PO-Revision-Date: 2016-01-22 16:04+0000\n"
+"POT-Creation-Date: 2016-06-10 13:36+0200\n"
+"PO-Revision-Date: 2016-05-12 16:11+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgid "Services"
 msgstr ""
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:43
-msgid "Dovecot connexion"
+msgid "Dovecot connection"
 msgstr ""
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:46
@@ -59,11 +59,11 @@ msgid "Options for contacting Dovecot server"
 msgstr ""
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:64
-msgid "Valide certificats"
+msgid "Validate TLS/SSL Certificates"
 msgstr ""
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:64
-msgid "Weither or not to validate server certificate on connexion"
+msgid "Weither or not to validate server certificates on connection"
 msgstr ""
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:76
@@ -99,22 +99,22 @@ msgid "Options"
 msgstr ""
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:97
-msgid "Create the user folder throught Argonaut"
+msgid "Create the user folder via Argonaut"
 msgstr ""
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:97
 msgid "Use argonaut to create the user mailbox on the Dovecot server"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:49
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:50
 msgid "There are no IMAP compatible mail servers defined!"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:54
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:55
 msgid "Mail server for this account is invalid!"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:192
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:194
 #, php-format
 msgid "Error while trying to contact Dovecot server through Argonaut: %s"
 msgstr ""

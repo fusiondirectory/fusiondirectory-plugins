@@ -20,7 +20,7 @@
 
 class argonautFAIMonitor extends simpleService
 {
-  var $objectclasses  = array("argonautFAIMonitorConfig");
+  var $objectclasses  = array('argonautFAIMonitorConfig');
 
   static function plInfo()
   {
@@ -64,5 +64,4 @@ class argonautFAIMonitor extends simpleService
     );
   }
 }
-
 ?>

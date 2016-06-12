@@ -47,7 +47,7 @@ class mailgroup extends simplePlugin
       'plDescription'  => _('Group mail options'),
       'plSelfModify'   => FALSE,
       'plPriority'     => 10,
-      'plObjectType'   => array('group'),
+      'plObjectType'   => array('group', 'ogroup-user'),
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
@@ -87,11 +87,10 @@ class mailgroup extends simplePlugin
     );
   }
 
-  function __construct(&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
 
-    /* Intialize the used mailMethod */
     if (isset($object->cn)) {
       $this->cn = $object->cn;
     } elseif (isset($this->attrs['cn'])) {

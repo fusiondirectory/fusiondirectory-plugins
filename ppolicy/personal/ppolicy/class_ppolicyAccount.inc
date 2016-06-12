@@ -66,7 +66,7 @@ class ppolicyAccount extends simplePlugin
     );
   }
 
-  function __construct (&$config, $dn = NULL, $parent = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     $attributesInfo = $this->getAttributesInfo();
 
@@ -77,7 +77,7 @@ class ppolicyAccount extends simplePlugin
     array_unshift($outputs, _('Use the default'));
     $attributesInfo['main']['attrs'][0]->setChoices($choices, $outputs);
 
-    parent::__construct($config, $dn, $parent, $attributesInfo);
+    parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
     if ($this->pwdChangedTime == '') {
       $this->pwdChangedTime = _('Never');
@@ -99,8 +99,9 @@ class ppolicyAccount extends simplePlugin
 
   protected function loadAttributes()
   {
+    global $config;
     if ($this->dn != 'new') {
-      $ldap = $this->config->get_ldap_link();
+      $ldap = $config->get_ldap_link();
       $this->updateAttributesValues();
       $ldap->cat($this->dn, $this->attributes);
       $attrs = $ldap->fetch();

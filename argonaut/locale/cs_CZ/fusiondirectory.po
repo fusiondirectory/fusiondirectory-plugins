@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-05-02 09:31+0200\n"
+"POT-Creation-Date: 2016-06-10 13:36+0200\n"
 "PO-Revision-Date: 2016-01-22 16:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/cs_CZ/)\n"
@@ -17,111 +17,111 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
+#: admin/systems/argonaut/class_argonautClient.inc:117
+msgid "Argonaut client"
+msgstr "Argonaut klient"
+
 #: admin/systems/argonaut/class_argonautClient.inc:118
+msgid "Edit argonaut client settings"
+msgstr "Upravit nastavení argonaut klienta"
+
+#: admin/systems/argonaut/class_argonautClient.inc:131
 msgid "Argonaut client settings"
 msgstr "Nastavení Argonaut klienta"
 
-#: admin/systems/argonaut/class_argonautClient.inc:121
+#: admin/systems/argonaut/class_argonautClient.inc:134
 msgid "Client port"
 msgstr "Port klienta"
 
-#: admin/systems/argonaut/class_argonautClient.inc:121
+#: admin/systems/argonaut/class_argonautClient.inc:134
 msgid "Port used by argonaut client for JSON-RPC"
 msgstr "Port používaný argonaut klientem JSON-RPC komunikaci"
 
-#: admin/systems/argonaut/class_argonautClient.inc:126
+#: admin/systems/argonaut/class_argonautClient.inc:139
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
 msgid "Protocol"
 msgstr "Protokol"
 
-#: admin/systems/argonaut/class_argonautClient.inc:126
+#: admin/systems/argonaut/class_argonautClient.inc:139
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
 msgid "Protocol to use for argonaut"
 msgstr "Protokol, který má být používán službou argonaut"
 
-#: admin/systems/argonaut/class_argonautClient.inc:131
+#: admin/systems/argonaut/class_argonautClient.inc:144
 msgid "WakeOnLan interface"
 msgstr "Rozhraní pro probouzení po síti (WoL)"
 
-#: admin/systems/argonaut/class_argonautClient.inc:131
+#: admin/systems/argonaut/class_argonautClient.inc:144
 msgid "Interface used by argonaut for WakeOnLan"
 msgstr "Rozhraní použité komponentou argonaut pro probouzení strojů po síti (WoL)"
 
-#: admin/systems/argonaut/class_argonautClient.inc:136
+#: admin/systems/argonaut/class_argonautClient.inc:149
 msgid "TaskId file"
 msgstr "TaskId soubor"
 
-#: admin/systems/argonaut/class_argonautClient.inc:136
+#: admin/systems/argonaut/class_argonautClient.inc:149
 msgid "File which argonaut will use to store its task id when booting"
 msgstr "Soubor, který bude argonaut používat pro ukládání identifikátorů svých úloh při zavádění systému"
 
-#: admin/systems/argonaut/class_argonautClient.inc:141
+#: admin/systems/argonaut/class_argonautClient.inc:154
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:55
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
 #: admin/systems/services/argonaut/class_argonautServer.inc:79
 msgid "Log directory"
 msgstr "Složka pro soubory se záznamy událostí"
 
-#: admin/systems/argonaut/class_argonautClient.inc:141
+#: admin/systems/argonaut/class_argonautClient.inc:154
 msgid "Directory in which argonaut client should write its logs"
 msgstr "Složka, do které by argonaut klient měl ukládat své soubory se záznamem událostí"
 
-#: admin/systems/argonaut/class_argonautClient.inc:148
+#: admin/systems/argonaut/class_argonautClient.inc:161
 #: admin/systems/services/argonaut/class_argonautServer.inc:103
 msgid "SSL paths"
 msgstr "Umístění SSL"
 
-#: admin/systems/argonaut/class_argonautClient.inc:151
+#: admin/systems/argonaut/class_argonautClient.inc:164
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
 msgid "Key"
 msgstr "Klíč"
 
-#: admin/systems/argonaut/class_argonautClient.inc:151
+#: admin/systems/argonaut/class_argonautClient.inc:164
 msgid "Path to the private key file on Argonaut client"
 msgstr "Umístění souboru se soukromou částí klíče na Argonaut klientovi"
 
-#: admin/systems/argonaut/class_argonautClient.inc:156
+#: admin/systems/argonaut/class_argonautClient.inc:169
 #: admin/systems/services/argonaut/class_argonautServer.inc:111
 msgid "Certificate"
 msgstr "Certifikát"
 
-#: admin/systems/argonaut/class_argonautClient.inc:156
+#: admin/systems/argonaut/class_argonautClient.inc:169
 msgid "Path to the certificate file on Argonaut client"
 msgstr "Umístění souboru s certifikátem na Argonaut klientovi"
 
-#: admin/systems/argonaut/class_argonautClient.inc:161
+#: admin/systems/argonaut/class_argonautClient.inc:174
 #: admin/systems/services/argonaut/class_argonautServer.inc:116
 msgid "CA certificate"
 msgstr "Certifikát cert. autority"
 
-#: admin/systems/argonaut/class_argonautClient.inc:161
+#: admin/systems/argonaut/class_argonautClient.inc:174
 msgid "Path to the CA certificate file on Argonaut client"
 msgstr "Umístění souboru s certifikátem cert. autority na Argonaut klientovi"
 
-#: admin/systems/argonaut/class_argonautClient.inc:166
+#: admin/systems/argonaut/class_argonautClient.inc:179
 #: admin/systems/services/argonaut/class_argonautServer.inc:121
 msgid "CN of the certificate"
 msgstr "CN certifikátu"
 
-#: admin/systems/argonaut/class_argonautClient.inc:166
+#: admin/systems/argonaut/class_argonautClient.inc:179
 msgid "The CN in this client certificate"
 msgstr "CN v tomto klientském certifikátu"
 
-#: admin/systems/argonaut/class_argonautClient.inc:172
+#: admin/systems/argonaut/class_argonautClient.inc:185
 msgid "Service names"
 msgstr "Názvy služeb"
 
-#: admin/systems/argonaut/class_argonautClient.inc:174
+#: admin/systems/argonaut/class_argonautClient.inc:187
 msgid "Argonaut service names"
 msgstr "Názvy služby Argonaut"
-
-#: admin/systems/argonaut/class_argonautClient.inc:199
-msgid "Argonaut client"
-msgstr "Argonaut klient"
-
-#: admin/systems/argonaut/class_argonautClient.inc:200
-msgid "Edit argonaut client settings"
-msgstr "Upravit nastavení argonaut klienta"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:30
 msgid "Argonaut Fuse"
@@ -488,37 +488,37 @@ msgstr ""
 msgid "Imported tasks"
 msgstr ""
 
-#: addons/argonaut/class_argonautImportFile.inc:97
-#: addons/argonaut/class_argonautImportFile.inc:121
-#: addons/argonaut/class_argonautImportFile.inc:145
-#: addons/argonaut/class_argonautImportFile.inc:157
+#: addons/argonaut/class_argonautImportFile.inc:96
+#: addons/argonaut/class_argonautImportFile.inc:120
+#: addons/argonaut/class_argonautImportFile.inc:144
+#: addons/argonaut/class_argonautImportFile.inc:156
 #: addons/argonaut/deploy-list.xml:79
 msgid "Import"
 msgstr "Import"
 
-#: addons/argonaut/class_argonautImportFile.inc:122
+#: addons/argonaut/class_argonautImportFile.inc:121
 msgid "Fix the errors in your CSV file first"
 msgstr ""
 
-#: addons/argonaut/class_argonautImportFile.inc:138
+#: addons/argonaut/class_argonautImportFile.inc:137
 msgid "Infrastructure service"
 msgstr "Služba Infrastruktura"
 
-#: addons/argonaut/class_argonautImportFile.inc:145
+#: addons/argonaut/class_argonautImportFile.inc:144
 #, php-format
 msgid "Import complete: %s events successfully send, %s failed"
 msgstr "Import byl dokončen: %s událostí úspěšně zasláno, %s se nezdařilo"
 
-#: addons/argonaut/class_argonautImportFile.inc:157
+#: addons/argonaut/class_argonautImportFile.inc:156
 msgid "file is empty"
 msgstr "soubor je prázdný"
 
-#: addons/argonaut/class_argonautImportFile.inc:182
+#: addons/argonaut/class_argonautImportFile.inc:181
 #: addons/argonaut/import_events.tpl.c:23
 msgid "MAC"
 msgstr "MAC adresa"
 
-#: addons/argonaut/class_argonautImportFile.inc:185
+#: addons/argonaut/class_argonautImportFile.inc:184
 #: addons/argonaut/deploy-list.xml:14 addons/argonaut/import_events.tpl.c:26
 msgid "Event"
 msgstr "Událost"
@@ -723,12 +723,12 @@ msgstr "Nalezeno více argonaut serverů. Použit je možné ale pouze jeden"
 msgid "There is no argonaut server configured"
 msgstr "Není nastaven žádný argonaut server"
 
-#: include/class_supportDaemon.inc:599
+#: include/class_supportDaemon.inc:600
 #, php-format
 msgid "Could not read \"%s\"!"
 msgstr "Nelze načíst %s!"
 
-#: include/class_supportDaemon.inc:603
+#: include/class_supportDaemon.inc:604
 #, php-format
 msgid "\"%s\" is not a file!"
 msgstr "%s není soubor!"

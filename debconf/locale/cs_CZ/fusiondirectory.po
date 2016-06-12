@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-05-02 09:31+0200\n"
+"POT-Creation-Date: 2016-06-10 13:36+0200\n"
 "PO-Revision-Date: 2016-01-22 16:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/cs_CZ/)\n"
@@ -26,29 +26,29 @@ msgstr "Debconf"
 msgid "Debconf profile management"
 msgstr "Správa Debconf sady nastavení"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:71
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:84
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:72
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:86
 msgid "Error"
 msgstr "Chyba"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:71
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:72
 msgid "There is no template for this profile"
 msgstr "Pro tento profil neexistuje šablona"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:85
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:87
 #, php-format
 msgid "Can't find entry %s in LDAP for profile %s"
 msgstr "Pro sadu nastavení %s nebyla v LDAP nalezena položka %s"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:134
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:137
 msgid "LDAP error"
 msgstr "Chyba LDAP"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:137
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:140
 msgid "LDIF error"
 msgstr "Chyba v LDIF"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:146
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:150
 #, php-format
 msgid ""
 "In order to import a debconf file, please run the following command : "
@@ -57,38 +57,38 @@ msgid ""
 "the desired name for the template.<br/>"
 msgstr "Debconf soubor importujete spuštěním následujícího příkazu: <br/><i>debconf2ldif.pl -b ou=<b>nazev</b>,%s -k <b>nazev_souboru</b> > sablona.ldif </i><br/>S názvem souboru <b>nazev_souboru</b> a požadovaným názvem šablony <b>nazev</b>.<br/>"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:162
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:166
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:170
 msgid "Debconf profile"
 msgstr "Debconf sada nastavení"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:163
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:167
 msgid "Debconf profile information"
 msgstr "Údaje o sadě nastavení Debconf"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:181
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:184
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:185
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:188
 #: admin/debconfProfile/debconfProfile-filter.tpl.c:5
 msgid "Name"
 msgstr "Název"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:183
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:187
 msgid "Import a debconf file"
 msgstr "Importovat debconf soubor"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:184
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:188
 msgid "Name of this debconf template"
 msgstr "Název této debconf šablony"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:188
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:192
 msgid "Entries"
 msgstr "Položky"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:190
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:194
 msgid "Debconf template answers"
 msgstr "Odpovědi Debconf šablony"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:205
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:209
 msgid "Import"
 msgstr "Import"
 

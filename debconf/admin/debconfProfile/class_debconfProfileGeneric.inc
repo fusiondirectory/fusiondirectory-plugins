@@ -36,10 +36,11 @@ class DebconfEntriesAttribute extends CompositeAttribute
 
   function loadEntries ()
   {
+    global $config;
     $this->attributes = array();
 
     /* Load template */
-    $ldap = $this->plugin->config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
     $ou   = $this->plugin->attributesAccess['ou']->getValue();
     $ldap->cd("ou=templates,".$this->plugin->dn);
     $ldap->search("(objectClass=debConfDbEntry)");
@@ -76,7 +77,8 @@ class DebconfEntriesAttribute extends CompositeAttribute
 
   function saveInLdap()
   {
-    $ldap = $this->plugin->config->get_ldap_link();
+    global $config;
+    $ldap = $config->get_ldap_link();
     foreach ($this->attributes as $cn => $attribute) {
       $dn = "cn=$cn,ou=questions,".$this->plugin->dn;
       $ldap->cat($dn, array("objectClass"));
@@ -109,13 +111,14 @@ class DebconfImportAttribute extends FileAttribute
    */
   function readFile($handle)
   {
+    global $config;
     $matches = array();
     $str = fread($handle, 1024);
     strpos($str, "dn:");
     $tmp = str_replace ("\n", "", $str);  // removing breaklines
     $tmp = str_replace (" ", "", $tmp);   // removing spaces
     if (preg_match( "/dn:.*,ou=templates,ou=([^,=]+),".get_ou("debconfRDN").
-                    $this->plugin->config->current['BASE']."/",
+                    $config->current['BASE']."/",
                     $tmp, $matches) > 0) {    // searching for dn: containing the template name
       $this->plugin->attributesAccess['ou']->setPostValue($matches[1]);
       $this->plugin->attributesAccess['ou']->setValue($matches[1]);
@@ -126,7 +129,7 @@ class DebconfImportAttribute extends FileAttribute
       }
       @fclose($handle);
 
-      $ldap = $this->plugin->config->get_ldap_link();
+      $ldap = $config->get_ldap_link();
       try {
         $ldap->import_complete_ldif($str, FALSE, FALSE);
         $this->plugin->initially_was_account = TRUE;
@@ -136,17 +139,18 @@ class DebconfImportAttribute extends FileAttribute
     } else {
       msg_dialog::display(_("LDIF error"),  "Could not found template name in the ldif ".
                                             "was expecting ou=<b>name</b>,ou=templates,".
-                                            get_ou("debconfRDN").$this->plugin->config->current['BASE'],
+                                            get_ou("debconfRDN").$config->current['BASE'],
                                             ERROR_DIALOG);
     }
   }
 
   function renderFormInput()
   {
+    global $config;
     return sprintf(_("In order to import a debconf file, please run the following command : <br/>".
         "<i>debconf2ldif.pl -b ou=<b>name</b>,%s -k <b>filename</b> > template.ldif </i><br/>".
         "With <b>filename</b> the file name, and <b>name</b> the desired name for the template.<br/>"),
-        get_ou("debconfRDN").$this->plugin->config->current['BASE']).parent::renderFormInput();
+        get_ou("debconfRDN").$config->current['BASE']).parent::renderFormInput();
   }
 }
 
@@ -193,9 +197,9 @@ class debconfProfileGeneric extends simplePlugin
     );
   }
 
-  public function __construct(&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['ou']->setUnique(TRUE);
     if (count($this->attributesAccess['debconfEntries']->attributes) == 0) {

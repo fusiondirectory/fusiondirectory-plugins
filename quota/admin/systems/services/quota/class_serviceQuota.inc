@@ -3,17 +3,17 @@
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
   Copyright (C) 2010 Antoine Gallavardin
   Copyright (C) 2011-2016 FusionDirectory
- 
+
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
- 
+
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
- 
+
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -126,9 +126,10 @@ class serviceQuota extends simpleService
     );
   }
 
-  function __construct (&$config, $dn = NULL, $parent = NULL)
+  function __construct ($dn = NULL, $parent = NULL)
   {
-    parent::__construct($config, $dn, $parent);
+    global $config;
+    parent::__construct($dn, $parent);
 
     $this->attributesAccess['quotaDeviceParameters']->setLinearRendering(FALSE);
 
@@ -144,7 +145,7 @@ class serviceQuota extends simpleService
 
     /* get all encodings types available */
     $charsets = array();
-    $configEncodings = $this->config->get_cfg_value('encodings', array());
+    $configEncodings = $config->get_cfg_value('encodings', array());
     foreach ($configEncodings as $str) {
       $arr = explode("=", $str);
       if (count($arr) == 2) {
@@ -176,9 +177,10 @@ class serviceQuota extends simpleService
 
   function getLdapServers()
   {
+    global $config;
     /* Get List of server with LDAP service */
     $ldapServers = array();
-    foreach ($this->config->data['SERVERS']['LDAP'] as $dn => $attrs) {
+    foreach ($config->data['SERVERS']['LDAP'] as $dn => $attrs) {
       $ldapServers[$dn] = $attrs['cn'][0];
     }
     return $ldapServers;

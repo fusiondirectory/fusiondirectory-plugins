@@ -52,7 +52,7 @@ class PackageConfigDialog extends GenericDialog
   function __construct($simplePlugin, &$attribute, $key, $pkg_config)
   {
     $this->attribute  = $attribute;
-    $this->dialog     = new $this->dialogClass($simplePlugin->config, $simplePlugin->dn, $key, $simplePlugin->FAIdebianRelease , $pkg_config);
+    $this->dialog     = new $this->dialogClass($simplePlugin->dn, $key, $simplePlugin->FAIdebianRelease , $pkg_config);
   }
 
   function execute ()
@@ -314,6 +314,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
 
   function genConfiguredPackages()
   {
+    global $config;
     /* Fetch all package configurations from ldap */
     $PackageFilter = "";
     foreach ($this->value as $name) {
@@ -325,7 +326,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     $PackageFilter = "(&(objectClass=FAIdebconfInfo)(|".$PackageFilter."))";
 
     /* Search for configuration objects */
-    $ldap = $this->plugin->config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
     $ldap->cd($this->plugin->dn);
     $ldap->search($PackageFilter, array("FAIvariable","FAIvariableType",
           "FAIvariableContent","FAIpackage","FAIdebianSection","FAIstate"));
@@ -367,8 +368,6 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
 
 class faiPackage extends faiSimplePluginClass
 {
-  var $mainTab = TRUE;
-
   var $objectclasses = array('top','FAIclass','FAIpackageList','FAIrepository');
 
   static function plInfo()
@@ -441,13 +440,13 @@ class faiPackage extends faiSimplePluginClass
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
-    if ($this->FAIdebianRelease === "") {
+    if ($this->FAIdebianRelease === '') {
       /* Assemble release name */
       $this->updateRelease();
     }
@@ -473,8 +472,9 @@ class faiPackage extends faiSimplePluginClass
 
   function ldap_save ($cleanup = TRUE)
   {
+    global $config;
     parent::ldap_save($cleanup);
-    $this->attributesAccess['FAIpackage']->postLdapSave($this->config->get_ldap_link());
+    $this->attributesAccess['FAIpackage']->postLdapSave($config->get_ldap_link());
   }
 
   function getServerInfos()

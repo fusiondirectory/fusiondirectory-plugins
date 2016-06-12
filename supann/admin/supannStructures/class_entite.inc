@@ -103,12 +103,13 @@ class entite extends simplePlugin
     );
   }
 
-  function __construct (&$config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    parent::__construct($config, $dn, $object);
+    global $config;
+    parent::__construct($dn, $object, $parent, $mainTab);
 
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
     $ldap->search('(objectClass=supannEntite)', array('supannCodeEntite','ou','o'));
 
     $entity_codes   = array('');

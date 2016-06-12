@@ -68,7 +68,7 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
   if (session::global_is_set('LOGIN') && session::global_is_set('config') && session::global_is_set('plist')) {
     $config = session::global_get('config');
     $plist  = session::global_get('plist');
-    $ui     = $plist->ui;
+    $ui     = session::global_get('ui');
   } else {
     $config = new config(CONFIG_DIR."/".CONFIG_FILE, $BASE_DIR);
     if ($ldap === NULL) {
@@ -103,12 +103,13 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
       authenticateHeader('Invalid user or pwd '.$_SERVER['PHP_AUTH_USER'].'/'.$_SERVER['PHP_AUTH_PW']);
     }
     session::global_set('LOGIN', TRUE);
-    $plist = new pluglist($config, $ui);
-    session::global_set('plist', $plist);
+    $plist = new pluglist();
     $config->loadPlist($plist);
     $config->get_departments();
     $config->make_idepartments();
     session::global_set('config', $config);
+    session::global_set('plist',  $plist);
+    session::global_set('ui',     $ui);
   }
 }
 
@@ -127,6 +128,7 @@ class fdRPCService
 
   function __call($method, $params)
   {
+    global $config;
     if (preg_match('/^_(.*)$/', $method, $m)) {
       throw new Exception("Non existing method '$m[1]'");
     }
@@ -146,23 +148,23 @@ class fdRPCService
       initiateRPCSession(array_shift($params));
     }
 
-    global $config;
     $this->ldap = $config->get_ldap_link();
     if (!$this->ldap->success()) {
       die('Ldap error: '.$this->ldap->get_error());
     }
     $this->ldap->cd($config->current['BASE']);
 
-    new log("debug", "JSON-RPC", 'Method '.$method, array(), "Params:".print_r($params, TRUE));
+    logging::log('debug', 'JSON-RPC', 'Method '.$method, array(), 'Params:'.print_r($params, TRUE));
 
     return call_user_func_array(array($this, '_'.$method), $params);
   }
 
-  protected function checkAccess($type, $tab = NULL, $dn = NULL)
+  protected function checkAccess($type, $tabs = NULL, $dn = NULL)
   {
+    global $ui;
     $infos = objects::infos($type);
     $plist = session::global_get('plist');
-    if (($dn !== NULL) && ($plist->ui->dn == $dn)) {
+    if (($dn !== NULL) && ($ui->dn == $dn)) {
       $self = ':self';
     } else {
       $self = '';
@@ -170,10 +172,15 @@ class fdRPCService
     if (!$plist->check_access($infos['aclCategory'].$self)) {
       throw new Exception("Unsufficient rights for accessing type '$type$self'");
     }
-    if ($tab !== NULL) {
-      $pInfos = pluglist::pluginInfos($tab);
-      if (!$plist->check_access(join($self.',', $pInfos['plCategory']).$self)) {
-        throw new Exception("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
+    if ($tabs !== NULL) {
+      if (!is_array($tabs)) {
+        $tabs = array($tabs);
+      }
+      foreach ($tabs as $tab) {
+        $pInfos = pluglist::pluginInfos($tab);
+        if (!$plist->check_access(join($self.',', $pInfos['plCategory']).$self)) {
+          throw new Exception("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
+        }
       }
     }
   }
@@ -228,56 +235,7 @@ class fdRPCService
   }
 
   /*!
-   * \brief Get all fields from an object type
-   */
-  protected function _fields($type, $dn = NULL, $tab = NULL)
-  {
-    $this->checkAccess($type, $tab, $dn);
-
-    if ($dn === NULL) {
-      $tabobject = objects::create($type);
-    } else {
-      $tabobject = objects::open($dn, $type);
-    }
-    if ($tab === NULL) {
-      $object = $tabobject->getBaseObject();
-    } else {
-      $object = $tabobject->by_object[$tab];
-    }
-    if (is_subclass_of($object, 'simplePlugin')) {
-      $fields = $object->attributesInfo;
-      foreach ($fields as &$section) {
-        $attributes = array();
-        foreach ($section['attrs'] as $key => $attr) {
-          if ($object->acl_is_readable($attr->getAcl())) {
-            $attr->serializeAttribute($attributes);
-          }
-        }
-        $section['attrs'] = array_values($attributes);
-      }
-      unset($section);
-      return $fields;
-    } else {
-      /* fallback for old plugins */
-      $fields = array('main' => array('attrs' => array(), 'name' => _('Plugin')));
-      foreach ($object->attributes as $attr) {
-        if ($object->acl_is_readable($attr.'Acl')) {
-          $fields['main']['attrs'][$attr] = array(
-            'value'       => $object->$attr,
-            'required'    => FALSE,
-            'disabled'    => FALSE,
-            'label'       => $attr,
-            'type'        => 'OldPluginAttribute',
-            'description' => '',
-          );
-        }
-      }
-      return $fields;
-    }
-  }
-
-  /*!
-   * \brief List activated tabs on an object
+   * \brief List tabs on an object
    */
   protected function _listTabs($type, $dn = NULL)
   {
@@ -291,9 +249,10 @@ class fdRPCService
 
     $tabs = array();
     foreach ($tabobject->by_object as $tab => $obj) {
-      if ($obj->is_account || $obj->ignore_account) {
-        $tabs[$tab] = $tabobject->by_name[$tab];
-      }
+      $tabs[$tab] = array(
+        'name'    => $tabobject->by_name[$tab],
+        'active'  => ($obj->is_account || $obj->ignore_account)
+      );
     }
     return $tabs;
   }
@@ -324,9 +283,58 @@ class fdRPCService
   }
 
   /*!
+   * \brief Get all form fields from an object (or object type)
+   */
+  protected function _formfields($type, $dn = NULL, $tab = NULL)
+  {
+    $this->checkAccess($type, $tab, $dn);
+
+    if ($dn === NULL) {
+      $tabobject = objects::create($type);
+    } else {
+      $tabobject = objects::open($dn, $type);
+    }
+    if ($tab === NULL) {
+      $object = $tabobject->getBaseObject();
+    } else {
+      $object = $tabobject->by_object[$tab];
+    }
+    if (is_subclass_of($object, 'simplePlugin')) {
+      $fields = $object->attributesInfo;
+      foreach ($fields as &$section) {
+        $attributes = array();
+        foreach ($section['attrs'] as $key => $attr) {
+          if ($object->acl_is_readable($attr->getAcl())) {
+            $attr->serializeAttribute($attributes, TRUE);
+          }
+        }
+        $section['attrs'] = $attributes;
+      }
+      unset($section);
+      return $fields;
+    } else {
+      /* fallback for old plugins */
+      $fields = array('main' => array('attrs' => array(), 'name' => _('Plugin')));
+      foreach ($object->attributes as $attr) {
+        if ($object->acl_is_readable($attr.'Acl')) {
+          $fields['main']['attrs'][$attr] = array(
+            'value'       => $object->$attr,
+            'required'    => FALSE,
+            'disabled'    => FALSE,
+            'label'       => $attr,
+            'type'        => 'OldPluginAttribute',
+            'description' => '',
+          );
+        }
+      }
+      return $fields;
+    }
+  }
+
+  /*!
    * \brief Update values of an object's attributes using POST as if the webpage was sent
    */
-  protected function _update($type, $dn, $tab, $values)
+  protected function _formpost($type, $dn, $tab, $values)
   {
     $this->checkAccess($type, $tab, $dn);
 
@@ -358,9 +366,9 @@ class fdRPCService
   }
 
   /*!
-   * \brief Set internal values of an object's attributes and save it
+   * \brief Get all internal fields from an object (or object type)
    */
-  protected function _setfields($type, $dn, $tab, $values)
+  protected function _getfields($type, $dn = NULL, $tab = NULL)
   {
     $this->checkAccess($type, $tab, $dn);
 
@@ -370,20 +378,95 @@ class fdRPCService
       $tabobject = objects::open($dn, $type);
     }
     if ($tab === NULL) {
-      $tab = $tabobject->current;
+      $object = $tabobject->getBaseObject();
     } else {
+      $object = $tabobject->by_object[$tab];
+    }
+    if (is_subclass_of($object, 'simplePlugin')) {
+      $fields = $object->attributesInfo;
+      foreach ($fields as &$section) {
+        $attributes = array();
+        foreach ($section['attrs'] as $key => $attr) {
+          if ($object->acl_is_readable($attr->getAcl())) {
+            $attr->serializeAttribute($attributes, FALSE);
+          }
+        }
+        $section['attrs'] = $attributes;
+      }
+      unset($section);
+    } else {
+      /* fallback for old plugins */
+      $fields = array('main' => array('attrs' => array(), 'name' => _('Plugin')));
+      foreach ($object->attributes as $attr) {
+        if ($object->acl_is_readable($attr.'Acl')) {
+          $fields['main']['attrs'][$attr] = $object->$attr;
+        }
+      }
+    }
+    return $fields;
+  }
+
+  /*!
+   * \brief Set internal values of an object's attributes and save it
+   */
+  protected function _setfields($type, $dn, $values)
+  {
+    $this->checkAccess($type, array_keys($values), $dn);
+    if ($dn === NULL) {
+      $tabobject = objects::create($type);
+    } else {
+      $tabobject = objects::open($dn, $type);
+    }
+    foreach ($values as $tab => $tabvalues) {
+      if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
+          $tabobject->by_object[$tab]->displayHeader &&
+          !$tabobject->by_object[$tab]->is_account
+        ) {
+        if ($tabobject->by_object[$tab]->acl_is_createable()) {
+          $tabobject->by_object[$tab]->is_account = TRUE;
+        } else {
+          return array('errors' => array('You don\'t have sufficient rights to enable tab "'.$tab.'"'));
+        }
+      }
+      $error = $tabobject->by_object[$tab]->deserializeValues($tabvalues);
+      if ($error !== TRUE) {
+        return array('errors' => array($error));
+      }
       $tabobject->current = $tab;
+      $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases is needed */
     }
-    if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
-        $tabobject->by_object[$tab]->displayHeader &&
-        !$tabobject->by_object[$tab]->is_account
-      ) {
-      $tabobject->by_object[$tab]->is_account = TRUE;
+    $errors = $tabobject->check();
+    if (!empty($errors)) {
+      return array('errors' => $errors);
     }
-    foreach ($values as $field => $value) {
-      $tabobject->by_object[$tab]->$field = $value;
+    $tabobject->save();
+    return $tabobject->dn;
+  }
+
+  /*!
+   * \brief Get all internal fields from a template
+   */
+  protected function _gettemplate($type, $dn)
+  {
+    $this->checkAccess($type, NULL, $dn);
+
+    $template = new template($type, $dn);
+    return $template->serialize();
+  }
+
+  /*!
+   * \brief
+   */
+  protected function _usetemplate($type, $dn, $values)
+  {
+    $this->checkAccess($type, NULL, $dn);
+
+    $template = new template($type, $dn);
+    $error    = $template->deserialize($values);
+    if ($error !== TRUE) {
+      return array('errors' => array($error));
     }
-    $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases is needed */
+    $tabobject = $template->apply();
     $errors = $tabobject->check();
     if (!empty($errors)) {
       return array('errors' => $errors);
@@ -397,15 +480,16 @@ class fdRPCService
    */
   protected function _delete($type, $dn)
   {
+    global $ui;
     $infos = objects::infos($type);
     $plist = session::global_get('plist');
     // Check permissions, are we allowed to remove this object?
-    $acl = $plist->ui->get_permissions($dn, $infos['aclCategory'].'/'.$infos['mainTab']);
+    $acl = $ui->get_permissions($dn, $infos['aclCategory'].'/'.$infos['mainTab']);
     if (preg_match('/d/', $acl)) {
       if ($user = get_lock($dn)) {
         return array('errors' => array(sprintf(_('Cannot delete %s. It has been locked by %s.'), $dn, $user)));
       }
-      add_lock ($dn, $plist->ui->dn);
+      add_lock ($dn, $ui->dn);
 
       // Delete the object
       $tabobject = objects::open($dn, $type);
@@ -415,6 +499,78 @@ class fdRPCService
       del_lock($dn);
     } else {
       return array('errors' => array(msgPool::permDelete($dn)));
+    }
+  }
+
+  /*!
+   * \brief Lock or unlock a user
+   */
+  protected function _lockUser($dns, $type = 'toggle')
+  {
+    global $config, $ui;
+
+    // Filter out entries we are not allowed to modify
+    $disallowed = array();
+
+    if(!is_array($dns)) {
+      $dns = array($dns);
+    }
+
+    foreach ($dns as $dn) {
+      if (!preg_match('/w/', $ui->get_permissions($dn, 'user/password'))) {
+        $disallowed[] = $dn;
+      }
+    }
+    if (count($disallowed)) {
+      return array('errors' => array(msgPool::permDelete($disallowed)));
+    }
+
+    // Try to lock/unlock the entries.
+    $ldap   = $config->get_ldap_link();
+    $errors = array();
+    foreach ($dns as $dn) {
+      $ldap->cat($dn, array('userPassword'));
+      if ($ldap->count() == 1) {
+        // We can't lock empty passwords.
+        $val = $ldap->fetch();
+        if (!isset($val['userPassword'])) {
+          $errors[] = sprintf(_('Failed to get password method for account "%s". It has not been locked!'), $dn);
+          continue;
+        }
+        // Detect the password method and try to lock/unlock.
+        $method   = passwordMethod::get_method($val['userPassword'][0], $dn);
+        if ($method instanceOf passwordMethod) {
+          $success = TRUE;
+          if ($type == 'toggle') {
+            if ($method->is_locked($dn)) {
+              $success = $method->unlock_account($dn);
+            } else {
+              $success = $method->lock_account($dn);
+            }
+          } elseif ($type == 'lock' && !$method->is_locked($dn)) {
+            $success = $method->lock_account($dn);
+          } elseif ($type == 'unlock' && $method->is_locked($dn)) {
+            $success = $method->unlock_account($dn);
+          }
+
+          // Check if everything went fine.
+          if (!$success) {
+            $hn = $method->get_hash_name();
+            if (is_array($hn)) {
+              $hn = $hn[0];
+            }
+            $errors[] = sprintf(_('Password method "%s" failed locking. Account "%s" has not been locked!'), $hn, $dn);
+          }
+        } else {
+          // Can't lock unknown methods.
+          $errors[] = sprintf(_('Failed to get password method for account "%s". It has not been locked!'), $dn);
+        }
+      } else {
+        $errors[] = sprintf(_('Could not find account "%s" in LDAP. It has not been locked!'), $dn);
+      }
+    }
+    if (!empty($errors)) {
+      return array('errors' => $errors);
     }
   }
 
@@ -440,6 +596,5 @@ $service = new fdRPCService();
 if (!jsonRPCServer::handle($service)) {
   echo "no request\n";
   echo session_id()."\n";
-  print_r($_SERVER);
 }
 ?>

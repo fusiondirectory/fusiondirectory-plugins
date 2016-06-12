@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -137,7 +136,6 @@ class mailMethodKolab extends mailMethodCyrus
     }
   }
 
-
   /* \brief   Some method require special folder types, "kolab" for example.
       !! Those values are dummy values, the base class doesn't use folder types;
      @return  Array Return folder types.
@@ -169,7 +167,6 @@ class mailMethodKolab extends mailMethodCyrus
     return $ret;
   }
 
-
   /*! \brief  Checks whether this account is removeable or not.
               There may be some dependencies left, eg. kolab.
    */
@@ -186,8 +183,6 @@ class mailMethodKolab extends mailMethodCyrus
     }
     return TRUE;
   }
-
-
 
   /* \brief  Returns the selected folder type.
       !! Those values are dummy values, the base class doesn't use folder types;
@@ -210,13 +205,13 @@ class mailMethodKolab extends mailMethodCyrus
     }
   }
 
-
   /* \brief  Returns the selected folder type.
       !! Those values are dummy values, the base class doesn't use folder types;
      @return  Array  The folde type.
    */
   public function setFolderType($type)
   {
+    global $config;
     $type_str = trim($type['CAT'].".".$type['SUB_CAT']);
     $type_str = trim($type_str, ".");
     $attrs = array();
@@ -226,7 +221,7 @@ class mailMethodKolab extends mailMethodCyrus
       $attrs['kolabFolderType'] = $type_str;
     }
 
-    $ldap = $this->config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
     $ldap->cd ($this->parent->dn);
     $ldap->modify($attrs);
     if ($ldap->success()) {
@@ -238,7 +233,6 @@ class mailMethodKolab extends mailMethodCyrus
     }
   }
 
-
   public function setQuota($number)
   {
     mailMethod::setQuota($number);
@@ -247,7 +241,7 @@ class mailMethodKolab extends mailMethodCyrus
     return TRUE;
   }
 
-  public function  setFolderACLs($permissions)
+  public function setFolderACLs($permissions)
   {
     mailMethod::setFolderACLs($permissions);
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Skipped, part of kolabd!</b>",
@@ -271,7 +265,6 @@ class mailMethodKolab extends mailMethodCyrus
     return TRUE;
   }
 
-
   public function allow_remove(&$reason)
   {
     if (isset($this->parent->attrs)) {
@@ -286,16 +279,15 @@ class mailMethodKolab extends mailMethodCyrus
     return TRUE;
   }
 
-
-
   /*! \brief   Returns all kolabHost entries from the k=kolab object.
       @return  See \brief
    */
   public function getKolabHost()
   {
+    global $config;
     $host = array();
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
     $ldap->search("(&(objectClass=kolab)(k=kolab)(kolabHost=*))", array("kolabHost"));
 
     if ($ldap->count() == 1) {

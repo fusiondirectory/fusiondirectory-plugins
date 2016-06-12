@@ -3,11 +3,7 @@
     display:none;
   }{/literal}
 </style>
-{if $attributes.networkSettings.DNSenabled}
-<div id="{$sectionId}" class="plugin_section fullwidth">
-{else}
 <div id="{$sectionId}" class="plugin_section">
-{/if}
   <span class="legend">
     {$section}
   </span>

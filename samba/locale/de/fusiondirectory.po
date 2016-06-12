@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-05-02 09:31+0200\n"
+"POT-Creation-Date: 2016-06-10 13:36+0200\n"
 "PO-Revision-Date: 2016-03-25 18:07+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/de/)\n"
@@ -51,47 +51,47 @@ msgid "Samba group type"
 msgstr "Samba-Gruppentyp"
 
 #: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:119
+#: admin/groups/samba/class_sambaGroup.inc:120
 msgid "Samba group"
 msgstr "Samba-Gruppe"
 
 #: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:119
+#: admin/groups/samba/class_sambaGroup.inc:120
 msgid "Domain admins"
 msgstr "Domänen-Administratoren"
 
 #: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:119
+#: admin/groups/samba/class_sambaGroup.inc:120
 msgid "Domain users"
 msgstr "Domänen-Benutzer"
 
 #: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:119
+#: admin/groups/samba/class_sambaGroup.inc:120
 msgid "Domain guests"
 msgstr "Domänen-Gäste"
 
-#: admin/groups/samba/class_sambaGroup.inc:105
+#: admin/groups/samba/class_sambaGroup.inc:106
 msgid "Configuration error"
 msgstr "Konfigurationsfehler"
 
-#: admin/groups/samba/class_sambaGroup.inc:105
+#: admin/groups/samba/class_sambaGroup.inc:106
 msgid "Cannot find group SID in your configuration!"
 msgstr "Kann keine Gruppen-SID in Ihrer Konfiguration finden!"
 
-#: admin/groups/samba/class_sambaGroup.inc:119
+#: admin/groups/samba/class_sambaGroup.inc:120
 #, php-format
 msgid "Special group (%d)"
 msgstr "Spezielle Gruppe (%d)"
 
-#: admin/groups/samba/class_sambaGroup.inc:133
-#: personal/samba/class_sambaAccount.inc:503
-#: personal/samba/class_sambaAccount.inc:529
-#: personal/samba/class_sambaAccount.inc:549
+#: admin/groups/samba/class_sambaGroup.inc:135
+#: personal/samba/class_sambaAccount.inc:505
+#: personal/samba/class_sambaAccount.inc:531
+#: personal/samba/class_sambaAccount.inc:551
 msgid "Warning"
 msgstr "Warnung"
 
-#: admin/groups/samba/class_sambaGroup.inc:133
-#: personal/samba/class_sambaAccount.inc:503
+#: admin/groups/samba/class_sambaGroup.inc:135
+#: personal/samba/class_sambaAccount.inc:505
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
 msgstr "Undefinierte Samba SID festgestellt. Bitte beheben Sie dieses Problem manuell!"
 
@@ -560,24 +560,24 @@ msgstr "Erlaube Verbindungen nur von diesen Arbeitsstationen"
 msgid "Only allow this user to connect to this list of hosts"
 msgstr "Nur diesem Benutzer erlauben, dieser Liste von Hosts zu verbinden"
 
-#: personal/samba/class_sambaAccount.inc:479
+#: personal/samba/class_sambaAccount.inc:480
 msgid "Home drive"
 msgstr "Basis-Laufwerk"
 
-#: personal/samba/class_sambaAccount.inc:482
+#: personal/samba/class_sambaAccount.inc:483
 msgid "Home path"
 msgstr "Basis-Pfad"
 
-#: personal/samba/class_sambaAccount.inc:487
+#: personal/samba/class_sambaAccount.inc:488
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr "Der Windows Benutzermanager erlaubt maximal acht Clients!"
 
-#: personal/samba/class_sambaAccount.inc:530
+#: personal/samba/class_sambaAccount.inc:532
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr "Kann primäre Gruppe nicht in Samba-Gruppe überführen: die Gruppe kann nicht identifiziert werden!"
 
-#: personal/samba/class_sambaAccount.inc:550
+#: personal/samba/class_sambaAccount.inc:552
 msgid ""
 "Cannot convert primary group to samba group: group samba tab is disabled!"
 msgstr ""

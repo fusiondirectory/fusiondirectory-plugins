@@ -56,20 +56,11 @@ class networkSettings extends plugin
 
   var $used_ip_mac              = array();
 
-  /* DNS attributes
-   */
-  var $DNSattributes            = array("zoneName","dNSTTL");
-  var $DNS_is_account           = FALSE;
-  var $initially_was_account    = FALSE;
-  var $dnsEntry                 = array();
-  var $DNSenabled               = FALSE;
-  var $hide_dns_check_box       = FALSE;
   var $namingAttr               = "cn";
 
-  /*  Terminal dns
-   */
-  function __construct (&$config, $parent, $objectClasses, $IPisMust = FALSE, $namingAttr = "cn")
+  function __construct ($parent, $objectClasses, $IPisMust = FALSE, $namingAttr = "cn")
   {
+    global $config;
     /* We need to know which objectClasses are used, to store the ip/mac
      * Because of different type of devices
      */
@@ -78,7 +69,7 @@ class networkSettings extends plugin
     $this->IPisMust       = $IPisMust;
     $this->namingAttr     = $namingAttr;
 
-    parent::__construct($config, $parent->dn, $this->parent);
+    parent::__construct($parent->dn, $this->parent);
 
     $this->attrs = &$this->parent->attrs;
 
@@ -114,63 +105,6 @@ class networkSettings extends plugin
       $this->initial_dhcpParentNode = $this->dhcpParentNode;
     }
 
-    /************
-     * DNS
-     ************/
-
-    /* Hide all dns specific code, if dns is not available
-     */
-    $this->DNSenabled = FALSE;
-    foreach ($this->config->data['TABS']['SERVERSERVICE'] as $tab) {
-      if (preg_match("/^serviceDNS$/", $tab['CLASS'])) {
-        $this->DNSenabled = TRUE;
-      }
-    }
-
-    if (!class_available("DNS") || !class_available("serviceDNS")) {
-      $this->DNSenabled = FALSE;
-    }
-
-    if (!$this->DNSenabled) {
-      $this->DNS_is_account = FALSE;
-    }
-
-    if ($this->DNSenabled) {
-
-      /* Get Zones
-       */
-      $this->Zones        = DNS::getAvailableZones($config);
-
-      /* Get Entry
-       */
-      $this->dnsEntry     = DNS::getDNSHostEntries($config, $this->OrigCn);
-
-      $ptr = DNS::FlipIp($this->get_pTRRecord());
-
-      /* Remove A record which equals $this->ipHostNumber
-       */
-      foreach ($this->dnsEntry['RECORDS'] as $key => $rec) {
-        if (($rec['type'] == "aRecord") && ($rec['value'] == $this->ipHostNumber)) {
-          unset($this->dnsEntry['RECORDS'][$key]);
-        }
-        if (($rec['type'] == "pTRRecord") && ($rec['value'] == $ptr)) {
-          unset($this->dnsEntry['RECORDS'][$key]);
-        }
-      }
-
-      /* Get Record types
-       */
-      $this->RecordTypes  = DNS::getDnsRecordTypes();
-
-      /* If there is at least one entry in this -> types, we have DNS enabled
-       */
-      if ($this->dnsEntry['exists']) {
-        $this->DNS_is_account = TRUE;
-      } else {
-        $this->DNS_is_account = FALSE;
-      }
-    }
-
     /* Create a list of used mac and ip addresses.
 
        ! We use this optically huge amount of code to fetch all
@@ -180,8 +114,8 @@ class networkSettings extends plugin
     $deps  = array();
     $ou = preg_replace("/,.*$/", "", get_ou("systemRDN"));
 
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
     $ldap->search("(&(objectClass=organizationalUnit)(".$ou."))", array("dn"));
     while ($attrs = $ldap->fetch()) {
         $deps[] = $attrs['dn'];
@@ -204,14 +138,6 @@ class networkSettings extends plugin
         check if the used values are already in use */
     $this->orig_ipHostNumber   = $this->ipHostNumber;
     $this->orig_macAddress     = $this->macAddress;
-
-    /* Store initally account settings
-     */
-    $this->initially_was_account = $this->DNS_is_account;
-
-    if ($this->DNS_is_account) {
-      new log("view", "unknown/".get_class($this), $this->dn);
-    }
   }
 
   function resetCopyInfos()
@@ -230,17 +156,6 @@ class networkSettings extends plugin
     $namingAttr = $this->namingAttr;
     return preg_replace('/\$$/', '', $this->parent->$namingAttr);
   }
-
-  function netmaskIsCoherent($idZone)
-  {
-    $netmask = DNS::FlipIp(str_replace(DNS::getInAddrArpa(), "", DNS::getNameFromMix($idZone)));
-    if (!strstr($this->ipHostNumber, $netmask)) {
-      return FALSE;
-    } else {
-      return TRUE;
-    }
-  }
-
 
   function getVarsForSaving($attrs)
   {
@@ -337,102 +252,15 @@ class networkSettings extends plugin
     $smarty->assign("dhcpParentNodes",    $this->dhcpParentNodes);
     $smarty->assign("dhcpParentNodeCnt",  count($this->dhcpParentNodes));
 
-    /**********
-     * DNS Handling
-     **********/
+    /* Is IP address must ? */
+    $smarty->assign("IPisMust", $this->IPisMust);
 
-    /* There is no dns available
-     */
-    $smarty->assign("DNS_is_account", $this->DNS_is_account);
-    $smarty->assign("DNSenabled", $this->DNSenabled && $this->acl_is_readable("dnsSetup"));
-
-    if ($this->DNSenabled == FALSE) {
-
-      /* Is IP address must ? */
-      $smarty->assign("IPisMust", (($this->IPisMust) || ($this->DNS_is_account)));
-
-      /* Assign smarty all non DNs attributes */
-      foreach ($this->attributes as $attr) {
-        $smarty->assign($attr, $this->$attr);
-      }
-
-      $display .= $smarty->fetch(get_template_path('network.tpl', TRUE));
-    } else {
-      /* Add new empty array to our record list */
-      if (isset($_POST['AddNewRecord']) && $this->acl_is_writeable("dnsSetup")) {
-        $this->dnsEntry['RECORDS'][] = array("type" => "aRecord", "value" => "");
-      }
-
-      /* propose_ip */
-      if (isset($_POST['propose_ip']) && $this->acl_is_writeable("ipHostNumber")) {
-        foreach ($this->Zones as $key => $name) {
-          if ($name == $this->dnsEntry['zoneName']) {
-            $net = DNS::FlipIp(str_replace(DNS::getInAddrArpa(), "", DNS::getNameFromMix($key)));
-            $this->ipHostNumber = $this->generateRandomIP($net);
-          }
-        }
-      }
-
-      /* Handle all posts */
-      $only_once = TRUE;
-      if ($this->acl_is_writeable("dnsSetup")) {
-        foreach ($_POST as $name => $value) {
-          /* Check if we have to delete a record entry */
-          if ((preg_match("/RemoveRecord_/", $name)) && ($only_once)) {
-
-            /* Avoid performing this once again */
-            $only_once = FALSE;
-
-            /* Extract id for specified entry */
-            $id = preg_replace("/RemoveRecord_/", "", $name);
-            $id = preg_replace("/_.*$/", "", $id);
-
-            /* Delete this record, mark edited entries to be able to delete them */
-            if (isset($this->dnsEntry['RECORDS'][$id])) {
-              unset($this->dnsEntry['RECORDS'][$id]);
-            }
-          }
-        }
-      }
-      /* Assign smarty all non DNs attributes */
-      foreach ($this->attributes as $attr) {
-        $smarty->assign($attr, $this->$attr);
-      }
-
-      /* Assign smarty all DNS attributes */
-      foreach ($this->DNSattributes as $attr) {
-        $smarty->assign($attr, htmlentities($this->dnsEntry[$attr]));
-      }
-
-      /* Assign all needed vars */
-      $smarty->assign("hide_dns_check_box", $this->hide_dns_check_box);
-
-      $smarty->assign("Zones", $this->Zones);
-      $smarty->assign("ZoneCnt", count($this->Zones));
-      $smarty->assign("ZoneKeys", $this->Zones);
-      $smarty->assign("IPisMust", (($this->IPisMust) || ($this->DNS_is_account)));
-
-      /* Create zone array */
-      $idZones = array();
-      foreach ($this->Zones as $id => $zone) {
-        if ($this->netmaskIsCoherent($id)) {
-          $idZones[$id] = $zone;
-        } else {
-          $idZones[$id] = $zone."&nbsp;("._("Not matching").")";
-        }
-      }
-      $smarty->assign("Zones", $idZones);
-      $smarty->assign("ZoneKeys", $this->Zones);
-
-      $tmp = $this->generateRecordsList();
-
-      $changeStateForRecords = $tmp['changeStateForRecords'];
-
-      $smarty->assign("records", $tmp['str']);
-      $smarty->assign("changeStateForRecords", $changeStateForRecords);
-
-      $display .= $smarty->fetch(get_template_path('network.tpl', TRUE));
+    /* Assign smarty all attributes */
+    foreach ($this->attributes as $attr) {
+      $smarty->assign($attr, $this->$attr);
     }
+
+    $display .= $smarty->fetch(get_template_path('network.tpl', TRUE));
 
     return $display;
   }
@@ -440,27 +268,8 @@ class networkSettings extends plugin
 
   function remove_from_parent()
   {
-    $ldap = $this->config->get_ldap_link();
-
-    /************
-     * DNS Handling
-     ************/
-
-    if ($this->DNS_is_account) {
-      $tmp = array();
-      $this->dnsEntry['exists'] = FALSE;
-      $tmp = DNS::getDNSHostEntriesDiff($this->config, $this->OrigCn, $this->dnsEntry, $this->getCn());
-
-      /* Delete dns */
-      foreach ($tmp['del'] as $dn => $del) {
-        $ldap->cd($dn);
-        $ldap->rmdir_recursive($dn);
-        new log("remove", "unknown/".get_class($this), $dn);
-        if (!$ldap->success()) {
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()), LDAP_ERROR);
-        }
-      }
-    }
+    global $config;
+    $ldap = $config->get_ldap_link();
 
     /************
      * DHCP Handling
@@ -514,91 +323,11 @@ class networkSettings extends plugin
         }
       }
 
-      /* Ge all non dns attributes (IP/MAC)*/
+      /* Get all attributes (IP/MAC)*/
       foreach ($this->attributes as $attr) {
         if (isset($_POST[$attr]) && $this->acl_is_writeable($attr)) {
           $this->$attr = $_POST[$attr];
         }
-      }
-
-      /******
-        DNS posts
-       ******/
-
-      /* Check if DNS should be enabled / disabled
-       *  -skip this, if the dns account is enforced.
-       */
-      if (!$this->hide_dns_check_box) {
-        if ($this->DNS_is_account && $this->acl_is_writeable("dnsSetup") && !isset($_POST['DNS_is_account'])) {
-          $this->DNS_is_account = FALSE;
-        } elseif (!$this->DNS_is_account && $this->acl_is_writeable("dnsSetup") && isset($_POST['DNS_is_account'])) {
-          $this->DNS_is_account = TRUE;
-        }
-      }
-
-      /* Get dns attributes */
-      if (($this->DNSenabled) && (isset($_POST['network_tpl_posted'])) && $this->acl_is_writeable("dnsSetup")) {
-
-        /* Check for posted record changes */
-        if (is_array($this->dnsEntry['RECORDS'])) {
-          foreach ($this->dnsEntry['RECORDS'] as $key => $value) {
-
-            /* Check if type has changed */
-            if (isset($_POST['RecordTypeSelectedFor_'.$key])) {
-              $this->dnsEntry['RECORDS'][$key]['type'] = $_POST['RecordTypeSelectedFor_'.$key];
-            }
-            /* Check if value has changed */
-            if (isset($_POST['RecordValue_'.$key])) {
-              $this->dnsEntry['RECORDS'][$key]['value'] = get_post('RecordValue_'.$key);
-            }
-          }
-        }
-
-        /* Get all basic DNS attributes (TTL, Clas ..)*/
-        foreach ($this->DNSattributes as $attr) {
-          if (isset($_POST[$attr])) {
-            $this->dnsEntry[$attr] = get_post($attr);
-          }
-        }
-        $reloadThisDNSStuff = FALSE;
-        foreach ($_POST as $name => $value) {
-          if (preg_match('/^reloadThisDNSStuff/', $name)) {
-            $reloadThisDNSStuff = TRUE;
-            break;
-          }
-        }
-        if ($reloadThisDNSStuff) {
-          $o_queue = new supportDaemon();
-          if ($o_queue->is_error()) {
-            msg_dialog::display(_("Error"), sprintf(_("Was not able to contact argonaut server: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
-          } else {
-            $zone = substr(strrchr($this->dnsEntry['zoneName'], "/"), 1);
-            $ldap = $this->config->get_ldap_link();
-            $ldap->cd($this->config->current['BASE']);
-            $ldap->search("(&(objectClass=dnsZone)(zoneName=$zone)(sOARecord=*))", array("sOARecord"));
-            if ($ldap->count() != 1) {
-              msg_dialog::display(_("Error"), sprintf(_("Was not able to find DNS server for zone %s"), $zone), ERROR_DIALOG);
-            } else {
-              $attrs  = $ldap->fetch();
-              $cn     = preg_replace('/\..*$/', '', $attrs['sOARecord'][0]);
-              $ldap->search("(&(objectClass=goServer)(cn=".$cn."))", array("macAddress"));
-              if ($ldap->count() != 1) {
-                msg_dialog::display(_("Error"), sprintf(_("Was not able to find mac address of DNS server %s"), $cn), ERROR_DIALOG);
-              } else {
-                $attrs  = $ldap->fetch();
-                $o_queue->append_call("Ldap2Zone.start",
-                                      array($attrs['macAddress'][0]),
-                                      array("args" => array($zone)));
-                if ($o_queue->is_error()) {
-                  msg_dialog::display(_("Error"), sprintf(_("Was not able to launch ldap2zone: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
-                }
-              }
-            }
-          }
-        }
-      }
-      if ($this->hide_dns_check_box) {
-        $this->DNS_is_account = TRUE;
       }
     }
   }
@@ -635,7 +364,7 @@ class networkSettings extends plugin
     }
 
     /* Check if ip must be given */
-    if (($this->IPisMust) || ($this->DNS_is_account)) {
+    if ($this->IPisMust) {
       if (empty($this->ipHostNumber)) {
         $message[] = msgPool::required(_("IP address"));
       } elseif (!tests::is_ip($this->ipHostNumber)) {
@@ -652,56 +381,6 @@ class networkSettings extends plugin
       }
     }
 
-    /* only perfrom this checks if this is a valid DNS account */
-    if ($this->DNS_is_account) {
-
-      $checkArray = array();
-      $onlyOnce   = array();
-
-      $tmp = array_flip($this->Zones);
-      $tmp2 = $tmp[$this->dnsEntry['zoneName']];
-      if (!$this->netmaskIsCoherent($tmp2)) {
-        $tmp2 = preg_replace("/^.*\//", "", $tmp2);
-        $message[] = sprintf(_("The IP address '%s' is not part of the selected reverse zone '%s'!"), $this->ipHostNumber, $tmp2);
-      }
-
-      /* Walk through all entries and detect duplicates or mismatches */
-      foreach ($this->dnsEntry['RECORDS'] as $values) {
-
-        /* Count record values, to detect duplicate entries for a specific record */
-        if (!isset($checkArray[$values['type']][$values['value']])) {
-          $checkArray[$values['type']][$values['value']] = 0;
-        } else {
-          $message[] = sprintf(_("Record type '%s' is duplicated!"), $values['type']);
-        }
-
-        /* Check if given entries in $onlyOnce are used more than once */
-        if (isset($onlyOnce[$values['type']])) {
-          $onlyOnce[$values['type']] ++;
-          if ($onlyOnce[$values['type']] > 1) {
-            $message[] = sprintf(_("Uniq record type '%s' is duplicated!"), $values['type']);
-          }
-        }
-
-        /* Skip txt record ... */
-        if ($values['type'] == "tXTRecord") {
-          continue;
-        }
-
-        /* Check if there is an aRecord defined which uses the same IP as used in IPhostAddress */
-        if (($values['type'] == "aRecord") && ($values['value'] == $this->ipHostNumber)) {
-          //TODO: Where's the problem here?
-          $message[] = sprintf(_("The IP address '%s' will be added as 'A Record', this will be done automatically, please remove the record."),
-               $this->ipHostNumber);
-        }
-
-        /* only lower-case is allowed in record entries ... */
-        if ($values['value'] != strtolower($values['value'])) {
-          //TODO: What's in values['value']? Something for a propper message?
-          $message[] = sprintf(_("Only lowercase records are allowed, please check your '%ss'."), $values['type']);
-        }
-      }
-    }
     return $message;
   }
 
@@ -709,7 +388,8 @@ class networkSettings extends plugin
   /* Save to LDAP */
   function save()
   {
-    $ldap = $this->config->get_ldap_link();
+    global $config;
+    $ldap = $config->get_ldap_link();
 
     $dn = $this->parent->dn;
     $cn = $this->getCn();
@@ -719,7 +399,7 @@ class networkSettings extends plugin
     /* $dn was posted as parameter */
     $this->dn = $dn;
 
-    /* Save DNS setting & ip/Mac*/
+    /* Save ip/Mac*/
     parent::save();
 
     /* Add all additional ipHostNumbers now
@@ -806,7 +486,7 @@ class networkSettings extends plugin
           msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()), LDAP_ERROR);
         }
 
-        $tmp = new serviceDHCP($this->config, $this->dhcpParentNode);
+        $tmp = new serviceDHCP($this->dhcpParentNode);
         $tmp->handle_post_events('remove');
       }
 
@@ -818,7 +498,7 @@ class networkSettings extends plugin
         $ldap->cd('cn='.$cn.','.$this->dhcpParentNode);
         $res = $ldap->add($attrs);
 
-        $tmp = new serviceDHCP($this->config, $this->dhcpParentNode);
+        $tmp = new serviceDHCP($this->dhcpParentNode);
         $tmp->handle_post_events('add');
 
         if (!$ldap->success()) {
@@ -842,7 +522,7 @@ class networkSettings extends plugin
             msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), 'cn='.$cn.','.$this->dhcpParentNode, LDAP_ADD, get_class()), LDAP_ERROR);
           }
 
-          $tmp = new serviceDHCP($this->config, $this->dhcpParentNode);
+          $tmp = new serviceDHCP($this->dhcpParentNode);
           $tmp->handle_post_events('modify');
 
           if ($res) {
@@ -862,7 +542,7 @@ class networkSettings extends plugin
           $ldap->cd($this->dhcpHostEntry['dn']);
           $ldap->modify($attrs);
 
-          $tmp = new serviceDHCP($this->config, $this->dhcpParentNode);
+          $tmp = new serviceDHCP($this->dhcpParentNode);
           $tmp->handle_post_events('modify');
 
           if (!$ldap->success()) {
@@ -872,131 +552,7 @@ class networkSettings extends plugin
       }
     }
     $this->dialog = FALSE;
-
-    /* DNS HANDLING */
-
-    /* If isn't DNS account but initially was DNS account
-       remove all DNS entries
-     */
-    if ((!$this->DNSenabled) || ((!$this->DNS_is_account) && (!$this->initially_was_account))) {
-      return;
-    } elseif ($this->acl_is_writeable('dnsSetup')) {
-
-      /* Add ipHostNumber to aRecords
-       */
-      $backup_dnsEntry = $this->dnsEntry;
-      if (!empty($this->ipHostNumber)) {
-        $this->dnsEntry['RECORDS'][] = array('type' => 'aRecord','value' => $this->ipHostNumber);
-        $ptr = $this->get_pTRRecord();
-        if (!empty($ptr)) {
-          $this->dnsEntry['RECORDS'][] = array('type' => 'pTRRecord','value' => $ptr);
-        }
-      }
-
-      /* Create diff and follow instructions
-       * If Account was disabled, remove account by setting exists to FALSE
-       */
-      if ((!$this->DNS_is_account) && ($this->initially_was_account)) {
-        $this->dnsEntry['exists'] = FALSE;
-        $tmp = DNS::getDNSHostEntriesDiff($this->config, $this->OrigCn, $this->dnsEntry, $cn);
-      } else {
-        $this->dnsEntry['exists'] = $this->DNS_is_account;
-        $tmp = DNS::getDNSHostEntriesDiff($this->config, $this->OrigCn, $this->dnsEntry, $cn);
-      }
-
-      /* Update SOA record if needed
-       */
-      $this->updateSOARecord();
-
-      /* move follwoing entries
-       */
-      foreach ($tmp['move'] as $src => $dst) {
-        $this->move($src, $dst);
-      }
-
-      /* Delete dns */
-      foreach ($tmp['del'] as $dn => $del) {
-        $ldap->cd($dn);
-        $ldap->rmdir_recursive($dn);
-        new log('modify', 'unknown/'.get_class($this), $dn, array('*'), $ldap->get_error());
-      }
-
-      /* Add || Update new DNS entries
-       */
-      foreach ($tmp['add'] as $dn => $attrs) {
-        $ldap->cd($dn);
-        $ldap->cat($dn, array('dn'));
-        if (count($ldap->fetch())) {
-          $ldap->cd($dn);
-          $ldap->modify ($attrs);
-        } else {
-          $ldap->cd($dn);
-          $ldap->add($attrs);
-        }
-        new log('modify', 'unknown/'.get_class($this), $dn, array_keys($attrs), $ldap->get_error());
-      }
-
-      /* Display errors */
-      if (!$ldap->success()) {
-        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, 0, get_class()), LDAP_ERROR);
-      }
-
-      $tmp2 = new serviceDNS($this->config, $this->dn);
-      $tmp2->handle_post_events('modify');
-
-      $this->dnsEntry = $backup_dnsEntry;
-    }
   }
-
-  /*  Create html table with all used record types
-   */
-  function generateRecordsList()
-  {
-    $changeStateForRecords = "";
-
-    $str = "<table width='100%'>";
-
-    foreach ($this->dnsEntry['RECORDS'] as $key => $entry) {
-
-        $changeStateForRecords .= "changeState('RecordTypeSelectedFor_".$key."');\n";
-        $changeStateForRecords .= "changeState('RecordValue_".$key."');\n";
-        $changeStateForRecords .= "changeState('RemoveRecord_".$key."');\n";
-
-        $str .= " <tr>".
-          "   <td>".$this->generateRecordListBox($entry['type'], "RecordTypeSelectedFor_".$key)."</td>".
-          "   <td><input type='text' value=\"".htmlentities($entry['value'])."\" name='RecordValue_".$key."' id='RecordValue_".$key."'></td>".
-          "   <td><input type='submit' name='RemoveRecord_".$key."' value='"._("Delete")."' id='RemoveRecord_".$key."'></td>".
-          "</tr>";
-    }
-
-    $str .= "  <tr>".
-           "    <td colspan=2 width='50%'></td><td>".
-           "      <input type='submit' value='"._("Add")."' name='AddNewRecord' id='AddNewRecord'>".
-           "    </td>".
-           "  </tr>".
-           "</table>";
-     $ret = array("str" => $str, "changeStateForRecords" => $changeStateForRecords);
-
-    return $ret;
-  }
-
-
-  /* Create a html select box which allows us to select different types of records
-   */
-  function generateRecordListBox($selected, $name)
-  {
-    $str = "<select name='".$name."' id='".$name."'>";
-    foreach ($this->RecordTypes as $type => $value) {
-      $use = "";
-      if ($type == $selected) {
-        $use = " selected ";
-      }
-      $str .= "\n <option value='".$type."' ".$use.">".strtoupper(preg_replace("/record/i", "", $type))."</option>";
-    }
-    $str .= "</select>";
-    return $str;
-  }
-
 
   /* Return plugin informations for acl handling  */
   static function plInfo()
@@ -1014,11 +570,7 @@ class networkSettings extends plugin
       )
     );
 
-    /* Hide all dns/dhcp configurations if not available
-     */
-    if (class_available('serviceDNS')) {
-      $tmp['plProvidedAcls']['dnsSetup']  = _('DNS configuration');
-    }
+    /* Hide all dhcp configuration if not available */
     if (class_available('serviceDHCP')) {
       $tmp['plProvidedAcls']['dhcpSetup'] = _('DHCP configuration');
     }
@@ -1028,11 +580,12 @@ class networkSettings extends plugin
 
   function get_dhcp_host_entry()
   {
+    global $config;
     $attrs = array();
     $dn = $this->get_dhcp_host_entry_dn();
     if ($dn) {
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
+      $ldap = $config->get_ldap_link();
+      $ldap->cd($config->current['BASE']);
       $ldap->cat($dn, array('*'));
       if ($ldap->count()) {
         $attrs = $ldap->fetch();
@@ -1052,8 +605,9 @@ class networkSettings extends plugin
 
   function get_dhcp_host_entry_dn()
   {
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
+    global $config;
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
     $ldap->search ('(&(objectClass=dhcpHost)(cn='.$this->getCn().'))', array('uid','cn','dn'));
 
     if ($ldap->count()) {
@@ -1070,11 +624,11 @@ class networkSettings extends plugin
     return preg_replace('/^cn='.preg_quote($this->getCn(), '/').',/', '', $this->get_dhcp_host_entry_dn());
   }
 
-
   function get_dhcp_parent_nodes()
   {
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
+    global $config;
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
     $ldap->search('(objectClass=dhcpService)', array('dhcpPrimaryDN'));
 
     $dhcp_dns = array();
@@ -1105,25 +659,11 @@ class networkSettings extends plugin
     return $tmp2;
   }
 
-
-  /* this function returns the default ptr record entry */
-  function get_pTRRecord()
-  {
-    if (!empty($this->ipHostNumber) && isset($this->dnsEntry['zoneName']) && !empty($this->dnsEntry['zoneName'])) {
-      $tmp = array_flip($this->Zones);
-      $tmp = preg_replace('/^[^\/]*+\//', '', $tmp[$this->dnsEntry['zoneName']]);
-      $tmp = trim(preg_replace('/'.preg_quote(DNS::getInAddrArpa(), '/').'$/', '', $tmp));
-      return preg_replace('/^'.preg_quote(DNS::FlipIp($tmp), '/').'\./', '', $this->ipHostNumber);
-    } else {
-      return FALSE;
-    }
-  }
-
-
   function generateRandomIP($net = "")
   {
+    global $config;
     // first gather all IPs
-    $ldap = $this->config->get_ldap_link();
+    $ldap = $config->get_ldap_link();
     $ocs =
       '(objectClass=fdPhone)'.
       '(objectClass=fdMobilePhone)'.
@@ -1188,27 +728,6 @@ class networkSettings extends plugin
     }
     return $ret;
   }
-
-  function force_dns()
-  {
-    if ($this->DNSenabled) {
-
-      /* Only force DNS account, if we have at least on dns Zone */
-      if (count($this->Zones)) {
-        $this->DNS_is_account     = TRUE;
-        $this->hide_dns_check_box = TRUE;
-      }
-    }
-  }
-
-  function updateSOARecord()
-  {
-    $oldEntries = DNS::getDNSHostEntries($this->config, $this->OrigCn);
-    $newEntries = $this->dnsEntry;
-    if (array_differs_recursive($newEntries['RECORDS'], $oldEntries['RECORDS'])) {
-      DNS::touchDNSZone($this->config, $this->dnsEntry['zoneName']);
-    }
-  }
 }
 
 class NetworkSettingsDialog
@@ -1256,12 +775,11 @@ class NetworkSettingsAttribute extends Attribute
   {
     parent::setParent($plugin);
     if (is_object($this->plugin)) {
-      $this->netConfigDNS = new networkSettings(
-        $this->plugin->config, $this->plugin,
+      $this->netConfigDNS = new networkSettings($this->plugin,
         array_merge($this->plugin->objectclasses, $this->ocs),
         TRUE, $this->namingAttr
       );
-      $this->plugin->netConfigDNS =& $this->netConfigDNS;
+      $this->plugin->netConfigDNS = $this->netConfigDNS;
     }
   }
 
@@ -1271,7 +789,6 @@ class NetworkSettingsAttribute extends Attribute
       $this->display = $this->netConfigDNS->execute();
     }
     $attributes[$this->getLdapName()] = array(
-      'DNSenabled'  => $this->netConfigDNS->DNSenabled,
       'display'     => $this->display
     );
   }
