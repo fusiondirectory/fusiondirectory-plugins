@@ -88,15 +88,6 @@ class printgeneric extends plugin
     /* Detect the printer type. */
     $this->getTypeOfPrinter($baseobject);
 
-    /* Update dn, to ensure storing as printer instead of WS / terminal */
-    if (preg_match("/Terminal/i", $this->BelongsTo) || preg_match("/TerminalTemplate/i", $this->BelongsTo)) {
-      $this->dn = preg_replace("/".preg_quote(get_ou('terminalRDN'), '/')."/i", get_ou('printerRDN'), $this->dn);
-    }
-
-    if (preg_match("/Workstation/i", $this->BelongsTo) || preg_match("/WorkstationTemplate/i", $this->BelongsTo)) {
-      $this->dn = preg_replace("/".preg_quote(get_ou('workstationRDN'), '/')."/i", get_ou('printerRDN'), $this->dn);
-    }
-
     $this->orig_dn = $this->dn;
 
     /* Get printer settings, possibly dn has changed */
