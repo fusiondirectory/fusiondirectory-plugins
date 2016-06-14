@@ -46,7 +46,7 @@ class DnsRecordPlugin extends simplePlugin
    * */
   function __construct ($parent, $attribute, $value = NULL)
   {
-    parent::__construct(NULL, $parent->dn, $parent);
+    parent::__construct($parent->dn, $parent);
 
     $this->attributesAccess['relativeSubdomainName']->setInLdap(FALSE);
     $this->attributesAccess['dnsRecord']->setInLdap(FALSE);
