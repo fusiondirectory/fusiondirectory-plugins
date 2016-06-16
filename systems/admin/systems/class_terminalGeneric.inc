@@ -83,9 +83,9 @@ class terminalGeneric extends workstationGeneric
         new SelectAttribute(
           _('Connect method'), _('Connect method'),
           'gotoXMethod', FALSE,
-          array('xdmcp', 'ldm', 'shell', 'telnet', 'rdp'),
+          array('', 'xdmcp', 'ldm', 'shell', 'telnet', 'rdp'),
           '',
-          array(_('XDMCP'), _('LDM'), _('Shell'), _('Telnet'), _('Windows RDP'))
+          array(_('None'), _('XDMCP'), _('LDM'), _('Shell'), _('Telnet'), _('Windows RDP'))
         ),
         new SetAttribute(
           new SelectAttribute(
@@ -151,7 +151,7 @@ class terminalGeneric extends workstationGeneric
     $xdmcp_types        = $config->data['SERVERS']['TERMINAL_SESSION_TYPES'];
     $available_servers  = array();
     foreach ($xdmcp_types as $servername => $supported_types) {
-      if (in_array(strtoupper($this->attributesInfo['remote_desktop']['attrs']['gotoXMethod']), $supported_types)) {
+      if (in_array(strtoupper(get_post('gotoXMethod')), $supported_types)) {
         $available_servers[] = $servername;
       }
     }
