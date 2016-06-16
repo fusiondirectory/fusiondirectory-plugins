@@ -456,10 +456,10 @@ class ZoneNameAttribute extends StringAttribute
   {
     if (dnsZone::finalDot()) {
       $regexp = '/^(([a-z0-9\-]{1,63})\.)+$/';
-      $error  = _('"%s" must contain a domain name and end with a final dot.<br/><br/>Example: example.com.');
+      $error  = _('"%s" must contain a domain name in lowercase and end with a final dot.<br/><br/>Example: example.com.');
     } else {
       $regexp = '/^(([a-z0-9\-]{1,63})\.)*[a-z]{1,63}$/';
-      $error  = _('"%s" must contain a domain name.<br/><br/>Example: example.com');
+      $error  = _('"%s" must contain a domain name in lowercase.<br/><br/>Example: example.com');
     }
     if (!preg_match($regexp, $this->value)) {
       return sprintf($error, $this->getLabel());
