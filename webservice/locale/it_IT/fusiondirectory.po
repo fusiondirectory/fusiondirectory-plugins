@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Paola Penati <penati@avaya.com>, 2016
 # Paola Penati <penati@avaya.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2016-06-10 13:36+0200\n"
-"PO-Revision-Date: 2016-06-09 09:11+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2016-06-13 07:04+0000\n"
+"Last-Translator: Paola Penati <penati@avaya.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,17 +41,17 @@ msgstr "Non puoi cancellare %s perché é ancora utilizzata da %s"
 #: html/jsonrpc.php:537 html/jsonrpc.php:566
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
-msgstr ""
+msgstr "Impossibile ottenere metodo di password per l'account\"%s\". Non è stato bloccato!"
 
 #: html/jsonrpc.php:562
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
-msgstr ""
+msgstr "Il metodo di bloccaggio \"%s\" é fallito. L'account \"%s\" non é stato bloccato!"
 
 #: html/jsonrpc.php:569
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
-msgstr ""
+msgstr "Account \"%s\" non trovato nella LDAP. Non é stato bloccato!"
 
 #: config/class_webserviceConfig.inc:28
 msgid "Webservice configuration"
