@@ -1082,15 +1082,14 @@ class printgeneric extends plugin
       'plDescription' => _('Printer information'),
       'plSelfModify'  => FALSE,
       'plPriority'    => 10,
-      'plObjectType'  => array(
-        'printer' => array(
+      'plObjectType'  => array('printer' => 
+        array(
           'name'        => _('Printer'),
           'description' => _('Printer'),
           'filter'      => 'objectClass=gotoPrinter',
           'icon'        => 'geticon.php?context=devices&icon=printer&size=16',
           'ou'          => get_ou('printerRDN'),
-        ),
-        'workstation', 'terminal'
+        )
       ),
 
       'plProvidedAcls'  => array(
