@@ -32,8 +32,8 @@ class printGeneric extends simplePlugin
       'plShortName'   => _('Printer'),
       'plDescription' => _('Printer information'),
       'plPriority'    => 10,
-      'plObjectType'  => array(
-        'printer' => array(
+      'plObjectType'  => array('printer' => 
+        array(
           'name'        => _('Printer'),
           'description' => _('Printer'),
           'filter'      => 'objectClass=fdPrinter',
