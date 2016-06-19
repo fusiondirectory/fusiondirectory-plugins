@@ -145,9 +145,9 @@ class argonautAction extends simplePlugin
     );
   }
 
-  public function __construct($config, $action)
+  public function __construct($action)
   {
-    parent::__construct($config, $config->current['BASE']);
+    parent::__construct($config->current['BASE']);
 
     $this->attributesAccess['scheduled']->setManagedAttributes(
       array(

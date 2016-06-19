@@ -118,9 +118,9 @@ class serviceApacheVhostEdit extends simplePlugin
     );
   }
 
-  function __construct ($config, $dn = NULL, $object = NULL)
+  function __construct ($dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    parent::__construct($dn, $object);
     $this->attributesInfo['section1']['attrs']['apacheScriptAlias']->setLinearRendering(TRUE);
   }
 
