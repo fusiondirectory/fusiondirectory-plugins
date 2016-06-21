@@ -21,8 +21,6 @@
 
 class printGeneric extends simplePlugin
 {
-  var $mainTab = TRUE;
-
   var $objectclasses  = array('fdPrinter', 'ipHost', 'ieee802Device');
 
   /* Return plugin informations */
@@ -32,7 +30,7 @@ class printGeneric extends simplePlugin
       'plShortName'   => _('Printer'),
       'plDescription' => _('Printer information'),
       'plPriority'    => 10,
-      'plObjectType'  => array('printer' => 
+      'plObjectType'  => array('printer' =>
         array(
           'name'        => _('Printer'),
           'description' => _('Printer'),
@@ -40,6 +38,10 @@ class printGeneric extends simplePlugin
           'icon'        => 'geticon.php?context=devices&icon=printer&size=16',
           'ou'          => get_ou('printerRDN'),
         )
+      ),
+      'plForeignKeys'  => array(
+        'fdPrinterUsers'      => 'user',
+        'fdPrinterAdminUsers' => 'user',
       ),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -79,17 +81,55 @@ class printGeneric extends simplePlugin
           ),
         )
       ),
+      'users' => array(
+        'name'  => _('Users which are allowed to use this printer'),
+        'attrs' => array(
+          new UsersAttribute(
+            '', _('Users which are allowed to use this printer'),
+            'fdPrinterUsers', FALSE
+          )
+        )
+      ),
+      'admins' => array(
+        'name'  => _('Users which are allowed to administrate this printer'),
+        'attrs' => array(
+          new UsersAttribute(
+            '', _('Users which are allowed to administrate this printer'),
+            'fdPrinterAdminUsers', FALSE
+          )
+        )
+      ),
       'network' => array(
         'name'      => _('Network settings'),
         'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
         'attrs'     => array(
-          new IPAttribute(
-            _('IP address'), _('IP address this system uses'),
-            'ipHostNumber', TRUE
+          new SetAttribute(
+            new IPAttribute(
+              _('IP address'), _('IP address this system uses'),
+              'ipHostNumber', TRUE
+            )
           ),
           new MacAddressAttribute(
             _('Mac address'), _('Mac address of this system'),
             'macAddress', FALSE
+          ),
+        ),
+      ),
+      'windows' => array(
+        'name'      => _('Windows paths'),
+        'icon'      => 'geticon.php?context=devices&icon=computer-windows&size=16',
+        'attrs'     => array(
+          new StringAttribute (
+            _('Inf file'), _('Path to windows inf file for this printer'),
+            'fdPrinterWindowsInfFile', FALSE
+          ),
+          new StringAttribute (
+            _('Driver directory'), _('Path to directory that contains windows drivers for this printer'),
+            'fdPrinterWindowsDriverDir', FALSE
+          ),
+          new StringAttribute (
+            _('Driver name'), _('Windows name of the printer driver'),
+            'fdPrinterWindowsDriverName', FALSE
           ),
         ),
       ),

@@ -339,42 +339,49 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.11.10 NAME 'gotoLogonScript'
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.11.12 NAME 'gotoUserPrinter'
   DESC 'GOto - keeps printers shown for this user'
+  OBSOLETE
   EQUALITY caseIgnoreIA5Match
   SUBSTR caseIgnoreIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.11.13 NAME 'gotoUserAdminPrinter'
   DESC 'GOto - keeps printers we are admin for'
+  OBSOLETE
   EQUALITY caseIgnoreIA5Match
   SUBSTR caseIgnoreIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.11.16 NAME 'gotoGroupPrinter'
   DESC 'GOto - keeps printers shown for this user'
+  OBSOLETE
   EQUALITY caseIgnoreIA5Match
   SUBSTR caseIgnoreIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.11.17 NAME 'gotoGroupAdminPrinter'
   DESC 'GOto - keeps printers we are admin for'
+  OBSOLETE
   EQUALITY caseIgnoreIA5Match
   SUBSTR caseIgnoreIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
 attributetype ( 1.3.6.1.4.1.38414.6.10.1 NAME 'printerWindowsInfFile'
   DESC 'Path to windows inf file for this printer'
+  OBSOLETE
   EQUALITY caseIgnoreIA5Match
   SUBSTR caseIgnoreIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
 attributetype ( 1.3.6.1.4.1.38414.6.10.2 NAME 'printerWindowsDriverDir'
   DESC 'Path to directory that contains windows drivers for this printer'
+  OBSOLETE
   EQUALITY caseIgnoreIA5Match
   SUBSTR caseIgnoreIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
 attributetype ( 1.3.6.1.4.1.38414.6.10.3 NAME 'printerWindowsDriverName'
   DESC 'Windows name of the printer driver'
+  OBSOLETE
   EQUALITY caseIgnoreIA5Match
   SUBSTR caseIgnoreIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
@@ -517,6 +524,38 @@ attributetype ( 1.3.6.1.4.1.38414.16.10.6 NAME 'fdNtpServer'
   SUBSTR caseIgnoreIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
+## Printer
+
+attributetype ( 1.3.6.1.4.1.38414.16.15.1 NAME 'fdPrinterWindowsInfFile'
+  DESC 'FusionDirectory - Path to windows inf file for this printer'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
+attributetype ( 1.3.6.1.4.1.38414.16.15.2 NAME 'fdPrinterWindowsDriverDir'
+  DESC 'FusionDirectory - Path to directory that contains windows drivers for this printer'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
+attributetype ( 1.3.6.1.4.1.38414.16.15.3 NAME 'fdPrinterWindowsDriverName'
+  DESC 'FusionDirectory - Windows name of the printer driver'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
+attributetype ( 1.3.6.1.4.1.38414.16.15.4 NAME 'fdPrinterUsers'
+  DESC 'FusionDirectory - Users of this printer'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
+attributetype ( 1.3.6.1.4.1.38414.16.15.5 NAME 'fdPrinterAdminUsers'
+  DESC 'FusionDirectory - Admin users of this printer'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
 # Old objectClasses
 
 objectclass (1.3.6.1.4.1.10098.1.2.1.1 NAME 'gotoTerminal'
@@ -626,7 +665,9 @@ objectclass ( 1.3.6.1.4.1.38414.16.2.4 NAME 'fdTerminal'
 objectclass ( 1.3.6.1.4.1.38414.16.2.5 NAME 'fdPrinter'
   DESC 'FusionDirectory printer class'
   MUST ( cn )
-  MAY  ( labeledURI ))
+  MAY  ( labeledURI $
+  fdPrinterWindowsInfFile $ fdPrinterWindowsDriverDir $ fdPrinterWindowsDriverName $
+  fdPrinterUsers $ fdPrinterAdminUsers))
 
 # For component we use standard OC "device"
 
