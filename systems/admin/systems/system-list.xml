@@ -68,7 +68,7 @@
 
     <objectType>
       <label>Printer</label>
-      <objectClass>gotoPrinter</objectClass>
+      <objectClass>fdPrinter</objectClass>
       <category>printer</category>
       <class>printgeneric</class>
       <image>geticon.php?context=devices&amp;icon=printer&amp;size=16</image>
@@ -211,7 +211,7 @@
     </action>
 
      <action>
-      <name>new_gotoPrinter</name>
+      <name>new_fdPrinter</name>
       <type>entry</type>
       <image>geticon.php?context=devices&amp;icon=printer&amp;size=16</image>
       <label>Network printer</label>
