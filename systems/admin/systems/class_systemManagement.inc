@@ -549,10 +549,10 @@ class systemManagement extends management
       ),
       'fdPrinter' => array(
         'ou'          => get_ou('printerRDN'),
-        'plugClass'   => 'printgeneric',
+        'plugClass'   => 'printGeneric',
         'tabClass'    => 'simpleTabs',
         'tabDesc'     => 'PRINTERTABS',
-        'aclClass'    => 'printgeneric',
+        'aclClass'    => 'printGeneric',
         'sendEvents'  => FALSE,
         'aclCategory' => 'printer'
       ),
