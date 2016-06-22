@@ -42,15 +42,13 @@ class autofsManagement extends simpleManagement
   function parseXML ($file)
   {
     $data = parent::parseXML($file);
-    $data['list']['table']['layout'] = '|20px;c||||150px;r|';
-    $column = array(
+    $data['list']['table']['column'][2] = array(
       'label'         => 'Mount point',
       'sortAttribute' => 'nisMapName',
       'sortType'      => 'string',
       'value'         => '%{filter:link(row,dn,"%s",nisMapName)}',
       'export'        => 'true',
     );
-    array_splice($data['list']['table']['column'], 2, 0, array($column));
     return $data;
   }
 }
