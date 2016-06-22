@@ -132,22 +132,26 @@ class quotaAccount extends simplePlugin
                 new BytesSizeAttribute(
                   _('Block soft limit'), _('Soft limit for the block the user can use'),
                   'quotaBlockSoftLimit', TRUE,
-                  0 /*min*/, FALSE/*no max*/
+                  0 /*min*/, FALSE /*no max*/,
+                  0
                 ),
                 new BytesSizeAttribute(
                   _('Block hard limit'), _('Hard limit for the block the user can use'),
                   'quotaBlockHardLimit', TRUE,
-                  0 /*min*/, FALSE/*no max*/
+                  0 /*min*/, FALSE /*no max*/,
+                  0
                 ),
                 new IntAttribute(
                   _('Inode soft limit'), _('Soft limit for the inodes the user can use'),
                   'quotaInodeSoftLimit', TRUE,
-                  0 /*min*/, FALSE/*no max*/
+                  0 /*min*/, FALSE /*no max*/,
+                  0
                 ),
                 new IntAttribute(
                   _('Inode hard limit'), _('Hard limit for the inodes the user can use'),
                   'quotaInodeHardLimit', TRUE,
-                  0 /*min*/, FALSE/*no max*/
+                  0 /*min*/, FALSE /*no max*/,
+                  0
                 ),
                 new SelectAttribute(
                   _('Server'), _('Server hosting the device this quota is for'),
