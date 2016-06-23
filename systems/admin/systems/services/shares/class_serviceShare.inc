@@ -59,7 +59,7 @@ class serviceShare extends simpleService
                 new SelectAttribute(
                   _('Type'), _('Type of share'),
                   'shareType', TRUE,
-                  array("CIFS","NBD","NCP","NFS","netatalk","samba")
+                  array('CIFS','NBD','NCP','NFS','netatalk','samba','local')
                 ),
                 new SelectAttribute(
                   _('Codepage'), _('Codepage for this share'),
