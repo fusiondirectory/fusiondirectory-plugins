@@ -37,6 +37,11 @@ class nisObject extends simplePlugin
         'icon'        => 'geticon.php?context=applications&icon=autofs-nis-object&size=16',
         'mainAttr'    => 'cn',
       )),
+      'plForeignKeys'  => array(
+        'nisMapName'   => array(
+          array('nisMap', 'nisMapName'),
+        ),
+      ),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
