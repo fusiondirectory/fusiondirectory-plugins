@@ -499,9 +499,6 @@ class mailMethodCyrus extends mailMethod
     $mail                     = $this->parent->mail;
     $gosaMailDeliveryMode     = $this->parent->gosaMailDeliveryMode;
     $gosaMailAlternateAddress = $this->parent->gosaMailAlternateAddress;
-    $gosaMailMaxSize          = $this->parent->gosaMailMaxSize;
-    $gosaSpamMailbox          = $this->parent->gosaSpamMailbox;
-    $gosaSpamSortLevel        = $this->parent->gosaSpamSortLevel;
     $gosaVacationMessage      = $this->parent->gosaVacationMessage;
 
     /* Try to login into sieve
@@ -514,11 +511,6 @@ class mailMethodCyrus extends mailMethod
       $this->error = $sieve->error_raw;
       return FALSE;
     }
-
-    /* Build spamlevel. Spamassassin tags mails with "*" for each integer
-       point of spam. So a spam level of 5.3 gets "*****" which can be
-       checked easily by spam filters */
-    $spamlevel = str_pad("", (int) $gosaSpamSortLevel, "*");
 
     /* Get current sieve script named 'fusiondirectory'.
         Check if it valid ("###FUSIONDIRECTORY" must be the first string).
@@ -567,21 +559,10 @@ class mailMethodCyrus extends mailMethod
 
     /* Only create a new one, if it is not empty */
     $smarty = get_smarty();
-    if (is_integer(strpos($gosaMailDeliveryMode, "R")) ||
-        is_integer(strpos($gosaMailDeliveryMode, "C")) ||
+    if (is_integer(strpos($gosaMailDeliveryMode, "C")) ||
         is_integer(strpos($gosaMailDeliveryMode, "I")) ||
-        is_integer(strpos($gosaMailDeliveryMode, "V")) ||
-        is_integer(strpos($gosaMailDeliveryMode, "S"))) {
-      /* Add anti-spam code */
-      $smarty->assign('spamfilter', is_integer(strpos($gosaMailDeliveryMode, "S")));
-      $smarty->assign('spambox', $gosaSpamMailbox);
-      $smarty->assign('spamlevel', $spamlevel);
-
-      /* Add "reject due to mailsize" code, message is currently not
-         adjustable through FusionDirectory. */
-      $smarty->assign('sizefilter', is_integer(strpos($gosaMailDeliveryMode, "R")));
-      $smarty->assign('maxsize', $gosaMailMaxSize);
-
+        is_integer(strpos($gosaMailDeliveryMode, "V"))) {
+          
       /* Add vacation information */
       $smarty->assign('vacation', is_integer(strpos($gosaMailDeliveryMode, "V")));
       if (is_integer(strpos($gosaMailDeliveryMode, "V"))) {
