@@ -25,7 +25,7 @@
             <table class="listingTable">
               <thead>
                 <tr>
-                  <th><img src="images/info_small.png"/></th>
+                  <th><img src="geticon.php?context=status&icon=dialog-information&size=16"/></th>
                   <th>Host</th>
                   <th>Details</th>
                 </tr>

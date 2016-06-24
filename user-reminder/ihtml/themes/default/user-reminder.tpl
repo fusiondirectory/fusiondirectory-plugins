@@ -3,9 +3,6 @@
   {$php_errors}
   <div>
     {include file={filePath file="setup_header.tpl"}}
-    <div class='setup_menu'>
-      <b>{t}FusionDirectory expiration postpone{/t}</b>
-    </div>
   </div>
 
   <div id="window_container">
@@ -19,7 +16,7 @@
           </p>
         </div>
         <div style="padding-left:10px;padding-right:10px;">
-	   <!-- Display error message on demand -->
+          <!-- Display error message on demand -->
           <p class="warning">{$message}</p>
           {if $success}
             <div class="success">

@@ -29,7 +29,7 @@ class serviceShare extends simpleService
     return array(
       'plShortName'   => _('Share service'),
       'plDescription' => _('Share service').' ('._('Services').')',
-      'plIcon'        => 'plugins/systems/images/service_file.png',
+      'plIcon'        => 'geticon.php?context=places&amp;icon=folder-network&amp;size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
