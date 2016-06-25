@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-06-10 13:36+0200\n"
+"POT-Creation-Date: 2016-06-03 13:10+0200\n"
 "PO-Revision-Date: 2016-04-27 20:17+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Indonesian (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/id/)\n"
@@ -101,13 +101,13 @@ msgid "Unlimited"
 msgstr ""
 
 #: personal/mail/class_mailAccount.inc:45
-#: personal/mail/class_mailAccount.inc:233
-#: personal/mail/class_mailAccount.inc:236
-#: personal/mail/class_mailAccount.inc:281
-#: personal/mail/class_mailAccount.inc:285
-#: personal/mail/class_mailAccount.inc:289
-#: personal/mail/class_mailAccount.inc:322
-#: personal/mail/class_mailAccount.inc:326
+#: personal/mail/class_mailAccount.inc:227
+#: personal/mail/class_mailAccount.inc:230
+#: personal/mail/class_mailAccount.inc:275
+#: personal/mail/class_mailAccount.inc:279
+#: personal/mail/class_mailAccount.inc:283
+#: personal/mail/class_mailAccount.inc:316
+#: personal/mail/class_mailAccount.inc:320
 msgid "Mail error"
 msgstr ""
 
@@ -203,37 +203,37 @@ msgstr ""
 msgid "Select if you want to forward mails without getting own copies of them"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:233
-#: personal/mail/class_mailAccount.inc:281
+#: personal/mail/class_mailAccount.inc:227
+#: personal/mail/class_mailAccount.inc:275
 #, php-format
 msgid "Mail method cannot connect: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:236
+#: personal/mail/class_mailAccount.inc:230
 #, php-format
 msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:285
+#: personal/mail/class_mailAccount.inc:279
 #, php-format
 msgid "Cannot update mailbox: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:289
+#: personal/mail/class_mailAccount.inc:283
 #, php-format
 msgid "Cannot write quota settings: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:302
+#: personal/mail/class_mailAccount.inc:296
 msgid "Mail error saving sieve settings"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:322
+#: personal/mail/class_mailAccount.inc:316
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:326
+#: personal/mail/class_mailAccount.inc:320
 #, php-format
 msgid "Cannot remove mailbox: %s"
 msgstr ""

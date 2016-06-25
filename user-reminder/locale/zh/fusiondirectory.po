@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-06-10 13:36+0200\n"
-"PO-Revision-Date: 2016-06-09 19:34+0000\n"
+"POT-Creation-Date: 2016-06-03 13:10+0200\n"
+"PO-Revision-Date: 2016-06-25 11:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Chinese (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -17,175 +17,64 @@ msgstr ""
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: html/class_expiredUserPostpone.inc:58
+#: html/class_expiredUserPostpone.inc:55
 msgid "This token is invalid"
 msgstr ""
 
-#: html/class_expiredUserPostpone.inc:193
-msgid "Contact your administrator, there was a problem with mail server"
-msgstr ""
-
-#: html/class_expiredUserPostpone.inc:204
+#: html/class_expiredUserPostpone.inc:134
 #, php-format
 msgid "Did not find an account with login \"%s\""
 msgstr ""
 
-#: html/class_expiredUserPostpone.inc:207
+#: html/class_expiredUserPostpone.inc:137
 #, php-format
 msgid "Found multiple accounts with login \"%s\""
 msgstr ""
 
 #: config/user-reminder/class_userReminderConfig.inc:28
-msgid "User reminder"
+msgid "Configuration reminder of accounts expiration"
 msgstr ""
 
 #: config/user-reminder/class_userReminderConfig.inc:29
 msgid "Configuration for the reminder of accounts expiration"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:40
-msgid "User reminder settings"
+#: config/user-reminder/class_userReminderConfig.inc:41
+msgid "accounts expiration reminder"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:43
+#: config/user-reminder/class_userReminderConfig.inc:44
 msgid "Delay before expiration"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:43
+#: config/user-reminder/class_userReminderConfig.inc:44
 msgid "Days before expiration to send the first mail"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:48
+#: config/user-reminder/class_userReminderConfig.inc:49
 msgid "Delay before sending again"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:48
+#: config/user-reminder/class_userReminderConfig.inc:49
 msgid "Days before sending a second mail (0 to disable)"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:53
+#: config/user-reminder/class_userReminderConfig.inc:54
 msgid "Extension of the validity"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:53
+#: config/user-reminder/class_userReminderConfig.inc:54
 msgid "Extension of the duration of the account in days"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:58
-msgid "Sender email address"
-msgstr ""
-
-#: config/user-reminder/class_userReminderConfig.inc:58
-msgid "Email address from which mails will be sent"
-msgstr ""
-
-#: config/user-reminder/class_userReminderConfig.inc:65
-msgid "Alert email settings"
-msgstr ""
-
-#: config/user-reminder/class_userReminderConfig.inc:68
+#: config/user-reminder/class_userReminderConfig.inc:59
 msgid "Forward alerts to the manager"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:73
-#: config/user-reminder/class_userReminderConfig.inc:99
-msgid "Subject"
-msgstr ""
-
-#: config/user-reminder/class_userReminderConfig.inc:73
-msgid "Subject of the alert email"
-msgstr ""
-
-#: config/user-reminder/class_userReminderConfig.inc:75
-msgid "[FusionDirectory] Your account is about to expire"
-msgstr ""
-
-#: config/user-reminder/class_userReminderConfig.inc:78
-#, php-format
-msgid "Body (%s are cn, login, and link token)"
-msgstr ""
-
-#: config/user-reminder/class_userReminderConfig.inc:79
-#, php-format
-msgid ""
-"Body of the alert email, sent when the user is about to expire. Use %s for "
-"the cn, uid and token."
-msgstr ""
-
-#: config/user-reminder/class_userReminderConfig.inc:81
-#, php-format
-msgid ""
-"Dear %1$s,\n"
-"your account %2$s is about to expire, please use this link to avoid this: \n"
-"https://"
-msgstr ""
-
-#: config/user-reminder/class_userReminderConfig.inc:91
-msgid "Confirmation email settings"
-msgstr ""
-
-#: config/user-reminder/class_userReminderConfig.inc:94
+#: config/user-reminder/class_userReminderConfig.inc:64
 msgid "Forward confirmation to the manager"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:94
+#: config/user-reminder/class_userReminderConfig.inc:64
 msgid "Forward account extension confirmation to the manager"
-msgstr ""
-
-#: config/user-reminder/class_userReminderConfig.inc:99
-msgid "Subject of the confirmation email"
-msgstr ""
-
-#: config/user-reminder/class_userReminderConfig.inc:101
-msgid "[FusionDirectory] Your account expiration has been postponed"
-msgstr ""
-
-#: config/user-reminder/class_userReminderConfig.inc:104
-#, php-format
-msgid "Body (%s are cn and login)"
-msgstr ""
-
-#: config/user-reminder/class_userReminderConfig.inc:105
-#, php-format
-msgid ""
-"Body of the confirmation email, sent when the user has postponed expiration."
-" Use %s for the cn and uid."
-msgstr ""
-
-#: config/user-reminder/class_userReminderConfig.inc:107
-#, php-format
-msgid ""
-"Dear %1$s,\n"
-" your account %2$s expiration has been successfully postponed.\n"
-msgstr ""
-
-#: ihtml/themes/default/user-reminder.tpl.c:2
-msgid "FusionDirectory expiration postpone"
-msgstr ""
-
-#: ihtml/themes/default/user-reminder.tpl.c:5
-#: ihtml/themes/default/user-reminder.tpl.c:8
-msgid "User"
-msgstr "用户"
-
-#: ihtml/themes/default/user-reminder.tpl.c:11
-msgid "Expiration postpone"
-msgstr ""
-
-#: ihtml/themes/default/user-reminder.tpl.c:14
-#: ihtml/themes/default/user-reminder.tpl.c:17
-msgid "Success"
-msgstr ""
-
-#: ihtml/themes/default/user-reminder.tpl.c:20
-msgid "Your expiration has been postponed successfully."
-msgstr ""
-
-#: ihtml/themes/default/user-reminder.tpl.c:23
-#: ihtml/themes/default/user-reminder.tpl.c:26
-msgid "Error"
-msgstr "错误"
-
-#: ihtml/themes/default/user-reminder.tpl.c:29
-msgid "There was a problem"
 msgstr ""

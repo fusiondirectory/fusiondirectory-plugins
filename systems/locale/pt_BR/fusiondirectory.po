@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-06-10 13:36+0200\n"
-"PO-Revision-Date: 2016-06-09 09:10+0000\n"
+"POT-Creation-Date: 2016-06-03 13:10+0200\n"
+"PO-Revision-Date: 2016-06-25 11:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -175,7 +175,7 @@ msgstr ""
 msgid "Winstation"
 msgstr ""
 
-#: admin/systems/system-list.xml:46 admin/systems/system-list.xml:185
+#: admin/systems/system-list.xml:46 admin/systems/system-list.xml:193
 #: admin/systems/class_systemImport.inc:169
 #: admin/systems/class_serverGeneric.inc:32
 #: admin/systems/class_serverGeneric.inc:37
@@ -183,14 +183,14 @@ msgstr ""
 msgid "Server"
 msgstr ""
 
-#: admin/systems/system-list.xml:54 admin/systems/system-list.xml:193
+#: admin/systems/system-list.xml:54 admin/systems/system-list.xml:201
 #: admin/systems/class_workstationGeneric.inc:118
 #: admin/systems/class_workstationGeneric.inc:123
 #: admin/systems/class_workstationGeneric.inc:124
 msgid "Workstation"
 msgstr ""
 
-#: admin/systems/system-list.xml:62 admin/systems/system-list.xml:201
+#: admin/systems/system-list.xml:62 admin/systems/system-list.xml:209
 #: admin/systems/class_terminalGeneric.inc:32
 #: admin/systems/class_terminalGeneric.inc:37
 #: admin/systems/class_terminalGeneric.inc:38
@@ -203,7 +203,7 @@ msgstr ""
 msgid "Printer"
 msgstr ""
 
-#: admin/systems/system-list.xml:78 admin/systems/system-list.xml:225
+#: admin/systems/system-list.xml:78 admin/systems/system-list.xml:233
 #: admin/systems/class_phoneGeneric.inc:36
 #: admin/systems/class_phoneGeneric.inc:40
 #: admin/systems/class_phoneGeneric.inc:70
@@ -225,7 +225,11 @@ msgstr ""
 msgid "Component"
 msgstr ""
 
-#: admin/systems/system-list.xml:120
+#: admin/systems/system-list.xml:102 admin/systems/system-list.xml:257
+msgid "IPMI"
+msgstr ""
+
+#: admin/systems/system-list.xml:128
 #: admin/systems/class_workstationGeneric.inc:151
 #: admin/systems/class_phoneGeneric.inc:59
 #: admin/systems/class_printGeneric.inc:836
@@ -236,21 +240,21 @@ msgstr ""
 #: admin/systems/class_mobilePhoneGeneric.inc:63
 #: admin/systems/phoneSelect/phoneSelect-list.xml:48
 #: admin/systems/services/shares/class_serviceShare.inc:52
-#: admin/systems/system-filter.tpl.c:29
+#: admin/systems/system-filter.tpl.c:32
 #: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:11
 msgid "Name"
 msgstr ""
 
-#: admin/systems/system-list.xml:128
+#: admin/systems/system-list.xml:136
 #: admin/systems/phoneSelect/phoneSelect-list.xml:63
 msgid "IP"
 msgstr ""
 
-#: admin/systems/system-list.xml:136
+#: admin/systems/system-list.xml:144
 msgid "MAC"
 msgstr ""
 
-#: admin/systems/system-list.xml:144
+#: admin/systems/system-list.xml:152
 #: admin/systems/class_workstationGeneric.inc:157
 #: admin/systems/class_phoneGeneric.inc:63
 #: admin/systems/class_printGeneric.inc:1108
@@ -262,62 +266,62 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: admin/systems/system-list.xml:152 admin/systems/class_serverService.inc:57
+#: admin/systems/system-list.xml:160 admin/systems/class_serverService.inc:57
 #: admin/systems/services/terminal/class_serviceTerminal.inc:30
 #: admin/systems/services/shares/class_serviceShare.inc:31
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 msgid "Services"
 msgstr ""
 
-#: admin/systems/system-list.xml:160
+#: admin/systems/system-list.xml:168
 msgid "Release"
 msgstr ""
 
-#: admin/systems/system-list.xml:168 admin/systems/serverService-list.xml:43
+#: admin/systems/system-list.xml:176 admin/systems/serverService-list.xml:43
 #: admin/systems/phoneSelect/phoneSelect-list.xml:70
 msgid "Actions"
 msgstr ""
 
-#: admin/systems/system-list.xml:179 admin/systems/serverService-list.xml:54
+#: admin/systems/system-list.xml:187 admin/systems/serverService-list.xml:54
 msgid "Create"
 msgstr ""
 
-#: admin/systems/system-list.xml:209
+#: admin/systems/system-list.xml:217
 msgid "winStation"
 msgstr ""
 
-#: admin/systems/system-list.xml:217
+#: admin/systems/system-list.xml:225
 msgid "Network printer"
 msgstr ""
 
-#: admin/systems/system-list.xml:233
+#: admin/systems/system-list.xml:241
 #: admin/systems/class_componentGeneric.inc:41
 #: admin/systems/class_componentGeneric.inc:42
 msgid "Network device"
 msgstr ""
 
-#: admin/systems/system-list.xml:241
+#: admin/systems/system-list.xml:249
 msgid "Mobile Phone"
 msgstr ""
 
-#: admin/systems/system-list.xml:253
+#: admin/systems/system-list.xml:269
 msgid "Trigger action"
 msgstr ""
 
-#: admin/systems/system-list.xml:260
+#: admin/systems/system-list.xml:276
 msgid "Schedule action"
 msgstr ""
 
-#: admin/systems/system-list.xml:272 admin/systems/serverService-list.xml:69
+#: admin/systems/system-list.xml:288 admin/systems/serverService-list.xml:69
 #: admin/systems/printer.tpl.c:35
 msgid "Remove"
 msgstr ""
 
-#: admin/systems/system-list.xml:303
+#: admin/systems/system-list.xml:319
 msgid "Edit system"
 msgstr ""
 
-#: admin/systems/system-list.xml:316
+#: admin/systems/system-list.xml:332
 msgid "Remove system"
 msgstr ""
 
@@ -412,7 +416,7 @@ msgstr ""
 #: admin/systems/class_printGeneric.inc:131
 #: admin/systems/class_printGeneric.inc:1150
 msgid "Internal error"
-msgstr ""
+msgstr "Erro interno"
 
 #: admin/systems/class_printGeneric.inc:131
 #, php-format
@@ -513,11 +517,11 @@ msgstr ""
 #: admin/systems/class_printGeneric.inc:1074
 #: admin/systems/class_printGeneric.inc:1076
 msgid "Group"
-msgstr ""
+msgstr "Grupo"
 
 #: admin/systems/class_printGeneric.inc:1079
 msgid "User"
-msgstr ""
+msgstr "Usuário"
 
 #: admin/systems/class_printGeneric.inc:1091
 msgid "Printer information"
@@ -557,7 +561,7 @@ msgstr ""
 #: admin/systems/class_printGeneric.inc:1132
 #: admin/systems/class_printGeneric.inc:1155
 msgid "Permission error"
-msgstr ""
+msgstr "Erro de permissão"
 
 #: admin/systems/class_printGeneric.inc:1132
 #: admin/systems/class_printGeneric.inc:1155
@@ -698,7 +702,7 @@ msgstr ""
 #: admin/systems/ppd/class_printerPPDDialog.inc:71
 #: admin/systems/ppd/class_printerPPDDialog.inc:138
 msgid "Configuration error"
-msgstr ""
+msgstr "Erro de configuração"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:89
 #, php-format
@@ -713,7 +717,7 @@ msgstr ""
 #: admin/systems/ppd/class_printerPPDDialog.inc:158
 #: admin/systems/ppd/class_printerPPDDialog.inc:363
 msgid "file is empty"
-msgstr ""
+msgstr "arquivo está vazio"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:312
 #, php-format
@@ -732,7 +736,7 @@ msgstr ""
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:491
 msgid "Section"
-msgstr ""
+msgstr "Seção"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:551
 #: admin/systems/ppd/class_printerPPDDialog.inc:554
@@ -992,19 +996,19 @@ msgstr ""
 msgid "You are not allowed to restore a snapshot for %s."
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:665
+#: admin/systems/class_systemManagement.inc:674
 #, php-format
 msgid "Inherited from %s"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:718
-#: admin/systems/class_systemManagement.inc:722
+#: admin/systems/class_systemManagement.inc:727
+#: admin/systems/class_systemManagement.inc:731
 #: addons/dashboard/class_dashBoardSystems.inc:31
 #: config/systems/class_systemsPluginConfig.inc:28
 msgid "Systems"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:719
+#: admin/systems/class_systemManagement.inc:728
 msgid "Systems Management"
 msgstr ""
 
@@ -1499,13 +1503,17 @@ msgstr ""
 msgid "Show mobile phones"
 msgstr ""
 
+#: admin/systems/system-filter.tpl.c:29
+msgid "Show IPMI interfaces"
+msgstr ""
+
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
 msgid "Select objects to add"
 msgstr ""
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:5
 msgid "Filters"
-msgstr ""
+msgstr "Filtros"
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:8
 msgid "Display objects matching"
@@ -1517,7 +1525,7 @@ msgstr ""
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:14
 msgid "Close"
-msgstr ""
+msgstr "Fechar"
 
 #: admin/systems/ppd/printerPPDDialog.tpl.c:2
 msgid "Printer driver"
@@ -1537,11 +1545,11 @@ msgstr ""
 
 #: admin/systems/ppd/printerPPDDialog.tpl.c:14
 msgid "Upload"
-msgstr ""
+msgstr "Upload"
 
 #: admin/systems/ppd/printerPPDDialog.tpl.c:17
 msgid "Options"
-msgstr ""
+msgstr "Opções"
 
 #: admin/systems/ppd/remove_ppd.tpl.c:5
 msgid "The ppd file will be removed from the server and can not be restored."
@@ -1573,7 +1581,7 @@ msgstr ""
 
 #: admin/systems/printer.tpl.c:32
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: admin/systems/printer.tpl.c:41
 msgid "Users which are allowed to use this printer"
@@ -1581,7 +1589,7 @@ msgstr ""
 
 #: admin/systems/printer.tpl.c:44
 msgid "Users"
-msgstr ""
+msgstr "Usuários"
 
 #: admin/systems/printer.tpl.c:47
 msgid "Users which are allowed to administrate this printer"
@@ -1589,7 +1597,7 @@ msgstr ""
 
 #: admin/systems/printer.tpl.c:50
 msgid "Admins"
-msgstr ""
+msgstr "Administradores"
 
 #: admin/systems/printer.tpl.c:53
 msgid "Windows paths"
