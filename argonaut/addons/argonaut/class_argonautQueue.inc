@@ -337,7 +337,7 @@ class argonautQueue extends simpleManagement
     $substatus  = $substatus[0];
 
     if ($status == 'waiting') {
-      $status = '<img class="center" src="plugins/systems/images/clock.png" alt="clock"/>&nbsp;'._('Waiting');
+      $status = '<img class="center" src="geticon.php?context=status&icon=task-waiting&size=16" alt="clock"/>&nbsp;'._('Waiting');
     }
     if ($status == 'error') {
       $status = '<input class="center" type="image" src="geticon.php?context=status&icon=task-failure&size=16" title="'._('Show error').'" '.
