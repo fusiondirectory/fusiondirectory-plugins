@@ -24,6 +24,28 @@ class pgpServerInfo extends simplePlugin
   /* This plugin only writes its objectClass */
   var $objectclasses = array('pgpServerInfo');
 
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('GPG server info'),
+      'plDescription' => _('GPG server info'),
+      'plSection'     => 'conf',
+      'plPriority'    => 5,
+      'plIcon'        => 'geticon.php?context=applications&icon=gpg&size=48',
+      'plObjectType'    => array(
+        'pgpServerInfo' => array(
+          'name'        => _('GPG server info'),
+          'filter'      => 'objectClass=pgpServerInfo',
+          'icon'        => 'geticon.php?context=applications&icon=gpg&size=16',
+          'aclCategory' => 'configuration',
+        )
+      ),
+
+      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
   // The main function : information about attributes
   static function getAttributesInfo ()
   {
@@ -59,21 +81,6 @@ class pgpServerInfo extends simplePlugin
           ),
         )
       ),
-    );
-  }
-
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('GPG server info'),
-      'plDescription' => _('GPG server info'),
-      'plSection'     => 'conf',
-      'plPriority'    => 5,
-      'plIcon'        => 'geticon.php?context=applications&icon=gpg&size=48',
-      'plCategory'    => array('configuration'),
-
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
