@@ -63,7 +63,7 @@ class ServerService extends management
     );
   }
 
-  function __construct ($dn, $object)
+  function __construct ($dn, $object, $parent = NULL)
   {
     global $config;
 
@@ -71,6 +71,7 @@ class ServerService extends management
     if (isset($object->attrs)) {
       $this->attrs = $object->attrs;
     }
+    $this->parent = $parent;
 
     /* Initialize acl base */
     $this->set_acl_base($this->dn);
