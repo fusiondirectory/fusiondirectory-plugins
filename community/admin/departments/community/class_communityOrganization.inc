@@ -38,7 +38,7 @@ class communityOrganization extends simplePlugin
   {
     global $config;
     return array(
-      'main' => array(
+      'membership' => array(
         'name'  => _('Membership'),
         'attrs' => array(
           new SelectAttribute (

@@ -36,7 +36,7 @@ class communityProject extends communityOrganization
 
   static function getAttributesInfo ()
   {
-    return array_merge(
+    $infos = array_merge(
       array(
         'project' => array(
           'name'  => _('Project'),
@@ -54,6 +54,8 @@ class communityProject extends communityOrganization
       ),
       parent::getAttributesInfo()
     );
+    unset($infos['membership']);
+    return $infos;
   }
 }
 ?>
