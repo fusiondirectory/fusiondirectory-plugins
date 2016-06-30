@@ -56,13 +56,25 @@ attributetype ( 1.3.6.1.4.1.38414.52.12.2 NAME 'fdCommunityEndDate'
   ORDERING generalizedTimeOrderingMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-VALUE )
 
-# User attributes
+# Membership attributes
 
 attributetype ( 1.3.6.1.4.1.38414.52.13.1 NAME 'fdCommunityMembershipType'
   DESC 'FusionDirectory - membership type'
   EQUALITY caseIgnoreMatch
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.52.13.2 NAME 'fdCommunityMembershipActive'
+  DESC 'FusionDirectory - Is this membership active'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.52.13.3 NAME 'fdCommunityMembershipHidden'
+  DESC 'FusionDirectory - Should this membership be removed from listing'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
 
 # Object Classes
 
@@ -73,7 +85,7 @@ objectClass ( 1.3.6.1.4.1.38414.52.2.1  NAME 'fdCommunityOrganization'
   MAY ( fdOrganizationAlternateLastName $ fdOrganizationAlternateFirstName $
   fdOrganizationAlternateAddress $ fdOrganizationAlternateCity $
   fdOrganizationAlternateState $ fdOrganizationAlternateCountry $ fdCommunityEndDate $
-  fdCommunityMembershipType))
+  fdCommunityMembershipType $ fdCommunityMembershipActive $ fdCommunityMembershipHidden))
 
 objectClass ( 1.3.6.1.4.1.38414.52.2.2  NAME 'fdCommunityProject'
   DESC 'FusionDirectory - Community Project'
