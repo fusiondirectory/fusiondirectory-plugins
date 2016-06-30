@@ -255,7 +255,7 @@ class ServerService extends management
   protected function removeService($action = "", $target = array(), $all = array())
   {
     foreach ($target as $s_entry) {
-      $new_obj = new $s_entry(NULL, $this->dn, $this);
+      $new_obj = new $s_entry($this->dn, $this);
       $new_obj->set_acl_base($this->acl_base);
       $new_obj->set_acl_category(preg_replace("/\/$/", "", $this->acl_category));
       $tmp = $new_obj->getListEntry();
