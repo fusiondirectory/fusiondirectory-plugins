@@ -702,7 +702,7 @@ class mailMethod
     $methods = mailMethod::get_methods();
     $servers = array();
     foreach ($methods as $class) {
-     $servers = array_merge($servers, $class::get_server_list());
+      $servers = array_merge($servers, $class::get_server_list());
     }
     session::global_set('mailServers', $servers);
     return $servers;
@@ -719,9 +719,9 @@ class mailMethod
   static public function get_methods()
   {
     global $class_mapping;
-    $available = array();
+    $available = array('mailMethod' => 'mailMethod');
     foreach ($class_mapping as $class => $path) {
-      if (preg_match("/^mailMethod.+/", $class)) {
+      if (preg_match('/^mailMethod.+/', $class)) {
         $available[$class] = $class;
       }
     }
