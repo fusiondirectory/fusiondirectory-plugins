@@ -19,10 +19,24 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ldiftab extends simpleTabs_noSpecial
+class ldiftabs extends simpleTabs_noSpecial
 {
   function save()
   {
+  }
+
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('LDAP import/export'),
+      'plDescription' => _('Allows the import or export of the ldap tree'),
+      'plIcon'        => 'geticon.php?context=applications&icon=ldapmanager&size=48',
+      'plSection'     => 'conf',
+      'plPriority'    => 10,
+      'plCategory'    => array('ldapmanager' => array('objectClass' => 'none', 'description' => _('Ldap manager'))),
+
+      'plProvidedAcls' => array()
+    );
   }
 }
 ?>
