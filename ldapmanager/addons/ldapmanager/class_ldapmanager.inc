@@ -18,6 +18,7 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
+
 class BaseSelectorOrDnAttribute extends BaseSelectorAttribute
 {
   function applyPostValue ()
@@ -43,11 +44,17 @@ class ldapmanager extends simplePlugin
   {
     return array(
       'plShortName'   => _('LDIF'),
-      'plDescription' => _('Export/Import the ldap tree to/from LDIF format'),
+      'plTitle'       => _('LDAP import/export'),
+      'plDescription' => _('Allows the import or export of the ldap tree'),
+      'plIcon'        => 'geticon.php?context=applications&icon=ldapmanager&size=48',
       'plObjectType'  => array('ldapmanager' => array(
         'name'      => _('LDAP Manager'),
+        'tabClass'  => 'ldiftab',
         'mainAttr'  => FALSE
       )),
+      'plCategory'    => array('ldapmanager' => array('objectClass' => 'none', 'description' => _('Ldap manager'))),
+      'plSection'     => 'conf',
+      'plPriority'    => 10,
 
       'plProvidedAcls'  => array()
     );
@@ -207,5 +214,4 @@ class ldapmanager extends simplePlugin
     return $config->idepartments;
   }
 }
-
 ?>
