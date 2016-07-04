@@ -23,7 +23,7 @@
 class serviceIMAP extends simpleService
 {
   /* This plugin only writes its objectClass */
-  var $objectclasses = array("fdImapServer");
+  var $objectclasses = array('fdImapServer');
 
   /* Return plugin informations for acl handling */
   static function plInfo()
@@ -42,14 +42,26 @@ class serviceIMAP extends simpleService
    */
   static function getAttributesInfo ()
   {
-    return array ();
+    return array();
   }
 
   function execute()
   {
-    return "<b>This server runs an IMAP or POP3 server</b>".parent::execute();
+    return '<b>This server runs an IMAP or POP3 server</b>'.parent::execute();
   }
 
-}
+  protected function post_save()
+  {
+    parent::post_save();
+    if (!$this->initially_was_account) {
+      mailMethod::resetMailServersCache();
+    }
+  }
 
+  protected function post_remove ()
+  {
+    parent::post_remove();
+    mailMethod::resetMailServersCache();
+  }
+}
 ?>

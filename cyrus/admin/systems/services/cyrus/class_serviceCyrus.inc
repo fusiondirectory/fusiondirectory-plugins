@@ -112,9 +112,17 @@ class serviceCyrus extends simpleService
     );
   }
 
-  function save()
+  protected function post_save()
   {
-    parent::save();
+    parent::post_save();
+    if (!$this->initially_was_account) {
+      mailMethod::resetMailServersCache();
+    }
+  }
+
+  protected function post_remove ()
+  {
+    parent::post_remove();
     mailMethod::resetMailServersCache();
   }
 }
