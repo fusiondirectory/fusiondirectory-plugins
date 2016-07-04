@@ -75,7 +75,12 @@ class mailAccount extends simplePlugin
       'plSelfModify'    => TRUE,
       'plPriority'      => 4,
       'plObjectType'    => array('user'),
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo()),
+      'plForeignKeys'  => array(
+        'gosaMailServer' => array(
+          array('serverGeneric', 'cn'),
+        )
+      )
     );
   }
 
