@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-06-03 13:10+0200\n"
-"PO-Revision-Date: 2016-06-25 11:04+0000\n"
+"POT-Creation-Date: 2016-07-06 14:01+0200\n"
+"PO-Revision-Date: 2016-06-28 11:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -18,87 +18,87 @@ msgstr ""
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/audit/class_auditEvent.inc:45 admin/audit/class_auditEvent.inc:48
+#: admin/audit/class_auditEvent.inc:53 admin/audit/class_auditEvent.inc:56
 msgid "Audit event"
 msgstr "Evento di controllo"
 
-#: admin/audit/class_auditEvent.inc:46
+#: admin/audit/class_auditEvent.inc:54
 msgid "An event like ldap modification which was registered by audit plugin"
 msgstr "Un evento come la modifica LDAP che è stato registrato dal plug-in di revisione"
 
-#: admin/audit/class_auditEvent.inc:65
+#: admin/audit/class_auditEvent.inc:73
 msgid "Event"
 msgstr "Evento"
 
-#: admin/audit/class_auditEvent.inc:68
-#: admin/audit/class_auditManagement.inc:55
+#: admin/audit/class_auditEvent.inc:76
+#: admin/audit/class_auditManagement.inc:69
 msgid "Time"
 msgstr "Tempo"
 
-#: admin/audit/class_auditEvent.inc:68
+#: admin/audit/class_auditEvent.inc:76
 msgid "Date and time this event happened"
 msgstr "Data e ora in cui questo evento é accaduto"
 
-#: admin/audit/class_auditEvent.inc:71
-#: admin/audit/class_auditManagement.inc:69
+#: admin/audit/class_auditEvent.inc:79
+#: admin/audit/class_auditManagement.inc:83
 msgid "Action"
 msgstr "Azione"
 
-#: admin/audit/class_auditEvent.inc:71
+#: admin/audit/class_auditEvent.inc:79
 msgid "Action type"
 msgstr "Tipo di azione"
 
-#: admin/audit/class_auditEvent.inc:72
-#: admin/audit/class_auditManagement.inc:62
+#: admin/audit/class_auditEvent.inc:80
+#: admin/audit/class_auditManagement.inc:76
 msgid "Author"
 msgstr "Autore"
 
-#: admin/audit/class_auditEvent.inc:72
+#: admin/audit/class_auditEvent.inc:80
 msgid "Action author"
 msgstr "Azione autore"
 
-#: admin/audit/class_auditEvent.inc:73
+#: admin/audit/class_auditEvent.inc:81
 msgid "Object type"
 msgstr "Tipo di oggetto"
 
-#: admin/audit/class_auditEvent.inc:74
+#: admin/audit/class_auditEvent.inc:82
 msgid "Object"
 msgstr "Oggetto"
 
-#: admin/audit/class_auditEvent.inc:74
+#: admin/audit/class_auditEvent.inc:82
 msgid "Target object"
 msgstr "Oggetto di destinazione"
 
-#: admin/audit/class_auditEvent.inc:75
+#: admin/audit/class_auditEvent.inc:83
 msgid "Attributes"
 msgstr "Attributi"
 
-#: admin/audit/class_auditEvent.inc:75
+#: admin/audit/class_auditEvent.inc:83
 msgid "Target attributes"
 msgstr "Attributi di destinazione"
 
-#: admin/audit/class_auditEvent.inc:76
+#: admin/audit/class_auditEvent.inc:84
 msgid "Result"
 msgstr "Risultato"
 
-#: admin/audit/class_auditEvent.inc:76
+#: admin/audit/class_auditEvent.inc:84
 msgid "Result or error"
 msgstr "Risultato o errore"
 
-#: admin/audit/class_auditManagement.inc:33
+#: admin/audit/class_auditManagement.inc:40
 #: config/audit/class_auditConfig.inc:41
 msgid "Audit"
 msgstr "Controllo"
 
-#: admin/audit/class_auditManagement.inc:34
+#: admin/audit/class_auditManagement.inc:41
 msgid "Audit events display"
 msgstr "Visualizzazione eventi di controllo"
 
-#: admin/audit/class_auditManagement.inc:76
+#: admin/audit/class_auditManagement.inc:90
 msgid "Type"
 msgstr "Tipo"
 
-#: admin/audit/class_auditManagement.inc:83
+#: admin/audit/class_auditManagement.inc:97
 msgid "Target"
 msgstr "Obiettivo"
 
@@ -125,3 +125,11 @@ msgstr "Azioni da controllare"
 #: config/audit/class_auditConfig.inc:50
 msgid "Which actions should be stored in LDAP audit log"
 msgstr "Quali azioni devono essere conservati nel log di controllo LDAP"
+
+#: config/audit/class_auditConfig.inc:57
+msgid "Days to keep"
+msgstr "Giorni di conservazione"
+
+#: config/audit/class_auditConfig.inc:57
+msgid "Number of days of audit to keep in the LDAP when cleaning"
+msgstr "Numero di giorni di controllo da tenere nell'LDAP durante il cleaning"

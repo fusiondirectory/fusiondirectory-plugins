@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-06-03 13:10+0200\n"
-"PO-Revision-Date: 2016-04-03 15:04+0000\n"
+"POT-Creation-Date: 2016-07-06 14:01+0200\n"
+"PO-Revision-Date: 2016-07-01 14:16+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -66,55 +66,71 @@ msgstr "Types adhésion"
 msgid "Membership type of this organization"
 msgstr "Choix du type d'adhésion de cette organisation"
 
-#: admin/departments/community/class_communityOrganization.inc:52
+#: admin/departments/community/class_communityOrganization.inc:50
+msgid "Active"
+msgstr "actif"
+
+#: admin/departments/community/class_communityOrganization.inc:50
+msgid "Is the membership of this organization active"
+msgstr "Est ce que le membership de cette organisation est actif ?"
+
+#: admin/departments/community/class_communityOrganization.inc:54
+msgid "Hidden"
+msgstr "Cache"
+
+#: admin/departments/community/class_communityOrganization.inc:54
+msgid "Should this membership be hidden from listings"
+msgstr "Est ce que cette adhésion est caché dans les listes"
+
+#: admin/departments/community/class_communityOrganization.inc:60
 msgid "Dates"
 msgstr "Dates"
 
-#: admin/departments/community/class_communityOrganization.inc:55
+#: admin/departments/community/class_communityOrganization.inc:63
 msgid "Start date"
 msgstr "Date de début"
 
-#: admin/departments/community/class_communityOrganization.inc:55
+#: admin/departments/community/class_communityOrganization.inc:63
 msgid "Date of the beginning"
 msgstr "Date de Création"
 
-#: admin/departments/community/class_communityOrganization.inc:60
+#: admin/departments/community/class_communityOrganization.inc:68
 msgid "End date"
 msgstr "Date de fin"
 
-#: admin/departments/community/class_communityOrganization.inc:60
+#: admin/departments/community/class_communityOrganization.inc:68
 msgid "Date of the end"
 msgstr "Date de fin"
 
-#: admin/departments/community/class_communityOrganization.inc:67
+#: admin/departments/community/class_communityOrganization.inc:75
 msgid "Contact"
 msgstr "Contact"
 
-#: admin/departments/community/class_communityOrganization.inc:70
+#: admin/departments/community/class_communityOrganization.inc:78
 msgid "First name"
 msgstr "Prénom"
 
-#: admin/departments/community/class_communityOrganization.inc:74
+#: admin/departments/community/class_communityOrganization.inc:82
 msgid "Last name"
 msgstr "Nom de famille"
 
-#: admin/departments/community/class_communityOrganization.inc:78
+#: admin/departments/community/class_communityOrganization.inc:86
 msgid "Address"
 msgstr "Adresse"
 
-#: admin/departments/community/class_communityOrganization.inc:78
+#: admin/departments/community/class_communityOrganization.inc:86
 msgid "A postal address"
 msgstr "Adresse postale"
 
-#: admin/departments/community/class_communityOrganization.inc:82
+#: admin/departments/community/class_communityOrganization.inc:90
 msgid "City"
 msgstr "Ville"
 
-#: admin/departments/community/class_communityOrganization.inc:86
+#: admin/departments/community/class_communityOrganization.inc:94
 msgid "State"
 msgstr "Département"
 
-#: admin/departments/community/class_communityOrganization.inc:90
+#: admin/departments/community/class_communityOrganization.inc:98
 msgid "Country"
 msgstr "Pays"
 

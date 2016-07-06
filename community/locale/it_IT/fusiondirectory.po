@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Paola Penati <penati@avaya.com>, 2016
+# Paola Penati <penati@avaya.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-06-03 13:10+0200\n"
-"PO-Revision-Date: 2016-04-05 14:24+0000\n"
+"POT-Creation-Date: 2016-07-06 14:01+0200\n"
+"PO-Revision-Date: 2016-07-03 15:37+0000\n"
 "Last-Translator: Paola Penati <penati@avaya.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -66,55 +67,71 @@ msgstr "Tipologia di abbonamento"
 msgid "Membership type of this organization"
 msgstr "Tipologia di abbonamento di questa organizzazione"
 
-#: admin/departments/community/class_communityOrganization.inc:52
+#: admin/departments/community/class_communityOrganization.inc:50
+msgid "Active"
+msgstr "Attivo"
+
+#: admin/departments/community/class_communityOrganization.inc:50
+msgid "Is the membership of this organization active"
+msgstr "L'appartenenza a questa organizzazione é attiva?"
+
+#: admin/departments/community/class_communityOrganization.inc:54
+msgid "Hidden"
+msgstr "Nascosto"
+
+#: admin/departments/community/class_communityOrganization.inc:54
+msgid "Should this membership be hidden from listings"
+msgstr "Deve questo abbonamento essere nascosto dalle liste"
+
+#: admin/departments/community/class_communityOrganization.inc:60
 msgid "Dates"
 msgstr "Date"
 
-#: admin/departments/community/class_communityOrganization.inc:55
+#: admin/departments/community/class_communityOrganization.inc:63
 msgid "Start date"
 msgstr "Data d'inizio"
 
-#: admin/departments/community/class_communityOrganization.inc:55
+#: admin/departments/community/class_communityOrganization.inc:63
 msgid "Date of the beginning"
 msgstr "Data d'inizio"
 
-#: admin/departments/community/class_communityOrganization.inc:60
+#: admin/departments/community/class_communityOrganization.inc:68
 msgid "End date"
 msgstr "Data di fine"
 
-#: admin/departments/community/class_communityOrganization.inc:60
+#: admin/departments/community/class_communityOrganization.inc:68
 msgid "Date of the end"
 msgstr "Data di fine"
 
-#: admin/departments/community/class_communityOrganization.inc:67
+#: admin/departments/community/class_communityOrganization.inc:75
 msgid "Contact"
 msgstr "Contatto"
 
-#: admin/departments/community/class_communityOrganization.inc:70
+#: admin/departments/community/class_communityOrganization.inc:78
 msgid "First name"
 msgstr "Nome"
 
-#: admin/departments/community/class_communityOrganization.inc:74
+#: admin/departments/community/class_communityOrganization.inc:82
 msgid "Last name"
 msgstr "Cognome"
 
-#: admin/departments/community/class_communityOrganization.inc:78
+#: admin/departments/community/class_communityOrganization.inc:86
 msgid "Address"
 msgstr "Indirizzo"
 
-#: admin/departments/community/class_communityOrganization.inc:78
+#: admin/departments/community/class_communityOrganization.inc:86
 msgid "A postal address"
 msgstr "Un indirizzo postale"
 
-#: admin/departments/community/class_communityOrganization.inc:82
+#: admin/departments/community/class_communityOrganization.inc:90
 msgid "City"
 msgstr "Città"
 
-#: admin/departments/community/class_communityOrganization.inc:86
+#: admin/departments/community/class_communityOrganization.inc:94
 msgid "State"
 msgstr "Regione"
 
-#: admin/departments/community/class_communityOrganization.inc:90
+#: admin/departments/community/class_communityOrganization.inc:98
 msgid "Country"
 msgstr "Stato"
 

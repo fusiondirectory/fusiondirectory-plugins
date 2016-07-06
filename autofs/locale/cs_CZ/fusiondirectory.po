@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-06-03 13:10+0200\n"
+"POT-Creation-Date: 2016-07-06 14:01+0200\n"
 "PO-Revision-Date: 2016-01-22 16:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/cs_CZ/)\n"
@@ -18,34 +18,34 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: admin/autofs/class_nisObject.inc:31 admin/autofs/class_nisObject.inc:32
-#: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:49
+#: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:54
 msgid "Directory"
 msgstr "Složka"
 
-#: admin/autofs/class_nisObject.inc:53 admin/autofs/class_nisMap.inc:53
+#: admin/autofs/class_nisObject.inc:58 admin/autofs/class_nisMap.inc:53
 msgid "Name"
 msgstr "Název"
 
-#: admin/autofs/class_nisObject.inc:53
+#: admin/autofs/class_nisObject.inc:58
 msgid "Name of this directory"
 msgstr "Název tohoto adresáře"
 
-#: admin/autofs/class_nisObject.inc:57
+#: admin/autofs/class_nisObject.inc:62
 msgid "Automount entry"
 msgstr "Položka automatického připojení (automount)"
 
-#: admin/autofs/class_nisObject.inc:57
+#: admin/autofs/class_nisObject.inc:62
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
 msgstr "Položka této složky pro systémovou službu automount.\nNapříklad „auto.u“ nebo „-fstype=nfs nazevdomeny.tld:/pripojna/složka“"
 
-#: admin/autofs/class_nisObject.inc:61 admin/autofs/class_nisMap.inc:31
+#: admin/autofs/class_nisObject.inc:66 admin/autofs/class_nisMap.inc:31
 #: admin/autofs/class_nisMap.inc:34 admin/autofs/class_nisMap.inc:49
 msgid "Mount point"
 msgstr "Přípojný bod"
 
-#: admin/autofs/class_nisObject.inc:61
+#: admin/autofs/class_nisObject.inc:66
 msgid "The mount point this directory will be placed in"
 msgstr "Přípojný bod, do kterého bude tato složka umístěna"
 

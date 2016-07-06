@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-06-03 13:10+0200\n"
+"POT-Creation-Date: 2016-07-06 14:01+0200\n"
 "PO-Revision-Date: 2016-01-22 16:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Polish (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/pl/)\n"
@@ -18,34 +18,34 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: admin/autofs/class_nisObject.inc:31 admin/autofs/class_nisObject.inc:32
-#: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:49
+#: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:54
 msgid "Directory"
 msgstr "Katalog"
 
-#: admin/autofs/class_nisObject.inc:53 admin/autofs/class_nisMap.inc:53
+#: admin/autofs/class_nisObject.inc:58 admin/autofs/class_nisMap.inc:53
 msgid "Name"
 msgstr "Imię"
 
-#: admin/autofs/class_nisObject.inc:53
+#: admin/autofs/class_nisObject.inc:58
 msgid "Name of this directory"
 msgstr ""
 
-#: admin/autofs/class_nisObject.inc:57
+#: admin/autofs/class_nisObject.inc:62
 msgid "Automount entry"
 msgstr ""
 
-#: admin/autofs/class_nisObject.inc:57
+#: admin/autofs/class_nisObject.inc:62
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
 msgstr ""
 
-#: admin/autofs/class_nisObject.inc:61 admin/autofs/class_nisMap.inc:31
+#: admin/autofs/class_nisObject.inc:66 admin/autofs/class_nisMap.inc:31
 #: admin/autofs/class_nisMap.inc:34 admin/autofs/class_nisMap.inc:49
 msgid "Mount point"
 msgstr "Punkt montowania"
 
-#: admin/autofs/class_nisObject.inc:61
+#: admin/autofs/class_nisObject.inc:66
 msgid "The mount point this directory will be placed in"
 msgstr ""
 

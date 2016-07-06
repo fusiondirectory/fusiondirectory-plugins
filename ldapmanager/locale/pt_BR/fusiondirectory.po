@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-06-03 13:10+0200\n"
+"POT-Creation-Date: 2016-07-06 14:01+0200\n"
 "PO-Revision-Date: 2016-04-05 12:25+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/pt_BR/)\n"
@@ -29,59 +29,59 @@ msgstr ""
 msgid "LDAP Manager"
 msgstr "Gerenciador LDAP"
 
-#: addons/ldapmanager/class_ldapmanager.inc:61
-#: addons/ldapmanager/class_ldapmanager.inc:74
-#: addons/ldapmanager/class_ldapmanager.inc:93
+#: addons/ldapmanager/class_ldapmanager.inc:62
+#: addons/ldapmanager/class_ldapmanager.inc:75
+#: addons/ldapmanager/class_ldapmanager.inc:94
 msgid "Export"
 msgstr "Exportar"
 
-#: addons/ldapmanager/class_ldapmanager.inc:64
+#: addons/ldapmanager/class_ldapmanager.inc:65
 msgid "DN of a single entry to export as ldif"
 msgstr ""
 
-#: addons/ldapmanager/class_ldapmanager.inc:78
+#: addons/ldapmanager/class_ldapmanager.inc:79
 msgid "Export single entry"
 msgstr "Exportar entrada única"
 
-#: addons/ldapmanager/class_ldapmanager.inc:81
+#: addons/ldapmanager/class_ldapmanager.inc:82
 msgid "Filter"
 msgstr "Filtro"
 
-#: addons/ldapmanager/class_ldapmanager.inc:81
+#: addons/ldapmanager/class_ldapmanager.inc:82
 msgid "Filter to use for selecting objects to export"
 msgstr ""
 
-#: addons/ldapmanager/class_ldapmanager.inc:86
+#: addons/ldapmanager/class_ldapmanager.inc:87
 msgid ""
 "Download a complete snapshot of the running LDAP directory for this base as "
 "ldif"
 msgstr ""
 
-#: addons/ldapmanager/class_ldapmanager.inc:97
+#: addons/ldapmanager/class_ldapmanager.inc:98
 msgid "Export complete LDIF for"
 msgstr "Exportar LDIF completo para"
 
-#: addons/ldapmanager/class_ldapmanager.inc:102
+#: addons/ldapmanager/class_ldapmanager.inc:103
 msgid "Import LDIF"
 msgstr ""
 
-#: addons/ldapmanager/class_ldapmanager.inc:105
+#: addons/ldapmanager/class_ldapmanager.inc:106
 msgid "Overwrite existing entries"
 msgstr ""
 
-#: addons/ldapmanager/class_ldapmanager.inc:105
+#: addons/ldapmanager/class_ldapmanager.inc:106
 msgid ""
 "Remove fields that are not in the LDIF from the LDAP entries if they were "
 "existing."
 msgstr ""
 
-#: addons/ldapmanager/class_ldapmanager.inc:110
+#: addons/ldapmanager/class_ldapmanager.inc:111
 msgid ""
 "Import an LDIF file into your LDAP. Remember that FusionDirectory will not "
 "check your LDIFs for FusionDirectory conformance."
 msgstr ""
 
-#: addons/ldapmanager/class_ldapmanager.inc:120
+#: addons/ldapmanager/class_ldapmanager.inc:121
 #: addons/ldapmanager/class_csvimport.inc:71
 #: addons/ldapmanager/class_csvimport.inc:94
 #: addons/ldapmanager/contentcsv.tpl.c:26
@@ -89,34 +89,34 @@ msgstr ""
 msgid "Import"
 msgstr "Importar"
 
-#: addons/ldapmanager/class_ldapmanager.inc:124
+#: addons/ldapmanager/class_ldapmanager.inc:125
 msgid "Import LDIF file"
 msgstr ""
 
-#: addons/ldapmanager/class_ldapmanager.inc:152
-#: addons/ldapmanager/class_ldapmanager.inc:196
+#: addons/ldapmanager/class_ldapmanager.inc:153
+#: addons/ldapmanager/class_ldapmanager.inc:197
 msgid "LDAP error"
 msgstr "Erro de LDAP"
 
-#: addons/ldapmanager/class_ldapmanager.inc:153
+#: addons/ldapmanager/class_ldapmanager.inc:154
 #, php-format
 msgid "No such object %s!"
 msgstr "Não há esse objeto %s!"
 
-#: addons/ldapmanager/class_ldapmanager.inc:172
+#: addons/ldapmanager/class_ldapmanager.inc:173
 msgid "Permission error"
 msgstr "Erro de permissão"
 
-#: addons/ldapmanager/class_ldapmanager.inc:173
+#: addons/ldapmanager/class_ldapmanager.inc:174
 #, php-format
 msgid "You have no permission to export %s!"
 msgstr "Você não tem permissão para exportar %s!"
 
-#: addons/ldapmanager/class_ldapmanager.inc:179
+#: addons/ldapmanager/class_ldapmanager.inc:180
 msgid "Error"
 msgstr "Erro"
 
-#: addons/ldapmanager/class_ldapmanager.inc:180
+#: addons/ldapmanager/class_ldapmanager.inc:181
 #, php-format
 msgid "Failed to generate ldap export, error was \"%s\"!"
 msgstr ""

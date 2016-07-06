@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-06-03 13:10+0200\n"
+"POT-Creation-Date: 2016-07-06 14:01+0200\n"
 "PO-Revision-Date: 2016-01-22 16:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
@@ -19,34 +19,34 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/autofs/class_nisObject.inc:31 admin/autofs/class_nisObject.inc:32
-#: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:49
+#: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:54
 msgid "Directory"
 msgstr "Cartella"
 
-#: admin/autofs/class_nisObject.inc:53 admin/autofs/class_nisMap.inc:53
+#: admin/autofs/class_nisObject.inc:58 admin/autofs/class_nisMap.inc:53
 msgid "Name"
 msgstr "Nome"
 
-#: admin/autofs/class_nisObject.inc:53
+#: admin/autofs/class_nisObject.inc:58
 msgid "Name of this directory"
 msgstr "Nome di questa cartella"
 
-#: admin/autofs/class_nisObject.inc:57
+#: admin/autofs/class_nisObject.inc:62
 msgid "Automount entry"
 msgstr "Voce Automount"
 
-#: admin/autofs/class_nisObject.inc:57
+#: admin/autofs/class_nisObject.inc:62
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
 msgstr "Il nome di questa cartella per il demone automount.\n Ad esempio 'auto.u' oppure '-fstype=nfs domaine.tld:/mount/directory'"
 
-#: admin/autofs/class_nisObject.inc:61 admin/autofs/class_nisMap.inc:31
+#: admin/autofs/class_nisObject.inc:66 admin/autofs/class_nisMap.inc:31
 #: admin/autofs/class_nisMap.inc:34 admin/autofs/class_nisMap.inc:49
 msgid "Mount point"
 msgstr "Punto di montaggio"
 
-#: admin/autofs/class_nisObject.inc:61
+#: admin/autofs/class_nisObject.inc:66
 msgid "The mount point this directory will be placed in"
 msgstr "Il punto di montaggio in cui sarà posta questa cartella"
 
