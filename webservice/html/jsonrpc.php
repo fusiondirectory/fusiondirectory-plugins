@@ -308,10 +308,10 @@ class fdRPCService
             $attr->serializeAttribute($attributes, TRUE);
           }
         }
-        $section['attrs'] = $attributes;
+        $section['attrs']       = $attributes;
+        $section['attrs_order'] = array_keys($attributes);
       }
       unset($section);
-      return $fields;
     } else {
       /* fallback for old plugins */
       $fields = array('main' => array('attrs' => array(), 'name' => _('Plugin')));
@@ -327,8 +327,9 @@ class fdRPCService
           );
         }
       }
-      return $fields;
+      $fields['main']['attrs_order'] = array_keys($fields['main']['attrs']);
     }
+    return array('sections' => $fields, 'sections_order' => array_keys($fields));
   }
 
   /*!
@@ -392,6 +393,7 @@ class fdRPCService
           }
         }
         $section['attrs'] = $attributes;
+        $section['attrs_order'] = $attributes;
       }
       unset($section);
     } else {
@@ -402,8 +404,9 @@ class fdRPCService
           $fields['main']['attrs'][$attr] = $object->$attr;
         }
       }
+      $fields['main']['attrs_order'] = array_keys($fields['main']['attrs']);
     }
-    return $fields;
+    return array('sections' => $fields, 'sections_order' => array_keys($fields));
   }
 
   /*!
