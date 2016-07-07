@@ -479,7 +479,7 @@ sub command_addtab
       }
     }
   }
-  my $result = rpc_call($client, 'update', [$sid,$type,$dn,$tab,\%values]);
+  my $result = rpc_call($client, 'formpost', [$sid,$type,$dn,$tab,\%values]);
   if (ref $result eq ref {}) {
     foreach my $error (@{$result->{'errors'}}) {
       print "Error: $error\n";
@@ -521,7 +521,7 @@ sub command_setvalue
       }
     }
   }
-  my $result = rpc_call($client, 'update', [$sid,$type,$dn,$tab,\%values]);
+  my $result = rpc_call($client, 'formpost', [$sid,$type,$dn,$tab,\%values]);
   if (ref $result eq ref {}) {
     foreach my $error (@{$result->{'errors'}}) {
       print "Error: $error\n";
@@ -555,7 +555,7 @@ sub command_addvalue
       }
     }
   }
-  my $result = rpc_call($client, 'update', [$sid,$type,$dn,$tab,\%values]);
+  my $result = rpc_call($client, 'formpost', [$sid,$type,$dn,$tab,\%values]);
   if (ref $result eq ref {}) {
     foreach my $error (@{$result->{'errors'}}) {
       print "Error: $error\n";
@@ -602,7 +602,7 @@ sub command_delvalue
       }
     }
   }
-  my $result = rpc_call($client, 'update', [$sid,$type,$dn,$tab,\%values]);
+  my $result = rpc_call($client, 'formpost', [$sid,$type,$dn,$tab,\%values]);
   if (ref $result eq ref {}) {
     foreach my $error (@{$result->{'errors'}}) {
       print "Error: $error\n";
