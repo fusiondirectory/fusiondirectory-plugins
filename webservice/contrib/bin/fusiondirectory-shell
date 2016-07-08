@@ -329,8 +329,7 @@ sub command_cat
       if (ref $section->{'attrs_order'} eq ref []) {
         my $hash = $section->{'attrs'};
         foreach my $key ( @{$section->{'attrs_order'}} ) {
-          my $field = $hash->{$key};
-          show_field($key, $field);
+          show_field($key, $hash->{$key});
         }
       }
     }
@@ -473,7 +472,7 @@ sub command_addtab
         foreach my $key ( @{$section->{'attrs_order'}} ) {
           my $field = $hash->{$key};
           if ($field->{'required'} && !$field->{'disabled'}) {
-            $values{$field->{'id'}} = ask_field($field);
+            $values{$key} = ask_field($field);
           }
         }
       }
@@ -500,26 +499,31 @@ sub command_setvalue
   $dn = complete_dn($dn);
   my $fields = rpc_call($client, 'formfields', [$sid,$type,$dn,$tab]);
   my %values = ();
+  my $found = 0;
   if (ref $fields eq ref {}) {
     my $sectionhash = $fields->{'sections'};
     foreach my $sectionkey ( @{$fields->{'sections_order'}} ) {
       my $section = $sectionhash->{$sectionkey};
       if (ref $section->{'attrs_order'} eq ref []) {
         my $hash = $section->{'attrs'};
-        foreach my $key ( @{$section->{'attrs_order'}} ) {
-          my $field = $hash->{$key};
-          if ($field->{'id'} eq $asked_field) {
-            if (scalar(@value) == 0) {
-              $values{$field->{'id'}} = ask_field($field);
-            } elsif (grep {$_ eq 'SetAttribute'} @{$field->{'type'}}) {
-              print "Error: Cant’t use setvalue on SetAttributes like $asked_field\n";
-            } else {
-              $values{$field->{'id'}} = $value[0];
-            }
+        if (defined $hash->{$asked_field}) {
+          $found = 1;
+          my $field = $hash->{$asked_field};
+          if (scalar(@value) == 0) {
+            $values{$asked_field} = ask_field($field);
+          } elsif (grep {$_ eq 'SetAttribute'} @{$field->{'type'}}) {
+            print "Error: Can’t use setvalue on SetAttributes like $asked_field\n";
+            return;
+          } else {
+            $values{$asked_field} = $value[0];
           }
         }
       }
     }
+  }
+  if (!$found) {
+    print "Error: Could not find $asked_field in tab $tab of type $type\n";
+    return;
   }
   my $result = rpc_call($client, 'formpost', [$sid,$type,$dn,$tab,\%values]);
   if (ref $result eq ref {}) {
@@ -535,25 +539,30 @@ sub command_addvalue
   $dn = complete_dn($dn);
   my $fields = rpc_call($client, 'formfields', [$sid,$type,$dn,$tab]);
   my %values = ();
+  my $found = 0;
   if (ref $fields eq ref {}) {
     my $sectionhash = $fields->{'sections'};
     foreach my $sectionkey ( @{$fields->{'sections_order'}} ) {
       my $section = $sectionhash->{$sectionkey};
       if (ref $section->{'attrs_order'} eq ref []) {
         my $hash = $section->{'attrs'};
-        foreach my $key ( @{$section->{'attrs_order'}} ) {
-          my $field = $hash->{$key};
-          if ($field->{'id'} eq $asked_field) {
-            if (grep {$_ eq 'SetAttribute'} @{$field->{'type'}}) {
-              $values{$field->{'id'}} = $value;
-              $values{'add'.$field->{'id'}} = 1;
-            } else {
-              print "Error: Cant’t use addvalue on something else than a SetAttribute\n";
-            }
+        if (defined $hash->{$asked_field}) {
+          $found = 1;
+          my $field = $hash->{$asked_field};
+          if (grep {$_ eq 'SetAttribute'} @{$field->{'type'}}) {
+            $values{$asked_field} = $value;
+            $values{'add'.$asked_field} = 1;
+          } else {
+            print "Error: Can’t use addvalue on something else than a SetAttribute\n";
+            return;
           }
         }
       }
     }
+  }
+  if (!$found) {
+    print "Error: Could not find $asked_field in tab $tab of type $type\n";
+    return;
   }
   my $result = rpc_call($client, 'formpost', [$sid,$type,$dn,$tab,\%values]);
   if (ref $result eq ref {}) {
@@ -569,38 +578,43 @@ sub command_delvalue
   $dn = complete_dn($dn);
   my $fields = rpc_call($client, 'formfields', [$sid,$type,$dn,$tab]);
   my %values = ();
+  my $found = 0;
   if (ref $fields eq ref {}) {
     my $sectionhash = $fields->{'sections'};
     foreach my $sectionkey ( @{$fields->{'sections_order'}} ) {
       my $section = $sectionhash->{$sectionkey};
       if (ref $section->{'attrs_order'} eq ref []) {
         my $hash = $section->{'attrs'};
-        foreach my $key ( @{$section->{'attrs_order'}} ) {
-          my $field = $hash->{$key};
-          if ($field->{'id'} eq $asked_field) {
-            if (grep {$_ eq 'SetAttribute'} @{$field->{'type'}}) {
-              show_field($key, $field);
-              my $i = 0;
-              if (scalar(@{$field->{'value'}}) eq 0) {
-                return '';
-              }
-              for ($i = 0; $i < scalar(@{$field->{'value'}}); $i++) {
-                print $i.":".${$field->{'value'}}[$i]."\n";
-              }
-              my $choice;
-              do {
-                $choice = $term->{term}->readline("Value(s) to remove (space separated): ");
-              } while (($choice eq '') || ($choice =~ m/[^ 0-9]/));
-
-              $values{'row'.$field->{'id'}} = [split(m/\s+/, $choice)];
-              $values{'del'.$field->{'id'}} = 1;
-            } else {
-              print "Error: Cant’t use delvalue on something else than a SetAttribute\n";
+        if (defined $hash->{$asked_field}) {
+          $found = 1;
+          my $field = $hash->{$asked_field};
+          if (grep {$_ eq 'SetAttribute'} @{$field->{'type'}}) {
+            show_field($asked_field, $field);
+            my $i = 0;
+            if (scalar(@{$field->{'value'}}) eq 0) {
+              return '';
             }
+            for ($i = 0; $i < scalar(@{$field->{'value'}}); $i++) {
+              print $i.":".${$field->{'value'}}[$i]."\n";
+            }
+            my $choice;
+            do {
+              $choice = $term->{term}->readline("Value(s) to remove (space separated): ");
+            } while (($choice eq '') || ($choice =~ m/[^ 0-9]/));
+
+            $values{'row'.$asked_field} = [split(m/\s+/, $choice)];
+            $values{'del'.$asked_field} = 1;
+          } else {
+            print "Error: Cant’t use delvalue on something else than a SetAttribute\n";
+            return;
           }
         }
       }
     }
+  }
+  if (!$found) {
+    print "Error: Could not find $asked_field in tab $tab of type $type\n";
+    return;
   }
   my $result = rpc_call($client, 'formpost', [$sid,$type,$dn,$tab,\%values]);
   if (ref $result eq ref {}) {
