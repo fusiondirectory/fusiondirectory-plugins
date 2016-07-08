@@ -605,7 +605,7 @@ sub command_delvalue
             $values{'row'.$asked_field} = [split(m/\s+/, $choice)];
             $values{'del'.$asked_field} = 1;
           } else {
-            print "Error: Cant’t use delvalue on something else than a SetAttribute\n";
+            print "Error: Can’t use delvalue on something else than a SetAttribute\n";
             return;
           }
         }
