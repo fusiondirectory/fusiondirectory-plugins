@@ -22,7 +22,7 @@ class autofsManagement extends simpleManagement
 {
   protected $objectTypes  = array('nisMap', 'nisObject');
 
-  protected $autoFilterAttributes = array('dn', 'cn', 'description', 'nisMapName');
+  protected $autoFilterAttributes = array('dn', 'cn', 'description', 'nisMapName', 'nisMapEntry');
 
   /* Return plugin informations for acl handling */
   static function plInfo()
@@ -43,14 +43,23 @@ class autofsManagement extends simpleManagement
   {
     $data = parent::parseXML($file);
     $data['list']['table']['layout'] = '|20px;c||||150px;r|';
-    $column = array(
-      'label'         => 'Mount point',
-      'sortAttribute' => 'nisMapName',
-      'sortType'      => 'string',
-      'value'         => '%{filter:link(row,dn,"%s",nisMapName)}',
-      'export'        => 'true',
+    $columns = array(
+      array(
+        'label'         => 'Mount point',
+        'sortAttribute' => 'nisMapName',
+        'sortType'      => 'string',
+        'value'         => '%{filter:link(row,dn,"%s",nisMapName)}',
+        'export'        => 'true',
+      ),
+      array(
+        'label'         => 'Automount entry',
+        'sortAttribute' => 'nisMapEntry',
+        'sortType'      => 'string',
+        'value'         => '%{filter:link(row,dn,"%s",nisMapEntry)}',
+        'export'        => 'true',
+      ),
     );
-    array_splice($data['list']['table']['column'], 2, 0, array($column));
+    array_splice($data['list']['table']['column'], 2, 1, $columns);
     return $data;
   }
 }

@@ -38,13 +38,21 @@ class communityOrganization extends simplePlugin
   {
     global $config;
     return array(
-      'main' => array(
+      'membership' => array(
         'name'  => _('Membership'),
         'attrs' => array(
           new SelectAttribute (
             _('Membership type'), _('Membership type of this organization'),
             'fdCommunityMembershipType', FALSE,
             $config->get_cfg_value('communityMembershipTypeChoices', array())
+          ),
+          new BooleanAttribute (
+            _('Active'), _('Is the membership of this organization active'),
+            'fdCommunityMembershipActive', FALSE
+          ),
+          new BooleanAttribute (
+            _('Hidden'), _('Should this membership be hidden from listings'),
+            'fdCommunityMembershipHidden', FALSE
           )
         )
       ),

@@ -61,6 +61,7 @@ class webLink extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
     $this->attributesAccess['fdWebLinkProtocol']->setSubmitForm(TRUE);
+    $this->attributesAccess['fdWebLink']->setAllowHTML(TRUE);
   }
 
   function renderAttributes($readOnly = FALSE)

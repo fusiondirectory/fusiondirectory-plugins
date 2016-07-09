@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ldiftab extends simpleTabs_noSpecial
+class ldiftabs extends simpleTabs_noSpecial
 {
   function save()
   {

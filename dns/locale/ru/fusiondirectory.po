@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-06-10 13:36+0200\n"
-"PO-Revision-Date: 2016-03-25 18:06+0000\n"
+"POT-Creation-Date: 2016-07-06 14:01+0200\n"
+"PO-Revision-Date: 2016-06-28 11:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Russian (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -136,9 +136,9 @@ msgstr ""
 #: admin/dns/class_DnsRecordAttribute.inc:27
 #, php-format
 msgid ""
-"\"%s\" must contain a fully qualified domain name and end with a final "
-"dot.<br/><br/>Example: dns1.example.com."
-msgstr "\"%s\" должен содержать полное имя домена и в конце оканчиваться на точку.<br/><br/>Например: dns1.example.com."
+"\"%s\" must contain a fully qualified domain name in lowercase and end with "
+"a final dot.<br/><br/>Example: dns1.example.com."
+msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:130
 msgid "Type"
@@ -439,14 +439,16 @@ msgstr "Ошибка LDAP"
 #: admin/dns/class_dnsZone.inc:459
 #, php-format
 msgid ""
-"\"%s\" must contain a domain name and end with a final "
+"\"%s\" must contain a domain name in lowercase and end with a final "
 "dot.<br/><br/>Example: example.com."
-msgstr "\"%s\" должен содержать доменное имя в конке заканчивающиеся точкой. <br/><br/>Например: example.com."
+msgstr ""
 
 #: admin/dns/class_dnsZone.inc:462
 #, php-format
-msgid "\"%s\" must contain a domain name.<br/><br/>Example: example.com"
-msgstr "\"%s\" должен содержать доменное имя.<br/><br/>Например: example.com"
+msgid ""
+"\"%s\" must contain a domain name in lowercase.<br/><br/>Example: "
+"example.com"
+msgstr ""
 
 #: admin/dns/class_dnsZone.inc:483 admin/dns/class_dnsZone.inc:484
 #: admin/dns/class_dnsZone.inc:486

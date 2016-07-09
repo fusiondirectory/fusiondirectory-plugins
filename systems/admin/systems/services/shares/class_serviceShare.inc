@@ -29,7 +29,7 @@ class serviceShare extends simpleService
     return array(
       'plShortName'   => _('Share service'),
       'plDescription' => _('Share service').' ('._('Services').')',
-      'plIcon'        => 'plugins/systems/images/service_file.png',
+      'plIcon'        => 'geticon.php?context=places&icon=folder-network&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -59,7 +59,7 @@ class serviceShare extends simpleService
                 new SelectAttribute(
                   _('Type'), _('Type of share'),
                   'shareType', TRUE,
-                  array("CIFS","NBD","NCP","NFS","netatalk","samba")
+                  array('CIFS','NBD','NCP','NFS','netatalk','samba','local')
                 ),
                 new SelectAttribute(
                   _('Codepage'), _('Codepage for this share'),

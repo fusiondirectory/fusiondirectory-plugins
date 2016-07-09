@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-06-10 13:36+0200\n"
-"PO-Revision-Date: 2016-06-09 09:10+0000\n"
+"POT-Creation-Date: 2016-07-06 14:01+0200\n"
+"PO-Revision-Date: 2016-06-28 11:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -86,8 +86,6 @@ msgid "System analysis"
 msgstr "Analýza systému"
 
 #: admin/ogroups/goto/class_termgroup.inc:293
-#: admin/systems/class_printGeneric.inc:753
-#: admin/systems/class_printGeneric.inc:1055
 #: admin/systems/class_networkSettings.inc:282
 #: admin/systems/class_networkSettings.inc:427
 #: admin/systems/class_networkSettings.inc:486
@@ -197,9 +195,9 @@ msgstr "Počítač"
 msgid "Terminal"
 msgstr "Terminál"
 
-#: admin/systems/system-list.xml:70 admin/systems/class_printGeneric.inc:1090
-#: admin/systems/class_printGeneric.inc:1096
-#: admin/systems/class_printGeneric.inc:1097
+#: admin/systems/system-list.xml:70 admin/systems/class_printGeneric.inc:30
+#: admin/systems/class_printGeneric.inc:35
+#: admin/systems/class_printGeneric.inc:36
 msgid "Printer"
 msgstr "Tiskárna"
 
@@ -228,10 +226,7 @@ msgstr "Součást"
 #: admin/systems/system-list.xml:120
 #: admin/systems/class_workstationGeneric.inc:151
 #: admin/systems/class_phoneGeneric.inc:59
-#: admin/systems/class_printGeneric.inc:836
-#: admin/systems/class_printGeneric.inc:846
-#: admin/systems/class_printGeneric.inc:865
-#: admin/systems/class_printGeneric.inc:1106
+#: admin/systems/class_printGeneric.inc:62
 #: admin/systems/class_componentGeneric.inc:63
 #: admin/systems/class_mobilePhoneGeneric.inc:63
 #: admin/systems/phoneSelect/phoneSelect-list.xml:48
@@ -253,12 +248,11 @@ msgstr "MAC adresa"
 #: admin/systems/system-list.xml:144
 #: admin/systems/class_workstationGeneric.inc:157
 #: admin/systems/class_phoneGeneric.inc:63
-#: admin/systems/class_printGeneric.inc:1108
+#: admin/systems/class_printGeneric.inc:66
 #: admin/systems/class_componentGeneric.inc:67
 #: admin/systems/class_mobilePhoneGeneric.inc:67
 #: admin/systems/serverService-list.xml:35
 #: admin/systems/services/shares/class_serviceShare.inc:56
-#: admin/systems/printer.tpl.c:8 admin/systems/printer.tpl.c:17
 msgid "Description"
 msgstr "Popis"
 
@@ -309,7 +303,6 @@ msgid "Schedule action"
 msgstr "Naplánovat akci"
 
 #: admin/systems/system-list.xml:272 admin/systems/serverService-list.xml:69
-#: admin/systems/printer.tpl.c:35
 msgid "Remove"
 msgstr "Odstranit"
 
@@ -326,12 +319,12 @@ msgid "Workstation information"
 msgstr "Informace o počítači"
 
 #: admin/systems/class_workstationGeneric.inc:141
-#: admin/systems/class_printGeneric.inc:686
 msgid "workstation"
 msgstr "Počítač"
 
 #: admin/systems/class_workstationGeneric.inc:148
 #: admin/systems/class_phoneGeneric.inc:56
+#: admin/systems/class_printGeneric.inc:58
 #: admin/systems/class_componentGeneric.inc:60
 #: admin/systems/class_mobilePhoneGeneric.inc:60
 msgid "Properties"
@@ -348,7 +341,6 @@ msgid "A short description of the %s"
 msgstr "Stručný popis %s"
 
 #: admin/systems/class_workstationGeneric.inc:163
-#: admin/systems/class_printGeneric.inc:1109
 msgid "Location"
 msgstr "Umístění"
 
@@ -369,6 +361,7 @@ msgstr "Toto zabrání %s v tom, aby bylo opětovně nainstalováno"
 
 #: admin/systems/class_workstationGeneric.inc:182
 #: admin/systems/class_phoneGeneric.inc:83
+#: admin/systems/class_printGeneric.inc:103
 #: admin/systems/class_componentGeneric.inc:74
 #: admin/systems/class_mobilePhoneGeneric.inc:106
 #: admin/systems/class_networkSettings.inc:562
@@ -409,199 +402,127 @@ msgstr "Telefoní číslo"
 msgid "The telephone number of the phone"
 msgstr "Telefonní číslo telefonu"
 
-#: admin/systems/class_printGeneric.inc:131
-#: admin/systems/class_printGeneric.inc:1150
-msgid "Internal error"
-msgstr "Vnitřní chyba"
-
-#: admin/systems/class_printGeneric.inc:131
-#, php-format
-msgid ""
-"Cannot determine a valid department for this object. Setting base to '%s'!"
-msgstr "Nelze zjistit platné oddělení pro tento objekt. Základ bude nastaven na %s!"
-
-#: admin/systems/class_printGeneric.inc:394
-#: admin/systems/class_printGeneric.inc:402
-#: admin/systems/class_printGeneric.inc:407
-#: admin/systems/class_printGeneric.inc:457
-#: admin/systems/class_printGeneric.inc:473
-#: admin/systems/class_printGeneric.inc:476
-msgid "Add printer extension"
-msgstr "Přidat rozšíření tiskárny"
-
-#: admin/systems/class_printGeneric.inc:395
-msgid ""
-"Could not initialize printer tab, parameter parent was missing while "
-"construction."
-msgstr "Nelze inicializovat panel Tiskárna, při vytváření chyběl nadřazený parametr."
-
-#: admin/systems/class_printGeneric.inc:403
-msgid "This is a workstation template, printer tab is disabled."
-msgstr "Toto je šablona pracovní stanice, panel Tiskárna je proto vypnutý."
-
-#: admin/systems/class_printGeneric.inc:408
-msgid "This is a terminal template, printer tab is disabled."
-msgstr "Toto je šablona terminálu, panel Tiskárna je proto vypnutý."
-
-#: admin/systems/class_printGeneric.inc:450
-#: admin/systems/class_printGeneric.inc:458
-#: admin/systems/class_printGeneric.inc:466
-#: admin/systems/class_printGeneric.inc:469
-#: admin/systems/class_printGeneric.inc:474
-#: admin/systems/class_printGeneric.inc:477
-msgid "printer"
-msgstr "tiskárna"
-
-#: admin/systems/class_printGeneric.inc:458
-msgid ""
-"You can't enable it while 'cn' is not present in entry. Possibly you are "
-"currently creating a new terminal template."
-msgstr "Toto nelze zapnout dokud v položce není přítomen běžný název (cn). Možná nyní vytváříte novou šablonu terminálu."
-
-#: admin/systems/class_printGeneric.inc:465
-#: admin/systems/class_printGeneric.inc:468
-msgid "Remove printer extension"
-msgstr "Odebrat rozšíření tiskárny"
-
-#: admin/systems/class_printGeneric.inc:659
-#, php-format
-msgid "Your currently selected PPD file '%s' doesn't exist."
-msgstr "Zvolený PPD soubor %s neexistuje."
-
-#: admin/systems/class_printGeneric.inc:665
-msgid "Not defined"
-msgstr "Nedefinováno"
-
-#: admin/systems/class_printGeneric.inc:669
-#: admin/systems/ppd/class_printerPPDDialog.inc:114
-msgid "Can't get ppd informations."
-msgstr "Nelze zjistit informace o PPD souboru."
-
-#: admin/systems/class_printGeneric.inc:684
-#: admin/systems/class_printGeneric.inc:686
-#, php-format
-msgid "This printer belongs to %s. You can't rename this printer."
-msgstr "Tato tiskárna přináleží k %s. Proto ji nelze přejmenovat."
-
-#: admin/systems/class_printGeneric.inc:684
-#: admin/systems/class_terminalGeneric.inc:55
-msgid "terminal"
-msgstr "terminál"
-
-#: admin/systems/class_printGeneric.inc:735
-#: admin/systems/class_printGeneric.inc:742
-#: admin/systems/class_printGeneric.inc:801
-#: admin/systems/class_printGeneric.inc:1190
-#: admin/systems/class_printGeneric.inc:1201
-#: admin/systems/class_serverService.inc:224
-#: admin/systems/class_serverService.inc:270
-#: admin/systems/class_serverService.inc:393
-#: admin/systems/services/shares/class_serviceShare.inc:104
-#: admin/systems/class_networkSettings.inc:236
-msgid "Error"
-msgstr "Chyba"
-
-#: admin/systems/class_printGeneric.inc:735
-#: admin/systems/class_printGeneric.inc:742
-msgid "Object is no printer!"
-msgstr "Tento objekt není tiskárna!"
-
-#: admin/systems/class_printGeneric.inc:851 admin/systems/printer.tpl.c:23
-msgid "Printer URL"
-msgstr "URL adresa tiskárny"
-
-#: admin/systems/class_printGeneric.inc:1074
-#: admin/systems/class_printGeneric.inc:1076
-msgid "Group"
-msgstr "Skupina"
-
-#: admin/systems/class_printGeneric.inc:1079
-msgid "User"
-msgstr "Uživatel"
-
-#: admin/systems/class_printGeneric.inc:1091
+#: admin/systems/class_printGeneric.inc:31
 msgid "Printer information"
 msgstr "Informace o tiskárně"
 
-#: admin/systems/class_printGeneric.inc:1107
-#: admin/systems/serverService-list.tpl.c:2
-#: admin/systems/phoneSelect/phoneSelect-list.tpl.c:2
-#: admin/systems/printer.tpl.c:11
-msgid "Base"
-msgstr "Základ"
-
-#: admin/systems/class_printGeneric.inc:1110
-msgid "LabeledURL"
+#: admin/systems/class_printGeneric.inc:62
+msgid "The name of the printer"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1111
-msgid "Printer PPD"
-msgstr "PPD soubor pro tiskárnu"
+#: admin/systems/class_printGeneric.inc:66
+msgid "A short description of the printer"
+msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1112 admin/systems/printer.tpl.c:38
-msgid "Permissions"
-msgstr "Oprávnění"
+#: admin/systems/class_printGeneric.inc:72
+msgid "Details"
+msgstr "Podrobnosti"
 
-#: admin/systems/class_printGeneric.inc:1114
-msgid "Windows inf file"
-msgstr ".inf soubor Windows"
+#: admin/systems/class_printGeneric.inc:75
+msgid "Printer location"
+msgstr "Umístění tiskárny"
 
-#: admin/systems/class_printGeneric.inc:1115
-msgid "Windows driver dir"
-msgstr "Složka ovladače pro MS Windows"
+#: admin/systems/class_printGeneric.inc:75
+msgid "The location of the printer"
+msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1116 admin/systems/printer.tpl.c:62
-msgid "Driver printer name"
-msgstr "Název ovladače tiskárny"
+#: admin/systems/class_printGeneric.inc:79
+msgid "Printer URL"
+msgstr "URL adresa tiskárny"
 
-#: admin/systems/class_printGeneric.inc:1132
-#: admin/systems/class_printGeneric.inc:1155
-msgid "Permission error"
-msgstr "Chyba oprávnění"
+#: admin/systems/class_printGeneric.inc:79
+msgid "The URL of the printer"
+msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1132
-#: admin/systems/class_printGeneric.inc:1155
-msgid "printer user"
-msgstr "uživatel tiskárny"
+#: admin/systems/class_printGeneric.inc:85
+#: admin/systems/class_printGeneric.inc:88
+msgid "Users which are allowed to use this printer"
+msgstr "Uživatelé, kteří mohou používat tuto tiskárnu"
 
-#: admin/systems/class_printGeneric.inc:1150
-#, php-format
-msgid "Illegal member type '%s'!"
-msgstr "Neplatný člen typu %s!"
+#: admin/systems/class_printGeneric.inc:94
+#: admin/systems/class_printGeneric.inc:97
+msgid "Users which are allowed to administrate this printer"
+msgstr "uživatelé, kteří smějí spravovat tuto tiskárnu"
 
-#: admin/systems/class_printGeneric.inc:1190
-#, php-format
-msgid "'%s' is already used!"
-msgstr "%s je již použito!"
+#: admin/systems/class_printGeneric.inc:108
+#: admin/systems/class_networkSettings.inc:356
+#: admin/systems/class_networkSettings.inc:369
+#: admin/systems/class_networkSettings.inc:371
+#: admin/systems/class_networkSettings.inc:568
+msgid "IP address"
+msgstr "IP adresa"
 
-#: admin/systems/class_printGeneric.inc:1201
-#, php-format
-msgid "'%s' does not exist!"
-msgstr "%s neexistuje!"
+#: admin/systems/class_printGeneric.inc:108
+msgid "IP address this system uses"
+msgstr ""
+
+#: admin/systems/class_printGeneric.inc:113
+msgid "Mac address"
+msgstr "MAC adresa"
+
+#: admin/systems/class_printGeneric.inc:113
+msgid "Mac address of this system"
+msgstr ""
+
+#: admin/systems/class_printGeneric.inc:119
+msgid "Windows paths"
+msgstr "Popis umístění v MS Windows"
+
+#: admin/systems/class_printGeneric.inc:123
+msgid "Inf file"
+msgstr ""
+
+#: admin/systems/class_printGeneric.inc:123
+msgid "Path to windows inf file for this printer"
+msgstr ""
+
+#: admin/systems/class_printGeneric.inc:127
+msgid "Driver directory"
+msgstr ""
+
+#: admin/systems/class_printGeneric.inc:127
+msgid "Path to directory that contains windows drivers for this printer"
+msgstr ""
+
+#: admin/systems/class_printGeneric.inc:131
+msgid "Driver name"
+msgstr ""
+
+#: admin/systems/class_printGeneric.inc:131
+msgid "Windows name of the printer driver"
+msgstr ""
 
 #: admin/systems/class_serverService.inc:58
 msgid "Server services"
 msgstr "Služby serveru"
 
-#: admin/systems/class_serverService.inc:332
+#: admin/systems/class_serverService.inc:225
+#: admin/systems/class_serverService.inc:271
+#: admin/systems/class_serverService.inc:394
+#: admin/systems/services/shares/class_serviceShare.inc:104
+#: admin/systems/class_networkSettings.inc:236
+msgid "Error"
+msgstr "Chyba"
+
+#: admin/systems/class_serverService.inc:333
 msgid "Filter error"
 msgstr "Chyba filtru"
 
-#: admin/systems/class_serverService.inc:332
+#: admin/systems/class_serverService.inc:333
 msgid "The filter is incomplete!"
 msgstr "Filtr je neúplný!"
 
-#: admin/systems/class_serverService.inc:387
+#: admin/systems/class_serverService.inc:388
 msgid "Information"
 msgstr "Informace"
 
-#: admin/systems/class_serverService.inc:387
+#: admin/systems/class_serverService.inc:388
 msgid "Cannot update service status until it has been saved!"
 msgstr "Stav služby nelze aktualizovat dokud nebude uložena!"
 
-#: admin/systems/class_serverService.inc:415
-#: admin/systems/class_serverService.inc:424
-#: admin/systems/class_serverService.inc:435
+#: admin/systems/class_serverService.inc:416
+#: admin/systems/class_serverService.inc:425
+#: admin/systems/class_serverService.inc:436
 #, php-format
 msgid "Could not get execute action %s on service %s."
 msgstr "Nelze spustit akci %s na službě %s."
@@ -610,8 +531,12 @@ msgstr "Nelze spustit akci %s na službě %s."
 msgid "Terminal information"
 msgstr "Informace o terminálu"
 
+#: admin/systems/class_terminalGeneric.inc:55
+msgid "terminal"
+msgstr "terminál"
+
 #: admin/systems/class_terminalGeneric.inc:62
-#: addons/dashboard/class_dashBoardSystems.inc:78
+#: addons/dashboard/class_dashBoardSystems.inc:77
 msgid "Servers"
 msgstr "Servery"
 
@@ -632,6 +557,10 @@ msgstr "Vzdálená plocha"
 #: admin/systems/class_terminalGeneric.inc:84
 msgid "Connect method"
 msgstr "Způsob připojování"
+
+#: admin/systems/class_terminalGeneric.inc:88
+msgid "None"
+msgstr "žádné"
 
 #: admin/systems/class_terminalGeneric.inc:88
 msgid "XDMCP"
@@ -656,170 +585,6 @@ msgstr "Windows RDP"
 #: admin/systems/class_terminalGeneric.inc:92
 msgid "Terminal server"
 msgstr "Terminálový server"
-
-#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:92
-#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:117
-#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:140
-#: admin/systems/ppd/class_printerPPDDialog.inc:89
-#: admin/systems/ppd/class_printerPPDDialog.inc:158
-#: admin/systems/ppd/class_printerPPDDialog.inc:239
-#: admin/systems/ppd/class_printerPPDDialog.inc:254
-#: admin/systems/ppd/class_printerPPDDialog.inc:267
-#: admin/systems/ppd/class_printerPPDDialog.inc:295
-#: admin/systems/ppd/class_printerPPDDialog.inc:312
-#: admin/systems/ppd/class_printerPPDDialog.inc:335
-#: admin/systems/ppd/class_printerPPDDialog.inc:349
-#: admin/systems/ppd/class_printerPPDDialog.inc:359
-#: admin/systems/ppd/class_printerPPDDialog.inc:363
-#: admin/systems/ppd/class_printerPPDDialog.inc:560
-#: admin/systems/ppd/class_printerPPDDialog.inc:577
-#: admin/systems/ppd/class_printerPPDDialog.inc:580
-#: admin/systems/ppd/class_printerPPDDialog.inc:583
-msgid "PPD error"
-msgstr "Chyba v PPD"
-
-#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:140
-#, php-format
-msgid "Cannot locate vendor '%s' in available PPDs!"
-msgstr "V dostupných PPD souborech nebyl nalezen výrobce %s!"
-
-#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:149
-msgid "Printer ppd selection."
-msgstr "Výběr PPD ovladače pro tiskárnu."
-
-#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:156
-msgid "delete"
-msgstr "smazat"
-
-#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:167
-msgid "back"
-msgstr "Zpět"
-
-#: admin/systems/ppd/class_printerPPDDialog.inc:71
-#: admin/systems/ppd/class_printerPPDDialog.inc:138
-msgid "Configuration error"
-msgstr "Chyba v nastavení"
-
-#: admin/systems/ppd/class_printerPPDDialog.inc:89
-#, php-format
-msgid "Cannot open PPD '%s'!"
-msgstr "Nelze otevřít PPD soubor %s!"
-
-#: admin/systems/ppd/class_printerPPDDialog.inc:139
-#, php-format
-msgid "Cannot open PPD path '%s' for reading and writing!"
-msgstr "Umístění PPD souboru %s se nedaří otevřít pro čtení a zápis!"
-
-#: admin/systems/ppd/class_printerPPDDialog.inc:158
-#: admin/systems/ppd/class_printerPPDDialog.inc:363
-msgid "file is empty"
-msgstr "soubor je prázdný"
-
-#: admin/systems/ppd/class_printerPPDDialog.inc:312
-#, php-format
-msgid "Cannot parse PPD '%s'!"
-msgstr "PPD soubor %s nebylo možné zpracovat!"
-
-#: admin/systems/ppd/class_printerPPDDialog.inc:338
-msgid "Overwrite existing PPD"
-msgstr "Přepsat stávající PPD soubor"
-
-#: admin/systems/ppd/class_printerPPDDialog.inc:339
-msgid ""
-"There is already a ppd file for this kind of printer. Do you want to "
-"overwrite it?"
-msgstr "Pro tento typ tiskárny již je přítomen PPD soubor. Chcete jej přepsat?"
-
-#: admin/systems/ppd/class_printerPPDDialog.inc:491
-msgid "Section"
-msgstr "Sekce"
-
-#: admin/systems/ppd/class_printerPPDDialog.inc:551
-#: admin/systems/ppd/class_printerPPDDialog.inc:554
-msgid "True"
-msgstr "Ano"
-
-#: admin/systems/ppd/class_printerPPDDialog.inc:552
-#: admin/systems/ppd/class_printerPPDDialog.inc:555
-msgid "False"
-msgstr "Ne"
-
-#: admin/systems/ppd/class_printerPPDDialog.inc:560
-#, php-format
-msgid "PPD type '%s' is not supported!"
-msgstr "PPD soubor typu %s není podporován! "
-
-#: admin/systems/ppd/class_printerPPDDialog.inc:597
-msgid ""
-"Please select a valid ppd file or use 'Cancel' to go back to printer "
-"configuration."
-msgstr "Zvolte platný PPD soubor nebo se vraťte do nastavení tiskárny kliknutím na Storno."
-
-#: admin/systems/ppd/class_ppdManager.inc:44
-#: admin/systems/ppd/class_ppdManager.inc:188
-#: admin/systems/ppd/class_ppdManager.inc:190
-msgid "PPD manager error"
-msgstr "Chyba správce PPD souborů"
-
-#: admin/systems/ppd/class_ppdManager.inc:44
-#, php-format
-msgid "The specified path '%s' does not exist."
-msgstr "Zadané umístění %s neexistuje."
-
-#: admin/systems/ppd/class_ppdManager.inc:188
-#, php-format
-msgid "Specified PPD file '%s' cannot be opened for reading."
-msgstr "Zadaný PPD soubor %s není možné otevřít (pro čtení)."
-
-#: admin/systems/ppd/class_ppdManager.inc:190
-#, php-format
-msgid "The temporary file '%s' cannot be opened for writing."
-msgstr "Do dočasného souboru %s nelze zapisovat."
-
-#: admin/systems/ppd/class_ppdManager.inc:212
-#: admin/systems/ppd/class_ppdManager.inc:350
-msgid "Parsing PPD file failed - file is empty!"
-msgstr "Načtení PPD souboru se nezdařilo – je prázdný!"
-
-#: admin/systems/ppd/class_ppdManager.inc:222
-#, php-format
-msgid ""
-"Parsing PPD file %s failed - line too long. Trailing characters have been "
-"ignored!"
-msgstr "Zpracování PPD souboru %s se nezdařilo – jeho řádky jsou příliš dlouhé. Znaky navíc nebudou brány v potaz!"
-
-#: admin/systems/ppd/class_ppdManager.inc:230
-msgid "Nested groups are not supported!"
-msgstr "Vnořené skupiny nejsou podporovány!"
-
-#: admin/systems/ppd/class_ppdManager.inc:234
-msgid "Group name not unique!"
-msgstr "Název skupiny není jedinečný!"
-
-#: admin/systems/ppd/class_ppdManager.inc:240
-#: admin/systems/ppd/class_ppdManager.inc:270
-msgid "Symbol values are not supported yet!"
-msgstr "Symbolické hodnoty ještě nejsou podporovány!"
-
-#: admin/systems/ppd/class_ppdManager.inc:264
-msgid "Nested options are not supported!"
-msgstr "Vnořené předvolby nejsou podporovány!"
-
-#: admin/systems/ppd/class_ppdManager.inc:289
-msgid "PickMany is not supported yet!"
-msgstr "Varianta výběru žádné či více položek není v tuto chvíli podporovaná!"
-
-#: admin/systems/ppd/class_ppdManager.inc:370
-#, php-format
-msgid ""
-"Parsing PPD file %s failed - line too long. Trailing characters have been "
-"ignored"
-msgstr "Zpracování PPD souboru %s se nezdařilo – jeho řádky jsou příliš dlouhé. Znaky navíc nebudou brány v potaz"
-
-#: admin/systems/ppd/class_ppdManager.inc:395
-#, php-format
-msgid "Parsing PPD file %s failed - no information found."
-msgstr "Zpracování PPD souboru %s se nezdařilo – nebyly nalezeny žádné informace."
 
 #: admin/systems/class_systemImport.inc:72
 #, php-format
@@ -992,19 +757,19 @@ msgstr "Nejste oprávněni pořídit zachycený stav %s."
 msgid "You are not allowed to restore a snapshot for %s."
 msgstr "Nejste oprávněni obnovit zachycený stav %s."
 
-#: admin/systems/class_systemManagement.inc:665
+#: admin/systems/class_systemManagement.inc:641
 #, php-format
 msgid "Inherited from %s"
 msgstr "Převzato z %s"
 
-#: admin/systems/class_systemManagement.inc:718
-#: admin/systems/class_systemManagement.inc:722
+#: admin/systems/class_systemManagement.inc:694
+#: admin/systems/class_systemManagement.inc:698
 #: addons/dashboard/class_dashBoardSystems.inc:31
 #: config/systems/class_systemsPluginConfig.inc:28
 msgid "Systems"
 msgstr "Systémy"
 
-#: admin/systems/class_systemManagement.inc:719
+#: admin/systems/class_systemManagement.inc:695
 msgid "Systems Management"
 msgstr "Správa systémů"
 
@@ -1089,7 +854,6 @@ msgstr "Nejprve je třeba nastavit kódování znaků"
 
 #: admin/systems/services/shares/class_serviceShare.inc:111
 #: admin/ogroups/goto/termgroup.tpl.c:2 admin/systems/remove.tpl.c:2
-#: admin/systems/ppd/remove_ppd.tpl.c:2
 msgid "Warning"
 msgstr "Varování"
 
@@ -1200,13 +964,6 @@ msgstr "LDAP"
 msgid "IP address %s"
 msgstr "IP adresa %s"
 
-#: admin/systems/class_networkSettings.inc:356
-#: admin/systems/class_networkSettings.inc:369
-#: admin/systems/class_networkSettings.inc:371
-#: admin/systems/class_networkSettings.inc:568
-msgid "IP address"
-msgstr "IP adresa"
-
 #: admin/systems/class_networkSettings.inc:362
 #: admin/systems/class_networkSettings.inc:378
 #: admin/systems/class_networkSettings.inc:380
@@ -1227,39 +984,39 @@ msgstr "Nastavení DHCP"
 msgid "Statistics and informations about systems"
 msgstr "Statistiky a informace o systémech"
 
-#: addons/dashboard/class_dashBoardSystems.inc:44
+#: addons/dashboard/class_dashBoardSystems.inc:43
 msgid "Statistics"
 msgstr "Statistiky"
 
-#: addons/dashboard/class_dashBoardSystems.inc:49
+#: addons/dashboard/class_dashBoardSystems.inc:48
 msgid "Computer name to use by unit"
 msgstr "Název počítače, určeného pro použití touto jednotkou"
 
-#: addons/dashboard/class_dashBoardSystems.inc:75
+#: addons/dashboard/class_dashBoardSystems.inc:74
 msgid "Workstations"
 msgstr "Pracovní stanice"
 
-#: addons/dashboard/class_dashBoardSystems.inc:81
+#: addons/dashboard/class_dashBoardSystems.inc:80
 msgid "Windows Workstations"
 msgstr "Pracovní stanice s MS Windows"
 
-#: addons/dashboard/class_dashBoardSystems.inc:84
+#: addons/dashboard/class_dashBoardSystems.inc:83
 msgid "Terminals"
 msgstr "Terminály"
 
-#: addons/dashboard/class_dashBoardSystems.inc:87
+#: addons/dashboard/class_dashBoardSystems.inc:86
 msgid "Printers"
 msgstr "Tiskárny"
 
-#: addons/dashboard/class_dashBoardSystems.inc:90
+#: addons/dashboard/class_dashBoardSystems.inc:89
 msgid "Phones"
 msgstr "Telefony"
 
-#: addons/dashboard/class_dashBoardSystems.inc:93
+#: addons/dashboard/class_dashBoardSystems.inc:92
 msgid "Components"
 msgstr "Součásti"
 
-#: addons/dashboard/class_dashBoardSystems.inc:96
+#: addons/dashboard/class_dashBoardSystems.inc:95
 msgid "Mobile phones"
 msgstr "Mobilní telefony"
 
@@ -1410,6 +1167,11 @@ msgstr "Vyberte akci, která má být spuštěna na tomto terminálu"
 msgid "Execute"
 msgstr "Spustit"
 
+#: admin/systems/serverService-list.tpl.c:2
+#: admin/systems/phoneSelect/phoneSelect-list.tpl.c:2
+msgid "Base"
+msgstr "Základ"
+
 #: admin/systems/network.tpl.c:2
 msgid "Network  settings"
 msgstr "Nastavení  sítě"
@@ -1498,110 +1260,6 @@ msgstr "Zobrazit síťová zařízení"
 #: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:8
 msgid "Show mobile phones"
 msgstr "Zobrazit mobilní telefony"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
-msgid "Select objects to add"
-msgstr "vyberte objekty, které budou přidány"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:5
-msgid "Filters"
-msgstr "Filtry"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:8
-msgid "Display objects matching"
-msgstr "Zobrazit odpovídající objekty"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:11
-msgid "Regular expression for matching object names"
-msgstr "Regulární výraz pro hledání objektů s odpovídajícími názvy"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:14
-msgid "Close"
-msgstr "Zavřít"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:2
-msgid "Printer driver"
-msgstr "Ovladač tiskárny"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:5
-msgid "Model"
-msgstr "Typ"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:8
-msgid "Select"
-msgstr "Vybrat"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:11
-msgid "New driver"
-msgstr "Nový ovladač"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:14
-msgid "Upload"
-msgstr "Nahrát"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:17
-msgid "Options"
-msgstr "Předvolby"
-
-#: admin/systems/ppd/remove_ppd.tpl.c:5
-msgid "The ppd file will be removed from the server and can not be restored."
-msgstr "PPD soubor bude definitivně odstraněn ze serveru – nepůjde ho pak (jednoduše) obnovit."
-
-#: admin/systems/printer.tpl.c:2
-msgid "General"
-msgstr "Obecné"
-
-#: admin/systems/printer.tpl.c:5
-msgid "Printer name"
-msgstr "Název tiskárny"
-
-#: admin/systems/printer.tpl.c:14
-msgid "Details"
-msgstr "Podrobnosti"
-
-#: admin/systems/printer.tpl.c:20
-msgid "Printer location"
-msgstr "Umístění tiskárny"
-
-#: admin/systems/printer.tpl.c:26
-msgid "PPD Provider"
-msgstr "Poskytovatel PPD"
-
-#: admin/systems/printer.tpl.c:29
-msgid "Driver"
-msgstr "Ovladač"
-
-#: admin/systems/printer.tpl.c:32
-msgid "Edit"
-msgstr "Upravit"
-
-#: admin/systems/printer.tpl.c:41
-msgid "Users which are allowed to use this printer"
-msgstr "Uživatelé, kteří mohou používat tuto tiskárnu"
-
-#: admin/systems/printer.tpl.c:44
-msgid "Users"
-msgstr "Uživatelé"
-
-#: admin/systems/printer.tpl.c:47
-msgid "Users which are allowed to administrate this printer"
-msgstr "uživatelé, kteří smějí spravovat tuto tiskárnu"
-
-#: admin/systems/printer.tpl.c:50
-msgid "Admins"
-msgstr "Správci"
-
-#: admin/systems/printer.tpl.c:53
-msgid "Windows paths"
-msgstr "Popis umístění v MS Windows"
-
-#: admin/systems/printer.tpl.c:56
-msgid "Printer windows inf file"
-msgstr "Windows .inf soubor tiskárny"
-
-#: admin/systems/printer.tpl.c:59
-msgid "Printer driver directory"
-msgstr "Složka s ovladačem tiskárny"
 
 #: addons/dashboard/systems_stats.tpl.c:2
 msgid "There are several argonaut servers! (this is not yet supported)"

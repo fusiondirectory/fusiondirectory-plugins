@@ -46,6 +46,7 @@ class ldapmanager extends simplePlugin
       'plDescription' => _('Export/Import the ldap tree to/from LDIF format'),
       'plObjectType'  => array('ldapmanager' => array(
         'name'      => _('LDAP Manager'),
+        'tabClass'  => 'ldiftabs',
         'mainAttr'  => FALSE
       )),
 

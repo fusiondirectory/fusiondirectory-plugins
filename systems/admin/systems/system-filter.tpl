@@ -20,7 +20,7 @@
   {if $USE_gotoTerminal}
   {$TERMINAL}<label for="TERMINAL">&nbsp;{t}Show terminals{/t}</label><br>
   {/if}
-  {if $USE_gotoPrinter}
+  {if $USE_fdPrinter}
   {$PRINTER}<label for="PRINTER">&nbsp;{t}Show network printer{/t}</label><br>
   {/if}
   {if $USE_fdPhone}

@@ -95,7 +95,7 @@ class serviceLDAP extends simpleService
     return array(
       'plShortName'   => _('LDAP service'),
       'plDescription' => _('LDAP').' ('._('Services').')',
-      'plIcon'        => 'plugins/systems/images/service_ldap.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=ldap&size=16',
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

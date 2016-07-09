@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-06-03 13:10+0200\n"
+"POT-Creation-Date: 2016-07-06 14:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -135,8 +135,8 @@ msgstr ""
 #: admin/dns/class_DnsRecordAttribute.inc:27
 #, php-format
 msgid ""
-"\"%s\" must contain a fully qualified domain name and end with a final dot."
-"<br/><br/>Example: dns1.example.com."
+"\"%s\" must contain a fully qualified domain name in lowercase and end with "
+"a final dot.<br/><br/>Example: dns1.example.com."
 msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:130
@@ -437,13 +437,14 @@ msgstr ""
 #: admin/dns/class_dnsZone.inc:459
 #, php-format
 msgid ""
-"\"%s\" must contain a domain name and end with a final dot.<br/><br/"
-">Example: example.com."
+"\"%s\" must contain a domain name in lowercase and end with a final dot.<br/"
+"><br/>Example: example.com."
 msgstr ""
 
 #: admin/dns/class_dnsZone.inc:462
 #, php-format
-msgid "\"%s\" must contain a domain name.<br/><br/>Example: example.com"
+msgid ""
+"\"%s\" must contain a domain name in lowercase.<br/><br/>Example: example.com"
 msgstr ""
 
 #: admin/dns/class_dnsZone.inc:483 admin/dns/class_dnsZone.inc:484

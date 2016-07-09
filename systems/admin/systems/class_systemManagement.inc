@@ -490,7 +490,7 @@ class systemManagement extends management
     if (isset($_POST['new_gotoWorkstation']))  $action['action'] = "new_gotoWorkstation";
     if (isset($_POST['new_gotoTerminal']))  $action['action'] = "new_gotoTerminal";
     if (isset($_POST['new_sambaSamAccount']))  $action['action'] = "new_sambaSamAccount";
-    if (isset($_POST['new_gotoPrinter']))  $action['action'] = "new_gotoPrinter";
+    if (isset($_POST['new_fdPrinter']))  $action['action'] = "new_fdPrinter";
     if (isset($_POST['new_fdPhone']))  $action['action'] = "new_fdPhone";
     if (isset($_POST['new_ieee802Device']))  $action['action'] = "new_ieee802Device";
 
@@ -547,36 +547,12 @@ class systemManagement extends management
         'aclClass'    => 'terminalGeneric',
         'aclCategory' => 'terminal'
       ),
-      'gotoPrinter' => array(
+      'fdPrinter' => array(
         'ou'          => get_ou('printerRDN'),
-        'plugClass'   => 'printgeneric',
+        'plugClass'   => 'printGeneric',
         'tabClass'    => 'simpleTabs',
         'tabDesc'     => 'PRINTERTABS',
-        'aclClass'    => 'printgeneric',
-        'sendEvents'  => FALSE,
-        'aclCategory' => 'printer'
-      ),
-      'sambaSamAccount' => array(
-        'ou'          => get_winstations_ou(),
-        'plugClass'   => 'winstationGeneric',
-        'sendEvents'  => TRUE,
-        'aclCategory' => 'workstation'
-      ),
-      'gotoTerminal' => array(
-        'ou'          => get_ou('terminalRDN'),
-        'plugClass'   => 'terminalGeneric',
-        'tabClass'    => 'simpleTabs',
-        'sendEvents'  => TRUE,
-        'tabDesc'     => 'TERMINALTABS',
-        'aclClass'    => 'terminalGeneric',
-        'aclCategory' => 'terminal'
-      ),
-      'gotoPrinter' => array(
-        'ou'          => get_ou('printerRDN'),
-        'plugClass'   => 'printgeneric',
-        'tabClass'    => 'simpleTabs',
-        'tabDesc'     => 'PRINTERTABS',
-        'aclClass'    => 'printgeneric',
+        'aclClass'    => 'printGeneric',
         'sendEvents'  => FALSE,
         'aclCategory' => 'printer'
       ),

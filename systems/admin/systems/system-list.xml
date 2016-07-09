@@ -68,9 +68,9 @@
 
     <objectType>
       <label>Printer</label>
-      <objectClass>gotoPrinter</objectClass>
+      <objectClass>fdPrinter</objectClass>
       <category>printer</category>
-      <class>printgeneric</class>
+      <class>printGeneric</class>
       <image>geticon.php?context=devices&amp;icon=printer&amp;size=16</image>
     </objectType>
 
@@ -211,11 +211,11 @@
     </action>
 
      <action>
-      <name>new_gotoPrinter</name>
+      <name>new_fdPrinter</name>
       <type>entry</type>
       <image>geticon.php?context=devices&amp;icon=printer&amp;size=16</image>
       <label>Network printer</label>
-      <depends>printgeneric</depends>
+      <depends>printGeneric</depends>
      </action>
 
      <action>
@@ -256,7 +256,7 @@
 
     <action>
      <type>sub</type>
-     <image>plugins/systems/images/clock.png</image>
+     <image>geticon.php?context=actions&amp;icon=task-schedule&amp;size=16</image>
      <label>Schedule action</label>
       <depends>argonautAction</depends>
     </action>
