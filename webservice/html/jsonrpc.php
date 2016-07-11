@@ -387,8 +387,8 @@ class fdRPCService
             $attr->serializeAttribute($attributes, FALSE);
           }
         }
-        $section['attrs'] = $attributes;
-        $section['attrs_order'] = $attributes;
+        $section['attrs']       = $attributes;
+        $section['attrs_order'] = array_keys($attributes);
       }
       unset($section);
     } else {
