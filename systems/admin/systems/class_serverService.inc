@@ -183,7 +183,7 @@ class ServerService extends management
   protected function cancelEdit()
   {
     if ($this->backup == NULL && $this->current) {
-      $this->plugins[$this->current] = new $this->current(NULL, $this->dn, $this);
+      $this->plugins[$this->current] = new $this->current($this->dn, $this);
       $this->plugins[$this->current]->set_acl_base($this->acl_base);
       $this->plugins[$this->current]->set_acl_category(preg_replace("/\/$/", "", $this->acl_category));
 
