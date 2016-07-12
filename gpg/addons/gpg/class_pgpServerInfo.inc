@@ -84,10 +84,10 @@ class pgpServerInfo extends simplePlugin
     );
   }
 
-  protected function ldap_save ($cleanup = TRUE)
+  protected function ldap_save ()
   {
     global $config;
-    parent::ldap_save($cleanup);
+    $errors = parent::ldap_save();
 
     /* Create the new branch if non-existing */
     $ldap = $config->get_ldap_link();
@@ -97,8 +97,7 @@ class pgpServerInfo extends simplePlugin
       $ldap->cd($config->current['BASE']);
       $ldap->create_missing_trees($this->pgpBaseKeySpaceDN);
       if (!$ldap->success()) {
-        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(),
-                            $this->pgpBaseKeySpaceDN, LDAP_MOD, get_class()));
+        $errors[] = msgPool::ldaperror($ldap->get_error(), $this->pgpBaseKeySpaceDN, LDAP_MOD, get_class());
       }
     }
     /* Delete the old branch if empty */

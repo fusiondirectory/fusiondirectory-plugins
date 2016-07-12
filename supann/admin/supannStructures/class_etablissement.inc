@@ -151,10 +151,10 @@ class etablissement extends simplePlugin
     }
   }
 
-  function ldap_save($cleanup = TRUE)
+  function ldap_save()
   {
     global $config;
-    parent::ldap_save($cleanup);
+    $errors = parent::ldap_save();
 
     $ldap = $config->get_ldap_link();
 
@@ -197,9 +197,10 @@ class etablissement extends simplePlugin
         $ldap->$root_mode($root_attrs);
       }
       if (!$ldap->success()) {
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
+        $errors[] = msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class());
       }
     }
+    return $errors;
   }
 
   function get_root_code()

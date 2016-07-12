@@ -213,9 +213,12 @@ class debconfProfileGeneric extends simplePlugin
     }
   }
 
-  function ldap_save($cleanup = TRUE)
+  function ldap_save()
   {
-    parent::ldap_save($cleanup);
+    $errors = parent::ldap_save();
+    if (!empty($errors)) {
+      return $errors;
+    }
     if (isset($this->attributesInfo['entries'])) {
       $this->attributesInfo['entries']['attrs']['debconfEntries']->saveInLdap();
     }

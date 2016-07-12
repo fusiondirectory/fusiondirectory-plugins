@@ -616,10 +616,10 @@ class dnsZone extends simplePlugin
     parent::prepare_save();
   }
 
-  function ldap_save ($cleanup = TRUE)
+  function ldap_save ()
   {
     global $config;
-    parent::ldap_save($cleanup);
+    $errors = parent::ldap_save($cleanup);
     if (
       $this->attributesAccess['zoneName']->hasChanged() ||
       $this->attributesAccess['reverseZones']->hasChanged() ||
@@ -627,6 +627,7 @@ class dnsZone extends simplePlugin
       ) {
       $this->attributesAccess['dnsRecords']->postLdapSave($config->get_ldap_link());
     }
+    return $errors;
   }
 
   function cnChanged ($oldcn, $newcn)

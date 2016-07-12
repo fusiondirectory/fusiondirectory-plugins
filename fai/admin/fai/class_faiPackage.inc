@@ -470,11 +470,12 @@ class faiPackage extends faiSimplePluginClass
     }
   }
 
-  function ldap_save ($cleanup = TRUE)
+  function ldap_save ()
   {
     global $config;
-    parent::ldap_save($cleanup);
+    $errors = parent::ldap_save();
     $this->attributesAccess['FAIpackage']->postLdapSave($config->get_ldap_link());
+    return $errors;
   }
 
   function getServerInfos()

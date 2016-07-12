@@ -102,11 +102,12 @@ class faiScript extends faiSimplePluginClass
     $this->attributesAccess['scripts']->setLinearRendering(FALSE);
   }
 
-  function ldap_save ($cleanup = TRUE)
+  function ldap_save ()
   {
     global $config;
-    parent::ldap_save($cleanup);
+    $errors = parent::ldap_save();
     $this->attributesAccess['scripts']->postLdapSave($config->get_ldap_link());
+    return $errors;
   }
 }
 ?>

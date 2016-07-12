@@ -482,12 +482,13 @@ class dhcpConfiguration extends simplePlugin
     $this->attributesAccess['dhcpSections']->setHeight(400);
   }
 
-  protected function ldap_save($cleanup = TRUE)
+  protected function ldap_save()
   {
     global $config;
     /* Save dhcp settings */
     $ldap   = $config->get_ldap_link();
     $cache  = $this->attributesAccess['dhcpSections']->getCache();
+    $errors = array();
     foreach ($cache as $dn => $data) {
       if ($this->dn != $this->orig_dn) {
         $dn = preg_replace('/'.preg_quote($this->orig_dn, '/').'$/i', $this->dn, $dn);
@@ -499,7 +500,7 @@ class dhcpConfiguration extends simplePlugin
         if ($ldap->cat($dn)) {
           $ldap->rmdir_recursive($dn);
           if (!$ldap->success()) {
-            msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()), LDAP_ERROR);
+            $errors[] = msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class());
           }
         }
         continue;
@@ -550,17 +551,18 @@ class dhcpConfiguration extends simplePlugin
         if ($modify) {
           $ldap->modify($attrs);
           if (!$ldap->success()) {
-            msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()), LDAP_ERROR);
+            $errors[] = msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class());
           }
         } else {
           $ldap->add($attrs);
           if (!$ldap->success()) {
-            msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
+            $errors[] = msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class());
           }
         }
       }
     }
 
-    //~ parent::ldap_save($cleanup);
+    //~ parent::ldap_save();
+    return $errors;
   }
 }

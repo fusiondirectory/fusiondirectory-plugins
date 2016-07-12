@@ -190,11 +190,12 @@ class faiTemplate extends faiSimplePluginClass
     );
   }
 
-  function ldap_save ($cleanup = TRUE)
+  function ldap_save ()
   {
     global $config;
-    parent::ldap_save($cleanup);
+    $errors = parent::ldap_save();
     $this->attributesAccess['templateFiles']->postLdapSave($config->get_ldap_link());
+    return $errors;
   }
 }
 ?>
