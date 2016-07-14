@@ -224,13 +224,12 @@ class csvimport extends simplePlugin
       $this->template_object->reset();
       $this->template_object->deserialize($values);
       $tabObject = $this->template_object->apply();
-      $msgs = $tabObject->check();
+      $msgs = $tabObject->save();
       if (count($msgs)) {
         $msg = '<ul><li>'.implode('</li><li>', $msgs).'</li></ul>';
         msg_dialog::display(sprintf(_('Import failed for line %d'), $rownumber), $msg, ERROR_DIALOG);
         break;
       } else {
-        $tabObject->save();
         $success++;
       }
     }

@@ -143,12 +143,11 @@ class systemImport extends simplePlugin
       }
 
       /* Perform checks */
-      $message = $tabObject->check();
+      $message = $tabObject->save();
 
       if (count($message) == 0) {
         /* No errors, save object */
         $messages[$host['id']] = TRUE;
-        $tabObject->save();
       } else {
         /* Errors found */
         $messages[$host['id']] = $message;

@@ -274,11 +274,10 @@ class fdRPCService
     }
     $_POST = array($tab.'_modify_state' => 1);
     $tabobject->save_object();
-    $errors = $tabobject->check();
+    $errors = $tabobject->save();
     if (!empty($errors)) {
       return array('errors' => $errors);
     }
-    $tabobject->save();
     return $tabobject->dn;
   }
 
@@ -358,11 +357,10 @@ class fdRPCService
       $_POST[$tab.'_modify_state'] = 1;
     }
     $tabobject->save_object();
-    $errors = $tabobject->check();
+    $errors = $tabobject->save();
     if (!empty($errors)) {
       return array('errors' => $errors);
     }
-    $tabobject->save();
     return $tabobject->dn;
   }
 
@@ -438,11 +436,10 @@ class fdRPCService
       $tabobject->current = $tab;
       $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases is needed */
     }
-    $errors = $tabobject->check();
+    $errors = $tabobject->save();
     if (!empty($errors)) {
       return array('errors' => $errors);
     }
-    $tabobject->save();
     return $tabobject->dn;
   }
 
@@ -470,11 +467,10 @@ class fdRPCService
       return array('errors' => array($error));
     }
     $tabobject = $template->apply();
-    $errors = $tabobject->check();
+    $errors = $tabobject->save();
     if (!empty($errors)) {
       return array('errors' => $errors);
     }
-    $tabobject->save();
     return $tabobject->dn;
   }
 

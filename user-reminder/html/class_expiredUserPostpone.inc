@@ -138,12 +138,11 @@ class expiredUserPostpone extends standAlonePage
     $date = $userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue();
     $date->add(new DateInterval('P'.$this->postpone_days.'D'));
     $userTabs->by_object['posixAccount']->shadowExpire = $date;
-    $error = $userTabs->check();
+    $error = $userTabs->save();
     if (!empty($error)) {
       $this->message = $error;
       return;
     }
-    $userTabs->save();
     $this->deleteToken();
 
     $cn             = $userTabs->getBaseObject()->cn;

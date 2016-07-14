@@ -354,11 +354,10 @@ class fiInventory extends simplePlugin
     $template->reset();
     $template->deserialize($values);
     $tabObject = $template->apply();
-    $msgs = $tabObject->check();
+    $msgs = $tabObject->save();
     if (count($msgs)) {
       msg_dialog::displayChecks($msgs);
     } else {
-      $tabObject->save();
       $this->attributesAccess['matching'] = new DisplayAttribute(
         _('System'), _('System entry matching this inventory'),
         'matching'
