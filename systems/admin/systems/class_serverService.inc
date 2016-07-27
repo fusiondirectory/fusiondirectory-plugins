@@ -510,30 +510,40 @@ class ServerService extends management
    */
   function remove_from_parent()
   {
+    $errors = array();
     foreach ($this->plugins as $name => $obj) {
       $this->updateServicesVars($name);
       if ($this->plugins[$name]->initially_was_account) {
         if (isset($this->plugins[$name]->krb_host_key) && $this->plugins[$name]->krb_host_key instanceof krbHostKeys) {
           $this->plugins[$name]->krb_host_key->remove_from_parent_by_prefix($this->plugins[$name]->krb_service_prefix);
         }
-        $this->plugins[$name]->remove_from_parent();
+        $result = $this->plugins[$name]->remove_from_parent();
+        if (!empty($result)) {
+          $errors = array_merge($errors, $result);
+        }
       }
     }
+    return $errors;
   }
 
   /*! \brief    Save all active services
    */
   function save()
   {
+    $errors = array();
     foreach ($this->plugins as $name => $obj) {
       $this->updateServicesVars($name);
 
       if ($this->plugins[$name]->is_account) {
-        $this->plugins[$name]->save();
+        $result = $this->plugins[$name]->save();
       } elseif ($this->plugins[$name]->initially_was_account) {
-        $this->plugins[$name]->remove_from_parent();
+        $result = $this->plugins[$name]->remove_from_parent();
+      }
+      if (!empty($result)) {
+        $errors = array_merge($errors, $result);
       }
     }
+    return $errors;
   }
 
   /*! \brief    Prepare active services to be copied.

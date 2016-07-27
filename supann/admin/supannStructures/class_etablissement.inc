@@ -138,7 +138,10 @@ class etablissement extends simplePlugin
   function remove_from_parent()
   {
     global $config;
-    parent::remove_from_parent();
+    $errors = parent::remove_from_parent();
+    if (!empty($errors)) {
+      return $errors;
+    }
 
     /* If we're the root etablissement, delete it too */
     $root_code = $this->get_root_code();

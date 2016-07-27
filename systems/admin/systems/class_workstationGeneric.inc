@@ -104,7 +104,7 @@ class workstationGeneric extends simplePlugin
     }
 
     if ($this->acl_is_removeable()) {
-      parent::remove_from_parent();
+      $errors = parent::remove_from_parent();
 
       /* Remove all accessTo/trust dependencies */
       /* FIXME replace with foreignKeys */
@@ -115,6 +115,8 @@ class workstationGeneric extends simplePlugin
         $q = new supportDaemon();
         $q->clean_queue_from_mac($this->attributesAccess['macAddress']->getInitialValue());
       }
+
+      return $errors;
     }
   }
 

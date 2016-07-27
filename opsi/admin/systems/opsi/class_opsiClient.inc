@@ -200,7 +200,7 @@ class opsiClient extends simplePlugin
       }
     }
 
-    parent::remove_from_parent();
+    return parent::remove_from_parent();
   }
 
   public function server_changed ()
