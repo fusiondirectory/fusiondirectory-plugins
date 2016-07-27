@@ -164,7 +164,7 @@ class csvimport extends simplePlugin
       $choices = array_merge($choices, array_values($attr_infos['choices']));
       $this->cachedChoices[$ldapName] = array_keys($attr_infos['choices']);
       if (isset($attr_infos['value']) && !empty($attr_infos['value'])) {
-        $value = count($fields) + count($this->fixed_values) + array_search($attr_infos['value'], $this->cachedChoices[$ldapName]);
+        $value = count($fields) + array_search($attr_infos['value'], $this->cachedChoices[$ldapName]);
       }
     }
     if ($value === NULL) {
@@ -178,9 +178,9 @@ class csvimport extends simplePlugin
           $subattribute = $this->build_attribute($fields, $class, $class_infos, $subattr, $subattr_infos);
         } else {
           $this->cachedChoices['template_'.$class.':'.$subattr] = array($attr_infos['value']);
-          $subattribute = new HiddenAttribute('template_'.$class.':'.$subattr, FALSE, count($fields) + count($this->fixed_values));
+          $subattribute = new HiddenAttribute('template_'.$class.':'.$subattr, FALSE, count($fields));
         }
-        $subattrs[$subattribute->getLdapName()] = $subattribute;
+        $subattrs[] = $subattribute;
       }
       return new CompositeAttribute(
         '', $ldapName,
