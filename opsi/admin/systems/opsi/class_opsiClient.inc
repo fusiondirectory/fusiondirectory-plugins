@@ -110,7 +110,10 @@ class opsiClient extends simplePlugin
       }
     }
 
-    parent::save();
+    $errors = parent::save();
+    if (!empty($errors)) {
+      return $errors;
+    }
 
     if ($this->is_account) {
       $this->update_or_insert();

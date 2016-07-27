@@ -277,7 +277,10 @@ class mailAccount extends simplePlugin
 
   public function save()
   {
-    parent::save();
+    $errors = parent::save();
+    if (!empty($errors)) {
+      return $errors;
+    }
 
     /* Only do IMAP actions if we are not a template */
     if (!$this->is_template) {

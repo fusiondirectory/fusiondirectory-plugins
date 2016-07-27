@@ -170,13 +170,19 @@ class argonautFuseConfig extends simpleService
   /* Save to LDAP */
   function save()
   {
-    parent::save();
+    $errors = parent::save();
+    if (!empty($errors)) {
+      return $errors;
+    }
     /* Save objects */
     foreach ($this->plugin as &$plugin) {
       $plugin->dn = $this->dn;
 
       if ($plugin->is_account) {
-        $plugin->save();
+        $errors = $plugin->save();
+        if (!empty($errors)) {
+          msg_dialog::displayChecks($errors);
+        }
       } else {
         $plugin->remove_from_parent();
       }

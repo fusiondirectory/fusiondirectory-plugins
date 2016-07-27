@@ -285,7 +285,7 @@ class dnsHost extends simplePlugin
   function save()
   {
     global $config;
-    parent::save();
+    $errors = parent::save();
     foreach ($this->attributesInfo['records']['attrs'] as &$attr) {
       if ($attr->hasChanged()) {
         $attr->postLdapSave($config->get_ldap_link());
@@ -352,6 +352,8 @@ class dnsHost extends simplePlugin
         msg_dialog::display(_('DNS update'), $message, INFO_DIALOG);
       }
     }
+
+    return $errors;
   }
 
   function adapt_from_template($attrs, $skip = array())

@@ -232,7 +232,7 @@ class serviceKolab extends simpleService
     }
     $this->attributesAccess['kolabHost']->setValue($kolabHost);
 
-    parent::save();
+    return parent::save();
   }
 
   function remove_from_parent()
