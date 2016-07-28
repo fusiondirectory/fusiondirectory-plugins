@@ -25,7 +25,7 @@ class dhcpSubClass extends dhcpPlugin
   /* attribute list for save action */
   var $objectclasses= array('top', 'dhcpSubClass', 'dhcpOptions');
 
-  function dhcpSubClass($parent,&$attrs)
+  function __construct($parent,&$attrs)
   {
     /* Load statements / options */
     dhcpPlugin::dhcpPlugin($parent,$attrs);

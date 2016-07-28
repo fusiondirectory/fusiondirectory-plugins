@@ -33,7 +33,7 @@ class dhcpSubnet extends dhcpPlugin
   /* attribute list for save action */
   var $objectclasses= array('top', 'dhcpSubnet', 'dhcpOptions');
 
-  function dhcpSubnet($parent,$attrs)
+  function __construct($parent,$attrs)
   {
     dhcpPlugin::dhcpPlugin($parent,$attrs);
 

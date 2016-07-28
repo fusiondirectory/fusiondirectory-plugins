@@ -31,7 +31,7 @@ class dhcpService extends dhcpPlugin
   var $objectclasses = array('top', 'dhcpService');
 
 
-  function dhcpService($parent, $attrs)
+  function __construct($parent, $attrs)
   {
     dhcpPlugin::dhcpPlugin($parent, $attrs);
 

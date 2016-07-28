@@ -30,7 +30,7 @@ class dhcpTSigKey extends dhcpPlugin
   /* attribute list for save action */
   var $objectclasses= array("top", "dhcpTSigKey");
 
-  function dhcpTSigKey($parent,$attrs)
+  function __construct($parent,$attrs)
   {
     dhcpPlugin::dhcpPlugin($parent,$attrs);
 

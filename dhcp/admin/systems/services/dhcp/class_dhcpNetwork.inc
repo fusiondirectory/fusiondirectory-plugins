@@ -31,7 +31,7 @@ class dhcpNetwork extends plugin
   var $attributes= array();
   var $objectclasses= array();
 
-  function dhcpNetwork()
+  function __construct()
   {
     /* This is always an account */
     $this->is_account= TRUE;

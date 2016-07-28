@@ -30,7 +30,7 @@ class dhcpHost extends dhcpPlugin
   /* attribute list for save action */
   var $objectclasses= array("top", "dhcpHost");
 
-  function dhcpHost($parent,$attrs,$host_exists_in_gosa = FALSE)
+  function __construct($parent,$attrs,$host_exists_in_gosa = FALSE)
   {
     dhcpPlugin::dhcpPlugin($parent,$attrs);
 
