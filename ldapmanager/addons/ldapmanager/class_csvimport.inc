@@ -128,10 +128,16 @@ class csvimport extends simplePlugin
   function handle_import_submit()
   {
     $this->csv_data = $this->parse_csv($this->import_file);
-    /*
-     * Add nonrequired field filling feature
-     * */
+
+    $messages = $this->check();
+    if (!empty($messages)) {
+      msg_dialog::displayChecks($messages);
+      return;
+    }
+
     $this->template_object = new template($this->type, $this->template_dn);
+
+    /* Add nonrequired field filling feature */
     $attributes = array();
     $fields = array();
     if (isset($this->csv_data[0])) {
