@@ -18,9 +18,5 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-try {
-  simplePlugin::mainInc('pgpServerInfo', 'cn=pgpServerInfo,'.$config->current['BASE']);
-} catch (NonExistingLdapNodeException $e) {
-  simplePlugin::mainInc('pgpServerInfo', 'new');
-}
+simplePlugin::mainInc('pgpServerInfo', 'cn=pgpServerInfo,'.$config->current['BASE']);
 ?>
