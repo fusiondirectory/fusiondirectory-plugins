@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-07-06 14:01+0200\n"
-"PO-Revision-Date: 2016-04-27 20:22+0000\n"
+"POT-Creation-Date: 2016-08-02 08:56+0200\n"
+"PO-Revision-Date: 2016-08-02 06:57+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -133,54 +133,85 @@ msgid ""
 " operation"
 msgstr "Si un utilisateur doit envoyer le mot de passe actuel pendant une opération de modification de mot de passe ou non"
 
-#: admin/ppolicy/class_ppolicy.inc:113
+#: admin/ppolicy/class_ppolicy.inc:104
+msgid "Check quality"
+msgstr "Vérifier la qualité"
+
+#: admin/ppolicy/class_ppolicy.inc:104
+msgid "Decides what to do if the function in \"Check module\" is not available"
+msgstr "Décide ce qu'il faut faire si la fonction \"Check module\" n'est sont pas disponible"
+
+#: admin/ppolicy/class_ppolicy.inc:107
+msgid "Disabled"
+msgstr "Désactivée"
+
+#: admin/ppolicy/class_ppolicy.inc:107
+msgid "Ignore errors"
+msgstr "Ignorer les erreurs"
+
+#: admin/ppolicy/class_ppolicy.inc:107
+msgid "Reject on errors"
+msgstr "Rejeter sur erreurs"
+
+#: admin/ppolicy/class_ppolicy.inc:110
+msgid "Check module"
+msgstr "Module de vérification de la qualité"
+
+#: admin/ppolicy/class_ppolicy.inc:110
+msgid ""
+"Name of a user supplied password quality check module that will be called to"
+" perform password quality checks and is only relevant if pwdCheckQuality is "
+"either 1 or 2"
+msgstr "Nom du module de controle de qualité du mot de passe qui sera appelé à effectuer des contrôles de qualité n'est pertinent que si pwdCheckQuality est 1 ou 2"
+
+#: admin/ppolicy/class_ppolicy.inc:116
 msgid "Lock out"
 msgstr "Verrouillage"
 
-#: admin/ppolicy/class_ppolicy.inc:117
+#: admin/ppolicy/class_ppolicy.inc:120
 msgid "Activate lock out"
 msgstr "Activer le verrouillage"
 
-#: admin/ppolicy/class_ppolicy.inc:117
+#: admin/ppolicy/class_ppolicy.inc:120
 msgid ""
 "Whether to lock an account that had more consecutive failed bind attempts "
 "with invalid passwords than is defined by \"Maximum failures\""
 msgstr "Faut-il verrouiller un compte qui avait plus d’échecs de connexion consécutifs avec des mots de passe incorrects que ce qui est défini par «Nombre d'échec maximal\""
 
-#: admin/ppolicy/class_ppolicy.inc:122
+#: admin/ppolicy/class_ppolicy.inc:125
 msgid "Lock out duration"
 msgstr "Durée de verrouillage "
 
-#: admin/ppolicy/class_ppolicy.inc:122
+#: admin/ppolicy/class_ppolicy.inc:125
 msgid ""
 "Time the account remains locked after an automatic lock out (0 means for "
 "ever)"
 msgstr "Temps que le compte reste bloqué après un verrouillage automatique sur (0 signifie pour toujours)"
 
-#: admin/ppolicy/class_ppolicy.inc:127
+#: admin/ppolicy/class_ppolicy.inc:130
 msgid "Maximum failures"
 msgstr "Nombre d'échec maximal"
 
-#: admin/ppolicy/class_ppolicy.inc:127
+#: admin/ppolicy/class_ppolicy.inc:130
 msgid ""
 "Number of consecutive password failures allowed before automatic lock out"
 msgstr "Nombre d'échecs de mot de passe consécutifs autorisés avant verrouillage automatique"
 
-#: admin/ppolicy/class_ppolicy.inc:132
+#: admin/ppolicy/class_ppolicy.inc:135
 msgid "Failure count interval"
 msgstr "Intervalle de comptage d’échecs"
 
-#: admin/ppolicy/class_ppolicy.inc:132
+#: admin/ppolicy/class_ppolicy.inc:135
 msgid ""
 "Time after which the count of consecutive password failures is reset even if"
 " no successful authentication has occurred"
 msgstr "Temps au bout duquel le nombre d'échecs de mot de passe consécutifs est réinitialisé même si aucune authentification réussie a eu lieu"
 
-#: admin/ppolicy/class_ppolicy.inc:137
+#: admin/ppolicy/class_ppolicy.inc:140
 msgid "Must change"
 msgstr "Doit changer"
 
-#: admin/ppolicy/class_ppolicy.inc:137
+#: admin/ppolicy/class_ppolicy.inc:140
 msgid ""
 "Whether the user must change their password after an account is reset by an "
 "administrator following an automatic lockout"
