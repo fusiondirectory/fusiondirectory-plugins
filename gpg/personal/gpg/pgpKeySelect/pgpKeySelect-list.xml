@@ -6,7 +6,8 @@
     <departmentRootVisible>false</departmentRootVisible>
     <baseMode>false</baseMode>
     <multiSelect>true</multiSelect>
-    <template>../plugins/personal/gpg/pgpKeySelect/pgpKeySelect-list.tpl</template>
+    <template>simple-select-list.tpl</template>
+    <module>simple</module>
     <label>Please select the desired entries</label>
     <defaultSortColumn>1</defaultSortColumn>
 
@@ -17,7 +18,6 @@
       <class>gpgAccount</class>
       <image>geticon.php?context=status&amp;icon=dialog-password&amp;size=16</image>
     </objectType>
-
   </definition>
 
   <table>
@@ -29,7 +29,7 @@
 
     <department>
       <value>%{filter:departmentLink(row,dn,description)}</value>
-      <span>1</span>
+      <span>2</span>
     </department>
 
     <column>
@@ -40,7 +40,7 @@
       <label>Key ID</label>
       <sortAttribute>pgpKeyID</sortAttribute>
       <sortType>string</sortType>
-      <value>%{pgpKeyID}</value>
+      <value>%{filter:selectLink(pid,row,dn,pgpKeyID)}</value>
       <export>true</export>
     </column>
 
@@ -48,7 +48,7 @@
       <label>User</label>
       <sortAttribute>pgpUserID</sortAttribute>
       <sortType>string</sortType>
-      <value>%{pgpUserID}</value>
+      <value>%{filter:selectLink(pid,row,dn,pgpUserID)}</value>
       <export>true</export>
     </column>
 
@@ -99,7 +99,6 @@
       <value>%{filter:pgpDisabled(pgpDisabled)}</value>
       <export>true</export>
     </column>
-
   </table>
 
   <actionmenu>
