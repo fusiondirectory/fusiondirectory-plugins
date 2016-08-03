@@ -89,6 +89,10 @@ class pgpServerInfo extends simplePlugin
     global $config;
     $errors = parent::ldap_save();
 
+    if (!empty($errors)) {
+      return $errors;
+    }
+
     /* Create the new branch if non-existing */
     $ldap = $config->get_ldap_link();
     $ldap->cat($this->pgpBaseKeySpaceDN);
@@ -116,6 +120,7 @@ class pgpServerInfo extends simplePlugin
         }
       }
     }
+    return $errors;
   }
 }
 ?>
