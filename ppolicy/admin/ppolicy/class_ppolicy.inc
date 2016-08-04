@@ -102,7 +102,7 @@ class ppolicy extends simplePlugin
           ),
           new SelectAttribute(
             _('Check quality'), _('Decides what to do if the function in "Check module" is not available'),
-            'pwdCheckQuality', FALSE,
+            'pwdCheckQuality', TRUE,
             array(0, 1, 2), 0,
             array(_('Disabled'), _('Ignore errors'), _('Reject on errors'))
           ),
