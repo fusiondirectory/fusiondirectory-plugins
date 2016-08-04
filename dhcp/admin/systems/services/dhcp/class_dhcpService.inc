@@ -33,7 +33,7 @@ class dhcpService extends dhcpPlugin
 
   function __construct($parent, $attrs)
   {
-    dhcpPlugin::dhcpPlugin($parent, $attrs);
+    parent::__construct($parent, $attrs);
 
     /* Load statements / options */
     if (!$this->new) {
@@ -115,7 +115,7 @@ class dhcpService extends dhcpPlugin
       }
     }
 
-    dhcpPlugin::save_object();
+    parent::save_object();
   }
 
 
@@ -156,7 +156,7 @@ class dhcpService extends dhcpPlugin
       $server_name = $res['cn'][0];
     }
 
-    dhcpPlugin::save();
+    parent::save();
 
     $this->attrs['dhcpPrimaryDN'] = array($this->dhcpPrimaryDN);
     $this->removeOption('server-name');

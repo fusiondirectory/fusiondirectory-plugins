@@ -35,7 +35,7 @@ class dhcpSubnet extends dhcpPlugin
 
   function __construct($parent,$attrs)
   {
-    dhcpPlugin::dhcpPlugin($parent,$attrs);
+    parent::__construct($parent,$attrs);
 
     if (!$this->new){
       /* Load attributes */
@@ -123,7 +123,7 @@ class dhcpSubnet extends dhcpPlugin
       /* Move range to internal variable */
       $this->dhcpRange= $this->range_start." ".$this->range_stop;
     }
-    dhcpPlugin::save_object();
+    parent::save_object();
   }
 
 
@@ -189,7 +189,7 @@ class dhcpSubnet extends dhcpPlugin
   /* Save to LDAP */
   function save()
   {
-    dhcpPlugin::save();
+    parent::save();
 
     /* Move dn to the result */
     $this->attrs['dhcpNetMask']= array(netmask_to_bits($this->dhcpNetMask));

@@ -32,7 +32,7 @@ class dhcpHost extends dhcpPlugin
 
   function __construct($parent,$attrs,$host_exists_in_gosa = FALSE)
   {
-    dhcpPlugin::dhcpPlugin($parent,$attrs);
+    parent::__construct($parent,$attrs);
 
     /* Load attributes */
     if (!$this->new){
@@ -113,7 +113,7 @@ class dhcpHost extends dhcpPlugin
       $this->options->set('host-name',$this->cn);
     }
 
-    dhcpPlugin::save_object();
+    parent::save_object();
   }
 
 
@@ -159,7 +159,7 @@ class dhcpHost extends dhcpPlugin
   /* Save to LDAP */
   function save()
   {
-    dhcpPlugin::save();
+    parent::save();
     if ($this->dhcpHWAddress != ""){
       $this->attrs['dhcpHWAddress']= array($this->dhcpHWAddress);
     } else {

@@ -33,7 +33,7 @@ class dhcpPool extends dhcpPlugin
 
   function __construct($parent,$attrs)
   {
-    dhcpPlugin::dhcpPlugin($parent,$attrs);
+    parent::__construct($parent,$attrs);
 
     /* Load attributes */
     if (!$this->new){
@@ -85,7 +85,7 @@ class dhcpPool extends dhcpPlugin
       $this->range_stop= validate(get_post('range_stop'));
     }
 
-    dhcpPlugin::save_object();
+    parent::save_object();
 
     /* Move range to internal variable */
     $this->dhcpRange= $this->range_start." ".$this->range_stop;
@@ -160,7 +160,7 @@ class dhcpPool extends dhcpPlugin
   /* Save to LDAP */
   function save()
   {
-    dhcpPlugin::save();
+    parent::save();
     $this->attrs['dhcpRange']= array($this->dhcpRange);
 
     return ($this->attrs);

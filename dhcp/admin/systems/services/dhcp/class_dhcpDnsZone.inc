@@ -40,7 +40,7 @@ class dhcpDnsZone extends dhcpPlugin
   function __construct($parent,$attrs,$host_exists_in_gosa = FALSE)
   {
     global $config;
-    dhcpPlugin::dhcpPlugin($parent,$attrs);
+    parent::__construct($parent,$attrs);
 
     /* Load attributes */
     if (!$this->new){
@@ -131,7 +131,7 @@ class dhcpDnsZone extends dhcpPlugin
 
     }
 
-    dhcpPlugin::save_object();
+    parent::save_object();
   }
 
 
@@ -180,7 +180,7 @@ class dhcpDnsZone extends dhcpPlugin
   /* Save to LDAP */
   function save()
   {
-    dhcpPlugin::save();
+    parent::save();
 
     if ($this->dhcpKeyDN != ""){
       $this->attrs['dhcpKeyDN']= array(base64_decode($this->dhcpKeyDN));
