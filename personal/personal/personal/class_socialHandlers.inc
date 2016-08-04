@@ -133,3 +133,13 @@ class socialHandler_diaspora extends socialHandler
     return $value;
   }
 }
+
+class socialHandler_linkedin extends socialHandler
+{
+  static function getName()
+  {
+    return _('LinkedIn');
+  }
+
+  protected $baseurl = 'https://www.linkedin.com/in';
+}
