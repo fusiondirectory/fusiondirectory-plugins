@@ -179,7 +179,7 @@ class ppolicy extends simplePlugin
         )
       )
     );
-    $this->attributesAccess['pwdCheckQuality']->attributes[0]->setManagedAttributes(
+    $this->attributesAccess['pwdCheckQuality']->setManagedAttributes(
       array (
         'disable' => array (
           0 => array (
