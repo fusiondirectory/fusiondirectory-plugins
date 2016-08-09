@@ -156,7 +156,7 @@ class systemManagement extends simpleManagement
 
       // Prepare event to be added
       if (isset($events[$event]) && $this->siActive) {
-        $this->dialogObject = new argonautAction(NULL, array('action' => $event));
+        $this->dialogObject = new argonautAction($event);
         $this->dialogObject->targets = $mac;
 
         if ($triggered) {
