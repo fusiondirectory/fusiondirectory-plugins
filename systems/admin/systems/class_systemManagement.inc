@@ -172,7 +172,7 @@ class systemManagement extends management
 
     // Prepare event to be added
     if (isset($events[$event])) {
-      $this->dialogObject = new argonautAction(array('action' => $event));
+      $this->dialogObject = new argonautAction($event);
       $this->dialogObject->targets = $mac;
 
       if ($triggered) {
