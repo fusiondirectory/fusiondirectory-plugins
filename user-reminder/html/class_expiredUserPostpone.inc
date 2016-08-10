@@ -83,12 +83,14 @@ class expiredUserPostpone extends standAlonePage
     $smarty->assign('usePrototype', 'FALSE');
     $smarty->append('js_files',     'include/pwdStrength.js');
     $smarty->append('css_files',    get_template_path('login.css'));
+    $lang = session::global_get('lang');
+    $smarty->assign('lang', preg_replace('/_.*$/', '', $lang));
+    $smarty->assign('rtl', language_is_rtl($lang));
     $smarty->display(get_template_path('headers.tpl'));
 
     $smarty->assign('version',        FD_VERSION);
     $smarty->assign('success',        $success);
     $smarty->assign('activated',      $this->activated);
-
     $smarty->display(get_template_path('user-reminder.tpl'));
   }
 
