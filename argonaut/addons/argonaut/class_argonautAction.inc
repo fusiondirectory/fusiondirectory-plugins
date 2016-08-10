@@ -264,6 +264,11 @@ class argonautAction extends simplePlugin
         'name'  => _('(Re)Install'),
         'img'   => 'geticon.php?context=actions&icon=system-reinstall&size=16'
       ),
+      'SambaShares.start' => array(
+        'name'  => _('Update Samba Shares'),
+        'img'   => 'geticon.php?context=applications&icon=samba&size=16'
+      ),
+	  
     );
   }
 }
