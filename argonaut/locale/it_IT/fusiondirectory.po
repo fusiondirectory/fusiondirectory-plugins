@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-08-02 08:56+0200\n"
-"PO-Revision-Date: 2016-01-22 16:06+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2016-08-11 21:08+0200\n"
+"PO-Revision-Date: 2016-08-10 16:47+0000\n"
+"Last-Translator: Paola Penati <penati@avaya.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -447,6 +447,26 @@ msgstr "LTSP"
 msgid "LTSP server"
 msgstr "Server LTSP"
 
+#: addons/argonaut/class_argonautEventTypes.inc:72
+msgid "Switch off"
+msgstr "Spegni"
+
+#: addons/argonaut/class_argonautEventTypes.inc:85
+msgid "Reboot"
+msgstr "Riavvia"
+
+#: addons/argonaut/class_argonautEventTypes.inc:89
+msgid "Wake up"
+msgstr "Risvegliare"
+
+#: addons/argonaut/class_argonautEventTypes.inc:93
+msgid "Software update"
+msgstr "Aggiornamento del software"
+
+#: addons/argonaut/class_argonautEventTypes.inc:97
+msgid "(Re)Install"
+msgstr "(Re)Installa"
+
 #: addons/argonaut/class_filterArgonautEvents.inc:39
 #: addons/argonaut/class_argonautQueue.inc:260
 #: addons/argonaut/class_argonautQueue.inc:344
@@ -694,26 +714,6 @@ msgstr "Obiettivi"
 #: addons/argonaut/class_argonautAction.inc:140
 msgid "Targets for this task"
 msgstr "Obiettivi di questa attività"
-
-#: addons/argonaut/class_argonautAction.inc:248
-msgid "Switch off"
-msgstr "Spegni"
-
-#: addons/argonaut/class_argonautAction.inc:252
-msgid "Reboot"
-msgstr "Riavvia"
-
-#: addons/argonaut/class_argonautAction.inc:256
-msgid "Wake up"
-msgstr "Risvegliare"
-
-#: addons/argonaut/class_argonautAction.inc:260
-msgid "Software update"
-msgstr "Aggiornamento del software"
-
-#: addons/argonaut/class_argonautAction.inc:264
-msgid "(Re)Install"
-msgstr "(Re)Installa"
 
 #: include/class_supportDaemon.inc:107
 msgid "Multiple argonaut server found. Only one is supported"

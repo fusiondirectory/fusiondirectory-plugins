@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Alexey Matveev, 2016
+# Alexey Matveev, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-08-02 08:56+0200\n"
-"PO-Revision-Date: 2016-06-28 11:05+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2016-08-11 21:08+0200\n"
+"PO-Revision-Date: 2016-08-08 19:22+0000\n"
+"Last-Translator: Alexey Matveev\n"
 "Language-Team: Russian (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -297,11 +298,11 @@ msgstr "Мобильный телефон"
 
 #: admin/systems/system-list.xml:253
 msgid "Trigger action"
-msgstr ""
+msgstr "Действие по триггеру"
 
 #: admin/systems/system-list.xml:260
 msgid "Schedule action"
-msgstr ""
+msgstr "Действие по расписанию"
 
 #: admin/systems/system-list.xml:272 admin/systems/serverService-list.xml:69
 msgid "Remove"
@@ -371,7 +372,7 @@ msgstr "Сетевые настройки"
 
 #: admin/systems/class_phoneGeneric.inc:37
 msgid "Phone information"
-msgstr ""
+msgstr "Информация об телеофоне"
 
 #: admin/systems/class_phoneGeneric.inc:41
 msgid "Phone hardware"
@@ -379,11 +380,11 @@ msgstr ""
 
 #: admin/systems/class_phoneGeneric.inc:59
 msgid "The name of the phone"
-msgstr ""
+msgstr "Название телефона"
 
 #: admin/systems/class_phoneGeneric.inc:63
 msgid "A short description of the phone"
-msgstr ""
+msgstr "Краткое описание телефона"
 
 #: admin/systems/class_phoneGeneric.inc:73
 #: admin/systems/class_mobilePhoneGeneric.inc:77
@@ -392,7 +393,7 @@ msgstr "Серийный номер"
 
 #: admin/systems/class_phoneGeneric.inc:73
 msgid "The serial number of the phone"
-msgstr ""
+msgstr "Серийный номер телефона"
 
 #: admin/systems/class_phoneGeneric.inc:77
 #: admin/systems/class_mobilePhoneGeneric.inc:95
@@ -401,7 +402,7 @@ msgstr "Номер телефона"
 
 #: admin/systems/class_phoneGeneric.inc:77
 msgid "The telephone number of the phone"
-msgstr ""
+msgstr "Телефонный номер у этого телефона"
 
 #: admin/systems/class_printGeneric.inc:31
 msgid "Printer information"
@@ -409,11 +410,11 @@ msgstr "Информация о принтере"
 
 #: admin/systems/class_printGeneric.inc:62
 msgid "The name of the printer"
-msgstr ""
+msgstr "Название принтера"
 
 #: admin/systems/class_printGeneric.inc:66
 msgid "A short description of the printer"
-msgstr ""
+msgstr "Краткое описание принтера"
 
 #: admin/systems/class_printGeneric.inc:72
 msgid "Details"
@@ -425,7 +426,7 @@ msgstr "Местонахождение принтера"
 
 #: admin/systems/class_printGeneric.inc:75
 msgid "The location of the printer"
-msgstr ""
+msgstr "Расположение принтера"
 
 #: admin/systems/class_printGeneric.inc:79
 msgid "Printer URL"
@@ -433,7 +434,7 @@ msgstr "URL принтера"
 
 #: admin/systems/class_printGeneric.inc:79
 msgid "The URL of the printer"
-msgstr ""
+msgstr "URL принтера"
 
 #: admin/systems/class_printGeneric.inc:85
 #: admin/systems/class_printGeneric.inc:88
@@ -471,23 +472,23 @@ msgstr "Пути windows"
 
 #: admin/systems/class_printGeneric.inc:123
 msgid "Inf file"
-msgstr ""
+msgstr "Inf файл"
 
 #: admin/systems/class_printGeneric.inc:123
 msgid "Path to windows inf file for this printer"
-msgstr ""
+msgstr "Путь к inf файлу windows для этого принтера"
 
 #: admin/systems/class_printGeneric.inc:127
 msgid "Driver directory"
-msgstr ""
+msgstr "Директория драйвера"
 
 #: admin/systems/class_printGeneric.inc:127
 msgid "Path to directory that contains windows drivers for this printer"
-msgstr ""
+msgstr "Путь к директории, которая содержит windows драйвер для этого принтера"
 
 #: admin/systems/class_printGeneric.inc:131
 msgid "Driver name"
-msgstr ""
+msgstr "Имя драйвера"
 
 #: admin/systems/class_printGeneric.inc:131
 msgid "Windows name of the printer driver"
@@ -1043,11 +1044,11 @@ msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:43
 msgid "Systems RDN"
-msgstr ""
+msgstr "RDN для систем"
 
 #: config/systems/class_systemsPluginConfig.inc:43
 msgid "Branch in which systems will be stored"
-msgstr ""
+msgstr "Ветка, в которой системы будут храниться"
 
 #: config/systems/class_systemsPluginConfig.inc:48
 msgid "Server RDN"
@@ -1083,7 +1084,7 @@ msgstr "Ветка в которой будут храниться принте�
 
 #: config/systems/class_systemsPluginConfig.inc:68
 msgid "Component RDN"
-msgstr ""
+msgstr "RDN для компонентов"
 
 #: config/systems/class_systemsPluginConfig.inc:68
 msgid "Branch in which network devices will be stored"
@@ -1091,11 +1092,11 @@ msgstr "Ветка в которой сетевые устройства буд�
 
 #: config/systems/class_systemsPluginConfig.inc:73
 msgid "Phone RDN"
-msgstr ""
+msgstr "RDN для телефонов"
 
 #: config/systems/class_systemsPluginConfig.inc:73
 msgid "Branch in which phones will be stored"
-msgstr ""
+msgstr "Ветка, в которой телефоны будут храниться"
 
 #: config/systems/class_systemsPluginConfig.inc:78
 msgid "Mobile phone RDN"
@@ -1131,7 +1132,7 @@ msgstr "Отображаемое имя кодировки"
 
 #: config/systems/class_systemsPluginConfig.inc:106
 msgid "Encodings"
-msgstr ""
+msgstr "Кодировки"
 
 #: admin/ogroups/goto/termgroup.tpl.c:5
 msgid ""
