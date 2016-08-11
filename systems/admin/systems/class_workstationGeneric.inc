@@ -267,7 +267,7 @@ class workstationGeneric extends systemSimplePluginGlue
 
     if ($activate && class_available('supportDaemon')) {
       /* Send installation activation */
-      $events = argonautAction::get_event_types();
+      $events = argonautEventTypes::get_event_types();
       if (isset($events['installation_activation'])) {
         $o_queue = new supportDaemon();
         $o_queue->append_call('installation_activation', array($this->netConfigDNS->macAddress), array());
