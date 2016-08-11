@@ -84,7 +84,7 @@ class argonautImportFile extends simplePlugin
     $this->attributesAccess['import']->setLinearRendering(TRUE);
 
     $this->events         = array();
-    $this->daemon_events  = argonautAction::get_event_types();
+    $this->daemon_events  = argonautEventTypes::get_event_types();
   }
 
   function execute()

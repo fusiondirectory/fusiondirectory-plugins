@@ -103,7 +103,7 @@ class argonautQueue extends simpleManagement
       $task = $tmp['EVENT'];
 
       /* Create a printable job name/description */
-      $infos = argonautAction::get_event_info($task['HEADERTAG']);
+      $infos = argonautEventTypes::get_event_info($task['HEADERTAG']);
       if ($infos) {
         $j_name = $task['ID']." - ".$infos['name']."&nbsp;".$task['MACADDRESS'];
       } else {
@@ -130,7 +130,7 @@ class argonautQueue extends simpleManagement
       foreach ($this->dns as $dn) {
         $tmp  = $this->headpage->getEntry($dn);
         $task = $tmp['EVENT'];
-        $infos = argonautAction::get_event_info($task['HEADERTAG']);
+        $infos = argonautEventTypes::get_event_info($task['HEADERTAG']);
         if ($infos) {
           $objects[] = array(
             'name'  => $infos['name'],
@@ -290,7 +290,7 @@ class argonautQueue extends simpleManagement
     /* Check if this event exists as Daemon class
      * In this case, display a more accurate entry.
      */
-    $infos = argonautAction::get_event_info($tag);
+    $infos = argonautEventTypes::get_event_info($tag);
     if ($infos) {
       $str = $infos['name'];
 
