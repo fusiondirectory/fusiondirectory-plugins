@@ -6,18 +6,18 @@
     <departmentRootVisible>false</departmentRootVisible>
     <baseMode>false</baseMode>
     <multiSelect>true</multiSelect>
-    <template>../plugins/admin/fai/packageSelect/selectPackage-list.tpl</template>
+    <template>simple-select-list.tpl</template>
+    <module>simple</module>
     <label>Please select the desired entries</label>
     <defaultSortColumn>1</defaultSortColumn>
 
     <objectType>
-      <label>FAI</label>
+      <label>Package</label>
       <objectClass>FAKE_OC__FaiPackage</objectClass>
       <category>faiPackage</category>
       <class>faiPackage</class>
       <image>geticon.php?context=applications&amp;icon=fai-packages&amp;size=16</image>
     </objectType>
-
   </definition>
 
   <table>
