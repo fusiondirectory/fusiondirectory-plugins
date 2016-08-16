@@ -23,9 +23,6 @@ class PackageSelectDialog extends GenericSelectDialog
 {
   protected $dialogClass = 'packageSelect';
 
-  protected $post_cancel = 'packageSelect_cancel';
-  protected $post_finish = 'packageSelect_save';
-
   function handle_finish ()
   {
     $result = $this->dialog->detectPostActions();

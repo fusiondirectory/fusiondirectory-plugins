@@ -3,9 +3,9 @@
 </div>
 
 <div class="contentboxb">
-  <div style="padding:3px;">
+  <p style="margin:0;padding:3px;">
     {t}A maximum of 200 entries will be shown here.{/t}
-  </div>
+  </p>
 
   {foreach from=$customs key=key item=value}
     {$value}<label for="{$key}">&nbsp;custom {$key}</label><br/>
