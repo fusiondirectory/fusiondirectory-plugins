@@ -18,16 +18,16 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class filterFAIcustoms extends filter {
-
+class filterFAIcustoms extends filter
+{
   var $customs = array();
 
-  function filterFAIcustoms($filename)
+  function __construct($filename)
   {
     $release = session::get('packageSelect_Release');
     $this->customs = serviceRepository::getCustomReleases($release);
 
-    parent::filter($filename);
+    parent::__construct($filename);
   }
 
   function load($filename)
@@ -57,6 +57,6 @@ class filterFAIcustoms extends filter {
     }
     $smarty->assign('customs', $customs);
 
-    return filter::render();
+    return parent::render();
   }
 }
