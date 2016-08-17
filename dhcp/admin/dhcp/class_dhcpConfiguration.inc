@@ -385,7 +385,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     return '';
   }
 
-  protected function htmlIds()
+  public function htmlIds()
   {
     $ids = parent::htmlIds();
     unset($ids[0]);

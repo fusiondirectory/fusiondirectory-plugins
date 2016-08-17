@@ -228,7 +228,7 @@ class PgpKeyAttribute extends GenericDialogAttribute
     return '{$div_'.$id.'}'."\n";
   }
 
-  protected function htmlIds()
+  public function htmlIds()
   {
     $id = $this->getHtmlId();
     $ids = array('add'.$id.'_dialog');

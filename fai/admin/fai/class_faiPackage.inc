@@ -132,7 +132,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     return $buttons;
   }
 
-  protected function htmlIds()
+  public function htmlIds()
   {
     $id = $this->getHtmlId();
     return array_merge(array('add'.$id), parent::htmlIds());
