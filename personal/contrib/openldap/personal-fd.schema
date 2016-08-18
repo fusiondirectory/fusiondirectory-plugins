@@ -38,7 +38,21 @@ attributetype ( 1.3.6.1.4.1.38414.48.1.6 NAME 'fdBadge'
   EQUALITY caseExactIA5Match
   SUBSTR caseExactIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
-  
+
+# GOsa stuff
+
+attributetype ( 1.3.6.1.4.1.15305.2.1 NAME ( 'gender' 'sex' )
+  DESC    'Gender: M for male, F for female'
+  EQUALITY caseIgnoreIA5Match
+  SYNTAX  1.3.6.1.4.1.1466.115.121.1.26{1}
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.15305.2.2 NAME ( 'dateOfBirth' 'dob' )
+  DESC    'Date of birth in ISO 8601 format'
+  EQUALITY caseIgnoreMatch
+  SYNTAX  1.3.6.1.4.1.1466.115.121.1.15{10}
+  SINGLE-VALUE )
+
 # Objectclasses
 objectclass (1.3.6.1.4.1.38414.48.2.1 NAME 'fdPersonalInfo' SUP top AUXILIARY
   DESC 'FusionDirectory - User personal tab'
