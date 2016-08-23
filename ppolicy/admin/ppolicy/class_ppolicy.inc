@@ -23,7 +23,7 @@ class ppolicy extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array('device', 'pwdPolicy');
+  var $objectclasses = array('device', 'pwdPolicy', 'pwdPolicyChecker');
 
   /* Return plugin informations for acl handling  */
   public static function plInfo()
@@ -100,13 +100,16 @@ class ppolicy extends simplePlugin
             'pwdSafeModify', FALSE,
             FALSE // default
           ),
-          //~ new SelectAttribute(
-            //~ _('Check quality'), _('Decides what to do if the function in "Check module" is not available'),
-            //~ 'pwdCheckQuality', FALSE,
-            //~ array(0, 1, 2), 0,
-            //~ array(_('Disabled'), _('Ignore errors'), _('Reject on errors'))
-          //~ ),
-          new HiddenAttribute('pwdCheckQuality', FALSE, 0),
+          new SelectAttribute(
+            _('Check quality'), _('Decides what to do if the function in "Check module" is not available'),
+            'pwdCheckQuality', TRUE,
+            array(0, 1, 2), 0,
+            array(_('Disabled'), _('Ignore errors'), _('Reject on errors'))
+          ),
+          new StringAttribute (
+            _('Check module'), _('Name of a user supplied password quality check module that will be called to perform password quality checks and is only relevant if pwdCheckQuality is either 1 or 2'),
+            'pwdCheckModule', FALSE
+          ),
         )
       ),
       'lockout' => array(
@@ -172,6 +175,15 @@ class ppolicy extends simplePlugin
         'disable' => array (
           FALSE => array (
             'pwdSafeModify',
+          )
+        )
+      )
+    );
+    $this->attributesAccess['pwdCheckQuality']->setManagedAttributes(
+      array (
+        'disable' => array (
+          0 => array (
+            'pwdCheckModule'
           )
         )
       )

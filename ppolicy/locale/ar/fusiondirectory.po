@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-07-06 14:01+0200\n"
-"PO-Revision-Date: 2016-04-27 20:17+0000\n"
+"POT-Creation-Date: 2016-08-11 21:08+0200\n"
+"PO-Revision-Date: 2016-08-02 06:53+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Arabic (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/ar/)\n"
 "MIME-Version: 1.0\n"
@@ -130,54 +130,85 @@ msgid ""
 " operation"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:113
+#: admin/ppolicy/class_ppolicy.inc:104
+msgid "Check quality"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:104
+msgid "Decides what to do if the function in \"Check module\" is not available"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:107
+msgid "Disabled"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:107
+msgid "Ignore errors"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:107
+msgid "Reject on errors"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:110
+msgid "Check module"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:110
+msgid ""
+"Name of a user supplied password quality check module that will be called to"
+" perform password quality checks and is only relevant if pwdCheckQuality is "
+"either 1 or 2"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:116
 msgid "Lock out"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:117
+#: admin/ppolicy/class_ppolicy.inc:120
 msgid "Activate lock out"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:117
+#: admin/ppolicy/class_ppolicy.inc:120
 msgid ""
 "Whether to lock an account that had more consecutive failed bind attempts "
 "with invalid passwords than is defined by \"Maximum failures\""
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:122
+#: admin/ppolicy/class_ppolicy.inc:125
 msgid "Lock out duration"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:122
+#: admin/ppolicy/class_ppolicy.inc:125
 msgid ""
 "Time the account remains locked after an automatic lock out (0 means for "
 "ever)"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:127
+#: admin/ppolicy/class_ppolicy.inc:130
 msgid "Maximum failures"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:127
+#: admin/ppolicy/class_ppolicy.inc:130
 msgid ""
 "Number of consecutive password failures allowed before automatic lock out"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:132
+#: admin/ppolicy/class_ppolicy.inc:135
 msgid "Failure count interval"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:132
+#: admin/ppolicy/class_ppolicy.inc:135
 msgid ""
 "Time after which the count of consecutive password failures is reset even if"
 " no successful authentication has occurred"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:137
+#: admin/ppolicy/class_ppolicy.inc:140
 msgid "Must change"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:137
+#: admin/ppolicy/class_ppolicy.inc:140
 msgid ""
 "Whether the user must change their password after an account is reset by an "
 "administrator following an automatic lockout"

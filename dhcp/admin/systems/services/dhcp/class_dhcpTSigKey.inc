@@ -30,9 +30,9 @@ class dhcpTSigKey extends dhcpPlugin
   /* attribute list for save action */
   var $objectclasses= array("top", "dhcpTSigKey");
 
-  function dhcpTSigKey($parent,$attrs)
+  function __construct($parent,$attrs)
   {
-    dhcpPlugin::dhcpPlugin($parent,$attrs);
+    parent::__construct($parent,$attrs);
 
     /* Load attributes */
     if (!$this->new){
@@ -95,7 +95,7 @@ class dhcpTSigKey extends dhcpPlugin
 
     }
 
-    dhcpPlugin::save_object();
+    parent::save_object();
   }
 
 
@@ -140,7 +140,7 @@ class dhcpTSigKey extends dhcpPlugin
   /* Save to LDAP */
   function save()
   {
-    dhcpPlugin::save();
+    parent::save();
 
      if ($this->dhcpKeyAlgorithm != ""){
       $this->attrs['dhcpKeyAlgorithm']= array($this->dhcpKeyAlgorithm);

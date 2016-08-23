@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-07-06 14:01+0200\n"
+"POT-Creation-Date: 2016-08-11 21:08+0200\n"
 "PO-Revision-Date: 2016-01-22 16:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
@@ -448,6 +448,26 @@ msgstr "LTSP"
 msgid "LTSP server"
 msgstr "Serveur LTSP"
 
+#: addons/argonaut/class_argonautEventTypes.inc:72
+msgid "Switch off"
+msgstr "Éteindre"
+
+#: addons/argonaut/class_argonautEventTypes.inc:85
+msgid "Reboot"
+msgstr "Redémarrer"
+
+#: addons/argonaut/class_argonautEventTypes.inc:89
+msgid "Wake up"
+msgstr "Réveiller"
+
+#: addons/argonaut/class_argonautEventTypes.inc:93
+msgid "Software update"
+msgstr "Mise à jour logicielle"
+
+#: addons/argonaut/class_argonautEventTypes.inc:97
+msgid "(Re)Install"
+msgstr "(Ré)installer"
+
 #: addons/argonaut/class_filterArgonautEvents.inc:39
 #: addons/argonaut/class_argonautQueue.inc:260
 #: addons/argonaut/class_argonautQueue.inc:344
@@ -695,26 +715,6 @@ msgstr "Cibles"
 #: addons/argonaut/class_argonautAction.inc:140
 msgid "Targets for this task"
 msgstr "Cibles pour cette tache"
-
-#: addons/argonaut/class_argonautAction.inc:248
-msgid "Switch off"
-msgstr "Éteindre"
-
-#: addons/argonaut/class_argonautAction.inc:252
-msgid "Reboot"
-msgstr "Redémarrer"
-
-#: addons/argonaut/class_argonautAction.inc:256
-msgid "Wake up"
-msgstr "Réveiller"
-
-#: addons/argonaut/class_argonautAction.inc:260
-msgid "Software update"
-msgstr "Mise à jour logicielle"
-
-#: addons/argonaut/class_argonautAction.inc:264
-msgid "(Re)Install"
-msgstr "(Ré)installer"
 
 #: include/class_supportDaemon.inc:107
 msgid "Multiple argonaut server found. Only one is supported"

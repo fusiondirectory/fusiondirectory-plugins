@@ -1,9 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2015-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,7 +18,15 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class apachevhosttabs extends simpleTabs_noSpecial
+class argonautEventSambaShares extends argonautEventTypes
 {
+  static protected function get_event_types_list()
+  {
+    return array(
+      'SambaShares.start' => array(
+        'name'  => _('Update Samba Shares'),
+        'img'   => 'geticon.php?context=applications&icon=samba&size=16'
+      ),
+    );
+  }
 }
-?>

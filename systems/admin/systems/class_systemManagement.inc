@@ -62,7 +62,7 @@ class systemManagement extends management
     if (class_available('argonautAction') && class_available('supportDaemon')) {
       $this->headpage->xmlData['actionmenu']['action'][2]['action'] = array();
       $this->headpage->xmlData['actionmenu']['action'][3]['action'] = array();
-      $events = argonautAction::get_event_types();
+      $events = argonautEventTypes::get_event_types();
       foreach ($events as $name => $data) {
         $this->registerAction("T_".$name, "handleEvent");
         $headpage->xmlData['actionmenu']['action'][2]['action'][] = array(
@@ -142,7 +142,7 @@ class systemManagement extends management
     $mac = array();
 
     // Collect target mac addresses
-    $events   = argonautAction::get_event_types();
+    $events   = argonautEventTypes::get_event_types();
     $o_queue  = new supportDaemon();
     foreach ($target as $dn) {
       $obj = $headpage->getEntry($dn);
@@ -172,7 +172,7 @@ class systemManagement extends management
 
     // Prepare event to be added
     if (isset($events[$event])) {
-      $this->dialogObject = new argonautAction(array('action' => $event));
+      $this->dialogObject = new argonautAction($event);
       $this->dialogObject->targets = $mac;
 
       if ($triggered) {

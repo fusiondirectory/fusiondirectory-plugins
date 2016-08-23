@@ -147,6 +147,7 @@ class argonautAction extends simplePlugin
 
   public function __construct($action)
   {
+    global $config;
     parent::__construct($config->current['BASE']);
 
     $this->attributesAccess['scheduled']->setManagedAttributes(
@@ -218,53 +219,6 @@ class argonautAction extends simplePlugin
     }
 
     return $ret;
-  }
-
-  /*! \brief  Returns event information, like menu strings, images ...
-    @return   Array Event informations.
-   */
-  static public function get_event_info($action)
-  {
-    $events = self::get_event_types();
-    if (isset($events[$action])) {
-      $infos = $events[$action];
-
-      $infos['menuimg'] = '<img src="'.$infos['img'].'" alt="'.$infos['name'].'" class="center"/>';
-      $infos['listimg'] = '<img src="'.$infos['img'].'" title="'.$infos['name'].
-                          '"alt="'.$infos['name'].'" class="center"/>';
-      return $infos;
-    } else {
-      return FALSE;
-    }
-  }
-
-  /*! \brief  Returns a complete list of all available events.
-    @return   Array   Containing info for all available events.
-   */
-  static public function get_event_types()
-  {
-    return array(
-      'System.halt' => array(
-        'name'  => _('Switch off'),
-        'img'   => 'geticon.php?context=actions&icon=system-shutdown&size=16'
-      ),
-      'Deployment.reboot' => array(
-        'name'  => _('Reboot'),
-        'img'   => 'geticon.php?context=actions&icon=system-reboot&size=16'
-      ),
-      'Deployment.wake' => array(
-        'name'  => _('Wake up'),
-        'img'   => 'geticon.php?context=status&icon=task-running&size=16'
-      ),
-      'Deployment.update' => array(
-        'name'  => _('Software update'),
-        'img'   => 'geticon.php?context=actions&icon=system-update&size=16'
-      ),
-      'Deployment.reinstall' => array(
-        'name'  => _('(Re)Install'),
-        'img'   => 'geticon.php?context=actions&icon=system-reinstall&size=16'
-      ),
-    );
   }
 }
 ?>

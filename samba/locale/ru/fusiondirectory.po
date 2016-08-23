@@ -3,13 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Alexey Matveev, 2016
+# Alexey Matveev, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-07-06 14:01+0200\n"
-"PO-Revision-Date: 2016-04-08 19:09+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2016-08-11 21:08+0200\n"
+"PO-Revision-Date: 2016-08-10 09:21+0000\n"
+"Last-Translator: Alexey Matveev\n"
 "Language-Team: Russian (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +38,7 @@ msgstr "Домен"
 
 #: admin/groups/samba/class_sambaGroup.inc:45
 msgid "Samba domain"
-msgstr ""
+msgstr "Домен Samba"
 
 #: admin/groups/samba/class_sambaGroup.inc:49
 msgid "Samba informations"
@@ -44,7 +46,7 @@ msgstr ""
 
 #: admin/groups/samba/class_sambaGroup.inc:56
 msgid "Group type"
-msgstr ""
+msgstr "Тип группы"
 
 #: admin/groups/samba/class_sambaGroup.inc:56
 msgid "Samba group type"
@@ -317,7 +319,7 @@ msgstr "Профиль Samba"
 #: personal/samba/class_sambaAccount.inc:189
 #: personal/samba/class_sambaAccount.inc:222
 msgid "Home directory drive"
-msgstr "Название диска домашнего каталога"
+msgstr "Диск для домашнего каталога"
 
 #: personal/samba/class_sambaAccount.inc:189
 #: personal/samba/class_sambaAccount.inc:222
@@ -332,7 +334,7 @@ msgstr "Путь к домашней директории"
 #: personal/samba/class_sambaAccount.inc:194
 #: personal/samba/class_sambaAccount.inc:227
 msgid "UNC path for the home drive"
-msgstr ""
+msgstr "UNC путь к домашнему диску"
 
 #: personal/samba/class_sambaAccount.inc:203
 msgid "Script path"
@@ -350,7 +352,7 @@ msgstr "Путь к профилю"
 #: personal/samba/class_sambaAccount.inc:207
 #: personal/samba/class_sambaAccount.inc:232
 msgid "UNC profile path"
-msgstr ""
+msgstr "UNC путь к профилю"
 
 #: personal/samba/class_sambaAccount.inc:214
 msgid "Terminal server"
@@ -592,7 +594,7 @@ msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:44
 msgid "The location where FusionDirectory looks for new samba workstations."
-msgstr ""
+msgstr "Место, где FusionDirectory ищет новые рабочие станции samba."
 
 #: config/samba/class_sambaPluginConfig.inc:49
 msgid "Samba ID mapping"

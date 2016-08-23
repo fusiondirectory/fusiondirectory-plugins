@@ -26,10 +26,10 @@ class dhcpGroup extends dhcpPlugin
   /* attribute list for save action */
   var $objectclasses= array('top', 'dhcpGroup', 'dhcpOptions');
 
-  function dhcpGroup($parent,&$attrs)
+  function __construct($parent,&$attrs)
   {
     /* Load statements / options */
-    dhcpPlugin::dhcpPlugin($parent,$attrs);
+    parent::__construct($parent,$attrs);
   }
 
   function execute()
@@ -71,7 +71,7 @@ class dhcpGroup extends dhcpPlugin
     }
 
     /* Handle global saving */
-    dhcpPlugin::save_object();
+    parent::save_object();
   }
 
 
@@ -113,7 +113,7 @@ class dhcpGroup extends dhcpPlugin
   /* Save to LDAP */
   function save()
   {
-    dhcpPlugin::save();
+    parent::save();
     return ($this->attrs);
   }
 

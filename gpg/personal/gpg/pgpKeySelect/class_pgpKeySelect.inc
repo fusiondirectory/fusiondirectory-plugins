@@ -18,12 +18,34 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class pgpKeySelect extends management
+class pgpKeySelect extends simpleSelectManagement
 {
-  protected $skipFooter = TRUE;
-  protected $skipHeader = TRUE;
+  protected $objectTypes  = array();
+  protected $autoFilter   = FALSE;
+
+  protected $departmentBrowser      = FALSE;
+  protected $departmentRootVisible  = FALSE;
+  protected $baseMode               = FALSE;
+  protected $multiSelect            = TRUE;
 
   function __construct()
+  {
+    $this->listXMLPath = get_template_path('pgpKeySelect-list.xml', TRUE, dirname(__FILE__));
+
+    parent::__construct();
+  }
+
+  function configureHeadpage ()
+  {
+    parent::configureHeadpage();
+    $this->headpage->registerElementFilter('pgpDate', 'pgpKeySelect::filterPgpDate');
+    $this->headpage->registerElementFilter('pgpSize', 'pgpKeySelect::filterPgpSize');
+    $this->headpage->registerElementFilter('pgpDisabled', 'pgpKeySelect::filterPgpRevoked');
+    $this->headpage->registerElementFilter('pgpRevoked', 'pgpKeySelect::filterPgpRevoked');
+  }
+
+  /* Build the filter */
+  function configureFilter ()
   {
     global $config;
 
@@ -39,28 +61,15 @@ class pgpKeySelect extends management
     } else {
       msg_dialog::display(_('Configuration error'), _('You need to configure GPG base dn through the addons section first'));
     }
-
-    $filter = new filter(get_template_path('pgpKeySelect-filter.xml', TRUE, dirname(__FILE__)));
-    $filter->setObjectStorage($this->storagePoints);
-    $this->setFilter($filter);
-
-    // Build headpage
-    $headpage = new listing(get_template_path('pgpKeySelect-list.xml', TRUE, dirname(__FILE__)));
-    $headpage->registerElementFilter('pgpDate', 'pgpKeySelect::filterPgpDate');
-    $headpage->registerElementFilter('pgpSize', 'pgpKeySelect::filterPgpSize');
-    $headpage->registerElementFilter('pgpDisabled', 'pgpKeySelect::filterPgpRevoked');
-    $headpage->registerElementFilter('pgpRevoked', 'pgpKeySelect::filterPgpRevoked');
-    $headpage->setBase($config->current['BASE']);
-    $headpage->setFilter($filter);
-
-    parent::__construct('', $headpage);
-  }
-
-  function renderList()
-  {
-    $smarty = get_smarty();
-    $smarty->assign('objectFilters', array());
-    return parent::renderList();
+    $this->filter->setObjectStorage($this->storagePoints);
+    $this->filter->category = 'user';
+    $this->filter->query['0']['backend'] = 'LDAPBlacklist';
+    $attributes = array('pgpKeyID', 'pgpUserID', 'pgpKeyCreateTime', 'pgpKeyExpireTime', 'pgpKeyType', 'pgpKeySize');
+    $this->filter->query[0]['filter']       = '$NAME';
+    $this->filter->query[0]['attribute']    = $attributes;
+    $this->filter->elements['NAME']['set']  = '(|('.join('=*$*)(', $attributes).'=*$*))';
+    $this->filter->elements['NAME']['autocomplete']['filter']     = '(|('.join('=*$NAME*)(', $attributes).'=*$NAME*))';
+    $this->filter->elements['NAME']['autocomplete']['attribute']  = $attributes;
   }
 
   static function filterSingleValue($value, $func)
@@ -219,7 +228,7 @@ class PgpKeyAttribute extends GenericDialogAttribute
     return '{$div_'.$id.'}'."\n";
   }
 
-  protected function htmlIds()
+  public function htmlIds()
   {
     $id = $this->getHtmlId();
     $ids = array('add'.$id.'_dialog');

@@ -200,7 +200,7 @@ class sieve
     } /* end else */
   } /* end get_response() */
 
-  function sieve($host, $port, $user, $pass, $auth="",$options ="", $auth_types="PLAIN DIGEST-MD5")
+  function __construct($host, $port, $user, $pass, $auth="",$options ="", $auth_types="PLAIN DIGEST-MD5")
   {
     $this->host=$host;
     $this->port=$port;

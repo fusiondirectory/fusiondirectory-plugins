@@ -26,9 +26,9 @@ class dhcpSharedNetwork extends dhcpPlugin
   /* attribute list for save action */
   var $objectclasses= array('top', 'dhcpSharedNetwork');
 
-  function dhcpSharedNetwork($parent,$attrs)
+  function __construct($parent,$attrs)
   {
-    dhcpPlugin::dhcpPlugin($parent,$attrs);
+    parent::__construct($parent,$attrs);
 
     $this->advanced->setAutoStatements(array("server-identifier", "default-lease-time",
           "max-lease-time", "min-lease-time", "authoritative", "deny unknown-clients",
@@ -105,12 +105,12 @@ class dhcpSharedNetwork extends dhcpPlugin
   function save_object()
   {
     /* Check permissions, don't touch anything if we do not have write permissions */
-    if (!preg_match("/w/",$this->parent->getacl(""))){
-      dhcpPlugin::save_object();
-  }elseif(isset($_POST['cn'])){
+    if (!preg_match("/w/", $this->parent->getacl(""))) {
+      parent::save_object();
+    } elseif(isset($_POST['cn'])) {
 
-      $this->cn= validate(get_post('cn'));
-      dhcpPlugin::save_object();
+      $this->cn = validate(get_post('cn'));
+      parent::save_object();
 
       foreach (array("server-identifier", "default-lease-time",
             "max-lease-time", "min-lease-time") as $attr){
@@ -185,7 +185,7 @@ class dhcpSharedNetwork extends dhcpPlugin
   /* Save to LDAP */
   function save()
   {
-    dhcpPlugin::save();
+    parent::save();
 
     return ($this->attrs);
   }

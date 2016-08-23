@@ -174,7 +174,7 @@ class termgroup extends plugin
 
       $action = $this->mapActions[$_POST['saction']];
       if (class_available('argonautAction')) {
-        $events = argonautAction::get_event_types();
+        $events = argonautEventTypes::get_event_types();
         $macaddresses = array();
         foreach ($this->members as $cn => $macAddress){
           $macaddresses[]= $macAddress;
