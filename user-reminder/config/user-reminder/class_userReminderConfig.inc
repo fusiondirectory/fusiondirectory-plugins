@@ -29,7 +29,7 @@ class userReminderConfig extends simplePlugin
       'plDescription'   => _('Configuration for the reminder of accounts expiration'),
       'plObjectType'    => array('configuration'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

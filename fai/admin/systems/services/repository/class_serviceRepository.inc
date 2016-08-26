@@ -161,7 +161,7 @@ class serviceRepository extends simpleService
       'plDescription' => _('Package repository information'),
       'plIcon'        => 'geticon.php?context=mimetypes&icon=package-x-generic&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -215,7 +215,7 @@ class serviceRepository extends simpleService
     foreach ($repos as $repo) {
       $release = $repo[2];
       if (($repo[4] == 'install') && (!isset($done[$release]))) {
-        self::createBranch($repo[7], $release);
+        static::createBranch($repo[7], $release);
         $done[$release] = TRUE;
       }
     }
@@ -304,7 +304,7 @@ class serviceRepository extends simpleService
   static function getCustomReleases($release)
   {
     $list     = array();
-    $servers  = self::getServers();
+    $servers  = static::getServers();
 
     foreach ($servers as $server) {
       if (strtolower($server['INSTALL']) == strtolower("custom:$release")) {

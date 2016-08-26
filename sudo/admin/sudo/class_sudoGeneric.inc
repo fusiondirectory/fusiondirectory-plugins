@@ -132,7 +132,7 @@ class sudo extends simplePlugin
         'tabClass'  => 'sudotabs',
       )),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

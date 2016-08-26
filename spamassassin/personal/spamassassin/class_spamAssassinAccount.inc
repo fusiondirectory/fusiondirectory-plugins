@@ -69,7 +69,7 @@ class spamAssassinAccount extends simplePlugin
       'plIcon'          => 'geticon.php?context=applications&icon=spamassassin&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=spamassassin&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 }

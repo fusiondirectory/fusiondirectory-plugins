@@ -69,10 +69,10 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
 
     foreach ($services as $tab) {
       $name = $tab['CLASS'];
-      if (in_array($name, self::$argonautService_blacklist)) {
+      if (in_array($name, static::$argonautService_blacklist)) {
         continue;
       }
-      $value = (isset(self::$argonautService_defaults[$name])?self::$argonautService_defaults[$name]:"");
+      $value = (isset(static::$argonautService_defaults[$name])?static::$argonautService_defaults[$name]:"");
       $this->attributes[$name] = new StringAttribute ($name, "Service $name",
                                                       "service_$name", FALSE,
                                                       $value, $this->getAcl());
@@ -119,7 +119,7 @@ class argonautClient extends simplePlugin
       'plSelfModify'    => FALSE,
       'plObjectType'    => array('workstation','server','ogroup-dynamic'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

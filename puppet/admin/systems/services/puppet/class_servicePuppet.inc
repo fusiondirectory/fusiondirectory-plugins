@@ -29,7 +29,7 @@ class servicePuppet extends simpleService {
       'plDescription'     => _('This service allows you to use a puppet server'),
       'plIcon'            => 'geticon.php?context=applications&icon=puppet&size=16',
 
-      'plProvidedAcls'    => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'    => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

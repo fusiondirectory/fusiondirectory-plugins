@@ -28,7 +28,7 @@ class ldapDump extends simplePlugin
       'plObjectType'  => array('special'),
       'plPriority'    => 99,
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

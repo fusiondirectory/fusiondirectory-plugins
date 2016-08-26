@@ -30,7 +30,7 @@ class serviceShare extends simpleService
       'plDescription' => _('Share service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=places&icon=folder-network&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

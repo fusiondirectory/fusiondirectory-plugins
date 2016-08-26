@@ -42,7 +42,7 @@ class serverGeneric extends workstationGeneric
           'tabClass'    => 'servtabs',
         )
       ),
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

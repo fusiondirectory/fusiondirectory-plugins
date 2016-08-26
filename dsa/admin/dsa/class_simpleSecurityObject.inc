@@ -38,7 +38,7 @@ class simpleSecurityObject extends simplePlugin
         'icon'        => 'geticon.php?context=applications&icon=dsa&size=16',
       )),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

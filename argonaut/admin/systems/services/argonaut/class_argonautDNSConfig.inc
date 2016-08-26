@@ -31,7 +31,7 @@ class argonautDNSConfig extends simpleService
       'plDescription'   => _('Argonaut DNS settings').' ('._('Services').')',
       'plIcon'          => 'geticon.php?context=applications&icon=argonaut-dns&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

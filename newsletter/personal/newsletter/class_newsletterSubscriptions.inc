@@ -34,7 +34,7 @@ class newsletterSubscriptions extends simplePlugin
       'plIcon'          => 'geticon.php?context=applications&icon=newsletter&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=newsletter&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

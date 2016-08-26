@@ -31,7 +31,7 @@ class sambaGroup extends simplePlugin
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('group'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

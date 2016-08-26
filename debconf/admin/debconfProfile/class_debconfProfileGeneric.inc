@@ -172,7 +172,7 @@ class debconfProfileGeneric extends simplePlugin
         'icon'      => 'geticon.php?context=applications&icon=debconf&size=16',
         'mainAttr'  => 'ou',
       )),
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

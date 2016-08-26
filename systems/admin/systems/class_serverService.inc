@@ -390,7 +390,7 @@ class ServerService extends management
     }
 
     /* Is this an existing action */
-    if (!isset(self::$actionStatus[$action])) {
+    if (!isset(static::$actionStatus[$action])) {
       msg_dialog::display(_("Error"), _("Unknown action $action"), ERROR_DIALOG);
       return;
     }
@@ -436,8 +436,8 @@ class ServerService extends management
               sprintf(_("Could not get execute action %s on service %s."), $action, $service),
               msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
             );
-          } elseif (preg_match("/^done/", $res)) {
-            $this->plugins[$service]->setStatus(self::$actionStatus[$action]);
+          } elseif (preg_match('/^done/', $res)) {
+            $this->plugins[$service]->setStatus(static::$actionStatus[$action]);
           }
         }
       }

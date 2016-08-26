@@ -110,7 +110,7 @@ class demoPlugin extends simplePlugin
       'plObjectType'      => array('user'),
 
       // But simplePlugin can generate the ACL list for us
-      'plProvidedAcls'    => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'    => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 }

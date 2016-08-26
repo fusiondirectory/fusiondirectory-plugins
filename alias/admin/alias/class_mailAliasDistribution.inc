@@ -39,7 +39,7 @@ class mailAliasDistribution extends simplePlugin
         'ou'          => get_ou('aliasRDN'),
       )),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

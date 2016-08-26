@@ -31,8 +31,7 @@ class subContractingAccount extends simplePlugin
       'plObjectType'  => array('user'),
       'plIcon'        => 'geticon.php?context=applications&icon=subcontracting&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=subcontracting&size=16',
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

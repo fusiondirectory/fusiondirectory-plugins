@@ -28,7 +28,7 @@ class netgroupSystem extends netgroupMembership {
       'plSelfModify'    => FALSE,
       'plPriority'      => 3,
       'plObjectType'    => array('workstation','terminal','server','printer'),
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

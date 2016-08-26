@@ -128,7 +128,7 @@ class workstationGeneric extends systemSimplePluginGlue
           'mainAttr'    => 'cn',
         )
       ),
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

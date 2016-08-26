@@ -86,7 +86,7 @@ class kolabAccount extends simplePlugin
       'plSelfModify'    => TRUE,
       'plPriority'      => 20,
       'plObjectType'    => array('user'),
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

@@ -30,7 +30,7 @@ class serviceOPSI extends simpleService
       'plDescription' => _('OPSI service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=opsi&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

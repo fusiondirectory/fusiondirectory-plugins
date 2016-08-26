@@ -30,7 +30,7 @@ class newsletterConfig extends simplePlugin
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

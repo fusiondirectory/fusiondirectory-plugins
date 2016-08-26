@@ -30,7 +30,7 @@ class communityOrganization extends simplePlugin
       'plDescription'   => _('Community organization dates and alternate address'),
       'plObjectType'    => array('organization'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

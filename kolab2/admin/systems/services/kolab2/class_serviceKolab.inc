@@ -67,7 +67,7 @@ class serviceKolab extends simpleService
       'plShortName'     => _('Kolab 2 mail'),
       'plDescription'   => _('Kolab 2 mail service'),
       'plIcon'          => 'geticon.php?context=applications&icon=kolab2&size=16',
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
