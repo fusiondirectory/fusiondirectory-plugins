@@ -48,7 +48,7 @@ class faiPackageConfiguration extends simplePlugin
       @param  String  The release name (e.g. edge)
       @param  Array   The current package configuration.
    */
-  function __construct($dn = NULL, $packageName, $release, $values)
+  function __construct($dn, $packageName, $release, $values)
   {
     $this->packageName  = $packageName;
 
