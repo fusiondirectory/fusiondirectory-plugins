@@ -130,7 +130,7 @@ class fdRPCService
   {
     global $config;
     if (preg_match('/^_(.*)$/', $method, $m)) {
-      throw new Exception("Non existing method '$m[1]'");
+      throw new FusionDirectoryException("Non existing method '$m[1]'");
     }
 
     if ($method == 'listLdaps') {
@@ -170,7 +170,7 @@ class fdRPCService
       $self = '';
     }
     if (!$plist->check_access($infos['aclCategory'].$self)) {
-      throw new Exception("Unsufficient rights for accessing type '$type$self'");
+      throw new FusionDirectoryException("Unsufficient rights for accessing type '$type$self'");
     }
     if ($tabs !== NULL) {
       if (!is_array($tabs)) {
@@ -179,7 +179,7 @@ class fdRPCService
       foreach ($tabs as $tab) {
         $pInfos = pluglist::pluginInfos($tab);
         if (!$plist->check_access(join($self.',', $pInfos['plCategory']).$self)) {
-          throw new Exception("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
+          throw new FusionDirectoryException("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
         }
       }
     }

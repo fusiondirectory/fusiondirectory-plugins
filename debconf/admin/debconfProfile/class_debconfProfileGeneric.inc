@@ -133,7 +133,7 @@ class DebconfImportAttribute extends FileAttribute
       try {
         $ldap->import_complete_ldif($str, FALSE, FALSE);
         $this->plugin->initially_was_account = TRUE;
-      } catch (Exception $e) {
+      } catch (FusionDirectoryException $e) {
         msg_dialog::display(_('LDAP error'), $e->getMessage(), ERROR_DIALOG);
       }
     } else {

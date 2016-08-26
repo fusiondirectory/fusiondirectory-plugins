@@ -142,7 +142,7 @@ class supportDaemon
         $this->set_error("Received $test, expected $ok");
         return $this->new_state(FALSE);
       }
-    } catch (Exception $e) {
+    } catch (jsonRPCClient_Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
       return $this->new_state(FALSE);
     }
@@ -344,7 +344,7 @@ class supportDaemon
     try {
       $client = new jsonRPCClient($this->s_host, $this->http_options, $this->ssl_options);
       $entries = $client->get_entries();
-    } catch (Exception $e) {
+    } catch (jsonRPCClient_Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
       return $this->new_state(FALSE);
     }

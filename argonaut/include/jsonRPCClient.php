@@ -27,10 +27,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  * Source code for class jsonRPCClient
  */
 
-class jsonRPCClient_RequestErrorException extends Exception {};
-class jsonRPCClient_NetworkErrorException extends Exception {};
-class jsonRPCClient_ProtocolException extends Exception {};
-class jsonRPCClient_BadArgsException extends Exception {};
+class jsonRPCClient_Exception extends Exception {};
+class jsonRPCClient_RequestErrorException extends jsonRPCClient_Exception {};
+class jsonRPCClient_NetworkErrorException extends jsonRPCClient_Exception {};
+class jsonRPCClient_ProtocolException extends jsonRPCClient_Exception {};
+class jsonRPCClient_BadArgsException extends jsonRPCClient_Exception {};
 
 /*!
  * \brief The object of this class are generic jsonRPC 1.0 clients
