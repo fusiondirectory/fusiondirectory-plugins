@@ -38,7 +38,7 @@ class nisMap extends simplePlugin
         'mainAttr'    => 'nisMapName',
       )),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

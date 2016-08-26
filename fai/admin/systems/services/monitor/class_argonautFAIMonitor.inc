@@ -29,7 +29,7 @@ class argonautFAIMonitor extends simpleService
       'plDescription'   => _('Argonaut FAI monitor settings'),
       'plIcon'          => 'geticon.php?context=applications&icon=fai&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

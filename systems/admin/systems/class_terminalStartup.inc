@@ -114,7 +114,7 @@ class terminalStartup extends simplePlugin
       'plCategory'      => array('terminal'),
       'plObjectType'    => array('terminal', 'ogroup-dynamic'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }*/
 

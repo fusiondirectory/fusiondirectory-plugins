@@ -29,7 +29,7 @@ class systemsPluginConfig extends simplePlugin
       'plDescription'   => _('Systems plugin configuration'),
       'plObjectType'    => array('configuration'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

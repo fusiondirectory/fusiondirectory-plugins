@@ -137,7 +137,7 @@ class workstationGeneric extends simplePlugin
           'mainAttr'    => 'cn',
         )
       ),
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 }

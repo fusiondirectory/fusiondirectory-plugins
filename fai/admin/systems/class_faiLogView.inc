@@ -176,7 +176,7 @@ class faiLogView extends simplePlugin
       'plPriority'    => 30,
       'plObjectType'  => array('workstation', 'server', 'ogroup-dynamic'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

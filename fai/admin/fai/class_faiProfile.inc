@@ -38,7 +38,7 @@ class faiProfile extends faiSimplePluginClass
           'icon'        => 'geticon.php?context=applications&icon=fai-profile&size=16'
         )
       ),
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

@@ -35,7 +35,7 @@ class opsiClient extends simplePlugin
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('winstation', 'ogroup-dynamic'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

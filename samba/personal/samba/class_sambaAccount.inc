@@ -164,7 +164,7 @@ class sambaAccount extends simplePlugin
       'plPriority'      => 5,
       'plObjectType'    => array('user'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

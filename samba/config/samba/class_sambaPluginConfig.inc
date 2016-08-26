@@ -30,7 +30,7 @@ class sambaPluginConfig extends simplePlugin
       "plPriority"      => 2,
       "plObjectType"    => array("configuration"),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

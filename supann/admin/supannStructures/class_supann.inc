@@ -31,7 +31,7 @@ class supann
     while ($file = readdir($dir)) {
       if (preg_match('/^'.$shortname.'_(.+)$/', $file, $m)) {
         $prefix = $m[1];
-        $res[$prefix] =& self::get_choices_for($file);
+        $res[$prefix] =& static::get_choices_for($file);
       }
     }
     closedir($dir);
@@ -41,8 +41,8 @@ class supann
 
   static function &get_choices_for($type, $prefix = '')
   {
-    if (isset(self::$choices_for[$prefix.$type])) {
-      return self::$choices_for[$prefix.$type];
+    if (isset(static::$choices_for[$prefix.$type])) {
+      return static::$choices_for[$prefix.$type];
     }
     $entity_codes   = array();
     $entity_labels  = array();
@@ -61,14 +61,14 @@ class supann
           $entite_line = preg_split('/;/', trim($line));
 
           $entity_codes[]   = $prefix.$entite_line[0];
-          $entity_labels[]  = self::truncate_label($entite_line[1]);
+          $entity_labels[]  = static::truncate_label($entite_line[1]);
         }
       }
       fclose($entiteList);
     }
     array_multisort($entity_labels, $entity_codes);
-    self::$choices_for[$prefix.$type] = array($entity_codes, $entity_labels);
-    return self::$choices_for[$prefix.$type];
+    static::$choices_for[$prefix.$type] = array($entity_codes, $entity_labels);
+    return static::$choices_for[$prefix.$type];
   }
 
   /* return the 64 first chars and "…" after if text is longer */

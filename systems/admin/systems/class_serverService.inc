@@ -293,7 +293,7 @@ class ServerService extends simpleManagement
     }
 
     /* Is this an existing action */
-    if (!isset(self::$actionStatus[$action])) {
+    if (!isset(static::$actionStatus[$action])) {
       msg_dialog::display(_('Error'), sprintf(_('Unknown action "%s"'), $action), ERROR_DIALOG);
       return;
     }
@@ -339,7 +339,7 @@ class ServerService extends simpleManagement
               msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
             );
           } elseif (preg_match('/^done/', $res)) {
-            $this->plugins[$service]->setStatus(self::$actionStatus[$action]);
+            $this->plugins[$service]->setStatus(static::$actionStatus[$action]);
           }
         }
       }

@@ -77,18 +77,18 @@ class pgpKeySelect extends simpleSelectManagement
     if (count($value) == 0) {
       return '&nbsp;';
     }
-    $return = self::$func($value[0]);
+    $return = static::$func($value[0]);
     return ($return === ''?'&nbsp;':$return);
   }
 
   static function filterPgpDate($value = array())
   {
-    return self::filterSingleValue($value, 'pgpDate');
+    return static::filterSingleValue($value, 'pgpDate');
   }
 
   static function filterPgpSize($value = array())
   {
-    return self::filterSingleValue($value, 'pgpSize');
+    return static::filterSingleValue($value, 'pgpSize');
   }
 
   static function filterPgpRevoked($value = array())
@@ -96,7 +96,7 @@ class pgpKeySelect extends simpleSelectManagement
     if (empty($value)) {
       return 'No';
     }
-    return self::pgpRevoked($value[0]);
+    return static::pgpRevoked($value[0]);
   }
 
   static function pgpDate($date)

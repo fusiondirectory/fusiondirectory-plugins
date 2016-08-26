@@ -30,7 +30,7 @@ class debugHelp extends simplePlugin
       'plIcon'        => 'geticon.php?context=categories&icon=applications-development&size=48',
       'plCategory'    => array('debug' => array('objectClass' => 'none', 'description' => _('Diagram'))),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

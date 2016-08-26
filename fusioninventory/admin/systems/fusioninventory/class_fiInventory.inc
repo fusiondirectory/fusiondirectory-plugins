@@ -82,7 +82,7 @@ class fiInventory extends simplePlugin
         )
       ),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -128,7 +128,7 @@ class fiInventory extends simplePlugin
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     global $config;
-    $attributesInfo = self::getAttributesInfo();
+    $attributesInfo = static::getAttributesInfo();
     if (preg_match('/'.preg_quote(get_ou('inventoryRDN').$config->current['BASE'], '/').'$/', $dn)) {
       $this->mainTab        = TRUE;
       $this->objectclasses  = array('fdInventoryContent');
@@ -263,15 +263,15 @@ class fiInventory extends simplePlugin
         continue;
       }
 
-      if (!isset($infos[self::$sections[$class]][$class])) {
-        $infos[self::$sections[$class]][$class] = array('keys' => array(), 'objects' => array());
+      if (!isset($infos[static::$sections[$class]][$class])) {
+        $infos[static::$sections[$class]][$class] = array('keys' => array(), 'objects' => array());
       }
-      $infos[self::$sections[$class]][$class]['keys'] =
+      $infos[static::$sections[$class]][$class]['keys'] =
         array_unique(array_merge(
-          $infos[self::$sections[$class]][$class]['keys'],
+          $infos[static::$sections[$class]][$class]['keys'],
           array_keys($object)
         ));
-      $infos[self::$sections[$class]][$class]['objects'][$cn] = $object;
+      $infos[static::$sections[$class]][$class]['objects'][$cn] = $object;
     }
 
     return $infos;

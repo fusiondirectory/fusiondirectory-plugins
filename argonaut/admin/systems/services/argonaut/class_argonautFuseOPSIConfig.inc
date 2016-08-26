@@ -33,7 +33,7 @@ class argonautFuseOPSIConfig extends simplePlugin
       "plDescription"   => _("Argonaut Fuse OPSI module settings")." ("._("Services").")",
       "plCategory"      => array("server"),
       "plObjectType"    => array("fusemodule"),
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

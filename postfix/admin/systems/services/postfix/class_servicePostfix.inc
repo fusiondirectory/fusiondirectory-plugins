@@ -30,7 +30,7 @@ class servicePostfix extends simpleService
       'plDescription' => _('Postfix (SMTP)').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=smtp&size=16',
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

@@ -40,7 +40,7 @@ class entite extends simplePlugin
         'nameAttr'    => 'ou',
       )),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

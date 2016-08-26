@@ -45,7 +45,7 @@ class nagiosAccount extends simplePlugin
       'plPriority'    => 7,
       'plObjectType'  => array('user'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -54,7 +54,7 @@ class nagiosAccount extends simplePlugin
    */
   static function getAttributesInfo ()
   {
-    $prefix = self::get_prefix();
+    $prefix = static::get_prefix();
     return array(
       'main' => array(
         'name'  => _('Nagios Account'),
@@ -112,7 +112,7 @@ class nagiosAccount extends simplePlugin
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    $prefix = self::get_prefix();
+    $prefix = static::get_prefix();
     $this->objectclasses = array($prefix.'Contact');
     parent::__construct($dn, $object, $parent, $mainTab);
   }

@@ -30,7 +30,7 @@ class serviceTerminal extends simpleService
       'plDescription' => _('Terminal service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=devices&icon=terminal&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

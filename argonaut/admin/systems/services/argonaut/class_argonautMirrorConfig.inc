@@ -30,7 +30,7 @@ class argonautMirrorConfig extends simpleService
       'plDescription'   => _('Argonaut Mirror settings'),
       'plIcon'          => 'geticon.php?context=applications&icon=argonaut-mirror&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

@@ -37,7 +37,7 @@ class subContractingAccount extends simplePlugin
       'plSmallIcon'   => 'geticon.php?context=applications&icon=subcontracting&size=16',
 
       // simplePlugin can generate the ACL list for us
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

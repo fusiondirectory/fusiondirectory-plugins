@@ -75,7 +75,7 @@ class opsiProfile extends simplePlugin
         'icon'    => 'geticon.php?context=applications&icon=opsi&size=16',
       )),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

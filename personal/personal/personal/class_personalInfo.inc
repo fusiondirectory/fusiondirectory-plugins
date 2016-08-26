@@ -90,7 +90,7 @@ class personalInfo extends simplePlugin
       'plSmallIcon'     => 'geticon.php?context=applications&icon=user-info&size=16',
       'plPriority'      => 3,
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

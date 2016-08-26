@@ -40,7 +40,7 @@ class sogoResource extends simplePlugin
         'mainAttr'    => 'uid'
       )),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

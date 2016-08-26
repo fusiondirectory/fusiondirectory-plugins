@@ -107,7 +107,7 @@ class quotaAccount extends simplePlugin
       'plObjectType'  => array('user'),
       'plDepends'     => array('posixAccount'),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

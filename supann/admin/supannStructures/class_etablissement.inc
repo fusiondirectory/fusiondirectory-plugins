@@ -40,7 +40,7 @@ class etablissement extends simplePlugin
         'nameAttr'    => 'o',
       )),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

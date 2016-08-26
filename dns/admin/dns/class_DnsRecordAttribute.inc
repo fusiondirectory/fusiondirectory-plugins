@@ -127,7 +127,7 @@ class DnsRecordAttribute extends CompositeAttribute
   function __construct($label, $description, $ldapName, $required, $acl = '')
   {
     $attributes = array(
-      new SelectAttribute(_('Type'), '', $ldapName.'_type', $required, array_keys(self::$types), '', array_values(self::$types)),
+      new SelectAttribute(_('Type'), '', $ldapName.'_type', $required, array_keys(static::$types), '', array_values(static::$types)),
       new HiddenAttribute($ldapName.'_nofield'),
       new SelectAttribute(
         _('Reverse zone'), _('Reverse zone this record should be in, if any'),
@@ -366,7 +366,7 @@ class DnsRecordAttribute extends CompositeAttribute
           $this->attributes[1] = new StringAttribute(_('Content'), _('Content of this record'), $ldapName, TRUE);
         break;
       }
-      if (in_array($type, self::$reverseTypes)) {
+      if (in_array($type, static::$reverseTypes)) {
         $this->attributes[2]->setVisible(TRUE);
       } else {
         $this->attributes[2]->setVisible(FALSE);
@@ -407,7 +407,7 @@ class DnsRecordAttribute extends CompositeAttribute
       return $error;
     }
     $type = $this->attributes[0]->getValue();
-    if (in_array($type, self::$reverseTypes) && ($this->attributes[2]->getValue() != '')) {
+    if (in_array($type, static::$reverseTypes) && ($this->attributes[2]->getValue() != '')) {
       $ip       = $this->attributes[1]->getValue();
       $reverse  = $this->attributes[2]->getValue();
       $mask     = preg_replace('/\.(in-addr|ip6)\.arpa\.?$/i', '', $reverse);

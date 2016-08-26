@@ -434,7 +434,7 @@ class dhcpConfiguration extends simplePlugin
         'icon'        => 'geticon.php?context=applications&icon=dhcp&size=16'
       )),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -532,7 +532,7 @@ class dhcpConfiguration extends simplePlugin
               foreach ($values as $key => $value) {
                 $option_name  = trim(preg_replace('/[^ ]*$/', '', $value));
                 $option_value = trim(preg_replace('/^[^ ]*/', '', $value));
-                if (in_array($option_name, self::$quote_option)) {
+                if (in_array($option_name, static::$quote_option)) {
                   $values[$key] = $option_name.' "'.$option_value.'"';
                 }
               }

@@ -48,7 +48,7 @@ class netgroupMembership extends simplePlugin {
       'plPriority'      => 13,
       'plObjectType'    => array('user'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

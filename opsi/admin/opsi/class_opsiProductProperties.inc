@@ -106,7 +106,7 @@ class opsiProductProperties extends simplePlugin
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('opsiProfile'),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

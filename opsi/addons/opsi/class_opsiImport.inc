@@ -41,7 +41,7 @@ class opsiImport extends systemImport
       'plSection'     => 'conf',
       'plPriority'    => 15,
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

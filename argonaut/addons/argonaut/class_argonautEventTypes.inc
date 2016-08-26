@@ -50,7 +50,7 @@ class argonautEventTypes
    */
   static public function get_event_info($action)
   {
-    $events = self::get_event_types();
+    $events = static::get_event_types();
     if (isset($events[$action])) {
       $infos = $events[$action];
 

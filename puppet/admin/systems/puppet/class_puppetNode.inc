@@ -66,7 +66,7 @@ class puppetNode extends simplePlugin
       "plObjectType"      => array("server", "workstation"),
 
       // But simplePlugin can generate the ACL list for us
-      "plProvidedAcls"    => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      "plProvidedAcls"    => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

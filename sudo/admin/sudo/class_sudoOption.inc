@@ -253,7 +253,7 @@ class AvailableSudoOptionAttribute extends SelectAttribute
 
   function __construct ($label, $description, $ldapName, $required = TRUE, $acl = "")
   {
-    $choices = array_keys(self::$options);
+    $choices = array_keys(static::$options);
     sort($choices);
     parent::__construct ($label, $description, $ldapName, $required, $choices, "", NULL, $acl);
     $this->setInLdap(FALSE);
@@ -270,7 +270,7 @@ class AvailableSudoOptionAttribute extends SelectAttribute
     $id = $this->getLdapName();
     $choices = array_diff($this->choices, array_keys($this->plugin->attributesInfo['used_options']['attrs']['sudoOption']->attributes));
     $smarty->assign($id."_choices", $choices);
-    $options = self::$options;
+    $options = static::$options;
     $outputs = array_map(
       function ($choice) use ($options)
       {
@@ -290,7 +290,7 @@ class AvailableSudoOptionAttribute extends SelectAttribute
     if (isset($_POST["add".$this->getLdapName()])) {
       parent::loadPostValue();
       parent::applyPostValue();
-      $this->plugin->attributesInfo['used_options']['attrs']['sudoOption']->addOption($this->getValue(), self::$options[$this->getValue()]);
+      $this->plugin->attributesInfo['used_options']['attrs']['sudoOption']->addOption($this->getValue(), static::$options[$this->getValue()]);
     }
   }
 }
@@ -561,7 +561,7 @@ SCRIPT;
       'plObjectType'  => array('sudo'),
       'plPriority'    => 2,
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 }
