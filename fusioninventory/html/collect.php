@@ -21,15 +21,13 @@ if (strpos($http_raw_post_data, "<?xml") === 0) {
 } elseif ($xml = @gzinflate ("\x1f\x8b\x08\x00\x00\x00\x00\x00".$http_raw_post_data)) {
     // ** OCS agent 2.0 Compatibility, but return in gzcompress
     $compressmode = "gzdeflate";
-    if (strstr($xml, "<QUERY>PROLOG</QUERY>")
-            AND !strstr($xml, "<TOKEN>")) {
+    if (strstr($xml, "<QUERY>PROLOG</QUERY>") && !strstr($xml, "<TOKEN>")) {
         $compressmode = "gzcompress";
     }
 } elseif ($xml = @gzinflate (substr($http_raw_post_data, 2))) {
     // ** OCS agent 2.0 Compatibility, but return in gzcompress
     $compressmode = "gzdeflate";
-    if (strstr($xml, "<QUERY>PROLOG</QUERY>")
-            AND !strstr($xml, "<TOKEN>")) {
+    if (strstr($xml, "<QUERY>PROLOG</QUERY>") && !strstr($xml, "<TOKEN>")) {
         $compressmode = "gzcompress";
     }
 } else {
