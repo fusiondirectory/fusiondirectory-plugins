@@ -2,237 +2,247 @@
 host = https://www.transifex.com
 type = PO
 
-[FusionDirectory-Dev.alias]
+[FusionDirectory-1x.alias]
 file_filter = alias/locale/<lang>/fusiondirectory.po
 source_file = alias/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.apache2]
-file_filter = apache2/locale/<lang>/fusiondirectory.po
-source_file = apache2/locale/en/fusiondirectory.po
-source_lang = en
-
-[FusionDirectory-Dev.applications]
+[FusionDirectory-1x.applications]
 file_filter = applications/locale/<lang>/fusiondirectory.po
 source_file = applications/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.argonaut]
+[FusionDirectory-1x.argonaut]
 file_filter = argonaut/locale/<lang>/fusiondirectory.po
 source_file = argonaut/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.audit]
+[FusionDirectory-1x.audit]
 file_filter = audit/locale/<lang>/fusiondirectory.po
 source_file = audit/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.autofs]
+[FusionDirectory-1x.autofs]
 file_filter = autofs/locale/<lang>/fusiondirectory.po
 source_file = autofs/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.certificates]
+[FusionDirectory-1x.certificates]
 file_filter = certificates/locale/<lang>/fusiondirectory.po
 source_file = certificates/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.cyrus]
+[FusionDirectory-1x.community]
+file_filter = community/locale/<lang>/fusiondirectory.po
+source_file = community/locale/en/fusiondirectory.po
+source_lang = en
+
+[FusionDirectory-1x.cyrus]
 file_filter = cyrus/locale/<lang>/fusiondirectory.po
 source_file = cyrus/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.debconf]
+[FusionDirectory-1x.debconf]
 file_filter = debconf/locale/<lang>/fusiondirectory.po
 source_file = debconf/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.developers]
+[FusionDirectory-1x.developers]
 file_filter = developers/locale/<lang>/fusiondirectory.po
 source_file = developers/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.dhcp]
+[FusionDirectory-1x.dhcp]
 file_filter = dhcp/locale/<lang>/fusiondirectory.po
 source_file = dhcp/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.dns]
+[FusionDirectory-1x.dns]
 file_filter = dns/locale/<lang>/fusiondirectory.po
 source_file = dns/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.dovecot]
+[FusionDirectory-1x.dovecot]
 file_filter = dovecot/locale/<lang>/fusiondirectory.po
 source_file = dovecot/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.dsa]
+[FusionDirectory-1x.dsa]
 file_filter = dsa/locale/<lang>/fusiondirectory.po
 source_file = dsa/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.ejbca]
+[FusionDirectory-1x.ejbca]
 file_filter = ejbca/locale/<lang>/fusiondirectory.po
 source_file = ejbca/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.fai]
+[FusionDirectory-1x.fai]
 file_filter = fai/locale/<lang>/fusiondirectory.po
 source_file = fai/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.freeradius]
+[FusionDirectory-1x.freeradius]
 file_filter = freeradius/locale/<lang>/fusiondirectory.po
 source_file = freeradius/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.fusioninventory]
+[FusionDirectory-1x.fusioninventory]
 file_filter = fusioninventory/locale/<lang>/fusiondirectory.po
 source_file = fusioninventory/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.gpg]
+[FusionDirectory-1x.gpg]
 file_filter = gpg/locale/<lang>/fusiondirectory.po
 source_file = gpg/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.ipmi]
+[FusionDirectory-1x.ipmi]
 file_filter = ipmi/locale/<lang>/fusiondirectory.po
 source_file = ipmi/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.kolab2]
-file_filter = kolab/locale/<lang>/fusiondirectory.po
-source_file = kolab/locale/en/fusiondirectory.po
+[FusionDirectory-1x.kolab2]
+file_filter = kolab2/locale/<lang>/fusiondirectory.po
+source_file = kolab2/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.ldapdump]
+[FusionDirectory-1x.ldapdump]
 file_filter = ldapdump/locale/<lang>/fusiondirectory.po
 source_file = ldapdump/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.ldapmanager]
+[FusionDirectory-1x.ldapmanager]
 file_filter = ldapmanager/locale/<lang>/fusiondirectory.po
 source_file = ldapmanager/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.mail]
+[FusionDirectory-1x.mail]
 file_filter = mail/locale/<lang>/fusiondirectory.po
 source_file = mail/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.nagios]
+[FusionDirectory-1x.mixedgroups]
+file_filter = mixedgroups/locale/<lang>/fusiondirectory.po
+source_file = mixedgroups/locale/en/fusiondirectory.po
+source_lang = en
+
+[FusionDirectory-1x.nagios]
 file_filter = nagios/locale/<lang>/fusiondirectory.po
 source_file = nagios/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.netgroups]
+[FusionDirectory-1x.netgroups]
 file_filter = netgroups/locale/<lang>/fusiondirectory.po
 source_file = netgroups/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.opsi]
+[FusionDirectory-1x.newsletter]
+file_filter = newsletter/locale/<lang>/fusiondirectory.po
+source_file = newsletter/locale/en/fusiondirectory.po
+source_lang = en
+
+[FusionDirectory-1x.opsi]
 file_filter = opsi/locale/<lang>/fusiondirectory.po
 source_file = opsi/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.personal]
+[FusionDirectory-1x.personal]
 file_filter = personal/locale/<lang>/fusiondirectory.po
 source_file = personal/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.postfix]
+[FusionDirectory-1x.postfix]
 file_filter = postfix/locale/<lang>/fusiondirectory.po
 source_file = postfix/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.ppolicy]
+[FusionDirectory-1x.ppolicy]
 file_filter = ppolicy/locale/<lang>/fusiondirectory.po
 source_file = ppolicy/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.puppet]
+[FusionDirectory-1x.puppet]
 file_filter = puppet/locale/<lang>/fusiondirectory.po
 source_file = puppet/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.pureftpd]
+[FusionDirectory-1x.pureftpd]
 file_filter = pureftpd/locale/<lang>/fusiondirectory.po
 source_file = pureftpd/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.quota]
+[FusionDirectory-1x.quota]
 file_filter = quota/locale/<lang>/fusiondirectory.po
 source_file = quota/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.repository]
+[FusionDirectory-1x.repository]
 file_filter = repository/locale/<lang>/fusiondirectory.po
 source_file = repository/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.samba]
+[FusionDirectory-1x.samba]
 file_filter = samba/locale/<lang>/fusiondirectory.po
 source_file = samba/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.sogo]
+[FusionDirectory-1x.sogo]
 file_filter = sogo/locale/<lang>/fusiondirectory.po
 source_file = sogo/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.squid]
-file_filter = squid/locale/<lang>/fusiondirectory.po
-source_file = squid/locale/en/fusiondirectory.po
-source_lang = en
-
-[FusionDirectory-Dev.ssh]
-file_filter = ssh/locale/<lang>/fusiondirectory.po
-source_file = ssh/locale/en/fusiondirectory.po
-source_lang = en
-
-[FusionDirectory-Dev.subcontracting]
-file_filter = subcontracting/locale/<lang>/fusiondirectory.po
-source_file = subcontracting/locale/en/fusiondirectory.po
-source_lang = en
-
-[FusionDirectory-Dev.spamassassin]
+[FusionDirectory-1x.spamassassin]
 file_filter = spamassassin/locale/<lang>/fusiondirectory.po
 source_file = spamassassin/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.sudo]
+[FusionDirectory-1x.squid]
+file_filter = squid/locale/<lang>/fusiondirectory.po
+source_file = squid/locale/en/fusiondirectory.po
+source_lang = en
+
+[FusionDirectory-1x.ssh]
+file_filter = ssh/locale/<lang>/fusiondirectory.po
+source_file = ssh/locale/en/fusiondirectory.po
+source_lang = en
+
+[FusionDirectory-1x.subcontracting]
+file_filter = subcontracting/locale/<lang>/fusiondirectory.po
+source_file = subcontracting/locale/en/fusiondirectory.po
+source_lang = en
+
+[FusionDirectory-1x.sudo]
 file_filter = sudo/locale/<lang>/fusiondirectory.po
 source_file = sudo/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.supann]
+[FusionDirectory-1x.supann]
 file_filter = supann/locale/<lang>/fusiondirectory.po
 source_file = supann/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.sympa]
+[FusionDirectory-1x.sympa]
 file_filter = sympa/locale/<lang>/fusiondirectory.po
 source_file = sympa/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.systems]
+[FusionDirectory-1x.systems]
 file_filter = systems/locale/<lang>/fusiondirectory.po
 source_file = systems/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.uw-imap]
-file_filter = uw-imap/locale/<lang>/fusiondirectory.po
-source_file = uw-imap/locale/en/fusiondirectory.po
+[FusionDirectory-1x.user-reminder]
+file_filter = user-reminder/locale/<lang>/fusiondirectory.po
+source_file = user-reminder/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.weblink]
+[FusionDirectory-1x.weblink]
 file_filter = weblink/locale/<lang>/fusiondirectory.po
 source_file = weblink/locale/en/fusiondirectory.po
 source_lang = en
 
-[FusionDirectory-Dev.webservice]
+[FusionDirectory-1x.webservice]
 file_filter = webservice/locale/<lang>/fusiondirectory.po
 source_file = webservice/locale/en/fusiondirectory.po
 source_lang = en
