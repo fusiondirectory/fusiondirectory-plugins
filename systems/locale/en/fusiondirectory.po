@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-02-19 17:37+0100\n"
+"POT-Creation-Date: 2016-08-29 17:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -86,12 +86,12 @@ msgstr ""
 msgid "Terminal server"
 msgstr ""
 
-#: admin/systems/class_terminalStartup.inc:133
-#: admin/systems/class_terminalStartup.inc:149
+#: admin/systems/class_terminalStartup.inc:134
+#: admin/systems/class_terminalStartup.inc:150
 msgid "inherited"
 msgstr ""
 
-#: admin/systems/class_terminalStartup.inc:145
+#: admin/systems/class_terminalStartup.inc:146
 msgid "Local swap"
 msgstr ""
 
@@ -102,7 +102,7 @@ msgstr ""
 #: admin/systems/system-list.xml:31
 #: admin/systems/class_workstationGeneric.inc:46
 #: admin/systems/class_phoneGeneric.inc:57
-#: admin/systems/class_printGeneric.inc:60
+#: admin/systems/class_printGeneric.inc:62
 #: admin/systems/class_componentGeneric.inc:58
 #: admin/systems/class_mobilePhoneGeneric.inc:60
 #: admin/systems/services/shares/class_serviceShare.inc:52
@@ -120,7 +120,7 @@ msgstr ""
 #: admin/systems/system-list.xml:55
 #: admin/systems/class_workstationGeneric.inc:51
 #: admin/systems/class_phoneGeneric.inc:61
-#: admin/systems/class_printGeneric.inc:64
+#: admin/systems/class_printGeneric.inc:66
 #: admin/systems/class_componentGeneric.inc:62
 #: admin/systems/class_mobilePhoneGeneric.inc:64
 #: admin/systems/serverService-list.xml:35
@@ -128,10 +128,9 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: admin/systems/system-list.xml:63 admin/systems/class_serverService.inc:56
+#: admin/systems/system-list.xml:63 admin/systems/class_serverService.inc:61
 #: admin/systems/services/terminal/class_serviceTerminal.inc:30
 #: admin/systems/services/shares/class_serviceShare.inc:31
-#: admin/systems/services/ntp/class_serviceNTP.inc:30
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 msgid "Services"
 msgstr ""
@@ -174,7 +173,7 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:42
 #: admin/systems/class_phoneGeneric.inc:54
-#: admin/systems/class_printGeneric.inc:56
+#: admin/systems/class_printGeneric.inc:58
 #: admin/systems/class_componentGeneric.inc:55
 #: admin/systems/class_mobilePhoneGeneric.inc:56
 msgid "Properties"
@@ -211,7 +210,7 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:73
 #: admin/systems/class_phoneGeneric.inc:81
-#: admin/systems/class_printGeneric.inc:83
+#: admin/systems/class_printGeneric.inc:103
 #: admin/systems/class_componentGeneric.inc:69
 #: admin/systems/class_mobilePhoneGeneric.inc:102
 msgid "Network settings"
@@ -219,7 +218,7 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:78
 #: admin/systems/class_phoneGeneric.inc:86
-#: admin/systems/class_printGeneric.inc:87
+#: admin/systems/class_printGeneric.inc:108
 #: admin/systems/class_componentGeneric.inc:73
 #: admin/systems/class_mobilePhoneGeneric.inc:106
 msgid "IP address"
@@ -232,7 +231,7 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:83
 #: admin/systems/class_phoneGeneric.inc:91
-#: admin/systems/class_printGeneric.inc:91
+#: admin/systems/class_printGeneric.inc:113
 #: admin/systems/class_componentGeneric.inc:77
 #: admin/systems/class_mobilePhoneGeneric.inc:110
 msgid "Mac address"
@@ -240,19 +239,19 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:83
 #: admin/systems/class_phoneGeneric.inc:91
-#: admin/systems/class_printGeneric.inc:91
+#: admin/systems/class_printGeneric.inc:113
 #: admin/systems/class_componentGeneric.inc:77
 #: admin/systems/class_mobilePhoneGeneric.inc:110
 msgid "Mac address of this system"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:125
-#: admin/systems/class_workstationGeneric.inc:130
-#: admin/systems/class_workstationGeneric.inc:131
+#: admin/systems/class_workstationGeneric.inc:127
+#: admin/systems/class_workstationGeneric.inc:132
+#: admin/systems/class_workstationGeneric.inc:133
 msgid "Workstation"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:126
+#: admin/systems/class_workstationGeneric.inc:128
 msgid "Workstation information"
 msgstr ""
 
@@ -297,80 +296,115 @@ msgstr ""
 msgid "The telephone number of the phone"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:32
-#: admin/systems/class_printGeneric.inc:37
-#: admin/systems/class_printGeneric.inc:38
+#: admin/systems/class_printGeneric.inc:30
+#: admin/systems/class_printGeneric.inc:35
+#: admin/systems/class_printGeneric.inc:36
 msgid "Printer"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:33
+#: admin/systems/class_printGeneric.inc:31
 msgid "Printer information"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:60
+#: admin/systems/class_printGeneric.inc:62
 msgid "The name of the printer"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:64
+#: admin/systems/class_printGeneric.inc:66
 msgid "A short description of the printer"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:70
+#: admin/systems/class_printGeneric.inc:72
 msgid "Details"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:73
+#: admin/systems/class_printGeneric.inc:75
 msgid "Printer location"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:73
+#: admin/systems/class_printGeneric.inc:75
 msgid "The location of the printer"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:77
+#: admin/systems/class_printGeneric.inc:79
 msgid "Printer URL"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:77
+#: admin/systems/class_printGeneric.inc:79
 msgid "The URL of the printer"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:87
+#: admin/systems/class_printGeneric.inc:85
+#: admin/systems/class_printGeneric.inc:88
+msgid "Users which are allowed to use this printer"
+msgstr ""
+
+#: admin/systems/class_printGeneric.inc:94
+#: admin/systems/class_printGeneric.inc:97
+msgid "Users which are allowed to administrate this printer"
+msgstr ""
+
+#: admin/systems/class_printGeneric.inc:108
 #: admin/systems/class_componentGeneric.inc:73
 #: admin/systems/class_mobilePhoneGeneric.inc:106
 msgid "IP address this system uses"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:57
+#: admin/systems/class_printGeneric.inc:119
+msgid "Windows paths"
+msgstr ""
+
+#: admin/systems/class_printGeneric.inc:123
+msgid "Inf file"
+msgstr ""
+
+#: admin/systems/class_printGeneric.inc:123
+msgid "Path to windows inf file for this printer"
+msgstr ""
+
+#: admin/systems/class_printGeneric.inc:127
+msgid "Driver directory"
+msgstr ""
+
+#: admin/systems/class_printGeneric.inc:127
+msgid "Path to directory that contains windows drivers for this printer"
+msgstr ""
+
+#: admin/systems/class_printGeneric.inc:131
+msgid "Driver name"
+msgstr ""
+
+#: admin/systems/class_printGeneric.inc:131
+msgid "Windows name of the printer driver"
+msgstr ""
+
+#: admin/systems/class_serverService.inc:62
 msgid "Server services"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:219
-#: admin/systems/class_serverService.inc:263
-#: admin/systems/class_serverService.inc:382
-#: admin/systems/services/shares/class_serviceShare.inc:103
+#: admin/systems/class_serverService.inc:216
+#: admin/systems/class_serverService.inc:261
+#: admin/systems/class_serverService.inc:297
+#: admin/systems/services/shares/class_serviceShare.inc:104
 msgid "Error"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:322
-msgid "Filter error"
-msgstr ""
-
-#: admin/systems/class_serverService.inc:322
-msgid "The filter is incomplete!"
-msgstr ""
-
-#: admin/systems/class_serverService.inc:376
+#: admin/systems/class_serverService.inc:291
 msgid "Information"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:376
+#: admin/systems/class_serverService.inc:291
 msgid "Cannot update service status until it has been saved!"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:403
-#: admin/systems/class_serverService.inc:412
-#: admin/systems/class_serverService.inc:423
+#: admin/systems/class_serverService.inc:297
+#, php-format
+msgid "Unknown action \"%s\""
+msgstr ""
+
+#: admin/systems/class_serverService.inc:318
+#: admin/systems/class_serverService.inc:327
+#: admin/systems/class_serverService.inc:338
 #, php-format
 msgid "Could not get execute action %s on service %s."
 msgstr ""
@@ -404,18 +438,18 @@ msgstr ""
 msgid "No DNS server found for zone %s"
 msgstr ""
 
-#: admin/systems/class_systemImport.inc:165
+#: admin/systems/class_systemImport.inc:164
 msgid "Import"
 msgstr ""
 
-#: admin/systems/class_systemImport.inc:169
+#: admin/systems/class_systemImport.inc:168
 #: admin/systems/class_serverGeneric.inc:43
 #: admin/systems/class_serverGeneric.inc:48
 #: admin/systems/class_serverGeneric.inc:49
 msgid "Server"
 msgstr ""
 
-#: admin/systems/class_systemImport.inc:169
+#: admin/systems/class_systemImport.inc:168
 msgid "The server you wish to import hosts from"
 msgstr ""
 
@@ -446,24 +480,6 @@ msgstr ""
 
 #: admin/systems/class_componentGeneric.inc:62
 msgid "A short description of the component"
-msgstr ""
-
-#: admin/systems/class_systemServers.inc:31
-#: admin/systems/class_systemServers.inc:49
-#: addons/dashboard/class_dashBoardSystems.inc:48
-msgid "Servers"
-msgstr ""
-
-#: admin/systems/class_systemServers.inc:36
-msgid "NTP servers"
-msgstr ""
-
-#: admin/systems/class_systemServers.inc:36
-msgid "The NTP servers for this system"
-msgstr ""
-
-#: admin/systems/class_systemServers.inc:50
-msgid "Servers this system is using"
 msgstr ""
 
 #: admin/systems/class_mobilePhoneGeneric.inc:32
@@ -558,7 +574,7 @@ msgstr ""
 
 #: admin/systems/class_systemManagement.inc:48
 #: admin/systems/class_systemManagement.inc:52
-#: addons/dashboard/class_dashBoardSystems.inc:199
+#: addons/dashboard/class_dashBoardSystems.inc:31
 #: config/systems/class_systemsPluginConfig.inc:28
 msgid "Systems"
 msgstr ""
@@ -667,37 +683,17 @@ msgstr ""
 msgid "Special option(s) for this share"
 msgstr ""
 
-#: admin/systems/services/shares/class_serviceShare.inc:103
+#: admin/systems/services/shares/class_serviceShare.inc:104
 msgid "You need to configure encodings first"
 msgstr ""
 
-#: admin/systems/services/shares/class_serviceShare.inc:110
+#: admin/systems/services/shares/class_serviceShare.inc:111
 msgid "Warning"
 msgstr ""
 
-#: admin/systems/services/shares/class_serviceShare.inc:110
+#: admin/systems/services/shares/class_serviceShare.inc:111
 #, php-format
 msgid "Invalid value in encodings : %s"
-msgstr ""
-
-#: admin/systems/services/ntp/class_serviceNTP.inc:29
-msgid "Time service"
-msgstr ""
-
-#: admin/systems/services/ntp/class_serviceNTP.inc:30
-msgid "Time service - NTP"
-msgstr ""
-
-#: admin/systems/services/ntp/class_serviceNTP.inc:41
-msgid "Informations"
-msgstr ""
-
-#: admin/systems/services/ntp/class_serviceNTP.inc:45
-msgid "Time servers"
-msgstr ""
-
-#: admin/systems/services/ntp/class_serviceNTP.inc:45
-msgid "List of time sources to use"
 msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:35
@@ -797,60 +793,64 @@ msgstr ""
 msgid "LDAP"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardSystems.inc:45
-msgid "Workstations"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardSystems.inc:51
-msgid "Windows Workstations"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardSystems.inc:54
-msgid "Terminals"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardSystems.inc:57
-msgid "Printers"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardSystems.inc:60
-msgid "Phones"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardSystems.inc:63
-msgid "Components"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardSystems.inc:66
-msgid "Mobile phones"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardSystems.inc:183
-msgid "Statistics"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardSystems.inc:188
-msgid "Computer name to use by unit"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardSystems.inc:200
+#: addons/dashboard/class_dashBoardSystems.inc:32
 msgid "Statistics and informations about systems"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardNetwork.inc:111
-msgid "DHCP"
+#: addons/dashboard/class_dashBoardSystems.inc:43
+msgid "Statistics"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardNetwork.inc:116
-msgid "DNS"
+#: addons/dashboard/class_dashBoardSystems.inc:48
+msgid "Computer name to use by unit"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardNetwork.inc:127
+#: addons/dashboard/class_dashBoardSystems.inc:74
+msgid "Workstations"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:77
+msgid "Servers"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:80
+msgid "Windows Workstations"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:83
+msgid "Terminals"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:86
+msgid "Printers"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:89
+msgid "Phones"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:92
+msgid "Components"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:95
+msgid "Mobile phones"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardNetwork.inc:28
 msgid "Network"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardNetwork.inc:128
+#: addons/dashboard/class_dashBoardNetwork.inc:29
 msgid "Statistics and various informations"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardNetwork.inc:40
+msgid "DHCP"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardNetwork.inc:45
+msgid "DNS"
 msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:29

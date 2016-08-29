@@ -1,16 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-Dev\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-28 12:26+0200\n"
-"PO-Revision-Date: 2015-08-12 10:19+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Swedish (http://www.transifex.com/fusiondirectory/FusionDirectory-Dev/language/sv/)\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2016-08-29 17:44+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Swedish (https://www.transifex.com/fusiondirectory/teams/12202/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -62,8 +63,8 @@ msgid "Mail server"
 msgstr "Epostserver"
 
 #: admin/alias/class_mailAliasDistribution.inc:72
-msgid "Mail server fot this alias"
-msgstr "Epostserver för detta alias"
+msgid "Mail server for this alias"
+msgstr ""
 
 #: admin/alias/class_mailAliasDistribution.inc:77
 #: admin/alias/class_mailAliasRedirection.inc:73
@@ -73,7 +74,9 @@ msgstr "Utgångsdatum"
 #: admin/alias/class_mailAliasDistribution.inc:77
 msgid ""
 "Date after which the alias should be deleted. Leave empty for no deletion."
-msgstr "Datum efter vilket alias ska tas bort. Lämna tomt för att inte ta bort aliaset."
+msgstr ""
+"Datum efter vilket alias ska tas bort. Lämna tomt för att inte ta bort "
+"aliaset."
 
 #: admin/alias/class_mailAliasRedirection.inc:31
 #: admin/alias/class_mailAliasRedirection.inc:32
@@ -113,7 +116,8 @@ msgstr "Destination för omdirigeringen"
 msgid ""
 "Date after which the redirection should be deleted. Leave empty for no "
 "deletion."
-msgstr "Datum då omdirigeringen ska tas bort. Lämna tomt för att inte ta bort."
+msgstr ""
+"Datum då omdirigeringen ska tas bort. Lämna tomt för att inte ta bort."
 
 #: admin/alias/class_aliasManagement.inc:33
 msgid "Aliases"
@@ -136,8 +140,8 @@ msgid "FusionDirectory alias plugin configuration"
 msgstr "FusionDirectory alias-plugin-konfiguration"
 
 #: config/alias/class_aliasConfig.inc:42
-msgid "LDAP tree"
-msgstr "LDAP-träd"
+msgid "Alias"
+msgstr ""
 
 #: config/alias/class_aliasConfig.inc:45
 msgid "Alias RDN"

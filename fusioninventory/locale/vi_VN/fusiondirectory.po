@@ -1,16 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-Dev\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-28 12:26+0200\n"
-"PO-Revision-Date: 2015-08-12 10:23+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/fusiondirectory/FusionDirectory-Dev/language/vi_VN/)\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2016-08-29 17:44+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Vietnamese (Viet Nam) (https://www.transifex.com/fusiondirectory/teams/12202/vi_VN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -54,33 +55,59 @@ msgstr ""
 msgid "Browse inventory objects"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:67
+#: admin/systems/fusioninventory/class_fiInventory.inc:69
 msgid "Inventory"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:68
+#: admin/systems/fusioninventory/class_fiInventory.inc:70
 msgid "Inventory Viewer"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:73
-#: admin/systems/fusioninventory/class_fiInventory.inc:77
+#: admin/systems/fusioninventory/class_fiInventory.inc:75
+#: admin/systems/fusioninventory/class_fiInventory.inc:79
 msgid "Inventory object"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:91
+#: admin/systems/fusioninventory/class_fiInventory.inc:93
+msgid "Matching system"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:96
+#: admin/systems/fusioninventory/class_fiInventory.inc:362
+msgid "System"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:96
+#: admin/systems/fusioninventory/class_fiInventory.inc:362
+msgid "System entry matching this inventory"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:102
 msgid "Hardware"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:97
+#: admin/systems/fusioninventory/class_fiInventory.inc:108
 msgid "Software"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:103
+#: admin/systems/fusioninventory/class_fiInventory.inc:114
 msgid "Users"
 msgstr "Người dùng"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:109
+#: admin/systems/fusioninventory/class_fiInventory.inc:120
 msgid "Processes"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:310
+msgid "Create a system based on this inventory"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:325
+msgid "Create"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:330
+msgid "No matching system"
 msgstr ""
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:30
@@ -149,7 +176,7 @@ msgstr ""
 msgid "FusionInventory agent configuration"
 msgstr ""
 
-#: html/collect.php:89
+#: html/collect.php:76
 #, php-format
 msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
 msgstr ""

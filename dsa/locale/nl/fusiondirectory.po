@@ -1,16 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-Dev\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-28 12:26+0200\n"
-"PO-Revision-Date: 2015-08-12 10:22+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.com/fusiondirectory/FusionDirectory-Dev/language/nl/)\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2016-08-29 17:44+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,6 +42,7 @@ msgid "Password"
 msgstr "Wachtwoord"
 
 #: admin/dsa/class_dsaManagement.inc:34 admin/dsa/class_dsaManagement.inc:39
+#: config/dsa/class_dsaConfig.inc:42
 msgid "DSA"
 msgstr "DSA1"
 
@@ -56,15 +58,10 @@ msgstr "DSA configuratie"
 msgid "FusionDirectory dsa plugin configuration"
 msgstr "FusionDirectory dsa plugin configuratie"
 
-#: config/dsa/class_dsaConfig.inc:42
-msgid "LDAP tree"
-msgstr "LDAP tree"
-
 #: config/dsa/class_dsaConfig.inc:45
 msgid "DSA RDN"
 msgstr "DSA RDN"
 
 #: config/dsa/class_dsaConfig.inc:45
-msgid ""
-"Branch in which Directory Service Account (dsa) will be stored (required)"
+msgid "Branch in which Directory Service Account (dsa) will be stored"
 msgstr ""

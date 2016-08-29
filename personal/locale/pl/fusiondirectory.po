@@ -1,16 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-Dev\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-09 22:29+0100\n"
-"PO-Revision-Date: 2015-08-12 10:26+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Polish (http://www.transifex.com/fusiondirectory/FusionDirectory-Dev/language/pl/)\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2016-08-29 17:44+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Polish (https://www.transifex.com/fusiondirectory/teams/12202/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -34,6 +35,7 @@ msgid "Id of this user on this website"
 msgstr ""
 
 #: personal/personal/class_personalInfo.inc:85
+#: config/personal/class_personalConfig.inc:42
 msgid "Personal"
 msgstr "Osobiste"
 
@@ -41,32 +43,84 @@ msgstr "Osobiste"
 msgid "Personal informations"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:100
+#: personal/personal/class_personalInfo.inc:101
 msgid "Personal info"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:105
-msgid "Social account"
+#: personal/personal/class_personalInfo.inc:104
+msgid "Personal title"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:105
-msgid "Social accounts of this user"
+#: personal/personal/class_personalInfo.inc:104
+msgid "Personal title - Examples of personal titles are \"Ms\", \"Dr\", \"Prof\" and \"Rev\""
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:112
-msgid "Private email"
-msgstr ""
-
-#: personal/personal/class_personalInfo.inc:112
-msgid "Private email addresses of this user"
-msgstr ""
-
-#: personal/personal/class_personalInfo.inc:118
+#: personal/personal/class_personalInfo.inc:109
 msgid "Nickname"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:118
+#: personal/personal/class_personalInfo.inc:109
 msgid "Nicknames for this user"
+msgstr ""
+
+#: personal/personal/class_personalInfo.inc:114
+msgid "Badge Number"
+msgstr ""
+
+#: personal/personal/class_personalInfo.inc:114
+msgid "Company badge number"
+msgstr ""
+
+#: personal/personal/class_personalInfo.inc:118
+msgid "Date of birth"
+msgstr ""
+
+#: personal/personal/class_personalInfo.inc:123
+msgid "Sex"
+msgstr ""
+
+#: personal/personal/class_personalInfo.inc:123
+msgid "Gender"
+msgstr ""
+
+#: personal/personal/class_personalInfo.inc:128
+msgid "Country"
+msgstr "Kraj"
+
+#: personal/personal/class_personalInfo.inc:132
+msgid "Start date"
+msgstr ""
+
+#: personal/personal/class_personalInfo.inc:132
+msgid "Date this user joined the company"
+msgstr ""
+
+#: personal/personal/class_personalInfo.inc:137
+msgid "End date"
+msgstr ""
+
+#: personal/personal/class_personalInfo.inc:137
+msgid "Date this user is supposed to leave the company"
+msgstr ""
+
+#: personal/personal/class_personalInfo.inc:144
+msgid "Contact"
+msgstr "Kontakt"
+
+#: personal/personal/class_personalInfo.inc:148
+msgid "Social account"
+msgstr ""
+
+#: personal/personal/class_personalInfo.inc:148
+msgid "Social accounts of this user"
+msgstr ""
+
+#: personal/personal/class_personalInfo.inc:155
+msgid "Private email"
+msgstr ""
+
+#: personal/personal/class_personalInfo.inc:155
+msgid "Private email addresses of this user"
 msgstr ""
 
 #: personal/personal/class_socialHandlers.inc:68
@@ -87,4 +141,24 @@ msgstr ""
 
 #: personal/personal/class_socialHandlers.inc:131
 msgid "Diaspora accounts must look like user@pod"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:141
+msgid "LinkedIn"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:28
+msgid "Personal configuration"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:29
+msgid "FusionDirectory personal plugin configuration"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow use of private email for password recovery"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow users to use their private email address for password recovery"
 msgstr ""

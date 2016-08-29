@@ -1,16 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-Dev\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-28 12:26+0200\n"
-"PO-Revision-Date: 2015-08-12 10:31+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Catalan (http://www.transifex.com/fusiondirectory/FusionDirectory-Dev/language/ca/)\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2016-08-29 17:44+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Catalan (https://www.transifex.com/fusiondirectory/teams/12202/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,16 +21,37 @@ msgstr ""
 #: html/jsonrpc.php:52
 #, php-format
 msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
-msgstr "La configuració %s/%s del FusionDirectori no és llegible. S'està avortant."
+msgstr ""
+"La configuració %s/%s del FusionDirectori no és llegible. S'està avortant."
 
 #: html/jsonrpc.php:62
 #, php-format
 msgid "Cannot locate file '%s' - please run '%s' to fix this"
 msgstr ""
 
-#: html/jsonrpc.php:253
+#: html/jsonrpc.php:316 html/jsonrpc.php:399
 msgid "Plugin"
 msgstr "Connector"
+
+#: html/jsonrpc.php:489
+#, php-format
+msgid "Cannot delete %s. It has been locked by %s."
+msgstr ""
+
+#: html/jsonrpc.php:536 html/jsonrpc.php:565
+#, php-format
+msgid "Failed to get password method for account \"%s\". It has not been locked!"
+msgstr ""
+
+#: html/jsonrpc.php:561
+#, php-format
+msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
+msgstr ""
+
+#: html/jsonrpc.php:568
+#, php-format
+msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
+msgstr ""
 
 #: config/class_webserviceConfig.inc:28
 msgid "Webservice configuration"

@@ -1,16 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-Dev\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-28 12:26+0200\n"
-"PO-Revision-Date: 2015-08-12 10:20+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Chinese (http://www.transifex.com/fusiondirectory/FusionDirectory-Dev/language/zh/)\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2016-08-29 17:44+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Chinese (https://www.transifex.com/fusiondirectory/teams/12202/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,34 +19,34 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: admin/autofs/class_nisObject.inc:31 admin/autofs/class_nisObject.inc:32
-#: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:49
+#: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:54
 msgid "Directory"
 msgstr "目录"
 
-#: admin/autofs/class_nisObject.inc:53 admin/autofs/class_nisMap.inc:53
+#: admin/autofs/class_nisObject.inc:58 admin/autofs/class_nisMap.inc:53
 msgid "Name"
 msgstr "名称"
 
-#: admin/autofs/class_nisObject.inc:53
+#: admin/autofs/class_nisObject.inc:58
 msgid "Name of this directory"
 msgstr ""
 
-#: admin/autofs/class_nisObject.inc:57
+#: admin/autofs/class_nisObject.inc:62
 msgid "Automount entry"
 msgstr ""
 
-#: admin/autofs/class_nisObject.inc:57
+#: admin/autofs/class_nisObject.inc:62
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
 msgstr ""
 
-#: admin/autofs/class_nisObject.inc:61 admin/autofs/class_nisMap.inc:31
+#: admin/autofs/class_nisObject.inc:66 admin/autofs/class_nisMap.inc:31
 #: admin/autofs/class_nisMap.inc:34 admin/autofs/class_nisMap.inc:49
 msgid "Mount point"
 msgstr "挂载点"
 
-#: admin/autofs/class_nisObject.inc:61
+#: admin/autofs/class_nisObject.inc:66
 msgid "The mount point this directory will be placed in"
 msgstr ""
 
@@ -74,7 +75,7 @@ msgid "FusionDirectory autofs plugin configuration"
 msgstr ""
 
 #: config/autofs/class_autofsConfig.inc:42
-msgid "LDAP tree"
+msgid "AutoFS"
 msgstr ""
 
 #: config/autofs/class_autofsConfig.inc:45
