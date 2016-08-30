@@ -83,10 +83,10 @@ class dhcpPlugin extends simplePlugin
       } else {
         $this->base = dn2base($dn);
       }
-      parent::__construct($config, $dn, $attrsWrapper);
+      parent::__construct($dn, $attrsWrapper);
     } elseif ($dn == 'new') {
       $this->base = $attrs;
-      parent::__construct($config, $dn);
+      parent::__construct($dn);
     } else {
       trigger_error('Invalid use of dhcpPlugin class');
     }
