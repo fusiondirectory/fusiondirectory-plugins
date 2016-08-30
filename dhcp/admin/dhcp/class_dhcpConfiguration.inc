@@ -482,11 +482,17 @@ class dhcpConfiguration extends simplePlugin
     $this->attributesAccess['dhcpSections']->setHeight(400);
   }
 
+  protected function shouldSave()
+  {
+    return TRUE;
+  }
+
   protected function ldap_save()
   {
     global $config;
     /* Save dhcp settings */
     $ldap   = $config->get_ldap_link();
+    $ldap->create_missing_trees(preg_replace('/^[^,]+,/', '', $this->dn));
     $cache  = $this->attributesAccess['dhcpSections']->getCache();
     $errors = array();
     foreach ($cache as $dn => $data) {
