@@ -1,8 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2015-2016  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -27,12 +26,14 @@ class serviceDHCP extends simpleService
   {
     return array(
       'main' => array(
-        'name'  => _('DHCP sections'),
+        'name'  => _('DHCP configurations'),
         'class' => array('fullwidth'),
         'attrs' => array(
-          new SelectAttribute (
-            'dhcpServiceDN', _('The DN of dhcpService object which contain the configuration information'),
-            'dhcpServiceDN'
+          new SetAttribute(
+            new SelectAttribute (
+              '', _('The DN of dhcpService object(s) which contain the configuration information'),
+              'dhcpServiceDN'
+            )
           )
         )
       ),
@@ -56,9 +57,13 @@ class serviceDHCP extends simpleService
 
   function __construct ($dn = NULL, $parent = NULL)
   {
-    parent::__construct($dn, $parent);
+    $attributesInfo = $this->getAttributesInfo();
+    $services = objects::ls('dhcpConfiguration');
+    $attributesInfo['main']['attrs'][0]->attribute->setChoices(array_keys($services), array_values($services));
+    parent::__construct($dn, $parent, $attributesInfo);
 
-    $this->dhcpServiceDN = 'cn=dhcp,'.$dn;
+    // TODO: On save fill dhcpPrimaryDn on the dhcpService objects
+    // Also add a foreign key
   }
 }
 ?>
