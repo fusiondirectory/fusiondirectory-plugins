@@ -37,6 +37,9 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
           '', '',
           $ldapName.'_ip', TRUE
         ),
+        new HiddenAttribute(
+          'dn'
+        )
       ),
       FALSE,
       FALSE,
@@ -44,6 +47,10 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       $label
     );
     parent::__construct($attribute, FALSE, $values, TRUE);
+  }
+
+  protected function loadAttrValue ($attrs)
+  {
   }
 
   function setParent (&$plugin)
@@ -62,7 +69,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
 
   function loadChoices()
   {
-    $nodes = dhcpHost::getDhcpParentNodes();
+    $nodes = dhcpSystem::getDhcpParentNodes();
     $macs   = $this->plugin->parent->getBaseObject()->macAddress;
     if (!is_array($macs)) {
       $macs = array($macs);
@@ -84,26 +91,86 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
 
   function loadRecords()
   {
-    /* TODO */
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(&(objectClass=dhcpHost)(cn='.$this->plugin->parent->getBaseObject()->cn.')(dhcpHWAddress=*))', array('dhcpStatements','dhcpHWAddress','dn'));
+    while ($attrs = $ldap->fetch()) {
+      $ip = '';
+      foreach ($attrs['dhcpStatements'] as $statement) {
+        if (preg_match('/fixed-address ([0-9\.]+)$/', $statement, $m)) {
+          $ip = $m[1];
+          break;
+        }
+      }
+      $this->value[] = array(
+        preg_replace('/^[^,]+,/', '', $attrs['dn']),
+        preg_replace('/ethernet (([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))/', '\\1', $attrs['dhcpHWAddress'][0]),
+        $ip,
+        $attrs['dn']
+      );
+    }
+    $this->initialValue = $this->getValue();
   }
 
   /* Special LDAP treatment that this attribute does after plugin ldap save */
   function postLdapSave ($ldap)
   {
+    global $config;
+
     if ($this->plugin->is_template) {
       return;
     }
     /* FIXME - We should lock the object and check if we don’t erase changes */
-    //~ $zoneTabs = objects::open($this->getZoneDn(), 'dnsZone');
-    //~ $zoneTabs->getBaseObject()->attributesAccess['dnsRecords']->setValue($this->getValue());
-    //~ $zoneTabs->save();
-    /* TODO - replace this by adding/removing of dhcpHosts in the appropriate way */
+    $cn             = $this->plugin->parent->getBaseObject()->cn;
+    $values         = $this->getValue();
+    $iValues        = $this->getInitialValue();
+    //~ $valueHashes    = array_flip(array_map('join', $values));
+    $iValueHashes   = array_flip(array_map('join', $iValues));
+    foreach ($values as $value) {
+      $hash = join($value);
+      if (isset($iValueHashes[$hash])) {
+        unset($iValues[$iValueHashes[$hash]]);
+        continue;
+      }
+      echo "<h1>adding $hash</h1>\n";
+      $configDn = $value[0];
+      if (preg_match('/([^,]+),'.preg_quote(get_ou('dhcpRDN')).'.+'.preg_quote($config->current['BASE']).'$/', $value[0])) {
+        $configDn = $m[1];
+      } else {
+        trigger_error('Failed to parse '.$value[0].' to find DHCP configuration DN');
+      }
+      $dhcpTabs = objects::open($configDn, 'dhcpConfiguration');
+      $dhcpTabs->getBaseObject()->attributesAccess['dhcpSections']->addHost($value[0], $cn, $value[1], $value[2]);
+      $errors = $dhcpTabs->save();
+      msg_dialog::displayChecks($errors);
+    }
+    foreach ($iValues as $value) {
+      echo "<h1>del ".join($value)."</h1>\n";
+      $configDn = $value[0];
+      if (preg_match('/([^,]+),'.preg_quote(get_ou('dhcpRDN')).'.+'.preg_quote($config->current['BASE']).'$/', $value[0])) {
+        $configDn = $m[1];
+      } else {
+        trigger_error('Failed to parse '.$value[0].' to find DHCP configuration DN');
+      }
+      $dhcpTabs = objects::open($configDn, 'dhcpConfiguration');
+      $dhcpTabs->getBaseObject()->attributesAccess['dhcpSections']->delHost($value[3]);
+      $errors = $dhcpTabs->save();
+      msg_dialog::displayChecks($errors);
+    }
+    /* FIXME
+     * For now this will fail if the same dn is computed for the new value and the old value (and this will most likely happen)
+     * The easiest fix is to do the deleting first and then the adding
+     * An other solution is to handle modification somehow
+     * We should also look into what should be possible or not, like IP, Mac or cn duplication.
+     * */
   }
 }
 
-class dhcpHost extends simplePlugin
+class dhcpSystem extends simplePlugin
 {
-  var $objectclasses = array('fdDHCPHost');
+  var $objectclasses = array();
 
   protected $zonesCache;
   protected $loaded = FALSE;
@@ -117,9 +184,6 @@ class dhcpHost extends simplePlugin
       'plSmallIcon'     => 'geticon.php?context=applications&icon=dhcp&size=16',
       'plObjectType'    => array('server','workstation','terminal','printer','component','winstation','phone','mobilePhone'),
       'plPriority'      => 4,
-      //~ 'plForeignKeys'  => array(
-        //~ 'fdDNSZoneDn' => 'dnsZone'
-      //~ ),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
@@ -133,8 +197,8 @@ class dhcpHost extends simplePlugin
         'class' => array('fullwidth'),
         'attrs' => array(
           new DhcpHostsAttribute(
-            '', _('DHCP nodes for this host'),
-            'fdDHCPParentNodes'
+            '', _('DHCP hosts declared for this system'),
+            'dhcpHosts'
           )
         )
       ),
@@ -151,44 +215,29 @@ class dhcpHost extends simplePlugin
     global $config;
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=dhcpService)', array('cn'));
-
-    $dhcp_dns = array();
-    while ($attr = $ldap->fetch()) {
-      $dhcp_dns[$attr['dn']] = $attr['cn'][0];
-    }
-
-    $tmp = $tmp2 = array();
-    foreach ($dhcp_dns as $dn => $cn) {
-      $ldap->cd($dn);
-      $ldap->search('(|(objectClass=dhcpService)(objectClass=dhcpGroup)'.
+    $ldap->search('(|(objectClass=dhcpService)(objectClass=dhcpGroup)'.
                     '(objectClass=dhcpSubnet)(objectClass=dhcpSharedNetwork))', array('cn'));
-      while ($attr = $ldap->fetch()) {
-        $tmp[$attr['dn']] = $attr['cn'][0];
-      }
-      $tmp2 = array_merge($tmp2, static::createTree($tmp, preg_replace('/^[^,]+,/i', '', $dn), '['.$cn.'] '));
-    }
-    return $tmp2;
-  }
 
-  static function createTree($arr, $base, $current = '')
-  {
-    $ret = array();
-    foreach ($arr as $r => $name) {
-      $base_part = str_replace($base, '', $r);
-      if (preg_match('/^[a-z]*='.preg_quote($name, '/').'(|,)$/i', $base_part)) {
-        $ret[$r] = $current.$name;
-        $tmp = static::createTree($arr, $r, $current.'. ');
-        foreach ($tmp as $sub_key => $sub_name) {
-          $ret[$sub_key] = $sub_name;
-        }
+    $nodes = array();
+    while ($attr = $ldap->fetch()) {
+      $subdn = preg_replace('/,'.preg_quote(get_ou('dhcpRDN')).'.+$/', '', $attr['dn']);
+      $parts = ldap_explode_dn($subdn, 1);
+      if ($parts === FALSE) {
+        /* Fallback */
+        $nodes[$attr['dn']] = $subdn;
+      } else {
+        unset($parts['count']);
+        $nodes[$attr['dn']] = implode('>', array_reverse($parts));
       }
     }
-    return $ret;
+    return $nodes;
   }
 
-  function save()
+  function ldap_save()
   {
-    /* TODO */
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+    return $this->attributesAccess['dhcpHosts']->postLdapSave($ldap);
   }
 }

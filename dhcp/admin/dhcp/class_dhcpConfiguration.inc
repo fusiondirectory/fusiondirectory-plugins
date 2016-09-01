@@ -184,6 +184,32 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     $this->reload(FALSE);
   }
 
+  /* Used by dhcpHost */
+  function addHost($parentDn, $cn, $mac, $ip)
+  {
+    $dn = 'cn='.$cn.','.$parentDn;
+    $this->dhcpObjectCache[$dn] = array(
+      'dn'              => $dn,
+      'objectClass'     => array('dhcpHost'),
+      'cn'              => array($cn),
+      'dhcpHWAddress'   => array('ethernet '.$mac),
+      'dhcpStatements'  => array(
+        'host-name '.$cn,
+        'fixed-address '.$ip
+      ),
+      'dhcpOption'      => array(),
+      'dhcpComments'    => array(),
+      'MODIFIED'        => TRUE,
+    );
+    $this->reload(FALSE);
+  }
+
+  /* Used by dhcpHost */
+  function delHost($dn)
+  {
+    unset($this->dhcpObjectCache[$dn]);
+  }
+
   protected function loadAttrValue ($attrs)
   {
   }
