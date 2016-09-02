@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-08-29 17:44+0200\n"
+"POT-Creation-Date: 2016-09-01 20:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
-"Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
+"Language-Team: Italian (https://www.transifex.com/fusiondirectory/teams/12202/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it_IT\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: html/class_expiredUserPostpone.inc:58
@@ -25,16 +25,18 @@ msgstr "Questo token non è valido"
 #: html/class_expiredUserPostpone.inc:193
 msgid "Contact your administrator, there was a problem with mail server"
 msgstr ""
+"Contattare l'amministratore, c'è stato un problema con il server di posta "
+"elettronica"
 
 #: html/class_expiredUserPostpone.inc:204
 #, php-format
 msgid "Did not find an account with login \"%s\""
-msgstr "Alcun account trovato con login \"%s\" "
+msgstr ""
 
 #: html/class_expiredUserPostpone.inc:207
 #, php-format
 msgid "Found multiple accounts with login \"%s\""
-msgstr "Trovati più accounts con login \"%s\""
+msgstr ""
 
 #: config/user-reminder/class_userReminderConfig.inc:28
 msgid "User reminder"
@@ -74,11 +76,11 @@ msgstr ""
 
 #: config/user-reminder/class_userReminderConfig.inc:58
 msgid "Sender email address"
-msgstr ""
+msgstr "Indirizzo email del mittente"
 
 #: config/user-reminder/class_userReminderConfig.inc:58
 msgid "Email address from which mails will be sent"
-msgstr ""
+msgstr "Indirizzo e-mail da cui la mail sarà inviata"
 
 #: config/user-reminder/class_userReminderConfig.inc:65
 msgid "Alert email settings"
@@ -91,7 +93,7 @@ msgstr ""
 #: config/user-reminder/class_userReminderConfig.inc:73
 #: config/user-reminder/class_userReminderConfig.inc:99
 msgid "Subject"
-msgstr ""
+msgstr "Oggetto"
 
 #: config/user-reminder/class_userReminderConfig.inc:73
 msgid "Subject of the alert email"
@@ -163,7 +165,7 @@ msgstr ""
 #: ihtml/themes/breezy/user-reminder.tpl.c:2
 #: ihtml/themes/breezy/user-reminder.tpl.c:5
 msgid "User"
-msgstr ""
+msgstr "Utente"
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:8
 msgid "Expiration postpone"
@@ -172,7 +174,7 @@ msgstr ""
 #: ihtml/themes/breezy/user-reminder.tpl.c:11
 #: ihtml/themes/breezy/user-reminder.tpl.c:14
 msgid "Success"
-msgstr ""
+msgstr "Completato"
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:17
 msgid "Your expiration has been postponed successfully."
@@ -181,7 +183,7 @@ msgstr ""
 #: ihtml/themes/breezy/user-reminder.tpl.c:20
 #: ihtml/themes/breezy/user-reminder.tpl.c:23
 msgid "Error"
-msgstr ""
+msgstr "Errore"
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:26
 msgid "There was a problem"

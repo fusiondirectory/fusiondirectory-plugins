@@ -1,0 +1,137 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2016-09-01 20:14+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Italian (https://www.transifex.com/fusiondirectory/teams/12202/it/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: addons/gpg/class_pgpServerInfo.inc:31 addons/gpg/class_pgpServerInfo.inc:32
+#: addons/gpg/class_pgpServerInfo.inc:38 addons/gpg/class_pgpServerInfo.inc:56
+msgid "GPG server info"
+msgstr "Informazioni sul server GPG"
+
+#: addons/gpg/class_pgpServerInfo.inc:60
+msgid "Software"
+msgstr "Programma"
+
+#: addons/gpg/class_pgpServerInfo.inc:60
+msgid "Which software this GPG key server is running"
+msgstr "Quale programma è in corso d'esecuzione sul server di chiavi GPG"
+
+#: addons/gpg/class_pgpServerInfo.inc:65
+msgid "GPG version"
+msgstr "Versione GPG"
+
+#: addons/gpg/class_pgpServerInfo.inc:65
+msgid "Which version of GPG this key server is running"
+msgstr "Quale versione di GPG è in esecuzione su questo server di chiavi GPG"
+
+#: addons/gpg/class_pgpServerInfo.inc:70
+msgid "Branch in which keys are stored"
+msgstr "Ramo dell'annuario nel quale saranno immagazzinate le chiavi"
+
+#: addons/gpg/class_pgpServerInfo.inc:74
+msgid "Keys RDN"
+msgstr "RDN chiavi"
+
+#: addons/gpg/class_pgpServerInfo.inc:74
+msgid "Branch under base in which keys are stored"
+msgstr "Ramo sotto la base nel quale saranno immagazzinate le chiavi"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:11
+msgid "Please select the desired entries"
+msgstr "Seleziona le entries desiderate"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:15
+msgid "PGP Key"
+msgstr "Chiave PGP"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:40
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:136
+msgid "Key ID"
+msgstr "ID della chiave"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:48
+msgid "User"
+msgstr "Utente"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:56
+msgid "Creation date"
+msgstr "Data di creazione"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:64
+msgid "Expiration date"
+msgstr "Data di scadenza"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:72
+msgid "Type"
+msgstr "Tipo"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:80
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:141
+msgid "Size"
+msgstr "Dimensione"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:88
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:142
+msgid "Revoked"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:143
+msgid "Disabled"
+msgstr "Disabilitato"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
+msgid "Configuration error"
+msgstr "Errore di configurazione"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
+msgid "You need to configure GPG base dn through the addons section first"
+msgstr ""
+"Devi prima di tutto configurare la bse dn per GPG, nella sezione addons"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:137
+msgid "User ID"
+msgstr "ID dell'utente"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:138
+msgid "Creation time"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:139
+msgid "Expiration"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:140
+msgid "Algorithm"
+msgstr ""
+
+#: personal/gpg/class_gpgAccount.inc:31
+msgid "GPG keys"
+msgstr "Chiavi GPG"
+
+#: personal/gpg/class_gpgAccount.inc:35
+msgid "GPG keys of this user"
+msgstr "Chiavi GPG di questo utente"
+
+#: personal/gpg/class_gpgAccount.inc:46
+msgid "GPG"
+msgstr "GPG"
+
+#: personal/gpg/class_gpgAccount.inc:47
+msgid "Edit user's GPG IDs"
+msgstr "Modifica gli IDs GPG degli utenti"

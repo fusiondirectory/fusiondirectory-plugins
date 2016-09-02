@@ -1,0 +1,112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2016-09-01 20:14+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:29
+#: admin/systems/services/postfix/class_servicePostfix.inc:30
+msgid "Postfix (SMTP)"
+msgstr "Postfix (SMTP)"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:30
+msgid "Services"
+msgstr "Dienste"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:44
+msgid "Informations"
+msgstr "Informationen"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:47
+msgid "Hostname"
+msgstr "Hostname"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:47
+msgid "The host name."
+msgstr "Der Hostname."
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:52
+msgid "Domain"
+msgstr "Domäne"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:52
+msgid "The domain."
+msgstr "Die Domain."
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:57
+msgid "Max mail header size (KB)"
+msgstr "Max. Mailheadergröße (KB)"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:57
+msgid "This value specifies the maximal header size."
+msgstr "Dieser Wert legt die maximale Größe der Kopfzeilen fest."
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:62
+msgid "Max mailbox size (KB)"
+msgstr "Max. Mailboxgröße (KB)"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:62
+msgid "Defines the maximal size of mail box."
+msgstr "Setzt die maximale Größe der Mailbox."
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:67
+msgid "Max message size (KB)"
+msgstr "Max. Nachrichtengröße (KB)"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:67
+msgid "Specify the maximal size of a message."
+msgstr "Setzt die maximale Größe einer Nachricht."
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:74
+msgid "Domains and routing"
+msgstr "Domänen und Weiterleitung"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:78
+msgid "Domains to accept mail for"
+msgstr "Domänen, für die Mail angenommen wird"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:78
+msgid "Postfix networks"
+msgstr "Postfix-Netzwerke"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:83
+msgid "Transport table"
+msgstr "Transport-Tabelle"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:88
+msgid "Transport rule"
+msgstr "Transportregel"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:102
+msgid "Restrictions"
+msgstr "Einschränkungen"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:106
+msgid "Restrictions for sender"
+msgstr "Einschränkungen für den Sender"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:115
+msgid "For sender"
+msgstr "Für Absender"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:120
+msgid "Restrictions for recipient"
+msgstr "Einschränkungen für Empfänger"
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:129
+msgid "For recipient"
+msgstr "Für Empfänger"
