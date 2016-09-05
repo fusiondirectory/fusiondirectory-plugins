@@ -26,15 +26,15 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       $description, $ldapName,
       array(
         new SelectAttribute(
-          '', '',
+          '', _('The DHCP configuration or subsection in which this host should be added'),
           $ldapName.'_parent', TRUE
         ),
         new SelectAttribute(
-          '', '',
+          '', _('The Mac address to use in the DHCP host record'),
           $ldapName.'_mac', TRUE
         ),
         new SelectAttribute(
-          '', '',
+          '', _('The IP address to use in the DHCP host record'),
           $ldapName.'_ip', TRUE
         ),
         new HiddenAttribute(
@@ -65,6 +65,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       if (!$this->plugin->is_template) {
         $this->loadChoices();
         $this->loadRecords();
+        $this->plugin->is_account = !empty($this->value);
       } elseif (isset($this->plugin->attrs[$this->getLdapName()]['count'])) {
         $this->value = array();
         // TODO $this->loadAdditionalTemplatesValues();
@@ -209,6 +210,15 @@ class dhcpSystem extends simplePlugin
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
+    $this->ignore_account = FALSE;
+  }
+
+  function is_this_account($attrs)
+  {
+    /* Will not work when call from constructor (or when $attrs is not us)
+     * See DhcpHostsAttribute::setParent which sets is_account later
+     * */
+    return (count($this->dhcpHosts) > 0);
   }
 
   static function getDhcpParentNodes()
