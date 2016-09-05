@@ -20,7 +20,7 @@ msgstr ""
 
 #: addons/ldapmanager/class_ldapmanager.inc:45
 msgid "LDIF"
-msgstr ""
+msgstr "LDIF (*.ldi,*.ldif)"
 
 #: addons/ldapmanager/class_ldapmanager.inc:46
 msgid "Export/Import the ldap tree to/from LDIF format"
@@ -28,13 +28,13 @@ msgstr ""
 
 #: addons/ldapmanager/class_ldapmanager.inc:48
 msgid "LDAP Manager"
-msgstr ""
+msgstr "Διαχείριση LDAP"
 
 #: addons/ldapmanager/class_ldapmanager.inc:62
 #: addons/ldapmanager/class_ldapmanager.inc:75
 #: addons/ldapmanager/class_ldapmanager.inc:94
 msgid "Export"
-msgstr ""
+msgstr "Εξαγωγή"
 
 #: addons/ldapmanager/class_ldapmanager.inc:65
 msgid "DN of a single entry to export as ldif"
@@ -42,15 +42,16 @@ msgstr ""
 
 #: addons/ldapmanager/class_ldapmanager.inc:79
 msgid "Export single entry"
-msgstr ""
+msgstr "Εξαγωγή μονής καταχώρησης"
 
 #: addons/ldapmanager/class_ldapmanager.inc:82
 msgid "Filter"
-msgstr ""
+msgstr "Φίλτρο"
 
 #: addons/ldapmanager/class_ldapmanager.inc:82
 msgid "Filter to use for selecting objects to export"
 msgstr ""
+"Φίλτρο που θα χρησιμοποιείται για την επιλογή αντικειμένων για εξαγωγή"
 
 #: addons/ldapmanager/class_ldapmanager.inc:87
 msgid ""
@@ -60,15 +61,15 @@ msgstr ""
 
 #: addons/ldapmanager/class_ldapmanager.inc:98
 msgid "Export complete LDIF for"
-msgstr ""
+msgstr "Εξαγωγή πλήρους LDIF για"
 
 #: addons/ldapmanager/class_ldapmanager.inc:103
 msgid "Import LDIF"
-msgstr ""
+msgstr "Εισαγωγή LDIF"
 
 #: addons/ldapmanager/class_ldapmanager.inc:106
 msgid "Overwrite existing entries"
-msgstr ""
+msgstr "Αντικατάσταση υπάρχουσων καταχωρίσεων"
 
 #: addons/ldapmanager/class_ldapmanager.inc:106
 msgid ""
@@ -88,43 +89,43 @@ msgstr ""
 #: addons/ldapmanager/contentcsv.tpl.c:26
 #: addons/ldapmanager/contentcsv.tpl.c:29
 msgid "Import"
-msgstr ""
+msgstr "Εισαγωγή"
 
 #: addons/ldapmanager/class_ldapmanager.inc:125
 msgid "Import LDIF file"
-msgstr ""
+msgstr "Εισαγωγή αρχείου LDIF"
 
 #: addons/ldapmanager/class_ldapmanager.inc:153
 #: addons/ldapmanager/class_ldapmanager.inc:197
 msgid "LDAP error"
-msgstr ""
+msgstr "Σφάλμα LDAP"
 
 #: addons/ldapmanager/class_ldapmanager.inc:154
 #, php-format
 msgid "No such object %s!"
-msgstr ""
+msgstr "Δεν υπάρχει τέτοιος αντικείμενο %s!"
 
 #: addons/ldapmanager/class_ldapmanager.inc:173
 msgid "Permission error"
-msgstr ""
+msgstr "Σφάλμα δικαιωμάτων"
 
 #: addons/ldapmanager/class_ldapmanager.inc:174
 #, php-format
 msgid "You have no permission to export %s!"
-msgstr ""
+msgstr "Δεν έχετε άδεια για εξαγωγή %s!"
 
 #: addons/ldapmanager/class_ldapmanager.inc:180
 msgid "Error"
-msgstr ""
+msgstr "Σφάλμα"
 
 #: addons/ldapmanager/class_ldapmanager.inc:181
 #, php-format
 msgid "Failed to generate ldap export, error was \"%s\"!"
-msgstr ""
+msgstr "Αποτυχία δημιουργίας εξαγωγής ldap, το σφάλμα ήταν \"%s\"!"
 
 #: addons/ldapmanager/tabs_ldif.inc:31
 msgid "LDAP import/export"
-msgstr ""
+msgstr "Εισαγωγής/εξαγωγή LDAP"
 
 #: addons/ldapmanager/tabs_ldif.inc:32
 msgid "Allows the import or export of the ldap tree"
@@ -132,19 +133,19 @@ msgstr ""
 
 #: addons/ldapmanager/tabs_ldif.inc:36
 msgid "Ldap manager"
-msgstr ""
+msgstr "Διαχειριστής Ldap"
 
 #: addons/ldapmanager/class_csvimport.inc:29
 msgid "CSV import"
-msgstr ""
+msgstr "Εισαγωγή CSV "
 
 #: addons/ldapmanager/class_csvimport.inc:30
 msgid "Import of csv data into the ldap tree"
-msgstr ""
+msgstr "Εισαγωγή δεδομένων csv στο δέντρο ldap"
 
 #: addons/ldapmanager/class_csvimport.inc:43
 msgid "Import CSV"
-msgstr ""
+msgstr "Εισαγωγή CSV"
 
 #: addons/ldapmanager/class_csvimport.inc:46
 msgid "Object type"
@@ -152,35 +153,36 @@ msgstr "Τύπος αντικειμένου"
 
 #: addons/ldapmanager/class_csvimport.inc:46
 msgid "Type of objects you wish to import"
-msgstr ""
+msgstr "Τύπος αντικειμένων που θέλετε να εισάγετε"
 
 #: addons/ldapmanager/class_csvimport.inc:50
 msgid "Template"
-msgstr ""
+msgstr "Πρότυπο"
 
 #: addons/ldapmanager/class_csvimport.inc:50
 msgid "Select a template to apply to imported entries"
 msgstr ""
+"Επιλογή ενός προτύπου από το οποίο θα εφραμοστούν οι εισηγμένες καταχωρήσεις"
 
 #: addons/ldapmanager/class_csvimport.inc:54
 msgid "CSV file"
-msgstr ""
+msgstr "Αρχείο CSV"
 
 #: addons/ldapmanager/class_csvimport.inc:54
 msgid "Import a CSV file into your LDAP"
-msgstr ""
+msgstr "Εισαγωγή ενός αρχείου CSV στο LDAP σας"
 
 #: addons/ldapmanager/class_csvimport.inc:58
 msgid "Separator"
-msgstr ""
+msgstr "Διαχωριστικό"
 
 #: addons/ldapmanager/class_csvimport.inc:58
 msgid "Character used as separator in the CSV file"
-msgstr ""
+msgstr "Χαρακτήρας που χρησιμοποιείται ως διαχωριστικό στο αρχείο CSV"
 
 #: addons/ldapmanager/class_csvimport.inc:64
 msgid "Fixed values"
-msgstr ""
+msgstr "Προκαθορισμένες τιμές"
 
 #: addons/ldapmanager/class_csvimport.inc:64
 msgid ""
@@ -189,11 +191,11 @@ msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:76
 msgid "Template filling"
-msgstr ""
+msgstr "Γέμισμα προτύπων"
 
 #: addons/ldapmanager/class_csvimport.inc:85
 msgid "Select fields associations"
-msgstr ""
+msgstr "Επιλογή συσχετισμών πεδίων"
 
 #: addons/ldapmanager/class_csvimport.inc:236
 #, php-format
@@ -202,12 +204,12 @@ msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:243
 msgid "Success"
-msgstr ""
+msgstr "Επιτυχία"
 
 #: addons/ldapmanager/class_csvimport.inc:243
 #, php-format
 msgid "Successfully imported %d entries"
-msgstr ""
+msgstr "Πετυχημένη εισαγωγή %d καταχωρήσεων"
 
 #: addons/ldapmanager/contentcsv.tpl.c:2
 msgid ""
@@ -219,28 +221,29 @@ msgstr ""
 
 #: addons/ldapmanager/contentcsv.tpl.c:5
 msgid "Select CSV file to import"
-msgstr ""
+msgstr "Επιλέξτε αρχείο CSV για εισαγωγή"
 
 #: addons/ldapmanager/contentcsv.tpl.c:8
 msgid "Browse"
-msgstr ""
+msgstr "Περιήγηση"
 
 #: addons/ldapmanager/contentcsv.tpl.c:11
 msgid "Select template"
-msgstr ""
+msgstr "Επιλογή προτύπου"
 
 #: addons/ldapmanager/contentcsv.tpl.c:14
 msgid "All entries have been written to the LDAP database successfully."
 msgstr ""
+"Όλες οι καταχωρήσεις αποθηκεύτηκαν στην βάση δεδομένων LDAP με επιτυχία."
 
 #: addons/ldapmanager/contentcsv.tpl.c:17
 msgid "Oups. There was an error during the import of your data."
-msgstr ""
+msgstr "Παρουσιάστηκε σφάλμα κατά τν εισαγωγή των δεδομένων σας"
 
 #: addons/ldapmanager/contentcsv.tpl.c:20
 msgid "Here is the status report for the import:"
-msgstr ""
+msgstr "Εδώ βρίσκεται η αναφορά κατάστασης για αυτή την εισαγωγή"
 
 #: addons/ldapmanager/contentcsv.tpl.c:23
 msgid "Selected Template"
-msgstr ""
+msgstr "Επιλεγμένο πρότυπο"

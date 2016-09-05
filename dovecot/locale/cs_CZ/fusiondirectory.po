@@ -21,7 +21,7 @@ msgstr ""
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:28
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:29
 msgid "Dovecot (IMAP/POP3)"
-msgstr ""
+msgstr "Dovecot (IMAP/POP3)"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:29
 msgid "Services"
@@ -33,7 +33,7 @@ msgstr ""
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:46
 msgid "Connect URL for Dovecot server"
-msgstr ""
+msgstr "URL adrea pro připojení k Dovecot serveru"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:50
 msgid "Hostname"
@@ -41,7 +41,7 @@ msgstr "Název počítače"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:50
 msgid "Hostname of the Dovecot server"
-msgstr ""
+msgstr "Název počítače, na kterém je provozován Dovecot"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:54
 msgid "Port"
@@ -49,7 +49,7 @@ msgstr "port"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:54
 msgid "Port number on which Dovecot server should be contacted"
-msgstr ""
+msgstr "Číslo portu na kterém by měl být kontaktován server Dovecot"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:59
 msgid "Option"
@@ -57,7 +57,7 @@ msgstr "volba"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:59
 msgid "Options for contacting Dovecot server"
-msgstr ""
+msgstr "Předvolby pro kontaktování Dovecot serveru"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:64
 msgid "Validate TLS/SSL Certificates"
@@ -69,7 +69,7 @@ msgstr ""
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:76
 msgid "Master credentials"
-msgstr ""
+msgstr "Hlavní přihlašovací údaje"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:79
 msgid "Admin user"
@@ -77,7 +77,7 @@ msgstr "správce"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:79
 msgid "Dovecot server admin user"
-msgstr ""
+msgstr "Účet správce Dovecot serveru"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:83
 msgid "Password"
@@ -85,15 +85,15 @@ msgstr "heslo"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:83
 msgid "Admin user password"
-msgstr ""
+msgstr "Heslo k účtu správce"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:87
 msgid "Mail directory"
-msgstr ""
+msgstr "Složka s poštou"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:87
 msgid "Path to the directory in which user maildirs must be created"
-msgstr ""
+msgstr "Umístění složky ve které je třeba vytvořit e-mailové složky uživatele"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:94
 msgid "Options"
@@ -106,6 +106,8 @@ msgstr ""
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:97
 msgid "Use argonaut to create the user mailbox on the Dovecot server"
 msgstr ""
+"Pro vytvoření e-mailové schránky uživatele na Dovecot serveru použijte "
+"argonaut"
 
 #: personal/mail/mail-methods/class_mail-methods-dovecot.inc:50
 msgid "There are no IMAP compatible mail servers defined!"
@@ -119,3 +121,4 @@ msgstr "Poštovní server pro tento účet je neplatný!"
 #, php-format
 msgid "Error while trying to contact Dovecot server through Argonaut: %s"
 msgstr ""
+"Chyba při pokusu kontaktovat Dovecot server prostřednictvím Argonaut: %s"

@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2016-09-01 20:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Alexey Matveev <Tippet@yandex.ru>, 2016\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +30,7 @@ msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:59
 msgid "Informations"
-msgstr ""
+msgstr "Информация"
 
 #: admin/groups/mail/class_groupMail.inc:62
 #: personal/mail/class_mailAccount.inc:97
@@ -39,7 +39,7 @@ msgstr "Основной адрес"
 
 #: admin/groups/mail/class_groupMail.inc:62
 msgid "The primary mail address"
-msgstr ""
+msgstr "Основной адрес электронной почты"
 
 #: admin/groups/mail/class_groupMail.inc:66
 #: personal/mail/class_mailAccount.inc:101
@@ -53,11 +53,11 @@ msgstr ""
 #: admin/groups/mail/class_groupMail.inc:72
 #: personal/mail/class_mailAccount.inc:117
 msgid "Alternative addresses"
-msgstr ""
+msgstr "Альтернативные адреса"
 
 #: admin/groups/mail/class_groupMail.inc:72
 msgid "Alternative mail addresses for the group"
-msgstr ""
+msgstr "Альтернативный адрес почты для группы"
 
 #: admin/groups/mail/class_groupMail.inc:77
 msgid "Forward messages to non group members"
@@ -79,7 +79,7 @@ msgstr ""
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:33
 msgid "IMAP/POP3"
-msgstr ""
+msgstr "IMAP/POP3"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:33
 msgid "Services"
@@ -88,7 +88,7 @@ msgstr "Сервисы"
 #: personal/mail/class_mail-methods.inc:154
 #: personal/mail/class_mail-methods.inc:516
 msgid "Configuration error"
-msgstr ""
+msgstr "Ошибка конфигурации"
 
 #: personal/mail/class_mail-methods.inc:155
 #, php-format
@@ -98,7 +98,7 @@ msgstr ""
 #: personal/mail/class_mail-methods.inc:517
 #, php-format
 msgid "Mail method '%s' is unknown!"
-msgstr ""
+msgstr "Не известный почтовый метод '%s'!"
 
 #: personal/mail/class_mail-methods.inc:764
 #: personal/mail/class_mail-methods.inc:765
@@ -107,11 +107,11 @@ msgstr ""
 
 #: personal/mail/class_mail-methods.inc:854
 msgid "Unknown"
-msgstr ""
+msgstr "Неизвестно"
 
 #: personal/mail/class_mail-methods.inc:856
 msgid "Unlimited"
-msgstr ""
+msgstr "Неограниченный"
 
 #: personal/mail/class_mailAccount.inc:45
 #: personal/mail/class_mailAccount.inc:238
@@ -127,7 +127,7 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:45
 #, php-format
 msgid "Cannot read quota settings: %s"
-msgstr ""
+msgstr "Не могу прочитать настройки квоты: %s"
 
 #: personal/mail/class_mailAccount.inc:55
 msgid "Quota usage"
@@ -140,15 +140,15 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:72
 #: config/mail/class_mailPluginConfig.inc:41
 msgid "Mail settings"
-msgstr ""
+msgstr "Настройки почты"
 
 #: personal/mail/class_mailAccount.inc:94
 msgid "Mail account"
-msgstr ""
+msgstr "Почтовый аккаунт"
 
 #: personal/mail/class_mailAccount.inc:97
 msgid "Primary mail address"
-msgstr ""
+msgstr "Первичный адрес почты"
 
 #: personal/mail/class_mailAccount.inc:101
 msgid "Specify the mail server where the user will be hosted on"
@@ -160,7 +160,7 @@ msgstr "Размер квоты"
 
 #: personal/mail/class_mailAccount.inc:113
 msgid "Other addresses and redirections"
-msgstr ""
+msgstr "Другие адреса и редиректы (перенаправления)"
 
 #: personal/mail/class_mailAccount.inc:117
 msgid "List of alternative mail addresses"
@@ -172,7 +172,7 @@ msgstr "Перенаправлять сообщения"
 
 #: personal/mail/class_mailAccount.inc:122
 msgid "Addresses to which messages should be forwarded"
-msgstr ""
+msgstr "Адреса на которые сообщение должно быть переслано "
 
 #: personal/mail/class_mailAccount.inc:128
 #: personal/mail/class_mailAccount.inc:147
@@ -190,11 +190,11 @@ msgstr "Выберите, чтобы включить автоответчик �
 
 #: personal/mail/class_mailAccount.inc:137
 msgid "from"
-msgstr ""
+msgstr "от"
 
 #: personal/mail/class_mailAccount.inc:142
 msgid "till"
-msgstr ""
+msgstr "до"
 
 #: personal/mail/class_mailAccount.inc:153
 msgid "Advanced mail options"
@@ -227,17 +227,17 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:241
 #, php-format
 msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
-msgstr ""
+msgstr "Почтовый ящик \"%s\" не существует на почтовом сервере: %s"
 
 #: personal/mail/class_mailAccount.inc:293
 #, php-format
 msgid "Cannot update mailbox: %s"
-msgstr ""
+msgstr "Не могу обновить почтовый ящик: %s"
 
 #: personal/mail/class_mailAccount.inc:297
 #, php-format
 msgid "Cannot write quota settings: %s"
-msgstr ""
+msgstr "Не могу записать настройки квоты: \"%s\""
 
 #: personal/mail/class_mailAccount.inc:310
 msgid "Mail error saving sieve settings"
@@ -251,19 +251,19 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:334
 #, php-format
 msgid "Cannot remove mailbox: %s"
-msgstr ""
+msgstr "Не могу удалить почтовый ящик: \"%s\""
 
 #: config/mail/class_mailPluginConfig.inc:29
 msgid "Mail plugin configuration"
-msgstr ""
+msgstr "Настройка плагина Почта"
 
 #: config/mail/class_mailPluginConfig.inc:44
 msgid "Account identification attribute"
-msgstr ""
+msgstr "Атрибут идентификации аккаунта"
 
 #: config/mail/class_mailPluginConfig.inc:45
 msgid "Which attribute will be used to create accounts."
-msgstr ""
+msgstr "Какой из атрибутов будет использоваться для создания аккаунтов."
 
 #: config/mail/class_mailPluginConfig.inc:50
 msgid "Mail user template"
@@ -309,10 +309,12 @@ msgid ""
 "List of personal IMAP folders that should be created along initial account "
 "creation."
 msgstr ""
+"Список персональных IMAP папок, которые должны быть созданы при создании "
+"аккаунта."
 
 #: config/mail/class_mailPluginConfig.inc:77
 msgid "IMAP timeout"
-msgstr ""
+msgstr "Таймаут IMAP"
 
 #: config/mail/class_mailPluginConfig.inc:78
 msgid "Sets the connection timeout for imap actions."

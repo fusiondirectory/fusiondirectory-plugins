@@ -10,56 +10,58 @@ msgstr ""
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2016-09-01 20:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
-"Language-Team: Italian (https://www.transifex.com/fusiondirectory/teams/12202/it/)\n"
+"Last-Translator: Paola Penati <penati@avaya.com>, 2016\n"
+"Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
+"Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/audit/class_auditEvent.inc:53 admin/audit/class_auditEvent.inc:56
 msgid "Audit event"
-msgstr ""
+msgstr "Evento di controllo"
 
 #: admin/audit/class_auditEvent.inc:54
 msgid "An event like ldap modification which was registered by audit plugin"
 msgstr ""
+"Un evento come la modifica LDAP che è stato registrato dal plug-in di "
+"revisione"
 
 #: admin/audit/class_auditEvent.inc:73
 msgid "Event"
-msgstr ""
+msgstr "Evento"
 
 #: admin/audit/class_auditEvent.inc:76
 #: admin/audit/class_auditManagement.inc:69
 msgid "Time"
-msgstr ""
+msgstr "Tempo"
 
 #: admin/audit/class_auditEvent.inc:76
 msgid "Date and time this event happened"
-msgstr ""
+msgstr "Data e ora in cui questo evento é accaduto"
 
 #: admin/audit/class_auditEvent.inc:79
 #: admin/audit/class_auditManagement.inc:83
 msgid "Action"
-msgstr ""
+msgstr "Azione"
 
 #: admin/audit/class_auditEvent.inc:79
 msgid "Action type"
-msgstr ""
+msgstr "Tipo di azione"
 
 #: admin/audit/class_auditEvent.inc:80
 #: admin/audit/class_auditManagement.inc:76
 msgid "Author"
-msgstr ""
+msgstr "Autore"
 
 #: admin/audit/class_auditEvent.inc:80
 msgid "Action author"
-msgstr ""
+msgstr "Azione autore"
 
 #: admin/audit/class_auditEvent.inc:81
 msgid "Object type"
-msgstr ""
+msgstr "Tipo di oggetto"
 
 #: admin/audit/class_auditEvent.inc:82
 msgid "Object"
@@ -67,32 +69,32 @@ msgstr "Oggetto"
 
 #: admin/audit/class_auditEvent.inc:82
 msgid "Target object"
-msgstr ""
+msgstr "Oggetto di destinazione"
 
 #: admin/audit/class_auditEvent.inc:83
 msgid "Attributes"
-msgstr ""
+msgstr "Attributi"
 
 #: admin/audit/class_auditEvent.inc:83
 msgid "Target attributes"
-msgstr ""
+msgstr "Attributi di destinazione"
 
 #: admin/audit/class_auditEvent.inc:84
 msgid "Result"
-msgstr ""
+msgstr "Risultato"
 
 #: admin/audit/class_auditEvent.inc:84
 msgid "Result or error"
-msgstr ""
+msgstr "Risultato o errore"
 
 #: admin/audit/class_auditManagement.inc:40
 #: config/audit/class_auditConfig.inc:41
 msgid "Audit"
-msgstr ""
+msgstr "Controllo"
 
 #: admin/audit/class_auditManagement.inc:41
 msgid "Audit events display"
-msgstr ""
+msgstr "Visualizzazione eventi di controllo"
 
 #: admin/audit/class_auditManagement.inc:90
 msgid "Type"
@@ -100,36 +102,36 @@ msgstr "Tipo"
 
 #: admin/audit/class_auditManagement.inc:97
 msgid "Target"
-msgstr ""
+msgstr "Obiettivo"
 
 #: config/audit/class_auditConfig.inc:28
 msgid "Audit configuration"
-msgstr ""
+msgstr "Configurazione di audit"
 
 #: config/audit/class_auditConfig.inc:29
 msgid "FusionDirectory audit plugin configuration"
-msgstr ""
+msgstr "Configurazione del plugin di controllo di FusionDirectory"
 
 #: config/audit/class_auditConfig.inc:44
 msgid "Audit RDN"
-msgstr ""
+msgstr "Controllo RDN"
 
 #: config/audit/class_auditConfig.inc:44
 msgid "Branch in which audit events will be stored"
-msgstr ""
+msgstr "Ramo nel quale gli eventi di controllo verranno immagazzinati"
 
 #: config/audit/class_auditConfig.inc:50
 msgid "Actions to audit"
-msgstr ""
+msgstr "Azioni da controllare"
 
 #: config/audit/class_auditConfig.inc:50
 msgid "Which actions should be stored in LDAP audit log"
-msgstr ""
+msgstr "Quali azioni devono essere conservati nel log di controllo LDAP"
 
 #: config/audit/class_auditConfig.inc:57
 msgid "Days to keep"
-msgstr ""
+msgstr "Giorni di conservazione"
 
 #: config/audit/class_auditConfig.inc:57
 msgid "Number of days of audit to keep in the LDAP when cleaning"
-msgstr ""
+msgstr "Numero di giorni di controllo da tenere nell'LDAP durante il cleaning"

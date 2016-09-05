@@ -36,7 +36,7 @@ msgstr "zásuvný modul"
 #: html/jsonrpc.php:489
 #, php-format
 msgid "Cannot delete %s. It has been locked by %s."
-msgstr ""
+msgstr "%s nelze smazat. Je uzamčeno %s."
 
 #: html/jsonrpc.php:536 html/jsonrpc.php:565
 #, php-format
@@ -59,16 +59,16 @@ msgstr "Nastavení webové služby"
 
 #: config/class_webserviceConfig.inc:29
 msgid "FusionDirectory webservice plugin configuration"
-msgstr ""
+msgstr "Nastavení zásuvného modulu webová služba pro FusionDirectory"
 
 #: config/class_webserviceConfig.inc:42
 msgid "Webservice"
-msgstr ""
+msgstr "Webová služba"
 
 #: config/class_webserviceConfig.inc:45
 msgid "Force SSL"
-msgstr ""
+msgstr "Vynutit SSL"
 
 #: config/class_webserviceConfig.inc:45
 msgid "Allow only HTTPS JSON-RPC requests"
-msgstr ""
+msgstr "Přijímat JSON-RPC požadavky pouze přes HTTPS"

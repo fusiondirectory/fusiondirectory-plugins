@@ -21,7 +21,7 @@ msgstr ""
 #: admin/systems/services/quota/class_serviceQuota.inc:30
 #: admin/systems/services/quota/class_serviceQuota.inc:31
 msgid "Quota service"
-msgstr ""
+msgstr "Service Quota"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:31
 msgid "Services"
@@ -29,80 +29,80 @@ msgstr "Service"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:43
 msgid "Shares"
-msgstr ""
+msgstr "Partages"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:47
 msgid "Quotas for the shares this server hosts"
-msgstr ""
+msgstr "Quota pour les partages fournis par ce serveur"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:51
 #: personal/quota/class_quotaAccount.inc:129
 msgid "Device"
-msgstr ""
+msgstr "Périphérique"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:51
 msgid "Device concerned by this quota"
-msgstr ""
+msgstr "Périphérique concerné par ce quota"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:55
 msgid "Quota block size"
-msgstr ""
+msgstr "Taille des blocs pour le quota"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:55
 msgid "Quota block size on this share (usually 1024)"
-msgstr ""
+msgstr "Taille des blocs pour le quota sur ce partage (normalement 1024)"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:60
 msgid "Comment"
-msgstr ""
+msgstr "Commentaire"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:60
 msgid "Short comment about this quota"
-msgstr ""
+msgstr "Court commentaire sur ce quota"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:73
 msgid "Quota warning message"
-msgstr ""
+msgstr "Message d'avertissement du quota"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:76
 msgid "Charset"
-msgstr ""
+msgstr "Jeu de caractères"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:76
 msgid "Charset use for the message"
-msgstr ""
+msgstr "Encodage utilisé pour le message"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:80
 msgid "Mail command"
-msgstr ""
+msgstr "Commande de courriel"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:80
 msgid "Command allowing the server to send mails"
-msgstr ""
+msgstr "Commande permettant au serveur d'envoyer des courriels"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:84
 msgid "Support contact"
-msgstr ""
+msgstr "Contact du support"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:84
 msgid "Email address to contact the administrator"
-msgstr ""
+msgstr "Adresse de courriel pour contacter l'administrateur"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:88
 msgid "From"
-msgstr ""
+msgstr "Depuis"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:88
 msgid "Email from which the email is sent"
-msgstr ""
+msgstr "Adresse depuis laquelle les courriels seront envoyés"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:92
 msgid "CC"
-msgstr ""
+msgstr "CC"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:92
 msgid "Send a copy of this email to"
-msgstr ""
+msgstr "Envoyer une copie à "
 
 #: admin/systems/services/quota/class_serviceQuota.inc:96
 msgid "Subject"
@@ -110,51 +110,51 @@ msgstr "Sujet"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:96
 msgid "Subject of the sent warning email"
-msgstr ""
+msgstr "Sujet du courriel d'alerte envoyé"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:100
 msgid "Content"
-msgstr ""
+msgstr "Contenu"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:100
 msgid "Content of the sent email"
-msgstr ""
+msgstr "Contenu du courriel envoyé"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:104
 msgid "Signature"
-msgstr ""
+msgstr "Signature"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:104
 msgid "Signature to put at the end of the mail"
-msgstr ""
+msgstr "Signature à mettre à la fin du courriel"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:110
 msgid "LDAP message support"
-msgstr ""
+msgstr "Support des messages LDAP"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:113
 msgid "LDAP server"
-msgstr ""
+msgstr "Serveur LDAP"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:113
 msgid "The LDAP server to bind to"
-msgstr ""
+msgstr "Serveur LDAP sur lequel se connecter"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:117
 msgid "Bind user dn"
-msgstr ""
+msgstr "DN de connexion"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:117
 msgid "The user dn to use for bind"
-msgstr ""
+msgstr "DN du compte à utiliser pour la connexion"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:121
 msgid "Bind user password"
-msgstr ""
+msgstr "Mot de passe de connexion"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:121
 msgid "The password of the user used for bind"
-msgstr ""
+msgstr "Mot de passe à utiliser pour la connexion"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:154
 msgid "Warning"
@@ -163,69 +163,71 @@ msgstr "Avertissement"
 #: admin/systems/services/quota/class_serviceQuota.inc:154
 #, php-format
 msgid "Invalid value in encodings : %s"
-msgstr ""
+msgstr "Valeur d'encodage invalide : %s"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:171
 #, php-format
 msgid "(%s by %s)"
-msgstr ""
+msgstr "(%s par %s)"
 
 #: personal/quota/class_quotaAccount.inc:101
 msgid "Quota"
-msgstr ""
+msgstr "Quota"
 
 #: personal/quota/class_quotaAccount.inc:102
 msgid "Plugin for quota support"
-msgstr ""
+msgstr "Gestion des quotas utilisateurs"
 
 #: personal/quota/class_quotaAccount.inc:120
 msgid "Quota informations"
-msgstr ""
+msgstr "Informations sur les quotas"
 
 #: personal/quota/class_quotaAccount.inc:125
 msgid "Quota informations for this user"
-msgstr ""
+msgstr "Informations sur les quotas de l'utilisateur"
 
 #: personal/quota/class_quotaAccount.inc:129
 msgid "Device this quota is for"
-msgstr ""
+msgstr "Périphérique pour lequel le quota s'applique"
 
 #: personal/quota/class_quotaAccount.inc:133
 msgid "Block soft limit"
-msgstr ""
+msgstr "Taille limite"
 
 #: personal/quota/class_quotaAccount.inc:133
 msgid "Soft limit for the block the user can use"
 msgstr ""
+"Nombre maximal de blocs utilisables par l'utilisateur avant avertissement"
 
 #: personal/quota/class_quotaAccount.inc:139
 msgid "Block hard limit"
-msgstr ""
+msgstr "Taille critique"
 
 #: personal/quota/class_quotaAccount.inc:139
 msgid "Hard limit for the block the user can use"
-msgstr ""
+msgstr "Nombre maximal de blocs utilisables par l'utilisateur avant blocage"
 
 #: personal/quota/class_quotaAccount.inc:145
 msgid "Inode soft limit"
-msgstr ""
+msgstr "Nombre limite de fichiers"
 
 #: personal/quota/class_quotaAccount.inc:145
 msgid "Soft limit for the inodes the user can use"
 msgstr ""
+"Nombre maximal d'inode utilisables par l'utilisateur avant avertissement"
 
 #: personal/quota/class_quotaAccount.inc:151
 msgid "Inode hard limit"
-msgstr ""
+msgstr "Nombre critique de fichiers"
 
 #: personal/quota/class_quotaAccount.inc:151
 msgid "Hard limit for the inodes the user can use"
-msgstr ""
+msgstr "Nombre maximal d'inode utilisables par l'utilisateur avant blocage"
 
 #: personal/quota/class_quotaAccount.inc:157
 msgid "Server"
-msgstr ""
+msgstr "Serveur"
 
 #: personal/quota/class_quotaAccount.inc:157
 msgid "Server hosting the device this quota is for"
-msgstr ""
+msgstr "Serveur hébergeant le périphérique sur lequel s'applique le quota"

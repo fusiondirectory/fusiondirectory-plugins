@@ -32,7 +32,7 @@ msgstr "správa aplikací"
 
 #: admin/applications/class_applicationManagement.inc:101
 msgid "Web applications"
-msgstr ""
+msgstr "Webové aplikace"
 
 #: admin/applications/class_applicationGeneric.inc:29
 #: admin/applications/class_applicationGeneric.inc:32
@@ -43,7 +43,7 @@ msgstr "aplikace"
 
 #: admin/applications/class_applicationGeneric.inc:30
 msgid "Application information"
-msgstr ""
+msgstr "Informace o aplikaci"
 
 #: admin/applications/class_applicationGeneric.inc:50
 msgid "Application name"
@@ -61,7 +61,7 @@ msgstr "popis"
 #: admin/applications/class_applicationGeneric.inc:54
 #: admin/applications/class_webApplication.inc:53
 msgid "A short description of this application"
-msgstr ""
+msgstr "Stručný popis této aplikace"
 
 #: admin/applications/class_applicationGeneric.inc:58
 msgid "Execute"
@@ -69,7 +69,7 @@ msgstr "spustit"
 
 #: admin/applications/class_applicationGeneric.inc:58
 msgid "The application to be executed"
-msgstr ""
+msgstr "Aplikace, která má být spuštěna"
 
 #: admin/applications/class_applicationGeneric.inc:62
 msgid "Display name"
@@ -77,7 +77,7 @@ msgstr "zobrazované jméno"
 
 #: admin/applications/class_applicationGeneric.inc:62
 msgid "The displayed name for this application"
-msgstr ""
+msgstr "Zobrazovaný název této aplikace"
 
 #: admin/applications/class_applicationGeneric.inc:68
 #: admin/applications/class_webApplication.inc:67
@@ -87,7 +87,7 @@ msgstr "ikona"
 #: admin/applications/class_applicationGeneric.inc:71
 #: admin/applications/class_webApplication.inc:70
 msgid "The icon for this application"
-msgstr ""
+msgstr "Ikona pro tuto aplikaci"
 
 #: admin/applications/class_applicationGeneric.inc:78
 msgid "Options"
@@ -99,7 +99,7 @@ msgstr "Spustitelné pouze pro člena"
 
 #: admin/applications/class_applicationGeneric.inc:81
 msgid "Only executable by the memebers of the group"
-msgstr ""
+msgstr "Spustitelné pouze pro členy skupiny"
 
 #: admin/applications/class_applicationGeneric.inc:86
 msgid "Replace user configuration on startup"
@@ -124,7 +124,7 @@ msgstr "členům umisťovat položku do nabídky start"
 #: admin/applications/class_applicationGeneric.inc:96
 #: admin/applications/class_applicationGeneric.inc:101
 msgid "Put an entry in the startup menu"
-msgstr ""
+msgstr "Umístit položku do nabídky po spuštění"
 
 #: admin/applications/class_applicationGeneric.inc:101
 msgid "Place entry in members launch bar"
@@ -133,11 +133,11 @@ msgstr "členům umisťovat položku na panel „snadné spuštění“"
 #: admin/applications/class_webApplication.inc:28
 #: admin/applications/class_webApplication.inc:31
 msgid "Web application"
-msgstr ""
+msgstr "Webová aplikace"
 
 #: admin/applications/class_webApplication.inc:29
 msgid "Web applicationts names, icons and links"
-msgstr ""
+msgstr "Názvy, ikony a odkazy na webové aplikace"
 
 #: admin/applications/class_webApplication.inc:49
 msgid "Name"
@@ -145,51 +145,51 @@ msgstr "název"
 
 #: admin/applications/class_webApplication.inc:49
 msgid "Name or id for application"
-msgstr ""
+msgstr "Název nebo identifikátor aplikace"
 
 #: admin/applications/class_webApplication.inc:57
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: admin/applications/class_webApplication.inc:57
 msgid "Link to this application"
-msgstr ""
+msgstr "Odkaz na tuto aplikaci"
 
 #: admin/applications/class_webApplication.inc:61
 msgid "Display Name"
-msgstr ""
+msgstr "Zobrazovaný název"
 
 #: admin/applications/class_webApplication.inc:61
 msgid "Displayed name for links to this application"
-msgstr ""
+msgstr "Zobrazovaný název pro odkazy na tuto aplikaci"
 
 #: admin/applications/class_webApplication.inc:75
 msgid "Icon location"
-msgstr ""
+msgstr "Umístění ikony"
 
 #: admin/applications/class_webApplication.inc:75
 msgid "Usual path to this application icon"
-msgstr ""
+msgstr "Obvykle umístění ikony této aplikace"
 
 #: admin/roles/class_applicationRights.inc:31
 msgid "Applications allowed for this role"
-msgstr ""
+msgstr "Aplikace zpřístupněné této roli"
 
 #: admin/roles/class_applicationRights.inc:45
 msgid "Application list"
-msgstr ""
+msgstr "Seznam aplikace"
 
 #: admin/roles/class_applicationRights.inc:49
 msgid "The applications users with this role are allowed to launch"
-msgstr ""
+msgstr "Aplikace, které mohou spouštět uživatelé s touto rolí"
 
 #: config/applications/class_applicationsPluginConfig.inc:29
 msgid "Applications plugin configuration"
-msgstr ""
+msgstr "Nastavení zásuvného modulu Aplikace"
 
 #: config/applications/class_applicationsPluginConfig.inc:43
 msgid "Application RDN"
-msgstr ""
+msgstr "Relativní rozlišený název aplikace"
 
 #: config/applications/class_applicationsPluginConfig.inc:43
 msgid "Branch in which applications will be stored"
@@ -197,19 +197,19 @@ msgstr "Větev, ve kterou budou uloženy aplikace"
 
 #: config/applications/class_applicationsPluginConfig.inc:48
 msgid "Web applications RDN"
-msgstr ""
+msgstr "Relativní rozlišený název webové aplikace"
 
 #: config/applications/class_applicationsPluginConfig.inc:48
 msgid "Branch in which web applications will be stored"
-msgstr ""
+msgstr "Větev, ve které budou uloženy webové aplikace"
 
 #: config/applications/class_applicationsPluginConfig.inc:53
 msgid "Show web applications in menu"
-msgstr ""
+msgstr "Zobrazovat webové aplikace v nabídce"
 
 #: config/applications/class_applicationsPluginConfig.inc:53
 msgid "Whether to show web applications in FD main menu"
-msgstr ""
+msgstr "Zda v hlavní nabídce F.D. zobrazovat webové aplikace"
 
 #: config/applications/class_applicationsPluginConfig.inc:56
 msgid "None"
@@ -217,8 +217,8 @@ msgstr "žádné"
 
 #: config/applications/class_applicationsPluginConfig.inc:56
 msgid "Only allowed"
-msgstr ""
+msgstr "Pouze povolené"
 
 #: config/applications/class_applicationsPluginConfig.inc:56
 msgid "All"
-msgstr ""
+msgstr "Vše"

@@ -10,12 +10,12 @@ msgstr ""
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2016-09-01 20:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
-"Language-Team: Italian (https://www.transifex.com/fusiondirectory/teams/12202/it/)\n"
+"Last-Translator: Paola Penati <penati@avaya.com>, 2016\n"
+"Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
+"Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/groups/mail/class_groupMail.inc:46
@@ -26,11 +26,11 @@ msgstr "Mail"
 
 #: admin/groups/mail/class_groupMail.inc:47
 msgid "Group mail options"
-msgstr ""
+msgstr "Opzioni per le mail di gruppo"
 
 #: admin/groups/mail/class_groupMail.inc:59
 msgid "Informations"
-msgstr ""
+msgstr "Informazioni"
 
 #: admin/groups/mail/class_groupMail.inc:62
 #: personal/mail/class_mailAccount.inc:97
@@ -48,7 +48,7 @@ msgstr "Server"
 
 #: admin/groups/mail/class_groupMail.inc:66
 msgid "Server mail"
-msgstr ""
+msgstr "Server di e-mail"
 
 #: admin/groups/mail/class_groupMail.inc:72
 #: personal/mail/class_mailAccount.inc:117
@@ -57,7 +57,7 @@ msgstr "Indirizzi alternativi"
 
 #: admin/groups/mail/class_groupMail.inc:72
 msgid "Alternative mail addresses for the group"
-msgstr ""
+msgstr "Indirizzi e-mail alternativi per il gruppo"
 
 #: admin/groups/mail/class_groupMail.inc:77
 msgid "Forward messages to non group members"
@@ -65,13 +65,15 @@ msgstr "Inoltra i messaggi ai membri che non appartengono al gruppo"
 
 #: admin/groups/mail/class_groupMail.inc:81
 msgid "Only allowed to receive local mail"
-msgstr ""
+msgstr "L'utente è abilitato a ricevere solo messaggi locali"
 
 #: admin/groups/mail/class_groupMail.inc:81
 msgid ""
 "Whether this group mail is only allowed to receive messages from local "
 "senders"
 msgstr ""
+"Questo gruppo email e' autorizzato unicamente a ricevere messaggi da "
+"mittenti locali"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:32
 msgid "IMAP/POP3 generic service"
@@ -144,7 +146,7 @@ msgstr "Impostazioni della posta elettronica"
 
 #: personal/mail/class_mailAccount.inc:94
 msgid "Mail account"
-msgstr ""
+msgstr "Account email"
 
 #: personal/mail/class_mailAccount.inc:97
 msgid "Primary mail address"
@@ -229,7 +231,7 @@ msgstr "L'algoritmo di posta elettronica non riesce a connettersi : %s"
 #: personal/mail/class_mailAccount.inc:241
 #, php-format
 msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
-msgstr ""
+msgstr "L'account di posta elettronica \"%s\" non esiste sul server mail: %s"
 
 #: personal/mail/class_mailAccount.inc:293
 #, php-format
@@ -251,11 +253,13 @@ msgstr ""
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr ""
+"Impossibile rimuovere la mailbox, il metodo di posta non riesce a "
+"connettersi a: %s"
 
 #: personal/mail/class_mailAccount.inc:334
 #, php-format
 msgid "Cannot remove mailbox: %s"
-msgstr ""
+msgstr "Impossibile rimuovere mailbox : %s"
 
 #: config/mail/class_mailPluginConfig.inc:29
 msgid "Mail plugin configuration"
@@ -295,6 +299,8 @@ msgstr "Usa lo stile cyrus UNIX"
 msgid ""
 "Determines if 'foo/bar' or 'foo.bar' should be uses as namespaces in IMAP."
 msgstr ""
+"Determina se ' foo / bar' o ' foo.bar ' dovrebbe essere usato come namespace"
+" in IMAP ."
 
 #: config/mail/class_mailPluginConfig.inc:65
 msgid "Delete mailbox on account deletion"

@@ -241,7 +241,7 @@ msgstr ""
 
 #: admin/fai/class_faiDiskEntry.inc:243
 msgid "fstab key"
-msgstr ""
+msgstr "clave fstab"
 
 #: admin/fai/class_faiDiskEntry.inc:243
 msgid "Key to use in fstab file"
@@ -257,15 +257,15 @@ msgstr "UUID"
 
 #: admin/fai/class_faiDiskEntry.inc:249
 msgid "Disk label"
-msgstr ""
+msgstr "Etiqueta de disco"
 
 #: admin/fai/class_faiDiskEntry.inc:258
 msgid "Partition entries"
-msgstr ""
+msgstr "Entradas en la partición"
 
 #: admin/fai/class_faiDiskEntry.inc:263 admin/fai/class_faiPartition.inc:422
 msgid "Combined physical partitions"
-msgstr ""
+msgstr "Particiones físicas combinadas"
 
 #: admin/fai/class_faiDiskEntry.inc:263
 msgid "Physical partitions combined in this LVM volume"
@@ -379,7 +379,7 @@ msgstr ""
 
 #: admin/fai/class_faiPackageConfiguration.inc:172
 msgid "Warning"
-msgstr ""
+msgstr "Aviso"
 
 #: admin/fai/class_faiPackageConfiguration.inc:173
 #, php-format
@@ -509,7 +509,7 @@ msgstr ""
 
 #: admin/fai/class_faiPartition.inc:229
 msgid "Partition"
-msgstr ""
+msgstr "Partición"
 
 #: admin/fai/class_faiPartition.inc:234
 msgid "Type"
@@ -562,11 +562,11 @@ msgstr ""
 
 #: admin/fai/class_faiPartition.inc:292
 msgid "Resize existing partition"
-msgstr ""
+msgstr "Redimensionar partición existente"
 
 #: admin/fai/class_faiPartition.inc:296
 msgid "Bootable"
-msgstr ""
+msgstr "Inicializable"
 
 #: admin/fai/class_faiPartition.inc:296
 msgid "Wether or not this partition can be booted"
@@ -574,7 +574,7 @@ msgstr ""
 
 #: admin/fai/class_faiPartition.inc:300
 msgid "Preserve"
-msgstr ""
+msgstr "Preservar"
 
 #: admin/fai/class_faiPartition.inc:303
 msgid "Never"
@@ -586,11 +586,11 @@ msgstr ""
 
 #: admin/fai/class_faiPartition.inc:303
 msgid "Reinstall"
-msgstr ""
+msgstr "Reinstalar"
 
 #: admin/fai/class_faiPartition.inc:308 admin/fai/class_faiPartition.inc:311
 msgid "Filesystem"
-msgstr ""
+msgstr "Sistemas de archivos"
 
 #: admin/fai/class_faiPartition.inc:311
 msgid "The filesystem this partition should be formatted with"
@@ -630,7 +630,7 @@ msgstr ""
 
 #: admin/fai/class_faiPartition.inc:317
 msgid "Encrypted"
-msgstr ""
+msgstr "Encriptado"
 
 #: admin/fai/class_faiPartition.inc:317
 msgid "Wether or not this partition is encrypted"
@@ -650,15 +650,15 @@ msgstr "Opciones"
 
 #: admin/fai/class_faiPartition.inc:330
 msgid "Create options"
-msgstr ""
+msgstr "Crear opciones"
 
 #: admin/fai/class_faiPartition.inc:330
 msgid "Filesystem create options"
-msgstr ""
+msgstr "Crear opciones del sistema de archivos"
 
 #: admin/fai/class_faiPartition.inc:334
 msgid "Tune options"
-msgstr ""
+msgstr "Opciones de ajuste"
 
 #: admin/fai/class_faiPartition.inc:334
 msgid "Filesystem tune options"
@@ -905,7 +905,7 @@ msgstr ""
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:43
 msgid "Port"
-msgstr ""
+msgstr "Puerto"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:43
 msgid "The port argonaut-fai-monitor should listen on. Default is 4711."
@@ -971,4 +971,4 @@ msgstr "Filtro"
 
 #: admin/fai/packageSelect/selectPackage-filter.tpl.c:5
 msgid "A maximum of 200 entries will be shown here."
-msgstr ""
+msgstr "Un máximo de 200 entradas serán enseñadas."

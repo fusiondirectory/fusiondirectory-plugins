@@ -33,13 +33,15 @@ msgstr "Název tohoto adresáře"
 
 #: admin/autofs/class_nisObject.inc:62
 msgid "Automount entry"
-msgstr ""
+msgstr "Položka automatického připojení (automount)"
 
 #: admin/autofs/class_nisObject.inc:62
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
 msgstr ""
+"Položka této složky pro systémovou službu automount.\n"
+"Například „auto.u“ nebo „-fstype=nfs nazevdomeny.tld:/pripojna/složka“"
 
 #: admin/autofs/class_nisObject.inc:66 admin/autofs/class_nisMap.inc:31
 #: admin/autofs/class_nisMap.inc:34 admin/autofs/class_nisMap.inc:49
@@ -48,15 +50,15 @@ msgstr "přípojný bod"
 
 #: admin/autofs/class_nisObject.inc:66
 msgid "The mount point this directory will be placed in"
-msgstr ""
+msgstr "Přípojný bod, do kterého bude tato složka umístěna"
 
 #: admin/autofs/class_nisMap.inc:32
 msgid "Autofs mount point"
-msgstr ""
+msgstr "Přípojný bod pro autofs"
 
 #: admin/autofs/class_nisMap.inc:53
 msgid "Name of the mount point"
-msgstr ""
+msgstr "Název přípojného bodu"
 
 #: admin/autofs/class_autofsManagement.inc:31
 msgid "Auto fs"
@@ -64,24 +66,26 @@ msgstr ""
 
 #: admin/autofs/class_autofsManagement.inc:32
 msgid "Auto fs management"
-msgstr ""
+msgstr "Správa auto fs"
 
 #: config/autofs/class_autofsConfig.inc:28
 msgid "Autofs configuration"
-msgstr ""
+msgstr "Nastavení Autofs"
 
 #: config/autofs/class_autofsConfig.inc:29
 msgid "FusionDirectory autofs plugin configuration"
-msgstr ""
+msgstr "Nastavení zásuvného modulu autofs pro FusionDirectory"
 
 #: config/autofs/class_autofsConfig.inc:42
 msgid "AutoFS"
-msgstr ""
+msgstr "AutoFS"
 
 #: config/autofs/class_autofsConfig.inc:45
 msgid "AutoFS RDN"
-msgstr ""
+msgstr "Relativní rozlišený název AutoFS"
 
 #: config/autofs/class_autofsConfig.inc:45
 msgid "Branch in which automount info will be stored"
 msgstr ""
+"Větev, ve které budou ukládány údaje pro automatické připojování souborových"
+" systémů"

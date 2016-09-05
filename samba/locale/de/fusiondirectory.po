@@ -153,6 +153,8 @@ msgid ""
 "Minimum password age, in seconds (default: 0 => allow immediate password "
 "change)"
 msgstr ""
+"Minimales Passwortalter in Sekunden (Standard: 0 => sofortige "
+"Passwortänderung erlauben)"
 
 #: admin/samba/class_sambaDomain.inc:72
 msgid "Maximum password age"
@@ -162,6 +164,8 @@ msgstr "Maximales Passwort-Alter"
 msgid ""
 "Maximum password age, in seconds (default: -1 => never expire passwords)"
 msgstr ""
+"Maximales Passwortalter in Sekunden (Standard: -1 => nie ablaufende "
+"Passwörter)"
 
 #: admin/samba/class_sambaDomain.inc:78
 msgid "Next RID"
@@ -197,11 +201,11 @@ msgstr "Minimale Passwortlänge (Standard: 5)"
 
 #: admin/samba/class_sambaDomain.inc:98
 msgid "Password history length"
-msgstr ""
+msgstr "Passwortverlauflänge"
 
 #: admin/samba/class_sambaDomain.inc:99
 msgid "Length of Password History Entries (default: 0 => off)"
-msgstr ""
+msgstr "Länge der Passwortchronikeinträge (Standard: 0 => aus)"
 
 #: admin/samba/class_sambaDomain.inc:103
 msgid "Logon to change password"
@@ -249,7 +253,7 @@ msgstr "Verweigere Änderung der Passwörter für Computerkonten"
 
 #: admin/samba/class_sambaDomain.inc:129
 msgid "Allow Machine Password changes (default: 0 => off)"
-msgstr ""
+msgstr "Rechnerpasswortänderungen erlauben (Standard: 0 => aus)"
 
 #: admin/systems/samba/class_argonautEventSambaShares.inc:27
 msgid "Update Samba Shares"
@@ -257,11 +261,11 @@ msgstr ""
 
 #: admin/systems/samba/class_winstationGeneric.inc:31
 msgid "Winstation"
-msgstr ""
+msgstr "Windows-Arbeitsstation"
 
 #: admin/systems/samba/class_winstationGeneric.inc:32
 msgid "Windows workstation information"
-msgstr ""
+msgstr "Windows-Arbeitsstationinformation"
 
 #: admin/systems/samba/class_winstationGeneric.inc:36
 #: admin/systems/samba/class_winstationGeneric.inc:37
@@ -304,7 +308,7 @@ msgstr "Netzwerkeinstellungen"
 
 #: admin/systems/samba/class_winstationGeneric.inc:95
 msgid "IP address"
-msgstr ""
+msgstr "IP-Adresse"
 
 #: admin/systems/samba/class_winstationGeneric.inc:95
 msgid "IP addresses this system uses (v4 or v6)"
@@ -312,7 +316,7 @@ msgstr ""
 
 #: admin/systems/samba/class_winstationGeneric.inc:100
 msgid "Mac address"
-msgstr ""
+msgstr "MAC-Adresse"
 
 #: admin/systems/samba/class_winstationGeneric.inc:100
 msgid "Mac address of this system"
@@ -323,6 +327,8 @@ msgid ""
 "Your PHP install does not have the mhash() nor the hash function. Cannot do "
 "MD4 hashes."
 msgstr ""
+"Ihre PHP-Installation hat nicht den mhash() bzw. die hash-Funktion. "
+"MD4-Hashes können nicht durchgeführt werden."
 
 #: personal/samba/class_sambaAccount.inc:31
 msgid "Samba Munged Dial"
@@ -335,7 +341,7 @@ msgstr "Samba-Einstellungen"
 
 #: personal/samba/class_sambaAccount.inc:183
 msgid "Samba profile"
-msgstr ""
+msgstr "Samba-Profil"
 
 #: personal/samba/class_sambaAccount.inc:189
 #: personal/samba/class_sambaAccount.inc:222
@@ -673,8 +679,8 @@ msgstr "Benötigt um Kompatibilität mit Windows <=98 oder Samba < 3.2 zu haben"
 
 #: personal/samba/sambaLogonHours.tpl.c:2
 msgid "Specify the hours this user is allowed to log in"
-msgstr ""
+msgstr "Wählen Sie die Stunden, in denen der Benutzer angemeldet sein darf"
 
 #: personal/samba/sambaLogonHours.tpl.c:5
 msgid "Hour"
-msgstr ""
+msgstr "Stunde"

@@ -10,6 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2016-09-01 20:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,19 +49,19 @@ msgstr ""
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:46
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:47
 msgid "DHCP service"
-msgstr ""
+msgstr "Υπηρεσία DHCP"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:51
 msgid "Start service"
-msgstr ""
+msgstr "Εκκίνηση υπηρεσίας"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:52
 msgid "Stop service"
-msgstr ""
+msgstr "Τερματισμός υπηρεσίας"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:53
 msgid "Restart service"
-msgstr ""
+msgstr "Επανεκκίνηση υπηρεσίας"
 
 #: admin/dhcp/class_dhcpManagement.inc:35
 msgid "DHCP Management"
@@ -68,34 +69,34 @@ msgstr ""
 
 #: admin/dhcp/class_dhcpConfiguration.inc:36
 msgid "Expand DHCP subnet"
-msgstr ""
+msgstr "Επέκταση του υποδικτύου DHCP"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:37
 msgid "Expand"
-msgstr ""
+msgstr "Επέκταση"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:46
 msgid "Fold DHCP subnet"
-msgstr ""
+msgstr "Συρρίκνωση υποδικτύου DHCP"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:47
 msgid "Fold"
-msgstr ""
+msgstr "Fold"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:105
 #: admin/dhcp/class_dhcpConfiguration.inc:106
 msgid "Insert new DHCP section"
-msgstr ""
+msgstr "Εισαγωγή νέας ενότητας DHCP"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:343
 #: admin/dhcp/class_dhcpConfiguration.inc:384
 #: admin/dhcp/class_dhcpConfiguration.inc:493
 msgid "Global options"
-msgstr ""
+msgstr "Καθολικές επιλογές"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:399
 msgid "Error"
-msgstr ""
+msgstr "Σφάλμα"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:399
 msgid ""
@@ -108,7 +109,7 @@ msgstr ""
 #: admin/dhcp/class_dhcpConfiguration.inc:457
 #: config/dhcp/class_dhcpConfig.inc:28
 msgid "DHCP configuration"
-msgstr ""
+msgstr "Ρύθμιση DHCP"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:471
 msgid "DHCP Objects"
@@ -116,38 +117,38 @@ msgstr ""
 
 #: admin/dhcp/class_dhcpConfiguration.inc:481
 msgid "The DHCP sections handled by this server"
-msgstr ""
+msgstr "Τα τμήματα του DHCP που διαχειρίζεται αυτός ο διακομιστής."
 
 #: admin/dhcp/class_dhcpConfiguration.inc:492
 msgid "Logging"
-msgstr ""
+msgstr "Καταγραφή"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:494
 msgid "Class"
-msgstr ""
+msgstr "Class"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:495
 msgid "Subclass"
-msgstr ""
+msgstr "Subclass"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:496
 #: admin/dhcp/sections/class_dhcpHost.inc:29
 msgid "Host"
-msgstr ""
+msgstr "Όνομα συστήματος"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:497
 msgid "Group"
-msgstr ""
+msgstr "Ομάδα"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:498
 #: admin/dhcp/sections/class_dhcpPool.inc:29
 msgid "Pool"
-msgstr ""
+msgstr "Ομάδα"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:499
 #: admin/dhcp/sections/class_dhcpSubnet.inc:29
 msgid "Subnet"
-msgstr ""
+msgstr "Υποδίκτυο"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:500
 msgid "Failover peer"
@@ -155,21 +156,21 @@ msgstr ""
 
 #: admin/dhcp/class_dhcpConfiguration.inc:501
 msgid "Shared network"
-msgstr ""
+msgstr "Κοινόχρηστο  δίκτυο"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:502
 msgid "DNS update key"
-msgstr ""
+msgstr "Κλειδί ενημέρωσης DNS"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:503
 msgid "DNS update zones"
-msgstr ""
+msgstr "Ζώνες ενημέρωσης DNS"
 
 #: admin/dhcp/class_dhcpPlugin.inc:34
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:32
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:32
 msgid "Name"
-msgstr ""
+msgstr "Όνομα"
 
 #: admin/dhcp/class_dhcpPlugin.inc:34
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:32
@@ -179,7 +180,7 @@ msgstr ""
 
 #: admin/dhcp/class_dhcpPlugin.inc:39
 msgid "Options"
-msgstr ""
+msgstr " Επιλογές"
 
 #: admin/dhcp/class_dhcpPlugin.inc:39
 msgid "The DHCP options"
@@ -207,11 +208,11 @@ msgstr ""
 
 #: admin/dhcp/class_dhcpSectionCreationDialog.inc:52
 msgid "Section"
-msgstr ""
+msgstr "Ενότητα"
 
 #: admin/dhcp/class_dhcpSectionCreationDialog.inc:52
 msgid "Choose section type to create"
-msgstr ""
+msgstr "Επιλέξτε το είδος της ενότητας που θα δημιουργηθεί"
 
 #: admin/dhcp/class_dhcpSectionCreationDialog.inc:88
 msgid "Create new DHCP section"
@@ -220,7 +221,7 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpPool.inc:33
 #: admin/dhcp/sections/class_dhcpSubnet.inc:38
 msgid "Range"
-msgstr ""
+msgstr "Εύρος"
 
 #: admin/dhcp/sections/class_dhcpPool.inc:33
 #: admin/dhcp/sections/class_dhcpSubnet.inc:38
@@ -252,7 +253,7 @@ msgstr ""
 
 #: admin/dhcp/sections/class_dhcpSubnet.inc:45
 msgid "Network address"
-msgstr ""
+msgstr "Διεύθυνση δικτύου"
 
 #: admin/dhcp/sections/class_dhcpSubnet.inc:45
 msgid "Network address of this subnet"
@@ -285,23 +286,23 @@ msgstr ""
 
 #: admin/dhcp/sections/class_dhcpHost.inc:38
 msgid "Ethernet"
-msgstr ""
+msgstr "Ethernet"
 
 #: admin/dhcp/sections/class_dhcpHost.inc:38
 msgid "FDDI"
-msgstr ""
+msgstr "FDDI"
 
 #: admin/dhcp/sections/class_dhcpHost.inc:38
 msgid "Token Ring"
-msgstr ""
+msgstr "Token Ring"
 
 #: admin/dhcp/sections/class_dhcpHost.inc:48
 msgid "Hardware address"
-msgstr ""
+msgstr "Διεύθυνση υλικού"
 
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:36
 msgid "Algorithm"
-msgstr ""
+msgstr "Αλγόριθμος"
 
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:36
 msgid "Algorithm to generate TSIG Key"

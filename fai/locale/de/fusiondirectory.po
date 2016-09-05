@@ -29,7 +29,7 @@ msgstr "Verwaltung von FAI Softwarepaketen und Deployment-Recipes"
 
 #: admin/fai/class_faiManagement.inc:138
 msgid "There are no FAI branches"
-msgstr ""
+msgstr "Es gibt keine FAI-Zweige"
 
 #: admin/fai/class_faiManagement.inc:141
 msgid " Please add at least one repository service to create those."
@@ -62,7 +62,7 @@ msgstr "LDAP-Fehler"
 #: admin/fai/packageSelect/class_filterFAIPackages.inc:46
 #: admin/fai/class_faiPackageConfiguration.inc:59
 msgid "Infrastructure service"
-msgstr ""
+msgstr "Infrastrukturdienst"
 
 #: admin/fai/class_faiPackage.inc:303
 msgid "Unkown packages"
@@ -130,7 +130,7 @@ msgstr "Release"
 
 #: admin/fai/class_faiPackage.inc:409
 msgid "Debian release concerned"
-msgstr ""
+msgstr "Debian-Version betreffend"
 
 #: admin/fai/class_faiPackage.inc:413
 #: admin/systems/services/repository/class_serviceRepository.inc:47
@@ -147,7 +147,7 @@ msgstr "Installations-Methode"
 
 #: admin/fai/class_faiPackage.inc:417
 msgid "Install method to use for this package list"
-msgstr ""
+msgstr "Für diese Paketliste zu verwendende Installationsmethode"
 
 #: admin/fai/class_faiPackage.inc:428
 msgid "Packages"
@@ -176,7 +176,7 @@ msgstr "FAI-Partitionstabelle"
 
 #: admin/fai/class_faiPartitionTable.inc:304 admin/fai/class_faiProfile.inc:52
 msgid "Partition table class name"
-msgstr ""
+msgstr "Partitionstabellen-Klassenname"
 
 #: admin/fai/class_faiPartitionTable.inc:314
 msgid "Discs"
@@ -241,7 +241,7 @@ msgstr ""
 
 #: admin/fai/class_faiDiskEntry.inc:243
 msgid "fstab key"
-msgstr ""
+msgstr "fstab-Schlüssel"
 
 #: admin/fai/class_faiDiskEntry.inc:243
 msgid "Key to use in fstab file"
@@ -257,15 +257,15 @@ msgstr "UUID"
 
 #: admin/fai/class_faiDiskEntry.inc:249
 msgid "Disk label"
-msgstr ""
+msgstr "Disk-Label"
 
 #: admin/fai/class_faiDiskEntry.inc:258
 msgid "Partition entries"
-msgstr ""
+msgstr "Partitions-Einträge"
 
 #: admin/fai/class_faiDiskEntry.inc:263 admin/fai/class_faiPartition.inc:422
 msgid "Combined physical partitions"
-msgstr ""
+msgstr "Kombinierte physikalische Partitionen"
 
 #: admin/fai/class_faiDiskEntry.inc:263
 msgid "Physical partitions combined in this LVM volume"
@@ -289,7 +289,7 @@ msgstr "Dateipfad"
 
 #: admin/fai/class_faiTemplateEntry.inc:142
 msgid "Complete absolute template file path and name"
-msgstr ""
+msgstr "Vollständiger absoluter Vorlagendateipfad und -name"
 
 #: admin/fai/class_faiTemplateEntry.inc:146
 msgid "Short description of the file"
@@ -361,7 +361,7 @@ msgstr "FAI-Klassen"
 
 #: admin/fai/class_faiProfile.inc:63
 msgid "FAI classes which are part of this profile"
-msgstr ""
+msgstr "FAI-Klassen, die Teil dieses Profils sind"
 
 #: admin/fai/class_faiPackageConfiguration.inc:33
 #: admin/fai/class_faiPackageConfiguration.inc:36
@@ -379,7 +379,7 @@ msgstr ""
 
 #: admin/fai/class_faiPackageConfiguration.inc:172
 msgid "Warning"
-msgstr ""
+msgstr "Warnung"
 
 #: admin/fai/class_faiPackageConfiguration.inc:173
 #, php-format
@@ -433,7 +433,7 @@ msgstr "Das Skript selbst"
 #: admin/fai/class_faiTemplate.inc:134
 #, php-format
 msgid "There are several files with the same path: %s"
-msgstr ""
+msgstr "Es gibt mehrere Dateien mit dem gleichen Pfad: %s"
 
 #: admin/fai/class_faiTemplate.inc:149
 msgid "Template"
@@ -509,7 +509,7 @@ msgstr ""
 
 #: admin/fai/class_faiPartition.inc:229
 msgid "Partition"
-msgstr ""
+msgstr "Partition"
 
 #: admin/fai/class_faiPartition.inc:234
 msgid "Type"
@@ -562,11 +562,11 @@ msgstr ""
 
 #: admin/fai/class_faiPartition.inc:292
 msgid "Resize existing partition"
-msgstr ""
+msgstr "Existierende Partition in Größe anpassen"
 
 #: admin/fai/class_faiPartition.inc:296
 msgid "Bootable"
-msgstr ""
+msgstr "Bootbar"
 
 #: admin/fai/class_faiPartition.inc:296
 msgid "Wether or not this partition can be booted"
@@ -574,11 +574,11 @@ msgstr ""
 
 #: admin/fai/class_faiPartition.inc:300
 msgid "Preserve"
-msgstr ""
+msgstr "Bewahren"
 
 #: admin/fai/class_faiPartition.inc:303
 msgid "Never"
-msgstr ""
+msgstr "Nie"
 
 #: admin/fai/class_faiPartition.inc:303
 msgid "Always"
@@ -586,11 +586,11 @@ msgstr ""
 
 #: admin/fai/class_faiPartition.inc:303
 msgid "Reinstall"
-msgstr ""
+msgstr "Erneut installieren"
 
 #: admin/fai/class_faiPartition.inc:308 admin/fai/class_faiPartition.inc:311
 msgid "Filesystem"
-msgstr ""
+msgstr "Dateisystem"
 
 #: admin/fai/class_faiPartition.inc:311
 msgid "The filesystem this partition should be formatted with"
@@ -626,11 +626,11 @@ msgstr "btrfs"
 
 #: admin/fai/class_faiPartition.inc:314
 msgid "LVM/RAID"
-msgstr ""
+msgstr "LVM/RAID"
 
 #: admin/fai/class_faiPartition.inc:317
 msgid "Encrypted"
-msgstr ""
+msgstr "Verschlüsselt"
 
 #: admin/fai/class_faiPartition.inc:317
 msgid "Wether or not this partition is encrypted"
@@ -650,15 +650,15 @@ msgstr "Optionen"
 
 #: admin/fai/class_faiPartition.inc:330
 msgid "Create options"
-msgstr ""
+msgstr "Optionen aktivieren"
 
 #: admin/fai/class_faiPartition.inc:330
 msgid "Filesystem create options"
-msgstr ""
+msgstr "Dateisystem Erstell-Optionen"
 
 #: admin/fai/class_faiPartition.inc:334
 msgid "Tune options"
-msgstr ""
+msgstr "Optimierungs-Optionen"
 
 #: admin/fai/class_faiPartition.inc:334
 msgid "Filesystem tune options"
@@ -870,7 +870,7 @@ msgstr "Verfügbare Prozessorarchitekturen in diesem Repository"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:72
 msgid "Distribution"
-msgstr ""
+msgstr "Verteilung"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:72
 msgid "Which distribution is this repository for"
@@ -886,11 +886,11 @@ msgstr ""
 
 #: admin/systems/services/repository/class_serviceRepository.inc:155
 msgid "Package repository"
-msgstr ""
+msgstr "Paketrepositorium"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:156
 msgid "Package repository information"
-msgstr ""
+msgstr "Paketrepositoriumsinformation"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:168
 msgid "Repositories"
@@ -911,7 +911,7 @@ msgstr ""
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:43
 msgid "Port"
-msgstr ""
+msgstr "Anschluss"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:43
 msgid "The port argonaut-fai-monitor should listen on. Default is 4711."
@@ -927,7 +927,7 @@ msgstr ""
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:53
 msgid "CA certificate"
-msgstr ""
+msgstr "CA-Zertifikat"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:53
 msgid "Path to the CA certificate file on Argonaut FAI monitor server"
@@ -977,4 +977,4 @@ msgstr "Filter"
 
 #: admin/fai/packageSelect/selectPackage-filter.tpl.c:5
 msgid "A maximum of 200 entries will be shown here."
-msgstr ""
+msgstr "Es werden maximal 200 Einträge angezeigt."

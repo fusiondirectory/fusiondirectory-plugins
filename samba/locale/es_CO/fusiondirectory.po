@@ -10,6 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2016-09-01 20:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Spanish (Colombia) (https://www.transifex.com/fusiondirectory/teams/12202/es_CO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,7 +33,7 @@ msgstr ""
 #: admin/systems/samba/class_winstationGeneric.inc:79
 #: personal/samba/class_sambaAccount.inc:199
 msgid "Domain"
-msgstr ""
+msgstr "Dominio"
 
 #: admin/groups/samba/class_sambaGroup.inc:45
 msgid "Samba domain"
@@ -72,7 +73,7 @@ msgstr ""
 
 #: admin/groups/samba/class_sambaGroup.inc:106
 msgid "Configuration error"
-msgstr ""
+msgstr "Error de configuración"
 
 #: admin/groups/samba/class_sambaGroup.inc:106
 msgid "Cannot find group SID in your configuration!"
@@ -88,7 +89,7 @@ msgstr ""
 #: personal/samba/class_sambaAccount.inc:529
 #: personal/samba/class_sambaAccount.inc:549
 msgid "Warning"
-msgstr ""
+msgstr "Precacuión"
 
 #: admin/groups/samba/class_sambaGroup.inc:133
 #: personal/samba/class_sambaAccount.inc:503
@@ -115,7 +116,7 @@ msgstr ""
 #: admin/samba/class_sambaDomain.inc:51
 #: admin/systems/samba/class_winstationGeneric.inc:55
 msgid "Properties"
-msgstr ""
+msgstr "Propiedades"
 
 #: admin/samba/class_sambaDomain.inc:54
 msgid "Domain name"
@@ -272,11 +273,11 @@ msgstr ""
 
 #: admin/systems/samba/class_winstationGeneric.inc:68
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: admin/systems/samba/class_winstationGeneric.inc:75
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: admin/systems/samba/class_winstationGeneric.inc:75
 msgid "A short description of the winstation"
@@ -289,7 +290,7 @@ msgstr ""
 
 #: admin/systems/samba/class_winstationGeneric.inc:83
 msgid "Location"
-msgstr ""
+msgstr "Ubicación"
 
 #: admin/systems/samba/class_winstationGeneric.inc:83
 msgid "The location of the winstation"
@@ -320,6 +321,8 @@ msgid ""
 "Your PHP install does not have the mhash() nor the hash function. Cannot do "
 "MD4 hashes."
 msgstr ""
+"Su instalación PHP no tiene mhash() u otra función hash. No es posible hacer"
+" hashes MD4."
 
 #: personal/samba/class_sambaAccount.inc:31
 msgid "Samba Munged Dial"
@@ -458,7 +461,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:279
 msgid "disabled"
-msgstr ""
+msgstr "deshabilitado"
 
 #: personal/samba/class_sambaAccount.inc:279
 msgid "input on, notify on"
@@ -570,7 +573,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:357
 msgid "System trust"
-msgstr ""
+msgstr "Confianza del Sistema"
 
 #: personal/samba/class_sambaAccount.inc:363
 msgid "Allow connection from these workstations only"
@@ -578,7 +581,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:363
 msgid "Only allow this user to connect to this list of hosts"
-msgstr ""
+msgstr "Permitir a este usuario conectarse a esta lista de hosts."
 
 #: personal/samba/class_sambaAccount.inc:478
 msgid "Home drive"

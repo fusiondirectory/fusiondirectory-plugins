@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2016-09-01 20:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2016\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,7 +40,7 @@ msgstr "Plusieurs comptes trouvés avec l’identifiant \"%s\""
 
 #: config/user-reminder/class_userReminderConfig.inc:28
 msgid "User reminder"
-msgstr ""
+msgstr "Rappel d'expiration des comptes"
 
 #: config/user-reminder/class_userReminderConfig.inc:29
 msgid "Configuration for the reminder of accounts expiration"
@@ -48,7 +48,7 @@ msgstr "Configuration pour le rappel des comptes qui vont expirer"
 
 #: config/user-reminder/class_userReminderConfig.inc:40
 msgid "User reminder settings"
-msgstr ""
+msgstr "Configuration du rappel d'expiration des comptes"
 
 #: config/user-reminder/class_userReminderConfig.inc:43
 msgid "Delay before expiration"
@@ -84,7 +84,7 @@ msgstr "Adresse de messagerie avec laquelle les messages seront envoyés"
 
 #: config/user-reminder/class_userReminderConfig.inc:65
 msgid "Alert email settings"
-msgstr ""
+msgstr "Paramètres pour les messages d'alerte"
 
 #: config/user-reminder/class_userReminderConfig.inc:68
 msgid "Forward alerts to the manager"
@@ -97,16 +97,16 @@ msgstr "Sujet"
 
 #: config/user-reminder/class_userReminderConfig.inc:73
 msgid "Subject of the alert email"
-msgstr ""
+msgstr "Sujet du courriel d'alerte envoyé"
 
 #: config/user-reminder/class_userReminderConfig.inc:75
 msgid "[FusionDirectory] Your account is about to expire"
-msgstr ""
+msgstr "[FusionDirectory] Votre compte est sur le point d'expirer"
 
 #: config/user-reminder/class_userReminderConfig.inc:78
 #, php-format
 msgid "Body (%s are cn, login, and link token)"
-msgstr ""
+msgstr "Corps du message (les %s sont cn et  l'identifiant, et le lien)"
 
 #: config/user-reminder/class_userReminderConfig.inc:79
 #, php-format
@@ -114,6 +114,8 @@ msgid ""
 "Body of the alert email, sent when the user is about to expire. Use %s for "
 "the cn, uid and token."
 msgstr ""
+"Corps de l'alerte e-mail, envoyé lorsque l'utilisateur est sur le point "
+"d'expirer. Utilisez %s pour le cn, uid et jeton."
 
 #: config/user-reminder/class_userReminderConfig.inc:81
 #, php-format
@@ -122,10 +124,15 @@ msgid ""
 "your account %2$s is about to expire, please use this link to avoid this: \n"
 "https://"
 msgstr ""
+"Cher %1$s,\n"
+" \n"
+"votre compte %2$s est sur le point d'expirer, veuillez utiliser ce lien pour éviter cela: \n"
+"\n"
+"https: //"
 
 #: config/user-reminder/class_userReminderConfig.inc:91
 msgid "Confirmation email settings"
-msgstr ""
+msgstr "Confirmation des paramètres de messagerie"
 
 #: config/user-reminder/class_userReminderConfig.inc:94
 msgid "Forward confirmation to the manager"
@@ -137,16 +144,16 @@ msgstr "Transférer la confirmation de l'extension du compte au manager"
 
 #: config/user-reminder/class_userReminderConfig.inc:99
 msgid "Subject of the confirmation email"
-msgstr ""
+msgstr "Objet de l'e-mail de confirmation"
 
 #: config/user-reminder/class_userReminderConfig.inc:101
 msgid "[FusionDirectory] Your account expiration has been postponed"
-msgstr ""
+msgstr "[FusionDirectory] L'expiration de votre compte a été reportée"
 
 #: config/user-reminder/class_userReminderConfig.inc:104
 #, php-format
 msgid "Body (%s are cn and login)"
-msgstr ""
+msgstr "Corps du message (les %s sont cn et  l'identifiant )"
 
 #: config/user-reminder/class_userReminderConfig.inc:105
 #, php-format
@@ -154,6 +161,8 @@ msgid ""
 "Body of the confirmation email, sent when the user has postponed expiration."
 " Use %s for the cn and uid."
 msgstr ""
+"Corps de l'alerte e-mail, envoyé lorsque le compte de l'utilisateur a été "
+"prolongé. Utilisez %s pour le cn et uid."
 
 #: config/user-reminder/class_userReminderConfig.inc:107
 #, php-format
@@ -161,6 +170,10 @@ msgid ""
 "Dear %1$s,\n"
 " your account %2$s expiration has been successfully postponed.\n"
 msgstr ""
+"Cher %1$s,\n"
+"\n"
+"l'expiration de votre compte %2$s a été prolongé avec succès.\n"
+"\n"
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:2
 #: ihtml/themes/breezy/user-reminder.tpl.c:5
@@ -169,7 +182,7 @@ msgstr "Utilisateur"
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:8
 msgid "Expiration postpone"
-msgstr ""
+msgstr "Prolongation du compte"
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:11
 #: ihtml/themes/breezy/user-reminder.tpl.c:14
@@ -178,7 +191,7 @@ msgstr "Réussi"
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:17
 msgid "Your expiration has been postponed successfully."
-msgstr ""
+msgstr "Votre Compte a bien été prolonge"
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:20
 #: ihtml/themes/breezy/user-reminder.tpl.c:23
@@ -187,4 +200,4 @@ msgstr "Erreur"
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:26
 msgid "There was a problem"
-msgstr ""
+msgstr "Il y a eu un problème"

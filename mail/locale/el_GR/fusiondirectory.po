@@ -10,6 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2016-09-01 20:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,73 +22,74 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:71
 #: config/mail/class_mailPluginConfig.inc:28
 msgid "Mail"
-msgstr ""
+msgstr "Αλληλογραφία"
 
 #: admin/groups/mail/class_groupMail.inc:47
 msgid "Group mail options"
-msgstr ""
+msgstr "Επιλογές ομάδων αλληλογραφίας"
 
 #: admin/groups/mail/class_groupMail.inc:59
 msgid "Informations"
-msgstr ""
+msgstr "Πληροφορίες"
 
 #: admin/groups/mail/class_groupMail.inc:62
 #: personal/mail/class_mailAccount.inc:97
 msgid "Primary address"
-msgstr ""
+msgstr "Κύρια διεύθυνση"
 
 #: admin/groups/mail/class_groupMail.inc:62
 msgid "The primary mail address"
-msgstr ""
+msgstr "Κύρια διεύθυνση αλληλογραφίας"
 
 #: admin/groups/mail/class_groupMail.inc:66
 #: personal/mail/class_mailAccount.inc:101
 msgid "Server"
-msgstr ""
+msgstr "Εξυπηρετητής"
 
 #: admin/groups/mail/class_groupMail.inc:66
 msgid "Server mail"
-msgstr ""
+msgstr "Διακομιστής αλληλογραφίας"
 
 #: admin/groups/mail/class_groupMail.inc:72
 #: personal/mail/class_mailAccount.inc:117
 msgid "Alternative addresses"
-msgstr ""
+msgstr "Εναλλακτικές διευθύνσεις"
 
 #: admin/groups/mail/class_groupMail.inc:72
 msgid "Alternative mail addresses for the group"
-msgstr ""
+msgstr "Εναλλακτική διεύθυνση e-mail για αυτή την ομάδα"
 
 #: admin/groups/mail/class_groupMail.inc:77
 msgid "Forward messages to non group members"
-msgstr ""
+msgstr "Προώθηση μηνυμάτων στα μη μέλη της ομάδας"
 
 #: admin/groups/mail/class_groupMail.inc:81
 msgid "Only allowed to receive local mail"
-msgstr ""
+msgstr "Επιτρέπεται να λαμβάνουν μόνο τοπική αλληλογραφία"
 
 #: admin/groups/mail/class_groupMail.inc:81
 msgid ""
 "Whether this group mail is only allowed to receive messages from local "
 "senders"
 msgstr ""
+"Αν επιτρέπεται σε αυτή την ομάδα να δέχεται μηνύματα από τοπικούς αποστολείς"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:32
 msgid "IMAP/POP3 generic service"
-msgstr ""
+msgstr "Υπηρεσία IMAP/POP3"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:33
 msgid "IMAP/POP3"
-msgstr ""
+msgstr "IMAP/POP3"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:33
 msgid "Services"
-msgstr ""
+msgstr "Υπηρεσίες"
 
 #: personal/mail/class_mail-methods.inc:154
 #: personal/mail/class_mail-methods.inc:516
 msgid "Configuration error"
-msgstr ""
+msgstr "Σφάλμα ρύθμισης"
 
 #: personal/mail/class_mail-methods.inc:155
 #, php-format
@@ -102,15 +104,15 @@ msgstr ""
 #: personal/mail/class_mail-methods.inc:764
 #: personal/mail/class_mail-methods.inc:765
 msgid "None"
-msgstr ""
+msgstr "Κανένα"
 
 #: personal/mail/class_mail-methods.inc:854
 msgid "Unknown"
-msgstr ""
+msgstr "Άγνωστο"
 
 #: personal/mail/class_mail-methods.inc:856
 msgid "Unlimited"
-msgstr ""
+msgstr "Απεριόριστο"
 
 #: personal/mail/class_mailAccount.inc:45
 #: personal/mail/class_mailAccount.inc:238
@@ -121,7 +123,7 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:330
 #: personal/mail/class_mailAccount.inc:334
 msgid "Mail error"
-msgstr ""
+msgstr "Σφάλμα αλληλογραφίας"
 
 #: personal/mail/class_mailAccount.inc:45
 #, php-format
@@ -139,15 +141,15 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:72
 #: config/mail/class_mailPluginConfig.inc:41
 msgid "Mail settings"
-msgstr ""
+msgstr "Ρυθμίσεις αλληλογραφίας"
 
 #: personal/mail/class_mailAccount.inc:94
 msgid "Mail account"
-msgstr ""
+msgstr "Λογαριασμός αλληλογραφίας"
 
 #: personal/mail/class_mailAccount.inc:97
 msgid "Primary mail address"
-msgstr ""
+msgstr "Κύρια διεύθυνση αλληλογραφίας"
 
 #: personal/mail/class_mailAccount.inc:101
 msgid "Specify the mail server where the user will be hosted on"
@@ -159,61 +161,68 @@ msgstr ""
 
 #: personal/mail/class_mailAccount.inc:113
 msgid "Other addresses and redirections"
-msgstr ""
+msgstr "Άλλες διευθύνσεις και αναδρομολογήσεις"
 
 #: personal/mail/class_mailAccount.inc:117
 msgid "List of alternative mail addresses"
-msgstr ""
+msgstr "Κατάλογος εναλλακτικών διευθύνσεvn και αναδρομολογήσεvn"
 
 #: personal/mail/class_mailAccount.inc:122
 msgid "Forward messages to"
-msgstr ""
+msgstr "Προώθηση αλληλογραφίας στο"
 
 #: personal/mail/class_mailAccount.inc:122
 msgid "Addresses to which messages should be forwarded"
-msgstr ""
+msgstr "Διευθύνσεις στις οποίες θα πρέπει να προωθείται η αλληλογραφία"
 
 #: personal/mail/class_mailAccount.inc:128
 #: personal/mail/class_mailAccount.inc:147
 msgid "Vacation message"
-msgstr ""
+msgstr "Μήνυμα απουσίας"
 
 #: personal/mail/class_mailAccount.inc:131
 msgid "Activate vacation message"
-msgstr ""
+msgstr "Ενεργοποίηση μηνύματος απουσίας"
 
 #: personal/mail/class_mailAccount.inc:132
 msgid ""
 "Select to automatically response with the vacation message defined below"
 msgstr ""
+"Επιλέξτε για την αυτόματη απάντηση με το μήνυμα απουίας που καθορίζεται στη "
+"συνέχεια"
 
 #: personal/mail/class_mailAccount.inc:137
 msgid "from"
-msgstr ""
+msgstr "από"
 
 #: personal/mail/class_mailAccount.inc:142
 msgid "till"
-msgstr ""
+msgstr "εως"
 
 #: personal/mail/class_mailAccount.inc:153
 msgid "Advanced mail options"
-msgstr ""
+msgstr "Προχωρημένες ρυθμίσεις αλληλογραφίας"
 
 #: personal/mail/class_mailAccount.inc:161
 msgid "User is only allowed to send and receive local mails"
 msgstr ""
+"Επιτρέπεται στον χρήστη να στέλνει και να λαμβάνει μόνο τοπική αλληλογραφία"
 
 #: personal/mail/class_mailAccount.inc:162
 msgid "Select if user can only send and receive inside his own domain"
 msgstr ""
+"Επιλέξτε, όταν ο χρήστης επιτρέπεται να στέλνει και να λαμβάνει αλληλογραφία"
+" μόνο μέσα στον Τομέα του"
 
 #: personal/mail/class_mailAccount.inc:167
 msgid "No delivery to own mailbox"
-msgstr ""
+msgstr "Χωρίς παράδοση στο δικό του γραμματοκιβώτιο"
 
 #: personal/mail/class_mailAccount.inc:168
 msgid "Select if you want to forward mails without getting own copies of them"
 msgstr ""
+"Επιλέξτε αν θέλετε να προωθείται η αλληλογραφία χωρίς να λαμβάνονται "
+"αντίγραφα αυτών"
 
 #: personal/mail/class_mailAccount.inc:238
 #: personal/mail/class_mailAccount.inc:289
@@ -248,11 +257,11 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:334
 #, php-format
 msgid "Cannot remove mailbox: %s"
-msgstr ""
+msgstr "Αδυναμία διαγραφής γραμματοκιβωτίου: %s"
 
 #: config/mail/class_mailPluginConfig.inc:29
 msgid "Mail plugin configuration"
-msgstr ""
+msgstr "Ρύθμιση προσθέτου αλληλογραφίας"
 
 #: config/mail/class_mailPluginConfig.inc:44
 msgid "Account identification attribute"
@@ -289,13 +298,15 @@ msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:65
 msgid "Delete mailbox on account deletion"
-msgstr ""
+msgstr "Διαγραφή γραμματοκιβωτίου όταν διαγράφεται ο λογαριασμός χρήστη"
 
 #: config/mail/class_mailPluginConfig.inc:66
 msgid ""
 "Determines if the mailbox should be removed from your IMAP server after the "
 "account is deleted in LDAP."
 msgstr ""
+"Καθορίζεται αν το γραμματοκιβώτιο θα διαγραφεί από τον διακομιστή IMAP, μετά"
+" τη διαγραφή του λογαριασμού στον LDAP"
 
 #: config/mail/class_mailPluginConfig.inc:71
 msgid "Cyrus autocreate folders"

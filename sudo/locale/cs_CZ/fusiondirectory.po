@@ -30,7 +30,7 @@ msgstr "parametr '%s' pro sudo není platný!"
 #: admin/sudo/class_sudoOption.inc:278
 #, php-format
 msgid "%s (%s)"
-msgstr ""
+msgstr "%s (%s)"
 
 #: admin/sudo/class_sudoOption.inc:481
 msgid "Available options"
@@ -42,11 +42,11 @@ msgstr "volba"
 
 #: admin/sudo/class_sudoOption.inc:484
 msgid "Add a new sudo option"
-msgstr ""
+msgstr "Přidat další předvolbu pro sudo"
 
 #: admin/sudo/class_sudoOption.inc:489 admin/sudo/class_sudoOption.inc:491
 msgid "Used sudo role options"
-msgstr ""
+msgstr "Použité předvolby role sudo"
 
 #: admin/sudo/class_sudoOption.inc:558
 msgid "Options"
@@ -71,7 +71,7 @@ msgstr "role v sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:141
 msgid "Role settings"
-msgstr ""
+msgstr "Nastavení role"
 
 #: admin/sudo/class_sudoGeneric.inc:146
 msgid "Name"
@@ -79,7 +79,7 @@ msgstr "název"
 
 #: admin/sudo/class_sudoGeneric.inc:146
 msgid "Name of the role"
-msgstr ""
+msgstr "Název role"
 
 #: admin/sudo/class_sudoGeneric.inc:151
 msgid "Description"
@@ -87,7 +87,7 @@ msgstr "popis"
 
 #: admin/sudo/class_sudoGeneric.inc:151
 msgid "Description for the new sudo role"
-msgstr ""
+msgstr "Popis pro novou roli sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:156
 msgid "Commands"
@@ -98,22 +98,23 @@ msgid ""
 "A Unix command with optional command line arguments, potentially including "
 "globbing characters (aka wild cards)"
 msgstr ""
+"Unixový příkaz s volitelnými argumenty, případně obsahující zástupné znaky"
 
 #: admin/sudo/class_sudoGeneric.inc:163
 msgid "Run as (user)"
-msgstr ""
+msgstr "Spustit jako (uživatel)"
 
 #: admin/sudo/class_sudoGeneric.inc:164
 msgid "User(s) impersonated by sudo"
-msgstr ""
+msgstr "Uživatelé, ztělesnění v sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:171
 msgid "Run as (group)"
-msgstr ""
+msgstr "Spustit jako (skupina)"
 
 #: admin/sudo/class_sudoGeneric.inc:172
 msgid "Group(s) impersonated by sudo"
-msgstr ""
+msgstr "Skupiny, ztělesněné prostřednictvím sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:178
 msgid "Systems"
@@ -121,7 +122,7 @@ msgstr "systémy"
 
 #: admin/sudo/class_sudoGeneric.inc:178
 msgid "A host name, IP address or IP network"
-msgstr ""
+msgstr "Název počítače, IP adresa nebo síť"
 
 #: admin/sudo/class_sudoGeneric.inc:183
 msgid "Users and groups"
@@ -131,27 +132,29 @@ msgstr "uživatelé a skupiny"
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
 msgstr ""
+"Uživatelské jméno, identifikátor (předeslaný znakem #), unixová skupiny "
+"(předeslaná znakem %)"
 
 #: admin/sudo/class_sudoGeneric.inc:188
 msgid "Priority"
-msgstr ""
+msgstr "priorita"
 
 #: admin/sudo/class_sudoGeneric.inc:188
 msgid "This rule priority compared to others"
-msgstr ""
+msgstr "Pořadí přednosti tohoto pravidla v porovnání s ostatními"
 
 #: config/sudo/class_sudoConfig.inc:28
 msgid "Sudo configuration"
-msgstr ""
+msgstr "Nastavení sudo"
 
 #: config/sudo/class_sudoConfig.inc:29
 msgid "FusionDirectory sudo plugin configuration"
-msgstr ""
+msgstr "Nastavení zásuvného modulu sudo pro FusionDirectory"
 
 #: config/sudo/class_sudoConfig.inc:45
 msgid "Sudo RDN"
-msgstr ""
+msgstr "Relativní rozlišený název pro sudo"
 
 #: config/sudo/class_sudoConfig.inc:45
 msgid "Branch in which sudoers will be stored"
-msgstr ""
+msgstr "Větev, ve které budou ukládáni držitelé práv sudo"

@@ -10,6 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2016-09-01 20:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,11 +21,11 @@ msgstr ""
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:28
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:29
 msgid "Dovecot (IMAP/POP3)"
-msgstr ""
+msgstr "Dovecot (IMAP/POP3)"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:29
 msgid "Services"
-msgstr ""
+msgstr "Υπηρεσίες"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:43
 msgid "Dovecot connection"
@@ -32,31 +33,31 @@ msgstr ""
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:46
 msgid "Connect URL for Dovecot server"
-msgstr ""
+msgstr "URL σύνδεσης σε διακομιστή Dovecot"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:50
 msgid "Hostname"
-msgstr ""
+msgstr "Όνομα συστήματος"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:50
 msgid "Hostname of the Dovecot server"
-msgstr ""
+msgstr "Όνομα συστήματος του διακομιστή Dovecot"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:54
 msgid "Port"
-msgstr ""
+msgstr "Θύρα"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:54
 msgid "Port number on which Dovecot server should be contacted"
-msgstr ""
+msgstr "Αριθμός θύρας για την επικοινωνία με τον διακομιστή Dovecot"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:59
 msgid "Option"
-msgstr ""
+msgstr "Επιλογή"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:59
 msgid "Options for contacting Dovecot server"
-msgstr ""
+msgstr "Επιλογές για επικοινωνία με διακομιστή Dovecot"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:64
 msgid "Validate TLS/SSL Certificates"
@@ -68,35 +69,36 @@ msgstr ""
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:76
 msgid "Master credentials"
-msgstr ""
+msgstr "Κύρια διαπιστευτήρια"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:79
 msgid "Admin user"
-msgstr ""
+msgstr "Διαχειριστής"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:79
 msgid "Dovecot server admin user"
-msgstr ""
+msgstr "Διαχειριστής διακομιστή Dovecot"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:83
 msgid "Password"
-msgstr ""
+msgstr "Κωδικός πρόσβασης:"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:83
 msgid "Admin user password"
-msgstr ""
+msgstr "Κωδικός διαχειριστή"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:87
 msgid "Mail directory"
-msgstr ""
+msgstr "Κατάλογος αλληλογραφίας:"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:87
 msgid "Path to the directory in which user maildirs must be created"
 msgstr ""
+"Διαδρομή για τον κατάλογος στο οποίο θα πρέπει να δημιουργηθούν τα maildirs"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:94
 msgid "Options"
-msgstr ""
+msgstr " Επιλογές"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:97
 msgid "Create the user folder via Argonaut"
@@ -105,16 +107,20 @@ msgstr ""
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:97
 msgid "Use argonaut to create the user mailbox on the Dovecot server"
 msgstr ""
+"Χρήση argonaut για δημιουργία του γραμματοκιβωτίου χρήστη στον διακομιστή "
+"Dovecot"
 
 #: personal/mail/mail-methods/class_mail-methods-dovecot.inc:50
 msgid "There are no IMAP compatible mail servers defined!"
-msgstr ""
+msgstr "Δεν έχουν ορισθεί συμβατοί διακομιστές αλληλογραφίας IMAP!"
 
 #: personal/mail/mail-methods/class_mail-methods-dovecot.inc:55
 msgid "Mail server for this account is invalid!"
-msgstr ""
+msgstr " διακομιστής αλληλογραφίας για αυτόν το λογαριασμό είναι άκυρος!"
 
 #: personal/mail/mail-methods/class_mail-methods-dovecot.inc:194
 #, php-format
 msgid "Error while trying to contact Dovecot server through Argonaut: %s"
 msgstr ""
+"Σφάλμα κατά την προσπάθεια επικοινωνίας με τον διακομιστή Dovecot μέσω του "
+"Argonaut: %s"

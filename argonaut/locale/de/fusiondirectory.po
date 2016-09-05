@@ -80,43 +80,43 @@ msgstr "Verzeichnis in dem argonaut-Client seine Logs schreiben soll"
 #: admin/systems/argonaut/class_argonautClient.inc:161
 #: admin/systems/services/argonaut/class_argonautServer.inc:103
 msgid "SSL paths"
-msgstr ""
+msgstr "SSL-Pfade"
 
 #: admin/systems/argonaut/class_argonautClient.inc:164
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
 msgid "Key"
-msgstr ""
+msgstr "Schlüssel"
 
 #: admin/systems/argonaut/class_argonautClient.inc:164
 msgid "Path to the private key file on Argonaut client"
-msgstr ""
+msgstr "Pfad zum privaten Schlüssel auf dem Argonaut-Client"
 
 #: admin/systems/argonaut/class_argonautClient.inc:169
 #: admin/systems/services/argonaut/class_argonautServer.inc:111
 msgid "Certificate"
-msgstr ""
+msgstr "Zertifikat"
 
 #: admin/systems/argonaut/class_argonautClient.inc:169
 msgid "Path to the certificate file on Argonaut client"
-msgstr ""
+msgstr "Pfad zur Zertifikatsdatei auf dem Argonaut-Client"
 
 #: admin/systems/argonaut/class_argonautClient.inc:174
 #: admin/systems/services/argonaut/class_argonautServer.inc:116
 msgid "CA certificate"
-msgstr ""
+msgstr "CA-Zertifikat"
 
 #: admin/systems/argonaut/class_argonautClient.inc:174
 msgid "Path to the CA certificate file on Argonaut client"
-msgstr ""
+msgstr "Pfad zur CA-Zertifikatsdatei auf dem Argonaut-Client"
 
 #: admin/systems/argonaut/class_argonautClient.inc:179
 #: admin/systems/services/argonaut/class_argonautServer.inc:121
 msgid "CN of the certificate"
-msgstr ""
+msgstr "CN des Zertifikats"
 
 #: admin/systems/argonaut/class_argonautClient.inc:179
 msgid "The CN in this client certificate"
-msgstr ""
+msgstr "Der CN in diesem Client-Zertifikat"
 
 #: admin/systems/argonaut/class_argonautClient.inc:185
 msgid "Service names"
@@ -169,7 +169,7 @@ msgstr "Argonaut Mirror-Einstellungen"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:44
 msgid "Local Debian mirror directory"
-msgstr ""
+msgstr "Lokales Debian-Spiegelserververzeichnis"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:52
 msgid "Argonaut Debconf Crawler configuration"
@@ -197,11 +197,11 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
 msgid "Directory in which logs should be stored"
-msgstr ""
+msgstr "Verzeichnis, in dem Protokolle gespeichert werden sollen"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:76
 msgid "Ignore errors"
-msgstr ""
+msgstr "Fehler ignorieren"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:77
 msgid ""
@@ -215,7 +215,7 @@ msgstr "Quelle"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:82
 msgid "Include source in the mirror"
-msgstr ""
+msgstr "Quelle im Spiegelserver einbeziehen"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
 msgid "GPG Check"
@@ -340,19 +340,19 @@ msgstr "Zu verwendendes IP-Werkzeug"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
 msgid "Path to the private key file on Argonaut server"
-msgstr ""
+msgstr "Pfad zum privaten Schlüssel auf dem Argonaut-Server"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:111
 msgid "Path to the certificate file on Argonaut server"
-msgstr ""
+msgstr "Pfad zur Zertifikatsdatei auf dem Argonaut-Server"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:116
 msgid "Path to the CA certificate file on Argonaut server"
-msgstr ""
+msgstr "Pfad zur CA-Zertifikatsdatei auf dem Argonaut-Server"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:121
 msgid "The CN in the server certificate"
-msgstr ""
+msgstr "Der CN im Serverzertifikat"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
@@ -528,7 +528,7 @@ msgstr ""
 
 #: addons/argonaut/class_argonautImportFile.inc:137
 msgid "Infrastructure service"
-msgstr ""
+msgstr "Infrastrukturdienst"
 
 #: addons/argonaut/class_argonautImportFile.inc:144
 #, php-format
@@ -676,7 +676,7 @@ msgstr ""
 
 #: addons/argonaut/class_argonautAction.inc:53
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: addons/argonaut/class_argonautAction.inc:58
 msgid "Time"
@@ -693,7 +693,7 @@ msgstr ""
 
 #: addons/argonaut/class_argonautAction.inc:111
 msgid "Periodical job"
-msgstr ""
+msgstr "Periodischer Auftrag"
 
 #: addons/argonaut/class_argonautAction.inc:111
 msgid "Wether this job should repeat in time"
@@ -746,22 +746,25 @@ msgid ""
 "You can import a list of jobs into the FusionDirectory job queue. This "
 "should be a semicolon seperated list of items in the following format:"
 msgstr ""
+"Sie können eine Liste von Jobs, der FusionDirectory Jobschlange hinzufügen. "
+"Dies sollte durch Semikolon getrennte Liste von Items in folgenden Format "
+"sein:"
 
 #: addons/argonaut/import_events.tpl.c:5
 msgid "timestamp"
-msgstr ""
+msgstr "Zeitstempel"
 
 #: addons/argonaut/import_events.tpl.c:8
 msgid "MAC-address"
-msgstr ""
+msgstr "MAC-Adresse"
 
 #: addons/argonaut/import_events.tpl.c:11
 msgid "job type"
-msgstr ""
+msgstr "Auftrags-Typ"
 
 #: addons/argonaut/import_events.tpl.c:14
 msgid "object group"
-msgstr ""
+msgstr "Objektgruppe"
 
 #: addons/argonaut/import_events.tpl.c:17
 msgid "Available job types: %1"
