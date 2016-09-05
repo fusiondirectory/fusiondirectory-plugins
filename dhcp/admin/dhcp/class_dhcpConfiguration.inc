@@ -207,7 +207,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
   /* Used by dhcpHost */
   function delHost($dn)
   {
-    unset($this->dhcpObjectCache[$dn]);
+    $this->dhcpObjectCache[$dn] = array();
   }
 
   protected function loadAttrValue ($attrs)
@@ -226,6 +226,17 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     parent::setParent($plugin);
     if (is_object($this->plugin)) {
       $this->reload();
+    }
+  }
+
+  function check ()
+  {
+    $error = parent::check();
+    if (!empty($error)) {
+      return $error;
+    }
+    if (empty($this->value) || empty($this->dhcpObjectCache[$this->value[0][0]]['cn']) || ($this->dhcpObjectCache[$this->value[0][0]]['cn'][0] == '')) {
+      return msgPool::required(_('Name'));
     }
   }
 

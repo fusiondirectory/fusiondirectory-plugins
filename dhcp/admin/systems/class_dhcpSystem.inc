@@ -53,6 +53,11 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   {
   }
 
+  protected function getAttributeArrayValue($key, $value)
+  {
+    return array_slice($value, 0, 3);
+  }
+
   function setParent (&$plugin)
   {
     parent::setParent($plugin);
@@ -126,30 +131,16 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     $cn             = $this->plugin->parent->getBaseObject()->cn;
     $values         = $this->getValue();
     $iValues        = $this->getInitialValue();
-    //~ $valueHashes    = array_flip(array_map('join', $values));
-    $iValueHashes   = array_flip(array_map('join', $iValues));
-    foreach ($values as $value) {
+    $valueHashes    = array_flip(array_map('join', $values));
+    //~ $iValueHashes   = array_flip(array_map('join', $iValues));
+    foreach ($iValues as $value) {
       $hash = join($value);
-      if (isset($iValueHashes[$hash])) {
-        unset($iValues[$iValueHashes[$hash]]);
+      if (isset($valueHashes[$hash])) {
+        unset($values[$valueHashes[$hash]]);
         continue;
       }
-      echo "<h1>adding $hash</h1>\n";
       $configDn = $value[0];
-      if (preg_match('/([^,]+),'.preg_quote(get_ou('dhcpRDN')).'.+'.preg_quote($config->current['BASE']).'$/', $value[0])) {
-        $configDn = $m[1];
-      } else {
-        trigger_error('Failed to parse '.$value[0].' to find DHCP configuration DN');
-      }
-      $dhcpTabs = objects::open($configDn, 'dhcpConfiguration');
-      $dhcpTabs->getBaseObject()->attributesAccess['dhcpSections']->addHost($value[0], $cn, $value[1], $value[2]);
-      $errors = $dhcpTabs->save();
-      msg_dialog::displayChecks($errors);
-    }
-    foreach ($iValues as $value) {
-      echo "<h1>del ".join($value)."</h1>\n";
-      $configDn = $value[0];
-      if (preg_match('/([^,]+),'.preg_quote(get_ou('dhcpRDN')).'.+'.preg_quote($config->current['BASE']).'$/', $value[0])) {
+      if (preg_match('/([^,]+,'.preg_quote(get_ou('dhcpRDN')).'.*'.preg_quote($config->current['BASE']).')$/', $value[0], $m)) {
         $configDn = $m[1];
       } else {
         trigger_error('Failed to parse '.$value[0].' to find DHCP configuration DN');
@@ -159,10 +150,20 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       $errors = $dhcpTabs->save();
       msg_dialog::displayChecks($errors);
     }
-    /* FIXME
-     * For now this will fail if the same dn is computed for the new value and the old value (and this will most likely happen)
-     * The easiest fix is to do the deleting first and then the adding
-     * An other solution is to handle modification somehow
+    foreach ($values as $value) {
+      $configDn = $value[0];
+      if (preg_match('/([^,]+,'.preg_quote(get_ou('dhcpRDN')).'.*'.preg_quote($config->current['BASE']).')$/', $value[0], $m)) {
+        $configDn = $m[1];
+      } else {
+        trigger_error('Failed to parse '.$value[0].' to find DHCP configuration DN');
+      }
+      $dhcpTabs = objects::open($configDn, 'dhcpConfiguration');
+      $dhcpTabs->getBaseObject()->attributesAccess['dhcpSections']->addHost($value[0], $cn, $value[1], $value[2]);
+      $errors = $dhcpTabs->save();
+      msg_dialog::displayChecks($errors);
+    }
+    /* TODO
+     * ? handle modification somehow (if we want to keep statements when changing IP, not sure about this)
      * We should also look into what should be possible or not, like IP, Mac or cn duplication.
      * */
   }
