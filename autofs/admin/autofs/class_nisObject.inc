@@ -58,7 +58,7 @@ class nisObject extends simplePlugin
             _('Name'), _('Name of this directory'),
             'cn', TRUE,
             '', '',
-            '/^[a-z0-9\.\-/]*$/i', 'nfsPartage'
+            '/^[a-z0-9\.\-\/]*$/i', 'nfsPartage'
           ),
           new TextAreaAttribute (
             _('Automount entry'), _("The entry of this directory for the automount daemon.\n For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"),
