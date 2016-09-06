@@ -85,7 +85,6 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       $ips = array($ips);
     }
     $this->setChoices($nodes, $macs, $ips);
-    /* TODO - update mac and ip if main tab is modified */
   }
 
   function setChoices(array $parentNodes, array $macs, array $ips)
@@ -121,7 +120,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   }
 
   /* Special LDAP treatment that this attribute does after plugin ldap save */
-  function postLdapSave ($ldap)
+  function postLdapSave ($ldap, $fullrewrite, $ipchanged, $oldips, $newips)
   {
     global $config;
 
@@ -129,14 +128,34 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       return;
     }
     /* FIXME - We should lock the object and check if we don’t erase changes */
-    $cn             = $this->plugin->parent->getBaseObject()->cn;
-    $values         = $this->getValue();
-    $iValues        = $this->getInitialValue();
+    $values   = $this->getValue();
+    $iValues  = $this->getInitialValue();
+    /* React to changes on main tab */
+    $cn       = $this->plugin->parent->getBaseObject()->cn;
+    if ($ipchanged) {
+      if ((count($oldips) == 1) && (count($newips) == 1)) {
+        foreach ($values as &$value) {
+          if ($value[2] == reset($oldips)) {
+            $value[2] = reset($newips);
+          }
+        }
+        unset($value);
+      } else {
+        $removedips = array_diff($oldips, $newips);
+        foreach ($values as $key => $value) {
+          if (in_array($value, $removedips)) {
+            unset($values[$key]);
+          }
+        }
+      }
+    }
+    /* TODO - handle Mac change as well */
+
     $valueHashes    = array_flip(array_map('join', $values));
     //~ $iValueHashes   = array_flip(array_map('join', $iValues));
     foreach ($iValues as $value) {
       $hash = join($value);
-      if (isset($valueHashes[$hash])) {
+      if (isset($valueHashes[$hash]) && !$fullrewrite) {
         unset($values[$valueHashes[$hash]]);
         continue;
       }
@@ -249,6 +268,13 @@ class dhcpSystem extends simplePlugin
     global $config;
 
     $ldap = $config->get_ldap_link();
-    return $this->attributesAccess['dhcpHosts']->postLdapSave($ldap);
+    $baseObject = $this->parent->getBaseObject();
+    return $this->attributesAccess['dhcpHosts']->postLdapSave(
+      $ldap,
+      $baseObject->attributeHaveChanged('cn'),
+      $baseObject->attributeHaveChanged('ipHostNumber'),
+      $baseObject->attributeInitialValue('ipHostNumber'),
+      $baseObject->attributeValue('ipHostNumber')
+    );
   }
 }
