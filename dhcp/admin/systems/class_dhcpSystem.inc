@@ -120,7 +120,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   }
 
   /* Special LDAP treatment that this attribute does after plugin ldap save */
-  function postLdapSave ($ldap, $fullrewrite, $ipchanged, $oldips, $newips)
+  function postLdapSave ($ldap, $fullrewrite, $ipchanged, $oldips, $newips, $macchanged, $oldmacs, $newmacs)
   {
     global $config;
 
@@ -149,7 +149,23 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
         }
       }
     }
-    /* TODO - handle Mac change as well */
+    if ($macchanged) {
+      if ((count($oldmacs) == 1) && (count($newmacs) == 1)) {
+        foreach ($values as &$value) {
+          if ($value[2] == reset($oldmacs)) {
+            $value[2] = reset($newmacs);
+          }
+        }
+        unset($value);
+      } else {
+        $removedmacs = array_diff($oldmacs, $newmacs);
+        foreach ($values as $key => $value) {
+          if (in_array($value, $removedmacs)) {
+            unset($values[$key]);
+          }
+        }
+      }
+    }
 
     $valueHashes    = array_flip(array_map('join', $values));
     //~ $iValueHashes   = array_flip(array_map('join', $iValues));
@@ -274,7 +290,10 @@ class dhcpSystem extends simplePlugin
       $baseObject->attributeHaveChanged('cn'),
       $baseObject->attributeHaveChanged('ipHostNumber'),
       $baseObject->attributeInitialValue('ipHostNumber'),
-      $baseObject->attributeValue('ipHostNumber')
+      $baseObject->attributeValue('ipHostNumber'),
+      $baseObject->attributeHaveChanged('macAddress'),
+      array($baseObject->attributeInitialValue('macAddress')),
+      array($baseObject->attributeValue('macAddress'))
     );
   }
 }
