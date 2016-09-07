@@ -20,7 +20,7 @@
 
 class opsiManagement extends simpleManagement
 {
-  protected $objectTypes  = array('opsiProfile', 'opsiSoftwareList');//, 'opsiOnDemandList');
+  protected $objectTypes  = array('opsiProfile', 'opsiSoftwareList');
 
   protected $departmentBrowser      = FALSE;
   protected $departmentRootVisible  = FALSE;
