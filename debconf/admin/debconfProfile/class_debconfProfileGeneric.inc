@@ -64,7 +64,8 @@ class DebconfEntriesAttribute extends CompositeAttribute
         $cn = $entry['cn'][0];
         if (isset($this->attributes[$cn])) {
           $this->attributes[$cn]->setValue($entry['value'][0]);
-          $this->attributes[$cn]->loadValue(NULL); // set initialValue
+          // set initialValue
+          $this->attributes[$cn]->loadValue(NULL);
           //~ 'flags'
           //~ 'owners'
           //~ 'template'
@@ -115,8 +116,10 @@ class DebconfImportAttribute extends FileAttribute
     $matches = array();
     $str = fread($handle, 1024);
     strpos($str, "dn:");
-    $tmp = str_replace ("\n", "", $str);  // removing breaklines
-    $tmp = str_replace (" ", "", $tmp);   // removing spaces
+    // removing breaklines
+    $tmp = str_replace ("\n", "", $str);
+    // removing spaces
+    $tmp = str_replace (" ", "", $tmp);
     if (preg_match( "/dn:.*,ou=templates,ou=([^,=]+),".get_ou("debconfRDN").
                     $config->current['BASE']."/",
                     $tmp, $matches) > 0) {    // searching for dn: containing the template name

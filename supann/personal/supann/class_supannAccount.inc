@@ -255,7 +255,8 @@ class supannAccount extends simplePlugin
               _('Ref ids'), _('supannRefId - IDs/links for this user on other systems'),
               'supannRefId', FALSE,
               '', '',
-              '/^{[^}]+}.+$/' /* Validation regexp: it must have a prefix */
+               // Validation regexp: it must have a prefix
+              '/^{[^}]+}.+$/'
             )
           ),
         )
@@ -404,9 +405,11 @@ class supannAccount extends simplePlugin
                 ),
               )
             ),
-            FALSE,  // no order
+            // no order
+            FALSE,
             array(),
-            FALSE   // no edit button
+            // no edit button
+            FALSE
           )
         )
       ),
@@ -454,11 +457,14 @@ class supannAccount extends simplePlugin
                 ),
               ),
               '',
-              '' // no label
+              // no label
+              ''
             ),
-            FALSE,  // no order
+            // no order
+            FALSE,
             array(),
-            FALSE   // no edit button
+            // no edit button
+            FALSE
           )
         )
       ),
@@ -535,12 +541,16 @@ class supannAccount extends simplePlugin
     );
     $code_etab   = $this->attributesAccess['supannEtablissement']->getValue();
     $label_etab  = $this->attributesAccess['supannEtablissement']->getDisplayValues();
-    $this->attributesAccess['supannEtuInscription']->attribute->attributes[0]->setChoices($code_etab, $label_etab); // supannEtablissement
-    $this->attributesAccess['supannEtuInscription']->attribute->attributes[6]->setChoices($code_ent, $label_ent); // supannEntiteAffectation
-    $this->attributesAccess['supannRoleEntite']->attribute->attributes[2]->setChoices($code_ent, $label_ent); // supannEntiteAffectation
+    // supannEtablissement
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[0]->setChoices($code_etab, $label_etab);
+    // supannEntiteAffectation
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[6]->setChoices($code_ent, $label_ent);
+    // supannEntiteAffectation
+    $this->attributesAccess['supannRoleEntite']->attribute->attributes[2]->setChoices($code_ent, $label_ent);
     $code_tent   = $this->attributesAccess['supannTypeEntiteAffectation']->getValue();
     $label_tent  = $this->attributesAccess['supannTypeEntiteAffectation']->getDisplayValues();
-    $this->attributesAccess['supannRoleEntite']->attribute->attributes[1]->setChoices($code_tent, $label_tent); // supannTypeEntiteAffectation
+    // supannTypeEntiteAffectation
+    $this->attributesAccess['supannRoleEntite']->attribute->attributes[1]->setChoices($code_tent, $label_tent);
 
     $this->attributesAccess['eduPersonPrimaryAffiliation']->setChoices(
       $this->attributesAccess['eduPersonAffiliation']->getValue(),

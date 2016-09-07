@@ -187,8 +187,8 @@ class argonautQueue extends simpleManagement
     if ($this->o_queue->is_error()) {
       msg_dialog::display(_('Info'), sprintf(_('%s'), $this->o_queue->get_error()), INFO_DIALOG);
     }
-
-    $this->o_queue->remove_entries($taskids); // Removing the task.
+    // Removing the task.
+    $this->o_queue->remove_entries($taskids);
   }
 
   function processNow($action = '', $target = array(), $all = array())

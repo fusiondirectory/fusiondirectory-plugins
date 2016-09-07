@@ -32,7 +32,8 @@ class mailMethod
   protected $mailEqualsCN   = FALSE;
 
   /* the attribute used to create accounts */
-  protected $uattrib        = "mail";  // Naming attribute for accounts, e.g. imap.
+  /* Naming attribute for accounts, e.g. imap. */
+  protected $uattrib        = "mail";
 
   /* The account prefixes, keep the '.' here! See FAQ cyrusUseSlashes */
   protected $user_prefix    = "user.";

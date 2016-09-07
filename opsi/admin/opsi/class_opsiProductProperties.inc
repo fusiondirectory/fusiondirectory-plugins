@@ -138,9 +138,11 @@ class opsiProductProperties extends simplePlugin
               ),
               '|', '', ''
             ),
-            FALSE,  // no order
+            // no order
+            FALSE,
             array(),
-            TRUE    // edit button
+            // edit button
+            TRUE
           )
         )
       )

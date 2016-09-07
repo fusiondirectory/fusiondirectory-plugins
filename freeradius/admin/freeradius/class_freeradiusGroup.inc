@@ -49,24 +49,24 @@ class freeradiusGroup extends simplePlugin {
         'name'  => _('Support 802.1x'),
         'attrs' => array(
           new StringAttribute(
-            _('Tunnel medium type'),              // Label of the attribute
-            _('Name of the tunnel medium type'),  // Description
-            'radiusTunnelMediumType',             // LDAP name
-            TRUE,                                 // Mandatory
-            'IEEE-802'                            // default value
+            _('Tunnel medium type'),
+            _('Name of the tunnel medium type'),
+            'radiusTunnelMediumType',
+            TRUE,
+            'IEEE-802'
           ),
             new StringAttribute(
-            _('Tunnel type'),               // Label of the attribute
-            _('Name of the tunnel type'),   // Description
-            'radiusTunnelType',             // LDAP name
-            TRUE,                           // Mandatory
-            'VLAN'                          // default value
+            _('Tunnel type'),
+            _('Name of the tunnel type'),
+            'radiusTunnelType',
+            TRUE,
+            'VLAN'
           ),
           new StringAttribute(
-            _('VLAN id'),                   // Label of the attribute
-            _('VLAN identifier'),           // Description
-            'radiusTunnelPrivateGroupId',   // LDAP name
-            FALSE,                           // Mandatory
+            _('VLAN id'),
+            _('VLAN identifier'),
+            'radiusTunnelPrivateGroupId',
+            FALSE,
             ''
           )
         )

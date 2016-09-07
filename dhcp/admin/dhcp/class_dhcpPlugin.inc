@@ -39,7 +39,8 @@ class dhcpPlugin extends simplePlugin
               _('Options'), _('The DHCP options'),
               'dhcpOption', FALSE
             ),
-            FALSE, array(), TRUE // Order disabled, Default values, Edit enabled
+            // Order disabled, Default values, Edit enabled
+            FALSE, array(), TRUE
           ),
           new OrderedArrayAttribute (
             new StringAttribute(

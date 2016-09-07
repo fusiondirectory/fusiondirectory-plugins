@@ -155,7 +155,8 @@ class dashboardSystems extends simplePlugin
     }
 
     /* $get_cfg_value return the OU like ou=computer .. */
-    $winstation_ou  = mb_substr($config->get_cfg_value('sambaMachineAccountRDN'), 3); //FIXME use get_ou
+    // FIXME use get_ou
+    $winstation_ou  = mb_substr($config->get_cfg_value('sambaMachineAccountRDN'), 3);
     $nb_digits      = $config->get_cfg_value('dashboardNumberOfDigit', 3);
 
     /* running all the table */

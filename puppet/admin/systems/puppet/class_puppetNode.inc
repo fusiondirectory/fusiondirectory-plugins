@@ -24,7 +24,6 @@ class puppetNode extends simplePlugin
   var $displayHeader  = TRUE;
   var $objectclasses  = array("puppetClient");
 
-  // The main function : information about attributes
   static function getAttributesInfo ()
   {
     return array(
@@ -45,9 +44,12 @@ class puppetNode extends simplePlugin
                 new StringAttribute ('',   _('Name of the variable'),   'puppetVar'),
                 new StringAttribute ('=',  _('Value of the variable'),  'puppetVarValue'),
               ),
-              '%[^ =]=%[^ ]', // sscanf format
-              '%s=%s',        // sprintf format
-              '',             // acl, empty string means we don't care (handle it automagically)
+               // sscanf format
+              '%[^ =]=%[^ ]',
+              // sprintf format
+              '%s=%s',
+              // acl, empty string means we don't care (handle it automagically)
+              '',
               'Puppet Vars'
             )
           ),

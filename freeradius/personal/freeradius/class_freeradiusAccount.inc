@@ -23,7 +23,7 @@
 
 class freeradiusAccount extends simplePlugin {
 
-  var $displayHeader = TRUE; // If we want the button Add/Delete
+  var $displayHeader = TRUE;
   var $objectclasses = array('radiusprofile');
 
   /*!
@@ -36,7 +36,7 @@ class freeradiusAccount extends simplePlugin {
       'plDescription' => _('This Plugin is for Radius accounting based in FreeRadius'),
       'plIcon'        => 'geticon.php?context=applications&icon=freeradius&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=freeradius&size=16',
-      'plSelfModify'  => TRUE,                  // Does this plugin have an owner that might be able to edit its entry
+      'plSelfModify'  => TRUE,
       'plPriority'    => 11,
       'plObjectType'  => array('user'),
 
@@ -79,13 +79,13 @@ class freeradiusAccount extends simplePlugin {
       'section2' => array(
         'name'  => _('Groups'),
         'attrs' => array(
-          new SetAttribute(               // This attribute is multi-valuated
+          new SetAttribute(
               new SelectAttribute (
-              _('Groups'),                // Label of the attribute
-              _('FreeRadius Group'),      // Description
-              'radiusGroupName',          // LDAP name
-              FALSE,                      // Mandatory
-              array("")                   // [SelectAttribute] Choices
+              _('Groups'),
+              _('FreeRadius Group'),
+              'radiusGroupName',
+              FALSE,
+              array("")
             )
           ),
         ),
@@ -111,9 +111,9 @@ class freeradiusAccount extends simplePlugin {
             new IntAttribute(
               _('Framed-MTU'), _('Framed-MTU'),
               'radiusFramedMTU', FALSE,
-              0,                                // [FloatAttribute] Minimum value
-              FALSE,                            // [FloatAttribute] No maximum value
-              1500                              // [FloatAttribute] Default value
+              0,
+              FALSE,
+              1500
             ),
             new StringAttribute(
               _('Compression'), _('Compression'),
@@ -127,10 +127,10 @@ class freeradiusAccount extends simplePlugin {
             ),
             new IntAttribute(
               _('Session Timeout'), _('Session Timeout'),
-              'radiusSessionTimeout', FALSE,                    // Mandatory
-              FALSE,                    // no minimum value
-              FALSE,                    // no maximum value
-              ""                        // no default value
+              'radiusSessionTimeout', FALSE,
+              FALSE,
+              FALSE,
+              ""
             ),
             new IntAttribute(
               _('Idle Timeout'), _('Idle Timeout'),

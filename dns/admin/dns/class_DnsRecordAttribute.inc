@@ -372,7 +372,8 @@ class DnsRecordAttribute extends CompositeAttribute
         $this->attributes[2]->setVisible(FALSE);
       }
     }
-    $this->setAttributes($this->attributes); // Update ACLs
+    // Update ACLs
+    $this->setAttributes($this->attributes);
   }
 
   function applyPostValue()

@@ -87,8 +87,11 @@ class sshAccount extends simplePlugin
               '', _('SSH public keys for this user'),
               'sshPublicKey'
             ),
-            FALSE, // no order
-            array(), TRUE // edit enabled
+            // no order
+            FALSE,
+            array(),
+            // edit enabled
+            TRUE
           )
         )
       )

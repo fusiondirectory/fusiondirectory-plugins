@@ -54,7 +54,11 @@ class serviceQuota extends simpleService
                 new IntAttribute(
                   _('Quota block size'), _('Quota block size on this share (usually 1024)'),
                   'quotaBlockSize', TRUE,
-                  1 /*min*/, FALSE/*no max*/, 1024
+                  // min
+                  1,
+                  // no max
+                  FALSE,
+                  1024
                 ),
                 new StringAttribute(
                   _('Comment'), _('Short comment about this quota'),
@@ -63,9 +67,11 @@ class serviceQuota extends simpleService
               ),
               ':'
             ),
-            FALSE,  // no order
+            // no order
+            FALSE,
             array(),
-            TRUE    // edit button
+            // edit button
+            TRUE
           )
         )
       ),

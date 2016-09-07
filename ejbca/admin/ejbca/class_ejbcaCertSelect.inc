@@ -89,7 +89,8 @@ class EjbcaUserCertsAttribute extends GenericDialogAttribute
   {
     $id   = $this->getHtmlId();
     $div  = new divSelectBox($id);
-    $displays = $this->getDisplayValues(); // Updates and get display values
+    // Updates and get display values
+    $displays = $this->getDisplayValues();
     foreach ($displays as $key => $display_item) {
       $fields = array(
         array('string'  => $display_item['cn'][0])

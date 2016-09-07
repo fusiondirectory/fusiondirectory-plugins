@@ -102,7 +102,8 @@ class dashboardPpolicy extends simplePlugin
     $locked_users           = array();
     $expired_accounts       = array();
     $next_expired_accounts  = array();
-    $maxAges = array(); // ppolicies cache
+    // ppolicies cache
+    $maxAges = array();
     foreach ($users as $user) {
       if (isset($user['pwdAccountLockedTime'])) {
         $locked_user  = dashboardUsers::get_user_infos($user);
