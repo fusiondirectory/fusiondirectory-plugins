@@ -562,7 +562,7 @@ class mailMethodCyrus extends mailMethod
     if (is_integer(strpos($gosaMailDeliveryMode, "C")) ||
         is_integer(strpos($gosaMailDeliveryMode, "I")) ||
         is_integer(strpos($gosaMailDeliveryMode, "V"))) {
-          
+
       /* Add vacation information */
       $smarty->assign('vacation', is_integer(strpos($gosaMailDeliveryMode, "V")));
       if (is_integer(strpos($gosaMailDeliveryMode, "V"))) {
