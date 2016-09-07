@@ -1,12 +1,11 @@
 <?php
-# Collect inventory and store them in the LDAP
-# Usage :
-#  fusioninventory-agent --server http://server/fusiondirectory/collect.php
+// Collect inventory and store them in the LDAP
+// Usage :
+//  fusioninventory-agent --server http://server/fusiondirectory/collect.php
 require_once('../include/php_setup.inc');
 require_once('functions.inc');
 require_once('variables.inc');
 
-##########################################################################
 $http_raw_post_data = file_get_contents('php://input');
 
 if (!$http_raw_post_data) {
