@@ -332,7 +332,10 @@ class supportDaemon
    *
    * \return array All queued entries as an array or FALSE if there is an error.
    */
-  public function get_queued_entries() //$event_types = array("*"),$from=-1,$to=-1,$sort="timestamp DESC"
+
+  //FIXME is this an exemple of the parameter to the fonction ? $event_types = array("*"),$from=-1,$to=-1,$sort="timestamp DESC" 
+
+  public function get_queued_entries()
   {
     if ($this->s_host == "") {
       $this->set_error($this->host_error);

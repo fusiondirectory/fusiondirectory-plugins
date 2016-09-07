@@ -76,7 +76,8 @@ class mailAliasDistribution extends simplePlugin
           new DateAttribute(
             _('Expiration date'), _('Date after which the alias should be deleted. Leave empty for no deletion.'),
             'aliasExpirationDate', FALSE,
-            'U', // Unix timestamp
+             // Unix timestamp
+            'U',
             ''
           )
         )

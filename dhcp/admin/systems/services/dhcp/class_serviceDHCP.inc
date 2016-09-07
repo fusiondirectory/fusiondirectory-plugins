@@ -48,9 +48,12 @@ class serviceDHCP extends simpleService
       'plIcon'        => 'geticon.php?context=applications&icon=dhcp&size=16',
 
       'plProvidedAcls' => array(
-        'start'         => _('Start service'),  // Remove this to hide the start button at all.
-        'stop'          => _('Stop service'),   // Remove this to hide the stop button at all.
-        'restart'       => _('Restart service') // Remove this to hide the restart button at all.
+        // Remove this to hide the start button at all.
+        'start'         => _('Start service'),
+        // Remove this to hide the stop button at all.
+        'stop'          => _('Stop service'),
+        // Remove this to hide the restart button at all.
+        'restart'       => _('Restart service')
       )
     );
   }

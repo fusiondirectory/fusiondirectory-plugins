@@ -87,7 +87,8 @@ class puppetNode extends simplePlugin
     $this->attributesInfo['section1']['attrs']['parentNode']->setChoices($nodes);
     $ldap->search("(objectClass=puppetServer)", array('puppetAvailableEnvironment'));
     if ($ldap->count() == 0) {
-      $this->is_account = FALSE; // TODO : Add something to simplePlugin to handle this case : the tab should not exist
+      // TODO : Add something to simplePlugin to handle this case : the tab should not exist
+      $this->is_account = FALSE;
       return;
     }
     $attrs = $ldap->fetch();

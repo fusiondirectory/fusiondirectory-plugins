@@ -294,7 +294,8 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
             $attr['DESCRIPTION'] = '';
           }
           $this->buffer[$attr['PACKAGE']] = $attr;
-          unset($packages[$attr['PACKAGE']]); // remove found packages
+          // remove found packages
+          unset($packages[$attr['PACKAGE']]);
           if ($i >= 0) {
             $this->FAIcustomRelease[$release] = $release;
           }

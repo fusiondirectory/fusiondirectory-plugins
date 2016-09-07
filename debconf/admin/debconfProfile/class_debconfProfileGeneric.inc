@@ -122,7 +122,8 @@ class DebconfImportAttribute extends FileAttribute
     $tmp = str_replace (" ", "", $tmp);
     if (preg_match( "/dn:.*,ou=templates,ou=([^,=]+),".get_ou("debconfRDN").
                     $config->current['BASE']."/",
-                    $tmp, $matches) > 0) {    // searching for dn: containing the template name
+                    // searching for dn: containing the template name
+                    $tmp, $matches) > 0) {
       $this->plugin->attributesAccess['ou']->setPostValue($matches[1]);
       $this->plugin->attributesAccess['ou']->setValue($matches[1]);
       $this->plugin->attributesAccess['ou']->setDisabled(TRUE);
