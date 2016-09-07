@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-05 23:13+0200\n"
+"POT-Creation-Date: 2016-09-07 23:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -29,22 +29,22 @@ msgstr ""
 msgid "The IP address to use in the DHCP host record"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:183
+#: admin/systems/class_dhcpSystem.inc:218
 #: admin/dhcp/class_dhcpManagement.inc:34 admin/dhcp/class_dhcpPlugin.inc:31
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:29
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:29
 msgid "DHCP"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:184
+#: admin/systems/class_dhcpSystem.inc:219
 msgid "Edit the DHCP zones of a system"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:198
+#: admin/systems/class_dhcpSystem.inc:233
 msgid "DHCP zones"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:202
+#: admin/systems/class_dhcpSystem.inc:237
 msgid "DHCP hosts declared for this system"
 msgstr ""
 
@@ -62,15 +62,15 @@ msgstr ""
 msgid "DHCP service"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:51
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:52
 msgid "Start service"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:52
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:54
 msgid "Stop service"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:53
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:56
 msgid "Restart service"
 msgstr ""
 
@@ -198,21 +198,21 @@ msgstr ""
 msgid "The DHCP options"
 msgstr ""
 
-#: admin/dhcp/class_dhcpPlugin.inc:46
+#: admin/dhcp/class_dhcpPlugin.inc:47
 msgid "Statements"
 msgstr ""
 
-#: admin/dhcp/class_dhcpPlugin.inc:46
+#: admin/dhcp/class_dhcpPlugin.inc:47
 msgid "The DHCP statements"
 msgstr ""
 
-#: admin/dhcp/class_dhcpPlugin.inc:52
+#: admin/dhcp/class_dhcpPlugin.inc:53
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:44
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:45
 msgid "Comments"
 msgstr ""
 
-#: admin/dhcp/class_dhcpPlugin.inc:52
+#: admin/dhcp/class_dhcpPlugin.inc:53
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:44
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:45
 msgid "Comments about this DHCP object"

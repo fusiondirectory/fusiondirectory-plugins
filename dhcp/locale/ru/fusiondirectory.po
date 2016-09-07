@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-01 20:14+0200\n"
+"POT-Creation-Date: 2016-09-05 23:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
@@ -18,22 +18,35 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: admin/systems/class_dhcpSystem.inc:181
+#: admin/systems/class_dhcpSystem.inc:29
+msgid ""
+"The DHCP configuration or subsection in which this host should be added"
+msgstr ""
+
+#: admin/systems/class_dhcpSystem.inc:33
+msgid "The Mac address to use in the DHCP host record"
+msgstr ""
+
+#: admin/systems/class_dhcpSystem.inc:37
+msgid "The IP address to use in the DHCP host record"
+msgstr ""
+
+#: admin/systems/class_dhcpSystem.inc:183
 #: admin/dhcp/class_dhcpManagement.inc:34 admin/dhcp/class_dhcpPlugin.inc:31
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:29
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:29
 msgid "DHCP"
 msgstr "DHCP"
 
-#: admin/systems/class_dhcpSystem.inc:182
+#: admin/systems/class_dhcpSystem.inc:184
 msgid "Edit the DHCP zones of a system"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:196
+#: admin/systems/class_dhcpSystem.inc:198
 msgid "DHCP zones"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:200
+#: admin/systems/class_dhcpSystem.inc:202
 msgid "DHCP hosts declared for this system"
 msgstr ""
 
@@ -88,89 +101,90 @@ msgstr ""
 msgid "Insert new DHCP section"
 msgstr ""
 
-#: admin/dhcp/class_dhcpConfiguration.inc:343
-#: admin/dhcp/class_dhcpConfiguration.inc:384
-#: admin/dhcp/class_dhcpConfiguration.inc:493
-msgid "Global options"
-msgstr ""
-
-#: admin/dhcp/class_dhcpConfiguration.inc:399
-msgid "Error"
-msgstr "Ошибка"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:399
-msgid ""
-"The DHCP configuration set is unkown. Please contact your system "
-"administrator."
-msgstr ""
-
-#: admin/dhcp/class_dhcpConfiguration.inc:454
-#: admin/dhcp/class_dhcpConfiguration.inc:455
-#: admin/dhcp/class_dhcpConfiguration.inc:457
-#: config/dhcp/class_dhcpConfig.inc:28
-msgid "DHCP configuration"
-msgstr ""
-
-#: admin/dhcp/class_dhcpConfiguration.inc:471
-msgid "DHCP Objects"
-msgstr ""
-
-#: admin/dhcp/class_dhcpConfiguration.inc:481
-msgid "The DHCP sections handled by this server"
-msgstr ""
-
-#: admin/dhcp/class_dhcpConfiguration.inc:492
-msgid "Logging"
-msgstr ""
-
-#: admin/dhcp/class_dhcpConfiguration.inc:494
-msgid "Class"
-msgstr "Класс"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:495
-msgid "Subclass"
-msgstr ""
-
-#: admin/dhcp/class_dhcpConfiguration.inc:496
-#: admin/dhcp/sections/class_dhcpHost.inc:29
-msgid "Host"
-msgstr "Хост"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:497
-msgid "Group"
-msgstr "Группа"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:498
-#: admin/dhcp/sections/class_dhcpPool.inc:29
-msgid "Pool"
-msgstr ""
-
-#: admin/dhcp/class_dhcpConfiguration.inc:499
-#: admin/dhcp/sections/class_dhcpSubnet.inc:29
-msgid "Subnet"
-msgstr ""
-
-#: admin/dhcp/class_dhcpConfiguration.inc:500
-msgid "Failover peer"
-msgstr ""
-
-#: admin/dhcp/class_dhcpConfiguration.inc:501
-msgid "Shared network"
-msgstr ""
-
-#: admin/dhcp/class_dhcpConfiguration.inc:502
-msgid "DNS update key"
-msgstr ""
-
-#: admin/dhcp/class_dhcpConfiguration.inc:503
-msgid "DNS update zones"
-msgstr ""
-
+#: admin/dhcp/class_dhcpConfiguration.inc:239
 #: admin/dhcp/class_dhcpPlugin.inc:34
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:32
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:32
 msgid "Name"
 msgstr "Фамилия"
+
+#: admin/dhcp/class_dhcpConfiguration.inc:354
+#: admin/dhcp/class_dhcpConfiguration.inc:395
+#: admin/dhcp/class_dhcpConfiguration.inc:504
+msgid "Global options"
+msgstr ""
+
+#: admin/dhcp/class_dhcpConfiguration.inc:410
+msgid "Error"
+msgstr "Ошибка"
+
+#: admin/dhcp/class_dhcpConfiguration.inc:410
+msgid ""
+"The DHCP configuration set is unkown. Please contact your system "
+"administrator."
+msgstr ""
+
+#: admin/dhcp/class_dhcpConfiguration.inc:465
+#: admin/dhcp/class_dhcpConfiguration.inc:466
+#: admin/dhcp/class_dhcpConfiguration.inc:468
+#: config/dhcp/class_dhcpConfig.inc:28
+msgid "DHCP configuration"
+msgstr ""
+
+#: admin/dhcp/class_dhcpConfiguration.inc:482
+msgid "DHCP Objects"
+msgstr ""
+
+#: admin/dhcp/class_dhcpConfiguration.inc:492
+msgid "The DHCP sections handled by this server"
+msgstr ""
+
+#: admin/dhcp/class_dhcpConfiguration.inc:503
+msgid "Logging"
+msgstr ""
+
+#: admin/dhcp/class_dhcpConfiguration.inc:505
+msgid "Class"
+msgstr "Класс"
+
+#: admin/dhcp/class_dhcpConfiguration.inc:506
+msgid "Subclass"
+msgstr ""
+
+#: admin/dhcp/class_dhcpConfiguration.inc:507
+#: admin/dhcp/sections/class_dhcpHost.inc:29
+msgid "Host"
+msgstr "Хост"
+
+#: admin/dhcp/class_dhcpConfiguration.inc:508
+msgid "Group"
+msgstr "Группа"
+
+#: admin/dhcp/class_dhcpConfiguration.inc:509
+#: admin/dhcp/sections/class_dhcpPool.inc:29
+msgid "Pool"
+msgstr ""
+
+#: admin/dhcp/class_dhcpConfiguration.inc:510
+#: admin/dhcp/sections/class_dhcpSubnet.inc:29
+msgid "Subnet"
+msgstr ""
+
+#: admin/dhcp/class_dhcpConfiguration.inc:511
+msgid "Failover peer"
+msgstr ""
+
+#: admin/dhcp/class_dhcpConfiguration.inc:512
+msgid "Shared network"
+msgstr ""
+
+#: admin/dhcp/class_dhcpConfiguration.inc:513
+msgid "DNS update key"
+msgstr ""
+
+#: admin/dhcp/class_dhcpConfiguration.inc:514
+msgid "DNS update zones"
+msgstr ""
 
 #: admin/dhcp/class_dhcpPlugin.inc:34
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:32
