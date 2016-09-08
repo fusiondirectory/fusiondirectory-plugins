@@ -253,13 +253,8 @@ class ServerService extends simpleManagement
 
       /* Check if we are allowed to remove this service */
       if ($tmp['AllowRemove']) {
-        $str = $this->plugins[$s_entry]->allow_remove();
-        if (empty($str)) {
-          $this->plugins[$s_entry]              = $new_obj;
-          $this->plugins[$s_entry]->is_account  = FALSE;
-        } else {
-          msg_dialog::display(_('Error'), $str, ERROR_DIALOG);
-        }
+        $this->plugins[$s_entry]              = $new_obj;
+        $this->plugins[$s_entry]->is_account  = FALSE;
       }
     }
   }
@@ -467,29 +462,6 @@ class ServerService extends simpleManagement
       $plugin->resetCopyInfos();
     }
     unset($plugin);
-  }
-
-  /*! \brief    Prepare active services to be copied.
-   */
-  function postCopyHook()
-  {
-    foreach ($this->plugins as &$plugin) {
-      $plugin->postCopyHook();
-    }
-    unset($plugin);
-  }
-
-  /*! \brief    Check if there is an active service which prevents
-   *             complete service removal.
-   */
-  function allow_remove()
-  {
-    foreach ($this->plugins as $obj) {
-      $str = $obj->allow_remove();
-      if (!empty($str)) {
-        return $str;
-      }
-    }
   }
 
   /*! \brief    Forward plugin acls

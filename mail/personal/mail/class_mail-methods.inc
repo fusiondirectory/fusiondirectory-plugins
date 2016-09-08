@@ -826,12 +826,6 @@ class mailMethod
     return $this->enableFolderTypes;
   }
 
-  public function allow_remove(&$reason)
-  {
-    return TRUE;
-  }
-
-
   /*! \brief  Returns the configured mailMethod
       @return String  the configured mail method or ""
    */

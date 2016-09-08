@@ -265,20 +265,6 @@ class mailMethodKolab extends mailMethodCyrus
     return TRUE;
   }
 
-  public function allow_remove(&$reason)
-  {
-    if (isset($this->parent->attrs)) {
-      if (in_array_ics("kolabDeleteflag", array_keys($this->parent->attrs))) {
-        $reason = _("Waiting for kolab to remove mail properties...");
-        return FALSE;
-      } elseif (in_array("gosaMailAccount", $this->parent->attrs['objectClass'])) {
-        $reason = _("Please remove the mail settings first!");
-        return FALSE;
-      }
-    }
-    return TRUE;
-  }
-
   /*! \brief   Returns all kolabHost entries from the k=kolab object.
       @return  See \brief
    */
