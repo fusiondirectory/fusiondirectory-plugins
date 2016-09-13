@@ -580,7 +580,7 @@ class dhcpConfiguration extends simplePlugin
                 }
               }
             }
-            if (count($values) == 1) {
+            if ((count($values) == 1) && is_array($values)) {
               $attrs[$attribute] = $values[0];
             } else {
               $attrs[$attribute] = $values;
