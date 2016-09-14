@@ -137,7 +137,7 @@ class servicePostfix extends simpleService
   function ldap_save ()
   {
     global $config;
-    $errors = parent::ldap_save($cleanup);
+    $errors = parent::ldap_save();
     $this->attributesAccess['fdPostfixTransportTable']->postLdapSave($config->get_ldap_link());
     return $errors;
   }

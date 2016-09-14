@@ -619,7 +619,7 @@ class dnsZone extends simplePlugin
   function ldap_save ()
   {
     global $config;
-    $errors = parent::ldap_save($cleanup);
+    $errors = parent::ldap_save();
     if (
       $this->attributesAccess['zoneName']->hasChanged() ||
       $this->attributesAccess['reverseZones']->hasChanged() ||
