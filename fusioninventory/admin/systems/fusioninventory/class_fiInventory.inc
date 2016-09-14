@@ -282,7 +282,7 @@ class fiInventory extends simplePlugin
     global $config;
     $systemTypes = array('server','workstation','terminal','printer','component','winstation','phone','mobilePhone');
     $ldap = $config->get_ldap_link();
-    $ldap->cd(get_ou('systemRDN').$config->current['BASE']);
+    $ldap->cd($config->current['BASE']);
     $ldap->search($this->filter);
     if ($ldap->count()) {
       $attrs = $ldap->fetch();
