@@ -415,7 +415,7 @@ HIDE_UNDOC_MEMBERS     = YES
 # If set to NO (the default) these classes will be included in the various
 # overviews. This option has no effect if EXTRACT_ALL is enabled.
 
-HIDE_UNDOC_CLASSES     = YES
+HIDE_UNDOC_CLASSES     = NO
 
 # If the HIDE_FRIEND_COMPOUNDS tag is set to YES, Doxygen will hide all
 # friend (class|struct|union) declarations.
@@ -1651,7 +1651,7 @@ MSCGEN_PATH            =
 # inheritance and usage relations if the target is undocumented
 # or is not a class.
 
-HIDE_UNDOC_RELATIONS   = YES
+HIDE_UNDOC_RELATIONS   = NO
 
 # If you set the HAVE_DOT tag to YES then doxygen will assume the dot tool is
 # available from the path. This tool is part of Graphviz, a graph visualization
@@ -1700,7 +1700,7 @@ CLASS_GRAPH            = YES
 # indirect implementation dependencies (inheritance, containment, and
 # class references variables) of the class with other documented classes.
 
-COLLABORATION_GRAPH    = YES
+COLLABORATION_GRAPH    = NO
 
 # If the GROUP_GRAPHS and HAVE_DOT tags are set to YES then doxygen
 # will generate a graph for groups, showing the direct groups dependencies
