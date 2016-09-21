@@ -203,9 +203,13 @@ class serviceRepository extends simpleService
     }
   }
 
-  function ldap_save($clean = TRUE)
+  function ldap_save()
   {
-    parent::ldap_save($clean);
+    $errors = parent::ldap_save();
+
+    if (!empty($errors)) {
+      return $errors;
+    }
 
     $repos  = $this->attributesAccess['FAIrepository']->getArrayValues();
     $done   = array();
@@ -216,6 +220,8 @@ class serviceRepository extends simpleService
         $done[$release] = TRUE;
       }
     }
+
+    return $errors;
   }
 
   static function createBranch ($distribution, $release)
