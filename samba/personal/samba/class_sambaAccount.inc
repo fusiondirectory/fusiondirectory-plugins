@@ -547,11 +547,13 @@ class sambaAccount extends simplePlugin
           }
           $this->attrs['sambaPrimaryGroupSID'] = $tabGroup->by_object['sambaGroup']->sambaSID;
         } else {
-          msg_dialog::display(
-            _("Warning"),
-            _("Cannot convert primary group to samba group: group samba tab is disabled!"),
-            WARNING_DIALOG
-          );
+          if ($config->get_cfg_value('sambaPrimaryGroupWarning') == 'TRUE') {
+            msg_dialog::display(
+              _('Warning'),
+              _('Cannot convert primary group to samba group: group samba tab is disabled!'),
+              WARNING_DIALOG
+            );
+          }
         }
       }
     }

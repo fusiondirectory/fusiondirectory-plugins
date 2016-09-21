@@ -71,6 +71,10 @@ class sambaPluginConfig extends simplePlugin
           new BooleanAttribute (
             _('Generate sambaLMPassword'), _('Needed to be compliant with Windows <= 98 or Samba < 3.2'),
             'fdSambaGenLMPassword', FALSE
+          ),
+          new BooleanAttribute (
+            _('Activate primary group warning'), _('Issue a warning if POSIX primary group cannot be converted to Samba primary group when activating the Samba tab of a user'),
+            'fdSambaPrimaryGroupWarning', FALSE
           )
         )
       ),
