@@ -11,7 +11,11 @@
       <ul>
         {foreach from=$server.zones item=zone}
         <li style="list-style:disc">
-          {$zone}
+          {if isset($zone.text)}
+            {$zone.text|escape}
+          {else}
+            {$zone.link}
+          {/if}
         </li>
         {/foreach}
       </ul>
