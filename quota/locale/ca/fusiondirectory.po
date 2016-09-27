@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-05 23:13+0200\n"
+"POT-Creation-Date: 2016-09-12 22:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Catalan (https://www.transifex.com/fusiondirectory/teams/12202/ca/)\n"
@@ -52,120 +52,120 @@ msgstr ""
 msgid "Quota block size on this share (usually 1024)"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:60
+#: admin/systems/services/quota/class_serviceQuota.inc:64
 msgid "Comment"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:60
+#: admin/systems/services/quota/class_serviceQuota.inc:64
 msgid "Short comment about this quota"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:73
+#: admin/systems/services/quota/class_serviceQuota.inc:79
 msgid "Quota warning message"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:76
+#: admin/systems/services/quota/class_serviceQuota.inc:82
 msgid "Charset"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:76
+#: admin/systems/services/quota/class_serviceQuota.inc:82
 msgid "Charset use for the message"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:80
+#: admin/systems/services/quota/class_serviceQuota.inc:86
 msgid "Mail command"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:80
+#: admin/systems/services/quota/class_serviceQuota.inc:86
 msgid "Command allowing the server to send mails"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:84
+#: admin/systems/services/quota/class_serviceQuota.inc:90
 msgid "Support contact"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:84
+#: admin/systems/services/quota/class_serviceQuota.inc:90
 msgid "Email address to contact the administrator"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:88
+#: admin/systems/services/quota/class_serviceQuota.inc:94
 msgid "From"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:88
+#: admin/systems/services/quota/class_serviceQuota.inc:94
 msgid "Email from which the email is sent"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:92
+#: admin/systems/services/quota/class_serviceQuota.inc:98
 msgid "CC"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:92
+#: admin/systems/services/quota/class_serviceQuota.inc:98
 msgid "Send a copy of this email to"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:96
+#: admin/systems/services/quota/class_serviceQuota.inc:102
 msgid "Subject"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:96
+#: admin/systems/services/quota/class_serviceQuota.inc:102
 msgid "Subject of the sent warning email"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:100
+#: admin/systems/services/quota/class_serviceQuota.inc:106
 msgid "Content"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:100
+#: admin/systems/services/quota/class_serviceQuota.inc:106
 msgid "Content of the sent email"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:104
+#: admin/systems/services/quota/class_serviceQuota.inc:110
 msgid "Signature"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:104
+#: admin/systems/services/quota/class_serviceQuota.inc:110
 msgid "Signature to put at the end of the mail"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:110
+#: admin/systems/services/quota/class_serviceQuota.inc:116
 msgid "LDAP message support"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:113
+#: admin/systems/services/quota/class_serviceQuota.inc:119
 msgid "LDAP server"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:113
+#: admin/systems/services/quota/class_serviceQuota.inc:119
 msgid "The LDAP server to bind to"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:117
+#: admin/systems/services/quota/class_serviceQuota.inc:123
 msgid "Bind user dn"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:117
+#: admin/systems/services/quota/class_serviceQuota.inc:123
 msgid "The user dn to use for bind"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:121
+#: admin/systems/services/quota/class_serviceQuota.inc:127
 msgid "Bind user password"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:121
+#: admin/systems/services/quota/class_serviceQuota.inc:127
 msgid "The password of the user used for bind"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:154
+#: admin/systems/services/quota/class_serviceQuota.inc:160
 msgid "Warning"
 msgstr "Avís"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:154
+#: admin/systems/services/quota/class_serviceQuota.inc:160
 #, php-format
 msgid "Invalid value in encodings : %s"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:171
+#: admin/systems/services/quota/class_serviceQuota.inc:177
 #, php-format
 msgid "(%s by %s)"
 msgstr ""
@@ -198,34 +198,34 @@ msgstr ""
 msgid "Soft limit for the block the user can use"
 msgstr ""
 
-#: personal/quota/class_quotaAccount.inc:139
+#: personal/quota/class_quotaAccount.inc:142
 msgid "Block hard limit"
 msgstr ""
 
-#: personal/quota/class_quotaAccount.inc:139
+#: personal/quota/class_quotaAccount.inc:142
 msgid "Hard limit for the block the user can use"
 msgstr ""
 
-#: personal/quota/class_quotaAccount.inc:145
+#: personal/quota/class_quotaAccount.inc:151
 msgid "Inode soft limit"
 msgstr ""
 
-#: personal/quota/class_quotaAccount.inc:145
+#: personal/quota/class_quotaAccount.inc:151
 msgid "Soft limit for the inodes the user can use"
 msgstr ""
 
-#: personal/quota/class_quotaAccount.inc:151
+#: personal/quota/class_quotaAccount.inc:160
 msgid "Inode hard limit"
 msgstr ""
 
-#: personal/quota/class_quotaAccount.inc:151
+#: personal/quota/class_quotaAccount.inc:160
 msgid "Hard limit for the inodes the user can use"
 msgstr ""
 
-#: personal/quota/class_quotaAccount.inc:157
+#: personal/quota/class_quotaAccount.inc:169
 msgid "Server"
 msgstr ""
 
-#: personal/quota/class_quotaAccount.inc:157
+#: personal/quota/class_quotaAccount.inc:169
 msgid "Server hosting the device this quota is for"
 msgstr ""

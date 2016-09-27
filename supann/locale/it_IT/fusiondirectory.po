@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-05 23:13+0200\n"
+"POT-Creation-Date: 2016-09-12 22:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -124,8 +124,8 @@ msgid "SUPANN reference ID of this entity"
 msgstr "Referenza ID SUPANN di questa entità"
 
 #: admin/supannStructures/class_etablissement.inc:31
-#: personal/supann/class_supannAccount.inc:326
-#: personal/supann/class_supannAccount.inc:365
+#: personal/supann/class_supannAccount.inc:327
+#: personal/supann/class_supannAccount.inc:366
 msgid "Establishment"
 msgstr "Immobile"
 
@@ -365,68 +365,68 @@ msgstr "Ref ids"
 msgid "supannRefId - IDs/links for this user on other systems"
 msgstr "supannRefId - Links ID per questo utente su altri sistemi"
 
-#: personal/supann/class_supannAccount.inc:264
+#: personal/supann/class_supannAccount.inc:265
 msgid "Contact"
 msgstr "Contatto"
 
-#: personal/supann/class_supannAccount.inc:268
+#: personal/supann/class_supannAccount.inc:269
 msgid "Other phone numbers"
 msgstr "Altri numeri di telefono"
 
-#: personal/supann/class_supannAccount.inc:268
+#: personal/supann/class_supannAccount.inc:269
 msgid "supannAutreTelephone - Other phone numbers for this user"
 msgstr ""
 "supannAutreTelephone - Numeri di telefono alternativi per questo utente"
 
-#: personal/supann/class_supannAccount.inc:274
+#: personal/supann/class_supannAccount.inc:275
 msgid "Other mail addresses"
 msgstr "Altri indirizzi email"
 
-#: personal/supann/class_supannAccount.inc:274
+#: personal/supann/class_supannAccount.inc:275
 msgid ""
 "supannAutreMail - Other mail addresses for this user. Each must be unique"
 msgstr ""
 "supannAutreMail - Indirizzi di posta elettronica alternativi per questo "
 "utente. Ognuno deve essere unico"
 
-#: personal/supann/class_supannAccount.inc:280
+#: personal/supann/class_supannAccount.inc:281
 msgid "Personal mail addresses"
 msgstr "Indirizzi email personali"
 
-#: personal/supann/class_supannAccount.inc:280
+#: personal/supann/class_supannAccount.inc:281
 msgid "supannMailPerso - Personal mail addresses for this user"
 msgstr ""
 "supannMailPerso - Indirizzo di posta elettronica personale di questo utente"
 
-#: personal/supann/class_supannAccount.inc:285
+#: personal/supann/class_supannAccount.inc:286
 msgid "red List"
 msgstr "Lista rossa"
 
-#: personal/supann/class_supannAccount.inc:285
+#: personal/supann/class_supannAccount.inc:286
 msgid "supannListeRouge - Should this person be on the red list"
 msgstr "supannListeRouge - Questa persona dovrebbe trovarsi sulla lista rossa"
 
-#: personal/supann/class_supannAccount.inc:291
+#: personal/supann/class_supannAccount.inc:292
 msgid "Affectation"
 msgstr "Affettazione"
 
-#: personal/supann/class_supannAccount.inc:294
+#: personal/supann/class_supannAccount.inc:295
 msgid "Entity primary assignment"
 msgstr "Assegnazione di entità primaria"
 
-#: personal/supann/class_supannAccount.inc:294
+#: personal/supann/class_supannAccount.inc:295
 msgid "supannEntiteAffectationPrincipale - Main assignment of the person"
 msgstr ""
 "supannEntiteAffectationPrincipale - Assegnazione principale della persona"
 
-#: personal/supann/class_supannAccount.inc:299
-#: personal/supann/class_supannAccount.inc:390
-#: personal/supann/class_supannAccount.inc:452
+#: personal/supann/class_supannAccount.inc:300
+#: personal/supann/class_supannAccount.inc:391
+#: personal/supann/class_supannAccount.inc:455
 msgid "Entity assignment"
 msgstr "Assegnazione entità"
 
-#: personal/supann/class_supannAccount.inc:299
-#: personal/supann/class_supannAccount.inc:452
+#: personal/supann/class_supannAccount.inc:300
+#: personal/supann/class_supannAccount.inc:455
 msgid ""
 "supannEntiteAffectation - represents assignments of the person in an "
 "institution, a component, service, etc."
@@ -434,32 +434,32 @@ msgstr ""
 "supannEntiteAffectation - rappresenta le assegnazioni della persona "
 "all'interno di un'istituzione, di un componente, di un servizio, ecc."
 
-#: personal/supann/class_supannAccount.inc:305
+#: personal/supann/class_supannAccount.inc:306
 msgid "Entity type assignment"
 msgstr "Assegnazione tipo di identità"
 
-#: personal/supann/class_supannAccount.inc:305
-#: personal/supann/class_supannAccount.inc:448
+#: personal/supann/class_supannAccount.inc:306
+#: personal/supann/class_supannAccount.inc:451
 msgid "supannTypeEntiteAffectation"
 msgstr "supannTypeEntiteAffectation"
 
-#: personal/supann/class_supannAccount.inc:312
+#: personal/supann/class_supannAccount.inc:313
 msgid "Affiliation"
 msgstr "Affiliazione"
 
-#: personal/supann/class_supannAccount.inc:315
+#: personal/supann/class_supannAccount.inc:316
 msgid "Primary affiliation"
 msgstr "Affiliazione primaria"
 
-#: personal/supann/class_supannAccount.inc:315
+#: personal/supann/class_supannAccount.inc:316
 msgid "eduPersonPrimaryAffiliation - Main status of the person"
 msgstr "eduPersonPrimaryAffiliation - Statuto principale della persona"
 
-#: personal/supann/class_supannAccount.inc:320
+#: personal/supann/class_supannAccount.inc:321
 msgid "Affiliations"
 msgstr "Affiliazione"
 
-#: personal/supann/class_supannAccount.inc:320
+#: personal/supann/class_supannAccount.inc:321
 msgid ""
 "eduPersonAffiliation - status of the person: student, BIATOSS, teacher, "
 "contract, retired, hosted staff (CNRS, INSERM, etc.), a former student, etc."
@@ -468,7 +468,7 @@ msgstr ""
 " contractor, pensionato, personale ospitato (CERN, INSERM, ecc.), un ex "
 "studente, ecc."
 
-#: personal/supann/class_supannAccount.inc:326
+#: personal/supann/class_supannAccount.inc:327
 msgid ""
 "supannEtablissement - institution or unit of administrative attachment of "
 "the person"
@@ -476,78 +476,78 @@ msgstr ""
 "supannEtablissement - Istituzione o unità amministrativa alla quale é "
 "affiliata una persona"
 
-#: personal/supann/class_supannAccount.inc:333
+#: personal/supann/class_supannAccount.inc:334
 msgid "Student profile"
 msgstr "Profilo studente"
 
-#: personal/supann/class_supannAccount.inc:336
+#: personal/supann/class_supannAccount.inc:337
 msgid "INE code"
 msgstr "Codice INE"
 
-#: personal/supann/class_supannAccount.inc:336
+#: personal/supann/class_supannAccount.inc:337
 msgid "supannCodeINE - INE code of this student"
 msgstr "supannCodeINE - codice INE di questo studente"
 
-#: personal/supann/class_supannAccount.inc:340
+#: personal/supann/class_supannAccount.inc:341
 msgid "Student ID"
 msgstr "ID studente"
 
-#: personal/supann/class_supannAccount.inc:340
+#: personal/supann/class_supannAccount.inc:341
 msgid "supannEtuId - Scolarity id"
 msgstr "supannEtuId - Numero di matricola"
 
-#: personal/supann/class_supannAccount.inc:346
+#: personal/supann/class_supannAccount.inc:347
 msgid "Student subscriptions"
 msgstr "Sottoscrizioni studente"
 
-#: personal/supann/class_supannAccount.inc:361
+#: personal/supann/class_supannAccount.inc:362
 msgid "supannEtuInscription - Subscriptions for this student"
 msgstr "supannEtuInscription - Iscrizioni di questo studente"
 
-#: personal/supann/class_supannAccount.inc:365
+#: personal/supann/class_supannAccount.inc:366
 msgid ""
 "supannEtablissement - Etablissement in which this subscription was done"
 msgstr ""
 "supannEtablissement - Istituzione in cui é stata effettuata l'iscrizione"
 
-#: personal/supann/class_supannAccount.inc:369
+#: personal/supann/class_supannAccount.inc:370
 msgid "Year"
 msgstr "Anno"
 
-#: personal/supann/class_supannAccount.inc:369
+#: personal/supann/class_supannAccount.inc:370
 msgid "supannEtuAnneeInscription - The year this subscription will begin"
 msgstr "supannEtuAnneeInscription - Anno in cui l'iscrizione inizierà"
 
-#: personal/supann/class_supannAccount.inc:374
+#: personal/supann/class_supannAccount.inc:375
 msgid "Subscription type"
 msgstr "Tipo di sottoscrizione"
 
-#: personal/supann/class_supannAccount.inc:374
+#: personal/supann/class_supannAccount.inc:375
 msgid "supannEtuRegimeInscription - The type of this subscription"
 msgstr "supannEtuRegimeInscription - Tipo d'iscrizione"
 
-#: personal/supann/class_supannAccount.inc:378
+#: personal/supann/class_supannAccount.inc:379
 msgid "Disciplinary Sector"
 msgstr "Settore disciplinare"
 
-#: personal/supann/class_supannAccount.inc:378
+#: personal/supann/class_supannAccount.inc:379
 msgid "supannEtuSecteurDisciplinaire - Disciplinary sector education diploma"
 msgstr ""
 "supannEtuSecteurDisciplinaire - Settore disciplinare del tipo di laurea"
 
-#: personal/supann/class_supannAccount.inc:382
+#: personal/supann/class_supannAccount.inc:383
 msgid "Diploma type"
 msgstr "Tipo di diploma"
 
-#: personal/supann/class_supannAccount.inc:382
+#: personal/supann/class_supannAccount.inc:383
 msgid "supannEtuTypeDiplome - Type of diploma"
 msgstr "supannEtuTypeDiplome - Tipo di diploma"
 
-#: personal/supann/class_supannAccount.inc:386
+#: personal/supann/class_supannAccount.inc:387
 msgid "Curriculum year "
 msgstr "Anno del curriculum"
 
-#: personal/supann/class_supannAccount.inc:386
+#: personal/supann/class_supannAccount.inc:387
 msgid ""
 "supannEtuCursusAnnee - type of curriculum (L, M, D or X, ...) and the year "
 "in the diploma."
@@ -555,23 +555,23 @@ msgstr ""
 "supannEtuCursusAnnee - tipo di curriculum ( L, D o X , ... ) e l'anno nel "
 "diploma ."
 
-#: personal/supann/class_supannAccount.inc:390
+#: personal/supann/class_supannAccount.inc:391
 msgid "supannEntiteAffectation_affect"
 msgstr "supannEntiteAffectation_affettazione"
 
-#: personal/supann/class_supannAccount.inc:394
+#: personal/supann/class_supannAccount.inc:395
 msgid "Diploma"
 msgstr "Diploma"
 
-#: personal/supann/class_supannAccount.inc:394
+#: personal/supann/class_supannAccount.inc:395
 msgid "supannEtuDiplome - Diploma prepared by the student"
 msgstr "supannEtuDiplome - Tipo di Laurea preparata dallo studente"
 
-#: personal/supann/class_supannAccount.inc:398
+#: personal/supann/class_supannAccount.inc:399
 msgid "Step"
 msgstr "Passo"
 
-#: personal/supann/class_supannAccount.inc:398
+#: personal/supann/class_supannAccount.inc:399
 msgid ""
 "supannEtuEtape - Step can be considered a split (semester, year, etc.) in "
 "time of education leading to a diploma"
@@ -579,11 +579,11 @@ msgstr ""
 "supannEtuEtape - Step può essere considerato una scissione ( semestre, anno "
 ", ecc ) in tempo di formazione di laurea"
 
-#: personal/supann/class_supannAccount.inc:402
+#: personal/supann/class_supannAccount.inc:403
 msgid "educational element"
 msgstr "Elemento educativo"
 
-#: personal/supann/class_supannAccount.inc:402
+#: personal/supann/class_supannAccount.inc:403
 msgid ""
 "supannEtuElementPedagogique - Generic description of the content of "
 "education with a high level of granularity"
@@ -591,51 +591,51 @@ msgstr ""
 "supannEtuElementPedagogique - Descrizione generica del contenuto di "
 "formazione con un alto livello di granularità"
 
-#: personal/supann/class_supannAccount.inc:414
+#: personal/supann/class_supannAccount.inc:417
 msgid "Personal profile"
 msgstr "Profilo personale"
 
-#: personal/supann/class_supannAccount.inc:417
+#: personal/supann/class_supannAccount.inc:420
 msgid "Personal ID"
 msgstr "ID personale"
 
-#: personal/supann/class_supannAccount.inc:417
+#: personal/supann/class_supannAccount.inc:420
 msgid "supannEmpId - Employee identifier"
 msgstr "supannEmpId - identificativo dei dipendenti"
 
-#: personal/supann/class_supannAccount.inc:421
+#: personal/supann/class_supannAccount.inc:424
 msgid "Personal corps"
 msgstr "Corps personali"
 
-#: personal/supann/class_supannAccount.inc:421
+#: personal/supann/class_supannAccount.inc:424
 msgid "supannEmpCorps"
 msgstr "supannEmpCorps"
 
-#: personal/supann/class_supannAccount.inc:426
+#: personal/supann/class_supannAccount.inc:429
 msgid "Activity"
 msgstr "Attività"
 
-#: personal/supann/class_supannAccount.inc:426
+#: personal/supann/class_supannAccount.inc:429
 msgid "supannActivite - category of profession"
 msgstr "supannActivite - categoria professionale"
 
-#: personal/supann/class_supannAccount.inc:433
+#: personal/supann/class_supannAccount.inc:436
 msgid "Roles"
 msgstr "Ruoli"
 
-#: personal/supann/class_supannAccount.inc:440
+#: personal/supann/class_supannAccount.inc:443
 msgid "supannRoleEntite"
 msgstr "Regole SUPANN dell'entita"
 
-#: personal/supann/class_supannAccount.inc:444
+#: personal/supann/class_supannAccount.inc:447
 msgid "Generic role"
 msgstr "Regole generali"
 
-#: personal/supann/class_supannAccount.inc:444
+#: personal/supann/class_supannAccount.inc:447
 msgid "supannRoleGenerique - Generics Roles of the person in the facility"
 msgstr "supannRoleGenerique - Ruoli generici della persona nella struttura"
 
-#: personal/supann/class_supannAccount.inc:448
+#: personal/supann/class_supannAccount.inc:451
 msgid "Entity assignment type"
 msgstr "Assegnazione tipo di identità"
 

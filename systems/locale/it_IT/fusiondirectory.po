@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-05 23:13+0200\n"
+"POT-Creation-Date: 2016-09-12 22:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -385,30 +385,29 @@ msgid "Server services"
 msgstr "Servizi del server"
 
 #: admin/systems/class_serverService.inc:216
-#: admin/systems/class_serverService.inc:261
-#: admin/systems/class_serverService.inc:297
-#: admin/systems/services/shares/class_serviceShare.inc:104
+#: admin/systems/class_serverService.inc:292
+#: admin/systems/services/shares/class_serviceShare.inc:106
 msgid "Error"
 msgstr "Errore"
 
-#: admin/systems/class_serverService.inc:291
+#: admin/systems/class_serverService.inc:286
 msgid "Information"
 msgstr "Informazione"
 
-#: admin/systems/class_serverService.inc:291
+#: admin/systems/class_serverService.inc:286
 msgid "Cannot update service status until it has been saved!"
 msgstr ""
 "Impossibile aggiornare lo stato del servizio prima che questo venga "
 "registrato !"
 
-#: admin/systems/class_serverService.inc:297
+#: admin/systems/class_serverService.inc:292
 #, php-format
 msgid "Unknown action \"%s\""
 msgstr ""
 
-#: admin/systems/class_serverService.inc:318
-#: admin/systems/class_serverService.inc:327
-#: admin/systems/class_serverService.inc:338
+#: admin/systems/class_serverService.inc:313
+#: admin/systems/class_serverService.inc:322
+#: admin/systems/class_serverService.inc:333
 #, php-format
 msgid "Could not get execute action %s on service %s."
 msgstr "Impossibile eseguire l'azione %s sul servizio %s "
@@ -689,15 +688,15 @@ msgstr "Opzione"
 msgid "Special option(s) for this share"
 msgstr "Opzione speciale (i) per questo share"
 
-#: admin/systems/services/shares/class_serviceShare.inc:104
+#: admin/systems/services/shares/class_serviceShare.inc:106
 msgid "You need to configure encodings first"
 msgstr "È necessario configurare prima le codifiche"
 
-#: admin/systems/services/shares/class_serviceShare.inc:111
+#: admin/systems/services/shares/class_serviceShare.inc:113
 msgid "Warning"
 msgstr "Avvertimento"
 
-#: admin/systems/services/shares/class_serviceShare.inc:111
+#: admin/systems/services/shares/class_serviceShare.inc:113
 #, php-format
 msgid "Invalid value in encodings : %s"
 msgstr "Valore non valido in codifiche : %s"

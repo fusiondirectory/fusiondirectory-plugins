@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-05 23:13+0200\n"
+"POT-Creation-Date: 2016-09-12 22:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Swedish (https://www.transifex.com/fusiondirectory/teams/12202/sv/)\n"
@@ -383,28 +383,27 @@ msgid "Server services"
 msgstr ""
 
 #: admin/systems/class_serverService.inc:216
-#: admin/systems/class_serverService.inc:261
-#: admin/systems/class_serverService.inc:297
-#: admin/systems/services/shares/class_serviceShare.inc:104
+#: admin/systems/class_serverService.inc:292
+#: admin/systems/services/shares/class_serviceShare.inc:106
 msgid "Error"
 msgstr "Fel"
 
-#: admin/systems/class_serverService.inc:291
+#: admin/systems/class_serverService.inc:286
 msgid "Information"
 msgstr "Information"
 
-#: admin/systems/class_serverService.inc:291
+#: admin/systems/class_serverService.inc:286
 msgid "Cannot update service status until it has been saved!"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:297
+#: admin/systems/class_serverService.inc:292
 #, php-format
 msgid "Unknown action \"%s\""
 msgstr ""
 
-#: admin/systems/class_serverService.inc:318
-#: admin/systems/class_serverService.inc:327
-#: admin/systems/class_serverService.inc:338
+#: admin/systems/class_serverService.inc:313
+#: admin/systems/class_serverService.inc:322
+#: admin/systems/class_serverService.inc:333
 #, php-format
 msgid "Could not get execute action %s on service %s."
 msgstr ""
@@ -683,15 +682,15 @@ msgstr ""
 msgid "Special option(s) for this share"
 msgstr ""
 
-#: admin/systems/services/shares/class_serviceShare.inc:104
+#: admin/systems/services/shares/class_serviceShare.inc:106
 msgid "You need to configure encodings first"
 msgstr ""
 
-#: admin/systems/services/shares/class_serviceShare.inc:111
+#: admin/systems/services/shares/class_serviceShare.inc:113
 msgid "Warning"
 msgstr "Varning"
 
-#: admin/systems/services/shares/class_serviceShare.inc:111
+#: admin/systems/services/shares/class_serviceShare.inc:113
 #, php-format
 msgid "Invalid value in encodings : %s"
 msgstr ""
