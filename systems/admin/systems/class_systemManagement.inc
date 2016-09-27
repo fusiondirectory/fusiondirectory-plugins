@@ -245,8 +245,8 @@ class systemManagement extends management
     // We've at least one entry to delete.
     if (count($this->dns)) {
       // check locks
-      if ($user = get_multiple_locks($this->dns)) {
-        return gen_locked_message($user, $this->dns);
+      if ($locks = get_locks($this->dns)) {
+        return gen_locked_message($locks, $this->dns);
       }
 
       // Add locks
