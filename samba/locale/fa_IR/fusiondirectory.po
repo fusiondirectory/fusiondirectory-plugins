@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-08-11 21:08+0200\n"
-"PO-Revision-Date: 2016-03-25 18:07+0000\n"
+"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"PO-Revision-Date: 2016-09-27 16:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Persian (Iran) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fa_IR/)\n"
 "MIME-Version: 1.0\n"
@@ -86,7 +86,7 @@ msgstr ""
 #: admin/groups/samba/class_sambaGroup.inc:135
 #: personal/samba/class_sambaAccount.inc:505
 #: personal/samba/class_sambaAccount.inc:531
-#: personal/samba/class_sambaAccount.inc:551
+#: personal/samba/class_sambaAccount.inc:552
 msgid "Warning"
 msgstr ""
 
@@ -246,6 +246,10 @@ msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:129
 msgid "Allow Machine Password changes (default: 0 => off)"
+msgstr ""
+
+#: admin/systems/samba/class_argonautEventSambaShares.inc:27
+msgid "Update Samba Shares"
 msgstr ""
 
 #: admin/systems/samba/class_winstationGeneric.inc:37
@@ -577,7 +581,7 @@ msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:552
+#: personal/samba/class_sambaAccount.inc:553
 msgid ""
 "Cannot convert primary group to samba group: group samba tab is disabled!"
 msgstr ""
@@ -638,6 +642,16 @@ msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:72
 msgid "Needed to be compliant with Windows <= 98 or Samba < 3.2"
+msgstr ""
+
+#: config/samba/class_sambaPluginConfig.inc:76
+msgid "Activate primary group warning"
+msgstr ""
+
+#: config/samba/class_sambaPluginConfig.inc:76
+msgid ""
+"Issue a warning if POSIX primary group cannot be converted to Samba primary "
+"group when activating the Samba tab of a user"
 msgstr ""
 
 #: personal/samba/sambaLogonHours.tpl.c:2

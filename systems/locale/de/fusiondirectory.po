@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-08-11 21:08+0200\n"
-"PO-Revision-Date: 2016-06-28 11:05+0000\n"
+"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"PO-Revision-Date: 2016-09-27 16:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -206,7 +206,6 @@ msgstr "Drucker"
 #: admin/systems/class_phoneGeneric.inc:40
 #: admin/systems/class_phoneGeneric.inc:70
 #: admin/systems/class_mobilePhoneGeneric.inc:74
-#: admin/systems/phoneSelect/phoneSelect-list.xml:14
 msgid "Phone"
 msgstr "Telefon"
 
@@ -214,7 +213,6 @@ msgstr "Telefon"
 #: admin/systems/class_mobilePhoneGeneric.inc:36
 #: admin/systems/class_mobilePhoneGeneric.inc:41
 #: admin/systems/class_mobilePhoneGeneric.inc:42
-#: admin/systems/phoneSelect/phoneSelect-list.xml:22
 msgid "Mobile phone"
 msgstr "Mobiltelefon"
 
@@ -229,15 +227,12 @@ msgstr "Komponente"
 #: admin/systems/class_printGeneric.inc:62
 #: admin/systems/class_componentGeneric.inc:63
 #: admin/systems/class_mobilePhoneGeneric.inc:63
-#: admin/systems/phoneSelect/phoneSelect-list.xml:48
 #: admin/systems/services/shares/class_serviceShare.inc:52
 #: admin/systems/system-filter.tpl.c:29
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:11
 msgid "Name"
 msgstr "Name"
 
 #: admin/systems/system-list.xml:128
-#: admin/systems/phoneSelect/phoneSelect-list.xml:63
 msgid "IP"
 msgstr "IP"
 
@@ -268,7 +263,6 @@ msgid "Release"
 msgstr "Release"
 
 #: admin/systems/system-list.xml:168 admin/systems/serverService-list.xml:43
-#: admin/systems/phoneSelect/phoneSelect-list.xml:70
 msgid "Actions"
 msgstr "Aktionen"
 
@@ -713,18 +707,6 @@ msgstr "Dienst bearbeiten"
 msgid "Remove service"
 msgstr "Dienst entfernen"
 
-#: admin/systems/phoneSelect/phoneSelect-list.xml:10
-msgid "Please select the desired entries"
-msgstr "Bitte wählen Sie die gewünschten Einträge"
-
-#: admin/systems/phoneSelect/phoneSelect-list.xml:56
-msgid "Number"
-msgstr "Nummer"
-
-#: admin/systems/phoneSelect/phoneSelect-list.xml:83
-msgid "Select this number"
-msgstr "Wählen Sie diese Anzahl"
-
 #: admin/systems/class_systemManagement.inc:152
 #: admin/systems/class_systemManagement.inc:166
 msgid "Action canceled"
@@ -1168,7 +1150,6 @@ msgid "Execute"
 msgstr "Ausführen"
 
 #: admin/systems/serverService-list.tpl.c:2
-#: admin/systems/phoneSelect/phoneSelect-list.tpl.c:2
 msgid "Base"
 msgstr "Basis"
 
@@ -1223,7 +1204,6 @@ msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
 msgstr "Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder 'Abbrechen' zum Abbruch."
 
 #: admin/systems/system-filter.tpl.c:2
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:2
 msgid "Filter"
 msgstr "Filter"
 
@@ -1244,7 +1224,6 @@ msgid "Show network printer"
 msgstr "Zeige Netzwerk-Drucker"
 
 #: admin/systems/system-filter.tpl.c:17
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:5
 msgid "Show phones"
 msgstr "Zeige Telefone"
 
@@ -1257,7 +1236,6 @@ msgid "Show network devices"
 msgstr "Zeige Netzwerk-Geräte"
 
 #: admin/systems/system-filter.tpl.c:26
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:8
 msgid "Show mobile phones"
 msgstr "Mobiltelefone anzeigen"
 
