@@ -66,7 +66,7 @@ class systemImport extends simplePlugin
 
     $messages = array();
     $dhcps    = array();
-    $dns      = DNS::getAvailableZones($config);
+    $dns      = objects::ls('dnsZone');
     foreach ($hosts as $host) {
       if (!preg_match('/^([^.]+)\.(.*)$/', $host['id'], $m)) {
         $messages[$host['id']] = array(sprintf(_('Could not parse %s'), $host['id']));
@@ -119,10 +119,10 @@ class systemImport extends simplePlugin
       }
       /* Activate DNS if we find a matching server */
       $baseObject->netConfigDNS->DNS_is_account = FALSE;
-      foreach ($dns as $key => $value) {
+      foreach ($dns as $dn => $value) {
         if (preg_match('/'.$zone.'$/', $value)) {
-          $baseObject->netConfigDNS->DNS_is_account       = TRUE;
-          $baseObject->netConfigDNS->dnsEntry['zoneName'] = $value;
+          $tabObject->by_object['dnsHost']->is_account  = TRUE;
+          $tabObject->by_object['dnsHost']->fdDNSZoneDn = array($dn);
           break;
         }
       }
