@@ -53,6 +53,7 @@ class argonautQueue extends simpleManagement
 
   function __construct()
   {
+    global $config;
     $this->filterXMLPath  = get_template_path('deploy-filter.xml', TRUE, dirname(__FILE__));
     $this->listXMLPath    = get_template_path('deploy-list.xml', TRUE, dirname(__FILE__));
 
