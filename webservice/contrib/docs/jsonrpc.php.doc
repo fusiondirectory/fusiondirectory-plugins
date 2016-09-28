@@ -172,7 +172,7 @@ class fdRPCService
    * \param string  $sid    the session id
    * \param string  $type   the object type
    * \param string  $dn     the object to load values from if any (otherwise it's a creation)
-   * \param array   $values the values as an associative array of associative arrays. First level keys are tabs, second level keys should be the same keys returned by getfields.
+   * \param array   $values the values as an associative array of associative arrays. First level keys are tabs, second level keys should be the same keys returned by getfields (without section, directly the attributes).
    * Values should be formed as the internal attribute expects them. See the concerned attribute type for more information.
    *
    * \return An array with errors if any, the resulting object dn otherwise
