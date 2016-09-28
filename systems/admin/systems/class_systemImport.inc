@@ -38,7 +38,7 @@ class ImportServerAttribute extends ObjectSelectAttribute
   {
     if (!$this->disabled && $this->postValue != '') {
       if (in_array($this->postValue, $this->choices)) {
-        $this->plugin->massImport($this->postValue);
+        $this->plugin->systemMassImport($this->postValue);
       }
     }
   }
