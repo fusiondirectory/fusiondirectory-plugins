@@ -100,9 +100,11 @@ class defaultRoleAttribute extends BooleanAttribute
 
   function setValue ($value)
   {
+    global $config;
     parent::setValue($value);
     if ($this->getValue()) {
       $this->plugin->attributesAccess['cn']->setValue('defaults');
+      $this->plugin->base = $config->current['BASE'];
     }
   }
 }
@@ -142,6 +144,7 @@ class sudo extends simplePlugin
         'class' => array('fullwidth'),
         'attrs' => array(
           new defaultRoleAttribute (FALSE),
+          new BaseSelectorAttribute (get_ou('sudoRDN')),
           new StringAttribute (
             _('Name'), _('Name of the role'),
             'cn', TRUE,
@@ -202,6 +205,7 @@ class sudo extends simplePlugin
       array(
         'erase' => array(
           TRUE => array(
+            'base',
             'sudoUser',
             'sudoCommand',
             'sudoHost',
