@@ -50,7 +50,7 @@ class ldapmanager extends simplePlugin
         'mainAttr'  => FALSE
       )),
 
-      'plProvidedAcls'  => array()
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -81,7 +81,8 @@ class ldapmanager extends simplePlugin
           new StringAttribute (
             _('Filter'), _('Filter to use for selecting objects to export'),
             'export_filter', FALSE,
-            '(objectClass=*)'
+            '(objectClass=*)',
+            'complete_export'
           ),
           new CompositeAttribute (
             _('Download a complete snapshot of the running LDAP directory for this base as ldif'),
@@ -113,11 +114,11 @@ class ldapmanager extends simplePlugin
             array(
               new FileAttribute (
                 '', '',
-                'import_file', FALSE
+                'import_ldif_file', FALSE
               ),
               new ButtonAttribute (
                 '', '',
-                'import_submit',
+                'import_ldif_submit',
                 _('Import')
               )
             ),

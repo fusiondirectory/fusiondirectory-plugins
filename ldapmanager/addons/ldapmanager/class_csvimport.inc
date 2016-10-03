@@ -32,7 +32,7 @@ class csvimport extends simplePlugin
       'plObjectType'  => array('ldapmanager'),
       'plPriority'    => 3,
 
-      'plProvidedAcls'  => array()
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -44,11 +44,15 @@ class csvimport extends simplePlugin
         'attrs' => array(
           new SelectAttribute (
             _('Object type'), _('Type of objects you wish to import'),
-            'type', TRUE
+            'type', TRUE,
+            array(), '', NULL,
+            'import_file'
           ),
           new SelectAttribute (
             _('Template'), _('Select a template to apply to imported entries'),
-            'template_dn', TRUE
+            'template_dn', TRUE,
+            array(), '', NULL,
+            'import_file'
           ),
           new FileAttribute (
             _('CSV file'), _('Import a CSV file into your LDAP'),
@@ -57,18 +61,23 @@ class csvimport extends simplePlugin
           new SelectAttribute (
             _('Separator'), _('Character used as separator in the CSV file'),
             'separator', TRUE,
-            array(',', ';')
+            array(',', ';'), '', NULL,
+            'import_file'
           ),
           new SetAttribute(
             new StringAttribute(
               _('Fixed values'), _('Some fixed values that you might wanna use in the filling of the template.'),
-              'fixed_values', FALSE
+              'fixed_values', FALSE,
+              '',
+              'import_file'
             )
           ),
           new ButtonAttribute (
             '', '',
             'import_submit',
-            _('Import')
+            _('Import'),
+            NULL, '',
+            'import_file'
           )
         )
       ),
@@ -85,13 +94,16 @@ class csvimport extends simplePlugin
             _('Select fields associations'),
             'fields',
             array(),
-            '', '', '',
+            '', '',
+            'import_file',
             ''
           ),
           new ButtonAttribute (
             '', '',
             'import_submit_fields',
-            _('Import')
+            _('Import'),
+            NULL, '',
+            'import_file'
           )
         )
       )
@@ -204,7 +216,8 @@ class csvimport extends simplePlugin
           $class_infos['name'].' > '.$attr_infos['label'], '',
           $ldapName, TRUE,
           array_keys($choices), $value,
-          array_values($choices)
+          array_values($choices),
+          'import_file'
         )
       );
     } else {
@@ -213,7 +226,8 @@ class csvimport extends simplePlugin
           $class_infos['name'].' > '.$attr_infos['label'], '',
           $ldapName, TRUE,
           array_keys($choices), $value,
-          array_values($choices)
+          array_values($choices),
+          'import_file'
         );
     }
   }
