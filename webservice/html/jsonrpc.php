@@ -49,7 +49,7 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
   reset_errors();
   /* Check if CONFIG_FILE is accessible */
   if (!is_readable(CONFIG_DIR."/".CONFIG_FILE)) {
-    die(sprintf(_("FusionDirectory configuration %s/%s is not readable. Aborted."), CONFIG_DIR, CONFIG_FILE));
+    throw new Exception(sprintf(_("FusionDirectory configuration %s/%s is not readable. Aborted."), CONFIG_DIR, CONFIG_FILE));
   }
 
   /* Initially load all classes */
@@ -59,7 +59,7 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
       if (is_readable("$BASE_DIR/$path")) {
         require_once("$BASE_DIR/$path");
       } else {
-        die(sprintf(_("Cannot locate file '%s' - please run '%s' to fix this"),
+        throw new Exception(sprintf(_("Cannot locate file '%s' - please run '%s' to fix this"),
               "$BASE_DIR/$path", "<b>fusiondirectory-setup</b>"));
       }
     }
@@ -82,13 +82,8 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
 
     if (($ssl != "") &&
           (($config->get_cfg_value('webserviceForceSSL', 'TRUE') == 'TRUE') ||
-           ($config->get_cfg_value("forcessl") == "TRUE"))) {
-      echo json_encode(
-        array(
-          'error' => "HTTP connexions are not allowed, please use HTTPS: $ssl\n"
-        )
-      );
-      exit;
+           ($config->get_cfg_value('forcessl') == 'TRUE'))) {
+      throw new Exception("HTTP connexions are not allowed, please use HTTPS: $ssl\n");
     }
 
     if (!isset($_SERVER['PHP_AUTH_USER']) && ($user === NULL)) {
@@ -150,7 +145,7 @@ class fdRPCService
 
     $this->ldap = $config->get_ldap_link();
     if (!$this->ldap->success()) {
-      die('Ldap error: '.$this->ldap->get_error());
+      throw new Exception('Ldap error: '.$this->ldap->get_error());
     }
     $this->ldap->cd($config->current['BASE']);
 
@@ -392,8 +387,8 @@ class fdRPCService
             $attr->serializeAttribute($attributes, FALSE);
           }
         }
-        $section['attrs'] = $attributes;
-        $section['attrs_order'] = $attributes;
+        $section['attrs']       = $attributes;
+        $section['attrs_order'] = array_keys($attributes);
       }
       unset($section);
     } else {
@@ -421,6 +416,9 @@ class fdRPCService
       $tabobject = objects::open($dn, $type);
     }
     foreach ($values as $tab => $tabvalues) {
+      if (!isset($tabobject->by_object[$tab])) {
+        return array('errors' => array('This tab does not exists: "'.$tab.'"'));
+      }
       if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
           $tabobject->by_object[$tab]->displayHeader &&
           !$tabobject->by_object[$tab]->is_account

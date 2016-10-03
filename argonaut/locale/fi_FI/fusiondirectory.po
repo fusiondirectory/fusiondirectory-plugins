@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-08-11 21:08+0200\n"
+"POT-Creation-Date: 2016-09-27 18:15+0200\n"
 "PO-Revision-Date: 2016-01-22 15:31+0000\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: Finnish (Finland) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fi_FI/)\n"
@@ -40,7 +40,7 @@ msgstr ""
 #: admin/systems/argonaut/class_argonautClient.inc:139
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
 msgid "Protocol"
-msgstr ""
+msgstr "Protokolla"
 
 #: admin/systems/argonaut/class_argonautClient.inc:139
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
@@ -251,7 +251,7 @@ msgstr ""
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:31
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33
 msgid "Services"
-msgstr ""
+msgstr "Palvelut"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:47
 msgid "FAI"
@@ -293,7 +293,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:66
 msgid "Port"
-msgstr ""
+msgstr "Portti"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:67
 msgid "Port on which the argonaut server will be listening"
@@ -468,8 +468,8 @@ msgid "(Re)Install"
 msgstr ""
 
 #: addons/argonaut/class_filterArgonautEvents.inc:39
-#: addons/argonaut/class_argonautQueue.inc:260
-#: addons/argonaut/class_argonautQueue.inc:344
+#: addons/argonaut/class_argonautQueue.inc:261
+#: addons/argonaut/class_argonautQueue.inc:345
 #: addons/argonaut/import_events.tpl.c:32
 msgid "Error"
 msgstr "Virhe"
@@ -553,55 +553,55 @@ msgstr ""
 msgid "Provide a mechanism to automatically activate systems"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:92
+#: addons/argonaut/class_argonautQueue.inc:93
 msgid "Permission"
 msgstr "Lupa"
 
-#: addons/argonaut/class_argonautQueue.inc:122
+#: addons/argonaut/class_argonautQueue.inc:123
 #: addons/argonaut/deploy-list.xml:86 addons/argonaut/deploy-list.xml:136
 msgid "Remove"
 msgstr "Poista"
 
-#: addons/argonaut/class_argonautQueue.inc:123
+#: addons/argonaut/class_argonautQueue.inc:124
 #, php-format
 msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:188
+#: addons/argonaut/class_argonautQueue.inc:189
 msgid "Info"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:188
+#: addons/argonaut/class_argonautQueue.inc:189
 #, php-format
 msgid "%s"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:218
+#: addons/argonaut/class_argonautQueue.inc:219
 msgid "Error detail"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:260
+#: addons/argonaut/class_argonautQueue.inc:261
 #, php-format
 msgid "Cannot update queue entries."
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:328
+#: addons/argonaut/class_argonautQueue.inc:329
 msgid "immediately"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:340
+#: addons/argonaut/class_argonautQueue.inc:341
 msgid "Waiting"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:343
+#: addons/argonaut/class_argonautQueue.inc:344
 msgid "Show error"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:347
+#: addons/argonaut/class_argonautQueue.inc:348
 msgid "Processed"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:356
+#: addons/argonaut/class_argonautQueue.inc:357
 msgid "in progress"
 msgstr ""
 
@@ -611,7 +611,7 @@ msgstr ""
 
 #: addons/argonaut/deploy-list.xml:27
 msgid "Target"
-msgstr ""
+msgstr "Määränpää"
 
 #: addons/argonaut/deploy-list.xml:35
 msgid "Task"
@@ -642,7 +642,7 @@ msgstr ""
 
 #: addons/argonaut/deploy-list.xml:108
 msgid "Execute"
-msgstr ""
+msgstr "Suorita"
 
 #: addons/argonaut/deploy-list.xml:120
 msgid "Process now"

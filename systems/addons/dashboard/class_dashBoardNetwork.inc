@@ -82,7 +82,9 @@ class dashboardNetwork extends simplePlugin
       $ldap_zone->cd($attrs['dhcpServiceDN'][0]);
       $ldap_zone->search("(objectClass=dhcpSubnet)", array("cn","dhcpNetMask"));
       while ($attrs_zone = $ldap_zone->fetch()) {
-        $zones[] = $attrs_zone['cn'][0]."/".$attrs_zone['dhcpNetMask'][0];
+        $zones[] = array(
+          'text' => $attrs_zone['cn'][0]."/".$attrs_zone['dhcpNetMask'][0]
+        );
       }
 
       $servers[] = array(
@@ -98,36 +100,26 @@ class dashboardNetwork extends simplePlugin
   function dns_infos()
   {
     global $config;
-    if (!class_available("DNS")) {
+    if (!class_available('dnsZone')) {
       return array();
     }
-    $ldap = $config->get_ldap_link();
-
-    $ldap->cd($config->current['BASE']);
-    $ldap->search("(&(objectClass=dNSZone)(zoneName=*))", array("dn","zoneName"));
-
-    $servers = array();
-    while ($attrs = $ldap->fetch()) {
-      $dn = preg_replace("/^zoneName=[^,]+,/", "", $attrs['dn']);
-      if (preg_match("/^cn=/", $dn)) {
-        $cn = preg_replace("/^cn=([^,]+),.*$/", "$1", $dn);
+    $servers  = array();
+    $zones    = objects::ls('dnsZone', array('zoneName' => 1, 'sOARecord' => 1));
+    foreach ($zones as $zonedn => $zone) {
+      list ($fqdn)  = explode(' ', $zone['sOARecord']);
+      list ($cn)    = explode('.', $fqdn);
+      $search = objects::ls('server', NULL, NULL, '(&(cn='.$cn.')(fdDNSZoneDn='.$zonedn.'))');
+      foreach ($search as $dn => $name) {
         if (!isset($servers[$dn])) {
           $servers[$dn] = array(
-            'name'  => $cn,
-            'link'  => objects::link($dn, 'server', 'service_serviceDNS', $cn, FALSE),
+            'name'  => $name,
+            'link'  => objects::link($dn, 'server', 'tab_dnsHost', $name, FALSE),
             'zones' => array()
           );
         }
-        $servers[$dn]['zones'][$attrs['zoneName'][0]] = $attrs['zoneName'][0];
-      } elseif (preg_match("/^zoneName=/", $dn)) {
-        $reverseName  = preg_replace("/^zoneName=([^,]+),.*$/", "$1", $attrs['dn']);
-        $zoneName     = preg_replace("/^zoneName=([^,]+),.*$/", "$1", $dn);
-        $dn           = preg_replace("/^zoneName=[^,]+,/", "", $dn);
-        $IP           = DNS::FlipIp(str_replace(DNS::getInAddrArpa(), "", $reverseName));
-        for ($dots = count(explode(".", $IP));$dots < 4;$dots++) {
-          $IP .= ".0";
-        }
-        $servers[$dn]['zones'][$zoneName] .= " ($IP)";
+        $servers[$dn]['zones'][] = array(
+          'link' => objects::link($zonedn, 'dnsZone', '', $zone['zoneName'], FALSE)
+        );
       }
     }
 

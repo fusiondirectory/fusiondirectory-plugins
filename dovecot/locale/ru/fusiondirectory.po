@@ -3,13 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Alexey Matveev, 2016
+# Alexey Matveev, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-08-11 21:08+0200\n"
-"PO-Revision-Date: 2016-05-12 16:11+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"PO-Revision-Date: 2016-08-24 12:43+0000\n"
+"Last-Translator: Alexey Matveev\n"
 "Language-Team: Russian (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +22,7 @@ msgstr ""
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:28
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:29
 msgid "Dovecot (IMAP/POP3)"
-msgstr ""
+msgstr "Dovecot (IMAP/POP3)"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:29
 msgid "Services"
@@ -48,7 +50,7 @@ msgstr "Порт"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:54
 msgid "Port number on which Dovecot server should be contacted"
-msgstr ""
+msgstr "Номер порта, на котором сервер Dovecot должен быть доступен"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:59
 msgid "Option"
@@ -60,7 +62,7 @@ msgstr ""
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:64
 msgid "Validate TLS/SSL Certificates"
-msgstr ""
+msgstr "Проверять TLS/SSL сертификаты"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:64
 msgid "Weither or not to validate server certificates on connection"
@@ -76,7 +78,7 @@ msgstr ""
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:79
 msgid "Dovecot server admin user"
-msgstr ""
+msgstr "Имя пользователя, который является администратором сервера Dovecot"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:83
 msgid "Password"
@@ -100,15 +102,15 @@ msgstr "Параметры"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:97
 msgid "Create the user folder via Argonaut"
-msgstr ""
+msgstr "Создавать папки пользователей через Argonaut"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:97
 msgid "Use argonaut to create the user mailbox on the Dovecot server"
-msgstr ""
+msgstr "Использовать argonaut для создания почтовых ящиков пользователей на сервере Dovecot"
 
 #: personal/mail/mail-methods/class_mail-methods-dovecot.inc:50
 msgid "There are no IMAP compatible mail servers defined!"
-msgstr ""
+msgstr "Не определен IMAP совместимый почтовый сервер!"
 
 #: personal/mail/mail-methods/class_mail-methods-dovecot.inc:55
 msgid "Mail server for this account is invalid!"

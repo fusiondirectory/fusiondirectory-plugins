@@ -179,7 +179,7 @@ class winstationGeneric extends systemSimplePluginGlue
       /* Delete references to object groups */
       $ldap = $config->get_ldap_link();
       $ldap->cd($config->current['BASE']);
-      $ldap->search("(&(objectClass=gosaGroupOfNames)(member=".LDAP::prepare4filter($this->dn)."))", array("cn"));
+      $ldap->search("(&(objectClass=gosaGroupOfNames)(member=".ldap_escape_f($this->dn)."))", array("cn"));
       while ($ldap->fetch()) {
         $og = new ogroup($ldap->getDN());
         unset($og->member[$this->dn]);

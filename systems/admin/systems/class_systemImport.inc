@@ -38,7 +38,7 @@ class ImportServerAttribute extends ObjectSelectAttribute
   {
     if (!$this->disabled && $this->postValue != '') {
       if (in_array($this->postValue, $this->choices)) {
-        $this->plugin->massImport($this->postValue);
+        $this->plugin->systemMassImport($this->postValue);
       }
     }
   }
@@ -66,14 +66,14 @@ class systemImport extends simplePlugin
 
     $messages = array();
     $dhcps    = array();
-    $dns      = DNS::getAvailableZones($config);
+    $dns      = objects::ls('dnsZone');
     foreach ($hosts as $host) {
       if (!preg_match('/^([^.]+)\.(.*)$/', $host['id'], $m)) {
         $messages[$host['id']] = array(sprintf(_('Could not parse %s'), $host['id']));
         continue;
       }
       $cn   = $m[1].'$';
-      $zone = $m[2].'.';
+      $zone = $m[2];
 
       $objectType = $defaultObjectType;
       if (isset($host['objectType'])) {
@@ -118,15 +118,15 @@ class systemImport extends simplePlugin
         }
       }
       /* Activate DNS if we find a matching server */
-      $baseObject->netConfigDNS->DNS_is_account = FALSE;
-      foreach ($dns as $key => $value) {
-        if (preg_match('/'.$zone.'$/', $value)) {
-          $baseObject->netConfigDNS->DNS_is_account       = TRUE;
-          $baseObject->netConfigDNS->dnsEntry['zoneName'] = $value;
+      $tabObject->by_object['dnsHost']->is_account = FALSE;
+      foreach ($dns as $dn => $value) {
+        if (preg_match('/'.$zone.'\.?$/', $value)) {
+          $tabObject->by_object['dnsHost']->is_account  = TRUE;
+          $tabObject->by_object['dnsHost']->fdDNSZoneDn = array($dn);
           break;
         }
       }
-      if ($baseObject->netConfigDNS->DNS_is_account == FALSE) {
+      if ($tabObject->by_object['dnsHost']->is_account == FALSE) {
         $messages[$host['id']] = array(sprintf(_('No DNS server found for zone %s'), $zone));
         continue;
       }

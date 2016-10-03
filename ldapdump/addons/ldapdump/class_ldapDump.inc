@@ -58,7 +58,7 @@ class ldapDump extends simplePlugin
     global $config;
     if ($this->dump === NULL) {
       $ui = get_userinfo();
-      if (preg_match('/r/', $ui->get_category_permissions($this->acl_base, 'all'))) {
+      if (preg_match('/r/', $ui->get_complete_category_acls($this->acl_base, $this->parent->acl_category))) {
         $ldap = $config->get_ldap_link();
         $ldap->cat($this->dn);
         if ($attrs = $ldap->fetch()) {

@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-08-11 21:08+0200\n"
-"PO-Revision-Date: 2016-08-08 19:22+0000\n"
-"Last-Translator: Alexey Matveev\n"
+"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"PO-Revision-Date: 2016-09-27 16:12+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Russian (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -208,7 +208,6 @@ msgstr "Принтер"
 #: admin/systems/class_phoneGeneric.inc:40
 #: admin/systems/class_phoneGeneric.inc:70
 #: admin/systems/class_mobilePhoneGeneric.inc:74
-#: admin/systems/phoneSelect/phoneSelect-list.xml:14
 msgid "Phone"
 msgstr "Телефон"
 
@@ -216,7 +215,6 @@ msgstr "Телефон"
 #: admin/systems/class_mobilePhoneGeneric.inc:36
 #: admin/systems/class_mobilePhoneGeneric.inc:41
 #: admin/systems/class_mobilePhoneGeneric.inc:42
-#: admin/systems/phoneSelect/phoneSelect-list.xml:22
 msgid "Mobile phone"
 msgstr "Мобильный телефон"
 
@@ -231,15 +229,12 @@ msgstr ""
 #: admin/systems/class_printGeneric.inc:62
 #: admin/systems/class_componentGeneric.inc:63
 #: admin/systems/class_mobilePhoneGeneric.inc:63
-#: admin/systems/phoneSelect/phoneSelect-list.xml:48
 #: admin/systems/services/shares/class_serviceShare.inc:52
 #: admin/systems/system-filter.tpl.c:29
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:11
 msgid "Name"
 msgstr "Название"
 
 #: admin/systems/system-list.xml:128
-#: admin/systems/phoneSelect/phoneSelect-list.xml:63
 msgid "IP"
 msgstr "IP"
 
@@ -270,7 +265,6 @@ msgid "Release"
 msgstr ""
 
 #: admin/systems/system-list.xml:168 admin/systems/serverService-list.xml:43
-#: admin/systems/phoneSelect/phoneSelect-list.xml:70
 msgid "Actions"
 msgstr "Действия"
 
@@ -713,18 +707,6 @@ msgstr ""
 
 #: admin/systems/serverService-list.xml:129
 msgid "Remove service"
-msgstr ""
-
-#: admin/systems/phoneSelect/phoneSelect-list.xml:10
-msgid "Please select the desired entries"
-msgstr "Пожалуйста выберете нужные записи"
-
-#: admin/systems/phoneSelect/phoneSelect-list.xml:56
-msgid "Number"
-msgstr ""
-
-#: admin/systems/phoneSelect/phoneSelect-list.xml:83
-msgid "Select this number"
 msgstr ""
 
 #: admin/systems/class_systemManagement.inc:152
@@ -1170,7 +1152,6 @@ msgid "Execute"
 msgstr "Выполнить"
 
 #: admin/systems/serverService-list.tpl.c:2
-#: admin/systems/phoneSelect/phoneSelect-list.tpl.c:2
 msgid "Base"
 msgstr "Суффикс"
 
@@ -1225,7 +1206,6 @@ msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
 msgstr "Итак - если вы уверены - нажмите 'Удалить', чтобы продолжить или 'Отмена' чтобы прервать."
 
 #: admin/systems/system-filter.tpl.c:2
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:2
 msgid "Filter"
 msgstr "Фильтр"
 
@@ -1246,7 +1226,6 @@ msgid "Show network printer"
 msgstr "Показывать сетевые принтеры"
 
 #: admin/systems/system-filter.tpl.c:17
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:5
 msgid "Show phones"
 msgstr "Показывать телефоны"
 
@@ -1259,7 +1238,6 @@ msgid "Show network devices"
 msgstr "Показывать сетевые устройства"
 
 #: admin/systems/system-filter.tpl.c:26
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:8
 msgid "Show mobile phones"
 msgstr "Показывать мобильные телефоны"
 

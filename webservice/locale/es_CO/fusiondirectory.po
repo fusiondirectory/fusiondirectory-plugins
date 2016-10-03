@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-08-11 21:08+0200\n"
+"POT-Creation-Date: 2016-09-27 18:15+0200\n"
 "PO-Revision-Date: 2016-06-28 11:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Spanish (Colombia) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/es_CO/)\n"
@@ -27,26 +27,26 @@ msgstr "La configuración %s/%s de FusionDirectory no tiene permisos de lectura.
 msgid "Cannot locate file '%s' - please run '%s' to fix this"
 msgstr "No se encuentra el archivo '%s' - por favor ejecute '%s' para  arreglar esto."
 
-#: html/jsonrpc.php:317 html/jsonrpc.php:401
+#: html/jsonrpc.php:312 html/jsonrpc.php:396
 msgid "Plugin"
 msgstr "Plugin"
 
-#: html/jsonrpc.php:493
+#: html/jsonrpc.php:488
 #, php-format
 msgid "Cannot delete %s. It has been locked by %s."
 msgstr ""
 
-#: html/jsonrpc.php:540 html/jsonrpc.php:569
+#: html/jsonrpc.php:535 html/jsonrpc.php:564
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr ""
 
-#: html/jsonrpc.php:565
+#: html/jsonrpc.php:560
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr ""
 
-#: html/jsonrpc.php:572
+#: html/jsonrpc.php:567
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr ""
