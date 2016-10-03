@@ -416,6 +416,9 @@ class fdRPCService
       $tabobject = objects::open($dn, $type);
     }
     foreach ($values as $tab => $tabvalues) {
+      if (!isset($tabobject->by_object[$tab])) {
+        return array('errors' => array('This tab does not exists: "'.$tab.'"'));
+      }
       if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
           $tabobject->by_object[$tab]->displayHeader &&
           !$tabobject->by_object[$tab]->is_account
