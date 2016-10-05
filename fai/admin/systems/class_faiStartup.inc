@@ -58,9 +58,24 @@ class faiStartup extends simplePlugin
 
   var $cache = array();
 
-  /*!
-   *  \brief The main function : information about attributes
-   */
+  static function plInfo()
+  {
+    return array(
+      'plShortName'     => _('FAI'),
+      'plDescription'   => _('Full automated installation'),
+      'plSelfModify'    => FALSE,
+      'plPriority'      => 9,
+      'plObjectType'    => array('workstation', 'server', 'ogroup-dynamic'),
+      'plForeignKeys'  => array(
+        'FAIclass'   => array(
+          array('faiProfile', 'cn', '(FAIclass=%oldvalue% :*)'),
+        ),
+      ),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
+
   static function getAttributesInfo ()
   {
     return array(
@@ -103,6 +118,29 @@ class faiStartup extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
   }
 
+  function foreignKeyCheck ($field, $fieldvalue, $source)
+  {
+    if ($field == 'FAIclass') {
+      if ($this->attributesAccess['FAIclass']->attributes['profil']->getValue() == $fieldvalue) {
+        return TRUE;
+      }
+      return FALSE;
+    } else {
+      return parent::foreignKeyCheck ($field, $fieldvalue, $source);
+    }
+  }
+
+  function foreignKeyUpdate($field, $oldvalue, $newvalue, $source)
+  {
+    if ($field == 'FAIclass') {
+      if ($this->attributesAccess['FAIclass']->attributes['profil']->getValue() == $oldvalue) {
+        $this->attributesAccess['FAIclass']->attributes['profil']->setValue($newvalue);
+      }
+    } else {
+      return parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
+    }
+  }
+
   /* Updates release and profiles list
    *  if not already done ($this->cache).
    */
@@ -138,20 +176,6 @@ class faiStartup extends simplePlugin
         }
       }
     }
-  }
-
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'     => _('FAI'),
-      'plDescription'   => _('Full automated installation'),
-      'plSelfModify'    => FALSE,
-      'plPriority'      => 9,
-      'plObjectType'    => array('workstation', 'server', 'ogroup-dynamic'),
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
   }
 }
 
