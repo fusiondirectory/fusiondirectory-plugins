@@ -378,8 +378,32 @@ sub show_field
 sub ask_field
 {
   my ($field) = @_;
+  if (!($field->{'visible'})) {
+    return $field->{'value'};
+  }
+  if ($field->{'disabled'}) {
+    print $field->{'label'}.": ".$field->{'value'}."\n";
+    return $field->{'value'};
+  }
   foreach my $type (@{$field->{'type'}}) {
-    if (grep {$type eq $_} ('StringAttribute', 'IntAttribute')) {
+    if ($type eq 'CompositeAttribute') {
+      my $attributeshash = $field->{'attributes'};
+      my @values = ();
+      foreach my $key ( @{$field->{'attributes_order'}} ) {
+        my $attribute = $attributeshash->{$key};
+        push @values, ask_field($attribute);
+      }
+      return \@values;
+    } elsif ($type eq 'SetAttribute') {
+      print $field->{'label'}." (multiple values, empty line to finish):\n";
+      my @values = ();
+      my $value = $term->{term}->readline("");
+      while ($value ne '') {
+        push @values, $value;
+        $value = $term->{term}->readline("");
+      };
+      return \@values;
+    } elsif (grep {$type eq $_} ('StringAttribute', 'IntAttribute')) {
       return $term->{term}->readline($field->{'label'}.": ");
     } elsif ($type eq 'SelectAttribute') {
       print $field->{'label'}.":\n";
@@ -460,7 +484,13 @@ sub command_addtab
 {
   my ($type, $dn, $tab, @tabs) = @_;
   $dn = complete_dn($dn);
-  my $fields = rpc_call($client, 'formfields', [$sid,$type,$dn,$tab]);
+  if (not defined $tab) {
+    my $infos = rpc_call($client, 'infos', [$sid, $type]);
+    # Get the first tab
+    my ($tabobject) = @{$infos->{'tabs'}};
+    $tab = $tabobject->{'CLASS'};
+  }
+  my $fields = rpc_call($client, 'getfields', [$sid,$type,$dn,$tab]);
   my %values = ();
   if (ref $fields eq ref {}) {
     my $sectionhash = $fields->{'sections'};
@@ -478,7 +508,7 @@ sub command_addtab
       }
     }
   }
-  my $result = rpc_call($client, 'formpost', [$sid,$type,$dn,$tab,\%values]);
+  my $result = rpc_call($client, 'setfields', [$sid,$type,$dn,{$tab => \%values}]);
   if (ref $result eq ref {}) {
     foreach my $error (@{$result->{'errors'}}) {
       print "Error: $error\n";
