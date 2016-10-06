@@ -686,3 +686,9 @@ objectclass ( 1.3.6.1.4.1.38414.16.2.7 NAME 'fdPhone'
   DESC 'FusionDirectory phone class'
   MUST ( cn )
   MAY ( description $ telephoneNumber ) )
+
+objectclass (1.3.6.1.4.1.38414.16.2.8 NAME 'fdTerminalStartup'
+  DESC 'GOto - Gonicus Terminal Concept, objectclass'
+  SUP top AUXILIARY
+  MUST ( )
+  MAY  ( gotoXdmcpServer $ gotoXMethod $ gotoTerminalPath $ gotoSwapServer ))

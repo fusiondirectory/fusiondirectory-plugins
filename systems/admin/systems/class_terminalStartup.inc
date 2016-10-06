@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -20,37 +19,11 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class TerminalReleaseAttribute extends SelectAttribute
-{
-  function __construct ($label, $description, $ldapName, $required, $choices = array())
-  {
-    parent::__construct($label, $description, $ldapName, $required, $choices);
-    $this->setSubmitForm(TRUE);
-  }
-
-  function setValue ($value)
-  {
-    if (!in_array($value, $this->choices)) {
-      return;
-    }
-    parent::setValue($value);
-    if (isset($this->plugin)) {
-      $this->plugin->attributesInfo['main']['attrs']['gotoBootKernel']->setRelease($value);
-    }
-  }
-
-  function setParent (&$plugin)
-  {
-    parent::setParent($plugin);
-    $this->setValue('squeeze');
-  }
-}
-
 class terminalStartup extends simplePlugin
 {
-  var $objectclasses = array();
+  var $objectclasses = array('fdTerminalStartup');
 
-  var $inheritance = array("gosaGroupOfNames" => "member");
+  var $inheritance = array('gosaGroupOfNames' => 'member');
 
   /*!
    *  \brief The main function : information about attributes
@@ -69,14 +42,6 @@ class terminalStartup extends simplePlugin
             _('Swap server'), _('The swap server the terminal should be using'),
             'gotoSwapServer', FALSE
           ),
-          new StringAttribute (
-            _('Boot kernel'),  _('Linux kernel to be installed and booted'),
-            'gotoBootKernel', FALSE
-          ),
-          new StringAttribute (
-            _('Boot kernel parameters'), _('Linux kernel parameters to be ran'),
-            'gotoKernelParameters', FALSE
-          )
         )
       ),
       'remote_desktop' => array(
@@ -102,8 +67,7 @@ class terminalStartup extends simplePlugin
     );
   }
 
-  /* Return plugin informations
-   * This plugin is deactivated for now
+  /* Return plugin informations */
   static function plInfo()
   {
     return array(
@@ -116,7 +80,7 @@ class terminalStartup extends simplePlugin
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
-  }*/
+  }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
