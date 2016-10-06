@@ -66,7 +66,7 @@ class terminalStartup extends simplePlugin
           new SelectAttribute(
             _('Connect method'), _('Connect method'),
             'gotoXMethod', FALSE,
-            array('xdmcp', 'ldm', 'shell', 'telnet', 'rdp'),
+            array('XDMCP', 'LDM', 'SHELL', 'TELNET', 'RDP'),
             '',
             array(_('XDMCP'), _('LDM'), _('Shell'), _('Telnet'), _('Windows RDP'))
           ),
@@ -87,7 +87,7 @@ class terminalStartup extends simplePlugin
     global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['gotoXMethod']->setSubmitForm(TRUE);
+    $this->attributesAccess['gotoXMethod']->setSubmitForm('updateServerList');
 
     /* Root server */
     $tmp        = $config->data['SERVERS']['NFS'];
@@ -118,23 +118,15 @@ class terminalStartup extends simplePlugin
       }
     }
     $this->attributesAccess['gotoSwapServer']->setChoices($tmp, $tmp_output);
+
+    $this->updateServerList();
   }
 
-  function execute()
+  /*! \brief Create a list of useable servers for the currently selected protocol */
+  function updateServerList()
   {
-    global $config;
-    /* Create a list of useable servers for the currently selected
-     *  connection type.
-     */
-    $xdmcp_types        = $config->data['SERVERS']['TERMINAL_SESSION_TYPES'];
-    $available_servers  = array();
-    foreach ($xdmcp_types as $servername => $supported_types) {
-      if (in_array(strtoupper($this->attributesAccess['gotoXMethod']), $supported_types)) {
-        $available_servers[] = $servername;
-      }
-    }
-    $this->attributesAccess['gotoXdmcpServer']->attribute->setChoices($available_servers);
-    return parent::execute();
+    $servers = objects::ls('server', NULL, NULL, '(&(objectClass=goTerminalServer)(gotoSessionType='.strtoupper($this->gotoXMethod).'))');
+    $this->attributesAccess['gotoXdmcpServer']->attribute->setChoices($servers);
   }
 }
 
