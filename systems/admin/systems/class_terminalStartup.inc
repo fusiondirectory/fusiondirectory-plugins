@@ -89,33 +89,38 @@ class terminalStartup extends simplePlugin
 
     $this->attributesAccess['gotoXMethod']->setSubmitForm('updateServerList');
 
-    /* Root server */
-    $tmp        = $config->data['SERVERS']['NFS'];
-    $tmp_output = $tmp;
-    if (($key = array_search('default', $tmp)) !== FALSE) {
-      if ($this->member_of_group) {
-        $tmp[$key] = '';
-        $tmp_output[$key] = _('inherited');
-      } else {
-        unset($tmp[$key]);
-        unset($tmp_output[$key]);
+    /* Get NFS and NBD server lists */
+    $nfs = array();
+    $nbd = array();
+    $shareServers = objects::ls('server', array('cn' => 1, 'goExportEntry' => '*'), NULL, '(&(objectClass=goShareServer)(goExportEntry=*))');
+    foreach ($shareServers as $server) {
+      foreach ($server['goExportEntry'] as $entry) {
+        $parts = explode('|', $entry);
+        if ($parts[2] == 'NFS') {
+          $nfs[] = $server['cn'].':'.$parts[4];
+        } elseif ($parts[2] == 'NBD') {
+          $nbd[] = $server['cn'].':'.$parts[4];
+        }
       }
+    }
+
+    /* Root server */
+    $tmp        = $nfs;
+    $tmp_output = $nfs;
+    if ($this->member_of_group) {
+      array_unshift($tmp, '');
+      array_unshift($tmp_output, _('inherited'));
     }
     $this->attributesAccess['gotoTerminalPath']->setChoices($tmp, $tmp_output);
 
     /* Swap server */
-    $tmp        = $config->data['SERVERS']['NBD'];
-    $tmp_output = $tmp;
+    $tmp        = $nbd;
+    $tmp_output = $nbd;
     array_unshift($tmp, '!');
     array_unshift($tmp_output, _('Local swap'));
-    if (($key = array_search('default', $tmp)) !== FALSE) {
-      if ($this->member_of_group) {
-        $tmp[$key] = "";
-        $tmp_output[$key] = _('inherited');
-      } else {
-        unset($tmp[$key]);
-        unset($tmp_output[$key]);
-      }
+    if ($this->member_of_group) {
+      array_unshift($tmp, '');
+      array_unshift($tmp_output, _('inherited'));
     }
     $this->attributesAccess['gotoSwapServer']->setChoices($tmp, $tmp_output);
 
