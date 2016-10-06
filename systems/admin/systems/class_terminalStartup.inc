@@ -25,6 +25,21 @@ class terminalStartup extends simplePlugin
 
   var $inheritance = array('gosaGroupOfNames' => 'member');
 
+  /* Return plugin informations */
+  static function plInfo()
+  {
+    return array(
+      'plShortName'     => _('Startup'),
+      'plDescription'   => _('Terminal startup'),
+      'plSelfModify'    => FALSE,
+      'plPriority'      => 2,
+      'plCategory'      => array('terminal'),
+      'plObjectType'    => array('terminal', 'ogroup-dynamic'),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
+
   /*!
    *  \brief The main function : information about attributes
    */
@@ -44,20 +59,6 @@ class terminalStartup extends simplePlugin
           ),
         )
       ),
-    );
-  }
-
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'     => _('Startup'),
-      'plDescription'   => _('Terminal startup'),
-      'plSelfModify'    => FALSE,
-      'plPriority'      => 3,
-      'plObjectType'    => array('terminal', 'ogroup-dynamic'),
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
