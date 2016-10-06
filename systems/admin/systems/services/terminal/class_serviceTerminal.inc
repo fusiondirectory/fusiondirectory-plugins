@@ -54,9 +54,9 @@ class serviceTerminal extends simpleService
               _('Supported session types'),
               _('The session types supported by this terminal server'),
               'gotoSessionType', FALSE,
-              array('LDM','XDMCP', 'SHELL', 'RDP', 'TELNET'),
+              array('XDMCP', 'LDM', 'SHELL', 'TELNET', 'RDP'),
               '',
-              array('LDM','XDMCP', 'SHELL', 'RDP', 'TELNET')
+              array(_('XDMCP'), _('LDM'), _('Shell'), _('Telnet'), _('Windows RDP'))
             )
           )
         )
