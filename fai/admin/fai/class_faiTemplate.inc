@@ -45,7 +45,8 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
     global $config;
     if (isset($attrs['dn'])) {
       $ldap = $config->get_ldap_link();
-      $ldap->ls($this->templateFilter, $attrs['dn']);
+      $ldap->cd($attrs['dn']);
+      $ldap->search($this->templateFilter, array('*'), 'one');
       $this->value = array();
       while ($subattrs = $ldap->fetch()) {
         $attrsWrapper = new stdClass();
@@ -71,7 +72,8 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
   function postLdapSave ($ldap)
   {
     /* First delete all old nodes */
-    $ldap->ls($this->templateFilter, $this->plugin->dn, array('dn'));
+    $ldap->cd($this->plugin->dn);
+    $ldap->search($this->templateFilter, array('dn'), 'one');
     $delete = array();
     while ($attrs = $ldap->fetch()) {
       $delete[] = $attrs['dn'];

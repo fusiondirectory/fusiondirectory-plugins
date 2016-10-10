@@ -274,7 +274,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     if ($dn === $this->subnet_expanded) {
       $ldap_subnet = $config->get_ldap_link();
       $ldap_subnet->cd($dn);
-      $ldap_subnet->ls('(objectClass=dhcpHost)');
+      $ldap_subnet->search('(objectClass=dhcpHost)', array('*'), 'one');
       while ($host_attrs = $ldap_subnet->fetch()) {
         $this->reload_readItemFromLDAP($ldap_subnet, $host_attrs, $final, $erase);
       }

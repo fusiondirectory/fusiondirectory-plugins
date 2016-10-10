@@ -223,7 +223,8 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     /* FIXME Should be tested: empty strings/values, configuring a package and then delete it */
 
     /* First delete all old nodes */
-    $ldap->ls('objectClass=FAIdebconfInfo', $this->plugin->dn, array('dn'));
+    $ldap->cd($this->plugin->dn);
+    $ldap->search('objectClass=FAIdebconfInfo', array('dn'), 'one');
     $delete = array();
     while ($attrs = $ldap->fetch()) {
       $delete[] = $attrs['dn'];

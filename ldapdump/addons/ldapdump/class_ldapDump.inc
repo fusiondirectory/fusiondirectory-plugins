@@ -92,7 +92,7 @@ class ldapDump extends simplePlugin
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($attrs['dn']);
-    $ldap->ls();
+    $ldap->search('(objectClass=*)', array('*'), 'one');
     while ($attrs = $ldap->fetch()) {
       $node['subnodes'][$attrs['dn']] = $this->dumpLdapNode($attrs, $node['dn']);
     }

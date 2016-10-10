@@ -212,12 +212,12 @@ class etablissement extends simplePlugin
     $ldap = $config->get_ldap_link();
 
     $ldap->cd($config->current['BASE']);
-    $ldap->ls('(objectClass=supannOrg)');
+    $ldap->search('(objectClass=supannOrg)', array('*'), 'one');
 
     if ($ldap->count() > 1) {
       msg_dialog::display(_('LDAP error'), 'There are several Establishment at root!');
       return FALSE;
-    } else if ($ldap->count() > 0) {
+    } elseif ($ldap->count() > 0) {
       $attr = $ldap->fetch();
       return $attr['supannEtablissement'][0];
     } else {

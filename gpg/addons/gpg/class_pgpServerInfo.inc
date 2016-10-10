@@ -110,7 +110,8 @@ class pgpServerInfo extends simplePlugin
       $ldap->cat($dn);
       if ($ldap->count()) {
         /* Old branch exists */
-        $ldap->ls('(objectClass=*)', $dn);
+        $ldap->cd($dn)
+        $ldap->search('(objectClass=*)');
         if (!$ldap->count()) {
           /* Old branch is empty */
           @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $dn, "Deleting old empty branch");

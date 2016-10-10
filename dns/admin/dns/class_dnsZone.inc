@@ -203,7 +203,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     }
     if (isset($attrs['dn'])) {
       $ldap = $config->get_ldap_link();
-      $ldap->ls('(&(objectClass=dNSZone)(zoneName='.$attrs['zoneName'][0].'))', $attrs['dn'], array_merge(array('relativeDomainName'), array_keys(DnsRecordAttribute::$types)));
+      $ldap->cd($attrs['dn']);
+      $ldap->search('(&(objectClass=dNSZone)(zoneName='.$attrs['zoneName'][0].'))', array_merge(array('relativeDomainName'), array_keys(DnsRecordAttribute::$types)), 'one');
       while ($subattrs = $ldap->fetch()) {
         for ($i = 0; $i < $subattrs['count']; $i++) {
           $type = $subattrs[$i];
@@ -224,7 +225,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         }
       }
       /* Get reverse zone */
-      $ldap->ls('(&(objectClass=dNSZone)(relativeDomainName=@)(zoneName=*))', $attrs['dn'], array('zoneName'));
+      $ldap->cd($attrs['dn']);
+      $ldap->search('(&(objectClass=dNSZone)(relativeDomainName=@)(zoneName=*))', array('zoneName'), 'one');
       $reverseZones = array();
       while ($subattrs = $ldap->fetch()) {
         $reverseZones[$subattrs['dn']] = $subattrs['zoneName'][0];
@@ -248,7 +250,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         } else {
           $baseIp = implode('.', array_reverse(explode('.', $baseIp)));
         }
-        $ldap->ls('(objectClass=dNSZone)', $reverseZoneDn, array('relativeDomainName', 'pTRRecord'));
+        $ldap->cd($reverseZoneDn);
+        $ldap->search('(objectClass=dNSZone)', array('relativeDomainName', 'pTRRecord'), 'one');
         while ($subattrs = $ldap->fetch()) {
           unset($subattrs['pTRRecord']['count']);
           foreach ($subattrs['pTRRecord'] as $ptrRecord) {
@@ -296,7 +299,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     $zoneDn   = $this->getZoneDn();
     $zoneName = $this->getZoneName();
     /* First delete all old nodes */
-    $ldap->ls('objectClass=dNSZone', $zoneDn, array('dn'));
+    $ldap->cd($zoneDn);
+    $ldap->search('objectClass=dNSZone', array('dn'), 'one');
     $delete = array();
     while ($attrs = $ldap->fetch()) {
       $delete[] = $attrs['dn'];

@@ -230,7 +230,8 @@ class fiInventory extends simplePlugin
         return array();
       }
     }
-    $ldap->ls('(objectClass=*)', $dn);
+    $ldap->cd($dn);
+    $ldap->search('(objectClass=*)', array('*'), 'one');
     $infos = array();
     while ($attrs = $ldap->fetch()) {
       $object = array();

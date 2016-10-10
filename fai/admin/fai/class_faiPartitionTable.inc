@@ -138,7 +138,8 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
     if (isset($attrs['dn'])) {
       /* Fetch disks */
       $ldap = $config->get_ldap_link();
-      $ldap->ls($this->diskFilter, $attrs['dn']);
+      $ldap->cd($attrs['dn']);
+      $ldap->search($this->diskFilter, array('*'), 'one');
       $this->value = array();
       while ($subattrs = $ldap->fetch()) {
         $diskInfos = array('description' => '', 'FAIdiskType' => 'disk');
@@ -171,7 +172,8 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
       }
       /* Fetch partitions */
       foreach ($this->value as $name => $disk) {
-        $ldap->ls($this->partFilter, $disk['dn']);
+        $ldap->cd($disk['dn']);
+        $ldap->search($this->partFilter, array('*'), 'one');
         while ($obj = $ldap->fetch()) {
           $partitionInfos = array();
           foreach ($this->partitionAttributes as $attr) {
@@ -196,7 +198,8 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
   function postLdapSave ($ldap)
   {
     /* First delete all old nodes */
-    $ldap->ls($this->diskFilter, $this->plugin->dn, array('dn'));
+    $ldap->cd($this->plugin->dn);
+    $ldap->search($this->diskFilter, array('dn'), 'one');
     $delete = array();
     while ($attrs = $ldap->fetch()) {
       $delete[] = $attrs['dn'];

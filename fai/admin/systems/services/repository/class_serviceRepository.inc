@@ -343,7 +343,8 @@ class serviceRepository extends simpleService
     global $config;
 
     $ldap = $config->get_ldap_link();
-    $ldap->ls('(objectClass=FAIbranch)', 'ou='.$distribution.','.get_ou('faiBaseRDN').$config->current['BASE'], array('ou'));
+    $ldap->cd('ou='.$distribution.','.get_ou('faiBaseRDN').$config->current['BASE']);
+    $ldap->search('(objectClass=FAIbranch)', array('ou'), 'one');
 
     $list = array();
     while ($release = $ldap->fetch()) {
