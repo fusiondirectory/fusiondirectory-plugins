@@ -83,7 +83,12 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
       $label
     );
     $this->attributes[7]->setSubmitForm(TRUE);
+  }
+
+  function setParent(&$plugin)
+  {
     $this->updateFields();
+    parent::setParent($plugin);
   }
 
   function updateFields()
