@@ -531,11 +531,11 @@ class sambaAccount extends simplePlugin
           WARNING_DIALOG
         );
       } else {
-        $ldap->fetch();
+        $attrs = $ldap->fetch();
         try {
-          $tabGroup = objects::open($ldap->getDN(), 'group');
+          $tabGroup = objects::open($attrs['dn'], 'group');
         } catch (NonExistingObjectTypeException $e) {
-          $tabGroup = objects::open($ldap->getDN(), 'ogroup');
+          $tabGroup = objects::open($attrs['dn'], 'ogroup');
         }
         if ($tabGroup->by_object['sambaGroup']->is_account) {
           if ($tabGroup->by_object['sambaGroup']->sambaSID == "") {

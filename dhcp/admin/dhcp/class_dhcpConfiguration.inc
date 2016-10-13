@@ -245,7 +245,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
   {
     global $config;
     $sattrs = array();
-    $dn     = $ldap->getDN();
+    $dn     = $attrs['dn'];
 
     if (isset($this->dhcpObjectCache[$dn]) && !$erase) {
       $sattrs = $this->dhcpObjectCache[$dn];
