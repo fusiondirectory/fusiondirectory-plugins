@@ -152,7 +152,7 @@
       <label>Services</label>
       <sortAttribute>services</sortAttribute>
       <sortType>string</sortType>
-      <value>%{filter:listServices(row,dn)}</value>
+      <value>%{filter:listServices(row,dn,entry)}</value>
       <export>true</export>
     </column>
 
