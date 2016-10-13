@@ -189,7 +189,7 @@ class ldapmanager extends simplePlugin
     }
   }
 
-  function handle_import_submit()
+  function handle_import_ldif_submit()
   {
     global $config;
     $ldap = $config->get_ldap_link();
