@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-10-15 16:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: admin/fai/class_faiManagement.inc:117 admin/fai/class_faiManagement.inc:122
 #: admin/fai/packageSelect/selectPackage-list.xml:14
-#: admin/systems/class_faiStartup.inc:147 config/fai/class_faiConfig.inc:41
+#: admin/systems/class_faiStartup.inc:64 config/fai/class_faiConfig.inc:41
 msgid "FAI"
 msgstr ""
 
@@ -51,9 +51,9 @@ msgstr ""
 #: admin/fai/class_faiPartitionTable.inc:209
 #: admin/fai/class_faiPartitionTable.inc:250
 #: admin/fai/class_faiTemplate.inc:114
-#: admin/systems/services/repository/class_serviceRepository.inc:231
-#: admin/systems/services/repository/class_serviceRepository.inc:248
-#: admin/systems/services/repository/class_serviceRepository.inc:252
+#: admin/systems/services/repository/class_serviceRepository.inc:236
+#: admin/systems/services/repository/class_serviceRepository.inc:253
+#: admin/systems/services/repository/class_serviceRepository.inc:257
 msgid "LDAP error"
 msgstr ""
 
@@ -118,11 +118,11 @@ msgstr ""
 msgid "Short description of the class"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:409 admin/systems/class_faiStartup.inc:88
+#: admin/fai/class_faiPackage.inc:409 admin/systems/class_faiStartup.inc:103
 msgid "Repository"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:412 admin/systems/class_faiStartup.inc:76
+#: admin/fai/class_faiPackage.inc:412 admin/systems/class_faiStartup.inc:91
 #: admin/systems/services/repository/class_serviceRepository.inc:40
 msgid "Release"
 msgstr ""
@@ -782,32 +782,32 @@ msgstr ""
 msgid "Selected file: %s"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:68
+#: admin/systems/class_faiStartup.inc:65
+msgid "Full automated installation"
+msgstr ""
+
+#: admin/systems/class_faiStartup.inc:83
 msgid "FAI settings"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:72
+#: admin/systems/class_faiStartup.inc:87
 msgid "FAI profil and release to be applied to this computer"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:76
+#: admin/systems/class_faiStartup.inc:91
 msgid "FAI debian release to be installed on this computer"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:80
+#: admin/systems/class_faiStartup.inc:95
 msgid "Profil"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:80
+#: admin/systems/class_faiStartup.inc:95
 msgid "FAI profil to be applied to this computer"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:88
+#: admin/systems/class_faiStartup.inc:103
 msgid "FAI Debian repository to be used for installation"
-msgstr ""
-
-#: admin/systems/class_faiStartup.inc:148
-msgid "Full automated installation"
 msgstr ""
 
 #: admin/systems/services/repository/class_serviceRepository.inc:31
@@ -874,19 +874,19 @@ msgstr ""
 msgid "How this repository is organized (only for RPM repositories)"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceRepository.inc:155
+#: admin/systems/services/repository/class_serviceRepository.inc:160
 msgid "Package repository"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceRepository.inc:156
+#: admin/systems/services/repository/class_serviceRepository.inc:161
 msgid "Package repository information"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceRepository.inc:168
+#: admin/systems/services/repository/class_serviceRepository.inc:173
 msgid "Repositories"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceRepository.inc:173
+#: admin/systems/services/repository/class_serviceRepository.inc:178
 msgid "Repositories this server hosts"
 msgstr ""
 
