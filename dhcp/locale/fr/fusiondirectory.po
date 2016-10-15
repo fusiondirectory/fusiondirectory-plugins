@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-12 22:26+0200\n"
+"POT-Creation-Date: 2016-09-27 21:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2016\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,14 +22,15 @@ msgstr ""
 msgid ""
 "The DHCP configuration or subsection in which this host should be added"
 msgstr ""
+"La configuration DHCP ou sous section dans lequel cet hôte doit être ajouté"
 
 #: admin/systems/class_dhcpSystem.inc:33
 msgid "The Mac address to use in the DHCP host record"
-msgstr ""
+msgstr "L'adresse Mac à utiliser dans l'enregistrement d'hôte DHCP"
 
 #: admin/systems/class_dhcpSystem.inc:37
 msgid "The IP address to use in the DHCP host record"
-msgstr ""
+msgstr "L'adresse IP à utiliser dans l'enregistrement d'hôte DHCP"
 
 #: admin/systems/class_dhcpSystem.inc:218
 #: admin/dhcp/class_dhcpManagement.inc:34 admin/dhcp/class_dhcpPlugin.inc:31
@@ -285,11 +286,11 @@ msgstr "Adresse réseau de ce sous-réseau"
 
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:36
 msgid "DNS Zone Server"
-msgstr ""
+msgstr "Serveur DNS de la zone"
 
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:36
 msgid "Master server of the DNS Zone"
-msgstr ""
+msgstr "serveur maître de la zone DNS"
 
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:40
 msgid "Tsig key"
@@ -334,7 +335,7 @@ msgstr "Algorithme pour générer la clé TSIG"
 
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:41
 msgid "Secret"
-msgstr ""
+msgstr "Secret"
 
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:41
 msgid "Secret to generate TSIG Key"

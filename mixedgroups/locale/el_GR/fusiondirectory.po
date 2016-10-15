@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-12 22:26+0200\n"
+"POT-Creation-Date: 2016-09-27 21:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -18,68 +18,60 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:28
+#: admin/ogroups/mixedgroups/class_mixedGroup.inc:29
 msgid "Posix group"
 msgstr ""
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:29
+#: admin/ogroups/mixedgroups/class_mixedGroup.inc:30
 msgid "Posix group settings"
 msgstr ""
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:46
+#: admin/ogroups/mixedgroups/class_mixedGroup.inc:47
 msgid "Properties"
 msgstr "Ιδιότητες"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:49
+#: admin/ogroups/mixedgroups/class_mixedGroup.inc:50
 msgid "Force GID"
 msgstr "Εξαναγκασμός GID"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:49
+#: admin/ogroups/mixedgroups/class_mixedGroup.inc:50
 msgid "Force GID value for this group"
 msgstr "Εξαναγκασμός τιμής GID για αυτή την ομάδα"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:53
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:123
+#: admin/ogroups/mixedgroups/class_mixedGroup.inc:54
+#: admin/ogroups/mixedgroups/class_mixedGroup.inc:124
 msgid "GID"
 msgstr "GID"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:53
+#: admin/ogroups/mixedgroups/class_mixedGroup.inc:54
 msgid "GID value for this group"
 msgstr "Τιμή GID για αυτήν την ομάδα"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:64
+#: admin/ogroups/mixedgroups/class_mixedGroup.inc:65
 msgid "System trust"
 msgstr "Εμπιστοσύνη συστήματος"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:68
+#: admin/ogroups/mixedgroups/class_mixedGroup.inc:69
 msgid "Trust mode"
 msgstr "Λειτουργία επιστοσύνης"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:68
+#: admin/ogroups/mixedgroups/class_mixedGroup.inc:69
 msgid "Type of authorization for those hosts"
 msgstr "Τύπος εξουσιοδότησή για αυτά τα συστήματα"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:72
+#: admin/ogroups/mixedgroups/class_mixedGroup.inc:73
 msgid "disabled"
 msgstr "απενεργοποιημένο"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:72
+#: admin/ogroups/mixedgroups/class_mixedGroup.inc:73
 msgid "full access"
 msgstr "Πλήρης Πρόσβαση"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:72
+#: admin/ogroups/mixedgroups/class_mixedGroup.inc:73
 msgid "allow access to these hosts"
 msgstr "να επιτραπεί πρόσβαση σε αυτά τα host"
 
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:75
+#: admin/ogroups/mixedgroups/class_mixedGroup.inc:76
 msgid "Only allow this group to connect to this list of hosts"
 msgstr ""
 "Επιτρέπεται σ'αυτή την ομάδα να συνδέεται στην ακόλουθη λίστα διακομιστών"
-
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:166
-msgid "Warning"
-msgstr "Προειδοποίηση"
-
-#: admin/ogroups/mixedgroups/class_mixedGroup.inc:166
-msgid "Timeout while waiting for lock. Ignoring lock!"
-msgstr "Υπέρβαση χρόνου κατά την αναμονή για κλέιδωμα. Αγνόηση κλειδώματος!"

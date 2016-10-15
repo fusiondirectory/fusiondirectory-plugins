@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-12 22:26+0200\n"
+"POT-Creation-Date: 2016-09-27 21:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -489,8 +489,8 @@ msgid "(Re)Install"
 msgstr "(Pře)Instalovat"
 
 #: addons/argonaut/class_filterArgonautEvents.inc:39
-#: addons/argonaut/class_argonautQueue.inc:260
-#: addons/argonaut/class_argonautQueue.inc:344
+#: addons/argonaut/class_argonautQueue.inc:261
+#: addons/argonaut/class_argonautQueue.inc:345
 #: addons/argonaut/import_events.tpl.c:32
 msgid "Error"
 msgstr "chyba"
@@ -574,56 +574,56 @@ msgstr "Fronta nasazení"
 msgid "Provide a mechanism to automatically activate systems"
 msgstr "Poskytuje mechanizmus pro samočinnou aktivaci systémů"
 
-#: addons/argonaut/class_argonautQueue.inc:92
+#: addons/argonaut/class_argonautQueue.inc:93
 msgid "Permission"
 msgstr "oprávnění"
 
-#: addons/argonaut/class_argonautQueue.inc:122
+#: addons/argonaut/class_argonautQueue.inc:123
 #: addons/argonaut/deploy-list.xml:86 addons/argonaut/deploy-list.xml:136
 msgid "Remove"
 msgstr "odebrat"
 
-#: addons/argonaut/class_argonautQueue.inc:123
+#: addons/argonaut/class_argonautQueue.inc:124
 #, php-format
 msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
 msgstr ""
 "Tyto úlohy nemohly být smazány, protože musí být nejprve přerušeny: %s"
 
-#: addons/argonaut/class_argonautQueue.inc:188
+#: addons/argonaut/class_argonautQueue.inc:189
 msgid "Info"
 msgstr "informace"
 
-#: addons/argonaut/class_argonautQueue.inc:188
+#: addons/argonaut/class_argonautQueue.inc:189
 #, php-format
 msgid "%s"
 msgstr "%s"
 
-#: addons/argonaut/class_argonautQueue.inc:218
+#: addons/argonaut/class_argonautQueue.inc:219
 msgid "Error detail"
 msgstr "podrobnosti chyby"
 
-#: addons/argonaut/class_argonautQueue.inc:260
+#: addons/argonaut/class_argonautQueue.inc:261
 #, php-format
 msgid "Cannot update queue entries."
 msgstr "Nelze aktualizovat položky fronty."
 
-#: addons/argonaut/class_argonautQueue.inc:328
+#: addons/argonaut/class_argonautQueue.inc:329
 msgid "immediately"
 msgstr "okamžitě"
 
-#: addons/argonaut/class_argonautQueue.inc:340
+#: addons/argonaut/class_argonautQueue.inc:341
 msgid "Waiting"
 msgstr "čekání"
 
-#: addons/argonaut/class_argonautQueue.inc:343
+#: addons/argonaut/class_argonautQueue.inc:344
 msgid "Show error"
 msgstr "zobrazit chybu"
 
-#: addons/argonaut/class_argonautQueue.inc:347
+#: addons/argonaut/class_argonautQueue.inc:348
 msgid "Processed"
 msgstr "zpracované"
 
-#: addons/argonaut/class_argonautQueue.inc:356
+#: addons/argonaut/class_argonautQueue.inc:357
 msgid "in progress"
 msgstr "probíhá"
 

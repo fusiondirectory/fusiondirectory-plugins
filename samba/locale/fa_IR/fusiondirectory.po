@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-12 22:26+0200\n"
+"POT-Creation-Date: 2016-09-27 21:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: Persian (Iran) (https://www.transifex.com/fusiondirectory/teams/12202/fa_IR/)\n"
 "MIME-Version: 1.0\n"
@@ -86,7 +86,7 @@ msgstr ""
 #: admin/groups/samba/class_sambaGroup.inc:133
 #: personal/samba/class_sambaAccount.inc:503
 #: personal/samba/class_sambaAccount.inc:529
-#: personal/samba/class_sambaAccount.inc:549
+#: personal/samba/class_sambaAccount.inc:550
 msgid "Warning"
 msgstr ""
 
@@ -597,7 +597,7 @@ msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:550
+#: personal/samba/class_sambaAccount.inc:551
 msgid ""
 "Cannot convert primary group to samba group: group samba tab is disabled!"
 msgstr ""
@@ -658,6 +658,16 @@ msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:72
 msgid "Needed to be compliant with Windows <= 98 or Samba < 3.2"
+msgstr ""
+
+#: config/samba/class_sambaPluginConfig.inc:76
+msgid "Activate primary group warning"
+msgstr ""
+
+#: config/samba/class_sambaPluginConfig.inc:76
+msgid ""
+"Issue a warning if POSIX primary group cannot be converted to Samba primary "
+"group when activating the Samba tab of a user"
 msgstr ""
 
 #: personal/samba/sambaLogonHours.tpl.c:2

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-12 22:26+0200\n"
+"POT-Creation-Date: 2016-09-27 21:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
@@ -87,7 +87,7 @@ msgstr "Spezielle Gruppe (%d)"
 #: admin/groups/samba/class_sambaGroup.inc:133
 #: personal/samba/class_sambaAccount.inc:503
 #: personal/samba/class_sambaAccount.inc:529
-#: personal/samba/class_sambaAccount.inc:549
+#: personal/samba/class_sambaAccount.inc:550
 msgid "Warning"
 msgstr "Warnung"
 
@@ -608,7 +608,7 @@ msgstr ""
 "Kann primäre Gruppe nicht in Samba-Gruppe überführen: die Gruppe kann nicht "
 "identifiziert werden!"
 
-#: personal/samba/class_sambaAccount.inc:550
+#: personal/samba/class_sambaAccount.inc:551
 msgid ""
 "Cannot convert primary group to samba group: group samba tab is disabled!"
 msgstr ""
@@ -676,6 +676,16 @@ msgstr "sambaLMPasswort generieren"
 #: config/samba/class_sambaPluginConfig.inc:72
 msgid "Needed to be compliant with Windows <= 98 or Samba < 3.2"
 msgstr "Benötigt um Kompatibilität mit Windows <=98 oder Samba < 3.2 zu haben"
+
+#: config/samba/class_sambaPluginConfig.inc:76
+msgid "Activate primary group warning"
+msgstr ""
+
+#: config/samba/class_sambaPluginConfig.inc:76
+msgid ""
+"Issue a warning if POSIX primary group cannot be converted to Samba primary "
+"group when activating the Samba tab of a user"
+msgstr ""
 
 #: personal/samba/sambaLogonHours.tpl.c:2
 msgid "Specify the hours this user is allowed to log in"
