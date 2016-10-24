@@ -42,18 +42,6 @@ class networkSettings extends plugin
   var $MACisMust      = TRUE;
   var $dialog         = FALSE;
 
-  /* DCHP Attributes
-   */
-  var $dhcpAttributes           = array("dhcpParentNode");
-  var $dhcpEnabled              = FALSE;
-  var $dhcp_is_Account          = FALSE;
-  var $dhcpParentNodes          = array();
-  var $dhcpParentNode           = "";
-  var $dhcpHostEntry            = array();
-  var $initial_dhcpParentNode   = "";
-  var $initial_dhcpHostEntry    = array();
-  var $initial_dhcp_is_Account  = FALSE;
-
   var $used_ip_mac              = array();
 
   var $namingAttr               = "cn";
@@ -84,25 +72,6 @@ class networkSettings extends plugin
       for ($i = 1; $i < $this->attrs['ipHostNumber']['count']; $i++) {
         $this->additionalHostNumbers[] = $this->attrs['ipHostNumber'][$i];
       }
-    }
-
-    /************
-     * DHCP
-     ************/
-
-    /* Hide all dhcp specific code, if dhcp plugin is not present in config */
-    $this->dhcpEnabled = class_available('dhcpHost');
-
-    if ($this->dhcpEnabled) {
-      $this->dhcpParentNodes = $this->get_dhcp_parent_nodes();
-      $this->dhcpParentNode  = $this->get_dhcp_parent_node();
-      if ($this->dhcpParentNode) {
-        $this->dhcp_is_Account          = TRUE;
-        $this->initial_dhcp_is_Account  = TRUE;
-        $this->dhcpHostEntry            = $this->get_dhcp_host_entry();
-      }
-      $this->initial_dhcpHostEntry  = $this->dhcpHostEntry;
-      $this->initial_dhcpParentNode = $this->dhcpParentNode;
     }
 
     /* Create a list of used mac and ip addresses.
@@ -142,9 +111,6 @@ class networkSettings extends plugin
 
   function resetCopyInfos()
   {
-    $this->initial_dhcp_is_Account  = FALSE;
-    $this->initial_dhcpHostEntry    = array();
-    $this->initial_dhcpParentNode   = "";
     $this->orig_ipHostNumber        = "";
     $this->orig_macAddress          = "";
     $this->OrigCn                   = "";
@@ -206,51 +172,10 @@ class networkSettings extends plugin
 
     $smarty->assign("additionalHostNumbers", $this->additionalHostNumbers);
 
-    /**********
-     * DHCP Handling
-     **********/
-
-    if (isset($_POST['dhcpEditOptions']) && $this->acl_is_readable("dhcpSetup")) {
-      if (count($this->dhcpHostEntry) == 0) {
-        $this->dialog = new dhcpHost($this->parent, $this->dhcpParentNode, TRUE);
-      } else {
-        $this->dialog = new dhcpHost($this->parent, $this->dhcpHostEntry, TRUE);
-      }
-      $this->dialog->cn   = $this->getCn();
-      $this->dialog->read_only     = !$this->acl_is_writeable("dhcpSetup");
-      $this->dialog->dhcpHWAddress = "ethernet ".$this->macAddress;
-      if (!empty($this->ipHostNumber)) {
-        $this->dialog->statements->set('fixed-address', $this->ipHostNumber);
-      }
-    }
-
-    if (isset($_POST['cancel_dhcp'])) {
-      $this->dialog = FALSE;
-    }
-
-    if (isset($_POST['save_dhcp']) && $this->acl_is_writeable("dhcpSetup") && is_object($this->dialog)) {
-      $this->dialog->save_object();
-      $msgs = $this->dialog->check(array());
-      if (count($msgs)) {
-        foreach ($msgs as $msg) {
-          msg_dialog::display(_("Error"), $msg, ERROR_DIALOG);
-        }
-      } else {
-        $this->dhcpHostEntry = $this->dialog->save();
-        $this->dialog = FALSE;
-      }
-    }
-
     if (is_object($this->dialog)) {
       $this->dialog->save_object();
       return $this->dialog->execute();
     }
-
-    $smarty->assign("dhcpEnabled",        $this->dhcpEnabled && $this->acl_is_readable("dhcpSetup"));
-    $smarty->assign("dhcp_is_Account",    $this->dhcp_is_Account);
-    $smarty->assign("dhcpParentNode",     $this->dhcpParentNode);
-    $smarty->assign("dhcpParentNodes",    $this->dhcpParentNodes);
-    $smarty->assign("dhcpParentNodeCnt",  count($this->dhcpParentNodes));
 
     /* Is IP address must ? */
     $smarty->assign("IPisMust", $this->IPisMust);
@@ -268,20 +193,6 @@ class networkSettings extends plugin
 
   function remove_from_parent()
   {
-    global $config;
-    $ldap = $config->get_ldap_link();
-
-    /************
-     * DHCP Handling
-     ************/
-
-    /* DHCP removed */
-    if ($this->dhcp_is_Account) {
-      $ldap->rmdir_recursive($this->dhcpHostEntry['dn']);
-      if (!$ldap->success()) {
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()), LDAP_ERROR);
-      }
-    }
   }
 
 
@@ -303,23 +214,6 @@ class networkSettings extends plugin
           if (isset($_POST['additionalHostNumbers_'.$id])) {
             $this->additionalHostNumbers[$id] = get_post('additionalHostNumbers_'.$id);
           }
-        }
-      }
-
-      /******
-        DHCP posts
-       ******/
-
-      if ($this->acl_is_writeable("dhcpSetup") && $this->dhcpEnabled && isset($_POST['network_tpl_posted'])) {
-        foreach ($this->dhcpAttributes as $attr) {
-          if (isset($_POST[$attr])) {
-            $this->$attr = $_POST[$attr];
-          }
-        }
-        if (isset($_POST['dhcp_is_Account'])) {
-          $this->dhcp_is_Account = TRUE;
-        } else {
-          $this->dhcp_is_Account = FALSE;
         }
       }
 
@@ -355,13 +249,6 @@ class networkSettings extends plugin
         in_array("ip:".$this->ipHostNumber, $this->used_ip_mac)) {
       $message[] = msgPool::duplicated(_("IP address"));
     }
-    if ($this->dhcp_is_Account) {
-      if (!empty($this->macAddress) &&
-          $this->macAddress != $this->orig_macAddress &&
-          in_array("mac:".$this->macAddress, $this->used_ip_mac)) {
-        $message[] = msgPool::duplicated(_("MAC address"));
-      }
-    }
 
     /* Check if ip must be given */
     if ($this->IPisMust) {
@@ -373,7 +260,7 @@ class networkSettings extends plugin
     }
 
     /* Check if mac is empty */
-    if ($this->MACisMust || $this->dhcp_is_Account) {
+    if ($this->MACisMust) {
       if ($this->macAddress == "" ) {
         $message[] = msgPool::required(_("MAC address"));
       } elseif (!tests::is_mac($this->macAddress)) {
@@ -427,137 +314,13 @@ class networkSettings extends plugin
       msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
     }
 
-    /* DHCP HANDLING */
-
-    /* New entry */
-    if ($this->dhcpEnabled && $this->acl_is_writeable('dhcpSetup')) {
-      if (count($this->dhcpHostEntry) == 0) {
-        $this->dialog = new dhcpHost($this->parent, $this->dhcpParentNode, TRUE);
-        $this->dialog->cn = $cn;
-        $this->dialog->dhcpHWAddress = 'ethernet '.$this->macAddress;
-        if (!empty($this->ipHostNumber)) {
-          $this->dialog->statements->set('fixed-address', $this->ipHostNumber);
-        }
-        $this->dialog->execute();
-        $this->dialog->save_object();
-        $this->dhcpHostEntry = $this->dialog->save();
-        if (count($this->dhcpHostEntry['dhcpOption']) == 0) {
-          $this->dhcpHostEntry['dhcpOption'] = array('host-name '.$cn);
-        }
-      } else {
-        // Updated Host-Name entry
-        foreach ($this->dhcpHostEntry['dhcpOption'] as $key => $entry) {
-          if (preg_match('/^host-name/', $entry)) {
-            $this->dhcpHostEntry['dhcpOption'][$key] = 'host-name '.$cn;
-            break;
-          }
-        }
-      }
-
-      /* Write mac address to dhcp settings */
-      if ($this->dhcp_is_Account) {
-        if (!isset($this->dhcpHostEntry['dhcpHWAddress'][0]) ||
-            !preg_match('/ethernet '.$this->macAddress.'/', $this->dhcpHostEntry['dhcpHWAddress'][0])) {
-          $this->dhcpHostEntry['dhcpHWAddress'] = array('ethernet '.$this->macAddress);
-          $this->dhcpHostEntry['MODIFIED'] = TRUE;
-        }
-      }
-
-      /* Updated IP host number */
-      if ($this->dhcp_is_Account && $this->dhcpHostEntry['dhcpStatements']) {
-        foreach ($this->dhcpHostEntry['dhcpStatements'] as $id => $value) {
-          if (preg_match('/^fixed-address/', $value)) {
-            $this->dhcpHostEntry['dhcpStatements'][$id] = 'fixed-address '.$this->ipHostNumber;
-            $this->dhcpHostEntry['MODIFIED']            = TRUE;
-          }
-        }
-      }
-
-      /* Unset dhcpStatements if this attribute is empty  */
-      if (isset($this->dhcpHostEntry['dhcpStatements']) &&
-          ($this->dhcpHostEntry['dhcpStatements'] == "" || count($this->dhcpHostEntry['dhcpStatements']) == 0) ) {
-        unset($this->dhcpHostEntry['dhcpStatements']);
-      }
-
-      /* DHCP removed */
-      if ($this->initial_dhcp_is_Account && !$this->dhcp_is_Account) {
-        $ldap->rmdir_recursive($this->dhcpHostEntry['dn']);
-        if (!$ldap->success()) {
-          msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()), LDAP_ERROR);
-        }
-
-        $tmp = new serviceDHCP($this->dhcpParentNode);
-        $tmp->handle_post_events('remove');
-      }
-
-      /* DHCP Added */
-      if (!$this->initial_dhcp_is_Account && $this->dhcp_is_Account) {
-        $attrs = $this->dhcpHostEntry;
-        unset($attrs['MODIFIED']);
-        unset($attrs['dn']);
-        $ldap->cd('cn='.$cn.','.$this->dhcpParentNode);
-        $res = $ldap->add($attrs);
-
-        $tmp = new serviceDHCP($this->dhcpParentNode);
-        $tmp->handle_post_events('add');
-
-        if (!$ldap->success()) {
-          msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), 'cn='.$cn.','.$this->dhcpParentNode, LDAP_ADD, get_class()), LDAP_ERROR);
-        }
-      }
-
-      /* DHCP still activated */
-      if ($this->initial_dhcp_is_Account && $this->dhcp_is_Account) {
-
-        /* DHCP node changed */
-        if (($this->initial_dhcpParentNode != $this->dhcpParentNode) ||
-           ($cn != $this->OrigCn)) {
-          $attrs        = $this->dhcpHostEntry;
-          $attrs['cn']  = $cn;
-          unset($attrs['dn']);
-          unset($attrs['MODIFIED']);
-          $ldap->cd('cn='.$cn.','.$this->dhcpParentNode);
-          $res = $ldap->add($attrs);
-          if (!$ldap->success()) {
-            msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), 'cn='.$cn.','.$this->dhcpParentNode, LDAP_ADD, get_class()), LDAP_ERROR);
-          }
-
-          $tmp = new serviceDHCP($this->dhcpParentNode);
-          $tmp->handle_post_events('modify');
-
-          if ($res) {
-            $ldap->rmdir_recursive($this->dhcpHostEntry['dn']);
-            if (!$ldap->success()) {
-              msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()), LDAP_ERROR);
-            }
-          }
-        }
-
-        /* SAME node but modified */
-        if (isset($this->dhcpHostEntry['MODIFIED']) && ($this->dhcpHostEntry['MODIFIED'] == 1) &&
-            $this->initial_dhcpParentNode == $this->dhcpParentNode) {
-          $attrs = $this->dhcpHostEntry;
-          unset($attrs['dn']);
-          unset($attrs['MODIFIED']);
-          $ldap->cd($this->dhcpHostEntry['dn']);
-          $ldap->modify($attrs);
-
-          $tmp = new serviceDHCP($this->dhcpParentNode);
-          $tmp->handle_post_events('modify');
-
-          if (!$ldap->success()) {
-            msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_MOD, get_class()), LDAP_ERROR);
-          }
-        }
-      }
-    }
     $this->dialog = FALSE;
   }
 
   /* Return plugin informations for acl handling  */
   static function plInfo()
   {
-    $tmp = array(
+    return array(
       'plShortName'   => _('Network'),
       'plDescription' => _('Network settings'),
       'plSelfModify'  => FALSE,
@@ -569,94 +332,6 @@ class networkSettings extends plugin
         'macAddress'    => _('MAC address')
       )
     );
-
-    /* Hide all dhcp configuration if not available */
-    if (class_available('serviceDHCP')) {
-      $tmp['plProvidedAcls']['dhcpSetup'] = _('DHCP configuration');
-    }
-    return $tmp;
-  }
-
-
-  function get_dhcp_host_entry()
-  {
-    global $config;
-    $attrs = array();
-    $dn = $this->get_dhcp_host_entry_dn();
-    if ($dn) {
-      $ldap = $config->get_ldap_link();
-      $ldap->cd($config->current['BASE']);
-      $ldap->cat($dn, array('*'));
-      if ($ldap->count()) {
-        $attrs = $ldap->fetch();
-        foreach ($attrs as $key => $value) {
-          if (is_numeric($key) || ($key == 'count')) {
-            unset($attrs[$key]);
-          }
-          if (is_array($value) && isset($value['count'])) {
-            unset($attrs[$key]['count']);
-          }
-        }
-      }
-    }
-    return $attrs;
-  }
-
-
-  function get_dhcp_host_entry_dn()
-  {
-    global $config;
-    $ldap = $config->get_ldap_link();
-    $ldap->cd($config->current['BASE']);
-    $ldap->search ('(&(objectClass=dhcpHost)(cn='.$this->getCn().'))', array('uid','cn','dn'));
-
-    if ($ldap->count()) {
-      $attr = $ldap->fetch();
-      return $attr['dn'];
-    } else {
-      return '';
-    }
-  }
-
-
-  function get_dhcp_parent_node()
-  {
-    return preg_replace('/^cn='.preg_quote($this->getCn(), '/').',/', '', $this->get_dhcp_host_entry_dn());
-  }
-
-  function get_dhcp_parent_nodes()
-  {
-    global $config;
-    $ldap = $config->get_ldap_link();
-    $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=dhcpService)', array('dhcpPrimaryDN'));
-
-    $dhcp_dns = array();
-    while ($attr = $ldap->fetch()) {
-      $dhcp_dns[$attr['dn']] = $attr['dhcpPrimaryDN'][0];
-    }
-
-    foreach ($dhcp_dns as $key => $pri_dns) {
-      $ldap->cat($pri_dns, array('cn'));
-      $tmp = $ldap->fetch();
-      if (isset($tmp['cn'][0])) {
-        $dhcp_dns[$key] = $tmp['cn'][0];
-      } else {
-        unset($dhcp_dns[$key]);
-      }
-    }
-
-    $tmp = $tmp2 = array();
-    foreach ($dhcp_dns as $dn => $cn) {
-      $ldap->cd($dn);
-      $ldap->search('(|(objectClass=dhcpService)(objectClass=dhcpGroup)'.
-                    '(objectClass=dhcpSubnet)(objectClass=dhcpSharedNetwork))', array('cn'));
-      while ($attr = $ldap->fetch()) {
-        $tmp[$attr['dn']] = $attr['cn'][0];
-      }
-      $tmp2 = array_merge($tmp2, $this->create_tree($tmp, preg_replace('/^[^,]+,/i', '', $dn), '('.$cn.')&nbsp;'));
-    }
-    return $tmp2;
   }
 
   function generateRandomIP($net = "")
