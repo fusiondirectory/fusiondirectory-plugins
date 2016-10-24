@@ -34,7 +34,7 @@ class dhcpManagement extends simpleManagement
       'plShortName'   => _('DHCP'),
       'plDescription' => _('DHCP Management'),
       'plIcon'        => 'geticon.php?context=applications&icon=dhcp&size=48',
-      'plSection'     => 'systems',
+      'plSection'     => array('systems' => array('name' => _('Systems'), 'priority' => 10)),
       'plPriority'    => 2,
       'plManages'     => array('dhcpConfiguration'),
 
