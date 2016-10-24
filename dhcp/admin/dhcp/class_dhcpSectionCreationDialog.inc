@@ -19,7 +19,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-
 class DhcpSectionCreationDialog extends GenericDialog
 {
   protected $post_cancel = 'cancel_section';
@@ -28,6 +27,7 @@ class DhcpSectionCreationDialog extends GenericDialog
   protected $parentdn;
   protected $plugin;
   protected $initialObjectValue;
+  protected $selectAttribute;
 
   function __construct($simplePlugin, &$attribute, $classtype, $parentdn, $editingValue = NULL)
   {
@@ -38,21 +38,35 @@ class DhcpSectionCreationDialog extends GenericDialog
     if ($editingValue === NULL) {
       $this->dialog = FALSE;
     } else {
-      $this->dialog = new $classtype($this->plugin, $editingValue);
+      $this->dialog = new $classtype($this->plugin, $editingValue['dn'], $editingValue);
     }
     $this->initialObjectValue = $editingValue;
+
+    $sections = dhcpConfiguration::$sectionMap[$this->classtype];
+    $t_sections = array();
+    foreach ($sections as $section) {
+      $t_sections[$section] = $this->plugin->types[$section];
+    }
+    asort($t_sections);
+    $this->selectAttribute = new SelectAttribute(
+      _('Section'), _('Choose section type to create'),
+      'dhcpSectionType', TRUE,
+      array_keys($t_sections), '', array_values($t_sections)
+    );
   }
 
   function execute ()
   {
     if ($this->dialog !== FALSE) {
-      if (isset($_POST['cancel_dhcp'])) {
+      if (isset($_POST['dhcp_cancel'])) {
         return $this->handle_cancel();
       }
-      if (isset($_POST['save_dhcp'])) {
+      if (isset($_POST['dhcp_save'])) {
         return $this->save_dhcp();
       }
     } else {
+      $this->selectAttribute->loadPostValue();
+      $this->selectAttribute->applyPostValue();
       if (isset($_POST[$this->post_cancel])) {
         return $this->handle_cancel();
       }
@@ -70,26 +84,34 @@ class DhcpSectionCreationDialog extends GenericDialog
       return $this->dialog->execute();
     }
     $smarty   = get_smarty();
-    $display  = '';
 
-    $sections = serviceDHCP::$sectionMap[$this->classtype];
-    $t_sections = array();
-    foreach ($sections as $section) {
-      $t_sections[$section] = $this->plugin->types[$section];
-    }
-    asort($t_sections);
-    $ui = get_userinfo();
-    $smarty->assign('sections', $t_sections);
-    $display .= $smarty->fetch(get_template_path('dhcpNewSection.tpl', TRUE, dirname(__FILE__)));
-    return $display;
+    $smarty->assign('section',        _('Create new DHCP section'));
+    $smarty->assign('sectionId',      'dhcpCreation');
+    $smarty->assign('sectionClasses', '');
+    $attributes = array();
+    $smarty->assign($this->selectAttribute->getAcl().'ACL', 'rwcdm');
+    $this->selectAttribute->renderAttribute($attributes, FALSE);
+    $smarty->assign('attributes', $attributes);
+    $sections = array(
+      'dhcp' => $smarty->fetch(get_template_path('simpleplugin_section.tpl'))
+    );
+    $smarty->assign('sections', $sections);
+    $smarty->assign('hiddenPostedInput', get_class($this).'_posted');
+    $smarty->assign('focusedField', $this->selectAttribute->getLdapName());
+
+    return $smarty->fetch(get_template_path('simpleplugin.tpl'))."\n".
+    '<p class="plugbottom">'."\n".
+    '  <input type="submit" name="'.$this->post_finish.'" value="'.msgPool::addButton().'"/>&nbsp;'."\n".
+    '  <input type="submit" name="'.$this->post_cancel.'" value="'.msgPool::cancelButton().'"/>'."\n".
+    '</p>';
   }
 
   function handle_finish ()
   {
-    $section = $_POST['section'];
+    $section = $this->selectAttribute->getValue();
 
-    if (isset(serviceDHCP::$sectionMap[$section])) {
-      $this->dialog   = new $section($this->plugin, $this->parentdn);
+    if (isset(dhcpConfiguration::$sectionMap[$section])) {
+      $this->dialog   = new $section($this->plugin, 'new', $this->parentdn);
       $this->parentdn = FALSE;
       return $this->dialog->execute();
     } else {
@@ -116,7 +138,7 @@ class DhcpSectionCreationDialog extends GenericDialog
 
     $dn     = $this->dialog->dn;
     $data   = $this->dialog->save();
-    $this->attribute->editEnded($data['dn'], $data, ($this->parentdn === FALSE ? FALSE : $dn));
+    $this->attribute->editEnded($data['dn'], $data, ($this->parentdn === FALSE ? FALSE : $this->parentdn));
     return FALSE;
   }
 }
