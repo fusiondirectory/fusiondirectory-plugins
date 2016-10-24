@@ -524,7 +524,7 @@ class dhcpConfiguration extends simplePlugin
     return TRUE;
   }
 
-  protected function ldap_save()
+  protected function ldap_save($cleanup = TRUE)
   {
     global $config;
     /* Save dhcp settings */
@@ -605,7 +605,9 @@ class dhcpConfiguration extends simplePlugin
       }
     }
 
+    msg_dialog::displayChecks($errors);
+
     //~ parent::ldap_save();
-    return $errors;
+    return !empty($errors);
   }
 }

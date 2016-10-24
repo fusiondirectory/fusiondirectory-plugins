@@ -183,8 +183,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       }
       $dhcpTabs = objects::open($configDn, 'dhcpConfiguration');
       $dhcpTabs->getBaseObject()->attributesAccess['dhcpSections']->delHost($value[3]);
-      $errors = $dhcpTabs->save();
-      msg_dialog::displayChecks($errors);
+      $dhcpTabs->save();
     }
     foreach ($values as $value) {
       $configDn = $value[0];
@@ -195,8 +194,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       }
       $dhcpTabs = objects::open($configDn, 'dhcpConfiguration');
       $dhcpTabs->getBaseObject()->attributesAccess['dhcpSections']->addHost($value[0], $cn, $value[1], $value[2]);
-      $errors = $dhcpTabs->save();
-      msg_dialog::displayChecks($errors);
+      $dhcpTabs->save();
     }
     /* TODO
      * ? handle modification somehow (if we want to keep statements when changing IP, not sure about this)
@@ -279,7 +277,7 @@ class dhcpSystem extends simplePlugin
     return $nodes;
   }
 
-  function ldap_save()
+  function ldap_save($cleanup = TRUE)
   {
     global $config;
 
