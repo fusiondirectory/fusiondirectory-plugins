@@ -29,7 +29,7 @@ class ppolicyAccount extends simplePlugin
       'plShortName'     => _('Password policy'),
       'plDescription'   => _('Edit user\'s password policy'),
       'plSelfModify'    => TRUE,
-      'plObjectType'    => array('user'),
+      'plObjectType'    => array('user', 'simpleSecurityObject'),
       'plIcon'          => 'geticon.php?context=applications&icon=ppolicy&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=ppolicy&size=16',
 
