@@ -39,7 +39,7 @@ class dhcpHost extends dhcpPlugin
             ),
             new StringAttribute (
               '', _('The client hardware address'),
-              'dhcpHWAddress_address', FALSE
+              'dhcpHWAddress_address', TRUE
             ),
           ),
           '/^([^ ]+) ([^ ]+)$/',
