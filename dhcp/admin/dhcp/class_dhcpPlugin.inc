@@ -122,9 +122,11 @@ class dhcpPlugin extends simplePlugin
 
   function getOption($option)
   {
-    foreach ($this->dhcpOption as $line) {
-      if (preg_match('/^'.preg_quote($option, '/').' (.*)$/', $line, $m)) {
-        return $m[1];
+    if (isset($this->dhcpOption)) {
+      foreach ($this->dhcpOption as $line) {
+        if (preg_match('/^'.preg_quote($option, '/').' (.*)$/', $line, $m)) {
+          return $m[1];
+        }
       }
     }
     return NULL;
@@ -132,9 +134,11 @@ class dhcpPlugin extends simplePlugin
 
   function getStatement($statement)
   {
-    foreach ($this->dhcpStatements as $line) {
-      if (preg_match('/^'.preg_quote($statement, '/').' (.*)$/', $line, $m)) {
-        return $m[1];
+    if (isset($this->dhcpStatements)) {
+      foreach ($this->dhcpStatements as $line) {
+        if (preg_match('/^'.preg_quote($statement, '/').' (.*)$/', $line, $m)) {
+          return $m[1];
+        }
       }
     }
     return NULL;
