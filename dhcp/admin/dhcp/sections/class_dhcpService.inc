@@ -28,7 +28,7 @@ class dhcpService extends dhcpPlugin
     $attributesInfo['main']['attrs'][2]->setDefaultValue(
       array(
         'default-lease-time 600',
-        'max-lease-time 1700',
+        'max-lease-time 7200',
         'authoritative',
         'ddns-update-style none'
       )

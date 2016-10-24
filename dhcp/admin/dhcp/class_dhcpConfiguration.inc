@@ -397,7 +397,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
       //~ 'dhcpPrimaryDN'   => array($this->plugin->dn),
       'dhcpStatements'  => array(
         'default-lease-time 600',
-        'max-lease-time 1200',
+        'max-lease-time 7200',
         'authoritative',
         'ddns-update-style none'
       ),
