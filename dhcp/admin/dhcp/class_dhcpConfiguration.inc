@@ -547,6 +547,7 @@ class dhcpConfiguration extends simplePlugin
   protected function ldap_save($cleanup = TRUE)
   {
     global $config;
+    $this->ldap_error = 'Success';
     /* Save dhcp settings */
     $ldap   = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
@@ -566,6 +567,7 @@ class dhcpConfiguration extends simplePlugin
           if ($ldap->cat($dn)) {
             $ldap->rmdir_recursive($dn);
             if (!$ldap->success()) {
+              $this->ldap_error = $ldap->get_error();
               $errors[] = msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class());
             }
           }
@@ -618,11 +620,13 @@ class dhcpConfiguration extends simplePlugin
         if ($modify) {
           $ldap->modify($attrs);
           if (!$ldap->success()) {
+            $this->ldap_error = $ldap->get_error();
             $errors[] = msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class());
           }
         } else {
           $ldap->add($attrs);
           if (!$ldap->success()) {
+            $this->ldap_error = $ldap->get_error();
             $errors[] = msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class());
           }
         }
