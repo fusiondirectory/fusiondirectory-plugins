@@ -107,7 +107,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
         'class' => 'center',
       )
     ).'&nbsp;'.$img;
-    $width += 18;
+    $width += 20;
 
     return array ($img, $width);
   }
