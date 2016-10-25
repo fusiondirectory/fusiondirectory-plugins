@@ -240,6 +240,11 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
+  function getGlobalDn ()
+  {
+    return $this->value[0][0];
+  }
+
   /* Subfonction of reload function */
   protected function reload_readItemFromLDAP(&$ldap, $attrs, &$final, $erase)
   {
@@ -517,6 +522,11 @@ class dhcpConfiguration extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['dhcpSections']->setHeight(400);
+  }
+
+  function compute_dn()
+  {
+    return $this->attributesAccess['dhcpSections']->getGlobalDn();
   }
 
   protected function shouldSave()
