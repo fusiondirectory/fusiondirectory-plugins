@@ -529,6 +529,7 @@ class dhcpConfiguration extends simplePlugin
     global $config;
     /* Save dhcp settings */
     $ldap   = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
     $ldap->create_missing_trees(preg_replace('/^[^,]+,/', '', $this->dn));
     $cache  = $this->attributesAccess['dhcpSections']->getCache();
     $errors = array();
