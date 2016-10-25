@@ -207,7 +207,9 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
   /* Used by dhcpHost */
   function delHost($dn)
   {
-    $this->dhcpObjectCache[$dn] = array();
+    if (($dn != '') && ($dn != 'new')) {
+      $this->dhcpObjectCache[$dn] = array();
+    }
   }
 
   protected function loadAttrValue ($attrs)
@@ -240,9 +242,9 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  function getGlobalDn ()
+  function getGlobalCn ()
   {
-    return $this->value[0][0];
+    return $this->dhcpObjectCache[$this->value[0][0]]['cn'][0];
   }
 
   /* Subfonction of reload function */
@@ -522,11 +524,19 @@ class dhcpConfiguration extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['dhcpSections']->setHeight(400);
+    $this->cn = $this->attributesAccess['dhcpSections']->getGlobalCn();
   }
 
-  function compute_dn()
+  function save_object()
   {
-    return $this->attributesAccess['dhcpSections']->getGlobalDn();
+    parent::save_object();
+    $this->cn = $this->attributesAccess['dhcpSections']->getGlobalCn();
+  }
+
+  function save()
+  {
+    $this->cn = $this->attributesAccess['dhcpSections']->getGlobalCn();
+    return parent::save();
   }
 
   protected function shouldSave()
@@ -543,25 +553,28 @@ class dhcpConfiguration extends simplePlugin
     $ldap->create_missing_trees(preg_replace('/^[^,]+,/', '', $this->dn));
     $cache  = $this->attributesAccess['dhcpSections']->getCache();
     $errors = array();
+    $new    = ($this->orig_dn == 'new');
     foreach ($cache as $dn => $data) {
-      if ($this->dn != $this->orig_dn) {
+      if (($this->dn != $this->orig_dn) && !$new) {
         $dn = preg_replace('/'.preg_quote($this->orig_dn, '/').'$/i', $this->dn, $dn);
       }
 
       /* Remove entry? */
       if (count($data) == 0) {
-        /* Check if exists, then remove... */
-        if ($ldap->cat($dn)) {
-          $ldap->rmdir_recursive($dn);
-          if (!$ldap->success()) {
-            $errors[] = msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class());
+        if (!$new) {
+          /* Check if exists, then remove... */
+          if ($ldap->cat($dn)) {
+            $ldap->rmdir_recursive($dn);
+            if (!$ldap->success()) {
+              $errors[] = msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class());
+            }
           }
         }
         continue;
       }
 
       /* Modify existing entry? */
-      if (isset($data['MODIFIED']) || $this->orig_dn != $this->dn) {
+      if (isset($data['MODIFIED']) || ($this->orig_dn != $this->dn)) {
         if ($ldap->cat($dn)) {
           $modify = TRUE;
         } else {
