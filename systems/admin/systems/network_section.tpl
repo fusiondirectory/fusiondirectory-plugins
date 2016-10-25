@@ -1,9 +1,4 @@
-<style type="text/css">
-  div.plugin_section#{$sectionId} > div > h2 {literal}{
-    display:none;
-  }{/literal}
-</style>
-<div id="{$sectionId}" class="plugin_section">
+<div id="{$sectionId}" class="plugin-section">
   <span class="legend">
     {$section}
   </span>
