@@ -254,6 +254,12 @@ class dhcpSystem extends simplePlugin
     return (count($this->dhcpHosts) > 0);
   }
 
+  function save_object()
+  {
+    parent::save_object();
+    $this->is_account = $this->is_this_account($this->attrs);
+  }
+
   static function getDhcpParentNodes()
   {
     global $config;
