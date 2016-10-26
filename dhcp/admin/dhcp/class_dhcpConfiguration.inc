@@ -454,7 +454,7 @@ class dhcpConfiguration extends simplePlugin
   static $sectionMap = array(
     'dhcpService'       => array(
       'dhcpSharedNetwork','dhcpSubnet','dhcpGroup',
-      'dhcpHost','dhcpClass','dhcpTSigKey','dhcpDnsZone'
+      'dhcpHost','dhcpClass','dhcpTSigKey','dhcpDnsZone','dhcpFailOverPeer'
     ),
     'dhcpClass'         => array('dhcpSubClass'),
     'dhcpSubClass'      => array(),
@@ -463,9 +463,9 @@ class dhcpConfiguration extends simplePlugin
     'dhcpPool'          => array(),
     'dhcpSubnet'        => array(
       'dhcpPool','dhcpGroup',
-      'dhcpHost','dhcpClass','dhcpTSigKey','dhcpDnsZone'
+      'dhcpHost','dhcpClass','dhcpTSigKey','dhcpDnsZone','dhcpFailOverPeer'
     ),
-    'dhcpSharedNetwork' => array('dhcpSubnet', 'dhcpPool','dhcpTSigKey','dhcpDnsZone'),
+    'dhcpSharedNetwork' => array('dhcpSubnet', 'dhcpPool','dhcpTSigKey','dhcpDnsZone','dhcpFailOverPeer'),
     'dhcpTSigKey'       => array(),
     'dhcpDnsZone'       => array()
   );
