@@ -466,6 +466,7 @@ class dhcpConfiguration extends simplePlugin
       'dhcpHost','dhcpClass','dhcpTSigKey','dhcpDnsZone','dhcpFailOverPeer'
     ),
     'dhcpSharedNetwork' => array('dhcpSubnet', 'dhcpPool','dhcpTSigKey','dhcpDnsZone','dhcpFailOverPeer'),
+    'dhcpFailOverPeer'  => array(),
     'dhcpTSigKey'       => array(),
     'dhcpDnsZone'       => array()
   );
