@@ -98,6 +98,12 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
   {
     $id = $this->getHtmlId();
     list ($img, $width) = parent::genRowIcons($key, $value);
+
+    if ($key == 0) {
+      /* Remove delete button on first row */
+      $img = preg_replace('/<input[^>]+>&nbsp;$/', '', $img);
+    }
+
     $img = $this->renderInputField(
       'image', $id.'_insertDHCP_'.$key,
       array(
@@ -106,7 +112,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
         'alt'   => _('Insert new DHCP section'),
         'class' => 'center',
       )
-    ).'&nbsp;'.$img;
+    ).$img;
     $width += 20;
 
     return array ($img, $width);
