@@ -33,6 +33,7 @@ class dhcpService extends dhcpPlugin
         'ddns-update-style none'
       )
     );
+    $attributesInfo['main']['attrs'][] = new HiddenAttribute('dhcpPrimaryDN');
     return $attributesInfo;
   }
 }

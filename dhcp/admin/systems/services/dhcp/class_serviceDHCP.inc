@@ -65,8 +65,26 @@ class serviceDHCP extends simpleService
     $attributesInfo['main']['attrs'][0]->attribute->setChoices(array_keys($services), array_values($services));
     parent::__construct($dn, $parent, $attributesInfo);
 
-    // TODO: On save fill dhcpPrimaryDn on the dhcpService objects
-    // Also add a foreign key
+    // TODO: add a foreign key
+  }
+
+  function ldap_save()
+  {
+    $errors = parent::ldap_save();
+
+    if (!empty($errors)) {
+      return $errors;
+    }
+
+    $dhcpServiceDN = $this->dhcpServiceDN;
+    foreach ($dhcpServiceDN as $dn) {
+      $tabObject = objects::open($dn, 'dhcpConfiguration');
+      $tabObject->getBaseObject()->setPrimaryServer($this->dn);
+      $errors = $tabObject->save();
+      if (!empty($errors)) {
+        return $errors;
+      }
+    }
   }
 }
 ?>
