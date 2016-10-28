@@ -255,8 +255,8 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
 
   public function setPrimaryDn ($dn)
   {
-    $this->value[0]['dhcpPrimaryDN']  = array($dn);
-    $this->value[0]['MODIFIED']       = TRUE;
+    $this->dhcpObjectCache[$this->value[0][0]]['dhcpPrimaryDN']  = array($dn);
+    $this->dhcpObjectCache[$this->value[0][0]]['MODIFIED']       = TRUE;
   }
 
   /* Subfonction of reload function */
@@ -603,7 +603,7 @@ class dhcpConfiguration extends simplePlugin
             continue;
           }
 
-          if (in_array($attribute, array('dhcpPrimaryDN','dhcpSecondaryDN','dhcpServerDN','dhcpFailOverPeerDN'))) {
+          if (in_array($attribute, array('dhcpServerDN','dhcpFailOverPeerDN'))) {
             foreach ($values as $v_key => $value) {
               $values[$v_key] = preg_replace('/'.preg_quote($this->orig_dn, '/').'$/i', $this->dn, $value);
             }
