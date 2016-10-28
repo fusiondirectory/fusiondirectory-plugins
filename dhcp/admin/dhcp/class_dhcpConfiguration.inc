@@ -253,6 +253,12 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     return $this->dhcpObjectCache[$this->value[0][0]]['cn'][0];
   }
 
+  public function setPrimaryDn ($dn)
+  {
+    $this->value[0]['dhcpPrimaryDN']  = array($dn);
+    $this->value[0]['MODIFIED']       = TRUE;
+  }
+
   /* Subfonction of reload function */
   protected function reload_readItemFromLDAP(&$ldap, $attrs, &$final, $erase)
   {
@@ -644,5 +650,10 @@ class dhcpConfiguration extends simplePlugin
 
     //~ parent::ldap_save();
     return !empty($errors);
+  }
+
+  public function setPrimaryServer($dn)
+  {
+    $this->attributesAccess['dhcpSections']->setPrimaryDn($dn);
   }
 }
