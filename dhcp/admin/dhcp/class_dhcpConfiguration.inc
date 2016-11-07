@@ -54,7 +54,6 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
       return array('not in cache',$dn,'');
     }
 
-    //~ $link = "<a href='?plug=".$_GET['plug']."&act=edit&id=".$key."'>".$value[1]."</a>";
     $link = $value[1];
 
     $objtype = $this->objectType($dn);
@@ -648,7 +647,6 @@ class dhcpConfiguration extends simplePlugin
 
     msg_dialog::displayChecks($errors);
 
-    //~ parent::ldap_save();
     return !empty($errors);
   }
 
