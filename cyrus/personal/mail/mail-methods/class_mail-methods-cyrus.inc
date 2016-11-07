@@ -425,7 +425,8 @@ class mailMethodCyrus extends mailMethod
     $acls = imap_getacl ($this->imap_handle, $this->account_id);
     foreach ($acls as $user => $acl) {
       if ($user == "anyone") {
-        $user = "__anyone__"; // Map to internal placeholder
+      /* Map to internal placeholder */
+        $user = "__anyone__";
       }
       $folder_acls[$user] = $acl;
     }

@@ -268,20 +268,24 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
       return;
     }
 
+    /* If there are no packages, no need to do anything */
     if (empty($this->value)) {
-      return; // If there are no packages, no need to do anything
+      return;
     }
 
     $attrs = array('distribution','package','version','section','description','timestamp','hastemplate');
 
-    $packages = array_diff_key($this->value, $this->buffer); // packages names that are not already in the buffer
+    /* packages names that are not already in the buffer */
+    $packages = array_diff_key($this->value, $this->buffer);
 
     $release  = $this->plugin->FAIdebianRelease;
     $q        = new supportDaemon();
     $customs  = serviceRepository::getCustomReleases($release);
     for ($i = -1; (count($packages) > 0) && ($i < count($customs)); $i++) {
-      if ($i >= 0) { // if release has been handled
-        $release = $customs[$i]; // take the next custom
+      /* if release has been handled */
+      if ($i >= 0) {
+        /* take the next custom */
+        $release = $customs[$i];
       }
       $ret = $q->FAI_get_packages($release, $attrs, array_keys($packages), -1, -1, TRUE);
       if ($q->is_error()) {
@@ -293,7 +297,8 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
             $attr['DESCRIPTION'] = '';
           }
           $this->buffer[$attr['PACKAGE']] = $attr;
-          unset($packages[$attr['PACKAGE']]); // remove found packages
+           /* remove found packages */
+          unset($packages[$attr['PACKAGE']]);
           if ($i >= 0) {
             $this->FAIcustomRelease[$release] = $release;
           }

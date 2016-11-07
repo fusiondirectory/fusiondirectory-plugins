@@ -144,8 +144,10 @@ class serviceKolab extends simpleService
             _('Quota occupation limit before warning users (%)'),
             _('Warn users when using more than X% of their mail quota'),
             'cyrus-quotawarn', FALSE,
-            FALSE, FALSE, // min and max
-            80 // default value
+            /* min and max */
+            FALSE, FALSE,
+            /* default value */
+            80
           )
         )
       ),
@@ -161,8 +163,10 @@ class serviceKolab extends simpleService
             _('Number of days to include when creating free/busy lists'),
             _('Include data from X days in the past when creating free/busy lists'),
             'kolabFreeBusyFuture', FALSE,
-            FALSE, FALSE, // min and max
-            1 // default value
+            /* min and max */
+            FALSE, FALSE,
+            /* default value */
+            1
           )
         )
       ),
