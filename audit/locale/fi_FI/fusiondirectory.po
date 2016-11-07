@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-09-01 11:49+0000\n"
 "Last-Translator: Dina Solveig Jalkanen\n"
 "Language-Team: Finnish (Finland) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fi_FI/)\n"
@@ -18,6 +18,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fi_FI\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: config/audit/class_auditConfig.inc:28
+msgid "Audit configuration"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:29
+msgid "FusionDirectory audit plugin configuration"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:41
+#: admin/audit/class_auditManagement.inc:40
+msgid "Audit"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:44
+msgid "Audit RDN"
+msgstr "Audit RDN"
+
+#: config/audit/class_auditConfig.inc:44
+msgid "Branch in which audit events will be stored"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:50
+msgid "Actions to audit"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:50
+msgid "Which actions should be stored in LDAP audit log"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:57
+msgid "Days to keep"
+msgstr "Säilytä päivät"
+
+#: config/audit/class_auditConfig.inc:57
+msgid "Number of days of audit to keep in the LDAP when cleaning"
+msgstr ""
 
 #: admin/audit/class_auditEvent.inc:53 admin/audit/class_auditEvent.inc:56
 msgid "Audit event"
@@ -86,11 +123,6 @@ msgstr "Lopputulos"
 msgid "Result or error"
 msgstr "Lopputulos tai virhe"
 
-#: admin/audit/class_auditManagement.inc:40
-#: config/audit/class_auditConfig.inc:41
-msgid "Audit"
-msgstr ""
-
 #: admin/audit/class_auditManagement.inc:41
 msgid "Audit events display"
 msgstr ""
@@ -102,35 +134,3 @@ msgstr "Tyyppi"
 #: admin/audit/class_auditManagement.inc:97
 msgid "Target"
 msgstr "Määränpää"
-
-#: config/audit/class_auditConfig.inc:28
-msgid "Audit configuration"
-msgstr ""
-
-#: config/audit/class_auditConfig.inc:29
-msgid "FusionDirectory audit plugin configuration"
-msgstr ""
-
-#: config/audit/class_auditConfig.inc:44
-msgid "Audit RDN"
-msgstr "Audit RDN"
-
-#: config/audit/class_auditConfig.inc:44
-msgid "Branch in which audit events will be stored"
-msgstr ""
-
-#: config/audit/class_auditConfig.inc:50
-msgid "Actions to audit"
-msgstr ""
-
-#: config/audit/class_auditConfig.inc:50
-msgid "Which actions should be stored in LDAP audit log"
-msgstr ""
-
-#: config/audit/class_auditConfig.inc:57
-msgid "Days to keep"
-msgstr "Säilytä päivät"
-
-#: config/audit/class_auditConfig.inc:57
-msgid "Number of days of audit to keep in the LDAP when cleaning"
-msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-01-22 16:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Dutch (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/nl/)\n"
@@ -17,6 +17,81 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: config/alias/class_aliasConfig.inc:28
+msgid "Alias configuration"
+msgstr "Alias configuratie"
+
+#: config/alias/class_aliasConfig.inc:29
+msgid "FusionDirectory alias plugin configuration"
+msgstr "FusdionDirectory alias plugin configuratie"
+
+#: config/alias/class_aliasConfig.inc:42
+msgid "Alias"
+msgstr "Alias"
+
+#: config/alias/class_aliasConfig.inc:45
+msgid "Alias RDN"
+msgstr "Alias RDN"
+
+#: config/alias/class_aliasConfig.inc:45
+msgid "Branch in which aliases will be stored"
+msgstr "Branch in welke de aliases zullen worden opgeslagen"
+
+#: admin/alias/class_mailAliasRedirection.inc:31
+#: admin/alias/class_mailAliasRedirection.inc:32
+#: admin/alias/class_mailAliasRedirection.inc:35
+msgid "Temporary mail redirection"
+msgstr "Tijdelijke mail redirectie"
+
+#: admin/alias/class_mailAliasRedirection.inc:52
+msgid "Mail redirection"
+msgstr "Mail redirectie"
+
+#: admin/alias/class_mailAliasRedirection.inc:55
+#: admin/alias/class_mailAliasDistribution.inc:56
+msgid "Name"
+msgstr "Naam"
+
+#: admin/alias/class_mailAliasRedirection.inc:55
+msgid "Name to identify this redirection"
+msgstr "Naam om deze redirectie te identificeren"
+
+#: admin/alias/class_mailAliasRedirection.inc:57
+#: admin/alias/class_mailAliasDistribution.inc:58
+msgid "Description"
+msgstr "Omschrijving"
+
+#: admin/alias/class_mailAliasRedirection.inc:57
+msgid "Description of this redirection"
+msgstr "Beschrijving van de redirectie"
+
+#: admin/alias/class_mailAliasRedirection.inc:62
+msgid "Redirect from"
+msgstr "Omleiden van"
+
+#: admin/alias/class_mailAliasRedirection.inc:62
+msgid "Mail address from which you want to redirect"
+msgstr "Mail adres dat je wilt omleiden"
+
+#: admin/alias/class_mailAliasRedirection.inc:68
+msgid "Redirect to"
+msgstr "Doorsturen naar"
+
+#: admin/alias/class_mailAliasRedirection.inc:68
+msgid "Destination of this redirection"
+msgstr "Bestemming van deze omleiding"
+
+#: admin/alias/class_mailAliasRedirection.inc:73
+#: admin/alias/class_mailAliasDistribution.inc:77
+msgid "Expiration date"
+msgstr "Vervaldatum"
+
+#: admin/alias/class_mailAliasRedirection.inc:73
+msgid ""
+"Date after which the redirection should be deleted. Leave empty for no "
+"deletion."
+msgstr "Datum waarna de omleiding verwijderd moet worden. Laat leeg voor niet te verwijderen."
 
 #: admin/alias/class_mailAliasDistribution.inc:31
 #: admin/alias/class_mailAliasDistribution.inc:32
@@ -29,18 +104,8 @@ msgid "Mail distribution"
 msgstr "Mail distributie"
 
 #: admin/alias/class_mailAliasDistribution.inc:56
-#: admin/alias/class_mailAliasRedirection.inc:55
-msgid "Name"
-msgstr "Naam"
-
-#: admin/alias/class_mailAliasDistribution.inc:56
 msgid "Name to identify this alias"
 msgstr "Naam om deze alias te identificeren"
-
-#: admin/alias/class_mailAliasDistribution.inc:58
-#: admin/alias/class_mailAliasRedirection.inc:57
-msgid "Description"
-msgstr "Omschrijving"
 
 #: admin/alias/class_mailAliasDistribution.inc:58
 msgid "Description of this alias"
@@ -67,54 +132,9 @@ msgid "Mail server for this alias"
 msgstr "Mail server voor deze alias"
 
 #: admin/alias/class_mailAliasDistribution.inc:77
-#: admin/alias/class_mailAliasRedirection.inc:73
-msgid "Expiration date"
-msgstr "Vervaldatum"
-
-#: admin/alias/class_mailAliasDistribution.inc:77
 msgid ""
 "Date after which the alias should be deleted. Leave empty for no deletion."
 msgstr "Datum waarna de alias verwijderd zou moeten worden. Laat leeg indien de alias niet verwijderd moet worden."
-
-#: admin/alias/class_mailAliasRedirection.inc:31
-#: admin/alias/class_mailAliasRedirection.inc:32
-#: admin/alias/class_mailAliasRedirection.inc:35
-msgid "Temporary mail redirection"
-msgstr "Tijdelijke mail redirectie"
-
-#: admin/alias/class_mailAliasRedirection.inc:52
-msgid "Mail redirection"
-msgstr "Mail redirectie"
-
-#: admin/alias/class_mailAliasRedirection.inc:55
-msgid "Name to identify this redirection"
-msgstr "Naam om deze redirectie te identificeren"
-
-#: admin/alias/class_mailAliasRedirection.inc:57
-msgid "Description of this redirection"
-msgstr "Beschrijving van de redirectie"
-
-#: admin/alias/class_mailAliasRedirection.inc:62
-msgid "Redirect from"
-msgstr "Omleiden van"
-
-#: admin/alias/class_mailAliasRedirection.inc:62
-msgid "Mail address from which you want to redirect"
-msgstr "Mail adres dat je wilt omleiden"
-
-#: admin/alias/class_mailAliasRedirection.inc:68
-msgid "Redirect to"
-msgstr "Doorsturen naar"
-
-#: admin/alias/class_mailAliasRedirection.inc:68
-msgid "Destination of this redirection"
-msgstr "Bestemming van deze omleiding"
-
-#: admin/alias/class_mailAliasRedirection.inc:73
-msgid ""
-"Date after which the redirection should be deleted. Leave empty for no "
-"deletion."
-msgstr "Datum waarna de omleiding verwijderd moet worden. Laat leeg voor niet te verwijderen."
 
 #: admin/alias/class_aliasManagement.inc:33
 msgid "Aliases"
@@ -127,23 +147,3 @@ msgstr "Alias beheer"
 #: admin/alias/class_aliasManagement.inc:38
 msgid "Mail aliases"
 msgstr "Email aliases"
-
-#: config/alias/class_aliasConfig.inc:28
-msgid "Alias configuration"
-msgstr "Alias configuratie"
-
-#: config/alias/class_aliasConfig.inc:29
-msgid "FusionDirectory alias plugin configuration"
-msgstr "FusdionDirectory alias plugin configuratie"
-
-#: config/alias/class_aliasConfig.inc:42
-msgid "Alias"
-msgstr "Alias"
-
-#: config/alias/class_aliasConfig.inc:45
-msgid "Alias RDN"
-msgstr "Alias RDN"
-
-#: config/alias/class_aliasConfig.inc:45
-msgid "Branch in which aliases will be stored"
-msgstr "Branch in welke de aliases zullen worden opgeslagen"

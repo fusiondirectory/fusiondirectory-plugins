@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-05-12 13:36+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
@@ -17,6 +17,161 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: personal/kolab2/class_kolabAccount.inc:82
+msgid "Kolab 2"
+msgstr "Kolab 2"
+
+#: personal/kolab2/class_kolabAccount.inc:83
+msgid "Kolab 2 account settings"
+msgstr "Ρυθμίσεις λογαριασμού Kolab 2 "
+
+#: personal/kolab2/class_kolabAccount.inc:100
+msgid "Kolab 2 account"
+msgstr "Λογαριασμός Kolab 2 "
+
+#: personal/kolab2/class_kolabAccount.inc:104
+msgid "Delegations"
+msgstr "Υποψηφιότητες"
+
+#: personal/kolab2/class_kolabAccount.inc:112
+msgid "Mail size"
+msgstr "Μέγεθος αλληλογραφίας"
+
+#: personal/kolab2/class_kolabAccount.inc:115
+msgid "No mail size restriction for this account"
+msgstr "Χωρίς περιορισμό μεγέθους αλληλογραφίας για το λογαριασμό"
+
+#: personal/kolab2/class_kolabAccount.inc:122
+msgid "Free Busy information"
+msgstr "Πληροφορία διαθεσιμότητας"
+
+#: personal/kolab2/class_kolabAccount.inc:125
+msgid "URL"
+msgstr "URL"
+
+#: personal/kolab2/class_kolabAccount.inc:130
+msgid "Future"
+msgstr "Μελλοντικές"
+
+#: personal/kolab2/class_kolabAccount.inc:130
+msgid "days"
+msgstr "ημέρες"
+
+#: personal/kolab2/class_kolabAccount.inc:138
+#: personal/kolab2/class_kolabAccount.inc:141
+#: personal/kolab2/class_kolabAccount.inc:149
+#: personal/kolab2/class_kolabAccount.inc:159
+msgid "Invitation policy"
+msgstr "Πολιτική προσκλήσεων"
+
+#: personal/kolab2/class_kolabAccount.inc:144
+msgid "Default policy"
+msgstr "Προεπιλεγμένη πολιτική"
+
+#: personal/kolab2/class_kolabAccount.inc:144
+msgid "Default invitation policy"
+msgstr "Προεπιλεγμένη πολιτική πρόσκλησης"
+
+#: personal/kolab2/class_kolabAccount.inc:146
+#: personal/kolab2/class_kolabAccount.inc:155
+msgid "Manual"
+msgstr "Χειροκίνητα"
+
+#: personal/kolab2/class_kolabAccount.inc:146
+#: personal/kolab2/class_kolabAccount.inc:155
+msgid "Always accept"
+msgstr "Πάντα αποδοχή"
+
+#: personal/kolab2/class_kolabAccount.inc:146
+#: personal/kolab2/class_kolabAccount.inc:155
+msgid "Always reject"
+msgstr "Πάντα απόρριψη"
+
+#: personal/kolab2/class_kolabAccount.inc:146
+#: personal/kolab2/class_kolabAccount.inc:155
+msgid "Reject if conflicts"
+msgstr "Απόρριψη αν υπάρχει σύγκρουση"
+
+#: personal/kolab2/class_kolabAccount.inc:146
+#: personal/kolab2/class_kolabAccount.inc:155
+msgid "Manual if conflicts"
+msgstr "Χειροκίνητη ρύθμιση αν υπάρχει σύγκρουση"
+
+#: personal/kolab2/class_kolabAccount.inc:152
+msgid "mail address"
+msgstr "διεύθυνση e-mail "
+
+#: personal/kolab2/class_kolabAccount.inc:153
+msgid "policy for this mail address"
+msgstr "πολιτική για αυτήν την διεύθυνση e-mail "
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:146
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:154
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:155
+msgid "Unspecified"
+msgstr "Ακαθόριστο"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:147
+msgid "Mails"
+msgstr "Αλληλογραφία"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:148
+msgid "Tasks"
+msgstr "Εργασίες"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:149
+msgid "Journals"
+msgstr "Δημοσιεύσεις"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:150
+msgid "Calendar"
+msgstr "Ημερολόγιο"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:151
+msgid "Contacts"
+msgstr "Επαφές"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:152
+msgid "Notes"
+msgstr "Σημειώσεις"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:156
+msgid "Inbox"
+msgstr "Εισερχόμενα"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:157
+msgid "Drafts"
+msgstr "Πρόχειρα"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:158
+msgid "Sent"
+msgstr "Απεσταλμένα"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:159
+msgid "SPAM"
+msgstr ""
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:161
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:162
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:163
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:164
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:165
+msgid "Default"
+msgstr "Προεπιλογή"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:179
+msgid ""
+"Mail settings cannot be removed while there are delegations configured!"
+msgstr ""
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:272
+msgid "Waiting for kolab to remove mail properties..."
+msgstr "Αναμονή για απομάκρυνση ιδιοτήτων αλληογραφίας από το kolab"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:275
+msgid "Please remove the mail settings first!"
+msgstr ""
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:29
 msgid "Enable MX lookup for relayhost"
@@ -206,158 +361,3 @@ msgstr "όνομα συστήματος"
 #: admin/systems/services/kolab2/class_serviceKolab.inc:295
 msgid "LDAP error"
 msgstr "Σφάλμα LDAP"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:146
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:154
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:155
-msgid "Unspecified"
-msgstr "Ακαθόριστο"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:147
-msgid "Mails"
-msgstr "Αλληλογραφία"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:148
-msgid "Tasks"
-msgstr "Εργασίες"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:149
-msgid "Journals"
-msgstr "Δημοσιεύσεις"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:150
-msgid "Calendar"
-msgstr "Ημερολόγιο"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:151
-msgid "Contacts"
-msgstr "Επαφές"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:152
-msgid "Notes"
-msgstr "Σημειώσεις"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:156
-msgid "Inbox"
-msgstr "Εισερχόμενα"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:157
-msgid "Drafts"
-msgstr "Πρόχειρα"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:158
-msgid "Sent"
-msgstr "Απεσταλμένα"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:159
-msgid "SPAM"
-msgstr ""
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:161
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:162
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:163
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:164
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:165
-msgid "Default"
-msgstr "Προεπιλογή"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:179
-msgid ""
-"Mail settings cannot be removed while there are delegations configured!"
-msgstr ""
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:272
-msgid "Waiting for kolab to remove mail properties..."
-msgstr "Αναμονή για απομάκρυνση ιδιοτήτων αλληογραφίας από το kolab"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:275
-msgid "Please remove the mail settings first!"
-msgstr ""
-
-#: personal/kolab2/class_kolabAccount.inc:82
-msgid "Kolab 2"
-msgstr "Kolab 2"
-
-#: personal/kolab2/class_kolabAccount.inc:83
-msgid "Kolab 2 account settings"
-msgstr "Ρυθμίσεις λογαριασμού Kolab 2 "
-
-#: personal/kolab2/class_kolabAccount.inc:100
-msgid "Kolab 2 account"
-msgstr "Λογαριασμός Kolab 2 "
-
-#: personal/kolab2/class_kolabAccount.inc:104
-msgid "Delegations"
-msgstr "Υποψηφιότητες"
-
-#: personal/kolab2/class_kolabAccount.inc:112
-msgid "Mail size"
-msgstr "Μέγεθος αλληλογραφίας"
-
-#: personal/kolab2/class_kolabAccount.inc:115
-msgid "No mail size restriction for this account"
-msgstr "Χωρίς περιορισμό μεγέθους αλληλογραφίας για το λογαριασμό"
-
-#: personal/kolab2/class_kolabAccount.inc:122
-msgid "Free Busy information"
-msgstr "Πληροφορία διαθεσιμότητας"
-
-#: personal/kolab2/class_kolabAccount.inc:125
-msgid "URL"
-msgstr "URL"
-
-#: personal/kolab2/class_kolabAccount.inc:130
-msgid "Future"
-msgstr "Μελλοντικές"
-
-#: personal/kolab2/class_kolabAccount.inc:130
-msgid "days"
-msgstr "ημέρες"
-
-#: personal/kolab2/class_kolabAccount.inc:138
-#: personal/kolab2/class_kolabAccount.inc:141
-#: personal/kolab2/class_kolabAccount.inc:149
-#: personal/kolab2/class_kolabAccount.inc:159
-msgid "Invitation policy"
-msgstr "Πολιτική προσκλήσεων"
-
-#: personal/kolab2/class_kolabAccount.inc:144
-msgid "Default policy"
-msgstr "Προεπιλεγμένη πολιτική"
-
-#: personal/kolab2/class_kolabAccount.inc:144
-msgid "Default invitation policy"
-msgstr "Προεπιλεγμένη πολιτική πρόσκλησης"
-
-#: personal/kolab2/class_kolabAccount.inc:146
-#: personal/kolab2/class_kolabAccount.inc:155
-msgid "Manual"
-msgstr "Χειροκίνητα"
-
-#: personal/kolab2/class_kolabAccount.inc:146
-#: personal/kolab2/class_kolabAccount.inc:155
-msgid "Always accept"
-msgstr "Πάντα αποδοχή"
-
-#: personal/kolab2/class_kolabAccount.inc:146
-#: personal/kolab2/class_kolabAccount.inc:155
-msgid "Always reject"
-msgstr "Πάντα απόρριψη"
-
-#: personal/kolab2/class_kolabAccount.inc:146
-#: personal/kolab2/class_kolabAccount.inc:155
-msgid "Reject if conflicts"
-msgstr "Απόρριψη αν υπάρχει σύγκρουση"
-
-#: personal/kolab2/class_kolabAccount.inc:146
-#: personal/kolab2/class_kolabAccount.inc:155
-msgid "Manual if conflicts"
-msgstr "Χειροκίνητη ρύθμιση αν υπάρχει σύγκρουση"
-
-#: personal/kolab2/class_kolabAccount.inc:152
-msgid "mail address"
-msgstr "διεύθυνση e-mail "
-
-#: personal/kolab2/class_kolabAccount.inc:153
-msgid "policy for this mail address"
-msgstr "πολιτική για αυτήν την διεύθυνση e-mail "

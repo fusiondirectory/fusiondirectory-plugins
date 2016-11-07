@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-09-02 14:39+0000\n"
 "Last-Translator: Paola Penati <penati@avaya.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
@@ -17,24 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: html/class_expiredUserPostpone.inc:58
-msgid "This token is invalid"
-msgstr "Questo token non è valido"
-
-#: html/class_expiredUserPostpone.inc:195
-msgid "Contact your administrator, there was a problem with mail server"
-msgstr "Contattare l'amministratore, c'è stato un problema con il server di posta elettronica"
-
-#: html/class_expiredUserPostpone.inc:206
-#, php-format
-msgid "Did not find an account with login \"%s\""
-msgstr "Alcun account trovato con login \"%s\" "
-
-#: html/class_expiredUserPostpone.inc:209
-#, php-format
-msgid "Found multiple accounts with login \"%s\""
-msgstr "Trovati più accounts con login \"%s\""
 
 #: config/user-reminder/class_userReminderConfig.inc:28
 msgid "User reminder"
@@ -159,6 +141,24 @@ msgid ""
 "Dear %1$s,\n"
 " your account %2$s expiration has been successfully postponed.\n"
 msgstr "Caro %1$s,\nla data di scadenza del tuo acccount %2$s é stata rinviata con successo.\n"
+
+#: html/class_expiredUserPostpone.inc:58
+msgid "This token is invalid"
+msgstr "Questo token non è valido"
+
+#: html/class_expiredUserPostpone.inc:195
+msgid "Contact your administrator, there was a problem with mail server"
+msgstr "Contattare l'amministratore, c'è stato un problema con il server di posta elettronica"
+
+#: html/class_expiredUserPostpone.inc:206
+#, php-format
+msgid "Did not find an account with login \"%s\""
+msgstr "Alcun account trovato con login \"%s\" "
+
+#: html/class_expiredUserPostpone.inc:209
+#, php-format
+msgid "Found multiple accounts with login \"%s\""
+msgstr "Trovati più accounts con login \"%s\""
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:2
 #: ihtml/themes/breezy/user-reminder.tpl.c:5

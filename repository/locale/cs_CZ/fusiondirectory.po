@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-01-22 16:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/cs_CZ/)\n"
@@ -17,78 +17,34 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: admin/repository/class_repositoryDistribution.inc:30
-#: admin/repository/class_repositoryDistribution.inc:31
-#: admin/repository/class_repositoryDistribution.inc:33
-#: admin/repository/class_repositoryDistribution.inc:56
-msgid "Repository distribution"
-msgstr "Distribuce repozitáře"
+#: config/repository/class_repositoryConfig.inc:28
+msgid "Repository configuration"
+msgstr "Nastavení repozitáře"
 
-#: admin/repository/class_repositoryDistribution.inc:60
-#: admin/repository/class_repositorySection.inc:57
-#: admin/repository/class_buildRepository.inc:63
-msgid "Name"
-msgstr "Název"
+#: config/repository/class_repositoryConfig.inc:29
+msgid "FusionDirectory repository plugin configuration"
+msgstr "Nastavení zásuvného modulu repozitář pro FusionDirectory"
 
-#: admin/repository/class_repositoryDistribution.inc:60
-msgid "Unique name for this distribution"
-msgstr "Jedinečný název pro tuto distribuci"
-
-#: admin/repository/class_repositoryDistribution.inc:64
-#: admin/repository/class_repositorySection.inc:61
-#: admin/repository/class_buildRepository.inc:67
-msgid "Description"
-msgstr "Popis"
-
-#: admin/repository/class_repositoryDistribution.inc:64
-msgid "Description of this distribution"
-msgstr "Popis této distribuce"
-
-#: admin/repository/class_repositoryDistribution.inc:69
-msgid "Section"
-msgstr "Sekce"
-
-#: admin/repository/class_repositoryDistribution.inc:69
-msgid "The sections this distribution contains"
-msgstr "Sekce, které tato distribuce obsahuje"
-
-#: admin/repository/class_repositoryDistribution.inc:76
-#: admin/repository/class_repositorySection.inc:66
-msgid "Based on"
-msgstr "Vychází z"
-
-#: admin/repository/class_repositoryDistribution.inc:76
-msgid "The distributions this one is based on"
-msgstr "Distribuce, na kterých je tato založena"
-
-#: admin/repository/class_repositorySection.inc:30
-#: admin/repository/class_repositorySection.inc:31
-#: admin/repository/class_repositorySection.inc:33
-#: admin/repository/class_repositorySection.inc:53
-msgid "Repository section"
-msgstr "Sekce repozitáře"
-
-#: admin/repository/class_repositorySection.inc:57
-msgid "Unique name for this section"
-msgstr "Jedinečný název pro tuto sekci"
-
-#: admin/repository/class_repositorySection.inc:61
-msgid "Description of this section"
-msgstr "Popis této sekce"
-
-#: admin/repository/class_repositorySection.inc:66
-msgid "The sections this one is based on"
-msgstr "Sekce, na kterých je tato založena"
-
-#: admin/repository/class_repositoryManagement.inc:34
-#: admin/repository/class_repositoryManagement.inc:35
-msgid "Repository management"
-msgstr "Správa repozitáře"
-
-#: admin/repository/class_repositoryManagement.inc:40
 #: config/repository/class_repositoryConfig.inc:42
+#: admin/repository/class_repositoryManagement.inc:40
 msgid "Repository"
 msgstr "Repozitář"
+
+#: config/repository/class_repositoryConfig.inc:45
+msgid "Repository RDN"
+msgstr "Relativní rozlišený název repozitáře"
+
+#: config/repository/class_repositoryConfig.inc:45
+msgid "Branch in which repository objects will be stored"
+msgstr "Větev, ve které budou uloženy objekty repozitáře"
+
+#: config/repository/class_repositoryConfig.inc:51
+msgid "Repository types"
+msgstr "Typy repozitářů"
+
+#: config/repository/class_repositoryConfig.inc:51
+msgid "Available repository types"
+msgstr "Dostupné typy repozitářů"
 
 #: admin/repository/class_buildRepository.inc:30
 #: admin/repository/class_buildRepository.inc:31
@@ -98,8 +54,20 @@ msgid "Build repository"
 msgstr "Vytvořit repozitář"
 
 #: admin/repository/class_buildRepository.inc:63
+#: admin/repository/class_repositoryDistribution.inc:60
+#: admin/repository/class_repositorySection.inc:57
+msgid "Name"
+msgstr "Název"
+
+#: admin/repository/class_buildRepository.inc:63
 msgid "Unique name for this repository"
 msgstr "Jedinečný název pro tento repozitář"
+
+#: admin/repository/class_buildRepository.inc:67
+#: admin/repository/class_repositoryDistribution.inc:64
+#: admin/repository/class_repositorySection.inc:61
+msgid "Description"
+msgstr "Popis"
 
 #: admin/repository/class_buildRepository.inc:67
 msgid "Description of this repository"
@@ -157,26 +125,58 @@ msgstr "Uživatelé"
 msgid "Users of this repository"
 msgstr "Uživatelé tohoto repozitáře"
 
-#: config/repository/class_repositoryConfig.inc:28
-msgid "Repository configuration"
-msgstr "Nastavení repozitáře"
+#: admin/repository/class_repositoryManagement.inc:34
+#: admin/repository/class_repositoryManagement.inc:35
+msgid "Repository management"
+msgstr "Správa repozitáře"
 
-#: config/repository/class_repositoryConfig.inc:29
-msgid "FusionDirectory repository plugin configuration"
-msgstr "Nastavení zásuvného modulu repozitář pro FusionDirectory"
+#: admin/repository/class_repositoryDistribution.inc:30
+#: admin/repository/class_repositoryDistribution.inc:31
+#: admin/repository/class_repositoryDistribution.inc:33
+#: admin/repository/class_repositoryDistribution.inc:56
+msgid "Repository distribution"
+msgstr "Distribuce repozitáře"
 
-#: config/repository/class_repositoryConfig.inc:45
-msgid "Repository RDN"
-msgstr "Relativní rozlišený název repozitáře"
+#: admin/repository/class_repositoryDistribution.inc:60
+msgid "Unique name for this distribution"
+msgstr "Jedinečný název pro tuto distribuci"
 
-#: config/repository/class_repositoryConfig.inc:45
-msgid "Branch in which repository objects will be stored"
-msgstr "Větev, ve které budou uloženy objekty repozitáře"
+#: admin/repository/class_repositoryDistribution.inc:64
+msgid "Description of this distribution"
+msgstr "Popis této distribuce"
 
-#: config/repository/class_repositoryConfig.inc:51
-msgid "Repository types"
-msgstr "Typy repozitářů"
+#: admin/repository/class_repositoryDistribution.inc:69
+msgid "Section"
+msgstr "Sekce"
 
-#: config/repository/class_repositoryConfig.inc:51
-msgid "Available repository types"
-msgstr "Dostupné typy repozitářů"
+#: admin/repository/class_repositoryDistribution.inc:69
+msgid "The sections this distribution contains"
+msgstr "Sekce, které tato distribuce obsahuje"
+
+#: admin/repository/class_repositoryDistribution.inc:76
+#: admin/repository/class_repositorySection.inc:66
+msgid "Based on"
+msgstr "Vychází z"
+
+#: admin/repository/class_repositoryDistribution.inc:76
+msgid "The distributions this one is based on"
+msgstr "Distribuce, na kterých je tato založena"
+
+#: admin/repository/class_repositorySection.inc:30
+#: admin/repository/class_repositorySection.inc:31
+#: admin/repository/class_repositorySection.inc:33
+#: admin/repository/class_repositorySection.inc:53
+msgid "Repository section"
+msgstr "Sekce repozitáře"
+
+#: admin/repository/class_repositorySection.inc:57
+msgid "Unique name for this section"
+msgstr "Jedinečný název pro tuto sekci"
+
+#: admin/repository/class_repositorySection.inc:61
+msgid "Description of this section"
+msgstr "Popis této sekce"
+
+#: admin/repository/class_repositorySection.inc:66
+msgid "The sections this one is based on"
+msgstr "Sekce, na kterých je tato založena"

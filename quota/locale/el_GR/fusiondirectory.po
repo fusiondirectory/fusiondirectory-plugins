@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-01-22 16:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
@@ -17,6 +17,71 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: personal/quota/class_quotaAccount.inc:101
+msgid "Quota"
+msgstr "Όρια"
+
+#: personal/quota/class_quotaAccount.inc:102
+msgid "Plugin for quota support"
+msgstr "Πρόσθετο για την υποστήριξη ορίων"
+
+#: personal/quota/class_quotaAccount.inc:120
+msgid "Quota informations"
+msgstr "Πληροφορίες ορίων"
+
+#: personal/quota/class_quotaAccount.inc:125
+msgid "Quota informations for this user"
+msgstr "Πληροφορίες ορίων αυτού του χρήστη"
+
+#: personal/quota/class_quotaAccount.inc:129
+#: admin/systems/services/quota/class_serviceQuota.inc:51
+msgid "Device"
+msgstr "Συσκευή"
+
+#: personal/quota/class_quotaAccount.inc:129
+msgid "Device this quota is for"
+msgstr "Συσκευή που αφορά αυτά τα όρια"
+
+#: personal/quota/class_quotaAccount.inc:133
+msgid "Block soft limit"
+msgstr "Μερικό όριο πακέτου"
+
+#: personal/quota/class_quotaAccount.inc:133
+msgid "Soft limit for the block the user can use"
+msgstr "Το μερικό όριο του πακέτου που μπορεί να χρησιμοποιήσει ο χρήστης"
+
+#: personal/quota/class_quotaAccount.inc:139
+msgid "Block hard limit"
+msgstr "Καθολικό όριο πακέτου"
+
+#: personal/quota/class_quotaAccount.inc:139
+msgid "Hard limit for the block the user can use"
+msgstr "Το καθολικό όριο του πακέτου που μπορεί να χρησιμοποιήσει ο χρήστης"
+
+#: personal/quota/class_quotaAccount.inc:145
+msgid "Inode soft limit"
+msgstr "Μερικό όριο κόμβου"
+
+#: personal/quota/class_quotaAccount.inc:145
+msgid "Soft limit for the inodes the user can use"
+msgstr "Το μερικό όριο κόμβου που μπορεί να χρησιμοποιήσει ο χρήστης"
+
+#: personal/quota/class_quotaAccount.inc:151
+msgid "Inode hard limit"
+msgstr "Καθολικό όριο κόμβου"
+
+#: personal/quota/class_quotaAccount.inc:151
+msgid "Hard limit for the inodes the user can use"
+msgstr "Το καθολικό όριο κόμβου που μπορεί να χρησιμοποιήσει ο χρήστης"
+
+#: personal/quota/class_quotaAccount.inc:157
+msgid "Server"
+msgstr "Διακομιστής"
+
+#: personal/quota/class_quotaAccount.inc:157
+msgid "Server hosting the device this quota is for"
+msgstr "Ο διακομιστής που έχει τη συσκευή που αφορά αυτό το όριο"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:30
 #: admin/systems/services/quota/class_serviceQuota.inc:31
@@ -34,11 +99,6 @@ msgstr "Κοινόχρηστοι πόροι"
 #: admin/systems/services/quota/class_serviceQuota.inc:47
 msgid "Quotas for the shares this server hosts"
 msgstr "Όρια κοινόχρηστων πόρων που παρέχει αυτός ο διακομιστής"
-
-#: admin/systems/services/quota/class_serviceQuota.inc:51
-#: personal/quota/class_quotaAccount.inc:129
-msgid "Device"
-msgstr "Συσκευή"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:51
 msgid "Device concerned by this quota"
@@ -169,63 +229,3 @@ msgstr "Μη έγκυρη τιμή στις κωδικοποιήσεις: %s"
 #, php-format
 msgid "(%s by %s)"
 msgstr "(%s by %s)"
-
-#: personal/quota/class_quotaAccount.inc:101
-msgid "Quota"
-msgstr "Όρια"
-
-#: personal/quota/class_quotaAccount.inc:102
-msgid "Plugin for quota support"
-msgstr "Πρόσθετο για την υποστήριξη ορίων"
-
-#: personal/quota/class_quotaAccount.inc:120
-msgid "Quota informations"
-msgstr "Πληροφορίες ορίων"
-
-#: personal/quota/class_quotaAccount.inc:125
-msgid "Quota informations for this user"
-msgstr "Πληροφορίες ορίων αυτού του χρήστη"
-
-#: personal/quota/class_quotaAccount.inc:129
-msgid "Device this quota is for"
-msgstr "Συσκευή που αφορά αυτά τα όρια"
-
-#: personal/quota/class_quotaAccount.inc:133
-msgid "Block soft limit"
-msgstr "Μερικό όριο πακέτου"
-
-#: personal/quota/class_quotaAccount.inc:133
-msgid "Soft limit for the block the user can use"
-msgstr "Το μερικό όριο του πακέτου που μπορεί να χρησιμοποιήσει ο χρήστης"
-
-#: personal/quota/class_quotaAccount.inc:139
-msgid "Block hard limit"
-msgstr "Καθολικό όριο πακέτου"
-
-#: personal/quota/class_quotaAccount.inc:139
-msgid "Hard limit for the block the user can use"
-msgstr "Το καθολικό όριο του πακέτου που μπορεί να χρησιμοποιήσει ο χρήστης"
-
-#: personal/quota/class_quotaAccount.inc:145
-msgid "Inode soft limit"
-msgstr "Μερικό όριο κόμβου"
-
-#: personal/quota/class_quotaAccount.inc:145
-msgid "Soft limit for the inodes the user can use"
-msgstr "Το μερικό όριο κόμβου που μπορεί να χρησιμοποιήσει ο χρήστης"
-
-#: personal/quota/class_quotaAccount.inc:151
-msgid "Inode hard limit"
-msgstr "Καθολικό όριο κόμβου"
-
-#: personal/quota/class_quotaAccount.inc:151
-msgid "Hard limit for the inodes the user can use"
-msgstr "Το καθολικό όριο κόμβου που μπορεί να χρησιμοποιήσει ο χρήστης"
-
-#: personal/quota/class_quotaAccount.inc:157
-msgid "Server"
-msgstr "Διακομιστής"
-
-#: personal/quota/class_quotaAccount.inc:157
-msgid "Server hosting the device this quota is for"
-msgstr "Ο διακομιστής που έχει τη συσκευή που αφορά αυτό το όριο"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-01-22 16:04+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/pt_BR/)\n"
@@ -17,13 +17,53 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: config/applications/class_applicationsPluginConfig.inc:28
+#: config/applications/class_applicationsPluginConfig.inc:40
 #: admin/applications/class_applicationManagement.inc:28
 #: admin/roles/class_applicationRights.inc:30
 #: admin/roles/class_applicationRights.inc:49
-#: config/applications/class_applicationsPluginConfig.inc:28
-#: config/applications/class_applicationsPluginConfig.inc:40
 msgid "Applications"
 msgstr "Aplicações"
+
+#: config/applications/class_applicationsPluginConfig.inc:29
+msgid "Applications plugin configuration"
+msgstr ""
+
+#: config/applications/class_applicationsPluginConfig.inc:43
+msgid "Application RDN"
+msgstr ""
+
+#: config/applications/class_applicationsPluginConfig.inc:43
+msgid "Branch in which applications will be stored"
+msgstr ""
+
+#: config/applications/class_applicationsPluginConfig.inc:48
+msgid "Web applications RDN"
+msgstr ""
+
+#: config/applications/class_applicationsPluginConfig.inc:48
+msgid "Branch in which web applications will be stored"
+msgstr ""
+
+#: config/applications/class_applicationsPluginConfig.inc:53
+msgid "Show web applications in menu"
+msgstr ""
+
+#: config/applications/class_applicationsPluginConfig.inc:53
+msgid "Whether to show web applications in FD main menu"
+msgstr ""
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "None"
+msgstr "Nenhum"
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "Only allowed"
+msgstr ""
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "All"
+msgstr "Todos"
 
 #: admin/applications/class_applicationManagement.inc:29
 msgid "Application management"
@@ -181,43 +221,3 @@ msgstr ""
 #: admin/roles/class_applicationRights.inc:49
 msgid "The applications users with this role are allowed to launch"
 msgstr ""
-
-#: config/applications/class_applicationsPluginConfig.inc:29
-msgid "Applications plugin configuration"
-msgstr ""
-
-#: config/applications/class_applicationsPluginConfig.inc:43
-msgid "Application RDN"
-msgstr ""
-
-#: config/applications/class_applicationsPluginConfig.inc:43
-msgid "Branch in which applications will be stored"
-msgstr ""
-
-#: config/applications/class_applicationsPluginConfig.inc:48
-msgid "Web applications RDN"
-msgstr ""
-
-#: config/applications/class_applicationsPluginConfig.inc:48
-msgid "Branch in which web applications will be stored"
-msgstr ""
-
-#: config/applications/class_applicationsPluginConfig.inc:53
-msgid "Show web applications in menu"
-msgstr ""
-
-#: config/applications/class_applicationsPluginConfig.inc:53
-msgid "Whether to show web applications in FD main menu"
-msgstr ""
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "None"
-msgstr "Nenhum"
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "Only allowed"
-msgstr ""
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "All"
-msgstr "Todos"

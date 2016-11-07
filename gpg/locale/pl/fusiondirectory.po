@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-01-22 16:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Polish (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/pl/)\n"
@@ -16,6 +16,90 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: personal/gpg/class_gpgAccount.inc:31
+msgid "GPG keys"
+msgstr ""
+
+#: personal/gpg/class_gpgAccount.inc:35
+msgid "GPG keys of this user"
+msgstr ""
+
+#: personal/gpg/class_gpgAccount.inc:46
+msgid "GPG"
+msgstr ""
+
+#: personal/gpg/class_gpgAccount.inc:47
+msgid "Edit user's GPG IDs"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
+msgid "Configuration error"
+msgstr "Błąd konfiguracji"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
+msgid "You need to configure GPG base dn through the addons section first"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:136
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:40
+msgid "Key ID"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:137
+msgid "User ID"
+msgstr "Identyfikator użytkownika"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:138
+msgid "Creation time"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:139
+msgid "Expiration"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:140
+msgid "Algorithm"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:141
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:80
+msgid "Size"
+msgstr "Rozmiar"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:142
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:88
+msgid "Revoked"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:143
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
+msgid "Disabled"
+msgstr "Wyłączone"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:11
+msgid "Please select the desired entries"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:15
+msgid "PGP Key"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:48
+msgid "User"
+msgstr "Użytkownik"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:56
+msgid "Creation date"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:64
+msgid "Expiration date"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:72
+msgid "Type"
+msgstr "Typ"
 
 #: addons/gpg/class_pgpServerInfo.inc:31 addons/gpg/class_pgpServerInfo.inc:32
 #: addons/gpg/class_pgpServerInfo.inc:38 addons/gpg/class_pgpServerInfo.inc:56
@@ -53,87 +137,3 @@ msgstr ""
 #: addons/gpg/class_pgpServerInfo.inc:100
 msgid "LDAP error"
 msgstr "błąd LDAP"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:11
-msgid "Please select the desired entries"
-msgstr ""
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:15
-msgid "PGP Key"
-msgstr ""
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:40
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:136
-msgid "Key ID"
-msgstr ""
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:48
-msgid "User"
-msgstr "Użytkownik"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:56
-msgid "Creation date"
-msgstr ""
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:64
-msgid "Expiration date"
-msgstr ""
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:72
-msgid "Type"
-msgstr "Typ"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:80
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:141
-msgid "Size"
-msgstr "Rozmiar"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:88
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:142
-msgid "Revoked"
-msgstr ""
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:143
-msgid "Disabled"
-msgstr "Wyłączone"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
-msgid "Configuration error"
-msgstr "Błąd konfiguracji"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
-msgid "You need to configure GPG base dn through the addons section first"
-msgstr ""
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:137
-msgid "User ID"
-msgstr "Identyfikator użytkownika"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:138
-msgid "Creation time"
-msgstr ""
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:139
-msgid "Expiration"
-msgstr ""
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:140
-msgid "Algorithm"
-msgstr ""
-
-#: personal/gpg/class_gpgAccount.inc:31
-msgid "GPG keys"
-msgstr ""
-
-#: personal/gpg/class_gpgAccount.inc:35
-msgid "GPG keys of this user"
-msgstr ""
-
-#: personal/gpg/class_gpgAccount.inc:46
-msgid "GPG"
-msgstr ""
-
-#: personal/gpg/class_gpgAccount.inc:47
-msgid "Edit user's GPG IDs"
-msgstr ""

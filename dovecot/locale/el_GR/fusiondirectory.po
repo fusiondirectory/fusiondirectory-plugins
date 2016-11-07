@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-05-12 16:11+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
@@ -17,6 +17,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:50
+msgid "There are no IMAP compatible mail servers defined!"
+msgstr "Δεν έχουν ορισθεί συμβατοί διακομιστές αλληλογραφίας IMAP!"
+
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:55
+msgid "Mail server for this account is invalid!"
+msgstr " διακομιστής αλληλογραφίας για αυτόν το λογαριασμό είναι άκυρος!"
+
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:194
+#, php-format
+msgid "Error while trying to contact Dovecot server through Argonaut: %s"
+msgstr "Σφάλμα κατά την προσπάθεια επικοινωνίας με τον διακομιστή Dovecot μέσω του Argonaut: %s"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:28
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:29
@@ -106,16 +119,3 @@ msgstr ""
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:97
 msgid "Use argonaut to create the user mailbox on the Dovecot server"
 msgstr "Χρήση argonaut για δημιουργία του γραμματοκιβωτίου χρήστη στον διακομιστή Dovecot"
-
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:50
-msgid "There are no IMAP compatible mail servers defined!"
-msgstr "Δεν έχουν ορισθεί συμβατοί διακομιστές αλληλογραφίας IMAP!"
-
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:55
-msgid "Mail server for this account is invalid!"
-msgstr " διακομιστής αλληλογραφίας για αυτόν το λογαριασμό είναι άκυρος!"
-
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:194
-#, php-format
-msgid "Error while trying to contact Dovecot server through Argonaut: %s"
-msgstr "Σφάλμα κατά την προσπάθεια επικοινωνίας με τον διακομιστή Dovecot μέσω του Argonaut: %s"

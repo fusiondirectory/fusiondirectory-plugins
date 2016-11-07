@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-09-02 15:24+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
@@ -18,101 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: admin/groups/mail/class_groupMail.inc:46
-#: personal/mail/class_mailAccount.inc:71
-#: config/mail/class_mailPluginConfig.inc:28
-msgid "Mail"
-msgstr "Mail"
-
-#: admin/groups/mail/class_groupMail.inc:47
-msgid "Group mail options"
-msgstr "Opzioni per le mail di gruppo"
-
-#: admin/groups/mail/class_groupMail.inc:59
-msgid "Informations"
-msgstr "Informazioni"
-
-#: admin/groups/mail/class_groupMail.inc:62
-#: personal/mail/class_mailAccount.inc:97
-msgid "Primary address"
-msgstr "Indirizzo principale"
-
-#: admin/groups/mail/class_groupMail.inc:62
-msgid "The primary mail address"
-msgstr "Lindirizzo mail principale"
-
-#: admin/groups/mail/class_groupMail.inc:66
-#: personal/mail/class_mailAccount.inc:101
-msgid "Server"
-msgstr "Server"
-
-#: admin/groups/mail/class_groupMail.inc:66
-msgid "Server mail"
-msgstr "Server di e-mail"
-
-#: admin/groups/mail/class_groupMail.inc:72
-#: personal/mail/class_mailAccount.inc:117
-msgid "Alternative addresses"
-msgstr "Indirizzi alternativi"
-
-#: admin/groups/mail/class_groupMail.inc:72
-msgid "Alternative mail addresses for the group"
-msgstr "Indirizzi e-mail alternativi per il gruppo"
-
-#: admin/groups/mail/class_groupMail.inc:77
-msgid "Forward messages to non group members"
-msgstr "Inoltra i messaggi ai membri che non appartengono al gruppo"
-
-#: admin/groups/mail/class_groupMail.inc:81
-msgid "Only allowed to receive local mail"
-msgstr "L'utente è abilitato a ricevere solo messaggi locali"
-
-#: admin/groups/mail/class_groupMail.inc:81
-msgid ""
-"Whether this group mail is only allowed to receive messages from local "
-"senders"
-msgstr "Questo gruppo email e' autorizzato unicamente a ricevere messaggi da mittenti locali"
-
-#: admin/systems/services/imap/class_serviceIMAP.inc:32
-msgid "IMAP/POP3 generic service"
-msgstr "Servizio generico IMAP/POP3"
-
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
-msgid "IMAP/POP3"
-msgstr "IMAP/POP3"
-
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
-msgid "Services"
-msgstr "Servizi"
-
-#: personal/mail/class_mail-methods.inc:154
-#: personal/mail/class_mail-methods.inc:516
-msgid "Configuration error"
-msgstr "Errore di configurazione"
-
-#: personal/mail/class_mail-methods.inc:155
-#, php-format
-msgid "The configured mail attribute '%s' is unsupported!"
-msgstr "L'attributo mail '%s' non è supportato !"
-
-#: personal/mail/class_mail-methods.inc:517
-#, php-format
-msgid "Mail method '%s' is unknown!"
-msgstr "L'algoritmo per la posta elettronica '%s' è sconosciuto !"
-
-#: personal/mail/class_mail-methods.inc:764
-#: personal/mail/class_mail-methods.inc:765
-msgid "None"
-msgstr "Nessuno"
-
-#: personal/mail/class_mail-methods.inc:854
-msgid "Unknown"
-msgstr "Sconosciuto"
-
-#: personal/mail/class_mail-methods.inc:856
-msgid "Unlimited"
-msgstr "Illimitato"
 
 #: personal/mail/class_mailAccount.inc:45
 #: personal/mail/class_mailAccount.inc:238
@@ -138,6 +43,12 @@ msgstr "Utilizzo della quota"
 msgid "Part of the quota which is used"
 msgstr "Parte della quota utilizzata"
 
+#: personal/mail/class_mailAccount.inc:71
+#: config/mail/class_mailPluginConfig.inc:28
+#: admin/groups/mail/class_groupMail.inc:46
+msgid "Mail"
+msgstr "Mail"
+
 #: personal/mail/class_mailAccount.inc:72
 #: config/mail/class_mailPluginConfig.inc:41
 msgid "Mail settings"
@@ -148,8 +59,18 @@ msgid "Mail account"
 msgstr "Account email"
 
 #: personal/mail/class_mailAccount.inc:97
+#: admin/groups/mail/class_groupMail.inc:62
+msgid "Primary address"
+msgstr "Indirizzo principale"
+
+#: personal/mail/class_mailAccount.inc:97
 msgid "Primary mail address"
 msgstr "Indirizzo mail principale"
+
+#: personal/mail/class_mailAccount.inc:101
+#: admin/groups/mail/class_groupMail.inc:66
+msgid "Server"
+msgstr "Server"
 
 #: personal/mail/class_mailAccount.inc:101
 msgid "Specify the mail server where the user will be hosted on"
@@ -162,6 +83,11 @@ msgstr "Dimensione della quota"
 #: personal/mail/class_mailAccount.inc:113
 msgid "Other addresses and redirections"
 msgstr "Altri indirizzi e redirezioni"
+
+#: personal/mail/class_mailAccount.inc:117
+#: admin/groups/mail/class_groupMail.inc:72
+msgid "Alternative addresses"
+msgstr "Indirizzi alternativi"
 
 #: personal/mail/class_mailAccount.inc:117
 msgid "List of alternative mail addresses"
@@ -252,6 +178,34 @@ msgstr "Impossibile rimuovere la mailbox, il metodo di posta non riesce a connet
 msgid "Cannot remove mailbox: %s"
 msgstr "Impossibile rimuovere mailbox : %s"
 
+#: personal/mail/class_mail-methods.inc:154
+#: personal/mail/class_mail-methods.inc:516
+msgid "Configuration error"
+msgstr "Errore di configurazione"
+
+#: personal/mail/class_mail-methods.inc:155
+#, php-format
+msgid "The configured mail attribute '%s' is unsupported!"
+msgstr "L'attributo mail '%s' non è supportato !"
+
+#: personal/mail/class_mail-methods.inc:517
+#, php-format
+msgid "Mail method '%s' is unknown!"
+msgstr "L'algoritmo per la posta elettronica '%s' è sconosciuto !"
+
+#: personal/mail/class_mail-methods.inc:764
+#: personal/mail/class_mail-methods.inc:765
+msgid "None"
+msgstr "Nessuno"
+
+#: personal/mail/class_mail-methods.inc:854
+msgid "Unknown"
+msgstr "Sconosciuto"
+
+#: personal/mail/class_mail-methods.inc:856
+msgid "Unlimited"
+msgstr "Illimitato"
+
 #: config/mail/class_mailPluginConfig.inc:29
 msgid "Mail plugin configuration"
 msgstr "Configurazione de l plugin mail"
@@ -324,3 +278,49 @@ msgstr "Prefisso condiviso"
 #: config/mail/class_mailPluginConfig.inc:84
 msgid "Prefix to add for mail shared folders."
 msgstr "Prefisso da aggiungere per cartelle mail condivise."
+
+#: admin/groups/mail/class_groupMail.inc:47
+msgid "Group mail options"
+msgstr "Opzioni per le mail di gruppo"
+
+#: admin/groups/mail/class_groupMail.inc:59
+msgid "Informations"
+msgstr "Informazioni"
+
+#: admin/groups/mail/class_groupMail.inc:62
+msgid "The primary mail address"
+msgstr "Lindirizzo mail principale"
+
+#: admin/groups/mail/class_groupMail.inc:66
+msgid "Server mail"
+msgstr "Server di e-mail"
+
+#: admin/groups/mail/class_groupMail.inc:72
+msgid "Alternative mail addresses for the group"
+msgstr "Indirizzi e-mail alternativi per il gruppo"
+
+#: admin/groups/mail/class_groupMail.inc:77
+msgid "Forward messages to non group members"
+msgstr "Inoltra i messaggi ai membri che non appartengono al gruppo"
+
+#: admin/groups/mail/class_groupMail.inc:81
+msgid "Only allowed to receive local mail"
+msgstr "L'utente è abilitato a ricevere solo messaggi locali"
+
+#: admin/groups/mail/class_groupMail.inc:81
+msgid ""
+"Whether this group mail is only allowed to receive messages from local "
+"senders"
+msgstr "Questo gruppo email e' autorizzato unicamente a ricevere messaggi da mittenti locali"
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:32
+msgid "IMAP/POP3 generic service"
+msgstr "Servizio generico IMAP/POP3"
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:33
+msgid "IMAP/POP3"
+msgstr "IMAP/POP3"
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:33
+msgid "Services"
+msgstr "Servizi"

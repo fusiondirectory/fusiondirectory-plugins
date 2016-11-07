@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-09-02 15:25+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
@@ -19,20 +19,49 @@ msgstr ""
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/netgroups/class_netgroup.inc:50
+#: personal/netgroups/class_netgroupMembership.inc:43
+#: admin/netgroups/class_netgroup.inc:54
+#: admin/systems/netgroups/class_netgroupSystem.inc:26
+msgid "NIS Netgroup"
+msgstr "Gruppo NIS"
+
+#: personal/netgroups/class_netgroupMembership.inc:44
+#: admin/systems/netgroups/class_netgroupSystem.inc:27
+msgid "NIS Netgroup member"
+msgstr "Membro del gruppo NIS"
+
+#: personal/netgroups/class_netgroupMembership.inc:60
+msgid "Member of the following NIS Netgroups  "
+msgstr "Membri dei seguenti gruppi NIS"
+
+#: personal/netgroups/class_netgroupMembership.inc:63
+msgid "NIS netgroup membership"
+msgstr "Adesione al gruppo NIS"
+
+#: config/netgroups/class_netgroupConfig.inc:28
+msgid "Netgroup configuration"
+msgstr "Configurazione gruppo NIS"
+
+#: config/netgroups/class_netgroupConfig.inc:29
+msgid "FusionDirectory netgroup plugin configuration"
+msgstr "Configurazione del plugin NIS di FusionDirectory"
+
 #: config/netgroups/class_netgroupConfig.inc:42
+#: admin/netgroups/class_netgroup.inc:50
 msgid "Netgroup"
 msgstr "Gruppo NIS"
+
+#: config/netgroups/class_netgroupConfig.inc:45
+msgid "Netgroup RDN"
+msgstr "Gruppo NIS RDN"
+
+#: config/netgroups/class_netgroupConfig.inc:45
+msgid "Branch in which netgroups will be stored"
+msgstr "Ramo nel quale i gruppi NIS verranno immagazzinati"
 
 #: admin/netgroups/class_netgroup.inc:51
 msgid "NIS Netgroup settings"
 msgstr "Impostazioni gruppo NIS"
-
-#: admin/netgroups/class_netgroup.inc:54
-#: admin/systems/netgroups/class_netgroupSystem.inc:26
-#: personal/netgroups/class_netgroupMembership.inc:43
-msgid "NIS Netgroup"
-msgstr "Gruppo NIS"
 
 #: admin/netgroups/class_netgroup.inc:69
 msgid "Informations"
@@ -78,32 +107,3 @@ msgstr "Gruppi NIS"
 #: admin/netgroups/class_netgroupManagement.inc:35
 msgid "NIS Netgroup management"
 msgstr "Gestione NIS Netgroup"
-
-#: admin/systems/netgroups/class_netgroupSystem.inc:27
-#: personal/netgroups/class_netgroupMembership.inc:44
-msgid "NIS Netgroup member"
-msgstr "Membro del gruppo NIS"
-
-#: personal/netgroups/class_netgroupMembership.inc:60
-msgid "Member of the following NIS Netgroups  "
-msgstr "Membri dei seguenti gruppi NIS"
-
-#: personal/netgroups/class_netgroupMembership.inc:63
-msgid "NIS netgroup membership"
-msgstr "Adesione al gruppo NIS"
-
-#: config/netgroups/class_netgroupConfig.inc:28
-msgid "Netgroup configuration"
-msgstr "Configurazione gruppo NIS"
-
-#: config/netgroups/class_netgroupConfig.inc:29
-msgid "FusionDirectory netgroup plugin configuration"
-msgstr "Configurazione del plugin NIS di FusionDirectory"
-
-#: config/netgroups/class_netgroupConfig.inc:45
-msgid "Netgroup RDN"
-msgstr "Gruppo NIS RDN"
-
-#: config/netgroups/class_netgroupConfig.inc:45
-msgid "Branch in which netgroups will be stored"
-msgstr "Ramo nel quale i gruppi NIS verranno immagazzinati"

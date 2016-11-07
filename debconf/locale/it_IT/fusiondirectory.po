@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-09-02 15:21+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
@@ -18,15 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: admin/debconfProfile/class_debconfProfileManagement.inc:32
-#: admin/systems/debconf/class_debconfStartup.inc:33
-msgid "Debconf"
-msgstr "Debconf"
-
-#: admin/debconfProfile/class_debconfProfileManagement.inc:33
-msgid "Debconf profile management"
-msgstr "Gestione del profilo debconf"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:72
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:86
@@ -93,6 +84,15 @@ msgstr "Risposte al modello Debconf"
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:209
 msgid "Import"
 msgstr "Importa"
+
+#: admin/debconfProfile/class_debconfProfileManagement.inc:32
+#: admin/systems/debconf/class_debconfStartup.inc:33
+msgid "Debconf"
+msgstr "Debconf"
+
+#: admin/debconfProfile/class_debconfProfileManagement.inc:33
+msgid "Debconf profile management"
+msgstr "Gestione del profilo debconf"
 
 #: admin/systems/debconf/class_debconfStartup.inc:34
 msgid "Debconf preseed startup"

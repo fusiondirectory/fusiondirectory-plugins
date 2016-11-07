@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-01-22 16:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
@@ -18,6 +18,50 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: addons/opsi/class_opsiImport.inc:30 addons/opsi/class_opsiImport.inc:36
+msgid "OPSI import"
+msgstr "Εισαγωγή OPSI"
+
+#: addons/opsi/class_opsiImport.inc:31
+msgid "Import windows stations from OPSI into FD"
+msgstr "Εισαγωγή σταθμών Windows από το OPSI στο FD"
+
+#: addons/opsi/class_opsiImport.inc:69
+msgid "Argonaut server is not available"
+msgstr "Δεν είναι διαθέσιμος ο διακομιστής Argonaut"
+
+#: addons/opsi/class_opsiImport.inc:80
+#: admin/opsi/class_opsiSoftwareList.inc:122
+#: admin/opsi/class_opsiProfile.inc:167
+msgid "No mac address"
+msgstr "Δεν υπάρχει διεύθυνση MAC"
+
+#: addons/opsi/class_opsiImport.inc:95
+#: admin/systems/opsi/class_opsiClient.inc:150
+msgid "Could not update OPSI informations"
+msgstr "Αδύνατη η ενημέρωση των πληροφοριών OPSI"
+
+#: config/opsi/class_opsiConfig.inc:28
+msgid "OPSI configuration"
+msgstr "Διαμόρφωση OPSI"
+
+#: config/opsi/class_opsiConfig.inc:29
+msgid "FusionDirectory OPSI plugin configuration"
+msgstr "Διαμόρφωση του προσθέτου OPSI στο Fusion Directory"
+
+#: config/opsi/class_opsiConfig.inc:42
+#: admin/opsi/class_opsiProfileManagement.inc:33
+msgid "OPSI"
+msgstr "OPSI"
+
+#: config/opsi/class_opsiConfig.inc:45
+msgid "OPSI RDN"
+msgstr "OPSI RDN"
+
+#: config/opsi/class_opsiConfig.inc:45
+msgid "Branch in which OPSI profiles will be stored"
+msgstr "Κλαδί στο οποίο θα αποθηκευτούν τα προφίλ OPSI"
 
 #: admin/opsi/class_opsiOnDemandList.inc:28
 #: admin/opsi/class_opsiOnDemandList.inc:33
@@ -47,8 +91,8 @@ msgstr "Ο διακομιστής OPSI που θα χρησιμοποιηθεί 
 
 #: admin/opsi/class_opsiOnDemandList.inc:54
 #: admin/opsi/class_opsiSoftwareList.inc:58
-#: admin/opsi/class_opsiProductProperties.inc:117
 #: admin/opsi/class_opsiProfile.inc:86 admin/opsi/class_opsiProfile.inc:93
+#: admin/opsi/class_opsiProductProperties.inc:117
 msgid "Name"
 msgstr "Όνομα"
 
@@ -94,15 +138,10 @@ msgid "The localboot products to install with this list"
 msgstr "Τα προϊόντα τοπικής εκκίνησης που θα εγκατασταθούν με αυτήν τη λίστα"
 
 #: admin/opsi/class_opsiSoftwareList.inc:110
-#: admin/opsi/class_opsiProductProperties.inc:176
 #: admin/opsi/class_opsiProfile.inc:155
+#: admin/opsi/class_opsiProductProperties.inc:176
 msgid "Could not contact argonaut server"
 msgstr "Δεν ήταν δυνατή η σύνδεση με τον διακομιστή argonaut"
-
-#: admin/opsi/class_opsiSoftwareList.inc:122
-#: admin/opsi/class_opsiProfile.inc:167 addons/opsi/class_opsiImport.inc:80
-msgid "No mac address"
-msgstr "Δεν υπάρχει διεύθυνση MAC"
 
 #: admin/opsi/class_opsiSoftwareList.inc:123
 #: admin/opsi/class_opsiProfile.inc:168
@@ -117,28 +156,10 @@ msgid "Could not find %s in the LDAP"
 msgstr "Δεν βρέθηκε ο %s στον LDAP"
 
 #: admin/opsi/class_opsiSoftwareList.inc:137
-#: admin/opsi/class_opsiProductProperties.inc:192
 #: admin/opsi/class_opsiProfile.inc:182
+#: admin/opsi/class_opsiProductProperties.inc:192
 msgid "Failed to contact OPSI server"
 msgstr "Αποτυχία σύνδεσης στον διακομιστή OPSI"
-
-#: admin/opsi/class_opsiProfileManagement.inc:33
-#: config/opsi/class_opsiConfig.inc:42
-msgid "OPSI"
-msgstr "OPSI"
-
-#: admin/opsi/class_opsiProfileManagement.inc:34
-msgid "OPSI profile management"
-msgstr "Διαχείριση του OPSI προφίλ"
-
-#: admin/opsi/class_opsiProductProperties.inc:104
-#: admin/opsi/class_opsiProductProperties.inc:105
-msgid "Product properties"
-msgstr "Ιδιότητες προϊόντων"
-
-#: admin/opsi/class_opsiProductProperties.inc:122
-msgid "Properties of the products of this profile"
-msgstr "Οι ιδιότητες των προϊόντων σε αυτό το προφίλ"
 
 #: admin/opsi/class_opsiProfile.inc:67 admin/opsi/class_opsiProfile.inc:68
 #: admin/opsi/class_opsiProfile.inc:72
@@ -169,6 +190,19 @@ msgstr "Λίστες λογισμικού που θα εγκατασταθεί �
 #, php-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
+
+#: admin/opsi/class_opsiProfileManagement.inc:34
+msgid "OPSI profile management"
+msgstr "Διαχείριση του OPSI προφίλ"
+
+#: admin/opsi/class_opsiProductProperties.inc:104
+#: admin/opsi/class_opsiProductProperties.inc:105
+msgid "Product properties"
+msgstr "Ιδιότητες προϊόντων"
+
+#: admin/opsi/class_opsiProductProperties.inc:122
+msgid "Properties of the products of this profile"
+msgstr "Οι ιδιότητες των προϊόντων σε αυτό το προφίλ"
 
 #: admin/systems/opsi/class_opsiClient.inc:33
 msgid "OPSI client"
@@ -207,11 +241,6 @@ msgstr "Αδύνατη η λήψη της διεύθυνσης MAC για τον
 msgid "Could not remove OPSI informations"
 msgstr "Αδύνατη η διαγραφή των πληροφοριών OPSI"
 
-#: admin/systems/opsi/class_opsiClient.inc:150
-#: addons/opsi/class_opsiImport.inc:95
-msgid "Could not update OPSI informations"
-msgstr "Αδύνατη η ενημέρωση των πληροφοριών OPSI"
-
 #: admin/systems/services/opsi/class_serviceOPSI.inc:29
 #: admin/systems/services/opsi/class_serviceOPSI.inc:30
 msgid "OPSI service"
@@ -248,34 +277,6 @@ msgstr "Κωδικός πρόσβασης:"
 #: admin/systems/services/opsi/class_serviceOPSI.inc:52
 msgid "The password to use for connection"
 msgstr "Ο κωδικός πρόσβασης που θα χρησιμοποιηθεί για τη σύνδεση"
-
-#: addons/opsi/class_opsiImport.inc:30 addons/opsi/class_opsiImport.inc:36
-msgid "OPSI import"
-msgstr "Εισαγωγή OPSI"
-
-#: addons/opsi/class_opsiImport.inc:31
-msgid "Import windows stations from OPSI into FD"
-msgstr "Εισαγωγή σταθμών Windows από το OPSI στο FD"
-
-#: addons/opsi/class_opsiImport.inc:69
-msgid "Argonaut server is not available"
-msgstr "Δεν είναι διαθέσιμος ο διακομιστής Argonaut"
-
-#: config/opsi/class_opsiConfig.inc:28
-msgid "OPSI configuration"
-msgstr "Διαμόρφωση OPSI"
-
-#: config/opsi/class_opsiConfig.inc:29
-msgid "FusionDirectory OPSI plugin configuration"
-msgstr "Διαμόρφωση του προσθέτου OPSI στο Fusion Directory"
-
-#: config/opsi/class_opsiConfig.inc:45
-msgid "OPSI RDN"
-msgstr "OPSI RDN"
-
-#: config/opsi/class_opsiConfig.inc:45
-msgid "Branch in which OPSI profiles will be stored"
-msgstr "Κλαδί στο οποίο θα αποθηκευτούν τα προφίλ OPSI"
 
 #: addons/opsi/opsiimport.tpl.c:2
 msgid ""
