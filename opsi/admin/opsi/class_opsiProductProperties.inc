@@ -138,9 +138,9 @@ class opsiProductProperties extends simplePlugin
               ),
               '|', '', ''
             ),
-            FALSE,  // no order
+            FALSE,
             array(),
-            TRUE    // edit button
+            TRUE
           )
         )
       )

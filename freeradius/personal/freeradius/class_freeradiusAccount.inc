@@ -84,7 +84,7 @@ class freeradiusAccount extends simplePlugin {
               _('FreeRadius Group'),
               'radiusGroupName',
               FALSE,
-              array("") 
+              array("")
             )
           ),
         ),

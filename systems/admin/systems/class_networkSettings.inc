@@ -25,19 +25,18 @@ class networkSettings extends plugin
   /* attribute list for save action */
   var $ignore_account = TRUE;
 
-  /* Basic informations
-   */
   var $attributes     = array("ipHostNumber","macAddress");
   var $objectclasses  = array("whatever");
 
-  var $ipHostNumber          = "";    // IP address
+  var $ipHostNumber          = "";
   var $additionalHostNumbers = array();
-  var $macAddress            = "";    // Mac address
+  var $macAddress            = "";
 
-  var $orig_ipHostNumber   = "";    // IP address
-  var $orig_macAddress     = "";    // Mac address
+  var $orig_ipHostNumber   = "";
+  var $orig_macAddress     = "";
 
-  var $OrigCn         = "";    // Initial cn
+  /* Initial cn */
+  var $OrigCn         = "";
   var $IPisMust       = TRUE;
   var $MACisMust      = TRUE;
   var $dialog         = FALSE;
@@ -65,8 +64,7 @@ class networkSettings extends plugin
       $this->OrigCn = preg_replace('/\$$/', '', $this->attrs[$namingAttr][0]);
     }
 
-    /* Create list of additional ipHostNumber.
-     */
+    /* Create list of additional ipHostNumber. */
     $this->additionalHostNumbers = array();
     if (isset($this->attrs['ipHostNumber']) && $this->attrs['ipHostNumber']['count'] > 1) {
       for ($i = 1; $i < $this->attrs['ipHostNumber']['count']; $i++) {
@@ -289,8 +287,7 @@ class networkSettings extends plugin
     /* Save ip/Mac*/
     parent::save();
 
-    /* Add all additional ipHostNumbers now
-     */
+    /* Add all additional ipHostNumbers now */
     if (!empty($this->ipHostNumber)) {
       $this->attrs['ipHostNumber'] = array($this->ipHostNumber);
     }
@@ -308,8 +305,7 @@ class networkSettings extends plugin
     $this->cleanup();
     $ldap->modify ($this->attrs);
 
-    /* Display errors
-     */
+    /* Display errors */
     if (!$ldap->success()) {
       msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
     }
@@ -317,7 +313,6 @@ class networkSettings extends plugin
     $this->dialog = FALSE;
   }
 
-  /* Return plugin informations for acl handling  */
   static function plInfo()
   {
     return array(
@@ -337,7 +332,7 @@ class networkSettings extends plugin
   function generateRandomIP($net = "")
   {
     global $config;
-    // first gather all IPs
+    /* first gather all IPs */
     $ldap = $config->get_ldap_link();
     $ocs =
       '(objectClass=fdPhone)'.
@@ -356,7 +351,7 @@ class networkSettings extends plugin
       }
     }
 
-    // Set starting ip.
+    /* Set starting ip. */
     $ip_data = preg_split('/\./', $net);
     for ($i = 0;$i < 4;$i++) {
       if (!isset($ip_data[$i])) {
@@ -364,7 +359,7 @@ class networkSettings extends plugin
       }
     }
 
-    // Search the next free and valid ip.
+    /* Search the next free and valid ip. */
     while (in_array(implode('.', $ip_data), $list) || $ip_data[3] <= 1) {
       $ip_data[3]++;
       if ($ip_data[3] >= 255) {

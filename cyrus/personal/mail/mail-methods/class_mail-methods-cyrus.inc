@@ -495,15 +495,13 @@ class mailMethodCyrus extends mailMethod
   {
     mailMethod::saveSieveSettings();
 
-    /* Map attribute from parent class
-     */
+    /* Map attribute from parent class */
     $mail                     = $this->parent->mail;
     $gosaMailDeliveryMode     = $this->parent->gosaMailDeliveryMode;
     $gosaMailAlternateAddress = $this->parent->gosaMailAlternateAddress;
     $gosaVacationMessage      = $this->parent->gosaVacationMessage;
 
-    /* Try to login into sieve
-     */
+    /* Try to login into sieve */
     $cfg    = $this->ServerList[$this->parent->gosaMailServer];
     $sieve  = new sieve($cfg["sieve_server"], $cfg["sieve_port"], $this->getUAttribValue(),
                         $cfg["password"], $cfg["admin"], $cfg["sieve_option"]);
@@ -563,7 +561,7 @@ class mailMethodCyrus extends mailMethod
     if (is_integer(strpos($gosaMailDeliveryMode, "C")) ||
         is_integer(strpos($gosaMailDeliveryMode, "I")) ||
         is_integer(strpos($gosaMailDeliveryMode, "V"))) {
-          
+
       /* Add vacation information */
       $smarty->assign('vacation', is_integer(strpos($gosaMailDeliveryMode, "V")));
       if (is_integer(strpos($gosaMailDeliveryMode, "V"))) {

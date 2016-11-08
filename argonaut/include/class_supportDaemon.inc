@@ -634,7 +634,7 @@ class supportDaemon
     } catch (jsonRPCClient_RequestErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
       /* connection is OK */
-      $this->new_state(TRUE); 
+      $this->new_state(TRUE);
       return FALSE;
     } catch (jsonRPCClient_NetworkErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
@@ -694,7 +694,8 @@ class supportDaemon
         }
         if (in_array("SECTION", $attrs)) {
           foreach ($packages as &$package) {
-            $package['SECTION'] = $section; // FIXME : do we want to do this? It will replace "contrib/misc by contrib, for instance
+            /* FIXME : do we want to do this? It will replace "contrib/misc by contrib, for instance */
+            $package['SECTION'] = $section;
           }
           unset($package);
         }

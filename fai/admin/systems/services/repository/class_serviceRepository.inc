@@ -178,10 +178,8 @@ class serviceRepository extends simpleService
               _('Repositories this server hosts'),
               'FAIrepository'
             ),
-            /* no order */
             FALSE,
             array(),
-            /* edit button */ 
             TRUE
           )
         )
