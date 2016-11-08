@@ -160,9 +160,9 @@ class quotaAccount extends simplePlugin
               ),
               ':'
             ),
-            FALSE,  // no order
+            FALSE,
             array(),
-            TRUE    // edit button
+            TRUE
           )
         )
       ),
