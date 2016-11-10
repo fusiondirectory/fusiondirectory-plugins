@@ -8,7 +8,7 @@
   }
 {/literal}
 </style><div></div>
-<fieldset id="{$sectionId}" class="plugin_section{$sectionClasses}">
+<fieldset id="{$sectionId}" class="plugin-section{$sectionClasses}">
   <legend><span>{$section}</span></legend>
   <div>
     <p class="warning">{t}Warning : Once you import your OPSI hosts into FusionDirectory, they will be managed by it, so if you delete them or deactivate their OPSI tab, they will be removed from OPSI.{/t}</p>
