@@ -73,7 +73,7 @@ class fiInventory extends simplePlugin
           'description' => _('Inventory object'),
           'filter'      => 'objectClass=fdInventoryContent',
           'mainAttr'    => 'cn',
-          'icon'        => 'geticon.php?context=applications&icon=nagios&size=16',
+          'icon'        => 'geticon.php?context=applications&icon=fusioninventory&size=16',
           'name'        => _('Inventory object'),
           'ou'          => get_ou('inventoryRDN'),
           'tabClass'    => 'simpleTabs_noSpecial',
