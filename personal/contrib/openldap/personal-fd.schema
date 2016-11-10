@@ -39,6 +39,12 @@ attributetype ( 1.3.6.1.4.1.38414.48.1.6 NAME 'fdBadge'
   SUBSTR caseExactIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
+attributetype ( 1.3.6.1.4.1.38414.48.1.7 NAME 'fdPhotoVisible'
+  DESC 'FusionDirectory - Tell if user Photo should be visible on external tools'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
 # GOsa stuff
 
 attributetype ( 1.3.6.1.4.1.15305.2.1 NAME ( 'gender' 'sex' )
@@ -58,4 +64,4 @@ objectclass (1.3.6.1.4.1.38414.48.2.1 NAME 'fdPersonalInfo' SUP top AUXILIARY
   DESC 'FusionDirectory - User personal tab'
   MUST ( )
   MAY ( fdSocialAccount $ fdNickName $ fdPrivateMail $ fdBadge $
-        personalTitle $ dateOfBirth $ gender $ fdContractStartDate $ fdContractEndDate $ co ))
+        personalTitle $ dateOfBirth $ gender $ fdContractStartDate $ fdContractEndDate $ fdPhotoVisible $ co ))

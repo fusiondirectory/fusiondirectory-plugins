@@ -138,6 +138,10 @@ class personalInfo extends simplePlugin
             'fdContractEndDate', FALSE,
             ''
           ),
+          new BooleanAttribute (
+            _('Photo Visible'), _('Should the photo of the user be visible on external tools'),
+            'fdPhotoVisible', FALSE, TRUE
+          ),
         )
       ),
       'contact' => array(
