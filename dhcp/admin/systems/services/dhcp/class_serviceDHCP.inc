@@ -74,7 +74,6 @@ class serviceDHCP extends simpleService
     $dhcpServiceDN = $this->dhcpServiceDN;
     foreach ($dhcpServiceDN as $dn) {
       $tabObject = objects::open($dn, 'dhcpConfiguration');
-      $tabObject->getBaseObject()->setPrimaryServer($this->dn);
       $tabObject->save();
     }
   }

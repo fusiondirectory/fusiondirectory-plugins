@@ -252,12 +252,6 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     return $this->dhcpObjectCache[$this->value[0][0]]['cn'][0];
   }
 
-  public function setPrimaryDn ($dn)
-  {
-    $this->dhcpObjectCache[$this->value[0][0]]['dhcpPrimaryDN']  = array($dn);
-    $this->dhcpObjectCache[$this->value[0][0]]['MODIFIED']       = TRUE;
-  }
-
   /* Subfonction of reload function */
   protected function reload_readItemFromLDAP(&$ldap, $attrs, &$final, $erase)
   {
