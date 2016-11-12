@@ -33,7 +33,8 @@ class dhcpService extends dhcpPlugin
         'ddns-update-style none'
       )
     );
-    $attributesInfo['main']['attrs'][] = new HiddenAttribute('dhcpPrimaryDN');
+    $attributesInfo['main']['attrs'][] = new ObjectSelectAttribute(_('DHCP Primary'), _('Primary DHCP server'), 'dhcpPrimaryDN', FALSE, 'server');
+    $attributesInfo['main']['attrs'][] = new ObjectSelectAttribute(_('DHCP Secondary'), _('Secondary DHCP server'), 'dhcpSecondaryDN', FALSE, 'server');
     return $attributesInfo;
   }
 }

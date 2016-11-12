@@ -67,24 +67,5 @@ class serviceDHCP extends simpleService
 
     // TODO: add a foreign key
   }
-
-  function ldap_save()
-  {
-    $errors = parent::ldap_save();
-
-    if (!empty($errors)) {
-      return $errors;
-    }
-
-    $dhcpServiceDN = $this->dhcpServiceDN;
-    foreach ($dhcpServiceDN as $dn) {
-      $tabObject = objects::open($dn, 'dhcpConfiguration');
-      $tabObject->getBaseObject()->setPrimaryServer($this->dn);
-      $errors = $tabObject->save();
-      if (!empty($errors)) {
-        return $errors;
-      }
-    }
-  }
 }
 ?>
