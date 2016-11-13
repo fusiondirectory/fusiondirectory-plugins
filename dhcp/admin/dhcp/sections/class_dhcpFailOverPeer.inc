@@ -67,12 +67,13 @@ class dhcpFailOverPeer extends dhcpPlugin
           ),
           new IntAttribute (
             _('Split'), _('Split between the primary and secondary servers for fail over purpose'),
-            'dhcpFailOverSplit', FALSE,
-            0, FALSE
+            'dhcpFailOverSplit', TRUE,
+            0, FALSE, 128
           ),
           new StringAttribute (
             _('HashBucketAssignment'), _('HashBucketAssignment bit map for the DHCP Server, as defined in DHC Load Balancing Algorithm [RFC 3074]'),
-            'dhcpHashBucketAssignment', FALSE
+            'dhcpHashBucketAssignment', TRUE,
+            "3600"
           ),
           new TimeAttribute (
             _('Load balance time'), _('Cutoff time in seconds, after which load balance is disabled'),
