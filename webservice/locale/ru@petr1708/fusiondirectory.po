@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-06-28 11:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Russian Petrine orthography (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/ru@petr1708/)\n"
@@ -16,40 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru@petr1708\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-
-#: html/jsonrpc.php:52
-#, php-format
-msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
-msgstr ""
-
-#: html/jsonrpc.php:62
-#, php-format
-msgid "Cannot locate file '%s' - please run '%s' to fix this"
-msgstr ""
-
-#: html/jsonrpc.php:312 html/jsonrpc.php:396
-msgid "Plugin"
-msgstr ""
-
-#: html/jsonrpc.php:488
-#, php-format
-msgid "Cannot delete %s. It has been locked by %s."
-msgstr ""
-
-#: html/jsonrpc.php:535 html/jsonrpc.php:564
-#, php-format
-msgid "Failed to get password method for account \"%s\". It has not been locked!"
-msgstr ""
-
-#: html/jsonrpc.php:560
-#, php-format
-msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
-msgstr ""
-
-#: html/jsonrpc.php:567
-#, php-format
-msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
-msgstr ""
 
 #: config/class_webserviceConfig.inc:28
 msgid "Webservice configuration"
@@ -69,4 +35,38 @@ msgstr ""
 
 #: config/class_webserviceConfig.inc:45
 msgid "Allow only HTTPS JSON-RPC requests"
+msgstr ""
+
+#: html/jsonrpc.php:52
+#, php-format
+msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
+msgstr ""
+
+#: html/jsonrpc.php:62
+#, php-format
+msgid "Cannot locate file '%s' - please run '%s' to fix this"
+msgstr ""
+
+#: html/jsonrpc.php:312 html/jsonrpc.php:396
+msgid "Plugin"
+msgstr ""
+
+#: html/jsonrpc.php:491
+#, php-format
+msgid "Cannot delete %s. It has been locked by %s."
+msgstr ""
+
+#: html/jsonrpc.php:538 html/jsonrpc.php:567
+#, php-format
+msgid "Failed to get password method for account \"%s\". It has not been locked!"
+msgstr ""
+
+#: html/jsonrpc.php:563
+#, php-format
+msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
+msgstr ""
+
+#: html/jsonrpc.php:570
+#, php-format
+msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr ""

@@ -62,7 +62,7 @@ class systemSimplePluginGlue extends simplePlugin
 
   protected function attributeHaveChanged($field)
   {
-    if ($field == 'ipHostNumber') {
+    if (($field == 'ipHostNumber') || ($field == 'macAddress')) {
       return array_differs($this->attributeInitialValue($field), $this->attributeValue($field));
     } else {
       return parent::attributeHaveChanged($field);
@@ -71,8 +71,8 @@ class systemSimplePluginGlue extends simplePlugin
 
   protected function attributeValue($field)
   {
-    if ($field == 'ipHostNumber') {
-      return $this->ipHostNumber;
+    if (($field == 'ipHostNumber') || ($field == 'macAddress')) {
+      return $this->$field;
     } else {
       return parent::attributeValue($field);
     }
@@ -80,8 +80,8 @@ class systemSimplePluginGlue extends simplePlugin
 
   protected function attributeInitialValue($field)
   {
-    if ($field == 'ipHostNumber') {
-      $initialValue = $this->previousNetworkSavedAttributes['ipHostNumber'];
+    if (($field == 'ipHostNumber') || ($field == 'macAddress')) {
+      $initialValue = $this->previousNetworkSavedAttributes[$field];
       if (is_array($initialValue)) {
         return $initialValue;
       } else {

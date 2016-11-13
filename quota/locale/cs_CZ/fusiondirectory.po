@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-01-22 16:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/cs_CZ/)\n"
@@ -16,6 +16,71 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: personal/quota/class_quotaAccount.inc:101
+msgid "Quota"
+msgstr "Kvóta"
+
+#: personal/quota/class_quotaAccount.inc:102
+msgid "Plugin for quota support"
+msgstr "Zásuvný modul pro kvóty"
+
+#: personal/quota/class_quotaAccount.inc:120
+msgid "Quota informations"
+msgstr "Informace o kvótách"
+
+#: personal/quota/class_quotaAccount.inc:125
+msgid "Quota informations for this user"
+msgstr "Informace o kvótách pro tohoto uživatele"
+
+#: personal/quota/class_quotaAccount.inc:129
+#: admin/systems/services/quota/class_serviceQuota.inc:51
+msgid "Device"
+msgstr "Zařízení"
+
+#: personal/quota/class_quotaAccount.inc:129
+msgid "Device this quota is for"
+msgstr "Zařízení, kterého se tato kvóta týká"
+
+#: personal/quota/class_quotaAccount.inc:133
+msgid "Block soft limit"
+msgstr "Hranice varování blížícího se vyčerpání kvóty počtu zabraných bloků"
+
+#: personal/quota/class_quotaAccount.inc:133
+msgid "Soft limit for the block the user can use"
+msgstr "Hranice varování blížícího se vyčerpání kvóty bloků, které uživatel může využít"
+
+#: personal/quota/class_quotaAccount.inc:139
+msgid "Block hard limit"
+msgstr "Nepřekročitelná hranice počtu zabraných bloků"
+
+#: personal/quota/class_quotaAccount.inc:139
+msgid "Hard limit for the block the user can use"
+msgstr "Nepřekročitelná hranice počtu bloků, které uživatel může využít"
+
+#: personal/quota/class_quotaAccount.inc:145
+msgid "Inode soft limit"
+msgstr "varovný („měkký“) limit počtu souborů a složek (i-uzlů)"
+
+#: personal/quota/class_quotaAccount.inc:145
+msgid "Soft limit for the inodes the user can use"
+msgstr "Hranice varování blížícího se vyčerpání kvóty i-uzlů, které uživatel může využít"
+
+#: personal/quota/class_quotaAccount.inc:151
+msgid "Inode hard limit"
+msgstr "nepřekročitelný („tvrdý“) limit počtu souborů a složek (i-uzlů)"
+
+#: personal/quota/class_quotaAccount.inc:151
+msgid "Hard limit for the inodes the user can use"
+msgstr "Nepřekročitelná hranice počtu i-uzlů, které uživatel může využít"
+
+#: personal/quota/class_quotaAccount.inc:157
+msgid "Server"
+msgstr "Server"
+
+#: personal/quota/class_quotaAccount.inc:157
+msgid "Server hosting the device this quota is for"
+msgstr "Server ve kterém se nachází zařízení, kterého se týká tato kvóta"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:30
 #: admin/systems/services/quota/class_serviceQuota.inc:31
@@ -33,11 +98,6 @@ msgstr "Sdílení"
 #: admin/systems/services/quota/class_serviceQuota.inc:47
 msgid "Quotas for the shares this server hosts"
 msgstr "Kvóty pro sdílení na tomto serveru"
-
-#: admin/systems/services/quota/class_serviceQuota.inc:51
-#: personal/quota/class_quotaAccount.inc:129
-msgid "Device"
-msgstr "Zařízení"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:51
 msgid "Device concerned by this quota"
@@ -168,63 +228,3 @@ msgstr "Neplatná hodnota v kódování znaků : %s"
 #, php-format
 msgid "(%s by %s)"
 msgstr "(%s od %s)"
-
-#: personal/quota/class_quotaAccount.inc:101
-msgid "Quota"
-msgstr "Kvóta"
-
-#: personal/quota/class_quotaAccount.inc:102
-msgid "Plugin for quota support"
-msgstr "Zásuvný modul pro kvóty"
-
-#: personal/quota/class_quotaAccount.inc:120
-msgid "Quota informations"
-msgstr "Informace o kvótách"
-
-#: personal/quota/class_quotaAccount.inc:125
-msgid "Quota informations for this user"
-msgstr "Informace o kvótách pro tohoto uživatele"
-
-#: personal/quota/class_quotaAccount.inc:129
-msgid "Device this quota is for"
-msgstr "Zařízení, kterého se tato kvóta týká"
-
-#: personal/quota/class_quotaAccount.inc:133
-msgid "Block soft limit"
-msgstr "Hranice varování blížícího se vyčerpání kvóty počtu zabraných bloků"
-
-#: personal/quota/class_quotaAccount.inc:133
-msgid "Soft limit for the block the user can use"
-msgstr "Hranice varování blížícího se vyčerpání kvóty bloků, které uživatel může využít"
-
-#: personal/quota/class_quotaAccount.inc:139
-msgid "Block hard limit"
-msgstr "Nepřekročitelná hranice počtu zabraných bloků"
-
-#: personal/quota/class_quotaAccount.inc:139
-msgid "Hard limit for the block the user can use"
-msgstr "Nepřekročitelná hranice počtu bloků, které uživatel může využít"
-
-#: personal/quota/class_quotaAccount.inc:145
-msgid "Inode soft limit"
-msgstr "varovný („měkký“) limit počtu souborů a složek (i-uzlů)"
-
-#: personal/quota/class_quotaAccount.inc:145
-msgid "Soft limit for the inodes the user can use"
-msgstr "Hranice varování blížícího se vyčerpání kvóty i-uzlů, které uživatel může využít"
-
-#: personal/quota/class_quotaAccount.inc:151
-msgid "Inode hard limit"
-msgstr "nepřekročitelný („tvrdý“) limit počtu souborů a složek (i-uzlů)"
-
-#: personal/quota/class_quotaAccount.inc:151
-msgid "Hard limit for the inodes the user can use"
-msgstr "Nepřekročitelná hranice počtu i-uzlů, které uživatel může využít"
-
-#: personal/quota/class_quotaAccount.inc:157
-msgid "Server"
-msgstr "Server"
-
-#: personal/quota/class_quotaAccount.inc:157
-msgid "Server hosting the device this quota is for"
-msgstr "Server ve kterém se nachází zařízení, kterého se týká tato kvóta"

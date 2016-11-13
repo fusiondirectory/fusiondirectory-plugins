@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-08-24 12:33+0000\n"
 "Last-Translator: Alexey Matveev\n"
 "Language-Team: Russian (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/ru/)\n"
@@ -18,101 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-
-#: admin/groups/mail/class_groupMail.inc:46
-#: personal/mail/class_mailAccount.inc:71
-#: config/mail/class_mailPluginConfig.inc:28
-msgid "Mail"
-msgstr "Почта"
-
-#: admin/groups/mail/class_groupMail.inc:47
-msgid "Group mail options"
-msgstr ""
-
-#: admin/groups/mail/class_groupMail.inc:59
-msgid "Informations"
-msgstr "Информация"
-
-#: admin/groups/mail/class_groupMail.inc:62
-#: personal/mail/class_mailAccount.inc:97
-msgid "Primary address"
-msgstr "Основной адрес"
-
-#: admin/groups/mail/class_groupMail.inc:62
-msgid "The primary mail address"
-msgstr "Основной адрес электронной почты"
-
-#: admin/groups/mail/class_groupMail.inc:66
-#: personal/mail/class_mailAccount.inc:101
-msgid "Server"
-msgstr "Сервер"
-
-#: admin/groups/mail/class_groupMail.inc:66
-msgid "Server mail"
-msgstr ""
-
-#: admin/groups/mail/class_groupMail.inc:72
-#: personal/mail/class_mailAccount.inc:117
-msgid "Alternative addresses"
-msgstr "Альтернативные адреса"
-
-#: admin/groups/mail/class_groupMail.inc:72
-msgid "Alternative mail addresses for the group"
-msgstr "Альтернативный адрес почты для группы"
-
-#: admin/groups/mail/class_groupMail.inc:77
-msgid "Forward messages to non group members"
-msgstr "Пересылать сообщения не членам группы"
-
-#: admin/groups/mail/class_groupMail.inc:81
-msgid "Only allowed to receive local mail"
-msgstr ""
-
-#: admin/groups/mail/class_groupMail.inc:81
-msgid ""
-"Whether this group mail is only allowed to receive messages from local "
-"senders"
-msgstr ""
-
-#: admin/systems/services/imap/class_serviceIMAP.inc:32
-msgid "IMAP/POP3 generic service"
-msgstr ""
-
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
-msgid "IMAP/POP3"
-msgstr "IMAP/POP3"
-
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
-msgid "Services"
-msgstr "Сервисы"
-
-#: personal/mail/class_mail-methods.inc:154
-#: personal/mail/class_mail-methods.inc:516
-msgid "Configuration error"
-msgstr "Ошибка конфигурации"
-
-#: personal/mail/class_mail-methods.inc:155
-#, php-format
-msgid "The configured mail attribute '%s' is unsupported!"
-msgstr ""
-
-#: personal/mail/class_mail-methods.inc:517
-#, php-format
-msgid "Mail method '%s' is unknown!"
-msgstr "Не известный почтовый метод '%s'!"
-
-#: personal/mail/class_mail-methods.inc:764
-#: personal/mail/class_mail-methods.inc:765
-msgid "None"
-msgstr ""
-
-#: personal/mail/class_mail-methods.inc:854
-msgid "Unknown"
-msgstr "Неизвестно"
-
-#: personal/mail/class_mail-methods.inc:856
-msgid "Unlimited"
-msgstr "Неограниченный"
 
 #: personal/mail/class_mailAccount.inc:45
 #: personal/mail/class_mailAccount.inc:238
@@ -138,6 +43,12 @@ msgstr "Использование квоты"
 msgid "Part of the quota which is used"
 msgstr ""
 
+#: personal/mail/class_mailAccount.inc:71
+#: config/mail/class_mailPluginConfig.inc:28
+#: admin/groups/mail/class_groupMail.inc:46
+msgid "Mail"
+msgstr "Почта"
+
 #: personal/mail/class_mailAccount.inc:72
 #: config/mail/class_mailPluginConfig.inc:41
 msgid "Mail settings"
@@ -148,8 +59,18 @@ msgid "Mail account"
 msgstr "Почтовый аккаунт"
 
 #: personal/mail/class_mailAccount.inc:97
+#: admin/groups/mail/class_groupMail.inc:62
+msgid "Primary address"
+msgstr "Основной адрес"
+
+#: personal/mail/class_mailAccount.inc:97
 msgid "Primary mail address"
 msgstr "Первичный адрес почты"
+
+#: personal/mail/class_mailAccount.inc:101
+#: admin/groups/mail/class_groupMail.inc:66
+msgid "Server"
+msgstr "Сервер"
 
 #: personal/mail/class_mailAccount.inc:101
 msgid "Specify the mail server where the user will be hosted on"
@@ -162,6 +83,11 @@ msgstr "Размер квоты"
 #: personal/mail/class_mailAccount.inc:113
 msgid "Other addresses and redirections"
 msgstr "Другие адреса и редиректы (перенаправления)"
+
+#: personal/mail/class_mailAccount.inc:117
+#: admin/groups/mail/class_groupMail.inc:72
+msgid "Alternative addresses"
+msgstr "Альтернативные адреса"
 
 #: personal/mail/class_mailAccount.inc:117
 msgid "List of alternative mail addresses"
@@ -252,6 +178,34 @@ msgstr ""
 msgid "Cannot remove mailbox: %s"
 msgstr "Не могу удалить почтовый ящик: \"%s\""
 
+#: personal/mail/class_mail-methods.inc:154
+#: personal/mail/class_mail-methods.inc:516
+msgid "Configuration error"
+msgstr "Ошибка конфигурации"
+
+#: personal/mail/class_mail-methods.inc:155
+#, php-format
+msgid "The configured mail attribute '%s' is unsupported!"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:517
+#, php-format
+msgid "Mail method '%s' is unknown!"
+msgstr "Не известный почтовый метод '%s'!"
+
+#: personal/mail/class_mail-methods.inc:764
+#: personal/mail/class_mail-methods.inc:765
+msgid "None"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:854
+msgid "Unknown"
+msgstr "Неизвестно"
+
+#: personal/mail/class_mail-methods.inc:856
+msgid "Unlimited"
+msgstr "Неограниченный"
+
 #: config/mail/class_mailPluginConfig.inc:29
 msgid "Mail plugin configuration"
 msgstr "Настройка плагина Почта"
@@ -324,3 +278,49 @@ msgstr ""
 #: config/mail/class_mailPluginConfig.inc:84
 msgid "Prefix to add for mail shared folders."
 msgstr ""
+
+#: admin/groups/mail/class_groupMail.inc:47
+msgid "Group mail options"
+msgstr ""
+
+#: admin/groups/mail/class_groupMail.inc:59
+msgid "Informations"
+msgstr "Информация"
+
+#: admin/groups/mail/class_groupMail.inc:62
+msgid "The primary mail address"
+msgstr "Основной адрес электронной почты"
+
+#: admin/groups/mail/class_groupMail.inc:66
+msgid "Server mail"
+msgstr ""
+
+#: admin/groups/mail/class_groupMail.inc:72
+msgid "Alternative mail addresses for the group"
+msgstr "Альтернативный адрес почты для группы"
+
+#: admin/groups/mail/class_groupMail.inc:77
+msgid "Forward messages to non group members"
+msgstr "Пересылать сообщения не членам группы"
+
+#: admin/groups/mail/class_groupMail.inc:81
+msgid "Only allowed to receive local mail"
+msgstr ""
+
+#: admin/groups/mail/class_groupMail.inc:81
+msgid ""
+"Whether this group mail is only allowed to receive messages from local "
+"senders"
+msgstr ""
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:32
+msgid "IMAP/POP3 generic service"
+msgstr ""
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:33
+msgid "IMAP/POP3"
+msgstr "IMAP/POP3"
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:33
+msgid "Services"
+msgstr "Сервисы"

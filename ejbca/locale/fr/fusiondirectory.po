@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-01-22 16:04+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: config/ejbca/class_ejbcaConfig.inc:28
+msgid "EJBCA plugin configuration"
+msgstr "Configuration du plugin EJBCA"
+
+#: config/ejbca/class_ejbcaConfig.inc:29
+msgid "FusionDirectory ejbca plugin configuration"
+msgstr "Configuration du plugin ejbca pour FusionDirectory"
+
+#: config/ejbca/class_ejbcaConfig.inc:42
+msgid "EJBCA plugin"
+msgstr "Plugin EJBCA"
+
+#: config/ejbca/class_ejbcaConfig.inc:45
+msgid "EJBCA RDN"
+msgstr "Branche EJBCA"
+
+#: config/ejbca/class_ejbcaConfig.inc:45
+msgid "Branch in which ejbca certificates are stored"
+msgstr "Branche dans laquelle sont stockés les certificats EJBCA"
 
 #: admin/ejbca/certificates/class_ejbcaCertificates.inc:29
 #: admin/ejbca/class_ejbcaManagement.inc:32
@@ -65,23 +85,3 @@ msgstr "Nom commun"
 #: admin/ejbca/class_ejbcaCertificate.inc:55
 msgid "Certificate content"
 msgstr "Contenu du certificat"
-
-#: config/ejbca/class_ejbcaConfig.inc:28
-msgid "EJBCA plugin configuration"
-msgstr "Configuration du plugin EJBCA"
-
-#: config/ejbca/class_ejbcaConfig.inc:29
-msgid "FusionDirectory ejbca plugin configuration"
-msgstr "Configuration du plugin ejbca pour FusionDirectory"
-
-#: config/ejbca/class_ejbcaConfig.inc:42
-msgid "EJBCA plugin"
-msgstr "Plugin EJBCA"
-
-#: config/ejbca/class_ejbcaConfig.inc:45
-msgid "EJBCA RDN"
-msgstr "Branche EJBCA"
-
-#: config/ejbca/class_ejbcaConfig.inc:45
-msgid "Branch in which ejbca certificates are stored"
-msgstr "Branche dans laquelle sont stockés les certificats EJBCA"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-08-12 05:51+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Russian (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/ru/)\n"
@@ -16,24 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-
-#: html/class_expiredUserPostpone.inc:58
-msgid "This token is invalid"
-msgstr ""
-
-#: html/class_expiredUserPostpone.inc:195
-msgid "Contact your administrator, there was a problem with mail server"
-msgstr "Свяжитесь с вашим системным администратором, были проблемы с почтовым сервером"
-
-#: html/class_expiredUserPostpone.inc:206
-#, php-format
-msgid "Did not find an account with login \"%s\""
-msgstr "Не найден аккаунт с логином \"%s\""
-
-#: html/class_expiredUserPostpone.inc:209
-#, php-format
-msgid "Found multiple accounts with login \"%s\""
-msgstr "Найдено множество учетных записей с логином \"%s\""
 
 #: config/user-reminder/class_userReminderConfig.inc:28
 msgid "User reminder"
@@ -158,6 +140,24 @@ msgid ""
 "Dear %1$s,\n"
 " your account %2$s expiration has been successfully postponed.\n"
 msgstr ""
+
+#: html/class_expiredUserPostpone.inc:58
+msgid "This token is invalid"
+msgstr ""
+
+#: html/class_expiredUserPostpone.inc:195
+msgid "Contact your administrator, there was a problem with mail server"
+msgstr "Свяжитесь с вашим системным администратором, были проблемы с почтовым сервером"
+
+#: html/class_expiredUserPostpone.inc:206
+#, php-format
+msgid "Did not find an account with login \"%s\""
+msgstr "Не найден аккаунт с логином \"%s\""
+
+#: html/class_expiredUserPostpone.inc:209
+#, php-format
+msgid "Found multiple accounts with login \"%s\""
+msgstr "Найдено множество учетных записей с логином \"%s\""
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:2
 #: ihtml/themes/breezy/user-reminder.tpl.c:5

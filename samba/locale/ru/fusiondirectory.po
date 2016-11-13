@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-09-27 16:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Russian (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/ru/)\n"
@@ -18,288 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-
-#: admin/groups/samba/class_sambaGroup.inc:29
-#: personal/samba/class_sambaAccount.inc:158
-#: config/samba/class_sambaPluginConfig.inc:28
-msgid "Samba"
-msgstr "Samba"
-
-#: admin/groups/samba/class_sambaGroup.inc:30
-msgid "Samba group settings"
-msgstr ""
-
-#: admin/groups/samba/class_sambaGroup.inc:42
-#: admin/groups/samba/class_sambaGroup.inc:45
-#: admin/systems/samba/class_winstationGeneric.inc:85
-#: personal/samba/class_sambaAccount.inc:199
-msgid "Domain"
-msgstr "Домен"
-
-#: admin/groups/samba/class_sambaGroup.inc:45
-msgid "Samba domain"
-msgstr "Домен Samba"
-
-#: admin/groups/samba/class_sambaGroup.inc:49
-msgid "Samba informations"
-msgstr ""
-
-#: admin/groups/samba/class_sambaGroup.inc:56
-msgid "Group type"
-msgstr "Тип группы"
-
-#: admin/groups/samba/class_sambaGroup.inc:56
-msgid "Samba group type"
-msgstr " Тип Samba групп"
-
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
-msgid "Samba group"
-msgstr "Группа Samba"
-
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
-msgid "Domain admins"
-msgstr "Администраторы домена"
-
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
-msgid "Domain users"
-msgstr "Пользователи домена"
-
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
-msgid "Domain guests"
-msgstr "Непривилегированные пользователи домена"
-
-#: admin/groups/samba/class_sambaGroup.inc:106
-msgid "Configuration error"
-msgstr "Ошибка конфигурации"
-
-#: admin/groups/samba/class_sambaGroup.inc:106
-msgid "Cannot find group SID in your configuration!"
-msgstr "Не могу найти SID группы в вашей конфигурации!"
-
-#: admin/groups/samba/class_sambaGroup.inc:120
-#, php-format
-msgid "Special group (%d)"
-msgstr "Специальная группа (%d)"
-
-#: admin/groups/samba/class_sambaGroup.inc:135
-#: personal/samba/class_sambaAccount.inc:505
-#: personal/samba/class_sambaAccount.inc:531
-#: personal/samba/class_sambaAccount.inc:552
-msgid "Warning"
-msgstr "Предупреждение"
-
-#: admin/groups/samba/class_sambaGroup.inc:135
-#: personal/samba/class_sambaAccount.inc:505
-msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr ""
-
-#: admin/samba/class_sambaDomainManagement.inc:35
-msgid "Samba domains"
-msgstr "Домены Samba"
-
-#: admin/samba/class_sambaDomainManagement.inc:36
-msgid "Samba domain management"
-msgstr "Управление доменами Samba"
-
-#: admin/samba/class_sambaDomain.inc:30 admin/samba/class_sambaDomain.inc:31
-#: admin/samba/class_sambaDomain.inc:34
-msgid "Samba Domain"
-msgstr "Домен Samba"
-
-#: admin/samba/class_sambaDomain.inc:35
-msgid "Samba domain settings"
-msgstr "Настройки домена Samba"
-
-#: admin/samba/class_sambaDomain.inc:51
-#: admin/systems/samba/class_winstationGeneric.inc:61
-msgid "Properties"
-msgstr "Свойства"
-
-#: admin/samba/class_sambaDomain.inc:54
-msgid "Domain name"
-msgstr "Имя домена"
-
-#: admin/samba/class_sambaDomain.inc:54
-msgid "Name of this domain"
-msgstr "Имя этого домена"
-
-#: admin/samba/class_sambaDomain.inc:58
-msgid "SID"
-msgstr "SID"
-
-#: admin/samba/class_sambaDomain.inc:58
-msgid "SID of this domain"
-msgstr "SID этого домена"
-
-#: admin/samba/class_sambaDomain.inc:62
-msgid "Rid base"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:62
-msgid "Algorithmic rid base"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:66
-msgid "Minimum password age"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:67
-msgid ""
-"Minimum password age, in seconds (default: 0 => allow immediate password "
-"change)"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:72
-msgid "Maximum password age"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:73
-msgid ""
-"Maximum password age, in seconds (default: -1 => never expire passwords)"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:78
-msgid "Next RID"
-msgstr "Следующий RID"
-
-#: admin/samba/class_sambaDomain.inc:79
-msgid "Next NT rid to give out for anything"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:83
-msgid "Next group RID"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:84
-msgid "Next NT rid to give out for groups"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:88
-msgid "Next user RID"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:89
-msgid "Next NT rid to give our for users"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:93
-msgid "Minimum password length"
-msgstr "Минимальная длина пароля"
-
-#: admin/samba/class_sambaDomain.inc:94
-msgid "Minimal password length (default: 5)"
-msgstr "Минимальная длина пароля (по умолчанию: 5)"
-
-#: admin/samba/class_sambaDomain.inc:98
-msgid "Password history length"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:99
-msgid "Length of Password History Entries (default: 0 => off)"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:103
-msgid "Logon to change password"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:104
-msgid "Force Users to logon for password change (default: 0 => off, 2 => on)"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:108
-msgid "Lockout duration"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:109
-msgid "Lockout duration in minutes (default: 30, -1 => forever)"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:113
-msgid "Lockout observation window"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:114
-msgid "Reset time after lockout in minutes (default: 30)"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:118
-msgid "Lockout threshold"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:119
-msgid "Lockout users after bad logon attempts (default: 0 => off)"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:123
-msgid "Force logoff"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:124
-msgid "Disconnect Users outside logon hours (default: -1 => off, 0 => on)"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:128
-msgid "Refuse machine password change"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:129
-msgid "Allow Machine Password changes (default: 0 => off)"
-msgstr ""
-
-#: admin/systems/samba/class_argonautEventSambaShares.inc:27
-msgid "Update Samba Shares"
-msgstr ""
-
-#: admin/systems/samba/class_winstationGeneric.inc:37
-msgid "Winstation"
-msgstr "Рабочая станция Windows"
-
-#: admin/systems/samba/class_winstationGeneric.inc:38
-msgid "Windows workstation information"
-msgstr "Информация об рабочей станции Windows"
-
-#: admin/systems/samba/class_winstationGeneric.inc:42
-#: admin/systems/samba/class_winstationGeneric.inc:43
-msgid "Windows workstation"
-msgstr "Рабочая станция Windows"
-
-#: admin/systems/samba/class_winstationGeneric.inc:70
-#: admin/systems/samba/class_winstationGeneric.inc:74
-msgid "The name of the winstation"
-msgstr "Название рабочей станции Windows"
-
-#: admin/systems/samba/class_winstationGeneric.inc:74
-msgid "Name"
-msgstr "Фамилия"
-
-#: admin/systems/samba/class_winstationGeneric.inc:81
-msgid "Description"
-msgstr "Описание"
-
-#: admin/systems/samba/class_winstationGeneric.inc:81
-msgid "A short description of the winstation"
-msgstr "Краткое описание рабочей станции Windows"
-
-#: admin/systems/samba/class_winstationGeneric.inc:85
-#: personal/samba/class_sambaAccount.inc:199
-msgid "Samba domain name"
-msgstr "Имя домена Samba"
-
-#: admin/systems/samba/class_winstationGeneric.inc:89
-msgid "Location"
-msgstr "Местоположение"
-
-#: admin/systems/samba/class_winstationGeneric.inc:89
-msgid "The location of the winstation"
-msgstr "Расположение рабочей станции Windows"
-
-#: admin/systems/samba/class_winstationGeneric.inc:96
-msgid "Network settings"
-msgstr "Сетевые настройки"
 
 #: include/class_smbHash.inc:356
 msgid ""
@@ -310,6 +28,12 @@ msgstr "В вашей PHP установки нету ни mhash() ни хэш-�
 #: personal/samba/class_sambaAccount.inc:31
 msgid "Samba Munged Dial"
 msgstr ""
+
+#: personal/samba/class_sambaAccount.inc:158
+#: config/samba/class_sambaPluginConfig.inc:28
+#: admin/groups/samba/class_sambaGroup.inc:29
+msgid "Samba"
+msgstr "Samba"
 
 #: personal/samba/class_sambaAccount.inc:159
 #: config/samba/class_sambaPluginConfig.inc:41
@@ -339,6 +63,18 @@ msgstr "Путь к домашней директории"
 #: personal/samba/class_sambaAccount.inc:227
 msgid "UNC path for the home drive"
 msgstr "UNC путь к домашнему диску"
+
+#: personal/samba/class_sambaAccount.inc:199
+#: admin/groups/samba/class_sambaGroup.inc:42
+#: admin/groups/samba/class_sambaGroup.inc:45
+#: admin/systems/samba/class_winstationGeneric.inc:85
+msgid "Domain"
+msgstr "Домен"
+
+#: personal/samba/class_sambaAccount.inc:199
+#: admin/systems/samba/class_winstationGeneric.inc:85
+msgid "Samba domain name"
+msgstr "Имя домена Samba"
 
 #: personal/samba/class_sambaAccount.inc:203
 msgid "Script path"
@@ -578,6 +314,18 @@ msgstr ""
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr ""
 
+#: personal/samba/class_sambaAccount.inc:505
+#: personal/samba/class_sambaAccount.inc:531
+#: personal/samba/class_sambaAccount.inc:552
+#: admin/groups/samba/class_sambaGroup.inc:135
+msgid "Warning"
+msgstr "Предупреждение"
+
+#: personal/samba/class_sambaAccount.inc:505
+#: admin/groups/samba/class_sambaGroup.inc:135
+msgid "Undefined Samba SID detected. Please fix this problem manually!"
+msgstr ""
+
 #: personal/samba/class_sambaAccount.inc:532
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
@@ -654,6 +402,258 @@ msgstr ""
 msgid ""
 "Issue a warning if POSIX primary group cannot be converted to Samba primary "
 "group when activating the Samba tab of a user"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:30
+msgid "Samba group settings"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:45
+msgid "Samba domain"
+msgstr "Домен Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:49
+msgid "Samba informations"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Group type"
+msgstr "Тип группы"
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Samba group type"
+msgstr " Тип Samba групп"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:120
+msgid "Samba group"
+msgstr "Группа Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:120
+msgid "Domain admins"
+msgstr "Администраторы домена"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:120
+msgid "Domain users"
+msgstr "Пользователи домена"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:120
+msgid "Domain guests"
+msgstr "Непривилегированные пользователи домена"
+
+#: admin/groups/samba/class_sambaGroup.inc:106
+msgid "Configuration error"
+msgstr "Ошибка конфигурации"
+
+#: admin/groups/samba/class_sambaGroup.inc:106
+msgid "Cannot find group SID in your configuration!"
+msgstr "Не могу найти SID группы в вашей конфигурации!"
+
+#: admin/groups/samba/class_sambaGroup.inc:120
+#, php-format
+msgid "Special group (%d)"
+msgstr "Специальная группа (%d)"
+
+#: admin/samba/class_sambaDomainManagement.inc:35
+msgid "Samba domains"
+msgstr "Домены Samba"
+
+#: admin/samba/class_sambaDomainManagement.inc:36
+msgid "Samba domain management"
+msgstr "Управление доменами Samba"
+
+#: admin/samba/class_sambaDomain.inc:30 admin/samba/class_sambaDomain.inc:31
+#: admin/samba/class_sambaDomain.inc:34
+msgid "Samba Domain"
+msgstr "Домен Samba"
+
+#: admin/samba/class_sambaDomain.inc:35
+msgid "Samba domain settings"
+msgstr "Настройки домена Samba"
+
+#: admin/samba/class_sambaDomain.inc:51
+#: admin/systems/samba/class_winstationGeneric.inc:61
+msgid "Properties"
+msgstr "Свойства"
+
+#: admin/samba/class_sambaDomain.inc:54
+msgid "Domain name"
+msgstr "Имя домена"
+
+#: admin/samba/class_sambaDomain.inc:54
+msgid "Name of this domain"
+msgstr "Имя этого домена"
+
+#: admin/samba/class_sambaDomain.inc:58
+msgid "SID"
+msgstr "SID"
+
+#: admin/samba/class_sambaDomain.inc:58
+msgid "SID of this domain"
+msgstr "SID этого домена"
+
+#: admin/samba/class_sambaDomain.inc:62
+msgid "Rid base"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:62
+msgid "Algorithmic rid base"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:66
+msgid "Minimum password age"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:67
+msgid ""
+"Minimum password age, in seconds (default: 0 => allow immediate password "
+"change)"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:72
+msgid "Maximum password age"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:73
+msgid ""
+"Maximum password age, in seconds (default: -1 => never expire passwords)"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:78
+msgid "Next RID"
+msgstr "Следующий RID"
+
+#: admin/samba/class_sambaDomain.inc:79
+msgid "Next NT rid to give out for anything"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:83
+msgid "Next group RID"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:84
+msgid "Next NT rid to give out for groups"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:88
+msgid "Next user RID"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:89
+msgid "Next NT rid to give our for users"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:93
+msgid "Minimum password length"
+msgstr "Минимальная длина пароля"
+
+#: admin/samba/class_sambaDomain.inc:94
+msgid "Minimal password length (default: 5)"
+msgstr "Минимальная длина пароля (по умолчанию: 5)"
+
+#: admin/samba/class_sambaDomain.inc:98
+msgid "Password history length"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:99
+msgid "Length of Password History Entries (default: 0 => off)"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:103
+msgid "Logon to change password"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:104
+msgid "Force Users to logon for password change (default: 0 => off, 2 => on)"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:108
+msgid "Lockout duration"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:109
+msgid "Lockout duration in minutes (default: 30, -1 => forever)"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:113
+msgid "Lockout observation window"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:114
+msgid "Reset time after lockout in minutes (default: 30)"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:118
+msgid "Lockout threshold"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:119
+msgid "Lockout users after bad logon attempts (default: 0 => off)"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:123
+msgid "Force logoff"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:124
+msgid "Disconnect Users outside logon hours (default: -1 => off, 0 => on)"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:128
+msgid "Refuse machine password change"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:129
+msgid "Allow Machine Password changes (default: 0 => off)"
+msgstr ""
+
+#: admin/systems/samba/class_winstationGeneric.inc:37
+msgid "Winstation"
+msgstr "Рабочая станция Windows"
+
+#: admin/systems/samba/class_winstationGeneric.inc:38
+msgid "Windows workstation information"
+msgstr "Информация об рабочей станции Windows"
+
+#: admin/systems/samba/class_winstationGeneric.inc:42
+#: admin/systems/samba/class_winstationGeneric.inc:43
+msgid "Windows workstation"
+msgstr "Рабочая станция Windows"
+
+#: admin/systems/samba/class_winstationGeneric.inc:70
+#: admin/systems/samba/class_winstationGeneric.inc:74
+msgid "The name of the winstation"
+msgstr "Название рабочей станции Windows"
+
+#: admin/systems/samba/class_winstationGeneric.inc:74
+msgid "Name"
+msgstr "Фамилия"
+
+#: admin/systems/samba/class_winstationGeneric.inc:81
+msgid "Description"
+msgstr "Описание"
+
+#: admin/systems/samba/class_winstationGeneric.inc:81
+msgid "A short description of the winstation"
+msgstr "Краткое описание рабочей станции Windows"
+
+#: admin/systems/samba/class_winstationGeneric.inc:89
+msgid "Location"
+msgstr "Местоположение"
+
+#: admin/systems/samba/class_winstationGeneric.inc:89
+msgid "The location of the winstation"
+msgstr "Расположение рабочей станции Windows"
+
+#: admin/systems/samba/class_winstationGeneric.inc:96
+msgid "Network settings"
+msgstr "Сетевые настройки"
+
+#: admin/systems/samba/class_argonautEventSambaShares.inc:27
+msgid "Update Samba Shares"
 msgstr ""
 
 #: personal/samba/sambaLogonHours.tpl.c:2

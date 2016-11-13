@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-01-22 16:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
@@ -20,78 +20,34 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/repository/class_repositoryDistribution.inc:30
-#: admin/repository/class_repositoryDistribution.inc:31
-#: admin/repository/class_repositoryDistribution.inc:33
-#: admin/repository/class_repositoryDistribution.inc:56
-msgid "Repository distribution"
-msgstr "Διανομή αποθετηρίου"
+#: config/repository/class_repositoryConfig.inc:28
+msgid "Repository configuration"
+msgstr "Ρύθμιση του αποθετηρίου"
 
-#: admin/repository/class_repositoryDistribution.inc:60
-#: admin/repository/class_repositorySection.inc:57
-#: admin/repository/class_buildRepository.inc:63
-msgid "Name"
-msgstr "Όνομα"
+#: config/repository/class_repositoryConfig.inc:29
+msgid "FusionDirectory repository plugin configuration"
+msgstr "Ρύθμιση προσθέτου του αποθετηρίου FusionDirectory"
 
-#: admin/repository/class_repositoryDistribution.inc:60
-msgid "Unique name for this distribution"
-msgstr "Ένα μοναδικό όνομα για αυτήν τη διανομή"
-
-#: admin/repository/class_repositoryDistribution.inc:64
-#: admin/repository/class_repositorySection.inc:61
-#: admin/repository/class_buildRepository.inc:67
-msgid "Description"
-msgstr "Περιγραφή"
-
-#: admin/repository/class_repositoryDistribution.inc:64
-msgid "Description of this distribution"
-msgstr "Περιγραφή της διανομής"
-
-#: admin/repository/class_repositoryDistribution.inc:69
-msgid "Section"
-msgstr "Ενότητα"
-
-#: admin/repository/class_repositoryDistribution.inc:69
-msgid "The sections this distribution contains"
-msgstr "Οι ενότητες που περιλαμβάνει αυτή η διανομή"
-
-#: admin/repository/class_repositoryDistribution.inc:76
-#: admin/repository/class_repositorySection.inc:66
-msgid "Based on"
-msgstr "Βασισμένο σε"
-
-#: admin/repository/class_repositoryDistribution.inc:76
-msgid "The distributions this one is based on"
-msgstr "Οι διανομές στις οποιες βασίζεται"
-
-#: admin/repository/class_repositorySection.inc:30
-#: admin/repository/class_repositorySection.inc:31
-#: admin/repository/class_repositorySection.inc:33
-#: admin/repository/class_repositorySection.inc:53
-msgid "Repository section"
-msgstr "Ενότητα αποθετηρίου"
-
-#: admin/repository/class_repositorySection.inc:57
-msgid "Unique name for this section"
-msgstr "Ένα μοναδικό όνομα για αυτή την ενότητα"
-
-#: admin/repository/class_repositorySection.inc:61
-msgid "Description of this section"
-msgstr "Περιγραφή αυτής της ενότητας"
-
-#: admin/repository/class_repositorySection.inc:66
-msgid "The sections this one is based on"
-msgstr "Οι ενότητες στις οποίες βασίζεται"
-
-#: admin/repository/class_repositoryManagement.inc:34
-#: admin/repository/class_repositoryManagement.inc:35
-msgid "Repository management"
-msgstr "Διαχείριση αποθετηρίου"
-
-#: admin/repository/class_repositoryManagement.inc:40
 #: config/repository/class_repositoryConfig.inc:42
+#: admin/repository/class_repositoryManagement.inc:40
 msgid "Repository"
 msgstr "Αποθετήριο"
+
+#: config/repository/class_repositoryConfig.inc:45
+msgid "Repository RDN"
+msgstr "RDN αποθετηρίου"
+
+#: config/repository/class_repositoryConfig.inc:45
+msgid "Branch in which repository objects will be stored"
+msgstr "Κλάδος στον οποίο θα αποθηκεύονται τα αντικείμενα του αποθετηρίου"
+
+#: config/repository/class_repositoryConfig.inc:51
+msgid "Repository types"
+msgstr "Τύποι αποθετηρίου"
+
+#: config/repository/class_repositoryConfig.inc:51
+msgid "Available repository types"
+msgstr "Διαθέσιμοι τύποι αποθετηρίου"
 
 #: admin/repository/class_buildRepository.inc:30
 #: admin/repository/class_buildRepository.inc:31
@@ -101,8 +57,20 @@ msgid "Build repository"
 msgstr "Αποθετήριο έκδοσης"
 
 #: admin/repository/class_buildRepository.inc:63
+#: admin/repository/class_repositoryDistribution.inc:60
+#: admin/repository/class_repositorySection.inc:57
+msgid "Name"
+msgstr "Όνομα"
+
+#: admin/repository/class_buildRepository.inc:63
 msgid "Unique name for this repository"
 msgstr "Μοναδικό όνομα για το αποθετήριο."
+
+#: admin/repository/class_buildRepository.inc:67
+#: admin/repository/class_repositoryDistribution.inc:64
+#: admin/repository/class_repositorySection.inc:61
+msgid "Description"
+msgstr "Περιγραφή"
 
 #: admin/repository/class_buildRepository.inc:67
 msgid "Description of this repository"
@@ -160,26 +128,58 @@ msgstr "Χρήστες"
 msgid "Users of this repository"
 msgstr "Χρήστες του αποθετηρίου"
 
-#: config/repository/class_repositoryConfig.inc:28
-msgid "Repository configuration"
-msgstr "Ρύθμιση του αποθετηρίου"
+#: admin/repository/class_repositoryManagement.inc:34
+#: admin/repository/class_repositoryManagement.inc:35
+msgid "Repository management"
+msgstr "Διαχείριση αποθετηρίου"
 
-#: config/repository/class_repositoryConfig.inc:29
-msgid "FusionDirectory repository plugin configuration"
-msgstr "Ρύθμιση προσθέτου του αποθετηρίου FusionDirectory"
+#: admin/repository/class_repositoryDistribution.inc:30
+#: admin/repository/class_repositoryDistribution.inc:31
+#: admin/repository/class_repositoryDistribution.inc:33
+#: admin/repository/class_repositoryDistribution.inc:56
+msgid "Repository distribution"
+msgstr "Διανομή αποθετηρίου"
 
-#: config/repository/class_repositoryConfig.inc:45
-msgid "Repository RDN"
-msgstr "RDN αποθετηρίου"
+#: admin/repository/class_repositoryDistribution.inc:60
+msgid "Unique name for this distribution"
+msgstr "Ένα μοναδικό όνομα για αυτήν τη διανομή"
 
-#: config/repository/class_repositoryConfig.inc:45
-msgid "Branch in which repository objects will be stored"
-msgstr "Κλάδος στον οποίο θα αποθηκεύονται τα αντικείμενα του αποθετηρίου"
+#: admin/repository/class_repositoryDistribution.inc:64
+msgid "Description of this distribution"
+msgstr "Περιγραφή της διανομής"
 
-#: config/repository/class_repositoryConfig.inc:51
-msgid "Repository types"
-msgstr "Τύποι αποθετηρίου"
+#: admin/repository/class_repositoryDistribution.inc:69
+msgid "Section"
+msgstr "Ενότητα"
 
-#: config/repository/class_repositoryConfig.inc:51
-msgid "Available repository types"
-msgstr "Διαθέσιμοι τύποι αποθετηρίου"
+#: admin/repository/class_repositoryDistribution.inc:69
+msgid "The sections this distribution contains"
+msgstr "Οι ενότητες που περιλαμβάνει αυτή η διανομή"
+
+#: admin/repository/class_repositoryDistribution.inc:76
+#: admin/repository/class_repositorySection.inc:66
+msgid "Based on"
+msgstr "Βασισμένο σε"
+
+#: admin/repository/class_repositoryDistribution.inc:76
+msgid "The distributions this one is based on"
+msgstr "Οι διανομές στις οποιες βασίζεται"
+
+#: admin/repository/class_repositorySection.inc:30
+#: admin/repository/class_repositorySection.inc:31
+#: admin/repository/class_repositorySection.inc:33
+#: admin/repository/class_repositorySection.inc:53
+msgid "Repository section"
+msgstr "Ενότητα αποθετηρίου"
+
+#: admin/repository/class_repositorySection.inc:57
+msgid "Unique name for this section"
+msgstr "Ένα μοναδικό όνομα για αυτή την ενότητα"
+
+#: admin/repository/class_repositorySection.inc:61
+msgid "Description of this section"
+msgstr "Περιγραφή αυτής της ενότητας"
+
+#: admin/repository/class_repositorySection.inc:66
+msgid "The sections this one is based on"
+msgstr "Οι ενότητες στις οποίες βασίζεται"

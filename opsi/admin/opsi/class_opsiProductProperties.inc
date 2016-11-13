@@ -20,9 +20,9 @@
 
 class SubmittingOPSIProductAttribute extends SelectAttribute
 {
-  function __construct ($label, $description, $ldapName, $required = FALSE, $func, $acl = "")
+  function __construct ($label, $description, $ldapName, $required, $func, $acl = '')
   {
-    parent::__construct($label, $description, $ldapName, $required, array(), "", NULL, $acl);
+    parent::__construct($label, $description, $ldapName, $required, array(), '', NULL, $acl);
     $this->setSubmitForm($func);
   }
 
@@ -138,9 +138,9 @@ class opsiProductProperties extends simplePlugin
               ),
               '|', '', ''
             ),
-            FALSE,  // no order
+            FALSE,
             array(),
-            TRUE    // edit button
+            TRUE
           )
         )
       )

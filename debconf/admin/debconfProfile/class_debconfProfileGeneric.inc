@@ -53,8 +53,6 @@ class DebconfEntriesAttribute extends CompositeAttribute
         $this->attributes[$cn] = new StringAttribute ($cn, $desc, "debconfentry_$cn", FALSE, $default);
         $this->attributes[$cn]->setInLdap(FALSE);
         $this->attributes[$cn]->setAcl($this->getAcl());
-        //~ 'choices'
-        //~ 'extendedDescription'
       }
     }
     $ldap->cd("ou=questions,".$this->plugin->dn);
@@ -64,10 +62,8 @@ class DebconfEntriesAttribute extends CompositeAttribute
         $cn = $entry['cn'][0];
         if (isset($this->attributes[$cn])) {
           $this->attributes[$cn]->setValue($entry['value'][0]);
-          $this->attributes[$cn]->loadValue(NULL); // set initialValue
-          //~ 'flags'
-          //~ 'owners'
-          //~ 'template'
+          /* set initialValue */
+          $this->attributes[$cn]->loadValue(NULL);
         } else {
           msg_dialog::display(_("Error"),  _("There is no template for this profile"), ERROR_DIALOG);
         }
@@ -115,11 +111,14 @@ class DebconfImportAttribute extends FileAttribute
     $matches = array();
     $str = fread($handle, 1024);
     strpos($str, "dn:");
-    $tmp = str_replace ("\n", "", $str);  // removing breaklines
-    $tmp = str_replace (" ", "", $tmp);   // removing spaces
+    /* removing breaklines */
+    $tmp = str_replace ("\n", "", $str);
+    /* removing spaces */
+    $tmp = str_replace (" ", "", $tmp);
+    /* searching for dn: containing the template name */
     if (preg_match( "/dn:.*,ou=templates,ou=([^,=]+),".get_ou("debconfRDN").
                     $config->current['BASE']."/",
-                    $tmp, $matches) > 0) {    // searching for dn: containing the template name
+                    $tmp, $matches) > 0) {
       $this->plugin->attributesAccess['ou']->setPostValue($matches[1]);
       $this->plugin->attributesAccess['ou']->setValue($matches[1]);
       $this->plugin->attributesAccess['ou']->setDisabled(TRUE);

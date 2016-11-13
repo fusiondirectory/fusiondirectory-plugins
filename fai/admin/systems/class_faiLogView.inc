@@ -29,7 +29,8 @@ class AvailableLogsAttribute extends Attribute
       'file'      => '',
       'time'      => '',
       'sort_by'   => 'time',
-      'sort_up'  => TRUE // TRUE means up
+      /* TRUE means up */
+      'sort_up'  => TRUE
     );
     parent::__construct ('', $description, $ldapName, FALSE, $value, $acl);
     $this->setInLdap(FALSE);

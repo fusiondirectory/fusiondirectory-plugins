@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-01-22 16:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/cs_CZ/)\n"
@@ -16,6 +16,54 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:54
+msgid "There are no IMAP compatible mail servers defined!"
+msgstr "Nejsou určeny žádné poštovní servery slučitelné s protokolem IMAP! "
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:59
+msgid "Mail server for this account is invalid!"
+msgstr "Poštovní server pro tento účet je neplatný!"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:246
+msgid "IMAP error"
+msgstr "Chyba IMAP"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:246
+#, php-format
+msgid "Cannot modify IMAP mailbox quota: %s"
+msgstr "Nezdařilo se upravit kvótu pro schránku IMAP: %s"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:323
+msgid "Mail info"
+msgstr "informace o zprávě"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:324
+#, php-format
+msgid ""
+"LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
+"Please delete it manually!"
+msgstr "Položka v LDAPu byla odebrána, ale schránka (%s) na Cyru zůstala.\nSmažte ji prosím ručně!"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:416
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:455
+msgid "The module imap_getacl is not implemented!"
+msgstr "Modul imap_getacl není implementován!"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:524
+#, php-format
+msgid "Cannot retrieve SIEVE script: %s"
+msgstr "Nedaří se získat skript Sieve: %s"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:593
+#, php-format
+msgid "Cannot store SIEVE script: %s"
+msgstr "Nedaří se uložit skript Sieve: %s"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:600
+#, php-format
+msgid "Cannot activate SIEVE script: %s"
+msgstr "Nedaří se aktivovat skript Sieve: %s"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:30
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:31
@@ -104,51 +152,3 @@ msgstr "Číslo portu, na kterém by měl být Cyrus sieve server kontaktován"
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:102
 msgid "Options for contacting Cyrus sieve server"
 msgstr "Předvolby pro kontaktování serveru Cyrus sieve"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:54
-msgid "There are no IMAP compatible mail servers defined!"
-msgstr "Nejsou určeny žádné poštovní servery slučitelné s protokolem IMAP! "
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:59
-msgid "Mail server for this account is invalid!"
-msgstr "Poštovní server pro tento účet je neplatný!"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:246
-msgid "IMAP error"
-msgstr "Chyba IMAP"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:246
-#, php-format
-msgid "Cannot modify IMAP mailbox quota: %s"
-msgstr "Nezdařilo se upravit kvótu pro schránku IMAP: %s"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:323
-msgid "Mail info"
-msgstr "informace o zprávě"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:324
-#, php-format
-msgid ""
-"LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
-"Please delete it manually!"
-msgstr "Položka v LDAPu byla odebrána, ale schránka (%s) na Cyru zůstala.\nSmažte ji prosím ručně!"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:416
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:455
-msgid "The module imap_getacl is not implemented!"
-msgstr "Modul imap_getacl není implementován!"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:524
-#, php-format
-msgid "Cannot retrieve SIEVE script: %s"
-msgstr "Nedaří se získat skript Sieve: %s"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:593
-#, php-format
-msgid "Cannot store SIEVE script: %s"
-msgstr "Nedaří se uložit skript Sieve: %s"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:600
-#, php-format
-msgid "Cannot activate SIEVE script: %s"
-msgstr "Nedaří se aktivovat skript Sieve: %s"

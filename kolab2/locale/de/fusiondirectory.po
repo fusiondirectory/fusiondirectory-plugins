@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-05-12 13:36+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/de/)\n"
@@ -17,6 +17,161 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: personal/kolab2/class_kolabAccount.inc:82
+msgid "Kolab 2"
+msgstr "Kolab 2"
+
+#: personal/kolab2/class_kolabAccount.inc:83
+msgid "Kolab 2 account settings"
+msgstr "Kolab-2-Kontoeinstellungen"
+
+#: personal/kolab2/class_kolabAccount.inc:100
+msgid "Kolab 2 account"
+msgstr "Kolab-2-Konto"
+
+#: personal/kolab2/class_kolabAccount.inc:104
+msgid "Delegations"
+msgstr "Stellvertreter"
+
+#: personal/kolab2/class_kolabAccount.inc:112
+msgid "Mail size"
+msgstr "Mailgröße"
+
+#: personal/kolab2/class_kolabAccount.inc:115
+msgid "No mail size restriction for this account"
+msgstr "Keine Beschränkung der Mailgröße für dieses Konto"
+
+#: personal/kolab2/class_kolabAccount.inc:122
+msgid "Free Busy information"
+msgstr "Frei/Belegt-Information"
+
+#: personal/kolab2/class_kolabAccount.inc:125
+msgid "URL"
+msgstr "URL"
+
+#: personal/kolab2/class_kolabAccount.inc:130
+msgid "Future"
+msgstr "Zukunft"
+
+#: personal/kolab2/class_kolabAccount.inc:130
+msgid "days"
+msgstr "Tage"
+
+#: personal/kolab2/class_kolabAccount.inc:138
+#: personal/kolab2/class_kolabAccount.inc:141
+#: personal/kolab2/class_kolabAccount.inc:149
+#: personal/kolab2/class_kolabAccount.inc:159
+msgid "Invitation policy"
+msgstr "Einladungs-Richtlinie"
+
+#: personal/kolab2/class_kolabAccount.inc:144
+msgid "Default policy"
+msgstr "Standard Policy"
+
+#: personal/kolab2/class_kolabAccount.inc:144
+msgid "Default invitation policy"
+msgstr "Standard Einladungs-Policy"
+
+#: personal/kolab2/class_kolabAccount.inc:146
+#: personal/kolab2/class_kolabAccount.inc:155
+msgid "Manual"
+msgstr "Manuell"
+
+#: personal/kolab2/class_kolabAccount.inc:146
+#: personal/kolab2/class_kolabAccount.inc:155
+msgid "Always accept"
+msgstr "Immer annehmen"
+
+#: personal/kolab2/class_kolabAccount.inc:146
+#: personal/kolab2/class_kolabAccount.inc:155
+msgid "Always reject"
+msgstr "Immer ablehnen"
+
+#: personal/kolab2/class_kolabAccount.inc:146
+#: personal/kolab2/class_kolabAccount.inc:155
+msgid "Reject if conflicts"
+msgstr "Im Konfliktfall ablehnen"
+
+#: personal/kolab2/class_kolabAccount.inc:146
+#: personal/kolab2/class_kolabAccount.inc:155
+msgid "Manual if conflicts"
+msgstr "Im Konfliktfall manuell bearbeiten"
+
+#: personal/kolab2/class_kolabAccount.inc:152
+msgid "mail address"
+msgstr "Mailadresse"
+
+#: personal/kolab2/class_kolabAccount.inc:153
+msgid "policy for this mail address"
+msgstr "Policy für diese Mailadresse"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:146
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:154
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:155
+msgid "Unspecified"
+msgstr "Nicht angegeben"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:147
+msgid "Mails"
+msgstr "Mails"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:148
+msgid "Tasks"
+msgstr "Aufgaben"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:149
+msgid "Journals"
+msgstr "Journal"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:150
+msgid "Calendar"
+msgstr "Kalendar"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:151
+msgid "Contacts"
+msgstr "Kontakte"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:152
+msgid "Notes"
+msgstr "Notizen"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:156
+msgid "Inbox"
+msgstr "Posteingang"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:157
+msgid "Drafts"
+msgstr "Entwürfe"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:158
+msgid "Sent"
+msgstr "Gesendet"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:159
+msgid "SPAM"
+msgstr "Werbung"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:161
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:162
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:163
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:164
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:165
+msgid "Default"
+msgstr "Vorgabe"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:179
+msgid ""
+"Mail settings cannot be removed while there are delegations configured!"
+msgstr "Die Mail-Einstellungen können nicht entfernt werden solange Vertretungen vorhanden sind!"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:272
+msgid "Waiting for kolab to remove mail properties..."
+msgstr "Warte darauf, daß Kolab die Mail-Einstellungen entfernt..."
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:275
+msgid "Please remove the mail settings first!"
+msgstr "Bitte entfernen Sie zunächst die Mail-Einstellungen!"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:29
 msgid "Enable MX lookup for relayhost"
@@ -206,158 +361,3 @@ msgstr "Hostname"
 #: admin/systems/services/kolab2/class_serviceKolab.inc:295
 msgid "LDAP error"
 msgstr "LDAP-Fehler"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:146
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:154
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:155
-msgid "Unspecified"
-msgstr "Nicht angegeben"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:147
-msgid "Mails"
-msgstr "Mails"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:148
-msgid "Tasks"
-msgstr "Aufgaben"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:149
-msgid "Journals"
-msgstr "Journal"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:150
-msgid "Calendar"
-msgstr "Kalendar"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:151
-msgid "Contacts"
-msgstr "Kontakte"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:152
-msgid "Notes"
-msgstr "Notizen"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:156
-msgid "Inbox"
-msgstr "Posteingang"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:157
-msgid "Drafts"
-msgstr "Entwürfe"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:158
-msgid "Sent"
-msgstr "Gesendet"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:159
-msgid "SPAM"
-msgstr "Werbung"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:161
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:162
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:163
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:164
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:165
-msgid "Default"
-msgstr "Vorgabe"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:179
-msgid ""
-"Mail settings cannot be removed while there are delegations configured!"
-msgstr "Die Mail-Einstellungen können nicht entfernt werden solange Vertretungen vorhanden sind!"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:272
-msgid "Waiting for kolab to remove mail properties..."
-msgstr "Warte darauf, daß Kolab die Mail-Einstellungen entfernt..."
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:275
-msgid "Please remove the mail settings first!"
-msgstr "Bitte entfernen Sie zunächst die Mail-Einstellungen!"
-
-#: personal/kolab2/class_kolabAccount.inc:82
-msgid "Kolab 2"
-msgstr "Kolab 2"
-
-#: personal/kolab2/class_kolabAccount.inc:83
-msgid "Kolab 2 account settings"
-msgstr "Kolab-2-Kontoeinstellungen"
-
-#: personal/kolab2/class_kolabAccount.inc:100
-msgid "Kolab 2 account"
-msgstr "Kolab-2-Konto"
-
-#: personal/kolab2/class_kolabAccount.inc:104
-msgid "Delegations"
-msgstr "Stellvertreter"
-
-#: personal/kolab2/class_kolabAccount.inc:112
-msgid "Mail size"
-msgstr "Mailgröße"
-
-#: personal/kolab2/class_kolabAccount.inc:115
-msgid "No mail size restriction for this account"
-msgstr "Keine Beschränkung der Mailgröße für dieses Konto"
-
-#: personal/kolab2/class_kolabAccount.inc:122
-msgid "Free Busy information"
-msgstr "Frei/Belegt-Information"
-
-#: personal/kolab2/class_kolabAccount.inc:125
-msgid "URL"
-msgstr "URL"
-
-#: personal/kolab2/class_kolabAccount.inc:130
-msgid "Future"
-msgstr "Zukunft"
-
-#: personal/kolab2/class_kolabAccount.inc:130
-msgid "days"
-msgstr "Tage"
-
-#: personal/kolab2/class_kolabAccount.inc:138
-#: personal/kolab2/class_kolabAccount.inc:141
-#: personal/kolab2/class_kolabAccount.inc:149
-#: personal/kolab2/class_kolabAccount.inc:159
-msgid "Invitation policy"
-msgstr "Einladungs-Richtlinie"
-
-#: personal/kolab2/class_kolabAccount.inc:144
-msgid "Default policy"
-msgstr "Standard Policy"
-
-#: personal/kolab2/class_kolabAccount.inc:144
-msgid "Default invitation policy"
-msgstr "Standard Einladungs-Policy"
-
-#: personal/kolab2/class_kolabAccount.inc:146
-#: personal/kolab2/class_kolabAccount.inc:155
-msgid "Manual"
-msgstr "Manuell"
-
-#: personal/kolab2/class_kolabAccount.inc:146
-#: personal/kolab2/class_kolabAccount.inc:155
-msgid "Always accept"
-msgstr "Immer annehmen"
-
-#: personal/kolab2/class_kolabAccount.inc:146
-#: personal/kolab2/class_kolabAccount.inc:155
-msgid "Always reject"
-msgstr "Immer ablehnen"
-
-#: personal/kolab2/class_kolabAccount.inc:146
-#: personal/kolab2/class_kolabAccount.inc:155
-msgid "Reject if conflicts"
-msgstr "Im Konfliktfall ablehnen"
-
-#: personal/kolab2/class_kolabAccount.inc:146
-#: personal/kolab2/class_kolabAccount.inc:155
-msgid "Manual if conflicts"
-msgstr "Im Konfliktfall manuell bearbeiten"
-
-#: personal/kolab2/class_kolabAccount.inc:152
-msgid "mail address"
-msgstr "Mailadresse"
-
-#: personal/kolab2/class_kolabAccount.inc:153
-msgid "policy for this mail address"
-msgstr "Policy für diese Mailadresse"

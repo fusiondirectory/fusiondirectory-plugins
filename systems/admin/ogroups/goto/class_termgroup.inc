@@ -40,9 +40,9 @@ class termgroup extends plugin
                                 "update"          => "update",
                                 "reinstall"       => "reinstall",
                                 "wake"            => "wakeup",
-         # These are currently not supported by the tftp daemon
-                           # "memcheck"        => "memcheck",
-                           # "sysinfo"         => "sysinfo"
+         /* These are currently not supported by the tftp daemon
+                                "memcheck"        => "memcheck",
+                                "sysinfo"         => "sysinfo" */
          );
 
   var $attributes     = array("gotoMode", "gotoTerminalPath", "gotoSwapServer");

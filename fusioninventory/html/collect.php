@@ -1,12 +1,10 @@
 <?php
-# Collect inventory and store them in the LDAP
-# Usage :
-#  fusioninventory-agent --server http://server/fusiondirectory/collect.php
+/* Collect inventory and store them in the LDAP
+   Usage : fusioninventory-agent --server http://server/fusiondirectory/collect.php */
 require_once('../include/php_setup.inc');
 require_once('functions.inc');
 require_once('variables.inc');
 
-##########################################################################
 $http_raw_post_data = file_get_contents('php://input');
 
 if (!$http_raw_post_data) {
@@ -19,14 +17,14 @@ if (strpos($http_raw_post_data, "<?xml") === 0) {
 } elseif ($xml = @gzuncompress($http_raw_post_data)) {
     $compressmode = "gzcompress";
 } elseif ($xml = @gzinflate ("\x1f\x8b\x08\x00\x00\x00\x00\x00".$http_raw_post_data)) {
-    // ** OCS agent 2.0 Compatibility, but return in gzcompress
+    /* OCS agent 2.0 Compatibility, but return in gzcompress */
     $compressmode = "gzdeflate";
     if (strstr($xml, "<QUERY>PROLOG</QUERY>")
             AND !strstr($xml, "<TOKEN>")) {
         $compressmode = "gzcompress";
     }
 } elseif ($xml = @gzinflate (substr($http_raw_post_data, 2))) {
-    // ** OCS agent 2.0 Compatibility, but return in gzcompress
+    /* OCS agent 2.0 Compatibility, but return in gzcompress */
     $compressmode = "gzdeflate";
     if (strstr($xml, "<QUERY>PROLOG</QUERY>")
             AND !strstr($xml, "<TOKEN>")) {

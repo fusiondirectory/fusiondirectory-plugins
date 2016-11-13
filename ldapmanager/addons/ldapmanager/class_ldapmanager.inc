@@ -168,8 +168,9 @@ class ldapmanager extends simplePlugin
   function save_export($dn, $acl, $scope, $name)
   {
     global $config;
-    if (!empty($dn)) { // An LDIF export was asked
-      // Check permissions
+    if (!empty($dn)) {
+      /* An LDIF export was asked */
+      /* Check permissions */
       if (!$this->acl_is_writeable($acl, $this->acl_skip_write())) {
         msg_dialog::display(_('Permission error'),
             sprintf(_('You have no permission to export %s!'), bold(LDAP::fix($dn))),
@@ -188,7 +189,7 @@ class ldapmanager extends simplePlugin
     }
   }
 
-  function handle_import_submit()
+  function handle_import_ldif_submit()
   {
     global $config;
     $ldap = $config->get_ldap_link();

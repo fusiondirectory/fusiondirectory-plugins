@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-01-22 16:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: config/autofs/class_autofsConfig.inc:28
+msgid "Autofs configuration"
+msgstr "Ρύθμιση Auto fs "
+
+#: config/autofs/class_autofsConfig.inc:29
+msgid "FusionDirectory autofs plugin configuration"
+msgstr "Ρύθμιση προσθέτου FusionDirectory autofs"
+
+#: config/autofs/class_autofsConfig.inc:42
+msgid "AutoFS"
+msgstr "AutoFS"
+
+#: config/autofs/class_autofsConfig.inc:45
+msgid "AutoFS RDN"
+msgstr "AutoFS RDN"
+
+#: config/autofs/class_autofsConfig.inc:45
+msgid "Branch in which automount info will be stored"
+msgstr "Κλάδος στον οποίο θα αποθηκεύονται πληροφορίες automount"
 
 #: admin/autofs/class_nisObject.inc:31 admin/autofs/class_nisObject.inc:32
 #: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:54
@@ -50,14 +70,6 @@ msgstr "Σημείο προσάρτησης"
 msgid "The mount point this directory will be placed in"
 msgstr "Το σημείο προσάρτησης αυτού του καταλόγου θα τοποθετηθεί"
 
-#: admin/autofs/class_nisMap.inc:32
-msgid "Autofs mount point"
-msgstr "Σημείο προσάρτησης Autofs"
-
-#: admin/autofs/class_nisMap.inc:53
-msgid "Name of the mount point"
-msgstr "Το όνομα του σημείου προσάρτησης"
-
 #: admin/autofs/class_autofsManagement.inc:31
 msgid "Auto fs"
 msgstr "Auto fs"
@@ -66,22 +78,10 @@ msgstr "Auto fs"
 msgid "Auto fs management"
 msgstr "Διαχείριση Auto fs "
 
-#: config/autofs/class_autofsConfig.inc:28
-msgid "Autofs configuration"
-msgstr "Ρύθμιση Auto fs "
+#: admin/autofs/class_nisMap.inc:32
+msgid "Autofs mount point"
+msgstr "Σημείο προσάρτησης Autofs"
 
-#: config/autofs/class_autofsConfig.inc:29
-msgid "FusionDirectory autofs plugin configuration"
-msgstr "Ρύθμιση προσθέτου FusionDirectory autofs"
-
-#: config/autofs/class_autofsConfig.inc:42
-msgid "AutoFS"
-msgstr "AutoFS"
-
-#: config/autofs/class_autofsConfig.inc:45
-msgid "AutoFS RDN"
-msgstr "AutoFS RDN"
-
-#: config/autofs/class_autofsConfig.inc:45
-msgid "Branch in which automount info will be stored"
-msgstr "Κλάδος στον οποίο θα αποθηκεύονται πληροφορίες automount"
+#: admin/autofs/class_nisMap.inc:53
+msgid "Name of the mount point"
+msgstr "Το όνομα του σημείου προσάρτησης"

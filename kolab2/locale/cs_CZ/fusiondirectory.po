@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-05-12 13:36+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/cs_CZ/)\n"
@@ -16,6 +16,161 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: personal/kolab2/class_kolabAccount.inc:82
+msgid "Kolab 2"
+msgstr "Kolab 2"
+
+#: personal/kolab2/class_kolabAccount.inc:83
+msgid "Kolab 2 account settings"
+msgstr "Nastavení účtu v Kolab 2"
+
+#: personal/kolab2/class_kolabAccount.inc:100
+msgid "Kolab 2 account"
+msgstr "Účet v Kolab 2"
+
+#: personal/kolab2/class_kolabAccount.inc:104
+msgid "Delegations"
+msgstr "Pověření"
+
+#: personal/kolab2/class_kolabAccount.inc:112
+msgid "Mail size"
+msgstr "datový objem zprávy"
+
+#: personal/kolab2/class_kolabAccount.inc:115
+msgid "No mail size restriction for this account"
+msgstr "u tohoto účtu není omezen datový objem zprávy"
+
+#: personal/kolab2/class_kolabAccount.inc:122
+msgid "Free Busy information"
+msgstr "informace o Free/Busy"
+
+#: personal/kolab2/class_kolabAccount.inc:125
+msgid "URL"
+msgstr "URL adresa"
+
+#: personal/kolab2/class_kolabAccount.inc:130
+msgid "Future"
+msgstr "Budoucí"
+
+#: personal/kolab2/class_kolabAccount.inc:130
+msgid "days"
+msgstr "dny"
+
+#: personal/kolab2/class_kolabAccount.inc:138
+#: personal/kolab2/class_kolabAccount.inc:141
+#: personal/kolab2/class_kolabAccount.inc:149
+#: personal/kolab2/class_kolabAccount.inc:159
+msgid "Invitation policy"
+msgstr "Pravidla pro pozvánky"
+
+#: personal/kolab2/class_kolabAccount.inc:144
+msgid "Default policy"
+msgstr "Výchozí zásada"
+
+#: personal/kolab2/class_kolabAccount.inc:144
+msgid "Default invitation policy"
+msgstr "Výchozí pravidla pozvánek"
+
+#: personal/kolab2/class_kolabAccount.inc:146
+#: personal/kolab2/class_kolabAccount.inc:155
+msgid "Manual"
+msgstr "Ruční"
+
+#: personal/kolab2/class_kolabAccount.inc:146
+#: personal/kolab2/class_kolabAccount.inc:155
+msgid "Always accept"
+msgstr "Vždy přijmout"
+
+#: personal/kolab2/class_kolabAccount.inc:146
+#: personal/kolab2/class_kolabAccount.inc:155
+msgid "Always reject"
+msgstr "vždy odmítnout"
+
+#: personal/kolab2/class_kolabAccount.inc:146
+#: personal/kolab2/class_kolabAccount.inc:155
+msgid "Reject if conflicts"
+msgstr "Odmítnout, pokud je v konfliktu"
+
+#: personal/kolab2/class_kolabAccount.inc:146
+#: personal/kolab2/class_kolabAccount.inc:155
+msgid "Manual if conflicts"
+msgstr "zeptat se, pokud je v konfliktu"
+
+#: personal/kolab2/class_kolabAccount.inc:152
+msgid "mail address"
+msgstr "e-mailová adresa"
+
+#: personal/kolab2/class_kolabAccount.inc:153
+msgid "policy for this mail address"
+msgstr "Sada pravidel pro tuto e-mailovou adresu"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:146
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:154
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:155
+msgid "Unspecified"
+msgstr "Neurčeno"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:147
+msgid "Mails"
+msgstr "Zprávy"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:148
+msgid "Tasks"
+msgstr "Úkoly"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:149
+msgid "Journals"
+msgstr "Deníky"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:150
+msgid "Calendar"
+msgstr "Kalendář"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:151
+msgid "Contacts"
+msgstr "Kontakty"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:152
+msgid "Notes"
+msgstr "Poznámky"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:156
+msgid "Inbox"
+msgstr "Příchozí"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:157
+msgid "Drafts"
+msgstr "Rozepsané"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:158
+msgid "Sent"
+msgstr "Odeslané"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:159
+msgid "SPAM"
+msgstr "Nevyžádaná pošta"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:161
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:162
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:163
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:164
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:165
+msgid "Default"
+msgstr "Výchozí"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:179
+msgid ""
+"Mail settings cannot be removed while there are delegations configured!"
+msgstr "Nastavení pro e-mail nemohou být odebrána dokud s k nim váží pověření."
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:272
+msgid "Waiting for kolab to remove mail properties..."
+msgstr "Čeká se na Kolab, až odebere nastavení e-mailu…"
+
+#: personal/mail/kolab2/class_mail-methods-kolab.inc:275
+msgid "Please remove the mail settings first!"
+msgstr "Nejprve prosím odeberte nastavené e-mailu!"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:29
 msgid "Enable MX lookup for relayhost"
@@ -205,158 +360,3 @@ msgstr "název stroje"
 #: admin/systems/services/kolab2/class_serviceKolab.inc:295
 msgid "LDAP error"
 msgstr "Chyba LDAP"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:146
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:154
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:155
-msgid "Unspecified"
-msgstr "Neurčeno"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:147
-msgid "Mails"
-msgstr "Zprávy"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:148
-msgid "Tasks"
-msgstr "Úkoly"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:149
-msgid "Journals"
-msgstr "Deníky"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:150
-msgid "Calendar"
-msgstr "Kalendář"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:151
-msgid "Contacts"
-msgstr "Kontakty"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:152
-msgid "Notes"
-msgstr "Poznámky"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:156
-msgid "Inbox"
-msgstr "Příchozí"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:157
-msgid "Drafts"
-msgstr "Rozepsané"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:158
-msgid "Sent"
-msgstr "Odeslané"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:159
-msgid "SPAM"
-msgstr "Nevyžádaná pošta"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:161
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:162
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:163
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:164
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:165
-msgid "Default"
-msgstr "Výchozí"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:179
-msgid ""
-"Mail settings cannot be removed while there are delegations configured!"
-msgstr "Nastavení pro e-mail nemohou být odebrána dokud s k nim váží pověření."
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:272
-msgid "Waiting for kolab to remove mail properties..."
-msgstr "Čeká se na Kolab, až odebere nastavení e-mailu…"
-
-#: personal/mail/kolab2/class_mail-methods-kolab.inc:275
-msgid "Please remove the mail settings first!"
-msgstr "Nejprve prosím odeberte nastavené e-mailu!"
-
-#: personal/kolab2/class_kolabAccount.inc:82
-msgid "Kolab 2"
-msgstr "Kolab 2"
-
-#: personal/kolab2/class_kolabAccount.inc:83
-msgid "Kolab 2 account settings"
-msgstr "Nastavení účtu v Kolab 2"
-
-#: personal/kolab2/class_kolabAccount.inc:100
-msgid "Kolab 2 account"
-msgstr "Účet v Kolab 2"
-
-#: personal/kolab2/class_kolabAccount.inc:104
-msgid "Delegations"
-msgstr "Pověření"
-
-#: personal/kolab2/class_kolabAccount.inc:112
-msgid "Mail size"
-msgstr "datový objem zprávy"
-
-#: personal/kolab2/class_kolabAccount.inc:115
-msgid "No mail size restriction for this account"
-msgstr "u tohoto účtu není omezen datový objem zprávy"
-
-#: personal/kolab2/class_kolabAccount.inc:122
-msgid "Free Busy information"
-msgstr "informace o Free/Busy"
-
-#: personal/kolab2/class_kolabAccount.inc:125
-msgid "URL"
-msgstr "URL adresa"
-
-#: personal/kolab2/class_kolabAccount.inc:130
-msgid "Future"
-msgstr "Budoucí"
-
-#: personal/kolab2/class_kolabAccount.inc:130
-msgid "days"
-msgstr "dny"
-
-#: personal/kolab2/class_kolabAccount.inc:138
-#: personal/kolab2/class_kolabAccount.inc:141
-#: personal/kolab2/class_kolabAccount.inc:149
-#: personal/kolab2/class_kolabAccount.inc:159
-msgid "Invitation policy"
-msgstr "Pravidla pro pozvánky"
-
-#: personal/kolab2/class_kolabAccount.inc:144
-msgid "Default policy"
-msgstr "Výchozí zásada"
-
-#: personal/kolab2/class_kolabAccount.inc:144
-msgid "Default invitation policy"
-msgstr "Výchozí pravidla pozvánek"
-
-#: personal/kolab2/class_kolabAccount.inc:146
-#: personal/kolab2/class_kolabAccount.inc:155
-msgid "Manual"
-msgstr "Ruční"
-
-#: personal/kolab2/class_kolabAccount.inc:146
-#: personal/kolab2/class_kolabAccount.inc:155
-msgid "Always accept"
-msgstr "Vždy přijmout"
-
-#: personal/kolab2/class_kolabAccount.inc:146
-#: personal/kolab2/class_kolabAccount.inc:155
-msgid "Always reject"
-msgstr "vždy odmítnout"
-
-#: personal/kolab2/class_kolabAccount.inc:146
-#: personal/kolab2/class_kolabAccount.inc:155
-msgid "Reject if conflicts"
-msgstr "Odmítnout, pokud je v konfliktu"
-
-#: personal/kolab2/class_kolabAccount.inc:146
-#: personal/kolab2/class_kolabAccount.inc:155
-msgid "Manual if conflicts"
-msgstr "zeptat se, pokud je v konfliktu"
-
-#: personal/kolab2/class_kolabAccount.inc:152
-msgid "mail address"
-msgstr "e-mailová adresa"
-
-#: personal/kolab2/class_kolabAccount.inc:153
-msgid "policy for this mail address"
-msgstr "Sada pravidel pro tuto e-mailovou adresu"

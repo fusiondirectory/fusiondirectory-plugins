@@ -73,7 +73,6 @@ class sshAccount extends simplePlugin
   var $displayHeader = TRUE;
   var $objectclasses = array('ldapPublicKey');
 
-  // The main function : information about attributes
   static function getAttributesInfo ()
   {
     return array(
@@ -87,8 +86,8 @@ class sshAccount extends simplePlugin
               '', _('SSH public keys for this user'),
               'sshPublicKey'
             ),
-            FALSE, // no order
-            array(), TRUE // edit enabled
+            FALSE,
+            array(), TRUE
           )
         )
       )

@@ -28,7 +28,10 @@ class debugHelp extends simplePlugin
       'plSection'     => 'reporting',
       'plPriority'    => 1,
       'plIcon'        => 'geticon.php?context=categories&icon=applications-development&size=48',
-      'plCategory'    => array('debug' => array('objectClass' => 'none', 'description' => _('Diagram'))),
+      'plObjectType'  => array('debug' => array(
+        'name'      => _('Debug help'),
+        'mainAttr'  => FALSE
+      )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

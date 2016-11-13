@@ -12,7 +12,7 @@
     <layout>|20px;c||150px-d||185px-d;r|</layout>
 
     <department>
-      <value>%{filter:objectType(dn,objectClass)}</value>
+      <value>%{filter:departmentType(row,dn)}</value>
     </department>
 
     <department>
@@ -21,14 +21,14 @@
     </department>
 
     <column>
-      <value>%{filter:objectType(dn,objectClass)}</value>
+      <value>%{filter:objectType(row,dn)}</value>
     </column>
 
     <column>
       <label>IP</label>
       <sortAttribute>cn</sortAttribute>
       <sortType>string</sortType>
-      <value>%{filter:filterRowLink(pid,row,dn,cn)}</value>
+      <value>%{filter:link(row,dn,"%s",cn)}</value>
       <export>true</export>
     </column>
 
@@ -36,7 +36,7 @@
       <label>Macs</label>
       <sortAttribute>macAddress</sortAttribute>
       <sortType>string</sortType>
-      <value>%{filter:filterRowLink(pid,row,dn,macAddress)}</value>
+      <value>%{filter:link(row,dn,"%s",macAddress)}</value>
       <export>true</export>
     </column>
 

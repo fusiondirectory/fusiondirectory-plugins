@@ -225,7 +225,6 @@ class supannAccount extends simplePlugin
     );
   }
 
-  // The main function : information about attributes
   static function getAttributesInfo ()
   {
     $year = intval(date('Y'));
@@ -255,7 +254,8 @@ class supannAccount extends simplePlugin
               _('Ref ids'), _('supannRefId - IDs/links for this user on other systems'),
               'supannRefId', FALSE,
               '', '',
-              '/^{[^}]+}.+$/' /* Validation regexp: it must have a prefix */
+              /* Validation regexp: it must have a prefix */
+              '/^{[^}]+}.+$/'
             )
           ),
         )
@@ -404,9 +404,9 @@ class supannAccount extends simplePlugin
                 ),
               )
             ),
-            FALSE,  // no order
+            FALSE,
             array(),
-            FALSE   // no edit button
+            FALSE
           )
         )
       ),
@@ -454,11 +454,11 @@ class supannAccount extends simplePlugin
                 ),
               ),
               '',
-              '' // no label
+              ''
             ),
-            FALSE,  // no order
+            FALSE,
             array(),
-            FALSE   // no edit button
+            FALSE
           )
         )
       ),
@@ -511,13 +511,16 @@ class supannAccount extends simplePlugin
     $this->attributesAccess['supannEtuInscription']->setLinearRendering(FALSE);
 
     list ($codes, $labels) = supann::get_choices_for('eturegimeinscription_SISE', '{SISE}');
-    $this->attributesAccess['supannEtuInscription']->attribute->attributes[2]->setChoices($codes, $labels); // supannEtuRegimeInscription
+    /* supannEtuRegimeInscription */
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[2]->setChoices($codes, $labels);
 
     list ($codes, $labels) = supann::get_choices_for('discipline_SISE', '{SISE}');
-    $this->attributesAccess['supannEtuInscription']->attribute->attributes[3]->setChoices($codes, $labels); // supannEtuSecteurDisciplinaire
+    /* supannEtuSecteurDisciplinaire */
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[3]->setChoices($codes, $labels);
 
     list ($codes, $labels) = supann::get_choices_for('typediplome_SISE', '{SISE}');
-    $this->attributesAccess['supannEtuInscription']->attribute->attributes[4]->setChoices($codes, $labels); // supannEtuTypeDiplome
+    /* supannEtuTypeDiplome */
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[4]->setChoices($codes, $labels);
 
     list ($codes, $labels) = supann::get_choices_for('corps', '{NCORPS}');
     $this->attributesAccess['supannEmpCorps']->setChoices($codes, $labels);
@@ -535,12 +538,16 @@ class supannAccount extends simplePlugin
     );
     $code_etab   = $this->attributesAccess['supannEtablissement']->getValue();
     $label_etab  = $this->attributesAccess['supannEtablissement']->getDisplayValues();
-    $this->attributesAccess['supannEtuInscription']->attribute->attributes[0]->setChoices($code_etab, $label_etab); // supannEtablissement
-    $this->attributesAccess['supannEtuInscription']->attribute->attributes[6]->setChoices($code_ent, $label_ent); // supannEntiteAffectation
-    $this->attributesAccess['supannRoleEntite']->attribute->attributes[2]->setChoices($code_ent, $label_ent); // supannEntiteAffectation
+    /* supannEtablissement */
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[0]->setChoices($code_etab, $label_etab);
+    /* supannEntiteAffectation */
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[6]->setChoices($code_ent, $label_ent);
+    /* supannEntiteAffectation */
+    $this->attributesAccess['supannRoleEntite']->attribute->attributes[2]->setChoices($code_ent, $label_ent);
     $code_tent   = $this->attributesAccess['supannTypeEntiteAffectation']->getValue();
     $label_tent  = $this->attributesAccess['supannTypeEntiteAffectation']->getDisplayValues();
-    $this->attributesAccess['supannRoleEntite']->attribute->attributes[1]->setChoices($code_tent, $label_tent); // supannTypeEntiteAffectation
+    /* supannTypeEntiteAffectation */
+    $this->attributesAccess['supannRoleEntite']->attribute->attributes[1]->setChoices($code_tent, $label_tent);
 
     $this->attributesAccess['eduPersonPrimaryAffiliation']->setChoices(
       $this->attributesAccess['eduPersonAffiliation']->getValue(),

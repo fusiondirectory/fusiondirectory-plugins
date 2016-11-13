@@ -104,7 +104,7 @@
     <layout>|20px;c||90px-d|110px|100px;o||60px;o|170px-d;r|</layout>
 
     <department>
-      <value>%{filter:objectType(dn,objectClass)}</value>
+      <value>%{filter:departmentType(row,dn)}</value>
     </department>
 
     <department>
@@ -113,7 +113,7 @@
     </department>
 
     <column>
-      <value>%{filter:objectType(dn,objectClass)}</value>
+      <value>%{filter:objectType(row,dn)}</value>
     </column>
 
     <column>
@@ -174,73 +174,73 @@
   <actionmenu>
 
     <action>
-     <type>sub</type>
-     <image>geticon.php?context=actions&amp;icon=document-new&amp;size=16</image>
-     <label>Create</label>
+      <type>sub</type>
+      <image>geticon.php?context=actions&amp;icon=document-new&amp;size=16</image>
+      <label>Create</label>
 
-     <action>
-      <name>new_goServer</name>
-      <type>entry</type>
-      <image>geticon.php?context=devices&amp;icon=server&amp;size=16</image>
-      <label>Server</label>
-      <depends>serverGeneric</depends>
-     </action>
+      <action>
+        <name>new_goServer</name>
+        <type>entry</type>
+        <image>geticon.php?context=devices&amp;icon=server&amp;size=16</image>
+        <label>Server</label>
+        <depends>serverGeneric</depends>
+      </action>
 
-     <action>
-      <name>new_gotoWorkstation</name>
-      <type>entry</type>
-      <image>geticon.php?context=devices&amp;icon=computer&amp;size=16</image>
-      <label>Workstation</label>
-      <depends>workstationGeneric</depends>
-     </action>
+      <action>
+        <name>new_gotoWorkstation</name>
+        <type>entry</type>
+        <image>geticon.php?context=devices&amp;icon=computer&amp;size=16</image>
+        <label>Workstation</label>
+        <depends>workstationGeneric</depends>
+      </action>
 
-     <action>
-      <name>new_gotoTerminal</name>
-      <type>entry</type>
-      <image>geticon.php?context=devices&amp;icon=terminal&amp;size=16</image>
-      <label>Terminal</label>
-      <depends>terminalGeneric</depends>
-     </action>
+      <action>
+        <name>new_gotoTerminal</name>
+        <type>entry</type>
+        <image>geticon.php?context=devices&amp;icon=terminal&amp;size=16</image>
+        <label>Terminal</label>
+        <depends>terminalGeneric</depends>
+      </action>
 
-    <action>
-      <name>new_sambaSamAccount</name>
-      <type>entry</type>
-      <image>geticon.php?context=devices&amp;icon=computer-windows&amp;size=16</image>
-      <label>winStation</label>
-      <depends>winstationGeneric</depends>
-    </action>
+      <action>
+        <name>new_sambaSamAccount</name>
+        <type>entry</type>
+        <image>geticon.php?context=devices&amp;icon=computer-windows&amp;size=16</image>
+        <label>winStation</label>
+        <depends>winstationGeneric</depends>
+      </action>
 
-     <action>
-      <name>new_fdPrinter</name>
-      <type>entry</type>
-      <image>geticon.php?context=devices&amp;icon=printer&amp;size=16</image>
-      <label>Network printer</label>
-      <depends>printGeneric</depends>
-     </action>
+      <action>
+        <name>new_fdPrinter</name>
+        <type>entry</type>
+        <image>geticon.php?context=devices&amp;icon=printer&amp;size=16</image>
+        <label>Network printer</label>
+        <depends>printGeneric</depends>
+      </action>
 
-     <action>
-      <name>new_fdPhone</name>
-      <type>entry</type>
-      <image>geticon.php?context=devices&amp;icon=telephone&amp;size=16</image>
-      <label>Phone</label>
-      <depends>phoneGeneric</depends>
-     </action>
+      <action>
+        <name>new_fdPhone</name>
+        <type>entry</type>
+        <image>geticon.php?context=devices&amp;icon=telephone&amp;size=16</image>
+        <label>Phone</label>
+        <depends>phoneGeneric</depends>
+      </action>
 
-     <action>
-      <name>new_ieee802Device</name>
-      <type>entry</type>
-      <image>geticon.php?context=devices&amp;icon=network-device&amp;size=16</image>
-      <label>Network device</label>
-      <depends>componentGeneric</depends>
-     </action>
+      <action>
+        <name>new_ieee802Device</name>
+        <type>entry</type>
+        <image>geticon.php?context=devices&amp;icon=network-device&amp;size=16</image>
+        <label>Network device</label>
+        <depends>componentGeneric</depends>
+      </action>
 
-     <action>
-      <name>new_fdMobilePhone</name>
-      <type>entry</type>
-      <image>geticon.php?context=devices&amp;icon=phone&amp;size=16</image>
-      <label>Mobile Phone</label>
-      <depends>mobilePhoneGeneric</depends>
-     </action>
+      <action>
+        <name>new_fdMobilePhone</name>
+        <type>entry</type>
+        <image>geticon.php?context=devices&amp;icon=phone&amp;size=16</image>
+        <label>Mobile Phone</label>
+        <depends>mobilePhoneGeneric</depends>
+      </action>
     </action>
 
     <action>
@@ -255,9 +255,9 @@
     </action>
 
     <action>
-     <type>sub</type>
-     <image>geticon.php?context=actions&amp;icon=task-schedule&amp;size=16</image>
-     <label>Schedule action</label>
+      <type>sub</type>
+      <image>geticon.php?context=actions&amp;icon=task-schedule&amp;size=16</image>
+      <label>Schedule action</label>
       <depends>argonautAction</depends>
     </action>
 

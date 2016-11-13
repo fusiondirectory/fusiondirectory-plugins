@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-01-22 16:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/cs_CZ/)\n"
@@ -17,13 +17,53 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
+#: config/applications/class_applicationsPluginConfig.inc:28
+#: config/applications/class_applicationsPluginConfig.inc:40
 #: admin/applications/class_applicationManagement.inc:28
 #: admin/roles/class_applicationRights.inc:30
 #: admin/roles/class_applicationRights.inc:49
-#: config/applications/class_applicationsPluginConfig.inc:28
-#: config/applications/class_applicationsPluginConfig.inc:40
 msgid "Applications"
 msgstr "Aplikace"
+
+#: config/applications/class_applicationsPluginConfig.inc:29
+msgid "Applications plugin configuration"
+msgstr "Nastavení zásuvného modulu Aplikace"
+
+#: config/applications/class_applicationsPluginConfig.inc:43
+msgid "Application RDN"
+msgstr "Relativní rozlišený název aplikace"
+
+#: config/applications/class_applicationsPluginConfig.inc:43
+msgid "Branch in which applications will be stored"
+msgstr "Větev, ve kterou budou uloženy aplikace"
+
+#: config/applications/class_applicationsPluginConfig.inc:48
+msgid "Web applications RDN"
+msgstr "Relativní rozlišený název webové aplikace"
+
+#: config/applications/class_applicationsPluginConfig.inc:48
+msgid "Branch in which web applications will be stored"
+msgstr "Větev, ve které budou uloženy webové aplikace"
+
+#: config/applications/class_applicationsPluginConfig.inc:53
+msgid "Show web applications in menu"
+msgstr "Zobrazovat webové aplikace v nabídce"
+
+#: config/applications/class_applicationsPluginConfig.inc:53
+msgid "Whether to show web applications in FD main menu"
+msgstr "Zda v hlavní nabídce F.D. zobrazovat webové aplikace"
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "None"
+msgstr "žádné"
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "Only allowed"
+msgstr "Pouze povolené"
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "All"
+msgstr "Vše"
 
 #: admin/applications/class_applicationManagement.inc:29
 msgid "Application management"
@@ -181,43 +221,3 @@ msgstr "Seznam aplikace"
 #: admin/roles/class_applicationRights.inc:49
 msgid "The applications users with this role are allowed to launch"
 msgstr "Aplikace, které mohou spouštět uživatelé s touto rolí"
-
-#: config/applications/class_applicationsPluginConfig.inc:29
-msgid "Applications plugin configuration"
-msgstr "Nastavení zásuvného modulu Aplikace"
-
-#: config/applications/class_applicationsPluginConfig.inc:43
-msgid "Application RDN"
-msgstr "Relativní rozlišený název aplikace"
-
-#: config/applications/class_applicationsPluginConfig.inc:43
-msgid "Branch in which applications will be stored"
-msgstr "Větev, ve kterou budou uloženy aplikace"
-
-#: config/applications/class_applicationsPluginConfig.inc:48
-msgid "Web applications RDN"
-msgstr "Relativní rozlišený název webové aplikace"
-
-#: config/applications/class_applicationsPluginConfig.inc:48
-msgid "Branch in which web applications will be stored"
-msgstr "Větev, ve které budou uloženy webové aplikace"
-
-#: config/applications/class_applicationsPluginConfig.inc:53
-msgid "Show web applications in menu"
-msgstr "Zobrazovat webové aplikace v nabídce"
-
-#: config/applications/class_applicationsPluginConfig.inc:53
-msgid "Whether to show web applications in FD main menu"
-msgstr "Zda v hlavní nabídce F.D. zobrazovat webové aplikace"
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "None"
-msgstr "žádné"
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "Only allowed"
-msgstr "Pouze povolené"
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "All"
-msgstr "Vše"

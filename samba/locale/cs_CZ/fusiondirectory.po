@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-09-27 16:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/cs_CZ/)\n"
@@ -16,288 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-
-#: admin/groups/samba/class_sambaGroup.inc:29
-#: personal/samba/class_sambaAccount.inc:158
-#: config/samba/class_sambaPluginConfig.inc:28
-msgid "Samba"
-msgstr "Samba"
-
-#: admin/groups/samba/class_sambaGroup.inc:30
-msgid "Samba group settings"
-msgstr "Nastavení skupiny pro službu Samba"
-
-#: admin/groups/samba/class_sambaGroup.inc:42
-#: admin/groups/samba/class_sambaGroup.inc:45
-#: admin/systems/samba/class_winstationGeneric.inc:85
-#: personal/samba/class_sambaAccount.inc:199
-msgid "Domain"
-msgstr "Doména"
-
-#: admin/groups/samba/class_sambaGroup.inc:45
-msgid "Samba domain"
-msgstr "Samba doména"
-
-#: admin/groups/samba/class_sambaGroup.inc:49
-msgid "Samba informations"
-msgstr "Informace o službě Samba"
-
-#: admin/groups/samba/class_sambaGroup.inc:56
-msgid "Group type"
-msgstr "Typ skupiny"
-
-#: admin/groups/samba/class_sambaGroup.inc:56
-msgid "Samba group type"
-msgstr "Typ Samba skupiny"
-
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
-msgid "Samba group"
-msgstr "Samba skupina"
-
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
-msgid "Domain admins"
-msgstr "Správci domény"
-
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
-msgid "Domain users"
-msgstr "Doménoví uživatelé"
-
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
-msgid "Domain guests"
-msgstr "Doménoví hosté"
-
-#: admin/groups/samba/class_sambaGroup.inc:106
-msgid "Configuration error"
-msgstr "Chyba v nastavení"
-
-#: admin/groups/samba/class_sambaGroup.inc:106
-msgid "Cannot find group SID in your configuration!"
-msgstr "Ve stávajícím nastavení se nedaří nalézt SID skupiny!"
-
-#: admin/groups/samba/class_sambaGroup.inc:120
-#, php-format
-msgid "Special group (%d)"
-msgstr "Zvláštní skupina (%d)"
-
-#: admin/groups/samba/class_sambaGroup.inc:135
-#: personal/samba/class_sambaAccount.inc:505
-#: personal/samba/class_sambaAccount.inc:531
-#: personal/samba/class_sambaAccount.inc:552
-msgid "Warning"
-msgstr "Varování"
-
-#: admin/groups/samba/class_sambaGroup.inc:135
-#: personal/samba/class_sambaAccount.inc:505
-msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr "Zjištěno nedefinované Samba SID. Opravte tento problém ručním zásahem!"
-
-#: admin/samba/class_sambaDomainManagement.inc:35
-msgid "Samba domains"
-msgstr "Domény Samba"
-
-#: admin/samba/class_sambaDomainManagement.inc:36
-msgid "Samba domain management"
-msgstr "Správa Samba domény"
-
-#: admin/samba/class_sambaDomain.inc:30 admin/samba/class_sambaDomain.inc:31
-#: admin/samba/class_sambaDomain.inc:34
-msgid "Samba Domain"
-msgstr "Samba doména"
-
-#: admin/samba/class_sambaDomain.inc:35
-msgid "Samba domain settings"
-msgstr "Nastavení Samba domény"
-
-#: admin/samba/class_sambaDomain.inc:51
-#: admin/systems/samba/class_winstationGeneric.inc:61
-msgid "Properties"
-msgstr "Vlastnosti"
-
-#: admin/samba/class_sambaDomain.inc:54
-msgid "Domain name"
-msgstr "Název domény"
-
-#: admin/samba/class_sambaDomain.inc:54
-msgid "Name of this domain"
-msgstr "Název této domény"
-
-#: admin/samba/class_sambaDomain.inc:58
-msgid "SID"
-msgstr "SID"
-
-#: admin/samba/class_sambaDomain.inc:58
-msgid "SID of this domain"
-msgstr "Bezpečnostní identifikátor této domény"
-
-#: admin/samba/class_sambaDomain.inc:62
-msgid "Rid base"
-msgstr "Základ RID"
-
-#: admin/samba/class_sambaDomain.inc:62
-msgid "Algorithmic rid base"
-msgstr "Základ algoritmického relativního identifikátoru"
-
-#: admin/samba/class_sambaDomain.inc:66
-msgid "Minimum password age"
-msgstr "minimální stáří hesla"
-
-#: admin/samba/class_sambaDomain.inc:67
-msgid ""
-"Minimum password age, in seconds (default: 0 => allow immediate password "
-"change)"
-msgstr "Nejkratší umožněné stáří hesla v sekundách (výchozí: 0 => umožnit okamžitou změnu hesla)"
-
-#: admin/samba/class_sambaDomain.inc:72
-msgid "Maximum password age"
-msgstr "maximální stáří hesla"
-
-#: admin/samba/class_sambaDomain.inc:73
-msgid ""
-"Maximum password age, in seconds (default: -1 => never expire passwords)"
-msgstr "Nejdelší přijatelné stáří hesla, v sekundách (výchozí: -1 => hesla platí stále)"
-
-#: admin/samba/class_sambaDomain.inc:78
-msgid "Next RID"
-msgstr "Následující RID identifikátor"
-
-#: admin/samba/class_sambaDomain.inc:79
-msgid "Next NT rid to give out for anything"
-msgstr "Příští NT relativní identifikátor pro cokoli"
-
-#: admin/samba/class_sambaDomain.inc:83
-msgid "Next group RID"
-msgstr "RID identifikátor následující skupiny"
-
-#: admin/samba/class_sambaDomain.inc:84
-msgid "Next NT rid to give out for groups"
-msgstr "Příští NT relativní identifikátor pro skupiny"
-
-#: admin/samba/class_sambaDomain.inc:88
-msgid "Next user RID"
-msgstr "Relativní identifikátor dalšího uživatele"
-
-#: admin/samba/class_sambaDomain.inc:89
-msgid "Next NT rid to give our for users"
-msgstr "Příští NT relativní identifikátor pro vaše uživatele"
-
-#: admin/samba/class_sambaDomain.inc:93
-msgid "Minimum password length"
-msgstr "Nejkratší umožněná délka hesla"
-
-#: admin/samba/class_sambaDomain.inc:94
-msgid "Minimal password length (default: 5)"
-msgstr "Nejkratší přijatelná délka hesla (výchozí: 5 znaků)"
-
-#: admin/samba/class_sambaDomain.inc:98
-msgid "Password history length"
-msgstr "Délka historie hesla"
-
-#: admin/samba/class_sambaDomain.inc:99
-msgid "Length of Password History Entries (default: 0 => off)"
-msgstr "Hloubka historie hesel (výchozí: 0 => nepamatovat)"
-
-#: admin/samba/class_sambaDomain.inc:103
-msgid "Logon to change password"
-msgstr "Přihlásit se pro změnu hesla"
-
-#: admin/samba/class_sambaDomain.inc:104
-msgid "Force Users to logon for password change (default: 0 => off, 2 => on)"
-msgstr "Přimět uživatele přihlásit se pro změnu hesla (výchozí: 0 => ne, 2 => ano)"
-
-#: admin/samba/class_sambaDomain.inc:108
-msgid "Lockout duration"
-msgstr "Doba trvání uzamčení"
-
-#: admin/samba/class_sambaDomain.inc:109
-msgid "Lockout duration in minutes (default: 30, -1 => forever)"
-msgstr "Délka trvání uzamčení v minutách (výchozí: 30, hodnota -1 znamená uzamčeno napořád)"
-
-#: admin/samba/class_sambaDomain.inc:113
-msgid "Lockout observation window"
-msgstr "Pozorovací okno uzamčení"
-
-#: admin/samba/class_sambaDomain.inc:114
-msgid "Reset time after lockout in minutes (default: 30)"
-msgstr "Za jak dlouho (v minutách) po uzamčení začít počítat čas od znovu (výchozí: 30)"
-
-#: admin/samba/class_sambaDomain.inc:118
-msgid "Lockout threshold"
-msgstr "Práh uzamčení"
-
-#: admin/samba/class_sambaDomain.inc:119
-msgid "Lockout users after bad logon attempts (default: 0 => off)"
-msgstr "Uzamknout uživatele po nezdařených pokusech o přihlášení (výchozí: 0 => vypnuto)"
-
-#: admin/samba/class_sambaDomain.inc:123
-msgid "Force logoff"
-msgstr "Vynutit odhlášení"
-
-#: admin/samba/class_sambaDomain.inc:124
-msgid "Disconnect Users outside logon hours (default: -1 => off, 0 => on)"
-msgstr "Pokud je mimo provozní dobu, samočinně odpojovat uživatele (výchozí: -1 => neodpojovat, 0 => odpojovat)"
-
-#: admin/samba/class_sambaDomain.inc:128
-msgid "Refuse machine password change"
-msgstr "Odmítnout změnu hesla k účtu stroje"
-
-#: admin/samba/class_sambaDomain.inc:129
-msgid "Allow Machine Password changes (default: 0 => off)"
-msgstr "Umožnit změnu hesel počítačů (výchozí: 0 => neumožnit)"
-
-#: admin/systems/samba/class_argonautEventSambaShares.inc:27
-msgid "Update Samba Shares"
-msgstr ""
-
-#: admin/systems/samba/class_winstationGeneric.inc:37
-msgid "Winstation"
-msgstr "Počítač s MS Windows"
-
-#: admin/systems/samba/class_winstationGeneric.inc:38
-msgid "Windows workstation information"
-msgstr "Informace o počítači s MS Windows"
-
-#: admin/systems/samba/class_winstationGeneric.inc:42
-#: admin/systems/samba/class_winstationGeneric.inc:43
-msgid "Windows workstation"
-msgstr "Počítač s MS Windows"
-
-#: admin/systems/samba/class_winstationGeneric.inc:70
-#: admin/systems/samba/class_winstationGeneric.inc:74
-msgid "The name of the winstation"
-msgstr "Název počítače s MS Windows"
-
-#: admin/systems/samba/class_winstationGeneric.inc:74
-msgid "Name"
-msgstr "Název"
-
-#: admin/systems/samba/class_winstationGeneric.inc:81
-msgid "Description"
-msgstr "popis"
-
-#: admin/systems/samba/class_winstationGeneric.inc:81
-msgid "A short description of the winstation"
-msgstr "Stručný popis počítače s MS Windows"
-
-#: admin/systems/samba/class_winstationGeneric.inc:85
-#: personal/samba/class_sambaAccount.inc:199
-msgid "Samba domain name"
-msgstr "název domény Samba"
-
-#: admin/systems/samba/class_winstationGeneric.inc:89
-msgid "Location"
-msgstr "Umístění"
-
-#: admin/systems/samba/class_winstationGeneric.inc:89
-msgid "The location of the winstation"
-msgstr "Umístění počítače s MS Windows"
-
-#: admin/systems/samba/class_winstationGeneric.inc:96
-msgid "Network settings"
-msgstr "Nastavení sítě"
 
 #: include/class_smbHash.inc:356
 msgid ""
@@ -308,6 +26,12 @@ msgstr "Vaše instalace PHP neobsahuje mhash() ani funkci hash. Nelze tedy vytv�
 #: personal/samba/class_sambaAccount.inc:31
 msgid "Samba Munged Dial"
 msgstr "Samba – přístup přes vytáčené spojení"
+
+#: personal/samba/class_sambaAccount.inc:158
+#: config/samba/class_sambaPluginConfig.inc:28
+#: admin/groups/samba/class_sambaGroup.inc:29
+msgid "Samba"
+msgstr "Samba"
 
 #: personal/samba/class_sambaAccount.inc:159
 #: config/samba/class_sambaPluginConfig.inc:41
@@ -337,6 +61,18 @@ msgstr "Umístění domovské složky"
 #: personal/samba/class_sambaAccount.inc:227
 msgid "UNC path for the home drive"
 msgstr "Umístění (v UNC zápisu) domovského disku"
+
+#: personal/samba/class_sambaAccount.inc:199
+#: admin/groups/samba/class_sambaGroup.inc:42
+#: admin/groups/samba/class_sambaGroup.inc:45
+#: admin/systems/samba/class_winstationGeneric.inc:85
+msgid "Domain"
+msgstr "Doména"
+
+#: personal/samba/class_sambaAccount.inc:199
+#: admin/systems/samba/class_winstationGeneric.inc:85
+msgid "Samba domain name"
+msgstr "název domény Samba"
 
 #: personal/samba/class_sambaAccount.inc:203
 msgid "Script path"
@@ -576,6 +312,18 @@ msgstr "cesta k domovskému úložišti"
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr "Správce uživatelských účtů v MS Windows umožňuje nejvýše 8 klientů!"
 
+#: personal/samba/class_sambaAccount.inc:505
+#: personal/samba/class_sambaAccount.inc:531
+#: personal/samba/class_sambaAccount.inc:552
+#: admin/groups/samba/class_sambaGroup.inc:135
+msgid "Warning"
+msgstr "Varování"
+
+#: personal/samba/class_sambaAccount.inc:505
+#: admin/groups/samba/class_sambaGroup.inc:135
+msgid "Undefined Samba SID detected. Please fix this problem manually!"
+msgstr "Zjištěno nedefinované Samba SID. Opravte tento problém ručním zásahem!"
+
 #: personal/samba/class_sambaAccount.inc:532
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
@@ -652,6 +400,258 @@ msgstr ""
 msgid ""
 "Issue a warning if POSIX primary group cannot be converted to Samba primary "
 "group when activating the Samba tab of a user"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:30
+msgid "Samba group settings"
+msgstr "Nastavení skupiny pro službu Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:45
+msgid "Samba domain"
+msgstr "Samba doména"
+
+#: admin/groups/samba/class_sambaGroup.inc:49
+msgid "Samba informations"
+msgstr "Informace o službě Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Group type"
+msgstr "Typ skupiny"
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Samba group type"
+msgstr "Typ Samba skupiny"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:120
+msgid "Samba group"
+msgstr "Samba skupina"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:120
+msgid "Domain admins"
+msgstr "Správci domény"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:120
+msgid "Domain users"
+msgstr "Doménoví uživatelé"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:120
+msgid "Domain guests"
+msgstr "Doménoví hosté"
+
+#: admin/groups/samba/class_sambaGroup.inc:106
+msgid "Configuration error"
+msgstr "Chyba v nastavení"
+
+#: admin/groups/samba/class_sambaGroup.inc:106
+msgid "Cannot find group SID in your configuration!"
+msgstr "Ve stávajícím nastavení se nedaří nalézt SID skupiny!"
+
+#: admin/groups/samba/class_sambaGroup.inc:120
+#, php-format
+msgid "Special group (%d)"
+msgstr "Zvláštní skupina (%d)"
+
+#: admin/samba/class_sambaDomainManagement.inc:35
+msgid "Samba domains"
+msgstr "Domény Samba"
+
+#: admin/samba/class_sambaDomainManagement.inc:36
+msgid "Samba domain management"
+msgstr "Správa Samba domény"
+
+#: admin/samba/class_sambaDomain.inc:30 admin/samba/class_sambaDomain.inc:31
+#: admin/samba/class_sambaDomain.inc:34
+msgid "Samba Domain"
+msgstr "Samba doména"
+
+#: admin/samba/class_sambaDomain.inc:35
+msgid "Samba domain settings"
+msgstr "Nastavení Samba domény"
+
+#: admin/samba/class_sambaDomain.inc:51
+#: admin/systems/samba/class_winstationGeneric.inc:61
+msgid "Properties"
+msgstr "Vlastnosti"
+
+#: admin/samba/class_sambaDomain.inc:54
+msgid "Domain name"
+msgstr "Název domény"
+
+#: admin/samba/class_sambaDomain.inc:54
+msgid "Name of this domain"
+msgstr "Název této domény"
+
+#: admin/samba/class_sambaDomain.inc:58
+msgid "SID"
+msgstr "SID"
+
+#: admin/samba/class_sambaDomain.inc:58
+msgid "SID of this domain"
+msgstr "Bezpečnostní identifikátor této domény"
+
+#: admin/samba/class_sambaDomain.inc:62
+msgid "Rid base"
+msgstr "Základ RID"
+
+#: admin/samba/class_sambaDomain.inc:62
+msgid "Algorithmic rid base"
+msgstr "Základ algoritmického relativního identifikátoru"
+
+#: admin/samba/class_sambaDomain.inc:66
+msgid "Minimum password age"
+msgstr "minimální stáří hesla"
+
+#: admin/samba/class_sambaDomain.inc:67
+msgid ""
+"Minimum password age, in seconds (default: 0 => allow immediate password "
+"change)"
+msgstr "Nejkratší umožněné stáří hesla v sekundách (výchozí: 0 => umožnit okamžitou změnu hesla)"
+
+#: admin/samba/class_sambaDomain.inc:72
+msgid "Maximum password age"
+msgstr "maximální stáří hesla"
+
+#: admin/samba/class_sambaDomain.inc:73
+msgid ""
+"Maximum password age, in seconds (default: -1 => never expire passwords)"
+msgstr "Nejdelší přijatelné stáří hesla, v sekundách (výchozí: -1 => hesla platí stále)"
+
+#: admin/samba/class_sambaDomain.inc:78
+msgid "Next RID"
+msgstr "Následující RID identifikátor"
+
+#: admin/samba/class_sambaDomain.inc:79
+msgid "Next NT rid to give out for anything"
+msgstr "Příští NT relativní identifikátor pro cokoli"
+
+#: admin/samba/class_sambaDomain.inc:83
+msgid "Next group RID"
+msgstr "RID identifikátor následující skupiny"
+
+#: admin/samba/class_sambaDomain.inc:84
+msgid "Next NT rid to give out for groups"
+msgstr "Příští NT relativní identifikátor pro skupiny"
+
+#: admin/samba/class_sambaDomain.inc:88
+msgid "Next user RID"
+msgstr "Relativní identifikátor dalšího uživatele"
+
+#: admin/samba/class_sambaDomain.inc:89
+msgid "Next NT rid to give our for users"
+msgstr "Příští NT relativní identifikátor pro vaše uživatele"
+
+#: admin/samba/class_sambaDomain.inc:93
+msgid "Minimum password length"
+msgstr "Nejkratší umožněná délka hesla"
+
+#: admin/samba/class_sambaDomain.inc:94
+msgid "Minimal password length (default: 5)"
+msgstr "Nejkratší přijatelná délka hesla (výchozí: 5 znaků)"
+
+#: admin/samba/class_sambaDomain.inc:98
+msgid "Password history length"
+msgstr "Délka historie hesla"
+
+#: admin/samba/class_sambaDomain.inc:99
+msgid "Length of Password History Entries (default: 0 => off)"
+msgstr "Hloubka historie hesel (výchozí: 0 => nepamatovat)"
+
+#: admin/samba/class_sambaDomain.inc:103
+msgid "Logon to change password"
+msgstr "Přihlásit se pro změnu hesla"
+
+#: admin/samba/class_sambaDomain.inc:104
+msgid "Force Users to logon for password change (default: 0 => off, 2 => on)"
+msgstr "Přimět uživatele přihlásit se pro změnu hesla (výchozí: 0 => ne, 2 => ano)"
+
+#: admin/samba/class_sambaDomain.inc:108
+msgid "Lockout duration"
+msgstr "Doba trvání uzamčení"
+
+#: admin/samba/class_sambaDomain.inc:109
+msgid "Lockout duration in minutes (default: 30, -1 => forever)"
+msgstr "Délka trvání uzamčení v minutách (výchozí: 30, hodnota -1 znamená uzamčeno napořád)"
+
+#: admin/samba/class_sambaDomain.inc:113
+msgid "Lockout observation window"
+msgstr "Pozorovací okno uzamčení"
+
+#: admin/samba/class_sambaDomain.inc:114
+msgid "Reset time after lockout in minutes (default: 30)"
+msgstr "Za jak dlouho (v minutách) po uzamčení začít počítat čas od znovu (výchozí: 30)"
+
+#: admin/samba/class_sambaDomain.inc:118
+msgid "Lockout threshold"
+msgstr "Práh uzamčení"
+
+#: admin/samba/class_sambaDomain.inc:119
+msgid "Lockout users after bad logon attempts (default: 0 => off)"
+msgstr "Uzamknout uživatele po nezdařených pokusech o přihlášení (výchozí: 0 => vypnuto)"
+
+#: admin/samba/class_sambaDomain.inc:123
+msgid "Force logoff"
+msgstr "Vynutit odhlášení"
+
+#: admin/samba/class_sambaDomain.inc:124
+msgid "Disconnect Users outside logon hours (default: -1 => off, 0 => on)"
+msgstr "Pokud je mimo provozní dobu, samočinně odpojovat uživatele (výchozí: -1 => neodpojovat, 0 => odpojovat)"
+
+#: admin/samba/class_sambaDomain.inc:128
+msgid "Refuse machine password change"
+msgstr "Odmítnout změnu hesla k účtu stroje"
+
+#: admin/samba/class_sambaDomain.inc:129
+msgid "Allow Machine Password changes (default: 0 => off)"
+msgstr "Umožnit změnu hesel počítačů (výchozí: 0 => neumožnit)"
+
+#: admin/systems/samba/class_winstationGeneric.inc:37
+msgid "Winstation"
+msgstr "Počítač s MS Windows"
+
+#: admin/systems/samba/class_winstationGeneric.inc:38
+msgid "Windows workstation information"
+msgstr "Informace o počítači s MS Windows"
+
+#: admin/systems/samba/class_winstationGeneric.inc:42
+#: admin/systems/samba/class_winstationGeneric.inc:43
+msgid "Windows workstation"
+msgstr "Počítač s MS Windows"
+
+#: admin/systems/samba/class_winstationGeneric.inc:70
+#: admin/systems/samba/class_winstationGeneric.inc:74
+msgid "The name of the winstation"
+msgstr "Název počítače s MS Windows"
+
+#: admin/systems/samba/class_winstationGeneric.inc:74
+msgid "Name"
+msgstr "Název"
+
+#: admin/systems/samba/class_winstationGeneric.inc:81
+msgid "Description"
+msgstr "popis"
+
+#: admin/systems/samba/class_winstationGeneric.inc:81
+msgid "A short description of the winstation"
+msgstr "Stručný popis počítače s MS Windows"
+
+#: admin/systems/samba/class_winstationGeneric.inc:89
+msgid "Location"
+msgstr "Umístění"
+
+#: admin/systems/samba/class_winstationGeneric.inc:89
+msgid "The location of the winstation"
+msgstr "Umístění počítače s MS Windows"
+
+#: admin/systems/samba/class_winstationGeneric.inc:96
+msgid "Network settings"
+msgstr "Nastavení sítě"
+
+#: admin/systems/samba/class_argonautEventSambaShares.inc:27
+msgid "Update Samba Shares"
 msgstr ""
 
 #: personal/samba/sambaLogonHours.tpl.c:2

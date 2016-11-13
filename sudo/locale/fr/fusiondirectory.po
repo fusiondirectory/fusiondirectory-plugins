@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-01-22 16:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
@@ -18,6 +18,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: config/sudo/class_sudoConfig.inc:28
+msgid "Sudo configuration"
+msgstr "Configuration Sudo"
+
+#: config/sudo/class_sudoConfig.inc:29
+msgid "FusionDirectory sudo plugin configuration"
+msgstr "Configuration du plugin sudo"
+
+#: config/sudo/class_sudoConfig.inc:42 admin/sudo/class_sudoManagement.inc:32
+#: admin/sudo/class_sudoGeneric.inc:123
+msgid "Sudo"
+msgstr "Sudo"
+
+#: config/sudo/class_sudoConfig.inc:45
+msgid "Sudo RDN"
+msgstr "Branche sudo"
+
+#: config/sudo/class_sudoConfig.inc:45
+msgid "Branch in which sudoers will be stored"
+msgstr "Branche où seront stockés les sudoers"
+
+#: admin/sudo/class_sudoManagement.inc:33
+msgid "Sudo management"
+msgstr "Gestion sudo"
 
 #: admin/sudo/class_sudoOption.inc:82
 msgid "Unknown option"
@@ -57,102 +82,77 @@ msgstr "Options"
 msgid "Sudo options"
 msgstr "Options Sudo"
 
-#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:121
-#: config/sudo/class_sudoConfig.inc:42
-msgid "Sudo"
-msgstr "Sudo"
-
-#: admin/sudo/class_sudoManagement.inc:33
-msgid "Sudo management"
-msgstr "Gestion sudo"
-
-#: admin/sudo/class_sudoGeneric.inc:122 admin/sudo/class_sudoGeneric.inc:126
+#: admin/sudo/class_sudoGeneric.inc:124 admin/sudo/class_sudoGeneric.inc:128
 msgid "Sudo role"
 msgstr "Rôle sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:141
+#: admin/sudo/class_sudoGeneric.inc:143
 msgid "Role settings"
 msgstr "Paramètres du rôle"
 
-#: admin/sudo/class_sudoGeneric.inc:146
+#: admin/sudo/class_sudoGeneric.inc:149
 msgid "Name"
 msgstr "Nom"
 
-#: admin/sudo/class_sudoGeneric.inc:146
+#: admin/sudo/class_sudoGeneric.inc:149
 msgid "Name of the role"
 msgstr "Nom du rôle "
 
-#: admin/sudo/class_sudoGeneric.inc:151
+#: admin/sudo/class_sudoGeneric.inc:154
 msgid "Description"
 msgstr "Description"
 
-#: admin/sudo/class_sudoGeneric.inc:151
+#: admin/sudo/class_sudoGeneric.inc:154
 msgid "Description for the new sudo role"
 msgstr "Description du nouveau rôle sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:156
+#: admin/sudo/class_sudoGeneric.inc:159
 msgid "Commands"
 msgstr "Commandes"
 
-#: admin/sudo/class_sudoGeneric.inc:157
+#: admin/sudo/class_sudoGeneric.inc:160
 msgid ""
 "A Unix command with optional command line arguments, potentially including "
 "globbing characters (aka wild cards)"
 msgstr "Une commande Unix avec éventuellement des arguments de ligne de commande, y compris des caractères joker (wildcards)"
 
-#: admin/sudo/class_sudoGeneric.inc:163
+#: admin/sudo/class_sudoGeneric.inc:166
 msgid "Run as (user)"
 msgstr "Exécuter comme (utilisateur)"
 
-#: admin/sudo/class_sudoGeneric.inc:164
+#: admin/sudo/class_sudoGeneric.inc:167
 msgid "User(s) impersonated by sudo"
 msgstr "Utilisateur(s) personnifié par sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:171
+#: admin/sudo/class_sudoGeneric.inc:174
 msgid "Run as (group)"
 msgstr "Exécuter comme (groupe)"
 
-#: admin/sudo/class_sudoGeneric.inc:172
+#: admin/sudo/class_sudoGeneric.inc:175
 msgid "Group(s) impersonated by sudo"
 msgstr "Groupe(s) personnifié par sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:178
+#: admin/sudo/class_sudoGeneric.inc:181
 msgid "Systems"
 msgstr "Systèmes"
 
-#: admin/sudo/class_sudoGeneric.inc:178
+#: admin/sudo/class_sudoGeneric.inc:181
 msgid "A host name, IP address or IP network"
 msgstr "Un nom d'hôte, une adresse IP ou un réseau IP"
 
-#: admin/sudo/class_sudoGeneric.inc:183
+#: admin/sudo/class_sudoGeneric.inc:186
 msgid "Users and groups"
 msgstr "Utilisateurs et groupes"
 
-#: admin/sudo/class_sudoGeneric.inc:184
+#: admin/sudo/class_sudoGeneric.inc:187
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
 msgstr "Un nom d'utilisateur, ID utilisateur (préfixé par '#'), groupe Unix (préfixé par '%')"
 
-#: admin/sudo/class_sudoGeneric.inc:188
+#: admin/sudo/class_sudoGeneric.inc:191
 msgid "Priority"
 msgstr "Priorité"
 
-#: admin/sudo/class_sudoGeneric.inc:188
+#: admin/sudo/class_sudoGeneric.inc:191
 msgid "This rule priority compared to others"
 msgstr "La priorité de cette règle par rapport aux autres"
-
-#: config/sudo/class_sudoConfig.inc:28
-msgid "Sudo configuration"
-msgstr "Configuration Sudo"
-
-#: config/sudo/class_sudoConfig.inc:29
-msgid "FusionDirectory sudo plugin configuration"
-msgstr "Configuration du plugin sudo"
-
-#: config/sudo/class_sudoConfig.inc:45
-msgid "Sudo RDN"
-msgstr "Branche sudo"
-
-#: config/sudo/class_sudoConfig.inc:45
-msgid "Branch in which sudoers will be stored"
-msgstr "Branche où seront stockés les sudoers"

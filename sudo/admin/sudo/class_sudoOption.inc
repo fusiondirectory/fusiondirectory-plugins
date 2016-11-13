@@ -391,7 +391,8 @@ class SudoOptionAttribute extends Attribute
     $smarty->assign("booleanOptions", array("FALSE","TRUE"));
     if ($this->type == "STRING") {
       $display = '<input type="text" name="'.$id.'" id="'.$id.'" value="'.$value.'" />';
-    } elseif ($this->type == "LISTS") { //FIXME : LIST must be handle in an other way
+      /* FIXME : LIST must be handle in an other way */
+    } elseif ($this->type == "LISTS") {
       $display = '<input type="text" name="'.$id.'" id="'.$id.'" value="'.$value.'" />';
     } elseif ($this->type == "INTEGER") {
       $display = '<input type="number" name="'.$id.'" id="'.$id.'" value="'.$value.'" />';
@@ -472,11 +473,9 @@ class sudoOption extends simplePlugin
   var $displayHeader = FALSE;
   var $objectclasses = array();
 
-  // The main function : information about attributes
   static function getAttributesInfo ()
   {
     return array(
-      // Attributes are grouped by section
       'available_options' => array(
         'name'  => _('Available options'),
         'attrs' => array(

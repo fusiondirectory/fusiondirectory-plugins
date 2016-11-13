@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-01-22 16:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/vi_VN/)\n"
@@ -16,6 +16,71 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: vi_VN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: personal/quota/class_quotaAccount.inc:101
+msgid "Quota"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:102
+msgid "Plugin for quota support"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:120
+msgid "Quota informations"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:125
+msgid "Quota informations for this user"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:129
+#: admin/systems/services/quota/class_serviceQuota.inc:51
+msgid "Device"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:129
+msgid "Device this quota is for"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:133
+msgid "Block soft limit"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:133
+msgid "Soft limit for the block the user can use"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:139
+msgid "Block hard limit"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:139
+msgid "Hard limit for the block the user can use"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:145
+msgid "Inode soft limit"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:145
+msgid "Soft limit for the inodes the user can use"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:151
+msgid "Inode hard limit"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:151
+msgid "Hard limit for the inodes the user can use"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:157
+msgid "Server"
+msgstr "Máy chủ (server)"
+
+#: personal/quota/class_quotaAccount.inc:157
+msgid "Server hosting the device this quota is for"
+msgstr ""
 
 #: admin/systems/services/quota/class_serviceQuota.inc:30
 #: admin/systems/services/quota/class_serviceQuota.inc:31
@@ -32,11 +97,6 @@ msgstr ""
 
 #: admin/systems/services/quota/class_serviceQuota.inc:47
 msgid "Quotas for the shares this server hosts"
-msgstr ""
-
-#: admin/systems/services/quota/class_serviceQuota.inc:51
-#: personal/quota/class_quotaAccount.inc:129
-msgid "Device"
 msgstr ""
 
 #: admin/systems/services/quota/class_serviceQuota.inc:51
@@ -167,64 +227,4 @@ msgstr ""
 #: admin/systems/services/quota/class_serviceQuota.inc:171
 #, php-format
 msgid "(%s by %s)"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:101
-msgid "Quota"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:102
-msgid "Plugin for quota support"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:120
-msgid "Quota informations"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:125
-msgid "Quota informations for this user"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:129
-msgid "Device this quota is for"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:133
-msgid "Block soft limit"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:133
-msgid "Soft limit for the block the user can use"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:139
-msgid "Block hard limit"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:139
-msgid "Hard limit for the block the user can use"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:145
-msgid "Inode soft limit"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:145
-msgid "Soft limit for the inodes the user can use"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:151
-msgid "Inode hard limit"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:151
-msgid "Hard limit for the inodes the user can use"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:157
-msgid "Server"
-msgstr "Máy chủ (server)"
-
-#: personal/quota/class_quotaAccount.inc:157
-msgid "Server hosting the device this quota is for"
 msgstr ""

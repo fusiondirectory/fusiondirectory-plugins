@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-07-01 14:11+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Arabic (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/ar/)\n"
@@ -16,101 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-
-#: admin/groups/mail/class_groupMail.inc:46
-#: personal/mail/class_mailAccount.inc:71
-#: config/mail/class_mailPluginConfig.inc:28
-msgid "Mail"
-msgstr ""
-
-#: admin/groups/mail/class_groupMail.inc:47
-msgid "Group mail options"
-msgstr ""
-
-#: admin/groups/mail/class_groupMail.inc:59
-msgid "Informations"
-msgstr ""
-
-#: admin/groups/mail/class_groupMail.inc:62
-#: personal/mail/class_mailAccount.inc:97
-msgid "Primary address"
-msgstr ""
-
-#: admin/groups/mail/class_groupMail.inc:62
-msgid "The primary mail address"
-msgstr ""
-
-#: admin/groups/mail/class_groupMail.inc:66
-#: personal/mail/class_mailAccount.inc:101
-msgid "Server"
-msgstr "خادم"
-
-#: admin/groups/mail/class_groupMail.inc:66
-msgid "Server mail"
-msgstr ""
-
-#: admin/groups/mail/class_groupMail.inc:72
-#: personal/mail/class_mailAccount.inc:117
-msgid "Alternative addresses"
-msgstr ""
-
-#: admin/groups/mail/class_groupMail.inc:72
-msgid "Alternative mail addresses for the group"
-msgstr ""
-
-#: admin/groups/mail/class_groupMail.inc:77
-msgid "Forward messages to non group members"
-msgstr ""
-
-#: admin/groups/mail/class_groupMail.inc:81
-msgid "Only allowed to receive local mail"
-msgstr ""
-
-#: admin/groups/mail/class_groupMail.inc:81
-msgid ""
-"Whether this group mail is only allowed to receive messages from local "
-"senders"
-msgstr ""
-
-#: admin/systems/services/imap/class_serviceIMAP.inc:32
-msgid "IMAP/POP3 generic service"
-msgstr ""
-
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
-msgid "IMAP/POP3"
-msgstr ""
-
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
-msgid "Services"
-msgstr "خدمات"
-
-#: personal/mail/class_mail-methods.inc:154
-#: personal/mail/class_mail-methods.inc:516
-msgid "Configuration error"
-msgstr ""
-
-#: personal/mail/class_mail-methods.inc:155
-#, php-format
-msgid "The configured mail attribute '%s' is unsupported!"
-msgstr ""
-
-#: personal/mail/class_mail-methods.inc:517
-#, php-format
-msgid "Mail method '%s' is unknown!"
-msgstr ""
-
-#: personal/mail/class_mail-methods.inc:764
-#: personal/mail/class_mail-methods.inc:765
-msgid "None"
-msgstr ""
-
-#: personal/mail/class_mail-methods.inc:854
-msgid "Unknown"
-msgstr ""
-
-#: personal/mail/class_mail-methods.inc:856
-msgid "Unlimited"
-msgstr ""
 
 #: personal/mail/class_mailAccount.inc:45
 #: personal/mail/class_mailAccount.inc:238
@@ -136,6 +41,12 @@ msgstr ""
 msgid "Part of the quota which is used"
 msgstr ""
 
+#: personal/mail/class_mailAccount.inc:71
+#: config/mail/class_mailPluginConfig.inc:28
+#: admin/groups/mail/class_groupMail.inc:46
+msgid "Mail"
+msgstr ""
+
 #: personal/mail/class_mailAccount.inc:72
 #: config/mail/class_mailPluginConfig.inc:41
 msgid "Mail settings"
@@ -146,8 +57,18 @@ msgid "Mail account"
 msgstr ""
 
 #: personal/mail/class_mailAccount.inc:97
+#: admin/groups/mail/class_groupMail.inc:62
+msgid "Primary address"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:97
 msgid "Primary mail address"
 msgstr ""
+
+#: personal/mail/class_mailAccount.inc:101
+#: admin/groups/mail/class_groupMail.inc:66
+msgid "Server"
+msgstr "خادم"
 
 #: personal/mail/class_mailAccount.inc:101
 msgid "Specify the mail server where the user will be hosted on"
@@ -159,6 +80,11 @@ msgstr ""
 
 #: personal/mail/class_mailAccount.inc:113
 msgid "Other addresses and redirections"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:117
+#: admin/groups/mail/class_groupMail.inc:72
+msgid "Alternative addresses"
 msgstr ""
 
 #: personal/mail/class_mailAccount.inc:117
@@ -250,6 +176,34 @@ msgstr ""
 msgid "Cannot remove mailbox: %s"
 msgstr ""
 
+#: personal/mail/class_mail-methods.inc:154
+#: personal/mail/class_mail-methods.inc:516
+msgid "Configuration error"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:155
+#, php-format
+msgid "The configured mail attribute '%s' is unsupported!"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:517
+#, php-format
+msgid "Mail method '%s' is unknown!"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:764
+#: personal/mail/class_mail-methods.inc:765
+msgid "None"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:854
+msgid "Unknown"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:856
+msgid "Unlimited"
+msgstr ""
+
 #: config/mail/class_mailPluginConfig.inc:29
 msgid "Mail plugin configuration"
 msgstr ""
@@ -322,3 +276,49 @@ msgstr ""
 #: config/mail/class_mailPluginConfig.inc:84
 msgid "Prefix to add for mail shared folders."
 msgstr ""
+
+#: admin/groups/mail/class_groupMail.inc:47
+msgid "Group mail options"
+msgstr ""
+
+#: admin/groups/mail/class_groupMail.inc:59
+msgid "Informations"
+msgstr ""
+
+#: admin/groups/mail/class_groupMail.inc:62
+msgid "The primary mail address"
+msgstr ""
+
+#: admin/groups/mail/class_groupMail.inc:66
+msgid "Server mail"
+msgstr ""
+
+#: admin/groups/mail/class_groupMail.inc:72
+msgid "Alternative mail addresses for the group"
+msgstr ""
+
+#: admin/groups/mail/class_groupMail.inc:77
+msgid "Forward messages to non group members"
+msgstr ""
+
+#: admin/groups/mail/class_groupMail.inc:81
+msgid "Only allowed to receive local mail"
+msgstr ""
+
+#: admin/groups/mail/class_groupMail.inc:81
+msgid ""
+"Whether this group mail is only allowed to receive messages from local "
+"senders"
+msgstr ""
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:32
+msgid "IMAP/POP3 generic service"
+msgstr ""
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:33
+msgid "IMAP/POP3"
+msgstr ""
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:33
+msgid "Services"
+msgstr "خدمات"

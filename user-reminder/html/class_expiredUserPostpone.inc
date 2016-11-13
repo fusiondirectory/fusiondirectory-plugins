@@ -46,7 +46,7 @@ class expiredUserPostpone extends standAlonePage
     }
 
     if (($_SERVER['REQUEST_METHOD'] == 'GET') && isset($_GET['token'])) {
-      # Check if the token match
+      /* Check if the token match */
       $this->uid = $_GET['uid'];
       if ($this->checkToken($_GET['token'])) {
         $this->message = array();

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 18:15+0200\n"
+"POT-Creation-Date: 2016-11-02 23:08+0100\n"
 "PO-Revision-Date: 2016-01-22 16:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: config/ejbca/class_ejbcaConfig.inc:28
+msgid "EJBCA plugin configuration"
+msgstr "Ρύθμιση προσθέτου EJBCA "
+
+#: config/ejbca/class_ejbcaConfig.inc:29
+msgid "FusionDirectory ejbca plugin configuration"
+msgstr "Ρύθμιση προσθέτου ejbca FusionDirectory "
+
+#: config/ejbca/class_ejbcaConfig.inc:42
+msgid "EJBCA plugin"
+msgstr "Πρόσθετο EJBCA"
+
+#: config/ejbca/class_ejbcaConfig.inc:45
+msgid "EJBCA RDN"
+msgstr "EJBCA RDN"
+
+#: config/ejbca/class_ejbcaConfig.inc:45
+msgid "Branch in which ejbca certificates are stored"
+msgstr "Κλάδος όπου τα πιστοποιητικά ejbca αποθηκεύονται"
 
 #: admin/ejbca/certificates/class_ejbcaCertificates.inc:29
 #: admin/ejbca/class_ejbcaManagement.inc:32
@@ -65,23 +85,3 @@ msgstr "Κοινό όνομα"
 #: admin/ejbca/class_ejbcaCertificate.inc:55
 msgid "Certificate content"
 msgstr "Περιεχόμενο πιστοποιητικού"
-
-#: config/ejbca/class_ejbcaConfig.inc:28
-msgid "EJBCA plugin configuration"
-msgstr "Ρύθμιση προσθέτου EJBCA "
-
-#: config/ejbca/class_ejbcaConfig.inc:29
-msgid "FusionDirectory ejbca plugin configuration"
-msgstr "Ρύθμιση προσθέτου ejbca FusionDirectory "
-
-#: config/ejbca/class_ejbcaConfig.inc:42
-msgid "EJBCA plugin"
-msgstr "Πρόσθετο EJBCA"
-
-#: config/ejbca/class_ejbcaConfig.inc:45
-msgid "EJBCA RDN"
-msgstr "EJBCA RDN"
-
-#: config/ejbca/class_ejbcaConfig.inc:45
-msgid "Branch in which ejbca certificates are stored"
-msgstr "Κλάδος όπου τα πιστοποιητικά ejbca αποθηκεύονται"

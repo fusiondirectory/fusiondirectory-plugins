@@ -20,11 +20,7 @@
 
 class subContractingAccount extends simplePlugin
 {
-  // We set displayHeader to FALSE, because we don't want a header allowing to activate/deactivate this plugin,
-  // we want it activated on all objects
   var $displayHeader = TRUE;
-
-  // Here we indicate which LDAP classes our plugin is using.
   var $objectclasses = array('fdSubcontractingPerson');
 
   static function plInfo ()
@@ -36,12 +32,10 @@ class subContractingAccount extends simplePlugin
       'plIcon'        => 'geticon.php?context=applications&icon=subcontracting&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=subcontracting&size=16',
 
-      // simplePlugin can generate the ACL list for us
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
-  // The main function : information about attributes
   static function getAttributesInfo ()
   {
     return array(
@@ -49,39 +43,39 @@ class subContractingAccount extends simplePlugin
         'name'  => _('SubContracting Information'),
         'attrs' => array(
           new StringAttribute (
-            _('Intermediate'),                            // Label
-            _('Contact to the final customer'),           // Description
-            'fdMissionIntermediate',                      // LDAP name
-            FALSE,                                        // Not Mandatory
-            ''                                            // Default value
+            _('Intermediate'),
+            _('Contact to the final customer'),
+            'fdMissionIntermediate',
+            FALSE,
+            ''
           ),
           new StringAttribute (
-            _('Final Customer'),                          // Label
-            _('Final Customer for this mission'),         // Description
-            'fdMissionFinalCustomer',                     // LDAP name
-            FALSE,                                        // Not Mandatory
-            ''                                            // Default value
+            _('Final Customer'),
+            _('Final Customer for this mission'),
+            'fdMissionFinalCustomer',
+            FALSE,
+            ''
           ),
           new MailAttribute (
-            _('Mail Address'),                            // Label
-            _('Mail address assigned for this mission'),  // Description
-            'fdMissionMail',                              // LDAP name
-            FALSE,                                        // Not Mandatory
-            ''                                            // Default value
+            _('Mail Address'),
+            _('Mail address assigned for this mission'),
+            'fdMissionMail',
+            FALSE,
+            ''
           ),
           new StringAttribute (
-            _('Phone'),                                   // Label
-            _('Phone number assigned for this mission'),  // Description
-            'fdMissionPhone',                             // LDAP name
-            FALSE,                                        // Not Mandatory
-            ''                                            // Default value
+            _('Phone'),
+            _('Phone number assigned for this mission'),
+            'fdMissionPhone',
+            FALSE,
+            ''
           ),
           new StringAttribute (
-            _('Street Address'),                          // Label
-            _('Address where this mission is executed'),  // Description
-            'fdMissionAddress',                           // LDAP name
-            FALSE,                                        // Not Mandatory
-            ''                                            // Default value
+            _('Street Address'),
+            _('Address where this mission is executed'),
+            'fdMissionAddress',
+            FALSE,
+            ''
           ),
         )
       ),

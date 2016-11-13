@@ -225,7 +225,8 @@ class supportDaemon
       return $status[0];
     } catch (jsonRPCClient_RequestErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
-      $this->new_state(TRUE); // connection is OK
+      /* connection is OK */
+      $this->new_state(TRUE);
       return FALSE;
     } catch (jsonRPCClient_NetworkErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
@@ -331,7 +332,7 @@ class supportDaemon
    *
    * \return array All queued entries as an array or FALSE if there is an error.
    */
-  public function get_queued_entries() //$event_types = array("*"),$from=-1,$to=-1,$sort="timestamp DESC"
+  public function get_queued_entries()
   {
     if ($this->s_host == "") {
       $this->set_error($this->host_error);
@@ -394,7 +395,8 @@ class supportDaemon
       return $this->new_state(TRUE);
     } catch (jsonRPCClient_RequestErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
-      $this->new_state(TRUE); // connection is OK
+      /* connection is OK */
+      $this->new_state(TRUE);
       return FALSE;
     } catch (jsonRPCClient_NetworkErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
@@ -454,7 +456,8 @@ class supportDaemon
       return $this->new_state(TRUE);
     } catch (jsonRPCClient_RequestErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
-      $this->new_state(TRUE); // connection is OK
+      /* connection is OK */
+      $this->new_state(TRUE);
       return FALSE;
     } catch (jsonRPCClient_NetworkErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
@@ -528,7 +531,8 @@ class supportDaemon
       return $entries;
     } catch (jsonRPCClient_RequestErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
-      $this->new_state(TRUE); // connection is OK
+      /* connection is OK */
+      $this->new_state(TRUE);
       return FALSE;
     } catch (jsonRPCClient_NetworkErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
@@ -629,7 +633,8 @@ class supportDaemon
       return $client->ping($mac);
     } catch (jsonRPCClient_RequestErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
-      $this->new_state(TRUE); // connection is OK
+      /* connection is OK */
+      $this->new_state(TRUE);
       return FALSE;
     } catch (jsonRPCClient_NetworkErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
@@ -664,7 +669,8 @@ class supportDaemon
     if ($this->saved_state() == FALSE) {
       return array();
     }
-    if ($package_list) { // filters is a package name list
+    /* filters is a package name list */
+    if ($package_list) {
       foreach ($filters as &$filter) {
         $filter = "^".$this->escape_perl_chars($filter)."$";
       }
@@ -688,7 +694,8 @@ class supportDaemon
         }
         if (in_array("SECTION", $attrs)) {
           foreach ($packages as &$package) {
-            $package['SECTION'] = $section; // FIXME : do we want to do this? It will replace "contrib/misc by contrib, for instance
+            /* FIXME : do we want to do this? It will replace "contrib/misc by contrib, for instance */
+            $package['SECTION'] = $section;
           }
           unset($package);
         }
@@ -699,7 +706,8 @@ class supportDaemon
       return $to_return;
     } catch (jsonRPCClient_RequestErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
-      $this->new_state(TRUE); // connection is OK
+      /* connection is OK */
+      $this->new_state(TRUE);
       return array();
     } catch (jsonRPCClient_NetworkErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
@@ -763,7 +771,8 @@ class supportDaemon
       return $this->new_state(TRUE);
     } catch (jsonRPCClient_RequestErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
-      $this->new_state(TRUE); // connection is OK
+      /* connection is OK */
+      $this->new_state(TRUE);
       return FALSE;
     } catch (jsonRPCClient_NetworkErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
