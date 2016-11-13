@@ -39,7 +39,7 @@ class dhcpFailOverPeer extends dhcpPlugin
           new IntAttribute (
             _('Primary port'), _('Port on which primary server listens for connections from its fail over peer (secondary server)'),
             'dhcpFailOverPrimaryPort', TRUE,
-            0, FALSE
+            0, FALSE, 519
           ),
           new StringAttribute (
             _('Secondary server'), _('IP address or DNS name of the server playing secondary role in DHC Load Balancing and Fail over'),
@@ -48,17 +48,17 @@ class dhcpFailOverPeer extends dhcpPlugin
           new IntAttribute (
             _('Secondary port'), _('Port on which secondary server listens for connections from its fail over peer (primary server)'),
             'dhcpFailOverSecondaryPort', TRUE,
-            0, FALSE
+            0, FALSE, 520
           ),
           new TimeAttribute (
             _('Response delay'), _('Maximum response time in seconds, before Server assumes that connection to fail over peer has failed'),
             'dhcpFailOverResponseDelay', FALSE,
-            0, FALSE
+            0, FALSE, 60
           ),
           new IntAttribute (
             _('Unacked updates'), _('Number of BNDUPD messages that server can send before it receives BNDACK from its fail over peer'),
             'dhcpFailOverUnackedUpdates', FALSE,
-            0, FALSE
+            0, FALSE, 10
           ),
           new TimeAttribute (
             _('Maximum Client Lead Time'), _('Maximum Client Lead Time configuration in seconds, as defined in DHCP Failover Protocol [FAILOVR]'),
@@ -77,7 +77,7 @@ class dhcpFailOverPeer extends dhcpPlugin
           new TimeAttribute (
             _('Load balance time'), _('Cutoff time in seconds, after which load balance is disabled'),
             'dhcpFailOverLoadBalanceTime', FALSE,
-            0, FALSE
+            0, FALSE, 3
           ),
           new TextAreaAttribute (
             _('Comments'), _('Comments about this DHCP object'),
