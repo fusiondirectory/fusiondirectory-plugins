@@ -62,8 +62,8 @@ class dhcpFailOverPeer extends dhcpPlugin
           ),
           new TimeAttribute (
             _('Maximum Client Lead Time'), _('Maximum Client Lead Time configuration in seconds, as defined in DHCP Failover Protocol [FAILOVR]'),
-            'dhcpMaxClientLeadTime', FALSE,
-            0, FALSE
+            'dhcpMaxClientLeadTime', TRUE,
+            0, FALSE, 3600
           ),
           new IntAttribute (
             _('Split'), _('Split between the primary and secondary servers for fail over purpose'),
@@ -72,8 +72,7 @@ class dhcpFailOverPeer extends dhcpPlugin
           ),
           new StringAttribute (
             _('HashBucketAssignment'), _('HashBucketAssignment bit map for the DHCP Server, as defined in DHC Load Balancing Algorithm [RFC 3074]'),
-            'dhcpHashBucketAssignment', TRUE,
-            "3600"
+            'dhcpHashBucketAssignment', FALSE
           ),
           new TimeAttribute (
             _('Load balance time'), _('Cutoff time in seconds, after which load balance is disabled'),
