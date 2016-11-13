@@ -286,6 +286,9 @@ class dhcpSystem extends simplePlugin
   {
     global $config;
 
+    /* workaround for audit strange errors */
+    $this->ldap_error = 'Success';
+
     $ldap = $config->get_ldap_link();
     $baseObject = $this->parent->getBaseObject();
     return $this->attributesAccess['dhcpHosts']->postLdapSave(
