@@ -109,7 +109,7 @@ class userReminderConfig extends simplePlugin
           new HiddenAttribute (
             'fdReminderTokenRDN',
             FALSE,
-            'ou=reminder,ou=fusiondirectory'
+            'ou=reminder'
           )
         )
       )
