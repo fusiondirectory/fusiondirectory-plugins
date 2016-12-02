@@ -105,6 +105,11 @@ class userReminderConfig extends simplePlugin
             _('Body of the confirmation email, sent when the user has postponed expiration. Use %s for the cn and uid.'),
             'fdUserReminderConfirmationBody', FALSE,
             _('Dear %1$s,'."\n".' your account %2$s expiration has been successfully postponed.'."\n")
+          ),
+          new HiddenAttribute (
+            'fdReminderTokenRDN',
+            FALSE,
+            'ou=reminder,ou=fusiondirectory'
           )
         )
       )
