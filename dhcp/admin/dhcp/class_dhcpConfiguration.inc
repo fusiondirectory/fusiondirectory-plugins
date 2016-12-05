@@ -200,7 +200,6 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
       'cn'              => array($cn),
       'dhcpHWAddress'   => array('ethernet '.$mac),
       'dhcpStatements'  => array(
-        'host-name '.$cn,
         'fixed-address '.$ip
       ),
       'dhcpOption'      => array(),
