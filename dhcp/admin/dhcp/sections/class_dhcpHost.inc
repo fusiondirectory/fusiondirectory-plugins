@@ -52,7 +52,6 @@ class dhcpHost extends dhcpPlugin
     $attributesInfo['host']['attrs'][0]->setLinearRendering(TRUE);
     $attributesInfo['main']['attrs'][2]->setDefaultValue(
       array(
-        'host-name cn',
         'fixed-address ip',
       )
     );
