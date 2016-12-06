@@ -50,12 +50,18 @@ class serviceIMAP extends simpleService
     return '<b>This server runs an IMAP or POP3 server</b>'.parent::execute();
   }
 
+  function save()
+  {
+    if ($this->parent->getBaseObject()->attributeHaveChanged('cn')) {
+      mailMethod::resetMailServersCache();
+    }
+    parent::save();
+  }
+
   protected function post_save()
   {
     parent::post_save();
-    if (!$this->initially_was_account) {
-      mailMethod::resetMailServersCache();
-    }
+    mailMethod::resetMailServersCache();
   }
 
   protected function post_remove ()

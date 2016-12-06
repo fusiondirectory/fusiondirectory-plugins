@@ -103,12 +103,18 @@ class serviceDovecot extends simpleService
     );
   }
 
+  function save()
+  {
+    if ($this->parent->getBaseObject()->attributeHaveChanged('cn')) {
+      mailMethod::resetMailServersCache();
+    }
+    parent::save();
+  }
+
   protected function post_save()
   {
     parent::post_save();
-    if (!$this->initially_was_account) {
-      mailMethod::resetMailServersCache();
-    }
+    mailMethod::resetMailServersCache();
   }
 
   protected function post_remove ()
