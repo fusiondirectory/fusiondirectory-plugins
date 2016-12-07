@@ -23,7 +23,7 @@ class CertificateOrderedArrayAttribute extends OrderedArrayAttribute
   protected function genRowIcons($key, $value)
   {
     $id = $this->getHtmlId();
-    list ($img, $width) = parent::genRowIcons($key, $value);
+    list ($img, $nbicons) = parent::genRowIcons($key, $value);
     $img = $this->renderInputField(
       'image', $id.'_download_'.$key,
       array(
@@ -32,9 +32,10 @@ class CertificateOrderedArrayAttribute extends OrderedArrayAttribute
         'alt'   => _('Download'),
         'class' => 'center'
       )
-    ).'&nbsp;'.$img;
-    $width += 15;
-    return array ($img, $width);
+    ).$img;
+    $nbicons++;
+
+    return array ($img, $nbicons);
   }
 
   protected function handlePostValueActions($id, $postValue)

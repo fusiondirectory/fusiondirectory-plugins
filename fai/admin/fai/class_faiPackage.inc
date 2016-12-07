@@ -156,27 +156,27 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
   protected function genRowIcons($key, $value)
   {
     $id = $this->getHtmlId();
-    list ($img, $width) = parent::genRowIcons($key, $value);
+    list ($img, $nbicons) = parent::genRowIcons($key, $value);
     $key64 = base64_encode($key);
     if (preg_match('/\-$/', $value)) {
       $img = '<input type="image" src="geticon.php?context=actions&icon=add&size=16"'.
               ' name="'.$id.'_removal_'.$key64.'" class="center" alt="'._('Mark for installation').'" title="'._('Mark for installation').'"/>'.
-              '&nbsp;'.$img;
+              $img;
     } else {
       $img = '<input type="image" src="geticon.php?context=actions&icon=remove&size=16"'.
               ' name="'.$id.'_removal_'.$key64.'" class="center" alt="'._('Mark for removal').'" title="'._('Mark for removal').'"/>'.
-              '&nbsp;'.$img;
+              $img;
     }
     if (isset($this->buffer[$key]['HASTEMPLATE']) && $this->buffer[$key]['HASTEMPLATE']) {
       $img = '<input type="image" src="geticon.php?context=actions&icon=package-configure&size=16"'.
               ' name="'.$id.'_config_'.$key64.'" class="center" alt="'._('Edit configuration').'" title="'._('Edit configuration').'"/>'.
-              '&nbsp;'.$img;
+              $img;
     } else {
       $img = '<img src="images/empty.png" alt="" style="width:16px;"/>'.$img;
     }
-    $width += 32;
+    $nbicons += 2;
 
-    return array ($img, $width);
+    return array ($img, $nbicons);
   }
 
   protected function handleAddAndEditValue()
