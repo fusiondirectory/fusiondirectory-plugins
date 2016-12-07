@@ -44,7 +44,7 @@ class applicationManagement extends simpleManagement
     if ($mode == 'none') {
       return array(array(), array());
     }
-    $entries = array();
+    $ldap = $config->get_ldap_link();
     if ($mode == 'all') {
       /* using raw to have the same results than with allowed mode */
       $apps = objects::ls(
@@ -66,7 +66,6 @@ class applicationManagement extends simpleManagement
         NULL,
         '(&(objectClass=fdApplicationRights)(roleOccupant='.$ui->dn.'))'
       );
-      $ldap = $config->get_ldap_link();
       foreach ($roles as $role) {
         foreach ($role['fdApplicationAllowed'] as $appdn) {
           if (!isset($apps[$appdn])) {
@@ -78,7 +77,29 @@ class applicationManagement extends simpleManagement
         }
       }
     }
-    foreach ($apps as $app) {
+    ksort($apps);
+    $sections = array(
+      'webapps' => array('name' => _('Web applications'), 'priority' => 100)
+    );
+    $entries = array(
+      'webapps' => array()
+    );
+    foreach ($apps as $dn => $app) {
+      $base = preg_replace('/^[^,]+,'.preg_quote(get_ou('webappsRDN'), '/').'/', '', $dn);
+      $section = 'webapps';
+      if ($base != $config->current['BASE']) {
+        $ldap->cat($base, array('dn', 'ou', 'description'), '(&(ou=*)(description=*))');
+        if ($attrs = $ldap->fetch()) {
+          $section = $attrs['ou'][0];
+          if (!isset($sections[$section])) {
+            $sections[$section] = array(
+              'name'      => $attrs['description'][0],
+              'priority'  => 101
+            );
+            $entries[$section] = array();
+          }
+        }
+      }
       if (isset($app['fdApplicationImage'])) {
         $path = 'getbin.php?key=webapp_'.urlencode($app['cn'][0]);
         session::set('binarywebapp_'.$app['cn'][0].'type', 'image/png');
@@ -88,7 +109,7 @@ class applicationManagement extends simpleManagement
       } else {
         $path = 'plugins/applications/images/default_icon.png';
       }
-      $entries[] = array(
+      $entries[$section][] = array(
         'NAME'        => $app['cn'][0],
         'TITLE'       => $app['fdApplicationTitle'][0],
         'DESCRIPTION' => $app['description'][0],
@@ -97,12 +118,8 @@ class applicationManagement extends simpleManagement
       );
     }
     return array(
-      array(
-        'webapps' => array('name' => _('Web applications'), 'priority' => 100)
-      ),
-      array(
-        'webapps' => $entries
-      )
+      $sections,
+      $entries
     );
   }
 }
