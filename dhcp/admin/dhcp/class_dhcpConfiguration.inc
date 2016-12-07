@@ -97,11 +97,11 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
   protected function genRowIcons($key, $value)
   {
     $id = $this->getHtmlId();
-    list ($img, $width) = parent::genRowIcons($key, $value);
+    list ($img, $nbicons) = parent::genRowIcons($key, $value);
 
     if ($key == 0) {
       /* Remove delete button on first row */
-      $img = preg_replace('/<input[^>]+>&nbsp;$/', '', $img);
+      $img = preg_replace('/<input[^>]+>$/', '', $img);
     }
 
     $img = $this->renderInputField(
@@ -113,9 +113,9 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
         'class' => 'center',
       )
     ).$img;
-    $width += 20;
+    $nbicons++;
 
-    return array ($img, $width);
+    return array ($img, $nbicons);
   }
 
   protected function handlePostValueActions($id, $postValue)
