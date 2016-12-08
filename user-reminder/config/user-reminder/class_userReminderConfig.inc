@@ -115,5 +115,14 @@ class userReminderConfig extends simplePlugin
       )
     );
   }
+
+  protected function post_save()
+  {
+    global $config;
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->create_missing_trees(get_ou('reminderTokenRDN').$config->current['BASE']);
+    parent::post_save();
+  }
 }
 ?>
