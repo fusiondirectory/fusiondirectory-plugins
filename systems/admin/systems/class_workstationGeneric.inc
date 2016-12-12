@@ -120,7 +120,7 @@ class workstationGeneric extends systemSimplePluginGlue
 
   var $preInitAttributes = array('cn', 'networkSettings');
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(

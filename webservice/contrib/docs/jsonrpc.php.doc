@@ -89,7 +89,7 @@ class fdRPCService
    * \param string  $sid the session id
    * \param string  $type the object type
    *
-   * \return The informations on this type as an associative array
+   * \return The information on this type as an associative array
    */
   function infos($sid, $type)
   {

@@ -26,7 +26,7 @@ class pureftpdAccount extends simplePlugin
   var $objectclasses  = array("PureFTPdUser");
 
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(

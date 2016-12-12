@@ -117,12 +117,12 @@ class quotaAccount extends simplePlugin
       'main' => array(
         'template'  => get_template_path('quota_section.tpl', TRUE, dirname(__FILE__)),
         'class'     => array('fullwidth'),
-        'name'      => _('Quota informations'),
+        'name'      => _('Quota information'),
         'icon'      => 'geticon.php?context=applications&icon=quota&size=16',
         'attrs'     => array(
           new OrderedArrayAttribute(
             new QuotaEntryAttribute(
-              _('Quota informations for this user'),
+              _('Quota information for this user'),
               'quota',
               array(
                 new SelectAttribute(

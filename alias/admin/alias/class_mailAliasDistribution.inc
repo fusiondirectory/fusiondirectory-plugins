@@ -24,7 +24,7 @@ class mailAliasDistribution extends simplePlugin
 
   var $objectclasses = array('top', 'mailAliasDistribution');
 
-  /* Return plugin informations for acl handling  */
+  /* Return plugin information for acl handling  */
   public static function plInfo()
   {
     return array(

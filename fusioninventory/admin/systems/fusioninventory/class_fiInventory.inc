@@ -60,7 +60,7 @@ class fiInventory extends simplePlugin
     'licenseinfos'    => 'software',
   );
 
-  /* Return plugin informations */
+  /* Return plugin information */
   static function plInfo()
   {
     return array(

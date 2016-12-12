@@ -26,7 +26,7 @@ class opsiManagement extends simpleManagement
   protected $departmentRootVisible  = FALSE;
   protected $baseMode               = FALSE;
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(

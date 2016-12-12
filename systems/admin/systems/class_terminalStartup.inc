@@ -25,7 +25,7 @@ class terminalStartup extends simplePlugin
 
   var $inheritance = array('gosaGroupOfNames' => 'member');
 
-  /* Return plugin informations */
+  /* Return plugin information */
   static function plInfo()
   {
     return array(

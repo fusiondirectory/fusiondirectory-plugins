@@ -24,7 +24,7 @@ class autofsManagement extends simpleManagement
 
   protected $autoFilterAttributes = array('dn', 'cn', 'description', 'nisMapName', 'nisMapEntry');
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(

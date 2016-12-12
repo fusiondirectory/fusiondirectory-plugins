@@ -66,7 +66,7 @@ class netgroup extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('Informations'),
+        'name'  => _('Information'),
         'attrs' => array(
           new HostNameAttribute(
             _('Name'), _('Name of this NIS netgroup'), 'cn'

@@ -22,7 +22,7 @@ class sympaAlias extends simplePlugin
 {
   var $objectclasses = array('sympaAlias');
 
-  /* Return plugin informations for acl handling  */
+  /* Return plugin information for acl handling */
   public static function plInfo()
   {
     return array(

@@ -23,7 +23,7 @@ class argonautDNSConfig extends simpleService
   var $objectclasses  = array('argonautDNSConfig');
   var $showActions    = FALSE;
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(

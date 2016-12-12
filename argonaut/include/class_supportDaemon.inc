@@ -541,7 +541,7 @@ class supportDaemon
   }
 
   /*!
-   * \brief  Returns log file informations for a given mac address
+   * \brief  Returns log file information for a given mac address
    *
    * \param  string $mac The mac address to fetch logs for.
    *

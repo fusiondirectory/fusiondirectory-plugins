@@ -81,10 +81,10 @@ class demoPlugin extends simplePlugin
         )
       ),
       'ftp' => array(
-        'name'  => _('FTP informations'),
+        'name'  => _('FTP information'),
         'attrs' => array(
           new CompositeAttribute (
-            _('Informations for ftp login'),
+            _('Information for ftp login'),
             'ftpLoginInfo',
             array(
               new StringAttribute (_('Login'),    _('Login for FTP'),     'ftpLogin'),

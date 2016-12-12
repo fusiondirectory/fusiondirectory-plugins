@@ -25,7 +25,7 @@ class serviceIMAP extends simpleService
   /* This plugin only writes its objectClass */
   var $objectclasses = array('fdImapServer');
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(

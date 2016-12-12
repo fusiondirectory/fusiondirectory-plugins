@@ -26,7 +26,7 @@ class aliasManagement extends simpleManagement
 
   protected $autoFilterAttributes = array('dn', 'cn', 'description', 'aliasExpirationDate');
 
-  /* Return plugin informations for acl handling  */
+  /* Return plugin information for acl handling  */
   public static function plInfo()
   {
     return array(

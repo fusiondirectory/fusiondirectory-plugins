@@ -24,7 +24,7 @@ class etablissement extends simplePlugin
 
   var $mainTab = TRUE;
 
-  /* Return plugin informations */
+  /* Return plugin information */
   static function plInfo()
   {
     return array(
