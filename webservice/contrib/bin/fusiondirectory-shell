@@ -177,7 +177,7 @@ my $term = new Term::ShellUI(
       proc    => \&command_lstabs,
     },
     "infos" => {
-      desc    => "Show informations about a type",
+      desc    => "Show information about a type",
       doc     => "Usage: infos <TYPE>\nExample: infos user\n",
       minargs => 1,
       maxargs => 1,

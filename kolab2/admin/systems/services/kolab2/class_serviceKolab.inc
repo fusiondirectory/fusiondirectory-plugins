@@ -79,7 +79,7 @@ class serviceKolab extends simpleService
   {
     return array (
       'section1' => array (
-        'name'  => _('Informations'),
+        'name'  => _('Information'),
         'attrs' => array (
           new StringAttribute('', '', 'k', FALSE, 'kolab'),
           new SetAttribute(new StringAttribute('', '', 'kolabHost')),

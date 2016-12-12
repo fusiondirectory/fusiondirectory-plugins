@@ -23,7 +23,7 @@ class opsiImport extends systemImport
 {
   protected $defaultType = 'winstation';
 
-  /* Return plugin informations for acl handling  */
+  /* Return plugin information for acl handling  */
   static function plInfo()
   {
     return array(
@@ -92,7 +92,7 @@ class opsiImport extends systemImport
     $res = $s_daemon->append_call("OPSI.host_getObjects", array($macAddress), array('args' => array(array(), array('type' => 'OpsiClient'))));
     if ($s_daemon->is_error()) {
       msg_dialog::display(
-        _("Could not update OPSI informations"),
+        _("Could not update OPSI information"),
         msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
       );
       return FALSE;

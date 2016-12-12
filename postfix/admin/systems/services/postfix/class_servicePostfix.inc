@@ -41,7 +41,7 @@ class servicePostfix extends simpleService
   {
     return array (
       'section1' => array (
-        'name'  => _('Informations'),
+        'name'  => _('Information'),
         'attrs' => array (
           new StringAttribute (
             _('Hostname'), _('The host name.'),

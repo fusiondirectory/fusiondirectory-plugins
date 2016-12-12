@@ -23,7 +23,6 @@ class serviceShare extends simpleService
 {
   var $objectclasses = array('goShareServer');
 
-  /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(

@@ -28,7 +28,6 @@ class sambaDomainManagement extends simpleManagement
   protected $baseMode               = FALSE;
   protected $skipCpHandler          = TRUE;
 
-  /* Return plugin informations for acl handling  */
   public static function plInfo()
   {
     return array(

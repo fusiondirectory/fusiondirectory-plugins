@@ -39,7 +39,7 @@ class mailgroup extends simplePlugin
 {
   var $displayHeader  = TRUE;
   var $objectclasses  = array('fdGroupMail');
-  /* Return plugin informations for acl handling  */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
@@ -56,7 +56,7 @@ class mailgroup extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('Informations'),
+        'name'  => _('Information'),
         'attrs' => array(
           new MailAttribute (
             _('Primary address'), _('The primary mail address'),

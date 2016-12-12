@@ -46,7 +46,7 @@ class argonautEventTypes
   }
 
   /*! \brief  Returns event information, like menu strings, images ...
-    @return   Array Event informations.
+    @return   Array Event information.
    */
   static public function get_event_info($action)
   {

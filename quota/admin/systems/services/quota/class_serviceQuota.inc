@@ -23,7 +23,6 @@ class serviceQuota extends simpleService
 {
   var $objectclasses = array('quotaService');
 
-  /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(

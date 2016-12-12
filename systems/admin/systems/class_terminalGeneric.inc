@@ -36,7 +36,7 @@ class terminalGeneric extends workstationGeneric
     return parent::getAttributesInfo($word, $rdn);
   }
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(

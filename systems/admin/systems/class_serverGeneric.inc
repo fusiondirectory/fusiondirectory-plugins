@@ -22,9 +22,6 @@ class serverGeneric extends workstationGeneric
 {
   var $objectclasses = array('fdServer', 'ipHost', 'ieee802Device');
 
-  /*!
-   *  \brief The main function : information about attributes
-   */
   static function getAttributesInfo ($word = NULL, $rdn = NULL)
   {
     if ($word === NULL) {
@@ -36,7 +33,6 @@ class serverGeneric extends workstationGeneric
     return parent::getAttributesInfo($word, $rdn);
   }
 
-  /* Return plugin informations */
   static function plInfo()
   {
     return array(

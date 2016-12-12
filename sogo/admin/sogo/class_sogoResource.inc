@@ -24,7 +24,7 @@ class sogoResource extends simplePlugin
 
   var $objectclasses = array('inetOrgPerson','top','CalendarResource');
 
-  /* Return plugin informations for acl handling  */
+  /* Return plugin information for acl handling */
   public static function plInfo()
   {
     return array(

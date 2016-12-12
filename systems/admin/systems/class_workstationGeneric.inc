@@ -26,9 +26,26 @@ class workstationGeneric extends simplePlugin
 
   var $objectclasses = array('fdWorkstation', 'ipHost', 'ieee802Device');
 
-  /*!
-   *  \brief The main function : information about attributes
-   */
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Workstation'),
+      'plDescription' => _('Workstation information'),
+      'plSelfModify'  => FALSE,
+      'plObjectType'  => array('workstation' =>
+        array(
+          'name'        => _('Workstation'),
+          'description' => _('Workstation'),
+          'filter'      => 'objectClass=fdWorkstation',
+          'ou'          => get_ou('workstationRDN'),
+          'icon'        => 'geticon.php?context=devices&icon=computer&size=16',
+          'mainAttr'    => 'cn',
+        )
+      ),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
+
   static function getAttributesInfo ($word = NULL, $rdn = NULL)
   {
     if ($word === NULL) {
@@ -118,27 +135,6 @@ class workstationGeneric extends simplePlugin
 
       return $errors;
     }
-  }
-
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('Workstation'),
-      'plDescription' => _('Workstation information'),
-      'plSelfModify'  => FALSE,
-      'plObjectType'  => array('workstation' =>
-        array(
-          'name'        => _('Workstation'),
-          'description' => _('Workstation'),
-          'filter'      => 'objectClass=fdWorkstation',
-          'ou'          => get_ou('workstationRDN'),
-          'icon'        => 'geticon.php?context=devices&icon=computer&size=16',
-          'mainAttr'    => 'cn',
-        )
-      ),
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
   }
 }
 ?>

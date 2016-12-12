@@ -168,7 +168,7 @@ class faiLogView extends simplePlugin
     );
   }
 
-  /* Return plugin informations */
+  /* Return plugin information */
   static function plInfo()
   {
     return array(

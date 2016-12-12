@@ -24,12 +24,11 @@ class dashboardSystems extends simplePlugin
   /* default values */
   var $default_start_computer_id = 0;
 
-  /* Return plugin informations for acl handling  */
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Systems'),
-      'plDescription' => _('Statistics and informations about systems'),
+      'plDescription' => _('Statistics and information about systems'),
       'plObjectType'  => array('dashboard'),
 
       'plProvidedAcls'  => array()

@@ -46,7 +46,7 @@ class sambaGroup extends simplePlugin
             'sambaDomainName', TRUE
           ),
           new CompositeAttribute(
-            _('Samba informations'),
+            _('Samba information'),
             'sambaSID',
             array(
               new HiddenAttribute(

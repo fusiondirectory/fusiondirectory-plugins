@@ -27,7 +27,6 @@ class sogoManagement extends simpleManagement
   protected $departmentRootVisible  = TRUE;
   protected $baseMode               = TRUE;
 
-  /* Return plugin informations for acl handling  */
   public static function plInfo()
   {
     return array(

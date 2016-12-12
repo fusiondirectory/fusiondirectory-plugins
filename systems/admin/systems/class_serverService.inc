@@ -54,7 +54,7 @@ class ServerService extends simpleManagement
 
   var $is_account;
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(

@@ -23,7 +23,7 @@ class argonautFuseConfig extends simpleService
 {
   var $objectclasses  = array('argonautFuseConfig');
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(

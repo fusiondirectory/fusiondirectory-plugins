@@ -24,7 +24,7 @@ class pgpServerInfo extends simplePlugin
   /* This plugin only writes its objectClass */
   var $objectclasses = array('pgpServerInfo');
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(

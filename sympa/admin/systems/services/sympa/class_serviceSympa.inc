@@ -24,7 +24,7 @@ class serviceSympa extends simpleService
   /* This plugin only writes its objectClass */
   var $objectclasses  = array("sympaServer");
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(

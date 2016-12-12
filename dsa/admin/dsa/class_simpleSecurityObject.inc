@@ -24,7 +24,7 @@ class simpleSecurityObject extends simplePlugin
 
   var $objectclasses = array('organizationalRole', 'top', 'simpleSecurityObject');
 
-  /* Return plugin informations for acl handling  */
+  /* Return plugin information for acl handling */
   public static function plInfo()
   {
     return array(
