@@ -59,7 +59,7 @@ class webApplication extends simplePlugin
           ),
           new StringAttribute (
             _('Display Name'), _('Displayed name for links to this application'),
-            'fdApplicationTitle', FALSE
+            'fdApplicationTitle', TRUE
           ),
         )
       ),
