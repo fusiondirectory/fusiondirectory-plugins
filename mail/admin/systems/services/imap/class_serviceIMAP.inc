@@ -52,9 +52,6 @@ class serviceIMAP extends simpleService
 
   function save()
   {
-    if ($this->parent->getBaseObject()->attributeHaveChanged('cn')) {
-      mailMethod::resetMailServersCache();
-    }
     parent::save();
   }
 
