@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-11-02 23:08+0100\n"
-"PO-Revision-Date: 2016-01-22 16:05+0000\n"
+"POT-Creation-Date: 2016-12-31 11:29+0100\n"
+"PO-Revision-Date: 2016-12-31 10:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,6 @@ msgstr "Ρύθμιση προσθέτου FusionDirectory fai"
 
 #: config/fai/class_faiConfig.inc:41 admin/systems/class_faiStartup.inc:64
 #: admin/fai/class_faiManagement.inc:117 admin/fai/class_faiManagement.inc:122
-#: admin/fai/packageSelect/selectPackage-list.xml:14
 msgid "FAI"
 msgstr "FAI"
 
@@ -69,7 +68,7 @@ msgstr "Προφίλ FAI και έκδοση για να εφαρμοστεί σ
 
 #: admin/systems/class_faiStartup.inc:91
 #: admin/systems/services/repository/class_serviceRepository.inc:40
-#: admin/fai/class_faiPackage.inc:412
+#: admin/fai/class_faiPackage.inc:414
 msgid "Release"
 msgstr "Έκδοση"
 
@@ -85,7 +84,7 @@ msgstr "Προφίλ"
 msgid "FAI profil to be applied to this computer"
 msgstr "Προφίλ FAI για να εφαρμοστεί σε αυτόν τον υπολογιστή"
 
-#: admin/systems/class_faiStartup.inc:103 admin/fai/class_faiPackage.inc:409
+#: admin/systems/class_faiStartup.inc:103 admin/fai/class_faiPackage.inc:411
 msgid "Repository"
 msgstr "Αποθετήριο"
 
@@ -114,7 +113,7 @@ msgid "Release used on this repository"
 msgstr "Έκδοση που χρησιμοποιήθηκε αυτό το αποθετήριο"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:47
-#: admin/fai/class_faiPackage.inc:416
+#: admin/fai/class_faiPackage.inc:418
 msgid "Sections"
 msgstr "Ενότητες"
 
@@ -184,7 +183,7 @@ msgstr "Αποθετήρια που φιλοξενεί αυτός ο εξυπη�
 #: admin/systems/services/repository/class_serviceRepository.inc:257
 #: admin/fai/class_faiPartitionTable.inc:209
 #: admin/fai/class_faiPartitionTable.inc:250
-#: admin/fai/class_faiPackage.inc:256 admin/fai/class_faiTemplate.inc:114
+#: admin/fai/class_faiPackage.inc:253 admin/fai/class_faiTemplate.inc:114
 msgid "LDAP error"
 msgstr "Σφάλμα LDAP"
 
@@ -229,53 +228,53 @@ msgstr "Κατάλογος καταγραφών"
 msgid "Directory in which argonaut-fai-monitor will store its log"
 msgstr ""
 
-#: admin/systems/class_faiLogView.inc:56
+#: admin/systems/class_faiLogView.inc:57
 msgid "Sort down"
 msgstr "Ταξινόμηση προς τα πάνω"
 
-#: admin/systems/class_faiLogView.inc:58
+#: admin/systems/class_faiLogView.inc:59
 msgid "Sort up"
 msgstr "Ταξινόμηση προς τα κάτω"
 
-#: admin/systems/class_faiLogView.inc:70
+#: admin/systems/class_faiLogView.inc:71
 msgid "File"
 msgstr "Αρχείο"
 
-#: admin/systems/class_faiLogView.inc:71
+#: admin/systems/class_faiLogView.inc:72
 msgid "Date"
 msgstr "Ημερομηνία"
 
-#: admin/systems/class_faiLogView.inc:150
-#: admin/systems/class_faiLogView.inc:153
+#: admin/systems/class_faiLogView.inc:151
+#: admin/systems/class_faiLogView.inc:154
 msgid "Available logs"
 msgstr "Διαθέσιμες καταγραφές"
 
-#: admin/systems/class_faiLogView.inc:158
+#: admin/systems/class_faiLogView.inc:159
 msgid "Selected log"
 msgstr "Επιλεγμένο αρχείο καταγραφής"
 
-#: admin/systems/class_faiLogView.inc:162
+#: admin/systems/class_faiLogView.inc:163
 msgid "Content of the selected log"
 msgstr "Το περιεχόμενο του επιλεγμένου αρχείου καταγραφής"
 
-#: admin/systems/class_faiLogView.inc:174
+#: admin/systems/class_faiLogView.inc:175
 msgid "FAI Logs"
 msgstr "Καταγραφές FAI "
 
-#: admin/systems/class_faiLogView.inc:175
+#: admin/systems/class_faiLogView.inc:176
 msgid "FAI Logs Viewer"
 msgstr "Εφαρμογή προβολής καταγραφών FAI "
 
-#: admin/systems/class_faiLogView.inc:203
-#: admin/systems/class_faiLogView.inc:238 admin/fai/class_faiDiskEntry.inc:147
+#: admin/systems/class_faiLogView.inc:204
+#: admin/systems/class_faiLogView.inc:239 admin/fai/class_faiDiskEntry.inc:147
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: admin/systems/class_faiLogView.inc:218
+#: admin/systems/class_faiLogView.inc:219
 msgid "Selected file"
 msgstr "Επιλεγμένο αρχείο"
 
-#: admin/systems/class_faiLogView.inc:226
+#: admin/systems/class_faiLogView.inc:227
 #, php-format
 msgid "Selected file: %s"
 msgstr "Επιλεγμένο αρχείο: %s"
@@ -298,7 +297,7 @@ msgid "FAI partition table"
 msgstr "Πίνακας κατατμήσεων FAI"
 
 #: admin/fai/class_faiPartitionTable.inc:303
-#: admin/fai/class_faiTemplateEntry.inc:139 admin/fai/class_faiPackage.inc:396
+#: admin/fai/class_faiTemplateEntry.inc:139 admin/fai/class_faiPackage.inc:398
 #: admin/fai/class_faiHook.inc:48 admin/fai/class_faiTemplate.inc:171
 #: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiVariable.inc:48
 #: admin/fai/class_faiScript.inc:50
@@ -306,7 +305,7 @@ msgid "Properties"
 msgstr "Ιδιότητες"
 
 #: admin/fai/class_faiPartitionTable.inc:306
-#: admin/fai/class_faiPackage.inc:399 admin/fai/class_faiHook.inc:51
+#: admin/fai/class_faiPackage.inc:401 admin/fai/class_faiHook.inc:51
 #: admin/fai/class_faiTemplate.inc:174 admin/fai/class_faiProfile.inc:52
 #: admin/fai/class_faiVariable.inc:51 admin/fai/class_faiScript.inc:53
 msgid "Class name"
@@ -317,7 +316,7 @@ msgid "Partition table class name"
 msgstr "Όνομα κλάσης πίνακα κατατμήσεων"
 
 #: admin/fai/class_faiPartitionTable.inc:310
-#: admin/fai/class_faiTemplateEntry.inc:146 admin/fai/class_faiPackage.inc:403
+#: admin/fai/class_faiTemplateEntry.inc:146 admin/fai/class_faiPackage.inc:405
 #: admin/fai/class_faiDiskEntry.inc:241 admin/fai/class_faiHook.inc:55
 #: admin/fai/class_faiHook.inc:73 admin/fai/class_faiTemplate.inc:178
 #: admin/fai/class_faiPartition.inc:246 admin/fai/class_faiProfile.inc:56
@@ -327,7 +326,7 @@ msgid "Description"
 msgstr "Περιγραφή"
 
 #: admin/fai/class_faiPartitionTable.inc:310
-#: admin/fai/class_faiPackage.inc:403 admin/fai/class_faiHook.inc:55
+#: admin/fai/class_faiPackage.inc:405 admin/fai/class_faiHook.inc:55
 #: admin/fai/class_faiTemplate.inc:178 admin/fai/class_faiProfile.inc:56
 #: admin/fai/class_faiVariable.inc:55 admin/fai/class_faiScript.inc:57
 msgid "Short description of the class"
@@ -394,67 +393,68 @@ msgstr "Πρόσβαση"
 msgid "Access rights"
 msgstr "Δικαιώματα πρόσβασης"
 
-#: admin/fai/class_faiPackage.inc:166
+#: admin/fai/class_faiPackage.inc:163
 msgid "Mark for installation"
 msgstr "Σήμανση για εγκατάσταση"
 
-#: admin/fai/class_faiPackage.inc:170
+#: admin/fai/class_faiPackage.inc:167
 msgid "Mark for removal"
 msgstr "Σήμανση για απεγκατάσταση"
 
-#: admin/fai/class_faiPackage.inc:175
+#: admin/fai/class_faiPackage.inc:172
 msgid "Edit configuration"
 msgstr "Επεξεργασία ρυθμίσεων"
 
-#: admin/fai/class_faiPackage.inc:288
+#: admin/fai/class_faiPackage.inc:289
 #: admin/fai/class_faiPackageConfiguration.inc:59
 #: admin/fai/packageSelect/class_filterFAIPackages.inc:41
 #: admin/fai/packageSelect/class_filterFAIPackages.inc:46
 msgid "Infrastructure service"
 msgstr "Άγνωτη υποδομή"
 
-#: admin/fai/class_faiPackage.inc:306
+#: admin/fai/class_faiPackage.inc:308
 msgid "Unkown packages"
 msgstr "Άγνωστα πακέτα"
 
-#: admin/fai/class_faiPackage.inc:376
+#: admin/fai/class_faiPackage.inc:378
+#: admin/fai/packageSelect/selectPackage-list.xml:15
 msgid "Package"
 msgstr "Πακέτο"
 
-#: admin/fai/class_faiPackage.inc:377
+#: admin/fai/class_faiPackage.inc:379
 msgid "FAI Package list"
 msgstr "Λίστα πακέτων FAI "
 
-#: admin/fai/class_faiPackage.inc:380
+#: admin/fai/class_faiPackage.inc:382
 msgid "FAI Package"
 msgstr "Πακέτο FAI"
 
-#: admin/fai/class_faiPackage.inc:399 admin/fai/class_faiHook.inc:51
+#: admin/fai/class_faiPackage.inc:401 admin/fai/class_faiHook.inc:51
 #: admin/fai/class_faiVariable.inc:51 admin/fai/class_faiScript.inc:53
 msgid "Variables class name"
 msgstr "Όνομα κλάσης μεταβλητών"
 
-#: admin/fai/class_faiPackage.inc:412
+#: admin/fai/class_faiPackage.inc:414
 msgid "Debian release concerned"
 msgstr "Έκδοση Debian που σχετίζεται"
 
-#: admin/fai/class_faiPackage.inc:416
+#: admin/fai/class_faiPackage.inc:418
 msgid "Sections concerned"
 msgstr "Ενότητες που σχετίζονται"
 
-#: admin/fai/class_faiPackage.inc:420
+#: admin/fai/class_faiPackage.inc:422
 msgid "Install method"
 msgstr "Μέθοδος εγκατάστασης"
 
-#: admin/fai/class_faiPackage.inc:420
+#: admin/fai/class_faiPackage.inc:422
 msgid "Install method to use for this package list"
 msgstr "Μ'εθοδος εγκατάστασης για αυτή τη λίστα πακέτων"
 
-#: admin/fai/class_faiPackage.inc:431
+#: admin/fai/class_faiPackage.inc:433
 msgid "Packages"
 msgstr "Πακέτα"
 
-#: admin/fai/class_faiPackage.inc:435
+#: admin/fai/class_faiPackage.inc:437
 msgid "Packages in this class"
 msgstr "Πακέτα σε αυτή την κλάση"
 
@@ -494,7 +494,6 @@ msgstr "Συσκευή"
 #: admin/fai/class_faiPartition.inc:240 admin/fai/class_faiVariable.inc:69
 #: admin/fai/class_faiScript.inc:71
 #: admin/fai/packageSelect/selectPackage-list.xml:40
-#: admin/fai/packageSelect/selectPackage-filter.tpl.c:8
 msgid "Name"
 msgstr "Όνομα"
 
@@ -956,7 +955,7 @@ msgstr "Προτεραιότητα αυτού του σεναρίου (το μι
 msgid "The script itself"
 msgstr "Το σενάριο εντολών"
 
-#: admin/fai/packageSelect/selectPackage-list.xml:10
+#: admin/fai/packageSelect/selectPackage-list.xml:11
 msgid "Please select the desired entries"
 msgstr "Παρακαλώ επιλέξτε τις επιθυμητλες εγγραφές"
 
@@ -971,11 +970,3 @@ msgstr "Φίλτρο"
 #: admin/fai/packageSelect/selectPackage-filter.tpl.c:5
 msgid "A maximum of 200 entries will be shown here."
 msgstr "Το μέγιστο 200 εγγραφές θα φαίνονται εδώ."
-
-#: admin/fai/packageSelect/selectPackage-list.tpl.c:2
-msgid "Update"
-msgstr "Ενημέρωση"
-
-#: admin/fai/packageSelect/selectPackage-list.tpl.c:5
-msgid "Submit"
-msgstr "Υποβολή"

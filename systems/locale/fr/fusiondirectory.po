@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-11-02 23:08+0100\n"
-"PO-Revision-Date: 2016-11-02 22:09+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2016-12-31 11:29+0100\n"
+"PO-Revision-Date: 2016-12-31 11:07+0000\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,12 +20,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: addons/dashboard/class_dashBoardNetwork.inc:28
-#: admin/systems/class_networkSettings.inc:324
+#: admin/systems/class_networkSettings.inc:319
 msgid "Network"
 msgstr "Réseau"
 
 #: addons/dashboard/class_dashBoardNetwork.inc:29
-msgid "Statistics and various informations"
+msgid "Statistics and various information"
 msgstr "Statistiques et informations diverses"
 
 #: addons/dashboard/class_dashBoardNetwork.inc:40
@@ -36,55 +36,54 @@ msgstr "DHCP"
 msgid "DNS"
 msgstr "DNS"
 
-#: addons/dashboard/class_dashBoardSystems.inc:31
+#: addons/dashboard/class_dashBoardSystems.inc:29
 #: config/systems/class_systemsPluginConfig.inc:28
-#: admin/systems/class_systemManagement.inc:694
-#: admin/systems/class_systemManagement.inc:698
+#: admin/systems/class_systemManagement.inc:699
+#: admin/systems/class_systemManagement.inc:703
 msgid "Systems"
 msgstr "Systèmes"
 
-#: addons/dashboard/class_dashBoardSystems.inc:32
-msgid "Statistics and informations about systems"
+#: addons/dashboard/class_dashBoardSystems.inc:30
+msgid "Statistics and information about systems"
 msgstr "Statistiques et informations sur les systèmes"
 
-#: addons/dashboard/class_dashBoardSystems.inc:43
+#: addons/dashboard/class_dashBoardSystems.inc:41
 msgid "Statistics"
 msgstr "Statistiques"
 
-#: addons/dashboard/class_dashBoardSystems.inc:48
+#: addons/dashboard/class_dashBoardSystems.inc:46
 msgid "Computer name to use by unit"
 msgstr "Nom d'ordinateur à utiliser par unité"
 
-#: addons/dashboard/class_dashBoardSystems.inc:74
+#: addons/dashboard/class_dashBoardSystems.inc:72
 msgid "Workstations"
 msgstr "Stations de travail"
 
-#: addons/dashboard/class_dashBoardSystems.inc:77
-#: admin/systems/class_terminalGeneric.inc:62
+#: addons/dashboard/class_dashBoardSystems.inc:75
 msgid "Servers"
 msgstr "Serveurs"
 
-#: addons/dashboard/class_dashBoardSystems.inc:80
+#: addons/dashboard/class_dashBoardSystems.inc:78
 msgid "Windows Workstations"
 msgstr "Stations de travail Windows"
 
-#: addons/dashboard/class_dashBoardSystems.inc:83
+#: addons/dashboard/class_dashBoardSystems.inc:81
 msgid "Terminals"
 msgstr "Terminaux"
 
-#: addons/dashboard/class_dashBoardSystems.inc:86
+#: addons/dashboard/class_dashBoardSystems.inc:84
 msgid "Printers"
 msgstr "Imprimantes"
 
-#: addons/dashboard/class_dashBoardSystems.inc:89
+#: addons/dashboard/class_dashBoardSystems.inc:87
 msgid "Phones"
 msgstr "Téléphones"
 
-#: addons/dashboard/class_dashBoardSystems.inc:92
+#: addons/dashboard/class_dashBoardSystems.inc:90
 msgid "Components"
 msgstr "Composants"
 
-#: addons/dashboard/class_dashBoardSystems.inc:95
+#: addons/dashboard/class_dashBoardSystems.inc:93
 msgid "Mobile phones"
 msgstr "Téléphones portables"
 
@@ -197,21 +196,21 @@ msgid "Locked"
 msgstr "Verrouillé"
 
 #: admin/ogroups/goto/class_termgroup.inc:102
-#: admin/systems/class_terminalGeneric.inc:126
+#: admin/systems/class_terminalStartup.inc:120
 msgid "Local swap"
 msgstr "Swap local"
 
 #: admin/ogroups/goto/class_termgroup.inc:108
 #: admin/ogroups/goto/class_termgroup.inc:120
-#: admin/systems/class_terminalGeneric.inc:114
-#: admin/systems/class_terminalGeneric.inc:130
+#: admin/systems/class_terminalStartup.inc:112
+#: admin/systems/class_terminalStartup.inc:123
 msgid "inherited"
 msgstr "hérité"
 
 #: admin/ogroups/goto/class_termgroup.inc:187
-#: admin/systems/class_workstationGeneric.inc:275
-#: admin/systems/class_systemManagement.inc:182
-#: admin/systems/class_systemManagement.inc:206
+#: admin/systems/class_workstationGeneric.inc:284
+#: admin/systems/class_systemManagement.inc:189
+#: admin/systems/class_systemManagement.inc:213
 msgid "Infrastructure service"
 msgstr "Service d’infrastructure"
 
@@ -257,7 +256,7 @@ msgid "System analysis"
 msgstr "Analyse du système"
 
 #: admin/ogroups/goto/class_termgroup.inc:293
-#: admin/systems/class_networkSettings.inc:314
+#: admin/systems/class_networkSettings.inc:310
 msgid "LDAP error"
 msgstr "Erreur LDAP"
 
@@ -279,13 +278,13 @@ msgid "Action flag"
 msgstr "Indicateur d'action"
 
 #: admin/ogroups/goto/class_termgroup.inc:310
-#: admin/systems/class_terminalGeneric.inc:66
+#: admin/systems/class_terminalStartup.inc:53
 #: admin/ogroups/goto/termgroup.tpl.c:17
 msgid "Root server"
 msgstr "Serveur racine"
 
 #: admin/ogroups/goto/class_termgroup.inc:311
-#: admin/systems/class_terminalGeneric.inc:72
+#: admin/systems/class_terminalStartup.inc:57
 #: admin/ogroups/goto/termgroup.tpl.c:23
 msgid "Swap server"
 msgstr "Serveur de swap"
@@ -321,8 +320,8 @@ msgstr "!"
 #: admin/systems/serverService-list.xml:35
 #: admin/systems/class_componentGeneric.inc:67
 #: admin/systems/class_mobilePhoneGeneric.inc:67
-#: admin/systems/class_workstationGeneric.inc:157
-#: admin/systems/services/shares/class_serviceShare.inc:56
+#: admin/systems/class_workstationGeneric.inc:166
+#: admin/systems/services/shares/class_serviceShare.inc:55
 #: admin/systems/system-list.xml:144 admin/systems/class_phoneGeneric.inc:63
 #: admin/systems/class_printGeneric.inc:66
 msgid "Description"
@@ -364,29 +363,29 @@ msgstr "Éditer le service"
 msgid "Remove service"
 msgstr "Supprimer le service"
 
-#: admin/systems/class_networkSettings.inc:242
+#: admin/systems/class_networkSettings.inc:240
 #, php-format
 msgid "IP address %s"
 msgstr "Adresse IP %s"
 
-#: admin/systems/class_networkSettings.inc:250
+#: admin/systems/class_networkSettings.inc:248
+#: admin/systems/class_networkSettings.inc:254
 #: admin/systems/class_networkSettings.inc:256
-#: admin/systems/class_networkSettings.inc:258
-#: admin/systems/class_networkSettings.inc:331
+#: admin/systems/class_networkSettings.inc:326
 #: admin/systems/class_printGeneric.inc:108
 msgid "IP address"
 msgstr "Adresse IP"
 
+#: admin/systems/class_networkSettings.inc:263
 #: admin/systems/class_networkSettings.inc:265
-#: admin/systems/class_networkSettings.inc:267
-#: admin/systems/class_networkSettings.inc:332
+#: admin/systems/class_networkSettings.inc:327
 msgid "MAC address"
 msgstr "Adresse MAC"
 
-#: admin/systems/class_networkSettings.inc:325
+#: admin/systems/class_networkSettings.inc:320
 #: admin/systems/class_componentGeneric.inc:74
 #: admin/systems/class_mobilePhoneGeneric.inc:106
-#: admin/systems/class_workstationGeneric.inc:182
+#: admin/systems/class_workstationGeneric.inc:191
 #: admin/systems/class_phoneGeneric.inc:83
 #: admin/systems/class_printGeneric.inc:103
 msgid "Network settings"
@@ -409,7 +408,7 @@ msgstr "Périphérique réseau"
 
 #: admin/systems/class_componentGeneric.inc:60
 #: admin/systems/class_mobilePhoneGeneric.inc:60
-#: admin/systems/class_workstationGeneric.inc:148
+#: admin/systems/class_workstationGeneric.inc:157
 #: admin/systems/class_phoneGeneric.inc:56
 #: admin/systems/class_printGeneric.inc:58
 msgid "Properties"
@@ -417,8 +416,8 @@ msgstr "Propriétés"
 
 #: admin/systems/class_componentGeneric.inc:63
 #: admin/systems/class_mobilePhoneGeneric.inc:63
-#: admin/systems/class_workstationGeneric.inc:151
-#: admin/systems/services/shares/class_serviceShare.inc:52
+#: admin/systems/class_workstationGeneric.inc:160
+#: admin/systems/services/shares/class_serviceShare.inc:51
 #: admin/systems/system-list.xml:120 admin/systems/class_phoneGeneric.inc:59
 #: admin/systems/class_printGeneric.inc:62
 #: admin/systems/system-filter.tpl.c:29
@@ -506,37 +505,66 @@ msgstr "Numéro PUK"
 msgid "The PUK number of the simcard in this mobile phone"
 msgstr "Numéro PUK de la carte SIM du téléphone portable"
 
-#: admin/systems/class_terminalStartup.inc:63
-msgid "Startup parameters"
-msgstr "Paramètres de démarrage"
-
-#: admin/systems/class_terminalStartup.inc:66
-msgid "Boot kernel"
-msgstr "Noyau de démarrage"
-
-#: admin/systems/class_terminalStartup.inc:66
-msgid "Linux kernel to be installed and booted"
-msgstr "Noyau Linux à installer et à démarrer"
-
-#: admin/systems/class_terminalStartup.inc:70
-msgid "Boot kernel parameters"
-msgstr "Paramètres de démarrage du noyau"
-
-#: admin/systems/class_terminalStartup.inc:70
-msgid "Linux kernel parameters to be ran"
-msgstr "Paramètres de démarrage à passer au noyau Linux"
-
-#: admin/systems/class_terminalStartup.inc:82
+#: admin/systems/class_terminalStartup.inc:32
 msgid "Startup"
 msgstr "Démarrage"
 
-#: admin/systems/class_terminalStartup.inc:83
+#: admin/systems/class_terminalStartup.inc:33
 msgid "Terminal startup"
 msgstr "Démarrage du terminal"
 
+#: admin/systems/class_terminalStartup.inc:50
+msgid "Startup parameters"
+msgstr "Paramètres de démarrage"
+
+#: admin/systems/class_terminalStartup.inc:53
+msgid "The root server the terminal should be using"
+msgstr "Le serveur racine que le terminal doit utiliser"
+
+#: admin/systems/class_terminalStartup.inc:57
+msgid "The swap server the terminal should be using"
+msgstr "Le serveur de swap que le terminal doit utiliser"
+
+#: admin/systems/class_terminalStartup.inc:63
+msgid "Remote desktop"
+msgstr "Bureau distant"
+
+#: admin/systems/class_terminalStartup.inc:67
+msgid "Connect method"
+msgstr "Méthode de connexion"
+
+#: admin/systems/class_terminalStartup.inc:71
+#: admin/systems/services/terminal/class_serviceTerminal.inc:59
+msgid "XDMCP"
+msgstr "XDMCP"
+
+#: admin/systems/class_terminalStartup.inc:71
+#: admin/systems/services/terminal/class_serviceTerminal.inc:59
+msgid "LDM"
+msgstr "LDM"
+
+#: admin/systems/class_terminalStartup.inc:71
+#: admin/systems/services/terminal/class_serviceTerminal.inc:59
+msgid "Shell"
+msgstr "Shell"
+
+#: admin/systems/class_terminalStartup.inc:71
+#: admin/systems/services/terminal/class_serviceTerminal.inc:59
+msgid "Telnet"
+msgstr "Telnet"
+
+#: admin/systems/class_terminalStartup.inc:71
+#: admin/systems/services/terminal/class_serviceTerminal.inc:59
+msgid "Windows RDP"
+msgstr "Windows RDP"
+
+#: admin/systems/class_terminalStartup.inc:75
+msgid "Terminal server"
+msgstr "Serveur de terminaux"
+
 #: admin/systems/class_serverService.inc:57
 #: admin/systems/services/terminal/class_serviceTerminal.inc:30
-#: admin/systems/services/shares/class_serviceShare.inc:31
+#: admin/systems/services/shares/class_serviceShare.inc:30
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 #: admin/systems/system-list.xml:152
 msgid "Services"
@@ -549,7 +577,7 @@ msgstr "Services serveur"
 #: admin/systems/class_serverService.inc:225
 #: admin/systems/class_serverService.inc:271
 #: admin/systems/class_serverService.inc:394
-#: admin/systems/services/shares/class_serviceShare.inc:104
+#: admin/systems/services/shares/class_serviceShare.inc:103
 msgid "Error"
 msgstr "Erreur"
 
@@ -576,46 +604,46 @@ msgstr "Impossible de mettre à jour le statut avant que cela soit sauvé !"
 msgid "Could not get execute action %s on service %s."
 msgstr "Impossible d'exécuter l'action %s sur le service %s."
 
-#: admin/systems/class_workstationGeneric.inc:118
-#: admin/systems/class_workstationGeneric.inc:123
-#: admin/systems/class_workstationGeneric.inc:124
+#: admin/systems/class_workstationGeneric.inc:127
+#: admin/systems/class_workstationGeneric.inc:132
+#: admin/systems/class_workstationGeneric.inc:133
 #: admin/systems/system-list.xml:54 admin/systems/system-list.xml:193
 msgid "Workstation"
 msgstr "Station de travail"
 
-#: admin/systems/class_workstationGeneric.inc:119
+#: admin/systems/class_workstationGeneric.inc:128
 msgid "Workstation information"
 msgstr "Information de la station de travail"
 
-#: admin/systems/class_workstationGeneric.inc:141
+#: admin/systems/class_workstationGeneric.inc:150
 msgid "workstation"
 msgstr "station de travail"
 
-#: admin/systems/class_workstationGeneric.inc:152
+#: admin/systems/class_workstationGeneric.inc:161
 #, php-format
 msgid "The name of the %s"
 msgstr "Le nom de ce %s"
 
-#: admin/systems/class_workstationGeneric.inc:158
+#: admin/systems/class_workstationGeneric.inc:167
 #, php-format
 msgid "A short description of the %s"
 msgstr "Une courte description de ce %s"
 
-#: admin/systems/class_workstationGeneric.inc:163
+#: admin/systems/class_workstationGeneric.inc:172
 msgid "Location"
 msgstr "Lieu"
 
-#: admin/systems/class_workstationGeneric.inc:164
+#: admin/systems/class_workstationGeneric.inc:173
 #, php-format
 msgid "The location of the %s"
 msgstr "L'emplacement de ce %s"
 
-#: admin/systems/class_workstationGeneric.inc:170
+#: admin/systems/class_workstationGeneric.inc:179
 #, php-format
 msgid "Lock this %s"
 msgstr "Verrouiller ce %s"
 
-#: admin/systems/class_workstationGeneric.inc:171
+#: admin/systems/class_workstationGeneric.inc:180
 #, php-format
 msgid "This will prevent the %s from being reinstalled"
 msgstr "Ceci empêchera ce %s d'être réinstallé"
@@ -665,69 +693,69 @@ msgstr "Type de sessions supportées"
 msgid "The session types supported by this terminal server"
 msgstr "Les types de sessions supportés par ce serveur de terminaux"
 
+#: admin/systems/services/shares/class_serviceShare.inc:29
 #: admin/systems/services/shares/class_serviceShare.inc:30
-#: admin/systems/services/shares/class_serviceShare.inc:31
 msgid "Share service"
 msgstr "Service de partage"
 
-#: admin/systems/services/shares/class_serviceShare.inc:43
+#: admin/systems/services/shares/class_serviceShare.inc:42
 msgid "Shares"
 msgstr "Partages"
 
-#: admin/systems/services/shares/class_serviceShare.inc:48
+#: admin/systems/services/shares/class_serviceShare.inc:47
 msgid "Shares this server hosts"
 msgstr "Partages fournis par ce serveur"
 
-#: admin/systems/services/shares/class_serviceShare.inc:52
+#: admin/systems/services/shares/class_serviceShare.inc:51
 msgid "Name of this share"
 msgstr "Nom du partage"
 
-#: admin/systems/services/shares/class_serviceShare.inc:56
+#: admin/systems/services/shares/class_serviceShare.inc:55
 msgid "Description of this share"
 msgstr "Description du partage"
 
-#: admin/systems/services/shares/class_serviceShare.inc:60
+#: admin/systems/services/shares/class_serviceShare.inc:59
 msgid "Type"
 msgstr "Type"
 
-#: admin/systems/services/shares/class_serviceShare.inc:60
+#: admin/systems/services/shares/class_serviceShare.inc:59
 msgid "Type of share"
 msgstr "Type de partage"
 
-#: admin/systems/services/shares/class_serviceShare.inc:65
+#: admin/systems/services/shares/class_serviceShare.inc:64
 msgid "Codepage"
 msgstr "Encodage"
 
-#: admin/systems/services/shares/class_serviceShare.inc:65
+#: admin/systems/services/shares/class_serviceShare.inc:64
 msgid "Codepage for this share"
 msgstr "Encodage utilisé pour ce partage"
 
-#: admin/systems/services/shares/class_serviceShare.inc:69
+#: admin/systems/services/shares/class_serviceShare.inc:68
 msgid "Path / Volume"
 msgstr "Chemin / Volume"
 
-#: admin/systems/services/shares/class_serviceShare.inc:69
+#: admin/systems/services/shares/class_serviceShare.inc:68
 msgid "Path or volume concerned by this share"
 msgstr "Chemin ou volume concerné par ce partage"
 
-#: admin/systems/services/shares/class_serviceShare.inc:73
+#: admin/systems/services/shares/class_serviceShare.inc:72
 msgid "Option"
 msgstr "Option"
 
-#: admin/systems/services/shares/class_serviceShare.inc:73
+#: admin/systems/services/shares/class_serviceShare.inc:72
 msgid "Special option(s) for this share"
 msgstr "Option(s) spéciale(s) pour ce partage"
 
-#: admin/systems/services/shares/class_serviceShare.inc:104
+#: admin/systems/services/shares/class_serviceShare.inc:103
 msgid "You need to configure encodings first"
 msgstr "Vous devez configurer en premier l'encodage"
 
-#: admin/systems/services/shares/class_serviceShare.inc:111
+#: admin/systems/services/shares/class_serviceShare.inc:110
 #: admin/ogroups/goto/termgroup.tpl.c:2 admin/systems/remove.tpl.c:2
 msgid "Warning"
 msgstr "Avertissement"
 
-#: admin/systems/services/shares/class_serviceShare.inc:111
+#: admin/systems/services/shares/class_serviceShare.inc:110
 #, php-format
 msgid "Invalid value in encodings : %s"
 msgstr "Valeur d'encodage invalide : %s"
@@ -926,44 +954,44 @@ msgstr "Numéro de série du téléphone"
 msgid "The telephone number of the phone"
 msgstr "Numéro de téléphone"
 
-#: admin/systems/class_systemManagement.inc:152
-#: admin/systems/class_systemManagement.inc:166
+#: admin/systems/class_systemManagement.inc:159
+#: admin/systems/class_systemManagement.inc:173
 msgid "Action canceled"
 msgstr "Action annulée"
 
-#: admin/systems/class_systemManagement.inc:152
+#: admin/systems/class_systemManagement.inc:159
 #, php-format
 msgid "System %s has no mac address defined, cannot trigger action"
 msgstr "Système %s n'a pas d'adresse mac définie, ne peut pas déclencher l'action"
 
-#: admin/systems/class_systemManagement.inc:166
+#: admin/systems/class_systemManagement.inc:173
 #, php-format
 msgid "System %s is currently installing"
 msgstr "Système %s est actuellement en cours d'installation"
 
-#: admin/systems/class_systemManagement.inc:242
-#: admin/systems/class_systemManagement.inc:318
-#: admin/systems/class_systemManagement.inc:412
-#: admin/systems/class_systemManagement.inc:475
+#: admin/systems/class_systemManagement.inc:249
+#: admin/systems/class_systemManagement.inc:325
+#: admin/systems/class_systemManagement.inc:419
+#: admin/systems/class_systemManagement.inc:482
 msgid "Permission"
 msgstr "Permission"
 
-#: admin/systems/class_systemManagement.inc:412
+#: admin/systems/class_systemManagement.inc:419
 #, php-format
 msgid "You are not allowed to create a snapshot for %s."
 msgstr "Vous n'êtes pas autorisé à créer un nouvel instantané pour %s."
 
-#: admin/systems/class_systemManagement.inc:475
+#: admin/systems/class_systemManagement.inc:482
 #, php-format
 msgid "You are not allowed to restore a snapshot for %s."
 msgstr "Vous n'êtes pas autorisé à restaurer un instantané de %s."
 
-#: admin/systems/class_systemManagement.inc:641
+#: admin/systems/class_systemManagement.inc:648
 #, php-format
 msgid "Inherited from %s"
 msgstr "Hérité de %s"
 
-#: admin/systems/class_systemManagement.inc:695
+#: admin/systems/class_systemManagement.inc:700
 msgid "Systems Management"
 msgstr "Gestion des systèmes"
 
@@ -1056,52 +1084,6 @@ msgstr "Information du terminal"
 #: admin/systems/class_terminalGeneric.inc:55
 msgid "terminal"
 msgstr "terminal"
-
-#: admin/systems/class_terminalGeneric.inc:67
-#, php-format
-msgid "The root server the terminal should be using"
-msgstr "Le serveur racine que le terminal doit utiliser"
-
-#: admin/systems/class_terminalGeneric.inc:73
-#, php-format
-msgid "The swap server the terminal should be using"
-msgstr "Le serveur de swap que le terminal doit utiliser"
-
-#: admin/systems/class_terminalGeneric.inc:80
-msgid "Remote desktop"
-msgstr "Bureau distant"
-
-#: admin/systems/class_terminalGeneric.inc:84
-msgid "Connect method"
-msgstr "Méthode de connexion"
-
-#: admin/systems/class_terminalGeneric.inc:88
-msgid "None"
-msgstr "Aucun"
-
-#: admin/systems/class_terminalGeneric.inc:88
-msgid "XDMCP"
-msgstr "XDMCP"
-
-#: admin/systems/class_terminalGeneric.inc:88
-msgid "LDM"
-msgstr "LDM"
-
-#: admin/systems/class_terminalGeneric.inc:88
-msgid "Shell"
-msgstr "Shell"
-
-#: admin/systems/class_terminalGeneric.inc:88
-msgid "Telnet"
-msgstr "Telnet"
-
-#: admin/systems/class_terminalGeneric.inc:88
-msgid "Windows RDP"
-msgstr "Windows RDP"
-
-#: admin/systems/class_terminalGeneric.inc:92
-msgid "Terminal server"
-msgstr "Serveur de terminaux"
 
 #: addons/dashboard/systems_stats.tpl.c:2
 msgid "There are several argonaut servers! (this is not yet supported)"

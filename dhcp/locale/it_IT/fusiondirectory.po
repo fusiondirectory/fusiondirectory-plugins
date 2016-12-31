@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-11-13 12:54+0100\n"
+"POT-Creation-Date: 2016-12-31 11:29+0100\n"
 "PO-Revision-Date: 2016-11-13 15:44+0000\n"
 "Last-Translator: Paola Penati <penati@avaya.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
@@ -20,9 +20,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/dhcp/class_dhcpConfig.inc:28
+#: admin/dhcp/class_dhcpConfiguration.inc:477
 #: admin/dhcp/class_dhcpConfiguration.inc:478
-#: admin/dhcp/class_dhcpConfiguration.inc:479
-#: admin/dhcp/class_dhcpConfiguration.inc:481
+#: admin/dhcp/class_dhcpConfiguration.inc:480
 msgid "DHCP configuration"
 msgstr "Configurazione del DHCP"
 
@@ -79,7 +79,7 @@ msgstr "Piega"
 msgid "Insert new DHCP section"
 msgstr "Inserisci una nuova sezione DHCP"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:246
+#: admin/dhcp/class_dhcpConfiguration.inc:245
 #: admin/dhcp/class_dhcpPlugin.inc:34
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:32
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:32
@@ -87,74 +87,74 @@ msgstr "Inserisci una nuova sezione DHCP"
 msgid "Name"
 msgstr "Nome"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:366
-#: admin/dhcp/class_dhcpConfiguration.inc:407
-#: admin/dhcp/class_dhcpConfiguration.inc:517
+#: admin/dhcp/class_dhcpConfiguration.inc:365
+#: admin/dhcp/class_dhcpConfiguration.inc:406
+#: admin/dhcp/class_dhcpConfiguration.inc:516
 msgid "Global options"
 msgstr "Opzioni globali"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:422
+#: admin/dhcp/class_dhcpConfiguration.inc:421
 msgid "Error"
 msgstr "Errore"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:422
+#: admin/dhcp/class_dhcpConfiguration.inc:421
 msgid ""
 "The DHCP configuration set is unkown. Please contact your system "
 "administrator."
 msgstr "La configurazione DHCP impostata è sconosciuta. Contatta l'amministratore del sistema."
 
-#: admin/dhcp/class_dhcpConfiguration.inc:495
+#: admin/dhcp/class_dhcpConfiguration.inc:494
 msgid "DHCP Objects"
 msgstr "Oggetti DHCP"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:505
+#: admin/dhcp/class_dhcpConfiguration.inc:504
 msgid "The DHCP sections handled by this server"
 msgstr "Sezioni DHCP gestite da questo server"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:516
+#: admin/dhcp/class_dhcpConfiguration.inc:515
 msgid "Logging"
 msgstr "Giornale di sistema"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:518
+#: admin/dhcp/class_dhcpConfiguration.inc:517
 msgid "Class"
 msgstr "Categoria"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:519
+#: admin/dhcp/class_dhcpConfiguration.inc:518
 msgid "Subclass"
 msgstr "Sottoclasse"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:520
+#: admin/dhcp/class_dhcpConfiguration.inc:519
 #: admin/dhcp/sections/class_dhcpHost.inc:29
 msgid "Host"
 msgstr "Host"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:521
+#: admin/dhcp/class_dhcpConfiguration.inc:520
 msgid "Group"
 msgstr "Gruppo"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:522
+#: admin/dhcp/class_dhcpConfiguration.inc:521
 #: admin/dhcp/sections/class_dhcpPool.inc:29
 msgid "Pool"
 msgstr "Deposito"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:523
+#: admin/dhcp/class_dhcpConfiguration.inc:522
 #: admin/dhcp/sections/class_dhcpSubnet.inc:29
 msgid "Subnet"
 msgstr "Sottorete"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:524
+#: admin/dhcp/class_dhcpConfiguration.inc:523
 msgid "Failover peer"
 msgstr "Partner per la presa di controllo"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:525
+#: admin/dhcp/class_dhcpConfiguration.inc:524
 msgid "Shared network"
 msgstr "Rete condivisa"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:526
+#: admin/dhcp/class_dhcpConfiguration.inc:525
 msgid "DNS update key"
 msgstr "Stile di aggiornamento dinamico del DNS"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:527
+#: admin/dhcp/class_dhcpConfiguration.inc:526
 msgid "DNS update zones"
 msgstr "Aggiornamento delle zone DNS"
 

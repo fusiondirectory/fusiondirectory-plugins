@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 16:47+0200\n"
+"POT-Creation-Date: 2016-12-31 11:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -16,6 +16,31 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: config/sudo/class_sudoConfig.inc:28
+msgid "Sudo configuration"
+msgstr ""
+
+#: config/sudo/class_sudoConfig.inc:29
+msgid "FusionDirectory sudo plugin configuration"
+msgstr ""
+
+#: config/sudo/class_sudoConfig.inc:42 admin/sudo/class_sudoManagement.inc:32
+#: admin/sudo/class_sudoGeneric.inc:123
+msgid "Sudo"
+msgstr ""
+
+#: config/sudo/class_sudoConfig.inc:45
+msgid "Sudo RDN"
+msgstr ""
+
+#: config/sudo/class_sudoConfig.inc:45
+msgid "Branch in which sudoers will be stored"
+msgstr ""
+
+#: admin/sudo/class_sudoManagement.inc:33
+msgid "Sudo management"
+msgstr ""
 
 #: admin/sudo/class_sudoOption.inc:82
 msgid "Unknown option"
@@ -31,37 +56,28 @@ msgstr ""
 msgid "%s (%s)"
 msgstr ""
 
-#: admin/sudo/class_sudoOption.inc:481
+#: admin/sudo/class_sudoOption.inc:480
 msgid "Available options"
 msgstr ""
 
-#: admin/sudo/class_sudoOption.inc:484
+#: admin/sudo/class_sudoOption.inc:483
 msgid "Option"
 msgstr ""
 
-#: admin/sudo/class_sudoOption.inc:484
+#: admin/sudo/class_sudoOption.inc:483
 msgid "Add a new sudo option"
 msgstr ""
 
-#: admin/sudo/class_sudoOption.inc:489 admin/sudo/class_sudoOption.inc:491
+#: admin/sudo/class_sudoOption.inc:488 admin/sudo/class_sudoOption.inc:490
 msgid "Used sudo role options"
 msgstr ""
 
-#: admin/sudo/class_sudoOption.inc:558
+#: admin/sudo/class_sudoOption.inc:557
 msgid "Options"
 msgstr ""
 
-#: admin/sudo/class_sudoOption.inc:559
+#: admin/sudo/class_sudoOption.inc:558
 msgid "Sudo options"
-msgstr ""
-
-#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:123
-#: config/sudo/class_sudoConfig.inc:42
-msgid "Sudo"
-msgstr ""
-
-#: admin/sudo/class_sudoManagement.inc:33
-msgid "Sudo management"
 msgstr ""
 
 #: admin/sudo/class_sudoGeneric.inc:124 admin/sudo/class_sudoGeneric.inc:128
@@ -137,20 +153,4 @@ msgstr ""
 
 #: admin/sudo/class_sudoGeneric.inc:191
 msgid "This rule priority compared to others"
-msgstr ""
-
-#: config/sudo/class_sudoConfig.inc:28
-msgid "Sudo configuration"
-msgstr ""
-
-#: config/sudo/class_sudoConfig.inc:29
-msgid "FusionDirectory sudo plugin configuration"
-msgstr ""
-
-#: config/sudo/class_sudoConfig.inc:45
-msgid "Sudo RDN"
-msgstr ""
-
-#: config/sudo/class_sudoConfig.inc:45
-msgid "Branch in which sudoers will be stored"
 msgstr ""
