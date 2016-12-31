@@ -49,7 +49,7 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
   reset_errors();
   /* Check if CONFIG_FILE is accessible */
   if (!is_readable(CONFIG_DIR."/".CONFIG_FILE)) {
-    throw new Exception(sprintf(_("FusionDirectory configuration %s/%s is not readable. Aborted."), CONFIG_DIR, CONFIG_FILE));
+    throw new FusionDirectoryException(sprintf(_("FusionDirectory configuration %s/%s is not readable. Aborted."), CONFIG_DIR, CONFIG_FILE));
   }
 
   /* Initially load all classes */
@@ -59,7 +59,7 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
       if (is_readable("$BASE_DIR/$path")) {
         require_once("$BASE_DIR/$path");
       } else {
-        throw new Exception(sprintf(_("Cannot locate file '%s' - please run '%s' to fix this"),
+        throw new FusionDirectoryException(sprintf(_("Cannot locate file '%s' - please run '%s' to fix this"),
               "$BASE_DIR/$path", "<b>fusiondirectory-setup</b>"));
       }
     }
@@ -83,7 +83,7 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
     if (($ssl != "") &&
           (($config->get_cfg_value('webserviceForceSSL', 'TRUE') == 'TRUE') ||
            ($config->get_cfg_value('forcessl') == 'TRUE'))) {
-      throw new Exception("HTTP connexions are not allowed, please use HTTPS: $ssl\n");
+      throw new FusionDirectoryException("HTTP connexions are not allowed, please use HTTPS: $ssl\n");
     }
 
     if (!isset($_SERVER['PHP_AUTH_USER']) && ($user === NULL)) {
@@ -125,7 +125,7 @@ class fdRPCService
   {
     global $config;
     if (preg_match('/^_(.*)$/', $method, $m)) {
-      throw new Exception("Non existing method '$m[1]'");
+      throw new FusionDirectoryException("Non existing method '$m[1]'");
     }
 
     if ($method == 'listLdaps') {
@@ -145,7 +145,7 @@ class fdRPCService
 
     $this->ldap = $config->get_ldap_link();
     if (!$this->ldap->success()) {
-      throw new Exception('Ldap error: '.$this->ldap->get_error());
+      throw new FusionDirectoryException('Ldap error: '.$this->ldap->get_error());
     }
     $this->ldap->cd($config->current['BASE']);
 
@@ -165,7 +165,7 @@ class fdRPCService
       $self = '';
     }
     if (!$plist->check_access($infos['aclCategory'].$self)) {
-      throw new Exception("Unsufficient rights for accessing type '$type$self'");
+      throw new FusionDirectoryException("Unsufficient rights for accessing type '$type$self'");
     }
     if ($tabs !== NULL) {
       if (!is_array($tabs)) {
@@ -174,7 +174,7 @@ class fdRPCService
       foreach ($tabs as $tab) {
         $pInfos = pluglist::pluginInfos($tab);
         if (!$plist->check_access(join($self.',', $pInfos['plCategory']).$self)) {
-          throw new Exception("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
+          throw new FusionDirectoryException("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
         }
       }
     }
