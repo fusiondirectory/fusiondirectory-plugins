@@ -109,10 +109,12 @@ class applicationManagement extends simpleManagement
       } else {
         $path = 'plugins/applications/images/default_icon.png';
       }
+      $name   = $app['cn'][0];
+      $title  = (isset($app['fdApplicationTitle'][0]) ? $app['fdApplicationTitle'][0] : $name);
       $entries[$section][] = array(
-        'NAME'        => $app['cn'][0],
-        'TITLE'       => $app['fdApplicationTitle'][0],
-        'DESCRIPTION' => $app['description'][0],
+        'NAME'        => $name,
+        'TITLE'       => $title,
+        'DESCRIPTION' => (isset($app['description'][0]) ? $app['description'][0] : $title),
         'LINK'        => $app['labeledURI'][0],
         'ICONPATH'    => $path,
       );
