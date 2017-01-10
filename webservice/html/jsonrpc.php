@@ -519,7 +519,7 @@ class fdRPCService
       }
     }
     if (count($disallowed)) {
-      return array('errors' => array(msgPool::permDelete($disallowed)));
+      return array('errors' => array(msgPool::permModify($disallowed)));
     }
 
     // Try to lock/unlock the entries.
@@ -535,7 +535,7 @@ class fdRPCService
           continue;
         }
         // Detect the password method and try to lock/unlock.
-        $method   = passwordMethod::get_method($val['userPassword'][0], $dn);
+        $method = passwordMethod::get_method($val['userPassword'][0], $dn);
         if ($method instanceOf passwordMethod) {
           $success = TRUE;
           if ($type == 'toggle') {
@@ -569,6 +569,57 @@ class fdRPCService
     if (!empty($errors)) {
       return array('errors' => $errors);
     }
+  }
+
+  /*!
+   * \brief Test if a user is locked
+   */
+  protected function _isUserLocked($dns)
+  {
+    global $config, $ui;
+
+    if(!is_array($dns)) {
+      $dns = array($dns);
+    }
+
+    foreach ($dns as $dn) {
+      if (!preg_match('/r/', $ui->get_permissions($dn, 'user/password'))) {
+        $disallowed[] = $dn;
+      }
+    }
+    if (count($disallowed)) {
+      return array('errors' => array(msgPool::permView($disallowed)));
+    }
+
+    // Try to lock/unlock the entries.
+    $ldap   = $config->get_ldap_link();
+    $result = array();
+    $errors = array();
+    foreach ($dns as $dn) {
+      $ldap->cat($dn, array('userPassword'));
+      if ($ldap->count() == 1) {
+        // We can't lock empty passwords.
+        $val = $ldap->fetch();
+        if (!isset($val['userPassword'])) {
+          $errors[] = sprintf(_('Failed to get password method for account "%s"'), $dn);
+          continue;
+        }
+        // Detect the password method and try to lock/unlock.
+        $method = passwordMethod::get_method($val['userPassword'][0], $dn);
+        if ($method instanceOf passwordMethod) {
+          $result[$dn] = $method->is_locked($dn);
+        } else {
+          // Can't lock unknown methods.
+          $errors[] = sprintf(_('Failed to get password method for account "%s"'), $dn);
+        }
+      } else {
+        $errors[] = sprintf(_('Could not find account "%s" in LDAP'), $dn);
+      }
+    }
+    if (!empty($errors)) {
+      return array('errors' => $errors);
+    }
+    return $result;
   }
 
   /*!
