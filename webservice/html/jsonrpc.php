@@ -626,12 +626,20 @@ class fdRPCService
     return $result;
   }
 
+  /*!
+   * \brief Generate recovery token for a user
+   */
   protected function _recoveryGenToken($email)
   {
+    global $ui;
+
     $pwRecovery = new passwordRecovery();
     $pwRecovery->email_address = $email;
-    $pwRecovery->step2();
+    $dn = $pwRecovery->step2();
     if ($pwRecovery->step == 2) { /* No errors */
+      if (!preg_match('/w/', $ui->get_permissions($dn, 'user/password'))) {
+        return array('errors' => array(msgPool::permModify($dn)));
+      }
       $token = $pwRecovery->generateAndStoreToken();
       if (empty($pwRecovery->message) && ($token !== FALSE)) {
         return array('token' => $token, 'uid' => $pwRecovery->uid);
@@ -640,6 +648,9 @@ class fdRPCService
     return array('errors' => $pwRecovery->message);
   }
 
+  /*!
+   * \brief Change a user password using a recovery token
+   */
   protected function _recoveryConfirmPasswordChange($uid, $password1, $password2, $token)
   {
     $pwRecovery = new passwordRecovery();
