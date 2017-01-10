@@ -226,6 +226,18 @@ class fdRPCService
   }
 
   /*!
+   * \brief Test if a user is locked
+   *
+   * \param string  $sid  the session id
+   * \param string  $dns  an array of user dns to test if they are locked, or a single dn of a user to test
+   *
+   * \return an associative array of booleans, the keys are the dns of the users
+   */
+  function isUserLocked($sid, $dns)
+  {
+  }
+
+  /*!
    * \brief Get the session ID
    *
    * \return The session ID for the current session. (Mainly useless unless you log in with HTTP auth instead of login method)
