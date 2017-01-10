@@ -71,7 +71,10 @@ class applicationManagement extends simpleManagement
           if (!isset($apps[$appdn])) {
             $ldap->cat($appdn);
             if ($ldap->count()) {
-              $apps[$appdn] = $ldap->fetch();
+              $attrs = $ldap->fetch();
+              if (in_array_ics('fdWebApplication', $attrs['objectClass'])) {
+                $apps[$appdn] = $attrs;
+              }
             }
           }
         }
