@@ -626,6 +626,35 @@ class fdRPCService
     return $result;
   }
 
+  protected function _recoveryGenToken($email)
+  {
+    $pwRecovery = new passwordRecovery();
+    $pwRecovery->email_address = $email;
+    $pwRecovery->step2();
+    if ($pwRecovery->step == 2) { /* No errors */
+      $token = $pwRecovery->generateAndStoreToken();
+      if (empty($pwRecovery->message) && ($token !== FALSE)) {
+        return array('token' => $token, 'uid' => $pwRecovery->uid);
+      }
+    }
+    return array('errors' => $pwRecovery->message);
+  }
+
+  protected function _recoveryConfirmPasswordChange($uid, $password1, $password2, $token)
+  {
+    $pwRecovery = new passwordRecovery();
+    $pwRecovery->uid = $uid;
+    if ($pwRecovery->checkToken($token)) {
+      $success = $pwRecovery->changeUserPassword($password1, $password2);
+      if ($success) {
+        return TRUE;
+      }
+    } else {
+      $pwRecovery->message[] = _('This token is invalid');
+    }
+    return array('errors' => $pwRecovery->message);
+  }
+
   /*!
    * \brief Get the session ID
    */
