@@ -238,6 +238,33 @@ class fdRPCService
   }
 
   /*!
+   * \brief Generate recovery token for a user
+   *
+   * \param string  $sid    the session id
+   * \param string  $email  an email address associated to the user
+   *
+   * \return an associative array with keys "token" and "uid" upon success
+   */
+  function recoveryGenToken($sid, $email)
+  {
+  }
+
+  /*!
+   * \brief Change a user password using a recovery token
+   *
+   * \param string  $sid        the session id
+   * \param string  $uid        the uid of the user
+   * \param string  $password1  the password entered by the user
+   * \param string  $password2  the repeated password entered by the user
+   * \param string  $token      the recovery token
+   *
+   * \return TRUE upon success
+   */
+  function recoveryConfirmPasswordChange($sid, $uid, $password1, $password2, $token)
+  {
+  }
+
+  /*!
    * \brief Get the session ID
    *
    * \return The session ID for the current session. (Mainly useless unless you log in with HTTP auth instead of login method)
