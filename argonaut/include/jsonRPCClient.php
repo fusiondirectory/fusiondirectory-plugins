@@ -27,11 +27,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  * Source code for class jsonRPCClient
  */
 
-class jsonRPCClient_Exception extends Exception {};
-class jsonRPCClient_RequestErrorException extends jsonRPCClient_Exception {};
-class jsonRPCClient_NetworkErrorException extends jsonRPCClient_Exception {};
-class jsonRPCClient_ProtocolException extends jsonRPCClient_Exception {};
-class jsonRPCClient_BadArgsException extends jsonRPCClient_Exception {};
+class jsonRPCClient_Exception extends Exception {}
+class jsonRPCClient_RequestErrorException extends jsonRPCClient_Exception {}
+class jsonRPCClient_NetworkErrorException extends jsonRPCClient_Exception {}
+class jsonRPCClient_ProtocolException extends jsonRPCClient_Exception {}
+class jsonRPCClient_BadArgsException extends jsonRPCClient_Exception {}
 
 /*!
  * \brief The object of this class are generic jsonRPC 1.0 clients
@@ -203,19 +203,14 @@ class jsonRPCClient {
         break;
         case JSON_ERROR_DEPTH:
           throw new jsonRPCClient_ProtocolException('Maximum depth in response');
-        break;
         case JSON_ERROR_STATE_MISMATCH:
           throw new jsonRPCClient_ProtocolException('Invalid JSON in response');
-        break;
         case JSON_ERROR_CTRL_CHAR:
           throw new jsonRPCClient_ProtocolException('Error while checking chars in response');
-        break;
         case JSON_ERROR_SYNTAX:
           throw new jsonRPCClient_ProtocolException('Bad JSON syntax in response');
-        break;
         case JSON_ERROR_UTF8:
           throw new jsonRPCClient_ProtocolException('Bad UTF-8 in response');
-        break;
         default:
         break;
       }

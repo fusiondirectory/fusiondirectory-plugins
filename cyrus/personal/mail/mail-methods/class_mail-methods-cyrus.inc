@@ -92,8 +92,8 @@ class mailMethodCyrus extends mailMethod
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed</b> :".imap_last_error(),
         "<b>IMAP:</b> ".$cfg['admin']."@".$cfg['connect']);
 
-      return FALSE;
       $this->connected = FALSE;
+      return FALSE;
     }
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>successful</b>",
         "<b>IMAP:</b> ".$cfg['admin']."@".$cfg['connect']);

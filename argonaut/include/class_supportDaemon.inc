@@ -100,7 +100,7 @@ class supportDaemon
           );
           $sshaMethod = new passwordMethodssha();
           $this->http_options['header'] = 'Authorization: Basic '.base64_encode('fd:'.$sshaMethod->generate_hash($ldap_infos['argonautServerToken'][0]));
-        };
+        }
       }
       return $ldap_infos['argonautProtocol'][0]."://".$ldap_infos['ipHostNumber'][0].":".$ldap_infos['argonautPort'][0];
     } elseif ($ldap->count() > 1) {
@@ -190,8 +190,6 @@ class supportDaemon
 
     /* Append an entry */
     return $this->append_call($event->action, $event->targets, $event->computeData());
-
-    return FALSE;
   }
 
   /*!
@@ -333,7 +331,7 @@ class supportDaemon
    * \return array All queued entries as an array or FALSE if there is an error.
    */
 
-  //FIXME is this an exemple of the parameter to the fonction ? $event_types = array("*"),$from=-1,$to=-1,$sort="timestamp DESC" 
+  //FIXME is this an exemple of the parameter to the fonction ? $event_types = array("*"),$from=-1,$to=-1,$sort="timestamp DESC"
 
   public function get_queued_entries()
   {
@@ -783,6 +781,6 @@ class supportDaemon
       return $this->new_state(FALSE);
     }
   }
-};
+}
 
 ?>
