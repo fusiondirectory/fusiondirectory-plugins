@@ -629,7 +629,7 @@ class fdRPCService
   {
     global $ui;
 
-    $pwRecovery = new passwordRecovery();
+    $pwRecovery = new passwordRecovery(FALSE);
     $pwRecovery->email_address = $email;
     $dn = $pwRecovery->step2();
     if ($pwRecovery->step == 2) { /* No errors */
@@ -649,7 +649,7 @@ class fdRPCService
    */
   protected function _recoveryConfirmPasswordChange($uid, $password1, $password2, $token)
   {
-    $pwRecovery = new passwordRecovery();
+    $pwRecovery = new passwordRecovery(FALSE);
     $pwRecovery->uid = $uid;
     if ($pwRecovery->checkToken($token)) {
       $success = $pwRecovery->changeUserPassword($password1, $password2);
