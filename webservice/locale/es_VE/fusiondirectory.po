@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-12-31 11:29+0100\n"
-"PO-Revision-Date: 2016-06-28 11:05+0000\n"
+"POT-Creation-Date: 2017-01-11 21:15+0100\n"
+"PO-Revision-Date: 2017-01-11 20:28+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Spanish (Venezuela) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/es_VE/)\n"
 "MIME-Version: 1.0\n"
@@ -70,3 +70,17 @@ msgstr ""
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr ""
+
+#: html/jsonrpc.php:608 html/jsonrpc.php:617
+#, php-format
+msgid "Failed to get password method for account \"%s\""
+msgstr ""
+
+#: html/jsonrpc.php:620
+#, php-format
+msgid "Could not find account \"%s\" in LDAP"
+msgstr ""
+
+#: html/jsonrpc.php:664
+msgid "This token is invalid"
+msgstr "Esta prenda es invalida"

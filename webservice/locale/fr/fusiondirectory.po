@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Benoit Mortier <benoit.mortier@opensides.be>, 2015-2016
+# Benoit Mortier <benoit.mortier@opensides.be>, 2015-2017
 # MCMic, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-12-31 11:29+0100\n"
-"PO-Revision-Date: 2016-06-28 11:05+0000\n"
+"POT-Creation-Date: 2017-01-11 21:15+0100\n"
+"PO-Revision-Date: 2017-01-11 20:28+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -72,3 +72,17 @@ msgstr "Méthode de mot de passe \"%s\" a échoué. Le compte \"%s\" n'a pas ét
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr "Impossible de trouver le compte \"%s\" dans LDAP. Il n'a pas été verrouillé!"
+
+#: html/jsonrpc.php:608 html/jsonrpc.php:617
+#, php-format
+msgid "Failed to get password method for account \"%s\""
+msgstr "Impossible d'obtenir la méthode de mot de passe pour le compte \"%s\""
+
+#: html/jsonrpc.php:620
+#, php-format
+msgid "Could not find account \"%s\" in LDAP"
+msgstr "Impossible de trouver le compte \"%s\" dans LDAP"
+
+#: html/jsonrpc.php:664
+msgid "This token is invalid"
+msgstr "Le jeton n'est pas valide"
