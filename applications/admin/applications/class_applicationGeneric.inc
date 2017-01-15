@@ -35,7 +35,7 @@ class application extends simplePlugin
         'icon'    => 'geticon.php?context=mimetypes&icon=application-x-executable&size=16',
       )),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

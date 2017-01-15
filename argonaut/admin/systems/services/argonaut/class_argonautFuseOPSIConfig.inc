@@ -25,7 +25,7 @@ class argonautFuseOPSIConfig extends simplePlugin
   var $showActions    = FALSE;
   var $displayHeader     = TRUE;
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
@@ -33,7 +33,7 @@ class argonautFuseOPSIConfig extends simplePlugin
       "plDescription"   => _("Argonaut Fuse OPSI module settings")." ("._("Services").")",
       "plCategory"      => array("server"),
       "plObjectType"    => array("fusemodule"),
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

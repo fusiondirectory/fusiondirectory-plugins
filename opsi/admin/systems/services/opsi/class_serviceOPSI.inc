@@ -22,7 +22,7 @@ class serviceOPSI extends simpleService
 {
   var $objectclasses = array('opsiServer');
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
@@ -30,7 +30,7 @@ class serviceOPSI extends simpleService
       'plDescription' => _('OPSI service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=opsi&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -38,7 +38,7 @@ class serviceOPSI extends simpleService
   {
     return array(
       'main' => array(
-        'name'      => _('OPSI Server informations'),
+        'name'      => _('OPSI Server information'),
         'attrs'     => array(
           new StringAttribute(
             _('Server URI'), _('The URI to use for connection'),

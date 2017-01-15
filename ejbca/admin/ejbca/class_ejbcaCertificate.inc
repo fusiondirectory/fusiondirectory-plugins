@@ -36,7 +36,7 @@ class ejbcaCertificate extends simplePlugin
         'icon'        => 'geticon.php?context=applications&icon=ejbca&size=16'
       )),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

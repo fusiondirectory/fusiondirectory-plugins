@@ -89,7 +89,7 @@ class fdRPCService
    * \param string  $sid the session id
    * \param string  $type the object type
    *
-   * \return The informations on this type as an associative array
+   * \return The information on this type as an associative array
    */
   function infos($sid, $type)
   {
@@ -222,6 +222,45 @@ class fdRPCService
    * \param string  $type the action to be done. Can be 'lock', 'unlock' or 'toggle'. Defaults to 'toggle'.
    */
   function lockUser($sid, $dns, $type = 'toggle')
+  {
+  }
+
+  /*!
+   * \brief Test if a user is locked
+   *
+   * \param string  $sid  the session id
+   * \param string  $dns  an array of user dns to test if they are locked, or a single dn of a user to test
+   *
+   * \return an associative array of booleans, the keys are the dns of the users
+   */
+  function isUserLocked($sid, $dns)
+  {
+  }
+
+  /*!
+   * \brief Generate recovery token for a user
+   *
+   * \param string  $sid    the session id
+   * \param string  $email  an email address associated to the user
+   *
+   * \return an associative array with keys "token" and "uid" upon success
+   */
+  function recoveryGenToken($sid, $email)
+  {
+  }
+
+  /*!
+   * \brief Change a user password using a recovery token
+   *
+   * \param string  $sid        the session id
+   * \param string  $uid        the uid of the user
+   * \param string  $password1  the password entered by the user
+   * \param string  $password2  the repeated password entered by the user
+   * \param string  $token      the recovery token
+   *
+   * \return TRUE upon success
+   */
+  function recoveryConfirmPasswordChange($sid, $uid, $password1, $password2, $token)
   {
   }
 

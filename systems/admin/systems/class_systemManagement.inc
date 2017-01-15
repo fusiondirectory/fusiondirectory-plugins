@@ -123,6 +123,13 @@ class systemManagement extends management
     return parent::copyPasteHandler($action, $target, $all, $tabClass, $tabType, $aclCategory, $aclPlugin);
   }
 
+  function configureFilter ()
+  {
+    parent::configureFilter();
+    /* We need all attributes to list services */
+    $this->filter->query[0]['attribute'] = '*';
+  }
+
   /*! \brief    Handle Argonaut events
    *            All schedules and triggered events are handled here.
    */
@@ -648,7 +655,7 @@ class systemManagement extends management
     return "&nbsp;";
   }
 
-  static function listServices($row, $dn)
+  static function listServices($row, $dn, $attrs)
   {
     global $config;
     static $services = array();
@@ -663,10 +670,8 @@ class systemManagement extends management
     }
 
     // Load information if needed
-    $ldap = $config->get_ldap_link();
-    $ldap->cat($dn);
     $services_imgs = array();
-    if ($attrs = $ldap->fetch()) {
+    if (!empty($attrs)) {
       foreach ($services as $class => $service) {
         if ($service->is_this_account($attrs)) {
           $infos = pluglist::pluginInfos($class);

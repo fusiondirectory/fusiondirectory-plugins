@@ -70,7 +70,7 @@ class fiInventoryAgent extends simplePlugin
     );
   }
 
-  /* Return plugin informations */
+  /* Return plugin information */
   static function plInfo()
   {
     return array(
@@ -79,7 +79,7 @@ class fiInventoryAgent extends simplePlugin
       'plPriority'    => 90,
       'plObjectType'  => array('winstation', 'workstation', 'server'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 }

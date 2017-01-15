@@ -36,7 +36,7 @@ class ejbcaCertificates extends simplePlugin
         'fdEjbcaCertDN' => 'ejbcaCertificate',
       ),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

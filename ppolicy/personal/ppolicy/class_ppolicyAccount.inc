@@ -33,7 +33,7 @@ class ppolicyAccount extends simplePlugin
       'plIcon'          => 'geticon.php?context=applications&icon=ppolicy&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=ppolicy&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

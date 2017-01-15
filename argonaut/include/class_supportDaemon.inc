@@ -100,7 +100,7 @@ class supportDaemon
           );
           $sshaMethod = new passwordMethodssha();
           $this->http_options['header'] = 'Authorization: Basic '.base64_encode('fd:'.$sshaMethod->generate_hash($ldap_infos['argonautServerToken'][0]));
-        };
+        }
       }
       return $ldap_infos['argonautProtocol'][0]."://".$ldap_infos['ipHostNumber'][0].":".$ldap_infos['argonautPort'][0];
     } elseif ($ldap->count() > 1) {
@@ -190,8 +190,6 @@ class supportDaemon
 
     /* Append an entry */
     return $this->append_call($event->action, $event->targets, $event->computeData());
-
-    return FALSE;
   }
 
   /*!
@@ -541,7 +539,7 @@ class supportDaemon
   }
 
   /*!
-   * \brief  Returns log file informations for a given mac address
+   * \brief  Returns log file information for a given mac address
    *
    * \param  string $mac The mac address to fetch logs for.
    *
@@ -779,6 +777,6 @@ class supportDaemon
       return $this->new_state(FALSE);
     }
   }
-};
+}
 
 ?>

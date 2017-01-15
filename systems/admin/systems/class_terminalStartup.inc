@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -20,38 +19,26 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class TerminalReleaseAttribute extends SelectAttribute
-{
-  function __construct ($label, $description, $ldapName, $required, $choices = array())
-  {
-    parent::__construct($label, $description, $ldapName, $required, $choices);
-    $this->setSubmitForm(TRUE);
-  }
-
-  function setValue ($value)
-  {
-    if (!in_array($value, $this->choices)) {
-      return;
-    }
-    parent::setValue($value);
-    if (isset($this->plugin)) {
-      $this->plugin->attributesInfo['main']['attrs']['gotoBootKernel']->setRelease($value);
-    }
-  }
-
-  function setParent (&$plugin)
-  {
-    parent::setParent($plugin);
-    $this->setValue('squeeze');
-  }
-}
-
 class terminalStartup extends simplePlugin
 {
-  /* attribute list for save action */
-  var $objectclasses = array('GOhard');
+  var $objectclasses = array('fdTerminalStartup');
 
-  var $inheritance = array("gosaGroupOfNames" => "member");
+  var $inheritance = array('gosaGroupOfNames' => 'member');
+
+  /* Return plugin information */
+  static function plInfo()
+  {
+    return array(
+      'plShortName'     => _('Startup'),
+      'plDescription'   => _('Terminal startup'),
+      'plSelfModify'    => FALSE,
+      'plPriority'      => 2,
+      'plCategory'      => array('terminal'),
+      'plObjectType'    => array('terminal', 'ogroup-dynamic'),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
 
   /*!
    *  \brief The main function : information about attributes
@@ -62,31 +49,89 @@ class terminalStartup extends simplePlugin
       'startup' => array (
         'name' => _('Startup parameters'),
         'attrs' => array (
-          new StringAttribute (
-            _('Boot kernel'),  _('Linux kernel to be installed and booted'),
-            'gotoBootKernel', FALSE
+          new SelectAttribute(
+            _('Root server'), _('The root server the terminal should be using'),
+            'gotoTerminalPath', FALSE
           ),
-          new StringAttribute (
-            _('Boot kernel parameters'), _('Linux kernel parameters to be ran'),
-            'gotoKernelParameters', FALSE
+          new SelectAttribute(
+            _('Swap server'), _('The swap server the terminal should be using'),
+            'gotoSwapServer', FALSE
+          ),
+        )
+      ),
+      'remote_desktop' => array(
+        'name'  => _('Remote desktop'),
+        'icon'  => 'geticon.php?context=devices&icon=server&size=16',
+        'attrs' => array(
+          new SelectAttribute(
+            _('Connect method'), _('Connect method'),
+            'gotoXMethod', FALSE,
+            array('XDMCP', 'LDM', 'SHELL', 'TELNET', 'RDP'),
+            '',
+            array(_('XDMCP'), _('LDM'), _('Shell'), _('Telnet'), _('Windows RDP'))
+          ),
+          new SetAttribute(
+            new SelectAttribute(
+              _('Terminal server'), _('Terminal server'),
+              'gotoXdmcpServer', FALSE,
+              array()
+            )
           )
         )
       ),
     );
   }
 
-  /* Return plugin informations for acl handling */
-  static function plInfo()
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    return array(
-      'plShortName'     => _('Startup'),
-      'plDescription'   => _('Terminal startup'),
-      'plSelfModify'    => FALSE,
-      'plPriority'      => 3,
-      'plObjectType'    => array('terminal', 'ogroup-dynamic'),
+    global $config;
+    parent::__construct($dn, $object, $parent, $mainTab);
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-    );
+    $this->attributesAccess['gotoXMethod']->setSubmitForm('updateServerList');
+
+    /* Get NFS and NBD server lists */
+    $nfs = array();
+    $nbd = array();
+    $shareServers = objects::ls('server', array('cn' => 1, 'goExportEntry' => '*'), NULL, '(&(objectClass=goShareServer)(goExportEntry=*))');
+    foreach ($shareServers as $server) {
+      foreach ($server['goExportEntry'] as $entry) {
+        $parts = explode('|', $entry);
+        if ($parts[2] == 'NFS') {
+          $nfs[] = $server['cn'].':'.$parts[4];
+        } elseif ($parts[2] == 'NBD') {
+          $nbd[] = $server['cn'].':'.$parts[4];
+        }
+      }
+    }
+
+    /* Root server */
+    $tmp        = $nfs;
+    $tmp_output = $nfs;
+    if ($this->member_of_group) {
+      array_unshift($tmp, '');
+      array_unshift($tmp_output, _('inherited'));
+    }
+    $this->attributesAccess['gotoTerminalPath']->setChoices($tmp, $tmp_output);
+
+    /* Swap server */
+    $tmp        = $nbd;
+    $tmp_output = $nbd;
+    array_unshift($tmp, '!');
+    array_unshift($tmp_output, _('Local swap'));
+    if ($this->member_of_group) {
+      array_unshift($tmp, '');
+      array_unshift($tmp_output, _('inherited'));
+    }
+    $this->attributesAccess['gotoSwapServer']->setChoices($tmp, $tmp_output);
+
+    $this->updateServerList();
+  }
+
+  /*! \brief Create a list of useable servers for the currently selected protocol */
+  function updateServerList()
+  {
+    $servers = objects::ls('server', NULL, NULL, '(&(objectClass=goTerminalServer)(gotoSessionType='.strtoupper($this->gotoXMethod).'))');
+    $this->attributesAccess['gotoXdmcpServer']->attribute->setChoices($servers);
   }
 }
 

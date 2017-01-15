@@ -25,8 +25,6 @@ class serviceSpamAssassin extends simpleService {
   /* This plugin only writes its objectClass */
   var $objectclasses = array('goSpamServer');
 
-    /* Return plugin informations for acl handling  */
-
   static function plInfo()
   {
     return array(
@@ -34,7 +32,7 @@ class serviceSpamAssassin extends simpleService {
       'plDescription' => _('Spamassassin service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=spamassassin&size=16',
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

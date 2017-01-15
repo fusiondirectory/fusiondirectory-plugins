@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-11-02 23:08+0100\n"
+"POT-Creation-Date: 2017-01-11 21:15+0100\n"
 "PO-Revision-Date: 2016-01-22 16:04+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
@@ -47,50 +47,50 @@ msgstr "Branche dans laquelle les alias sont stockés"
 msgid "Temporary mail redirection"
 msgstr "Redirection temporaire de courriel"
 
-#: admin/alias/class_mailAliasRedirection.inc:52
+#: admin/alias/class_mailAliasRedirection.inc:50
 msgid "Mail redirection"
 msgstr "Redirection de courriel"
 
-#: admin/alias/class_mailAliasRedirection.inc:55
-#: admin/alias/class_mailAliasDistribution.inc:56
+#: admin/alias/class_mailAliasRedirection.inc:53
+#: admin/alias/class_mailAliasDistribution.inc:54
 msgid "Name"
 msgstr "Nom"
 
-#: admin/alias/class_mailAliasRedirection.inc:55
+#: admin/alias/class_mailAliasRedirection.inc:53
 msgid "Name to identify this redirection"
 msgstr "Nom de la redirection de courriel"
 
-#: admin/alias/class_mailAliasRedirection.inc:57
-#: admin/alias/class_mailAliasDistribution.inc:58
+#: admin/alias/class_mailAliasRedirection.inc:55
+#: admin/alias/class_mailAliasDistribution.inc:56
 msgid "Description"
 msgstr "Description"
 
-#: admin/alias/class_mailAliasRedirection.inc:57
+#: admin/alias/class_mailAliasRedirection.inc:55
 msgid "Description of this redirection"
 msgstr "Description de la redirection"
 
-#: admin/alias/class_mailAliasRedirection.inc:62
+#: admin/alias/class_mailAliasRedirection.inc:60
 msgid "Redirect from"
 msgstr "Rediriger depuis"
 
-#: admin/alias/class_mailAliasRedirection.inc:62
+#: admin/alias/class_mailAliasRedirection.inc:60
 msgid "Mail address from which you want to redirect"
 msgstr "Adresse de courriel depuis laquelle vous voulez rediriger"
 
-#: admin/alias/class_mailAliasRedirection.inc:68
+#: admin/alias/class_mailAliasRedirection.inc:66
 msgid "Redirect to"
 msgstr "Rediriger vers"
 
-#: admin/alias/class_mailAliasRedirection.inc:68
+#: admin/alias/class_mailAliasRedirection.inc:66
 msgid "Destination of this redirection"
 msgstr "Destination de la redirection"
 
-#: admin/alias/class_mailAliasRedirection.inc:73
-#: admin/alias/class_mailAliasDistribution.inc:77
+#: admin/alias/class_mailAliasRedirection.inc:71
+#: admin/alias/class_mailAliasDistribution.inc:75
 msgid "Expiration date"
 msgstr "Date d’expiration"
 
-#: admin/alias/class_mailAliasRedirection.inc:73
+#: admin/alias/class_mailAliasRedirection.inc:71
 msgid ""
 "Date after which the redirection should be deleted. Leave empty for no "
 "deletion."
@@ -102,39 +102,39 @@ msgstr "Date après laquelle cet alias doit être effacé. Laisser vide pour auc
 msgid "Temporary mail distribution"
 msgstr "Redistribution temporaire de courriel"
 
-#: admin/alias/class_mailAliasDistribution.inc:53
+#: admin/alias/class_mailAliasDistribution.inc:51
 msgid "Mail distribution"
 msgstr "Redistribution de courriel"
 
-#: admin/alias/class_mailAliasDistribution.inc:56
+#: admin/alias/class_mailAliasDistribution.inc:54
 msgid "Name to identify this alias"
 msgstr "Nom de l'alias"
 
-#: admin/alias/class_mailAliasDistribution.inc:58
+#: admin/alias/class_mailAliasDistribution.inc:56
 msgid "Description of this alias"
 msgstr "Description de l'alias"
 
-#: admin/alias/class_mailAliasDistribution.inc:62
+#: admin/alias/class_mailAliasDistribution.inc:60
 msgid "Email address"
 msgstr "Adresse de courriel"
 
-#: admin/alias/class_mailAliasDistribution.inc:67
+#: admin/alias/class_mailAliasDistribution.inc:65
 msgid "Email aliases"
 msgstr "Alias de courriel"
 
-#: admin/alias/class_mailAliasDistribution.inc:67
+#: admin/alias/class_mailAliasDistribution.inc:65
 msgid "Aliases for this email address"
 msgstr "Alias pour cette adresse de courriel"
 
-#: admin/alias/class_mailAliasDistribution.inc:72
+#: admin/alias/class_mailAliasDistribution.inc:70
 msgid "Mail server"
 msgstr "Serveur de courriel"
 
-#: admin/alias/class_mailAliasDistribution.inc:72
+#: admin/alias/class_mailAliasDistribution.inc:70
 msgid "Mail server for this alias"
 msgstr "Serveur de courriel pour cet alias"
 
-#: admin/alias/class_mailAliasDistribution.inc:77
+#: admin/alias/class_mailAliasDistribution.inc:75
 msgid ""
 "Date after which the alias should be deleted. Leave empty for no deletion."
 msgstr "Date après laquelle cet alias doit être effacé. Laisser vide pour aucune expiration."

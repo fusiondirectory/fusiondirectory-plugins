@@ -25,7 +25,7 @@ class ppolicy extends simplePlugin
 
   var $objectclasses = array('device', 'pwdPolicy', 'pwdPolicyChecker');
 
-  /* Return plugin informations for acl handling  */
+  /* Return plugin information for acl handling  */
   public static function plInfo()
   {
     return array(
@@ -38,7 +38,7 @@ class ppolicy extends simplePlugin
         'icon'        => 'geticon.php?context=applications&icon=ppolicy&size=16'
       )),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

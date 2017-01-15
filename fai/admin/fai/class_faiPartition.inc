@@ -167,7 +167,7 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
   function writeValues($values)
   {
     if ($values[0] == 'remaining') {
-      return '-';
+      return '0-';
     }
     $value = $values[1].$values[2];
     if ($values[0] == 'dynamic') {

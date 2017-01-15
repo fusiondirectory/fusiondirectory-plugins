@@ -5,11 +5,11 @@
     {include file={filePath file="setup_header.tpl"}}
   </div>
 
-  <div id="window_container">
+  <div id="window-container">
 
-    <div id="window_div">
+    <div id="window-div">
         {$msg_dialogs}
-        <div id="window_titlebar">
+        <div id="window-titlebar">
           <p>
             <img class="center" src="geticon.php?context=types&amp;icon=user&amp;size=48" alt="{t}User{/t}" title="{t}User{/t}"/>
             {t}Expiration postpone{/t}

@@ -50,7 +50,7 @@ class gpgAccount extends simplePlugin
       'plIcon'          => 'geticon.php?context=applications&icon=gpg&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=gpg&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 }

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-11-02 23:08+0100\n"
+"POT-Creation-Date: 2017-01-11 21:15+0100\n"
 "PO-Revision-Date: 2016-01-22 16:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/cs_CZ/)\n"
@@ -43,50 +43,50 @@ msgstr "Větev, ve které budou ukládány alternativní názvy"
 msgid "Temporary mail redirection"
 msgstr "Dočasné přesměrování e-mailů"
 
-#: admin/alias/class_mailAliasRedirection.inc:52
+#: admin/alias/class_mailAliasRedirection.inc:50
 msgid "Mail redirection"
 msgstr "Přesměrování e-mailu"
 
-#: admin/alias/class_mailAliasRedirection.inc:55
-#: admin/alias/class_mailAliasDistribution.inc:56
+#: admin/alias/class_mailAliasRedirection.inc:53
+#: admin/alias/class_mailAliasDistribution.inc:54
 msgid "Name"
 msgstr "Název"
 
-#: admin/alias/class_mailAliasRedirection.inc:55
+#: admin/alias/class_mailAliasRedirection.inc:53
 msgid "Name to identify this redirection"
 msgstr "Název identifikující toto přesměrování"
 
-#: admin/alias/class_mailAliasRedirection.inc:57
-#: admin/alias/class_mailAliasDistribution.inc:58
+#: admin/alias/class_mailAliasRedirection.inc:55
+#: admin/alias/class_mailAliasDistribution.inc:56
 msgid "Description"
 msgstr "Popis"
 
-#: admin/alias/class_mailAliasRedirection.inc:57
+#: admin/alias/class_mailAliasRedirection.inc:55
 msgid "Description of this redirection"
 msgstr "Popis tohoto přesměrování"
 
-#: admin/alias/class_mailAliasRedirection.inc:62
+#: admin/alias/class_mailAliasRedirection.inc:60
 msgid "Redirect from"
 msgstr "Přesměrovat z"
 
-#: admin/alias/class_mailAliasRedirection.inc:62
+#: admin/alias/class_mailAliasRedirection.inc:60
 msgid "Mail address from which you want to redirect"
 msgstr "E-mailová adresa, ze které chcete přesměrovat"
 
-#: admin/alias/class_mailAliasRedirection.inc:68
+#: admin/alias/class_mailAliasRedirection.inc:66
 msgid "Redirect to"
 msgstr "Přesměrovat na"
 
-#: admin/alias/class_mailAliasRedirection.inc:68
+#: admin/alias/class_mailAliasRedirection.inc:66
 msgid "Destination of this redirection"
 msgstr "Cíl tohoto přesměrování"
 
-#: admin/alias/class_mailAliasRedirection.inc:73
-#: admin/alias/class_mailAliasDistribution.inc:77
+#: admin/alias/class_mailAliasRedirection.inc:71
+#: admin/alias/class_mailAliasDistribution.inc:75
 msgid "Expiration date"
 msgstr "Datum skončení platnosti"
 
-#: admin/alias/class_mailAliasRedirection.inc:73
+#: admin/alias/class_mailAliasRedirection.inc:71
 msgid ""
 "Date after which the redirection should be deleted. Leave empty for no "
 "deletion."
@@ -98,39 +98,39 @@ msgstr "Datum, po kterém by mělo být toto přesměrování samočinně smazá
 msgid "Temporary mail distribution"
 msgstr "Dočasná distribuce e-mailů"
 
-#: admin/alias/class_mailAliasDistribution.inc:53
+#: admin/alias/class_mailAliasDistribution.inc:51
 msgid "Mail distribution"
 msgstr "Distribuce e-mailů"
 
-#: admin/alias/class_mailAliasDistribution.inc:56
+#: admin/alias/class_mailAliasDistribution.inc:54
 msgid "Name to identify this alias"
 msgstr "Název identifikující tento alternativní název"
 
-#: admin/alias/class_mailAliasDistribution.inc:58
+#: admin/alias/class_mailAliasDistribution.inc:56
 msgid "Description of this alias"
 msgstr "Popis tohoto alternativního názvu"
 
-#: admin/alias/class_mailAliasDistribution.inc:62
+#: admin/alias/class_mailAliasDistribution.inc:60
 msgid "Email address"
 msgstr "E-mailová adresa"
 
-#: admin/alias/class_mailAliasDistribution.inc:67
+#: admin/alias/class_mailAliasDistribution.inc:65
 msgid "Email aliases"
 msgstr "Alternativní e-mailové adresy"
 
-#: admin/alias/class_mailAliasDistribution.inc:67
+#: admin/alias/class_mailAliasDistribution.inc:65
 msgid "Aliases for this email address"
 msgstr "Alternativa této e-mailové adresy"
 
-#: admin/alias/class_mailAliasDistribution.inc:72
+#: admin/alias/class_mailAliasDistribution.inc:70
 msgid "Mail server"
 msgstr "E-mailový server"
 
-#: admin/alias/class_mailAliasDistribution.inc:72
+#: admin/alias/class_mailAliasDistribution.inc:70
 msgid "Mail server for this alias"
 msgstr "Poštovní server pro tento alternativní název"
 
-#: admin/alias/class_mailAliasDistribution.inc:77
+#: admin/alias/class_mailAliasDistribution.inc:75
 msgid ""
 "Date after which the alias should be deleted. Leave empty for no deletion."
 msgstr "Datum po kterém by měl být alternativní název automaticky smazán. Pro nemazání ponechte nevyplněné."

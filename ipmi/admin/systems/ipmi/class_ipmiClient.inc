@@ -34,7 +34,7 @@ class ipmiClient extends simplePlugin
       'plCategory'      => array('workstation','server'),
       'plObjectType'    => array('workstation','server'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

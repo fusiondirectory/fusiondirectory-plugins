@@ -30,7 +30,7 @@ class faiConfig extends simplePlugin
       'plSelfModify'    => FALSE,
       'plObjectType'    => array('configuration'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

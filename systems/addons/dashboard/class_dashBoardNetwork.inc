@@ -21,12 +21,12 @@
 
 class dashboardNetwork extends simplePlugin
 {
-  /* Return plugin informations for acl handling  */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Network'),
-      'plDescription' => _('Statistics and various informations'),
+      'plDescription' => _('Statistics and various information'),
       'plObjectType'  => array('dashboard'),
 
       'plProvidedAcls'    => array()

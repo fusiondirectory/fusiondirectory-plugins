@@ -21,7 +21,7 @@
 
 class SSHPublicKeyAttribute extends FileTextAreaAttribute
 {
-  /* cache for key extracted informations */
+  /* cache for key extracted information */
   protected $format = '/^([-[:alnum:]=",]+\s+)?(disabled-)?(ssh-(dss|rsa)|ecdsa-sha2-nistp\d{3})\s+([[:alnum:]+\/.=]+)(\s+([[:graph:][:space:]]+))?\s*$/';
 
   function getArrayValue ()
@@ -106,7 +106,7 @@ class sshAccount extends simplePlugin
       'plIcon'          => 'geticon.php?context=applications&icon=ssh&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=ssh&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

@@ -62,8 +62,10 @@ class systemSimplePluginGlue extends simplePlugin
 
   protected function attributeHaveChanged($field)
   {
-    if (($field == 'ipHostNumber') || ($field == 'macAddress')) {
+    if ($field == 'ipHostNumber') {
       return array_differs($this->attributeInitialValue($field), $this->attributeValue($field));
+    } elseif ($field == 'macAddress') {
+      return ($this->attributeInitialValue($field) != $this->attributeValue($field));
     } else {
       return parent::attributeHaveChanged($field);
     }
@@ -80,12 +82,19 @@ class systemSimplePluginGlue extends simplePlugin
 
   protected function attributeInitialValue($field)
   {
-    if (($field == 'ipHostNumber') || ($field == 'macAddress')) {
+    if ($field == 'ipHostNumber') {
       $initialValue = $this->previousNetworkSavedAttributes[$field];
       if (is_array($initialValue)) {
         return $initialValue;
       } else {
         return array($initialValue);
+      }
+    } elseif ($field == 'macAddress') {
+      $initialValue = $this->previousNetworkSavedAttributes[$field];
+      if (is_array($initialValue)) {
+        return $initialValue[0];
+      } else {
+        return $initialValue;
       }
     } else {
       return parent::attributeInitialValue($field);
@@ -111,7 +120,7 @@ class workstationGeneric extends systemSimplePluginGlue
 
   var $preInitAttributes = array('cn', 'networkSettings');
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
@@ -128,7 +137,7 @@ class workstationGeneric extends systemSimplePluginGlue
           'mainAttr'    => 'cn',
         )
       ),
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

@@ -29,7 +29,7 @@ class serviceDovecot extends simpleService
       'plDescription'   => _('Dovecot (IMAP/POP3)').' ('._('Services').')',
       'plIcon'          => 'geticon.php?context=applications&icon=dovecot&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -103,12 +103,15 @@ class serviceDovecot extends simpleService
     );
   }
 
+  function save()
+  {
+    parent::save();
+  }
+
   protected function post_save()
   {
     parent::post_save();
-    if (!$this->initially_was_account) {
-      mailMethod::resetMailServersCache();
-    }
+    mailMethod::resetMailServersCache();
   }
 
   protected function post_remove ()

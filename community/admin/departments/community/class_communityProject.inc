@@ -30,7 +30,7 @@ class communityProject extends communityOrganization
       'plDescription'   => _('Community project dates and alternate address'),
       'plObjectType'    => array('department'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

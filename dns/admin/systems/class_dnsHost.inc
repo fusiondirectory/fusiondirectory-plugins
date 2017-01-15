@@ -78,7 +78,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     }
     $ips    = $this->plugin->parent->getBaseObject()->ipHostNumber;
     $cn     = preg_replace('/\$$/', '', $this->plugin->parent->getBaseObject()->cn);
-    if (in_array($values[2], $ips) || ($values[0] == $cn) || preg_match('/'.preg_quote($cn.'.'.$this->getZoneName(), '/').'/', $value[2])) {
+    if (in_array($values[2], $ips) || ($values[0] == $cn) || preg_match('/'.preg_quote($cn.'.'.$this->getZoneName(), '/i').'/', $value[2])) {
       return $values;
     } else {
       return array();
@@ -128,7 +128,7 @@ class dnsHost extends simplePlugin
         'fdDNSZoneDn' => 'dnsZone'
       ),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -266,13 +266,13 @@ class dnsHost extends simplePlugin
           if ($this->parent->by_object['argonautClient']->is_account) {
             $s_daemon = new supportDaemon();
             if ($s_daemon->is_error()) {
-              msg_dialog::display(_('Could not get run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+              msg_dialog::display(_('Could not run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
               );
             } else {
               $target = array($this->parent->getBaseObject()->macAddress);
               $res    = $s_daemon->append_call('Ldap2Zone.start', $target, array('args' => array($zone)));
               if ($s_daemon->is_error()) {
-                msg_dialog::display(_('Could not get run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG);
+                msg_dialog::display(_('Could not run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG);
               } else {
                 msg_dialog::display(_('Ldap2zone'), sprintf(_('Ldap2Zone called for zone "%s"'), $zone), INFO_DIALOG);
               }

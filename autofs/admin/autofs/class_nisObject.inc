@@ -24,7 +24,7 @@ class nisObject extends simplePlugin
 
   var $objectclasses  = array('nisObject');
 
-  /* Return plugin informations for acl handling  */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
@@ -43,7 +43,7 @@ class nisObject extends simplePlugin
         ),
       ),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

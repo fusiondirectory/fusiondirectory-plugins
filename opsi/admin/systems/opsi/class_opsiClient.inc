@@ -35,7 +35,7 @@ class opsiClient extends simplePlugin
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('winstation', 'ogroup-dynamic'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -102,7 +102,7 @@ class opsiClient extends simplePlugin
           $s_daemon->append_call('OPSI.delete', array($serverMac), array('args' => array($macAddresses)));
           if ($s_daemon->is_error()) {
             msg_dialog::display(
-              _('Could not remove OPSI informations'),
+              _('Could not remove OPSI information'),
               msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
             );
           }
@@ -147,7 +147,7 @@ class opsiClient extends simplePlugin
       $res = $s_daemon->append_call('OPSI.update_or_insert', $macAddresses, array());
       if ($s_daemon->is_error()) {
         msg_dialog::display(
-          _('Could not update OPSI informations'),
+          _('Could not update OPSI information'),
           msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
         );
       }
@@ -157,7 +157,7 @@ class opsiClient extends simplePlugin
   function remove_from_parent()
   {
     if ($this->member_of_group) {
-      // If the winstation is member of an ogroup which has OPSI activated, we must update_or_insert informations
+      // If the winstation is member of an ogroup which has OPSI activated, we must update_or_insert information
       // We have to call this in here because save won't be called as is_account is FALSE
       $this->update_or_insert();
     }
@@ -190,7 +190,7 @@ class opsiClient extends simplePlugin
         $res = $s_daemon->append_call('OPSI.delete', $macAddresses, array());
         if ($s_daemon->is_error()) {
           msg_dialog::display(
-            _('Could not remove OPSI informations'),
+            _('Could not remove OPSI information'),
             msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
           );
         }

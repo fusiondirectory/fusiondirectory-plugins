@@ -24,7 +24,7 @@ class entite extends simplePlugin
 
   var $mainTab = TRUE;
 
-  /* Return plugin informations */
+  /* Return plugin information */
   static function plInfo()
   {
     return array(
@@ -40,7 +40,7 @@ class entite extends simplePlugin
         'nameAttr'    => 'ou',
       )),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -58,7 +58,7 @@ class entite extends simplePlugin
         )
       ),
       'admin' => array(
-        'name'  => _('Administrative informations'),
+        'name'  => _('Administrative information'),
         'attrs' => array(
           new StringAttribute(
             _('Telephone'), _('Phone number for this entity'),
@@ -79,7 +79,7 @@ class entite extends simplePlugin
         )
       ),
       'supann' => array(
-        'name'  => _('SUPANN informations'),
+        'name'  => _('SUPANN information'),
         'attrs' => array(
           new SelectAttribute(
             _('Entity type'), _('The best SUPANN type that fits this entity'),

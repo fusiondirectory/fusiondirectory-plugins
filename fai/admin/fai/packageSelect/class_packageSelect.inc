@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -20,20 +19,26 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class packageSelect extends management
+class packageSelect extends simpleSelectManagement
 {
-  protected $skipFooter = TRUE;
-  protected $skipHeader = TRUE;
+  protected $objectTypes  = array();
+  protected $autoFilter   = FALSE;
+
+  protected $departmentBrowser      = FALSE;
+  protected $departmentRootVisible  = FALSE;
+  protected $baseMode               = FALSE;
 
   function __construct()
   {
-    $filter = new filterFAIcustoms(get_template_path("selectPackage-filter.xml", TRUE, dirname(__FILE__)));
-    $this->setFilter($filter);
+    $this->filterXMLPath  = get_template_path('selectPackage-filter.xml', TRUE, dirname(__FILE__));
+    $this->listXMLPath    = get_template_path('selectPackage-list.xml',   TRUE, dirname(__FILE__));
 
-    // Build headpage
-    $headpage = new listing(get_template_path("selectPackage-list.xml", TRUE, dirname(__FILE__)));
-    $headpage->setFilter($filter);
-    parent::__construct("FAI-packages", $headpage);
+    if (!session::global_is_set(get_class($this).'_filter')) {
+      $filter = new filterFAIcustoms($this->filterXMLPath);
+      session::global_set(get_class($this).'_filter', $filter);
+    }
+
+    parent::__construct();
   }
 
   function save()
@@ -47,7 +52,5 @@ class packageSelect extends management
     }
     return $ret;
   }
-
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

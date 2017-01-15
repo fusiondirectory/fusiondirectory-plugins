@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-11-02 23:08+0100\n"
+"POT-Creation-Date: 2017-01-11 21:15+0100\n"
 "PO-Revision-Date: 2016-01-22 16:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Swedish (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/sv/)\n"
@@ -43,50 +43,50 @@ msgstr "Gren där alias ska lagras"
 msgid "Temporary mail redirection"
 msgstr "Temporär omdirigering för epost"
 
-#: admin/alias/class_mailAliasRedirection.inc:52
+#: admin/alias/class_mailAliasRedirection.inc:50
 msgid "Mail redirection"
 msgstr "Epost-omdirigering"
 
-#: admin/alias/class_mailAliasRedirection.inc:55
-#: admin/alias/class_mailAliasDistribution.inc:56
+#: admin/alias/class_mailAliasRedirection.inc:53
+#: admin/alias/class_mailAliasDistribution.inc:54
 msgid "Name"
 msgstr "Namn"
 
-#: admin/alias/class_mailAliasRedirection.inc:55
+#: admin/alias/class_mailAliasRedirection.inc:53
 msgid "Name to identify this redirection"
 msgstr "Namn för att identifiera omdirigeringen"
 
-#: admin/alias/class_mailAliasRedirection.inc:57
-#: admin/alias/class_mailAliasDistribution.inc:58
+#: admin/alias/class_mailAliasRedirection.inc:55
+#: admin/alias/class_mailAliasDistribution.inc:56
 msgid "Description"
 msgstr "Beskrivning"
 
-#: admin/alias/class_mailAliasRedirection.inc:57
+#: admin/alias/class_mailAliasRedirection.inc:55
 msgid "Description of this redirection"
 msgstr "Beskrivning av omdirigeringen"
 
-#: admin/alias/class_mailAliasRedirection.inc:62
+#: admin/alias/class_mailAliasRedirection.inc:60
 msgid "Redirect from"
 msgstr "Omdirigera från"
 
-#: admin/alias/class_mailAliasRedirection.inc:62
+#: admin/alias/class_mailAliasRedirection.inc:60
 msgid "Mail address from which you want to redirect"
 msgstr "Epostadress från vilken du vill omdirigera"
 
-#: admin/alias/class_mailAliasRedirection.inc:68
+#: admin/alias/class_mailAliasRedirection.inc:66
 msgid "Redirect to"
 msgstr "Omdirigera till"
 
-#: admin/alias/class_mailAliasRedirection.inc:68
+#: admin/alias/class_mailAliasRedirection.inc:66
 msgid "Destination of this redirection"
 msgstr "Destination för omdirigeringen"
 
-#: admin/alias/class_mailAliasRedirection.inc:73
-#: admin/alias/class_mailAliasDistribution.inc:77
+#: admin/alias/class_mailAliasRedirection.inc:71
+#: admin/alias/class_mailAliasDistribution.inc:75
 msgid "Expiration date"
 msgstr "Utgångsdatum"
 
-#: admin/alias/class_mailAliasRedirection.inc:73
+#: admin/alias/class_mailAliasRedirection.inc:71
 msgid ""
 "Date after which the redirection should be deleted. Leave empty for no "
 "deletion."
@@ -98,39 +98,39 @@ msgstr "Datum då omdirigeringen ska tas bort. Lämna tomt för att inte ta bort
 msgid "Temporary mail distribution"
 msgstr "Temporär epostdistribution"
 
-#: admin/alias/class_mailAliasDistribution.inc:53
+#: admin/alias/class_mailAliasDistribution.inc:51
 msgid "Mail distribution"
 msgstr "Epost-distribution"
 
-#: admin/alias/class_mailAliasDistribution.inc:56
+#: admin/alias/class_mailAliasDistribution.inc:54
 msgid "Name to identify this alias"
 msgstr "Namn för att att identifiera detta alias"
 
-#: admin/alias/class_mailAliasDistribution.inc:58
+#: admin/alias/class_mailAliasDistribution.inc:56
 msgid "Description of this alias"
 msgstr "Beskrivning av alias"
 
-#: admin/alias/class_mailAliasDistribution.inc:62
+#: admin/alias/class_mailAliasDistribution.inc:60
 msgid "Email address"
 msgstr "Epostadress"
 
-#: admin/alias/class_mailAliasDistribution.inc:67
+#: admin/alias/class_mailAliasDistribution.inc:65
 msgid "Email aliases"
 msgstr "Epostalias"
 
-#: admin/alias/class_mailAliasDistribution.inc:67
+#: admin/alias/class_mailAliasDistribution.inc:65
 msgid "Aliases for this email address"
 msgstr "Alias för denna epostadress"
 
-#: admin/alias/class_mailAliasDistribution.inc:72
+#: admin/alias/class_mailAliasDistribution.inc:70
 msgid "Mail server"
 msgstr "Epostserver"
 
-#: admin/alias/class_mailAliasDistribution.inc:72
+#: admin/alias/class_mailAliasDistribution.inc:70
 msgid "Mail server for this alias"
 msgstr ""
 
-#: admin/alias/class_mailAliasDistribution.inc:77
+#: admin/alias/class_mailAliasDistribution.inc:75
 msgid ""
 "Date after which the alias should be deleted. Leave empty for no deletion."
 msgstr "Datum efter vilket alias ska tas bort. Lämna tomt för att inte ta bort aliaset."

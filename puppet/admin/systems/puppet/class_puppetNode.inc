@@ -64,7 +64,7 @@ class puppetNode extends simplePlugin
       "plDescription"     => _("Support for puppet schema in order to edit puppet classes and puppet vars"),
       "plSelfModify"      => FALSE,
       "plObjectType"      => array("server", "workstation"),
-      "plProvidedAcls"    => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      "plProvidedAcls"    => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

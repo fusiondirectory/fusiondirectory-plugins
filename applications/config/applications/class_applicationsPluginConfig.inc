@@ -29,7 +29,7 @@ class applicationsPluginConfig extends simplePlugin
       'plDescription'   => _('Applications plugin configuration'),
       'plObjectType'    => array('smallConfig'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

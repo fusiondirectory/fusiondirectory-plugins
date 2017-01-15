@@ -33,7 +33,7 @@ class webLink extends simplePlugin
       'plSelfModify'    => FALSE,
       'plObjectType'    => array('workstation','server','ipmi','component','printer'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

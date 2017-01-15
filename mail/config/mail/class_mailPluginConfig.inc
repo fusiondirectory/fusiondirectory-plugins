@@ -30,7 +30,7 @@ class mailPluginConfig extends simplePlugin
       "plPriority"      => 3,
       "plObjectType"    => array("configuration"),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

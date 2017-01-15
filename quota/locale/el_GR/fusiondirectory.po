@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-11-02 23:08+0100\n"
-"PO-Revision-Date: 2016-01-22 16:05+0000\n"
+"POT-Creation-Date: 2017-01-11 21:15+0100\n"
+"PO-Revision-Date: 2016-12-31 10:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
@@ -27,15 +27,15 @@ msgid "Plugin for quota support"
 msgstr "Πρόσθετο για την υποστήριξη ορίων"
 
 #: personal/quota/class_quotaAccount.inc:120
-msgid "Quota informations"
-msgstr "Πληροφορίες ορίων"
+msgid "Quota information"
+msgstr ""
 
 #: personal/quota/class_quotaAccount.inc:125
-msgid "Quota informations for this user"
-msgstr "Πληροφορίες ορίων αυτού του χρήστη"
+msgid "Quota information for this user"
+msgstr ""
 
 #: personal/quota/class_quotaAccount.inc:129
-#: admin/systems/services/quota/class_serviceQuota.inc:51
+#: admin/systems/services/quota/class_serviceQuota.inc:50
 msgid "Device"
 msgstr "Συσκευή"
 
@@ -83,149 +83,149 @@ msgstr "Διακομιστής"
 msgid "Server hosting the device this quota is for"
 msgstr "Ο διακομιστής που έχει τη συσκευή που αφορά αυτό το όριο"
 
+#: admin/systems/services/quota/class_serviceQuota.inc:29
 #: admin/systems/services/quota/class_serviceQuota.inc:30
-#: admin/systems/services/quota/class_serviceQuota.inc:31
 msgid "Quota service"
 msgstr "Υπηρεσία ορίων"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:31
+#: admin/systems/services/quota/class_serviceQuota.inc:30
 msgid "Services"
 msgstr "Υπηρεσίες"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:43
+#: admin/systems/services/quota/class_serviceQuota.inc:42
 msgid "Shares"
 msgstr "Κοινόχρηστοι πόροι"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:47
+#: admin/systems/services/quota/class_serviceQuota.inc:46
 msgid "Quotas for the shares this server hosts"
 msgstr "Όρια κοινόχρηστων πόρων που παρέχει αυτός ο διακομιστής"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:51
+#: admin/systems/services/quota/class_serviceQuota.inc:50
 msgid "Device concerned by this quota"
 msgstr "Συσκευή που αφορά αυτό το όριο"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:55
+#: admin/systems/services/quota/class_serviceQuota.inc:54
 msgid "Quota block size"
 msgstr "Μέγεθος πακέτου ορίου"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:55
+#: admin/systems/services/quota/class_serviceQuota.inc:54
 msgid "Quota block size on this share (usually 1024)"
 msgstr "Το μέγεθος πακέτου του ορίου αυτού του κοινόχρηστου πόρου (συνήθως 1024)"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:60
+#: admin/systems/services/quota/class_serviceQuota.inc:63
 msgid "Comment"
 msgstr "Σχόλιο"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:60
+#: admin/systems/services/quota/class_serviceQuota.inc:63
 msgid "Short comment about this quota"
 msgstr "Μικρό σχόλιο σχετικά με αυτό το όριο"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:73
+#: admin/systems/services/quota/class_serviceQuota.inc:76
 msgid "Quota warning message"
 msgstr "Προειδοποιητικό μήνυμα του ορίου"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:76
+#: admin/systems/services/quota/class_serviceQuota.inc:79
 msgid "Charset"
 msgstr "Σύνολο χαρακτήρων"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:76
+#: admin/systems/services/quota/class_serviceQuota.inc:79
 msgid "Charset use for the message"
 msgstr "Το σύνολο χαρακτήρων που χρησιμοποιείται σε αυτό το μήνυμα"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:80
+#: admin/systems/services/quota/class_serviceQuota.inc:83
 msgid "Mail command"
 msgstr "Εντολή αποστολής mail"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:80
+#: admin/systems/services/quota/class_serviceQuota.inc:83
 msgid "Command allowing the server to send mails"
 msgstr "Εντολή που επιτρέπει στον διακομιστή να στέλνει mail"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:84
+#: admin/systems/services/quota/class_serviceQuota.inc:87
 msgid "Support contact"
 msgstr "Επαφή υποστήριξης"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:84
+#: admin/systems/services/quota/class_serviceQuota.inc:87
 msgid "Email address to contact the administrator"
 msgstr "Ηλ. διεύθυνση γιαεπαφή με τον διαχειριστή"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:88
+#: admin/systems/services/quota/class_serviceQuota.inc:91
 msgid "From"
 msgstr "Από"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:88
+#: admin/systems/services/quota/class_serviceQuota.inc:91
 msgid "Email from which the email is sent"
 msgstr "Ηλ. διεύθυνση αποστολέα"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:92
+#: admin/systems/services/quota/class_serviceQuota.inc:95
 msgid "CC"
 msgstr "Αντίγραφο σε"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:92
+#: admin/systems/services/quota/class_serviceQuota.inc:95
 msgid "Send a copy of this email to"
 msgstr "Αποστολή αντιγράφου αυτού του μηνύματος σε"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:96
+#: admin/systems/services/quota/class_serviceQuota.inc:99
 msgid "Subject"
 msgstr "Θέμα"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:96
+#: admin/systems/services/quota/class_serviceQuota.inc:99
 msgid "Subject of the sent warning email"
 msgstr "Θέμα του προειδοποιητικού ηλ. μηνύματος"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:100
+#: admin/systems/services/quota/class_serviceQuota.inc:103
 msgid "Content"
 msgstr "Περιεχόμενο"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:100
+#: admin/systems/services/quota/class_serviceQuota.inc:103
 msgid "Content of the sent email"
 msgstr "Περιεχόμενο του ηλ. μηνύματος"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:104
+#: admin/systems/services/quota/class_serviceQuota.inc:107
 msgid "Signature"
 msgstr "Υπογραφή"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:104
+#: admin/systems/services/quota/class_serviceQuota.inc:107
 msgid "Signature to put at the end of the mail"
 msgstr "Υπογραφή που θα τεθεί στο τέλος του ηλ. μηνύματος"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:110
+#: admin/systems/services/quota/class_serviceQuota.inc:113
 msgid "LDAP message support"
 msgstr "LDAP για την υποστήριξη μηνυμάτων"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:113
+#: admin/systems/services/quota/class_serviceQuota.inc:116
 msgid "LDAP server"
 msgstr "Διακομιστής LDAP"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:113
+#: admin/systems/services/quota/class_serviceQuota.inc:116
 msgid "The LDAP server to bind to"
 msgstr "Ο διακομιστής LDAP που θα γίνει η σύνδεση"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:117
+#: admin/systems/services/quota/class_serviceQuota.inc:120
 msgid "Bind user dn"
 msgstr "dn αναγνωριστικό σύνδεσης"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:117
+#: admin/systems/services/quota/class_serviceQuota.inc:120
 msgid "The user dn to use for bind"
 msgstr "Το dn αναγνωριστικό χρήστη που χρησιμοποιείται για τη σύνδεση"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:121
+#: admin/systems/services/quota/class_serviceQuota.inc:124
 msgid "Bind user password"
 msgstr "Κωδικός σύνδεσης"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:121
+#: admin/systems/services/quota/class_serviceQuota.inc:124
 msgid "The password of the user used for bind"
 msgstr "Ο κωδικός χρήστη που χρησιμοποιείται για τη σύνδεση"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:154
+#: admin/systems/services/quota/class_serviceQuota.inc:157
 msgid "Warning"
 msgstr "Προειδοποίηση"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:154
+#: admin/systems/services/quota/class_serviceQuota.inc:157
 #, php-format
 msgid "Invalid value in encodings : %s"
 msgstr "Μη έγκυρη τιμή στις κωδικοποιήσεις: %s"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:171
+#: admin/systems/services/quota/class_serviceQuota.inc:174
 #, php-format
 msgid "(%s by %s)"
 msgstr "(%s by %s)"

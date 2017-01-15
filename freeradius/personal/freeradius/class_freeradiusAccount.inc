@@ -40,7 +40,7 @@ class freeradiusAccount extends simplePlugin {
       'plPriority'    => 11,
       'plObjectType'  => array('user'),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

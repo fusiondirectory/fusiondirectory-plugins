@@ -292,7 +292,7 @@ class faiPartitionTable extends faiSimplePluginClass
         )
       ),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

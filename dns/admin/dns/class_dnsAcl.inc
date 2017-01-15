@@ -36,7 +36,7 @@ class dnsAcl extends simplePlugin
         'icon'        => 'geticon.php?context=categories&icon=acl&size=16'
       )),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

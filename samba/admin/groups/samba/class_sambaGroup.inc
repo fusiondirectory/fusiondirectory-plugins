@@ -31,7 +31,7 @@ class sambaGroup extends simplePlugin
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('group'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -46,7 +46,7 @@ class sambaGroup extends simplePlugin
             'sambaDomainName', TRUE
           ),
           new CompositeAttribute(
-            _('Samba informations'),
+            _('Samba information'),
             'sambaSID',
             array(
               new HiddenAttribute(

@@ -25,7 +25,7 @@ class serverGeneric extends workstationGeneric
 
   var $inheritance = FALSE;
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
@@ -42,7 +42,7 @@ class serverGeneric extends workstationGeneric
           'tabClass'    => 'servtabs',
         )
       ),
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

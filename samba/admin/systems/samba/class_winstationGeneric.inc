@@ -30,7 +30,7 @@ class winstationGeneric extends systemSimplePluginGlue
 
   var $preInitAttributes = array('uid', 'cn', 'networkSettings');
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
@@ -47,7 +47,7 @@ class winstationGeneric extends systemSimplePluginGlue
         )
       ),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-11-02 23:08+0100\n"
-"PO-Revision-Date: 2016-11-02 22:09+0000\n"
+"POT-Creation-Date: 2017-01-11 21:15+0100\n"
+"PO-Revision-Date: 2016-12-31 10:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
@@ -21,13 +21,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: addons/dashboard/class_dashBoardNetwork.inc:28
-#: admin/systems/class_networkSettings.inc:324
+#: admin/systems/class_networkSettings.inc:319
 msgid "Network"
 msgstr "Δίκτυο"
 
 #: addons/dashboard/class_dashBoardNetwork.inc:29
-msgid "Statistics and various informations"
-msgstr "Στατιστικά και ποικίλες πληροφορίες"
+msgid "Statistics and various information"
+msgstr ""
 
 #: addons/dashboard/class_dashBoardNetwork.inc:40
 msgid "DHCP"
@@ -37,55 +37,54 @@ msgstr ""
 msgid "DNS"
 msgstr "DNS"
 
-#: addons/dashboard/class_dashBoardSystems.inc:31
+#: addons/dashboard/class_dashBoardSystems.inc:29
 #: config/systems/class_systemsPluginConfig.inc:28
-#: admin/systems/class_systemManagement.inc:694
-#: admin/systems/class_systemManagement.inc:698
+#: admin/systems/class_systemManagement.inc:699
+#: admin/systems/class_systemManagement.inc:703
 msgid "Systems"
 msgstr "Systems"
 
-#: addons/dashboard/class_dashBoardSystems.inc:32
-msgid "Statistics and informations about systems"
-msgstr "Στατιστικά και πληροφορίες για το systems"
+#: addons/dashboard/class_dashBoardSystems.inc:30
+msgid "Statistics and information about systems"
+msgstr ""
 
-#: addons/dashboard/class_dashBoardSystems.inc:43
+#: addons/dashboard/class_dashBoardSystems.inc:41
 msgid "Statistics"
 msgstr "Στατιστικά"
 
-#: addons/dashboard/class_dashBoardSystems.inc:48
+#: addons/dashboard/class_dashBoardSystems.inc:46
 msgid "Computer name to use by unit"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardSystems.inc:74
+#: addons/dashboard/class_dashBoardSystems.inc:72
 msgid "Workstations"
 msgstr "Σταθμοί εργασίας"
 
-#: addons/dashboard/class_dashBoardSystems.inc:77
-#: admin/systems/class_terminalGeneric.inc:62
+#: addons/dashboard/class_dashBoardSystems.inc:75
 msgid "Servers"
 msgstr "Εξυπηρετητών"
 
-#: addons/dashboard/class_dashBoardSystems.inc:80
+#: addons/dashboard/class_dashBoardSystems.inc:78
 msgid "Windows Workstations"
 msgstr "Σταθμοί εργασίας Windows"
 
-#: addons/dashboard/class_dashBoardSystems.inc:83
+#: addons/dashboard/class_dashBoardSystems.inc:81
 msgid "Terminals"
 msgstr "Τερματικά"
 
-#: addons/dashboard/class_dashBoardSystems.inc:86
+#: addons/dashboard/class_dashBoardSystems.inc:84
 msgid "Printers"
 msgstr "Εκτυπωτές"
 
-#: addons/dashboard/class_dashBoardSystems.inc:89
+#: addons/dashboard/class_dashBoardSystems.inc:87
 msgid "Phones"
 msgstr "Τηλέφωνα"
 
-#: addons/dashboard/class_dashBoardSystems.inc:92
+#: addons/dashboard/class_dashBoardSystems.inc:90
 msgid "Components"
 msgstr "Συστατικά στοιχεία"
 
-#: addons/dashboard/class_dashBoardSystems.inc:95
+#: addons/dashboard/class_dashBoardSystems.inc:93
 msgid "Mobile phones"
 msgstr "Κινητά τηλέφωνα"
 
@@ -198,21 +197,21 @@ msgid "Locked"
 msgstr "Κλειδωμένο"
 
 #: admin/ogroups/goto/class_termgroup.inc:102
-#: admin/systems/class_terminalGeneric.inc:126
+#: admin/systems/class_terminalStartup.inc:120
 msgid "Local swap"
 msgstr "Τοπικό swap"
 
 #: admin/ogroups/goto/class_termgroup.inc:108
 #: admin/ogroups/goto/class_termgroup.inc:120
-#: admin/systems/class_terminalGeneric.inc:114
-#: admin/systems/class_terminalGeneric.inc:130
+#: admin/systems/class_terminalStartup.inc:112
+#: admin/systems/class_terminalStartup.inc:123
 msgid "inherited"
 msgstr "κληρονομημένα"
 
 #: admin/ogroups/goto/class_termgroup.inc:187
-#: admin/systems/class_workstationGeneric.inc:275
-#: admin/systems/class_systemManagement.inc:182
-#: admin/systems/class_systemManagement.inc:206
+#: admin/systems/class_workstationGeneric.inc:284
+#: admin/systems/class_systemManagement.inc:189
+#: admin/systems/class_systemManagement.inc:213
 msgid "Infrastructure service"
 msgstr "Υπηρεσία υποδομής"
 
@@ -258,7 +257,7 @@ msgid "System analysis"
 msgstr "Ανάλυση συστήματος"
 
 #: admin/ogroups/goto/class_termgroup.inc:293
-#: admin/systems/class_networkSettings.inc:314
+#: admin/systems/class_networkSettings.inc:310
 msgid "LDAP error"
 msgstr "Σφάλμα LDAP"
 
@@ -280,13 +279,13 @@ msgid "Action flag"
 msgstr "Σημαία ενέργειας"
 
 #: admin/ogroups/goto/class_termgroup.inc:310
-#: admin/systems/class_terminalGeneric.inc:66
+#: admin/systems/class_terminalStartup.inc:53
 #: admin/ogroups/goto/termgroup.tpl.c:17
 msgid "Root server"
 msgstr "Εξυπηρετητής Root"
 
 #: admin/ogroups/goto/class_termgroup.inc:311
-#: admin/systems/class_terminalGeneric.inc:72
+#: admin/systems/class_terminalStartup.inc:57
 #: admin/ogroups/goto/termgroup.tpl.c:23
 msgid "Swap server"
 msgstr "Εξυπηρετητής Swap"
@@ -322,8 +321,8 @@ msgstr "!"
 #: admin/systems/serverService-list.xml:35
 #: admin/systems/class_componentGeneric.inc:67
 #: admin/systems/class_mobilePhoneGeneric.inc:67
-#: admin/systems/class_workstationGeneric.inc:157
-#: admin/systems/services/shares/class_serviceShare.inc:56
+#: admin/systems/class_workstationGeneric.inc:166
+#: admin/systems/services/shares/class_serviceShare.inc:55
 #: admin/systems/system-list.xml:144 admin/systems/class_phoneGeneric.inc:63
 #: admin/systems/class_printGeneric.inc:66
 msgid "Description"
@@ -365,29 +364,29 @@ msgstr "Επεξεργασία υπηρεσίας"
 msgid "Remove service"
 msgstr "Αφαίρεση υπηρεσίας"
 
-#: admin/systems/class_networkSettings.inc:242
+#: admin/systems/class_networkSettings.inc:240
 #, php-format
 msgid "IP address %s"
 msgstr "Διεύθυνση IP %s"
 
-#: admin/systems/class_networkSettings.inc:250
+#: admin/systems/class_networkSettings.inc:248
+#: admin/systems/class_networkSettings.inc:254
 #: admin/systems/class_networkSettings.inc:256
-#: admin/systems/class_networkSettings.inc:258
-#: admin/systems/class_networkSettings.inc:331
+#: admin/systems/class_networkSettings.inc:326
 #: admin/systems/class_printGeneric.inc:108
 msgid "IP address"
 msgstr "Διεύθυνση IP"
 
+#: admin/systems/class_networkSettings.inc:263
 #: admin/systems/class_networkSettings.inc:265
-#: admin/systems/class_networkSettings.inc:267
-#: admin/systems/class_networkSettings.inc:332
+#: admin/systems/class_networkSettings.inc:327
 msgid "MAC address"
 msgstr "Διεύθυνση MAC"
 
-#: admin/systems/class_networkSettings.inc:325
+#: admin/systems/class_networkSettings.inc:320
 #: admin/systems/class_componentGeneric.inc:74
 #: admin/systems/class_mobilePhoneGeneric.inc:106
-#: admin/systems/class_workstationGeneric.inc:182
+#: admin/systems/class_workstationGeneric.inc:191
 #: admin/systems/class_phoneGeneric.inc:83
 #: admin/systems/class_printGeneric.inc:103
 msgid "Network settings"
@@ -410,7 +409,7 @@ msgstr "Συσκευή δικτύου:"
 
 #: admin/systems/class_componentGeneric.inc:60
 #: admin/systems/class_mobilePhoneGeneric.inc:60
-#: admin/systems/class_workstationGeneric.inc:148
+#: admin/systems/class_workstationGeneric.inc:157
 #: admin/systems/class_phoneGeneric.inc:56
 #: admin/systems/class_printGeneric.inc:58
 msgid "Properties"
@@ -418,8 +417,8 @@ msgstr "Ιδιότητες"
 
 #: admin/systems/class_componentGeneric.inc:63
 #: admin/systems/class_mobilePhoneGeneric.inc:63
-#: admin/systems/class_workstationGeneric.inc:151
-#: admin/systems/services/shares/class_serviceShare.inc:52
+#: admin/systems/class_workstationGeneric.inc:160
+#: admin/systems/services/shares/class_serviceShare.inc:51
 #: admin/systems/system-list.xml:120 admin/systems/class_phoneGeneric.inc:59
 #: admin/systems/class_printGeneric.inc:62
 #: admin/systems/system-filter.tpl.c:29
@@ -507,37 +506,66 @@ msgstr "Αριθμός PUK "
 msgid "The PUK number of the simcard in this mobile phone"
 msgstr "Ο αριθμός PUK  της sim σε αυτό το κινητό"
 
-#: admin/systems/class_terminalStartup.inc:63
-msgid "Startup parameters"
-msgstr "Παράμετροι εκκίνησης"
-
-#: admin/systems/class_terminalStartup.inc:66
-msgid "Boot kernel"
-msgstr "Boot kernel"
-
-#: admin/systems/class_terminalStartup.inc:66
-msgid "Linux kernel to be installed and booted"
-msgstr "Ο πυρήνας Linux που θα εγκατασταθεί και θα εκκινηθεί"
-
-#: admin/systems/class_terminalStartup.inc:70
-msgid "Boot kernel parameters"
-msgstr "Παράμετροι εκκίνησης πυρήνα"
-
-#: admin/systems/class_terminalStartup.inc:70
-msgid "Linux kernel parameters to be ran"
-msgstr "Παράμετροι πυρήνα Linux για εκτέλεση"
-
-#: admin/systems/class_terminalStartup.inc:82
+#: admin/systems/class_terminalStartup.inc:32
 msgid "Startup"
 msgstr "Εκκίνηση"
 
-#: admin/systems/class_terminalStartup.inc:83
+#: admin/systems/class_terminalStartup.inc:33
 msgid "Terminal startup"
 msgstr "Εκκίνηση τερματικού"
 
+#: admin/systems/class_terminalStartup.inc:50
+msgid "Startup parameters"
+msgstr "Παράμετροι εκκίνησης"
+
+#: admin/systems/class_terminalStartup.inc:53
+msgid "The root server the terminal should be using"
+msgstr "Ο εξυπηρετητής root που θα πρέπει να χρησιμοποιεί το τερματικό"
+
+#: admin/systems/class_terminalStartup.inc:57
+msgid "The swap server the terminal should be using"
+msgstr "Ο εξυπηρετητής swap που θα πρέπει να χρησιμοποιεί το τερματικό"
+
+#: admin/systems/class_terminalStartup.inc:63
+msgid "Remote desktop"
+msgstr "Απομακρυσμένη επιφάνεια εργασίας"
+
+#: admin/systems/class_terminalStartup.inc:67
+msgid "Connect method"
+msgstr "Μέθοδος σύνδεσης"
+
+#: admin/systems/class_terminalStartup.inc:71
+#: admin/systems/services/terminal/class_serviceTerminal.inc:59
+msgid "XDMCP"
+msgstr "XDMCP"
+
+#: admin/systems/class_terminalStartup.inc:71
+#: admin/systems/services/terminal/class_serviceTerminal.inc:59
+msgid "LDM"
+msgstr "LDM"
+
+#: admin/systems/class_terminalStartup.inc:71
+#: admin/systems/services/terminal/class_serviceTerminal.inc:59
+msgid "Shell"
+msgstr "Κέλυφος"
+
+#: admin/systems/class_terminalStartup.inc:71
+#: admin/systems/services/terminal/class_serviceTerminal.inc:59
+msgid "Telnet"
+msgstr "Telnet"
+
+#: admin/systems/class_terminalStartup.inc:71
+#: admin/systems/services/terminal/class_serviceTerminal.inc:59
+msgid "Windows RDP"
+msgstr "Windows RDP"
+
+#: admin/systems/class_terminalStartup.inc:75
+msgid "Terminal server"
+msgstr "Εξυπηρετητής τερματικού"
+
 #: admin/systems/class_serverService.inc:57
 #: admin/systems/services/terminal/class_serviceTerminal.inc:30
-#: admin/systems/services/shares/class_serviceShare.inc:31
+#: admin/systems/services/shares/class_serviceShare.inc:30
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 #: admin/systems/system-list.xml:152
 msgid "Services"
@@ -550,7 +578,7 @@ msgstr "Υπηρεσίες εξυπηρετητή"
 #: admin/systems/class_serverService.inc:225
 #: admin/systems/class_serverService.inc:271
 #: admin/systems/class_serverService.inc:394
-#: admin/systems/services/shares/class_serviceShare.inc:104
+#: admin/systems/services/shares/class_serviceShare.inc:103
 msgid "Error"
 msgstr "Σφάλμα"
 
@@ -577,46 +605,46 @@ msgstr ""
 msgid "Could not get execute action %s on service %s."
 msgstr "Δεν ήταν δυνατή η εκτέλεση ενέργειας %s στην υπηρεσία %s."
 
-#: admin/systems/class_workstationGeneric.inc:118
-#: admin/systems/class_workstationGeneric.inc:123
-#: admin/systems/class_workstationGeneric.inc:124
+#: admin/systems/class_workstationGeneric.inc:127
+#: admin/systems/class_workstationGeneric.inc:132
+#: admin/systems/class_workstationGeneric.inc:133
 #: admin/systems/system-list.xml:54 admin/systems/system-list.xml:193
 msgid "Workstation"
 msgstr "Σταθμός εργασίας"
 
-#: admin/systems/class_workstationGeneric.inc:119
+#: admin/systems/class_workstationGeneric.inc:128
 msgid "Workstation information"
 msgstr "Πληροφορίες σταθμού εργασίας"
 
-#: admin/systems/class_workstationGeneric.inc:141
+#: admin/systems/class_workstationGeneric.inc:150
 msgid "workstation"
 msgstr "σταθμός εργασίας"
 
-#: admin/systems/class_workstationGeneric.inc:152
+#: admin/systems/class_workstationGeneric.inc:161
 #, php-format
 msgid "The name of the %s"
 msgstr "Το όνομα του  %s"
 
-#: admin/systems/class_workstationGeneric.inc:158
+#: admin/systems/class_workstationGeneric.inc:167
 #, php-format
 msgid "A short description of the %s"
 msgstr "Μια σύντομη περιγραφή του %s"
 
-#: admin/systems/class_workstationGeneric.inc:163
+#: admin/systems/class_workstationGeneric.inc:172
 msgid "Location"
 msgstr "Τοποθεσία"
 
-#: admin/systems/class_workstationGeneric.inc:164
+#: admin/systems/class_workstationGeneric.inc:173
 #, php-format
 msgid "The location of the %s"
 msgstr "Η τοποθεσία του %s"
 
-#: admin/systems/class_workstationGeneric.inc:170
+#: admin/systems/class_workstationGeneric.inc:179
 #, php-format
 msgid "Lock this %s"
 msgstr "Κλείδωμα του %s"
 
-#: admin/systems/class_workstationGeneric.inc:171
+#: admin/systems/class_workstationGeneric.inc:180
 #, php-format
 msgid "This will prevent the %s from being reinstalled"
 msgstr "Αυτό θα αποτρέψει το %s από το να επανεγκατασταθεί"
@@ -666,69 +694,69 @@ msgstr "Υποστηριζόμενοι τύποι συνεδρίας"
 msgid "The session types supported by this terminal server"
 msgstr "Ο τύποι συνεδρίας που υποστηρίζονται από αυτόν τον εξυπηρετητή τερματικού"
 
+#: admin/systems/services/shares/class_serviceShare.inc:29
 #: admin/systems/services/shares/class_serviceShare.inc:30
-#: admin/systems/services/shares/class_serviceShare.inc:31
 msgid "Share service"
 msgstr "Κοινή χρήση υπηρεσίας"
 
-#: admin/systems/services/shares/class_serviceShare.inc:43
+#: admin/systems/services/shares/class_serviceShare.inc:42
 msgid "Shares"
 msgstr "Κοινόχρηστα"
 
-#: admin/systems/services/shares/class_serviceShare.inc:48
+#: admin/systems/services/shares/class_serviceShare.inc:47
 msgid "Shares this server hosts"
 msgstr "Κοινή χρήση των συστημάτων ταυτού του εξυπηρετητή"
 
-#: admin/systems/services/shares/class_serviceShare.inc:52
+#: admin/systems/services/shares/class_serviceShare.inc:51
 msgid "Name of this share"
 msgstr "Το όνομα αυτού του κοινόχρηστου"
 
-#: admin/systems/services/shares/class_serviceShare.inc:56
+#: admin/systems/services/shares/class_serviceShare.inc:55
 msgid "Description of this share"
 msgstr "Περιγραφή αυτο του κοινόχρηστου"
 
-#: admin/systems/services/shares/class_serviceShare.inc:60
+#: admin/systems/services/shares/class_serviceShare.inc:59
 msgid "Type"
 msgstr "Τύπος"
 
-#: admin/systems/services/shares/class_serviceShare.inc:60
+#: admin/systems/services/shares/class_serviceShare.inc:59
 msgid "Type of share"
 msgstr "Τύπος αυτού του κοινόχρηστου"
 
-#: admin/systems/services/shares/class_serviceShare.inc:65
+#: admin/systems/services/shares/class_serviceShare.inc:64
 msgid "Codepage"
 msgstr "Σελίδα κώδικα"
 
-#: admin/systems/services/shares/class_serviceShare.inc:65
+#: admin/systems/services/shares/class_serviceShare.inc:64
 msgid "Codepage for this share"
 msgstr "Κωδικοσελίδα αυτού του κοινόχρηστου"
 
-#: admin/systems/services/shares/class_serviceShare.inc:69
+#: admin/systems/services/shares/class_serviceShare.inc:68
 msgid "Path / Volume"
 msgstr "Διαδρομή/ Τόμος"
 
-#: admin/systems/services/shares/class_serviceShare.inc:69
+#: admin/systems/services/shares/class_serviceShare.inc:68
 msgid "Path or volume concerned by this share"
 msgstr "Διαδρομή ή τόμος σχετικός με αυτό το κοινόχρηστο"
 
-#: admin/systems/services/shares/class_serviceShare.inc:73
+#: admin/systems/services/shares/class_serviceShare.inc:72
 msgid "Option"
 msgstr "Επιλογή"
 
-#: admin/systems/services/shares/class_serviceShare.inc:73
+#: admin/systems/services/shares/class_serviceShare.inc:72
 msgid "Special option(s) for this share"
 msgstr "Ειδική επιλογή (ες) για αυτό το μοίρασμα"
 
-#: admin/systems/services/shares/class_serviceShare.inc:104
+#: admin/systems/services/shares/class_serviceShare.inc:103
 msgid "You need to configure encodings first"
 msgstr "Πρέπει να ρυθμίσετε κάποιες κωδικοποιήσεις πρώτα"
 
-#: admin/systems/services/shares/class_serviceShare.inc:111
+#: admin/systems/services/shares/class_serviceShare.inc:110
 #: admin/ogroups/goto/termgroup.tpl.c:2 admin/systems/remove.tpl.c:2
 msgid "Warning"
 msgstr "Προειδοποίηση"
 
-#: admin/systems/services/shares/class_serviceShare.inc:111
+#: admin/systems/services/shares/class_serviceShare.inc:110
 #, php-format
 msgid "Invalid value in encodings : %s"
 msgstr "Μη έγκυρη τιμή στις κωδικοποιήσεις: %s"
@@ -927,44 +955,44 @@ msgstr "Ο σειριακός αριθμός γραμμής του τηλεφώ�
 msgid "The telephone number of the phone"
 msgstr "Ο αριθμός τηλεφώνου "
 
-#: admin/systems/class_systemManagement.inc:152
-#: admin/systems/class_systemManagement.inc:166
+#: admin/systems/class_systemManagement.inc:159
+#: admin/systems/class_systemManagement.inc:173
 msgid "Action canceled"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:152
+#: admin/systems/class_systemManagement.inc:159
 #, php-format
 msgid "System %s has no mac address defined, cannot trigger action"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:166
+#: admin/systems/class_systemManagement.inc:173
 #, php-format
 msgid "System %s is currently installing"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:242
-#: admin/systems/class_systemManagement.inc:318
-#: admin/systems/class_systemManagement.inc:412
-#: admin/systems/class_systemManagement.inc:475
+#: admin/systems/class_systemManagement.inc:249
+#: admin/systems/class_systemManagement.inc:325
+#: admin/systems/class_systemManagement.inc:419
+#: admin/systems/class_systemManagement.inc:482
 msgid "Permission"
 msgstr "Άδεια"
 
-#: admin/systems/class_systemManagement.inc:412
+#: admin/systems/class_systemManagement.inc:419
 #, php-format
 msgid "You are not allowed to create a snapshot for %s."
 msgstr "Δεν επιτρέπεται να δημιουργήσετε ένα στιγμιότυπο για  %s."
 
-#: admin/systems/class_systemManagement.inc:475
+#: admin/systems/class_systemManagement.inc:482
 #, php-format
 msgid "You are not allowed to restore a snapshot for %s."
 msgstr "Δεν επιτρέπεται να επαναφέρετε ένα στιγμιότυπο για  %s."
 
-#: admin/systems/class_systemManagement.inc:641
+#: admin/systems/class_systemManagement.inc:648
 #, php-format
 msgid "Inherited from %s"
 msgstr "Κληρονομήθηκε από %s"
 
-#: admin/systems/class_systemManagement.inc:695
+#: admin/systems/class_systemManagement.inc:700
 msgid "Systems Management"
 msgstr "Διαχείριση Systems "
 
@@ -1057,52 +1085,6 @@ msgstr "Πληροφορίες τερματικού"
 #: admin/systems/class_terminalGeneric.inc:55
 msgid "terminal"
 msgstr "τερματικό"
-
-#: admin/systems/class_terminalGeneric.inc:67
-#, php-format
-msgid "The root server the terminal should be using"
-msgstr "Ο εξυπηρετητής root που θα πρέπει να χρησιμοποιεί το τερματικό"
-
-#: admin/systems/class_terminalGeneric.inc:73
-#, php-format
-msgid "The swap server the terminal should be using"
-msgstr "Ο εξυπηρετητής swap που θα πρέπει να χρησιμοποιεί το τερματικό"
-
-#: admin/systems/class_terminalGeneric.inc:80
-msgid "Remote desktop"
-msgstr "Απομακρυσμένη επιφάνεια εργασίας"
-
-#: admin/systems/class_terminalGeneric.inc:84
-msgid "Connect method"
-msgstr "Μέθοδος σύνδεσης"
-
-#: admin/systems/class_terminalGeneric.inc:88
-msgid "None"
-msgstr "Κανένα"
-
-#: admin/systems/class_terminalGeneric.inc:88
-msgid "XDMCP"
-msgstr "XDMCP"
-
-#: admin/systems/class_terminalGeneric.inc:88
-msgid "LDM"
-msgstr "LDM"
-
-#: admin/systems/class_terminalGeneric.inc:88
-msgid "Shell"
-msgstr "Κέλυφος"
-
-#: admin/systems/class_terminalGeneric.inc:88
-msgid "Telnet"
-msgstr "Telnet"
-
-#: admin/systems/class_terminalGeneric.inc:88
-msgid "Windows RDP"
-msgstr "Windows RDP"
-
-#: admin/systems/class_terminalGeneric.inc:92
-msgid "Terminal server"
-msgstr "Εξυπηρετητής τερματικού"
 
 #: addons/dashboard/systems_stats.tpl.c:2
 msgid "There are several argonaut servers! (this is not yet supported)"

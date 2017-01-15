@@ -81,10 +81,10 @@ class demoPlugin extends simplePlugin
         )
       ),
       'ftp' => array(
-        'name'  => _('FTP informations'),
+        'name'  => _('FTP information'),
         'attrs' => array(
           new CompositeAttribute (
-            _('Informations for ftp login'),
+            _('Information for ftp login'),
             'ftpLoginInfo',
             array(
               new StringAttribute (_('Login'),    _('Login for FTP'),     'ftpLogin'),
@@ -110,7 +110,7 @@ class demoPlugin extends simplePlugin
       'plObjectType'      => array('user'),
 
       // But simplePlugin can generate the ACL list for us
-      'plProvidedAcls'    => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'    => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 }

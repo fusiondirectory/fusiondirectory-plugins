@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-11-02 23:08+0100\n"
-"PO-Revision-Date: 2016-05-12 13:36+0000\n"
+"POT-Creation-Date: 2017-01-11 21:15+0100\n"
+"PO-Revision-Date: 2016-12-31 10:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -183,7 +183,7 @@ msgid "Relay host"
 msgstr "Hôte relai"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:32
-#: admin/systems/services/kolab2/class_serviceKolab.inc:185
+#: admin/systems/services/kolab2/class_serviceKolab.inc:189
 msgid "Host used to relay mails"
 msgstr "Machine utilisée pour relayer les courriels"
 
@@ -196,8 +196,8 @@ msgid "Kolab 2 mail service"
 msgstr "Service de courriel Kolab 2"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:82
-msgid "Informations"
-msgstr "Informations"
+msgid "Information"
+msgstr "Information"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:87
 msgid "Postfix mydomain"
@@ -300,65 +300,65 @@ msgstr "Limite du quota avant de prévenir les utilisateurs (%)"
 msgid "Warn users when using more than X% of their mail quota"
 msgstr "Avertissez les utilisateurs quand ils utilisent plus de X% de leur quota de messagerie"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:153
+#: admin/systems/services/kolab2/class_serviceKolab.inc:155
 msgid "Free/Busy settings"
 msgstr "Préférences de Free/Busy"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:156
-#: admin/systems/services/kolab2/class_serviceKolab.inc:157
+#: admin/systems/services/kolab2/class_serviceKolab.inc:158
+#: admin/systems/services/kolab2/class_serviceKolab.inc:159
 msgid "Allow unauthenticated downloading of Free/Busy information"
 msgstr "Permettre le téléchargement des informations Free/Busy de manière anonyme"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:161
+#: admin/systems/services/kolab2/class_serviceKolab.inc:163
 msgid "Number of days to include when creating free/busy lists"
 msgstr "Nombre de jours à inclure lors de la création d'une liste Free/Busy"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:162
+#: admin/systems/services/kolab2/class_serviceKolab.inc:164
 msgid "Include data from X days in the past when creating free/busy lists"
 msgstr "Nombre de jours dans le passé à inclure lors de la création d'une liste Free/Busy"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:170
+#: admin/systems/services/kolab2/class_serviceKolab.inc:174
 msgid "SMTP privileged networks"
 msgstr "Réseaux SMTP privilégiés"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:173
+#: admin/systems/services/kolab2/class_serviceKolab.inc:177
 msgid "Hosts/networks allowed to relay"
 msgstr "Machines/Réseaux autorisés à relayer"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:174
+#: admin/systems/services/kolab2/class_serviceKolab.inc:178
 msgid "Hosts/networks allowed to relay (multiple values comma-seperated)"
 msgstr "Machines/Réseaux qui peuvent relayer des courriels (plusieurs valeurs  séparées par des virgules)"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:182
+#: admin/systems/services/kolab2/class_serviceKolab.inc:186
 msgid "SMTP smarthost/relayhost"
 msgstr "Relais SMTP"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:190
+#: admin/systems/services/kolab2/class_serviceKolab.inc:194
 msgid "Accept Internet Mail"
 msgstr "Accepter le courrier électronique venant d'internet"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:193
-#: admin/systems/services/kolab2/class_serviceKolab.inc:194
+#: admin/systems/services/kolab2/class_serviceKolab.inc:197
+#: admin/systems/services/kolab2/class_serviceKolab.inc:198
 msgid "Accept mail from other domains over non-authenticated SMTP"
 msgstr "Accepter les messages venant d'autres domaines par du SMTP non authentifié"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:271
+#: admin/systems/services/kolab2/class_serviceKolab.inc:275
 msgid "Internal error"
 msgstr "Erreur interne"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:271
+#: admin/systems/services/kolab2/class_serviceKolab.inc:275
 msgid "Kolab account does not exist!"
 msgstr "Le compte Kolab n'existe pas !"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:275
+#: admin/systems/services/kolab2/class_serviceKolab.inc:279
 msgid "Error"
 msgstr "Erreur"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:275
+#: admin/systems/services/kolab2/class_serviceKolab.inc:279
 msgid "hostname"
 msgstr "Nom d'hôte"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:284
-#: admin/systems/services/kolab2/class_serviceKolab.inc:295
+#: admin/systems/services/kolab2/class_serviceKolab.inc:288
+#: admin/systems/services/kolab2/class_serviceKolab.inc:299
 msgid "LDAP error"
 msgstr "Erreur LDAP"

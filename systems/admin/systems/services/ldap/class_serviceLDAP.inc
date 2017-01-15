@@ -89,7 +89,7 @@ class serviceLDAP extends simpleService
     );
   }
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
@@ -97,7 +97,7 @@ class serviceLDAP extends simpleService
       'plDescription' => _('LDAP').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=ldap&size=16',
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 }

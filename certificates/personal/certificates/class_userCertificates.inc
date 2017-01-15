@@ -23,7 +23,7 @@ class CertificateOrderedArrayAttribute extends OrderedArrayAttribute
   protected function genRowIcons($key, $value)
   {
     $id = $this->getHtmlId();
-    list ($img, $width) = parent::genRowIcons($key, $value);
+    list ($img, $nbicons) = parent::genRowIcons($key, $value);
     $img = $this->renderInputField(
       'image', $id.'_download_'.$key,
       array(
@@ -32,9 +32,10 @@ class CertificateOrderedArrayAttribute extends OrderedArrayAttribute
         'alt'   => _('Download'),
         'class' => 'center'
       )
-    ).'&nbsp;'.$img;
-    $width += 15;
-    return array ($img, $width);
+    ).$img;
+    $nbicons++;
+
+    return array ($img, $nbicons);
   }
 
   protected function handlePostValueActions($id, $postValue)
@@ -65,9 +66,9 @@ class CertificateFileAttribute extends FileAttribute
   function getArrayValue ()
   {
     $value = $this->getValue();
-    if (!strpos($value, self::$pemBegin)) {
+    if (!strpos($value, static::$pemBegin)) {
       /* Convert DER to PEM */
-      $value = self::$pemBegin."\n".chunk_split(base64_encode($value), 64, "\n").self::$pemEnd."\n";
+      $value = static::$pemBegin."\n".chunk_split(base64_encode($value), 64, "\n").static::$pemEnd."\n";
     }
     $infos = openssl_x509_parse($value, TRUE);
     if (empty($infos)) {
@@ -97,7 +98,7 @@ class CertificateFileAttribute extends FileAttribute
    */
   function setValue ($value)
   {
-    $pattern = '/'.preg_quote(self::$pemBegin, '/').'(.*)'.preg_quote(self::$pemEnd, '/').'/s';
+    $pattern = '/'.preg_quote(static::$pemBegin, '/').'(.*)'.preg_quote(static::$pemEnd, '/').'/s';
     if (preg_match($pattern, $value, $m)) {
       $value = base64_decode($m[1]);
     }
@@ -120,7 +121,7 @@ class userCertificates extends simplePlugin
       'plIcon'          => 'geticon.php?context=types&icon=certificate&size=48',
       'plSmallIcon'     => 'geticon.php?context=types&icon=certificate&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

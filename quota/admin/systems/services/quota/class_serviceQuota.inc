@@ -30,7 +30,7 @@ class serviceQuota extends simpleService
       'plDescription' => _('Quota service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=quota&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -180,13 +180,8 @@ class serviceQuota extends simpleService
 
   function getLdapServers()
   {
-    global $config;
     /* Get List of server with LDAP service */
-    $ldapServers = array();
-    foreach ($config->data['SERVERS']['LDAP'] as $dn => $attrs) {
-      $ldapServers[$dn] = $attrs['cn'][0];
-    }
-    return $ldapServers;
+    return objects::ls('server', NULL, NULL, '(objectClass=goLdapServer)');
   }
 }
 ?>

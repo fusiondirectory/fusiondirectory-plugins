@@ -40,7 +40,7 @@ class opsiSoftwareList extends simplePlugin
         'icon'    => 'geticon.php?context=applications&icon=opsi-software-list&size=16',
       )),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

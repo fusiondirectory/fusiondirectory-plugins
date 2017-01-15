@@ -49,7 +49,7 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
   reset_errors();
   /* Check if CONFIG_FILE is accessible */
   if (!is_readable(CONFIG_DIR."/".CONFIG_FILE)) {
-    throw new Exception(sprintf(_("FusionDirectory configuration %s/%s is not readable. Aborted."), CONFIG_DIR, CONFIG_FILE));
+    throw new FusionDirectoryException(sprintf(_("FusionDirectory configuration %s/%s is not readable. Aborted."), CONFIG_DIR, CONFIG_FILE));
   }
 
   /* Initially load all classes */
@@ -59,7 +59,7 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
       if (is_readable("$BASE_DIR/$path")) {
         require_once("$BASE_DIR/$path");
       } else {
-        throw new Exception(sprintf(_("Cannot locate file '%s' - please run '%s' to fix this"),
+        throw new FusionDirectoryException(sprintf(_("Cannot locate file '%s' - please run '%s' to fix this"),
               "$BASE_DIR/$path", "<b>fusiondirectory-setup</b>"));
       }
     }
@@ -83,7 +83,7 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
     if (($ssl != "") &&
           (($config->get_cfg_value('webserviceForceSSL', 'TRUE') == 'TRUE') ||
            ($config->get_cfg_value('forcessl') == 'TRUE'))) {
-      throw new Exception("HTTP connexions are not allowed, please use HTTPS: $ssl\n");
+      throw new FusionDirectoryException("HTTP connexions are not allowed, please use HTTPS: $ssl\n");
     }
 
     if (!isset($_SERVER['PHP_AUTH_USER']) && ($user === NULL)) {
@@ -125,7 +125,7 @@ class fdRPCService
   {
     global $config;
     if (preg_match('/^_(.*)$/', $method, $m)) {
-      throw new Exception("Non existing method '$m[1]'");
+      throw new FusionDirectoryException("Non existing method '$m[1]'");
     }
 
     if ($method == 'listLdaps') {
@@ -145,7 +145,7 @@ class fdRPCService
 
     $this->ldap = $config->get_ldap_link();
     if (!$this->ldap->success()) {
-      throw new Exception('Ldap error: '.$this->ldap->get_error());
+      throw new FusionDirectoryException('Ldap error: '.$this->ldap->get_error());
     }
     $this->ldap->cd($config->current['BASE']);
 
@@ -165,7 +165,7 @@ class fdRPCService
       $self = '';
     }
     if (!$plist->check_access($infos['aclCategory'].$self)) {
-      throw new Exception("Unsufficient rights for accessing type '$type$self'");
+      throw new FusionDirectoryException("Unsufficient rights for accessing type '$type$self'");
     }
     if ($tabs !== NULL) {
       if (!is_array($tabs)) {
@@ -174,7 +174,7 @@ class fdRPCService
       foreach ($tabs as $tab) {
         $pInfos = pluglist::pluginInfos($tab);
         if (!$plist->check_access(join($self.',', $pInfos['plCategory']).$self)) {
-          throw new Exception("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
+          throw new FusionDirectoryException("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
         }
       }
     }
@@ -523,7 +523,7 @@ class fdRPCService
       }
     }
     if (count($disallowed)) {
-      return array('errors' => array(msgPool::permDelete($disallowed)));
+      return array('errors' => array(msgPool::permModify($disallowed)));
     }
 
     // Try to lock/unlock the entries.
@@ -539,7 +539,7 @@ class fdRPCService
           continue;
         }
         // Detect the password method and try to lock/unlock.
-        $method   = passwordMethod::get_method($val['userPassword'][0], $dn);
+        $method = passwordMethod::get_method($val['userPassword'][0], $dn);
         if ($method instanceOf passwordMethod) {
           $success = TRUE;
           if ($type == 'toggle') {
@@ -573,6 +573,97 @@ class fdRPCService
     if (!empty($errors)) {
       return array('errors' => $errors);
     }
+  }
+
+  /*!
+   * \brief Test if a user is locked
+   */
+  protected function _isUserLocked($dns)
+  {
+    global $config, $ui;
+
+    if(!is_array($dns)) {
+      $dns = array($dns);
+    }
+
+    foreach ($dns as $dn) {
+      if (!preg_match('/r/', $ui->get_permissions($dn, 'user/password'))) {
+        $disallowed[] = $dn;
+      }
+    }
+    if (count($disallowed)) {
+      return array('errors' => array(msgPool::permView($disallowed)));
+    }
+
+    // Try to lock/unlock the entries.
+    $ldap   = $config->get_ldap_link();
+    $result = array();
+    $errors = array();
+    foreach ($dns as $dn) {
+      $ldap->cat($dn, array('userPassword'));
+      if ($ldap->count() == 1) {
+        // We can't lock empty passwords.
+        $val = $ldap->fetch();
+        if (!isset($val['userPassword'])) {
+          $errors[] = sprintf(_('Failed to get password method for account "%s"'), $dn);
+          continue;
+        }
+        // Detect the password method and try to lock/unlock.
+        $method = passwordMethod::get_method($val['userPassword'][0], $dn);
+        if ($method instanceOf passwordMethod) {
+          $result[$dn] = $method->is_locked($dn);
+        } else {
+          // Can't lock unknown methods.
+          $errors[] = sprintf(_('Failed to get password method for account "%s"'), $dn);
+        }
+      } else {
+        $errors[] = sprintf(_('Could not find account "%s" in LDAP'), $dn);
+      }
+    }
+    if (!empty($errors)) {
+      return array('errors' => $errors);
+    }
+    return $result;
+  }
+
+  /*!
+   * \brief Generate recovery token for a user
+   */
+  protected function _recoveryGenToken($email)
+  {
+    global $ui;
+
+    $pwRecovery = new passwordRecovery(FALSE);
+    $pwRecovery->email_address = $email;
+    $dn = $pwRecovery->step2();
+    if ($pwRecovery->step == 2) { /* No errors */
+      if (!preg_match('/w/', $ui->get_permissions($dn, 'user/password'))) {
+        return array('errors' => array(msgPool::permModify($dn)));
+      }
+      $token = $pwRecovery->generateAndStoreToken();
+      if (empty($pwRecovery->message) && ($token !== FALSE)) {
+        return array('token' => $token, 'uid' => $pwRecovery->uid);
+      }
+    }
+    return array('errors' => $pwRecovery->message);
+  }
+
+  /*!
+   * \brief Change a user password using a recovery token
+   */
+  protected function _recoveryConfirmPasswordChange($uid, $password1, $password2, $token)
+  {
+    $pwRecovery = new passwordRecovery(FALSE);
+    $pwRecovery->uid = $uid;
+    if ($pwRecovery->checkToken($token)) {
+      $success = $pwRecovery->changeUserPassword($password1, $password2);
+      if ($success) {
+        return TRUE;
+      }
+    } else {
+      $pwRecovery->message[] = _('This token is invalid');
+    }
+    return array('errors' => $pwRecovery->message);
   }
 
   /*!

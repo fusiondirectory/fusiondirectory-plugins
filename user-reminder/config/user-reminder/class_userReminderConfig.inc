@@ -29,7 +29,7 @@ class userReminderConfig extends simplePlugin
       'plDescription'   => _('Configuration for the reminder of accounts expiration'),
       'plObjectType'    => array('configuration'),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -105,10 +105,24 @@ class userReminderConfig extends simplePlugin
             _('Body of the confirmation email, sent when the user has postponed expiration. Use %s for the cn and uid.'),
             'fdUserReminderConfirmationBody', FALSE,
             _('Dear %1$s,'."\n".' your account %2$s expiration has been successfully postponed.'."\n")
+          ),
+          new HiddenAttribute (
+            'fdReminderTokenRDN',
+            FALSE,
+            'ou=reminder'
           )
         )
       )
     );
+  }
+
+  protected function post_save()
+  {
+    global $config;
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->create_missing_trees(get_ou('reminderTokenRDN').get_ou('fusiondirectoryRDN').$config->current['BASE']);
+    parent::post_save();
   }
 }
 ?>

@@ -23,7 +23,7 @@ class serviceCyrus extends simpleService
 {
   var $objectclasses = array('fdCyrusServer');
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
@@ -31,7 +31,7 @@ class serviceCyrus extends simpleService
       'plDescription'   => _('Cyrus (IMAP/POP3)').' ('._('Services').')',
       'plIcon'          => 'geticon.php?context=applications&icon=cyrus&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -112,12 +112,15 @@ class serviceCyrus extends simpleService
     );
   }
 
+  function save()
+  {
+    parent::save();
+  }
+
   protected function post_save()
   {
     parent::post_save();
-    if (!$this->initially_was_account) {
-      mailMethod::resetMailServersCache();
-    }
+    mailMethod::resetMailServersCache();
   }
 
   protected function post_remove ()

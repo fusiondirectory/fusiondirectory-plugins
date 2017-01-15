@@ -75,7 +75,7 @@ class kolabAccount extends simplePlugin
   var $objectclasses  = array("kolabInetOrgPerson");
   var $displayHeader  = TRUE;
 
-  /* Return plugin informations for acl handling  */
+  /* Return plugin information for acl handling  */
   static function plInfo()
   {
     return array(
@@ -86,7 +86,7 @@ class kolabAccount extends simplePlugin
       'plSelfModify'    => TRUE,
       'plPriority'      => 20,
       'plObjectType'    => array('user'),
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

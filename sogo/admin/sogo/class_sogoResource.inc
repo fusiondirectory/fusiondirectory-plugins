@@ -24,7 +24,7 @@ class sogoResource extends simplePlugin
 
   var $objectclasses = array('inetOrgPerson','top','CalendarResource');
 
-  /* Return plugin informations for acl handling  */
+  /* Return plugin information for acl handling */
   public static function plInfo()
   {
     return array(
@@ -40,7 +40,7 @@ class sogoResource extends simplePlugin
         'mainAttr'    => 'uid'
       )),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

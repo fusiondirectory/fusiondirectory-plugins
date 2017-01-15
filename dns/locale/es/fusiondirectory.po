@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-11-02 23:08+0100\n"
-"PO-Revision-Date: 2016-06-28 11:05+0000\n"
+"POT-Creation-Date: 2017-01-11 21:15+0100\n"
+"PO-Revision-Date: 2016-12-31 10:29+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -127,6 +127,41 @@ msgstr ""
 #: admin/dns/class_dnsManagement.inc:37
 msgid "Systems"
 msgstr "Sistemas"
+
+#: admin/dns/class_dnsManagement.inc:98 admin/dns/class_dnsManagement.inc:100
+#: admin/dns/class_dnsManagement.inc:106 admin/systems/class_dnsHost.inc:269
+#: admin/systems/class_dnsHost.inc:275
+msgid "Could not run ldap2zone"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:98
+msgid "More than one server matches the SOA"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:100
+msgid "Could not find the primary server"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:112
+msgid "Could not get run ldap2zone"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:114 admin/systems/class_dnsHost.inc:277
+msgid "Ldap2zone"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:114 admin/systems/class_dnsHost.inc:277
+#, php-format
+msgid "Ldap2Zone called for zone \"%s\""
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:118 admin/systems/class_dnsHost.inc:281
+msgid "Error"
+msgstr "Error"
+
+#: admin/dns/class_dnsManagement.inc:118 admin/systems/class_dnsHost.inc:281
+msgid "Argonaut client needs to be activated to use ldap2zone remotely"
+msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:27
 #, php-format
@@ -385,7 +420,7 @@ msgstr "Contenido"
 msgid "Content of this record"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:425
+#: admin/dns/class_DnsRecordAttribute.inc:426
 msgid "The entered IP does not match the selected reverse zone"
 msgstr ""
 
@@ -551,27 +586,6 @@ msgstr ""
 #: admin/systems/class_dnsHost.inc:225
 #, php-format
 msgid "The primary server for zone \"%s\""
-msgstr ""
-
-#: admin/systems/class_dnsHost.inc:269 admin/systems/class_dnsHost.inc:275
-msgid "Could not get run ldap2zone"
-msgstr ""
-
-#: admin/systems/class_dnsHost.inc:277
-msgid "Ldap2zone"
-msgstr ""
-
-#: admin/systems/class_dnsHost.inc:277
-#, php-format
-msgid "Ldap2Zone called for zone \"%s\""
-msgstr ""
-
-#: admin/systems/class_dnsHost.inc:281
-msgid "Error"
-msgstr "Error"
-
-#: admin/systems/class_dnsHost.inc:281
-msgid "Argonaut client needs to be activated to use ldap2zone remotely"
 msgstr ""
 
 #: admin/systems/class_dnsHost.inc:311 admin/systems/class_dnsHost.inc:331

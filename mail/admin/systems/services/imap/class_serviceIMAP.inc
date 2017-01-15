@@ -25,7 +25,7 @@ class serviceIMAP extends simpleService
   /* This plugin only writes its objectClass */
   var $objectclasses = array('fdImapServer');
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
@@ -33,7 +33,7 @@ class serviceIMAP extends simpleService
       'plDescription' => _('IMAP/POP3').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=imap&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -50,12 +50,15 @@ class serviceIMAP extends simpleService
     return '<b>This server runs an IMAP or POP3 server</b>'.parent::execute();
   }
 
+  function save()
+  {
+    parent::save();
+  }
+
   protected function post_save()
   {
     parent::post_save();
-    if (!$this->initially_was_account) {
-      mailMethod::resetMailServersCache();
-    }
+    mailMethod::resetMailServersCache();
   }
 
   protected function post_remove ()

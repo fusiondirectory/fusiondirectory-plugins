@@ -23,7 +23,7 @@ class printGeneric extends simplePlugin
 {
   var $objectclasses  = array('fdPrinter', 'ipHost', 'ieee802Device');
 
-  /* Return plugin informations */
+  /* Return plugin information */
   static function plInfo()
   {
     return array(
@@ -44,7 +44,7 @@ class printGeneric extends simplePlugin
         'fdPrinterAdminUsers' => 'user',
       ),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

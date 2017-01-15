@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-11-02 23:08+0100\n"
-"PO-Revision-Date: 2016-05-12 13:36+0000\n"
+"POT-Creation-Date: 2017-01-11 21:15+0100\n"
+"PO-Revision-Date: 2016-12-31 10:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -181,7 +181,7 @@ msgid "Relay host"
 msgstr "Předávající stroj"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:32
-#: admin/systems/services/kolab2/class_serviceKolab.inc:185
+#: admin/systems/services/kolab2/class_serviceKolab.inc:189
 msgid "Host used to relay mails"
 msgstr "Počítač sloužící k předávání zpráv"
 
@@ -194,8 +194,8 @@ msgid "Kolab 2 mail service"
 msgstr "E-mailová služba Kolab 2"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:82
-msgid "Informations"
-msgstr "Informace"
+msgid "Information"
+msgstr "informace"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:87
 msgid "Postfix mydomain"
@@ -298,65 +298,65 @@ msgstr "Hranice, po jejímž překročení budou uživatelé varováni ohledně 
 msgid "Warn users when using more than X% of their mail quota"
 msgstr "Varovat uživatele, pokud využijí více než X% objemu své kvóty na e-maily"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:153
+#: admin/systems/services/kolab2/class_serviceKolab.inc:155
 msgid "Free/Busy settings"
 msgstr "Nastavení Free/Busy"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:156
-#: admin/systems/services/kolab2/class_serviceKolab.inc:157
+#: admin/systems/services/kolab2/class_serviceKolab.inc:158
+#: admin/systems/services/kolab2/class_serviceKolab.inc:159
 msgid "Allow unauthenticated downloading of Free/Busy information"
 msgstr "Umožnit neověřeným uživatelům stahovat informace z Free/Busy"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:161
+#: admin/systems/services/kolab2/class_serviceKolab.inc:163
 msgid "Number of days to include when creating free/busy lists"
 msgstr "Počet dnů, které zahrnout při vytváření seznamů free/busy"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:162
+#: admin/systems/services/kolab2/class_serviceKolab.inc:164
 msgid "Include data from X days in the past when creating free/busy lists"
 msgstr "Zahrnout údaje z X dnů v minulosti při vytváření free/busy seznamů"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:170
+#: admin/systems/services/kolab2/class_serviceKolab.inc:174
 msgid "SMTP privileged networks"
 msgstr "Sítě, ze kterých je možné používat SMTP"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:173
+#: admin/systems/services/kolab2/class_serviceKolab.inc:177
 msgid "Hosts/networks allowed to relay"
 msgstr "Počítače/sítě které mohou předávat"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:174
+#: admin/systems/services/kolab2/class_serviceKolab.inc:178
 msgid "Hosts/networks allowed to relay (multiple values comma-seperated)"
 msgstr "stroje/sítě které mohou předávat (jednotlivé položky oddělujte čárkou)"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:182
+#: admin/systems/services/kolab2/class_serviceKolab.inc:186
 msgid "SMTP smarthost/relayhost"
 msgstr "Inteligentní předávající (smarthost) / předávající stroj SMTP"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:190
+#: admin/systems/services/kolab2/class_serviceKolab.inc:194
 msgid "Accept Internet Mail"
 msgstr "Přijímat Internetovou poštu"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:193
-#: admin/systems/services/kolab2/class_serviceKolab.inc:194
+#: admin/systems/services/kolab2/class_serviceKolab.inc:197
+#: admin/systems/services/kolab2/class_serviceKolab.inc:198
 msgid "Accept mail from other domains over non-authenticated SMTP"
 msgstr "Přijímat i zprávy, které přicházejí z jiných domén, přes neověřené SMTP servery"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:271
+#: admin/systems/services/kolab2/class_serviceKolab.inc:275
 msgid "Internal error"
 msgstr "Vnitřní chyba"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:271
+#: admin/systems/services/kolab2/class_serviceKolab.inc:275
 msgid "Kolab account does not exist!"
 msgstr "účet neexistuje v Kolabu!"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:275
+#: admin/systems/services/kolab2/class_serviceKolab.inc:279
 msgid "Error"
 msgstr "Chyba"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:275
+#: admin/systems/services/kolab2/class_serviceKolab.inc:279
 msgid "hostname"
 msgstr "název stroje"
 
-#: admin/systems/services/kolab2/class_serviceKolab.inc:284
-#: admin/systems/services/kolab2/class_serviceKolab.inc:295
+#: admin/systems/services/kolab2/class_serviceKolab.inc:288
+#: admin/systems/services/kolab2/class_serviceKolab.inc:299
 msgid "LDAP error"
 msgstr "Chyba LDAP"

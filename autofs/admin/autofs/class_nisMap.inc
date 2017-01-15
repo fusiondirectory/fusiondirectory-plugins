@@ -24,7 +24,7 @@ class nisMap extends simplePlugin
 
   var $objectclasses  = array('nisMap', 'top');
 
-  /* Return plugin informations for acl handling  */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
@@ -38,7 +38,7 @@ class nisMap extends simplePlugin
         'mainAttr'    => 'nisMapName',
       )),
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

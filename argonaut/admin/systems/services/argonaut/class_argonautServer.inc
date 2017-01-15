@@ -24,7 +24,7 @@ class argonautServer extends simpleService
   /* This plugin only writes its objectClass */
   var $objectclasses  = array("argonautServer");
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
@@ -32,7 +32,7 @@ class argonautServer extends simpleService
       'plDescription' => _('Argonaut server').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=argonaut&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -52,7 +52,7 @@ class argonautServer extends simpleService
             TRUE
           ),
           new BooleanAttribute (
-            _('Get packages informations'),
+            _('Get packages information'),
             _('Wether or not argonaut server should get packages information from repositories at start and then once a day. Needed for FAI package list creation.'),
             'argonautFetchPackages', FALSE,
             TRUE

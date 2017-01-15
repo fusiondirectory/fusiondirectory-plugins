@@ -34,7 +34,7 @@ class webApplication extends simplePlugin
         'icon'        => 'geticon.php?context=categories&icon=applications-internet&size=16'
       )),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -59,7 +59,7 @@ class webApplication extends simplePlugin
           ),
           new StringAttribute (
             _('Display Name'), _('Displayed name for links to this application'),
-            'fdApplicationTitle', FALSE
+            'fdApplicationTitle', TRUE
           ),
         )
       ),
