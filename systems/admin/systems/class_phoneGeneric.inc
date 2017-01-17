@@ -24,7 +24,7 @@ class phoneGeneric extends simplePlugin
 
   var $netConfigDNS;
 
-  var $objectclasses = array('fdPhone', 'device');
+  var $objectclasses = array('fdPhone', 'ipHost', 'ieee802Device');
 
   var $inheritance = array('gosaGroupOfNames' => 'member');
 
