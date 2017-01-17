@@ -642,9 +642,4 @@ class dhcpConfiguration extends simplePlugin
     //~ parent::ldap_save();
     return $errors;
   }
-
-  public function setPrimaryServer($dn)
-  {
-    $this->attributesAccess['dhcpSections']->setPrimaryDn($dn);
-  }
 }
