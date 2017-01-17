@@ -46,6 +46,9 @@ class serviceDHCP extends simpleService
       'plShortName'   => _('DHCP service'),
       'plDescription' => _('DHCP service'),
       'plIcon'        => 'geticon.php?context=applications&icon=dhcp&size=16',
+      'plForeignKeys'   => array(
+        'dhcpServiceDN' => 'dhcpConfiguration',
+      ),
 
       'plProvidedAcls' => array(
         // Remove this to hide the start button at all.
@@ -64,8 +67,6 @@ class serviceDHCP extends simpleService
     $services = objects::ls('dhcpConfiguration');
     $attributesInfo['main']['attrs'][0]->attribute->setChoices(array_keys($services), array_values($services));
     parent::__construct($dn, $parent, $attributesInfo);
-
-    // TODO: add a foreign key
   }
 }
 ?>
