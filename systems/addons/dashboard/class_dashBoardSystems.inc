@@ -66,40 +66,50 @@ class dashboardSystems extends simplePlugin
   {
     global $config;
     $ldap = $config->get_ldap_link();
-    $ldap->cd($config->current['BASE']);
 
     /* Statistics */
     $stats = array(
-      array('name' => _('Workstations'),
-            'filter' => 'objectClass=gotoWorkstation',
-            'img' => 'geticon.php?context=devices&icon=computer&size=16'),
-      array('name' => _('Servers'),
-            'filter' => 'objectClass=goServer',
-            'img' => 'geticon.php?context=devices&icon=server&size=16'),
-      array('name' => _('Windows Workstations'),
-            'filter' => '(&(objectClass=sambaSamAccount)(uid=*$))',
-            'img' => 'geticon.php?context=devices&icon=computer-windows&size=16'),
-      array('name' => _('Terminals'),
-            'filter' => 'objectClass=gotoTerminal',
-            'img' => 'geticon.php?context=devices&icon=terminal&size=16'),
-      array('name' => _('Printers'),
-            'filter' => 'objectClass=gotoPrinter',
-            'img' => 'geticon.php?context=devices&icon=printer&size=16'),
-      array('name' => _('Phones'),
-            'filter' => 'objectClass=fdPhone',
-            'img' => 'geticon.php?context=devices&icon=telephone&size=16'),
-      array('name' => _('Components'),
-            'filter' => 'objectClass=ieee802Device',
-            'img' => 'geticon.php?context=devices&icon=network-device&size=16'),
-      array('name' => _('Mobile phones'),
-            'filter' => 'objectClass=fdMobilePhone',
-            'img' => 'geticon.php?context=devices&icon=phone&size=16'),
+      array('name'  => _('Workstations'),
+            'type'  => 'workstation',
+            'img'   => 'geticon.php?context=devices&icon=computer&size=16'
+      ),
+      array('name'  => _('Servers'),
+            'type'  => 'server',
+            'img'   => 'geticon.php?context=devices&icon=server&size=16'
+      ),
+      array('name'    => _('Windows Workstations'),
+            'filter'  => '(&(objectClass=sambaSamAccount)(uid=*$))',
+            'img'     => 'geticon.php?context=devices&icon=computer-windows&size=16'
+      ),
+      array('name'  => _('Terminals'),
+            'type'  => 'terminal',
+            'img'   => 'geticon.php?context=devices&icon=terminal&size=16'
+      ),
+      array('name'  => _('Printers'),
+            'type'  => 'printer',
+            'img'   => 'geticon.php?context=devices&icon=printer&size=16'
+      ),
+      array('name'  => _('Phones'),
+            'type'  => 'phone',
+            'img'   => 'geticon.php?context=devices&icon=telephone&size=16'
+      ),
+      array('name'  => _('Components'),
+            'type'  => 'component',
+            'img'   => 'geticon.php?context=devices&icon=network-device&size=16'
+      ),
+      array('name'  => _('Mobile phones'),
+            'type'  => 'mobilePhone',
+            'img'   => 'geticon.php?context=devices&icon=phone&size=16'),
     );
 
-    $ldap->cd($config->current['BASE']);
     foreach ($stats as &$stat) {
-      $ldap->search($stat['filter'], array("cn"));
-      $stat['nb'] = $ldap->count();
+      if (isset($stat['filter'])) {
+        $ldap->cd($config->current['BASE']);
+        $ldap->search($stat['filter'], array("cn"));
+        $stat['nb'] = $ldap->count();
+      } else {
+        $stat['nb'] = objects::count($stat['type']);
+      }
     }
     unset($stat);
 
