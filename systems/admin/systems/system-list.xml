@@ -138,6 +138,15 @@
   </actionmenu>
 
   <actiontriggers snapshot="true" copypaste="true">
+
+    <action>
+      <name>template_apply</name>
+      <type>entry</type>
+      <image>geticon.php?context=actions&amp;icon=document-new&amp;size=16</image>
+      <objectclass>fdTemplate</objectclass>
+      <label>New object from template</label>
+    </action>
+
     <action>
       <name>cp</name>
       <type>copypaste</type>
@@ -153,6 +162,7 @@
     <action>
       <name>snapshot</name>
       <type>snapshot</type>
+      <objectclass>!fdTemplate</objectclass>
     </action>
 
     <action>
