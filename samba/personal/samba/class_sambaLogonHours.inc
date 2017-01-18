@@ -161,7 +161,7 @@ class SambaLogonHoursDialog
     $this->sambaAttribute = $sambaAttribute;
     $this->dialog         = new sambaLogonHours(
       $sambaAttribute->getValue(),
-      $simplePlugin->getacl('sambaLogonHours')
+      $simplePlugin->aclGetPermissions('sambaLogonHours')
     );
   }
 

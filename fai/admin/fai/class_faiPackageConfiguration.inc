@@ -255,7 +255,7 @@ class faiPackageConfiguration extends simplePlugin
   function execute()
   {
     $smarty = get_smarty();
-    $acl    = $this->getacl('FAIpartitions');
+    $acl    = $this->aclGetPermissions('FAIpartitions');
     $smarty->assign('FAIpackageACL', $acl);
     return parent::execute().
       '<p class="plugbottom">'.

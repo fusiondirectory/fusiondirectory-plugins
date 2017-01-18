@@ -48,7 +48,6 @@ class ServerService extends simpleManagement
   var $acl;
   var $cn;
   var $parent;
-  var $pl_notify        = FALSE;
   var $acl_category     = "";
   var $acl_base         = "";
 

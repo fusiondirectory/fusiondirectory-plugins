@@ -445,7 +445,7 @@ class faiPartition extends simplePlugin
   function execute()
   {
     $smarty = get_smarty();
-    $acl    = $this->getacl('FAIpartitions');
+    $acl    = $this->aclGetPermissions('FAIpartitions');
     $smarty->assign('FAIpartitionsACL', $acl);
     parent::execute();
 
