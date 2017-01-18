@@ -117,7 +117,7 @@ class argonautClient extends simplePlugin
       'plShortName'     => _('Argonaut client'),
       'plDescription'   => _('Edit argonaut client settings'),
       'plSelfModify'    => FALSE,
-      'plObjectType'    => array('workstation','server','ogroup-dynamic'),
+      'plObjectType'    => array('workstation','server','terminal','ogroup-dynamic'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
