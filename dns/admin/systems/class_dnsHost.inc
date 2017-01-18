@@ -244,10 +244,9 @@ class dnsHost extends simplePlugin
   function execute()
   {
     $this->load();
-    $smarty     = get_smarty();
-    $ui         = get_userinfo();
-    $skip_write = $this->read_only;
-    $acl        = $ui->get_permissions($this->acl_base, 'dnsZone/'.get_class($this), 'dnsRecords', $this->read_only);
+    $smarty = get_smarty();
+    $ui     = get_userinfo();
+    $acl    = $ui->get_permissions($this->acl_base, 'dnsZone/'.get_class($this), 'dnsRecords', $this->read_only);
     $smarty->assign('dnsRecordsACL', $acl);
     return parent::execute();
   }

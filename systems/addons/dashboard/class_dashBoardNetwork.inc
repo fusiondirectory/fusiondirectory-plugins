@@ -99,7 +99,6 @@ class dashboardNetwork extends simplePlugin
 
   function dns_infos()
   {
-    global $config;
     if (!class_available('dnsZone')) {
       return array();
     }

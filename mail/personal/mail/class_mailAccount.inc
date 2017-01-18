@@ -299,7 +299,6 @@ class mailAccount extends simplePlugin
         }
 
         if (!is_integer(strpos($this->gosaMailDeliveryMode, "C"))) {
-
           /* Do not write sieve settings if this account is new and
              doesn't seem to exist. */
           if (!$this->initially_was_account && !$this->mailMethod->account_exists()) {
@@ -313,7 +312,7 @@ class mailAccount extends simplePlugin
         } else {
           if ($this->sieve_management) {
             @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-                "User uses an own sieve script, skipping sieve update.".$str."</b>", "");
+                "User uses an own sieve script, skipping sieve update.</b>", "");
             $this->sieve_management->save();
           }
         }

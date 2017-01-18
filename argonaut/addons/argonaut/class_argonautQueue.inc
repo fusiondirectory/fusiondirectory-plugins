@@ -200,13 +200,9 @@ class argonautQueue extends simpleManagement
   function viewLogs($action = '', $target = array(), $all = array())
   {
     if (count($target) == 1) {
-      $id       = $target[0];
-      $type     = FALSE;
-      $headpage = $this->getHeadpage();
-      $tmp      = $headpage->getEntry($id);
-      $entry    = $tmp['EVENT'];
+      $entry        = $this->getHeadpage()->getEntry($target[0]);
       $attrsWrapper = new stdClass();
-      $attrsWrapper->attrs = $entry;
+      $attrsWrapper->attrs = $entry['EVENT'];
       $this->dialogObject = new faiLogView(NULL, '', $attrsWrapper, $this);
     }
   }

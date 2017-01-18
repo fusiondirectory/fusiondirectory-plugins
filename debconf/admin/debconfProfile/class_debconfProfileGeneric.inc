@@ -41,14 +41,12 @@ class DebconfEntriesAttribute extends CompositeAttribute
 
     /* Load template */
     $ldap = $config->get_ldap_link();
-    $ou   = $this->plugin->attributesAccess['ou']->getValue();
     $ldap->cd("ou=templates,".$this->plugin->dn);
     $ldap->search("(objectClass=debConfDbEntry)");
     while ($entry = $ldap->fetch()) {
       if (isset($entry['cn'][0])) {
         $cn     = $entry['cn'][0];
         $desc   = (isset($entry['description'][0])?$entry['description'][0]:'');
-        $type   = (isset($entry['type'][0])?$entry['type'][0]:'');
         $default  = (isset($entry['value'][0])?$entry['default'][0]:'');
         $this->attributes[$cn] = new StringAttribute ($cn, $desc, "debconfentry_$cn", FALSE, $default);
         $this->attributes[$cn]->setInLdap(FALSE);

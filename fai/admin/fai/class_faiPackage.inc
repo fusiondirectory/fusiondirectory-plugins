@@ -181,7 +181,6 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
 
   protected function handleAddAndEditValue()
   {
-    global $config;
     $id = $this->getHtmlId();
 
     foreach (array_keys($_POST) as $name) {
@@ -339,7 +338,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     /* Walk through configurations and append them to our list of ConfiguredPackages */
     while ($attr = $ldap->fetch()) {
       /* Skip objects, that are tagged as removed */
-      if (isset($object['FAIstate'][0])) {
+      if (isset($attr['FAIstate'][0])) {
         if (preg_match("/removed$/", $attr['FAIstate'][0])) {
           continue;
         }
@@ -354,7 +353,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
         if (!in_array($attr['FAIvariableType'], array("multiselect"))) {
           $tmp['Value'] = $attr['FAIvariableContent'][0];
         } else {
-          $content = array();
+          $tmp['Value'] = array();
           unset($attr['FAIvariableContent']['count']);
           foreach ($attr['FAIvariableContent'] as $attr) {
             $tmp['Value'][] = $attr;

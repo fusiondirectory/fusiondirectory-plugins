@@ -218,7 +218,6 @@ class fdRPCService
    */
   protected function _listTypes()
   {
-    global $config;
     $types  = objects::types();
 
     $result = array();
@@ -297,7 +296,7 @@ class fdRPCService
       $fields = $object->attributesInfo;
       foreach ($fields as &$section) {
         $attributes = array();
-        foreach ($section['attrs'] as $key => $attr) {
+        foreach ($section['attrs'] as $attr) {
           if ($object->acl_is_readable($attr->getAcl())) {
             $attr->serializeAttribute($attributes, TRUE);
           }
@@ -380,7 +379,7 @@ class fdRPCService
       $fields = $object->attributesInfo;
       foreach ($fields as &$section) {
         $attributes = array();
-        foreach ($section['attrs'] as $key => $attr) {
+        foreach ($section['attrs'] as $attr) {
           if ($object->acl_is_readable($attr->getAcl())) {
             $attr->serializeAttribute($attributes, FALSE);
           }
@@ -479,7 +478,6 @@ class fdRPCService
   {
     global $ui;
     $infos = objects::infos($type);
-    $plist = session::global_get('plist');
     // Check permissions, are we allowed to remove this object?
     $acl = $ui->get_permissions($dn, $infos['aclCategory'].'/'.$infos['mainTab']);
     if (preg_match('/d/', $acl)) {

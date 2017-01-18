@@ -172,8 +172,6 @@ class expiredUserPostpone extends standAlonePage
 
   function sendConfirmationMail($cn, $email_address, $manager_mail)
   {
-    global $config;
-
     if (empty($this->mail_body) || empty($this->mail_subject)) {
       return;
     }
@@ -196,8 +194,6 @@ class expiredUserPostpone extends standAlonePage
 
   function getUserDn()
   {
-    global $config;
-
     $users = objects::ls('user', NULL, NULL, '(uid='.$this->uid.')');
 
     if (count($users) < 1) {

@@ -56,7 +56,6 @@ class ldapmanager extends simplePlugin
 
   static function getAttributesInfo ()
   {
-    global $config;
     return array(
       'export' => array(
         'name'  => _('Export'),
@@ -210,5 +209,4 @@ class ldapmanager extends simplePlugin
     return $config->idepartments;
   }
 }
-
 ?>

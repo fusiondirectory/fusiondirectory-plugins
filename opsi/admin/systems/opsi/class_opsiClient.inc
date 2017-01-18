@@ -159,6 +159,7 @@ class opsiClient extends simplePlugin
 
   function remove_from_parent()
   {
+    global $config;
     if ($this->member_of_group) {
       // If the winstation is member of an ogroup which has OPSI activated, we must update_or_insert information
       // We have to call this in here because save won't be called as is_account is FALSE

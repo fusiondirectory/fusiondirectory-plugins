@@ -122,7 +122,7 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
      *  lvm or raid compilations.
      */
     $list = array();
-    foreach ($this->plugin->parent->disks as $dname => $disk) {
+    foreach ($this->plugin->parent->disks as $disk) {
       if ($disk['FAIdiskType'] == 'lvm') {
         foreach ($disk['FAIlvmDevice'] as $partname) {
           $list[preg_replace('/:.*$/', '', $partname)][] = $disk;
@@ -487,7 +487,7 @@ class faiDiskEntry extends simplePlugin
         $used = array_merge($used, $disk['FAIlvmDevice']);
       }
 
-      foreach ($disk['partitions'] as $key => $part) {
+      foreach ($disk['partitions'] as $part) {
         // Add disks of raid arrays, to the used list.
         if ($disk['FAIdiskType'] == 'raid') {
           foreach (explode(',', $part['FAIpartitionSize']) as $rDevice) {
@@ -528,7 +528,7 @@ class faiDiskEntry extends simplePlugin
     if ($this->FAIdiskType == 'disk') {
       $types = array('logical' => array(), 'primary' => array());
       $types[$disk_to_add['FAIpartitionType']][$disk_to_add['FAIpartitionNr']] = 1;
-      foreach ($this->partitions as $key => $part) {
+      foreach ($this->partitions as $part) {
         $types[$part['FAIpartitionType']][$part['FAIpartitionNr']] = 1;
       }
 

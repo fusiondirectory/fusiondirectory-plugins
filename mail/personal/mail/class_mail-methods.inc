@@ -696,7 +696,6 @@ class mailMethod
   */
   static public function getMailServers()
   {
-    global $config;
     if (session::global_is_set('mailServers')) {
       return session::global_get('mailServers');
     }
@@ -744,7 +743,6 @@ class mailMethod
 
   static public function serverMatch($server)
   {
-    global $config;
     return isset(static::get_server_list()[$server]);
   }
 
@@ -795,7 +793,7 @@ class mailMethod
     /* Merge given ACL with acl mapping
        This ensures that no ACL will accidentally overwritten by fusiondirectory.
      */
-    foreach ($folder_acls as $user => $acl) {
+    foreach ($folder_acls as $acl) {
       if (!isset($this->acl_mapping[$acl])) {
         $this->acl_mapping[$acl] = $acl;
       }

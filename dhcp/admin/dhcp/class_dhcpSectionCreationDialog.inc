@@ -136,7 +136,6 @@ class DhcpSectionCreationDialog extends GenericDialog
       return $this->dialog_execute();
     }
 
-    $dn     = $this->dialog->dn;
     $data   = $this->dialog->save();
     $this->attribute->editEnded($data['dn'], $data, ($this->parentdn === FALSE ? FALSE : $this->parentdn));
     return FALSE;

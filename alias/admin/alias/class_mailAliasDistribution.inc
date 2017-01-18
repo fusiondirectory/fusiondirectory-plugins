@@ -46,9 +46,7 @@ class mailAliasDistribution extends simplePlugin
   // The main function : information about attributes
   static function getAttributesInfo ()
   {
-    global $config;
     return array(
-      // Attributes are grouped by section
       'main' => array(
         'name'  => _('Mail distribution'),
         'attrs' => array(

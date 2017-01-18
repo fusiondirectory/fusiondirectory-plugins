@@ -150,7 +150,6 @@ class csvimport extends simplePlugin
     $this->template_object = new template($this->type, $this->template_dn);
 
     /* Add nonrequired field filling feature */
-    $attributes = array();
     $fields = array();
     if (isset($this->csv_data[0])) {
       foreach ($this->csv_data[0] as $key => $field_value) {
@@ -272,7 +271,7 @@ class csvimport extends simplePlugin
     }
     if (is_array($i)) {
       $value = array();
-      foreach ($i as $k => $j) {
+      foreach ($i as $j) {
         $value[] = $this->compute_attribute_value($attribute, $row, $j);
       }
       return $value;
