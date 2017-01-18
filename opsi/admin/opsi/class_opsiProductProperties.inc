@@ -209,8 +209,12 @@ class opsiProductProperties extends simplePlugin
         array_map(
           function ($a)
           {
-            if ($a === TRUE) return "true";
-            if ($a === FALSE) return "false";
+            if ($a === TRUE) {
+              return 'true';
+            }
+            if ($a === FALSE) {
+              return 'false';
+            }
             return $a;
           },
           $property['defaultValues']
@@ -241,8 +245,12 @@ class opsiProductProperties extends simplePlugin
         array_map(
           function ($a)
           {
-            if ($a === TRUE) return "true";
-            if ($a === FALSE) return "false";
+            if ($a === TRUE) {
+              return 'true';
+            }
+            if ($a === FALSE) {
+              return 'false';
+            }
             return $a;
           },
           $property['possibleValues']

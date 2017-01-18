@@ -45,9 +45,11 @@ class packageSelect extends simpleSelectManagement
   {
     $act = $this->detectPostActions();
     $headpage = $this->getHeadpage();
-    if (!isset($act['targets'])) return(array());
+    if (!isset($act['targets'])) {
+      return array();
+    }
     $ret = array();
-    foreach($act['targets'] as $dn) {
+    foreach ($act['targets'] as $dn) {
       $ret[] = $headpage->getEntry($dn);
     }
     return $ret;

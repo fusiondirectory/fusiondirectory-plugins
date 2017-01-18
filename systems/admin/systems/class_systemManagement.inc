@@ -209,8 +209,11 @@ class systemManagement extends simpleManagement
   function detectPostActions()
   {
     $action = parent::detectPostActions();
-    if (isset($_POST['abort_event_dialog']))  $action['action'] = 'cancel';
-    if (isset($_POST['save_event_dialog']))   $action['action'] = 'saveEvent';
+    if (isset($_POST['save_event_dialog'])) {
+      $action['action'] = 'saveEvent';
+    } elseif (isset($_POST['abort_event_dialog'])) {
+      $action['action'] = 'cancel';
+    }
     return $action;
   }
 
