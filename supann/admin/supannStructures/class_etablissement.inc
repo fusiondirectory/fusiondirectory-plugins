@@ -176,11 +176,11 @@ class etablissement extends simplePlugin
         }
       }
       $root_mode  = 'add';
-    } else if (($root_code !== FALSE) && ($root_code == $this->supannEtablissement) && $this->set_root) {
+    } elseif (($root_code !== FALSE) && ($root_code == $this->supannEtablissement) && $this->set_root) {
       /* We are the root etablissement, we need to update it */
       $root_attrs = $this->attrs;
       $root_mode  = 'modify';
-    } else if (($root_code !== FALSE) && ($root_code == $this->supannEtablissement) && !$this->set_root) {
+    } elseif (($root_code !== FALSE) && ($root_code == $this->supannEtablissement) && !$this->set_root) {
       /* We are the root etablissement, we want to delete it */
       $root_mode = 'delete';
     }
