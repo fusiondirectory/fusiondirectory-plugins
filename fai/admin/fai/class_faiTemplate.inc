@@ -90,11 +90,6 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  protected function handleEdit($key)
-  {
-    parent::handleEdit($key);
-  }
-
   function compute_sub_dn ($value)
   {
     return 'cn='.$value['cn'].','.$this->plugin->dn;

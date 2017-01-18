@@ -42,11 +42,6 @@ class dnsManagement extends simpleManagement
     );
   }
 
-  function __construct()
-  {
-    parent::__construct();
-  }
-
   function configureHeadpage ()
   {
     parent::configureHeadpage();

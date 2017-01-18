@@ -41,10 +41,5 @@ class dhcpManagement extends simpleManagement
       'plProvidedAcls'  => array()
     );
   }
-
-  function __construct()
-  {
-    parent::__construct();
-  }
 }
 ?>

@@ -50,11 +50,6 @@ class serviceIMAP extends simpleService
     return '<b>This server runs an IMAP or POP3 server</b>'.parent::execute();
   }
 
-  function save()
-  {
-    parent::save();
-  }
-
   protected function post_save()
   {
     parent::post_save();
