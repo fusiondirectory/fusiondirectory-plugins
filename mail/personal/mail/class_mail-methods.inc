@@ -427,7 +427,7 @@ class mailMethod
               This function is mainly used to read and write folder permissions.
       @return String A valid folder id
    */
-  public function create_folder_id($folder, $type = "")
+  public function create_folder_id($folder)
   {
     if (!empty($folder)) {
       $folder = trim(preg_replace("/^INBOX[\.\/]*/i", "", $folder));
