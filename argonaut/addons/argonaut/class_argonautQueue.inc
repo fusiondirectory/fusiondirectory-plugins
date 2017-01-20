@@ -135,14 +135,14 @@ class argonautQueue extends simpleManagement
         if ($infos) {
           $objects[] = array(
             'name'  => $infos['name'],
-            'dn'    => LDAP::fix($dn),
+            'dn'    => $dn,
             'icon'  => $infos['img'],
             'type'  => 'task'
           );
         } else {
           $objects[] = array(
             'name'  => $task['HEADERTAG'],
-            'dn'    => LDAP::fix($dn),
+            'dn'    => $dn,
             'icon'  => '',
             'type'  => 'task'
           );

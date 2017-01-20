@@ -151,7 +151,7 @@ class ldapmanager extends simplePlugin
     $acl  = $this->attributesAccess['single_export']->getAcl();
     if (!$ldap->dn_exists($dn)) {
       msg_dialog::display(_('LDAP error'),
-          sprintf(_('No such object %s!'), LDAP::fix($dn)),
+          sprintf(_('No such object %s!'), $dn),
           ERROR_DIALOG);
       $dn = '';
     }
@@ -172,11 +172,11 @@ class ldapmanager extends simplePlugin
       // Check permissions
       if (!$this->acl_is_writeable($acl, $this->acl_skip_write())) {
         msg_dialog::display(_('Permission error'),
-            sprintf(_('You have no permission to export %s!'), bold(LDAP::fix($dn))),
+            sprintf(_('You have no permission to export %s!'), bold($dn)),
             ERROR_DIALOG);
       } else {
         $ldap = $config->get_ldap_link();
-        $data = $ldap->generateLdif(LDAP::fix($dn), $this->export_filter, $scope);
+        $data = $ldap->generateLdif($dn, $this->export_filter, $scope);
         if ($data === NULL) {
           msg_dialog::display(_('Error'),
               sprintf(_('Failed to generate ldap export, error was "%s"!'), $ldap->get_error()),
