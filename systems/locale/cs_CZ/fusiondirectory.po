@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 21:02+0200\n"
+"POT-Creation-Date: 2016-10-15 18:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -18,80 +18,77 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: admin/systems/class_terminalStartup.inc:62
+#: admin/systems/class_terminalStartup.inc:32
+msgid "Startup"
+msgstr ""
+
+#: admin/systems/class_terminalStartup.inc:33
+msgid "Terminal startup"
+msgstr ""
+
+#: admin/systems/class_terminalStartup.inc:50
 msgid "Startup parameters"
 msgstr "Parametry zavádění systému"
 
-#: admin/systems/class_terminalStartup.inc:65
+#: admin/systems/class_terminalStartup.inc:53
 msgid "Root server"
 msgstr "Kořenový server"
 
-#: admin/systems/class_terminalStartup.inc:65
+#: admin/systems/class_terminalStartup.inc:53
 msgid "The root server the terminal should be using"
 msgstr "Kořenový server, který by měl terminál používat"
 
-#: admin/systems/class_terminalStartup.inc:69
+#: admin/systems/class_terminalStartup.inc:57
 msgid "Swap server"
 msgstr "stránkovací (swap) server"
 
-#: admin/systems/class_terminalStartup.inc:69
+#: admin/systems/class_terminalStartup.inc:57
 msgid "The swap server the terminal should be using"
 msgstr "Odkládací (swap) server, který by měl terminál používat"
 
-#: admin/systems/class_terminalStartup.inc:73
-msgid "Boot kernel"
-msgstr "zaváděné jádro"
-
-#: admin/systems/class_terminalStartup.inc:73
-msgid "Linux kernel to be installed and booted"
-msgstr "Jádro Linux, které má být nainstalováno a zavedeno"
-
-#: admin/systems/class_terminalStartup.inc:77
-msgid "Boot kernel parameters"
-msgstr "Parametry zavádění jádra"
-
-#: admin/systems/class_terminalStartup.inc:77
-msgid "Linux kernel parameters to be ran"
-msgstr "Parametry jádra Linux, se kterými má být zavedeno"
-
-#: admin/systems/class_terminalStartup.inc:83
+#: admin/systems/class_terminalStartup.inc:63
 msgid "Remote desktop"
 msgstr "vzdálený desktop"
 
-#: admin/systems/class_terminalStartup.inc:87
+#: admin/systems/class_terminalStartup.inc:67
 msgid "Connect method"
 msgstr "způsob připojování"
 
-#: admin/systems/class_terminalStartup.inc:91
+#: admin/systems/class_terminalStartup.inc:71
+#: admin/systems/services/terminal/class_serviceTerminal.inc:59
 msgid "XDMCP"
 msgstr "XDMCP"
 
-#: admin/systems/class_terminalStartup.inc:91
+#: admin/systems/class_terminalStartup.inc:71
+#: admin/systems/services/terminal/class_serviceTerminal.inc:59
 msgid "LDM"
 msgstr "LDM"
 
-#: admin/systems/class_terminalStartup.inc:91
+#: admin/systems/class_terminalStartup.inc:71
+#: admin/systems/services/terminal/class_serviceTerminal.inc:59
 msgid "Shell"
 msgstr "shell"
 
-#: admin/systems/class_terminalStartup.inc:91
+#: admin/systems/class_terminalStartup.inc:71
+#: admin/systems/services/terminal/class_serviceTerminal.inc:59
 msgid "Telnet"
 msgstr "Telnet"
 
-#: admin/systems/class_terminalStartup.inc:91
+#: admin/systems/class_terminalStartup.inc:71
+#: admin/systems/services/terminal/class_serviceTerminal.inc:59
 msgid "Windows RDP"
 msgstr "Windows RDP"
 
-#: admin/systems/class_terminalStartup.inc:95
+#: admin/systems/class_terminalStartup.inc:75
 msgid "Terminal server"
 msgstr "terminálový server"
 
-#: admin/systems/class_terminalStartup.inc:134
-#: admin/systems/class_terminalStartup.inc:150
+#: admin/systems/class_terminalStartup.inc:112
+#: admin/systems/class_terminalStartup.inc:123
 msgid "inherited"
 msgstr "zděděné"
 
-#: admin/systems/class_terminalStartup.inc:146
+#: admin/systems/class_terminalStartup.inc:120
 msgid "Local swap"
 msgstr "stránkovat (swap) na místní úložiště"
 
@@ -582,27 +579,27 @@ msgstr "systémy"
 msgid "Systems Management"
 msgstr "správa systémů"
 
-#: admin/systems/class_systemManagement.inc:136
-#: admin/systems/class_systemManagement.inc:150
+#: admin/systems/class_systemManagement.inc:143
+#: admin/systems/class_systemManagement.inc:157
 msgid "Action canceled"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:136
+#: admin/systems/class_systemManagement.inc:143
 #, php-format
 msgid "System %s has no mac address defined, cannot trigger action"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:150
+#: admin/systems/class_systemManagement.inc:157
 #, php-format
 msgid "System %s is currently installing"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:166
-#: admin/systems/class_systemManagement.inc:192
+#: admin/systems/class_systemManagement.inc:173
+#: admin/systems/class_systemManagement.inc:199
 msgid "Infrastructure service"
 msgstr "Služba infrastruktury"
 
-#: admin/systems/class_systemManagement.inc:257
+#: admin/systems/class_systemManagement.inc:264
 #, php-format
 msgid "Inherited from %s"
 msgstr "zděděno z %s"

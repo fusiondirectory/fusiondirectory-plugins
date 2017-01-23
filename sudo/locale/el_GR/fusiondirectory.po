@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 21:02+0200\n"
+"POT-Creation-Date: 2016-10-15 18:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -56,7 +56,7 @@ msgstr " Επιλογές"
 msgid "Sudo options"
 msgstr "Επιλογές Sudo"
 
-#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:121
+#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:123
 #: config/sudo/class_sudoConfig.inc:42
 msgid "Sudo"
 msgstr "Sudo"
@@ -65,35 +65,35 @@ msgstr "Sudo"
 msgid "Sudo management"
 msgstr "Διαχείριση Sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:122 admin/sudo/class_sudoGeneric.inc:126
+#: admin/sudo/class_sudoGeneric.inc:124 admin/sudo/class_sudoGeneric.inc:128
 msgid "Sudo role"
 msgstr "Ρόλος Sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:141
+#: admin/sudo/class_sudoGeneric.inc:143
 msgid "Role settings"
 msgstr "Ρυθμίσεις ρόλου"
 
-#: admin/sudo/class_sudoGeneric.inc:146
+#: admin/sudo/class_sudoGeneric.inc:149
 msgid "Name"
 msgstr "Όνομα"
 
-#: admin/sudo/class_sudoGeneric.inc:146
+#: admin/sudo/class_sudoGeneric.inc:149
 msgid "Name of the role"
 msgstr "Όνομα του ρόλου"
 
-#: admin/sudo/class_sudoGeneric.inc:151
+#: admin/sudo/class_sudoGeneric.inc:154
 msgid "Description"
 msgstr "Περιγραφή"
 
-#: admin/sudo/class_sudoGeneric.inc:151
+#: admin/sudo/class_sudoGeneric.inc:154
 msgid "Description for the new sudo role"
 msgstr "Περιγραφή του νέου ρόλου sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:156
+#: admin/sudo/class_sudoGeneric.inc:159
 msgid "Commands"
 msgstr "Εντολές"
 
-#: admin/sudo/class_sudoGeneric.inc:157
+#: admin/sudo/class_sudoGeneric.inc:160
 msgid ""
 "A Unix command with optional command line arguments, potentially including "
 "globbing characters (aka wild cards)"
@@ -101,46 +101,46 @@ msgstr ""
 "Μια εντολή Unix με προαιρετικές παραμέτρους γραμμής εντολών, με δυνατότητα "
 "συμπερίληψης wild cards"
 
-#: admin/sudo/class_sudoGeneric.inc:163
+#: admin/sudo/class_sudoGeneric.inc:166
 msgid "Run as (user)"
 msgstr "Εκτέλεση ως (χρήστης)"
 
-#: admin/sudo/class_sudoGeneric.inc:164
+#: admin/sudo/class_sudoGeneric.inc:167
 msgid "User(s) impersonated by sudo"
 msgstr "Χρήστες impersonated από sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:171
+#: admin/sudo/class_sudoGeneric.inc:174
 msgid "Run as (group)"
 msgstr "Εκτέλεση ως (ομάδα)"
 
-#: admin/sudo/class_sudoGeneric.inc:172
+#: admin/sudo/class_sudoGeneric.inc:175
 msgid "Group(s) impersonated by sudo"
 msgstr "Ομάδες mpersonated από sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:178
+#: admin/sudo/class_sudoGeneric.inc:181
 msgid "Systems"
 msgstr "Systems"
 
-#: admin/sudo/class_sudoGeneric.inc:178
+#: admin/sudo/class_sudoGeneric.inc:181
 msgid "A host name, IP address or IP network"
 msgstr "Ένα όνομα υπολογιστή, μια διεύθυνση  IP, ή ένα δίκτυο IP "
 
-#: admin/sudo/class_sudoGeneric.inc:183
+#: admin/sudo/class_sudoGeneric.inc:186
 msgid "Users and groups"
 msgstr "Χρήστες και ομάδες"
 
-#: admin/sudo/class_sudoGeneric.inc:184
+#: admin/sudo/class_sudoGeneric.inc:187
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
 msgstr ""
 "Ένα όνομα χρήστη, ταυτότητα χρήστη (ID με πρόθεμα '#'), ομάδα (Unix group με"
 " πρόθεμα '%')"
 
-#: admin/sudo/class_sudoGeneric.inc:188
+#: admin/sudo/class_sudoGeneric.inc:191
 msgid "Priority"
 msgstr "Προτεραιότητα"
 
-#: admin/sudo/class_sudoGeneric.inc:188
+#: admin/sudo/class_sudoGeneric.inc:191
 msgid "This rule priority compared to others"
 msgstr "Συσχέτιση της προτεραιότητας αυτού του ρόλου με άλλων."
 

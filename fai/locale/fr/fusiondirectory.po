@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-09-27 21:02+0200\n"
+"POT-Creation-Date: 2016-10-15 18:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: admin/fai/class_faiManagement.inc:117 admin/fai/class_faiManagement.inc:122
-#: admin/systems/class_faiStartup.inc:147 config/fai/class_faiConfig.inc:41
+#: admin/systems/class_faiStartup.inc:64 config/fai/class_faiConfig.inc:41
 msgid "FAI"
 msgstr "FAI"
 
@@ -47,113 +47,113 @@ msgstr "Marquer à enlever"
 msgid "Edit configuration"
 msgstr "Éditer la configuration"
 
-#: admin/fai/class_faiPackage.inc:253
-#: admin/fai/class_faiPartitionTable.inc:207
-#: admin/fai/class_faiPartitionTable.inc:248
-#: admin/fai/class_faiTemplate.inc:112
-#: admin/systems/services/repository/class_serviceRepository.inc:239
-#: admin/systems/services/repository/class_serviceRepository.inc:256
-#: admin/systems/services/repository/class_serviceRepository.inc:260
+#: admin/fai/class_faiPackage.inc:254
+#: admin/fai/class_faiPartitionTable.inc:210
+#: admin/fai/class_faiPartitionTable.inc:251
+#: admin/fai/class_faiTemplate.inc:114
+#: admin/systems/services/repository/class_serviceRepository.inc:244
+#: admin/systems/services/repository/class_serviceRepository.inc:261
+#: admin/systems/services/repository/class_serviceRepository.inc:265
 msgid "LDAP error"
 msgstr "Erreur LDAP"
 
-#: admin/fai/class_faiPackage.inc:289
+#: admin/fai/class_faiPackage.inc:290
 #: admin/fai/packageSelect/class_filterFAIPackages.inc:41
 #: admin/fai/packageSelect/class_filterFAIPackages.inc:46
 #: admin/fai/class_faiPackageConfiguration.inc:59
 msgid "Infrastructure service"
 msgstr "Service d’infrastructure"
 
-#: admin/fai/class_faiPackage.inc:308
+#: admin/fai/class_faiPackage.inc:309
 msgid "Unkown packages"
 msgstr "Paquets inconnus"
 
-#: admin/fai/class_faiPackage.inc:378
+#: admin/fai/class_faiPackage.inc:379
 #: admin/fai/packageSelect/selectPackage-list.xml:15
 msgid "Package"
 msgstr "Paquet"
 
-#: admin/fai/class_faiPackage.inc:379
+#: admin/fai/class_faiPackage.inc:380
 msgid "FAI Package list"
 msgstr "Liste de paquets FAI"
 
-#: admin/fai/class_faiPackage.inc:382
+#: admin/fai/class_faiPackage.inc:383
 msgid "FAI Package"
 msgstr "Paquet FAI"
 
-#: admin/fai/class_faiPackage.inc:398
-#: admin/fai/class_faiPartitionTable.inc:301
+#: admin/fai/class_faiPackage.inc:399
+#: admin/fai/class_faiPartitionTable.inc:304
 #: admin/fai/class_faiTemplateEntry.inc:139 admin/fai/class_faiProfile.inc:49
-#: admin/fai/class_faiScript.inc:50 admin/fai/class_faiTemplate.inc:169
+#: admin/fai/class_faiScript.inc:50 admin/fai/class_faiTemplate.inc:171
 #: admin/fai/class_faiHook.inc:48 admin/fai/class_faiVariable.inc:48
 msgid "Properties"
 msgstr "Propriétés"
 
-#: admin/fai/class_faiPackage.inc:401
-#: admin/fai/class_faiPartitionTable.inc:304 admin/fai/class_faiProfile.inc:52
-#: admin/fai/class_faiScript.inc:53 admin/fai/class_faiTemplate.inc:172
+#: admin/fai/class_faiPackage.inc:402
+#: admin/fai/class_faiPartitionTable.inc:307 admin/fai/class_faiProfile.inc:52
+#: admin/fai/class_faiScript.inc:53 admin/fai/class_faiTemplate.inc:174
 #: admin/fai/class_faiHook.inc:51 admin/fai/class_faiVariable.inc:51
 msgid "Class name"
 msgstr "Nom de la classe"
 
-#: admin/fai/class_faiPackage.inc:401 admin/fai/class_faiScript.inc:53
+#: admin/fai/class_faiPackage.inc:402 admin/fai/class_faiScript.inc:53
 #: admin/fai/class_faiHook.inc:51 admin/fai/class_faiVariable.inc:51
 msgid "Variables class name"
 msgstr "Nom de la classe variables"
 
-#: admin/fai/class_faiPackage.inc:405
-#: admin/fai/class_faiPartitionTable.inc:308
+#: admin/fai/class_faiPackage.inc:406
+#: admin/fai/class_faiPartitionTable.inc:311
 #: admin/fai/class_faiDiskEntry.inc:239
 #: admin/fai/class_faiTemplateEntry.inc:146 admin/fai/class_faiProfile.inc:56
 #: admin/fai/class_faiScript.inc:57 admin/fai/class_faiScript.inc:75
-#: admin/fai/class_faiTemplate.inc:176 admin/fai/class_faiPartition.inc:246
+#: admin/fai/class_faiTemplate.inc:178 admin/fai/class_faiPartition.inc:246
 #: admin/fai/class_faiHook.inc:55 admin/fai/class_faiHook.inc:73
 #: admin/fai/class_faiVariable.inc:55 admin/fai/class_faiVariable.inc:73
 msgid "Description"
 msgstr "Description"
 
-#: admin/fai/class_faiPackage.inc:405
-#: admin/fai/class_faiPartitionTable.inc:308 admin/fai/class_faiProfile.inc:56
-#: admin/fai/class_faiScript.inc:57 admin/fai/class_faiTemplate.inc:176
+#: admin/fai/class_faiPackage.inc:406
+#: admin/fai/class_faiPartitionTable.inc:311 admin/fai/class_faiProfile.inc:56
+#: admin/fai/class_faiScript.inc:57 admin/fai/class_faiTemplate.inc:178
 #: admin/fai/class_faiHook.inc:55 admin/fai/class_faiVariable.inc:55
 msgid "Short description of the class"
 msgstr "Une courte description de cette classe"
 
-#: admin/fai/class_faiPackage.inc:411 admin/systems/class_faiStartup.inc:88
+#: admin/fai/class_faiPackage.inc:412 admin/systems/class_faiStartup.inc:103
 msgid "Repository"
 msgstr "Dépôt"
 
-#: admin/fai/class_faiPackage.inc:414 admin/systems/class_faiStartup.inc:76
+#: admin/fai/class_faiPackage.inc:415 admin/systems/class_faiStartup.inc:91
 #: admin/systems/services/repository/class_serviceRepository.inc:40
 msgid "Release"
 msgstr "Version"
 
-#: admin/fai/class_faiPackage.inc:414
+#: admin/fai/class_faiPackage.inc:415
 msgid "Debian release concerned"
 msgstr "La version de Debian concernée"
 
-#: admin/fai/class_faiPackage.inc:418
+#: admin/fai/class_faiPackage.inc:419
 #: admin/systems/services/repository/class_serviceRepository.inc:47
 msgid "Sections"
 msgstr "Sections"
 
-#: admin/fai/class_faiPackage.inc:418
+#: admin/fai/class_faiPackage.inc:419
 msgid "Sections concerned"
 msgstr "Les sections concernées"
 
-#: admin/fai/class_faiPackage.inc:422
+#: admin/fai/class_faiPackage.inc:423
 msgid "Install method"
 msgstr "Méthode d'installation"
 
-#: admin/fai/class_faiPackage.inc:422
+#: admin/fai/class_faiPackage.inc:423
 msgid "Install method to use for this package list"
 msgstr "La méthode d'installation à utiliser pour cette liste de paquets"
 
-#: admin/fai/class_faiPackage.inc:433
+#: admin/fai/class_faiPackage.inc:434
 msgid "Packages"
 msgstr "Paquets"
 
-#: admin/fai/class_faiPackage.inc:437
+#: admin/fai/class_faiPackage.inc:438
 msgid "Packages in this class"
 msgstr "Paquets dans cette classe"
 
@@ -165,24 +165,24 @@ msgstr "Ajouter du RAID"
 msgid "Add LVM"
 msgstr "Ajouter un LVM"
 
-#: admin/fai/class_faiPartitionTable.inc:281
+#: admin/fai/class_faiPartitionTable.inc:284
 msgid "Partition table"
 msgstr "Table des partitions"
 
-#: admin/fai/class_faiPartitionTable.inc:282
 #: admin/fai/class_faiPartitionTable.inc:285
+#: admin/fai/class_faiPartitionTable.inc:288
 msgid "FAI partition table"
 msgstr "Table des partitions FAI"
 
-#: admin/fai/class_faiPartitionTable.inc:304 admin/fai/class_faiProfile.inc:52
+#: admin/fai/class_faiPartitionTable.inc:307 admin/fai/class_faiProfile.inc:52
 msgid "Partition table class name"
 msgstr "Nom de la classe de partition"
 
-#: admin/fai/class_faiPartitionTable.inc:314
+#: admin/fai/class_faiPartitionTable.inc:317
 msgid "Discs"
 msgstr "Disques"
 
-#: admin/fai/class_faiPartitionTable.inc:321
+#: admin/fai/class_faiPartitionTable.inc:324
 #: admin/fai/class_faiDiskEntry.inc:269
 msgid "Partitions in this class"
 msgstr "Partitions dans cette classe"
@@ -439,28 +439,28 @@ msgstr "Priorité de ce script (la plus petite vient en premier)"
 msgid "The script itself"
 msgstr "Le script en lui même"
 
-#: admin/fai/class_faiTemplate.inc:134
+#: admin/fai/class_faiTemplate.inc:136
 #, php-format
 msgid "There are several files with the same path: %s"
 msgstr "Il existe plusieurs fichiers avec le même chemin : %s"
 
-#: admin/fai/class_faiTemplate.inc:149
+#: admin/fai/class_faiTemplate.inc:151
 msgid "Template"
 msgstr "Modèle"
 
-#: admin/fai/class_faiTemplate.inc:150 admin/fai/class_faiTemplate.inc:153
+#: admin/fai/class_faiTemplate.inc:152 admin/fai/class_faiTemplate.inc:155
 msgid "FAI template"
 msgstr "Modèle FAI"
 
-#: admin/fai/class_faiTemplate.inc:172
+#: admin/fai/class_faiTemplate.inc:174
 msgid "Template class name"
 msgstr "Nom de la classe de modèle"
 
-#: admin/fai/class_faiTemplate.inc:182
+#: admin/fai/class_faiTemplate.inc:184
 msgid "Template files"
 msgstr "Fichiers du modèle"
 
-#: admin/fai/class_faiTemplate.inc:186
+#: admin/fai/class_faiTemplate.inc:188
 msgid "Template files in this class"
 msgstr "Fichiers de modèle de cette classe"
 
@@ -793,33 +793,33 @@ msgstr "Fichier sélectionné"
 msgid "Selected file: %s"
 msgstr "Fichier sélectionné : %s"
 
-#: admin/systems/class_faiStartup.inc:68
+#: admin/systems/class_faiStartup.inc:65
+msgid "Full automated installation"
+msgstr "Full automated installation"
+
+#: admin/systems/class_faiStartup.inc:83
 msgid "FAI settings"
 msgstr "Paramètres FAI"
 
-#: admin/systems/class_faiStartup.inc:72
+#: admin/systems/class_faiStartup.inc:87
 msgid "FAI profil and release to be applied to this computer"
 msgstr "Profil FAI et version de Debian à appliquer pour ce système"
 
-#: admin/systems/class_faiStartup.inc:76
+#: admin/systems/class_faiStartup.inc:91
 msgid "FAI debian release to be installed on this computer"
 msgstr "Version de Debian à installer sur ce système avec FAI"
 
-#: admin/systems/class_faiStartup.inc:80
+#: admin/systems/class_faiStartup.inc:95
 msgid "Profil"
 msgstr "Profil"
 
-#: admin/systems/class_faiStartup.inc:80
+#: admin/systems/class_faiStartup.inc:95
 msgid "FAI profil to be applied to this computer"
 msgstr "Profil FAI à appliquer pour ce système"
 
-#: admin/systems/class_faiStartup.inc:88
+#: admin/systems/class_faiStartup.inc:103
 msgid "FAI Debian repository to be used for installation"
 msgstr "Dépôt FAI à utiliser pour cette installation"
-
-#: admin/systems/class_faiStartup.inc:148
-msgid "Full automated installation"
-msgstr "Full automated installation"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:31
 msgid "URL"
@@ -888,19 +888,19 @@ msgstr "Modèle d’organisation, des répertoires du dépôt"
 msgid "How this repository is organized (only for RPM repositories)"
 msgstr "Comment ce dépôt est organisé (uniquement pour les dépôts RPM)"
 
-#: admin/systems/services/repository/class_serviceRepository.inc:155
+#: admin/systems/services/repository/class_serviceRepository.inc:160
 msgid "Package repository"
 msgstr "Dépôt de paquets"
 
-#: admin/systems/services/repository/class_serviceRepository.inc:156
+#: admin/systems/services/repository/class_serviceRepository.inc:161
 msgid "Package repository information"
 msgstr "Informations du dépôt de paquets"
 
-#: admin/systems/services/repository/class_serviceRepository.inc:168
+#: admin/systems/services/repository/class_serviceRepository.inc:173
 msgid "Repositories"
 msgstr "Dépôts"
 
-#: admin/systems/services/repository/class_serviceRepository.inc:173
+#: admin/systems/services/repository/class_serviceRepository.inc:178
 msgid "Repositories this server hosts"
 msgstr "Dépôts fournis par ce serveur"
 
