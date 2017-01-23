@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2017  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -31,10 +31,6 @@ class mailMethodCyrus extends mailMethod
   /* Allow modification of the mail server attribute existing mail accounts */
   protected $modifyableServer = FALSE;
 
-  /* Enforces same value for 'mail' as used for 'cn' */
-  protected $mailEqualsCN   = FALSE;
-
-  protected $enableDomainSelection  = FALSE;
   protected $enableQuota            = TRUE;
   protected $enableVacationRange    = FALSE;
   protected $enableFolderTypes      = FALSE;
@@ -48,7 +44,7 @@ class mailMethodCyrus extends mailMethod
   public function connect()
   {
     global $config;
-    mailMethod::connect();
+    parent::connect();
 
     if (!count($this->ServerList)) {
       $this->error = _("There are no IMAP compatible mail servers defined!");
@@ -123,16 +119,15 @@ class mailMethodCyrus extends mailMethod
 
   public function disconnect()
   {
-    mailMethod::disconnect();
+    parent::disconnect();
     if ($this->is_connected()) {
       @imap_close ($this->imap_handle);
     }
   }
 
-
   public function is_connected()
   {
-    $ret = mailMethod::is_connected();
+    $ret = parent::is_connected();
     return ($ret && $this->imap_handle);
   }
 
@@ -199,7 +194,7 @@ class mailMethodCyrus extends mailMethod
 
   public function getQuota($quota)
   {
-    mailMethod::getQuota($quota);
+    parent::getQuota($quota);
     if (!$this->quota_loaded) {
       $this->quota_loaded = TRUE;
       $this->loadQuota();
@@ -209,7 +204,7 @@ class mailMethodCyrus extends mailMethod
 
   public function getQuotaUsage()
   {
-    mailMethod::getQuotaUsage();
+    parent::getQuotaUsage();
     if (!$this->quota_loaded) {
       $this->quota_loaded = TRUE;
       $this->loadQuota();
@@ -219,7 +214,7 @@ class mailMethodCyrus extends mailMethod
 
   public function setQuota($number)
   {
-    mailMethod::setQuota($number);
+    parent::setQuota($number);
 
     if (!$this->quotaEnabled()) {
       return TRUE;
@@ -254,11 +249,10 @@ class mailMethodCyrus extends mailMethod
     return TRUE;
   }
 
-
   public function updateMailbox()
   {
     global $config;
-    mailMethod::updateMailbox();
+    parent::updateMailbox();
 
     if (!$this->is_connected() || !$this->imap_handle) {
       trigger_error("Method not connected, catch error.");
@@ -278,31 +272,29 @@ class mailMethodCyrus extends mailMethod
         }
 
         /* Autocreate configured default folders */
-        $folders = $config->get_cfg_value("cyrusAutocreateFolders", NULL);
+        $folders = $config->get_cfg_value('cyrusAutocreateFolders', NULL);
         if ($folders !== NULL) {
-          $cyrus_delim      = ($this->cyrusUseSlashes?"/":".");
+          $cyrus_delim = ($this->cyrusUseSlashes ? '/' : '.');
 
           // Walk thru list of specified folders
           foreach ($folders as $folder) {
-            @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
-              "<b>IMAP: Add/Update account folder ".$folder."</b> on server :".$this->parent->gosaMailServer);
-            if (!imap_createmailbox($this->imap_handle, $cfg["connect"].$this->account_id.$cyrus_delim.$folder)) {
+            @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<b>'.$this->account_id.'</b>',
+              '<b>IMAP: Add/Update account folder '.$folder.'</b> on server :'.$this->parent->gosaMailServer);
+            if (!imap_createmailbox($this->imap_handle, $cfg['connect'].$this->account_id.$cyrus_delim.$folder)) {
               $this->error = imap_last_error();
               return FALSE;
             }
           }
-
         }
       }
     }
     return TRUE;
   }
 
-
   public function deleteMailbox()
   {
     global $config;
-    mailMethod::deleteMailbox();
+    parent::deleteMailbox();
 
     if (!$this->is_connected() || !$this->imap_handle) {
       trigger_error("Method not connected, catch error.");
@@ -327,11 +319,8 @@ class mailMethodCyrus extends mailMethod
     return TRUE;
   }
 
-
   public function getMailboxList()
   {
-    mailMethod::getMailboxList();
-
     if (!$this->is_connected() || !$this->imap_handle) {
       trigger_error("Method not connected, catch error.");
       return array();
@@ -404,10 +393,9 @@ class mailMethodCyrus extends mailMethod
     return $result;
   }
 
-
   /*! \brief  Returns configured acls
    */
-  public function  getFolderACLs($folder_acls)
+  public function getFolderACLs($folder_acls)
   {
     $this->reset_error();
 
@@ -443,11 +431,9 @@ class mailMethodCyrus extends mailMethod
     return $folder_acls;
   }
 
-
-
   /*! \brief  Write ACLs back to imap or what ever
    */
-  public function  setFolderACLs($permissions)
+  public function setFolderACLs($permissions)
   {
     $this->reset_error();
 
@@ -487,13 +473,12 @@ class mailMethodCyrus extends mailMethod
             "<b>IMAP: Setting new folder permissions.</b>");
       }
     }
-    return(TRUE);
+    return TRUE;
   }
-
 
   public function saveSieveSettings()
   {
-    mailMethod::saveSieveSettings();
+    parent::saveSieveSettings();
 
     /* Map attribute from parent class
      */

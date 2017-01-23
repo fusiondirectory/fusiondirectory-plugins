@@ -26,9 +26,6 @@ class mailMethodRenaterPartage extends mailMethod
   /* Allow modification of the mail server attribute existing mail accounts */
   protected $modifyableServer = FALSE;
 
-  /* Enforces same value for 'mail' as used for 'cn' */
-  protected $mailEqualsCN   = FALSE;
-
   protected $enableQuota            = TRUE;
   protected $enableVacationRange    = FALSE;
   protected $enableFolderTypes      = FALSE;
