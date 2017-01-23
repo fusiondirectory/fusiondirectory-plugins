@@ -6,29 +6,34 @@
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.11.10 NAME 'gotoLogonScript'
   DESC 'GOto - specifies a LogonScript'
+  OBSOLETE
   EQUALITY caseIgnoreMatch
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.12.13 NAME 'gosaDefaultPrinter'
   DESC 'Defines a default printer a user owns'
+  OBSOLETE
   EQUALITY caseIgnoreIA5Match
   SUBSTR caseIgnoreIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.11.14 NAME 'gotoHotplugDevice'
   DESC 'GOto - keeps hotplug devices'
+  OBSOLETE
   EQUALITY caseIgnoreIA5Match
   SUBSTR caseIgnoreIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.11.18 NAME 'gotoHotplugDeviceDN'
   DESC 'GOto - points to hotplug devices'
+  OBSOLETE
   EQUALITY distinguishedNameMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.12)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.11.19 NAME 'gotoLogoffScript'
   DESC 'GOto - specifies a LogoffScript'
+  OBSOLETE
   EQUALITY caseIgnoreMatch
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
