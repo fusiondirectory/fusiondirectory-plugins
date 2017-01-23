@@ -329,7 +329,7 @@ class serviceRepository extends simpleService
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=FAIrepositoryServer)(FAIrepository=*|'.$distribution.'))', array('dn','cn'));
+    $ldap->search('(&(objectClass=FAIrepositoryServer)(FAIrepository=*|'.$distribution.'|*))', array('dn','cn'));
 
     $ret = array();
     while ($attr = $ldap->fetch()) {
