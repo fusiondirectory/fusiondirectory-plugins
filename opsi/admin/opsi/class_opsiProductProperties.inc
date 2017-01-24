@@ -88,10 +88,6 @@ class ProductPropertyAttribute extends CompositeAttribute
   }
 }
 
-/* TODO
- * Remove from select the properties already set ?
- */
-
 class opsiProductProperties extends simplePlugin
 {
   var $objectclasses = array('opsiProductProperties');

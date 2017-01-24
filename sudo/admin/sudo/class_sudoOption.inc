@@ -19,11 +19,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-/*
- * TODO
- * Find a way to translate descriptions
- */
-
 class UsedOptionAttribute extends CompositeAttribute
 {
   function __construct ($description, $ldapName, $acl = "")

@@ -68,7 +68,6 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
         $this->plugin->is_account = !empty($this->value);
       } elseif (isset($this->plugin->attrs[$this->getLdapName()]['count'])) {
         $this->value = array();
-        // TODO $this->loadAdditionalTemplatesValues();
       }
     }
   }
@@ -127,7 +126,6 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     if ($this->plugin->is_template) {
       return;
     }
-    /* FIXME - We should lock the object and check if we don’t erase changes */
     $values   = $this->getValue();
     $iValues  = $this->getInitialValue();
     /* React to changes on main tab */
@@ -198,10 +196,6 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       $errors = $dhcpTabs->save();
       msg_dialog::displayChecks($errors);
     }
-    /* TODO
-     * ? handle modification somehow (if we want to keep statements when changing IP, not sure about this)
-     * We should also look into what should be possible or not, like IP, Mac or cn duplication.
-     * */
   }
 }
 

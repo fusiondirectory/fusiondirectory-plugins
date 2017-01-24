@@ -21,11 +21,6 @@
 
 class systemManagement extends simpleManagement
 {
-  /*
-   * TODO
-   * Fix snapshots if needed
-   * */
-
   protected $objectTypes  = array('server','workstation','terminal','printer','component','winstation','phone','mobilePhone');
 
   protected $departmentBrowser      = TRUE;
