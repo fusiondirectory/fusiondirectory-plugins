@@ -440,6 +440,47 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     unset($ids[0]);
     return $ids;
   }
+
+  function foreignKeyUpdate($oldvalue, $newvalue, $source)
+  {
+    if (($source['CLASS'] == 'serverGeneric') && ($source['FIELD'] == 'dn') && ($source['MODE'] == 'move')) {
+      $globalNode = $this->value[0][0];
+      if (isset($this->dhcpObjectCache[$globalNode]['dhcpPrimaryDN']) && in_array_ics($oldvalue, $this->dhcpObjectCache[$globalNode]['dhcpPrimaryDN'])) {
+        if ($newvalue === NULL) {
+          unset($this->dhcpObjectCache[$globalNode]['dhcpPrimaryDN']);
+        } else {
+          $this->dhcpObjectCache[$globalNode]['dhcpPrimaryDN'] = array($newvalue);
+        }
+        $this->dhcpObjectCache[$globalNode]['MODIFIED'] = TRUE;
+      }
+      if (isset($this->dhcpObjectCache[$globalNode]['dhcpSecondaryDN']) && in_array_ics($oldvalue, $this->dhcpObjectCache[$globalNode]['dhcpSecondaryDN'])) {
+        if ($newvalue === NULL) {
+          unset($this->dhcpObjectCache[$globalNode]['dhcpSecondaryDN']);
+        } else {
+          $this->dhcpObjectCache[$globalNode]['dhcpSecondaryDN'] = array($newvalue);
+        }
+        $this->dhcpObjectCache[$globalNode]['MODIFIED'] = TRUE;
+      }
+    } else {
+      return parent::foreignKeyCheck($value, $source);
+    }
+  }
+
+  function foreignKeyCheck($value, $source)
+  {
+    if (($source['CLASS'] == 'serverGeneric') && ($source['FIELD'] == 'dn')) {
+      $globalNode = $this->value[0][0];
+      if (isset($this->dhcpObjectCache[$globalNode]['dhcpPrimaryDN']) && in_array_ics($value, $this->dhcpObjectCache[$globalNode]['dhcpPrimaryDN'])) {
+        return TRUE;
+      }
+      if (isset($this->dhcpObjectCache[$globalNode]['dhcpSecondaryDN']) && in_array_ics($value, $this->dhcpObjectCache[$globalNode]['dhcpSecondaryDN'])) {
+        return TRUE;
+      }
+      return FALSE;
+    } else {
+      return parent::foreignKeyCheck($value, $source);
+    }
+  }
 }
 
 class dhcpConfiguration extends simplePlugin
@@ -483,6 +524,11 @@ class dhcpConfiguration extends simplePlugin
         'ou'          => get_ou('dhcpRDN'),
         'icon'        => 'geticon.php?context=applications&icon=dhcp&size=16'
       )),
+      'plForeignKeys'   => array(
+        'dhcpSections' => array(
+          array('serverGeneric', 'dn', '(|(dhcpPrimaryDN=%oldvalue%)(dhcpSecondaryDN=%oldvalue%))'),
+        ),
+      ),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
