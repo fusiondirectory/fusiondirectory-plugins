@@ -163,9 +163,8 @@ class dashboardSystems extends simplePlugin
       $computer_ids_rules = array($computer_ids_rules);
     }
 
-    /* $get_cfg_value return the OU like ou=computer .. */
-    // FIXME use get_ou
-    $winstation_ou  = mb_substr($config->get_cfg_value('sambaMachineAccountRDN'), 3);
+    /* get_ou returns the OU like ou=computer .. */
+    $winstation_ou  = mb_substr(get_ou('sambaMachineAccountRDN'), 3);
     $nb_digits      = $config->get_cfg_value('dashboardNumberOfDigit', 3);
 
     /* running all the table */

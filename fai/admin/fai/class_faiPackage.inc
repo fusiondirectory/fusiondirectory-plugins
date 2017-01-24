@@ -219,8 +219,6 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
   /* Special LDAP treatment that this attribute does after plugin ldap save */
   function postLdapSave ($ldap)
   {
-    /* FIXME Should be tested: empty strings/values, configuring a package and then delete it */
-
     /* First delete all old nodes */
     $ldap->cd($this->plugin->dn);
     $ldap->search('objectClass=FAIdebconfInfo', array('dn'), 'one');

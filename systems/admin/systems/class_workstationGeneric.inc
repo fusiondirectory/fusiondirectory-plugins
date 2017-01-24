@@ -123,12 +123,8 @@ class workstationGeneric extends simplePlugin
     if ($this->acl_is_removeable()) {
       $errors = parent::remove_from_parent();
 
-      /* Remove all accessTo/trust dependencies */
-      /* FIXME replace with foreignKeys */
-      update_accessTo($this->cn, "");
-
       /* Clean queue form entries with this mac */
-      if (class_available("supportDaemon") && tests::is_mac($this->attributesAccess['macAddress']->getInitialValue())) {
+      if (class_available('supportDaemon') && tests::is_mac($this->attributesAccess['macAddress']->getInitialValue())) {
         $q = new supportDaemon();
         $q->clean_queue_from_mac($this->attributesAccess['macAddress']->getInitialValue());
       }

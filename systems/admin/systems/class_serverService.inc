@@ -216,12 +216,6 @@ class ServerService extends simpleManagement
       }
     } else {
       $this->plugins[$this->current] = $this->dialogObject;
-      /* <FIXME> : What is that for? */
-      $tmp  = get_object_vars($this->dialogObject);
-      foreach ($tmp as $name => $value) {
-        $this->plugins[$this->current]->$name = $value;
-      }
-      /* </FIXME> */
       $this->closeDialogs();
       $this->backup = NULL;
       $this->updateActionMenu();
@@ -509,7 +503,6 @@ class ServerService extends simpleManagement
   /*! \brief    Returns the services list.
    *            Used in the filter class for services.
    *             class_filterServerService.inc
-   *  FIXME: Would be better if the filter had a way to access the management instance instead of using the session and a static call.
    */
   static function getServiceList()
   {

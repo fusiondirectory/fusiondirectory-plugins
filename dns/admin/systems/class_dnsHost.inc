@@ -93,7 +93,6 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
   }
 
   /* Special LDAP treatment that this attribute does after plugin ldap save */
-  /* FIXME - We should lock the zone object and check if we don’t erase changes */
   function postLdapSave ($ldap)
   {
     if ($this->plugin->is_template) {
