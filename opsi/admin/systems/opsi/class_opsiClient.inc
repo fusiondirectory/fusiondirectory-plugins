@@ -147,7 +147,7 @@ class opsiClient extends simplePlugin
       $macAddresses = array($this->parent->getBaseObject()->netConfigDNS->macAddress);
     }
     if (!empty($macAddresses) && $s_daemon->is_available()) {
-      $res = $s_daemon->append_call('OPSI.update_or_insert', $macAddresses, array());
+      $s_daemon->append_call('OPSI.update_or_insert', $macAddresses, array());
       if ($s_daemon->is_error()) {
         msg_dialog::display(
           _('Could not update OPSI information'),
@@ -191,7 +191,7 @@ class opsiClient extends simplePlugin
     if (!empty($macAddresses)) {
       $s_daemon   = new supportDaemon();
       if ($s_daemon->is_available()) {
-        $res = $s_daemon->append_call('OPSI.delete', $macAddresses, array());
+        $s_daemon->append_call('OPSI.delete', $macAddresses, array());
         if ($s_daemon->is_error()) {
           msg_dialog::display(
             _('Could not remove OPSI information'),

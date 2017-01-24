@@ -266,7 +266,7 @@ class dnsHost extends simplePlugin
               );
             } else {
               $target = array($this->parent->getBaseObject()->macAddress);
-              $res    = $s_daemon->append_call('Ldap2Zone.start', $target, array('args' => array($zone)));
+              $s_daemon->append_call('Ldap2Zone.start', $target, array('args' => array($zone)));
               if ($s_daemon->is_error()) {
                 msg_dialog::display(_('Could not run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG);
               } else {

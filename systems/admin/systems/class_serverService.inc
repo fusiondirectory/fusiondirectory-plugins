@@ -316,6 +316,7 @@ class ServerService extends simpleManagement
         $target = array($this->parent->getBaseObject()->macAddress);
         if ($action == 'status') {
           $res = $s_daemon->append_call('Service.is_running', $target, array('args' => array($service)));
+
           if ($s_daemon->is_error()) {
             msg_dialog::display(
               sprintf(_('Could not get execute action %s on service %s.'), $action, $service),
@@ -336,6 +337,7 @@ class ServerService extends simpleManagement
             $this->plugins[$service]->setStatus(static::$actionStatus[$action]);
           }
         }
+        return $res;
       }
     }
   }
