@@ -296,23 +296,29 @@ class supportDaemon
   {
     global $config;
     timezone::get_default_timezone();
-    $entries_r = array();
+    $entries_r  = array();
+    $macToCn    = array();
+    $ldap       = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
     foreach ($entries as &$entry) {
       $entry_r['TIMESTAMP']   = date('YmdHis', $entry['data']['timestamp']);
       $entry_r['MACADDRESS']  = $entry['target'];
 
-      // TODO : do an ldap search only if we haven't done it for the same mac before
-      $ldap = $config->get_ldap_link();
-      $ldap->cd($config->current['BASE']);
-      $ldap->search('(macAddress='.$entry_r['MACADDRESS'].')', array('cn'));
-      if ($ldap_infos = $ldap->fetch()) {
-        $entry_r['PLAINNAME'] = $ldap_infos['cn'][0];
+      /* Do an ldap search only if we haven't done it for the same mac before */
+      if (isset($macToCn[$entry_r['MACADDRESS']])) {
+        $entry_r['PLAINNAME'] = $macToCn[$entry_r['MACADDRESS']];
+      } else {
+        $ldap->search('(macAddress='.$entry_r['MACADDRESS'].')', array('cn'));
+        if ($ldap_infos = $ldap->fetch()) {
+          $macToCn[$entry_r['MACADDRESS']]  = $ldap_infos['cn'][0];
+          $entry_r['PLAINNAME']             = $ldap_infos['cn'][0];
+        }
       }
 
       $entry_r['ERROR']     = $entry['error'];
       $entry_r['PROGRESS']  = $entry['progress'];
 
-      $entry_r['PERIODIC']  = (isset($entry['data']['periodic'])?$entry['data']['periodic']:NULL);
+      $entry_r['PERIODIC']  = (isset($entry['data']['periodic']) ? $entry['data']['periodic'] : NULL);
       $entry_r['STATUS']    = $entry['status'];
       $entry_r['SUBSTATUS'] = $entry['substatus'];
       $entry_r['ID']        = $entry['id'];
