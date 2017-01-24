@@ -116,7 +116,7 @@ class systemManagement extends simpleManagement
   /*! \brief    Handle Argonaut events
    *            All schedules and triggered events are handled here.
    */
-  function handleEvent($action = '', $target = array(), $all = array())
+  function handleEvent($action, array $target)
   {
     // Detect whether this event is scheduled or triggered.
     $triggered = TRUE;

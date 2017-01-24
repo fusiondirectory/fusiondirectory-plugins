@@ -162,7 +162,7 @@ class ServerService extends simpleManagement
   /*! \brief  Edit an existing service here.
    *          Somebody clicked on the paper and pencil icon.
    */
-  function editEntry($action = "", $target = array(), $all = array(), $altTabClass = "", $altTabType = "", $altAclCategory = "")
+  function editEntry($action, array $target)
   {
     $s_entry = array_pop($target);
     if ($this->plugins[$s_entry]->acl_is_readable("")) {
@@ -242,7 +242,7 @@ class ServerService extends simpleManagement
 
   /*! \brief    Remove the selected service(s)
    */
-  protected function removeService($action = "", $target = array(), $all = array())
+  protected function removeService($action, array $target)
   {
     foreach ($target as $s_entry) {
       $new_obj = new $s_entry($this->dn, $this);
@@ -278,7 +278,7 @@ class ServerService extends simpleManagement
 
   /*! \brief    Updates the status for a list of services.
    */
-  function updateServiceStatus($action, $target, $all)
+  function updateServiceStatus($action, array $target)
   {
     /* Skip if this is a new server */
     if ($this->dn == 'new') {
