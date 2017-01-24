@@ -32,15 +32,13 @@ class mailMethodRenaterPartage extends mailMethod
 
   public function updateMailbox()
   {
-    mailMethod::updateMailbox();
-
+    parent::updateMailbox();
     return TRUE;
   }
 
   public function deleteMailbox()
   {
-    mailMethod::deleteMailbox();
-
+    parent::deleteMailbox();
     return TRUE;
   }
 
@@ -56,13 +54,17 @@ class mailMethodRenaterPartage extends mailMethod
     while ($attrs = $ldap->fetch()) {
       unset($attrs['fdRenaterPartageServerMailDomain']['count']);
       foreach($attrs['fdRenaterPartageServerMailDomain'] as $domainAndKey) {
-        list($domain, $key) = explode(':', $domainAndKey, 2);
-        $serverList[$attrs['cn'][0].'-'.$domain] = array(
-          'server_dn' => $attrs['dn'],
-          'uri'       => $attrs['fdRenaterPartageServerUri'][0],
-          'domain'    => $domain,
-          'key'       => $key,
-        );
+        list($domain, $key, $cosString) = explode(':', $domainAndKey, 3);
+        $cosArray = explode(',', $cosString);
+        foreach ($cosArray as $cos) {
+          $serverList[$attrs['cn'][0].' - '.$domain.' - '.$cos] = array(
+            'server_dn' => $attrs['dn'],
+            'uri'       => $attrs['fdRenaterPartageServerUri'][0],
+            'domain'    => $domain,
+            'key'       => $key,
+            'COS'       => $cos
+          );
+        }
       }
     }
 

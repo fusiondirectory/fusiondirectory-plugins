@@ -55,6 +55,10 @@ class serviceRenaterPartage extends simpleService
                 new StringAttribute (
                   _('Key'), _('Key for this domain'),
                   'renaterPartageDomainKey', TRUE
+                ),
+                new StringAttribute (
+                  _('Class of service'), _('Possible classes of service for this domain, separated by commas'),
+                  'renaterPartageDomainCOS', TRUE
                 )
               ),
               ':',
