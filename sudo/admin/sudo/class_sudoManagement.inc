@@ -53,7 +53,7 @@ class sudoManagement extends simpleManagement
     );
   }
 
-  function newEntry($action, $target, $all)
+  function newEntry($action, array $target, array $all)
   {
     $str = parent::newEntry('new_SUDO', $target, $all);
 

@@ -162,7 +162,7 @@ class ServerService extends simpleManagement
   /*! \brief  Edit an existing service here.
    *          Somebody clicked on the paper and pencil icon.
    */
-  function editEntry($action, array $target)
+  function editEntry($action, array $target, array $all)
   {
     $s_entry = array_pop($target);
     if ($this->plugins[$s_entry]->acl_is_readable("")) {

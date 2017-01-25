@@ -87,7 +87,7 @@ class argonautQueue extends simpleManagement
   /*! \brief    Queue selected objects to be removed.
    *            Checks ACLs, Locks and ask for confirmation.
    */
-  protected function removeEntryRequested($action, array $target)
+  protected function removeEntryRequested($action, array $target, array $all)
   {
     if (!$this->acl_is_removeable()) {
       msg_dialog::display(_('Permission'), msgPool::permDelete(), ERROR_DIALOG);
@@ -157,7 +157,7 @@ class argonautQueue extends simpleManagement
     }
   }
 
-  function removeEntryConfirmed($action, array $target)
+  function removeEntryConfirmed($action, array $target, array $all)
   {
     if ($this->acl_is_removeable()) {
       timezone::get_default_timezone();
