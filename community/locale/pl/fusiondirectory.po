@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 18:02+0200\n"
+"POT-Creation-Date: 2017-01-23 22:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Polish (https://www.transifex.com/fusiondirectory/teams/12202/pl/)\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: config/community/class_communityConfig.inc:28
+msgid "Community configuration"
+msgstr ""
+
+#: config/community/class_communityConfig.inc:29
+msgid "FusionDirectory community plugin configuration"
+msgstr ""
+
+#: config/community/class_communityConfig.inc:41
+msgid "Community"
+msgstr ""
+
+#: config/community/class_communityConfig.inc:45
+msgid "Membership type choices"
+msgstr ""
+
+#: config/community/class_communityConfig.inc:45
+msgid "Community membership types available in the user community tab"
+msgstr ""
 
 #: admin/departments/community/class_communityProject.inc:29
 msgid "Community project"
@@ -133,23 +153,3 @@ msgstr "Stan"
 #: admin/departments/community/class_communityOrganization.inc:97
 msgid "Country"
 msgstr "Kraj"
-
-#: config/community/class_communityConfig.inc:28
-msgid "Community configuration"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:29
-msgid "FusionDirectory community plugin configuration"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:41
-msgid "Community"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:45
-msgid "Membership type choices"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:45
-msgid "Community membership types available in the user community tab"
-msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 18:02+0200\n"
+"POT-Creation-Date: 2017-01-23 22:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
@@ -18,65 +18,25 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: admin/alias/class_mailAliasDistribution.inc:31
-#: admin/alias/class_mailAliasDistribution.inc:32
-#: admin/alias/class_mailAliasDistribution.inc:35
-msgid "Temporary mail distribution"
-msgstr "Временное распространение почты"
+#: config/alias/class_aliasConfig.inc:28
+msgid "Alias configuration"
+msgstr "Настройка псеводонимов"
 
-#: admin/alias/class_mailAliasDistribution.inc:53
-msgid "Mail distribution"
-msgstr "Распространение почты"
+#: config/alias/class_aliasConfig.inc:29
+msgid "FusionDirectory alias plugin configuration"
+msgstr "FusionDirectory настройка плагина псевдонимов."
 
-#: admin/alias/class_mailAliasDistribution.inc:56
-#: admin/alias/class_mailAliasRedirection.inc:55
-msgid "Name"
-msgstr "Фамилия"
+#: config/alias/class_aliasConfig.inc:42
+msgid "Alias"
+msgstr "Псеводоним"
 
-#: admin/alias/class_mailAliasDistribution.inc:56
-msgid "Name to identify this alias"
-msgstr "Имя определяющее этот псеводоним"
+#: config/alias/class_aliasConfig.inc:45
+msgid "Alias RDN"
+msgstr "RDN псевдонимов"
 
-#: admin/alias/class_mailAliasDistribution.inc:58
-#: admin/alias/class_mailAliasRedirection.inc:57
-msgid "Description"
-msgstr "Описание"
-
-#: admin/alias/class_mailAliasDistribution.inc:58
-msgid "Description of this alias"
-msgstr "Описание псеводонима"
-
-#: admin/alias/class_mailAliasDistribution.inc:62
-msgid "Email address"
-msgstr "Адрес электронной почты"
-
-#: admin/alias/class_mailAliasDistribution.inc:67
-msgid "Email aliases"
-msgstr "Псевдонимы электронной почты"
-
-#: admin/alias/class_mailAliasDistribution.inc:67
-msgid "Aliases for this email address"
-msgstr "Псевдонимы для адреса электронной почты"
-
-#: admin/alias/class_mailAliasDistribution.inc:72
-msgid "Mail server"
-msgstr "Почтовый сервер"
-
-#: admin/alias/class_mailAliasDistribution.inc:72
-msgid "Mail server for this alias"
-msgstr "Почтовый сервер для этого псевдонима"
-
-#: admin/alias/class_mailAliasDistribution.inc:77
-#: admin/alias/class_mailAliasRedirection.inc:73
-msgid "Expiration date"
-msgstr "Дата окончания действия"
-
-#: admin/alias/class_mailAliasDistribution.inc:77
-msgid ""
-"Date after which the alias should be deleted. Leave empty for no deletion."
-msgstr ""
-"Дата после которой псевдоним будет удален. Оставить пустым, если удалять не "
-"нужно."
+#: config/alias/class_aliasConfig.inc:45
+msgid "Branch in which aliases will be stored"
+msgstr "Ветка в которой будут храниться псеводонимы"
 
 #: admin/alias/class_mailAliasRedirection.inc:31
 #: admin/alias/class_mailAliasRedirection.inc:32
@@ -89,8 +49,18 @@ msgid "Mail redirection"
 msgstr "Перенаправление почты"
 
 #: admin/alias/class_mailAliasRedirection.inc:55
+#: admin/alias/class_mailAliasDistribution.inc:54
+msgid "Name"
+msgstr "Фамилия"
+
+#: admin/alias/class_mailAliasRedirection.inc:55
 msgid "Name to identify this redirection"
 msgstr "Название определяющее это перенаправление"
+
+#: admin/alias/class_mailAliasRedirection.inc:57
+#: admin/alias/class_mailAliasDistribution.inc:56
+msgid "Description"
+msgstr "Описание"
 
 #: admin/alias/class_mailAliasRedirection.inc:57
 msgid "Description of this redirection"
@@ -113,12 +83,62 @@ msgid "Destination of this redirection"
 msgstr "Адрес назначения для этого перенаправления"
 
 #: admin/alias/class_mailAliasRedirection.inc:73
+#: admin/alias/class_mailAliasDistribution.inc:75
+msgid "Expiration date"
+msgstr "Дата окончания действия"
+
+#: admin/alias/class_mailAliasRedirection.inc:73
 msgid ""
 "Date after which the redirection should be deleted. Leave empty for no "
 "deletion."
 msgstr ""
 "Дата после которой перенаправление будет удалено. Оставить пустым, если "
 "удалять не нужно."
+
+#: admin/alias/class_mailAliasDistribution.inc:31
+#: admin/alias/class_mailAliasDistribution.inc:32
+#: admin/alias/class_mailAliasDistribution.inc:35
+msgid "Temporary mail distribution"
+msgstr "Временное распространение почты"
+
+#: admin/alias/class_mailAliasDistribution.inc:51
+msgid "Mail distribution"
+msgstr "Распространение почты"
+
+#: admin/alias/class_mailAliasDistribution.inc:54
+msgid "Name to identify this alias"
+msgstr "Имя определяющее этот псеводоним"
+
+#: admin/alias/class_mailAliasDistribution.inc:56
+msgid "Description of this alias"
+msgstr "Описание псеводонима"
+
+#: admin/alias/class_mailAliasDistribution.inc:60
+msgid "Email address"
+msgstr "Адрес электронной почты"
+
+#: admin/alias/class_mailAliasDistribution.inc:65
+msgid "Email aliases"
+msgstr "Псевдонимы электронной почты"
+
+#: admin/alias/class_mailAliasDistribution.inc:65
+msgid "Aliases for this email address"
+msgstr "Псевдонимы для адреса электронной почты"
+
+#: admin/alias/class_mailAliasDistribution.inc:70
+msgid "Mail server"
+msgstr "Почтовый сервер"
+
+#: admin/alias/class_mailAliasDistribution.inc:70
+msgid "Mail server for this alias"
+msgstr "Почтовый сервер для этого псевдонима"
+
+#: admin/alias/class_mailAliasDistribution.inc:75
+msgid ""
+"Date after which the alias should be deleted. Leave empty for no deletion."
+msgstr ""
+"Дата после которой псевдоним будет удален. Оставить пустым, если удалять не "
+"нужно."
 
 #: admin/alias/class_aliasManagement.inc:33
 msgid "Aliases"
@@ -131,23 +151,3 @@ msgstr "Управление псеводонимами"
 #: admin/alias/class_aliasManagement.inc:38
 msgid "Mail aliases"
 msgstr "Псевдонимы для почты"
-
-#: config/alias/class_aliasConfig.inc:28
-msgid "Alias configuration"
-msgstr "Настройка псеводонимов"
-
-#: config/alias/class_aliasConfig.inc:29
-msgid "FusionDirectory alias plugin configuration"
-msgstr "FusionDirectory настройка плагина псевдонимов."
-
-#: config/alias/class_aliasConfig.inc:42
-msgid "Alias"
-msgstr "Псеводоним"
-
-#: config/alias/class_aliasConfig.inc:45
-msgid "Alias RDN"
-msgstr "RDN псевдонимов"
-
-#: config/alias/class_aliasConfig.inc:45
-msgid "Branch in which aliases will be stored"
-msgstr "Ветка в которой будут храниться псеводонимы"

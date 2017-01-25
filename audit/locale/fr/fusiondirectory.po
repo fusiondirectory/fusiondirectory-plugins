@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 18:02+0200\n"
+"POT-Creation-Date: 2017-01-23 22:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -18,92 +18,6 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: admin/audit/class_auditEvent.inc:53 admin/audit/class_auditEvent.inc:56
-msgid "Audit event"
-msgstr "Événement d'audit"
-
-#: admin/audit/class_auditEvent.inc:54
-msgid "An event like ldap modification which was registered by audit plugin"
-msgstr ""
-"Un événement comme une modification ldap qui a été enregistré par le plugin "
-"d'audit"
-
-#: admin/audit/class_auditEvent.inc:73
-msgid "Event"
-msgstr "Évènement"
-
-#: admin/audit/class_auditEvent.inc:76
-#: admin/audit/class_auditManagement.inc:69
-msgid "Time"
-msgstr "Temps"
-
-#: admin/audit/class_auditEvent.inc:76
-msgid "Date and time this event happened"
-msgstr "Date et heure a laquelle cet événement est arrivé"
-
-#: admin/audit/class_auditEvent.inc:79
-#: admin/audit/class_auditManagement.inc:83
-msgid "Action"
-msgstr "Action"
-
-#: admin/audit/class_auditEvent.inc:79
-msgid "Action type"
-msgstr "Type d'action"
-
-#: admin/audit/class_auditEvent.inc:80
-#: admin/audit/class_auditManagement.inc:76
-msgid "Author"
-msgstr "Auteur"
-
-#: admin/audit/class_auditEvent.inc:80
-msgid "Action author"
-msgstr "Auteur de l'action"
-
-#: admin/audit/class_auditEvent.inc:81
-msgid "Object type"
-msgstr "Type d'objet"
-
-#: admin/audit/class_auditEvent.inc:82
-msgid "Object"
-msgstr "Objet"
-
-#: admin/audit/class_auditEvent.inc:82
-msgid "Target object"
-msgstr "Objet cible"
-
-#: admin/audit/class_auditEvent.inc:83
-msgid "Attributes"
-msgstr "Attributs"
-
-#: admin/audit/class_auditEvent.inc:83
-msgid "Target attributes"
-msgstr "Attributs cibles"
-
-#: admin/audit/class_auditEvent.inc:84
-msgid "Result"
-msgstr "Résultat"
-
-#: admin/audit/class_auditEvent.inc:84
-msgid "Result or error"
-msgstr "Résultat ou erreur"
-
-#: admin/audit/class_auditManagement.inc:40
-#: config/audit/class_auditConfig.inc:41
-msgid "Audit"
-msgstr "Audit"
-
-#: admin/audit/class_auditManagement.inc:41
-msgid "Audit events display"
-msgstr "Affichage des événements d'audit"
-
-#: admin/audit/class_auditManagement.inc:90
-msgid "Type"
-msgstr "Type"
-
-#: admin/audit/class_auditManagement.inc:97
-msgid "Target"
-msgstr "Cible"
-
 #: config/audit/class_auditConfig.inc:28
 msgid "Audit configuration"
 msgstr "Configuration audit"
@@ -111,6 +25,11 @@ msgstr "Configuration audit"
 #: config/audit/class_auditConfig.inc:29
 msgid "FusionDirectory audit plugin configuration"
 msgstr "Configuration du plugin audit"
+
+#: config/audit/class_auditConfig.inc:41
+#: admin/audit/class_auditManagement.inc:40
+msgid "Audit"
+msgstr "Audit"
 
 #: config/audit/class_auditConfig.inc:44
 msgid "Audit RDN"
@@ -135,3 +54,84 @@ msgstr "Nombre de jours a conserver"
 #: config/audit/class_auditConfig.inc:57
 msgid "Number of days of audit to keep in the LDAP when cleaning"
 msgstr "Nombre de jours d'audit à conserver dans le LDAP lors du nettoyage"
+
+#: admin/audit/class_auditEvent.inc:53 admin/audit/class_auditEvent.inc:56
+msgid "Audit event"
+msgstr "Événement d'audit"
+
+#: admin/audit/class_auditEvent.inc:54
+msgid "An event like ldap modification which was registered by audit plugin"
+msgstr ""
+"Un événement comme une modification ldap qui a été enregistré par le plugin "
+"d'audit"
+
+#: admin/audit/class_auditEvent.inc:72
+msgid "Event"
+msgstr "Évènement"
+
+#: admin/audit/class_auditEvent.inc:75
+#: admin/audit/class_auditManagement.inc:69
+msgid "Time"
+msgstr "Temps"
+
+#: admin/audit/class_auditEvent.inc:75
+msgid "Date and time this event happened"
+msgstr "Date et heure a laquelle cet événement est arrivé"
+
+#: admin/audit/class_auditEvent.inc:78
+#: admin/audit/class_auditManagement.inc:83
+msgid "Action"
+msgstr "Action"
+
+#: admin/audit/class_auditEvent.inc:78
+msgid "Action type"
+msgstr "Type d'action"
+
+#: admin/audit/class_auditEvent.inc:79
+#: admin/audit/class_auditManagement.inc:76
+msgid "Author"
+msgstr "Auteur"
+
+#: admin/audit/class_auditEvent.inc:79
+msgid "Action author"
+msgstr "Auteur de l'action"
+
+#: admin/audit/class_auditEvent.inc:80
+msgid "Object type"
+msgstr "Type d'objet"
+
+#: admin/audit/class_auditEvent.inc:81
+msgid "Object"
+msgstr "Objet"
+
+#: admin/audit/class_auditEvent.inc:81
+msgid "Target object"
+msgstr "Objet cible"
+
+#: admin/audit/class_auditEvent.inc:82
+msgid "Attributes"
+msgstr "Attributs"
+
+#: admin/audit/class_auditEvent.inc:82
+msgid "Target attributes"
+msgstr "Attributs cibles"
+
+#: admin/audit/class_auditEvent.inc:83
+msgid "Result"
+msgstr "Résultat"
+
+#: admin/audit/class_auditEvent.inc:83
+msgid "Result or error"
+msgstr "Résultat ou erreur"
+
+#: admin/audit/class_auditManagement.inc:41
+msgid "Audit events display"
+msgstr "Affichage des événements d'audit"
+
+#: admin/audit/class_auditManagement.inc:90
+msgid "Type"
+msgstr "Type"
+
+#: admin/audit/class_auditManagement.inc:97
+msgid "Target"
+msgstr "Cible"

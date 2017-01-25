@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 18:02+0200\n"
+"POT-Creation-Date: 2017-01-23 22:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -18,64 +18,25 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/alias/class_mailAliasDistribution.inc:31
-#: admin/alias/class_mailAliasDistribution.inc:32
-#: admin/alias/class_mailAliasDistribution.inc:35
-msgid "Temporary mail distribution"
-msgstr "Προσωρινή διανομή αλληλογραφίας"
+#: config/alias/class_aliasConfig.inc:28
+msgid "Alias configuration"
+msgstr "Ρύθμιση Alias "
 
-#: admin/alias/class_mailAliasDistribution.inc:53
-msgid "Mail distribution"
-msgstr "Διανομή αλληλογραφίας"
+#: config/alias/class_aliasConfig.inc:29
+msgid "FusionDirectory alias plugin configuration"
+msgstr "Ρύθμιση προσθέτου FusionDirectory alias"
 
-#: admin/alias/class_mailAliasDistribution.inc:56
-#: admin/alias/class_mailAliasRedirection.inc:55
-msgid "Name"
-msgstr "Όνομα"
+#: config/alias/class_aliasConfig.inc:42
+msgid "Alias"
+msgstr "Alias"
 
-#: admin/alias/class_mailAliasDistribution.inc:56
-msgid "Name to identify this alias"
-msgstr "Ένα όνομα με το οποίο θα αναγνωρίζεται αυτό το ψευδώνυμο"
+#: config/alias/class_aliasConfig.inc:45
+msgid "Alias RDN"
+msgstr "Alias RDN"
 
-#: admin/alias/class_mailAliasDistribution.inc:58
-#: admin/alias/class_mailAliasRedirection.inc:57
-msgid "Description"
-msgstr "Περιγραφή"
-
-#: admin/alias/class_mailAliasDistribution.inc:58
-msgid "Description of this alias"
-msgstr "Περιγραφή του ψευδώνυμου"
-
-#: admin/alias/class_mailAliasDistribution.inc:62
-msgid "Email address"
-msgstr "Διευθύνση ηλεκτρονικής αλληλογγραφίας"
-
-#: admin/alias/class_mailAliasDistribution.inc:67
-msgid "Email aliases"
-msgstr "Aliases ηλ. αλληλογραφίας"
-
-#: admin/alias/class_mailAliasDistribution.inc:67
-msgid "Aliases for this email address"
-msgstr "Aliases αυτής της διεύθυνσης e-mail "
-
-#: admin/alias/class_mailAliasDistribution.inc:72
-msgid "Mail server"
-msgstr "Εξυπηρετητής αλληλογραφίας"
-
-#: admin/alias/class_mailAliasDistribution.inc:72
-msgid "Mail server for this alias"
-msgstr "Διακομιστής αλληλογραφίας για αυτό το alias"
-
-#: admin/alias/class_mailAliasDistribution.inc:77
-#: admin/alias/class_mailAliasRedirection.inc:73
-msgid "Expiration date"
-msgstr "Ημερομηνία λήξης"
-
-#: admin/alias/class_mailAliasDistribution.inc:77
-msgid ""
-"Date after which the alias should be deleted. Leave empty for no deletion."
-msgstr ""
-"Ημερομηνία μετά από την οποία θα διαφράφεται το alias. Κενό για μην διαγραφή"
+#: config/alias/class_aliasConfig.inc:45
+msgid "Branch in which aliases will be stored"
+msgstr "Κλάδος στον οποίο θα αποθηκεύονται τα aliases"
 
 #: admin/alias/class_mailAliasRedirection.inc:31
 #: admin/alias/class_mailAliasRedirection.inc:32
@@ -88,8 +49,18 @@ msgid "Mail redirection"
 msgstr "Ανακατεύθυνση αλληλογραφίας"
 
 #: admin/alias/class_mailAliasRedirection.inc:55
+#: admin/alias/class_mailAliasDistribution.inc:54
+msgid "Name"
+msgstr "Όνομα"
+
+#: admin/alias/class_mailAliasRedirection.inc:55
 msgid "Name to identify this redirection"
 msgstr "Ένα όνομα με το οποίο θα αναγνωρίζεται αυτή η ανακατεύθυνση"
+
+#: admin/alias/class_mailAliasRedirection.inc:57
+#: admin/alias/class_mailAliasDistribution.inc:56
+msgid "Description"
+msgstr "Περιγραφή"
 
 #: admin/alias/class_mailAliasRedirection.inc:57
 msgid "Description of this redirection"
@@ -112,12 +83,61 @@ msgid "Destination of this redirection"
 msgstr "Προορισμός αυτής της ανακατεύθυνσης"
 
 #: admin/alias/class_mailAliasRedirection.inc:73
+#: admin/alias/class_mailAliasDistribution.inc:75
+msgid "Expiration date"
+msgstr "Ημερομηνία λήξης"
+
+#: admin/alias/class_mailAliasRedirection.inc:73
 msgid ""
 "Date after which the redirection should be deleted. Leave empty for no "
 "deletion."
 msgstr ""
 "Ημερομηνία μετά από την οποία θα διαφράφεται το alias. Αφήστε το κενό για "
 "μην διαγραφή"
+
+#: admin/alias/class_mailAliasDistribution.inc:31
+#: admin/alias/class_mailAliasDistribution.inc:32
+#: admin/alias/class_mailAliasDistribution.inc:35
+msgid "Temporary mail distribution"
+msgstr "Προσωρινή διανομή αλληλογραφίας"
+
+#: admin/alias/class_mailAliasDistribution.inc:51
+msgid "Mail distribution"
+msgstr "Διανομή αλληλογραφίας"
+
+#: admin/alias/class_mailAliasDistribution.inc:54
+msgid "Name to identify this alias"
+msgstr "Ένα όνομα με το οποίο θα αναγνωρίζεται αυτό το ψευδώνυμο"
+
+#: admin/alias/class_mailAliasDistribution.inc:56
+msgid "Description of this alias"
+msgstr "Περιγραφή του ψευδώνυμου"
+
+#: admin/alias/class_mailAliasDistribution.inc:60
+msgid "Email address"
+msgstr "Διευθύνση ηλεκτρονικής αλληλογγραφίας"
+
+#: admin/alias/class_mailAliasDistribution.inc:65
+msgid "Email aliases"
+msgstr "Aliases ηλ. αλληλογραφίας"
+
+#: admin/alias/class_mailAliasDistribution.inc:65
+msgid "Aliases for this email address"
+msgstr "Aliases αυτής της διεύθυνσης e-mail "
+
+#: admin/alias/class_mailAliasDistribution.inc:70
+msgid "Mail server"
+msgstr "Εξυπηρετητής αλληλογραφίας"
+
+#: admin/alias/class_mailAliasDistribution.inc:70
+msgid "Mail server for this alias"
+msgstr "Διακομιστής αλληλογραφίας για αυτό το alias"
+
+#: admin/alias/class_mailAliasDistribution.inc:75
+msgid ""
+"Date after which the alias should be deleted. Leave empty for no deletion."
+msgstr ""
+"Ημερομηνία μετά από την οποία θα διαφράφεται το alias. Κενό για μην διαγραφή"
 
 #: admin/alias/class_aliasManagement.inc:33
 msgid "Aliases"
@@ -130,23 +150,3 @@ msgstr "Διαχείριση Alias "
 #: admin/alias/class_aliasManagement.inc:38
 msgid "Mail aliases"
 msgstr "Alias αλληλογραφίας"
-
-#: config/alias/class_aliasConfig.inc:28
-msgid "Alias configuration"
-msgstr "Ρύθμιση Alias "
-
-#: config/alias/class_aliasConfig.inc:29
-msgid "FusionDirectory alias plugin configuration"
-msgstr "Ρύθμιση προσθέτου FusionDirectory alias"
-
-#: config/alias/class_aliasConfig.inc:42
-msgid "Alias"
-msgstr "Alias"
-
-#: config/alias/class_aliasConfig.inc:45
-msgid "Alias RDN"
-msgstr "Alias RDN"
-
-#: config/alias/class_aliasConfig.inc:45
-msgid "Branch in which aliases will be stored"
-msgstr "Κλάδος στον οποίο θα αποθηκεύονται τα aliases"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 18:02+0200\n"
+"POT-Creation-Date: 2017-01-23 22:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -18,65 +18,25 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: admin/alias/class_mailAliasDistribution.inc:31
-#: admin/alias/class_mailAliasDistribution.inc:32
-#: admin/alias/class_mailAliasDistribution.inc:35
-msgid "Temporary mail distribution"
-msgstr "Adresse de distribution temporaire"
+#: config/alias/class_aliasConfig.inc:28
+msgid "Alias configuration"
+msgstr "Configuration des alias"
 
-#: admin/alias/class_mailAliasDistribution.inc:53
-msgid "Mail distribution"
-msgstr "Redistribution de messagerie"
+#: config/alias/class_aliasConfig.inc:29
+msgid "FusionDirectory alias plugin configuration"
+msgstr "Configuration du plugin alias"
 
-#: admin/alias/class_mailAliasDistribution.inc:56
-#: admin/alias/class_mailAliasRedirection.inc:55
-msgid "Name"
-msgstr "Nom"
+#: config/alias/class_aliasConfig.inc:42
+msgid "Alias"
+msgstr "Alias"
 
-#: admin/alias/class_mailAliasDistribution.inc:56
-msgid "Name to identify this alias"
-msgstr "Nom de l'alias"
+#: config/alias/class_aliasConfig.inc:45
+msgid "Alias RDN"
+msgstr "Alias RDN"
 
-#: admin/alias/class_mailAliasDistribution.inc:58
-#: admin/alias/class_mailAliasRedirection.inc:57
-msgid "Description"
-msgstr "Description"
-
-#: admin/alias/class_mailAliasDistribution.inc:58
-msgid "Description of this alias"
-msgstr "Description de l'alias"
-
-#: admin/alias/class_mailAliasDistribution.inc:62
-msgid "Email address"
-msgstr "Adresse de messagerie"
-
-#: admin/alias/class_mailAliasDistribution.inc:67
-msgid "Email aliases"
-msgstr "Alias de messagerie"
-
-#: admin/alias/class_mailAliasDistribution.inc:67
-msgid "Aliases for this email address"
-msgstr "Alias pour cette adresse de messagerie"
-
-#: admin/alias/class_mailAliasDistribution.inc:72
-msgid "Mail server"
-msgstr "Serveur de messagerie"
-
-#: admin/alias/class_mailAliasDistribution.inc:72
-msgid "Mail server for this alias"
-msgstr "Serveur de messagerie pour cet alias"
-
-#: admin/alias/class_mailAliasDistribution.inc:77
-#: admin/alias/class_mailAliasRedirection.inc:73
-msgid "Expiration date"
-msgstr "Date d'expiration"
-
-#: admin/alias/class_mailAliasDistribution.inc:77
-msgid ""
-"Date after which the alias should be deleted. Leave empty for no deletion."
-msgstr ""
-"Date après laquelle cet alias doit être effacé. laisser vide pour aucune "
-"expiration"
+#: config/alias/class_aliasConfig.inc:45
+msgid "Branch in which aliases will be stored"
+msgstr "Branche dans laquelle les alias sont stockés"
 
 #: admin/alias/class_mailAliasRedirection.inc:31
 #: admin/alias/class_mailAliasRedirection.inc:32
@@ -89,8 +49,18 @@ msgid "Mail redirection"
 msgstr "Redirection de messagerie"
 
 #: admin/alias/class_mailAliasRedirection.inc:55
+#: admin/alias/class_mailAliasDistribution.inc:54
+msgid "Name"
+msgstr "Nom"
+
+#: admin/alias/class_mailAliasRedirection.inc:55
 msgid "Name to identify this redirection"
 msgstr "Nom de la redirection de messagerie"
+
+#: admin/alias/class_mailAliasRedirection.inc:57
+#: admin/alias/class_mailAliasDistribution.inc:56
+msgid "Description"
+msgstr "Description"
 
 #: admin/alias/class_mailAliasRedirection.inc:57
 msgid "Description of this redirection"
@@ -113,9 +83,59 @@ msgid "Destination of this redirection"
 msgstr "Destination de la redirection"
 
 #: admin/alias/class_mailAliasRedirection.inc:73
+#: admin/alias/class_mailAliasDistribution.inc:75
+msgid "Expiration date"
+msgstr "Date d'expiration"
+
+#: admin/alias/class_mailAliasRedirection.inc:73
 msgid ""
 "Date after which the redirection should be deleted. Leave empty for no "
 "deletion."
+msgstr ""
+"Date après laquelle cet alias doit être effacé. laisser vide pour aucune "
+"expiration"
+
+#: admin/alias/class_mailAliasDistribution.inc:31
+#: admin/alias/class_mailAliasDistribution.inc:32
+#: admin/alias/class_mailAliasDistribution.inc:35
+msgid "Temporary mail distribution"
+msgstr "Adresse de distribution temporaire"
+
+#: admin/alias/class_mailAliasDistribution.inc:51
+msgid "Mail distribution"
+msgstr "Redistribution de messagerie"
+
+#: admin/alias/class_mailAliasDistribution.inc:54
+msgid "Name to identify this alias"
+msgstr "Nom de l'alias"
+
+#: admin/alias/class_mailAliasDistribution.inc:56
+msgid "Description of this alias"
+msgstr "Description de l'alias"
+
+#: admin/alias/class_mailAliasDistribution.inc:60
+msgid "Email address"
+msgstr "Adresse de messagerie"
+
+#: admin/alias/class_mailAliasDistribution.inc:65
+msgid "Email aliases"
+msgstr "Alias de messagerie"
+
+#: admin/alias/class_mailAliasDistribution.inc:65
+msgid "Aliases for this email address"
+msgstr "Alias pour cette adresse de messagerie"
+
+#: admin/alias/class_mailAliasDistribution.inc:70
+msgid "Mail server"
+msgstr "Serveur de messagerie"
+
+#: admin/alias/class_mailAliasDistribution.inc:70
+msgid "Mail server for this alias"
+msgstr "Serveur de messagerie pour cet alias"
+
+#: admin/alias/class_mailAliasDistribution.inc:75
+msgid ""
+"Date after which the alias should be deleted. Leave empty for no deletion."
 msgstr ""
 "Date après laquelle cet alias doit être effacé. laisser vide pour aucune "
 "expiration"
@@ -131,23 +151,3 @@ msgstr "Gestion des alias"
 #: admin/alias/class_aliasManagement.inc:38
 msgid "Mail aliases"
 msgstr "Alias de messagerie"
-
-#: config/alias/class_aliasConfig.inc:28
-msgid "Alias configuration"
-msgstr "Configuration des alias"
-
-#: config/alias/class_aliasConfig.inc:29
-msgid "FusionDirectory alias plugin configuration"
-msgstr "Configuration du plugin alias"
-
-#: config/alias/class_aliasConfig.inc:42
-msgid "Alias"
-msgstr "Alias"
-
-#: config/alias/class_aliasConfig.inc:45
-msgid "Alias RDN"
-msgstr "Alias RDN"
-
-#: config/alias/class_aliasConfig.inc:45
-msgid "Branch in which aliases will be stored"
-msgstr "Branche dans laquelle les alias sont stockés"

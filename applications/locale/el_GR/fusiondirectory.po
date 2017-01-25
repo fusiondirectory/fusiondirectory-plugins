@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 18:02+0200\n"
+"POT-Creation-Date: 2017-01-23 22:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -18,19 +18,59 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: config/applications/class_applicationsPluginConfig.inc:28
+#: config/applications/class_applicationsPluginConfig.inc:40
 #: admin/applications/class_applicationManagement.inc:28
 #: admin/roles/class_applicationRights.inc:30
 #: admin/roles/class_applicationRights.inc:49
-#: config/applications/class_applicationsPluginConfig.inc:28
-#: config/applications/class_applicationsPluginConfig.inc:40
 msgid "Applications"
 msgstr "Εφαρμογές"
+
+#: config/applications/class_applicationsPluginConfig.inc:29
+msgid "Applications plugin configuration"
+msgstr "Ρύθμιση προσθέτου εφαρμογών"
+
+#: config/applications/class_applicationsPluginConfig.inc:43
+msgid "Application RDN"
+msgstr "RDN εφαρμογής"
+
+#: config/applications/class_applicationsPluginConfig.inc:43
+msgid "Branch in which applications will be stored"
+msgstr "Κλάδος όπου θα αποθηκεύονται οι εφαρμογές"
+
+#: config/applications/class_applicationsPluginConfig.inc:48
+msgid "Web applications RDN"
+msgstr "RDN εφαρμογών Web"
+
+#: config/applications/class_applicationsPluginConfig.inc:48
+msgid "Branch in which web applications will be stored"
+msgstr "Κλάδος όπου θα αποθηκεύονται οι εφαρμογές web"
+
+#: config/applications/class_applicationsPluginConfig.inc:53
+msgid "Show web applications in menu"
+msgstr "Εμφάνιση εφαρμογών web στο μενού "
+
+#: config/applications/class_applicationsPluginConfig.inc:53
+msgid "Whether to show web applications in FD main menu"
+msgstr "Αν θα εμφανίζονται οι εφαρμογές web στο κύριο μενού του FD"
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "None"
+msgstr "Κανένα"
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "Only allowed"
+msgstr "Επιτρέπεται μόνο"
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "All"
+msgstr "Όλα"
 
 #: admin/applications/class_applicationManagement.inc:29
 msgid "Application management"
 msgstr "Διαχείριση φαρμογών"
 
-#: admin/applications/class_applicationManagement.inc:101
+#: admin/applications/class_applicationManagement.inc:85
 msgid "Web applications"
 msgstr "Εφρμογές Web"
 
@@ -183,43 +223,3 @@ msgstr "Λίστα εφαρμογών"
 msgid "The applications users with this role are allowed to launch"
 msgstr ""
 "Οι εφαρμογές που θα  επιτρέπεται να εκκινούνται από χρήστες με αυτό τον ρόλο"
-
-#: config/applications/class_applicationsPluginConfig.inc:29
-msgid "Applications plugin configuration"
-msgstr "Ρύθμιση προσθέτου εφαρμογών"
-
-#: config/applications/class_applicationsPluginConfig.inc:43
-msgid "Application RDN"
-msgstr "RDN εφαρμογής"
-
-#: config/applications/class_applicationsPluginConfig.inc:43
-msgid "Branch in which applications will be stored"
-msgstr "Κλάδος όπου θα αποθηκεύονται οι εφαρμογές"
-
-#: config/applications/class_applicationsPluginConfig.inc:48
-msgid "Web applications RDN"
-msgstr "RDN εφαρμογών Web"
-
-#: config/applications/class_applicationsPluginConfig.inc:48
-msgid "Branch in which web applications will be stored"
-msgstr "Κλάδος όπου θα αποθηκεύονται οι εφαρμογές web"
-
-#: config/applications/class_applicationsPluginConfig.inc:53
-msgid "Show web applications in menu"
-msgstr "Εμφάνιση εφαρμογών web στο μενού "
-
-#: config/applications/class_applicationsPluginConfig.inc:53
-msgid "Whether to show web applications in FD main menu"
-msgstr "Αν θα εμφανίζονται οι εφαρμογές web στο κύριο μενού του FD"
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "None"
-msgstr "Κανένα"
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "Only allowed"
-msgstr "Επιτρέπεται μόνο"
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "All"
-msgstr "Όλα"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 18:02+0200\n"
+"POT-Creation-Date: 2017-01-23 22:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Arabic (https://www.transifex.com/fusiondirectory/teams/12202/ar/)\n"
@@ -17,6 +17,56 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: config/fusioninventory/class_fiConfig.inc:28
+msgid "FusionInventory configuration"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:29
+msgid "FusionDirectory FusionInventory plugin configuration"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:41
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:77
+msgid "FusionInventory"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:44
+msgid "Inventory RDN"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:44
+msgid "Branch in which inventory objects will be stored"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:49
+msgid "Inventory matching"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:49
+msgid "Criteria to link an inventory result to a system"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:52
+msgid "Mac address"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:52
+msgid "IP address"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:52
+msgid "Both"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:52
+msgid "IP or Mac address"
+msgstr ""
+
+#: html/collect.php:75
+#, php-format
+msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
+msgstr ""
 
 #: admin/inventory/inventory-list.xml:7
 msgid "NO LABEL"
@@ -53,61 +103,6 @@ msgstr ""
 
 #: admin/inventory/class_inventoryManagement.inc:37
 msgid "Browse inventory objects"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:69
-msgid "Inventory"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:70
-msgid "Inventory Viewer"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:75
-#: admin/systems/fusioninventory/class_fiInventory.inc:79
-msgid "Inventory object"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:93
-msgid "Matching system"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:96
-#: admin/systems/fusioninventory/class_fiInventory.inc:363
-msgid "System"
-msgstr "نظام"
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:96
-#: admin/systems/fusioninventory/class_fiInventory.inc:363
-msgid "System entry matching this inventory"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:102
-msgid "Hardware"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:108
-msgid "Software"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:114
-msgid "Users"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:120
-msgid "Processes"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:311
-msgid "Create a system based on this inventory"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:326
-msgid "Create"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventory.inc:331
-msgid "No matching system"
 msgstr ""
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:30
@@ -167,56 +162,61 @@ msgstr ""
 msgid "IPs allowed to launch inventory task through web interface"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:77
-#: config/fusioninventory/class_fiConfig.inc:41
-msgid "FusionInventory"
-msgstr ""
-
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:78
 msgid "FusionInventory agent configuration"
 msgstr ""
 
-#: html/collect.php:75
-#, php-format
-msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
+#: admin/systems/fusioninventory/class_fiInventory.inc:69
+msgid "Inventory"
 msgstr ""
 
-#: config/fusioninventory/class_fiConfig.inc:28
-msgid "FusionInventory configuration"
+#: admin/systems/fusioninventory/class_fiInventory.inc:70
+msgid "Inventory Viewer"
 msgstr ""
 
-#: config/fusioninventory/class_fiConfig.inc:29
-msgid "FusionDirectory FusionInventory plugin configuration"
+#: admin/systems/fusioninventory/class_fiInventory.inc:75
+#: admin/systems/fusioninventory/class_fiInventory.inc:79
+msgid "Inventory object"
 msgstr ""
 
-#: config/fusioninventory/class_fiConfig.inc:44
-msgid "Inventory RDN"
+#: admin/systems/fusioninventory/class_fiInventory.inc:93
+msgid "Matching system"
 msgstr ""
 
-#: config/fusioninventory/class_fiConfig.inc:44
-msgid "Branch in which inventory objects will be stored"
+#: admin/systems/fusioninventory/class_fiInventory.inc:96
+#: admin/systems/fusioninventory/class_fiInventory.inc:363
+msgid "System"
+msgstr "نظام"
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:96
+#: admin/systems/fusioninventory/class_fiInventory.inc:363
+msgid "System entry matching this inventory"
 msgstr ""
 
-#: config/fusioninventory/class_fiConfig.inc:49
-msgid "Inventory matching"
+#: admin/systems/fusioninventory/class_fiInventory.inc:102
+msgid "Hardware"
 msgstr ""
 
-#: config/fusioninventory/class_fiConfig.inc:49
-msgid "Criteria to link an inventory result to a system"
+#: admin/systems/fusioninventory/class_fiInventory.inc:108
+msgid "Software"
 msgstr ""
 
-#: config/fusioninventory/class_fiConfig.inc:52
-msgid "Mac address"
+#: admin/systems/fusioninventory/class_fiInventory.inc:114
+msgid "Users"
 msgstr ""
 
-#: config/fusioninventory/class_fiConfig.inc:52
-msgid "IP address"
+#: admin/systems/fusioninventory/class_fiInventory.inc:120
+msgid "Processes"
 msgstr ""
 
-#: config/fusioninventory/class_fiConfig.inc:52
-msgid "Both"
+#: admin/systems/fusioninventory/class_fiInventory.inc:311
+msgid "Create a system based on this inventory"
 msgstr ""
 
-#: config/fusioninventory/class_fiConfig.inc:52
-msgid "IP or Mac address"
+#: admin/systems/fusioninventory/class_fiInventory.inc:326
+msgid "Create"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:331
+msgid "No matching system"
 msgstr ""

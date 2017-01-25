@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 18:02+0200\n"
+"POT-Creation-Date: 2017-01-23 22:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -18,19 +18,59 @@ msgstr ""
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: config/applications/class_applicationsPluginConfig.inc:28
+#: config/applications/class_applicationsPluginConfig.inc:40
 #: admin/applications/class_applicationManagement.inc:28
 #: admin/roles/class_applicationRights.inc:30
 #: admin/roles/class_applicationRights.inc:49
-#: config/applications/class_applicationsPluginConfig.inc:28
-#: config/applications/class_applicationsPluginConfig.inc:40
 msgid "Applications"
 msgstr "Applicazioni"
+
+#: config/applications/class_applicationsPluginConfig.inc:29
+msgid "Applications plugin configuration"
+msgstr "Configurazione del plugin delle applicazioni"
+
+#: config/applications/class_applicationsPluginConfig.inc:43
+msgid "Application RDN"
+msgstr "Applicazione RDN"
+
+#: config/applications/class_applicationsPluginConfig.inc:43
+msgid "Branch in which applications will be stored"
+msgstr "Ramo nel quale le applicazioni verranno immagazzinate"
+
+#: config/applications/class_applicationsPluginConfig.inc:48
+msgid "Web applications RDN"
+msgstr "Applicazioni Web RDN"
+
+#: config/applications/class_applicationsPluginConfig.inc:48
+msgid "Branch in which web applications will be stored"
+msgstr "Ramo nel quale le applicazioni verranno immagazzinate "
+
+#: config/applications/class_applicationsPluginConfig.inc:53
+msgid "Show web applications in menu"
+msgstr "Mostra le applicazioni Web nel menu"
+
+#: config/applications/class_applicationsPluginConfig.inc:53
+msgid "Whether to show web applications in FD main menu"
+msgstr "Sia per mostrare le applicazioni Web nel menu FD"
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "None"
+msgstr "Nessuno"
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "Only allowed"
+msgstr "Solo autorizzati"
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "All"
+msgstr "Tutto"
 
 #: admin/applications/class_applicationManagement.inc:29
 msgid "Application management"
 msgstr "Gestione dell'applicazione"
 
-#: admin/applications/class_applicationManagement.inc:101
+#: admin/applications/class_applicationManagement.inc:85
 msgid "Web applications"
 msgstr "Applicazioni Web"
 
@@ -182,43 +222,3 @@ msgstr "Lista delle applicazioni"
 #: admin/roles/class_applicationRights.inc:49
 msgid "The applications users with this role are allowed to launch"
 msgstr "Applicazioni consentite per questo ruolo"
-
-#: config/applications/class_applicationsPluginConfig.inc:29
-msgid "Applications plugin configuration"
-msgstr "Configurazione del plugin delle applicazioni"
-
-#: config/applications/class_applicationsPluginConfig.inc:43
-msgid "Application RDN"
-msgstr "Applicazione RDN"
-
-#: config/applications/class_applicationsPluginConfig.inc:43
-msgid "Branch in which applications will be stored"
-msgstr "Ramo nel quale le applicazioni verranno immagazzinate"
-
-#: config/applications/class_applicationsPluginConfig.inc:48
-msgid "Web applications RDN"
-msgstr "Applicazioni Web RDN"
-
-#: config/applications/class_applicationsPluginConfig.inc:48
-msgid "Branch in which web applications will be stored"
-msgstr "Ramo nel quale le applicazioni verranno immagazzinate "
-
-#: config/applications/class_applicationsPluginConfig.inc:53
-msgid "Show web applications in menu"
-msgstr "Mostra le applicazioni Web nel menu"
-
-#: config/applications/class_applicationsPluginConfig.inc:53
-msgid "Whether to show web applications in FD main menu"
-msgstr "Sia per mostrare le applicazioni Web nel menu FD"
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "None"
-msgstr "Nessuno"
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "Only allowed"
-msgstr "Solo autorizzati"
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "All"
-msgstr "Tutto"

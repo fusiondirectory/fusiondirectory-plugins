@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 18:02+0200\n"
+"POT-Creation-Date: 2017-01-23 22:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Finnish (Finland) (https://www.transifex.com/fusiondirectory/teams/12202/fi_FI/)\n"
@@ -17,6 +17,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fi_FI\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: config/dsa/class_dsaConfig.inc:28
+msgid "DSA configuration"
+msgstr ""
+
+#: config/dsa/class_dsaConfig.inc:29
+msgid "FusionDirectory dsa plugin configuration"
+msgstr ""
+
+#: config/dsa/class_dsaConfig.inc:42 admin/dsa/class_dsaManagement.inc:34
+#: admin/dsa/class_dsaManagement.inc:39
+msgid "DSA"
+msgstr ""
+
+#: config/dsa/class_dsaConfig.inc:45
+msgid "DSA RDN"
+msgstr ""
+
+#: config/dsa/class_dsaConfig.inc:45
+msgid "Branch in which Directory Service Account (dsa) will be stored"
+msgstr ""
+
+#: admin/dsa/class_dsaManagement.inc:35
+msgid "DSA management"
+msgstr ""
 
 #: admin/dsa/class_simpleSecurityObject.inc:31
 #: admin/dsa/class_simpleSecurityObject.inc:32
@@ -40,28 +65,3 @@ msgstr ""
 #: admin/dsa/class_simpleSecurityObject.inc:64
 msgid "Password"
 msgstr "Salasana"
-
-#: admin/dsa/class_dsaManagement.inc:34 admin/dsa/class_dsaManagement.inc:39
-#: config/dsa/class_dsaConfig.inc:42
-msgid "DSA"
-msgstr ""
-
-#: admin/dsa/class_dsaManagement.inc:35
-msgid "DSA management"
-msgstr ""
-
-#: config/dsa/class_dsaConfig.inc:28
-msgid "DSA configuration"
-msgstr ""
-
-#: config/dsa/class_dsaConfig.inc:29
-msgid "FusionDirectory dsa plugin configuration"
-msgstr ""
-
-#: config/dsa/class_dsaConfig.inc:45
-msgid "DSA RDN"
-msgstr ""
-
-#: config/dsa/class_dsaConfig.inc:45
-msgid "Branch in which Directory Service Account (dsa) will be stored"
-msgstr ""
