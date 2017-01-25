@@ -201,11 +201,7 @@ class serviceRepository extends simpleService
     if (!isset($attrs['FAIrepository'])) {
       return FALSE;
     }
-    if (preg_match('/'.preg_quote($distribution, '/').'$/', $attrs['FAIrepository'][0])) {
-      return TRUE;
-    } else {
-      return FALSE;
-    }
+    return preg_match('/'.preg_quote($distribution, '/').'$/', $attrs['FAIrepository'][0]);
   }
 
   function ldap_save()
