@@ -38,12 +38,18 @@ class serviceRenaterPartage extends simpleService
     return array (
       'main' => array (
         'name'  => _('Settings'),
+        'class' => array('fullwidth'),
         'attrs' => array (
           new URLAttribute(
             _('URI'), _('URI to contact the Renater Partage API'),
             'fdRenaterPartageServerUri', TRUE
           ),
-          new SetAttribute(
+          new StringAttribute(
+            _('User Agent'), _('User Agent to use to contact the Renater Partage API'),
+            'fdRenaterPartageServerUserAgent', TRUE,
+            'FusionDirectory'
+          ),
+          new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
               _('Domains handled by this Renater Partage server'),
               'fdRenaterPartageServerMailDomain',
@@ -64,7 +70,8 @@ class serviceRenaterPartage extends simpleService
               ':',
               '',
               _('Domains')
-            )
+            ),
+            FALSE, array(), TRUE
           )
         )
       )
