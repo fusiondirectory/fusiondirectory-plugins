@@ -275,50 +275,59 @@ class mailAccount extends simplePlugin
     }
   }
 
-  public function save()
+  protected function shouldSave()
   {
-    $errors = parent::save();
-    if (!empty($errors)) {
-      return $errors;
+    /* mail method might have something to save (like password change from main tab for instance) */
+    return TRUE;
+  }
+
+  public function ldap_save()
+  {
+    if (!empty($this->attrs)) {
+      $errors = parent::ldap_save();
+      if (!empty($errors)) {
+        return $errors;
+      }
     }
+
+    $errors = array();
 
     /* Only do IMAP actions if we are not a template */
     if (!$this->is_template) {
       $this->mailMethod->connect();
       if (!$this->mailMethod->is_connected()) {
-        msg_dialog::display(_("Mail error"), sprintf(_("Mail method cannot connect: %s"),
-              $this->mailMethod->get_error()), ERROR_DIALOG);
+        $errors[] = sprintf(_('Mail method cannot connect: %s'), $this->mailMethod->get_error());
       } else {
         if (!$this->mailMethod->updateMailbox()) {
-          msg_dialog::display(_("Mail error"), sprintf(_("Cannot update mailbox: %s"),
-                $this->mailMethod->get_error()), ERROR_DIALOG);
+          $errors[] = sprintf(_('Cannot update mailbox: %s'), $this->mailMethod->get_error());
         }
         if (!$this->mailMethod->setQuota($this->gosaMailQuota)) {
-          msg_dialog::display(_("Mail error"), sprintf(_("Cannot write quota settings: %s"),
-                $this->mailMethod->get_error()), ERROR_DIALOG);
+          $errors[] = sprintf(_('Cannot write quota settings: %s'), $this->mailMethod->get_error());
         }
 
-        if (!is_integer(strpos($this->gosaMailDeliveryMode, "C"))) {
+        if (!is_integer(strpos($this->gosaMailDeliveryMode, 'C'))) {
           /* Do not write sieve settings if this account is new and
              doesn't seem to exist. */
           if (!$this->initially_was_account && !$this->mailMethod->account_exists()) {
             @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-                "Skipping sieve settings, the account doesn't seem to be created already.</b>", "");
+                'Skipping sieve settings, the account doesn’t seem to be created already.</b>', '');
           } else {
             if (!$this->mailMethod->saveSieveSettings()) {
-              msg_dialog::display(_("Mail error saving sieve settings"), $this->mailMethod->get_error(), ERROR_DIALOG);
+              $errors[] = sprintf(_('Mail error saving sieve settings: %s'), $this->mailMethod->get_error());
             }
           }
         } else {
           if ($this->sieve_management) {
             @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-                "User uses an own sieve script, skipping sieve update.</b>", "");
+                'User uses an own sieve script, skipping sieve update.</b>', '');
             $this->sieve_management->save();
           }
         }
       }
     }
     $this->mailMethod->disconnect();
+
+    return $errors;
   }
 
   function post_remove()
