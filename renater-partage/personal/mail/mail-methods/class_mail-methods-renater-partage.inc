@@ -60,9 +60,9 @@ class mailMethodRenaterPartage extends mailMethod
       $this->error = _('Server did not return auth token');
       return FALSE;
     } else {
-      $this->token = $response['Response']['token'];
-      $this->tokenTime = $ts;
-      $this->connected = TRUE;
+      $this->token      = $response['Response']['token'];
+      $this->tokenTime  = $ts;
+      $this->connected  = TRUE;
       return TRUE;
     }
   }
@@ -76,6 +76,7 @@ class mailMethodRenaterPartage extends mailMethod
       $post = http_build_query($post);
     }
 
+    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $command, '<b>MAIL: Command</b>');
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, htmlentities($post, ENT_COMPAT, 'UTF-8'),
       '<b>MAIL: Query</b>');
 
@@ -93,10 +94,11 @@ class mailMethodRenaterPartage extends mailMethod
     );
 
     $context  = stream_context_create($opts);
-    if ($fp = @fopen($infos['uri'].'/'.$command, 'r', false, $context)) {
+    error_clear_last();
+    if ($fp = @fopen($infos['uri'].'/'.$command, 'r', FALSE, $context)) {
       $response = '';
-      while($row = fgets($fp)) {
-        $response.= trim($row)."\n";
+      while ($row = fgets($fp)) {
+        $response .= trim($row)."\n";
       }
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, htmlentities($response, ENT_COMPAT, 'UTF-8'),
         '<b>MAIL: Answer</b>');
@@ -116,7 +118,12 @@ class mailMethodRenaterPartage extends mailMethod
 
       return $response;
     } else {
-      $this->error = sprintf(_('Unable to connect to %s'), $infos['uri']);
+      $error = error_get_last();
+      if ($errors !== NULL) {
+        $this->error = sprintf(_('Unable to connect to %s: %s'), $infos['uri'], $error['message']);
+      } else {
+        $this->error = sprintf(_('Unable to connect to %s'), $infos['uri']);
+      }
       return FALSE;
     }
   }
@@ -185,7 +192,7 @@ class mailMethodRenaterPartage extends mailMethod
       $account = array(
         'name'                                => $this->account_id,
         'zimbraCOSId'                         => $infos['cos_id'],
-        'zimbraMailQuota'                     => $this->parent->gosaMailQuota,
+        'zimbraMailQuota'                     => $this->parent->gosaMailQuota * 1024 * 1024,
         'zimbraPrefMailLocalDeliveryDisabled' => ($this->parent->flag_ownmailbox ? 'TRUE' : 'FALSE'),
         'zimbraPrefMailForwardingAddress'     => reset($this->parent->gosaMailForwardingAddress),
       );
@@ -209,8 +216,8 @@ class mailMethodRenaterPartage extends mailMethod
       );
       $userTab = $this->parent->parent->getBaseObject();
       foreach ($userFields as $field) {
-        if (!empty($userTab->field)) {
-          $account[$field] = $userTab->field;
+        if (!empty($userTab->$field)) {
+          $account[$field] = $userTab->$field;
         }
       }
 
@@ -235,12 +242,11 @@ class mailMethodRenaterPartage extends mailMethod
           $this->error = _('An account with the same email address already exists in Partage');
           return FALSE;
         }
-        $account = $account = array(
-          'name'                                => $this->account_id,
-        );
-      } else {
-        $account = array();
+        /* TODO: call rename */
+        $this->error = 'TODO';
+        return FALSE;
       }
+      $account = array();
 
       /* Here we use $this->parent->attrs to only catch fields which were modified */
       if (isset($this->parent->attrs['gosaMailForwardingAddress'])) {
@@ -257,18 +263,29 @@ class mailMethodRenaterPartage extends mailMethod
       }
       if (isset($this->parent->attrs['gosaMailDeliveryMode'])) {
         $gosaMailDeliveryMode = $this->parent->attrs['gosaMailDeliveryMode'];
-        if (is_array($gosaMailDeliveryMode)) {
-          $gosaMailDeliveryMode = $gosaMailDeliveryMode[0];
-        }
         $account['zimbraPrefMailLocalDeliveryDisabled'] = (preg_match('I', $gosaMailDeliveryMode) ? 'TRUE' : 'FALSE');
       }
       if (isset($this->parent->attrs['gosaMailQuota'])) {
-        $account['zimbraMailQuota'] = $this->parent->attrs['gosaMailQuota'];
+        $account['zimbraMailQuota'] = $this->parent->attrs['gosaMailQuota'] * 1024 * 1024;
       }
       $userTab = $this->parent->parent->getBaseObject();
+      $userFields = array(
+        'sn', 'givenName', 'description',
+        'l', 'st',
+        // postalAddress
+        'telephoneNumber', 'mobile', 'pager', 'facsimileTelephoneNumber',
+        'displayName', 'homePhone',
+        'title', 'ou',
+      );
+      foreach ($userFields as $field) {
+        if (!empty($userTab->attrs[$field])) {
+          $account[$field] = $userTab->attrs[$field];
+        }
+      }
       /* TODO: call SetPassword for password change outside of creation */
 
       if (!empty($account)) {
+        $account['name'] = $this->account_id;
         $answer = $this->query('ModifyAccount/'.$this->token, $account);
 
         if ($answer === FALSE) {
@@ -296,7 +313,7 @@ class mailMethodRenaterPartage extends mailMethod
   {
     if ($this->cacheAccount()) {
       /* Partage sends quota in bytes */
-      return ($this->cachedAccount['account']['used'] / (1024*1024));
+      return ($this->cachedAccount['account']['used'] / (1024 * 1024));
     }
     return parent::getQuotaUsage();
   }
@@ -308,7 +325,7 @@ class mailMethodRenaterPartage extends mailMethod
   {
     if ($this->cacheAccount()) {
       /* Partage sends quota in bytes */
-      return ($this->cachedAccount['account']['quota'] / (1024*1024));
+      return ($this->cachedAccount['account']['quota'] / (1024 * 1024));
     }
     return $quotaValue;
   }
@@ -331,7 +348,7 @@ class mailMethodRenaterPartage extends mailMethod
                   array('cn', 'fdRenaterPartageServerUri', 'fdRenaterPartageServerMailDomain', 'fdRenaterPartageServerUserAgent'));
     while ($attrs = $ldap->fetch()) {
       unset($attrs['fdRenaterPartageServerMailDomain']['count']);
-      foreach($attrs['fdRenaterPartageServerMailDomain'] as $domainAndKey) {
+      foreach ($attrs['fdRenaterPartageServerMailDomain'] as $domainAndKey) {
         list($domain, $key, $cosString) = explode(':', $domainAndKey, 3);
         $cosArray = explode(',', $cosString);
         foreach ($cosArray as $cos) {
