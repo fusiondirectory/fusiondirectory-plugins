@@ -68,6 +68,7 @@ class mailMethod
   protected $shareObjectClasses = array();
 
   protected $enableQuota            = TRUE;
+  protected $enableVacation         = TRUE;
   protected $enableVacationRange    = FALSE;
   protected $enableFolderTypes      = FALSE;
 
@@ -577,12 +578,20 @@ class mailMethod
     return array("INBOX");
   }
 
+  /*! \brief  Returns whether the vacation is enabled
+      @return Boolean TRUE, FALSE
+   */
+  public function vacationEnabled()
+  {
+    return $this->enableVacation;
+  }
+
   /*! \brief  Returns whether the vacation range is selectable or not
       @return Boolean TRUE, FALSE
    */
   public function vacationRangeEnabled()
   {
-    return $this->enableVacationRange;
+    return ($this->vacationEnabled() && $this->enableVacationRange);
   }
 
   /*! \brief  Checks dependencies to other FusionDirectory plugins.

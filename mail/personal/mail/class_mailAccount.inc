@@ -246,6 +246,10 @@ class mailAccount extends simplePlugin
       $this->attributesAccess['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
     }
 
+    if (!$this->mailMethod->vacationEnabled()) {
+      $this->attributesAccess['flag_vacation']->setValue(FALSE);
+      $this->attributesAccess['flag_vacation']->setDisabled(TRUE);
+    }
     if (!$this->mailMethod->vacationRangeEnabled()) {
       $this->attributesAccess['gosaVacationStart']->setDisabled(TRUE);
       $this->attributesAccess['gosaVacationStart']->setVisible(FALSE);
