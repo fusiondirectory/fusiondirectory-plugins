@@ -207,13 +207,11 @@ class mailMethodRenaterPartage extends mailMethod
         }
         $account['zimbraPrefMailForwardingAddress'] = $address;
       }
-      //~ carLicense -> supann edupersonprincipalname (eppn)
-      //~ zimbraHideInGal -> supann liste rouge
+      // TODO:
       //~ co (country)
       //~ postalCode
       //~ street
       //~ zimbraAccountStatus -> ? lock account?
-      //~ zimbraPasswordMustChange -> unix
 
       $userFields = array(
         'sn', 'givenName', 'description',
@@ -241,6 +239,17 @@ class mailMethodRenaterPartage extends mailMethod
         /* If we don’t, just give the hash */
         $account['password']      = '';
         $account['userPassword']  = $userTab->userPassword;
+      }
+
+      /* Sync fields from SUPANN if tab is active */
+      if (isset($this->parent->parent->by_object['supannAccount']) && $this->parent->parent->by_object['supannAccount']->is_account) {
+        $supannTab = $this->parent->parent->by_object['supannAccount'];
+        if (!empty($supannTab->eduPersonPrincipalName)) {
+          $account['carLicense']  = $supannTab->eduPersonPrincipalName;
+        }
+        if (!empty($supannTab->supannListeRouge)) {
+          $account['zimbraHideInGal'] = ($supannTab->supannListeRouge ? 'TRUE' : 'FALSE');
+        }
       }
 
       $answer = $this->query('CreateAccount', $account);
@@ -309,6 +318,17 @@ class mailMethodRenaterPartage extends mailMethod
         $account['initials'] = strtoupper(substr($userTab->givenName, 0, 1).substr($userTab->sn, 0, 1));
       }
 
+      /* Sync fields from SUPANN if tab is active */
+      if (isset($this->parent->parent->by_object['supannAccount']) && $this->parent->parent->by_object['supannAccount']->is_account) {
+        $supannTab = $this->parent->parent->by_object['supannAccount'];
+        if ($supannTab->attributesAccess['eduPersonPrincipalName']->hasChanged()) {
+          $account['carLicense']  = $supannTab->eduPersonPrincipalName;
+        }
+        if ($supannTab->attributesAccess['supannListeRouge']->hasChanged()) {
+          $account['zimbraHideInGal'] = ($supannTab->supannListeRouge ? 'TRUE' : 'FALSE');
+        }
+      }
+
       if (!empty($account)) {
         $account['name'] = $this->account_id;
         $answer = $this->query('ModifyAccount', $account);
@@ -318,7 +338,18 @@ class mailMethodRenaterPartage extends mailMethod
         }
       }
 
-      /* TODO: call SetPassword for password change outside of creation */
+      /* Call SetPassword for password change if needed */
+      if ($userTab->attributesAccess['userPassword']->getClear() != '') {
+        $account = array(
+          'name'      => $this->account_id,
+          'password'  => $userTab->attributesAccess['userPassword']->getClear()
+        );
+        $answer = $this->query('SetPassword', $account);
+
+        if ($answer === FALSE) {
+          return FALSE;
+        }
+      }
     }
 
     /* Handle aliases */
