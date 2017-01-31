@@ -213,13 +213,15 @@ class mailMethodRenaterPartage extends mailMethod
       //~ street
       //~ zimbraAccountStatus -> ? lock account?
 
+      // postOfficeBox
+
       $userFields = array(
         'sn', 'givenName', 'description',
         'l', 'st',
         // postalAddress
         'telephoneNumber', 'mobile', 'pager', 'facsimileTelephoneNumber',
         'displayName', 'homePhone',
-        'title', 'ou',
+        'title', 'ou'
       );
       $userTab = $this->parent->parent->getBaseObject();
       foreach ($userFields as $field) {
@@ -229,6 +231,9 @@ class mailMethodRenaterPartage extends mailMethod
       }
       if (!empty($userTab->o)) {
         $account['company'] = $userTab->o;
+      }
+      if (!empty($userTab->roomNumber)) {
+        $account['physicalDeliveryOfficeName'] = $userTab->roomNumber;
       }
       $account['initials'] = strtoupper(substr($userTab->givenName, 0, 1).substr($userTab->sn, 0, 1));
 
@@ -292,7 +297,7 @@ class mailMethodRenaterPartage extends mailMethod
       }
       if (isset($this->parent->attrs['gosaMailDeliveryMode'])) {
         $gosaMailDeliveryMode = $this->parent->attrs['gosaMailDeliveryMode'];
-        $account['zimbraPrefMailLocalDeliveryDisabled'] = (preg_match('I', $gosaMailDeliveryMode) ? 'TRUE' : 'FALSE');
+        $account['zimbraPrefMailLocalDeliveryDisabled'] = (is_integer(strpos($gosaMailDeliveryMode, 'I')) ? 'TRUE' : 'FALSE');
       }
       if (isset($this->parent->attrs['gosaMailQuota'])) {
         $account['zimbraMailQuota'] = $this->parent->attrs['gosaMailQuota'] * 1024 * 1024;
@@ -304,7 +309,7 @@ class mailMethodRenaterPartage extends mailMethod
         // postalAddress
         'telephoneNumber', 'mobile', 'pager', 'facsimileTelephoneNumber',
         'displayName', 'homePhone',
-        'title', 'ou',
+        'title', 'ou'
       );
       foreach ($userFields as $field) {
         if (!empty($userTab->attrs[$field])) {
@@ -313,6 +318,9 @@ class mailMethodRenaterPartage extends mailMethod
       }
       if (!empty($userTab->attrs['o'])) {
         $account['company'] = $userTab->attrs['o'];
+      }
+      if (!empty($userTab->attrs['roomNumber'])) {
+        $account['physicalDeliveryOfficeName'] = $userTab->attrs['roomNumber'];
       }
       if (!empty($userTab->attrs['sn']) || !empty($userTab->attrs['givenName'])) {
         $account['initials'] = strtoupper(substr($userTab->givenName, 0, 1).substr($userTab->sn, 0, 1));
@@ -377,6 +385,11 @@ class mailMethodRenaterPartage extends mailMethod
   public function deleteMailbox()
   {
     parent::deleteMailbox();
+    $this->account_id = $this->initial_account_id;
+    if ($this->account_exists()) {
+      $answer = $this->query('DeleteAccount', array('name' => $this->initial_account_id));
+      return ($answer !== FALSE);
+    }
     return TRUE;
   }
 

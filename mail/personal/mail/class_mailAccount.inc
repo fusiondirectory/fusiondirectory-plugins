@@ -302,7 +302,7 @@ class mailAccount extends simplePlugin
           $errors[] = sprintf(_('Cannot update mailbox: %s'), $this->mailMethod->get_error());
         }
         if (!$this->mailMethod->setQuota($this->gosaMailQuota)) {
-          $errors[] = sprintf(_('Cannot write quota settings: %s'), $this->mailMethod->get_error());
+          msg_dialog::display(_('Mail error'), sprintf(_('Cannot write quota settings: %s'), $this->mailMethod->get_error()), ERROR_DIALOG);
         }
 
         if (!is_integer(strpos($this->gosaMailDeliveryMode, 'C'))) {
@@ -310,22 +310,29 @@ class mailAccount extends simplePlugin
              doesn't seem to exist. */
           if (!$this->initially_was_account && !$this->mailMethod->account_exists()) {
             @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-                'Skipping sieve settings, the account doesn’t seem to be created already.</b>', '');
+                'Skipping sieve settings, the account doesn’t seem to be created already.', '');
           } else {
             if (!$this->mailMethod->saveSieveSettings()) {
-              $errors[] = sprintf(_('Mail error saving sieve settings: %s'), $this->mailMethod->get_error());
+              msg_dialog::display(_('Mail error'), sprintf(_('Mail error saving sieve settings: %s'), $this->mailMethod->get_error()), ERROR_DIALOG);
             }
           }
         } else {
           if ($this->sieve_management) {
             @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-                'User uses an own sieve script, skipping sieve update.</b>', '');
+                'User uses an own sieve script, skipping sieve update.', '');
             $this->sieve_management->save();
           }
         }
       }
     }
     $this->mailMethod->disconnect();
+
+    if (!empty($errors) && !$this->initially_was_account) {
+      /* Mail method failed to create, cancel ldap save */
+      $this->prepareNextCleanup();
+      $this->prepare_remove();
+      $this->ldap_remove();
+    }
 
     return $errors;
   }
