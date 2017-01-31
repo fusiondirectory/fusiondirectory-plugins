@@ -93,6 +93,10 @@ class mailMethodRenaterPartage extends mailMethod
       'ssl' => $this->ssl_options
     );
 
+    if ($command != 'Auth') {
+      $command .= '/'.$this->token;
+    }
+
     $context  = stream_context_create($opts);
     if ($fp = @fopen($infos['uri'].'/'.$command, 'r', FALSE, $context)) {
       $response = '';
@@ -162,7 +166,7 @@ class mailMethodRenaterPartage extends mailMethod
     } elseif (isset($this->cachedAccount['account']) && ($this->account_id == $this->cachedAccount['id'])) {
       return TRUE;
     }
-    $answer = $this->query('GetAccount/'.$this->token, array('name' => $this->account_id));
+    $answer = $this->query('GetAccount', array('name' => $this->account_id));
     if (($answer !== FALSE) && isset($answer['Response']['account'])) {
       $this->cachedAccount = array(
         'account' => $answer['Response']['account'],
@@ -239,7 +243,7 @@ class mailMethodRenaterPartage extends mailMethod
         $account['userPassword']  = $userTab->userPassword;
       }
 
-      $answer = $this->query('CreateAccount/'.$this->token, $account);
+      $answer = $this->query('CreateAccount', $account);
 
       if ($answer === FALSE) {
         return FALSE;
@@ -256,7 +260,7 @@ class mailMethodRenaterPartage extends mailMethod
           'name'    => $this->initial_account_id,
           'newname' => $this->account_id
         );
-        $answer = $this->query('RenameAccount/'.$this->token, $account);
+        $answer = $this->query('RenameAccount', $account);
 
         if ($answer === FALSE) {
           return FALSE;
@@ -304,21 +308,38 @@ class mailMethodRenaterPartage extends mailMethod
       if (!empty($userTab->attrs['sn']) || !empty($userTab->attrs['givenName'])) {
         $account['initials'] = strtoupper(substr($userTab->givenName, 0, 1).substr($userTab->sn, 0, 1));
       }
-      /* TODO: call SetPassword for password change outside of creation */
 
       if (!empty($account)) {
         $account['name'] = $this->account_id;
-        $answer = $this->query('ModifyAccount/'.$this->token, $account);
+        $answer = $this->query('ModifyAccount', $account);
 
         if ($answer === FALSE) {
           return FALSE;
         }
       }
+
+      /* TODO: call SetPassword for password change outside of creation */
     }
 
-    /* TODO: Handle aliases */
-    //~ if (isset($this->parent->attrs['gosaMailAlternateAddress'])) {
-    //~ }
+    /* Handle aliases */
+    if (isset($this->parent->attrs['gosaMailAlternateAddress'])) {
+      $initialAliases = $this->parent->attributesAccess['gosaMailAlternateAddress']->getInitialValue();
+      $aliases        = $this->parent->attributesAccess['gosaMailAlternateAddress']->getValue();
+      $remove = array_diff($initialAliases, $aliases);
+      $add    = array_diff($aliases, $initialAliases);
+      foreach ($remove as $alias) {
+        $answer = $this->query('RemoveAccountAlias', array('name' => $this->account_id, 'alias' => $alias));
+        if ($answer === FALSE) {
+          return FALSE;
+        }
+      }
+      foreach ($add as $alias) {
+        $answer = $this->query('AddAccountAlias', array('name' => $this->account_id, 'alias' => $alias));
+        if ($answer === FALSE) {
+          return FALSE;
+        }
+      }
+    }
     return TRUE;
   }
 
