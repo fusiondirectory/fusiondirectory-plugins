@@ -21,7 +21,7 @@
 class mailMethodRenaterPartage extends mailMethod
 {
   protected $enableQuota            = TRUE;
-  protected $enableVacationRange    = FALSE;
+  protected $enableVacation         = FALSE;
   protected $enableFolderTypes      = FALSE;
 
   protected $user_id = '%MAIL%';
@@ -287,6 +287,7 @@ class mailMethodRenaterPartage extends mailMethod
     }
 
     /* Step 4 - Call SetPassword for password change if needed */
+    $userTab = $this->parent->parent->getBaseObject();
     if ($userTab->attributesAccess['userPassword']->getClear() != '') {
       $account = array(
         'name'      => $this->account_id,
