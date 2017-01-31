@@ -218,6 +218,7 @@ class mailMethodRenaterPartage extends mailMethod
         $account[$partageField] = $userTab->$fdField;
       }
     }
+    $account['zimbraAccountStatus'] = ($userTab->attributesAccess['userPassword']->isLocked() ? 'locked' : 'active');
     $account['initials'] = strtoupper(substr($userTab->givenName, 0, 1).substr($userTab->sn, 0, 1));
 
     /* Sync fields from SUPANN if tab is active */
@@ -237,7 +238,6 @@ class mailMethodRenaterPartage extends mailMethod
     //~ postalCode
     //~ street
     //~ (postOfficeBox)
-    //~ zimbraAccountStatus -> ? lock account?
 
     $account = $this->getAccountArray($infos);
 
@@ -274,6 +274,10 @@ class mailMethodRenaterPartage extends mailMethod
       } elseif (!isset($this->cacheAccount['account'][$key]) && empty($value)) {
         unset($account[$key]);
       }
+    }
+    /* If value of zimbraAccountStatus is not something we understand, do not touch it (example: closed) */
+    if (isset($this->cacheAccount['account']['zimbraAccountStatus']) && !in_array($this->cacheAccount['account']['zimbraAccountStatus'], array('active', 'locked'))) {
+      unset($account['zimbraAccountStatus']);
     }
 
     /* Step 3 - We send update order if diff is not empty */
