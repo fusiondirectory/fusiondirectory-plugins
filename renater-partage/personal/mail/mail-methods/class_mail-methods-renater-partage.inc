@@ -179,6 +179,129 @@ class mailMethodRenaterPartage extends mailMethod
     }
   }
 
+  private function getAccountArray($infos)
+  {
+    $account = array(
+      'name'                                => $this->account_id,
+      'zimbraCOSId'                         => $infos['cos_id'],
+      'zimbraMailQuota'                     => $this->parent->gosaMailQuota * 1024 * 1024,
+      'zimbraPrefMailLocalDeliveryDisabled' => ($this->parent->flag_ownmailbox ? 'TRUE' : 'FALSE'),
+    );
+    if (!empty($this->parent->gosaMailForwardingAddress)) {
+      $count = count($this->parent->gosaMailForwardingAddress);
+      $address = $this->parent->gosaMailForwardingAddress[0];
+      if ($count > 1) {
+        msg_dialog::display(_('Warning'), sprintf(_('Several addresses were given in gosaMailForwardingAddress but only one is supported by PARTAGE. %s will be sent to PARTAGE.'), $address));
+      }
+      $account['zimbraPrefMailForwardingAddress'] = $address;
+    }
+
+    $userFields = array(
+      'sn', 'givenName', 'description',
+      'l', 'st',
+      'telephoneNumber', 'mobile', 'pager', 'facsimileTelephoneNumber',
+      'displayName', 'homePhone',
+      'title', 'ou'
+    );
+    $userTab = $this->parent->parent->getBaseObject();
+    foreach ($userFields as $field) {
+      if (isset($userTab->$field)) {
+        $account[$field] = $userTab->$field;
+      }
+    }
+    $userMatchingFields = array(
+      'o' => 'company',
+      'roomNumber' => 'physicalDeliveryOfficeName'
+    );
+    foreach ($userMatchingFields as $fdField => $partageField) {
+      if (isset($userTab->$fdField)) {
+        $account[$partageField] = $userTab->$fdField;
+      }
+    }
+    $account['initials'] = strtoupper(substr($userTab->givenName, 0, 1).substr($userTab->sn, 0, 1));
+
+    /* Sync fields from SUPANN if tab is active */
+    if (isset($this->parent->parent->by_object['supannAccount']) && $this->parent->parent->by_object['supannAccount']->is_account) {
+      $supannTab = $this->parent->parent->by_object['supannAccount'];
+      $account['carLicense']      = $supannTab->eduPersonPrincipalName;
+      $account['zimbraHideInGal'] = ($supannTab->supannListeRouge ? 'TRUE' : 'FALSE');
+    }
+
+    return $account;
+  }
+
+  private function createAccount($infos)
+  {
+    // TODO
+    //~ co (country)
+    //~ postalCode
+    //~ street
+    //~ (postOfficeBox)
+    //~ zimbraAccountStatus -> ? lock account?
+
+    $account = $this->getAccountArray($infos);
+
+    /* Remove empty values */
+    foreach ($account as $key => $value) {
+      if (empty($value)) {
+        unset($account[$key]);
+      }
+    }
+
+    $userTab = $this->parent->parent->getBaseObject();
+    if ($userTab->attributesAccess['userPassword']->getClear() != '') {
+      /* Password was changed so we have the clear text password */
+      $account['password'] = $userTab->attributesAccess['userPassword']->getClear();
+    } else {
+      /* If we don’t, just give the hash */
+      $account['password']      = '';
+      $account['userPassword']  = $userTab->userPassword;
+    }
+
+    return $this->query('CreateAccount', $account);
+  }
+
+  private function updateAccount($infos)
+  {
+    /* Step 1 - We fill $account */
+    $account = $this->getAccountArray($infos);
+
+    /* Step 2 - We compute diff from PARTAGE data */
+    $this->cacheAccount();
+    foreach ($account as $key => $value) {
+      if (isset($this->cacheAccount['account'][$key]) && ($this->cacheAccount['account'][$key] == $value)) {
+        unset($account[$key]);
+      } elseif (!isset($this->cacheAccount['account'][$key]) && empty($value)) {
+        unset($account[$key]);
+      }
+    }
+
+    /* Step 3 - We send update order if diff is not empty */
+    if (!empty($account)) {
+      $account['name'] = $this->account_id;
+      $answer = $this->query('ModifyAccount', $account);
+
+      if ($answer === FALSE) {
+        return FALSE;
+      }
+    }
+
+    /* Step 4 - Call SetPassword for password change if needed */
+    if ($userTab->attributesAccess['userPassword']->getClear() != '') {
+      $account = array(
+        'name'      => $this->account_id,
+        'password'  => $userTab->attributesAccess['userPassword']->getClear()
+      );
+      $answer = $this->query('SetPassword', $account);
+
+      if ($answer === FALSE) {
+        return FALSE;
+      }
+    }
+
+    return TRUE;
+  }
+
   public function updateMailbox()
   {
     parent::updateMailbox();
@@ -193,71 +316,7 @@ class mailMethodRenaterPartage extends mailMethod
         return FALSE;
       }
 
-      $account = array(
-        'name'                                => $this->account_id,
-        'zimbraCOSId'                         => $infos['cos_id'],
-        'zimbraMailQuota'                     => $this->parent->gosaMailQuota * 1024 * 1024,
-        'zimbraPrefMailLocalDeliveryDisabled' => ($this->parent->flag_ownmailbox ? 'TRUE' : 'FALSE'),
-      );
-      if (!empty($this->parent->gosaMailForwardingAddress)) {
-        $count = count($this->parent->gosaMailForwardingAddress);
-        $address = $this->parent->gosaMailForwardingAddress[0];
-        if ($count > 1) {
-          msg_dialog::display(_('Warning'), sprintf(_('Several addresses were given in gosaMailForwardingAddress but only one is supported by PARTAGE. %s will be sent to PARTAGE.'), $address));
-        }
-        $account['zimbraPrefMailForwardingAddress'] = $address;
-      }
-      // TODO:
-      //~ co (country)
-      //~ postalCode
-      //~ street
-      //~ zimbraAccountStatus -> ? lock account?
-
-      // postOfficeBox
-
-      $userFields = array(
-        'sn', 'givenName', 'description',
-        'l', 'st',
-        // postalAddress
-        'telephoneNumber', 'mobile', 'pager', 'facsimileTelephoneNumber',
-        'displayName', 'homePhone',
-        'title', 'ou'
-      );
-      $userTab = $this->parent->parent->getBaseObject();
-      foreach ($userFields as $field) {
-        if (!empty($userTab->$field)) {
-          $account[$field] = $userTab->$field;
-        }
-      }
-      if (!empty($userTab->o)) {
-        $account['company'] = $userTab->o;
-      }
-      if (!empty($userTab->roomNumber)) {
-        $account['physicalDeliveryOfficeName'] = $userTab->roomNumber;
-      }
-      $account['initials'] = strtoupper(substr($userTab->givenName, 0, 1).substr($userTab->sn, 0, 1));
-
-      if ($userTab->attributesAccess['userPassword']->getClear() != '') {
-        /* Password was changed so we have the clear text password */
-        $account['password'] = $userTab->attributesAccess['userPassword']->getClear();
-      } else {
-        /* If we don’t, just give the hash */
-        $account['password']      = '';
-        $account['userPassword']  = $userTab->userPassword;
-      }
-
-      /* Sync fields from SUPANN if tab is active */
-      if (isset($this->parent->parent->by_object['supannAccount']) && $this->parent->parent->by_object['supannAccount']->is_account) {
-        $supannTab = $this->parent->parent->by_object['supannAccount'];
-        if (!empty($supannTab->eduPersonPrincipalName)) {
-          $account['carLicense']  = $supannTab->eduPersonPrincipalName;
-        }
-        if (!empty($supannTab->supannListeRouge)) {
-          $account['zimbraHideInGal'] = ($supannTab->supannListeRouge ? 'TRUE' : 'FALSE');
-        }
-      }
-
-      $answer = $this->query('CreateAccount', $account);
+      $answer = $this->createAccount($infos);
 
       if ($answer === FALSE) {
         return FALSE;
@@ -279,82 +338,18 @@ class mailMethodRenaterPartage extends mailMethod
         if ($answer === FALSE) {
           return FALSE;
         }
-      }
-      $account = array();
 
-      /* Here we use $this->parent->attrs to only catch fields which were modified */
-      if (isset($this->parent->attrs['gosaMailForwardingAddress'])) {
-        $count = count($this->parent->attrs['gosaMailForwardingAddress']);
-        if ($count >= 1) {
-          $address = $this->parent->attrs['gosaMailForwardingAddress'][0];
-          if ($count > 1) {
-            msg_dialog::display(_('Warning'), sprintf(_('Several addresses were given in gosaMailForwardingAddress but only one is supported by PARTAGE. %s will be sent to PARTAGE.'), $address));
-          }
-          $account['zimbraPrefMailForwardingAddress'] = $address;
-        } else {
-          $account['zimbraPrefMailForwardingAddress'] = '';
+        if (!$this->updateAccount($infos)) {
+          return FALSE;
         }
-      }
-      if (isset($this->parent->attrs['gosaMailDeliveryMode'])) {
-        $gosaMailDeliveryMode = $this->parent->attrs['gosaMailDeliveryMode'];
-        $account['zimbraPrefMailLocalDeliveryDisabled'] = (is_integer(strpos($gosaMailDeliveryMode, 'I')) ? 'TRUE' : 'FALSE');
-      }
-      if (isset($this->parent->attrs['gosaMailQuota'])) {
-        $account['zimbraMailQuota'] = $this->parent->attrs['gosaMailQuota'] * 1024 * 1024;
-      }
-      $userTab = $this->parent->parent->getBaseObject();
-      $userFields = array(
-        'sn', 'givenName', 'description',
-        'l', 'st',
-        // postalAddress
-        'telephoneNumber', 'mobile', 'pager', 'facsimileTelephoneNumber',
-        'displayName', 'homePhone',
-        'title', 'ou'
-      );
-      foreach ($userFields as $field) {
-        if (!empty($userTab->attrs[$field])) {
-          $account[$field] = $userTab->attrs[$field];
-        }
-      }
-      if (!empty($userTab->attrs['o'])) {
-        $account['company'] = $userTab->attrs['o'];
-      }
-      if (!empty($userTab->attrs['roomNumber'])) {
-        $account['physicalDeliveryOfficeName'] = $userTab->attrs['roomNumber'];
-      }
-      if (!empty($userTab->attrs['sn']) || !empty($userTab->attrs['givenName'])) {
-        $account['initials'] = strtoupper(substr($userTab->givenName, 0, 1).substr($userTab->sn, 0, 1));
-      }
-
-      /* Sync fields from SUPANN if tab is active */
-      if (isset($this->parent->parent->by_object['supannAccount']) && $this->parent->parent->by_object['supannAccount']->is_account) {
-        $supannTab = $this->parent->parent->by_object['supannAccount'];
-        if ($supannTab->attributesAccess['eduPersonPrincipalName']->hasChanged()) {
-          $account['carLicense']  = $supannTab->eduPersonPrincipalName;
-        }
-        if ($supannTab->attributesAccess['supannListeRouge']->hasChanged()) {
-          $account['zimbraHideInGal'] = ($supannTab->supannListeRouge ? 'TRUE' : 'FALSE');
-        }
-      }
-
-      if (!empty($account)) {
-        $account['name'] = $this->account_id;
-        $answer = $this->query('ModifyAccount', $account);
+      } elseif (!$this->account_exists()) {
+        $answer = $this->createAccount($infos);
 
         if ($answer === FALSE) {
           return FALSE;
         }
-      }
-
-      /* Call SetPassword for password change if needed */
-      if ($userTab->attributesAccess['userPassword']->getClear() != '') {
-        $account = array(
-          'name'      => $this->account_id,
-          'password'  => $userTab->attributesAccess['userPassword']->getClear()
-        );
-        $answer = $this->query('SetPassword', $account);
-
-        if ($answer === FALSE) {
+      } else {
+        if (!$this->updateAccount($infos)) {
           return FALSE;
         }
       }
