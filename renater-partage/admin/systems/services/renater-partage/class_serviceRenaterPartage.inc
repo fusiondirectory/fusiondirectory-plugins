@@ -49,6 +49,13 @@ class serviceRenaterPartage extends simpleService
             'fdRenaterPartageServerUserAgent', TRUE,
             'FusionDirectory'
           ),
+        )
+      ),
+      'domains' => array(
+        'template'  => get_template_path('renater_domains.tpl', TRUE, dirname(__FILE__)),
+        'name'      => _('Domains'),
+        'class'     => array('fullwidth'),
+        'attrs'     => array(
           new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
               _('Domains handled by this Renater Partage server'),
@@ -76,6 +83,12 @@ class serviceRenaterPartage extends simpleService
         )
       )
     );
+  }
+
+  function __construct ($dn = NULL, $parent = NULL)
+  {
+    parent::__construct($dn, $parent);
+    $this->attributesAccess['fdRenaterPartageServerMailDomain']->setLinearRendering(FALSE);
   }
 
   protected function post_save()
