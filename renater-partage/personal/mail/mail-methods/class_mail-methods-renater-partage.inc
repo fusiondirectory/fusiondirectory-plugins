@@ -94,7 +94,6 @@ class mailMethodRenaterPartage extends mailMethod
     );
 
     $context  = stream_context_create($opts);
-    error_clear_last();
     if ($fp = @fopen($infos['uri'].'/'.$command, 'r', FALSE, $context)) {
       $response = '';
       while ($row = fgets($fp)) {
@@ -119,7 +118,8 @@ class mailMethodRenaterPartage extends mailMethod
       return $response;
     } else {
       $error = error_get_last();
-      if ($errors !== NULL) {
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $error, '<b>MAIL: No Answer</b>');
+      if ($error !== NULL) {
         $this->error = sprintf(_('Unable to connect to %s: %s'), $infos['uri'], $error['message']);
       } else {
         $this->error = sprintf(_('Unable to connect to %s'), $infos['uri']);
@@ -194,17 +194,22 @@ class mailMethodRenaterPartage extends mailMethod
         'zimbraCOSId'                         => $infos['cos_id'],
         'zimbraMailQuota'                     => $this->parent->gosaMailQuota * 1024 * 1024,
         'zimbraPrefMailLocalDeliveryDisabled' => ($this->parent->flag_ownmailbox ? 'TRUE' : 'FALSE'),
-        'zimbraPrefMailForwardingAddress'     => reset($this->parent->gosaMailForwardingAddress),
       );
+      if (!empty($this->parent->gosaMailForwardingAddress)) {
+        $count = count($this->parent->gosaMailForwardingAddress);
+        $address = $this->parent->gosaMailForwardingAddress[0];
+        if ($count > 1) {
+          msg_dialog::display(_('Warning'), sprintf(_('Several addresses were given in gosaMailForwardingAddress but only one is supported by PARTAGE. %s will be sent to PARTAGE.'), $address));
+        }
+        $account['zimbraPrefMailForwardingAddress'] = $address;
+      }
       //~ carLicense -> supann edupersonprincipalname (eppn)
       //~ zimbraHideInGal -> supann liste rouge
-      //~ co
-      //~ company
-      //~ initials
+      //~ co (country)
       //~ postalCode
       //~ street
       //~ zimbraAccountStatus -> ? lock account?
-      //~ zimbraPasswordMustChange
+      //~ zimbraPasswordMustChange -> unix
 
       $userFields = array(
         'sn', 'givenName', 'description',
@@ -220,6 +225,10 @@ class mailMethodRenaterPartage extends mailMethod
           $account[$field] = $userTab->$field;
         }
       }
+      if (!empty($userTab->o)) {
+        $account['company'] = $userTab->o;
+      }
+      $account['initials'] = strtoupper(substr($userTab->givenName, 0, 1).substr($userTab->sn, 0, 1));
 
       if ($userTab->attributesAccess['userPassword']->getClear() != '') {
         /* Password was changed so we have the clear text password */
@@ -242,9 +251,16 @@ class mailMethodRenaterPartage extends mailMethod
           $this->error = _('An account with the same email address already exists in Partage');
           return FALSE;
         }
-        /* TODO: call rename */
-        $this->error = 'TODO';
-        return FALSE;
+
+        $account = array(
+          'name'    => $this->initial_account_id,
+          'newname' => $this->account_id
+        );
+        $answer = $this->query('RenameAccount/'.$this->token, $account);
+
+        if ($answer === FALSE) {
+          return FALSE;
+        }
       }
       $account = array();
 
@@ -281,6 +297,12 @@ class mailMethodRenaterPartage extends mailMethod
         if (!empty($userTab->attrs[$field])) {
           $account[$field] = $userTab->attrs[$field];
         }
+      }
+      if (!empty($userTab->attrs['o'])) {
+        $account['company'] = $userTab->attrs['o'];
+      }
+      if (!empty($userTab->attrs['sn']) || !empty($userTab->attrs['givenName'])) {
+        $account['initials'] = strtoupper(substr($userTab->givenName, 0, 1).substr($userTab->sn, 0, 1));
       }
       /* TODO: call SetPassword for password change outside of creation */
 
