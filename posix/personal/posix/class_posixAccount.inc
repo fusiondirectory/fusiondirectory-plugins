@@ -631,7 +631,7 @@ class posixAccount extends simplePlugin
       foreach ($groupMembership as $value) {
         if (!in_array($value, $this->savedGroupMembership)) {
           $g = objects::open($value, 'group');
-          $g->by_object['group']->addUser($this->dn, $this->getUid());
+          $g->getBaseObject()->addUser($this->dn, $this->getUid());
           $msg = $g->save();
           if (empty($msg)) {
             $this->savedGroupMembership[] = $value;
@@ -645,7 +645,7 @@ class posixAccount extends simplePlugin
       foreach ($this->savedGroupMembership as $key => $value) {
         if (!in_array($value, $groupMembership)) {
           $g = objects::open($value, 'group');
-          $g->by_object['group']->removeUser($this->getUid());
+          $g->getBaseObject()->removeUser($this->getUid());
           $msg = $g->save();
           if (empty($msg)) {
             unset($this->savedGroupMembership[$key]);
