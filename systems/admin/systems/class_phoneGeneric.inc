@@ -24,7 +24,7 @@ class phoneGeneric extends simplePlugin
 
   var $netConfigDNS;
 
-  var $objectclasses = array('fdPhone', 'ipHost', 'ieee802Device');
+  var $objectclasses = array('fdPhone', 'ieee802Device');
 
   var $inheritance = array('gosaGroupOfNames' => 'member');
 
@@ -94,6 +94,18 @@ class phoneGeneric extends simplePlugin
         ),
       ),
     );
+  }
+
+  /* Used by prepare_save and template::apply */
+  public function mergeObjectClasses(array $oc)
+  {
+    $objectclasses = $oc;
+    if (empty($this->ipHostNumber)) {
+      $objectclasses = array_remove_entries_ics(array('ipHost'), $objectclasses);
+    } else {
+      $objectclasses[] = 'ipHost';
+    }
+    return array_merge_unique($objectclasses, $this->objectclasses);
   }
 }
 ?>

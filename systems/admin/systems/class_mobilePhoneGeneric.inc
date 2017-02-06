@@ -22,7 +22,7 @@ class mobilePhoneGeneric extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array('fdMobilePhone', 'ipHost', 'ieee802Device');
+  var $objectclasses = array('fdMobilePhone', 'ieee802Device');
 
   var $inheritance = array("gosaGroupOfNames" => "member");
 
@@ -113,6 +113,18 @@ class mobilePhoneGeneric extends simplePlugin
         ),
       ),
     );
+  }
+
+  /* Used by prepare_save and template::apply */
+  public function mergeObjectClasses(array $oc)
+  {
+    $objectclasses = $oc;
+    if (empty($this->ipHostNumber)) {
+      $objectclasses = array_remove_entries_ics(array('ipHost'), $objectclasses);
+    } else {
+      $objectclasses[] = 'ipHost';
+    }
+    return array_merge_unique($objectclasses, $this->objectclasses);
   }
 }
 ?>
