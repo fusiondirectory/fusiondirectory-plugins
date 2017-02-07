@@ -280,11 +280,6 @@ class posixAccount extends simplePlugin
 
       $this->initially_was_account = $this->is_account;
 
-      // Templates do not have a gidNumber
-      if ($this->gidNumber == 2147483647) {
-        $this->gidNumber = "";
-      }
-
       /* Fill group */
       $this->primaryGroup = $this->gidNumber;
     }
@@ -366,6 +361,10 @@ class posixAccount extends simplePlugin
     if ($this->is_template) {
       if (isset($this->attrs['force_ids'])) {
         $this->force_ids = ($this->attrs['force_ids'][0] != 'FALSE');
+      }
+      if (!$this->force_ids) {
+        $this->uidNumber = '';
+        $this->gidNumber = '';
       }
       if (isset($this->attrs['mustchangepassword'])) {
         $this->mustchangepassword = ($this->attrs['mustchangepassword'][0] != 'FALSE');
@@ -468,11 +467,15 @@ class posixAccount extends simplePlugin
        * - use existing number if possible
        * - if not, try to create a new uniqe one.
        * */
-      if ($this->attributesAccess['uidNumber']->getInitialValue() != '') {
-        $this->uidNumber = $this->attributesAccess['uidNumber']->getInitialValue();
+      if ($this->is_template) {
+        $this->uidNumber = '';
       } else {
-        $this->uidNumber = get_next_id_lock('uidNumber', $this->dn);
-        $this->locks[] = 'uidNumber';
+        if ($this->attributesAccess['uidNumber']->getInitialValue() != '') {
+          $this->uidNumber = $this->attributesAccess['uidNumber']->getInitialValue();
+        } else {
+          $this->uidNumber = get_next_id_lock('uidNumber', $this->dn);
+          $this->locks[] = 'uidNumber';
+        }
       }
     }
 
@@ -485,7 +488,7 @@ class posixAccount extends simplePlugin
     if ($this->is_template && $this->force_ids) {
       /* Nothing to do in this case */
     } elseif ($this->is_template && ($this->primaryGroup == 0)) {
-      $this->gidNumber = 2147483647;
+      $this->gidNumber = '';
     } elseif (($this->primaryGroup == 0) || $this->force_ids) {
       /* Search for existing group */
       $ldap = $config->get_ldap_link();
@@ -705,11 +708,6 @@ class posixAccount extends simplePlugin
 
     if (isset($this->attrs['mustchangepassword'])) {
       $this->mustchangepassword = ($this->attrs['mustchangepassword'][0] != 'FALSE');
-    }
-
-    /* Fix primary group settings */
-    if ($this->gidNumber == 2147483647) {
-      $this->gidNumber = "";
     }
 
     $this->primaryGroup = $this->gidNumber;
