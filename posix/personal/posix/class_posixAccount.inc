@@ -707,8 +707,6 @@ class posixAccount extends simplePlugin
       $this->mustchangepassword = ($this->attrs['mustchangepassword'][0] != 'FALSE');
     }
 
-    $this->attributesAccess['uidNumber']->setInitialValue('');
-
     /* Fix primary group settings */
     if ($this->gidNumber == 2147483647) {
       $this->gidNumber = "";
