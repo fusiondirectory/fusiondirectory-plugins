@@ -285,9 +285,12 @@ class fiInventory extends simplePlugin
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search($this->filter);
-    if ($ldap->count()) {
-      $attrs = $ldap->fetch();
-      $foundType = FALSE;
+    $foundType  = FALSE;
+    $fallbackDn = NULL;
+    while (!$foundType && ($attrs = $ldap->fetch())) {
+      if ($attrs['dn'] == $this->dn) {
+        continue;
+      }
       foreach ($systemTypes as $type) {
         if (objects::isOfType($attrs, $type)) {
           $foundType = $type;
@@ -297,8 +300,14 @@ class fiInventory extends simplePlugin
       if ($foundType) {
         $this->matching = objects::link($attrs['dn'], $foundType);
       } else {
-        $this->matching = $attrs['dn'];
+        $fallbackDn = $attrs['dn'];
       }
+    }
+    if ($foundType) {
+      return;
+    }
+    if ($fallbackDn !== NULL) {
+      $this->matching = $attrs['dn'];
     } else {
       $templates = array();
       foreach ($systemTypes as $type) {
