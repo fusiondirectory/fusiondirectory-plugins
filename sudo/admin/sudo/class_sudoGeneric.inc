@@ -139,6 +139,10 @@ class sudo extends simplePlugin
         'sudoHost'   => array(
           array('serverGeneric', 'cn'),
           array('serverGeneric', 'ipHostNumber'),
+          array('workstationGeneric', 'cn'),
+          array('workstationGeneric', 'ipHostNumber'),
+          array('terminalGeneric', 'cn'),
+          array('terminalGeneric', 'ipHostNumber'),
         ),
       ),
 
