@@ -181,6 +181,15 @@ class fdRPCService
   }
 
   /*!
+   * \brief Log out
+   */
+  protected function _logout ()
+  {
+    session::destroy();
+    return TRUE;
+  }
+
+  /*!
    * \brief Get list of object of objectType $type in $ou
    */
   protected function _ls ($type, $attrs = NULL, $ou = NULL, $filter = '')

@@ -39,6 +39,7 @@ class fdRPCService
    * \return The list of configured LDAP servers as an associative array (keys are ids, values are displayable names)
    */
   function listLdaps() {}
+
   /*!
    * \brief Login into the webservice
    *
@@ -49,6 +50,15 @@ class fdRPCService
    * \return A session ID on success
    */
   function login($ldap, $user, $pwd) {}
+
+  /*!
+   * \brief Log out of the webservice
+   *
+   * \param string $sid the session id
+   *
+   * \return TRUE
+   */
+  function logout($sid) {}
 
   /*!
    * \brief Get list of object of objectType $type in $ou
