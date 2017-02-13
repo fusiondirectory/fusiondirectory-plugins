@@ -131,6 +131,16 @@ class sudo extends simplePlugin
         'ou'        => get_ou('sudoRDN'),
         'tabClass'  => 'sudotabs',
       )),
+      'plForeignKeys'  => array(
+        'sudoUser'   => array(
+          array('user', 'uid', '(sudoUser=%oldvalue%)'),
+          array('posixGroup', 'cn', '(sudoUser=%|%%oldvalue%)'),
+        ),
+        'sudoHost'   => array(
+          array('serverGeneric', 'cn'),
+          array('serverGeneric', 'ipHostNumber'),
+        ),
+      ),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
@@ -232,6 +242,24 @@ class sudo extends simplePlugin
   public function is_default()
   {
     return preg_match("/^defaults$/i", $this->attributesAccess['cn']->getValue());
+  }
+
+  function foreignKeyCheck ($field, $fieldvalue, $source)
+  {
+    if (($field == 'sudoUser') && ($source['CLASS'] == 'posixGroup')) {
+      return parent::foreignKeyCheck($field, '%'.$fieldvalue, $source);
+    } else {
+      return parent::foreignKeyCheck($field, $fieldvalue, $source);
+    }
+  }
+
+  function foreignKeyUpdate($field, $oldvalue, $newvalue, $source)
+  {
+    if (($field == 'sudoUser') && ($source['CLASS'] == 'posixGroup')) {
+      return parent::foreignKeyCheck($field, '%'.$oldvalue, '%'.$newvalue, $source);
+    } else {
+      return parent::foreignKeyCheck($field, $oldvalue, $newvalue, $source);
+    }
   }
 }
 
