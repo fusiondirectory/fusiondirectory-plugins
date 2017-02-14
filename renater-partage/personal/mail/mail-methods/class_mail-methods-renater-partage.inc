@@ -201,7 +201,8 @@ class mailMethodRenaterPartage extends mailMethod
       'l', 'st',
       'telephoneNumber', 'mobile', 'pager', 'facsimileTelephoneNumber',
       'displayName', 'homePhone',
-      'title', 'ou'
+      'title', 'ou',
+      'street', 'postalCode', 'postOfficeBox'
     );
     $userTab = $this->parent->parent->getBaseObject();
     foreach ($userFields as $field) {
@@ -228,17 +229,17 @@ class mailMethodRenaterPartage extends mailMethod
       $account['zimbraHideInGal'] = ($supannTab->supannListeRouge ? 'TRUE' : 'FALSE');
     }
 
+    /* Sync fields from personal if tab is active */
+    if (isset($this->parent->parent->by_object['personalInfo']) && $this->parent->parent->by_object['personalInfo']->is_account) {
+      $personalTab    = $this->parent->parent->by_object['personalInfo'];
+      $account['co']  = $personalTab->co;
+    }
+
     return $account;
   }
 
   private function createAccount($infos)
   {
-    // TODO
-    //~ co (country)
-    //~ postalCode
-    //~ street
-    //~ (postOfficeBox)
-
     $account = $this->getAccountArray($infos);
 
     /* Remove empty values */
