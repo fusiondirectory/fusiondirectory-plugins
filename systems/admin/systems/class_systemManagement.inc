@@ -33,7 +33,7 @@ class systemManagement extends simpleManagement
 
   protected $autoFilterAttributes = array('dn', 'cn', 'description', 'ipHostNumber', 'macAddress', 'gotoMode', 'FAIstate', 'FAIclass');
 
-  protected static $skipTemplates = FALSE;
+  public static $skipTemplates = FALSE;
 
   protected $siActive = FALSE;
 
