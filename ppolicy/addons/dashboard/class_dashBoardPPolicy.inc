@@ -85,9 +85,6 @@ class dashboardPpolicy extends simplePlugin
     $now = new DateTime('now', timezone::utc());
 
     /* search all expired accounts */
-    $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(|(objectClass=posixAccount)(objectClass=sambaSamAccount))(shadowExpire=*))',
-                  array('uid','shadowExpire','mail','telephoneNumber','cn','manager'));
     $users = objects::ls('user', array(
         'dn'                    => 'raw',
         'uid'                   => 'raw',
