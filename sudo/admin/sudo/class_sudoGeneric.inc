@@ -82,7 +82,7 @@ class SudoSystemsAttribute extends SystemsAttribute
 
   function addValue ($value, $attrs)
   {
-    if ($this->value[0] === 'ALL') {
+    if (isset($this->value[0]) && ($this->value[0] === 'ALL')) {
       unset($this->value[0]);
     }
     parent::addValue($value, $attrs);
