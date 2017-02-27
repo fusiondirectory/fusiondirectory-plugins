@@ -121,7 +121,7 @@ class userReminderConfig extends simplePlugin
     global $config;
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->create_missing_trees(get_ou('reminderTokenRDN').$config->current['BASE']);
+    $ldap->create_missing_trees(get_ou('reminderTokenRDN').get_ou('fusiondirectoryRDN').$config->current['BASE']);
     parent::post_save();
   }
 }
