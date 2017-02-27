@@ -122,7 +122,7 @@ class expiredUserPostpone extends standAlonePage
 
     $ldap = $config->get_ldap_link();
 
-    $dn   = 'ou='.$this->uid.','.get_ou('tokenRDN').get_ou('fusiondirectoryRDN').$config->current['BASE'];
+    $dn   = 'ou='.$this->uid.','.get_ou('reminderTokenRDN').get_ou('fusiondirectoryRDN').$config->current['BASE'];
     $ldap->rmdir($dn);
     if (!$ldap->success()) {
       $this->message[] = $ldap->get_error();
@@ -149,7 +149,13 @@ class expiredUserPostpone extends standAlonePage
 
     $cn             = $userTabs->getBaseObject()->cn;
     $manager_dn     = $userTabs->getBaseObject()->manager;
-    $email_address  = $userTabs->by_object['mailAccount']->mail;
+    if (isset($userTabs->by_object['mailAccount'])) {
+      $email_address  = $userTabs->by_object['mailAccount']->mail;
+    } elseif (isset($userTabs->by_object['personalInfo']) && !empty($userTabs->by_object['personalInfo']->fdPrivateMail)) {
+      $email_address  = $userTabs->by_object['personalInfo']->fdPrivateMail;
+    } elseif (isset($userTabs->by_object['supannAccount']) && !empty($userTabs->by_object['supannAccount']->supannAutreMail)) {
+      $email_address  = reset($userTabs->by_object['supannAccount']->supannAutreMail);
+    }
 
     $manager_mail = '';
     if ($this->forward_postpone) {
