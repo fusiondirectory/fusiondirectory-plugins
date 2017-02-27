@@ -473,7 +473,7 @@ class posixAccount extends simplePlugin
         if ($this->attributesAccess['uidNumber']->getInitialValue() != '') {
           $this->uidNumber = $this->attributesAccess['uidNumber']->getInitialValue();
         } else {
-          $this->uidNumber = get_next_id_lock('uidNumber', $this->dn);
+          $this->uidNumber = static::getNextIdLock('uidNumber', $this->dn);
           $this->locks[] = 'uidNumber';
         }
       }
@@ -507,7 +507,7 @@ class posixAccount extends simplePlugin
 
         /* Request a new and unique gidNumber, if required */
         if (!$this->force_ids) {
-          $this->gidNumber = get_next_id_lock('gidNumber', $this->dn);
+          $this->gidNumber = static::getNextIdLock('gidNumber', $this->dn);
           $this->locks[] = 'gidNumber';
         }
 
@@ -731,6 +731,245 @@ class posixAccount extends simplePlugin
     }
     return $ret;
   }
-}
 
+  /*!
+   * \brief Get next id
+   *
+   * \param string $attrib attribute to use to find the next id.
+   *
+   * \param String $dn Dn we want an id for.
+   *
+   * \return Return the next id or NULL if failed
+   */
+  static function getNextId($attrib, $dn)
+  {
+    global $config;
+
+    if ($config->get_cfg_value('nextIdHook') != '') {
+      return static::getNextIdHook($attrib, $dn);
+    }
+
+    switch ($config->get_cfg_value('idAllocationMethod', 'traditional')) {
+      case 'pool':
+        return static::getNextIdPool($attrib);
+      default:
+        msg_dialog::display(_('Warning'), sprintf(_('Unknown ID allocation method "%s"!'), $config->get_cfg_value('idAllocationMethod', 'traditional')), WARNING_DIALOG);
+      case 'traditional':
+        return static::getNextIdTraditional($attrib);
+    }
+  }
+
+  /*!
+   * \brief Get next id and add a lock to prevent other user to use it before us
+   */
+  static function getNextIdLock($attrib, $dn)
+  {
+    /* Calculate new id's. We need to place a lock before calling getNextId
+       to get real unique values.
+     */
+    $wait = 10;
+    while ($user = get_lock($attrib)) {
+      sleep (1);
+
+      /* Oups - timed out */
+      if ($wait-- == 0) {
+        msg_dialog::display(
+          _('Warning'),
+          sprintf(_('Timeout while waiting for lock. Ignoring lock from %s!'), $user),
+          WARNING_DIALOG
+        );
+        break;
+      }
+    }
+    add_lock($attrib, $dn);
+    return static::getNextId($attrib, $dn);
+  }
+
+  /*!
+   * \brief Get next id from the sambaUnixIdPool
+   *
+   * \param string $attrib attribute to use to find the next id.
+   *
+   * \return Return the next id or NULL if failed
+   */
+  protected static function getNextIdPool($attrib)
+  {
+    global $config;
+
+    /* Fill informational values */
+    $min = $config->get_cfg_value("${attrib}PoolMin", 10000);
+    $max = $config->get_cfg_value("${attrib}PoolMax", 40000);
+
+    /* Sanity check */
+    if ($min >= $max) {
+      msg_dialog::display(_("Error"), _("Cannot allocate a free ID:")." ".sprintf(_("%sPoolMin >= %sPoolMax!"), $attrib), ERROR_DIALOG);
+      return NULL;
+    }
+
+    /* ID to skip */
+    $ldap = $config->get_ldap_link();
+    $id   = NULL;
+
+    /* Try to allocate the ID several times before failing */
+    $tries = 3;
+    while ($tries--) {
+
+      /* Look for ID map entry */
+      $ldap->cd ($config->current['BASE']);
+      $ldap->search ("(&(objectClass=sambaUnixIdPool)($attrib=*))", array("$attrib"));
+
+      /* If it does not exist, create one with these defaults */
+      if ($ldap->count() == 0) {
+        /* Fill informational values */
+        $minUserId  = $config->get_cfg_value('uidPoolMin',  10000);
+        $minGroupId = $config->get_cfg_value('gidPoolMin',  10000);
+
+        /* Add as default */
+        $attrs = array(
+          'objectClass' => array('organizationalUnit', 'sambaUnixIdPool'),
+          'ou'          => 'idmap',
+          'uidNumber'   => $minUserId,
+          'gidNumber'   => $minGroupId,
+        );
+        $ldap->cd('ou=idmap,'.$config->current['BASE']);
+        $ldap->add($attrs);
+        if (!$ldap->success()) {
+          msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), 'ou=idmap,'.$config->current['BASE'], LDAP_ADD, ERROR_DIALOG));
+          return NULL;
+        }
+        $tries++;
+        continue;
+      }
+      /* Bail out if it's not unique */
+      if ($ldap->count() != 1) {
+        msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '._('sambaUnixIdPool is not unique!'), ERROR_DIALOG);
+        return NULL;
+      }
+
+      /* Store old attrib and generate new */
+      $attrs    = $ldap->fetch();
+      $dn       = $attrs['dn'];
+      $oldAttr  = $attrs[$attrib][0];
+      $newAttr  = $oldAttr + 1;
+
+      /* Sanity check */
+      if ($newAttr >= $max) {
+        msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '._('no ID available!'), ERROR_DIALOG);
+        return NULL;
+      }
+      if ($newAttr < $min) {
+        msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '._('no ID available!'), ERROR_DIALOG);
+        return NULL;
+      }
+
+      $ldap->cd($dn);
+      $ldap->modify(array($attrib => $newAttr));
+      if (!$ldap->success()) {
+        msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '.$ldap->get_error(), ERROR_DIALOG);
+        return NULL;
+      } else {
+        return $oldAttr;
+      }
+    }
+
+    /* Bail out if we had problems getting the next id */
+    if (!$tries) {
+      msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '._('maximum tries exceeded!'), ERROR_DIALOG);
+    }
+
+    return $id;
+  }
+
+  /*!
+   * \brief Get next id in a traditional unix way
+   *
+   * \param string $attrib attribute to use to find the next id.
+   *
+   * \param String $dn Dn we want an id for.
+   *
+   * \return Return the next id
+   */
+  protected static function getNextIdTraditional($attrib)
+  {
+    global $config;
+
+    $ids = array();
+    $ldap = $config->get_ldap_link();
+
+    $ldap->cd ($config->current['BASE']);
+    if (preg_match('/gidNumber/i', $attrib)) {
+      $oc = 'posixGroup';
+    } else {
+      $oc = 'posixAccount';
+    }
+    $ldap->search ("(&(objectClass=$oc)($attrib=*))", array("$attrib"));
+
+    /* Get list of ids */
+    while ($attrs = $ldap->fetch()) {
+      $ids[] = (int)$attrs["$attrib"][0];
+    }
+
+    /* Add the nobody id */
+    $ids[] = 65534;
+
+    /* get the ranges */
+    $tmp = array('0' => 1000);
+    if (preg_match('/posixAccount/', $oc) && $config->get_cfg_value('uidNumberBase') != '') {
+      $tmp = explode('-', $config->get_cfg_value('uidNumberBase'));
+    } elseif ($config->get_cfg_value('gidNumberBase') != '') {
+      $tmp = explode('-', $config->get_cfg_value('gidNumberBase'));
+    }
+
+    /* Set hwm to max if not set - for backward compatibility */
+    $base = $tmp[0];
+    if (isset($tmp[1])) {
+      $hwm = $tmp[1];
+    } else {
+      $hwm = pow(2, 32);
+    }
+    /* Find out next free id near to UID_BASE */
+    for ($id = $base; $id++; $id < $hwm) {
+      if (!in_array($id, $ids)) {
+        return $id;
+      }
+    }
+
+    /* Should not happen */
+    if ($id == $hwm) {
+      msg_dialog::display(_('Error'), _('Cannot allocate a free ID!'), ERROR_DIALOG);
+      exit;
+    }
+  }
+
+  /*!
+   * \brief Get idNumber from external hook
+   *
+   * \param array $attrib
+   *
+   * \param string $dn The DN
+   */
+  protected static function getNextIdHook($attrib, $dn)
+  {
+    global $config;
+
+    if ($config->get_cfg_value("nextIdHook") != "") {
+      /* Call hook script - if present */
+      $command = $config->get_cfg_value("nextIdHook");
+
+      if ($command != "") {
+        $command .= " ".escapeshellarg($dn)." ".escapeshellarg($attrib);
+        if (check_command($command)) {
+          @DEBUG (DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, "Execute");
+          exec($command, $output);
+          if (is_numeric($output[0])) {
+            return $output[0];
+          }
+        }
+      }
+    }
+
+    msg_dialog::display(_("Warning"), _("'nextIdHook' is not available. Using default base!"), WARNING_DIALOG);
+    return $config->get_cfg_value("uidNumberBase");
+  }
+}
 ?>

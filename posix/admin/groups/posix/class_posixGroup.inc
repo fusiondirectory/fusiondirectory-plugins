@@ -170,7 +170,7 @@ class posixGroup extends simplePlugin
       if ($this->attributesAccess['gidNumber']->getInitialValue() != "") {
         $this->gidNumber = $this->attributesAccess['gidNumber']->getInitialValue();
       } else {
-        $this->gidNumber = get_next_id_lock('gidNumber', $this->dn);
+        $this->gidNumber = posixAccount::getNextIdLock('gidNumber', $this->dn);
         $this->locks[] = 'gidNumber';
       }
     }
