@@ -36,7 +36,7 @@ class argonautEventTypes
     } else {
       $ret = array();
       foreach (array_keys($class_mapping) as $class) {
-        if (is_subclass_of($class, 'argonautEventTypes')) {
+        if (preg_match('/^argonautEventTypes.+$/', $class)) {
           $ret = array_merge($ret, $class::get_event_types_list());
         }
       }
@@ -63,7 +63,7 @@ class argonautEventTypes
   }
 }
 
-class argonautEventSystem extends argonautEventTypes
+class argonautEventTypesSystem
 {
   static protected function get_event_types_list()
   {
@@ -76,7 +76,7 @@ class argonautEventSystem extends argonautEventTypes
   }
 }
 
-class argonautEventDeployment extends argonautEventTypes
+class argonautEventTypesDeployment
 {
   static protected function get_event_types_list()
   {
