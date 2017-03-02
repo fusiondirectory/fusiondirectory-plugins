@@ -30,7 +30,7 @@
   <tr>
     <td style="text-align: left;" class="list0">&nbsp;</td>
     {foreach from=$Hours item=hours key=key_hours}
-      {if (($hours)%2)==0}
+      {if (($hours)%2) < 1}
         <td style="text-align:center;height: 22px; background-color: rgb(226, 226, 226); ">
       {else}
         <td style="text-align:center;height: 22px; background-color: rgb(245, 245, 245); border-right: solid 1px #B0B0B0;">
@@ -48,7 +48,7 @@
       &nbsp;
     </td>
     {foreach from=$Hours item=hours key=key_hours}
-      {if (($hours)%2)==0}
+      {if (($hours)%2) < 1}
         <td style="text-align:center; height: 22px; background-color: rgb(226, 226, 226); text-align: right;">
       {else}
         <td style="text-align:center; height: 22px; background-color: rgb(245, 245, 245); border-right: solid 1px #B0B0B0; text-align: right;">
@@ -70,7 +70,7 @@
       <b>{$Days[$key_day]}</b>
     </td>
     {foreach from=$days item=hours key=key_hour}
-      {if (($key_hour)%2)==0}
+      {if (($key_hour)%2) < 1}
         <td style="text-align:center;height: 22px; background-color: rgb(226, 226, 226); ">
       {else}
         <td style="text-align:center;height: 22px; background-color: rgb(245, 245, 245); border-right: solid 1px;">
