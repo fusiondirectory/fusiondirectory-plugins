@@ -20,11 +20,6 @@
 
 class argonautEventTypes
 {
-  static protected function get_event_types_list()
-  {
-    die('get_event_types_list needs to be implemented in all subclass of argonautEventTypes');
-  }
-
   /*! \brief  Returns a complete list of all available events.
     @return   Array   Containing info for all available events.
    */
@@ -65,7 +60,7 @@ class argonautEventTypes
 
 class argonautEventTypesSystem
 {
-  static protected function get_event_types_list()
+  static public function get_event_types_list()
   {
     return array(
       'System.halt' => array(
@@ -78,7 +73,7 @@ class argonautEventTypesSystem
 
 class argonautEventTypesDeployment
 {
-  static protected function get_event_types_list()
+  static public function get_event_types_list()
   {
     return array(
       'Deployment.reboot' => array(
