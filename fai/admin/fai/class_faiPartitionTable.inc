@@ -142,8 +142,10 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
       $ldap->search($this->diskFilter, array('*'), 'one');
       $this->value = array();
       while ($subattrs = $ldap->fetch()) {
-        $diskInfos = array('description' => '', 'FAIdiskType' => 'disk');
-        $diskInfos['description']  = '';
+        $diskInfos = array(
+          'description' => '',
+          'FAIdiskType' => 'disk'
+        );
         foreach (array('cn', 'description','FAIdiskType') as $attr) {
           if (isset($subattrs[$attr][0])) {
             $diskInfos[$attr] = $subattrs[$attr][0];
@@ -175,7 +177,10 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
         $ldap->cd($disk['dn']);
         $ldap->search($this->partFilter, array('*'), 'one');
         while ($obj = $ldap->fetch()) {
-          $partitionInfos = array();
+          $partitionInfos = array(
+            'description'       => '',
+            'FAIpartitionSize'  => '',
+          );
           foreach ($this->partitionAttributes as $attr) {
             if (isset($obj[$attr][0])) {
               $partitionInfos[$attr] = $obj[$attr][0];
