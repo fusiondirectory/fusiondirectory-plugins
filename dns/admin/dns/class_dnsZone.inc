@@ -543,7 +543,7 @@ class dnsZone extends simplePlugin
               ),
               new DisplayLDAPAttribute(
                 _('Serial number'), _('Version number of the original copy of the zone'),
-                'soaRecord_serial', TRUE,
+                'soaRecord_serial', FALSE,
                 0, FALSE, date('Ymd').'01'
               ),
               new TimeAttribute(
@@ -603,8 +603,10 @@ class dnsZone extends simplePlugin
 
   function prepare_save ()
   {
+    /* Update serial (Also thanks to this save is triggered if something changed - see simplePlugin::shouldSave) */
     if (
       $this->attributesAccess['zoneName']->hasChanged() ||
+      $this->attributesAccess['sOARecord']->hasChanged() ||
       $this->attributesAccess['reverseZones']->hasChanged() ||
       $this->attributesAccess['sOARecord']->hasChanged() ||
       $this->attributesAccess['dnsRecords']->hasChanged()
