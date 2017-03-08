@@ -95,6 +95,12 @@ class faiVariable extends faiSimplePluginClass
     $this->attributesAccess['variables']->setLinearRendering(FALSE);
   }
 
+  protected function shouldSave()
+  {
+    /* We need ldap_save to always run */
+    return TRUE;
+  }
+
   function ldap_save ()
   {
     global $config;

@@ -102,6 +102,12 @@ class faiScript extends faiSimplePluginClass
     $this->attributesAccess['scripts']->setLinearRendering(FALSE);
   }
 
+  protected function shouldSave()
+  {
+    /* We need ldap_save to always run */
+    return TRUE;
+  }
+
   function ldap_save ()
   {
     global $config;
