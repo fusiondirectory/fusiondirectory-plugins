@@ -279,6 +279,12 @@ class dhcpSystem extends simplePlugin
     return $nodes;
   }
 
+  protected function shouldSave()
+  {
+    /* We need ldap_save to always run */
+    return TRUE;
+  }
+
   function ldap_save()
   {
     global $config;
@@ -295,5 +301,16 @@ class dhcpSystem extends simplePlugin
       array($baseObject->attributeInitialValue('macAddress')),
       array($baseObject->attributeValue('macAddress'))
     );
+  }
+
+  function remove_from_parent()
+  {
+    if ($this->is_template) {
+      return parent::remove_from_parent();
+    } elseif (($this->dn != '') && ($this->dn != 'new')) {
+      /* Remove all records */
+      $this->attributesAccess['dhcpHosts']->setValue(array());
+      return $this->ldap_save();
+    }
   }
 }
