@@ -83,7 +83,8 @@ class faiHook extends faiSimplePluginClass
               ),
               new FileTextAreaAttribute (
                 _('Script'), _('The script of this hook'),
-                'FAIscript', TRUE
+                'FAIscript', TRUE,
+                '.sh'
               ),
             ),
             FALSE, /* no order */

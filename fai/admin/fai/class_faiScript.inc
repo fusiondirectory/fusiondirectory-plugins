@@ -82,7 +82,8 @@ class faiScript extends faiSimplePluginClass
               ),
               new FileTextAreaAttribute (
                 _('Script'), _('The script itself'),
-                'FAIscript', TRUE
+                'FAIscript', TRUE,
+                '.sh'
               ),
             ),
             FALSE, /* no order */
