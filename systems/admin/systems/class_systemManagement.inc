@@ -21,7 +21,7 @@
 
 class systemManagement extends simpleManagement
 {
-  protected $objectTypes  = array('server','workstation','terminal','printer','component','winstation','phone','mobilePhone');
+  protected $objectTypes  = array('server','workstation','terminal','printer','component','phone','mobilePhone');
 
   protected $departmentBrowser      = TRUE;
   protected $departmentRootVisible  = FALSE;
@@ -46,7 +46,7 @@ class systemManagement extends simpleManagement
       'plSelfModify'  => FALSE,
       'plSection'     => array('systems' => array('name' => _('Systems'), 'priority' => 10)),
       'plPriority'    => 0,
-      'plManages'     => array('server','workstation','terminal','printer','component','winstation','phone','mobilePhone'),
+      'plManages'     => array('server','workstation','terminal','printer','component','phone','mobilePhone'),
 
       'plProvidedAcls'  => array()
     );

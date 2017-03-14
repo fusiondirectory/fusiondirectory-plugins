@@ -213,7 +213,7 @@ class dhcpSystem extends simplePlugin
       'plDescription'   => _('Edit the DHCP zones of a system'),
       'plIcon'          => 'geticon.php?context=applications&icon=dhcp&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=dhcp&size=16',
-      'plObjectType'    => array('server','workstation','terminal','printer','component','winstation','phone','mobilePhone'),
+      'plObjectType'    => array('server','workstation','terminal','printer','component','phone','mobilePhone'),
       'plPriority'      => 4,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

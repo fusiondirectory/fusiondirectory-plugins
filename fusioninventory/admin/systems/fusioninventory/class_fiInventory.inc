@@ -281,7 +281,7 @@ class fiInventory extends simplePlugin
   function updateMatching()
   {
     global $config;
-    $systemTypes = array('server','workstation','terminal','printer','component','winstation','phone','mobilePhone');
+    $systemTypes = array('server','workstation','terminal','printer','component','phone','mobilePhone');
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search($this->filter);

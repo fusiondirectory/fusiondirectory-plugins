@@ -119,7 +119,7 @@ class dnsHost extends simplePlugin
       'plDescription'   => _('Edit the DNS zones of a system'),
       'plIcon'          => 'geticon.php?context=applications&icon=dns&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=dns&size=16',
-      'plObjectType'    => array('server','workstation','terminal','printer','component','winstation','phone','mobilePhone'),
+      'plObjectType'    => array('server','workstation','terminal','printer','component','phone','mobilePhone'),
       'plPriority'      => 5,
       'plForeignKeys'  => array(
         'fdDNSZoneDn' => 'dnsZone'

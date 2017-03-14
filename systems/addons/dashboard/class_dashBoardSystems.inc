@@ -163,9 +163,7 @@ class dashboardSystems extends simplePlugin
       $computer_ids_rules = array($computer_ids_rules);
     }
 
-    /* get_ou returns the OU like ou=computer .. */
-    $winstation_ou  = mb_substr(get_ou('sambaMachineAccountRDN'), 3);
-    $nb_digits      = $config->get_cfg_value('dashboardNumberOfDigit', 3);
+    $nb_digits = $config->get_cfg_value('dashboardNumberOfDigit', 3);
 
     /* running all the table */
     foreach ($computer_ids_rules as $rule) {
@@ -194,7 +192,7 @@ class dashboardSystems extends simplePlugin
       }
 
       /* request of all computer beginning by the prefix */
-      $request = '(&(cn='.$prefix.'*)(|(ou:dn:='.$winstation_ou.')(ou:dn:=systems)))';
+      $request = '(&(cn='.$prefix.'*)(ou:dn:=systems))';
       $ldap->search($request, array("cn"));
       while ($attrs = $ldap->fetch()) {
         /* if a computer is a windows host, we have to delete the $ at the end */

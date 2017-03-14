@@ -22,6 +22,7 @@
 class sambaSystemTab extends simplePlugin
 {
   var $objectclasses = array('posixAccount','sambaSamAccount');
+  var $displayHeader = TRUE;
 
   static function plInfo()
   {
@@ -30,6 +31,7 @@ class sambaSystemTab extends simplePlugin
       'plDescription' => _('Windows workstation information'),
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('workstation'),
+      'plPriority'    => 5,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

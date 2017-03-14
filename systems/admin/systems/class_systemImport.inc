@@ -163,7 +163,7 @@ class systemImport extends simplePlugin
         'template'  => get_template_path('server_import.tpl', TRUE, dirname(__FILE__)),
         'name'      => _('Import'),
         'attrs'     => array(
-          new BaseSelectorAttribute(get_ou('sambaMachineAccountRDN')),
+          new BaseSelectorAttribute(get_ou('workstationRDN')),
           new ImportServerAttribute(
             _('Server'), _('The server you wish to import hosts from'),
             'apiServer', $filter
