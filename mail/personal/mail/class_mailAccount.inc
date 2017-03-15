@@ -230,7 +230,7 @@ class mailAccount extends simplePlugin
     $this->mailMethod->fixAttributesOnLoad();
 
     /* Initialize configured values */
-    if ($this->initially_was_account) {
+    if (!$this->is_template && $this->initially_was_account) {
       if ($this->mailMethod->connect() && $this->mailMethod->account_exists()) {
         /* Read quota */
         $this->attributesAccess['gosaMailQuota']->setMailMethod($this->mailMethod);
