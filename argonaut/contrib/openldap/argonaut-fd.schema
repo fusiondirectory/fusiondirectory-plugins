@@ -251,6 +251,13 @@ attributetype ( 1.3.6.1.4.1.38414.2.13.9 NAME 'argonautLdap2zoneCheckNames'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.2.13.10 NAME 'argonautLdap2zoneSearchBase'
+  DESC 'FusionDirectory - dn of LDAP base to use for search'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
 attributetype ( 1.3.6.1.4.1.38414.2.14.1 NAME 'argonautFuseDefaultMode'
   DESC 'Fusion Directory - Argonaut, fuse default mode.'
   EQUALITY caseExactIA5Match
