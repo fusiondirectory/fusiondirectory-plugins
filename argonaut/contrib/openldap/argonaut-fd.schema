@@ -258,6 +258,12 @@ attributetype ( 1.3.6.1.4.1.38414.2.13.10 NAME 'argonautLdap2zoneSearchBase'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.2.13.11 NAME 'argonautLdap2zoneSlaveZonesDn'
+  DESC 'FusionDirectory - dn of zones'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
+
 attributetype ( 1.3.6.1.4.1.38414.2.14.1 NAME 'argonautFuseDefaultMode'
   DESC 'Fusion Directory - Argonaut, fuse default mode.'
   EQUALITY caseExactIA5Match
@@ -381,7 +387,8 @@ objectclass ( 1.3.6.1.4.1.38414.2.2.4 NAME 'argonautDNSConfig'
     argonautLdap2zoneBindDir  $ argonautLdap2zoneBindCacheDir $ argonautLdap2zoneAllowNotify $
     argonautLdap2zoneTTL      $ argonautLdap2zoneRndc )
   MAY ( argonautLdap2zoneAllowUpdate $ argonautLdap2zoneAllowTransfer $
-    argonautLdap2zoneNoReverse $ argonautLdap2zoneCheckNames $ argonautLdap2zoneSearchBase ) )
+    argonautLdap2zoneNoReverse $ argonautLdap2zoneCheckNames $ argonautLdap2zoneSearchBase $
+    argonautLdap2zoneSlaveZonesDn ) )
 
 objectclass ( 1.3.6.1.4.1.38414.2.2.5 NAME 'argonautFuseConfig'
   DESC 'An argonaut config for fuse'

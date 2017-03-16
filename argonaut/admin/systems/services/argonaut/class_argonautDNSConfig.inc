@@ -96,9 +96,30 @@ class argonautDNSConfig extends simpleService
             _('Search base'), _('LDAP base in which ldap2zone should search. Only usefull if you got several nodes for the same zone.'),
             'argonautLdap2zoneSearchBase', FALSE
           ),
+          new SetAttribute(
+            new SelectAttribute(
+              _('Slave zones'), _('DNS zones this server should be declared as slave of'),
+              'argonautLdap2zoneSlaveZonesDn', TRUE
+            )
+          )
         )
       )
     );
+  }
+
+  function __construct ($dn = NULL, $parent = NULL, $attributesInfo = NULL)
+  {
+    global $config;
+    parent::__construct($dn, $parent, $attributesInfo);
+    $zonesCache = objects::ls('dnsZone');
+    $counts = array_count_values($zonesCache);
+    foreach ($zonesCache as $dn => &$name) {
+      if ($counts[$name] > 1) {
+        $name .= ' ('.preg_replace(array('/^[^,]+,/', '/,'.preg_quote($config->current['BASE']).'$/'), '', $dn).')';
+      }
+    }
+    unset($name);
+    $this->attributesAccess['argonautLdap2zoneSlaveZonesDn']->attribute->setChoices(array_keys($zonesCache), array_values($zonesCache));
   }
 }
 
