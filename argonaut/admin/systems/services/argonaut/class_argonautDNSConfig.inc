@@ -91,7 +91,11 @@ class argonautDNSConfig extends simpleService
             'argonautLdap2zoneRndc',
             FALSE,
             '/usr/sbin/rndc'
-          )
+          ),
+          new StringAttribute (
+            _('Search base'), _('LDAP base in which ldap2zone should search. Only usefull if you got several nodes for the same zone.'),
+            'argonautLdap2zoneSearchBase', FALSE
+          ),
         )
       )
     );
