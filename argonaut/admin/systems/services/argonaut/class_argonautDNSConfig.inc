@@ -46,17 +46,13 @@ class argonautDNSConfig extends simpleService
         'name'  => _('Argonaut Ldap2zone settings:'),
         'attrs' => array (
           new StringAttribute (
-            _('Bind directory'),
-            _('The directory in which conf file must be created'),
-            'argonautLdap2zoneBindDir',
-            TRUE,
+            _('Bind directory'), _('The directory in which conf file must be created'),
+            'argonautLdap2zoneBindDir', TRUE,
             '/etc/bind'
           ),
           new StringAttribute (
-            _('Bind cache directory'),
-            _('The directory in which zone files must be created'),
-            'argonautLdap2zoneBindCacheDir',
-            TRUE,
+            _('Bind cache directory'), _('The directory in which zone files must be created'),
+            'argonautLdap2zoneBindCacheDir', TRUE,
             '/var/cache/bind'
           ),
           new BooleanAttribute (
@@ -64,22 +60,21 @@ class argonautDNSConfig extends simpleService
             'argonautLdap2zoneNoReverse', FALSE
           ),
           new BooleanAttribute (
-            _('Allow notify'),
-            '',
-            'argonautLdap2zoneAllowNotify',
-            FALSE
+            _('Allow notify'), '',
+            'argonautLdap2zoneAllowNotify', FALSE
           ),
           new StringAttribute (
-            _('Allow update (semicolon separated and ended)'),
-            '',
-            'argonautLdap2zoneAllowUpdate',
-            FALSE
+            _('Allow update'), _('Allow update (semicolon separated and ended)'),
+            'argonautLdap2zoneAllowUpdate', FALSE
           ),
           new StringAttribute (
-            _('Allow transfer (semicolon separated and ended)'),
-            '',
-            'argonautLdap2zoneAllowTransfer',
-            FALSE
+            _('Allow transfer'), _('Allow transfer (semicolon separated and ended)'),
+            'argonautLdap2zoneAllowTransfer', FALSE
+          ),
+          new SelectAttribute (
+            _('Check names'), _('Cause any host name for the zone to be checked for compliance with RFC 952 and RFC 1123 and take the defined action'),
+            'argonautLdap2zoneCheckNames', FALSE,
+            array('','warn','fail','ignore'), ''
           ),
           new IntAttribute (
             _('TTL'),
