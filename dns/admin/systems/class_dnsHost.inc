@@ -157,8 +157,16 @@ class dnsHost extends simplePlugin
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
+    global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
     $this->zonesCache = objects::ls('dnsZone');
+    $counts = array_count_values($this->zonesCache);
+    foreach ($this->zonesCache as $dn => &$name) {
+      if ($counts[$name] > 1) {
+        $name .= ' ('.preg_replace(array('/^[^,]+,/', '/,'.preg_quote($config->current['BASE']).'$/'), '', $dn).')';
+      }
+    }
+    unset($name);
     $this->attributesAccess['fdDNSZoneDn']->attribute->setChoices(array_keys($this->zonesCache), array_values($this->zonesCache));
     $this->attributesAccess['fdDNSZoneDn']->setSubmitForm('zoneChanged');
   }
@@ -192,11 +200,12 @@ class dnsHost extends simplePlugin
       );
       foreach ($dnsZones as $dn) {
         if (isset($this->zonesCache[$dn])) {
-          $name = $this->zonesCache[$dn];
+          $name   = $this->zonesCache[$dn];
+          $zoneid = preg_replace('/[\/\-,.#:; =]/', '_', $dn);
         } else {
           continue;
         }
-        $attrId = 'zoneRecords'.$name;
+        $attrId = 'zoneRecords'.$zoneid;
         $this->attributesInfo['records']['attrs'][$attrId] = new DnsRecordsFilteredAttribute(
           $name, sprintf(_('The DNS records for zone "%s"'), $name),
           $attrId, $dn,
@@ -217,7 +226,7 @@ class dnsHost extends simplePlugin
               $fqdn .= ' <input type="submit" name="'.$id.'" id="'.$id.'" value="{t}Refresh zone file{/t}"/>';
             }
           }
-          $attrId = 'soaRecord'.$name;
+          $attrId = 'soaRecord'.$zoneid;
           $this->attributesInfo['soa']['attrs'][$attrId] = new DisplayAttribute(
             $name, sprintf(_('The primary server for zone "%s"'), $name),
             $attrId, FALSE,
