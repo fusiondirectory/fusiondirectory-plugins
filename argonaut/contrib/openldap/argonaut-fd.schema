@@ -381,7 +381,7 @@ objectclass ( 1.3.6.1.4.1.38414.2.2.4 NAME 'argonautDNSConfig'
     argonautLdap2zoneBindDir  $ argonautLdap2zoneBindCacheDir $ argonautLdap2zoneAllowNotify $
     argonautLdap2zoneTTL      $ argonautLdap2zoneRndc )
   MAY ( argonautLdap2zoneAllowUpdate $ argonautLdap2zoneAllowTransfer $
-    argonautLdap2zoneNoReverse $ argonautLdap2zoneCheckNames ) )
+    argonautLdap2zoneNoReverse $ argonautLdap2zoneCheckNames $ argonautLdap2zoneSearchBase ) )
 
 objectclass ( 1.3.6.1.4.1.38414.2.2.5 NAME 'argonautFuseConfig'
   DESC 'An argonaut config for fuse'
