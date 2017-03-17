@@ -43,7 +43,7 @@ class argonautDNSConfig extends simpleService
   {
     return array (
       'main' => array (
-        'name'  => _('Argonaut Ldap2zone settings'),
+        'name'  => _('Ldap2zone global settings'),
         'attrs' => array (
           new StringAttribute (
             _('Bind directory'), _('The directory in which conf file must be created'),
@@ -54,27 +54,6 @@ class argonautDNSConfig extends simpleService
             _('Bind cache directory'), _('The directory in which zone files must be created'),
             'argonautLdap2zoneBindCacheDir', TRUE,
             '/var/cache/bind'
-          ),
-          new BooleanAttribute (
-            _('Ignore reverse zone'), _('Do not write reverse zone'),
-            'argonautLdap2zoneNoReverse', FALSE
-          ),
-          new BooleanAttribute (
-            _('Allow notify'), '',
-            'argonautLdap2zoneAllowNotify', FALSE
-          ),
-          new StringAttribute (
-            _('Allow update'), _('Allow update (semicolon separated and ended)'),
-            'argonautLdap2zoneAllowUpdate', FALSE
-          ),
-          new StringAttribute (
-            _('Allow transfer'), _('Allow transfer (semicolon separated and ended)'),
-            'argonautLdap2zoneAllowTransfer', FALSE
-          ),
-          new SelectAttribute (
-            _('Check names'), _('Cause any host name for the zone to be checked for compliance with RFC 952 and RFC 1123 and take the defined action'),
-            'argonautLdap2zoneCheckNames', FALSE,
-            array('','warn','fail','ignore'), ''
           ),
           new IntAttribute (
             _('TTL'),
@@ -95,6 +74,32 @@ class argonautDNSConfig extends simpleService
           new StringAttribute (
             _('Search base'), _('LDAP base in which ldap2zone should search. Only usefull if you got several nodes for the same zone.'),
             'argonautLdap2zoneSearchBase', FALSE
+          ),
+        )
+      ),
+      'master' => array (
+        'name'  => _('Ldap2zone master settings'),
+        'attrs' => array (
+          new BooleanAttribute (
+            _('Ignore reverse zone'), _('Do not write reverse zone'),
+            'argonautLdap2zoneNoReverse', FALSE
+          ),
+          new BooleanAttribute (
+            _('Allow notify'), '',
+            'argonautLdap2zoneAllowNotify', FALSE
+          ),
+          new StringAttribute (
+            _('Allow update'), _('Allow update (semicolon separated and ended)'),
+            'argonautLdap2zoneAllowUpdate', FALSE
+          ),
+          new StringAttribute (
+            _('Allow transfer'), _('Allow transfer (semicolon separated and ended)'),
+            'argonautLdap2zoneAllowTransfer', FALSE
+          ),
+          new SelectAttribute (
+            _('Check names'), _('Cause any host name for the zone to be checked for compliance with RFC 952 and RFC 1123 and take the defined action'),
+            'argonautLdap2zoneCheckNames', FALSE,
+            array('','warn','fail','ignore'), ''
           ),
         )
       ),
