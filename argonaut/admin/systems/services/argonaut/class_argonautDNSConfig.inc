@@ -42,8 +42,8 @@ class argonautDNSConfig extends simpleService
   static function getAttributesInfo ()
   {
     return array (
-    'section1' => array (
-        'name'  => _('Argonaut Ldap2zone settings:'),
+      'main' => array (
+        'name'  => _('Argonaut Ldap2zone settings'),
         'attrs' => array (
           new StringAttribute (
             _('Bind directory'), _('The directory in which conf file must be created'),
@@ -96,30 +96,36 @@ class argonautDNSConfig extends simpleService
             _('Search base'), _('LDAP base in which ldap2zone should search. Only usefull if you got several nodes for the same zone.'),
             'argonautLdap2zoneSearchBase', FALSE
           ),
-          new SetAttribute(
-            new SelectAttribute(
-              _('Slave zones'), _('DNS zones this server should be declared as slave of'),
-              'argonautLdap2zoneSlaveZonesDn', TRUE
-            )
+        )
+      ),
+      'slave' => array (
+        'name'  => _('Ldap2zone slave settings'),
+        'class' => array('fullwidth'),
+        'attrs' => array (
+          new OrderedArrayAttribute(
+            new PipeSeparatedCompositeAttribute(
+              _('Available encodings for share services'),
+              'argonautLdap2zoneSlaveZones',
+              array(
+                new StringAttribute(
+                  _('zone'), _('DNS zone this server should be declared as slave of'),
+                  'Ldap2zoneSlaveZone', TRUE
+                ),
+                new StringAttribute(
+                  _('master'), _('Master IP(s) for this zone'),
+                  'Ldap2zoneSlaveMaster', TRUE
+                )
+              ),
+              '',
+              _('Slave zones')
+            ),
+            FALSE,
+            array(),
+            TRUE
           )
         )
       )
     );
-  }
-
-  function __construct ($dn = NULL, $parent = NULL, $attributesInfo = NULL)
-  {
-    global $config;
-    parent::__construct($dn, $parent, $attributesInfo);
-    $zonesCache = objects::ls('dnsZone');
-    $counts = array_count_values($zonesCache);
-    foreach ($zonesCache as $dn => &$name) {
-      if ($counts[$name] > 1) {
-        $name .= ' ('.preg_replace(array('/^[^,]+,/', '/,'.preg_quote($config->current['BASE']).'$/'), '', $dn).')';
-      }
-    }
-    unset($name);
-    $this->attributesAccess['argonautLdap2zoneSlaveZonesDn']->attribute->setChoices(array_keys($zonesCache), array_values($zonesCache));
   }
 }
 
