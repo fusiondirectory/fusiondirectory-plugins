@@ -101,7 +101,7 @@ class argonautEventDeployment extends argonautEventTypes
   }
 }
 
-class argonautEventTypesLdap2zone
+class argonautEventLdap2zone extends argonautEventTypes
 {
   static public function get_event_types_list()
   {
