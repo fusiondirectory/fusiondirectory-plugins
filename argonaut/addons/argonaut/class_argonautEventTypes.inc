@@ -101,7 +101,7 @@ class argonautEventTypesLdap2zone
   static public function get_event_types_list()
   {
     return array(
-      'Ldap2zone.slaves' => array(
+      'Ldap2Zone.slaves' => array(
         'name'  => _('Refresh slave files (ldap2zone)'),
         'img'   => 'geticon.php?context=actions&icon=view-refresh&size=16'
       )
