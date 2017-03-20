@@ -67,15 +67,5 @@ class serviceDHCP extends simpleService
 
     // TODO: add a foreign key
   }
-
-  function ldap_save($cleanup = TRUE)
-  {
-    parent::ldap_save($cleanup);
-    $dhcpServiceDN = $this->dhcpServiceDN;
-    foreach ($dhcpServiceDN as $dn) {
-      $tabObject = objects::open($dn, 'dhcpConfiguration');
-      $tabObject->save();
-    }
-  }
 }
 ?>
