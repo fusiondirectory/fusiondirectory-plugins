@@ -119,6 +119,12 @@ class argonautDNSConfig extends simpleService
                 new StringAttribute(
                   _('master'), _('Master IP(s) for this zone'),
                   'Ldap2zoneSlaveMaster', TRUE
+                ),
+                new BooleanAttribute(
+                  _('reverses'), _('This server should be slave of reverses zones as well'),
+                  'Ldap2zoneSlaveReverses', TRUE,
+                  TRUE, '',
+                  'reverse', 'noreverse'
                 )
               ),
               '',
