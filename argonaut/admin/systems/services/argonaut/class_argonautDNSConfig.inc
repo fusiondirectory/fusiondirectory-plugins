@@ -84,9 +84,10 @@ class argonautDNSConfig extends simpleService
             _('Ignore reverse zone'), _('Do not write reverse zone'),
             'argonautLdap2zoneNoReverse', FALSE
           ),
-          new BooleanAttribute (
-            _('Allow notify'), '',
-            'argonautLdap2zoneAllowNotify', FALSE
+          new SelectAttribute (
+            _('Notify'), '',
+            'argonautLdap2zoneNotify', FALSE,
+            array('yes','no','explicit')
           ),
           new StringAttribute (
             _('Allow update'), _('Allow update (semicolon separated and ended)'),
