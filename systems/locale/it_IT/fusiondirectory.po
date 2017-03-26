@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Paola Penati <penati@avaya.com>, 2016
+# Paola Penati <paola.penati@opensides.be>, 2016
+# Paola Penati <paola.penati@opensides.be>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-01-11 21:15+0100\n"
-"PO-Revision-Date: 2016-12-31 11:16+0000\n"
-"Last-Translator: Paola Penati <penati@avaya.com>\n"
+"POT-Creation-Date: 2017-03-26 18:02+0200\n"
+"PO-Revision-Date: 2017-03-26 16:13+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,8 +38,8 @@ msgstr "DNS"
 
 #: addons/dashboard/class_dashBoardSystems.inc:29
 #: config/systems/class_systemsPluginConfig.inc:28
-#: admin/systems/class_systemManagement.inc:699
-#: admin/systems/class_systemManagement.inc:703
+#: admin/systems/class_systemManagement.inc:700
+#: admin/systems/class_systemManagement.inc:704
 msgid "Systems"
 msgstr "Sistemi"
 
@@ -209,7 +210,7 @@ msgstr "eredita"
 #: admin/ogroups/goto/class_termgroup.inc:187
 #: admin/systems/class_workstationGeneric.inc:284
 #: admin/systems/class_systemManagement.inc:189
-#: admin/systems/class_systemManagement.inc:213
+#: admin/systems/class_systemManagement.inc:214
 msgid "Infrastructure service"
 msgstr "Servizio d'infrastruttura"
 
@@ -968,29 +969,38 @@ msgstr "Il sistema %s non ha un indirizzo MAC definito, impossibile innescare l'
 msgid "System %s is currently installing"
 msgstr "Il sistema %s é in corso d'installazione"
 
-#: admin/systems/class_systemManagement.inc:249
-#: admin/systems/class_systemManagement.inc:325
-#: admin/systems/class_systemManagement.inc:419
-#: admin/systems/class_systemManagement.inc:482
+#: admin/systems/class_systemManagement.inc:192
+msgid "Action triggered"
+msgstr ""
+
+#: admin/systems/class_systemManagement.inc:192
+#, php-format
+msgid "Action called without error (result was \"%s\")"
+msgstr ""
+
+#: admin/systems/class_systemManagement.inc:250
+#: admin/systems/class_systemManagement.inc:326
+#: admin/systems/class_systemManagement.inc:420
+#: admin/systems/class_systemManagement.inc:483
 msgid "Permission"
 msgstr "Permessi"
 
-#: admin/systems/class_systemManagement.inc:419
+#: admin/systems/class_systemManagement.inc:420
 #, php-format
 msgid "You are not allowed to create a snapshot for %s."
 msgstr "Non sei autorizzato a creare una 'copia instantanea' di %s."
 
-#: admin/systems/class_systemManagement.inc:482
+#: admin/systems/class_systemManagement.inc:483
 #, php-format
 msgid "You are not allowed to restore a snapshot for %s."
 msgstr "Non sei autorizzato a restaurare una 'copia instantanea' di %s."
 
-#: admin/systems/class_systemManagement.inc:648
+#: admin/systems/class_systemManagement.inc:649
 #, php-format
 msgid "Inherited from %s"
 msgstr "Ereditato da %s"
 
-#: admin/systems/class_systemManagement.inc:700
+#: admin/systems/class_systemManagement.inc:701
 msgid "Systems Management"
 msgstr "Gestione dei sistemi"
 

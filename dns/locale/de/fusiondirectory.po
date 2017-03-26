@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-01-11 21:15+0100\n"
-"PO-Revision-Date: 2016-12-31 10:29+0000\n"
+"POT-Creation-Date: 2017-03-26 18:02+0200\n"
+"PO-Revision-Date: 2017-02-04 12:49+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,7 @@ msgstr ""
 
 #: admin/dns/class_dnsAcl.inc:51
 msgid "ACL name"
-msgstr ""
+msgstr "ACL-Name"
 
 #: admin/dns/class_dnsAcl.inc:51
 msgid "Name of this acl"
@@ -74,11 +74,11 @@ msgstr ""
 #: admin/dns/class_dnsView.inc:28 admin/dns/class_dnsView.inc:29
 #: admin/dns/class_dnsView.inc:31
 msgid "DNS view"
-msgstr ""
+msgstr "DNS-Ansicht"
 
 #: admin/dns/class_dnsView.inc:45
 msgid "View"
-msgstr ""
+msgstr "Ansicht"
 
 #: admin/dns/class_dnsView.inc:49
 msgid "View name"
@@ -86,7 +86,7 @@ msgstr ""
 
 #: admin/dns/class_dnsView.inc:49
 msgid "Name of this view"
-msgstr ""
+msgstr "Name dieser Ansicht"
 
 #: admin/dns/class_dnsView.inc:53
 msgid "Match clients ACL"
@@ -115,7 +115,7 @@ msgstr "DNS-Zonen"
 
 #: admin/dns/class_dnsView.inc:66
 msgid "DNS zones in this view"
-msgstr ""
+msgstr "DNS-Zonen in dieser Ansicht"
 
 #: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:121
 msgid "DNS"
@@ -123,15 +123,15 @@ msgstr "DNS"
 
 #: admin/dns/class_dnsManagement.inc:35
 msgid "DNS Management"
-msgstr ""
+msgstr "DNS-Verwaltung"
 
 #: admin/dns/class_dnsManagement.inc:37
 msgid "Systems"
 msgstr "Systeme"
 
 #: admin/dns/class_dnsManagement.inc:98 admin/dns/class_dnsManagement.inc:100
-#: admin/dns/class_dnsManagement.inc:106 admin/systems/class_dnsHost.inc:269
-#: admin/systems/class_dnsHost.inc:275
+#: admin/dns/class_dnsManagement.inc:106 admin/systems/class_dnsHost.inc:278
+#: admin/systems/class_dnsHost.inc:284
 msgid "Could not run ldap2zone"
 msgstr ""
 
@@ -147,20 +147,20 @@ msgstr ""
 msgid "Could not get run ldap2zone"
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:114 admin/systems/class_dnsHost.inc:277
+#: admin/dns/class_dnsManagement.inc:114 admin/systems/class_dnsHost.inc:286
 msgid "Ldap2zone"
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:114 admin/systems/class_dnsHost.inc:277
+#: admin/dns/class_dnsManagement.inc:114 admin/systems/class_dnsHost.inc:286
 #, php-format
 msgid "Ldap2Zone called for zone \"%s\""
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:118 admin/systems/class_dnsHost.inc:281
+#: admin/dns/class_dnsManagement.inc:118 admin/systems/class_dnsHost.inc:290
 msgid "Error"
 msgstr "Fehler"
 
-#: admin/dns/class_dnsManagement.inc:118 admin/systems/class_dnsHost.inc:281
+#: admin/dns/class_dnsManagement.inc:118 admin/systems/class_dnsHost.inc:290
 msgid "Argonaut client needs to be activated to use ldap2zone remotely"
 msgstr ""
 
@@ -193,15 +193,15 @@ msgstr "Ziel"
 
 #: admin/dns/class_DnsRecordAttribute.inc:171
 msgid "An IPv4 address"
-msgstr ""
+msgstr "Eine IPv4-Adresse"
 
 #: admin/dns/class_DnsRecordAttribute.inc:178
 msgid "An IPv6 address"
-msgstr ""
+msgstr "Eine IPv6-Adresse"
 
 #: admin/dns/class_DnsRecordAttribute.inc:185
 msgid "LOC Record"
-msgstr ""
+msgstr "LOC-Eintrag"
 
 #: admin/dns/class_DnsRecordAttribute.inc:189
 msgid "Latitude"
@@ -220,55 +220,55 @@ msgstr "Minuten"
 #: admin/dns/class_DnsRecordAttribute.inc:203
 #: admin/dns/class_DnsRecordAttribute.inc:230
 msgid "Seconds"
-msgstr ""
+msgstr "Sekunden"
 
 #: admin/dns/class_DnsRecordAttribute.inc:208
 msgid "North/South"
-msgstr ""
+msgstr "Nord/Süd"
 
 #: admin/dns/class_DnsRecordAttribute.inc:211
 msgid "North"
-msgstr ""
+msgstr "Nord"
 
 #: admin/dns/class_DnsRecordAttribute.inc:211
 msgid "South"
-msgstr ""
+msgstr "Süd"
 
 #: admin/dns/class_DnsRecordAttribute.inc:216
 msgid "Longitude"
-msgstr ""
+msgstr "Längengrad"
 
 #: admin/dns/class_DnsRecordAttribute.inc:235
 msgid "East/West"
-msgstr ""
+msgstr "Ost/West"
 
 #: admin/dns/class_DnsRecordAttribute.inc:238
 msgid "East"
-msgstr ""
+msgstr "Ost"
 
 #: admin/dns/class_DnsRecordAttribute.inc:238
 msgid "West"
-msgstr ""
+msgstr "West"
 
 #: admin/dns/class_DnsRecordAttribute.inc:243
 msgid "Altitude (meters)"
-msgstr ""
+msgstr "Höhe (Meter)"
 
 #: admin/dns/class_DnsRecordAttribute.inc:248
 msgid "Size (meters)"
-msgstr ""
+msgstr "Größe (Meter)"
 
 #: admin/dns/class_DnsRecordAttribute.inc:253
 msgid "Horizontal precision (meters)"
-msgstr ""
+msgstr "Horizontale Genauigkeit (Meter)"
 
 #: admin/dns/class_DnsRecordAttribute.inc:258
 msgid "Vertical precision (meters)"
-msgstr ""
+msgstr "Vertikale Genauigkeit (Meter)"
 
 #: admin/dns/class_DnsRecordAttribute.inc:267
 msgid "MX Record"
-msgstr ""
+msgstr "MX-Eintrag"
 
 #: admin/dns/class_DnsRecordAttribute.inc:271
 #: admin/dns/class_DnsRecordAttribute.inc:330
@@ -289,11 +289,11 @@ msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:285
 msgid "NAPTR Record"
-msgstr ""
+msgstr "NAPTR-Eintrag"
 
 #: admin/dns/class_DnsRecordAttribute.inc:289
 msgid "Order"
-msgstr ""
+msgstr "Auftrag"
 
 #: admin/dns/class_DnsRecordAttribute.inc:289
 msgid ""
@@ -304,7 +304,7 @@ msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:294
 msgid "Preference"
-msgstr ""
+msgstr "Präferenz"
 
 #: admin/dns/class_DnsRecordAttribute.inc:294
 msgid ""
@@ -338,7 +338,7 @@ msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:307
 msgid "Regular Expression"
-msgstr ""
+msgstr "Regulärer Ausdruck"
 
 #: admin/dns/class_DnsRecordAttribute.inc:307
 msgid ""
@@ -365,7 +365,7 @@ msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:326
 msgid "SRV Record"
-msgstr ""
+msgstr "SRV-Eintrag"
 
 #: admin/dns/class_DnsRecordAttribute.inc:330
 msgid "Priority of the target host, lower value means more preferred"
@@ -373,7 +373,7 @@ msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:335
 msgid "Weight"
-msgstr ""
+msgstr "Gewicht"
 
 #: admin/dns/class_DnsRecordAttribute.inc:335
 msgid ""
@@ -397,7 +397,7 @@ msgstr ""
 #: admin/dns/class_DnsRecordAttribute.inc:354 admin/dns/class_dnsZone.inc:27
 #: admin/dns/class_dnsZone.inc:35
 msgid "Record"
-msgstr ""
+msgstr "Eintrag"
 
 #: admin/dns/class_DnsRecordAttribute.inc:354
 msgid ""
@@ -419,7 +419,7 @@ msgstr "Inhalt"
 
 #: admin/dns/class_DnsRecordAttribute.inc:366
 msgid "Content of this record"
-msgstr ""
+msgstr "Inhalt dieses Eintrags"
 
 #: admin/dns/class_DnsRecordAttribute.inc:426
 msgid "The entered IP does not match the selected reverse zone"
@@ -435,7 +435,7 @@ msgstr ""
 
 #: admin/dns/class_dnsZone.inc:35
 msgid "DNS Record"
-msgstr ""
+msgstr "DNS-Eintrag"
 
 #: admin/dns/class_dnsZone.inc:309 admin/dns/class_dnsZone.inc:352
 #: admin/dns/class_dnsZone.inc:377
@@ -486,11 +486,11 @@ msgstr "SOA-Eintrag"
 
 #: admin/dns/class_dnsZone.inc:531
 msgid "SOA Record"
-msgstr ""
+msgstr "SOA-Eintrag"
 
 #: admin/dns/class_dnsZone.inc:535
 msgid "Primary DNS server"
-msgstr ""
+msgstr "Primärer DNS-Server"
 
 #: admin/dns/class_dnsZone.inc:535
 msgid ""
@@ -510,7 +510,7 @@ msgstr ""
 
 #: admin/dns/class_dnsZone.inc:543
 msgid "Serial number"
-msgstr ""
+msgstr "Seriennummer"
 
 #: admin/dns/class_dnsZone.inc:543
 msgid "Version number of the original copy of the zone"
@@ -553,7 +553,7 @@ msgstr ""
 
 #: admin/dns/class_dnsZone.inc:574
 msgid "Records"
-msgstr ""
+msgstr "Einträge"
 
 #: admin/dns/class_dnsZone.inc:578
 msgid "The DNS records for this zone"
@@ -569,37 +569,37 @@ msgstr ""
 
 #: admin/systems/class_dnsHost.inc:150
 msgid "SOA records"
-msgstr ""
+msgstr "SOA-Einträge"
 
-#: admin/systems/class_dnsHost.inc:154 admin/systems/class_dnsHost.inc:192
+#: admin/systems/class_dnsHost.inc:154 admin/systems/class_dnsHost.inc:200
 msgid "DNS Records"
-msgstr ""
+msgstr "DNS-Einträge"
 
-#: admin/systems/class_dnsHost.inc:188
+#: admin/systems/class_dnsHost.inc:196
 msgid "Primary servers"
-msgstr ""
+msgstr "Primäre Server"
 
-#: admin/systems/class_dnsHost.inc:204
+#: admin/systems/class_dnsHost.inc:213
 #, php-format
 msgid "The DNS records for zone \"%s\""
-msgstr ""
+msgstr "Die DNS-Einträge für Zone \"%s\""
 
-#: admin/systems/class_dnsHost.inc:225
+#: admin/systems/class_dnsHost.inc:234
 #, php-format
 msgid "The primary server for zone \"%s\""
-msgstr ""
+msgstr "Der primäre Server für Zone \"%s\""
 
-#: admin/systems/class_dnsHost.inc:311 admin/systems/class_dnsHost.inc:331
+#: admin/systems/class_dnsHost.inc:320 admin/systems/class_dnsHost.inc:340
 #, php-format
 msgid "%d records were updated from %s to %s in zone %s"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:346
+#: admin/systems/class_dnsHost.inc:355
 #, php-format
 msgid "%d records were removed in zone %s"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:355
+#: admin/systems/class_dnsHost.inc:364
 msgid "DNS update"
 msgstr ""
 

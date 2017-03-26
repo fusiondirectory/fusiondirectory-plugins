@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-01-11 21:15+0100\n"
-"PO-Revision-Date: 2016-12-31 10:30+0000\n"
+"POT-Creation-Date: 2017-03-26 18:02+0200\n"
+"PO-Revision-Date: 2017-03-26 16:13+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -36,8 +36,8 @@ msgstr "DNS"
 
 #: addons/dashboard/class_dashBoardSystems.inc:29
 #: config/systems/class_systemsPluginConfig.inc:28
-#: admin/systems/class_systemManagement.inc:699
-#: admin/systems/class_systemManagement.inc:703
+#: admin/systems/class_systemManagement.inc:700
+#: admin/systems/class_systemManagement.inc:704
 msgid "Systems"
 msgstr "Systeme"
 
@@ -208,7 +208,7 @@ msgstr "geerbt"
 #: admin/ogroups/goto/class_termgroup.inc:187
 #: admin/systems/class_workstationGeneric.inc:284
 #: admin/systems/class_systemManagement.inc:189
-#: admin/systems/class_systemManagement.inc:213
+#: admin/systems/class_systemManagement.inc:214
 msgid "Infrastructure service"
 msgstr "Infrastrukturdienst"
 
@@ -955,7 +955,7 @@ msgstr "Die Telefonnumer des Telefons"
 #: admin/systems/class_systemManagement.inc:159
 #: admin/systems/class_systemManagement.inc:173
 msgid "Action canceled"
-msgstr ""
+msgstr "Aktion abgebrochen"
 
 #: admin/systems/class_systemManagement.inc:159
 #, php-format
@@ -967,29 +967,38 @@ msgstr ""
 msgid "System %s is currently installing"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:249
-#: admin/systems/class_systemManagement.inc:325
-#: admin/systems/class_systemManagement.inc:419
-#: admin/systems/class_systemManagement.inc:482
+#: admin/systems/class_systemManagement.inc:192
+msgid "Action triggered"
+msgstr ""
+
+#: admin/systems/class_systemManagement.inc:192
+#, php-format
+msgid "Action called without error (result was \"%s\")"
+msgstr ""
+
+#: admin/systems/class_systemManagement.inc:250
+#: admin/systems/class_systemManagement.inc:326
+#: admin/systems/class_systemManagement.inc:420
+#: admin/systems/class_systemManagement.inc:483
 msgid "Permission"
 msgstr "Berechtigung"
 
-#: admin/systems/class_systemManagement.inc:419
+#: admin/systems/class_systemManagement.inc:420
 #, php-format
 msgid "You are not allowed to create a snapshot for %s."
 msgstr "Ihnen ist es nicht erlaubt, einen Snapshot für %s zu erstellen."
 
-#: admin/systems/class_systemManagement.inc:482
+#: admin/systems/class_systemManagement.inc:483
 #, php-format
 msgid "You are not allowed to restore a snapshot for %s."
 msgstr "Ihnen ist es nicht erlaubt, einen Snapshot für %s wiederherzustellen."
 
-#: admin/systems/class_systemManagement.inc:648
+#: admin/systems/class_systemManagement.inc:649
 #, php-format
 msgid "Inherited from %s"
 msgstr "Geerbt von %s"
 
-#: admin/systems/class_systemManagement.inc:700
+#: admin/systems/class_systemManagement.inc:701
 msgid "Systems Management"
 msgstr "Systemverwaltung"
 
@@ -999,7 +1008,7 @@ msgstr "Druckerinformation"
 
 #: admin/systems/class_printGeneric.inc:62
 msgid "The name of the printer"
-msgstr ""
+msgstr "Der Name des Druckers"
 
 #: admin/systems/class_printGeneric.inc:66
 msgid "A short description of the printer"
@@ -1015,7 +1024,7 @@ msgstr "Drucker-Standort"
 
 #: admin/systems/class_printGeneric.inc:75
 msgid "The location of the printer"
-msgstr ""
+msgstr "Der Standort des Druckers"
 
 #: admin/systems/class_printGeneric.inc:79
 msgid "Printer URL"
@@ -1023,7 +1032,7 @@ msgstr "Drucker-URL"
 
 #: admin/systems/class_printGeneric.inc:79
 msgid "The URL of the printer"
-msgstr ""
+msgstr "Die URL des Druckers"
 
 #: admin/systems/class_printGeneric.inc:85
 #: admin/systems/class_printGeneric.inc:88
@@ -1045,7 +1054,7 @@ msgstr "MAC-Adresse"
 
 #: admin/systems/class_printGeneric.inc:113
 msgid "Mac address of this system"
-msgstr ""
+msgstr "MAC-Adresse von diesem System"
 
 #: admin/systems/class_printGeneric.inc:119
 msgid "Windows paths"
@@ -1053,7 +1062,7 @@ msgstr "Windowspfade"
 
 #: admin/systems/class_printGeneric.inc:123
 msgid "Inf file"
-msgstr ""
+msgstr "Inf-Datei"
 
 #: admin/systems/class_printGeneric.inc:123
 msgid "Path to windows inf file for this printer"
@@ -1061,7 +1070,7 @@ msgstr ""
 
 #: admin/systems/class_printGeneric.inc:127
 msgid "Driver directory"
-msgstr ""
+msgstr "Treiberverzeichnis"
 
 #: admin/systems/class_printGeneric.inc:127
 msgid "Path to directory that contains windows drivers for this printer"
@@ -1069,7 +1078,7 @@ msgstr ""
 
 #: admin/systems/class_printGeneric.inc:131
 msgid "Driver name"
-msgstr ""
+msgstr "Treibername"
 
 #: admin/systems/class_printGeneric.inc:131
 msgid "Windows name of the printer driver"

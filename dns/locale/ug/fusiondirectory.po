@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-01-11 21:15+0100\n"
+"POT-Creation-Date: 2017-03-26 18:02+0200\n"
 "PO-Revision-Date: 2016-12-31 10:29+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Uighur (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/ug/)\n"
@@ -129,8 +129,8 @@ msgid "Systems"
 msgstr ""
 
 #: admin/dns/class_dnsManagement.inc:98 admin/dns/class_dnsManagement.inc:100
-#: admin/dns/class_dnsManagement.inc:106 admin/systems/class_dnsHost.inc:269
-#: admin/systems/class_dnsHost.inc:275
+#: admin/dns/class_dnsManagement.inc:106 admin/systems/class_dnsHost.inc:278
+#: admin/systems/class_dnsHost.inc:284
 msgid "Could not run ldap2zone"
 msgstr ""
 
@@ -146,20 +146,20 @@ msgstr ""
 msgid "Could not get run ldap2zone"
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:114 admin/systems/class_dnsHost.inc:277
+#: admin/dns/class_dnsManagement.inc:114 admin/systems/class_dnsHost.inc:286
 msgid "Ldap2zone"
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:114 admin/systems/class_dnsHost.inc:277
+#: admin/dns/class_dnsManagement.inc:114 admin/systems/class_dnsHost.inc:286
 #, php-format
 msgid "Ldap2Zone called for zone \"%s\""
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:118 admin/systems/class_dnsHost.inc:281
+#: admin/dns/class_dnsManagement.inc:118 admin/systems/class_dnsHost.inc:290
 msgid "Error"
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:118 admin/systems/class_dnsHost.inc:281
+#: admin/dns/class_dnsManagement.inc:118 admin/systems/class_dnsHost.inc:290
 msgid "Argonaut client needs to be activated to use ldap2zone remotely"
 msgstr ""
 
@@ -570,35 +570,35 @@ msgstr ""
 msgid "SOA records"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:154 admin/systems/class_dnsHost.inc:192
+#: admin/systems/class_dnsHost.inc:154 admin/systems/class_dnsHost.inc:200
 msgid "DNS Records"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:188
+#: admin/systems/class_dnsHost.inc:196
 msgid "Primary servers"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:204
+#: admin/systems/class_dnsHost.inc:213
 #, php-format
 msgid "The DNS records for zone \"%s\""
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:225
+#: admin/systems/class_dnsHost.inc:234
 #, php-format
 msgid "The primary server for zone \"%s\""
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:311 admin/systems/class_dnsHost.inc:331
+#: admin/systems/class_dnsHost.inc:320 admin/systems/class_dnsHost.inc:340
 #, php-format
 msgid "%d records were updated from %s to %s in zone %s"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:346
+#: admin/systems/class_dnsHost.inc:355
 #, php-format
 msgid "%d records were removed in zone %s"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:355
+#: admin/systems/class_dnsHost.inc:364
 msgid "DNS update"
 msgstr ""
 
