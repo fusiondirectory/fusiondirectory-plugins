@@ -49,6 +49,12 @@ class serviceRenaterPartage extends simpleService
             'fdRenaterPartageServerUserAgent', TRUE,
             'FusionDirectory'
           ),
+          new SelectAttribute(
+            _('Mailbox deletion'), _('What to do with the PARTAGE account when mail tab is deactivated or user is deleted'),
+            'fdRenaterPartageServerDeletionType', TRUE,
+            array(  'delete',   'disable'), '',
+            array(_('Delete'),_('Disable'))
+          ),
         )
       ),
       'domains' => array(

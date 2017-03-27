@@ -386,9 +386,18 @@ class mailMethodRenaterPartage extends mailMethod
   public function deleteMailbox()
   {
     parent::deleteMailbox();
+    $servers = static::getMailServers();
+    $infos = $servers[$this->parent->gosaMailServer];
     $this->account_id = $this->initial_account_id;
     if ($this->account_exists()) {
-      $answer = $this->query('DeleteAccount', array('name' => $this->initial_account_id));
+      if ($infos['delete_type'] == 'delete') {
+        $answer = $this->query('DeleteAccount', array('name' => $this->initial_account_id));
+      } elseif ($infos['delete_type'] == 'disable') {
+        $answer = $this->query('ModifyAccount', array('name' => $this->initial_account_id, 'zimbraAccountStatus' => 'closed'));
+      } else {
+        $answer = FALSE;
+        $this->error = _('Invalid value in fdRenaterPartageServerDeletionType');
+      }
       return ($answer !== FALSE);
     }
     return TRUE;
@@ -441,10 +450,12 @@ class mailMethodRenaterPartage extends mailMethod
         $cosArray = explode(',', $cosString);
         foreach ($cosArray as $cos) {
           list ($cosName, $cosId) = explode('|', $cos);
+          $deleteMode = (isset($attrs['fdRenaterPartageServerDeletionType'][0]) ? $attrs['fdRenaterPartageServerDeletionType'][0] : 'delete');
           $serverList[$attrs['cn'][0].' - '.$domain.' - '.$cosName] = array(
             'server_dn'   => $attrs['dn'],
             'user_agent'  => $attrs['fdRenaterPartageServerUserAgent'][0],
             'uri'         => $attrs['fdRenaterPartageServerUri'][0],
+            'delete_type' => $deleteMode,
             'domain'      => $domain,
             'key'         => $key,
             'cos_name'    => $cosName,
