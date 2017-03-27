@@ -179,6 +179,14 @@ class dnsHost extends simplePlugin
     global $config;
     $ldap     = $config->get_ldap_link();
     $dnsZones = $this->fdDNSZoneDn;
+    /* Removes references to old attributes */
+    foreach (array_keys($this->attributesInfo['records']['attrs']) as $oldattr) {
+      unset($this->attributesAccess[$oldattr]);
+    }
+    foreach (array_keys($this->attributesInfo['soa']['attrs']) as $oldattr) {
+      unset($this->attributesAccess[$oldattr]);
+    }
+    /* Remove sections or fill them */
     if (empty($dnsZones)) {
       unset($this->attributesInfo['soa']);
       unset($this->attributesInfo['records']);
