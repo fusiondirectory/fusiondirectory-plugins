@@ -162,7 +162,20 @@ class dnsHost extends simplePlugin
   {
     global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
-    $this->zonesCache = objects::ls('dnsZone');
+    /* List DNS zones we can read */
+    $this->zonesCache = objects::ls('dnsZone', NULL, NULL, '', TRUE);
+    /* Check if some values are missing */
+    $dnsZones = $this->fdDNSZoneDn;
+    foreach ($dnsZones as $dn) {
+      if (!isset($this->zonesCache[$dn])) {
+        try {
+          $zone = objects::ls('dnsZone', NULL, $dn);
+          $this->zonesCache = array_merge($zone, $this->zonesCache);
+        } catch (FusionDirectoryException $e) {
+          continue;
+        }
+      }
+    }
     $counts = array_count_values($this->zonesCache);
     foreach ($this->zonesCache as $dn => &$name) {
       if ($counts[$name] > 1) {
