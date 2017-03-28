@@ -20,6 +20,24 @@
 
 class DnsRecordPlugin extends simplePlugin
 {
+  public static function plInfo()
+  {
+    $plProvidedAcls = parent::generatePlProvidedAcls(static::getAttributesInfo());
+
+    $plProvidedAcls['dnsRecord'] = _('DNS Record domain and type');
+
+    foreach (DnsRecordAttribute::$types as $id => $name) {
+      $plProvidedAcls['dnsRecord_'.$id] = sprintf(_('%s record'), $name);
+    }
+
+    return array(
+      'plShortName'     => _('DNS record'),
+      'plDescription'   => _('DNS record'),
+      'plCategory'      => array('dnsZone'),
+      'plProvidedAcls'  => $plProvidedAcls
+    );
+  }
+
   static function getAttributesInfo ()
   {
     return array(
@@ -29,7 +47,8 @@ class DnsRecordPlugin extends simplePlugin
         'attrs' => array(
           new StringAttribute (
             _('Subdomain'), _('Relative subdomain name'),
-            'relativeSubdomainName', FALSE
+            'relativeSubdomainName', FALSE,
+            '', 'dnsRecord'
           ),
           new DnsRecordAttribute (
             _('Record'), _('DNS Record'),
@@ -51,6 +70,15 @@ class DnsRecordPlugin extends simplePlugin
     $this->attributesAccess['relativeSubdomainName']->setInLdap(FALSE);
     $this->attributesAccess['dnsRecord']->setInLdap(FALSE);
     $this->attributesAccess['dnsRecord']->setLinearRendering(FALSE);
+
+    $types = DnsRecordAttribute::$types;
+    foreach ($types as $id => $name) {
+      if (!preg_match('/w/', $this->aclGetPermissions('dnsRecord_'.$id, NULL, $this->acl_skip_write()))) {
+        unset($types[$id]);
+      }
+    }
+    $this->attributesAccess['dnsRecord']->attributes[0]->setChoices(array_keys($types), array_values($types));
+
     if (!empty($value)) {
       $this->relativeSubdomainName  = array_shift($value);
       $this->dnsRecord              = $value;
@@ -69,6 +97,16 @@ class DnsRecordPlugin extends simplePlugin
 
   function save()
   {
+  }
+
+  function execute()
+  {
+    $smarty = get_smarty();
+    $attr   = $this->attributesAccess['dnsRecord'];
+    foreach ($this->attributesAccess as $attr) {
+      $smarty->assign($attr->getAcl().'ACL', $this->aclGetPermissions($attr->getAcl(), NULL, $this->acl_skip_write()));
+    }
+    return parent::execute();
   }
 }
 
@@ -490,7 +528,7 @@ class dnsZone extends simplePlugin
         'mainAttr'    => 'zoneName'
       )),
 
-      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
     );
   }
 

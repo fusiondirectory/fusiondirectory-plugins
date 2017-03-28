@@ -124,7 +124,7 @@ class DnsRecordAttribute extends CompositeAttribute
     'aRecord', 'aAAARecord'
   );
 
-  function __construct($label, $description, $ldapName, $required, $acl = '')
+  function __construct($label, $description, $ldapName, $required)
   {
     $attributes = array(
       new SelectAttribute(_('Type'), '', $ldapName.'_type', $required, array_keys(static::$types), '', array_values(static::$types)),
@@ -134,7 +134,7 @@ class DnsRecordAttribute extends CompositeAttribute
         'reverse', FALSE
       ),
     );
-    parent::__construct($description, $ldapName, $attributes, FALSE, FALSE, $acl, $label);
+    parent::__construct($description, $ldapName, $attributes, FALSE, FALSE, '', $label);
     $this->setLinearRendering(TRUE);
     $this->attributes[0]->setSubmitForm(TRUE);
     $this->updateFields();
@@ -426,5 +426,21 @@ class DnsRecordAttribute extends CompositeAttribute
         return _('The entered IP does not match the selected reverse zone');
       }
     }
+  }
+
+  function getAcl ()
+  {
+    return $this->getHtmlId().'_'.$this->attributes[0]->getValue();
+  }
+
+  function getAclInfo ()
+  {
+    return FALSE;
+  }
+
+  function setAttributes ($attributes)
+  {
+    parent::setAttributes($attributes);
+    $this->attributes[0]->setAcl($this->getHtmlId());
   }
 }
