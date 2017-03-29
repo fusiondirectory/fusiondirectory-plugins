@@ -97,6 +97,9 @@ class mailMethodRenaterPartage extends mailMethod
       $command .= '/'.$this->token;
     }
 
+    if (is_callable('error_clear_last')) {
+      error_clear_last();
+    }
     $context  = stream_context_create($opts);
     if ($fp = @fopen($infos['uri'].'/'.$command, 'r', FALSE, $context)) {
       $response = '';
