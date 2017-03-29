@@ -73,7 +73,7 @@ class DnsRecordPlugin extends simplePlugin
 
     $types = DnsRecordAttribute::$types;
     foreach ($types as $id => $name) {
-      if (!preg_match('/w/', $this->aclGetPermissions('dnsRecord_'.$id, NULL, $this->acl_skip_write()))) {
+      if (!preg_match('/w/', $this->getacl('dnsRecord_'.$id, $this->acl_skip_write()))) {
         unset($types[$id]);
       }
     }
@@ -104,7 +104,7 @@ class DnsRecordPlugin extends simplePlugin
     $smarty = get_smarty();
     $attr   = $this->attributesAccess['dnsRecord'];
     foreach ($this->attributesAccess as $attr) {
-      $smarty->assign($attr->getAcl().'ACL', $this->aclGetPermissions($attr->getAcl(), NULL, $this->acl_skip_write()));
+      $smarty->assign($attr->getAcl().'ACL', $this->getacl($attr->getAcl(), $this->acl_skip_write()));
     }
     return parent::execute();
   }
@@ -490,7 +490,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
   protected function canWriteRecord($value)
   {
     $ui     = get_userinfo();
-    $rights = $ui->get_permissions($this->getZoneDn(), 'dnsZone/DnsRecordPlugin', 'dnsRecord_'.$value[1], $this->plugin->readOnly());
+    $rights = $ui->get_permissions($this->getZoneDn(), 'dnsZone/DnsRecordPlugin', 'dnsRecord_'.$value[1], $this->plugin->read_only);
     return preg_match('/w/', $rights);
   }
 
