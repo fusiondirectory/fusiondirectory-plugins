@@ -488,6 +488,37 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     }
     return $nb;
   }
+
+  protected function canWriteRecord($value)
+  {
+    $ui     = get_userinfo();
+    $rights = $ui->get_permissions($this->getZoneDn(), 'dnsZone/DnsRecordPlugin', 'dnsRecord_'.$value[1], $this->plugin->readOnly());
+    return preg_match('/w/', $rights);
+  }
+
+  protected function genRowIcons($key, $value)
+  {
+    list ($img, $nbicons) = parent::genRowIcons($key, $value);
+    if ($this->canWriteRecord($value)) {
+      return array($img, $nbicons);
+    } else {
+      return array('', 0);
+    }
+  }
+
+  protected function handleEdit($key)
+  {
+    if ($this->canWriteRecord($this->value[$key])) {
+      return parent::handleEdit($key);
+    }
+  }
+
+  function delPostValue($key)
+  {
+    if ($this->canWriteRecord($this->value[$key])) {
+      return parent::delPostValue($key);
+    }
+  }
 }
 
 class ZoneNameAttribute extends StringAttribute
