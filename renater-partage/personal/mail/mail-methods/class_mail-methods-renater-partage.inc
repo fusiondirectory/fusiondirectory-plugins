@@ -123,7 +123,7 @@ class mailMethodRenaterPartage extends mailMethod
       return $response;
     } else {
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $fp, '<b>MAIL: No Answer</b>');
-      if (!is_empty($fp)) {
+      if (!empty($fp)) {
         $this->error = sprintf(_('Unable to connect to %s: %s'), $infos['uri'], implode("\n", $fp));
       } else {
         $this->error = sprintf(_('Unable to connect to %s'), $infos['uri']);
