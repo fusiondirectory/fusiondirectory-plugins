@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-26 18:02+0200\n"
-"PO-Revision-Date: 2017-03-26 18:22+0000\n"
+"POT-Creation-Date: 2017-03-30 18:10+0200\n"
+"PO-Revision-Date: 2017-03-30 16:25+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -564,16 +564,16 @@ msgid "Ldap2zone slave settings"
 msgstr "Paramètres DNS esclaves Ldap2zone"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:112
-msgid "Available encodings for share services"
-msgstr "Encodages disponibles pour les services de partage"
+msgid "Manage DNS Slaves"
+msgstr "Gerer les DNS slaves"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:116
 msgid "zone"
-msgstr ""
+msgstr "zone"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:116
-msgid "DNS zone this server should be declared as slave of"
-msgstr ""
+msgid "DNS zone(s) to be stored as a slave on this server"
+msgstr "Zone(s) DNS esclaves qui seront stockées sur ce serveur"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:120
 msgid "master"
@@ -592,8 +592,8 @@ msgid "This server should be slave of reverses zones as well"
 msgstr "Ce serveur doit aussi être esclave des zones inverses"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:131
-msgid "Slave zones"
-msgstr "Zones esclaves"
+msgid "DNS slaves"
+msgstr "DNS slaves"
 
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33

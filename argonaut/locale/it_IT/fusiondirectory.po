@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Paola Penati <paola.penati@opensides.be>, 2016
+# Paola Penati <paola.penati@opensides.be>, 2016-2017
 # Paola Penati <paola.penati@opensides.be>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-26 18:02+0200\n"
-"PO-Revision-Date: 2017-03-26 16:02+0000\n"
+"POT-Creation-Date: 2017-03-30 18:10+0200\n"
+"PO-Revision-Date: 2017-03-30 16:10+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -128,7 +128,7 @@ msgstr "(Re)Installa"
 
 #: addons/argonaut/class_argonautEventTypes.inc:110
 msgid "Refresh slave files (ldap2zone)"
-msgstr ""
+msgstr "Refresh di file slaves (ldap2zone)"
 
 #: addons/argonaut/class_argonautAction.inc:27
 #: addons/argonaut/class_argonautAction.inc:126
@@ -473,7 +473,7 @@ msgstr "Impostazioni DNS di Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:46
 msgid "Ldap2zone global settings"
-msgstr ""
+msgstr "Impostazioni globali Ldap2zone"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:49
 msgid "Bind directory"
@@ -509,17 +509,17 @@ msgstr "path verso il file binario di rndc"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:75
 msgid "Search base"
-msgstr ""
+msgstr "Base di ricerca"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:75
 msgid ""
 "LDAP base in which ldap2zone should search. Only usefull if you got several "
 "nodes for the same zone."
-msgstr ""
+msgstr "zona DNS il cui server deve essere dichiarato come slave di"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:81
 msgid "Ldap2zone master settings"
-msgstr ""
+msgstr "Impostazioni master di Ldap2zone"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:84
 msgid "Ignore reverse zone"
@@ -535,7 +535,7 @@ msgstr "Attiva la notifica"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:92
 msgid "Allow update"
-msgstr ""
+msgstr "Consenti aggiornamento"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:92
 msgid "Allow update (semicolon separated and ended)"
@@ -543,7 +543,7 @@ msgstr "Consenti l'aggiornamento (punto e virgola per la separazione e la chiusu
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:96
 msgid "Allow transfer"
-msgstr ""
+msgstr "Consenti trasferimento"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:96
 msgid "Allow transfer (semicolon separated and ended)"
@@ -551,48 +551,48 @@ msgstr "Consenti il trasferimento (punto e virgola per la separazione e la chius
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:100
 msgid "Check names"
-msgstr ""
+msgstr "Controllare i nomi"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:100
 msgid ""
 "Cause any host name for the zone to be checked for compliance with RFC 952 "
 "and RFC 1123 and take the defined action"
-msgstr ""
+msgstr "Causa qualsiasi nome host per la zona da controllare per la conformità con RFC 952 e RFC 1123 e prendere l'azione definita"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:107
 msgid "Ldap2zone slave settings"
-msgstr ""
+msgstr "Impostazione dello slave Ldap2zone"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:112
-msgid "Available encodings for share services"
-msgstr "Codifiche disponibili per i servizi condivisi"
+msgid "Manage DNS Slaves"
+msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:116
 msgid "zone"
-msgstr ""
+msgstr "Zona"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:116
-msgid "DNS zone this server should be declared as slave of"
+msgid "DNS zone(s) to be stored as a slave on this server"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:120
 msgid "master"
-msgstr ""
+msgstr "Master"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:120
 msgid "Master IP(s) for this zone"
-msgstr ""
+msgstr "Master IP(s) per questa zona"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:124
 msgid "reverses"
-msgstr ""
+msgstr "rovesci"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:124
 msgid "This server should be slave of reverses zones as well"
-msgstr ""
+msgstr "Questo server dovrebbe essere slave anche di zone di rovesci"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:131
-msgid "Slave zones"
+msgid "DNS slaves"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:32
