@@ -109,7 +109,7 @@ class argonautDNSConfig extends simpleService
         'attrs' => array (
           new OrderedArrayAttribute(
             new PipeSeparatedCompositeAttribute(
-              _('Available encodings for share services'),
+              _('Manage DNS Slaves'),
               'argonautLdap2zoneSlaveZones',
               array(
                 new StringAttribute(
@@ -128,7 +128,7 @@ class argonautDNSConfig extends simpleService
                 )
               ),
               '',
-              _('Slave zones')
+              _('DNS slaves')
             ),
             FALSE,
             array(),
