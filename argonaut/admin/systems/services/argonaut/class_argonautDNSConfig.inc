@@ -113,7 +113,7 @@ class argonautDNSConfig extends simpleService
               'argonautLdap2zoneSlaveZones',
               array(
                 new StringAttribute(
-                  _('zone'), _('DNS zone this server should be declared as slave of'),
+                  _('zone'), _('DNS zone(s) to be stored as a slave on this server'),
                   'Ldap2zoneSlaveZone', TRUE
                 ),
                 new StringAttribute(
