@@ -180,11 +180,9 @@ class jsonRPCClient {
       'ssl' => $this->ssl_options
     );
 
-    if (is_callable('error_clear_last')) {
-      error_clear_last();
-    }
     $context  = stream_context_create($opts);
-    if ($fp = @fopen($this->url, 'r', false, $context)) {
+    $fp = fopenWithErrorHandling($this->url, 'r', false, $context);
+    if (!is_array($fp)) {
       $response = '';
       while($row = fgets($fp)) {
         $response.= trim($row)."\n";
@@ -192,9 +190,8 @@ class jsonRPCClient {
       $this->debug && $debug.='***** Server response *****'."\n".$response.'***** End of server response *****'."\n";
       $response = json_decode($response,true);
     } else {
-      $error = error_get_last();
-      if ($error !== NULL) {
-        $errormsg = $error['message'];
+      if (!is_empty($fp)) {
+        $errormsg = implode("\n", $fp);
       } else {
         $errormsg = 'Unable to connect to '.$this->url;
       }
