@@ -97,11 +97,9 @@ class mailMethodRenaterPartage extends mailMethod
       $command .= '/'.$this->token;
     }
 
-    if (is_callable('error_clear_last')) {
-      error_clear_last();
-    }
     $context  = stream_context_create($opts);
-    if ($fp = @fopen($infos['uri'].'/'.$command, 'r', FALSE, $context)) {
+    $fp = fopenWithErrorHandling($infos['uri'].'/'.$command, 'r', FALSE, $context);
+    if (!is_array($fp)) {
       $response = '';
       while ($row = fgets($fp)) {
         $response .= trim($row)."\n";
@@ -124,10 +122,9 @@ class mailMethodRenaterPartage extends mailMethod
 
       return $response;
     } else {
-      $error = error_get_last();
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $error, '<b>MAIL: No Answer</b>');
-      if ($error !== NULL) {
-        $this->error = sprintf(_('Unable to connect to %s: %s'), $infos['uri'], $error['message']);
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $fp, '<b>MAIL: No Answer</b>');
+      if (!is_empty($fp)) {
+        $this->error = sprintf(_('Unable to connect to %s: %s'), $infos['uri'], implode("\n", $fp));
       } else {
         $this->error = sprintf(_('Unable to connect to %s'), $infos['uri']);
       }
