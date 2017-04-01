@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Benoit Mortier <benoit.mortier@opensides.be>, 2016
+# Benoit Mortier <benoit.mortier@opensides.be>, 2016-2017
 # MCMic, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-110\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-01-11 21:15+0100\n"
-"PO-Revision-Date: 2016-12-31 11:07+0000\n"
+"POT-Creation-Date: 2017-03-30 18:10+0200\n"
+"PO-Revision-Date: 2017-03-26 20:13+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -38,8 +38,8 @@ msgstr "DNS"
 
 #: addons/dashboard/class_dashBoardSystems.inc:29
 #: config/systems/class_systemsPluginConfig.inc:28
-#: admin/systems/class_systemManagement.inc:699
-#: admin/systems/class_systemManagement.inc:703
+#: admin/systems/class_systemManagement.inc:700
+#: admin/systems/class_systemManagement.inc:704
 msgid "Systems"
 msgstr "Systèmes"
 
@@ -210,7 +210,7 @@ msgstr "hérité"
 #: admin/ogroups/goto/class_termgroup.inc:187
 #: admin/systems/class_workstationGeneric.inc:284
 #: admin/systems/class_systemManagement.inc:189
-#: admin/systems/class_systemManagement.inc:213
+#: admin/systems/class_systemManagement.inc:214
 msgid "Infrastructure service"
 msgstr "Service d’infrastructure"
 
@@ -969,29 +969,38 @@ msgstr "Système %s n'a pas d'adresse mac définie, ne peut pas déclencher l'ac
 msgid "System %s is currently installing"
 msgstr "Système %s est actuellement en cours d'installation"
 
-#: admin/systems/class_systemManagement.inc:249
-#: admin/systems/class_systemManagement.inc:325
-#: admin/systems/class_systemManagement.inc:419
-#: admin/systems/class_systemManagement.inc:482
+#: admin/systems/class_systemManagement.inc:192
+msgid "Action triggered"
+msgstr "Action déclenchée"
+
+#: admin/systems/class_systemManagement.inc:192
+#, php-format
+msgid "Action called without error (result was \"%s\")"
+msgstr "Action appelée sans erreur (résultat \"%s\")"
+
+#: admin/systems/class_systemManagement.inc:250
+#: admin/systems/class_systemManagement.inc:326
+#: admin/systems/class_systemManagement.inc:420
+#: admin/systems/class_systemManagement.inc:483
 msgid "Permission"
 msgstr "Permission"
 
-#: admin/systems/class_systemManagement.inc:419
+#: admin/systems/class_systemManagement.inc:420
 #, php-format
 msgid "You are not allowed to create a snapshot for %s."
 msgstr "Vous n'êtes pas autorisé à créer un nouvel instantané pour %s."
 
-#: admin/systems/class_systemManagement.inc:482
+#: admin/systems/class_systemManagement.inc:483
 #, php-format
 msgid "You are not allowed to restore a snapshot for %s."
 msgstr "Vous n'êtes pas autorisé à restaurer un instantané de %s."
 
-#: admin/systems/class_systemManagement.inc:648
+#: admin/systems/class_systemManagement.inc:649
 #, php-format
 msgid "Inherited from %s"
 msgstr "Hérité de %s"
 
-#: admin/systems/class_systemManagement.inc:700
+#: admin/systems/class_systemManagement.inc:701
 msgid "Systems Management"
 msgstr "Gestion des systèmes"
 

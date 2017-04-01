@@ -245,6 +245,25 @@ attributetype ( 1.3.6.1.4.1.38414.2.13.8 NAME 'argonautLdap2zoneNoReverse'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.2.13.9 NAME 'argonautLdap2zoneCheckNames'
+  DESC 'Fusion Directory - Argonaut, check-names directive ( fail | warn | ignore ).'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.2.13.10 NAME 'argonautLdap2zoneSearchBase'
+  DESC 'FusionDirectory - dn of LDAP base to use for search'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.2.13.11 NAME 'argonautLdap2zoneSlaveZones'
+  DESC 'FusionDirectory - Zones names and associated masters'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
+
 attributetype ( 1.3.6.1.4.1.38414.2.14.1 NAME 'argonautFuseDefaultMode'
   DESC 'Fusion Directory - Argonaut, fuse default mode.'
   EQUALITY caseExactIA5Match
@@ -367,7 +386,9 @@ objectclass ( 1.3.6.1.4.1.38414.2.2.4 NAME 'argonautDNSConfig'
   MUST (
     argonautLdap2zoneBindDir  $ argonautLdap2zoneBindCacheDir $ argonautLdap2zoneAllowNotify $
     argonautLdap2zoneTTL      $ argonautLdap2zoneRndc )
-  MAY ( argonautLdap2zoneAllowUpdate $ argonautLdap2zoneAllowTransfer $ argonautLdap2zoneNoReverse ) )
+  MAY ( argonautLdap2zoneAllowUpdate $ argonautLdap2zoneAllowTransfer $
+    argonautLdap2zoneNoReverse $ argonautLdap2zoneCheckNames $ argonautLdap2zoneSearchBase $
+    argonautLdap2zoneSlaveZones ) )
 
 objectclass ( 1.3.6.1.4.1.38414.2.2.5 NAME 'argonautFuseConfig'
   DESC 'An argonaut config for fuse'

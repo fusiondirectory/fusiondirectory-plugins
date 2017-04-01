@@ -181,7 +181,8 @@ class jsonRPCClient {
     );
 
     $context  = stream_context_create($opts);
-    if ($fp = @fopen($this->url, 'r', false, $context)) {
+    $fp = fopenWithErrorHandling($this->url, 'r', false, $context);
+    if (!is_array($fp)) {
       $response = '';
       while($row = fgets($fp)) {
         $response.= trim($row)."\n";
@@ -189,7 +190,12 @@ class jsonRPCClient {
       $this->debug && $debug.='***** Server response *****'."\n".$response.'***** End of server response *****'."\n";
       $response = json_decode($response,true);
     } else {
-      throw new jsonRPCClient_NetworkErrorException('Unable to connect to '.$this->url);
+      if (!empty($fp)) {
+        $errormsg = implode("\n", $fp);
+      } else {
+        $errormsg = 'Unable to connect to '.$this->url;
+      }
+      throw new jsonRPCClient_NetworkErrorException($errormsg);
     }
 
     // debug output

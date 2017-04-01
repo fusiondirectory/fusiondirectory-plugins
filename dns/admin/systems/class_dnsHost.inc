@@ -160,8 +160,29 @@ class dnsHost extends simplePlugin
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
+    global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
-    $this->zonesCache = objects::ls('dnsZone');
+    /* List DNS zones we can read */
+    $this->zonesCache = objects::ls('dnsZone', NULL, NULL, '', TRUE);
+    /* Check if some values are missing */
+    $dnsZones = $this->fdDNSZoneDn;
+    foreach ($dnsZones as $dn) {
+      if (!isset($this->zonesCache[$dn])) {
+        try {
+          $zone = objects::ls('dnsZone', NULL, $dn);
+          $this->zonesCache = array_merge($zone, $this->zonesCache);
+        } catch (FusionDirectoryException $e) {
+          continue;
+        }
+      }
+    }
+    $counts = array_count_values($this->zonesCache);
+    foreach ($this->zonesCache as $dn => &$name) {
+      if ($counts[$name] > 1) {
+        $name .= ' ('.preg_replace(array('/^[^,]+,/', '/,'.preg_quote($config->current['BASE']).'$/'), '', $dn).')';
+      }
+    }
+    unset($name);
     $this->attributesAccess['fdDNSZoneDn']->attribute->setChoices(array_keys($this->zonesCache), array_values($this->zonesCache));
     $this->attributesAccess['fdDNSZoneDn']->setSubmitForm('zoneChanged');
   }
@@ -171,6 +192,14 @@ class dnsHost extends simplePlugin
     global $config;
     $ldap     = $config->get_ldap_link();
     $dnsZones = $this->fdDNSZoneDn;
+    /* Removes references to old attributes */
+    foreach (array_keys($this->attributesInfo['records']['attrs']) as $oldattr) {
+      unset($this->attributesAccess[$oldattr]);
+    }
+    foreach (array_keys($this->attributesInfo['soa']['attrs']) as $oldattr) {
+      unset($this->attributesAccess[$oldattr]);
+    }
+    /* Remove sections or fill them */
     if (empty($dnsZones)) {
       unset($this->attributesInfo['soa']);
       unset($this->attributesInfo['records']);
@@ -195,11 +224,12 @@ class dnsHost extends simplePlugin
       );
       foreach ($dnsZones as $dn) {
         if (isset($this->zonesCache[$dn])) {
-          $name = $this->zonesCache[$dn];
+          $name   = $this->zonesCache[$dn];
+          $zoneid = preg_replace('/[\/\-,.#:; =]/', '_', $dn);
         } else {
           continue;
         }
-        $attrId = 'zoneRecords'.$name;
+        $attrId = 'zoneRecords'.$zoneid;
         $this->attributesInfo['records']['attrs'][$attrId] = new DnsRecordsFilteredAttribute(
           $name, sprintf(_('The DNS records for zone "%s"'), $name),
           $attrId, $dn,
@@ -220,7 +250,7 @@ class dnsHost extends simplePlugin
               $fqdn .= ' <input type="submit" name="'.$id.'" id="'.$id.'" value="{t}Refresh zone file{/t}"/>';
             }
           }
-          $attrId = 'soaRecord'.$name;
+          $attrId = 'soaRecord'.$zoneid;
           $this->attributesInfo['soa']['attrs'][$attrId] = new DisplayAttribute(
             $name, sprintf(_('The primary server for zone "%s"'), $name),
             $attrId, FALSE,
@@ -250,7 +280,7 @@ class dnsHost extends simplePlugin
     $smarty     = get_smarty();
     $ui         = get_userinfo();
     $skip_write = $this->read_only;
-    $acl        = $ui->get_permissions($this->acl_base, 'dnsZone/'.get_class($this), 'dnsRecords', $this->read_only);
+    $acl        = $ui->get_permissions($this->acl_base, 'dnsZone/dnsZone', 'dnsRecords', $this->read_only);
     $smarty->assign('dnsRecordsACL', $acl);
     return parent::execute();
   }

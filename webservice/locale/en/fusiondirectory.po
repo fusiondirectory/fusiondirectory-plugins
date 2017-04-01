@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-12-31 11:29+0100\n"
+"POT-Creation-Date: 2017-03-30 18:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -71,4 +71,18 @@ msgstr ""
 #: html/jsonrpc.php:570
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
+msgstr ""
+
+#: html/jsonrpc.php:608 html/jsonrpc.php:617
+#, php-format
+msgid "Failed to get password method for account \"%s\""
+msgstr ""
+
+#: html/jsonrpc.php:620
+#, php-format
+msgid "Could not find account \"%s\" in LDAP"
+msgstr ""
+
+#: html/jsonrpc.php:664
+msgid "This token is invalid"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-12-31 11:29+0100\n"
+"POT-Creation-Date: 2017-03-30 18:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -37,8 +37,8 @@ msgstr ""
 
 #: addons/dashboard/class_dashBoardSystems.inc:29
 #: config/systems/class_systemsPluginConfig.inc:28
-#: admin/systems/class_systemManagement.inc:699
-#: admin/systems/class_systemManagement.inc:703
+#: admin/systems/class_systemManagement.inc:700
+#: admin/systems/class_systemManagement.inc:704
 msgid "Systems"
 msgstr ""
 
@@ -209,7 +209,7 @@ msgstr ""
 #: admin/ogroups/goto/class_termgroup.inc:187
 #: admin/systems/class_workstationGeneric.inc:284
 #: admin/systems/class_systemManagement.inc:189
-#: admin/systems/class_systemManagement.inc:213
+#: admin/systems/class_systemManagement.inc:214
 msgid "Infrastructure service"
 msgstr ""
 
@@ -968,29 +968,38 @@ msgstr ""
 msgid "System %s is currently installing"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:249
-#: admin/systems/class_systemManagement.inc:325
-#: admin/systems/class_systemManagement.inc:419
-#: admin/systems/class_systemManagement.inc:482
+#: admin/systems/class_systemManagement.inc:192
+msgid "Action triggered"
+msgstr ""
+
+#: admin/systems/class_systemManagement.inc:192
+#, php-format
+msgid "Action called without error (result was \"%s\")"
+msgstr ""
+
+#: admin/systems/class_systemManagement.inc:250
+#: admin/systems/class_systemManagement.inc:326
+#: admin/systems/class_systemManagement.inc:420
+#: admin/systems/class_systemManagement.inc:483
 msgid "Permission"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:419
+#: admin/systems/class_systemManagement.inc:420
 #, php-format
 msgid "You are not allowed to create a snapshot for %s."
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:482
+#: admin/systems/class_systemManagement.inc:483
 #, php-format
 msgid "You are not allowed to restore a snapshot for %s."
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:648
+#: admin/systems/class_systemManagement.inc:649
 #, php-format
 msgid "Inherited from %s"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:700
+#: admin/systems/class_systemManagement.inc:701
 msgid "Systems Management"
 msgstr ""
 
