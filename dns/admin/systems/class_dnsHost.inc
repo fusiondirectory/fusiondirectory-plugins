@@ -190,11 +190,13 @@ class dnsHost extends simplePlugin
     $ldap     = $config->get_ldap_link();
     $dnsZones = $this->fdDNSZoneDn;
     /* Removes references to old attributes */
-    foreach (array_keys($this->attributesInfo['records']['attrs']) as $oldattr) {
-      unset($this->attributesAccess[$oldattr]);
-    }
-    foreach (array_keys($this->attributesInfo['soa']['attrs']) as $oldattr) {
-      unset($this->attributesAccess[$oldattr]);
+    if (isset($this->attributesInfo['soa'])) {
+      foreach (array_keys($this->attributesInfo['records']['attrs']) as $oldattr) {
+        $this->removeAttribute('records', $oldattr);
+      }
+      foreach (array_keys($this->attributesInfo['soa']['attrs']) as $oldattr) {
+        $this->removeAttribute('soa', $oldattr);
+      }
     }
     /* Remove sections or fill them */
     if (empty($dnsZones)) {
@@ -227,14 +229,14 @@ class dnsHost extends simplePlugin
           continue;
         }
         $attrId = 'zoneRecords'.$zoneid;
-        $this->attributesInfo['records']['attrs'][$attrId] = new DnsRecordsFilteredAttribute(
-          $name, sprintf(_('The DNS records for zone "%s"'), $name),
-          $attrId, $dn,
-          array(), 'dnsRecords'
+        $this->addAttribute(
+          'records',
+          new DnsRecordsFilteredAttribute(
+            $name, sprintf(_('The DNS records for zone "%s"'), $name),
+            $attrId, $dn,
+            array(), 'dnsRecords'
+          )
         );
-        $this->attributesAccess[$attrId] =& $this->attributesInfo['records']['attrs'][$attrId];
-        $this->attributesAccess[$attrId]->setParent($this);
-        unset($this->$attrId);
 
         /* Fetch SOA record */
         $ldap->cat($dn);
@@ -248,15 +250,15 @@ class dnsHost extends simplePlugin
             }
           }
           $attrId = 'soaRecord'.$zoneid;
-          $this->attributesInfo['soa']['attrs'][$attrId] = new DisplayAttribute(
-            $name, sprintf(_('The primary server for zone "%s"'), $name),
-            $attrId, FALSE,
-            $fqdn
+          $this->addAttribute(
+            'soa',
+            new DisplayAttribute(
+              $name, sprintf(_('The primary server for zone "%s"'), $name),
+              $attrId, FALSE,
+              $fqdn
+            )
           );
           $this->attributesInfo['soa']['attrs'][$attrId]->setAllowHTML(TRUE);
-          $this->attributesAccess[$attrId] =& $this->attributesInfo['soa']['attrs'][$attrId];
-          $this->attributesAccess[$attrId]->setParent($this);
-          unset($this->$attrId);
         }
       }
     }
