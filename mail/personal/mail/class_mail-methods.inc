@@ -768,5 +768,10 @@ class mailMethod
     }
     return $tmp;
   }
+
+  public function additionalInformations()
+  {
+    return array();
+  }
 }
 ?>

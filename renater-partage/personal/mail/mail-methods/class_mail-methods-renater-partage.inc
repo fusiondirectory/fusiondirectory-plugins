@@ -434,6 +434,17 @@ class mailMethodRenaterPartage extends mailMethod
     return parent::setQuota($number);
   }
 
+  public function additionalInformations()
+  {
+    if ($this->cacheAccount()) {
+      return array(
+        _('Last login')     => (isset($this->cachedAccount['account']['zimbraLastLogonTimestamp']) ? $this->cachedAccount['account']['zimbraLastLogonTimestamp'] : _('Never')),
+        _('Account status') => (isset($this->cachedAccount['account']['zimbraAccountStatus']) ? $this->cachedAccount['account']['zimbraAccountStatus'] : _('Unknown')),
+      );
+    }
+    return array();
+  }
+
   static public function get_server_list()
   {
     global $config;

@@ -62,8 +62,10 @@ class MailQuotaAttribute extends IntAttribute
 
 class mailAccount extends simplePlugin
 {
-  var $displayHeader    = TRUE;
-  var $objectclasses    = array('gosaMailAccount');
+  var $displayHeader  = TRUE;
+  var $objectclasses  = array('gosaMailAccount');
+
+  private $mainSectionAttrs = array();
 
   static function plInfo()
   {
@@ -179,6 +181,8 @@ class mailAccount extends simplePlugin
     global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
 
+    $this->mainSectionAttrs = array_keys($this->attributesInfo['main']['attrs']);
+
     $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
     $this->attributesAccess['gosaMailServer']->setSubmitForm('mailServerChanged');
     $this->mailServerChanged();
@@ -234,6 +238,22 @@ class mailAccount extends simplePlugin
       if ($this->mailMethod->connect() && $this->mailMethod->account_exists()) {
         /* Read quota */
         $this->attributesAccess['gosaMailQuota']->setMailMethod($this->mailMethod);
+        foreach (array_keys($this->attributesInfo['main']['attrs']) as $oldattr) {
+          if (!in_array($oldattr, $this->mainSectionAttrs)) {
+            $this->removeAttribute('main', $oldattr);
+          }
+        }
+        $addInfos = $this->mailMethod->additionalInformations();
+        foreach ($addInfos as $label => $info) {
+          $this->addAttribute(
+            'main',
+            new DisplayAttribute(
+              $label, $label,
+              $label, FALSE,
+              $info
+            )
+          );
+        }
       } elseif (!$this->mailMethod->is_connected()) {
         msg_dialog::display(_('Mail error'), sprintf(_('Mail method cannot connect: %s'),
               $this->mailMethod->get_error()), ERROR_DIALOG);
