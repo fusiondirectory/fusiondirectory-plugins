@@ -436,8 +436,14 @@ class mailMethodRenaterPartage extends mailMethod
   public function additionalInformations()
   {
     if ($this->cacheAccount()) {
+      $lastlogin = _('Never');
+      if (isset($this->cachedAccount['account']['zimbraLastLogonTimestamp'])) {
+        $date = LdapGeneralizedTime::fromString($this->cachedAccount['account']['zimbraLastLogonTimestamp']);
+        $date->setTimezone(timezone::getDefaultTimeZone());
+        $lastlogin = $date->format('Y-m-d H:i:s');
+      }
       return array(
-        _('Last login')     => (isset($this->cachedAccount['account']['zimbraLastLogonTimestamp']) ? $this->cachedAccount['account']['zimbraLastLogonTimestamp'] : _('Never')),
+        _('Last login')     => $lastlogin,
         _('Account status') => (isset($this->cachedAccount['account']['zimbraAccountStatus']) ? $this->cachedAccount['account']['zimbraAccountStatus'] : _('Unknown')),
       );
     }
