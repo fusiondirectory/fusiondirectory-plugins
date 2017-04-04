@@ -34,6 +34,7 @@ class opsiClient extends simplePlugin
       'plDescription' => _('Edit OPSI client settings'),
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('workstation', 'ogroup-dynamic'),
+      'plDepends'     => array('sambaSystemTab'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
