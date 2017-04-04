@@ -104,9 +104,8 @@ class mailMethodRenaterPartage extends mailMethod
       while ($row = fgets($fp)) {
         $response .= trim($row)."\n";
       }
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, htmlentities($response, ENT_COMPAT, 'UTF-8'),
-        '<b>MAIL: Answer</b>');
       $response = xml::xml2array($response, FALSE);
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $response, '<b>MAIL: Answer</b>');
 
       if (!isset($response['Response']['status'])) {
         $this->error = _('Partage API answer malformated');
