@@ -22,8 +22,6 @@ class phoneGeneric extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $netConfigDNS;
-
   var $objectclasses = array('fdPhone', 'ieee802Device');
 
   var $inheritance = array('gosaGroupOfNames' => 'member');

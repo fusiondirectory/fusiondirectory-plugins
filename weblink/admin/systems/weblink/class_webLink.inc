@@ -73,19 +73,28 @@ class webLink extends simplePlugin
 
   function computeLink()
   {
+    global $config;
     if ($this->member_of_group) {
       $protocol = $this->group_attrs['fdWebLinkProtocol'][0];
     } else {
       $protocol = $this->fdWebLinkProtocol;
     }
-    $basetab = $this->parent->getBaseObject();
-    if ($basetab->netConfigDNS->DNS_is_account) {
-      $zone = strrchr($basetab->netConfigDNS->dnsEntry['zoneName'], '/');
-      $host = $basetab->cn.'.'.preg_replace(array('/^\//', '/.$/'), '', $zone);
-    } else {
-      $host = $basetab->netConfigDNS->ipHostNumber;
+    $basetab  = $this->parent->getBaseObject();
+    $hosts    = $basetab->ipHostNumber;
+    if (!is_array($hosts)) {
+      $hosts = array($hosts);
     }
-    return $protocol.'://'.$host;
+    if (isset($this->parent->by_object['dnsHost']) && ($this->parent->by_object['dnsHost']->is_account)) {
+      $zones  = $this->parent->by_object['dnsHost']->fdDNSZoneDn;
+      $ldap   = $config->get_ldap_link();
+      foreach ($zones as $zoneDn) {
+        $ldap->cat($zoneDn);
+        if ($attrs = $ldap->fetch()) {
+          $hosts[] = $basetab->cn.'.'.$attrs['zoneName'][0];
+        }
+      }
+    }
+    return $protocol.'://'.end($hosts);
   }
 }
 

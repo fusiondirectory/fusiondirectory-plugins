@@ -90,30 +90,32 @@ class systemImport extends simplePlugin
 
       /* Get existing DHCP servers */
       if (empty($dhcps)) {
-        $dhcpParentNodes = $baseObject->netConfigDNS->dhcpParentNodes;
+        $dhcpParentNodes = dhcpSystem::getDhcpParentNodes();
         $ldap = $config->get_ldap_link();
         foreach ($dhcpParentNodes as $dn => $value) {
           $ldap->cat($dn);
           if ($attrs = $ldap->fetch()) {
             if (isset($attrs['dhcpNetMask'])) {
-              $dhcps[$dn] = array($attrs['cn'][0],normalize_netmask($attrs['dhcpNetMask'][0]));
+              $dhcps[$dn] = array($attrs['cn'][0], normalize_netmask($attrs['dhcpNetMask'][0]));
             }
           }
         }
       }
       /* Activate DHCP if we find a matching server */
       if (!empty($baseObject->ipHostNumber)) {
-        $baseObject->netConfigDNS->dhcp_is_Account = FALSE;
         foreach ($dhcps as $dn => $infos) {
           list($ip, $mask) = $infos;
-          if (tests::is_in_network($ip, $mask, $baseObject->ipHostNumber)) {
-            $baseObject->netConfigDNS->dhcp_is_Account  = TRUE;
-            $baseObject->netConfigDNS->dhcpParentNode   = $dn;
-            break;
+          foreach ($baseObject->ipHostNumber as $ipHostNumber) {
+            if (tests::is_in_network($ip, $mask, $ipHostNumber)) {
+              $tabObject->by_object['dhcpSystem']->attributesAccess['dhcpHosts']->addPostValue(
+                array($dn, $baseObject->macAddress, $ipHostNumber, '')
+              );
+              $tabObject->by_object['dhcpSystem']->attributesAccess['dhcpHosts']->applyPostValue();
+            }
           }
         }
-        if ($baseObject->netConfigDNS->dhcp_is_Account == FALSE) {
-          $messages[$host['id']] = array(sprintf(_('No DHCP server found for ip %s'), $baseObject->ipHostNumber));
+        if (empty($tabObject->by_object['dhcpSystem']->dhcpHosts)) {
+          $messages[$host['id']] = array(sprintf(_('No DHCP server found for IPs %s'), implode(',', $baseObject->ipHostNumber)));
           continue;
         }
       }

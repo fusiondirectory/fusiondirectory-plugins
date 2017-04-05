@@ -145,7 +145,7 @@ class opsiClient extends simplePlugin
         }
       }
     } else {
-      $macAddresses = array($this->parent->getBaseObject()->netConfigDNS->macAddress);
+      $macAddresses = array($this->parent->getBaseObject()->macAddress);
     }
     if (!empty($macAddresses) && $s_daemon->is_available()) {
       $s_daemon->append_call('OPSI.update_or_insert', $macAddresses, array());
@@ -186,7 +186,7 @@ class opsiClient extends simplePlugin
         }
       }
     } elseif (!$this->member_of_group) {
-      $macAddresses = array($this->parent->getBaseObject()->netConfigDNS->macAddress);
+      $macAddresses = array($this->parent->getBaseObject()->macAddress);
     }
 
     if (!empty($macAddresses)) {
