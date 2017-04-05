@@ -35,6 +35,7 @@ class opsiClient extends simplePlugin
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('workstation', 'ogroup-dynamic'),
       'plDepends'     => array('sambaSystemTab'),
+      'plConflicts'   => array('debconfStartup','faiStartup'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
