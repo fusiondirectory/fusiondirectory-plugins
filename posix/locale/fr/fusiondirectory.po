@@ -1,0 +1,306 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2017-02-02 07:50+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
+"Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: personal/posix/class_posixAccount.inc:86
+#: personal/posix/class_posixAccount.inc:115
+msgid "Unix"
+msgstr "Unix"
+
+#: personal/posix/class_posixAccount.inc:87
+msgid "Edit users POSIX settings"
+msgstr "Editer les paramètres Unix"
+
+#: personal/posix/class_posixAccount.inc:119
+msgid "Home directory"
+msgstr "Répertoire Home"
+
+#: personal/posix/class_posixAccount.inc:119
+msgid "The path to the home directory of this user"
+msgstr "Chemin du répertoire \"home\" de cet utilisateur"
+
+#: personal/posix/class_posixAccount.inc:124
+msgid "Shell"
+msgstr "Shell"
+
+#: personal/posix/class_posixAccount.inc:124
+msgid "Which shell should be used when this user log in"
+msgstr "Shell à utiliser lors de la connexion de l’utilisateur"
+
+#: personal/posix/class_posixAccount.inc:126
+msgid "unconfigured"
+msgstr "non configuré"
+
+#: personal/posix/class_posixAccount.inc:130
+msgid "Primary group"
+msgstr "Groupe principal"
+
+#: personal/posix/class_posixAccount.inc:130
+msgid "Primary group for this user"
+msgstr "Groupe principal de cet utilisateur"
+
+#: personal/posix/class_posixAccount.inc:134
+msgid "Status"
+msgstr "Statut"
+
+#: personal/posix/class_posixAccount.inc:134
+msgid "Status of this user unix account"
+msgstr "Status du compte unix de l'utilisateur"
+
+#: personal/posix/class_posixAccount.inc:138
+msgid "Force user/group id"
+msgstr "Forcer l’id d’utilisateur/groupe"
+
+#: personal/posix/class_posixAccount.inc:138
+msgid "Force user id and group id values for this user"
+msgstr ""
+"Force les valeurs des ids d’utilisateur et de groupe pour cet utilisateur."
+
+#: personal/posix/class_posixAccount.inc:142
+msgid "User id"
+msgstr "Id d’utilisateur"
+
+#: personal/posix/class_posixAccount.inc:142
+msgid "User id value for this user"
+msgstr "Id d’utilisateur à utiliser pour cet utilisateur"
+
+#: personal/posix/class_posixAccount.inc:147
+msgid "Group id"
+msgstr "Id de groupe"
+
+#: personal/posix/class_posixAccount.inc:147
+msgid "Group id value for this user"
+msgstr "Id de groupe à utiliser pour cet utilisateur"
+
+#: personal/posix/class_posixAccount.inc:154
+#: personal/posix/class_posixAccount.inc:157
+msgid "Group membership"
+msgstr "Appartenance au groupe"
+
+#: personal/posix/class_posixAccount.inc:161
+msgid "Account"
+msgstr "Compte"
+
+#: personal/posix/class_posixAccount.inc:165
+msgid "User must change password on first login"
+msgstr ""
+"L'utilisateur doit changer son mot de passe lors de sa première connexion"
+
+#: personal/posix/class_posixAccount.inc:165
+msgid ""
+"User must change password on first login (needs a value for Delay before "
+"forcing password change)"
+msgstr ""
+"L'utilisateur doit changer son mot de passe lors du premier connexion "
+"(laisser vide pour désactiver la fonctionnalité)"
+
+#: personal/posix/class_posixAccount.inc:169
+msgid "Minimum delay between password changes (days)"
+msgstr "Délai minimum entre les changements de mot de passe (jours)"
+
+#: personal/posix/class_posixAccount.inc:169
+msgid ""
+"The user won't be able to change his password before this number of days "
+"(leave empty to disable)"
+msgstr ""
+"L'utilisateur ne sera pas habilité à changer son mot de passe avant ce "
+"nombre de jour (laisser vide pour désactiver)"
+
+#: personal/posix/class_posixAccount.inc:174
+msgid "Delay before forcing password change (days)"
+msgstr "Délai avant de forcer le changement de mot de passe (en jours)"
+
+#: personal/posix/class_posixAccount.inc:174
+msgid ""
+"The user will be forced to change his password after this number of days "
+"(leave empty to disable)"
+msgstr ""
+"L'utilisateur sera forcé de changer son mot de passe après ce nombre de jour"
+" (laisser vide pour désactiver)"
+
+#: personal/posix/class_posixAccount.inc:179
+msgid "Password expiration date"
+msgstr "Date d'expiration du mot de passe"
+
+#: personal/posix/class_posixAccount.inc:179
+msgid ""
+"Date after which this user password will expire (leave empty to disable)"
+msgstr ""
+"Date après laquelle le mot de passe de l'utilisateur va expiré (laisser vide"
+" pour désactiver)"
+
+#: personal/posix/class_posixAccount.inc:184
+msgid "Delay of inactivity before disabling user (days)"
+msgstr "Délai d'inactivité avant de désactiver l'utilisateur (en jours)"
+
+#: personal/posix/class_posixAccount.inc:184
+msgid ""
+"Maximum delay of inactivity after password expiration before the user is "
+"disabled (leave empty to disable)"
+msgstr ""
+"Délai maximum d'inactivité après l'expiration du mot de passe avant que "
+"l'utilisateur soit désactivé (laisser vide pour désactiver)"
+
+#: personal/posix/class_posixAccount.inc:189
+msgid "Delay for user warning before password expiry (days)"
+msgstr ""
+"Délai avant d'avertir l'utilisateur de l'expiration de son mot de passe (en "
+"jours)"
+
+#: personal/posix/class_posixAccount.inc:189
+msgid ""
+"The user will be warned this number of days before his password expiration "
+"(leave empty to disable)"
+msgstr ""
+"L'utilisateur sera averti de ce nombre de jour restant avant l'expiration de"
+" ce mot de passe (laisser vide pour désactiver)"
+
+#: personal/posix/class_posixAccount.inc:201
+#: admin/groups/posix/class_posixGroup.inc:91
+msgid "System trust"
+msgstr "Système de Confiance"
+
+#: personal/posix/class_posixAccount.inc:205
+#: admin/groups/posix/class_posixGroup.inc:95
+msgid "Trust mode"
+msgstr "Mode de confiance"
+
+#: personal/posix/class_posixAccount.inc:205
+#: admin/groups/posix/class_posixGroup.inc:95
+msgid "Type of authorization for those hosts"
+msgstr "Type d'autorisation pour ces hôtes"
+
+#: personal/posix/class_posixAccount.inc:209
+#: personal/posix/class_posixAccount.inc:231
+#: admin/groups/posix/class_posixGroup.inc:99
+msgid "disabled"
+msgstr "désactivé"
+
+#: personal/posix/class_posixAccount.inc:209
+#: personal/posix/class_posixAccount.inc:231
+#: admin/groups/posix/class_posixGroup.inc:99
+msgid "full access"
+msgstr "accès complet"
+
+#: personal/posix/class_posixAccount.inc:209
+#: admin/groups/posix/class_posixGroup.inc:99
+msgid "allow access to these hosts"
+msgstr "permettre l'accès a ces hôtes"
+
+#: personal/posix/class_posixAccount.inc:212
+msgid "Only allow this user to connect to this list of hosts"
+msgstr "Autoriser seulement cet utilisateur à se connecter sur cet hôte"
+
+#: personal/posix/class_posixAccount.inc:303
+msgid "automatic"
+msgstr "automatique"
+
+#: personal/posix/class_posixAccount.inc:322
+msgid "expired"
+msgstr "expire"
+
+#: personal/posix/class_posixAccount.inc:324
+msgid "grace time active"
+msgstr "temps de grâce activé"
+
+#: personal/posix/class_posixAccount.inc:327
+#: personal/posix/class_posixAccount.inc:329
+#: personal/posix/class_posixAccount.inc:331
+msgid "active"
+msgstr "actif"
+
+#: personal/posix/class_posixAccount.inc:327
+msgid "password expired"
+msgstr "mot de passe expiré"
+
+#: personal/posix/class_posixAccount.inc:329
+msgid "password not changeable"
+msgstr "mot de passe non modifiable"
+
+#: personal/posix/class_posixAccount.inc:424
+msgid "UID"
+msgstr "UID"
+
+#: personal/posix/class_posixAccount.inc:427
+#: admin/groups/posix/class_posixGroup.inc:74
+#: admin/groups/posix/class_posixGroup.inc:150
+msgid "GID"
+msgstr "GID"
+
+#: personal/posix/class_posixAccount.inc:531
+#, php-format
+msgid "Group of user %s"
+msgstr "Groupe de l'utilisateur %s"
+
+#: admin/groups/posix/class_posixGroup.inc:34
+msgid "Group"
+msgstr "Groupes"
+
+#: admin/groups/posix/class_posixGroup.inc:35
+msgid "POSIX group information"
+msgstr "Information du groupe POSIX"
+
+#: admin/groups/posix/class_posixGroup.inc:38
+msgid "POSIX group"
+msgstr "Groupe POSIX"
+
+#: admin/groups/posix/class_posixGroup.inc:39
+msgid "POSIX user group"
+msgstr "Groupe d’utilisateurs POSIX"
+
+#: admin/groups/posix/class_posixGroup.inc:57
+msgid "Properties"
+msgstr "Propriétés"
+
+#: admin/groups/posix/class_posixGroup.inc:61
+msgid "Name"
+msgstr "Nom"
+
+#: admin/groups/posix/class_posixGroup.inc:61
+msgid "Name of this group"
+msgstr "Nom du groupe"
+
+#: admin/groups/posix/class_posixGroup.inc:66
+msgid "Description"
+msgstr "Description"
+
+#: admin/groups/posix/class_posixGroup.inc:66
+msgid "Short description of this group"
+msgstr "Description courte pour ce groupe"
+
+#: admin/groups/posix/class_posixGroup.inc:70
+msgid "Force GID"
+msgstr "Forcer le GID"
+
+#: admin/groups/posix/class_posixGroup.inc:70
+msgid "Force GID value for this group"
+msgstr "Forcer la valeur du GID pour ce groupe"
+
+#: admin/groups/posix/class_posixGroup.inc:74
+msgid "GID value for this group"
+msgstr "GID de ce groupe"
+
+#: admin/groups/posix/class_posixGroup.inc:81
+#: admin/groups/posix/class_posixGroup.inc:84
+msgid "Group members"
+msgstr "Membre du groupe"
+
+#: admin/groups/posix/class_posixGroup.inc:102
+msgid "Only allow this group to connect to this list of hosts"
+msgstr "Autoriser seulement ce groupe à se connecter sur ces listes d'hôtes"

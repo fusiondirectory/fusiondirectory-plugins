@@ -1,0 +1,290 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2017-02-02 07:50+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
+"Language-Team: Chinese (https://www.transifex.com/fusiondirectory/teams/12202/zh/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: personal/posix/class_posixAccount.inc:86
+#: personal/posix/class_posixAccount.inc:115
+msgid "Unix"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:87
+msgid "Edit users POSIX settings"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:119
+msgid "Home directory"
+msgstr "用户主目录"
+
+#: personal/posix/class_posixAccount.inc:119
+msgid "The path to the home directory of this user"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:124
+msgid "Shell"
+msgstr "Shell"
+
+#: personal/posix/class_posixAccount.inc:124
+msgid "Which shell should be used when this user log in"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:126
+msgid "unconfigured"
+msgstr "未配置"
+
+#: personal/posix/class_posixAccount.inc:130
+msgid "Primary group"
+msgstr "主要用户组"
+
+#: personal/posix/class_posixAccount.inc:130
+msgid "Primary group for this user"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:134
+msgid "Status"
+msgstr "状态"
+
+#: personal/posix/class_posixAccount.inc:134
+msgid "Status of this user unix account"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:138
+msgid "Force user/group id"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:138
+msgid "Force user id and group id values for this user"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:142
+msgid "User id"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:142
+msgid "User id value for this user"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:147
+msgid "Group id"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:147
+msgid "Group id value for this user"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:154
+#: personal/posix/class_posixAccount.inc:157
+msgid "Group membership"
+msgstr "组成员身份"
+
+#: personal/posix/class_posixAccount.inc:161
+msgid "Account"
+msgstr "账户"
+
+#: personal/posix/class_posixAccount.inc:165
+msgid "User must change password on first login"
+msgstr "用户必须在第一次登录修改口令"
+
+#: personal/posix/class_posixAccount.inc:165
+msgid ""
+"User must change password on first login (needs a value for Delay before "
+"forcing password change)"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:169
+msgid "Minimum delay between password changes (days)"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:169
+msgid ""
+"The user won't be able to change his password before this number of days "
+"(leave empty to disable)"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:174
+msgid "Delay before forcing password change (days)"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:174
+msgid ""
+"The user will be forced to change his password after this number of days "
+"(leave empty to disable)"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:179
+msgid "Password expiration date"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:179
+msgid ""
+"Date after which this user password will expire (leave empty to disable)"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:184
+msgid "Delay of inactivity before disabling user (days)"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:184
+msgid ""
+"Maximum delay of inactivity after password expiration before the user is "
+"disabled (leave empty to disable)"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:189
+msgid "Delay for user warning before password expiry (days)"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:189
+msgid ""
+"The user will be warned this number of days before his password expiration "
+"(leave empty to disable)"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:201
+#: admin/groups/posix/class_posixGroup.inc:91
+msgid "System trust"
+msgstr "信赖的系统"
+
+#: personal/posix/class_posixAccount.inc:205
+#: admin/groups/posix/class_posixGroup.inc:95
+msgid "Trust mode"
+msgstr "信赖模式"
+
+#: personal/posix/class_posixAccount.inc:205
+#: admin/groups/posix/class_posixGroup.inc:95
+msgid "Type of authorization for those hosts"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:209
+#: personal/posix/class_posixAccount.inc:231
+#: admin/groups/posix/class_posixGroup.inc:99
+msgid "disabled"
+msgstr "禁用"
+
+#: personal/posix/class_posixAccount.inc:209
+#: personal/posix/class_posixAccount.inc:231
+#: admin/groups/posix/class_posixGroup.inc:99
+msgid "full access"
+msgstr "完全访问权限"
+
+#: personal/posix/class_posixAccount.inc:209
+#: admin/groups/posix/class_posixGroup.inc:99
+msgid "allow access to these hosts"
+msgstr "允许访问这些主机"
+
+#: personal/posix/class_posixAccount.inc:212
+msgid "Only allow this user to connect to this list of hosts"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:303
+msgid "automatic"
+msgstr "自动"
+
+#: personal/posix/class_posixAccount.inc:322
+msgid "expired"
+msgstr "过期"
+
+#: personal/posix/class_posixAccount.inc:324
+msgid "grace time active"
+msgstr "时间限制激活"
+
+#: personal/posix/class_posixAccount.inc:327
+#: personal/posix/class_posixAccount.inc:329
+#: personal/posix/class_posixAccount.inc:331
+msgid "active"
+msgstr "活动"
+
+#: personal/posix/class_posixAccount.inc:327
+msgid "password expired"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:329
+msgid "password not changeable"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:424
+msgid "UID"
+msgstr "UID"
+
+#: personal/posix/class_posixAccount.inc:427
+#: admin/groups/posix/class_posixGroup.inc:74
+#: admin/groups/posix/class_posixGroup.inc:150
+msgid "GID"
+msgstr "GID"
+
+#: personal/posix/class_posixAccount.inc:531
+#, php-format
+msgid "Group of user %s"
+msgstr ""
+
+#: admin/groups/posix/class_posixGroup.inc:34
+msgid "Group"
+msgstr "组"
+
+#: admin/groups/posix/class_posixGroup.inc:35
+msgid "POSIX group information"
+msgstr ""
+
+#: admin/groups/posix/class_posixGroup.inc:38
+msgid "POSIX group"
+msgstr ""
+
+#: admin/groups/posix/class_posixGroup.inc:39
+msgid "POSIX user group"
+msgstr ""
+
+#: admin/groups/posix/class_posixGroup.inc:57
+msgid "Properties"
+msgstr "属性"
+
+#: admin/groups/posix/class_posixGroup.inc:61
+msgid "Name"
+msgstr "名称"
+
+#: admin/groups/posix/class_posixGroup.inc:61
+msgid "Name of this group"
+msgstr ""
+
+#: admin/groups/posix/class_posixGroup.inc:66
+msgid "Description"
+msgstr "描述"
+
+#: admin/groups/posix/class_posixGroup.inc:66
+msgid "Short description of this group"
+msgstr ""
+
+#: admin/groups/posix/class_posixGroup.inc:70
+msgid "Force GID"
+msgstr "强制 GID"
+
+#: admin/groups/posix/class_posixGroup.inc:70
+msgid "Force GID value for this group"
+msgstr ""
+
+#: admin/groups/posix/class_posixGroup.inc:74
+msgid "GID value for this group"
+msgstr ""
+
+#: admin/groups/posix/class_posixGroup.inc:81
+#: admin/groups/posix/class_posixGroup.inc:84
+msgid "Group members"
+msgstr "组成员"
+
+#: admin/groups/posix/class_posixGroup.inc:102
+msgid "Only allow this group to connect to this list of hosts"
+msgstr ""

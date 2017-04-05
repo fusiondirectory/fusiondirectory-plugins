@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-01-25 18:48+0100\n"
+"POT-Creation-Date: 2017-04-05 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -192,7 +192,7 @@ msgstr ""
 #: admin/systems/class_serverGeneric.inc:39
 #: admin/systems/class_serverGeneric.inc:44
 #: admin/systems/class_serverGeneric.inc:45
-#: admin/systems/class_systemImport.inc:168
+#: admin/systems/class_systemImport.inc:170
 msgid "Server"
 msgstr ""
 
@@ -217,7 +217,7 @@ msgstr ""
 #: admin/systems/class_mobilePhoneGeneric.inc:64
 #: admin/systems/class_workstationGeneric.inc:68
 #: admin/systems/services/shares/class_serviceShare.inc:55
-#: admin/systems/system-list.xml:55 admin/systems/class_phoneGeneric.inc:61
+#: admin/systems/system-list.xml:55 admin/systems/class_phoneGeneric.inc:59
 #: admin/systems/class_printGeneric.inc:66
 msgid "Description"
 msgstr ""
@@ -274,7 +274,7 @@ msgstr ""
 #: admin/systems/class_componentGeneric.inc:55
 #: admin/systems/class_mobilePhoneGeneric.inc:56
 #: admin/systems/class_workstationGeneric.inc:59
-#: admin/systems/class_phoneGeneric.inc:54
+#: admin/systems/class_phoneGeneric.inc:52
 #: admin/systems/class_printGeneric.inc:58
 msgid "Properties"
 msgstr ""
@@ -283,7 +283,7 @@ msgstr ""
 #: admin/systems/class_mobilePhoneGeneric.inc:60
 #: admin/systems/class_workstationGeneric.inc:63
 #: admin/systems/services/shares/class_serviceShare.inc:51
-#: admin/systems/system-list.xml:31 admin/systems/class_phoneGeneric.inc:57
+#: admin/systems/system-list.xml:31 admin/systems/class_phoneGeneric.inc:55
 #: admin/systems/class_printGeneric.inc:62
 msgid "Name"
 msgstr ""
@@ -299,7 +299,7 @@ msgstr ""
 #: admin/systems/class_componentGeneric.inc:69
 #: admin/systems/class_mobilePhoneGeneric.inc:102
 #: admin/systems/class_workstationGeneric.inc:90
-#: admin/systems/class_phoneGeneric.inc:81
+#: admin/systems/class_phoneGeneric.inc:79
 #: admin/systems/class_printGeneric.inc:103
 msgid "Network settings"
 msgstr ""
@@ -307,7 +307,7 @@ msgstr ""
 #: admin/systems/class_componentGeneric.inc:73
 #: admin/systems/class_mobilePhoneGeneric.inc:106
 #: admin/systems/class_workstationGeneric.inc:95
-#: admin/systems/class_phoneGeneric.inc:86
+#: admin/systems/class_phoneGeneric.inc:84
 #: admin/systems/class_printGeneric.inc:108
 msgid "IP address"
 msgstr ""
@@ -321,7 +321,7 @@ msgstr ""
 #: admin/systems/class_componentGeneric.inc:77
 #: admin/systems/class_mobilePhoneGeneric.inc:110
 #: admin/systems/class_workstationGeneric.inc:100
-#: admin/systems/class_phoneGeneric.inc:91
+#: admin/systems/class_phoneGeneric.inc:89
 #: admin/systems/class_printGeneric.inc:113
 msgid "Mac address"
 msgstr ""
@@ -329,7 +329,7 @@ msgstr ""
 #: admin/systems/class_componentGeneric.inc:77
 #: admin/systems/class_mobilePhoneGeneric.inc:110
 #: admin/systems/class_workstationGeneric.inc:100
-#: admin/systems/class_phoneGeneric.inc:91
+#: admin/systems/class_phoneGeneric.inc:89
 #: admin/systems/class_printGeneric.inc:113
 msgid "Mac address of this system"
 msgstr ""
@@ -353,14 +353,14 @@ msgid "A short description of the mobile phone"
 msgstr ""
 
 #: admin/systems/class_mobilePhoneGeneric.inc:70
-#: admin/systems/class_phoneGeneric.inc:34
-#: admin/systems/class_phoneGeneric.inc:38
-#: admin/systems/class_phoneGeneric.inc:68
+#: admin/systems/class_phoneGeneric.inc:32
+#: admin/systems/class_phoneGeneric.inc:36
+#: admin/systems/class_phoneGeneric.inc:66
 msgid "Phone"
 msgstr ""
 
 #: admin/systems/class_mobilePhoneGeneric.inc:73
-#: admin/systems/class_phoneGeneric.inc:71
+#: admin/systems/class_phoneGeneric.inc:69
 msgid "Serial Number"
 msgstr ""
 
@@ -389,7 +389,7 @@ msgid "SimCard"
 msgstr ""
 
 #: admin/systems/class_mobilePhoneGeneric.inc:91
-#: admin/systems/class_phoneGeneric.inc:75
+#: admin/systems/class_phoneGeneric.inc:73
 msgid "Telephone Number"
 msgstr ""
 
@@ -561,7 +561,7 @@ msgid "This will prevent the %s from being reinstalled"
 msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:95
-#: admin/systems/class_phoneGeneric.inc:86
+#: admin/systems/class_phoneGeneric.inc:84
 msgid "IP addresses this system uses (v4 or v6)"
 msgstr ""
 
@@ -570,21 +570,21 @@ msgstr ""
 msgid "Could not parse %s"
 msgstr ""
 
-#: admin/systems/class_systemImport.inc:116
+#: admin/systems/class_systemImport.inc:118
 #, php-format
-msgid "No DHCP server found for ip %s"
+msgid "No DHCP server found for IPs %s"
 msgstr ""
 
-#: admin/systems/class_systemImport.inc:130
+#: admin/systems/class_systemImport.inc:132
 #, php-format
 msgid "No DNS server found for zone %s"
 msgstr ""
 
-#: admin/systems/class_systemImport.inc:164
+#: admin/systems/class_systemImport.inc:166
 msgid "Import"
 msgstr ""
 
-#: admin/systems/class_systemImport.inc:168
+#: admin/systems/class_systemImport.inc:170
 msgid "The server you wish to import hosts from"
 msgstr ""
 
@@ -809,27 +809,27 @@ msgstr ""
 msgid "Remove system"
 msgstr ""
 
-#: admin/systems/class_phoneGeneric.inc:35
+#: admin/systems/class_phoneGeneric.inc:33
 msgid "Phone information"
 msgstr ""
 
-#: admin/systems/class_phoneGeneric.inc:39
+#: admin/systems/class_phoneGeneric.inc:37
 msgid "Phone hardware"
 msgstr ""
 
-#: admin/systems/class_phoneGeneric.inc:57
+#: admin/systems/class_phoneGeneric.inc:55
 msgid "The name of the phone"
 msgstr ""
 
-#: admin/systems/class_phoneGeneric.inc:61
+#: admin/systems/class_phoneGeneric.inc:59
 msgid "A short description of the phone"
 msgstr ""
 
-#: admin/systems/class_phoneGeneric.inc:71
+#: admin/systems/class_phoneGeneric.inc:69
 msgid "The serial number of the phone"
 msgstr ""
 
-#: admin/systems/class_phoneGeneric.inc:75
+#: admin/systems/class_phoneGeneric.inc:73
 msgid "The telephone number of the phone"
 msgstr ""
 
@@ -853,11 +853,20 @@ msgid "System %s is currently installing"
 msgstr ""
 
 #: admin/systems/class_systemManagement.inc:168
-#: admin/systems/class_systemManagement.inc:194
+#: admin/systems/class_systemManagement.inc:195
 msgid "Infrastructure service"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:262
+#: admin/systems/class_systemManagement.inc:171
+msgid "Action triggered"
+msgstr ""
+
+#: admin/systems/class_systemManagement.inc:171
+#, php-format
+msgid "Action called without error (result was \"%s\")"
+msgstr ""
+
+#: admin/systems/class_systemManagement.inc:263
 #, php-format
 msgid "Inherited from %s"
 msgstr ""
