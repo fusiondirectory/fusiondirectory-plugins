@@ -49,7 +49,7 @@ class webLink extends simplePlugin
             array('https', 'http')
           ),
           new DisplayAttribute (
-            _('Link'), _('Web link to this computer'),
+            _('Links'), _('Web links to this computer'),
             'fdWebLink', FALSE
           )
         )
@@ -66,12 +66,18 @@ class webLink extends simplePlugin
 
   function renderAttributes($readOnly = FALSE)
   {
-    $link = $this->computeLink();
-    $this->fdWebLink = '<a target="_blank" href="'.$link.'">'.$link.'</a>';
+    $links = $this->computeLinks();
+    $this->fdWebLink = implode('<br/>'."\n", array_map(
+      function ($link)
+      {
+        return '<a target="_blank" href="'.$link.'">'.$link.'</a>';
+      },
+      $links
+    ));
     return parent::renderAttributes($readOnly);
   }
 
-  function computeLink()
+  function computeLinks()
   {
     global $config;
     if ($this->member_of_group) {
@@ -94,7 +100,13 @@ class webLink extends simplePlugin
         }
       }
     }
-    return $protocol.'://'.end($hosts);
+    return array_map(
+      function ($host) use ($protocol)
+      {
+        return $protocol.'://'.$host;
+      },
+      $hosts
+    );
   }
 }
 
