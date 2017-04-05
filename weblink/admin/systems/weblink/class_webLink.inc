@@ -90,7 +90,7 @@ class webLink extends simplePlugin
       foreach ($zones as $zoneDn) {
         $ldap->cat($zoneDn);
         if ($attrs = $ldap->fetch()) {
-          $hosts[] = $basetab->cn.'.'.$attrs['zoneName'][0];
+          $hosts[] = $basetab->cn.'.'.preg_replace('/\.$/', '', $attrs['zoneName'][0]);
         }
       }
     }
