@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 18:02+0200\n"
+"POT-Creation-Date: 2017-04-05 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -17,81 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:33
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:34
-msgid "Spamassassin service"
-msgstr "Service Spamassassin"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:34
-msgid "Services"
-msgstr "Service"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:48
-msgid "Spam tagging"
-msgstr "Niveau de spam pour marquage"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:51
-msgid "Rewrite header"
-msgstr "Récrire l'entête"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:55
-msgid "Required score"
-msgstr "Score requis"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:55
-msgid "Select required score to tag mail as spam"
-msgstr ""
-"Sélectionner le score requis pour marquer un message comme étant un spam"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:61
-msgid "Trusted networks"
-msgstr "Réseaux de confiance"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:68
-msgid "Flags"
-msgstr "Drapeaux"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:71
-msgid "Enable use of bayes filtering"
-msgstr "Activer l'utilisation de la méthode de filtrage bayésienne"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:76
-msgid "Enable bayes auto learning"
-msgstr "Activer l'apprentissage automatique pour la méthode bayésienne"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:81
-msgid "Enable RBL checks"
-msgstr "Activer les vérifications RBL"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:86
-msgid "Enable use of Razor"
-msgstr "Activer l'utilisation de Razor"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:91
-msgid "Enable use of DCC"
-msgstr "Activer l'utilisation de DCC"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:96
-msgid "Enable use of Pyzor"
-msgstr "Activer l'utilisation de Pyzor"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:111
-msgid "Rules"
-msgstr "Règles"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:115
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:123
-msgid "Edit spam rule"
-msgstr "Éditer la règle anti-spam"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:118
-msgid "Name"
-msgstr "Nom"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:119
-msgid "Rule"
-msgstr "Règle"
 
 #: personal/spamassassin/class_spamAssassinAccount.inc:31
 msgid "Spam rules"
@@ -128,3 +53,78 @@ msgstr "SpamAssassin"
 #: personal/spamassassin/class_spamAssassinAccount.inc:66
 msgid "Edit user's spam rules"
 msgstr "Éditer les règles courrier indésirable"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:31
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:32
+msgid "Spamassassin service"
+msgstr "Service Spamassassin"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:32
+msgid "Services"
+msgstr "Service"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:46
+msgid "Spam tagging"
+msgstr "Niveau de spam pour marquage"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:49
+msgid "Rewrite header"
+msgstr "Récrire l'entête"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:53
+msgid "Required score"
+msgstr "Score requis"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:53
+msgid "Select required score to tag mail as spam"
+msgstr ""
+"Sélectionner le score requis pour marquer un message comme étant un spam"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:59
+msgid "Trusted networks"
+msgstr "Réseaux de confiance"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:66
+msgid "Flags"
+msgstr "Drapeaux"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:69
+msgid "Enable use of bayes filtering"
+msgstr "Activer l'utilisation de la méthode de filtrage bayésienne"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:74
+msgid "Enable bayes auto learning"
+msgstr "Activer l'apprentissage automatique pour la méthode bayésienne"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:79
+msgid "Enable RBL checks"
+msgstr "Activer les vérifications RBL"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:84
+msgid "Enable use of Razor"
+msgstr "Activer l'utilisation de Razor"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:89
+msgid "Enable use of DCC"
+msgstr "Activer l'utilisation de DCC"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:94
+msgid "Enable use of Pyzor"
+msgstr "Activer l'utilisation de Pyzor"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:109
+msgid "Rules"
+msgstr "Règles"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:113
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:121
+msgid "Edit spam rule"
+msgstr "Éditer la règle anti-spam"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:116
+msgid "Name"
+msgstr "Nom"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:117
+msgid "Rule"
+msgstr "Règle"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 18:02+0200\n"
+"POT-Creation-Date: 2017-04-05 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -17,26 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: html/class_expiredUserPostpone.inc:58
-msgid "This token is invalid"
-msgstr "Le jeton n'est pas valide"
-
-#: html/class_expiredUserPostpone.inc:193
-msgid "Contact your administrator, there was a problem with mail server"
-msgstr ""
-"Contactez votre administrateur système, il y a eu un problème avec l'envoi "
-"du message"
-
-#: html/class_expiredUserPostpone.inc:204
-#, php-format
-msgid "Did not find an account with login \"%s\""
-msgstr "Aucun compte utilisateur trouvé avec l'identifiant \"%s\""
-
-#: html/class_expiredUserPostpone.inc:207
-#, php-format
-msgid "Found multiple accounts with login \"%s\""
-msgstr "Plusieurs comptes trouvés avec l’identifiant \"%s\""
 
 #: config/user-reminder/class_userReminderConfig.inc:28
 msgid "User reminder"
@@ -174,6 +154,26 @@ msgstr ""
 "\n"
 "l'expiration de votre compte %2$s a été prolongé avec succès.\n"
 "\n"
+
+#: html/class_expiredUserPostpone.inc:58
+msgid "This token is invalid"
+msgstr "Le jeton n'est pas valide"
+
+#: html/class_expiredUserPostpone.inc:197
+msgid "Contact your administrator, there was a problem with mail server"
+msgstr ""
+"Contactez votre administrateur système, il y a eu un problème avec l'envoi "
+"du message"
+
+#: html/class_expiredUserPostpone.inc:206
+#, php-format
+msgid "Did not find an account with login \"%s\""
+msgstr "Aucun compte utilisateur trouvé avec l'identifiant \"%s\""
+
+#: html/class_expiredUserPostpone.inc:209
+#, php-format
+msgid "Found multiple accounts with login \"%s\""
+msgstr "Plusieurs comptes trouvés avec l’identifiant \"%s\""
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:2
 #: ihtml/themes/breezy/user-reminder.tpl.c:5

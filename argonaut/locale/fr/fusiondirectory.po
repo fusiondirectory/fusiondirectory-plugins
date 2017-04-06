@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-01-23 22:17+0100\n"
+"POT-Creation-Date: 2017-04-05 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -28,12 +28,12 @@ msgstr ""
 msgid "There is no argonaut server configured"
 msgstr "Il n'y a pas de serveur Argonaut configuré"
 
-#: include/class_supportDaemon.inc:605
+#: include/class_supportDaemon.inc:608
 #, php-format
 msgid "Could not read \"%s\"!"
 msgstr "Impossible de lire \"%s\" !"
 
-#: include/class_supportDaemon.inc:609
+#: include/class_supportDaemon.inc:612
 #, php-format
 msgid "\"%s\" is not a file!"
 msgstr "\"%s\" n'est pas un fichier !"
@@ -64,70 +64,74 @@ msgstr ""
 "Les tâches suivantes ne peuvent pas être effacées, elles doivent être "
 "annulées : %s"
 
-#: addons/argonaut/class_argonautQueue.inc:189
+#: addons/argonaut/class_argonautQueue.inc:188
 msgid "Info"
 msgstr "Info"
 
-#: addons/argonaut/class_argonautQueue.inc:189
+#: addons/argonaut/class_argonautQueue.inc:188
 #, php-format
 msgid "%s"
 msgstr "%s"
 
-#: addons/argonaut/class_argonautQueue.inc:215
+#: addons/argonaut/class_argonautQueue.inc:214
 msgid "Error detail"
 msgstr "Détail de l'erreur"
 
-#: addons/argonaut/class_argonautQueue.inc:257
-#: addons/argonaut/class_argonautQueue.inc:341
+#: addons/argonaut/class_argonautQueue.inc:256
+#: addons/argonaut/class_argonautQueue.inc:340
 #: addons/argonaut/class_filterArgonautEvents.inc:39
 #: addons/argonaut/import_events.tpl.c:32
 msgid "Error"
 msgstr "Erreur"
 
-#: addons/argonaut/class_argonautQueue.inc:257
+#: addons/argonaut/class_argonautQueue.inc:256
 #, php-format
 msgid "Cannot update queue entries."
 msgstr "Impossible de mettre à jour les entrées de la file d'attente."
 
-#: addons/argonaut/class_argonautQueue.inc:325
+#: addons/argonaut/class_argonautQueue.inc:324
 msgid "immediately"
 msgstr "immédiatement"
 
-#: addons/argonaut/class_argonautQueue.inc:337
+#: addons/argonaut/class_argonautQueue.inc:336
 msgid "Waiting"
 msgstr "En attente"
 
-#: addons/argonaut/class_argonautQueue.inc:340
+#: addons/argonaut/class_argonautQueue.inc:339
 msgid "Show error"
 msgstr "Afficher les erreurs"
 
-#: addons/argonaut/class_argonautQueue.inc:344
+#: addons/argonaut/class_argonautQueue.inc:343
 msgid "Processed"
 msgstr "Terminé"
 
-#: addons/argonaut/class_argonautQueue.inc:353
+#: addons/argonaut/class_argonautQueue.inc:352
 msgid "in progress"
 msgstr "en cours"
 
-#: addons/argonaut/class_argonautEventTypes.inc:72
+#: addons/argonaut/class_argonautEventTypes.inc:67
 msgid "Switch off"
 msgstr "Éteindre"
 
-#: addons/argonaut/class_argonautEventTypes.inc:85
+#: addons/argonaut/class_argonautEventTypes.inc:80
 msgid "Reboot"
 msgstr "Redémarrer"
 
-#: addons/argonaut/class_argonautEventTypes.inc:89
+#: addons/argonaut/class_argonautEventTypes.inc:84
 msgid "Wake up"
 msgstr "Réveiller"
 
-#: addons/argonaut/class_argonautEventTypes.inc:93
+#: addons/argonaut/class_argonautEventTypes.inc:88
 msgid "Software update"
 msgstr "Mise à jour logicielle"
 
-#: addons/argonaut/class_argonautEventTypes.inc:97
+#: addons/argonaut/class_argonautEventTypes.inc:92
 msgid "(Re)Install"
 msgstr "(Ré)installer"
+
+#: addons/argonaut/class_argonautEventTypes.inc:105
+msgid "Refresh slave files (ldap2zone)"
+msgstr "Rafraîchir les fichiers esclaves (ldap2zone)"
 
 #: addons/argonaut/class_argonautAction.inc:27
 #: addons/argonaut/class_argonautAction.inc:126
@@ -474,62 +478,134 @@ msgid "Argonaut DNS settings"
 msgstr "Paramètres DNS de Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:46
-msgid "Argonaut Ldap2zone settings:"
-msgstr "Paramètres de Argonaut Ldap2zone :"
+msgid "Ldap2zone global settings"
+msgstr "Paramètres globaux Ldap2zone"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:49
 msgid "Bind directory"
 msgstr "Répertoire Bind"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:50
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:49
 msgid "The directory in which conf file must be created"
 msgstr "Le répertoire dans lequel le fichier de configuration doit être créé"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:56
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:54
 msgid "Bind cache directory"
 msgstr "Répertoire de cache de Bind"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:57
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:54
 msgid "The directory in which zone files must be created"
 msgstr "Le répertoire dans lequel les fichiers de zones doivent être créés"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:63
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:59
+msgid "TTL"
+msgstr "TTL"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:60
+msgid "Time to live"
+msgstr "Temps de vie"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:68
+msgid "rndc path"
+msgstr "Binaire rndc"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:69
+msgid "path to rndc binary"
+msgstr "Chemin vers le binaire rndc"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:75
+msgid "Search base"
+msgstr "Base de recherche"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:75
+msgid ""
+"LDAP base in which ldap2zone should search. Only usefull if you got several "
+"nodes for the same zone."
+msgstr ""
+"Base LDAP dans laquelle ldap2zone  doit effectuer la recherche. Seulement "
+"utile si vous avez plusieurs nœuds pour la même zone."
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:81
+msgid "Ldap2zone master settings"
+msgstr "Paramètres DNS maîtres Ldap2zone"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:84
 msgid "Ignore reverse zone"
 msgstr "Ignorer la zone inverse"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:63
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:84
 msgid "Do not write reverse zone"
 msgstr "Ne pas écrire la zone inverse"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:67
-msgid "Allow notify"
-msgstr "IPs autorisées à notifier (séparées et terminé par un point-virgule)"
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:88
+msgid "Notify"
+msgstr "Notifier"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:73
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:93
+msgid "Allow update"
+msgstr "Permet les updates"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:93
 msgid "Allow update (semicolon separated and ended)"
 msgstr ""
 "IPs autorisées à mettre à jour (séparées et terminé par un point-virgule)"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:79
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:97
+msgid "Allow transfer"
+msgstr "Permet le transfert"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:97
 msgid "Allow transfer (semicolon separated and ended)"
 msgstr ""
 "IPs autorisées à transférer (séparées et terminé par un point-virgule)"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:85
-msgid "TTL"
-msgstr "TTL"
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:101
+msgid "Check names"
+msgstr "Vérifier les noms"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:86
-msgid "Time to live"
-msgstr "Temps de vie"
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:101
+msgid ""
+"Cause any host name for the zone to be checked for compliance with RFC 952 "
+"and RFC 1123 and take the defined action"
+msgstr ""
+"Force la vérification avec les RFC 952 et RFC 1123 de tout nom d'hôte pour "
+"la zone, le niveau de vérification est en fonction du paramètre choisi"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:94
-msgid "rndc path"
-msgstr "Binaire rndc"
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:108
+msgid "Ldap2zone slave settings"
+msgstr "Paramètres DNS esclaves Ldap2zone"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:95
-msgid "path to rndc binary"
-msgstr "Chemin vers le binaire rndc"
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:113
+msgid "Manage DNS Slaves"
+msgstr "Gerer les DNS slaves"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:117
+msgid "zone"
+msgstr "zone"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:117
+msgid "DNS zone this server should be declared as slave of"
+msgstr "Zone(s) DNS qui doivent être stockées comme esclave sur ce serveur"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
+msgid "master"
+msgstr "Maître"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
+msgid "Master IP(s) for this zone"
+msgstr "IP principale (s) pour cette zone"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:125
+msgid "reverses"
+msgstr "Zones inverses"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:125
+msgid "This server should be slave of reverses zones as well"
+msgstr "Ce serveur doit aussi être esclave des zones inverses"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:132
+msgid "DNS slaves"
+msgstr "DNS slaves"
 
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33

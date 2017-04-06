@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-01-23 22:17+0100\n"
+"POT-Creation-Date: 2017-04-05 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>, 2017\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,9 +19,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/dhcp/class_dhcpConfig.inc:28
-#: admin/dhcp/class_dhcpConfiguration.inc:478
-#: admin/dhcp/class_dhcpConfiguration.inc:479
-#: admin/dhcp/class_dhcpConfiguration.inc:481
+#: admin/dhcp/class_dhcpConfiguration.inc:519
+#: admin/dhcp/class_dhcpConfiguration.inc:520
+#: admin/dhcp/class_dhcpConfiguration.inc:522
 msgid "DHCP configuration"
 msgstr "DHCP-Konfiguration"
 
@@ -45,7 +45,7 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:29
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:29
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:29
-#: admin/systems/class_dhcpSystem.inc:218
+#: admin/systems/class_dhcpSystem.inc:212
 msgid "DHCP"
 msgstr "DHCP"
 
@@ -88,7 +88,7 @@ msgstr "Name"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:366
 #: admin/dhcp/class_dhcpConfiguration.inc:407
-#: admin/dhcp/class_dhcpConfiguration.inc:517
+#: admin/dhcp/class_dhcpConfiguration.inc:563
 msgid "Global options"
 msgstr "Globale Optionen"
 
@@ -104,58 +104,58 @@ msgstr ""
 "Der DHCP-Konfigurationssatz ist unbekannt. Bitte benachrichtigen Sie Ihren "
 "System-Administrator."
 
-#: admin/dhcp/class_dhcpConfiguration.inc:495
+#: admin/dhcp/class_dhcpConfiguration.inc:541
 msgid "DHCP Objects"
 msgstr "DHCP-Objekte"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:505
+#: admin/dhcp/class_dhcpConfiguration.inc:551
 msgid "The DHCP sections handled by this server"
 msgstr ""
 
-#: admin/dhcp/class_dhcpConfiguration.inc:516
+#: admin/dhcp/class_dhcpConfiguration.inc:562
 msgid "Logging"
 msgstr "Protokollierung"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:518
+#: admin/dhcp/class_dhcpConfiguration.inc:564
 msgid "Class"
 msgstr "Klasse"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:519
+#: admin/dhcp/class_dhcpConfiguration.inc:565
 msgid "Subclass"
 msgstr "Subklasse"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:520
+#: admin/dhcp/class_dhcpConfiguration.inc:566
 #: admin/dhcp/sections/class_dhcpHost.inc:29
 msgid "Host"
 msgstr "System"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:521
+#: admin/dhcp/class_dhcpConfiguration.inc:567
 msgid "Group"
 msgstr "Gruppe"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:522
+#: admin/dhcp/class_dhcpConfiguration.inc:568
 #: admin/dhcp/sections/class_dhcpPool.inc:29
 msgid "Pool"
 msgstr "Vorrat"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:523
+#: admin/dhcp/class_dhcpConfiguration.inc:569
 #: admin/dhcp/sections/class_dhcpSubnet.inc:29
 msgid "Subnet"
 msgstr "Subnetz"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:524
+#: admin/dhcp/class_dhcpConfiguration.inc:570
 msgid "Failover peer"
 msgstr "Host für Ausfallsicherung"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:525
+#: admin/dhcp/class_dhcpConfiguration.inc:571
 msgid "Shared network"
 msgstr "Verteiltes Netzwerk"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:526
+#: admin/dhcp/class_dhcpConfiguration.inc:572
 msgid "DNS update key"
 msgstr "DNS-Update-Schlüssel"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:527
+#: admin/dhcp/class_dhcpConfiguration.inc:573
 msgid "DNS update zones"
 msgstr "DNS-Update-Zonen"
 
@@ -457,14 +457,14 @@ msgstr ""
 msgid "The IP address to use in the DHCP host record"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:219
+#: admin/systems/class_dhcpSystem.inc:213
 msgid "Edit the DHCP zones of a system"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:233
+#: admin/systems/class_dhcpSystem.inc:227
 msgid "DHCP zones"
 msgstr "DHCP-Zonen"
 
-#: admin/systems/class_dhcpSystem.inc:237
+#: admin/systems/class_dhcpSystem.inc:231
 msgid "DHCP hosts declared for this system"
 msgstr ""

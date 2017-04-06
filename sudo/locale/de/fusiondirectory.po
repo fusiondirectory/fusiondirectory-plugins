@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 18:02+0200\n"
+"POT-Creation-Date: 2017-04-05 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
@@ -18,131 +18,6 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/sudo/class_sudoOption.inc:82
-msgid "Unknown option"
-msgstr "Unbekannte Option"
-
-#: admin/sudo/class_sudoOption.inc:83
-#, php-format
-msgid "The sudo option '%s' is invalid!"
-msgstr "Die sudo-Option '%s' ist ungültig!"
-
-#: admin/sudo/class_sudoOption.inc:278
-#, php-format
-msgid "%s (%s)"
-msgstr "%s (%s)"
-
-#: admin/sudo/class_sudoOption.inc:482
-msgid "Available options"
-msgstr "Verfügbare Optionen"
-
-#: admin/sudo/class_sudoOption.inc:485
-msgid "Option"
-msgstr "Option"
-
-#: admin/sudo/class_sudoOption.inc:485
-msgid "Add a new sudo option"
-msgstr "Eine neue sudo-Option hinzufügen"
-
-#: admin/sudo/class_sudoOption.inc:490 admin/sudo/class_sudoOption.inc:492
-msgid "Used sudo role options"
-msgstr "Benutzte sudo Rollenoptionen"
-
-#: admin/sudo/class_sudoOption.inc:559
-msgid "Options"
-msgstr "Optionen"
-
-#: admin/sudo/class_sudoOption.inc:560
-msgid "Sudo options"
-msgstr "Sudo-Optionen"
-
-#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:123
-#: config/sudo/class_sudoConfig.inc:42
-msgid "Sudo"
-msgstr "Sudo"
-
-#: admin/sudo/class_sudoManagement.inc:33
-msgid "Sudo management"
-msgstr "SUDO-Verwaltung"
-
-#: admin/sudo/class_sudoGeneric.inc:124 admin/sudo/class_sudoGeneric.inc:128
-msgid "Sudo role"
-msgstr "Sudo-Rolle"
-
-#: admin/sudo/class_sudoGeneric.inc:143
-msgid "Role settings"
-msgstr "Rolleneinstellungen"
-
-#: admin/sudo/class_sudoGeneric.inc:149
-msgid "Name"
-msgstr "Name"
-
-#: admin/sudo/class_sudoGeneric.inc:149
-msgid "Name of the role"
-msgstr "Name der Rolle"
-
-#: admin/sudo/class_sudoGeneric.inc:154
-msgid "Description"
-msgstr "Beschreibung"
-
-#: admin/sudo/class_sudoGeneric.inc:154
-msgid "Description for the new sudo role"
-msgstr "Beschreibung für die neue sudo-Rolle"
-
-#: admin/sudo/class_sudoGeneric.inc:159
-msgid "Commands"
-msgstr "Kommandos"
-
-#: admin/sudo/class_sudoGeneric.inc:160
-msgid ""
-"A Unix command with optional command line arguments, potentially including "
-"globbing characters (aka wild cards)"
-msgstr ""
-"Ein Unix-Befehl mit optionalen Kommandozeilenargumenten, potentiell "
-"inklusive globbing-Zeichen (aka wild cards)"
-
-#: admin/sudo/class_sudoGeneric.inc:166
-msgid "Run as (user)"
-msgstr "Ausführen als (Benutzer)"
-
-#: admin/sudo/class_sudoGeneric.inc:167
-msgid "User(s) impersonated by sudo"
-msgstr ""
-
-#: admin/sudo/class_sudoGeneric.inc:174
-msgid "Run as (group)"
-msgstr "Ausführen als (Gruppe)"
-
-#: admin/sudo/class_sudoGeneric.inc:175
-msgid "Group(s) impersonated by sudo"
-msgstr ""
-
-#: admin/sudo/class_sudoGeneric.inc:181
-msgid "Systems"
-msgstr "Systeme"
-
-#: admin/sudo/class_sudoGeneric.inc:181
-msgid "A host name, IP address or IP network"
-msgstr "Ein Hostname, IP Adresse oder IP-Netzwerk"
-
-#: admin/sudo/class_sudoGeneric.inc:186
-msgid "Users and groups"
-msgstr "Benutzer und Gruppen"
-
-#: admin/sudo/class_sudoGeneric.inc:187
-msgid ""
-"A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
-msgstr ""
-"Ein Benutzername, user ID (mit Prefix '#'), Unixgruppe (mit Prefix '#')"
-
-#: admin/sudo/class_sudoGeneric.inc:191
-msgid "Priority"
-msgstr "Priorität"
-
-#: admin/sudo/class_sudoGeneric.inc:191
-msgid "This rule priority compared to others"
-msgstr ""
-
 #: config/sudo/class_sudoConfig.inc:28
 msgid "Sudo configuration"
 msgstr "Sudo Konfiguration"
@@ -151,6 +26,11 @@ msgstr "Sudo Konfiguration"
 msgid "FusionDirectory sudo plugin configuration"
 msgstr "FusionDirectory sudo Pluginkonfiguration"
 
+#: config/sudo/class_sudoConfig.inc:42 admin/sudo/class_sudoManagement.inc:32
+#: admin/sudo/class_sudoGeneric.inc:123
+msgid "Sudo"
+msgstr "Sudo"
+
 #: config/sudo/class_sudoConfig.inc:45
 msgid "Sudo RDN"
 msgstr "Sudo RDN"
@@ -158,3 +38,123 @@ msgstr "Sudo RDN"
 #: config/sudo/class_sudoConfig.inc:45
 msgid "Branch in which sudoers will be stored"
 msgstr "Zweig in dem sudoers gespeichert werden wird"
+
+#: admin/sudo/class_sudoManagement.inc:33
+msgid "Sudo management"
+msgstr "SUDO-Verwaltung"
+
+#: admin/sudo/class_sudoOption.inc:77
+msgid "Unknown option"
+msgstr "Unbekannte Option"
+
+#: admin/sudo/class_sudoOption.inc:78
+#, php-format
+msgid "The sudo option '%s' is invalid!"
+msgstr "Die sudo-Option '%s' ist ungültig!"
+
+#: admin/sudo/class_sudoOption.inc:273
+#, php-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+#: admin/sudo/class_sudoOption.inc:476
+msgid "Available options"
+msgstr "Verfügbare Optionen"
+
+#: admin/sudo/class_sudoOption.inc:479
+msgid "Option"
+msgstr "Option"
+
+#: admin/sudo/class_sudoOption.inc:479
+msgid "Add a new sudo option"
+msgstr "Eine neue sudo-Option hinzufügen"
+
+#: admin/sudo/class_sudoOption.inc:484 admin/sudo/class_sudoOption.inc:486
+msgid "Used sudo role options"
+msgstr "Benutzte sudo Rollenoptionen"
+
+#: admin/sudo/class_sudoOption.inc:553
+msgid "Options"
+msgstr "Optionen"
+
+#: admin/sudo/class_sudoOption.inc:554
+msgid "Sudo options"
+msgstr "Sudo-Optionen"
+
+#: admin/sudo/class_sudoGeneric.inc:124 admin/sudo/class_sudoGeneric.inc:128
+msgid "Sudo role"
+msgstr "Sudo-Rolle"
+
+#: admin/sudo/class_sudoGeneric.inc:154
+msgid "Role settings"
+msgstr "Rolleneinstellungen"
+
+#: admin/sudo/class_sudoGeneric.inc:160
+msgid "Name"
+msgstr "Name"
+
+#: admin/sudo/class_sudoGeneric.inc:160
+msgid "Name of the role"
+msgstr "Name der Rolle"
+
+#: admin/sudo/class_sudoGeneric.inc:165
+msgid "Description"
+msgstr "Beschreibung"
+
+#: admin/sudo/class_sudoGeneric.inc:165
+msgid "Description for the new sudo role"
+msgstr "Beschreibung für die neue sudo-Rolle"
+
+#: admin/sudo/class_sudoGeneric.inc:170
+msgid "Commands"
+msgstr "Kommandos"
+
+#: admin/sudo/class_sudoGeneric.inc:171
+msgid ""
+"A Unix command with optional command line arguments, potentially including "
+"globbing characters (aka wild cards)"
+msgstr ""
+"Ein Unix-Befehl mit optionalen Kommandozeilenargumenten, potentiell "
+"inklusive globbing-Zeichen (aka wild cards)"
+
+#: admin/sudo/class_sudoGeneric.inc:177
+msgid "Run as (user)"
+msgstr "Ausführen als (Benutzer)"
+
+#: admin/sudo/class_sudoGeneric.inc:178
+msgid "User(s) impersonated by sudo"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:185
+msgid "Run as (group)"
+msgstr "Ausführen als (Gruppe)"
+
+#: admin/sudo/class_sudoGeneric.inc:186
+msgid "Group(s) impersonated by sudo"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:192
+msgid "Systems"
+msgstr "Systeme"
+
+#: admin/sudo/class_sudoGeneric.inc:192
+msgid "A host name, IP address or IP network"
+msgstr "Ein Hostname, IP Adresse oder IP-Netzwerk"
+
+#: admin/sudo/class_sudoGeneric.inc:197
+msgid "Users and groups"
+msgstr "Benutzer und Gruppen"
+
+#: admin/sudo/class_sudoGeneric.inc:198
+msgid ""
+"A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
+msgstr ""
+"Ein Benutzername, user ID (mit Prefix '#'), Unixgruppe (mit Prefix '#')"
+
+#: admin/sudo/class_sudoGeneric.inc:202
+msgid "Priority"
+msgstr "Priorität"
+
+#: admin/sudo/class_sudoGeneric.inc:202
+msgid "This rule priority compared to others"
+msgstr ""

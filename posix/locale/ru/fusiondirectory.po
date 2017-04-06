@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-02-02 07:50+0100\n"
+"POT-Creation-Date: 2017-04-05 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Alexey Matveev <Tippet@yandex.ru>, 2017\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -204,46 +204,235 @@ msgstr "разрешить доступ только на эти хосты"
 msgid "Only allow this user to connect to this list of hosts"
 msgstr "Пользователю разрешено подключаться только к хостам из списка"
 
-#: personal/posix/class_posixAccount.inc:303
+#: personal/posix/class_posixAccount.inc:298
 msgid "automatic"
 msgstr "автоматически"
 
-#: personal/posix/class_posixAccount.inc:322
+#: personal/posix/class_posixAccount.inc:317
 msgid "expired"
 msgstr "Истек"
 
-#: personal/posix/class_posixAccount.inc:324
+#: personal/posix/class_posixAccount.inc:319
 msgid "grace time active"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:327
-#: personal/posix/class_posixAccount.inc:329
-#: personal/posix/class_posixAccount.inc:331
+#: personal/posix/class_posixAccount.inc:322
+#: personal/posix/class_posixAccount.inc:324
+#: personal/posix/class_posixAccount.inc:326
 msgid "active"
 msgstr "активный"
 
-#: personal/posix/class_posixAccount.inc:327
+#: personal/posix/class_posixAccount.inc:322
 msgid "password expired"
 msgstr "срок действия параля истек"
 
-#: personal/posix/class_posixAccount.inc:329
+#: personal/posix/class_posixAccount.inc:324
 msgid "password not changeable"
 msgstr "Пароль не изменяем"
 
-#: personal/posix/class_posixAccount.inc:424
+#: personal/posix/class_posixAccount.inc:423
 msgid "UID"
 msgstr "UID"
 
-#: personal/posix/class_posixAccount.inc:427
+#: personal/posix/class_posixAccount.inc:426
 #: admin/groups/posix/class_posixGroup.inc:74
 #: admin/groups/posix/class_posixGroup.inc:150
 msgid "GID"
 msgstr "GID"
 
-#: personal/posix/class_posixAccount.inc:531
+#: personal/posix/class_posixAccount.inc:534
 #, php-format
 msgid "Group of user %s"
 msgstr "Группа пользователя %s"
+
+#: personal/posix/class_posixAccount.inc:756
+#: personal/posix/class_posixAccount.inc:777
+#: personal/posix/class_posixAccount.inc:971
+msgid "Warning"
+msgstr "Предупреждение"
+
+#: personal/posix/class_posixAccount.inc:756
+#, php-format
+msgid "Unknown ID allocation method \"%s\"!"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:778
+#, php-format
+msgid "Timeout while waiting for lock. Ignoring lock from %s!"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:805
+#: personal/posix/class_posixAccount.inc:845
+#: personal/posix/class_posixAccount.inc:857
+#: personal/posix/class_posixAccount.inc:861
+#: personal/posix/class_posixAccount.inc:868
+#: personal/posix/class_posixAccount.inc:877
+#: personal/posix/class_posixAccount.inc:939
+msgid "Error"
+msgstr "Ошибка"
+
+#: personal/posix/class_posixAccount.inc:805
+#: personal/posix/class_posixAccount.inc:845
+#: personal/posix/class_posixAccount.inc:857
+#: personal/posix/class_posixAccount.inc:861
+#: personal/posix/class_posixAccount.inc:868
+#: personal/posix/class_posixAccount.inc:877
+msgid "Cannot allocate a free ID:"
+msgstr "Не могу выделить свободный ID:"
+
+#: personal/posix/class_posixAccount.inc:805
+#, php-format
+msgid "%sPoolMin >= %sPoolMax!"
+msgstr "%sPoolMin >= %sPoolMax!"
+
+#: personal/posix/class_posixAccount.inc:837
+msgid "LDAP error"
+msgstr "Ошибка LDAP"
+
+#: personal/posix/class_posixAccount.inc:845
+msgid "sambaUnixIdPool is not unique!"
+msgstr "sambaUnixIdPool не уникальна!"
+
+#: personal/posix/class_posixAccount.inc:857
+#: personal/posix/class_posixAccount.inc:861
+msgid "no ID available!"
+msgstr "нет доступных ID!"
+
+#: personal/posix/class_posixAccount.inc:877
+msgid "maximum tries exceeded!"
+msgstr "Превышено максимальное число попыток!"
+
+#: personal/posix/class_posixAccount.inc:939
+msgid "Cannot allocate a free ID!"
+msgstr "Не могу выделить свободный ID!"
+
+#: personal/posix/class_posixAccount.inc:971
+msgid "'nextIdHook' is not available. Using default base!"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:28
+msgid "POSIX configuration"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:29
+msgid "FusionDirectory POSIX plugin configuration"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:42
+msgid "Posix"
+msgstr "Posix"
+
+#: config/posix/class_posixConfig.inc:46
+msgid "Group/user min id"
+msgstr "Минимальный id групп/пользователей"
+
+#: config/posix/class_posixConfig.inc:47
+msgid ""
+"The minimum assignable user or group id to avoid security leaks with id 0 "
+"accounts."
+msgstr ""
+"Наименьший идентификатор пользователя или группы, который может быть "
+"назначен, чтобы избежать дыры в безопасности с идентификатором учетной "
+"записи равным 0."
+
+#: config/posix/class_posixConfig.inc:52
+msgid "Next id hook"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:52
+msgid ""
+"A script to be called for finding the next free id number for users or "
+"groups."
+msgstr ""
+"Скрипт, который будет вызваться при нахождении следующего свободного номера "
+"id для пользователей иил групп."
+
+#: config/posix/class_posixConfig.inc:56
+msgid "Base number for user id"
+msgstr "Начальное значение для id пользователя"
+
+#: config/posix/class_posixConfig.inc:57
+msgid "Where to start looking for a new free user id."
+msgstr ""
+"Откуда начинать смотреть значение для нового свободного id пользователя."
+
+#: config/posix/class_posixConfig.inc:62
+msgid "Base number for group id"
+msgstr "Начальное значение для id группы"
+
+#: config/posix/class_posixConfig.inc:63
+msgid "Where to start looking for a new free group id."
+msgstr "Откуда начинать смотреть значение для нового свободного id группы."
+
+#: config/posix/class_posixConfig.inc:68
+msgid "Id allocation method"
+msgstr "Метод выделения id"
+
+#: config/posix/class_posixConfig.inc:68
+msgid "Method to allocate user/group ids"
+msgstr "Метод выделения идентификаторов для пользователей и групп"
+
+#: config/posix/class_posixConfig.inc:71
+msgid "Traditional"
+msgstr "Традиционный"
+
+#: config/posix/class_posixConfig.inc:71
+msgid "Samba unix id pool"
+msgstr "Пул id для samba и unix"
+
+#: config/posix/class_posixConfig.inc:74
+msgid "Pool user id min"
+msgstr "Минимальное значение id пользователей в пуле"
+
+#: config/posix/class_posixConfig.inc:74
+msgid "Minimum value for user id when using pool method"
+msgstr ""
+"Минимальное значение для id пользователя, при использовании пул метода"
+
+#: config/posix/class_posixConfig.inc:79
+msgid "Pool user id max"
+msgstr "Максимальное значение id пользователя в пуле"
+
+#: config/posix/class_posixConfig.inc:79
+msgid "Maximum value for user id when using pool method"
+msgstr ""
+"Максимальное значение для id пользователя, при использовании пул метода"
+
+#: config/posix/class_posixConfig.inc:84
+msgid "Pool group id min"
+msgstr "Минимальное значение id группы в пуле"
+
+#: config/posix/class_posixConfig.inc:84
+msgid "Minimum value for group id when using pool method"
+msgstr "Минимальное значение для id группы, при использовании пул метода"
+
+#: config/posix/class_posixConfig.inc:89
+msgid "Pool group id max"
+msgstr "Максимальное значение id группы в пуле"
+
+#: config/posix/class_posixConfig.inc:89
+msgid "Maximum value for group id when using pool method"
+msgstr "Максимальное значение для id группы, при использовании пул метода"
+
+#: config/posix/class_posixConfig.inc:96
+msgid "Shells"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:100
+msgid "Available shells"
+msgstr "Доступные оболочки"
+
+#: config/posix/class_posixConfig.inc:100
+msgid "Available POSIX shells for FD users."
+msgstr "Доступные POSIX шеллы для пользователей FD"
+
+#: config/posix/class_posixConfig.inc:107
+msgid "Default shell"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:107
+msgid "Shell used by default when activating Unix tab."
+msgstr ""
 
 #: admin/groups/posix/class_posixGroup.inc:34
 msgid "Group"

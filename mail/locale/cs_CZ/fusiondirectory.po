@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 18:02+0200\n"
+"POT-Creation-Date: 2017-04-05 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -18,111 +18,13 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: admin/groups/mail/class_groupMail.inc:46
-#: personal/mail/class_mailAccount.inc:71
-#: config/mail/class_mailPluginConfig.inc:28
-msgid "Mail"
-msgstr "e-mail"
-
-#: admin/groups/mail/class_groupMail.inc:47
-msgid "Group mail options"
-msgstr "Předvolby skupinového e-mailu"
-
-#: admin/groups/mail/class_groupMail.inc:59
-msgid "Informations"
-msgstr "Informace"
-
-#: admin/groups/mail/class_groupMail.inc:62
-#: personal/mail/class_mailAccount.inc:97
-msgid "Primary address"
-msgstr "hlavní adresa"
-
-#: admin/groups/mail/class_groupMail.inc:62
-msgid "The primary mail address"
-msgstr "Hlavní e-mailová adresa"
-
-#: admin/groups/mail/class_groupMail.inc:66
-#: personal/mail/class_mailAccount.inc:101
-msgid "Server"
-msgstr "server"
-
-#: admin/groups/mail/class_groupMail.inc:66
-msgid "Server mail"
-msgstr "Serverová pošta"
-
-#: admin/groups/mail/class_groupMail.inc:72
-#: personal/mail/class_mailAccount.inc:117
-msgid "Alternative addresses"
-msgstr "alternativní adresy"
-
-#: admin/groups/mail/class_groupMail.inc:72
-msgid "Alternative mail addresses for the group"
-msgstr "Alternativní e-mailové adresy této skupiny"
-
-#: admin/groups/mail/class_groupMail.inc:77
-msgid "Forward messages to non group members"
-msgstr "přeposlat zprávy těm, kdo nejsou členy skupiny"
-
-#: admin/groups/mail/class_groupMail.inc:81
-msgid "Only allowed to receive local mail"
-msgstr "Může přijímat pouze místní e-maily"
-
-#: admin/groups/mail/class_groupMail.inc:81
-msgid ""
-"Whether this group mail is only allowed to receive messages from local "
-"senders"
-msgstr ""
-"Zda je této e-mailové skupině omezeno přijímání zpráv pouze na ty od "
-"místních odesilatelů"
-
-#: admin/systems/services/imap/class_serviceIMAP.inc:32
-msgid "IMAP/POP3 generic service"
-msgstr "Obecná služba IMAP/POP3"
-
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
-msgid "IMAP/POP3"
-msgstr "IMAP/POP3"
-
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
-msgid "Services"
-msgstr "služby"
-
-#: personal/mail/class_mail-methods.inc:155
-#: personal/mail/class_mail-methods.inc:517
-msgid "Configuration error"
-msgstr "chyba v nastavení"
-
-#: personal/mail/class_mail-methods.inc:156
-#, php-format
-msgid "The configured mail attribute '%s' is unsupported!"
-msgstr "Nastavený atribut zprávy '%s' není podporován!"
-
-#: personal/mail/class_mail-methods.inc:518
-#, php-format
-msgid "Mail method '%s' is unknown!"
-msgstr "Neznámý systém správy e-mailů '%s'!"
-
-#: personal/mail/class_mail-methods.inc:765
-#: personal/mail/class_mail-methods.inc:766
-msgid "None"
-msgstr "žádné"
-
-#: personal/mail/class_mail-methods.inc:849
-msgid "Unknown"
-msgstr "neznámé"
-
-#: personal/mail/class_mail-methods.inc:851
-msgid "Unlimited"
-msgstr "neomezené"
-
 #: personal/mail/class_mailAccount.inc:45
-#: personal/mail/class_mailAccount.inc:238
-#: personal/mail/class_mailAccount.inc:241
-#: personal/mail/class_mailAccount.inc:289
-#: personal/mail/class_mailAccount.inc:293
-#: personal/mail/class_mailAccount.inc:297
-#: personal/mail/class_mailAccount.inc:330
-#: personal/mail/class_mailAccount.inc:334
+#: personal/mail/class_mailAccount.inc:258
+#: personal/mail/class_mailAccount.inc:261
+#: personal/mail/class_mailAccount.inc:329
+#: personal/mail/class_mailAccount.inc:340
+#: personal/mail/class_mailAccount.inc:369
+#: personal/mail/class_mailAccount.inc:373
 msgid "Mail error"
 msgstr "chyba e-mailu"
 
@@ -139,125 +41,170 @@ msgstr "Kvóta využití"
 msgid "Part of the quota which is used"
 msgstr "Část kvóty, která je využita"
 
-#: personal/mail/class_mailAccount.inc:72
+#: personal/mail/class_mailAccount.inc:73
+#: config/mail/class_mailPluginConfig.inc:28
+#: admin/groups/mail/class_groupMail.inc:46
+msgid "Mail"
+msgstr "e-mail"
+
+#: personal/mail/class_mailAccount.inc:74
 #: config/mail/class_mailPluginConfig.inc:41
 msgid "Mail settings"
 msgstr "nastavení e-mailu"
 
-#: personal/mail/class_mailAccount.inc:94
+#: personal/mail/class_mailAccount.inc:96
 msgid "Mail account"
 msgstr "E-mailový účet"
 
-#: personal/mail/class_mailAccount.inc:97
+#: personal/mail/class_mailAccount.inc:99
+#: admin/groups/mail/class_groupMail.inc:62
+msgid "Primary address"
+msgstr "hlavní adresa"
+
+#: personal/mail/class_mailAccount.inc:99
 msgid "Primary mail address"
 msgstr "Hlavní e-mailová adresa"
 
-#: personal/mail/class_mailAccount.inc:101
+#: personal/mail/class_mailAccount.inc:103
+#: admin/groups/mail/class_groupMail.inc:66
+msgid "Server"
+msgstr "server"
+
+#: personal/mail/class_mailAccount.inc:103
 msgid "Specify the mail server where the user will be hosted on"
 msgstr "Zvolte poštovní server, na kterém bude uživatel mít svůj účet."
 
-#: personal/mail/class_mailAccount.inc:106
+#: personal/mail/class_mailAccount.inc:108
 msgid "Quota size"
 msgstr "kvóta objemu dat"
 
-#: personal/mail/class_mailAccount.inc:113
+#: personal/mail/class_mailAccount.inc:115
 msgid "Other addresses and redirections"
 msgstr "Ostatní adresy a přesměrování"
 
-#: personal/mail/class_mailAccount.inc:117
+#: personal/mail/class_mailAccount.inc:119
+#: admin/groups/mail/class_groupMail.inc:72
+msgid "Alternative addresses"
+msgstr "alternativní adresy"
+
+#: personal/mail/class_mailAccount.inc:119
 msgid "List of alternative mail addresses"
 msgstr "seznam alternativních e-mailových adres"
 
-#: personal/mail/class_mailAccount.inc:122
+#: personal/mail/class_mailAccount.inc:124
 msgid "Forward messages to"
 msgstr "přesměrovat zprávy na"
 
-#: personal/mail/class_mailAccount.inc:122
+#: personal/mail/class_mailAccount.inc:124
 msgid "Addresses to which messages should be forwarded"
 msgstr "Adresy, na které by měly být přeposílány zprávy"
 
-#: personal/mail/class_mailAccount.inc:128
-#: personal/mail/class_mailAccount.inc:147
+#: personal/mail/class_mailAccount.inc:130
+#: personal/mail/class_mailAccount.inc:149
 msgid "Vacation message"
 msgstr "zpráva „jsem na dovolené“"
 
-#: personal/mail/class_mailAccount.inc:131
+#: personal/mail/class_mailAccount.inc:133
 msgid "Activate vacation message"
 msgstr "aktivovat zprávu „jsem na dovolené“"
 
-#: personal/mail/class_mailAccount.inc:132
+#: personal/mail/class_mailAccount.inc:134
 msgid ""
 "Select to automatically response with the vacation message defined below"
 msgstr ""
 "zaškrtněte pro automatické odpovídání níže uvedenou zprávou „jsem na "
 "dovolené“"
 
-#: personal/mail/class_mailAccount.inc:137
+#: personal/mail/class_mailAccount.inc:139
 msgid "from"
 msgstr "od"
 
-#: personal/mail/class_mailAccount.inc:142
+#: personal/mail/class_mailAccount.inc:144
 msgid "till"
 msgstr "dokud"
 
-#: personal/mail/class_mailAccount.inc:153
+#: personal/mail/class_mailAccount.inc:155
 msgid "Advanced mail options"
 msgstr "pokročilé volby e-mailu"
 
-#: personal/mail/class_mailAccount.inc:161
+#: personal/mail/class_mailAccount.inc:163
 msgid "User is only allowed to send and receive local mails"
 msgstr "uživateli je dovoleno přijímat a odesílat pouze místní poštu"
 
-#: personal/mail/class_mailAccount.inc:162
+#: personal/mail/class_mailAccount.inc:164
 msgid "Select if user can only send and receive inside his own domain"
 msgstr ""
 "zvolte, zda uživatel bude moci přijímat a odesílat pouze v rámci vlastní "
 "domény"
 
-#: personal/mail/class_mailAccount.inc:167
+#: personal/mail/class_mailAccount.inc:169
 msgid "No delivery to own mailbox"
 msgstr "nedoručovat do vlastní schránky"
 
-#: personal/mail/class_mailAccount.inc:168
+#: personal/mail/class_mailAccount.inc:170
 msgid "Select if you want to forward mails without getting own copies of them"
 msgstr ""
 "Zvolte, zda chcete přeposílat zprávy bez toho, abyste si ponechávali jejich "
 "kopie."
 
-#: personal/mail/class_mailAccount.inc:238
-#: personal/mail/class_mailAccount.inc:289
+#: personal/mail/class_mailAccount.inc:258
+#: personal/mail/class_mailAccount.inc:323
 #, php-format
 msgid "Mail method cannot connect: %s"
 msgstr "E-mailová metodou se nelze připojit: %s"
 
-#: personal/mail/class_mailAccount.inc:241
+#: personal/mail/class_mailAccount.inc:261
 #, php-format
 msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:293
+#: personal/mail/class_mailAccount.inc:326
 #, php-format
 msgid "Cannot update mailbox: %s"
 msgstr "Nezdařilo se aktualizovat schránku: %s"
 
-#: personal/mail/class_mailAccount.inc:297
+#: personal/mail/class_mailAccount.inc:329
 #, php-format
 msgid "Cannot write quota settings: %s"
 msgstr "Nezdařilo se zapsat nastavení kvóty: %s"
 
-#: personal/mail/class_mailAccount.inc:310
-msgid "Mail error saving sieve settings"
-msgstr "nastavení ukládání záznamů o chybách zpráv v Sieve"
+#: personal/mail/class_mailAccount.inc:340
+#, php-format
+msgid "Mail error saving sieve settings: %s"
+msgstr ""
 
-#: personal/mail/class_mailAccount.inc:330
+#: personal/mail/class_mailAccount.inc:369
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr "E-mailovou schránku se nedaří odebrat, nedaří se připojit metodou: %s"
 
-#: personal/mail/class_mailAccount.inc:334
+#: personal/mail/class_mailAccount.inc:373
 #, php-format
 msgid "Cannot remove mailbox: %s"
 msgstr "Nelze odebrat schárnku: %s"
+
+#: personal/mail/class_mail-methods.inc:144
+#: personal/mail/class_mail-methods.inc:480
+msgid "Configuration error"
+msgstr "chyba v nastavení"
+
+#: personal/mail/class_mail-methods.inc:145
+#, php-format
+msgid "The configured mail attribute '%s' is unsupported!"
+msgstr "Nastavený atribut zprávy '%s' není podporován!"
+
+#: personal/mail/class_mail-methods.inc:481
+#, php-format
+msgid "Mail method \"%s\" is unknown!"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:725
+msgid "Unknown"
+msgstr "neznámé"
+
+#: personal/mail/class_mail-methods.inc:727
+msgid "Unlimited"
+msgstr "neomezené"
 
 #: config/mail/class_mailPluginConfig.inc:29
 msgid "Mail plugin configuration"
@@ -337,3 +284,51 @@ msgstr "Sdílená předpona"
 #: config/mail/class_mailPluginConfig.inc:84
 msgid "Prefix to add for mail shared folders."
 msgstr "Předpona, kterou přidat pro sdílené poštovní složky."
+
+#: admin/groups/mail/class_groupMail.inc:47
+msgid "Group mail options"
+msgstr "Předvolby skupinového e-mailu"
+
+#: admin/groups/mail/class_groupMail.inc:59
+msgid "Information"
+msgstr "informace"
+
+#: admin/groups/mail/class_groupMail.inc:62
+msgid "The primary mail address"
+msgstr "Hlavní e-mailová adresa"
+
+#: admin/groups/mail/class_groupMail.inc:66
+msgid "Server mail"
+msgstr "Serverová pošta"
+
+#: admin/groups/mail/class_groupMail.inc:72
+msgid "Alternative mail addresses for the group"
+msgstr "Alternativní e-mailové adresy této skupiny"
+
+#: admin/groups/mail/class_groupMail.inc:77
+msgid "Forward messages to non group members"
+msgstr "přeposlat zprávy těm, kdo nejsou členy skupiny"
+
+#: admin/groups/mail/class_groupMail.inc:81
+msgid "Only allowed to receive local mail"
+msgstr "Může přijímat pouze místní e-maily"
+
+#: admin/groups/mail/class_groupMail.inc:81
+msgid ""
+"Whether this group mail is only allowed to receive messages from local "
+"senders"
+msgstr ""
+"Zda je této e-mailové skupině omezeno přijímání zpráv pouze na ty od "
+"místních odesilatelů"
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:32
+msgid "IMAP/POP3 generic service"
+msgstr "Obecná služba IMAP/POP3"
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:33
+msgid "IMAP/POP3"
+msgstr "IMAP/POP3"
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:33
+msgid "Services"
+msgstr "služby"

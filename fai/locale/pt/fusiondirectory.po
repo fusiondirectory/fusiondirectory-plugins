@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-01-23 22:17+0100\n"
+"POT-Creation-Date: 2017-04-05 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Portuguese (https://www.transifex.com/fusiondirectory/teams/12202/pt/)\n"
@@ -67,7 +67,7 @@ msgstr ""
 
 #: admin/systems/class_faiStartup.inc:91
 #: admin/systems/services/repository/class_serviceRepository.inc:40
-#: admin/fai/class_faiPackage.inc:414
+#: admin/fai/class_faiPackage.inc:412
 msgid "Release"
 msgstr ""
 
@@ -83,7 +83,7 @@ msgstr ""
 msgid "FAI profil to be applied to this computer"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:103 admin/fai/class_faiPackage.inc:411
+#: admin/systems/class_faiStartup.inc:103 admin/fai/class_faiPackage.inc:409
 msgid "Repository"
 msgstr ""
 
@@ -112,7 +112,7 @@ msgid "Release used on this repository"
 msgstr ""
 
 #: admin/systems/services/repository/class_serviceRepository.inc:47
-#: admin/fai/class_faiPackage.inc:418
+#: admin/fai/class_faiPackage.inc:416
 msgid "Sections"
 msgstr ""
 
@@ -177,12 +177,12 @@ msgstr ""
 msgid "Repositories this server hosts"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceRepository.inc:244
+#: admin/systems/services/repository/class_serviceRepository.inc:240
+#: admin/systems/services/repository/class_serviceRepository.inc:257
 #: admin/systems/services/repository/class_serviceRepository.inc:261
-#: admin/systems/services/repository/class_serviceRepository.inc:265
-#: admin/fai/class_faiPartitionTable.inc:210
-#: admin/fai/class_faiPartitionTable.inc:251
-#: admin/fai/class_faiPackage.inc:253 admin/fai/class_faiTemplate.inc:109
+#: admin/fai/class_faiPartitionTable.inc:215
+#: admin/fai/class_faiPartitionTable.inc:256
+#: admin/fai/class_faiPackage.inc:251 admin/fai/class_faiTemplate.inc:109
 msgid "LDAP error"
 msgstr "Erro de LDAP"
 
@@ -286,36 +286,36 @@ msgstr ""
 msgid "Add LVM"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:284
+#: admin/fai/class_faiPartitionTable.inc:289
 msgid "Partition table"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:285
-#: admin/fai/class_faiPartitionTable.inc:288
+#: admin/fai/class_faiPartitionTable.inc:290
+#: admin/fai/class_faiPartitionTable.inc:293
 msgid "FAI partition table"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:304
-#: admin/fai/class_faiTemplateEntry.inc:139 admin/fai/class_faiPackage.inc:398
+#: admin/fai/class_faiPartitionTable.inc:309
+#: admin/fai/class_faiTemplateEntry.inc:139 admin/fai/class_faiPackage.inc:396
 #: admin/fai/class_faiHook.inc:48 admin/fai/class_faiTemplate.inc:166
 #: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiVariable.inc:48
 #: admin/fai/class_faiScript.inc:50
 msgid "Properties"
 msgstr "Propriedades"
 
-#: admin/fai/class_faiPartitionTable.inc:307
-#: admin/fai/class_faiPackage.inc:401 admin/fai/class_faiHook.inc:51
+#: admin/fai/class_faiPartitionTable.inc:312
+#: admin/fai/class_faiPackage.inc:399 admin/fai/class_faiHook.inc:51
 #: admin/fai/class_faiTemplate.inc:169 admin/fai/class_faiProfile.inc:52
 #: admin/fai/class_faiVariable.inc:51 admin/fai/class_faiScript.inc:53
 msgid "Class name"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:307 admin/fai/class_faiProfile.inc:52
+#: admin/fai/class_faiPartitionTable.inc:312 admin/fai/class_faiProfile.inc:52
 msgid "Partition table class name"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:311
-#: admin/fai/class_faiTemplateEntry.inc:146 admin/fai/class_faiPackage.inc:405
+#: admin/fai/class_faiPartitionTable.inc:316
+#: admin/fai/class_faiTemplateEntry.inc:146 admin/fai/class_faiPackage.inc:403
 #: admin/fai/class_faiDiskEntry.inc:239 admin/fai/class_faiHook.inc:55
 #: admin/fai/class_faiHook.inc:73 admin/fai/class_faiTemplate.inc:173
 #: admin/fai/class_faiPartition.inc:246 admin/fai/class_faiProfile.inc:56
@@ -324,18 +324,18 @@ msgstr ""
 msgid "Description"
 msgstr "Descrição"
 
-#: admin/fai/class_faiPartitionTable.inc:311
-#: admin/fai/class_faiPackage.inc:405 admin/fai/class_faiHook.inc:55
+#: admin/fai/class_faiPartitionTable.inc:316
+#: admin/fai/class_faiPackage.inc:403 admin/fai/class_faiHook.inc:55
 #: admin/fai/class_faiTemplate.inc:173 admin/fai/class_faiProfile.inc:56
 #: admin/fai/class_faiVariable.inc:55 admin/fai/class_faiScript.inc:57
 msgid "Short description of the class"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:317
+#: admin/fai/class_faiPartitionTable.inc:322
 msgid "Discs"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:324
+#: admin/fai/class_faiPartitionTable.inc:329
 #: admin/fai/class_faiDiskEntry.inc:269
 msgid "Partitions in this class"
 msgstr ""
@@ -404,56 +404,56 @@ msgstr ""
 msgid "Edit configuration"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:289
+#: admin/fai/class_faiPackage.inc:287
 #: admin/fai/class_faiPackageConfiguration.inc:59
 #: admin/fai/packageSelect/class_filterFAIPackages.inc:41
 #: admin/fai/packageSelect/class_filterFAIPackages.inc:46
 msgid "Infrastructure service"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:308
+#: admin/fai/class_faiPackage.inc:306
 msgid "Unkown packages"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:378
+#: admin/fai/class_faiPackage.inc:376
 #: admin/fai/packageSelect/selectPackage-list.xml:15
 msgid "Package"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:379
+#: admin/fai/class_faiPackage.inc:377
 msgid "FAI Package list"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:382
+#: admin/fai/class_faiPackage.inc:380
 msgid "FAI Package"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:401 admin/fai/class_faiHook.inc:51
+#: admin/fai/class_faiPackage.inc:399 admin/fai/class_faiHook.inc:51
 #: admin/fai/class_faiVariable.inc:51 admin/fai/class_faiScript.inc:53
 msgid "Variables class name"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:414
+#: admin/fai/class_faiPackage.inc:412
 msgid "Debian release concerned"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:418
+#: admin/fai/class_faiPackage.inc:416
 msgid "Sections concerned"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:422
+#: admin/fai/class_faiPackage.inc:420
 msgid "Install method"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:422
+#: admin/fai/class_faiPackage.inc:420
 msgid "Install method to use for this package list"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:433
+#: admin/fai/class_faiPackage.inc:431
 msgid "Packages"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:437
+#: admin/fai/class_faiPackage.inc:435
 msgid "Packages in this class"
 msgstr ""
 

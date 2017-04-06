@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-01-23 22:17+0100\n"
+"POT-Creation-Date: 2017-04-05 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
@@ -19,9 +19,9 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: config/dhcp/class_dhcpConfig.inc:28
-#: admin/dhcp/class_dhcpConfiguration.inc:478
-#: admin/dhcp/class_dhcpConfiguration.inc:479
-#: admin/dhcp/class_dhcpConfiguration.inc:481
+#: admin/dhcp/class_dhcpConfiguration.inc:519
+#: admin/dhcp/class_dhcpConfiguration.inc:520
+#: admin/dhcp/class_dhcpConfiguration.inc:522
 msgid "DHCP configuration"
 msgstr ""
 
@@ -45,7 +45,7 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:29
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:29
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:29
-#: admin/systems/class_dhcpSystem.inc:218
+#: admin/systems/class_dhcpSystem.inc:212
 msgid "DHCP"
 msgstr "DHCP"
 
@@ -88,7 +88,7 @@ msgstr "Фамилия"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:366
 #: admin/dhcp/class_dhcpConfiguration.inc:407
-#: admin/dhcp/class_dhcpConfiguration.inc:517
+#: admin/dhcp/class_dhcpConfiguration.inc:563
 msgid "Global options"
 msgstr ""
 
@@ -102,58 +102,58 @@ msgid ""
 "administrator."
 msgstr ""
 
-#: admin/dhcp/class_dhcpConfiguration.inc:495
+#: admin/dhcp/class_dhcpConfiguration.inc:541
 msgid "DHCP Objects"
 msgstr ""
 
-#: admin/dhcp/class_dhcpConfiguration.inc:505
+#: admin/dhcp/class_dhcpConfiguration.inc:551
 msgid "The DHCP sections handled by this server"
 msgstr ""
 
-#: admin/dhcp/class_dhcpConfiguration.inc:516
+#: admin/dhcp/class_dhcpConfiguration.inc:562
 msgid "Logging"
 msgstr ""
 
-#: admin/dhcp/class_dhcpConfiguration.inc:518
+#: admin/dhcp/class_dhcpConfiguration.inc:564
 msgid "Class"
 msgstr "Класс"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:519
+#: admin/dhcp/class_dhcpConfiguration.inc:565
 msgid "Subclass"
 msgstr ""
 
-#: admin/dhcp/class_dhcpConfiguration.inc:520
+#: admin/dhcp/class_dhcpConfiguration.inc:566
 #: admin/dhcp/sections/class_dhcpHost.inc:29
 msgid "Host"
 msgstr "Хост"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:521
+#: admin/dhcp/class_dhcpConfiguration.inc:567
 msgid "Group"
 msgstr "Группа"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:522
+#: admin/dhcp/class_dhcpConfiguration.inc:568
 #: admin/dhcp/sections/class_dhcpPool.inc:29
 msgid "Pool"
 msgstr ""
 
-#: admin/dhcp/class_dhcpConfiguration.inc:523
+#: admin/dhcp/class_dhcpConfiguration.inc:569
 #: admin/dhcp/sections/class_dhcpSubnet.inc:29
 msgid "Subnet"
 msgstr ""
 
-#: admin/dhcp/class_dhcpConfiguration.inc:524
+#: admin/dhcp/class_dhcpConfiguration.inc:570
 msgid "Failover peer"
 msgstr ""
 
-#: admin/dhcp/class_dhcpConfiguration.inc:525
+#: admin/dhcp/class_dhcpConfiguration.inc:571
 msgid "Shared network"
 msgstr ""
 
-#: admin/dhcp/class_dhcpConfiguration.inc:526
+#: admin/dhcp/class_dhcpConfiguration.inc:572
 msgid "DNS update key"
 msgstr ""
 
-#: admin/dhcp/class_dhcpConfiguration.inc:527
+#: admin/dhcp/class_dhcpConfiguration.inc:573
 msgid "DNS update zones"
 msgstr ""
 
@@ -455,14 +455,14 @@ msgstr ""
 msgid "The IP address to use in the DHCP host record"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:219
+#: admin/systems/class_dhcpSystem.inc:213
 msgid "Edit the DHCP zones of a system"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:233
+#: admin/systems/class_dhcpSystem.inc:227
 msgid "DHCP zones"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:237
+#: admin/systems/class_dhcpSystem.inc:231
 msgid "DHCP hosts declared for this system"
 msgstr ""

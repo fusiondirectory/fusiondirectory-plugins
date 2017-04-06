@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 18:02+0200\n"
+"POT-Creation-Date: 2017-04-05 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: Latvian (https://www.transifex.com/fusiondirectory/teams/12202/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -16,40 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
-
-#: html/jsonrpc.php:52
-#, php-format
-msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
-msgstr ""
-
-#: html/jsonrpc.php:62
-#, php-format
-msgid "Cannot locate file '%s' - please run '%s' to fix this"
-msgstr ""
-
-#: html/jsonrpc.php:311 html/jsonrpc.php:394
-msgid "Plugin"
-msgstr ""
-
-#: html/jsonrpc.php:487
-#, php-format
-msgid "Cannot delete %s. It has been locked by %s."
-msgstr ""
-
-#: html/jsonrpc.php:534 html/jsonrpc.php:563
-#, php-format
-msgid "Failed to get password method for account \"%s\". It has not been locked!"
-msgstr ""
-
-#: html/jsonrpc.php:559
-#, php-format
-msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
-msgstr ""
-
-#: html/jsonrpc.php:566
-#, php-format
-msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
-msgstr ""
 
 #: config/class_webserviceConfig.inc:28
 msgid "Webservice configuration"
@@ -69,4 +35,52 @@ msgstr ""
 
 #: config/class_webserviceConfig.inc:45
 msgid "Allow only HTTPS JSON-RPC requests"
+msgstr ""
+
+#: html/jsonrpc.php:52
+#, php-format
+msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
+msgstr ""
+
+#: html/jsonrpc.php:62
+#, php-format
+msgid "Cannot locate file '%s' - please run '%s' to fix this"
+msgstr ""
+
+#: html/jsonrpc.php:319 html/jsonrpc.php:402
+msgid "Plugin"
+msgstr ""
+
+#: html/jsonrpc.php:494
+#, php-format
+msgid "Cannot delete %s. It has been locked by %s."
+msgstr ""
+
+#: html/jsonrpc.php:541 html/jsonrpc.php:570
+#, php-format
+msgid "Failed to get password method for account \"%s\". It has not been locked!"
+msgstr ""
+
+#: html/jsonrpc.php:566
+#, php-format
+msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
+msgstr ""
+
+#: html/jsonrpc.php:573
+#, php-format
+msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
+msgstr ""
+
+#: html/jsonrpc.php:611 html/jsonrpc.php:620
+#, php-format
+msgid "Failed to get password method for account \"%s\""
+msgstr ""
+
+#: html/jsonrpc.php:623
+#, php-format
+msgid "Could not find account \"%s\" in LDAP"
+msgstr ""
+
+#: html/jsonrpc.php:667
+msgid "This token is invalid"
 msgstr ""

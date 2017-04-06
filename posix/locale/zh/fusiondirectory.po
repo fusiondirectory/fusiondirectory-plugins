@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-02-02 07:50+0100\n"
+"POT-Creation-Date: 2017-04-05 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Chinese (https://www.transifex.com/fusiondirectory/teams/12202/zh/)\n"
@@ -191,45 +191,226 @@ msgstr "允许访问这些主机"
 msgid "Only allow this user to connect to this list of hosts"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:303
+#: personal/posix/class_posixAccount.inc:298
 msgid "automatic"
 msgstr "自动"
 
-#: personal/posix/class_posixAccount.inc:322
+#: personal/posix/class_posixAccount.inc:317
 msgid "expired"
 msgstr "过期"
 
-#: personal/posix/class_posixAccount.inc:324
+#: personal/posix/class_posixAccount.inc:319
 msgid "grace time active"
 msgstr "时间限制激活"
 
-#: personal/posix/class_posixAccount.inc:327
-#: personal/posix/class_posixAccount.inc:329
-#: personal/posix/class_posixAccount.inc:331
+#: personal/posix/class_posixAccount.inc:322
+#: personal/posix/class_posixAccount.inc:324
+#: personal/posix/class_posixAccount.inc:326
 msgid "active"
 msgstr "活动"
 
-#: personal/posix/class_posixAccount.inc:327
+#: personal/posix/class_posixAccount.inc:322
 msgid "password expired"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:329
+#: personal/posix/class_posixAccount.inc:324
 msgid "password not changeable"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:424
+#: personal/posix/class_posixAccount.inc:423
 msgid "UID"
 msgstr "UID"
 
-#: personal/posix/class_posixAccount.inc:427
+#: personal/posix/class_posixAccount.inc:426
 #: admin/groups/posix/class_posixGroup.inc:74
 #: admin/groups/posix/class_posixGroup.inc:150
 msgid "GID"
 msgstr "GID"
 
-#: personal/posix/class_posixAccount.inc:531
+#: personal/posix/class_posixAccount.inc:534
 #, php-format
 msgid "Group of user %s"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:756
+#: personal/posix/class_posixAccount.inc:777
+#: personal/posix/class_posixAccount.inc:971
+msgid "Warning"
+msgstr "警告"
+
+#: personal/posix/class_posixAccount.inc:756
+#, php-format
+msgid "Unknown ID allocation method \"%s\"!"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:778
+#, php-format
+msgid "Timeout while waiting for lock. Ignoring lock from %s!"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:805
+#: personal/posix/class_posixAccount.inc:845
+#: personal/posix/class_posixAccount.inc:857
+#: personal/posix/class_posixAccount.inc:861
+#: personal/posix/class_posixAccount.inc:868
+#: personal/posix/class_posixAccount.inc:877
+#: personal/posix/class_posixAccount.inc:939
+msgid "Error"
+msgstr "错误"
+
+#: personal/posix/class_posixAccount.inc:805
+#: personal/posix/class_posixAccount.inc:845
+#: personal/posix/class_posixAccount.inc:857
+#: personal/posix/class_posixAccount.inc:861
+#: personal/posix/class_posixAccount.inc:868
+#: personal/posix/class_posixAccount.inc:877
+msgid "Cannot allocate a free ID:"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:805
+#, php-format
+msgid "%sPoolMin >= %sPoolMax!"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:837
+msgid "LDAP error"
+msgstr "LDAP 错误"
+
+#: personal/posix/class_posixAccount.inc:845
+msgid "sambaUnixIdPool is not unique!"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:857
+#: personal/posix/class_posixAccount.inc:861
+msgid "no ID available!"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:877
+msgid "maximum tries exceeded!"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:939
+msgid "Cannot allocate a free ID!"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:971
+msgid "'nextIdHook' is not available. Using default base!"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:28
+msgid "POSIX configuration"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:29
+msgid "FusionDirectory POSIX plugin configuration"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:42
+msgid "Posix"
+msgstr "Posix"
+
+#: config/posix/class_posixConfig.inc:46
+msgid "Group/user min id"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:47
+msgid ""
+"The minimum assignable user or group id to avoid security leaks with id 0 "
+"accounts."
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:52
+msgid "Next id hook"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:52
+msgid ""
+"A script to be called for finding the next free id number for users or "
+"groups."
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:56
+msgid "Base number for user id"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:57
+msgid "Where to start looking for a new free user id."
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:62
+msgid "Base number for group id"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:63
+msgid "Where to start looking for a new free group id."
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:68
+msgid "Id allocation method"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:68
+msgid "Method to allocate user/group ids"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:71
+msgid "Traditional"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:71
+msgid "Samba unix id pool"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:74
+msgid "Pool user id min"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:74
+msgid "Minimum value for user id when using pool method"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:79
+msgid "Pool user id max"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:79
+msgid "Maximum value for user id when using pool method"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:84
+msgid "Pool group id min"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:84
+msgid "Minimum value for group id when using pool method"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:89
+msgid "Pool group id max"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:89
+msgid "Maximum value for group id when using pool method"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:96
+msgid "Shells"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:100
+msgid "Available shells"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:100
+msgid "Available POSIX shells for FD users."
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:107
+msgid "Default shell"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:107
+msgid "Shell used by default when activating Unix tab."
 msgstr ""
 
 #: admin/groups/posix/class_posixGroup.inc:34

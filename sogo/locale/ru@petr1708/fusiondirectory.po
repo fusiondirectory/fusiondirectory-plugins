@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 18:02+0200\n"
+"POT-Creation-Date: 2017-04-05 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: Russian Petrine orthography (https://www.transifex.com/fusiondirectory/teams/12202/ru@petr1708/)\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru@petr1708\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: config/sogo/class_sogoConfig.inc:28
+msgid "SOGo configuration"
+msgstr ""
+
+#: config/sogo/class_sogoConfig.inc:29
+msgid "FusionDirectory sogo plugin configuration"
+msgstr ""
+
+#: config/sogo/class_sogoConfig.inc:42 admin/sogo/class_sogoManagement.inc:33
+#: admin/sogo/class_sogoManagement.inc:38
+msgid "SOGo"
+msgstr ""
+
+#: config/sogo/class_sogoConfig.inc:45
+msgid "SOGo RDN"
+msgstr ""
+
+#: config/sogo/class_sogoConfig.inc:45
+msgid "Branch in which SOGo objects will be stored"
+msgstr ""
 
 #: admin/sogo/class_sogoResource.inc:31 admin/sogo/class_sogoResource.inc:32
 #: admin/sogo/class_sogoResource.inc:35 admin/sogo/class_sogoResource.inc:53
@@ -47,26 +68,5 @@ msgid "Kind"
 msgstr ""
 
 #: admin/sogo/class_sogoManagement.inc:34
-#: admin/sogo/class_sogoManagement.inc:39 config/sogo/class_sogoConfig.inc:42
-msgid "SOGo"
-msgstr ""
-
-#: admin/sogo/class_sogoManagement.inc:35
 msgid "SOGo management"
-msgstr ""
-
-#: config/sogo/class_sogoConfig.inc:28
-msgid "SOGo configuration"
-msgstr ""
-
-#: config/sogo/class_sogoConfig.inc:29
-msgid "FusionDirectory sogo plugin configuration"
-msgstr ""
-
-#: config/sogo/class_sogoConfig.inc:45
-msgid "SOGo RDN"
-msgstr ""
-
-#: config/sogo/class_sogoConfig.inc:45
-msgid "Branch in which SOGo objects will be stored"
 msgstr ""

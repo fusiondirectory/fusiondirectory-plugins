@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 18:02+0200\n"
+"POT-Creation-Date: 2017-04-05 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -17,26 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: html/class_expiredUserPostpone.inc:58
-msgid "This token is invalid"
-msgstr "Questo token non è valido"
-
-#: html/class_expiredUserPostpone.inc:193
-msgid "Contact your administrator, there was a problem with mail server"
-msgstr ""
-"Contattare l'amministratore, c'è stato un problema con il server di posta "
-"elettronica"
-
-#: html/class_expiredUserPostpone.inc:204
-#, php-format
-msgid "Did not find an account with login \"%s\""
-msgstr "Alcun account trovato con login \"%s\" "
-
-#: html/class_expiredUserPostpone.inc:207
-#, php-format
-msgid "Found multiple accounts with login \"%s\""
-msgstr "Trovati più accounts con login \"%s\""
 
 #: config/user-reminder/class_userReminderConfig.inc:28
 msgid "User reminder"
@@ -171,6 +151,26 @@ msgid ""
 msgstr ""
 "Caro %1$s,\n"
 "la data di scadenza del tuo acccount %2$s é stata rinviata con successo.\n"
+
+#: html/class_expiredUserPostpone.inc:58
+msgid "This token is invalid"
+msgstr "Questo token non è valido"
+
+#: html/class_expiredUserPostpone.inc:197
+msgid "Contact your administrator, there was a problem with mail server"
+msgstr ""
+"Contattare l'amministratore, c'è stato un problema con il server di posta "
+"elettronica"
+
+#: html/class_expiredUserPostpone.inc:206
+#, php-format
+msgid "Did not find an account with login \"%s\""
+msgstr "Alcun account trovato con login \"%s\" "
+
+#: html/class_expiredUserPostpone.inc:209
+#, php-format
+msgid "Found multiple accounts with login \"%s\""
+msgstr "Trovati più accounts con login \"%s\""
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:2
 #: ihtml/themes/breezy/user-reminder.tpl.c:5

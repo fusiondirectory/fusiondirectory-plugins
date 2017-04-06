@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-01-25 11:18+0100\n"
+"POT-Creation-Date: 2017-04-05 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Spanish (Colombia) (https://www.transifex.com/fusiondirectory/teams/12202/es_CO/)\n"
@@ -17,6 +17,69 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es_CO\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:60
+msgid "Server did not return auth token"
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:111
+msgid "Partage API answer malformated"
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:115
+#, php-format
+msgid "Partage API Auth failed: %s"
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:117
+msgid "Partage API Auth failed with no error message"
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:126
+#, php-format
+msgid "Unable to connect to %s: %s"
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:128
+#, php-format
+msgid "Unable to connect to %s"
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:193
+msgid "Warning"
+msgstr "Precacuión"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:193
+#, php-format
+msgid ""
+"Several addresses were given in gosaMailForwardingAddress but only one is "
+"supported by PARTAGE. %s will be sent to PARTAGE."
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:320
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:333
+msgid "An account with the same email address already exists in Partage"
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:398
+msgid "Invalid value in fdRenaterPartageServerDeletionType"
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:439
+msgid "Never"
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:446
+msgid "Last login"
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:447
+msgid "Account status"
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:447
+msgid "Unknown"
+msgstr "Desconocido"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:28
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:29
@@ -27,42 +90,69 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:43
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:44
 msgid "URI"
 msgstr ""
 
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:43
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:44
 msgid "URI to contact the Renater Partage API"
 msgstr ""
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:48
+msgid "User Agent"
+msgstr ""
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:48
+msgid "User Agent to use to contact the Renater Partage API"
+msgstr ""
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:53
+msgid "Mailbox deletion"
+msgstr ""
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:53
+msgid ""
+"What to do with the PARTAGE account when mail tab is deactivated or user is "
+"deleted"
+msgstr ""
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:56
+msgid "Delete"
+msgstr "Borrar"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:56
+msgid "Disable"
+msgstr ""
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:62
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:85
+msgid "Domains"
+msgstr ""
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:67
 msgid "Domains handled by this Renater Partage server"
 msgstr ""
 
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:52
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:71
 msgid "Domain"
 msgstr "Dominio"
 
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:52
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:71
 msgid "Domain handled by this server"
 msgstr ""
 
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:56
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:75
 msgid "Key"
 msgstr ""
 
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:56
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:75
 msgid "Key for this domain"
 msgstr ""
 
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:60
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:79
 msgid "Class of service"
 msgstr ""
 
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:60
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:79
 msgid "Possible classes of service for this domain, separated by commas"
-msgstr ""
-
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:66
-msgid "Domains"
 msgstr ""

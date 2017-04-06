@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2016-10-15 18:02+0200\n"
+"POT-Creation-Date: 2017-04-05 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -17,80 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:33
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:34
-msgid "Spamassassin service"
-msgstr "Servizio Spamassassin"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:34
-msgid "Services"
-msgstr "Servizi"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:48
-msgid "Spam tagging"
-msgstr "Etichettatura dello spam"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:51
-msgid "Rewrite header"
-msgstr "Riscrivi l'intestazione"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:55
-msgid "Required score"
-msgstr "Punteggio richiesto"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:55
-msgid "Select required score to tag mail as spam"
-msgstr "Scegli il punteggio richiesto per etichettare un messaggio come spam"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:61
-msgid "Trusted networks"
-msgstr "Reti affidabili"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:68
-msgid "Flags"
-msgstr "Flags"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:71
-msgid "Enable use of bayes filtering"
-msgstr "Attiva l'uso del metodo di filtraggio bayesiano"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:76
-msgid "Enable bayes auto learning"
-msgstr "Attiva l'apprendimento automatico per il metodo bayesiano"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:81
-msgid "Enable RBL checks"
-msgstr "Attiva le verifiche RBL"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:86
-msgid "Enable use of Razor"
-msgstr "Attiva l'uso di Razor"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:91
-msgid "Enable use of DCC"
-msgstr "Attiva l'uso di DCC"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:96
-msgid "Enable use of Pyzor"
-msgstr "Attiva l'uso di Pyzor"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:111
-msgid "Rules"
-msgstr "Regole"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:115
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:123
-msgid "Edit spam rule"
-msgstr "Modifica regola dello spam"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:118
-msgid "Name"
-msgstr "Nome"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:119
-msgid "Rule"
-msgstr "Regola"
 
 #: personal/spamassassin/class_spamAssassinAccount.inc:31
 msgid "Spam rules"
@@ -127,3 +53,77 @@ msgstr "SpamAssassin"
 #: personal/spamassassin/class_spamAssassinAccount.inc:66
 msgid "Edit user's spam rules"
 msgstr "Modifica le regole dello spam per l'utente"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:31
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:32
+msgid "Spamassassin service"
+msgstr "Servizio Spamassassin"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:32
+msgid "Services"
+msgstr "Servizi"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:46
+msgid "Spam tagging"
+msgstr "Etichettatura dello spam"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:49
+msgid "Rewrite header"
+msgstr "Riscrivi l'intestazione"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:53
+msgid "Required score"
+msgstr "Punteggio richiesto"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:53
+msgid "Select required score to tag mail as spam"
+msgstr "Scegli il punteggio richiesto per etichettare un messaggio come spam"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:59
+msgid "Trusted networks"
+msgstr "Reti affidabili"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:66
+msgid "Flags"
+msgstr "Flags"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:69
+msgid "Enable use of bayes filtering"
+msgstr "Attiva l'uso del metodo di filtraggio bayesiano"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:74
+msgid "Enable bayes auto learning"
+msgstr "Attiva l'apprendimento automatico per il metodo bayesiano"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:79
+msgid "Enable RBL checks"
+msgstr "Attiva le verifiche RBL"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:84
+msgid "Enable use of Razor"
+msgstr "Attiva l'uso di Razor"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:89
+msgid "Enable use of DCC"
+msgstr "Attiva l'uso di DCC"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:94
+msgid "Enable use of Pyzor"
+msgstr "Attiva l'uso di Pyzor"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:109
+msgid "Rules"
+msgstr "Regole"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:113
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:121
+msgid "Edit spam rule"
+msgstr "Modifica regola dello spam"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:116
+msgid "Name"
+msgstr "Nome"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:117
+msgid "Rule"
+msgstr "Regola"
