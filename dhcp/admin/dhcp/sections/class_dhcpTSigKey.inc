@@ -22,6 +22,16 @@ class dhcpTSigKey extends dhcpPlugin
 {
   public $objectclasses = array('dhcpTSigKey');
 
+  public static function plInfo()
+  {
+    return array(
+      'plShortName'     => _('DHCP DNS update key'),
+      'plDescription'   => _('DHCP DNS update key'),
+      'plCategory'      => array('dhcpConfiguration'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
+
   static function getAttributesInfo ()
   {
     return array(

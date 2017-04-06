@@ -21,4 +21,14 @@
 class dhcpGroup extends dhcpPlugin
 {
   public $objectclasses = array('dhcpGroup');
+
+  public static function plInfo()
+  {
+    return array(
+      'plShortName'     => _('DHCP group'),
+      'plDescription'   => _('DHCP group'),
+      'plCategory'      => array('dhcpConfiguration'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
 }

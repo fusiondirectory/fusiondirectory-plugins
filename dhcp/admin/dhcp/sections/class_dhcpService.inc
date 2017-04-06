@@ -22,6 +22,16 @@ class dhcpService extends dhcpPlugin
 {
   public $objectclasses = array('dhcpService');
 
+  public static function plInfo()
+  {
+    return array(
+      'plShortName'     => _('DHCP service'),
+      'plDescription'   => _('DHCP service'),
+      'plCategory'      => array('dhcpConfiguration'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
+
   static function getAttributesInfo ()
   {
     $attributesInfo = parent::getAttributesInfo();

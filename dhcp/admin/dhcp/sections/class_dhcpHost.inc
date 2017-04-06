@@ -22,6 +22,16 @@ class dhcpHost extends dhcpPlugin
 {
   public $objectclasses = array('dhcpHost');
 
+  public static function plInfo()
+  {
+    return array(
+      'plShortName'     => _('DHCP host'),
+      'plDescription'   => _('DHCP host'),
+      'plCategory'      => array('dhcpConfiguration'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
+
   static function getAttributesInfo ()
   {
     $attributesInfo = parent::getAttributesInfo();

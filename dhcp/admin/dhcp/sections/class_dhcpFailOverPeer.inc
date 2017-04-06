@@ -22,6 +22,16 @@ class dhcpFailOverPeer extends dhcpPlugin
 {
   public $objectclasses = array('dhcpFailOverPeer');
 
+  public static function plInfo()
+  {
+    return array(
+      'plShortName'     => _('DHCP failover peer'),
+      'plDescription'   => _('DHCP failover peer'),
+      'plCategory'      => array('dhcpConfiguration'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
+
   static function getAttributesInfo ()
   {
     return array(
