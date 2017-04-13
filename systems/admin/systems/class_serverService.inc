@@ -112,10 +112,8 @@ class ServerService extends simpleManagement
       $this->registerAction('new_'.$name,       'newService');
     }
     $this->registerAction('remove',             'removeService');
-    $this->registerAction('newServiceSelected', 'newServiceSelected');
     $this->registerAction('saveService',        'saveService');
     $this->registerAction('cancelService',      'cancelEdit');
-    $this->registerAction('newServiceCancel',   'closeDialogs');
     $this->registerAction('status',             'updateServiceStatus');
     $this->registerAction('restart',            'updateServiceStatus');
     $this->registerAction('stop',               'updateServiceStatus');
@@ -147,11 +145,7 @@ class ServerService extends simpleManagement
   function detectPostActions()
   {
     $action = parent::detectPostActions();
-    if (isset($_POST['SaveServiceAdd'])) {
-      $action['action'] = 'newServiceSelected';
-    } elseif (isset($_POST['CancelServiceAdd'])) {
-      $action['action'] = 'newServiceCancel';
-    } elseif (isset($_POST['SaveService'])) {
+    if (isset($_POST['SaveService'])) {
       $action['action'] = 'saveService';
     } elseif (isset($_POST['CancelService'])) {
       $action['action'] = 'cancelService';
@@ -252,13 +246,11 @@ class ServerService extends simpleManagement
     }
   }
 
-  /*! \brief  Execute this plugin
-   *          Handle actions/events, locking, snapshots, dialogs, tabs,...
-   */
-  function execute()
+  function renderList()
   {
+    /* Save services in session, will be used by filterServerService when updating list */
     session::set('ServerService', $this->plugins);
-    return parent::execute();
+    return parent::renderList();
   }
 
   function updateServicesVars ($service)
