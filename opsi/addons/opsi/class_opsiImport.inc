@@ -53,6 +53,9 @@ class opsiImport extends systemImport
   protected function getExtraTabs($server_dn)
   {
     return array(
+      'sambaSystemTab' => array(
+        'is_account'      => TRUE,
+      ),
       'opsiClient' => array(
         'is_account'      => TRUE,
         'fdOpsiServerDn'  => $server_dn,

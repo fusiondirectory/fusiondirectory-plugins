@@ -72,7 +72,7 @@ class systemImport extends simplePlugin
         $messages[$host['id']] = array(sprintf(_('Could not parse %s'), $host['id']));
         continue;
       }
-      $cn   = $m[1].'$';
+      $cn   = $m[1];
       $zone = $m[2];
 
       $objectType = $defaultObjectType;
@@ -83,8 +83,10 @@ class systemImport extends simplePlugin
       $tabObject->set_acl_base($base);
       $baseObject = $tabObject->getBaseObject();
       $baseObject->cn   = $cn;
-      $baseObject->uid  = $baseObject->cn;
       $baseObject->description  = $host['description'];
+      if (!is_array($host['ipAddress'])) {
+        $host['ipAddress'] = array($host['ipAddress']);
+      }
       $baseObject->ipHostNumber = $host['ipAddress'];
       $baseObject->macAddress   = $host['hardwareAddress'];
 
