@@ -397,4 +397,18 @@ class dnsHost extends simplePlugin
       unset($attr);
     }
   }
+
+  /* Record example: array('host', 'aRecord', '192.168.1.1', '')
+   * Fields are relativeDomainName, record type, record content, reverse zone (for a/aaaa) */
+  function addRecord($zoneDn, array $record)
+  {
+    if (isset($this->zonesCache[$zoneDn])) {
+      $name   = $this->zonesCache[$zoneDn];
+      $zoneid = preg_replace('/[\/\-,.#:; =]/', '_', $zoneDn);
+    } else {
+      return FALSE;
+    }
+    $attrId = 'zoneRecords'.$zoneid;
+    $this->attributesAccess[$attrId]->addValue($record);
+  }
 }

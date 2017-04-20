@@ -124,9 +124,12 @@ class systemImport extends simplePlugin
       /* Activate DNS if we find a matching server */
       $tabObject->by_object['dnsHost']->is_account = FALSE;
       foreach ($dns as $dn => $value) {
-        if (preg_match('/'.$zone.'\.?$/', $value)) {
+        if (preg_match('/^'.$zone.'\.?$/', $value)) {
           $tabObject->by_object['dnsHost']->is_account  = TRUE;
           $tabObject->by_object['dnsHost']->fdDNSZoneDn = array($dn);
+          foreach ($baseObject->ipHostNumber as $ipHostNumber) {
+            $tabObject->by_object['dnsHost']->addRecord($dn, array($cn, 'aRecord', $ipHostNumber, ''));
+          }
           break;
         }
       }
