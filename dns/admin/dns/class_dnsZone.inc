@@ -293,10 +293,10 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         while ($subattrs = $ldap->fetch()) {
           unset($subattrs['pTRRecord']['count']);
           foreach ($subattrs['pTRRecord'] as $ptrRecord) {
-            if ($ptrRecord == $attrs['zoneName'][0]) {
+            if (preg_match('/^'.preg_quote($attrs['zoneName'][0], '/').'\.?$/', $ptrRecord)) {
               $name = '@';
             } else {
-              $name = preg_replace('/\.'.preg_quote($attrs['zoneName'][0]).'$/', '', $ptrRecord);
+              $name = preg_replace('/\.'.preg_quote($attrs['zoneName'][0], '/').'\.?$/', '', $ptrRecord);
             }
             if ($ipv6) {
               $ip = $baseIp.':'.implode(':', array_map('implode', array_chunk(array_reverse(explode('.', $subattrs['relativeDomainName'][0])), 4)));
@@ -397,6 +397,10 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       $this->reverseZones = $this->plugin->reverseZones;
       $this->sOARecord    = $this->plugin->sOARecord;
     }
+    $zoneNameWithFinalDot = $zoneName;
+    if (!preg_match('/\.$/', $zoneNameWithFinalDot)) {
+      $zoneNameWithFinalDot .= '.';
+    }
     foreach ($this->reverseZones as $reverseZone) {
       /* Write this reverse under the zone dn */
       $reverseDn = 'zoneName='.$reverseZone.','.$zoneDn;
@@ -438,8 +442,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
               'zoneName'            => $reverseZone,
               'dNSClass'            => 'IN',
               'pTRRecord'           => array_map(
-                function ($name) use ($zoneName) {
-                  return (empty($name) ? '' : $name.'.').$zoneName;
+                function ($name) use ($zoneNameWithFinalDot) {
+                  return (empty($name) ? '' : $name.'.').$zoneNameWithFinalDot;
                 },
                 $names
               ),
