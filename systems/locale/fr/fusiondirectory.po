@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-04-05 19:03+0200\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -192,7 +192,7 @@ msgstr "serveur"
 #: admin/systems/class_serverGeneric.inc:39
 #: admin/systems/class_serverGeneric.inc:44
 #: admin/systems/class_serverGeneric.inc:45
-#: admin/systems/class_systemImport.inc:170
+#: admin/systems/class_systemImport.inc:175
 msgid "Server"
 msgstr "Serveur"
 
@@ -491,28 +491,28 @@ msgstr "Service"
 msgid "Server services"
 msgstr "Services serveur"
 
-#: admin/systems/class_serverService.inc:215
-#: admin/systems/class_serverService.inc:285
+#: admin/systems/class_serverService.inc:209
+#: admin/systems/class_serverService.inc:277
 #: admin/systems/services/shares/class_serviceShare.inc:105
 msgid "Error"
 msgstr "Erreur"
 
-#: admin/systems/class_serverService.inc:279
+#: admin/systems/class_serverService.inc:271
 msgid "Information"
 msgstr "Information"
 
-#: admin/systems/class_serverService.inc:279
+#: admin/systems/class_serverService.inc:271
 msgid "Cannot update service status until it has been saved!"
 msgstr "Impossible de mettre à jour le statut avant que cela soit sauvé !"
 
-#: admin/systems/class_serverService.inc:285
+#: admin/systems/class_serverService.inc:277
 #, php-format
 msgid "Unknown action \"%s\""
 msgstr "Action inconnue \"%s\""
 
-#: admin/systems/class_serverService.inc:306
-#: admin/systems/class_serverService.inc:316
-#: admin/systems/class_serverService.inc:327
+#: admin/systems/class_serverService.inc:298
+#: admin/systems/class_serverService.inc:308
+#: admin/systems/class_serverService.inc:319
 #, php-format
 msgid "Could not get execute action %s on service %s."
 msgstr "Impossible d'exécuter l'action %s sur le service %s."
@@ -570,21 +570,21 @@ msgstr "Ce système utilise les adresses IP (v4 ou v6)"
 msgid "Could not parse %s"
 msgstr "Impossible de lire le contenu de %s"
 
-#: admin/systems/class_systemImport.inc:118
+#: admin/systems/class_systemImport.inc:120
 #, php-format
 msgid "No DHCP server found for IPs %s"
 msgstr "Pas de serveur DHCP trouvé pour l'IP %s"
 
-#: admin/systems/class_systemImport.inc:132
+#: admin/systems/class_systemImport.inc:137
 #, php-format
 msgid "No DNS server found for zone %s"
 msgstr "Pas de serveur DNS trouvé pour la zone %s"
 
-#: admin/systems/class_systemImport.inc:166
+#: admin/systems/class_systemImport.inc:171
 msgid "Import"
 msgstr "Importer"
 
-#: admin/systems/class_systemImport.inc:170
+#: admin/systems/class_systemImport.inc:175
 msgid "The server you wish to import hosts from"
 msgstr "Le serveur duquel vous souhaitez importer des machines"
 

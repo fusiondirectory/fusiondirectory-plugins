@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-04-05 19:03+0200\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Selina Oudermans <selina.oudermans@digipolis.be>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,7 +42,7 @@ msgstr "Samba Instellingen"
 
 #: personal/samba/class_sambaAccount.inc:183
 msgid "Samba profile"
-msgstr ""
+msgstr "Samba profiel"
 
 #: personal/samba/class_sambaAccount.inc:189
 #: personal/samba/class_sambaAccount.inc:222
@@ -128,7 +128,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:249
 msgid "Connection timeout"
-msgstr ""
+msgstr "Verbinding verbroken"
 
 #: personal/samba/class_sambaAccount.inc:249
 msgid "Timeout when connecting to terminal server"
@@ -172,7 +172,7 @@ msgstr "Standaard printer als client printer"
 
 #: personal/samba/class_sambaAccount.inc:272
 msgid "Default printer for this client"
-msgstr ""
+msgstr "Standaard printer voor de client"
 
 #: personal/samba/class_sambaAccount.inc:276
 msgid "Shadowing"
@@ -240,11 +240,11 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:313
 msgid "The password never expire"
-msgstr ""
+msgstr "Het wachtwoord vervalt nooit"
 
 #: personal/samba/class_sambaAccount.inc:313
 msgid "The password will never expire"
-msgstr ""
+msgstr "Het wachtwoord zal nooit vervallen"
 
 #: personal/samba/class_sambaAccount.inc:318
 msgid "Login from windows client requires no password"
@@ -252,7 +252,7 @@ msgstr "Inloggen op Windows werkstation zonder wachtwoord toestaan"
 
 #: personal/samba/class_sambaAccount.inc:318
 msgid "Login from a client without a password"
-msgstr ""
+msgstr "Inloggen vanaf een client zonder wachtwoord"
 
 #: personal/samba/class_sambaAccount.inc:323
 msgid "Lock samba account"
@@ -268,7 +268,7 @@ msgstr "Kan paswoord niet wijzigen"
 
 #: personal/samba/class_sambaAccount.inc:328
 msgid "Not allowed to change password"
-msgstr ""
+msgstr "Niet mogelijk om het wachtwoord te wijzigen"
 
 #: personal/samba/class_sambaAccount.inc:332
 msgid "Account expiration"
@@ -276,7 +276,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:332
 msgid "When does the account expire"
-msgstr ""
+msgstr "Wanneer zal dit account vervallen"
 
 #: personal/samba/class_sambaAccount.inc:340
 msgid "Samba logon times"
@@ -284,7 +284,7 @@ msgstr "Samba inlog tijdstippen"
 
 #: personal/samba/class_sambaAccount.inc:340
 msgid "What is the allowed time to connect"
-msgstr ""
+msgstr "Wat is de toegelaten tijd om te verbinden"
 
 #: personal/samba/class_sambaAccount.inc:341
 msgid "Edit settings"
@@ -342,7 +342,7 @@ msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:29
 msgid "Samba plugin configuration"
-msgstr ""
+msgstr "Samba plugin configuratie"
 
 #: config/samba/class_sambaPluginConfig.inc:44
 msgid "Samba ID mapping"
@@ -356,7 +356,7 @@ msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:49
 msgid "Samba SID"
-msgstr ""
+msgstr "Samba SID"
 
 #: config/samba/class_sambaPluginConfig.inc:50
 msgid ""
@@ -402,19 +402,19 @@ msgstr ""
 
 #: admin/groups/samba/class_sambaGroup.inc:30
 msgid "Samba group settings"
-msgstr ""
+msgstr "Samba groep instellingen"
 
 #: admin/groups/samba/class_sambaGroup.inc:45
 msgid "Samba domain"
-msgstr ""
+msgstr "Samba domein"
 
 #: admin/groups/samba/class_sambaGroup.inc:49
 msgid "Samba information"
-msgstr ""
+msgstr "Samba informatie"
 
 #: admin/groups/samba/class_sambaGroup.inc:56
 msgid "Group type"
-msgstr ""
+msgstr "Groep type"
 
 #: admin/groups/samba/class_sambaGroup.inc:56
 msgid "Samba group type"
@@ -455,7 +455,7 @@ msgstr "Speciale groep (%d)"
 
 #: admin/samba/class_sambaDomainManagement.inc:34
 msgid "Samba domains"
-msgstr ""
+msgstr "Samba domeinen"
 
 #: admin/samba/class_sambaDomainManagement.inc:35
 msgid "Samba domain management"
@@ -464,11 +464,11 @@ msgstr ""
 #: admin/samba/class_sambaDomain.inc:30 admin/samba/class_sambaDomain.inc:31
 #: admin/samba/class_sambaDomain.inc:34
 msgid "Samba Domain"
-msgstr ""
+msgstr "Samba domein"
 
 #: admin/samba/class_sambaDomain.inc:35
 msgid "Samba domain settings"
-msgstr ""
+msgstr "Samba domein instellingen"
 
 #: admin/samba/class_sambaDomain.inc:51
 #: admin/systems/samba/class_sambaSystemTab.inc:44
@@ -481,7 +481,7 @@ msgstr "Domein naam"
 
 #: admin/samba/class_sambaDomain.inc:54
 msgid "Name of this domain"
-msgstr ""
+msgstr "Naam van dit domein"
 
 #: admin/samba/class_sambaDomain.inc:58
 msgid "SID"
@@ -489,7 +489,7 @@ msgstr "SID"
 
 #: admin/samba/class_sambaDomain.inc:58
 msgid "SID of this domain"
-msgstr ""
+msgstr "SID van dit domein"
 
 #: admin/samba/class_sambaDomain.inc:62
 msgid "Rid base"
@@ -520,7 +520,7 @@ msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:78
 msgid "Next RID"
-msgstr ""
+msgstr "Volgend RID"
 
 #: admin/samba/class_sambaDomain.inc:79
 msgid "Next NT rid to give out for anything"
@@ -528,7 +528,7 @@ msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:83
 msgid "Next group RID"
-msgstr ""
+msgstr "Volgende RID group"
 
 #: admin/samba/class_sambaDomain.inc:84
 msgid "Next NT rid to give out for groups"
@@ -544,11 +544,11 @@ msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:93
 msgid "Minimum password length"
-msgstr ""
+msgstr "Minimum lengte van het wachtwoord"
 
 #: admin/samba/class_sambaDomain.inc:94
 msgid "Minimal password length (default: 5)"
-msgstr ""
+msgstr "Minimum lengte van het wachtwoord (standaard: 5)"
 
 #: admin/samba/class_sambaDomain.inc:98
 msgid "Password history length"
@@ -560,7 +560,7 @@ msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:103
 msgid "Logon to change password"
-msgstr ""
+msgstr "Aanmelden om het wachtwoord te veranderen"
 
 #: admin/samba/class_sambaDomain.inc:104
 msgid "Force Users to logon for password change (default: 0 => off, 2 => on)"
@@ -592,7 +592,7 @@ msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:123
 msgid "Force logoff"
-msgstr ""
+msgstr "Afmelden forceren"
 
 #: admin/samba/class_sambaDomain.inc:124
 msgid "Disconnect Users outside logon hours (default: -1 => off, 0 => on)"
@@ -608,7 +608,7 @@ msgstr ""
 
 #: admin/systems/samba/class_sambaSystemTab.inc:31
 msgid "Windows workstation information"
-msgstr ""
+msgstr "Windows workstation informatie"
 
 #: admin/systems/samba/class_argonautEventSambaShares.inc:27
 msgid "Update Samba Shares"

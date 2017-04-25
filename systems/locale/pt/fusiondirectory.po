@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-04-05 19:03+0200\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Portuguese (https://www.transifex.com/fusiondirectory/teams/12202/pt/)\n"
@@ -192,7 +192,7 @@ msgstr "Servidor"
 #: admin/systems/class_serverGeneric.inc:39
 #: admin/systems/class_serverGeneric.inc:44
 #: admin/systems/class_serverGeneric.inc:45
-#: admin/systems/class_systemImport.inc:170
+#: admin/systems/class_systemImport.inc:175
 msgid "Server"
 msgstr "Servidor"
 
@@ -491,28 +491,28 @@ msgstr ""
 msgid "Server services"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:215
-#: admin/systems/class_serverService.inc:285
+#: admin/systems/class_serverService.inc:209
+#: admin/systems/class_serverService.inc:277
 #: admin/systems/services/shares/class_serviceShare.inc:105
 msgid "Error"
 msgstr "Erro"
 
-#: admin/systems/class_serverService.inc:279
+#: admin/systems/class_serverService.inc:271
 msgid "Information"
 msgstr "Informação"
 
-#: admin/systems/class_serverService.inc:279
+#: admin/systems/class_serverService.inc:271
 msgid "Cannot update service status until it has been saved!"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:285
+#: admin/systems/class_serverService.inc:277
 #, php-format
 msgid "Unknown action \"%s\""
 msgstr ""
 
-#: admin/systems/class_serverService.inc:306
-#: admin/systems/class_serverService.inc:316
-#: admin/systems/class_serverService.inc:327
+#: admin/systems/class_serverService.inc:298
+#: admin/systems/class_serverService.inc:308
+#: admin/systems/class_serverService.inc:319
 #, php-format
 msgid "Could not get execute action %s on service %s."
 msgstr ""
@@ -570,21 +570,21 @@ msgstr ""
 msgid "Could not parse %s"
 msgstr ""
 
-#: admin/systems/class_systemImport.inc:118
+#: admin/systems/class_systemImport.inc:120
 #, php-format
 msgid "No DHCP server found for IPs %s"
 msgstr ""
 
-#: admin/systems/class_systemImport.inc:132
+#: admin/systems/class_systemImport.inc:137
 #, php-format
 msgid "No DNS server found for zone %s"
 msgstr ""
 
-#: admin/systems/class_systemImport.inc:166
+#: admin/systems/class_systemImport.inc:171
 msgid "Import"
 msgstr ""
 
-#: admin/systems/class_systemImport.inc:170
+#: admin/systems/class_systemImport.inc:175
 msgid "The server you wish to import hosts from"
 msgstr ""
 
