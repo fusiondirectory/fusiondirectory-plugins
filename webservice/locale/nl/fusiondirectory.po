@@ -20,11 +20,11 @@ msgstr ""
 
 #: config/class_webserviceConfig.inc:28
 msgid "Webservice configuration"
-msgstr ""
+msgstr "Webservice configuratie"
 
 #: config/class_webserviceConfig.inc:29
 msgid "FusionDirectory webservice plugin configuration"
-msgstr ""
+msgstr "FusionDirectory webservice plugin configuratie"
 
 #: config/class_webserviceConfig.inc:42
 msgid "Webservice"
@@ -32,11 +32,11 @@ msgstr "Webservice"
 
 #: config/class_webserviceConfig.inc:45
 msgid "Force SSL"
-msgstr ""
+msgstr "SSL forceren"
 
 #: config/class_webserviceConfig.inc:45
 msgid "Allow only HTTPS JSON-RPC requests"
-msgstr ""
+msgstr "Enkel HTTP JSON-RPC aanvragen toeg"
 
 #: html/jsonrpc.php:52
 #, php-format
@@ -55,32 +55,36 @@ msgstr "Plugin"
 #: html/jsonrpc.php:494
 #, php-format
 msgid "Cannot delete %s. It has been locked by %s."
-msgstr ""
+msgstr "%s kan niet verwijderd worden. Het is geblokkeerd door %s."
 
 #: html/jsonrpc.php:541 html/jsonrpc.php:570
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr ""
+"Kan de wachtwoord methode niet opvragen voor account \"%s\". Het is niet "
+"geblokkeerd!"
 
 #: html/jsonrpc.php:566
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr ""
+"Kan wachtwoord methode \"%s\" niet blokkeren. Het account \"%s\" is niet "
+"geblokkeerd."
 
 #: html/jsonrpc.php:573
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
-msgstr ""
+msgstr "Kan het account \"%s\" niet vinden in LDAP. Het is niet geblokkeerd."
 
 #: html/jsonrpc.php:611 html/jsonrpc.php:620
 #, php-format
 msgid "Failed to get password method for account \"%s\""
-msgstr ""
+msgstr "Kan de wachtwoord methode niet opvragen voor account \"%s\"."
 
 #: html/jsonrpc.php:623
 #, php-format
 msgid "Could not find account \"%s\" in LDAP"
-msgstr ""
+msgstr "Kan het account \"%s\" in LDAP niet vinden"
 
 #: html/jsonrpc.php:667
 msgid "This token is invalid"

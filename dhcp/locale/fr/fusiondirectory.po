@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2017-04-21 17:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -211,7 +211,7 @@ msgstr "Créer une nouvelle section DHCP"
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:28
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:29
 msgid "DHCP failover peer"
-msgstr ""
+msgstr "Pair de reprise sur panne"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:46
 msgid "Primary server"
@@ -329,7 +329,7 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:28
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:29
 msgid "DHCP DNS update zone"
-msgstr ""
+msgstr "Zone de mise à jour DNS DHCP"
 
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:46
 msgid "DNS Zone Server"
@@ -350,17 +350,17 @@ msgstr "Le DN de la clef Tsig"
 #: admin/dhcp/sections/class_dhcpSharedNetwork.inc:28
 #: admin/dhcp/sections/class_dhcpSharedNetwork.inc:29
 msgid "DHCP shared network"
-msgstr ""
+msgstr "Réseau partagé DHCP"
 
 #: admin/dhcp/sections/class_dhcpClass.inc:28
 #: admin/dhcp/sections/class_dhcpClass.inc:29
 msgid "DHCP class"
-msgstr ""
+msgstr "Classe DHCP"
 
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:28
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:29
 msgid "DHCP DNS update key"
-msgstr ""
+msgstr "Clef de mise à jour du DNS par dhcp"
 
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:46
 msgid "Algorithm"
@@ -381,12 +381,12 @@ msgstr "Secret pour générer TSIG Key"
 #: admin/dhcp/sections/class_dhcpGroup.inc:28
 #: admin/dhcp/sections/class_dhcpGroup.inc:29
 msgid "DHCP group"
-msgstr ""
+msgstr "Groupe DHCP"
 
 #: admin/dhcp/sections/class_dhcpSubnet.inc:28
 #: admin/dhcp/sections/class_dhcpSubnet.inc:29
 msgid "DHCP subnet"
-msgstr ""
+msgstr "Sous réseau DHCP"
 
 #: admin/dhcp/sections/class_dhcpSubnet.inc:42
 msgid "Mask length"
@@ -412,6 +412,10 @@ msgid ""
 "space; if the range only contains one address, then just the address can be "
 "specified. Each range is defined as a separate value."
 msgstr ""
+"Les adresses IP de départ et de fin dans la plage (inclues), séparés par un "
+"espace; si la plage ne contient qu'une seule adresse, alors juste l'adresse "
+"peut être spécifiée sans trait d'union. Chaque plage est définie comme une "
+"valeur distincte."
 
 #: admin/dhcp/sections/class_dhcpSubnet.inc:57
 msgid "Network address"
@@ -447,12 +451,12 @@ msgstr "Serveur DHCP secondaire"
 #: admin/dhcp/sections/class_dhcpSubClass.inc:28
 #: admin/dhcp/sections/class_dhcpSubClass.inc:29
 msgid "DHCP subclass"
-msgstr ""
+msgstr "Sous classe DHCP"
 
 #: admin/dhcp/sections/class_dhcpPool.inc:28
 #: admin/dhcp/sections/class_dhcpPool.inc:29
 msgid "DHCP pool"
-msgstr ""
+msgstr "Réservoir DHCP"
 
 #: admin/dhcp/sections/class_dhcpPool.inc:51
 msgid "Permit list"
@@ -469,7 +473,7 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpHost.inc:28
 #: admin/dhcp/sections/class_dhcpHost.inc:29
 msgid "DHCP host"
-msgstr ""
+msgstr "Hôte DHCP"
 
 #: admin/dhcp/sections/class_dhcpHost.inc:42
 #: admin/dhcp/sections/class_dhcpHost.inc:51
