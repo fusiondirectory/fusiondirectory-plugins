@@ -64,9 +64,12 @@ class opsiClient extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
     if ($object instanceof ogroup) {
-      $this->initialMembers = $object->saved_attributes['member'];
-      if (!is_array($this->initialMembers)) {
-        $this->initialMembers = array($this->initialMembers);
+      $this->initialMembers = array();
+      if (isset($object->saved_attributes['member'])) {
+        $this->initialMembers = $object->saved_attributes['member'];
+        if (!is_array($this->initialMembers)) {
+          $this->initialMembers = array($this->initialMembers);
+        }
       }
     }
   }
