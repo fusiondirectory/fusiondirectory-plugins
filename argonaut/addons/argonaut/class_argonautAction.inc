@@ -145,7 +145,7 @@ class argonautAction extends simplePlugin
     );
   }
 
-  public function __construct($action)
+  public function __construct($action, array $targets)
   {
     global $config;
     parent::__construct($config->current['BASE']);
@@ -172,7 +172,8 @@ class argonautAction extends simplePlugin
 
     $this->datetime = date('YmdHis');
 
-    $this->action = $action;
+    $this->action   = $action;
+    $this->targets  = $targets;
   }
 
   protected function loadAttributes()

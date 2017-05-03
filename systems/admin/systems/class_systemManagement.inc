@@ -73,7 +73,7 @@ class systemManagement extends simpleManagement
     $this->headpage->registerElementFilter('listServices',  'systemManagement::listServices');
 
     // Register Daemon Events
-    if (class_available('argonautAction') && class_available('supportDaemon')) {
+    if ($this->siActive) {
       $this->headpage->xmlData['actionmenu']['action'][2]['action'] = array();
       $this->headpage->xmlData['actionmenu']['action'][3]['action'] = array();
       $events = argonautEventTypes::get_event_types();
@@ -113,6 +113,10 @@ class systemManagement extends simpleManagement
    */
   function handleEvent($action, array $target)
   {
+    if (!$this->siActive) {
+      return;
+    }
+
     // Detect whether this event is scheduled or triggered.
     $triggered = TRUE;
     if (preg_match('/^S_/', $action)) {
@@ -124,56 +128,57 @@ class systemManagement extends simpleManagement
     $event = preg_replace('/^[TS]_/', '', $action);
 
     // Now send FAI/Argonaut events here.
-    if ($this->siActive) {
-      $mac = array();
+    $mac = array();
 
-      // Collect target mac addresses
-      $events   = argonautEventTypes::get_event_types();
-      $o_queue  = new supportDaemon();
-      foreach ($target as $dn) {
-        $obj = $headpage->getEntry($dn);
-        if (isset($obj['macAddress'][0])) {
-          $mac[] = $obj['macAddress'][0];
+    // Collect target mac addresses
+    foreach ($target as $dn) {
+      $obj = $headpage->getEntry($dn);
+      if (isset($obj['macAddress'][0])) {
+        $mac[] = $obj['macAddress'][0];
+      } else {
+        msg_dialog::display(_('Action canceled'), sprintf(_('System %s has no mac address defined, cannot trigger action'), $dn), ERROR_DIALOG);
+      }
+    }
+
+    if ((count($mac) == 0) && $triggered) {
+      return;
+    }
+
+    $o_queue  = new supportDaemon();
+
+    /* Skip installation or update trigerred events,
+     *  if this entry is currently processing.
+     */
+    if ($triggered && in_array($event, array('reinstall','update'))) {
+      foreach ($mac as $key => $mac_address) {
+        if ($o_queue->is_currently_installing($mac_address)) {
+          msg_dialog::display(_('Action canceled'), sprintf(_('System %s is currently installing'), $dn), ERROR_DIALOG);
+          unset($mac[$key]);
+          logging::log('security', 'systems/'.get_class($this), '', array(), 'Skip adding "argonautAction::'.$event.'" for mac "'.$mac_address.'", there is already a job in progress.');
+        }
+      }
+    }
+
+    if ((count($mac) == 0) && $triggered) {
+      return;
+    }
+
+    // Prepare event to be added
+    $events   = argonautEventTypes::get_event_types();
+    if (isset($events[$event])) {
+      $this->dialogObject = new argonautAction($event, $mac);
+
+      if ($triggered) {
+        $this->dialogObject->scheduled = FALSE;
+        $res = $o_queue->append($this->dialogObject);
+        if ($o_queue->is_error()) {
+          msg_dialog::display(_('Infrastructure service'), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
         } else {
-          msg_dialog::display(_('Action canceled'), sprintf(_('System %s has no mac address defined, cannot trigger action'), $dn), ERROR_DIALOG);
+          msg_dialog::display(_('Action triggered'), sprintf(_('Action called without error (result was "%s")'), $res), INFO_DIALOG);
         }
-      }
-
-      if ((count($mac) == 0) && $triggered) {
-        return;
-      }
-
-      /* Skip installation or update trigerred events,
-       *  if this entry is currently processing.
-       */
-      if ($triggered && in_array($event, array('reinstall','update'))) {
-        foreach ($mac as $key => $mac_address) {
-          if ($o_queue->is_currently_installing($mac_address)) {
-            msg_dialog::display(_('Action canceled'), sprintf(_('System %s is currently installing'), $dn), ERROR_DIALOG);
-            unset($mac[$key]);
-            logging::log('security', 'systems/'.get_class($this), '', array(), 'Skip adding "argonautAction::'.$event.'" for mac "'.$mac_address.'", there is already a job in progress.');
-          }
-        }
-      }
-
-      // Prepare event to be added
-      if (isset($events[$event]) && $this->siActive) {
-        $this->dialogObject = new argonautAction($event);
-        $this->dialogObject->targets = $mac;
-
-        if ($triggered) {
-          $this->dialogObject->scheduled = FALSE;
-          $res = $o_queue->append($this->dialogObject);
-          if ($o_queue->is_error()) {
-            msg_dialog::display(_('Infrastructure service'), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
-            $this->closeDialogs();
-          } else {
-            msg_dialog::display(_('Action triggered'), sprintf(_('Action called without error (result was "%s")'), $res), INFO_DIALOG);
-            $this->closeDialogs();
-          }
-        } else {
-          $this->dialogObject->scheduled = TRUE;
-        }
+        $this->closeDialogs();
+      } else {
+        $this->dialogObject->scheduled = TRUE;
       }
     }
   }
@@ -193,12 +198,11 @@ class systemManagement extends simpleManagement
       $o_queue->append($this->dialogObject);
       if ($o_queue->is_error()) {
         msg_dialog::display(_('Infrastructure service'), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
-        $this->closeDialogs();
-      } else {
-        $this->closeDialogs();
       }
+      $this->closeDialogs();
     }
   }
+
   /*! \brief  Detects actions/events send by the ui
    *           and the corresponding targets.
    */
