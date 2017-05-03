@@ -4,13 +4,13 @@
   </span>
   <div>
     <h1>
-    {if $attributes.locked.accounts|@count >= 1}
+    {if $attributes.locked.accounts|@count > 0}
       {t count=$attributes.locked.accounts|@count 1=$attributes.locked.accounts|@count plural="There are %1 locked accounts"}There is one locked account{/t}
     {else}
       {t}There is no locked account{/t}
     {/if}
     </h1>
-    {if $attributes.locked.accounts|@count >= 1}
+    {if $attributes.locked.accounts|@count > 0}
       <table style="width: 100%;" class="listingTable">
         <colgroup>
           <col width="10%"/>

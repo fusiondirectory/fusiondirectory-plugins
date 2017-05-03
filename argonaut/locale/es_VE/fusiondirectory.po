@@ -1,16 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2017-03-30 16:10+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Spanish (Venezuela) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/es_VE/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Spanish (Venezuela) (https://www.transifex.com/fusiondirectory/teams/12202/es_VE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,12 +26,12 @@ msgstr "Varios servidores Argonaut encontrados. Solo se soporta uno"
 msgid "There is no argonaut server configured"
 msgstr "No hay un servidor Argonaut configurado"
 
-#: include/class_supportDaemon.inc:602
+#: include/class_supportDaemon.inc:608
 #, php-format
 msgid "Could not read \"%s\"!"
 msgstr ""
 
-#: include/class_supportDaemon.inc:606
+#: include/class_supportDaemon.inc:612
 #, php-format
 msgid "\"%s\" is not a file!"
 msgstr ""
@@ -57,74 +58,75 @@ msgstr "Eliminar"
 #: addons/argonaut/class_argonautQueue.inc:124
 #, php-format
 msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
-msgstr "Las siguientes tareas no pueden ser eliminadas, han sido canceladas: %s"
+msgstr ""
+"Las siguientes tareas no pueden ser eliminadas, han sido canceladas: %s"
 
-#: addons/argonaut/class_argonautQueue.inc:189
+#: addons/argonaut/class_argonautQueue.inc:188
 msgid "Info"
 msgstr "Información"
 
-#: addons/argonaut/class_argonautQueue.inc:189
+#: addons/argonaut/class_argonautQueue.inc:188
 #, php-format
 msgid "%s"
 msgstr "%s"
 
-#: addons/argonaut/class_argonautQueue.inc:219
+#: addons/argonaut/class_argonautQueue.inc:214
 msgid "Error detail"
 msgstr "Detalles del error"
 
-#: addons/argonaut/class_argonautQueue.inc:261
-#: addons/argonaut/class_argonautQueue.inc:345
+#: addons/argonaut/class_argonautQueue.inc:256
+#: addons/argonaut/class_argonautQueue.inc:340
 #: addons/argonaut/class_filterArgonautEvents.inc:39
 #: addons/argonaut/import_events.tpl.c:32
 msgid "Error"
 msgstr "Error"
 
-#: addons/argonaut/class_argonautQueue.inc:261
+#: addons/argonaut/class_argonautQueue.inc:256
 #, php-format
 msgid "Cannot update queue entries."
 msgstr "No se puede actualizar las entradas de la cola."
 
-#: addons/argonaut/class_argonautQueue.inc:329
+#: addons/argonaut/class_argonautQueue.inc:324
 msgid "immediately"
 msgstr "inmediatamente"
 
-#: addons/argonaut/class_argonautQueue.inc:341
+#: addons/argonaut/class_argonautQueue.inc:336
 msgid "Waiting"
 msgstr "Esperando"
 
-#: addons/argonaut/class_argonautQueue.inc:344
+#: addons/argonaut/class_argonautQueue.inc:339
 msgid "Show error"
 msgstr "Mostrar error"
 
-#: addons/argonaut/class_argonautQueue.inc:348
+#: addons/argonaut/class_argonautQueue.inc:343
 msgid "Processed"
 msgstr "Procesado"
 
-#: addons/argonaut/class_argonautQueue.inc:357
+#: addons/argonaut/class_argonautQueue.inc:352
 msgid "in progress"
 msgstr "en progreso"
 
-#: addons/argonaut/class_argonautEventTypes.inc:72
+#: addons/argonaut/class_argonautEventTypes.inc:67
 msgid "Switch off"
 msgstr "Apagar"
 
-#: addons/argonaut/class_argonautEventTypes.inc:85
+#: addons/argonaut/class_argonautEventTypes.inc:80
 msgid "Reboot"
 msgstr "Reiniciar"
 
-#: addons/argonaut/class_argonautEventTypes.inc:89
+#: addons/argonaut/class_argonautEventTypes.inc:84
 msgid "Wake up"
 msgstr "Despertar"
 
-#: addons/argonaut/class_argonautEventTypes.inc:93
+#: addons/argonaut/class_argonautEventTypes.inc:88
 msgid "Software update"
 msgstr "Actualización software"
 
-#: addons/argonaut/class_argonautEventTypes.inc:97
+#: addons/argonaut/class_argonautEventTypes.inc:92
 msgid "(Re)Install"
 msgstr ""
 
-#: addons/argonaut/class_argonautEventTypes.inc:110
+#: addons/argonaut/class_argonautEventTypes.inc:105
 msgid "Refresh slave files (ldap2zone)"
 msgstr ""
 
@@ -207,7 +209,7 @@ msgid "List of queued jobs"
 msgstr "Lista de trabajos en cola"
 
 #: addons/argonaut/deploy-list.xml:14
-#: addons/argonaut/class_argonautImportFile.inc:184
+#: addons/argonaut/class_argonautImportFile.inc:185
 #: addons/argonaut/import_events.tpl.c:26
 msgid "Event"
 msgstr "Evento"
@@ -229,10 +231,10 @@ msgid "Actions"
 msgstr "Acciones"
 
 #: addons/argonaut/deploy-list.xml:79
-#: addons/argonaut/class_argonautImportFile.inc:96
-#: addons/argonaut/class_argonautImportFile.inc:120
-#: addons/argonaut/class_argonautImportFile.inc:144
-#: addons/argonaut/class_argonautImportFile.inc:156
+#: addons/argonaut/class_argonautImportFile.inc:97
+#: addons/argonaut/class_argonautImportFile.inc:121
+#: addons/argonaut/class_argonautImportFile.inc:145
+#: addons/argonaut/class_argonautImportFile.inc:157
 msgid "Import"
 msgstr "Importar"
 
@@ -281,24 +283,24 @@ msgstr ""
 msgid "Imported tasks"
 msgstr ""
 
-#: addons/argonaut/class_argonautImportFile.inc:121
+#: addons/argonaut/class_argonautImportFile.inc:122
 msgid "Fix the errors in your CSV file first"
 msgstr ""
 
-#: addons/argonaut/class_argonautImportFile.inc:137
+#: addons/argonaut/class_argonautImportFile.inc:138
 msgid "Infrastructure service"
 msgstr ""
 
-#: addons/argonaut/class_argonautImportFile.inc:144
+#: addons/argonaut/class_argonautImportFile.inc:145
 #, php-format
 msgid "Import complete: %s events successfully send, %s failed"
 msgstr "Importación completa: %s eventos han sido enviados, %s han fallado"
 
-#: addons/argonaut/class_argonautImportFile.inc:156
+#: addons/argonaut/class_argonautImportFile.inc:157
 msgid "file is empty"
 msgstr "el archivo está vacío"
 
-#: addons/argonaut/class_argonautImportFile.inc:181
+#: addons/argonaut/class_argonautImportFile.inc:182
 #: addons/argonaut/import_events.tpl.c:23
 msgid "MAC"
 msgstr "MAC"
@@ -528,68 +530,68 @@ msgid "Do not write reverse zone"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:88
-msgid "Allow notify"
-msgstr "Permitir notificación"
+msgid "Notify"
+msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:92
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:93
 msgid "Allow update"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:92
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:93
 msgid "Allow update (semicolon separated and ended)"
 msgstr "Permitir actualización (separado y terminado con punto y coma)"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:96
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:97
 msgid "Allow transfer"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:96
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:97
 msgid "Allow transfer (semicolon separated and ended)"
 msgstr "Permitir transferencia (separado y terminado con punto y coma)"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:100
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:101
 msgid "Check names"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:100
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:101
 msgid ""
 "Cause any host name for the zone to be checked for compliance with RFC 952 "
 "and RFC 1123 and take the defined action"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:107
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:108
 msgid "Ldap2zone slave settings"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:112
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:113
 msgid "Manage DNS Slaves"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:116
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:117
 msgid "zone"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:116
-msgid "DNS zone(s) to be stored as a slave on this server"
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:117
+msgid "DNS zone this server should be declared as slave of"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:120
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
 msgid "master"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:120
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
 msgid "Master IP(s) for this zone"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:124
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:125
 msgid "reverses"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:124
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:125
 msgid "This server should be slave of reverses zones as well"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:131
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:132
 msgid "DNS slaves"
 msgstr ""
 
@@ -810,7 +812,10 @@ msgstr ""
 msgid ""
 "You can import a list of jobs into the FusionDirectory job queue. This "
 "should be a semicolon seperated list of items in the following format:"
-msgstr "Puede importar una lista de trabajos a la cola de trabajos de FusionDirectory. Esta debe ser una lista separada por punto y coma de entradas en el siguiente formato:"
+msgstr ""
+"Puede importar una lista de trabajos a la cola de trabajos de "
+"FusionDirectory. Esta debe ser una lista separada por punto y coma de "
+"entradas en el siguiente formato:"
 
 #: addons/argonaut/import_events.tpl.c:5
 msgid "timestamp"

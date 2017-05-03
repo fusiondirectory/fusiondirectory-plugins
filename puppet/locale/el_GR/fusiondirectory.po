@@ -1,72 +1,73 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
-# pkst <pkst@eellak.gr>, 2015
-# pkst <pkst@eellak.gr>, 2015
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-01-22 16:05+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/systems/puppet/class_puppetNode.inc:31
+#: admin/systems/puppet/class_puppetNode.inc:32
 msgid "Puppet node settings"
 msgstr "Ρυθμίσεις Puppet node"
 
-#: admin/systems/puppet/class_puppetNode.inc:34
+#: admin/systems/puppet/class_puppetNode.inc:35
 msgid "Puppet class"
 msgstr "Κλάση Puppet"
 
-#: admin/systems/puppet/class_puppetNode.inc:34
+#: admin/systems/puppet/class_puppetNode.inc:35
 msgid "Puppet Node Class"
 msgstr "Κλάση Puppet Node"
 
-#: admin/systems/puppet/class_puppetNode.inc:36
+#: admin/systems/puppet/class_puppetNode.inc:37
 msgid "Parent node"
-msgstr "Γονικό node"
+msgstr "Γονικό νήμα"
 
-#: admin/systems/puppet/class_puppetNode.inc:36
+#: admin/systems/puppet/class_puppetNode.inc:37
 msgid "Puppet Parent Node"
 msgstr "Γονικό Puppet Node"
 
-#: admin/systems/puppet/class_puppetNode.inc:37
+#: admin/systems/puppet/class_puppetNode.inc:38
 msgid "Environment"
 msgstr "Περιβάλλον"
 
-#: admin/systems/puppet/class_puppetNode.inc:37
+#: admin/systems/puppet/class_puppetNode.inc:38
 msgid "Puppet Node Environment"
 msgstr "Περιβάλλον Puppet Node"
 
-#: admin/systems/puppet/class_puppetNode.inc:40
+#: admin/systems/puppet/class_puppetNode.inc:41
 msgid "A variable setting for puppet"
 msgstr "Μια μεταβλητή ρύθμιση για το puppet"
 
-#: admin/systems/puppet/class_puppetNode.inc:43
+#: admin/systems/puppet/class_puppetNode.inc:44
 msgid "Name of the variable"
 msgstr "Το όνομα της μεταβλητής"
 
-#: admin/systems/puppet/class_puppetNode.inc:44
+#: admin/systems/puppet/class_puppetNode.inc:45
 msgid "Value of the variable"
 msgstr "Τιμή της μεταβλητής"
 
-#: admin/systems/puppet/class_puppetNode.inc:63
+#: admin/systems/puppet/class_puppetNode.inc:65
 msgid "Puppet"
 msgstr "Puppet"
 
-#: admin/systems/puppet/class_puppetNode.inc:64
+#: admin/systems/puppet/class_puppetNode.inc:66
 msgid ""
 "Support for puppet schema in order to edit puppet classes and puppet vars"
-msgstr "Υποστήριξη για σχήμα puppet για την επεξεργασία κλάσεων puppet και puppet vars"
+msgstr ""
+"Υποστήριξη για σχήμα puppet για την επεξεργασία κλάσεων puppet και puppet "
+"vars"
 
 #: admin/systems/services/puppet/class_servicePuppet.inc:28
 #: admin/systems/services/puppet/class_servicePuppet.inc:42
@@ -75,7 +76,8 @@ msgstr "Εξυπηρετητής Puppet"
 
 #: admin/systems/services/puppet/class_servicePuppet.inc:29
 msgid "This service allows you to use a puppet server"
-msgstr "Αυτή η υπηρεσία σας επιτρέπει να χρησιμοποιήσετε έναν εξυπηρετητή puppet"
+msgstr ""
+"Αυτή η υπηρεσία σας επιτρέπει να χρησιμοποιήσετε έναν εξυπηρετητή puppet"
 
 #: admin/systems/services/puppet/class_servicePuppet.inc:46
 msgid "Environments"

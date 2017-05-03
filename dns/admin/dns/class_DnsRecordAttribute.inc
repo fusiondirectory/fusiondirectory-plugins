@@ -160,6 +160,157 @@ class DnsRecordAttribute extends CompositeAttribute
     }
   }
 
+  private function loadLocRecordFields($ldapName)
+  {
+    $this->attributes[1] = new LocRecordAttribute(
+      _('LOC Record'),
+      $ldapName,
+      array(
+        'lat' => new LocRecordLatLongAttribute(
+          _('Latitude'), _('Latitude'),
+          $ldapName.'_latitude',
+          array(
+            'degrees' => new IntAttribute(
+              '', _('Degrees'),
+              $ldapName.'_lat_degrees', TRUE,
+              0, 90, ''
+            ),
+            'minutes' => new IntAttribute(
+              '°', _('Minutes'),
+              $ldapName.'_lat_minutes', FALSE,
+              0, 59, ''
+            ),
+            'seconds' => new FloatAttribute(
+              '’', _('Seconds'),
+              $ldapName.'_lat_seconds', FALSE,
+              0, 59.999, ''
+            ),
+            'dir' => new SelectAttribute(
+              '', _('North/South'),
+              $ldapName.'_lat_direction', TRUE,
+              array('N', 'S'), '',
+              array(_('North'), _('South'))
+            ),
+          )
+        ),
+        'long' => new LocRecordLatLongAttribute(
+          _('Longitude'), _('Longitude'),
+          $ldapName.'_longitude',
+          array(
+            'degrees' => new IntAttribute(
+              '', _('Degrees'),
+              $ldapName.'_long_degrees', TRUE,
+              0, 180, ''
+            ),
+            'minutes' => new IntAttribute(
+              '°', _('Minutes'),
+              $ldapName.'_long_minutes', FALSE,
+              0, 59, ''
+            ),
+            'seconds' => new FloatAttribute(
+              '’', _('Seconds'),
+              $ldapName.'_long_seconds', FALSE,
+              0, 59.999, ''
+            ),
+            'dir' => new SelectAttribute(
+              '', _('East/West'),
+              $ldapName.'_long_direction', TRUE,
+              array('E', 'W'), '',
+              array(_('East'), _('West'))
+            ),
+          )
+        ),
+        'alt' => new FloatAttribute(
+          _('Altitude (meters)'), '',
+          $ldapName.'_altitude', TRUE,
+          -100000.00, 42849672.95, ''
+        ),
+        'size' => new FloatAttribute(
+          _('Size (meters)'), '',
+          $ldapName.'_size', FALSE,
+          0, 90000000, ''
+        ),
+        'hp' => new FloatAttribute(
+          _('Horizontal precision (meters)'), '',
+          $ldapName.'_hp', FALSE,
+          0, 90000000, ''
+        ),
+        'vp' => new FloatAttribute(
+          _('Vertical precision (meters)'), '',
+          $ldapName.'_vp', FALSE,
+          0, 90000000, ''
+        ),
+      )
+    );
+  }
+
+  private function loadNaptrRecordFields($ldapName)
+  {
+    $this->attributes[1] = new CharSeparatedCompositeAttribute(
+      _('NAPTR Record'),
+      $ldapName,
+      array(
+        new IntAttribute(
+          _('Order'), _('Integer specifying the order in which the NAPTR records MUST be processed to ensure the correct ordering of rules.  Low numbers are processed before high numbers.'),
+          $ldapName.'_order', TRUE,
+          0, FALSE
+        ),
+        new IntAttribute(
+          _('Preference'), _('Integer that specifies the order in which NAPTR records with equal "order" values SHOULD be processed, low numbers being processed before high numbers.'),
+          $ldapName.'_pref', TRUE,
+          0, FALSE
+        ),
+        new StringAttribute(
+          _('Flags'), _('Flags to control aspects of the rewriting and interpretation of the fields in the record. Flags are single characters from the set [A-Z0-9].  The case of the alphabetic characters is not significant.'),
+          $ldapName.'_flags', TRUE
+        ),
+        new StringAttribute(
+          _('Service'), _('Specifies the service(s) available down this rewrite path. It may also specify the particular protocol that is used to talk with a service. A protocol MUST be specified if the flags field states that the NAPTR is terminal.'),
+          $ldapName.'_service', TRUE
+        ),
+        new StringAttribute(
+          _('Regular Expression'), _('A STRING containing a substitution expression that is applied to the original string held by the client in order to construct the next domain name to lookup.'),
+          $ldapName.'_regexp', TRUE
+        ),
+        new StringAttribute(
+          _('Replacement'), _('The next NAME to query for NAPTR, SRV, or address records depending on the value of the flags field.'),
+          $ldapName.'_replace', TRUE
+        ),
+      ),
+      ' '
+    );
+  }
+
+  private function loadSrvRecordFields($ldapName)
+  {
+    $this->attributes[1] = new CharSeparatedCompositeAttribute(
+      _('SRV Record'),
+      $ldapName,
+      array(
+        new IntAttribute(
+          _('Priority'), _('Priority of the target host, lower value means more preferred'),
+          $ldapName.'_priority', TRUE,
+          0, FALSE
+        ),
+        new IntAttribute(
+          _('Weight'), _('Relative weight for records with the same priority, higher value means more preferred'),
+          $ldapName.'_weight', TRUE,
+          0, FALSE
+        ),
+        new IntAttribute(
+          _('Port'), _('TCP or UDP port on which the service is to be found'),
+          $ldapName.'_port', TRUE,
+          0, FALSE
+        ),
+        new StringAttribute(
+          _('Target'), _('Canonical hostname of the machine providing the service, ending in a dot'),
+          $ldapName.'_target', TRUE
+        ),
+      ),
+      ' '
+    );
+  }
+
   protected function updateFields()
   {
     $type = $this->attributes[0]->getValue();
@@ -181,86 +332,7 @@ class DnsRecordAttribute extends CompositeAttribute
           );
         break;
         case 'LocRecord':
-          $this->attributes[1] = new LocRecordAttribute(
-            _('LOC Record'),
-            $ldapName,
-            array(
-              'lat' => new LocRecordLatLongAttribute(
-                _('Latitude'), _('Latitude'),
-                $ldapName.'_latitude',
-                array(
-                  'degrees' => new IntAttribute(
-                    '', _('Degrees'),
-                    $ldapName.'_lat_degrees', TRUE,
-                    0, 90, ''
-                  ),
-                  'minutes' => new IntAttribute(
-                    '°', _('Minutes'),
-                    $ldapName.'_lat_minutes', FALSE,
-                    0, 59, ''
-                  ),
-                  'seconds' => new FloatAttribute(
-                    '’', _('Seconds'),
-                    $ldapName.'_lat_seconds', FALSE,
-                    0, 59.999, ''
-                  ),
-                  'dir' => new SelectAttribute(
-                    '', _('North/South'),
-                    $ldapName.'_lat_direction', TRUE,
-                    array('N', 'S'), '',
-                    array(_('North'), _('South'))
-                  ),
-                )
-              ),
-              'long' => new LocRecordLatLongAttribute(
-                _('Longitude'), _('Longitude'),
-                $ldapName.'_longitude',
-                array(
-                  'degrees' => new IntAttribute(
-                    '', _('Degrees'),
-                    $ldapName.'_long_degrees', TRUE,
-                    0, 180, ''
-                  ),
-                  'minutes' => new IntAttribute(
-                    '°', _('Minutes'),
-                    $ldapName.'_long_minutes', FALSE,
-                    0, 59, ''
-                  ),
-                  'seconds' => new FloatAttribute(
-                    '’', _('Seconds'),
-                    $ldapName.'_long_seconds', FALSE,
-                    0, 59.999, ''
-                  ),
-                  'dir' => new SelectAttribute(
-                    '', _('East/West'),
-                    $ldapName.'_long_direction', TRUE,
-                    array('E', 'W'), '',
-                    array(_('East'), _('West'))
-                  ),
-                )
-              ),
-              'alt' => new FloatAttribute(
-                _('Altitude (meters)'), '',
-                $ldapName.'_altitude', TRUE,
-                -100000.00, 42849672.95, ''
-              ),
-              'size' => new FloatAttribute(
-                _('Size (meters)'), '',
-                $ldapName.'_size', FALSE,
-                0, 90000000, ''
-              ),
-              'hp' => new FloatAttribute(
-                _('Horizontal precision (meters)'), '',
-                $ldapName.'_hp', FALSE,
-                0, 90000000, ''
-              ),
-              'vp' => new FloatAttribute(
-                _('Vertical precision (meters)'), '',
-                $ldapName.'_vp', FALSE,
-                0, 90000000, ''
-              ),
-            )
-          );
+          $this->loadLocRecordFields($ldapName);
         break;
         case 'mXRecord':
           $this->attributes[1] = new CharSeparatedCompositeAttribute(
@@ -281,39 +353,7 @@ class DnsRecordAttribute extends CompositeAttribute
           );
         break;
         case 'nAPTRRecord':
-          $this->attributes[1] = new CharSeparatedCompositeAttribute(
-            _('NAPTR Record'),
-            $ldapName,
-            array(
-              new IntAttribute(
-                _('Order'), _('Integer specifying the order in which the NAPTR records MUST be processed to ensure the correct ordering of rules.  Low numbers are processed before high numbers.'),
-                $ldapName.'_order', TRUE,
-                0, FALSE
-              ),
-              new IntAttribute(
-                _('Preference'), _('Integer that specifies the order in which NAPTR records with equal "order" values SHOULD be processed, low numbers being processed before high numbers.'),
-                $ldapName.'_pref', TRUE,
-                0, FALSE
-              ),
-              new StringAttribute(
-                _('Flags'), _('Flags to control aspects of the rewriting and interpretation of the fields in the record. Flags are single characters from the set [A-Z0-9].  The case of the alphabetic characters is not significant.'),
-                $ldapName.'_flags', TRUE
-              ),
-              new StringAttribute(
-                _('Service'), _('Specifies the service(s) available down this rewrite path. It may also specify the particular protocol that is used to talk with a service. A protocol MUST be specified if the flags field states that the NAPTR is terminal.'),
-                $ldapName.'_service', TRUE
-              ),
-              new StringAttribute(
-                _('Regular Expression'), _('A STRING containing a substitution expression that is applied to the original string held by the client in order to construct the next domain name to lookup.'),
-                $ldapName.'_regexp', TRUE
-              ),
-              new StringAttribute(
-                _('Replacement'), _('The next NAME to query for NAPTR, SRV, or address records depending on the value of the flags field.'),
-                $ldapName.'_replace', TRUE
-              ),
-            ),
-            ' '
-          );
+          $this->loadNaptrRecordFields($ldapName);
         break;
         case 'nSRecord':
           $this->attributes[1] = new FQDNAttribute(
@@ -322,32 +362,7 @@ class DnsRecordAttribute extends CompositeAttribute
           );
         break;
         case 'sRVRecord':
-          $this->attributes[1] = new CharSeparatedCompositeAttribute(
-            _('SRV Record'),
-            $ldapName,
-            array(
-              new IntAttribute(
-                _('Priority'), _('Priority of the target host, lower value means more preferred'),
-                $ldapName.'_priority', TRUE,
-                0, FALSE
-              ),
-              new IntAttribute(
-                _('Weight'), _('Relative weight for records with the same priority, higher value means more preferred'),
-                $ldapName.'_weight', TRUE,
-                0, FALSE
-              ),
-              new IntAttribute(
-                _('Port'), _('TCP or UDP port on which the service is to be found'),
-                $ldapName.'_port', TRUE,
-                0, FALSE
-              ),
-              new StringAttribute(
-                _('Target'), _('Canonical hostname of the machine providing the service, ending in a dot'),
-                $ldapName.'_target', TRUE
-              ),
-            ),
-            ' '
-          );
+          $this->loadSrvRecordFields($ldapName);
         break;
         case 'sSHFPRecord':
           $this->attributes[1] = new StringAttribute(
@@ -372,7 +387,7 @@ class DnsRecordAttribute extends CompositeAttribute
         $this->attributes[2]->setVisible(FALSE);
       }
     }
-    /* Update ACLs */
+    // Update ACLs
     $this->setAttributes($this->attributes);
   }
 

@@ -1,19 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
-# Paola Penati <paola.penati@opensides.be>, 2015
-# Paola Penati <paola.penati@opensides.be>, 2015-2016
-# Paola Penati <paola.penati@opensides.be>, 2015
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-12-31 11:21+0000\n"
-"Last-Translator: Paola Penati <paola.penati@opensides.be>\n"
-"Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2017\n"
+"Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,18 +26,18 @@ msgstr "Importazione da OPSI"
 msgid "Import windows stations from OPSI into FD"
 msgstr "Importare stazioni Windows da OPSI a FD"
 
-#: addons/opsi/class_opsiImport.inc:69
+#: addons/opsi/class_opsiImport.inc:72
 msgid "Argonaut server is not available"
 msgstr "Il server Argonaut non è disponibile"
 
-#: addons/opsi/class_opsiImport.inc:80
+#: addons/opsi/class_opsiImport.inc:83
 #: admin/opsi/class_opsiSoftwareList.inc:122
 #: admin/opsi/class_opsiProfile.inc:167
 msgid "No mac address"
 msgstr "Alcun indirizzo MAC"
 
-#: addons/opsi/class_opsiImport.inc:95
-#: admin/systems/opsi/class_opsiClient.inc:150
+#: addons/opsi/class_opsiImport.inc:98
+#: admin/systems/opsi/class_opsiClient.inc:155
 msgid "Could not update OPSI information"
 msgstr "Impossibile aggiornare le informazioni di OPSI"
 
@@ -93,7 +91,7 @@ msgstr "Server OPSI da usare per la distribuzione"
 #: admin/opsi/class_opsiOnDemandList.inc:54
 #: admin/opsi/class_opsiSoftwareList.inc:58
 #: admin/opsi/class_opsiProfile.inc:86 admin/opsi/class_opsiProfile.inc:93
-#: admin/opsi/class_opsiProductProperties.inc:117
+#: admin/opsi/class_opsiProductProperties.inc:113
 msgid "Name"
 msgstr "Nome"
 
@@ -140,7 +138,7 @@ msgstr "I prodotti localboot da installare con questo elenco"
 
 #: admin/opsi/class_opsiSoftwareList.inc:110
 #: admin/opsi/class_opsiProfile.inc:155
-#: admin/opsi/class_opsiProductProperties.inc:176
+#: admin/opsi/class_opsiProductProperties.inc:174
 msgid "Could not contact argonaut server"
 msgstr "Non posso contattare il server Argonaut"
 
@@ -158,7 +156,7 @@ msgstr "Impossibile trovare %s nell'annuario LDAP"
 
 #: admin/opsi/class_opsiSoftwareList.inc:137
 #: admin/opsi/class_opsiProfile.inc:182
-#: admin/opsi/class_opsiProductProperties.inc:192
+#: admin/opsi/class_opsiProductProperties.inc:190
 msgid "Failed to contact OPSI server"
 msgstr "Campo per contattare il server OPSI"
 
@@ -196,12 +194,12 @@ msgstr "%s (%s)"
 msgid "OPSI profile management"
 msgstr "Gestione profilo OPSI"
 
-#: admin/opsi/class_opsiProductProperties.inc:104
-#: admin/opsi/class_opsiProductProperties.inc:105
+#: admin/opsi/class_opsiProductProperties.inc:100
+#: admin/opsi/class_opsiProductProperties.inc:101
 msgid "Product properties"
 msgstr "Proprietà del prodotto"
 
-#: admin/opsi/class_opsiProductProperties.inc:122
+#: admin/opsi/class_opsiProductProperties.inc:118
 msgid "Properties of the products of this profile"
 msgstr "Proprietà dei prodotti di questo profilo"
 
@@ -213,32 +211,32 @@ msgstr "Cliente OPSI"
 msgid "Edit OPSI client settings"
 msgstr "Modifica le impostazioni del cliente OPSI"
 
-#: admin/systems/opsi/class_opsiClient.inc:46
+#: admin/systems/opsi/class_opsiClient.inc:48
 msgid "OPSI Client"
 msgstr "Cliente OPSI"
 
-#: admin/systems/opsi/class_opsiClient.inc:49
+#: admin/systems/opsi/class_opsiClient.inc:51
 msgid "OPSI Server"
 msgstr "Server OPSI"
 
-#: admin/systems/opsi/class_opsiClient.inc:49
+#: admin/systems/opsi/class_opsiClient.inc:51
 msgid "The OPSI Server this client is connected to"
 msgstr "Il server OPSI al quale questo cliente è connesso"
 
-#: admin/systems/opsi/class_opsiClient.inc:53
+#: admin/systems/opsi/class_opsiClient.inc:55
 msgid "OPSI Profile"
 msgstr "Profilo OPSI"
 
-#: admin/systems/opsi/class_opsiClient.inc:53
+#: admin/systems/opsi/class_opsiClient.inc:55
 msgid "The OPSI Profile to apply to this client"
 msgstr "Il profilo OPSI da applicare a questo cliente"
 
-#: admin/systems/opsi/class_opsiClient.inc:96
+#: admin/systems/opsi/class_opsiClient.inc:98
 msgid "Could not get macAddress for OPSI server !"
 msgstr "Impossibile ottenere indirizzo MAC per il server OPSI"
 
-#: admin/systems/opsi/class_opsiClient.inc:105
-#: admin/systems/opsi/class_opsiClient.inc:193
+#: admin/systems/opsi/class_opsiClient.inc:107
+#: admin/systems/opsi/class_opsiClient.inc:199
 msgid "Could not remove OPSI information"
 msgstr "Impossibile rimuovere informazioni su OPSI"
 
@@ -284,4 +282,7 @@ msgid ""
 "Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
 " managed by it, so if you delete them or deactivate their OPSI tab, they "
 "will be removed from OPSI."
-msgstr "Attenzione: una volta i sistemi OPSI importati in FustionDirectory, essi verranno gestiti da questo, percio' se cancellate o disattivate la scheda OPSI, essi verranno rimossi da OPSI"
+msgstr ""
+"Attenzione: una volta i sistemi OPSI importati in FustionDirectory, essi "
+"verranno gestiti da questo, percio' se cancellate o disattivate la scheda "
+"OPSI, essi verranno rimossi da OPSI"

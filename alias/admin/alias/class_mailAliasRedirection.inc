@@ -43,9 +43,11 @@ class mailAliasRedirection extends simplePlugin
     );
   }
 
+  // The main function : information about attributes
   static function getAttributesInfo ()
   {
     return array(
+      // Attributes are grouped by section
       'main' => array(
         'name'  => _('Mail redirection'),
         'attrs' => array(
@@ -70,7 +72,7 @@ class mailAliasRedirection extends simplePlugin
           new DateAttribute(
             _('Expiration date'), _('Date after which the redirection should be deleted. Leave empty for no deletion.'),
             'aliasExpirationDate', FALSE,
-            // Unix timestamp
+             // Unix timestamp
             'U',
             ''
           )

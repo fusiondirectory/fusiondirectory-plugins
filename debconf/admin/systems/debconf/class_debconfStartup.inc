@@ -66,10 +66,11 @@ class debconfStartup extends simplePlugin
 
     /* Fill profile select box */
     $ldap = $config->get_ldap_link();
-    $ldap->ls(
+    $ldap->cd(get_ou('debconfRDN').$config->current['BASE']);
+    $ldap->search(
       'objectClass=organizationalUnit',
-      get_ou('debconfRDN').$config->current['BASE'],
-      array('ou')
+      array('ou'),
+      'one'
     );
     $profiles = array();
     while ($attrs = $ldap->fetch()) {

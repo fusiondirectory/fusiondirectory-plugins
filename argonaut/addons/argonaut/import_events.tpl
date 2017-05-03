@@ -3,7 +3,7 @@
     {$section}
   </span>
   <div>
-    {if $attributes.events|@count < 1}
+    {if $attributes.events|@count == 0}
       <p>
       {t}You can import a list of jobs into the FusionDirectory job queue. This should be a semicolon seperated list of items in the following format:{/t}<br/><br/>
       <i>{t}timestamp{/t};{t}MAC-address{/t};{t}job type{/t};[{t}object group{/t}]</i><br/><br/>

@@ -33,7 +33,9 @@ class opsiClient extends simplePlugin
       'plShortName'   => _('OPSI client'),
       'plDescription' => _('Edit OPSI client settings'),
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('winstation', 'ogroup-dynamic'),
+      'plObjectType'  => array('workstation', 'ogroup-dynamic'),
+      'plDepends'     => array('sambaSystemTab'),
+      'plConflicts'   => array('debconfStartup','faiStartup'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
@@ -62,9 +64,12 @@ class opsiClient extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
     if ($object instanceof ogroup) {
-      $this->initialMembers = $object->saved_attributes['member'];
-      if (!is_array($this->initialMembers)) {
-        $this->initialMembers = array($this->initialMembers);
+      $this->initialMembers = array();
+      if (isset($object->saved_attributes['member'])) {
+        $this->initialMembers = $object->saved_attributes['member'];
+        if (!is_array($this->initialMembers)) {
+          $this->initialMembers = array($this->initialMembers);
+        }
       }
     }
   }
@@ -110,7 +115,10 @@ class opsiClient extends simplePlugin
       }
     }
 
-    parent::save();
+    $errors = parent::save();
+    if (!empty($errors)) {
+      return $errors;
+    }
 
     if ($this->is_account) {
       $this->update_or_insert();
@@ -141,10 +149,10 @@ class opsiClient extends simplePlugin
         }
       }
     } else {
-      $macAddresses = array($this->parent->getBaseObject()->netConfigDNS->macAddress);
+      $macAddresses = array($this->parent->getBaseObject()->macAddress);
     }
     if (!empty($macAddresses) && $s_daemon->is_available()) {
-      $res = $s_daemon->append_call('OPSI.update_or_insert', $macAddresses, array());
+      $s_daemon->append_call('OPSI.update_or_insert', $macAddresses, array());
       if ($s_daemon->is_error()) {
         msg_dialog::display(
           _('Could not update OPSI information'),
@@ -156,6 +164,7 @@ class opsiClient extends simplePlugin
 
   function remove_from_parent()
   {
+    global $config;
     if ($this->member_of_group) {
       // If the winstation is member of an ogroup which has OPSI activated, we must update_or_insert information
       // We have to call this in here because save won't be called as is_account is FALSE
@@ -181,13 +190,13 @@ class opsiClient extends simplePlugin
         }
       }
     } elseif (!$this->member_of_group) {
-      $macAddresses = array($this->parent->getBaseObject()->netConfigDNS->macAddress);
+      $macAddresses = array($this->parent->getBaseObject()->macAddress);
     }
 
     if (!empty($macAddresses)) {
       $s_daemon   = new supportDaemon();
       if ($s_daemon->is_available()) {
-        $res = $s_daemon->append_call('OPSI.delete', $macAddresses, array());
+        $s_daemon->append_call('OPSI.delete', $macAddresses, array());
         if ($s_daemon->is_error()) {
           msg_dialog::display(
             _('Could not remove OPSI information'),
@@ -197,7 +206,7 @@ class opsiClient extends simplePlugin
       }
     }
 
-    parent::remove_from_parent();
+    return parent::remove_from_parent();
   }
 
   public function server_changed ()

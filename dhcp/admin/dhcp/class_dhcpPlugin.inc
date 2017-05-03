@@ -60,7 +60,6 @@ class dhcpPlugin extends simplePlugin
 
   function __construct ($plugin, $dn, $attrs = NULL)
   {
-    global $config;
     if (is_array($attrs)) {
       foreach ($attrs as $key => &$value) {
         if (is_array($value)) {

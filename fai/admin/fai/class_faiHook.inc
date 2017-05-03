@@ -83,7 +83,8 @@ class faiHook extends faiSimplePluginClass
               ),
               new FileTextAreaAttribute (
                 _('Script'), _('The script of this hook'),
-                'FAIscript', TRUE
+                'FAIscript', TRUE,
+                '.sh'
               ),
             ),
             FALSE, /* no order */
@@ -103,11 +104,18 @@ class faiHook extends faiSimplePluginClass
     $this->attributesAccess['hooks']->setLinearRendering(FALSE);
   }
 
-  function ldap_save ($cleanup = TRUE)
+  protected function shouldSave()
+  {
+    /* We need ldap_save to always run */
+    return TRUE;
+  }
+
+  function ldap_save ()
   {
     global $config;
-    parent::ldap_save($cleanup);
+    $errors = parent::ldap_save();
     $this->attributesAccess['hooks']->postLdapSave($config->get_ldap_link());
+    return $errors;
   }
 }
 ?>

@@ -68,7 +68,6 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
         $this->plugin->is_account = !empty($this->value);
       } elseif (isset($this->plugin->attrs[$this->getLdapName()]['count'])) {
         $this->value = array();
-        // TODO $this->loadAdditionalTemplatesValues();
       }
     }
   }
@@ -127,7 +126,6 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     if ($this->plugin->is_template) {
       return;
     }
-    /* FIXME - We should lock the object and check if we don’t erase changes */
     $values   = $this->getValue();
     $iValues  = $this->getInitialValue();
     /* React to changes on main tab */
@@ -168,6 +166,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     }
 
     $valueHashes    = array_flip(array_map('join', $values));
+    //~ $iValueHashes   = array_flip(array_map('join', $iValues));
     foreach ($iValues as $value) {
       $hash = join($value);
       if (isset($valueHashes[$hash]) && !$fullrewrite) {
@@ -182,7 +181,8 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       }
       $dhcpTabs = objects::open($configDn, 'dhcpConfiguration');
       $dhcpTabs->getBaseObject()->attributesAccess['dhcpSections']->delHost($value[3]);
-      $dhcpTabs->save();
+      $errors = $dhcpTabs->save();
+      msg_dialog::displayChecks($errors);
     }
     foreach ($values as $value) {
       $configDn = $value[0];
@@ -193,12 +193,9 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       }
       $dhcpTabs = objects::open($configDn, 'dhcpConfiguration');
       $dhcpTabs->getBaseObject()->attributesAccess['dhcpSections']->addHost($value[0], $cn, $value[1], $value[2]);
-      $dhcpTabs->save();
+      $errors = $dhcpTabs->save();
+      msg_dialog::displayChecks($errors);
     }
-    /* TODO
-     * ? handle modification somehow (if we want to keep statements when changing IP, not sure about this)
-     * We should also look into what should be possible or not, like IP, Mac or cn duplication.
-     * */
   }
 }
 
@@ -216,7 +213,7 @@ class dhcpSystem extends simplePlugin
       'plDescription'   => _('Edit the DHCP zones of a system'),
       'plIcon'          => 'geticon.php?context=applications&icon=dhcp&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=dhcp&size=16',
-      'plObjectType'    => array('server','workstation','terminal','printer','component','winstation','phone','mobilePhone'),
+      'plObjectType'    => array('server','workstation','terminal','printer','component','phone','mobilePhone'),
       'plPriority'      => 4,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
@@ -282,12 +279,15 @@ class dhcpSystem extends simplePlugin
     return $nodes;
   }
 
-  function ldap_save($cleanup = TRUE)
+  protected function shouldSave()
+  {
+    /* We need ldap_save to always run */
+    return TRUE;
+  }
+
+  function ldap_save()
   {
     global $config;
-
-    /* workaround for audit strange errors */
-    $this->ldap_error = 'Success';
 
     $ldap = $config->get_ldap_link();
     $baseObject = $this->parent->getBaseObject();
@@ -301,5 +301,16 @@ class dhcpSystem extends simplePlugin
       array($baseObject->attributeInitialValue('macAddress')),
       array($baseObject->attributeValue('macAddress'))
     );
+  }
+
+  function remove_from_parent()
+  {
+    if ($this->is_template) {
+      return parent::remove_from_parent();
+    } elseif (($this->dn != '') && ($this->dn != 'new')) {
+      /* Remove all records */
+      $this->attributesAccess['dhcpHosts']->setValue(array());
+      return $this->ldap_save();
+    }
   }
 }

@@ -78,6 +78,7 @@ class argonautImportFile extends simplePlugin
 
   public function __construct($parent)
   {
+    global $config;
     parent::__construct($config->current['BASE'], NULL, $parent);
 
     $this->attributesAccess['import']->setInLdap(FALSE);

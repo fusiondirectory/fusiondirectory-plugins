@@ -72,7 +72,7 @@ class systemImport extends simplePlugin
         $messages[$host['id']] = array(sprintf(_('Could not parse %s'), $host['id']));
         continue;
       }
-      $cn   = $m[1].'$';
+      $cn   = $m[1];
       $zone = $m[2];
 
       $objectType = $defaultObjectType;
@@ -83,46 +83,53 @@ class systemImport extends simplePlugin
       $tabObject->set_acl_base($base);
       $baseObject = $tabObject->getBaseObject();
       $baseObject->cn   = $cn;
-      $baseObject->uid  = $baseObject->cn;
-      $baseObject->description                = $host['description'];
-      $baseObject->netConfigDNS->ipHostNumber = $host['ipAddress'];
-      $baseObject->netConfigDNS->macAddress   = $host['hardwareAddress'];
+      $baseObject->description  = $host['description'];
+      if (!is_array($host['ipAddress'])) {
+        $host['ipAddress'] = array($host['ipAddress']);
+      }
+      $baseObject->ipHostNumber = $host['ipAddress'];
+      $baseObject->macAddress   = $host['hardwareAddress'];
 
       /* Get existing DHCP servers */
       if (empty($dhcps)) {
-        $dhcpParentNodes = $baseObject->netConfigDNS->dhcpParentNodes;
+        $dhcpParentNodes = dhcpSystem::getDhcpParentNodes();
         $ldap = $config->get_ldap_link();
         foreach ($dhcpParentNodes as $dn => $value) {
           $ldap->cat($dn);
           if ($attrs = $ldap->fetch()) {
             if (isset($attrs['dhcpNetMask'])) {
-              $dhcps[$dn] = array($attrs['cn'][0],normalize_netmask($attrs['dhcpNetMask'][0]));
+              $dhcps[$dn] = array($attrs['cn'][0], normalize_netmask($attrs['dhcpNetMask'][0]));
             }
           }
         }
       }
       /* Activate DHCP if we find a matching server */
-      if (!empty($baseObject->netConfigDNS->ipHostNumber)) {
-        $baseObject->netConfigDNS->dhcp_is_Account = FALSE;
+      if (!empty($baseObject->ipHostNumber)) {
         foreach ($dhcps as $dn => $infos) {
           list($ip, $mask) = $infos;
-          if (tests::is_in_network($ip, $mask, $baseObject->netConfigDNS->ipHostNumber)) {
-            $baseObject->netConfigDNS->dhcp_is_Account  = TRUE;
-            $baseObject->netConfigDNS->dhcpParentNode   = $dn;
-            break;
+          foreach ($baseObject->ipHostNumber as $ipHostNumber) {
+            if (tests::is_in_network($ip, $mask, $ipHostNumber)) {
+              $tabObject->by_object['dhcpSystem']->attributesAccess['dhcpHosts']->addPostValue(
+                array($dn, $baseObject->macAddress, $ipHostNumber, '')
+              );
+              $tabObject->by_object['dhcpSystem']->attributesAccess['dhcpHosts']->applyPostValue();
+            }
           }
         }
-        if ($baseObject->netConfigDNS->dhcp_is_Account == FALSE) {
-          $messages[$host['id']] = array(sprintf(_('No DHCP server found for ip %s'), $baseObject->netConfigDNS->ipHostNumber));
+        if (empty($tabObject->by_object['dhcpSystem']->dhcpHosts)) {
+          $messages[$host['id']] = array(sprintf(_('No DHCP server found for IPs %s'), implode(',', $baseObject->ipHostNumber)));
           continue;
         }
       }
       /* Activate DNS if we find a matching server */
       $tabObject->by_object['dnsHost']->is_account = FALSE;
       foreach ($dns as $dn => $value) {
-        if (preg_match('/'.$zone.'\.?$/', $value)) {
+        if (preg_match('/^'.$zone.'\.?$/', $value)) {
           $tabObject->by_object['dnsHost']->is_account  = TRUE;
           $tabObject->by_object['dnsHost']->fdDNSZoneDn = array($dn);
+          foreach ($baseObject->ipHostNumber as $ipHostNumber) {
+            $tabObject->by_object['dnsHost']->addRecord($dn, array($cn, 'aRecord', $ipHostNumber, ''));
+          }
           break;
         }
       }
@@ -143,12 +150,11 @@ class systemImport extends simplePlugin
       }
 
       /* Perform checks */
-      $message = $tabObject->check();
+      $message = $tabObject->save();
 
       if (count($message) == 0) {
         /* No errors, save object */
         $messages[$host['id']] = TRUE;
-        $tabObject->save();
       } else {
         /* Errors found */
         $messages[$host['id']] = $message;
@@ -164,7 +170,7 @@ class systemImport extends simplePlugin
         'template'  => get_template_path('server_import.tpl', TRUE, dirname(__FILE__)),
         'name'      => _('Import'),
         'attrs'     => array(
-          new BaseSelectorAttribute(get_ou('sambaMachineAccountRDN')),
+          new BaseSelectorAttribute(get_ou('workstationRDN')),
           new ImportServerAttribute(
             _('Server'), _('The server you wish to import hosts from'),
             'apiServer', $filter

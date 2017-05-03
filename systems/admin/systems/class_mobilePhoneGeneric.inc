@@ -18,17 +18,13 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class mobilePhoneGeneric extends systemSimplePluginGlue
+class mobilePhoneGeneric extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $netConfigDNS;
-
-  var $objectclasses = array("top", "fdMobilePhone");
+  var $objectclasses = array('fdMobilePhone', 'ieee802Device');
 
   var $inheritance = array("gosaGroupOfNames" => "member");
-
-  var $preInitAttributes = array('cn', 'networkSettings');
 
   static function plInfo()
   {
@@ -59,6 +55,7 @@ class mobilePhoneGeneric extends systemSimplePluginGlue
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
+          new BaseSelectorAttribute(get_ou('mobilePhoneRDN')),
           new HostNameAttribute (
             _('Name'), _('The name of the mobile phone'),
             'cn', TRUE
@@ -67,7 +64,6 @@ class mobilePhoneGeneric extends systemSimplePluginGlue
             _('Description'), _('A short description of the mobile phone'),
             'description', FALSE
           ),
-          new BaseSelectorAttribute(get_ou('mobilePhoneRDN')),
         )
       ),
       'phone' => array(
@@ -104,79 +100,31 @@ class mobilePhoneGeneric extends systemSimplePluginGlue
       ),
       'network' => array(
         'name'      => _('Network settings'),
-        'attrs'     => array(new NetworkSettingsAttribute('cn', array('ipHost', 'ieee802Device'))),
-        'template'  => get_template_path('network_section.tpl', TRUE, dirname(__FILE__)),
         'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
+        'attrs'     => array(
+          new IPAttribute(
+            _('IP address'), _('IP address this system uses'),
+            'ipHostNumber', FALSE
+          ),
+          new MacAddressAttribute(
+            _('Mac address'), _('Mac address of this system'),
+            'macAddress', FALSE
+          ),
+        ),
       ),
     );
   }
 
-  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = NULL)
+  /* Used by prepare_save and template::apply */
+  public function mergeObjectClasses(array $oc)
   {
-    parent::__construct($dn, $object, $parent, $mainTab);
-
-    $this->attributesAccess['cn']->setUnique(TRUE);
-    $this->netConfigDNS->IPisMust   = FALSE;
-    $this->netConfigDNS->MACisMust  = FALSE;
-  }
-
-  function compute_dn ()
-  {
-    return 'cn='.ldap_escape_dn($this->cn).','.get_ou('mobilePhoneRDN').$this->base;
-  }
-
-  function resetCopyInfos()
-  {
-    parent::resetCopyInfos();
-    $this->netConfigDNS->resetCopyInfos();
-  }
-
-  function set_acl_base($base)
-  {
-    plugin::set_acl_base($base);
-    $this->netConfigDNS->set_acl_base($base);
-  }
-
-  function set_acl_category($cat)
-  {
-    plugin::set_acl_category($cat);
-    $this->netConfigDNS->set_acl_category($cat);
-  }
-
-  function remove_from_parent()
-  {
-    global $config;
-    if (!$this->initially_was_account) {
-      return;
+    $objectclasses = $oc;
+    if (empty($this->ipHostNumber)) {
+      $objectclasses = array_remove_entries_ics(array('ipHost'), $objectclasses);
+    } else {
+      $objectclasses[] = 'ipHost';
     }
-
-    if ($this->acl_is_removeable()) {
-      $this->netConfigDNS->remove_from_parent();
-
-      parent::remove_from_parent();
-
-      /* Delete references to object groups */
-      $ldap = $config->get_ldap_link();
-      $ldap->cd($config->current['BASE']);
-      $ldap->search("(&(objectClass=gosaGroupOfNames)(member=".ldap_escape_f($this->dn)."))", array("cn"));
-      while ($ldap->fetch()) {
-        $og = new ogroup($ldap->getDN());
-        unset($og->member[$this->dn]);
-        $og->save();
-      }
-    }
-  }
-
-  protected function ldap_save($cleanup = TRUE)
-  {
-    parent::ldap_save($cleanup);
-    $this->netConfigDNS->cn = $this->cn;
-    $this->netConfigDNS->save();
-  }
-
-  function is_modal_dialog()
-  {
-    return (isset($this->netConfigDNS->dialog) && $this->netConfigDNS->dialog);
+    return array_merge_unique($objectclasses, $this->objectclasses);
   }
 }
 ?>

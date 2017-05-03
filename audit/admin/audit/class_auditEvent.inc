@@ -67,7 +67,6 @@ class auditEvent extends simplePlugin
   // The main function : information about attributes
   static function getAttributesInfo ()
   {
-    global $config;
     return array(
       'main' => array(
         'name'  => _('Event'),

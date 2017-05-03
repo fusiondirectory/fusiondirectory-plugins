@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2012-2016  FusionDirectory
@@ -21,30 +20,7 @@
 
 class terminalGeneric extends workstationGeneric
 {
-  var $objectclasses = array('top', 'gotoTerminal', 'GOhard');
-
-  var $inheritance = array('gotoWorkstationTemplate' => 'member', 'gotoTerminalTemplate' => 'member');
-
-  /* Return plugin information for acl handling */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('Terminal'),
-      'plDescription' => _('Terminal information'),
-      'plSelfModify'  => FALSE,
-      'plObjectType'  => array('terminal' =>
-        array(
-          'name'        => _('Terminal'),
-          'description' => _('Terminal'),
-          'filter'      => 'objectClass=gotoTerminal',
-          'icon'        => 'geticon.php?context=devices&icon=terminal&size=16',
-          'ou'          => get_ou('terminalRDN'),
-        )
-      ),
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
-  }
+  var $objectclasses = array('fdTerminal', 'ipHost', 'ieee802Device');
 
   /*!
    *  \brief The main function : information about attributes
@@ -60,16 +36,25 @@ class terminalGeneric extends workstationGeneric
     return parent::getAttributesInfo($word, $rdn);
   }
 
-  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
+  /* Return plugin information for acl handling */
+  static function plInfo()
   {
-    global $config;
-    parent::__construct($dn, $object, $parent, $mainTab);
-  }
+    return array(
+      'plShortName'   => _('Terminal'),
+      'plDescription' => _('Terminal information'),
+      'plSelfModify'  => FALSE,
+      'plObjectType'  => array('terminal' =>
+        array(
+          'name'        => _('Terminal'),
+          'description' => _('Terminal'),
+          'filter'      => 'objectClass=fdTerminal',
+          'icon'        => 'geticon.php?context=devices&icon=terminal&size=16',
+          'ou'          => get_ou('terminalRDN'),
+        )
+      ),
 
-  /* Returns the dn of the entry */
-  function compute_dn()
-  {
-    return 'cn='.ldap_escape_dn($this->cn).','.get_ou('terminalRDN').$this->base;
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
   }
 }
 

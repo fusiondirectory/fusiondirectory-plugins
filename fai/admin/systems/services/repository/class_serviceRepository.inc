@@ -178,8 +178,10 @@ class serviceRepository extends simpleService
               _('Repositories this server hosts'),
               'FAIrepository'
             ),
+            // no order
             FALSE,
             array(),
+            // edit button
             TRUE
           )
         )
@@ -199,16 +201,16 @@ class serviceRepository extends simpleService
     if (!isset($attrs['FAIrepository'])) {
       return FALSE;
     }
-    if (preg_match('/'.preg_quote($distribution, '/').'$/', $attrs['FAIrepository'][0])) {
-      return TRUE;
-    } else {
-      return FALSE;
-    }
+    return preg_match('/'.preg_quote($distribution, '/').'$/', $attrs['FAIrepository'][0]);
   }
 
-  function ldap_save($clean = TRUE)
+  function ldap_save()
   {
-    parent::ldap_save($clean);
+    $errors = parent::ldap_save();
+
+    if (!empty($errors)) {
+      return $errors;
+    }
 
     $repos  = $this->attributesAccess['FAIrepository']->getArrayValues();
     $done   = array();
@@ -219,6 +221,8 @@ class serviceRepository extends simpleService
         $done[$release] = TRUE;
       }
     }
+
+    return $errors;
   }
 
   static function createBranch ($distribution, $release)
@@ -340,7 +344,8 @@ class serviceRepository extends simpleService
     global $config;
 
     $ldap = $config->get_ldap_link();
-    $ldap->ls('(objectClass=FAIbranch)', 'ou='.$distribution.','.get_ou('faiBaseRDN').$config->current['BASE'], array('ou'));
+    $ldap->cd('ou='.$distribution.','.get_ou('faiBaseRDN').$config->current['BASE']);
+    $ldap->search('(objectClass=FAIbranch)', array('ou'), 'one');
 
     $list = array();
     while ($release = $ldap->fetch()) {

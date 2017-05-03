@@ -1,0 +1,33 @@
+##
+## renater-partage-fd.schema - Needed by Fusion Directory for managing Renater Partage API
+##
+
+# attributes
+attributetype ( 1.3.6.1.4.1.38414.63.1.1 NAME 'fdRenaterPartageServerUri'
+  DESC 'FusionDirectory - URI to connect to Renater Partage API'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.63.1.2 NAME 'fdRenaterPartageServerMailDomain'
+  DESC 'FusionDirectory - Domain name, key and available classes of service separated by a colon'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
+attributetype ( 1.3.6.1.4.1.38414.63.1.3 NAME 'fdRenaterPartageServerUserAgent'
+  DESC 'FusionDirectory - User Agent to connect to Renater Partage API'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.63.1.4 NAME 'fdRenaterPartageServerDeletionType'
+  DESC 'FusionDirectory - Should user be deleted or deactivated upon deletion - should contain delete or disable'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+# Objectclasses
+objectclass (1.3.6.1.4.1.38414.63.2.1 NAME 'fdRenaterPartageServer' SUP top AUXILIARY
+  DESC 'FusionDirectory - Renater Partage server description'
+  MUST ( cn $ fdRenaterPartageServerUri $ fdRenaterPartageServerUserAgent )
+  MAY  ( fdRenaterPartageServerMailDomain $ fdRenaterPartageServerDeletionType ))

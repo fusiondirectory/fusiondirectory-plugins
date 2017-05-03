@@ -42,11 +42,6 @@ class dnsManagement extends simpleManagement
     );
   }
 
-  function __construct()
-  {
-    parent::__construct();
-  }
-
   function configureHeadpage ()
   {
     parent::configureHeadpage();
@@ -107,7 +102,7 @@ class dnsManagement extends simpleManagement
             );
           } else {
             $target = array($serverTabs->getBaseObject()->macAddress);
-            $res    = $s_daemon->append_call('Ldap2Zone.start', $target, array('args' => array($zoneName)));
+            $s_daemon->append_call('Ldap2Zone.start', $target, array('args' => array($zoneName)));
             if ($s_daemon->is_error()) {
               msg_dialog::display(_('Could not get run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG);
             } else {

@@ -1,18 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
-# Benoit Mortier <benoit.mortier@opensides.be>, 2015-2016
-# MCMic, 2015
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-12-31 10:30+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
+"Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,13 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: personal/mail/class_mailAccount.inc:45
-#: personal/mail/class_mailAccount.inc:238
-#: personal/mail/class_mailAccount.inc:241
-#: personal/mail/class_mailAccount.inc:286
-#: personal/mail/class_mailAccount.inc:290
-#: personal/mail/class_mailAccount.inc:294
-#: personal/mail/class_mailAccount.inc:327
-#: personal/mail/class_mailAccount.inc:331
+#: personal/mail/class_mailAccount.inc:258
+#: personal/mail/class_mailAccount.inc:261
+#: personal/mail/class_mailAccount.inc:329
+#: personal/mail/class_mailAccount.inc:340
+#: personal/mail/class_mailAccount.inc:369
+#: personal/mail/class_mailAccount.inc:373
 msgid "Mail error"
 msgstr "Erreur du serveur de courriel"
 
@@ -43,166 +41,171 @@ msgstr "Utilisation des quotas"
 msgid "Part of the quota which is used"
 msgstr "Part du quota qui est utilisée"
 
-#: personal/mail/class_mailAccount.inc:71
+#: personal/mail/class_mailAccount.inc:73
 #: config/mail/class_mailPluginConfig.inc:28
 #: admin/groups/mail/class_groupMail.inc:46
 msgid "Mail"
-msgstr "Courriel"
+msgstr "Messagerie"
 
-#: personal/mail/class_mailAccount.inc:72
+#: personal/mail/class_mailAccount.inc:74
 #: config/mail/class_mailPluginConfig.inc:41
 msgid "Mail settings"
 msgstr "Paramètres de courriel"
 
-#: personal/mail/class_mailAccount.inc:94
+#: personal/mail/class_mailAccount.inc:96
 msgid "Mail account"
 msgstr "Compte courriel"
 
-#: personal/mail/class_mailAccount.inc:97
+#: personal/mail/class_mailAccount.inc:99
 #: admin/groups/mail/class_groupMail.inc:62
 msgid "Primary address"
 msgstr "Adresse principale"
 
-#: personal/mail/class_mailAccount.inc:97
+#: personal/mail/class_mailAccount.inc:99
 msgid "Primary mail address"
 msgstr "Adresse de courriel principale"
 
-#: personal/mail/class_mailAccount.inc:101
+#: personal/mail/class_mailAccount.inc:103
 #: admin/groups/mail/class_groupMail.inc:66
 msgid "Server"
 msgstr "Serveur"
 
-#: personal/mail/class_mailAccount.inc:101
+#: personal/mail/class_mailAccount.inc:103
 msgid "Specify the mail server where the user will be hosted on"
 msgstr "Indiquez le serveur de courriel de l'utilisateur"
 
-#: personal/mail/class_mailAccount.inc:106
+#: personal/mail/class_mailAccount.inc:108
 msgid "Quota size"
 msgstr "Taille du quota"
 
-#: personal/mail/class_mailAccount.inc:113
+#: personal/mail/class_mailAccount.inc:115
 msgid "Other addresses and redirections"
 msgstr "Autres adresses et redirections"
 
-#: personal/mail/class_mailAccount.inc:117
+#: personal/mail/class_mailAccount.inc:119
 #: admin/groups/mail/class_groupMail.inc:72
 msgid "Alternative addresses"
 msgstr "Adresses alternatives"
 
-#: personal/mail/class_mailAccount.inc:117
+#: personal/mail/class_mailAccount.inc:119
 msgid "List of alternative mail addresses"
 msgstr "Liste des adresses de courriel alternatives"
 
-#: personal/mail/class_mailAccount.inc:122
+#: personal/mail/class_mailAccount.inc:124
 msgid "Forward messages to"
 msgstr "Transférer les messages vers"
 
-#: personal/mail/class_mailAccount.inc:122
+#: personal/mail/class_mailAccount.inc:124
 msgid "Addresses to which messages should be forwarded"
 msgstr "Adresses à laquelle les messages doivent être redirigés"
 
-#: personal/mail/class_mailAccount.inc:128
-#: personal/mail/class_mailAccount.inc:147
+#: personal/mail/class_mailAccount.inc:130
+#: personal/mail/class_mailAccount.inc:149
 msgid "Vacation message"
 msgstr "Message d'absence"
 
-#: personal/mail/class_mailAccount.inc:131
+#: personal/mail/class_mailAccount.inc:133
 msgid "Activate vacation message"
 msgstr "Activer le message d'absence"
 
-#: personal/mail/class_mailAccount.inc:132
+#: personal/mail/class_mailAccount.inc:134
 msgid ""
 "Select to automatically response with the vacation message defined below"
 msgstr "Réponse automatique par le message d'absence ci-dessous"
 
-#: personal/mail/class_mailAccount.inc:137
+#: personal/mail/class_mailAccount.inc:139
 msgid "from"
 msgstr "du"
 
-#: personal/mail/class_mailAccount.inc:142
+#: personal/mail/class_mailAccount.inc:144
 msgid "till"
 msgstr "jusqu'au"
 
-#: personal/mail/class_mailAccount.inc:153
+#: personal/mail/class_mailAccount.inc:155
 msgid "Advanced mail options"
 msgstr "Options de courriel avancées"
 
-#: personal/mail/class_mailAccount.inc:161
+#: personal/mail/class_mailAccount.inc:163
 msgid "User is only allowed to send and receive local mails"
-msgstr "Les utilisateurs ne sont autorisés qu'à envoyer et recevoir des messages locaux"
+msgstr ""
+"Les utilisateurs ne sont autorisés qu'à envoyer et recevoir des messages "
+"locaux"
 
-#: personal/mail/class_mailAccount.inc:162
+#: personal/mail/class_mailAccount.inc:164
 msgid "Select if user can only send and receive inside his own domain"
-msgstr "Sélectionnez si vous voulez que les utilisateurs puissent envoyer et recevoir des courriels uniquement dans leur propre domaine"
+msgstr ""
+"Sélectionnez si vous voulez que les utilisateurs puissent envoyer et "
+"recevoir des courriels uniquement dans leur propre domaine"
 
-#: personal/mail/class_mailAccount.inc:167
+#: personal/mail/class_mailAccount.inc:169
 msgid "No delivery to own mailbox"
 msgstr "Aucune distribution des courriels dans sa propre boite"
 
-#: personal/mail/class_mailAccount.inc:168
+#: personal/mail/class_mailAccount.inc:170
 msgid "Select if you want to forward mails without getting own copies of them"
-msgstr "Sélectionnez ceci si vous souhaitez relayer les messages sans garder de copie de ceux-ci"
+msgstr ""
+"Sélectionnez ceci si vous souhaitez relayer les messages sans garder de "
+"copie de ceux-ci"
 
-#: personal/mail/class_mailAccount.inc:238
-#: personal/mail/class_mailAccount.inc:286
+#: personal/mail/class_mailAccount.inc:258
+#: personal/mail/class_mailAccount.inc:323
 #, php-format
 msgid "Mail method cannot connect: %s"
 msgstr "Le méthode de courriel ne peut pas se connecter : %s"
 
-#: personal/mail/class_mailAccount.inc:241
+#: personal/mail/class_mailAccount.inc:261
 #, php-format
 msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
 msgstr "Le compte de courriel '%s' n'existe pas sur le serveur : %s"
 
-#: personal/mail/class_mailAccount.inc:290
+#: personal/mail/class_mailAccount.inc:326
 #, php-format
 msgid "Cannot update mailbox: %s"
 msgstr "Impossible de mettre à jour le compte : %s"
 
-#: personal/mail/class_mailAccount.inc:294
+#: personal/mail/class_mailAccount.inc:329
 #, php-format
 msgid "Cannot write quota settings: %s"
 msgstr "Impossible d'écrire les paramètres de quota : %s"
 
-#: personal/mail/class_mailAccount.inc:307
-msgid "Mail error saving sieve settings"
-msgstr "Erreur lors de la sauvegarde du script sieve"
+#: personal/mail/class_mailAccount.inc:340
+#, php-format
+msgid "Mail error saving sieve settings: %s"
+msgstr ""
+"Erreur de messagerie lors de l'enregistrement des paramètres sieve: %s"
 
-#: personal/mail/class_mailAccount.inc:327
+#: personal/mail/class_mailAccount.inc:369
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
-msgstr "Impossible de supprimer le compte de messagerie, impossible de se connecter à : %s"
+msgstr ""
+"Impossible de supprimer le compte de messagerie, impossible de se connecter "
+"à : %s"
 
-#: personal/mail/class_mailAccount.inc:331
+#: personal/mail/class_mailAccount.inc:373
 #, php-format
 msgid "Cannot remove mailbox: %s"
 msgstr "Impossible de supprimer le compte de messagerie : %s"
 
-#: personal/mail/class_mail-methods.inc:154
-#: personal/mail/class_mail-methods.inc:516
+#: personal/mail/class_mail-methods.inc:144
+#: personal/mail/class_mail-methods.inc:480
 msgid "Configuration error"
 msgstr "Erreur de configuration"
 
-#: personal/mail/class_mail-methods.inc:155
+#: personal/mail/class_mail-methods.inc:145
 #, php-format
 msgid "The configured mail attribute '%s' is unsupported!"
 msgstr "L'attribut de messagerie '%s' n'est pas supporté !"
 
-#: personal/mail/class_mail-methods.inc:517
+#: personal/mail/class_mail-methods.inc:481
 #, php-format
-msgid "Mail method '%s' is unknown!"
-msgstr "Le méthode de messagerie '%s' est inconnue !"
+msgid "Mail method \"%s\" is unknown!"
+msgstr "Le méthode de messagerie \"%s\" est inconnue !"
 
-#: personal/mail/class_mail-methods.inc:764
-#: personal/mail/class_mail-methods.inc:765
-msgid "None"
-msgstr "Aucun"
-
-#: personal/mail/class_mail-methods.inc:854
+#: personal/mail/class_mail-methods.inc:725
 msgid "Unknown"
 msgstr "Inconnu"
 
-#: personal/mail/class_mail-methods.inc:856
+#: personal/mail/class_mail-methods.inc:727
 msgid "Unlimited"
 msgstr "Illimité"
 
@@ -241,7 +244,9 @@ msgstr "Utiliser le style Cyrus UNIX"
 #: config/mail/class_mailPluginConfig.inc:61
 msgid ""
 "Determines if 'foo/bar' or 'foo.bar' should be uses as namespaces in IMAP."
-msgstr "Détermine si \"foo/bar\" ou \"foo.bar\" doit être utilisé comme espace de nom IMAP."
+msgstr ""
+"Détermine si \"foo/bar\" ou \"foo.bar\" doit être utilisé comme espace de "
+"nom IMAP."
 
 #: config/mail/class_mailPluginConfig.inc:65
 msgid "Delete mailbox on account deletion"
@@ -251,7 +256,9 @@ msgstr "Supprimer le compte de courriel lors de la suppression du compte"
 msgid ""
 "Determines if the mailbox should be removed from your IMAP server after the "
 "account is deleted in LDAP."
-msgstr "Détermine si la boîte aux lettres doit être retirée de votre serveur IMAP après la suppression du compte LDAP."
+msgstr ""
+"Détermine si la boîte aux lettres doit être retirée de votre serveur IMAP "
+"après la suppression du compte LDAP."
 
 #: config/mail/class_mailPluginConfig.inc:71
 msgid "Cyrus autocreate folders"
@@ -261,7 +268,9 @@ msgstr "Création automatique des dossiers Cyrus"
 msgid ""
 "List of personal IMAP folders that should be created along initial account "
 "creation."
-msgstr "Liste des dossiers IMAP personnels qui doivent être créés lors de la création du compte initial."
+msgstr ""
+"Liste des dossiers IMAP personnels qui doivent être créés lors de la "
+"création du compte initial."
 
 #: config/mail/class_mailPluginConfig.inc:77
 msgid "IMAP timeout"
@@ -311,7 +320,9 @@ msgstr "Les utilisateurs ne sont autorisés qu'à recevoir des messages locaux"
 msgid ""
 "Whether this group mail is only allowed to receive messages from local "
 "senders"
-msgstr "Ce groupe mail est uniquement autorisé à recevoir des messages provenant d'expéditeurs locaux"
+msgstr ""
+"Ce groupe mail est uniquement autorisé à recevoir des messages provenant "
+"d'expéditeurs locaux"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:32
 msgid "IMAP/POP3 generic service"
@@ -323,4 +334,4 @@ msgstr "IMAP/POP3"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:33
 msgid "Services"
-msgstr "Services"
+msgstr "Service"

@@ -1,17 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
-# Pavel Borecki <pavel.borecki@gmail.com>, 2015
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-08-02 06:53+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/cs_CZ/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -103,16 +103,16 @@ msgid "Locked accounts"
 msgstr "Uzamčené účty"
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:71
-#: addons/dashboard/class_dashBoardPPolicy.inc:127
+#: addons/dashboard/class_dashBoardPPolicy.inc:124
 msgid "Configuration error"
-msgstr "Chyba v nastavení"
+msgstr "chyba v nastavení"
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:72
 #, php-format
 msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
 msgstr "Výchozí ppolicy %s nebyla v LDAP nalezena!"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:128
+#: addons/dashboard/class_dashBoardPPolicy.inc:125
 #, php-format
 msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
 msgstr "Zásada Ppolicy %s, nastavená pro uživatele %s nebyla v LDAP nalezena!"
@@ -163,7 +163,7 @@ msgstr "Název zásady"
 
 #: admin/ppolicy/class_ppolicy.inc:60
 msgid "Description"
-msgstr "Popis"
+msgstr "popis"
 
 #: admin/ppolicy/class_ppolicy.inc:60
 msgid "A short description of this policy"
@@ -177,7 +177,9 @@ msgstr "Nejkratší umožněná délka"
 msgid ""
 "Minimum length of the user supplied password - passwords shorter than this "
 "value will be rejected"
-msgstr "Nejkratší přijatelná délka hesel, kterou budou uživatelé moci použít ke svým účtům – kratší hesla budou zamítána"
+msgstr ""
+"Nejkratší přijatelná délka hesel, kterou budou uživatelé moci použít ke svým"
+" účtům – kratší hesla budou zamítána"
 
 #: admin/ppolicy/class_ppolicy.inc:69
 msgid "Passwords in history"
@@ -191,7 +193,7 @@ msgstr "Počet hesel, které jsou uchovávány v seznamu dříve použitých"
 
 #: admin/ppolicy/class_ppolicy.inc:74
 msgid "Minimum password age"
-msgstr "Za jak dlouho nejdříve může být heslo znovu změněno"
+msgstr "minimální stáří hesla"
 
 #: admin/ppolicy/class_ppolicy.inc:74
 msgid "Minimum time between password changes"
@@ -199,14 +201,17 @@ msgstr "Za jak dlouho nejdříve lze heslo opět změnit"
 
 #: admin/ppolicy/class_ppolicy.inc:79
 msgid "Maximum password age"
-msgstr "Jak dlouho nejvýše budou hesla platná"
+msgstr "maximální stáří hesla"
 
 #: admin/ppolicy/class_ppolicy.inc:79
 msgid ""
 "Maximum time a password is valid, after which it is deemed to be no longer "
 "usable and any bind operations attempted with the expired password will be "
 "treated as invalid"
-msgstr "Nejdelší umožněná doba, po kterou je heslo platné. Po jejím uplynutí bude považováno za nepoužitelné a jakýkoli pokus o spojení s použitím tohoto hesla, jehož platnost skončila, bude považován za neplatný"
+msgstr ""
+"Nejdelší umožněná doba, po kterou je heslo platné. Po jejím uplynutí bude "
+"považováno za nepoužitelné a jakýkoli pokus o spojení s použitím tohoto "
+"hesla, jehož platnost skončila, bude považován za neplatný"
 
 #: admin/ppolicy/class_ppolicy.inc:84
 msgid "Expiry warning delay"
@@ -217,7 +222,10 @@ msgid ""
 "Defines the start time - in seconds - prior to the password expiry that "
 "password expiry warning messages are returned in bind responses. 0 to "
 "disable"
-msgstr "Určuje čas – sekundách – před skončením platnosti hesla, kdy začnou být při spojování zasílána varování o blížícím se skončení platnosti hesla. Funkci zakážete nastavením na hodnotu 0 (nula)"
+msgstr ""
+"Určuje čas – sekundách – před skončením platnosti hesla, kdy začnou být při "
+"spojování zasílána varování o blížícím se skončení platnosti hesla. Funkci "
+"zakážete nastavením na hodnotu 0 (nula)"
 
 #: admin/ppolicy/class_ppolicy.inc:89
 msgid "Grace period"
@@ -227,7 +235,9 @@ msgstr "Doba odkladu"
 msgid ""
 "Number of times a user is allowed to successfully bind using an expired "
 "password"
-msgstr "Kolikrát bude uživateli dovoleno se úspěšně připojit i s heslem, jehož platnost skončila"
+msgstr ""
+"Kolikrát bude uživateli dovoleno se úspěšně připojit i s heslem, jehož "
+"platnost skončila"
 
 #: admin/ppolicy/class_ppolicy.inc:94
 msgid "Allow user change"
@@ -257,7 +267,7 @@ msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:107
 msgid "Disabled"
-msgstr "Vypnuto"
+msgstr "zakázáno"
 
 #: admin/ppolicy/class_ppolicy.inc:107
 msgid "Ignore errors"
@@ -290,7 +300,10 @@ msgstr "Zapnout uzamykání"
 msgid ""
 "Whether to lock an account that had more consecutive failed bind attempts "
 "with invalid passwords than is defined by \"Maximum failures\""
-msgstr "Zda uzamknout účet, který se několikrát za sebou neúspěšně pokusil spojit s neplatným heslem. Limit určuje položka Nejvyšší umožněný počet neúspěšných pokusů"
+msgstr ""
+"Zda uzamknout účet, který se několikrát za sebou neúspěšně pokusil spojit s "
+"neplatným heslem. Limit určuje položka Nejvyšší umožněný počet neúspěšných "
+"pokusů"
 
 #: admin/ppolicy/class_ppolicy.inc:125
 msgid "Lock out duration"
@@ -300,7 +313,9 @@ msgstr "Doba trvání uzamčení"
 msgid ""
 "Time the account remains locked after an automatic lock out (0 means for "
 "ever)"
-msgstr "Doba, po kterou účet zůstane zamčený pro samočinném zamčení (0 znamená napořád)"
+msgstr ""
+"Doba, po kterou účet zůstane zamčený pro samočinném zamčení (0 znamená "
+"napořád)"
 
 #: admin/ppolicy/class_ppolicy.inc:130
 msgid "Maximum failures"
@@ -309,7 +324,8 @@ msgstr "Nejvýše přijatelných nezdarů"
 #: admin/ppolicy/class_ppolicy.inc:130
 msgid ""
 "Number of consecutive password failures allowed before automatic lock out"
-msgstr "Počet po sobě jdoucích chybných zadání hesla než dojde k samočinnému zamčení"
+msgstr ""
+"Počet po sobě jdoucích chybných zadání hesla než dojde k samočinnému zamčení"
 
 #: admin/ppolicy/class_ppolicy.inc:135
 msgid "Failure count interval"
@@ -319,7 +335,10 @@ msgstr "Rozmezí počtu nezdarů"
 msgid ""
 "Time after which the count of consecutive password failures is reset even if"
 " no successful authentication has occurred"
-msgstr "Doba, po jejímž uplynutí budou chybná, po sobě jdoucí zadání hesla počítána od znovu. Reset tohoto počitadla je spuštěn buď takto časem, nebo správným zadáním hesla."
+msgstr ""
+"Doba, po jejímž uplynutí budou chybná, po sobě jdoucí zadání hesla počítána "
+"od znovu. Reset tohoto počitadla je spuštěn buď takto časem, nebo správným "
+"zadáním hesla."
 
 #: admin/ppolicy/class_ppolicy.inc:140
 msgid "Must change"
@@ -329,14 +348,16 @@ msgstr "Vynutit změnu"
 msgid ""
 "Whether the user must change their password after an account is reset by an "
 "administrator following an automatic lockout"
-msgstr "Zda uživatele přimět ke změně hesla po obnovení přístupu správcem po samočinném zamčení účtu"
+msgstr ""
+"Zda uživatele přimět ke změně hesla po obnovení přístupu správcem po "
+"samočinném zamčení účtu"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:2
 msgid "There is one locked account"
 msgid_plural "There are %1 locked accounts"
-msgstr[0] "Je zde jeden uzamčený účet"
-msgstr[1] "Jsou zde %1 uzamčené účty"
-msgstr[2] "Je zde %1 uzamčených účtů"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:5
 msgid "There is no locked account"

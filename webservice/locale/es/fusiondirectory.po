@@ -1,16 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2017-01-11 20:28+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Spanish (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/es/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Spanish (https://www.transifex.com/fusiondirectory/teams/12202/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -40,47 +41,50 @@ msgstr ""
 #: html/jsonrpc.php:52
 #, php-format
 msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
-msgstr "La configuración de FusionDirectory %s/%s no se puede leer. Cancelado."
+msgstr ""
+"La configuración de FusionDirectory %s/%s no se puede leer. Cancelado."
 
 #: html/jsonrpc.php:62
 #, php-format
 msgid "Cannot locate file '%s' - please run '%s' to fix this"
-msgstr "No se puede encontrar el archivo '%s' - por favor ejecute '%s' para solucionarlo"
+msgstr ""
+"No se puede encontrar el archivo '%s' - por favor ejecute '%s' para "
+"solucionarlo"
 
-#: html/jsonrpc.php:312 html/jsonrpc.php:396
+#: html/jsonrpc.php:319 html/jsonrpc.php:402
 msgid "Plugin"
 msgstr "Extensión"
 
-#: html/jsonrpc.php:491
+#: html/jsonrpc.php:494
 #, php-format
 msgid "Cannot delete %s. It has been locked by %s."
 msgstr ""
 
-#: html/jsonrpc.php:538 html/jsonrpc.php:567
+#: html/jsonrpc.php:541 html/jsonrpc.php:570
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr ""
 
-#: html/jsonrpc.php:563
+#: html/jsonrpc.php:566
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr ""
 
-#: html/jsonrpc.php:570
+#: html/jsonrpc.php:573
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr ""
 
-#: html/jsonrpc.php:608 html/jsonrpc.php:617
+#: html/jsonrpc.php:611 html/jsonrpc.php:620
 #, php-format
 msgid "Failed to get password method for account \"%s\""
 msgstr ""
 
-#: html/jsonrpc.php:620
+#: html/jsonrpc.php:623
 #, php-format
 msgid "Could not find account \"%s\" in LDAP"
 msgstr ""
 
-#: html/jsonrpc.php:664
+#: html/jsonrpc.php:667
 msgid "This token is invalid"
 msgstr "Esta prenda es invalida"

@@ -1,17 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
-# Ilaria Montaruli <Ilaria.Montaruli@gmail.com>, 2015
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-09-02 15:23+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Italian (Italy) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/it_IT/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -63,10 +63,11 @@ msgstr "Entrambi"
 msgid "IP or Mac address"
 msgstr "Indirizzo IP o MAC"
 
-#: html/collect.php:74
+#: html/collect.php:75
 #, php-format
 msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
-msgstr "Il file di configurazione %s/%s non è leggibile. Operazione Annullata."
+msgstr ""
+"Il file di configurazione %s/%s non è leggibile. Operazione Annullata."
 
 #: admin/inventory/inventory-list.xml:7
 msgid "NO LABEL"
@@ -160,37 +161,65 @@ msgstr "Fiducia"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:65
 msgid "IPs allowed to launch inventory task through web interface"
-msgstr "Indirizzi IP permessi per lanciare i compiti dell'inventario attraverso un'interfaccia Web"
+msgstr ""
+"Indirizzi IP permessi per lanciare i compiti dell'inventario attraverso "
+"un'interfaccia Web"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:78
 msgid "FusionInventory agent configuration"
 msgstr "Configurazione dell'agente Fusioninventory"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:67
+#: admin/systems/fusioninventory/class_fiInventory.inc:69
 msgid "Inventory"
 msgstr "Inventario"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:68
+#: admin/systems/fusioninventory/class_fiInventory.inc:70
 msgid "Inventory Viewer"
 msgstr "Visualizzatore inventario"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:73
-#: admin/systems/fusioninventory/class_fiInventory.inc:77
+#: admin/systems/fusioninventory/class_fiInventory.inc:75
+#: admin/systems/fusioninventory/class_fiInventory.inc:79
 msgid "Inventory object"
 msgstr "Oggetti d'inventario"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:91
+#: admin/systems/fusioninventory/class_fiInventory.inc:93
+msgid "Matching system"
+msgstr "Sistema di ricerca"
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:96
+#: admin/systems/fusioninventory/class_fiInventory.inc:372
+msgid "System"
+msgstr "Sistema"
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:96
+#: admin/systems/fusioninventory/class_fiInventory.inc:372
+msgid "System entry matching this inventory"
+msgstr "Voce del sistema di corrispondenza di questo inventario"
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:102
 msgid "Hardware"
 msgstr "Hardware"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:97
+#: admin/systems/fusioninventory/class_fiInventory.inc:108
 msgid "Software"
 msgstr "Programma"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:103
+#: admin/systems/fusioninventory/class_fiInventory.inc:114
 msgid "Users"
 msgstr "Utenti"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:109
+#: admin/systems/fusioninventory/class_fiInventory.inc:120
 msgid "Processes"
 msgstr "Processi"
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:320
+msgid "Create a system based on this inventory"
+msgstr "Creare un sistema basato su questo inventario"
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:335
+msgid "Create"
+msgstr "Crea"
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:340
+msgid "No matching system"
+msgstr "Nessun sistema di corrispondenza"

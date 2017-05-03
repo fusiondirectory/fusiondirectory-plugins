@@ -1,87 +1,92 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-01-22 16:06+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/cs_CZ/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:68
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:82
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:71
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:85
 msgid "Error"
-msgstr "Chyba"
+msgstr "chyba"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:68
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:71
 msgid "There is no template for this profile"
 msgstr "Pro tento profil neexistuje šablona"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:83
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:86
 #, php-format
 msgid "Can't find entry %s in LDAP for profile %s"
 msgstr "Pro sadu nastavení %s nebyla v LDAP nalezena položka %s"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:136
-msgid "LDAP error"
-msgstr "Chyba LDAP"
-
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:139
+msgid "LDAP error"
+msgstr "chyba LDAPu"
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:142
 msgid "LDIF error"
 msgstr "Chyba v LDIF"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:149
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:152
 #, php-format
 msgid ""
 "In order to import a debconf file, please run the following command : "
 "<br/><i>debconf2ldif.pl -b ou=<b>name</b>,%s -k <b>filename</b> > "
 "template.ldif </i><br/>With <b>filename</b> the file name, and <b>name</b> "
 "the desired name for the template.<br/>"
-msgstr "Debconf soubor importujete spuštěním následujícího příkazu: <br/><i>debconf2ldif.pl -b ou=<b>nazev</b>,%s -k <b>nazev_souboru</b> > sablona.ldif </i><br/>S názvem souboru <b>nazev_souboru</b> a požadovaným názvem šablony <b>nazev</b>.<br/>"
+msgstr ""
+"Debconf soubor importujete spuštěním následujícího příkazu: "
+"<br/><i>debconf2ldif.pl -b ou=<b>nazev</b>,%s -k <b>nazev_souboru</b> > "
+"sablona.ldif </i><br/>S názvem souboru <b>nazev_souboru</b> a požadovaným "
+"názvem šablony <b>nazev</b>.<br/>"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:165
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:169
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:168
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:172
 msgid "Debconf profile"
 msgstr "Debconf sada nastavení"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:166
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:169
 msgid "Debconf profile information"
 msgstr "Údaje o sadě nastavení Debconf"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:184
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:187
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:190
 #: admin/debconfProfile/debconfProfile-filter.tpl.c:5
 msgid "Name"
-msgstr "Název"
+msgstr "název"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:186
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
 msgid "Import a debconf file"
 msgstr "Importovat debconf soubor"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:187
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:190
 msgid "Name of this debconf template"
 msgstr "Název této debconf šablony"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:191
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:194
 msgid "Entries"
 msgstr "Položky"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:193
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:196
 msgid "Debconf template answers"
 msgstr "Odpovědi Debconf šablony"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:208
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:211
 msgid "Import"
-msgstr "Import"
+msgstr "import(ovat)"
 
 #: admin/debconfProfile/class_debconfProfileManagement.inc:32
 #: admin/systems/debconf/class_debconfStartup.inc:33
@@ -102,7 +107,7 @@ msgstr "Nastavení pro Debconf"
 
 #: admin/systems/debconf/class_debconfStartup.inc:49
 msgid "Profile"
-msgstr "Profil"
+msgstr "profil"
 
 #: admin/systems/debconf/class_debconfStartup.inc:49
 msgid "Debconf preseed profile to be used for installation"
@@ -110,7 +115,7 @@ msgstr "Sada přednastavení Debconf, použitá pro tuto instalaci"
 
 #: admin/systems/debconf/class_debconfStartup.inc:53
 msgid "Release"
-msgstr "Vydání"
+msgstr "vydání"
 
 #: admin/systems/debconf/class_debconfStartup.inc:53
 msgid "Debian release to install"
@@ -118,4 +123,4 @@ msgstr "Vydání systému Debian, které má být nainstalováno"
 
 #: admin/debconfProfile/debconfProfile-filter.tpl.c:2
 msgid "Filter"
-msgstr "Filtr"
+msgstr "filtr"

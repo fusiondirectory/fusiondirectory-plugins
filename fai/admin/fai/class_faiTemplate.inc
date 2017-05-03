@@ -45,7 +45,8 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
     global $config;
     if (isset($attrs['dn'])) {
       $ldap = $config->get_ldap_link();
-      $ldap->ls($this->templateFilter, $attrs['dn']);
+      $ldap->cd($attrs['dn']);
+      $ldap->search($this->templateFilter, array('*'), 'one');
       $this->value = array();
       while ($subattrs = $ldap->fetch()) {
         $attrsWrapper = new stdClass();
@@ -65,15 +66,14 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
   /* Not saving anything into base node */
   function fillLdapValue (&$attrs)
   {
-    /* Remove crap made by plugin */
-    unset ($attrs[$this->getLdapName()]);
   }
 
   /* Special LDAP treatment that this attribute does after plugin ldap save */
   function postLdapSave ($ldap)
   {
     /* First delete all old nodes */
-    $ldap->ls($this->templateFilter, $this->plugin->dn, array('dn'));
+    $ldap->cd($this->plugin->dn);
+    $ldap->search($this->templateFilter, array('dn'), 'one');
     $delete = array();
     while ($attrs = $ldap->fetch()) {
       $delete[] = $attrs['dn'];
@@ -88,11 +88,6 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
       $sub_dn = $this->compute_sub_dn($val);
       $this->ldap_add($ldap, $sub_dn, $attrs);
     }
-  }
-
-  protected function handleEdit($key)
-  {
-    parent::handleEdit($key);
   }
 
   function compute_sub_dn ($value)
@@ -192,11 +187,18 @@ class faiTemplate extends faiSimplePluginClass
     );
   }
 
-  function ldap_save ($cleanup = TRUE)
+  protected function shouldSave()
+  {
+    /* We need ldap_save to always run */
+    return TRUE;
+  }
+
+  function ldap_save ()
   {
     global $config;
-    parent::ldap_save($cleanup);
+    $errors = parent::ldap_save();
     $this->attributesAccess['templateFiles']->postLdapSave($config->get_ldap_link());
+    return $errors;
   }
 }
 ?>

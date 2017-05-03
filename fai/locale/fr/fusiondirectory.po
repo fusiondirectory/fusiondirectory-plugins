@@ -1,17 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
-# MCMic, 2015
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-12-31 10:30+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -67,7 +67,7 @@ msgstr "Profil FAI et version de Debian à appliquer pour ce système"
 
 #: admin/systems/class_faiStartup.inc:91
 #: admin/systems/services/repository/class_serviceRepository.inc:40
-#: admin/fai/class_faiPackage.inc:414
+#: admin/fai/class_faiPackage.inc:412
 msgid "Release"
 msgstr "Version"
 
@@ -83,7 +83,7 @@ msgstr "Profil"
 msgid "FAI profil to be applied to this computer"
 msgstr "Profil FAI à appliquer pour ce système"
 
-#: admin/systems/class_faiStartup.inc:103 admin/fai/class_faiPackage.inc:411
+#: admin/systems/class_faiStartup.inc:103 admin/fai/class_faiPackage.inc:409
 msgid "Repository"
 msgstr "Dépôt"
 
@@ -112,7 +112,7 @@ msgid "Release used on this repository"
 msgstr "Version utilisée sur ce dépôt"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:47
-#: admin/fai/class_faiPackage.inc:418
+#: admin/fai/class_faiPackage.inc:416
 msgid "Sections"
 msgstr "Sections"
 
@@ -127,7 +127,9 @@ msgstr "Type de miroir"
 #: admin/systems/services/repository/class_serviceRepository.inc:52
 msgid ""
 "Is this mirror an installation repository? Is its release a custom one?"
-msgstr "Est ce que ce miroir est un dépôt d'installation ? Est-ce que sa version de Debian est personnalisée ?"
+msgstr ""
+"Est ce que ce miroir est un dépôt d'installation ? Est-ce que sa version de "
+"Debian est personnalisée ?"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:57
 msgid "Local mirror"
@@ -177,12 +179,12 @@ msgstr "Dépôts"
 msgid "Repositories this server hosts"
 msgstr "Dépôts fournis par ce serveur"
 
-#: admin/systems/services/repository/class_serviceRepository.inc:236
-#: admin/systems/services/repository/class_serviceRepository.inc:253
+#: admin/systems/services/repository/class_serviceRepository.inc:240
 #: admin/systems/services/repository/class_serviceRepository.inc:257
-#: admin/fai/class_faiPartitionTable.inc:209
-#: admin/fai/class_faiPartitionTable.inc:250
-#: admin/fai/class_faiPackage.inc:253 admin/fai/class_faiTemplate.inc:114
+#: admin/systems/services/repository/class_serviceRepository.inc:261
+#: admin/fai/class_faiPartitionTable.inc:215
+#: admin/fai/class_faiPartitionTable.inc:256
+#: admin/fai/class_faiPackage.inc:251 admin/fai/class_faiTemplate.inc:109
 msgid "LDAP error"
 msgstr "Erreur LDAP"
 
@@ -201,7 +203,8 @@ msgstr "Port"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:43
 msgid "The port argonaut-fai-monitor should listen on. Default is 4711."
-msgstr "Le port sur lequel argonaut-fai-monitor doit écouter. 4711 par défaut."
+msgstr ""
+"Le port sur lequel argonaut-fai-monitor doit écouter. 4711 par défaut."
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:48
 msgid "Timeout"
@@ -217,7 +220,9 @@ msgstr "Certificat CA"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:53
 msgid "Path to the CA certificate file on Argonaut FAI monitor server"
-msgstr "Chemin du fichier contenant le certificat du CA public sur le serveur où tourne argonaut-fai-monitor"
+msgstr ""
+"Chemin du fichier contenant le certificat du CA public sur le serveur où "
+"tourne argonaut-fai-monitor"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:58
 msgid "Log directory"
@@ -229,11 +234,11 @@ msgstr "Répertoire contenant les journaux systèmes de argonaut-fai-monitor"
 
 #: admin/systems/class_faiLogView.inc:57
 msgid "Sort down"
-msgstr "Tri décroissant"
+msgstr "Trier vers le bas"
 
 #: admin/systems/class_faiLogView.inc:59
 msgid "Sort up"
-msgstr "Tri croissant"
+msgstr "Trier vers le haut"
 
 #: admin/systems/class_faiLogView.inc:71
 msgid "File"
@@ -265,7 +270,7 @@ msgid "FAI Logs Viewer"
 msgstr "Afficheur de journaux systèmes FAI"
 
 #: admin/systems/class_faiLogView.inc:204
-#: admin/systems/class_faiLogView.inc:239 admin/fai/class_faiDiskEntry.inc:147
+#: admin/systems/class_faiLogView.inc:239 admin/fai/class_faiDiskEntry.inc:145
 msgid "Error"
 msgstr "Erreur"
 
@@ -286,57 +291,57 @@ msgstr "Ajouter du RAID"
 msgid "Add LVM"
 msgstr "Ajouter un LVM"
 
-#: admin/fai/class_faiPartitionTable.inc:283
+#: admin/fai/class_faiPartitionTable.inc:289
 msgid "Partition table"
 msgstr "Table des partitions"
 
-#: admin/fai/class_faiPartitionTable.inc:284
-#: admin/fai/class_faiPartitionTable.inc:287
+#: admin/fai/class_faiPartitionTable.inc:290
+#: admin/fai/class_faiPartitionTable.inc:293
 msgid "FAI partition table"
 msgstr "Table des partitions FAI"
 
-#: admin/fai/class_faiPartitionTable.inc:303
-#: admin/fai/class_faiTemplateEntry.inc:139 admin/fai/class_faiPackage.inc:398
-#: admin/fai/class_faiHook.inc:48 admin/fai/class_faiTemplate.inc:171
+#: admin/fai/class_faiPartitionTable.inc:309
+#: admin/fai/class_faiTemplateEntry.inc:139 admin/fai/class_faiPackage.inc:396
+#: admin/fai/class_faiHook.inc:48 admin/fai/class_faiTemplate.inc:166
 #: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiVariable.inc:48
 #: admin/fai/class_faiScript.inc:50
 msgid "Properties"
 msgstr "Propriétés"
 
-#: admin/fai/class_faiPartitionTable.inc:306
-#: admin/fai/class_faiPackage.inc:401 admin/fai/class_faiHook.inc:51
-#: admin/fai/class_faiTemplate.inc:174 admin/fai/class_faiProfile.inc:52
+#: admin/fai/class_faiPartitionTable.inc:312
+#: admin/fai/class_faiPackage.inc:399 admin/fai/class_faiHook.inc:51
+#: admin/fai/class_faiTemplate.inc:169 admin/fai/class_faiProfile.inc:52
 #: admin/fai/class_faiVariable.inc:51 admin/fai/class_faiScript.inc:53
 msgid "Class name"
 msgstr "Nom de la classe"
 
-#: admin/fai/class_faiPartitionTable.inc:306 admin/fai/class_faiProfile.inc:52
+#: admin/fai/class_faiPartitionTable.inc:312 admin/fai/class_faiProfile.inc:52
 msgid "Partition table class name"
 msgstr "Nom de la classe de partition"
 
-#: admin/fai/class_faiPartitionTable.inc:310
-#: admin/fai/class_faiTemplateEntry.inc:146 admin/fai/class_faiPackage.inc:405
-#: admin/fai/class_faiDiskEntry.inc:241 admin/fai/class_faiHook.inc:55
-#: admin/fai/class_faiHook.inc:73 admin/fai/class_faiTemplate.inc:178
+#: admin/fai/class_faiPartitionTable.inc:316
+#: admin/fai/class_faiTemplateEntry.inc:146 admin/fai/class_faiPackage.inc:403
+#: admin/fai/class_faiDiskEntry.inc:239 admin/fai/class_faiHook.inc:55
+#: admin/fai/class_faiHook.inc:73 admin/fai/class_faiTemplate.inc:173
 #: admin/fai/class_faiPartition.inc:246 admin/fai/class_faiProfile.inc:56
 #: admin/fai/class_faiVariable.inc:55 admin/fai/class_faiVariable.inc:73
 #: admin/fai/class_faiScript.inc:57 admin/fai/class_faiScript.inc:75
 msgid "Description"
 msgstr "Description"
 
-#: admin/fai/class_faiPartitionTable.inc:310
-#: admin/fai/class_faiPackage.inc:405 admin/fai/class_faiHook.inc:55
-#: admin/fai/class_faiTemplate.inc:178 admin/fai/class_faiProfile.inc:56
+#: admin/fai/class_faiPartitionTable.inc:316
+#: admin/fai/class_faiPackage.inc:403 admin/fai/class_faiHook.inc:55
+#: admin/fai/class_faiTemplate.inc:173 admin/fai/class_faiProfile.inc:56
 #: admin/fai/class_faiVariable.inc:55 admin/fai/class_faiScript.inc:57
 msgid "Short description of the class"
 msgstr "Une courte description de cette classe"
 
-#: admin/fai/class_faiPartitionTable.inc:316
+#: admin/fai/class_faiPartitionTable.inc:322
 msgid "Discs"
 msgstr "Disques"
 
-#: admin/fai/class_faiPartitionTable.inc:323
-#: admin/fai/class_faiDiskEntry.inc:271
+#: admin/fai/class_faiPartitionTable.inc:329
+#: admin/fai/class_faiDiskEntry.inc:269
 msgid "Partitions in this class"
 msgstr "Partitions dans cette classe"
 
@@ -378,7 +383,7 @@ msgstr "Propriétaire du fichier"
 
 #: admin/fai/class_faiTemplateEntry.inc:171
 msgid "Group"
-msgstr "Groupe"
+msgstr "Groupes"
 
 #: admin/fai/class_faiTemplateEntry.inc:171
 msgid "File group"
@@ -404,91 +409,93 @@ msgstr "Marquer à enlever"
 msgid "Edit configuration"
 msgstr "Éditer la configuration"
 
-#: admin/fai/class_faiPackage.inc:289
+#: admin/fai/class_faiPackage.inc:287
 #: admin/fai/class_faiPackageConfiguration.inc:59
 #: admin/fai/packageSelect/class_filterFAIPackages.inc:41
 #: admin/fai/packageSelect/class_filterFAIPackages.inc:46
 msgid "Infrastructure service"
 msgstr "Service d’infrastructure"
 
-#: admin/fai/class_faiPackage.inc:308
+#: admin/fai/class_faiPackage.inc:306
 msgid "Unkown packages"
 msgstr "Paquets inconnus"
 
-#: admin/fai/class_faiPackage.inc:378
+#: admin/fai/class_faiPackage.inc:376
 #: admin/fai/packageSelect/selectPackage-list.xml:15
 msgid "Package"
 msgstr "Paquet"
 
-#: admin/fai/class_faiPackage.inc:379
+#: admin/fai/class_faiPackage.inc:377
 msgid "FAI Package list"
 msgstr "Liste de paquets FAI"
 
-#: admin/fai/class_faiPackage.inc:382
+#: admin/fai/class_faiPackage.inc:380
 msgid "FAI Package"
 msgstr "Paquet FAI"
 
-#: admin/fai/class_faiPackage.inc:401 admin/fai/class_faiHook.inc:51
+#: admin/fai/class_faiPackage.inc:399 admin/fai/class_faiHook.inc:51
 #: admin/fai/class_faiVariable.inc:51 admin/fai/class_faiScript.inc:53
 msgid "Variables class name"
 msgstr "Nom de la classe variables"
 
-#: admin/fai/class_faiPackage.inc:414
+#: admin/fai/class_faiPackage.inc:412
 msgid "Debian release concerned"
 msgstr "La version de Debian concernée"
 
-#: admin/fai/class_faiPackage.inc:418
+#: admin/fai/class_faiPackage.inc:416
 msgid "Sections concerned"
 msgstr "Les sections concernées"
 
-#: admin/fai/class_faiPackage.inc:422
+#: admin/fai/class_faiPackage.inc:420
 msgid "Install method"
 msgstr "Méthode d'installation"
 
-#: admin/fai/class_faiPackage.inc:422
+#: admin/fai/class_faiPackage.inc:420
 msgid "Install method to use for this package list"
 msgstr "La méthode d'installation à utiliser pour cette liste de paquets"
 
-#: admin/fai/class_faiPackage.inc:433
+#: admin/fai/class_faiPackage.inc:431
 msgid "Packages"
 msgstr "Paquets"
 
-#: admin/fai/class_faiPackage.inc:437
+#: admin/fai/class_faiPackage.inc:435
 msgid "Packages in this class"
 msgstr "Paquets dans cette classe"
 
-#: admin/fai/class_faiDiskEntry.inc:103
+#: admin/fai/class_faiDiskEntry.inc:101
 msgid "encrypted"
 msgstr "chiffré"
 
-#: admin/fai/class_faiDiskEntry.inc:106
+#: admin/fai/class_faiDiskEntry.inc:104
 msgid "bootable"
 msgstr "amorçable"
 
-#: admin/fai/class_faiDiskEntry.inc:109
+#: admin/fai/class_faiDiskEntry.inc:107
 msgid "preserve"
 msgstr "préserver"
 
-#: admin/fai/class_faiDiskEntry.inc:148
+#: admin/fai/class_faiDiskEntry.inc:146
 #, php-format
 msgid ""
 "The partition cannot be deleted while it is used in the \"%s\" disk "
 "definition!"
-msgstr "Ce disque ne peut pas être supprimé car il est utilisé par la définition de disque \"%s\" !"
+msgstr ""
+"Ce disque ne peut pas être supprimé car il est utilisé par la définition de "
+"disque \"%s\" !"
 
-#: admin/fai/class_faiDiskEntry.inc:220
+#: admin/fai/class_faiDiskEntry.inc:218
 msgid "Partition table entry"
 msgstr "Entrée de la table des partitions"
 
-#: admin/fai/class_faiDiskEntry.inc:221
+#: admin/fai/class_faiDiskEntry.inc:219
 msgid "FAI partition table entry"
 msgstr "Entrée de la table de partition FAI"
 
-#: admin/fai/class_faiDiskEntry.inc:232 admin/fai/class_faiDiskEntry.inc:248
+#: admin/fai/class_faiDiskEntry.inc:230 admin/fai/class_faiDiskEntry.inc:246
 msgid "Device"
 msgstr "Périphérique"
 
-#: admin/fai/class_faiDiskEntry.inc:235 admin/fai/class_faiHook.inc:69
+#: admin/fai/class_faiDiskEntry.inc:233 admin/fai/class_faiHook.inc:69
 #: admin/fai/class_faiSimplePluginClass.inc:51
 #: admin/fai/class_faiPartition.inc:240 admin/fai/class_faiVariable.inc:69
 #: admin/fai/class_faiScript.inc:71
@@ -496,57 +503,60 @@ msgstr "Périphérique"
 msgid "Name"
 msgstr "Nom"
 
-#: admin/fai/class_faiDiskEntry.inc:235
+#: admin/fai/class_faiDiskEntry.inc:233
 msgid "Disk name"
 msgstr "Nom du disque"
 
-#: admin/fai/class_faiDiskEntry.inc:241 admin/fai/class_faiPartition.inc:246
+#: admin/fai/class_faiDiskEntry.inc:239 admin/fai/class_faiPartition.inc:246
 msgid "Short description"
 msgstr "Description courte"
 
-#: admin/fai/class_faiDiskEntry.inc:245
+#: admin/fai/class_faiDiskEntry.inc:243
 msgid "fstab key"
 msgstr "Entrée fstab"
 
-#: admin/fai/class_faiDiskEntry.inc:245
+#: admin/fai/class_faiDiskEntry.inc:243
 msgid "Key to use in fstab file"
 msgstr "Clé à utiliser dans le fichier fstab"
 
-#: admin/fai/class_faiDiskEntry.inc:248
+#: admin/fai/class_faiDiskEntry.inc:246
 msgid "Label"
 msgstr "Étiquette"
 
-#: admin/fai/class_faiDiskEntry.inc:248
+#: admin/fai/class_faiDiskEntry.inc:246
 msgid "UUID"
 msgstr "UUID"
 
-#: admin/fai/class_faiDiskEntry.inc:251
+#: admin/fai/class_faiDiskEntry.inc:249
 msgid "Disk label"
 msgstr "Étiquette du disque"
 
-#: admin/fai/class_faiDiskEntry.inc:260
+#: admin/fai/class_faiDiskEntry.inc:258
 msgid "Partition entries"
 msgstr "Liste de partitions"
 
-#: admin/fai/class_faiDiskEntry.inc:265 admin/fai/class_faiPartition.inc:422
+#: admin/fai/class_faiDiskEntry.inc:263 admin/fai/class_faiPartition.inc:422
 msgid "Combined physical partitions"
 msgstr "Partitions physiques combinées"
 
-#: admin/fai/class_faiDiskEntry.inc:265
+#: admin/fai/class_faiDiskEntry.inc:263
 msgid "Physical partitions combined in this LVM volume"
 msgstr "Combination des partitions physiques dans volume LVM"
 
-#: admin/fai/class_faiDiskEntry.inc:540
+#: admin/fai/class_faiDiskEntry.inc:538
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration"
-msgstr "Vous avez plus de quatre partitions primaires dans votre configuration."
+msgstr ""
+"Vous avez plus de quatre partitions primaires dans votre configuration."
 
-#: admin/fai/class_faiDiskEntry.inc:544
+#: admin/fai/class_faiDiskEntry.inc:542
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions"
-msgstr "Vous ne pouvez pas avoir plus de trois partitions primaires quand vous utilisez des partitions logiques."
+msgstr ""
+"Vous ne pouvez pas avoir plus de trois partitions primaires quand vous "
+"utilisez des partitions logiques."
 
 #: admin/fai/class_faiHook.inc:28
 msgid "Hook"
@@ -558,7 +568,7 @@ msgstr "Hook FAI"
 
 #: admin/fai/class_faiHook.inc:61
 msgid "Hooks"
-msgstr "Hooks"
+msgstr "Connexions"
 
 #: admin/fai/class_faiHook.inc:65 admin/fai/class_faiVariable.inc:65
 #: admin/fai/class_faiScript.inc:67
@@ -588,28 +598,28 @@ msgstr "Script"
 msgid "The script of this hook"
 msgstr "Le script de ce hook"
 
-#: admin/fai/class_faiTemplate.inc:136
+#: admin/fai/class_faiTemplate.inc:131
 #, php-format
 msgid "There are several files with the same path: %s"
 msgstr "Il existe plusieurs fichiers avec le même chemin : %s"
 
-#: admin/fai/class_faiTemplate.inc:151
+#: admin/fai/class_faiTemplate.inc:146
 msgid "Template"
 msgstr "Modèle"
 
-#: admin/fai/class_faiTemplate.inc:152 admin/fai/class_faiTemplate.inc:155
+#: admin/fai/class_faiTemplate.inc:147 admin/fai/class_faiTemplate.inc:150
 msgid "FAI template"
 msgstr "Modèle FAI"
 
-#: admin/fai/class_faiTemplate.inc:174
+#: admin/fai/class_faiTemplate.inc:169
 msgid "Template class name"
 msgstr "Nom de la classe de modèle"
 
-#: admin/fai/class_faiTemplate.inc:184
+#: admin/fai/class_faiTemplate.inc:179
 msgid "Template files"
 msgstr "Fichiers du modèle"
 
-#: admin/fai/class_faiTemplate.inc:188
+#: admin/fai/class_faiTemplate.inc:183
 msgid "Template files in this class"
 msgstr "Fichiers de modèle de cette classe"
 
@@ -638,7 +648,11 @@ msgid ""
 "installation and requires choosing between specific options which cannot be "
 "presented here. The entered text needs to be one of the valid choices in "
 "order to take effect."
-msgstr "les questions debconf \"%s\" sont générée dynamiquement pendant l'installation du paquet et nécessite le choix entre différentes options qui ne peuvent pas être affichées ici. Le texte entré doit être un de ces choix pour être valide."
+msgstr ""
+"les questions debconf \"%s\" sont générée dynamiquement pendant "
+"l'installation du paquet et nécessite le choix entre différentes options qui"
+" ne peuvent pas être affichées ici. Le texte entré doit être un de ces choix"
+" pour être valide."
 
 #: admin/fai/class_faiPartition.inc:30
 msgid "Type of sizing - fixed, dynamic or all remaining space"
@@ -880,7 +894,8 @@ msgstr "Les ensembles RAID doivent contenir au moins 2 partitions !"
 #: admin/fai/class_faiPartition.inc:480
 msgid ""
 "Raid 0 arrays can only be realized with a combination of two partitions!"
-msgstr "Les ensembles RAID 0 ne peuvent être réalisés qu'avec deux partitions !"
+msgstr ""
+"Les ensembles RAID 0 ne peuvent être réalisés qu'avec deux partitions !"
 
 #: admin/fai/class_faiProfile.inc:30
 msgid "Profile"

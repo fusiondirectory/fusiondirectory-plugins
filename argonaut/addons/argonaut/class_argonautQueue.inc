@@ -87,7 +87,7 @@ class argonautQueue extends simpleManagement
   /*! \brief    Queue selected objects to be removed.
    *            Checks ACLs, Locks and ask for confirmation.
    */
-  protected function removeEntryRequested($action = '', $target = array(), $all = array())
+  protected function removeEntryRequested($action, array $target, array $all)
   {
     if (!$this->acl_is_removeable()) {
       msg_dialog::display(_('Permission'), msgPool::permDelete(), ERROR_DIALOG);
@@ -135,14 +135,14 @@ class argonautQueue extends simpleManagement
         if ($infos) {
           $objects[] = array(
             'name'  => $infos['name'],
-            'dn'    => LDAP::fix($dn),
+            'dn'    => $dn,
             'icon'  => $infos['img'],
             'type'  => 'task'
           );
         } else {
           $objects[] = array(
             'name'  => $task['HEADERTAG'],
-            'dn'    => LDAP::fix($dn),
+            'dn'    => $dn,
             'icon'  => '',
             'type'  => 'task'
           );
@@ -157,8 +157,7 @@ class argonautQueue extends simpleManagement
     }
   }
 
-  function removeEntryConfirmed($action = '', $target = array(), $all = array(),
-                                $altTabClass = '', $altTabType = '', $altAclCategory = '')
+  function removeEntryConfirmed($action, array $target, array $all)
   {
     if ($this->acl_is_removeable()) {
       timezone::get_default_timezone();
@@ -173,7 +172,7 @@ class argonautQueue extends simpleManagement
 
   /*! \brief  Force queue job to be aborted.
    */
-  function abortEvent($action = '', $target = array(), $all = array())
+  function abortEvent($action, array $target)
   {
     $macs     = array();
     $taskids  = array();
@@ -188,30 +187,26 @@ class argonautQueue extends simpleManagement
     if ($this->o_queue->is_error()) {
       msg_dialog::display(_('Info'), sprintf(_('%s'), $this->o_queue->get_error()), INFO_DIALOG);
     }
-    /* Removing the task. */
+    // Removing the task.
     $this->o_queue->remove_entries($taskids);
   }
 
-  function processNow($action = '', $target = array(), $all = array())
+  function processNow($action, array $target)
   {
     $this->execute_queue_entries($target);
   }
 
-  function viewLogs($action = '', $target = array(), $all = array())
+  function viewLogs($action, array $target)
   {
     if (count($target) == 1) {
-      $id       = $target[0];
-      $type     = FALSE;
-      $headpage = $this->getHeadpage();
-      $tmp      = $headpage->getEntry($id);
-      $entry    = $tmp['EVENT'];
+      $entry        = $this->getHeadpage()->getEntry($target[0]);
       $attrsWrapper = new stdClass();
-      $attrsWrapper->attrs = $entry;
+      $attrsWrapper->attrs = $entry['EVENT'];
       $this->dialogObject = new faiLogView(NULL, '', $attrsWrapper, $this);
     }
   }
 
-  function showErrorEntry($action = '', $target = array(), $all = array())
+  function showErrorEntry($action, array $target)
   {
     if (count($target) == 1) {
       $entry  = $this->headpage->getEntry($target[0]);

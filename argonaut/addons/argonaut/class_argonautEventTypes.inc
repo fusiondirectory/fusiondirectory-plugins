@@ -20,11 +20,6 @@
 
 class argonautEventTypes
 {
-  static protected function get_event_types_list()
-  {
-    die('get_event_types_list needs to be implemented in all subclass of argonautEventTypes');
-  }
-
   /*! \brief  Returns a complete list of all available events.
     @return   Array   Containing info for all available events.
    */
@@ -36,7 +31,7 @@ class argonautEventTypes
     } else {
       $ret = array();
       foreach (array_keys($class_mapping) as $class) {
-        if (is_subclass_of($class, 'argonautEventTypes')) {
+        if (preg_match('/^argonautEventTypes.+$/', $class)) {
           $ret = array_merge($ret, $class::get_event_types_list());
         }
       }
@@ -63,9 +58,9 @@ class argonautEventTypes
   }
 }
 
-class argonautEventSystem extends argonautEventTypes
+class argonautEventTypesSystem
 {
-  static protected function get_event_types_list()
+  static public function get_event_types_list()
   {
     return array(
       'System.halt' => array(
@@ -76,9 +71,9 @@ class argonautEventSystem extends argonautEventTypes
   }
 }
 
-class argonautEventDeployment extends argonautEventTypes
+class argonautEventTypesDeployment
 {
-  static protected function get_event_types_list()
+  static public function get_event_types_list()
   {
     return array(
       'Deployment.reboot' => array(
@@ -101,7 +96,7 @@ class argonautEventDeployment extends argonautEventTypes
   }
 }
 
-class argonautEventLdap2zone extends argonautEventTypes
+class argonautEventTypesLdap2zone
 {
   static public function get_event_types_list()
   {

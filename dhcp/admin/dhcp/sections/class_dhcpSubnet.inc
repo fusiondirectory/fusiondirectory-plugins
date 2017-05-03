@@ -22,6 +22,16 @@ class dhcpSubnet extends dhcpPlugin
 {
   public $objectclasses = array('dhcpSubnet');
 
+  public static function plInfo()
+  {
+    return array(
+      'plShortName'     => _('DHCP subnet'),
+      'plDescription'   => _('DHCP subnet'),
+      'plCategory'      => array('dhcpConfiguration'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
+
   static function getAttributesInfo ()
   {
     $attributesInfo = parent::getAttributesInfo();
@@ -35,8 +45,10 @@ class dhcpSubnet extends dhcpPlugin
         ),
         new SetAttribute (
           new StringAttribute (
-            _('Range'), _('The starting & ending IP Addresses in the range (inclusive), separated by a hyphen; if the range only contains one address, then just the address can be specified with no hyphen. Each range is defined as a separate value.'),
-            'dhcpRange', FALSE
+            _('Range'), _('The starting & ending IP Addresses in the range (inclusive), separated by a space; if the range only contains one address, then just the address can be specified. Each range is defined as a separate value.'),
+            'dhcpRange', FALSE,
+            '', '',
+            '/^[0-9\.:]+(\s[0-9\.:]+)?$/'
           )
         ),
       )

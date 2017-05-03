@@ -1,19 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
-# Benoit Mortier <benoit.mortier@opensides.be>, 2015-2016
-# gallak <antoine.gallavardin@free.fr>, 2015
-# MCMic, 2015
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-08-02 07:07+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
-"Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/fr/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -61,7 +59,9 @@ msgstr "Réinitialiser verrouillage / changement obligatoire"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:59
 msgid "Resets the lock status of this account and/or force a password change"
-msgstr "Réinitialise l'état de verrouillage de ce compte et / ou imposer un changement de mot de passe"
+msgstr ""
+"Réinitialise l'état de verrouillage de ce compte et / ou imposer un "
+"changement de mot de passe"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:62
 msgid "Force password change (resets locking)"
@@ -81,7 +81,7 @@ msgstr "Jamais"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:90
 msgid "Unlocked"
-msgstr "Déverrouillé"
+msgstr "Déverrouille "
 
 #: personal/ppolicy/class_ppolicyAccount.inc:92
 msgid "Locked permanently"
@@ -105,7 +105,7 @@ msgid "Locked accounts"
 msgstr "Comptes verrouillés "
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:71
-#: addons/dashboard/class_dashBoardPPolicy.inc:127
+#: addons/dashboard/class_dashBoardPPolicy.inc:124
 msgid "Configuration error"
 msgstr "Erreur de configuration"
 
@@ -114,14 +114,16 @@ msgstr "Erreur de configuration"
 msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
 msgstr "La ppolicy par défaut \"%s\" n’a pas été trouvée dans le LDAP !"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:128
+#: addons/dashboard/class_dashBoardPPolicy.inc:125
 #, php-format
 msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
-msgstr "La ppolicy \"%s\" pour l'utilisateur \"%s\" n’a pas été trouvée dans le LDAP !"
+msgstr ""
+"La ppolicy \"%s\" pour l'utilisateur \"%s\" n’a pas été trouvée dans le LDAP"
+" !"
 
 #: config/ppolicy/class_ppolicyConfig.inc:29
 msgid "Ppolicy plugin configuration"
-msgstr "Configuration du plugin Ppolicy"
+msgstr "Configuration de l'extension Ppolicy"
 
 #: config/ppolicy/class_ppolicyConfig.inc:30
 msgid "FusionDirectory ppolicy plugin configuration"
@@ -133,7 +135,7 @@ msgstr "Plugin Ppolicy"
 
 #: config/ppolicy/class_ppolicyConfig.inc:46
 msgid "Ppolicy RDN"
-msgstr "Branche Ppolicy"
+msgstr "Ppolicy RDN"
 
 #: config/ppolicy/class_ppolicyConfig.inc:46
 msgid "Branch in which ppolicies will be stored"
@@ -145,7 +147,9 @@ msgstr "Cn de la politique par défaut"
 
 #: config/ppolicy/class_ppolicyConfig.inc:51
 msgid "What you put as default ppolicy in the overlay config"
-msgstr "Ce que vous mettez comme politique par défaut dans la configuration de l'overlay"
+msgstr ""
+"Ce que vous mettez comme politique par défaut dans la configuration de "
+"l'overlay"
 
 #: admin/ppolicy/class_ppolicyManagement.inc:29
 msgid "Password policies"
@@ -161,7 +165,7 @@ msgstr "Politiques de mot de passe pour l'overlay ppolicy"
 
 #: admin/ppolicy/class_ppolicy.inc:56
 msgid "Policy name"
-msgstr "Nom de la politique"
+msgstr "Nom de la politique de mot de passe"
 
 #: admin/ppolicy/class_ppolicy.inc:60
 msgid "Description"
@@ -179,7 +183,9 @@ msgstr "Longueur minimale"
 msgid ""
 "Minimum length of the user supplied password - passwords shorter than this "
 "value will be rejected"
-msgstr "Longueur minimale du mot de passe fourni par l'utilisateur - les mots de passe plus courts que cette valeur seront rejetés"
+msgstr ""
+"Longueur minimale du mot de passe fourni par l'utilisateur - les mots de "
+"passe plus courts que cette valeur seront rejetées"
 
 #: admin/ppolicy/class_ppolicy.inc:69
 msgid "Passwords in history"
@@ -189,11 +195,13 @@ msgstr "Mots de passe dans l’historique"
 msgid ""
 "Number of passwords that are maintained in a list of previously used "
 "passwords"
-msgstr "Nombre de mots de passe qui sont conservés dans une liste de mots de passe utilisés antérieurement"
+msgstr ""
+"Nombre de mots de passe qui sont maintenues dans une liste de mots de passe "
+"utilisés antérieurement"
 
 #: admin/ppolicy/class_ppolicy.inc:74
 msgid "Minimum password age"
-msgstr "Durée de vie minimale du mot de passe"
+msgstr "Age minimum du mot de passe"
 
 #: admin/ppolicy/class_ppolicy.inc:74
 msgid "Minimum time between password changes"
@@ -201,14 +209,17 @@ msgstr "Délai minimum entre les changements de mot de passe"
 
 #: admin/ppolicy/class_ppolicy.inc:79
 msgid "Maximum password age"
-msgstr "Durée de vie maximale du mot de passe"
+msgstr "Durée de vie du mot de passe"
 
 #: admin/ppolicy/class_ppolicy.inc:79
 msgid ""
 "Maximum time a password is valid, after which it is deemed to be no longer "
 "usable and any bind operations attempted with the expired password will be "
 "treated as invalid"
-msgstr "Temps pendant lequel un mot de passe est valide, après quoi il est réputé ne plus être utilisable et toutes les opérations de connexion tentées avec le mot de passe expiré seront traitées comme invalides"
+msgstr ""
+"Temps maximum un mot de passe est valide, après quoi il est réputé ne plus "
+"être utilisable et toutes les opérations de connexion tenté avec le mot de "
+"passe expiré seront traités comme non valides"
 
 #: admin/ppolicy/class_ppolicy.inc:84
 msgid "Expiry warning delay"
@@ -219,7 +230,10 @@ msgid ""
 "Defines the start time - in seconds - prior to the password expiry that "
 "password expiry warning messages are returned in bind responses. 0 to "
 "disable"
-msgstr "Définit l'heure de début - en secondes - avant l’expiration du mot passe qui retournera des messages d'avertissement d'expiration dans les réponses de bind. 0 pour désactiver"
+msgstr ""
+"Définit l'heure de début - en secondes - avant l’expiration du mot passe qui"
+" retournera des messages d'avertissement d'expiration dans les réponses de "
+"bind. 0 pour désactiver"
 
 #: admin/ppolicy/class_ppolicy.inc:89
 msgid "Grace period"
@@ -229,7 +243,9 @@ msgstr "Période de grâce "
 msgid ""
 "Number of times a user is allowed to successfully bind using an expired "
 "password"
-msgstr "Nombre de fois qu'un utilisateur est autorisé à se connecter avec succès en utilisant un mot de passe expiré"
+msgstr ""
+"Nombre de fois qu'un utilisateur est autorisé à se lier avec succès en "
+"utilisant un mot de passe expiré"
 
 #: admin/ppolicy/class_ppolicy.inc:94
 msgid "Allow user change"
@@ -237,7 +253,7 @@ msgstr "Autoriser le changement par l'utilisateur"
 
 #: admin/ppolicy/class_ppolicy.inc:94
 msgid "Whether users are allowed to change their own passwords"
-msgstr "Si les utilisateurs sont autorisés à changer leur mot de passe ou non"
+msgstr "Si les utilisateurs sont autorisés à changer leur mot de passe"
 
 #: admin/ppolicy/class_ppolicy.inc:99
 msgid "Safe modify"
@@ -247,7 +263,9 @@ msgstr "Modification sure "
 msgid ""
 "Whether a user must send the current password during a password modification"
 " operation"
-msgstr "Si un utilisateur doit envoyer le mot de passe actuel pendant une opération de modification de mot de passe ou non"
+msgstr ""
+"Si un utilisateur doit envoyer le mot de passe actuel pendant une opération "
+"de modification de mot de passe"
 
 #: admin/ppolicy/class_ppolicy.inc:104
 msgid "Check quality"
@@ -255,7 +273,9 @@ msgstr "Vérifier la qualité"
 
 #: admin/ppolicy/class_ppolicy.inc:104
 msgid "Decides what to do if the function in \"Check module\" is not available"
-msgstr "Décide ce qu'il faut faire si la fonction \"Check module\" n'est sont pas disponible"
+msgstr ""
+"Décide ce qu'il faut faire si la fonction \"Check module\" n'est sont pas "
+"disponible"
 
 #: admin/ppolicy/class_ppolicy.inc:107
 msgid "Disabled"
@@ -278,11 +298,14 @@ msgid ""
 "Name of a user supplied password quality check module that will be called to"
 " perform password quality checks and is only relevant if pwdCheckQuality is "
 "either 1 or 2"
-msgstr "Nom du module de contrôle de qualité du mot de passe qui sera appelé à effectuer des contrôles de qualité n'est pertinent que si pwdCheckQuality est 1 ou 2"
+msgstr ""
+"Nom du module de contrôle de qualité du mot de passe qui sera appelé à "
+"effectuer des contrôles de qualité n'est pertinent que si pwdCheckQuality "
+"est 1 ou 2"
 
 #: admin/ppolicy/class_ppolicy.inc:116
 msgid "Lock out"
-msgstr "Verrouillage"
+msgstr "verrouiller"
 
 #: admin/ppolicy/class_ppolicy.inc:120
 msgid "Activate lock out"
@@ -292,17 +315,22 @@ msgstr "Activer le verrouillage"
 msgid ""
 "Whether to lock an account that had more consecutive failed bind attempts "
 "with invalid passwords than is defined by \"Maximum failures\""
-msgstr "Faut-il verrouiller un compte qui avait plus d’échecs de connexion consécutifs avec des mots de passe incorrects que ce qui est défini par «Nombre d'échec maximal\""
+msgstr ""
+"Faut-il verrouiller un compte qui avait plus d’échecs de connexion "
+"consécutifs avec des mots de passe incorrects que ce qui est défini par "
+"«Nombre d'échec maximal\""
 
 #: admin/ppolicy/class_ppolicy.inc:125
 msgid "Lock out duration"
-msgstr "Durée de verrouillage "
+msgstr "La durée de verrouillage "
 
 #: admin/ppolicy/class_ppolicy.inc:125
 msgid ""
 "Time the account remains locked after an automatic lock out (0 means for "
 "ever)"
-msgstr "Temps que le compte reste bloqué après un verrouillage automatique sur (0 signifie pour toujours)"
+msgstr ""
+"Temps que le compte reste bloqué après un verrouillage automatique sur (0 "
+"signifie pour toujours)"
 
 #: admin/ppolicy/class_ppolicy.inc:130
 msgid "Maximum failures"
@@ -311,7 +339,9 @@ msgstr "Nombre d'échec maximal"
 #: admin/ppolicy/class_ppolicy.inc:130
 msgid ""
 "Number of consecutive password failures allowed before automatic lock out"
-msgstr "Nombre d'échecs de mot de passe consécutifs autorisés avant verrouillage automatique"
+msgstr ""
+"Nombre d'échecs de mot de passe consécutifs autorisé avant à verrouillage "
+"automatique"
 
 #: admin/ppolicy/class_ppolicy.inc:135
 msgid "Failure count interval"
@@ -321,7 +351,9 @@ msgstr "Intervalle de comptage d’échecs"
 msgid ""
 "Time after which the count of consecutive password failures is reset even if"
 " no successful authentication has occurred"
-msgstr "Temps au bout duquel le nombre d'échecs de mot de passe consécutifs est réinitialisé même si aucune authentification réussie a eu lieu"
+msgstr ""
+"Temps au bout duquel le nombre d'échecs de mot de passe consécutifs est "
+"réinitialisé même si aucune authentification réussie a eu lieu"
 
 #: admin/ppolicy/class_ppolicy.inc:140
 msgid "Must change"
@@ -331,12 +363,14 @@ msgstr "Doit changer"
 msgid ""
 "Whether the user must change their password after an account is reset by an "
 "administrator following an automatic lockout"
-msgstr "Si l'utilisateur doit changer son mot de passe après qu'un compte aie été réinitialisé par un administrateur suite à un verrouillage automatique"
+msgstr ""
+"Si l'utilisateur doit changer son mot de passe après qu'un compte aie été "
+"réinitialisé par un administrateur suite à un verrouillage automatique"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:2
 msgid "There is one locked account"
 msgid_plural "There are %1 locked accounts"
-msgstr[0] "Il y a un compte verrouillé"
+msgstr[0] "Il y a un compte verrouille"
 msgstr[1] "Il y a %1 comptes verrouillés"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:5

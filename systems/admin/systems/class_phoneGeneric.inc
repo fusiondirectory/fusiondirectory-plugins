@@ -18,17 +18,13 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class phoneGeneric extends systemSimplePluginGlue
+class phoneGeneric extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $netConfigDNS;
-
-  var $objectclasses = array('fdPhone', 'device');
+  var $objectclasses = array('fdPhone', 'ieee802Device');
 
   var $inheritance = array('gosaGroupOfNames' => 'member');
-
-  var $preInitAttributes = array('cn', 'networkSettings');
 
   static function plInfo()
   {
@@ -81,68 +77,33 @@ class phoneGeneric extends systemSimplePluginGlue
       ),
       'network' => array(
         'name'      => _('Network settings'),
-        'attrs'     => array(new NetworkSettingsAttribute('cn', array('ipHost', 'ieee802Device'))),
-        'template'  => get_template_path('network_section.tpl', TRUE, dirname(__FILE__)),
         'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
+        'attrs'     => array(
+          new SetAttribute(
+            new IPAttribute(
+              _('IP address'), _('IP addresses this system uses (v4 or v6)'),
+              'ipHostNumber', FALSE
+            )
+          ),
+          new MacAddressAttribute(
+            _('Mac address'), _('Mac address of this system'),
+            'macAddress', FALSE
+          ),
+        ),
       ),
     );
   }
 
-  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = NULL)
+  /* Used by prepare_save and template::apply */
+  public function mergeObjectClasses(array $oc)
   {
-    parent::__construct($dn, $object, $parent, $mainTab);
-
-    $this->attributesAccess['cn']->setUnique(TRUE);
-    $this->netConfigDNS->IPisMust   = FALSE;
-    $this->netConfigDNS->MACisMust  = FALSE;
-  }
-
-  function compute_dn ()
-  {
-    return 'cn='.ldap_escape_dn($this->cn).','.get_ou('phoneRDN').$this->base;
-  }
-
-  function resetCopyInfos()
-  {
-    parent::resetCopyInfos();
-    $this->netConfigDNS->resetCopyInfos();
-  }
-
-  function set_acl_base($base)
-  {
-    plugin::set_acl_base($base);
-    $this->netConfigDNS->set_acl_base($base);
-  }
-
-  function set_acl_category($cat)
-  {
-    plugin::set_acl_category($cat);
-    $this->netConfigDNS->set_acl_category($cat);
-  }
-
-  function remove_from_parent()
-  {
-    if (!$this->initially_was_account) {
-      return;
+    $objectclasses = $oc;
+    if (empty($this->ipHostNumber)) {
+      $objectclasses = array_remove_entries_ics(array('ipHost'), $objectclasses);
+    } else {
+      $objectclasses[] = 'ipHost';
     }
-
-    if ($this->acl_is_removeable()) {
-      $this->netConfigDNS->remove_from_parent();
-
-      parent::remove_from_parent();
-    }
-  }
-
-  protected function ldap_save($cleanup = TRUE)
-  {
-    parent::ldap_save($cleanup);
-    $this->netConfigDNS->cn = $this->cn;
-    $this->netConfigDNS->save();
-  }
-
-  function is_modal_dialog()
-  {
-    return (isset($this->netConfigDNS->dialog) && $this->netConfigDNS->dialog);
+    return array_merge_unique($objectclasses, $this->objectclasses);
   }
 }
 ?>

@@ -121,8 +121,6 @@ class sambaGroup extends simplePlugin
       );
     }
     $this->attributesAccess['sambaSID']->attributes[1]->setInitialValue($this->getGID());
-
-    $this->updateAttributesValues();
   }
 
   function prepare_save()
@@ -160,7 +158,7 @@ class sambaGroup extends simplePlugin
     if (class_available('mixedGroup')) {
       $gidNumber  = $this->parent->by_object['mixedGroup']->gidNumber;
     } else {
-      $gidNumber  = $this->parent->by_object['group']->gidNumber;
+      $gidNumber  = $this->parent->by_object['posixGroup']->gidNumber;
     }
     do {
       $sid = $this->getSID()."-".($gidNumber * 2 + $this->getRidBase() + 1);

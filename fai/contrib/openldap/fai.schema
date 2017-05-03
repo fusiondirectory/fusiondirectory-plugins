@@ -268,58 +268,40 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.5.23 NAME 'FAIpartitionFlags'
     EQUALITY caseIgnoreIA5Match
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE)
 
-# Name       : FAIdebianMirror
-# Description: Used for bootstrap sources.list settings. It contains
-#              the mirror server url.
 attributetype ( 1.3.6.1.4.1.10098.1.1.5.24 NAME 'FAIdebianMirror'
-    DESC 'TODO'
+    DESC 'The mirror server url. Used for bootstrap sources.list settings.'
     EQUALITY caseIgnoreIA5Match
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE)
 
-# Name       : FAIdebianRelease
-# Description: Used for bootstrap sources.list settings. It contains
-#              the release.
 attributetype ( 1.3.6.1.4.1.10098.1.1.5.25 NAME 'FAIdebianRelease'
-    DESC 'TODO'
+    DESC 'The release. Used for bootstrap sources.list settings.'
     EQUALITY caseIgnoreIA5Match
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE)
 
-# Name       : FAIcustomRelease
-# Description: Used for bootstrap sources.list settings. It contains
-#              the addictional custom releases.
 attributetype ( 1.3.6.1.4.1.10098.1.1.5.36 NAME 'FAIcustomRelease'
-    DESC 'TODO'
+    DESC 'The addictional custom releases. Used for bootstrap sources.list settings.'
     EQUALITY caseIgnoreIA5Match
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
-# Name       : FAIdebianSection
-# Description: Used for bootstrap sources.list settings. It contains
-#              the section. Multiple Sections get appended.
 attributetype ( 1.3.6.1.4.1.10098.1.1.5.26 NAME 'FAIdebianSection'
-    DESC 'TODO'
+    DESC 'The section. Multiple Sections get appended. Used for bootstrap sources.list settings.'
     EQUALITY caseIgnoreIA5Match
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
-# Name       : FAIrepository
-# Description: Used to store repository settings
 attributetype ( 1.3.6.1.4.1.10098.1.1.5.27 NAME 'FAIrepository'
-    DESC 'TODO'
+    DESC 'Used to store repository settings'
     EQUALITY caseIgnoreIA5Match
     SUBSTR caseIgnoreIA5SubstringsMatch
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
-# Name       : FAIstate
-# Description: Used to store repository state (branched/freezed)
 attributetype ( 1.3.6.1.4.1.10098.1.1.5.28 NAME 'FAIstate'
-    DESC 'TODO'
+    DESC 'Used to store repository state (branched/freezed)'
     EQUALITY caseIgnoreIA5Match
     SUBSTR caseIgnoreIA5SubstringsMatch
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
-# Name       : FAIrelease
-# Description: Used to store the release
 attributetype ( 1.3.6.1.4.1.10098.1.1.5.29 NAME 'FAIrelease'
-    DESC 'TODO'
+    DESC 'Used to store the release'
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
 # Name       : FAIpartitionMethod

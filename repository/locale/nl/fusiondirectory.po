@@ -1,16 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-01-22 16:06+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/nl/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Selina Oudermans <selina.oudermans@digipolis.be>, 2017\n"
+"Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,7 +27,7 @@ msgid "FusionDirectory repository plugin configuration"
 msgstr ""
 
 #: config/repository/class_repositoryConfig.inc:42
-#: admin/repository/class_repositoryManagement.inc:38
+#: admin/repository/class_repositoryManagement.inc:34
 msgid "Repository"
 msgstr "Verzamelplaats"
 
@@ -125,8 +126,8 @@ msgstr "Gebruikers"
 msgid "Users of this repository"
 msgstr ""
 
-#: admin/repository/class_repositoryManagement.inc:32
-#: admin/repository/class_repositoryManagement.inc:33
+#: admin/repository/class_repositoryManagement.inc:28
+#: admin/repository/class_repositoryManagement.inc:29
 msgid "Repository management"
 msgstr ""
 
@@ -139,11 +140,11 @@ msgstr ""
 
 #: admin/repository/class_repositoryDistribution.inc:60
 msgid "Unique name for this distribution"
-msgstr ""
+msgstr "Unieke naam voor deze distributie"
 
 #: admin/repository/class_repositoryDistribution.inc:64
 msgid "Description of this distribution"
-msgstr ""
+msgstr "Beschrijving van deze distributie"
 
 #: admin/repository/class_repositoryDistribution.inc:69
 msgid "Section"
@@ -156,7 +157,7 @@ msgstr ""
 #: admin/repository/class_repositoryDistribution.inc:76
 #: admin/repository/class_repositorySection.inc:66
 msgid "Based on"
-msgstr ""
+msgstr "Gebaseerd op"
 
 #: admin/repository/class_repositoryDistribution.inc:76
 msgid "The distributions this one is based on"
@@ -171,7 +172,7 @@ msgstr ""
 
 #: admin/repository/class_repositorySection.inc:57
 msgid "Unique name for this section"
-msgstr ""
+msgstr "Unieke naam voor deze sectie"
 
 #: admin/repository/class_repositorySection.inc:61
 msgid "Description of this section"

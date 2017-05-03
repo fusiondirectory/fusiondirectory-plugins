@@ -65,7 +65,8 @@ class inventoryManagement extends simpleManagement
 
     global $config;
     $ldap = $config->get_ldap_link();
-    $ldap->ls('(objectClass=fdInventoryOPERATINGSYSTEM)', $dn, array('fdInventoryNAME','fdInventoryFQDN'));
+    $ldap->cd($dn);
+    $ldap->search('(objectClass=fdInventoryOPERATINGSYSTEM)', array('fdInventoryNAME','fdInventoryFQDN'), 'one');
     while ($attrs = $ldap->fetch()) {
       $link = $attrs['fdInventoryNAME'][0];
       if (isset($attrs['fdInventoryFQDN'][0])) {

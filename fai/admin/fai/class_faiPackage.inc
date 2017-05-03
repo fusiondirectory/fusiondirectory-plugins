@@ -181,7 +181,6 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
 
   protected function handleAddAndEditValue()
   {
-    global $config;
     $id = $this->getHtmlId();
 
     foreach (array_keys($_POST) as $name) {
@@ -220,10 +219,9 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
   /* Special LDAP treatment that this attribute does after plugin ldap save */
   function postLdapSave ($ldap)
   {
-    /* FIXME Should be tested: empty strings/values, configuring a package and then delete it */
-
     /* First delete all old nodes */
-    $ldap->ls('objectClass=FAIdebconfInfo', $this->plugin->dn, array('dn'));
+    $ldap->cd($this->plugin->dn);
+    $ldap->search('objectClass=FAIdebconfInfo', array('dn'), 'one');
     $delete = array();
     while ($attrs = $ldap->fetch()) {
       $delete[] = $attrs['dn'];
@@ -265,23 +263,23 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
       return;
     }
 
-    /* If there are no packages, no need to do anything */
     if (empty($this->value)) {
+      // If there are no packages, no need to do anything
       return;
     }
 
     $attrs = array('distribution','package','version','section','description','timestamp','hastemplate');
 
-    /* packages names that are not already in the buffer */
+    // packages names that are not already in the buffer
     $packages = array_diff_key($this->value, $this->buffer);
 
     $release  = $this->plugin->FAIdebianRelease;
     $q        = new supportDaemon();
     $customs  = serviceRepository::getCustomReleases($release);
     for ($i = -1; (count($packages) > 0) && ($i < count($customs)); $i++) {
-      /* if release has been handled */
+      // if release has been handled
       if ($i >= 0) {
-        /* take the next custom */
+        // take the next custom
         $release = $customs[$i];
       }
       $ret = $q->FAI_get_packages($release, $attrs, array_keys($packages), -1, -1, TRUE);
@@ -294,7 +292,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
             $attr['DESCRIPTION'] = '';
           }
           $this->buffer[$attr['PACKAGE']] = $attr;
-           /* remove found packages */
+          // remove found packages
           unset($packages[$attr['PACKAGE']]);
           if ($i >= 0) {
             $this->FAIcustomRelease[$release] = $release;
@@ -338,7 +336,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     /* Walk through configurations and append them to our list of ConfiguredPackages */
     while ($attr = $ldap->fetch()) {
       /* Skip objects, that are tagged as removed */
-      if (isset($object['FAIstate'][0])) {
+      if (isset($attr['FAIstate'][0])) {
         if (preg_match("/removed$/", $attr['FAIstate'][0])) {
           continue;
         }
@@ -353,7 +351,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
         if (!in_array($attr['FAIvariableType'], array("multiselect"))) {
           $tmp['Value'] = $attr['FAIvariableContent'][0];
         } else {
-          $content = array();
+          $tmp['Value'] = array();
           unset($attr['FAIvariableContent']['count']);
           foreach ($attr['FAIvariableContent'] as $attr) {
             $tmp['Value'][] = $attr;
@@ -472,11 +470,18 @@ class faiPackage extends faiSimplePluginClass
     }
   }
 
-  function ldap_save ($cleanup = TRUE)
+  protected function shouldSave()
+  {
+    /* We need ldap_save to always run */
+    return TRUE;
+  }
+
+  function ldap_save ()
   {
     global $config;
-    parent::ldap_save($cleanup);
+    $errors = parent::ldap_save();
     $this->attributesAccess['FAIpackage']->postLdapSave($config->get_ldap_link());
+    return $errors;
   }
 
   function getServerInfos()

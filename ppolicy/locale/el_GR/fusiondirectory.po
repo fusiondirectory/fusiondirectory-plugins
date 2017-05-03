@@ -1,18 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
-# pkst <pkst@eellak.gr>, 2015
-# pkst <pkst@eellak.gr>, 2015
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-08-02 06:53+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -104,7 +103,7 @@ msgid "Locked accounts"
 msgstr "Κλειδωμένοι λογαριασμοί"
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:71
-#: addons/dashboard/class_dashBoardPPolicy.inc:127
+#: addons/dashboard/class_dashBoardPPolicy.inc:124
 msgid "Configuration error"
 msgstr "Σφάλμα ρύθμισης"
 
@@ -113,10 +112,12 @@ msgstr "Σφάλμα ρύθμισης"
 msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
 msgstr "Δεν ήταν δυνατή η εύρεση του Ppolicy \"%s\" στο LDAP!"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:128
+#: addons/dashboard/class_dashBoardPPolicy.inc:125
 #, php-format
 msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
-msgstr "Η Ppolicy \"%s\" που έχει οριστεί για χρήστη \"%s\" δεν μπορεί να βρεθεί στο LDAP!"
+msgstr ""
+"Η Ppolicy \"%s\" που έχει οριστεί για χρήστη \"%s\" δεν μπορεί να βρεθεί στο"
+" LDAP!"
 
 #: config/ppolicy/class_ppolicyConfig.inc:29
 msgid "Ppolicy plugin configuration"
@@ -178,7 +179,9 @@ msgstr "Ελάχιστο μήκος "
 msgid ""
 "Minimum length of the user supplied password - passwords shorter than this "
 "value will be rejected"
-msgstr "Το ελάχιστο μήκος  του κωδικού του χρήστη- κωδικοί μικρότεροι από αυτή την τιμή θα απορρίπτονται"
+msgstr ""
+"Το ελάχιστο μήκος  του κωδικού του χρήστη- κωδικοί μικρότεροι από αυτή την "
+"τιμή θα απορρίπτονται"
 
 #: admin/ppolicy/class_ppolicy.inc:69
 msgid "Passwords in history"
@@ -188,7 +191,9 @@ msgstr "Κωδικοί πρόσβασης στο ιστορικό"
 msgid ""
 "Number of passwords that are maintained in a list of previously used "
 "passwords"
-msgstr "Αριθμός κωδικών που θα διατηρούνται σε μια λίστα παλιών αποθηκευμένων κωδικών"
+msgstr ""
+"Αριθμός κωδικών που θα διατηρούνται σε μια λίστα παλιών αποθηκευμένων "
+"κωδικών"
 
 #: admin/ppolicy/class_ppolicy.inc:74
 msgid "Minimum password age"
@@ -207,7 +212,9 @@ msgid ""
 "Maximum time a password is valid, after which it is deemed to be no longer "
 "usable and any bind operations attempted with the expired password will be "
 "treated as invalid"
-msgstr "Μέγιστος χρόνος εγκυρότητας ενός κωδικού, με την λήξη του οποίου ο κωδικός θα είναι άχρηστος και όλες οι αιτούμενες λειτουργίες θα απορρίπτονται."
+msgstr ""
+"Μέγιστος χρόνος εγκυρότητας ενός κωδικού, με την λήξη του οποίου ο κωδικός "
+"θα είναι άχρηστος και όλες οι αιτούμενες λειτουργίες θα απορρίπτονται."
 
 #: admin/ppolicy/class_ppolicy.inc:84
 msgid "Expiry warning delay"
@@ -310,7 +317,8 @@ msgstr "Μέγιστος αριθμός αποτυχιών"
 #: admin/ppolicy/class_ppolicy.inc:130
 msgid ""
 "Number of consecutive password failures allowed before automatic lock out"
-msgstr "Αριθμός αποτυχημένων εισαγωγών κωδικού πριν από το κλείδωμα του λογαριασμού"
+msgstr ""
+"Αριθμός αποτυχημένων εισαγωγών κωδικού πριν από το κλείδωμα του λογαριασμού"
 
 #: admin/ppolicy/class_ppolicy.inc:135
 msgid "Failure count interval"
@@ -335,8 +343,8 @@ msgstr ""
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:2
 msgid "There is one locked account"
 msgid_plural "There are %1 locked accounts"
-msgstr[0] "Υπάρχει ένας κλειδωμένος λογαριασμός"
-msgstr[1] "Υπάρχει %1  κλειδωμένοι λογαριασμοί"
+msgstr[0] ""
+msgstr[1] ""
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:5
 msgid "There is no locked account"

@@ -138,11 +138,14 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
     if (isset($attrs['dn'])) {
       /* Fetch disks */
       $ldap = $config->get_ldap_link();
-      $ldap->ls($this->diskFilter, $attrs['dn']);
+      $ldap->cd($attrs['dn']);
+      $ldap->search($this->diskFilter, array('*'), 'one');
       $this->value = array();
       while ($subattrs = $ldap->fetch()) {
-        $diskInfos = array('description' => '', 'FAIdiskType' => 'disk');
-        $diskInfos['description']  = '';
+        $diskInfos = array(
+          'description' => '',
+          'FAIdiskType' => 'disk'
+        );
         foreach (array('cn', 'description','FAIdiskType') as $attr) {
           if (isset($subattrs[$attr][0])) {
             $diskInfos[$attr] = $subattrs[$attr][0];
@@ -171,9 +174,13 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
       }
       /* Fetch partitions */
       foreach ($this->value as $name => $disk) {
-        $ldap->ls($this->partFilter, $disk['dn']);
+        $ldap->cd($disk['dn']);
+        $ldap->search($this->partFilter, array('*'), 'one');
         while ($obj = $ldap->fetch()) {
-          $partitionInfos = array();
+          $partitionInfos = array(
+            'description'       => '',
+            'FAIpartitionSize'  => '',
+          );
           foreach ($this->partitionAttributes as $attr) {
             if (isset($obj[$attr][0])) {
               $partitionInfos[$attr] = $obj[$attr][0];
@@ -190,15 +197,14 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
   /* Not saving anything into base node */
   function fillLdapValue (&$attrs)
   {
-    /* Remove crap made by plugin */
-    unset ($attrs[$this->getLdapName()]);
   }
 
   /* Special LDAP treatment that this attribute does after plugin ldap save */
   function postLdapSave ($ldap)
   {
     /* First delete all old nodes */
-    $ldap->ls($this->diskFilter, $this->plugin->dn, array('dn'));
+    $ldap->cd($this->plugin->dn);
+    $ldap->search($this->diskFilter, array('dn'), 'one');
     $delete = array();
     while ($attrs = $ldap->fetch()) {
       $delete[] = $attrs['dn'];
@@ -334,11 +340,18 @@ class faiPartitionTable extends faiSimplePluginClass
     $this->attributesAccess['cn']->setUnique(TRUE);
   }
 
-  function ldap_save ($cleanup = TRUE)
+  protected function shouldSave()
+  {
+    /* We need ldap_save to always run */
+    return TRUE;
+  }
+
+  function ldap_save ()
   {
     global $config;
-    parent::ldap_save($cleanup);
+    $errors = parent::ldap_save();
     $this->attributesAccess['FAIpartitions']->postLdapSave($config->get_ldap_link());
+    return $errors;
   }
 
   function getUsedDiskNames()

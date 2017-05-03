@@ -46,7 +46,7 @@ class expiredUserPostpone extends standAlonePage
     }
 
     if (($_SERVER['REQUEST_METHOD'] == 'GET') && isset($_GET['token'])) {
-      /* Check if the token match */
+      // Check if the token match
       $this->uid = $_GET['uid'];
       if ($this->checkToken($_GET['token'])) {
         $this->message = array();
@@ -122,7 +122,7 @@ class expiredUserPostpone extends standAlonePage
 
     $ldap = $config->get_ldap_link();
 
-    $dn   = 'ou='.$this->uid.','.get_ou('tokenRDN').get_ou('fusiondirectoryRDN').$config->current['BASE'];
+    $dn   = 'ou='.$this->uid.','.get_ou('reminderTokenRDN').get_ou('fusiondirectoryRDN').$config->current['BASE'];
     $ldap->rmdir($dn);
     if (!$ldap->success()) {
       $this->message[] = $ldap->get_error();
@@ -132,7 +132,6 @@ class expiredUserPostpone extends standAlonePage
   function postponeExpiration()
   {
     global $config;
-
     $dn = $this->getUserDn();
     if (empty($dn)) {
       return;
@@ -141,17 +140,22 @@ class expiredUserPostpone extends standAlonePage
     $date = $userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue();
     $date->add(new DateInterval('P'.$this->postpone_days.'D'));
     $userTabs->by_object['posixAccount']->shadowExpire = $date;
-    $error = $userTabs->check();
+    $error = $userTabs->save();
     if (!empty($error)) {
       $this->message = $error;
       return;
     }
-    $userTabs->save();
     $this->deleteToken();
 
     $cn             = $userTabs->getBaseObject()->cn;
     $manager_dn     = $userTabs->getBaseObject()->manager;
-    $email_address  = $userTabs->by_object['mailAccount']->mail;
+    if (isset($userTabs->by_object['mailAccount'])) {
+      $email_address  = $userTabs->by_object['mailAccount']->mail;
+    } elseif (isset($userTabs->by_object['personalInfo']) && !empty($userTabs->by_object['personalInfo']->fdPrivateMail)) {
+      $email_address  = $userTabs->by_object['personalInfo']->fdPrivateMail;
+    } elseif (isset($userTabs->by_object['supannAccount']) && !empty($userTabs->by_object['supannAccount']->supannAutreMail)) {
+      $email_address  = reset($userTabs->by_object['supannAccount']->supannAutreMail);
+    }
 
     $manager_mail = '';
     if ($this->forward_postpone) {
@@ -174,8 +178,6 @@ class expiredUserPostpone extends standAlonePage
 
   function sendConfirmationMail($cn, $email_address, $manager_mail)
   {
-    global $config;
-
     if (empty($this->mail_body) || empty($this->mail_subject)) {
       return;
     }
@@ -198,8 +200,6 @@ class expiredUserPostpone extends standAlonePage
 
   function getUserDn()
   {
-    global $config;
-
     $users = objects::ls('user', NULL, NULL, '(uid='.$this->uid.')');
 
     if (count($users) < 1) {

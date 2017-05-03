@@ -1,16 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-06-28 11:05+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/nl/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Selina Oudermans <selina.oudermans@digipolis.be>, 2017\n"
+"Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,15 +20,17 @@ msgstr ""
 
 #: config/user-reminder/class_userReminderConfig.inc:28
 msgid "User reminder"
-msgstr ""
+msgstr "Gebruikersherinnering"
 
 #: config/user-reminder/class_userReminderConfig.inc:29
 msgid "Configuration for the reminder of accounts expiration"
 msgstr ""
+"Configuratie om de gebruiker te laten herinneren dat het account gaat "
+"verlopen"
 
 #: config/user-reminder/class_userReminderConfig.inc:40
 msgid "User reminder settings"
-msgstr ""
+msgstr "Instellingen voor de gebruikersherinnering"
 
 #: config/user-reminder/class_userReminderConfig.inc:43
 msgid "Delay before expiration"
@@ -145,19 +148,19 @@ msgstr ""
 msgid "This token is invalid"
 msgstr "Deze token is niet geldig"
 
-#: html/class_expiredUserPostpone.inc:195
+#: html/class_expiredUserPostpone.inc:197
 msgid "Contact your administrator, there was a problem with mail server"
 msgstr "Contacteer je systeembeheerder, er was een probleem met de mailserver"
 
 #: html/class_expiredUserPostpone.inc:206
 #, php-format
 msgid "Did not find an account with login \"%s\""
-msgstr ""
+msgstr "Kan geen account vinden met login \"%s\""
 
 #: html/class_expiredUserPostpone.inc:209
 #, php-format
 msgid "Found multiple accounts with login \"%s\""
-msgstr ""
+msgstr "Er zijn meerdere accounts gevonden met login \"%s\""
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:2
 #: ihtml/themes/breezy/user-reminder.tpl.c:5
@@ -184,4 +187,4 @@ msgstr "Fout"
 
 #: ihtml/themes/breezy/user-reminder.tpl.c:26
 msgid "There was a problem"
-msgstr ""
+msgstr "Er was een probleem"

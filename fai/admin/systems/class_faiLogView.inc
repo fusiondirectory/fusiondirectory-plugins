@@ -29,7 +29,7 @@ class AvailableLogsAttribute extends Attribute
       'file'      => '',
       'time'      => '',
       'sort_by'   => 'time',
-      /* TRUE means up */
+      // TRUE means up
       'sort_up'  => TRUE
     );
     parent::__construct ('', $description, $ldapName, FALSE, $value, $acl);

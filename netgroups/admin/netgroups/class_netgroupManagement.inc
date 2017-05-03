@@ -21,7 +21,7 @@
 
 class netgroupManagement extends simpleManagement
 {
-  /* Tab definition */
+  // Tab definition
   protected $objectTypes  = array('netgroup');
 
   protected $departmentBrowser      = TRUE;

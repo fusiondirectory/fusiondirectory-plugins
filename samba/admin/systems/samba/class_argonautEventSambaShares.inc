@@ -18,9 +18,9 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class argonautEventSambaShares extends argonautEventTypes
+class argonautEventTypesSambaShares
 {
-  static protected function get_event_types_list()
+  static public function get_event_types_list()
   {
     return array(
       'SambaShares.start' => array(

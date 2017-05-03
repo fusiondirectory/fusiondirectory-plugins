@@ -1,20 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
-# Elissavet Botsaki <elisavet_b@hotmail.com>, 2015
-# geotheod <geotheod77@gmail.com>, 2015
-# Manolis Saldaris <Ustramator@gmail.com>, 2015
-# Maria Nomikou <mnomikou@sch.gr>, 2015
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2017-03-30 16:10+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,12 +26,12 @@ msgstr ""
 msgid "There is no argonaut server configured"
 msgstr ""
 
-#: include/class_supportDaemon.inc:602
+#: include/class_supportDaemon.inc:608
 #, php-format
 msgid "Could not read \"%s\"!"
 msgstr "Αδύνατη η ανάγνωση του \"%s\"!"
 
-#: include/class_supportDaemon.inc:606
+#: include/class_supportDaemon.inc:612
 #, php-format
 msgid "\"%s\" is not a file!"
 msgstr "Το \"%s\" δεν είναι αρχείο!"
@@ -61,74 +58,75 @@ msgstr "Αφαίρεση"
 #: addons/argonaut/class_argonautQueue.inc:124
 #, php-format
 msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
-msgstr "Οι ακόλουθες εργασίες δεν γίνεται να διαγραφούν, θα πρέπει να ματαιωθούν: %s"
+msgstr ""
+"Οι ακόλουθες εργασίες δεν γίνεται να διαγραφούν, θα πρέπει να ματαιωθούν: %s"
 
-#: addons/argonaut/class_argonautQueue.inc:189
+#: addons/argonaut/class_argonautQueue.inc:188
 msgid "Info"
 msgstr "Πληροφορίες"
 
-#: addons/argonaut/class_argonautQueue.inc:189
+#: addons/argonaut/class_argonautQueue.inc:188
 #, php-format
 msgid "%s"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:219
+#: addons/argonaut/class_argonautQueue.inc:214
 msgid "Error detail"
 msgstr "Λεπτομέρεια λάθους"
 
-#: addons/argonaut/class_argonautQueue.inc:261
-#: addons/argonaut/class_argonautQueue.inc:345
+#: addons/argonaut/class_argonautQueue.inc:256
+#: addons/argonaut/class_argonautQueue.inc:340
 #: addons/argonaut/class_filterArgonautEvents.inc:39
 #: addons/argonaut/import_events.tpl.c:32
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: addons/argonaut/class_argonautQueue.inc:261
+#: addons/argonaut/class_argonautQueue.inc:256
 #, php-format
 msgid "Cannot update queue entries."
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:329
+#: addons/argonaut/class_argonautQueue.inc:324
 msgid "immediately"
 msgstr "αμέσως"
 
-#: addons/argonaut/class_argonautQueue.inc:341
+#: addons/argonaut/class_argonautQueue.inc:336
 msgid "Waiting"
 msgstr "Αναμονή"
 
-#: addons/argonaut/class_argonautQueue.inc:344
+#: addons/argonaut/class_argonautQueue.inc:339
 msgid "Show error"
 msgstr "Εμφάνιση σφάλματος"
 
-#: addons/argonaut/class_argonautQueue.inc:348
+#: addons/argonaut/class_argonautQueue.inc:343
 msgid "Processed"
 msgstr "Επεξεργασμένο"
 
-#: addons/argonaut/class_argonautQueue.inc:357
+#: addons/argonaut/class_argonautQueue.inc:352
 msgid "in progress"
 msgstr "σε εξέλιξη"
 
-#: addons/argonaut/class_argonautEventTypes.inc:72
+#: addons/argonaut/class_argonautEventTypes.inc:67
 msgid "Switch off"
 msgstr "Κλείσιμο"
 
-#: addons/argonaut/class_argonautEventTypes.inc:85
+#: addons/argonaut/class_argonautEventTypes.inc:80
 msgid "Reboot"
 msgstr "Επανεκκίνηση"
 
-#: addons/argonaut/class_argonautEventTypes.inc:89
+#: addons/argonaut/class_argonautEventTypes.inc:84
 msgid "Wake up"
 msgstr ""
 
-#: addons/argonaut/class_argonautEventTypes.inc:93
+#: addons/argonaut/class_argonautEventTypes.inc:88
 msgid "Software update"
 msgstr "Ενημέρωση λογισμικού"
 
-#: addons/argonaut/class_argonautEventTypes.inc:97
+#: addons/argonaut/class_argonautEventTypes.inc:92
 msgid "(Re)Install"
 msgstr "(Επαν)εγκατάσταση"
 
-#: addons/argonaut/class_argonautEventTypes.inc:110
+#: addons/argonaut/class_argonautEventTypes.inc:105
 msgid "Refresh slave files (ldap2zone)"
 msgstr ""
 
@@ -211,7 +209,7 @@ msgid "List of queued jobs"
 msgstr "Λίστα εργασιών στην ουρά"
 
 #: addons/argonaut/deploy-list.xml:14
-#: addons/argonaut/class_argonautImportFile.inc:184
+#: addons/argonaut/class_argonautImportFile.inc:185
 #: addons/argonaut/import_events.tpl.c:26
 msgid "Event"
 msgstr ""
@@ -233,10 +231,10 @@ msgid "Actions"
 msgstr "Ενέργειες"
 
 #: addons/argonaut/deploy-list.xml:79
-#: addons/argonaut/class_argonautImportFile.inc:96
-#: addons/argonaut/class_argonautImportFile.inc:120
-#: addons/argonaut/class_argonautImportFile.inc:144
-#: addons/argonaut/class_argonautImportFile.inc:156
+#: addons/argonaut/class_argonautImportFile.inc:97
+#: addons/argonaut/class_argonautImportFile.inc:121
+#: addons/argonaut/class_argonautImportFile.inc:145
+#: addons/argonaut/class_argonautImportFile.inc:157
 msgid "Import"
 msgstr "Εισαγωγή"
 
@@ -285,24 +283,25 @@ msgstr ""
 msgid "Imported tasks"
 msgstr ""
 
-#: addons/argonaut/class_argonautImportFile.inc:121
+#: addons/argonaut/class_argonautImportFile.inc:122
 msgid "Fix the errors in your CSV file first"
 msgstr ""
 
-#: addons/argonaut/class_argonautImportFile.inc:137
+#: addons/argonaut/class_argonautImportFile.inc:138
 msgid "Infrastructure service"
-msgstr "Άγνωτη υποδομή"
+msgstr "Υπηρεσία υποδομής"
 
-#: addons/argonaut/class_argonautImportFile.inc:144
+#: addons/argonaut/class_argonautImportFile.inc:145
 #, php-format
 msgid "Import complete: %s events successfully send, %s failed"
-msgstr "Η εισαγωγή ολοκληρώθηκε:  %s συμβάντα στάλθηκαν με επιτυχία, %s απέτυχαν"
+msgstr ""
+"Η εισαγωγή ολοκληρώθηκε:  %s συμβάντα στάλθηκαν με επιτυχία, %s απέτυχαν"
 
-#: addons/argonaut/class_argonautImportFile.inc:156
+#: addons/argonaut/class_argonautImportFile.inc:157
 msgid "file is empty"
 msgstr "Το αρχείο είναι κενό"
 
-#: addons/argonaut/class_argonautImportFile.inc:181
+#: addons/argonaut/class_argonautImportFile.inc:182
 #: addons/argonaut/import_events.tpl.c:23
 msgid "MAC"
 msgstr "MAC"
@@ -356,7 +355,9 @@ msgstr "Αρχείο ταυτότητας διαδικασίας"
 
 #: admin/systems/argonaut/class_argonautClient.inc:149
 msgid "File which argonaut will use to store its task id when booting"
-msgstr "Αρχείο στο οποίο το argonaut θα αποθηκεύσει της ταυτότητα διαδικασίας του κατά την εκκίνηση"
+msgstr ""
+"Αρχείο στο οποίο το argonaut θα αποθηκεύσει της ταυτότητα διαδικασίας του "
+"κατά την εκκίνηση"
 
 #: admin/systems/argonaut/class_argonautClient.inc:154
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:55
@@ -367,7 +368,9 @@ msgstr "Κατάλογος καταγραφών"
 
 #: admin/systems/argonaut/class_argonautClient.inc:154
 msgid "Directory in which argonaut client should write its logs"
-msgstr "Κατάλογος στον οποίο ο πελάτης argonaut πρέπει να αποθηκεύει τις καταγραφές του"
+msgstr ""
+"Κατάλογος στον οποίο ο πελάτης argonaut πρέπει να αποθηκεύει τις καταγραφές "
+"του"
 
 #: admin/systems/argonaut/class_argonautClient.inc:161
 #: admin/systems/services/argonaut/class_argonautServer.inc:103
@@ -491,7 +494,8 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:54
 msgid "The directory in which zone files must be created"
-msgstr "Ο κατάλογος στον οποίο πρέπει να δημιουργηθούν τα αρχεία ζώνης (zone files)"
+msgstr ""
+"Ο κατάλογος στον οποίο πρέπει να δημιουργηθούν τα αρχεία ζώνης (zone files)"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:59
 msgid "TTL"
@@ -532,68 +536,68 @@ msgid "Do not write reverse zone"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:88
-msgid "Allow notify"
+msgid "Notify"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:92
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:93
 msgid "Allow update"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:92
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:93
 msgid "Allow update (semicolon separated and ended)"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:96
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:97
 msgid "Allow transfer"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:96
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:97
 msgid "Allow transfer (semicolon separated and ended)"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:100
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:101
 msgid "Check names"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:100
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:101
 msgid ""
 "Cause any host name for the zone to be checked for compliance with RFC 952 "
 "and RFC 1123 and take the defined action"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:107
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:108
 msgid "Ldap2zone slave settings"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:112
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:113
 msgid "Manage DNS Slaves"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:116
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:117
 msgid "zone"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:116
-msgid "DNS zone(s) to be stored as a slave on this server"
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:117
+msgid "DNS zone this server should be declared as slave of"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:120
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
 msgid "master"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:120
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
 msgid "Master IP(s) for this zone"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:124
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:125
 msgid "reverses"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:124
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:125
 msgid "This server should be slave of reverses zones as well"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:131
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:132
 msgid "DNS slaves"
 msgstr ""
 
@@ -628,7 +632,8 @@ msgstr "Προκαθορισμένη λειτουργία"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:56
 msgid "Directory in which argonaut-fuse will store its log"
-msgstr "Κατάλογος στον οποίο το argonaut-fuse θα αποθηκεύει τις καταγραφές του"
+msgstr ""
+"Κατάλογος στον οποίο το argonaut-fuse θα αποθηκεύει τις καταγραφές του"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:64
 msgid "TFTP"
@@ -655,7 +660,9 @@ msgstr "Διαγραφή ολοκληρωμένων διεργασιών"
 #: admin/systems/services/argonaut/class_argonautServer.inc:50
 msgid ""
 "Wether or not argonaut server should delete successfully finished tasks"
-msgstr "Αν ο διακομιστής argonaut θα πρέπει να διαγράφει της επιτυχώς ολοκληρωμένες διεργασίες ή όχι"
+msgstr ""
+"Αν ο διακομιστής argonaut θα πρέπει να διαγράφει της επιτυχώς ολοκληρωμένες "
+"διεργασίες ή όχι"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:55
 msgid "Get packages information"
@@ -666,7 +673,10 @@ msgid ""
 "Wether or not argonaut server should get packages information from "
 "repositories at start and then once a day. Needed for FAI package list "
 "creation."
-msgstr "Αν o argonaut διακομιστής πρέπει ή όχι να πάρει τις πληροφορίες των πακέτων από τα αποθετήρια στην αρχή και μετά μία φορά την ημέρα. Χρειάζεται για τη δημιουργία λίστας των πακέτων FAI."
+msgstr ""
+"Αν o argonaut διακομιστής πρέπει ή όχι να πάρει τις πληροφορίες των πακέτων "
+"από τα αποθετήρια στην αρχή και μετά μία φορά την ημέρα. Χρειάζεται για τη "
+"δημιουργία λίστας των πακέτων FAI."
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:66
 msgid "Port"
@@ -683,7 +693,9 @@ msgstr "Λήξη χρόνου:"
 #: admin/systems/services/argonaut/class_argonautServer.inc:73
 msgid ""
 "Time in seconds before to consider an argonaut client or server as down"
-msgstr "Ο χρόνος σε δευτερόλεπτα πριν θεωρήσουμε ότι ο argonaut πελάτης ή διακομιστής έχει πέσει (δεν λειτουργεί)"
+msgstr ""
+"Ο χρόνος σε δευτερόλεπτα πριν θεωρήσουμε ότι ο argonaut πελάτης ή "
+"διακομιστής έχει πέσει (δεν λειτουργεί)"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:80
 msgid "Directory in which argonaut will store its log"
@@ -748,7 +760,9 @@ msgstr "Φάκελος τοπικών πακέτων"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:56
 msgid "Folder in which the crawler will store packages during analysis"
-msgstr "Φάκελος στον οποίο ο crawler θα αποθηκεύσει τα πακέτα κατα τη διάρκεια της ανάλυσης"
+msgstr ""
+"Φάκελος στον οποίο ο crawler θα αποθηκεύσει τα πακέτα κατα τη διάρκεια της "
+"ανάλυσης"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:63
 msgid "Argonaut Repository configuration"
@@ -760,7 +774,9 @@ msgstr "Διαμεσολαβητής"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:67
 msgid "Specifies the http proxy (like Squid) to use for http and hftp method"
-msgstr "Καθορίζει τον διαμεσολαβητή του http (π.χ. Squid) που θα χρησιμοποιηθεί για το http και το hfrp πρωτόκολλο"
+msgstr ""
+"Καθορίζει τον διαμεσολαβητή του http (π.χ. Squid) που θα χρησιμοποιηθεί για "
+"το http και το hfrp πρωτόκολλο"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
 msgid "Directory in which logs should be stored"
@@ -800,7 +816,9 @@ msgstr "Περιεχόμενα"
 msgid ""
 "Additionally download Contents.<arch>.gz files (Note that these files can be"
 " relatively big and can change frequently)"
-msgstr "Πρόσθετα κατεβασμένα αρχεία περιεχομένου. <arch>.gz (Προσέξτε ότι αυτά τα αρχεία μπορεί να είναι σχετικά μεγάλα και να αλλάζουν συχνά)"
+msgstr ""
+"Πρόσθετα κατεβασμένα αρχεία περιεχομένου. <arch>.gz (Προσέξτε ότι αυτά τα "
+"αρχεία μπορεί να είναι σχετικά μεγάλα και να αλλάζουν συχνά)"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:98
 msgid "Verbose"

@@ -56,7 +56,6 @@ class ldapmanager extends simplePlugin
 
   static function getAttributesInfo ()
   {
-    global $config;
     return array(
       'export' => array(
         'name'  => _('Export'),
@@ -152,7 +151,7 @@ class ldapmanager extends simplePlugin
     $acl  = $this->attributesAccess['single_export']->getAcl();
     if (!$ldap->dn_exists($dn)) {
       msg_dialog::display(_('LDAP error'),
-          sprintf(_('No such object %s!'), LDAP::fix($dn)),
+          sprintf(_('No such object %s!'), $dn),
           ERROR_DIALOG);
       $dn = '';
     }
@@ -168,16 +167,16 @@ class ldapmanager extends simplePlugin
   function save_export($dn, $acl, $scope, $name)
   {
     global $config;
+    // An LDIF export was asked
     if (!empty($dn)) {
-      /* An LDIF export was asked */
-      /* Check permissions */
+      // Check permissions
       if (!$this->acl_is_writeable($acl, $this->acl_skip_write())) {
         msg_dialog::display(_('Permission error'),
-            sprintf(_('You have no permission to export %s!'), bold(LDAP::fix($dn))),
+            sprintf(_('You have no permission to export %s!'), bold($dn)),
             ERROR_DIALOG);
       } else {
         $ldap = $config->get_ldap_link();
-        $data = $ldap->generateLdif(LDAP::fix($dn), $this->export_filter, $scope);
+        $data = $ldap->generateLdif($dn, $this->export_filter, $scope);
         if ($data === NULL) {
           msg_dialog::display(_('Error'),
               sprintf(_('Failed to generate ldap export, error was "%s"!'), $ldap->get_error()),
@@ -195,7 +194,7 @@ class ldapmanager extends simplePlugin
     $ldap = $config->get_ldap_link();
     try {
       $ldap->import_complete_ldif($this->import, !$this->overwrite, FALSE);
-    } catch (Exception $e) {
+    } catch (FusionDirectoryException $e) {
       msg_dialog::display(_('LDAP error'), $e->getMessage(), ERROR_DIALOG);
     }
   }
@@ -210,5 +209,4 @@ class ldapmanager extends simplePlugin
     return $config->idepartments;
   }
 }
-
 ?>

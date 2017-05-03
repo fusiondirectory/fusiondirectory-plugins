@@ -23,12 +23,14 @@ class servtabs extends simpleTabs
 {
   function save()
   {
-    parent::save();
+    $errors = parent::save();
 
     /* Reload server settings after saving */
     $config = session::get('config');
     $config->load_servers();
     session::set('config', $config);
+
+    return $errors;
   }
 }
 

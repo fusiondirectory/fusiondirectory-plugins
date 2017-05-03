@@ -59,15 +59,14 @@ class communityOrganization extends simplePlugin
       'dates' => array(
         'name'  => _('Dates'),
         'attrs' => array(
-          new DateAttribute (
+          new GeneralizedTimeDateAttribute (
             _('Start date'), _('Date of the beginning'),
-            'fdCommunityStartDate', TRUE,
-            'YmdHis\Z'
+            'fdCommunityStartDate', TRUE
           ),
-          new DateAttribute (
+          new GeneralizedTimeDateAttribute (
             _('End date'), _('Date of the end'),
             'fdCommunityEndDate', FALSE,
-            'YmdHis\Z', ''
+            ''
           ),
         )
       ),

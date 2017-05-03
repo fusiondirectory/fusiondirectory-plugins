@@ -109,13 +109,13 @@ class pgpKeySelect extends simpleSelectManagement
 
   static function pgpSize($size)
   {
-    /* Remove useless 0 at the beginning */
+    // Remove useless 0 at the beginning
     return strval(intval($size));
   }
 
   static function pgpRevoked($value)
   {
-    /* Remove useless 0 at the beginning */
+    // Remove useless 0 at the beginning
     return ($value == 0?'No':'Yes');
   }
 }
@@ -195,7 +195,7 @@ class PgpKeyAttribute extends GenericDialogAttribute
     $headers    = array_values($this->displayed_values);
     $headers[]  = '';
     $div->SetHeaders($headers);
-    /* Updates and get display values */
+    // Updates and get display values
     $displays = $this->getDisplayValues();
     foreach ($displays as $key => $display_item) {
       $fields = array();
@@ -203,7 +203,7 @@ class PgpKeyAttribute extends GenericDialogAttribute
         if (isset($display_item[$field][0]) && !empty($display_item[$field][0])) {
           $display = $display_item[$field][0];
           if ($field == 'pgpKeySize') {
-            /* Remove useless 0 in front of the number */
+            // Remove useless 0 in front of the number
             $display = pgpKeySelect::pgpSize($display);
           } elseif ($field == 'pgpKeyCreateTime') {
             $display = pgpKeySelect::pgpDate($display);

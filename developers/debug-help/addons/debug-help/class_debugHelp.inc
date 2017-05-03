@@ -96,7 +96,7 @@ class debugHelp extends simplePlugin
       }
       try {
         $node['attrs']['count'] = objects::count($type);
-      } catch (Exception $e) {
+      } catch (FusionDirectoryException $e) {
         $node['attrs']['count'] = $e->getMessage();
       }
       $dump[] = $node;

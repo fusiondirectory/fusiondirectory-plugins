@@ -49,7 +49,7 @@ class webLink extends simplePlugin
             array('https', 'http')
           ),
           new DisplayAttribute (
-            _('Link'), _('Web link to this computer'),
+            _('Links'), _('Web links to this computer'),
             'fdWebLink', FALSE
           )
         )
@@ -66,26 +66,47 @@ class webLink extends simplePlugin
 
   function renderAttributes($readOnly = FALSE)
   {
-    $link = $this->computeLink();
-    $this->fdWebLink = '<a target="_blank" href="'.$link.'">'.$link.'</a>';
+    $links = $this->computeLinks();
+    $this->fdWebLink = implode('<br/>'."\n", array_map(
+      function ($link)
+      {
+        return '<a target="_blank" href="'.$link.'">'.$link.'</a>';
+      },
+      $links
+    ));
     return parent::renderAttributes($readOnly);
   }
 
-  function computeLink()
+  function computeLinks()
   {
+    global $config;
     if ($this->member_of_group) {
       $protocol = $this->group_attrs['fdWebLinkProtocol'][0];
     } else {
       $protocol = $this->fdWebLinkProtocol;
     }
-    $basetab = $this->parent->getBaseObject();
-    if ($basetab->netConfigDNS->DNS_is_account) {
-      $zone = strrchr($basetab->netConfigDNS->dnsEntry['zoneName'], '/');
-      $host = $basetab->cn.'.'.preg_replace(array('/^\//', '/.$/'), '', $zone);
-    } else {
-      $host = $basetab->netConfigDNS->ipHostNumber;
+    $basetab  = $this->parent->getBaseObject();
+    $hosts    = $basetab->ipHostNumber;
+    if (!is_array($hosts)) {
+      $hosts = array($hosts);
     }
-    return $protocol.'://'.$host;
+    if (isset($this->parent->by_object['dnsHost']) && ($this->parent->by_object['dnsHost']->is_account)) {
+      $zones  = $this->parent->by_object['dnsHost']->fdDNSZoneDn;
+      $ldap   = $config->get_ldap_link();
+      foreach ($zones as $zoneDn) {
+        $ldap->cat($zoneDn);
+        if ($attrs = $ldap->fetch()) {
+          $hosts[] = $basetab->cn.'.'.preg_replace('/\.$/', '', $attrs['zoneName'][0]);
+        }
+      }
+    }
+    return array_map(
+      function ($host) use ($protocol)
+      {
+        return $protocol.'://'.$host;
+      },
+      $hosts
+    );
   }
 }
 

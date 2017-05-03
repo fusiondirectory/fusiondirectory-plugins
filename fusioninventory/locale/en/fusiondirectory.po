@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
+"POT-Creation-Date: 2017-04-05 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -62,7 +62,7 @@ msgstr ""
 msgid "IP or Mac address"
 msgstr ""
 
-#: html/collect.php:74
+#: html/collect.php:75
 #, php-format
 msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
 msgstr ""
@@ -165,31 +165,57 @@ msgstr ""
 msgid "FusionInventory agent configuration"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:67
+#: admin/systems/fusioninventory/class_fiInventory.inc:69
 msgid "Inventory"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:68
+#: admin/systems/fusioninventory/class_fiInventory.inc:70
 msgid "Inventory Viewer"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:73
-#: admin/systems/fusioninventory/class_fiInventory.inc:77
+#: admin/systems/fusioninventory/class_fiInventory.inc:75
+#: admin/systems/fusioninventory/class_fiInventory.inc:79
 msgid "Inventory object"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:91
+#: admin/systems/fusioninventory/class_fiInventory.inc:93
+msgid "Matching system"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:96
+#: admin/systems/fusioninventory/class_fiInventory.inc:372
+msgid "System"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:96
+#: admin/systems/fusioninventory/class_fiInventory.inc:372
+msgid "System entry matching this inventory"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:102
 msgid "Hardware"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:97
+#: admin/systems/fusioninventory/class_fiInventory.inc:108
 msgid "Software"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:103
+#: admin/systems/fusioninventory/class_fiInventory.inc:114
 msgid "Users"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:109
+#: admin/systems/fusioninventory/class_fiInventory.inc:120
 msgid "Processes"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:320
+msgid "Create a system based on this inventory"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:335
+msgid "Create"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:340
+msgid "No matching system"
 msgstr ""

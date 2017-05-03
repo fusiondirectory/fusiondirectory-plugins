@@ -151,7 +151,7 @@ class netgroupMembership extends simplePlugin {
   }
 
   /* Save data to LDAP, depending on is_account we save or delete */
-  function ldap_save($cleanup = TRUE)
+  function ldap_save()
   {
     global $config;
     $this->update_id();

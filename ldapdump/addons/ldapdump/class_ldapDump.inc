@@ -60,7 +60,7 @@ class ldapDump extends simplePlugin
       $ui = get_userinfo();
       if (preg_match('/r/', $ui->get_complete_category_acls($this->acl_base, $this->parent->acl_category))) {
         $ldap = $config->get_ldap_link();
-        $ldap->cat($this->dn);
+        $ldap->cat($this->dn, array('*','createTimestamp','modifyTimestamp'));
         if ($attrs = $ldap->fetch()) {
           $this->dump = array($this->dumpLdapNode($attrs, $config->current['BASE']));
         } else {
@@ -86,13 +86,28 @@ class ldapDump extends simplePlugin
     );
     for ($i = 0; $i < $attrs['count']; $i++) {
       $key                  = $attrs[$i];
+      if (in_array($key, array('createTimestamp', 'modifyTimestamp'))) {
+        continue;
+      }
       $node['attrs'][$key]  = $attrs[$key];
       unset($node['attrs'][$key]['count']);
     }
+    $timestamps = array();
+    if (isset($attrs['createTimestamp'][0])) {
+      $date = LdapGeneralizedTime::fromString($attrs['createTimestamp'][0]);
+      $date->setTimezone(timezone::getDefaultTimeZone());
+      $timestamps['createTimestamp'] = $date->format('Y-m-d H:i:s');
+    }
+    if (isset($attrs['modifyTimestamp'][0])) {
+      $date = LdapGeneralizedTime::fromString($attrs['modifyTimestamp'][0]);
+      $date->setTimezone(timezone::getDefaultTimeZone());
+      $timestamps['modifyTimestamp'] = $date->format('Y-m-d H:i:s');
+    }
+    $node['attrs'] = $timestamps + $node['attrs'];
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($attrs['dn']);
-    $ldap->ls();
+    $ldap->search('(objectClass=*)', array('*','createTimestamp','modifyTimestamp'), 'one');
     while ($attrs = $ldap->fetch()) {
       $node['subnodes'][$attrs['dn']] = $this->dumpLdapNode($attrs, $node['dn']);
     }

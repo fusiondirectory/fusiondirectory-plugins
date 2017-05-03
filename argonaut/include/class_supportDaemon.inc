@@ -142,7 +142,7 @@ class supportDaemon
         $this->set_error("Received $test, expected $ok");
         return $this->new_state(FALSE);
       }
-    } catch (Exception $e) {
+    } catch (jsonRPCClientException $e) {
       $this->set_error($e->getMessage());
       return $this->new_state(FALSE);
     }
@@ -221,12 +221,12 @@ class supportDaemon
       $this->reset_error();
       $this->new_state(TRUE);
       return $status[0];
-    } catch (jsonRPCClient_RequestErrorException $e) {
+    } catch (jsonRPCClientRequestErrorException $e) {
       $this->set_error($e->getMessage());
-      /* connection is OK */
+      // connection is OK
       $this->new_state(TRUE);
       return FALSE;
-    } catch (jsonRPCClient_NetworkErrorException $e) {
+    } catch (jsonRPCClientNetworkErrorException $e) {
       $this->set_error($e->getMessage());
       return $this->new_state(FALSE);
     }
@@ -296,23 +296,29 @@ class supportDaemon
   {
     global $config;
     timezone::get_default_timezone();
-    $entries_r = array();
+    $entries_r  = array();
+    $macToCn    = array();
+    $ldap       = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
     foreach ($entries as &$entry) {
       $entry_r['TIMESTAMP']   = date('YmdHis', $entry['data']['timestamp']);
       $entry_r['MACADDRESS']  = $entry['target'];
 
-      // TODO : do an ldap search only if we haven't done it for the same mac before
-      $ldap = $config->get_ldap_link();
-      $ldap->cd($config->current['BASE']);
-      $ldap->search('(macAddress='.$entry_r['MACADDRESS'].')', array('cn'));
-      if ($ldap_infos = $ldap->fetch()) {
-        $entry_r['PLAINNAME'] = $ldap_infos['cn'][0];
+      /* Do an ldap search only if we haven't done it for the same mac before */
+      if (isset($macToCn[$entry_r['MACADDRESS']])) {
+        $entry_r['PLAINNAME'] = $macToCn[$entry_r['MACADDRESS']];
+      } else {
+        $ldap->search('(macAddress='.$entry_r['MACADDRESS'].')', array('cn'));
+        if ($ldap_infos = $ldap->fetch()) {
+          $macToCn[$entry_r['MACADDRESS']]  = $ldap_infos['cn'][0];
+          $entry_r['PLAINNAME']             = $ldap_infos['cn'][0];
+        }
       }
 
       $entry_r['ERROR']     = $entry['error'];
       $entry_r['PROGRESS']  = $entry['progress'];
 
-      $entry_r['PERIODIC']  = (isset($entry['data']['periodic'])?$entry['data']['periodic']:NULL);
+      $entry_r['PERIODIC']  = (isset($entry['data']['periodic']) ? $entry['data']['periodic'] : NULL);
       $entry_r['STATUS']    = $entry['status'];
       $entry_r['SUBSTATUS'] = $entry['substatus'];
       $entry_r['ID']        = $entry['id'];
@@ -343,7 +349,7 @@ class supportDaemon
     try {
       $client = new jsonRPCClient($this->s_host, $this->http_options, $this->ssl_options);
       $entries = $client->get_entries();
-    } catch (Exception $e) {
+    } catch (jsonRPCClientException $e) {
       $this->set_error($e->getMessage());
       return $this->new_state(FALSE);
     }
@@ -391,12 +397,12 @@ class supportDaemon
       $client->remove_entries($ids);
       $this->reset_error();
       return $this->new_state(TRUE);
-    } catch (jsonRPCClient_RequestErrorException $e) {
+    } catch (jsonRPCClientRequestErrorException $e) {
       $this->set_error($e->getMessage());
-      /* connection is OK */
+      // connection is OK
       $this->new_state(TRUE);
       return FALSE;
-    } catch (jsonRPCClient_NetworkErrorException $e) {
+    } catch (jsonRPCClientNetworkErrorException $e) {
       $this->set_error($e->getMessage());
       return $this->new_state(FALSE);
     }
@@ -452,12 +458,12 @@ class supportDaemon
       $client->process_entries_now($ids);
       $this->reset_error();
       return $this->new_state(TRUE);
-    } catch (jsonRPCClient_RequestErrorException $e) {
+    } catch (jsonRPCClientRequestErrorException $e) {
       $this->set_error($e->getMessage());
-      /* connection is OK */
+       // connection is OK
       $this->new_state(TRUE);
       return FALSE;
-    } catch (jsonRPCClient_NetworkErrorException $e) {
+    } catch (jsonRPCClientNetworkErrorException $e) {
       $this->set_error($e->getMessage());
       return $this->new_state(FALSE);
     }
@@ -527,12 +533,12 @@ class supportDaemon
       $this->reset_error();
       $this->new_state(TRUE);
       return $entries;
-    } catch (jsonRPCClient_RequestErrorException $e) {
+    } catch (jsonRPCClientRequestErrorException $e) {
       $this->set_error($e->getMessage());
-      /* connection is OK */
+      // connection is OK
       $this->new_state(TRUE);
       return FALSE;
-    } catch (jsonRPCClient_NetworkErrorException $e) {
+    } catch (jsonRPCClientNetworkErrorException $e) {
       $this->set_error($e->getMessage());
       return $this->new_state(FALSE);
     }
@@ -629,12 +635,12 @@ class supportDaemon
       $this->reset_error();
       $this->new_state(TRUE);
       return $client->ping($mac);
-    } catch (jsonRPCClient_RequestErrorException $e) {
+    } catch (jsonRPCClientRequestErrorException $e) {
       $this->set_error($e->getMessage());
-      /* connection is OK */
+      // connection is OK
       $this->new_state(TRUE);
       return FALSE;
-    } catch (jsonRPCClient_NetworkErrorException $e) {
+    } catch (jsonRPCClientNetworkErrorException $e) {
       $this->set_error($e->getMessage());
       return $this->new_state(FALSE);
     }
@@ -667,7 +673,8 @@ class supportDaemon
     if ($this->saved_state() == FALSE) {
       return array();
     }
-    /* filters is a package name list */
+
+    // filters is a package name list
     if ($package_list) {
       foreach ($filters as &$filter) {
         $filter = "^".$this->escape_perl_chars($filter)."$";
@@ -692,7 +699,7 @@ class supportDaemon
         }
         if (in_array("SECTION", $attrs)) {
           foreach ($packages as &$package) {
-            /* FIXME : do we want to do this? It will replace "contrib/misc by contrib, for instance */
+            // FIXME : do we want to do this? It will replace "contrib/misc by contrib, for instance
             $package['SECTION'] = $section;
           }
           unset($package);
@@ -702,12 +709,12 @@ class supportDaemon
       $this->reset_error();
       $this->new_state(TRUE);
       return $to_return;
-    } catch (jsonRPCClient_RequestErrorException $e) {
+    } catch (jsonRPCClientRequestErrorException $e) {
       $this->set_error($e->getMessage());
-      /* connection is OK */
+       // connection is OK
       $this->new_state(TRUE);
       return array();
-    } catch (jsonRPCClient_NetworkErrorException $e) {
+    } catch (jsonRPCClientNetworkErrorException $e) {
       $this->set_error($e->getMessage());
       $this->new_state(FALSE);
       return array();
@@ -767,12 +774,12 @@ class supportDaemon
       $taskids = $client->get_entries_by_mac(array($mac));
       $client->remove_entries($taskids);
       return $this->new_state(TRUE);
-    } catch (jsonRPCClient_RequestErrorException $e) {
+    } catch (jsonRPCClientRequestErrorException $e) {
       $this->set_error($e->getMessage());
-      /* connection is OK */
+      // connection is OK
       $this->new_state(TRUE);
       return FALSE;
-    } catch (jsonRPCClient_NetworkErrorException $e) {
+    } catch (jsonRPCClientNetworkErrorException $e) {
       $this->set_error($e->getMessage());
       return $this->new_state(FALSE);
     }

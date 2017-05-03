@@ -225,6 +225,7 @@ class supannAccount extends simplePlugin
     );
   }
 
+  // The main function : information about attributes
   static function getAttributesInfo ()
   {
     $year = intval(date('Y'));
@@ -254,7 +255,7 @@ class supannAccount extends simplePlugin
               _('Ref ids'), _('supannRefId - IDs/links for this user on other systems'),
               'supannRefId', FALSE,
               '', '',
-              /* Validation regexp: it must have a prefix */
+               // Validation regexp: it must have a prefix
               '/^{[^}]+}.+$/'
             )
           ),
@@ -404,8 +405,10 @@ class supannAccount extends simplePlugin
                 ),
               )
             ),
+            // no order
             FALSE,
             array(),
+            // no edit button
             FALSE
           )
         )
@@ -454,10 +457,13 @@ class supannAccount extends simplePlugin
                 ),
               ),
               '',
+              // no label
               ''
             ),
+            // no order
             FALSE,
             array(),
+            // no edit button
             FALSE
           )
         )
@@ -511,16 +517,13 @@ class supannAccount extends simplePlugin
     $this->attributesAccess['supannEtuInscription']->setLinearRendering(FALSE);
 
     list ($codes, $labels) = supann::get_choices_for('eturegimeinscription_SISE', '{SISE}');
-    /* supannEtuRegimeInscription */
-    $this->attributesAccess['supannEtuInscription']->attribute->attributes[2]->setChoices($codes, $labels);
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[2]->setChoices($codes, $labels); // supannEtuRegimeInscription
 
     list ($codes, $labels) = supann::get_choices_for('discipline_SISE', '{SISE}');
-    /* supannEtuSecteurDisciplinaire */
-    $this->attributesAccess['supannEtuInscription']->attribute->attributes[3]->setChoices($codes, $labels);
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[3]->setChoices($codes, $labels); // supannEtuSecteurDisciplinaire
 
     list ($codes, $labels) = supann::get_choices_for('typediplome_SISE', '{SISE}');
-    /* supannEtuTypeDiplome */
-    $this->attributesAccess['supannEtuInscription']->attribute->attributes[4]->setChoices($codes, $labels);
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[4]->setChoices($codes, $labels); // supannEtuTypeDiplome
 
     list ($codes, $labels) = supann::get_choices_for('corps', '{NCORPS}');
     $this->attributesAccess['supannEmpCorps']->setChoices($codes, $labels);
@@ -538,15 +541,15 @@ class supannAccount extends simplePlugin
     );
     $code_etab   = $this->attributesAccess['supannEtablissement']->getValue();
     $label_etab  = $this->attributesAccess['supannEtablissement']->getDisplayValues();
-    /* supannEtablissement */
+    // supannEtablissement
     $this->attributesAccess['supannEtuInscription']->attribute->attributes[0]->setChoices($code_etab, $label_etab);
-    /* supannEntiteAffectation */
+    // supannEntiteAffectation
     $this->attributesAccess['supannEtuInscription']->attribute->attributes[6]->setChoices($code_ent, $label_ent);
-    /* supannEntiteAffectation */
+    // supannEntiteAffectation
     $this->attributesAccess['supannRoleEntite']->attribute->attributes[2]->setChoices($code_ent, $label_ent);
     $code_tent   = $this->attributesAccess['supannTypeEntiteAffectation']->getValue();
     $label_tent  = $this->attributesAccess['supannTypeEntiteAffectation']->getDisplayValues();
-    /* supannTypeEntiteAffectation */
+    // supannTypeEntiteAffectation
     $this->attributesAccess['supannRoleEntite']->attribute->attributes[1]->setChoices($code_tent, $label_tent);
 
     $this->attributesAccess['eduPersonPrimaryAffiliation']->setChoices(

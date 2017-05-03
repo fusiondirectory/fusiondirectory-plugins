@@ -115,19 +115,21 @@ class csvimport extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
     $this->attributesAccess['type']->setSubmitForm('typeChanged');
     $choices  = array();
-    $outputs  = array();
     $types    = objects::types();
     foreach ($types as $type) {
       if (in_array($type, departmentManagement::getDepartmentTypes())) {
         continue;
       }
       $infos = objects::infos($type);
-      if (isset($infos['management'])) {
-        $choices[] = $type;
-        $outputs[] = $infos['name'];
+      if ($infos['templateActive']) {
+        $choices[$type] = $infos['name'];
       }
     }
-    $this->attributesAccess['type']->setChoices($choices, $outputs);
+    asort($choices);
+    $this->attributesAccess['type']->setChoices(array_keys($choices), array_values($choices));
+    /* People usually import users, so set it as default */
+    $this->attributesAccess['type']->setDefaultValue('USER');
+    $this->attributesAccess['type']->resetToDefault();
     $this->attributesAccess['import_submit_fields']->setDisabled(TRUE);
   }
 
@@ -150,7 +152,6 @@ class csvimport extends simplePlugin
     $this->template_object = new template($this->type, $this->template_dn);
 
     /* Add nonrequired field filling feature */
-    $attributes = array();
     $fields = array();
     if (isset($this->csv_data[0])) {
       foreach ($this->csv_data[0] as $key => $field_value) {
@@ -244,13 +245,12 @@ class csvimport extends simplePlugin
       $this->template_object->reset();
       $this->template_object->deserialize($values);
       $tabObject = $this->template_object->apply();
-      $msgs = $tabObject->check();
+      $msgs = $tabObject->save();
       if (count($msgs)) {
         $msg = '<ul><li>'.implode('</li><li>', $msgs).'</li></ul>';
         msg_dialog::display(sprintf(_('Import failed for line %d'), $rownumber), $msg, ERROR_DIALOG);
         break;
       } else {
-        $tabObject->save();
         $success++;
       }
     }
@@ -273,7 +273,7 @@ class csvimport extends simplePlugin
     }
     if (is_array($i)) {
       $value = array();
-      foreach ($i as $k => $j) {
+      foreach ($i as $j) {
         $value[] = $this->compute_attribute_value($attribute, $row, $j);
       }
       return $value;

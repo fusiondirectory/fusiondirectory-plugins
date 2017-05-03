@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2012-2016  FusionDirectory
@@ -21,34 +20,8 @@
 
 class serverGeneric extends workstationGeneric
 {
-  var $objectclasses = array('top', 'goServer', 'GOhard');
+  var $objectclasses = array('fdServer', 'ipHost', 'ieee802Device');
 
-  var $inheritance = FALSE;
-
-  /* Return plugin information for acl handling */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('Server'),
-      'plDescription' => _('Server information'),
-      'plSelfModify'  => FALSE,
-      'plObjectType'  => array(
-        'server' => array(
-          'name'        => _('Server'),
-          'description' => _('Server'),
-          'filter'      => 'objectClass=goServer',
-          'icon'        => 'geticon.php?context=devices&icon=server&size=16',
-          'ou'          => get_ou('serverRDN'),
-          'tabClass'    => 'servtabs',
-        )
-      ),
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
-  }
-
-  /*!
-   *  \brief The main function : information about attributes
-   */
   static function getAttributesInfo ($word = NULL, $rdn = NULL)
   {
     if ($word === NULL) {
@@ -60,11 +33,24 @@ class serverGeneric extends workstationGeneric
     return parent::getAttributesInfo($word, $rdn);
   }
 
-  /* Returns the dn of the entry */
-  function compute_dn()
+  static function plInfo()
   {
-    return 'cn='.ldap_escape_dn($this->cn).','.get_ou('serverRDN').$this->base;
+    return array(
+      'plShortName'   => _('Server'),
+      'plDescription' => _('Server information'),
+      'plSelfModify'  => FALSE,
+      'plObjectType'  => array(
+        'server' => array(
+          'name'        => _('Server'),
+          'description' => _('Server'),
+          'filter'      => 'objectClass=fdServer',
+          'icon'        => 'geticon.php?context=devices&icon=server&size=16',
+          'ou'          => get_ou('serverRDN'),
+          'tabClass'    => 'servtabs',
+        )
+      ),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
   }
 }
-
 ?>

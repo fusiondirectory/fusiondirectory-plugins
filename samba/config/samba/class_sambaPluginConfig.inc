@@ -20,17 +20,17 @@
 
 class sambaPluginConfig extends simplePlugin
 {
-  var $objectclasses  = array("fdSambaPluginConf");
+  var $objectclasses  = array('fdSambaPluginConf');
 
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Samba"),
-      "plDescription"   => _("Samba plugin configuration"),
-      "plPriority"      => 2,
-      "plObjectType"    => array("configuration"),
+      'plShortName'     => _('Samba'),
+      'plDescription'   => _('Samba plugin configuration'),
+      'plPriority'      => 2,
+      'plObjectType'    => array('configuration'),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -40,11 +40,6 @@ class sambaPluginConfig extends simplePlugin
       'samba' => array(
         'name'  => _('Samba settings'),
         'attrs' => array(
-          new StringAttribute (
-            _('Samba machine account RDN'), _('The location where FusionDirectory looks for new samba workstations.'),
-            'fdSambaMachineAccountRDN', FALSE,
-            'ou=computers,ou=systems'
-          ),
           new BooleanAttribute (
             _('Samba ID mapping'),
             _('Maintain sambaIdmapEntry objects. Depending on your setup this can drastically improve the windows login performance.'),

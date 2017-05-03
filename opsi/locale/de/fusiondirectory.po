@@ -1,17 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
-# d.oertel <d.oertel@uib.de>, 2013
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-12-31 10:30+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: German (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/de/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,18 +26,18 @@ msgstr "OPSI-Import"
 msgid "Import windows stations from OPSI into FD"
 msgstr "Windows-Stationen von OPSI in FD importieren"
 
-#: addons/opsi/class_opsiImport.inc:69
+#: addons/opsi/class_opsiImport.inc:72
 msgid "Argonaut server is not available"
 msgstr "Argonaut-Server ist nicht verfügbar"
 
-#: addons/opsi/class_opsiImport.inc:80
+#: addons/opsi/class_opsiImport.inc:83
 #: admin/opsi/class_opsiSoftwareList.inc:122
 #: admin/opsi/class_opsiProfile.inc:167
 msgid "No mac address"
 msgstr "Keine MAC-Adresse"
 
-#: addons/opsi/class_opsiImport.inc:95
-#: admin/systems/opsi/class_opsiClient.inc:150
+#: addons/opsi/class_opsiImport.inc:98
+#: admin/systems/opsi/class_opsiClient.inc:155
 msgid "Could not update OPSI information"
 msgstr ""
 
@@ -91,7 +91,7 @@ msgstr "Der zu verwendende OPSI-Server"
 #: admin/opsi/class_opsiOnDemandList.inc:54
 #: admin/opsi/class_opsiSoftwareList.inc:58
 #: admin/opsi/class_opsiProfile.inc:86 admin/opsi/class_opsiProfile.inc:93
-#: admin/opsi/class_opsiProductProperties.inc:117
+#: admin/opsi/class_opsiProductProperties.inc:113
 msgid "Name"
 msgstr "Name"
 
@@ -134,13 +134,14 @@ msgstr "OPSI-Softwareliste"
 
 #: admin/opsi/class_opsiSoftwareList.inc:68
 msgid "The localboot products to install with this list"
-msgstr "Die Localboot Produkte, welche mit dieser Liste installiert werden sollen"
+msgstr ""
+"Die Localboot Produkte, welche mit dieser Liste installiert werden sollen"
 
 #: admin/opsi/class_opsiSoftwareList.inc:110
 #: admin/opsi/class_opsiProfile.inc:155
-#: admin/opsi/class_opsiProductProperties.inc:176
+#: admin/opsi/class_opsiProductProperties.inc:174
 msgid "Could not contact argonaut server"
-msgstr "Keine Verbindung zum Argonaut-Server"
+msgstr "Keine Verbindung zum-Argonaut Server"
 
 #: admin/opsi/class_opsiSoftwareList.inc:123
 #: admin/opsi/class_opsiProfile.inc:168
@@ -156,7 +157,7 @@ msgstr "Konnte %s nicht im LDAP finden"
 
 #: admin/opsi/class_opsiSoftwareList.inc:137
 #: admin/opsi/class_opsiProfile.inc:182
-#: admin/opsi/class_opsiProductProperties.inc:192
+#: admin/opsi/class_opsiProductProperties.inc:190
 msgid "Failed to contact OPSI server"
 msgstr ""
 
@@ -194,12 +195,12 @@ msgstr "%s (%s)"
 msgid "OPSI profile management"
 msgstr "OPSI-Profilverwaltung"
 
-#: admin/opsi/class_opsiProductProperties.inc:104
-#: admin/opsi/class_opsiProductProperties.inc:105
+#: admin/opsi/class_opsiProductProperties.inc:100
+#: admin/opsi/class_opsiProductProperties.inc:101
 msgid "Product properties"
 msgstr "Produkteigenschaften"
 
-#: admin/opsi/class_opsiProductProperties.inc:122
+#: admin/opsi/class_opsiProductProperties.inc:118
 msgid "Properties of the products of this profile"
 msgstr "Eigenschaften der Produkte von diesem Profil"
 
@@ -211,32 +212,32 @@ msgstr "OPSI-Client"
 msgid "Edit OPSI client settings"
 msgstr "OPSI-Clienteinstellungen bearbeiten"
 
-#: admin/systems/opsi/class_opsiClient.inc:46
+#: admin/systems/opsi/class_opsiClient.inc:48
 msgid "OPSI Client"
 msgstr "OPSI-Client"
 
-#: admin/systems/opsi/class_opsiClient.inc:49
+#: admin/systems/opsi/class_opsiClient.inc:51
 msgid "OPSI Server"
 msgstr "OPSI-Server"
 
-#: admin/systems/opsi/class_opsiClient.inc:49
+#: admin/systems/opsi/class_opsiClient.inc:51
 msgid "The OPSI Server this client is connected to"
 msgstr "Der OPSI-Server zu dem dieser Client verbunden ist"
 
-#: admin/systems/opsi/class_opsiClient.inc:53
+#: admin/systems/opsi/class_opsiClient.inc:55
 msgid "OPSI Profile"
 msgstr "OPSI-Profil"
 
-#: admin/systems/opsi/class_opsiClient.inc:53
+#: admin/systems/opsi/class_opsiClient.inc:55
 msgid "The OPSI Profile to apply to this client"
 msgstr "Das OPSI-Profil, welches auf diesen Client angewendet wird"
 
-#: admin/systems/opsi/class_opsiClient.inc:96
+#: admin/systems/opsi/class_opsiClient.inc:98
 msgid "Could not get macAddress for OPSI server !"
 msgstr "Konnte die MAC-Adresse des OPSI-Servers nicht finden !"
 
-#: admin/systems/opsi/class_opsiClient.inc:105
-#: admin/systems/opsi/class_opsiClient.inc:193
+#: admin/systems/opsi/class_opsiClient.inc:107
+#: admin/systems/opsi/class_opsiClient.inc:199
 msgid "Could not remove OPSI information"
 msgstr ""
 
@@ -282,4 +283,7 @@ msgid ""
 "Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
 " managed by it, so if you delete them or deactivate their OPSI tab, they "
 "will be removed from OPSI."
-msgstr "Warnung: Nachdem Sie die OPSI Hosts nach FusionDirectory importiert haben, werden diese dort verwaltet. Wenn Sie danach einen direkt in OPSI löschen, so wird er dadurch nicht wirklich gelöscht."
+msgstr ""
+"Warnung: Nachdem Sie die OPSI Hosts nach FusionDirectory importiert haben, "
+"werden diese dort verwaltet. Wenn Sie danach einen direkt in OPSI löschen, "
+"so wird er dadurch nicht wirklich gelöscht."

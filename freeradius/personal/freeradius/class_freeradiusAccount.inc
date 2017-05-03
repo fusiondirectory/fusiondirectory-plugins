@@ -50,6 +50,7 @@ class freeradiusAccount extends simplePlugin {
   static function getAttributesInfo ()
   {
     return array(
+    // Attributes are grouped by section
     'section1' => array(
         'name'  => _('Support 802.1x'),
         'attrs' => array(

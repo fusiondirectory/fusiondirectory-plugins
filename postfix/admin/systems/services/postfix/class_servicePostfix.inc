@@ -134,11 +134,18 @@ class servicePostfix extends simpleService
     );
   }
 
-  function ldap_save ($cleanup = TRUE)
+  protected function shouldSave()
+  {
+    /* We need ldap_save to always run */
+    return TRUE;
+  }
+
+  function ldap_save ()
   {
     global $config;
-    parent::ldap_save($cleanup);
+    $errors = parent::ldap_save();
     $this->attributesAccess['fdPostfixTransportTable']->postLdapSave($config->get_ldap_link());
+    return $errors;
   }
 }
 ?>

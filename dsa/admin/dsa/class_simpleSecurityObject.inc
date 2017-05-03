@@ -55,6 +55,10 @@ class simpleSecurityObject extends simplePlugin
             _('Entry name'), _('Account name'),
             'cn', TRUE
           ),
+          new TextAreaAttribute (
+            _('Description'), _('Description of this simple security object'),
+            'description', FALSE
+          ),
         )
       ),
       'password' => array(

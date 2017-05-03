@@ -103,11 +103,6 @@ class serviceDovecot extends simpleService
     );
   }
 
-  function save()
-  {
-    parent::save();
-  }
-
   protected function post_save()
   {
     parent::post_save();

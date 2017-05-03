@@ -1,0 +1,163 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
+"Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:60
+msgid "Server did not return auth token"
+msgstr "Le serveur n'a pas retourné le jeton d'authentification"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:111
+msgid "Partage API answer malformated"
+msgstr "Partage API réponse mal formée"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:115
+#, php-format
+msgid "Partage API Auth failed: %s"
+msgstr "Partage API Auth a échoué: %s"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:117
+msgid "Partage API Auth failed with no error message"
+msgstr "Partage API Auth a échoué sans message d'erreur"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:126
+#, php-format
+msgid "Unable to connect to %s: %s"
+msgstr "Impossible de se connecter à %s: %s"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:128
+#, php-format
+msgid "Unable to connect to %s"
+msgstr "Impossible de se connecter à %s"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:193
+msgid "Warning"
+msgstr "Avertissement"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:193
+#, php-format
+msgid ""
+"Several addresses were given in gosaMailForwardingAddress but only one is "
+"supported by PARTAGE. %s will be sent to PARTAGE."
+msgstr ""
+"Plusieurs adresses ont été fournies dans gosaMailForwardingAddress, mais une"
+" seule est prise en charge par PARTAGE. %s sera envoyé à PARTAGE."
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:320
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:333
+msgid "An account with the same email address already exists in Partage"
+msgstr "Un compte avec la même adresse de messagerie existe déjà dans Partage"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:398
+msgid "Invalid value in fdRenaterPartageServerDeletionType"
+msgstr "Valeur non valide dans fdRenaterPartageServerDeletionType"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:439
+msgid "Never"
+msgstr "Jamais"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:446
+msgid "Last login"
+msgstr "Dernière connexion"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:447
+msgid "Account status"
+msgstr "Statut du compte"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:447
+msgid "Unknown"
+msgstr "Inconnu"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:28
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:29
+msgid "Renater Partage"
+msgstr "Renater Partage"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:40
+msgid "Settings"
+msgstr "Paramètres"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:44
+msgid "URI"
+msgstr "URI"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:44
+msgid "URI to contact the Renater Partage API"
+msgstr "URI pour contacter l'api Renater Partage"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:48
+msgid "User Agent"
+msgstr "Agent utilisateur"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:48
+msgid "User Agent to use to contact the Renater Partage API"
+msgstr "Agent utilisateur à utiliser pour contacter l'API Renater Partage"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:53
+msgid "Mailbox deletion"
+msgstr "Suppression de boîte aux lettres"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:53
+msgid ""
+"What to do with the PARTAGE account when mail tab is deactivated or user is "
+"deleted"
+msgstr ""
+"Que faire avec le compte PARTAGE lorsque l'onglet Courrier est désactivé ou "
+"l'utilisateur est supprimé"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:56
+msgid "Delete"
+msgstr "Supprimer"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:56
+msgid "Disable"
+msgstr "Désactiver"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:62
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:85
+msgid "Domains"
+msgstr "Domaines"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:67
+msgid "Domains handled by this Renater Partage server"
+msgstr "Domaines traités par ce serveur Renater Partage"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:71
+msgid "Domain"
+msgstr "Domaine"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:71
+msgid "Domain handled by this server"
+msgstr "Domaines traités par ce serveur"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:75
+msgid "Key"
+msgstr "Clef"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:75
+msgid "Key for this domain"
+msgstr "Clef pour ce domaine"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:79
+msgid "Class of service"
+msgstr "Classe de services"
+
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:79
+msgid "Possible classes of service for this domain, separated by commas"
+msgstr ""
+"Classes de service possibles pour ce domaine, séparées par des virgules"

@@ -84,10 +84,14 @@ class pgpServerInfo extends simplePlugin
     );
   }
 
-  protected function ldap_save ($cleanup = TRUE)
+  protected function ldap_save ()
   {
     global $config;
-    parent::ldap_save($cleanup);
+    $errors = parent::ldap_save();
+
+    if (!empty($errors)) {
+      return $errors;
+    }
 
     /* Create the new branch if non-existing */
     $ldap = $config->get_ldap_link();
@@ -97,8 +101,7 @@ class pgpServerInfo extends simplePlugin
       $ldap->cd($config->current['BASE']);
       $ldap->create_missing_trees($this->pgpBaseKeySpaceDN);
       if (!$ldap->success()) {
-        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(),
-                            $this->pgpBaseKeySpaceDN, LDAP_MOD, get_class()));
+        $errors[] = msgPool::ldaperror($ldap->get_error(), $this->pgpBaseKeySpaceDN, LDAP_MOD, get_class());
       }
     }
     /* Delete the old branch if empty */
@@ -107,7 +110,8 @@ class pgpServerInfo extends simplePlugin
       $ldap->cat($dn);
       if ($ldap->count()) {
         /* Old branch exists */
-        $ldap->ls('(objectClass=*)', $dn);
+        $ldap->cd($dn);
+        $ldap->search('(objectClass=*)');
         if (!$ldap->count()) {
           /* Old branch is empty */
           @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $dn, "Deleting old empty branch");
@@ -117,6 +121,7 @@ class pgpServerInfo extends simplePlugin
         }
       }
     }
+    return $errors;
   }
 }
 ?>

@@ -1,17 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
-# Nikos Charonitakis <charosn@her.forthnet.gr>, 2005
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-04-05 12:25+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -56,7 +56,8 @@ msgstr "Πρότυπο"
 
 #: addons/ldapmanager/class_csvimport.inc:52
 msgid "Select a template to apply to imported entries"
-msgstr "Επιλογή ενός προτύπου από το οποίο θα εφραμοστούν οι εισηγμένες καταχωρήσεις"
+msgstr ""
+"Επιλογή ενός προτύπου από το οποίο θα εφραμοστούν οι εισηγμένες καταχωρήσεις"
 
 #: addons/ldapmanager/class_csvimport.inc:58
 msgid "CSV file"
@@ -85,7 +86,7 @@ msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:78
 #: addons/ldapmanager/class_csvimport.inc:104
-#: addons/ldapmanager/class_ldapmanager.inc:122
+#: addons/ldapmanager/class_ldapmanager.inc:121
 #: addons/ldapmanager/contentcsv.tpl.c:26
 #: addons/ldapmanager/contentcsv.tpl.c:29
 msgid "Import"
@@ -99,7 +100,7 @@ msgstr "Γέμισμα προτύπων"
 msgid "Select fields associations"
 msgstr "Επιλογή συσχετισμών πεδίων"
 
-#: addons/ldapmanager/class_csvimport.inc:250
+#: addons/ldapmanager/class_csvimport.inc:251
 #, php-format
 msgid "Import failed for line %d"
 msgstr ""
@@ -125,86 +126,87 @@ msgstr ""
 msgid "LDAP Manager"
 msgstr "Διαχείριση LDAP"
 
-#: addons/ldapmanager/class_ldapmanager.inc:62
-#: addons/ldapmanager/class_ldapmanager.inc:75
-#: addons/ldapmanager/class_ldapmanager.inc:95
+#: addons/ldapmanager/class_ldapmanager.inc:61
+#: addons/ldapmanager/class_ldapmanager.inc:74
+#: addons/ldapmanager/class_ldapmanager.inc:94
 msgid "Export"
 msgstr "Εξαγωγή"
 
-#: addons/ldapmanager/class_ldapmanager.inc:65
+#: addons/ldapmanager/class_ldapmanager.inc:64
 msgid "DN of a single entry to export as ldif"
 msgstr ""
 
-#: addons/ldapmanager/class_ldapmanager.inc:79
+#: addons/ldapmanager/class_ldapmanager.inc:78
 msgid "Export single entry"
 msgstr "Εξαγωγή μονής καταχώρησης"
 
-#: addons/ldapmanager/class_ldapmanager.inc:82
+#: addons/ldapmanager/class_ldapmanager.inc:81
 msgid "Filter"
 msgstr "Φίλτρο"
 
-#: addons/ldapmanager/class_ldapmanager.inc:82
+#: addons/ldapmanager/class_ldapmanager.inc:81
 msgid "Filter to use for selecting objects to export"
-msgstr "Φίλτρο που θα χρησιμοποιείται για την επιλογή αντικειμένων για εξαγωγή"
+msgstr ""
+"Φίλτρο που θα χρησιμοποιείται για την επιλογή αντικειμένων για εξαγωγή"
 
-#: addons/ldapmanager/class_ldapmanager.inc:88
+#: addons/ldapmanager/class_ldapmanager.inc:87
 msgid ""
 "Download a complete snapshot of the running LDAP directory for this base as "
 "ldif"
 msgstr ""
 
-#: addons/ldapmanager/class_ldapmanager.inc:99
+#: addons/ldapmanager/class_ldapmanager.inc:98
 msgid "Export complete LDIF for"
 msgstr "Εξαγωγή πλήρους LDIF για"
 
-#: addons/ldapmanager/class_ldapmanager.inc:104
+#: addons/ldapmanager/class_ldapmanager.inc:103
 msgid "Import LDIF"
 msgstr "Εισαγωγή LDIF"
 
-#: addons/ldapmanager/class_ldapmanager.inc:107
+#: addons/ldapmanager/class_ldapmanager.inc:106
 msgid "Overwrite existing entries"
 msgstr "Αντικατάσταση υπάρχουσων καταχωρίσεων"
 
-#: addons/ldapmanager/class_ldapmanager.inc:107
+#: addons/ldapmanager/class_ldapmanager.inc:106
 msgid ""
 "Remove fields that are not in the LDIF from the LDAP entries if they were "
 "existing."
 msgstr ""
 
-#: addons/ldapmanager/class_ldapmanager.inc:112
+#: addons/ldapmanager/class_ldapmanager.inc:111
 msgid ""
 "Import an LDIF file into your LDAP. Remember that FusionDirectory will not "
 "check your LDIFs for FusionDirectory conformance."
 msgstr ""
 
-#: addons/ldapmanager/class_ldapmanager.inc:126
+#: addons/ldapmanager/class_ldapmanager.inc:125
 msgid "Import LDIF file"
 msgstr "Εισαγωγή αρχείου LDIF"
 
-#: addons/ldapmanager/class_ldapmanager.inc:154
-#: addons/ldapmanager/class_ldapmanager.inc:199
+#: addons/ldapmanager/class_ldapmanager.inc:153
+#: addons/ldapmanager/class_ldapmanager.inc:198
 msgid "LDAP error"
 msgstr "Σφάλμα LDAP"
 
-#: addons/ldapmanager/class_ldapmanager.inc:155
+#: addons/ldapmanager/class_ldapmanager.inc:154
 #, php-format
 msgid "No such object %s!"
 msgstr "Δεν υπάρχει τέτοιος αντικείμενο %s!"
 
-#: addons/ldapmanager/class_ldapmanager.inc:175
+#: addons/ldapmanager/class_ldapmanager.inc:174
 msgid "Permission error"
-msgstr "Σφάλμα άδειας"
+msgstr "Σφάλμα δικαιωμάτων"
 
-#: addons/ldapmanager/class_ldapmanager.inc:176
+#: addons/ldapmanager/class_ldapmanager.inc:175
 #, php-format
 msgid "You have no permission to export %s!"
 msgstr "Δεν έχετε άδεια για εξαγωγή %s!"
 
-#: addons/ldapmanager/class_ldapmanager.inc:182
+#: addons/ldapmanager/class_ldapmanager.inc:181
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: addons/ldapmanager/class_ldapmanager.inc:183
+#: addons/ldapmanager/class_ldapmanager.inc:182
 #, php-format
 msgid "Failed to generate ldap export, error was \"%s\"!"
 msgstr "Αποτυχία δημιουργίας εξαγωγής ldap, το σφάλμα ήταν \"%s\"!"
@@ -231,7 +233,8 @@ msgstr "Επιλογή προτύπου"
 
 #: addons/ldapmanager/contentcsv.tpl.c:14
 msgid "All entries have been written to the LDAP database successfully."
-msgstr "Όλες οι καταχωρήσεις αποθηκεύτηκαν στην βάση δεδομένων LDAP με επιτυχία."
+msgstr ""
+"Όλες οι καταχωρήσεις αποθηκεύτηκαν στην βάση δεδομένων LDAP με επιτυχία."
 
 #: addons/ldapmanager/contentcsv.tpl.c:17
 msgid "Oups. There was an error during the import of your data."

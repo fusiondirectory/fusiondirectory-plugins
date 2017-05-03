@@ -20,7 +20,11 @@
 
 class subContractingAccount extends simplePlugin
 {
+  // We set displayHeader to FALSE, because we don't want a header allowing to activate/deactivate this plugin,
+  // we want it activated on all objects
   var $displayHeader = TRUE;
+
+  // Here we indicate which LDAP classes our plugin is using.
   var $objectclasses = array('fdSubcontractingPerson');
 
   static function plInfo ()
@@ -35,6 +39,7 @@ class subContractingAccount extends simplePlugin
     );
   }
 
+  // The main function : information about attributes
   static function getAttributesInfo ()
   {
     return array(

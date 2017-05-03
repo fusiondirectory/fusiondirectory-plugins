@@ -1,16 +1,16 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-12-31 10:30+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Indonesian (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/id/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language-Team: Indonesian (https://www.transifex.com/fusiondirectory/teams/12202/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,18 +25,18 @@ msgstr ""
 msgid "Import windows stations from OPSI into FD"
 msgstr ""
 
-#: addons/opsi/class_opsiImport.inc:69
+#: addons/opsi/class_opsiImport.inc:72
 msgid "Argonaut server is not available"
 msgstr ""
 
-#: addons/opsi/class_opsiImport.inc:80
+#: addons/opsi/class_opsiImport.inc:83
 #: admin/opsi/class_opsiSoftwareList.inc:122
 #: admin/opsi/class_opsiProfile.inc:167
 msgid "No mac address"
 msgstr ""
 
-#: addons/opsi/class_opsiImport.inc:95
-#: admin/systems/opsi/class_opsiClient.inc:150
+#: addons/opsi/class_opsiImport.inc:98
+#: admin/systems/opsi/class_opsiClient.inc:155
 msgid "Could not update OPSI information"
 msgstr ""
 
@@ -90,7 +90,7 @@ msgstr ""
 #: admin/opsi/class_opsiOnDemandList.inc:54
 #: admin/opsi/class_opsiSoftwareList.inc:58
 #: admin/opsi/class_opsiProfile.inc:86 admin/opsi/class_opsiProfile.inc:93
-#: admin/opsi/class_opsiProductProperties.inc:117
+#: admin/opsi/class_opsiProductProperties.inc:113
 msgid "Name"
 msgstr ""
 
@@ -137,7 +137,7 @@ msgstr ""
 
 #: admin/opsi/class_opsiSoftwareList.inc:110
 #: admin/opsi/class_opsiProfile.inc:155
-#: admin/opsi/class_opsiProductProperties.inc:176
+#: admin/opsi/class_opsiProductProperties.inc:174
 msgid "Could not contact argonaut server"
 msgstr ""
 
@@ -155,7 +155,7 @@ msgstr ""
 
 #: admin/opsi/class_opsiSoftwareList.inc:137
 #: admin/opsi/class_opsiProfile.inc:182
-#: admin/opsi/class_opsiProductProperties.inc:192
+#: admin/opsi/class_opsiProductProperties.inc:190
 msgid "Failed to contact OPSI server"
 msgstr ""
 
@@ -193,12 +193,12 @@ msgstr ""
 msgid "OPSI profile management"
 msgstr ""
 
-#: admin/opsi/class_opsiProductProperties.inc:104
-#: admin/opsi/class_opsiProductProperties.inc:105
+#: admin/opsi/class_opsiProductProperties.inc:100
+#: admin/opsi/class_opsiProductProperties.inc:101
 msgid "Product properties"
 msgstr ""
 
-#: admin/opsi/class_opsiProductProperties.inc:122
+#: admin/opsi/class_opsiProductProperties.inc:118
 msgid "Properties of the products of this profile"
 msgstr ""
 
@@ -210,32 +210,32 @@ msgstr ""
 msgid "Edit OPSI client settings"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:46
+#: admin/systems/opsi/class_opsiClient.inc:48
 msgid "OPSI Client"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:49
+#: admin/systems/opsi/class_opsiClient.inc:51
 msgid "OPSI Server"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:49
+#: admin/systems/opsi/class_opsiClient.inc:51
 msgid "The OPSI Server this client is connected to"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:53
+#: admin/systems/opsi/class_opsiClient.inc:55
 msgid "OPSI Profile"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:53
+#: admin/systems/opsi/class_opsiClient.inc:55
 msgid "The OPSI Profile to apply to this client"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:96
+#: admin/systems/opsi/class_opsiClient.inc:98
 msgid "Could not get macAddress for OPSI server !"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:105
-#: admin/systems/opsi/class_opsiClient.inc:193
+#: admin/systems/opsi/class_opsiClient.inc:107
+#: admin/systems/opsi/class_opsiClient.inc:199
 msgid "Could not remove OPSI information"
 msgstr ""
 

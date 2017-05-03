@@ -85,9 +85,6 @@ class dashboardPpolicy extends simplePlugin
     $now = new DateTime('now', timezone::utc());
 
     /* search all expired accounts */
-    $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(|(objectClass=posixAccount)(objectClass=sambaSamAccount))(shadowExpire=*))',
-                  array('uid','shadowExpire','mail','telephoneNumber','cn','manager'));
     $users = objects::ls('user', array(
         'dn'                    => 'raw',
         'uid'                   => 'raw',
@@ -102,12 +99,12 @@ class dashboardPpolicy extends simplePlugin
     $locked_users           = array();
     $expired_accounts       = array();
     $next_expired_accounts  = array();
-    /*  ppolicies cache */
+    // ppolicies cache
     $maxAges = array();
     foreach ($users as $user) {
       if (isset($user['pwdAccountLockedTime'])) {
         $locked_user  = dashboardUsers::get_user_infos($user);
-        $lockedTime   = DateTime::createFromFormat('YmdHis\Z', $user['pwdAccountLockedTime'], timezone::utc());
+        $lockedTime   = LdapGeneralizedTime::fromString($user['pwdAccountLockedTime']);
         $lockedTime->setTimezone(timezone::getDefaultTimeZone());
         $locked_user['pwdAccountLockedTime']  = $lockedTime->format('Y-m-d H:i:s');
         $locked_users[]                       = $locked_user;
@@ -142,7 +139,8 @@ class dashboardPpolicy extends simplePlugin
         /* No max age, it can’t be expired */
         continue;
       }
-      $lastChange = DateTime::createFromFormat('YmdHis\Z', $user['pwdChangedTime'], timezone::utc());
+      $lastChange = LdapGeneralizedTime::fromString($user['pwdChangedTime']);
+      $lastChange->setTimezone(timezone::utc());
       if (($lastChange->getTimeStamp() + $maxAge) < $now->getTimeStamp()) {
         $expired_accounts[] = dashboardUsers::get_user_infos($user);
       } elseif (($lastChange->getTimeStamp() + $maxAge) < ($now->getTimeStamp() + $next_expired_days_seconds)) {

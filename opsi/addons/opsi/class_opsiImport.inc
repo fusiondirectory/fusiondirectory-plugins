@@ -21,7 +21,7 @@
 
 class opsiImport extends systemImport
 {
-  protected $defaultType = 'winstation';
+  protected $defaultType = 'workstation';
 
   /* Return plugin information for acl handling  */
   static function plInfo()
@@ -53,6 +53,9 @@ class opsiImport extends systemImport
   protected function getExtraTabs($server_dn)
   {
     return array(
+      'sambaSystemTab' => array(
+        'is_account'      => TRUE,
+      ),
       'opsiClient' => array(
         'is_account'      => TRUE,
         'fdOpsiServerDn'  => $server_dn,

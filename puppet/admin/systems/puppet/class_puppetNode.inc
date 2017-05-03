@@ -27,6 +27,7 @@ class puppetNode extends simplePlugin
   static function getAttributesInfo ()
   {
     return array(
+      // Attributes are grouped by section
       'section1' => array(
         'name'  => _("Puppet node settings"),
         'attrs' => array(
@@ -43,11 +44,11 @@ class puppetNode extends simplePlugin
                 new StringAttribute ('',   _('Name of the variable'),   'puppetVar'),
                 new StringAttribute ('=',  _('Value of the variable'),  'puppetVarValue'),
               ),
-               /* sscanf format */
+               // sscanf format
               '%[^ =]=%[^ ]',
-              /* sprintf format  */
+              // sprintf format
               '%s=%s',
-              /* acl, empty string means we don't care (handle it automagically) */
+              // acl, empty string means we don't care (handle it automagically)
               '',
               'Puppet Vars'
             )
@@ -57,6 +58,7 @@ class puppetNode extends simplePlugin
     );
   }
 
+  // We also need this function that return some information about the plugin
   static function plInfo ()
   {
     return array(
@@ -64,6 +66,8 @@ class puppetNode extends simplePlugin
       "plDescription"     => _("Support for puppet schema in order to edit puppet classes and puppet vars"),
       "plSelfModify"      => FALSE,
       "plObjectType"      => array("server", "workstation"),
+
+      // But simplePlugin can generate the ACL list for us
       "plProvidedAcls"    => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
@@ -83,7 +87,6 @@ class puppetNode extends simplePlugin
     $this->attributesInfo['section1']['attrs']['parentNode']->setChoices($nodes);
     $ldap->search("(objectClass=puppetServer)", array('puppetAvailableEnvironment'));
     if ($ldap->count() == 0) {
-      /* TODO : Add something to simplePlugin to handle this case : the tab should not exist */
       $this->is_account = FALSE;
       return;
     }
@@ -91,6 +94,7 @@ class puppetNode extends simplePlugin
     $envs = $attrs['puppetAvailableEnvironment'];
     unset($envs['count']);
     $this->attributesInfo['section1']['attrs']['environment']->setChoices($envs);
+    //~ $this->attributesInfo['section1']['attrs']['puppetClass']->attribute->setChoices(array('class1','class2'));
   }
 }
 

@@ -27,11 +27,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  * Source code for class jsonRPCClient
  */
 
-class jsonRPCClient_Exception extends Exception {}
-class jsonRPCClient_RequestErrorException extends jsonRPCClient_Exception {}
-class jsonRPCClient_NetworkErrorException extends jsonRPCClient_Exception {}
-class jsonRPCClient_ProtocolException extends jsonRPCClient_Exception {}
-class jsonRPCClient_BadArgsException extends jsonRPCClient_Exception {}
+class jsonRPCClientException extends Exception {}
+class jsonRPCClientRequestErrorException extends jsonRPCClientException {}
+class jsonRPCClientNetworkErrorException extends jsonRPCClientException {}
+class jsonRPCClientProtocolException extends jsonRPCClientException {}
+class jsonRPCClientBadArgsException extends jsonRPCClientException {}
 
 /*!
  * \brief The object of this class are generic jsonRPC 1.0 clients
@@ -140,7 +140,7 @@ class jsonRPCClient {
 
     // check
     if (!is_scalar($method)) {
-      throw new jsonRPCClient_BadArgsException('Method name has no scalar value');
+      throw new jsonRPCClientBadArgsException('Method name has no scalar value');
     }
 
     // check
@@ -148,7 +148,7 @@ class jsonRPCClient {
       // no keys
       $params = array_values($params);
     } else {
-      throw new jsonRPCClient_BadArgsException('Params must be given as array');
+      throw new jsonRPCClientBadArgsException('Params must be given as array');
     }
 
     // sets notification or request task
@@ -195,7 +195,7 @@ class jsonRPCClient {
       } else {
         $errormsg = 'Unable to connect to '.$this->url;
       }
-      throw new jsonRPCClient_NetworkErrorException($errormsg);
+      throw new jsonRPCClientNetworkErrorException($errormsg);
     }
 
     // debug output
@@ -208,15 +208,15 @@ class jsonRPCClient {
         case JSON_ERROR_NONE:
         break;
         case JSON_ERROR_DEPTH:
-          throw new jsonRPCClient_ProtocolException('Maximum depth in response');
+          throw new jsonRPCClientProtocolException('Maximum depth in response');
         case JSON_ERROR_STATE_MISMATCH:
-          throw new jsonRPCClient_ProtocolException('Invalid JSON in response');
+          throw new jsonRPCClientProtocolException('Invalid JSON in response');
         case JSON_ERROR_CTRL_CHAR:
-          throw new jsonRPCClient_ProtocolException('Error while checking chars in response');
+          throw new jsonRPCClientProtocolException('Error while checking chars in response');
         case JSON_ERROR_SYNTAX:
-          throw new jsonRPCClient_ProtocolException('Bad JSON syntax in response');
+          throw new jsonRPCClientProtocolException('Bad JSON syntax in response');
         case JSON_ERROR_UTF8:
-          throw new jsonRPCClient_ProtocolException('Bad UTF-8 in response');
+          throw new jsonRPCClientProtocolException('Bad UTF-8 in response');
         default:
         break;
       }
@@ -226,10 +226,10 @@ class jsonRPCClient {
     if (!$this->notification) {
       // check
       if ($response['id'] != $currentId) {
-        throw new jsonRPCClient_ProtocolException('Incorrect response id (request id: '.$currentId.', response id: '.$response['id'].')');
+        throw new jsonRPCClientProtocolException('Incorrect response id (request id: '.$currentId.', response id: '.$response['id'].')');
       }
       if (!is_null($response['error'])) {
-        throw new jsonRPCClient_RequestErrorException('Request error: '.$response['error']);
+        throw new jsonRPCClientRequestErrorException('Request error: '.$response['error']);
       }
 
       return $response['result'];

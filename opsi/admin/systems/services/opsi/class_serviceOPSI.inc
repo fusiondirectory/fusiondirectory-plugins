@@ -61,16 +61,19 @@ class serviceOPSI extends simpleService
   {
     parent::__construct($dn, $parent);
     if ($parent !== NULL) {
-      if (isset($parent->parent->netConfigDNS)) {
-        $ip = $parent->parent->netConfigDNS->ipHostNumber;
+      if (isset($parent->parent->ipHostNumber)) {
+        $ip = $parent->parent->ipHostNumber;
       } elseif (isset($parent->parent)) {
-        $ip = $parent->parent->getBaseObject()->netConfigDNS->ipHostNumber;
+        $ip = $parent->parent->getBaseObject()->ipHostNumber;
       } else {
-        trigger_error("Can't find IP for OPSI service");
-        $ip = "";
+        trigger_error('Can\'t find IP for OPSI service');
+        $ip = '';
+      }
+      if (is_array($ip)) {
+        $ip = reset($ip);
       }
       $this->attributesAccess['fdOpsiServerURI']->setDefaultValue('https://'.$ip.':4447/rpc');
-      if ($this->fdOpsiServerURI == "") {
+      if ($this->fdOpsiServerURI == '') {
         $this->attributesAccess['fdOpsiServerURI']->resetToDefault();
       }
     }

@@ -73,8 +73,10 @@ class serviceShare extends simpleService
                 ),
               )
             ),
+            // no order
             FALSE,
             array(),
+            // edit button
             TRUE
           )
         )

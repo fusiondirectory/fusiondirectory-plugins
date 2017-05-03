@@ -6,7 +6,7 @@
           <p class="contentboxh">&nbsp;{$HEADLINE}&nbsp;{$SIZELIMIT}</p>
         </div>
 
-        <div class="contentboxb">
+        <div class="contentboxb" style="background:white;">
           <table>
             <tbody>
               <tr>

@@ -56,7 +56,7 @@ class ejbcaManagement extends simpleManagement
     $this->registerAction('download', 'downloadEntry');
   }
 
-  function downloadEntry($action, $targets, $all)
+  function downloadEntry($action, array $targets)
   {
     $entry = $this->headpage->getEntry($targets[0]);
     session::set('binary', $entry['userCertificate;binary'][0]);

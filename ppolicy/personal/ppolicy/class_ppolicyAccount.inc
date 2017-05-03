@@ -82,7 +82,7 @@ class ppolicyAccount extends simplePlugin
     if ($this->pwdChangedTime == '') {
       $this->pwdChangedTime = _('Never');
     } else {
-      $date = DateTime::createFromFormat('YmdHis\Z', $this->pwdChangedTime, new DateTimeZone('UTC'));
+      $date = LdapGeneralizedTime::fromString($this->pwdChangedTime);
       $date->setTimezone(timezone::getDefaultTimeZone());
       $this->pwdChangedTime = $date->format('Y-m-d H:i:s');
     }
@@ -91,7 +91,7 @@ class ppolicyAccount extends simplePlugin
     } elseif ($this->pwdAccountLockedTime == '000001010000Z') {
       $this->pwdAccountLockedTime = _('Locked permanently');
     } else {
-      $date = DateTime::createFromFormat('YmdHis\Z', $this->pwdAccountLockedTime, new DateTimeZone('UTC'));
+      $date = LdapGeneralizedTime::fromString($this->pwdAccountLockedTime);
       $date->setTimezone(timezone::getDefaultTimeZone());
       $this->pwdAccountLockedTime = $date->format('Y-m-d H:i:s');
     }
@@ -102,7 +102,6 @@ class ppolicyAccount extends simplePlugin
     global $config;
     if ($this->dn != 'new') {
       $ldap = $config->get_ldap_link();
-      $this->updateAttributesValues();
       $ldap->cat($this->dn, $this->attributes);
       $attrs = $ldap->fetch();
       $this->attrs = array_merge($this->attrs, $attrs);

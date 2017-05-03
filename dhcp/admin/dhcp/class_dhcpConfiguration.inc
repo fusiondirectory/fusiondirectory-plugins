@@ -54,6 +54,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
       return array('not in cache',$dn,'');
     }
 
+    //~ $link = "<a href='?plug=".$_GET['plug']."&act=edit&id=".$key."'>".$value[1]."</a>";
     $link = $value[1];
 
     $objtype = $this->objectType($dn);
@@ -595,7 +596,7 @@ class dhcpConfiguration extends simplePlugin
     return TRUE;
   }
 
-  protected function ldap_save($cleanup = TRUE)
+  protected function ldap_save()
   {
     global $config;
     $this->ldap_error = 'Success';
@@ -684,13 +685,7 @@ class dhcpConfiguration extends simplePlugin
       }
     }
 
-    msg_dialog::displayChecks($errors);
-
-    return !empty($errors);
-  }
-
-  public function setPrimaryServer($dn)
-  {
-    $this->attributesAccess['dhcpSections']->setPrimaryDn($dn);
+    //~ parent::ldap_save();
+    return $errors;
   }
 }

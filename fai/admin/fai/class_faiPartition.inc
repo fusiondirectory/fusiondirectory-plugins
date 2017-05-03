@@ -358,7 +358,7 @@ class faiPartition extends simplePlugin
       $disablePrimary = FALSE;
       if (!$object || ($object['FAIpartitionType'] == 'logical')) {
         $types = array('logical' => array(), 'primary' => array());
-        foreach ($this->parent->partitions as $key => $part){
+        foreach ($this->parent->partitions as $part){
           $types[$part['FAIpartitionType']][$part['FAIpartitionNr']] = 1;
         }
         if (count($types['logical']) && (count($types['primary']) >= 3)) {
@@ -445,7 +445,7 @@ class faiPartition extends simplePlugin
   function execute()
   {
     $smarty = get_smarty();
-    $acl    = $this->getacl('FAIpartitions');
+    $acl    = $this->aclGetPermissions('FAIpartitions');
     $smarty->assign('FAIpartitionsACL', $acl);
     parent::execute();
 
@@ -521,7 +521,7 @@ class faiPartition extends simplePlugin
         $used = array_merge($used,$disk['FAIlvmDevice']);
       }
 
-      foreach ($disk['partitions'] as $key => $part) {
+      foreach ($disk['partitions'] as $part) {
         // Add disks of raid arrays, to the used list.
         if ($disk['FAIdiskType'] == 'raid') {
           foreach (explode(',', $part['FAIpartitionSize']) as $rDevice) {

@@ -181,6 +181,15 @@ class fdRPCService
   }
 
   /*!
+   * \brief Log out
+   */
+  protected function _logout ()
+  {
+    session::destroy();
+    return TRUE;
+  }
+
+  /*!
    * \brief Get list of object of objectType $type in $ou
    */
   protected function _ls ($type, $attrs = NULL, $ou = NULL, $filter = '')
@@ -218,7 +227,6 @@ class fdRPCService
    */
   protected function _listTypes()
   {
-    global $config;
     $types  = objects::types();
 
     $result = array();
@@ -269,11 +277,10 @@ class fdRPCService
     }
     $_POST = array($tab.'_modify_state' => 1);
     $tabobject->save_object();
-    $errors = $tabobject->check();
+    $errors = $tabobject->save();
     if (!empty($errors)) {
       return array('errors' => $errors);
     }
-    $tabobject->save();
     return $tabobject->dn;
   }
 
@@ -298,7 +305,7 @@ class fdRPCService
       $fields = $object->attributesInfo;
       foreach ($fields as &$section) {
         $attributes = array();
-        foreach ($section['attrs'] as $key => $attr) {
+        foreach ($section['attrs'] as $attr) {
           if ($object->acl_is_readable($attr->getAcl())) {
             $attr->serializeAttribute($attributes, TRUE);
           }
@@ -353,11 +360,10 @@ class fdRPCService
       $_POST[$tab.'_modify_state'] = 1;
     }
     $tabobject->save_object();
-    $errors = $tabobject->check();
+    $errors = $tabobject->save();
     if (!empty($errors)) {
       return array('errors' => $errors);
     }
-    $tabobject->save();
     return $tabobject->dn;
   }
 
@@ -382,7 +388,7 @@ class fdRPCService
       $fields = $object->attributesInfo;
       foreach ($fields as &$section) {
         $attributes = array();
-        foreach ($section['attrs'] as $key => $attr) {
+        foreach ($section['attrs'] as $attr) {
           if ($object->acl_is_readable($attr->getAcl())) {
             $attr->serializeAttribute($attributes, FALSE);
           }
@@ -436,11 +442,10 @@ class fdRPCService
       $tabobject->current = $tab;
       $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases is needed */
     }
-    $errors = $tabobject->check();
+    $errors = $tabobject->save();
     if (!empty($errors)) {
       return array('errors' => $errors);
     }
-    $tabobject->save();
     return $tabobject->dn;
   }
 
@@ -468,11 +473,10 @@ class fdRPCService
       return array('errors' => array($error));
     }
     $tabobject = $template->apply();
-    $errors = $tabobject->check();
+    $errors = $tabobject->save();
     if (!empty($errors)) {
       return array('errors' => $errors);
     }
-    $tabobject->save();
     return $tabobject->dn;
   }
 
@@ -483,7 +487,6 @@ class fdRPCService
   {
     global $ui;
     $infos = objects::infos($type);
-    $plist = session::global_get('plist');
     // Check permissions, are we allowed to remove this object?
     $acl = $ui->get_permissions($dn, $infos['aclCategory'].'/'.$infos['mainTab']);
     if (preg_match('/d/', $acl)) {

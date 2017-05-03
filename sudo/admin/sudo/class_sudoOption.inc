@@ -19,11 +19,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-/*
- * TODO
- * Find a way to translate descriptions
- */
-
 class UsedOptionAttribute extends CompositeAttribute
 {
   function __construct ($description, $ldapName, $acl = "")
@@ -391,7 +386,6 @@ class SudoOptionAttribute extends Attribute
     $smarty->assign("booleanOptions", array("FALSE","TRUE"));
     if ($this->type == "STRING") {
       $display = '<input type="text" name="'.$id.'" id="'.$id.'" value="'.$value.'" />';
-      /* FIXME : LIST must be handle in an other way */
     } elseif ($this->type == "LISTS") {
       $display = '<input type="text" name="'.$id.'" id="'.$id.'" value="'.$value.'" />';
     } elseif ($this->type == "INTEGER") {
@@ -473,9 +467,11 @@ class sudoOption extends simplePlugin
   var $displayHeader = FALSE;
   var $objectclasses = array();
 
+  // The main function : information about attributes
   static function getAttributesInfo ()
   {
     return array(
+      // Attributes are grouped by section
       'available_options' => array(
         'name'  => _('Available options'),
         'attrs' => array(

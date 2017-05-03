@@ -1,17 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
-# Nikos Charonitakis <charosn@her.forthnet.gr>, 2005
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-01-22 16:01+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,7 +24,9 @@ msgstr "Διαμεσολαβητής"
 
 #: personal/squid/class_proxyAccount.inc:66
 msgid "This allow to store basic squid settings in ldap for each user"
-msgstr "Αυτό επιτρέπει την αποθήκευση βασικών ρυθμίσεων του squid στο ldap για κάθε χρήστη"
+msgstr ""
+"Αυτό επιτρέπει την αποθήκευση βασικών ρυθμίσεων του squid στο ldap για κάθε "
+"χρήστη"
 
 #: personal/squid/class_proxyAccount.inc:84
 msgid "Proxy account"
@@ -32,7 +34,9 @@ msgstr "Λογαριασμός διαμεσολαβητή"
 
 #: personal/squid/class_proxyAccount.inc:90
 msgid "Filter unwanted content (i.e. pornographic or violence related)"
-msgstr "Φιλτράρισμα ανεπιθύμητου περιεχομένου (π.χ. πορνογραφικό ή βιαίο περιεχόμενο)"
+msgstr ""
+"Φιλτράρισμα ανεπιθύμητου περιεχομένου (π.χ. πορνογραφικό ή βιαίο "
+"περιεχόμενο)"
 
 #: personal/squid/class_proxyAccount.inc:91
 msgid "filterF"
@@ -43,7 +47,7 @@ msgid "Working Start"
 msgstr "Έναρξη εργασίας"
 
 #: personal/squid/class_proxyAccount.inc:100
-#: personal/squid/class_proxyAccount.inc:112
+#: personal/squid/class_proxyAccount.inc:115
 msgid "HourStart"
 msgstr "Ώρα εναρξης"
 
@@ -51,68 +55,68 @@ msgstr "Ώρα εναρξης"
 msgid "MinuteStart"
 msgstr "Λεπτό έναρξης"
 
-#: personal/squid/class_proxyAccount.inc:106
+#: personal/squid/class_proxyAccount.inc:109
 msgid "Limit proxy access to working time"
 msgstr "Περιορισμός πρόσβασης στο διαμεσολαβητή σε εργάσιμο χρόνο"
 
-#: personal/squid/class_proxyAccount.inc:109
+#: personal/squid/class_proxyAccount.inc:112
 msgid "Working Stop"
 msgstr "Τέλος εργασίας"
 
-#: personal/squid/class_proxyAccount.inc:112
+#: personal/squid/class_proxyAccount.inc:115
 msgid "-"
 msgstr "-"
 
-#: personal/squid/class_proxyAccount.inc:113
+#: personal/squid/class_proxyAccount.inc:116
 msgid ":"
 msgstr ":"
 
-#: personal/squid/class_proxyAccount.inc:113
+#: personal/squid/class_proxyAccount.inc:116
 msgid "MinuteStop"
 msgstr "Λεπτό τέλους"
 
-#: personal/squid/class_proxyAccount.inc:119
-#: personal/squid/class_proxyAccount.inc:128
+#: personal/squid/class_proxyAccount.inc:122
+#: personal/squid/class_proxyAccount.inc:132
 msgid "Restrict proxy usage by quota"
 msgstr "Περιορισμός χρήσης διαμεσολαβητή ανά όριο"
 
-#: personal/squid/class_proxyAccount.inc:122
+#: personal/squid/class_proxyAccount.inc:125
 msgid "Up"
 msgstr "Πάνω"
 
-#: personal/squid/class_proxyAccount.inc:131
-#: personal/squid/class_proxyAccount.inc:132
+#: personal/squid/class_proxyAccount.inc:135
+#: personal/squid/class_proxyAccount.inc:136
 msgid "per"
 msgstr "ανά"
 
-#: personal/squid/class_proxyAccount.inc:135
+#: personal/squid/class_proxyAccount.inc:139
 msgid "hour"
 msgstr "ώρα"
 
-#: personal/squid/class_proxyAccount.inc:135
+#: personal/squid/class_proxyAccount.inc:139
 msgid "day"
 msgstr "ημέρα"
 
-#: personal/squid/class_proxyAccount.inc:135
+#: personal/squid/class_proxyAccount.inc:139
 msgid "week"
 msgstr "εβδομάδα"
 
-#: personal/squid/class_proxyAccount.inc:135
+#: personal/squid/class_proxyAccount.inc:139
 msgid "month"
 msgstr "μήνα"
 
-#: personal/squid/class_proxyAccount.inc:138
+#: personal/squid/class_proxyAccount.inc:142
 msgid "Start Working Hours"
 msgstr "Έναρξη εργάσιμων ωρών"
 
-#: personal/squid/class_proxyAccount.inc:139
+#: personal/squid/class_proxyAccount.inc:143
 msgid "Starting hours for internet access"
 msgstr "Ωρες εκκίνησης για πρόσβαση στο διαδίκτυο"
 
-#: personal/squid/class_proxyAccount.inc:146
+#: personal/squid/class_proxyAccount.inc:151
 msgid "Proxy Quota"
 msgstr "Όρια διαμεσολαβητή"
 
-#: personal/squid/class_proxyAccount.inc:147
+#: personal/squid/class_proxyAccount.inc:152
 msgid "Max Data quota for the proxy"
 msgstr "Μέγιστα όρια δεδομένων για τον διαμεσολαβητή"

@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
@@ -20,23 +19,28 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ServerService extends management
+class ServerService extends simpleManagement
 {
   static public $actionStatus = array(
-    "start"   => "running",
-    "stop"    => "stopped",
-    "restart" => "running",
-    "status"  => "",
+    'start'   => 'running',
+    'stop'    => 'stopped',
+    'restart' => 'running',
+    'status'  => '',
   );
 
-  /* attribute list for save action */
+  protected $departmentBrowser      = FALSE;
+  protected $departmentRootVisible  = FALSE;
+  protected $baseMode               = FALSE;
+
+  protected $autoFilter   = FALSE;
+  protected $autoActions  = FALSE;
+
   var $ignore_account   = TRUE;
   var $skipFooter       = TRUE;
   var $skipHeader       = TRUE;
   var $skipCpHandler    = TRUE;
   var $skipSnapHandler  = TRUE;
   var $plugins          = array();
-  var $pluign_names     = array();
   var $current          = "";
   var $dialog           = FALSE;
   var $read_only        = FALSE;
@@ -44,7 +48,6 @@ class ServerService extends management
   var $acl;
   var $cn;
   var $parent;
-  var $pl_notify        = FALSE;
   var $acl_category     = "";
   var $acl_base         = "";
 
@@ -77,29 +80,14 @@ class ServerService extends management
     /* Initialize acl base */
     $this->set_acl_base($this->dn);
 
-    // Set storage points - We do not have any - We just create a fake list which lists all services
-    $this->storagePoints = array("");
-
-    // Build filter
-    if (session::global_is_set(get_class($this)."_filter")) {
-      $filter = session::global_get(get_class($this)."_filter");
-    } else {
-      $filter = new filter(get_template_path("serverService-filter.xml", TRUE, dirname(__FILE__)));
-      $filter->setObjectStorage($this->storagePoints);
-    }
-    $this->setFilter($filter);
-
-    // Build headpage
-    $headpage = new listing(get_template_path("serverService-list.xml", TRUE, dirname(__FILE__)));
-    $headpage->registerElementFilter("filterServiceStatus", "ServerService::filterServiceStatus");
-    $headpage->setFilter($filter);
+    $this->filterXMLPath  = get_template_path('serverService-filter.xml', TRUE, dirname(__FILE__));
+    $this->listXMLPath    = get_template_path('serverService-list.xml',   TRUE, dirname(__FILE__));
 
     // Initialize list of used and useable services.
     foreach ($config->data['TABS']['SERVERSERVICE'] as $plug) {
       if (class_available($plug['CLASS'])) {
         $name = $plug['CLASS'];
 
-        $this->plugin_names[] = $name;
         $this->plugins[$name] = new $name($dn, $this);
 
         /* Capture all service objectClases, necessary for acl handling */
@@ -111,20 +99,25 @@ class ServerService extends management
       }
     }
 
-    parent::__construct("services", $headpage);
-    $this->registerAction("new",                "newService");
+    parent::__construct();
+  }
+
+  function configureHeadpage ()
+  {
+    parent::configureHeadpage();
+    $this->headpage->registerElementFilter('filterServiceStatus', 'ServerService::filterServiceStatus');
+
+    $this->registerAction('new',                'newService');
     foreach ($this->plugins as $name => $obj) {
-      $this->registerAction("new_$name",        "newService");
+      $this->registerAction('new_'.$name,       'newService');
     }
-    $this->registerAction("remove",             "removeService");
-    $this->registerAction("newServiceSelected", "newServiceSelected");
-    $this->registerAction("saveService",        "saveService");
-    $this->registerAction("cancelService",      "cancelEdit");
-    $this->registerAction("newServiceCancel",   "closeDialogs");
-    $this->registerAction("status",             "updateServiceStatus");
-    $this->registerAction("restart",            "updateServiceStatus");
-    $this->registerAction("stop",               "updateServiceStatus");
-    $this->registerAction("start",              "updateServiceStatus");
+    $this->registerAction('remove',             'removeService');
+    $this->registerAction('saveService',        'saveService');
+    $this->registerAction('cancelService',      'cancelEdit');
+    $this->registerAction('status',             'updateServiceStatus');
+    $this->registerAction('restart',            'updateServiceStatus');
+    $this->registerAction('stop',               'updateServiceStatus');
+    $this->registerAction('start',              'updateServiceStatus');
     $this->updateActionMenu();
   }
 
@@ -147,64 +140,55 @@ class ServerService extends management
     }
   }
 
-
   /*! \brief    Filter extra POST and GET variables for this plugin.
    */
   function detectPostActions()
   {
-    $action = management::detectPostActions();
-    if (isset($_POST['SaveServiceAdd'])) {
-      $action['action'] = "newServiceSelected";
-    } elseif (isset($_POST['CancelServiceAdd'])) {
-      $action['action'] = "newServiceCancel";
-    } elseif (isset($_POST['SaveService'])) {
-      $action['action'] = "saveService";
+    $action = parent::detectPostActions();
+    if (isset($_POST['SaveService'])) {
+      $action['action'] = 'saveService';
     } elseif (isset($_POST['CancelService'])) {
-      $action['action'] = "cancelService";
+      $action['action'] = 'cancelService';
     }
     return $action;
   }
 
-
   /*! \brief  Edit an existing service here.
    *          Somebody clicked on the paper and pencil icon.
    */
-  function editEntry($action = "", $target = array(), $all = array(), $altTabClass = "", $altTabType = "", $altAclCategory = "")
+  function editEntry($action, array $target, array $all)
   {
-    $this->dialog = TRUE;
     $s_entry = array_pop($target);
     if ($this->plugins[$s_entry]->acl_is_readable("")) {
       $this->backup       = get_object_vars($this->plugins[$s_entry]);
       $this->dialogObject = $this->plugins[$s_entry];
+      $this->dialog       = TRUE;
       $this->current      = $s_entry;
     }
   }
-
 
   /*! \brief  Editing an object was caneled.
    *          Close dialogs/tabs and remove locks.
    */
   protected function cancelEdit()
   {
-    if ($this->backup == NULL && $this->current) {
+    if (($this->backup == NULL) && $this->current) {
       $this->plugins[$this->current] = new $this->current($this->dn, $this);
       $this->plugins[$this->current]->set_acl_base($this->acl_base);
-      $this->plugins[$this->current]->set_acl_category(preg_replace("/\/$/", "", $this->acl_category));
-
+      $this->plugins[$this->current]->set_acl_category(preg_replace('/\/$/', '', $this->acl_category));
     } elseif (is_array($this->backup)) {
       foreach ($this->backup as $name => $value) {
         $this->plugins[$this->current]->$name = $value;
       }
     }
     $this->backup   = NULL;
-    $this->current  = "";
+    $this->current  = '';
     $this->closeDialogs();
   }
 
-
-  /*! \brief  Let the user choose the new service to create.
+  /*! \brief  Let the user create a new service
    */
-  function newService($action = "")
+  function newService($action = '')
   {
     $this->closeDialogs();
     $serv = preg_replace('/^new_/', '', $action);
@@ -222,37 +206,31 @@ class ServerService extends management
     $msgs = $this->dialogObject->check();
     if (count($msgs)) {
       foreach ($msgs as $msg) {
-        msg_dialog::display(_("Error"), $msg, ERROR_DIALOG);
+        msg_dialog::display(_('Error'), $msg, ERROR_DIALOG);
       }
     } else {
       $this->plugins[$this->current] = $this->dialogObject;
-      $tmp  = get_object_vars($this->dialogObject);
-      foreach ($tmp as $name => $value) {
-        $this->plugins[$this->current]->$name = $value;
-      }
       $this->closeDialogs();
       $this->backup = NULL;
       $this->updateActionMenu();
     }
   }
 
-
   /*!\brief   Close all opened dialogs
    *          And reset "dialog open" flags to display bottom buttons again.
    */
   function closeDialogs()
   {
-    management::closeDialogs();
+    parent::closeDialogs();
     $this->dialog = FALSE;
     /* Get our dn back */
     $this->dn     = $this->last_dn;
     set_object_info($this->dn);
   }
 
-
   /*! \brief    Remove the selected service(s)
    */
-  protected function removeService($action = "", $target = array(), $all = array())
+  protected function removeService($action, array $target)
   {
     foreach ($target as $s_entry) {
       $new_obj = new $s_entry($this->dn, $this);
@@ -260,138 +238,43 @@ class ServerService extends management
       $new_obj->set_acl_category(preg_replace("/\/$/", "", $this->acl_category));
       $tmp = $new_obj->getListEntry();
 
-      /* Check if we are allowed to remove this service
-       */
+      /* Check if we are allowed to remove this service */
       if ($tmp['AllowRemove']) {
-        $str = $this->plugins[$s_entry]->allow_remove();
-        if (empty($str)) {
-          $this->plugins[$s_entry]              = $new_obj;
-          $this->plugins[$s_entry]->is_account  = FALSE;
-        } else {
-          msg_dialog::display(_("Error"), $str, ERROR_DIALOG);
-        }
+        $this->plugins[$s_entry]              = $new_obj;
+        $this->plugins[$s_entry]->is_account  = FALSE;
       }
     }
   }
 
-
-  /*! \brief    Returns the list of of services, active services.
-   *            Used in the filter class for services.
-   *             class_filterServerService.inc
-   */
-  static function getServiceList()
+  function renderList()
   {
-    return session::get('ServerService');
-  }
-
-
-  /*! \brief    Returns an image for the service status.
-   *            Used in the service list class.
-   */
-  static function filterServiceStatus($a, $b, $c, $d)
-  {
-    $img = "";
-    if (isset($d['0'])) {
-      switch ($d[0]) {
-        case 'stopped':
-          $img = 'geticon.php?context=status&icon=task-stopped&size=16';
-          break;
-        case 'running':
-          $img = 'geticon.php?context=status&icon=task-running&size=16';
-          break;
-      }
-    }
-    if (!empty($img)) {
-      return '<img src=\''.$img.'\'>';
-    }
-    return "&nbsp;";
-  }
-
-
-  /*! \brief  Execute this plugin
-   *          Handle actions/events, locking, snapshots, dialogs, tabs,...
-   */
-  function execute()
-  {
-    // Ensure that html posts and gets are kept even if we see a 'Entry islocked' dialog.
-    $vars = array('/^act$/','/^listing/','/^PID$/','/^FILTER_PID$/');
-    session::set('LOCK_VARS_TO_USE', $vars);
-
-    /* Display the copy & paste dialog, if it is currently open */
-    $ret = $this->copyPasteHandler("", array());
-    if ($ret) {
-      return $this->getHeader().$ret;
-    }
-
-    // Update filter
-    $filter = $this->getFilter();
-    if ($filter) {
-      $filter->update();
-      session::global_set(get_class($this)."_filter", $filter);
-      session::set('autocomplete', $filter);
-      if (!$filter->isValid()) {
-        msg_dialog::display(_("Filter error"), _("The filter is incomplete!"), ERROR_DIALOG);
-      }
-    }
-
-    // Handle actions (POSTs and GETs)
-    $str = $this->handleActions($this->detectPostActions());
-    if ($str) {
-      return $this->getHeader().$str;
-    }
-
-    // Open single dialog objects
-    if (is_object($this->dialogObject)) {
-      if (method_exists($this->dialogObject, 'execute')) {
-
-        /* There is currently a subdialog open, display this dialog */
-        $add = "";
-        if (isset($this->dialogObject->krb_host_key) && $this->dialogObject->krb_host_key instanceof krbHostKeys) {
-          $add = $this->dialogObject->krb_host_key->save_object_by_prefix($this->dialogObject->krb_service_prefix);
-          $add = $this->dialogObject->krb_host_key->execute_by_prefix($this->dialogObject->krb_service_prefix, TRUE);
-        }
-
-        $display = $add.$this->dialogObject->execute();
-        $display .= $this->_getTabFooter();
-        return $this->getHeader().$display;
-      }
-    }
-
-    // Display tab object.
-    if ($this->tabObject instanceOf simpleTabs) {
-      $display = $this->tabObject->execute();
-      $display .= $this->_getTabFooter();
-      return $this->getHeader().$display;
-    }
-
-    // Display list
+    /* Save services in session, will be used by filterServerService when updating list */
     session::set('ServerService', $this->plugins);
-    return $this->renderList();
+    return parent::renderList();
   }
 
   function updateServicesVars ($service)
   {
-    foreach (array("cn","dn") as $var) {
+    foreach (array('cn','dn') as $var) {
       if (isset($this->$var)) {
         $this->plugins[$service]->$var = $this->$var;
       }
     }
   }
 
-
   /*! \brief    Updates the status for a list of services.
    */
-  function updateServiceStatus($action, $target, $all)
+  function updateServiceStatus($action, array $target)
   {
     /* Skip if this is a new server */
-    if ($this->dn == "new") {
-      msg_dialog::display(_("Information"), _("Cannot update service status until it has been saved!"), INFO_DIALOG);
+    if ($this->dn == 'new') {
+      msg_dialog::display(_('Information'), _('Cannot update service status until it has been saved!'), INFO_DIALOG);
       return;
     }
 
     /* Is this an existing action */
     if (!isset(static::$actionStatus[$action])) {
-      msg_dialog::display(_("Error"), _("Unknown action $action"), ERROR_DIALOG);
+      msg_dialog::display(_('Error'), sprintf(_('Unknown action "%s"'), $action), ERROR_DIALOG);
       return;
     }
 
@@ -400,7 +283,6 @@ class ServerService extends management
       $this->updateSingleServiceStatus($action, $service);
     }
   }
-
 
   /*! \brief    Updates the status of a service and
    *             calls an external hook if specified in fusiondirectory.conf
@@ -413,37 +295,38 @@ class ServerService extends management
       $s_daemon = new supportDaemon();
       if ($s_daemon->is_error()) {
         msg_dialog::display(
-          sprintf(_("Could not get execute action %s on service %s."), $action, $service),
+          sprintf(_('Could not get execute action %s on service %s.'), $action, $service),
           msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
         );
       } else {
-        $target = array($this->parent->getBaseObject()->netConfigDNS->macAddress);
+        $target = array($this->parent->getBaseObject()->macAddress);
         if ($action == 'status') {
-          $res = $s_daemon->append_call("Service.is_running", $target, array("args" => array($service)));
-          if ($s_daemon->is_error()) {
-            msg_dialog::display(
-              sprintf(_("Could not get execute action %s on service %s."), $action, $service),
-              msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-            );
-          } else {
-            $this->plugins[$service]->setStatus($res == "yes"?"running":"stopped");
-          }
-        } else {
-          $res = $s_daemon->append_call("Service.manage", $target, array("args" => array($service, $action)));
+          $res = $s_daemon->append_call('Service.is_running', $target, array('args' => array($service)));
 
           if ($s_daemon->is_error()) {
             msg_dialog::display(
-              sprintf(_("Could not get execute action %s on service %s."), $action, $service),
+              sprintf(_('Could not get execute action %s on service %s.'), $action, $service),
+              msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+            );
+          } else {
+            $this->plugins[$service]->setStatus($res == 'yes' ? 'running' : 'stopped');
+          }
+        } else {
+          $res = $s_daemon->append_call('Service.manage', $target, array('args' => array($service, $action)));
+
+          if ($s_daemon->is_error()) {
+            msg_dialog::display(
+              sprintf(_('Could not get execute action %s on service %s.'), $action, $service),
               msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
             );
           } elseif (preg_match('/^done/', $res)) {
             $this->plugins[$service]->setStatus(static::$actionStatus[$action]);
           }
         }
+        return $res;
       }
     }
   }
-
 
   /*! \brief   Returns a list of all used services
    *            CLASSNAME => _($this->plugins[*]->DisplayName);
@@ -462,7 +345,6 @@ class ServerService extends management
     }
     return $ret;
   }
-
 
   /*! \brief    Returns a list of all unused services.
    */
@@ -502,7 +384,6 @@ class ServerService extends management
     return $ret;
   }
 
-
   /*! \brief    No checks here.
    */
   function check()
@@ -510,48 +391,53 @@ class ServerService extends management
     return array();
   }
 
-
   /*! \brief    Keep posted form values in opened dialogs
    */
   function save_object()
   {
-    if ($this->dialog && is_object($this->dialogObject)) {
-      if (method_exists($this->dialogObject, 'save_object')) {
-        $this->dialogObject->save_object();
-      }
-    }
+    // save_object of the dialog is called in management::execute
+    //~ if ($this->dialog && is_object($this->dialogObject)) {
+      //~ if (method_exists($this->dialogObject, 'save_object')) {
+        //~ $this->dialogObject->save_object();
+      //~ }
+    //~ }
   }
-
 
   /*! \brief    Remove all active services
    */
   function remove_from_parent()
   {
+    $errors = array();
     foreach ($this->plugins as $name => $obj) {
       $this->updateServicesVars($name);
       if ($this->plugins[$name]->initially_was_account) {
-        if (isset($this->plugins[$name]->krb_host_key) && $this->plugins[$name]->krb_host_key instanceof krbHostKeys) {
-          $this->plugins[$name]->krb_host_key->remove_from_parent_by_prefix($this->plugins[$name]->krb_service_prefix);
+        $result = $this->plugins[$name]->remove_from_parent();
+        if (!empty($result)) {
+          $errors = array_merge($errors, $result);
         }
-        $this->plugins[$name]->remove_from_parent();
       }
     }
+    return $errors;
   }
-
 
   /*! \brief    Save all active services
    */
   function save()
   {
+    $errors = array();
     foreach ($this->plugins as $name => $obj) {
       $this->updateServicesVars($name);
 
       if ($this->plugins[$name]->is_account) {
-        $this->plugins[$name]->save();
+        $result = $this->plugins[$name]->save();
       } elseif ($this->plugins[$name]->initially_was_account) {
-        $this->plugins[$name]->remove_from_parent();
+        $result = $this->plugins[$name]->remove_from_parent();
+      }
+      if (!empty($result)) {
+        $errors = array_merge($errors, $result);
       }
     }
+    return $errors;
   }
 
   /*! \brief    Prepare active services to be copied.
@@ -565,32 +451,6 @@ class ServerService extends management
     unset($plugin);
   }
 
-
-  /*! \brief    Prepare active services to be copied.
-   */
-  function postCopyHook()
-  {
-    foreach ($this->plugins as &$plugin) {
-      $plugin->postCopyHook();
-    }
-    unset($plugin);
-  }
-
-
-  /*! \brief    Check if there is an active service which prevents
-   *             complete service removal.
-   */
-  function allow_remove()
-  {
-    foreach ($this->plugins as $obj) {
-      $str = $obj->allow_remove();
-      if (!empty($str)) {
-        return $str;
-      }
-    }
-  }
-
-
   /*! \brief    Forward plugin acls
    */
   function set_acl_base($base)
@@ -601,7 +461,6 @@ class ServerService extends management
     }
   }
 
-
   /*! \brief    Forward plugin acls
    */
   function set_acl_category($category)
@@ -610,6 +469,58 @@ class ServerService extends management
     foreach ($this->plugins as $name => $obj) {
       $this->plugins[$name]->set_acl_category($category);
     }
+  }
+
+  function setTemplate ($bool)
+  {
+    foreach ($this->plugins as &$plugin) {
+      $plugin->setTemplate($bool);
+    }
+    unset($plugin);
+  }
+
+  function getRequiredAttributes()
+  {
+    return array();
+  }
+
+  function adapt_from_template($attrs, $skip = array())
+  {
+    foreach ($this->plugins as &$plugin) {
+      $plugin->adapt_from_template($attrs, $skip);
+    }
+    unset($plugin);
+  }
+
+  /*! \brief    Returns the services list.
+   *            Used in the filter class for services.
+   *             class_filterServerService.inc
+   */
+  static function getServiceList()
+  {
+    return session::get('ServerService');
+  }
+
+  /*! \brief    Returns an image for the service status.
+   *            Used in the service list class.
+   */
+  static function filterServiceStatus($a, $b, $c, $d)
+  {
+    $img = '';
+    if (isset($d['0'])) {
+      switch ($d[0]) {
+        case 'stopped':
+          $img = 'geticon.php?context=status&icon=task-stopped&size=16';
+          break;
+        case 'running':
+          $img = 'geticon.php?context=status&icon=task-running&size=16';
+          break;
+      }
+    }
+    if (!empty($img)) {
+      return '<img src="'.$img.'"/>';
+    }
+    return '&nbsp;';
   }
 }
 ?>

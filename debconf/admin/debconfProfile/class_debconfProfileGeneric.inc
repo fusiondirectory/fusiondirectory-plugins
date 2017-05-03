@@ -41,18 +41,18 @@ class DebconfEntriesAttribute extends CompositeAttribute
 
     /* Load template */
     $ldap = $config->get_ldap_link();
-    $ou   = $this->plugin->attributesAccess['ou']->getValue();
     $ldap->cd("ou=templates,".$this->plugin->dn);
     $ldap->search("(objectClass=debConfDbEntry)");
     while ($entry = $ldap->fetch()) {
       if (isset($entry['cn'][0])) {
         $cn     = $entry['cn'][0];
         $desc   = (isset($entry['description'][0])?$entry['description'][0]:'');
-        $type   = (isset($entry['type'][0])?$entry['type'][0]:'');
         $default  = (isset($entry['value'][0])?$entry['default'][0]:'');
         $this->attributes[$cn] = new StringAttribute ($cn, $desc, "debconfentry_$cn", FALSE, $default);
         $this->attributes[$cn]->setInLdap(FALSE);
         $this->attributes[$cn]->setAcl($this->getAcl());
+        //~ 'choices'
+        //~ 'extendedDescription'
       }
     }
     $ldap->cd("ou=questions,".$this->plugin->dn);
@@ -62,8 +62,11 @@ class DebconfEntriesAttribute extends CompositeAttribute
         $cn = $entry['cn'][0];
         if (isset($this->attributes[$cn])) {
           $this->attributes[$cn]->setValue($entry['value'][0]);
-          /* set initialValue */
+          // set initialValue
           $this->attributes[$cn]->loadValue(NULL);
+          //~ 'flags'
+          //~ 'owners'
+          //~ 'template'
         } else {
           msg_dialog::display(_("Error"),  _("There is no template for this profile"), ERROR_DIALOG);
         }
@@ -111,13 +114,13 @@ class DebconfImportAttribute extends FileAttribute
     $matches = array();
     $str = fread($handle, 1024);
     strpos($str, "dn:");
-    /* removing breaklines */
+    // removing breaklines
     $tmp = str_replace ("\n", "", $str);
-    /* removing spaces */
+    // removing spaces
     $tmp = str_replace (" ", "", $tmp);
-    /* searching for dn: containing the template name */
     if (preg_match( "/dn:.*,ou=templates,ou=([^,=]+),".get_ou("debconfRDN").
                     $config->current['BASE']."/",
+                    // searching for dn: containing the template name
                     $tmp, $matches) > 0) {
       $this->plugin->attributesAccess['ou']->setPostValue($matches[1]);
       $this->plugin->attributesAccess['ou']->setValue($matches[1]);
@@ -132,7 +135,7 @@ class DebconfImportAttribute extends FileAttribute
       try {
         $ldap->import_complete_ldif($str, FALSE, FALSE);
         $this->plugin->initially_was_account = TRUE;
-      } catch (Exception $e) {
+      } catch (FusionDirectoryException $e) {
         msg_dialog::display(_('LDAP error'), $e->getMessage(), ERROR_DIALOG);
       }
     } else {
@@ -212,9 +215,12 @@ class debconfProfileGeneric extends simplePlugin
     }
   }
 
-  function ldap_save($cleanup = TRUE)
+  function ldap_save()
   {
-    parent::ldap_save($cleanup);
+    $errors = parent::ldap_save();
+    if (!empty($errors)) {
+      return $errors;
+    }
     if (isset($this->attributesInfo['entries'])) {
       $this->attributesInfo['entries']['attrs']['debconfEntries']->saveInLdap();
     }

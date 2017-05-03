@@ -88,10 +88,6 @@ class ProductPropertyAttribute extends CompositeAttribute
   }
 }
 
-/* TODO
- * Remove from select the properties already set ?
- */
-
 class opsiProductProperties extends simplePlugin
 {
   var $objectclasses = array('opsiProductProperties');
@@ -138,8 +134,10 @@ class opsiProductProperties extends simplePlugin
               ),
               '|', '', ''
             ),
+            // no order
             FALSE,
             array(),
+            // edit button
             TRUE
           )
         )
@@ -207,8 +205,12 @@ class opsiProductProperties extends simplePlugin
         array_map(
           function ($a)
           {
-            if ($a === TRUE) return "true";
-            if ($a === FALSE) return "false";
+            if ($a === TRUE) {
+              return 'true';
+            }
+            if ($a === FALSE) {
+              return 'false';
+            }
             return $a;
           },
           $property['defaultValues']
@@ -239,8 +241,12 @@ class opsiProductProperties extends simplePlugin
         array_map(
           function ($a)
           {
-            if ($a === TRUE) return "true";
-            if ($a === FALSE) return "false";
+            if ($a === TRUE) {
+              return 'true';
+            }
+            if ($a === FALSE) {
+              return 'false';
+            }
             return $a;
           },
           $property['possibleValues']

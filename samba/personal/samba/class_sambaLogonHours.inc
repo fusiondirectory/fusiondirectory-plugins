@@ -77,7 +77,6 @@ class sambaLogonHours
   {
     $week_days = msgPool::weekdays();
 
-    $ui     = get_userinfo();
     $smarty = get_smarty();
     $smarty->assign("acl", preg_match("/w/i", $this->acl));
 
@@ -94,9 +93,6 @@ class sambaLogonHours
 
   function save_object()
   {
-    /* Get userinfo */
-    $ui = get_userinfo();
-
     /* Check if dialog was opened and if there were any changes */
     if (isset($_POST['sambaLogonHoursPosted'])) {
       foreach ($this->Matrix as $day_key => $days) {
@@ -115,8 +111,8 @@ class sambaLogonHours
   {
     /* Convert Matrix to Hex */
     $slh = "";
-    foreach ($this->Matrix as $day_key => $days) {
-      foreach ($days as $hour_key => $hour) {
+    foreach ($this->Matrix as $days) {
+      foreach ($days as $hour) {
         $slh .= $hour;
       }
     }
@@ -165,7 +161,7 @@ class SambaLogonHoursDialog
     $this->sambaAttribute = $sambaAttribute;
     $this->dialog         = new sambaLogonHours(
       $sambaAttribute->getValue(),
-      $simplePlugin->getacl('sambaLogonHours')
+      $simplePlugin->aclGetPermissions('sambaLogonHours')
     );
   }
 

@@ -22,10 +22,6 @@ class repositoryManagement extends simpleManagement
 {
   protected $objectTypes  = array('buildRepository', 'repoDistribution', 'repoSection');
 
-  protected $departmentBrowser      = TRUE;
-  protected $departmentRootVisible  = TRUE;
-  protected $baseMode               = TRUE;
-
   public static function plInfo()
   {
     return array(
@@ -38,7 +34,7 @@ class repositoryManagement extends simpleManagement
         'description'  => _('Repository'),
         'objectClass'  => array('fdBuildRepository', 'fdBuildRepositoryDistribution', 'fdBuildRepositorySection')
       )),
-      'plManages'     => array('repoSection', 'repoDistribution', 'buildRepository'),
+      'plManages'     => array('buildRepository', 'repoDistribution', 'repoSection'),
 
       'plProvidedAcls' => array()
     );

@@ -87,15 +87,12 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
 
   function fillLdapValue (&$attrs)
   {
-    /* Remove crap made by plugin */
-    unset ($attrs[$this->getLdapName()]);
     if ($this->plugin->is_template) {
       $attrs[$this->getLdapName()] = array_map(function ($v) {return implode('|', $v);}, $this->value);
     }
   }
 
   /* Special LDAP treatment that this attribute does after plugin ldap save */
-  /* FIXME - We should lock the zone object and check if we don’t erase changes */
   function postLdapSave ($ldap)
   {
     if ($this->plugin->is_template) {
@@ -122,7 +119,7 @@ class dnsHost extends simplePlugin
       'plDescription'   => _('Edit the DNS zones of a system'),
       'plIcon'          => 'geticon.php?context=applications&icon=dns&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=dns&size=16',
-      'plObjectType'    => array('server','workstation','terminal','printer','component','winstation','phone','mobilePhone'),
+      'plObjectType'    => array('server','workstation','terminal','printer','component','phone','mobilePhone'),
       'plPriority'      => 5,
       'plForeignKeys'  => array(
         'fdDNSZoneDn' => 'dnsZone'
@@ -193,11 +190,13 @@ class dnsHost extends simplePlugin
     $ldap     = $config->get_ldap_link();
     $dnsZones = $this->fdDNSZoneDn;
     /* Removes references to old attributes */
-    foreach (array_keys($this->attributesInfo['records']['attrs']) as $oldattr) {
-      unset($this->attributesAccess[$oldattr]);
-    }
-    foreach (array_keys($this->attributesInfo['soa']['attrs']) as $oldattr) {
-      unset($this->attributesAccess[$oldattr]);
+    if (isset($this->attributesInfo['soa'])) {
+      foreach (array_keys($this->attributesInfo['records']['attrs']) as $oldattr) {
+        $this->removeAttribute('records', $oldattr);
+      }
+      foreach (array_keys($this->attributesInfo['soa']['attrs']) as $oldattr) {
+        $this->removeAttribute('soa', $oldattr);
+      }
     }
     /* Remove sections or fill them */
     if (empty($dnsZones)) {
@@ -230,14 +229,14 @@ class dnsHost extends simplePlugin
           continue;
         }
         $attrId = 'zoneRecords'.$zoneid;
-        $this->attributesInfo['records']['attrs'][$attrId] = new DnsRecordsFilteredAttribute(
-          $name, sprintf(_('The DNS records for zone "%s"'), $name),
-          $attrId, $dn,
-          array(), 'dnsRecords'
+        $this->addAttribute(
+          'records',
+          new DnsRecordsFilteredAttribute(
+            $name, sprintf(_('The DNS records for zone "%s"'), $name),
+            $attrId, $dn,
+            array(), 'dnsRecords'
+          )
         );
-        $this->attributesAccess[$attrId] =& $this->attributesInfo['records']['attrs'][$attrId];
-        $this->attributesAccess[$attrId]->setParent($this);
-        unset($this->$attrId);
 
         /* Fetch SOA record */
         $ldap->cat($dn);
@@ -251,19 +250,18 @@ class dnsHost extends simplePlugin
             }
           }
           $attrId = 'soaRecord'.$zoneid;
-          $this->attributesInfo['soa']['attrs'][$attrId] = new DisplayAttribute(
-            $name, sprintf(_('The primary server for zone "%s"'), $name),
-            $attrId, FALSE,
-            $fqdn
+          $this->addAttribute(
+            'soa',
+            new DisplayAttribute(
+              $name, sprintf(_('The primary server for zone "%s"'), $name),
+              $attrId, FALSE,
+              $fqdn
+            )
           );
           $this->attributesInfo['soa']['attrs'][$attrId]->setAllowHTML(TRUE);
-          $this->attributesAccess[$attrId] =& $this->attributesInfo['soa']['attrs'][$attrId];
-          $this->attributesAccess[$attrId]->setParent($this);
-          unset($this->$attrId);
         }
       }
     }
-    $this->updateAttributesValues();
   }
 
   function load()
@@ -277,10 +275,9 @@ class dnsHost extends simplePlugin
   function execute()
   {
     $this->load();
-    $smarty     = get_smarty();
-    $ui         = get_userinfo();
-    $skip_write = $this->read_only;
-    $acl        = $ui->get_permissions($this->acl_base, 'dnsZone/dnsZone', 'dnsRecords', $this->read_only);
+    $smarty = get_smarty();
+    $ui     = get_userinfo();
+    $acl    = $ui->get_permissions($this->acl_base, 'dnsZone/dnsZone', 'dnsRecords', $this->read_only);
     $smarty->assign('dnsRecordsACL', $acl);
     return parent::execute();
   }
@@ -300,7 +297,7 @@ class dnsHost extends simplePlugin
               );
             } else {
               $target = array($this->parent->getBaseObject()->macAddress);
-              $res    = $s_daemon->append_call('Ldap2Zone.start', $target, array('args' => array($zone)));
+              $s_daemon->append_call('Ldap2Zone.start', $target, array('args' => array($zone)));
               if ($s_daemon->is_error()) {
                 msg_dialog::display(_('Could not run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG);
               } else {
@@ -318,7 +315,7 @@ class dnsHost extends simplePlugin
   function save()
   {
     global $config;
-    parent::save();
+    $errors = parent::save();
     foreach ($this->attributesInfo['records']['attrs'] as &$attr) {
       if ($attr->hasChanged()) {
         $attr->postLdapSave($config->get_ldap_link());
@@ -385,6 +382,8 @@ class dnsHost extends simplePlugin
         msg_dialog::display(_('DNS update'), $message, INFO_DIALOG);
       }
     }
+
+    return $errors;
   }
 
   function adapt_from_template($attrs, $skip = array())
@@ -397,5 +396,19 @@ class dnsHost extends simplePlugin
       }
       unset($attr);
     }
+  }
+
+  /* Record example: array('host', 'aRecord', '192.168.1.1', '')
+   * Fields are relativeDomainName, record type, record content, reverse zone (for a/aaaa) */
+  function addRecord($zoneDn, array $record)
+  {
+    if (isset($this->zonesCache[$zoneDn])) {
+      $name   = $this->zonesCache[$zoneDn];
+      $zoneid = preg_replace('/[\/\-,.#:; =]/', '_', $zoneDn);
+    } else {
+      return FALSE;
+    }
+    $attrId = 'zoneRecords'.$zoneid;
+    $this->attributesAccess[$attrId]->addValue($record);
   }
 }

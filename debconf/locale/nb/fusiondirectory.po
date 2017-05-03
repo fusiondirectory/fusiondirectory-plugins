@@ -1,45 +1,46 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-01-22 16:06+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Norwegian Bokmål (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/nb/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Norwegian Bokmål (https://www.transifex.com/fusiondirectory/teams/12202/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nb\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:68
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:82
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:71
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:85
 msgid "Error"
 msgstr "Feil"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:68
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:71
 msgid "There is no template for this profile"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:83
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:86
 #, php-format
 msgid "Can't find entry %s in LDAP for profile %s"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:136
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:139
 msgid "LDAP error"
 msgstr "LDAP-feil"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:139
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:142
 msgid "LDIF error"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:149
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:152
 #, php-format
 msgid ""
 "In order to import a debconf file, please run the following command : "
@@ -48,38 +49,38 @@ msgid ""
 "the desired name for the template.<br/>"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:165
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:169
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:168
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:172
 msgid "Debconf profile"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:166
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:169
 msgid "Debconf profile information"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:184
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:187
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:190
 #: admin/debconfProfile/debconfProfile-filter.tpl.c:5
 msgid "Name"
 msgstr "Navn"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:186
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
 msgid "Import a debconf file"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:187
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:190
 msgid "Name of this debconf template"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:191
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:194
 msgid "Entries"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:193
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:196
 msgid "Debconf template answers"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:208
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:211
 msgid "Import"
 msgstr ""
 

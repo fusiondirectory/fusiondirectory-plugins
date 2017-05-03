@@ -1,16 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-12-31 10:30+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/nl/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Selina Oudermans <selina.oudermans@digipolis.be>, 2017\n"
+"Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,6 +31,7 @@ msgstr ""
 #: personal/samba/class_sambaAccount.inc:158
 #: config/samba/class_sambaPluginConfig.inc:28
 #: admin/groups/samba/class_sambaGroup.inc:29
+#: admin/systems/samba/class_sambaSystemTab.inc:30
 msgid "Samba"
 msgstr "Samba"
 
@@ -40,7 +42,7 @@ msgstr "Samba Instellingen"
 
 #: personal/samba/class_sambaAccount.inc:183
 msgid "Samba profile"
-msgstr ""
+msgstr "Samba profiel"
 
 #: personal/samba/class_sambaAccount.inc:189
 #: personal/samba/class_sambaAccount.inc:222
@@ -65,12 +67,12 @@ msgstr ""
 #: personal/samba/class_sambaAccount.inc:199
 #: admin/groups/samba/class_sambaGroup.inc:42
 #: admin/groups/samba/class_sambaGroup.inc:45
-#: admin/systems/samba/class_winstationGeneric.inc:85
+#: admin/systems/samba/class_sambaSystemTab.inc:53
 msgid "Domain"
 msgstr "Domein"
 
 #: personal/samba/class_sambaAccount.inc:199
-#: admin/systems/samba/class_winstationGeneric.inc:85
+#: admin/systems/samba/class_sambaSystemTab.inc:53
 msgid "Samba domain name"
 msgstr "Sambe domeinnaam"
 
@@ -80,7 +82,7 @@ msgstr "Inlogscript"
 
 #: personal/samba/class_sambaAccount.inc:203
 msgid "Login script path"
-msgstr ""
+msgstr "Pad van het login script"
 
 #: personal/samba/class_sambaAccount.inc:207
 #: personal/samba/class_sambaAccount.inc:232
@@ -126,7 +128,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:249
 msgid "Connection timeout"
-msgstr ""
+msgstr "Verbinding verbroken"
 
 #: personal/samba/class_sambaAccount.inc:249
 msgid "Timeout when connecting to terminal server"
@@ -162,7 +164,7 @@ msgstr "Verbindt client printers bij inloggen"
 
 #: personal/samba/class_sambaAccount.inc:268
 msgid "Printers to connect after login"
-msgstr ""
+msgstr "Printers die connecteren na het inloggen"
 
 #: personal/samba/class_sambaAccount.inc:272
 msgid "Default to main client printer"
@@ -170,7 +172,7 @@ msgstr "Standaard printer als client printer"
 
 #: personal/samba/class_sambaAccount.inc:272
 msgid "Default printer for this client"
-msgstr ""
+msgstr "Standaard printer voor de client"
 
 #: personal/samba/class_sambaAccount.inc:276
 msgid "Shadowing"
@@ -238,11 +240,11 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:313
 msgid "The password never expire"
-msgstr ""
+msgstr "Het wachtwoord vervalt nooit"
 
 #: personal/samba/class_sambaAccount.inc:313
 msgid "The password will never expire"
-msgstr ""
+msgstr "Het wachtwoord zal nooit vervallen"
 
 #: personal/samba/class_sambaAccount.inc:318
 msgid "Login from windows client requires no password"
@@ -250,7 +252,7 @@ msgstr "Inloggen op Windows werkstation zonder wachtwoord toestaan"
 
 #: personal/samba/class_sambaAccount.inc:318
 msgid "Login from a client without a password"
-msgstr ""
+msgstr "Inloggen vanaf een client zonder wachtwoord"
 
 #: personal/samba/class_sambaAccount.inc:323
 msgid "Lock samba account"
@@ -266,7 +268,7 @@ msgstr "Kan paswoord niet wijzigen"
 
 #: personal/samba/class_sambaAccount.inc:328
 msgid "Not allowed to change password"
-msgstr ""
+msgstr "Niet mogelijk om het wachtwoord te wijzigen"
 
 #: personal/samba/class_sambaAccount.inc:332
 msgid "Account expiration"
@@ -274,7 +276,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:332
 msgid "When does the account expire"
-msgstr ""
+msgstr "Wanneer zal dit account vervallen"
 
 #: personal/samba/class_sambaAccount.inc:340
 msgid "Samba logon times"
@@ -282,7 +284,7 @@ msgstr "Samba inlog tijdstippen"
 
 #: personal/samba/class_sambaAccount.inc:340
 msgid "What is the allowed time to connect"
-msgstr ""
+msgstr "Wat is de toegelaten tijd om te verbinden"
 
 #: personal/samba/class_sambaAccount.inc:341
 msgid "Edit settings"
@@ -300,103 +302,99 @@ msgstr "Sta alleen verbindingen vanaf deze werkstations toe"
 msgid "Only allow this user to connect to this list of hosts"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:480
+#: personal/samba/class_sambaAccount.inc:478
 msgid "Home drive"
 msgstr "Home drive"
 
-#: personal/samba/class_sambaAccount.inc:483
+#: personal/samba/class_sambaAccount.inc:481
 msgid "Home path"
 msgstr "Home path"
 
-#: personal/samba/class_sambaAccount.inc:488
+#: personal/samba/class_sambaAccount.inc:486
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr "De windows gebruikers manager laat maximum 8 clients toe!"
 
-#: personal/samba/class_sambaAccount.inc:505
-#: personal/samba/class_sambaAccount.inc:531
-#: personal/samba/class_sambaAccount.inc:552
-#: admin/groups/samba/class_sambaGroup.inc:135
+#: personal/samba/class_sambaAccount.inc:503
+#: personal/samba/class_sambaAccount.inc:529
+#: personal/samba/class_sambaAccount.inc:550
+#: admin/groups/samba/class_sambaGroup.inc:133
 msgid "Warning"
 msgstr "Waarschuwing"
 
-#: personal/samba/class_sambaAccount.inc:505
-#: admin/groups/samba/class_sambaGroup.inc:135
+#: personal/samba/class_sambaAccount.inc:503
+#: admin/groups/samba/class_sambaGroup.inc:133
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr "Er is een ongedefinieerd SambaSID geselecteerd. Repareer dit probleem a.u.b. handmatig!"
+msgstr ""
+"Er is een ongedefinieerd SambaSID geselecteerd. Repareer dit probleem a.u.b."
+" handmatig!"
 
-#: personal/samba/class_sambaAccount.inc:532
+#: personal/samba/class_sambaAccount.inc:530
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
-msgstr "Kan primaire groep niet in een samba groep omzetten: group kan niet geidentificeerd worden"
+msgstr ""
+"Kan primaire groep niet in een samba groep omzetten: group kan niet "
+"geidentificeerd worden"
 
-#: personal/samba/class_sambaAccount.inc:553
+#: personal/samba/class_sambaAccount.inc:551
 msgid ""
 "Cannot convert primary group to samba group: group samba tab is disabled!"
 msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:29
 msgid "Samba plugin configuration"
-msgstr ""
+msgstr "Samba plugin configuratie"
 
 #: config/samba/class_sambaPluginConfig.inc:44
-msgid "Samba machine account RDN"
-msgstr ""
-
-#: config/samba/class_sambaPluginConfig.inc:44
-msgid "The location where FusionDirectory looks for new samba workstations."
-msgstr ""
-
-#: config/samba/class_sambaPluginConfig.inc:49
 msgid "Samba ID mapping"
 msgstr ""
 
-#: config/samba/class_sambaPluginConfig.inc:50
+#: config/samba/class_sambaPluginConfig.inc:45
 msgid ""
 "Maintain sambaIdmapEntry objects. Depending on your setup this can "
 "drastically improve the windows login performance."
 msgstr ""
 
-#: config/samba/class_sambaPluginConfig.inc:54
+#: config/samba/class_sambaPluginConfig.inc:49
 msgid "Samba SID"
-msgstr ""
+msgstr "Samba SID"
 
-#: config/samba/class_sambaPluginConfig.inc:55
+#: config/samba/class_sambaPluginConfig.inc:50
 msgid ""
 "A samba SID if not available inside of the LDAP though samba schema. You can"
 " retrieve the current sid by net getlocalsid."
 msgstr ""
 
-#: config/samba/class_sambaPluginConfig.inc:60
+#: config/samba/class_sambaPluginConfig.inc:55
 msgid "Samba rid base"
 msgstr ""
 
-#: config/samba/class_sambaPluginConfig.inc:61
+#: config/samba/class_sambaPluginConfig.inc:56
 msgid ""
 "The base id to add to ordinary sid calculations - if not available inside of"
 " the LDAP though samba schema."
 msgstr ""
 
-#: config/samba/class_sambaPluginConfig.inc:66
+#: config/samba/class_sambaPluginConfig.inc:61
 msgid "Expiration date synchronisaton"
 msgstr ""
 
-#: config/samba/class_sambaPluginConfig.inc:66
+#: config/samba/class_sambaPluginConfig.inc:61
 msgid "Synchronisaton the expiration date with the POSIX one?"
 msgstr ""
 
-#: config/samba/class_sambaPluginConfig.inc:72
+#: config/samba/class_sambaPluginConfig.inc:67
 msgid "Generate sambaLMPassword"
 msgstr ""
 
-#: config/samba/class_sambaPluginConfig.inc:72
+#: config/samba/class_sambaPluginConfig.inc:67
 msgid "Needed to be compliant with Windows <= 98 or Samba < 3.2"
 msgstr ""
 
-#: config/samba/class_sambaPluginConfig.inc:76
+#: config/samba/class_sambaPluginConfig.inc:71
 msgid "Activate primary group warning"
-msgstr ""
+msgstr "Activeer waarschuwingen voor de primaire groep"
 
-#: config/samba/class_sambaPluginConfig.inc:76
+#: config/samba/class_sambaPluginConfig.inc:71
 msgid ""
 "Issue a warning if POSIX primary group cannot be converted to Samba primary "
 "group when activating the Samba tab of a user"
@@ -404,19 +402,19 @@ msgstr ""
 
 #: admin/groups/samba/class_sambaGroup.inc:30
 msgid "Samba group settings"
-msgstr ""
+msgstr "Samba groep instellingen"
 
 #: admin/groups/samba/class_sambaGroup.inc:45
 msgid "Samba domain"
-msgstr ""
+msgstr "Samba domein"
 
 #: admin/groups/samba/class_sambaGroup.inc:49
 msgid "Samba information"
-msgstr ""
+msgstr "Samba informatie"
 
 #: admin/groups/samba/class_sambaGroup.inc:56
 msgid "Group type"
-msgstr ""
+msgstr "Groep type"
 
 #: admin/groups/samba/class_sambaGroup.inc:56
 msgid "Samba group type"
@@ -455,25 +453,25 @@ msgstr "Kan de goep SID niet vinden in je configuratie!"
 msgid "Special group (%d)"
 msgstr "Speciale groep (%d)"
 
-#: admin/samba/class_sambaDomainManagement.inc:33
-msgid "Samba domains"
-msgstr ""
-
 #: admin/samba/class_sambaDomainManagement.inc:34
+msgid "Samba domains"
+msgstr "Samba domeinen"
+
+#: admin/samba/class_sambaDomainManagement.inc:35
 msgid "Samba domain management"
 msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:30 admin/samba/class_sambaDomain.inc:31
 #: admin/samba/class_sambaDomain.inc:34
 msgid "Samba Domain"
-msgstr ""
+msgstr "Samba domein"
 
 #: admin/samba/class_sambaDomain.inc:35
 msgid "Samba domain settings"
-msgstr ""
+msgstr "Samba domein instellingen"
 
 #: admin/samba/class_sambaDomain.inc:51
-#: admin/systems/samba/class_winstationGeneric.inc:61
+#: admin/systems/samba/class_sambaSystemTab.inc:44
 msgid "Properties"
 msgstr "Eigenschappen"
 
@@ -483,7 +481,7 @@ msgstr "Domein naam"
 
 #: admin/samba/class_sambaDomain.inc:54
 msgid "Name of this domain"
-msgstr ""
+msgstr "Naam van dit domein"
 
 #: admin/samba/class_sambaDomain.inc:58
 msgid "SID"
@@ -491,7 +489,7 @@ msgstr "SID"
 
 #: admin/samba/class_sambaDomain.inc:58
 msgid "SID of this domain"
-msgstr ""
+msgstr "SID van dit domein"
 
 #: admin/samba/class_sambaDomain.inc:62
 msgid "Rid base"
@@ -522,7 +520,7 @@ msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:78
 msgid "Next RID"
-msgstr ""
+msgstr "Volgend RID"
 
 #: admin/samba/class_sambaDomain.inc:79
 msgid "Next NT rid to give out for anything"
@@ -530,7 +528,7 @@ msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:83
 msgid "Next group RID"
-msgstr ""
+msgstr "Volgende RID group"
 
 #: admin/samba/class_sambaDomain.inc:84
 msgid "Next NT rid to give out for groups"
@@ -546,11 +544,11 @@ msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:93
 msgid "Minimum password length"
-msgstr ""
+msgstr "Minimum lengte van het wachtwoord"
 
 #: admin/samba/class_sambaDomain.inc:94
 msgid "Minimal password length (default: 5)"
-msgstr ""
+msgstr "Minimum lengte van het wachtwoord (standaard: 5)"
 
 #: admin/samba/class_sambaDomain.inc:98
 msgid "Password history length"
@@ -562,7 +560,7 @@ msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:103
 msgid "Logon to change password"
-msgstr ""
+msgstr "Aanmelden om het wachtwoord te veranderen"
 
 #: admin/samba/class_sambaDomain.inc:104
 msgid "Force Users to logon for password change (default: 0 => off, 2 => on)"
@@ -594,7 +592,7 @@ msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:123
 msgid "Force logoff"
-msgstr ""
+msgstr "Afmelden forceren"
 
 #: admin/samba/class_sambaDomain.inc:124
 msgid "Disconnect Users outside logon hours (default: -1 => off, 0 => on)"
@@ -608,47 +606,9 @@ msgstr "Weiger machine paswoord wijziging"
 msgid "Allow Machine Password changes (default: 0 => off)"
 msgstr ""
 
-#: admin/systems/samba/class_winstationGeneric.inc:37
-msgid "Winstation"
-msgstr "Windows werkstation"
-
-#: admin/systems/samba/class_winstationGeneric.inc:38
+#: admin/systems/samba/class_sambaSystemTab.inc:31
 msgid "Windows workstation information"
-msgstr ""
-
-#: admin/systems/samba/class_winstationGeneric.inc:42
-#: admin/systems/samba/class_winstationGeneric.inc:43
-msgid "Windows workstation"
-msgstr "Windows werkstation"
-
-#: admin/systems/samba/class_winstationGeneric.inc:70
-#: admin/systems/samba/class_winstationGeneric.inc:74
-msgid "The name of the winstation"
-msgstr ""
-
-#: admin/systems/samba/class_winstationGeneric.inc:74
-msgid "Name"
-msgstr "Naam"
-
-#: admin/systems/samba/class_winstationGeneric.inc:81
-msgid "Description"
-msgstr "Omschrijving"
-
-#: admin/systems/samba/class_winstationGeneric.inc:81
-msgid "A short description of the winstation"
-msgstr ""
-
-#: admin/systems/samba/class_winstationGeneric.inc:89
-msgid "Location"
-msgstr "Plaats"
-
-#: admin/systems/samba/class_winstationGeneric.inc:89
-msgid "The location of the winstation"
-msgstr ""
-
-#: admin/systems/samba/class_winstationGeneric.inc:96
-msgid "Network settings"
-msgstr ""
+msgstr "Windows workstation informatie"
 
 #: admin/systems/samba/class_argonautEventSambaShares.inc:27
 msgid "Update Samba Shares"

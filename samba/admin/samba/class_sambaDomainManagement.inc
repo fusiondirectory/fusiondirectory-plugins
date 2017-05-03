@@ -20,6 +20,7 @@
 
 class sambaDomainManagement extends simpleManagement
 {
+  // Tab definition
   protected $objectTypes  = array('sambaDomain');
 
   protected $departmentBrowser      = FALSE;

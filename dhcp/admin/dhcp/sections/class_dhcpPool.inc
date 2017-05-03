@@ -22,6 +22,16 @@ class dhcpPool extends dhcpPlugin
 {
   public $objectclasses = array('dhcpPool');
 
+  public static function plInfo()
+  {
+    return array(
+      'plShortName'     => _('DHCP pool'),
+      'plDescription'   => _('DHCP pool'),
+      'plCategory'      => array('dhcpConfiguration'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
+
   static function getAttributesInfo ()
   {
     $attributesInfo = parent::getAttributesInfo();
@@ -30,8 +40,10 @@ class dhcpPool extends dhcpPlugin
       'attrs' => array(
         new SetAttribute (
           new StringAttribute (
-            _('Range'), _('The starting & ending IP Addresses in the range (inclusive), separated by a hyphen; if the range only contains one address, then just the address can be specified with no hyphen. Each range is defined as a separate value.'),
-            'dhcpRange', TRUE
+            _('Range'), _('The starting & ending IP Addresses in the range (inclusive), separated by a space; if the range only contains one address, then just the address can be specified. Each range is defined as a separate value.'),
+            'dhcpRange', TRUE,
+            '', '',
+            '/^[0-9\.:]+(\s[0-9\.:]+)?$/'
           )
         ),
         new SetAttribute (

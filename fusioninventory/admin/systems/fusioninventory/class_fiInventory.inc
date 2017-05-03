@@ -23,6 +23,8 @@ class fiInventory extends simplePlugin
   var $objectclasses  = array();
   var $displayHeader  = FALSE;
 
+  protected $filter = '';
+
   static $sections = array (
     'antivirus'       => 'software',
     'batteries'       => 'hardware',
@@ -87,6 +89,15 @@ class fiInventory extends simplePlugin
   static function getAttributesInfo ()
   {
     return array(
+      'match' => array(
+        'name'      => _('Matching system'),
+        'class'     => array('fullwidth'),
+        'attrs'     => array(
+          new DisplayAttribute(_('System'), _('System entry matching this inventory'), 'matching'),
+          new HiddenArrayAttribute('macAddress'),
+          new HiddenArrayAttribute('ipHostNumber'),
+        ),
+      ),
       'hardware' => array(
         'name'      => _('Hardware'),
         'class'     => array('fullwidth'),
@@ -122,6 +133,9 @@ class fiInventory extends simplePlugin
       $this->mainTab        = TRUE;
       $this->objectclasses  = array('fdInventoryContent');
       $attributesInfo['hardware']['attrs'][] = new HiddenAttribute('cn');
+      $attributesInfo['match']['attrs'][0]->setAllowHTML(TRUE);
+    } else {
+      unset($attributesInfo['match']);
     }
 
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
@@ -160,52 +174,64 @@ class fiInventory extends simplePlugin
 
     if ($this->mainTab) {
       $dn = $this->dn;
+      $macAddress   = $this->attrs['macAddress'];
+      $ipHostNumber = $this->attrs['ipHostNumber'];
+      unset($macAddress['count']);
+      unset($ipHostNumber['count']);
     } else {
       if (!isset($this->parent)) {
         return array();
       }
-      $matching     = $config->get_cfg_value('inventoryMatching', 'mac');
-      $macAddress   = $this->parent->getBaseObject()->netConfigDNS->macAddress;
-      $ipHostNumber = $this->parent->getBaseObject()->netConfigDNS->ipHostNumber;
+      $macAddress   = $this->parent->getBaseObject()->macAddress;
       if ($macAddress != '') {
-        $macfilter = "(macAddress=$macAddress)";
-      } else {
-        $macfilter = NULL;
-        if (($matching == 'mac') || ($matching == 'both')) {
-          return array();
-        }
+        $macAddress = array($macAddress);
       }
-      if (!empty($ipHostNumber)) {
-        $ipfilter = '(|(ipHostNumber='.implode(')(ipHostNumber=', $ipHostNumber).'))';
-      } else {
-        $ipfilter = NULL;
-        if (($matching == 'ip') || ($matching == 'both') || ($macfilter === NULL)) {
-          return array();
-        }
+      $ipHostNumber = $this->parent->getBaseObject()->ipHostNumber;
+    }
+    $matching     = $config->get_cfg_value('inventoryMatching', 'mac');
+    if (!empty($macAddress)) {
+      $macfilter = '(|(macAddress='.implode(')(macAddress=', $macAddress).'))';
+    } else {
+      $macfilter = NULL;
+      if (($matching == 'mac') || ($matching == 'both')) {
+        return array();
       }
-      switch ($matching) {
-        case 'ip':
-          $filter = $ipfilter;
-          break;
-        case 'mac':
-          $filter = $macfilter;
-          break;
-        case 'both':
-          $filter = "(&$macfilter$ipfilter)";
-          break;
-        case 'either':
-          $filter = "(|$macfilter$ipfilter)";
-          break;
+    }
+    if (!empty($ipHostNumber)) {
+      $ipfilter = '(|(ipHostNumber='.implode(')(ipHostNumber=', $ipHostNumber).'))';
+    } else {
+      $ipfilter = NULL;
+      if (($matching == 'ip') || ($matching == 'both') || ($macfilter === NULL)) {
+        return array();
       }
+    }
+    switch ($matching) {
+      case 'ip':
+        $this->filter = $ipfilter;
+        break;
+      case 'mac':
+        $this->filter = $macfilter;
+        break;
+      case 'both':
+        $this->filter = "(&$macfilter$ipfilter)";
+        break;
+      case 'either':
+        $this->filter = "(|$macfilter$ipfilter)";
+        break;
+    }
+    if ($this->mainTab) {
+      $this->updateMatching();
+    } else {
       $ldap->cd(get_ou('inventoryRDN').$config->current['BASE']);
-      $ldap->search('(&(objectClass=fdInventoryContent)'.$filter.')');
+      $ldap->search('(&(objectClass=fdInventoryContent)'.$this->filter.')');
       if ($attrs = $ldap->fetch()) {
         $dn = $attrs['dn'];
       } else {
         return array();
       }
     }
-    $ldap->ls('(objectClass=*)', $dn);
+    $ldap->cd($dn);
+    $ldap->search('(objectClass=*)', array('*'), 'one');
     $infos = array();
     while ($attrs = $ldap->fetch()) {
       $object = array();
@@ -250,6 +276,106 @@ class fiInventory extends simplePlugin
     }
 
     return $infos;
+  }
+
+  function updateMatching()
+  {
+    global $config;
+    $systemTypes = array('server','workstation','terminal','printer','component','phone','mobilePhone');
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search($this->filter);
+    $foundType  = FALSE;
+    $fallbackDn = NULL;
+    while (!$foundType && ($attrs = $ldap->fetch())) {
+      if ($attrs['dn'] == $this->dn) {
+        continue;
+      }
+      foreach ($systemTypes as $type) {
+        if (objects::isOfType($attrs, $type)) {
+          $foundType = $type;
+          break;
+        }
+      }
+      if ($foundType) {
+        $this->matching = objects::link($attrs['dn'], $foundType);
+      } else {
+        $fallbackDn = $attrs['dn'];
+      }
+    }
+    if ($foundType) {
+      return;
+    }
+    if ($fallbackDn !== NULL) {
+      $this->matching = $attrs['dn'];
+    } else {
+      $templates = array();
+      foreach ($systemTypes as $type) {
+        $tmp = objects::getTemplates($type);
+        foreach ($tmp as $tdn => $tlabel) {
+          $templates[$type.':'.$tdn] = $tlabel;
+        }
+      }
+      $this->attributesAccess['matching'] = new CompositeAttribute(
+        _('Create a system based on this inventory'), 'matching',
+        array(
+          new SelectAttribute(
+            '', 'template',
+            'matching_template', TRUE,
+            array_keys($templates), '',
+            array_values($templates)
+          ),
+          new SelectAttribute(
+            '', 'mac address',
+            'matching_macaddress', TRUE,
+            $this->macAddress
+          ),
+          new ButtonAttribute(
+            '', 'button',
+            'matching_button', _('Create'),
+            'createSystem'
+          )
+        ),
+        FALSE, FALSE,
+        '', _('No matching system')
+      );
+      if (empty($templates)) {
+        $this->attributesAccess['matching']->setDisabled(TRUE);
+      }
+      $this->attributesAccess['matching']->setParent($this);
+      $this->attributesAccess['matching']->setLinearRendering(TRUE);
+    }
+  }
+
+  function createSystem()
+  {
+    list ($type, $dn) = explode(':', $_POST['matching_template'], 2);
+    $infos = objects::infos($type);
+
+    $values = array(
+      $infos['mainTab'] => array(
+        'cn'            => $this->hardware_infos['hardware']['objects']['hardware0']['NAME'],
+        'ipHostNumber'  => $this->ipHostNumber,
+        'macAddress'    => $_POST['matching_macaddress'],
+      )
+    );
+
+    $template = new template($type, $dn);
+    $template->reset();
+    $template->deserialize($values);
+    $tabObject = $template->apply();
+    $msgs = $tabObject->save();
+    if (count($msgs)) {
+      msg_dialog::displayChecks($msgs);
+    } else {
+      $this->attributesAccess['matching'] = new DisplayAttribute(
+        _('System'), _('System entry matching this inventory'),
+        'matching'
+      );
+      $this->attributesAccess['matching']->setParent($this);
+      $this->attributesAccess['matching']->setAllowHTML(TRUE);
+      $this->updateMatching();
+    }
   }
 }
 ?>

@@ -1,19 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
-# pkst <pkst@eellak.gr>, 2015
-# Manolis Saldaris <Ustramator@gmail.com>, 2015
-# pkst <pkst@eellak.gr>, 2015
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-110\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-03-30 18:10+0200\n"
-"PO-Revision-Date: 2016-01-22 16:05+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-110/language/el_GR/)\n"
+"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -45,41 +43,41 @@ msgstr "Κλάδος στον οποίο θα αποθηκεύονται οι su
 msgid "Sudo management"
 msgstr "Διαχείριση Sudo"
 
-#: admin/sudo/class_sudoOption.inc:82
+#: admin/sudo/class_sudoOption.inc:77
 msgid "Unknown option"
 msgstr "Άγνωστη επιλογή"
 
-#: admin/sudo/class_sudoOption.inc:83
+#: admin/sudo/class_sudoOption.inc:78
 #, php-format
 msgid "The sudo option '%s' is invalid!"
 msgstr "Η επιλογή sudo  '%s' είναι άκυρη!"
 
-#: admin/sudo/class_sudoOption.inc:278
+#: admin/sudo/class_sudoOption.inc:273
 #, php-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: admin/sudo/class_sudoOption.inc:480
+#: admin/sudo/class_sudoOption.inc:476
 msgid "Available options"
 msgstr "Διαθέσιμες επιλογές"
 
-#: admin/sudo/class_sudoOption.inc:483
+#: admin/sudo/class_sudoOption.inc:479
 msgid "Option"
 msgstr "Επιλογή"
 
-#: admin/sudo/class_sudoOption.inc:483
+#: admin/sudo/class_sudoOption.inc:479
 msgid "Add a new sudo option"
 msgstr "Προσθήκη νέας επιλογής sudo"
 
-#: admin/sudo/class_sudoOption.inc:488 admin/sudo/class_sudoOption.inc:490
+#: admin/sudo/class_sudoOption.inc:484 admin/sudo/class_sudoOption.inc:486
 msgid "Used sudo role options"
 msgstr "Χρησιμοποιημένες επιλογές ρόλου sudo"
 
-#: admin/sudo/class_sudoOption.inc:557
+#: admin/sudo/class_sudoOption.inc:553
 msgid "Options"
-msgstr "Επιλογές"
+msgstr " Επιλογές"
 
-#: admin/sudo/class_sudoOption.inc:558
+#: admin/sudo/class_sudoOption.inc:554
 msgid "Sudo options"
 msgstr "Επιλογές Sudo"
 
@@ -87,73 +85,77 @@ msgstr "Επιλογές Sudo"
 msgid "Sudo role"
 msgstr "Ρόλος Sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:143
+#: admin/sudo/class_sudoGeneric.inc:154
 msgid "Role settings"
 msgstr "Ρυθμίσεις ρόλου"
 
-#: admin/sudo/class_sudoGeneric.inc:149
+#: admin/sudo/class_sudoGeneric.inc:160
 msgid "Name"
 msgstr "Όνομα"
 
-#: admin/sudo/class_sudoGeneric.inc:149
+#: admin/sudo/class_sudoGeneric.inc:160
 msgid "Name of the role"
 msgstr "Όνομα του ρόλου"
 
-#: admin/sudo/class_sudoGeneric.inc:154
+#: admin/sudo/class_sudoGeneric.inc:165
 msgid "Description"
 msgstr "Περιγραφή"
 
-#: admin/sudo/class_sudoGeneric.inc:154
+#: admin/sudo/class_sudoGeneric.inc:165
 msgid "Description for the new sudo role"
 msgstr "Περιγραφή του νέου ρόλου sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:159
+#: admin/sudo/class_sudoGeneric.inc:170
 msgid "Commands"
 msgstr "Εντολές"
 
-#: admin/sudo/class_sudoGeneric.inc:160
+#: admin/sudo/class_sudoGeneric.inc:171
 msgid ""
 "A Unix command with optional command line arguments, potentially including "
 "globbing characters (aka wild cards)"
-msgstr "Μια εντολή Unix με προαιρετικές παραμέτρους γραμμής εντολών, με δυνατότητα συμπερίληψης wild cards"
+msgstr ""
+"Μια εντολή Unix με προαιρετικές παραμέτρους γραμμής εντολών, με δυνατότητα "
+"συμπερίληψης wild cards"
 
-#: admin/sudo/class_sudoGeneric.inc:166
+#: admin/sudo/class_sudoGeneric.inc:177
 msgid "Run as (user)"
 msgstr "Εκτέλεση ως (χρήστης)"
 
-#: admin/sudo/class_sudoGeneric.inc:167
+#: admin/sudo/class_sudoGeneric.inc:178
 msgid "User(s) impersonated by sudo"
 msgstr "Χρήστες impersonated από sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:174
+#: admin/sudo/class_sudoGeneric.inc:185
 msgid "Run as (group)"
 msgstr "Εκτέλεση ως (ομάδα)"
 
-#: admin/sudo/class_sudoGeneric.inc:175
+#: admin/sudo/class_sudoGeneric.inc:186
 msgid "Group(s) impersonated by sudo"
 msgstr "Ομάδες mpersonated από sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:181
+#: admin/sudo/class_sudoGeneric.inc:192
 msgid "Systems"
-msgstr "Συστήματα "
+msgstr "Systems"
 
-#: admin/sudo/class_sudoGeneric.inc:181
+#: admin/sudo/class_sudoGeneric.inc:192
 msgid "A host name, IP address or IP network"
 msgstr "Ένα όνομα υπολογιστή, μια διεύθυνση  IP, ή ένα δίκτυο IP "
 
-#: admin/sudo/class_sudoGeneric.inc:186
+#: admin/sudo/class_sudoGeneric.inc:197
 msgid "Users and groups"
 msgstr "Χρήστες και ομάδες"
 
-#: admin/sudo/class_sudoGeneric.inc:187
+#: admin/sudo/class_sudoGeneric.inc:198
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
-msgstr "Ένα όνομα χρήστη, ταυτότητα χρήστη (ID με πρόθεμα '#'), ομάδα (Unix group με πρόθεμα '%')"
+msgstr ""
+"Ένα όνομα χρήστη, ταυτότητα χρήστη (ID με πρόθεμα '#'), ομάδα (Unix group με"
+" πρόθεμα '%')"
 
-#: admin/sudo/class_sudoGeneric.inc:191
+#: admin/sudo/class_sudoGeneric.inc:202
 msgid "Priority"
 msgstr "Προτεραιότητα"
 
-#: admin/sudo/class_sudoGeneric.inc:191
+#: admin/sudo/class_sudoGeneric.inc:202
 msgid "This rule priority compared to others"
 msgstr "Συσχέτιση της προτεραιότητας αυτού του ρόλου με άλλων."
