@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016  FusionDirectory
+  Copyright (C) 2013-2017  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -83,12 +83,7 @@ class opsiClient extends simplePlugin
       $ldap = $config->get_ldap_link();
       foreach ($oldMembers as $member) {
         $ldap->cat($member, array('macAddress'), '(&(!(objectClass=opsiClient))(macAddress=*))');
-        if (!$ldap->success()) {
-          msg_dialog::display(
-            _("Could not get macAddress for $member"),
-            msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
-          );
-        } elseif ($attrs = $ldap->fetch()) {
+        if ($attrs = $ldap->fetch()) {
           $macAddresses[] = $attrs['macAddress'][0];
         }
       }
@@ -98,7 +93,7 @@ class opsiClient extends simplePlugin
           $serverMac = $attrs['macAddress'][0];
         } else {
           msg_dialog::display(
-            _("Could not get macAddress for OPSI server !"),
+            _('Could not get macAddress for OPSI server!'),
             msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
           );
         }
@@ -138,12 +133,12 @@ class opsiClient extends simplePlugin
           $macAddresses[] = $attrs['macAddress'][0];
         } else {
           if ($ldap->success()) {
-            $error = "$member was not found!";
+            $error = _('This member was not found or has no macAddress');
           } else {
             $error = $ldap->get_error();
           }
           msg_dialog::display(
-            _("Could not get macAddress for $member"),
+            sprintf(_('Could not get macAddress for "%s"'), $member),
             msgPool::ldaperror($error), ERROR_DIALOG
           );
         }
@@ -180,12 +175,7 @@ class opsiClient extends simplePlugin
       $ldap = $config->get_ldap_link();
       foreach ($this->initialMembers as $member) {
         $ldap->cat($member, array('macAddress'), '(&(!(objectClass=opsiClient))(macAddress=*))');
-        if (!$ldap->success()) {
-          msg_dialog::display(
-            _("Could not get macAddress for $member"),
-            msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
-          );
-        } elseif ($attrs = $ldap->fetch()) {
+        if ($attrs = $ldap->fetch()) {
           $macAddresses[] = $attrs['macAddress'][0];
         }
       }
