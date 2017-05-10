@@ -211,10 +211,9 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
         return sprintf(_('The value for multivaluated field "%s" is not an array'), $this->getLabel());
       }
       foreach ($this->value as $value) {
-        if (isset($this->nodesCache[$value[0]]['dhcpNetMask'][0])) {
-          if (!tests::is_in_network($this->nodesCache[$value[0]]['cn'][0], normalize_netmask($this->nodesCache[$value[0]]['dhcpNetMask'][0]), $value[2])) {
-            return sprintf(_('The ip %s is not in the network %s/%d'), $value[2], $this->nodesCache[$value[0]]['cn'][0], $this->nodesCache[$value[0]]['dhcpNetMask'][0]);
-          }
+        $error = dhcpSystem::dhcpIsIpInSubnet($this->nodesCache[$value[0]], $value[2]);
+        if ($error !== TRUE) {
+          return $error;
         }
       }
     }
@@ -301,6 +300,17 @@ class dhcpSystem extends simplePlugin
       $nodes[$attrs['dn']] = $attrs;
     }
     return array($choices, $nodes);
+  }
+
+  /* Returns error text if the IP is not in the given subnet LDAP node, or TRUE */
+  static function dhcpIsIpInSubnet($subnetAttrs, $ip)
+  {
+    if (isset($subnetAttrs['dhcpNetMask'][0])) {
+      if (!tests::is_in_network($subnetAttrs['cn'][0], normalize_netmask($subnetAttrs['dhcpNetMask'][0]), $ip)) {
+        return sprintf(_('The ip %s is not in the network %s/%d'), $ip, $subnetAttrs['cn'][0], $subnetAttrs['dhcpNetMask'][0]);
+      }
+    }
+    return TRUE;
   }
 
   protected function shouldSave()
