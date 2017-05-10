@@ -20,6 +20,8 @@
 
 class DhcpHostsAttribute extends OrderedArrayAttribute
 {
+  private $nodesCache = array();
+
   function __construct ($label, $description, $ldapName, array $values = array(), $acl = '')
   {
     $attribute = new CompositeAttribute(
@@ -74,7 +76,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
 
   function loadChoices()
   {
-    $nodes = dhcpSystem::getDhcpParentNodes();
+    list($nodesChoices, $nodes) = dhcpSystem::getDhcpParentNodes();
     $macs   = $this->plugin->parent->getBaseObject()->macAddress;
     if (!is_array($macs)) {
       $macs = array($macs);
@@ -83,7 +85,8 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     if (!is_array($ips)) {
       $ips = array($ips);
     }
-    $this->setChoices($nodes, $macs, $ips);
+    $this->nodesCache = $nodes;
+    $this->setChoices($nodesChoices, $macs, $ips);
   }
 
   function setChoices(array $parentNodes, array $macs, array $ips)
@@ -197,6 +200,25 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       msg_dialog::displayChecks($errors);
     }
   }
+
+  function check ()
+  {
+    $error = parent::check();
+    if (!empty($error)) {
+      return $error;
+    } else {
+      if (!is_array($this->value)) {
+        return sprintf(_('The value for multivaluated field "%s" is not an array'), $this->getLabel());
+      }
+      foreach ($this->value as $value) {
+        if (isset($this->nodesCache[$value[0]]['dhcpNetMask'][0])) {
+          if (!tests::is_in_network($this->nodesCache[$value[0]]['cn'][0], normalize_netmask($this->nodesCache[$value[0]]['dhcpNetMask'][0]), $value[2])) {
+            return sprintf(_('The ip %s is not in the network %s/%d'), $value[2], $this->nodesCache[$value[0]]['cn'][0], $this->nodesCache[$value[0]]['dhcpNetMask'][0]);
+          }
+        }
+      }
+    }
+  }
 }
 
 class dhcpSystem extends simplePlugin
@@ -262,21 +284,23 @@ class dhcpSystem extends simplePlugin
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search('(|(objectClass=dhcpService)(objectClass=dhcpGroup)'.
-                    '(objectClass=dhcpSubnet)(objectClass=dhcpSharedNetwork))', array('cn'));
+                    '(objectClass=dhcpSubnet)(objectClass=dhcpSharedNetwork))', array('cn', 'dhcpNetMask'));
 
-    $nodes = array();
-    while ($attr = $ldap->fetch()) {
-      $subdn = preg_replace('/,'.preg_quote(get_ou('dhcpRDN')).'.+$/', '', $attr['dn']);
+    $nodes    = array();
+    $choices  = array();
+    while ($attrs = $ldap->fetch()) {
+      $subdn = preg_replace('/,'.preg_quote(get_ou('dhcpRDN')).'.+$/', '', $attrs['dn']);
       $parts = ldap_explode_dn($subdn, 1);
       if ($parts === FALSE) {
         /* Fallback */
-        $nodes[$attr['dn']] = $subdn;
+        $choices[$attrs['dn']] = $subdn;
       } else {
         unset($parts['count']);
-        $nodes[$attr['dn']] = implode('>', array_reverse($parts));
+        $choices[$attrs['dn']] = implode('>', array_reverse($parts));
       }
+      $nodes[$attrs['dn']] = $attrs;
     }
-    return $nodes;
+    return array($choices, $nodes);
   }
 
   protected function shouldSave()
