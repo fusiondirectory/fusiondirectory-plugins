@@ -481,6 +481,18 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
       return parent::foreignKeyCheck($value, $source);
     }
   }
+
+  function isIpInParentSubnet($dn, $ip)
+  {
+    $parts = explode(',', $dn);
+    do {
+      array_shift($parts);
+      $parentdn = implode(',', $parts);
+      if (isset($this->dhcpObjectCache[$parentdn]) && ($this->objectType($parentdn) == 'dhcpSubnet')) {
+        return dhcpSystem::dhcpIsIpInSubnet($this->dhcpObjectCache[$parentdn], $ip);
+      }
+    } while (!empty($parts));
+  }
 }
 
 class dhcpConfiguration extends simplePlugin
