@@ -403,7 +403,6 @@ class dnsHost extends simplePlugin
   function addRecord($zoneDn, array $record)
   {
     if (isset($this->zonesCache[$zoneDn])) {
-      $name   = $this->zonesCache[$zoneDn];
       $zoneid = preg_replace('/[\/\-,.#:; =]/', '_', $zoneDn);
     } else {
       return FALSE;
