@@ -426,13 +426,6 @@ class mailMethodRenaterPartage extends mailMethod
     return $quotaValue;
   }
 
-  /*! \brief  Sets the mail quota
-   */
-  public function setQuota($number)
-  {
-    return parent::setQuota($number);
-  }
-
   public function additionalInformations()
   {
     if ($this->cacheAccount()) {
