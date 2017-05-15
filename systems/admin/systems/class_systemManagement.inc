@@ -188,6 +188,7 @@ class systemManagement extends simpleManagement
    */
   function saveEventDialog()
   {
+    $this->dialogObject->save_object();
     $msgs = $this->dialogObject->check();
     if (count($msgs)) {
       msg_dialog::displayChecks($msgs);
