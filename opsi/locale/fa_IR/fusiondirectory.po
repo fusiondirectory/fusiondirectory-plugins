@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"POT-Creation-Date: 2017-05-09 18:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: Persian (Iran) (https://www.transifex.com/fusiondirectory/teams/12202/fa_IR/)\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,7 @@ msgid "No mac address"
 msgstr ""
 
 #: addons/opsi/class_opsiImport.inc:98
-#: admin/systems/opsi/class_opsiClient.inc:155
+#: admin/systems/opsi/class_opsiClient.inc:153
 msgid "Could not update OPSI information"
 msgstr ""
 
@@ -230,13 +230,22 @@ msgstr ""
 msgid "The OPSI Profile to apply to this client"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:98
-msgid "Could not get macAddress for OPSI server !"
+#: admin/systems/opsi/class_opsiClient.inc:96
+msgid "Could not get macAddress for OPSI server!"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:107
-#: admin/systems/opsi/class_opsiClient.inc:199
+#: admin/systems/opsi/class_opsiClient.inc:105
+#: admin/systems/opsi/class_opsiClient.inc:192
 msgid "Could not remove OPSI information"
+msgstr ""
+
+#: admin/systems/opsi/class_opsiClient.inc:136
+msgid "This member was not found or has no macAddress"
+msgstr ""
+
+#: admin/systems/opsi/class_opsiClient.inc:141
+#, php-format
+msgid "Could not get macAddress for \"%s\""
 msgstr ""
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:29
