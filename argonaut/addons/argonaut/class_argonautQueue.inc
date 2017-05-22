@@ -202,7 +202,7 @@ class argonautQueue extends simpleManagement
       $entry        = $this->getHeadpage()->getEntry($target[0]);
       $attrsWrapper = new stdClass();
       $attrsWrapper->attrs = $entry['EVENT'];
-      $this->dialogObject = new faiLogView(NULL, '', $attrsWrapper, $this);
+      $this->dialogObject = new faiLogView('', $attrsWrapper, $this);
     }
   }
 
