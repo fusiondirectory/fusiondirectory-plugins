@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-09 18:40+0200\n"
+"POT-Creation-Date: 2017-05-21 18:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -192,7 +192,7 @@ msgstr "serveur"
 #: admin/systems/class_serverGeneric.inc:39
 #: admin/systems/class_serverGeneric.inc:44
 #: admin/systems/class_serverGeneric.inc:45
-#: admin/systems/class_systemImport.inc:175
+#: admin/systems/class_systemImport.inc:171
 msgid "Server"
 msgstr "Serveur"
 
@@ -570,21 +570,21 @@ msgstr "Ce système utilise les adresses IP (v4 ou v6)"
 msgid "Could not parse %s"
 msgstr "Impossible de lire le contenu de %s"
 
-#: admin/systems/class_systemImport.inc:120
+#: admin/systems/class_systemImport.inc:116
 #, php-format
 msgid "No DHCP server found for IPs %s"
 msgstr "Pas de serveur DHCP trouvé pour l'IP %s"
 
-#: admin/systems/class_systemImport.inc:137
+#: admin/systems/class_systemImport.inc:133
 #, php-format
 msgid "No DNS server found for zone %s"
 msgstr "Pas de serveur DNS trouvé pour la zone %s"
 
-#: admin/systems/class_systemImport.inc:171
+#: admin/systems/class_systemImport.inc:167
 msgid "Import"
 msgstr "Importer"
 
-#: admin/systems/class_systemImport.inc:175
+#: admin/systems/class_systemImport.inc:171
 msgid "The server you wish to import hosts from"
 msgstr "Le serveur duquel vous souhaitez importer des machines"
 
@@ -862,7 +862,7 @@ msgid "System %s is currently installing"
 msgstr "Système %s est actuellement en cours d'installation"
 
 #: admin/systems/class_systemManagement.inc:175
-#: admin/systems/class_systemManagement.inc:200
+#: admin/systems/class_systemManagement.inc:201
 msgid "Infrastructure service"
 msgstr "Service d’infrastructure"
 
@@ -875,7 +875,7 @@ msgstr "Action déclenchée"
 msgid "Action called without error (result was \"%s\")"
 msgstr "Action appelée sans erreur (résultat \"%s\")"
 
-#: admin/systems/class_systemManagement.inc:267
+#: admin/systems/class_systemManagement.inc:268
 #, php-format
 msgid "Inherited from %s"
 msgstr "Hérité de %s"

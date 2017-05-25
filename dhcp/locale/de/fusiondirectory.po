@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-09 18:40+0200\n"
+"POT-Creation-Date: 2017-05-21 18:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
@@ -19,9 +19,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/dhcp/class_dhcpConfig.inc:28
-#: admin/dhcp/class_dhcpConfiguration.inc:519
-#: admin/dhcp/class_dhcpConfiguration.inc:520
-#: admin/dhcp/class_dhcpConfiguration.inc:522
+#: admin/dhcp/class_dhcpConfiguration.inc:531
+#: admin/dhcp/class_dhcpConfiguration.inc:532
+#: admin/dhcp/class_dhcpConfiguration.inc:534
 msgid "DHCP configuration"
 msgstr "DHCP-Konfiguration"
 
@@ -45,7 +45,7 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:39
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:39
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:39
-#: admin/systems/class_dhcpSystem.inc:212
+#: admin/systems/class_dhcpSystem.inc:233
 msgid "DHCP"
 msgstr "DHCP"
 
@@ -88,7 +88,7 @@ msgstr "Name"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:366
 #: admin/dhcp/class_dhcpConfiguration.inc:407
-#: admin/dhcp/class_dhcpConfiguration.inc:563
+#: admin/dhcp/class_dhcpConfiguration.inc:575
 msgid "Global options"
 msgstr "Globale Optionen"
 
@@ -104,58 +104,58 @@ msgstr ""
 "Der DHCP-Konfigurationssatz ist unbekannt. Bitte benachrichtigen Sie Ihren "
 "System-Administrator."
 
-#: admin/dhcp/class_dhcpConfiguration.inc:541
+#: admin/dhcp/class_dhcpConfiguration.inc:553
 msgid "DHCP Objects"
 msgstr "DHCP-Objekte"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:551
+#: admin/dhcp/class_dhcpConfiguration.inc:563
 msgid "The DHCP sections handled by this server"
 msgstr ""
 
-#: admin/dhcp/class_dhcpConfiguration.inc:562
+#: admin/dhcp/class_dhcpConfiguration.inc:574
 msgid "Logging"
 msgstr "Protokollierung"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:564
+#: admin/dhcp/class_dhcpConfiguration.inc:576
 msgid "Class"
 msgstr "Klasse"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:565
+#: admin/dhcp/class_dhcpConfiguration.inc:577
 msgid "Subclass"
 msgstr "Subklasse"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:566
-#: admin/dhcp/sections/class_dhcpHost.inc:39
+#: admin/dhcp/class_dhcpConfiguration.inc:578
+#: admin/dhcp/sections/class_dhcpHost.inc:40
 msgid "Host"
 msgstr "System"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:567
+#: admin/dhcp/class_dhcpConfiguration.inc:579
 msgid "Group"
 msgstr "Gruppe"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:568
+#: admin/dhcp/class_dhcpConfiguration.inc:580
 #: admin/dhcp/sections/class_dhcpPool.inc:39
 msgid "Pool"
 msgstr "Vorrat"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:569
+#: admin/dhcp/class_dhcpConfiguration.inc:581
 #: admin/dhcp/sections/class_dhcpSubnet.inc:39
 msgid "Subnet"
 msgstr "Subnetz"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:570
+#: admin/dhcp/class_dhcpConfiguration.inc:582
 msgid "Failover peer"
 msgstr "Host für Ausfallsicherung"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:571
+#: admin/dhcp/class_dhcpConfiguration.inc:583
 msgid "Shared network"
 msgstr "Verteiltes Netzwerk"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:572
+#: admin/dhcp/class_dhcpConfiguration.inc:584
 msgid "DNS update key"
 msgstr "DNS-Update-Schlüssel"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:573
+#: admin/dhcp/class_dhcpConfiguration.inc:585
 msgid "DNS update zones"
 msgstr "DNS-Update-Zonen"
 
@@ -445,35 +445,40 @@ msgid ""
 " list is defined as a separate value."
 msgstr ""
 
-#: admin/dhcp/sections/class_dhcpHost.inc:28
 #: admin/dhcp/sections/class_dhcpHost.inc:29
+#: admin/dhcp/sections/class_dhcpHost.inc:30
 msgid "DHCP host"
 msgstr ""
 
-#: admin/dhcp/sections/class_dhcpHost.inc:42
-#: admin/dhcp/sections/class_dhcpHost.inc:51
+#: admin/dhcp/sections/class_dhcpHost.inc:43
+#: admin/dhcp/sections/class_dhcpHost.inc:52
 msgid "The client hardware address"
 msgstr ""
 
-#: admin/dhcp/sections/class_dhcpHost.inc:45
+#: admin/dhcp/sections/class_dhcpHost.inc:46
 msgid "The hardware address type"
 msgstr ""
 
-#: admin/dhcp/sections/class_dhcpHost.inc:48
+#: admin/dhcp/sections/class_dhcpHost.inc:49
 msgid "Ethernet"
 msgstr "Ethernet"
 
-#: admin/dhcp/sections/class_dhcpHost.inc:48
+#: admin/dhcp/sections/class_dhcpHost.inc:49
 msgid "FDDI"
 msgstr "FDDI"
 
-#: admin/dhcp/sections/class_dhcpHost.inc:48
+#: admin/dhcp/sections/class_dhcpHost.inc:49
 msgid "Token Ring"
 msgstr "Token Ring"
 
-#: admin/dhcp/sections/class_dhcpHost.inc:58
+#: admin/dhcp/sections/class_dhcpHost.inc:59
 msgid "Hardware address"
 msgstr "Hardware-Adresse"
+
+#: admin/dhcp/sections/class_dhcpHost.inc:85
+#, php-format
+msgid "\"%s\" is not a valid IP address."
+msgstr ""
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:29
 msgid "DHCP configurations"
@@ -496,27 +501,37 @@ msgstr "Dienst stoppen"
 msgid "Restart service"
 msgstr "Dienst neustarten"
 
-#: admin/systems/class_dhcpSystem.inc:29
+#: admin/systems/class_dhcpSystem.inc:31
 msgid ""
 "The DHCP configuration or subsection in which this host should be added"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:33
+#: admin/systems/class_dhcpSystem.inc:35
 msgid "The Mac address to use in the DHCP host record"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:37
+#: admin/systems/class_dhcpSystem.inc:39
 msgid "The IP address to use in the DHCP host record"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:213
+#: admin/systems/class_dhcpSystem.inc:211
+#, php-format
+msgid "The value for multivaluated field \"%s\" is not an array"
+msgstr ""
+
+#: admin/systems/class_dhcpSystem.inc:234
 msgid "Edit the DHCP zones of a system"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:227
+#: admin/systems/class_dhcpSystem.inc:248
 msgid "DHCP zones"
 msgstr "DHCP-Zonen"
 
-#: admin/systems/class_dhcpSystem.inc:231
+#: admin/systems/class_dhcpSystem.inc:252
 msgid "DHCP hosts declared for this system"
+msgstr ""
+
+#: admin/systems/class_dhcpSystem.inc:310
+#, php-format
+msgid "The ip %s is not in the network %s/%d"
 msgstr ""

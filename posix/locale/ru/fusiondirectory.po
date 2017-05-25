@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-09 18:40+0200\n"
+"POT-Creation-Date: 2017-05-21 18:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
@@ -204,110 +204,110 @@ msgstr "разрешить доступ только на эти хосты"
 msgid "Only allow this user to connect to this list of hosts"
 msgstr "Пользователю разрешено подключаться только к хостам из списка"
 
-#: personal/posix/class_posixAccount.inc:298
+#: personal/posix/class_posixAccount.inc:290
 msgid "automatic"
 msgstr "автоматически"
 
-#: personal/posix/class_posixAccount.inc:317
+#: personal/posix/class_posixAccount.inc:351
 msgid "expired"
 msgstr "Истек"
 
-#: personal/posix/class_posixAccount.inc:319
+#: personal/posix/class_posixAccount.inc:353
 msgid "grace time active"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:322
-#: personal/posix/class_posixAccount.inc:324
-#: personal/posix/class_posixAccount.inc:326
+#: personal/posix/class_posixAccount.inc:356
+#: personal/posix/class_posixAccount.inc:358
+#: personal/posix/class_posixAccount.inc:360
 msgid "active"
 msgstr "активный"
 
-#: personal/posix/class_posixAccount.inc:322
+#: personal/posix/class_posixAccount.inc:356
 msgid "password expired"
 msgstr "срок действия параля истек"
 
-#: personal/posix/class_posixAccount.inc:324
+#: personal/posix/class_posixAccount.inc:358
 msgid "password not changeable"
 msgstr "Пароль не изменяем"
 
-#: personal/posix/class_posixAccount.inc:423
+#: personal/posix/class_posixAccount.inc:420
 msgid "UID"
 msgstr "UID"
 
-#: personal/posix/class_posixAccount.inc:426
+#: personal/posix/class_posixAccount.inc:423
 #: admin/groups/posix/class_posixGroup.inc:74
 #: admin/groups/posix/class_posixGroup.inc:150
 msgid "GID"
 msgstr "GID"
 
-#: personal/posix/class_posixAccount.inc:534
+#: personal/posix/class_posixAccount.inc:531
 #, php-format
 msgid "Group of user %s"
 msgstr "Группа пользователя %s"
 
-#: personal/posix/class_posixAccount.inc:756
-#: personal/posix/class_posixAccount.inc:777
-#: personal/posix/class_posixAccount.inc:971
+#: personal/posix/class_posixAccount.inc:753
+#: personal/posix/class_posixAccount.inc:774
+#: personal/posix/class_posixAccount.inc:968
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: personal/posix/class_posixAccount.inc:756
+#: personal/posix/class_posixAccount.inc:753
 #, php-format
 msgid "Unknown ID allocation method \"%s\"!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:778
+#: personal/posix/class_posixAccount.inc:775
 #, php-format
 msgid "Timeout while waiting for lock. Ignoring lock from %s!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:805
-#: personal/posix/class_posixAccount.inc:845
-#: personal/posix/class_posixAccount.inc:857
-#: personal/posix/class_posixAccount.inc:861
-#: personal/posix/class_posixAccount.inc:868
-#: personal/posix/class_posixAccount.inc:877
-#: personal/posix/class_posixAccount.inc:939
+#: personal/posix/class_posixAccount.inc:802
+#: personal/posix/class_posixAccount.inc:842
+#: personal/posix/class_posixAccount.inc:854
+#: personal/posix/class_posixAccount.inc:858
+#: personal/posix/class_posixAccount.inc:865
+#: personal/posix/class_posixAccount.inc:874
+#: personal/posix/class_posixAccount.inc:936
 msgid "Error"
 msgstr "Ошибка"
 
-#: personal/posix/class_posixAccount.inc:805
-#: personal/posix/class_posixAccount.inc:845
-#: personal/posix/class_posixAccount.inc:857
-#: personal/posix/class_posixAccount.inc:861
-#: personal/posix/class_posixAccount.inc:868
-#: personal/posix/class_posixAccount.inc:877
+#: personal/posix/class_posixAccount.inc:802
+#: personal/posix/class_posixAccount.inc:842
+#: personal/posix/class_posixAccount.inc:854
+#: personal/posix/class_posixAccount.inc:858
+#: personal/posix/class_posixAccount.inc:865
+#: personal/posix/class_posixAccount.inc:874
 msgid "Cannot allocate a free ID:"
 msgstr "Не могу выделить свободный ID:"
 
-#: personal/posix/class_posixAccount.inc:805
+#: personal/posix/class_posixAccount.inc:802
 #, php-format
 msgid "%sPoolMin >= %sPoolMax!"
 msgstr "%sPoolMin >= %sPoolMax!"
 
-#: personal/posix/class_posixAccount.inc:837
+#: personal/posix/class_posixAccount.inc:834
 msgid "LDAP error"
 msgstr "Ошибка LDAP"
 
-#: personal/posix/class_posixAccount.inc:845
+#: personal/posix/class_posixAccount.inc:842
 msgid "sambaUnixIdPool is not unique!"
 msgstr "sambaUnixIdPool не уникальна!"
 
-#: personal/posix/class_posixAccount.inc:857
-#: personal/posix/class_posixAccount.inc:861
+#: personal/posix/class_posixAccount.inc:854
+#: personal/posix/class_posixAccount.inc:858
 msgid "no ID available!"
 msgstr "нет доступных ID!"
 
-#: personal/posix/class_posixAccount.inc:877
+#: personal/posix/class_posixAccount.inc:874
 msgid "maximum tries exceeded!"
 msgstr "Превышено максимальное число попыток!"
 
-#: personal/posix/class_posixAccount.inc:939
+#: personal/posix/class_posixAccount.inc:936
 msgid "Cannot allocate a free ID!"
 msgstr "Не могу выделить свободный ID!"
 
-#: personal/posix/class_posixAccount.inc:971
-msgid "'nextIdHook' is not available. Using default base!"
+#: personal/posix/class_posixAccount.inc:968
+msgid "\"nextIdHook\" is not available. Using default base!"
 msgstr ""
 
 #: config/posix/class_posixConfig.inc:28

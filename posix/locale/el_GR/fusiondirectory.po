@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-09 18:40+0200\n"
+"POT-Creation-Date: 2017-05-21 18:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -206,110 +206,110 @@ msgid "Only allow this user to connect to this list of hosts"
 msgstr ""
 "Επιτρέπεται σ'αυτόν τον χρήστη να συνδέεται στην ακόλουθη λίστα διακομιστών"
 
-#: personal/posix/class_posixAccount.inc:298
+#: personal/posix/class_posixAccount.inc:290
 msgid "automatic"
 msgstr "αυτόματο"
 
-#: personal/posix/class_posixAccount.inc:317
+#: personal/posix/class_posixAccount.inc:351
 msgid "expired"
 msgstr " έληξε"
 
-#: personal/posix/class_posixAccount.inc:319
+#: personal/posix/class_posixAccount.inc:353
 msgid "grace time active"
 msgstr "χρονικό διάστημα χάριτος ενεργό"
 
-#: personal/posix/class_posixAccount.inc:322
-#: personal/posix/class_posixAccount.inc:324
-#: personal/posix/class_posixAccount.inc:326
+#: personal/posix/class_posixAccount.inc:356
+#: personal/posix/class_posixAccount.inc:358
+#: personal/posix/class_posixAccount.inc:360
 msgid "active"
 msgstr "ενεργό"
 
-#: personal/posix/class_posixAccount.inc:322
+#: personal/posix/class_posixAccount.inc:356
 msgid "password expired"
 msgstr "ο κωδικός πρόσβασης έχει λήξει"
 
-#: personal/posix/class_posixAccount.inc:324
+#: personal/posix/class_posixAccount.inc:358
 msgid "password not changeable"
 msgstr "ο κωδικός πρόσβασης δεν μπορεί να αλλάξει"
 
-#: personal/posix/class_posixAccount.inc:423
+#: personal/posix/class_posixAccount.inc:420
 msgid "UID"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:426
+#: personal/posix/class_posixAccount.inc:423
 #: admin/groups/posix/class_posixGroup.inc:74
 #: admin/groups/posix/class_posixGroup.inc:150
 msgid "GID"
 msgstr "GID"
 
-#: personal/posix/class_posixAccount.inc:534
+#: personal/posix/class_posixAccount.inc:531
 #, php-format
 msgid "Group of user %s"
 msgstr "Ομάδα του χρήστη %s"
 
-#: personal/posix/class_posixAccount.inc:756
-#: personal/posix/class_posixAccount.inc:777
-#: personal/posix/class_posixAccount.inc:971
+#: personal/posix/class_posixAccount.inc:753
+#: personal/posix/class_posixAccount.inc:774
+#: personal/posix/class_posixAccount.inc:968
 msgid "Warning"
 msgstr "Προειδοποίηση"
 
-#: personal/posix/class_posixAccount.inc:756
+#: personal/posix/class_posixAccount.inc:753
 #, php-format
 msgid "Unknown ID allocation method \"%s\"!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:778
+#: personal/posix/class_posixAccount.inc:775
 #, php-format
 msgid "Timeout while waiting for lock. Ignoring lock from %s!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:805
-#: personal/posix/class_posixAccount.inc:845
-#: personal/posix/class_posixAccount.inc:857
-#: personal/posix/class_posixAccount.inc:861
-#: personal/posix/class_posixAccount.inc:868
-#: personal/posix/class_posixAccount.inc:877
-#: personal/posix/class_posixAccount.inc:939
+#: personal/posix/class_posixAccount.inc:802
+#: personal/posix/class_posixAccount.inc:842
+#: personal/posix/class_posixAccount.inc:854
+#: personal/posix/class_posixAccount.inc:858
+#: personal/posix/class_posixAccount.inc:865
+#: personal/posix/class_posixAccount.inc:874
+#: personal/posix/class_posixAccount.inc:936
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: personal/posix/class_posixAccount.inc:805
-#: personal/posix/class_posixAccount.inc:845
-#: personal/posix/class_posixAccount.inc:857
-#: personal/posix/class_posixAccount.inc:861
-#: personal/posix/class_posixAccount.inc:868
-#: personal/posix/class_posixAccount.inc:877
+#: personal/posix/class_posixAccount.inc:802
+#: personal/posix/class_posixAccount.inc:842
+#: personal/posix/class_posixAccount.inc:854
+#: personal/posix/class_posixAccount.inc:858
+#: personal/posix/class_posixAccount.inc:865
+#: personal/posix/class_posixAccount.inc:874
 msgid "Cannot allocate a free ID:"
 msgstr "Δεν είναι δυνατό να ανατεθεί μια free ID:"
 
-#: personal/posix/class_posixAccount.inc:805
+#: personal/posix/class_posixAccount.inc:802
 #, php-format
 msgid "%sPoolMin >= %sPoolMax!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:837
+#: personal/posix/class_posixAccount.inc:834
 msgid "LDAP error"
 msgstr "Σφάλμα LDAP"
 
-#: personal/posix/class_posixAccount.inc:845
+#: personal/posix/class_posixAccount.inc:842
 msgid "sambaUnixIdPool is not unique!"
 msgstr "sambaUnixIdPool  δεν είναι μοναδική!"
 
-#: personal/posix/class_posixAccount.inc:857
-#: personal/posix/class_posixAccount.inc:861
+#: personal/posix/class_posixAccount.inc:854
+#: personal/posix/class_posixAccount.inc:858
 msgid "no ID available!"
 msgstr "Μη διαθέσιμη ID!"
 
-#: personal/posix/class_posixAccount.inc:877
+#: personal/posix/class_posixAccount.inc:874
 msgid "maximum tries exceeded!"
 msgstr "Υπέρβαση μεγίστου ορίου προσπαθειών!"
 
-#: personal/posix/class_posixAccount.inc:939
+#: personal/posix/class_posixAccount.inc:936
 msgid "Cannot allocate a free ID!"
 msgstr "Δεν είναι δυνατή η διάθεση μιας  free ID!"
 
-#: personal/posix/class_posixAccount.inc:971
-msgid "'nextIdHook' is not available. Using default base!"
+#: personal/posix/class_posixAccount.inc:968
+msgid "\"nextIdHook\" is not available. Using default base!"
 msgstr ""
 
 #: config/posix/class_posixConfig.inc:28

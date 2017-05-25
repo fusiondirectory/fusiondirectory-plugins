@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-09 18:40+0200\n"
+"POT-Creation-Date: 2017-05-21 18:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
@@ -192,7 +192,7 @@ msgstr "Сервер"
 #: admin/systems/class_serverGeneric.inc:39
 #: admin/systems/class_serverGeneric.inc:44
 #: admin/systems/class_serverGeneric.inc:45
-#: admin/systems/class_systemImport.inc:175
+#: admin/systems/class_systemImport.inc:171
 msgid "Server"
 msgstr "Сервер"
 
@@ -570,21 +570,21 @@ msgstr ""
 msgid "Could not parse %s"
 msgstr ""
 
-#: admin/systems/class_systemImport.inc:120
+#: admin/systems/class_systemImport.inc:116
 #, php-format
 msgid "No DHCP server found for IPs %s"
 msgstr ""
 
-#: admin/systems/class_systemImport.inc:137
+#: admin/systems/class_systemImport.inc:133
 #, php-format
 msgid "No DNS server found for zone %s"
 msgstr "Не найден DNS сервер для зоны %s"
 
-#: admin/systems/class_systemImport.inc:171
+#: admin/systems/class_systemImport.inc:167
 msgid "Import"
 msgstr "Импортировать"
 
-#: admin/systems/class_systemImport.inc:175
+#: admin/systems/class_systemImport.inc:171
 msgid "The server you wish to import hosts from"
 msgstr ""
 
@@ -853,7 +853,7 @@ msgid "System %s is currently installing"
 msgstr ""
 
 #: admin/systems/class_systemManagement.inc:175
-#: admin/systems/class_systemManagement.inc:200
+#: admin/systems/class_systemManagement.inc:201
 msgid "Infrastructure service"
 msgstr ""
 
@@ -866,7 +866,7 @@ msgstr ""
 msgid "Action called without error (result was \"%s\")"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:267
+#: admin/systems/class_systemManagement.inc:268
 #, php-format
 msgid "Inherited from %s"
 msgstr ""
