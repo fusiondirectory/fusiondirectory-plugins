@@ -641,13 +641,17 @@ class posixAccount extends simplePlugin
       $groupMembership = $this->attributesAccess['groupMembership']->getValue();
       foreach ($groupMembership as $value) {
         if (!in_array($value, $this->savedGroupMembership)) {
-          $g = objects::open($value, 'group');
-          $g->getBaseObject()->addUser($this->dn, $this->getUid());
-          $msg = $g->save();
-          if (empty($msg)) {
-            $this->savedGroupMembership[] = $value;
-          } else {
-            $errors = array_merge($errors, $msg);
+          try {
+            $g = objects::open($value, 'group');
+            $g->getBaseObject()->addUser($this->dn, $this->getUid());
+            $msg = $g->save();
+            if (empty($msg)) {
+              $this->savedGroupMembership[] = $value;
+            } else {
+              $errors = array_merge($errors, $msg);
+            }
+          } catch (FusionDirectoryException $e) {
+            $errors[] = 'Exception: '.$e->getMessage();
           }
         }
       }
@@ -655,13 +659,17 @@ class posixAccount extends simplePlugin
       /* Remove groups not listed in groupMembership */
       foreach ($this->savedGroupMembership as $key => $value) {
         if (!in_array($value, $groupMembership)) {
-          $g = objects::open($value, 'group');
-          $g->getBaseObject()->removeUser($this->getUid());
-          $msg = $g->save();
-          if (empty($msg)) {
-            unset($this->savedGroupMembership[$key]);
-          } else {
-            $errors = array_merge($errors, $msg);
+          try {
+            $g = objects::open($value, 'group');
+            $g->getBaseObject()->removeUser($this->getUid());
+            $msg = $g->save();
+            if (empty($msg)) {
+              unset($this->savedGroupMembership[$key]);
+            } else {
+              $errors = array_merge($errors, $msg);
+            }
+          } catch (FusionDirectoryException $e) {
+            $errors[] = 'Exception: '.$e->getMessage();
           }
         }
       }
