@@ -60,6 +60,7 @@ class dhcpHost extends dhcpPlugin
         )
       )
     );
+    $attributesInfo['host']['attrs'][0]->setRequired(TRUE);
     $attributesInfo['host']['attrs'][0]->setLinearRendering(TRUE);
     $attributesInfo['main']['attrs'][2]->setDefaultValue(
       array(
@@ -78,13 +79,17 @@ class dhcpHost extends dhcpPlugin
   function check()
   {
     $messages = parent::check();
+    $dn = $this->dn;
+    if (($dn == '') || ($dn == 'new')) {
+      $dn = $this->compute_dn();
+    }
 
     foreach ($this->dhcpStatements as $statement) {
       if (preg_match('/^fixed-address (.+)$/', $statement, $m)) {
         if (!tests::is_ip($m[1])) {
           $messages[] = sprintf(_('"%s" is not a valid IP address.'), $m[1]);
         } else {
-          $error = $this->parentPlugin->attributesAccess['dhcpSections']->isIpInParentSubnet($this->dn, $m[1]);
+          $error = $this->parentPlugin->attributesAccess['dhcpSections']->isIpInParentSubnet($dn, $m[1]);
           if ($error !== TRUE) {
             $messages[] = $error;
           }

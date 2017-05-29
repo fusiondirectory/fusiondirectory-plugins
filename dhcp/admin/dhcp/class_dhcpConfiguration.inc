@@ -492,6 +492,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
         return dhcpSystem::dhcpIsIpInSubnet($this->dhcpObjectCache[$parentdn], $ip);
       }
     } while (!empty($parts));
+    return TRUE;
   }
 }
 
