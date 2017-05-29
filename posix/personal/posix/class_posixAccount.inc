@@ -608,6 +608,17 @@ class posixAccount extends simplePlugin
     }
   }
 
+  protected function shouldSave()
+  {
+    if (parent::shouldSave()) {
+      return TRUE;
+    }
+    if (array_differs($this->groupMembership, $this->savedGroupMembership)) {
+      return TRUE;
+    }
+    return FALSE;
+  }
+
   function save()
   {
     $errors = parent::save();
