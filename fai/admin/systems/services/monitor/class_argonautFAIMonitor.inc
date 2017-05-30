@@ -49,12 +49,12 @@ class argonautFAIMonitor extends simpleService
             'argonautFAIMonitorTimeout', FALSE,
             0, FALSE, 0
           ),
-          new StringAttribute (
+          new TrimmedStringAttribute (
             _('CA certificate'), _('Path to the CA certificate file on Argonaut FAI monitor server'),
             'argonautFAIMonitorCaCertPath', FALSE,
             '/etc/ssl/certs/ca.cert'
           ),
-          new StringAttribute (
+          new TrimmedStringAttribute (
             _('Log directory'), _('Directory in which argonaut-fai-monitor will store its log'),
             'argonautFAIMonitorLogDir', TRUE,
             '/var/log/argonaut'
