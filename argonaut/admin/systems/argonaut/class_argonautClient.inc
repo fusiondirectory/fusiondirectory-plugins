@@ -160,7 +160,7 @@ class argonautClient extends simplePlugin
       'ssl' => array (
         'name'  => _('SSL paths'),
         'attrs' => array (
-          new StringAttribute (
+          new TrimmedStringAttribute (
             _('Key'), _('Path to the private key file on Argonaut client'),
             'argonautClientKeyPath', FALSE,
             '/etc/ssl/private/argonaut.key'
