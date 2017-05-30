@@ -481,6 +481,18 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     return $nb;
   }
 
+  function cnRemoved($oldcn)
+  {
+    $nb = 0;
+    foreach ($this->value as $key => $row) {
+      if ($row[0] == $oldcn) {
+        unset($this->value[$key]);
+        $nb++;
+      }
+    }
+    return $nb;
+  }
+
   function ipRemoved($oldips)
   {
     $nb = 0;
@@ -721,6 +733,15 @@ class dnsZone extends simplePlugin
   function ipChanged ($oldip, $newip)
   {
     $nb = $this->attributesAccess['dnsRecords']->ipChanged($oldip, $newip);
+    if ($nb > 0) {
+      $this->save();
+    }
+    return $nb;
+  }
+
+  function cnRemoved ($oldcn)
+  {
+    $nb = $this->attributesAccess['dnsRecords']->cnRemoved($oldcn);
     if ($nb > 0) {
       $this->save();
     }
