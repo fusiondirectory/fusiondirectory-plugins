@@ -532,6 +532,7 @@ class posixAccount extends simplePlugin
 
         $baseObject->cn           = $groupcn;
         $baseObject->description  = sprintf(_('Group of user %s'), $this->getUid());
+        $baseObject->base         = $this->parent->getBaseObject()->base;
         if (class_available('mixedGroup')) {
           // fake attrs as this user may not exists yet
           $attrs = array(
