@@ -68,8 +68,8 @@ If you like [FusionDirectory][FusionDirectory] and would like to [donate][donate
 
 [register]: https://register.fusiondirectory.org
 
-[issues-forge]: https://forge.fusiondirectory.org/
+[issues-forge]: https://forge.fusiondirectory.org/projects/fd-plugins/issues/new
 
-[issues-github]: https://github.com/fusiondirectory/fusiondirectory/issues
+[issues-github]: https://github.com/fusiondirectory/fusiondirectory-plugins/issues
 
 [donate-liberapay]: https://liberapay.com/fusiondirectory/donate
