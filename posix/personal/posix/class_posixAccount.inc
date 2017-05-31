@@ -545,11 +545,13 @@ class posixAccount extends simplePlugin
         $posixTab->force_id   = 1;
         $posixTab->gidNumber  = $this->gidNumber;
 
-        $tabObject->save();
-        $groupdn = $tabObject->dn;
-
-        @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
-          sprintf('Primary group "%s" created, using gidNumber "%s".', $groupdn, $this->gidNumber), '');
+        $errors = $tabObject->save();
+        if (!empty($errors)) {
+          msg_dialog::displayChecks($errors);
+        } else {
+          @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
+            sprintf('Primary group "%s" created, using gidNumber "%s".', $tabObject->dn, $this->gidNumber), '');
+        }
       } else {
         $attrs = $ldap->fetch();
         $this->gidNumber = $attrs['gidNumber'][0];
