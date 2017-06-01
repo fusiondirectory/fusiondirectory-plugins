@@ -121,9 +121,16 @@ class dnsManagement extends simpleManagement
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ips = array();
-    $ldap->search('(&(aRecord=*)(relativeDomainName='.$serverCn.')(zoneName='.$serverZone.'))', array('aRecord'));
+    $ldap->search('(&(|(aRecord=*)(aAAARecord=*))(relativeDomainName='.$serverCn.')(zoneName='.$serverZone.'))', array('aRecord', 'aAAARecord'));
     while ($attrs = $ldap->fetch()) {
-      $ips[] = ldap_escape_f($attrs['aRecord'][0]);
+      if (isset($attrs['aRecord'])) {
+        unset($attrs['aRecord']['count']);
+        $ips = array_merge($ips, $attrs['aRecord']);
+      }
+      if (isset($attrs['aAAARecord'])) {
+        unset($attrs['aAAARecord']['count']);
+        $ips = array_merge($ips, $attrs['aAAARecord']);
+      }
     }
     if (!empty($ips)) {
       $filter = '(|(ipHostNumber='.implode(')(ipHostNumber=', $ips).'))';
