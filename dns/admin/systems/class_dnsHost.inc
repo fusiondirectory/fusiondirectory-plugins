@@ -332,8 +332,14 @@ class dnsHost extends simplePlugin
       $oldzones = $this->attributeInitialValue('fdDNSZoneDn');
       $newzones = $this->attributeValue('fdDNSZoneDn');
       if ($this->attributeHaveChanged('fdDNSZoneDn') && !empty($oldzones)) {
-        $messages += static::removeIpsFromZones(array_diff($oldzones, $newzones), $oldips);
-        $messages += static::removeCnFromZones(array_diff($oldzones, $newzones), $oldcn);
+        $messages = array_merge(
+          $messages,
+          static::removeIpsFromZones(array_diff($oldzones, $newzones), $oldips)
+        );
+        $messages = array_merge(
+          $messages,
+          static::removeCnFromZones(array_diff($oldzones, $newzones), $oldcn)
+        );
       }
 
       if ($baseObject->attributeHaveChanged('cn') && !empty($oldcn)) {
