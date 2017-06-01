@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-04-21 17:41+0200\n"
+"POT-Creation-Date: 2017-05-21 18:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -37,7 +37,7 @@ msgid "No mac address"
 msgstr "Pas d'adresse mac"
 
 #: addons/opsi/class_opsiImport.inc:98
-#: admin/systems/opsi/class_opsiClient.inc:155
+#: admin/systems/opsi/class_opsiClient.inc:153
 msgid "Could not update OPSI information"
 msgstr "Mise à jour des informations OPSI impossible"
 
@@ -231,14 +231,23 @@ msgstr "Profil OPSI"
 msgid "The OPSI Profile to apply to this client"
 msgstr "Le profil OPSI à appliquer à ce client"
 
-#: admin/systems/opsi/class_opsiClient.inc:98
-msgid "Could not get macAddress for OPSI server !"
-msgstr "Impossible d'obtenir l'adresse mac pour le serveur OPSI!"
+#: admin/systems/opsi/class_opsiClient.inc:96
+msgid "Could not get macAddress for OPSI server!"
+msgstr "Impossible d'obtenir l'adresse mac pour le serveur OPSI !"
 
-#: admin/systems/opsi/class_opsiClient.inc:107
-#: admin/systems/opsi/class_opsiClient.inc:199
+#: admin/systems/opsi/class_opsiClient.inc:105
+#: admin/systems/opsi/class_opsiClient.inc:193
 msgid "Could not remove OPSI information"
 msgstr "Effacement des informations OPSI impossible"
+
+#: admin/systems/opsi/class_opsiClient.inc:136
+msgid "This member was not found or has no macAddress"
+msgstr "Ce membre n'a pas été trouvé ou n'a pas d'adresse mac"
+
+#: admin/systems/opsi/class_opsiClient.inc:141
+#, php-format
+msgid "Could not get macAddress for \"%s\""
+msgstr "Impossible d'obtenir l'adresse mac pour \"%s\""
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:29
 #: admin/systems/services/opsi/class_serviceOPSI.inc:30
