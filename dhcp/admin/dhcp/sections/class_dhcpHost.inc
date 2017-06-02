@@ -21,6 +21,7 @@
 class dhcpHost extends dhcpPlugin
 {
   public $objectclasses = array('dhcpHost');
+  private $parentPlugin;
 
   public static function plInfo()
   {
@@ -59,6 +60,7 @@ class dhcpHost extends dhcpPlugin
         )
       )
     );
+    $attributesInfo['host']['attrs'][0]->setRequired(TRUE);
     $attributesInfo['host']['attrs'][0]->setLinearRendering(TRUE);
     $attributesInfo['main']['attrs'][2]->setDefaultValue(
       array(
@@ -66,5 +68,35 @@ class dhcpHost extends dhcpPlugin
       )
     );
     return $attributesInfo;
+  }
+
+  function __construct ($plugin, $dn, $attrs = NULL)
+  {
+    $this->parentPlugin = $plugin;
+    parent::__construct($plugin, $dn, $attrs);
+  }
+
+  function check()
+  {
+    $messages = parent::check();
+    $dn = $this->dn;
+    if (($dn == '') || ($dn == 'new')) {
+      $dn = $this->compute_dn();
+    }
+
+    foreach ($this->dhcpStatements as $statement) {
+      if (preg_match('/^fixed-address (.+)$/', $statement, $m)) {
+        if (!tests::is_ip($m[1])) {
+          $messages[] = sprintf(_('"%s" is not a valid IP address.'), $m[1]);
+        } else {
+          $error = $this->parentPlugin->attributesAccess['dhcpSections']->isIpInParentSubnet($dn, $m[1]);
+          if ($error !== TRUE) {
+            $messages[] = $error;
+          }
+        }
+      }
+    }
+
+    return $messages;
   }
 }

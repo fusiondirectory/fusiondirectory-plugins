@@ -102,17 +102,17 @@ class argonautServer extends simpleService
       'ssl' => array (
         'name'  => _('SSL paths'),
         'attrs' => array (
-          new StringAttribute (
+          new TrimmedStringAttribute (
             _('Key'), _('Path to the private key file on Argonaut server'),
             'argonautKeyPath', FALSE,
             '/etc/ssl/private/argonaut.key'
           ),
-          new StringAttribute (
+          new TrimmedStringAttribute (
             _('Certificate'), _('Path to the certificate file on Argonaut server'),
             'argonautCertPath', FALSE,
             '/etc/ssl/certs/argonaut.cert'
           ),
-          new StringAttribute (
+          new TrimmedStringAttribute (
             _('CA certificate'), _('Path to the CA certificate file on Argonaut server'),
             'argonautCaCertPath', FALSE,
             '/etc/ssl/certs/ca.cert'

@@ -532,6 +532,7 @@ class posixAccount extends simplePlugin
 
         $baseObject->cn           = $groupcn;
         $baseObject->description  = sprintf(_('Group of user %s'), $this->getUid());
+        $baseObject->base         = $this->parent->getBaseObject()->base;
         if (class_available('mixedGroup')) {
           // fake attrs as this user may not exists yet
           $attrs = array(
@@ -548,11 +549,13 @@ class posixAccount extends simplePlugin
         $posixTab->force_id   = 1;
         $posixTab->gidNumber  = $this->gidNumber;
 
-        $tabObject->save();
-        $groupdn = $tabObject->dn;
-
-        @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
-          sprintf('Primary group "%s" created, using gidNumber "%s".', $groupdn, $this->gidNumber), '');
+        $errors = $tabObject->save();
+        if (!empty($errors)) {
+          msg_dialog::displayChecks($errors);
+        } else {
+          @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
+            sprintf('Primary group "%s" created, using gidNumber "%s".', $tabObject->dn, $this->gidNumber), '');
+        }
       } else {
         $attrs = $ldap->fetch();
         $this->gidNumber = $attrs['gidNumber'][0];
@@ -596,7 +599,7 @@ class posixAccount extends simplePlugin
     if ($this->is_template) {
       $this->attrs['posixGroups'] = $this->groupMembership;
       if ($this->force_ids) {
-        if (($this->uidNumber == '%askme%') ||($this->gidNumber == '%askme%')) {
+        if (($this->uidNumber == '%askme%') || ($this->gidNumber == '%askme%')) {
           $this->attrs['force_ids'] = '%askme%';
         } else {
           $this->attrs['force_ids'] = 'TRUE';
@@ -606,6 +609,17 @@ class posixAccount extends simplePlugin
       }
       $this->attrs['mustchangepassword'] = ($this->mustchangepassword ? 'TRUE' : 'FALSE');
     }
+  }
+
+  protected function shouldSave()
+  {
+    if (parent::shouldSave()) {
+      return TRUE;
+    }
+    if (array_differs($this->groupMembership, $this->savedGroupMembership)) {
+      return TRUE;
+    }
+    return FALSE;
   }
 
   function save()
@@ -633,13 +647,17 @@ class posixAccount extends simplePlugin
       $groupMembership = $this->attributesAccess['groupMembership']->getValue();
       foreach ($groupMembership as $value) {
         if (!in_array($value, $this->savedGroupMembership)) {
-          $g = objects::open($value, 'group');
-          $g->getBaseObject()->addUser($this->dn, $this->getUid());
-          $msg = $g->save();
-          if (empty($msg)) {
-            $this->savedGroupMembership[] = $value;
-          } else {
-            $errors = array_merge($errors, $msg);
+          try {
+            $g = objects::open($value, 'group');
+            $g->getBaseObject()->addUser($this->dn, $this->getUid());
+            $msg = $g->save();
+            if (empty($msg)) {
+              $this->savedGroupMembership[] = $value;
+            } else {
+              $errors = array_merge($errors, $msg);
+            }
+          } catch (FusionDirectoryException $e) {
+            $errors[] = 'Exception: '.$e->getMessage();
           }
         }
       }
@@ -647,13 +665,17 @@ class posixAccount extends simplePlugin
       /* Remove groups not listed in groupMembership */
       foreach ($this->savedGroupMembership as $key => $value) {
         if (!in_array($value, $groupMembership)) {
-          $g = objects::open($value, 'group');
-          $g->getBaseObject()->removeUser($this->getUid());
-          $msg = $g->save();
-          if (empty($msg)) {
-            unset($this->savedGroupMembership[$key]);
-          } else {
-            $errors = array_merge($errors, $msg);
+          try {
+            $g = objects::open($value, 'group');
+            $g->getBaseObject()->removeUser($this->getUid());
+            $msg = $g->save();
+            if (empty($msg)) {
+              unset($this->savedGroupMembership[$key]);
+            } else {
+              $errors = array_merge($errors, $msg);
+            }
+          } catch (FusionDirectoryException $e) {
+            $errors[] = 'Exception: '.$e->getMessage();
           }
         }
       }

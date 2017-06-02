@@ -164,7 +164,7 @@ class fdRPCService
     } else {
       $self = '';
     }
-    if (!$plist->check_access($infos['aclCategory'].$self)) {
+    if (!$plist->check_access(array('ACL' => $infos['aclCategory'].$self))) {
       throw new FusionDirectoryException("Unsufficient rights for accessing type '$type$self'");
     }
     if ($tabs !== NULL) {
@@ -173,7 +173,7 @@ class fdRPCService
       }
       foreach ($tabs as $tab) {
         $pInfos = pluglist::pluginInfos($tab);
-        if (!$plist->check_access(join($self.',', $pInfos['plCategory']).$self)) {
+        if (!$plist->check_access(array('ACL' => join($self.',', $pInfos['plCategory']).$self))) {
           throw new FusionDirectoryException("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
         }
       }

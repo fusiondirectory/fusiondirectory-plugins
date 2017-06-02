@@ -92,14 +92,10 @@ class systemImport extends simplePlugin
 
       /* Get existing DHCP servers */
       if (empty($dhcps)) {
-        $dhcpParentNodes = dhcpSystem::getDhcpParentNodes();
-        $ldap = $config->get_ldap_link();
-        foreach ($dhcpParentNodes as $dn => $value) {
-          $ldap->cat($dn);
-          if ($attrs = $ldap->fetch()) {
-            if (isset($attrs['dhcpNetMask'])) {
-              $dhcps[$dn] = array($attrs['cn'][0], normalize_netmask($attrs['dhcpNetMask'][0]));
-            }
+        list(, $dhcpParentNodes) = dhcpSystem::getDhcpParentNodes();
+        foreach ($dhcpParentNodes as $dn => $attrs) {
+          if (isset($attrs['dhcpNetMask'])) {
+            $dhcps[$dn] = array($attrs['cn'][0], normalize_netmask($attrs['dhcpNetMask'][0]));
           }
         }
       }

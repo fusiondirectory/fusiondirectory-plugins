@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-04-05 19:03+0200\n"
+"POT-Creation-Date: 2017-06-01 10:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -231,68 +231,68 @@ msgstr ""
 msgid "Group of user %s"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:756
-#: personal/posix/class_posixAccount.inc:777
-#: personal/posix/class_posixAccount.inc:971
+#: personal/posix/class_posixAccount.inc:778
+#: personal/posix/class_posixAccount.inc:799
+#: personal/posix/class_posixAccount.inc:993
 msgid "Warning"
-msgstr ""
-
-#: personal/posix/class_posixAccount.inc:756
-#, php-format
-msgid "Unknown ID allocation method \"%s\"!"
 msgstr ""
 
 #: personal/posix/class_posixAccount.inc:778
 #, php-format
+msgid "Unknown ID allocation method \"%s\"!"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:800
+#, php-format
 msgid "Timeout while waiting for lock. Ignoring lock from %s!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:805
-#: personal/posix/class_posixAccount.inc:845
-#: personal/posix/class_posixAccount.inc:857
-#: personal/posix/class_posixAccount.inc:861
-#: personal/posix/class_posixAccount.inc:868
-#: personal/posix/class_posixAccount.inc:877
-#: personal/posix/class_posixAccount.inc:939
+#: personal/posix/class_posixAccount.inc:827
+#: personal/posix/class_posixAccount.inc:867
+#: personal/posix/class_posixAccount.inc:879
+#: personal/posix/class_posixAccount.inc:883
+#: personal/posix/class_posixAccount.inc:890
+#: personal/posix/class_posixAccount.inc:899
+#: personal/posix/class_posixAccount.inc:961
 msgid "Error"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:805
-#: personal/posix/class_posixAccount.inc:845
-#: personal/posix/class_posixAccount.inc:857
-#: personal/posix/class_posixAccount.inc:861
-#: personal/posix/class_posixAccount.inc:868
-#: personal/posix/class_posixAccount.inc:877
+#: personal/posix/class_posixAccount.inc:827
+#: personal/posix/class_posixAccount.inc:867
+#: personal/posix/class_posixAccount.inc:879
+#: personal/posix/class_posixAccount.inc:883
+#: personal/posix/class_posixAccount.inc:890
+#: personal/posix/class_posixAccount.inc:899
 msgid "Cannot allocate a free ID:"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:805
+#: personal/posix/class_posixAccount.inc:827
 #, php-format
 msgid "%sPoolMin >= %sPoolMax!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:837
+#: personal/posix/class_posixAccount.inc:859
 msgid "LDAP error"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:845
+#: personal/posix/class_posixAccount.inc:867
 msgid "sambaUnixIdPool is not unique!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:857
-#: personal/posix/class_posixAccount.inc:861
+#: personal/posix/class_posixAccount.inc:879
+#: personal/posix/class_posixAccount.inc:883
 msgid "no ID available!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:877
+#: personal/posix/class_posixAccount.inc:899
 msgid "maximum tries exceeded!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:939
+#: personal/posix/class_posixAccount.inc:961
 msgid "Cannot allocate a free ID!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:971
+#: personal/posix/class_posixAccount.inc:993
 msgid "'nextIdHook' is not available. Using default base!"
 msgstr ""
 
