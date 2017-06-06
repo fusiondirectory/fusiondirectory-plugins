@@ -587,7 +587,12 @@ class sambaAccount extends simplePlugin
       }
     } elseif ($config->get_cfg_value('sambaExpirationSync') == 'posix') {
       if ($this->parent->by_object['posixAccount']->shadowExpire != "") {
-        $this->attrs['sambaKickoffTime'] = $this->parent->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue()->format('U');
+        try {
+          $this->attrs['sambaKickoffTime'] = $this->parent->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue()->format('U');
+        } catch (Exception $e) {
+          // shadowExpire is an invalid date, most likely because we’re a template and it uses patterns
+          $this->attrs['sambaKickoffTime'] = array();
+        }
       } else {
         $this->attrs['sambaKickoffTime'] = array();
       }
