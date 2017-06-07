@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-21 18:14+0200\n"
+"POT-Creation-Date: 2017-06-07 18:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
@@ -129,38 +129,38 @@ msgstr "Управление DNS"
 msgid "Systems"
 msgstr "Системы"
 
-#: admin/dns/class_dnsManagement.inc:93 admin/dns/class_dnsManagement.inc:95
-#: admin/dns/class_dnsManagement.inc:101 admin/systems/class_dnsHost.inc:296
+#: admin/dns/class_dnsManagement.inc:91 admin/dns/class_dnsManagement.inc:93
+#: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:296
 #: admin/systems/class_dnsHost.inc:302
 msgid "Could not run ldap2zone"
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:93
+#: admin/dns/class_dnsManagement.inc:91
 msgid "More than one server matches the SOA"
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:95
+#: admin/dns/class_dnsManagement.inc:93
 msgid "Could not find the primary server"
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:107
+#: admin/dns/class_dnsManagement.inc:105
 msgid "Could not get run ldap2zone"
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:109 admin/systems/class_dnsHost.inc:304
+#: admin/dns/class_dnsManagement.inc:107 admin/systems/class_dnsHost.inc:304
 msgid "Ldap2zone"
 msgstr "Ldap2zone"
 
-#: admin/dns/class_dnsManagement.inc:109 admin/systems/class_dnsHost.inc:304
+#: admin/dns/class_dnsManagement.inc:107 admin/systems/class_dnsHost.inc:304
 #, php-format
 msgid "Ldap2Zone called for zone \"%s\""
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:113 admin/systems/class_dnsHost.inc:308
+#: admin/dns/class_dnsManagement.inc:111 admin/systems/class_dnsHost.inc:308
 msgid "Error"
 msgstr "Ошибка"
 
-#: admin/dns/class_dnsManagement.inc:113 admin/systems/class_dnsHost.inc:308
+#: admin/dns/class_dnsManagement.inc:111 admin/systems/class_dnsHost.inc:308
 msgid "Argonaut client needs to be activated to use ldap2zone remotely"
 msgstr ""
 
@@ -476,38 +476,38 @@ msgstr "DNS запись"
 msgid "LDAP error"
 msgstr "Ошибка LDAP"
 
-#: admin/dns/class_dnsZone.inc:534
+#: admin/dns/class_dnsZone.inc:546
 #, php-format
 msgid ""
 "\"%s\" must contain a domain name in lowercase and end with a final "
 "dot.<br/><br/>Example: example.com."
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:537
+#: admin/dns/class_dnsZone.inc:549
 #, php-format
 msgid ""
 "\"%s\" must contain a domain name in lowercase.<br/><br/>Example: "
 "example.com"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:558 admin/dns/class_dnsZone.inc:559
-#: admin/dns/class_dnsZone.inc:561
+#: admin/dns/class_dnsZone.inc:570 admin/dns/class_dnsZone.inc:571
+#: admin/dns/class_dnsZone.inc:573
 msgid "DNS zone"
 msgstr " DNZ зона"
 
-#: admin/dns/class_dnsZone.inc:576
+#: admin/dns/class_dnsZone.inc:588
 msgid "Zone"
 msgstr "Зона"
 
-#: admin/dns/class_dnsZone.inc:580
+#: admin/dns/class_dnsZone.inc:592
 msgid "Zone name"
 msgstr "Имя зоны"
 
-#: admin/dns/class_dnsZone.inc:590
+#: admin/dns/class_dnsZone.inc:602
 msgid "Reverse zones"
 msgstr "Обратные зоны"
 
-#: admin/dns/class_dnsZone.inc:590
+#: admin/dns/class_dnsZone.inc:602
 #, php-format
 msgid ""
 "Reverse zones for this zone in the form xx.xx.in-addr.arpa%1$s or "
@@ -515,19 +515,19 @@ msgid ""
 msgstr ""
 "Обратные зоны для зоны в формате xx.xx.in-addr.arpa%1$s или x.x.ip6.arpa%1$s"
 
-#: admin/dns/class_dnsZone.inc:603
+#: admin/dns/class_dnsZone.inc:615
 msgid "SOA record"
 msgstr "SOA запись"
 
-#: admin/dns/class_dnsZone.inc:606
+#: admin/dns/class_dnsZone.inc:618
 msgid "SOA Record"
 msgstr "SOA Запись"
 
-#: admin/dns/class_dnsZone.inc:610
+#: admin/dns/class_dnsZone.inc:622
 msgid "Primary DNS server"
 msgstr "Первичный DNS сервер"
 
-#: admin/dns/class_dnsZone.inc:610
+#: admin/dns/class_dnsZone.inc:622
 msgid ""
 "Domain name of the name server that was the original or primary source of "
 "data for this zone"
@@ -535,11 +535,11 @@ msgstr ""
 "Доменное имя сервера имен, который будет начальным или первичным источником "
 "данных для этой зоны"
 
-#: admin/dns/class_dnsZone.inc:614
+#: admin/dns/class_dnsZone.inc:626
 msgid "Mail address"
 msgstr "Адрес электронной почты"
 
-#: admin/dns/class_dnsZone.inc:614
+#: admin/dns/class_dnsZone.inc:626
 msgid ""
 "Domain name which specifies the mailbox of the person responsible for this "
 "zone"
@@ -547,37 +547,37 @@ msgstr ""
 "Доменное имя для которой указанный почтовый ящик - человека ответственного "
 "за эту зону"
 
-#: admin/dns/class_dnsZone.inc:618
+#: admin/dns/class_dnsZone.inc:630
 msgid "Serial number"
 msgstr "Serial number"
 
-#: admin/dns/class_dnsZone.inc:618
+#: admin/dns/class_dnsZone.inc:630
 msgid "Version number of the original copy of the zone"
 msgstr "Номер версии неповторимой копии зоны"
 
-#: admin/dns/class_dnsZone.inc:623
+#: admin/dns/class_dnsZone.inc:635
 msgid "Refresh"
 msgstr "Refresh"
 
-#: admin/dns/class_dnsZone.inc:623
+#: admin/dns/class_dnsZone.inc:635
 msgid "Time interval before the zone should be refreshed"
 msgstr "Время по истечению которого зона будет обновлена"
 
-#: admin/dns/class_dnsZone.inc:628
+#: admin/dns/class_dnsZone.inc:640
 msgid "Retry"
 msgstr "Retry"
 
-#: admin/dns/class_dnsZone.inc:628
+#: admin/dns/class_dnsZone.inc:640
 msgid ""
 "Time interval that should elapse before a failed refresh should be retried"
 msgstr ""
 "Время по истечению которого можно будет повторить обновление после ошибки"
 
-#: admin/dns/class_dnsZone.inc:633
+#: admin/dns/class_dnsZone.inc:645
 msgid "Expire"
 msgstr "Expire"
 
-#: admin/dns/class_dnsZone.inc:633
+#: admin/dns/class_dnsZone.inc:645
 msgid ""
 "Time value that specifies the upper limit on the time interval that can "
 "elapse before the zone is no longer authoritative"
@@ -585,21 +585,21 @@ msgstr ""
 "Значение верхней границе времени, по истечению которого зона больше не будет"
 " авторитативной "
 
-#: admin/dns/class_dnsZone.inc:638
+#: admin/dns/class_dnsZone.inc:650
 msgid "TTL"
 msgstr "TTL"
 
-#: admin/dns/class_dnsZone.inc:638
+#: admin/dns/class_dnsZone.inc:650
 msgid "Minimum TTL field that should be exported with any RR from this zone"
 msgstr ""
 "Минимальное значение поля TTL, которое будет экспортировано с каждой RR для "
 "этой зоны"
 
-#: admin/dns/class_dnsZone.inc:649
+#: admin/dns/class_dnsZone.inc:661
 msgid "Records"
 msgstr "Записи"
 
-#: admin/dns/class_dnsZone.inc:653
+#: admin/dns/class_dnsZone.inc:665
 msgid "The DNS records for this zone"
 msgstr "DNS записи зоны"
 
@@ -633,19 +633,19 @@ msgstr "DNS записи для зоны \"%s\""
 msgid "The primary server for zone \"%s\""
 msgstr "Первичный сервер для зоны \"%s\""
 
-#: admin/systems/class_dnsHost.inc:338 admin/systems/class_dnsHost.inc:358
+#: admin/systems/class_dnsHost.inc:353 admin/systems/class_dnsHost.inc:372
 #, php-format
 msgid "%d records were updated from %s to %s in zone %s"
 msgstr "Количество записей, обновленных с %s на %s в зоне %s - %d"
 
-#: admin/systems/class_dnsHost.inc:373
+#: admin/systems/class_dnsHost.inc:385 admin/systems/class_dnsHost.inc:408
+msgid "DNS update"
+msgstr "Обновить DNS"
+
+#: admin/systems/class_dnsHost.inc:447 admin/systems/class_dnsHost.inc:464
 #, php-format
 msgid "%d records were removed in zone %s"
 msgstr "%d записей было удалено в зоне %s"
-
-#: admin/systems/class_dnsHost.inc:382
-msgid "DNS update"
-msgstr "Обновить DNS"
 
 #: admin/systems/dnsrecords.tpl.c:2
 msgid "Insufficient rights"

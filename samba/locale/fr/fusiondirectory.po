@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-21 18:14+0200\n"
+"POT-Creation-Date: 2017-06-07 18:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -306,39 +306,39 @@ msgstr "Permet la connections depuis ces stations seulement"
 msgid "Only allow this user to connect to this list of hosts"
 msgstr "Autoriser seulement cet utilisateur à se connecter sur cet hôte"
 
-#: personal/samba/class_sambaAccount.inc:478
-msgid "Home drive"
-msgstr "Répertoire Home"
-
-#: personal/samba/class_sambaAccount.inc:481
-msgid "Home path"
-msgstr "Chemin du répertoire personnel"
-
+#: personal/samba/class_sambaAccount.inc:479
 #: personal/samba/class_sambaAccount.inc:486
+#, php-format
+msgid "Field \"%s\" is required when \"%s\" is filled! Fill both field or empty them."
+msgstr ""
+"Le champ \"%s\" est requis lorsque \"%s\" est rempli ! Remplissez les deux "
+"champs ou videz les."
+
+#: personal/samba/class_sambaAccount.inc:494
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr "Le gestionnaire d'utilisateurs windows accepte huit clients maximum !"
 
-#: personal/samba/class_sambaAccount.inc:503
-#: personal/samba/class_sambaAccount.inc:529
-#: personal/samba/class_sambaAccount.inc:550
+#: personal/samba/class_sambaAccount.inc:511
+#: personal/samba/class_sambaAccount.inc:537
+#: personal/samba/class_sambaAccount.inc:558
 #: admin/groups/samba/class_sambaGroup.inc:133
 msgid "Warning"
 msgstr "Avertissement"
 
-#: personal/samba/class_sambaAccount.inc:503
+#: personal/samba/class_sambaAccount.inc:511
 #: admin/groups/samba/class_sambaGroup.inc:133
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
 msgstr ""
 "Détection d'un SID Samba non défini. Veuillez fixer ceci manuellement !"
 
-#: personal/samba/class_sambaAccount.inc:530
+#: personal/samba/class_sambaAccount.inc:538
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr ""
 "Impossible de convertir le groupe primaire en un groupe primaire samba : le "
 "groupe ne peut être identifié !"
 
-#: personal/samba/class_sambaAccount.inc:551
+#: personal/samba/class_sambaAccount.inc:559
 msgid ""
 "Cannot convert primary group to samba group: group samba tab is disabled!"
 msgstr ""

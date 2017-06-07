@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-21 18:14+0200\n"
+"POT-Creation-Date: 2017-06-07 18:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -245,68 +245,68 @@ msgstr "GID"
 msgid "Group of user %s"
 msgstr "Skupina uživatele %s"
 
-#: personal/posix/class_posixAccount.inc:753
-#: personal/posix/class_posixAccount.inc:774
-#: personal/posix/class_posixAccount.inc:968
+#: personal/posix/class_posixAccount.inc:775
+#: personal/posix/class_posixAccount.inc:796
+#: personal/posix/class_posixAccount.inc:990
 msgid "Warning"
 msgstr "varování"
 
-#: personal/posix/class_posixAccount.inc:753
+#: personal/posix/class_posixAccount.inc:775
 #, php-format
 msgid "Unknown ID allocation method \"%s\"!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:775
+#: personal/posix/class_posixAccount.inc:797
 #, php-format
 msgid "Timeout while waiting for lock. Ignoring lock from %s!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:802
-#: personal/posix/class_posixAccount.inc:842
-#: personal/posix/class_posixAccount.inc:854
-#: personal/posix/class_posixAccount.inc:858
-#: personal/posix/class_posixAccount.inc:865
-#: personal/posix/class_posixAccount.inc:874
-#: personal/posix/class_posixAccount.inc:936
+#: personal/posix/class_posixAccount.inc:824
+#: personal/posix/class_posixAccount.inc:864
+#: personal/posix/class_posixAccount.inc:876
+#: personal/posix/class_posixAccount.inc:880
+#: personal/posix/class_posixAccount.inc:887
+#: personal/posix/class_posixAccount.inc:896
+#: personal/posix/class_posixAccount.inc:958
 msgid "Error"
 msgstr "chyba"
 
-#: personal/posix/class_posixAccount.inc:802
-#: personal/posix/class_posixAccount.inc:842
-#: personal/posix/class_posixAccount.inc:854
-#: personal/posix/class_posixAccount.inc:858
-#: personal/posix/class_posixAccount.inc:865
-#: personal/posix/class_posixAccount.inc:874
+#: personal/posix/class_posixAccount.inc:824
+#: personal/posix/class_posixAccount.inc:864
+#: personal/posix/class_posixAccount.inc:876
+#: personal/posix/class_posixAccount.inc:880
+#: personal/posix/class_posixAccount.inc:887
+#: personal/posix/class_posixAccount.inc:896
 msgid "Cannot allocate a free ID:"
 msgstr "Není k dispozici volné ID:"
 
-#: personal/posix/class_posixAccount.inc:802
+#: personal/posix/class_posixAccount.inc:824
 #, php-format
 msgid "%sPoolMin >= %sPoolMax!"
 msgstr "%sPoolMin >= %sPoolMax!"
 
-#: personal/posix/class_posixAccount.inc:834
+#: personal/posix/class_posixAccount.inc:856
 msgid "LDAP error"
 msgstr "chyba LDAPu"
 
-#: personal/posix/class_posixAccount.inc:842
+#: personal/posix/class_posixAccount.inc:864
 msgid "sambaUnixIdPool is not unique!"
 msgstr "Identifikátor sambaUnixIdPool není jedinečný!"
 
-#: personal/posix/class_posixAccount.inc:854
-#: personal/posix/class_posixAccount.inc:858
+#: personal/posix/class_posixAccount.inc:876
+#: personal/posix/class_posixAccount.inc:880
 msgid "no ID available!"
 msgstr "Není k dispozici ID!"
 
-#: personal/posix/class_posixAccount.inc:874
+#: personal/posix/class_posixAccount.inc:896
 msgid "maximum tries exceeded!"
 msgstr "překročen maximální počet neúspěšných pokusů!"
 
-#: personal/posix/class_posixAccount.inc:936
+#: personal/posix/class_posixAccount.inc:958
 msgid "Cannot allocate a free ID!"
 msgstr "Není k dispozici volné ID – není co přidělit!"
 
-#: personal/posix/class_posixAccount.inc:968
+#: personal/posix/class_posixAccount.inc:990
 msgid "\"nextIdHook\" is not available. Using default base!"
 msgstr ""
 
@@ -323,10 +323,18 @@ msgid "Posix"
 msgstr "POSIX"
 
 #: config/posix/class_posixConfig.inc:46
+msgid "POSIX groups RDN"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:46
+msgid "The branch where POSIX groups are stored."
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:51
 msgid "Group/user min id"
 msgstr "Nejnižší identifikátor skupiny/uživatele"
 
-#: config/posix/class_posixConfig.inc:47
+#: config/posix/class_posixConfig.inc:52
 msgid ""
 "The minimum assignable user or group id to avoid security leaks with id 0 "
 "accounts."
@@ -334,11 +342,11 @@ msgstr ""
 "Nejnižší umožněný přiřaditelný identifikátor uživatele či skupiny pro "
 "vyloučení bezpečnostních průniků s účty s identifikátorem 0 (root)."
 
-#: config/posix/class_posixConfig.inc:52
+#: config/posix/class_posixConfig.inc:57
 msgid "Next id hook"
 msgstr "Háček příštího identifikátoru"
 
-#: config/posix/class_posixConfig.inc:52
+#: config/posix/class_posixConfig.inc:57
 msgid ""
 "A script to be called for finding the next free id number for users or "
 "groups."
@@ -346,95 +354,95 @@ msgstr ""
 "Skript, který má být volán pro nalezení dalšího volného identifikátoru pro "
 "uživatele nebo skupiny."
 
-#: config/posix/class_posixConfig.inc:56
+#: config/posix/class_posixConfig.inc:61
 msgid "Base number for user id"
 msgstr "Od jakého čísla začít přidělovat identifikátory uživatelů"
 
-#: config/posix/class_posixConfig.inc:57
+#: config/posix/class_posixConfig.inc:62
 msgid "Where to start looking for a new free user id."
 msgstr "Kde začít s hledáním volných identifikátorů pro nové uživatele."
 
-#: config/posix/class_posixConfig.inc:62
+#: config/posix/class_posixConfig.inc:67
 msgid "Base number for group id"
 msgstr "Od jakého čísla začít přidělovat identifikátory skupin"
 
-#: config/posix/class_posixConfig.inc:63
+#: config/posix/class_posixConfig.inc:68
 msgid "Where to start looking for a new free group id."
 msgstr "Kde začít s hledáním volných identifikátorů pro nové skupiny."
 
-#: config/posix/class_posixConfig.inc:68
+#: config/posix/class_posixConfig.inc:73
 msgid "Id allocation method"
 msgstr "Metoda přiřazování identifikátorů"
 
-#: config/posix/class_posixConfig.inc:68
+#: config/posix/class_posixConfig.inc:73
 msgid "Method to allocate user/group ids"
 msgstr "Způsob přiřazování identifikátorů uživatelů/skupin"
 
-#: config/posix/class_posixConfig.inc:71
+#: config/posix/class_posixConfig.inc:76
 msgid "Traditional"
 msgstr "Tradiční"
 
-#: config/posix/class_posixConfig.inc:71
+#: config/posix/class_posixConfig.inc:76
 msgid "Samba unix id pool"
 msgstr "Rozsah unixových identifikátorů pro Samba"
 
-#: config/posix/class_posixConfig.inc:74
+#: config/posix/class_posixConfig.inc:79
 msgid "Pool user id min"
 msgstr "Nejnižší identifikátor uživatele"
 
-#: config/posix/class_posixConfig.inc:74
+#: config/posix/class_posixConfig.inc:79
 msgid "Minimum value for user id when using pool method"
 msgstr ""
 "Nejnižší umožněná hodnota pro identifikátor uživatele při použití způsobu "
 "rozsahu"
 
-#: config/posix/class_posixConfig.inc:79
+#: config/posix/class_posixConfig.inc:84
 msgid "Pool user id max"
 msgstr "Nejvyšší identifikátor uživatele"
 
-#: config/posix/class_posixConfig.inc:79
+#: config/posix/class_posixConfig.inc:84
 msgid "Maximum value for user id when using pool method"
 msgstr ""
 "Nejvyšší umožněná hodnota pro identifikátor uživatele při použití způsobu "
 "rozsahu"
 
-#: config/posix/class_posixConfig.inc:84
+#: config/posix/class_posixConfig.inc:89
 msgid "Pool group id min"
 msgstr "Nejnižší identifikátor skupiny"
 
-#: config/posix/class_posixConfig.inc:84
+#: config/posix/class_posixConfig.inc:89
 msgid "Minimum value for group id when using pool method"
 msgstr ""
 "Nejnižší umožněná hodnota pro identifikátor skupiny při použití způsobu "
 "rozsahu"
 
-#: config/posix/class_posixConfig.inc:89
+#: config/posix/class_posixConfig.inc:94
 msgid "Pool group id max"
 msgstr "Nejvyšší identifikátor skupiny"
 
-#: config/posix/class_posixConfig.inc:89
+#: config/posix/class_posixConfig.inc:94
 msgid "Maximum value for group id when using pool method"
 msgstr ""
 "Nejvyšší umožněná hodnota pro identifikátor skupiny při použití způsobu "
 "rozsahu"
 
-#: config/posix/class_posixConfig.inc:96
+#: config/posix/class_posixConfig.inc:101
 msgid "Shells"
 msgstr ""
 
-#: config/posix/class_posixConfig.inc:100
+#: config/posix/class_posixConfig.inc:105
 msgid "Available shells"
 msgstr "Dostupné shelly"
 
-#: config/posix/class_posixConfig.inc:100
+#: config/posix/class_posixConfig.inc:105
 msgid "Available POSIX shells for FD users."
 msgstr "POSIX shelly, dostupné pro uživatele F.D."
 
-#: config/posix/class_posixConfig.inc:107
+#: config/posix/class_posixConfig.inc:112
 msgid "Default shell"
 msgstr ""
 
-#: config/posix/class_posixConfig.inc:107
+#: config/posix/class_posixConfig.inc:112
 msgid "Shell used by default when activating Unix tab."
 msgstr ""
 

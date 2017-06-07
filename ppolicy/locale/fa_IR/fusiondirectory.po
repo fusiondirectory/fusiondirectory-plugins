@@ -8,8 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-21 18:14+0200\n"
+"POT-Creation-Date: 2017-06-07 18:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Persian (Iran) (https://www.transifex.com/fusiondirectory/teams/12202/fa_IR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -101,17 +102,39 @@ msgstr ""
 msgid "Locked accounts"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:71
-#: addons/dashboard/class_dashBoardPPolicy.inc:124
+#: addons/dashboard/class_dashBoardPPolicy.inc:57
+msgid "Login"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:58
+#: addons/dashboard/class_dashBoardPPolicy.inc:63
+msgid "Name"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:59
+#: addons/dashboard/class_dashBoardPPolicy.inc:65
+msgid "Phone number"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:60
+msgid "Expiration date"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:64
+msgid "Email"
+msgstr "پست الکترونیک"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:85
+#: addons/dashboard/class_dashBoardPPolicy.inc:138
 msgid "Configuration error"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:72
+#: addons/dashboard/class_dashBoardPPolicy.inc:86
 #, php-format
 msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:125
+#: addons/dashboard/class_dashBoardPPolicy.inc:139
 #, php-format
 msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
 msgstr ""

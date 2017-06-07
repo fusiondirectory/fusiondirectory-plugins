@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-21 18:14+0200\n"
+"POT-Creation-Date: 2017-06-07 18:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Paola Penati <paola.penati@opensides.be>, 2017\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -19,9 +19,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/dhcp/class_dhcpConfig.inc:28
-#: admin/dhcp/class_dhcpConfiguration.inc:531
 #: admin/dhcp/class_dhcpConfiguration.inc:532
-#: admin/dhcp/class_dhcpConfiguration.inc:534
+#: admin/dhcp/class_dhcpConfiguration.inc:533
+#: admin/dhcp/class_dhcpConfiguration.inc:535
 msgid "DHCP configuration"
 msgstr "Configurazione del DHCP"
 
@@ -88,7 +88,7 @@ msgstr "Nome"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:366
 #: admin/dhcp/class_dhcpConfiguration.inc:407
-#: admin/dhcp/class_dhcpConfiguration.inc:575
+#: admin/dhcp/class_dhcpConfiguration.inc:576
 msgid "Global options"
 msgstr "Opzioni globali"
 
@@ -104,58 +104,58 @@ msgstr ""
 "La configurazione DHCP impostata è sconosciuta. Contatta l'amministratore "
 "del sistema."
 
-#: admin/dhcp/class_dhcpConfiguration.inc:553
+#: admin/dhcp/class_dhcpConfiguration.inc:554
 msgid "DHCP Objects"
 msgstr "Oggetti DHCP"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:563
+#: admin/dhcp/class_dhcpConfiguration.inc:564
 msgid "The DHCP sections handled by this server"
 msgstr "Sezioni DHCP gestite da questo server"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:574
+#: admin/dhcp/class_dhcpConfiguration.inc:575
 msgid "Logging"
 msgstr "Giornale di sistema"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:576
+#: admin/dhcp/class_dhcpConfiguration.inc:577
 msgid "Class"
 msgstr "Categoria"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:577
+#: admin/dhcp/class_dhcpConfiguration.inc:578
 msgid "Subclass"
 msgstr "Sottoclasse"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:578
+#: admin/dhcp/class_dhcpConfiguration.inc:579
 #: admin/dhcp/sections/class_dhcpHost.inc:40
 msgid "Host"
 msgstr "Host"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:579
+#: admin/dhcp/class_dhcpConfiguration.inc:580
 msgid "Group"
 msgstr "Gruppo"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:580
+#: admin/dhcp/class_dhcpConfiguration.inc:581
 #: admin/dhcp/sections/class_dhcpPool.inc:39
 msgid "Pool"
 msgstr "Deposito"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:581
+#: admin/dhcp/class_dhcpConfiguration.inc:582
 #: admin/dhcp/sections/class_dhcpSubnet.inc:39
 msgid "Subnet"
 msgstr "Sottorete"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:582
+#: admin/dhcp/class_dhcpConfiguration.inc:583
 msgid "Failover peer"
 msgstr "Partner per la presa di controllo"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:583
+#: admin/dhcp/class_dhcpConfiguration.inc:584
 msgid "Shared network"
 msgstr "Rete condivisa"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:584
+#: admin/dhcp/class_dhcpConfiguration.inc:585
 msgid "DNS update key"
 msgstr "Stile di aggiornamento dinamico del DNS"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:585
+#: admin/dhcp/class_dhcpConfiguration.inc:586
 msgid "DNS update zones"
 msgstr "Aggiornamento delle zone DNS"
 
@@ -500,7 +500,7 @@ msgstr "Token Ring"
 msgid "Hardware address"
 msgstr "Indirizzo hardware"
 
-#: admin/dhcp/sections/class_dhcpHost.inc:85
+#: admin/dhcp/sections/class_dhcpHost.inc:90
 #, php-format
 msgid "\"%s\" is not a valid IP address."
 msgstr "\"%s\" non è un indirizzo IP valido."

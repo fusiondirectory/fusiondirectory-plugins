@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-21 18:14+0200\n"
+"POT-Creation-Date: 2017-06-07 18:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Paola Penati <paola.penati@opensides.be>, 2017\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -104,17 +104,39 @@ msgstr "Account scaduti"
 msgid "Locked accounts"
 msgstr "Account bloccati"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:71
-#: addons/dashboard/class_dashBoardPPolicy.inc:124
+#: addons/dashboard/class_dashBoardPPolicy.inc:57
+msgid "Login"
+msgstr "Nome utente"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:58
+#: addons/dashboard/class_dashBoardPPolicy.inc:63
+msgid "Name"
+msgstr "Nome"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:59
+#: addons/dashboard/class_dashBoardPPolicy.inc:65
+msgid "Phone number"
+msgstr "Numero di telefono"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:60
+msgid "Expiration date"
+msgstr "Data di scadenza"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:64
+msgid "Email"
+msgstr "Indirizzo di posta elettronica"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:85
+#: addons/dashboard/class_dashBoardPPolicy.inc:138
 msgid "Configuration error"
 msgstr "Errore di configurazione"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:72
+#: addons/dashboard/class_dashBoardPPolicy.inc:86
 #, php-format
 msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
 msgstr "La ppolicy \"%s\" predefinta non é stata trovata nell'annuario LDAP"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:125
+#: addons/dashboard/class_dashBoardPPolicy.inc:139
 #, php-format
 msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
 msgstr ""
