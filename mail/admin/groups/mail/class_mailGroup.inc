@@ -35,7 +35,7 @@ class GroupMailsAttribute extends MailsAttribute
   }
 }
 
-class mailgroup extends simplePlugin
+class mailGroup extends simplePlugin
 {
   var $displayHeader  = TRUE;
   var $objectclasses  = array('fdGroupMail');

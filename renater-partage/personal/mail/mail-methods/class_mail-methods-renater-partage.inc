@@ -252,6 +252,23 @@ class mailMethodRenaterPartage extends mailMethod
         $personalTab    = $this->parent->parent->by_object['personalInfo'];
         $account['co']  = $personalTab->co;
       }
+    } else {
+      /* Sync partage group fields */
+      if (isset($this->parent->parent->by_object['partageGroup']) && $this->parent->parent->by_object['partageGroup']->is_account) {
+        $partageFields = array(
+          'displayName' => 'displayName',
+          'fdRenaterPartageGroupHideInGal' => 'zimbraHideInGal',
+          'fdRenaterPartageGroupMailStatus' => 'zimbraMailStatus',
+          'fdRenaterPartageGroupSendShareMessageToNewMembers' => 'zimbraDistributionListSendShareMessageToNewMembers',
+          'fdRenaterPartageGroupNotes' => 'zimbraNotes'
+        );
+        $partageTab = $this->parent->parent->by_object['partageGroup'];
+        foreach ($partageFields as $fdField => $partageField) {
+          if (isset($partageTab->$fdField)) {
+            $account[$partageField] = $partageTab->$fdField;
+          }
+        }
+      }
     }
 
     return $account;

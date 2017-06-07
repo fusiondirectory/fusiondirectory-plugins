@@ -26,8 +26,41 @@ attributetype ( 1.3.6.1.4.1.38414.63.1.4 NAME 'fdRenaterPartageServerDeletionTyp
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
+attributetype ( 1.3.6.1.4.1.38414.63.11.1 NAME 'fdRenaterPartageGroupHideInGal'
+  DESC 'FusionDirectory - Hide Renater PARTAGE group from global catalog'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.63.11.2 NAME 'fdRenaterPartageGroupMailStatus'
+  DESC 'FusionDirectory - enabled or disabled'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.63.11.3 NAME 'fdRenaterPartageGroupSendShareMessageToNewMembers'
+  DESC 'FusionDirectory - Send share message to new Renater PARTAGE group members'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.63.11.4 NAME 'fdRenaterPartageGroupNotes'
+  DESC 'FusionDirectory - Notes about the group'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
 # Objectclasses
 objectclass (1.3.6.1.4.1.38414.63.2.1 NAME 'fdRenaterPartageServer' SUP top AUXILIARY
   DESC 'FusionDirectory - Renater Partage server description'
   MUST ( cn $ fdRenaterPartageServerUri $ fdRenaterPartageServerUserAgent )
   MAY  ( fdRenaterPartageServerMailDomain $ fdRenaterPartageServerDeletionType ))
+
+objectclass (1.3.6.1.4.1.38414.63.2.2 NAME 'fdRenaterPartageGroup' SUP top AUXILIARY
+  DESC 'FusionDirectory - Renater Partage group'
+  MUST ( )
+  MAY  ( displayName $ fdRenaterPartageGroupHideInGal $ fdRenaterPartageGroupMailStatus
+  $ fdRenaterPartageGroupSendShareMessageToNewMembers $ fdRenaterPartageGroupNotes ))
+
