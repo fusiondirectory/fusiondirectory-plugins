@@ -110,8 +110,8 @@ class workstationGeneric extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
-    $this->attributesAccess['ipHostNumber']->setUnique('whole');
-    $this->attributesAccess['macAddress']->setUnique('whole');
+    $this->attributesAccess['ipHostNumber']->setUnique('whole', '(objectClass=ipHost)');
+    $this->attributesAccess['macAddress']->setUnique('whole', '(objectClass=ieee802Device)');
   }
 
   function remove_from_parent()
