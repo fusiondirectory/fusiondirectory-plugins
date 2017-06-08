@@ -124,7 +124,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   /* Special LDAP treatment that this attribute does after plugin ldap save */
   function postLdapSave ($ldap, $fullrewrite, $ipchanged, $oldips, $newips, $macchanged, $oldmacs, $newmacs)
   {
-    global $config;
+    global $config, $ui;
 
     if ($this->plugin->is_template) {
       return;
@@ -187,6 +187,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       $errors = $dhcpTabs->save();
       msg_dialog::displayChecks($errors);
     }
+    $errors = array();
     foreach ($values as $value) {
       $configDn = $value[0];
       if (preg_match('/([^,]+,'.preg_quote(get_ou('dhcpRDN')).'.*'.preg_quote($config->current['BASE']).')$/', $value[0], $m)) {
@@ -194,11 +195,22 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       } else {
         trigger_error('Failed to parse '.$value[0].' to find DHCP configuration DN');
       }
+      /* Check locking */
+      if ($locks = get_locks($configDn)) {
+        $errors[] = sprintf(_('"%s" is locked (by "%s" since %s), could not save modifications to this DHCP configuration'), $locks[0]['object'], $locks[0]['user'], date('%Y-%m-%d, %H:%M:%S', $locks[0]['timestamp']));
+        continue;
+      } else {
+        /* Lock the current entry */
+        add_lock($configDn, $ui->dn);
+      }
       $dhcpTabs = objects::open($configDn, 'dhcpConfiguration');
       $dhcpTabs->getBaseObject()->attributesAccess['dhcpSections']->addHost($value[0], $cn, $value[1], $value[2]);
       $errors = $dhcpTabs->save();
+      del_lock($configDn);
       msg_dialog::displayChecks($errors);
     }
+
+    return $errors;
   }
 
   function check ()
