@@ -64,6 +64,9 @@ class csvimport extends simplePlugin
             array(',', ';'), '', NULL,
             'import_file'
           ),
+          new HiddenAttribute (
+            'valueSeparator', FALSE, '|'
+          ),
           new SetAttribute(
             new StringAttribute(
               _('Fixed values'), _('Some fixed values that you might wanna use in the filling of the template.'),
@@ -274,7 +277,8 @@ class csvimport extends simplePlugin
     if (is_array($i)) {
       $value = array();
       foreach ($i as $j) {
-        $value[] = $this->compute_attribute_value($attribute, $row, $j);
+        $v = explode($this->valueSeparator, $this->compute_attribute_value($attribute, $row, $j));
+        $value = array_merge($value, $v);
       }
       return $value;
     } else {
