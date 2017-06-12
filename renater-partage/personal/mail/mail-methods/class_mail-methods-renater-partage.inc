@@ -203,7 +203,7 @@ class mailMethodRenaterPartage extends mailMethod
     foreach ($keys as $key) {
       if (isset($this->cachedAccount['account'][$key])) {
         $this->cachedAccount['account'][$key] = array_values($this->cachedAccount['account'][$key]);
-        if (is_array($this->cachedAccount['account'][$key][0])) {
+        if (isset($this->cachedAccount['account'][$key][0]) && is_array($this->cachedAccount['account'][$key][0])) {
           $this->cachedAccount['account'][$key] = $this->cachedAccount['account'][$key][0];
         }
       }
