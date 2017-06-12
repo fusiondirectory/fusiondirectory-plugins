@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-07 18:50+0200\n"
+"POT-Creation-Date: 2017-06-12 18:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Paola Penati <paola.penati@opensides.be>, 2017\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -45,7 +45,7 @@ msgstr "Ramo in cui le configurazioni DHCP saranno immagazzinate"
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:39
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:39
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:39
-#: admin/systems/class_dhcpSystem.inc:233
+#: admin/systems/class_dhcpSystem.inc:245
 msgid "DHCP"
 msgstr "DHCP"
 
@@ -541,24 +541,31 @@ msgstr "Indirizzo MAC da utilizzare nella registrazione dell'host DHCP"
 msgid "The IP address to use in the DHCP host record"
 msgstr "Indirizzo IP da utilizzare nella registrazione dell'host DHCP"
 
-#: admin/systems/class_dhcpSystem.inc:211
+#: admin/systems/class_dhcpSystem.inc:200
+#, php-format
+msgid ""
+"\"%s\" is locked (by \"%s\" since %s), could not save modifications to this "
+"DHCP configuration"
+msgstr ""
+
+#: admin/systems/class_dhcpSystem.inc:223
 #, php-format
 msgid "The value for multivaluated field \"%s\" is not an array"
 msgstr "Il valore del campo \"%s\" multivalutato non é un array"
 
-#: admin/systems/class_dhcpSystem.inc:234
+#: admin/systems/class_dhcpSystem.inc:246
 msgid "Edit the DHCP zones of a system"
 msgstr "Modifica le zone DHCP di un sistema"
 
-#: admin/systems/class_dhcpSystem.inc:248
+#: admin/systems/class_dhcpSystem.inc:260
 msgid "DHCP zones"
 msgstr "Zone DHCP"
 
-#: admin/systems/class_dhcpSystem.inc:252
+#: admin/systems/class_dhcpSystem.inc:264
 msgid "DHCP hosts declared for this system"
 msgstr "Hosts DHCP dichiarati per questo sistema"
 
-#: admin/systems/class_dhcpSystem.inc:310
+#: admin/systems/class_dhcpSystem.inc:322
 #, php-format
 msgid "The ip %s is not in the network %s/%d"
 msgstr "L'ip %s non è nella rete %s/%d"
