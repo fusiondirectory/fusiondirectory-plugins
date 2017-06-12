@@ -1,8 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2009-2010 Bas Tichelaar
-  Copyright (C) 2013-2016  FusionDirectory
+  Copyright (C) 2017 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,35 +18,17 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-class GroupMailsAttribute extends MailsAttribute
-{
-  function getForbiddenValues ()
-  {
-    $forbidden = array_values($this->getValue());
-    $forbidden = array_merge($forbidden, array_values($this->plugin->attributesAccess['gosaMailAlternateAddress']->getValue()));
-    $forbidden[] = $this->plugin->attributesAccess['mail']->getValue();
-    return $forbidden;
-  }
-
-  function getFilterBlackList ()
-  {
-    return array('mail' => $this->getForbiddenValues());
-  }
-}
-
-class mailGroup extends simplePlugin
+class sympaAliasPartage extends simplePlugin
 {
   var $displayHeader  = TRUE;
-  var $objectclasses  = array('fdGroupMail');
-  /* Return plugin information for acl handling */
+  var $objectclasses  = array('fdRenaterPartageSympaAlias');
+
   static function plInfo()
   {
     return array(
-      'plShortName'    => _('Mail'),
-      'plDescription'  => _('Group mail options'),
-      'plSelfModify'   => FALSE,
-      'plPriority'     => 10,
-      'plObjectType'   => array('group', 'ogroup-user'),
+      'plShortName'    => _('Partage'),
+      'plDescription'  => _('Partage sympa options'),
+      'plObjectType'   => array('sympaAlias'),
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
@@ -58,30 +39,30 @@ class mailGroup extends simplePlugin
       'main' => array(
         'name'  => _('Information'),
         'attrs' => array(
-          new MailAttribute (
-            _('Primary address'), _('The primary mail address'),
-            'mail', TRUE
-          ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Server'), _('Email server'),
             'gosaMailServer', TRUE,
             array('')
           ),
-          new SetAttribute (
-            new StringAttribute (
-              _('Alternative addresses'), _('Alternative mail addresses for the group'),
-              'gosaMailAlternateAddress'
-            )
-          ),
-          new GroupMailsAttribute (
-            _('Forward messages to non group members'), _('Forward messages to non group members'),
-            'gosaMailForwardingAddress'
+          new StringAttribute (
+            _('Display name'), _('Name to display for this group'),
+            'displayName'
           ),
           new BooleanAttribute (
-            _('Only allowed to receive local mail'), _('Whether this group mail is only allowed to receive messages from local senders'),
-            'fdGroupMailLocalOnly', FALSE,
+            _('Hide from global catalog'), _('Whether this group should be hidden from the global catalog'),
+            'fdRenaterPartageGroupHideInGal', FALSE,
             FALSE
-          )
+          ),
+          new HiddenAttribute (
+            'fdRenaterPartageGroupMailStatus', TRUE, 'enabled'
+          ),
+          new HiddenAttribute (
+            'fdRenaterPartageGroupSendShareMessageToNewMembers', FALSE, 'FALSE'
+          ),
+          new TextAreaAttribute (
+            _('Notes'), _('Notes about this group'),
+            'fdRenaterPartageGroupNotes', FALSE
+          ),
         )
       )
     );
@@ -91,7 +72,7 @@ class mailGroup extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
+    $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethodRenaterPartage::get_server_list()));
     $this->attributesAccess['gosaMailServer']->setSubmitForm('mailServerChanged');
     $this->mailServerChanged();
   }
@@ -101,6 +82,8 @@ class mailGroup extends simplePlugin
   {
     if (($name == 'cn') && isset($this->parent)) {
       return $this->parent->getBaseObject()->$name;
+    } elseif (($name == 'mail') && isset($this->parent)) {
+      return $this->parent->getBaseObject()->cn.'@'.$this->getEmailDomain();
     } else {
       /* Calling default behaviour */
       return parent::__get($name);
@@ -111,9 +94,22 @@ class mailGroup extends simplePlugin
   {
     if (($name == 'cn') && isset($this->parent)) {
       return isset($this->parent->getBaseObject()->$name);
+    } elseif (($name == 'mail') && isset($this->parent)) {
+      return isset($this->parent->getBaseObject()->cn);
     } else {
       /* Calling default behaviour */
       return parent::__isset($name);
+    }
+  }
+
+  private function getEmailDomain()
+  {
+    $servers  = mailMethod::getMailServers();
+    $infos    = $servers[$this->gosaMailServer];
+    if (isset($infos['domain'])) {
+      return $infos['domain'];
+    } else {
+      return '';
     }
   }
 
@@ -125,19 +121,13 @@ class mailGroup extends simplePlugin
     } else {
       $method = mailMethod::getServerMethod($this->gosaMailServer);
     }
-    $this->mailMethod = mailMethod::getInstance($method, $this);
+    $this->mailMethod = mailMethod::getInstance($method, $this, 'sympaAlias');
     $this->mailMethod->fixAttributesOnLoad();
-
-    /* Initialize configured values */
-    if (!$this->is_template && $this->is_account && $this->initially_was_account) {
-      $this->attributesAccess['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
-      $this->attributesAccess['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
-    }
   }
 
   protected function shouldSave()
   {
-    /* mail method might have something to save (like password change from main tab for instance) */
+    /* mail method might have something to save */
     return TRUE;
   }
 

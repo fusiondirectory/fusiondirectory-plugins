@@ -278,13 +278,17 @@ class mailMethodRenaterPartage extends mailMethod
       }
     } else {
       /* Sync partage group fields */
-      if (isset($this->parent->parent->by_object['partageGroup']) && $this->parent->parent->by_object['partageGroup']->is_account) {
+      $partageTabName = 'partageGroup';
+      if ($this->type == 'sympaAlias') {
+        $partageTabName = 'sympaAliasPartage';
+      }
+      if (isset($this->parent->parent->by_object[$partageTabName]) && $this->parent->parent->by_object[$partageTabName]->is_account) {
         $partageFields = array(
           'displayName' => 'displayName',
           'fdRenaterPartageGroupMailStatus' => 'zimbraMailStatus',
           'fdRenaterPartageGroupNotes' => 'zimbraNotes'
         );
-        $partageTab = $this->parent->parent->by_object['partageGroup'];
+        $partageTab = $this->parent->parent->by_object[$partageTabName];
         foreach ($partageFields as $fdField => $partageField) {
           if (isset($partageTab->$fdField)) {
             $account[$partageField] = $partageTab->$fdField;
@@ -413,7 +417,7 @@ class mailMethodRenaterPartage extends mailMethod
   {
     global $config;
 
-    if ($this->type != 'group') {
+    if (!in_array($this->type, array('group','sympaAlias'))) {
       return TRUE;
     }
 
@@ -424,7 +428,9 @@ class mailMethodRenaterPartage extends mailMethod
     }
     $mainTab = $this->parent->parent->getBaseObject();
     $newmembers = array();
-    if (isset($mainTab->member)) {
+    if ($this->type == 'sympaAlias') {
+      $newmembers = $mainTab->mail;
+    } elseif (isset($mainTab->member)) {
       $ldap = $config->get_ldap_link();
       $dns = $mainTab->member;
       foreach ($dns as $dn) {

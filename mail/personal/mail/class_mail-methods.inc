@@ -343,10 +343,12 @@ class mailMethod
     $prefix     = preg_replace("/\\\\([\.\/])/", "\\1", $prefix);
     $acc_string = preg_replace("/\\\\([\.\/])/", "\\1", $acc_string);
 
-    $domain = $mailpart = "";
-    $mail   = $this->parent->mail;
-    if (preg_match("/\@/", $mail)) {
-      list($mailpart,$domain) = explode("@", $mail);
+    $mail = $domain = $mailpart = '';
+    if (isset($this->parent->mail)) {
+      $mail = $this->parent->mail;
+      if (preg_match('/\@/', $mail)) {
+        list($mailpart,$domain) = explode('@', $mail);
+      }
     }
 
     /* Create account_id
@@ -424,10 +426,12 @@ class mailMethod
     $prefix     = preg_replace("/\\\\([\.\/])/", "\\1", $prefix);
     $acc_string = preg_replace("/\\\\([\.\/])/", "\\1", $acc_string);
 
-    $domain = $mailpart = "";
-    $mail = $this->parent->mail;
-    if (preg_match("/\@/", $mail)) {
-      list($mailpart,$domain) = explode("@", $mail);
+    $mail = $domain = $mailpart = '';
+    if (isset($this->parent->mail)) {
+      $mail = $this->parent->mail;
+      if (preg_match('/\@/', $mail)) {
+        list($mailpart,$domain) = explode('@', $mail);
+      }
     }
 
     /* Create account_id */
@@ -634,11 +638,11 @@ class mailMethod
     return isset(static::get_server_list()[$server]);
   }
 
-  static public function getInstance($class, $parent)
+  static public function getInstance($class, $parent, $type = NULL)
   {
     if ($parent instanceof mailAccount) {
       $type = 'user';
-    } else {
+    } elseif ($type === NULL) {
       $type = 'group';
     }
     $obj = new $class($parent, $type);

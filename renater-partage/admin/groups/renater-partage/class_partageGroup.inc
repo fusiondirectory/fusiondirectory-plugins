@@ -52,10 +52,11 @@ class partageGroup extends simplePlugin
           new SelectAttribute (
             _('Type'), _('Type of PARTAGE group'),
             'fdRenaterPartageGroupMailStatus', TRUE,
-            array('enabled','disabled')
+            array('enabled','disabled'), 'enabled',
+            array(_('Distribution list'), _('Group'))
           ),
           new BooleanAttribute (
-            _('Send share message to new members'), _('Send share message to new members'),
+            _('Alert new members'), _('Send a message to alert new members they joined this group'),
             'fdRenaterPartageGroupSendShareMessageToNewMembers', FALSE,
             TRUE
           ),
