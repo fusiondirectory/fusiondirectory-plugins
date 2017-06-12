@@ -56,7 +56,7 @@ class partageGroup extends simplePlugin
             array(_('Distribution list'), _('Group'))
           ),
           new BooleanAttribute (
-            _('Alert new members'), _('Send a message to alert new members they joined this group'),
+            _('Alert new members'), _('Send a message to alert new members, they have joined this group'),
             'fdRenaterPartageGroupSendShareMessageToNewMembers', FALSE,
             TRUE
           ),
