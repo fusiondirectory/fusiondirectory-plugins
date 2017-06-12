@@ -436,6 +436,7 @@ class mailMethodRenaterPartage extends mailMethod
       }
     } elseif (isset($mainTab->memberUid)) {
       $ldap = $config->get_ldap_link();
+      $ldap->cd($config->current['BASE']);
       $uids = $mainTab->memberUid;
       foreach ($uids as $uid) {
         $ldap->search('(&(objectClass=inetOrgPerson)(uid='.$uid.'))');
@@ -552,13 +553,17 @@ class mailMethodRenaterPartage extends mailMethod
     $infos = $servers[$this->parent->gosaMailServer];
     $this->account_id = $this->initial_account_id;
     if ($this->account_exists()) {
-      if ($infos['delete_type'] == 'delete') {
-        $answer = $this->query('DeleteAccount', array('name' => $this->initial_account_id));
-      } elseif ($infos['delete_type'] == 'disable') {
-        $answer = $this->query('ModifyAccount', array('name' => $this->initial_account_id, 'zimbraAccountStatus' => 'closed'));
+      if ($this->type == 'user') {
+        if ($infos['delete_type'] == 'delete') {
+          $answer = $this->query('DeleteAccount', array('name' => $this->initial_account_id));
+        } elseif ($infos['delete_type'] == 'disable') {
+          $answer = $this->query('ModifyAccount', array('name' => $this->initial_account_id, 'zimbraAccountStatus' => 'closed'));
+        } else {
+          $answer = FALSE;
+          $this->error = _('Invalid value in fdRenaterPartageServerDeletionType');
+        }
       } else {
-        $answer = FALSE;
-        $this->error = _('Invalid value in fdRenaterPartageServerDeletionType');
+        $answer = $this->query('DeleteGroup', array('name' => $this->initial_account_id));
       }
       return ($answer !== FALSE);
     }
