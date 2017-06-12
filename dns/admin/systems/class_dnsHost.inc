@@ -400,8 +400,14 @@ class dnsHost extends simplePlugin
 
       $oldzones = $this->attributeInitialValue('fdDNSZoneDn');
       if (!empty($oldzones)) {
-        $messages += static::removeIpsFromZones($oldzones, $oldips);
-        $messages += static::removeCnFromZones($oldzones, $oldcn);
+        $messages = array_merge(
+          $messages,
+          static::removeIpsFromZones($oldzones, $oldips)
+        );
+        $messages = array_merge(
+          $messages,
+          static::removeCnFromZones($oldzones, $oldcn)
+        );
       }
     }
     if (!empty($messages)) {
