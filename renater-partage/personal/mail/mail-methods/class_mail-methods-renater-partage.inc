@@ -75,6 +75,8 @@ class mailMethodRenaterPartage extends mailMethod
 
     if (is_array($post)) {
       $post = http_build_query($post);
+      /* PARTAGE API does not support array[0]= syntax, it wants array[]= */
+      $post = preg_replace('/%5B[0-9]+%5D/simU', '%5B%5D', $post);
     }
 
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $command, '<b>MAIL: Command</b>');
@@ -180,9 +182,31 @@ class mailMethodRenaterPartage extends mailMethod
         'id'      => $this->account_id,
         'time'    => time()
       );
+      $this->cleanCachedAccountArrays();
       return TRUE;
     } else {
       return FALSE;
+    }
+  }
+
+  /*
+   * PARTAGE API returns weird stuff like:
+   * [members] => Array ( member => Array ( user1, user2 ) )
+   * or:
+   * [members] => Array ( member => user1 )
+   * We want:
+   * [members] => Array ( user1, user2 )
+   * */
+  private function cleanCachedAccountArrays()
+  {
+    $keys = array('members', 'zimbraMailAlias', 'zimbraAllowFromAddress');
+    foreach ($keys as $key) {
+      if (isset($this->cachedAccount['account'][$key])) {
+        $this->cachedAccount['account'][$key] = array_values($this->cachedAccount['account'][$key]);
+        if (is_array($this->cachedAccount['account'][$key][0])) {
+          $this->cachedAccount['account'][$key] = $this->cachedAccount['account'][$key][0];
+        }
+      }
     }
   }
 
@@ -257,9 +281,7 @@ class mailMethodRenaterPartage extends mailMethod
       if (isset($this->parent->parent->by_object['partageGroup']) && $this->parent->parent->by_object['partageGroup']->is_account) {
         $partageFields = array(
           'displayName' => 'displayName',
-          'fdRenaterPartageGroupHideInGal' => 'zimbraHideInGal',
           'fdRenaterPartageGroupMailStatus' => 'zimbraMailStatus',
-          'fdRenaterPartageGroupSendShareMessageToNewMembers' => 'zimbraDistributionListSendShareMessageToNewMembers',
           'fdRenaterPartageGroupNotes' => 'zimbraNotes'
         );
         $partageTab = $this->parent->parent->by_object['partageGroup'];
@@ -268,6 +290,8 @@ class mailMethodRenaterPartage extends mailMethod
             $account[$partageField] = $partageTab->$fdField;
           }
         }
+        $account['zimbraHideInGal'] = ($partageTab->fdRenaterPartageGroupHideInGal ? 'TRUE' : 'FALSE');
+        $account['zimbraDistributionListSendShareMessageToNewMembers'] = ($partageTab->fdRenaterPartageGroupSendShareMessageToNewMembers ? 'TRUE' : 'FALSE');
       }
     }
 
@@ -311,14 +335,14 @@ class mailMethodRenaterPartage extends mailMethod
     /* Step 2 - We compute diff from PARTAGE data */
     $this->cacheAccount();
     foreach ($account as $key => $value) {
-      if (isset($this->cacheAccount['account'][$key]) && ($this->cacheAccount['account'][$key] == $value)) {
+      if (isset($this->cachedAccount['account'][$key]) && ($this->cachedAccount['account'][$key] == $value)) {
         unset($account[$key]);
-      } elseif (!isset($this->cacheAccount['account'][$key]) && empty($value)) {
+      } elseif (!isset($this->cachedAccount['account'][$key]) && empty($value)) {
         unset($account[$key]);
       }
     }
     /* If value of zimbraAccountStatus is not something we understand, do not touch it (example: closed) */
-    if (isset($this->cacheAccount['account']['zimbraAccountStatus']) && !in_array($this->cacheAccount['account']['zimbraAccountStatus'], array('active', 'locked'))) {
+    if (isset($this->cachedAccount['account']['zimbraAccountStatus']) && !in_array($this->cachedAccount['account']['zimbraAccountStatus'], array('active', 'locked'))) {
       unset($account['zimbraAccountStatus']);
     }
 
@@ -395,8 +419,8 @@ class mailMethodRenaterPartage extends mailMethod
 
     $this->cacheAccount();
     $oldmembers = array();
-    if (isset($this->cacheAccount['account']['members'])) {
-      $oldmembers = $this->cacheAccount['account']['members'];
+    if (isset($this->cachedAccount['account']['members'])) {
+      $oldmembers = $this->cachedAccount['account']['members'];
     }
     $mainTab = $this->parent->parent->getBaseObject();
     $newmembers = array();
