@@ -68,5 +68,6 @@ objectclass (1.3.6.1.4.1.38414.63.2.3 NAME 'fdRenaterPartageSympaAlias' SUP top 
   DESC 'FusionDirectory - Renater Partage group'
   MUST ( gosaMailServer )
   MAY  ( displayName $ fdRenaterPartageGroupHideInGal $ fdRenaterPartageGroupMailStatus
-  $ fdRenaterPartageGroupSendShareMessageToNewMembers $ fdRenaterPartageGroupNotes ))
+  $ fdRenaterPartageGroupSendShareMessageToNewMembers $ fdRenaterPartageGroupNotes
+  $ gosaMailAlternateAddress ))
 

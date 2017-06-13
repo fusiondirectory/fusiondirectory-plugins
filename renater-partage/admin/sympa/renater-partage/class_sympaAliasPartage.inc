@@ -63,6 +63,12 @@ class sympaAliasPartage extends simplePlugin
             _('Notes'), _('Notes about this group'),
             'fdRenaterPartageGroupNotes', FALSE
           ),
+          new SetAttribute (
+            new StringAttribute (
+              _('Alternative addresses'), _('Alternative mail addresses for the list'),
+              'gosaMailAlternateAddress'
+            )
+          ),
         )
       )
     );
