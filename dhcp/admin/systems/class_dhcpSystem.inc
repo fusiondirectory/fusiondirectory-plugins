@@ -21,6 +21,7 @@
 class DhcpHostsAttribute extends OrderedArrayAttribute
 {
   private $nodesCache = array();
+  private static $templateValueSeparator = '^';
 
   function __construct ($label, $description, $ldapName, array $values = array(), $acl = '')
   {
@@ -78,7 +79,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   function loadAdditionalTemplatesValues ()
   {
     for ($i = 0; $i < $this->plugin->attrs[$this->getLdapName()]['count']; $i++) {
-      $this->value[] = explode('|', $this->plugin->attrs[$this->getLdapName()][$i]);
+      $this->value[] = explode(static::$templateValueSeparator, $this->plugin->attrs[$this->getLdapName()][$i]);
     }
   }
 
@@ -256,7 +257,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   function fillLdapValue (&$attrs)
   {
     if ($this->plugin->is_template) {
-      $attrs[$this->getLdapName()] = array_map(function ($v) {return implode('|', $v);}, $this->value);
+      $attrs[$this->getLdapName()] = array_map(function ($v) {return implode(static::$templateValueSeparator, $v);}, $this->value);
     }
   }
 }

@@ -21,6 +21,8 @@
 /* DnsRecords edition showing only records for our host */
 class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
 {
+  private static $templateValueSeparator = '^';
+
   function __construct ($label, $description, $ldapName, $zoneDn, $defaultValue = array(), $acl = "")
   {
     parent::__construct ($label, $description, $ldapName, FALSE, $defaultValue, $acl);
@@ -54,7 +56,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     $this->zoneName = $attrs['zoneName'][0];
 
     for ($i = 0; $i < $this->plugin->attrs[$this->getLdapName()]['count']; $i++) {
-      $this->value[] = explode('|', $this->plugin->attrs[$this->getLdapName()][$i]);
+      $this->value[] = explode(static::$templateValueSeparator, $this->plugin->attrs[$this->getLdapName()][$i]);
     }
   }
 
@@ -88,7 +90,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
   function fillLdapValue (&$attrs)
   {
     if ($this->plugin->is_template) {
-      $attrs[$this->getLdapName()] = array_map(function ($v) {return implode('|', $v);}, $this->value);
+      $attrs[$this->getLdapName()] = array_map(function ($v) {return implode(static::$templateValueSeparator, $v);}, $this->value);
     }
   }
 
