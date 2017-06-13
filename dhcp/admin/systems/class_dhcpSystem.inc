@@ -67,11 +67,11 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       $this->loadChoices();
       if (!$this->plugin->is_template) {
         $this->loadRecords();
-        $this->plugin->is_account = !empty($this->value);
       } elseif (isset($this->plugin->attrs[$this->getLdapName()]['count'])) {
         $this->value = array();
         $this->loadAdditionalTemplatesValues();
       }
+      $this->plugin->is_account = !empty($this->value);
     }
   }
 
@@ -99,13 +99,23 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
 
   function setChoices(array $parentNodes, array $macs, array $ips)
   {
-    if (is_object($this->plugin) && $this->plugin->is_template) {
-      $macs[] = '%macAddress%';
-      $ips[]  = '%ipHostNumber%';
-    }
     $this->attribute->attributes[0]->setChoices(array_keys($parentNodes), array_values($parentNodes));
-    $this->attribute->attributes[1]->setChoices($macs);
-    $this->attribute->attributes[2]->setChoices($ips);
+    if (is_object($this->plugin) && $this->plugin->is_template) {
+      $this->attribute->attributes[1] = new StringAttribute(
+        '', _('The Mac address to use in the DHCP host record'),
+        $this->getLdapName().'_mac', TRUE,
+        '%macAddress%'
+      );
+      $this->attribute->attributes[2] = new StringAttribute(
+        '', _('The IP address to use in the DHCP host record'),
+        $this->getLdapName().'_ip', TRUE,
+        '%ipHostNumber%'
+      );
+      $this->attribute->setAttributes($this->attribute->attributes);
+    } else {
+      $this->attribute->attributes[1]->setChoices($macs);
+      $this->attribute->attributes[2]->setChoices($ips);
+    }
   }
 
   function loadRecords()
