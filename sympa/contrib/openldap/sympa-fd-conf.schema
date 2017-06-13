@@ -1,0 +1,16 @@
+##
+## sympa-fd.schema - Needed by Fusion Directory for managing sympa plugin configuration backend
+##
+
+attributetype ( 1.3.6.1.4.1.38414.64.1.1 NAME 'fdSympaRDN'
+  DESC 'FusionDirectory - Sympa RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+objectclass ( 1.3.6.1.4.1.38414.64.2.1 NAME 'fdSympaPluginConf'
+  DESC 'FusionDirectory sympa plugin configuration'
+  SUP top AUXILIARY
+  MUST ( cn )
+  MAY ( fdSympaRDN ) )

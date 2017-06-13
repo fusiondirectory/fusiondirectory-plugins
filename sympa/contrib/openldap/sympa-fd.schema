@@ -26,12 +26,12 @@ attributetype ( 1.3.6.1.4.1.38414.12.1.3 NAME 'sympaServerPassword'
 
 # Object Class
 objectclass (1.3.6.1.4.1.38414.12.2.1 NAME 'sympaAlias'
-        DESC 'FusionDirectory - Mail alias class'
+        DESC 'FusionDirectory - Sympa alias class'
         MUST ( cn $ mail $ sympaServerURL )
         MAY  ( description ) )
 
 objectclass (1.3.6.1.4.1.38414.12.2.2 NAME 'sympaServer'
         SUP top AUXILIARY
-        DESC 'FusionDirectory - Mail alias class'
+        DESC 'FusionDirectory - Sympa server'
         MUST ( sympaServerURL )
         MAY ( sympaServerUser $ sympaServerPassword ) )
