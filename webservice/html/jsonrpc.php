@@ -149,8 +149,6 @@ class fdRPCService
     }
     $this->ldap->cd($config->current['BASE']);
 
-    logging::log('debug', 'JSON-RPC', 'Method '.$method, array(), 'Params:'.print_r($params, TRUE));
-
     return call_user_func_array(array($this, '_'.$method), $params);
   }
 
