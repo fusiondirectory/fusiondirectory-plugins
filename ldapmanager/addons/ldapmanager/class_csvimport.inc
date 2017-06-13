@@ -117,18 +117,7 @@ class csvimport extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
     $this->attributesAccess['type']->setSubmitForm('typeChanged');
-    $choices  = array();
-    $types    = objects::types();
-    foreach ($types as $type) {
-      if (in_array($type, departmentManagement::getDepartmentTypes())) {
-        continue;
-      }
-      $infos = objects::infos($type);
-      if ($infos['templateActive']) {
-        $choices[$type] = $infos['name'];
-      }
-    }
-    asort($choices);
+    $choices = template::getTemplatedTypes();
     $this->attributesAccess['type']->setChoices(array_keys($choices), array_values($choices));
     /* People usually import users, so set it as default */
     $this->attributesAccess['type']->setDefaultValue('USER');
