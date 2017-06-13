@@ -64,13 +64,21 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   {
     parent::setParent($plugin);
     if (is_object($this->plugin)) {
+      $this->loadChoices();
       if (!$this->plugin->is_template) {
-        $this->loadChoices();
         $this->loadRecords();
         $this->plugin->is_account = !empty($this->value);
       } elseif (isset($this->plugin->attrs[$this->getLdapName()]['count'])) {
         $this->value = array();
+        $this->loadAdditionalTemplatesValues();
       }
+    }
+  }
+
+  function loadAdditionalTemplatesValues ()
+  {
+    for ($i = 0; $i < $this->plugin->attrs[$this->getLdapName()]['count']; $i++) {
+      $this->value[] = explode('|', $this->plugin->attrs[$this->getLdapName()][$i]);
     }
   }
 
@@ -91,6 +99,10 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
 
   function setChoices(array $parentNodes, array $macs, array $ips)
   {
+    if (is_object($this->plugin) && $this->plugin->is_template) {
+      $macs[] = '%macAddress%';
+      $ips[]  = '%ipHostNumber%';
+    }
     $this->attribute->attributes[0]->setChoices(array_keys($parentNodes), array_values($parentNodes));
     $this->attribute->attributes[1]->setChoices($macs);
     $this->attribute->attributes[2]->setChoices($ips);
@@ -230,6 +242,13 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       }
     }
   }
+
+  function fillLdapValue (&$attrs)
+  {
+    if ($this->plugin->is_template) {
+      $attrs[$this->getLdapName()] = array_map(function ($v) {return implode('|', $v);}, $this->value);
+    }
+  }
 }
 
 class dhcpSystem extends simplePlugin
@@ -335,6 +354,11 @@ class dhcpSystem extends simplePlugin
   {
     global $config;
 
+    $errors = parent::ldap_save();
+    if (!empty($errors)) {
+      return $errors;
+    }
+
     $ldap = $config->get_ldap_link();
     $baseObject = $this->parent->getBaseObject();
     return $this->attributesAccess['dhcpHosts']->postLdapSave(
@@ -358,5 +382,13 @@ class dhcpSystem extends simplePlugin
       $this->attributesAccess['dhcpHosts']->setValue(array());
       return $this->ldap_save();
     }
+  }
+
+  function adapt_from_template($attrs, $skip = array())
+  {
+    parent::adapt_from_template($attrs, $skip);
+    $this->attributesAccess['dhcpHosts']->loadChoices();
+    $this->attributesAccess['dhcpHosts']->loadAdditionalTemplatesValues();
+    $this->is_account = $this->is_this_account($this->attrs);
   }
 }
