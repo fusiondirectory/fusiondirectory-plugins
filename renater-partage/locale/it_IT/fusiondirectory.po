@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-12 18:00+0200\n"
+"POT-Creation-Date: 2017-06-13 20:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Paola Penati <paola.penati@opensides.be>, 2017\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -99,7 +99,7 @@ msgstr "Partage"
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:30
 msgid "Partage sympa options"
-msgstr ""
+msgstr "Opzioni sympa di Partage"
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:40
 #: admin/groups/renater-partage/class_partageGroup.inc:41
@@ -112,7 +112,7 @@ msgstr "Server"
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:43
 msgid "Email server"
-msgstr ""
+msgstr "Server di posta elettronica "
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:48
 #: admin/groups/renater-partage/class_partageGroup.inc:44
@@ -144,29 +144,37 @@ msgstr "Note"
 msgid "Notes about this group"
 msgstr "Note su questo gruppo"
 
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:149
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:68
+msgid "Alternative addresses"
+msgstr "Indirizzi alternativi"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:68
+msgid "Alternative mail addresses for the list"
+msgstr "Indirizzo mail alternativo per la lista"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:155
 #, php-format
 msgid "Mail method cannot connect: %s"
 msgstr "L'algoritmo di posta elettronica non riesce a connettersi : %s"
 
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:152
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:158
 #, php-format
 msgid "Cannot update mailbox: %s"
 msgstr "Impossibile aggiornare l'account : %s"
 
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:173
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:177
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:179
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:183
 msgid "Mail error"
 msgstr "Errore del server di posta elettronica"
 
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:173
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:179
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr ""
 "Impossibile rimuovere la mailbox, il metodo di posta non riesce a "
 "connettersi a: %s"
 
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:177
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:183
 #, php-format
 msgid "Cannot remove mailbox: %s"
 msgstr "Impossibile rimuovere mailbox : %s"
@@ -185,7 +193,7 @@ msgstr "Tipo di gruppo PARTAGE"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:56
 msgid "Distribution list"
-msgstr ""
+msgstr "Lista di distribuzione"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:56
 msgid "Group"
@@ -193,11 +201,13 @@ msgstr "Gruppo"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:59
 msgid "Alert new members"
-msgstr ""
+msgstr "Avvisare nuovi membri"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:59
-msgid "Send a message to alert new members they joined this group"
+msgid "Send a message to alert new members, they have joined this group"
 msgstr ""
+"Invia un messaggio per avvisare i nuovi membri che hanno aderito a questo "
+"gruppo"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:28
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:29
