@@ -68,18 +68,21 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       $this->loadChoices();
       if (!$this->plugin->is_template) {
         $this->loadRecords();
-      } elseif (isset($this->plugin->attrs[$this->getLdapName()]['count'])) {
+      } else {
         $this->value = array();
         $this->loadAdditionalTemplatesValues();
       }
       $this->plugin->is_account = !empty($this->value);
+      $this->plugin->initially_was_account = $this->plugin->is_account;
     }
   }
 
   function loadAdditionalTemplatesValues ()
   {
-    for ($i = 0; $i < $this->plugin->attrs[$this->getLdapName()]['count']; $i++) {
-      $this->value[] = explode(static::$templateValueSeparator, $this->plugin->attrs[$this->getLdapName()][$i]);
+    if (isset($this->plugin->attrs[$this->getLdapName()]['count'])) {
+      for ($i = 0; $i < $this->plugin->attrs[$this->getLdapName()]['count']; $i++) {
+        $this->value[] = explode(static::$templateValueSeparator, $this->plugin->attrs[$this->getLdapName()][$i]);
+      }
     }
   }
 
