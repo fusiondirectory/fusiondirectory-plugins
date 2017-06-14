@@ -429,7 +429,14 @@ class mailMethodRenaterPartage extends mailMethod
     $mainTab = $this->parent->parent->getBaseObject();
     $newmembers = array();
     if ($this->type == 'sympaAlias') {
-      $newmembers = $mainTab->mail;
+      $newmember = '';
+      /* We take the shortest mail to filter out -editor and other addresses */
+      foreach ($mainTab->mail as $mail) {
+        if (empty($newmember) || (strlen($mail) < strlen($newmember))) {
+          $newmember = $mail;
+        }
+      }
+      $newmembers = array($newmember);
     } elseif (isset($mainTab->member)) {
       $ldap = $config->get_ldap_link();
       $dns = $mainTab->member;

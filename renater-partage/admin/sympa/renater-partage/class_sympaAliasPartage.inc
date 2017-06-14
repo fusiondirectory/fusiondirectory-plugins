@@ -56,8 +56,10 @@ class sympaAliasPartage extends simplePlugin
           new HiddenAttribute (
             'fdRenaterPartageGroupMailStatus', TRUE, 'enabled'
           ),
-          new HiddenAttribute (
-            'fdRenaterPartageGroupSendShareMessageToNewMembers', FALSE, 'FALSE'
+          new BooleanAttribute (
+            'fdRenaterPartageGroupSendShareMessageToNewMembers', '',
+            'fdRenaterPartageGroupSendShareMessageToNewMembers', FALSE,
+            FALSE
           ),
           new TextAreaAttribute (
             _('Notes'), _('Notes about this group'),
@@ -78,6 +80,7 @@ class sympaAliasPartage extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
+    $this->attributesAccess['fdRenaterPartageGroupSendShareMessageToNewMembers']->setVisible(FALSE);
     $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethodRenaterPartage::get_server_list()));
     $this->attributesAccess['gosaMailServer']->setSubmitForm('mailServerChanged');
     $this->mailServerChanged();
