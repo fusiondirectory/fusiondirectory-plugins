@@ -215,6 +215,29 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     );
   }
 
+  protected function loadReverseZones ($attrs)
+  {
+    global $config;
+
+    /* Get reverse zones */
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($attrs['dn']);
+    $ldap->search('(&(objectClass=dNSZone)(relativeDomainName=@)(zoneName=*))', array('zoneName'), 'one');
+    $reverseZones = array();
+    while ($subattrs = $ldap->fetch()) {
+      $reverseZones[$subattrs['dn']] = $subattrs['zoneName'][0];
+    }
+    if ($this->plugin instanceof dnsZone) {
+      $this->plugin->reverseZones = array_values($reverseZones);
+      $this->plugin->attributesAccess['reverseZones']->setInitialValue($this->plugin->reverseZones);
+    } else {
+      $this->reverseZones = array_values($reverseZones);
+      $this->sOARecord    = $attrs['sOARecord'][0];
+    }
+
+    return $reverseZones;
+  }
+
   protected function loadAttrValue ($attrs)
   {
     global $config;
@@ -262,20 +285,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
           }
         }
       }
-      /* Get reverse zone */
-      $ldap->cd($attrs['dn']);
-      $ldap->search('(&(objectClass=dNSZone)(relativeDomainName=@)(zoneName=*))', array('zoneName'), 'one');
-      $reverseZones = array();
-      while ($subattrs = $ldap->fetch()) {
-        $reverseZones[$subattrs['dn']] = $subattrs['zoneName'][0];
-      }
-      if ($this->plugin instanceof dnsZone) {
-        $this->plugin->reverseZones = array_values($reverseZones);
-        $this->plugin->attributesAccess['reverseZones']->setInitialValue($this->plugin->reverseZones);
-      } else {
-        $this->reverseZones = array_values($reverseZones);
-        $this->sOARecord    = $attrs['sOARecord'][0];
-      }
+      $reverseZones = $this->loadReverseZones($attrs);
+      /* Search reverse zones for our IPs */
       foreach ($reverseZones as $reverseZoneDn => $reverseZoneName) {
         $ipv6 = preg_match('/ip6/', $reverseZoneName);
         $baseIp = preg_replace('/\.(in-addr|ip6)\.arpa\.?$/i', '', $reverseZoneName);
@@ -356,13 +367,21 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     foreach ($this->value as $line) {
       list ($domain, $type, $content, $reverse) = $line;
       if (!empty($reverse)) {
-        if (!isset($ptrs[$reverse])) {
-          $ptrs[$reverse] = array();
+        if (!DnsRecordAttribute::matchReverseZone($type, $content, $reverse)) {
+          msg_dialog::display(
+            _('Error'),
+            sprintf(_('The IP %s does not match the selected reverse %s, it has been ignored'), $content, $reverse),
+            ERROR_DIALOG
+          );
+        } else {
+          if (!isset($ptrs[$reverse])) {
+            $ptrs[$reverse] = array();
+          }
+          if (!isset($ptrs[$reverse][$content])) {
+            $ptrs[$reverse][$content] = array();
+          }
+          $ptrs[$reverse][$content][] = $domain;
         }
-        if (!isset($ptrs[$reverse][$content])) {
-          $ptrs[$reverse][$content] = array();
-        }
-        $ptrs[$reverse][$content][] = $domain;
       }
       if (empty($domain)) {
         if ($type == 'nSRecord') {

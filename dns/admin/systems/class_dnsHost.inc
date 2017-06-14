@@ -54,6 +54,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     $ldap->cat($this->getZoneDn());
     $attrs = $ldap->fetch();
     $this->zoneName = $attrs['zoneName'][0];
+    $this->loadReverseZones($attrs);
 
     for ($i = 0; $i < $this->plugin->attrs[$this->getLdapName()]['count']; $i++) {
       $this->value[] = explode(static::$templateValueSeparator, $this->plugin->attrs[$this->getLdapName()][$i]);
