@@ -39,7 +39,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     if (is_object($this->plugin)) {
       if (!$this->plugin->is_template) {
         $this->loadRecords();
-      } elseif (isset($this->plugin->attrs[$this->getLdapName()]['count'])) {
+      } else {
         $this->value = array();
         $this->loadAdditionalTemplatesValues();
       }
@@ -56,8 +56,10 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     $this->zoneName = $attrs['zoneName'][0];
     $this->loadReverseZones($attrs);
 
-    for ($i = 0; $i < $this->plugin->attrs[$this->getLdapName()]['count']; $i++) {
-      $this->value[] = explode(static::$templateValueSeparator, $this->plugin->attrs[$this->getLdapName()][$i]);
+    if (isset($this->plugin->attrs[$this->getLdapName()]['count'])) {
+      for ($i = 0; $i < $this->plugin->attrs[$this->getLdapName()]['count']; $i++) {
+        $this->value[] = explode(static::$templateValueSeparator, $this->plugin->attrs[$this->getLdapName()][$i]);
+      }
     }
   }
 
