@@ -316,6 +316,12 @@ class dhcpSystem extends simplePlugin
     return (count($this->dhcpHosts) > 0);
   }
 
+  function setTemplate ($bool)
+  {
+    parent::setTemplate($bool);
+    $this->attributesAccess['dhcpHosts']->setParent($this);
+  }
+
   function save_object()
   {
     parent::save_object();
