@@ -245,7 +245,8 @@ class dnsHost extends simplePlugin
         $ldap->cat($dn);
         if ($attrs = $ldap->fetch()) {
           list ($fqdn) = explode(' ', $attrs['sOARecord'][0]);
-          if ($fqdn == $cn.'.'.$attrs['zoneName'][0]) {
+          $servers = dnsManagement::findServerByFQDN($fqdn, $dn);
+          if (in_array($this->dn, $servers)) {
             $fqdn = '<strong>'.$fqdn.'</strong>';
             if (class_available('supportDaemon')) {
               $id = 'ldap2zone_refresh_'.base64_encode($attrs['zoneName'][0]);
