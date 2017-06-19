@@ -164,6 +164,11 @@ class dnsHost extends simplePlugin
   {
     global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
+    $this->reloadZoneChoices();
+  }
+
+  protected function reloadZoneChoices()
+  {
     /* List DNS zones we can read */
     $this->zonesCache = objects::ls('dnsZone', NULL, NULL, '', TRUE);
     /* Check if some values are missing */
@@ -426,6 +431,7 @@ class dnsHost extends simplePlugin
   function adapt_from_template($attrs, $skip = array())
   {
     parent::adapt_from_template($attrs, $skip);
+    $this->reloadZoneChoices();
     $this->zoneChanged();
     if (isset($this->attributesInfo['records'])) {
       foreach ($this->attributesInfo['records']['attrs'] as &$attr) {
