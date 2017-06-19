@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-13 20:03+0200\n"
+"POT-Creation-Date: 2017-06-16 22:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: d.oertel <d.oertel@uib.de>, 2017\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +28,7 @@ msgstr "Anwendungen"
 
 #: config/applications/class_applicationsPluginConfig.inc:29
 msgid "Applications plugin configuration"
-msgstr ""
+msgstr "Konfiguration des Anwendungsplugin"
 
 #: config/applications/class_applicationsPluginConfig.inc:43
 msgid "Application RDN"
@@ -40,11 +40,11 @@ msgstr "Zweig in welchem Anwendungen gespeichert werden"
 
 #: config/applications/class_applicationsPluginConfig.inc:48
 msgid "Web applications RDN"
-msgstr ""
+msgstr "Webanwendungs RDN"
 
 #: config/applications/class_applicationsPluginConfig.inc:48
 msgid "Branch in which web applications will be stored"
-msgstr ""
+msgstr "Zweig in welchem Webanwendungen gespeichert werden "
 
 #: config/applications/class_applicationsPluginConfig.inc:53
 msgid "Show web applications in menu"
@@ -52,7 +52,7 @@ msgstr "Webanwendungen im Menü anzeigen"
 
 #: config/applications/class_applicationsPluginConfig.inc:53
 msgid "Whether to show web applications in FD main menu"
-msgstr ""
+msgstr "Webanwendungen im FD Hauptmenü anzeigen"
 
 #: config/applications/class_applicationsPluginConfig.inc:56
 msgid "None"
@@ -177,7 +177,7 @@ msgstr "Web Anwendung"
 
 #: admin/applications/class_webApplication.inc:29
 msgid "Web applicationts names, icons and links"
-msgstr ""
+msgstr "Name, Icons und Links der Webanwendung"
 
 #: admin/applications/class_webApplication.inc:49
 msgid "Name"
@@ -193,7 +193,7 @@ msgstr "URL"
 
 #: admin/applications/class_webApplication.inc:57
 msgid "Link to this application"
-msgstr ""
+msgstr "Link zu dieser Anwendung"
 
 #: admin/applications/class_webApplication.inc:61
 msgid "Display Name"
@@ -201,15 +201,15 @@ msgstr "Anzeigename"
 
 #: admin/applications/class_webApplication.inc:61
 msgid "Displayed name for links to this application"
-msgstr ""
+msgstr "Anzeigename des Links zu dieser Anwendung"
 
 #: admin/applications/class_webApplication.inc:75
 msgid "Icon location"
-msgstr ""
+msgstr "Speicherort der Icons"
 
 #: admin/applications/class_webApplication.inc:75
 msgid "Usual path to this application icon"
-msgstr ""
+msgstr "Üblicher Pfad zu diesem Anwendungsicon"
 
 #: admin/roles/class_applicationRights.inc:31
 msgid "Applications allowed for this role"
@@ -220,5 +220,5 @@ msgid "Application list"
 msgstr "Anwendungsliste"
 
 #: admin/roles/class_applicationRights.inc:49
-msgid "The applications users with this role are allowed to launch"
+msgid "The list of applications that users of this role can connect to"
 msgstr ""
