@@ -80,6 +80,8 @@ class posixAccount extends simplePlugin
   var $objectclasses = array('posixAccount', 'shadowAccount');
   protected $locks = array();
 
+  protected $fromTemplate = FALSE;
+
   static function plInfo()
   {
     return array(
@@ -524,6 +526,10 @@ class posixAccount extends simplePlugin
         } else {
           $tabObject  = objects::create('group');
         }
+        if ($this->fromTemplate) {
+          /* When creating a user through a template we bypass ACLs */
+          $tabObject->setIgnoreAcls(TRUE);
+        }
 
         $baseObject = $tabObject->getBaseObject();
 
@@ -736,6 +742,8 @@ class posixAccount extends simplePlugin
     } elseif (count($this->host) > 0) {
       $this->trustMode = 'byhost';
     }
+
+    $this->fromTemplate = TRUE;
   }
 
   function foreignKeyUpdate ($field, $oldvalue, $newvalue, $source)
