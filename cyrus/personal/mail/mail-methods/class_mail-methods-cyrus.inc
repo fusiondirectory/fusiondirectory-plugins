@@ -509,8 +509,7 @@ class mailMethodCyrus extends mailMethod
         if (!$sieve->sieve_getscript('fusiondirectory')) {
           $this->error = sprintf(_('Cannot retrieve SIEVE script: %s'), to_string($sieve->error_raw));
           @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $sieve->error_raw,
-              "<b>SIEVE: Connot read 'fusiondirectory' sieve script.</b>");
-          $this->error = $sieve->error_raw;
+              "<b>SIEVE: Cannot read 'fusiondirectory' sieve script.</b>");
           return FALSE;
         }
 
@@ -588,6 +587,7 @@ class mailMethodCyrus extends mailMethod
     }
 
     $sieve->sieve_logout();
+    return TRUE;
   }
 
   static public function get_server_list()
