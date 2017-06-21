@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-13 20:03+0200\n"
+"POT-Creation-Date: 2017-06-21 11:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Arabic (https://www.transifex.com/fusiondirectory/teams/12202/ar/)\n"
@@ -56,37 +56,37 @@ msgid ""
 "supported by PARTAGE. %s will be sent to PARTAGE."
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:451
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:458
 msgid "PARTAGE error"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:452
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:459
 #, php-format
 msgid "Several users have uid \"%s\". Ignoring this member."
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:491
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:504
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:498
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:511
 msgid "An account with the same email address already exists in Partage"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:569
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:576
 msgid "Invalid value in fdRenaterPartageServerDeletionType"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:606
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:613
 msgid "Never"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:613
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:620
 msgid "Last login"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:614
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:621
 msgid "Account status"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:614
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:621
 msgid "Unknown"
 msgstr ""
 
@@ -132,45 +132,45 @@ msgstr ""
 msgid "Whether this group should be hidden from the global catalog"
 msgstr ""
 
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:63
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:65
 #: admin/groups/renater-partage/class_partageGroup.inc:64
 msgid "Notes"
 msgstr ""
 
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:63
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:65
 #: admin/groups/renater-partage/class_partageGroup.inc:64
 msgid "Notes about this group"
 msgstr ""
 
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:68
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:70
 msgid "Alternative addresses"
 msgstr ""
 
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:68
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:70
 msgid "Alternative mail addresses for the list"
-msgstr ""
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:155
-#, php-format
-msgid "Mail method cannot connect: %s"
 msgstr ""
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:158
 #, php-format
+msgid "Mail method cannot connect: %s"
+msgstr ""
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:161
+#, php-format
 msgid "Cannot update mailbox: %s"
 msgstr ""
 
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:179
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:183
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:182
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:186
 msgid "Mail error"
 msgstr ""
 
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:179
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:182
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr ""
 
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:183
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:186
 #, php-format
 msgid "Cannot remove mailbox: %s"
 msgstr ""

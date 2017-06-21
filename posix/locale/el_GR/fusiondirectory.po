@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-13 20:03+0200\n"
+"POT-Creation-Date: 2017-06-21 11:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -18,92 +18,92 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: personal/posix/class_posixAccount.inc:86
-#: personal/posix/class_posixAccount.inc:115
+#: personal/posix/class_posixAccount.inc:88
+#: personal/posix/class_posixAccount.inc:117
 msgid "Unix"
 msgstr "Unix"
 
-#: personal/posix/class_posixAccount.inc:87
+#: personal/posix/class_posixAccount.inc:89
 msgid "Edit users POSIX settings"
 msgstr "Επεξεργασία ρυθμίσεων χρηστών POSIX"
 
-#: personal/posix/class_posixAccount.inc:119
+#: personal/posix/class_posixAccount.inc:121
 msgid "Home directory"
 msgstr "Προσωπικός κατάλογος"
 
-#: personal/posix/class_posixAccount.inc:119
+#: personal/posix/class_posixAccount.inc:121
 msgid "The path to the home directory of this user"
 msgstr "Η διαδρομή για τον αρχικό κατάλογο του χρήστη"
 
-#: personal/posix/class_posixAccount.inc:124
+#: personal/posix/class_posixAccount.inc:126
 msgid "Shell"
 msgstr "Κέλυφος"
 
-#: personal/posix/class_posixAccount.inc:124
+#: personal/posix/class_posixAccount.inc:126
 msgid "Which shell should be used when this user log in"
 msgstr "Ποιο κέλυφος πρέπει να χρησιμοποιηθεί όταν ο χρήστης συνδεθεί"
 
-#: personal/posix/class_posixAccount.inc:126
+#: personal/posix/class_posixAccount.inc:128
 msgid "unconfigured"
 msgstr "μη ρυθμισμένο"
 
-#: personal/posix/class_posixAccount.inc:130
+#: personal/posix/class_posixAccount.inc:132
 msgid "Primary group"
 msgstr "Κύρια ομάδα"
 
-#: personal/posix/class_posixAccount.inc:130
+#: personal/posix/class_posixAccount.inc:132
 msgid "Primary group for this user"
 msgstr "Κύρια ομάδα του χρήστη"
 
-#: personal/posix/class_posixAccount.inc:134
+#: personal/posix/class_posixAccount.inc:136
 msgid "Status"
 msgstr "Κατάσταση"
 
-#: personal/posix/class_posixAccount.inc:134
+#: personal/posix/class_posixAccount.inc:136
 msgid "Status of this user unix account"
 msgstr "Κατάσταση του λογαριασμού unix του χρήστη"
 
-#: personal/posix/class_posixAccount.inc:138
+#: personal/posix/class_posixAccount.inc:140
 msgid "Force user/group id"
 msgstr "Εξαναγκασμός user/group id"
 
-#: personal/posix/class_posixAccount.inc:138
+#: personal/posix/class_posixAccount.inc:140
 msgid "Force user id and group id values for this user"
 msgstr ""
 "Υποχρέωση συμπλήρωσης τιμών για user id και group id για αυτόν τον χρήστη"
 
-#: personal/posix/class_posixAccount.inc:142
+#: personal/posix/class_posixAccount.inc:144
 msgid "User id"
 msgstr "User id"
 
-#: personal/posix/class_posixAccount.inc:142
+#: personal/posix/class_posixAccount.inc:144
 msgid "User id value for this user"
 msgstr "Τιμή User id για αυτόν τον χρήστη."
 
-#: personal/posix/class_posixAccount.inc:147
+#: personal/posix/class_posixAccount.inc:149
 msgid "Group id"
 msgstr "Group id"
 
-#: personal/posix/class_posixAccount.inc:147
+#: personal/posix/class_posixAccount.inc:149
 msgid "Group id value for this user"
 msgstr "Τιμή Group id για αυτόν τον χρήστη"
 
-#: personal/posix/class_posixAccount.inc:154
-#: personal/posix/class_posixAccount.inc:157
+#: personal/posix/class_posixAccount.inc:156
+#: personal/posix/class_posixAccount.inc:159
 msgid "Group membership"
 msgstr "Μέλη ομάδας"
 
-#: personal/posix/class_posixAccount.inc:161
+#: personal/posix/class_posixAccount.inc:163
 msgid "Account"
 msgstr "Λογαριασμός"
 
-#: personal/posix/class_posixAccount.inc:165
+#: personal/posix/class_posixAccount.inc:167
 msgid "User must change password on first login"
 msgstr ""
 "Ο χρήστης θα πρέπει να αλλάξει τον κωδικό πρόσβασης κατά την πρώτη του "
 "σύνδεση"
 
-#: personal/posix/class_posixAccount.inc:165
+#: personal/posix/class_posixAccount.inc:167
 msgid ""
 "User must change password on first login (needs a value for Delay before "
 "forcing password change)"
@@ -112,21 +112,21 @@ msgstr ""
 " Καθυστέρηση δηλώνει το πόσες φορές μπορεί ο χρήστης να συνδεθεί πριν "
 "αναγκαστεί να αλλάξει συνθηματικό)"
 
-#: personal/posix/class_posixAccount.inc:169
+#: personal/posix/class_posixAccount.inc:171
 msgid "Minimum delay between password changes (days)"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:169
+#: personal/posix/class_posixAccount.inc:171
 msgid ""
 "The user won't be able to change his password before this number of days "
 "(leave empty to disable)"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:174
+#: personal/posix/class_posixAccount.inc:176
 msgid "Delay before forcing password change (days)"
 msgstr "Καθυστέρηση πριν την υποχρεωτική αλλαγή κωδικού πρόσβασης (σε ημέρες)"
 
-#: personal/posix/class_posixAccount.inc:174
+#: personal/posix/class_posixAccount.inc:176
 msgid ""
 "The user will be forced to change his password after this number of days "
 "(leave empty to disable)"
@@ -134,22 +134,22 @@ msgstr ""
 "Ο χρήστης θα υποχρεωθεί να αλλάξει τον κωδικό πρόσβασής του μετά από αυτό "
 "τον αριθμό ημερών (αφήστε κενό για απενεργοποίηση)"
 
-#: personal/posix/class_posixAccount.inc:179
+#: personal/posix/class_posixAccount.inc:181
 msgid "Password expiration date"
 msgstr "Ημερομηνία λήξης κωδικού πρόσβασης"
 
-#: personal/posix/class_posixAccount.inc:179
+#: personal/posix/class_posixAccount.inc:181
 msgid ""
 "Date after which this user password will expire (leave empty to disable)"
 msgstr ""
 "Ημερομηνία μετά από την οποία θα λήγει ο κωδικός πρόσβασης (αφήστε κενό για "
 "απενεργοποίηση)"
 
-#: personal/posix/class_posixAccount.inc:184
+#: personal/posix/class_posixAccount.inc:186
 msgid "Delay of inactivity before disabling user (days)"
 msgstr "Ημέρες αδράνειας πριν από την απενεργοποίηση του χρήστη"
 
-#: personal/posix/class_posixAccount.inc:184
+#: personal/posix/class_posixAccount.inc:186
 msgid ""
 "Maximum delay of inactivity after password expiration before the user is "
 "disabled (leave empty to disable)"
@@ -157,11 +157,11 @@ msgstr ""
 "Μέγιστος αριθμός ημερών αδράνειας μετά την λήξη του κωδικού πρόσβασης πριν "
 "την απενεργοποίηση του χρήστη (αφήστε κενό για απενεργοποίηση)"
 
-#: personal/posix/class_posixAccount.inc:189
+#: personal/posix/class_posixAccount.inc:191
 msgid "Delay for user warning before password expiry (days)"
 msgstr "Ημέρες μεταξύ προειδοποίησης χρήστη και λήξης κωδικού:"
 
-#: personal/posix/class_posixAccount.inc:189
+#: personal/posix/class_posixAccount.inc:191
 msgid ""
 "The user will be warned this number of days before his password expiration "
 "(leave empty to disable)"
@@ -169,146 +169,146 @@ msgstr ""
 "Ο χρήστης θα προειδοποιείται αυτόν τον αριθμό των ημερών πριν από τη λήξη "
 "του κωδικού πρόσβασής του (αφήστε κενό για απενεργοποίηση)"
 
-#: personal/posix/class_posixAccount.inc:201
+#: personal/posix/class_posixAccount.inc:203
 #: admin/groups/posix/class_posixGroup.inc:91
 msgid "System trust"
 msgstr "Εμπιστοσύνη συστήματος"
 
-#: personal/posix/class_posixAccount.inc:205
+#: personal/posix/class_posixAccount.inc:207
 #: admin/groups/posix/class_posixGroup.inc:95
 msgid "Trust mode"
 msgstr "Λειτουργία επιστοσύνης"
 
-#: personal/posix/class_posixAccount.inc:205
+#: personal/posix/class_posixAccount.inc:207
 #: admin/groups/posix/class_posixGroup.inc:95
 msgid "Type of authorization for those hosts"
 msgstr "Τύπος εξουσιοδότησή για αυτά τα συστήματα"
 
-#: personal/posix/class_posixAccount.inc:209
-#: personal/posix/class_posixAccount.inc:231
+#: personal/posix/class_posixAccount.inc:211
+#: personal/posix/class_posixAccount.inc:233
 #: admin/groups/posix/class_posixGroup.inc:99
 msgid "disabled"
 msgstr "απενεργοποιημένο"
 
-#: personal/posix/class_posixAccount.inc:209
-#: personal/posix/class_posixAccount.inc:231
+#: personal/posix/class_posixAccount.inc:211
+#: personal/posix/class_posixAccount.inc:233
 #: admin/groups/posix/class_posixGroup.inc:99
 msgid "full access"
 msgstr "Πλήρης Πρόσβαση"
 
-#: personal/posix/class_posixAccount.inc:209
+#: personal/posix/class_posixAccount.inc:211
 #: admin/groups/posix/class_posixGroup.inc:99
 msgid "allow access to these hosts"
 msgstr "να επιτραπεί πρόσβαση σε αυτά τα host"
 
-#: personal/posix/class_posixAccount.inc:212
+#: personal/posix/class_posixAccount.inc:214
 msgid "Only allow this user to connect to this list of hosts"
 msgstr ""
 "Επιτρέπεται σ'αυτόν τον χρήστη να συνδέεται στην ακόλουθη λίστα διακομιστών"
 
-#: personal/posix/class_posixAccount.inc:290
+#: personal/posix/class_posixAccount.inc:292
 msgid "automatic"
 msgstr "αυτόματο"
 
-#: personal/posix/class_posixAccount.inc:351
+#: personal/posix/class_posixAccount.inc:353
 msgid "expired"
 msgstr " έληξε"
 
-#: personal/posix/class_posixAccount.inc:353
+#: personal/posix/class_posixAccount.inc:355
 msgid "grace time active"
 msgstr "χρονικό διάστημα χάριτος ενεργό"
 
-#: personal/posix/class_posixAccount.inc:356
 #: personal/posix/class_posixAccount.inc:358
 #: personal/posix/class_posixAccount.inc:360
+#: personal/posix/class_posixAccount.inc:362
 msgid "active"
 msgstr "ενεργό"
 
-#: personal/posix/class_posixAccount.inc:356
+#: personal/posix/class_posixAccount.inc:358
 msgid "password expired"
 msgstr "ο κωδικός πρόσβασης έχει λήξει"
 
-#: personal/posix/class_posixAccount.inc:358
+#: personal/posix/class_posixAccount.inc:360
 msgid "password not changeable"
 msgstr "ο κωδικός πρόσβασης δεν μπορεί να αλλάξει"
 
-#: personal/posix/class_posixAccount.inc:420
+#: personal/posix/class_posixAccount.inc:422
 msgid "UID"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:423
+#: personal/posix/class_posixAccount.inc:425
 #: admin/groups/posix/class_posixGroup.inc:74
 #: admin/groups/posix/class_posixGroup.inc:150
 msgid "GID"
 msgstr "GID"
 
-#: personal/posix/class_posixAccount.inc:531
+#: personal/posix/class_posixAccount.inc:537
 #, php-format
 msgid "Group of user %s"
 msgstr "Ομάδα του χρήστη %s"
 
-#: personal/posix/class_posixAccount.inc:775
-#: personal/posix/class_posixAccount.inc:796
-#: personal/posix/class_posixAccount.inc:990
+#: personal/posix/class_posixAccount.inc:783
+#: personal/posix/class_posixAccount.inc:804
+#: personal/posix/class_posixAccount.inc:998
 msgid "Warning"
 msgstr "Προειδοποίηση"
 
-#: personal/posix/class_posixAccount.inc:775
+#: personal/posix/class_posixAccount.inc:783
 #, php-format
 msgid "Unknown ID allocation method \"%s\"!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:797
+#: personal/posix/class_posixAccount.inc:805
 #, php-format
 msgid "Timeout while waiting for lock. Ignoring lock from %s!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:824
-#: personal/posix/class_posixAccount.inc:864
-#: personal/posix/class_posixAccount.inc:876
-#: personal/posix/class_posixAccount.inc:880
-#: personal/posix/class_posixAccount.inc:887
-#: personal/posix/class_posixAccount.inc:896
-#: personal/posix/class_posixAccount.inc:958
+#: personal/posix/class_posixAccount.inc:832
+#: personal/posix/class_posixAccount.inc:872
+#: personal/posix/class_posixAccount.inc:884
+#: personal/posix/class_posixAccount.inc:888
+#: personal/posix/class_posixAccount.inc:895
+#: personal/posix/class_posixAccount.inc:904
+#: personal/posix/class_posixAccount.inc:966
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: personal/posix/class_posixAccount.inc:824
-#: personal/posix/class_posixAccount.inc:864
-#: personal/posix/class_posixAccount.inc:876
-#: personal/posix/class_posixAccount.inc:880
-#: personal/posix/class_posixAccount.inc:887
-#: personal/posix/class_posixAccount.inc:896
+#: personal/posix/class_posixAccount.inc:832
+#: personal/posix/class_posixAccount.inc:872
+#: personal/posix/class_posixAccount.inc:884
+#: personal/posix/class_posixAccount.inc:888
+#: personal/posix/class_posixAccount.inc:895
+#: personal/posix/class_posixAccount.inc:904
 msgid "Cannot allocate a free ID:"
 msgstr "Δεν είναι δυνατό να ανατεθεί μια free ID:"
 
-#: personal/posix/class_posixAccount.inc:824
+#: personal/posix/class_posixAccount.inc:832
 #, php-format
 msgid "%sPoolMin >= %sPoolMax!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:856
+#: personal/posix/class_posixAccount.inc:864
 msgid "LDAP error"
 msgstr "Σφάλμα LDAP"
 
-#: personal/posix/class_posixAccount.inc:864
+#: personal/posix/class_posixAccount.inc:872
 msgid "sambaUnixIdPool is not unique!"
 msgstr "sambaUnixIdPool  δεν είναι μοναδική!"
 
-#: personal/posix/class_posixAccount.inc:876
-#: personal/posix/class_posixAccount.inc:880
+#: personal/posix/class_posixAccount.inc:884
+#: personal/posix/class_posixAccount.inc:888
 msgid "no ID available!"
 msgstr "Μη διαθέσιμη ID!"
 
-#: personal/posix/class_posixAccount.inc:896
+#: personal/posix/class_posixAccount.inc:904
 msgid "maximum tries exceeded!"
 msgstr "Υπέρβαση μεγίστου ορίου προσπαθειών!"
 
-#: personal/posix/class_posixAccount.inc:958
+#: personal/posix/class_posixAccount.inc:966
 msgid "Cannot allocate a free ID!"
 msgstr "Δεν είναι δυνατή η διάθεση μιας  free ID!"
 
-#: personal/posix/class_posixAccount.inc:990
+#: personal/posix/class_posixAccount.inc:998
 msgid "\"nextIdHook\" is not available. Using default base!"
 msgstr ""
 

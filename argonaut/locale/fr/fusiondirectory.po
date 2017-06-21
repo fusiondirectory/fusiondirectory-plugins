@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-13 20:03+0200\n"
+"POT-Creation-Date: 2017-06-21 11:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: MCMic <come@chilliet.eu>, 2016\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -158,11 +158,11 @@ msgstr "Temps"
 #: addons/argonaut/class_argonautAction.inc:81
 #: addons/argonaut/class_argonautAction.inc:84
 msgid "Argonaut task"
-msgstr "Tache argonaut"
+msgstr "Tache Argonaut"
 
 #: addons/argonaut/class_argonautAction.inc:82
 msgid "Schedule an argonaut task"
-msgstr "Planifier une tâche argonaut"
+msgstr "Planifier une tâche Argonaut"
 
 #: addons/argonaut/class_argonautAction.inc:97
 #: addons/argonaut/class_argonautAction.inc:107
@@ -176,11 +176,11 @@ msgstr "Tâche périodique"
 
 #: addons/argonaut/class_argonautAction.inc:111
 msgid "Wether this job should repeat in time"
-msgstr "Est ce que cette tache doit être récurrente"
+msgstr "Est-ce que cette tache doit se répéter dans le temps"
 
 #: addons/argonaut/class_argonautAction.inc:115
 msgid "How often this task should be repeated"
-msgstr "Combien de fois doit être répété cette tache"
+msgstr "Avec quel fréquence doit être répété cette tache"
 
 #: addons/argonaut/class_argonautAction.inc:126
 msgid "Days"
@@ -197,7 +197,7 @@ msgstr "Mois"
 #: addons/argonaut/class_argonautAction.inc:132
 #: addons/argonaut/deploy-list.xml:43
 msgid "Period"
-msgstr "Période"
+msgstr "Fréquence"
 
 #: addons/argonaut/class_argonautAction.inc:137
 msgid "Targets"
@@ -209,7 +209,7 @@ msgstr "Cibles pour cette tache"
 
 #: addons/argonaut/deploy-list.xml:10
 msgid "List of queued jobs"
-msgstr "Liste des tâches dans la queue"
+msgstr "Liste des tâches dans la file"
 
 #: addons/argonaut/deploy-list.xml:14
 #: addons/argonaut/class_argonautImportFile.inc:185
@@ -223,7 +223,7 @@ msgstr "Cible"
 
 #: addons/argonaut/deploy-list.xml:35
 msgid "Task"
-msgstr "Tâches"
+msgstr "Tache"
 
 #: addons/argonaut/deploy-list.xml:59
 msgid "Status"
@@ -260,23 +260,23 @@ msgstr "Voir les journaux systèmes"
 #: addons/argonaut/class_argonautImportFile.inc:33
 #: addons/argonaut/class_argonautImportFile.inc:36
 msgid "Argonaut task import"
-msgstr "Importation des taches argonaut"
+msgstr "Import de taches Argonaut"
 
 #: addons/argonaut/class_argonautImportFile.inc:34
 msgid "Imports argonaut tasks from CSV file"
-msgstr "Importer taches argonaut depuis un fichier CSV"
+msgstr "Importer des taches Argonaut depuis un fichier CSV"
 
 #: addons/argonaut/class_argonautImportFile.inc:49
 msgid "Import actions from CSV file"
-msgstr "Importer les actions depuis un fichier CSV"
+msgstr "Importer des actions depuis un fichier CSV"
 
 #: addons/argonaut/class_argonautImportFile.inc:53
 msgid "Import a list of task into argonaut"
-msgstr "Importer une liste de taches dans argonaut"
+msgstr "Importer une liste de taches dans Argonaut"
 
 #: addons/argonaut/class_argonautImportFile.inc:63
 msgid "Upload"
-msgstr "Télécharger"
+msgstr "Téléverser"
 
 #: addons/argonaut/class_argonautImportFile.inc:67
 msgid "Import file"
@@ -284,11 +284,11 @@ msgstr "Importer un fichier"
 
 #: addons/argonaut/class_argonautImportFile.inc:72
 msgid "Imported tasks"
-msgstr "Taches importées "
+msgstr "Taches importées"
 
 #: addons/argonaut/class_argonautImportFile.inc:122
 msgid "Fix the errors in your CSV file first"
-msgstr "Fixer les erreurs dans votre CSV"
+msgstr "Corrigez les erreurs dans votre fichier CSV d’abord"
 
 #: addons/argonaut/class_argonautImportFile.inc:138
 msgid "Infrastructure service"
@@ -302,7 +302,7 @@ msgstr ""
 
 #: addons/argonaut/class_argonautImportFile.inc:157
 msgid "file is empty"
-msgstr "le fichier est vide."
+msgstr "le fichier est vide"
 
 #: addons/argonaut/class_argonautImportFile.inc:182
 #: addons/argonaut/import_events.tpl.c:23
@@ -312,7 +312,7 @@ msgstr "MAC"
 #: addons/argonaut/class_filterArgonautEvents.inc:39
 #, php-format
 msgid "Cannot load queue entries: %s"
-msgstr "Impossible de charger les entrées de la queue : %s"
+msgstr "Impossible de charger les entrées de la file : %s"
 
 #: admin/systems/argonaut/class_argonautClient.inc:117
 msgid "Argonaut client"
@@ -350,15 +350,17 @@ msgstr "Interface WakeOnLan"
 
 #: admin/systems/argonaut/class_argonautClient.inc:144
 msgid "Interface used by argonaut for WakeOnLan"
-msgstr "Interface utilisée par argonaut pour le WakeOnLan :"
+msgstr "Interface utilisée par Argonaut pour le WakeOnLan"
 
 #: admin/systems/argonaut/class_argonautClient.inc:149
 msgid "TaskId file"
-msgstr "Fichier des id de tâches"
+msgstr "Fichier d’id"
 
 #: admin/systems/argonaut/class_argonautClient.inc:149
 msgid "File which argonaut will use to store its task id when booting"
-msgstr "Fichier qu'Argonaut utilise pour stocker les tâches au démarrage"
+msgstr ""
+"Fichier qu'Argonaut utilise pour stocker son identifiant de processus au "
+"démarrage"
 
 #: admin/systems/argonaut/class_argonautClient.inc:154
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:55
@@ -369,7 +371,7 @@ msgstr "Répertoire des journaux systèmes"
 
 #: admin/systems/argonaut/class_argonautClient.inc:154
 msgid "Directory in which argonaut client should write its logs"
-msgstr "Dossier des journaux systèmes du client Argonaut"
+msgstr "Dossier dans lequel le client Argonaut stock ses journaux systèmes"
 
 #: admin/systems/argonaut/class_argonautClient.inc:161
 #: admin/systems/services/argonaut/class_argonautServer.inc:103
@@ -379,7 +381,7 @@ msgstr "Chemins SSL"
 #: admin/systems/argonaut/class_argonautClient.inc:164
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
 msgid "Key"
-msgstr "Clef"
+msgstr "Clé"
 
 #: admin/systems/argonaut/class_argonautClient.inc:164
 msgid "Path to the private key file on Argonaut client"
@@ -412,7 +414,7 @@ msgstr "CN du certificat"
 
 #: admin/systems/argonaut/class_argonautClient.inc:179
 msgid "The CN in this client certificate"
-msgstr "Le CN dans le certificat client"
+msgstr "Le CN utilisé dans le certificat client"
 
 #: admin/systems/argonaut/class_argonautClient.inc:185
 msgid "Service names"
@@ -420,7 +422,7 @@ msgstr "Nom des services"
 
 #: admin/systems/argonaut/class_argonautClient.inc:187
 msgid "Argonaut service names"
-msgstr "Noms de services pour Argonaut"
+msgstr "Noms des services pour Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
@@ -433,7 +435,7 @@ msgstr "Paramètres de Argonaut Fuse pour le module OPSI"
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33
 #: admin/systems/services/argonaut/class_argonautServer.inc:32
 msgid "Services"
-msgstr "Service"
+msgstr "Services"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:47
 msgid "OPSI"
@@ -470,7 +472,7 @@ msgstr "Paramètres FAI"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:57
 msgid "NFS root"
-msgstr "racine NFS"
+msgstr "Racine NFS"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:30
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:31
@@ -522,12 +524,12 @@ msgid ""
 "LDAP base in which ldap2zone should search. Only usefull if you got several "
 "nodes for the same zone."
 msgstr ""
-"Base LDAP dans laquelle ldap2zone  doit effectuer la recherche. Seulement "
+"Base LDAP dans laquelle ldap2zone doit effectuer la recherche. Seulement "
 "utile si vous avez plusieurs nœuds pour la même zone."
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:81
 msgid "Ldap2zone master settings"
-msgstr "Paramètres DNS maîtres Ldap2zone"
+msgstr "Paramètres DNS maître Ldap2zone"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:84
 msgid "Ignore reverse zone"
@@ -543,7 +545,7 @@ msgstr "Notifier"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:93
 msgid "Allow update"
-msgstr "Permet les updates"
+msgstr "Permettre les updates"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:93
 msgid "Allow update (semicolon separated and ended)"
@@ -552,7 +554,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:97
 msgid "Allow transfer"
-msgstr "Permet le transfert"
+msgstr "Permettre le transfert"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:97
 msgid "Allow transfer (semicolon separated and ended)"
@@ -573,11 +575,11 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:108
 msgid "Ldap2zone slave settings"
-msgstr "Paramètres DNS esclaves Ldap2zone"
+msgstr "Paramètres DNS esclave Ldap2zone"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:113
 msgid "Manage DNS Slaves"
-msgstr "Gerer les DNS slaves"
+msgstr "Gérer les DNS esclaves"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:117
 msgid "zone"
@@ -585,19 +587,19 @@ msgstr "zone"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:117
 msgid "DNS zone this server should be declared as slave of"
-msgstr "Zone(s) DNS qui doivent être stockées comme esclave sur ce serveur"
+msgstr "Zones DNS dont ce serveur doit être déclaré comme esclave"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
 msgid "master"
-msgstr "Maître"
+msgstr "maître"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
 msgid "Master IP(s) for this zone"
-msgstr "IP principale (s) pour cette zone"
+msgstr "IP(s) maitre(s) pour cette zone"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:125
 msgid "reverses"
-msgstr "Zones inverses"
+msgstr "inverses"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:125
 msgid "This server should be slave of reverses zones as well"
@@ -605,7 +607,7 @@ msgstr "Ce serveur doit aussi être esclave des zones inverses"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:132
 msgid "DNS slaves"
-msgstr "DNS slaves"
+msgstr "Esclaves DNS"
 
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33
@@ -638,7 +640,7 @@ msgstr "Mode par défaut"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:56
 msgid "Directory in which argonaut-fuse will store its log"
-msgstr "Dossier des jounaux systèmes de argonaut-fuse"
+msgstr "Répertoire dans lequel argonaut-fuse stock les jounaux systèmes"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:64
 msgid "TFTP"
@@ -650,7 +652,7 @@ msgstr "Répertoire des fichiers pxelinux"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:68
 msgid "Path where argonaut-fuse should store pxelinux.cfg"
-msgstr "Chemin où argonaut-fuse stockera le fichier \"pxelinux.cfg\""
+msgstr "Chemin où argonaut-fuse doit stocker le fichier pxelinux.cfg"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:31
 #: admin/systems/services/argonaut/class_argonautServer.inc:32
@@ -679,9 +681,9 @@ msgid ""
 "repositories at start and then once a day. Needed for FAI package list "
 "creation."
 msgstr ""
-"Si oui ou non le serveur Argonaut devrait obtenir les informations des "
-"paquets à partir des dépôts au lancement, puis une fois par jour. Nécessaire"
-" pour la création de listes de paquets FAI."
+"Si le serveur Argonaut doit récupérer les informations des paquets à partir "
+"des dépôts au lancement, puis une fois par jour. Nécessaire pour la création"
+" de listes de paquets FAI."
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:66
 msgid "Port"
@@ -693,7 +695,7 @@ msgstr "Port d’écoute du serveur Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:72
 msgid "Timeout"
-msgstr "Temps d'attente maximum"
+msgstr "Délai maximum"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:73
 msgid ""
@@ -704,7 +706,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:80
 msgid "Directory in which argonaut will store its log"
-msgstr "Répertoire contenant les journaux systèmes d'Argonaut"
+msgstr "Répertoire dans lequel Argonaut stock ses journaux systèmes"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:87
 msgid "Wake on lan"
@@ -742,16 +744,16 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:121
 msgid "The CN in the server certificate"
-msgstr "Le CN dans le certificat serveur"
+msgstr "Le CN utilisé dans le certificat serveur"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:29
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:30
 msgid "Argonaut Mirror settings"
-msgstr "Paramètres des miroirs Argonaut"
+msgstr "Paramètres de miroir Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:41
 msgid "Argonaut mirror settings"
-msgstr "Paramètres des miroirs Argonaut"
+msgstr "Paramètres de miroir Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:44
 msgid "Local Debian mirror directory"
@@ -779,7 +781,7 @@ msgstr "Proxy"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:67
 msgid "Specifies the http proxy (like Squid) to use for http and hftp method"
-msgstr "Le proxy http (comme Squid) à utiliser pour les méthode http et hftp"
+msgstr "Le proxy http (comme Squid) à utiliser pour les méthodes http et hftp"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
 msgid "Directory in which logs should be stored"
@@ -803,7 +805,7 @@ msgstr "Source"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:82
 msgid "Include source in the mirror"
-msgstr "Inclus les sources dans le miroir"
+msgstr "Inclure les sources dans le miroir"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
 msgid "GPG Check"
@@ -860,7 +862,7 @@ msgstr "groupe d'objets"
 
 #: addons/argonaut/import_events.tpl.c:17
 msgid "Available job types: %1"
-msgstr "Type de taches disponibles: %1"
+msgstr "Type de taches disponibles : %1"
 
 #: addons/argonaut/import_events.tpl.c:20
 msgid "Timestamp"
@@ -868,4 +870,4 @@ msgstr "Date"
 
 #: addons/argonaut/import_events.tpl.c:29
 msgid "Object group"
-msgstr "Groupes d'objets"
+msgstr "Groupe d'objets"
