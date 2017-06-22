@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-21 11:58+0200\n"
+"POT-Creation-Date: 2017-06-22 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Chinese (https://www.transifex.com/fusiondirectory/teams/12202/zh/)\n"
@@ -92,13 +92,19 @@ msgstr ""
 msgid "Match clients ACL"
 msgstr ""
 
-#: admin/dns/class_dnsView.inc:53 admin/dns/class_dnsView.inc:57
+#: admin/dns/class_dnsView.inc:53
 msgid ""
 "Name of the ACL to use for the source IP address of the incoming requests"
 msgstr ""
 
 #: admin/dns/class_dnsView.inc:57
 msgid "Match destinations ACL"
+msgstr ""
+
+#: admin/dns/class_dnsView.inc:57
+msgid ""
+"Name of the ACL to use for the destination IP address of the incoming "
+"requests"
 msgstr ""
 
 #: admin/dns/class_dnsView.inc:61

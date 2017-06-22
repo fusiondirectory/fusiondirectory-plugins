@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-21 11:58+0200\n"
+"POT-Creation-Date: 2017-06-22 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2017\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -92,7 +92,7 @@ msgstr "Nome di questa vista"
 msgid "Match clients ACL"
 msgstr "Abbinamento cliente ACL"
 
-#: admin/dns/class_dnsView.inc:53 admin/dns/class_dnsView.inc:57
+#: admin/dns/class_dnsView.inc:53
 msgid ""
 "Name of the ACL to use for the source IP address of the incoming requests"
 msgstr ""
@@ -102,6 +102,12 @@ msgstr ""
 #: admin/dns/class_dnsView.inc:57
 msgid "Match destinations ACL"
 msgstr "Abbinamento destinazioni ACL"
+
+#: admin/dns/class_dnsView.inc:57
+msgid ""
+"Name of the ACL to use for the destination IP address of the incoming "
+"requests"
+msgstr ""
 
 #: admin/dns/class_dnsView.inc:61
 msgid "Match recursive only"
@@ -497,7 +503,7 @@ msgstr "Errore LDAP"
 #: admin/dns/class_dnsZone.inc:373
 #, php-format
 msgid "The IP %s does not match the selected reverse %s, it has been ignored"
-msgstr ""
+msgstr "L'IP 1%s non corrisponde al reverse 1%s selezionato, è stato ignorato"
 
 #: admin/dns/class_dnsZone.inc:565
 #, php-format

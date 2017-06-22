@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-21 11:58+0200\n"
+"POT-Creation-Date: 2017-06-22 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,7 +37,7 @@ msgstr "Impossible de lire les paramètres de quota : %s"
 
 #: personal/mail/class_mailAccount.inc:55
 msgid "Quota usage"
-msgstr "Utilisation des quotas"
+msgstr "Utilisation du quota"
 
 #: personal/mail/class_mailAccount.inc:56
 msgid "Part of the quota which is used"
@@ -47,7 +47,7 @@ msgstr "Part du quota qui est utilisée"
 #: config/mail/class_mailPluginConfig.inc:28
 #: admin/groups/mail/class_mailGroup.inc:46
 msgid "Mail"
-msgstr "Messagerie"
+msgstr "Courriel"
 
 #: personal/mail/class_mailAccount.inc:74
 #: config/mail/class_mailPluginConfig.inc:41
@@ -74,7 +74,7 @@ msgstr "Serveur"
 
 #: personal/mail/class_mailAccount.inc:103
 msgid "Specify the mail server where the user will be hosted on"
-msgstr "Indiquez le serveur de courriel de l'utilisateur"
+msgstr "Indiquez le serveur de courriel pour cet utilisateur"
 
 #: personal/mail/class_mailAccount.inc:108
 msgid "Quota size"
@@ -99,7 +99,7 @@ msgstr "Transférer les messages vers"
 
 #: personal/mail/class_mailAccount.inc:124
 msgid "Addresses to which messages should be forwarded"
-msgstr "Adresses à laquelle les messages doivent être redirigés"
+msgstr "Adresses vers laquelle les messages doivent être redirigés"
 
 #: personal/mail/class_mailAccount.inc:130
 #: personal/mail/class_mailAccount.inc:149
@@ -130,7 +130,7 @@ msgstr "Options de courriel avancées"
 #: personal/mail/class_mailAccount.inc:163
 msgid "User is only allowed to send and receive local mails"
 msgstr ""
-"Les utilisateurs ne sont autorisés qu'à envoyer et recevoir des messages "
+"Les utilisateurs ne sont autorisés qu'à envoyer et recevoir des courriel "
 "locaux"
 
 #: personal/mail/class_mailAccount.inc:164
@@ -141,12 +141,12 @@ msgstr ""
 
 #: personal/mail/class_mailAccount.inc:169
 msgid "No delivery to own mailbox"
-msgstr "Aucune distribution des courriels dans sa propre boite"
+msgstr "Aucune distribution dans sa propre boite"
 
 #: personal/mail/class_mailAccount.inc:170
 msgid "Select if you want to forward mails without getting own copies of them"
 msgstr ""
-"Sélectionnez ceci si vous souhaitez relayer les messages sans garder de "
+"Sélectionnez ceci si vous souhaitez relayer les courriels sans garder de "
 "copie de ceux-ci"
 
 #: personal/mail/class_mailAccount.inc:258
@@ -159,7 +159,7 @@ msgstr "Le méthode de courriel ne peut pas se connecter : %s"
 #: personal/mail/class_mailAccount.inc:261
 #, php-format
 msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
-msgstr "Le compte de courriel '%s' n'existe pas sur le serveur : %s"
+msgstr "Le compte de courriel «%s» n'existe pas sur le serveur : %s"
 
 #: personal/mail/class_mailAccount.inc:326
 #: admin/groups/mail/class_mailGroup.inc:162
@@ -175,22 +175,21 @@ msgstr "Impossible d'écrire les paramètres de quota : %s"
 #: personal/mail/class_mailAccount.inc:340
 #, php-format
 msgid "Mail error saving sieve settings: %s"
-msgstr ""
-"Erreur de messagerie lors de l'enregistrement des paramètres sieve: %s"
+msgstr "Erreur lors de l'enregistrement des paramètres Sieve : %s"
 
 #: personal/mail/class_mailAccount.inc:369
 #: admin/groups/mail/class_mailGroup.inc:183
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr ""
-"Impossible de supprimer le compte de messagerie, impossible de se connecter "
-"à : %s"
+"Impossible de supprimer la boite de courriel, impossible de se connecter : "
+"%s"
 
 #: personal/mail/class_mailAccount.inc:373
 #: admin/groups/mail/class_mailGroup.inc:187
 #, php-format
 msgid "Cannot remove mailbox: %s"
-msgstr "Impossible de supprimer le compte de messagerie : %s"
+msgstr "Impossible de supprimer la boite de courriel : %s"
 
 #: personal/mail/class_mail-methods.inc:144
 msgid "Configuration error"
@@ -199,7 +198,7 @@ msgstr "Erreur de configuration"
 #: personal/mail/class_mail-methods.inc:145
 #, php-format
 msgid "The configured mail attribute '%s' is unsupported!"
-msgstr "L'attribut de messagerie '%s' n'est pas supporté !"
+msgstr "L'attribut de courriel \"%s\" n'est pas supporté !"
 
 #: personal/mail/class_mail-methods.inc:703
 msgid "Unknown"
@@ -223,7 +222,7 @@ msgstr "Quel attribut sera utilisé pour créer des comptes."
 
 #: config/mail/class_mailPluginConfig.inc:50
 msgid "Mail user template"
-msgstr "Modèle d'utilisateur de courriel"
+msgstr "Modèle de compte de courriel"
 
 #: config/mail/class_mailPluginConfig.inc:51
 msgid "Override the user account creation syntax."
@@ -250,14 +249,14 @@ msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:65
 msgid "Delete mailbox on account deletion"
-msgstr "Supprimer le compte de courriel lors de la suppression du compte"
+msgstr "Supprimer la boite de courriel lors de la suppression du compte"
 
 #: config/mail/class_mailPluginConfig.inc:66
 msgid ""
 "Determines if the mailbox should be removed from your IMAP server after the "
 "account is deleted in LDAP."
 msgstr ""
-"Détermine si la boîte aux lettres doit être retirée de votre serveur IMAP "
+"Détermine si la boîte de courriel doit être retirée de votre serveur IMAP "
 "après la suppression du compte LDAP."
 
 #: config/mail/class_mailPluginConfig.inc:71
@@ -294,7 +293,7 @@ msgstr "Options de courriel du groupe"
 
 #: admin/groups/mail/class_mailGroup.inc:59
 msgid "Information"
-msgstr "Information"
+msgstr "Informations"
 
 #: admin/groups/mail/class_mailGroup.inc:62
 msgid "The primary mail address"
@@ -302,7 +301,7 @@ msgstr "Adresse de courriel principale"
 
 #: admin/groups/mail/class_mailGroup.inc:66
 msgid "Email server"
-msgstr "Serveur de messagerie"
+msgstr "Serveur de courriel"
 
 #: admin/groups/mail/class_mailGroup.inc:72
 msgid "Alternative mail addresses for the group"
@@ -314,14 +313,14 @@ msgstr "Transférer les messages vers des membres n'appartenant pas au groupe"
 
 #: admin/groups/mail/class_mailGroup.inc:81
 msgid "Only allowed to receive local mail"
-msgstr "Les utilisateurs ne sont autorisés qu'à recevoir des messages locaux"
+msgstr "Les utilisateurs ne sont autorisés qu'à recevoir des courriel locaux"
 
 #: admin/groups/mail/class_mailGroup.inc:81
 msgid ""
 "Whether this group mail is only allowed to receive messages from local "
 "senders"
 msgstr ""
-"Ce groupe mail est uniquement autorisé à recevoir des messages provenant "
+"Ce groupe est uniquement autorisé à recevoir des messages provenant "
 "d'expéditeurs locaux"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:32
@@ -334,4 +333,4 @@ msgstr "IMAP/POP3"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:33
 msgid "Services"
-msgstr "Service"
+msgstr "Services"

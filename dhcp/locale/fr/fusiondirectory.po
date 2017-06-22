@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-21 11:58+0200\n"
+"POT-Creation-Date: 2017-06-22 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -39,19 +39,19 @@ msgstr "Branche DHCP"
 
 #: config/dhcp/class_dhcpConfig.inc:44
 msgid "Branch in which DHCP configurations will be stored"
-msgstr "Branches où seront stockées les configurations dhcp"
+msgstr "Branche où seront stockées les configurations DHCP"
 
 #: admin/dhcp/class_dhcpManagement.inc:34 admin/dhcp/class_dhcpPlugin.inc:31
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:39
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:39
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:39
-#: admin/systems/class_dhcpSystem.inc:278
+#: admin/systems/class_dhcpSystem.inc:280
 msgid "DHCP"
 msgstr "DHCP"
 
 #: admin/dhcp/class_dhcpManagement.inc:35
 msgid "DHCP Management"
-msgstr "gestion DHCP"
+msgstr "Gestion DHCP"
 
 #: admin/dhcp/class_dhcpManagement.inc:37
 msgid "Systems"
@@ -59,15 +59,15 @@ msgstr "Systèmes"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:36
 msgid "Expand DHCP subnet"
-msgstr "Déplier le sous réseau"
+msgstr "Déplier le sous-réseau DHCP"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:37
 msgid "Expand"
-msgstr "Deplier"
+msgstr "Déplier"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:46
 msgid "Fold DHCP subnet"
-msgstr "Replier le sous réseau"
+msgstr "Replier le sous-réseau DHCP"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:47
 msgid "Fold"
@@ -106,7 +106,7 @@ msgstr ""
 
 #: admin/dhcp/class_dhcpConfiguration.inc:554
 msgid "DHCP Objects"
-msgstr "Objets dhcp"
+msgstr "Objets DHCP"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:564
 msgid "The DHCP sections handled by this server"
@@ -122,7 +122,7 @@ msgstr "Classe"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:578
 msgid "Subclass"
-msgstr "Sous classe"
+msgstr "Sous-classe"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:579
 #: admin/dhcp/sections/class_dhcpHost.inc:40
@@ -131,7 +131,7 @@ msgstr "Hôte"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:580
 msgid "Group"
-msgstr "Groupes"
+msgstr "Groupe"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:581
 #: admin/dhcp/sections/class_dhcpPool.inc:39
@@ -141,7 +141,7 @@ msgstr "Réservoir"
 #: admin/dhcp/class_dhcpConfiguration.inc:582
 #: admin/dhcp/sections/class_dhcpSubnet.inc:39
 msgid "Subnet"
-msgstr "Sous réseau"
+msgstr "Sous-réseau"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:583
 msgid "Failover peer"
@@ -153,7 +153,7 @@ msgstr "Réseau partagé"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:585
 msgid "DNS update key"
-msgstr "Clef de mise à jour du DNS"
+msgstr "Clé de mise à jour du DNS"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:586
 msgid "DNS update zones"
@@ -172,7 +172,7 @@ msgstr "Options"
 
 #: admin/dhcp/class_dhcpPlugin.inc:39
 msgid "The DHCP options"
-msgstr "Options dhcp"
+msgstr "Options DHCP"
 
 #: admin/dhcp/class_dhcpPlugin.inc:47
 msgid "Statements"
@@ -215,27 +215,27 @@ msgstr "Pair de reprise sur panne"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:46
 msgid "Primary server"
-msgstr "Serveur Principal"
+msgstr "Serveur primaire"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:46
 msgid ""
 "IP address or DNS name of the server playing primary role in DHC Load "
 "Balancing and Fail over"
 msgstr ""
-"Adresse IP ou nom DNS du serveur jouant le rôle de principal dans la "
-"configuration Failover et Load Balancing"
+"Adresse IP ou nom DNS du serveur primaire pour la configuration de "
+"répartition de charge et reprise sur panne"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:50
 msgid "Primary port"
-msgstr "Port du serveur primaire"
+msgstr "Port primaire"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:50
 msgid ""
 "Port on which primary server listens for connections from its fail over peer"
 " (secondary server)"
 msgstr ""
-"Port sur lequel le serveur principal écoute les connexions de son homologue "
-"de basculement (serveur secondaire)"
+"Port sur lequel le serveur primaire écoute les connexions de son pair de "
+"basculement (serveur secondaire)"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:55
 msgid "Secondary server"
@@ -246,20 +246,20 @@ msgid ""
 "IP address or DNS name of the server playing secondary role in DHC Load "
 "Balancing and Fail over"
 msgstr ""
-"Adresse IP ou nom DNS du serveur jouant le rôle de serveur secondaire dans "
-"la configuration Failover et Load Balancing"
+"Adresse IP ou nom DNS du serveur secondaire dans la configuration de "
+"répartition de charge et de reprise sur panne"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:59
 msgid "Secondary port"
-msgstr "Port du serveur secondaire"
+msgstr "Port secondaire"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:59
 msgid ""
 "Port on which secondary server listens for connections from its fail over "
 "peer (primary server)"
 msgstr ""
-"Port sur lequel le serveur secondaire écoute les connexions à partir de son "
-"homologue de basculement (serveur primaire)"
+"Port sur lequel le serveur secondaire écoute les connexions de son pair de "
+"basculement (serveur primaire)"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:64
 msgid "Response delay"
@@ -275,15 +275,15 @@ msgstr ""
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:69
 msgid "Unacked updates"
-msgstr "Mise a jour sans ACK"
+msgstr "Mise à jour sans ACK"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:69
 msgid ""
 "Number of BNDUPD messages that server can send before it receives BNDACK "
 "from its fail over peer"
 msgstr ""
-"Nombre de messages BHANDUP que le serveur peut envoyer avant qu'il reçoive "
-"BNDACK de son homologue de basculement"
+"Nombre de messages BNDUP que le serveur peut envoyer avant qu'il reçoive "
+"BNDACK de son pair de basculement"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:74
 msgid "Maximum Client Lead Time"
@@ -294,7 +294,7 @@ msgid ""
 "Maximum Client Lead Time configuration in seconds, as defined in DHCP "
 "Failover Protocol [FAILOVR]"
 msgstr ""
-"Configuration maximale du délai d'exécution du client en secondes, tel que "
+"Configuration du délai maximal d'exécution du client en secondes, tel que "
 "défini dans DHCP Failover Protocol [FAILOVR]"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:79
@@ -319,12 +319,13 @@ msgstr ""
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:88
 msgid "Load balance time"
-msgstr ""
+msgstr "Temps de répartition de charge"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:88
 msgid "Cutoff time in seconds, after which load balance is disabled"
 msgstr ""
-"Temps de coupure en secondes, après quoi l'équilibre de charge est désactivé"
+"Temps de coupure en secondes, après quoi la répartition de charge est "
+"désactivée"
 
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:28
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:29
@@ -337,7 +338,7 @@ msgstr "Serveur DNS de la zone"
 
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:46
 msgid "Master server of the DNS Zone"
-msgstr "serveur maître de la zone DNS"
+msgstr "Serveur maître de la zone DNS"
 
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:50
 msgid "Tsig key"
@@ -360,7 +361,7 @@ msgstr "Classe DHCP"
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:28
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:29
 msgid "DHCP DNS update key"
-msgstr "Clef de mise à jour du DNS par dhcp"
+msgstr "Clé de mise à jour du DNS par DHCP"
 
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:46
 msgid "Algorithm"
@@ -376,7 +377,7 @@ msgstr "Secret"
 
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:51
 msgid "Secret to generate TSIG Key"
-msgstr "Secret pour générer TSIG Key"
+msgstr "Secret pour générer la clé TSIG"
 
 #: admin/dhcp/sections/class_dhcpGroup.inc:28
 #: admin/dhcp/sections/class_dhcpGroup.inc:29
@@ -386,7 +387,7 @@ msgstr "Groupe DHCP"
 #: admin/dhcp/sections/class_dhcpSubnet.inc:28
 #: admin/dhcp/sections/class_dhcpSubnet.inc:29
 msgid "DHCP subnet"
-msgstr "Sous réseau DHCP"
+msgstr "Sous-réseau DHCP"
 
 #: admin/dhcp/sections/class_dhcpSubnet.inc:42
 msgid "Mask length"
@@ -403,7 +404,7 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpSubnet.inc:48
 #: admin/dhcp/sections/class_dhcpPool.inc:43
 msgid "Range"
-msgstr "Intervalle"
+msgstr "Plage"
 
 #: admin/dhcp/sections/class_dhcpSubnet.inc:48
 #: admin/dhcp/sections/class_dhcpPool.inc:43
@@ -412,10 +413,9 @@ msgid ""
 "space; if the range only contains one address, then just the address can be "
 "specified. Each range is defined as a separate value."
 msgstr ""
-"Les adresses IP de départ et de fin dans la plage (inclues), séparés par un "
-"espace; si la plage ne contient qu'une seule adresse, alors juste l'adresse "
-"peut être spécifiée sans trait d'union. Chaque plage est définie comme une "
-"valeur distincte."
+"Les adresses IP de départ et de fin (inclues) dans la plage, séparées par un"
+" espace; si la plage ne contient qu'une seule adresse, alors juste l'adresse"
+" peut être entrée. Chaque plage est définie comme une valeur distincte."
 
 #: admin/dhcp/sections/class_dhcpSubnet.inc:57
 msgid "Network address"
@@ -451,7 +451,7 @@ msgstr "Serveur DHCP secondaire"
 #: admin/dhcp/sections/class_dhcpSubClass.inc:28
 #: admin/dhcp/sections/class_dhcpSubClass.inc:29
 msgid "DHCP subclass"
-msgstr "Sous classe DHCP"
+msgstr "Sous-classe DHCP"
 
 #: admin/dhcp/sections/class_dhcpPool.inc:28
 #: admin/dhcp/sections/class_dhcpPool.inc:29
@@ -478,7 +478,7 @@ msgstr "Hôte DHCP"
 #: admin/dhcp/sections/class_dhcpHost.inc:43
 #: admin/dhcp/sections/class_dhcpHost.inc:52
 msgid "The client hardware address"
-msgstr "Adresse mac du client"
+msgstr "Adresse matérielle du client"
 
 #: admin/dhcp/sections/class_dhcpHost.inc:46
 msgid "The hardware address type"
@@ -507,7 +507,7 @@ msgstr "\"%s\" n'est pas une adresse IP valide."
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:29
 msgid "DHCP configurations"
-msgstr "Configuration DHCP"
+msgstr "Configurations DHCP"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:34
 msgid ""
@@ -532,7 +532,8 @@ msgstr "Redémarrer le service"
 msgid ""
 "The DHCP configuration or subsection in which this host should be added"
 msgstr ""
-"La configuration DHCP ou sous section dans lequel cet hôte doit être ajouté"
+"La configuration DHCP ou sous-section dans laquelle cet hôte doit être "
+"ajouté"
 
 #: admin/systems/class_dhcpSystem.inc:36
 #: admin/systems/class_dhcpSystem.inc:109
@@ -544,33 +545,33 @@ msgstr "L'adresse Mac à utiliser dans l'enregistrement d'hôte DHCP"
 msgid "The IP address to use in the DHCP host record"
 msgstr "L'adresse IP à utiliser dans l'enregistrement d'hôte DHCP"
 
-#: admin/systems/class_dhcpSystem.inc:226
+#: admin/systems/class_dhcpSystem.inc:228
 #, php-format
 msgid ""
 "\"%s\" is locked (by \"%s\" since %s), could not save modifications to this "
 "DHCP configuration"
 msgstr ""
-"\"1%s\" est verrouillé (par \"1%s\" depuis 1%s), impossible d'enregistrer "
-"les modifications apportées à cette configuration DHCP"
+"\"%s\" est verrouillé (par \"%s\" depuis %s), impossible d'enregistrer les "
+"modifications apportées à cette configuration DHCP"
 
-#: admin/systems/class_dhcpSystem.inc:249
+#: admin/systems/class_dhcpSystem.inc:251
 #, php-format
 msgid "The value for multivaluated field \"%s\" is not an array"
 msgstr "La valeur du champ multivalué \"%s\" n'est pas un tableau"
 
-#: admin/systems/class_dhcpSystem.inc:279
+#: admin/systems/class_dhcpSystem.inc:281
 msgid "Edit the DHCP zones of a system"
-msgstr "Modifier les zones DHCP d'un système"
+msgstr "Éditer les zones DHCP d'un système"
 
-#: admin/systems/class_dhcpSystem.inc:293
+#: admin/systems/class_dhcpSystem.inc:295
 msgid "DHCP zones"
 msgstr "Zones DHCP"
 
-#: admin/systems/class_dhcpSystem.inc:297
+#: admin/systems/class_dhcpSystem.inc:299
 msgid "DHCP hosts declared for this system"
-msgstr "Hôtes dhcp déclarés pour ce système"
+msgstr "Hôtes DHCP déclarés pour ce système"
 
-#: admin/systems/class_dhcpSystem.inc:361
+#: admin/systems/class_dhcpSystem.inc:363
 #, php-format
 msgid "The ip %s is not in the network %s/%d"
-msgstr "L'ip %s n'est pas dans le réseau %s/%d"
+msgstr "L'IP %s n'est pas dans le réseau %s/%d"

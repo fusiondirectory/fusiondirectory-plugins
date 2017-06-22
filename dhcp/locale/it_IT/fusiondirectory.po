@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-21 11:58+0200\n"
+"POT-Creation-Date: 2017-06-22 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Paola Penati <paola.penati@opensides.be>, 2017\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -45,7 +45,7 @@ msgstr "Ramo in cui le configurazioni DHCP saranno immagazzinate"
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:39
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:39
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:39
-#: admin/systems/class_dhcpSystem.inc:278
+#: admin/systems/class_dhcpSystem.inc:280
 msgid "DHCP"
 msgstr "DHCP"
 
@@ -543,7 +543,7 @@ msgstr "Indirizzo MAC da utilizzare nella registrazione dell'host DHCP"
 msgid "The IP address to use in the DHCP host record"
 msgstr "Indirizzo IP da utilizzare nella registrazione dell'host DHCP"
 
-#: admin/systems/class_dhcpSystem.inc:226
+#: admin/systems/class_dhcpSystem.inc:228
 #, php-format
 msgid ""
 "\"%s\" is locked (by \"%s\" since %s), could not save modifications to this "
@@ -552,24 +552,24 @@ msgstr ""
 "\"%s\" è bloccato (da \"%s\" da %s), non é stato possibile salvare le "
 "modifiche di questa configurazione DHCP"
 
-#: admin/systems/class_dhcpSystem.inc:249
+#: admin/systems/class_dhcpSystem.inc:251
 #, php-format
 msgid "The value for multivaluated field \"%s\" is not an array"
 msgstr "Il valore del campo \"%s\" multivalutato non é un array"
 
-#: admin/systems/class_dhcpSystem.inc:279
+#: admin/systems/class_dhcpSystem.inc:281
 msgid "Edit the DHCP zones of a system"
 msgstr "Modifica le zone DHCP di un sistema"
 
-#: admin/systems/class_dhcpSystem.inc:293
+#: admin/systems/class_dhcpSystem.inc:295
 msgid "DHCP zones"
 msgstr "Zone DHCP"
 
-#: admin/systems/class_dhcpSystem.inc:297
+#: admin/systems/class_dhcpSystem.inc:299
 msgid "DHCP hosts declared for this system"
 msgstr "Hosts DHCP dichiarati per questo sistema"
 
-#: admin/systems/class_dhcpSystem.inc:361
+#: admin/systems/class_dhcpSystem.inc:363
 #, php-format
 msgid "The ip %s is not in the network %s/%d"
 msgstr "L'ip %s non è nella rete %s/%d"
