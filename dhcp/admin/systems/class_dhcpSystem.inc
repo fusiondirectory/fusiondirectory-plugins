@@ -66,11 +66,11 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     parent::setParent($plugin);
     if (is_object($this->plugin)) {
       $this->loadChoices();
-      if (!$this->plugin->is_template) {
-        $this->loadRecords();
-      } else {
+      if ($this->plugin->is_template) {
         $this->value = array();
         $this->loadAdditionalTemplatesValues();
+      } else {
+        $this->loadRecords();
       }
       $this->plugin->is_account = !empty($this->value);
       $this->plugin->initially_was_account = $this->plugin->is_account;
@@ -125,6 +125,8 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   function loadRecords()
   {
     global $config;
+
+    $this->value = array();
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
