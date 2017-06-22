@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2017 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -41,6 +41,10 @@ class argonautDNSConfig extends simpleService
    */
   static function getAttributesInfo ()
   {
+    $zoneAttributeClass = 'StringAttribute';
+    if (class_available('ZoneNameAttribute')) {
+      $zoneAttributeClass = 'ZoneNameAttribute';
+    }
     return array (
       'main' => array (
         'name'  => _('Ldap2zone global settings'),
@@ -113,7 +117,7 @@ class argonautDNSConfig extends simpleService
               _('Manage DNS Slaves'),
               'argonautLdap2zoneSlaveZones',
               array(
-                new StringAttribute(
+                new $zoneAttributeClass(
                   _('zone'), _('DNS zone this server should be declared as slave of'),
                   'Ldap2zoneSlaveZone', TRUE
                 ),
