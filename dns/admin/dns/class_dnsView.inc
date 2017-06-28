@@ -54,7 +54,7 @@ class dnsView extends simplePlugin
             'fdDNSViewMatchClientsAcl', FALSE
           ),
           new SelectAttribute (
-            _('Match destinations ACL'), _('Name of the ACL to use for the source IP address of the incoming requests'),
+            _('Match destinations ACL'), _('Name of the ACL to use for the destination IP address of the incoming requests'),
             'fdDNSViewMatchDestinationsAcl', FALSE
           ),
           new BooleanAttribute (

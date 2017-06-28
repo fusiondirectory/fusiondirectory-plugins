@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-21 18:14+0200\n"
+"POT-Creation-Date: 2017-06-22 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: d.oertel <d.oertel@uib.de>, 2017\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,12 +26,12 @@ msgstr "Mehrere argonaut Server gefunden. Nur einer wird unterstützt"
 msgid "There is no argonaut server configured"
 msgstr "Es ist kein argonaut-Server konfiguriert"
 
-#: include/class_supportDaemon.inc:608
+#: include/class_supportDaemon.inc:616
 #, php-format
 msgid "Could not read \"%s\"!"
 msgstr "\"%s\" konnte nicht gelesen werden!"
 
-#: include/class_supportDaemon.inc:612
+#: include/class_supportDaemon.inc:620
 #, php-format
 msgid "\"%s\" is not a file!"
 msgstr "\"%s\" ist keine Datei!"
@@ -129,7 +129,7 @@ msgstr "(Re)Installieren"
 
 #: addons/argonaut/class_argonautEventTypes.inc:105
 msgid "Refresh slave files (ldap2zone)"
-msgstr ""
+msgstr "Refresh der Slave Dateien (ldap2zone)"
 
 #: addons/argonaut/class_argonautAction.inc:27
 #: addons/argonaut/class_argonautAction.inc:126
@@ -156,11 +156,11 @@ msgstr "Zeit"
 #: addons/argonaut/class_argonautAction.inc:81
 #: addons/argonaut/class_argonautAction.inc:84
 msgid "Argonaut task"
-msgstr ""
+msgstr "Argonaut task"
 
 #: addons/argonaut/class_argonautAction.inc:82
 msgid "Schedule an argonaut task"
-msgstr ""
+msgstr "Argonaut task planen"
 
 #: addons/argonaut/class_argonautAction.inc:97
 #: addons/argonaut/class_argonautAction.inc:107
@@ -174,11 +174,11 @@ msgstr "Periodischer Auftrag"
 
 #: addons/argonaut/class_argonautAction.inc:111
 msgid "Wether this job should repeat in time"
-msgstr ""
+msgstr "Soll dieser Auftrag wiederholt werden ?"
 
 #: addons/argonaut/class_argonautAction.inc:115
 msgid "How often this task should be repeated"
-msgstr ""
+msgstr "Wie oft soll dieser Auftrag wiederholt werden ?"
 
 #: addons/argonaut/class_argonautAction.inc:126
 msgid "Days"
@@ -203,7 +203,7 @@ msgstr "Ziele"
 
 #: addons/argonaut/class_argonautAction.inc:140
 msgid "Targets for this task"
-msgstr ""
+msgstr "Ziele für diesen Task"
 
 #: addons/argonaut/deploy-list.xml:10
 msgid "List of queued jobs"
@@ -258,11 +258,11 @@ msgstr "Protokolle einsehen"
 #: addons/argonaut/class_argonautImportFile.inc:33
 #: addons/argonaut/class_argonautImportFile.inc:36
 msgid "Argonaut task import"
-msgstr ""
+msgstr "Argonaut Task Import"
 
 #: addons/argonaut/class_argonautImportFile.inc:34
 msgid "Imports argonaut tasks from CSV file"
-msgstr ""
+msgstr "Importiert Argonaut Taks aus einer CSV Datei"
 
 #: addons/argonaut/class_argonautImportFile.inc:49
 msgid "Import actions from CSV file"
@@ -270,7 +270,7 @@ msgstr "Aktionen aus CSV-Datei importieren"
 
 #: addons/argonaut/class_argonautImportFile.inc:53
 msgid "Import a list of task into argonaut"
-msgstr ""
+msgstr "Importiert eine Liste von Taks in Argonaut"
 
 #: addons/argonaut/class_argonautImportFile.inc:63
 msgid "Upload"
@@ -286,7 +286,7 @@ msgstr "Importierte Aufgaben"
 
 #: addons/argonaut/class_argonautImportFile.inc:122
 msgid "Fix the errors in your CSV file first"
-msgstr ""
+msgstr "Biite beheben Sie zunächst die Fehler in Ihrer CSV Datei"
 
 #: addons/argonaut/class_argonautImportFile.inc:138
 msgid "Infrastructure service"
@@ -474,129 +474,131 @@ msgstr "NFS root"
 msgid "Argonaut DNS settings"
 msgstr "Argonaut DNS Einstellungen"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:46
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:50
 msgid "Ldap2zone global settings"
-msgstr ""
+msgstr "Ldap2zone Globale Einstellungen"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:49
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:53
 msgid "Bind directory"
 msgstr "Bind Verzeichnis"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:49
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:53
 msgid "The directory in which conf file must be created"
 msgstr "Das Verzeichnis in dem conf-Datei erstellt werden muss"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:54
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:58
 msgid "Bind cache directory"
 msgstr "Bind cache Verzeichnis"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:54
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:58
 msgid "The directory in which zone files must be created"
 msgstr "Das Verzeichnis in welchem Zonendateien erstellt werden müssen"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:59
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:63
 msgid "TTL"
 msgstr "TTL"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:60
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:64
 msgid "Time to live"
 msgstr "Time to Live"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:68
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:72
 msgid "rndc path"
 msgstr "rndc Pfad"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:69
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:73
 msgid "path to rndc binary"
 msgstr "Pfad zu rndc-Binary"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:75
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:79
 msgid "Search base"
-msgstr ""
+msgstr "Search Base"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:75
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:79
 msgid ""
 "LDAP base in which ldap2zone should search. Only usefull if you got several "
 "nodes for the same zone."
 msgstr ""
+"LDAP base in dem ldap2zone suchen soll. Nur dann sinnvoll, wenn verschiedene"
+" Knoten für die selbe Zone vorhanden sind."
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:81
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:85
 msgid "Ldap2zone master settings"
-msgstr ""
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:84
-msgid "Ignore reverse zone"
-msgstr ""
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:84
-msgid "Do not write reverse zone"
-msgstr ""
+msgstr "Ldap2zone Haupeinstellungen"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:88
+msgid "Ignore reverse zone"
+msgstr "Reverse Zone ignorieren"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:88
+msgid "Do not write reverse zone"
+msgstr "Reverse Zone nicht schreiben"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:92
 msgid "Notify"
-msgstr ""
+msgstr "Melden"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:93
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:97
 msgid "Allow update"
-msgstr ""
+msgstr "Update erlauben"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:93
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:97
 msgid "Allow update (semicolon separated and ended)"
 msgstr "Aktualisierung erlauben (Semikolon getrennt und beendet)"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:97
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:101
 msgid "Allow transfer"
-msgstr ""
+msgstr "Transfer erlauben"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:97
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:101
 msgid "Allow transfer (semicolon separated and ended)"
 msgstr "Transfer erlauben  (Semikolon getrennt und beendet)"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:101
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:105
 msgid "Check names"
-msgstr ""
+msgstr "Überprüfe Namen"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:101
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:105
 msgid ""
 "Cause any host name for the zone to be checked for compliance with RFC 952 "
 "and RFC 1123 and take the defined action"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:108
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:112
 msgid "Ldap2zone slave settings"
-msgstr ""
+msgstr "Ldap2zone Slave Einstellungen"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:113
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:117
 msgid "Manage DNS Slaves"
-msgstr ""
+msgstr "Verwalte DNS Slaves"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:117
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
 msgid "zone"
-msgstr ""
+msgstr "Zone"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:117
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
 msgid "DNS zone this server should be declared as slave of"
-msgstr ""
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
-msgid "master"
-msgstr ""
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
-msgid "Master IP(s) for this zone"
-msgstr ""
+msgstr "Die DNS Zone dieses Servers soll festgelegt werden als Slave von"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:125
+msgid "master"
+msgstr "Master"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:125
+msgid "Master IP(s) for this zone"
+msgstr "Master IP(s) für diese Zone"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:129
 msgid "reverses"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:125
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:129
 msgid "This server should be slave of reverses zones as well"
-msgstr ""
+msgstr "Der Server soll auch Slave der Reverszonen sien"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:132
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:136
 msgid "DNS slaves"
-msgstr ""
+msgstr "DNS Slave"
 
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33
@@ -765,6 +767,8 @@ msgstr "Proxy"
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:67
 msgid "Specifies the http proxy (like Squid) to use for http and hftp method"
 msgstr ""
+"Gibt den http Proxy (wie z.B. Squid) an welcher für die http und hftp "
+"Methoden verwendet werden soll"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
 msgid "Directory in which logs should be stored"
@@ -779,6 +783,8 @@ msgid ""
 "Causes debmirror to ignore missing or broken deb and source files but still "
 "be pedantic about checking meta files"
 msgstr ""
+"Veranlasst den DebMirror fehlende oder kaputte deb- oder source-Pakete zu "
+"ignorieren aber meta Dateien weiterhin genau zu prüfen."
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:82
 msgid "Source"
@@ -794,7 +800,7 @@ msgstr "GPG Check"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
 msgid "Fail if the Release.gpg file is missing"
-msgstr ""
+msgstr "Abbrechen wenn die Release.gpg Datei fehlt."
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:92
 msgid "Contents"
@@ -805,6 +811,8 @@ msgid ""
 "Additionally download Contents.<arch>.gz files (Note that these files can be"
 " relatively big and can change frequently)"
 msgstr ""
+"Zusätzlich Contents.<arch>.gz Dateien herunterladen. (Beachten Sie, dass "
+"diese Dateien vergleichsweise groß sein können und sich häufig ändern.)"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:98
 msgid "Verbose"
@@ -841,7 +849,7 @@ msgstr "Objektgruppe"
 
 #: addons/argonaut/import_events.tpl.c:17
 msgid "Available job types: %1"
-msgstr ""
+msgstr "Verfügbare Job-Typen: %1"
 
 #: addons/argonaut/import_events.tpl.c:20
 msgid "Timestamp"

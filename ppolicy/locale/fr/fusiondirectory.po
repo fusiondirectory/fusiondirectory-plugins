@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-21 18:14+0200\n"
+"POT-Creation-Date: 2017-06-22 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -104,17 +104,39 @@ msgstr "Comptes expirés"
 msgid "Locked accounts"
 msgstr "Comptes verrouillés "
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:71
-#: addons/dashboard/class_dashBoardPPolicy.inc:124
+#: addons/dashboard/class_dashBoardPPolicy.inc:57
+msgid "Login"
+msgstr "Identifiant"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:58
+#: addons/dashboard/class_dashBoardPPolicy.inc:63
+msgid "Name"
+msgstr "Nom"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:59
+#: addons/dashboard/class_dashBoardPPolicy.inc:65
+msgid "Phone number"
+msgstr "Numéro de téléphone"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:60
+msgid "Expiration date"
+msgstr "Date d'expiration"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:64
+msgid "Email"
+msgstr "Courriel"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:85
+#: addons/dashboard/class_dashBoardPPolicy.inc:138
 msgid "Configuration error"
 msgstr "Erreur de configuration"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:72
+#: addons/dashboard/class_dashBoardPPolicy.inc:86
 #, php-format
 msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
 msgstr "La ppolicy par défaut \"%s\" n’a pas été trouvée dans le LDAP !"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:125
+#: addons/dashboard/class_dashBoardPPolicy.inc:139
 #, php-format
 msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
 msgstr ""
@@ -123,19 +145,19 @@ msgstr ""
 
 #: config/ppolicy/class_ppolicyConfig.inc:29
 msgid "Ppolicy plugin configuration"
-msgstr "Configuration de l'extension Ppolicy"
+msgstr "Configuration ppolicy"
 
 #: config/ppolicy/class_ppolicyConfig.inc:30
 msgid "FusionDirectory ppolicy plugin configuration"
-msgstr "Configuration du plugin Ppolicy"
+msgstr "Configuration du plugin ppolicy"
 
 #: config/ppolicy/class_ppolicyConfig.inc:43
 msgid "Ppolicy plugin"
-msgstr "Plugin Ppolicy"
+msgstr "Plugin ppolicy"
 
 #: config/ppolicy/class_ppolicyConfig.inc:46
 msgid "Ppolicy RDN"
-msgstr "Ppolicy RDN"
+msgstr "Branche ppolicy"
 
 #: config/ppolicy/class_ppolicyConfig.inc:46
 msgid "Branch in which ppolicies will be stored"

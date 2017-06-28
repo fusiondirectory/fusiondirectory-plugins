@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-21 18:14+0200\n"
+"POT-Creation-Date: 2017-06-22 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -102,17 +102,39 @@ msgstr "Účty, jejichž platnost skončila"
 msgid "Locked accounts"
 msgstr "Uzamčené účty"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:71
-#: addons/dashboard/class_dashBoardPPolicy.inc:124
+#: addons/dashboard/class_dashBoardPPolicy.inc:57
+msgid "Login"
+msgstr "uživatelské jméno"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:58
+#: addons/dashboard/class_dashBoardPPolicy.inc:63
+msgid "Name"
+msgstr "název"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:59
+#: addons/dashboard/class_dashBoardPPolicy.inc:65
+msgid "Phone number"
+msgstr "telefonní číslo"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:60
+msgid "Expiration date"
+msgstr "Datum vypršení platnosti"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:64
+msgid "Email"
+msgstr "E-mail"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:85
+#: addons/dashboard/class_dashBoardPPolicy.inc:138
 msgid "Configuration error"
 msgstr "chyba v nastavení"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:72
+#: addons/dashboard/class_dashBoardPPolicy.inc:86
 #, php-format
 msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
 msgstr "Výchozí ppolicy %s nebyla v LDAP nalezena!"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:125
+#: addons/dashboard/class_dashBoardPPolicy.inc:139
 #, php-format
 msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
 msgstr "Zásada Ppolicy %s, nastavená pro uživatele %s nebyla v LDAP nalezena!"

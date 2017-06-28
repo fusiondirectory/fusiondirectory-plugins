@@ -343,10 +343,12 @@ class mailMethod
     $prefix     = preg_replace("/\\\\([\.\/])/", "\\1", $prefix);
     $acc_string = preg_replace("/\\\\([\.\/])/", "\\1", $acc_string);
 
-    $domain = $mailpart = "";
-    $mail   = $this->parent->mail;
-    if (preg_match("/\@/", $mail)) {
-      list($mailpart,$domain) = explode("@", $mail);
+    $mail = $domain = $mailpart = '';
+    if (isset($this->parent->mail)) {
+      $mail = $this->parent->mail;
+      if (preg_match('/\@/', $mail)) {
+        list($mailpart,$domain) = explode('@', $mail);
+      }
     }
 
     /* Create account_id
@@ -424,10 +426,12 @@ class mailMethod
     $prefix     = preg_replace("/\\\\([\.\/])/", "\\1", $prefix);
     $acc_string = preg_replace("/\\\\([\.\/])/", "\\1", $acc_string);
 
-    $domain = $mailpart = "";
-    $mail = $this->parent->mail;
-    if (preg_match("/\@/", $mail)) {
-      list($mailpart,$domain) = explode("@", $mail);
+    $mail = $domain = $mailpart = '';
+    if (isset($this->parent->mail)) {
+      $mail = $this->parent->mail;
+      if (preg_match('/\@/', $mail)) {
+        list($mailpart,$domain) = explode('@', $mail);
+      }
     }
 
     /* Create account_id */
@@ -454,37 +458,6 @@ class mailMethod
       $str = trim($acc_id . $folder);
     }
     return $str;
-  }
-
-  /*! \brief  Returns the configured mail method for the given parent object,
-                initialized and read for use.
-      @return mailMethod  The configured mailMethod.
-   */
-  public function get_method()
-  {
-    global $config;
-    $methods = mailMethod::get_methods();
-    if ($config->get_cfg_value('mailmethod') != '') {
-      $method = $config->get_cfg_value('mailmethod');
-      $cls = get_correct_class_name('mailMethod$method');
-      if (isset($methods[$cls])) {
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $cls, '<b>MAIL:</b> Selected mailMethod');
-        $tmp = new $cls($this->parent, $this->type);
-        $tmp->init();
-        return $tmp;
-      } else {
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '', '<b>MAIL: Invalid mailMethod defined: '.$cls.
-            ' falling back to '.get_class($this).'</b>');
-
-        /* Print out configuration errors directly, we can't catch them everywhere */
-        msg_dialog::display(_('Configuration error'),
-            sprintf(_('Mail method "%s" is unknown!'), $method), ERROR_DIALOG);
-      }
-    }
-
-    /* If no valued mailMethod could be detected, return the base class */
-    $this->init();
-    return $this;
   }
 
   /*! \brief Saves sieve settings
@@ -665,9 +638,14 @@ class mailMethod
     return isset(static::get_server_list()[$server]);
   }
 
-  static public function getInstance($class, $parent)
+  static public function getInstance($class, $parent, $type = NULL)
   {
-    $obj = new $class($parent);
+    if ($parent instanceof mailAccount) {
+      $type = 'user';
+    } elseif ($type === NULL) {
+      $type = 'group';
+    }
+    $obj = new $class($parent, $type);
     $obj->init();
     return $obj;
   }

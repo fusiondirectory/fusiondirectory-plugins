@@ -39,7 +39,7 @@ class TimeHisAttribute extends CompositeAttribute
         0, 59, 0
       )
     );
-    parent::__construct($description, $ldapName, $attributes, '/^(\d\d)(\d\d)(\d\d)$/', '%2d%2d%2d', $acl, $label);
+    parent::__construct($description, $ldapName, $attributes, '/^(\d\d)(\d\d)(\d\d)$/', '%02d%02d%02d', $acl, $label);
     $this->setLinearRendering(TRUE);
   }
 }
@@ -145,7 +145,7 @@ class argonautAction extends simplePlugin
     );
   }
 
-  public function __construct($action)
+  public function __construct($action, array $targets)
   {
     global $config;
     parent::__construct($config->current['BASE']);
@@ -172,7 +172,8 @@ class argonautAction extends simplePlugin
 
     $this->datetime = date('YmdHis');
 
-    $this->action = $action;
+    $this->action   = $action;
+    $this->targets  = $targets;
   }
 
   protected function loadAttributes()
@@ -212,7 +213,11 @@ class argonautAction extends simplePlugin
     timezone::get_default_timezone();
     $ret = array('args' => array());
     if ($this->scheduled) {
-      $ret['timestamp'] = strtotime($this->datetime);
+      $timestamp = strtotime($this->datetime);
+      if ($timestamp === FALSE) {
+        throw new FusionDirectoryException('Could not convert date to timestamp: "'.$this->datetime.'"');
+      }
+      $ret['timestamp'] = $timestamp;
       if ($this->periodical) {
         $ret['periodic'] = $this->period;
       }

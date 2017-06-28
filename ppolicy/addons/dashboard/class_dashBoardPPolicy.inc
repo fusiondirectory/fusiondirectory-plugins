@@ -52,6 +52,20 @@ class dashboardPpolicy extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
+    $this->expiredAccountsColumns = array(
+      'user' => array(
+        'uid'             => _('Login'),
+        'cn'              => _('Name'),
+        'telephoneNumber' => _('Phone number'),
+        'expirationDate'  => _('Expiration date'),
+      ),
+      'manager' => array(
+        'manager_cn'      => _('Name'),
+        'manager_mail'    => _('Email'),
+        'manager_phone'   => _('Phone number'),
+      )
+    );
+
     $this->compute_accounts_info();
   }
 
@@ -139,16 +153,23 @@ class dashboardPpolicy extends simplePlugin
         /* No max age, it can’t be expired */
         continue;
       }
-      $lastChange = LdapGeneralizedTime::fromString($user['pwdChangedTime']);
-      $lastChange->setTimezone(timezone::utc());
-      if (($lastChange->getTimeStamp() + $maxAge) < $now->getTimeStamp()) {
-        $expired_accounts[] = dashboardUsers::get_user_infos($user);
-      } elseif (($lastChange->getTimeStamp() + $maxAge) < ($now->getTimeStamp() + $next_expired_days_seconds)) {
-        $next_expired_accounts[] = dashboardUsers::get_user_infos($user);
+      /* Build expiration date from pwdChangedTime and max age */
+      $expDate = LdapGeneralizedTime::fromString($user['pwdChangedTime']);
+      $expDate->setTimezone(timezone::utc());
+      $expDate->add(new DateInterval('PT'.$maxAge.'S'));
+      if ($expDate->getTimeStamp() < $now->getTimeStamp()) {
+        $expired_account = dashboardUsers::get_user_infos($user);
+        $expired_account['expirationDate'] = $expDate->format('d.m.Y');
+        $expired_accounts[] = $expired_account;
+      } elseif ($expDate->getTimeStamp() < ($now->getTimeStamp() + $next_expired_days_seconds)) {
+        $expired_account = dashboardUsers::get_user_infos($user);
+        $expired_account['expirationDate'] = $expDate->format('d.m.Y');
+        $next_expired_accounts[] = $expired_account;
       }
     }
 
     $this->expired = array(
+      'columns'             => $this->expiredAccountsColumns,
       'accounts'            => $expired_accounts,
       'accounts_next_days'  => $next_expired_accounts,
       'next_days'           => $next_expired_days,

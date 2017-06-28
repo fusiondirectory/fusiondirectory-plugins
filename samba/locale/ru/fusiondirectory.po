@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-21 18:14+0200\n"
+"POT-Creation-Date: 2017-06-22 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
@@ -305,36 +305,34 @@ msgstr "Разрешить подключения только от этой р�
 msgid "Only allow this user to connect to this list of hosts"
 msgstr "Пользователю разрешено подключаться только к хостам из списка"
 
-#: personal/samba/class_sambaAccount.inc:478
-msgid "Home drive"
-msgstr "Домашний диск"
-
-#: personal/samba/class_sambaAccount.inc:481
-msgid "Home path"
+#: personal/samba/class_sambaAccount.inc:479
+#: personal/samba/class_sambaAccount.inc:486
+#, php-format
+msgid "Field \"%s\" is required when \"%s\" is filled! Fill both field or empty them."
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:486
+#: personal/samba/class_sambaAccount.inc:494
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:503
-#: personal/samba/class_sambaAccount.inc:529
-#: personal/samba/class_sambaAccount.inc:550
+#: personal/samba/class_sambaAccount.inc:511
+#: personal/samba/class_sambaAccount.inc:537
+#: personal/samba/class_sambaAccount.inc:558
 #: admin/groups/samba/class_sambaGroup.inc:133
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: personal/samba/class_sambaAccount.inc:503
+#: personal/samba/class_sambaAccount.inc:511
 #: admin/groups/samba/class_sambaGroup.inc:133
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:530
+#: personal/samba/class_sambaAccount.inc:538
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:551
+#: personal/samba/class_sambaAccount.inc:559
 msgid ""
 "Cannot convert primary group to samba group: group samba tab is disabled!"
 msgstr ""

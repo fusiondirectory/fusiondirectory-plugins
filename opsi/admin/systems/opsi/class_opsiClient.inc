@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016  FusionDirectory
+  Copyright (C) 2013-2017  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -77,18 +77,13 @@ class opsiClient extends simplePlugin
   function save()
   {
     global $config;
-    if ($this->initially_was_account && $this->editing_group()) {
+    if ($this->initially_was_account && $this->editing_group() && !$this->is_template) {
       $oldMembers = array_diff($this->initialMembers, $this->parent->getBaseObject()->member);
       $macAddresses = array();
       $ldap = $config->get_ldap_link();
       foreach ($oldMembers as $member) {
         $ldap->cat($member, array('macAddress'), '(&(!(objectClass=opsiClient))(macAddress=*))');
-        if (!$ldap->success()) {
-          msg_dialog::display(
-            _("Could not get macAddress for $member"),
-            msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
-          );
-        } elseif ($attrs = $ldap->fetch()) {
+        if ($attrs = $ldap->fetch()) {
           $macAddresses[] = $attrs['macAddress'][0];
         }
       }
@@ -98,7 +93,7 @@ class opsiClient extends simplePlugin
           $serverMac = $attrs['macAddress'][0];
         } else {
           msg_dialog::display(
-            _("Could not get macAddress for OPSI server !"),
+            _('Could not get macAddress for OPSI server!'),
             msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
           );
         }
@@ -120,7 +115,7 @@ class opsiClient extends simplePlugin
       return $errors;
     }
 
-    if ($this->is_account) {
+    if ($this->is_account && !$this->is_template) {
       $this->update_or_insert();
     }
   }
@@ -138,12 +133,12 @@ class opsiClient extends simplePlugin
           $macAddresses[] = $attrs['macAddress'][0];
         } else {
           if ($ldap->success()) {
-            $error = "$member was not found!";
+            $error = _('This member was not found or has no macAddress');
           } else {
             $error = $ldap->get_error();
           }
           msg_dialog::display(
-            _("Could not get macAddress for $member"),
+            sprintf(_('Could not get macAddress for "%s"'), $member),
             msgPool::ldaperror($error), ERROR_DIALOG
           );
         }
@@ -165,7 +160,7 @@ class opsiClient extends simplePlugin
   function remove_from_parent()
   {
     global $config;
-    if ($this->member_of_group) {
+    if ($this->member_of_group && !$this->is_template) {
       // If the winstation is member of an ogroup which has OPSI activated, we must update_or_insert information
       // We have to call this in here because save won't be called as is_account is FALSE
       $this->update_or_insert();
@@ -175,33 +170,30 @@ class opsiClient extends simplePlugin
       return;
     }
 
-    $macAddresses = array();
-    if ($this->editing_group()) {
-      $ldap = $config->get_ldap_link();
-      foreach ($this->initialMembers as $member) {
-        $ldap->cat($member, array('macAddress'), '(&(!(objectClass=opsiClient))(macAddress=*))');
-        if (!$ldap->success()) {
-          msg_dialog::display(
-            _("Could not get macAddress for $member"),
-            msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
-          );
-        } elseif ($attrs = $ldap->fetch()) {
-          $macAddresses[] = $attrs['macAddress'][0];
+    if (!$this->is_template) {
+      $macAddresses = array();
+      if ($this->editing_group()) {
+        $ldap = $config->get_ldap_link();
+        foreach ($this->initialMembers as $member) {
+          $ldap->cat($member, array('macAddress'), '(&(!(objectClass=opsiClient))(macAddress=*))');
+          if ($attrs = $ldap->fetch()) {
+            $macAddresses[] = $attrs['macAddress'][0];
+          }
         }
+      } elseif (!$this->member_of_group) {
+        $macAddresses = array($this->parent->getBaseObject()->macAddress);
       }
-    } elseif (!$this->member_of_group) {
-      $macAddresses = array($this->parent->getBaseObject()->macAddress);
-    }
 
-    if (!empty($macAddresses)) {
-      $s_daemon   = new supportDaemon();
-      if ($s_daemon->is_available()) {
-        $s_daemon->append_call('OPSI.delete', $macAddresses, array());
-        if ($s_daemon->is_error()) {
-          msg_dialog::display(
-            _('Could not remove OPSI information'),
-            msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-          );
+      if (!empty($macAddresses)) {
+        $s_daemon   = new supportDaemon();
+        if ($s_daemon->is_available()) {
+          $s_daemon->append_call('OPSI.delete', $macAddresses, array());
+          if ($s_daemon->is_error()) {
+            msg_dialog::display(
+              _('Could not remove OPSI information'),
+              msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+            );
+          }
         }
       }
     }

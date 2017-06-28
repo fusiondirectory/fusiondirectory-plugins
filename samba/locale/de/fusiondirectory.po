@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-21 18:14+0200\n"
+"POT-Creation-Date: 2017-06-22 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
@@ -304,40 +304,38 @@ msgstr "Erlaube Verbindungen nur von diesen Arbeitsstationen"
 msgid "Only allow this user to connect to this list of hosts"
 msgstr "Nur diesem Benutzer erlauben, dieser Liste von Hosts zu verbinden"
 
-#: personal/samba/class_sambaAccount.inc:478
-msgid "Home drive"
-msgstr "Basis-Laufwerk"
-
-#: personal/samba/class_sambaAccount.inc:481
-msgid "Home path"
-msgstr "Basis-Pfad"
-
+#: personal/samba/class_sambaAccount.inc:479
 #: personal/samba/class_sambaAccount.inc:486
+#, php-format
+msgid "Field \"%s\" is required when \"%s\" is filled! Fill both field or empty them."
+msgstr ""
+
+#: personal/samba/class_sambaAccount.inc:494
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr "Der Windows Benutzermanager erlaubt maximal acht Clients!"
 
-#: personal/samba/class_sambaAccount.inc:503
-#: personal/samba/class_sambaAccount.inc:529
-#: personal/samba/class_sambaAccount.inc:550
+#: personal/samba/class_sambaAccount.inc:511
+#: personal/samba/class_sambaAccount.inc:537
+#: personal/samba/class_sambaAccount.inc:558
 #: admin/groups/samba/class_sambaGroup.inc:133
 msgid "Warning"
 msgstr "Warnung"
 
-#: personal/samba/class_sambaAccount.inc:503
+#: personal/samba/class_sambaAccount.inc:511
 #: admin/groups/samba/class_sambaGroup.inc:133
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
 msgstr ""
 "Undefinierte Samba SID festgestellt. Bitte beheben Sie dieses Problem "
 "manuell!"
 
-#: personal/samba/class_sambaAccount.inc:530
+#: personal/samba/class_sambaAccount.inc:538
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr ""
 "Kann primäre Gruppe nicht in Samba-Gruppe überführen: die Gruppe kann nicht "
 "identifiziert werden!"
 
-#: personal/samba/class_sambaAccount.inc:551
+#: personal/samba/class_sambaAccount.inc:559
 msgid ""
 "Cannot convert primary group to samba group: group samba tab is disabled!"
 msgstr ""

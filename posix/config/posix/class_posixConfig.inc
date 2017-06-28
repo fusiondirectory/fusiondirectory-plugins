@@ -42,6 +42,11 @@ class posixConfig extends simplePlugin
         'name'  => _('Posix'),
         'class' => array('critical'),
         'attrs' => array(
+          new StringAttribute (
+            _('POSIX groups RDN'), _('The branch where POSIX groups are stored.'),
+            'fdGroupRDN', TRUE,
+            'ou=groups'
+          ),
           new IntAttribute (
             _('Group/user min id'),
             _('The minimum assignable user or group id to avoid security leaks with id 0 accounts.'),

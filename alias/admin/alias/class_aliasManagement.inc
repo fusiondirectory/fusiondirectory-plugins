@@ -22,7 +22,7 @@
 class aliasManagement extends simpleManagement
 {
   // Tab definition
-  protected $objectTypes  = array('mailAliasDistribution','mailAliasRedirection','sympaAlias');
+  protected $objectTypes  = array('mailAliasDistribution','mailAliasRedirection');
 
   protected $autoFilterAttributes = array('dn', 'cn', 'description', 'aliasExpirationDate');
 
@@ -36,8 +36,8 @@ class aliasManagement extends simpleManagement
       'plSection'     => 'accounts',
       'plPriority'    => 26,
       'plCategory'    => array('alias' => array('description'  => _('Mail aliases'),
-                                                'objectClass'  => array('mailAliasRedirection','mailAliasDistribution','sympaAlias'))),
-      'plManages'     => array('mailAliasDistribution','mailAliasRedirection','sympaAlias'),
+                                                'objectClass'  => array('mailAliasRedirection','mailAliasDistribution'))),
+      'plManages'     => array('mailAliasDistribution','mailAliasRedirection'),
 
       'plProvidedAcls' => array()
     );

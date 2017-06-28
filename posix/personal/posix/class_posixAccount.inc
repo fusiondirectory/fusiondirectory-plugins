@@ -35,7 +35,7 @@ class EpochDaysDateAttribute extends DateAttribute
   /* 24 * 60 * 60 = 86400 */
   public static $secondsPerDay = 86400;
 
-  function __construct ($label, $description, $ldapName, $required, $defaultValue = 'now', $acl = "")
+  function __construct ($label, $description, $ldapName, $required, $defaultValue = 'now', $acl = '')
   {
     parent::__construct($label, $description, $ldapName, $required, '', $defaultValue, $acl);
   }
@@ -79,6 +79,8 @@ class posixAccount extends simplePlugin
   var $displayHeader = TRUE;
   var $objectclasses = array('posixAccount', 'shadowAccount');
   protected $locks = array();
+
+  protected $fromTemplate = FALSE;
 
   static function plInfo()
   {
@@ -272,14 +274,6 @@ class posixAccount extends simplePlugin
     );
 
     if ($dn !== NULL) {
-      /* Correct is_account. shadowAccount is not required. */
-      if (isset($this->attrs['objectClass']) &&
-          in_array ('posixAccount', $this->attrs['objectClass'])) {
-        $this->is_account = TRUE;
-      }
-
-      $this->initially_was_account = $this->is_account;
-
       /* Fill group */
       $this->primaryGroup = $this->gidNumber;
     }
@@ -295,38 +289,15 @@ class posixAccount extends simplePlugin
     $this->attributesAccess['loginShell']->setChoices($loginShellList);
 
     $secondaryGroups = array();
-    $secondaryGroups[''] = "- "._("automatic")." -";
+    $secondaryGroups[''] = '- '._('automatic').' -';
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search("(objectClass=posixGroup)", array("cn", "gidNumber"));
+    $ldap->search('(objectClass=posixGroup)', array('cn', 'gidNumber'));
     while ($attrs = $ldap->fetch()) {
       $secondaryGroups[$attrs['gidNumber'][0]] = $attrs['cn'][0];
     }
-    asort ($secondaryGroups);
+    asort($secondaryGroups);
     $this->attributesAccess['primaryGroup']->setChoices(array_keys($secondaryGroups), array_values($secondaryGroups));
-
-    if (!$this->is_template) {
-      $current = floor(date("U") / EpochDaysDateAttribute::$secondsPerDay);
-
-      $shadowExpire     = $this->attributesAccess['shadowExpire']->getEpochDays();
-      $shadowInactive   = $this->attributesAccess['shadowInactive']->getValue();
-      $shadowMin        = $this->attributesAccess['shadowMin']->getValue();
-      $shadowMax        = $this->attributesAccess['shadowMax']->getValue();
-      $shadowLastChange = $this->attributesAccess['shadowLastChange']->getValue();
-      if (($current >= $shadowExpire) && ($shadowExpire > 0)) {
-        $status = _("expired");
-        if ($shadowInactive != "" && ($current - $shadowExpire) < $shadowInactive) {
-          $status .= ", "._("grace time active");
-        }
-      } elseif ($shadowMax != "" && ($shadowLastChange + $shadowMax) <= $current) {
-        $status = _("active").", "._("password expired");
-      } elseif ($shadowMin != "" && ($shadowLastChange + $shadowMin) <= $current) {
-        $status = _("active").", "._("password not changeable");
-      } else {
-        $status = _("active");
-      }
-      $this->attributesAccess['posixStatus']->setValue($status);
-    }
 
     $this->attributesAccess['groupMembership']->setInLdap(FALSE);
     if (class_available('mixedGroup')) {
@@ -344,10 +315,9 @@ class posixAccount extends simplePlugin
         $ldap->search('(&(objectClass=posixGroup)(memberUid='.ldap_escape_f($this->getUid()).'))', array('cn', 'description'));
         $groupMembership = array();
         while ($attrs = $ldap->fetch()) {
-          if (!isset($attrs['description'][0])) {
-            $entry = $attrs['cn'][0];
-          } else {
-            $entry = $attrs['cn'][0].' ['.$attrs['description'][0].']';
+          $entry = $attrs['cn'][0];
+          if (isset($attrs['description'][0])) {
+            $entry .= ' ['.$attrs['description'][0].']';
           }
           $groupMembership[$attrs['dn']] = $entry;
         }
@@ -359,6 +329,7 @@ class posixAccount extends simplePlugin
       }
     }
     if ($this->is_template) {
+      /* Template specific handling */
       if (isset($this->attrs['force_ids'])) {
         $this->force_ids = ($this->attrs['force_ids'][0] != 'FALSE');
       }
@@ -369,7 +340,35 @@ class posixAccount extends simplePlugin
       if (isset($this->attrs['mustchangepassword'])) {
         $this->mustchangepassword = ($this->attrs['mustchangepassword'][0] != 'FALSE');
       }
+    } else {
+      /* Status is not computed for templates */
+      $current = floor(date('U') / EpochDaysDateAttribute::$secondsPerDay);
+
+      $shadowExpire     = $this->attributesAccess['shadowExpire']->getEpochDays();
+      $shadowInactive   = $this->attributesAccess['shadowInactive']->getValue();
+      $shadowMin        = $this->attributesAccess['shadowMin']->getValue();
+      $shadowMax        = $this->attributesAccess['shadowMax']->getValue();
+      $shadowLastChange = $this->attributesAccess['shadowLastChange']->getValue();
+      if (($current >= $shadowExpire) && ($shadowExpire > 0)) {
+        $status = _('expired');
+        if ($shadowInactive != '' && ($current - $shadowExpire) < $shadowInactive) {
+          $status .= ', '._('grace time active');
+        }
+      } elseif ($shadowMax != '' && ($shadowLastChange + $shadowMax) <= $current) {
+        $status = _('active').', '._('password expired');
+      } elseif ($shadowMin != '' && ($shadowLastChange + $shadowMin) <= $current) {
+        $status = _('active').', '._('password not changeable');
+      } else {
+        $status = _('active');
+      }
+      $this->attributesAccess['posixStatus']->setValue($status);
     }
+  }
+
+  function is_this_account($attrs)
+  {
+    /* shadowAccount is not required */
+    return (isset($attrs['objectClass']) && in_array_ics('posixAccount', $attrs['objectClass']));
   }
 
   function getUid()
@@ -419,33 +418,33 @@ class posixAccount extends simplePlugin
 
     /* Check ID's if they are forced by user */
     if ($this->force_ids) {
-      if ($this->uidNumber < $config->get_cfg_value("minId")) {
-        $message[] = msgPool::toosmall(_("UID"), $config->get_cfg_value("minId"));
+      if ($this->uidNumber < $config->get_cfg_value('minId')) {
+        $message[] = msgPool::toosmall(_('UID'), $config->get_cfg_value('minId'));
       }
-      if ($this->gidNumber < $config->get_cfg_value("minId")) {
-        $message[] = msgPool::toosmall(_("GID"), $config->get_cfg_value("minId"));
+      if ($this->gidNumber < $config->get_cfg_value('minId')) {
+        $message[] = msgPool::toosmall(_('GID'), $config->get_cfg_value('minId'));
       }
     }
 
     /* Check shadow settings */
-    if ($this->shadowWarning !== "") {
-      if ($this->shadowMax === "") {
-        $message[] = msgPool::depends("shadowWarning", "shadowMax");
+    if ($this->shadowWarning !== '') {
+      if ($this->shadowMax === '') {
+        $message[] = msgPool::depends('shadowWarning', 'shadowMax');
       }
       if ($this->shadowWarning > $this->shadowMax) {
-        $message[] = msgPool::toobig("shadowWarning", "shadowMax");
+        $message[] = msgPool::toobig('shadowWarning', 'shadowMax');
       }
-      if (($this->shadowMin !== "") && ($this->shadowWarning < $this->shadowMin)) {
-        $message[] = msgPool::toosmall("shadowWarning", "shadowMin");
+      if (($this->shadowMin !== '') && ($this->shadowWarning < $this->shadowMin)) {
+        $message[] = msgPool::toosmall('shadowWarning', 'shadowMin');
       }
     }
 
-    if (($this->shadowInactive !== "") && ($this->shadowMax === "")) {
-      $message[] = msgPool::depends("shadowInactive", "shadowMax");
+    if (($this->shadowInactive !== '') && ($this->shadowMax === '')) {
+      $message[] = msgPool::depends('shadowInactive', 'shadowMax');
     }
-    if (($this->shadowMin !== "") && ($this->shadowMax !== "") &&
+    if (($this->shadowMin !== '') && ($this->shadowMax !== '') &&
         ($this->shadowMin > $this->shadowMax)) {
-      $message[] = msgPool::toobig("shadowMin", "shadowMax");
+      $message[] = msgPool::toobig('shadowMin', 'shadowMax');
     }
 
     return $message;
@@ -458,7 +457,7 @@ class posixAccount extends simplePlugin
     if (isset($this->parent) && $this->parent !== NULL) {
       $this->gecos = rewrite($this->parent->getBaseObject()->cn);
       if (!preg_match('/^[a-z0-9 -]+$/i', $this->gecos)) {
-        $this->gecos = "";
+        $this->gecos = '';
       }
     }
 
@@ -527,6 +526,10 @@ class posixAccount extends simplePlugin
         } else {
           $tabObject  = objects::create('group');
         }
+        if ($this->fromTemplate) {
+          /* When creating a user through a template we bypass ACLs */
+          $tabObject->setIgnoreAcls(TRUE);
+        }
 
         $baseObject = $tabObject->getBaseObject();
 
@@ -560,15 +563,15 @@ class posixAccount extends simplePlugin
         $attrs = $ldap->fetch();
         $this->gidNumber = $attrs['gidNumber'][0];
         @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
-          "Found and used: <i>".$attrs['dn']."</i>",
-          sprintf("Primary group '%s' exists, gidNumber is '%s'.", $this->getUid(), $this->gidNumber));
+          'Found and used: <i>'.$attrs['dn'].'</i>',
+          sprintf('Primary group "%s" exists, gidNumber is "%s".', $this->getUid(), $this->gidNumber));
       }
     } else {
       /* Primary group was selected by user */
       $this->gidNumber = $this->primaryGroup;
       @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
-        sprintf("Primary group '%s' for user '%s' manually selected.",
-        $this->gidNumber, $this->getUid()), "");
+        sprintf('Primary group "%s" for user "%s" manually selected.',
+        $this->gidNumber, $this->getUid()), '');
     }
 
     if (!$this->is_template) {
@@ -590,9 +593,9 @@ class posixAccount extends simplePlugin
     }
 
     /* Trust accounts */
-    if (($this->trustMode != "") && !in_array('hostObject', $this->attrs['objectClass'])) {
+    if (($this->trustMode != '') && !in_array('hostObject', $this->attrs['objectClass'])) {
       $this->attrs['objectClass'][] = 'hostObject';
-    } elseif (($this->trustMode == "") && (($key = array_search('hostObject', $this->attrs['objectClass'])) !== FALSE)) {
+    } elseif (($this->trustMode == '') && (($key = array_search('hostObject', $this->attrs['objectClass'])) !== FALSE)) {
       unset($this->attrs['objectClass'][$key]);
     }
 
@@ -739,6 +742,8 @@ class posixAccount extends simplePlugin
     } elseif (count($this->host) > 0) {
       $this->trustMode = 'byhost';
     }
+
+    $this->fromTemplate = TRUE;
   }
 
   function foreignKeyUpdate ($field, $oldvalue, $newvalue, $source)
@@ -824,7 +829,7 @@ class posixAccount extends simplePlugin
 
     /* Sanity check */
     if ($min >= $max) {
-      msg_dialog::display(_("Error"), _("Cannot allocate a free ID:")." ".sprintf(_("%sPoolMin >= %sPoolMax!"), $attrib), ERROR_DIALOG);
+      msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '.sprintf(_('%sPoolMin >= %sPoolMax!'), $attrib), ERROR_DIALOG);
       return NULL;
     }
 
@@ -974,14 +979,14 @@ class posixAccount extends simplePlugin
   {
     global $config;
 
-    if ($config->get_cfg_value("nextIdHook") != "") {
+    if ($config->get_cfg_value('nextIdHook') != '') {
       /* Call hook script - if present */
-      $command = $config->get_cfg_value("nextIdHook");
+      $command = $config->get_cfg_value('nextIdHook');
 
-      if ($command != "") {
-        $command .= " ".escapeshellarg($dn)." ".escapeshellarg($attrib);
+      if ($command != '') {
+        $command .= ' '.escapeshellarg($dn).' '.escapeshellarg($attrib);
         if (check_command($command)) {
-          @DEBUG (DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, "Execute");
+          @DEBUG (DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, 'Execute');
           exec($command, $output);
           if (is_numeric($output[0])) {
             return $output[0];
@@ -990,8 +995,8 @@ class posixAccount extends simplePlugin
       }
     }
 
-    msg_dialog::display(_("Warning"), _("'nextIdHook' is not available. Using default base!"), WARNING_DIALOG);
-    return $config->get_cfg_value("uidNumberBase");
+    msg_dialog::display(_('Warning'), _('"nextIdHook" is not available. Using default base!'), WARNING_DIALOG);
+    return $config->get_cfg_value('uidNumberBase');
   }
 }
 ?>

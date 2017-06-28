@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-21 18:14+0200\n"
+"POT-Creation-Date: 2017-06-22 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -43,7 +43,7 @@ msgstr "Mise à jour des informations OPSI impossible"
 
 #: config/opsi/class_opsiConfig.inc:28
 msgid "OPSI configuration"
-msgstr "Informations sur le serveur OPSI"
+msgstr "Configuration OPSI"
 
 #: config/opsi/class_opsiConfig.inc:29
 msgid "FusionDirectory OPSI plugin configuration"
@@ -56,7 +56,7 @@ msgstr "OPSI"
 
 #: config/opsi/class_opsiConfig.inc:45
 msgid "OPSI RDN"
-msgstr "RDN OPSI"
+msgstr "Branche OPSI"
 
 #: config/opsi/class_opsiConfig.inc:45
 msgid "Branch in which OPSI profiles will be stored"
@@ -159,6 +159,11 @@ msgstr "Impossible de trouver %s dans l'annuaire LDAP"
 #: admin/opsi/class_opsiProductProperties.inc:190
 msgid "Failed to contact OPSI server"
 msgstr "Impossible de contacter le serveur OPSI"
+
+#: admin/opsi/class_opsiSoftwareList.inc:149
+#, php-format
+msgid "%s (%s-%s)"
+msgstr "%s (%s-%s)"
 
 #: admin/opsi/class_opsiProfile.inc:67 admin/opsi/class_opsiProfile.inc:68
 #: admin/opsi/class_opsiProfile.inc:72

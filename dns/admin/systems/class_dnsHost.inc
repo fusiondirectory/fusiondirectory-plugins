@@ -21,6 +21,8 @@
 /* DnsRecords edition showing only records for our host */
 class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
 {
+  private static $templateValueSeparator = '^';
+
   function __construct ($label, $description, $ldapName, $zoneDn, $defaultValue = array(), $acl = "")
   {
     parent::__construct ($label, $description, $ldapName, FALSE, $defaultValue, $acl);
@@ -37,7 +39,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     if (is_object($this->plugin)) {
       if (!$this->plugin->is_template) {
         $this->loadRecords();
-      } elseif (isset($this->plugin->attrs[$this->getLdapName()]['count'])) {
+      } else {
         $this->value = array();
         $this->loadAdditionalTemplatesValues();
       }
@@ -52,9 +54,12 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     $ldap->cat($this->getZoneDn());
     $attrs = $ldap->fetch();
     $this->zoneName = $attrs['zoneName'][0];
+    $this->loadReverseZones($attrs);
 
-    for ($i = 0; $i < $this->plugin->attrs[$this->getLdapName()]['count']; $i++) {
-      $this->value[] = explode('|', $this->plugin->attrs[$this->getLdapName()][$i]);
+    if (isset($this->plugin->attrs[$this->getLdapName()]['count'])) {
+      for ($i = 0; $i < $this->plugin->attrs[$this->getLdapName()]['count']; $i++) {
+        $this->value[] = explode(static::$templateValueSeparator, $this->plugin->attrs[$this->getLdapName()][$i]);
+      }
     }
   }
 
@@ -88,7 +93,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
   function fillLdapValue (&$attrs)
   {
     if ($this->plugin->is_template) {
-      $attrs[$this->getLdapName()] = array_map(function ($v) {return implode('|', $v);}, $this->value);
+      $attrs[$this->getLdapName()] = array_map(function ($v) {return implode(static::$templateValueSeparator, $v);}, $this->value);
     }
   }
 
@@ -159,6 +164,11 @@ class dnsHost extends simplePlugin
   {
     global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
+    $this->reloadZoneChoices();
+  }
+
+  protected function reloadZoneChoices()
+  {
     /* List DNS zones we can read */
     $this->zonesCache = objects::ls('dnsZone', NULL, NULL, '', TRUE);
     /* Check if some values are missing */
@@ -242,7 +252,8 @@ class dnsHost extends simplePlugin
         $ldap->cat($dn);
         if ($attrs = $ldap->fetch()) {
           list ($fqdn) = explode(' ', $attrs['sOARecord'][0]);
-          if ($fqdn == $cn.'.'.$attrs['zoneName'][0]) {
+          $servers = dnsManagement::findServerByFQDN($fqdn, $dn);
+          if (isset($servers[$this->dn])) {
             $fqdn = '<strong>'.$fqdn.'</strong>';
             if (class_available('supportDaemon')) {
               $id = 'ldap2zone_refresh_'.base64_encode($attrs['zoneName'][0]);
@@ -325,8 +336,23 @@ class dnsHost extends simplePlugin
     /* Update records if IP or CN changed */
     if ($this->initially_was_account) {
       $baseObject = $this->parent->getBaseObject();
-      $message    = '';
+      $messages   = array();
       $oldcn      = preg_replace('/\$$/', '', $baseObject->attributeInitialValue('cn'));
+      $oldips     = $baseObject->attributeInitialValue('ipHostNumber');
+
+      $oldzones = $this->attributeInitialValue('fdDNSZoneDn');
+      $newzones = $this->attributeValue('fdDNSZoneDn');
+      if ($this->attributeHaveChanged('fdDNSZoneDn') && !empty($oldzones)) {
+        $messages = array_merge(
+          $messages,
+          static::removeIpsFromZones(array_diff($oldzones, $newzones), $oldips)
+        );
+        $messages = array_merge(
+          $messages,
+          static::removeCnFromZones(array_diff($oldzones, $newzones), $oldcn)
+        );
+      }
+
       if ($baseObject->attributeHaveChanged('cn') && !empty($oldcn)) {
         $newcn      = preg_replace('/\$$/', '', $baseObject->attributeValue('cn'));
         $dnsZones   = $this->fdDNSZoneDn;
@@ -334,8 +360,8 @@ class dnsHost extends simplePlugin
           $tabObject = objects::open($dn, 'dnsZone');
           $nbRecords = $tabObject->getBaseObject()->cnChanged($oldcn, $newcn);
           if ($nbRecords > 0) {
-            $message .= sprintf(
-              _('%d records were updated from %s to %s in zone %s')."<br/>\n",
+            $messages[] = sprintf(
+              _('%d records were updated from %s to %s in zone %s'),
               $nbRecords,
               $oldcn,
               $newcn,
@@ -346,7 +372,6 @@ class dnsHost extends simplePlugin
       }
 
       if ($baseObject->attributeHaveChanged('ipHostNumber')) {
-        $oldips = $baseObject->attributeInitialValue('ipHostNumber');
         $newips = $baseObject->attributeValue('ipHostNumber');
         if ((count($oldips) == 1) && (count($newips) == 1)) {
           $dnsZones   = $this->fdDNSZoneDn;
@@ -354,8 +379,8 @@ class dnsHost extends simplePlugin
             $tabObject = objects::open($dn, 'dnsZone');
             $nbRecords = $tabObject->getBaseObject()->ipChanged(reset($oldips), reset($newips));
             if ($nbRecords > 0) {
-              $message .= sprintf(
-                _('%d records were updated from %s to %s in zone %s')."<br/>\n",
+              $messages[] = sprintf(
+                _('%d records were updated from %s to %s in zone %s'),
                 $nbRecords,
                 reset($oldips),
                 reset($newips),
@@ -363,32 +388,50 @@ class dnsHost extends simplePlugin
               );
             }
           }
-        } else {
-          $dnsZones   = $this->fdDNSZoneDn;
-          foreach ($dnsZones as $dn) {
-            $tabObject = objects::open($dn, 'dnsZone');
-            $nbRecords = $tabObject->getBaseObject()->ipRemoved(array_diff($oldips, $newips));
-            if ($nbRecords > 0) {
-              $message .= sprintf(
-                _('%d records were removed in zone %s')."<br/>\n",
-                $nbRecords,
-                $tabObject->getBaseObject()->zoneName
-              );
-            }
-          }
+        } elseif (!empty($oldips)) {
+          static::removeIpsFromZone($this->fdDNSZoneDn, array_diff($oldips, $newips));
         }
       }
-      if (!empty($message)) {
-        msg_dialog::display(_('DNS update'), $message, INFO_DIALOG);
+      if (!empty($messages)) {
+        msg_dialog::display(_('DNS update'), implode("<br/>\n", $messages)."<br/>\n", INFO_DIALOG);
       }
     }
 
     return $errors;
   }
 
+  protected function post_remove ()
+  {
+    /* Remove records of our IP or CN */
+    if ($this->initially_was_account) {
+      $baseObject = $this->parent->getBaseObject();
+      $messages   = array();
+      $oldcn      = preg_replace('/\$$/', '', $baseObject->attributeInitialValue('cn'));
+      $oldips     = $baseObject->attributeInitialValue('ipHostNumber');
+
+      $oldzones = $this->attributeInitialValue('fdDNSZoneDn');
+      if (!empty($oldzones)) {
+        $messages = array_merge(
+          $messages,
+          static::removeIpsFromZones($oldzones, $oldips)
+        );
+        $messages = array_merge(
+          $messages,
+          static::removeCnFromZones($oldzones, $oldcn)
+        );
+      }
+    }
+    if (!empty($messages)) {
+      msg_dialog::display(_('DNS update'), implode("<br/>\n", $messages)."<br/>\n", INFO_DIALOG);
+    }
+
+    return parent::post_remove();
+  }
+
   function adapt_from_template($attrs, $skip = array())
   {
     parent::adapt_from_template($attrs, $skip);
+    $this->reloadZoneChoices();
     $this->zoneChanged();
     if (isset($this->attributesInfo['records'])) {
       foreach ($this->attributesInfo['records']['attrs'] as &$attr) {
@@ -403,12 +446,45 @@ class dnsHost extends simplePlugin
   function addRecord($zoneDn, array $record)
   {
     if (isset($this->zonesCache[$zoneDn])) {
-      $name   = $this->zonesCache[$zoneDn];
       $zoneid = preg_replace('/[\/\-,.#:; =]/', '_', $zoneDn);
     } else {
       return FALSE;
     }
     $attrId = 'zoneRecords'.$zoneid;
     $this->attributesAccess[$attrId]->addValue($record);
+  }
+
+  static function removeIpsFromZones(array $zoneDns, array $ips)
+  {
+    $messages = array();
+    foreach ($zoneDns as $zoneDn) {
+      $tabObject = objects::open($zoneDn, 'dnsZone');
+      $nbRecords = $tabObject->getBaseObject()->ipRemoved($ips);
+      if ($nbRecords > 0) {
+        $messages[] = sprintf(
+          _('%d records were removed in zone %s'),
+          $nbRecords,
+          $tabObject->getBaseObject()->zoneName
+        );
+      }
+    }
+    return $messages;
+  }
+
+  static function removeCnFromZones(array $zoneDns, $cn)
+  {
+    $messages = array();
+    foreach ($zoneDns as $zoneDn) {
+      $tabObject = objects::open($zoneDn, 'dnsZone');
+      $nbRecords = $tabObject->getBaseObject()->cnRemoved($cn);
+      if ($nbRecords > 0) {
+        $messages[] = sprintf(
+          _('%d records were removed in zone %s'),
+          $nbRecords,
+          $tabObject->getBaseObject()->zoneName
+        );
+      }
+    }
+    return $messages;
   }
 }

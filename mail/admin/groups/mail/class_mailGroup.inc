@@ -35,7 +35,7 @@ class GroupMailsAttribute extends MailsAttribute
   }
 }
 
-class mailgroup extends simplePlugin
+class mailGroup extends simplePlugin
 {
   var $displayHeader  = TRUE;
   var $objectclasses  = array('fdGroupMail');
@@ -63,7 +63,7 @@ class mailgroup extends simplePlugin
             'mail', TRUE
           ),
           new SelectAttribute (
-            _('Server'), _('Server mail'),
+            _('Server'), _('Email server'),
             'gosaMailServer', TRUE,
             array('')
           ),
@@ -91,15 +91,30 @@ class mailgroup extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    if (isset($object->cn)) {
-      $this->cn = $object->cn;
-    } elseif (isset($this->attrs['cn'])) {
-      $this->cn = $this->attrs['cn'][0];
-    }
-
     $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
     $this->attributesAccess['gosaMailServer']->setSubmitForm('mailServerChanged');
     $this->mailServerChanged();
+  }
+
+  /* We need $mailAccount->cn to return the cn for mailMethod */
+  public function __get($name)
+  {
+    if (($name == 'cn') && isset($this->parent)) {
+      return $this->parent->getBaseObject()->$name;
+    } else {
+      /* Calling default behaviour */
+      return parent::__get($name);
+    }
+  }
+
+  public function __isset($name)
+  {
+    if (($name == 'cn') && isset($this->parent)) {
+      return isset($this->parent->getBaseObject()->$name);
+    } else {
+      /* Calling default behaviour */
+      return parent::__isset($name);
+    }
   }
 
   public function mailServerChanged()
@@ -114,9 +129,67 @@ class mailgroup extends simplePlugin
     $this->mailMethod->fixAttributesOnLoad();
 
     /* Initialize configured values */
-    if ($this->is_account && $this->initially_was_account) {
+    if (!$this->is_template && $this->is_account && $this->initially_was_account) {
       $this->attributesAccess['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
       $this->attributesAccess['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
     }
+  }
+
+  protected function shouldSave()
+  {
+    /* mail method might have something to save (like password change from main tab for instance) */
+    return TRUE;
+  }
+
+  public function ldap_save()
+  {
+    if (!empty($this->attrs)) {
+      $errors = parent::ldap_save();
+      if (!empty($errors)) {
+        return $errors;
+      }
+    }
+
+    $errors = array();
+
+    /* Only do IMAP actions if we are not a template */
+    if (!$this->is_template) {
+      $this->mailMethod->connect();
+      if (!$this->mailMethod->is_connected()) {
+        $errors[] = sprintf(_('Mail method cannot connect: %s'), $this->mailMethod->get_error());
+      } else {
+        if (!$this->mailMethod->updateMailbox()) {
+          $errors[] = sprintf(_('Cannot update mailbox: %s'), $this->mailMethod->get_error());
+        }
+      }
+    }
+    $this->mailMethod->disconnect();
+
+    if (!empty($errors) && !$this->initially_was_account) {
+      /* Mail method failed to create, cancel ldap save */
+      $this->prepareNextCleanup();
+      $this->prepare_remove();
+      $this->ldap_remove();
+    }
+
+    return $errors;
+  }
+
+  function post_remove()
+  {
+    /* Let the mailMethod remove this mailbox */
+    if (!$this->is_template) {
+      if (!$this->mailMethod->connect()) {
+        msg_dialog::display(_('Mail error'), sprintf(_('Cannot remove mailbox, mail method cannot connect: %s'),
+              $this->mailMethod->get_error()), ERROR_DIALOG);
+      } else {
+        if (!$this->mailMethod->deleteMailbox()) {
+          msg_dialog::display(_('Mail error'), sprintf(_('Cannot remove mailbox: %s'),
+                $this->mailMethod->get_error()), ERROR_DIALOG);
+        }
+      }
+    }
+    $this->mailMethod->disconnect();
+    parent::post_remove();
   }
 }

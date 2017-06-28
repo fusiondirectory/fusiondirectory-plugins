@@ -96,7 +96,7 @@ class argonautQueue extends simpleManagement
     $disallowed = array();
     $this->dns  = array();
 
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $target, 'Entry removal requested!');
+    @DEBUG (DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $target, 'Entry removal requested!');
 
     // Check permissons for each target
     foreach ($target as $dn) {
@@ -202,7 +202,7 @@ class argonautQueue extends simpleManagement
       $entry        = $this->getHeadpage()->getEntry($target[0]);
       $attrsWrapper = new stdClass();
       $attrsWrapper->attrs = $entry['EVENT'];
-      $this->dialogObject = new faiLogView(NULL, '', $attrsWrapper, $this);
+      $this->dialogObject = new faiLogView('', $attrsWrapper, $this);
     }
   }
 

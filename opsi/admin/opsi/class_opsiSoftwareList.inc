@@ -101,7 +101,7 @@ class opsiSoftwareList extends simplePlugin
   {
     global $config;
     if ($opsi_args == NULL) {
-      $opsi_args = array('id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript','updateScript');
+      $opsi_args = array('id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript','updateScript','productVersion','packageVersion');
     }
     if (!isset($this->products[$this->fdOpsiServerDN])) {
       $s_daemon = new supportDaemon();
@@ -144,8 +144,14 @@ class opsiSoftwareList extends simplePlugin
         $this->products[$this->fdOpsiServerDN]['localboots'][$localboot['id']] = $localboot;
       }
     }
-    $choices = array_keys($this->products[$this->fdOpsiServerDN]['localboots']);
-    $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setChoices($choices);
+    $choices = array();
+    foreach ($this->products[$this->fdOpsiServerDN]['localboots'] as $id => $infos) {
+      $choices[$id] = sprintf(_('%s (%s-%s)'), $infos['id'], $infos['productVersion'], $infos['packageVersion']);
+    }
+    $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setChoices(
+      array_keys($choices),
+      array_values($choices)
+    );
   }
 
   public function product_changed ()

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-21 18:14+0200\n"
+"POT-Creation-Date: 2017-06-22 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Joeri Puttevils <joeri.puttevils@connict.net>, 2016\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,6 +23,8 @@ msgid ""
 "Your PHP install does not have the mhash() nor the hash function. Cannot do "
 "MD4 hashes."
 msgstr ""
+"Je PHP-installatie heeft noch de mhash() noch de hash functie. Kan geen "
+"MD4-hashes uitvoeren."
 
 #: personal/samba/class_sambaAccount.inc:31
 msgid "Samba Munged Dial"
@@ -38,11 +40,11 @@ msgstr "Samba"
 #: personal/samba/class_sambaAccount.inc:159
 #: config/samba/class_sambaPluginConfig.inc:41
 msgid "Samba settings"
-msgstr "Samba Instellingen"
+msgstr "Samba-instellingen"
 
 #: personal/samba/class_sambaAccount.inc:183
 msgid "Samba profile"
-msgstr "Samba profiel"
+msgstr "Sambaprofiel"
 
 #: personal/samba/class_sambaAccount.inc:189
 #: personal/samba/class_sambaAccount.inc:222
@@ -74,15 +76,15 @@ msgstr "Domein"
 #: personal/samba/class_sambaAccount.inc:199
 #: admin/systems/samba/class_sambaSystemTab.inc:53
 msgid "Samba domain name"
-msgstr "Sambe domeinnaam"
+msgstr "Sambadomeinnaam"
 
 #: personal/samba/class_sambaAccount.inc:203
 msgid "Script path"
-msgstr "Inlogscript"
+msgstr "Scriptpad"
 
 #: personal/samba/class_sambaAccount.inc:203
 msgid "Login script path"
-msgstr "Pad van het login script"
+msgstr "Pad van het loginscript"
 
 #: personal/samba/class_sambaAccount.inc:207
 #: personal/samba/class_sambaAccount.inc:232
@@ -96,15 +98,15 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:214
 msgid "Terminal server"
-msgstr "Terminal server"
+msgstr "Terminalserver"
 
 #: personal/samba/class_sambaAccount.inc:218
 msgid "Allow login on terminal server"
-msgstr "Sta inloggen op de Terminal Server toe"
+msgstr "Inloggen op de Terminal Server toestaan"
 
 #: personal/samba/class_sambaAccount.inc:237
 msgid "Inherit client config"
-msgstr "Client configuratie voor initieel programma overnemen"
+msgstr "Clientconfiguratie overerven"
 
 #: personal/samba/class_sambaAccount.inc:237
 msgid "Inherit client configuration"
@@ -152,7 +154,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:264
 msgid "Connect client drives at logon"
-msgstr "Verbindt client schijven bij inloggen"
+msgstr "Verbind netwerkschijven bij inloggen"
 
 #: personal/samba/class_sambaAccount.inc:264
 msgid "Drive to connect after login"
@@ -160,47 +162,47 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:268
 msgid "Connect client printers at logon"
-msgstr "Verbindt client printers bij inloggen"
+msgstr "Verbind netwerkprinters bij inloggen"
 
 #: personal/samba/class_sambaAccount.inc:268
 msgid "Printers to connect after login"
-msgstr "Printers die connecteren na het inloggen"
+msgstr "Printers te verbinden na het inloggen"
 
 #: personal/samba/class_sambaAccount.inc:272
 msgid "Default to main client printer"
-msgstr "Standaard printer als client printer"
+msgstr "Gebruik de standaard clientprinter tenzij expliciet gedefinieerd"
 
 #: personal/samba/class_sambaAccount.inc:272
 msgid "Default printer for this client"
-msgstr "Standaard printer voor de client"
+msgstr "Standaardprinter voor deze client"
 
 #: personal/samba/class_sambaAccount.inc:276
 msgid "Shadowing"
-msgstr "Schaduwen van andere sessie"
+msgstr "Meekijken"
 
 #: personal/samba/class_sambaAccount.inc:279
 msgid "disabled"
-msgstr "gedeactiveerd"
+msgstr "uitgeschakeld"
 
 #: personal/samba/class_sambaAccount.inc:279
 msgid "input on, notify on"
-msgstr "invoer met notificatie"
+msgstr "invoer en notificatie aan"
 
 #: personal/samba/class_sambaAccount.inc:279
 msgid "input on, notify off"
-msgstr "invoer zonder notificatie"
+msgstr "invoer aan, notificatie uit"
 
 #: personal/samba/class_sambaAccount.inc:280
 msgid "input off, notify on"
-msgstr "geen invoer met notificatie"
+msgstr "invoer uit, notificatie aan"
 
 #: personal/samba/class_sambaAccount.inc:280
 msgid "input off, nofify off"
-msgstr "geen invoer zonder notificatie"
+msgstr "invoer en notificatie uit"
 
 #: personal/samba/class_sambaAccount.inc:283
 msgid "On broken or timed out"
-msgstr "Bij verbroken verbinding of timeout"
+msgstr "Bij onderbreking of time-out"
 
 #: personal/samba/class_sambaAccount.inc:283
 msgid "What happen if disconnected or timeout"
@@ -212,11 +214,11 @@ msgstr "verbreken"
 
 #: personal/samba/class_sambaAccount.inc:286
 msgid "reset"
-msgstr "herstellen"
+msgstr "resetten"
 
 #: personal/samba/class_sambaAccount.inc:289
 msgid "Reconnect if disconnected"
-msgstr "Herstel sessie indien verbroken"
+msgstr "Verbind opnieuw indien verbroken"
 
 #: personal/samba/class_sambaAccount.inc:292
 msgid "from any client"
@@ -224,7 +226,7 @@ msgstr "vanaf elke client"
 
 #: personal/samba/class_sambaAccount.inc:292
 msgid "from previous client only"
-msgstr "alleen vanaf vorige client"
+msgstr "enkel vanaf vorige client"
 
 #: personal/samba/class_sambaAccount.inc:304
 msgid "Access options"
@@ -232,7 +234,7 @@ msgstr "Toegangsopties"
 
 #: personal/samba/class_sambaAccount.inc:308
 msgid "Enforce password change"
-msgstr "Forceer paswoord wijzigen"
+msgstr "Dwing wijzigen wachtwoord af"
 
 #: personal/samba/class_sambaAccount.inc:308
 msgid "Force the user to change his password"
@@ -248,7 +250,7 @@ msgstr "Het wachtwoord zal nooit vervallen"
 
 #: personal/samba/class_sambaAccount.inc:318
 msgid "Login from windows client requires no password"
-msgstr "Inloggen op Windows werkstation zonder wachtwoord toestaan"
+msgstr "Inloggen vanop Windowstoestel zonder wachtwoord toestaan"
 
 #: personal/samba/class_sambaAccount.inc:318
 msgid "Login from a client without a password"
@@ -256,7 +258,7 @@ msgstr "Inloggen vanaf een client zonder wachtwoord"
 
 #: personal/samba/class_sambaAccount.inc:323
 msgid "Lock samba account"
-msgstr "Blokkeer Samba/Windows account"
+msgstr "Blokkeer Samba account"
 
 #: personal/samba/class_sambaAccount.inc:323
 msgid "Lock the account"
@@ -264,11 +266,11 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:328
 msgid "Cannot change password"
-msgstr "Kan paswoord niet wijzigen"
+msgstr "Kan wachtwoord niet wijzigen"
 
 #: personal/samba/class_sambaAccount.inc:328
 msgid "Not allowed to change password"
-msgstr "Niet mogelijk om het wachtwoord te wijzigen"
+msgstr "Niet toegelaten om het wachtwoord te wijzigen"
 
 #: personal/samba/class_sambaAccount.inc:332
 msgid "Account expiration"
@@ -276,15 +278,15 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:332
 msgid "When does the account expire"
-msgstr "Wanneer zal dit account vervallen"
+msgstr "Wanneer vervalt het account"
 
 #: personal/samba/class_sambaAccount.inc:340
 msgid "Samba logon times"
-msgstr "Samba inlog tijdstippen"
+msgstr "Samba inlogtijdstippen"
 
 #: personal/samba/class_sambaAccount.inc:340
 msgid "What is the allowed time to connect"
-msgstr "Wat is de toegelaten tijd om te verbinden"
+msgstr "Wanneer is het toegelaten om te verbinden"
 
 #: personal/samba/class_sambaAccount.inc:341
 msgid "Edit settings"
@@ -292,50 +294,48 @@ msgstr "Instellingen bewerken"
 
 #: personal/samba/class_sambaAccount.inc:357
 msgid "System trust"
-msgstr "Systeem vertrouwen"
+msgstr "Systeem vertrouwensrelatie"
 
 #: personal/samba/class_sambaAccount.inc:363
 msgid "Allow connection from these workstations only"
-msgstr "Sta alleen verbindingen vanaf deze werkstations toe"
+msgstr "Sta verbinden enkel toe vanaf deze werkstation"
 
 #: personal/samba/class_sambaAccount.inc:363
 msgid "Only allow this user to connect to this list of hosts"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:478
-msgid "Home drive"
-msgstr "Home drive"
-
-#: personal/samba/class_sambaAccount.inc:481
-msgid "Home path"
-msgstr "Home path"
-
+#: personal/samba/class_sambaAccount.inc:479
 #: personal/samba/class_sambaAccount.inc:486
+#, php-format
+msgid "Field \"%s\" is required when \"%s\" is filled! Fill both field or empty them."
+msgstr ""
+
+#: personal/samba/class_sambaAccount.inc:494
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr "De windows gebruikers manager laat maximum 8 clients toe!"
 
-#: personal/samba/class_sambaAccount.inc:503
-#: personal/samba/class_sambaAccount.inc:529
-#: personal/samba/class_sambaAccount.inc:550
+#: personal/samba/class_sambaAccount.inc:511
+#: personal/samba/class_sambaAccount.inc:537
+#: personal/samba/class_sambaAccount.inc:558
 #: admin/groups/samba/class_sambaGroup.inc:133
 msgid "Warning"
 msgstr "Waarschuwing"
 
-#: personal/samba/class_sambaAccount.inc:503
+#: personal/samba/class_sambaAccount.inc:511
 #: admin/groups/samba/class_sambaGroup.inc:133
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
 msgstr ""
 "Er is een ongedefinieerd SambaSID geselecteerd. Repareer dit probleem a.u.b."
 " handmatig!"
 
-#: personal/samba/class_sambaAccount.inc:530
+#: personal/samba/class_sambaAccount.inc:538
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr ""
 "Kan primaire groep niet in een samba groep omzetten: group kan niet "
 "geidentificeerd worden"
 
-#: personal/samba/class_sambaAccount.inc:551
+#: personal/samba/class_sambaAccount.inc:559
 msgid ""
 "Cannot convert primary group to samba group: group samba tab is disabled!"
 msgstr ""

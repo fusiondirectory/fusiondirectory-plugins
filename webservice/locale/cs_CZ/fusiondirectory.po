@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-21 18:14+0200\n"
+"POT-Creation-Date: 2017-06-22 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -49,40 +49,40 @@ msgid "Cannot locate file '%s' - please run '%s' to fix this"
 msgstr ""
 "Nemohu nalézt soubor '%s' – opravte to prosím spuštěním '%s' (na serveru)."
 
-#: html/jsonrpc.php:319 html/jsonrpc.php:402
+#: html/jsonrpc.php:317 html/jsonrpc.php:400
 msgid "Plugin"
 msgstr "zásuvný modul"
 
-#: html/jsonrpc.php:494
+#: html/jsonrpc.php:492
 #, php-format
 msgid "Cannot delete %s. It has been locked by %s."
 msgstr "%s nelze smazat. Je uzamčeno %s."
 
-#: html/jsonrpc.php:541 html/jsonrpc.php:570
+#: html/jsonrpc.php:539 html/jsonrpc.php:568
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr ""
 
-#: html/jsonrpc.php:566
+#: html/jsonrpc.php:564
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr ""
 
-#: html/jsonrpc.php:573
+#: html/jsonrpc.php:571
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr ""
 
-#: html/jsonrpc.php:611 html/jsonrpc.php:620
+#: html/jsonrpc.php:609 html/jsonrpc.php:618
 #, php-format
 msgid "Failed to get password method for account \"%s\""
 msgstr ""
 
-#: html/jsonrpc.php:623
+#: html/jsonrpc.php:621
 #, php-format
 msgid "Could not find account \"%s\" in LDAP"
 msgstr ""
 
-#: html/jsonrpc.php:667
+#: html/jsonrpc.php:665
 msgid "This token is invalid"
 msgstr "tato poukázka (token) je neplatná"

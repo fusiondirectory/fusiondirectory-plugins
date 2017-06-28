@@ -86,9 +86,7 @@ class dnsManagement extends simpleManagement
     foreach ($targets as $zoneDn) {
       $entry = $this->getHeadpage()->getEntry($zoneDn);
       list ($fqdn) = explode(' ', $entry['sOARecord'][0]);
-      $zoneName = $entry['zoneName'][0];
-      $serverCn = preg_replace('/\.'.preg_quote($zoneName, '/').'$/', '', $fqdn);
-      $servers = objects::ls('server', array('cn' => 1, 'macAddress' => 1), NULL, '(&(cn='.ldap_escape_f($serverCn).')(fdDNSZoneDn='.ldap_escape_f($zoneDn).'))');
+      $servers = static::findServerByFQDN($fqdn, $zoneDn);
       if (count($servers) > 1) {
         msg_dialog::display(_('Could not run ldap2zone'), _('More than one server matches the SOA'), ERROR_DIALOG);
       } elseif (count($servers) == 0) {
@@ -101,7 +99,8 @@ class dnsManagement extends simpleManagement
             msg_dialog::display(_('Could not run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
             );
           } else {
-            $target = array($serverTabs->getBaseObject()->macAddress);
+            $target   = array($serverTabs->getBaseObject()->macAddress);
+            $zoneName = $entry['zoneName'][0];
             $s_daemon->append_call('Ldap2Zone.start', $target, array('args' => array($zoneName)));
             if ($s_daemon->is_error()) {
               msg_dialog::display(_('Could not get run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG);
@@ -114,6 +113,34 @@ class dnsManagement extends simpleManagement
         }
       }
     }
+  }
+
+  public static function findServerByFQDN($fqdn, $zoneDn = NULL)
+  {
+    global $config;
+    list ($serverCn, $serverZone) = explode('.', $fqdn, 2);
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ips = array();
+    $ldap->search('(&(|(aRecord=*)(aAAARecord=*))(relativeDomainName='.$serverCn.')(zoneName='.$serverZone.'))', array('aRecord', 'aAAARecord'));
+    while ($attrs = $ldap->fetch()) {
+      if (isset($attrs['aRecord'])) {
+        unset($attrs['aRecord']['count']);
+        $ips = array_merge($ips, $attrs['aRecord']);
+      }
+      if (isset($attrs['aAAARecord'])) {
+        unset($attrs['aAAARecord']['count']);
+        $ips = array_merge($ips, $attrs['aAAARecord']);
+      }
+    }
+    if (!empty($ips)) {
+      $filter = '(|(ipHostNumber='.implode(')(ipHostNumber=', $ips).'))';
+      if ($zoneDn !== NULL) {
+        $filter = '(&'.$filter.'(fdDNSZoneDn='.ldap_escape_f($zoneDn).'))';
+      }
+      return objects::ls('server', NULL, NULL, $filter);
+    }
+    return array();
   }
 }
 ?>

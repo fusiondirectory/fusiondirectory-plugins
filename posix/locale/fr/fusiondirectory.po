@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-21 18:14+0200\n"
+"POT-Creation-Date: 2017-06-22 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
+"Last-Translator: Côme Chilliet <come@chilliet.eu>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,138 +18,138 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: personal/posix/class_posixAccount.inc:86
-#: personal/posix/class_posixAccount.inc:115
+#: personal/posix/class_posixAccount.inc:88
+#: personal/posix/class_posixAccount.inc:117
 msgid "Unix"
 msgstr "Unix"
 
-#: personal/posix/class_posixAccount.inc:87
+#: personal/posix/class_posixAccount.inc:89
 msgid "Edit users POSIX settings"
-msgstr "Editer les paramètres Unix"
+msgstr "Éditer les paramètres POSIX"
 
-#: personal/posix/class_posixAccount.inc:119
+#: personal/posix/class_posixAccount.inc:121
 msgid "Home directory"
-msgstr "Répertoire Home"
+msgstr "Répertoire personnel"
 
-#: personal/posix/class_posixAccount.inc:119
+#: personal/posix/class_posixAccount.inc:121
 msgid "The path to the home directory of this user"
 msgstr "Chemin du répertoire \"home\" de cet utilisateur"
 
-#: personal/posix/class_posixAccount.inc:124
+#: personal/posix/class_posixAccount.inc:126
 msgid "Shell"
 msgstr "Shell"
 
-#: personal/posix/class_posixAccount.inc:124
+#: personal/posix/class_posixAccount.inc:126
 msgid "Which shell should be used when this user log in"
 msgstr "Shell à utiliser lors de la connexion de l’utilisateur"
 
-#: personal/posix/class_posixAccount.inc:126
+#: personal/posix/class_posixAccount.inc:128
 msgid "unconfigured"
 msgstr "non configuré"
 
-#: personal/posix/class_posixAccount.inc:130
+#: personal/posix/class_posixAccount.inc:132
 msgid "Primary group"
 msgstr "Groupe principal"
 
-#: personal/posix/class_posixAccount.inc:130
+#: personal/posix/class_posixAccount.inc:132
 msgid "Primary group for this user"
 msgstr "Groupe principal de cet utilisateur"
 
-#: personal/posix/class_posixAccount.inc:134
+#: personal/posix/class_posixAccount.inc:136
 msgid "Status"
 msgstr "Statut"
 
-#: personal/posix/class_posixAccount.inc:134
+#: personal/posix/class_posixAccount.inc:136
 msgid "Status of this user unix account"
-msgstr "Status du compte unix de l'utilisateur"
+msgstr "Statut du compte unix de l'utilisateur"
 
-#: personal/posix/class_posixAccount.inc:138
+#: personal/posix/class_posixAccount.inc:140
 msgid "Force user/group id"
 msgstr "Forcer l’id d’utilisateur/groupe"
 
-#: personal/posix/class_posixAccount.inc:138
+#: personal/posix/class_posixAccount.inc:140
 msgid "Force user id and group id values for this user"
 msgstr ""
-"Force les valeurs des ids d’utilisateur et de groupe pour cet utilisateur."
+"Forcer les valeurs des ids d’utilisateur et de groupe pour cet utilisateur"
 
-#: personal/posix/class_posixAccount.inc:142
+#: personal/posix/class_posixAccount.inc:144
 msgid "User id"
 msgstr "Id d’utilisateur"
 
-#: personal/posix/class_posixAccount.inc:142
+#: personal/posix/class_posixAccount.inc:144
 msgid "User id value for this user"
 msgstr "Id d’utilisateur à utiliser pour cet utilisateur"
 
-#: personal/posix/class_posixAccount.inc:147
+#: personal/posix/class_posixAccount.inc:149
 msgid "Group id"
 msgstr "Id de groupe"
 
-#: personal/posix/class_posixAccount.inc:147
+#: personal/posix/class_posixAccount.inc:149
 msgid "Group id value for this user"
 msgstr "Id de groupe à utiliser pour cet utilisateur"
 
-#: personal/posix/class_posixAccount.inc:154
-#: personal/posix/class_posixAccount.inc:157
+#: personal/posix/class_posixAccount.inc:156
+#: personal/posix/class_posixAccount.inc:159
 msgid "Group membership"
-msgstr "Appartenance au groupe"
+msgstr "Appartenance aux groupes"
 
-#: personal/posix/class_posixAccount.inc:161
+#: personal/posix/class_posixAccount.inc:163
 msgid "Account"
 msgstr "Compte"
 
-#: personal/posix/class_posixAccount.inc:165
+#: personal/posix/class_posixAccount.inc:167
 msgid "User must change password on first login"
 msgstr ""
 "L'utilisateur doit changer son mot de passe lors de sa première connexion"
 
-#: personal/posix/class_posixAccount.inc:165
+#: personal/posix/class_posixAccount.inc:167
 msgid ""
 "User must change password on first login (needs a value for Delay before "
 "forcing password change)"
 msgstr ""
-"L'utilisateur doit changer son mot de passe lors du premier connexion "
-"(laisser vide pour désactiver la fonctionnalité)"
+"L'utilisateur doit changer son mot de passe lors de sa première connexion "
+"(nécessite une valeur dans «Délai avant de forcer le changement»)"
 
-#: personal/posix/class_posixAccount.inc:169
+#: personal/posix/class_posixAccount.inc:171
 msgid "Minimum delay between password changes (days)"
 msgstr "Délai minimum entre les changements de mot de passe (jours)"
 
-#: personal/posix/class_posixAccount.inc:169
+#: personal/posix/class_posixAccount.inc:171
 msgid ""
 "The user won't be able to change his password before this number of days "
 "(leave empty to disable)"
 msgstr ""
-"L'utilisateur ne sera pas habilité à changer son mot de passe avant ce "
-"nombre de jour (laisser vide pour désactiver)"
+"L'utilisateur ne sera pas autorisé à changer son mot de passe avant ce "
+"nombre de jours (laisser vide pour désactiver)"
 
-#: personal/posix/class_posixAccount.inc:174
+#: personal/posix/class_posixAccount.inc:176
 msgid "Delay before forcing password change (days)"
 msgstr "Délai avant de forcer le changement de mot de passe (en jours)"
 
-#: personal/posix/class_posixAccount.inc:174
+#: personal/posix/class_posixAccount.inc:176
 msgid ""
 "The user will be forced to change his password after this number of days "
 "(leave empty to disable)"
 msgstr ""
-"L'utilisateur sera forcé de changer son mot de passe après ce nombre de jour"
-" (laisser vide pour désactiver)"
+"L'utilisateur sera forcé de changer son mot de passe après ce nombre de "
+"jours (laisser vide pour désactiver)"
 
-#: personal/posix/class_posixAccount.inc:179
+#: personal/posix/class_posixAccount.inc:181
 msgid "Password expiration date"
 msgstr "Date d'expiration du mot de passe"
 
-#: personal/posix/class_posixAccount.inc:179
+#: personal/posix/class_posixAccount.inc:181
 msgid ""
 "Date after which this user password will expire (leave empty to disable)"
 msgstr ""
-"Date après laquelle le mot de passe de l'utilisateur va expiré (laisser vide"
-" pour désactiver)"
+"Date après laquelle le mot de passe de l'utilisateur va expirer (laisser "
+"vide pour désactiver)"
 
-#: personal/posix/class_posixAccount.inc:184
+#: personal/posix/class_posixAccount.inc:186
 msgid "Delay of inactivity before disabling user (days)"
 msgstr "Délai d'inactivité avant de désactiver l'utilisateur (en jours)"
 
-#: personal/posix/class_posixAccount.inc:184
+#: personal/posix/class_posixAccount.inc:186
 msgid ""
 "Maximum delay of inactivity after password expiration before the user is "
 "disabled (leave empty to disable)"
@@ -157,166 +157,164 @@ msgstr ""
 "Délai maximum d'inactivité après l'expiration du mot de passe avant que "
 "l'utilisateur soit désactivé (laisser vide pour désactiver)"
 
-#: personal/posix/class_posixAccount.inc:189
+#: personal/posix/class_posixAccount.inc:191
 msgid "Delay for user warning before password expiry (days)"
-msgstr ""
-"Délai avant d'avertir l'utilisateur de l'expiration de son mot de passe (en "
-"jours)"
+msgstr "Délai pour avertir de l'expiration de son mot de passe (en jours)"
 
-#: personal/posix/class_posixAccount.inc:189
+#: personal/posix/class_posixAccount.inc:191
 msgid ""
 "The user will be warned this number of days before his password expiration "
 "(leave empty to disable)"
 msgstr ""
-"L'utilisateur sera averti de ce nombre de jour restant avant l'expiration de"
-" ce mot de passe (laisser vide pour désactiver)"
+"L'utilisateur sera averti à partir de ce nombre de jours restant avant "
+"l'expiration de son mot de passe (laisser vide pour désactiver)"
 
-#: personal/posix/class_posixAccount.inc:201
+#: personal/posix/class_posixAccount.inc:203
 #: admin/groups/posix/class_posixGroup.inc:91
 msgid "System trust"
-msgstr "Système de Confiance"
+msgstr "Systèmes autorisés"
 
-#: personal/posix/class_posixAccount.inc:205
+#: personal/posix/class_posixAccount.inc:207
 #: admin/groups/posix/class_posixGroup.inc:95
 msgid "Trust mode"
 msgstr "Mode de confiance"
 
-#: personal/posix/class_posixAccount.inc:205
+#: personal/posix/class_posixAccount.inc:207
 #: admin/groups/posix/class_posixGroup.inc:95
 msgid "Type of authorization for those hosts"
 msgstr "Type d'autorisation pour ces hôtes"
 
-#: personal/posix/class_posixAccount.inc:209
-#: personal/posix/class_posixAccount.inc:231
+#: personal/posix/class_posixAccount.inc:211
+#: personal/posix/class_posixAccount.inc:233
 #: admin/groups/posix/class_posixGroup.inc:99
 msgid "disabled"
 msgstr "désactivé"
 
-#: personal/posix/class_posixAccount.inc:209
-#: personal/posix/class_posixAccount.inc:231
+#: personal/posix/class_posixAccount.inc:211
+#: personal/posix/class_posixAccount.inc:233
 #: admin/groups/posix/class_posixGroup.inc:99
 msgid "full access"
 msgstr "accès complet"
 
-#: personal/posix/class_posixAccount.inc:209
+#: personal/posix/class_posixAccount.inc:211
 #: admin/groups/posix/class_posixGroup.inc:99
 msgid "allow access to these hosts"
 msgstr "permettre l'accès a ces hôtes"
 
-#: personal/posix/class_posixAccount.inc:212
+#: personal/posix/class_posixAccount.inc:214
 msgid "Only allow this user to connect to this list of hosts"
-msgstr "Autoriser seulement cet utilisateur à se connecter sur cet hôte"
+msgstr "Autoriser cet utilisateur à se connecter uniquement sur ces hôtes"
 
-#: personal/posix/class_posixAccount.inc:290
+#: personal/posix/class_posixAccount.inc:292
 msgid "automatic"
 msgstr "automatique"
 
-#: personal/posix/class_posixAccount.inc:351
-msgid "expired"
-msgstr "expire"
-
 #: personal/posix/class_posixAccount.inc:353
-msgid "grace time active"
-msgstr "temps de grâce activé"
+msgid "expired"
+msgstr "expiré"
 
-#: personal/posix/class_posixAccount.inc:356
+#: personal/posix/class_posixAccount.inc:355
+msgid "grace time active"
+msgstr "temps de grâce actif"
+
 #: personal/posix/class_posixAccount.inc:358
 #: personal/posix/class_posixAccount.inc:360
+#: personal/posix/class_posixAccount.inc:362
 msgid "active"
 msgstr "actif"
 
-#: personal/posix/class_posixAccount.inc:356
+#: personal/posix/class_posixAccount.inc:358
 msgid "password expired"
 msgstr "mot de passe expiré"
 
-#: personal/posix/class_posixAccount.inc:358
+#: personal/posix/class_posixAccount.inc:360
 msgid "password not changeable"
 msgstr "mot de passe non modifiable"
 
-#: personal/posix/class_posixAccount.inc:420
+#: personal/posix/class_posixAccount.inc:422
 msgid "UID"
 msgstr "UID"
 
-#: personal/posix/class_posixAccount.inc:423
+#: personal/posix/class_posixAccount.inc:425
 #: admin/groups/posix/class_posixGroup.inc:74
 #: admin/groups/posix/class_posixGroup.inc:150
 msgid "GID"
 msgstr "GID"
 
-#: personal/posix/class_posixAccount.inc:531
+#: personal/posix/class_posixAccount.inc:537
 #, php-format
 msgid "Group of user %s"
 msgstr "Groupe de l'utilisateur %s"
 
-#: personal/posix/class_posixAccount.inc:753
-#: personal/posix/class_posixAccount.inc:774
-#: personal/posix/class_posixAccount.inc:968
+#: personal/posix/class_posixAccount.inc:783
+#: personal/posix/class_posixAccount.inc:804
+#: personal/posix/class_posixAccount.inc:998
 msgid "Warning"
 msgstr "Avertissement"
 
-#: personal/posix/class_posixAccount.inc:753
+#: personal/posix/class_posixAccount.inc:783
 #, php-format
 msgid "Unknown ID allocation method \"%s\"!"
-msgstr "Méthode d'allocation inconnue pour \"%s\" !"
+msgstr "Méthode d'allocation inconnue pour «%s» !"
 
-#: personal/posix/class_posixAccount.inc:775
+#: personal/posix/class_posixAccount.inc:805
 #, php-format
 msgid "Timeout while waiting for lock. Ignoring lock from %s!"
 msgstr "Le temps d'attente du verrou a été dépassé. Verrou ignoré pour %s !"
 
-#: personal/posix/class_posixAccount.inc:802
-#: personal/posix/class_posixAccount.inc:842
-#: personal/posix/class_posixAccount.inc:854
-#: personal/posix/class_posixAccount.inc:858
-#: personal/posix/class_posixAccount.inc:865
-#: personal/posix/class_posixAccount.inc:874
-#: personal/posix/class_posixAccount.inc:936
+#: personal/posix/class_posixAccount.inc:832
+#: personal/posix/class_posixAccount.inc:872
+#: personal/posix/class_posixAccount.inc:884
+#: personal/posix/class_posixAccount.inc:888
+#: personal/posix/class_posixAccount.inc:895
+#: personal/posix/class_posixAccount.inc:904
+#: personal/posix/class_posixAccount.inc:966
 msgid "Error"
 msgstr "Erreur"
 
-#: personal/posix/class_posixAccount.inc:802
-#: personal/posix/class_posixAccount.inc:842
-#: personal/posix/class_posixAccount.inc:854
-#: personal/posix/class_posixAccount.inc:858
-#: personal/posix/class_posixAccount.inc:865
-#: personal/posix/class_posixAccount.inc:874
+#: personal/posix/class_posixAccount.inc:832
+#: personal/posix/class_posixAccount.inc:872
+#: personal/posix/class_posixAccount.inc:884
+#: personal/posix/class_posixAccount.inc:888
+#: personal/posix/class_posixAccount.inc:895
+#: personal/posix/class_posixAccount.inc:904
 msgid "Cannot allocate a free ID:"
-msgstr "Impossible d'assigner un ID libre :"
+msgstr "Impossible d'allouer un ID libre :"
 
-#: personal/posix/class_posixAccount.inc:802
+#: personal/posix/class_posixAccount.inc:832
 #, php-format
 msgid "%sPoolMin >= %sPoolMax!"
-msgstr "%sPoolMin >= %sPoolMax!"
+msgstr "%sPoolMin >= %sPoolMax !"
 
-#: personal/posix/class_posixAccount.inc:834
+#: personal/posix/class_posixAccount.inc:864
 msgid "LDAP error"
 msgstr "Erreur LDAP"
 
-#: personal/posix/class_posixAccount.inc:842
+#: personal/posix/class_posixAccount.inc:872
 msgid "sambaUnixIdPool is not unique!"
-msgstr "sambaUnixIdPool n'est pas unique !"
+msgstr "sambaUnixIdPool n'est pas unique !"
 
-#: personal/posix/class_posixAccount.inc:854
-#: personal/posix/class_posixAccount.inc:858
+#: personal/posix/class_posixAccount.inc:884
+#: personal/posix/class_posixAccount.inc:888
 msgid "no ID available!"
-msgstr "Pas d' ID disponibles !"
+msgstr "Pas d’ID disponible !"
 
-#: personal/posix/class_posixAccount.inc:874
+#: personal/posix/class_posixAccount.inc:904
 msgid "maximum tries exceeded!"
-msgstr "Nombre maximum d'essais dépassés !"
+msgstr "Nombre maximum d'essais dépassés !"
 
-#: personal/posix/class_posixAccount.inc:936
+#: personal/posix/class_posixAccount.inc:966
 msgid "Cannot allocate a free ID!"
-msgstr "Impossible d'assigner un ID libre !"
+msgstr "Impossible d'allouer un ID libre !"
 
-#: personal/posix/class_posixAccount.inc:968
+#: personal/posix/class_posixAccount.inc:998
 msgid "\"nextIdHook\" is not available. Using default base!"
 msgstr ""
-"'nextIdHook' n'est pas disponible. Utilisation de la base par défaut !"
+"«nextIdHook» n’est pas disponible. Utilisation de la base par défaut !"
 
 #: config/posix/class_posixConfig.inc:28
 msgid "POSIX configuration"
-msgstr "Configuration Posix"
+msgstr "Configuration POSIX"
 
 #: config/posix/class_posixConfig.inc:29
 msgid "FusionDirectory POSIX plugin configuration"
@@ -327,121 +325,128 @@ msgid "Posix"
 msgstr "Posix"
 
 #: config/posix/class_posixConfig.inc:46
+msgid "POSIX groups RDN"
+msgstr "Branche des groupes POSIX"
+
+#: config/posix/class_posixConfig.inc:46
+msgid "The branch where POSIX groups are stored."
+msgstr "Branche où sont stockés les groupes POSIX."
+
+#: config/posix/class_posixConfig.inc:51
 msgid "Group/user min id"
 msgstr "Id minimum de groupe/utilisateur"
 
-#: config/posix/class_posixConfig.inc:47
+#: config/posix/class_posixConfig.inc:52
 msgid ""
 "The minimum assignable user or group id to avoid security leaks with id 0 "
 "accounts."
 msgstr ""
-"L’id d’utilisateur ou de groupe minimum assignable pour éviter des risques "
-"de sécurité avec des id égales à 0."
+"L’id d’utilisateur ou de groupe minimum pour éviter des risques de sécurité "
+"avec des id égales à 0."
 
-#: config/posix/class_posixConfig.inc:52
+#: config/posix/class_posixConfig.inc:57
 msgid "Next id hook"
-msgstr ""
-"Déclencheur permettant de déterminer le prochain identifiant numérique"
+msgstr "Hook de prochain ID"
 
-#: config/posix/class_posixConfig.inc:52
+#: config/posix/class_posixConfig.inc:57
 msgid ""
 "A script to be called for finding the next free id number for users or "
 "groups."
 msgstr ""
-"Un script à appeler pour trouver le prochain id libre pour les utilisateurs "
+"Un script à appeler pour trouver le prochain ID libre pour les utilisateurs "
 "et groupes."
 
-#: config/posix/class_posixConfig.inc:56
+#: config/posix/class_posixConfig.inc:61
 msgid "Base number for user id"
 msgstr "Départ pour les ids d’utilisateur"
 
-#: config/posix/class_posixConfig.inc:57
-msgid "Where to start looking for a new free user id."
-msgstr "Où commencer à chercher pour un nouvel id d’utilisateur libre."
-
 #: config/posix/class_posixConfig.inc:62
+msgid "Where to start looking for a new free user id."
+msgstr "Point de départ pour chercher pour un nouvel id d’utilisateur libre."
+
+#: config/posix/class_posixConfig.inc:67
 msgid "Base number for group id"
 msgstr "Départ pour les ids de groupe"
 
-#: config/posix/class_posixConfig.inc:63
+#: config/posix/class_posixConfig.inc:68
 msgid "Where to start looking for a new free group id."
-msgstr "Point de départ pour rechercher un identifiant de groupe libre"
+msgstr "Point de départ pour chercher un nouvel id de groupe libre"
 
-#: config/posix/class_posixConfig.inc:68
+#: config/posix/class_posixConfig.inc:73
 msgid "Id allocation method"
-msgstr "Méthode de répartition des Id"
+msgstr "Méthode d’allocation des ids"
 
-#: config/posix/class_posixConfig.inc:68
+#: config/posix/class_posixConfig.inc:73
 msgid "Method to allocate user/group ids"
 msgstr "Méthode pour allouer les ids d’utilisateur et de groupe"
 
-#: config/posix/class_posixConfig.inc:71
+#: config/posix/class_posixConfig.inc:76
 msgid "Traditional"
 msgstr "Traditionnel"
 
-#: config/posix/class_posixConfig.inc:71
+#: config/posix/class_posixConfig.inc:76
 msgid "Samba unix id pool"
 msgstr "Samba unix id pool"
 
-#: config/posix/class_posixConfig.inc:74
+#: config/posix/class_posixConfig.inc:79
 msgid "Pool user id min"
 msgstr "Minimum des ids d’utilisateur du réservoir"
 
-#: config/posix/class_posixConfig.inc:74
+#: config/posix/class_posixConfig.inc:79
 msgid "Minimum value for user id when using pool method"
 msgstr "Valeur minimum pour les ids d’utilisateur du réservoir"
 
-#: config/posix/class_posixConfig.inc:79
+#: config/posix/class_posixConfig.inc:84
 msgid "Pool user id max"
 msgstr "Maximum des ids d’utilisateur du réservoir"
 
-#: config/posix/class_posixConfig.inc:79
+#: config/posix/class_posixConfig.inc:84
 msgid "Maximum value for user id when using pool method"
 msgstr "Valeur maximum pour les ids d’utilisateur du réservoir"
 
-#: config/posix/class_posixConfig.inc:84
+#: config/posix/class_posixConfig.inc:89
 msgid "Pool group id min"
 msgstr "Minimum des ids de groupe du réservoir"
 
-#: config/posix/class_posixConfig.inc:84
+#: config/posix/class_posixConfig.inc:89
 msgid "Minimum value for group id when using pool method"
 msgstr "Valeur minimum pour les ids de groupe du réservoir"
 
-#: config/posix/class_posixConfig.inc:89
+#: config/posix/class_posixConfig.inc:94
 msgid "Pool group id max"
 msgstr "Maximum des ids de groupe du réservoir"
 
-#: config/posix/class_posixConfig.inc:89
+#: config/posix/class_posixConfig.inc:94
 msgid "Maximum value for group id when using pool method"
 msgstr "Valeur maximum pour les ids de groupe du réservoir"
 
-#: config/posix/class_posixConfig.inc:96
+#: config/posix/class_posixConfig.inc:101
 msgid "Shells"
 msgstr "Shells"
 
-#: config/posix/class_posixConfig.inc:100
+#: config/posix/class_posixConfig.inc:105
 msgid "Available shells"
 msgstr "Shells disponibles"
 
-#: config/posix/class_posixConfig.inc:100
+#: config/posix/class_posixConfig.inc:105
 msgid "Available POSIX shells for FD users."
 msgstr "Shells POSIX disponibles pour les utilisateurs de FusionDirectory"
 
-#: config/posix/class_posixConfig.inc:107
+#: config/posix/class_posixConfig.inc:112
 msgid "Default shell"
 msgstr "Shell par défaut"
 
-#: config/posix/class_posixConfig.inc:107
+#: config/posix/class_posixConfig.inc:112
 msgid "Shell used by default when activating Unix tab."
 msgstr "Shell utilisé par défaut lors de l'activation du tab Unix."
 
 #: admin/groups/posix/class_posixGroup.inc:34
 msgid "Group"
-msgstr "Groupes"
+msgstr "Groupe"
 
 #: admin/groups/posix/class_posixGroup.inc:35
 msgid "POSIX group information"
-msgstr "Information du groupe POSIX"
+msgstr "Informations du groupe POSIX"
 
 #: admin/groups/posix/class_posixGroup.inc:38
 msgid "POSIX group"
@@ -486,8 +491,8 @@ msgstr "GID de ce groupe"
 #: admin/groups/posix/class_posixGroup.inc:81
 #: admin/groups/posix/class_posixGroup.inc:84
 msgid "Group members"
-msgstr "Membre du groupe"
+msgstr "Membres du groupe"
 
 #: admin/groups/posix/class_posixGroup.inc:102
 msgid "Only allow this group to connect to this list of hosts"
-msgstr "Autoriser seulement ce groupe à se connecter sur ces listes d'hôtes"
+msgstr "Autoriser ce groupe à se connecter uniquement sur cette liste d'hôtes"

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-05-21 18:14+0200\n"
+"POT-Creation-Date: 2017-06-22 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Côme Chilliet <come@chilliet.eu>, 2016\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,11 +33,11 @@ msgstr "Audit"
 
 #: config/audit/class_auditConfig.inc:44
 msgid "Audit RDN"
-msgstr "Audit RDN"
+msgstr "Branche audit"
 
 #: config/audit/class_auditConfig.inc:44
 msgid "Branch in which audit events will be stored"
-msgstr "Branche dans laquelle les audit sont stockés"
+msgstr "Branche dans laquelle les évènements d’audit sont stockés"
 
 #: config/audit/class_auditConfig.inc:50
 msgid "Actions to audit"
@@ -45,11 +45,11 @@ msgstr "Actions à auditer"
 
 #: config/audit/class_auditConfig.inc:50
 msgid "Which actions should be stored in LDAP audit log"
-msgstr "Quelles actions doivent être stockés dans journal d'audit"
+msgstr "Quelles actions doivent être stockées dans le journal d'audit"
 
 #: config/audit/class_auditConfig.inc:57
 msgid "Days to keep"
-msgstr "Nombre de jours a conserver"
+msgstr "Nombre de jours à conserver"
 
 #: config/audit/class_auditConfig.inc:57
 msgid "Number of days of audit to keep in the LDAP when cleaning"
@@ -62,7 +62,7 @@ msgstr "Événement d'audit"
 #: admin/audit/class_auditEvent.inc:54
 msgid "An event like ldap modification which was registered by audit plugin"
 msgstr ""
-"Un événement comme une modification ldap qui a été enregistré par le plugin "
+"Un événement comme une modification LDAP qui a été enregistré par le plugin "
 "d'audit"
 
 #: admin/audit/class_auditEvent.inc:72
@@ -76,7 +76,7 @@ msgstr "Temps"
 
 #: admin/audit/class_auditEvent.inc:75
 msgid "Date and time this event happened"
-msgstr "Date et heure a laquelle cet événement est arrivé"
+msgstr "Date et heure à laquelle cet évènement est arrivé"
 
 #: admin/audit/class_auditEvent.inc:78
 #: admin/audit/class_auditManagement.inc:83

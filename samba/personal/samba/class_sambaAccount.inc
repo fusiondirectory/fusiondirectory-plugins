@@ -475,15 +475,23 @@ class sambaAccount extends simplePlugin
 
     /* sambaHomePath requires sambaHomeDrive and vice versa */
     if (!empty($this->sambaHomePath) && empty($this->sambaHomeDrive)) {
-        $messages[] = msgPool::required(_("Home drive"));
+      $messages[] = sprintf(
+        _('Field "%s" is required when "%s" is filled! Fill both field or empty them.'),
+        $this->attributesAccess['sambaHomeDrive']->getLabel(),
+        $this->attributesAccess['sambaHomePath']->getLabel()
+      );
     }
     if (!empty($this->sambaHomeDrive) && empty($this->sambaHomePath)) {
-        $messages[] = msgPool::required(_("Home path"));
+      $messages[] = sprintf(
+        _('Field "%s" is required when "%s" is filled! Fill both field or empty them.'),
+        $this->attributesAccess['sambaHomePath']->getLabel(),
+        $this->attributesAccess['sambaHomeDrive']->getLabel()
+      );
     }
 
     /* Too many workstations? Windows usrmgr only supports eight */
     if (count($this->attributesAccess['sambaUserWorkstations']->attributes[0]->getValue()) >= 8) {
-        $messages[] = _("The windows user manager allows eight clients at maximum!");
+      $messages[] = _('The windows user manager allows eight clients at maximum!');
     }
 
     return $messages;
@@ -587,7 +595,12 @@ class sambaAccount extends simplePlugin
       }
     } elseif ($config->get_cfg_value('sambaExpirationSync') == 'posix') {
       if ($this->parent->by_object['posixAccount']->shadowExpire != "") {
-        $this->attrs['sambaKickoffTime'] = $this->parent->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue()->format('U');
+        try {
+          $this->attrs['sambaKickoffTime'] = $this->parent->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue()->format('U');
+        } catch (Exception $e) {
+          // shadowExpire is an invalid date, most likely because we’re a template and it uses patterns
+          $this->attrs['sambaKickoffTime'] = array();
+        }
       } else {
         $this->attrs['sambaKickoffTime'] = array();
       }

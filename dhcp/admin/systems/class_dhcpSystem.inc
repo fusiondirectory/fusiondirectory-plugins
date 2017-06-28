@@ -21,6 +21,7 @@
 class DhcpHostsAttribute extends OrderedArrayAttribute
 {
   private $nodesCache = array();
+  private static $templateValueSeparator = '^';
 
   function __construct ($label, $description, $ldapName, array $values = array(), $acl = '')
   {
@@ -64,12 +65,23 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   {
     parent::setParent($plugin);
     if (is_object($this->plugin)) {
-      if (!$this->plugin->is_template) {
-        $this->loadChoices();
-        $this->loadRecords();
-        $this->plugin->is_account = !empty($this->value);
-      } elseif (isset($this->plugin->attrs[$this->getLdapName()]['count'])) {
+      $this->loadChoices();
+      if ($this->plugin->is_template) {
         $this->value = array();
+        $this->loadAdditionalTemplatesValues();
+      } else {
+        $this->loadRecords();
+      }
+      $this->plugin->is_account = !empty($this->value);
+      $this->plugin->initially_was_account = $this->plugin->is_account;
+    }
+  }
+
+  function loadAdditionalTemplatesValues ()
+  {
+    if (isset($this->plugin->attrs[$this->getLdapName()]['count'])) {
+      for ($i = 0; $i < $this->plugin->attrs[$this->getLdapName()]['count']; $i++) {
+        $this->value[] = explode(static::$templateValueSeparator, $this->plugin->attrs[$this->getLdapName()][$i]);
       }
     }
   }
@@ -92,13 +104,29 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   function setChoices(array $parentNodes, array $macs, array $ips)
   {
     $this->attribute->attributes[0]->setChoices(array_keys($parentNodes), array_values($parentNodes));
-    $this->attribute->attributes[1]->setChoices($macs);
-    $this->attribute->attributes[2]->setChoices($ips);
+    if (is_object($this->plugin) && $this->plugin->is_template) {
+      $this->attribute->attributes[1] = new StringAttribute(
+        '', _('The Mac address to use in the DHCP host record'),
+        $this->getLdapName().'_mac', TRUE,
+        '%macAddress%'
+      );
+      $this->attribute->attributes[2] = new StringAttribute(
+        '', _('The IP address to use in the DHCP host record'),
+        $this->getLdapName().'_ip', TRUE,
+        '%ipHostNumber%'
+      );
+      $this->attribute->setAttributes($this->attribute->attributes);
+    } else {
+      $this->attribute->attributes[1]->setChoices($macs);
+      $this->attribute->attributes[2]->setChoices($ips);
+    }
   }
 
   function loadRecords()
   {
     global $config;
+
+    $this->value = array();
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
@@ -124,7 +152,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   /* Special LDAP treatment that this attribute does after plugin ldap save */
   function postLdapSave ($ldap, $fullrewrite, $ipchanged, $oldips, $newips, $macchanged, $oldmacs, $newmacs)
   {
-    global $config;
+    global $config, $ui;
 
     if ($this->plugin->is_template) {
       return;
@@ -187,6 +215,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       $errors = $dhcpTabs->save();
       msg_dialog::displayChecks($errors);
     }
+    $errors = array();
     foreach ($values as $value) {
       $configDn = $value[0];
       if (preg_match('/([^,]+,'.preg_quote(get_ou('dhcpRDN')).'.*'.preg_quote($config->current['BASE']).')$/', $value[0], $m)) {
@@ -194,11 +223,22 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       } else {
         trigger_error('Failed to parse '.$value[0].' to find DHCP configuration DN');
       }
+      /* Check locking */
+      if ($locks = get_locks($configDn)) {
+        $errors[] = sprintf(_('"%s" is locked (by "%s" since %s), could not save modifications to this DHCP configuration'), $locks[0]['object'], $locks[0]['user'], date('%Y-%m-%d, %H:%M:%S', $locks[0]['timestamp']));
+        continue;
+      } else {
+        /* Lock the current entry */
+        add_lock($configDn, $ui->dn);
+      }
       $dhcpTabs = objects::open($configDn, 'dhcpConfiguration');
       $dhcpTabs->getBaseObject()->attributesAccess['dhcpSections']->addHost($value[0], $cn, $value[1], $value[2]);
       $errors = $dhcpTabs->save();
+      del_lock($configDn);
       msg_dialog::displayChecks($errors);
     }
+
+    return $errors;
   }
 
   function check ()
@@ -216,6 +256,13 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
           return $error;
         }
       }
+    }
+  }
+
+  function fillLdapValue (&$attrs)
+  {
+    if ($this->plugin->is_template) {
+      $attrs[$this->getLdapName()] = array_map(function ($v) {return implode(static::$templateValueSeparator, $v);}, $this->value);
     }
   }
 }
@@ -271,6 +318,12 @@ class dhcpSystem extends simplePlugin
     return (count($this->dhcpHosts) > 0);
   }
 
+  function setTemplate ($bool)
+  {
+    parent::setTemplate($bool);
+    $this->attributesAccess['dhcpHosts']->setParent($this);
+  }
+
   function save_object()
   {
     parent::save_object();
@@ -323,6 +376,11 @@ class dhcpSystem extends simplePlugin
   {
     global $config;
 
+    $errors = parent::ldap_save();
+    if (!empty($errors)) {
+      return $errors;
+    }
+
     $ldap = $config->get_ldap_link();
     $baseObject = $this->parent->getBaseObject();
     return $this->attributesAccess['dhcpHosts']->postLdapSave(
@@ -346,5 +404,13 @@ class dhcpSystem extends simplePlugin
       $this->attributesAccess['dhcpHosts']->setValue(array());
       return $this->ldap_save();
     }
+  }
+
+  function adapt_from_template($attrs, $skip = array())
+  {
+    parent::adapt_from_template($attrs, $skip);
+    $this->attributesAccess['dhcpHosts']->loadChoices();
+    $this->attributesAccess['dhcpHosts']->loadAdditionalTemplatesValues();
+    $this->is_account = $this->is_this_account($this->attrs);
   }
 }
