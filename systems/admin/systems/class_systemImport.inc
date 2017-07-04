@@ -84,10 +84,12 @@ class systemImport extends simplePlugin
       $baseObject = $tabObject->getBaseObject();
       $baseObject->cn   = $cn;
       $baseObject->description  = $host['description'];
-      if (!is_array($host['ipAddress'])) {
-        $host['ipAddress'] = array($host['ipAddress']);
+      if (!empty($host['ipAddress'])) {
+        if (!is_array($host['ipAddress'])) {
+          $host['ipAddress'] = array($host['ipAddress']);
+        }
+        $baseObject->ipHostNumber = $host['ipAddress'];
       }
-      $baseObject->ipHostNumber = $host['ipAddress'];
       $baseObject->macAddress   = $host['hardwareAddress'];
 
       /* Get existing DHCP servers */
