@@ -217,7 +217,7 @@ class sieve
     $this->tmpfile="";
     $this->fh=0;
     $this->len=0;
-    $this->capabilities="";
+    $this->capabilities=array();
     $this->loggedin=false;
     $this->error= "";
     $this->error_raw="";
@@ -325,7 +325,7 @@ class sieve
               $this->capabilities[$this->cap_type][$this->module]=true;
           } /* end if */
           elseif(is_string($this->modules))
-            $this->capabilites[$this->cap_type][$this->modules]=true;
+            $this->capabilities[$this->cap_type][$this->modules]=true;
         }
         else{
           $this->capabilities["unknown"][]=$this->line;
@@ -357,7 +357,7 @@ class sieve
           $this->capabilities[$this->cap_type][$this->module]=true;
       } /* end if */
       elseif(is_string($this->modules))
-        $this->capabilites[$this->cap_type][$this->module]=true;
+        $this->capabilities[$this->cap_type][$this->module]=true;
     }
 
 
