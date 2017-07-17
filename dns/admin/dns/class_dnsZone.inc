@@ -394,7 +394,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     /* First list all old nodes */
     $ldap->cd($zoneDn);
     $ldap->search('objectClass=dNSZone', array('dn'), 'one');
-    $existingNodes = array();
+    $existingNodes  = array();
+    $existingPtrs   = array();
     while ($attrs = $ldap->fetch()) {
       $existingNodes[$attrs['dn']] = $attrs['dn'];
     }
