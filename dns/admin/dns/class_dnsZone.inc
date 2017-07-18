@@ -347,6 +347,10 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
   {
     $zoneDn   = $this->getZoneDn();
     $zoneName = $this->getZoneName();
+    if ($this->plugin instanceof dnsZone) {
+      $this->reverseZones = $this->plugin->reverseZones;
+      $this->sOARecord    = $this->plugin->sOARecord;
+    }
     /* Compute values into $nodes and $ptrs */
     $nodes  = array();
     $ptrs   = array();
@@ -455,10 +459,6 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       }
     }
 
-    if ($this->plugin instanceof dnsZone) {
-      $this->reverseZones = $this->plugin->reverseZones;
-      $this->sOARecord    = $this->plugin->sOARecord;
-    }
     $zoneNameWithFinalDot = $zoneName;
     if (!preg_match('/\.$/', $zoneNameWithFinalDot)) {
       $zoneNameWithFinalDot .= '.';
