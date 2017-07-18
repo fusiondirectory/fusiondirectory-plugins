@@ -414,10 +414,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         'relativeDomainName'  => '@',
         'dNSClass'            => 'IN',
         'sOARecord'           => $this->sOARecord,
+        'nSRecord'            => $nsRecords
       );
-      if (!empty($nsRecords)) {
-        $node['nSRecord'] = $nsRecords;
-      }
       $existingPtrs[$reverseZone] = array();
       $ldap->cd($reverseDn);
       if (isset($existingNodes[$reverseDn])) {
@@ -431,6 +429,9 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
           $existingPtrs[$reverseZone][$attrs['dn']] = $attrs['dn'];
         }
       } else {
+        if (empty($node['nSRecord'])) {
+          unset($node['nSRecord']);
+        }
         $ldap->add($node);
         if (!$ldap->success()) {
           msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $reverseDn, LDAP_ADD, get_class()), LDAP_ERROR);
@@ -450,6 +451,11 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     foreach ($nodes as $dn => $node) {
       $ldap->cd($dn);
       if (isset($existingNodes[$dn])) {
+        foreach (array_keys(DnsRecordAttribute::$types) as $type) {
+          if (!isset($node[$type])) {
+            $node[$type] = array();
+          }
+        }
         $ldap->modify($node);
       } else {
         $ldap->add($node);
