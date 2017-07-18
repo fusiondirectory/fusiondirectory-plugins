@@ -60,20 +60,22 @@ class applicationManagement extends simpleManagement
       );
     } else { /* allowed */
       $apps   = array();
-      $roles  = objects::ls(
-        'role',
-        array('fdApplicationAllowed' => '*'),
-        NULL,
-        '(&(objectClass=fdApplicationRights)(roleOccupant='.$ui->dn.'))'
-      );
-      foreach ($roles as $role) {
-        foreach ($role['fdApplicationAllowed'] as $appdn) {
-          if (!isset($apps[$appdn])) {
-            $ldap->cat($appdn);
-            if ($ldap->count()) {
-              $attrs = $ldap->fetch();
-              if (in_array_ics('fdWebApplication', $attrs['objectClass'])) {
-                $apps[$appdn] = $attrs;
+      if (is_object($ui) && isset($ui->dn)) {
+        $roles  = objects::ls(
+          'role',
+          array('fdApplicationAllowed' => '*'),
+          NULL,
+          '(&(objectClass=fdApplicationRights)(roleOccupant='.$ui->dn.'))'
+        );
+        foreach ($roles as $role) {
+          foreach ($role['fdApplicationAllowed'] as $appdn) {
+            if (!isset($apps[$appdn])) {
+              $ldap->cat($appdn);
+              if ($ldap->count()) {
+                $attrs = $ldap->fetch();
+                if (in_array_ics('fdWebApplication', $attrs['objectClass'])) {
+                  $apps[$appdn] = $attrs;
+                }
               }
             }
           }
