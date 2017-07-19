@@ -202,7 +202,17 @@ class sudo extends simplePlugin
             _('Priority'), _('This rule priority compared to others'),
             'sudoOrder', FALSE,
             0, FALSE, 0
-          )
+          ),
+          new GeneralizedTimeDateAttribute (
+            _('Valid starting from'), _('Start of time interval for which the entry is valid (leave empty to disable)'),
+            'sudoNotBefore', FALSE,
+            ''
+          ),
+          new GeneralizedTimeDateAttribute (
+            _('Valid until'), _('End of time interval for which the entry is valid (leave empty to disable)'),
+            'sudoNotAfter', FALSE,
+            ''
+          ),
         )
       ),
     );
