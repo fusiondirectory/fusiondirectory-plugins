@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2017-07-24 11:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Côme Chilliet <come@chilliet.eu>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -192,7 +192,7 @@ msgstr "serveur"
 #: admin/systems/class_serverGeneric.inc:39
 #: admin/systems/class_serverGeneric.inc:44
 #: admin/systems/class_serverGeneric.inc:45
-#: admin/systems/class_systemImport.inc:171
+#: admin/systems/class_systemImport.inc:173
 msgid "Server"
 msgstr "Serveur"
 
@@ -570,21 +570,21 @@ msgstr "Ce système utilise les adresses IP (v4 ou v6)"
 msgid "Could not parse %s"
 msgstr "Impossible de lire le contenu de %s"
 
-#: admin/systems/class_systemImport.inc:116
+#: admin/systems/class_systemImport.inc:118
 #, php-format
 msgid "No DHCP server found for IPs %s"
 msgstr "Pas de serveur DHCP trouvé pour l'IP %s"
 
-#: admin/systems/class_systemImport.inc:133
+#: admin/systems/class_systemImport.inc:135
 #, php-format
 msgid "No DNS server found for zone %s"
 msgstr "Pas de serveur DNS trouvé pour la zone %s"
 
-#: admin/systems/class_systemImport.inc:167
+#: admin/systems/class_systemImport.inc:169
 msgid "Import"
 msgstr "Importer"
 
-#: admin/systems/class_systemImport.inc:171
+#: admin/systems/class_systemImport.inc:173
 msgid "The server you wish to import hosts from"
 msgstr "Le serveur duquel vous souhaitez importer des machines"
 

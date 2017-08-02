@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2017-07-24 11:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -159,3 +159,25 @@ msgstr "Priorité"
 #: admin/sudo/class_sudoGeneric.inc:202
 msgid "This rule priority compared to others"
 msgstr "La priorité de cette règle par rapport aux autres"
+
+#: admin/sudo/class_sudoGeneric.inc:207
+msgid "Valid starting from"
+msgstr "Valable à partir de"
+
+#: admin/sudo/class_sudoGeneric.inc:207
+msgid ""
+"Start of time interval for which the entry is valid (leave empty to disable)"
+msgstr ""
+"Début de l'intervalle de temps pour lequel l'entrée est valide (laissez vide"
+" pour désactiver)"
+
+#: admin/sudo/class_sudoGeneric.inc:212
+msgid "Valid until"
+msgstr "Valable jusque"
+
+#: admin/sudo/class_sudoGeneric.inc:212
+msgid ""
+"End of time interval for which the entry is valid (leave empty to disable)"
+msgstr ""
+"Fin de l'intervalle de temps pour lequel l'entrée est valide (laisser vide "
+"pour désactiver)"
