@@ -59,6 +59,36 @@ class MailQuotaAttribute extends IntAttribute
   }
 }
 
+class CatchallMailAttribute extends MailAttribute
+{
+  /*!
+   * \brief Check if the given argument is an email, allows catchall
+   *
+   * \param string $address The email address
+   */
+  static function is_email($address)
+  {
+    if ($address == "") {
+      return TRUE;
+    }
+    if (filter_var($address, FILTER_VALIDATE_EMAIL) !== FALSE) {
+      return TRUE;
+    } elseif (filter_var('x'.$address.'.com', FILTER_VALIDATE_EMAIL) !== FALSE) {
+      /* this is to allow addresses like example@localhost, or @localhost,
+         which are refused by some PHP version */
+      return TRUE;
+    }
+    return FALSE;
+  }
+
+  function validate ()
+  {
+    if (!self::is_email($this->value)) {
+      return msgPool::invalid($this->getLabel(), $this->value);
+    }
+  }
+}
+
 
 class mailAccount extends simplePlugin
 {
@@ -115,7 +145,7 @@ class mailAccount extends simplePlugin
         'name'  => _('Other addresses and redirections'),
         'attrs' => array(
           new SetAttribute (
-            new MailAttribute (
+            new CatchallMailAttribute (
               _('Alternative addresses'), _('List of alternative mail addresses'),
               'gosaMailAlternateAddress'
             )
