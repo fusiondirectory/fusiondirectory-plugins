@@ -1,0 +1,17 @@
+# Specify docker image
+image: debian:stretch
+
+# Define variable to disable SSL verification of GIT
+variables:
+  GIT_SSL_NO_VERIFY: "true"
+
+# Execute before every job
+# Install php-codesniffer
+before_script:
+  - apt-get update -qq
+  - apt-get install -y -qq php-codesniffer git
+
+# PHP codesniffer
+create_php_code_sniffer_rapport:
+  script:
+    - phpcs --standard=developers/FDStandard/ruleset.xml .
