@@ -173,7 +173,7 @@ class fiInventory extends simplePlugin
     $ldap = $config->get_ldap_link();
 
     if ($this->mainTab) {
-      $dn = $this->dn;
+      $dn           = $this->dn;
       $macAddress   = $this->attrs['macAddress'];
       $ipHostNumber = $this->attrs['ipHostNumber'];
       unset($macAddress['count']);

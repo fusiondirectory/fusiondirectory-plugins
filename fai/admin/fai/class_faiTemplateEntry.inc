@@ -99,7 +99,7 @@ class AccessRightsAttribute extends CompositeAttribute
       $tmode    = preg_replace('/^./', '', $tmode);
       $nr       = 1;
       while ($nr < 5) {
-        $m[$type.$nr] = ($current & $nr?'TRUE':'FALSE');
+        $m[$type.$nr] = ($current & $nr ? 'TRUE' : 'FALSE');
         $nr += $nr;
       }
     }

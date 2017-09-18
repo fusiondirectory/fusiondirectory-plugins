@@ -168,9 +168,9 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
           }
         }
 
-        $diskInfos['dn'] = $subattrs['dn'];
-        $this->value[$diskInfos['dn']] = $diskInfos;
-        $this->value[$diskInfos['dn']]['partitions'] = array();
+        $diskInfos['dn']                              = $subattrs['dn'];
+        $this->value[$diskInfos['dn']]                = $diskInfos;
+        $this->value[$diskInfos['dn']]['partitions']  = array();
       }
       /* Fetch partitions */
       foreach ($this->value as $name => $disk) {

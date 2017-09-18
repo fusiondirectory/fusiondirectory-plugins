@@ -88,7 +88,7 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
     $this->setValue($values);
     $v1 = $this->attributes[0]->displayValue($values[0]);
     $v2 = $this->attributes[1]->displayValue($values[1]);
-    return ($v1 == ''?$v2:$v1.': '.$v2);
+    return ($v1 == '' ? $v2 : $v1.': '.$v2);
   }
 }
 

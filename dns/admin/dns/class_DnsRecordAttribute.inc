@@ -73,7 +73,7 @@ class LocRecordLatLongAttribute extends CompositeAttribute
 
   function writeValues($values)
   {
-    /* d1 [m1 [s1]] {"N"|"S"|"E"|"W"} */
+    /* The format is: d1 [m1 [s1]] {"N"|"S"|"E"|"W"} */
     $str = $values['degrees'];
     if ($values['minutes'] != '') {
       $str .= ' '.$values['minutes'];
@@ -323,17 +323,17 @@ class DnsRecordAttribute extends CompositeAttribute
             $ldapName, TRUE,
             reset($this->parentIPs4)
           );
-        break;
+          break;
         case 'aAAARecord':
           $this->attributes[1] = new IPv6Attribute(
             _('Target'), _('An IPv6 address'),
             $ldapName, TRUE,
             reset($this->parentIPs6)
           );
-        break;
+          break;
         case 'LocRecord':
           $this->loadLocRecordFields($ldapName);
-        break;
+          break;
         case 'mXRecord':
           $this->attributes[1] = new CharSeparatedCompositeAttribute(
             _('MX Record'),
@@ -351,35 +351,35 @@ class DnsRecordAttribute extends CompositeAttribute
             ),
             ' '
           );
-        break;
+          break;
         case 'nAPTRRecord':
           $this->loadNaptrRecordFields($ldapName);
-        break;
+          break;
         case 'nSRecord':
           $this->attributes[1] = new FQDNAttribute(
             _('Target'), _('Domain name which specifies a host which should be authoritative for the specified class and domain'),
             $ldapName, TRUE
           );
-        break;
+          break;
         case 'sRVRecord':
           $this->loadSrvRecordFields($ldapName);
-        break;
+          break;
         case 'sSHFPRecord':
           $this->attributes[1] = new StringAttribute(
             _('Record'), _('SSHFP record content. Can be obtained using "ssh-keygen -r some.host.tld", or sshfp command for instance'),
             $ldapName, TRUE
           );
-        break;
+          break;
         case 'cNAMERecord':
           $this->attributes[1] = new StringAttribute(
             _('Redirect to'), _('Domain that this subdomain is an alias of'),
             $ldapName, TRUE,
             $this->parentFQDN
           );
-        break;
+          break;
         default:
           $this->attributes[1] = new StringAttribute(_('Content'), _('Content of this record'), $ldapName, TRUE);
-        break;
+          break;
       }
       if (in_array($type, static::$reverseTypes)) {
         $this->attributes[2]->setVisible(TRUE);

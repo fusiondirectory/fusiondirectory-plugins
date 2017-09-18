@@ -87,12 +87,6 @@ class csvimport extends simplePlugin
       'fields' => array(
         'name'  => _('Template filling'),
         'attrs' => array(
-          /*new SetAttribute(
-            new SelectAttribute(
-              _('Additional fields'), _('Non-required template field that you still want to provide'),
-              'additionals', FALSE
-            )
-          ),*/
           new CompositeAttribute (
             _('Select fields associations'),
             'fields',

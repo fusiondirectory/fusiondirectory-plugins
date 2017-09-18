@@ -23,8 +23,6 @@ class ipmiClient extends simplePlugin
   var $objectclasses  = array('ipmiClient');
   var $displayHeader  = TRUE;
 
-  //~ var $inheritance = array("gosaGroupOfNames" => "member");
-
   static function plInfo ()
   {
     return array(

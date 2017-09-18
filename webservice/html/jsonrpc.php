@@ -514,7 +514,7 @@ class fdRPCService
     // Filter out entries we are not allowed to modify
     $disallowed = array();
 
-    if(!is_array($dns)) {
+    if (!is_array($dns)) {
       $dns = array($dns);
     }
 
@@ -583,7 +583,7 @@ class fdRPCService
   {
     global $config, $ui;
 
-    if(!is_array($dns)) {
+    if (!is_array($dns)) {
       $dns = array($dns);
     }
 

@@ -27,11 +27,21 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  * Source code for class jsonRPCClient
  */
 
-class jsonRPCClientException extends Exception {}
-class jsonRPCClientRequestErrorException extends jsonRPCClientException {}
-class jsonRPCClientNetworkErrorException extends jsonRPCClientException {}
-class jsonRPCClientProtocolException extends jsonRPCClientException {}
-class jsonRPCClientBadArgsException extends jsonRPCClientException {}
+class jsonRPCClientException extends Exception
+{
+}
+class jsonRPCClientRequestErrorException extends jsonRPCClientException
+{
+}
+class jsonRPCClientNetworkErrorException extends jsonRPCClientException
+{
+}
+class jsonRPCClientProtocolException extends jsonRPCClientException
+{
+}
+class jsonRPCClientBadArgsException extends jsonRPCClientException
+{
+}
 
 /*!
  * \brief The object of this class are generic jsonRPC 1.0 clients
@@ -67,7 +77,7 @@ class jsonRPCClient {
    *
    * \var boolean $notification
    */
-  private $notification = false;
+  private $notification = FALSE;
 
   /*!
    * \brief HTTP options from http://www.php.net/manual/en/context.http.php
@@ -94,7 +104,8 @@ class jsonRPCClient {
    *
    * \param boolean $debug false
    */
-  public function __construct($url, $http_options = array(), $ssl_options = array(), $debug = false) {
+  public function __construct($url, $http_options = array(), $ssl_options = array(), $debug = FALSE)
+  {
     // server URL
     $this->url = $url;
 
@@ -107,7 +118,7 @@ class jsonRPCClient {
     $this->http_options = $http_options;
     $this->ssl_options  = $ssl_options;
     // debug state
-    $this->debug = ($debug?true:false);
+    $this->debug = ($debug ? TRUE : FALSE);
     // message id
     $this->id = 1;
   }
@@ -118,11 +129,12 @@ class jsonRPCClient {
    *
    * \param boolean $notification
    */
-  public function setRPCNotification($notification) {
+  public function setRPCNotification($notification)
+  {
     empty($notification) ?
-              $this->notification = false
+              $this->notification = FALSE
               :
-              $this->notification = true;
+              $this->notification = TRUE;
   }
 
   /*!
@@ -134,9 +146,9 @@ class jsonRPCClient {
    *
    * \return array
    */
-  public function __call($method,$params) {
-
-    $debug="";
+  public function __call($method, $params)
+  {
+    $debug = "";
 
     // check
     if (!is_scalar($method)) {
@@ -165,7 +177,7 @@ class jsonRPCClient {
             'id' => $currentId
             );
     $request = json_encode($request);
-    $this->debug && $debug.='***** Request *****'."\n".$request."\n".'***** End Of request *****'."\n\n";
+    $this->debug && $debug .= '***** Request *****'."\n".$request."\n".'***** End Of request *****'."\n\n";
 
     // performs the HTTP(S) POST
     $opts = array (
@@ -181,14 +193,14 @@ class jsonRPCClient {
     );
 
     $context  = stream_context_create($opts);
-    $fp = fopenWithErrorHandling($this->url, 'r', false, $context);
+    $fp = fopenWithErrorHandling($this->url, 'r', FALSE, $context);
     if (!is_array($fp)) {
       $response = '';
-      while($row = fgets($fp)) {
-        $response.= trim($row)."\n";
+      while ($row = fgets($fp)) {
+        $response .= trim($row)."\n";
       }
-      $this->debug && $debug.='***** Server response *****'."\n".$response.'***** End of server response *****'."\n";
-      $response = json_decode($response,true);
+      $this->debug && $debug .= '***** Server response *****'."\n".$response.'***** End of server response *****'."\n";
+      $response = json_decode($response, TRUE);
     } else {
       if (!empty($fp)) {
         $errormsg = implode("\n", $fp);
@@ -206,7 +218,7 @@ class jsonRPCClient {
     if ($response === NULL) {
       switch (json_last_error()) {
         case JSON_ERROR_NONE:
-        break;
+          break;
         case JSON_ERROR_DEPTH:
           throw new jsonRPCClientProtocolException('Maximum depth in response');
         case JSON_ERROR_STATE_MISMATCH:
@@ -218,7 +230,7 @@ class jsonRPCClient {
         case JSON_ERROR_UTF8:
           throw new jsonRPCClientProtocolException('Bad UTF-8 in response');
         default:
-        break;
+          break;
       }
     }
 
@@ -235,7 +247,7 @@ class jsonRPCClient {
       return $response['result'];
 
     } else {
-      return true;
+      return TRUE;
     }
   }
 }

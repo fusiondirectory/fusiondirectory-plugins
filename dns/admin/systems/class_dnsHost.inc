@@ -93,7 +93,13 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
   function fillLdapValue (&$attrs)
   {
     if ($this->plugin->is_template) {
-      $attrs[$this->getLdapName()] = array_map(function ($v) {return implode(static::$templateValueSeparator, $v);}, $this->value);
+      $attrs[$this->getLdapName()] = array_map(
+        function ($v)
+        {
+          return implode(static::$templateValueSeparator, $v);
+        },
+        $this->value
+      );
     }
   }
 

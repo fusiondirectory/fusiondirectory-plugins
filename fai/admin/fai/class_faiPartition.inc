@@ -98,19 +98,19 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
         $this->attributes[2]->setVisible(FALSE);
         $this->attributes[3]->setVisible(FALSE);
         $this->attributes[4]->setVisible(FALSE);
-      break;
+        break;
       case 'fixed':
         $this->attributes[1]->setVisible(TRUE);
         $this->attributes[2]->setVisible(TRUE);
         $this->attributes[3]->setVisible(FALSE);
         $this->attributes[4]->setVisible(FALSE);
-      break;
+        break;
       case 'dynamic':
         $this->attributes[1]->setVisible(TRUE);
         $this->attributes[2]->setVisible(TRUE);
         $this->attributes[3]->setVisible(TRUE);
         $this->attributes[4]->setVisible(TRUE);
-      break;
+        break;
     }
   }
 
@@ -132,11 +132,11 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
     if ($this->attributes[0]->getValue() == 'dynamic') {
       $mp = array(
         '%'  => 1,
-        'KB' => pow(1024,0),
-        'MB' => pow(1024,1),
-        'GB' => pow(1024,2),
-        'TB' => pow(1024,3),
-        'PB' => pow(1024,4)
+        'KB' => pow(1024, 0),
+        'MB' => pow(1024, 1),
+        'GB' => pow(1024, 2),
+        'TB' => pow(1024, 3),
+        'PB' => pow(1024, 4)
       );
       $res1 = $this->attributes[1]->getValue() * $mp[$this->attributes[2]->getValue()];
       $res2 = $this->attributes[3]->getValue() * $mp[$this->attributes[4]->getValue()];
@@ -358,7 +358,7 @@ class faiPartition extends simplePlugin
       $disablePrimary = FALSE;
       if (!$object || ($object['FAIpartitionType'] == 'logical')) {
         $types = array('logical' => array(), 'primary' => array());
-        foreach ($this->parent->partitions as $part){
+        foreach ($this->parent->partitions as $part) {
           $types[$part['FAIpartitionType']][$part['FAIpartitionNr']] = 1;
         }
         if (count($types['logical']) && (count($types['primary']) >= 3)) {
@@ -435,7 +435,6 @@ class faiPartition extends simplePlugin
   protected function loadAttributes()
   {
     foreach ($this->attributesAccess as &$attribute) {
-      //~ $attribute->setInLdap(FALSE);
       $attribute->setAcl('FAIpartitions');
     }
     unset($attribute);
@@ -496,7 +495,7 @@ class faiPartition extends simplePlugin
       if ($this->encrypted) {
         $ret['FAImountPoint'] .= ':encrypt';
       }
-    } elseif($this->FAIdiskType == 'raid') {
+    } elseif ($this->FAIdiskType == 'raid') {
       $ret['FAIpartitionSize'] = $ret['raidDevices'];
       unset($ret['raidDevices']);
     }
@@ -518,7 +517,7 @@ class faiPartition extends simplePlugin
 
       // Add partition from lvm combinations
       if ($disk['FAIdiskType'] == 'lvm') {
-        $used = array_merge($used,$disk['FAIlvmDevice']);
+        $used = array_merge($used, $disk['FAIlvmDevice']);
       }
 
       foreach ($disk['partitions'] as $part) {

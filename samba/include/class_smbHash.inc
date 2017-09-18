@@ -39,9 +39,9 @@ $Id$
 */
 class smbHash {
 
-# Contants used in lanlam hash calculations
-# Ported from SAMBA/source/libsmb/smbdes.c:perm1[56]
-private $perm1 = array(57, 49, 41, 33, 25, 17,  9,
+  // Contants used in lanlam hash calculations
+  // Ported from SAMBA/source/libsmb/smbdes.c:perm1[56]
+  private $perm1 = array(57, 49, 41, 33, 25, 17,  9,
               1, 58, 50, 42, 34, 26, 18,
              10,  2, 59, 51, 43, 35, 27,
              19, 11,  3, 60, 52, 44, 36,
@@ -49,8 +49,8 @@ private $perm1 = array(57, 49, 41, 33, 25, 17,  9,
               7, 62, 54, 46, 38, 30, 22,
              14,  6, 61, 53, 45, 37, 29,
              21, 13,  5, 28, 20, 12,  4);
-# Ported from SAMBA/source/libsmb/smbdes.c:perm2[48]
-private $perm2 = array(14, 17, 11, 24,  1,  5,
+  // Ported from SAMBA/source/libsmb/smbdes.c:perm2[48]
+  private $perm2 = array(14, 17, 11, 24,  1,  5,
               3, 28, 15,  6, 21, 10,
              23, 19, 12,  4, 26,  8,
              16,  7, 27, 20, 13,  2,
@@ -58,8 +58,8 @@ private $perm2 = array(14, 17, 11, 24,  1,  5,
              30, 40, 51, 45, 33, 48,
              44, 49, 39, 56, 34, 53,
              46, 42, 50, 36, 29, 32);
-# Ported from SAMBA/source/libsmb/smbdes.c:perm3[64]
-private $perm3 = array(58, 50, 42, 34, 26, 18, 10,  2,
+  // Ported from SAMBA/source/libsmb/smbdes.c:perm3[64]
+  private $perm3 = array(58, 50, 42, 34, 26, 18, 10,  2,
              60, 52, 44, 36, 28, 20, 12,  4,
              62, 54, 46, 38, 30, 22, 14,  6,
              64, 56, 48, 40, 32, 24, 16,  8,
@@ -67,8 +67,8 @@ private $perm3 = array(58, 50, 42, 34, 26, 18, 10,  2,
              59, 51, 43, 35, 27, 19, 11,  3,
              61, 53, 45, 37, 29, 21, 13,  5,
              63, 55, 47, 39, 31, 23, 15,  7);
-# Ported from SAMBA/source/libsmb/smbdes.c:perm4[48]
-private $perm4 = array(32,  1,  2,  3,  4,  5,
+  // Ported from SAMBA/source/libsmb/smbdes.c:perm4[48]
+  private $perm4 = array(32,  1,  2,  3,  4,  5,
                  4,  5,  6,  7,  8,  9,
                  8,  9, 10, 11, 12, 13,
                 12, 13, 14, 15, 16, 17,
@@ -76,8 +76,8 @@ private $perm4 = array(32,  1,  2,  3,  4,  5,
                 20, 21, 22, 23, 24, 25,
                 24, 25, 26, 27, 28, 29,
                 28, 29, 30, 31, 32,  1);
-# Ported from SAMBA/source/libsmb/smbdes.c:perm5[32]
-private $perm5 = array(16,  7, 20, 21,
+  // Ported from SAMBA/source/libsmb/smbdes.c:perm5[32]
+  private $perm5 = array(16,  7, 20, 21,
                    29, 12, 28, 17,
                     1, 15, 23, 26,
                     5, 18, 31, 10,
@@ -85,8 +85,8 @@ private $perm5 = array(16,  7, 20, 21,
                    32, 27,  3,  9,
                    19, 13, 30,  6,
                    22, 11,  4, 25);
-# Ported from SAMBA/source/libsmb/smbdes.c:perm6[64]
-private $perm6 = array(40,  8, 48, 16, 56, 24, 64, 32,
+  // Ported from SAMBA/source/libsmb/smbdes.c:perm6[64]
+  private $perm6 = array(40,  8, 48, 16, 56, 24, 64, 32,
              39,  7, 47, 15, 55, 23, 63, 31,
              38,  6, 46, 14, 54, 22, 62, 30,
              37,  5, 45, 13, 53, 21, 61, 29,
@@ -94,12 +94,12 @@ private $perm6 = array(40,  8, 48, 16, 56, 24, 64, 32,
              35,  3, 43, 11, 51, 19, 59, 27,
              34,  2, 42, 10, 50, 18, 58, 26,
              33,  1, 41,  9, 49, 17, 57, 25);
-# Ported from SAMBA/source/libsmb/smbdes.c:sc[16]
-private $sc = array(1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1);
-# Ported from SAMBA/source/libsmb/smbdes.c:sbox[8][4][16]
-# Side note, I used cut and paste for all these numbers, I did NOT
-# type them all in =)
-private $sbox = array(array(array(14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12,  5,  9,  0,  7),
+  // Ported from SAMBA/source/libsmb/smbdes.c:sc[16]
+  private $sc = array(1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1);
+  // Ported from SAMBA/source/libsmb/smbdes.c:sbox[8][4][16]
+  // Side note, I used cut and paste for all these numbers, I did NOT
+  // type them all in =)
+  private $sbox = array(array(array(14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12,  5,  9,  0,  7),
              array( 0, 15,  7,  4, 14,  2, 13,  1, 10,  6, 12, 11,  9,  5,  3,  8),
              array( 4,  1, 14,  8, 13,  6,  2, 11, 15, 12,  9,  7,  3, 10,  5,  0),
              array(15, 12,  8,  2,  4,  9,  1,  7,  5, 11,  3, 14, 10,  0,  6, 13)),
@@ -135,7 +135,8 @@ private $sbox = array(array(array(14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12
   /**
   * Fixes too large numbers
   */
-  private function x($i) {
+  private function x($i)
+  {
     if ($i < 0) return 4294967296 - $i;
     else return $i;
   }
@@ -145,10 +146,11 @@ private $sbox = array(array(array(14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12
   * @param array $data
   * @return array
   */
-  private function lshift($count, $data) {
+  private function lshift($count, $data)
+  {
     $ret = array();
     for ($i = 0; $i < sizeof($data); $i++) {
-      $ret[$i] = $data[($i + $count)%sizeof($data)];
+      $ret[$i] = $data[($i + $count) % sizeof($data)];
     }
     return $ret;
   }
@@ -158,10 +160,11 @@ private $sbox = array(array(array(14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12
   * @param array p permutation
   * @return array
   */
-  private function permute($in, $p, $n) {
+  private function permute($in, $p, $n)
+  {
     $ret = array();
     for ($i = 0; $i < $n; $i++) {
-      $ret[$i] = $in[$p[$i] - 1]?1:0;
+      $ret[$i] = $in[$p[$i] - 1] ? 1 : 0;
     }
     return $ret;
   }
@@ -171,7 +174,8 @@ private $sbox = array(array(array(14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12
   * @param array $in2
   * @return array
   */
-  private function mxor($in1, $in2) {
+  private function mxor($in1, $in2)
+  {
     $ret = array();
     for ($i = 0; $i < sizeof($in1); $i++) {
       $ret[$i] = $in1[$i] ^ $in2[$i];
@@ -185,7 +189,8 @@ private $sbox = array(array(array(14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12
   * @param boolean $forw
   * @return array
   */
-  function doHash($in, $key, $forw) {
+  function doHash($in, $key, $forw)
+  {
     $ki = array();
 
     $pk1 = $this->permute($key, $this->perm1, 56);
@@ -217,8 +222,11 @@ private $sbox = array(array(array(14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12
 
     for ($i = 0; $i < 16; $i++) {
       $er = $this->permute($r, $this->perm4, 48);
-      if ($forw) $erk = $this->mxor($er, $ki[$i]);
-      else $erk = $this->mxor($er, $ki[15 - $i]);
+      if ($forw) {
+        $erk = $this->mxor($er, $ki[$i]);
+      } else {
+        $erk = $this->mxor($er, $ki[15 - $i]);
+      }
 
       for ($j = 0; $j < 8; $j++) {
         for ($k = 0; $k < 6; $k++) {
@@ -232,7 +240,7 @@ private $sbox = array(array(array(14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12
         $n = ($b[$j][1] << 3) | ($b[$j][2] << 2) | ($b[$j][3] << 1) | $b[$j][4];
 
         for ($k = 0; $k < 4; $k++) {
-          $b[$j][$k]=($this->sbox[$j][$m][$n] & (1 << (3-$k)))?1:0;
+          $b[$j][$k] = ($this->sbox[$j][$m][$n] & (1 << (3 - $k))) ? 1 : 0;
         }
       }
 
@@ -257,15 +265,16 @@ private $sbox = array(array(array(14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12
    * @param string $str
    * @return string key
    */
-  private function str_to_key($str) {
+  private function str_to_key($str)
+  {
     $key[0] = $this->unsigned_shift_r($str[0], 1);
-    $key[1] = (($str[0]&0x01)<<6) | $this->unsigned_shift_r($str[1], 2);
-    $key[2] = (($str[1]&0x03)<<5) | $this->unsigned_shift_r($str[2], 3);
-    $key[3] = (($str[2]&0x07)<<4) | $this->unsigned_shift_r($str[3], 4);
-    $key[4] = (($str[3]&0x0F)<<3) | $this->unsigned_shift_r($str[4], 5);
-    $key[5] = (($str[4]&0x1F)<<2) | $this->unsigned_shift_r($str[5], 6);
-    $key[6] = (($str[5]&0x3F)<<1) | $this->unsigned_shift_r($str[6], 7);
-    $key[7] = $str[6]&0x7F;
+    $key[1] = (($str[0] & 0x01) << 6) | $this->unsigned_shift_r($str[1], 2);
+    $key[2] = (($str[1] & 0x03) << 5) | $this->unsigned_shift_r($str[2], 3);
+    $key[3] = (($str[2] & 0x07) << 4) | $this->unsigned_shift_r($str[3], 4);
+    $key[4] = (($str[3] & 0x0F) << 3) | $this->unsigned_shift_r($str[4], 5);
+    $key[5] = (($str[4] & 0x1F) << 2) | $this->unsigned_shift_r($str[5], 6);
+    $key[6] = (($str[5] & 0x3F) << 1) | $this->unsigned_shift_r($str[6], 7);
+    $key[7] = $str[6] & 0x7F;
     for ($i = 0; $i < 8; $i++) {
       $key[$i] = ($key[$i] << 1);
     }
@@ -280,12 +289,13 @@ private $sbox = array(array(array(14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12
    * @param unknown_type $forw
    * @return unknown
    */
-  private function smb_hash($in, $key, $forw){
+  private function smb_hash($in, $key, $forw)
+  {
     $key2 = $this->str_to_key($key);
 
     for ($i = 0; $i < 64; $i++) {
-      $inb[$i] = ($in[$i/8] & (1<<(7-($i%8)))) ? 1:0;
-      $keyb[$i] = ($key2[$i/8] & (1<<(7-($i%8)))) ? 1:0;
+      $inb[$i] = ($in[$i / 8] & (1 << (7 - ($i % 8)))) ? 1 : 0;
+      $keyb[$i] = ($key2[$i / 8] & (1 << (7 - ($i % 8)))) ? 1 : 0;
       $outb[$i] = 0;
     }
     $outb = $this->doHash($inb, $keyb, $forw);
@@ -294,7 +304,7 @@ private $sbox = array(array(array(14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12
     }
     for ($i = 0; $i < 64; $i++) {
       if ( $outb[$i] )  {
-        $out[$i/8] |= (1<<(7-($i%8)));
+        $out[$i / 8] |= (1 << (7 - ($i % 8)));
       }
     }
     return $out;
@@ -306,8 +316,9 @@ private $sbox = array(array(array(14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12
    * @param unknown_type $in
    * @return unknown
    */
-  private function E_P16($in) {
-    $p14 = array_values(unpack("C*",$in));
+  private function E_P16($in)
+  {
+    $p14 = array_values(unpack("C*", $in));
     $sp8 = array(0x4b, 0x47, 0x53, 0x21, 0x40, 0x23, 0x24, 0x25);
     $p14_1 = array();
     $p14_2 = array();
@@ -315,8 +326,8 @@ private $sbox = array(array(array(14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12
       $p14_1[$i] = $p14[$i];
       $p14_2[$i] = $p14[$i + 7];
     }
-    $p16_1 = $this->smb_hash($sp8, $p14_1, true);
-    $p16_2 = $this->smb_hash($sp8, $p14_2, true);
+    $p16_1 = $this->smb_hash($sp8, $p14_1, TRUE);
+    $p16_2 = $this->smb_hash($sp8, $p14_2, TRUE);
     $p16 = $p16_1;
     for ($i = 0; $i < sizeof($p16_2); $i++) {
       $p16[] = $p16_2[$i];
@@ -330,9 +341,10 @@ private $sbox = array(array(array(14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12
   * @param string $password password
   * @return string hash value
   */
-  public function lmhash($password = "") {
+  public function lmhash($password = "")
+  {
     $password = strtoupper($password);
-    $password = substr($password,0,14);
+    $password = substr($password, 0, 14);
     $password = str_pad($password, 14, chr(0));
     $p16 = $this->E_P16($password);
     for ($i = 0; $i < sizeof($p16); $i++) {
@@ -347,13 +359,15 @@ private $sbox = array(array(array(14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12
   * @param string $password password
   * @return string hash value
   */
-  public function nthash($password = "") {
-    if (function_exists('mhash') && defined('MHASH_MD4'))
-      return strtoupper(bin2hex(mhash(MHASH_MD4,iconv('UTF-8','UTF-16LE',$password))));
-    elseif (function_exists('hash'))
-      return strtoupper(hash('md4', iconv('UTF-8','UTF-16LE',$password)));
-    else
+  public function nthash($password = "")
+  {
+    if (function_exists('mhash') && defined('MHASH_MD4')) {
+      return strtoupper(bin2hex(mhash(MHASH_MD4, iconv('UTF-8', 'UTF-16LE', $password))));
+    } elseif (function_exists('hash')) {
+      return strtoupper(hash('md4', iconv('UTF-8', 'UTF-16LE', $password)));
+    } else {
       die(_('Your PHP install does not have the mhash() nor the hash function. Cannot do MD4 hashes.'));
+    }
   }
 
   /**
@@ -361,15 +375,15 @@ private $sbox = array(array(array(14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12
   *
   * PHP 4 only supports signed shifts by default.
   */
-  private function unsigned_shift_r($a, $b) {
+  private function unsigned_shift_r($a, $b)
+  {
     $z = 0x80000000;
     if ($z & $a) {
       $a = ($a >> 1);
       $a &= (~$z);
       $a |= 0x40000000;
       $a = ($a >> ($b - 1));
-    }
-    else {
+    } else {
       $a = ($a >> $b);
     }
     return $a;

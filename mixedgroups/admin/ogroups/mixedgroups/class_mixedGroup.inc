@@ -32,10 +32,6 @@ class mixedGroup extends simplePlugin
       'plObjectType'  => array('ogroup-user'),
       'plPriority'    => 1,
 
-      //~ 'plForeignKeys'  => array(
-        //~ 'memberUid' => array('user','uid')
-      //~ ),
-
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }

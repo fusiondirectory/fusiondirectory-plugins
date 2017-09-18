@@ -32,13 +32,13 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
       switch ($match[3]) {
         case 'ssh-dss':
           $type = 'DSA';
-        break;
+          break;
         case 'ssh-rsa':
           $type = 'RSA';
-        break;
+          break;
         default:
           $type = $match[3];
-        break;
+          break;
       }
       return array(
         $type,
@@ -123,8 +123,8 @@ class sshAccount extends simplePlugin
     foreach ($values as $value) {
       $this->attributesAccess['sshPublicKey']->attribute->setValue($value);
       $arrayValue = $this->attributesAccess['sshPublicKey']->attribute->getArrayValue();
-      if (in_array($arrayValue[1],$fingerprints)) {
-        $message[] = sprintf(_('Error : there are several keys with fingerprint %s'),$arrayValue[1]);
+      if (in_array($arrayValue[1], $fingerprints)) {
+        $message[] = sprintf(_('Error : there are several keys with fingerprint %s'), $arrayValue[1]);
       } else {
         $fingerprints[] = $arrayValue[1];
       }

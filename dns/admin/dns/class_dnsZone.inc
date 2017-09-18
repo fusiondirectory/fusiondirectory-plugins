@@ -657,7 +657,7 @@ class dnsZone extends simplePlugin
             'zoneName', TRUE
           ),
           new HiddenAttribute (
-            //~ _('Relative domain name'), _('Relative domain name'),
+            // Relative domain name
             'relativeDomainName', TRUE,
             '@'
           ),

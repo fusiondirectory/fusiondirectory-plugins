@@ -13,6 +13,9 @@
     </rule>
     <rule ref="Squiz.WhiteSpace.OperatorSpacing">
         <severity>6</severity>
+        <properties>
+            <property name="ignoreNewlines" value="true"/>
+        </properties>
     </rule>
     <rule ref="Squiz.WhiteSpace.ScopeKeywordSpacing">
         <severity>6</severity>
@@ -39,7 +42,7 @@
     <rule ref="Generic.WhiteSpace.DisallowTabIndent">
         <severity>7</severity>
     </rule>
-    <rule ref="Generic.WhiteSpace.ScopeIndent" >
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
         <severity>7</severity>
         <properties>
             <property name="exact" value="false"/> <!-- exact mode is "buggy" : does not detect array identation and so on -->
@@ -49,11 +52,11 @@
     <rule ref="PEAR.Commenting.InlineComment">
         <severity>6</severity>
     </rule>
-    <rule ref="Squiz.PHP.CommentedOutCode.Found">
+    <rule ref="Squiz.PHP.CommentedOutCode">
         <severity>5</severity>
         <properties>
-            <!-- RC: 35% is too easily triggered-->
             <property name="maxPercentage" value="50"/>
+            <!-- RC: 35% is too easily triggered-->
         </properties>
     </rule>
     <rule ref="PEAR.WhiteSpace.ScopeClosingBrace">
