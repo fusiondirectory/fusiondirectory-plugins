@@ -342,7 +342,7 @@ class sambaMungedDial
   function getTsLogin ()
   {
     $flags = ord(substr($this->ctx['CtxCfgFlags1'], 5, 1));
-    return ($flags & 1?FALSE:TRUE);
+    return ($flags & 1 ? FALSE : TRUE);
   }
 
   /* Sets Terminal-Server-Login value: enabled/disabled */
@@ -363,7 +363,7 @@ class sambaMungedDial
   function getBrokenConn ()
   {
     $flags = ord(substr($this->ctx['CtxCfgFlags1'], 5, 1));
-    return ($flags & 4?'1':'0');
+    return ($flags & 4 ? '1' : '0');
   }
 
   /* sets Broken-Connection value: disconnect/reset */
@@ -384,7 +384,7 @@ class sambaMungedDial
   function getReConn ()
   {
     $flags = ord(substr($this->ctx['CtxCfgFlags1'], 5, 1));
-    return ($flags & 2?'1':'0');
+    return ($flags & 2 ? '1' : '0');
   }
 
   /* sets Reconnection value: from any client/from previous client only */
@@ -448,7 +448,7 @@ class sambaMungedDial
   function getConnectClientDrives ()
   {
     $connections = hexdec(substr($this->ctx['CtxCfgFlags1'], 2, 1));
-    return ($connections & 8?TRUE:FALSE);
+    return ($connections & 8 ? TRUE : FALSE);
   }
 
   /* sets connect-client-drive-at-logon value: enabled/disabled */
@@ -468,7 +468,7 @@ class sambaMungedDial
   function getConnectClientPrinters ()
   {
     $connections = hexdec(substr($this->ctx['CtxCfgFlags1'], 2, 1));
-    return ($connections & 4?TRUE:FALSE);
+    return ($connections & 4 ? TRUE : FALSE);
   }
 
   /* sets connect-client-printers-at-logon value: enabled/disabled */
@@ -489,7 +489,7 @@ class sambaMungedDial
   function getDefaultPrinter ()
   {
     $connections = hexdec(substr($this->ctx['CtxCfgFlags1'], 2, 1));
-    return ($connections & 2?TRUE:FALSE);
+    return ($connections & 2 ? TRUE : FALSE);
   }
 
   /* sets set-client-printer-to-default value: enabled/disabled */

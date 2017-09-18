@@ -21,7 +21,8 @@
 class netgroupSystem extends netgroupMembership {
   protected static $id_attr = 'cn';
 
-  static function plInfo() {
+  static function plInfo()
+  {
     return array(
       'plShortName'     => _('NIS Netgroup'),
       'plDescription'   => _('NIS Netgroup member'),

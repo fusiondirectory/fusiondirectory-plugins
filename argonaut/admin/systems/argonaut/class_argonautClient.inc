@@ -72,7 +72,7 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
       if (in_array($name, static::$argonautService_blacklist)) {
         continue;
       }
-      $value = (isset(static::$argonautService_defaults[$name])?static::$argonautService_defaults[$name]:"");
+      $value = (isset(static::$argonautService_defaults[$name]) ? static::$argonautService_defaults[$name] : "");
       $this->attributes[$name] = new StringAttribute ($name, "Service $name",
                                                       "service_$name", FALSE,
                                                       $value, $this->getAcl());
@@ -93,14 +93,24 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
 
   function getValue ()
   {
-    return array_values(array_map (function ($a) { return $a->getLabel().":".$a->getValue(); },
-                      $this->attributes));
+    return array_values(array_map(
+      function ($a)
+      {
+        return $a->getLabel().":".$a->getValue();
+      },
+      $this->attributes
+    ));
   }
 
   function getServiceNames ()
   {
-    return array_map (function ($a) { return $a->getLdapName(); },
-                      $this->attributes);
+    return array_map(
+      function ($a)
+      {
+        return $a->getLdapName();
+      },
+      $this->attributes
+    );
   }
 }
 

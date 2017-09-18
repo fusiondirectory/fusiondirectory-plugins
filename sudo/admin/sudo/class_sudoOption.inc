@@ -258,7 +258,7 @@ class AvailableSudoOptionAttribute extends SelectAttribute
   {
     $id = $this->getLdapName();
     $button = '<input type="submit" name="add'.$id.'" id="add'.$id.'"'.
-                ($this->disabled? ' disabled="disabled"':'').
+                ($this->disabled ? ' disabled="disabled"' : '').
                 ' value="{msgPool type=addButton}"/>';
     $display = parent::renderFormInput();
     $smarty = get_smarty();
@@ -395,15 +395,15 @@ class SudoOptionAttribute extends Attribute
         {html_options values=$booleanOptions output=$booleanOptions selected="'.$value.'"}
       </select>';
     } elseif (($this->type == "BOOL_INTEGER") || ($this->type == "STRING_BOOL")) {
-      $selected = ($value == "FALSE" || $value == "TRUE" ?$value:"STRING");
+      $selected = ($value == "FALSE" || $value == "TRUE" ? $value : "STRING");
       $display = '<select name="'.$id.'_selection" id="'.$id.'_selection"
         onChange="toggle_bool_fields(\''.$id.'_selection\',\''.$id.'_value\');">
         {html_options values=$boolStringOptions output=$bool'.
-        ($this->type == "BOOL_INTEGER"?'Int':'String').
+        ($this->type == "BOOL_INTEGER" ? 'Int' : 'String').
         'Options selected="'.$selected.'"}
       </select>';
       $display .= '<input type="text" name="'.$id.'_value" id="'.$id.'_value" value="'.$value.'"'.
-          ($selected == "STRING"?'':'disabled="disabled"').'/>';
+          ($selected == "STRING" ? '' : 'disabled="disabled"').'/>';
     }
     return $this->renderAcl($display);
   }

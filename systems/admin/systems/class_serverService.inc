@@ -396,11 +396,6 @@ class ServerService extends simpleManagement
   function save_object()
   {
     // save_object of the dialog is called in management::execute
-    //~ if ($this->dialog && is_object($this->dialogObject)) {
-      //~ if (method_exists($this->dialogObject, 'save_object')) {
-        //~ $this->dialogObject->save_object();
-      //~ }
-    //~ }
   }
 
   /*! \brief    Remove all active services

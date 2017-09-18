@@ -63,8 +63,8 @@ class pgpKeySelect extends simpleSelectManagement
     }
     $this->filter->setObjectStorage($this->storagePoints);
     $this->filter->category = 'user';
-    $this->filter->query['0']['backend'] = 'LDAPBlacklist';
     $attributes = array('pgpKeyID', 'pgpUserID', 'pgpKeyCreateTime', 'pgpKeyExpireTime', 'pgpKeyType', 'pgpKeySize');
+    $this->filter->query[0]['backend']      = 'LDAPBlacklist';
     $this->filter->query[0]['filter']       = '$NAME';
     $this->filter->query[0]['attribute']    = $attributes;
     $this->filter->elements['NAME']['set']  = '(|('.join('=*$*)(', $attributes).'=*$*))';
@@ -78,7 +78,7 @@ class pgpKeySelect extends simpleSelectManagement
       return '&nbsp;';
     }
     $return = static::$func($value[0]);
-    return ($return === ''?'&nbsp;':$return);
+    return ($return === '' ? '&nbsp;' : $return);
   }
 
   static function filterPgpDate($value = array())
@@ -116,7 +116,7 @@ class pgpKeySelect extends simpleSelectManagement
   static function pgpRevoked($value)
   {
     // Remove useless 0 at the beginning
-    return ($value == 0?'No':'Yes');
+    return ($value == 0 ? 'No' : 'Yes');
   }
 }
 
@@ -247,7 +247,7 @@ class PgpKeyAttribute extends GenericDialogAttribute
   {
     $id = $this->getHtmlId();
     $buttons  = '<input type="submit" name="add'.$id.'_dialog" id="add'.$id.'_dialog"'.
-                ($this->disabled? ' disabled="disabled"':'').
+                ($this->disabled ? ' disabled="disabled"' : '').
                 ' value="{msgPool type=addButton}"/>';
     return $buttons;
   }

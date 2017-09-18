@@ -180,7 +180,6 @@ class opsiProductProperties extends simplePlugin
         'OPSI.get_product_properties',
         array($this->parent->getBaseObject()->macAddress),
         array('args' => array(
-          //~ array('propertyId','possibleValues','multiValue','description','defaultValues','editable'),
           array(),
           array('productId' => $productid)
         ))

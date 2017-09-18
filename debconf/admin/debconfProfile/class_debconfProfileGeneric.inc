@@ -46,8 +46,8 @@ class DebconfEntriesAttribute extends CompositeAttribute
     while ($entry = $ldap->fetch()) {
       if (isset($entry['cn'][0])) {
         $cn     = $entry['cn'][0];
-        $desc   = (isset($entry['description'][0])?$entry['description'][0]:'');
-        $default  = (isset($entry['value'][0])?$entry['default'][0]:'');
+        $desc   = (isset($entry['description'][0]) ? $entry['description'][0] : '');
+        $default  = (isset($entry['value'][0]) ? $entry['default'][0] : '');
         $this->attributes[$cn] = new StringAttribute ($cn, $desc, "debconfentry_$cn", FALSE, $default);
         $this->attributes[$cn]->setInLdap(FALSE);
         $this->attributes[$cn]->setAcl($this->getAcl());

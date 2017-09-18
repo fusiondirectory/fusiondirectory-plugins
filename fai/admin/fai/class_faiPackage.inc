@@ -49,7 +49,7 @@ class PackageConfigDialog extends GenericDialog
   function __construct($simplePlugin, &$attribute, $key, $pkg_config)
   {
     $this->attribute  = $attribute;
-    $this->dialog     = new $this->dialogClass($simplePlugin->dn, $key, $simplePlugin->FAIdebianRelease , $pkg_config);
+    $this->dialog     = new $this->dialogClass($simplePlugin->dn, $key, $simplePlugin->FAIdebianRelease, $pkg_config);
   }
 
   function execute ()
@@ -124,10 +124,10 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
   {
     $id = $this->getHtmlId();
     $buttons  = '<input type="submit" name="add'.$id.'" id="add'.$id.'"'.
-                ($this->disabled? ' disabled="disabled"':'').
+                ($this->disabled ? ' disabled="disabled"' : '').
                 ' value="{msgPool type=addButton}"/>';
     $buttons  .= '<input type="submit" name="add'.$id.'_dialog" id="add'.$id.'_dialog"'.
-                ($this->disabled? ' disabled="disabled"':'').
+                ($this->disabled ? ' disabled="disabled"' : '').
                 ' value="{msgPool type=addButton}{t} from list{/t}"/>';
     return $buttons;
   }
@@ -304,7 +304,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
 
     if (count($packages) > 0) {
       msg_dialog::display(_("Unkown packages"), "The following packages were not found on the repository : ".join(",", $packages), ERROR_DIALOG);
-      foreach($packages as $p => $pp) {
+      foreach ($packages as $p => $pp) {
         unset($this->value[$p]);
       }
     }
@@ -359,8 +359,8 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
         }
         $this->configuredPackages[$attr['FAIpackage'][0]][$attr['FAIvariable'][0]] = $tmp;
       } else {
-        $tmp['Value'] = "";
-        $this->configuredPackages[$attr['FAIpackage'][0]][$attr['FAIvariable'][0]] = $tmp;
+        $tmp['Value']                                                               = "";
+        $this->configuredPackages[$attr['FAIpackage'][0]][$attr['FAIvariable'][0]]  = $tmp;
       }
     }
   }
@@ -459,12 +459,12 @@ class faiPackage extends faiSimplePluginClass
     /* Assemble release name */
     $tmp = preg_replace('/'.preg_quote(get_ou('faiBaseRDN'), '/').'.*$/i', '', $this->base);
     preg_match_all('/ou=([^=,]+),/', $tmp, $m);
-    /* m[1][0] is release, m[1][1] is distribution */
+    /* m[1][0] is release and m[1][1] is distribution */
     $this->FAIdebianRelease = $m[1][0];
 
     /* Assemble sections */
     $repos = $this->getServerInfos();
-    if(isset($repos[$this->FAIdebianRelease])) {
+    if (isset($repos[$this->FAIdebianRelease])) {
       $this->FAIdebianSection = $repos[$this->FAIdebianRelease];
       $this->FAIdebianSection = array_unique($this->FAIdebianSection);
     }

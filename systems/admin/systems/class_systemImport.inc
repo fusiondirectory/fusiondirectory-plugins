@@ -46,7 +46,7 @@ class ImportServerAttribute extends ObjectSelectAttribute
   function renderFormInput ()
   {
     $id = $this->getHtmlId();
-    $disabled = ($this->disabled?' disabled="disabled"':'');
+    $disabled = ($this->disabled ? ' disabled="disabled"' : '');
     $button = '<input type="submit" name="'.$id.'_action" id="'.$id.'_action" value="{t}Import{/t}"'.$disabled.'/>';
     return parent::renderFormInput().$this->renderAcl($button);
   }

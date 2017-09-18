@@ -45,7 +45,8 @@ class netgroup extends simplePlugin
   var $objectclasses  = array("top", "nisNetgroup");
   var $mainTab        = TRUE;
 
-  static function plInfo() {
+  static function plInfo()
+  {
     return array(
       'plShortName'   => _('Netgroup'),
       'plDescription' => _('NIS Netgroup settings'),

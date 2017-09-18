@@ -94,7 +94,6 @@ class puppetNode extends simplePlugin
     $envs = $attrs['puppetAvailableEnvironment'];
     unset($envs['count']);
     $this->attributesInfo['section1']['attrs']['environment']->setChoices($envs);
-    //~ $this->attributesInfo['section1']['attrs']['puppetClass']->attribute->setChoices(array('class1','class2'));
   }
 }
 

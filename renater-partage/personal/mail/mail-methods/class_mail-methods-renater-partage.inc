@@ -590,7 +590,7 @@ class mailMethodRenaterPartage extends mailMethod
   {
     if ($this->cacheAccount()) {
       /* Partage sends quota in bytes */
-      return ($this->cachedAccount['account']['used'] / (1024 * 1024));
+      return $this->cachedAccount['account']['used'] / (1024 * 1024);
     }
     return parent::getQuotaUsage();
   }
@@ -602,7 +602,7 @@ class mailMethodRenaterPartage extends mailMethod
   {
     if ($this->cacheAccount()) {
       /* Partage sends quota in bytes */
-      return ($this->cachedAccount['account']['quota'] / (1024 * 1024));
+      return $this->cachedAccount['account']['quota'] / (1024 * 1024);
     }
     return $quotaValue;
   }

@@ -31,7 +31,7 @@ class workingTime extends CompositeAttribute
    */
   function writeValues($values)
   {
-    return ($values[0]*60 + $values[1]);
+    return $values[0] * 60 + $values[1];
   }
 
   /*!
@@ -42,7 +42,7 @@ class workingTime extends CompositeAttribute
     $tab = array();
     $val = intval($val);
     $tab[1] = $val % 60;
-    $tab[0] = ($val - $tab[1])/60;
+    $tab[0] = ($val - $tab[1]) / 60;
     return $tab;
   }
 
@@ -77,7 +77,7 @@ class proxyAccount extends simplePlugin
   /*!
    *  \brief The main function : information about attributes
    */
-   static function getAttributesInfo ()
+  static function getAttributesInfo ()
   {
     return array(
       'section1' => array(

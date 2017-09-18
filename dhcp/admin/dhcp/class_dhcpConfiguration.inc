@@ -54,7 +54,6 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
       return array('not in cache',$dn,'');
     }
 
-    //~ $link = "<a href='?plug=".$_GET['plug']."&act=edit&id=".$key."'>".$value[1]."</a>";
     $link = $value[1];
 
     $objtype = $this->objectType($dn);
@@ -394,7 +393,6 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
       'dn'              => $this->plugin->dn,
       'cn'              => array($this->plugin->cn),
       'objectClass'     => array('top', 'dhcpService'),
-      //~ 'dhcpPrimaryDN'   => array($this->plugin->dn),
       'dhcpStatements'  => array(
         'default-lease-time 600',
         'max-lease-time 7200',
@@ -555,10 +553,6 @@ class dhcpConfiguration extends simplePlugin
         'class' => array('fullwidth'),
         'attrs' => array(
           new BaseSelectorAttribute(get_ou('dhcpRDN')),
-          //~ new HostNameAttribute (
-            //~ _('Name'), _('Name of this DHCP configuration'),
-            //~ 'cn', TRUE
-          //~ ),
           new HiddenAttribute('cn'),
           new DhcpSectionsAttribute (
             '', _('The DHCP sections handled by this server'),
@@ -698,7 +692,6 @@ class dhcpConfiguration extends simplePlugin
       }
     }
 
-    //~ parent::ldap_save();
     return $errors;
   }
 }

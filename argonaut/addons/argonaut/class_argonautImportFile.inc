@@ -91,7 +91,7 @@ class argonautImportFile extends simplePlugin
   function execute()
   {
     $smarty = get_smarty();
-    $smarty->assign('jobtypes', join(',',array_keys($this->daemon_events)));
+    $smarty->assign('jobtypes', join(',', array_keys($this->daemon_events)));
     return parent::execute().
     '<p class="plugbottom">'.
     ' <input type="submit" name="start_import" value="'._('Import').'" >'.

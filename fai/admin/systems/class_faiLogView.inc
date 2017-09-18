@@ -207,7 +207,7 @@ class faiLogView extends simplePlugin
       /* Check if there is at least one log file */
       if (isset($res[$this->mac]) && is_array($res[$this->mac])) {
         $this->attributesAccess['available_logs']->logs = $res;
-        $this->is_account = TRUE;
+        $this->is_account                               = TRUE;
       }
     }
   }

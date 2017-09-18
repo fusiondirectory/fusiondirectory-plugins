@@ -197,7 +197,6 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     }
 
     $valueHashes    = array_flip(array_map('join', $values));
-    //~ $iValueHashes   = array_flip(array_map('join', $iValues));
     foreach ($iValues as $value) {
       $hash = join($value);
       if (isset($valueHashes[$hash]) && !$fullrewrite) {
@@ -262,7 +261,13 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   function fillLdapValue (&$attrs)
   {
     if ($this->plugin->is_template) {
-      $attrs[$this->getLdapName()] = array_map(function ($v) {return implode(static::$templateValueSeparator, $v);}, $this->value);
+      $attrs[$this->getLdapName()] = array_map(
+        function ($v)
+        {
+          return implode(static::$templateValueSeparator, $v);
+        },
+        $this->value
+      );
     }
   }
 }

@@ -120,7 +120,7 @@ class EjbcaUserCertsAttribute extends GenericDialogAttribute
   {
     $id = $this->getHtmlId();
     $buttons  = '<input type="submit" name="add'.$id.'_dialog" id="add'.$id.'_dialog"'.
-                ($this->disabled? ' disabled="disabled"':'').
+                ($this->disabled ? ' disabled="disabled"' : '').
                 ' value="{msgPool type=addButton}"/>';
     return $buttons;
   }
