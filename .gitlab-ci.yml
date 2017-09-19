@@ -14,10 +14,10 @@ before_script:
 # PHP codesniffer
 create_php_code_sniffer_rapport:
   script:
-    - phpcs --standard=developers/FDStandard/ruleset.xml .
+    - find . -type f -name '*.php' -o -name '*.inc' -exec phpcs --standard=developers/FDStandard/ruleset.xml "{}" \;
 
 # PHP lint
 create_php_lint_rapport:
   script:
-    - find . -type f -name '*.php' -name '*.inc' ! -name 'example_badcode.php'  -exec php -l "{}" \;
+    - find . -type f -name '*.php' -o -name '*.inc' ! -name 'example_badcode.php' -exec php -l "{}" \;
 
