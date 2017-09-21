@@ -357,6 +357,11 @@ attributetype ( 1.3.6.1.4.1.38414.2.15.4 NAME 'argonautFAIMonitorLogDir'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.2.16.1 NAME 'argonautDeploymentTimeframe'
+  DESC 'Fusion Directory - Argonaut, deployment time frame.'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
 # Object Class
 objectclass ( 1.3.6.1.4.1.38414.2.2.1 NAME 'argonautServer'
   DESC 'An argonaut server'
@@ -426,3 +431,8 @@ objectclass ( 1.3.6.1.4.1.38414.2.2.9 NAME 'argonautFAIMonitorConfig'
   SUP top AUXILIARY
   MUST (  argonautFAIMonitorPort        $ argonautFAIMonitorTimeout $
           argonautFAIMonitorCaCertPath  $ argonautFAIMonitorLogDir  ) )
+
+objectclass ( 1.3.6.1.4.1.38414.2.2.10 NAME 'argonautDeploymentOptions'
+  DESC 'Deployment generic options'
+  SUP top AUXILIARY
+  MUST ( argonautDeploymentTimeframe ) )
