@@ -96,7 +96,8 @@ class argonautAction extends simplePlugin
       'main' => array(
         'name'  => _('Schedule'),
         'attrs' => array(
-          new HiddenAttribute(
+          new DisplayAttribute(
+            _('Action'), _('The action you are about to schedule'),
             'action'
           ),
           new HiddenAttribute(

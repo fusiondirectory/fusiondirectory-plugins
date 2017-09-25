@@ -71,6 +71,8 @@ class argonautQueue extends simpleManagement
     $this->registerAction('abort',      'abortEvent');
     $this->registerAction('import',     'importEvents');
     $this->registerAction('showError',  'showErrorEntry');
+    $this->registerAction('retry',      'retryAction');
+    $this->registerAction('saveEvent',  'saveEventDialog');
 
     $this->headpage->registerElementFilter('hostName',        'argonautQueue::filterHostName');
     $this->headpage->registerElementFilter('filterTask',      'argonautQueue::filterTask');
@@ -196,6 +198,12 @@ class argonautQueue extends simpleManagement
     $this->execute_queue_entries($target);
   }
 
+  function retryAction($action, array $target)
+  {
+    $entry = $this->getHeadpage()->getEntry($target[0]);
+    $this->dialogObject = new argonautAction($entry['HEADERTAG'][0], array($entry['MACADDRESS'][0]));
+  }
+
   function viewLogs($action, array $target)
   {
     if (count($target) == 1) {
@@ -219,6 +227,10 @@ class argonautQueue extends simpleManagement
   {
     $action = parent::detectPostActions();
     if (isset($_POST['import_abort'])) {
+      $action['action'] = 'cancel';
+    } elseif (isset($_POST['save_event_dialog'])) {
+      $action['action'] = 'saveEvent';
+    } elseif (isset($_POST['abort_event_dialog'])) {
       $action['action'] = 'cancel';
     }
     return $action;
