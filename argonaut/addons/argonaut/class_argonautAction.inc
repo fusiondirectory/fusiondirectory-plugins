@@ -18,51 +18,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class TimeHisAttribute extends CompositeAttribute
-{
-  function __construct($label, $description, $ldapName, $required, $acl = '')
-  {
-    $attributes = array(
-      new IntAttribute (
-        '',  _('Hours'),
-        $ldapName.'_hours', TRUE,
-        0, 23, 1
-      ),
-      new IntAttribute (
-        ':', _('Minutes'),
-        $ldapName.'_minutes', TRUE,
-        0, 59, 0
-      ),
-      new IntAttribute (
-        ':', _('Seconds'),
-        $ldapName.'_seconds', TRUE,
-        0, 59, 0
-      )
-    );
-    parent::__construct($description, $ldapName, $attributes, '/^(\d\d)(\d\d)(\d\d)$/', '%02d%02d%02d', $acl, $label);
-    $this->setLinearRendering(TRUE);
-  }
-}
-
-class DateTimeAttribute extends CompositeAttribute
-{
-  function __construct($label, $description, $ldapName, $required, $acl = '')
-  {
-    $attributes = array(
-      new DateAttribute(
-        _('Date'), '',
-        $ldapName.'_date', $required,
-        'Ymd'
-      ),
-      new TimeHisAttribute(
-        _('Time'), '',
-        $ldapName.'_time', $required
-      )
-    );
-    parent::__construct($description, $ldapName, $attributes, '/^(\d{8})(\d{6})$/', '%s%s', $acl, $label);
-  }
-}
-
 class MacsAttribute extends GenericDialogAttribute
 {
   protected $dialogClass = 'SystemSelectDialog';
