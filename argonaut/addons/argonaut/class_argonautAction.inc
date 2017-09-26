@@ -64,7 +64,8 @@ class argonautAction extends simplePlugin
               $events
             )
           ),
-          new HiddenAttribute(
+          new BooleanAttribute(
+            _('Scheduled'), _('Wether this job should be scheduled or ran right away'),
             'scheduled', FALSE,
             TRUE
           ),
@@ -110,7 +111,7 @@ class argonautAction extends simplePlugin
     );
   }
 
-  public function __construct($action, array $targets)
+  public function __construct($action, array $targets, $scheduled)
   {
     global $config;
     parent::__construct($config->current['BASE']);
@@ -137,8 +138,9 @@ class argonautAction extends simplePlugin
 
     $this->datetime = date('YmdHis');
 
-    $this->action   = $action;
-    $this->targets  = $targets;
+    $this->action     = $action;
+    $this->targets    = $targets;
+    $this->scheduled  = $scheduled;
   }
 
   protected function loadAttributes()

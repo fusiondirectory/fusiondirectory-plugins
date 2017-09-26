@@ -166,10 +166,9 @@ class systemManagement extends simpleManagement
     // Prepare event to be added
     $events   = argonautEventTypes::get_event_types();
     if (isset($events[$event])) {
-      $this->dialogObject = new argonautAction($event, $mac);
+      $this->dialogObject = new argonautAction($event, $mac, !$triggered);
 
       if ($triggered) {
-        $this->dialogObject->scheduled = FALSE;
         $res = $o_queue->append($this->dialogObject);
         if ($o_queue->is_error()) {
           msg_dialog::display(_('Infrastructure service'), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
@@ -177,8 +176,6 @@ class systemManagement extends simpleManagement
           msg_dialog::display(_('Action triggered'), sprintf(_('Action called without error (result was "%s")'), $res), INFO_DIALOG);
         }
         $this->closeDialogs();
-      } else {
-        $this->dialogObject->scheduled = TRUE;
       }
     }
   }

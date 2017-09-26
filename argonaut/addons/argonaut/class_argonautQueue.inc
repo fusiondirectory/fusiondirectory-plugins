@@ -201,7 +201,7 @@ class argonautQueue extends simpleManagement
   function retryAction($action, array $target)
   {
     $entry = $this->getHeadpage()->getEntry($target[0]);
-    $this->dialogObject = new argonautAction($entry['HEADERTAG'][0], array($entry['MACADDRESS'][0]));
+    $this->dialogObject = new argonautAction($entry['HEADERTAG'][0], array($entry['MACADDRESS'][0]), FALSE);
   }
 
   function viewLogs($action, array $target)
