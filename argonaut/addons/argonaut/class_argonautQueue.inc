@@ -236,6 +236,24 @@ class argonautQueue extends simpleManagement
     return $action;
   }
 
+  /*! \brief  Save event dialogs.
+   *          And append the new Argonaut event.
+   */
+  function saveEventDialog()
+  {
+    $this->dialogObject->save_object();
+    $msgs = $this->dialogObject->check();
+    if (count($msgs)) {
+      msg_dialog::displayChecks($msgs);
+      return;
+    }
+    $this->o_queue->append($this->dialogObject);
+    if ($this->o_queue->is_error()) {
+      msg_dialog::display(_('Infrastructure service'), msgPool::siError($this->o_queue->get_error()), ERROR_DIALOG);
+    }
+    $this->closeDialogs();
+  }
+
   protected function _getTabFooter()
   {
     if ($this->dialogObject instanceof faiLogView) {

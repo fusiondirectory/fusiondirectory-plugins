@@ -92,13 +92,22 @@ class argonautAction extends simplePlugin
 
   static function getAttributesInfo ()
   {
+    $events = argonautEventTypes::get_event_types();
     return array(
       'main' => array(
         'name'  => _('Schedule'),
         'attrs' => array(
-          new DisplayAttribute(
+          new SelectAttribute(
             _('Action'), _('The action you are about to schedule'),
-            'action'
+            'action', TRUE,
+            array_keys($events), '',
+            array_map(
+              function ($event)
+              {
+                return $event['name'];
+              },
+              $events
+            )
           ),
           new HiddenAttribute(
             'scheduled', FALSE,
