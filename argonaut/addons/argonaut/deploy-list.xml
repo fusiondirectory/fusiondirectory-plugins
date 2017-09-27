@@ -121,6 +121,14 @@
     </action>
 
     <action>
+      <name>retry</name>
+      <type>entry</type>
+      <objectclass>FAKE_OC__retry</objectclass>
+      <image>geticon.php?context=actions&amp;icon=view-refresh&amp;size=16</image>
+      <label>Retry</label>
+    </action>
+
+    <action>
       <name>viewLogs</name>
       <type>entry</type>
       <objectclass>FAKE_OC__viewLogs</objectclass>

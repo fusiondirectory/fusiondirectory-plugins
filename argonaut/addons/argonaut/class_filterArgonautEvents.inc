@@ -95,6 +95,12 @@ class filterArgonautEvents extends  filterLDAP
         $entry['objectClass'][] = "FAKE_OC__abort";
       }
 
+      /* If ERROR add retry action
+       */
+      if (in_array($entry['STATUS'], array("error")) && $acl_is_writeable) {
+        $entry['objectClass'][] = "FAKE_OC__retry";
+      }
+
       /* If WAITING or ERROR add remove action
        */
       if ( $acl_is_removeable && in_array($entry['STATUS'], array("waiting","error","processed"))) {

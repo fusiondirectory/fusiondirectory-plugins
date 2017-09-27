@@ -71,6 +71,8 @@ class argonautQueue extends simpleManagement
     $this->registerAction('abort',      'abortEvent');
     $this->registerAction('import',     'importEvents');
     $this->registerAction('showError',  'showErrorEntry');
+    $this->registerAction('retry',      'retryAction');
+    $this->registerAction('saveEvent',  'saveEventDialog');
 
     $this->headpage->registerElementFilter('hostName',        'argonautQueue::filterHostName');
     $this->headpage->registerElementFilter('filterTask',      'argonautQueue::filterTask');
@@ -196,6 +198,12 @@ class argonautQueue extends simpleManagement
     $this->execute_queue_entries($target);
   }
 
+  function retryAction($action, array $target)
+  {
+    $entry = $this->getHeadpage()->getEntry($target[0]);
+    $this->dialogObject = new argonautAction($entry['HEADERTAG'][0], array($entry['MACADDRESS'][0]), FALSE);
+  }
+
   function viewLogs($action, array $target)
   {
     if (count($target) == 1) {
@@ -220,8 +228,30 @@ class argonautQueue extends simpleManagement
     $action = parent::detectPostActions();
     if (isset($_POST['import_abort'])) {
       $action['action'] = 'cancel';
+    } elseif (isset($_POST['save_event_dialog'])) {
+      $action['action'] = 'saveEvent';
+    } elseif (isset($_POST['abort_event_dialog'])) {
+      $action['action'] = 'cancel';
     }
     return $action;
+  }
+
+  /*! \brief  Save event dialogs.
+   *          And append the new Argonaut event.
+   */
+  function saveEventDialog()
+  {
+    $this->dialogObject->save_object();
+    $msgs = $this->dialogObject->check();
+    if (count($msgs)) {
+      msg_dialog::displayChecks($msgs);
+      return;
+    }
+    $this->o_queue->append($this->dialogObject);
+    if ($this->o_queue->is_error()) {
+      msg_dialog::display(_('Infrastructure service'), msgPool::siError($this->o_queue->get_error()), ERROR_DIALOG);
+    }
+    $this->closeDialogs();
   }
 
   protected function _getTabFooter()
