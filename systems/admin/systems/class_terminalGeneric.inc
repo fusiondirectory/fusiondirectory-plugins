@@ -20,7 +20,7 @@
 
 class terminalGeneric extends workstationGeneric
 {
-  var $objectclasses = array('fdTerminal', 'ipHost', 'ieee802Device');
+  var $objectclasses = array('fdTerminal', 'ieee802Device');
 
   /*!
    *  \brief The main function : information about attributes
