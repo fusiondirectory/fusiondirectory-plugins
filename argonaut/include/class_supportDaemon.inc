@@ -203,7 +203,7 @@ class supportDaemon
    *
    * \param string $action    The action to call
    *
-   * \param Array  $targets   The concerned mac addresses
+   * \param Array  $targets   The concerned mac addresses. If this is not an array the result will be unpacked.
    *
    * \param Array  $data      The data to send (timestamp, periodic and args, see Argonaut protocol)
    *
@@ -223,11 +223,21 @@ class supportDaemon
     /* Append an entry */
     try {
       $client = new jsonRPCClient($this->s_host, $this->http_options, $this->ssl_options);
-      $status = $client->action($action, $targets, $data);
+      if (!is_array($targets)) {
+        $tmpTargets = array($targets);
+      } else {
+        $tmpTargets = $targets;
+      }
+      $status = $client->action($action, $tmpTargets, $data);
       @DEBUG (DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $status, date('H.i.s').' Answer');
       $this->reset_error();
       $this->new_state(TRUE);
-      return $status[0];
+      if (is_array($status) && !is_array($targets) && isset($status[0])) {
+        /* Return first value */
+        return $status[0];
+      } else {
+        return $status;
+      }
     } catch (jsonRPCClientRequestErrorException $e) {
       $this->set_error($e->getMessage());
       // connection is OK
@@ -468,7 +478,7 @@ class supportDaemon
       return $this->new_state(TRUE);
     } catch (jsonRPCClientRequestErrorException $e) {
       $this->set_error($e->getMessage());
-       // connection is OK
+      // connection is OK
       $this->new_state(TRUE);
       return FALSE;
     } catch (jsonRPCClientNetworkErrorException $e) {
@@ -719,7 +729,7 @@ class supportDaemon
       return $to_return;
     } catch (jsonRPCClientRequestErrorException $e) {
       $this->set_error($e->getMessage());
-       // connection is OK
+      // connection is OK
       $this->new_state(TRUE);
       return array();
     } catch (jsonRPCClientNetworkErrorException $e) {

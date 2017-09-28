@@ -299,7 +299,7 @@ class ServerService extends simpleManagement
           msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
         );
       } else {
-        $target = array($this->parent->getBaseObject()->macAddress);
+        $target = $this->parent->getBaseObject()->macAddress;
         if ($action == 'status') {
           $res = $s_daemon->append_call('Service.is_running', $target, array('args' => array($service)));
 
