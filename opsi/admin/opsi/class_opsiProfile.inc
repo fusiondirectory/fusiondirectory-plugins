@@ -85,6 +85,7 @@ class opsiProfile extends simplePlugin
       'main' => array(
         'name'  => _('Name'),
         'attrs' => array(
+          new BaseSelectorAttribute(get_ou('opsiRDN')),
           new SubmittingOPSIServerAttribute(
             _('OPSI server'), _('OPSI server to use for deployment'),
             'fdOpsiServerDN', TRUE

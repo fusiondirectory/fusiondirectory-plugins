@@ -50,6 +50,7 @@ class opsiSoftwareList extends simplePlugin
       'main' => array(
         'name'  => _('Infos'),
         'attrs' => array(
+          new BaseSelectorAttribute(get_ou('opsiRDN')),
           new SubmittingOPSIServerAttribute(
             _('OPSI server'), _('OPSI server to use for deployment'),
             'fdOpsiServerDN', TRUE

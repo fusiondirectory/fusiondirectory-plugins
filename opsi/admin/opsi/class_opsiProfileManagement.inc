@@ -22,9 +22,9 @@ class opsiManagement extends simpleManagement
 {
   protected $objectTypes  = array('opsiProfile', 'opsiSoftwareList');
 
-  protected $departmentBrowser      = FALSE;
+  protected $departmentBrowser      = TRUE;
   protected $departmentRootVisible  = FALSE;
-  protected $baseMode               = FALSE;
+  protected $baseMode               = TRUE;
 
   /* Return plugin information for acl handling */
   static function plInfo()
