@@ -177,7 +177,7 @@ class opsiProfile extends simplePlugin
         );
         return FALSE;
       }
-      $netboots = $s_daemon->append_call('OPSI.get_netboots', array($this->macAddress), array('args' => array(array('id','name'))));
+      $netboots = $s_daemon->append_call('OPSI.get_netboots', $this->macAddress, array('args' => array(array('id','name'))));
       if ($s_daemon->is_error()) {
         msg_dialog::display(
           _('Failed to contact OPSI server'),

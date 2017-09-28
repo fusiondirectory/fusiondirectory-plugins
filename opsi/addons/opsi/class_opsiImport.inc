@@ -92,7 +92,7 @@ class opsiImport extends systemImport
       );
       return FALSE;
     }
-    $res = $s_daemon->append_call("OPSI.host_getObjects", array($macAddress), array('args' => array(array(), array('type' => 'OpsiClient'))));
+    $res = $s_daemon->append_call('OPSI.host_getObjects', $macAddress, array('args' => array(array(), array('type' => 'OpsiClient'))));
     if ($s_daemon->is_error()) {
       msg_dialog::display(
         _("Could not update OPSI information"),

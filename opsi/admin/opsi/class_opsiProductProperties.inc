@@ -178,7 +178,7 @@ class opsiProductProperties extends simplePlugin
       }
       $properties = $s_daemon->append_call(
         'OPSI.get_product_properties',
-        array($this->parent->getBaseObject()->macAddress),
+        $this->parent->getBaseObject()->macAddress,
         array('args' => array(
           array(),
           array('productId' => $productid)
