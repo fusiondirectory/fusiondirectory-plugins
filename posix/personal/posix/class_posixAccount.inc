@@ -94,7 +94,7 @@ class posixAccount extends simplePlugin
       'plObjectType'  => array('user'),
       'plForeignKeys' => array(
         'gidNumber' => array(
-          array('group','gidNumber'),
+          array('ogroup','gidNumber'),
           array('mixedGroup','gidNumber'),
         ),
         'host'      => array(

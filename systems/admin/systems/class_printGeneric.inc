@@ -19,9 +19,9 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class printGeneric extends simplePlugin
+class printGeneric extends ipHostPlugin
 {
-  var $objectclasses  = array('fdPrinter', 'ipHost', 'ieee802Device');
+  var $objectclasses  = array('fdPrinter', 'ieee802Device');
 
   /* Return plugin information */
   static function plInfo()

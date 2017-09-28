@@ -20,11 +20,11 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class workstationGeneric extends simplePlugin
+class workstationGeneric extends ipHostPlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array('fdWorkstation', 'ipHost', 'ieee802Device');
+  var $objectclasses = array('fdWorkstation', 'ieee802Device');
 
   static function plInfo()
   {
@@ -110,8 +110,6 @@ class workstationGeneric extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
-    $this->attributesAccess['ipHostNumber']->setUnique('whole', '(objectClass=ipHost)');
-    $this->attributesAccess['macAddress']->setUnique('whole', '(objectClass=ieee802Device)');
   }
 
   function remove_from_parent()

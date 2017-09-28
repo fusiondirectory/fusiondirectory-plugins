@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class mobilePhoneGeneric extends simplePlugin
+class mobilePhoneGeneric extends ipHostPlugin
 {
   var $mainTab = TRUE;
 
@@ -113,18 +113,6 @@ class mobilePhoneGeneric extends simplePlugin
         ),
       ),
     );
-  }
-
-  /* Used by prepare_save and template::apply */
-  public function mergeObjectClasses(array $oc)
-  {
-    $objectclasses = $oc;
-    if (empty($this->ipHostNumber)) {
-      $objectclasses = array_remove_entries_ics(array('ipHost'), $objectclasses);
-    } else {
-      $objectclasses[] = 'ipHost';
-    }
-    return array_merge_unique($objectclasses, $this->objectclasses);
   }
 }
 ?>

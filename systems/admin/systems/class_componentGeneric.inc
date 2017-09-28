@@ -19,11 +19,11 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class componentGeneric extends simplePlugin
+class componentGeneric extends ipHostPlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array("top", "device", "ipHost", "ieee802Device");
+  var $objectclasses = array('device', 'ieee802Device');
 
   static function plInfo()
   {
@@ -35,7 +35,7 @@ class componentGeneric extends simplePlugin
         'component' => array(
           'name'        => _('Network device'),
           'description' => _('Network device'),
-          'filter'      => '(&(objectClass=ieee802Device)(objectClass=device)(objectClass=ipHost))',
+          'filter'      => '(&(objectClass=ieee802Device)(objectClass=device))',
           'icon'        => 'geticon.php?context=devices&icon=network-device&size=16',
           'ou'          => get_ou('componentRDN'),
         )

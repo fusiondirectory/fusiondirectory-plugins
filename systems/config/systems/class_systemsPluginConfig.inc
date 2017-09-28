@@ -22,6 +22,8 @@ class systemsPluginConfig extends simplePlugin
 {
   var $objectclasses = array('fdSystemsPluginConf');
 
+  static protected $ipClasses = array();
+
   static function plInfo()
   {
     return array(
@@ -114,9 +116,35 @@ class systemsPluginConfig extends simplePlugin
             ),
             TRUE /* edit enabled */
           ),
+          new SetAttribute(
+            new SelectAttribute(
+              _('Mandatory IP'), _('Object types tabs for which IP field should be mandatory'),
+              'fdMandatoryIpClasses', FALSE
+            ),
+            array('componentGeneric','printGeneric','workstationGeneric','terminalGeneric','serverGeneric')
+          ),
         )
       )
     );
+  }
+
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
+  {
+    parent::__construct($dn, $object, $parent, $mainTab);
+
+    if (empty(static::$ipClasses)) {
+      $plist = session::global_get('plist');
+      static::$ipClasses = array();
+      foreach ($plist->info as $cname => $info) {
+        if ($cname == 'all') {
+          continue;
+        }
+        if (is_subclass_of($cname, 'ipHostPlugin')) {
+          static::$ipClasses[$cname] = $info['plTitle'];
+        }
+      }
+    }
+    $this->attributesAccess['fdMandatoryIpClasses']->attribute->setChoices(array_keys(static::$ipClasses), array_values(static::$ipClasses));
   }
 }
 ?>
