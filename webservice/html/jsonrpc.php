@@ -193,7 +193,7 @@ class fdRPCService
   protected function _ls ($type, $attrs = NULL, $ou = NULL, $filter = '')
   {
     $this->checkAccess($type);
-    return objects::ls($type, $attrs, $ou, $filter);
+    return objects::ls($type, $attrs, $ou, $filter, TRUE);
   }
 
   /*!
