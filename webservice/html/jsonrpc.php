@@ -201,8 +201,15 @@ class fdRPCService
    */
   protected function _count ($type, $ou = NULL, $filter = '')
   {
+    global $ui;
     $this->checkAccess($type);
-    return objects::count($type, $ou, $filter);
+    $infos  = objects::infos($type);
+    $acl    = $infos['aclCategory'].'/'.$infos['mainTab'];
+    if (strpos($ui->get_permissions($ou, $acl), 'r') !== FALSE) {
+      return objects::count($type, $ou, $filter);
+    } else {
+      return count(objects::ls($type, NULL, $ou, $filter, TRUE));
+    }
   }
 
   /*!
