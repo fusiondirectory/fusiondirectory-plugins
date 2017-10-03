@@ -25,7 +25,7 @@ class SudoUsersGroupsAttribute extends DialogAttribute
 
   function addValue ($dn, $entry)
   {
-    if (in_array("posixGroup", $entry['objectClass'])) {
+    if (in_array('posixGroup', $entry['objectClass']) || in_array('groupOfNames', $entry['objectClass'])) {
       $name = trim("%".$entry['cn'][0]);
     } elseif (isset($entry['uid'][0])) {
       $name = trim($entry['uid'][0]);
@@ -135,6 +135,7 @@ class sudo extends simplePlugin
         'sudoUser'   => array(
           array('user', 'uid', '(sudoUser=%oldvalue%)'),
           array('posixGroup', 'cn', '(sudoUser=%|%%oldvalue%)'),
+          array('mixedGroup', 'cn', '(sudoUser=%|%%oldvalue%)'),
         ),
         'sudoHost'   => array(
           array('serverGeneric', 'cn'),
@@ -257,7 +258,7 @@ class sudo extends simplePlugin
 
   function foreignKeyCheck ($field, $fieldvalue, $source)
   {
-    if (($field == 'sudoUser') && ($source['CLASS'] == 'posixGroup')) {
+    if (($field == 'sudoUser') && (($source['CLASS'] == 'posixGroup') || ($source['CLASS'] == 'mixedGroup'))) {
       return parent::foreignKeyCheck($field, '%'.$fieldvalue, $source);
     } else {
       return parent::foreignKeyCheck($field, $fieldvalue, $source);
@@ -266,7 +267,7 @@ class sudo extends simplePlugin
 
   function foreignKeyUpdate($field, $oldvalue, $newvalue, $source)
   {
-    if (($field == 'sudoUser') && ($source['CLASS'] == 'posixGroup')) {
+    if (($field == 'sudoUser') && (($source['CLASS'] == 'posixGroup') || ($source['CLASS'] == 'mixedGroup'))) {
       return parent::foreignKeyUpdate($field, '%'.$oldvalue, '%'.$newvalue, $source);
     } else {
       return parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
