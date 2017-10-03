@@ -143,6 +143,21 @@ class argonautDNSConfig extends simpleService
       )
     );
   }
-}
 
-?>
+  function __construct ($dn = NULL, $parent = NULL)
+  {
+    global $config;
+    $attributesInfo = $this->getAttributesInfo();
+    $zones = objects::ls('dnsZone', NULL, NULL, '', TRUE);
+    if (!empty($zones)) {
+      $attributes = $attributesInfo['slave']['attrs'][0]->attribute->attributes;
+      $attributes[0] = new SelectAttribute(
+        _('zone'), _('DNS zone this server should be declared as slave of'),
+        'Ldap2zoneSlaveZone', TRUE,
+        $zones
+      );
+      $attributesInfo['slave']['attrs'][0]->attribute->setAttributes($attributes);
+    }
+    parent::__construct($dn, $parent, $attributesInfo);
+  }
+}
