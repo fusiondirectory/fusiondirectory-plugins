@@ -94,9 +94,14 @@ class entite extends simplePlugin
             _('Parent entity'), _('The parent entity of this entity'),
             'supannCodeEntiteParent', FALSE
           ),
-          new StringAttribute(
-            _('Reference ID'), _('SUPANN reference ID of this entity'),
-            'supannRefId', FALSE
+          new SetAttribute(
+            new StringAttribute(
+              _('Reference IDs'), _('supannRefId - IDs/links for this entity on other systems'),
+              'supannRefId', FALSE,
+              '', '',
+               // Validation regexp: it must have a prefix
+              '/^{[^}]+}.+$/'
+            )
           ),
         )
       )
