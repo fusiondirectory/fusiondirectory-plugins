@@ -88,7 +88,7 @@ class opsiProfile extends simplePlugin
           new BaseSelectorAttribute(get_ou('opsiRDN')),
           new SubmittingOPSIServerAttribute(
             _('OPSI server'), _('OPSI server to use for deployment'),
-            'fdOpsiServerDN', TRUE
+            'fdOpsiServerDn', TRUE
           ),
           new HostNameAttribute(
             _('Name'), _('Name of this OPSI profile'),
@@ -137,7 +137,7 @@ class opsiProfile extends simplePlugin
         }
       } else {
         msg_dialog::display(
-          sprintf(_("Could not find %s in the LDAP"), $this->fdOpsiServerDN),
+          sprintf(_("Could not find %s in the LDAP"), $this->fdOpsiServerDn),
           msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
         );
         return FALSE;
@@ -149,7 +149,7 @@ class opsiProfile extends simplePlugin
   public function server_changed ()
   {
     global $config;
-    if (!isset($this->products[$this->fdOpsiServerDN])) {
+    if (!isset($this->products[$this->fdOpsiServerDn])) {
       $s_daemon = new supportDaemon();
       if (!$s_daemon->is_available()) {
         msg_dialog::display(
@@ -159,20 +159,20 @@ class opsiProfile extends simplePlugin
         return;
       }
       $ldap = $config->get_ldap_link();
-      $ldap->cat($this->fdOpsiServerDN);
+      $ldap->cat($this->fdOpsiServerDn);
       if ($attrs = $ldap->fetch()) {
         if (isset($attrs['macAddress'])) {
           $this->macAddress = $attrs['macAddress'][0];
         } else {
           msg_dialog::display(
             _("No mac address"),
-            sprintf(_("Server %s has no mac address configured in the LDAP"), $this->fdOpsiServerDN), ERROR_DIALOG
+            sprintf(_("Server %s has no mac address configured in the LDAP"), $this->fdOpsiServerDn), ERROR_DIALOG
           );
           return FALSE;
         }
       } else {
         msg_dialog::display(
-          sprintf_(_("Could not find %s in the LDAP"), $this->fdOpsiServerDN),
+          sprintf_(_("Could not find %s in the LDAP"), $this->fdOpsiServerDn),
           msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
         );
         return FALSE;
@@ -185,26 +185,26 @@ class opsiProfile extends simplePlugin
         );
         return;
       }
-      $this->products[$this->fdOpsiServerDN]['netboots'] = $netboots;
+      $this->products[$this->fdOpsiServerDn]['netboots'] = $netboots;
 
       $ldap->cd($config->current['BASE']);
-      $ldap->search('(&(objectClass=opsiSoftwareList)(fdOpsiServerDN='.$this->fdOpsiServerDN.'))', array('cn'));
+      $ldap->search('(&(objectClass=opsiSoftwareList)(fdOpsiServerDn='.$this->fdOpsiServerDn.'))', array('cn'));
       $lists = array();
       while ($attrs = $ldap->fetch()) {
         $lists[$attrs['dn']] = $attrs['cn'][0];
       }
-      $this->products[$this->fdOpsiServerDN]['lists'] = $lists;
+      $this->products[$this->fdOpsiServerDn]['lists'] = $lists;
     }
     $choices_values = array();
     $choices_labels = array();
-    foreach ($this->products[$this->fdOpsiServerDN]['netboots'] as $netboot) {
+    foreach ($this->products[$this->fdOpsiServerDn]['netboots'] as $netboot) {
       $choices_values[] = $netboot['id'];
       $choices_labels[] = sprintf(_('%s (%s)'), $netboot['id'], $netboot['name']);
     }
     $this->attributesAccess['fdOpsiNetbootProduct']->setChoices($choices_values, $choices_labels);
     $this->attributesAccess['fdOpsiSoftwareList']->attribute->setChoices(
-      array_keys($this->products[$this->fdOpsiServerDN]['lists']),
-      array_values($this->products[$this->fdOpsiServerDN]['lists'])
+      array_keys($this->products[$this->fdOpsiServerDn]['lists']),
+      array_values($this->products[$this->fdOpsiServerDn]['lists'])
     );
   }
 }
