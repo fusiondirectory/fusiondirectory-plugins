@@ -168,6 +168,9 @@ class dashboardPpolicy extends simplePlugin
       }
     }
 
+    uasort($expired_accounts, array('dashboardUsers','compareUsers'));
+    uasort($next_expired_accounts, array('dashboardUsers','compareUsers'));
+
     $this->expired = array(
       'columns'             => $this->expiredAccountsColumns,
       'accounts'            => $expired_accounts,
