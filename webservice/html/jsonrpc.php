@@ -500,6 +500,77 @@ class fdRPCService
   }
 
   /*!
+   * \brief Add values to an object's attributes and save it
+   */
+  protected function _addvalues($type, $dn, $values)
+  {
+    return $this->adddelvalues($type, $dn, $values, TRUE);
+  }
+
+  /*!
+   * \brief Delete values from an object's attributes and save it
+   */
+  protected function _delvalues($type, $dn, $values)
+  {
+    return $this->adddelvalues($type, $dn, $values, FALSE);
+  }
+
+  private function adddelvalues($type, $dn, $values, $add)
+  {
+    $this->checkAccess($type, array_keys($values), $dn);
+    if ($dn === NULL) {
+      return array('errors' => array('No DN provided'));
+    } else {
+      $tabobject = objects::open($dn, $type);
+    }
+    foreach ($values as $tab => $tabvalues) {
+      if (!isset($tabobject->by_object[$tab])) {
+        return array('errors' => array('This tab does not exists: "'.$tab.'"'));
+      }
+      if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
+          $tabobject->by_object[$tab]->displayHeader &&
+          !$tabobject->by_object[$tab]->is_account
+        ) {
+        if ($tabobject->by_object[$tab]->acl_is_createable()) {
+          $tabobject->by_object[$tab]->is_account = TRUE;
+        } else {
+          return array('errors' => array('You don\'t have sufficient rights to enable tab "'.$tab.'"'));
+        }
+      }
+      foreach ($tabvalues as $name => $newvalues) {
+        if (isset($tabobject->by_object[$tab]->attributesAccess[$name])) {
+          if ($tabobject->by_object[$tab]->attrIsWriteable($name)) {
+            $attrvalues = $tabobject->by_object[$tab]->attributesAccess[$name]->getValue();
+            if (!is_array($attrvalues)) {
+              return array('errors' => array(sprintf(_('Field "%s" is not multi-valuated'), $name)));
+            }
+            if (!is_array($newvalues)) {
+              $newvalues = array($newvalues);
+            }
+            if ($add) {
+              $attrvalues = array_merge($attrvalues, $newvalues);
+            } else {
+              $attrvalues = array_remove_entries($newvalues, $attrvalues);
+            }
+            $tabobject->by_object[$tab]->attributesAccess[$name]->setValue($attrvalues);
+          } else {
+            return array('errors' => array(msgPool::permModify($dn, $name)));
+          }
+        } else {
+          return array('errors' => array(sprintf(_('Unknown field "%s"'), $name)));
+        }
+      }
+      $tabobject->current = $tab;
+      $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases is needed */
+    }
+    $errors = $tabobject->save();
+    if (!empty($errors)) {
+      return array('errors' => $errors);
+    }
+    return $tabobject->dn;
+  }
+
+  /*!
    * \brief Get all internal fields from a template
    */
   protected function _gettemplate($type, $dn)
