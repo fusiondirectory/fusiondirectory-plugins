@@ -178,6 +178,18 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
   protected $zoneName;
   protected $zoneDn;
 
+  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = array(), $acl = "")
+  {
+    parent::__construct($label, $description, $ldapName, $required, $defaultValue, $acl);
+    $this->setHeaders(array(
+      _('Subdomain'),
+      _('Type'),
+      _('Content'),
+      _('Reverse'),
+      ''
+    ));
+  }
+
   function getZoneName()
   {
     if ($this->plugin instanceof dnsZone) {
