@@ -8,6 +8,14 @@ require_once('variables.inc');
 
 $http_raw_post_data = file_get_contents('php://input');
 
+function returnError($errorText)
+{
+  $protocol = (isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
+  header($protocol.' 500 '.$errorText);
+  error_log('Error while collecting inventory: '.$errorText);
+  exit();
+}
+
 if (!$http_raw_post_data) {
   return;
 }
@@ -72,7 +80,7 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
 
   /* Check if CONFIG_FILE is accessible */
   if (!is_readable(CONFIG_DIR.'/'.CONFIG_FILE)) {
-    die(sprintf(_('FusionDirectory configuration %s/%s is not readable. Aborted.'), CONFIG_DIR, CONFIG_FILE));
+    returnError(sprintf(_('FusionDirectory configuration %s/%s is not readable. Aborted.'), CONFIG_DIR, CONFIG_FILE));
   }
 
   $macs = array();
@@ -105,12 +113,11 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
   $dn = 'cn='.$_SERVER['REMOTE_ADDR'].','.get_ou('inventoryRDN').$config->current['BASE'];
   $ldap->cat($dn);
 
-  $msg = "";
   if ($ldap->count()) {
     /* Emtpy the subtree */
     $ldap->rmdir_recursive($dn);
     if (!$ldap->success()) {
-      $msg .= "error :".$ldap->get_error()."\n";
+      returnError('LDAP: '.$ldap->get_error());
     }
   } else {
     /* Make sure branch is existing */
@@ -129,7 +136,7 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
     )
   );
   if (!$ldap->success()) {
-    $msg .= "error :".$ldap->get_error()."\n";
+    returnError('LDAP: '.$ldap->get_error());
   }
   unset($data['VERSIONCLIENT']);
   unset($data['HARDWARE']['ARCHNAME']);
@@ -152,20 +159,10 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
       $ldap->cd('cn='.$cn.','.$dn);
       $ldap->add($ldap_attrs);
       if (!$ldap->success()) {
-        $msg .= print_r($ldap_attrs, TRUE);
-        $msg .= "error :".$ldap->get_error()."\n";
+        // We cannot stop at every error, or one missing objectClass in the schema will stop inventory
+        error_log('LDAP: '.$ldap->get_error());
       }
     }
-  }
-
-  if (!empty($msg)) {
-    $invFile = sprintf('/tmp/%s.xml', $_SERVER['REMOTE_ADDR']);
-    if (!file_put_contents($invFile, "$dn\n$msg\n")) {
-        error_log("Failed to write ");
-    }
-    http_response_code(500);
-    print($msg);
-    exit();
   }
 }
 
