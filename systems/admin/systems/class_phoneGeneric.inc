@@ -51,6 +51,7 @@ class phoneGeneric extends ipHostPlugin
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
+          new BaseSelectorAttribute(get_ou('phoneRDN')),
           new HostNameAttribute (
             _('Name'), _('The name of the phone'),
             'cn', TRUE
@@ -59,7 +60,6 @@ class phoneGeneric extends ipHostPlugin
             _('Description'), _('A short description of the phone'),
             'description', FALSE
           ),
-          new BaseSelectorAttribute(get_ou('phoneRDN')),
         )
       ),
       'phone' => array(
