@@ -79,21 +79,29 @@ class puppetNode extends simplePlugin
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search("(objectClass=puppetClient)", array('cn'));
+    $ldap->search('(objectClass=puppetClient)', array('cn'));
     $nodes = array();
     while ($attrs = $ldap->fetch()) {
       $nodes[] = $attrs['cn'][0];
     }
-    $this->attributesInfo['section1']['attrs']['parentNode']->setChoices($nodes);
-    $ldap->search("(objectClass=puppetServer)", array('puppetAvailableEnvironment'));
-    if ($ldap->count() == 0) {
-      $this->is_account = FALSE;
-      return;
+    $this->attributesAccess['parentNode']->setChoices($nodes);
+    $ldap->search('(objectClass=puppetServer)', array('puppetAvailableEnvironment'));
+    $envs = array();
+    if ($attrs = $ldap->fetch()) {
+      $envs = $attrs['puppetAvailableEnvironment'];
+      unset($envs['count']);
     }
-    $attrs = $ldap->fetch();
-    $envs = $attrs['puppetAvailableEnvironment'];
-    unset($envs['count']);
-    $this->attributesInfo['section1']['attrs']['environment']->setChoices($envs);
+    $this->attributesAccess['environment']->setChoices($envs);
+  }
+
+  protected function getDisplayHeaderInfos()
+  {
+    list($disabled,$buttonText,$text) = parent::getDisplayHeaderInfos();
+    if (!$this->is_account && !$disabled && empty($this->attributesAccess['environment']->getChoices())) {
+      $disabled = TRUE;
+      $text     = _('You need to add the puppet service to a server to be able to use this tab');
+    }
+    return array($disabled,$buttonText,$text);
   }
 }
 
