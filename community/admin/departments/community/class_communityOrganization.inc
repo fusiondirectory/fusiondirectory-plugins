@@ -47,6 +47,10 @@ class communityOrganization extends simplePlugin
             $config->get_cfg_value('communityMembershipTypeChoices', array())
           ),
           new BooleanAttribute (
+            _('Agreement signed'), _('Did this member returned the agreement signed'),
+            'fdCommunityMembershipAgreement', FALSE
+          ),
+          new BooleanAttribute (
             _('Active'), _('Is the membership of this organization active'),
             'fdCommunityMembershipActive', FALSE
           ),
