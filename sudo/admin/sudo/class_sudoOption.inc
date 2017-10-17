@@ -72,14 +72,14 @@ class UsedOptionAttribute extends CompositeAttribute
         /* Check if the given value is part of our options list.
            If it is not, add it as type STRING and display a warning.
         */
-        if (!isset(AvailableSudoOptionAttribute::$options[$opt])) {
+        if (!sudoOptions::exists($opt)) {
           msg_dialog::display(
             _("Unknown option"),
             sprintf(_("The sudo option '%s' is invalid!"), $opt),
             WARNING_DIALOG
           );
         } else {
-          $this->addOption($opt, AvailableSudoOptionAttribute::$options[$opt], array('negate' => $negation,'value' => $value));
+          $this->addOption($opt, sudoOptions::get($opt), array('negate' => $negation,'value' => $value));
         }
       }
     }
@@ -112,143 +112,9 @@ class UsedOptionAttribute extends CompositeAttribute
 
 class AvailableSudoOptionAttribute extends SelectAttribute
 {
-  public static $options = array(
-    'long_otp_prompt'       => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'When validating with a One Time Password (OTP) scheme such as S/Key or OPIE,
-    a two-line prompt is used to make it easier to cut and paste the challenge to a local window'),
-    'ignore_dot'            => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
-    'DESC' => 'If set, sudo will ignore \'.\' or \'\' (current dir) in the PATH environment variable'),
-    'mail_always'           => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'Send mail to the mailto user every time a users runs sudo'),
-    'mail_badpass'          => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'Send mail to the mailto user if the user running sudo does not enter the correct password'),
-    'mail_no_user'          => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
-    'DESC' => 'If set, mail will be sent to the mailto user if the invoking user is not in the sudoers file'),
-    'mail_no_host'          => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'If set, mail will be sent to the mailto user if the invoking user exists in the sudoers file, but is not allowed to run commands on the current host'),
-    'mail_no_perms'         => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'If set, mail will be sent to the mailto user if the invoking user is allowed to use sudo but not for this command'),
-    'tty_tickets'           => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
-    'DESC' => 'If set, users must authenticate on a per-tty basis'),
-    'authenticate'          => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
-    'DESC' => 'If set, users must authenticate themselves via a password (or other means of authentication)'),
-    'root_sudo'             => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
-    'DESC' => 'If set, root is allowed to run sudo too'),
-    'log_host'              => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'If set, the host name will be logged in the (non-syslog) sudo log file'),
-    'log_year'              => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'If set, the four-digit year will be logged in the (non-syslog) sudo log file'),
-    'shell_noargs'          => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'If set and sudo is invoked with no arguments it acts as if the -s option had been given'),
-    'set_home'              => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'If enabled and sudo is invoked with the -s option the HOME environment variable will be set to the home directory of the target user (usually root)'),
-    'always_set_home'       => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'If enabled, sudo will set the HOME environment variable to the home directory of the target user (usually root)'),
-    'path_info'             => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'If the executable is simply not in the user\'s PATH, sudo will tell the user that they are not allowed to run it'),
-    'preserve_groups'       => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'If set, the user\'s existing group vector is left unaltered'),
-    'fqdn'                  => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'Set this flag if you want to put fully qualified host names in the sudoers file'),
-    'insults'               => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'If set, sudo will insult users when they enter an incorrect password'),
-    'requiretty'            => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'If set, sudo will only run when the user is logged in to a real tty'),
-    'env_editor'            => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
-    'DESC' => 'If set, visudo will use the value of the EDITOR or VISUAL environment variables before falling back on the default editor list'),
-    'rootpw'                => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'If set, sudo will prompt for the root password instead of the password of the invoking user'),
-    'runaspw'               => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'If set, sudo will prompt for the password of the user defined by the runas_default option (defaults to root) instead of the password of the invoking user'),
-    'targetpw'              => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'If set, sudo will prompt for the password of the user specified by the -u option (defaults to root) instead of the password of the invoking user'),
-    'set_logname'           => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
-    'DESC' => 'If set, sudo will set the LOGNAME environment variables to the name of the target user'),
-    'stay_setuid'           => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
-    'DESC' => ''),
-    'env_reset'             => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
-    'DESC' => 'If set, sudo will run the command in a minimal environment containing the TERM, PATH, HOME, MAIL, SHELL, LOGNAME, USER, USERNAME and SUDO_ variables'),
-    'use_loginclass'        => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'If set, sudo will apply the defaults specified for the target user\'s login class if one exists'),
-    'noexec'                => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'If set, all commands run via sudo will behave as if the NOEXEC tag has been set, unless overridden by a EXEC tag'),
-    'ignore_local_sudoers'  => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
-    'DESC' => 'If set, parsing of /etc/sudoers file will be skipped.'),
-    'passwd_tries'          => array('TYPE' => 'INTEGER',       'DEFAULT' => 3,
-    'DESC' => 'The number of tries a user gets to enter his/her password before sudo logs the failure and exits'),
-    'loglinelen'            => array('TYPE' => 'BOOL_INTEGER',  'DEFAULT' => 80,
-    'DESC' => 'Number of characters per line for the file log'),
-    'timestamp_timeout'     => array('TYPE' => 'BOOL_INTEGER',  'DEFAULT' => 0,
-    'DESC' => 'Number of minutes that can elapse before sudo will ask for a passwd again'),
-    'passwd_timeout'        => array('TYPE' => 'BOOL_INTEGER',  'DEFAULT' => 15,
-    'DESC' => 'Number of minutes before the sudo password prompt times out, or 0 for no timeout'),
-    'umask'                 => array('TYPE' => 'BOOL_INTEGER',  'DEFAULT' => "0022",
-    'DESC' => 'Umask to use when running the command. Set to FALSE to preserve the user\'s umask'),
-    'mailsub'               => array('TYPE' => 'STRING',        'DEFAULT' => '*** SECURITY information for %h ***',
-    'DESC' => 'Subject of the mail sent to the mailto user. The escape %h will expand to the host name of the machine'),
-    'badpass_message'       => array('TYPE' => 'STRING',        'DEFAULT' => 'Sorry, try again',
-    'DESC' => 'Message that is displayed if a user enters an incorrect password'),
-    'timestampdir'          => array('TYPE' => 'STRING',        'DEFAULT' => '/var/run/sudo',
-    'DESC' => 'The directory in which sudo stores its timestamp files'),
-    'timestampowner'        => array('TYPE' => 'STRING',        'DEFAULT' => 'root',
-    'DESC' => 'The owner of the timestamp directory and the timestamps stored therein'),
-    'passprompt'            => array('TYPE' => 'STRING',        'DEFAULT' => '[sudo] password for %p: ',
-    'DESC' => 'The default prompt to use when asking for a password; can be overridden via the -p option or the SUDO_PROMPT environment variable'),
-    'runas_default'         => array('TYPE' => 'STRING',        'DEFAULT' => 'root',
-    'DESC' => 'The default user to run commands as if the -u option is not specified on the command line'),
-    'syslog_goodpri'        => array('TYPE' => 'STRING',        'DEFAULT' => 'notice',
-    'DESC' => 'Syslog priority to use when user authenticates successfully'),
-    'syslog_badpri'         => array('TYPE' => 'STRING',        'DEFAULT' => 'alert',
-    'DESC' => 'Syslog priority to use when user authenticates unsuccessfully'),
-    'editor'                => array('TYPE' => 'STRING',        'DEFAULT' => '/usr/bin/vi',
-    'DESC' => 'A colon separated list of editors allowed to be used with visudo'),
-    'noexec_file'           => array('TYPE' => 'STRING',        'DEFAULT' => '/usr/lib/sudo/sudo_noexec.so',
-    'DESC' => ''),
-    'secure_path'           => array('TYPE' => 'STRING',        'DEFAULT' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-    'DESC' => 'Path used for every command run from sudo. If you don’t trust the people running sudo to have a sane PATH environment variable you may want to use this.'),
-    'lecture'               => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => 'once',
-    'DESC' => 'This option controls when a short lecture will be printed along with the password prompt'),
-    'lecture_file'          => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => '',
-    'DESC' => 'Path to a file containing an alternate sudo lecture that will be used in place of the standard lecture'),
-    'logfile'               => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => 'syslog',
-    'DESC' => 'Path to the sudo log file (not the syslog log file)'),
-    'syslog'                => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => 'authpriv',
-    'DESC' => 'Syslog facility if syslog is being used for logging'),
-    'mailerpath'            => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => '',
-    'DESC' => 'Path to mail program used to send warning mail'),
-    'mailerflags'           => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => '-t',
-    'DESC' => 'Flags to use when invoking mailer'),
-    'mailto'                => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => 'root',
-    'DESC' => 'Address to send warning and error mail to'),
-    'exempt_group'          => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => 'root',
-    'DESC' => 'Users in this group are exempt from password and PATH requirements'),
-    'verifypw'              => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => 'all',
-    'DESC' => 'This option controls when a password will be required when a user runs sudo with the -v option'),
-    'listpw'                => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => 'any',
-    'DESC' => 'This option controls when a password will be required when a user runs sudo with the -l option'),
-    'env_check'             => array('TYPE' => 'LISTS',         'DEFAULT' => '',
-    'DESC' => 'Environment variables to be removed from the user\'s environment if the variable\'s value contains % or / characters'),
-    'env_delete'            => array('TYPE' => 'LISTS',         'DEFAULT' => '',
-    'DESC' => 'Environment variables to be removed from the user\'s environment when the env_reset option is not in effect'),
-    'env_keep'              => array('TYPE' => 'LISTS',         'DEFAULT' => '',
-    'DESC' => 'Environment variables to be preserved in the user\'s environment when the env_reset option is in effect'),
-    'env_check_moins'       => array('TYPE' => 'LISTS',         'DEFAULT' => '',
-    'DESC' => 'Environment variables to be removed from the user\'s environment if the variable\'s value contains % or / characters'),
-    'env_delete_moins'      => array('TYPE' => 'LISTS',         'DEFAULT' => '',
-    'DESC' => 'Environment variables to be removed from the user\'s environment when the env_reset option is not in effect'),
-    'env_keep_moins'        => array('TYPE' => 'LISTS',         'DEFAULT' => '',
-    'DESC' => 'Environment variables to be preserved in the user\'s environment when the env_reset option is in effect'),
-    'env_check_plus'        => array('TYPE' => 'LISTS',         'DEFAULT' => '',
-    'DESC' => 'Environment variables to be removed from the user\'s environment if the variable\'s value contains % or / characters'),
-    'env_delete_plus'       => array('TYPE' => 'LISTS',         'DEFAULT' => '',
-    'DESC' => 'Environment variables to be removed from the user\'s environment when the env_reset option is not in effect'),
-    'env_keep_plus'         => array('TYPE' => 'LISTS',         'DEFAULT' => '',
-    'DESC' => 'Environment variables to be preserved in the user\'s environment when the env_reset option is in effect')
-  );
-
   function __construct ($label, $description, $ldapName, $required = TRUE, $acl = "")
   {
-    $choices = array_keys(static::$options);
+    $choices = sudoOptions::listOptions();
     sort($choices);
     parent::__construct ($label, $description, $ldapName, $required, $choices, "", NULL, $acl);
     $this->setInLdap(FALSE);
@@ -265,12 +131,11 @@ class AvailableSudoOptionAttribute extends SelectAttribute
     $id = $this->getLdapName();
     $choices = array_diff($this->choices, array_keys($this->plugin->attributesInfo['used_options']['attrs']['sudoOption']->attributes));
     $smarty->assign($id."_choices", $choices);
-    $options = static::$options;
     $outputs = array_map(
-      function ($choice) use ($options)
+      function ($choice)
       {
         $opt = preg_replace(array('/_moins$/','/_plus$/'), array('-','+'), $choice);
-        return sprintf(_("%s (%s)"), $opt, $options[$choice]['TYPE']);
+        return sprintf(_("%s (%s)"), $opt, sudoOptions::get($choice)['TYPE']);
       },
       $choices
     );
@@ -285,7 +150,7 @@ class AvailableSudoOptionAttribute extends SelectAttribute
     if (isset($_POST["add".$this->getLdapName()])) {
       parent::loadPostValue();
       parent::applyPostValue();
-      $this->plugin->attributesInfo['used_options']['attrs']['sudoOption']->addOption($this->getValue(), static::$options[$this->getValue()]);
+      $this->plugin->attributesInfo['used_options']['attrs']['sudoOption']->addOption($this->getValue(), sudoOptions::get($this->getValue()));
     }
   }
 }
