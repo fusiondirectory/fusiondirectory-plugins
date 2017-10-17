@@ -50,6 +50,11 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       $label
     );
     parent::__construct($attribute, FALSE, $values, TRUE);
+    $this->setHeaders(array(
+      _('Parent'),
+      _('Mac'),
+      _('IP')
+    ));
   }
 
   protected function loadAttrValue ($attrs)
