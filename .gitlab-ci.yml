@@ -9,7 +9,7 @@ variables:
 # Install php-codesniffer, git and php
 before_script:
   - apt-get update -qq
-  - apt-get install -y -qq php-codesniffer git php-codesniffer php 
+  - apt-get install -y -qq php-codesniffer git php gettext
 
 # PHP codesniffer
 create_php_code_sniffer_rapport:
