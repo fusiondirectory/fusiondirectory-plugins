@@ -16,6 +16,9 @@ create_php_code_sniffer_rapport:
   only:
     - branches
     - tags
+  before_script:
+    - apt-get update -qq
+    - apt-get install -y -qq  git php-cli php-codesniffer
   script:
     - git clone https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
     - phpcs --ignore=class_sieve.inc --standard=../dev-tools/php-codesniffer-rules/FDStandard/ruleset.xml $(find . -type f -name '*.php' -o -name '*.inc')
@@ -25,6 +28,9 @@ create_php_lint_rapport:
   only:
     - branches
     - tags
+  before_script:
+    - apt-get update -qq
+    - apt-get install -y -qq php-cli
   script:
     - find . -type f \( -name '*.php' -o -name '*.inc' \) -print0 | xargs -0 -n1 php -l
 
