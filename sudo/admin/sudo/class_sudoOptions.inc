@@ -275,7 +275,7 @@ class sudoOptions
       'secure_path'           => array(
         'TYPE'    => 'STRING',
         'DEFAULT' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-        'DESC'    => _('Path used for every command run from sudo. If you don’t trust the people running sudo to have a sane PATH environment variable you may want to use this.')
+        'DESC'    => _('Path used for every command run from sudo. If you don\'t trust the people running sudo to have a sane PATH environment variable you may want to use this.')
       ),
       'lecture'               => array(
         'TYPE'    => 'STRING_BOOL',
