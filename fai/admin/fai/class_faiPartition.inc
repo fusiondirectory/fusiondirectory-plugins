@@ -266,13 +266,13 @@ class faiPartition extends simplePlugin
                     'raidDevices_select', FALSE
                   ),
                   new BooleanAttribute(
-                    _('Spare'), _(''),
+                    _('Spare'), _('Spare Raid device'),
                     'raidDevices_spare', FALSE,
                     FALSE, '',
                     ':spare', ''
                   ),
                   new BooleanAttribute(
-                    _('Missing'), _(''),
+                    _('Missing'), _('Missing Raid device'),
                     'raidDevices_missing', FALSE,
                     FALSE, '',
                     ':missing', ''
@@ -297,7 +297,7 @@ class faiPartition extends simplePlugin
             'bootable', FALSE
           ),
           new SelectAttribute (
-            _('Preserve'), _(''),
+            _('Preserve'), _('Does the partition need to be preserved'),
             'preserve', FALSE,
             array('','always','reinstall'), '',
             array(_('Never'),_('Always'),_('Reinstall'))
