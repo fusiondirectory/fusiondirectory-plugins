@@ -74,7 +74,7 @@ class faiHook extends faiSimplePluginClass
                 'description', FALSE
               ),
               new SelectAttribute (
-                _('Task'), _(''),
+                _('Task'), _('Task to run'),
                 'FAItask', TRUE,
                 array('chboot','configure','debconf','error','extrbase',
                        'faiend','finish','install','instsoft','mirror',
