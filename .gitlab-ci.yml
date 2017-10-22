@@ -5,14 +5,13 @@ image: debian:stretch
 variables:
   GIT_SSL_NO_VERIFY: "true"
 
-# Execute before every job
-# Install php-codesniffer, git and php
-before_script:
-  - apt-get update -qq
-  - apt-get install -y -qq php-codesniffer git php gettext
+stages:
+  - test
+  - transifex
 
 # PHP codesniffer
 create_php_code_sniffer_rapport:
+  stage: test
   only:
     - branches
     - tags
@@ -25,6 +24,7 @@ create_php_code_sniffer_rapport:
 
 # PHP lint
 create_php_lint_rapport:
+  stage: test
   only:
     - branches
     - tags
@@ -36,6 +36,7 @@ create_php_lint_rapport:
 
 # fusiondirectory-update-locale
 fusiondirectory-update-locale:
+  stage: test
   only:
     - branches
     - tags
@@ -48,6 +49,7 @@ fusiondirectory-update-locale:
 
 # Update transifex
 update-transifex:
+  stage: transifex
   only:
     - branches
     - tags
