@@ -26,6 +26,7 @@ class opsiClient extends simplePlugin
   var $inheritance = array('gosaGroupOfNames' => 'member');
 
   var $initialMembers;
+  var $products;
 
   static function plInfo ()
   {
@@ -56,7 +57,33 @@ class opsiClient extends simplePlugin
             'fdOpsiProfileDn', FALSE
           ),
         )
-      )
+      ),
+      'products' => array(
+        'name'  => _('Softwares'),
+        'attrs' => array(
+          new OrderedArrayAttribute(
+            new CharSeparatedCompositeAttribute(
+              _('The localboot products to setup on this host'),
+              'fdOpsiLocalbootProduct',
+              array(
+                new SelectAttribute(
+                  '', '',
+                  'fdOpsiLocalbootProduct_product', TRUE
+                ),
+                new SelectAttribute(
+                  '', '',
+                  'fdOpsiLocalbootProduct_action', TRUE,
+                  array('setup', 'always', 'once', 'custom', 'userlogin', 'update')
+                )
+              ),
+              '|', '', _('Localboot products')
+            ),
+            FALSE, // non-ordered
+            array(),
+            TRUE // edition
+          ),
+        )
+      ),
     );
   }
 
@@ -72,6 +99,7 @@ class opsiClient extends simplePlugin
         }
       }
     }
+    $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setSubmitForm('product_changed');
   }
 
   function save()
@@ -213,6 +241,69 @@ class opsiClient extends simplePlugin
       $profileslabel[] = $attrs['cn'][0];
     }
     $this->attributesAccess['fdOpsiProfileDn']->setChoices($profilesdn, $profileslabel);
+
+    $opsi_args = array('id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript','updateScript','productVersion','packageVersion');
+    if (!isset($this->products[$this->fdOpsiServerDn])) {
+      $s_daemon = new supportDaemon();
+      if (!$s_daemon->is_available()) {
+        msg_dialog::display(
+          _("Could not contact argonaut server"),
+          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+        );
+        return;
+      }
+      $ldap->cat($this->fdOpsiServerDn);
+      if ($attrs = $ldap->fetch()) {
+        if (isset($attrs['macAddress'])) {
+          $macAddress = $attrs['macAddress'][0];
+        } else {
+          msg_dialog::display(
+            _("No mac address"),
+            sprintf(_("Server %s has no mac address configured in the LDAP"), $this->fdOpsiServerDn), ERROR_DIALOG
+          );
+          return FALSE;
+        }
+      } else {
+        msg_dialog::display(
+          sprintf(_("Could not find %s in the LDAP"), $this->fdOpsiServerDn),
+          msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
+        );
+        return FALSE;
+      }
+      $localboots = $s_daemon->append_call('OPSI.get_localboots', $macAddress, array('args' => array($opsi_args)));
+      if ($s_daemon->is_error()) {
+        msg_dialog::display(
+          _('Failed to contact OPSI server'),
+          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+        );
+        return;
+      }
+      $this->products[$this->fdOpsiServerDn]['localboots'] = array();
+      foreach ($localboots as $localboot) {
+        $this->products[$this->fdOpsiServerDn]['localboots'][$localboot['id']] = $localboot;
+      }
+    }
+    $choices = array();
+    foreach ($this->products[$this->fdOpsiServerDn]['localboots'] as $id => $infos) {
+      $choices[$id] = sprintf(_('%s (%s-%s)'), $infos['id'], $infos['productVersion'], $infos['packageVersion']);
+    }
+    $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setChoices(
+      array_keys($choices),
+      array_values($choices)
+    );
+  }
+
+  public function product_changed ()
+  {
+    $localboot = $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->getValue();
+
+    $actions = array();
+    foreach (array('setup', 'always', 'once', 'custom', 'userLogin', 'update') as $action) {
+      if (!empty($this->products[$this->fdOpsiServerDn]['localboots'][$localboot][$action.'Script'])) {
+        $actions[] = strtolower($action);
+      }
+    }
+    $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[1]->setChoices($actions);
   }
 }
 
