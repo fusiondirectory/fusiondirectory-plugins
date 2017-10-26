@@ -525,10 +525,12 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
           }
         }
       }
-      foreach ($initialPtrs[$reverseZone] as $dn) {
-        $ldap->rmdir_recursive($dn);
-        if (!$ldap->success()) {
-          msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()), LDAP_ERROR);
+      if (isset($initialPtrs[$reverseZone])) {
+        foreach ($initialPtrs[$reverseZone] as $dn) {
+          $ldap->rmdir_recursive($dn);
+          if (!$ldap->success()) {
+            msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()), LDAP_ERROR);
+          }
         }
       }
     }
