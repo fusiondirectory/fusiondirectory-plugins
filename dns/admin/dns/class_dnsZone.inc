@@ -324,6 +324,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         }
       }
       $this->initialReverseZones = $reverseZones;
+    } else {
+      $this->initialReverseZones = array();
     }
     sort($this->value);
   }
