@@ -349,9 +349,11 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
   private function valueToNodes($value)
   {
     /* Compute values into $nodes and $ptrs */
-    $nodes  = array();
-    $ptrs   = array();
-    $nsRecords = array();
+    $zoneDn     = $this->getZoneDn();
+    $zoneName   = $this->getZoneName();
+    $nodes      = array();
+    $ptrs       = array();
+    $nsRecords  = array();
     foreach ($value as $line) {
       list ($domain, $type, $content, $reverse) = $line;
       if (!empty($reverse)) {
