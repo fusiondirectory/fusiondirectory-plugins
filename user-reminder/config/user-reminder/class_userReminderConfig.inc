@@ -61,6 +61,32 @@ class userReminderConfig extends simplePlugin
           ),
         )
       ),
+      'emailppolicy' => array(
+        'name'  => _('Ppolicy email settings'),
+        'attrs' => array(
+          new BooleanAttribute (
+            _('Forward alerts to the manager'), _('Forward ppolicy alerts to the manager'),
+            'fdUserReminderForwardPpolicyAlert', FALSE,
+            TRUE
+          ),
+          new StringAttribute (
+            _('Subject'), _('Subject of the ppolicy alert email'),
+            'fdUserReminderPpolicyAlertSubject', FALSE,
+            _('[FusionDirectory] Your password is about to expire')
+          ),
+          new TextAreaAttribute (
+            _('Body (%s are cn and login)'),
+            _('Body of the ppolicy alert email, sent when the user password is about to expire. Use %s for the cn and uid.'),
+            'fdUserReminderPpolicyAlertBody', FALSE,
+            _('Dear %1$s,'."\n".
+              'your password for account %2$s is about to expire, please change your password: '."\n".
+              'https://'.$_SERVER['SERVER_NAME'].
+              (($_SERVER['SERVER_PORT'] != '80') ? ':'.$_SERVER['SERVER_PORT'] : '').
+              (empty($_SERVER['REQUEST_URI']) ? $_SERVER['PATH_INFO'] : $_SERVER['REQUEST_URI']).
+              "\n")
+          )
+        )
+      ),
       'email1' => array(
         'name'  => _('Alert email settings'),
         'attrs' => array(
@@ -71,13 +97,13 @@ class userReminderConfig extends simplePlugin
           ),
           new StringAttribute (
             _('Subject'), _('Subject of the alert email'),
-            'fdUserReminderAlertSubject', TRUE,
+            'fdUserReminderAlertSubject', FALSE,
             _('[FusionDirectory] Your account is about to expire')
           ),
           new TextAreaAttribute (
             _('Body (%s are cn, login, and link token)'),
             _('Body of the alert email, sent when the user is about to expire. Use %s for the cn, uid and token.'),
-            'fdUserReminderAlertBody', TRUE,
+            'fdUserReminderAlertBody', FALSE,
             _('Dear %1$s,'."\n".
               'your account %2$s is about to expire, please use this link to avoid this: '."\n".
               'https://'.$_SERVER['SERVER_NAME'].
@@ -114,6 +140,17 @@ class userReminderConfig extends simplePlugin
         )
       )
     );
+  }
+
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
+  {
+    parent::__construct($dn, $object, $parent, $mainTab);
+
+    if (!class_available('ppolicy')) {
+      $this->attributesAccess['fdUserReminderForwardPpolicyAlert']->setDisabled(TRUE);
+      $this->attributesAccess['fdUserReminderPpolicyAlertSubject']->setDisabled(TRUE);
+      $this->attributesAccess['fdUserReminderPpolicyAlertBody']->setDisabled(TRUE);
+    }
   }
 
   protected function post_save()
