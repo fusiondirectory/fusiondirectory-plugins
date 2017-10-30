@@ -433,18 +433,25 @@ class DnsRecordAttribute extends CompositeAttribute
     }
   }
 
-  static function matchReverseZone($type, $ip, $reverse)
+  static function getReverseZoneInfo($ipv6, $ip, $reverse)
   {
     $mask = preg_replace('/\.(in-addr|ip6)\.arpa\.?$/i', '', $reverse);
     if (preg_match('/^([[:digit:]]+[-\/][[:digit:]]+).([\.[:digit:]]+)$/', $mask, $m)) {
       /* Reverse zone using rfc2317 with - or / */
       $mask = $m[2];
     }
-    if ($type == 'aRecord') {
-      $testString = implode('.', array_reverse(explode('.', $ip)));
-    } elseif ($type == 'aAAARecord') {
-      $testString = implode('.', array_reverse(preg_split('/:|/', expandIPv6($ip), NULL, PREG_SPLIT_NO_EMPTY)));
+    if ($ipv6) {
+      $reversedIp = implode('.', array_reverse(preg_split('/:|/', expandIPv6($ip), NULL, PREG_SPLIT_NO_EMPTY)));
+    } else {
+      $reversedIp = implode('.', array_reverse(explode('.', $ip)));
     }
+
+    return array($mask, $reversedIp);
+  }
+
+  static function matchReverseZone($type, $ip, $reverse)
+  {
+    list($mask, $testString) = static::getReverseZoneInfo(($type == 'aAAARecord'), $ip, $reverse);
 
     return preg_match('/\.'.preg_quote($mask).'$/', $testString);
   }

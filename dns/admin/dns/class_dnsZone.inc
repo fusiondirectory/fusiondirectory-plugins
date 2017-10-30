@@ -495,25 +495,17 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       $zoneNameWithFinalDot .= '.';
     }
     foreach ($this->reverseZones as $reverseZone) {
-      $reverseDn = 'zoneName='.$reverseZone.','.$zoneDn;
+      $reverseDn  = 'zoneName='.$reverseZone.','.$zoneDn;
+      $ipv6       = preg_match('/ip6/', $reverseZone);
       /* Write each needed PTR */
-      $mask = preg_replace('/\.(in-addr|ip6)\.arpa\.?$/i', '', $reverseZone);
-      if (preg_match('/^([[:digit:]]+[-\/][[:digit:]]+).([\.[:digit:]]+)$/', $mask, $m)) {
-        /* Reverse zone using rfc2317 with - or / */
-        $mask = $m[2];
-      }
       if (isset($ptrs[$reverseZone])) {
-        $ipv6 = preg_match('/ip6/', $reverseZone);
         foreach ($ptrs[$reverseZone] as $ip => $names) {
-          if (isset($initialPtrs[$reverseZone][$dn]) && !array_differs_recursive($initialPtrs[$reverseZone][$dn], $names)) {
-            unset($initialPtrs[$reverseZone][$dn]);
+          if (isset($initialPtrs[$reverseZone][$ip]) && !array_differs_recursive($initialPtrs[$reverseZone][$ip], $names)) {
+            unset($initialPtrs[$reverseZone][$ip]);
             continue;
           }
-          if ($ipv6) {
-            $relativeDomainName = preg_replace('/\.'.preg_quote($mask).'$/', '', implode('.', array_reverse(preg_split('/:|/', expandIPv6($ip), NULL, PREG_SPLIT_NO_EMPTY))));
-          } else {
-            $relativeDomainName = preg_replace('/\.'.preg_quote($mask).'$/', '', implode('.', array_reverse(explode('.', $ip))));
-          }
+          list($mask, $reversedIp) = DnsRecordAttribute::getReverseZoneInfo($ipv6, $ip, $reverseZone);
+          $relativeDomainName = preg_replace('/\.'.preg_quote($mask).'$/', '', $reversedIp);
           $dn = 'relativeDomainName='.$relativeDomainName.','.$reverseDn;
           $ldap->cd($dn);
           $node = array(
@@ -528,19 +520,25 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
             ),
             'relativeDomainName'  => $relativeDomainName,
           );
-          if (isset($initialPtrs[$reverseZone][$dn])) {
+          if (isset($initialPtrs[$reverseZone][$ip])) {
             $ldap->modify($node);
-            unset($initialPtrs[$reverseZone][$dn]);
+            if (!$ldap->success()) {
+              msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()), LDAP_ERROR);
+            }
+            unset($initialPtrs[$reverseZone][$ip]);
           } else {
             $ldap->add($node);
-          }
-          if (!$ldap->success()) {
-            msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()), LDAP_ERROR);
+            if (!$ldap->success()) {
+              msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
+            }
           }
         }
       }
       if (isset($initialPtrs[$reverseZone])) {
-        foreach ($initialPtrs[$reverseZone] as $dn) {
+        foreach (array_keys($initialPtrs[$reverseZone]) as $ip) {
+          list($mask, $reversedIp) = DnsRecordAttribute::getReverseZoneInfo($ipv6, $ip, $reverseZone);
+          $relativeDomainName = preg_replace('/\.'.preg_quote($mask).'$/', '', $reversedIp);
+          $dn = 'relativeDomainName='.$relativeDomainName.','.$reverseDn;
           $ldap->rmdir_recursive($dn);
           if (!$ldap->success()) {
             msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()), LDAP_ERROR);
