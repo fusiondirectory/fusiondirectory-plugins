@@ -395,7 +395,7 @@ class dnsHost extends simplePlugin
             }
           }
         } elseif (!empty($oldips)) {
-          static::removeIpsFromZone($this->fdDNSZoneDn, array_diff($oldips, $newips));
+          static::removeIpsFromZones($this->fdDNSZoneDn, array_diff($oldips, $newips));
         }
       }
       if (!empty($messages)) {
