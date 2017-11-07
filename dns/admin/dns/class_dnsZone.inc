@@ -174,7 +174,6 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
   protected $height       = 400;
   protected $dialogClass  = 'DnsRecordDialog';
   protected $reverseZones = array();
-  protected $sOARecord    = '';
   protected $zoneName;
   protected $zoneDn;
   protected $initialReverseZones;
@@ -223,17 +222,23 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     /* Get reverse zones */
     $ldap = $config->get_ldap_link();
     $ldap->cd($attrs['dn']);
-    $ldap->search('(&(objectClass=dNSZone)(relativeDomainName=@)(zoneName=*))', array('zoneName'), 'one');
+    $ldap->search('(&(objectClass=dNSZone)(relativeDomainName=@)(zoneName=*))', array('zoneName','nSRecord','sOARecord'), 'one');
     $reverseZones = array();
     while ($subattrs = $ldap->fetch()) {
-      $reverseZones[$subattrs['dn']] = $subattrs['zoneName'][0];
+      $reverseZones[$subattrs['dn']] = $subattrs;
     }
+    $zoneNames = array_values(array_map(
+      function ($subattrs)
+      {
+        return $subattrs['zoneName'][0];
+      },
+      $reverseZones
+    ));
     if ($this->plugin instanceof dnsZone) {
-      $this->plugin->reverseZones = array_values($reverseZones);
+      $this->plugin->reverseZones = $zoneNames;
       $this->plugin->attributesAccess['reverseZones']->setInitialValue($this->plugin->reverseZones);
     } else {
-      $this->reverseZones = array_values($reverseZones);
-      $this->sOARecord    = $attrs['sOARecord'][0];
+      $this->reverseZones = $zoneNames;
     }
 
     return $reverseZones;
@@ -288,7 +293,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       }
       $reverseZones = $this->loadReverseZones($attrs);
       /* Search reverse zones for our IPs */
-      foreach ($reverseZones as $reverseZoneDn => $reverseZoneName) {
+      foreach ($reverseZones as $reverseZoneDn => $reverseZoneAttrs) {
+        $reverseZoneName = $reverseZoneAttrs['zoneName'][0];
         $ipv6 = preg_match('/ip6/', $reverseZoneName);
         $baseIp = preg_replace('/\.(in-addr|ip6)\.arpa\.?$/i', '', $reverseZoneName);
         if (preg_match('/^([[:digit:]]+[-\/][[:digit:]]+).([\.[:digit:]]+)$/', $baseIp, $m)) {
@@ -397,15 +403,39 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     return array($nodes, $ptrs, $nsRecords);
   }
 
+  protected function reverseZoneNeedUpdate(array $new, array $old, array $ptrs, array $initialPtrs, $reverseZone)
+  {
+    // NS Record changes
+    if (!empty($old['nSRecord'])) {
+      unset($old['nSRecord']['count']);
+      if (array_differs($new['nSRecord'], $old['nSRecord'])) {
+        return TRUE;
+      }
+    } elseif (!empty($new['nSRecord'])) {
+      return TRUE;
+    }
+    // PTR changes
+    if (array_differs_recursive($ptrs[$reverseZone], $initialPtrs[$reverseZone])) {
+      return TRUE;
+    }
+    return FALSE;
+  }
+
   /* Special LDAP treatment that this attribute does after plugin ldap save */
   function postLdapSave ($ldap)
   {
     $zoneDn   = $this->getZoneDn();
     $zoneName = $this->getZoneName();
-    if ($this->plugin instanceof dnsZone) {
-      $this->reverseZones = $this->plugin->reverseZones;
-      $this->sOARecord    = $this->plugin->sOARecord;
+    if (!$this->plugin instanceof dnsZone) {
+      die('Should only be called on dnsZone instances');
     }
+    $this->reverseZones = $this->plugin->reverseZones;
+    // SOA changes (ignoring serial)
+    $initialSoa = $this->plugin->attributesAccess['sOARecord']->readValues($this->plugin->attributesAccess['sOARecord']->getInitialValue());
+    $newSoa     = $this->plugin->attributesAccess['sOARecord']->readValues($this->plugin->attributesAccess['sOARecord']->getValue());
+    unset($initialSoa[2]);
+    unset($newSoa[2]);
+    $soaChanged = array_differs($initialSoa, $newSoa);
     /* Compute values into $nodes and $ptrs */
     list ($nodes, $ptrs, $nsRecords) = $this->valueToNodes($this->value);
     /* List all old nodes */
@@ -421,11 +451,15 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         'zoneName'            => $reverseZone,
         'relativeDomainName'  => '@',
         'dNSClass'            => 'IN',
-        'sOARecord'           => $this->sOARecord,
+        'sOARecord'           => $this->plugin->sOARecord,
         'nSRecord'            => $nsRecords
       );
       $ldap->cd($reverseDn);
       if (isset($oldReverseZones[$reverseDn])) {
+        if (!$soaChanged && !$this->reverseZoneNeedUpdate($node, $oldReverseZones[$reverseDn], $ptrs, $initialPtrs, $reverseZone)) {
+          unset($oldReverseZones[$reverseDn]);
+          continue;
+        }
         $ldap->modify($node);
         if (!$ldap->success()) {
           msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $reverseDn, LDAP_MOD, get_class()), LDAP_ERROR);
