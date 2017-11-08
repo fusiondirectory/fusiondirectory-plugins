@@ -818,7 +818,6 @@ class dnsZone extends simplePlugin
     /* Update serial (Also thanks to this save is triggered if something changed - see simplePlugin::shouldSave) */
     if (
       $this->attributesAccess['zoneName']->hasChanged() ||
-      $this->attributesAccess['sOARecord']->hasChanged() ||
       $this->attributesAccess['reverseZones']->hasChanged() ||
       $this->attributesAccess['sOARecord']->hasChanged() ||
       $this->attributesAccess['dnsRecords']->hasChanged()
@@ -841,6 +840,7 @@ class dnsZone extends simplePlugin
     if (
       $this->attributesAccess['zoneName']->hasChanged() ||
       $this->attributesAccess['reverseZones']->hasChanged() ||
+      $this->attributesAccess['sOARecord']->hasChanged() ||
       $this->attributesAccess['dnsRecords']->hasChanged()
       ) {
       $this->attributesAccess['dnsRecords']->postLdapSave($config->get_ldap_link());
