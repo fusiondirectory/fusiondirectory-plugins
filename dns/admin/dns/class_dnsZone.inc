@@ -427,7 +427,13 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       return TRUE;
     }
     // PTR changes
-    if (array_differs_recursive($ptrs[$reverseZone], $initialPtrs[$reverseZone])) {
+    if (!isset($initialPtrs[$reverseZone])) {
+      if (isset($ptrs[$reverseZone])) {
+        return TRUE;
+      }
+    } elseif (!isset($ptrs[$reverseZone])) {
+      return TRUE;
+    } elseif (array_differs_recursive($ptrs[$reverseZone], $initialPtrs[$reverseZone])) {
       return TRUE;
     }
     return FALSE;
