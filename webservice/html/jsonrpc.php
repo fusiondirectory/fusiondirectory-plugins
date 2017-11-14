@@ -194,51 +194,7 @@ class fdRPCService
   {
     global $config, $ui;
     $this->checkAccess($type);
-    $attrsAcls = array();
-    if ($attrs !== NULL) {
-      $infos    = objects::infos($type);
-      $classes  = $config->data['CATEGORIES'][$infos['aclCategory']]['classes'];
-      if (is_array($attrs)) {
-        $testAcls = array_keys($attrs);
-      } else {
-        $testAcls = array($attrs);
-      }
-      foreach ($testAcls as $acl) {
-        foreach ($classes as $class) {
-          if ($class == '0') {
-            continue;
-          }
-          $acls = pluglist::pluginInfos($class)['plProvidedAcls'];
-          if (isset($acls[$acl])) {
-            if (strpos($ui->get_permissions($ou, $infos['aclCategory'].'/'.$class, $acl), 'r') === FALSE) {
-              $attrsAcls[$acl] = array($class, $acl);
-            }
-            continue 2;
-          }
-        }
-        return array('errors' => array('Could not find ACL for attribute '.$acl));
-      }
-    }
-    $result = objects::ls($type, $attrs, $ou, $filter, TRUE);
-    if (($attrs !== NULL) && !empty($attrsAcls)) {
-      foreach ($result as $key => $entry) {
-        foreach ($attrsAcls as $attr => $aclInfos) {
-          if ((!is_array($entry) || isset($entry[$attr])) &&
-              (strpos($ui->get_permissions($key, $infos['aclCategory'].'/'.$aclInfos[0], $aclInfos[1]), 'r') === FALSE)) {
-            if (is_array($entry)) {
-              unset($entry[$attr]);
-            } else {
-              unset($result[$key]);
-              continue;
-            }
-          }
-        }
-        if (count($entry) === 0) {
-          unset($result[$key]);
-        }
-      }
-    }
-    return $result;
+    return objects::ls($type, $attrs, $ou, $filter, TRUE);
   }
 
   /*!
