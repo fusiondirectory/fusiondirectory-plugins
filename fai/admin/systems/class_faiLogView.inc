@@ -196,7 +196,6 @@ class faiLogView extends simplePlugin
       $this->mac = $this->attrs['macAddress'][0];
     }
 
-    $this->is_account = FALSE;
     if ($this->mac != '') {
       /* Query for log files */
       $res = $this->o_queue->get_log_info_for_mac($this->mac);
@@ -207,9 +206,16 @@ class faiLogView extends simplePlugin
       /* Check if there is at least one log file */
       if (isset($res[$this->mac]) && is_array($res[$this->mac])) {
         $this->attributesAccess['available_logs']->logs = $res;
-        $this->is_account                               = TRUE;
       }
     }
+    $this->is_account     = $this->is_this_account($this->attrs);
+    $this->ignore_account = FALSE;
+  }
+
+  function is_this_account($attrs)
+  {
+    /* Will not work when called from parent constructor (or when $attrs is not us) */
+    return (count($this->attributesAccess['available_logs']->logs) > 0);
   }
 
 
