@@ -79,7 +79,6 @@ class opsiLogView extends simplePlugin
       if ($this->o_queue->is_error()) {
         msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
       }
-      var_dump($res);
 
       /* Check if there is at least one log file */
       if (is_array($res)) {
