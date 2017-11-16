@@ -603,7 +603,7 @@ class supportDaemon
         $ret[$date]['FILES'][] = $file;
       }
     }
-    return array($mac => $ret);
+    return $ret;
   }
 
   /*!
