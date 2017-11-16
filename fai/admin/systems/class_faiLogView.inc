@@ -75,23 +75,21 @@ class AvailableLogsAttribute extends Attribute
     /* Create sortable array */
     $to_add   = array();
     $sort_by  = $this->value['sort_by'];
-    foreach ($this->logs as $mac => $times) {
-      foreach ($times as $time => $data) {
-        $rtime = $data['REAL_DATE'];
-        foreach ($data['FILES'] as $file) {
-          $highlight = '';
-          if (($file == $this->value['file']) && ($time == $this->value['time']) && ($mac == $this->plugin->mac)) {
-            $highlight = 'background-color:#CCCCCC';
-          }
-
-          $use_link = $this->js_link('%str%', array('time' => $time, 'file' => $file, 'mac' => $mac));
-          $to_add[$$sort_by.$file.$time] = array(
-            array('html' => preg_replace('/%str%/', $file, $use_link),
-                  'attach' => ''),
-            array('html' => preg_replace('/%str%/', date('d.m.Y H:i:s', $rtime), $use_link),
-                  'attach' => ''),
-          );
+    foreach ($this->logs as $time => $data) {
+      $rtime = $data['REAL_DATE'];
+      foreach ($data['FILES'] as $file) {
+        $highlight = '';
+        if (($file == $this->value['file']) && ($time == $this->value['time']) && ($mac == $this->plugin->mac)) {
+          $highlight = 'background-color:#CCCCCC';
         }
+
+        $use_link = $this->js_link('%str%', array('time' => $time, 'file' => $file, 'mac' => $mac));
+        $to_add[$$sort_by.$file.$time] = array(
+          array('html' => preg_replace('/%str%/', $file, $use_link),
+                'attach' => ''),
+          array('html' => preg_replace('/%str%/', date('d.m.Y H:i:s', $rtime), $use_link),
+                'attach' => ''),
+        );
       }
     }
 
@@ -204,7 +202,7 @@ class faiLogView extends simplePlugin
       }
 
       /* Check if there is at least one log file */
-      if (isset($res[$this->mac]) && is_array($res[$this->mac])) {
+      if (is_array($res)) {
         $this->attributesAccess['available_logs']->logs = $res;
       }
     }
@@ -226,8 +224,8 @@ class faiLogView extends simplePlugin
       $this->display_log = '';
     } else {
       $label = $this->available_logs['file'];
-      if (isset($this->attributesAccess['available_logs']->logs[$this->mac][$this->available_logs['time']]['REAL_DATE'])) {
-        $date   = date('d.m.Y H:i:s', $this->attributesAccess['available_logs']->logs[$this->mac][$this->available_logs['time']]['REAL_DATE']);
+      if (isset($this->attributesAccess['available_logs']->logs[$this->available_logs['time']]['REAL_DATE'])) {
+        $date   = date('d.m.Y H:i:s', $this->attributesAccess['available_logs']->logs[$this->available_logs['time']]['REAL_DATE']);
         $label  = $label.', '.$date;
       }
       $this->attributesInfo['selected']['name'] = sprintf(_('Selected file: %s'), $label);
