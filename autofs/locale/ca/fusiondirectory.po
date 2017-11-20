@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-07-24 11:30+0200\n"
+"POT-Creation-Date: 2017-11-20 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Catalan (https://www.transifex.com/fusiondirectory/teams/12202/ca/)\n"
@@ -18,24 +18,12 @@ msgstr ""
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/autofs/class_autofsConfig.inc:28
-msgid "Autofs configuration"
+#: admin/autofs/class_autofsManagement.inc:31
+msgid "Auto fs"
 msgstr ""
 
-#: config/autofs/class_autofsConfig.inc:29
-msgid "FusionDirectory autofs plugin configuration"
-msgstr ""
-
-#: config/autofs/class_autofsConfig.inc:42
-msgid "AutoFS"
-msgstr ""
-
-#: config/autofs/class_autofsConfig.inc:45
-msgid "AutoFS RDN"
-msgstr ""
-
-#: config/autofs/class_autofsConfig.inc:45
-msgid "Branch in which automount info will be stored"
+#: admin/autofs/class_autofsManagement.inc:32
+msgid "Auto fs management"
 msgstr ""
 
 #: admin/autofs/class_nisObject.inc:31 admin/autofs/class_nisObject.inc:32
@@ -70,18 +58,30 @@ msgstr ""
 msgid "The mount point this directory will be placed in"
 msgstr ""
 
-#: admin/autofs/class_autofsManagement.inc:31
-msgid "Auto fs"
-msgstr ""
-
-#: admin/autofs/class_autofsManagement.inc:32
-msgid "Auto fs management"
-msgstr ""
-
 #: admin/autofs/class_nisMap.inc:32
 msgid "Autofs mount point"
 msgstr ""
 
 #: admin/autofs/class_nisMap.inc:53
 msgid "Name of the mount point"
+msgstr ""
+
+#: config/autofs/class_autofsConfig.inc:28
+msgid "Autofs configuration"
+msgstr ""
+
+#: config/autofs/class_autofsConfig.inc:29
+msgid "FusionDirectory autofs plugin configuration"
+msgstr ""
+
+#: config/autofs/class_autofsConfig.inc:42
+msgid "AutoFS"
+msgstr ""
+
+#: config/autofs/class_autofsConfig.inc:45
+msgid "AutoFS RDN"
+msgstr ""
+
+#: config/autofs/class_autofsConfig.inc:45
+msgid "Branch in which automount info will be stored"
 msgstr ""

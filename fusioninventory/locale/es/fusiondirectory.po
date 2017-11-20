@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-07-24 11:30+0200\n"
+"POT-Creation-Date: 2017-11-20 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Spanish (https://www.transifex.com/fusiondirectory/teams/12202/es/)\n"
@@ -18,56 +18,13 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/fusioninventory/class_fiConfig.inc:28
-msgid "FusionInventory configuration"
+#: admin/inventory/class_inventoryManagement.inc:36
+msgid "Inventory objects"
 msgstr ""
 
-#: config/fusioninventory/class_fiConfig.inc:29
-msgid "FusionDirectory FusionInventory plugin configuration"
+#: admin/inventory/class_inventoryManagement.inc:37
+msgid "Browse inventory objects"
 msgstr ""
-
-#: config/fusioninventory/class_fiConfig.inc:41
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:77
-msgid "FusionInventory"
-msgstr ""
-
-#: config/fusioninventory/class_fiConfig.inc:44
-msgid "Inventory RDN"
-msgstr ""
-
-#: config/fusioninventory/class_fiConfig.inc:44
-msgid "Branch in which inventory objects will be stored"
-msgstr ""
-
-#: config/fusioninventory/class_fiConfig.inc:49
-msgid "Inventory matching"
-msgstr ""
-
-#: config/fusioninventory/class_fiConfig.inc:49
-msgid "Criteria to link an inventory result to a system"
-msgstr ""
-
-#: config/fusioninventory/class_fiConfig.inc:52
-msgid "Mac address"
-msgstr ""
-
-#: config/fusioninventory/class_fiConfig.inc:52
-msgid "IP address"
-msgstr "Dirección IP"
-
-#: config/fusioninventory/class_fiConfig.inc:52
-msgid "Both"
-msgstr ""
-
-#: config/fusioninventory/class_fiConfig.inc:52
-msgid "IP or Mac address"
-msgstr ""
-
-#: html/collect.php:75
-#, php-format
-msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
-msgstr ""
-"La configuración de FusionDirectory %s/%s no se puede leer. Cancelado."
 
 #: admin/inventory/inventory-list.xml:7
 msgid "NO LABEL"
@@ -97,14 +54,6 @@ msgstr "Editar"
 #: admin/inventory/inventory-list.xml:68 admin/inventory/inventory-list.xml:92
 msgid "Remove"
 msgstr "Eliminar"
-
-#: admin/inventory/class_inventoryManagement.inc:36
-msgid "Inventory objects"
-msgstr ""
-
-#: admin/inventory/class_inventoryManagement.inc:37
-msgid "Browse inventory objects"
-msgstr ""
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:30
 msgid "Configuration"
@@ -161,6 +110,11 @@ msgstr ""
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:65
 msgid "IPs allowed to launch inventory task through web interface"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:77
+#: config/fusioninventory/class_fiConfig.inc:41
+msgid "FusionInventory"
 msgstr ""
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:78
@@ -221,3 +175,49 @@ msgstr "Crear"
 #: admin/systems/fusioninventory/class_fiInventory.inc:340
 msgid "No matching system"
 msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:28
+msgid "FusionInventory configuration"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:29
+msgid "FusionDirectory FusionInventory plugin configuration"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:44
+msgid "Inventory RDN"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:44
+msgid "Branch in which inventory objects will be stored"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:49
+msgid "Inventory matching"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:49
+msgid "Criteria to link an inventory result to a system"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:52
+msgid "Mac address"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:52
+msgid "IP address"
+msgstr "Dirección IP"
+
+#: config/fusioninventory/class_fiConfig.inc:52
+msgid "Both"
+msgstr ""
+
+#: config/fusioninventory/class_fiConfig.inc:52
+msgid "IP or Mac address"
+msgstr ""
+
+#: html/collect.php:83
+#, php-format
+msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
+msgstr ""
+"La configuración de FusionDirectory %s/%s no se puede leer. Cancelado."

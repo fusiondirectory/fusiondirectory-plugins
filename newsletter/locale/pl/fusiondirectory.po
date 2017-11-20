@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-07-24 11:30+0200\n"
+"POT-Creation-Date: 2017-11-20 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: Polish (https://www.transifex.com/fusiondirectory/teams/12202/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -17,9 +17,25 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: personal/newsletter/class_newsletterSubscriptions.inc:30
+#: config/newsletter/class_newsletterConfig.inc:28
+msgid "Newsletter configuration"
+msgstr ""
+
+#: config/newsletter/class_newsletterConfig.inc:29
+msgid "FusionDirectory newsletter plugin configuration"
+msgstr ""
+
 #: config/newsletter/class_newsletterConfig.inc:41
+#: personal/newsletter/class_newsletterSubscriptions.inc:30
 msgid "Newsletter"
+msgstr ""
+
+#: config/newsletter/class_newsletterConfig.inc:45
+msgid "Newsletter choices"
+msgstr ""
+
+#: config/newsletter/class_newsletterConfig.inc:45
+msgid "Newsletters the user can choose from"
 msgstr ""
 
 #: personal/newsletter/class_newsletterSubscriptions.inc:31
@@ -36,20 +52,4 @@ msgstr ""
 
 #: personal/newsletter/class_newsletterSubscriptions.inc:50
 msgid "Newsletter you are subscribed to"
-msgstr ""
-
-#: config/newsletter/class_newsletterConfig.inc:28
-msgid "Newsletter configuration"
-msgstr ""
-
-#: config/newsletter/class_newsletterConfig.inc:29
-msgid "FusionDirectory newsletter plugin configuration"
-msgstr ""
-
-#: config/newsletter/class_newsletterConfig.inc:45
-msgid "Newsletter choices"
-msgstr ""
-
-#: config/newsletter/class_newsletterConfig.inc:45
-msgid "Newsletters the user can choose from"
 msgstr ""

@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-07-24 11:30+0200\n"
+"POT-Creation-Date: 2017-11-20 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -17,19 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:50
-msgid "There are no IMAP compatible mail servers defined!"
-msgstr "Il n'y a aucun serveur IMAP compatibles définis !"
-
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:55
-msgid "Mail server for this account is invalid!"
-msgstr "Le serveur de messagerie pour ce compte est non valide !"
-
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:194
-#, php-format
-msgid "Error while trying to contact Dovecot server through Argonaut: %s"
-msgstr "Erreur lors de la connexion au serveur Dovecot via Argonaut : %s"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:28
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:29
@@ -121,3 +108,16 @@ msgstr "Créer le répertoire utilisateur via Argonaut"
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:97
 msgid "Use argonaut to create the user mailbox on the Dovecot server"
 msgstr "Utiliser Argonaut pour créer la boite courriel sur le serveur Dovecot"
+
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:50
+msgid "There are no IMAP compatible mail servers defined!"
+msgstr "Il n'y a aucun serveur IMAP compatibles définis !"
+
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:55
+msgid "Mail server for this account is invalid!"
+msgstr "Le serveur de messagerie pour ce compte est non valide !"
+
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:194
+#, php-format
+msgid "Error while trying to contact Dovecot server through Argonaut: %s"
+msgstr "Erreur lors de la connexion au serveur Dovecot via Argonaut : %s"

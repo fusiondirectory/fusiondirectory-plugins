@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-07-24 11:30+0200\n"
+"POT-Creation-Date: 2017-11-20 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -18,10 +18,26 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: personal/nagios/class_nagiosAccount.inc:40
+#: config/nagios/class_nagiosConfig.inc:28
+msgid "Nagios configuration"
+msgstr "Ρύθμιση Nagios"
+
+#: config/nagios/class_nagiosConfig.inc:29
+msgid "FusionDirectory nagios plugin configuration"
+msgstr "Ρύθμιση προσθέτου FusionDirectory nagios"
+
 #: config/nagios/class_nagiosConfig.inc:42
+#: personal/nagios/class_nagiosAccount.inc:40
 msgid "Nagios"
 msgstr "Nagios"
+
+#: config/nagios/class_nagiosConfig.inc:45
+msgid "Lconf prefix"
+msgstr "Πρόθεμα Lconf "
+
+#: config/nagios/class_nagiosConfig.inc:45
+msgid "Prefix used for lconf LDAP fields"
+msgstr "Πρόθεμα που χρησιμοιείται για τα πεδία  lconf LDAP"
 
 #: personal/nagios/class_nagiosAccount.inc:41
 msgid "Nagios account settings"
@@ -78,19 +94,3 @@ msgstr "Εντολές ειδοποίησης υπηρεσίας"
 #: personal/nagios/class_nagiosAccount.inc:99
 msgid "Host notification commands"
 msgstr "Εντολές ειδοποίησης συστήματος"
-
-#: config/nagios/class_nagiosConfig.inc:28
-msgid "Nagios configuration"
-msgstr "Ρύθμιση Nagios"
-
-#: config/nagios/class_nagiosConfig.inc:29
-msgid "FusionDirectory nagios plugin configuration"
-msgstr "Ρύθμιση προσθέτου FusionDirectory nagios"
-
-#: config/nagios/class_nagiosConfig.inc:45
-msgid "Lconf prefix"
-msgstr "Πρόθεμα Lconf "
-
-#: config/nagios/class_nagiosConfig.inc:45
-msgid "Prefix used for lconf LDAP fields"
-msgstr "Πρόθεμα που χρησιμοιείται για τα πεδία  lconf LDAP"
