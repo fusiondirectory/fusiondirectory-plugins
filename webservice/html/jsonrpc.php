@@ -207,7 +207,7 @@ class fdRPCService
     $infos  = objects::infos($type);
     $acl    = $infos['aclCategory'].'/'.$infos['mainTab'];
     if (strpos($ui->get_permissions($ou, $acl), 'r') !== FALSE) {
-      return objects::count($type, $ou, $filter);
+      return objects::count($type, $ou, $filter, TRUE);
     } else {
       return count(objects::ls($type, NULL, $ou, $filter, TRUE));
     }
