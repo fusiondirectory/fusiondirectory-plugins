@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-07-24 11:30+0200\n"
+"POT-Creation-Date: 2017-11-20 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
@@ -17,54 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: config/community/class_communityConfig.inc:28
-msgid "Community configuration"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:29
-msgid "FusionDirectory community plugin configuration"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:41
-msgid "Community"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:45
-msgid "Membership type choices"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:45
-msgid "Community membership types available in the user community tab"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:29
-msgid "Community project"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:30
-msgid "Community project dates and alternate address"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:42
-msgid "Project"
-msgstr "Projekt"
-
-#: admin/departments/community/class_communityProject.inc:45
-msgid "Project full name"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:45
-msgid "Full name of this project"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:49
-msgid "Project key"
-msgstr "Projektschlüssel"
-
-#: admin/departments/community/class_communityProject.inc:49
-msgid "ID used for this project in other softwares or databases"
-msgstr ""
 
 #: admin/departments/community/class_communityOrganization.inc:29
 msgid "Community organization"
@@ -87,69 +39,125 @@ msgid "Membership type of this organization"
 msgstr ""
 
 #: admin/departments/community/class_communityOrganization.inc:50
+msgid "Agreement signed"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:50
+msgid "Did this member returned the agreement signed"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:54
 msgid "Active"
 msgstr "Aktiv"
 
-#: admin/departments/community/class_communityOrganization.inc:50
+#: admin/departments/community/class_communityOrganization.inc:54
 msgid "Is the membership of this organization active"
 msgstr ""
 
-#: admin/departments/community/class_communityOrganization.inc:54
+#: admin/departments/community/class_communityOrganization.inc:58
 msgid "Hidden"
 msgstr "Versteckt"
 
-#: admin/departments/community/class_communityOrganization.inc:54
+#: admin/departments/community/class_communityOrganization.inc:58
 msgid "Should this membership be hidden from listings"
 msgstr ""
 
-#: admin/departments/community/class_communityOrganization.inc:60
+#: admin/departments/community/class_communityOrganization.inc:64
 msgid "Dates"
 msgstr "Daten"
 
-#: admin/departments/community/class_communityOrganization.inc:63
+#: admin/departments/community/class_communityOrganization.inc:67
 msgid "Start date"
 msgstr "Startdatum"
 
-#: admin/departments/community/class_communityOrganization.inc:63
+#: admin/departments/community/class_communityOrganization.inc:67
 msgid "Date of the beginning"
 msgstr ""
 
-#: admin/departments/community/class_communityOrganization.inc:67
+#: admin/departments/community/class_communityOrganization.inc:71
 msgid "End date"
 msgstr "Enddatum"
 
-#: admin/departments/community/class_communityOrganization.inc:67
+#: admin/departments/community/class_communityOrganization.inc:71
 msgid "Date of the end"
 msgstr ""
 
-#: admin/departments/community/class_communityOrganization.inc:74
+#: admin/departments/community/class_communityOrganization.inc:78
 msgid "Contact"
 msgstr "Kontakt"
 
-#: admin/departments/community/class_communityOrganization.inc:77
+#: admin/departments/community/class_communityOrganization.inc:81
 msgid "First name"
 msgstr "Vorname"
 
-#: admin/departments/community/class_communityOrganization.inc:81
+#: admin/departments/community/class_communityOrganization.inc:85
 msgid "Last name"
 msgstr "Nachname"
 
-#: admin/departments/community/class_communityOrganization.inc:85
+#: admin/departments/community/class_communityOrganization.inc:89
 msgid "Address"
 msgstr "Adresse"
 
-#: admin/departments/community/class_communityOrganization.inc:85
+#: admin/departments/community/class_communityOrganization.inc:89
 msgid "A postal address"
 msgstr "Eine postalische Anschrift"
 
-#: admin/departments/community/class_communityOrganization.inc:89
+#: admin/departments/community/class_communityOrganization.inc:93
 msgid "City"
 msgstr "Stadt"
 
-#: admin/departments/community/class_communityOrganization.inc:93
+#: admin/departments/community/class_communityOrganization.inc:97
 msgid "State"
 msgstr "Land"
 
-#: admin/departments/community/class_communityOrganization.inc:97
+#: admin/departments/community/class_communityOrganization.inc:101
 msgid "Country"
 msgstr "Land"
+
+#: admin/departments/community/class_communityProject.inc:29
+msgid "Community project"
+msgstr "Gemeinschaftsprojekt"
+
+#: admin/departments/community/class_communityProject.inc:30
+msgid "Community project dates and alternate address"
+msgstr ""
+
+#: admin/departments/community/class_communityProject.inc:42
+msgid "Project"
+msgstr "Projekt"
+
+#: admin/departments/community/class_communityProject.inc:45
+msgid "Project full name"
+msgstr ""
+
+#: admin/departments/community/class_communityProject.inc:45
+msgid "Full name of this project"
+msgstr "Vollständiger Name von diesem Projekt"
+
+#: admin/departments/community/class_communityProject.inc:49
+msgid "Project key"
+msgstr "Projektschlüssel"
+
+#: admin/departments/community/class_communityProject.inc:49
+msgid "ID used for this project in other softwares or databases"
+msgstr ""
+
+#: config/community/class_communityConfig.inc:28
+msgid "Community configuration"
+msgstr "Gemeinschaftskonfiguration"
+
+#: config/community/class_communityConfig.inc:29
+msgid "FusionDirectory community plugin configuration"
+msgstr ""
+
+#: config/community/class_communityConfig.inc:41
+msgid "Community"
+msgstr "Gemeinschaft"
+
+#: config/community/class_communityConfig.inc:45
+msgid "Membership type choices"
+msgstr ""
+
+#: config/community/class_communityConfig.inc:45
+msgid "Community membership types available in the user community tab"
+msgstr ""

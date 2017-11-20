@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-07-24 11:30+0200\n"
+"POT-Creation-Date: 2017-11-20 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -17,56 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:50
-msgid "There are no IMAP compatible mail servers defined!"
-msgstr "Δεν έχουν ορισθεί συμβατοί διακομιστές αλληλογραφίας IMAP!"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:55
-msgid "Mail server for this account is invalid!"
-msgstr " διακομιστής αλληλογραφίας για αυτόν το λογαριασμό είναι άκυρος!"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:241
-msgid "IMAP error"
-msgstr "Σφάλμα IMAP"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:241
-#, php-format
-msgid "Cannot modify IMAP mailbox quota: %s"
-msgstr "Αδυναμία τροποποίησης quota γραμ/κιβωτίου IMAP: %s"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:315
-msgid "Mail info"
-msgstr "Πληροφορίες αλληλογραφίας"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:316
-#, php-format
-msgid ""
-"LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
-"Please delete it manually!"
-msgstr ""
-"Η εγγραφή LDAP έχει απομακρυνθεί αλλά έχει διατηρηθεί το cyrus mailbox (%s) .\n"
-"Παρακαλώ διαγράψτε χειρωνακτικά!"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:404
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:442
-msgid "The module imap_getacl is not implemented!"
-msgstr "Το module imap_getacl  δεν έχει εφαρμοστεί!"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:510
-#, php-format
-msgid "Cannot retrieve SIEVE script: %s"
-msgstr "Αδυναμία λήψης SIEVE script: %s"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:578
-#, php-format
-msgid "Cannot store SIEVE script: %s"
-msgstr "Αδυναμία αποθήκευσης SIEVE script: %s"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:585
-#, php-format
-msgid "Cannot activate SIEVE script: %s"
-msgstr "Αδυναμία ενεργοποίησης SIEVE script: %s"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:30
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:31
@@ -157,3 +107,53 @@ msgstr "Αριθμός θύρας για την επικοινωνία με το
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:102
 msgid "Options for contacting Cyrus sieve server"
 msgstr "Επιλογές επικοινωνίας με τον διακομιστή Cyrus sieve"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:50
+msgid "There are no IMAP compatible mail servers defined!"
+msgstr "Δεν έχουν ορισθεί συμβατοί διακομιστές αλληλογραφίας IMAP!"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:55
+msgid "Mail server for this account is invalid!"
+msgstr " διακομιστής αλληλογραφίας για αυτόν το λογαριασμό είναι άκυρος!"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:241
+msgid "IMAP error"
+msgstr "Σφάλμα IMAP"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:241
+#, php-format
+msgid "Cannot modify IMAP mailbox quota: %s"
+msgstr "Αδυναμία τροποποίησης quota γραμ/κιβωτίου IMAP: %s"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:315
+msgid "Mail info"
+msgstr "Πληροφορίες αλληλογραφίας"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:316
+#, php-format
+msgid ""
+"LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
+"Please delete it manually!"
+msgstr ""
+"Η εγγραφή LDAP έχει απομακρυνθεί αλλά έχει διατηρηθεί το cyrus mailbox (%s) .\n"
+"Παρακαλώ διαγράψτε χειρωνακτικά!"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:404
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:442
+msgid "The module imap_getacl is not implemented!"
+msgstr "Το module imap_getacl  δεν έχει εφαρμοστεί!"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:510
+#, php-format
+msgid "Cannot retrieve SIEVE script: %s"
+msgstr "Αδυναμία λήψης SIEVE script: %s"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:578
+#, php-format
+msgid "Cannot store SIEVE script: %s"
+msgstr "Αδυναμία αποθήκευσης SIEVE script: %s"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:585
+#, php-format
+msgid "Cannot activate SIEVE script: %s"
+msgstr "Αδυναμία ενεργοποίησης SIEVE script: %s"

@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-07-24 11:30+0200\n"
+"POT-Creation-Date: 2017-11-20 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -18,26 +18,101 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/community/class_communityConfig.inc:28
-msgid "Community configuration"
-msgstr "Community configuratie"
-
-#: config/community/class_communityConfig.inc:29
-msgid "FusionDirectory community plugin configuration"
-msgstr "FusionDirectory communicty plugin configuratie"
-
-#: config/community/class_communityConfig.inc:41
-msgid "Community"
-msgstr "Community"
-
-#: config/community/class_communityConfig.inc:45
-msgid "Membership type choices"
-msgstr "Keuzemogelijkheden type lidmaatschap"
-
-#: config/community/class_communityConfig.inc:45
-msgid "Community membership types available in the user community tab"
+#: admin/departments/community/class_communityOrganization.inc:29
+msgid "Community organization"
 msgstr ""
-"Community lidmaatschapstypes beschikbaar in de gebruikerscommunity tab"
+
+#: admin/departments/community/class_communityOrganization.inc:30
+msgid "Community organization dates and alternate address"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:42
+msgid "Membership"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:45
+msgid "Membership type"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:45
+msgid "Membership type of this organization"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:50
+msgid "Agreement signed"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:50
+msgid "Did this member returned the agreement signed"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:54
+msgid "Active"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:54
+msgid "Is the membership of this organization active"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:58
+msgid "Hidden"
+msgstr "Verborgen"
+
+#: admin/departments/community/class_communityOrganization.inc:58
+msgid "Should this membership be hidden from listings"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:64
+msgid "Dates"
+msgstr "Data"
+
+#: admin/departments/community/class_communityOrganization.inc:67
+msgid "Start date"
+msgstr "Startdatum"
+
+#: admin/departments/community/class_communityOrganization.inc:67
+msgid "Date of the beginning"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:71
+msgid "End date"
+msgstr "Einddatum"
+
+#: admin/departments/community/class_communityOrganization.inc:71
+msgid "Date of the end"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:78
+msgid "Contact"
+msgstr "Contactpersoon"
+
+#: admin/departments/community/class_communityOrganization.inc:81
+msgid "First name"
+msgstr "Voornaam"
+
+#: admin/departments/community/class_communityOrganization.inc:85
+msgid "Last name"
+msgstr "Achternaam"
+
+#: admin/departments/community/class_communityOrganization.inc:89
+msgid "Address"
+msgstr "Adres"
+
+#: admin/departments/community/class_communityOrganization.inc:89
+msgid "A postal address"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:93
+msgid "City"
+msgstr "Plaats"
+
+#: admin/departments/community/class_communityOrganization.inc:97
+msgid "State"
+msgstr "Staat"
+
+#: admin/departments/community/class_communityOrganization.inc:101
+msgid "Country"
+msgstr "Land"
 
 #: admin/departments/community/class_communityProject.inc:29
 msgid "Community project"
@@ -67,90 +142,23 @@ msgstr "Projektsleutel"
 msgid "ID used for this project in other softwares or databases"
 msgstr ""
 
-#: admin/departments/community/class_communityOrganization.inc:29
-msgid "Community organization"
+#: config/community/class_communityConfig.inc:28
+msgid "Community configuration"
+msgstr "Community configuratie"
+
+#: config/community/class_communityConfig.inc:29
+msgid "FusionDirectory community plugin configuration"
+msgstr "FusionDirectory communicty plugin configuratie"
+
+#: config/community/class_communityConfig.inc:41
+msgid "Community"
+msgstr "Community"
+
+#: config/community/class_communityConfig.inc:45
+msgid "Membership type choices"
+msgstr "Keuzemogelijkheden type lidmaatschap"
+
+#: config/community/class_communityConfig.inc:45
+msgid "Community membership types available in the user community tab"
 msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:30
-msgid "Community organization dates and alternate address"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:42
-msgid "Membership"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:45
-msgid "Membership type"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:45
-msgid "Membership type of this organization"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:50
-msgid "Active"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:50
-msgid "Is the membership of this organization active"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:54
-msgid "Hidden"
-msgstr "Verborgen"
-
-#: admin/departments/community/class_communityOrganization.inc:54
-msgid "Should this membership be hidden from listings"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:60
-msgid "Dates"
-msgstr "Data"
-
-#: admin/departments/community/class_communityOrganization.inc:63
-msgid "Start date"
-msgstr "Startdatum"
-
-#: admin/departments/community/class_communityOrganization.inc:63
-msgid "Date of the beginning"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:67
-msgid "End date"
-msgstr "Einddatum"
-
-#: admin/departments/community/class_communityOrganization.inc:67
-msgid "Date of the end"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:74
-msgid "Contact"
-msgstr "Contactpersoon"
-
-#: admin/departments/community/class_communityOrganization.inc:77
-msgid "First name"
-msgstr "Voornaam"
-
-#: admin/departments/community/class_communityOrganization.inc:81
-msgid "Last name"
-msgstr "Achternaam"
-
-#: admin/departments/community/class_communityOrganization.inc:85
-msgid "Address"
-msgstr "Adres"
-
-#: admin/departments/community/class_communityOrganization.inc:85
-msgid "A postal address"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:89
-msgid "City"
-msgstr "Plaats"
-
-#: admin/departments/community/class_communityOrganization.inc:93
-msgid "State"
-msgstr "Staat"
-
-#: admin/departments/community/class_communityOrganization.inc:97
-msgid "Country"
-msgstr "Land"
+"Community lidmaatschapstypes beschikbaar in de gebruikerscommunity tab"

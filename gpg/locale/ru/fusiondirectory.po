@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-07-24 11:30+0200\n"
+"POT-Creation-Date: 2017-11-20 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
@@ -17,6 +17,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: addons/gpg/class_pgpServerInfo.inc:31 addons/gpg/class_pgpServerInfo.inc:32
+#: addons/gpg/class_pgpServerInfo.inc:38 addons/gpg/class_pgpServerInfo.inc:56
+msgid "GPG server info"
+msgstr "Информация об GPG сервере"
+
+#: addons/gpg/class_pgpServerInfo.inc:60
+msgid "Software"
+msgstr "Програмное обеспечение"
+
+#: addons/gpg/class_pgpServerInfo.inc:60
+msgid "Which software this GPG key server is running"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:65
+msgid "GPG version"
+msgstr "Версия GPG"
+
+#: addons/gpg/class_pgpServerInfo.inc:65
+msgid "Which version of GPG this key server is running"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:70
+msgid "Branch in which keys are stored"
+msgstr "Ветка в которой хранятся ключи"
+
+#: addons/gpg/class_pgpServerInfo.inc:74
+msgid "Keys RDN"
+msgstr "RDN для ключей"
+
+#: addons/gpg/class_pgpServerInfo.inc:74
+msgid "Branch under base in which keys are stored"
+msgstr "Ветка в которой будут храниться ключи"
 
 #: personal/gpg/class_gpgAccount.inc:31
 msgid "GPG keys"
@@ -101,36 +134,3 @@ msgstr "Дата окончания действия"
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:72
 msgid "Type"
 msgstr "Тип"
-
-#: addons/gpg/class_pgpServerInfo.inc:31 addons/gpg/class_pgpServerInfo.inc:32
-#: addons/gpg/class_pgpServerInfo.inc:38 addons/gpg/class_pgpServerInfo.inc:56
-msgid "GPG server info"
-msgstr "Информация об GPG сервере"
-
-#: addons/gpg/class_pgpServerInfo.inc:60
-msgid "Software"
-msgstr "Програмное обеспечение"
-
-#: addons/gpg/class_pgpServerInfo.inc:60
-msgid "Which software this GPG key server is running"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:65
-msgid "GPG version"
-msgstr "Версия GPG"
-
-#: addons/gpg/class_pgpServerInfo.inc:65
-msgid "Which version of GPG this key server is running"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:70
-msgid "Branch in which keys are stored"
-msgstr "Ветка в которой хранятся ключи"
-
-#: addons/gpg/class_pgpServerInfo.inc:74
-msgid "Keys RDN"
-msgstr "RDN для ключей"
-
-#: addons/gpg/class_pgpServerInfo.inc:74
-msgid "Branch under base in which keys are stored"
-msgstr "Ветка в которой будут храниться ключи"

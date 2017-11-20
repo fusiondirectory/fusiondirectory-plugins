@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-07-24 11:30+0200\n"
+"POT-Creation-Date: 2017-11-20 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -18,26 +18,48 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: config/sympa/class_sympaConfig.inc:28
-msgid "Sympa configuration"
-msgstr "Configuration de Sympa"
+#: admin/systems/services/sympa/class_serviceSympa.inc:31
+#: admin/systems/services/sympa/class_serviceSympa.inc:32
+msgid "Sympa Server"
+msgstr "Serveur Sympa"
 
-#: config/sympa/class_sympaConfig.inc:29
-msgid "FusionDirectory sympa plugin configuration"
-msgstr "Configuration du plugin Sympa"
+#: admin/systems/services/sympa/class_serviceSympa.inc:32
+msgid "Services"
+msgstr "Service"
 
-#: config/sympa/class_sympaConfig.inc:42
+#: admin/systems/services/sympa/class_serviceSympa.inc:46
+#: admin/sympa/class_sympaAlias.inc:64
+msgid "Sympa server"
+msgstr "Serveur sympa"
+
+#: admin/systems/services/sympa/class_serviceSympa.inc:49
+msgid "URL"
+msgstr "URL"
+
+#: admin/systems/services/sympa/class_serviceSympa.inc:49
+msgid "URL to access the sympa server"
+msgstr "URL d'accès au serveur sympa"
+
+#: admin/systems/services/sympa/class_serviceSympa.inc:53
+msgid "User"
+msgstr "Utilisateur"
+
+#: admin/systems/services/sympa/class_serviceSympa.inc:53
+msgid "User to access sympa server SOAP API."
+msgstr "Utilisateur pour accéder a l'interface SOAP"
+
+#: admin/systems/services/sympa/class_serviceSympa.inc:57
+msgid "Password"
+msgstr "Mot de passe"
+
+#: admin/systems/services/sympa/class_serviceSympa.inc:57
+msgid "Password to access sympa server SOAP API."
+msgstr "Mot de passe pour accéder à l'interface SOAP"
+
 #: admin/sympa/class_sympaManagement.inc:33
+#: config/sympa/class_sympaConfig.inc:42
 msgid "Sympa"
 msgstr "Sympa"
-
-#: config/sympa/class_sympaConfig.inc:45
-msgid "Sympa RDN"
-msgstr "Sympa RDN"
-
-#: config/sympa/class_sympaConfig.inc:45
-msgid "Branch in which Sympa objects will be stored"
-msgstr "Branche où seront stockés les objets Sympa"
 
 #: admin/sympa/class_sympaManagement.inc:34
 msgid "Sympa management"
@@ -69,43 +91,21 @@ msgid "Email address"
 msgstr "Adresse de messagerie"
 
 #: admin/sympa/class_sympaAlias.inc:64
-#: admin/systems/services/sympa/class_serviceSympa.inc:46
-msgid "Sympa server"
-msgstr "Serveur sympa"
-
-#: admin/sympa/class_sympaAlias.inc:64
 msgid "Sympa server for this alias"
 msgstr "Serveur Sympa pour cet alias"
 
-#: admin/systems/services/sympa/class_serviceSympa.inc:31
-#: admin/systems/services/sympa/class_serviceSympa.inc:32
-msgid "Sympa Server"
-msgstr "Serveur Sympa"
+#: config/sympa/class_sympaConfig.inc:28
+msgid "Sympa configuration"
+msgstr "Configuration de Sympa"
 
-#: admin/systems/services/sympa/class_serviceSympa.inc:32
-msgid "Services"
-msgstr "Service"
+#: config/sympa/class_sympaConfig.inc:29
+msgid "FusionDirectory sympa plugin configuration"
+msgstr "Configuration du plugin Sympa"
 
-#: admin/systems/services/sympa/class_serviceSympa.inc:49
-msgid "URL"
-msgstr "URL"
+#: config/sympa/class_sympaConfig.inc:45
+msgid "Sympa RDN"
+msgstr "Sympa RDN"
 
-#: admin/systems/services/sympa/class_serviceSympa.inc:49
-msgid "URL to access the sympa server"
-msgstr "URL d'accès au serveur sympa"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:53
-msgid "User"
-msgstr "Utilisateur"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:53
-msgid "User to access sympa server SOAP API."
-msgstr "Utilisateur pour accéder a l'interface SOAP"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:57
-msgid "Password"
-msgstr "Mot de passe"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:57
-msgid "Password to access sympa server SOAP API."
-msgstr "Mot de passe pour accéder à l'interface SOAP"
+#: config/sympa/class_sympaConfig.inc:45
+msgid "Branch in which Sympa objects will be stored"
+msgstr "Branche où seront stockés les objets Sympa"

@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-07-24 11:30+0200\n"
+"POT-Creation-Date: 2017-11-20 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -18,27 +18,101 @@ msgstr ""
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/community/class_communityConfig.inc:28
-msgid "Community configuration"
-msgstr "Configurazione community"
+#: admin/departments/community/class_communityOrganization.inc:29
+msgid "Community organization"
+msgstr "Organizzazione della comunità"
 
-#: config/community/class_communityConfig.inc:29
-msgid "FusionDirectory community plugin configuration"
-msgstr "Configurazione del plugin community di FusionDirectory"
+#: admin/departments/community/class_communityOrganization.inc:30
+msgid "Community organization dates and alternate address"
+msgstr "Date dell'organizzazione della comunità e indirizzo alternativo"
 
-#: config/community/class_communityConfig.inc:41
-msgid "Community"
-msgstr "Comunità"
+#: admin/departments/community/class_communityOrganization.inc:42
+msgid "Membership"
+msgstr "Abbonamento"
 
-#: config/community/class_communityConfig.inc:45
-msgid "Membership type choices"
-msgstr "Scelte tipo di abbonamento"
+#: admin/departments/community/class_communityOrganization.inc:45
+msgid "Membership type"
+msgstr "Tipologia di abbonamento"
 
-#: config/community/class_communityConfig.inc:45
-msgid "Community membership types available in the user community tab"
+#: admin/departments/community/class_communityOrganization.inc:45
+msgid "Membership type of this organization"
+msgstr "Tipologia di abbonamento di questa organizzazione"
+
+#: admin/departments/community/class_communityOrganization.inc:50
+msgid "Agreement signed"
 msgstr ""
-"Tipi di abbonamento community disponibili nella tabella community "
-"dell'utente"
+
+#: admin/departments/community/class_communityOrganization.inc:50
+msgid "Did this member returned the agreement signed"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:54
+msgid "Active"
+msgstr "Attivo"
+
+#: admin/departments/community/class_communityOrganization.inc:54
+msgid "Is the membership of this organization active"
+msgstr "L'appartenenza a questa organizzazione é attiva?"
+
+#: admin/departments/community/class_communityOrganization.inc:58
+msgid "Hidden"
+msgstr "Nascosto"
+
+#: admin/departments/community/class_communityOrganization.inc:58
+msgid "Should this membership be hidden from listings"
+msgstr "Deve questo abbonamento essere nascosto dalle liste"
+
+#: admin/departments/community/class_communityOrganization.inc:64
+msgid "Dates"
+msgstr "Date"
+
+#: admin/departments/community/class_communityOrganization.inc:67
+msgid "Start date"
+msgstr "Data d'inizio"
+
+#: admin/departments/community/class_communityOrganization.inc:67
+msgid "Date of the beginning"
+msgstr "Data d'inizio"
+
+#: admin/departments/community/class_communityOrganization.inc:71
+msgid "End date"
+msgstr "Data di fine"
+
+#: admin/departments/community/class_communityOrganization.inc:71
+msgid "Date of the end"
+msgstr "Data di fine"
+
+#: admin/departments/community/class_communityOrganization.inc:78
+msgid "Contact"
+msgstr "Contatto"
+
+#: admin/departments/community/class_communityOrganization.inc:81
+msgid "First name"
+msgstr "Nome"
+
+#: admin/departments/community/class_communityOrganization.inc:85
+msgid "Last name"
+msgstr "Cognome"
+
+#: admin/departments/community/class_communityOrganization.inc:89
+msgid "Address"
+msgstr "Indirizzo"
+
+#: admin/departments/community/class_communityOrganization.inc:89
+msgid "A postal address"
+msgstr "Un indirizzo postale"
+
+#: admin/departments/community/class_communityOrganization.inc:93
+msgid "City"
+msgstr "Città"
+
+#: admin/departments/community/class_communityOrganization.inc:97
+msgid "State"
+msgstr "Regione"
+
+#: admin/departments/community/class_communityOrganization.inc:101
+msgid "Country"
+msgstr "Stato"
 
 #: admin/departments/community/class_communityProject.inc:29
 msgid "Community project"
@@ -68,90 +142,24 @@ msgstr "Chiave di progetto"
 msgid "ID used for this project in other softwares or databases"
 msgstr "ID utilizzato per questo progetto in altri software o database"
 
-#: admin/departments/community/class_communityOrganization.inc:29
-msgid "Community organization"
-msgstr "Organizzazione della comunità"
+#: config/community/class_communityConfig.inc:28
+msgid "Community configuration"
+msgstr "Configurazione community"
 
-#: admin/departments/community/class_communityOrganization.inc:30
-msgid "Community organization dates and alternate address"
-msgstr "Date dell'organizzazione della comunità e indirizzo alternativo"
+#: config/community/class_communityConfig.inc:29
+msgid "FusionDirectory community plugin configuration"
+msgstr "Configurazione del plugin community di FusionDirectory"
 
-#: admin/departments/community/class_communityOrganization.inc:42
-msgid "Membership"
-msgstr "Abbonamento"
+#: config/community/class_communityConfig.inc:41
+msgid "Community"
+msgstr "Comunità"
 
-#: admin/departments/community/class_communityOrganization.inc:45
-msgid "Membership type"
-msgstr "Tipologia di abbonamento"
+#: config/community/class_communityConfig.inc:45
+msgid "Membership type choices"
+msgstr "Scelte tipo di abbonamento"
 
-#: admin/departments/community/class_communityOrganization.inc:45
-msgid "Membership type of this organization"
-msgstr "Tipologia di abbonamento di questa organizzazione"
-
-#: admin/departments/community/class_communityOrganization.inc:50
-msgid "Active"
-msgstr "Attivo"
-
-#: admin/departments/community/class_communityOrganization.inc:50
-msgid "Is the membership of this organization active"
-msgstr "L'appartenenza a questa organizzazione é attiva?"
-
-#: admin/departments/community/class_communityOrganization.inc:54
-msgid "Hidden"
-msgstr "Nascosto"
-
-#: admin/departments/community/class_communityOrganization.inc:54
-msgid "Should this membership be hidden from listings"
-msgstr "Deve questo abbonamento essere nascosto dalle liste"
-
-#: admin/departments/community/class_communityOrganization.inc:60
-msgid "Dates"
-msgstr "Date"
-
-#: admin/departments/community/class_communityOrganization.inc:63
-msgid "Start date"
-msgstr "Data d'inizio"
-
-#: admin/departments/community/class_communityOrganization.inc:63
-msgid "Date of the beginning"
-msgstr "Data d'inizio"
-
-#: admin/departments/community/class_communityOrganization.inc:67
-msgid "End date"
-msgstr "Data di fine"
-
-#: admin/departments/community/class_communityOrganization.inc:67
-msgid "Date of the end"
-msgstr "Data di fine"
-
-#: admin/departments/community/class_communityOrganization.inc:74
-msgid "Contact"
-msgstr "Contatto"
-
-#: admin/departments/community/class_communityOrganization.inc:77
-msgid "First name"
-msgstr "Nome"
-
-#: admin/departments/community/class_communityOrganization.inc:81
-msgid "Last name"
-msgstr "Cognome"
-
-#: admin/departments/community/class_communityOrganization.inc:85
-msgid "Address"
-msgstr "Indirizzo"
-
-#: admin/departments/community/class_communityOrganization.inc:85
-msgid "A postal address"
-msgstr "Un indirizzo postale"
-
-#: admin/departments/community/class_communityOrganization.inc:89
-msgid "City"
-msgstr "Città"
-
-#: admin/departments/community/class_communityOrganization.inc:93
-msgid "State"
-msgstr "Regione"
-
-#: admin/departments/community/class_communityOrganization.inc:97
-msgid "Country"
-msgstr "Stato"
+#: config/community/class_communityConfig.inc:45
+msgid "Community membership types available in the user community tab"
+msgstr ""
+"Tipi di abbonamento community disponibili nella tabella community "
+"dell'utente"

@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-07-24 11:30+0200\n"
+"POT-Creation-Date: 2017-11-20 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
@@ -18,193 +18,118 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: personal/mail/class_mailAccount.inc:45
-#: personal/mail/class_mailAccount.inc:258
-#: personal/mail/class_mailAccount.inc:261
-#: personal/mail/class_mailAccount.inc:329
-#: personal/mail/class_mailAccount.inc:340
-#: personal/mail/class_mailAccount.inc:369
-#: personal/mail/class_mailAccount.inc:373
-#: admin/groups/mail/class_mailGroup.inc:183
-#: admin/groups/mail/class_mailGroup.inc:187
-msgid "Mail error"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:45
-#, php-format
-msgid "Cannot read quota settings: %s"
-msgstr "Не могу прочитать настройки квоты: %s"
-
-#: personal/mail/class_mailAccount.inc:55
-msgid "Quota usage"
-msgstr "Использование квоты"
-
-#: personal/mail/class_mailAccount.inc:56
-msgid "Part of the quota which is used"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:73
-#: config/mail/class_mailPluginConfig.inc:28
 #: admin/groups/mail/class_mailGroup.inc:46
+#: config/mail/class_mailPluginConfig.inc:28
+#: personal/mail/class_mailAccount.inc:73
 msgid "Mail"
 msgstr "Почта"
 
-#: personal/mail/class_mailAccount.inc:74
-#: config/mail/class_mailPluginConfig.inc:41
-msgid "Mail settings"
-msgstr "Настройки почты"
+#: admin/groups/mail/class_mailGroup.inc:47
+msgid "Group mail options"
+msgstr ""
 
-#: personal/mail/class_mailAccount.inc:96
-msgid "Mail account"
-msgstr "Почтовый аккаунт"
+#: admin/groups/mail/class_mailGroup.inc:59
+msgid "Information"
+msgstr "Информация"
 
-#: personal/mail/class_mailAccount.inc:99
 #: admin/groups/mail/class_mailGroup.inc:62
+#: personal/mail/class_mailAccount.inc:99
 msgid "Primary address"
 msgstr "Основной адрес"
 
-#: personal/mail/class_mailAccount.inc:99
-msgid "Primary mail address"
-msgstr "Первичный адрес почты"
+#: admin/groups/mail/class_mailGroup.inc:62
+msgid "The primary mail address"
+msgstr "Основной адрес электронной почты"
 
-#: personal/mail/class_mailAccount.inc:103
 #: admin/groups/mail/class_mailGroup.inc:66
+#: personal/mail/class_mailAccount.inc:103
 msgid "Server"
 msgstr "Сервер"
 
-#: personal/mail/class_mailAccount.inc:103
-msgid "Specify the mail server where the user will be hosted on"
-msgstr "Выберите почтовый сервер для учетной записи пользователя"
+#: admin/groups/mail/class_mailGroup.inc:66
+msgid "Email server"
+msgstr ""
 
-#: personal/mail/class_mailAccount.inc:108
-msgid "Quota size"
-msgstr "Размер квоты"
-
-#: personal/mail/class_mailAccount.inc:115
-msgid "Other addresses and redirections"
-msgstr "Другие адреса и редиректы (перенаправления)"
-
-#: personal/mail/class_mailAccount.inc:119
 #: admin/groups/mail/class_mailGroup.inc:72
+#: personal/mail/class_mailAccount.inc:119
 msgid "Alternative addresses"
 msgstr "Альтернативные адреса"
 
-#: personal/mail/class_mailAccount.inc:119
-msgid "List of alternative mail addresses"
-msgstr "Список альтернативных адресов эл. почты"
+#: admin/groups/mail/class_mailGroup.inc:72
+msgid "Alternative mail addresses for the group"
+msgstr "Альтернативный адрес почты для группы"
 
-#: personal/mail/class_mailAccount.inc:124
-msgid "Forward messages to"
-msgstr "Перенаправлять сообщения"
+#: admin/groups/mail/class_mailGroup.inc:77
+msgid "Forward messages to non group members"
+msgstr "Пересылать сообщения не членам группы"
 
-#: personal/mail/class_mailAccount.inc:124
-msgid "Addresses to which messages should be forwarded"
-msgstr "Адреса на которые сообщение должно быть переслано "
-
-#: personal/mail/class_mailAccount.inc:130
-#: personal/mail/class_mailAccount.inc:149
-msgid "Vacation message"
-msgstr "Сообщение автоответчика"
-
-#: personal/mail/class_mailAccount.inc:133
-msgid "Activate vacation message"
-msgstr "Включить автоответчик"
-
-#: personal/mail/class_mailAccount.inc:134
-msgid ""
-"Select to automatically response with the vacation message defined below"
-msgstr "Выберите, чтобы включить автоответчик с сообщением, указанным ниже"
-
-#: personal/mail/class_mailAccount.inc:139
-msgid "from"
-msgstr "от"
-
-#: personal/mail/class_mailAccount.inc:144
-msgid "till"
-msgstr "до"
-
-#: personal/mail/class_mailAccount.inc:155
-msgid "Advanced mail options"
-msgstr "Дополнительные почтовые настройки"
-
-#: personal/mail/class_mailAccount.inc:163
-msgid "User is only allowed to send and receive local mails"
-msgstr "Пользователь может отправлять и получать почту только локально"
-
-#: personal/mail/class_mailAccount.inc:164
-msgid "Select if user can only send and receive inside his own domain"
+#: admin/groups/mail/class_mailGroup.inc:81
+msgid "Only allowed to receive local mail"
 msgstr ""
-"Выберите, может ли пользователь отправлять и получать сообщения только "
-"внутри своего домена"
 
-#: personal/mail/class_mailAccount.inc:169
-msgid "No delivery to own mailbox"
-msgstr "Не оставлять копии в своем почтовом ящике"
+#: admin/groups/mail/class_mailGroup.inc:81
+msgid ""
+"Whether this group mail is only allowed to receive messages from local "
+"senders"
+msgstr ""
 
-#: personal/mail/class_mailAccount.inc:170
-msgid "Select if you want to forward mails without getting own copies of them"
-msgstr "Выберите, нужно ли оставлять копии перенаправляемых сообщений"
-
+#: admin/groups/mail/class_mailGroup.inc:159
 #: personal/mail/class_mailAccount.inc:258
 #: personal/mail/class_mailAccount.inc:323
-#: admin/groups/mail/class_mailGroup.inc:159
 #, php-format
 msgid "Mail method cannot connect: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:261
-#, php-format
-msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
-msgstr "Почтовый ящик \"%s\" не существует на почтовом сервере: %s"
-
-#: personal/mail/class_mailAccount.inc:326
 #: admin/groups/mail/class_mailGroup.inc:162
+#: personal/mail/class_mailAccount.inc:326
 #, php-format
 msgid "Cannot update mailbox: %s"
 msgstr "Не могу обновить почтовый ящик: %s"
 
+#: admin/groups/mail/class_mailGroup.inc:183
+#: admin/groups/mail/class_mailGroup.inc:187
+#: personal/mail/class_mailAccount.inc:45
+#: personal/mail/class_mailAccount.inc:258
+#: personal/mail/class_mailAccount.inc:261
 #: personal/mail/class_mailAccount.inc:329
-#, php-format
-msgid "Cannot write quota settings: %s"
-msgstr "Не могу записать настройки квоты: \"%s\""
-
 #: personal/mail/class_mailAccount.inc:340
-#, php-format
-msgid "Mail error saving sieve settings: %s"
+#: personal/mail/class_mailAccount.inc:369
+#: personal/mail/class_mailAccount.inc:373
+msgid "Mail error"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:369
 #: admin/groups/mail/class_mailGroup.inc:183
+#: personal/mail/class_mailAccount.inc:369
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:373
 #: admin/groups/mail/class_mailGroup.inc:187
+#: personal/mail/class_mailAccount.inc:373
 #, php-format
 msgid "Cannot remove mailbox: %s"
 msgstr "Не могу удалить почтовый ящик: \"%s\""
 
-#: personal/mail/class_mail-methods.inc:144
-msgid "Configuration error"
-msgstr "Ошибка конфигурации"
-
-#: personal/mail/class_mail-methods.inc:145
-#, php-format
-msgid "The configured mail attribute '%s' is unsupported!"
+#: admin/systems/services/imap/class_serviceIMAP.inc:32
+msgid "IMAP/POP3 generic service"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:703
-msgid "Unknown"
-msgstr "Неизвестно"
+#: admin/systems/services/imap/class_serviceIMAP.inc:33
+msgid "IMAP/POP3"
+msgstr "IMAP/POP3"
 
-#: personal/mail/class_mail-methods.inc:705
-msgid "Unlimited"
-msgstr "Неограниченный"
+#: admin/systems/services/imap/class_serviceIMAP.inc:33
+msgid "Services"
+msgstr "Сервисы"
 
 #: config/mail/class_mailPluginConfig.inc:29
 msgid "Mail plugin configuration"
 msgstr "Настройка плагина Почта"
+
+#: config/mail/class_mailPluginConfig.inc:41
+#: personal/mail/class_mailAccount.inc:74
+msgid "Mail settings"
+msgstr "Настройки почты"
 
 #: config/mail/class_mailPluginConfig.inc:44
 msgid "Account identification attribute"
@@ -277,48 +202,123 @@ msgstr ""
 msgid "Prefix to add for mail shared folders."
 msgstr ""
 
-#: admin/groups/mail/class_mailGroup.inc:47
-msgid "Group mail options"
+#: personal/mail/class_mailAccount.inc:45
+#, php-format
+msgid "Cannot read quota settings: %s"
+msgstr "Не могу прочитать настройки квоты: %s"
+
+#: personal/mail/class_mailAccount.inc:55
+msgid "Quota usage"
+msgstr "Использование квоты"
+
+#: personal/mail/class_mailAccount.inc:56
+msgid "Part of the quota which is used"
 msgstr ""
 
-#: admin/groups/mail/class_mailGroup.inc:59
-msgid "Information"
-msgstr "Информация"
+#: personal/mail/class_mailAccount.inc:96
+msgid "Mail account"
+msgstr "Почтовый аккаунт"
 
-#: admin/groups/mail/class_mailGroup.inc:62
-msgid "The primary mail address"
-msgstr "Основной адрес электронной почты"
+#: personal/mail/class_mailAccount.inc:99
+msgid "Primary mail address"
+msgstr "Первичный адрес почты"
 
-#: admin/groups/mail/class_mailGroup.inc:66
-msgid "Email server"
-msgstr ""
+#: personal/mail/class_mailAccount.inc:103
+msgid "Specify the mail server where the user will be hosted on"
+msgstr "Выберите почтовый сервер для учетной записи пользователя"
 
-#: admin/groups/mail/class_mailGroup.inc:72
-msgid "Alternative mail addresses for the group"
-msgstr "Альтернативный адрес почты для группы"
+#: personal/mail/class_mailAccount.inc:108
+msgid "Quota size"
+msgstr "Размер квоты"
 
-#: admin/groups/mail/class_mailGroup.inc:77
-msgid "Forward messages to non group members"
-msgstr "Пересылать сообщения не членам группы"
+#: personal/mail/class_mailAccount.inc:115
+msgid "Other addresses and redirections"
+msgstr "Другие адреса и редиректы (перенаправления)"
 
-#: admin/groups/mail/class_mailGroup.inc:81
-msgid "Only allowed to receive local mail"
-msgstr ""
+#: personal/mail/class_mailAccount.inc:119
+msgid "List of alternative mail addresses"
+msgstr "Список альтернативных адресов эл. почты"
 
-#: admin/groups/mail/class_mailGroup.inc:81
+#: personal/mail/class_mailAccount.inc:124
+msgid "Forward messages to"
+msgstr "Перенаправлять сообщения"
+
+#: personal/mail/class_mailAccount.inc:124
+msgid "Addresses to which messages should be forwarded"
+msgstr "Адреса на которые сообщение должно быть переслано "
+
+#: personal/mail/class_mailAccount.inc:130
+#: personal/mail/class_mailAccount.inc:149
+msgid "Vacation message"
+msgstr "Сообщение автоответчика"
+
+#: personal/mail/class_mailAccount.inc:133
+msgid "Activate vacation message"
+msgstr "Включить автоответчик"
+
+#: personal/mail/class_mailAccount.inc:134
 msgid ""
-"Whether this group mail is only allowed to receive messages from local "
-"senders"
+"Select to automatically response with the vacation message defined below"
+msgstr "Выберите, чтобы включить автоответчик с сообщением, указанным ниже"
+
+#: personal/mail/class_mailAccount.inc:139
+msgid "from"
+msgstr "от"
+
+#: personal/mail/class_mailAccount.inc:144
+msgid "till"
+msgstr "до"
+
+#: personal/mail/class_mailAccount.inc:155
+msgid "Advanced mail options"
+msgstr "Дополнительные почтовые настройки"
+
+#: personal/mail/class_mailAccount.inc:163
+msgid "User is only allowed to send and receive local mails"
+msgstr "Пользователь может отправлять и получать почту только локально"
+
+#: personal/mail/class_mailAccount.inc:164
+msgid "Select if user can only send and receive inside his own domain"
+msgstr ""
+"Выберите, может ли пользователь отправлять и получать сообщения только "
+"внутри своего домена"
+
+#: personal/mail/class_mailAccount.inc:169
+msgid "No delivery to own mailbox"
+msgstr "Не оставлять копии в своем почтовом ящике"
+
+#: personal/mail/class_mailAccount.inc:170
+msgid "Select if you want to forward mails without getting own copies of them"
+msgstr "Выберите, нужно ли оставлять копии перенаправляемых сообщений"
+
+#: personal/mail/class_mailAccount.inc:261
+#, php-format
+msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
+msgstr "Почтовый ящик \"%s\" не существует на почтовом сервере: %s"
+
+#: personal/mail/class_mailAccount.inc:329
+#, php-format
+msgid "Cannot write quota settings: %s"
+msgstr "Не могу записать настройки квоты: \"%s\""
+
+#: personal/mail/class_mailAccount.inc:340
+#, php-format
+msgid "Mail error saving sieve settings: %s"
 msgstr ""
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:32
-msgid "IMAP/POP3 generic service"
+#: personal/mail/class_mail-methods.inc:144
+msgid "Configuration error"
+msgstr "Ошибка конфигурации"
+
+#: personal/mail/class_mail-methods.inc:145
+#, php-format
+msgid "The configured mail attribute '%s' is unsupported!"
 msgstr ""
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
-msgid "IMAP/POP3"
-msgstr "IMAP/POP3"
+#: personal/mail/class_mail-methods.inc:703
+msgid "Unknown"
+msgstr "Неизвестно"
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
-msgid "Services"
-msgstr "Сервисы"
+#: personal/mail/class_mail-methods.inc:705
+msgid "Unlimited"
+msgstr "Неограниченный"

@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-07-24 11:30+0200\n"
+"POT-Creation-Date: 2017-11-20 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
@@ -17,6 +17,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: config/personal/class_personalConfig.inc:28
+msgid "Personal configuration"
+msgstr "Личные настройки"
+
+#: config/personal/class_personalConfig.inc:29
+msgid "FusionDirectory personal plugin configuration"
+msgstr "Личные настройки плагинов FusionDirectory"
+
+#: config/personal/class_personalConfig.inc:42
+#: personal/personal/class_personalInfo.inc:85
+msgid "Personal"
+msgstr "Контакт"
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow use of private email for password recovery"
+msgstr ""
+"Позволить использовать приватный адрес электронной почты для восстановления "
+"пароля"
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow users to use their private email address for password recovery"
+msgstr ""
+"Позволить пользователям использовать свой приватный адрес электронной почты "
+"для восстановления пароля"
 
 #: personal/personal/class_personalInfo.inc:30
 msgid "Site"
@@ -33,11 +58,6 @@ msgstr "Ид"
 #: personal/personal/class_personalInfo.inc:36
 msgid "Id of this user on this website"
 msgstr "Идентификатор пользователя на этом сайте"
-
-#: personal/personal/class_personalInfo.inc:85
-#: config/personal/class_personalConfig.inc:42
-msgid "Personal"
-msgstr "Контакт"
 
 #: personal/personal/class_personalInfo.inc:86
 msgid "Personal information"
@@ -155,23 +175,3 @@ msgstr ""
 #: personal/personal/class_socialHandlers.inc:141
 msgid "LinkedIn"
 msgstr ""
-
-#: config/personal/class_personalConfig.inc:28
-msgid "Personal configuration"
-msgstr "Личные настройки"
-
-#: config/personal/class_personalConfig.inc:29
-msgid "FusionDirectory personal plugin configuration"
-msgstr "Личные настройки плагинов FusionDirectory"
-
-#: config/personal/class_personalConfig.inc:45
-msgid "Allow use of private email for password recovery"
-msgstr ""
-"Позволить использовать приватный адрес электронной почты для восстановления "
-"пароля"
-
-#: config/personal/class_personalConfig.inc:45
-msgid "Allow users to use their private email address for password recovery"
-msgstr ""
-"Позволить пользователям использовать свой приватный адрес электронной почты "
-"для восстановления пароля"

@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-07-24 11:30+0200\n"
+"POT-Creation-Date: 2017-11-20 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -18,30 +18,18 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/ejbca/class_ejbcaConfig.inc:28
-msgid "EJBCA plugin configuration"
-msgstr "Ρύθμιση προσθέτου EJBCA "
-
-#: config/ejbca/class_ejbcaConfig.inc:29
-msgid "FusionDirectory ejbca plugin configuration"
-msgstr "Ρύθμιση προσθέτου ejbca FusionDirectory "
-
-#: config/ejbca/class_ejbcaConfig.inc:42
-msgid "EJBCA plugin"
-msgstr "Πρόσθετο EJBCA"
-
-#: config/ejbca/class_ejbcaConfig.inc:45
-msgid "EJBCA RDN"
-msgstr "EJBCA RDN"
-
-#: config/ejbca/class_ejbcaConfig.inc:45
-msgid "Branch in which ejbca certificates are stored"
-msgstr "Κλάδος όπου τα πιστοποιητικά ejbca αποθηκεύονται"
-
-#: admin/ejbca/certificates/class_ejbcaCertificates.inc:29
 #: admin/ejbca/class_ejbcaManagement.inc:32
+#: admin/ejbca/certificates/class_ejbcaCertificates.inc:29
 msgid "EJBCA"
 msgstr "EJBCA"
+
+#: admin/ejbca/class_ejbcaManagement.inc:33
+msgid "EJBCA certificates management"
+msgstr "Διαχείριση πιστοποιητικών EJBCA"
+
+#: admin/ejbca/class_ejbcaManagement.inc:52
+msgid "Download"
+msgstr "Λήψη"
 
 #: admin/ejbca/certificates/class_ejbcaCertificates.inc:30
 msgid "Assign EJBCA certificates to a user"
@@ -54,14 +42,6 @@ msgstr "Πιστοποιητικά EJBCA "
 #: admin/ejbca/certificates/class_ejbcaCertificates.inc:52
 msgid "Certificates associated to this object"
 msgstr "Πιστοποιητικά που σχετίζονται με αυτό το αντικείμενο"
-
-#: admin/ejbca/class_ejbcaManagement.inc:33
-msgid "EJBCA certificates management"
-msgstr "Διαχείριση πιστοποιητικών EJBCA"
-
-#: admin/ejbca/class_ejbcaManagement.inc:52
-msgid "Download"
-msgstr "Λήψη"
 
 #: admin/ejbca/class_ejbcaCertificate.inc:30
 #: admin/ejbca/class_ejbcaCertificate.inc:31
@@ -85,3 +65,23 @@ msgstr "Κοινό όνομα"
 #: admin/ejbca/class_ejbcaCertificate.inc:55
 msgid "Certificate content"
 msgstr "Περιεχόμενο πιστοποιητικού"
+
+#: config/ejbca/class_ejbcaConfig.inc:28
+msgid "EJBCA plugin configuration"
+msgstr "Ρύθμιση προσθέτου EJBCA "
+
+#: config/ejbca/class_ejbcaConfig.inc:29
+msgid "FusionDirectory ejbca plugin configuration"
+msgstr "Ρύθμιση προσθέτου ejbca FusionDirectory "
+
+#: config/ejbca/class_ejbcaConfig.inc:42
+msgid "EJBCA plugin"
+msgstr "Πρόσθετο EJBCA"
+
+#: config/ejbca/class_ejbcaConfig.inc:45
+msgid "EJBCA RDN"
+msgstr "EJBCA RDN"
+
+#: config/ejbca/class_ejbcaConfig.inc:45
+msgid "Branch in which ejbca certificates are stored"
+msgstr "Κλάδος όπου τα πιστοποιητικά ejbca αποθηκεύονται"

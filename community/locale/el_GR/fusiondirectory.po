@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-07-24 11:30+0200\n"
+"POT-Creation-Date: 2017-11-20 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -18,25 +18,101 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/community/class_communityConfig.inc:28
-msgid "Community configuration"
+#: admin/departments/community/class_communityOrganization.inc:29
+msgid "Community organization"
 msgstr ""
 
-#: config/community/class_communityConfig.inc:29
-msgid "FusionDirectory community plugin configuration"
+#: admin/departments/community/class_communityOrganization.inc:30
+msgid "Community organization dates and alternate address"
 msgstr ""
 
-#: config/community/class_communityConfig.inc:41
-msgid "Community"
+#: admin/departments/community/class_communityOrganization.inc:42
+msgid "Membership"
 msgstr ""
 
-#: config/community/class_communityConfig.inc:45
-msgid "Membership type choices"
+#: admin/departments/community/class_communityOrganization.inc:45
+msgid "Membership type"
 msgstr ""
 
-#: config/community/class_communityConfig.inc:45
-msgid "Community membership types available in the user community tab"
+#: admin/departments/community/class_communityOrganization.inc:45
+msgid "Membership type of this organization"
 msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:50
+msgid "Agreement signed"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:50
+msgid "Did this member returned the agreement signed"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:54
+msgid "Active"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:54
+msgid "Is the membership of this organization active"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:58
+msgid "Hidden"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:58
+msgid "Should this membership be hidden from listings"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:64
+msgid "Dates"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:67
+msgid "Start date"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:67
+msgid "Date of the beginning"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:71
+msgid "End date"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:71
+msgid "Date of the end"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:78
+msgid "Contact"
+msgstr "Επαφή"
+
+#: admin/departments/community/class_communityOrganization.inc:81
+msgid "First name"
+msgstr "Όνομα"
+
+#: admin/departments/community/class_communityOrganization.inc:85
+msgid "Last name"
+msgstr "Επίθετο"
+
+#: admin/departments/community/class_communityOrganization.inc:89
+msgid "Address"
+msgstr "Διεύθυνση"
+
+#: admin/departments/community/class_communityOrganization.inc:89
+msgid "A postal address"
+msgstr ""
+
+#: admin/departments/community/class_communityOrganization.inc:93
+msgid "City"
+msgstr "Πόλη"
+
+#: admin/departments/community/class_communityOrganization.inc:97
+msgid "State"
+msgstr "Πολιτεία"
+
+#: admin/departments/community/class_communityOrganization.inc:101
+msgid "Country"
+msgstr "Χώρα"
 
 #: admin/departments/community/class_communityProject.inc:29
 msgid "Community project"
@@ -66,90 +142,22 @@ msgstr ""
 msgid "ID used for this project in other softwares or databases"
 msgstr ""
 
-#: admin/departments/community/class_communityOrganization.inc:29
-msgid "Community organization"
+#: config/community/class_communityConfig.inc:28
+msgid "Community configuration"
 msgstr ""
 
-#: admin/departments/community/class_communityOrganization.inc:30
-msgid "Community organization dates and alternate address"
+#: config/community/class_communityConfig.inc:29
+msgid "FusionDirectory community plugin configuration"
 msgstr ""
 
-#: admin/departments/community/class_communityOrganization.inc:42
-msgid "Membership"
+#: config/community/class_communityConfig.inc:41
+msgid "Community"
 msgstr ""
 
-#: admin/departments/community/class_communityOrganization.inc:45
-msgid "Membership type"
+#: config/community/class_communityConfig.inc:45
+msgid "Membership type choices"
 msgstr ""
 
-#: admin/departments/community/class_communityOrganization.inc:45
-msgid "Membership type of this organization"
+#: config/community/class_communityConfig.inc:45
+msgid "Community membership types available in the user community tab"
 msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:50
-msgid "Active"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:50
-msgid "Is the membership of this organization active"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:54
-msgid "Hidden"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:54
-msgid "Should this membership be hidden from listings"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:60
-msgid "Dates"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:63
-msgid "Start date"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:63
-msgid "Date of the beginning"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:67
-msgid "End date"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:67
-msgid "Date of the end"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:74
-msgid "Contact"
-msgstr "Επαφή"
-
-#: admin/departments/community/class_communityOrganization.inc:77
-msgid "First name"
-msgstr "Όνομα"
-
-#: admin/departments/community/class_communityOrganization.inc:81
-msgid "Last name"
-msgstr "Επίθετο"
-
-#: admin/departments/community/class_communityOrganization.inc:85
-msgid "Address"
-msgstr "Διεύθυνση"
-
-#: admin/departments/community/class_communityOrganization.inc:85
-msgid "A postal address"
-msgstr ""
-
-#: admin/departments/community/class_communityOrganization.inc:89
-msgid "City"
-msgstr "Πόλη"
-
-#: admin/departments/community/class_communityOrganization.inc:93
-msgid "State"
-msgstr "Πολιτεία"
-
-#: admin/departments/community/class_communityOrganization.inc:97
-msgid "Country"
-msgstr "Χώρα"

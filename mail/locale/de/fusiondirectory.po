@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-07-24 11:30+0200\n"
+"POT-Creation-Date: 2017-11-20 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
@@ -18,197 +18,118 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: personal/mail/class_mailAccount.inc:45
-#: personal/mail/class_mailAccount.inc:258
-#: personal/mail/class_mailAccount.inc:261
-#: personal/mail/class_mailAccount.inc:329
-#: personal/mail/class_mailAccount.inc:340
-#: personal/mail/class_mailAccount.inc:369
-#: personal/mail/class_mailAccount.inc:373
-#: admin/groups/mail/class_mailGroup.inc:183
-#: admin/groups/mail/class_mailGroup.inc:187
-msgid "Mail error"
-msgstr "Mail-Fehler"
-
-#: personal/mail/class_mailAccount.inc:45
-#, php-format
-msgid "Cannot read quota settings: %s"
-msgstr "Kontingent-Einstellungen können nicht gelesen werden: %s"
-
-#: personal/mail/class_mailAccount.inc:55
-msgid "Quota usage"
-msgstr "Kontingent-Nutzung"
-
-#: personal/mail/class_mailAccount.inc:56
-msgid "Part of the quota which is used"
-msgstr "Teil der verwendeten Quota"
-
-#: personal/mail/class_mailAccount.inc:73
-#: config/mail/class_mailPluginConfig.inc:28
 #: admin/groups/mail/class_mailGroup.inc:46
+#: config/mail/class_mailPluginConfig.inc:28
+#: personal/mail/class_mailAccount.inc:73
 msgid "Mail"
 msgstr "Mail"
 
-#: personal/mail/class_mailAccount.inc:74
-#: config/mail/class_mailPluginConfig.inc:41
-msgid "Mail settings"
-msgstr "Mail-Einstellungen"
+#: admin/groups/mail/class_mailGroup.inc:47
+msgid "Group mail options"
+msgstr "Gruppenmailoptionen"
 
-#: personal/mail/class_mailAccount.inc:96
-msgid "Mail account"
-msgstr "Mail-Konto"
+#: admin/groups/mail/class_mailGroup.inc:59
+msgid "Information"
+msgstr "Information"
 
-#: personal/mail/class_mailAccount.inc:99
 #: admin/groups/mail/class_mailGroup.inc:62
+#: personal/mail/class_mailAccount.inc:99
 msgid "Primary address"
 msgstr "Primäre Adresse"
 
-#: personal/mail/class_mailAccount.inc:99
-msgid "Primary mail address"
-msgstr "Primäre Mailadresse"
+#: admin/groups/mail/class_mailGroup.inc:62
+msgid "The primary mail address"
+msgstr "Die primäre Mailadresse"
 
-#: personal/mail/class_mailAccount.inc:103
 #: admin/groups/mail/class_mailGroup.inc:66
+#: personal/mail/class_mailAccount.inc:103
 msgid "Server"
 msgstr "Server"
 
-#: personal/mail/class_mailAccount.inc:103
-msgid "Specify the mail server where the user will be hosted on"
-msgstr "Wählen Sie den Mail-Server, auf dem dieses Konto angelegt werden soll"
+#: admin/groups/mail/class_mailGroup.inc:66
+msgid "Email server"
+msgstr "E-Mail-Server"
 
-#: personal/mail/class_mailAccount.inc:108
-msgid "Quota size"
-msgstr "Kontingent-Größe"
-
-#: personal/mail/class_mailAccount.inc:115
-msgid "Other addresses and redirections"
-msgstr "Weitere Adressen und Weiterleitungen"
-
-#: personal/mail/class_mailAccount.inc:119
 #: admin/groups/mail/class_mailGroup.inc:72
+#: personal/mail/class_mailAccount.inc:119
 msgid "Alternative addresses"
 msgstr "Alternative Adressen"
 
-#: personal/mail/class_mailAccount.inc:119
-msgid "List of alternative mail addresses"
-msgstr "Liste alternativer Mail-Adressen"
+#: admin/groups/mail/class_mailGroup.inc:72
+msgid "Alternative mail addresses for the group"
+msgstr "Alternative Mailadressen für die Gruppe"
 
-#: personal/mail/class_mailAccount.inc:124
-msgid "Forward messages to"
-msgstr "Nachrichten weiterleiten an"
+#: admin/groups/mail/class_mailGroup.inc:77
+msgid "Forward messages to non group members"
+msgstr "Weiterleiten der Nachrichten an nicht-Gruppenmitglieder"
 
-#: personal/mail/class_mailAccount.inc:124
-msgid "Addresses to which messages should be forwarded"
-msgstr "Adressen, an die Nachrichten weitergeleitet werden sollten"
+#: admin/groups/mail/class_mailGroup.inc:81
+msgid "Only allowed to receive local mail"
+msgstr ""
 
-#: personal/mail/class_mailAccount.inc:130
-#: personal/mail/class_mailAccount.inc:149
-msgid "Vacation message"
-msgstr "Urlaubsbenachrichtigung"
-
-#: personal/mail/class_mailAccount.inc:133
-msgid "Activate vacation message"
-msgstr "Urlaubsbenachrichtigung aktivieren"
-
-#: personal/mail/class_mailAccount.inc:134
+#: admin/groups/mail/class_mailGroup.inc:81
 msgid ""
-"Select to automatically response with the vacation message defined below"
+"Whether this group mail is only allowed to receive messages from local "
+"senders"
 msgstr ""
-"Wählen Sie dies, um automatisch eine Urlaubsmeldung mit dem unten angebenen "
-"Text zu versenden."
 
-#: personal/mail/class_mailAccount.inc:139
-msgid "from"
-msgstr "von"
-
-#: personal/mail/class_mailAccount.inc:144
-msgid "till"
-msgstr "bis"
-
-#: personal/mail/class_mailAccount.inc:155
-msgid "Advanced mail options"
-msgstr "Erweiterte Mail-Einstellungen"
-
-#: personal/mail/class_mailAccount.inc:163
-msgid "User is only allowed to send and receive local mails"
-msgstr "Der Benutzer darf nur lokale Mails senden und empfangen"
-
-#: personal/mail/class_mailAccount.inc:164
-msgid "Select if user can only send and receive inside his own domain"
-msgstr ""
-"Wählen Sie dies, wenn der Benutzer Mails nur innerhalb seiner Domäne senden "
-"und empfangen darf"
-
-#: personal/mail/class_mailAccount.inc:169
-msgid "No delivery to own mailbox"
-msgstr "Keine Zustellung in eigenes Postfach"
-
-#: personal/mail/class_mailAccount.inc:170
-msgid "Select if you want to forward mails without getting own copies of them"
-msgstr ""
-"Wählen Sie diese Einstellung, wenn Mails lediglich weitergeleitet werden "
-"sollen, ohne eine lokale Kopie zu speichern."
-
+#: admin/groups/mail/class_mailGroup.inc:159
 #: personal/mail/class_mailAccount.inc:258
 #: personal/mail/class_mailAccount.inc:323
-#: admin/groups/mail/class_mailGroup.inc:159
 #, php-format
 msgid "Mail method cannot connect: %s"
 msgstr "Mail-Methode kann nicht verbinden: %s"
 
-#: personal/mail/class_mailAccount.inc:261
-#, php-format
-msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:326
 #: admin/groups/mail/class_mailGroup.inc:162
+#: personal/mail/class_mailAccount.inc:326
 #, php-format
 msgid "Cannot update mailbox: %s"
 msgstr "Kann das Postfach nicht aktualisieren: '%s'"
 
-#: personal/mail/class_mailAccount.inc:329
-#, php-format
-msgid "Cannot write quota settings: %s"
-msgstr "Kann Kontingent-Einstellungen nicht sichern: %s"
-
-#: personal/mail/class_mailAccount.inc:340
-#, php-format
-msgid "Mail error saving sieve settings: %s"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:369
 #: admin/groups/mail/class_mailGroup.inc:183
+#: admin/groups/mail/class_mailGroup.inc:187
+#: personal/mail/class_mailAccount.inc:45
+#: personal/mail/class_mailAccount.inc:258
+#: personal/mail/class_mailAccount.inc:261
+#: personal/mail/class_mailAccount.inc:329
+#: personal/mail/class_mailAccount.inc:340
+#: personal/mail/class_mailAccount.inc:369
+#: personal/mail/class_mailAccount.inc:373
+msgid "Mail error"
+msgstr "Mail-Fehler"
+
+#: admin/groups/mail/class_mailGroup.inc:183
+#: personal/mail/class_mailAccount.inc:369
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:373
 #: admin/groups/mail/class_mailGroup.inc:187
+#: personal/mail/class_mailAccount.inc:373
 #, php-format
 msgid "Cannot remove mailbox: %s"
 msgstr "Kann das Postfach nicht entfernen: %s"
 
-#: personal/mail/class_mail-methods.inc:144
-msgid "Configuration error"
-msgstr "Konfigurationsfehler"
+#: admin/systems/services/imap/class_serviceIMAP.inc:32
+msgid "IMAP/POP3 generic service"
+msgstr "Generischer IMAP/POP3 Dienst"
 
-#: personal/mail/class_mail-methods.inc:145
-#, php-format
-msgid "The configured mail attribute '%s' is unsupported!"
-msgstr "Das eingestellte Mail-Attribut '%s' wird nicht unterstützt!"
+#: admin/systems/services/imap/class_serviceIMAP.inc:33
+msgid "IMAP/POP3"
+msgstr "IMAP/POP3"
 
-#: personal/mail/class_mail-methods.inc:703
-msgid "Unknown"
-msgstr "Unbekannt"
-
-#: personal/mail/class_mail-methods.inc:705
-msgid "Unlimited"
-msgstr "Ohne Beschränkung"
+#: admin/systems/services/imap/class_serviceIMAP.inc:33
+msgid "Services"
+msgstr "Dienste"
 
 #: config/mail/class_mailPluginConfig.inc:29
 msgid "Mail plugin configuration"
 msgstr "Mailplugin-Konfiguration"
+
+#: config/mail/class_mailPluginConfig.inc:41
+#: personal/mail/class_mailAccount.inc:74
+msgid "Mail settings"
+msgstr "Mail-Einstellungen"
 
 #: config/mail/class_mailPluginConfig.inc:44
 msgid "Account identification attribute"
@@ -283,48 +204,127 @@ msgstr "Geteiltes Prefix"
 msgid "Prefix to add for mail shared folders."
 msgstr "Hinzuzufügendes Prefix für Mail geteilter Ordner"
 
-#: admin/groups/mail/class_mailGroup.inc:47
-msgid "Group mail options"
-msgstr "Gruppenmailoptionen"
+#: personal/mail/class_mailAccount.inc:45
+#, php-format
+msgid "Cannot read quota settings: %s"
+msgstr "Kontingent-Einstellungen können nicht gelesen werden: %s"
 
-#: admin/groups/mail/class_mailGroup.inc:59
-msgid "Information"
-msgstr "Information"
+#: personal/mail/class_mailAccount.inc:55
+msgid "Quota usage"
+msgstr "Kontingent-Nutzung"
 
-#: admin/groups/mail/class_mailGroup.inc:62
-msgid "The primary mail address"
-msgstr "Die primäre Mailadresse"
+#: personal/mail/class_mailAccount.inc:56
+msgid "Part of the quota which is used"
+msgstr "Teil der verwendeten Quota"
 
-#: admin/groups/mail/class_mailGroup.inc:66
-msgid "Email server"
-msgstr ""
+#: personal/mail/class_mailAccount.inc:96
+msgid "Mail account"
+msgstr "Mail-Konto"
 
-#: admin/groups/mail/class_mailGroup.inc:72
-msgid "Alternative mail addresses for the group"
-msgstr "Alternative Mailadressen für die Gruppe"
+#: personal/mail/class_mailAccount.inc:99
+msgid "Primary mail address"
+msgstr "Primäre Mailadresse"
 
-#: admin/groups/mail/class_mailGroup.inc:77
-msgid "Forward messages to non group members"
-msgstr "Weiterleiten der Nachrichten an nicht-Gruppenmitglieder"
+#: personal/mail/class_mailAccount.inc:103
+msgid "Specify the mail server where the user will be hosted on"
+msgstr "Wählen Sie den Mail-Server, auf dem dieses Konto angelegt werden soll"
 
-#: admin/groups/mail/class_mailGroup.inc:81
-msgid "Only allowed to receive local mail"
-msgstr ""
+#: personal/mail/class_mailAccount.inc:108
+msgid "Quota size"
+msgstr "Kontingent-Größe"
 
-#: admin/groups/mail/class_mailGroup.inc:81
+#: personal/mail/class_mailAccount.inc:115
+msgid "Other addresses and redirections"
+msgstr "Weitere Adressen und Weiterleitungen"
+
+#: personal/mail/class_mailAccount.inc:119
+msgid "List of alternative mail addresses"
+msgstr "Liste alternativer Mail-Adressen"
+
+#: personal/mail/class_mailAccount.inc:124
+msgid "Forward messages to"
+msgstr "Nachrichten weiterleiten an"
+
+#: personal/mail/class_mailAccount.inc:124
+msgid "Addresses to which messages should be forwarded"
+msgstr "Adressen, an die Nachrichten weitergeleitet werden sollten"
+
+#: personal/mail/class_mailAccount.inc:130
+#: personal/mail/class_mailAccount.inc:149
+msgid "Vacation message"
+msgstr "Urlaubsbenachrichtigung"
+
+#: personal/mail/class_mailAccount.inc:133
+msgid "Activate vacation message"
+msgstr "Urlaubsbenachrichtigung aktivieren"
+
+#: personal/mail/class_mailAccount.inc:134
 msgid ""
-"Whether this group mail is only allowed to receive messages from local "
-"senders"
+"Select to automatically response with the vacation message defined below"
+msgstr ""
+"Wählen Sie dies, um automatisch eine Urlaubsmeldung mit dem unten angebenen "
+"Text zu versenden."
+
+#: personal/mail/class_mailAccount.inc:139
+msgid "from"
+msgstr "von"
+
+#: personal/mail/class_mailAccount.inc:144
+msgid "till"
+msgstr "bis"
+
+#: personal/mail/class_mailAccount.inc:155
+msgid "Advanced mail options"
+msgstr "Erweiterte Mail-Einstellungen"
+
+#: personal/mail/class_mailAccount.inc:163
+msgid "User is only allowed to send and receive local mails"
+msgstr "Der Benutzer darf nur lokale Mails senden und empfangen"
+
+#: personal/mail/class_mailAccount.inc:164
+msgid "Select if user can only send and receive inside his own domain"
+msgstr ""
+"Wählen Sie dies, wenn der Benutzer Mails nur innerhalb seiner Domäne senden "
+"und empfangen darf"
+
+#: personal/mail/class_mailAccount.inc:169
+msgid "No delivery to own mailbox"
+msgstr "Keine Zustellung in eigenes Postfach"
+
+#: personal/mail/class_mailAccount.inc:170
+msgid "Select if you want to forward mails without getting own copies of them"
+msgstr ""
+"Wählen Sie diese Einstellung, wenn Mails lediglich weitergeleitet werden "
+"sollen, ohne eine lokale Kopie zu speichern."
+
+#: personal/mail/class_mailAccount.inc:261
+#, php-format
+msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
 msgstr ""
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:32
-msgid "IMAP/POP3 generic service"
-msgstr "Generischer IMAP/POP3 Dienst"
+#: personal/mail/class_mailAccount.inc:329
+#, php-format
+msgid "Cannot write quota settings: %s"
+msgstr "Kann Kontingent-Einstellungen nicht sichern: %s"
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
-msgid "IMAP/POP3"
-msgstr "IMAP/POP3"
+#: personal/mail/class_mailAccount.inc:340
+#, php-format
+msgid "Mail error saving sieve settings: %s"
+msgstr ""
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
-msgid "Services"
-msgstr "Dienste"
+#: personal/mail/class_mail-methods.inc:144
+msgid "Configuration error"
+msgstr "Konfigurationsfehler"
+
+#: personal/mail/class_mail-methods.inc:145
+#, php-format
+msgid "The configured mail attribute '%s' is unsupported!"
+msgstr "Das eingestellte Mail-Attribut '%s' wird nicht unterstützt!"
+
+#: personal/mail/class_mail-methods.inc:703
+msgid "Unknown"
+msgstr "Unbekannt"
+
+#: personal/mail/class_mail-methods.inc:705
+msgid "Unlimited"
+msgstr "Ohne Beschränkung"

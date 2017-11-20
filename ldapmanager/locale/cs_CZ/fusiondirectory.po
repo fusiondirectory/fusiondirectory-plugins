@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-07-24 11:30+0200\n"
+"POT-Creation-Date: 2017-11-20 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -29,88 +29,6 @@ msgstr "Umožňuje importovat či exportovat ldap strom"
 #: addons/ldapmanager/tabs_ldif.inc:36
 msgid "Ldap manager"
 msgstr "správce LDAPu"
-
-#: addons/ldapmanager/class_csvimport.inc:29
-msgid "CSV import"
-msgstr "import(ovat) CSV"
-
-#: addons/ldapmanager/class_csvimport.inc:30
-msgid "Import of csv data into the ldap tree"
-msgstr "Importovat csv data do ldap stromu"
-
-#: addons/ldapmanager/class_csvimport.inc:43
-msgid "Import CSV"
-msgstr "Importovat CSV"
-
-#: addons/ldapmanager/class_csvimport.inc:46
-msgid "Object type"
-msgstr "Typ objektu"
-
-#: addons/ldapmanager/class_csvimport.inc:46
-msgid "Type of objects you wish to import"
-msgstr "Typ objektů, které chcete importovat"
-
-#: addons/ldapmanager/class_csvimport.inc:52
-msgid "Template"
-msgstr "šablona"
-
-#: addons/ldapmanager/class_csvimport.inc:52
-msgid "Select a template to apply to imported entries"
-msgstr "Vyberte šablonu, kterou aplikovat na importované položky"
-
-#: addons/ldapmanager/class_csvimport.inc:58
-msgid "CSV file"
-msgstr "Soubor CSV"
-
-#: addons/ldapmanager/class_csvimport.inc:58
-msgid "Import a CSV file into your LDAP"
-msgstr "Importovat CSV soubor do databáze LDAP"
-
-#: addons/ldapmanager/class_csvimport.inc:62
-msgid "Separator"
-msgstr "Oddělovač"
-
-#: addons/ldapmanager/class_csvimport.inc:62
-msgid "Character used as separator in the CSV file"
-msgstr "Znak sloužící jako oddělovač v CSV souboru"
-
-#: addons/ldapmanager/class_csvimport.inc:72
-msgid "Fixed values"
-msgstr "Neměnné hodnoty"
-
-#: addons/ldapmanager/class_csvimport.inc:72
-msgid ""
-"Some fixed values that you might wanna use in the filling of the template."
-msgstr ""
-"Některé neměnné hodnoty které by se mohly hodit při vyplňování šablony."
-
-#: addons/ldapmanager/class_csvimport.inc:81
-#: addons/ldapmanager/class_csvimport.inc:107
-#: addons/ldapmanager/class_ldapmanager.inc:121
-msgid "Import"
-msgstr "import(ovat)"
-
-#: addons/ldapmanager/class_csvimport.inc:88
-msgid "Template filling"
-msgstr "Vyplňování šablony"
-
-#: addons/ldapmanager/class_csvimport.inc:97
-msgid "Select fields associations"
-msgstr "Vyberte přiřazení políček"
-
-#: addons/ldapmanager/class_csvimport.inc:243
-#, php-format
-msgid "Import failed for line %d"
-msgstr ""
-
-#: addons/ldapmanager/class_csvimport.inc:250
-msgid "Success"
-msgstr "úspěch"
-
-#: addons/ldapmanager/class_csvimport.inc:250
-#, php-format
-msgid "Successfully imported %d entries"
-msgstr "%d položek bylo úspěšně importováno"
 
 #: addons/ldapmanager/class_ldapmanager.inc:45
 msgid "LDIF"
@@ -181,6 +99,12 @@ msgstr ""
 "FusionDirectory nebude ověřovat vaše LDIF data, zda jsou vhodná pro "
 "FusionDirectory."
 
+#: addons/ldapmanager/class_ldapmanager.inc:121
+#: addons/ldapmanager/class_csvimport.inc:81
+#: addons/ldapmanager/class_csvimport.inc:101
+msgid "Import"
+msgstr "import(ovat)"
+
 #: addons/ldapmanager/class_ldapmanager.inc:125
 msgid "Import LDIF file"
 msgstr "Importovat LDIF soubor"
@@ -212,3 +136,79 @@ msgstr "chyba"
 #, php-format
 msgid "Failed to generate ldap export, error was \"%s\"!"
 msgstr "Vytvoření ldap exportu se nezdařilo, chyba je v %s!"
+
+#: addons/ldapmanager/class_csvimport.inc:29
+msgid "CSV import"
+msgstr "import(ovat) CSV"
+
+#: addons/ldapmanager/class_csvimport.inc:30
+msgid "Import of csv data into the ldap tree"
+msgstr "Importovat csv data do ldap stromu"
+
+#: addons/ldapmanager/class_csvimport.inc:43
+msgid "Import CSV"
+msgstr "Importovat CSV"
+
+#: addons/ldapmanager/class_csvimport.inc:46
+msgid "Object type"
+msgstr "Typ objektu"
+
+#: addons/ldapmanager/class_csvimport.inc:46
+msgid "Type of objects you wish to import"
+msgstr "Typ objektů, které chcete importovat"
+
+#: addons/ldapmanager/class_csvimport.inc:52
+msgid "Template"
+msgstr "šablona"
+
+#: addons/ldapmanager/class_csvimport.inc:52
+msgid "Select a template to apply to imported entries"
+msgstr "Vyberte šablonu, kterou aplikovat na importované položky"
+
+#: addons/ldapmanager/class_csvimport.inc:58
+msgid "CSV file"
+msgstr "Soubor CSV"
+
+#: addons/ldapmanager/class_csvimport.inc:58
+msgid "Import a CSV file into your LDAP"
+msgstr "Importovat CSV soubor do databáze LDAP"
+
+#: addons/ldapmanager/class_csvimport.inc:62
+msgid "Separator"
+msgstr "Oddělovač"
+
+#: addons/ldapmanager/class_csvimport.inc:62
+msgid "Character used as separator in the CSV file"
+msgstr "Znak sloužící jako oddělovač v CSV souboru"
+
+#: addons/ldapmanager/class_csvimport.inc:72
+msgid "Fixed values"
+msgstr "Neměnné hodnoty"
+
+#: addons/ldapmanager/class_csvimport.inc:72
+msgid ""
+"Some fixed values that you might wanna use in the filling of the template."
+msgstr ""
+"Některé neměnné hodnoty které by se mohly hodit při vyplňování šablony."
+
+#: addons/ldapmanager/class_csvimport.inc:88
+msgid "Template filling"
+msgstr "Vyplňování šablony"
+
+#: addons/ldapmanager/class_csvimport.inc:91
+msgid "Select fields associations"
+msgstr "Vyberte přiřazení políček"
+
+#: addons/ldapmanager/class_csvimport.inc:237
+#, php-format
+msgid "Import failed for line %d"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:244
+msgid "Success"
+msgstr "úspěch"
+
+#: addons/ldapmanager/class_csvimport.inc:244
+#, php-format
+msgid "Successfully imported %d entries"
+msgstr "%d položek bylo úspěšně importováno"
