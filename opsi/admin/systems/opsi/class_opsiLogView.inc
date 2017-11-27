@@ -37,7 +37,7 @@ class opsiLogView extends simplePlugin
             'available_logs', FALSE
           ),
           new DisplayAttribute(
-            'test', _('Content of the selected log'),
+            '', _('Content of the selected log'),
             'display_log'
           ),
         )
