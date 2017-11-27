@@ -69,7 +69,6 @@ class argonautQueue extends simpleManagement
   {
     parent::configureHeadpage();
     $this->registerAction('processNow', 'processNow');
-    $this->registerAction('viewLogs',   'viewLogs');
     $this->registerAction('abort',      'abortEvent');
     $this->registerAction('import',     'importEvents');
     $this->registerAction('showError',  'showErrorEntry');
@@ -204,16 +203,6 @@ class argonautQueue extends simpleManagement
   {
     $entry = $this->getHeadpage()->getEntry($target[0]);
     $this->dialogObject = new argonautAction($entry['HEADERTAG'][0], array($entry['MACADDRESS'][0]), FALSE);
-  }
-
-  function viewLogs($action, array $target)
-  {
-    if (count($target) == 1) {
-      $entry        = $this->getHeadpage()->getEntry($target[0]);
-      $attrsWrapper = new stdClass();
-      $attrsWrapper->attrs = $entry['EVENT'];
-      $this->dialogObject = new faiLogView('', $attrsWrapper, $this);
-    }
   }
 
   function showErrorEntry($action, array $target)
