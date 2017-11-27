@@ -158,7 +158,7 @@ class opsiClient extends simplePlugin
     }
   }
 
-  function getMacAdresses()
+  function getMacAddresses()
   {
     global $config;
     $macAddresses = array();
@@ -193,7 +193,7 @@ class opsiClient extends simplePlugin
   {
     global $config;
     $s_daemon     = new supportDaemon();
-    $macAddresses = $this->getMacAdresses();
+    $macAddresses = $this->getMacAddresses();
     if (!empty($macAddresses) && $s_daemon->is_available()) {
       $s_daemon->append_call('OPSI.update_or_insert', $macAddresses, array());
       if ($s_daemon->is_error()) {
