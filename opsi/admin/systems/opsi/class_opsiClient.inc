@@ -84,6 +84,15 @@ class opsiClient extends simplePlugin
           ),
         )
       ),
+      'infos' => array(
+        'name'  => _('Information'),
+        'attrs' => array(
+          new DisplayAttribute(
+            _('Last seen'), _('Last time this OPSI client was seen by the OPSI server'),
+            'lastSeen', FALSE
+          ),
+        )
+      ),
     );
   }
 
@@ -100,6 +109,7 @@ class opsiClient extends simplePlugin
       }
     }
     $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setSubmitForm('product_changed');
+    $this->attributesAccess['lastSeen']->setAllowHTML(TRUE);
   }
 
   function save()
@@ -148,10 +158,9 @@ class opsiClient extends simplePlugin
     }
   }
 
-  function update_or_insert()
+  function getMacAdresses()
   {
     global $config;
-    $s_daemon   = new supportDaemon();
     $macAddresses = array();
     if ($this->editing_group()) {
       $ldap = $config->get_ldap_link();
@@ -172,8 +181,19 @@ class opsiClient extends simplePlugin
         }
       }
     } else {
-      $macAddresses = array($this->parent->getBaseObject()->macAddress);
+      $macAddresses = $this->parent->getBaseObject()->macAddress;
+      if (!is_array($macAddresses)) {
+        $macAddresses = array($macAddresses);
+      }
     }
+    return $macAddresses;
+  }
+
+  function update_or_insert()
+  {
+    global $config;
+    $s_daemon     = new supportDaemon();
+    $macAddresses = $this->getMacAdresses();
     if (!empty($macAddresses) && $s_daemon->is_available()) {
       $s_daemon->append_call('OPSI.update_or_insert', $macAddresses, array());
       if ($s_daemon->is_error()) {
@@ -242,34 +262,46 @@ class opsiClient extends simplePlugin
     }
     $this->attributesAccess['fdOpsiProfileDn']->setChoices($profilesdn, $profileslabel);
 
-    $opsi_args = array('id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript','updateScript','productVersion','packageVersion');
-    if (!isset($this->products[$this->fdOpsiServerDn])) {
-      $s_daemon = new supportDaemon();
-      if (!$s_daemon->is_available()) {
-        msg_dialog::display(
-          _("Could not contact argonaut server"),
-          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-        );
-        return;
-      }
-      $ldap->cat($this->fdOpsiServerDn);
-      if ($attrs = $ldap->fetch()) {
-        if (isset($attrs['macAddress'])) {
-          $macAddress = $attrs['macAddress'][0];
-        } else {
-          msg_dialog::display(
-            _("No mac address"),
-            sprintf(_("Server %s has no mac address configured in the LDAP"), $this->fdOpsiServerDn), ERROR_DIALOG
-          );
-          return FALSE;
-        }
+    $s_daemon = new supportDaemon();
+    if (!$s_daemon->is_available()) {
+      msg_dialog::display(
+        _('Could not contact argonaut server'),
+        msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+      );
+      return;
+    }
+    $ldap->cat($this->fdOpsiServerDn);
+    if ($attrs = $ldap->fetch()) {
+      if (isset($attrs['macAddress'][0])) {
+        $macAddress = $attrs['macAddress'][0];
       } else {
         msg_dialog::display(
-          sprintf(_("Could not find %s in the LDAP"), $this->fdOpsiServerDn),
-          msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
+          _('No mac address'),
+          sprintf(_('Server %s has no mac address configured in the LDAP'), $this->fdOpsiServerDn), ERROR_DIALOG
         );
         return FALSE;
       }
+    } else {
+      msg_dialog::display(
+        sprintf(_('Could not find %s in the LDAP'), $this->fdOpsiServerDn),
+        msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
+      );
+      return FALSE;
+    }
+    $infos = $s_daemon->append_call('OPSI.host_getObjects', $macAddress, array('args' => array(array('lastSeen', 'hardwareAddress'), array('hardwareAddress' => $this->getMacAddresses()))));
+    if ($s_daemon->is_error()) {
+      $this->lastSeen = sprintf(_('Failed to contact OPSI server: %s'), $s_daemon->get_error());
+    } elseif (count($infos) == 0) {
+      $this->lastSeen = _('Never');
+    } else {
+      $text = '';
+      foreach ($infos as $info) {
+        $text .= htmlentities(sprintf('%s - %s', $info['id'], $info['lastSeen']), ENT_COMPAT, 'UTF-8')."<br/>\n";
+      }
+      $this->lastSeen = $text;
+    }
+    if (!isset($this->products[$this->fdOpsiServerDn])) {
+      $opsi_args  = array('id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript','updateScript','productVersion','packageVersion');
       $localboots = $s_daemon->append_call('OPSI.get_localboots', $macAddress, array('args' => array($opsi_args)));
       if ($s_daemon->is_error()) {
         msg_dialog::display(
@@ -282,6 +314,13 @@ class opsiClient extends simplePlugin
       foreach ($localboots as $localboot) {
         $this->products[$this->fdOpsiServerDn]['localboots'][$localboot['id']] = $localboot;
       }
+    }
+    if ($s_daemon->is_error()) {
+      msg_dialog::display(
+        _('Failed to contact OPSI server'),
+        msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+      );
+      return;
     }
     $choices = array();
     foreach ($this->products[$this->fdOpsiServerDn]['localboots'] as $id => $infos) {
