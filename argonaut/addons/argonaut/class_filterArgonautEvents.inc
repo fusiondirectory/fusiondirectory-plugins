@@ -76,12 +76,6 @@ class filterArgonautEvents extends  filterLDAP
         $entry['objectClass'][] = "FAKE_OC__processNow";
       }
 
-      /* Add logview button, currently ever.
-       */
-      if ($acl_is_readable) {
-        $entry['objectClass'][] = "FAKE_OC__viewLogs";
-      }
-
       /* If PAUSED or WAITING add edit action
        */
       if (in_array($entry['STATUS'], array("waiting")) && $acl_is_writeable) {

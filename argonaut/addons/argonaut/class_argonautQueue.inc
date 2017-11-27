@@ -35,6 +35,8 @@ class argonautQueue extends simpleManagement
   var $acl_base;
   protected $aclCategory = 'argonautQueue/';
 
+  static protected $macInfos = array();
+
   static function plInfo()
   {
     return array(
@@ -67,7 +69,6 @@ class argonautQueue extends simpleManagement
   {
     parent::configureHeadpage();
     $this->registerAction('processNow', 'processNow');
-    $this->registerAction('viewLogs',   'viewLogs');
     $this->registerAction('abort',      'abortEvent');
     $this->registerAction('import',     'importEvents');
     $this->registerAction('showError',  'showErrorEntry');
@@ -204,16 +205,6 @@ class argonautQueue extends simpleManagement
     $this->dialogObject = new argonautAction($entry['HEADERTAG'][0], array($entry['MACADDRESS'][0]), FALSE);
   }
 
-  function viewLogs($action, array $target)
-  {
-    if (count($target) == 1) {
-      $entry        = $this->getHeadpage()->getEntry($target[0]);
-      $attrsWrapper = new stdClass();
-      $attrsWrapper->attrs = $entry['EVENT'];
-      $this->dialogObject = new faiLogView('', $attrsWrapper, $this);
-    }
-  }
-
   function showErrorEntry($action, array $target)
   {
     if (count($target) == 1) {
@@ -301,10 +292,37 @@ class argonautQueue extends simpleManagement
 
   static function filterHostName($mac, $name = '')
   {
-    if (isset($name[0]) && $name[0] != 'none') {
-      return htmlentities($name[0].' ('.$mac[0].')', ENT_COMPAT, 'UTF-8');
+    if (!isset(static::$macInfos[$mac[0]])) {
+      $types  = array('workstation','server','terminal');
+      $dn     = NULL;
+      foreach ($types as $type) {
+        $objects = objects::ls($type, array('dn' => 'raw'), NULL, '(macAddress='.$mac[0].')');
+        if (count($objects) > 1) {
+          trigger_error('Duplicated mac address '.$mac[0].' in LDAP');
+        }
+        if (count($objects) > 0) {
+          $dn = reset($objects);
+          break;
+        }
+      }
+      if (!empty($dn)) {
+        static::$macInfos[$mac[0]] = array(
+          'dn'    => $dn,
+          'type'  => $type
+        );
+      }
     }
-    return htmlentities($mac[0], ENT_COMPAT, 'UTF-8');
+    $text = '';
+    if (isset($name[0]) && $name[0] != 'none') {
+      $text = $name[0].' ('.$mac[0].')';
+    } else {
+      $text = $mac[0];
+    }
+    if (isset(static::$macInfos[$mac[0]])) {
+      return objects::link(static::$macInfos[$mac[0]]['dn'], static::$macInfos[$mac[0]]['type'], '', $text, TRUE);
+    } else {
+      return htmlentities($text, ENT_COMPAT, 'UTF-8');
+    }
   }
 
   static function filterTask($tag, $progress)
