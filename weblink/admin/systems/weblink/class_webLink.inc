@@ -48,6 +48,12 @@ class webLink extends simplePlugin
             'fdWebLinkProtocol', TRUE,
             array('https', 'http')
           ),
+          new SetAttribute (
+            new URLAttribute (
+              _('Arbitrary links'), _('Any URL you want to associate to this computer'),
+              'fdWebLinkURL', FALSE
+            )
+          ),
           new DisplayAttribute (
             _('Links'), _('Web links to this computer'),
             'fdWebLink', FALSE
@@ -100,13 +106,13 @@ class webLink extends simplePlugin
         }
       }
     }
-    return array_map(
+    return array_merge($this->fdWebLinkURL, array_map(
       function ($host) use ($protocol)
       {
         return $protocol.'://'.$host;
       },
       $hosts
-    );
+    ));
   }
 }
 
