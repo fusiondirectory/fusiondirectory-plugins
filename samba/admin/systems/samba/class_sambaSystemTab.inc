@@ -31,7 +31,7 @@ class sambaSystemTab extends simplePlugin
       'plDescription' => _('Windows workstation information'),
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('workstation'),
-      'plPriority'    => 5,
+      'plPriority'    => 6,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
