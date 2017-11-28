@@ -28,8 +28,9 @@ class dashboardNetwork extends simplePlugin
       'plShortName'   => _('Network'),
       'plDescription' => _('Statistics and various information'),
       'plObjectType'  => array('dashboard'),
+      'plPriority'    => 22,
 
-      'plProvidedAcls'    => array()
+      'plProvidedAcls'  => array()
     );
   }
 
