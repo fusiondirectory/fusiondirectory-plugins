@@ -40,5 +40,42 @@ class opsiManagement extends simpleManagement
       'plProvidedAcls' => array()
     );
   }
+
+  function configureHeadpage ()
+  {
+    $this->headpage->registerElementFilter('filterUsage', 'opsiManagement::filterUsage');
+    parent::configureHeadpage();
+  }
+
+  function parseXML ($file)
+  {
+    $data = parent::parseXML($file);
+    $data['list']['table']['layout'] = '|20px;c|||110px;c|150px;r|';
+    $data['list']['table']['column'][4] = $data['list']['table']['column'][3];
+    $data['list']['table']['column'][3] = array(
+      'label'         => 'Usage',
+      'value'         => '%{filter:filterUsage(objectType,dn)}',
+      'export'        => 'true',
+    );
+    return $data;
+  }
+
+  static function filterUsage($objectType, $dn)
+  {
+    if (empty($dn) || (strcasecmp($objectType, 'opsiProfile') != 0)) {
+      return '&nbsp;';
+    }
+    $systems  = objects::count('workstation', NULL, '(&(objectClass=opsiClient)(fdOpsiProfileDn='.$dn.'))', FALSE);
+    $groups   = objects::count('ogroup',      NULL, '(&(objectClass=opsiClient)(fdOpsiProfileDn='.$dn.'))', FALSE);
+    if (($systems == 0) && ($groups == 0)) {
+      return _('None');
+    } elseif ($groups == 0) {
+      return sprintf(_('%d systems'), $systems);
+    } elseif ($systems == 0) {
+      return sprintf(_('%d groups'), $groups);
+    } else {
+      return sprintf(_('%d systems, %d groups'), $systems, $groups);
+    }
+  }
 }
 ?>
