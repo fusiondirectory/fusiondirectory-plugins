@@ -30,6 +30,7 @@ class dashboardSystems extends simplePlugin
       'plShortName'   => _('Systems'),
       'plDescription' => _('Statistics and information about systems'),
       'plObjectType'  => array('dashboard'),
+      'plPriority'    => 20,
 
       'plProvidedAcls'  => array()
     );

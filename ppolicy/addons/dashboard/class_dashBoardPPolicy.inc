@@ -27,6 +27,7 @@ class dashboardPpolicy extends simplePlugin
       'plShortName'   => _('Ppolicy'),
       'plDescription' => _('Statistics about ppolicy expired users'),
       'plObjectType'  => array('dashboard'),
+      'plPriority'    => 12,
 
       'plProvidedAcls'  => array()
     );
