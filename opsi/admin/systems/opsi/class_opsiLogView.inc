@@ -60,20 +60,20 @@ class opsiLogView extends simplePlugin
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    /* Try to fetch logs for the given event (mac) */
-    $this->o_queue = new supportDaemon();
-
     if ($dn == '') {
       $dn = 'new';
     }
     parent::__construct($dn, $object, $parent, $mainTab);
+
+    /* Try to fetch logs for the given event (mac) */
+    $this->o_queue = new supportDaemon();
 
     /* Get correct macAddress. Check if an event is given or a ldap object. */
     if (isset($this->attrs['macAddress'][0])) {
       $this->mac = $this->attrs['macAddress'][0];
     }
 
-    if ($this->mac != '') {
+    if (isset($this->parent->by_object['opsiClient']) && $this->parent->by_object['opsiClient']->is_account && ($this->mac != '')) {
       /* Query for log files */
       $res = $this->o_queue->append_call('System.list_logs', $this->mac, array('args' => array()));
       if ($this->o_queue->is_error()) {
@@ -97,7 +97,7 @@ class opsiLogView extends simplePlugin
   function is_this_account($attrs)
   {
     /* Will not work when called from parent constructor (or when $attrs is not us) */
-    return (count($this->attributesAccess['available_logs']->getChoices()) > 0);
+    return (count($this->attributesAccess['available_logs']->getChoices()) > 1);
   }
 
   function loadLog()
