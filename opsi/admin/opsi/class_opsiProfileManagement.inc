@@ -67,14 +67,20 @@ class opsiManagement extends simpleManagement
     }
     $systems  = objects::count('workstation', NULL, '(&(objectClass=opsiClient)(fdOpsiProfileDn='.$dn.'))', FALSE);
     $groups   = objects::count('ogroup',      NULL, '(&(objectClass=opsiClient)(fdOpsiProfileDn='.$dn.'))', FALSE);
+
     if (($systems == 0) && ($groups == 0)) {
-      return _('None');
-    } elseif ($groups == 0) {
-      return sprintf(_('%d systems'), $systems);
-    } elseif ($systems == 0) {
-      return sprintf(_('%d groups'), $groups);
+      return '&nbsp;';
     } else {
-      return sprintf(_('%d systems, %d groups'), $systems, $groups);
+      $result = '';
+      if ($systems > 0) {
+        $typeInfos = objects::infos('workstation');
+        $result .= '<img class="center" src="'.htmlentities($typeInfos['icon'], ENT_COMPAT, 'UTF-8').'" title="'.$typeInfos['name'].'" alt="'.$typeInfos['name'].'"/>&nbsp;'.$systems;
+      }
+      if ($groups > 0) {
+        $typeInfos = objects::infos('ogroup');
+        $result .= '<img class="center" src="'.htmlentities($typeInfos['icon'], ENT_COMPAT, 'UTF-8').'" title="'.$typeInfos['name'].'" alt="'.$typeInfos['name'].'"/>&nbsp;'.$groups;
+      }
+      return $result;
     }
   }
 }

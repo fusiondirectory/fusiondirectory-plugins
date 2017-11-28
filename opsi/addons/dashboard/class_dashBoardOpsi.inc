@@ -39,6 +39,11 @@ class dashboardOpsi extends simplePlugin
         'attrs' => array(new FakeAttribute('stats')),
         'template' => get_template_path('opsi_stats.tpl', TRUE, dirname(__FILE__)),
       ),
+      'profiles' => array(
+        'name'  => _('Profiles'),
+        'attrs' => array(new FakeAttribute('profiles')),
+        'template' => get_template_path('opsi_profiles.tpl', TRUE, dirname(__FILE__)),
+      ),
     );
   }
 
@@ -46,10 +51,8 @@ class dashboardOpsi extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->stats = array(
-      'main'      => $this->main_stats(),
-      'profiles'  => $this->profile_stats(),
-    );
+    $this->stats    = $this->main_stats();
+    $this->profiles = $this->profile_stats();
   }
 
   function main_stats ()
