@@ -225,7 +225,7 @@ class systemManagement extends simpleManagement
       if (!empty($res['results'])) {
         $msg .= '<ul>'."\n";
         foreach ($res['results'] as $mac => $on) {
-          $msg .= '<li style="list-style-type:'.($on ? 'disk' : 'circle').';">'.objects::link($dns[$mac], $this->getType($dns[$mac])).' - '.($on ? 'On' : 'Off').'</li>'."\n";
+          $msg .= '<li style="list-style-type:'.($on ? 'disc' : 'circle').';">'.objects::link($dns[$mac], $this->getType($dns[$mac])).' - '.($on ? 'On' : 'Off').'</li>'."\n";
         }
         $msg .= "</ul>\n";
       }
