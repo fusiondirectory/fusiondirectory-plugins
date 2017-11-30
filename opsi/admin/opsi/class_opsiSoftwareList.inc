@@ -39,6 +39,9 @@ class opsiSoftwareList extends simplePlugin
         'ou'      => get_ou('opsiRDN'),
         'icon'    => 'geticon.php?context=applications&icon=opsi-software-list&size=16',
       )),
+      'plForeignKeys'   => array(
+        'fdOpsiServerDn' => 'serverGeneric',
+      ),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
