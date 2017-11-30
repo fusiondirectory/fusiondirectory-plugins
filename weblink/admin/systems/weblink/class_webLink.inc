@@ -40,8 +40,17 @@ class webLink extends simplePlugin
   static function getAttributesInfo ()
   {
     return array(
-      'main' => array(
-        'name'  => _('Web link'),
+      'links' => array(
+        'name'  => _('Links'),
+        'attrs' => array(
+          new DisplayAttribute (
+            _('Links'), _('Web links to this computer'),
+            'fdWebLink', FALSE
+          ),
+        )
+      ),
+      'settings' => array(
+        'name'  => _('Settings'),
         'attrs' => array(
           new SelectAttribute (
             _('Protocol'), _('Protocol to use to access this computer Web page'),
@@ -54,10 +63,6 @@ class webLink extends simplePlugin
               'fdWebLinkURL', FALSE
             )
           ),
-          new DisplayAttribute (
-            _('Links'), _('Web links to this computer'),
-            'fdWebLink', FALSE
-          )
         )
       ),
     );
@@ -72,14 +77,27 @@ class webLink extends simplePlugin
 
   function renderAttributes($readOnly = FALSE)
   {
-    $links = $this->computeLinks();
-    $this->fdWebLink = implode('<br/>'."\n", array_map(
-      function ($link)
-      {
-        return '<a target="_blank" href="'.$link.'">'.$link.'</a>';
-      },
-      $links
-    ));
+    $autoLinks = $this->computeLinks();
+    $html = '';
+    if (count($this->fdWebLinkURL) > 0) {
+      $html .= '<ul>'.implode("\n", array_map(
+        function ($link)
+        {
+          return '<li><a target="_blank" href="'.$link.'">'.$link.'</a></li>';
+        },
+        $this->fdWebLinkURL
+      )).'</ul>'."\n";
+    }
+    if (!empty($autoLinks)) {
+      $html .= '<ul>'.implode("\n", array_map(
+        function ($link)
+        {
+          return '<li><a target="_blank" href="'.$link.'">'.$link.'</a></li>';
+        },
+        $autoLinks
+      )).'</ul>'."\n";
+    }
+    $this->fdWebLink = $html;
     return parent::renderAttributes($readOnly);
   }
 
@@ -106,13 +124,13 @@ class webLink extends simplePlugin
         }
       }
     }
-    return array_merge($this->fdWebLinkURL, array_map(
+    return array_map(
       function ($host) use ($protocol)
       {
         return $protocol.'://'.$host;
       },
       $hosts
-    ));
+    );
   }
 }
 
