@@ -36,6 +36,10 @@ class opsiClient extends simplePlugin
       'plObjectType'  => array('workstation', 'ogroup-dynamic'),
       'plDepends'     => array('sambaSystemTab'),
       'plConflicts'   => array('debconfStartup','faiStartup'),
+      'plForeignKeys'   => array(
+        'fdOpsiServerDn'  => 'serverGeneric',
+        'fdOpsiProfileDn' => 'opsiProfile',
+      ),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
