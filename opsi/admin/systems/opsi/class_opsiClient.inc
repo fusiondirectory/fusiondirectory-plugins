@@ -38,6 +38,10 @@ class opsiClient extends simplePlugin
       'plDepends'     => array('sambaSystemTab'),
       'plConflicts'   => array('debconfStartup','faiStartup'),
       'plPriority'    => 8,
+      'plForeignKeys'   => array(
+        'fdOpsiServerDn'  => 'serverGeneric',
+        'fdOpsiProfileDn' => 'opsiProfile',
+      ),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
