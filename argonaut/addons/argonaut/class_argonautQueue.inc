@@ -301,7 +301,7 @@ class argonautQueue extends simpleManagement
           trigger_error('Duplicated mac address '.$mac[0].' in LDAP');
         }
         if (count($objects) > 0) {
-          $dn = reset($objects);
+          $dn = reset($objects)[0];
           break;
         }
       }
