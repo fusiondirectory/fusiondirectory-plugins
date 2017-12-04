@@ -228,16 +228,17 @@ class opsiProductProperties extends simplePlugin
       return;
     }
     $property = $this->properties[$productid][$propertyid];
+    $defaultValue = (isset($property['defaultValues'][0]) ? $property['defaultValues'][0] : '');
     if ($property['editable']) {
       $attr = new StringAttribute(
         '', $property['description'],
-        $property['propertyId'], FALSE, $property['defaultValues'][0]
+        $property['propertyId'], FALSE, $defaultValue
       );
     } else {
       $attr = new SelectAttribute(
         '', $property['description'],
         $property['propertyId'], FALSE,
-        $property['possibleValues'], $property['defaultValues'][0],
+        $property['possibleValues'], $defaultValue,
         array_map(
           function ($a)
           {
