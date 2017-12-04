@@ -63,26 +63,29 @@ class opsiLogView extends simplePlugin
     if ($dn == '') {
       $dn = 'new';
     }
+
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    /* Try to fetch logs for the given event (mac) */
-    $this->o_queue = new supportDaemon();
+    if (!$this->is_template) {
+      /* Try to fetch logs for the given event (mac) */
+      $this->o_queue = new supportDaemon();
 
-    /* Get correct macAddress. Check if an event is given or a ldap object. */
-    if (isset($this->attrs['macAddress'][0])) {
-      $this->mac = $this->attrs['macAddress'][0];
-    }
-
-    if (isset($this->parent->by_object['opsiClient']) && $this->parent->by_object['opsiClient']->is_account && ($this->mac != '')) {
-      /* Query for log files */
-      $res = $this->o_queue->append_call('System.list_logs', $this->mac, array('args' => array()));
-      if ($this->o_queue->is_error()) {
-        msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
+      /* Get correct macAddress. Check if an event is given or a ldap object. */
+      if (isset($this->attrs['macAddress'][0])) {
+        $this->mac = $this->attrs['macAddress'][0];
       }
 
-      /* Check if there is at least one log file */
-      if (is_array($res)) {
-        $this->attributesAccess['available_logs']->setChoices($res);
+      if (isset($this->parent->by_object['opsiClient']) && $this->parent->by_object['opsiClient']->is_account && ($this->mac != '')) {
+        /* Query for log files */
+        $res = $this->o_queue->append_call('System.list_logs', $this->mac, array('args' => array()));
+        if ($this->o_queue->is_error()) {
+          msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
+        }
+
+        /* Check if there is at least one log file */
+        if (is_array($res)) {
+          $this->attributesAccess['available_logs']->setChoices($res);
+        }
       }
     }
 
@@ -102,6 +105,9 @@ class opsiLogView extends simplePlugin
 
   function loadLog()
   {
+    if ($this->is_template) {
+      return;
+    }
     $res = $this->o_queue->append_call('System.get_log', $this->mac, array('args' => array($this->available_logs)));
     if ($this->o_queue->is_error()) {
       msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
