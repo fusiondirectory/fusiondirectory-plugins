@@ -110,7 +110,7 @@ class dashboardPpolicy extends simplePlugin
         'pwdChangedTime'        => 1,
         'pwdPolicySubentry'     => 1,
         'pwdAccountLockedTime'  => 1,
-      ), NULL, '(|(pwdAccountLockedTime=*)(pwdChangedTime=*))');
+      ), NULL, '(|(pwdAccountLockedTime=*)(pwdChangedTime=*))', TRUE);
     $locked_users           = array();
     $expired_accounts       = array();
     $next_expired_accounts  = array();
