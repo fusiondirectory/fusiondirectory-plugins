@@ -83,12 +83,15 @@ class dashboardOpsi extends simplePlugin
     );
 
     foreach ($stats as &$stat) {
-      if (isset($stat['type'])) {
-        $stat['nb'] = objects::count($stat['type'], NULL, $stat['filter'], FALSE);
-      } else {
-        $ldap->cd($config->current['BASE']);
-        $ldap->search($stat['filter'], array('dn'));
-        $stat['nb'] = $ldap->count();
+      try {
+        $stat['nb'] = count(objects::ls($stat['type'], NULL, NULL, $stat['filter'], TRUE));
+      } catch (FusionDirectoryException $e) {
+        $stat['nb'] = 0;
+        msg_dialog::display(
+          _('Error'),
+          sprintf(_('Statistics for OPSI could not be computed because of the following error: %s'), $e->getMessage()),
+          ERROR_DIALOG
+        );
       }
     }
     unset($stat);

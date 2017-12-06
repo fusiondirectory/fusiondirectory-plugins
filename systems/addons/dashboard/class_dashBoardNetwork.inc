@@ -67,30 +67,40 @@ class dashboardNetwork extends simplePlugin
 
   function dhcp_infos()
   {
-    global $config;
-    if (!class_available("dhcpService")) {
+    global $config, $ui;
+
+    if (!class_available('dhcpService')) {
       return array();
     }
-    $ldap = $config->get_ldap_link();
 
-    $ldap->cd($config->current['BASE']);
-    $ldap->search("(objectClass=dhcpServer)", array("cn","dhcpServiceDN"));
+    try {
+      $objects = objects::ls('server', array('cn' => 'raw', 'dhcpServiceDN' => 1), NULL, '(objectClass=dhcpServer)', TRUE);
+    } catch (FusionDirectoryException $e) {
+      $objects = array();
+      msg_dialog::display(
+        _('Error'),
+        sprintf(_('Statistics for DHCP could not be computed because of the following error: %s'), $e->getMessage()),
+        ERROR_DIALOG
+      );
+    }
 
     $servers = array();
-    while ($attrs = $ldap->fetch()) {
+    foreach ($objects as $dn => $attrs) {
       $zones = array();
-      $ldap_zone = $config->get_ldap_link();
-      $ldap_zone->cd($attrs['dhcpServiceDN'][0]);
-      $ldap_zone->search("(objectClass=dhcpSubnet)", array("cn","dhcpNetMask"));
-      while ($attrs_zone = $ldap_zone->fetch()) {
-        $zones[] = array(
-          'text' => $attrs_zone['cn'][0]."/".$attrs_zone['dhcpNetMask'][0]
-        );
+      if (strpos($ui->get_permissions($attrs['dhcpServiceDN'], 'dhcpConfiguration/dhcpSubnet', 'dhcpNetMask'), 'r') !== FALSE) {
+        $ldap_zone = $config->get_ldap_link();
+        $ldap_zone->cd($attrs['dhcpServiceDN']);
+        $ldap_zone->search('(objectClass=dhcpSubnet)', array('cn','dhcpNetMask'));
+        while ($attrs_zone = $ldap_zone->fetch()) {
+          $zones[] = array(
+            'text' => $attrs_zone['cn'][0]."/".$attrs_zone['dhcpNetMask'][0]
+          );
+        }
       }
 
       $servers[] = array(
         'name'  => $attrs['cn'][0],
-        'link'  => objects::link($attrs['dn'], 'server', 'service_serviceDHCP', $attrs, FALSE),
+        'link'  => objects::link($dn, 'server', 'service_serviceDHCP', $attrs, FALSE),
         'zones' => $zones
       );
     }
@@ -104,7 +114,7 @@ class dashboardNetwork extends simplePlugin
       return array();
     }
     $servers  = array();
-    $zones    = objects::ls('dnsZone', array('zoneName' => 1, 'sOARecord' => 1));
+    $zones    = objects::ls('dnsZone', array('zoneName' => 1, 'sOARecord' => 1), NULL, '', TRUE);
     foreach ($zones as $zonedn => $zone) {
       list ($fqdn)  = explode(' ', $zone['sOARecord']);
       $search = dnsManagement::findServerByFQDN($fqdn, $zonedn);
