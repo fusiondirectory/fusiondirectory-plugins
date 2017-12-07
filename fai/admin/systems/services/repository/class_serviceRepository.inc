@@ -151,8 +151,9 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
 
 class serviceRepository extends simpleService
 {
+  protected static $showActions = FALSE;
+
   var $objectclasses  = array('FAIrepositoryServer');
-  var $showActions    = FALSE;
 
   static function plInfo()
   {

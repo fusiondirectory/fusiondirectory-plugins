@@ -101,11 +101,6 @@ class argonautFuseConfig extends simpleService
    */
   function execute ()
   {
-    if ($this->is_account && !$this->view_logged) {
-      $this->view_logged = TRUE;
-      logging::log('view', 'server/'.get_class($this), $this->dn);
-    }
-
     $str = "<div style='width:100%; text-align:right; clear:both; float:none;'>".
            "  <input type='submit' name='SaveService' value='".msgPool::saveButton()."'>&nbsp;".
            "  <input type='submit' name='CancelService' value='".msgPool::cancelButton()."'>".
