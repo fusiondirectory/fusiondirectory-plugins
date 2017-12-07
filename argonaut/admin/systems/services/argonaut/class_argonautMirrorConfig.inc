@@ -20,8 +20,9 @@
 
 class argonautMirrorConfig extends simpleService
 {
+  protected static $showActions = FALSE;
+
   var $objectclasses  = array('argonautMirrorConfig');
-  var $showActions    = FALSE;
 
   static function plInfo()
   {

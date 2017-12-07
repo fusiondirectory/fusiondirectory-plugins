@@ -27,12 +27,16 @@ class argonautServer extends simpleService
   /* Return plugin information for acl handling */
   static function plInfo()
   {
+    $acls = parent::generatePlProvidedAcls(static::getAttributesInfo());
+    unset($acls['simpleServiceStart']);
+    unset($acls['simpleServiceStop']);
+    unset($acls['simpleServiceRestart']);
     return array(
       'plShortName'   => _('Argonaut server'),
       'plDescription' => _('Argonaut server').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=argonaut&size=16',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => $acls,
     );
   }
 
