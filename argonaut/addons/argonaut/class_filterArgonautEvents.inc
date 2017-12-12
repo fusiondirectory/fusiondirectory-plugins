@@ -46,12 +46,20 @@ class filterArgonautEvents extends  filterLDAP
     $ui   = get_userinfo();
 
 
-    $acl_base = $config->current['BASE'];
-    $acl_is_writeable   = preg_match('/w/', $ui->get_permissions($acl_base, "argonautQueue/argonautQueue", "0"));
-    $acl_is_removeable  = preg_match('/d/', $ui->get_permissions($acl_base, "argonautQueue/argonautQueue", "0"));
-    $acl_is_readable    = preg_match('/r/', $ui->get_permissions($acl_base, "argonautQueue/argonautQueue", "0"));
-
     foreach ($entries as $entry) {
+      if (isset($entry['TARGETDN'])) {
+        $acl_base = $entry['TARGETDN'];
+      } else {
+        $acl_base = $config->current['BASE'];
+      }
+
+      $acl_is_writeable   = preg_match('/w/', $ui->get_permissions($acl_base, "argonautQueue/argonautQueue", "0"));
+      $acl_is_removeable  = preg_match('/d/', $ui->get_permissions($acl_base, "argonautQueue/argonautQueue", "0"));
+      $acl_is_readable    = preg_match('/r/', $ui->get_permissions($acl_base, "argonautQueue/argonautQueue", "0"));
+
+      if (!$acl_is_readable) {
+        continue;
+      }
 
       // Detect entry status
       $entry['objectClass'][] = "FAKE_OC__gotoEvent";

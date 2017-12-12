@@ -35,8 +35,6 @@ class argonautQueue extends simpleManagement
   var $acl_base;
   protected $aclCategory = 'argonautQueue/';
 
-  static protected $macInfos = array();
-
   static function plInfo()
   {
     return array(
@@ -290,36 +288,16 @@ class argonautQueue extends simpleManagement
     return preg_match('/d/', $ui->get_permissions($this->acl_base, $this->aclCategory.get_class($this), '0'));
   }
 
-  static function filterHostName($mac, $name = '')
+  static function filterHostName($mac, $name = '', $targetdn = '', $targettype = '')
   {
-    if (!isset(static::$macInfos[$mac[0]])) {
-      $types  = array('workstation','server','terminal');
-      $dn     = NULL;
-      foreach ($types as $type) {
-        $objects = objects::ls($type, array('dn' => 'raw'), NULL, '(macAddress='.$mac[0].')');
-        if (count($objects) > 1) {
-          trigger_error('Duplicated mac address '.$mac[0].' in LDAP');
-        }
-        if (count($objects) > 0) {
-          $dn = reset($objects)['dn'];
-          break;
-        }
-      }
-      if (!empty($dn)) {
-        static::$macInfos[$mac[0]] = array(
-          'dn'    => $dn,
-          'type'  => $type
-        );
-      }
-    }
     $text = '';
     if (isset($name[0]) && $name[0] != 'none') {
       $text = $name[0].' ('.$mac[0].')';
     } else {
       $text = $mac[0];
     }
-    if (isset(static::$macInfos[$mac[0]])) {
-      return objects::link(static::$macInfos[$mac[0]]['dn'], static::$macInfos[$mac[0]]['type'], '', $text, TRUE);
+    if (!empty($targetdn[0]) && !empty($targettype[0])) {
+      return objects::link($targetdn[0], $targettype[0], '', $text, TRUE);
     } else {
       return htmlentities($text, ENT_COMPAT, 'UTF-8');
     }
