@@ -90,10 +90,7 @@ class argonautQueue extends simpleManagement
    */
   protected function removeEntryRequested($action, array $target, array $all)
   {
-    if (!$this->acl_is_removeable()) {
-      msg_dialog::display(_('Permission'), msgPool::permDelete(), ERROR_DIALOG);
-      return;
-    }
+    $nodelete   = array();
     $disallowed = array();
     $this->dns  = array();
 
@@ -112,18 +109,25 @@ class argonautQueue extends simpleManagement
         $j_name = $task['ID']." - ".$task['HEADERTAG']."&nbsp;".$task['MACADDRESS'];
       }
 
-      /* Only remove WAITING or ERROR entries */
-      if (in_array($task['STATUS'], array('waiting','error','processed')) ||
-          ($task['STATUS'] == 'processing' && !preg_match('/install/', $task['HEADERTAG'])) ) {
-        $this->dns[] = $dn;
+      if ($this->acl_is_removeable($task['TARGETDN'])) {
+        /* Only remove WAITING or ERROR entries */
+        if (in_array($task['STATUS'], array('waiting','error','processed')) ||
+            ($task['STATUS'] == 'processing' && !preg_match('/install/', $task['HEADERTAG'])) ) {
+          $this->dns[] = $dn;
+        } else {
+          $nodelete[] = $j_name;
+        }
       } else {
-        $disallowed[] = $j_name;
+        $disallowed[] = $dn;
       }
     }
-    if (count($disallowed)) {
+    if (count($nodelete)) {
       msg_dialog::display(_('Remove'),
           sprintf(_('The following jobs couldn\'t be deleted, they have to be aborted: %s'),
-            '<br/>'.msgPool::buildList($disallowed)), INFO_DIALOG);
+            '<br/>'.msgPool::buildList($nodelete)), INFO_DIALOG);
+    }
+    if (count($disallowed)) {
+      msg_dialog::display(_('Permission'), msgPool::permDelete($disallowed), INFO_DIALOG);
     }
 
     // We've at least one entry to delete.
@@ -160,15 +164,15 @@ class argonautQueue extends simpleManagement
 
   function removeEntryConfirmed($action, array $target, array $all)
   {
-    if ($this->acl_is_removeable()) {
-      timezone::get_default_timezone();
-      $ids = array();
-      foreach ($this->dns as $dn) {
-        $entry  = $this->headpage->getEntry($dn);
+    timezone::get_default_timezone();
+    $ids = array();
+    foreach ($this->dns as $dn) {
+      $entry  = $this->headpage->getEntry($dn);
+      if ($this->acl_is_removeable($entry['EVENT']['TARGETDN'])) {
         $ids[]  = $entry['EVENT']['ID'];
       }
-      $this->o_queue->remove_entries($ids);
     }
+    $this->o_queue->remove_entries($ids);
   }
 
   /*! \brief  Force queue job to be aborted.
@@ -279,13 +283,13 @@ class argonautQueue extends simpleManagement
     return TRUE;
   }
 
-  private function acl_is_removeable()
+  private function acl_is_removeable($dn)
   {
     if ($this->read_only) {
       return FALSE;
     }
     $ui = get_userinfo();
-    return preg_match('/d/', $ui->get_permissions($this->acl_base, $this->aclCategory.get_class($this), '0'));
+    return (strpos($ui->get_permissions($dn, $this->aclCategory.get_class($this), '0'), 'd') !== FALSE);
   }
 
   static function filterHostName($mac, $name = '', $targetdn = '', $targettype = '')
