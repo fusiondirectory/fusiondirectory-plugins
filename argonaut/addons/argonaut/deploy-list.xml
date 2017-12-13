@@ -27,7 +27,7 @@
       <label>Target</label>
       <sortAttribute>MACADDRESS</sortAttribute>
       <sortType>string</sortType>
-      <value>%{filter:hostName(MACADDRESS,PLAINNAME)}</value>
+      <value>%{filter:hostName(MACADDRESS,PLAINNAME,TARGETDN,TARGETTYPE)}</value>
       <export>true</export>
     </column>
 
