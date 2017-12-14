@@ -69,6 +69,7 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
     $config = session::global_get('config');
     $plist  = session::global_get('plist');
     $ui     = session::global_get('ui');
+    initLanguage();
   } else {
     $config = new config(CONFIG_DIR."/".CONFIG_FILE, $BASE_DIR);
     if ($ldap === NULL) {
