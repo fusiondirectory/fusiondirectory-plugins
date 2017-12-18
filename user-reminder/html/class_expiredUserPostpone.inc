@@ -168,7 +168,7 @@ class expiredUserPostpone extends standAlonePage
       }
       if (!empty($manager_dn)) {
         $ldap->cat($manager_dn, array('cn', 'mail'));
-        if ($attrs = $ldap->fetch() && isset($attrs['mail'][0])) {
+        if (($attrs = $ldap->fetch()) && isset($attrs['mail'][0])) {
           $manager_mail = $attrs['mail'][0];
         }
       }
