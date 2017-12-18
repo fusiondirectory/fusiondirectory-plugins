@@ -183,17 +183,11 @@ class expiredUserPostpone extends standAlonePage
     }
     $body = sprintf($this->mail_body, $cn, $this->uid);
 
-    /* From */
-    $headers = "From: ".$this->from_mail."\r\n";
-    $headers .= "Reply-To: ".$this->from_mail."\r\n";
-
-    $additional_parameters = "-f".$this->from_mail;
-
     if (!empty($manager_mail)) {
       $email_address .= ','.$manager_mail;
     }
 
-    if (!mail($email_address, $this->mail_subject, $body, $headers, $additional_parameters)) {
+    if (!mail_utf8($email_address, FALSE, $this->from_mail, $this->mail_subject, $body)) {
       $this->message[] = _('Contact your administrator, there was a problem with mail server');
     }
   }
