@@ -28,6 +28,8 @@ class opsiClient extends simplePlugin
   var $initialMembers;
   var $products;
 
+  protected $initialOpsiId = NULL;
+
   static function plInfo ()
   {
     return array(
@@ -115,6 +117,10 @@ class opsiClient extends simplePlugin
     }
     $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setSubmitForm('product_changed');
     $this->attributesAccess['lastSeen']->setAllowHTML(TRUE);
+    if ($this->initialOpsiId === NULL) {
+      // If we have no OPSI id avoid storing one from a future server change
+      $this->initialOpsiId = FALSE;
+    }
   }
 
   function save()
@@ -200,7 +206,11 @@ class opsiClient extends simplePlugin
     $s_daemon     = new supportDaemon();
     $macAddresses = $this->getMacAddresses();
     if (!empty($macAddresses) && $s_daemon->is_available()) {
-      $s_daemon->append_call('OPSI.update_or_insert', $macAddresses, array());
+      if (!$this->editing_group() && !empty($this->initialOpsiId)) {
+        $s_daemon->append_call('OPSI.update_or_insert', reset($macAddresses), array($this->initialOpsiId));
+      } else {
+        $s_daemon->append_call('OPSI.update_or_insert', $macAddresses, array());
+      }
       if ($s_daemon->is_error()) {
         msg_dialog::display(
           _('Could not update OPSI information'),
@@ -299,6 +309,9 @@ class opsiClient extends simplePlugin
     } elseif (count($infos) == 0) {
       $this->lastSeen = _('Never');
     } else {
+      if (!$this->editing_group() && ($this->initialOpsiId === NULL)) {
+        $this->initialOpsiId = reset($infos)['id'];
+      }
       $text = '';
       foreach ($infos as $info) {
         $text .= htmlentities(sprintf('%s - %s', $info['id'], $info['lastSeen']), ENT_COMPAT, 'UTF-8')."<br/>\n";
