@@ -207,7 +207,7 @@ class opsiClient extends simplePlugin
     $macAddresses = $this->getMacAddresses();
     if (!empty($macAddresses) && $s_daemon->is_available()) {
       if (!$this->editing_group() && !empty($this->initialOpsiId)) {
-        $s_daemon->append_call('OPSI.update_or_insert', reset($macAddresses), array($this->initialOpsiId));
+        $s_daemon->append_call('OPSI.update_or_insert', reset($macAddresses), array('args' => array($this->initialOpsiId)));
       } else {
         $s_daemon->append_call('OPSI.update_or_insert', $macAddresses, array());
       }
