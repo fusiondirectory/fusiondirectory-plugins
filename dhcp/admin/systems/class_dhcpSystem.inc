@@ -172,7 +172,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       } else {
         $removedips = array_diff($oldips, $newips);
         foreach ($values as $key => $value) {
-          if (in_array($value, $removedips)) {
+          if (in_array($value[2], $removedips)) {
             unset($values[$key]);
           }
         }
@@ -181,15 +181,15 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     if ($macchanged) {
       if ((count($oldmacs) == 1) && (count($newmacs) == 1)) {
         foreach ($values as &$value) {
-          if ($value[2] == reset($oldmacs)) {
-            $value[2] = reset($newmacs);
+          if ($value[1] == reset($oldmacs)) {
+            $value[1] = reset($newmacs);
           }
         }
         unset($value);
       } else {
         $removedmacs = array_diff($oldmacs, $newmacs);
         foreach ($values as $key => $value) {
-          if (in_array($value, $removedmacs)) {
+          if (in_array($value[1], $removedmacs)) {
             unset($values[$key]);
           }
         }
@@ -233,9 +233,9 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       }
       $dhcpTabs = objects::open($configDn, 'dhcpConfiguration');
       $dhcpTabs->getBaseObject()->attributesAccess['dhcpSections']->addHost($value[0], $cn, $value[1], $value[2]);
-      $errors = $dhcpTabs->save();
+      $msgs = $dhcpTabs->save();
       del_lock($configDn);
-      msg_dialog::displayChecks($errors);
+      msg_dialog::displayChecks($msgs);
     }
 
     return $errors;
