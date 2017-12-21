@@ -55,6 +55,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       _('Mac'),
       _('IP')
     ));
+    $this->setInLdap(FALSE);
   }
 
   protected function loadAttrValue ($attrs)
@@ -382,7 +383,7 @@ class dhcpSystem extends simplePlugin
     return TRUE;
   }
 
-  function ldap_save()
+  protected function ldap_save()
   {
     global $config;
 
