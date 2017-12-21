@@ -112,23 +112,15 @@ class workstationGeneric extends ipHostPlugin
     $this->attributesAccess['cn']->setUnique(TRUE);
   }
 
-  function remove_from_parent()
+  protected function post_remove()
   {
-    if (!$this->initially_was_account) {
-      return;
+    /* Clean queue form entries with this mac */
+    if (class_available('supportDaemon') && tests::is_mac($this->attributesAccess['macAddress']->getInitialValue())) {
+      $q = new supportDaemon();
+      $q->clean_queue_from_mac($this->attributesAccess['macAddress']->getInitialValue());
     }
 
-    if ($this->acl_is_removeable()) {
-      $errors = parent::remove_from_parent();
-
-      /* Clean queue form entries with this mac */
-      if (class_available('supportDaemon') && tests::is_mac($this->attributesAccess['macAddress']->getInitialValue())) {
-        $q = new supportDaemon();
-        $q->clean_queue_from_mac($this->attributesAccess['macAddress']->getInitialValue());
-      }
-
-      return $errors;
-    }
+    return parent::post_remove();
   }
 }
 ?>

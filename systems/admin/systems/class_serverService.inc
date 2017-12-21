@@ -398,15 +398,15 @@ class ServerService extends simpleManagement
     // save_object of the dialog is called in management::execute
   }
 
-  /*! \brief    Remove all active services
+  /*! \brief Remove all active services
    */
-  function remove_from_parent()
+  function remove($fulldelete = FALSE)
   {
     $errors = array();
     foreach ($this->plugins as $name => $obj) {
       $this->updateServicesVars($name);
       if ($this->plugins[$name]->initially_was_account) {
-        $result = $this->plugins[$name]->remove_from_parent();
+        $result = $this->plugins[$name]->remove($fulldelete);
         if (!empty($result)) {
           $errors = array_merge($errors, $result);
         }
@@ -426,7 +426,7 @@ class ServerService extends simpleManagement
       if ($this->plugins[$name]->is_account) {
         $result = $this->plugins[$name]->save();
       } elseif ($this->plugins[$name]->initially_was_account) {
-        $result = $this->plugins[$name]->remove_from_parent();
+        $result = $this->plugins[$name]->remove(FALSE);
       }
       if (!empty($result)) {
         $errors = array_merge($errors, $result);

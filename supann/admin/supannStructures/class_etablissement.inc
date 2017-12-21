@@ -135,10 +135,10 @@ class etablissement extends simplePlugin
     $this->set_root = (($root_code !== FALSE) && ($root_code == $this->supannEtablissement));
   }
 
-  function remove_from_parent()
+  protected function ldap_remove()
   {
     global $config;
-    $errors = parent::remove_from_parent();
+    $errors = parent::ldap_remove();
     if (!empty($errors)) {
       return $errors;
     }
@@ -152,6 +152,7 @@ class etablissement extends simplePlugin
         msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()));
       }
     }
+    return array();
   }
 
   function ldap_save()
