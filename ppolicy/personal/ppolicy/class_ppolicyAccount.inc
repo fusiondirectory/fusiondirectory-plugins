@@ -119,7 +119,7 @@ class ppolicyAccount extends simplePlugin
     }
   }
 
-  function remove_from_parent()
+  function remove($fulldelete = FALSE)
   {
     /* ppolicy fields are not real fields, they can’t be removed through ldap_modify
      * It’s not possible to remove ppolicy info from a user node anyway */

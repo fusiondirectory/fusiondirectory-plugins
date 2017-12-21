@@ -405,10 +405,10 @@ class dhcpSystem extends simplePlugin
     );
   }
 
-  function remove_from_parent()
+  protected function ldap_remove()
   {
     if ($this->is_template) {
-      return parent::remove_from_parent();
+      return parent::ldap_remove();
     } elseif (($this->dn != '') && ($this->dn != 'new')) {
       /* Remove all records */
       $this->attributesAccess['dhcpHosts']->setValue(array());

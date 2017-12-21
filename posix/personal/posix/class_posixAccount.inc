@@ -450,7 +450,7 @@ class posixAccount extends simplePlugin
     return $message;
   }
 
-  function prepare_save()
+  protected function prepare_save()
   {
     global $config;
     /* Fill gecos */
@@ -637,7 +637,7 @@ class posixAccount extends simplePlugin
     return $errors;
   }
 
-  function ldap_save()
+  protected function ldap_save()
   {
     $errors = parent::ldap_save();
 
@@ -687,31 +687,28 @@ class posixAccount extends simplePlugin
     return $errors;
   }
 
-  /* remove object from parent */
-  function remove_from_parent()
+  protected function ldap_remove()
   {
-    global $config;
-    /* Cancel if there's nothing to do here */
-    if ((!$this->initially_was_account) || (!$this->acl_is_removeable())) {
-      return;
-    }
-
     /* Remove and write to LDAP */
-    $errors = parent::remove_from_parent();
+    $errors = parent::ldap_remove();
     if (!empty($errors)) {
       return $errors;
     }
 
-    /* Delete group only if cn is uid and there are no other members inside */
-    $ldap = $config->get_ldap_link();
-    $ldap->cd ($config->current['BASE']);
-    $ldap->search ('(&(objectClass=posixGroup)(gidNumber='.ldap_escape_f($this->gidNumber).')(cn='.ldap_escape_f($this->getUid()).'))', array('cn', 'memberUid'));
-    if ($ldap->count() != 0) {
-      $attrs = $ldap->fetch();
-      if ($attrs['cn'][0] == $this->getUid() && !isset($this->attrs['memberUid'])) {
-        $ldap->rmDir($attrs['dn']);
+    if (!$this->is_template) {
+      /* Delete group only if cn is uid and there are no other members inside */
+      $ldap = $config->get_ldap_link();
+      $ldap->cd ($config->current['BASE']);
+      $ldap->search ('(&(objectClass=posixGroup)(gidNumber='.ldap_escape_f($this->gidNumber).')(cn='.ldap_escape_f($this->getUid()).'))', array('cn', 'memberUid'));
+      if ($ldap->count() != 0) {
+        $attrs = $ldap->fetch();
+        if ($attrs['cn'][0] == $this->getUid() && !isset($this->attrs['memberUid'])) {
+          $ldap->rmDir($attrs['dn']);
+        }
       }
     }
+
+    return array();
   }
 
   /* Adapt from template, using 'dn' */

@@ -220,18 +220,20 @@ class opsiClient extends simplePlugin
     }
   }
 
-  function remove_from_parent()
+  function remove($fulldelete = FALSE)
   {
-    global $config;
     if ($this->member_of_group && !$this->is_template) {
       // If the winstation is member of an ogroup which has OPSI activated, we must update_or_insert information
       // We have to call this in here because save won't be called as is_account is FALSE
       $this->update_or_insert();
     }
 
-    if (!$this->initially_was_account) {
-      return;
-    }
+    return parent::remove($fulldelete);
+  }
+
+  protected function ldap_remove()
+  {
+    global $config;
 
     if (!$this->is_template) {
       $macAddresses = array();
@@ -261,7 +263,7 @@ class opsiClient extends simplePlugin
       }
     }
 
-    return parent::remove_from_parent();
+    return parent::ldap_remove();
   }
 
   public function server_changed ()

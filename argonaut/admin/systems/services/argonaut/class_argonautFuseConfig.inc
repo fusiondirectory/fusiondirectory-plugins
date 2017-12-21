@@ -176,7 +176,7 @@ class argonautFuseConfig extends simpleService
       if ($plugin->is_account) {
         $errors = $plugin->save();
       } else {
-        $errors = $plugin->remove_from_parent();
+        $errors = $plugin->remove(FALSE);
       }
       if (!empty($errors)) {
         msg_dialog::displayChecks($errors);
@@ -185,23 +185,24 @@ class argonautFuseConfig extends simpleService
     unset($plugin);
   }
 
-  function remove_from_parent()
+  function remove($fulldelete = FALSE)
   {
     $errors = array();
     /* Remove objects */
     foreach ($this->plugin as &$plugin) {
       $plugin->dn = $this->dn;
-      $result = $plugin->remove_from_parent();
+      $result = $plugin->remove($fulldelete);
       if (!empty($result)) {
         $errors = array_merge($errors, $result);
       }
     }
     unset($plugin);
-    $result = parent::remove_from_parent();
-    if (!empty($result)) {
-      $errors = array_merge($result, $errors);
+
+    if (!empty($errors)) {
+      return $errors;
     }
-    return $errors;
+
+    return parent::remove($fulldelete);
   }
 }
 ?>
