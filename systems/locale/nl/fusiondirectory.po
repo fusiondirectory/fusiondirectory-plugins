@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-11-20 15:25+0000\n"
+"POT-Creation-Date: 2017-12-21 15:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2016\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,11 +80,11 @@ msgstr "De serienummer van de telefoon"
 #: admin/systems/class_phoneGeneric.inc:73
 #: admin/systems/class_mobilePhoneGeneric.inc:91
 msgid "Telephone Number"
-msgstr ""
+msgstr "Telefoonnummer"
 
 #: admin/systems/class_phoneGeneric.inc:73
 msgid "The telephone number of the phone"
-msgstr ""
+msgstr "De telefoonnummer van de telefoon"
 
 #: admin/systems/class_phoneGeneric.inc:79
 #: admin/systems/class_printGeneric.inc:103
@@ -105,7 +105,7 @@ msgstr "IP adres"
 #: admin/systems/class_phoneGeneric.inc:84
 #: admin/systems/class_workstationGeneric.inc:95
 msgid "IP addresses this system uses (v4 or v6)"
-msgstr ""
+msgstr "IP-adressen gebruikt door dit systeem (v4 of v6)"
 
 #: admin/systems/class_phoneGeneric.inc:89
 #: admin/systems/class_printGeneric.inc:113
@@ -121,7 +121,7 @@ msgstr "Mac adress"
 #: admin/systems/class_componentGeneric.inc:77
 #: admin/systems/class_mobilePhoneGeneric.inc:110
 msgid "Mac address of this system"
-msgstr ""
+msgstr "Mac-adres van dit systeem"
 
 #: admin/systems/serverService-list.xml:10
 msgid "List of services"
@@ -143,7 +143,7 @@ msgstr "Acties"
 msgid "Create"
 msgstr "Aanmaken"
 
-#: admin/systems/serverService-list.xml:69 admin/systems/system-list.xml:119
+#: admin/systems/serverService-list.xml:69 admin/systems/system-list.xml:127
 msgid "Remove"
 msgstr "Verwijderen"
 
@@ -161,7 +161,7 @@ msgstr "Stop"
 
 #: admin/systems/serverService-list.xml:113
 msgid "Restart"
-msgstr "Restart"
+msgstr "Herstart"
 
 #: admin/systems/serverService-list.xml:121
 msgid "Edit service"
@@ -173,11 +173,11 @@ msgstr "Verwijder dienst"
 
 #: admin/systems/class_terminalStartup.inc:32
 msgid "Startup"
-msgstr ""
+msgstr "Opstart"
 
 #: admin/systems/class_terminalStartup.inc:33
 msgid "Terminal startup"
-msgstr ""
+msgstr "Terminalopstart"
 
 #: admin/systems/class_terminalStartup.inc:50
 msgid "Startup parameters"
@@ -189,7 +189,7 @@ msgstr "Root server"
 
 #: admin/systems/class_terminalStartup.inc:53
 msgid "The root server the terminal should be using"
-msgstr ""
+msgstr "De rootserver die de terminal zou moeten gebruiken"
 
 #: admin/systems/class_terminalStartup.inc:57
 msgid "Swap server"
@@ -197,7 +197,7 @@ msgstr "Swap server"
 
 #: admin/systems/class_terminalStartup.inc:57
 msgid "The swap server the terminal should be using"
-msgstr ""
+msgstr "De swapserver die de terminal zou moeten gebruiken"
 
 #: admin/systems/class_terminalStartup.inc:63
 msgid "Remote desktop"
@@ -205,7 +205,7 @@ msgstr "Remote desktop"
 
 #: admin/systems/class_terminalStartup.inc:67
 msgid "Connect method"
-msgstr "Verbindings methode"
+msgstr "Verbindingsmethode"
 
 #: admin/systems/class_terminalStartup.inc:71
 #: admin/systems/services/terminal/class_serviceTerminal.inc:59
@@ -239,7 +239,7 @@ msgstr "Terminal server"
 #: admin/systems/class_terminalStartup.inc:109
 #: admin/systems/class_terminalStartup.inc:120
 msgid "inherited"
-msgstr "overerfd"
+msgstr "overgeerfd"
 
 #: admin/systems/class_terminalStartup.inc:117
 msgid "Local swap"
@@ -277,15 +277,19 @@ msgstr "Trigger actie"
 msgid "Schedule action"
 msgstr "Plan actie"
 
-#: admin/systems/system-list.xml:147
+#: admin/systems/system-list.xml:115
+msgid "Ping"
+msgstr "Ping"
+
+#: admin/systems/system-list.xml:155
 msgid "New object from template"
-msgstr ""
+msgstr "Nieuw object van sjabloon"
 
-#: admin/systems/system-list.xml:159
+#: admin/systems/system-list.xml:167
 msgid "Edit system"
-msgstr ""
+msgstr "Bewerk systeem"
 
-#: admin/systems/system-list.xml:173
+#: admin/systems/system-list.xml:181
 msgid "Remove system"
 msgstr "Verwijder systeem"
 
@@ -301,7 +305,7 @@ msgstr "Terminal"
 
 #: admin/systems/class_terminalGeneric.inc:44
 msgid "Terminal information"
-msgstr ""
+msgstr "Terminalinformatie"
 
 #: admin/systems/class_printGeneric.inc:30
 #: admin/systems/class_printGeneric.inc:35
@@ -355,49 +359,49 @@ msgstr "Gebruikers die deze printer mogen beheren"
 #: admin/systems/class_componentGeneric.inc:73
 #: admin/systems/class_mobilePhoneGeneric.inc:106
 msgid "IP address this system uses"
-msgstr ""
+msgstr "IP-adres die het systeem gebruikt"
 
 #: admin/systems/class_printGeneric.inc:119
 msgid "Windows paths"
-msgstr "Windows paths"
+msgstr "Windows paden"
 
 #: admin/systems/class_printGeneric.inc:123
 msgid "Inf file"
-msgstr ""
+msgstr "Inf bestand"
 
 #: admin/systems/class_printGeneric.inc:123
 msgid "Path to windows inf file for this printer"
-msgstr ""
+msgstr "Pad naar windows inf bestand voor deze printer"
 
 #: admin/systems/class_printGeneric.inc:127
 msgid "Driver directory"
-msgstr ""
+msgstr "Driverdirectory"
 
 #: admin/systems/class_printGeneric.inc:127
 msgid "Path to directory that contains windows drivers for this printer"
-msgstr ""
+msgstr "Pad naar de directory die Windowsdrivers bevat voor deze printer"
 
 #: admin/systems/class_printGeneric.inc:131
 msgid "Driver name"
-msgstr ""
+msgstr "Drivernaam"
 
 #: admin/systems/class_printGeneric.inc:131
 msgid "Windows name of the printer driver"
-msgstr ""
+msgstr "Windowsnaam van de printerdriver"
 
 #: admin/systems/class_workstationGeneric.inc:32
 #: admin/systems/class_workstationGeneric.inc:37
 #: admin/systems/class_workstationGeneric.inc:38
 msgid "Workstation"
-msgstr "Workstation"
+msgstr "Werkstation"
 
 #: admin/systems/class_workstationGeneric.inc:33
 msgid "Workstation information"
-msgstr "Workstation informatie"
+msgstr "Werkstation informatie"
 
 #: admin/systems/class_workstationGeneric.inc:52
 msgid "workstation"
-msgstr "workstation"
+msgstr "werkstation"
 
 #: admin/systems/class_workstationGeneric.inc:64
 #, php-format
@@ -411,7 +415,7 @@ msgstr "Een korte beschrijving van de %s"
 
 #: admin/systems/class_workstationGeneric.inc:73
 msgid "Location"
-msgstr "Plaats"
+msgstr "Locatie"
 
 #: admin/systems/class_workstationGeneric.inc:74
 #, php-format
@@ -426,12 +430,12 @@ msgstr "Blokkeer dit %s"
 #: admin/systems/class_workstationGeneric.inc:79
 #, php-format
 msgid "This will prevent the %s from being reinstalled"
-msgstr ""
+msgstr "Dit zal de %s tegen houden om geherinstalleerd te worden"
 
 #: admin/systems/services/shares/class_serviceShare.inc:29
 #: admin/systems/services/shares/class_serviceShare.inc:30
 msgid "Share service"
-msgstr ""
+msgstr "Share service"
 
 #: admin/systems/services/shares/class_serviceShare.inc:42
 msgid "Shares"
@@ -439,15 +443,15 @@ msgstr "Shares"
 
 #: admin/systems/services/shares/class_serviceShare.inc:47
 msgid "Shares this server hosts"
-msgstr ""
+msgstr "Deelt de hosts van deze server"
 
 #: admin/systems/services/shares/class_serviceShare.inc:51
 msgid "Name of this share"
-msgstr ""
+msgstr "Naam van deze share"
 
 #: admin/systems/services/shares/class_serviceShare.inc:55
 msgid "Description of this share"
-msgstr ""
+msgstr "Omschrijving van deze share"
 
 #: admin/systems/services/shares/class_serviceShare.inc:59
 msgid "Type"
@@ -455,7 +459,7 @@ msgstr "Type"
 
 #: admin/systems/services/shares/class_serviceShare.inc:59
 msgid "Type of share"
-msgstr ""
+msgstr "Type van share"
 
 #: admin/systems/services/shares/class_serviceShare.inc:64
 msgid "Codepage"
@@ -463,15 +467,15 @@ msgstr "Karakterset"
 
 #: admin/systems/services/shares/class_serviceShare.inc:64
 msgid "Codepage for this share"
-msgstr ""
+msgstr "Codepagina voor deze share"
 
 #: admin/systems/services/shares/class_serviceShare.inc:68
 msgid "Path / Volume"
-msgstr ""
+msgstr "Pad / Volume"
 
 #: admin/systems/services/shares/class_serviceShare.inc:68
 msgid "Path or volume concerned by this share"
-msgstr ""
+msgstr "Pad of volume betreffende deze share"
 
 #: admin/systems/services/shares/class_serviceShare.inc:72
 msgid "Option"
@@ -479,17 +483,18 @@ msgstr "Optie"
 
 #: admin/systems/services/shares/class_serviceShare.inc:72
 msgid "Special option(s) for this share"
-msgstr ""
+msgstr "Speciale optie(s) voor deze share"
 
 #: admin/systems/services/shares/class_serviceShare.inc:105
 #: admin/systems/class_serverService.inc:209
 #: admin/systems/class_serverService.inc:277
+#: addons/dashboard/class_dashBoardNetwork.inc:81
 msgid "Error"
 msgstr "Fout"
 
 #: admin/systems/services/shares/class_serviceShare.inc:105
 msgid "You need to configure encodings first"
-msgstr ""
+msgstr "Je moet coderingen eerst configureren"
 
 #: admin/systems/services/shares/class_serviceShare.inc:112
 msgid "Warning"
@@ -498,20 +503,20 @@ msgstr "Waarschuwing"
 #: admin/systems/services/shares/class_serviceShare.inc:112
 #, php-format
 msgid "Invalid value in encodings : %s"
-msgstr ""
+msgstr "Foute waarde in codering : %s"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:35
 #: admin/systems/services/ldap/class_serviceLDAP.inc:96
 msgid "LDAP service"
-msgstr "LDAP dienst"
+msgstr "LDAP service"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:39
 msgid "LDAP Base"
-msgstr ""
+msgstr "LDAP basis"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:39
 msgid "The LDAP base to use for this LDAP server"
-msgstr ""
+msgstr "De LDAP basis te gebruiken voor deze LDAP server"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:44
 msgid "LDAP URI"
@@ -519,35 +524,37 @@ msgstr "LDAP URI"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:44
 msgid "The LDAP URI to use in order to contact this LDAP server"
-msgstr ""
+msgstr "De LDAP URI te gebruiken om de LDAP server te contacteren"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:46
 msgid "fill-in-your-servers-dns-name"
-msgstr "vul-uw-dns-namen-in"
+msgstr "vul-uw-servers-dns-naam-in"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:51
 msgid "Size limit"
-msgstr ""
+msgstr "Groottelimiet"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:51
 msgid "Limit the number of record returned"
-msgstr ""
+msgstr "Beperk het aantal weergegeven records "
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:56
 msgid "Time limit"
-msgstr ""
+msgstr "Tijdslimiet"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:56
 msgid "Time limit for the result to be returned"
-msgstr ""
+msgstr "Tijdslimiet voor het terug te geven resultaat"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:61
 msgid "Deref"
-msgstr ""
+msgstr "Deref"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:61
 msgid "Specifies how alias dereferencing is done when performing a search"
 msgstr ""
+"Bepaalt hoe alias de-referenciëring gebeurt wanneer een zoekopdracht wordt "
+"uitgevoerd"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:66
 msgid "TLS Cert"
@@ -555,7 +562,7 @@ msgstr "TLS Cert"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:66
 msgid "Filepath to tls certificate"
-msgstr ""
+msgstr "Bestandspad naar tls-certificaat"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:70
 msgid "TLS Key"
@@ -563,35 +570,39 @@ msgstr "TLS sleutel"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:70
 msgid "Filepath to tls key"
-msgstr ""
+msgstr "Bestandspad naar tls-sleutel"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:74
 msgid "TLS CaCert"
-msgstr ""
+msgstr "TLS CaCert"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:74
 msgid "Filepath to tls ca certificate"
-msgstr ""
+msgstr "Filepad naar tls-ca-certificaat"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid "TLS ReqCert"
-msgstr ""
+msgstr "TLS ReqCert"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid ""
 "Specifies what checks to perform on server certificates in a TLS session, if"
 " any"
 msgstr ""
+"Geeft weer welke controles uit te voeren op servercertificaat in een TLS "
+"sessie, indien nodig"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
 msgid "TLS CrlCheck"
-msgstr ""
+msgstr "TLS CrlCheck"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
 msgid ""
 "Specifies if the Certificate Revocation List (CRL) of the CA should be used "
 "to verify if the server certificates have  not  been  revoked"
 msgstr ""
+"Geeft weer of de Certificaat Revocatie Lijst (CRL) van de CA moet gebruikt "
+"worden om te verifiëren of de servercertificaten niet ingetrokken zijn"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 msgid "LDAP"
@@ -605,23 +616,23 @@ msgstr "Terminale service"
 
 #: admin/systems/services/terminal/class_serviceTerminal.inc:44
 msgid "Temporary disable login"
-msgstr "Schakel inlog mogelijkheid tijdelijk uit"
+msgstr "Tijdelijk uitschakelen login"
 
 #: admin/systems/services/terminal/class_serviceTerminal.inc:45
 msgid "Disables the login on this terminal server"
-msgstr ""
+msgstr "Schakel het inloggen op deze terminal server uit"
 
 #: admin/systems/services/terminal/class_serviceTerminal.inc:54
 msgid "Supported session types"
-msgstr "Ondersteunde type sessies"
+msgstr "Ondersteunde sessie types"
 
 #: admin/systems/services/terminal/class_serviceTerminal.inc:55
 msgid "The session types supported by this terminal server"
-msgstr ""
+msgstr "De sessietypes ondersteund door deze terminalserver"
 
 #: admin/systems/class_serverService.inc:61
 msgid "Server services"
-msgstr ""
+msgstr "Serverservices"
 
 #: admin/systems/class_serverService.inc:271
 msgid "Information"
@@ -629,7 +640,7 @@ msgstr "Informatie"
 
 #: admin/systems/class_serverService.inc:271
 msgid "Cannot update service status until it has been saved!"
-msgstr "Kan dienst status niet update zolang het niet opgeslagen is!"
+msgstr "Kan service status niet updaten totdat het is opgeslagen!"
 
 #: admin/systems/class_serverService.inc:277
 #, php-format
@@ -641,7 +652,7 @@ msgstr "Onbekende actie \"%s\""
 #: admin/systems/class_serverService.inc:319
 #, php-format
 msgid "Could not get execute action %s on service %s."
-msgstr "Kan geen actie %s niet uitvoeren op service %s."
+msgstr "Kan actie %s niet uitvoeren op service %s."
 
 #: admin/systems/class_serverGeneric.inc:28
 msgid "server"
@@ -664,20 +675,20 @@ msgstr "Component"
 
 #: admin/systems/class_componentGeneric.inc:32
 msgid "Component information"
-msgstr ""
+msgstr "Componentinformatie"
 
 #: admin/systems/class_componentGeneric.inc:36
 #: admin/systems/class_componentGeneric.inc:37
 msgid "Network device"
-msgstr "Netwerk apparatuur"
+msgstr "Netwerk apparaat"
 
 #: admin/systems/class_componentGeneric.inc:58
 msgid "The name of the component"
-msgstr ""
+msgstr "De naam van de component"
 
 #: admin/systems/class_componentGeneric.inc:62
 msgid "A short description of the component"
-msgstr ""
+msgstr "Een korte omschrijving van de component"
 
 #: admin/systems/class_systemManagement.inc:43
 #: admin/systems/class_systemManagement.inc:47
@@ -688,62 +699,71 @@ msgstr "Systemen"
 
 #: admin/systems/class_systemManagement.inc:44
 msgid "Systems Management"
-msgstr "Systeem Management"
+msgstr "Systeem Beheer"
 
-#: admin/systems/class_systemManagement.inc:139
-#: admin/systems/class_systemManagement.inc:155
+#: admin/systems/class_systemManagement.inc:141
+#: admin/systems/class_systemManagement.inc:157
+#: admin/systems/class_systemManagement.inc:209
 msgid "Action canceled"
-msgstr "Handeling geannuleerd"
+msgstr "Actie geannuleerd"
 
-#: admin/systems/class_systemManagement.inc:139
+#: admin/systems/class_systemManagement.inc:141
+#: admin/systems/class_systemManagement.inc:209
 #, php-format
 msgid "System %s has no mac address defined, cannot trigger action"
 msgstr ""
+"System %s heeft geen mac adres gedefinieerd, actie kan niet uitgevoerd "
+"worden"
 
-#: admin/systems/class_systemManagement.inc:155
+#: admin/systems/class_systemManagement.inc:157
 #, php-format
 msgid "System %s is currently installing"
-msgstr ""
+msgstr "Systeem %s is aan het installeren"
 
-#: admin/systems/class_systemManagement.inc:174
-#: admin/systems/class_systemManagement.inc:205
+#: admin/systems/class_systemManagement.inc:176
+#: admin/systems/class_systemManagement.inc:221
+#: admin/systems/class_systemManagement.inc:258
 msgid "Infrastructure service"
-msgstr ""
+msgstr "Infrastructuur service"
 
-#: admin/systems/class_systemManagement.inc:177
-#: admin/systems/class_systemManagement.inc:182
+#: admin/systems/class_systemManagement.inc:179
+#: admin/systems/class_systemManagement.inc:184
 msgid "Action triggered"
-msgstr ""
+msgstr "Actie gestart"
 
-#: admin/systems/class_systemManagement.inc:177
+#: admin/systems/class_systemManagement.inc:179
 #, php-format
 msgid "Action called without error (results were \"%s\")"
-msgstr ""
+msgstr "Actie opgevraagd zonder fout (resultaat waren \"%s\")"
 
-#: admin/systems/class_systemManagement.inc:182
+#: admin/systems/class_systemManagement.inc:184
 #, php-format
 msgid "Action called without error (result was \"%s\")"
-msgstr ""
+msgstr "Actie opgevraagd zonder fout (resultaat was \"%s\")"
 
-#: admin/systems/class_systemManagement.inc:272
+#: admin/systems/class_systemManagement.inc:239
+msgid "Ping results"
+msgstr "Ping resultaat"
+
+#: admin/systems/class_systemManagement.inc:325
 #, php-format
 msgid "Inherited from %s"
-msgstr "Overgenomen van %s"
+msgstr "Overgeerfd van %s"
 
 #: admin/systems/class_systemImport.inc:72
 #, php-format
 msgid "Could not parse %s"
-msgstr ""
+msgstr "Kan %s niet ontleden"
 
 #: admin/systems/class_systemImport.inc:118
 #, php-format
 msgid "No DHCP server found for IPs %s"
-msgstr ""
+msgstr "Geen DHCP server gevonden voor IPs %s"
 
 #: admin/systems/class_systemImport.inc:135
 #, php-format
 msgid "No DNS server found for zone %s"
-msgstr ""
+msgstr "Geen DNS server gevonden voor zone %s"
 
 #: admin/systems/class_systemImport.inc:169
 msgid "Import"
@@ -751,7 +771,7 @@ msgstr "Importeren"
 
 #: admin/systems/class_systemImport.inc:173
 msgid "The server you wish to import hosts from"
-msgstr ""
+msgstr "De server vanaf dewelke je hosts wil importeren"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:32
 #: admin/systems/class_mobilePhoneGeneric.inc:37
@@ -761,67 +781,67 @@ msgstr "GSM nummer"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:33
 msgid "Mobile phone information"
-msgstr ""
+msgstr "Mobiele telefooninformatie"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:60
 msgid "The name of the mobile phone"
-msgstr ""
+msgstr "De naam van de mobiele telefoon"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:64
 msgid "A short description of the mobile phone"
-msgstr ""
+msgstr "Een korte omschrijving van de mobiele telefoon"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:73
 msgid "The serial number of the mobile phone"
-msgstr ""
+msgstr "Het serienummer van de mobiele telefoon"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:77
 msgid "IMEI Number"
-msgstr ""
+msgstr "IMEI Nummer"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:77
 msgid "The IMEI number of the mobile phone"
-msgstr ""
+msgstr "Het IMEI nummer van de mobiele telefoon"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:82
 msgid "OS"
-msgstr ""
+msgstr "OS"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:82
 msgid "The Operating System installed on this phone"
-msgstr ""
+msgstr "Het Operating System geïnstalleerd op deze telefoon"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:88
 msgid "SimCard"
-msgstr ""
+msgstr "SimCard"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:91
 msgid "The telephone number of the mobile phone"
-msgstr ""
+msgstr "Het telefoonnummer van de mobiele telefoon"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:95
 msgid "PUK Number"
-msgstr ""
+msgstr "PUK nummer"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:95
 msgid "The PUK number of the simcard in this mobile phone"
-msgstr ""
+msgstr "Het PUK nummer van de simkaart op dit mobiel telefoontoestel"
 
 #: config/systems/class_systemsPluginConfig.inc:31
 msgid "Systems plugin configuration"
-msgstr ""
+msgstr "Systeem plugin-configuratie"
 
 #: config/systems/class_systemsPluginConfig.inc:42
 msgid "LDAP tree for systems"
-msgstr ""
+msgstr "LDAP boom voor systemen"
 
 #: config/systems/class_systemsPluginConfig.inc:45
 msgid "Systems RDN"
-msgstr ""
+msgstr "Systeem RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:45
 msgid "Branch in which systems will be stored"
-msgstr ""
+msgstr "Tak waarin systemen zullen worden opgeslagen"
 
 #: config/systems/class_systemsPluginConfig.inc:50
 msgid "Server RDN"
@@ -829,23 +849,23 @@ msgstr "Server RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:50
 msgid "Branch in which servers will be stored"
-msgstr ""
+msgstr "Tak waarin servers worden opgeslagen"
 
 #: config/systems/class_systemsPluginConfig.inc:55
 msgid "Workstations RDN"
-msgstr ""
+msgstr "Werkstation RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:55
 msgid "Branch in which workstations will be stored"
-msgstr ""
+msgstr "Tak waarin werkstations zullen worden opgeslagen"
 
 #: config/systems/class_systemsPluginConfig.inc:60
 msgid "Terminal RDN"
-msgstr ""
+msgstr "Terminal RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:60
 msgid "Branch in which terminals will be stored"
-msgstr ""
+msgstr "Tak waarin terminals zullen worden opgeslagen"
 
 #: config/systems/class_systemsPluginConfig.inc:65
 msgid "Printer RDN"
@@ -853,47 +873,47 @@ msgstr "RDN printer"
 
 #: config/systems/class_systemsPluginConfig.inc:65
 msgid "Branch in which printers will be stored"
-msgstr ""
+msgstr "Tak waarin printers zullen worden opgeslagen"
 
 #: config/systems/class_systemsPluginConfig.inc:70
 msgid "Component RDN"
-msgstr ""
+msgstr "Component RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:70
 msgid "Branch in which network devices will be stored"
-msgstr ""
+msgstr "Tak waarin netwerktoestellen worden opgeslagen"
 
 #: config/systems/class_systemsPluginConfig.inc:75
 msgid "Phone RDN"
-msgstr ""
+msgstr "Telefoon RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:75
 msgid "Branch in which phones will be stored"
-msgstr ""
+msgstr "Tak waarin telefoons worden opgeslagen"
 
 #: config/systems/class_systemsPluginConfig.inc:80
 msgid "Mobile phone RDN"
-msgstr ""
+msgstr "Mobiele telefoon RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:80
 msgid "Branch in which mobile phones will be stored"
-msgstr ""
+msgstr "Tak waarin mobiele telefoons worden opgeslagen"
 
 #: config/systems/class_systemsPluginConfig.inc:87
 msgid "Miscellaneous"
-msgstr "Terminal Service diverse"
+msgstr "Diversen"
 
 #: config/systems/class_systemsPluginConfig.inc:91
 msgid "Available encodings for share services"
-msgstr ""
+msgstr "Beschikbare codering voor gedeelde services"
 
 #: config/systems/class_systemsPluginConfig.inc:95
 msgid "Encoding"
-msgstr ""
+msgstr "Codering"
 
 #: config/systems/class_systemsPluginConfig.inc:95
 msgid "The encoding code name"
-msgstr ""
+msgstr "De coderingscodenaam"
 
 #: config/systems/class_systemsPluginConfig.inc:100
 msgid "Label"
@@ -901,63 +921,76 @@ msgstr "Label"
 
 #: config/systems/class_systemsPluginConfig.inc:100
 msgid "The encoding displayed name"
-msgstr ""
+msgstr "De codering getoonde naam"
 
 #: config/systems/class_systemsPluginConfig.inc:108
 msgid "Encodings"
-msgstr ""
+msgstr "Coderingen"
 
 #: config/systems/class_systemsPluginConfig.inc:121
 msgid "Mandatory IP"
-msgstr ""
+msgstr "Verplicht IP"
 
 #: config/systems/class_systemsPluginConfig.inc:121
 msgid "Object types tabs for which IP field should be mandatory"
-msgstr ""
+msgstr "Objecttypestabs waarvoor IP velden verplicht moeten zijn"
 
 #: addons/dashboard/class_dashBoardSystems.inc:31
 msgid "Statistics and information about systems"
-msgstr "Statistieken en informatie over de systemen"
+msgstr "Statistieken en informatie over systemen"
 
-#: addons/dashboard/class_dashBoardSystems.inc:42
+#: addons/dashboard/class_dashBoardSystems.inc:43
 msgid "Statistics"
 msgstr "Statistieken"
 
-#: addons/dashboard/class_dashBoardSystems.inc:47
+#: addons/dashboard/class_dashBoardSystems.inc:48
 msgid "Computer name to use by unit"
-msgstr ""
+msgstr "Computernaam te gebruiken per unit"
 
-#: addons/dashboard/class_dashBoardSystems.inc:72
+#: addons/dashboard/class_dashBoardSystems.inc:73
 msgid "Workstations"
-msgstr "Workstations"
+msgstr "Werkstations"
 
-#: addons/dashboard/class_dashBoardSystems.inc:76
+#: addons/dashboard/class_dashBoardSystems.inc:77
 msgid "Servers"
 msgstr "Servers"
 
-#: addons/dashboard/class_dashBoardSystems.inc:80
+#: addons/dashboard/class_dashBoardSystems.inc:81
 msgid "Windows Workstations"
-msgstr "Windows Workstations"
+msgstr "Windows Werkstations"
 
-#: addons/dashboard/class_dashBoardSystems.inc:84
+#: addons/dashboard/class_dashBoardSystems.inc:86
 msgid "Terminals"
-msgstr ""
+msgstr "Terminals"
 
-#: addons/dashboard/class_dashBoardSystems.inc:88
+#: addons/dashboard/class_dashBoardSystems.inc:90
 msgid "Printers"
 msgstr "Printers"
 
-#: addons/dashboard/class_dashBoardSystems.inc:92
+#: addons/dashboard/class_dashBoardSystems.inc:94
 msgid "Phones"
 msgstr "Telefoon"
 
-#: addons/dashboard/class_dashBoardSystems.inc:96
+#: addons/dashboard/class_dashBoardSystems.inc:98
 msgid "Components"
 msgstr "Componenten"
 
-#: addons/dashboard/class_dashBoardSystems.inc:100
+#: addons/dashboard/class_dashBoardSystems.inc:102
 msgid "Mobile phones"
 msgstr "Mobiele telefoon"
+
+#: addons/dashboard/class_dashBoardSystems.inc:116
+msgid "LDAP error"
+msgstr "LDAP fout"
+
+#: addons/dashboard/class_dashBoardSystems.inc:117
+#, php-format
+msgid ""
+"Statistics for type \"%s\" could not be computed because of the following "
+"error: %s"
+msgstr ""
+"Statistieken voor type \"%s\" kunnen niet verwerkt worden vanwege de "
+"volgende fout: %s"
 
 #: addons/dashboard/class_dashBoardNetwork.inc:28
 msgid "Network"
@@ -967,13 +1000,21 @@ msgstr "Netwerk"
 msgid "Statistics and various information"
 msgstr "Statistieken en diverse informatie"
 
-#: addons/dashboard/class_dashBoardNetwork.inc:40
+#: addons/dashboard/class_dashBoardNetwork.inc:41
 msgid "DHCP"
 msgstr "DHCP"
 
-#: addons/dashboard/class_dashBoardNetwork.inc:45
+#: addons/dashboard/class_dashBoardNetwork.inc:46
 msgid "DNS"
 msgstr "DNS"
+
+#: addons/dashboard/class_dashBoardNetwork.inc:82
+#, php-format
+msgid ""
+"Statistics for DHCP could not be computed because of the following error: %s"
+msgstr ""
+"Statistieken voor DHCP kunnen niet verwerkt worden vanwege de volgende fout:"
+" %s"
 
 #: admin/systems/serverService-list.tpl.c:2
 msgid "Base"
@@ -985,14 +1026,18 @@ msgid ""
 " managed by it, so if you delete them or deactivate their OPSI tab, they "
 "will be removed from OPSI."
 msgstr ""
+"Waarschuwing: Eens je de OPSI hosts in FusionDirectory hebt geïmporteerd, "
+"zal het beheer volledig in FusionDirectory zitten. Dus als je de OPSI tab "
+"verwijdert of deactiveert dan zullen ze ook onherroepelijk verwijderd worden"
+" uit OPSI."
 
 #: addons/dashboard/systems_stats.tpl.c:2
 msgid "There are several argonaut servers! (this is not yet supported)"
-msgstr ""
+msgstr "Er zijn meerdere argonaut servers! (dit is nog niet ondersteund)"
 
 #: addons/dashboard/systems_stats.tpl.c:5
 msgid "There is an argonaut server running on %1 (%3://%2:%4)"
-msgstr ""
+msgstr "Er loopt en argonaut server op %1 (%3://%2:%4)"
 
 #: addons/dashboard/systems_stats.tpl.c:8
 msgid "Only one system is configured to run an argonaut client."
@@ -1003,6 +1048,8 @@ msgstr[1] ""
 #: addons/dashboard/systems_stats.tpl.c:11
 msgid "But no system is configured to run an argonaut client!"
 msgstr ""
+"Maar er is geen systeem geconfigureerd om een argonaut cliënt te laten "
+"lopen!"
 
 #: addons/dashboard/systems_stats.tpl.c:14
 msgid ""

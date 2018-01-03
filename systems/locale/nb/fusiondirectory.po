@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-11-20 15:25+0000\n"
+"POT-Creation-Date: 2017-12-21 15:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Norwegian Bokmål (https://www.transifex.com/fusiondirectory/teams/12202/nb/)\n"
@@ -143,7 +143,7 @@ msgstr ""
 msgid "Create"
 msgstr "Opprett"
 
-#: admin/systems/serverService-list.xml:69 admin/systems/system-list.xml:119
+#: admin/systems/serverService-list.xml:69 admin/systems/system-list.xml:127
 msgid "Remove"
 msgstr "Fjern"
 
@@ -277,15 +277,19 @@ msgstr ""
 msgid "Schedule action"
 msgstr ""
 
-#: admin/systems/system-list.xml:147
+#: admin/systems/system-list.xml:115
+msgid "Ping"
+msgstr ""
+
+#: admin/systems/system-list.xml:155
 msgid "New object from template"
 msgstr ""
 
-#: admin/systems/system-list.xml:159
+#: admin/systems/system-list.xml:167
 msgid "Edit system"
 msgstr ""
 
-#: admin/systems/system-list.xml:173
+#: admin/systems/system-list.xml:181
 msgid "Remove system"
 msgstr ""
 
@@ -484,6 +488,7 @@ msgstr ""
 #: admin/systems/services/shares/class_serviceShare.inc:105
 #: admin/systems/class_serverService.inc:209
 #: admin/systems/class_serverService.inc:277
+#: addons/dashboard/class_dashBoardNetwork.inc:81
 msgid "Error"
 msgstr "Feil"
 
@@ -690,42 +695,49 @@ msgstr ""
 msgid "Systems Management"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:139
-#: admin/systems/class_systemManagement.inc:155
+#: admin/systems/class_systemManagement.inc:141
+#: admin/systems/class_systemManagement.inc:157
+#: admin/systems/class_systemManagement.inc:209
 msgid "Action canceled"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:139
+#: admin/systems/class_systemManagement.inc:141
+#: admin/systems/class_systemManagement.inc:209
 #, php-format
 msgid "System %s has no mac address defined, cannot trigger action"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:155
+#: admin/systems/class_systemManagement.inc:157
 #, php-format
 msgid "System %s is currently installing"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:174
-#: admin/systems/class_systemManagement.inc:205
+#: admin/systems/class_systemManagement.inc:176
+#: admin/systems/class_systemManagement.inc:221
+#: admin/systems/class_systemManagement.inc:258
 msgid "Infrastructure service"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:177
-#: admin/systems/class_systemManagement.inc:182
+#: admin/systems/class_systemManagement.inc:179
+#: admin/systems/class_systemManagement.inc:184
 msgid "Action triggered"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:177
+#: admin/systems/class_systemManagement.inc:179
 #, php-format
 msgid "Action called without error (results were \"%s\")"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:182
+#: admin/systems/class_systemManagement.inc:184
 #, php-format
 msgid "Action called without error (result was \"%s\")"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:272
+#: admin/systems/class_systemManagement.inc:239
+msgid "Ping results"
+msgstr ""
+
+#: admin/systems/class_systemManagement.inc:325
 #, php-format
 msgid "Inherited from %s"
 msgstr ""
@@ -919,44 +931,55 @@ msgstr ""
 msgid "Statistics and information about systems"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardSystems.inc:42
+#: addons/dashboard/class_dashBoardSystems.inc:43
 msgid "Statistics"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardSystems.inc:47
+#: addons/dashboard/class_dashBoardSystems.inc:48
 msgid "Computer name to use by unit"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardSystems.inc:72
+#: addons/dashboard/class_dashBoardSystems.inc:73
 msgid "Workstations"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardSystems.inc:76
+#: addons/dashboard/class_dashBoardSystems.inc:77
 msgid "Servers"
 msgstr "Tjener"
 
-#: addons/dashboard/class_dashBoardSystems.inc:80
+#: addons/dashboard/class_dashBoardSystems.inc:81
 msgid "Windows Workstations"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardSystems.inc:84
+#: addons/dashboard/class_dashBoardSystems.inc:86
 msgid "Terminals"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardSystems.inc:88
+#: addons/dashboard/class_dashBoardSystems.inc:90
 msgid "Printers"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardSystems.inc:92
+#: addons/dashboard/class_dashBoardSystems.inc:94
 msgid "Phones"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardSystems.inc:96
+#: addons/dashboard/class_dashBoardSystems.inc:98
 msgid "Components"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardSystems.inc:100
+#: addons/dashboard/class_dashBoardSystems.inc:102
 msgid "Mobile phones"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:116
+msgid "LDAP error"
+msgstr "LDAP-feil"
+
+#: addons/dashboard/class_dashBoardSystems.inc:117
+#, php-format
+msgid ""
+"Statistics for type \"%s\" could not be computed because of the following "
+"error: %s"
 msgstr ""
 
 #: addons/dashboard/class_dashBoardNetwork.inc:28
@@ -967,12 +990,18 @@ msgstr ""
 msgid "Statistics and various information"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardNetwork.inc:40
+#: addons/dashboard/class_dashBoardNetwork.inc:41
 msgid "DHCP"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardNetwork.inc:45
+#: addons/dashboard/class_dashBoardNetwork.inc:46
 msgid "DNS"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardNetwork.inc:82
+#, php-format
+msgid ""
+"Statistics for DHCP could not be computed because of the following error: %s"
 msgstr ""
 
 #: admin/systems/serverService-list.tpl.c:2

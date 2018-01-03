@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-11-20 15:25+0000\n"
+"POT-Creation-Date: 2017-12-21 15:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2016\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: admin/systems/services/quota/class_serviceQuota.inc:29
 #: admin/systems/services/quota/class_serviceQuota.inc:30
 msgid "Quota service"
-msgstr "Quota dienst"
+msgstr "Quotaservice"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:30
 msgid "Services"
@@ -33,24 +33,24 @@ msgstr "Shares"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:46
 msgid "Quotas for the shares this server hosts"
-msgstr ""
+msgstr "Quotas voor de shares die deze server hosts"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:50
 #: personal/quota/class_quotaAccount.inc:129
 msgid "Device"
-msgstr "Apparaat"
+msgstr "Toestel"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:50
 msgid "Device concerned by this quota"
-msgstr ""
+msgstr "Toestel betrokken bij dit quota"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:54
 msgid "Quota block size"
-msgstr ""
+msgstr "Quota-blokgrootte"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:54
 msgid "Quota block size on this share (usually 1024)"
-msgstr ""
+msgstr "Quota-blokgrootte op deze share (meestal 1024)"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:63
 msgid "Comment"
@@ -58,11 +58,11 @@ msgstr "Opmerking"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:63
 msgid "Short comment about this quota"
-msgstr ""
+msgstr "Korte uitleg over dit quotum"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:78
 msgid "Quota warning message"
-msgstr ""
+msgstr "Quota-waarschuwingsboodschap"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:81
 msgid "Charset"
@@ -70,23 +70,23 @@ msgstr "Charset"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:81
 msgid "Charset use for the message"
-msgstr ""
+msgstr "Charsetgebruik voor de boodschap"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:85
 msgid "Mail command"
-msgstr "E-mail commando"
+msgstr "E-mailopdracht"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:85
 msgid "Command allowing the server to send mails"
-msgstr ""
+msgstr "Opdracht die de server toelaat om mails te versturen"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:89
 msgid "Support contact"
-msgstr ""
+msgstr "Contacteer ondersteuning"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:89
 msgid "Email address to contact the administrator"
-msgstr ""
+msgstr "E-mailadres om de administrator te contacteren"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:93
 msgid "From"
@@ -94,7 +94,7 @@ msgstr "Van"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:93
 msgid "Email from which the email is sent"
-msgstr ""
+msgstr "email vanwaar de mail is verzonden"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:97
 msgid "CC"
@@ -110,7 +110,7 @@ msgstr "Onderwerp"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:101
 msgid "Subject of the sent warning email"
-msgstr ""
+msgstr "Onderwerp van de verzonden e-mailwaarschuwing"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:105
 msgid "Content"
@@ -126,11 +126,11 @@ msgstr "Handtekening"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:109
 msgid "Signature to put at the end of the mail"
-msgstr ""
+msgstr "Handtekening om aan het einde van de mail te zetten"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:115
 msgid "LDAP message support"
-msgstr ""
+msgstr "LDAP boodschapondersteuning"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:118
 msgid "LDAP server"
@@ -138,23 +138,23 @@ msgstr "LDAP server"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:118
 msgid "The LDAP server to bind to"
-msgstr ""
+msgstr "De LDAP server waarnaar te binden"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:122
 msgid "Bind user dn"
-msgstr ""
+msgstr "Bind gebruiker-dn"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:122
 msgid "The user dn to use for bind"
-msgstr ""
+msgstr "De gebruiker-dn voor bind"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:126
 msgid "Bind user password"
-msgstr ""
+msgstr "Bind gebruikerpaswoord"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:126
 msgid "The password of the user used for bind"
-msgstr ""
+msgstr "Het paswoord van de gebruiker voor de bind"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:159
 msgid "Warning"
@@ -163,12 +163,12 @@ msgstr "Waarschuwing"
 #: admin/systems/services/quota/class_serviceQuota.inc:159
 #, php-format
 msgid "Invalid value in encodings : %s"
-msgstr ""
+msgstr "Ongeldige waarde in coderingen : %s"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:176
 #, php-format
 msgid "(%s by %s)"
-msgstr ""
+msgstr "(%s op %s)"
 
 #: personal/quota/class_quotaAccount.inc:101
 msgid "Quota"
@@ -180,47 +180,47 @@ msgstr "Plugin voor quota support"
 
 #: personal/quota/class_quotaAccount.inc:120
 msgid "Quota information"
-msgstr ""
+msgstr "Quota informatie"
 
 #: personal/quota/class_quotaAccount.inc:125
 msgid "Quota information for this user"
-msgstr ""
+msgstr "Quota informatie voor deze gebruiker"
 
 #: personal/quota/class_quotaAccount.inc:129
 msgid "Device this quota is for"
-msgstr ""
+msgstr "Toestel waarvoor dit quota is toegewezen"
 
 #: personal/quota/class_quotaAccount.inc:133
 msgid "Block soft limit"
-msgstr "Block soft limit"
+msgstr "Blok softlimiet"
 
 #: personal/quota/class_quotaAccount.inc:133
 msgid "Soft limit for the block the user can use"
-msgstr ""
+msgstr "Softlimiet voor het blok dat de gebruiker kan toepassen"
 
 #: personal/quota/class_quotaAccount.inc:142
 msgid "Block hard limit"
-msgstr "Block hard limit"
+msgstr "Blok hardlimiet"
 
 #: personal/quota/class_quotaAccount.inc:142
 msgid "Hard limit for the block the user can use"
-msgstr ""
+msgstr "Hardlimiet voor het blok dat de gebruiker kan toepassen"
 
 #: personal/quota/class_quotaAccount.inc:151
 msgid "Inode soft limit"
-msgstr "Inode soft limit"
+msgstr "Inode softlimiet"
 
 #: personal/quota/class_quotaAccount.inc:151
 msgid "Soft limit for the inodes the user can use"
-msgstr ""
+msgstr "Softlimiet voor de inodes die de gebruiker kan toepassen"
 
 #: personal/quota/class_quotaAccount.inc:160
 msgid "Inode hard limit"
-msgstr "Inode hard limit"
+msgstr "Inode hardlimiet"
 
 #: personal/quota/class_quotaAccount.inc:160
 msgid "Hard limit for the inodes the user can use"
-msgstr ""
+msgstr "Hardlimiet voor de inodes die de gebruiker kan toepassen"
 
 #: personal/quota/class_quotaAccount.inc:169
 msgid "Server"
@@ -228,4 +228,4 @@ msgstr "Server"
 
 #: personal/quota/class_quotaAccount.inc:169
 msgid "Server hosting the device this quota is for"
-msgstr ""
+msgstr "Server die het toestel voor wie dit quota bestemd is host"

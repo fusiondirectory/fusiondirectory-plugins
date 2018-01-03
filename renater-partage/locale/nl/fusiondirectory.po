@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-11-20 15:25+0000\n"
+"POT-Creation-Date: 2017-12-21 15:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
+"Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,11 +21,11 @@ msgstr ""
 #: admin/groups/renater-partage/class_partageGroup.inc:29
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:29
 msgid "Partage"
-msgstr ""
+msgstr "Partage"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:30
 msgid "Partage group options"
-msgstr ""
+msgstr "Partage groep opties"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:41
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:40
@@ -40,17 +40,18 @@ msgstr "Weergavenaam"
 #: admin/groups/renater-partage/class_partageGroup.inc:44
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:48
 msgid "Name to display for this group"
-msgstr ""
+msgstr "Te tonen naam voor deze groep"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:48
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:52
 msgid "Hide from global catalog"
-msgstr ""
+msgstr "Verberg voor globale cataloog"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:48
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:52
 msgid "Whether this group should be hidden from the global catalog"
 msgstr ""
+"Of deze groep al dan niet verborgen moet zijn voor de globale cataloog"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:53
 msgid "Type"
@@ -58,11 +59,11 @@ msgstr "Type"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:53
 msgid "Type of PARTAGE group"
-msgstr ""
+msgstr "Type van PARTAGE groep"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:56
 msgid "Distribution list"
-msgstr ""
+msgstr "Verdeellijst"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:56
 msgid "Group"
@@ -70,11 +71,13 @@ msgstr "Groep"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:59
 msgid "Alert new members"
-msgstr ""
+msgstr "Waarschuw nieuwe leden"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:59
 msgid "Send a message to alert new members, they have joined this group"
 msgstr ""
+"Verzendt een boodschap om nieuwe leden te waarschuwen dat ze toegetreden "
+"zijn tot deze groep"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:64
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:65
@@ -84,42 +87,44 @@ msgstr "Notas"
 #: admin/groups/renater-partage/class_partageGroup.inc:64
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:65
 msgid "Notes about this group"
-msgstr ""
+msgstr "Notities van deze groep"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:28
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:29
 msgid "Renater Partage"
-msgstr ""
+msgstr "Renater Partage"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:40
 msgid "Settings"
-msgstr ""
+msgstr "Instellingen"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:44
 msgid "URI"
-msgstr ""
+msgstr "URI"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:44
 msgid "URI to contact the Renater Partage API"
-msgstr ""
+msgstr "URI om de Renate Partage API te contacteren"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:48
 msgid "User Agent"
-msgstr ""
+msgstr "Gebruiker Agent"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:48
 msgid "User Agent to use to contact the Renater Partage API"
-msgstr ""
+msgstr "Gebruikersagent te gebruiken om de Renater Partage API te contacteren"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:53
 msgid "Mailbox deletion"
-msgstr ""
+msgstr "Mailbox verwijdering"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:53
 msgid ""
 "What to do with the PARTAGE account when mail tab is deactivated or user is "
 "deleted"
 msgstr ""
+"Wat te doen met het PARTAGE account als de mailtab gedeactiveerd is of de "
+"gebruiker verwijderd"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:56
 msgid "Delete"
@@ -127,16 +132,16 @@ msgstr "Verwijderen"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:56
 msgid "Disable"
-msgstr ""
+msgstr "Uitschakelen"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:62
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:85
 msgid "Domains"
-msgstr ""
+msgstr "Domeinen"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:67
 msgid "Domains handled by this Renater Partage server"
-msgstr ""
+msgstr "Domeinen behandeld door deze Renater Partage server"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:71
 msgid "Domain"
@@ -144,7 +149,7 @@ msgstr "Domein"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:71
 msgid "Domain handled by this server"
-msgstr ""
+msgstr "Domein behandeld door deze server"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:75
 msgid "Key"
@@ -152,19 +157,19 @@ msgstr "Sleutel"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:75
 msgid "Key for this domain"
-msgstr ""
+msgstr "Sleutel voor dit domein"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:79
 msgid "Class of service"
-msgstr ""
+msgstr "Serviceklasse"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:79
 msgid "Possible classes of service for this domain, separated by commas"
-msgstr ""
+msgstr "Mogelijke serviceklassen voor dit domein, gescheiden door komma's"
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:30
 msgid "Partage sympa options"
-msgstr ""
+msgstr "Partage sympa-opties"
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:43
 msgid "Server"
@@ -172,7 +177,7 @@ msgstr "Server"
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:43
 msgid "Email server"
-msgstr ""
+msgstr "E-mailserver"
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:70
 msgid "Alternative addresses"
@@ -180,7 +185,7 @@ msgstr "Alternatieve adressen"
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:70
 msgid "Alternative mail addresses for the list"
-msgstr ""
+msgstr "Alternatieve e-mailadressen voor de lijst"
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:158
 #, php-format
@@ -200,7 +205,7 @@ msgstr "Mail-fout"
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:182
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
-msgstr ""
+msgstr "Kan mailbox niet verwijderen, mail methode kan niet verbinden: %s"
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:186
 #, php-format
@@ -209,25 +214,25 @@ msgstr "Kan volgende mailbox niet verwijderen: %s"
 
 #: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:61
 msgid "Server did not return auth token"
-msgstr ""
+msgstr "Server stuurde geen auth token terug"
 
 #: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:126
 msgid "Partage API answer malformated"
-msgstr ""
+msgstr "Partage API antwoord fout geformateerd"
 
 #: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:130
 #, php-format
 msgid "Partage API Auth failed: %s"
-msgstr ""
+msgstr "Partage API Auth gefaald:  %s"
 
 #: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:132
 msgid "Partage API Auth failed with no error message"
-msgstr ""
+msgstr "Partage API Auth gefaald zonder foutboodschap"
 
 #: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:141
 #, php-format
 msgid "Unable to connect to %s: %s"
-msgstr ""
+msgstr "Niet in staat te verbinden met %s: %s"
 
 #: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:143
 #, php-format
@@ -244,24 +249,26 @@ msgid ""
 "Several addresses were given in gosaMailForwardingAddress but only one is "
 "supported by PARTAGE. %s will be sent to PARTAGE."
 msgstr ""
+"Verscheidene adressen waren toegewezen in gosaMailForwardingAddress maar "
+"enkel één is ondersteund door PARTAGE. %s zal naar PARTAGE gezonden worden."
 
 #: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:470
 msgid "PARTAGE error"
-msgstr ""
+msgstr "PARTAGE fout"
 
 #: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:471
 #, php-format
 msgid "Several users have uid \"%s\". Ignoring this member."
-msgstr ""
+msgstr "Verscheidene gebruikers hebben uid \"%s\". Dit lid wordt genegeerd."
 
 #: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:510
 #: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:523
 msgid "An account with the same email address already exists in Partage"
-msgstr ""
+msgstr "Een account met hetzelfde e-mail adres bestaat reeds in Partage"
 
 #: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:588
 msgid "Invalid value in fdRenaterPartageServerDeletionType"
-msgstr ""
+msgstr "Ongeldige waarde in fdRenaterPartageServerDeletionType"
 
 #: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:625
 msgid "Never"
@@ -269,11 +276,11 @@ msgstr "Nooit"
 
 #: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:632
 msgid "Last login"
-msgstr ""
+msgstr "Recentste login"
 
 #: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:633
 msgid "Account status"
-msgstr ""
+msgstr "Accountstatus"
 
 #: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:633
 msgid "Unknown"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-11-20 15:25+0000\n"
+"POT-Creation-Date: 2017-12-21 15:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -33,16 +33,16 @@ msgstr "Cyrus instellingen"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:48
 msgid "Connect URL for Cyrus server"
-msgstr ""
+msgstr "Verbind URL voor Cyrus server"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:52
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:93
 msgid "Hostname"
-msgstr "hostname"
+msgstr "Hostname"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:52
 msgid "Hostname of the Cyrus server"
-msgstr ""
+msgstr "Hostnaam van de Cyrus server"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:56
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:97
@@ -51,7 +51,7 @@ msgstr "Poort"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:56
 msgid "Port number on which Cyrus server should be contacted"
-msgstr ""
+msgstr "Poort nummer op dewelke de Cyrus server moet gecontacteerd worden"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:61
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:102
@@ -60,51 +60,51 @@ msgstr "Optie"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:61
 msgid "Options for contacting Cyrus server"
-msgstr ""
+msgstr "Opties om de Cyrus server te contacteren"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:66
 msgid "Valide certificats"
-msgstr ""
+msgstr "Geldig certificaat"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:66
 msgid "Weither or not to validate server certificate on connexion"
-msgstr ""
+msgstr "Al dan niet valideren van server certificaat op verbindingen"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:76
 msgid "Admin user"
-msgstr "Beheerder"
+msgstr "Admin gebruiker"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:76
 msgid "Imap server admin user"
-msgstr ""
+msgstr "Imap server admin gebruiker"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:80
 msgid "Password"
-msgstr "Wachtwoord"
+msgstr "Paswoord"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:80
 msgid "Admin user password"
-msgstr "Admin gebruikers wachtwoord"
+msgstr "Admin gebruiker paswoord"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:86
 msgid "Sieve settings"
-msgstr ""
+msgstr "Sieve instellingen"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:89
 msgid "Sieve connect URL for Cyrus server"
-msgstr ""
+msgstr "Sieve connect URL voor Cyrus server"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:93
 msgid "Hostname of the Cyrus sieve server"
-msgstr ""
+msgstr "Hostname van de Cyrus sieve server"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:97
 msgid "Port number on which Cyrus sieve server should be contacted"
-msgstr ""
+msgstr "Poort nummer op dewelke Cyrus sieve server moet gecontacteerd worden"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:102
 msgid "Options for contacting Cyrus sieve server"
-msgstr ""
+msgstr "Opties voor het contacteren van de Cyrus sieve server"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:50
 msgid "There are no IMAP compatible mail servers defined!"
@@ -112,7 +112,7 @@ msgstr "Er zijn geen IMAP compatibele mail servers gedefinieerd!"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:55
 msgid "Mail server for this account is invalid!"
-msgstr "Mail server voor deze account is niet geldig!"
+msgstr "Mail server voor deze account is ongeldig!"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:241
 msgid "IMAP error"
@@ -133,8 +133,8 @@ msgid ""
 "LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
 "Please delete it manually!"
 msgstr ""
-"LDAP invoer is verwijderd, maar cyrus mailbox (%s) wordt gehouden.⏎ Gelieve "
-"deze handmatig te verwijderen!"
+"LDAP invoer is verwijderd, maar cyrus mailbox (%s) wordt bijgehouden. "
+"Gelieve deze handmatig te verwijderen!"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:404
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:442

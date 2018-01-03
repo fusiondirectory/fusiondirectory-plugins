@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-11-20 15:25+0000\n"
+"POT-Creation-Date: 2017-12-21 15:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2017\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -107,7 +107,7 @@ msgstr "Pořadí přednosti tohoto pravidla v porovnání s ostatními"
 
 #: admin/sudo/class_sudoGeneric.inc:208
 msgid "Valid starting from"
-msgstr ""
+msgstr "Platné počínaje"
 
 #: admin/sudo/class_sudoGeneric.inc:208
 msgid ""
@@ -278,6 +278,8 @@ msgid ""
 "If set, sudo will prompt for the root password instead of the password of "
 "the invoking user"
 msgstr ""
+"Když je nastaveno, sude se bude dotazovat na heslo správce systému (root) "
+"namísto hesla uživatele, který sudo vyvolal"
 
 #: admin/sudo/class_sudoOptions.inc:163
 msgid ""
@@ -319,6 +321,7 @@ msgstr ""
 #: admin/sudo/class_sudoOptions.inc:198
 msgid "If set, parsing of /etc/sudoers file will be skipped."
 msgstr ""
+"Pokud je nastaveno, zpracovávání souboru /etc/sudoers bude přeskočeno."
 
 #: admin/sudo/class_sudoOptions.inc:203
 msgid ""
@@ -333,7 +336,7 @@ msgstr ""
 #: admin/sudo/class_sudoOptions.inc:213
 msgid ""
 "Number of minutes that can elapse before sudo will ask for a passwd again"
-msgstr ""
+msgstr "Počet minut které mohou uplynout než se sude bude znovu ptát na heslo"
 
 #: admin/sudo/class_sudoOptions.inc:218
 msgid ""
@@ -359,7 +362,7 @@ msgstr "Zpráva kterou zobrazit když uživatel zadá nesprávné heslo"
 
 #: admin/sudo/class_sudoOptions.inc:238
 msgid "The directory in which sudo stores its timestamp files"
-msgstr ""
+msgstr "Složka do které sudo ukládá své soubory s časovými značkami"
 
 #: admin/sudo/class_sudoOptions.inc:243
 msgid "The owner of the timestamp directory and the timestamps stored therein"
@@ -411,6 +414,7 @@ msgstr ""
 #: admin/sudo/class_sudoOptions.inc:293
 msgid "Path to the sudo log file (not the syslog log file)"
 msgstr ""
+"Popis umístění souboru se záznamem událostí (log) v sudo (ne soubor syslog)"
 
 #: admin/sudo/class_sudoOptions.inc:298
 msgid "Syslog facility if syslog is being used for logging"
@@ -426,7 +430,7 @@ msgstr ""
 
 #: admin/sudo/class_sudoOptions.inc:313
 msgid "Address to send warning and error mail to"
-msgstr ""
+msgstr "Adresa na kterou posílat varovné a chybové e-maily"
 
 #: admin/sudo/class_sudoOptions.inc:318
 msgid "Users in this group are exempt from password and PATH requirements"

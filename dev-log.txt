@@ -1,0 +1,2165 @@
+commit ed8e321a76030de61fed07d1527aeef203412a60
+Merge: 4690db1 19f92b2
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Dec 7 14:59:10 2017 +0100
+
+    Merge branch '5746-add-acl-support-to-dashboard-tabs' into '1.3-dev'
+    
+    Resolve "Add ACL support to dashboard tabs"
+    
+    See merge request fusiondirectory/fd-plugins!106
+
+commit 19f92b20361972b89feedffb250e20fa928b6624
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Dec 7 14:47:25 2017 +0100
+
+    :ambulance: fix(systems): Fix ACL handling in systems dashboard tab
+    
+    issue #5746
+
+commit 4690db1a6a379c964e7e3692e84470167143fc59
+Merge: 88f7fbb daadd03
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Dec 7 10:32:37 2017 +0100
+
+    Merge branch '5748-acl-handling-for-start-stop-restart-service-is-broken' into '1.3-dev'
+    
+    Resolve "ACL handling for start/stop/restart service is broken"
+    
+    See merge request fusiondirectory/fd-plugins!105
+
+commit daadd0310b93b0ce3186cad59bf7249e8dafa2b1
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Dec 7 10:24:48 2017 +0100
+
+    :ambulance: fix(services): Fix services ACLs
+    
+    Fix ACLs for start/stop/restart.
+    Fixed DHCP service ACLs as well (used in dashboard)
+    
+    issue #5748
+
+commit 88f7fbb58cda7e8d7bbe9766c7e1d7f0da6d52bf
+Merge: 6953502 4663ff7
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Dec 6 17:23:58 2017 +0100
+
+    Merge branch '5746-add-acl-support-to-dashboard-tabs' into '1.3-dev'
+    
+    Resolve "Add ACL support to dashboard tabs"
+    
+    See merge request fusiondirectory/fd-plugins!104
+
+commit 4663ff7f6e3a5a511c525d275b657cc25523d482
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Dec 6 17:17:09 2017 +0100
+
+    :sparkles: feat(dashboard): Add ACL support to dashboard tabs
+    
+    issue #5746
+
+commit 6953502a92567fb8c83fb1a1bf5ca31b50551614
+Merge: 5a95b60 b150524
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Dec 6 15:35:17 2017 +0100
+
+    Merge branch '5747-the-error-message-from-csv-import-is-not-correct-when-we-fail-an-import' into '1.3-dev'
+    
+    Resolve "The error message from CSV import is not correct when we fail an import"
+    
+    Closes #5747
+    
+    See merge request fusiondirectory/fd-plugins!103
+
+commit b150524cee4bc725e7488ac08c3ac24938bb3476
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Dec 6 15:23:25 2017 +0100
+
+    :ambulance: fix(ldapmanager): Fix line number in error message
+    
+    Line numbers starts at 1 and not 0
+    
+    close #5747
+
+commit 5a95b601b3c9eebbc073258a873f11ef519fe39e
+Merge: fa7a56b d36f65a
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Dec 4 17:47:42 2017 +0100
+
+    Merge branch '5745-php-error-in-opsi-product-properties' into '1.3-dev'
+    
+    Resolve "PHP error in OPSI product properties"
+    
+    See merge request fusiondirectory/fd-plugins!101
+
+commit d36f65afb3284ea9434be7713470bb8dc8799bd9
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Dec 4 17:35:02 2017 +0100
+
+    :ambulance: fix(opsi): Fix a PHP error in OPSI product properties tab
+    
+    issue #5745
+
+commit fa7a56b2d11d6661e1f6fd7e44252e084106c123
+Merge: 4ded7ec a4270fd
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Dec 4 11:12:30 2017 +0100
+
+    Merge branch '5743-php-error-in-argonaut-queue' into '1.3-dev'
+    
+    Resolve "PHP error in argonaut-queue"
+    
+    See merge request fusiondirectory/fd-plugins!100
+
+commit a4270fd6d7d96b798c3770bd3a1e1e4ef0187dc7
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Dec 4 11:00:25 2017 +0100
+
+    :ambulance: fix(argonaut): Fix PHP error in argonaut queue
+    
+    issue #5743
+
+commit 4ded7ecf43a3ff6f54222a8c6ae3d7b6dc041dc2
+Merge: 7b91086 4614f4a
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Dec 4 09:39:23 2017 +0100
+
+    Merge branch '5742-when-i-edit-or-use-a-template-it-show-an-error' into '1.3-dev'
+    
+    Resolve "When I edit or use a template it show an error"
+    
+    See merge request fusiondirectory/fd-plugins!99
+
+commit 7b910863a15c8b0d272227391b29c468342e806e
+Merge: 6b5092c a36d1ac
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Dec 4 09:33:03 2017 +0100
+
+    Merge branch '5743-php-error-in-argonaut-queue' into '1.3-dev'
+    
+    Resolve "PHP error in argonaut-queue"
+    
+    See merge request fusiondirectory/fd-plugins!98
+
+commit 4614f4a10c6f3c154cfdeb33e4f2c0a7eb8f0d4b
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Dec 4 09:28:38 2017 +0100
+
+    :ambulance: fix(opsi): Disable OPSI log fetching on templates
+    
+    It was triggerring errors and it makes no sense anyway
+    
+    issue #5742
+
+commit a36d1ac8d5c68274265b1127648a8a1dfbb663f6
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Dec 4 09:20:31 2017 +0100
+
+    :ambulance: fix(argonaut): Fix PHP error in argonaut queue
+    
+    issue #5743
+
+commit 6b5092c6ce077f5d027af851bdcfecdfbaea5428
+Merge: 82b47b0 d75c11d
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Nov 30 17:22:51 2017 +0100
+
+    Merge branch '1311-show-in-system-list-which-system-are-on-off' into '1.3-dev'
+    
+    Resolve "show in system list which system are on/off"
+    
+    See merge request fusiondirectory/fd-plugins!97
+
+commit d75c11dc04e881e739a2fc76f0dd36905c8fab7c
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Nov 30 17:12:32 2017 +0100
+
+    :ambulance: fix(systems): Valid CSS value is disc not disk for list-style-type
+    
+    issue #1311
+
+commit 82b47b04407b0f66fa257ff5ac23daf11a245b01
+Merge: ea20439 ba600b4
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Nov 30 11:20:09 2017 +0100
+
+    Merge branch '5741-reference-tab-on-the-opsi-profile-is-not-showing-objects-reference' into '1.3-dev'
+    
+    Resolve "reference tab on the OPSI profile is not showing objects reference"
+    
+    See merge request fusiondirectory/fd-plugins!96
+
+commit ba600b46fe51e20d695da3b150f7f291194d480b
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Nov 30 11:02:49 2017 +0100
+
+    :ambulance: fix(opsi): Add missing foreign keys in OPSI plugin
+    
+    This makes sure references are shown and that rename/move of an OPSI
+     profile or server will not break things.
+    
+    issue #5741
+
+commit ea204395d8d32b6933abad8ef281a4082fd87cfb
+Merge: 0e7944b 7c9a39c
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Nov 30 10:47:41 2017 +0100
+
+    Merge branch '5739-add-a-new-field-into-weblink-to-store-an-inventory-url' into '1.3-dev'
+    
+    Resolve "add a new field into weblink to store an inventory url"
+    
+    See merge request fusiondirectory/fd-plugins!95
+
+commit 7c9a39c1717f25018a22912b1facb7f1eaa0fb2f
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Nov 30 10:11:34 2017 +0100
+
+    :sparkles: feat(weblink): Split links and auto links in two lists
+    
+    Also put links in a separated section so that once configured it’s more
+     practical.
+    
+    issue #5739
+
+commit 0e7944b57df50dbca129b9cd766996b9578c18cf
+Merge: e9d4205 5a34da1
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Nov 29 17:30:56 2017 +0100
+
+    Merge branch '1311-show-in-system-list-which-system-are-on-off' into '1.3-dev'
+    
+    Resolve "show in system list which system are on/off"
+    
+    See merge request fusiondirectory/fd-plugins!92
+
+commit 5a34da10b49a0628654fb4af91a96019d07d5784
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Nov 29 17:24:04 2017 +0100
+
+    :ambulance: fix(systems): Fixed Code style compliance in systemsManagement
+    
+    issue #1311
+
+commit 71c446a4579184dacee89be8bc1119b86faf2039
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Nov 29 15:31:45 2017 +0100
+
+    :sparkles: feat(systems): Add a menu action to ping systems
+    
+    This goes through argonaut-server and result may depend on which modules
+     are installed.
+    We may want to add some special Ping module on argonaut-server side for
+     using ping directly instead of argonaut-client/OPSI, or as a fallback.
+    
+    issue #1311
+
+commit e9d420545ac821d8273d7818996a57f91177e4ed
+Merge: e4923c7 46171a7
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Nov 28 17:32:32 2017 +0100
+
+    Merge branch '5731-add-a-tab-in-the-opsi-plugin-on-a-system-to-show-log-for-this-computer' into '1.3-dev'
+    
+    Resolve "Add a tab in the opsi plugin on a system to show log for this computer"
+    
+    See merge request fusiondirectory/fd-plugins!91
+
+commit 46171a77f1999437d6b162abeaf35f88f6e2cd9c
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Nov 28 17:19:06 2017 +0100
+
+    :ambulance: fix(opsi): Fix OPSI log tab activation
+    
+    This makes sure to avoid useless argonaut request if OPSI client tab is
+     not active.
+    It also makes sure tab appear as inactive when there is no log.
+    
+    issue #5731
+
+commit c4ffa4a67e55f7818128b9b8de5bf0e22e13c1fb
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Nov 28 17:14:21 2017 +0100
+
+    :ambulance: fix(systems): Fix some priorities in system tabs
+    
+    This makes sure that OPSI logs tab comes after OPSI client tab, among
+     other things.
+    This mean the OPSI log tab will be able to check if the OPSI client tab
+     is active in its constructor.
+    
+    issue #5731
+
+commit e4923c710a88790c6528a5989109b304c03bcabc
+Merge: e14ccc5 f1dd493
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Nov 28 16:24:35 2017 +0100
+
+    Merge branch '5738-add-opsi-stat-tab-to-the-dashboard' into '1.3-dev'
+    
+    Resolve "Add opsi stat tab to the dashboard"
+    
+    See merge request fusiondirectory/fd-plugins!90
+
+commit f1dd4939898f2863c8ad0b153765e2d07e4e26c4
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Nov 28 16:17:39 2017 +0100
+
+    :sparkles: feat(opsi): Move profile list in separate dashboard section
+    
+    issue #5738
+
+commit 9cb56ba2e1cd15a3e7d9fb86532c711eab08160f
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Nov 28 16:11:48 2017 +0100
+
+    :sparkles: feat(opsi): Show icons instead of labels for usage count
+    
+    issue #5738
+
+commit e14ccc5bfa91b40bfaadb9347f2ef4a16b557bf4
+Merge: a1c2069 c70b5b4
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Nov 28 14:44:50 2017 +0100
+
+    Merge branch '5738-add-opsi-stat-tab-to-the-dashboard' into '1.3-dev'
+    
+    Resolve "Add opsi stat tab to the dashboard"
+    
+    See merge request fusiondirectory/fd-plugins!89
+
+commit c70b5b4a24b7ba144e0d58a0c3e07b05e226cc7e
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Nov 28 14:33:35 2017 +0100
+
+    :sparkles: feat(opsi): Add the same information in OPSI profile list
+    
+    issue #5738
+
+commit a1c2069908db0f6cf5bafdb2a41b281724ba1160
+Merge: 3eb1fba ae52152
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Nov 28 10:52:20 2017 +0100
+
+    Merge branch '5740-dashboard-tabs-are-in-random-order' into '1.3-dev'
+    
+    Resolve "Dashboard tabs are in random order"
+    
+    See merge request fusiondirectory/fd-plugins!88
+
+commit 3eb1fbac93e8d486c08c5e356fc08cd0c70e3c7a
+Merge: a82383d 67117f5
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Nov 28 10:39:05 2017 +0100
+
+    Merge branch '5738-add-opsi-stat-tab-to-the-dashboard' into '1.3-dev'
+    
+    Resolve "Add opsi stat tab to the dashboard"
+    
+    See merge request fusiondirectory/fd-plugins!87
+
+commit ae52152c13942716572ef112d23bf082e397fcf2
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Nov 28 10:36:18 2017 +0100
+
+    :ambulance: fix(dashboard): Add priorities to dashboard tabs
+    
+    This allow to order dashboard tabs to have user related tabs first and
+     systems related tabs after
+    
+    issue #5740
+
+commit 67117f57fade4d88462eddc5905192ab4e0763e3
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Nov 28 10:19:54 2017 +0100
+
+    :sparkles: feat(opsi): Add OPSI dashboard with some statistics
+    
+    Lists OPSI profiles and their uses, counts profiles, servers and
+     clients
+    
+    issue #5738
+
+commit a82383d86903f031152a652f43524c1845a53891
+Merge: 138e460 6a0c136
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Nov 27 17:17:57 2017 +0100
+
+    Merge branch '5739-add-a-new-field-into-weblink-to-store-an-inventory-url' into '1.3-dev'
+    
+    Resolve "add a new field into weblink to store an inventory url"
+    
+    See merge request fusiondirectory/fd-plugins!86
+
+commit 6a0c13641be5655a0fa598f6527bc6dd56789016
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Nov 27 17:10:30 2017 +0100
+
+    :sparkles: feat(weblink): Add support for arbitrary URL in weblink
+    
+    Can be used for linking an inventory web page for instance.
+    Can be quite useful in templates also.
+    
+    issue #5739
+
+commit 138e460426d34cda54e891eeac5f0152ecd994e2
+Merge: 7c5311f f60c751
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Nov 27 16:14:54 2017 +0100
+
+    Merge branch '5731-add-a-tab-in-the-opsi-plugin-on-a-system-to-show-log-for-this-computer' into '1.3-dev'
+    
+    Resolve "Add a tab in the opsi plugin on a system to show log for this computer"
+    
+    Closes #5731
+    
+    See merge request fusiondirectory/fd-plugins!85
+
+commit f60c751825bef6c9f615d7eda84169b0d433314a
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Nov 27 15:48:57 2017 +0100
+
+    :ambulance: fix(opsi): Removed test attribute name
+    
+    close #5731
+
+commit 7c5311f32e6c4fb630c7d161e15fdc9348040ae9
+Merge: 9534773 cb646ab
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Nov 27 15:43:19 2017 +0100
+
+    Merge branch '5737-add-last-date-of-connection-of-a-client-inside-the-opsi-client-tab' into '1.3-dev'
+    
+    Resolve "add last date of connection of a client inside the opsi client tab"
+    
+    See merge request fusiondirectory/fd-plugins!84
+
+commit cb646ab8bae95f31913f10a050cdfcd48c13fd4c
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Nov 27 15:32:33 2017 +0100
+
+    :ambulance: fix(opsi): Added missing d in getMacAddresses
+    
+    issue #5737
+
+commit 9534773cb39d8792492cb935a54ad0da3c2930e7
+Merge: 2ed7396 cf82c9a
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Nov 27 14:19:29 2017 +0100
+
+    Merge branch '5737-add-last-date-of-connection-of-a-client-inside-the-opsi-client-tab' into '1.3-dev'
+    
+    Resolve "add last date of connection of a client inside the opsi client tab"
+    
+    See merge request fusiondirectory/fd-plugins!83
+
+commit cf82c9af243d9accf8f87062a81f553c10c02430
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Nov 27 14:12:15 2017 +0100
+
+    :sparkles: feat(opsi): Show last seen information in OPSI tab
+    
+    This adds an Information section in OPSI tab, containing lastSeen
+     information for now.
+    
+    issue #5737
+
+commit 2ed73964e8d41e16935c42994632fc48ea715873
+Merge: 51c4da2 04a02b8
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Nov 27 11:26:41 2017 +0100
+
+    Merge branch '5735-viewing-the-log-from-the-argonaut-queue-should-not-be-fai-dependent' into '1.3-dev'
+    
+    Resolve "Viewing the log from the argonaut queue should not be fai dependent"
+    
+    See merge request fusiondirectory/fd-plugins!82
+
+commit 04a02b819c22189af13a23028dd7c3c841017335
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Nov 27 11:17:37 2017 +0100
+
+    :ambulance: fix(argonaut): Remove broken view logs feature
+    
+    It was only working for FAI logs a long time ago.
+    Logs can now be consulted by clicking the link in the target column
+     instead.
+    
+    issue #5735
+
+commit c63d1f5d43afdd1ea7d107e29ec5e77e422659cb
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Nov 27 11:15:11 2017 +0100
+
+    :sparkles: feat(argonaut): Target in argonaut queue are now links to systems
+    
+    This adds a link to the system in the target column of the argonaut
+     queue.
+    This allows to go check logs and other informations of the system.
+    
+    issue #5735
+
+commit 51c4da227862f87af69ff53174568af7db75b8f4
+Merge: f6449f6 3668b62
+Author: bmortier <benoit.mortier@opensides.be>
+Date:   Mon Nov 20 18:35:04 2017 +0100
+
+    Merge branch '5734-updating-locales-from-transifex' into '1.3-dev'
+    
+    Resolve "Updating locales from transifex"
+    
+    Closes #5734
+    
+    See merge request fusiondirectory/fd-plugins!81
+
+commit 3668b62456788ab4fb6309e6b2929e3d573b566a
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Mon Nov 20 18:22:30 2017 +0100
+
+    :handshake: locales: Updating locales from transifex
+    
+    Signed-off-by: Benoit Mortier <benoit.mortier@opensides.be>
+
+commit f6449f6cc218463deeffb81eb820e4c9e1aef599
+Merge: 9f1b42d 49a359e
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Nov 20 15:57:53 2017 +0100
+
+    Merge branch '5704-webservice-user-with-admin-acl-on-department-can-ls-objects-at-root-base-in-ws' into '1.3-dev'
+    
+    Resolve "[webservice] User  with admin ACL on department can ls objects at root base in WS"
+    
+    See merge request fusiondirectory/fd-plugins!80
+
+commit 49a359e9dd83e958265288e20194c65a43cae577
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Nov 20 15:43:28 2017 +0100
+
+    :ambulance: fix(webservice): Check ACL on attributes in filter for count method
+    
+    This enables ACL check on the filter used in the count method to avoid
+     information leak.
+    
+    issue #5704
+
+commit 9f1b42d989d4bd6196ad159ac76e649532c85066
+Merge: 1d1b413 1ee282c
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Nov 16 11:33:50 2017 +0100
+
+    Merge branch '5731-add-a-tab-in-the-opsi-plugin-on-a-system-to-show-log-for-this-computer' into '1.3-dev'
+    
+    Resolve "Add a tab in the opsi plugin on a system to show log for this computer"
+    
+    See merge request fusiondirectory/fd-plugins!79
+
+commit 1ee282cd336fafe255680f36c00c1b146571e166
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Nov 16 11:22:23 2017 +0100
+
+    :ambulance: fix(opsi): Remove left-over var_dump debug call
+    
+    issue #5731
+
+commit c1ac82bf9498d8941cb42653b7166f53d3b7f9ca
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Nov 16 11:20:23 2017 +0100
+
+    :ambulance: fix(fai): Small cleans in faiLogView
+    
+    issue #5731
+
+commit 97770e63cb457aed05c35b9b839add4a1604761e
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Nov 16 11:19:39 2017 +0100
+
+    :sparkles: feat(opsi): Add tab to view OPSI logs
+    
+    Added a tab showing OPSI log files if any
+    
+    issue #5731
+
+commit 1d1b4134a4730fd7850d43e59997cf7043f2ace3
+Merge: afb54f7 8a6390a
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Nov 15 10:36:50 2017 +0100
+
+    Merge branch '5732-fai-log-tab-is-shown-as-active-even-if-there-is-no-log' into '1.3-dev'
+    
+    Resolve "FAI log tab is shown as active even if there is no log"
+    
+    Closes #5732
+    
+    See merge request fusiondirectory/fd-plugins!78
+
+commit 8a6390a18f3cb5e92d4f1527cd494e30d1def8c6
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Nov 15 10:27:22 2017 +0100
+
+    :ambulance: fix(fai): Set FAI log tab as inactive when there is no log
+    
+    Code was trying to do it but it was not working because of
+     ignore_account value.
+    The new code mimics what is done for DHCP tab already.
+    
+    close #5732
+
+commit afb54f7e5c4ccd9a896ca11e8a4a9b3ccd106c26
+Merge: 4a30a06 7948634
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Nov 14 14:47:54 2017 +0100
+
+    Merge branch '5704-webservice-user-with-admin-acl-on-department-can-ls-objects-at-root-base-in-ws' into '1.3-dev'
+    
+    Resolve "[webservice] User  with admin ACL on department can ls objects at root base in WS"
+    
+    See merge request fusiondirectory/fd-plugins!77
+
+commit 7948634e8d76aeaf97f7483d19e526a637c73b8a
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Nov 14 14:36:39 2017 +0100
+
+    :ambulance: fix(webservice): Remove ACL checks which are now done in core
+    
+    See issue fd#5732
+    
+    issue #5704
+
+commit 4a30a069e3c2305e042be374045078988931c524
+Merge: f474b05 5253f76
+Author: bmortier <benoit.mortier@opensides.be>
+Date:   Thu Nov 9 16:53:47 2017 +0100
+
+    Merge branch '5730-pass-the-gitlab-ci-update-transiflex-only-on-the-main-branches' into '1.3-dev'
+    
+    Resolve "Pass the gitlab-ci update-transiflex only on the main branches"
+    
+    Closes #5730
+    
+    See merge request fusiondirectory/fd-plugins!76
+
+commit 5253f76e34cbe59022021404c0f215737093f816
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Thu Nov 9 16:36:09 2017 +0100
+
+    :ambulance: fix(gitlab-ci): Pass the gitlab-ci update-transiflex only on the main branches
+    
+    Fix transifex job on 1.3-dev
+    
+    Signed-off-by: Benoit Mortier <benoit.mortier@opensides.be>
+
+commit f474b052ed3056a4dd7f30c0be2a65994d64db74
+Merge: d8ffc00 15fc78b
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Nov 9 15:32:19 2017 +0100
+
+    Merge branch '5728-gotoxdmcpserver-is-single-value-in-schema-but-multi-value-in-fd' into '1.3-dev'
+    
+    Resolve "gotoXdmcpServer is single-value in schema but multi-value in FD"
+    
+    See merge request fusiondirectory/fd-plugins!75
+
+commit 15fc78b272c585b2e0d3b66f7b16fcd124ab57e7
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Nov 9 14:12:25 2017 +0100
+
+    :ambulance: fix(systems): A terminal can have only one server
+    
+    Terminal had a SetAttribute for its Server while is single valued in the
+     schema.
+    It’s now a SelectAttribute to match the schema.
+    
+    issue #5728
+
+commit d8ffc0052f9e16bb4ab4e55eae8caabb0d9a5540
+Merge: 5dfb42e f19f9e1
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Nov 9 10:12:24 2017 +0100
+
+    Merge branch '5724-soa-serial-is-rewriten-to-each-reverse-even-if-no-modification-is-made-to-any-record-related-to-these-domains' into '1.3-dev'
+    
+    Resolve "SOA serial is rewriten to each reverse even if no modification is made to any record related to these domains"
+    
+    See merge request fusiondirectory/fd-plugins!74
+
+commit f19f9e1fb96cdee8c40617ac7129e045666aa3a9
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Nov 9 09:24:35 2017 +0100
+
+    :ambulance: fix(dns): Fix PHP error spotted in selenium tests
+    
+    When a reverse is created there was a PHP error
+    
+    issue #5724
+
+commit 5dfb42e0bd65db8dabf87d27b959a70e36aac1a0
+Merge: 01f6c3d c090cf9
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Nov 8 16:47:57 2017 +0100
+
+    Merge branch '5729-soa-is-not-updated-in-reverse-zones-if-there-is-no-record-change' into '1.3-dev'
+    
+    Resolve "SOA is not updated in reverse zones if there is no record change"
+    
+    See merge request fusiondirectory/fd-plugins!72
+
+commit c090cf9d5b79d9605ecab85a726a5aa8b3a2fc31
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Nov 8 16:19:53 2017 +0100
+
+    :ambulance: fix(dns): Update SOA in both forward and reverse
+    
+    When no records are modified SOA modifications should still be
+     propagated to reverse zones
+    
+    issue #5729
+
+commit 01f6c3da16f46a63e73ecbc327fad74c32016d1b
+Merge: ff348de f7a09ca
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Nov 8 15:41:42 2017 +0100
+
+    Merge branch '5724-soa-serial-is-rewriten-to-each-reverse-even-if-no-modification-is-made-to-any-record-related-to-these-domains' into '1.3-dev'
+    
+    Resolve "SOA serial is rewriten to each reverse even if no modification is made to any record related to these domains"
+    
+    See merge request fusiondirectory/fd-plugins!66
+
+commit ff348de31e8d89a6187d90bd35ed6f9d59346866
+Merge: dddb800 fec5c1a
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Nov 7 15:36:53 2017 +0100
+
+    Merge branch '5725-crash-when-i-remove-ip-from-a-workstation-with-a-dns-record' into '1.3-dev'
+    
+    Resolve "Crash when I remove IP from a workstation with a DNS record"
+    
+    See merge request fusiondirectory/fd-plugins!68
+
+commit fec5c1a576aa1e7dd3048120dd6c6988c98dcd6a
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Nov 7 15:00:49 2017 +0100
+
+    :ambulance: fix(dns): Fixed crash in DNS tab when removing IPs
+
+commit f7a09caf9ab199bc760df56db12cdc1e93034683
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Nov 7 14:33:46 2017 +0100
+
+    :ambulance: fix(dns): Avoid updating reverse zones master node when not needed
+    
+    If only the serial changed, do not update the reverse zone SOA record
+    
+    issue #5724
+
+commit dddb800b8c6b7de4fc08428035bb4ad0316ea0d8
+Merge: 3847a12 838fab3
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Oct 30 17:57:01 2017 +0100
+
+    Merge branch '5723-split-posix-and-ppolicy-alert-email-settings' into '1.3-dev'
+    
+    Resolve "Split posix and ppolicy alert email settings"
+    
+    Closes #5723
+    
+    See merge request !63
+
+commit 838fab3732c4803edf50f9f832865220d27a086c
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Oct 30 16:57:11 2017 +0100
+
+    :sparkles: feat(user-reminder): Add a config section for ppolicy alerts
+    
+    This adds a config section specific to ppolicy expiration alerts, as
+     they do not contain a token link should instead explain how to change
+     the password.
+    
+    issue #5723
+
+commit 3847a12e4df923fbf86a19965efb6ea60a8b4748
+Merge: 9e99ec5 02592c6
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Oct 30 11:17:59 2017 +0100
+
+    Merge branch '5716-system-dns-tab' into '1.3-dev'
+    
+    Resolve "System - DNS Tab"
+    
+    See merge request !62
+
+commit 02592c606cb3fb54acec1a958cb2c49289693943
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Oct 30 10:49:35 2017 +0100
+
+    :ambulance: fix(dns): Fix major bug erasing LDAP from recent commits
+    
+    There was errors which led to full LDAP tree deletion when saving a DNS
+     zone.
+    
+    issue #5716
+
+commit 9e99ec5c2593e021082cce31fc65c883eacf1a90
+Merge: 353663c a15fffc
+Author: bmortier <benoit.mortier@opensides.be>
+Date:   Fri Oct 27 11:45:14 2017 +0200
+
+    Merge branch '5722-move-how_to_contribute-page-from-the-wiki-to-developper-documentation' into '1.3-dev'
+    
+    Resolve "move how_to_contribute page from the wiki to developper documentation"
+    
+    Closes #5722
+    
+    See merge request !60
+
+commit 353663c5e0dc9f9715ae009f207e3fcdbca7e3af
+Merge: 4717c88 503588e
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Oct 26 16:18:11 2017 +0200
+
+    Merge branch '5596-allow-to-setup-opsi-product-outside-of-profiles' into '1.3-dev'
+    
+    Resolve "Allow to setup OPSI product outside of profiles"
+    
+    See merge request !61
+
+commit 503588e57d6d1b0ff682ab110724500745bd8633
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Oct 26 15:51:16 2017 +0200
+
+    :sparkles: feat(opsi): Allow to add products directly on systems
+    
+    This allows to configure localboot products action directly in the OPSI
+     client tab of a system
+    
+    issue #5596
+
+commit a15fffca9a62a5470e6bafe48e321c5192945060
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Thu Oct 26 12:09:18 2017 +0200
+
+    books: feat(docs): move how_to_contribute page from the wiki to developper documentation
+    
+    Signed-off-by: Benoit Mortier <benoit.mortier@opensides.be>
+
+commit 4717c88255951e265f25b6f4f79d9af4c2178d06
+Merge: d43ff24 d91eadd
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Oct 26 13:15:37 2017 +0200
+
+    Merge branch '5716-system-dns-tab' into '1.3-dev'
+    
+    Resolve "System - DNS Tab"
+    
+    See merge request !59
+
+commit d91eaddc433207db01a103e224829887f7b4448d
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Oct 26 12:32:27 2017 +0200
+
+    :ambulance: fix(dns): Fix PHP error spotted in tests
+
+commit d43ff248d767722b4ded21cafa5fb0427b957ae4
+Merge: 0620fe9 cb9999d
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Oct 26 11:58:48 2017 +0200
+
+    Merge branch '5716-system-dns-tab' into '1.3-dev'
+    
+    Resolve "System - DNS Tab"
+    
+    See merge request !58
+
+commit cb9999d0b2c4039c7e78427cbbb13cd024bf69dd
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Oct 26 11:25:58 2017 +0200
+
+    :ambulance: fix(dns): Fix PHP error triggered in tests
+    
+    issue #5716
+
+commit 0620fe9125cb18c1a7678607e52f7abf538fd6c4
+Merge: bdeed4d aa0207b
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Oct 26 10:19:47 2017 +0200
+
+    Merge branch '5716-system-dns-tab' into '1.3-dev'
+    
+    Resolve "System - DNS Tab"
+    
+    See merge request !57
+
+commit aa0207bb240b28eaead02dbc8d715c8602e8d003
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Oct 26 09:27:11 2017 +0200
+
+    :ambulance: fix(dns): Avoid PHP errors in DNS plugin detected by tests
+    
+    When creating a zone a non-set var was used as an array
+    
+    issue #5716
+
+commit bdeed4d5a5080fd719de677f2e8ebee58e0a90f5
+Merge: 5d813ae 65c4886
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Oct 25 14:54:31 2017 +0200
+
+    Merge branch '5716-system-dns-tab' into '1.3-dev'
+    
+    Resolve "System - DNS Tab"
+    
+    See merge request !50
+
+commit 65c4886c631da89cd47079bff6edecf9c38ace5d
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Oct 23 16:14:38 2017 +0200
+
+    :sparkles: feat(dns): Compute diff to optimize LDAP save
+    
+    This tries to do as little LDAP operations as possible when saving a
+     modified DNS zone.
+    
+    issue #5716
+
+commit 5d813ae5dd8afa8288051f7a71e23de52e2b15f0
+Merge: e6ac5e4 c2810c6
+Author: bmortier <benoit.mortier@opensides.be>
+Date:   Sun Oct 22 17:41:53 2017 +0200
+
+    Merge branch '5720-add-stage-to-gitlab-ci' into '1.3-dev'
+    
+    Resolve "Add stage to gitlab ci"
+    
+    Closes #5720
+    
+    See merge request !49
+
+commit c2810c6c1a825e1400038128d8ddccad9c4e7d13
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Sun Oct 22 17:10:52 2017 +0200
+
+    :ambulance: feat(gitlab): Add stage to gitlab ci
+    
+    Signed-off-by: Benoit Mortier <benoit.mortier@opensides.be>
+
+commit e6ac5e45716e38dd86cc4652d337c1f0de05a369
+Merge: 90bc202 6cdc0a6
+Author: bmortier <benoit.mortier@opensides.be>
+Date:   Sun Oct 22 00:50:04 2017 +0200
+
+    Merge branch '5718-add-a-transifex-section-to-update-locale-in-transifex-in-each-build' into '1.3-dev'
+    
+    Resolve "Add a transifex section to update locale in transifex in each build"
+    
+    Closes #5718
+    
+    See merge request !47
+
+commit 6cdc0a64d55679bd16e9175a4a0346a302b67a4e
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Sat Oct 21 18:48:57 2017 +0200
+
+    :ambulance: feat(gitlab-ci): Add a transifex section to update locale in transifex in each build
+    
+    Add back fusiondirectory-update-locale-plugins in place of fusiondirectory-update-locale due to a wrong copy paste
+    
+    Signed-off-by: Benoit Mortier <benoit.mortier@opensides.be>
+
+commit fa52486915a9a49daf1b86949b265763fed9872d
+Merge: 54fd3f5 90bc202
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Sat Oct 21 18:04:40 2017 +0200
+
+    Merge branch '1.3-dev' of gitlab.fusiondirectory.org:fusiondirectory/fd-plugins into 5718-add-a-transifex-section-to-update-locale-in-transifex-in-each-build
+
+commit 90bc202d53cbf381e571f29edd89de70e696513a
+Merge: b9ad475 2562b8f
+Author: bmortier <benoit.mortier@opensides.be>
+Date:   Sat Oct 21 17:54:19 2017 +0200
+
+    Merge branch '5719-correct-locale-issues-in-the-fai-plugin' into '1.3-dev'
+    
+    Resolve "Correct locale issues in the fai plugin"
+    
+    Closes #5719
+    
+    See merge request !48
+
+commit 2562b8f9644161d713089382abb997b943f2975b
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Sat Oct 21 17:46:51 2017 +0200
+
+    :ambulance: fix(fai): Correct locale issues in the fai plugin
+    
+    Signed-off-by: Benoit Mortier <benoit.mortier@opensides.be>
+
+commit 54fd3f5bbd11d555bd7259a531f492baf6191bec
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Sat Oct 21 17:17:04 2017 +0200
+
+    :ambulance: feat(gitlab-ci): Add a transifex section to update locale in transifex in each build
+    
+    Signed-off-by: Benoit Mortier <benoit.mortier@opensides.be>
+
+commit b9ad47518ae214a94d2a482f7161e69fa1db8812
+Merge: dd58b71 d89b36e
+Author: jswaelens <jonathan.swaelens@opensides.be>
+Date:   Thu Oct 19 11:07:41 2017 +0200
+
+    Merge branch '5715-add-fusiondirectory-update-locale-run-to-gitlab-ci-to-see-if-everthing-is-good-in-translated-parts' into '1.3-dev'
+    
+    Resolve "Add fusiondirectory-update-locale run to gitlab-ci to see if everthing is good in translated parts"
+    
+    Closes #5715
+    
+    See merge request !45
+
+commit d89b36e6521cb1a94b836a4b8c1bf6ae0cea7d94
+Author: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+Date:   Thu Oct 19 10:51:47 2017 +0200
+
+    :ambulance: feat(locale) Fix locale error in sudo plugin
+    
+    The file class_sudoOptions.inc in sudo plugin contains a non-ASCII string
+    
+    Signed-off-by: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+
+commit dd58b71b9cab6fa698429ed60501214f670fe6a6
+Merge: b90765c c94887e
+Author: bmortier <benoit.mortier@opensides.be>
+Date:   Thu Oct 19 01:14:44 2017 +0200
+
+    Merge branch '5717-only-install-package-when-needed-for-gitlab-ci' into '1.3-dev'
+    
+    Resolve "Only install package when needed for gitlab-ci"
+    
+    Closes #5717
+    
+    See merge request !46
+
+commit 0edc21a339e84a0de95d2461961c6230bc949d6b
+Author: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+Date:   Wed Oct 18 17:17:05 2017 +0200
+
+    :sparkles: feat(gitlab-ci) Add gettext in gitlab-ci
+    
+    Install gettext to use the fusiondirectory-update-locale script
+    
+    Signed-off-by: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+
+commit c94887e2911a9cd1724d361ad8f744ae78a6bb8b
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Wed Oct 18 16:13:09 2017 +0200
+
+    :ambulance: fix(gitlab-ci): Only install package when needed for gitlab-ci
+    
+    Signed-off-by: Benoit Mortier <benoit.mortier@opensides.be>
+
+commit cb6adad68750d15e3851f20fd3edfc8e1cc226d0
+Author: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+Date:   Wed Oct 18 14:25:12 2017 +0200
+
+    :sparkles: feat(gitlab-ci) Add fusiondirectory-update-locale in gitlab-ci
+    
+    fusiondirectory-update-locale-plugins will check the translation
+    
+    close #5715
+
+commit b90765c7aff641b72acf928800a8aeecb98a0c84
+Merge: 7766188 e765226
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Oct 18 10:08:10 2017 +0200
+
+    Merge branch '5709-system-dns-tab-dns-record-filtering' into '1.3-dev'
+    
+    Resolve "System - DNS Tab - DNS record filtering"
+    
+    Closes #5709
+    
+    See merge request !44
+
+commit e7652263577e0c682a9215a0f946dd58e87178a3
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Oct 18 09:59:50 2017 +0200
+
+    :ambulance: fix(dns): Avoid showing root records when activating DNS on a new system
+    
+    This disables DNS record filtering based on CN when the CN is empty.
+    This is the case when activating the DNS tab on a new system before
+     filling the main tab.
+    
+    close #5709
+
+commit 7766188ae5944ed5fb138707c767556e3ded100b
+Merge: ee8dcda 425720e
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 17 16:39:27 2017 +0200
+
+    Merge branch '5566-system-dhcp-tab-sort-the-list-alphabetically' into '1.3-dev'
+    
+    Resolve "System - DHCP Tab - Sort the list Alphabetically"
+    
+    See merge request !43
+
+commit 425720e37038a8c72adee6f17924eeae1373e006
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 17 16:29:37 2017 +0200
+
+    :sparkles: feat(dhcp): Enable sort in systems DHCP tab
+    
+    This allows to sort by parent, mac or IP the DHCP tab of a system
+    
+    issue #5566
+
+commit ee8dcda89755c764f65f0545f1e904783e5c5211
+Merge: 20254d7 836d0b7
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 17 15:10:33 2017 +0200
+
+    Merge branch '5344-we-should-find-a-way-to-translate-description-of-sudo-options' into '1.3-dev'
+    
+    Resolve "We should find a way to translate description of sudo options"
+    
+    See merge request !42
+
+commit 836d0b7e0d21d1711ddcc58b1beb7d0d700bbbc9
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 17 15:02:32 2017 +0200
+
+    :ambulance: fix(sudo): Add translation for sudo options descriptions
+    
+    This add the possibility to translate the description for each sudo
+     option.
+    
+    issue #5344
+
+commit 20254d781a25a3186a9a9502b2c63fa4c9c247aa
+Merge: b6c764b a70528e
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 17 10:20:56 2017 +0200
+
+    Merge branch '5629-when-remove-some-content-on-partage-tab-an-error-occurs' into '1.3-dev'
+    
+    Resolve "when remove some content on partage tab, an error occurs"
+    
+    See merge request !41
+
+commit a70528e8a89c51cbc1a05921e18c571da76b2889
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 17 10:07:19 2017 +0200
+
+    :ambulance: fix(renater-partage): Retry on 403 to workaround api bug
+    
+    This tries to work around what seems to be a PARTAGE bug which returns 403
+     when FD tries to access an object which was just created or modified.
+    
+    issue #5629
+
+commit b6c764bf6ed77d8a4a8888a167974bd32d921965
+Merge: a95f0cc 83adc35
+Author: bmortier <benoit.mortier@opensides.be>
+Date:   Mon Oct 16 19:49:45 2017 +0200
+
+    Merge branch '5714-adapt-developers-plugin-to-new-plugin-convention' into '1.3-dev'
+    
+    Resolve "Adapt developers plugin to new plugin convention"
+    
+    Closes #5714
+    
+    See merge request !40
+
+commit 83adc3524e3f028898eb4f9d5081f6df335c2d08
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Mon Oct 16 18:25:58 2017 +0200
+
+    :ambulance: fix(folders): Adapt developers plugin to new plugin convention
+    
+    Signed-off-by: Benoit Mortier <benoit.mortier@opensides.be>
+
+commit a95f0ccfde60912ba0cb6ffaf0ba240d1e30328a
+Merge: 8258f78 b07ac31
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Oct 16 16:14:12 2017 +0200
+
+    Merge branch '5675-add-an-boolean-agreement-signed' into '1.3-dev'
+    
+    Resolve "Add an boolean "agreement signed""
+    
+    See merge request !39
+
+commit b07ac31a0e15f11d08e9c3e2fa8c0f0a460274c8
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Oct 16 16:04:26 2017 +0200
+
+    :sparkles: feat(community): Add an "Agreement signed" boolean to organizations
+    
+    This add an Agreement signed boolean to the schema and the organization
+     membership section
+    
+    issue #5675
+
+commit 8258f78752553aaaf2cd081eabfe8a9cb45c125f
+Merge: 2f0bf09 ba9dc20
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 10 17:35:54 2017 +0200
+
+    Merge branch '5713-phones-have-wrong-attribute-order' into '1.3-dev'
+    
+    Resolve "Phones have wrong attribute order"
+    
+    Closes #5713
+    
+    See merge request !38
+
+commit ba9dc20a05e3a6c2a0cababbd9a53768063ddfae
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 10 17:18:47 2017 +0200
+
+    :ambulance: fix(systems): Fix attribute order in phone main tab
+    
+    Base was not the first attribute, this was inconsistent with other
+     object types.
+    
+    closes #5713
+
+commit 2f0bf09af65607ec333145fa48663462c0245a31
+Merge: 4a6ec33 43fe16b
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 10 12:35:51 2017 +0200
+
+    Merge branch '5712-puppet-tab-creation-should-be-forbidden-if-there-is-no-server' into '1.3-dev'
+    
+    Resolve "Puppet tab creation should be forbidden if there is no server"
+    
+    Closes #5712
+    
+    See merge request !37
+
+commit 43fe16b0572ea3f23dcf578a9cda2f290bd40c74
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 10 12:27:53 2017 +0200
+
+    :sparkles: feat(pupper): Forbid puppet tab activation when there is no server
+    
+    When there is no pupper server in the LDAP, use new core feature to
+     forbid puppet tab activation
+    
+    closes #5712
+
+commit 4a6ec33003d91cc99d773d17edba99ba8b72ac49
+Merge: 9557d58 c020a9a
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 10 10:49:30 2017 +0200
+
+    Merge branch '4348-fusion-inventory-should-return-an-error-if-schema-is-missing' into '1.3-dev'
+    
+    Resolve "Fusion inventory should return an error if schema is missing"
+    
+    See merge request !36
+
+commit c020a9a281f4eb794633b1a5ed3515a8e7ac9254
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Oct 9 17:41:29 2017 +0200
+
+    :ambulance: fix(fusioninventory): Improve error handling in collect.php
+    
+    This returns a 500 error in case of a blocking error when storing
+     inventory.
+    It also puts information in the status line along with the 500 error so
+     that the fusioninventory-agent cli tool show the error.
+    Errors on sub-objects are logged only so that one missing objectClass or
+     attribute from the schema does not block the whole inventory, seeing as
+     fusioninventory fields seem to evolve each version.
+    
+    issue #4348
+
+commit 9557d583c519857f5bf090c30dfccbb7894357af
+Merge: ad21214 e3a6c09
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Oct 9 13:57:59 2017 +0200
+
+    Merge branch '5166-add-a-webservice-method-to-add-a-value-to-multi-valuated-attributes' into '1.3-dev'
+    
+    Resolve "Add a webservice method to add a value to multi-valuated attributes"
+    
+    See merge request !34
+
+commit ad21214f9023d92f0c184d0f3b877b741aea5151
+Merge: 057508d a513fa2
+Author: bmortier <benoit.mortier@opensides.be>
+Date:   Fri Oct 6 11:14:16 2017 +0200
+
+    Merge branch '5710-update-contributing-md-and-gitlab-templates' into '1.3-dev'
+    
+    Resolve "Update contributing.md and gitlab templates"
+    
+    Closes #5710
+    
+    See merge request !35
+
+commit a513fa23666b68445d86ab4477fd9102b4dec7e2
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Fri Oct 6 10:34:13 2017 +0200
+
+    :ambulance: fix(gitlab): Update contributing.md and gitlab templates
+    
+    Signed-off-by: Benoit Mortier <benoit.mortier@opensides.be>
+
+commit e3a6c09a204c967039430ce63fdfe02da36ff152
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Oct 5 17:20:41 2017 +0200
+
+    :sparkles: feat(webservice): Add methods to add/del values
+    
+    This adds methods to add or remove values from a specific attribute of
+     an object.
+    This avoids having to call getfields and then setfields.
+    
+    issue #5166
+
+commit 057508d8b75d5d8a7555fdc8dea704f0015294f2
+Merge: 82dbcac cc058a2
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Oct 5 14:15:02 2017 +0200
+
+    Merge branch '5518-allow-the-list-of-record-inside-the-dns-zone-to-be-sorted-by-column' into '1.3-dev'
+    
+    Resolve "allow the list of record inside the dns zone to be sorted by column"
+    
+    Closes #5518
+    
+    See merge request !33
+
+commit cc058a2e863ef56a9bb6bb816d5144c77b61e24b
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Oct 5 14:07:02 2017 +0200
+
+    :sparkles: feat(dns): Activate column sorting in DNS zones
+    
+    This allows to sort record by type, subdomain or content
+    
+    closes #5518
+
+commit 82dbcacb38769bd21d58b7b4f92713af74e76e7b
+Merge: 0e2abcb aeb921c
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Oct 4 17:02:43 2017 +0200
+
+    Merge branch '5548-sort-entries-in-ppolicy-dashboard' into '1.3-dev'
+    
+    Resolve "Sort entries in ppolicy dashboard"
+    
+    Closes #5548
+    
+    See merge request !32
+
+commit aeb921c8acd6392c0d0feea9fbf196ec5a0ff9c4
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Oct 4 16:50:08 2017 +0200
+
+    :ambulance: fix(ppolicy): Sort entries in dashboard
+    
+    Sort expired users by expiration date and login in the ppolicy dashboard
+    
+    closes #5548
+
+commit 0e2abcbd9ff2e33ac9b1ef7e958659a59455dcde
+Merge: ad67fbe 67ca9cc
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Oct 4 16:18:21 2017 +0200
+
+    Merge branch '5176-trier-les-menu-deroulants-par-ordre-alphabetiques' into '1.3-dev'
+    
+    Resolve "trier les menu déroulants par ordre alphabetiques"
+    
+    Closes #5176
+    
+    See merge request !31
+
+commit 67ca9cc8db687692252c78137d0ff96290df754b
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Oct 4 16:07:33 2017 +0200
+
+    :ambulance: fix(applications): Sort applications in the dropdown
+    
+    This sorts applications in the dropdown allowing to add them to the list
+     of allowed applications for a role
+    
+    closes #5176
+
+commit ad67fbe6b13889d50c3b3773957e342712041b47
+Merge: 1b2b646 c55520b
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Oct 4 14:46:42 2017 +0200
+
+    Merge branch '5704-webservice-user-with-admin-acl-on-department-can-ls-objects-at-root-base-in-ws' into '1.3-dev'
+    
+    Resolve "[webservice] User  with admin ACL on department can ls objects at root base in WS"
+    
+    See merge request !25
+
+commit 1b2b64632f3a5bc283e129b521754b88aaa5bced
+Merge: 93b692a 6167967
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Oct 4 14:34:22 2017 +0200
+
+    Merge branch '5685-supannrefid-on-structure-object-is-too-small-and-mono-valued' into '1.3-dev'
+    
+    Resolve "supannRefId on Structure object is too small and mono valued"
+    
+    Closes #5685
+    
+    See merge request !30
+
+commit 6167967398edf3b8790d416b96357887c630caf2
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Oct 4 14:23:18 2017 +0200
+
+    :ambulance: fix(supann): supannRefId is multivaluated
+    
+    Fix supannRefId definition to make sure it’s multivaluated
+    
+    closes #5685
+
+commit 93b692a5b1feedd1ddaef75b8ac440d83714d045
+Merge: b5ae558 e602266
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Oct 4 11:40:52 2017 +0200
+
+    Merge branch '5708-software-lmist-and-profile-management-error-when-using-several-opsi-sevrer' into '1.3-dev'
+    
+    Resolve "software lmist and profile management error when using several OPSI Sevrer"
+    
+    Closes #5708
+    
+    See merge request !29
+
+commit e602266edf3606a8e3040a4392d8a1a757226fe4
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Oct 4 11:29:01 2017 +0200
+
+    :ambulance: fix(opsi): Fix case of fdOpsiServerDn attribute
+    
+    This fixes problems with the OPSI plugin related to the case of the LDAP
+     attribute fdOpsiServerDn
+    
+    closes #5708
+
+commit c55520b36050c76f5d85a7493c44578df81245fc
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 3 16:08:25 2017 +0200
+
+    :ambulance: fix(webservice): Forbid searching for attributes you cannot read
+    
+    This makes sure that ACLs are respected when using ls method from
+     webservice, with the following limitations:
+    It assumes that aclName == attributeName, otherwise the attribute is
+     forbidden.
+    It assumes reading the main attribute is always authorized when the
+     object can be seen.
+    It slows down the search in the case where you can read attribute in
+     foo,bar but you search in bar.
+    All LDAP attributes can be used in the search filter.
+    
+    issue #5704
+
+commit b5ae5584c66e37cb6783535c0df383c7cee9d67c
+Merge: 2754486 692afe4
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 3 11:49:44 2017 +0200
+
+    Merge branch '5680-in-the-argonaut-dns-plugin-we-need-a-dropdow-for-the-zone-in-the-argonaut-slave-part' into '1.3-dev'
+    
+    Resolve "in the argonaut dns plugin we need a dropdow for the zone in the argonaut slave part"
+    
+    Closes #5680
+    
+    See merge request !28
+
+commit 692afe4b995939c0940ef11b13661df0abf500c6
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 3 11:39:06 2017 +0200
+
+    :sparkles: feat(argonaut): Zone choice is now a select
+    
+    If there are DNS zones in the LDAP, the zone choice in argonaut DNS
+     service is now a dropdown
+    
+    closes #5680
+
+commit 2754486638ab7ded8709aba09b9932244e47e3a9
+Merge: f1a36f5 8120b33
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 3 10:35:29 2017 +0200
+
+    Merge branch '5707-posixaccount-foreignkey-is-wrong' into '1.3-dev'
+    
+    Resolve "posixAccount foreignKey is wrong"
+    
+    Closes #5707
+    
+    See merge request !27
+
+commit 8120b335e3c9553bc006d8265d4bea3aa6ea92b9
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 3 10:26:19 2017 +0200
+
+    :ambulance: fix(posix): foreignKey should be on posixGroup
+    
+    The foreignKey for posixAccount/gidNumber should be on posixGroup and
+     not group or ogroup
+    
+    closes #5707
+
+commit f1a36f51f098e977217b2bd7ebd2d30ad4841e0d
+Merge: c20d0d5 987e6f7
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 3 09:53:55 2017 +0200
+
+    Merge branch '5706-add-mixed-groups-support-to-sudo-plugin' into '1.3-dev'
+    
+    Resolve "Add mixed-groups support to sudo plugin"
+    
+    Closes #5706
+    
+    See merge request !26
+
+commit 987e6f7d78c1a5dd42337506088c303777e08843
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Oct 3 09:43:16 2017 +0200
+
+    :sparkles: feat(sudo): Support mixed-groups when plugin is installed
+    
+    Sudo plugin needs to support having mixed-groups with posix tab added in
+     sudo roles.
+    
+    closes #5706
+
+commit 0ce24dcdba3223ba45c82240cecd9af9c445c4c8
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Oct 2 14:20:11 2017 +0200
+
+    :ambulance: fix(webservice): Do not give object count unless ACLs allow it
+    
+    Now if a user calls count on the webservice it will get the number of
+     objects it’s allowed to see.
+    
+    issue #5704
+
+commit 2faf61c5ee001ba14f488f2da929286667b2fe9d
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Oct 2 11:31:44 2017 +0200
+
+    :ambulance: fix(webservice): Do not bypass ACL when listing objects
+    
+    The ls method of the webservice was bypassing ACLs and returning too
+     much data.
+    The count method is still bypassing ACL but I can’t decide if this
+     should be fixed or not (and how)
+    
+    issue #5704
+
+commit c20d0d55a49115e4524e2da3a341b879c41d2d66
+Merge: ecb539c 43fbc8a
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Sep 28 16:13:03 2017 +0200
+
+    Merge branch '5705-add-ip-non-mandatory-in-the-systems-plugins' into '1.3-dev'
+    
+    Resolve "add ip non mandatory in the systems plugins"
+    
+    See merge request !24
+
+commit 43fbc8a24f3bb2a039463be74e5f0b6e231d2ab4
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Sep 28 13:48:31 2017 +0200
+
+    :sparkles: feat(systems): mandatory IP fields can now be configured
+    
+    In the systems plugin configuration you can now select which object
+     should have the IP field as mandatory
+    
+    issue #5705
+
+commit ecb539c195a48494045290d1aaf9ffbd19215e7e
+Merge: 747932f 75aae99
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Sep 28 11:12:15 2017 +0200
+
+    Merge branch '5701-result-message-displayed-when-triggerring-action-is-weird' into '1.3-dev'
+    
+    Resolve "Result message displayed when triggerring action is weird"
+    
+    See merge request !23
+
+commit 75aae996d76099f5d95d549a5952c0817655f61f
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Sep 28 11:05:15 2017 +0200
+
+    :ambulance: fix(argonaut): Better handling of results
+    
+    Showing all results when trigerring an action and avoid truncating
+     the string
+    
+    issue #5701
+
+commit 747932f6f1f3051a4494d51bd768036e854d0844
+Merge: 7d2b620 2a6079d
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Sep 28 09:36:49 2017 +0200
+
+    Merge branch '5681-the-opsi-plugin-need-the-departement-management-dropdown' into '1.3-dev'
+    
+    Resolve "the opsi plugin need the departement management dropdown"
+    
+    Closes #5681
+    
+    See merge request !22
+
+commit 2a6079deb840a7c633342437eb90b5fb689a70e7
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Sep 28 09:29:30 2017 +0200
+
+    :ambulance: fix(opsi): Added missing departement browsing and base fields
+    
+    Added departement browsing and base fields in OPSI management,
+     OPSI profile and OPSI software list.
+    
+    closes #5681
+    /spend 30m
+
+commit 7d2b620da667c8c09a3de48d858ad4343c7906a3
+Merge: d999b30 4bc0cb8
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Sep 27 09:09:16 2017 +0200
+
+    Merge branch '5700-we-should-be-able-to-forbid-deployments-outside-of-a-given-time-frame' into '1.3-dev'
+    
+    Resolve "We should be able to forbid deployments outside of a given time frame"
+    
+    Closes #5700
+    
+    See merge request !21
+
+commit 4bc0cb8f065389a87e8584593733960b30c3a0a9
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Sep 26 17:15:26 2017 +0200
+
+    :ambulance: fix(argonaut): retry action should trigger not schedule
+    
+    Retrying an action was by default scheduled, now it defaults to
+     trigerred, which make more sense
+    
+    issue #5700
+
+commit 87e5ddbb78df89338afa472e2b2acd8de2dd24aa
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Sep 26 16:27:00 2017 +0200
+
+    :sparkles: feat(argonaut): Using new TimeHiAttribute with UTC autoconversion
+    
+    Time attributes were moved to core, and the new TimeHiAttribute is used.
+    Localtime should be entered in timeframes field.
+    
+    issue #5700
+
+commit c9656c61de9f2f63b929f503c260398de0bfc917
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Sep 26 10:48:10 2017 +0200
+
+    :sparkles: feat(argonaut): Retry action is now working
+    
+    A failed job can be retried as a new job
+    The new job will be scheduled for now, we may want to add a checkbox
+     to be able to retry as a triggered job as well
+    The retry action re-use the view-refresh icon, this may be a problem as
+     it’s already used for refresh on he same page
+    
+    issue #5700
+
+commit bf21b52ef4b82b698af49424ebfbdfa134d303b5
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Sep 25 18:04:41 2017 +0200
+
+    :sparkles: feat(argonaut): Add retry action for failed jobs
+    
+    This adds a retry action for failed jobs, not implemented yet
+    The icon needs to be chosen
+    The action is shown raw
+    The validation does not work
+    
+    issue #5700
+
+commit d999b304bd1848f19908525679a70d65a1a23a3d
+Merge: 1cec8e6 adb29e4
+Author: bmortier <benoit.mortier@opensides.be>
+Date:   Mon Sep 25 17:24:00 2017 +0200
+
+    Merge branch '5700-we-should-be-able-to-forbid-deployments-outside-of-a-given-time-frame' into '1.3-dev'
+    
+    Resolve "We should be able to forbid deployments outside of a given time frame"
+    
+    Closes #5700
+    
+    See merge request !20
+
+commit adb29e40a223e56421b1f2a6d0cb84ff40de2243
+Author: Côme Chilliet <come@opensides.be>
+Date:   Thu Sep 21 17:21:50 2017 +0200
+
+    ✨ feat(argonaut): Add deployment tab to store time frames
+    
+    This adds a Deployment tab containing the authorized time frames
+    
+    issue #5700
+
+commit 1cec8e6d181d3699208bee06506e632d6e8216c5
+Merge: b072655 cd297ae
+Author: MCMic <come.bernigaud@opensides.be>
+Date:   Wed Sep 20 10:11:54 2017 +0200
+
+    Merge branch '5699-php-lint-should-check-both-php-and-inc-files' into '1.3-dev'
+    
+    Resolve "php lint should check both php and inc files"
+    
+    Closes #5699
+    
+    See merge request !19
+
+commit cd297ae3bf95f6c1562a5c5828615792d93a8141
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Sep 20 09:41:45 2017 +0200
+
+    🚑 fix(ci): php -l check must check both .php and .inc
+    
+    The find command was missing parenthesis and thus
+     ignoring .php files in the php -l check
+    
+    close #5699
+
+commit b0726550c931ff6efcd1cefcba071d8a7982746c
+Merge: 4f64ff9 b43bcf7
+Author: MCMic <come.bernigaud@opensides.be>
+Date:   Wed Sep 20 09:38:28 2017 +0200
+
+    Merge branch '5698-class_sieve-inc-should-be-excluded-from-codesniffer-check' into '1.3-dev'
+    
+    Resolve "class_sieve.inc should be excluded from codesniffer check"
+    
+    Closes #5698
+    
+    See merge request !18
+
+commit b43bcf7c1b6085937e2f73d06a731de96090ba59
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Sep 20 09:31:56 2017 +0200
+
+    🚑 fix(ci): Ignoring class_sieve.inc from codesniffer test
+    
+    class_sieve.inc is not our code and does not match our standard
+     it should be ignored
+    
+    close #5698
+
+commit 4f64ff9ef7b10c74305e287d1df657a02cf5861f
+Merge: 96b9ee5 2c93971
+Author: bmortier <benoit.mortier@opensides.be>
+Date:   Tue Sep 19 22:07:45 2017 +0200
+
+    Merge branch '5695-add-inc-files-to-php-lint-check-in-gitlab-ci' into '1.3-dev'
+    
+    Resolve "add inc files to php lint check in gitlab-ci"
+    
+    Closes #5695
+    
+    See merge request !17
+
+commit 2c93971eae7595ffb7bc075b71ddd749a8cded43
+Author: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+Date:   Tue Sep 19 20:10:38 2017 +0200
+
+    :ambulance: feat(gitlab-ci) Not execute the build for tags and branch
+    
+    Add exception that we not build for branch and tags
+    
+    closes #5695
+    
+    Signed-off-by: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+
+commit 96b9ee5ca16d6398643a5048c40cde724d853c29
+Merge: 5e83cb0 00c9741
+Author: jswaelens <jonathan.swaelens@opensides.be>
+Date:   Tue Sep 19 17:23:12 2017 +0200
+
+    Merge branch '5695-add-inc-files-to-php-lint-check-in-gitlab-ci' into '1.3-dev'
+    
+    Resolve "add inc files to php lint check in gitlab-ci"
+    
+    Closes #5695
+    
+    See merge request !15
+
+commit 00c97415ab799c17f85661a08f43bbd2cbd06acd
+Author: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+Date:   Tue Sep 19 17:14:14 2017 +0200
+
+    :ambulance: feat(gitlab-ci) Use xargs to make the job fail when we have an error
+    
+    Use xargs to php -l so the job will fail when we have at least one error
+    
+    closes #5695
+    
+    Signed-off-by: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+
+commit 5e83cb051905959cda00b17bc1a957f4e2a26692
+Merge: a4d1b74 d5454dc
+Author: jswaelens <jonathan.swaelens@opensides.be>
+Date:   Tue Sep 19 17:05:11 2017 +0200
+
+    Merge branch '5696-we-should-remove-the-files-which-moved-to-dev-tools' into '1.3-dev'
+    
+    Resolve "We should remove the files which moved to dev-tools"
+    
+    Closes #5696
+    
+    See merge request !14
+
+commit d5454dc708f51d6418cc772466f5c26e7517e781
+Author: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+Date:   Tue Sep 19 16:44:13 2017 +0200
+
+    :ambulance: feat(gitlab-ci) Use dev-tools repo for phpcs
+    
+    Use dev-tools repo for phpcs checking.
+    Use find to make a "list" of files for phpcs in so we have only one exit code
+    
+    closes #5696
+    
+    Signed-off-by: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+
+commit a4d1b74b688b9adc635be18d3081313658822810
+Merge: 704975e 5aea3d4
+Author: MCMic <come.bernigaud@opensides.be>
+Date:   Tue Sep 19 16:04:27 2017 +0200
+
+    Merge branch '5696-we-should-remove-the-files-which-moved-to-dev-tools' into '1.3-dev'
+    
+    Resolve "We should remove the files which moved to dev-tools"
+    
+    Closes #5696
+    
+    See merge request !13
+
+commit 5aea3d42450984072cab956f86abb9aaf50dcc51
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Sep 19 15:52:24 2017 +0200
+
+    🚜 fix(developers): Delete files which were moved to dev-tools
+    
+    The files for doxygen and php code sniffer were moved to the
+     dev-tools repository
+    
+    close #5696
+
+commit 704975ee7cec96bb210266c72e0d7f85dad8ec43
+Merge: 7002a6f 10ea1a4
+Author: bmortier <benoit.mortier@opensides.be>
+Date:   Tue Sep 19 15:51:09 2017 +0200
+
+    Merge branch '5695-add-inc-files-to-php-lint-check-in-gitlab-ci' into '1.3-dev'
+    
+    Resolve "add inc files to php lint check in gitlab-ci"
+    
+    Closes #5695
+    
+    See merge request !12
+
+commit 10ea1a4155d489508fca3859a8fdc59474b84b3c
+Author: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+Date:   Tue Sep 19 15:10:14 2017 +0200
+
+    :ambulance: feat(gitlab-ci) Add finetuning for phpcs
+    
+    Add fintuning for phpcs and correct find command for php lint
+    
+    closes #5695
+    
+    Signed-off-by: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+
+commit 7002a6fb6fd6b18151974eef53b4bd73ac55f5f4
+Merge: 4068a86 c7f72eb
+Author: bmortier <benoit.mortier@opensides.be>
+Date:   Tue Sep 19 14:40:18 2017 +0200
+
+    Merge branch '5693-update-the-readme-md-with-new-forge-informations' into '1.3-dev'
+    
+    Resolve "update the readme.md with new forge informations"
+    
+    Closes #5693
+    
+    See merge request !10
+
+commit c7f72eb1784d6e6d09d0cd4b29369422480eee2a
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Tue Sep 19 14:41:08 2017 +0200
+
+    :books: doc: Add correct address for bug trackers
+    
+    Signed-off-by: Benoit Mortier <benoit.mortier@opensides.be>
+
+commit 4068a86057d7ef285d560f6774d494eb233a3ee8
+Merge: d9bfe53 6c2f4f6
+Author: bmortier <benoit.mortier@opensides.be>
+Date:   Tue Sep 19 13:34:28 2017 +0200
+
+    Merge branch '5695-add-inc-files-to-php-lint-check-in-gitlab-ci' into '1.3-dev'
+    
+    Resolve "add inc files to php lint check in gitlab-ci"
+    
+    Closes #5695
+    
+    See merge request !9
+
+commit 6c2f4f6138771c6d9a1734162b4de000e6632e7d
+Author: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+Date:   Tue Sep 19 12:42:49 2017 +0200
+
+    :ambulance: feat(gitlab-ci) Add .inc files to php lint check
+    
+    Add .inc files to php lint check
+    
+    closes #5695
+    
+    Signed-off-by: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+
+commit d9bfe532cac924587599b9dd8abe1522960f0cd6
+Merge: 481704a 09fa5a5
+Author: jswaelens <jonathan.swaelens@opensides.be>
+Date:   Tue Sep 19 12:16:04 2017 +0200
+
+    Merge branch '5692-add-php-lint-to-gitlab-ci' into '1.3-dev'
+    
+    Resolve "add php lint to gitlab ci"
+    
+    Closes #5692
+    
+    See merge request !8
+
+commit 09fa5a5826918bcee13f616fb1751a91044c3abb
+Author: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+Date:   Tue Sep 19 12:05:01 2017 +0200
+
+    :sparkles: feat(gitlab-ci) Add php lint to gitlab-ci.yml
+    
+    Add php lint check to gitlab-ci.
+    The check php lint not check 'example_badcode.php' because the code must be bad for example
+    
+    Closes #5692
+    
+    Signed-off-by: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+
+commit 481704aaf56c2c337e2e85631d10825c13b87f15
+Merge: 9f33197 1c0c5df
+Author: jswaelens <jonathan.swaelens@opensides.be>
+Date:   Mon Sep 18 16:01:40 2017 +0200
+
+    Merge branch '5690-add-gitlab-ci-yml-to-use-pipeline' into '1.3-dev'
+    
+    Resolve "Add .gitlab-ci.yml to use pipeline"
+    
+    Closes #5690
+    
+    See merge request !6
+
+commit 9f33197ed7ae7ce0e925dd5cd319946095d68e98
+Merge: e4529f4 8775620
+Author: MCMic <come.bernigaud@opensides.be>
+Date:   Mon Sep 18 14:14:09 2017 +0200
+
+    Merge branch '5691-lots-of-styling-error-in-the-code' into '1.3-dev'
+    
+    Resolve "lots of styling error in the code"
+    
+    Closes #5691
+    
+    See merge request !7
+
+commit 87756200ebcbd4b588649bef22290208a56f61d0
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Sep 18 11:59:35 2017 +0200
+
+    🚜 fix: Fix codesniffer errors in all of our code
+    
+    Fix codesniffer errors and warnings in all our PHP code
+    Adapted a bit the codesniffer profile to avoid false positives
+    
+    issue #5691
+
+commit 1c0c5df14e3cca162771b41fd5886df574ae6f99
+Author: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+Date:   Sat Sep 16 18:59:24 2017 +0200
+
+    Add .gitlab-ci.yml to use pipeline
+    
+    Signed-off-by: Jonathan Swaelens <swaelens.jonathan@opensides.be>
+
+commit e4529f48d58e7a92247639d05daa8b871bfa7980
+Merge: 2328400 445b4ae
+Author: bmortier <benoit.mortier@opensides.be>
+Date:   Thu Sep 14 17:30:11 2017 +0200
+
+    Merge branch '5689-latest-version-of-contribute-md' into '1.3-dev'
+    
+    Resolve "latest version of contribute.md"
+    
+    Closes #5689
+    
+    See merge request !4
+
+commit 445b4ae7df8e8bb71b2c95081c073338fa6824fd
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Thu Sep 14 17:29:59 2017 +0200
+
+    latest version of Contributing.md
+    
+    Signed-off-by: Benoit Mortier <benoit.mortier@opensides.be>
+
+commit 23284001ad60906f9230cea1946f808d61dcf82d
+Merge: 2361d08 82abdb9
+Author: bmortier <benoit.mortier@opensides.be>
+Date:   Fri Sep 8 18:03:37 2017 +0200
+
+    Merge branch '5687-add-gitlab-templates' into '1.3-dev'
+    
+    Resolve "add gitlab templates"
+    
+    Closes #5687
+    
+    See merge request !2
+
+commit 82abdb9ba51c86a57907dc66a77c168f6d5b367d
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Fri Sep 8 18:03:55 2017 +0200
+
+    Adding gitlab templates for fusiondirectory plugins
+    
+    Signed-off-by: Benoit Mortier <benoit.mortier@opensides.be>
+
+commit 2361d0852d9809362353dd33afd624a847300c53
+Author: bmortier <benoit.mortier@opensides.be>
+Date:   Wed Sep 6 15:08:24 2017 +0200
+
+    Add license
+
+commit 38bbbd9318229bee8aa9359534bf0ca83a54a701
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Wed Sep 6 15:03:43 2017 +0200
+
+    Adding Contributing.md
+    
+    Signed-off-by: Benoit Mortier <benoit.mortier@opensides.be>
+
+commit 289ad9ef732ff385f2ac33b52970986b76b6db22
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Fri Sep 1 15:04:07 2017 +0200
+
+    Adding a code of conduct
+    
+    Signed-off-by: Benoit Mortier <benoit.mortier@opensides.be>
+
+commit 976862173bce95f2f0c241a262647cae6a5e9208
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Wed Aug 2 11:47:33 2017 +0200
+
+    Update locales for 1.3-dev
+    
+    Signed-off-by: Benoit Mortier <benoit.mortier@opensides.be>
+
+commit 39f69599fd3ffd3570d6225444620c968ca7a2f2
+Author: Benoit Mortier <benoit.mortier@opensides.be>
+Date:   Mon Jul 24 11:30:31 2017 +0200
+
+    Updating locales for 1.3-dev
+    
+    Signed-off-by: Benoit Mortier <benoit.mortier@opensides.be>
+
+commit 0057debd6a88b4c9133555c93b2a486e811f339b
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Jul 19 11:43:58 2017 +0200
+
+    Fixes #3549 Added support for sudoNotBefore and sudoNotAfter
+    
+    Note that this shows them as date while they could contain date and time
+    in theory
+
+commit 5db0fa9bb5a06f141eabfc82028454f23c8c5e2e
+Author: Côme Chilliet <come@opensides.be>
+Date:   Wed Jul 19 11:10:01 2017 +0200
+
+    Fixes #5638 Fixed SSH plugin rexexp when an IP is used in options
+
+commit ac0c6513e6070d8429e8edd710c4ea3b121069fe
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Jul 18 16:54:00 2017 +0200
+
+    Fixes #5673 Fixed PHP errors on login in some cases
+
+commit 74e144061c617c1f046b5df5ed240384dff7dbfc
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Jul 18 14:24:27 2017 +0200
+
+    Fixes #5670 Fix DNS corner cases changes
+
+commit 3cfea17520f5730b27f71618da4e177332c7cd5c
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Jul 18 09:41:55 2017 +0200
+
+    Fixes #5670 Fixed PHP error in dnsZone
+
+commit ef1f34eb7ac30ea47567a3b3fccd0e99c7e70aa3
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Jul 17 17:39:59 2017 +0200
+
+    Fixes #5670 Fixed PHP error in dnsZone
+
+commit 6e35f9453306f78aec1a06a14e2d4aee48399c8a
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Jul 17 16:47:22 2017 +0200
+
+    Fixes #5672 Fixed error and typos in class_sieve.inc
+
+commit 184cd51fc683193b6b743da3227dd46bb08a725a
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Jul 17 16:01:09 2017 +0200
+
+    Fixes #5670 Attempt at speeding up DNS zone saving
+
+commit d17601c951d25eb371c917f317bf15dde14c05c1
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Jul 10 15:02:29 2017 +0200
+
+    Fixes #5658 Moved supann examples files in a subfolder
+
+commit fd541646a1c6a7ca1c88476c06c287059854f607
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Jul 10 11:55:50 2017 +0200
+
+    Fixes #5658 Moved files to contrib/doc or contrib/etc if they are going into doc folder or etc
+
+commit 0c391f1c35057f54bb45e6d6f3ae02ce25d6eecf
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Jul 10 11:31:22 2017 +0200
+
+    Fixes #5658 special case in fusioninventory was fixed to ease packaging
+
+commit a4f8b00be898e3175baf4a57a22020d9d14d1d24
+Author: Côme Chilliet <come@opensides.be>
+Date:   Mon Jul 10 10:49:32 2017 +0200
+
+    Fixes #5658 Removed obsolete files and moved other ones to remove need for html/images special handling in packaging/installing
+
+commit 763a7d5e6b916aa1e172553d74025e5aa7836b88
+Author: Côme Chilliet <come@opensides.be>
+Date:   Tue Jul 4 11:11:21 2017 +0200
+
+    Fixes #5655 PHP error in OPSI import when IP is empty

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-11-20 15:25+0000\n"
+"POT-Creation-Date: 2017-12-21 15:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -476,12 +476,16 @@ msgid ""
 "This option controls when a short lecture will be printed along with the "
 "password prompt"
 msgstr ""
+"Cette option contrôle quand une liste des règles seront imprimée avec "
+"l'invite de mot de passe"
 
 #: admin/sudo/class_sudoOptions.inc:288
 msgid ""
 "Path to a file containing an alternate sudo lecture that will be used in "
 "place of the standard lecture"
 msgstr ""
+"Chemin vers un fichier contenant une autre liste de règles sudo qui seront "
+"utilisée à la place des règles standard "
 
 #: admin/sudo/class_sudoOptions.inc:293
 msgid "Path to the sudo log file (not the syslog log file)"
@@ -489,7 +493,7 @@ msgstr "Chemin vers le journal sudo (pas le journal syslog)"
 
 #: admin/sudo/class_sudoOptions.inc:298
 msgid "Syslog facility if syslog is being used for logging"
-msgstr ""
+msgstr "Syslog facility si syslog est utilisé pour la journalisation"
 
 #: admin/sudo/class_sudoOptions.inc:303
 msgid "Path to mail program used to send warning mail"
@@ -497,7 +501,7 @@ msgstr "Chemin vers le programme utilisé pour envoyer les courriel d’alerte"
 
 #: admin/sudo/class_sudoOptions.inc:308
 msgid "Flags to use when invoking mailer"
-msgstr ""
+msgstr "Indicateurs à utiliser lors de l'invocation du client de mail"
 
 #: admin/sudo/class_sudoOptions.inc:313
 msgid "Address to send warning and error mail to"
