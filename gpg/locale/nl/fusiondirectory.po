@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-11-20 15:25+0000\n"
+"POT-Creation-Date: 2017-12-21 15:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2016\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: addons/gpg/class_pgpServerInfo.inc:31 addons/gpg/class_pgpServerInfo.inc:32
 #: addons/gpg/class_pgpServerInfo.inc:38 addons/gpg/class_pgpServerInfo.inc:56
 msgid "GPG server info"
-msgstr ""
+msgstr "GPG server info"
 
 #: addons/gpg/class_pgpServerInfo.inc:60
 msgid "Software"
@@ -29,7 +29,7 @@ msgstr "Software"
 
 #: addons/gpg/class_pgpServerInfo.inc:60
 msgid "Which software this GPG key server is running"
-msgstr ""
+msgstr "Welke software deze GPG-sleutelserver gebruikt"
 
 #: addons/gpg/class_pgpServerInfo.inc:65
 msgid "GPG version"
@@ -37,11 +37,11 @@ msgstr "GPG versie"
 
 #: addons/gpg/class_pgpServerInfo.inc:65
 msgid "Which version of GPG this key server is running"
-msgstr ""
+msgstr "Welke versie van GPG is deze sleutelserver aan het gebruiken"
 
 #: addons/gpg/class_pgpServerInfo.inc:70
 msgid "Branch in which keys are stored"
-msgstr ""
+msgstr "Sectie in dewelke sleutels worden opgeslagen"
 
 #: addons/gpg/class_pgpServerInfo.inc:74
 msgid "Keys RDN"
@@ -49,11 +49,11 @@ msgstr "RDN sleutels"
 
 #: addons/gpg/class_pgpServerInfo.inc:74
 msgid "Branch under base in which keys are stored"
-msgstr ""
+msgstr "Sectie onder basis in dewelke sleutels worden opgeslagen"
 
 #: personal/gpg/class_gpgAccount.inc:31
 msgid "GPG keys"
-msgstr "GPG sleutel"
+msgstr "GPG sleutels"
 
 #: personal/gpg/class_gpgAccount.inc:35
 msgid "GPG keys of this user"
@@ -65,32 +65,32 @@ msgstr "GPG"
 
 #: personal/gpg/class_gpgAccount.inc:47
 msgid "Edit user's GPG IDs"
-msgstr "Bewerk de gebruikers GPG IDs"
+msgstr "Bewerk de gebruikers GPG-IDs"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
 msgid "Configuration error"
-msgstr "Configuratie fout"
+msgstr "Configuratiefout"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
 msgid "You need to configure GPG base dn through the addons section first"
-msgstr ""
+msgstr "Je moet GPG basis dn eerst configureren in de add-ons sectie "
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:138
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:40
 msgid "Key ID"
-msgstr "Sleutel ID"
+msgstr "Sleutel-ID"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:139
 msgid "User ID"
-msgstr "Gebruikers ID"
+msgstr "Gebruikers-ID"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:140
 msgid "Creation time"
-msgstr ""
+msgstr "Tijd van aanmaak"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:141
 msgid "Expiration"
-msgstr ""
+msgstr "Verval"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:142
 msgid "Algorithm"
@@ -104,7 +104,7 @@ msgstr "Grootte"
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:144
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:88
 msgid "Revoked"
-msgstr ""
+msgstr "Ingetrokken"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:145
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
@@ -113,7 +113,7 @@ msgstr "Niet actief"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:11
 msgid "Please select the desired entries"
-msgstr "Gelieve de gegevens te selecteren"
+msgstr "Gelieve de gewenste gegevens te selecteren"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:15
 msgid "PGP Key"
@@ -125,7 +125,7 @@ msgstr "Gebruiker"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:56
 msgid "Creation date"
-msgstr "A"
+msgstr "Datum van aanmaak"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:64
 msgid "Expiration date"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-11-20 15:25+0000\n"
+"POT-Creation-Date: 2017-12-21 15:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -20,11 +20,11 @@ msgstr ""
 
 #: admin/autofs/class_autofsManagement.inc:31
 msgid "Auto fs"
-msgstr ""
+msgstr "Auto fs"
 
 #: admin/autofs/class_autofsManagement.inc:32
 msgid "Auto fs management"
-msgstr ""
+msgstr "Auto fs beheer"
 
 #: admin/autofs/class_nisObject.inc:31 admin/autofs/class_nisObject.inc:32
 #: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:54
@@ -37,34 +37,36 @@ msgstr "Naam"
 
 #: admin/autofs/class_nisObject.inc:58
 msgid "Name of this directory"
-msgstr "Naam van de map"
+msgstr "Naam van deze map"
 
 #: admin/autofs/class_nisObject.inc:64
 msgid "Automount entry"
-msgstr ""
+msgstr "Automount ingave"
 
 #: admin/autofs/class_nisObject.inc:64
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
 msgstr ""
+"De ingave van deze directory voor de automount deamon. \n"
+"Bijvoorbeeld 'auto.u' of '-fstype=nfsdomaine.tld:/mount/directory"
 
 #: admin/autofs/class_nisObject.inc:68 admin/autofs/class_nisMap.inc:31
 #: admin/autofs/class_nisMap.inc:34 admin/autofs/class_nisMap.inc:49
 msgid "Mount point"
-msgstr "Koppelpunt"
+msgstr "Mount punt"
 
 #: admin/autofs/class_nisObject.inc:68
 msgid "The mount point this directory will be placed in"
-msgstr ""
+msgstr "Het mountpunt waarin deze directory zal geplaatst worden."
 
 #: admin/autofs/class_nisMap.inc:32
 msgid "Autofs mount point"
-msgstr ""
+msgstr "Autofs mount punt"
 
 #: admin/autofs/class_nisMap.inc:53
 msgid "Name of the mount point"
-msgstr ""
+msgstr "Naam van het mount punt."
 
 #: config/autofs/class_autofsConfig.inc:28
 msgid "Autofs configuration"
@@ -84,4 +86,4 @@ msgstr "AutoFS RDN"
 
 #: config/autofs/class_autofsConfig.inc:45
 msgid "Branch in which automount info will be stored"
-msgstr ""
+msgstr "Tak in dewelke automount info zal worden opgeslagen"

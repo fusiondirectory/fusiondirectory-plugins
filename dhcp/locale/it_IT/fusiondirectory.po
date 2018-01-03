@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-11-20 15:25+0000\n"
+"POT-Creation-Date: 2017-12-21 15:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:39
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:39
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:39
-#: admin/systems/class_dhcpSystem.inc:290
+#: admin/systems/class_dhcpSystem.inc:291
 msgid "DHCP"
 msgstr "DHCP"
 
@@ -298,8 +298,8 @@ msgstr "Segreto per generare la chiave TSIG"
 
 #: admin/dhcp/sections/class_dhcpService.inc:28
 #: admin/dhcp/sections/class_dhcpService.inc:29
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:46
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:47
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:28
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:29
 msgid "DHCP service"
 msgstr "Servizio DHCP"
 
@@ -489,28 +489,16 @@ msgstr "Chiave di transazione"
 msgid "The TSig key DN"
 msgstr "La chciave di transazione DN"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:29
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:43
 msgid "DHCP configurations"
 msgstr "Configurazioni DHCP"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:34
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:48
 msgid ""
 "The DN of dhcpService object(s) which contain the configuration information"
 msgstr ""
 "DN dell'oggetto(degli oggetti) dhcpService che contiene le informazioni di "
 "configurazione"
-
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:55
-msgid "Start service"
-msgstr "Avvia il servizio"
-
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:57
-msgid "Stop service"
-msgstr "Ferma il servizio"
-
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:59
-msgid "Restart service"
-msgstr "Riavvia il servizio"
 
 #: admin/systems/class_dhcpSystem.inc:32
 msgid ""
@@ -518,28 +506,28 @@ msgid ""
 msgstr "Configurazione o sottosezione DHCP in cui va aggiunto questo host"
 
 #: admin/systems/class_dhcpSystem.inc:36
-#: admin/systems/class_dhcpSystem.inc:114
+#: admin/systems/class_dhcpSystem.inc:115
 msgid "The Mac address to use in the DHCP host record"
 msgstr "Indirizzo MAC da utilizzare nella registrazione dell'host DHCP"
 
 #: admin/systems/class_dhcpSystem.inc:40
-#: admin/systems/class_dhcpSystem.inc:119
+#: admin/systems/class_dhcpSystem.inc:120
 msgid "The IP address to use in the DHCP host record"
 msgstr "Indirizzo IP da utilizzare nella registrazione dell'host DHCP"
 
 #: admin/systems/class_dhcpSystem.inc:54
 msgid "Parent"
-msgstr ""
+msgstr "Parente"
 
 #: admin/systems/class_dhcpSystem.inc:55
 msgid "Mac"
-msgstr ""
+msgstr "Mac"
 
 #: admin/systems/class_dhcpSystem.inc:56
 msgid "IP"
 msgstr "IP"
 
-#: admin/systems/class_dhcpSystem.inc:232
+#: admin/systems/class_dhcpSystem.inc:233
 #, php-format
 msgid ""
 "\"%s\" is locked (by \"%s\" since %s), could not save modifications to this "
@@ -548,24 +536,24 @@ msgstr ""
 "\"%s\" è bloccato (da \"%s\" da %s), non é stato possibile salvare le "
 "modifiche di questa configurazione DHCP"
 
-#: admin/systems/class_dhcpSystem.inc:255
+#: admin/systems/class_dhcpSystem.inc:256
 #, php-format
 msgid "The value for multivaluated field \"%s\" is not an array"
 msgstr "Il valore del campo \"%s\" multivalutato non é un array"
 
-#: admin/systems/class_dhcpSystem.inc:291
+#: admin/systems/class_dhcpSystem.inc:292
 msgid "Edit the DHCP zones of a system"
 msgstr "Modifica le zone DHCP di un sistema"
 
-#: admin/systems/class_dhcpSystem.inc:305
+#: admin/systems/class_dhcpSystem.inc:306
 msgid "DHCP zones"
 msgstr "Zone DHCP"
 
-#: admin/systems/class_dhcpSystem.inc:309
+#: admin/systems/class_dhcpSystem.inc:310
 msgid "DHCP hosts declared for this system"
 msgstr "Hosts DHCP dichiarati per questo sistema"
 
-#: admin/systems/class_dhcpSystem.inc:373
+#: admin/systems/class_dhcpSystem.inc:374
 #, php-format
 msgid "The ip %s is not in the network %s/%d"
 msgstr "L'ip %s non è nella rete %s/%d"

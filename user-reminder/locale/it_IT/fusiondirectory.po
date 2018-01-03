@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-11-20 15:25+0000\n"
+"POT-Creation-Date: 2017-12-21 15:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,7 +64,7 @@ msgstr "Indirizzo e-mail da cui la mail sarà inviata"
 
 #: config/user-reminder/class_userReminderConfig.inc:65
 msgid "Ppolicy email settings"
-msgstr ""
+msgstr "Impostazioni email Ppolicy"
 
 #: config/user-reminder/class_userReminderConfig.inc:68
 #: config/user-reminder/class_userReminderConfig.inc:94
@@ -73,7 +73,7 @@ msgstr "Trasmettere le allerte al manager"
 
 #: config/user-reminder/class_userReminderConfig.inc:68
 msgid "Forward ppolicy alerts to the manager"
-msgstr ""
+msgstr "Inoltrare avvisi ppolicy al manager"
 
 #: config/user-reminder/class_userReminderConfig.inc:73
 #: config/user-reminder/class_userReminderConfig.inc:99
@@ -83,11 +83,11 @@ msgstr "Oggetto"
 
 #: config/user-reminder/class_userReminderConfig.inc:73
 msgid "Subject of the ppolicy alert email"
-msgstr ""
+msgstr "Oggetto della e-mail di avviso ppolicy"
 
 #: config/user-reminder/class_userReminderConfig.inc:75
 msgid "[FusionDirectory] Your password is about to expire"
-msgstr ""
+msgstr "[FusionDirectory] La tua password sta per scadere"
 
 #: config/user-reminder/class_userReminderConfig.inc:78
 #: config/user-reminder/class_userReminderConfig.inc:130
@@ -101,6 +101,8 @@ msgid ""
 "Body of the ppolicy alert email, sent when the user password is about to "
 "expire. Use %s for the cn and uid."
 msgstr ""
+"Corpo dell'email di avviso ppolicy, inviata quando la password dell'utente "
+"sta per scadere. Usa %s per cn e uid."
 
 #: config/user-reminder/class_userReminderConfig.inc:81
 #, php-format
@@ -109,6 +111,9 @@ msgid ""
 "your password for account %2$s is about to expire, please change your password: \n"
 "https://"
 msgstr ""
+"Gentile %1$s, \n"
+"la tua password per l'account %2$s sta per scadere, ti preghiamo di cambiare la password: \n"
+"https: //"
 
 #: config/user-reminder/class_userReminderConfig.inc:91
 msgid "Alert email settings"
@@ -190,18 +195,18 @@ msgstr ""
 msgid "This token is invalid"
 msgstr "Questo token non è valido"
 
-#: html/class_expiredUserPostpone.inc:197
+#: html/class_expiredUserPostpone.inc:191
 msgid "Contact your administrator, there was a problem with mail server"
 msgstr ""
 "Contattare l'amministratore, c'è stato un problema con il server di posta "
 "elettronica"
 
-#: html/class_expiredUserPostpone.inc:206
+#: html/class_expiredUserPostpone.inc:200
 #, php-format
 msgid "Did not find an account with login \"%s\""
 msgstr "Alcun account trovato con login \"%s\" "
 
-#: html/class_expiredUserPostpone.inc:209
+#: html/class_expiredUserPostpone.inc:203
 #, php-format
 msgid "Found multiple accounts with login \"%s\""
 msgstr "Trovati più accounts con login \"%s\""

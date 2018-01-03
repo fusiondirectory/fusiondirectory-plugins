@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-11-20 15:25+0000\n"
+"POT-Creation-Date: 2017-12-21 15:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -108,21 +108,25 @@ msgstr "La priorità di questa regola comparata alle altre"
 
 #: admin/sudo/class_sudoGeneric.inc:208
 msgid "Valid starting from"
-msgstr ""
+msgstr "Valido a partire dal"
 
 #: admin/sudo/class_sudoGeneric.inc:208
 msgid ""
 "Start of time interval for which the entry is valid (leave empty to disable)"
 msgstr ""
+"Inizio dell'intervallo di tempo per il quale la voce è valida (lasciare "
+"vuoto per disabilitare)"
 
 #: admin/sudo/class_sudoGeneric.inc:213
 msgid "Valid until"
-msgstr ""
+msgstr "Valido fino al"
 
 #: admin/sudo/class_sudoGeneric.inc:213
 msgid ""
 "End of time interval for which the entry is valid (leave empty to disable)"
 msgstr ""
+"Fine dell'intervallo di tempo per il quale la voce è valida (lasciare vuoto "
+"per disabilitare)"
 
 #: admin/sudo/class_sudoOption.inc:77
 msgid "Unknown option"
@@ -168,117 +172,157 @@ msgid ""
 " a two-line prompt is used to make it easier to cut and paste the challenge "
 "to a local window"
 msgstr ""
+"Quando si esegue la convalida con uno schema OTP (One Time Password) come S "
+"/ Key o OPIE, viene utilizzato un prompt a due righe per semplificare il "
+"taglia e incolla della sfida a una finestra locale"
 
 #: admin/sudo/class_sudoOptions.inc:58
 msgid ""
 "If set, sudo will ignore '.' or '' (current dir) in the PATH environment "
 "variable"
 msgstr ""
+"Se impostato, sudo ignorerà '.' o '' (dir corrente) nella variabile "
+"d'ambiente PATH"
 
 #: admin/sudo/class_sudoOptions.inc:63
 msgid "Send mail to the mailto user every time a users runs sudo"
-msgstr ""
+msgstr "Invia mail a mailto dall'utente ogni volta che un utente esegue sudo"
 
 #: admin/sudo/class_sudoOptions.inc:68
 msgid ""
 "Send mail to the mailto user if the user running sudo does not enter the "
 "correct password"
 msgstr ""
+"Invia mail a mailto dall'utente se l'utente che sta eseguendo sudo non "
+"immette la password corretta"
 
 #: admin/sudo/class_sudoOptions.inc:73
 msgid ""
 "If set, mail will be sent to the mailto user if the invoking user is not in "
 "the sudoers file"
 msgstr ""
+"Se impostato, l'e-mail verrà inviata all'utente mailto se l'utente chiamante"
+" non si trova nel file sudoers"
 
 #: admin/sudo/class_sudoOptions.inc:78
 msgid ""
 "If set, mail will be sent to the mailto user if the invoking user exists in "
 "the sudoers file, but is not allowed to run commands on the current host"
 msgstr ""
+"Se impostato, la posta verrà inviata all'utente mailto se l'utente chiamante"
+" esiste nel file sudoers, ma non può eseguire comandi sull'host corrente"
 
 #: admin/sudo/class_sudoOptions.inc:83
 msgid ""
 "If set, mail will be sent to the mailto user if the invoking user is allowed"
 " to use sudo but not for this command"
 msgstr ""
+"Se impostato, la posta verrà inviata all'utente mailto se l'utente che "
+"invoca può utilizzare sudo ma non per questo comando"
 
 #: admin/sudo/class_sudoOptions.inc:88
 msgid "If set, users must authenticate on a per-tty basis"
-msgstr ""
+msgstr "Se impostato, gli utenti devono autenticarsi su una base per-tty"
 
 #: admin/sudo/class_sudoOptions.inc:93
 msgid ""
 "If set, users must authenticate themselves via a password (or other means of"
 " authentication)"
 msgstr ""
+"Se impostato, gli utenti devono autenticarsi tramite una password (o altri "
+"mezzi di autenticazione)"
 
 #: admin/sudo/class_sudoOptions.inc:98
 msgid "If set, root is allowed to run sudo too"
-msgstr ""
+msgstr "Se impostato, a root è consentito eseguire anche sudo"
 
 #: admin/sudo/class_sudoOptions.inc:103
 msgid "If set, the host name will be logged in the (non-syslog) sudo log file"
 msgstr ""
+"Se impostato, il nome host verrà registrato nel file di registro sudo (non-"
+"syslog)"
 
 #: admin/sudo/class_sudoOptions.inc:108
 msgid ""
 "If set, the four-digit year will be logged in the (non-syslog) sudo log file"
 msgstr ""
+"Se impostato, l'anno a quattro cifre verrà registrato nel file di registro "
+"sudo (non-syslog)"
 
 #: admin/sudo/class_sudoOptions.inc:113
 msgid ""
 "If set and sudo is invoked with no arguments it acts as if the -s option had"
 " been given"
 msgstr ""
+"Se set e sudo é invocato senza argomenti, si comporta come se fosse stata "
+"fornita l'opzione -s"
 
 #: admin/sudo/class_sudoOptions.inc:118
 msgid ""
 "If enabled and sudo is invoked with the -s option the HOME environment "
 "variable will be set to the home directory of the target user (usually root)"
 msgstr ""
+"Se abilitato e sudo viene richiamato con l'opzione -s, la variabile "
+"d'ambiente HOME verrà impostata sulla directory home dell'utente di "
+"destinazione (solitamente root)"
 
 #: admin/sudo/class_sudoOptions.inc:123
 msgid ""
 "If enabled, sudo will set the HOME environment variable to the home "
 "directory of the target user (usually root)"
 msgstr ""
+"Se abilitato, sudo imposterà la variabile d'ambiente HOME sulla home "
+"directory dell'utente di destinazione (solitamente root)"
 
 #: admin/sudo/class_sudoOptions.inc:128
 msgid ""
 "If the executable is simply not in the user's PATH, sudo will tell the user "
 "that they are not allowed to run it"
 msgstr ""
+"Se l'eseguibile non si trova semplicemente nel PATH dell'utente, sudo dirà "
+"all'utente che non è autorizzato a eseguirlo"
 
 #: admin/sudo/class_sudoOptions.inc:133
 msgid "If set, the user's existing group vector is left unaltered"
 msgstr ""
+"Se impostato, il vettore di gruppo esistente dell'utente viene lasciato "
+"inalterato"
 
 #: admin/sudo/class_sudoOptions.inc:138
 msgid ""
 "Set this flag if you want to put fully qualified host names in the sudoers "
 "file"
 msgstr ""
+"Impostare questo flag se si desidera inserire nomi host completi nel file "
+"sudoers"
 
 #: admin/sudo/class_sudoOptions.inc:143
 msgid "If set, sudo will insult users when they enter an incorrect password"
 msgstr ""
+"Se impostato, sudo insulterà gli utenti quando inseriscono una password "
+"errata"
 
 #: admin/sudo/class_sudoOptions.inc:148
 msgid "If set, sudo will only run when the user is logged in to a real tty"
 msgstr ""
+"Se impostato, sudo verrà eseguito solo quando l'utente è connesso a un vero "
+"tty"
 
 #: admin/sudo/class_sudoOptions.inc:153
 msgid ""
 "If set, visudo will use the value of the EDITOR or VISUAL environment "
 "variables before falling back on the default editor list"
 msgstr ""
+"Se impostato, visudo utilizzerà il valore delle variabili di ambiente EDITOR"
+" o VISUAL prima di tornare all'elenco di editor predefinito"
 
 #: admin/sudo/class_sudoOptions.inc:158
 msgid ""
 "If set, sudo will prompt for the root password instead of the password of "
 "the invoking user"
 msgstr ""
+"Se impostato, sudo richiederà la password di root invece della password "
+"dell'utente che ha richiamato"
 
 #: admin/sudo/class_sudoOptions.inc:163
 msgid ""
@@ -286,109 +330,146 @@ msgid ""
 "runas_default option (defaults to root) instead of the password of the "
 "invoking user"
 msgstr ""
+"Se impostato, sudo richiederà la password dell'utente definita dall'opzione "
+"runas_default (defaults to root) anziché la password dell'utente che invoca"
 
 #: admin/sudo/class_sudoOptions.inc:168
 msgid ""
 "If set, sudo will prompt for the password of the user specified by the -u "
 "option (defaults to root) instead of the password of the invoking user"
 msgstr ""
+"Se impostato, sudo richiederà la password dell'utente specificata "
+"dall'opzione -u (predefinita per root) invece della password dell'utente che"
+" invoca"
 
 #: admin/sudo/class_sudoOptions.inc:173
 msgid ""
 "If set, sudo will set the LOGNAME environment variables to the name of the "
 "target user"
 msgstr ""
+"Se impostato, sudo imposterà le variabili d'ambiente LOGNAME sul nome "
+"dell'utente di destinazione"
 
 #: admin/sudo/class_sudoOptions.inc:183
 msgid ""
 "If set, sudo will run the command in a minimal environment containing the "
 "TERM, PATH, HOME, MAIL, SHELL, LOGNAME, USER, USERNAME and SUDO_ variables"
 msgstr ""
+"Se impostato, sudo eseguirà il comando in un ambiente minimale contenente le"
+" variabili TERM, PATH, HOME, MAIL, SHELL, LOGNAME, USER, USERNAME e SUDO_"
 
 #: admin/sudo/class_sudoOptions.inc:188
 msgid ""
 "If set, sudo will apply the defaults specified for the target user's login "
 "class if one exists"
 msgstr ""
+"Se impostato, sudo applicherà i valori predefiniti specificati per la classe"
+" di accesso dell'utente di destinazione, se ne esiste uno"
 
 #: admin/sudo/class_sudoOptions.inc:193
 msgid ""
 "If set, all commands run via sudo will behave as if the NOEXEC tag has been "
 "set, unless overridden by a EXEC tag"
 msgstr ""
+"Se impostato, tutti i comandi eseguiti tramite sudo si comporteranno come se"
+" il tag NOEXEC fosse stato impostato, a meno che non venga sostituito da un "
+"tag EXEC"
 
 #: admin/sudo/class_sudoOptions.inc:198
 msgid "If set, parsing of /etc/sudoers file will be skipped."
-msgstr ""
+msgstr "Se impostato, l'analisi del file /etc/sudoers verrà saltata."
 
 #: admin/sudo/class_sudoOptions.inc:203
 msgid ""
 "The number of tries a user gets to enter his/her password before sudo logs "
 "the failure and exits"
 msgstr ""
+"Il numero di tentativi con cui un utente immette la propria password prima "
+"che sudo registri l'errore ed esca"
 
 #: admin/sudo/class_sudoOptions.inc:208
 msgid "Number of characters per line for the file log"
-msgstr ""
+msgstr "Numero di caratteri per riga per il log file"
 
 #: admin/sudo/class_sudoOptions.inc:213
 msgid ""
 "Number of minutes that can elapse before sudo will ask for a passwd again"
 msgstr ""
+"Numero di minuti che possono trascorrere prima che sudo richieda nuovamente "
+"una password"
 
 #: admin/sudo/class_sudoOptions.inc:218
 msgid ""
 "Number of minutes before the sudo password prompt times out, or 0 for no "
 "timeout"
 msgstr ""
+"Numero di minuti prima del timeout della password sudo o 0 per nessun "
+"timeout"
 
 #: admin/sudo/class_sudoOptions.inc:223
 msgid ""
 "Umask to use when running the command. Set to FALSE to preserve the user's "
 "umask"
 msgstr ""
+"Umask da utilizzare durante l'esecuzione del comando. Impostare su FALSE per"
+" preservare la umask dell'utente"
 
 #: admin/sudo/class_sudoOptions.inc:228
 msgid ""
 "Subject of the mail sent to the mailto user. The escape %h will expand to "
 "the host name of the machine"
 msgstr ""
+"Oggetto della posta inviata all'utente mailto. L'escape% h si espanderà al "
+"nome host della macchina"
 
 #: admin/sudo/class_sudoOptions.inc:233
 msgid "Message that is displayed if a user enters an incorrect password"
 msgstr ""
+"Messaggio che viene visualizzato se un utente inserisce una password errata"
 
 #: admin/sudo/class_sudoOptions.inc:238
 msgid "The directory in which sudo stores its timestamp files"
-msgstr ""
+msgstr "La directory in cui sudo memorizza i suoi file timestamp"
 
 #: admin/sudo/class_sudoOptions.inc:243
 msgid "The owner of the timestamp directory and the timestamps stored therein"
 msgstr ""
+"Il proprietario della directory timestamp e i timestamp memorizzati in esso"
 
 #: admin/sudo/class_sudoOptions.inc:248
 msgid ""
 "The default prompt to use when asking for a password; can be overridden via "
 "the -p option or the SUDO_PROMPT environment variable"
 msgstr ""
+"La richiesta predefinita da utilizzare quando si richiede una password; può "
+"essere sovrascritto tramite l'opzione -p o la variabile di ambiente "
+"SUDO_PROMPT"
 
 #: admin/sudo/class_sudoOptions.inc:253
 msgid ""
 "The default user to run commands as if the -u option is not specified on the"
 " command line"
 msgstr ""
+"L'utente predefinito per eseguire i comandi come se l'opzione -u non fosse "
+"specificata sulla riga di comando"
 
 #: admin/sudo/class_sudoOptions.inc:258
 msgid "Syslog priority to use when user authenticates successfully"
 msgstr ""
+"Priorità Syslog da utilizzare quando l'utente esegue correttamente "
+"l'autenticazione"
 
 #: admin/sudo/class_sudoOptions.inc:263
 msgid "Syslog priority to use when user authenticates unsuccessfully"
 msgstr ""
+"Priorità Syslog da utilizzare quando l'utente effettua l'autenticazione "
+"senza successo"
 
 #: admin/sudo/class_sudoOptions.inc:268
 msgid "A colon separated list of editors allowed to be used with visudo"
 msgstr ""
+"Una lista di editor separati da due punti ha permesso di essere utilizzata "
+"con visudo"
 
 #: admin/sudo/class_sudoOptions.inc:278
 msgid ""
@@ -396,54 +477,67 @@ msgid ""
 "running sudo to have a sane PATH environment variable you may want to use "
 "this."
 msgstr ""
+"Percorso utilizzato per ogni comando eseguito da sudo. Se non ti fidi delle "
+"persone che eseguono sudo per avere una variabile d'ambiente PATH sana, "
+"potresti volerlo usare."
 
 #: admin/sudo/class_sudoOptions.inc:283
 msgid ""
 "This option controls when a short lecture will be printed along with the "
 "password prompt"
 msgstr ""
+"Questa opzione controlla quando una breve conferenza verrà stampata insieme "
+"al prompt della password"
 
 #: admin/sudo/class_sudoOptions.inc:288
 msgid ""
 "Path to a file containing an alternate sudo lecture that will be used in "
 "place of the standard lecture"
 msgstr ""
+"Percorso di un file contenente una lezione sudo alternativa che verrà "
+"utilizzata al posto della lezione standard"
 
 #: admin/sudo/class_sudoOptions.inc:293
 msgid "Path to the sudo log file (not the syslog log file)"
-msgstr ""
+msgstr "Percorso del file di log sudo (non del file di registro syslog)"
 
 #: admin/sudo/class_sudoOptions.inc:298
 msgid "Syslog facility if syslog is being used for logging"
-msgstr ""
+msgstr "Funzione Syslog se syslog viene utilizzato per la registrazione"
 
 #: admin/sudo/class_sudoOptions.inc:303
 msgid "Path to mail program used to send warning mail"
 msgstr ""
+"Percorso verso il programma di posta utilizzato per inviare posta di avviso"
 
 #: admin/sudo/class_sudoOptions.inc:308
 msgid "Flags to use when invoking mailer"
-msgstr ""
+msgstr "Flag da utilizzare quando si invoca il mailer"
 
 #: admin/sudo/class_sudoOptions.inc:313
 msgid "Address to send warning and error mail to"
-msgstr ""
+msgstr "Indirizzo per inviare avvisi e messaggi di errore a"
 
 #: admin/sudo/class_sudoOptions.inc:318
 msgid "Users in this group are exempt from password and PATH requirements"
 msgstr ""
+"Gli utenti di questo gruppo sono esenti dai requisiti di password e PATH"
 
 #: admin/sudo/class_sudoOptions.inc:323
 msgid ""
 "This option controls when a password will be required when a user runs sudo "
 "with the -v option"
 msgstr ""
+"Questa opzione controlla quando sarà richiesta una password quando un utente"
+" esegue sudo con l'opzione -v"
 
 #: admin/sudo/class_sudoOptions.inc:328
 msgid ""
 "This option controls when a password will be required when a user runs sudo "
 "with the -l option"
 msgstr ""
+"Questa opzione controlla quando sarà richiesta una password quando un utente"
+" esegue sudo con l'opzione -l"
 
 #: admin/sudo/class_sudoOptions.inc:333 admin/sudo/class_sudoOptions.inc:348
 #: admin/sudo/class_sudoOptions.inc:363
@@ -452,6 +546,8 @@ msgid ""
 "Environment variables to be removed from the user's environment if the "
 "variable's value contains % or / characters"
 msgstr ""
+"Variabili d'ambiente da rimuovere dall'ambiente dell'utente se il valore "
+"della variabile contiene% o / caratteri"
 
 #: admin/sudo/class_sudoOptions.inc:338 admin/sudo/class_sudoOptions.inc:353
 #: admin/sudo/class_sudoOptions.inc:368
@@ -459,6 +555,8 @@ msgid ""
 "Environment variables to be removed from the user's environment when the "
 "env_reset option is not in effect"
 msgstr ""
+"Variabili di ambiente da rimuovere dall'ambiente dell'utente quando "
+"l'opzione env_reset non è attiva"
 
 #: admin/sudo/class_sudoOptions.inc:343 admin/sudo/class_sudoOptions.inc:358
 #: admin/sudo/class_sudoOptions.inc:373
@@ -466,6 +564,8 @@ msgid ""
 "Environment variables to be preserved in the user's environment when the "
 "env_reset option is in effect"
 msgstr ""
+"Variabili d'ambiente da conservare nell'ambiente dell'utente quando è attiva"
+" l'opzione env_reset"
 
 #: config/sudo/class_sudoConfig.inc:28
 msgid "Sudo configuration"

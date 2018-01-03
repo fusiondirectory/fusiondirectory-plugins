@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-11-20 15:25+0000\n"
+"POT-Creation-Date: 2017-12-21 15:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -143,7 +143,7 @@ msgstr "Actions"
 msgid "Create"
 msgstr "Créer"
 
-#: admin/systems/serverService-list.xml:69 admin/systems/system-list.xml:119
+#: admin/systems/serverService-list.xml:69 admin/systems/system-list.xml:127
 msgid "Remove"
 msgstr "Supprimer"
 
@@ -277,15 +277,19 @@ msgstr "Déclencher une action"
 msgid "Schedule action"
 msgstr "Programmer une action"
 
-#: admin/systems/system-list.xml:147
+#: admin/systems/system-list.xml:115
+msgid "Ping"
+msgstr "Ping"
+
+#: admin/systems/system-list.xml:155
 msgid "New object from template"
 msgstr "Créer un nouvel objet depuis un modèle"
 
-#: admin/systems/system-list.xml:159
+#: admin/systems/system-list.xml:167
 msgid "Edit system"
 msgstr "Éditer le système"
 
-#: admin/systems/system-list.xml:173
+#: admin/systems/system-list.xml:181
 msgid "Remove system"
 msgstr "Supprimer le système"
 
@@ -485,6 +489,7 @@ msgstr "Option(s) spéciale(s) pour ce partage"
 #: admin/systems/services/shares/class_serviceShare.inc:105
 #: admin/systems/class_serverService.inc:209
 #: admin/systems/class_serverService.inc:277
+#: addons/dashboard/class_dashBoardNetwork.inc:81
 msgid "Error"
 msgstr "Erreur"
 
@@ -699,44 +704,51 @@ msgstr "Systèmes"
 msgid "Systems Management"
 msgstr "Gestion des systèmes"
 
-#: admin/systems/class_systemManagement.inc:139
-#: admin/systems/class_systemManagement.inc:155
+#: admin/systems/class_systemManagement.inc:141
+#: admin/systems/class_systemManagement.inc:157
+#: admin/systems/class_systemManagement.inc:209
 msgid "Action canceled"
 msgstr "Action annulée"
 
-#: admin/systems/class_systemManagement.inc:139
+#: admin/systems/class_systemManagement.inc:141
+#: admin/systems/class_systemManagement.inc:209
 #, php-format
 msgid "System %s has no mac address defined, cannot trigger action"
 msgstr ""
 "Le système %s n'a pas d'adresse mac définie, impossible de déclencher "
 "l'action"
 
-#: admin/systems/class_systemManagement.inc:155
+#: admin/systems/class_systemManagement.inc:157
 #, php-format
 msgid "System %s is currently installing"
 msgstr "Le système %s est actuellement en cours d'installation"
 
-#: admin/systems/class_systemManagement.inc:174
-#: admin/systems/class_systemManagement.inc:205
+#: admin/systems/class_systemManagement.inc:176
+#: admin/systems/class_systemManagement.inc:221
+#: admin/systems/class_systemManagement.inc:258
 msgid "Infrastructure service"
 msgstr "Service d’infrastructure"
 
-#: admin/systems/class_systemManagement.inc:177
-#: admin/systems/class_systemManagement.inc:182
+#: admin/systems/class_systemManagement.inc:179
+#: admin/systems/class_systemManagement.inc:184
 msgid "Action triggered"
 msgstr "Action déclenchée"
 
-#: admin/systems/class_systemManagement.inc:177
+#: admin/systems/class_systemManagement.inc:179
 #, php-format
 msgid "Action called without error (results were \"%s\")"
 msgstr "Action lancée sans erreur (Le résultat était « %s »)"
 
-#: admin/systems/class_systemManagement.inc:182
+#: admin/systems/class_systemManagement.inc:184
 #, php-format
 msgid "Action called without error (result was \"%s\")"
 msgstr "Action appelée sans erreur (résultat : «%s»)"
 
-#: admin/systems/class_systemManagement.inc:272
+#: admin/systems/class_systemManagement.inc:239
+msgid "Ping results"
+msgstr "Résultat du Ping"
+
+#: admin/systems/class_systemManagement.inc:325
 #, php-format
 msgid "Inherited from %s"
 msgstr "Hérité de %s"
@@ -930,45 +942,58 @@ msgstr "Les onglets d’objet pour lesquels le champ IP doit être obligatoire"
 msgid "Statistics and information about systems"
 msgstr "Statistiques et informations sur les systèmes"
 
-#: addons/dashboard/class_dashBoardSystems.inc:42
+#: addons/dashboard/class_dashBoardSystems.inc:43
 msgid "Statistics"
 msgstr "Statistiques"
 
-#: addons/dashboard/class_dashBoardSystems.inc:47
+#: addons/dashboard/class_dashBoardSystems.inc:48
 msgid "Computer name to use by unit"
 msgstr "Nom d'ordinateur à utiliser par unité"
 
-#: addons/dashboard/class_dashBoardSystems.inc:72
+#: addons/dashboard/class_dashBoardSystems.inc:73
 msgid "Workstations"
 msgstr "Stations de travail"
 
-#: addons/dashboard/class_dashBoardSystems.inc:76
+#: addons/dashboard/class_dashBoardSystems.inc:77
 msgid "Servers"
 msgstr "Serveurs"
 
-#: addons/dashboard/class_dashBoardSystems.inc:80
+#: addons/dashboard/class_dashBoardSystems.inc:81
 msgid "Windows Workstations"
 msgstr "Stations de travail Windows"
 
-#: addons/dashboard/class_dashBoardSystems.inc:84
+#: addons/dashboard/class_dashBoardSystems.inc:86
 msgid "Terminals"
 msgstr "Terminaux"
 
-#: addons/dashboard/class_dashBoardSystems.inc:88
+#: addons/dashboard/class_dashBoardSystems.inc:90
 msgid "Printers"
 msgstr "Imprimantes"
 
-#: addons/dashboard/class_dashBoardSystems.inc:92
+#: addons/dashboard/class_dashBoardSystems.inc:94
 msgid "Phones"
 msgstr "Téléphones"
 
-#: addons/dashboard/class_dashBoardSystems.inc:96
+#: addons/dashboard/class_dashBoardSystems.inc:98
 msgid "Components"
 msgstr "Composants"
 
-#: addons/dashboard/class_dashBoardSystems.inc:100
+#: addons/dashboard/class_dashBoardSystems.inc:102
 msgid "Mobile phones"
 msgstr "Téléphones portables"
+
+#: addons/dashboard/class_dashBoardSystems.inc:116
+msgid "LDAP error"
+msgstr "Erreur LDAP"
+
+#: addons/dashboard/class_dashBoardSystems.inc:117
+#, php-format
+msgid ""
+"Statistics for type \"%s\" could not be computed because of the following "
+"error: %s"
+msgstr ""
+"Les statistiques pour le type «%s» n'ont pas pu être calculées en raison de "
+"l'erreur suivante : %s"
 
 #: addons/dashboard/class_dashBoardNetwork.inc:28
 msgid "Network"
@@ -978,13 +1003,21 @@ msgstr "Réseau"
 msgid "Statistics and various information"
 msgstr "Statistiques et informations diverses"
 
-#: addons/dashboard/class_dashBoardNetwork.inc:40
+#: addons/dashboard/class_dashBoardNetwork.inc:41
 msgid "DHCP"
 msgstr "DHCP"
 
-#: addons/dashboard/class_dashBoardNetwork.inc:45
+#: addons/dashboard/class_dashBoardNetwork.inc:46
 msgid "DNS"
 msgstr "DNS"
+
+#: addons/dashboard/class_dashBoardNetwork.inc:82
+#, php-format
+msgid ""
+"Statistics for DHCP could not be computed because of the following error: %s"
+msgstr ""
+"Les statistiques pour le service DHCP n'ont pas pu être calculé en raison de"
+" l'erreur suivante : %s"
 
 #: admin/systems/serverService-list.tpl.c:2
 msgid "Base"

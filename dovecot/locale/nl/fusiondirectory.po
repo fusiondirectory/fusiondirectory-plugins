@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-11-20 15:25+0000\n"
+"POT-Creation-Date: 2017-12-21 15:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2016\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,19 +29,19 @@ msgstr "Services"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:43
 msgid "Dovecot connection"
-msgstr "Dovecot connectie"
+msgstr "Dovecot verbinding"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:46
 msgid "Connect URL for Dovecot server"
-msgstr ""
+msgstr "Verbind URL voor Dovecot server"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:50
 msgid "Hostname"
-msgstr "hostname"
+msgstr "Hostname"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:50
 msgid "Hostname of the Dovecot server"
-msgstr ""
+msgstr "Hostnaam van de Dovecot server"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:54
 msgid "Port"
@@ -49,7 +49,7 @@ msgstr "Poort"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:54
 msgid "Port number on which Dovecot server should be contacted"
-msgstr ""
+msgstr "Poort nummer waarop de Dovecot server moet gecontacteerd worden"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:59
 msgid "Option"
@@ -57,7 +57,7 @@ msgstr "Optie"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:59
 msgid "Options for contacting Dovecot server"
-msgstr ""
+msgstr "Opties om de Dovecot server te contacteren"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:64
 msgid "Validate TLS/SSL Certificates"
@@ -65,19 +65,19 @@ msgstr "Valideer TLS/SSL certificaten"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:64
 msgid "Weither or not to validate server certificates on connection"
-msgstr ""
+msgstr "Al dan niet valideren van server certificaten op verbindingen"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:76
 msgid "Master credentials"
-msgstr ""
+msgstr "Master credentials"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:79
 msgid "Admin user"
-msgstr "Beheerder"
+msgstr "Admin gebruiker"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:79
 msgid "Dovecot server admin user"
-msgstr ""
+msgstr "Dovecot server admin gebruiker"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:83
 msgid "Password"
@@ -85,15 +85,16 @@ msgstr "Wachtwoord"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:83
 msgid "Admin user password"
-msgstr "Admin gebruikers wachtwoord"
+msgstr "Admin gebruiker paswoord"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:87
 msgid "Mail directory"
-msgstr ""
+msgstr "Mail Directory"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:87
 msgid "Path to the directory in which user maildirs must be created"
 msgstr ""
+"Pad naar de directory in dewelke gebruiker maildirs moet aangemaakt worden"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:94
 msgid "Options"
@@ -101,11 +102,12 @@ msgstr "Opties"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:97
 msgid "Create the user folder via Argonaut"
-msgstr ""
+msgstr "Maak de gebruiker folder aan via Argonaut"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:97
 msgid "Use argonaut to create the user mailbox on the Dovecot server"
 msgstr ""
+"Gebruik argonaut om de gebruiker mailbox aan te maken op de dovecot server"
 
 #: personal/mail/mail-methods/class_mail-methods-dovecot.inc:50
 msgid "There are no IMAP compatible mail servers defined!"
@@ -113,9 +115,11 @@ msgstr "Er zijn geen IMAP compatibele mail servers gedefinieerd!"
 
 #: personal/mail/mail-methods/class_mail-methods-dovecot.inc:55
 msgid "Mail server for this account is invalid!"
-msgstr "Mail server voor deze account is niet geldig!"
+msgstr "Mail server voor dit account is ongeldig!"
 
 #: personal/mail/mail-methods/class_mail-methods-dovecot.inc:194
 #, php-format
 msgid "Error while trying to contact Dovecot server through Argonaut: %s"
 msgstr ""
+"Foutmelding bij het proberen te contacteren van de Dovecot server via "
+"Argonaut: %s"

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-11-20 15:25+0000\n"
+"POT-Creation-Date: 2017-12-21 15:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2016\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,15 +25,15 @@ msgstr "Sudo"
 
 #: admin/sudo/class_sudoManagement.inc:33
 msgid "Sudo management"
-msgstr "Sudo beheer"
+msgstr "Sudo-beheer"
 
 #: admin/sudo/class_sudoGeneric.inc:124 admin/sudo/class_sudoGeneric.inc:128
 msgid "Sudo role"
-msgstr "Sudo rol"
+msgstr "Sudo-rol"
 
 #: admin/sudo/class_sudoGeneric.inc:155
 msgid "Role settings"
-msgstr ""
+msgstr "Rol-instellingen"
 
 #: admin/sudo/class_sudoGeneric.inc:161
 msgid "Name"
@@ -49,17 +49,19 @@ msgstr "Omschrijving"
 
 #: admin/sudo/class_sudoGeneric.inc:166
 msgid "Description for the new sudo role"
-msgstr ""
+msgstr "Omschrijving voor de nieuwe sudo-rol"
 
 #: admin/sudo/class_sudoGeneric.inc:171
 msgid "Commands"
-msgstr "Commando's"
+msgstr "Opdrachten"
 
 #: admin/sudo/class_sudoGeneric.inc:172
 msgid ""
 "A Unix command with optional command line arguments, potentially including "
 "globbing characters (aka wild cards)"
 msgstr ""
+"Een Unix opdracht met optionele opdrachtlijnargumenten, mogelijks inclusief "
+"globbing karakters (aka wild cards)"
 
 #: admin/sudo/class_sudoGeneric.inc:178
 msgid "Run as (user)"
@@ -67,7 +69,7 @@ msgstr "Utivoeren als (gebruiker)"
 
 #: admin/sudo/class_sudoGeneric.inc:179
 msgid "User(s) impersonated by sudo"
-msgstr ""
+msgstr "Gebruiker(s) nagedaan door sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:186
 msgid "Run as (group)"
@@ -75,7 +77,7 @@ msgstr "Uitvoeren als (groep)"
 
 #: admin/sudo/class_sudoGeneric.inc:187
 msgid "Group(s) impersonated by sudo"
-msgstr ""
+msgstr "Groep(en) nagedaan door sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:193
 msgid "Systems"
@@ -83,7 +85,7 @@ msgstr "Systemen"
 
 #: admin/sudo/class_sudoGeneric.inc:193
 msgid "A host name, IP address or IP network"
-msgstr ""
+msgstr "een hostnaam, IP-adres of IP-netwerk"
 
 #: admin/sudo/class_sudoGeneric.inc:198
 msgid "Users and groups"
@@ -93,6 +95,8 @@ msgstr "Gebruikers en groepen"
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
 msgstr ""
+"Een gebruikersnaam, gebruikersID  (prefixed met '#'), Unix group (prefixed "
+"met '%')"
 
 #: admin/sudo/class_sudoGeneric.inc:203
 msgid "Priority"
@@ -100,25 +104,29 @@ msgstr "Prioriteit"
 
 #: admin/sudo/class_sudoGeneric.inc:203
 msgid "This rule priority compared to others"
-msgstr ""
+msgstr "De voorrang van deze regel vergeleken met anderen."
 
 #: admin/sudo/class_sudoGeneric.inc:208
 msgid "Valid starting from"
-msgstr ""
+msgstr "Geldig vanaf"
 
 #: admin/sudo/class_sudoGeneric.inc:208
 msgid ""
 "Start of time interval for which the entry is valid (leave empty to disable)"
 msgstr ""
+"Start van het tijdsinterval voor dewelke deze ingave geldig is (laat leeg om"
+" af te zetten)"
 
 #: admin/sudo/class_sudoGeneric.inc:213
 msgid "Valid until"
-msgstr ""
+msgstr "Geldig tot"
 
 #: admin/sudo/class_sudoGeneric.inc:213
 msgid ""
 "End of time interval for which the entry is valid (leave empty to disable)"
 msgstr ""
+"Einde van het tijdsinterval voor dewelke deze ingave geldig is (laat leeg om"
+" af te zetten)"
 
 #: admin/sudo/class_sudoOption.inc:77
 msgid "Unknown option"
@@ -148,7 +156,7 @@ msgstr "Voeg een nieuwe sudo optie toe"
 
 #: admin/sudo/class_sudoOption.inc:349 admin/sudo/class_sudoOption.inc:351
 msgid "Used sudo role options"
-msgstr ""
+msgstr "Gebruikte sudo-rolopties"
 
 #: admin/sudo/class_sudoOption.inc:418
 msgid "Options"
@@ -164,117 +172,164 @@ msgid ""
 " a two-line prompt is used to make it easier to cut and paste the challenge "
 "to a local window"
 msgstr ""
+"Wanneer goedgekeurd met een One Time Paswoord (OTP) schema zoals S/Key of "
+"OPIE, dan zal er een two-line prompt gebruikt worden om het makkelijker te "
+"maken de challenge naar een lokaal venster te 'knip en plakken' "
 
 #: admin/sudo/class_sudoOptions.inc:58
 msgid ""
 "If set, sudo will ignore '.' or '' (current dir) in the PATH environment "
 "variable"
 msgstr ""
+"Indien ingesteld dan zal sudo  '.' or '' (huidige dir) negeren in de PAD "
+"omgeving variabele"
 
 #: admin/sudo/class_sudoOptions.inc:63
 msgid "Send mail to the mailto user every time a users runs sudo"
 msgstr ""
+"Verzendt de mail naar de mailto gebruiker elke keer dat sudo uitgevoerd "
+"wordt"
 
 #: admin/sudo/class_sudoOptions.inc:68
 msgid ""
 "Send mail to the mailto user if the user running sudo does not enter the "
 "correct password"
 msgstr ""
+"Verzendt de mail naar de mailto gebruiker als de gebruiker die sudo uitvoert"
+" geen juist paswoord ingeeft"
 
 #: admin/sudo/class_sudoOptions.inc:73
 msgid ""
 "If set, mail will be sent to the mailto user if the invoking user is not in "
 "the sudoers file"
 msgstr ""
+"Indien ingesteld, dan wordt er een mail verzonden naar de mailto gebruiker "
+"als de oproepende  gebruiker niet in de sudo-ers lijst zit"
 
 #: admin/sudo/class_sudoOptions.inc:78
 msgid ""
 "If set, mail will be sent to the mailto user if the invoking user exists in "
 "the sudoers file, but is not allowed to run commands on the current host"
 msgstr ""
+"Indien ingesteld, dan wordt er een mail verzonden naar de mailto gebruiker "
+"als de oproepende  gebruiker in de sudoers lijst zit, maar niet toegelaten "
+"is om instructies uit te voeren o de huidige host"
 
 #: admin/sudo/class_sudoOptions.inc:83
 msgid ""
 "If set, mail will be sent to the mailto user if the invoking user is allowed"
 " to use sudo but not for this command"
 msgstr ""
+"Indien ingesteld, dan wordt er een mail verzonden naar de mailto gebruiker "
+"als de oproepende  gebruiker sudo mag gebruiken maar niet voor deze "
+"instructie"
 
 #: admin/sudo/class_sudoOptions.inc:88
 msgid "If set, users must authenticate on a per-tty basis"
 msgstr ""
+"Indien ingesteld, dan moeten gebruikers authenticeren op een per-tty basis"
 
 #: admin/sudo/class_sudoOptions.inc:93
 msgid ""
 "If set, users must authenticate themselves via a password (or other means of"
 " authentication)"
 msgstr ""
+"Indien ingesteld, dan moeten gebruikers zich authenticeren via een paswoord "
+"(of een ander autenticatiemiddel)"
 
 #: admin/sudo/class_sudoOptions.inc:98
 msgid "If set, root is allowed to run sudo too"
-msgstr ""
+msgstr "Indien ingesteld, dan is het de root toegelaten om sudo uit te voeren"
 
 #: admin/sudo/class_sudoOptions.inc:103
 msgid "If set, the host name will be logged in the (non-syslog) sudo log file"
 msgstr ""
+"Indien ingesteld dan zal de hostnaam gelogd worden in het (non-syslog) sudo "
+"logbestand"
 
 #: admin/sudo/class_sudoOptions.inc:108
 msgid ""
 "If set, the four-digit year will be logged in the (non-syslog) sudo log file"
 msgstr ""
+"Indien ingesteld dan zal het vier digit jaar gelogd worden in het (non-"
+"syslog) sudo logbestand"
 
 #: admin/sudo/class_sudoOptions.inc:113
 msgid ""
 "If set and sudo is invoked with no arguments it acts as if the -s option had"
 " been given"
 msgstr ""
+"Indien ingesteld en sudo wordt opgeroepen zonder argumenten dan zal het zich"
+" gedragen alsof the -s optie meegegeven is"
 
 #: admin/sudo/class_sudoOptions.inc:118
 msgid ""
 "If enabled and sudo is invoked with the -s option the HOME environment "
 "variable will be set to the home directory of the target user (usually root)"
 msgstr ""
+"Indien ingeschakeld en sudo wordt opgeroepen met de -s optie dan zal de HOME"
+" omgevingsvariabele op de homedirectory van de doelgebruiker (meestal root) "
+"gezet worden"
 
 #: admin/sudo/class_sudoOptions.inc:123
 msgid ""
 "If enabled, sudo will set the HOME environment variable to the home "
 "directory of the target user (usually root)"
 msgstr ""
+"Indien ingesteld dan zal sudo de HOME omgeving variabele instellen op de "
+"home directory van de doelgebruiker (meestal root)"
 
 #: admin/sudo/class_sudoOptions.inc:128
 msgid ""
 "If the executable is simply not in the user's PATH, sudo will tell the user "
 "that they are not allowed to run it"
 msgstr ""
+"Als de executable eenvoudigweg niet in het gebruikers PATH staat, dan zal "
+"sudo de gebruikers vertellen dat ze niet toegestaan worden om deze uit te "
+"voeren"
 
 #: admin/sudo/class_sudoOptions.inc:133
 msgid "If set, the user's existing group vector is left unaltered"
 msgstr ""
+"Indien ingesteld dan wordt de gebruikers bestaande groepsvector niet "
+"gewijzigd"
 
 #: admin/sudo/class_sudoOptions.inc:138
 msgid ""
 "Set this flag if you want to put fully qualified host names in the sudoers "
 "file"
 msgstr ""
+"Stel deze vlag in als je de fully qualified hostnaam in het sudo-ers bestand"
+" wil zetten"
 
 #: admin/sudo/class_sudoOptions.inc:143
 msgid "If set, sudo will insult users when they enter an incorrect password"
 msgstr ""
+"Indien ingesteld dan zal sudo gebruikers aanvallen wanneer ze proberen een "
+"onjuist paswoord in te geven"
 
 #: admin/sudo/class_sudoOptions.inc:148
 msgid "If set, sudo will only run when the user is logged in to a real tty"
 msgstr ""
+"Indien ingesteld dan zal sudo enkel werken als de gebruiker in ingelogd op "
+"een echte tty"
 
 #: admin/sudo/class_sudoOptions.inc:153
 msgid ""
 "If set, visudo will use the value of the EDITOR or VISUAL environment "
 "variables before falling back on the default editor list"
 msgstr ""
+"Indien ingesteld dan zal visudo de waarde van de EDITOR of VISUAL omgeving "
+"svariabele gebruiken voordat er wordt teruggevallen op de standaard editor "
+"lijst"
 
 #: admin/sudo/class_sudoOptions.inc:158
 msgid ""
 "If set, sudo will prompt for the root password instead of the password of "
 "the invoking user"
 msgstr ""
+"Indien ingesteld dan zal sudo het rootpaswoord prompten i.p.v. het paswoord "
+"van de opgeroepen gebruiker"
 
 #: admin/sudo/class_sudoOptions.inc:163
 msgid ""
@@ -282,109 +337,149 @@ msgid ""
 "runas_default option (defaults to root) instead of the password of the "
 "invoking user"
 msgstr ""
+"Indien gezet dan zal sudo het paswoord prompten voor de gebruiker "
+"gedefinieerd door de runas_standaard optie (standaard op root) i.p.v. het "
+"paswoord van de opvragende gebruiker"
 
 #: admin/sudo/class_sudoOptions.inc:168
 msgid ""
 "If set, sudo will prompt for the password of the user specified by the -u "
 "option (defaults to root) instead of the password of the invoking user"
 msgstr ""
+"Indien ingesteld dan zal sudo prompten voor het gebruikerspaswoord bepaald "
+"door de -u optie (standaard op root) i.p.v. het paswoord van de oproepende "
+"gebruiker"
 
 #: admin/sudo/class_sudoOptions.inc:173
 msgid ""
 "If set, sudo will set the LOGNAME environment variables to the name of the "
 "target user"
 msgstr ""
+"Indien ingesteld dan zal sudo de lognaamomgevingsvariabele op de naam van de"
+" doelgebruiker zetten "
 
 #: admin/sudo/class_sudoOptions.inc:183
 msgid ""
 "If set, sudo will run the command in a minimal environment containing the "
 "TERM, PATH, HOME, MAIL, SHELL, LOGNAME, USER, USERNAME and SUDO_ variables"
 msgstr ""
+"Indien ingesteld dan zal sudo de instructie in een minimale omgeving "
+"uitvoeren, bevattend TERM, PATH, HOME, MAIL, SHELL, LOGNAME, USER, USERNAME "
+"and SUDO_ variabelen"
 
 #: admin/sudo/class_sudoOptions.inc:188
 msgid ""
 "If set, sudo will apply the defaults specified for the target user's login "
 "class if one exists"
 msgstr ""
+"Indien ingesteld dan zal sudo de standaard instellingen gebruiken beschreven"
+" in de doelgebruikersloginklasse als die bestaat"
 
 #: admin/sudo/class_sudoOptions.inc:193
 msgid ""
 "If set, all commands run via sudo will behave as if the NOEXEC tag has been "
 "set, unless overridden by a EXEC tag"
 msgstr ""
+"Indien ingesteld dan zullen alle instructies uitgevoerd via sudo zich "
+"gedragen alsof de NOEXEC tag aan staat, behalve bij een override van de EXEC"
+" tag"
 
 #: admin/sudo/class_sudoOptions.inc:198
 msgid "If set, parsing of /etc/sudoers file will be skipped."
 msgstr ""
+"Indien ingesteld dan zal de parsing van /etc/sudo-ers bestand overgeslagen "
+"worden"
 
 #: admin/sudo/class_sudoOptions.inc:203
 msgid ""
 "The number of tries a user gets to enter his/her password before sudo logs "
 "the failure and exits"
 msgstr ""
+"Het aantal pogingen die een gebruiker krijgt om zijn/haar paswoord in te "
+"geven voordat sudo the gefaalde pogingen logt"
 
 #: admin/sudo/class_sudoOptions.inc:208
 msgid "Number of characters per line for the file log"
-msgstr ""
+msgstr "Aantal karakters per lijn voor de logfile"
 
 #: admin/sudo/class_sudoOptions.inc:213
 msgid ""
 "Number of minutes that can elapse before sudo will ask for a passwd again"
 msgstr ""
+"Aantal minuten die voorbij kunnen gaan alvorens sudo opnieuw een paswoord "
+"vraagt"
 
 #: admin/sudo/class_sudoOptions.inc:218
 msgid ""
 "Number of minutes before the sudo password prompt times out, or 0 for no "
 "timeout"
 msgstr ""
+"Aantal minuten voor de sudo-paswoordprompt time-out, of 0 voor geen time-out"
 
 #: admin/sudo/class_sudoOptions.inc:223
 msgid ""
 "Umask to use when running the command. Set to FALSE to preserve the user's "
 "umask"
 msgstr ""
+"Umask te gebruiken bij het uitvoeren van de instructie. Deze wordt op FALSE "
+"gezet om het gebruikers umask te behouden"
 
 #: admin/sudo/class_sudoOptions.inc:228
 msgid ""
 "Subject of the mail sent to the mailto user. The escape %h will expand to "
 "the host name of the machine"
 msgstr ""
+"Onderwerp van de mail verzonden naar de mailto gebruiker. De escape %h zal "
+"de hostnaam van de machine uitbreiden"
 
 #: admin/sudo/class_sudoOptions.inc:233
 msgid "Message that is displayed if a user enters an incorrect password"
 msgstr ""
+"Boodschap welke wordt getoond als een gebruiker een onjuist paswoord ingeeft"
 
 #: admin/sudo/class_sudoOptions.inc:238
 msgid "The directory in which sudo stores its timestamp files"
-msgstr ""
+msgstr "De directory waarin sudo zijn tijdstempelbestanden opslaat"
 
 #: admin/sudo/class_sudoOptions.inc:243
 msgid "The owner of the timestamp directory and the timestamps stored therein"
 msgstr ""
+"De eigenaar van de tijdstempel directory en de tijdstempels die daarin zijn "
+"opgeslagen"
 
 #: admin/sudo/class_sudoOptions.inc:248
 msgid ""
 "The default prompt to use when asking for a password; can be overridden via "
 "the -p option or the SUDO_PROMPT environment variable"
 msgstr ""
+"De standaard prompt die moet gebruikt worden wanneer er gevraagd wordt naar "
+"een paswoord; deze kan overschreven worden via de -p optie of de' "
+"SUDO_PROMPT omgevingsvariabele"
 
 #: admin/sudo/class_sudoOptions.inc:253
 msgid ""
 "The default user to run commands as if the -u option is not specified on the"
 " command line"
 msgstr ""
+"De standaardgebruiker om instructies uit te voeren alsof de -u optie niet "
+"zou vermeld zijn in de commandolijn"
 
 #: admin/sudo/class_sudoOptions.inc:258
 msgid "Syslog priority to use when user authenticates successfully"
 msgstr ""
+"Syslogvoorrang te gebruiken bij succesvolle authenticatie van de gebruiker "
 
 #: admin/sudo/class_sudoOptions.inc:263
 msgid "Syslog priority to use when user authenticates unsuccessfully"
 msgstr ""
+"Syslogvoorrang te gebruiken bij niet-succesvolle authenticatie van de "
+"gebruiker "
 
 #: admin/sudo/class_sudoOptions.inc:268
 msgid "A colon separated list of editors allowed to be used with visudo"
 msgstr ""
+"Een door dubbelpunten gescheiden lijst van bewerkers die door visudo mogen "
+"gebruikt worden"
 
 #: admin/sudo/class_sudoOptions.inc:278
 msgid ""
@@ -392,54 +487,68 @@ msgid ""
 "running sudo to have a sane PATH environment variable you may want to use "
 "this."
 msgstr ""
+"Pad gebruikt voor elke instructie uitgevoerd met sudo. Indien je de mensen "
+"die sudo uitvoeren niet vertrouwd om een degelijke PATH omgeving variable te"
+" bezitten dan wil je dit mogelijks gebruiken."
 
 #: admin/sudo/class_sudoOptions.inc:283
 msgid ""
 "This option controls when a short lecture will be printed along with the "
 "password prompt"
 msgstr ""
+"Deze optie bepaalt wanneer een korte lectuur zal afgedrukt worden bij "
+"paswoordprompt"
 
 #: admin/sudo/class_sudoOptions.inc:288
 msgid ""
 "Path to a file containing an alternate sudo lecture that will be used in "
 "place of the standard lecture"
 msgstr ""
+"Pad naar een file dat een alternatieve sudo-lectuur bevat die gebruikt zal "
+"worden in plaats van de standaard lectuur"
 
 #: admin/sudo/class_sudoOptions.inc:293
 msgid "Path to the sudo log file (not the syslog log file)"
-msgstr ""
+msgstr "Pad naar het sudo logbestand (niet het syslog-logbestand)"
 
 #: admin/sudo/class_sudoOptions.inc:298
 msgid "Syslog facility if syslog is being used for logging"
-msgstr ""
+msgstr "Syslogfaciliteit als syslog gebruikt wordt voor logging"
 
 #: admin/sudo/class_sudoOptions.inc:303
 msgid "Path to mail program used to send warning mail"
 msgstr ""
+"Pad naar het mailprogramma dat gebruikt wordt voor het het zenden van "
+"waarschuwingsmail"
 
 #: admin/sudo/class_sudoOptions.inc:308
 msgid "Flags to use when invoking mailer"
-msgstr ""
+msgstr "Vlaggen te gebruiken bij oproeping mailer"
 
 #: admin/sudo/class_sudoOptions.inc:313
 msgid "Address to send warning and error mail to"
-msgstr ""
+msgstr "Adres naar waartoe waarschuwing- en foutmail moet verzonden worden"
 
 #: admin/sudo/class_sudoOptions.inc:318
 msgid "Users in this group are exempt from password and PATH requirements"
 msgstr ""
+"Gebruikers van deze groep zijn vrijgesteld van paswoord en PAD voorwaarden"
 
 #: admin/sudo/class_sudoOptions.inc:323
 msgid ""
 "This option controls when a password will be required when a user runs sudo "
 "with the -v option"
 msgstr ""
+"Deze optie controleert of het paswoord noodzakelijk is wanneer een gebruiker"
+" sudo uitvoert met de -v optie"
 
 #: admin/sudo/class_sudoOptions.inc:328
 msgid ""
 "This option controls when a password will be required when a user runs sudo "
 "with the -l option"
 msgstr ""
+"Deze optie controleert of het paswoord noodzakelijk is wanneer een gebruiker"
+" sudo uitvoert met de -i optie"
 
 #: admin/sudo/class_sudoOptions.inc:333 admin/sudo/class_sudoOptions.inc:348
 #: admin/sudo/class_sudoOptions.inc:363
@@ -448,6 +557,8 @@ msgid ""
 "Environment variables to be removed from the user's environment if the "
 "variable's value contains % or / characters"
 msgstr ""
+"Omgevingsvariabelen die moeten worden verwijderd van de gebruikersomgeving "
+"als de variabelewaarde % of / karakters bevat "
 
 #: admin/sudo/class_sudoOptions.inc:338 admin/sudo/class_sudoOptions.inc:353
 #: admin/sudo/class_sudoOptions.inc:368
@@ -455,6 +566,8 @@ msgid ""
 "Environment variables to be removed from the user's environment when the "
 "env_reset option is not in effect"
 msgstr ""
+"Omgevingsvariabelen die moeten worden verwijderd van de gebruikersomgeving "
+"als de env_reset optie niet gebruikt wordt "
 
 #: admin/sudo/class_sudoOptions.inc:343 admin/sudo/class_sudoOptions.inc:358
 #: admin/sudo/class_sudoOptions.inc:373
@@ -462,6 +575,8 @@ msgid ""
 "Environment variables to be preserved in the user's environment when the "
 "env_reset option is in effect"
 msgstr ""
+"Omgevingsvariabelen die moeten worden behouden in de gebruikersomgeving als "
+"de env_reset optie gebruikt wordt "
 
 #: config/sudo/class_sudoConfig.inc:28
 msgid "Sudo configuration"
@@ -477,4 +592,4 @@ msgstr "Sudo RDN"
 
 #: config/sudo/class_sudoConfig.inc:45
 msgid "Branch in which sudoers will be stored"
-msgstr ""
+msgstr "Branch in dewelke sudo-ers worden opgeslagen"

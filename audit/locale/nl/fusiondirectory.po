@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-11-20 15:25+0000\n"
+"POT-Creation-Date: 2017-12-21 15:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2017\n"
+"Last-Translator: Rombout de Neef <rombout.deneef@digipolis.be>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +30,7 @@ msgstr ""
 
 #: admin/audit/class_auditEvent.inc:72
 msgid "Event"
-msgstr "Event"
+msgstr "Gebeurtenis"
 
 #: admin/audit/class_auditEvent.inc:75
 #: admin/audit/class_auditManagement.inc:69
@@ -39,7 +39,7 @@ msgstr "Tijd"
 
 #: admin/audit/class_auditEvent.inc:75
 msgid "Date and time this event happened"
-msgstr "Datum en tijd van gebeurtenis"
+msgstr "Datum en tijd van het plaats vinden van deze gebeurtenis"
 
 #: admin/audit/class_auditEvent.inc:78
 #: admin/audit/class_auditManagement.inc:83
@@ -57,7 +57,7 @@ msgstr "Auteur"
 
 #: admin/audit/class_auditEvent.inc:79
 msgid "Action author"
-msgstr "Aktie Auteur"
+msgstr "Actie Auteur"
 
 #: admin/audit/class_auditEvent.inc:80
 msgid "Object type"
@@ -85,7 +85,7 @@ msgstr "Resultaat"
 
 #: admin/audit/class_auditEvent.inc:83
 msgid "Result or error"
-msgstr "Resultaat of error"
+msgstr "Resultaat van fout"
 
 #: admin/audit/class_auditManagement.inc:40
 #: config/audit/class_auditConfig.inc:41
@@ -94,7 +94,7 @@ msgstr "Audit"
 
 #: admin/audit/class_auditManagement.inc:41
 msgid "Audit events display"
-msgstr "Audit gebeurtenis weergave"
+msgstr "Audit gebeurtenissen weergave"
 
 #: admin/audit/class_auditManagement.inc:90
 msgid "Type"
@@ -118,7 +118,7 @@ msgstr "Audit RDN"
 
 #: config/audit/class_auditConfig.inc:44
 msgid "Branch in which audit events will be stored"
-msgstr "Branch waarin audit events zullen worden opgeslagen"
+msgstr "Tak waarin audit gebeurtenissen zullen worden opgeslagen"
 
 #: config/audit/class_auditConfig.inc:50
 msgid "Actions to audit"
@@ -134,4 +134,4 @@ msgstr "Dagen om te bewaren"
 
 #: config/audit/class_auditConfig.inc:57
 msgid "Number of days of audit to keep in the LDAP when cleaning"
-msgstr "Aantal auditdagen te bewaren in LDAP bij opkuis"
+msgstr "Aantal auditdagen te bewaren in de LDAP bij opkuis"
