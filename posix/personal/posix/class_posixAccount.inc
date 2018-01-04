@@ -697,13 +697,16 @@ class posixAccount extends simplePlugin
 
     if (!$this->is_template) {
       /* Delete group only if cn is uid and there are no other members inside */
-      $ldap = $config->get_ldap_link();
-      $ldap->cd ($config->current['BASE']);
-      $ldap->search ('(&(objectClass=posixGroup)(gidNumber='.ldap_escape_f($this->gidNumber).')(cn='.ldap_escape_f($this->getUid()).'))', array('cn', 'memberUid'));
-      if ($ldap->count() != 0) {
-        $attrs = $ldap->fetch();
-        if ($attrs['cn'][0] == $this->getUid() && !isset($this->attrs['memberUid'])) {
-          $ldap->rmDir($attrs['dn']);
+      if (class_available('mixedGroup')) {
+        $type = 'ogroup';
+      } else {
+        $type = 'group';
+      }
+      $groups = objects::ls($type, array('cn' => 1, 'memberUid' => '*'), NULL, '(&(objectClass=posixGroup)(gidNumber='.ldap_escape_f($this->gidNumber).')(cn='.ldap_escape_f($this->getUid()).'))');
+      foreach ($groups as $dn => $group) {
+        if (empty($group['memberUid']) || ((count($group['memberUid']) == 1) && ($group['memberUid'][0] == $this->getUid()))) {
+          $tabobject = objects::open($dn, $type);
+          $tabobject->delete();
         }
       }
     }
