@@ -283,6 +283,11 @@ class fdRPCService
       return array('errors' => array('Tab '.$tab.' is not activated on "'.$dn.'", can’t remove it'));
     } elseif (!$tabobject->by_object[$tab]->acl_is_removeable()) {
       return array('errors' => array('You don\'t have sufficient rights to disable tab "'.$tab.'"'));
+    } else {
+      list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
+      if ($disabled) {
+        return array('errors' => array($text));
+      }
     }
     $_POST = array($tab.'_modify_state' => 1);
     $tabobject->save_object();
@@ -438,6 +443,10 @@ class fdRPCService
           $tabobject->by_object[$tab]->displayHeader &&
           !$tabobject->by_object[$tab]->is_account
         ) {
+        list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
+        if ($disabled) {
+          return array('errors' => array($text));
+        }
         if ($tabobject->by_object[$tab]->acl_is_createable()) {
           $tabobject->by_object[$tab]->is_account = TRUE;
         } else {
