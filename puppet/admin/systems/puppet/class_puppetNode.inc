@@ -94,7 +94,7 @@ class puppetNode extends simplePlugin
     $this->attributesAccess['environment']->setChoices($envs);
   }
 
-  protected function getDisplayHeaderInfos()
+  public function getDisplayHeaderInfos()
   {
     list($disabled,$buttonText,$text) = parent::getDisplayHeaderInfos();
     if (!$this->is_account && !$disabled && empty($this->attributesAccess['environment']->getChoices())) {
