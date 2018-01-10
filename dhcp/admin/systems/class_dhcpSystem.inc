@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2016  FusionDirectory
+  Copyright (C) 2015-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -401,8 +401,8 @@ class dhcpSystem extends simplePlugin
       $baseObject->attributeInitialValue('ipHostNumber'),
       $baseObject->attributeValue('ipHostNumber'),
       $baseObject->attributeHaveChanged('macAddress'),
-      array($baseObject->attributeInitialValue('macAddress')),
-      array($baseObject->attributeValue('macAddress'))
+      $baseObject->attributeInitialValue('macAddress'),
+      $baseObject->attributeValue('macAddress')
     );
   }
 

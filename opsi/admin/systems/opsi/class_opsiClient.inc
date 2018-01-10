@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2017  FusionDirectory
+  Copyright (C) 2013-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -195,6 +195,8 @@ class opsiClient extends simplePlugin
       $macAddresses = $this->parent->getBaseObject()->macAddress;
       if (!is_array($macAddresses)) {
         $macAddresses = array($macAddresses);
+      } elseif (count($macAddresses) > 1) {
+        $macAddresses = array($macAddresses[0]);
       }
     }
     return $macAddresses;
@@ -246,7 +248,12 @@ class opsiClient extends simplePlugin
           }
         }
       } elseif (!$this->member_of_group) {
-        $macAddresses = array($this->parent->getBaseObject()->macAddress);
+        $macAddresses = $this->parent->getBaseObject()->macAddress;
+        if (!is_array($macAddresses)) {
+          $macAddresses = array($macAddresses);
+        } elseif (count($macAddresses) > 1) {
+          $macAddresses = array($macAddresses[0]);
+        }
       }
 
       if (!empty($macAddresses)) {

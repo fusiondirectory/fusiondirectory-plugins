@@ -1,9 +1,8 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -96,9 +95,11 @@ class workstationGeneric extends ipHostPlugin
               'ipHostNumber', TRUE
             )
           ),
-          new MacAddressAttribute(
-            _('Mac address'), _('Mac address of this system'),
-            'macAddress', FALSE
+          new SetAttribute(
+            new MacAddressAttribute(
+              _('Mac address'), _('Mac address of this system'),
+              'macAddress', FALSE
+            )
           ),
         ),
       ),
@@ -114,8 +115,8 @@ class workstationGeneric extends ipHostPlugin
 
   protected function post_remove()
   {
-    /* Clean queue form entries with this mac */
-    if (class_available('supportDaemon') && tests::is_mac($this->attributesAccess['macAddress']->getInitialValue())) {
+    /* Clean queue from entries with this mac */
+    if (class_available('supportDaemon')) {
       $q = new supportDaemon();
       $q->clean_queue_from_mac($this->attributesAccess['macAddress']->getInitialValue());
     }

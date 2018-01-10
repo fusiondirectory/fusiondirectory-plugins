@@ -2,7 +2,7 @@
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -791,7 +791,7 @@ class supportDaemon
    *
    * \return TRUE if success or FALSE otherwise
   */
-  public function clean_queue_from_mac($mac)
+  public function clean_queue_from_mac($macs)
   {
     if ($this->s_host == "") {
       $this->set_error($this->host_error);
@@ -801,10 +801,17 @@ class supportDaemon
       return FALSE;
     }
 
+    if (empty($macs)) {
+      return TRUE;
+    }
+    if (!is_array($macs)) {
+      $macs = array($macs);
+    }
+
     try {
       $client = new jsonRPCClient($this->s_host, $this->http_options, $this->ssl_options);
       $this->reset_error();
-      $taskids = $client->get_entries_by_mac(array($mac));
+      $taskids = $client->get_entries_by_mac($macs);
       $client->remove_entries($taskids);
       return $this->new_state(TRUE);
     } catch (jsonRPCClientRequestErrorException $e) {
