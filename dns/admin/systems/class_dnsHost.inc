@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2016  FusionDirectory
+  Copyright (C) 2015-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -314,6 +314,9 @@ class dnsHost extends simplePlugin
               );
             } else {
               $target = $this->parent->getBaseObject()->macAddress;
+              if (is_array($target)) {
+                $target = $target[0];
+              }
               $s_daemon->append_call('Ldap2Zone.start', $target, array('args' => array($zone)));
               if ($s_daemon->is_error()) {
                 msg_dialog::display(_('Could not run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG);

@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -300,6 +300,9 @@ class ServerService extends simpleManagement
         );
       } else {
         $target = $this->parent->getBaseObject()->macAddress;
+        if (is_array($target)) {
+          $target = $target[0];
+        }
         if ($action == 'status') {
           $res = $s_daemon->append_call('Service.is_running', $target, array('args' => array($service)));
 
