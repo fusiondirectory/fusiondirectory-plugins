@@ -90,7 +90,7 @@ class ServerService extends simpleManagement
 
         $this->plugins[$name] = new $name($dn, $this);
 
-        /* Capture all service objectClases, necessary for acl handling */
+        /* Capture all service objectClasses, necessary for acl handling */
         if (isset($this->plugins[$name]->objectclasses)) {
           foreach ($this->plugins[$name]->objectclasses as $oc) {
             $this->objectclasses[] = $oc;
@@ -98,6 +98,21 @@ class ServerService extends simpleManagement
         }
       }
     }
+
+    uasort($this->plugins,
+      function($a, $b)
+      {
+        $aName = get_class($a);
+        $bName = get_class($b);
+        if (isset($a->DisplayName)) {
+          $aName = $a->DisplayName;
+        }
+        if (isset($b->DisplayName)) {
+          $bName = $b->DisplayName;
+        }
+        return strcmp($aName, $bName);
+      }
+    );
 
     parent::__construct();
   }
