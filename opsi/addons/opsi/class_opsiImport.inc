@@ -21,7 +21,7 @@
 
 class opsiImport extends systemImport
 {
-  protected $defaultType = 'workstation';
+  protected $types = array('workstation');
 
   /* Return plugin information for acl handling  */
   static function plInfo()
