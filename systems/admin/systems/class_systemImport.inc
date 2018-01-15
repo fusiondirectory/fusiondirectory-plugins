@@ -41,7 +41,11 @@ class systemImport extends simplePlugin
 
     $messages = array();
     $dhcps    = array();
-    $dns      = objects::ls('dnsZone');
+    try {
+      $dns    = objects::ls('dnsZone');
+    } catch (NonExistingObjectTypeException $e) {
+      $dns    = array();
+    }
     if (!empty($template_dn)) {
       $template = new template($type, $template_dn);
     }
@@ -95,7 +99,7 @@ class systemImport extends simplePlugin
         $tabObject = $template->apply();
       }
 
-      if (!$tabObject->by_object['dhcpSystem']->is_account) {
+      if (class_available('dhcpSystem') && !$tabObject->by_object['dhcpSystem']->is_account) {
         /* Get existing DHCP servers */
         if (empty($dhcps)) {
           list(, $dhcpParentNodes) = dhcpSystem::getDhcpParentNodes();
@@ -125,7 +129,7 @@ class systemImport extends simplePlugin
         }
       }
 
-      if (!$tabObject->by_object['dnsHost']->is_account) {
+      if (class_available('dnsHost') && !$tabObject->by_object['dnsHost']->is_account) {
         /* Activate DNS if we find a matching server */
         foreach ($dns as $dn => $value) {
           if (preg_match('/^'.$zone.'\.?$/', $value)) {
