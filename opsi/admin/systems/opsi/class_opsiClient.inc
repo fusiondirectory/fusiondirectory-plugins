@@ -312,20 +312,23 @@ class opsiClient extends simplePlugin
       );
       return FALSE;
     }
-    $infos = $s_daemon->append_call('OPSI.host_getObjects', $macAddress, array('args' => array(array('lastSeen', 'hardwareAddress'), array('hardwareAddress' => $this->getMacAddresses()))));
-    if ($s_daemon->is_error()) {
-      $this->lastSeen = sprintf(_('Failed to contact OPSI server: %s'), $s_daemon->get_error());
-    } elseif (count($infos) == 0) {
-      $this->lastSeen = _('Never');
-    } else {
-      if (!$this->editing_group() && ($this->initialOpsiId === NULL)) {
-        $this->initialOpsiId = reset($infos)['id'];
+    $macAddresses = $this->getMacAddresses();
+    if (!empty($macAddresses)) {
+      $infos = $s_daemon->append_call('OPSI.host_getObjects', $macAddress, array('args' => array(array('lastSeen', 'hardwareAddress'), array('hardwareAddress' => $macAddresses))));
+      if ($s_daemon->is_error()) {
+        $this->lastSeen = sprintf(_('Failed to contact OPSI server: %s'), $s_daemon->get_error());
+      } elseif (count($infos) == 0) {
+        $this->lastSeen = _('Never');
+      } else {
+        if (!$this->editing_group() && ($this->initialOpsiId === NULL)) {
+          $this->initialOpsiId = reset($infos)['id'];
+        }
+        $text = '';
+        foreach ($infos as $info) {
+          $text .= htmlentities(sprintf('%s - %s', $info['id'], $info['lastSeen']), ENT_COMPAT, 'UTF-8')."<br/>\n";
+        }
+        $this->lastSeen = $text;
       }
-      $text = '';
-      foreach ($infos as $info) {
-        $text .= htmlentities(sprintf('%s - %s', $info['id'], $info['lastSeen']), ENT_COMPAT, 'UTF-8')."<br/>\n";
-      }
-      $this->lastSeen = $text;
     }
     if (!isset($this->products[$this->fdOpsiServerDn])) {
       $opsi_args  = array('id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript','updateScript','productVersion','packageVersion');
