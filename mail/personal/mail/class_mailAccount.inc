@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2007  Fabian Hicker
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -194,6 +194,15 @@ class mailAccount extends simplePlugin
     /* If mail can be used for login it must be unique */
     if (in_array('mail', explode(',', $config->get_cfg_value('loginAttribute')))) {
       $this->attributesAccess['mail']->setUnique('whole');
+    }
+  }
+
+  function is_this_account($attrs)
+  {
+    if (parent::is_this_account($attrs)) {
+      return TRUE;
+    } else {
+      return !empty($attrs['mail'][0]);
     }
   }
 
