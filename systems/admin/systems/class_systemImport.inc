@@ -96,7 +96,8 @@ class systemImport extends simplePlugin
           $messages[$host['id']] = $error;
           continue;
         }
-        $tabObject = $template->apply();
+        $tabObject  = $template->apply();
+        $baseObject = $tabObject->getBaseObject();
       }
 
       if (class_available('dhcpSystem') && !$tabObject->by_object['dhcpSystem']->is_account) {
