@@ -243,24 +243,24 @@ objectclass ( 1.3.6.1.4.1.38414.16.2.1 NAME 'fdMobilePhone'
 objectclass ( 1.3.6.1.4.1.38414.16.2.2 NAME 'fdWorkstation'
   DESC 'FusionDirectory workstation class'
   MUST ( cn )
-  MAY  ( fdMode ))
+  MAY  ( fdMode $ l $ description ))
 
 objectclass ( 1.3.6.1.4.1.38414.16.2.3 NAME 'fdServer'
   DESC 'FusionDirectory server class'
   MUST ( cn )
-  MAY  ( fdMode ))
+  MAY  ( fdMode $ l $ description ))
 
 objectclass ( 1.3.6.1.4.1.38414.16.2.4 NAME 'fdTerminal'
   DESC 'FusionDirectory terminal class'
   MUST ( cn )
-  MAY  ( fdMode ))
+  MAY  ( fdMode $ l $ description ))
 
 objectclass ( 1.3.6.1.4.1.38414.16.2.5 NAME 'fdPrinter'
   DESC 'FusionDirectory printer class'
   MUST ( cn )
   MAY  ( labeledURI $
   fdPrinterWindowsInfFile $ fdPrinterWindowsDriverDir $ fdPrinterWindowsDriverName $
-  fdPrinterUsers $ fdPrinterAdminUsers))
+  fdPrinterUsers $ fdPrinterAdminUsers $ l $ description ))
 
 # For component we use standard OC "device"
 
