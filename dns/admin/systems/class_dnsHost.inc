@@ -458,7 +458,12 @@ class dnsHost extends simplePlugin
   {
     $messages = array();
     foreach ($zoneDns as $zoneDn) {
-      $tabObject = objects::open($zoneDn, 'dnsZone');
+      try {
+        $tabObject = objects::open($zoneDn, 'dnsZone');
+      } catch (NonExistingLdapNodeException $e) {
+        /* In this case the zone was just deleted/renamed, so nothing to do here, go on */
+        continue;
+      }
       $nbRecords = $tabObject->getBaseObject()->ipRemoved($ips);
       if ($nbRecords > 0) {
         $messages[] = sprintf(
@@ -475,7 +480,11 @@ class dnsHost extends simplePlugin
   {
     $messages = array();
     foreach ($zoneDns as $zoneDn) {
-      $tabObject = objects::open($zoneDn, 'dnsZone');
+      try {
+        $tabObject = objects::open($zoneDn, 'dnsZone');
+      } catch (NonExistingLdapNodeException $e) {
+        continue;
+      }
       $nbRecords = $tabObject->getBaseObject()->cnRemoved($cn);
       if ($nbRecords > 0) {
         $messages[] = sprintf(
