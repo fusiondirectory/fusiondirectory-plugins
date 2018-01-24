@@ -31,7 +31,7 @@ class systemImport extends simplePlugin
 {
   protected $types = array();
 
-  static function massImport ($hosts, $type, $template_dn, $base = NULL, $otherTabs = array())
+  static function massImport ($hosts, $type, $template_dn, $base = NULL)
   {
     global $config;
     if ($base === NULL) {
@@ -149,6 +149,7 @@ class systemImport extends simplePlugin
       }
 
       /* Fill other tabs as asked */
+      $otherTabs = $this->getExtraTabs($this->apiServer, $host);
       foreach ($otherTabs as $tab => $fields) {
         if (isset($tabObject->by_object[$tab])) {
           foreach ($fields as $field => $value) {
@@ -248,7 +249,7 @@ class systemImport extends simplePlugin
       return;
     }
 
-    $this->messages = systemImport::massImport($hosts, $this->type, $this->template_dn, $this->base, $this->getExtraTabs($this->apiServer));
+    $this->messages = systemImport::massImport($hosts, $this->type, $this->template_dn, $this->base);
   }
 
   protected function getHosts($server_dn)
@@ -256,7 +257,7 @@ class systemImport extends simplePlugin
     die('Not implemented');
   }
 
-  protected function getExtraTabs($server_dn)
+  protected function getExtraTabs($server_dn, $host)
   {
     return array();
   }

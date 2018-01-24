@@ -47,12 +47,26 @@ class opsiImport extends systemImport
 
   static function getAttributesInfo($filter = 'objectClass=opsiServer')
   {
-    return parent::getAttributesInfo($filter);
+    $attributesInfo = parent::getAttributesInfo($filter);
+    /* Add our checkbox just before the import button */
+    array_splice(
+      $attributesInfo['import']['attrs'],
+      -1,
+      0,
+      array(
+        new BooleanAttribute(
+          _('Import localboot products'), _('Import localboot product list configured in OPSI in the FD OPSI tab'),
+          'importLocalboots', FALSE,
+          FALSE
+        )
+      )
+    );
+    return $attributesInfo;
   }
 
-  protected function getExtraTabs($server_dn)
+  protected function getExtraTabs($server_dn, $host)
   {
-    return array(
+    $extraTabs = array(
       'sambaSystemTab' => array(
         'is_account'      => TRUE,
       ),
@@ -61,6 +75,14 @@ class opsiImport extends systemImport
         'fdOpsiServerDn'  => $server_dn,
       )
     );
+
+    if ($this->importLocalboots) {
+      if (!empty($host['localboots'])) {
+        $extraTabs['opsiClient']['fdOpsiLocalbootProduct'] = $host['localboots'];
+      }
+    }
+
+    return $extraTabs;
   }
 
   protected function getHosts ($server_dn)
@@ -69,7 +91,7 @@ class opsiImport extends systemImport
     $s_daemon = new supportDaemon();
     if (!$s_daemon->is_available()) {
       msg_dialog::display(
-        _("Argonaut server is not available"), $s_daemon->get_error(), ERROR_DIALOG
+        _('Argonaut server is not available'), $s_daemon->get_error(), ERROR_DIALOG
       );
       return FALSE;
     }
@@ -80,27 +102,58 @@ class opsiImport extends systemImport
         $macAddress = $attrs['macAddress'][0];
       } else {
         msg_dialog::display(
-          _("No mac address"),
-          _("Server $server_dn has no mac address configured in the LDAP"), ERROR_DIALOG
+          _('No mac address'),
+          sprintf(_('Server "%s" has no mac address configured in the LDAP'), $server_dn),
+          ERROR_DIALOG
         );
         return FALSE;
       }
     } else {
       msg_dialog::display(
-        _("Could not find $server_dn in the LDAP"),
+        sprintf(_('Could not find "%s" in the LDAP'), $server_dn),
         msgPool::ldaperror($ldap->get_error(), $server_dn), ERROR_DIALOG
       );
       return FALSE;
     }
-    $res = $s_daemon->append_call('OPSI.host_getObjects', $macAddress, array('args' => array(array(), array('type' => 'OpsiClient'))));
+    $hosts = $s_daemon->append_call('OPSI.host_getObjects', $macAddress, array('args' => array(array(), array('type' => 'OpsiClient'))));
     if ($s_daemon->is_error()) {
       msg_dialog::display(
-        _("Could not update OPSI information"),
+        _('Could not get OPSI information'),
         msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
       );
       return FALSE;
     }
-    return $res;
+
+    if ($this->importLocalboots) {
+      foreach ($hosts as &$host) {
+        $res = $s_daemon->append_call(
+          'OPSI.productOnClient_getObjects',
+          $macAddress,
+          array('args' => array(
+            array(),
+            array(
+              'clientId'    => $host['fqdn'],
+              'type'        => 'ProductOnClient',
+              'productType' => 'LocalbootProduct',
+            )
+          ))
+        );
+        if ($s_daemon->is_error()) {
+          msg_dialog::display(
+            _('Could not get OPSI information'),
+            msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+          );
+          return FALSE;
+        }
+        $host['localboots'] = array();
+        foreach ($res as $productOnClient) {
+          $host['localboots'][] = $productOnClient['productId'].'|'.$productOnClient['actionRequest'];
+        }
+      }
+      unset($host);
+    }
+
+    return $hosts;
   }
 }
 ?>
