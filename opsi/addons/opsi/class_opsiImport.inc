@@ -132,7 +132,7 @@ class opsiImport extends systemImport
           array('args' => array(
             array(),
             array(
-              'clientId'    => $host['fqdn'],
+              'clientId'    => $host['id'],
               'type'        => 'ProductOnClient',
               'productType' => 'LocalbootProduct',
             )
@@ -147,7 +147,11 @@ class opsiImport extends systemImport
         }
         $host['localboots'] = array();
         foreach ($res as $productOnClient) {
-          $host['localboots'][] = $productOnClient['productId'].'|'.$productOnClient['actionRequest'];
+          if ($productOnClient['actionRequest'] != 'none') {
+            $host['localboots'][] = $productOnClient['productId'].'|'.$productOnClient['actionRequest'];
+          } elseif ($productOnClient['installationStatus'] == 'installed') {
+            $host['localboots'][] = $productOnClient['productId'].'|setup';
+          }
         }
       }
       unset($host);
