@@ -31,7 +31,58 @@ class systemImport extends simplePlugin
 {
   protected $types = array();
 
-  static function massImport ($hosts, $type, $template_dn, $base = NULL)
+  static function getAttributesInfo($filter = '')
+  {
+    return array(
+      'import' => array(
+        'template'  => get_template_path('server_import.tpl', TRUE, dirname(__FILE__)),
+        'name'      => _('Import'),
+        'attrs'     => array(
+          new BaseSelectorAttribute(get_ou('workstationRDN')),
+          new ImportServerAttribute(
+            _('Server'), _('The server you wish to import hosts from'),
+            'apiServer', $filter
+          ),
+          new SelectAttribute(
+            _('Type'), _('Type of objects you wish to import'),
+            'type', TRUE,
+            array(), '', NULL
+          ),
+          new SelectAttribute (
+            _('Template'), _('Select a template to apply to imported entries'),
+            'template_dn', FALSE,
+            array(), '', NULL
+          ),
+          new ButtonAttribute (
+            '', '',
+            'import',
+            _('Import')
+          )
+        ),
+      ),
+    );
+  }
+
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
+  {
+    parent::__construct($dn, $object, $parent, $mainTab);
+    $this->messages = FALSE;
+
+    $this->attributesAccess['type']->setSubmitForm('typeChanged');
+    $choices = array();
+    foreach ($this->types as $type) {
+      $infos = objects::infos($type);
+      $choices[$type] = $infos['name'];
+    }
+    asort($choices);
+    $this->attributesAccess['type']->setChoices(array_keys($choices), array_values($choices));
+    $this->attributesAccess['type']->resetToDefault();
+    if (count($choices) == 1) {
+      $this->attributesAccess['type']->setVisible(FALSE);
+    }
+  }
+
+  function massImport ($hosts, $type, $template_dn, $base = NULL)
   {
     global $config;
     if ($base === NULL) {
@@ -174,57 +225,6 @@ class systemImport extends simplePlugin
     return $messages;
   }
 
-  static function getAttributesInfo($filter = '')
-  {
-    return array(
-      'import' => array(
-        'template'  => get_template_path('server_import.tpl', TRUE, dirname(__FILE__)),
-        'name'      => _('Import'),
-        'attrs'     => array(
-          new BaseSelectorAttribute(get_ou('workstationRDN')),
-          new ImportServerAttribute(
-            _('Server'), _('The server you wish to import hosts from'),
-            'apiServer', $filter
-          ),
-          new SelectAttribute(
-            _('Type'), _('Type of objects you wish to import'),
-            'type', TRUE,
-            array(), '', NULL
-          ),
-          new SelectAttribute (
-            _('Template'), _('Select a template to apply to imported entries'),
-            'template_dn', FALSE,
-            array(), '', NULL
-          ),
-          new ButtonAttribute (
-            '', '',
-            'import',
-            _('Import')
-          )
-        ),
-      ),
-    );
-  }
-
-  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
-  {
-    parent::__construct($dn, $object, $parent, $mainTab);
-    $this->messages = FALSE;
-
-    $this->attributesAccess['type']->setSubmitForm('typeChanged');
-    $choices = array();
-    foreach ($this->types as $type) {
-      $infos = objects::infos($type);
-      $choices[$type] = $infos['name'];
-    }
-    asort($choices);
-    $this->attributesAccess['type']->setChoices(array_keys($choices), array_values($choices));
-    $this->attributesAccess['type']->resetToDefault();
-    if (count($choices) == 1) {
-      $this->attributesAccess['type']->setVisible(FALSE);
-    }
-  }
-
   function typeChanged()
   {
     $templates = objects::getTemplates($this->type);
@@ -249,7 +249,7 @@ class systemImport extends simplePlugin
       return;
     }
 
-    $this->messages = systemImport::massImport($hosts, $this->type, $this->template_dn, $this->base);
+    $this->messages = $this->massImport($hosts, $this->type, $this->template_dn, $this->base);
   }
 
   protected function getHosts($server_dn)
