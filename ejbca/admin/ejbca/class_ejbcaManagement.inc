@@ -22,9 +22,10 @@ class ejbcaManagement extends simpleManagement
 {
   protected $objectTypes      = array('ejbcaCertificate');
   protected $autoActions      = FALSE;
-  protected $skipSnapHandler  = TRUE;
 
   protected $autoFilterAttributes = array('dn', 'cn', 'description', 'userCertificate');
+
+  public static $skipSnapshots = TRUE;
 
   public static function plInfo()
   {

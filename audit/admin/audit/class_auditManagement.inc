@@ -32,7 +32,8 @@ class auditManagement extends simpleManagement
   protected $autoActions            = FALSE;
   protected $multiSelect            = FALSE;
   protected $skipCpHandler          = TRUE;
-  protected $skipSnapHandler        = TRUE;
+
+  public static $skipSnapshots = TRUE;
 
   public static function plInfo()
   {

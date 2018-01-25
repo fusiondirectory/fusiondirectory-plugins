@@ -39,7 +39,6 @@ class ServerService extends simpleManagement
   var $skipFooter       = TRUE;
   var $skipHeader       = TRUE;
   var $skipCpHandler    = TRUE;
-  var $skipSnapHandler  = TRUE;
   var $plugins          = array();
   var $current          = "";
   var $dialog           = FALSE;
@@ -50,6 +49,8 @@ class ServerService extends simpleManagement
   var $parent;
   var $acl_category     = "";
   var $acl_base         = "";
+
+  public static $skipSnapshots = TRUE;
 
   var $is_account;
 
