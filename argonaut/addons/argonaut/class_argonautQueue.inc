@@ -29,7 +29,8 @@ class argonautQueue extends simpleManagement
   protected $autoActions      = FALSE;
 
   protected $skipCpHandler    = TRUE;
-  protected $skipSnapHandler  = TRUE;
+
+  public static $skipSnapshots = TRUE;
 
   var $read_only = FALSE;
   var $acl_base;

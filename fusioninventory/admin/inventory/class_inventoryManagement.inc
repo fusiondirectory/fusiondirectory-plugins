@@ -24,11 +24,12 @@ class inventoryManagement extends simpleManagement
   protected $departmentRootVisible  = FALSE;
   protected $baseMode               = FALSE;
   protected $skipCpHandler          = TRUE;
-  protected $skipSnapHandler        = TRUE;
   protected $autoActions            = FALSE;
   protected $autoFilterAttributes   = array('dn', 'cn', 'macAddress');
 
   protected $objectTypes = array('inventory');
+
+  public static $skipSnapshots = TRUE;
 
   static function plInfo()
   {
