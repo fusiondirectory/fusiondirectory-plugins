@@ -147,6 +147,10 @@ class opsiImport extends systemImport
         }
         $host['localboots'] = array();
         foreach ($res as $productOnClient) {
+          if ($productOnClient['productId'] == 'opsi-winst') {
+            /* opsi-winst cannot be installed and has no actions */
+            continue;
+          }
           if ($productOnClient['actionRequest'] != 'none') {
             $host['localboots'][] = $productOnClient['productId'].'|'.$productOnClient['actionRequest'];
           } elseif ($productOnClient['installationStatus'] == 'installed') {
