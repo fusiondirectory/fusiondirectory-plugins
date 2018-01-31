@@ -18,19 +18,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-/* Forces to use a FQDN with final dot */
-class FQDNAttribute extends StringAttribute
-{
-  function validate ()
-  {
-    $regexp = '/^(([a-z0-9\-]{1,63})\.)+$/';
-    $error  = _('"%s" must contain a fully qualified domain name in lowercase and end with a final dot.<br/><br/>Example: dns1.example.com.');
-    if (!preg_match($regexp, $this->value)) {
-      return sprintf($error, $this->getLabel());
-    }
-  }
-}
-
 class LocRecordAttribute extends CompositeAttribute
 {
   function __construct ($description, $ldapName, $attributes, $acl = '', $label = NULL)

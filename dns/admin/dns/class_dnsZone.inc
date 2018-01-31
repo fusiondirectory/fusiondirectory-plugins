@@ -530,10 +530,6 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       }
     }
 
-    $zoneNameWithFinalDot = $zoneName;
-    if (!preg_match('/\.$/', $zoneNameWithFinalDot)) {
-      $zoneNameWithFinalDot .= '.';
-    }
     foreach ($this->reverseZones as $reverseZone) {
       $reverseDn  = 'zoneName='.$reverseZone.','.$zoneDn;
       $ipv6       = preg_match('/ip6/', $reverseZone);
@@ -553,8 +549,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
             'zoneName'            => $reverseZone,
             'dNSClass'            => 'IN',
             'pTRRecord'           => array_map(
-              function ($name) use ($zoneNameWithFinalDot) {
-                return (empty($name) ? '' : $name.'.').$zoneNameWithFinalDot;
+              function ($name) use ($zoneName) {
+                return (empty($name) ? '' : $name.'.').$zoneName;
               },
               $names
             ),
@@ -670,7 +666,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
   }
 }
 
-class ZoneNameAttribute extends StringAttribute
+class FQDNAttribute extends StringAttribute
 {
   function validate ()
   {
@@ -678,7 +674,7 @@ class ZoneNameAttribute extends StringAttribute
       $regexp = '/^(([a-z0-9\-]{1,63})\.)+$/';
       $error  = _('"%s" must contain a domain name in lowercase and end with a final dot.<br/><br/>Example: example.com.');
     } else {
-      $regexp = '/^(([a-z0-9\-]{1,63})\.)*[a-z]{1,63}$/';
+      $regexp = '/^(([a-z0-9\-]{1,63})\.)*[a-z0-9\-]{1,63}$/';
       $error  = _('"%s" must contain a domain name in lowercase.<br/><br/>Example: example.com');
     }
     if (!preg_match($regexp, $this->value)) {
@@ -721,7 +717,7 @@ class dnsZone extends simplePlugin
         'name'  => _('Zone'),
         'attrs' => array(
           new BaseSelectorAttribute(get_ou('dnsRDN')),
-          new ZoneNameAttribute (
+          new FQDNAttribute (
             _('Zone name'), _('Zone name'),
             'zoneName', TRUE
           ),
