@@ -143,3 +143,26 @@ class socialHandler_linkedin extends socialHandler
 
   protected $baseurl = 'https://www.linkedin.com/in';
 }
+
+class socialHandler_orcid extends socialHandler
+{
+  static function getName()
+  {
+    return _('ORCID');
+  }
+
+  protected $baseurl = 'https://orcid.org';
+
+  function linkify($value)
+  {
+    return $this->link($this->baseurl.'/'.$value, $value);
+  }
+
+  function validate($value)
+  {
+    if (!preg_match('/^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$/', $value)) {
+      throw new socialHandlerInvalidValueException(_('ORCID account IDs must look like XXXX-XXXX-XXXX-XXXX where X are digits'));
+    }
+    return $value;
+  }
+}
