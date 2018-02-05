@@ -34,6 +34,7 @@ class expiredUserPostpone extends standAlonePage
     $this->mail_subject     = $config->get_cfg_value('userReminderConfirmationSubject', '');
     $this->mail_body        = $config->get_cfg_value('userReminderConfirmationBody', '');
     $this->from_mail        = $config->get_cfg_value('userReminderEmail');
+    $this->use_alternate    = ($config->get_cfg_value('userReminderUseAlternate', 'TRUE') == 'TRUE');
 
     return TRUE;
   }
@@ -151,10 +152,12 @@ class expiredUserPostpone extends standAlonePage
     $manager_dn     = $userTabs->getBaseObject()->manager;
     if (isset($userTabs->by_object['mailAccount'])) {
       $email_address  = $userTabs->by_object['mailAccount']->mail;
-    } elseif (isset($userTabs->by_object['personalInfo']) && !empty($userTabs->by_object['personalInfo']->fdPrivateMail)) {
-      $email_address  = $userTabs->by_object['personalInfo']->fdPrivateMail;
+    } elseif ($this->use_alternate && isset($userTabs->by_object['mailAccount']) && !empty($userTabs->by_object['mailAccount']->gosaMailAlternateAddress)) {
+      $email_address  = reset($userTabs->by_object['mailAccount']->gosaMailAlternateAddress);
     } elseif (isset($userTabs->by_object['supannAccount']) && !empty($userTabs->by_object['supannAccount']->supannAutreMail)) {
       $email_address  = reset($userTabs->by_object['supannAccount']->supannAutreMail);
+    } elseif (isset($userTabs->by_object['personalInfo']) && !empty($userTabs->by_object['personalInfo']->fdPrivateMail)) {
+      $email_address  = $userTabs->by_object['personalInfo']->fdPrivateMail;
     }
 
     $manager_mail = '';
@@ -167,9 +170,17 @@ class expiredUserPostpone extends standAlonePage
         }
       }
       if (!empty($manager_dn)) {
-        $ldap->cat($manager_dn, array('cn', 'mail'));
-        if (($attrs = $ldap->fetch()) && isset($attrs['mail'][0])) {
-          $manager_mail = $attrs['mail'][0];
+        $ldap->cat($manager_dn, array('cn', 'mail', 'gosaMailAlternateAddress', 'supannAutreMail', 'fdPrivateMail'));
+        if ($attrs = $ldap->fetch()) {
+          if (!empty($attrs['mail'][0])) {
+            $manager_mail = $attrs['mail'][0];
+          } elseif ($this->use_alternate && !empty($attrs['gosaMailAlternateAddress'][0])) {
+            $manager_mail = $attrs['gosaMailAlternateAddress'][0];
+          } elseif (!empty($attrs['supannAutreMail'][0])) {
+            $manager_mail = $attrs['supannAutreMail'][0];
+          } elseif (!empty($attrs['fdPrivateMail'][0])) {
+            $manager_mail = $attrs['fdPrivateMail'][0];
+          }
         }
       }
     }

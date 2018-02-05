@@ -59,6 +59,11 @@ class userReminderConfig extends simplePlugin
             'fdUserReminderEmail', TRUE,
             'to.be@chang.ed'
           ),
+          new BooleanAttribute (
+            _('Allow use of alternate addresses'), _('Whether the field gosaMailAlternateAddress should be used as well to send reminders'),
+            'fdUserReminderUseAlternate', TRUE,
+            TRUE
+          ),
         )
       ),
       'emailppolicy' => array(
