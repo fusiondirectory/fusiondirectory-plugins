@@ -130,9 +130,24 @@ class fdRPCService
   }
 
   /*!
+   * \brief Deactivate a tab of an object
+   *
+   * \param string  $sid  the session id
+   * \param string  $type the object type
+   * \param string  $dn   the object to remove a tab from
+   * \param string  $tab  the tab to remove
+   *
+   * \return An array with errors if any, the object dn otherwise
+   */
+  function removetab($sid, $type, $dn, $tab)
+  {
+  }
+
+  /*!
    * \brief Get all form fields from an object (or an object type)
    *
    * Fields as they appear in the HTML form
+   * Prefer to use getfields when possible
    *
    * \param string  $sid  the session id
    * \param string  $type the object type
@@ -147,6 +162,8 @@ class fdRPCService
 
   /*!
    * \brief Update form values of an object's attributes through POST
+   *
+   * Prefer to use setfields if possible
    *
    * \param string  $sid  the session id
    * \param string  $type the object type
@@ -192,6 +209,37 @@ class fdRPCService
   }
 
   /*!
+   * \brief Add values to an object's attributes and save it
+   *
+   * \param string  $sid    the session id
+   * \param string  $type   the object type
+   * \param string  $dn     the object dn
+   * \param array   $values the values as an associative array of associative arrays. First level keys are tabs, second level keys should be the same keys returned by getfields (without section, directly the attributes).
+   * Values should be formed as the internal attribute expects them. See the concerned attribute type for more information.
+   *
+   * \return An array with errors if any, the object dn otherwise
+   */
+  function addvalues($sid, $type, $dn, $values)
+  {
+  }
+
+  /*!
+   * \brief Delete values from an object's attributes and save it
+   *
+   * \param string  $sid    the session id
+   * \param string  $type   the object type
+   * \param string  $dn     the object dn
+   * \param array   $values the values as an associative array of associative arrays. First level keys are tabs, second level keys should be the same keys returned by getfields (without section, directly the attributes).
+   * Values should be formed as the internal attribute expects them. See the concerned attribute type for more information.
+   *
+   * \return An array with errors if any, the object dn otherwise
+   */
+  function delvalues($sid, $type, $dn, $values)
+  {
+  }
+
+
+  /*!
    * \brief Get needed internal FD fields from a template
    *
    * This returns the fields that needs filling for using this template to create an object.
@@ -223,6 +271,20 @@ class fdRPCService
   function usetemplate($sid, $type, $dn, $values)
   {
   }
+
+  /*!
+   * \brief Delete an object
+   *
+   * \param string  $sid    the session id
+   * \param string  $type   the object type
+   * \param string  $dn     the template dn
+   *
+   * \return An array with errors if any
+   */
+  function delete($sid, $type, $dn)
+  {
+  }
+
 
   /*!
    * \brief Lock or unlock a user
