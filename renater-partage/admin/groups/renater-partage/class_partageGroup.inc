@@ -28,6 +28,7 @@ class partageGroup extends simplePlugin
     return array(
       'plShortName'    => _('Partage'),
       'plDescription'  => _('Partage group options'),
+      'plSmallIcon'    => 'geticon.php?context=applications&icon=renater-partage&size=16',
       'plDepends'      => array('mailGroup'),
       'plObjectType'   => array('group', 'ogroup-user'),
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())

@@ -43,12 +43,13 @@ class mailGroup extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'    => _('Mail'),
-      'plDescription'  => _('Group mail options'),
-      'plSelfModify'   => FALSE,
-      'plPriority'     => 10,
-      'plObjectType'   => array('group', 'ogroup-user'),
-      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plShortName'     => _('Mail'),
+      'plDescription'   => _('Group mail options'),
+      'plIcon'          => 'geticon.php?context=applications&icon=internet-mail&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=internet-mail&size=16',
+      'plPriority'      => 10,
+      'plObjectType'    => array('group', 'ogroup-user'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
