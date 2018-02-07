@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-02-06 18:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -156,11 +156,11 @@ msgstr "Pro kterou distribuci je tento repozitář určen"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:77
 msgid "Path pattern"
-msgstr ""
+msgstr "Vzorec popisu umístění"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:77
 msgid "How this repository is organized (only for RPM repositories)"
-msgstr ""
+msgstr "Jak je tento repozitář uspořádaný (pouze pro RPM repozitáře)"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:160
 msgid "Package repository"
@@ -478,6 +478,8 @@ msgid ""
 "The partition cannot be deleted while it is used in the \"%s\" disk "
 "definition!"
 msgstr ""
+"Oddíl nemůže být smazán když je používán v definici jednotky datového "
+"úložiště „%s“!"
 
 #: admin/fai/class_faiDiskEntry.inc:218
 msgid "Partition table entry"
@@ -505,7 +507,7 @@ msgstr "Název disku"
 
 #: admin/fai/class_faiDiskEntry.inc:239 admin/fai/class_faiPartition.inc:246
 msgid "Short description"
-msgstr ""
+msgstr "Stručný popis"
 
 #: admin/fai/class_faiDiskEntry.inc:243
 msgid "fstab key"
@@ -543,13 +545,14 @@ msgstr ""
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration"
-msgstr ""
+msgstr "V nastavení máte čtyři položky primárního oddílu"
 
 #: admin/fai/class_faiDiskEntry.inc:542
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions"
 msgstr ""
+"Při použití logických oddílů není možné mít více než tři hlavní oddíly"
 
 #: admin/fai/class_faiHook.inc:28
 msgid "Hook"
@@ -628,7 +631,7 @@ msgstr ""
 #: admin/fai/class_faiPackageConfiguration.inc:80
 #, php-format
 msgid "Debconf information for package \"%s\""
-msgstr ""
+msgstr "Debconf informace pro balíček „%s“"
 
 #: admin/fai/class_faiPackageConfiguration.inc:172
 msgid "Warning"
@@ -646,6 +649,7 @@ msgstr ""
 #: admin/fai/class_faiPartition.inc:30
 msgid "Type of sizing - fixed, dynamic or all remaining space"
 msgstr ""
+"Typ určování velikosti – pevná, dynamická nebo všechen zbývající prostor"
 
 #: admin/fai/class_faiPartition.inc:33
 msgid "Fixed"
@@ -693,7 +697,7 @@ msgstr ""
 
 #: admin/fai/class_faiPartition.inc:218
 msgid "FAI partition entry"
-msgstr ""
+msgstr "FAI položka oddílu"
 
 #: admin/fai/class_faiPartition.inc:229
 msgid "Partition"
@@ -726,7 +730,7 @@ msgstr "velikost"
 
 #: admin/fai/class_faiPartition.inc:250
 msgid "Size of this partition"
-msgstr ""
+msgstr "Velikost tohoto oddílu"
 
 #: admin/fai/class_faiPartition.inc:256
 msgid "Flags"
@@ -850,7 +854,7 @@ msgstr "Možnosti vyladění"
 
 #: admin/fai/class_faiPartition.inc:334
 msgid "Filesystem tune options"
-msgstr ""
+msgstr "Předvolby vyladění souborového systému"
 
 #: admin/fai/class_faiPartition.inc:338
 msgid "Mount options"

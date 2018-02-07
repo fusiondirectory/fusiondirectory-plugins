@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-02-06 18:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Rombout de Neef <rombout.deneef@digipolis.be>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -93,48 +93,48 @@ msgstr ""
 msgid "Statistics about ppolicy expired users"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:39
+#: addons/dashboard/class_dashBoardPPolicy.inc:40
 msgid "Expired accounts"
 msgstr "Vervallen accounts"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:44
+#: addons/dashboard/class_dashBoardPPolicy.inc:45
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:8
 msgid "Locked accounts"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:57
+#: addons/dashboard/class_dashBoardPPolicy.inc:58
 msgid "Login"
 msgstr "Inlognaam"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:58
-#: addons/dashboard/class_dashBoardPPolicy.inc:63
+#: addons/dashboard/class_dashBoardPPolicy.inc:59
+#: addons/dashboard/class_dashBoardPPolicy.inc:64
 msgid "Name"
 msgstr "Naam"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:59
-#: addons/dashboard/class_dashBoardPPolicy.inc:65
+#: addons/dashboard/class_dashBoardPPolicy.inc:60
+#: addons/dashboard/class_dashBoardPPolicy.inc:66
 msgid "Phone number"
 msgstr "Telefoonnummer"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:60
+#: addons/dashboard/class_dashBoardPPolicy.inc:61
 msgid "Expiration date"
 msgstr "Vervaldatum"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:64
+#: addons/dashboard/class_dashBoardPPolicy.inc:65
 msgid "Email"
 msgstr "E-mail"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:85
-#: addons/dashboard/class_dashBoardPPolicy.inc:138
+#: addons/dashboard/class_dashBoardPPolicy.inc:86
+#: addons/dashboard/class_dashBoardPPolicy.inc:139
 msgid "Configuration error"
 msgstr "Configuratie fout"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:86
+#: addons/dashboard/class_dashBoardPPolicy.inc:87
 #, php-format
 msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:139
+#: addons/dashboard/class_dashBoardPPolicy.inc:140
 #, php-format
 msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
 msgstr ""
@@ -283,7 +283,7 @@ msgstr "Niet actief"
 
 #: admin/ppolicy/class_ppolicy.inc:107
 msgid "Ignore errors"
-msgstr ""
+msgstr "Negeer fouten"
 
 #: admin/ppolicy/class_ppolicy.inc:107
 msgid "Reject on errors"

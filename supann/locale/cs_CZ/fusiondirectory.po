@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-02-06 18:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -85,7 +85,7 @@ msgstr "SupAnn"
 
 #: personal/supann/class_supannAccount.inc:217
 msgid "SupAnn information management plugin"
-msgstr ""
+msgstr "Zásuvný modul pro správu SupAnn informací"
 
 #: personal/supann/class_supannAccount.inc:234
 msgid "Identity"
@@ -111,7 +111,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:246
 msgid "eduPersonPrincipalName"
-msgstr ""
+msgstr "eduPersonPrincipalName"
 
 #: personal/supann/class_supannAccount.inc:246
 msgid ""
@@ -211,7 +211,7 @@ msgstr "Přiřazení typu entity"
 #: personal/supann/class_supannAccount.inc:306
 #: personal/supann/class_supannAccount.inc:451
 msgid "supannTypeEntiteAffectation"
-msgstr ""
+msgstr "supannTypeEntiteAffectation"
 
 #: personal/supann/class_supannAccount.inc:313
 msgid "Affiliation"
@@ -331,7 +331,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:391
 msgid "supannEntiteAffectation_affect"
-msgstr ""
+msgstr "supannEntiteAffectation_affect"
 
 #: personal/supann/class_supannAccount.inc:395
 msgid "Diploma"
@@ -381,7 +381,7 @@ msgstr "Osobní sbor"
 
 #: personal/supann/class_supannAccount.inc:424
 msgid "supannEmpCorps"
-msgstr ""
+msgstr "supannEmpCorps"
 
 #: personal/supann/class_supannAccount.inc:429
 msgid "Activity"
@@ -397,7 +397,7 @@ msgstr "role"
 
 #: personal/supann/class_supannAccount.inc:443
 msgid "supannRoleEntite"
-msgstr ""
+msgstr "supannRoleEntite"
 
 #: personal/supann/class_supannAccount.inc:447
 msgid "Generic role"
@@ -635,7 +635,7 @@ msgstr "Stručný popis této entity"
 
 #: admin/supannStructures/class_entite.inc:82
 msgid "SUPANN information"
-msgstr ""
+msgstr "SUPANN informace"
 
 #: admin/supannStructures/class_entite.inc:85
 msgid "Entity type"
@@ -661,10 +661,10 @@ msgstr "Nadřazená entita"
 msgid "The parent entity of this entity"
 msgstr "Nadřazená entita této entity"
 
-#: admin/supannStructures/class_entite.inc:98
-msgid "Reference ID"
-msgstr "Referenční identifikátor"
+#: admin/supannStructures/class_entite.inc:99
+msgid "Reference IDs"
+msgstr "Identifikátory reference"
 
-#: admin/supannStructures/class_entite.inc:98
-msgid "SUPANN reference ID of this entity"
-msgstr "Identifikátor SUPANN odkazu této entity"
+#: admin/supannStructures/class_entite.inc:99
+msgid "supannRefId - IDs/links for this entity on other systems"
+msgstr ""

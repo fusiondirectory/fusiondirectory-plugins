@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language-Team: Japanese (https://www.transifex.com/fusiondirectory/teams/12202/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: config/autofs/class_autofsConfig.inc:28
+msgid "Autofs configuration"
+msgstr ""
+
+#: config/autofs/class_autofsConfig.inc:29
+msgid "FusionDirectory autofs plugin configuration"
+msgstr ""
+
+#: config/autofs/class_autofsConfig.inc:42
+msgid "AutoFS"
+msgstr ""
+
+#: config/autofs/class_autofsConfig.inc:45
+msgid "AutoFS RDN"
+msgstr ""
+
+#: config/autofs/class_autofsConfig.inc:45
+msgid "Branch in which automount info will be stored"
+msgstr ""
+
+#: admin/autofs/class_nisObject.inc:31 admin/autofs/class_nisObject.inc:32
+#: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:54
+msgid "Directory"
+msgstr ""
+
+#: admin/autofs/class_nisObject.inc:58 admin/autofs/class_nisMap.inc:53
+msgid "Name"
+msgstr ""
+
+#: admin/autofs/class_nisObject.inc:58
+msgid "Name of this directory"
+msgstr ""
+
+#: admin/autofs/class_nisObject.inc:64
+msgid "Automount entry"
+msgstr ""
+
+#: admin/autofs/class_nisObject.inc:64
+msgid ""
+"The entry of this directory for the automount daemon.\n"
+" For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
+msgstr ""
+
+#: admin/autofs/class_nisObject.inc:68 admin/autofs/class_nisMap.inc:31
+#: admin/autofs/class_nisMap.inc:34 admin/autofs/class_nisMap.inc:49
+msgid "Mount point"
+msgstr ""
+
+#: admin/autofs/class_nisObject.inc:68
+msgid "The mount point this directory will be placed in"
+msgstr ""
+
+#: admin/autofs/class_autofsManagement.inc:31
+msgid "Auto fs"
+msgstr ""
+
+#: admin/autofs/class_autofsManagement.inc:32
+msgid "Auto fs management"
+msgstr ""
+
+#: admin/autofs/class_nisMap.inc:32
+msgid "Autofs mount point"
+msgstr ""
+
+#: admin/autofs/class_nisMap.inc:53
+msgid "Name of the mount point"
+msgstr ""

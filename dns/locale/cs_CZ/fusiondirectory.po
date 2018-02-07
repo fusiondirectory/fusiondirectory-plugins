@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-02-06 18:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: config/dns/class_dnsConfig.inc:45
 msgid "Branch in which DNS zones will be stored"
-msgstr ""
+msgstr "Větev ve které budou ukládány DNS záznamy"
 
 #: config/dns/class_dnsConfig.inc:50
 msgid "Store final dot in domains"
@@ -49,15 +49,15 @@ msgstr "Má F.D ukládat tečku úplně na konci domény?"
 #: admin/dns/class_dnsAcl.inc:30 admin/dns/class_dnsAcl.inc:31
 #: admin/dns/class_dnsAcl.inc:33
 msgid "DNS acl"
-msgstr ""
+msgstr "ACL seznamy pro DNS"
 
 #: admin/dns/class_dnsAcl.inc:47
 msgid "Acl"
-msgstr ""
+msgstr "ACL seznam"
 
 #: admin/dns/class_dnsAcl.inc:51
 msgid "ACL name"
-msgstr ""
+msgstr "Název ACL seznamu"
 
 #: admin/dns/class_dnsAcl.inc:51
 msgid "Name of this acl"
@@ -74,7 +74,7 @@ msgstr ""
 #: admin/dns/class_dnsView.inc:28 admin/dns/class_dnsView.inc:29
 #: admin/dns/class_dnsView.inc:31
 msgid "DNS view"
-msgstr ""
+msgstr "DNS pohled"
 
 #: admin/dns/class_dnsView.inc:45
 msgid "View"
@@ -82,7 +82,7 @@ msgstr "Zobrazit"
 
 #: admin/dns/class_dnsView.inc:49
 msgid "View name"
-msgstr ""
+msgstr "Zobrazit název"
 
 #: admin/dns/class_dnsView.inc:49
 msgid "Name of this view"
@@ -90,30 +90,32 @@ msgstr ""
 
 #: admin/dns/class_dnsView.inc:53
 msgid "Match clients ACL"
-msgstr ""
+msgstr "Hledat shodu ACL seznamů klientů"
 
 #: admin/dns/class_dnsView.inc:53
 msgid ""
 "Name of the ACL to use for the source IP address of the incoming requests"
 msgstr ""
+"Název ACL seznamu který použít pro zdrojovou IP adresu příchozích požadavků"
 
 #: admin/dns/class_dnsView.inc:57
 msgid "Match destinations ACL"
-msgstr ""
+msgstr "Hledat shodu v cílových ACL seznamech"
 
 #: admin/dns/class_dnsView.inc:57
 msgid ""
 "Name of the ACL to use for the destination IP address of the incoming "
 "requests"
 msgstr ""
+"Název ACL seznamu který použít pro cílovou IP adresu pro příchozí požadavky"
 
 #: admin/dns/class_dnsView.inc:61
 msgid "Match recursive only"
-msgstr ""
+msgstr "Hledat shodu pouze rekurzivně"
 
 #: admin/dns/class_dnsView.inc:61
 msgid "Match only recursive queries in this view"
-msgstr ""
+msgstr "V tomto pohledu hledat shodu pouze v rekurzivních dotazech"
 
 #: admin/dns/class_dnsView.inc:66 admin/systems/class_dnsHost.inc:141
 msgid "DNS zones"
@@ -121,7 +123,7 @@ msgstr "DNS zóny"
 
 #: admin/dns/class_dnsView.inc:66
 msgid "DNS zones in this view"
-msgstr ""
+msgstr "DNS zóny v tomto pohledu"
 
 #: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:123
 msgid "DNS"
@@ -139,11 +141,11 @@ msgstr "systémy"
 #: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:307
 #: admin/systems/class_dnsHost.inc:313
 msgid "Could not run ldap2zone"
-msgstr ""
+msgstr "Nedaří se spustit ldap2zone"
 
 #: admin/dns/class_dnsManagement.inc:91
 msgid "More than one server matches the SOA"
-msgstr ""
+msgstr "SOA záznamu odpovídá více než jeden server"
 
 #: admin/dns/class_dnsManagement.inc:93
 msgid "Could not find the primary server"
@@ -151,25 +153,25 @@ msgstr ""
 
 #: admin/dns/class_dnsManagement.inc:106
 msgid "Could not get run ldap2zone"
-msgstr ""
+msgstr "Nedaří se spustit ldap2zone"
 
 #: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
 msgid "Ldap2zone"
-msgstr ""
+msgstr "Ldap2zone"
 
 #: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
 #, php-format
 msgid "Ldap2Zone called for zone \"%s\""
-msgstr ""
+msgstr "Ldap2Zone zavoláno pro zónu „%s“"
 
-#: admin/dns/class_dnsManagement.inc:112 admin/dns/class_dnsZone.inc:372
+#: admin/dns/class_dnsManagement.inc:112 admin/dns/class_dnsZone.inc:368
 #: admin/systems/class_dnsHost.inc:319
 msgid "Error"
 msgstr "chyba"
 
 #: admin/dns/class_dnsManagement.inc:112 admin/systems/class_dnsHost.inc:319
 msgid "Argonaut client needs to be activated to use ldap2zone remotely"
-msgstr ""
+msgstr "Pro použití ldap2zone je třeba, aby byl aktivovaný argonaut klient"
 
 #: admin/dns/class_DnsRecordAttribute.inc:27
 #, php-format
@@ -188,7 +190,7 @@ msgstr "obrácená zóna"
 
 #: admin/dns/class_DnsRecordAttribute.inc:133
 msgid "Reverse zone this record should be in, if any"
-msgstr ""
+msgstr "Reverzní zóna ve které by tento záznam měl být (pokud je)"
 
 #: admin/dns/class_DnsRecordAttribute.inc:166
 msgid "LOC Record"
@@ -251,15 +253,15 @@ msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:234
 msgid "Horizontal precision (meters)"
-msgstr ""
+msgstr "Přesnost vodorovně (metry)"
 
 #: admin/dns/class_DnsRecordAttribute.inc:239
 msgid "Vertical precision (meters)"
-msgstr ""
+msgstr "Přesnost svisle (metry)"
 
 #: admin/dns/class_DnsRecordAttribute.inc:250
 msgid "NAPTR Record"
-msgstr ""
+msgstr "NAPTR záznam"
 
 #: admin/dns/class_DnsRecordAttribute.inc:254
 msgid "Order"
@@ -293,6 +295,9 @@ msgid ""
 "in the record. Flags are single characters from the set [A-Z0-9].  The case "
 "of the alphabetic characters is not significant."
 msgstr ""
+"Příznaky pro ovládání aspektů přepisování a interpretace kolonek v záznamu. "
+"Příznaky jsou jednoznakovové z množiny A až Z (bez diakritiky) a 0 až 9. "
+"Velikost písmen není důležitá."
 
 #: admin/dns/class_DnsRecordAttribute.inc:268
 msgid "Service"
@@ -305,6 +310,9 @@ msgid ""
 "protocol MUST be specified if the flags field states that the NAPTR is "
 "terminal."
 msgstr ""
+"Určuje služby dostupné v této rewrite cestě. Může také určovat konkrétní "
+"protokol který je použit pro komunikaci se službou. JE NUTNÉ zadat protokol "
+"pokud kolonka příznak uvádí, že NAPTR je terminál."
 
 #: admin/dns/class_DnsRecordAttribute.inc:272
 msgid "Regular Expression"
@@ -316,6 +324,8 @@ msgid ""
 "original string held by the client in order to construct the next domain "
 "name to lookup."
 msgstr ""
+"ŘETĚZEC obsahující nahrazující výraz který bude použit na původní řetězec "
+"držený klientem aby vytvořil další doménový název který hledat."
 
 #: admin/dns/class_DnsRecordAttribute.inc:276
 msgid "Replacement"
@@ -338,17 +348,19 @@ msgstr "priorita"
 
 #: admin/dns/class_DnsRecordAttribute.inc:291
 msgid "Priority of the target host, lower value means more preferred"
-msgstr ""
+msgstr "Priorita cílového stroje, nižší hodnota znamená více upřednostňované"
 
 #: admin/dns/class_DnsRecordAttribute.inc:296
 msgid "Weight"
-msgstr ""
+msgstr "Váha"
 
 #: admin/dns/class_DnsRecordAttribute.inc:296
 msgid ""
 "Relative weight for records with the same priority, higher value means more "
 "preferred"
 msgstr ""
+"Relativní důležitost pro záznamy se stejnou prioritou, vyšší hodnota znamená"
+" více upřednostňované"
 
 #: admin/dns/class_DnsRecordAttribute.inc:301
 msgid "Port"
@@ -356,7 +368,7 @@ msgstr "port"
 
 #: admin/dns/class_DnsRecordAttribute.inc:301
 msgid "TCP or UDP port on which the service is to be found"
-msgstr ""
+msgstr "TCP nebo UDP port na kterém se služba nachází"
 
 #: admin/dns/class_DnsRecordAttribute.inc:306
 #: admin/dns/class_DnsRecordAttribute.inc:322
@@ -394,12 +406,16 @@ msgid ""
 "Domain name which specifies a host willing to act as a mail exchange for the"
 " owner name"
 msgstr ""
+"Doménový název který určuje stroj ochotný fungovat jako vyměňovač e-mailů "
+"pro název vlastníka"
 
 #: admin/dns/class_DnsRecordAttribute.inc:360
 msgid ""
 "Domain name which specifies a host which should be authoritative for the "
 "specified class and domain"
 msgstr ""
+"Doménový název který určuje stroj který by měl být autoritativní pro zadanou"
+" třídu a doménu"
 
 #: admin/dns/class_DnsRecordAttribute.inc:369 admin/dns/class_dnsZone.inc:45
 #: admin/dns/class_dnsZone.inc:54
@@ -411,6 +427,8 @@ msgid ""
 "SSHFP record content. Can be obtained using \"ssh-keygen -r some.host.tld\","
 " or sshfp command for instance"
 msgstr ""
+"Obsah SSHFP záznamu. Je možné získat s použitím „ssh-keygen -r "
+"nejaky.stroj.tld“, nebo sshfp příkaz například"
 
 #: admin/dns/class_DnsRecordAttribute.inc:375
 msgid "Redirect to"
@@ -418,7 +436,7 @@ msgstr "Přesměrovat na"
 
 #: admin/dns/class_DnsRecordAttribute.inc:375
 msgid "Domain that this subdomain is an alias of"
-msgstr ""
+msgstr "Doména které je tato poddoména alternativním názvem"
 
 #: admin/dns/class_DnsRecordAttribute.inc:381
 msgid "Content"
@@ -430,7 +448,7 @@ msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:431
 msgid "The entered IP does not match the selected reverse zone"
-msgstr ""
+msgstr "Zadaná IP adresa neodpovídá zvolené reverzní zóně"
 
 #: admin/dns/class_dnsZone.inc:27
 msgid "DNS Record domain and type"
@@ -447,140 +465,151 @@ msgstr ""
 
 #: admin/dns/class_dnsZone.inc:49
 msgid "Subdomain"
-msgstr ""
+msgstr "Poddoména"
 
 #: admin/dns/class_dnsZone.inc:49
 msgid "Relative subdomain name"
-msgstr ""
+msgstr "Relativní název poddomény"
 
 #: admin/dns/class_dnsZone.inc:54
 msgid "DNS Record"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:360 admin/dns/class_dnsZone.inc:411
-#: admin/dns/class_dnsZone.inc:440
+#: admin/dns/class_dnsZone.inc:369
+#, php-format
+msgid "The IP %s does not match the selected reverse %s, it has been ignored"
+msgstr "IP adresa %s neodpovídá zvolené reverzi %s, bude ignorováno"
+
+#: admin/dns/class_dnsZone.inc:471 admin/dns/class_dnsZone.inc:480
+#: admin/dns/class_dnsZone.inc:488 admin/dns/class_dnsZone.inc:496
+#: admin/dns/class_dnsZone.inc:517 admin/dns/class_dnsZone.inc:554
+#: admin/dns/class_dnsZone.inc:560 admin/dns/class_dnsZone.inc:572
 msgid "LDAP error"
 msgstr "chyba LDAPu"
 
-#: admin/dns/class_dnsZone.inc:373
-#, php-format
-msgid "The IP %s does not match the selected reverse %s, it has been ignored"
-msgstr ""
-
-#: admin/dns/class_dnsZone.inc:565
+#: admin/dns/class_dnsZone.inc:667
 #, php-format
 msgid ""
 "\"%s\" must contain a domain name in lowercase and end with a final "
 "dot.<br/><br/>Example: example.com."
 msgstr ""
+"Je třeba, aby „%s“ obsahovalo název domény malými písmeny a končilo "
+"tečkou.<br/><br/>Příklad: example.com."
 
-#: admin/dns/class_dnsZone.inc:568
+#: admin/dns/class_dnsZone.inc:670
 #, php-format
 msgid ""
 "\"%s\" must contain a domain name in lowercase.<br/><br/>Example: "
 "example.com"
 msgstr ""
+"Je třeba, aby „%s“ obsahovalo název domény malými písmeny.<br/><br/>Příklad:"
+" example.com."
 
-#: admin/dns/class_dnsZone.inc:589 admin/dns/class_dnsZone.inc:590
-#: admin/dns/class_dnsZone.inc:592
+#: admin/dns/class_dnsZone.inc:691 admin/dns/class_dnsZone.inc:692
+#: admin/dns/class_dnsZone.inc:694
 msgid "DNS zone"
 msgstr "DNS zóna"
 
-#: admin/dns/class_dnsZone.inc:607
+#: admin/dns/class_dnsZone.inc:709
 msgid "Zone"
 msgstr "Zóna"
 
-#: admin/dns/class_dnsZone.inc:611
+#: admin/dns/class_dnsZone.inc:713
 msgid "Zone name"
 msgstr "název zóny"
 
-#: admin/dns/class_dnsZone.inc:621
+#: admin/dns/class_dnsZone.inc:723
 msgid "Reverse zones"
-msgstr ""
+msgstr "Obrácené zóny"
 
-#: admin/dns/class_dnsZone.inc:621
+#: admin/dns/class_dnsZone.inc:723
 #, php-format
 msgid ""
 "Reverse zones for this zone in the form xx.xx.in-addr.arpa%1$s or "
 "x.x.ip6.arpa%1$s"
 msgstr ""
+"Reverzní zóny pro tuto zónu v podobě xx.xx.in-addr.arpa%1$s nebo "
+"x.x.ip6.arpa%1$s"
 
-#: admin/dns/class_dnsZone.inc:634
+#: admin/dns/class_dnsZone.inc:736
 msgid "SOA record"
 msgstr "SOA záznam"
 
-#: admin/dns/class_dnsZone.inc:637
+#: admin/dns/class_dnsZone.inc:739
 msgid "SOA Record"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:641
+#: admin/dns/class_dnsZone.inc:743
 msgid "Primary DNS server"
 msgstr "Hlavní DNS server"
 
-#: admin/dns/class_dnsZone.inc:641
+#: admin/dns/class_dnsZone.inc:743
 msgid ""
 "Domain name of the name server that was the original or primary source of "
 "data for this zone"
 msgstr ""
+"Doménový název jmenného serveru který byl původním nebo hlavním zdrojem "
+"údajů pro tuto zónu"
 
-#: admin/dns/class_dnsZone.inc:645
+#: admin/dns/class_dnsZone.inc:747
 msgid "Mail address"
 msgstr "e-mailová adresa"
 
-#: admin/dns/class_dnsZone.inc:645
+#: admin/dns/class_dnsZone.inc:747
 msgid ""
 "Domain name which specifies the mailbox of the person responsible for this "
 "zone"
 msgstr ""
+"Doménový název který určuje e-mailovou schránku osoby odpovědné za tuto zónu"
 
-#: admin/dns/class_dnsZone.inc:649
+#: admin/dns/class_dnsZone.inc:751
 msgid "Serial number"
 msgstr "Sériové číslo"
 
-#: admin/dns/class_dnsZone.inc:649
+#: admin/dns/class_dnsZone.inc:751
 msgid "Version number of the original copy of the zone"
-msgstr ""
+msgstr "Číslo verze původní kopie zóny"
 
-#: admin/dns/class_dnsZone.inc:654
+#: admin/dns/class_dnsZone.inc:756
 msgid "Refresh"
 msgstr "obnovit"
 
-#: admin/dns/class_dnsZone.inc:654
+#: admin/dns/class_dnsZone.inc:756
 msgid "Time interval before the zone should be refreshed"
-msgstr ""
+msgstr "Časový interval před kterým by zóna měla být občerstvena"
 
-#: admin/dns/class_dnsZone.inc:659
+#: admin/dns/class_dnsZone.inc:761
 msgid "Retry"
 msgstr "znovu"
 
-#: admin/dns/class_dnsZone.inc:659
+#: admin/dns/class_dnsZone.inc:761
 msgid ""
 "Time interval that should elapse before a failed refresh should be retried"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:664
+#: admin/dns/class_dnsZone.inc:766
 msgid "Expire"
 msgstr "vyprší"
 
-#: admin/dns/class_dnsZone.inc:664
+#: admin/dns/class_dnsZone.inc:766
 msgid ""
 "Time value that specifies the upper limit on the time interval that can "
 "elapse before the zone is no longer authoritative"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:669
+#: admin/dns/class_dnsZone.inc:771
 msgid "TTL"
 msgstr "TTL"
 
-#: admin/dns/class_dnsZone.inc:669
+#: admin/dns/class_dnsZone.inc:771
 msgid "Minimum TTL field that should be exported with any RR from this zone"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:680
+#: admin/dns/class_dnsZone.inc:782
 msgid "Records"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:684
+#: admin/dns/class_dnsZone.inc:786
 msgid "The DNS records for this zone"
 msgstr ""
 
@@ -607,7 +636,7 @@ msgstr "Hlavní servery"
 #: admin/systems/class_dnsHost.inc:245
 #, php-format
 msgid "The DNS records for zone \"%s\""
-msgstr ""
+msgstr "DNS záznamy pro zónu „%s“"
 
 #: admin/systems/class_dnsHost.inc:267
 #, php-format
@@ -617,16 +646,16 @@ msgstr ""
 #: admin/systems/class_dnsHost.inc:364 admin/systems/class_dnsHost.inc:383
 #, php-format
 msgid "%d records were updated from %s to %s in zone %s"
-msgstr ""
+msgstr "%d záznamů bylo aktualizováno z %s do %s v zóně %s"
 
 #: admin/systems/class_dnsHost.inc:396 admin/systems/class_dnsHost.inc:425
 msgid "DNS update"
-msgstr ""
+msgstr "Aktualizace DNS"
 
-#: admin/systems/class_dnsHost.inc:465 admin/systems/class_dnsHost.inc:482
+#: admin/systems/class_dnsHost.inc:470 admin/systems/class_dnsHost.inc:491
 #, php-format
 msgid "%d records were removed in zone %s"
-msgstr ""
+msgstr "%d záznamů bylo odebráno v zóně %s"
 
 #: admin/systems/dnsrecords.tpl.c:2
 msgid "Insufficient rights"
