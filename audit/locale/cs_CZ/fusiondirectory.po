@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-02-06 18:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,20 +24,20 @@ msgstr ""
 
 #: config/audit/class_auditConfig.inc:29
 msgid "FusionDirectory audit plugin configuration"
-msgstr ""
+msgstr "Nastavení auditního zásuvného modulu pro FusionDirectory"
 
 #: config/audit/class_auditConfig.inc:41
 #: admin/audit/class_auditManagement.inc:40
 msgid "Audit"
-msgstr ""
+msgstr "Audit"
 
 #: config/audit/class_auditConfig.inc:44
 msgid "Audit RDN"
-msgstr ""
+msgstr "Relativní rozlišený název auditu"
 
 #: config/audit/class_auditConfig.inc:44
 msgid "Branch in which audit events will be stored"
-msgstr ""
+msgstr "Větev ve které budou ukládány auditní události"
 
 #: config/audit/class_auditConfig.inc:50
 msgid "Actions to audit"
@@ -45,7 +45,7 @@ msgstr ""
 
 #: config/audit/class_auditConfig.inc:50
 msgid "Which actions should be stored in LDAP audit log"
-msgstr ""
+msgstr "Které akce by měly být uloženy v LDAP auditním logu"
 
 #: config/audit/class_auditConfig.inc:57
 msgid "Days to keep"
@@ -53,15 +53,16 @@ msgstr ""
 
 #: config/audit/class_auditConfig.inc:57
 msgid "Number of days of audit to keep in the LDAP when cleaning"
-msgstr ""
+msgstr "Počet dnů po které ponechávat audit v LDAP při čištění"
 
 #: admin/audit/class_auditEvent.inc:53 admin/audit/class_auditEvent.inc:56
 msgid "Audit event"
-msgstr ""
+msgstr "Auditní událost"
 
 #: admin/audit/class_auditEvent.inc:54
 msgid "An event like ldap modification which was registered by audit plugin"
 msgstr ""
+"Úprava-událost v LDAP která byla zaznamenána auditním zásuvným modulem"
 
 #: admin/audit/class_auditEvent.inc:72
 msgid "Event"

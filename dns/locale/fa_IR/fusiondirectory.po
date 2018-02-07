@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-02-06 18:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Persian (Iran) (https://www.transifex.com/fusiondirectory/teams/12202/fa_IR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -162,7 +162,7 @@ msgstr ""
 msgid "Ldap2Zone called for zone \"%s\""
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:112 admin/dns/class_dnsZone.inc:372
+#: admin/dns/class_dnsManagement.inc:112 admin/dns/class_dnsZone.inc:368
 #: admin/systems/class_dnsHost.inc:319
 msgid "Error"
 msgstr "خطا"
@@ -457,130 +457,132 @@ msgstr ""
 msgid "DNS Record"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:360 admin/dns/class_dnsZone.inc:411
-#: admin/dns/class_dnsZone.inc:440
-msgid "LDAP error"
-msgstr "خطای LDAP"
-
-#: admin/dns/class_dnsZone.inc:373
+#: admin/dns/class_dnsZone.inc:369
 #, php-format
 msgid "The IP %s does not match the selected reverse %s, it has been ignored"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:565
+#: admin/dns/class_dnsZone.inc:471 admin/dns/class_dnsZone.inc:480
+#: admin/dns/class_dnsZone.inc:488 admin/dns/class_dnsZone.inc:496
+#: admin/dns/class_dnsZone.inc:517 admin/dns/class_dnsZone.inc:554
+#: admin/dns/class_dnsZone.inc:560 admin/dns/class_dnsZone.inc:572
+msgid "LDAP error"
+msgstr "خطای LDAP"
+
+#: admin/dns/class_dnsZone.inc:667
 #, php-format
 msgid ""
 "\"%s\" must contain a domain name in lowercase and end with a final "
 "dot.<br/><br/>Example: example.com."
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:568
+#: admin/dns/class_dnsZone.inc:670
 #, php-format
 msgid ""
 "\"%s\" must contain a domain name in lowercase.<br/><br/>Example: "
 "example.com"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:589 admin/dns/class_dnsZone.inc:590
-#: admin/dns/class_dnsZone.inc:592
+#: admin/dns/class_dnsZone.inc:691 admin/dns/class_dnsZone.inc:692
+#: admin/dns/class_dnsZone.inc:694
 msgid "DNS zone"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:607
+#: admin/dns/class_dnsZone.inc:709
 msgid "Zone"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:611
+#: admin/dns/class_dnsZone.inc:713
 msgid "Zone name"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:621
+#: admin/dns/class_dnsZone.inc:723
 msgid "Reverse zones"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:621
+#: admin/dns/class_dnsZone.inc:723
 #, php-format
 msgid ""
 "Reverse zones for this zone in the form xx.xx.in-addr.arpa%1$s or "
 "x.x.ip6.arpa%1$s"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:634
+#: admin/dns/class_dnsZone.inc:736
 msgid "SOA record"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:637
+#: admin/dns/class_dnsZone.inc:739
 msgid "SOA Record"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:641
+#: admin/dns/class_dnsZone.inc:743
 msgid "Primary DNS server"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:641
+#: admin/dns/class_dnsZone.inc:743
 msgid ""
 "Domain name of the name server that was the original or primary source of "
 "data for this zone"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:645
+#: admin/dns/class_dnsZone.inc:747
 msgid "Mail address"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:645
+#: admin/dns/class_dnsZone.inc:747
 msgid ""
 "Domain name which specifies the mailbox of the person responsible for this "
 "zone"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:649
+#: admin/dns/class_dnsZone.inc:751
 msgid "Serial number"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:649
+#: admin/dns/class_dnsZone.inc:751
 msgid "Version number of the original copy of the zone"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:654
+#: admin/dns/class_dnsZone.inc:756
 msgid "Refresh"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:654
+#: admin/dns/class_dnsZone.inc:756
 msgid "Time interval before the zone should be refreshed"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:659
+#: admin/dns/class_dnsZone.inc:761
 msgid "Retry"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:659
+#: admin/dns/class_dnsZone.inc:761
 msgid ""
 "Time interval that should elapse before a failed refresh should be retried"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:664
+#: admin/dns/class_dnsZone.inc:766
 msgid "Expire"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:664
+#: admin/dns/class_dnsZone.inc:766
 msgid ""
 "Time value that specifies the upper limit on the time interval that can "
 "elapse before the zone is no longer authoritative"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:669
+#: admin/dns/class_dnsZone.inc:771
 msgid "TTL"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:669
+#: admin/dns/class_dnsZone.inc:771
 msgid "Minimum TTL field that should be exported with any RR from this zone"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:680
+#: admin/dns/class_dnsZone.inc:782
 msgid "Records"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:684
+#: admin/dns/class_dnsZone.inc:786
 msgid "The DNS records for this zone"
 msgstr ""
 
@@ -623,7 +625,7 @@ msgstr ""
 msgid "DNS update"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:465 admin/systems/class_dnsHost.inc:482
+#: admin/systems/class_dnsHost.inc:470 admin/systems/class_dnsHost.inc:491
 #, php-format
 msgid "%d records were removed in zone %s"
 msgstr ""

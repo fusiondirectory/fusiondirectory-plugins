@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-02-06 18:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,34 +22,34 @@ msgstr ""
 msgid "Server did not return auth token"
 msgstr "Le serveur n'a pas retourné le jeton d'authentification"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:114
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:126
 msgid "Partage API answer malformated"
 msgstr "Partage API réponse mal formée"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:118
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:130
 #, php-format
 msgid "Partage API Auth failed: %s"
 msgstr "Partage API Auth a échoué: %s"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:120
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:132
 msgid "Partage API Auth failed with no error message"
 msgstr "Partage API Auth a échoué sans message d'erreur"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:129
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:141
 #, php-format
 msgid "Unable to connect to %s: %s"
 msgstr "Impossible de se connecter à %s: %s"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:131
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:143
 #, php-format
 msgid "Unable to connect to %s"
 msgstr "Impossible de se connecter à %s"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:226
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:238
 msgid "Warning"
 msgstr "Avertissement"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:226
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:238
 #, php-format
 msgid ""
 "Several addresses were given in gosaMailForwardingAddress but only one is "
@@ -58,37 +58,37 @@ msgstr ""
 "Plusieurs adresses ont été fournies dans gosaMailForwardingAddress, mais une"
 " seule est prise en charge par PARTAGE. %s sera envoyé à PARTAGE."
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:458
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:470
 msgid "PARTAGE error"
 msgstr "Erreur PARTAGE"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:459
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:471
 #, php-format
 msgid "Several users have uid \"%s\". Ignoring this member."
 msgstr "Plusieurs utilisateurs ont l'uid \"%s\". j'ignore ce membre."
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:498
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:511
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:510
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:523
 msgid "An account with the same email address already exists in Partage"
 msgstr "Un compte avec la même adresse de messagerie existe déjà dans Partage"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:576
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:588
 msgid "Invalid value in fdRenaterPartageServerDeletionType"
 msgstr "Valeur non valide dans fdRenaterPartageServerDeletionType"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:613
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:625
 msgid "Never"
 msgstr "Jamais"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:620
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:632
 msgid "Last login"
 msgstr "Dernière connexion"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:621
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:633
 msgid "Account status"
 msgstr "Statut du compte"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:621
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:633
 msgid "Unknown"
 msgstr "Inconnu"
 

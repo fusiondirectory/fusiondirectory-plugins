@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-02-06 18:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,11 +26,11 @@ msgstr "Netzwerk"
 msgid "Statistics and various information"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardNetwork.inc:40
+#: addons/dashboard/class_dashBoardNetwork.inc:41
 msgid "DHCP"
 msgstr "DHCP"
 
-#: addons/dashboard/class_dashBoardNetwork.inc:45
+#: addons/dashboard/class_dashBoardNetwork.inc:46
 msgid "DNS"
 msgstr "DNS"
 
@@ -45,43 +45,43 @@ msgstr "Systeme"
 msgid "Statistics and information about systems"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardSystems.inc:42
+#: addons/dashboard/class_dashBoardSystems.inc:43
 msgid "Statistics"
 msgstr "Statistiken"
 
-#: addons/dashboard/class_dashBoardSystems.inc:47
+#: addons/dashboard/class_dashBoardSystems.inc:48
 msgid "Computer name to use by unit"
 msgstr "Computername, der von Einheit genutzt werden soll"
 
-#: addons/dashboard/class_dashBoardSystems.inc:72
+#: addons/dashboard/class_dashBoardSystems.inc:73
 msgid "Workstations"
 msgstr "Arbeitsstationen"
 
-#: addons/dashboard/class_dashBoardSystems.inc:76
+#: addons/dashboard/class_dashBoardSystems.inc:77
 msgid "Servers"
 msgstr "Server"
 
-#: addons/dashboard/class_dashBoardSystems.inc:80
+#: addons/dashboard/class_dashBoardSystems.inc:81
 msgid "Windows Workstations"
 msgstr "Windows Workstations"
 
-#: addons/dashboard/class_dashBoardSystems.inc:84
+#: addons/dashboard/class_dashBoardSystems.inc:85
 msgid "Terminals"
 msgstr "Terminals"
 
-#: addons/dashboard/class_dashBoardSystems.inc:88
+#: addons/dashboard/class_dashBoardSystems.inc:89
 msgid "Printers"
 msgstr "Drucker"
 
-#: addons/dashboard/class_dashBoardSystems.inc:92
+#: addons/dashboard/class_dashBoardSystems.inc:93
 msgid "Phones"
 msgstr "Telefone"
 
-#: addons/dashboard/class_dashBoardSystems.inc:96
+#: addons/dashboard/class_dashBoardSystems.inc:97
 msgid "Components"
 msgstr "Komponenten"
 
-#: addons/dashboard/class_dashBoardSystems.inc:100
+#: addons/dashboard/class_dashBoardSystems.inc:101
 msgid "Mobile phones"
 msgstr "Mobiltelefone"
 
@@ -192,7 +192,7 @@ msgstr "Server"
 #: admin/systems/class_serverGeneric.inc:39
 #: admin/systems/class_serverGeneric.inc:44
 #: admin/systems/class_serverGeneric.inc:45
-#: admin/systems/class_systemImport.inc:171
+#: admin/systems/class_systemImport.inc:181
 msgid "Server"
 msgstr "Server"
 
@@ -217,7 +217,7 @@ msgstr "!"
 #: admin/systems/class_mobilePhoneGeneric.inc:64
 #: admin/systems/class_workstationGeneric.inc:68
 #: admin/systems/services/shares/class_serviceShare.inc:55
-#: admin/systems/system-list.xml:55 admin/systems/class_phoneGeneric.inc:59
+#: admin/systems/system-list.xml:55 admin/systems/class_phoneGeneric.inc:60
 #: admin/systems/class_printGeneric.inc:66
 msgid "Description"
 msgstr "Beschreibung"
@@ -283,7 +283,7 @@ msgstr "Eigenschaften"
 #: admin/systems/class_mobilePhoneGeneric.inc:60
 #: admin/systems/class_workstationGeneric.inc:63
 #: admin/systems/services/shares/class_serviceShare.inc:51
-#: admin/systems/system-list.xml:31 admin/systems/class_phoneGeneric.inc:55
+#: admin/systems/system-list.xml:31 admin/systems/class_phoneGeneric.inc:56
 #: admin/systems/class_printGeneric.inc:62
 msgid "Name"
 msgstr "Name"
@@ -565,26 +565,26 @@ msgstr "Dies wird verhindern dass %s neu installiert wird"
 msgid "IP addresses this system uses (v4 or v6)"
 msgstr ""
 
-#: admin/systems/class_systemImport.inc:72
+#: admin/systems/class_systemImport.inc:76
 #, php-format
 msgid "Could not parse %s"
 msgstr "Konnte %s nicht parsen"
 
-#: admin/systems/class_systemImport.inc:116
+#: admin/systems/class_systemImport.inc:123
 #, php-format
 msgid "No DHCP server found for IPs %s"
 msgstr ""
 
-#: admin/systems/class_systemImport.inc:133
+#: admin/systems/class_systemImport.inc:142
 #, php-format
 msgid "No DNS server found for zone %s"
 msgstr "Kein DNS-Server für Zone %s gefunden"
 
-#: admin/systems/class_systemImport.inc:167
+#: admin/systems/class_systemImport.inc:177
 msgid "Import"
 msgstr "Importieren"
 
-#: admin/systems/class_systemImport.inc:171
+#: admin/systems/class_systemImport.inc:181
 msgid "The server you wish to import hosts from"
 msgstr "Der Server, von dem Sie Hosts importieren wollen"
 
@@ -821,11 +821,11 @@ msgstr "Telefoninformationen"
 msgid "Phone hardware"
 msgstr "Telefon-Hardware"
 
-#: admin/systems/class_phoneGeneric.inc:55
+#: admin/systems/class_phoneGeneric.inc:56
 msgid "The name of the phone"
 msgstr "Der Name des Telefons"
 
-#: admin/systems/class_phoneGeneric.inc:59
+#: admin/systems/class_phoneGeneric.inc:60
 msgid "A short description of the phone"
 msgstr "Eine kurze Beschreibung des Telefons"
 

@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-02-06 18:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,82 +22,82 @@ msgstr ""
 msgid "Server did not return auth token"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:114
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:126
 msgid "Partage API answer malformated"
-msgstr ""
+msgstr "Chybně formulovaná odpověď Partage API"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:118
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:130
 #, php-format
 msgid "Partage API Auth failed: %s"
-msgstr ""
+msgstr "Ověření Partage API se nezdařilo: %s"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:120
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:132
 msgid "Partage API Auth failed with no error message"
-msgstr ""
+msgstr "Ověření partage API se nezdařilo bez chybového hlášení"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:129
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:141
 #, php-format
 msgid "Unable to connect to %s: %s"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:131
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:143
 #, php-format
 msgid "Unable to connect to %s"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:226
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:238
 msgid "Warning"
 msgstr "varování"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:226
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:238
 #, php-format
 msgid ""
 "Several addresses were given in gosaMailForwardingAddress but only one is "
 "supported by PARTAGE. %s will be sent to PARTAGE."
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:458
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:470
 msgid "PARTAGE error"
-msgstr ""
+msgstr "Chyba PARTAGE"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:459
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:471
 #, php-format
 msgid "Several users have uid \"%s\". Ignoring this member."
-msgstr ""
+msgstr "Několik uživatelů má uid „%s“. Toto číslo bude ignorováno."
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:498
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:511
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:510
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:523
 msgid "An account with the same email address already exists in Partage"
-msgstr ""
+msgstr "V Partage už existuje účet se stejnou e-mailovou adresou"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:576
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:588
 msgid "Invalid value in fdRenaterPartageServerDeletionType"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:613
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:625
 msgid "Never"
 msgstr "Nikdy"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:620
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:632
 msgid "Last login"
 msgstr ""
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:621
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:633
 msgid "Account status"
 msgstr "Stav účtu"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:621
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:633
 msgid "Unknown"
 msgstr "neznámé"
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:29
 #: admin/groups/renater-partage/class_partageGroup.inc:29
 msgid "Partage"
-msgstr ""
+msgstr "Partage"
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:30
 msgid "Partage sympa options"
-msgstr ""
+msgstr "Předvolby partage sympa"
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:40
 #: admin/groups/renater-partage/class_partageGroup.inc:41
@@ -130,7 +130,7 @@ msgstr ""
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:52
 #: admin/groups/renater-partage/class_partageGroup.inc:48
 msgid "Whether this group should be hidden from the global catalog"
-msgstr ""
+msgstr "Zda má tato skupina být skryta v globálním katalogu"
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:65
 #: admin/groups/renater-partage/class_partageGroup.inc:64
@@ -148,7 +148,7 @@ msgstr "alternativní adresy"
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:70
 msgid "Alternative mail addresses for the list"
-msgstr ""
+msgstr "Alternativní e-mailová adresa pro konferenci"
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:158
 #, php-format
@@ -177,7 +177,7 @@ msgstr "Nelze odebrat schárnku: %s"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:30
 msgid "Partage group options"
-msgstr ""
+msgstr "Předvolby partage skupiny"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:53
 msgid "Type"
@@ -185,7 +185,7 @@ msgstr "typ"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:53
 msgid "Type of PARTAGE group"
-msgstr ""
+msgstr "Typ PARTAGE skupiny"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:56
 msgid "Distribution list"
@@ -197,16 +197,16 @@ msgstr "skupina"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:59
 msgid "Alert new members"
-msgstr ""
+msgstr "Upozornit nové členy"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:59
 msgid "Send a message to alert new members, they have joined this group"
-msgstr ""
+msgstr "Novým členům poslat zprávu že byli zařazeni do skupiny"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:28
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:29
 msgid "Renater Partage"
-msgstr ""
+msgstr "Renater Partage"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:40
 msgid "Settings"
@@ -218,15 +218,15 @@ msgstr ""
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:44
 msgid "URI to contact the Renater Partage API"
-msgstr ""
+msgstr "URI na které kontaktovat API Renater Partage"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:48
 msgid "User Agent"
-msgstr ""
+msgstr "User Agent"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:48
 msgid "User Agent to use to contact the Renater Partage API"
-msgstr ""
+msgstr "User Agent který použít při kontaktování Renater Partage API"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:53
 msgid "Mailbox deletion"
@@ -237,6 +237,8 @@ msgid ""
 "What to do with the PARTAGE account when mail tab is deactivated or user is "
 "deleted"
 msgstr ""
+"Co dělat s PARTAGE účtem když je karta e-mail deaktivována nebo je účet "
+"uživatele smazán"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:56
 msgid "Delete"
@@ -253,7 +255,7 @@ msgstr "Domény"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:67
 msgid "Domains handled by this Renater Partage server"
-msgstr ""
+msgstr "Domény spravované tímto Renater Partage serverem"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:71
 msgid "Domain"
@@ -277,4 +279,4 @@ msgstr ""
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:79
 msgid "Possible classes of service for this domain, separated by commas"
-msgstr ""
+msgstr "Možné třídy služby pro tuto doménu, oddělované čárkou"

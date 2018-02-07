@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-02-06 18:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -155,11 +155,11 @@ msgstr "Čas"
 #: addons/argonaut/class_argonautAction.inc:81
 #: addons/argonaut/class_argonautAction.inc:84
 msgid "Argonaut task"
-msgstr ""
+msgstr "Argonaut úlohy"
 
 #: addons/argonaut/class_argonautAction.inc:82
 msgid "Schedule an argonaut task"
-msgstr ""
+msgstr "Naplánovat argonaut úlohu"
 
 #: addons/argonaut/class_argonautAction.inc:97
 #: addons/argonaut/class_argonautAction.inc:107
@@ -173,11 +173,11 @@ msgstr "Opakovaná úloha"
 
 #: addons/argonaut/class_argonautAction.inc:111
 msgid "Wether this job should repeat in time"
-msgstr ""
+msgstr "Zda se jedná o opakovanou úlohu"
 
 #: addons/argonaut/class_argonautAction.inc:115
 msgid "How often this task should be repeated"
-msgstr ""
+msgstr "Jak často by měla být tato úloha opakována"
 
 #: addons/argonaut/class_argonautAction.inc:126
 msgid "Days"
@@ -261,15 +261,15 @@ msgstr ""
 
 #: addons/argonaut/class_argonautImportFile.inc:34
 msgid "Imports argonaut tasks from CSV file"
-msgstr ""
+msgstr "Importuje argonaut úlohy z CSV souboru"
 
 #: addons/argonaut/class_argonautImportFile.inc:49
 msgid "Import actions from CSV file"
-msgstr ""
+msgstr "Importovat akce z CSV souboru"
 
 #: addons/argonaut/class_argonautImportFile.inc:53
 msgid "Import a list of task into argonaut"
-msgstr ""
+msgstr "Importovat seznam úloh do argonaut"
 
 #: addons/argonaut/class_argonautImportFile.inc:63
 msgid "Upload"
@@ -285,7 +285,7 @@ msgstr ""
 
 #: addons/argonaut/class_argonautImportFile.inc:122
 msgid "Fix the errors in your CSV file first"
-msgstr ""
+msgstr "Nejprve opravte chyby ve svém CSV souboru"
 
 #: addons/argonaut/class_argonautImportFile.inc:138
 msgid "Infrastructure service"
@@ -478,7 +478,7 @@ msgstr "nastavení DNS pro Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:50
 msgid "Ldap2zone global settings"
-msgstr ""
+msgstr "Globální nastavení pro Ldap2zone"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:53
 msgid "Bind directory"
@@ -524,7 +524,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:85
 msgid "Ldap2zone master settings"
-msgstr ""
+msgstr "Nastavení hlavního ldap2zone"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:88
 msgid "Ignore reverse zone"
@@ -574,7 +574,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:117
 msgid "Manage DNS Slaves"
-msgstr ""
+msgstr "Spravovat podřízená DNS"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
 msgid "zone"
@@ -590,7 +590,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:125
 msgid "Master IP(s) for this zone"
-msgstr ""
+msgstr "Hlavní IP adresy pro tuto zónu"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:129
 msgid "reverses"
@@ -598,11 +598,11 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:129
 msgid "This server should be slave of reverses zones as well"
-msgstr ""
+msgstr "Tento server by měl být také podřízený reverzních zón"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:136
 msgid "DNS slaves"
-msgstr ""
+msgstr "Podřízená DNS"
 
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33
@@ -619,7 +619,7 @@ msgstr "server LTSP (linuxový terminálový server)"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:30
 msgid "Argonaut Fuse"
-msgstr ""
+msgstr "Argonaut Fuse"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:31
 msgid "Argonaut Fuse settings"
@@ -854,7 +854,7 @@ msgstr "skupina objektu"
 
 #: addons/argonaut/import_events.tpl.c:17
 msgid "Available job types: %1"
-msgstr ""
+msgstr "Typy úloh k dispozici: %1"
 
 #: addons/argonaut/import_events.tpl.c:20
 msgid "Timestamp"
