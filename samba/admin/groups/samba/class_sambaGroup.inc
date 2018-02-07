@@ -28,7 +28,8 @@ class sambaGroup extends simplePlugin
     return array(
       'plShortName'   => _('Samba'),
       'plDescription' => _('Samba group settings'),
-      'plSelfModify'  => FALSE,
+      'plIcon'        => 'geticon.php?context=applications&icon=samba&size=48',
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=samba&size=16',
       'plObjectType'  => array('group'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
