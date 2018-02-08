@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-01-08 15:21+0000\n"
+"POT-Creation-Date: 2018-02-07 11:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -46,11 +46,11 @@ msgstr "Nastavení Samba domény"
 #: admin/samba/class_sambaDomain.inc:51
 #: admin/systems/samba/class_sambaSystemTab.inc:44
 msgid "Properties"
-msgstr "vlastnosti"
+msgstr "Vlastnosti"
 
 #: admin/samba/class_sambaDomain.inc:54
 msgid "Domain name"
-msgstr "název domény"
+msgstr "Název domény"
 
 #: admin/samba/class_sambaDomain.inc:54
 msgid "Name of this domain"
@@ -203,70 +203,70 @@ msgstr "Samba"
 msgid "Samba group settings"
 msgstr "Nastavení skupiny pro službu Samba"
 
-#: admin/groups/samba/class_sambaGroup.inc:42
-#: admin/groups/samba/class_sambaGroup.inc:45
+#: admin/groups/samba/class_sambaGroup.inc:43
+#: admin/groups/samba/class_sambaGroup.inc:46
 #: admin/systems/samba/class_sambaSystemTab.inc:53
 #: personal/samba/class_sambaAccount.inc:199
 msgid "Domain"
-msgstr "doména"
+msgstr "Doména"
 
-#: admin/groups/samba/class_sambaGroup.inc:45
+#: admin/groups/samba/class_sambaGroup.inc:46
 msgid "Samba domain"
 msgstr "Samba doména"
 
-#: admin/groups/samba/class_sambaGroup.inc:49
+#: admin/groups/samba/class_sambaGroup.inc:50
 msgid "Samba information"
 msgstr "Informace o Samba"
 
-#: admin/groups/samba/class_sambaGroup.inc:56
+#: admin/groups/samba/class_sambaGroup.inc:57
 msgid "Group type"
 msgstr "Typ skupiny"
 
-#: admin/groups/samba/class_sambaGroup.inc:56
+#: admin/groups/samba/class_sambaGroup.inc:57
 msgid "Samba group type"
 msgstr "typ skupiny Samby"
 
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
+#: admin/groups/samba/class_sambaGroup.inc:61
+#: admin/groups/samba/class_sambaGroup.inc:121
 msgid "Samba group"
 msgstr "skupina v Sambě"
 
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
+#: admin/groups/samba/class_sambaGroup.inc:61
+#: admin/groups/samba/class_sambaGroup.inc:121
 msgid "Domain admins"
-msgstr "správci domény"
+msgstr "Správci domény"
 
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
+#: admin/groups/samba/class_sambaGroup.inc:61
+#: admin/groups/samba/class_sambaGroup.inc:121
 msgid "Domain users"
-msgstr "doménoví uživatelé"
+msgstr "Doménoví uživatelé"
 
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
+#: admin/groups/samba/class_sambaGroup.inc:61
+#: admin/groups/samba/class_sambaGroup.inc:121
 msgid "Domain guests"
 msgstr "doménoví hosté"
 
-#: admin/groups/samba/class_sambaGroup.inc:106
+#: admin/groups/samba/class_sambaGroup.inc:107
 msgid "Configuration error"
-msgstr "chyba v nastavení"
+msgstr "Chyba v nastavení"
 
-#: admin/groups/samba/class_sambaGroup.inc:106
+#: admin/groups/samba/class_sambaGroup.inc:107
 msgid "Cannot find group SID in your configuration!"
 msgstr "Ve vaší konfiguraci nelze nalézt SID skupiny!"
 
-#: admin/groups/samba/class_sambaGroup.inc:120
+#: admin/groups/samba/class_sambaGroup.inc:121
 #, php-format
 msgid "Special group (%d)"
 msgstr "speciální skupina (%d)"
 
-#: admin/groups/samba/class_sambaGroup.inc:133
+#: admin/groups/samba/class_sambaGroup.inc:134
 #: personal/samba/class_sambaAccount.inc:511
 #: personal/samba/class_sambaAccount.inc:537
 #: personal/samba/class_sambaAccount.inc:558
 msgid "Warning"
-msgstr "varování"
+msgstr "Varování"
 
-#: admin/groups/samba/class_sambaGroup.inc:133
+#: admin/groups/samba/class_sambaGroup.inc:134
 #: personal/samba/class_sambaAccount.inc:511
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
 msgstr ""
@@ -284,7 +284,7 @@ msgstr "Informace o počítači s MS Windows"
 #: admin/systems/samba/class_sambaSystemTab.inc:53
 #: personal/samba/class_sambaAccount.inc:199
 msgid "Samba domain name"
-msgstr "název domény Samba"
+msgstr "Název Samba domény"
 
 #: config/samba/class_sambaPluginConfig.inc:29
 msgid "Samba plugin configuration"
@@ -293,7 +293,7 @@ msgstr "Nastavení zásuvného modulu Samba"
 #: config/samba/class_sambaPluginConfig.inc:41
 #: personal/samba/class_sambaAccount.inc:159
 msgid "Samba settings"
-msgstr "nastavení Samby"
+msgstr "Nastavení pro Samba"
 
 #: config/samba/class_sambaPluginConfig.inc:44
 msgid "Samba ID mapping"
@@ -353,13 +353,15 @@ msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:71
 msgid "Activate primary group warning"
-msgstr ""
+msgstr "Varování aktivace hlavní skupiny"
 
 #: config/samba/class_sambaPluginConfig.inc:71
 msgid ""
 "Issue a warning if POSIX primary group cannot be converted to Samba primary "
 "group when activating the Samba tab of a user"
 msgstr ""
+"Vyvolat varování pokud POSIX hlavní skupina nemůže být převedena na Samba "
+"primární skupiny při aktivaci Samba karty uživatele"
 
 #: personal/samba/class_sambaAccount.inc:31
 msgid "Samba Munged Dial"
@@ -382,7 +384,7 @@ msgstr "Písmenko domovského disku"
 #: personal/samba/class_sambaAccount.inc:194
 #: personal/samba/class_sambaAccount.inc:227
 msgid "Home directory path"
-msgstr "Cesta k domovské složce"
+msgstr "Popis umístění domovské složky"
 
 #: personal/samba/class_sambaAccount.inc:194
 #: personal/samba/class_sambaAccount.inc:227
@@ -391,7 +393,7 @@ msgstr "Umístění (v UNC zápisu) domovského disku"
 
 #: personal/samba/class_sambaAccount.inc:203
 msgid "Script path"
-msgstr "cesta ke skriptu"
+msgstr "Popis umístění skriptu"
 
 #: personal/samba/class_sambaAccount.inc:203
 msgid "Login script path"
@@ -400,7 +402,7 @@ msgstr "Cesta ke skriptu po spuštění"
 #: personal/samba/class_sambaAccount.inc:207
 #: personal/samba/class_sambaAccount.inc:232
 msgid "Profile path"
-msgstr "cesta k profilu"
+msgstr "Popis umístění profilu"
 
 #: personal/samba/class_sambaAccount.inc:207
 #: personal/samba/class_sambaAccount.inc:232
@@ -409,7 +411,7 @@ msgstr "Cesta k profilu v UNC zápisu"
 
 #: personal/samba/class_sambaAccount.inc:214
 msgid "Terminal server"
-msgstr "terminálový server"
+msgstr "Terminálový server"
 
 #: personal/samba/class_sambaAccount.inc:218
 msgid "Allow login on terminal server"
@@ -417,7 +419,7 @@ msgstr "povolit přihlašování k terminálovému serveru"
 
 #: personal/samba/class_sambaAccount.inc:237
 msgid "Inherit client config"
-msgstr "zdědit nastavení klienta"
+msgstr "Převzít nastavení klienta"
 
 #: personal/samba/class_sambaAccount.inc:237
 msgid "Inherit client configuration"
@@ -433,7 +435,7 @@ msgstr "Program, který spustit po navázání spojení"
 
 #: personal/samba/class_sambaAccount.inc:245
 msgid "Working directory"
-msgstr "pracovní adresář"
+msgstr "Pracovní složka"
 
 #: personal/samba/class_sambaAccount.inc:245
 msgid "Basic working directory"
@@ -547,7 +549,7 @@ msgstr "možnosti přístupu"
 
 #: personal/samba/class_sambaAccount.inc:308
 msgid "Enforce password change"
-msgstr "vynutit změnu hesla"
+msgstr "Vynutit změnu hesla"
 
 #: personal/samba/class_sambaAccount.inc:308
 msgid "Force the user to change his password"
@@ -559,7 +561,7 @@ msgstr "Heslo je platné stále"
 
 #: personal/samba/class_sambaAccount.inc:313
 msgid "The password will never expire"
-msgstr "Platnost hesla nikdy nevyprší"
+msgstr "Platnost hesla nikdy neskončí"
 
 #: personal/samba/class_sambaAccount.inc:318
 msgid "Login from windows client requires no password"
@@ -587,7 +589,7 @@ msgstr "Změna hesla není dovolena"
 
 #: personal/samba/class_sambaAccount.inc:332
 msgid "Account expiration"
-msgstr "Vypršení platnosti účtu"
+msgstr "Skončení platnosti účtu"
 
 #: personal/samba/class_sambaAccount.inc:332
 msgid "When does the account expire"
@@ -603,7 +605,7 @@ msgstr "Ve kterých časech je dovoleno se připojit"
 
 #: personal/samba/class_sambaAccount.inc:341
 msgid "Edit settings"
-msgstr "upravit nastavení"
+msgstr "Upravit nastavení"
 
 #: personal/samba/class_sambaAccount.inc:357
 msgid "System trust"
@@ -622,6 +624,8 @@ msgstr "Tomuto uživateli povolit připojení pouze na počítače z tohoto sezn
 #, php-format
 msgid "Field \"%s\" is required when \"%s\" is filled! Fill both field or empty them."
 msgstr ""
+"Kolonka „%s“ je vyžadováno pokud je vyplněno „%s“! Vyplňte buď obě nebo ani "
+"jednu z nich."
 
 #: personal/samba/class_sambaAccount.inc:494
 msgid "The windows user manager allows eight clients at maximum!"

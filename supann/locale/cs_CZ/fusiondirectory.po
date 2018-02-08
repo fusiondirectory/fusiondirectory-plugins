@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-01-08 15:21+0000\n"
+"POT-Creation-Date: 2018-02-07 11:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -34,7 +34,7 @@ msgstr "SUPANN instituce"
 
 #: admin/supannStructures/class_etablissement.inc:52
 msgid "Properties"
-msgstr "vlastnosti"
+msgstr "Vlastnosti"
 
 #: admin/supannStructures/class_etablissement.inc:55
 msgid "Root Establishment"
@@ -47,7 +47,7 @@ msgstr "Nastavit tuto instituci jako kořenovou"
 #: admin/supannStructures/class_etablissement.inc:59
 #: admin/supannStructures/class_entite.inc:55
 msgid "Name"
-msgstr "název"
+msgstr "Název"
 
 #: admin/supannStructures/class_etablissement.inc:59
 msgid "The name to write in the o attribute for this Establishment"
@@ -56,7 +56,7 @@ msgstr "Název, který zapsat do atributu o (ó) této instituce"
 #: admin/supannStructures/class_etablissement.inc:63
 #: admin/supannStructures/class_entite.inc:76
 msgid "Description"
-msgstr "popis"
+msgstr "Popis"
 
 #: admin/supannStructures/class_etablissement.inc:63
 msgid "A short description of this Establishment"
@@ -65,7 +65,7 @@ msgstr "Stručný popis této instituce"
 #: admin/supannStructures/class_etablissement.inc:69
 #: admin/supannStructures/class_etablissement.inc:72
 msgid "Location"
-msgstr "umístění"
+msgstr "Umístění"
 
 #: admin/supannStructures/class_etablissement.inc:72
 msgid "Usually the city where this Establishment is"
@@ -73,7 +73,7 @@ msgstr "Obvykle město, ve kterém se tato instituce nachází"
 
 #: admin/supannStructures/class_etablissement.inc:76
 msgid "Address"
-msgstr "adresa"
+msgstr "Adresa"
 
 #: admin/supannStructures/class_etablissement.inc:76
 msgid "The postal address of this Establishment"
@@ -82,7 +82,7 @@ msgstr "Poštovní adresa této instituce"
 #: admin/supannStructures/class_etablissement.inc:80
 #: admin/supannStructures/class_entite.inc:64
 msgid "Telephone"
-msgstr "telefon"
+msgstr "Telefon"
 
 #: admin/supannStructures/class_etablissement.inc:80
 msgid "Phone number for this Establishment"
@@ -171,7 +171,7 @@ msgstr "Chyba souboru"
 #: admin/supannStructures/class_supann.inc:54
 #, php-format
 msgid "Cannot read file: '%s'"
-msgstr "Soubor nelze načíst: \"%s\""
+msgstr "Soubor se nedaří načíst: „%s“"
 
 #: admin/supannStructures/class_entite.inc:31
 #: admin/supannStructures/class_entite.inc:52
@@ -204,7 +204,7 @@ msgstr "Faxové číslo této entity"
 
 #: admin/supannStructures/class_entite.inc:72
 msgid "Postal address"
-msgstr "poštovní adresa"
+msgstr "Poštovní adresa"
 
 #: admin/supannStructures/class_entite.inc:72
 msgid "Postal address of this entity"
@@ -216,7 +216,7 @@ msgstr "Stručný popis této entity"
 
 #: admin/supannStructures/class_entite.inc:82
 msgid "SUPANN information"
-msgstr ""
+msgstr "SUPANN informace"
 
 #: admin/supannStructures/class_entite.inc:85
 msgid "Entity type"
@@ -244,7 +244,7 @@ msgstr "Nadřazená entita této entity"
 
 #: admin/supannStructures/class_entite.inc:99
 msgid "Reference IDs"
-msgstr ""
+msgstr "Identifikátory reference"
 
 #: admin/supannStructures/class_entite.inc:99
 msgid "supannRefId - IDs/links for this entity on other systems"
@@ -349,7 +349,7 @@ msgstr "SupAnn"
 
 #: personal/supann/class_supannAccount.inc:217
 msgid "SupAnn information management plugin"
-msgstr ""
+msgstr "Zásuvný modul pro správu SupAnn informací"
 
 #: personal/supann/class_supannAccount.inc:234
 msgid "Identity"
@@ -375,7 +375,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:246
 msgid "eduPersonPrincipalName"
-msgstr ""
+msgstr "eduPersonPrincipalName"
 
 #: personal/supann/class_supannAccount.inc:246
 msgid ""
@@ -404,7 +404,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:265
 msgid "Contact"
-msgstr "kontakt"
+msgstr "Kontakt"
 
 #: personal/supann/class_supannAccount.inc:269
 msgid "Other phone numbers"
@@ -475,7 +475,7 @@ msgstr "Přiřazení typu entity"
 #: personal/supann/class_supannAccount.inc:306
 #: personal/supann/class_supannAccount.inc:451
 msgid "supannTypeEntiteAffectation"
-msgstr ""
+msgstr "supannTypeEntiteAffectation"
 
 #: personal/supann/class_supannAccount.inc:313
 msgid "Affiliation"
@@ -589,7 +589,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:391
 msgid "supannEntiteAffectation_affect"
-msgstr ""
+msgstr "supannEntiteAffectation_affect"
 
 #: personal/supann/class_supannAccount.inc:395
 msgid "Diploma"
@@ -639,7 +639,7 @@ msgstr "Osobní sbor"
 
 #: personal/supann/class_supannAccount.inc:424
 msgid "supannEmpCorps"
-msgstr ""
+msgstr "supannEmpCorps"
 
 #: personal/supann/class_supannAccount.inc:429
 msgid "Activity"
@@ -651,11 +651,11 @@ msgstr "supannActivite – kategorie profese"
 
 #: personal/supann/class_supannAccount.inc:436
 msgid "Roles"
-msgstr "role"
+msgstr "Role"
 
 #: personal/supann/class_supannAccount.inc:443
 msgid "supannRoleEntite"
-msgstr ""
+msgstr "supannRoleEntite"
 
 #: personal/supann/class_supannAccount.inc:447
 msgid "Generic role"

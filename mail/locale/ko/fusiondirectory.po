@@ -1,0 +1,322 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
+"Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: admin/groups/mail/class_mailGroup.inc:46
+#: config/mail/class_mailPluginConfig.inc:28
+#: personal/mail/class_mailAccount.inc:73
+msgid "Mail"
+msgstr "메일"
+
+#: admin/groups/mail/class_mailGroup.inc:47
+msgid "Group mail options"
+msgstr "그룹 메일 옵션"
+
+#: admin/groups/mail/class_mailGroup.inc:60
+msgid "Information"
+msgstr "정보"
+
+#: admin/groups/mail/class_mailGroup.inc:63
+#: personal/mail/class_mailAccount.inc:99
+msgid "Primary address"
+msgstr "기본주소"
+
+#: admin/groups/mail/class_mailGroup.inc:63
+msgid "The primary mail address"
+msgstr "기본주소"
+
+#: admin/groups/mail/class_mailGroup.inc:67
+#: personal/mail/class_mailAccount.inc:103
+msgid "Server"
+msgstr "서버"
+
+#: admin/groups/mail/class_mailGroup.inc:67
+msgid "Email server"
+msgstr "이메일서버"
+
+#: admin/groups/mail/class_mailGroup.inc:73
+#: personal/mail/class_mailAccount.inc:119
+msgid "Alternative addresses"
+msgstr "대체메일"
+
+#: admin/groups/mail/class_mailGroup.inc:73
+msgid "Alternative mail addresses for the group"
+msgstr "그룹에 대한 대체메일"
+
+#: admin/groups/mail/class_mailGroup.inc:78
+msgid "Forward messages to non group members"
+msgstr "그룹에 속하지 않은 멤버에게 메세지 전달"
+
+#: admin/groups/mail/class_mailGroup.inc:82
+msgid "Only allowed to receive local mail"
+msgstr "로컬메일만 허용"
+
+#: admin/groups/mail/class_mailGroup.inc:82
+msgid ""
+"Whether this group mail is only allowed to receive messages from local "
+"senders"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:160
+#: personal/mail/class_mailAccount.inc:267
+#: personal/mail/class_mailAccount.inc:332
+#, php-format
+msgid "Mail method cannot connect: %s"
+msgstr "메일방식 접속 불가: %s"
+
+#: admin/groups/mail/class_mailGroup.inc:163
+#: personal/mail/class_mailAccount.inc:335
+#, php-format
+msgid "Cannot update mailbox: %s"
+msgstr "메일박스 업데이트 불가 %s"
+
+#: admin/groups/mail/class_mailGroup.inc:184
+#: admin/groups/mail/class_mailGroup.inc:188
+#: personal/mail/class_mailAccount.inc:45
+#: personal/mail/class_mailAccount.inc:267
+#: personal/mail/class_mailAccount.inc:270
+#: personal/mail/class_mailAccount.inc:338
+#: personal/mail/class_mailAccount.inc:349
+#: personal/mail/class_mailAccount.inc:378
+#: personal/mail/class_mailAccount.inc:382
+msgid "Mail error"
+msgstr "메일 에러"
+
+#: admin/groups/mail/class_mailGroup.inc:184
+#: personal/mail/class_mailAccount.inc:378
+#, php-format
+msgid "Cannot remove mailbox, mail method cannot connect: %s"
+msgstr "메일박스 삭제 불가, 메일방식 접속 불가: %s"
+
+#: admin/groups/mail/class_mailGroup.inc:188
+#: personal/mail/class_mailAccount.inc:382
+#, php-format
+msgid "Cannot remove mailbox: %s"
+msgstr "메일박스 삭제 불가: %s"
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:32
+msgid "IMAP/POP3 generic service"
+msgstr "IMAP/POP3 일반적인 서비스"
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:33
+msgid "IMAP/POP3"
+msgstr "IMAP/POP3"
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:33
+msgid "Services"
+msgstr "서비스"
+
+#: config/mail/class_mailPluginConfig.inc:29
+msgid "Mail plugin configuration"
+msgstr "메일 플러그인 설정"
+
+#: config/mail/class_mailPluginConfig.inc:41
+#: personal/mail/class_mailAccount.inc:74
+msgid "Mail settings"
+msgstr "메일 설정"
+
+#: config/mail/class_mailPluginConfig.inc:44
+msgid "Account identification attribute"
+msgstr "계정 속성"
+
+#: config/mail/class_mailPluginConfig.inc:45
+msgid "Which attribute will be used to create accounts."
+msgstr "계정 생성에 사용되는 속성"
+
+#: config/mail/class_mailPluginConfig.inc:50
+msgid "Mail user template"
+msgstr "메일 사용자 템플릿"
+
+#: config/mail/class_mailPluginConfig.inc:51
+msgid "Override the user account creation syntax."
+msgstr "계정생성 문법 재정의"
+
+#: config/mail/class_mailPluginConfig.inc:55
+msgid "Mail folder template"
+msgstr "메일 폴더 템플릿"
+
+#: config/mail/class_mailPluginConfig.inc:56
+msgid "Override the methods default account creation syntax."
+msgstr "기본 계정 생성 구문 재정의"
+
+#: config/mail/class_mailPluginConfig.inc:60
+msgid "Use cyrus UNIX style"
+msgstr "cyrus 유닉스 방식 사용"
+
+#: config/mail/class_mailPluginConfig.inc:61
+msgid ""
+"Determines if 'foo/bar' or 'foo.bar' should be uses as namespaces in IMAP."
+msgstr "IMAP의 네임스페이스로 'foo/bar' 또는 'foo.bar' 중 결정하시오."
+
+#: config/mail/class_mailPluginConfig.inc:65
+msgid "Delete mailbox on account deletion"
+msgstr "계정 삭제 시 메일박스 삭제"
+
+#: config/mail/class_mailPluginConfig.inc:66
+msgid ""
+"Determines if the mailbox should be removed from your IMAP server after the "
+"account is deleted in LDAP."
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:71
+msgid "Cyrus autocreate folders"
+msgstr "Cyrus 자동생성 폴더"
+
+#: config/mail/class_mailPluginConfig.inc:72
+msgid ""
+"List of personal IMAP folders that should be created along initial account "
+"creation."
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:77
+msgid "IMAP timeout"
+msgstr "IMAP 타임아웃"
+
+#: config/mail/class_mailPluginConfig.inc:78
+msgid "Sets the connection timeout for imap actions."
+msgstr "imap의 접속 타임아웃 시간 설정"
+
+#: config/mail/class_mailPluginConfig.inc:83
+msgid "Shared prefix"
+msgstr "공유된 prefix"
+
+#: config/mail/class_mailPluginConfig.inc:84
+msgid "Prefix to add for mail shared folders."
+msgstr "메일 공유폴더의 추가되는 prefix"
+
+#: personal/mail/class_mailAccount.inc:45
+#, php-format
+msgid "Cannot read quota settings: %s"
+msgstr "Quota 설정 읽기 불가: %s"
+
+#: personal/mail/class_mailAccount.inc:55
+msgid "Quota usage"
+msgstr "Quota 사용량"
+
+#: personal/mail/class_mailAccount.inc:56
+msgid "Part of the quota which is used"
+msgstr "사용된 quota 부분"
+
+#: personal/mail/class_mailAccount.inc:96
+msgid "Mail account"
+msgstr "메일 계정"
+
+#: personal/mail/class_mailAccount.inc:99
+msgid "Primary mail address"
+msgstr "기본메일주소"
+
+#: personal/mail/class_mailAccount.inc:103
+msgid "Specify the mail server where the user will be hosted on"
+msgstr "호스팅 중인 메일서버를 지정하시오."
+
+#: personal/mail/class_mailAccount.inc:108
+msgid "Quota size"
+msgstr "Quota 크기"
+
+#: personal/mail/class_mailAccount.inc:115
+msgid "Other addresses and redirections"
+msgstr "기타 주소 및 전달"
+
+#: personal/mail/class_mailAccount.inc:119
+msgid "List of alternative mail addresses"
+msgstr "대체메일주소 리스트"
+
+#: personal/mail/class_mailAccount.inc:124
+msgid "Forward messages to"
+msgstr "메세지 전달"
+
+#: personal/mail/class_mailAccount.inc:124
+msgid "Addresses to which messages should be forwarded"
+msgstr "메세지가 전달될 주소"
+
+#: personal/mail/class_mailAccount.inc:130
+#: personal/mail/class_mailAccount.inc:149
+msgid "Vacation message"
+msgstr "휴가 메세지"
+
+#: personal/mail/class_mailAccount.inc:133
+msgid "Activate vacation message"
+msgstr "휴가 메세지 활성화"
+
+#: personal/mail/class_mailAccount.inc:134
+msgid ""
+"Select to automatically response with the vacation message defined below"
+msgstr "아래에서 자동 응답될 휴가메세지를 선택하시오"
+
+#: personal/mail/class_mailAccount.inc:139
+msgid "from"
+msgstr "부터"
+
+#: personal/mail/class_mailAccount.inc:144
+msgid "till"
+msgstr "까지"
+
+#: personal/mail/class_mailAccount.inc:155
+msgid "Advanced mail options"
+msgstr "추가 메일 옵션"
+
+#: personal/mail/class_mailAccount.inc:163
+msgid "User is only allowed to send and receive local mails"
+msgstr "사용자는 로컬 송신, 수신만 허용됩니다."
+
+#: personal/mail/class_mailAccount.inc:164
+msgid "Select if user can only send and receive inside his own domain"
+msgstr "사용자가 속한 도메인 내일에서 송신 및 수신이 되도록 선택"
+
+#: personal/mail/class_mailAccount.inc:169
+msgid "No delivery to own mailbox"
+msgstr "메일박스로 전달할 게 없음."
+
+#: personal/mail/class_mailAccount.inc:170
+msgid "Select if you want to forward mails without getting own copies of them"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:270
+#, php-format
+msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
+msgstr ""
+"메일박스 \"%s\"는 메일서버에 존재하지 않습니다.\n"
+"%s"
+
+#: personal/mail/class_mailAccount.inc:338
+#, php-format
+msgid "Cannot write quota settings: %s"
+msgstr "quota 설정을 쓸 수 없음: %s"
+
+#: personal/mail/class_mailAccount.inc:349
+#, php-format
+msgid "Mail error saving sieve settings: %s"
+msgstr "sieve 설정 저장 메일 오류: %s"
+
+#: personal/mail/class_mail-methods.inc:144
+msgid "Configuration error"
+msgstr "설정 오류"
+
+#: personal/mail/class_mail-methods.inc:145
+#, php-format
+msgid "The configured mail attribute '%s' is unsupported!"
+msgstr "설정된 메일 속성'%s'은 지원되지 않습니다!"
+
+#: personal/mail/class_mail-methods.inc:703
+msgid "Unknown"
+msgstr "알 수 없음"
+
+#: personal/mail/class_mail-methods.inc:705
+msgid "Unlimited"
+msgstr "제한없음"
