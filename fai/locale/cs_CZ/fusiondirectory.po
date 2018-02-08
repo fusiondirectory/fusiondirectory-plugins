@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-01-08 15:21+0000\n"
+"POT-Creation-Date: 2018-02-07 11:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2017\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: admin/fai/class_faiVariable.inc:28
 msgid "Variable"
-msgstr "proměnná"
+msgstr "Proměnná"
 
 #: admin/fai/class_faiVariable.inc:29 admin/fai/class_faiVariable.inc:32
 msgid "FAI variable"
@@ -32,14 +32,14 @@ msgstr "proměnná pro FAI"
 #: admin/fai/class_faiTemplateEntry.inc:139
 #: admin/fai/class_faiPartitionTable.inc:309
 msgid "Properties"
-msgstr "vlastnosti"
+msgstr "Vlastnosti"
 
 #: admin/fai/class_faiVariable.inc:51 admin/fai/class_faiScript.inc:53
 #: admin/fai/class_faiProfile.inc:52 admin/fai/class_faiPackage.inc:399
 #: admin/fai/class_faiHook.inc:51 admin/fai/class_faiTemplate.inc:169
 #: admin/fai/class_faiPartitionTable.inc:312
 msgid "Class name"
-msgstr "název třídy"
+msgstr "Název třídy"
 
 #: admin/fai/class_faiVariable.inc:51 admin/fai/class_faiScript.inc:53
 #: admin/fai/class_faiPackage.inc:399 admin/fai/class_faiHook.inc:51
@@ -55,7 +55,7 @@ msgstr "Název třídy proměnných"
 #: admin/fai/class_faiTemplateEntry.inc:146
 #: admin/fai/class_faiPartitionTable.inc:316
 msgid "Description"
-msgstr "popis"
+msgstr "Popis"
 
 #: admin/fai/class_faiVariable.inc:55 admin/fai/class_faiScript.inc:57
 #: admin/fai/class_faiProfile.inc:56 admin/fai/class_faiPackage.inc:403
@@ -66,7 +66,7 @@ msgstr "Stručný popis třídy"
 
 #: admin/fai/class_faiVariable.inc:61
 msgid "Variables"
-msgstr "proměnné"
+msgstr "Proměnné"
 
 #: admin/fai/class_faiVariable.inc:65 admin/fai/class_faiScript.inc:67
 #: admin/fai/class_faiHook.inc:65
@@ -80,7 +80,7 @@ msgstr "Proměnné v této třídě"
 #: admin/fai/class_faiPartition.inc:240 admin/fai/class_faiScript.inc:71
 #: admin/fai/class_faiHook.inc:69
 msgid "Name"
-msgstr "název"
+msgstr "Název"
 
 #: admin/fai/class_faiVariable.inc:69 admin/fai/class_faiScript.inc:71
 #: admin/fai/class_faiHook.inc:69
@@ -94,7 +94,7 @@ msgstr "Stručný popis proměnné"
 
 #: admin/fai/class_faiVariable.inc:77
 msgid "Content"
-msgstr "obsah"
+msgstr "Obsah"
 
 #: admin/fai/class_faiVariable.inc:77
 msgid "The content of the variable"
@@ -115,7 +115,7 @@ msgstr "zachovat"
 #: admin/fai/class_faiDiskEntry.inc:145 admin/systems/class_faiLogView.inc:201
 #: admin/systems/class_faiLogView.inc:243
 msgid "Error"
-msgstr "chyba"
+msgstr "Chyba"
 
 #: admin/fai/class_faiDiskEntry.inc:146
 #, php-format
@@ -123,6 +123,8 @@ msgid ""
 "The partition cannot be deleted while it is used in the \"%s\" disk "
 "definition!"
 msgstr ""
+"Oddíl nemůže být smazán když je používán v definici jednotky datového "
+"úložiště „%s“!"
 
 #: admin/fai/class_faiDiskEntry.inc:218
 msgid "Partition table entry"
@@ -134,7 +136,7 @@ msgstr "položka tabulky rozdělení úložiště pro FAI"
 
 #: admin/fai/class_faiDiskEntry.inc:230 admin/fai/class_faiDiskEntry.inc:246
 msgid "Device"
-msgstr "zařízení"
+msgstr "Zařízení"
 
 #: admin/fai/class_faiDiskEntry.inc:233
 msgid "Disk name"
@@ -142,7 +144,7 @@ msgstr "Název disku"
 
 #: admin/fai/class_faiDiskEntry.inc:239 admin/fai/class_faiPartition.inc:246
 msgid "Short description"
-msgstr "Krátký popis"
+msgstr "Stručný popis"
 
 #: admin/fai/class_faiDiskEntry.inc:243
 msgid "fstab key"
@@ -185,13 +187,14 @@ msgstr "Oddíly v této třídě"
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration"
-msgstr ""
+msgstr "V nastavení máte čtyři položky primárního oddílu"
 
 #: admin/fai/class_faiDiskEntry.inc:542
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions"
 msgstr ""
+"Při použití logických oddílů není možné mít více než tři hlavní oddíly"
 
 #: admin/fai/packageSelect/selectPackage-list.xml:11
 msgid "Please select the desired entries"
@@ -200,11 +203,11 @@ msgstr "vyberte prosím požadované položky"
 #: admin/fai/packageSelect/selectPackage-list.xml:15
 #: admin/fai/class_faiPackage.inc:376
 msgid "Package"
-msgstr "balíček"
+msgstr "Balíček"
 
 #: admin/fai/packageSelect/selectPackage-list.xml:48
 msgid "Version"
-msgstr "verze"
+msgstr "Verze"
 
 #: admin/fai/packageSelect/class_filterFAIPackages.inc:41
 #: admin/fai/packageSelect/class_filterFAIPackages.inc:46
@@ -216,6 +219,7 @@ msgstr "Služba infrastruktury"
 #: admin/fai/class_faiPartition.inc:30
 msgid "Type of sizing - fixed, dynamic or all remaining space"
 msgstr ""
+"Typ určování velikosti – pevná, dynamická nebo všechen zbývající prostor"
 
 #: admin/fai/class_faiPartition.inc:33
 msgid "Fixed"
@@ -263,7 +267,7 @@ msgstr "Položka oddílu"
 
 #: admin/fai/class_faiPartition.inc:218
 msgid "FAI partition entry"
-msgstr ""
+msgstr "FAI položka oddílu"
 
 #: admin/fai/class_faiPartition.inc:229
 msgid "Partition"
@@ -271,20 +275,20 @@ msgstr "Oddíl"
 
 #: admin/fai/class_faiPartition.inc:234
 msgid "Type"
-msgstr "typ"
+msgstr "Typ"
 
 #: admin/fai/class_faiPartition.inc:234
 msgid "Partition type"
-msgstr "typ oddílu"
+msgstr "Typ oddílu"
 
 #: admin/fai/class_faiPartition.inc:237 admin/fai/class_faiPartition.inc:374
 msgid "Primary"
-msgstr "hlavní"
+msgstr "Hlavní"
 
 #: admin/fai/class_faiPartition.inc:237 admin/fai/class_faiPartition.inc:371
 #: admin/fai/class_faiPartition.inc:375
 msgid "Logical"
-msgstr "logický"
+msgstr "Logická"
 
 #: admin/fai/class_faiPartition.inc:240
 msgid "Partition name"
@@ -292,11 +296,11 @@ msgstr "Název oddílu"
 
 #: admin/fai/class_faiPartition.inc:250
 msgid "Size"
-msgstr "velikost"
+msgstr "Velikost"
 
 #: admin/fai/class_faiPartition.inc:250
 msgid "Size of this partition"
-msgstr "Velikost oddílu"
+msgstr "Velikost tohoto oddílu"
 
 #: admin/fai/class_faiPartition.inc:256
 msgid "Flags"
@@ -432,7 +436,7 @@ msgstr "Možnosti vyladění"
 
 #: admin/fai/class_faiPartition.inc:334
 msgid "Filesystem tune options"
-msgstr ""
+msgstr "Předvolby vyladění souborového systému"
 
 #: admin/fai/class_faiPartition.inc:338
 msgid "Mount options"
@@ -470,7 +474,7 @@ msgstr "Pole RAID 0 může obsahovat pouze a jedině dva oddíly!"
 #: admin/fai/class_faiScript.inc:30 admin/fai/class_faiScript.inc:84
 #: admin/fai/class_faiHook.inc:85
 msgid "Script"
-msgstr "skript"
+msgstr "Skript"
 
 #: admin/fai/class_faiScript.inc:31 admin/fai/class_faiScript.inc:34
 msgid "FAI script"
@@ -478,11 +482,11 @@ msgstr "skript FAI"
 
 #: admin/fai/class_faiScript.inc:63
 msgid "Scripts"
-msgstr "skripty"
+msgstr "Skripty"
 
 #: admin/fai/class_faiScript.inc:79
 msgid "Priority"
-msgstr "priorita"
+msgstr "Priorita"
 
 #: admin/fai/class_faiScript.inc:79
 msgid "Priority of this script (smaller is done first)"
@@ -495,7 +499,7 @@ msgstr "Skript samotný"
 
 #: admin/fai/class_faiProfile.inc:30
 msgid "Profile"
-msgstr "profil"
+msgstr "Profil"
 
 #: admin/fai/class_faiProfile.inc:31
 msgid "FAI profile"
@@ -529,11 +533,11 @@ msgstr "Nastavit volby debconf pro balíček"
 #: admin/fai/class_faiPackageConfiguration.inc:80
 #, php-format
 msgid "Debconf information for package \"%s\""
-msgstr ""
+msgstr "Debconf informace pro balíček „%s“"
 
 #: admin/fai/class_faiPackageConfiguration.inc:172
 msgid "Warning"
-msgstr "varování"
+msgstr "Varování"
 
 #: admin/fai/class_faiPackageConfiguration.inc:173
 #, php-format
@@ -579,12 +583,12 @@ msgstr "FAI balíček"
 
 #: admin/fai/class_faiPackage.inc:409 admin/systems/class_faiStartup.inc:103
 msgid "Repository"
-msgstr "repozitář"
+msgstr "Repozitář"
 
 #: admin/fai/class_faiPackage.inc:412 admin/systems/class_faiStartup.inc:91
 #: admin/systems/services/repository/class_serviceRepository.inc:40
 msgid "Release"
-msgstr "vydání"
+msgstr "Vydání"
 
 #: admin/fai/class_faiPackage.inc:412
 msgid "Debian release concerned"
@@ -609,7 +613,7 @@ msgstr "Způsob kterým mají být nainstalovány balíčky z tohoto seznamu"
 
 #: admin/fai/class_faiPackage.inc:431
 msgid "Packages"
-msgstr "balíčky"
+msgstr "Balíčky"
 
 #: admin/fai/class_faiPackage.inc:435
 msgid "Packages in this class"
@@ -646,7 +650,7 @@ msgstr "Hned několik souborů se vyskytuje v tomto umístění: %s"
 
 #: admin/fai/class_faiTemplate.inc:146
 msgid "Template"
-msgstr "šablona"
+msgstr "Šablona"
 
 #: admin/fai/class_faiTemplate.inc:147 admin/fai/class_faiTemplate.inc:150
 msgid "FAI template"
@@ -662,7 +666,7 @@ msgstr "Soubory se šablonami"
 
 #: admin/fai/class_faiTemplate.inc:183
 msgid "Template files in this class"
-msgstr "Soubory šablon v této třídě"
+msgstr "Soubory se šablonami v této třídě"
 
 #: admin/fai/class_faiManagement.inc:117 admin/fai/class_faiManagement.inc:122
 #: admin/systems/class_faiStartup.inc:64 config/fai/class_faiConfig.inc:41
@@ -695,7 +699,7 @@ msgstr "Stručný popis souboru"
 
 #: admin/fai/class_faiTemplateEntry.inc:155
 msgid "Template attributes"
-msgstr "vlastnosti šablony"
+msgstr "Atributy šablony"
 
 #: admin/fai/class_faiTemplateEntry.inc:159
 msgid "Template file content"
@@ -711,15 +715,15 @@ msgstr "Vlastník a skupina souboru"
 
 #: admin/fai/class_faiTemplateEntry.inc:166
 msgid "Owner"
-msgstr "vlastník"
+msgstr "Vlastník"
 
 #: admin/fai/class_faiTemplateEntry.inc:166
 msgid "File owner"
-msgstr "vlastník souboru"
+msgstr "Vlastník souboru"
 
 #: admin/fai/class_faiTemplateEntry.inc:171
 msgid "Group"
-msgstr "skupina"
+msgstr "Skupina"
 
 #: admin/fai/class_faiTemplateEntry.inc:171
 msgid "File group"
@@ -727,7 +731,7 @@ msgstr "Skupina souboru"
 
 #: admin/fai/class_faiTemplateEntry.inc:180
 msgid "Access"
-msgstr "přístup"
+msgstr "Přístup"
 
 #: admin/fai/class_faiTemplateEntry.inc:180
 msgid "Access rights"
@@ -743,7 +747,7 @@ msgstr "Přidat LVM"
 
 #: admin/fai/class_faiPartitionTable.inc:289
 msgid "Partition table"
-msgstr "tabulka rozdělení úložiště"
+msgstr "Tabulka rozdělení úložiště"
 
 #: admin/fai/class_faiPartitionTable.inc:290
 #: admin/fai/class_faiPartitionTable.inc:293
@@ -764,11 +768,11 @@ msgstr "Seřadit vzestupně"
 
 #: admin/systems/class_faiLogView.inc:71
 msgid "File"
-msgstr "soubor"
+msgstr "Soubor"
 
 #: admin/systems/class_faiLogView.inc:72
 msgid "Date"
-msgstr "datum"
+msgstr "Datum"
 
 #: admin/systems/class_faiLogView.inc:149
 #: admin/systems/class_faiLogView.inc:152
@@ -802,7 +806,7 @@ msgstr "Zvolený soubor: %s"
 
 #: admin/systems/class_faiStartup.inc:65
 msgid "Full automated installation"
-msgstr "Plně samočinná instalace"
+msgstr "Plně automatizovaná instalace"
 
 #: admin/systems/class_faiStartup.inc:83
 msgid "FAI settings"
@@ -839,7 +843,7 @@ msgstr "Adresa repozitáře"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:35
 msgid "Parent server"
-msgstr "nadřazený server"
+msgstr "Nadřazený server"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:35
 msgid "Parent repository server"
@@ -888,11 +892,11 @@ msgstr "Pro kterou distribuci je tento repozitář určen"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:77
 msgid "Path pattern"
-msgstr ""
+msgstr "Vzorec popisu umístění"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:77
 msgid "How this repository is organized (only for RPM repositories)"
-msgstr ""
+msgstr "Jak je tento repozitář uspořádaný (pouze pro RPM repozitáře)"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:161
 msgid "Package repository"
@@ -921,7 +925,7 @@ msgstr "Nastavení dohledování v Argonaut FAI"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:43
 msgid "Port"
-msgstr "port"
+msgstr "Port"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:43
 msgid "The port argonaut-fai-monitor should listen on. Default is 4711."
@@ -930,7 +934,7 @@ msgstr ""
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:48
 msgid "Timeout"
-msgstr "časový limit"
+msgstr "Časový limit"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:48
 msgid "The timeout for bad clients. 0 to disable."

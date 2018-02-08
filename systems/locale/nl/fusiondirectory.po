@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-01-08 15:21+0000\n"
+"POT-Creation-Date: 2018-02-07 11:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2016\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -35,7 +35,7 @@ msgstr "Hardware van de telefoon"
 
 #: admin/systems/class_phoneGeneric.inc:52
 #: admin/systems/class_printGeneric.inc:58
-#: admin/systems/class_workstationGeneric.inc:59
+#: admin/systems/class_workstationGeneric.inc:58
 #: admin/systems/class_componentGeneric.inc:55
 #: admin/systems/class_mobilePhoneGeneric.inc:56
 msgid "Properties"
@@ -43,7 +43,7 @@ msgstr "Eigenschappen"
 
 #: admin/systems/class_phoneGeneric.inc:56 admin/systems/system-list.xml:31
 #: admin/systems/class_printGeneric.inc:62
-#: admin/systems/class_workstationGeneric.inc:63
+#: admin/systems/class_workstationGeneric.inc:62
 #: admin/systems/services/shares/class_serviceShare.inc:51
 #: admin/systems/class_componentGeneric.inc:58
 #: admin/systems/class_mobilePhoneGeneric.inc:60
@@ -57,7 +57,7 @@ msgstr "De naam van de telefoon"
 #: admin/systems/class_phoneGeneric.inc:60
 #: admin/systems/serverService-list.xml:35 admin/systems/system-list.xml:55
 #: admin/systems/class_printGeneric.inc:66
-#: admin/systems/class_workstationGeneric.inc:68
+#: admin/systems/class_workstationGeneric.inc:67
 #: admin/systems/services/shares/class_serviceShare.inc:55
 #: admin/systems/class_componentGeneric.inc:62
 #: admin/systems/class_mobilePhoneGeneric.inc:64
@@ -88,7 +88,7 @@ msgstr "De telefoonnummer van de telefoon"
 
 #: admin/systems/class_phoneGeneric.inc:79
 #: admin/systems/class_printGeneric.inc:103
-#: admin/systems/class_workstationGeneric.inc:90
+#: admin/systems/class_workstationGeneric.inc:89
 #: admin/systems/class_componentGeneric.inc:69
 #: admin/systems/class_mobilePhoneGeneric.inc:102
 msgid "Network settings"
@@ -96,27 +96,27 @@ msgstr "Netwerk instellingen"
 
 #: admin/systems/class_phoneGeneric.inc:84
 #: admin/systems/class_printGeneric.inc:108
-#: admin/systems/class_workstationGeneric.inc:95
+#: admin/systems/class_workstationGeneric.inc:94
 #: admin/systems/class_componentGeneric.inc:73
 #: admin/systems/class_mobilePhoneGeneric.inc:106
 msgid "IP address"
 msgstr "IP adres"
 
 #: admin/systems/class_phoneGeneric.inc:84
-#: admin/systems/class_workstationGeneric.inc:95
+#: admin/systems/class_workstationGeneric.inc:94
 msgid "IP addresses this system uses (v4 or v6)"
 msgstr "IP-adressen gebruikt door dit systeem (v4 of v6)"
 
-#: admin/systems/class_phoneGeneric.inc:89
-#: admin/systems/class_printGeneric.inc:113
+#: admin/systems/class_phoneGeneric.inc:90
+#: admin/systems/class_printGeneric.inc:114
 #: admin/systems/class_workstationGeneric.inc:100
 #: admin/systems/class_componentGeneric.inc:77
 #: admin/systems/class_mobilePhoneGeneric.inc:110
 msgid "Mac address"
 msgstr "Mac adress"
 
-#: admin/systems/class_phoneGeneric.inc:89
-#: admin/systems/class_printGeneric.inc:113
+#: admin/systems/class_phoneGeneric.inc:90
+#: admin/systems/class_printGeneric.inc:114
 #: admin/systems/class_workstationGeneric.inc:100
 #: admin/systems/class_componentGeneric.inc:77
 #: admin/systems/class_mobilePhoneGeneric.inc:110
@@ -261,7 +261,7 @@ msgstr "MAC"
 #: admin/systems/services/shares/class_serviceShare.inc:30
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 #: admin/systems/services/terminal/class_serviceTerminal.inc:30
-#: admin/systems/class_serverService.inc:60
+#: admin/systems/class_serverService.inc:61
 msgid "Services"
 msgstr "Services"
 
@@ -361,73 +361,73 @@ msgstr "Gebruikers die deze printer mogen beheren"
 msgid "IP address this system uses"
 msgstr "IP-adres die het systeem gebruikt"
 
-#: admin/systems/class_printGeneric.inc:119
+#: admin/systems/class_printGeneric.inc:121
 msgid "Windows paths"
 msgstr "Windows paden"
 
-#: admin/systems/class_printGeneric.inc:123
+#: admin/systems/class_printGeneric.inc:125
 msgid "Inf file"
 msgstr "Inf bestand"
 
-#: admin/systems/class_printGeneric.inc:123
+#: admin/systems/class_printGeneric.inc:125
 msgid "Path to windows inf file for this printer"
 msgstr "Pad naar windows inf bestand voor deze printer"
 
-#: admin/systems/class_printGeneric.inc:127
+#: admin/systems/class_printGeneric.inc:129
 msgid "Driver directory"
 msgstr "Driverdirectory"
 
-#: admin/systems/class_printGeneric.inc:127
+#: admin/systems/class_printGeneric.inc:129
 msgid "Path to directory that contains windows drivers for this printer"
 msgstr "Pad naar de directory die Windowsdrivers bevat voor deze printer"
 
-#: admin/systems/class_printGeneric.inc:131
+#: admin/systems/class_printGeneric.inc:133
 msgid "Driver name"
 msgstr "Drivernaam"
 
-#: admin/systems/class_printGeneric.inc:131
+#: admin/systems/class_printGeneric.inc:133
 msgid "Windows name of the printer driver"
 msgstr "Windowsnaam van de printerdriver"
 
-#: admin/systems/class_workstationGeneric.inc:32
+#: admin/systems/class_workstationGeneric.inc:31
+#: admin/systems/class_workstationGeneric.inc:36
 #: admin/systems/class_workstationGeneric.inc:37
-#: admin/systems/class_workstationGeneric.inc:38
 msgid "Workstation"
 msgstr "Werkstation"
 
-#: admin/systems/class_workstationGeneric.inc:33
+#: admin/systems/class_workstationGeneric.inc:32
 msgid "Workstation information"
 msgstr "Werkstation informatie"
 
-#: admin/systems/class_workstationGeneric.inc:52
+#: admin/systems/class_workstationGeneric.inc:51
 msgid "workstation"
 msgstr "werkstation"
 
-#: admin/systems/class_workstationGeneric.inc:64
+#: admin/systems/class_workstationGeneric.inc:63
 #, php-format
 msgid "The name of the %s"
 msgstr "De naam van deze %s"
 
-#: admin/systems/class_workstationGeneric.inc:69
+#: admin/systems/class_workstationGeneric.inc:68
 #, php-format
 msgid "A short description of the %s"
 msgstr "Een korte beschrijving van de %s"
 
-#: admin/systems/class_workstationGeneric.inc:73
+#: admin/systems/class_workstationGeneric.inc:72
 msgid "Location"
 msgstr "Locatie"
 
-#: admin/systems/class_workstationGeneric.inc:74
+#: admin/systems/class_workstationGeneric.inc:73
 #, php-format
 msgid "The location of the %s"
 msgstr "De locatie van de %s"
 
-#: admin/systems/class_workstationGeneric.inc:78
+#: admin/systems/class_workstationGeneric.inc:77
 #, php-format
 msgid "Lock this %s"
 msgstr "Blokkeer dit %s"
 
-#: admin/systems/class_workstationGeneric.inc:79
+#: admin/systems/class_workstationGeneric.inc:78
 #, php-format
 msgid "This will prevent the %s from being reinstalled"
 msgstr "Dit zal de %s tegen houden om geherinstalleerd te worden"
@@ -454,6 +454,7 @@ msgid "Description of this share"
 msgstr "Omschrijving van deze share"
 
 #: admin/systems/services/shares/class_serviceShare.inc:59
+#: admin/systems/class_systemImport.inc:47
 msgid "Type"
 msgstr "Type"
 
@@ -486,8 +487,8 @@ msgid "Special option(s) for this share"
 msgstr "Speciale optie(s) voor deze share"
 
 #: admin/systems/services/shares/class_serviceShare.inc:105
-#: admin/systems/class_serverService.inc:209
-#: admin/systems/class_serverService.inc:277
+#: admin/systems/class_serverService.inc:225
+#: admin/systems/class_serverService.inc:293
 #: addons/dashboard/class_dashBoardNetwork.inc:81
 msgid "Error"
 msgstr "Fout"
@@ -630,26 +631,26 @@ msgstr "Ondersteunde sessie types"
 msgid "The session types supported by this terminal server"
 msgstr "De sessietypes ondersteund door deze terminalserver"
 
-#: admin/systems/class_serverService.inc:61
+#: admin/systems/class_serverService.inc:62
 msgid "Server services"
 msgstr "Serverservices"
 
-#: admin/systems/class_serverService.inc:271
+#: admin/systems/class_serverService.inc:287
 msgid "Information"
 msgstr "Informatie"
 
-#: admin/systems/class_serverService.inc:271
+#: admin/systems/class_serverService.inc:287
 msgid "Cannot update service status until it has been saved!"
 msgstr "Kan service status niet updaten totdat het is opgeslagen!"
 
-#: admin/systems/class_serverService.inc:277
+#: admin/systems/class_serverService.inc:293
 #, php-format
 msgid "Unknown action \"%s\""
 msgstr "Onbekende actie \"%s\""
 
-#: admin/systems/class_serverService.inc:298
-#: admin/systems/class_serverService.inc:308
-#: admin/systems/class_serverService.inc:319
+#: admin/systems/class_serverService.inc:314
+#: admin/systems/class_serverService.inc:327
+#: admin/systems/class_serverService.inc:338
 #, php-format
 msgid "Could not get execute action %s on service %s."
 msgstr "Kan actie %s niet uitvoeren op service %s."
@@ -661,7 +662,7 @@ msgstr "server"
 #: admin/systems/class_serverGeneric.inc:39
 #: admin/systems/class_serverGeneric.inc:44
 #: admin/systems/class_serverGeneric.inc:45
-#: admin/systems/class_systemImport.inc:173
+#: admin/systems/class_systemImport.inc:43
 msgid "Server"
 msgstr "Server"
 
@@ -750,28 +751,41 @@ msgstr "Ping resultaat"
 msgid "Inherited from %s"
 msgstr "Overgeerfd van %s"
 
-#: admin/systems/class_systemImport.inc:72
+#: admin/systems/class_systemImport.inc:39
+#: admin/systems/class_systemImport.inc:59
+msgid "Import"
+msgstr "Importeren"
+
+#: admin/systems/class_systemImport.inc:43
+msgid "The server you wish to import hosts from"
+msgstr "De server vanaf dewelke je hosts wil importeren"
+
+#: admin/systems/class_systemImport.inc:47
+msgid "Type of objects you wish to import"
+msgstr "Type van object dat je wil importeren"
+
+#: admin/systems/class_systemImport.inc:52
+msgid "Template"
+msgstr "Sjabloon"
+
+#: admin/systems/class_systemImport.inc:52
+msgid "Select a template to apply to imported entries"
+msgstr "Selecteer een sjabloon om toe te passen op geïmporteerde invoer"
+
+#: admin/systems/class_systemImport.inc:105
 #, php-format
 msgid "Could not parse %s"
 msgstr "Kan %s niet ontleden"
 
-#: admin/systems/class_systemImport.inc:118
+#: admin/systems/class_systemImport.inc:178
 #, php-format
 msgid "No DHCP server found for IPs %s"
 msgstr "Geen DHCP server gevonden voor IPs %s"
 
-#: admin/systems/class_systemImport.inc:135
+#: admin/systems/class_systemImport.inc:197
 #, php-format
 msgid "No DNS server found for zone %s"
 msgstr "Geen DNS server gevonden voor zone %s"
-
-#: admin/systems/class_systemImport.inc:169
-msgid "Import"
-msgstr "Importeren"
-
-#: admin/systems/class_systemImport.inc:173
-msgid "The server you wish to import hosts from"
-msgstr "De server vanaf dewelke je hosts wil importeren"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:32
 #: admin/systems/class_mobilePhoneGeneric.inc:37

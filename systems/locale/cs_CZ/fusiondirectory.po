@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-01-08 15:21+0000\n"
+"POT-Creation-Date: 2018-02-07 11:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2017\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: admin/systems/class_phoneGeneric.inc:66
 #: admin/systems/class_mobilePhoneGeneric.inc:70
 msgid "Phone"
-msgstr "telefon"
+msgstr "Telefon"
 
 #: admin/systems/class_phoneGeneric.inc:33
 msgid "Phone information"
@@ -35,20 +35,20 @@ msgstr "Jaký telefonní přístroj"
 
 #: admin/systems/class_phoneGeneric.inc:52
 #: admin/systems/class_printGeneric.inc:58
-#: admin/systems/class_workstationGeneric.inc:59
+#: admin/systems/class_workstationGeneric.inc:58
 #: admin/systems/class_componentGeneric.inc:55
 #: admin/systems/class_mobilePhoneGeneric.inc:56
 msgid "Properties"
-msgstr "vlastnosti"
+msgstr "Vlastnosti"
 
 #: admin/systems/class_phoneGeneric.inc:56 admin/systems/system-list.xml:31
 #: admin/systems/class_printGeneric.inc:62
-#: admin/systems/class_workstationGeneric.inc:63
+#: admin/systems/class_workstationGeneric.inc:62
 #: admin/systems/services/shares/class_serviceShare.inc:51
 #: admin/systems/class_componentGeneric.inc:58
 #: admin/systems/class_mobilePhoneGeneric.inc:60
 msgid "Name"
-msgstr "název"
+msgstr "Název"
 
 #: admin/systems/class_phoneGeneric.inc:56
 msgid "The name of the phone"
@@ -57,12 +57,12 @@ msgstr "Název telefonu"
 #: admin/systems/class_phoneGeneric.inc:60
 #: admin/systems/serverService-list.xml:35 admin/systems/system-list.xml:55
 #: admin/systems/class_printGeneric.inc:66
-#: admin/systems/class_workstationGeneric.inc:68
+#: admin/systems/class_workstationGeneric.inc:67
 #: admin/systems/services/shares/class_serviceShare.inc:55
 #: admin/systems/class_componentGeneric.inc:62
 #: admin/systems/class_mobilePhoneGeneric.inc:64
 msgid "Description"
-msgstr "popis"
+msgstr "Popis"
 
 #: admin/systems/class_phoneGeneric.inc:60
 msgid "A short description of the phone"
@@ -88,7 +88,7 @@ msgstr "Telefonní číslo telefonu"
 
 #: admin/systems/class_phoneGeneric.inc:79
 #: admin/systems/class_printGeneric.inc:103
-#: admin/systems/class_workstationGeneric.inc:90
+#: admin/systems/class_workstationGeneric.inc:89
 #: admin/systems/class_componentGeneric.inc:69
 #: admin/systems/class_mobilePhoneGeneric.inc:102
 msgid "Network settings"
@@ -96,27 +96,27 @@ msgstr "Nastavení sítě"
 
 #: admin/systems/class_phoneGeneric.inc:84
 #: admin/systems/class_printGeneric.inc:108
-#: admin/systems/class_workstationGeneric.inc:95
+#: admin/systems/class_workstationGeneric.inc:94
 #: admin/systems/class_componentGeneric.inc:73
 #: admin/systems/class_mobilePhoneGeneric.inc:106
 msgid "IP address"
 msgstr "IP addresa"
 
 #: admin/systems/class_phoneGeneric.inc:84
-#: admin/systems/class_workstationGeneric.inc:95
+#: admin/systems/class_workstationGeneric.inc:94
 msgid "IP addresses this system uses (v4 or v6)"
 msgstr "IP adresy (v4 nebo v6) používané tímto systémem"
 
-#: admin/systems/class_phoneGeneric.inc:89
-#: admin/systems/class_printGeneric.inc:113
+#: admin/systems/class_phoneGeneric.inc:90
+#: admin/systems/class_printGeneric.inc:114
 #: admin/systems/class_workstationGeneric.inc:100
 #: admin/systems/class_componentGeneric.inc:77
 #: admin/systems/class_mobilePhoneGeneric.inc:110
 msgid "Mac address"
 msgstr "MAC adresa"
 
-#: admin/systems/class_phoneGeneric.inc:89
-#: admin/systems/class_printGeneric.inc:113
+#: admin/systems/class_phoneGeneric.inc:90
+#: admin/systems/class_printGeneric.inc:114
 #: admin/systems/class_workstationGeneric.inc:100
 #: admin/systems/class_componentGeneric.inc:77
 #: admin/systems/class_mobilePhoneGeneric.inc:110
@@ -125,11 +125,11 @@ msgstr "MAC adresa tohoto systému"
 
 #: admin/systems/serverService-list.xml:10
 msgid "List of services"
-msgstr "seznam služeb"
+msgstr "Seznam služeb"
 
 #: admin/systems/serverService-list.xml:14
 msgid "Service"
-msgstr "služby"
+msgstr "Služba"
 
 #: admin/systems/serverService-list.xml:27
 msgid "!"
@@ -137,15 +137,15 @@ msgstr "!"
 
 #: admin/systems/serverService-list.xml:43 admin/systems/system-list.xml:79
 msgid "Actions"
-msgstr "akce"
+msgstr "Akce"
 
 #: admin/systems/serverService-list.xml:54 admin/systems/system-list.xml:90
 msgid "Create"
-msgstr "vytvořit"
+msgstr "Vytvořit"
 
 #: admin/systems/serverService-list.xml:69 admin/systems/system-list.xml:127
 msgid "Remove"
-msgstr "odebrat"
+msgstr "Odebrat"
 
 #: admin/systems/serverService-list.xml:89
 msgid "Get status"
@@ -157,7 +157,7 @@ msgstr "spustit"
 
 #: admin/systems/serverService-list.xml:105
 msgid "Stop"
-msgstr "zastavit"
+msgstr "Zastavit"
 
 #: admin/systems/serverService-list.xml:113
 msgid "Restart"
@@ -165,19 +165,19 @@ msgstr "restartovat"
 
 #: admin/systems/serverService-list.xml:121
 msgid "Edit service"
-msgstr "upravit službu"
+msgstr "Upravit službu"
 
 #: admin/systems/serverService-list.xml:129
 msgid "Remove service"
-msgstr "odebrat službu"
+msgstr "Odebrat službu"
 
 #: admin/systems/class_terminalStartup.inc:32
 msgid "Startup"
-msgstr ""
+msgstr "Spuštění"
 
 #: admin/systems/class_terminalStartup.inc:33
 msgid "Terminal startup"
-msgstr ""
+msgstr "Spouštění terminálu"
 
 #: admin/systems/class_terminalStartup.inc:50
 msgid "Startup parameters"
@@ -201,7 +201,7 @@ msgstr "Odkládací (swap) server, který by měl terminál používat"
 
 #: admin/systems/class_terminalStartup.inc:63
 msgid "Remote desktop"
-msgstr "vzdálený desktop"
+msgstr "Vzdálená plocha"
 
 #: admin/systems/class_terminalStartup.inc:67
 msgid "Connect method"
@@ -234,7 +234,7 @@ msgstr "Windows RDP"
 
 #: admin/systems/class_terminalStartup.inc:74
 msgid "Terminal server"
-msgstr "terminálový server"
+msgstr "Terminálový server"
 
 #: admin/systems/class_terminalStartup.inc:109
 #: admin/systems/class_terminalStartup.inc:120
@@ -247,7 +247,7 @@ msgstr "stránkovat (swap) na místní úložiště"
 
 #: admin/systems/system-list.xml:10
 msgid "List of systems"
-msgstr "seznam systémů"
+msgstr "Seznam systémů"
 
 #: admin/systems/system-list.xml:39
 msgid "IP"
@@ -261,13 +261,13 @@ msgstr "MAC adresa"
 #: admin/systems/services/shares/class_serviceShare.inc:30
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 #: admin/systems/services/terminal/class_serviceTerminal.inc:30
-#: admin/systems/class_serverService.inc:60
+#: admin/systems/class_serverService.inc:61
 msgid "Services"
-msgstr "služby"
+msgstr "Služby"
 
 #: admin/systems/system-list.xml:71
 msgid "Release"
-msgstr "vydání"
+msgstr "Vydání"
 
 #: admin/systems/system-list.xml:100
 msgid "Trigger action"
@@ -275,11 +275,11 @@ msgstr "spustit akci"
 
 #: admin/systems/system-list.xml:107
 msgid "Schedule action"
-msgstr "naplánovat akci"
+msgstr "Naplánovat akci"
 
 #: admin/systems/system-list.xml:115
 msgid "Ping"
-msgstr ""
+msgstr "Ping"
 
 #: admin/systems/system-list.xml:155
 msgid "New object from template"
@@ -291,7 +291,7 @@ msgstr "Upravit systém"
 
 #: admin/systems/system-list.xml:181
 msgid "Remove system"
-msgstr "odebrat systém"
+msgstr "Odebrat systém"
 
 #: admin/systems/class_terminalGeneric.inc:31
 msgid "terminal"
@@ -301,7 +301,7 @@ msgstr "terminál"
 #: admin/systems/class_terminalGeneric.inc:48
 #: admin/systems/class_terminalGeneric.inc:49
 msgid "Terminal"
-msgstr "terminál"
+msgstr "Terminál"
 
 #: admin/systems/class_terminalGeneric.inc:44
 msgid "Terminal information"
@@ -311,7 +311,7 @@ msgstr "Informace o terminálu"
 #: admin/systems/class_printGeneric.inc:35
 #: admin/systems/class_printGeneric.inc:36
 msgid "Printer"
-msgstr "tiskárna"
+msgstr "Tiskárna"
 
 #: admin/systems/class_printGeneric.inc:31
 msgid "Printer information"
@@ -327,7 +327,7 @@ msgstr "Stručný popis této tiskárny"
 
 #: admin/systems/class_printGeneric.inc:72
 msgid "Details"
-msgstr "podrobnosti"
+msgstr "Podrobnosti"
 
 #: admin/systems/class_printGeneric.inc:75
 msgid "Printer location"
@@ -339,7 +339,7 @@ msgstr "Umístění tiskárny"
 
 #: admin/systems/class_printGeneric.inc:79
 msgid "Printer URL"
-msgstr "adresa (URL) tiskárny"
+msgstr "URL adresa tiskárny"
 
 #: admin/systems/class_printGeneric.inc:79
 msgid "The URL of the printer"
@@ -361,75 +361,75 @@ msgstr "uživatelé, kteří smějí spravovat tuto tiskárnu"
 msgid "IP address this system uses"
 msgstr "IP adresy používané tímto systémem"
 
-#: admin/systems/class_printGeneric.inc:119
+#: admin/systems/class_printGeneric.inc:121
 msgid "Windows paths"
 msgstr "Popis umístění v MS Windows"
 
-#: admin/systems/class_printGeneric.inc:123
+#: admin/systems/class_printGeneric.inc:125
 msgid "Inf file"
 msgstr ".inf soubor"
 
-#: admin/systems/class_printGeneric.inc:123
+#: admin/systems/class_printGeneric.inc:125
 msgid "Path to windows inf file for this printer"
 msgstr "Popis umístění .inf souboru pro tuto tiskárnu"
 
-#: admin/systems/class_printGeneric.inc:127
+#: admin/systems/class_printGeneric.inc:129
 msgid "Driver directory"
 msgstr "Složka s ovladačem"
 
-#: admin/systems/class_printGeneric.inc:127
+#: admin/systems/class_printGeneric.inc:129
 msgid "Path to directory that contains windows drivers for this printer"
 msgstr ""
 "Popis umístění složky, která obsahuje ovladače (pro systém Windows) pro tuto"
 " tiskárnu"
 
-#: admin/systems/class_printGeneric.inc:131
+#: admin/systems/class_printGeneric.inc:133
 msgid "Driver name"
 msgstr "Název ovladače"
 
-#: admin/systems/class_printGeneric.inc:131
+#: admin/systems/class_printGeneric.inc:133
 msgid "Windows name of the printer driver"
 msgstr "Název ovladače tiskárny v systému Windows"
 
-#: admin/systems/class_workstationGeneric.inc:32
+#: admin/systems/class_workstationGeneric.inc:31
+#: admin/systems/class_workstationGeneric.inc:36
 #: admin/systems/class_workstationGeneric.inc:37
-#: admin/systems/class_workstationGeneric.inc:38
 msgid "Workstation"
 msgstr "pracovní stanice"
 
-#: admin/systems/class_workstationGeneric.inc:33
+#: admin/systems/class_workstationGeneric.inc:32
 msgid "Workstation information"
 msgstr "Informace o počítači"
 
-#: admin/systems/class_workstationGeneric.inc:52
+#: admin/systems/class_workstationGeneric.inc:51
 msgid "workstation"
 msgstr "pracovní stanice"
 
-#: admin/systems/class_workstationGeneric.inc:64
+#: admin/systems/class_workstationGeneric.inc:63
 #, php-format
 msgid "The name of the %s"
 msgstr "Název %s"
 
-#: admin/systems/class_workstationGeneric.inc:69
+#: admin/systems/class_workstationGeneric.inc:68
 #, php-format
 msgid "A short description of the %s"
 msgstr "Stručný popis %s"
 
-#: admin/systems/class_workstationGeneric.inc:73
+#: admin/systems/class_workstationGeneric.inc:72
 msgid "Location"
-msgstr "umístění"
+msgstr "Umístění"
 
-#: admin/systems/class_workstationGeneric.inc:74
+#: admin/systems/class_workstationGeneric.inc:73
 #, php-format
 msgid "The location of the %s"
 msgstr "Umístění %s"
 
-#: admin/systems/class_workstationGeneric.inc:78
+#: admin/systems/class_workstationGeneric.inc:77
 #, php-format
 msgid "Lock this %s"
 msgstr "Uzamknout toto %s"
 
-#: admin/systems/class_workstationGeneric.inc:79
+#: admin/systems/class_workstationGeneric.inc:78
 #, php-format
 msgid "This will prevent the %s from being reinstalled"
 msgstr "Toto zabrání %s v tom, aby bylo opětovně nainstalováno"
@@ -437,11 +437,11 @@ msgstr "Toto zabrání %s v tom, aby bylo opětovně nainstalováno"
 #: admin/systems/services/shares/class_serviceShare.inc:29
 #: admin/systems/services/shares/class_serviceShare.inc:30
 msgid "Share service"
-msgstr "Služby sdílení"
+msgstr "Služba sdílení"
 
 #: admin/systems/services/shares/class_serviceShare.inc:42
 msgid "Shares"
-msgstr "sdílení"
+msgstr "Sdílení"
 
 #: admin/systems/services/shares/class_serviceShare.inc:47
 msgid "Shares this server hosts"
@@ -456,8 +456,9 @@ msgid "Description of this share"
 msgstr "Popis tohoto sdílení"
 
 #: admin/systems/services/shares/class_serviceShare.inc:59
+#: admin/systems/class_systemImport.inc:47
 msgid "Type"
-msgstr "typ"
+msgstr "Typ"
 
 #: admin/systems/services/shares/class_serviceShare.inc:59
 msgid "Type of share"
@@ -488,11 +489,11 @@ msgid "Special option(s) for this share"
 msgstr "Speciální předvolby pro toto sdílení"
 
 #: admin/systems/services/shares/class_serviceShare.inc:105
-#: admin/systems/class_serverService.inc:209
-#: admin/systems/class_serverService.inc:277
+#: admin/systems/class_serverService.inc:225
+#: admin/systems/class_serverService.inc:293
 #: addons/dashboard/class_dashBoardNetwork.inc:81
 msgid "Error"
-msgstr "chyba"
+msgstr "Chyba"
 
 #: admin/systems/services/shares/class_serviceShare.inc:105
 msgid "You need to configure encodings first"
@@ -500,7 +501,7 @@ msgstr "Nejprve je třeba nastavit kódování znaků"
 
 #: admin/systems/services/shares/class_serviceShare.inc:112
 msgid "Warning"
-msgstr "varování"
+msgstr "Varování"
 
 #: admin/systems/services/shares/class_serviceShare.inc:112
 #, php-format
@@ -510,7 +511,7 @@ msgstr "Neplatná hodnota v kódování znaků : %s"
 #: admin/systems/services/ldap/class_serviceLDAP.inc:35
 #: admin/systems/services/ldap/class_serviceLDAP.inc:96
 msgid "LDAP service"
-msgstr "služba LDAP"
+msgstr "Služba LDAP"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:39
 msgid "LDAP Base"
@@ -614,7 +615,7 @@ msgstr "LDAP"
 #: admin/systems/services/terminal/class_serviceTerminal.inc:30
 #: admin/systems/services/terminal/class_serviceTerminal.inc:41
 msgid "Terminal service"
-msgstr "terminálová služba"
+msgstr "Terminálová služba"
 
 #: admin/systems/services/terminal/class_serviceTerminal.inc:44
 msgid "Temporary disable login"
@@ -632,26 +633,26 @@ msgstr "podporované typy relací"
 msgid "The session types supported by this terminal server"
 msgstr "Typy sezení, podporované tímto terminálovým serverem"
 
-#: admin/systems/class_serverService.inc:61
+#: admin/systems/class_serverService.inc:62
 msgid "Server services"
 msgstr "Služby serveru"
 
-#: admin/systems/class_serverService.inc:271
+#: admin/systems/class_serverService.inc:287
 msgid "Information"
-msgstr "informace"
+msgstr "Informace"
 
-#: admin/systems/class_serverService.inc:271
+#: admin/systems/class_serverService.inc:287
 msgid "Cannot update service status until it has been saved!"
 msgstr "Nemohu aktualizovat stav služby dokud nebude uložena!"
 
-#: admin/systems/class_serverService.inc:277
+#: admin/systems/class_serverService.inc:293
 #, php-format
 msgid "Unknown action \"%s\""
 msgstr "Neznámá akce „%s“"
 
-#: admin/systems/class_serverService.inc:298
-#: admin/systems/class_serverService.inc:308
-#: admin/systems/class_serverService.inc:319
+#: admin/systems/class_serverService.inc:314
+#: admin/systems/class_serverService.inc:327
+#: admin/systems/class_serverService.inc:338
 #, php-format
 msgid "Could not get execute action %s on service %s."
 msgstr "Nelze spustit akci %s na službě %s."
@@ -663,9 +664,9 @@ msgstr "server"
 #: admin/systems/class_serverGeneric.inc:39
 #: admin/systems/class_serverGeneric.inc:44
 #: admin/systems/class_serverGeneric.inc:45
-#: admin/systems/class_systemImport.inc:173
+#: admin/systems/class_systemImport.inc:43
 msgid "Server"
-msgstr "server"
+msgstr "Server"
 
 #: admin/systems/class_serverGeneric.inc:40
 msgid "Server information"
@@ -673,7 +674,7 @@ msgstr "Informace o serveru"
 
 #: admin/systems/class_componentGeneric.inc:31
 msgid "Component"
-msgstr "součást"
+msgstr "Součást"
 
 #: admin/systems/class_componentGeneric.inc:32
 msgid "Component information"
@@ -682,7 +683,7 @@ msgstr "Informace o součásti"
 #: admin/systems/class_componentGeneric.inc:36
 #: admin/systems/class_componentGeneric.inc:37
 msgid "Network device"
-msgstr "síťové zařízení"
+msgstr "Síťové zařízení"
 
 #: admin/systems/class_componentGeneric.inc:58
 msgid "The name of the component"
@@ -697,11 +698,11 @@ msgstr "Stručný popis součásti"
 #: config/systems/class_systemsPluginConfig.inc:30
 #: addons/dashboard/class_dashBoardSystems.inc:30
 msgid "Systems"
-msgstr "systémy"
+msgstr "Systémy"
 
 #: admin/systems/class_systemManagement.inc:44
 msgid "Systems Management"
-msgstr "správa systémů"
+msgstr "Správa systémů"
 
 #: admin/systems/class_systemManagement.inc:141
 #: admin/systems/class_systemManagement.inc:157
@@ -713,12 +714,12 @@ msgstr "Akce zrušena"
 #: admin/systems/class_systemManagement.inc:209
 #, php-format
 msgid "System %s has no mac address defined, cannot trigger action"
-msgstr ""
+msgstr "Systém %s nemá definovánu MAC adresu, akci nelze spustit"
 
 #: admin/systems/class_systemManagement.inc:157
 #, php-format
 msgid "System %s is currently installing"
-msgstr ""
+msgstr "Systém %s je nyní instalován"
 
 #: admin/systems/class_systemManagement.inc:176
 #: admin/systems/class_systemManagement.inc:221
@@ -734,12 +735,12 @@ msgstr "Spuštěná akce"
 #: admin/systems/class_systemManagement.inc:179
 #, php-format
 msgid "Action called without error (results were \"%s\")"
-msgstr ""
+msgstr "Akce zavolána bez chyb (výsledky jsou „%s“)"
 
 #: admin/systems/class_systemManagement.inc:184
 #, php-format
 msgid "Action called without error (result was \"%s\")"
-msgstr ""
+msgstr "Akce zavolána bez chyby (výsledek je „%s“)"
 
 #: admin/systems/class_systemManagement.inc:239
 msgid "Ping results"
@@ -748,36 +749,49 @@ msgstr "Výsledky z ping"
 #: admin/systems/class_systemManagement.inc:325
 #, php-format
 msgid "Inherited from %s"
-msgstr "zděděno z %s"
+msgstr "Převzato z %s"
 
-#: admin/systems/class_systemImport.inc:72
+#: admin/systems/class_systemImport.inc:39
+#: admin/systems/class_systemImport.inc:59
+msgid "Import"
+msgstr "import(ovat)"
+
+#: admin/systems/class_systemImport.inc:43
+msgid "The server you wish to import hosts from"
+msgstr "Server, ze kterého chcete importovat hostitele"
+
+#: admin/systems/class_systemImport.inc:47
+msgid "Type of objects you wish to import"
+msgstr "Typ objektů, které chcete importovat"
+
+#: admin/systems/class_systemImport.inc:52
+msgid "Template"
+msgstr "Šablona"
+
+#: admin/systems/class_systemImport.inc:52
+msgid "Select a template to apply to imported entries"
+msgstr "Vyberte šablonu, kterou aplikovat na importované položky"
+
+#: admin/systems/class_systemImport.inc:105
 #, php-format
 msgid "Could not parse %s"
 msgstr "Nelze parsovat %s"
 
-#: admin/systems/class_systemImport.inc:118
+#: admin/systems/class_systemImport.inc:178
 #, php-format
 msgid "No DHCP server found for IPs %s"
-msgstr ""
+msgstr "Pro IP adresy %s nebyl nalezen žádný DHCP server"
 
-#: admin/systems/class_systemImport.inc:135
+#: admin/systems/class_systemImport.inc:197
 #, php-format
 msgid "No DNS server found for zone %s"
 msgstr "Pro zónu %s nebyl nalezen žádný DNS server"
-
-#: admin/systems/class_systemImport.inc:169
-msgid "Import"
-msgstr "import(ovat)"
-
-#: admin/systems/class_systemImport.inc:173
-msgid "The server you wish to import hosts from"
-msgstr "Server, ze kterého chcete importovat hostitele"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:32
 #: admin/systems/class_mobilePhoneGeneric.inc:37
 #: admin/systems/class_mobilePhoneGeneric.inc:38
 msgid "Mobile phone"
-msgstr "mobilní telefon"
+msgstr "Mobilní telefon"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:33
 msgid "Mobile phone information"
@@ -901,7 +915,7 @@ msgstr "Větev, ve které budou uloženy mobilní telefony"
 
 #: config/systems/class_systemsPluginConfig.inc:87
 msgid "Miscellaneous"
-msgstr "různé"
+msgstr "Různé"
 
 #: config/systems/class_systemsPluginConfig.inc:91
 msgid "Available encodings for share services"
@@ -953,7 +967,7 @@ msgstr "Pracovní stanice"
 
 #: addons/dashboard/class_dashBoardSystems.inc:77
 msgid "Servers"
-msgstr "servery"
+msgstr "Servery"
 
 #: addons/dashboard/class_dashBoardSystems.inc:81
 msgid "Windows Workstations"
@@ -989,6 +1003,7 @@ msgid ""
 "Statistics for type \"%s\" could not be computed because of the following "
 "error: %s"
 msgstr ""
+"Statistiky pro typ „%s“ nebylo možné spočítat kvůli následující chybě: %s"
 
 #: addons/dashboard/class_dashBoardNetwork.inc:28
 msgid "Network"
@@ -1010,7 +1025,7 @@ msgstr "DNS"
 #, php-format
 msgid ""
 "Statistics for DHCP could not be computed because of the following error: %s"
-msgstr ""
+msgstr "Statistiky pro DHCP nebylo možné spočítat kvůli následující chybě: %s"
 
 #: admin/systems/serverService-list.tpl.c:2
 msgid "Base"
@@ -1037,9 +1052,9 @@ msgstr "Je zde argonaut server, provozovaný na %1 (%3://%2:%4)"
 #: addons/dashboard/systems_stats.tpl.c:8
 msgid "Only one system is configured to run an argonaut client."
 msgid_plural "%1 systems are configured to run an argonaut client."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Pouze jeden systém je nastavený pro provoz argonaut klienta."
+msgstr[1] "Dva systémy jsou nastavené pro provoz argonaut klienta."
+msgstr[2] "%1 systémů je nastaveno pro provoz argonaut klienta."
 
 #: addons/dashboard/systems_stats.tpl.c:11
 msgid "But no system is configured to run an argonaut client!"
@@ -1053,5 +1068,11 @@ msgid_plural ""
 "%1 systems are configured to run an argonaut client, but there is no "
 "argonaut server configured!"
 msgstr[0] ""
+"Systém je nastaven pro provoz argonaut klienta, ale není nastavený žádný "
+"argonaut server!"
 msgstr[1] ""
+"Dva systémy jsou nastavené pro provoz argonaut klienta, ale není nastavený "
+"žádný argonaut server!"
 msgstr[2] ""
+"%1 systémů je nastavených pro provoz argonaut klienta, ale není nastavený "
+"žádný argonaut server!"

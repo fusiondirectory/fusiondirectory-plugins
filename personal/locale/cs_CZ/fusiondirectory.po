@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-01-08 15:21+0000\n"
+"POT-Creation-Date: 2018-02-07 11:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -29,7 +29,7 @@ msgstr "Nastavení zásuvného modulu Osobní pro FusionDirectory"
 #: config/personal/class_personalConfig.inc:42
 #: personal/personal/class_personalInfo.inc:85
 msgid "Personal"
-msgstr "osobní"
+msgstr "Osobní"
 
 #: config/personal/class_personalConfig.inc:45
 msgid "Allow use of private email for password recovery"
@@ -58,7 +58,7 @@ msgstr "Identifikátor tohoto uživatele na tomto webu"
 
 #: personal/personal/class_personalInfo.inc:86
 msgid "Personal information"
-msgstr "osobní informace"
+msgstr "Osobní údaje"
 
 #: personal/personal/class_personalInfo.inc:101
 msgid "Personal info"
@@ -82,11 +82,11 @@ msgstr "Přezdívka tohoto uživatele"
 
 #: personal/personal/class_personalInfo.inc:114
 msgid "Badge Number"
-msgstr ""
+msgstr "Číslo odznaku"
 
 #: personal/personal/class_personalInfo.inc:114
 msgid "Company badge number"
-msgstr ""
+msgstr "Číslo odznaku společnosti"
 
 #: personal/personal/class_personalInfo.inc:118
 msgid "Date of birth"
@@ -102,7 +102,7 @@ msgstr "Pohlaví"
 
 #: personal/personal/class_personalInfo.inc:128
 msgid "Country"
-msgstr "země"
+msgstr "Země"
 
 #: personal/personal/class_personalInfo.inc:132
 msgid "Start date"
@@ -118,7 +118,7 @@ msgstr "Datum ukončení"
 
 #: personal/personal/class_personalInfo.inc:137
 msgid "Date this user is supposed to leave the company"
-msgstr ""
+msgstr "Datum kdy má tento uživatel opouštět organizaci"
 
 #: personal/personal/class_personalInfo.inc:142
 msgid "Photo Visible"
@@ -126,11 +126,11 @@ msgstr "Foto viditelné"
 
 #: personal/personal/class_personalInfo.inc:142
 msgid "Should the photo of the user be visible on external tools"
-msgstr ""
+msgstr "Zda má být foto uživatele viditelné pro vnější nástroje"
 
 #: personal/personal/class_personalInfo.inc:148
 msgid "Contact"
-msgstr "kontakt"
+msgstr "Kontakt"
 
 #: personal/personal/class_personalInfo.inc:152
 msgid "Social account"
@@ -171,3 +171,14 @@ msgstr "Diaspora účet má podobu uživatel@server"
 #: personal/personal/class_socialHandlers.inc:141
 msgid "LinkedIn"
 msgstr "LinkedIn"
+
+#: personal/personal/class_socialHandlers.inc:151
+msgid "ORCID"
+msgstr "ORCID"
+
+#: personal/personal/class_socialHandlers.inc:164
+msgid ""
+"ORCID account IDs must look like XXXX-XXXX-XXXX-XXXX where X are digits"
+msgstr ""
+"Je třeba, aby identifikátory ORCID účtu měly podobu XXXX-XXXX-XXXX-XXXX, kde"
+" X jsou číslice"

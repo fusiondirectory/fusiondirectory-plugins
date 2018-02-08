@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-01-08 15:21+0000\n"
+"POT-Creation-Date: 2018-02-07 11:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -76,27 +76,27 @@ msgstr "Produit localboot OPSI"
 #: admin/opsi/class_opsiSoftwareList.inc:114
 #: admin/opsi/class_opsiProfile.inc:160
 #: admin/opsi/class_opsiProductProperties.inc:174
-#: admin/systems/opsi/class_opsiClient.inc:285
+#: admin/systems/opsi/class_opsiClient.inc:292
 msgid "Could not contact argonaut server"
 msgstr "Impossible de contacter le serveur Argonaut"
 
 #: admin/opsi/class_opsiSoftwareList.inc:126
 #: admin/opsi/class_opsiProfile.inc:172
-#: admin/systems/opsi/class_opsiClient.inc:296
-#: addons/opsi/class_opsiImport.inc:83
+#: admin/systems/opsi/class_opsiClient.inc:303
+#: addons/opsi/class_opsiImport.inc:105
 msgid "No mac address"
 msgstr "Pas d'adresse mac"
 
 #: admin/opsi/class_opsiSoftwareList.inc:127
 #: admin/opsi/class_opsiProfile.inc:173
-#: admin/systems/opsi/class_opsiClient.inc:297
+#: admin/systems/opsi/class_opsiClient.inc:304
 #, php-format
 msgid "Server %s has no mac address configured in the LDAP"
 msgstr "Le serveur %s n'a pas d'adresse mac configure dans le LDAP"
 
 #: admin/opsi/class_opsiSoftwareList.inc:133
 #: admin/opsi/class_opsiProfile.inc:144 admin/opsi/class_opsiProfile.inc:179
-#: admin/systems/opsi/class_opsiClient.inc:303
+#: admin/systems/opsi/class_opsiClient.inc:310
 #, php-format
 msgid "Could not find %s in the LDAP"
 msgstr "Impossible de trouver %s dans l'annuaire LDAP"
@@ -104,13 +104,13 @@ msgstr "Impossible de trouver %s dans l'annuaire LDAP"
 #: admin/opsi/class_opsiSoftwareList.inc:141
 #: admin/opsi/class_opsiProfile.inc:187
 #: admin/opsi/class_opsiProductProperties.inc:189
-#: admin/systems/opsi/class_opsiClient.inc:328
-#: admin/systems/opsi/class_opsiClient.inc:340
+#: admin/systems/opsi/class_opsiClient.inc:338
+#: admin/systems/opsi/class_opsiClient.inc:350
 msgid "Failed to contact OPSI server"
 msgstr "Impossible de contacter le serveur OPSI"
 
 #: admin/opsi/class_opsiSoftwareList.inc:153
-#: admin/systems/opsi/class_opsiClient.inc:347
+#: admin/systems/opsi/class_opsiClient.inc:357
 #, php-format
 msgid "%s (%s-%s)"
 msgstr "%s (%s-%s)"
@@ -298,7 +298,7 @@ msgid "Could not get macAddress for OPSI server!"
 msgstr "Impossible d'obtenir l'adresse mac pour le serveur OPSI !"
 
 #: admin/systems/opsi/class_opsiClient.inc:154
-#: admin/systems/opsi/class_opsiClient.inc:258
+#: admin/systems/opsi/class_opsiClient.inc:265
 msgid "Could not remove OPSI information"
 msgstr "Effacement des informations OPSI impossible"
 
@@ -311,17 +311,16 @@ msgstr "Ce membre n'a pas été trouvé ou n'a pas d'adresse mac"
 msgid "Could not get macAddress for \"%s\""
 msgstr "Impossible d'obtenir l'adresse mac pour \"%s\""
 
-#: admin/systems/opsi/class_opsiClient.inc:216
-#: addons/opsi/class_opsiImport.inc:98
+#: admin/systems/opsi/class_opsiClient.inc:218
 msgid "Could not update OPSI information"
 msgstr "Mise à jour des informations OPSI impossible"
 
-#: admin/systems/opsi/class_opsiClient.inc:310
+#: admin/systems/opsi/class_opsiClient.inc:319
 #, php-format
 msgid "Failed to contact OPSI server: %s"
 msgstr "Impossible de contacter le serveur OPSI: %s"
 
-#: admin/systems/opsi/class_opsiClient.inc:312
+#: admin/systems/opsi/class_opsiClient.inc:321
 msgid "Never"
 msgstr "Jamais"
 
@@ -393,9 +392,33 @@ msgstr "Importation OPSI"
 msgid "Import windows stations from OPSI into FD"
 msgstr "Importer stations Windows de OPSI dans FD"
 
-#: addons/opsi/class_opsiImport.inc:72
+#: addons/opsi/class_opsiImport.inc:58
+msgid "Import localboot products"
+msgstr "Importer des produits localboot"
+
+#: addons/opsi/class_opsiImport.inc:58
+msgid "Import localboot product list configured in OPSI in the FD OPSI tab"
+msgstr ""
+"Importer la liste de produits localboot configurée dans OPSI dans l'onglet "
+"FD OPSI"
+
+#: addons/opsi/class_opsiImport.inc:94
 msgid "Argonaut server is not available"
 msgstr "Serveur Argonaut indisponible"
+
+#: addons/opsi/class_opsiImport.inc:106
+#, php-format
+msgid "Server \"%s\" has no mac address configured in the LDAP"
+msgstr "Le serveur \"%s\" n'a pas d'adresse MAC configurée dans le l\"annuaire LDAP"
+
+#: addons/opsi/class_opsiImport.inc:113
+#, php-format
+msgid "Could not find \"%s\" in the LDAP"
+msgstr "Impossible de trouver %s dans l'annuaire LDAP"
+
+#: addons/opsi/class_opsiImport.inc:121 addons/opsi/class_opsiImport.inc:143
+msgid "Could not get OPSI information"
+msgstr "Impossible d'obtenir les informations OPSI"
 
 #: addons/opsi/opsiimport.tpl.c:2
 msgid ""

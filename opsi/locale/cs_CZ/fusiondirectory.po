@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-01-08 15:21+0000\n"
+"POT-Creation-Date: 2018-02-07 11:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2017\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,7 +49,7 @@ msgstr "OPSI server pomocí kterého nasadit"
 #: admin/opsi/class_opsiOnDemandList.inc:57
 #: admin/opsi/class_opsiProductProperties.inc:113
 msgid "Name"
-msgstr "název"
+msgstr "Název"
 
 #: admin/opsi/class_opsiSoftwareList.inc:62
 #: admin/opsi/class_opsiProfile.inc:98
@@ -77,27 +77,27 @@ msgstr "Produkty pro spuštění z vestavěného datového úložiště stroje"
 #: admin/opsi/class_opsiSoftwareList.inc:114
 #: admin/opsi/class_opsiProfile.inc:160
 #: admin/opsi/class_opsiProductProperties.inc:174
-#: admin/systems/opsi/class_opsiClient.inc:285
+#: admin/systems/opsi/class_opsiClient.inc:292
 msgid "Could not contact argonaut server"
 msgstr "Nedaří se kontaktovat argonaut server"
 
 #: admin/opsi/class_opsiSoftwareList.inc:126
 #: admin/opsi/class_opsiProfile.inc:172
-#: admin/systems/opsi/class_opsiClient.inc:296
-#: addons/opsi/class_opsiImport.inc:83
+#: admin/systems/opsi/class_opsiClient.inc:303
+#: addons/opsi/class_opsiImport.inc:105
 msgid "No mac address"
 msgstr "Žádná MAC adresa"
 
 #: admin/opsi/class_opsiSoftwareList.inc:127
 #: admin/opsi/class_opsiProfile.inc:173
-#: admin/systems/opsi/class_opsiClient.inc:297
+#: admin/systems/opsi/class_opsiClient.inc:304
 #, php-format
 msgid "Server %s has no mac address configured in the LDAP"
 msgstr "Server %s nemá v LDAP uvedeny žádné MAC adresy"
 
 #: admin/opsi/class_opsiSoftwareList.inc:133
 #: admin/opsi/class_opsiProfile.inc:144 admin/opsi/class_opsiProfile.inc:179
-#: admin/systems/opsi/class_opsiClient.inc:303
+#: admin/systems/opsi/class_opsiClient.inc:310
 #, php-format
 msgid "Could not find %s in the LDAP"
 msgstr "%s nelze v LDAP nalézt"
@@ -105,16 +105,16 @@ msgstr "%s nelze v LDAP nalézt"
 #: admin/opsi/class_opsiSoftwareList.inc:141
 #: admin/opsi/class_opsiProfile.inc:187
 #: admin/opsi/class_opsiProductProperties.inc:189
-#: admin/systems/opsi/class_opsiClient.inc:328
-#: admin/systems/opsi/class_opsiClient.inc:340
+#: admin/systems/opsi/class_opsiClient.inc:338
+#: admin/systems/opsi/class_opsiClient.inc:350
 msgid "Failed to contact OPSI server"
 msgstr "Nezdařilo se kontaktovat OPSI server"
 
 #: admin/opsi/class_opsiSoftwareList.inc:153
-#: admin/systems/opsi/class_opsiClient.inc:347
+#: admin/systems/opsi/class_opsiClient.inc:357
 #, php-format
 msgid "%s (%s-%s)"
-msgstr ""
+msgstr "%s (%s–%s)"
 
 #: admin/opsi/class_opsiProfile.inc:67 admin/opsi/class_opsiProfile.inc:68
 #: admin/opsi/class_opsiProfile.inc:72
@@ -196,11 +196,11 @@ msgstr "Služba OPSI"
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:30
 msgid "Services"
-msgstr "služby"
+msgstr "Služby"
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:41
 msgid "OPSI Server information"
-msgstr ""
+msgstr "Informace o OPSI serveru"
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:44
 msgid "Server URI"
@@ -212,15 +212,15 @@ msgstr "URI adresa, kterou použít pro připojení"
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:48
 msgid "User"
-msgstr "uživatel"
+msgstr "Uživatel"
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:48
 msgid "The user to use for connection"
-msgstr "Uživatelský účet, použitý pro připojení"
+msgstr "Uživatelský účet, který použít pro připojení"
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:52
 msgid "Password"
-msgstr "heslo"
+msgstr "Heslo"
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:52
 msgid "The password to use for connection"
@@ -233,7 +233,7 @@ msgstr "Provozní záznamy k dispozici"
 
 #: admin/systems/opsi/class_opsiLogView.inc:36
 msgid "Available log files"
-msgstr ""
+msgstr "Soubory se záznamem událostí (log), které jsou k dispozici"
 
 #: admin/systems/opsi/class_opsiLogView.inc:40
 msgid "Content of the selected log"
@@ -241,17 +241,17 @@ msgstr "Obsah zvoleného provozního záznamu"
 
 #: admin/systems/opsi/class_opsiLogView.inc:52
 msgid "OPSI Logs"
-msgstr ""
+msgstr "OPSI logy"
 
 #: admin/systems/opsi/class_opsiLogView.inc:53
 msgid "OPSI Logs Viewer"
-msgstr ""
+msgstr "Prohlížeč OPSI logů"
 
 #: admin/systems/opsi/class_opsiLogView.inc:82
 #: admin/systems/opsi/class_opsiLogView.inc:113
 #: addons/dashboard/class_dashBoardOpsi.inc:91
 msgid "Error"
-msgstr "chyba"
+msgstr "Chyba"
 
 #: admin/systems/opsi/class_opsiClient.inc:36
 msgid "OPSI client"
@@ -287,7 +287,7 @@ msgstr ""
 
 #: admin/systems/opsi/class_opsiClient.inc:95
 msgid "Information"
-msgstr "informace"
+msgstr "Informace"
 
 #: admin/systems/opsi/class_opsiClient.inc:98
 msgid "Last seen"
@@ -295,37 +295,36 @@ msgstr "Naposledy spatřeno"
 
 #: admin/systems/opsi/class_opsiClient.inc:98
 msgid "Last time this OPSI client was seen by the OPSI server"
-msgstr ""
+msgstr "Kdy naposledy byl OPSI klient viděn OPSI serverem"
 
 #: admin/systems/opsi/class_opsiClient.inc:145
 msgid "Could not get macAddress for OPSI server!"
-msgstr ""
+msgstr "Nedaří se získat MAC adresu pro OPSI server!"
 
 #: admin/systems/opsi/class_opsiClient.inc:154
-#: admin/systems/opsi/class_opsiClient.inc:258
+#: admin/systems/opsi/class_opsiClient.inc:265
 msgid "Could not remove OPSI information"
-msgstr ""
+msgstr "Nedaří se odebrat OPSI informaci"
 
 #: admin/systems/opsi/class_opsiClient.inc:184
 msgid "This member was not found or has no macAddress"
-msgstr ""
+msgstr "Člen nebyl nalezen nebo nemá nastaveno macAddress"
 
 #: admin/systems/opsi/class_opsiClient.inc:189
 #, php-format
 msgid "Could not get macAddress for \"%s\""
-msgstr ""
+msgstr "Nedaří se získat macAddress pro „%s“"
 
-#: admin/systems/opsi/class_opsiClient.inc:216
-#: addons/opsi/class_opsiImport.inc:98
+#: admin/systems/opsi/class_opsiClient.inc:218
 msgid "Could not update OPSI information"
-msgstr ""
+msgstr "Nedaří se aktualizovat OPSI informaci"
 
-#: admin/systems/opsi/class_opsiClient.inc:310
+#: admin/systems/opsi/class_opsiClient.inc:319
 #, php-format
 msgid "Failed to contact OPSI server: %s"
-msgstr ""
+msgstr "Nepodařilo se kontaktovat OPSI server: %s"
 
-#: admin/systems/opsi/class_opsiClient.inc:312
+#: admin/systems/opsi/class_opsiClient.inc:321
 msgid "Never"
 msgstr "Nikdy"
 
@@ -373,7 +372,7 @@ msgstr "OPSI skupiny"
 #, php-format
 msgid ""
 "Statistics for OPSI could not be computed because of the following error: %s"
-msgstr ""
+msgstr "Statistiky pro OPSI nebylo možné spočítat kvůli následující chybě: %s"
 
 #: addons/dashboard/class_dashBoardOpsi.inc:110
 msgid "Profile"
@@ -381,11 +380,11 @@ msgstr "profil"
 
 #: addons/dashboard/class_dashBoardOpsi.inc:110
 msgid "Systems"
-msgstr "systémy"
+msgstr "Systémy"
 
 #: addons/dashboard/class_dashBoardOpsi.inc:110
 msgid "Groups"
-msgstr "skupiny"
+msgstr "Skupiny"
 
 #: addons/opsi/class_opsiImport.inc:30 addons/opsi/class_opsiImport.inc:36
 msgid "OPSI import"
@@ -395,9 +394,31 @@ msgstr "Importovat OPSI"
 msgid "Import windows stations from OPSI into FD"
 msgstr "Importovat počítače s MS Windows z OPSI do F.D."
 
-#: addons/opsi/class_opsiImport.inc:72
+#: addons/opsi/class_opsiImport.inc:58
+msgid "Import localboot products"
+msgstr ""
+
+#: addons/opsi/class_opsiImport.inc:58
+msgid "Import localboot product list configured in OPSI in the FD OPSI tab"
+msgstr ""
+
+#: addons/opsi/class_opsiImport.inc:94
 msgid "Argonaut server is not available"
 msgstr "Server s Argonaut není dostupný"
+
+#: addons/opsi/class_opsiImport.inc:106
+#, php-format
+msgid "Server \"%s\" has no mac address configured in the LDAP"
+msgstr "Serve „%s“ nemá v LDAP nastavenou žádnou MAC adresu"
+
+#: addons/opsi/class_opsiImport.inc:113
+#, php-format
+msgid "Could not find \"%s\" in the LDAP"
+msgstr "„%s“ se nedaří v LDAP nalézt"
+
+#: addons/opsi/class_opsiImport.inc:121 addons/opsi/class_opsiImport.inc:143
+msgid "Could not get OPSI information"
+msgstr "Nedaří se získat OPSI informaci"
 
 #: addons/opsi/opsiimport.tpl.c:2
 msgid ""

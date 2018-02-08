@@ -1,0 +1,136 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
+"Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: addons/gpg/class_pgpServerInfo.inc:31 addons/gpg/class_pgpServerInfo.inc:32
+#: addons/gpg/class_pgpServerInfo.inc:38 addons/gpg/class_pgpServerInfo.inc:56
+msgid "GPG server info"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:60
+msgid "Software"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:60
+msgid "Which software this GPG key server is running"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:65
+msgid "GPG version"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:65
+msgid "Which version of GPG this key server is running"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:70
+msgid "Branch in which keys are stored"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:74
+msgid "Keys RDN"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:74
+msgid "Branch under base in which keys are stored"
+msgstr ""
+
+#: personal/gpg/class_gpgAccount.inc:31
+msgid "GPG keys"
+msgstr ""
+
+#: personal/gpg/class_gpgAccount.inc:35
+msgid "GPG keys of this user"
+msgstr ""
+
+#: personal/gpg/class_gpgAccount.inc:46
+msgid "GPG"
+msgstr ""
+
+#: personal/gpg/class_gpgAccount.inc:47
+msgid "Edit user's GPG IDs"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
+msgid "Configuration error"
+msgstr "설정 에러"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
+msgid "You need to configure GPG base dn through the addons section first"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:138
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:40
+msgid "Key ID"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:139
+msgid "User ID"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:140
+msgid "Creation time"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:141
+msgid "Expiration"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:142
+msgid "Algorithm"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:143
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:80
+msgid "Size"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:144
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:88
+msgid "Revoked"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:145
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
+msgid "Disabled"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:11
+msgid "Please select the desired entries"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:15
+msgid "PGP Key"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:48
+msgid "User"
+msgstr "사용자"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:56
+msgid "Creation date"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:64
+msgid "Expiration date"
+msgstr "만료일자"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:72
+msgid "Type"
+msgstr "타입"

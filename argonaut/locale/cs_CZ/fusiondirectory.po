@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-01-08 15:21+0000\n"
+"POT-Creation-Date: 2018-02-07 11:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2017\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,7 +34,7 @@ msgstr "Nelze načíst %s!"
 #: include/class_supportDaemon.inc:645
 #, php-format
 msgid "\"%s\" is not a file!"
-msgstr "%s není soubor!"
+msgstr "„%s“ není soubor!"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
@@ -47,7 +47,7 @@ msgstr "Nastavení Fuse OPSI modulu pro Argonaut"
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:32
 msgid "Services"
-msgstr "služby"
+msgstr "Služby"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:47
 msgid "OPSI"
@@ -95,7 +95,7 @@ msgstr "Argonaut server"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:53
 msgid "Delete finished tasks"
-msgstr "smazat již dokončené úlohy"
+msgstr "Smazat už dokončené úlohy"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:54
 msgid ""
@@ -127,7 +127,7 @@ msgstr "Protokol, který má být používán službou argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:70
 msgid "Port"
-msgstr "port"
+msgstr "Port"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:71
 msgid "Port on which the argonaut server will be listening"
@@ -135,7 +135,7 @@ msgstr "Port, na kterém bude argonaut server očekávat spojení"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:76
 msgid "Timeout"
-msgstr "časový limit"
+msgstr "Časový limit"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:77
 msgid ""
@@ -219,7 +219,7 @@ msgstr "CN tohoto serverového certifikátu"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:30
 msgid "Argonaut Fuse"
-msgstr ""
+msgstr "Argonaut Fuse"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:31
 msgid "Argonaut Fuse settings"
@@ -231,7 +231,7 @@ msgstr "Základní nastavení"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:48
 msgid "Default mode"
-msgstr "výchozí režim"
+msgstr "Výchozí režim"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:56
 msgid "Directory in which argonaut-fuse will store its log"
@@ -293,7 +293,7 @@ msgstr "Nastavení repozitáře pro Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:67
 msgid "Proxy"
-msgstr "proxy"
+msgstr "Proxy"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:68
 msgid "Specifies the http proxy (like Squid) to use for http and hftp method"
@@ -319,7 +319,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:83
 msgid "Source"
-msgstr "zdroj"
+msgstr "Zdroj"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:83
 msgid "Include source in the mirror"
@@ -360,7 +360,7 @@ msgstr "nastavení DNS pro Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:51
 msgid "Ldap2zone global settings"
-msgstr ""
+msgstr "Globální nastavení pro Ldap2zone"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:54
 msgid "Bind directory"
@@ -406,7 +406,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:86
 msgid "Ldap2zone master settings"
-msgstr ""
+msgstr "Nastavení hlavního ldap2zone"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:89
 msgid "Ignore reverse zone"
@@ -456,7 +456,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:118
 msgid "Manage DNS Slaves"
-msgstr ""
+msgstr "Spravovat podřízená DNS"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:122
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:156
@@ -474,7 +474,7 @@ msgstr "hlavní"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:126
 msgid "Master IP(s) for this zone"
-msgstr ""
+msgstr "IP adresy hlavních pro tuto zónu"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:130
 msgid "reverses"
@@ -482,32 +482,32 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:130
 msgid "This server should be slave of reverses zones as well"
-msgstr ""
+msgstr "Tento server by měl být také podřízený reverzních zón"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:137
 msgid "DNS slaves"
-msgstr ""
+msgstr "Podřízená DNS"
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:31
 msgid "Deployment time frame"
-msgstr ""
+msgstr "Časový rámec nasazení"
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:32
 msgid "Edit deployment time frame"
-msgstr ""
+msgstr "Upravit časový rámec nasazení"
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:44
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:62
 msgid "Time frames"
-msgstr ""
+msgstr "Časové rámce"
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:48
 msgid "Time frames in which deployment is authorized"
-msgstr ""
+msgstr "Časový rámec ve kterém je nasazení autorizováno"
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:52
 msgid "Opening time for this frame as HH:MM"
-msgstr ""
+msgstr "Čas začátku tohoto rámce v podobě HH:MM"
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:56
 msgid "->"
@@ -515,7 +515,7 @@ msgstr ""
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:56
 msgid "Closing time for this frame as HH:MM"
-msgstr ""
+msgstr "Uzavírací čas pro tento rámec v podobě HH:MM"
 
 #: admin/systems/argonaut/class_argonautClient.inc:127
 msgid "Argonaut client"
@@ -527,7 +527,7 @@ msgstr "Upravit nastavení argonaut klienta"
 
 #: admin/systems/argonaut/class_argonautClient.inc:141
 msgid "Argonaut client settings"
-msgstr "nastavení Argonaut klienta"
+msgstr "Nastavení Argonaut klienta"
 
 #: admin/systems/argonaut/class_argonautClient.inc:144
 msgid "Client port"
@@ -592,19 +592,19 @@ msgstr "Import argonaut úlohy"
 
 #: addons/argonaut/class_argonautImportFile.inc:34
 msgid "Imports argonaut tasks from CSV file"
-msgstr ""
+msgstr "Importuje argonaut úlohy z CSV souboru"
 
 #: addons/argonaut/class_argonautImportFile.inc:49
 msgid "Import actions from CSV file"
-msgstr ""
+msgstr "Importovat akce z CSV souboru"
 
 #: addons/argonaut/class_argonautImportFile.inc:53
 msgid "Import a list of task into argonaut"
-msgstr ""
+msgstr "Importovat seznam úloh do argonaut"
 
 #: addons/argonaut/class_argonautImportFile.inc:63
 msgid "Upload"
-msgstr "nahrát"
+msgstr "Nahrát"
 
 #: addons/argonaut/class_argonautImportFile.inc:67
 msgid "Import file"
@@ -624,10 +624,10 @@ msgstr "import(ovat)"
 
 #: addons/argonaut/class_argonautImportFile.inc:122
 msgid "Fix the errors in your CSV file first"
-msgstr ""
+msgstr "Nejprve opravte chyby ve svém CSV souboru"
 
 #: addons/argonaut/class_argonautImportFile.inc:138
-#: addons/argonaut/class_argonautQueue.inc:245
+#: addons/argonaut/class_argonautQueue.inc:246
 msgid "Infrastructure service"
 msgstr "Služba infrastruktury"
 
@@ -648,16 +648,16 @@ msgstr "MAC adresa"
 #: addons/argonaut/class_argonautImportFile.inc:185
 #: addons/argonaut/deploy-list.xml:14 addons/argonaut/import_events.tpl.c:26
 msgid "Event"
-msgstr "událost"
+msgstr "Událost"
 
 #: addons/argonaut/class_argonautAction.inc:36
 #: addons/argonaut/class_argonautAction.inc:39
 msgid "Argonaut task"
-msgstr ""
+msgstr "Argonaut úlohy"
 
 #: addons/argonaut/class_argonautAction.inc:37
 msgid "Schedule an argonaut task"
-msgstr ""
+msgstr "Naplánovat argonaut úlohu"
 
 #: addons/argonaut/class_argonautAction.inc:53
 #: addons/argonaut/class_argonautAction.inc:73
@@ -671,7 +671,7 @@ msgstr "Akce"
 
 #: addons/argonaut/class_argonautAction.inc:56
 msgid "The action you are about to schedule"
-msgstr ""
+msgstr "Akce kterou se chystáte naplánovat"
 
 #: addons/argonaut/class_argonautAction.inc:68
 msgid "Scheduled"
@@ -679,19 +679,19 @@ msgstr "Naplánováno"
 
 #: addons/argonaut/class_argonautAction.inc:68
 msgid "Wether this job should be scheduled or ran right away"
-msgstr ""
+msgstr "Zda má být tato úloha naplánována nebo spuštěna teď hned"
 
 #: addons/argonaut/class_argonautAction.inc:77
 msgid "Periodical job"
-msgstr "Opakovaná úloha"
+msgstr "Opakující se úloha"
 
 #: addons/argonaut/class_argonautAction.inc:77
 msgid "Wether this job should repeat in time"
-msgstr ""
+msgstr "Zda se jedná o opakovanou úlohu"
 
 #: addons/argonaut/class_argonautAction.inc:81
 msgid "How often this task should be repeated"
-msgstr ""
+msgstr "Jak často by měla být tato úloha opakována"
 
 #: addons/argonaut/class_argonautAction.inc:92
 msgid "Minutes"
@@ -727,77 +727,77 @@ msgid "Targets for this task"
 msgstr "Cíle pro tuto úlohu"
 
 #: addons/argonaut/class_filterArgonautEvents.inc:39
-#: addons/argonaut/class_argonautQueue.inc:279
-#: addons/argonaut/class_argonautQueue.inc:370
+#: addons/argonaut/class_argonautQueue.inc:280
+#: addons/argonaut/class_argonautQueue.inc:371
 #: addons/argonaut/import_events.tpl.c:32
 msgid "Error"
-msgstr "chyba"
+msgstr "Chyba"
 
 #: addons/argonaut/class_filterArgonautEvents.inc:39
 #, php-format
 msgid "Cannot load queue entries: %s"
 msgstr "nelze načíst položky fronty: %s"
 
-#: addons/argonaut/class_argonautQueue.inc:41
-#: addons/argonaut/class_argonautQueue.inc:46
-#: addons/argonaut/class_argonautQueue.inc:49
+#: addons/argonaut/class_argonautQueue.inc:42
+#: addons/argonaut/class_argonautQueue.inc:47
+#: addons/argonaut/class_argonautQueue.inc:50
 msgid "Deployment queue"
 msgstr "Fronta nasazení"
 
-#: addons/argonaut/class_argonautQueue.inc:42
+#: addons/argonaut/class_argonautQueue.inc:43
 msgid "Provide a mechanism to automatically activate systems"
 msgstr "Poskytuje mechanizmus pro samočinnou aktivaci systémů"
 
-#: addons/argonaut/class_argonautQueue.inc:125
+#: addons/argonaut/class_argonautQueue.inc:126
 #: addons/argonaut/deploy-list.xml:86 addons/argonaut/deploy-list.xml:136
 msgid "Remove"
-msgstr "odebrat"
+msgstr "Odebrat"
 
-#: addons/argonaut/class_argonautQueue.inc:126
+#: addons/argonaut/class_argonautQueue.inc:127
 #, php-format
 msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
 msgstr ""
 "Tyto úlohy nemohly být smazány, protože musí být nejprve přerušeny: %s"
 
-#: addons/argonaut/class_argonautQueue.inc:130
+#: addons/argonaut/class_argonautQueue.inc:131
 msgid "Permission"
-msgstr "oprávnění"
+msgstr "Oprávnění"
 
-#: addons/argonaut/class_argonautQueue.inc:193
+#: addons/argonaut/class_argonautQueue.inc:194
 msgid "Info"
-msgstr "informace"
+msgstr "Informace"
 
-#: addons/argonaut/class_argonautQueue.inc:193
+#: addons/argonaut/class_argonautQueue.inc:194
 #, php-format
 msgid "%s"
 msgstr "%s"
 
-#: addons/argonaut/class_argonautQueue.inc:215
+#: addons/argonaut/class_argonautQueue.inc:216
 msgid "Error detail"
-msgstr "podrobnosti chyby"
+msgstr "Podrobnosti chyby"
 
-#: addons/argonaut/class_argonautQueue.inc:279
+#: addons/argonaut/class_argonautQueue.inc:280
 #, php-format
 msgid "Cannot update queue entries."
 msgstr "Nelze aktualizovat položky fronty."
 
-#: addons/argonaut/class_argonautQueue.inc:354
+#: addons/argonaut/class_argonautQueue.inc:355
 msgid "immediately"
 msgstr "okamžitě"
 
-#: addons/argonaut/class_argonautQueue.inc:366
+#: addons/argonaut/class_argonautQueue.inc:367
 msgid "Waiting"
-msgstr "čekání"
+msgstr "Čekání"
 
-#: addons/argonaut/class_argonautQueue.inc:369
+#: addons/argonaut/class_argonautQueue.inc:370
 msgid "Show error"
-msgstr "zobrazit chybu"
+msgstr "Zobrazit chybu"
 
-#: addons/argonaut/class_argonautQueue.inc:373
+#: addons/argonaut/class_argonautQueue.inc:374
 msgid "Processed"
 msgstr "zpracované"
 
-#: addons/argonaut/class_argonautQueue.inc:382
+#: addons/argonaut/class_argonautQueue.inc:383
 msgid "in progress"
 msgstr "probíhá"
 
@@ -807,7 +807,7 @@ msgstr "seznam úloh ve frontě"
 
 #: addons/argonaut/deploy-list.xml:27
 msgid "Target"
-msgstr "cíl"
+msgstr "Cíl"
 
 #: addons/argonaut/deploy-list.xml:35
 msgid "Task"
@@ -815,23 +815,23 @@ msgstr "úkol"
 
 #: addons/argonaut/deploy-list.xml:59
 msgid "Status"
-msgstr "stav"
+msgstr "Stav"
 
 #: addons/argonaut/deploy-list.xml:67
 msgid "Actions"
-msgstr "akce"
+msgstr "Akce"
 
 #: addons/argonaut/deploy-list.xml:97 addons/argonaut/deploy-list.xml:144
 msgid "Abort"
-msgstr "přerušit"
+msgstr "Přerušit"
 
 #: addons/argonaut/deploy-list.xml:108
 msgid "Execute"
-msgstr "spustit"
+msgstr "Spustit"
 
 #: addons/argonaut/deploy-list.xml:120
 msgid "Process now"
-msgstr "zpracovat nyní"
+msgstr "Zpracovat nyní"
 
 #: addons/argonaut/deploy-list.xml:128
 msgid "Retry"
@@ -839,7 +839,7 @@ msgstr "znovu"
 
 #: addons/argonaut/class_argonautEventTypes.inc:67
 msgid "Switch off"
-msgstr "vypnout"
+msgstr "Vypnout"
 
 #: addons/argonaut/class_argonautEventTypes.inc:80
 msgid "Reboot"
@@ -887,11 +887,11 @@ msgstr "skupina objektu"
 
 #: addons/argonaut/import_events.tpl.c:17
 msgid "Available job types: %1"
-msgstr ""
+msgstr "Typy úloh k dispozici: %1"
 
 #: addons/argonaut/import_events.tpl.c:20
 msgid "Timestamp"
-msgstr "časová značka"
+msgstr "Časová značka"
 
 #: addons/argonaut/import_events.tpl.c:29
 msgid "Object group"

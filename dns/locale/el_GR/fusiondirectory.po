@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-01-08 15:21+0000\n"
+"POT-Creation-Date: 2018-02-07 11:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -57,7 +57,7 @@ msgstr "Systems"
 
 #: admin/dns/class_dnsManagement.inc:91 admin/dns/class_dnsManagement.inc:93
 #: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:313
-#: admin/systems/class_dnsHost.inc:319
+#: admin/systems/class_dnsHost.inc:322
 msgid "Could not run ldap2zone"
 msgstr ""
 
@@ -69,25 +69,25 @@ msgstr ""
 msgid "Could not find the primary server"
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:106
+#: admin/dns/class_dnsManagement.inc:109
 msgid "Could not get run ldap2zone"
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:321
+#: admin/dns/class_dnsManagement.inc:111 admin/systems/class_dnsHost.inc:324
 msgid "Ldap2zone"
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:321
+#: admin/dns/class_dnsManagement.inc:111 admin/systems/class_dnsHost.inc:324
 #, php-format
 msgid "Ldap2Zone called for zone \"%s\""
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:112 admin/dns/class_dnsZone.inc:380
-#: admin/systems/class_dnsHost.inc:325
+#: admin/dns/class_dnsManagement.inc:115 admin/dns/class_dnsZone.inc:380
+#: admin/systems/class_dnsHost.inc:328
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: admin/dns/class_dnsManagement.inc:112 admin/systems/class_dnsHost.inc:325
+#: admin/dns/class_dnsManagement.inc:115 admin/systems/class_dnsHost.inc:328
 msgid "Argonaut client needs to be activated to use ldap2zone remotely"
 msgstr ""
 
@@ -143,134 +143,127 @@ msgstr "Ζώνες DNS"
 msgid "DNS zones in this view"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:27
-#, php-format
-msgid ""
-"\"%s\" must contain a fully qualified domain name in lowercase and end with "
-"a final dot.<br/><br/>Example: dns1.example.com."
-msgstr ""
-
-#: admin/dns/class_DnsRecordAttribute.inc:130 admin/dns/class_dnsZone.inc:186
+#: admin/dns/class_DnsRecordAttribute.inc:117 admin/dns/class_dnsZone.inc:186
 msgid "Type"
 msgstr "Τύπος"
 
-#: admin/dns/class_DnsRecordAttribute.inc:133
+#: admin/dns/class_DnsRecordAttribute.inc:120
 msgid "Reverse zone"
 msgstr "Αντίστροφη ζώνη"
 
-#: admin/dns/class_DnsRecordAttribute.inc:133
+#: admin/dns/class_DnsRecordAttribute.inc:120
 msgid "Reverse zone this record should be in, if any"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:166
+#: admin/dns/class_DnsRecordAttribute.inc:153
 msgid "LOC Record"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:170
+#: admin/dns/class_DnsRecordAttribute.inc:157
 msgid "Latitude"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:174
-#: admin/dns/class_DnsRecordAttribute.inc:201
+#: admin/dns/class_DnsRecordAttribute.inc:161
+#: admin/dns/class_DnsRecordAttribute.inc:188
 msgid "Degrees"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:179
-#: admin/dns/class_DnsRecordAttribute.inc:206
+#: admin/dns/class_DnsRecordAttribute.inc:166
+#: admin/dns/class_DnsRecordAttribute.inc:193
 msgid "Minutes"
 msgstr "Λεπτά"
 
-#: admin/dns/class_DnsRecordAttribute.inc:184
-#: admin/dns/class_DnsRecordAttribute.inc:211
+#: admin/dns/class_DnsRecordAttribute.inc:171
+#: admin/dns/class_DnsRecordAttribute.inc:198
 msgid "Seconds"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:189
+#: admin/dns/class_DnsRecordAttribute.inc:176
 msgid "North/South"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:192
+#: admin/dns/class_DnsRecordAttribute.inc:179
 msgid "North"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:192
+#: admin/dns/class_DnsRecordAttribute.inc:179
 msgid "South"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:197
+#: admin/dns/class_DnsRecordAttribute.inc:184
 msgid "Longitude"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:216
+#: admin/dns/class_DnsRecordAttribute.inc:203
 msgid "East/West"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:219
+#: admin/dns/class_DnsRecordAttribute.inc:206
 msgid "East"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:219
+#: admin/dns/class_DnsRecordAttribute.inc:206
 msgid "West"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:224
+#: admin/dns/class_DnsRecordAttribute.inc:211
 msgid "Altitude (meters)"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:229
+#: admin/dns/class_DnsRecordAttribute.inc:216
 msgid "Size (meters)"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:234
+#: admin/dns/class_DnsRecordAttribute.inc:221
 msgid "Horizontal precision (meters)"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:239
+#: admin/dns/class_DnsRecordAttribute.inc:226
 msgid "Vertical precision (meters)"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:250
+#: admin/dns/class_DnsRecordAttribute.inc:237
 msgid "NAPTR Record"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:254
+#: admin/dns/class_DnsRecordAttribute.inc:241
 msgid "Order"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:254
+#: admin/dns/class_DnsRecordAttribute.inc:241
 msgid ""
 "Integer specifying the order in which the NAPTR records MUST be processed to"
 " ensure the correct ordering of rules.  Low numbers are processed before "
 "high numbers."
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:259
+#: admin/dns/class_DnsRecordAttribute.inc:246
 msgid "Preference"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:259
+#: admin/dns/class_DnsRecordAttribute.inc:246
 msgid ""
 "Integer that specifies the order in which NAPTR records with equal \"order\""
 " values SHOULD be processed, low numbers being processed before high "
 "numbers."
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:264
+#: admin/dns/class_DnsRecordAttribute.inc:251
 msgid "Flags"
 msgstr "Σημάνσεις"
 
-#: admin/dns/class_DnsRecordAttribute.inc:264
+#: admin/dns/class_DnsRecordAttribute.inc:251
 msgid ""
 "Flags to control aspects of the rewriting and interpretation of the fields "
 "in the record. Flags are single characters from the set [A-Z0-9].  The case "
 "of the alphabetic characters is not significant."
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:268
+#: admin/dns/class_DnsRecordAttribute.inc:255
 msgid "Service"
 msgstr "Υπηρεσία"
 
-#: admin/dns/class_DnsRecordAttribute.inc:268
+#: admin/dns/class_DnsRecordAttribute.inc:255
 msgid ""
 "Specifies the service(s) available down this rewrite path. It may also "
 "specify the particular protocol that is used to talk with a service. A "
@@ -278,129 +271,129 @@ msgid ""
 "terminal."
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:272
+#: admin/dns/class_DnsRecordAttribute.inc:259
 msgid "Regular Expression"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:272
+#: admin/dns/class_DnsRecordAttribute.inc:259
 msgid ""
 "A STRING containing a substitution expression that is applied to the "
 "original string held by the client in order to construct the next domain "
 "name to lookup."
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:276
+#: admin/dns/class_DnsRecordAttribute.inc:263
 msgid "Replacement"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:276
+#: admin/dns/class_DnsRecordAttribute.inc:263
 msgid ""
 "The next NAME to query for NAPTR, SRV, or address records depending on the "
 "value of the flags field."
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:287
+#: admin/dns/class_DnsRecordAttribute.inc:274
 msgid "SRV Record"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:291
-#: admin/dns/class_DnsRecordAttribute.inc:343
+#: admin/dns/class_DnsRecordAttribute.inc:278
+#: admin/dns/class_DnsRecordAttribute.inc:330
 msgid "Priority"
 msgstr "Προτεραιότητα"
 
-#: admin/dns/class_DnsRecordAttribute.inc:291
+#: admin/dns/class_DnsRecordAttribute.inc:278
 msgid "Priority of the target host, lower value means more preferred"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:296
+#: admin/dns/class_DnsRecordAttribute.inc:283
 msgid "Weight"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:296
+#: admin/dns/class_DnsRecordAttribute.inc:283
 msgid ""
 "Relative weight for records with the same priority, higher value means more "
 "preferred"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:301
+#: admin/dns/class_DnsRecordAttribute.inc:288
 msgid "Port"
 msgstr "Θύρα"
 
-#: admin/dns/class_DnsRecordAttribute.inc:301
+#: admin/dns/class_DnsRecordAttribute.inc:288
 msgid "TCP or UDP port on which the service is to be found"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:306
-#: admin/dns/class_DnsRecordAttribute.inc:322
-#: admin/dns/class_DnsRecordAttribute.inc:329
-#: admin/dns/class_DnsRecordAttribute.inc:348
-#: admin/dns/class_DnsRecordAttribute.inc:360
+#: admin/dns/class_DnsRecordAttribute.inc:293
+#: admin/dns/class_DnsRecordAttribute.inc:309
+#: admin/dns/class_DnsRecordAttribute.inc:316
+#: admin/dns/class_DnsRecordAttribute.inc:335
+#: admin/dns/class_DnsRecordAttribute.inc:347
 msgid "Target"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:306
+#: admin/dns/class_DnsRecordAttribute.inc:293
 msgid ""
 "Canonical hostname of the machine providing the service, ending in a dot"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:322
+#: admin/dns/class_DnsRecordAttribute.inc:309
 msgid "An IPv4 address"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:329
+#: admin/dns/class_DnsRecordAttribute.inc:316
 msgid "An IPv6 address"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:339
+#: admin/dns/class_DnsRecordAttribute.inc:326
 msgid "MX Record"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:343
+#: admin/dns/class_DnsRecordAttribute.inc:330
 msgid ""
 "Preference given to this RR among others at the same owner, lower values are"
 " preferred"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:348
+#: admin/dns/class_DnsRecordAttribute.inc:335
 msgid ""
 "Domain name which specifies a host willing to act as a mail exchange for the"
 " owner name"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:360
+#: admin/dns/class_DnsRecordAttribute.inc:347
 msgid ""
 "Domain name which specifies a host which should be authoritative for the "
 "specified class and domain"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:369 admin/dns/class_dnsZone.inc:45
+#: admin/dns/class_DnsRecordAttribute.inc:356 admin/dns/class_dnsZone.inc:45
 #: admin/dns/class_dnsZone.inc:54
 msgid "Record"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:369
+#: admin/dns/class_DnsRecordAttribute.inc:356
 msgid ""
 "SSHFP record content. Can be obtained using \"ssh-keygen -r some.host.tld\","
 " or sshfp command for instance"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:375
+#: admin/dns/class_DnsRecordAttribute.inc:362
 msgid "Redirect to"
 msgstr "Ανακατεύθυνση σε"
 
-#: admin/dns/class_DnsRecordAttribute.inc:375
+#: admin/dns/class_DnsRecordAttribute.inc:362
 msgid "Domain that this subdomain is an alias of"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:381 admin/dns/class_dnsZone.inc:187
+#: admin/dns/class_DnsRecordAttribute.inc:368 admin/dns/class_dnsZone.inc:187
 msgid "Content"
 msgstr "Περιεχόμενο"
 
-#: admin/dns/class_DnsRecordAttribute.inc:381
+#: admin/dns/class_DnsRecordAttribute.inc:368
 msgid "Content of this record"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:431
+#: admin/dns/class_DnsRecordAttribute.inc:418
 msgid "The entered IP does not match the selected reverse zone"
 msgstr ""
 
@@ -440,125 +433,125 @@ msgstr ""
 
 #: admin/dns/class_dnsZone.inc:483 admin/dns/class_dnsZone.inc:492
 #: admin/dns/class_dnsZone.inc:500 admin/dns/class_dnsZone.inc:508
-#: admin/dns/class_dnsZone.inc:529 admin/dns/class_dnsZone.inc:566
-#: admin/dns/class_dnsZone.inc:572 admin/dns/class_dnsZone.inc:584
+#: admin/dns/class_dnsZone.inc:529 admin/dns/class_dnsZone.inc:562
+#: admin/dns/class_dnsZone.inc:568 admin/dns/class_dnsZone.inc:580
 msgid "LDAP error"
 msgstr "Σφάλμα LDAP"
 
-#: admin/dns/class_dnsZone.inc:679
+#: admin/dns/class_dnsZone.inc:675
 #, php-format
 msgid ""
 "\"%s\" must contain a domain name in lowercase and end with a final "
 "dot.<br/><br/>Example: example.com."
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:682
+#: admin/dns/class_dnsZone.inc:678
 #, php-format
 msgid ""
 "\"%s\" must contain a domain name in lowercase.<br/><br/>Example: "
 "example.com"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:703 admin/dns/class_dnsZone.inc:704
-#: admin/dns/class_dnsZone.inc:706
+#: admin/dns/class_dnsZone.inc:699 admin/dns/class_dnsZone.inc:700
+#: admin/dns/class_dnsZone.inc:702
 msgid "DNS zone"
 msgstr "Ζώνη DNS"
 
-#: admin/dns/class_dnsZone.inc:721
+#: admin/dns/class_dnsZone.inc:717
 msgid "Zone"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:725
+#: admin/dns/class_dnsZone.inc:721
 msgid "Zone name"
 msgstr "Όνομα ζώνης"
 
-#: admin/dns/class_dnsZone.inc:735
+#: admin/dns/class_dnsZone.inc:731
 msgid "Reverse zones"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:735
+#: admin/dns/class_dnsZone.inc:731
 #, php-format
 msgid ""
 "Reverse zones for this zone in the form xx.xx.in-addr.arpa%1$s or "
 "x.x.ip6.arpa%1$s"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:748
+#: admin/dns/class_dnsZone.inc:744
 msgid "SOA record"
 msgstr "Εγγραφή SOA "
 
-#: admin/dns/class_dnsZone.inc:751
+#: admin/dns/class_dnsZone.inc:747
 msgid "SOA Record"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:755
+#: admin/dns/class_dnsZone.inc:751
 msgid "Primary DNS server"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:755
+#: admin/dns/class_dnsZone.inc:751
 msgid ""
 "Domain name of the name server that was the original or primary source of "
 "data for this zone"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:759
+#: admin/dns/class_dnsZone.inc:755
 msgid "Mail address"
 msgstr "Διεύθυνση αλληλογραφίας"
 
-#: admin/dns/class_dnsZone.inc:759
+#: admin/dns/class_dnsZone.inc:755
 msgid ""
 "Domain name which specifies the mailbox of the person responsible for this "
 "zone"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:763
+#: admin/dns/class_dnsZone.inc:759
 msgid "Serial number"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:763
+#: admin/dns/class_dnsZone.inc:759
 msgid "Version number of the original copy of the zone"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:768
+#: admin/dns/class_dnsZone.inc:764
 msgid "Refresh"
 msgstr "Ανανέωση"
 
-#: admin/dns/class_dnsZone.inc:768
+#: admin/dns/class_dnsZone.inc:764
 msgid "Time interval before the zone should be refreshed"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:773
+#: admin/dns/class_dnsZone.inc:769
 msgid "Retry"
 msgstr "Προσπάθεια ξανά"
 
-#: admin/dns/class_dnsZone.inc:773
+#: admin/dns/class_dnsZone.inc:769
 msgid ""
 "Time interval that should elapse before a failed refresh should be retried"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:778
+#: admin/dns/class_dnsZone.inc:774
 msgid "Expire"
 msgstr "Λήξη"
 
-#: admin/dns/class_dnsZone.inc:778
+#: admin/dns/class_dnsZone.inc:774
 msgid ""
 "Time value that specifies the upper limit on the time interval that can "
 "elapse before the zone is no longer authoritative"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:783
+#: admin/dns/class_dnsZone.inc:779
 msgid "TTL"
 msgstr "TTL"
 
-#: admin/dns/class_dnsZone.inc:783
+#: admin/dns/class_dnsZone.inc:779
 msgid "Minimum TTL field that should be exported with any RR from this zone"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:794
+#: admin/dns/class_dnsZone.inc:790
 msgid "Records"
 msgstr ""
 
-#: admin/dns/class_dnsZone.inc:798
+#: admin/dns/class_dnsZone.inc:794
 msgid "The DNS records for this zone"
 msgstr ""
 
@@ -592,16 +585,16 @@ msgstr ""
 msgid "The primary server for zone \"%s\""
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:370 admin/systems/class_dnsHost.inc:389
+#: admin/systems/class_dnsHost.inc:373 admin/systems/class_dnsHost.inc:392
 #, php-format
 msgid "%d records were updated from %s to %s in zone %s"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:402 admin/systems/class_dnsHost.inc:431
+#: admin/systems/class_dnsHost.inc:405 admin/systems/class_dnsHost.inc:434
 msgid "DNS update"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:471 admin/systems/class_dnsHost.inc:488
+#: admin/systems/class_dnsHost.inc:479 admin/systems/class_dnsHost.inc:500
 #, php-format
 msgid "%d records were removed in zone %s"
 msgstr ""

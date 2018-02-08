@@ -1,0 +1,240 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
+"Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: config/user-reminder/class_userReminderConfig.inc:28
+msgid "User reminder"
+msgstr "사용자 리마인더"
+
+#: config/user-reminder/class_userReminderConfig.inc:29
+msgid "Configuration for the reminder of accounts expiration"
+msgstr "계정 만료에 대한 리마인더 설정"
+
+#: config/user-reminder/class_userReminderConfig.inc:40
+msgid "User reminder settings"
+msgstr "사용자 리마인더 설정"
+
+#: config/user-reminder/class_userReminderConfig.inc:43
+msgid "Delay before expiration"
+msgstr "만료 전 지연시간"
+
+#: config/user-reminder/class_userReminderConfig.inc:43
+msgid "Days before expiration to send the first mail"
+msgstr "첫 만료 메일 보내기 전 일자"
+
+#: config/user-reminder/class_userReminderConfig.inc:48
+msgid "Delay before sending again"
+msgstr "재발송 전 지연시간"
+
+#: config/user-reminder/class_userReminderConfig.inc:48
+msgid "Days before sending a second mail (0 to disable)"
+msgstr "두번째 메일 보내기 전 일자(0 : 미사용)"
+
+#: config/user-reminder/class_userReminderConfig.inc:53
+msgid "Extension of the validity"
+msgstr "유효기간 연장"
+
+#: config/user-reminder/class_userReminderConfig.inc:53
+msgid "Extension of the duration of the account in days"
+msgstr "계정의  연장기간"
+
+#: config/user-reminder/class_userReminderConfig.inc:58
+msgid "Sender email address"
+msgstr "발송자 이메일주소"
+
+#: config/user-reminder/class_userReminderConfig.inc:58
+msgid "Email address from which mails will be sent"
+msgstr "메일이 발송될 이메일주소"
+
+#: config/user-reminder/class_userReminderConfig.inc:63
+msgid "Allow use of alternate addresses"
+msgstr ""
+
+#: config/user-reminder/class_userReminderConfig.inc:63
+msgid ""
+"Whether the field gosaMailAlternateAddress should be used as well to send "
+"reminders"
+msgstr ""
+
+#: config/user-reminder/class_userReminderConfig.inc:70
+msgid "Ppolicy email settings"
+msgstr "이메일 설정 정책"
+
+#: config/user-reminder/class_userReminderConfig.inc:73
+#: config/user-reminder/class_userReminderConfig.inc:99
+msgid "Forward alerts to the manager"
+msgstr "관리자에게 경고 전달"
+
+#: config/user-reminder/class_userReminderConfig.inc:73
+msgid "Forward ppolicy alerts to the manager"
+msgstr "관리자에게 정책경고 전달"
+
+#: config/user-reminder/class_userReminderConfig.inc:78
+#: config/user-reminder/class_userReminderConfig.inc:104
+#: config/user-reminder/class_userReminderConfig.inc:130
+msgid "Subject"
+msgstr "제목"
+
+#: config/user-reminder/class_userReminderConfig.inc:78
+msgid "Subject of the ppolicy alert email"
+msgstr "정책 경고 이메일의 제목"
+
+#: config/user-reminder/class_userReminderConfig.inc:80
+msgid "[FusionDirectory] Your password is about to expire"
+msgstr "[FustionDirectory] 패스워드가 만료 임박"
+
+#: config/user-reminder/class_userReminderConfig.inc:83
+#: config/user-reminder/class_userReminderConfig.inc:135
+#, php-format
+msgid "Body (%s are cn and login)"
+msgstr "내용(%s은 cn과 로그인)"
+
+#: config/user-reminder/class_userReminderConfig.inc:84
+#, php-format
+msgid ""
+"Body of the ppolicy alert email, sent when the user password is about to "
+"expire. Use %s for the cn and uid."
+msgstr "사용자 패스워드 만료가 임박할 때 보낼 정책 경고 이메일의 내용. cn과 uid로 %s를 사용하세요."
+
+#: config/user-reminder/class_userReminderConfig.inc:86
+#, php-format
+msgid ""
+"Dear %1$s,\n"
+"your password for account %2$s is about to expire, please change your password: \n"
+"https://"
+msgstr ""
+"%1$s님, \n"
+"계정 %2$s에 대한 패스워드 만료가 임박했으니 패스워드를 변경해 주세요.\n"
+"https://"
+
+#: config/user-reminder/class_userReminderConfig.inc:96
+msgid "Alert email settings"
+msgstr "이메일 설정 경고"
+
+#: config/user-reminder/class_userReminderConfig.inc:104
+msgid "Subject of the alert email"
+msgstr "경고 이메일의 제목"
+
+#: config/user-reminder/class_userReminderConfig.inc:106
+msgid "[FusionDirectory] Your account is about to expire"
+msgstr "[FusionDirectory] 계정 만료 임박"
+
+#: config/user-reminder/class_userReminderConfig.inc:109
+#, php-format
+msgid "Body (%s are cn, login, and link token)"
+msgstr "내용 (%s은 cn, 로그인, 링크 토큰)"
+
+#: config/user-reminder/class_userReminderConfig.inc:110
+#, php-format
+msgid ""
+"Body of the alert email, sent when the user is about to expire. Use %s for "
+"the cn, uid and token."
+msgstr "사용자 만료가 임박할 때 발송하는 경고 이메일의 내용. cn, uid, 토큰으로 %s를 사용하세요."
+
+#: config/user-reminder/class_userReminderConfig.inc:112
+#, php-format
+msgid ""
+"Dear %1$s,\n"
+"your account %2$s is about to expire, please use this link to avoid this: \n"
+"https://"
+msgstr ""
+"%1$s님,\n"
+"%2$s 계정이 만료되는 것을 방지하기 아래 링크를 사용하세요.\n"
+"https://"
+
+#: config/user-reminder/class_userReminderConfig.inc:122
+msgid "Confirmation email settings"
+msgstr "이메일 설정 확인"
+
+#: config/user-reminder/class_userReminderConfig.inc:125
+msgid "Forward confirmation to the manager"
+msgstr "관리자에게 확인 전달"
+
+#: config/user-reminder/class_userReminderConfig.inc:125
+msgid "Forward account extension confirmation to the manager"
+msgstr "관리자에게 계정 연장 확인 전달"
+
+#: config/user-reminder/class_userReminderConfig.inc:130
+msgid "Subject of the confirmation email"
+msgstr "확인 이메일의 제목"
+
+#: config/user-reminder/class_userReminderConfig.inc:132
+msgid "[FusionDirectory] Your account expiration has been postponed"
+msgstr "[FusionDirectory] 계정 만료가 연기되었습니다"
+
+#: config/user-reminder/class_userReminderConfig.inc:136
+#, php-format
+msgid ""
+"Body of the confirmation email, sent when the user has postponed expiration."
+" Use %s for the cn and uid."
+msgstr "사용자 만료가 연기되었을 때 발송하는 확인 이메일의 내용. cn과 uid로 %s를 이용하세요."
+
+#: config/user-reminder/class_userReminderConfig.inc:138
+#, php-format
+msgid ""
+"Dear %1$s,\n"
+" your account %2$s expiration has been successfully postponed.\n"
+msgstr ""
+"%1$s님, \n"
+"%2$s 계정의 만료가 정상적으로연기되었습니다.\n"
+
+#: html/class_expiredUserPostpone.inc:59
+msgid "This token is invalid"
+msgstr "토큰이 유효하지 않습니다."
+
+#: html/class_expiredUserPostpone.inc:202
+msgid "Contact your administrator, there was a problem with mail server"
+msgstr "메일 서버에 문제가 발생핬습니다. 관리자에게 문의바랍니다."
+
+#: html/class_expiredUserPostpone.inc:211
+#, php-format
+msgid "Did not find an account with login \"%s\""
+msgstr "로그인 계정 \"%s\"을 찾을 수 없습니다."
+
+#: html/class_expiredUserPostpone.inc:214
+#, php-format
+msgid "Found multiple accounts with login \"%s\""
+msgstr "로그인 계정 \"%s\"이 여러 개 있습니다."
+
+#: ihtml/themes/breezy/user-reminder.tpl.c:2
+#: ihtml/themes/breezy/user-reminder.tpl.c:5
+msgid "User"
+msgstr "사용자"
+
+#: ihtml/themes/breezy/user-reminder.tpl.c:8
+msgid "Expiration postpone"
+msgstr "만료 연기"
+
+#: ihtml/themes/breezy/user-reminder.tpl.c:11
+#: ihtml/themes/breezy/user-reminder.tpl.c:14
+msgid "Success"
+msgstr "성공"
+
+#: ihtml/themes/breezy/user-reminder.tpl.c:17
+msgid "Your expiration has been postponed successfully."
+msgstr "만료 연기가 정상처리 되었습니다."
+
+#: ihtml/themes/breezy/user-reminder.tpl.c:20
+#: ihtml/themes/breezy/user-reminder.tpl.c:23
+msgid "Error"
+msgstr "오류"
+
+#: ihtml/themes/breezy/user-reminder.tpl.c:26
+msgid "There was a problem"
+msgstr "문제 발생"

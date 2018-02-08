@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-01-08 15:21+0000\n"
+"POT-Creation-Date: 2018-02-07 11:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2017\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: admin/groups/posix/class_posixGroup.inc:34
 msgid "Group"
-msgstr "skupina"
+msgstr "Skupina"
 
 #: admin/groups/posix/class_posixGroup.inc:35
 msgid "POSIX group information"
@@ -36,11 +36,11 @@ msgstr "POSIX skupina uživatelů"
 
 #: admin/groups/posix/class_posixGroup.inc:57
 msgid "Properties"
-msgstr "vlastnosti"
+msgstr "Vlastnosti"
 
 #: admin/groups/posix/class_posixGroup.inc:61
 msgid "Name"
-msgstr "název"
+msgstr "Název"
 
 #: admin/groups/posix/class_posixGroup.inc:61
 msgid "Name of this group"
@@ -48,7 +48,7 @@ msgstr "Název této skupiny"
 
 #: admin/groups/posix/class_posixGroup.inc:66
 msgid "Description"
-msgstr "popis"
+msgstr "Popis"
 
 #: admin/groups/posix/class_posixGroup.inc:66
 msgid "Short description of this group"
@@ -75,7 +75,7 @@ msgstr "Identifikátor (GID) pro tuto skupinu"
 #: admin/groups/posix/class_posixGroup.inc:81
 #: admin/groups/posix/class_posixGroup.inc:84
 msgid "Group members"
-msgstr "členové skupiny"
+msgstr "Členové skupiny"
 
 #: admin/groups/posix/class_posixGroup.inc:91
 #: personal/posix/class_posixAccount.inc:203
@@ -119,7 +119,7 @@ msgstr "POSiX nastavení"
 
 #: config/posix/class_posixConfig.inc:29
 msgid "FusionDirectory POSIX plugin configuration"
-msgstr ""
+msgstr "Nastavení zásuvného modulu POSIX pro FusionDirectory"
 
 #: config/posix/class_posixConfig.inc:42
 msgid "Posix"
@@ -127,11 +127,11 @@ msgstr "POSIX"
 
 #: config/posix/class_posixConfig.inc:46
 msgid "POSIX groups RDN"
-msgstr ""
+msgstr "Relativní rozlišený název POSIX skupiny"
 
 #: config/posix/class_posixConfig.inc:46
 msgid "The branch where POSIX groups are stored."
-msgstr ""
+msgstr "Větev ve které jsou ukládány POSIX skupiny."
 
 #: config/posix/class_posixConfig.inc:51
 msgid "Group/user min id"
@@ -231,7 +231,7 @@ msgstr ""
 
 #: config/posix/class_posixConfig.inc:101
 msgid "Shells"
-msgstr ""
+msgstr "Shelly"
 
 #: config/posix/class_posixConfig.inc:105
 msgid "Available shells"
@@ -247,7 +247,7 @@ msgstr "Výchozí shell"
 
 #: config/posix/class_posixConfig.inc:112
 msgid "Shell used by default when activating Unix tab."
-msgstr ""
+msgstr "Shell použitý jako výchozí při aktivaci Unix karty."
 
 #: personal/posix/class_posixAccount.inc:88
 #: personal/posix/class_posixAccount.inc:117
@@ -260,7 +260,7 @@ msgstr "upravit POSIXová nastavení uživatele"
 
 #: personal/posix/class_posixAccount.inc:121
 msgid "Home directory"
-msgstr "domovský adresář"
+msgstr "Domovská složka"
 
 #: personal/posix/class_posixAccount.inc:121
 msgid "The path to the home directory of this user"
@@ -276,11 +276,11 @@ msgstr "Který shell by měl být použit, když se uživatel přihlásí"
 
 #: personal/posix/class_posixAccount.inc:128
 msgid "unconfigured"
-msgstr "nenastavené"
+msgstr "nenastaveno"
 
 #: personal/posix/class_posixAccount.inc:132
 msgid "Primary group"
-msgstr "hlavní skupina"
+msgstr "Hlavní skupina"
 
 #: personal/posix/class_posixAccount.inc:132
 msgid "Primary group for this user"
@@ -288,7 +288,7 @@ msgstr "Hlavní skupina tohoto uživatele"
 
 #: personal/posix/class_posixAccount.inc:136
 msgid "Status"
-msgstr "stav"
+msgstr "Stav"
 
 #: personal/posix/class_posixAccount.inc:136
 msgid "Status of this user unix account"
@@ -323,11 +323,11 @@ msgstr "Hodnota identifikátoru hlavní skupiny tohoto uživatele"
 #: personal/posix/class_posixAccount.inc:156
 #: personal/posix/class_posixAccount.inc:159
 msgid "Group membership"
-msgstr "členství ve skupinách"
+msgstr "Členství ve skupinách"
 
 #: personal/posix/class_posixAccount.inc:163
 msgid "Account"
-msgstr "účet"
+msgstr "Účet"
 
 #: personal/posix/class_posixAccount.inc:167
 msgid "User must change password on first login"
@@ -343,13 +343,15 @@ msgstr ""
 
 #: personal/posix/class_posixAccount.inc:171
 msgid "Minimum delay between password changes (days)"
-msgstr ""
+msgstr "Minimální prodleva mezi změnami hesla (dny)"
 
 #: personal/posix/class_posixAccount.inc:171
 msgid ""
 "The user won't be able to change his password before this number of days "
 "(leave empty to disable)"
 msgstr ""
+"Uživatel nebude moci změnit své heslo před uplynutím tohoto počtu dnů "
+"(nevyplnění funkci vypíná)"
 
 #: personal/posix/class_posixAccount.inc:176
 msgid "Delay before forcing password change (days)"
@@ -442,17 +444,19 @@ msgstr "Skupina uživatele %s"
 #: personal/posix/class_posixAccount.inc:804
 #: personal/posix/class_posixAccount.inc:998
 msgid "Warning"
-msgstr "varování"
+msgstr "Varování"
 
 #: personal/posix/class_posixAccount.inc:783
 #, php-format
 msgid "Unknown ID allocation method \"%s\"!"
-msgstr ""
+msgstr "Neznámá metoda přiřazování identifikátorů „%s“!"
 
 #: personal/posix/class_posixAccount.inc:805
 #, php-format
 msgid "Timeout while waiting for lock. Ignoring lock from %s!"
 msgstr ""
+"Překročení časového limitu při čekání na zámek. Zámek od %s nebude brán v "
+"potaz!"
 
 #: personal/posix/class_posixAccount.inc:832
 #: personal/posix/class_posixAccount.inc:872
@@ -462,7 +466,7 @@ msgstr ""
 #: personal/posix/class_posixAccount.inc:904
 #: personal/posix/class_posixAccount.inc:966
 msgid "Error"
-msgstr "chyba"
+msgstr "Chyba"
 
 #: personal/posix/class_posixAccount.inc:832
 #: personal/posix/class_posixAccount.inc:872
