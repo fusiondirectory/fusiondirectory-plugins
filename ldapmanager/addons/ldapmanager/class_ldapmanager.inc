@@ -111,7 +111,7 @@ class ldapmanager extends simplePlugin
             _('Import an LDIF file into your LDAP. Remember that FusionDirectory will not check your LDIFs for FusionDirectory conformance.'),
             'import',
             array(
-              new FileAttribute (
+              new FileTextAreaAttribute (
                 '', '',
                 'import_ldif_file', FALSE
               ),
