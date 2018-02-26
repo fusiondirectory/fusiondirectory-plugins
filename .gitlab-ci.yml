@@ -20,7 +20,8 @@ create_php_code_sniffer_rapport:
     - apt-get install -y -qq  git php-cli php-codesniffer
   script:
     - git clone https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
-    - phpcs --ignore=class_sieve.inc --standard=../dev-tools/php-codesniffer-rules/FDStandard/ruleset.xml $(find . -type f -name '*.php' -o -name '*.inc')
+    - find . -type f -name '*.php' -o -name '*.inc' > ./filelist
+    - phpcs --ignore=class_sieve.inc --standard=../dev-tools/php-codesniffer-rules/FDStandard/ruleset.xml --file-list=./filelist
 
 # PHP lint
 create_php_lint_rapport:
