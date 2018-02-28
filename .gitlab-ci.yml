@@ -6,12 +6,38 @@ variables:
   GIT_SSL_NO_VERIFY: "true"
 
 stages:
-  - test
+  - lint
+  - codestyle
+  - manpages
   - transifex
+
+## Stage lint
+
+# PHP lint (jessie)
+create_php_lint_rapport_jessie:
+  image: php:5.6.33-cli-jessie
+  stage: lint
+  only:
+    - branches
+    - tags
+  script:
+    - find . -type f -name '*.php' -o -name '*.inc' -print0 | xargs -0 -n1 php -l
+
+# PHP lint (stretch)
+create_php_lint_rapport_stretch:
+  image: php:cli-stretch
+  stage: lint
+  only:
+    - branches
+    - tags
+  script:
+    - find . -type f -name '*.php' -o -name '*.inc' -print0 | xargs -0 -n1 php -l
+
+## Stage codestyle
 
 # PHP codesniffer
 create_php_code_sniffer_rapport:
-  stage: test
+  stage: codestyle
   only:
     - branches
     - tags
@@ -22,21 +48,9 @@ create_php_code_sniffer_rapport:
     - git clone https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
     - phpcs --ignore=class_sieve.inc --standard=../dev-tools/php-codesniffer-rules/FDStandard/ruleset.xml $(find . -type f -name '*.php' -o -name '*.inc')
 
-# PHP lint
-create_php_lint_rapport:
-  stage: test
-  only:
-    - branches
-    - tags
-  before_script:
-    - apt-get update -qq
-    - apt-get install -y -qq php-cli
-  script:
-    - find . -type f \( -name '*.php' -o -name '*.inc' \) -print0 | xargs -0 -n1 php -l
-
 # fusiondirectory-update-locale
 fusiondirectory-update-locale:
-  stage: test
+  stage: transifex
   only:
     - branches
     - tags
