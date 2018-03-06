@@ -84,6 +84,7 @@ class personalInfo extends simplePlugin
     return array(
       'plShortName'     => _('Personal'),
       'plDescription'   => _('Personal information'),
+      'plFilter'        => '(objectClass=fdPersonalInfo)',
       'plSelfModify'    => TRUE,
       'plObjectType'    => array('user'),
       'plIcon'          => 'geticon.php?context=applications&icon=user-info&size=48',

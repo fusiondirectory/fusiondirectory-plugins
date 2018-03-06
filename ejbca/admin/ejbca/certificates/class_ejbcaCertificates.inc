@@ -28,6 +28,7 @@ class ejbcaCertificates extends simplePlugin
     return array(
       'plShortName'     => _('EJBCA'),
       'plDescription'   => _('Assign EJBCA certificates to a user'),
+      'plFilter'        => '(objectClass=fdEjbcaCertificates)',
       'plSelfModify'    => TRUE,
       'plObjectType'    => array('user','server','workstation','terminal','printer','component','phone','mobilePhone'),
       'plIcon'          => 'geticon.php?context=applications&icon=ejbca&size=48',

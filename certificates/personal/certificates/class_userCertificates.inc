@@ -116,6 +116,7 @@ class userCertificates extends simplePlugin
     return array(
       'plShortName'     => _('Certificates'),
       'plDescription'   => _('User certificates'),
+      'plFilter'        => '(objectClass=strongAuthenticationUser)',
       'plSelfModify'    => TRUE,
       'plObjectType'    => array('user'),
       'plIcon'          => 'geticon.php?context=types&icon=certificate&size=48',

@@ -21,13 +21,14 @@
 class sambaGroup extends simplePlugin
 {
   var $displayHeader  = TRUE;
-  var $objectclasses  = array("sambaGroupMapping");
+  var $objectclasses  = array('sambaGroupMapping');
 
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Samba'),
       'plDescription' => _('Samba group settings'),
+      'plFilter'      => '(objectClass=sambaGroupMapping)',
       'plIcon'        => 'geticon.php?context=applications&icon=samba&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=samba&size=16',
       'plObjectType'  => array('group'),

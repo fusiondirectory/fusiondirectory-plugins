@@ -45,6 +45,7 @@ class mailGroup extends simplePlugin
     return array(
       'plShortName'     => _('Mail'),
       'plDescription'   => _('Group mail options'),
+      'plFilter'        => '(objectClass=fdGroupMail)',
       'plIcon'          => 'geticon.php?context=applications&icon=internet-mail&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=internet-mail&size=16',
       'plPriority'      => 10,

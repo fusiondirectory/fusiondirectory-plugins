@@ -64,6 +64,7 @@ class spamAssassinAccount extends simplePlugin
     return array(
       'plShortName'     => _('SpamAssassin'),
       'plDescription'   => _('Edit user\'s spam rules'),
+      'plFilter'        => '(objectClass=fdSpamAssassinUser)',
       'plSelfModify'    => TRUE,
       'plObjectType'    => array('user'),
       'plIcon'          => 'geticon.php?context=applications&icon=spamassassin&size=48',

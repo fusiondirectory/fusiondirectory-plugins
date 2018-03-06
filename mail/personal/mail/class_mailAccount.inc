@@ -72,6 +72,7 @@ class mailAccount extends simplePlugin
     return array(
       'plShortName'     => _('Mail'),
       'plDescription'   => _('Mail settings'),
+      'plFilter'        => '(mail=*)',
       'plIcon'          => 'geticon.php?context=applications&icon=internet-mail&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=internet-mail&size=16',
       'plSelfModify'    => TRUE,
@@ -194,15 +195,6 @@ class mailAccount extends simplePlugin
     /* If mail can be used for login it must be unique */
     if (in_array('mail', explode(',', $config->get_cfg_value('loginAttribute')))) {
       $this->attributesAccess['mail']->setUnique('whole');
-    }
-  }
-
-  function is_this_account($attrs)
-  {
-    if (parent::is_this_account($attrs)) {
-      return TRUE;
-    } else {
-      return !empty($attrs['mail'][0]);
     }
   }
 

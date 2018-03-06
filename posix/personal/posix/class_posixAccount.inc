@@ -87,6 +87,7 @@ class posixAccount extends simplePlugin
     return array(
       'plShortName'   => _('Unix'),
       'plDescription' => _('Edit users POSIX settings'),
+      'plFilter'      => '(objectClass=posixAccount)',
       'plIcon'        => 'geticon.php?context=applications&icon=os-linux&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=os-linux&size=16',
       'plSelfModify'  => TRUE,
@@ -363,12 +364,6 @@ class posixAccount extends simplePlugin
       }
       $this->attributesAccess['posixStatus']->setValue($status);
     }
-  }
-
-  function is_this_account($attrs)
-  {
-    /* shadowAccount is not required */
-    return (isset($attrs['objectClass']) && in_array_ics('posixAccount', $attrs['objectClass']));
   }
 
   function getUid()

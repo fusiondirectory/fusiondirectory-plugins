@@ -157,6 +157,7 @@ class sambaAccount extends simplePlugin
     return array(
       'plShortName'     => _('Samba'),
       'plDescription'   => _('Samba settings'),
+      'plFilter'        => '(objectClass=sambaSamAccount)',
       'plIcon'          => 'geticon.php?context=applications&icon=samba&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=samba&size=16',
       'plSelfModify'    => TRUE,

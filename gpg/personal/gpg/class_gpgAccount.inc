@@ -45,6 +45,7 @@ class gpgAccount extends simplePlugin
     return array(
       'plShortName'     => _('GPG'),
       'plDescription'   => _('Edit user\'s GPG IDs'),
+      'plFilter'        => '(objectClass=fdGpgAccount)',
       'plSelfModify'    => TRUE,
       'plObjectType'    => array('user'),
       'plIcon'          => 'geticon.php?context=applications&icon=gpg&size=48',

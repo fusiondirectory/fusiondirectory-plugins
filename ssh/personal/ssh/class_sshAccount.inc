@@ -103,6 +103,7 @@ class sshAccount extends simplePlugin
     return array(
       'plShortName'     => _('SSH'),
       'plDescription'   => _('Edit user\'s SSH public keys'),
+      'plFilter'        => '(objectClass=ldapPublicKey)',
       'plSelfModify'    => TRUE,
       'plDepends'       => array('posixAccount'),
       'plPriority'      => 6,
