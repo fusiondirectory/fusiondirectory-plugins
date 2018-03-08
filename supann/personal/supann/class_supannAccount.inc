@@ -568,7 +568,7 @@ class supannAccount extends simplePlugin
   {
     $this->attributesAccess['supannEtuInscription']->supannPrepareSave();
     $this->attributesAccess['supannRoleEntite']->supannPrepareSave();
-    parent::prepare_save();
+    return parent::prepare_save();
   }
 }
 ?>

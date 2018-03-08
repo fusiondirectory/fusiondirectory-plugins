@@ -126,7 +126,10 @@ class sambaGroup extends simplePlugin
   function prepare_save()
   {
     global $config;
-    parent::prepare_save();
+    $errors = parent::prepare_save();
+    if (!empty($errors)) {
+      return $errors;
+    }
 
     // Generate rid / primaryGroupId
     if (!isset($config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'])) {
@@ -148,6 +151,8 @@ class sambaGroup extends simplePlugin
     } else {
       $this->attrs['sambaSID'] = $this->sambaSID;
     }
+
+    return $errors;
   }
 
   /*! \brief Get a new SambaSID for a group */
