@@ -158,7 +158,7 @@ class netgroup extends simplePlugin
 
     $this->nisNetgroupTriple = $triples;
 
-    parent::prepare_save();
+    return parent::prepare_save();
   }
 }
 ?>
