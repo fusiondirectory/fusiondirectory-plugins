@@ -610,7 +610,7 @@ class fdRPCService
     }
 
     foreach ($dns as $dn) {
-      if (!preg_match('/w/', $ui->get_permissions($dn, 'user/password'))) {
+      if (!preg_match('/w/', $ui->get_permissions($dn, 'user/user', 'userLock'))) {
         $disallowed[] = $dn;
       }
     }
@@ -679,7 +679,7 @@ class fdRPCService
     }
 
     foreach ($dns as $dn) {
-      if (!preg_match('/r/', $ui->get_permissions($dn, 'user/password'))) {
+      if (!preg_match('/r/', $ui->get_permissions($dn, 'user/user', 'userLock'))) {
         $disallowed[] = $dn;
       }
     }
@@ -729,7 +729,7 @@ class fdRPCService
     $pwRecovery->email_address = $email;
     $dn = $pwRecovery->step2();
     if ($pwRecovery->step == 2) { /* No errors */
-      if (!preg_match('/w/', $ui->get_permissions($dn, 'user/password'))) {
+      if (!preg_match('/w/', $ui->get_permissions($dn, 'user/user', 'userPassword'))) {
         return array('errors' => array(msgPool::permModify($dn)));
       }
       $token = $pwRecovery->generateAndStoreToken();
