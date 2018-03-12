@@ -111,13 +111,12 @@ class ppolicyAccount extends simplePlugin
 
   protected function prepare_save ()
   {
-    $errors = parent::prepare_save();
+    parent::prepare_save();
     if (!empty($this->pwdReset)) {
       $this->attrs['pwdAccountLockedTime'] = array();
     } else {
       unset($this->attrs['pwdAccountLockedTime']);
     }
-    return $errors;
   }
 
   function remove_from_parent()

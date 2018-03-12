@@ -500,12 +500,7 @@ class sambaAccount extends simplePlugin
   function prepare_save()
   {
     global $config;
-
-    $errors = parent::prepare_save();
-    if (!empty($errors)) {
-      return $errors;
-    }
-
+    parent::prepare_save();
     /* Load uid and gid of this 'dn' */
     $posixAccount = $this->parent->by_object['posixAccount'];
     $uidNumber    = $posixAccount->uidNumber;
@@ -610,8 +605,6 @@ class sambaAccount extends simplePlugin
         $this->attrs['sambaKickoffTime'] = array();
       }
     }
-
-    return $errors;
   }
 
   function adapt_from_template($attrs, $skip = array())

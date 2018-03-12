@@ -824,7 +824,7 @@ class dnsZone extends simplePlugin
       }
       $this->attributesAccess['sOARecord']->attributes[2]->setValue($serial);
     }
-    return parent::prepare_save();
+    parent::prepare_save();
   }
 
   function ldap_save ()
