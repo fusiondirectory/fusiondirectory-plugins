@@ -453,6 +453,7 @@ class posixAccount extends simplePlugin
   function prepare_save()
   {
     global $config;
+
     /* Fill gecos */
     if (isset($this->parent) && $this->parent !== NULL) {
       $this->gecos = rewrite($this->parent->getBaseObject()->cn);
@@ -554,7 +555,11 @@ class posixAccount extends simplePlugin
 
         $errors = $tabObject->save();
         if (!empty($errors)) {
-          msg_dialog::displayChecks($errors);
+          array_unshift(
+            $errors,
+            sprintf(_('Could not create automatic primary group (using gidNumber "%s"), because of the following errors'), $this->gidNumber)
+          );
+          return $errors;
         } else {
           @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
             sprintf('Primary group "%s" created, using gidNumber "%s".', $tabObject->dn, $this->gidNumber), '');
@@ -586,7 +591,10 @@ class posixAccount extends simplePlugin
       }
     }
 
-    parent::prepare_save();
+    $errors = parent::prepare_save();
+    if (!empty($errors)) {
+      return $errors;
+    }
 
     if ($this->trustMode == 'fullaccess') {
       $this->attrs['host'] = array('*');
@@ -612,6 +620,8 @@ class posixAccount extends simplePlugin
       }
       $this->attrs['mustchangepassword'] = ($this->mustchangepassword ? 'TRUE' : 'FALSE');
     }
+
+    return $errors;
   }
 
   protected function shouldSave()

@@ -111,7 +111,10 @@ class sambaSystemTab extends simplePlugin
   {
     global $config;
     $this->update_uid();
-    parent::prepare_save();
+    $errors = parent::prepare_save();
+    if (!empty($errors)) {
+      return $errors;
+    }
 
     // Check if the sambaSID exist and that it is correct
     // If not get it from config and generate a new sid
@@ -133,6 +136,8 @@ class sambaSystemTab extends simplePlugin
       $this->attrs['sambaSID']  = $sid;
       $this->attrs['uidNumber'] = $uidNumber + $this->ridBase;
     }
+
+    return $errors;
   }
 }
 ?>
