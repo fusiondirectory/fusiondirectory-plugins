@@ -123,6 +123,14 @@ class opsiClient extends simplePlugin
     }
   }
 
+  function prepare_save()
+  {
+    if ($this->fdOpsiProfileDn == 'inherited') {
+      $this->fdOpsiServerDn = 'inherited';
+    }
+    return parent::prepare_save();
+  }
+
   function save()
   {
     global $config;
@@ -283,6 +291,17 @@ class opsiClient extends simplePlugin
     while ($attrs = $ldap->fetch()) {
       $profilesdn[]    = $attrs['dn'];
       $profileslabel[] = $attrs['cn'][0];
+    }
+    if ($this->member_of_group && isset($this->group_attrs['fdOpsiProfileDn'][0])) {
+      $profilesdn[]     = 'inherited';
+      $profileslabel[]  = sprintf(_('Inherited (%s)'), ldap_explode_dn($this->group_attrs['fdOpsiProfileDn'][0], 1)[0]);
+      $this->attributesAccess['fdOpsiProfileDn']->setManagedAttributes(
+        array(
+          'disable' => array(
+            'inherited' => array('fdOpsiServerDn')
+          )
+        )
+      );
     }
     $this->attributesAccess['fdOpsiProfileDn']->setChoices($profilesdn, $profileslabel);
 
