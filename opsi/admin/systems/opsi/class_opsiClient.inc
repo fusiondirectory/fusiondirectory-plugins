@@ -284,8 +284,14 @@ class opsiClient extends simplePlugin
   public function server_changed ()
   {
     global $config;
+
+    $fdOpsiServerDn = $this->fdOpsiServerDn;
+    if ($fdOpsiServerDn == 'inherited') {
+      $fdOpsiServerDn = $this->group_attrs['fdOpsiServerDn'][0];
+    }
+
     $ldap = $config->get_ldap_link();
-    $ldap->search('(&(objectClass=opsiProfile)(fdOpsiServerDn='.$this->fdOpsiServerDn.'))', array('cn'));
+    $ldap->search('(&(objectClass=opsiProfile)(fdOpsiServerDn='.$fdOpsiServerDn.'))', array('cn'));
     $profilesdn    = array();
     $profileslabel = array();
     while ($attrs = $ldap->fetch()) {
@@ -313,20 +319,20 @@ class opsiClient extends simplePlugin
       );
       return;
     }
-    $ldap->cat($this->fdOpsiServerDn);
+    $ldap->cat($fdOpsiServerDn);
     if ($attrs = $ldap->fetch()) {
       if (isset($attrs['macAddress'][0])) {
         $macAddress = $attrs['macAddress'][0];
       } else {
         msg_dialog::display(
           _('No mac address'),
-          sprintf(_('Server %s has no mac address configured in the LDAP'), $this->fdOpsiServerDn), ERROR_DIALOG
+          sprintf(_('Server %s has no mac address configured in the LDAP'), $fdOpsiServerDn), ERROR_DIALOG
         );
         return FALSE;
       }
     } else {
       msg_dialog::display(
-        sprintf(_('Could not find %s in the LDAP'), $this->fdOpsiServerDn),
+        sprintf(_('Could not find %s in the LDAP'), $fdOpsiServerDn),
         msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
       );
       return FALSE;
