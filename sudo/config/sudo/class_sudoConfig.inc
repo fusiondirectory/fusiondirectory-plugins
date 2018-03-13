@@ -27,7 +27,6 @@ class sudoConfig extends simplePlugin
     return array(
       'plShortName'     => _('Sudo configuration'),
       'plDescription'   => _('FusionDirectory sudo plugin configuration'),
-      'plSelfModify'    => FALSE,
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

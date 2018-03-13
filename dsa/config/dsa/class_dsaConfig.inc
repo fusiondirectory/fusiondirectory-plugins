@@ -27,7 +27,6 @@ class dsaConfig extends simplePlugin
     return array(
       "plShortName"     => _("DSA configuration"),
       "plDescription"   => _("FusionDirectory dsa plugin configuration"),
-      "plSelfModify"    => FALSE,
       "plCategory"      => array("configuration"),
       "plObjectType"    => array("smallConfig"),
 

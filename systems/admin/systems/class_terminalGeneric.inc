@@ -42,7 +42,6 @@ class terminalGeneric extends workstationGeneric
     return array(
       'plShortName'   => _('Terminal'),
       'plDescription' => _('Terminal information'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('terminal' =>
         array(
           'name'        => _('Terminal'),

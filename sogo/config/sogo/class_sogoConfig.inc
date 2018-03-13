@@ -27,7 +27,6 @@ class sogoConfig extends simplePlugin
     return array(
       'plShortName'     => _('SOGo configuration'),
       'plDescription'   => _('FusionDirectory sogo plugin configuration'),
-      'plSelfModify'    => FALSE,
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

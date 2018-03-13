@@ -27,7 +27,6 @@ class dnsConfig extends simplePlugin
     return array(
       "plShortName"     => _("DNS configuration"),
       "plDescription"   => _("FusionDirectory dns plugin configuration"),
-      "plSelfModify"    => FALSE,
       "plCategory"      => array("configuration"),
       "plObjectType"    => array("smallConfig"),
 

@@ -31,7 +31,6 @@ class mobilePhoneGeneric extends ipHostPlugin
     return array(
       'plShortName'   => _('Mobile phone'),
       'plDescription' => _('Mobile phone information'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array(
         'mobilePhone' => array(
           'name'        => _('Mobile phone'),

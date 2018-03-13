@@ -38,7 +38,6 @@ class serverGeneric extends workstationGeneric
     return array(
       'plShortName'   => _('Server'),
       'plDescription' => _('Server information'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array(
         'server' => array(
           'name'        => _('Server'),

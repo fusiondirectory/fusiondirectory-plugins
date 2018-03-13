@@ -31,9 +31,7 @@ class terminalStartup extends simplePlugin
     return array(
       'plShortName'     => _('Startup'),
       'plDescription'   => _('Terminal startup'),
-      'plSelfModify'    => FALSE,
       'plPriority'      => 2,
-      'plCategory'      => array('terminal'),
       'plObjectType'    => array('terminal', 'ogroup-dynamic'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

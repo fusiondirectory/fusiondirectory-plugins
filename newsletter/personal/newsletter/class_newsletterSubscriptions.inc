@@ -29,6 +29,7 @@ class newsletterSubscriptions extends simplePlugin
     return array(
       'plShortName'     => _('Newsletter'),
       'plDescription'   => _('Newsletter subscriptions'),
+      'plFilter'        => '(objectClass=fdNewsletterAccount)',
       'plSelfModify'    => TRUE,
       'plObjectType'    => array('user'),
       'plIcon'          => 'geticon.php?context=applications&icon=newsletter&size=48',

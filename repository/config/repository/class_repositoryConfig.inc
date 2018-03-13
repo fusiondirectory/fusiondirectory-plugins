@@ -27,7 +27,6 @@ class repositoryConfig extends simplePlugin
     return array(
       'plShortName'     => _('Repository configuration'),
       'plDescription'   => _('FusionDirectory repository plugin configuration'),
-      'plSelfModify'    => FALSE,
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

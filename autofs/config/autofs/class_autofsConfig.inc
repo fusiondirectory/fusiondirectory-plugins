@@ -27,7 +27,6 @@ class autofsConfig extends simplePlugin
     return array(
       "plShortName"     => _("Autofs configuration"),
       "plDescription"   => _("FusionDirectory autofs plugin configuration"),
-      "plSelfModify"    => FALSE,
       "plCategory"      => array("configuration"),
       "plObjectType"    => array("smallConfig"),
 

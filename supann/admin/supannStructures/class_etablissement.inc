@@ -30,7 +30,6 @@ class etablissement extends simplePlugin
     return array(
       'plShortName'   => _('Establishment'),
       'plDescription' => _('SUPANN Establishment Settings'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('etablissement' => array(
         'name'        => _('SUPANN Establishment'),
         'filter'      => '(&(objectClass=supannEntite)(objectClass=organization))',

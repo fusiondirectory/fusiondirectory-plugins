@@ -27,7 +27,6 @@ class webserviceConfig extends simplePlugin
     return array(
       'plShortName'     => _('Webservice configuration'),
       'plDescription'   => _('FusionDirectory webservice plugin configuration'),
-      'plSelfModify'    => FALSE,
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

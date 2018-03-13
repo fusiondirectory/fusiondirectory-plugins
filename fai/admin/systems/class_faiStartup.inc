@@ -63,7 +63,6 @@ class faiStartup extends simplePlugin
     return array(
       'plShortName'     => _('FAI'),
       'plDescription'   => _('Full automated installation'),
-      'plSelfModify'    => FALSE,
       'plPriority'      => 9,
       'plObjectType'    => array('workstation', 'server', 'ogroup-dynamic'),
       'plForeignKeys'  => array(

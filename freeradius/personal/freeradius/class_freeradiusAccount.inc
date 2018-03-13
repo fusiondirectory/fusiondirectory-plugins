@@ -34,6 +34,7 @@ class freeradiusAccount extends simplePlugin {
     return array(
       'plShortName'   => _('Freeradius'),
       'plDescription' => _('This Plugin is for Radius accounting based in FreeRadius'),
+      'plFilter'      => '(objectClass=radiusprofile)',
       'plIcon'        => 'geticon.php?context=applications&icon=freeradius&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=freeradius&size=16',
       'plSelfModify'  => TRUE,

@@ -28,8 +28,6 @@ class ipmiClient extends simplePlugin
     return array(
       'plShortName'     => _('IPMI client'),
       'plDescription'   => _('Edit IPMI client settings'),
-      'plSelfModify'    => FALSE,
-      'plCategory'      => array('workstation','server'),
       'plObjectType'    => array('workstation','server'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

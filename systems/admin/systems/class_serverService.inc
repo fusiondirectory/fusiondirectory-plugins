@@ -60,7 +60,6 @@ class ServerService extends simpleManagement
     return array(
       'plShortName'   => _('Services'),
       'plDescription' => _('Server services'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('server'),
       'plPrority'     => 5,
 

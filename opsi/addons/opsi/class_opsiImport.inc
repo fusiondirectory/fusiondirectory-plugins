@@ -30,7 +30,6 @@ class opsiImport extends systemImport
       'plShortName'   => _('OPSI import'),
       'plDescription' => _('Import windows stations from OPSI into FD'),
       'plIcon'        => 'geticon.php?context=applications&icon=opsi&size=48',
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array(
         'opsiImport' => array(
           'name'      => _('OPSI import'),

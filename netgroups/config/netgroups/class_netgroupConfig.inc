@@ -27,7 +27,6 @@ class netgroupConfig extends simplePlugin
     return array(
       'plShortName'     => _('Netgroup configuration'),
       'plDescription'   => _('FusionDirectory netgroup plugin configuration'),
-      'plSelfModify'    => FALSE,
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

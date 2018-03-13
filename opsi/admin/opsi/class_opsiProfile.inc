@@ -67,7 +67,6 @@ class opsiProfile extends simplePlugin
       'plShortName'   => _('OPSI profile'),
       'plDescription' => _('OPSI profile'),
       'plIcon'        => 'geticon.php?context=applications&icon=opsi&size=16',
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('opsiProfile' => array(
         'name'    => _('OPSI profile'),
         'filter'  => 'objectClass=opsiProfile',

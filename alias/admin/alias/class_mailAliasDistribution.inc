@@ -30,7 +30,6 @@ class mailAliasDistribution extends simplePlugin
     return array(
       'plShortName'   => _('Temporary mail distribution'),
       'plDescription' => _('Temporary mail distribution'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('mailAliasDistribution' => array(
         'name'        => _('Temporary mail distribution'),
         'filter'      => 'objectClass=mailAliasDistribution',

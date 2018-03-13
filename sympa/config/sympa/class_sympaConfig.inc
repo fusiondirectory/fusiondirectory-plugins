@@ -27,7 +27,6 @@ class sympaConfig extends simplePlugin
     return array(
       'plShortName'     => _('Sympa configuration'),
       'plDescription'   => _('FusionDirectory sympa plugin configuration'),
-      'plSelfModify'    => FALSE,
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

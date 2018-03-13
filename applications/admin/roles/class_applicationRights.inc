@@ -29,6 +29,8 @@ class applicationRights extends simplePlugin
     return array(
       'plShortName'   => _('Applications'),
       'plDescription' => _('Applications allowed for this role'),
+      'plFilter'      => '(objectClass=fdApplicationRights)',
+      'plSmallIcon'   => 'geticon.php?context=mimetypes&icon=application-x-executable&size=16',
       'plObjectType'  => array('role'),
       'plForeignKeys' => array(
         'fdApplicationAllowed' => 'webApplication',

@@ -417,7 +417,6 @@ SCRIPT;
     return array(
       'plShortName'   => _('Options'),
       'plDescription' => _('Sudo options'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('sudo'),
       'plPriority'    => 2,
 

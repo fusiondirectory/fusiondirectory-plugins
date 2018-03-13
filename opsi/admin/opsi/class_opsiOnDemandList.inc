@@ -28,7 +28,6 @@ class opsiOnDemandList extends opsiSoftwareList
       'plShortName'   => _('OPSI ondemand list'),
       'plDescription' => _('OPSI on demand software list'),
       'plIcon'        => 'geticon.php?context=applications&icon=opsi-on-demand&size=16',
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('opsiOnDemandList' => array(
         'name'    => _('OPSI ondemand list'),
         'filter'  => 'objectClass=opsiOnDemandList',

@@ -27,7 +27,6 @@ class aliasConfig extends simplePlugin
     return array(
       "plShortName"     => _("Alias configuration"),
       "plDescription"   => _("FusionDirectory alias plugin configuration"),
-      "plSelfModify"    => FALSE,
       "plCategory"      => array("configuration"),
       "plObjectType"    => array("smallConfig"),
 

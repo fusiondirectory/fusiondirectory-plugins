@@ -64,7 +64,6 @@ class puppetNode extends simplePlugin
     return array(
       "plShortName"       => _("Puppet"),
       "plDescription"     => _("Support for puppet schema in order to edit puppet classes and puppet vars"),
-      "plSelfModify"      => FALSE,
       "plObjectType"      => array("server", "workstation"),
 
       // But simplePlugin can generate the ACL list for us

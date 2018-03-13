@@ -32,7 +32,6 @@ class opsiSoftwareList extends simplePlugin
       'plShortName'   => _('OPSI list'),
       'plDescription' => _('OPSI software list'),
       'plIcon'        => 'geticon.php?context=applications&icon=opsi-software-list&size=16',
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('opsiSoftwareList' => array(
         'name'    => _('OPSI software list'),
         'filter'  => 'objectClass=opsiSoftwareList',

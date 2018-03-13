@@ -28,7 +28,6 @@ class ppolicyConfig extends simplePlugin
     return array(
       "plShortName"     => _("Ppolicy plugin configuration"),
       "plDescription"   => _("FusionDirectory ppolicy plugin configuration"),
-      "plSelfModify"    => FALSE,
       "plCategory"      => array("configuration"),
       "plObjectType"    => array("smallConfig"),
 

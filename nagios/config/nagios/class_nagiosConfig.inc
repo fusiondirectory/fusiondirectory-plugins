@@ -27,7 +27,6 @@ class nagiosConfig extends simplePlugin
     return array(
       'plShortName'     => _('Nagios configuration'),
       'plDescription'   => _('FusionDirectory nagios plugin configuration'),
-      'plSelfModify'    => FALSE,
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

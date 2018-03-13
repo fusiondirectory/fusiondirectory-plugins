@@ -30,7 +30,6 @@ class mailAliasRedirection extends simplePlugin
     return array(
       'plShortName'   => _('Temporary mail redirection'),
       'plDescription' => _('Temporary mail redirection'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('mailAliasRedirection' => array(
         'name'        => _('Temporary mail redirection'),
         'filter'      => 'objectClass=mailAliasRedirection',

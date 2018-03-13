@@ -35,7 +35,6 @@ class opsiClient extends simplePlugin
     return array(
       'plShortName'   => _('OPSI client'),
       'plDescription' => _('Edit OPSI client settings'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('workstation', 'ogroup-dynamic'),
       'plDepends'     => array('sambaSystemTab'),
       'plConflicts'   => array('debconfStartup','faiStartup'),

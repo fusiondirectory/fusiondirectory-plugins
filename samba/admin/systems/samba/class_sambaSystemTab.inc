@@ -29,7 +29,6 @@ class sambaSystemTab extends simplePlugin
     return array(
       'plShortName'   => _('Samba'),
       'plDescription' => _('Windows workstation information'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('workstation'),
       'plPriority'    => 6,
 

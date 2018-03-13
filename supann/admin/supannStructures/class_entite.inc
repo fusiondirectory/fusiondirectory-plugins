@@ -30,7 +30,6 @@ class entite extends simplePlugin
     return array(
       'plShortName'   => _('Entity'),
       'plDescription' => _('SUPANN Entity Settings'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('entite' => array(
         'name'        => _('SUPANN Entity'),
         'filter'      => '(&(objectClass=supannEntite)(objectClass=organizationalUnit))',

@@ -28,7 +28,6 @@ class sympaAlias extends simplePlugin
     return array(
       'plShortName'   => _('Sympa list alias'),
       'plDescription' => _('Sympa list alias'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('sympaAlias' => array(
         'name'        => _('Sympa list alias'),
         'filter'      => 'objectClass=sympaAlias',

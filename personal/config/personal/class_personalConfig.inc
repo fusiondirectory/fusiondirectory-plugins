@@ -27,7 +27,6 @@ class personalConfig extends simplePlugin
     return array(
       'plShortName'     => _('Personal configuration'),
       'plDescription'   => _('FusionDirectory personal plugin configuration'),
-      'plSelfModify'    => FALSE,
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

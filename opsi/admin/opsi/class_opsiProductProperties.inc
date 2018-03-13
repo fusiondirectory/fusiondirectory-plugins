@@ -99,7 +99,6 @@ class opsiProductProperties extends simplePlugin
     return array(
       'plShortName'   => _('Product properties'),
       'plDescription' => _('Product properties'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('opsiProfile'),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())

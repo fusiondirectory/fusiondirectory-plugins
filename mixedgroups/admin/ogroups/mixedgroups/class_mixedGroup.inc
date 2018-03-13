@@ -28,7 +28,6 @@ class mixedGroup extends simplePlugin
     return array(
       'plShortName'   => _('Posix group'),
       'plDescription' => _('Posix group settings'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('ogroup-user'),
       'plPriority'    => 1,
 

@@ -52,7 +52,7 @@ class proxyAccount extends simplePlugin
 {
   /* Definitions */
   var $displayHeader    = TRUE;
-  var $objectclasses    = array("gosaProxyAccount");
+  var $objectclasses    = array('gosaProxyAccount');
 
   /*!
    * \brief  Static  Function returning an ACL information array.
@@ -64,6 +64,7 @@ class proxyAccount extends simplePlugin
     return array(
       'plShortName'     => _('Proxy'),
       'plDescription'   => _('This allow to store basic squid settings in ldap for each user'),
+      'plFilter'        => '(objectClass=gosaProxyAccount)',
       'plIcon'          => 'geticon.php?context=applications&icon=squid&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=squid&size=16',
       'plSelfModify'    => TRUE,

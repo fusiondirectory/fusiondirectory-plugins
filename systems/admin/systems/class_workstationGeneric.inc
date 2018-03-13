@@ -30,7 +30,6 @@ class workstationGeneric extends ipHostPlugin
     return array(
       'plShortName'   => _('Workstation'),
       'plDescription' => _('Workstation information'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('workstation' =>
         array(
           'name'        => _('Workstation'),

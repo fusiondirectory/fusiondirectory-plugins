@@ -23,7 +23,7 @@ class pureftpdAccount extends simplePlugin
 {
   /* Definitions */
   var $displayHeader  = TRUE;
-  var $objectclasses  = array("PureFTPdUser");
+  var $objectclasses  = array('PureFTPdUser');
 
 
   /* Return plugin information for acl handling */
@@ -32,6 +32,7 @@ class pureftpdAccount extends simplePlugin
     return array(
       'plShortName'     => _('Ftp'),
       'plDescription'   => _('Pure ftp account').'&nbsp;('._('Connectivity addon').')',
+      'plFilter'        => '(objectClass=PureFTPdUser)',
       'plIcon'          => 'geticon.php?context=applications&icon=pureftpd&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=pureftpd&size=16',
       'plSelfModify'    => TRUE,

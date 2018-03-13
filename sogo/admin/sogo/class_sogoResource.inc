@@ -30,7 +30,6 @@ class sogoResource extends simplePlugin
     return array(
       'plShortName'   => _('SOGo resource'),
       'plDescription' => _('SOGo resource'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('sogoResource' => array(
         'name'        => _('SOGo resource'),
         'filter'      => 'objectClass=CalendarResource',

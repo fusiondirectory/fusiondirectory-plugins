@@ -43,7 +43,6 @@ class systemManagement extends simpleManagement
       'plShortName'   => _('Systems'),
       'plDescription' => _('Systems Management'),
       'plIcon'        => 'geticon.php?context=devices&icon=computer&size=48',
-      'plSelfModify'  => FALSE,
       'plSection'     => array('systems' => array('name' => _('Systems'), 'priority' => 10)),
       'plPriority'    => 0,
       'plManages'     => array('server','workstation','terminal','printer','component','phone','mobilePhone'),

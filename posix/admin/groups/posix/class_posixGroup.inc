@@ -33,7 +33,7 @@ class posixGroup extends simplePlugin
     return array(
       'plShortName'   => _('Group'),
       'plDescription' => _('POSIX group information'),
-      'plSelfModify'  => FALSE,
+      'plFilter'      => '(objectClass=posixGroup)',
       'plObjectType'  => array('group' => array(
         'name'        => _('POSIX group'),
         'description' => _('POSIX user group'),

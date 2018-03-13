@@ -27,7 +27,6 @@ class ejbcaConfig extends simplePlugin
     return array(
       "plShortName"     => _("EJBCA plugin configuration"),
       "plDescription"   => _("FusionDirectory ejbca plugin configuration"),
-      "plSelfModify"    => FALSE,
       "plCategory"      => array("configuration"),
       "plObjectType"    => array("smallConfig"),
 
