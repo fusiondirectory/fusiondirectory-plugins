@@ -316,6 +316,13 @@ class ServerService extends simpleManagement
         );
       } else {
         $target = $this->parent->getBaseObject()->macAddress;
+        if (empty($target)) {
+          msg_dialog::display(
+            sprintf(_('Could not get execute action %s on service %s.'), $action, $service),
+            _('This server has no mac address.'), ERROR_DIALOG
+          );
+          return;
+        }
         if (is_array($target)) {
           $target = $target[0];
         }
