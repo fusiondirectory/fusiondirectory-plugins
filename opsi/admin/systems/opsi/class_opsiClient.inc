@@ -89,6 +89,10 @@ class opsiClient extends simplePlugin
             array(),
             TRUE // edition
           ),
+          new BooleanAttribute(
+            _('Inherit group localboots'), _('If this is checked localboot configured in the group OPSI tab will be installed along with the localboots configured here'),
+            'fdOpsiLocalbootInherit', FALSE
+          ),
         )
       ),
       'infos' => array(
@@ -121,11 +125,29 @@ class opsiClient extends simplePlugin
       // If we have no OPSI id avoid storing one from a future server change
       $this->initialOpsiId = FALSE;
     }
+    if (!$this->member_of_group) {
+      $this->attributesAccess['fdOpsiLocalbootInherit']->setVisible(FALSE);
+    } else {
+      $this->attributesAccess['fdOpsiLocalbootInherit']->setSubmitForm(TRUE);
+    }
+  }
+
+  function save_object()
+  {
+    parent::save_object();
+    if ($this->member_of_group) {
+      if ($this->fdOpsiLocalbootInherit) {
+        $this->fdOpsiServerDn = $this->group_attrs['fdOpsiServerDn'][0];
+        $this->attributesAccess['fdOpsiServerDn']->setDisabled(TRUE);
+      } else {
+        $this->attributesAccess['fdOpsiServerDn']->setDisabled(FALSE);
+      }
+    }
   }
 
   function prepare_save()
   {
-    if ($this->fdOpsiProfileDn == 'inherited') {
+    if ($this->member_of_group && (($this->fdOpsiProfileDn == 'inherited') || $this->fdOpsiLocalbootInherit)) {
       $this->fdOpsiServerDn = 'inherited';
     }
     return parent::prepare_save();
