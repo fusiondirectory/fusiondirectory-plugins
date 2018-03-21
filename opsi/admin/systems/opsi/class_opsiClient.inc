@@ -226,7 +226,7 @@ class opsiClient extends simplePlugin
       if (!is_array($macAddresses)) {
         $macAddresses = array($macAddresses);
       } elseif (count($macAddresses) > 1) {
-        $macAddresses = array($macAddresses[0]);
+        $macAddresses = array(reset($macAddresses));
       }
     }
     return $macAddresses;
