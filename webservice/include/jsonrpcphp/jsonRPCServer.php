@@ -3,7 +3,7 @@
           COPYRIGHT
 
 Copyright 2007 Sergio Vaccaro <sergio@inservibile.org>
-Copyright 2013-2016 FusionDirectory
+Copyright 2013-2018 FusionDirectory
 
 This file is part of JSON-RPC PHP.
 
@@ -77,7 +77,17 @@ class jsonRPCServer {
     // notifications don't want response
     if (!empty($request['id'])) {
       header('content-type: text/javascript');
-      echo json_encode($response);
+      $res = json_encode($response);
+      if ($res === FALSE) {
+        $response = array (
+          'id' => $request['id'],
+          'result' => NULL,
+          'error' => 'Failed to encode response: '.json_last_error_msg()
+        );
+        echo json_encode($response);
+      } else {
+        echo $res;
+      }
     }
 
     // finish
