@@ -172,6 +172,12 @@ class fdRPCService
       }
       foreach ($tabs as $tab) {
         $pInfos = pluglist::pluginInfos($tab);
+        if ($pInfos === NULL) {
+          throw new FusionDirectoryException("Tab '$tab' of type '$type' does not exists");
+        }
+        if (!isset($pInfos['plCategory'])) {
+          throw new FusionDirectoryException("Tab '$tab' of type '$type' has no ACL category");
+        }
         if (!$plist->check_access(array('ACL' => join($self.',', $pInfos['plCategory']).$self))) {
           throw new FusionDirectoryException("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
         }
