@@ -321,8 +321,8 @@ class argonautQueue extends simpleManagement
     if ($infos) {
       $str = $infos['name'];
 
-      if (strlen($str) > 20) {
-        $str = substr($str, 0, 18)."...";
+      if (mb_strlen($str) > 20) {
+        $str = mb_substr($str, 0, 18)."...";
       }
 
       $str = htmlentities($str, ENT_COMPAT, 'UTF-8');
