@@ -273,7 +273,7 @@ class mailMethodRenaterPartage extends mailMethod
         }
       }
       $account['zimbraAccountStatus'] = ($mainTab->attributesAccess['userPassword']->isLocked() ? 'locked' : 'active');
-      $account['initials'] = strtoupper(substr($mainTab->givenName, 0, 1).substr($mainTab->sn, 0, 1));
+      $account['initials'] = mb_strtoupper(mb_substr($mainTab->givenName, 0, 1).mb_substr($mainTab->sn, 0, 1));
 
       /* Sync fields from SUPANN if tab is active */
       if (isset($this->parent->parent->by_object['supannAccount']) && $this->parent->parent->by_object['supannAccount']->is_account) {
