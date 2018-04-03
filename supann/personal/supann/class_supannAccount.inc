@@ -302,9 +302,9 @@ class supannAccount extends simplePlugin
             )
           ),
           new SetAttribute(
-            new SelectAttribute(
+            new SupannPrefixedSelectAttribute(
               _('Entity type assignment'), _('supannTypeEntiteAffectation'),
-              'supannTypeEntiteAffectation', FALSE
+              'supannTypeEntiteAffectation', FALSE, 'entite'
             )
           ),
         )
@@ -509,9 +509,6 @@ class supannAccount extends simplePlugin
 
   function supannInit()
   {
-    list ($codes, $labels) = supann::get_choices_for('entite', '{SUPANN}');
-    $this->attributesAccess['supannTypeEntiteAffectation']->attribute->setChoices($codes, $labels);
-
     list ($codes, $labels) = supann::get_choices_for('affiliation');
     $this->attributesAccess['eduPersonAffiliation']->attribute->setChoices($codes, $labels);
     $this->attributesAccess['supannEtuInscription']->setLinearRendering(FALSE);
