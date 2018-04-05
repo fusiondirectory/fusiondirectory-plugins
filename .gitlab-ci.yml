@@ -37,7 +37,7 @@ create_php_lint_rapport_stretch:
 
 # PHP codesniffer
 create_php_code_sniffer_rapport:
-  stage: codestyle
+  stage: none
   only:
     - branches
     - tags
