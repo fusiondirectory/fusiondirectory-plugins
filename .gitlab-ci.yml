@@ -10,6 +10,7 @@ stages:
   - codestyle
   - manpages
   - transifex
+  - build-tarballs
 
 ## Stage lint
 
@@ -62,3 +63,13 @@ update-transifex:
     - tx pull -a -f
     - ../dev-tools/locale-scripts/fusiondirectory-update-locale-plugins
     - tx push -f -s -t --skip --no-interactive
+
+build-tarballs:
+  stage: build-tarballs
+  script:
+    - tar -cvzf fusiondirectory-plugins.tar.gz *
+  artifacts:
+    paths:
+    - fusiondirectory-plugins.tar.gz
+    expire_in: 1h
+
