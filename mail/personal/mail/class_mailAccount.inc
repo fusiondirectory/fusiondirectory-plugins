@@ -231,6 +231,15 @@ class mailAccount extends simplePlugin
     }
   }
 
+  function foreignKeyUpdate ($field, $oldvalue, $newvalue, $source)
+  {
+    if ($field == 'gosaMailServer') {
+      mailMethod::resetMailServersCache();
+      $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
+    }
+    parent::foreignKeyUpdate ($field, $oldvalue, $newvalue, $source);
+  }
+
   public function mailServerChanged()
   {
     /* Intialize the used mailMethod */

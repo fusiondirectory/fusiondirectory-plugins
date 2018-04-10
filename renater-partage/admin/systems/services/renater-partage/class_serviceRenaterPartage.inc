@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceRenaterPartage extends simpleService
+class serviceRenaterPartage extends simpleMailMethodService
 {
   var $objectclasses = array('fdRenaterPartageServer');
 
@@ -95,18 +95,6 @@ class serviceRenaterPartage extends simpleService
   {
     parent::__construct($dn, $parent);
     $this->attributesAccess['fdRenaterPartageServerMailDomain']->setLinearRendering(FALSE);
-  }
-
-  protected function post_save()
-  {
-    parent::post_save();
-    mailMethod::resetMailServersCache();
-  }
-
-  protected function post_remove ()
-  {
-    parent::post_remove();
-    mailMethod::resetMailServersCache();
   }
 }
 ?>
