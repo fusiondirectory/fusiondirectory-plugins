@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceDovecot extends simpleService
+class serviceDovecot extends simpleMailMethodService
 {
   var $objectclasses = array('fdDovecotServer');
 
@@ -101,18 +101,6 @@ class serviceDovecot extends simpleService
         )
       )
     );
-  }
-
-  protected function post_save()
-  {
-    parent::post_save();
-    mailMethod::resetMailServersCache();
-  }
-
-  protected function post_remove ()
-  {
-    parent::post_remove();
-    mailMethod::resetMailServersCache();
   }
 }
 ?>

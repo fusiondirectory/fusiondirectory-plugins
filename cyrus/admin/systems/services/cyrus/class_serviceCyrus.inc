@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceCyrus extends simpleService
+class serviceCyrus extends simpleMailMethodService
 {
   var $objectclasses = array('fdCyrusServer');
 
@@ -110,18 +110,6 @@ class serviceCyrus extends simpleService
         )
       )
     );
-  }
-
-  protected function post_save()
-  {
-    parent::post_save();
-    mailMethod::resetMailServersCache();
-  }
-
-  protected function post_remove ()
-  {
-    parent::post_remove();
-    mailMethod::resetMailServersCache();
   }
 }
 ?>
