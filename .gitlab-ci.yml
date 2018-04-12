@@ -75,7 +75,7 @@ build-release:
   only:
     - tags
   script: 
-    - tar -cvzf fusiondirectory-plugins-$(grep '*' Changelog | head -n1 | cut -d ' ' -f3).tar.gz *
+    - tar -cvzf fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"').tar.gz *
   artifacts:
     paths:
-      - fusiondirectory-plugins-$(grep '*' Changelog | head -n1 | cut -d ' ' -f3).tar.gz
+      - fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"').tar.gz
