@@ -5,7 +5,8 @@
 # Attributes
 attributetype ( 1.3.6.1.4.1.38414.49.1.1 NAME 'fdEjbcaCertDN'
   DESC 'FusionDirectory - Certificate dn'
-  EQUALITY caseExactIA5Match
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
 # Objectclasses
