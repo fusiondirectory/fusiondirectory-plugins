@@ -343,6 +343,12 @@ class csvimport extends simplePlugin
 
   function save()
   {
+    return array();
+  }
+
+  function remove($fulldelete = FALSE)
+  {
+    return array();
   }
 }
 ?>
