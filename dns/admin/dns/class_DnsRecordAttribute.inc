@@ -364,9 +364,6 @@ class DnsRecordAttribute extends CompositeAttribute
             $this->parentFQDN
           );
           break;
-        case 'tXTRecord':
-          $this->attributes[1] = new TextAreaAttribute(_('Content'), _('Content of this record'), $ldapName, TRUE);
-          break;
         default:
           $this->attributes[1] = new StringAttribute(_('Content'), _('Content of this record'), $ldapName, TRUE);
           break;
