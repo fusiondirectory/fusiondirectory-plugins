@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -17,6 +17,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: config/personal/class_personalConfig.inc:28
+msgid "Personal configuration"
+msgstr "Configuration du plugin personal"
+
+#: config/personal/class_personalConfig.inc:29
+msgid "FusionDirectory personal plugin configuration"
+msgstr "Configuration du plugin personal"
+
+#: config/personal/class_personalConfig.inc:42
+#: personal/personal/class_personalInfo.inc:85
+msgid "Personal"
+msgstr "Personnel"
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow use of private email for password recovery"
+msgstr ""
+"Autoriser l'utilisation du courriel privé pour la récupération de mot de "
+"passe"
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow users to use their private email address for password recovery"
+msgstr ""
+"Autoriser les utilisateurs à utiliser leur adresse de courriel privée pour "
+"la récupération de mot de passe"
 
 #: personal/personal/class_personalInfo.inc:30
 msgid "Site"
@@ -33,11 +58,6 @@ msgstr "Id"
 #: personal/personal/class_personalInfo.inc:36
 msgid "Id of this user on this website"
 msgstr "Id de cet utilisateur sur ce site"
-
-#: personal/personal/class_personalInfo.inc:85
-#: config/personal/class_personalConfig.inc:42
-msgid "Personal"
-msgstr "Personnel"
 
 #: personal/personal/class_personalInfo.inc:86
 msgid "Personal information"
@@ -158,23 +178,3 @@ msgstr "Les comptes Diaspora doivent être sous la forme user@pod"
 #: personal/personal/class_socialHandlers.inc:141
 msgid "LinkedIn"
 msgstr "LinkedIn"
-
-#: config/personal/class_personalConfig.inc:28
-msgid "Personal configuration"
-msgstr "Configuration du plugin personal"
-
-#: config/personal/class_personalConfig.inc:29
-msgid "FusionDirectory personal plugin configuration"
-msgstr "Configuration du plugin personal"
-
-#: config/personal/class_personalConfig.inc:45
-msgid "Allow use of private email for password recovery"
-msgstr ""
-"Autoriser l'utilisation du courriel privé pour la récupération de mot de "
-"passe"
-
-#: config/personal/class_personalConfig.inc:45
-msgid "Allow users to use their private email address for password recovery"
-msgstr ""
-"Autoriser les utilisateurs à utiliser leur adresse de courriel privée pour "
-"la récupération de mot de passe"

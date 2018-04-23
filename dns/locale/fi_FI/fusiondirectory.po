@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Finnish (Finland) (https://www.transifex.com/fusiondirectory/teams/12202/fi_FI/)\n"
@@ -17,34 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fi_FI\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: config/dns/class_dnsConfig.inc:28
-msgid "DNS configuration"
-msgstr ""
-
-#: config/dns/class_dnsConfig.inc:29
-msgid "FusionDirectory dns plugin configuration"
-msgstr ""
-
-#: config/dns/class_dnsConfig.inc:42
-msgid "DNS config"
-msgstr ""
-
-#: config/dns/class_dnsConfig.inc:45
-msgid "DNS RDN"
-msgstr ""
-
-#: config/dns/class_dnsConfig.inc:45
-msgid "Branch in which DNS zones will be stored"
-msgstr ""
-
-#: config/dns/class_dnsConfig.inc:50
-msgid "Store final dot in domains"
-msgstr ""
-
-#: config/dns/class_dnsConfig.inc:50
-msgid "Should FD store a final dot at the end of domains?"
-msgstr ""
 
 #: admin/dns/class_dnsAcl.inc:30 admin/dns/class_dnsAcl.inc:31
 #: admin/dns/class_dnsAcl.inc:33
@@ -69,6 +41,54 @@ msgstr ""
 
 #: admin/dns/class_dnsAcl.inc:56
 msgid "The ip address match list for this acl"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:123
+msgid "DNS"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:35
+msgid "DNS Management"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:37
+msgid "Systems"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:91 admin/dns/class_dnsManagement.inc:93
+#: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:307
+#: admin/systems/class_dnsHost.inc:313
+msgid "Could not run ldap2zone"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:91
+msgid "More than one server matches the SOA"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:93
+msgid "Could not find the primary server"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:106
+msgid "Could not get run ldap2zone"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
+msgid "Ldap2zone"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
+#, php-format
+msgid "Ldap2Zone called for zone \"%s\""
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:112 admin/dns/class_dnsZone.inc:368
+#: admin/systems/class_dnsHost.inc:319
+msgid "Error"
+msgstr "Virhe"
+
+#: admin/dns/class_dnsManagement.inc:112 admin/systems/class_dnsHost.inc:319
+msgid "Argonaut client needs to be activated to use ldap2zone remotely"
 msgstr ""
 
 #: admin/dns/class_dnsView.inc:28 admin/dns/class_dnsView.inc:29
@@ -121,54 +141,6 @@ msgstr ""
 
 #: admin/dns/class_dnsView.inc:66
 msgid "DNS zones in this view"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:123
-msgid "DNS"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:35
-msgid "DNS Management"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:37
-msgid "Systems"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:91 admin/dns/class_dnsManagement.inc:93
-#: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:307
-#: admin/systems/class_dnsHost.inc:313
-msgid "Could not run ldap2zone"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:91
-msgid "More than one server matches the SOA"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:93
-msgid "Could not find the primary server"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:106
-msgid "Could not get run ldap2zone"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
-msgid "Ldap2zone"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
-#, php-format
-msgid "Ldap2Zone called for zone \"%s\""
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:112 admin/dns/class_dnsZone.inc:368
-#: admin/systems/class_dnsHost.inc:319
-msgid "Error"
-msgstr "Virhe"
-
-#: admin/dns/class_dnsManagement.inc:112 admin/systems/class_dnsHost.inc:319
-msgid "Argonaut client needs to be activated to use ldap2zone remotely"
 msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:27
@@ -628,6 +600,34 @@ msgstr ""
 #: admin/systems/class_dnsHost.inc:470 admin/systems/class_dnsHost.inc:491
 #, php-format
 msgid "%d records were removed in zone %s"
+msgstr ""
+
+#: config/dns/class_dnsConfig.inc:28
+msgid "DNS configuration"
+msgstr ""
+
+#: config/dns/class_dnsConfig.inc:29
+msgid "FusionDirectory dns plugin configuration"
+msgstr ""
+
+#: config/dns/class_dnsConfig.inc:42
+msgid "DNS config"
+msgstr ""
+
+#: config/dns/class_dnsConfig.inc:45
+msgid "DNS RDN"
+msgstr ""
+
+#: config/dns/class_dnsConfig.inc:45
+msgid "Branch in which DNS zones will be stored"
+msgstr ""
+
+#: config/dns/class_dnsConfig.inc:50
+msgid "Store final dot in domains"
+msgstr ""
+
+#: config/dns/class_dnsConfig.inc:50
+msgid "Should FD store a final dot at the end of domains?"
 msgstr ""
 
 #: admin/systems/dnsrecords.tpl.c:2

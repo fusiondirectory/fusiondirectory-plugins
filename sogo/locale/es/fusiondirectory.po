@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Spanish (https://www.transifex.com/fusiondirectory/teams/12202/es/)\n"
@@ -18,25 +18,13 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/sogo/class_sogoConfig.inc:28
-msgid "SOGo configuration"
-msgstr ""
-
-#: config/sogo/class_sogoConfig.inc:29
-msgid "FusionDirectory sogo plugin configuration"
-msgstr ""
-
-#: config/sogo/class_sogoConfig.inc:42 admin/sogo/class_sogoManagement.inc:33
-#: admin/sogo/class_sogoManagement.inc:38
+#: admin/sogo/class_sogoManagement.inc:33
+#: admin/sogo/class_sogoManagement.inc:38 config/sogo/class_sogoConfig.inc:42
 msgid "SOGo"
 msgstr ""
 
-#: config/sogo/class_sogoConfig.inc:45
-msgid "SOGo RDN"
-msgstr ""
-
-#: config/sogo/class_sogoConfig.inc:45
-msgid "Branch in which SOGo objects will be stored"
+#: admin/sogo/class_sogoManagement.inc:34
+msgid "SOGo management"
 msgstr ""
 
 #: admin/sogo/class_sogoResource.inc:31 admin/sogo/class_sogoResource.inc:32
@@ -68,6 +56,18 @@ msgstr ""
 msgid "Kind"
 msgstr ""
 
-#: admin/sogo/class_sogoManagement.inc:34
-msgid "SOGo management"
+#: config/sogo/class_sogoConfig.inc:28
+msgid "SOGo configuration"
+msgstr ""
+
+#: config/sogo/class_sogoConfig.inc:29
+msgid "FusionDirectory sogo plugin configuration"
+msgstr ""
+
+#: config/sogo/class_sogoConfig.inc:45
+msgid "SOGo RDN"
+msgstr ""
+
+#: config/sogo/class_sogoConfig.inc:45
+msgid "Branch in which SOGo objects will be stored"
 msgstr ""

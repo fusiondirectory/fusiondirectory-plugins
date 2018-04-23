@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -17,83 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: config/alias/class_aliasConfig.inc:28
-msgid "Alias configuration"
-msgstr "Alias configuratie"
-
-#: config/alias/class_aliasConfig.inc:29
-msgid "FusionDirectory alias plugin configuration"
-msgstr "FusdionDirectory alias plugin configuratie"
-
-#: config/alias/class_aliasConfig.inc:42
-msgid "Alias"
-msgstr "Alias"
-
-#: config/alias/class_aliasConfig.inc:45
-msgid "Alias RDN"
-msgstr "Alias RDN"
-
-#: config/alias/class_aliasConfig.inc:45
-msgid "Branch in which aliases will be stored"
-msgstr "Tak waarin de aliassen zullen opgeslagen worden"
-
-#: admin/alias/class_mailAliasRedirection.inc:31
-#: admin/alias/class_mailAliasRedirection.inc:32
-#: admin/alias/class_mailAliasRedirection.inc:35
-msgid "Temporary mail redirection"
-msgstr "Tijdelijke mail doorverwijzing"
-
-#: admin/alias/class_mailAliasRedirection.inc:52
-msgid "Mail redirection"
-msgstr "Mail doorverwijzing"
-
-#: admin/alias/class_mailAliasRedirection.inc:55
-#: admin/alias/class_mailAliasDistribution.inc:54
-msgid "Name"
-msgstr "Naam"
-
-#: admin/alias/class_mailAliasRedirection.inc:55
-msgid "Name to identify this redirection"
-msgstr "Naam om deze doorsturing te identificeren"
-
-#: admin/alias/class_mailAliasRedirection.inc:57
-#: admin/alias/class_mailAliasDistribution.inc:56
-msgid "Description"
-msgstr "Beschrijving"
-
-#: admin/alias/class_mailAliasRedirection.inc:57
-msgid "Description of this redirection"
-msgstr "Beschrijving van deze doorsturing"
-
-#: admin/alias/class_mailAliasRedirection.inc:62
-msgid "Redirect from"
-msgstr "Doorsturen vanuit"
-
-#: admin/alias/class_mailAliasRedirection.inc:62
-msgid "Mail address from which you want to redirect"
-msgstr "Mailadres van waaruit je wil doorsturen"
-
-#: admin/alias/class_mailAliasRedirection.inc:68
-msgid "Redirect to"
-msgstr "Doorsturen naar"
-
-#: admin/alias/class_mailAliasRedirection.inc:68
-msgid "Destination of this redirection"
-msgstr "Bestemming van deze doorsturing"
-
-#: admin/alias/class_mailAliasRedirection.inc:73
-#: admin/alias/class_mailAliasDistribution.inc:75
-msgid "Expiration date"
-msgstr "Vervaldatum"
-
-#: admin/alias/class_mailAliasRedirection.inc:73
-msgid ""
-"Date after which the redirection should be deleted. Leave empty for no "
-"deletion."
-msgstr ""
-"Datum waarna het doorsturen verwijderd zou moeten worden. Leeg laten voor "
-"niet verwijdering."
 
 #: admin/alias/class_mailAliasDistribution.inc:31
 #: admin/alias/class_mailAliasDistribution.inc:32
@@ -106,8 +29,18 @@ msgid "Mail distribution"
 msgstr "Mail distributie"
 
 #: admin/alias/class_mailAliasDistribution.inc:54
+#: admin/alias/class_mailAliasRedirection.inc:55
+msgid "Name"
+msgstr "Naam"
+
+#: admin/alias/class_mailAliasDistribution.inc:54
 msgid "Name to identify this alias"
 msgstr "Naam om deze alias te identificeren"
+
+#: admin/alias/class_mailAliasDistribution.inc:56
+#: admin/alias/class_mailAliasRedirection.inc:57
+msgid "Description"
+msgstr "Beschrijving"
 
 #: admin/alias/class_mailAliasDistribution.inc:56
 msgid "Description of this alias"
@@ -134,11 +67,58 @@ msgid "Mail server for this alias"
 msgstr "Mail server voor deze alias"
 
 #: admin/alias/class_mailAliasDistribution.inc:75
+#: admin/alias/class_mailAliasRedirection.inc:73
+msgid "Expiration date"
+msgstr "Vervaldatum"
+
+#: admin/alias/class_mailAliasDistribution.inc:75
 msgid ""
 "Date after which the alias should be deleted. Leave empty for no deletion."
 msgstr ""
 "Datum waarna de alias verwijderd zou moeten worden. Leeg laten voor niet "
 "verwijdering."
+
+#: admin/alias/class_mailAliasRedirection.inc:31
+#: admin/alias/class_mailAliasRedirection.inc:32
+#: admin/alias/class_mailAliasRedirection.inc:35
+msgid "Temporary mail redirection"
+msgstr "Tijdelijke mail doorverwijzing"
+
+#: admin/alias/class_mailAliasRedirection.inc:52
+msgid "Mail redirection"
+msgstr "Mail doorverwijzing"
+
+#: admin/alias/class_mailAliasRedirection.inc:55
+msgid "Name to identify this redirection"
+msgstr "Naam om deze doorsturing te identificeren"
+
+#: admin/alias/class_mailAliasRedirection.inc:57
+msgid "Description of this redirection"
+msgstr "Beschrijving van deze doorsturing"
+
+#: admin/alias/class_mailAliasRedirection.inc:62
+msgid "Redirect from"
+msgstr "Doorsturen vanuit"
+
+#: admin/alias/class_mailAliasRedirection.inc:62
+msgid "Mail address from which you want to redirect"
+msgstr "Mailadres van waaruit je wil doorsturen"
+
+#: admin/alias/class_mailAliasRedirection.inc:68
+msgid "Redirect to"
+msgstr "Doorsturen naar"
+
+#: admin/alias/class_mailAliasRedirection.inc:68
+msgid "Destination of this redirection"
+msgstr "Bestemming van deze doorsturing"
+
+#: admin/alias/class_mailAliasRedirection.inc:73
+msgid ""
+"Date after which the redirection should be deleted. Leave empty for no "
+"deletion."
+msgstr ""
+"Datum waarna het doorsturen verwijderd zou moeten worden. Leeg laten voor "
+"niet verwijdering."
 
 #: admin/alias/class_aliasManagement.inc:33
 msgid "Aliases"
@@ -151,3 +131,23 @@ msgstr "Alias beheer"
 #: admin/alias/class_aliasManagement.inc:38
 msgid "Mail aliases"
 msgstr "Mail aliassen"
+
+#: config/alias/class_aliasConfig.inc:28
+msgid "Alias configuration"
+msgstr "Alias configuratie"
+
+#: config/alias/class_aliasConfig.inc:29
+msgid "FusionDirectory alias plugin configuration"
+msgstr "FusdionDirectory alias plugin configuratie"
+
+#: config/alias/class_aliasConfig.inc:42
+msgid "Alias"
+msgstr "Alias"
+
+#: config/alias/class_aliasConfig.inc:45
+msgid "Alias RDN"
+msgstr "Alias RDN"
+
+#: config/alias/class_aliasConfig.inc:45
+msgid "Branch in which aliases will be stored"
+msgstr "Tak waarin de aliassen zullen opgeslagen worden"

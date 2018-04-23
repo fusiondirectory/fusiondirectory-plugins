@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -18,27 +18,13 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: config/autofs/class_autofsConfig.inc:28
-msgid "Autofs configuration"
-msgstr "Nastavení Autofs"
+#: admin/autofs/class_autofsManagement.inc:31
+msgid "Auto fs"
+msgstr "Auto fs"
 
-#: config/autofs/class_autofsConfig.inc:29
-msgid "FusionDirectory autofs plugin configuration"
-msgstr "Nastavení zásuvného modulu autofs pro FusionDirectory"
-
-#: config/autofs/class_autofsConfig.inc:42
-msgid "AutoFS"
-msgstr "AutoFS"
-
-#: config/autofs/class_autofsConfig.inc:45
-msgid "AutoFS RDN"
-msgstr "Relativní rozlišený název AutoFS"
-
-#: config/autofs/class_autofsConfig.inc:45
-msgid "Branch in which automount info will be stored"
-msgstr ""
-"Větev, ve které budou ukládány údaje pro automatické připojování souborových"
-" systémů"
+#: admin/autofs/class_autofsManagement.inc:32
+msgid "Auto fs management"
+msgstr "Správa auto fs"
 
 #: admin/autofs/class_nisObject.inc:31 admin/autofs/class_nisObject.inc:32
 #: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:54
@@ -74,14 +60,6 @@ msgstr "přípojný bod"
 msgid "The mount point this directory will be placed in"
 msgstr "Přípojný bod, do kterého bude tato složka umístěna"
 
-#: admin/autofs/class_autofsManagement.inc:31
-msgid "Auto fs"
-msgstr "Auto fs"
-
-#: admin/autofs/class_autofsManagement.inc:32
-msgid "Auto fs management"
-msgstr "Správa auto fs"
-
 #: admin/autofs/class_nisMap.inc:32
 msgid "Autofs mount point"
 msgstr "Přípojný bod pro autofs"
@@ -89,3 +67,25 @@ msgstr "Přípojný bod pro autofs"
 #: admin/autofs/class_nisMap.inc:53
 msgid "Name of the mount point"
 msgstr "Název přípojného bodu"
+
+#: config/autofs/class_autofsConfig.inc:28
+msgid "Autofs configuration"
+msgstr "Nastavení Autofs"
+
+#: config/autofs/class_autofsConfig.inc:29
+msgid "FusionDirectory autofs plugin configuration"
+msgstr "Nastavení zásuvného modulu autofs pro FusionDirectory"
+
+#: config/autofs/class_autofsConfig.inc:42
+msgid "AutoFS"
+msgstr "AutoFS"
+
+#: config/autofs/class_autofsConfig.inc:45
+msgid "AutoFS RDN"
+msgstr "Relativní rozlišený název AutoFS"
+
+#: config/autofs/class_autofsConfig.inc:45
+msgid "Branch in which automount info will be stored"
+msgstr ""
+"Větev, ve které budou ukládány údaje pro automatické připojování souborových"
+" systémů"

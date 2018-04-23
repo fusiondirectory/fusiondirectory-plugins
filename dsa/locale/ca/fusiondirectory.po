@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Catalan (https://www.transifex.com/fusiondirectory/teams/12202/ca/)\n"
@@ -18,25 +18,9 @@ msgstr ""
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/dsa/class_dsaConfig.inc:28
-msgid "DSA configuration"
-msgstr ""
-
-#: config/dsa/class_dsaConfig.inc:29
-msgid "FusionDirectory dsa plugin configuration"
-msgstr ""
-
-#: config/dsa/class_dsaConfig.inc:42 admin/dsa/class_dsaManagement.inc:34
-#: admin/dsa/class_dsaManagement.inc:39
+#: admin/dsa/class_dsaManagement.inc:34 admin/dsa/class_dsaManagement.inc:39
+#: config/dsa/class_dsaConfig.inc:42
 msgid "DSA"
-msgstr ""
-
-#: config/dsa/class_dsaConfig.inc:45
-msgid "DSA RDN"
-msgstr ""
-
-#: config/dsa/class_dsaConfig.inc:45
-msgid "Branch in which Directory Service Account (dsa) will be stored"
 msgstr ""
 
 #: admin/dsa/class_dsaManagement.inc:35
@@ -73,3 +57,19 @@ msgstr "Canvia la contrasenya"
 #: admin/dsa/class_simpleSecurityObject.inc:68
 msgid "Password"
 msgstr "Contrasenya"
+
+#: config/dsa/class_dsaConfig.inc:28
+msgid "DSA configuration"
+msgstr ""
+
+#: config/dsa/class_dsaConfig.inc:29
+msgid "FusionDirectory dsa plugin configuration"
+msgstr ""
+
+#: config/dsa/class_dsaConfig.inc:45
+msgid "DSA RDN"
+msgstr ""
+
+#: config/dsa/class_dsaConfig.inc:45
+msgid "Branch in which Directory Service Account (dsa) will be stored"
+msgstr ""

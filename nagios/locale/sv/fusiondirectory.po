@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Swedish (https://www.transifex.com/fusiondirectory/teams/12202/sv/)\n"
@@ -18,9 +18,25 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: personal/nagios/class_nagiosAccount.inc:40
+#: config/nagios/class_nagiosConfig.inc:28
+msgid "Nagios configuration"
+msgstr ""
+
+#: config/nagios/class_nagiosConfig.inc:29
+msgid "FusionDirectory nagios plugin configuration"
+msgstr ""
+
 #: config/nagios/class_nagiosConfig.inc:42
+#: personal/nagios/class_nagiosAccount.inc:40
 msgid "Nagios"
+msgstr ""
+
+#: config/nagios/class_nagiosConfig.inc:45
+msgid "Lconf prefix"
+msgstr ""
+
+#: config/nagios/class_nagiosConfig.inc:45
+msgid "Prefix used for lconf LDAP fields"
 msgstr ""
 
 #: personal/nagios/class_nagiosAccount.inc:41
@@ -77,20 +93,4 @@ msgstr ""
 
 #: personal/nagios/class_nagiosAccount.inc:99
 msgid "Host notification commands"
-msgstr ""
-
-#: config/nagios/class_nagiosConfig.inc:28
-msgid "Nagios configuration"
-msgstr ""
-
-#: config/nagios/class_nagiosConfig.inc:29
-msgid "FusionDirectory nagios plugin configuration"
-msgstr ""
-
-#: config/nagios/class_nagiosConfig.inc:45
-msgid "Lconf prefix"
-msgstr ""
-
-#: config/nagios/class_nagiosConfig.inc:45
-msgid "Prefix used for lconf LDAP fields"
 msgstr ""

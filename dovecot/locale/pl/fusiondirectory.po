@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Polish (https://www.transifex.com/fusiondirectory/teams/12202/pl/)\n"
@@ -17,19 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:50
-msgid "There are no IMAP compatible mail servers defined!"
-msgstr ""
-
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:55
-msgid "Mail server for this account is invalid!"
-msgstr ""
-
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:194
-#, php-format
-msgid "Error while trying to contact Dovecot server through Argonaut: %s"
-msgstr ""
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:28
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:29
@@ -118,4 +105,17 @@ msgstr ""
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:97
 msgid "Use argonaut to create the user mailbox on the Dovecot server"
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:50
+msgid "There are no IMAP compatible mail servers defined!"
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:55
+msgid "Mail server for this account is invalid!"
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:194
+#, php-format
+msgid "Error while trying to contact Dovecot server through Argonaut: %s"
 msgstr ""

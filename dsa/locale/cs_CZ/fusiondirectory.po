@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -18,26 +18,10 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: config/dsa/class_dsaConfig.inc:28
-msgid "DSA configuration"
-msgstr "Nastavení DSA"
-
-#: config/dsa/class_dsaConfig.inc:29
-msgid "FusionDirectory dsa plugin configuration"
-msgstr "Nastavení zásuvného modulu dsa pro FusionDirectory"
-
-#: config/dsa/class_dsaConfig.inc:42 admin/dsa/class_dsaManagement.inc:34
-#: admin/dsa/class_dsaManagement.inc:39
+#: admin/dsa/class_dsaManagement.inc:34 admin/dsa/class_dsaManagement.inc:39
+#: config/dsa/class_dsaConfig.inc:42
 msgid "DSA"
 msgstr "DSA"
-
-#: config/dsa/class_dsaConfig.inc:45
-msgid "DSA RDN"
-msgstr "Relativní rozlišený název DSA"
-
-#: config/dsa/class_dsaConfig.inc:45
-msgid "Branch in which Directory Service Account (dsa) will be stored"
-msgstr "Větev, ve které bude uložen servisní účet adresáře (dsa)"
 
 #: admin/dsa/class_dsaManagement.inc:35
 msgid "DSA management"
@@ -73,3 +57,19 @@ msgstr "změnit heslo"
 #: admin/dsa/class_simpleSecurityObject.inc:68
 msgid "Password"
 msgstr "heslo"
+
+#: config/dsa/class_dsaConfig.inc:28
+msgid "DSA configuration"
+msgstr "Nastavení DSA"
+
+#: config/dsa/class_dsaConfig.inc:29
+msgid "FusionDirectory dsa plugin configuration"
+msgstr "Nastavení zásuvného modulu dsa pro FusionDirectory"
+
+#: config/dsa/class_dsaConfig.inc:45
+msgid "DSA RDN"
+msgstr "Relativní rozlišený název DSA"
+
+#: config/dsa/class_dsaConfig.inc:45
+msgid "Branch in which Directory Service Account (dsa) will be stored"
+msgstr "Větev, ve které bude uložen servisní účet adresáře (dsa)"

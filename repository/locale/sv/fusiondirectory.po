@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Swedish (https://www.transifex.com/fusiondirectory/teams/12202/sv/)\n"
@@ -18,34 +18,15 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/repository/class_repositoryConfig.inc:28
-msgid "Repository configuration"
+#: admin/repository/class_repositoryManagement.inc:28
+#: admin/repository/class_repositoryManagement.inc:29
+msgid "Repository management"
 msgstr ""
 
-#: config/repository/class_repositoryConfig.inc:29
-msgid "FusionDirectory repository plugin configuration"
-msgstr ""
-
-#: config/repository/class_repositoryConfig.inc:42
 #: admin/repository/class_repositoryManagement.inc:34
+#: config/repository/class_repositoryConfig.inc:42
 msgid "Repository"
 msgstr "Förråd"
-
-#: config/repository/class_repositoryConfig.inc:45
-msgid "Repository RDN"
-msgstr ""
-
-#: config/repository/class_repositoryConfig.inc:45
-msgid "Branch in which repository objects will be stored"
-msgstr ""
-
-#: config/repository/class_repositoryConfig.inc:51
-msgid "Repository types"
-msgstr ""
-
-#: config/repository/class_repositoryConfig.inc:51
-msgid "Available repository types"
-msgstr ""
 
 #: admin/repository/class_buildRepository.inc:30
 #: admin/repository/class_buildRepository.inc:31
@@ -126,11 +107,6 @@ msgstr "Användare"
 msgid "Users of this repository"
 msgstr ""
 
-#: admin/repository/class_repositoryManagement.inc:28
-#: admin/repository/class_repositoryManagement.inc:29
-msgid "Repository management"
-msgstr ""
-
 #: admin/repository/class_repositoryDistribution.inc:30
 #: admin/repository/class_repositoryDistribution.inc:31
 #: admin/repository/class_repositoryDistribution.inc:33
@@ -180,4 +156,28 @@ msgstr ""
 
 #: admin/repository/class_repositorySection.inc:66
 msgid "The sections this one is based on"
+msgstr ""
+
+#: config/repository/class_repositoryConfig.inc:28
+msgid "Repository configuration"
+msgstr ""
+
+#: config/repository/class_repositoryConfig.inc:29
+msgid "FusionDirectory repository plugin configuration"
+msgstr ""
+
+#: config/repository/class_repositoryConfig.inc:45
+msgid "Repository RDN"
+msgstr ""
+
+#: config/repository/class_repositoryConfig.inc:45
+msgid "Branch in which repository objects will be stored"
+msgstr ""
+
+#: config/repository/class_repositoryConfig.inc:51
+msgid "Repository types"
+msgstr ""
+
+#: config/repository/class_repositoryConfig.inc:51
+msgid "Available repository types"
 msgstr ""

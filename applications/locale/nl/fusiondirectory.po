@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -18,53 +18,13 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/applications/class_applicationsPluginConfig.inc:28
-#: config/applications/class_applicationsPluginConfig.inc:40
 #: admin/applications/class_applicationManagement.inc:28
 #: admin/roles/class_applicationRights.inc:30
 #: admin/roles/class_applicationRights.inc:49
+#: config/applications/class_applicationsPluginConfig.inc:28
+#: config/applications/class_applicationsPluginConfig.inc:40
 msgid "Applications"
 msgstr "Programma's"
-
-#: config/applications/class_applicationsPluginConfig.inc:29
-msgid "Applications plugin configuration"
-msgstr "Applicatie plugin configuratie"
-
-#: config/applications/class_applicationsPluginConfig.inc:43
-msgid "Application RDN"
-msgstr "Applicatie RDN"
-
-#: config/applications/class_applicationsPluginConfig.inc:43
-msgid "Branch in which applications will be stored"
-msgstr "Afdeling waarin applicaties zullen worden ogeslagen"
-
-#: config/applications/class_applicationsPluginConfig.inc:48
-msgid "Web applications RDN"
-msgstr "Web applicaties RDN"
-
-#: config/applications/class_applicationsPluginConfig.inc:48
-msgid "Branch in which web applications will be stored"
-msgstr "Afdeling waarin web applicaties zullen worden opgeslagen"
-
-#: config/applications/class_applicationsPluginConfig.inc:53
-msgid "Show web applications in menu"
-msgstr "Toon web applicaties in de menu"
-
-#: config/applications/class_applicationsPluginConfig.inc:53
-msgid "Whether to show web applications in FD main menu"
-msgstr "Toon webapplicaties in FD hoofdmenu"
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "None"
-msgstr "Geen"
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "Only allowed"
-msgstr "Alleen toegang"
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "All"
-msgstr "Alle"
 
 #: admin/applications/class_applicationManagement.inc:29
 msgid "Application management"
@@ -74,12 +34,73 @@ msgstr "Programma beheer"
 msgid "Web applications"
 msgstr "Web applicaties"
 
+#: admin/applications/class_webApplication.inc:28
+#: admin/applications/class_webApplication.inc:31
+msgid "Web application"
+msgstr "Web applicatie"
+
+#: admin/applications/class_webApplication.inc:29
+msgid "Web applicationts names, icons and links"
+msgstr "Web applicatie namen, iconen en links"
+
+#: admin/applications/class_webApplication.inc:45
 #: admin/applications/class_applicationGeneric.inc:29
 #: admin/applications/class_applicationGeneric.inc:32
 #: admin/applications/class_applicationGeneric.inc:46
-#: admin/applications/class_webApplication.inc:45
 msgid "Application"
 msgstr "Programma"
+
+#: admin/applications/class_webApplication.inc:49
+msgid "Name"
+msgstr "Naam"
+
+#: admin/applications/class_webApplication.inc:49
+msgid "Name or id for application"
+msgstr "Naam of id voor de applicatie"
+
+#: admin/applications/class_webApplication.inc:53
+#: admin/applications/class_applicationGeneric.inc:54
+msgid "Description"
+msgstr "Omschrijving"
+
+#: admin/applications/class_webApplication.inc:53
+#: admin/applications/class_applicationGeneric.inc:54
+msgid "A short description of this application"
+msgstr "Een korte beschrijving van de applicatie"
+
+#: admin/applications/class_webApplication.inc:57
+msgid "URL"
+msgstr "URL"
+
+#: admin/applications/class_webApplication.inc:57
+msgid "Link to this application"
+msgstr "Link naar deze applicatie"
+
+#: admin/applications/class_webApplication.inc:61
+msgid "Display Name"
+msgstr "Geef naam weer"
+
+#: admin/applications/class_webApplication.inc:61
+msgid "Displayed name for links to this application"
+msgstr "Naam voor links naar deze applicatie"
+
+#: admin/applications/class_webApplication.inc:67
+#: admin/applications/class_applicationGeneric.inc:68
+msgid "Icon"
+msgstr "Icoon"
+
+#: admin/applications/class_webApplication.inc:70
+#: admin/applications/class_applicationGeneric.inc:71
+msgid "The icon for this application"
+msgstr "Het icoon van de applicatie"
+
+#: admin/applications/class_webApplication.inc:75
+msgid "Icon location"
+msgstr "Icoon locatie"
+
+#: admin/applications/class_webApplication.inc:75
+msgid "Usual path to this application icon"
+msgstr "Gebruikelijk pad naar het icoon voor deze applicatie"
 
 #: admin/applications/class_applicationGeneric.inc:30
 msgid "Application information"
@@ -92,16 +113,6 @@ msgstr "Programmanaam"
 #: admin/applications/class_applicationGeneric.inc:50
 msgid "The name of this application"
 msgstr "De naam van deze applicatie"
-
-#: admin/applications/class_applicationGeneric.inc:54
-#: admin/applications/class_webApplication.inc:53
-msgid "Description"
-msgstr "Omschrijving"
-
-#: admin/applications/class_applicationGeneric.inc:54
-#: admin/applications/class_webApplication.inc:53
-msgid "A short description of this application"
-msgstr "Een korte beschrijving van de applicatie"
 
 #: admin/applications/class_applicationGeneric.inc:58
 msgid "Execute"
@@ -118,16 +129,6 @@ msgstr "Getoonde naam"
 #: admin/applications/class_applicationGeneric.inc:62
 msgid "The displayed name for this application"
 msgstr "De getoonde naam van de applicatie"
-
-#: admin/applications/class_applicationGeneric.inc:68
-#: admin/applications/class_webApplication.inc:67
-msgid "Icon"
-msgstr "Icoon"
-
-#: admin/applications/class_applicationGeneric.inc:71
-#: admin/applications/class_webApplication.inc:70
-msgid "The icon for this application"
-msgstr "Het icoon van de applicatie"
 
 #: admin/applications/class_applicationGeneric.inc:78
 msgid "Options"
@@ -170,47 +171,6 @@ msgstr "Geef een waarde in bij het startmenu"
 msgid "Place entry in members launch bar"
 msgstr "Plaats invoer in snelstartbalk van groepsleden"
 
-#: admin/applications/class_webApplication.inc:28
-#: admin/applications/class_webApplication.inc:31
-msgid "Web application"
-msgstr "Web applicatie"
-
-#: admin/applications/class_webApplication.inc:29
-msgid "Web applicationts names, icons and links"
-msgstr "Web applicatie namen, iconen en links"
-
-#: admin/applications/class_webApplication.inc:49
-msgid "Name"
-msgstr "Naam"
-
-#: admin/applications/class_webApplication.inc:49
-msgid "Name or id for application"
-msgstr "Naam of id voor de applicatie"
-
-#: admin/applications/class_webApplication.inc:57
-msgid "URL"
-msgstr "URL"
-
-#: admin/applications/class_webApplication.inc:57
-msgid "Link to this application"
-msgstr "Link naar deze applicatie"
-
-#: admin/applications/class_webApplication.inc:61
-msgid "Display Name"
-msgstr "Geef naam weer"
-
-#: admin/applications/class_webApplication.inc:61
-msgid "Displayed name for links to this application"
-msgstr "Naam voor links naar deze applicatie"
-
-#: admin/applications/class_webApplication.inc:75
-msgid "Icon location"
-msgstr "Icoon locatie"
-
-#: admin/applications/class_webApplication.inc:75
-msgid "Usual path to this application icon"
-msgstr "Gebruikelijk pad naar het icoon voor deze applicatie"
-
 #: admin/roles/class_applicationRights.inc:31
 msgid "Applications allowed for this role"
 msgstr "Toegelaten applicaties voor deze rol"
@@ -222,3 +182,43 @@ msgstr "Applicatie lijst"
 #: admin/roles/class_applicationRights.inc:49
 msgid "The applications users with this role are allowed to launch"
 msgstr "Applicaties die gebruikers in deze rol mogen opstarten"
+
+#: config/applications/class_applicationsPluginConfig.inc:29
+msgid "Applications plugin configuration"
+msgstr "Applicatie plugin configuratie"
+
+#: config/applications/class_applicationsPluginConfig.inc:43
+msgid "Application RDN"
+msgstr "Applicatie RDN"
+
+#: config/applications/class_applicationsPluginConfig.inc:43
+msgid "Branch in which applications will be stored"
+msgstr "Afdeling waarin applicaties zullen worden ogeslagen"
+
+#: config/applications/class_applicationsPluginConfig.inc:48
+msgid "Web applications RDN"
+msgstr "Web applicaties RDN"
+
+#: config/applications/class_applicationsPluginConfig.inc:48
+msgid "Branch in which web applications will be stored"
+msgstr "Afdeling waarin web applicaties zullen worden opgeslagen"
+
+#: config/applications/class_applicationsPluginConfig.inc:53
+msgid "Show web applications in menu"
+msgstr "Toon web applicaties in de menu"
+
+#: config/applications/class_applicationsPluginConfig.inc:53
+msgid "Whether to show web applications in FD main menu"
+msgstr "Toon webapplicaties in FD hoofdmenu"
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "None"
+msgstr "Geen"
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "Only allowed"
+msgstr "Alleen toegang"
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "All"
+msgstr "Alle"

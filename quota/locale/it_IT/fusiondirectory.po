@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -17,71 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: personal/quota/class_quotaAccount.inc:101
-msgid "Quota"
-msgstr "Quota"
-
-#: personal/quota/class_quotaAccount.inc:102
-msgid "Plugin for quota support"
-msgstr "Plugin per l'uso di Quota"
-
-#: personal/quota/class_quotaAccount.inc:120
-msgid "Quota information"
-msgstr "Informazioni sulla quota"
-
-#: personal/quota/class_quotaAccount.inc:125
-msgid "Quota information for this user"
-msgstr "Informazioni sulla quota di questo utente"
-
-#: personal/quota/class_quotaAccount.inc:129
-#: admin/systems/services/quota/class_serviceQuota.inc:50
-msgid "Device"
-msgstr "Dispositivi"
-
-#: personal/quota/class_quotaAccount.inc:129
-msgid "Device this quota is for"
-msgstr "Dispositivo interessato da questa quota"
-
-#: personal/quota/class_quotaAccount.inc:133
-msgid "Block soft limit"
-msgstr "Dimensione limite del blocco"
-
-#: personal/quota/class_quotaAccount.inc:133
-msgid "Soft limit for the block the user can use"
-msgstr "Limite soft per il blocco che l'utente può utilizzare"
-
-#: personal/quota/class_quotaAccount.inc:142
-msgid "Block hard limit"
-msgstr "Dimensione critica del blocco"
-
-#: personal/quota/class_quotaAccount.inc:142
-msgid "Hard limit for the block the user can use"
-msgstr "Limite hard per il blocco che l'utente può utilizzare"
-
-#: personal/quota/class_quotaAccount.inc:151
-msgid "Inode soft limit"
-msgstr "Numero limite di files"
-
-#: personal/quota/class_quotaAccount.inc:151
-msgid "Soft limit for the inodes the user can use"
-msgstr "Limite soft per il gli inodes che l'utente può utilizzare"
-
-#: personal/quota/class_quotaAccount.inc:160
-msgid "Inode hard limit"
-msgstr "Numero critico di files"
-
-#: personal/quota/class_quotaAccount.inc:160
-msgid "Hard limit for the inodes the user can use"
-msgstr "Limite hard per gli inodes che l'utente può utilizzare"
-
-#: personal/quota/class_quotaAccount.inc:169
-msgid "Server"
-msgstr "Server"
-
-#: personal/quota/class_quotaAccount.inc:169
-msgid "Server hosting the device this quota is for"
-msgstr "Server che ospita il dispositivo interessato da questa quota"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:29
 #: admin/systems/services/quota/class_serviceQuota.inc:30
@@ -99,6 +34,11 @@ msgstr "Condivisioni"
 #: admin/systems/services/quota/class_serviceQuota.inc:46
 msgid "Quotas for the shares this server hosts"
 msgstr "Quote delle condivisioni ospitate su questo server"
+
+#: admin/systems/services/quota/class_serviceQuota.inc:50
+#: personal/quota/class_quotaAccount.inc:129
+msgid "Device"
+msgstr "Dispositivi"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:50
 msgid "Device concerned by this quota"
@@ -229,3 +169,63 @@ msgstr "Valore non valido in codifiche : %s"
 #, php-format
 msgid "(%s by %s)"
 msgstr "(%s di %s)"
+
+#: personal/quota/class_quotaAccount.inc:101
+msgid "Quota"
+msgstr "Quota"
+
+#: personal/quota/class_quotaAccount.inc:102
+msgid "Plugin for quota support"
+msgstr "Plugin per l'uso di Quota"
+
+#: personal/quota/class_quotaAccount.inc:120
+msgid "Quota information"
+msgstr "Informazioni sulla quota"
+
+#: personal/quota/class_quotaAccount.inc:125
+msgid "Quota information for this user"
+msgstr "Informazioni sulla quota di questo utente"
+
+#: personal/quota/class_quotaAccount.inc:129
+msgid "Device this quota is for"
+msgstr "Dispositivo interessato da questa quota"
+
+#: personal/quota/class_quotaAccount.inc:133
+msgid "Block soft limit"
+msgstr "Dimensione limite del blocco"
+
+#: personal/quota/class_quotaAccount.inc:133
+msgid "Soft limit for the block the user can use"
+msgstr "Limite soft per il blocco che l'utente può utilizzare"
+
+#: personal/quota/class_quotaAccount.inc:142
+msgid "Block hard limit"
+msgstr "Dimensione critica del blocco"
+
+#: personal/quota/class_quotaAccount.inc:142
+msgid "Hard limit for the block the user can use"
+msgstr "Limite hard per il blocco che l'utente può utilizzare"
+
+#: personal/quota/class_quotaAccount.inc:151
+msgid "Inode soft limit"
+msgstr "Numero limite di files"
+
+#: personal/quota/class_quotaAccount.inc:151
+msgid "Soft limit for the inodes the user can use"
+msgstr "Limite soft per il gli inodes che l'utente può utilizzare"
+
+#: personal/quota/class_quotaAccount.inc:160
+msgid "Inode hard limit"
+msgstr "Numero critico di files"
+
+#: personal/quota/class_quotaAccount.inc:160
+msgid "Hard limit for the inodes the user can use"
+msgstr "Limite hard per gli inodes che l'utente può utilizzare"
+
+#: personal/quota/class_quotaAccount.inc:169
+msgid "Server"
+msgstr "Server"
+
+#: personal/quota/class_quotaAccount.inc:169
+msgid "Server hosting the device this quota is for"
+msgstr "Server che ospita il dispositivo interessato da questa quota"

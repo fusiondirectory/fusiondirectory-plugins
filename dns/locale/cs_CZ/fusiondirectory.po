@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -17,34 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-
-#: config/dns/class_dnsConfig.inc:28
-msgid "DNS configuration"
-msgstr "nastavení DNS"
-
-#: config/dns/class_dnsConfig.inc:29
-msgid "FusionDirectory dns plugin configuration"
-msgstr "Nastavení zásuvného modulu dns pro FusionDirectory"
-
-#: config/dns/class_dnsConfig.inc:42
-msgid "DNS config"
-msgstr "Nastavení DNS"
-
-#: config/dns/class_dnsConfig.inc:45
-msgid "DNS RDN"
-msgstr ""
-
-#: config/dns/class_dnsConfig.inc:45
-msgid "Branch in which DNS zones will be stored"
-msgstr "Větev ve které budou ukládány DNS záznamy"
-
-#: config/dns/class_dnsConfig.inc:50
-msgid "Store final dot in domains"
-msgstr "Domény ukládat včetně teček na samém konci"
-
-#: config/dns/class_dnsConfig.inc:50
-msgid "Should FD store a final dot at the end of domains?"
-msgstr "Má F.D ukládat tečku úplně na konci domény?"
 
 #: admin/dns/class_dnsAcl.inc:30 admin/dns/class_dnsAcl.inc:31
 #: admin/dns/class_dnsAcl.inc:33
@@ -70,6 +42,54 @@ msgstr ""
 #: admin/dns/class_dnsAcl.inc:56
 msgid "The ip address match list for this acl"
 msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:123
+msgid "DNS"
+msgstr "DNS"
+
+#: admin/dns/class_dnsManagement.inc:35
+msgid "DNS Management"
+msgstr "Správa DNS"
+
+#: admin/dns/class_dnsManagement.inc:37
+msgid "Systems"
+msgstr "systémy"
+
+#: admin/dns/class_dnsManagement.inc:91 admin/dns/class_dnsManagement.inc:93
+#: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:307
+#: admin/systems/class_dnsHost.inc:313
+msgid "Could not run ldap2zone"
+msgstr "Nedaří se spustit ldap2zone"
+
+#: admin/dns/class_dnsManagement.inc:91
+msgid "More than one server matches the SOA"
+msgstr "SOA záznamu odpovídá více než jeden server"
+
+#: admin/dns/class_dnsManagement.inc:93
+msgid "Could not find the primary server"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:106
+msgid "Could not get run ldap2zone"
+msgstr "Nedaří se spustit ldap2zone"
+
+#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
+msgid "Ldap2zone"
+msgstr "Ldap2zone"
+
+#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
+#, php-format
+msgid "Ldap2Zone called for zone \"%s\""
+msgstr "Ldap2Zone zavoláno pro zónu „%s“"
+
+#: admin/dns/class_dnsManagement.inc:112 admin/dns/class_dnsZone.inc:368
+#: admin/systems/class_dnsHost.inc:319
+msgid "Error"
+msgstr "chyba"
+
+#: admin/dns/class_dnsManagement.inc:112 admin/systems/class_dnsHost.inc:319
+msgid "Argonaut client needs to be activated to use ldap2zone remotely"
+msgstr "Pro použití ldap2zone je třeba, aby byl aktivovaný argonaut klient"
 
 #: admin/dns/class_dnsView.inc:28 admin/dns/class_dnsView.inc:29
 #: admin/dns/class_dnsView.inc:31
@@ -124,54 +144,6 @@ msgstr "DNS zóny"
 #: admin/dns/class_dnsView.inc:66
 msgid "DNS zones in this view"
 msgstr "DNS zóny v tomto pohledu"
-
-#: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:123
-msgid "DNS"
-msgstr "DNS"
-
-#: admin/dns/class_dnsManagement.inc:35
-msgid "DNS Management"
-msgstr "Správa DNS"
-
-#: admin/dns/class_dnsManagement.inc:37
-msgid "Systems"
-msgstr "systémy"
-
-#: admin/dns/class_dnsManagement.inc:91 admin/dns/class_dnsManagement.inc:93
-#: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:307
-#: admin/systems/class_dnsHost.inc:313
-msgid "Could not run ldap2zone"
-msgstr "Nedaří se spustit ldap2zone"
-
-#: admin/dns/class_dnsManagement.inc:91
-msgid "More than one server matches the SOA"
-msgstr "SOA záznamu odpovídá více než jeden server"
-
-#: admin/dns/class_dnsManagement.inc:93
-msgid "Could not find the primary server"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:106
-msgid "Could not get run ldap2zone"
-msgstr "Nedaří se spustit ldap2zone"
-
-#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
-msgid "Ldap2zone"
-msgstr "Ldap2zone"
-
-#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
-#, php-format
-msgid "Ldap2Zone called for zone \"%s\""
-msgstr "Ldap2Zone zavoláno pro zónu „%s“"
-
-#: admin/dns/class_dnsManagement.inc:112 admin/dns/class_dnsZone.inc:368
-#: admin/systems/class_dnsHost.inc:319
-msgid "Error"
-msgstr "chyba"
-
-#: admin/dns/class_dnsManagement.inc:112 admin/systems/class_dnsHost.inc:319
-msgid "Argonaut client needs to be activated to use ldap2zone remotely"
-msgstr "Pro použití ldap2zone je třeba, aby byl aktivovaný argonaut klient"
 
 #: admin/dns/class_DnsRecordAttribute.inc:27
 #, php-format
@@ -284,6 +256,9 @@ msgid ""
 " values SHOULD be processed, low numbers being processed before high "
 "numbers."
 msgstr ""
+"Celé číslo které určuje pořadí ve kterém BY MĚLY být zpracovávány NAPTR "
+"záznamy se stejnými „order“ (pořadí) hodnotami, nízká čísla jsou zpracovány "
+"před těmi vyššími."
 
 #: admin/dns/class_DnsRecordAttribute.inc:264
 msgid "Flags"
@@ -336,6 +311,8 @@ msgid ""
 "The next NAME to query for NAPTR, SRV, or address records depending on the "
 "value of the flags field."
 msgstr ""
+"Příští NAME kterého se dotazovat na záznamy NAPTR, SRV nebo adresy, v "
+"závislosti na hodnotě kolonky příznaků."
 
 #: admin/dns/class_DnsRecordAttribute.inc:287
 msgid "SRV Record"
@@ -381,7 +358,7 @@ msgstr "cíl"
 #: admin/dns/class_DnsRecordAttribute.inc:306
 msgid ""
 "Canonical hostname of the machine providing the service, ending in a dot"
-msgstr ""
+msgstr "Kanonický název stroje poskytujícího službu, zakončený tečkou"
 
 #: admin/dns/class_DnsRecordAttribute.inc:322
 msgid "An IPv4 address"
@@ -400,6 +377,8 @@ msgid ""
 "Preference given to this RR among others at the same owner, lower values are"
 " preferred"
 msgstr ""
+"Přednost daná tomuto RR mezi ostatními při stejném vlastníkovi, nižší "
+"hodnoty znamenají více upřednostňované"
 
 #: admin/dns/class_DnsRecordAttribute.inc:348
 msgid ""
@@ -586,6 +565,8 @@ msgstr "znovu"
 msgid ""
 "Time interval that should elapse before a failed refresh should be retried"
 msgstr ""
+"Časový interval který by měl uplynout před opětovným pokusem po předchozí "
+"nezdařené aktualizaci"
 
 #: admin/dns/class_dnsZone.inc:766
 msgid "Expire"
@@ -596,6 +577,8 @@ msgid ""
 "Time value that specifies the upper limit on the time interval that can "
 "elapse before the zone is no longer authoritative"
 msgstr ""
+"Časová hodnota která určuje horní limit časového intravalu až po jehož "
+"uplynutí zóna už nebude autoritativní"
 
 #: admin/dns/class_dnsZone.inc:771
 msgid "TTL"
@@ -604,6 +587,8 @@ msgstr "TTL"
 #: admin/dns/class_dnsZone.inc:771
 msgid "Minimum TTL field that should be exported with any RR from this zone"
 msgstr ""
+"Kolonka minimálního TTL která by měla být exportována s libovolným RR z této"
+" zóny"
 
 #: admin/dns/class_dnsZone.inc:782
 msgid "Records"
@@ -656,6 +641,34 @@ msgstr "Aktualizace DNS"
 #, php-format
 msgid "%d records were removed in zone %s"
 msgstr "%d záznamů bylo odebráno v zóně %s"
+
+#: config/dns/class_dnsConfig.inc:28
+msgid "DNS configuration"
+msgstr "nastavení DNS"
+
+#: config/dns/class_dnsConfig.inc:29
+msgid "FusionDirectory dns plugin configuration"
+msgstr "Nastavení zásuvného modulu dns pro FusionDirectory"
+
+#: config/dns/class_dnsConfig.inc:42
+msgid "DNS config"
+msgstr "Nastavení DNS"
+
+#: config/dns/class_dnsConfig.inc:45
+msgid "DNS RDN"
+msgstr "Relativní rozlišený název DNS"
+
+#: config/dns/class_dnsConfig.inc:45
+msgid "Branch in which DNS zones will be stored"
+msgstr "Větev ve které budou ukládány DNS záznamy"
+
+#: config/dns/class_dnsConfig.inc:50
+msgid "Store final dot in domains"
+msgstr "Domény ukládat včetně teček na samém konci"
+
+#: config/dns/class_dnsConfig.inc:50
+msgid "Should FD store a final dot at the end of domains?"
+msgstr "Má F.D ukládat tečku úplně na konci domény?"
 
 #: admin/systems/dnsrecords.tpl.c:2
 msgid "Insufficient rights"

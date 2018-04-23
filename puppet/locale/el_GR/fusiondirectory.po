@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -17,6 +17,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:28
+#: admin/systems/services/puppet/class_servicePuppet.inc:42
+msgid "Puppet server"
+msgstr "Εξυπηρετητής Puppet"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:29
+msgid "This service allows you to use a puppet server"
+msgstr ""
+"Αυτή η υπηρεσία σας επιτρέπει να χρησιμοποιήσετε έναν εξυπηρετητή puppet"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:46
+msgid "Environments"
+msgstr "Περιβάλλοντα"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:47
+msgid "Available environments for puppet nodes"
+msgstr "Διαθέσιμα περιβάλλοντα για puppet nodes"
 
 #: admin/systems/puppet/class_puppetNode.inc:32
 msgid "Puppet node settings"
@@ -68,21 +86,3 @@ msgid ""
 msgstr ""
 "Υποστήριξη για σχήμα puppet για την επεξεργασία κλάσεων puppet και puppet "
 "vars"
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:28
-#: admin/systems/services/puppet/class_servicePuppet.inc:42
-msgid "Puppet server"
-msgstr "Εξυπηρετητής Puppet"
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:29
-msgid "This service allows you to use a puppet server"
-msgstr ""
-"Αυτή η υπηρεσία σας επιτρέπει να χρησιμοποιήσετε έναν εξυπηρετητή puppet"
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:46
-msgid "Environments"
-msgstr "Περιβάλλοντα"
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:47
-msgid "Available environments for puppet nodes"
-msgstr "Διαθέσιμα περιβάλλοντα για puppet nodes"

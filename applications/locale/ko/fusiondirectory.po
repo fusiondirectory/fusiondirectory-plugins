@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -18,53 +18,13 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: config/applications/class_applicationsPluginConfig.inc:28
-#: config/applications/class_applicationsPluginConfig.inc:40
 #: admin/applications/class_applicationManagement.inc:28
 #: admin/roles/class_applicationRights.inc:30
 #: admin/roles/class_applicationRights.inc:49
+#: config/applications/class_applicationsPluginConfig.inc:28
+#: config/applications/class_applicationsPluginConfig.inc:40
 msgid "Applications"
 msgstr "어플리케이션"
-
-#: config/applications/class_applicationsPluginConfig.inc:29
-msgid "Applications plugin configuration"
-msgstr "어플리케이션 플러그인 설정"
-
-#: config/applications/class_applicationsPluginConfig.inc:43
-msgid "Application RDN"
-msgstr "어플리케이션 RDN"
-
-#: config/applications/class_applicationsPluginConfig.inc:43
-msgid "Branch in which applications will be stored"
-msgstr "어플리케이션이 저장될 브랜치"
-
-#: config/applications/class_applicationsPluginConfig.inc:48
-msgid "Web applications RDN"
-msgstr "웹 어플리케이션 RDN"
-
-#: config/applications/class_applicationsPluginConfig.inc:48
-msgid "Branch in which web applications will be stored"
-msgstr "웹 어플리케이션이 저장될 브랜치"
-
-#: config/applications/class_applicationsPluginConfig.inc:53
-msgid "Show web applications in menu"
-msgstr "메뉴에 웹 어플리케이션 표시"
-
-#: config/applications/class_applicationsPluginConfig.inc:53
-msgid "Whether to show web applications in FD main menu"
-msgstr "DF 메인 메뉴에 웹 어플리케이션 표시 여부"
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "None"
-msgstr "없음"
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "Only allowed"
-msgstr "허용됨"
-
-#: config/applications/class_applicationsPluginConfig.inc:56
-msgid "All"
-msgstr "모두"
 
 #: admin/applications/class_applicationManagement.inc:29
 msgid "Application management"
@@ -74,12 +34,73 @@ msgstr "어플리케이션 관리"
 msgid "Web applications"
 msgstr "웹 어플리케이션"
 
+#: admin/applications/class_webApplication.inc:28
+#: admin/applications/class_webApplication.inc:31
+msgid "Web application"
+msgstr "웹 어플리케이션"
+
+#: admin/applications/class_webApplication.inc:29
+msgid "Web applicationts names, icons and links"
+msgstr "웹 어플리케이션 이름, 아이콘, 링크"
+
+#: admin/applications/class_webApplication.inc:45
 #: admin/applications/class_applicationGeneric.inc:29
 #: admin/applications/class_applicationGeneric.inc:32
 #: admin/applications/class_applicationGeneric.inc:46
-#: admin/applications/class_webApplication.inc:45
 msgid "Application"
 msgstr "어플리케이션"
+
+#: admin/applications/class_webApplication.inc:49
+msgid "Name"
+msgstr "명칭"
+
+#: admin/applications/class_webApplication.inc:49
+msgid "Name or id for application"
+msgstr "어플리케이션 이름 또는 아이디"
+
+#: admin/applications/class_webApplication.inc:53
+#: admin/applications/class_applicationGeneric.inc:54
+msgid "Description"
+msgstr "설명"
+
+#: admin/applications/class_webApplication.inc:53
+#: admin/applications/class_applicationGeneric.inc:54
+msgid "A short description of this application"
+msgstr "어플리케이션 설명"
+
+#: admin/applications/class_webApplication.inc:57
+msgid "URL"
+msgstr "URL"
+
+#: admin/applications/class_webApplication.inc:57
+msgid "Link to this application"
+msgstr "어플리케이션 링크"
+
+#: admin/applications/class_webApplication.inc:61
+msgid "Display Name"
+msgstr "표시 이름"
+
+#: admin/applications/class_webApplication.inc:61
+msgid "Displayed name for links to this application"
+msgstr "어플리케이션 링크 표시 이름"
+
+#: admin/applications/class_webApplication.inc:67
+#: admin/applications/class_applicationGeneric.inc:68
+msgid "Icon"
+msgstr "아이콘"
+
+#: admin/applications/class_webApplication.inc:70
+#: admin/applications/class_applicationGeneric.inc:71
+msgid "The icon for this application"
+msgstr "어플리케이션 아이콘"
+
+#: admin/applications/class_webApplication.inc:75
+msgid "Icon location"
+msgstr "아이콘 위치"
+
+#: admin/applications/class_webApplication.inc:75
+msgid "Usual path to this application icon"
+msgstr "어플리케이션 아이콘 경로"
 
 #: admin/applications/class_applicationGeneric.inc:30
 msgid "Application information"
@@ -92,16 +113,6 @@ msgstr "어플리케이션 이름"
 #: admin/applications/class_applicationGeneric.inc:50
 msgid "The name of this application"
 msgstr "어플리케이션 이름"
-
-#: admin/applications/class_applicationGeneric.inc:54
-#: admin/applications/class_webApplication.inc:53
-msgid "Description"
-msgstr "설명"
-
-#: admin/applications/class_applicationGeneric.inc:54
-#: admin/applications/class_webApplication.inc:53
-msgid "A short description of this application"
-msgstr "어플리케이션 설명"
 
 #: admin/applications/class_applicationGeneric.inc:58
 msgid "Execute"
@@ -118,16 +129,6 @@ msgstr "표시 이름"
 #: admin/applications/class_applicationGeneric.inc:62
 msgid "The displayed name for this application"
 msgstr "어플리케이션 표시 이름"
-
-#: admin/applications/class_applicationGeneric.inc:68
-#: admin/applications/class_webApplication.inc:67
-msgid "Icon"
-msgstr "아이콘"
-
-#: admin/applications/class_applicationGeneric.inc:71
-#: admin/applications/class_webApplication.inc:70
-msgid "The icon for this application"
-msgstr "어플리케이션 아이콘"
 
 #: admin/applications/class_applicationGeneric.inc:78
 msgid "Options"
@@ -170,47 +171,6 @@ msgstr "시작 메뉴에 항목 추가"
 msgid "Place entry in members launch bar"
 msgstr "멤버 런치바에  항목 표시"
 
-#: admin/applications/class_webApplication.inc:28
-#: admin/applications/class_webApplication.inc:31
-msgid "Web application"
-msgstr "웹 어플리케이션"
-
-#: admin/applications/class_webApplication.inc:29
-msgid "Web applicationts names, icons and links"
-msgstr "웹 어플리케이션 이름, 아이콘, 링크"
-
-#: admin/applications/class_webApplication.inc:49
-msgid "Name"
-msgstr "명칭"
-
-#: admin/applications/class_webApplication.inc:49
-msgid "Name or id for application"
-msgstr "어플리케이션 이름 또는 아이디"
-
-#: admin/applications/class_webApplication.inc:57
-msgid "URL"
-msgstr "URL"
-
-#: admin/applications/class_webApplication.inc:57
-msgid "Link to this application"
-msgstr "어플리케이션 링크"
-
-#: admin/applications/class_webApplication.inc:61
-msgid "Display Name"
-msgstr "표시 이름"
-
-#: admin/applications/class_webApplication.inc:61
-msgid "Displayed name for links to this application"
-msgstr "어플리케이션 링크 표시 이름"
-
-#: admin/applications/class_webApplication.inc:75
-msgid "Icon location"
-msgstr "아이콘 위치"
-
-#: admin/applications/class_webApplication.inc:75
-msgid "Usual path to this application icon"
-msgstr "어플리케이션 아이콘 경로"
-
 #: admin/roles/class_applicationRights.inc:31
 msgid "Applications allowed for this role"
 msgstr "역할에 어플리케이션 허용"
@@ -222,3 +182,43 @@ msgstr "어플리케이션 목록"
 #: admin/roles/class_applicationRights.inc:49
 msgid "The applications users with this role are allowed to launch"
 msgstr "이 역할을 가진 어플리케이션 사용자는 실행이 허용됨."
+
+#: config/applications/class_applicationsPluginConfig.inc:29
+msgid "Applications plugin configuration"
+msgstr "어플리케이션 플러그인 설정"
+
+#: config/applications/class_applicationsPluginConfig.inc:43
+msgid "Application RDN"
+msgstr "어플리케이션 RDN"
+
+#: config/applications/class_applicationsPluginConfig.inc:43
+msgid "Branch in which applications will be stored"
+msgstr "어플리케이션이 저장될 브랜치"
+
+#: config/applications/class_applicationsPluginConfig.inc:48
+msgid "Web applications RDN"
+msgstr "웹 어플리케이션 RDN"
+
+#: config/applications/class_applicationsPluginConfig.inc:48
+msgid "Branch in which web applications will be stored"
+msgstr "웹 어플리케이션이 저장될 브랜치"
+
+#: config/applications/class_applicationsPluginConfig.inc:53
+msgid "Show web applications in menu"
+msgstr "메뉴에 웹 어플리케이션 표시"
+
+#: config/applications/class_applicationsPluginConfig.inc:53
+msgid "Whether to show web applications in FD main menu"
+msgstr "DF 메인 메뉴에 웹 어플리케이션 표시 여부"
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "None"
+msgstr "없음"
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "Only allowed"
+msgstr "허용됨"
+
+#: config/applications/class_applicationsPluginConfig.inc:56
+msgid "All"
+msgstr "모두"

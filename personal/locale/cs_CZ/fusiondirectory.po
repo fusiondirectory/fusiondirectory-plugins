@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -17,6 +17,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: config/personal/class_personalConfig.inc:28
+msgid "Personal configuration"
+msgstr "Osobní nastavení"
+
+#: config/personal/class_personalConfig.inc:29
+msgid "FusionDirectory personal plugin configuration"
+msgstr "Nastavení zásuvného modulu Osobní pro FusionDirectory"
+
+#: config/personal/class_personalConfig.inc:42
+#: personal/personal/class_personalInfo.inc:85
+msgid "Personal"
+msgstr "osobní"
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow use of private email for password recovery"
+msgstr "Umožnit pro obnovu hesla použít soukromý e-mail"
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow users to use their private email address for password recovery"
+msgstr ""
+"Umožnit uživatelům použít své soukromé e-mailové adresy pro obnovu hesla"
 
 #: personal/personal/class_personalInfo.inc:30
 msgid "Site"
@@ -33,11 +55,6 @@ msgstr "Identifikátor"
 #: personal/personal/class_personalInfo.inc:36
 msgid "Id of this user on this website"
 msgstr "Identifikátor tohoto uživatele na tomto webu"
-
-#: personal/personal/class_personalInfo.inc:85
-#: config/personal/class_personalConfig.inc:42
-msgid "Personal"
-msgstr "osobní"
 
 #: personal/personal/class_personalInfo.inc:86
 msgid "Personal information"
@@ -154,20 +171,3 @@ msgstr "Diaspora účet má podobu uživatel@server"
 #: personal/personal/class_socialHandlers.inc:141
 msgid "LinkedIn"
 msgstr "LinkedIn"
-
-#: config/personal/class_personalConfig.inc:28
-msgid "Personal configuration"
-msgstr "Osobní nastavení"
-
-#: config/personal/class_personalConfig.inc:29
-msgid "FusionDirectory personal plugin configuration"
-msgstr "Nastavení zásuvného modulu Osobní pro FusionDirectory"
-
-#: config/personal/class_personalConfig.inc:45
-msgid "Allow use of private email for password recovery"
-msgstr "Umožnit pro obnovu hesla použít soukromý e-mail"
-
-#: config/personal/class_personalConfig.inc:45
-msgid "Allow users to use their private email address for password recovery"
-msgstr ""
-"Umožnit uživatelům použít své soukromé e-mailové adresy pro obnovu hesla"

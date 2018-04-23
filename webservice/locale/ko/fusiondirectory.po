@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -48,40 +48,40 @@ msgstr "FustionDirection 설정 %s/%s 을 읽을 수 없습니다. 중단됨."
 msgid "Cannot locate file '%s' - please run '%s' to fix this"
 msgstr "'%s' 파일을 사용할 수 없습니다.  '%s' 를 실행해 주세요."
 
-#: html/jsonrpc.php:325 html/jsonrpc.php:408
+#: html/jsonrpc.php:338 html/jsonrpc.php:421
 msgid "Plugin"
 msgstr "플러그인"
 
-#: html/jsonrpc.php:504
+#: html/jsonrpc.php:517
 #, php-format
 msgid "Cannot delete %s. It has been locked by %s."
 msgstr "'%s'를 지울 수 없습니다. %s에 의해 잠겨있습니다."
 
-#: html/jsonrpc.php:551 html/jsonrpc.php:580
+#: html/jsonrpc.php:564 html/jsonrpc.php:593
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr "\"%s\" 계정의 패스워드를 가져올 수 없습니다. 잠겨있지 않습니다."
 
-#: html/jsonrpc.php:576
+#: html/jsonrpc.php:589
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr "\"%s\"의 패스워드를 잠글 수 없습니다. \"%s\" 계정이 잠겨있지 않습니다."
 
-#: html/jsonrpc.php:583
+#: html/jsonrpc.php:596
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr "LDAP에서 계정 \"%s\"을 찾을 수 없습니다. 잠겨있지 않습니다."
 
-#: html/jsonrpc.php:621 html/jsonrpc.php:630
+#: html/jsonrpc.php:634 html/jsonrpc.php:643
 #, php-format
 msgid "Failed to get password method for account \"%s\""
 msgstr "\"%s\" 계정의 패스워드를 가져올 수 없습니다. "
 
-#: html/jsonrpc.php:633
+#: html/jsonrpc.php:646
 #, php-format
 msgid "Could not find account \"%s\" in LDAP"
 msgstr "LDAP에서 계정 \"%s\"를 찾을 수 없습니다."
 
-#: html/jsonrpc.php:677
+#: html/jsonrpc.php:690
 msgid "This token is invalid"
 msgstr "토큰이 유효하지 않습니다."
