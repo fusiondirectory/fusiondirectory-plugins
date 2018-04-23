@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: Indonesian (https://www.transifex.com/fusiondirectory/teams/12202/id/)\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: addons/gpg/class_pgpServerInfo.inc:31 addons/gpg/class_pgpServerInfo.inc:32
+#: addons/gpg/class_pgpServerInfo.inc:38 addons/gpg/class_pgpServerInfo.inc:56
+msgid "GPG server info"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:60
+msgid "Software"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:60
+msgid "Which software this GPG key server is running"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:65
+msgid "GPG version"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:65
+msgid "Which version of GPG this key server is running"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:70
+msgid "Branch in which keys are stored"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:74
+msgid "Keys RDN"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:74
+msgid "Branch under base in which keys are stored"
+msgstr ""
 
 #: personal/gpg/class_gpgAccount.inc:31
 msgid "GPG keys"
@@ -99,37 +132,4 @@ msgstr ""
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:72
 msgid "Type"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:31 addons/gpg/class_pgpServerInfo.inc:32
-#: addons/gpg/class_pgpServerInfo.inc:38 addons/gpg/class_pgpServerInfo.inc:56
-msgid "GPG server info"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:60
-msgid "Software"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:60
-msgid "Which software this GPG key server is running"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:65
-msgid "GPG version"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:65
-msgid "Which version of GPG this key server is running"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:70
-msgid "Branch in which keys are stored"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:74
-msgid "Keys RDN"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:74
-msgid "Branch under base in which keys are stored"
 msgstr ""

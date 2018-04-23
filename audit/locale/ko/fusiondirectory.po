@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -17,43 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#: config/audit/class_auditConfig.inc:28
-msgid "Audit configuration"
-msgstr "감사 설정"
-
-#: config/audit/class_auditConfig.inc:29
-msgid "FusionDirectory audit plugin configuration"
-msgstr "FusionDirectory 감사 플러그인 설정"
-
-#: config/audit/class_auditConfig.inc:41
-#: admin/audit/class_auditManagement.inc:40
-msgid "Audit"
-msgstr "감사"
-
-#: config/audit/class_auditConfig.inc:44
-msgid "Audit RDN"
-msgstr "감사 RDN"
-
-#: config/audit/class_auditConfig.inc:44
-msgid "Branch in which audit events will be stored"
-msgstr "감사 이벤트가 저장될 브랜치"
-
-#: config/audit/class_auditConfig.inc:50
-msgid "Actions to audit"
-msgstr "감사 액션"
-
-#: config/audit/class_auditConfig.inc:50
-msgid "Which actions should be stored in LDAP audit log"
-msgstr "액션은 LDAP 감사 로그에 저장됨"
-
-#: config/audit/class_auditConfig.inc:57
-msgid "Days to keep"
-msgstr "지속 일자"
-
-#: config/audit/class_auditConfig.inc:57
-msgid "Number of days of audit to keep in the LDAP when cleaning"
-msgstr "초기화 시 LDAP에 감사 기록이 보관될 일수"
 
 #: admin/audit/class_auditEvent.inc:53 admin/audit/class_auditEvent.inc:56
 msgid "Audit event"
@@ -122,6 +85,11 @@ msgstr "결과"
 msgid "Result or error"
 msgstr "결과 또는 오류"
 
+#: admin/audit/class_auditManagement.inc:40
+#: config/audit/class_auditConfig.inc:41
+msgid "Audit"
+msgstr "감사"
+
 #: admin/audit/class_auditManagement.inc:41
 msgid "Audit events display"
 msgstr "감사 이벤트 표시"
@@ -133,3 +101,35 @@ msgstr "타입"
 #: admin/audit/class_auditManagement.inc:97
 msgid "Target"
 msgstr "타겟"
+
+#: config/audit/class_auditConfig.inc:28
+msgid "Audit configuration"
+msgstr "감사 설정"
+
+#: config/audit/class_auditConfig.inc:29
+msgid "FusionDirectory audit plugin configuration"
+msgstr "FusionDirectory 감사 플러그인 설정"
+
+#: config/audit/class_auditConfig.inc:44
+msgid "Audit RDN"
+msgstr "감사 RDN"
+
+#: config/audit/class_auditConfig.inc:44
+msgid "Branch in which audit events will be stored"
+msgstr "감사 이벤트가 저장될 브랜치"
+
+#: config/audit/class_auditConfig.inc:50
+msgid "Actions to audit"
+msgstr "감사 액션"
+
+#: config/audit/class_auditConfig.inc:50
+msgid "Which actions should be stored in LDAP audit log"
+msgstr "액션은 LDAP 감사 로그에 저장됨"
+
+#: config/audit/class_auditConfig.inc:57
+msgid "Days to keep"
+msgstr "지속 일자"
+
+#: config/audit/class_auditConfig.inc:57
+msgid "Number of days of audit to keep in the LDAP when cleaning"
+msgstr "초기화 시 LDAP에 감사 기록이 보관될 일수"

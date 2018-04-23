@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -17,6 +17,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:28
+#: admin/systems/services/puppet/class_servicePuppet.inc:42
+msgid "Puppet server"
+msgstr "Serveur Puppet"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:29
+msgid "This service allows you to use a puppet server"
+msgstr "Ce service vous permet d'utiliser un serveur Puppet"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:46
+msgid "Environments"
+msgstr "Environments"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:47
+msgid "Available environments for puppet nodes"
+msgstr "Environnements disponibles pour les noeuds Puppet"
 
 #: admin/systems/puppet/class_puppetNode.inc:32
 msgid "Puppet node settings"
@@ -68,20 +85,3 @@ msgid ""
 msgstr ""
 "Soutien pour le schéma Puppet afin de modifier les classes Puppet et les "
 "variables Puppet"
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:28
-#: admin/systems/services/puppet/class_servicePuppet.inc:42
-msgid "Puppet server"
-msgstr "Serveur Puppet"
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:29
-msgid "This service allows you to use a puppet server"
-msgstr "Ce service vous permet d'utiliser un serveur Puppet"
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:46
-msgid "Environments"
-msgstr "Environments"
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:47
-msgid "Available environments for puppet nodes"
-msgstr "Environnements disponibles pour les noeuds Puppet"

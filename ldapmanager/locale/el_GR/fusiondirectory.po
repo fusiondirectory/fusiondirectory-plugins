@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -29,88 +29,6 @@ msgstr ""
 #: addons/ldapmanager/tabs_ldif.inc:36
 msgid "Ldap manager"
 msgstr "Διαχειριστής Ldap"
-
-#: addons/ldapmanager/class_csvimport.inc:29
-msgid "CSV import"
-msgstr "Εισαγωγή CSV "
-
-#: addons/ldapmanager/class_csvimport.inc:30
-msgid "Import of csv data into the ldap tree"
-msgstr "Εισαγωγή δεδομένων csv στο δέντρο ldap"
-
-#: addons/ldapmanager/class_csvimport.inc:43
-msgid "Import CSV"
-msgstr "Εισαγωγή CSV"
-
-#: addons/ldapmanager/class_csvimport.inc:46
-msgid "Object type"
-msgstr "Τύπος αντικειμένου"
-
-#: addons/ldapmanager/class_csvimport.inc:46
-msgid "Type of objects you wish to import"
-msgstr "Τύπος αντικειμένων που θέλετε να εισάγετε"
-
-#: addons/ldapmanager/class_csvimport.inc:52
-msgid "Template"
-msgstr "Πρότυπο"
-
-#: addons/ldapmanager/class_csvimport.inc:52
-msgid "Select a template to apply to imported entries"
-msgstr ""
-"Επιλογή ενός προτύπου από το οποίο θα εφραμοστούν οι εισηγμένες καταχωρήσεις"
-
-#: addons/ldapmanager/class_csvimport.inc:58
-msgid "CSV file"
-msgstr "Αρχείο CSV"
-
-#: addons/ldapmanager/class_csvimport.inc:58
-msgid "Import a CSV file into your LDAP"
-msgstr "Εισαγωγή ενός αρχείου CSV στο LDAP σας"
-
-#: addons/ldapmanager/class_csvimport.inc:62
-msgid "Separator"
-msgstr "Διαχωριστικό"
-
-#: addons/ldapmanager/class_csvimport.inc:62
-msgid "Character used as separator in the CSV file"
-msgstr "Χαρακτήρας που χρησιμοποιείται ως διαχωριστικό στο αρχείο CSV"
-
-#: addons/ldapmanager/class_csvimport.inc:72
-msgid "Fixed values"
-msgstr "Προκαθορισμένες τιμές"
-
-#: addons/ldapmanager/class_csvimport.inc:72
-msgid ""
-"Some fixed values that you might wanna use in the filling of the template."
-msgstr ""
-
-#: addons/ldapmanager/class_csvimport.inc:81
-#: addons/ldapmanager/class_csvimport.inc:107
-#: addons/ldapmanager/class_ldapmanager.inc:121
-msgid "Import"
-msgstr "Εισαγωγή"
-
-#: addons/ldapmanager/class_csvimport.inc:88
-msgid "Template filling"
-msgstr "Γέμισμα προτύπων"
-
-#: addons/ldapmanager/class_csvimport.inc:97
-msgid "Select fields associations"
-msgstr "Επιλογή συσχετισμών πεδίων"
-
-#: addons/ldapmanager/class_csvimport.inc:243
-#, php-format
-msgid "Import failed for line %d"
-msgstr ""
-
-#: addons/ldapmanager/class_csvimport.inc:250
-msgid "Success"
-msgstr "Επιτυχία"
-
-#: addons/ldapmanager/class_csvimport.inc:250
-#, php-format
-msgid "Successfully imported %d entries"
-msgstr "Πετυχημένη εισαγωγή %d καταχωρήσεων"
 
 #: addons/ldapmanager/class_ldapmanager.inc:45
 msgid "LDIF"
@@ -177,6 +95,12 @@ msgid ""
 "check your LDIFs for FusionDirectory conformance."
 msgstr ""
 
+#: addons/ldapmanager/class_ldapmanager.inc:121
+#: addons/ldapmanager/class_csvimport.inc:81
+#: addons/ldapmanager/class_csvimport.inc:107
+msgid "Import"
+msgstr "Εισαγωγή"
+
 #: addons/ldapmanager/class_ldapmanager.inc:125
 msgid "Import LDIF file"
 msgstr "Εισαγωγή αρχείου LDIF"
@@ -208,3 +132,79 @@ msgstr "Σφάλμα"
 #, php-format
 msgid "Failed to generate ldap export, error was \"%s\"!"
 msgstr "Αποτυχία δημιουργίας εξαγωγής ldap, το σφάλμα ήταν \"%s\"!"
+
+#: addons/ldapmanager/class_csvimport.inc:29
+msgid "CSV import"
+msgstr "Εισαγωγή CSV "
+
+#: addons/ldapmanager/class_csvimport.inc:30
+msgid "Import of csv data into the ldap tree"
+msgstr "Εισαγωγή δεδομένων csv στο δέντρο ldap"
+
+#: addons/ldapmanager/class_csvimport.inc:43
+msgid "Import CSV"
+msgstr "Εισαγωγή CSV"
+
+#: addons/ldapmanager/class_csvimport.inc:46
+msgid "Object type"
+msgstr "Τύπος αντικειμένου"
+
+#: addons/ldapmanager/class_csvimport.inc:46
+msgid "Type of objects you wish to import"
+msgstr "Τύπος αντικειμένων που θέλετε να εισάγετε"
+
+#: addons/ldapmanager/class_csvimport.inc:52
+msgid "Template"
+msgstr "Πρότυπο"
+
+#: addons/ldapmanager/class_csvimport.inc:52
+msgid "Select a template to apply to imported entries"
+msgstr ""
+"Επιλογή ενός προτύπου από το οποίο θα εφραμοστούν οι εισηγμένες καταχωρήσεις"
+
+#: addons/ldapmanager/class_csvimport.inc:58
+msgid "CSV file"
+msgstr "Αρχείο CSV"
+
+#: addons/ldapmanager/class_csvimport.inc:58
+msgid "Import a CSV file into your LDAP"
+msgstr "Εισαγωγή ενός αρχείου CSV στο LDAP σας"
+
+#: addons/ldapmanager/class_csvimport.inc:62
+msgid "Separator"
+msgstr "Διαχωριστικό"
+
+#: addons/ldapmanager/class_csvimport.inc:62
+msgid "Character used as separator in the CSV file"
+msgstr "Χαρακτήρας που χρησιμοποιείται ως διαχωριστικό στο αρχείο CSV"
+
+#: addons/ldapmanager/class_csvimport.inc:72
+msgid "Fixed values"
+msgstr "Προκαθορισμένες τιμές"
+
+#: addons/ldapmanager/class_csvimport.inc:72
+msgid ""
+"Some fixed values that you might wanna use in the filling of the template."
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:88
+msgid "Template filling"
+msgstr "Γέμισμα προτύπων"
+
+#: addons/ldapmanager/class_csvimport.inc:97
+msgid "Select fields associations"
+msgstr "Επιλογή συσχετισμών πεδίων"
+
+#: addons/ldapmanager/class_csvimport.inc:243
+#, php-format
+msgid "Import failed for line %d"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:250
+msgid "Success"
+msgstr "Επιτυχία"
+
+#: addons/ldapmanager/class_csvimport.inc:250
+#, php-format
+msgid "Successfully imported %d entries"
+msgstr "Πετυχημένη εισαγωγή %d καταχωρήσεων"

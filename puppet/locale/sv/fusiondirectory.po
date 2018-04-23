@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Swedish (https://www.transifex.com/fusiondirectory/teams/12202/sv/)\n"
@@ -17,6 +17,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:28
+#: admin/systems/services/puppet/class_servicePuppet.inc:42
+msgid "Puppet server"
+msgstr "Puppet-server"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:29
+msgid "This service allows you to use a puppet server"
+msgstr "Den här tjänsten låter dig använda en puppet-server"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:46
+msgid "Environments"
+msgstr "Miljöer"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:47
+msgid "Available environments for puppet nodes"
+msgstr "Tillgängliga miljöer för puppet-noder"
 
 #: admin/systems/puppet/class_puppetNode.inc:32
 msgid "Puppet node settings"
@@ -67,20 +84,3 @@ msgid ""
 "Support for puppet schema in order to edit puppet classes and puppet vars"
 msgstr ""
 "Stöd för puppetschema för att redigera puppet-klasser och puppet-variabler"
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:28
-#: admin/systems/services/puppet/class_servicePuppet.inc:42
-msgid "Puppet server"
-msgstr "Puppet-server"
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:29
-msgid "This service allows you to use a puppet server"
-msgstr "Den här tjänsten låter dig använda en puppet-server"
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:46
-msgid "Environments"
-msgstr "Miljöer"
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:47
-msgid "Available environments for puppet nodes"
-msgstr "Tillgängliga miljöer för puppet-noder"

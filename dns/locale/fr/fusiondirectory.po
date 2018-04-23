@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -17,36 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: config/dns/class_dnsConfig.inc:28
-msgid "DNS configuration"
-msgstr "Configuration DNS"
-
-#: config/dns/class_dnsConfig.inc:29
-msgid "FusionDirectory dns plugin configuration"
-msgstr "Configuration du plugin DNS"
-
-#: config/dns/class_dnsConfig.inc:42
-msgid "DNS config"
-msgstr "Configuration DNS"
-
-#: config/dns/class_dnsConfig.inc:45
-msgid "DNS RDN"
-msgstr "Branche DNS"
-
-#: config/dns/class_dnsConfig.inc:45
-msgid "Branch in which DNS zones will be stored"
-msgstr "Branche dans laquelle les zones DNS seront stockées"
-
-#: config/dns/class_dnsConfig.inc:50
-msgid "Store final dot in domains"
-msgstr "Stocker le point final dans les domaines"
-
-#: config/dns/class_dnsConfig.inc:50
-msgid "Should FD store a final dot at the end of domains?"
-msgstr ""
-"Est-ce que FusionDirectory doit stocker un point final à la fin des noms de "
-"domaines ?"
 
 #: admin/dns/class_dnsAcl.inc:30 admin/dns/class_dnsAcl.inc:31
 #: admin/dns/class_dnsAcl.inc:33
@@ -72,6 +42,55 @@ msgstr "Liste d'adresses"
 #: admin/dns/class_dnsAcl.inc:56
 msgid "The ip address match list for this acl"
 msgstr "La liste de correspondance d'adresse IP pour cette ACL"
+
+#: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:123
+msgid "DNS"
+msgstr "DNS"
+
+#: admin/dns/class_dnsManagement.inc:35
+msgid "DNS Management"
+msgstr "Gestion des DNS"
+
+#: admin/dns/class_dnsManagement.inc:37
+msgid "Systems"
+msgstr "Systèmes"
+
+#: admin/dns/class_dnsManagement.inc:91 admin/dns/class_dnsManagement.inc:93
+#: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:307
+#: admin/systems/class_dnsHost.inc:313
+msgid "Could not run ldap2zone"
+msgstr "Impossible de lancer ldap2zone"
+
+#: admin/dns/class_dnsManagement.inc:91
+msgid "More than one server matches the SOA"
+msgstr "Plus d'un serveur correspond au SOA"
+
+#: admin/dns/class_dnsManagement.inc:93
+msgid "Could not find the primary server"
+msgstr "Impossible de trouver le serveur primaire"
+
+#: admin/dns/class_dnsManagement.inc:106
+msgid "Could not get run ldap2zone"
+msgstr "Impossible de lancer ldap2zone"
+
+#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
+msgid "Ldap2zone"
+msgstr "Ldap2zone"
+
+#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
+#, php-format
+msgid "Ldap2Zone called for zone \"%s\""
+msgstr "Ldap2Zone appelé pour la zone \"%s\""
+
+#: admin/dns/class_dnsManagement.inc:112 admin/dns/class_dnsZone.inc:368
+#: admin/systems/class_dnsHost.inc:319
+msgid "Error"
+msgstr "Erreur"
+
+#: admin/dns/class_dnsManagement.inc:112 admin/systems/class_dnsHost.inc:319
+msgid "Argonaut client needs to be activated to use ldap2zone remotely"
+msgstr ""
+"Le client Argonaut doit être activé pour utiliser ldap2zone à distance"
 
 #: admin/dns/class_dnsView.inc:28 admin/dns/class_dnsView.inc:29
 #: admin/dns/class_dnsView.inc:31
@@ -126,55 +145,6 @@ msgstr "Zones DNS"
 #: admin/dns/class_dnsView.inc:66
 msgid "DNS zones in this view"
 msgstr "Zones DNS dans cette vue"
-
-#: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:123
-msgid "DNS"
-msgstr "DNS"
-
-#: admin/dns/class_dnsManagement.inc:35
-msgid "DNS Management"
-msgstr "Gestion des DNS"
-
-#: admin/dns/class_dnsManagement.inc:37
-msgid "Systems"
-msgstr "Systèmes"
-
-#: admin/dns/class_dnsManagement.inc:91 admin/dns/class_dnsManagement.inc:93
-#: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:307
-#: admin/systems/class_dnsHost.inc:313
-msgid "Could not run ldap2zone"
-msgstr "Impossible de lancer ldap2zone"
-
-#: admin/dns/class_dnsManagement.inc:91
-msgid "More than one server matches the SOA"
-msgstr "Plus d'un serveur correspond au SOA"
-
-#: admin/dns/class_dnsManagement.inc:93
-msgid "Could not find the primary server"
-msgstr "Impossible de trouver le serveur primaire"
-
-#: admin/dns/class_dnsManagement.inc:106
-msgid "Could not get run ldap2zone"
-msgstr "Impossible de lancer ldap2zone"
-
-#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
-msgid "Ldap2zone"
-msgstr "Ldap2zone"
-
-#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
-#, php-format
-msgid "Ldap2Zone called for zone \"%s\""
-msgstr "Ldap2Zone appelé pour la zone \"%s\""
-
-#: admin/dns/class_dnsManagement.inc:112 admin/dns/class_dnsZone.inc:368
-#: admin/systems/class_dnsHost.inc:319
-msgid "Error"
-msgstr "Erreur"
-
-#: admin/dns/class_dnsManagement.inc:112 admin/systems/class_dnsHost.inc:319
-msgid "Argonaut client needs to be activated to use ldap2zone remotely"
-msgstr ""
-"Le client Argonaut doit être activé pour utiliser ldap2zone à distance"
 
 #: admin/dns/class_DnsRecordAttribute.inc:27
 #, php-format
@@ -682,6 +652,36 @@ msgstr "Mise à jour DNS"
 #, php-format
 msgid "%d records were removed in zone %s"
 msgstr "%d enregistrements ont été enlevés dans la zone %s"
+
+#: config/dns/class_dnsConfig.inc:28
+msgid "DNS configuration"
+msgstr "Configuration DNS"
+
+#: config/dns/class_dnsConfig.inc:29
+msgid "FusionDirectory dns plugin configuration"
+msgstr "Configuration du plugin DNS"
+
+#: config/dns/class_dnsConfig.inc:42
+msgid "DNS config"
+msgstr "Configuration DNS"
+
+#: config/dns/class_dnsConfig.inc:45
+msgid "DNS RDN"
+msgstr "Branche DNS"
+
+#: config/dns/class_dnsConfig.inc:45
+msgid "Branch in which DNS zones will be stored"
+msgstr "Branche dans laquelle les zones DNS seront stockées"
+
+#: config/dns/class_dnsConfig.inc:50
+msgid "Store final dot in domains"
+msgstr "Stocker le point final dans les domaines"
+
+#: config/dns/class_dnsConfig.inc:50
+msgid "Should FD store a final dot at the end of domains?"
+msgstr ""
+"Est-ce que FusionDirectory doit stocker un point final à la fin des noms de "
+"domaines ?"
 
 #: admin/systems/dnsrecords.tpl.c:2
 msgid "Insufficient rights"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
@@ -18,187 +18,110 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: addons/dashboard/class_dashBoardNetwork.inc:28
-msgid "Network"
-msgstr "Сеть"
+#: admin/systems/class_phoneGeneric.inc:32
+#: admin/systems/class_phoneGeneric.inc:36
+#: admin/systems/class_phoneGeneric.inc:66
+#: admin/systems/class_mobilePhoneGeneric.inc:70
+msgid "Phone"
+msgstr "Телефон"
 
-#: addons/dashboard/class_dashBoardNetwork.inc:29
-msgid "Statistics and various information"
+#: admin/systems/class_phoneGeneric.inc:33
+msgid "Phone information"
+msgstr "Информация об телеофоне"
+
+#: admin/systems/class_phoneGeneric.inc:37
+msgid "Phone hardware"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardNetwork.inc:41
-msgid "DHCP"
-msgstr "DHCP"
+#: admin/systems/class_phoneGeneric.inc:52
+#: admin/systems/class_printGeneric.inc:58
+#: admin/systems/class_workstationGeneric.inc:59
+#: admin/systems/class_componentGeneric.inc:55
+#: admin/systems/class_mobilePhoneGeneric.inc:56
+msgid "Properties"
+msgstr "Свойства"
 
-#: addons/dashboard/class_dashBoardNetwork.inc:46
-msgid "DNS"
-msgstr "DNS"
+#: admin/systems/class_phoneGeneric.inc:56 admin/systems/system-list.xml:31
+#: admin/systems/class_printGeneric.inc:62
+#: admin/systems/class_workstationGeneric.inc:63
+#: admin/systems/services/shares/class_serviceShare.inc:51
+#: admin/systems/class_componentGeneric.inc:58
+#: admin/systems/class_mobilePhoneGeneric.inc:60
+msgid "Name"
+msgstr "Фамилия"
 
-#: addons/dashboard/class_dashBoardSystems.inc:30
-#: config/systems/class_systemsPluginConfig.inc:28
-#: admin/systems/class_systemManagement.inc:43
-#: admin/systems/class_systemManagement.inc:47
-msgid "Systems"
-msgstr "Системы"
+#: admin/systems/class_phoneGeneric.inc:56
+msgid "The name of the phone"
+msgstr "Название телефона"
 
-#: addons/dashboard/class_dashBoardSystems.inc:31
-msgid "Statistics and information about systems"
+#: admin/systems/class_phoneGeneric.inc:60
+#: admin/systems/serverService-list.xml:35 admin/systems/system-list.xml:55
+#: admin/systems/class_printGeneric.inc:66
+#: admin/systems/class_workstationGeneric.inc:68
+#: admin/systems/services/shares/class_serviceShare.inc:55
+#: admin/systems/class_componentGeneric.inc:62
+#: admin/systems/class_mobilePhoneGeneric.inc:64
+msgid "Description"
+msgstr "Описание"
+
+#: admin/systems/class_phoneGeneric.inc:60
+msgid "A short description of the phone"
+msgstr "Краткое описание телефона"
+
+#: admin/systems/class_phoneGeneric.inc:69
+#: admin/systems/class_mobilePhoneGeneric.inc:73
+msgid "Serial Number"
+msgstr "Серийный номер"
+
+#: admin/systems/class_phoneGeneric.inc:69
+msgid "The serial number of the phone"
+msgstr "Серийный номер телефона"
+
+#: admin/systems/class_phoneGeneric.inc:73
+#: admin/systems/class_mobilePhoneGeneric.inc:91
+msgid "Telephone Number"
+msgstr "Номер телефона"
+
+#: admin/systems/class_phoneGeneric.inc:73
+msgid "The telephone number of the phone"
+msgstr "Телефонный номер у этого телефона"
+
+#: admin/systems/class_phoneGeneric.inc:79
+#: admin/systems/class_printGeneric.inc:103
+#: admin/systems/class_workstationGeneric.inc:90
+#: admin/systems/class_componentGeneric.inc:69
+#: admin/systems/class_mobilePhoneGeneric.inc:102
+msgid "Network settings"
+msgstr "Сетевые настройки"
+
+#: admin/systems/class_phoneGeneric.inc:84
+#: admin/systems/class_printGeneric.inc:108
+#: admin/systems/class_workstationGeneric.inc:95
+#: admin/systems/class_componentGeneric.inc:73
+#: admin/systems/class_mobilePhoneGeneric.inc:106
+msgid "IP address"
+msgstr "IP адрес"
+
+#: admin/systems/class_phoneGeneric.inc:84
+#: admin/systems/class_workstationGeneric.inc:95
+msgid "IP addresses this system uses (v4 or v6)"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardSystems.inc:43
-msgid "Statistics"
-msgstr "Статистика"
+#: admin/systems/class_phoneGeneric.inc:89
+#: admin/systems/class_printGeneric.inc:113
+#: admin/systems/class_workstationGeneric.inc:100
+#: admin/systems/class_componentGeneric.inc:77
+#: admin/systems/class_mobilePhoneGeneric.inc:110
+msgid "Mac address"
+msgstr "Mac адрес"
 
-#: addons/dashboard/class_dashBoardSystems.inc:48
-msgid "Computer name to use by unit"
+#: admin/systems/class_phoneGeneric.inc:89
+#: admin/systems/class_printGeneric.inc:113
+#: admin/systems/class_workstationGeneric.inc:100
+#: admin/systems/class_componentGeneric.inc:77
+#: admin/systems/class_mobilePhoneGeneric.inc:110
+msgid "Mac address of this system"
 msgstr ""
-
-#: addons/dashboard/class_dashBoardSystems.inc:73
-msgid "Workstations"
-msgstr "Рабочие станции"
-
-#: addons/dashboard/class_dashBoardSystems.inc:77
-msgid "Servers"
-msgstr "Серверы"
-
-#: addons/dashboard/class_dashBoardSystems.inc:81
-msgid "Windows Workstations"
-msgstr "Рабочие станции Windows"
-
-#: addons/dashboard/class_dashBoardSystems.inc:85
-msgid "Terminals"
-msgstr "Терминалы"
-
-#: addons/dashboard/class_dashBoardSystems.inc:89
-msgid "Printers"
-msgstr "Принтеры"
-
-#: addons/dashboard/class_dashBoardSystems.inc:93
-msgid "Phones"
-msgstr "Телефоны"
-
-#: addons/dashboard/class_dashBoardSystems.inc:97
-msgid "Components"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardSystems.inc:101
-msgid "Mobile phones"
-msgstr "Мобильные телефоны"
-
-#: config/systems/class_systemsPluginConfig.inc:29
-msgid "Systems plugin configuration"
-msgstr ""
-
-#: config/systems/class_systemsPluginConfig.inc:40
-msgid "LDAP tree for systems"
-msgstr ""
-
-#: config/systems/class_systemsPluginConfig.inc:43
-msgid "Systems RDN"
-msgstr "RDN для систем"
-
-#: config/systems/class_systemsPluginConfig.inc:43
-msgid "Branch in which systems will be stored"
-msgstr "Ветка, в которой системы будут храниться"
-
-#: config/systems/class_systemsPluginConfig.inc:48
-msgid "Server RDN"
-msgstr "RDN для серверов"
-
-#: config/systems/class_systemsPluginConfig.inc:48
-msgid "Branch in which servers will be stored"
-msgstr "Ветка в которой будут храниться сервера"
-
-#: config/systems/class_systemsPluginConfig.inc:53
-msgid "Workstations RDN"
-msgstr "RDN для рабочих стаций"
-
-#: config/systems/class_systemsPluginConfig.inc:53
-msgid "Branch in which workstations will be stored"
-msgstr "Ветка в которй будут храниться рабочие станции"
-
-#: config/systems/class_systemsPluginConfig.inc:58
-msgid "Terminal RDN"
-msgstr "RDN для терминалов"
-
-#: config/systems/class_systemsPluginConfig.inc:58
-msgid "Branch in which terminals will be stored"
-msgstr "Ветка в которой будут храниться терминалы"
-
-#: config/systems/class_systemsPluginConfig.inc:63
-msgid "Printer RDN"
-msgstr "RDN для принтеров"
-
-#: config/systems/class_systemsPluginConfig.inc:63
-msgid "Branch in which printers will be stored"
-msgstr "Ветка в которой будут храниться принтеры"
-
-#: config/systems/class_systemsPluginConfig.inc:68
-msgid "Component RDN"
-msgstr "RDN для компонентов"
-
-#: config/systems/class_systemsPluginConfig.inc:68
-msgid "Branch in which network devices will be stored"
-msgstr "Ветка в которой сетевые устройства будут храниться"
-
-#: config/systems/class_systemsPluginConfig.inc:73
-msgid "Phone RDN"
-msgstr "RDN для телефонов"
-
-#: config/systems/class_systemsPluginConfig.inc:73
-msgid "Branch in which phones will be stored"
-msgstr "Ветка, в которой телефоны будут храниться"
-
-#: config/systems/class_systemsPluginConfig.inc:78
-msgid "Mobile phone RDN"
-msgstr "RDN для мобильных телефонов"
-
-#: config/systems/class_systemsPluginConfig.inc:78
-msgid "Branch in which mobile phones will be stored"
-msgstr "Ветка в которой будут храниться мобильные телефоны"
-
-#: config/systems/class_systemsPluginConfig.inc:85
-msgid "Miscellaneous"
-msgstr "Разное"
-
-#: config/systems/class_systemsPluginConfig.inc:89
-msgid "Available encodings for share services"
-msgstr ""
-
-#: config/systems/class_systemsPluginConfig.inc:93
-msgid "Encoding"
-msgstr "Кодировка"
-
-#: config/systems/class_systemsPluginConfig.inc:93
-msgid "The encoding code name"
-msgstr "Название кодировки"
-
-#: config/systems/class_systemsPluginConfig.inc:98
-msgid "Label"
-msgstr "Обозначение"
-
-#: config/systems/class_systemsPluginConfig.inc:98
-msgid "The encoding displayed name"
-msgstr "Отображаемое имя кодировки"
-
-#: config/systems/class_systemsPluginConfig.inc:106
-msgid "Encodings"
-msgstr "Кодировки"
-
-#: admin/systems/class_serverGeneric.inc:28
-msgid "server"
-msgstr "Сервер"
-
-#: admin/systems/class_serverGeneric.inc:39
-#: admin/systems/class_serverGeneric.inc:44
-#: admin/systems/class_serverGeneric.inc:45
-#: admin/systems/class_systemImport.inc:181
-msgid "Server"
-msgstr "Сервер"
-
-#: admin/systems/class_serverGeneric.inc:40
-msgid "Server information"
-msgstr "Информация о сервере"
 
 #: admin/systems/serverService-list.xml:10
 msgid "List of services"
@@ -211,16 +134,6 @@ msgstr "Service"
 #: admin/systems/serverService-list.xml:27
 msgid "!"
 msgstr "!"
-
-#: admin/systems/serverService-list.xml:35
-#: admin/systems/class_componentGeneric.inc:62
-#: admin/systems/class_mobilePhoneGeneric.inc:64
-#: admin/systems/class_workstationGeneric.inc:68
-#: admin/systems/services/shares/class_serviceShare.inc:55
-#: admin/systems/system-list.xml:55 admin/systems/class_phoneGeneric.inc:60
-#: admin/systems/class_printGeneric.inc:66
-msgid "Description"
-msgstr "Описание"
 
 #: admin/systems/serverService-list.xml:43 admin/systems/system-list.xml:79
 msgid "Actions"
@@ -257,153 +170,6 @@ msgstr ""
 #: admin/systems/serverService-list.xml:129
 msgid "Remove service"
 msgstr ""
-
-#: admin/systems/class_componentGeneric.inc:31
-msgid "Component"
-msgstr ""
-
-#: admin/systems/class_componentGeneric.inc:32
-msgid "Component information"
-msgstr ""
-
-#: admin/systems/class_componentGeneric.inc:36
-#: admin/systems/class_componentGeneric.inc:37
-msgid "Network device"
-msgstr "Сетевое устройство"
-
-#: admin/systems/class_componentGeneric.inc:55
-#: admin/systems/class_mobilePhoneGeneric.inc:56
-#: admin/systems/class_workstationGeneric.inc:59
-#: admin/systems/class_phoneGeneric.inc:52
-#: admin/systems/class_printGeneric.inc:58
-msgid "Properties"
-msgstr "Свойства"
-
-#: admin/systems/class_componentGeneric.inc:58
-#: admin/systems/class_mobilePhoneGeneric.inc:60
-#: admin/systems/class_workstationGeneric.inc:63
-#: admin/systems/services/shares/class_serviceShare.inc:51
-#: admin/systems/system-list.xml:31 admin/systems/class_phoneGeneric.inc:56
-#: admin/systems/class_printGeneric.inc:62
-msgid "Name"
-msgstr "Фамилия"
-
-#: admin/systems/class_componentGeneric.inc:58
-msgid "The name of the component"
-msgstr ""
-
-#: admin/systems/class_componentGeneric.inc:62
-msgid "A short description of the component"
-msgstr ""
-
-#: admin/systems/class_componentGeneric.inc:69
-#: admin/systems/class_mobilePhoneGeneric.inc:102
-#: admin/systems/class_workstationGeneric.inc:90
-#: admin/systems/class_phoneGeneric.inc:79
-#: admin/systems/class_printGeneric.inc:103
-msgid "Network settings"
-msgstr "Сетевые настройки"
-
-#: admin/systems/class_componentGeneric.inc:73
-#: admin/systems/class_mobilePhoneGeneric.inc:106
-#: admin/systems/class_workstationGeneric.inc:95
-#: admin/systems/class_phoneGeneric.inc:84
-#: admin/systems/class_printGeneric.inc:108
-msgid "IP address"
-msgstr "IP адрес"
-
-#: admin/systems/class_componentGeneric.inc:73
-#: admin/systems/class_mobilePhoneGeneric.inc:106
-#: admin/systems/class_printGeneric.inc:108
-msgid "IP address this system uses"
-msgstr ""
-
-#: admin/systems/class_componentGeneric.inc:77
-#: admin/systems/class_mobilePhoneGeneric.inc:110
-#: admin/systems/class_workstationGeneric.inc:100
-#: admin/systems/class_phoneGeneric.inc:89
-#: admin/systems/class_printGeneric.inc:113
-msgid "Mac address"
-msgstr "Mac адрес"
-
-#: admin/systems/class_componentGeneric.inc:77
-#: admin/systems/class_mobilePhoneGeneric.inc:110
-#: admin/systems/class_workstationGeneric.inc:100
-#: admin/systems/class_phoneGeneric.inc:89
-#: admin/systems/class_printGeneric.inc:113
-msgid "Mac address of this system"
-msgstr ""
-
-#: admin/systems/class_mobilePhoneGeneric.inc:32
-#: admin/systems/class_mobilePhoneGeneric.inc:37
-#: admin/systems/class_mobilePhoneGeneric.inc:38
-msgid "Mobile phone"
-msgstr "Мобильный телефон"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:33
-msgid "Mobile phone information"
-msgstr "Информация о мобильном телефоне"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:60
-msgid "The name of the mobile phone"
-msgstr "Название мобильного телефона"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:64
-msgid "A short description of the mobile phone"
-msgstr "Краткое описание мобильного телефона"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:70
-#: admin/systems/class_phoneGeneric.inc:32
-#: admin/systems/class_phoneGeneric.inc:36
-#: admin/systems/class_phoneGeneric.inc:66
-msgid "Phone"
-msgstr "Телефон"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:73
-#: admin/systems/class_phoneGeneric.inc:69
-msgid "Serial Number"
-msgstr "Серийный номер"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:73
-msgid "The serial number of the mobile phone"
-msgstr "Серийный номер мобильного телефона"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:77
-msgid "IMEI Number"
-msgstr "IMEI номер"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:77
-msgid "The IMEI number of the mobile phone"
-msgstr "IMEI номер мобильного телефона"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:82
-msgid "OS"
-msgstr "ОС"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:82
-msgid "The Operating System installed on this phone"
-msgstr "Операционная система установленная на этот телефон"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:88
-msgid "SimCard"
-msgstr "СимКарта"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:91
-#: admin/systems/class_phoneGeneric.inc:73
-msgid "Telephone Number"
-msgstr "Номер телефона"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:91
-msgid "The telephone number of the mobile phone"
-msgstr "Телефонный номер мобильного телефона"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:95
-msgid "PUK Number"
-msgstr "PUK номер"
-
-#: admin/systems/class_mobilePhoneGeneric.inc:95
-msgid "The PUK number of the simcard in this mobile phone"
-msgstr "PUK номер сим карты в мобильном телефоне "
 
 #: admin/systems/class_terminalStartup.inc:32
 msgid "Startup"
@@ -479,42 +245,145 @@ msgstr ""
 msgid "Local swap"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:60
-#: admin/systems/services/terminal/class_serviceTerminal.inc:30
+#: admin/systems/system-list.xml:10
+msgid "List of systems"
+msgstr "Список систем"
+
+#: admin/systems/system-list.xml:39
+msgid "IP"
+msgstr "IP"
+
+#: admin/systems/system-list.xml:47
+msgid "MAC"
+msgstr "MAC"
+
+#: admin/systems/system-list.xml:63
 #: admin/systems/services/shares/class_serviceShare.inc:30
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
-#: admin/systems/system-list.xml:63
+#: admin/systems/services/terminal/class_serviceTerminal.inc:30
+#: admin/systems/class_serverService.inc:60
 msgid "Services"
 msgstr "Сервисы"
 
-#: admin/systems/class_serverService.inc:61
-msgid "Server services"
+#: admin/systems/system-list.xml:71
+msgid "Release"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:209
-#: admin/systems/class_serverService.inc:277
-#: admin/systems/services/shares/class_serviceShare.inc:105
-msgid "Error"
-msgstr "Ошибка"
+#: admin/systems/system-list.xml:100
+msgid "Trigger action"
+msgstr "Действие по триггеру"
 
-#: admin/systems/class_serverService.inc:271
-msgid "Information"
-msgstr "Информация"
+#: admin/systems/system-list.xml:107
+msgid "Schedule action"
+msgstr "Действие по расписанию"
 
-#: admin/systems/class_serverService.inc:271
-msgid "Cannot update service status until it has been saved!"
+#: admin/systems/system-list.xml:147
+msgid "New object from template"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:277
-#, php-format
-msgid "Unknown action \"%s\""
+#: admin/systems/system-list.xml:159
+msgid "Edit system"
+msgstr "Редактировать систему"
+
+#: admin/systems/system-list.xml:173
+msgid "Remove system"
+msgstr "Удалить систему"
+
+#: admin/systems/class_terminalGeneric.inc:31
+msgid "terminal"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:298
-#: admin/systems/class_serverService.inc:308
-#: admin/systems/class_serverService.inc:319
-#, php-format
-msgid "Could not get execute action %s on service %s."
+#: admin/systems/class_terminalGeneric.inc:43
+#: admin/systems/class_terminalGeneric.inc:48
+#: admin/systems/class_terminalGeneric.inc:49
+msgid "Terminal"
+msgstr "Терминал"
+
+#: admin/systems/class_terminalGeneric.inc:44
+msgid "Terminal information"
+msgstr ""
+
+#: admin/systems/class_printGeneric.inc:30
+#: admin/systems/class_printGeneric.inc:35
+#: admin/systems/class_printGeneric.inc:36
+msgid "Printer"
+msgstr "Принтер"
+
+#: admin/systems/class_printGeneric.inc:31
+msgid "Printer information"
+msgstr "Информация о принтере"
+
+#: admin/systems/class_printGeneric.inc:62
+msgid "The name of the printer"
+msgstr "Название принтера"
+
+#: admin/systems/class_printGeneric.inc:66
+msgid "A short description of the printer"
+msgstr "Краткое описание принтера"
+
+#: admin/systems/class_printGeneric.inc:72
+msgid "Details"
+msgstr "Детали"
+
+#: admin/systems/class_printGeneric.inc:75
+msgid "Printer location"
+msgstr "Местонахождение принтера"
+
+#: admin/systems/class_printGeneric.inc:75
+msgid "The location of the printer"
+msgstr "Расположение принтера"
+
+#: admin/systems/class_printGeneric.inc:79
+msgid "Printer URL"
+msgstr "URL принтера"
+
+#: admin/systems/class_printGeneric.inc:79
+msgid "The URL of the printer"
+msgstr "URL принтера"
+
+#: admin/systems/class_printGeneric.inc:85
+#: admin/systems/class_printGeneric.inc:88
+msgid "Users which are allowed to use this printer"
+msgstr "Пользователи, которым разрешено использовать этот принтер"
+
+#: admin/systems/class_printGeneric.inc:94
+#: admin/systems/class_printGeneric.inc:97
+msgid "Users which are allowed to administrate this printer"
+msgstr "Пользователи, которым разрешено администрировать этот принтер"
+
+#: admin/systems/class_printGeneric.inc:108
+#: admin/systems/class_componentGeneric.inc:73
+#: admin/systems/class_mobilePhoneGeneric.inc:106
+msgid "IP address this system uses"
+msgstr ""
+
+#: admin/systems/class_printGeneric.inc:119
+msgid "Windows paths"
+msgstr "Пути windows"
+
+#: admin/systems/class_printGeneric.inc:123
+msgid "Inf file"
+msgstr "Inf файл"
+
+#: admin/systems/class_printGeneric.inc:123
+msgid "Path to windows inf file for this printer"
+msgstr "Путь к inf файлу windows для этого принтера"
+
+#: admin/systems/class_printGeneric.inc:127
+msgid "Driver directory"
+msgstr "Директория драйвера"
+
+#: admin/systems/class_printGeneric.inc:127
+msgid "Path to directory that contains windows drivers for this printer"
+msgstr ""
+"Путь к директории, которая содержит windows драйвер для этого принтера"
+
+#: admin/systems/class_printGeneric.inc:131
+msgid "Driver name"
+msgstr "Имя драйвера"
+
+#: admin/systems/class_printGeneric.inc:131
+msgid "Windows name of the printer driver"
 msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:32
@@ -558,56 +427,6 @@ msgstr ""
 #: admin/systems/class_workstationGeneric.inc:79
 #, php-format
 msgid "This will prevent the %s from being reinstalled"
-msgstr ""
-
-#: admin/systems/class_workstationGeneric.inc:95
-#: admin/systems/class_phoneGeneric.inc:84
-msgid "IP addresses this system uses (v4 or v6)"
-msgstr ""
-
-#: admin/systems/class_systemImport.inc:76
-#, php-format
-msgid "Could not parse %s"
-msgstr ""
-
-#: admin/systems/class_systemImport.inc:123
-#, php-format
-msgid "No DHCP server found for IPs %s"
-msgstr ""
-
-#: admin/systems/class_systemImport.inc:142
-#, php-format
-msgid "No DNS server found for zone %s"
-msgstr "Не найден DNS сервер для зоны %s"
-
-#: admin/systems/class_systemImport.inc:177
-msgid "Import"
-msgstr "Импортировать"
-
-#: admin/systems/class_systemImport.inc:181
-msgid "The server you wish to import hosts from"
-msgstr ""
-
-#: admin/systems/services/terminal/class_serviceTerminal.inc:29
-#: admin/systems/services/terminal/class_serviceTerminal.inc:30
-#: admin/systems/services/terminal/class_serviceTerminal.inc:41
-msgid "Terminal service"
-msgstr ""
-
-#: admin/systems/services/terminal/class_serviceTerminal.inc:44
-msgid "Temporary disable login"
-msgstr ""
-
-#: admin/systems/services/terminal/class_serviceTerminal.inc:45
-msgid "Disables the login on this terminal server"
-msgstr ""
-
-#: admin/systems/services/terminal/class_serviceTerminal.inc:54
-msgid "Supported session types"
-msgstr ""
-
-#: admin/systems/services/terminal/class_serviceTerminal.inc:55
-msgid "The session types supported by this terminal server"
 msgstr ""
 
 #: admin/systems/services/shares/class_serviceShare.inc:29
@@ -662,6 +481,12 @@ msgstr "Опции"
 #: admin/systems/services/shares/class_serviceShare.inc:72
 msgid "Special option(s) for this share"
 msgstr ""
+
+#: admin/systems/services/shares/class_serviceShare.inc:105
+#: admin/systems/class_serverService.inc:209
+#: admin/systems/class_serverService.inc:277
+msgid "Error"
+msgstr "Ошибка"
 
 #: admin/systems/services/shares/class_serviceShare.inc:105
 msgid "You need to configure encodings first"
@@ -773,65 +598,94 @@ msgstr ""
 msgid "LDAP"
 msgstr "LDAP"
 
-#: admin/systems/system-list.xml:10
-msgid "List of systems"
-msgstr "Список систем"
-
-#: admin/systems/system-list.xml:39
-msgid "IP"
-msgstr "IP"
-
-#: admin/systems/system-list.xml:47
-msgid "MAC"
-msgstr "MAC"
-
-#: admin/systems/system-list.xml:71
-msgid "Release"
+#: admin/systems/services/terminal/class_serviceTerminal.inc:29
+#: admin/systems/services/terminal/class_serviceTerminal.inc:30
+#: admin/systems/services/terminal/class_serviceTerminal.inc:41
+msgid "Terminal service"
 msgstr ""
 
-#: admin/systems/system-list.xml:100
-msgid "Trigger action"
-msgstr "Действие по триггеру"
-
-#: admin/systems/system-list.xml:107
-msgid "Schedule action"
-msgstr "Действие по расписанию"
-
-#: admin/systems/system-list.xml:147
-msgid "New object from template"
+#: admin/systems/services/terminal/class_serviceTerminal.inc:44
+msgid "Temporary disable login"
 msgstr ""
 
-#: admin/systems/system-list.xml:159
-msgid "Edit system"
-msgstr "Редактировать систему"
-
-#: admin/systems/system-list.xml:173
-msgid "Remove system"
-msgstr "Удалить систему"
-
-#: admin/systems/class_phoneGeneric.inc:33
-msgid "Phone information"
-msgstr "Информация об телеофоне"
-
-#: admin/systems/class_phoneGeneric.inc:37
-msgid "Phone hardware"
+#: admin/systems/services/terminal/class_serviceTerminal.inc:45
+msgid "Disables the login on this terminal server"
 msgstr ""
 
-#: admin/systems/class_phoneGeneric.inc:56
-msgid "The name of the phone"
-msgstr "Название телефона"
+#: admin/systems/services/terminal/class_serviceTerminal.inc:54
+msgid "Supported session types"
+msgstr ""
 
-#: admin/systems/class_phoneGeneric.inc:60
-msgid "A short description of the phone"
-msgstr "Краткое описание телефона"
+#: admin/systems/services/terminal/class_serviceTerminal.inc:55
+msgid "The session types supported by this terminal server"
+msgstr ""
 
-#: admin/systems/class_phoneGeneric.inc:69
-msgid "The serial number of the phone"
-msgstr "Серийный номер телефона"
+#: admin/systems/class_serverService.inc:61
+msgid "Server services"
+msgstr ""
 
-#: admin/systems/class_phoneGeneric.inc:73
-msgid "The telephone number of the phone"
-msgstr "Телефонный номер у этого телефона"
+#: admin/systems/class_serverService.inc:271
+msgid "Information"
+msgstr "Информация"
+
+#: admin/systems/class_serverService.inc:271
+msgid "Cannot update service status until it has been saved!"
+msgstr ""
+
+#: admin/systems/class_serverService.inc:277
+#, php-format
+msgid "Unknown action \"%s\""
+msgstr ""
+
+#: admin/systems/class_serverService.inc:298
+#: admin/systems/class_serverService.inc:308
+#: admin/systems/class_serverService.inc:319
+#, php-format
+msgid "Could not get execute action %s on service %s."
+msgstr ""
+
+#: admin/systems/class_serverGeneric.inc:28
+msgid "server"
+msgstr "Сервер"
+
+#: admin/systems/class_serverGeneric.inc:39
+#: admin/systems/class_serverGeneric.inc:44
+#: admin/systems/class_serverGeneric.inc:45
+#: admin/systems/class_systemImport.inc:181
+msgid "Server"
+msgstr "Сервер"
+
+#: admin/systems/class_serverGeneric.inc:40
+msgid "Server information"
+msgstr "Информация о сервере"
+
+#: admin/systems/class_componentGeneric.inc:31
+msgid "Component"
+msgstr ""
+
+#: admin/systems/class_componentGeneric.inc:32
+msgid "Component information"
+msgstr ""
+
+#: admin/systems/class_componentGeneric.inc:36
+#: admin/systems/class_componentGeneric.inc:37
+msgid "Network device"
+msgstr "Сетевое устройство"
+
+#: admin/systems/class_componentGeneric.inc:58
+msgid "The name of the component"
+msgstr ""
+
+#: admin/systems/class_componentGeneric.inc:62
+msgid "A short description of the component"
+msgstr ""
+
+#: admin/systems/class_systemManagement.inc:43
+#: admin/systems/class_systemManagement.inc:47
+#: config/systems/class_systemsPluginConfig.inc:28
+#: addons/dashboard/class_dashBoardSystems.inc:30
+msgid "Systems"
+msgstr "Системы"
 
 #: admin/systems/class_systemManagement.inc:44
 msgid "Systems Management"
@@ -871,95 +725,252 @@ msgstr ""
 msgid "Inherited from %s"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:30
-#: admin/systems/class_printGeneric.inc:35
-#: admin/systems/class_printGeneric.inc:36
-msgid "Printer"
-msgstr "Принтер"
-
-#: admin/systems/class_printGeneric.inc:31
-msgid "Printer information"
-msgstr "Информация о принтере"
-
-#: admin/systems/class_printGeneric.inc:62
-msgid "The name of the printer"
-msgstr "Название принтера"
-
-#: admin/systems/class_printGeneric.inc:66
-msgid "A short description of the printer"
-msgstr "Краткое описание принтера"
-
-#: admin/systems/class_printGeneric.inc:72
-msgid "Details"
-msgstr "Детали"
-
-#: admin/systems/class_printGeneric.inc:75
-msgid "Printer location"
-msgstr "Местонахождение принтера"
-
-#: admin/systems/class_printGeneric.inc:75
-msgid "The location of the printer"
-msgstr "Расположение принтера"
-
-#: admin/systems/class_printGeneric.inc:79
-msgid "Printer URL"
-msgstr "URL принтера"
-
-#: admin/systems/class_printGeneric.inc:79
-msgid "The URL of the printer"
-msgstr "URL принтера"
-
-#: admin/systems/class_printGeneric.inc:85
-#: admin/systems/class_printGeneric.inc:88
-msgid "Users which are allowed to use this printer"
-msgstr "Пользователи, которым разрешено использовать этот принтер"
-
-#: admin/systems/class_printGeneric.inc:94
-#: admin/systems/class_printGeneric.inc:97
-msgid "Users which are allowed to administrate this printer"
-msgstr "Пользователи, которым разрешено администрировать этот принтер"
-
-#: admin/systems/class_printGeneric.inc:119
-msgid "Windows paths"
-msgstr "Пути windows"
-
-#: admin/systems/class_printGeneric.inc:123
-msgid "Inf file"
-msgstr "Inf файл"
-
-#: admin/systems/class_printGeneric.inc:123
-msgid "Path to windows inf file for this printer"
-msgstr "Путь к inf файлу windows для этого принтера"
-
-#: admin/systems/class_printGeneric.inc:127
-msgid "Driver directory"
-msgstr "Директория драйвера"
-
-#: admin/systems/class_printGeneric.inc:127
-msgid "Path to directory that contains windows drivers for this printer"
-msgstr ""
-"Путь к директории, которая содержит windows драйвер для этого принтера"
-
-#: admin/systems/class_printGeneric.inc:131
-msgid "Driver name"
-msgstr "Имя драйвера"
-
-#: admin/systems/class_printGeneric.inc:131
-msgid "Windows name of the printer driver"
+#: admin/systems/class_systemImport.inc:76
+#, php-format
+msgid "Could not parse %s"
 msgstr ""
 
-#: admin/systems/class_terminalGeneric.inc:31
-msgid "terminal"
+#: admin/systems/class_systemImport.inc:123
+#, php-format
+msgid "No DHCP server found for IPs %s"
 msgstr ""
 
-#: admin/systems/class_terminalGeneric.inc:43
-#: admin/systems/class_terminalGeneric.inc:48
-#: admin/systems/class_terminalGeneric.inc:49
-msgid "Terminal"
-msgstr "Терминал"
+#: admin/systems/class_systemImport.inc:142
+#, php-format
+msgid "No DNS server found for zone %s"
+msgstr "Не найден DNS сервер для зоны %s"
 
-#: admin/systems/class_terminalGeneric.inc:44
-msgid "Terminal information"
+#: admin/systems/class_systemImport.inc:177
+msgid "Import"
+msgstr "Импортировать"
+
+#: admin/systems/class_systemImport.inc:181
+msgid "The server you wish to import hosts from"
+msgstr ""
+
+#: admin/systems/class_mobilePhoneGeneric.inc:32
+#: admin/systems/class_mobilePhoneGeneric.inc:37
+#: admin/systems/class_mobilePhoneGeneric.inc:38
+msgid "Mobile phone"
+msgstr "Мобильный телефон"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:33
+msgid "Mobile phone information"
+msgstr "Информация о мобильном телефоне"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:60
+msgid "The name of the mobile phone"
+msgstr "Название мобильного телефона"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:64
+msgid "A short description of the mobile phone"
+msgstr "Краткое описание мобильного телефона"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:73
+msgid "The serial number of the mobile phone"
+msgstr "Серийный номер мобильного телефона"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:77
+msgid "IMEI Number"
+msgstr "IMEI номер"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:77
+msgid "The IMEI number of the mobile phone"
+msgstr "IMEI номер мобильного телефона"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:82
+msgid "OS"
+msgstr "ОС"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:82
+msgid "The Operating System installed on this phone"
+msgstr "Операционная система установленная на этот телефон"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:88
+msgid "SimCard"
+msgstr "СимКарта"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:91
+msgid "The telephone number of the mobile phone"
+msgstr "Телефонный номер мобильного телефона"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:95
+msgid "PUK Number"
+msgstr "PUK номер"
+
+#: admin/systems/class_mobilePhoneGeneric.inc:95
+msgid "The PUK number of the simcard in this mobile phone"
+msgstr "PUK номер сим карты в мобильном телефоне "
+
+#: config/systems/class_systemsPluginConfig.inc:29
+msgid "Systems plugin configuration"
+msgstr ""
+
+#: config/systems/class_systemsPluginConfig.inc:40
+msgid "LDAP tree for systems"
+msgstr ""
+
+#: config/systems/class_systemsPluginConfig.inc:43
+msgid "Systems RDN"
+msgstr "RDN для систем"
+
+#: config/systems/class_systemsPluginConfig.inc:43
+msgid "Branch in which systems will be stored"
+msgstr "Ветка, в которой системы будут храниться"
+
+#: config/systems/class_systemsPluginConfig.inc:48
+msgid "Server RDN"
+msgstr "RDN для серверов"
+
+#: config/systems/class_systemsPluginConfig.inc:48
+msgid "Branch in which servers will be stored"
+msgstr "Ветка в которой будут храниться сервера"
+
+#: config/systems/class_systemsPluginConfig.inc:53
+msgid "Workstations RDN"
+msgstr "RDN для рабочих стаций"
+
+#: config/systems/class_systemsPluginConfig.inc:53
+msgid "Branch in which workstations will be stored"
+msgstr "Ветка в которй будут храниться рабочие станции"
+
+#: config/systems/class_systemsPluginConfig.inc:58
+msgid "Terminal RDN"
+msgstr "RDN для терминалов"
+
+#: config/systems/class_systemsPluginConfig.inc:58
+msgid "Branch in which terminals will be stored"
+msgstr "Ветка в которой будут храниться терминалы"
+
+#: config/systems/class_systemsPluginConfig.inc:63
+msgid "Printer RDN"
+msgstr "RDN для принтеров"
+
+#: config/systems/class_systemsPluginConfig.inc:63
+msgid "Branch in which printers will be stored"
+msgstr "Ветка в которой будут храниться принтеры"
+
+#: config/systems/class_systemsPluginConfig.inc:68
+msgid "Component RDN"
+msgstr "RDN для компонентов"
+
+#: config/systems/class_systemsPluginConfig.inc:68
+msgid "Branch in which network devices will be stored"
+msgstr "Ветка в которой сетевые устройства будут храниться"
+
+#: config/systems/class_systemsPluginConfig.inc:73
+msgid "Phone RDN"
+msgstr "RDN для телефонов"
+
+#: config/systems/class_systemsPluginConfig.inc:73
+msgid "Branch in which phones will be stored"
+msgstr "Ветка, в которой телефоны будут храниться"
+
+#: config/systems/class_systemsPluginConfig.inc:78
+msgid "Mobile phone RDN"
+msgstr "RDN для мобильных телефонов"
+
+#: config/systems/class_systemsPluginConfig.inc:78
+msgid "Branch in which mobile phones will be stored"
+msgstr "Ветка в которой будут храниться мобильные телефоны"
+
+#: config/systems/class_systemsPluginConfig.inc:85
+msgid "Miscellaneous"
+msgstr "Разное"
+
+#: config/systems/class_systemsPluginConfig.inc:89
+msgid "Available encodings for share services"
+msgstr ""
+
+#: config/systems/class_systemsPluginConfig.inc:93
+msgid "Encoding"
+msgstr "Кодировка"
+
+#: config/systems/class_systemsPluginConfig.inc:93
+msgid "The encoding code name"
+msgstr "Название кодировки"
+
+#: config/systems/class_systemsPluginConfig.inc:98
+msgid "Label"
+msgstr "Обозначение"
+
+#: config/systems/class_systemsPluginConfig.inc:98
+msgid "The encoding displayed name"
+msgstr "Отображаемое имя кодировки"
+
+#: config/systems/class_systemsPluginConfig.inc:106
+msgid "Encodings"
+msgstr "Кодировки"
+
+#: addons/dashboard/class_dashBoardSystems.inc:31
+msgid "Statistics and information about systems"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:43
+msgid "Statistics"
+msgstr "Статистика"
+
+#: addons/dashboard/class_dashBoardSystems.inc:48
+msgid "Computer name to use by unit"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:73
+msgid "Workstations"
+msgstr "Рабочие станции"
+
+#: addons/dashboard/class_dashBoardSystems.inc:77
+msgid "Servers"
+msgstr "Серверы"
+
+#: addons/dashboard/class_dashBoardSystems.inc:81
+msgid "Windows Workstations"
+msgstr "Рабочие станции Windows"
+
+#: addons/dashboard/class_dashBoardSystems.inc:85
+msgid "Terminals"
+msgstr "Терминалы"
+
+#: addons/dashboard/class_dashBoardSystems.inc:89
+msgid "Printers"
+msgstr "Принтеры"
+
+#: addons/dashboard/class_dashBoardSystems.inc:93
+msgid "Phones"
+msgstr "Телефоны"
+
+#: addons/dashboard/class_dashBoardSystems.inc:97
+msgid "Components"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:101
+msgid "Mobile phones"
+msgstr "Мобильные телефоны"
+
+#: addons/dashboard/class_dashBoardNetwork.inc:28
+msgid "Network"
+msgstr "Сеть"
+
+#: addons/dashboard/class_dashBoardNetwork.inc:29
+msgid "Statistics and various information"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardNetwork.inc:41
+msgid "DHCP"
+msgstr "DHCP"
+
+#: addons/dashboard/class_dashBoardNetwork.inc:46
+msgid "DNS"
+msgstr "DNS"
+
+#: admin/systems/serverService-list.tpl.c:2
+msgid "Base"
+msgstr "Ветка"
+
+#: admin/systems/server_import.tpl.c:2
+msgid ""
+"Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
+" managed by it, so if you delete them or deactivate their OPSI tab, they "
+"will be removed from OPSI."
 msgstr ""
 
 #: addons/dashboard/systems_stats.tpl.c:2
@@ -993,14 +1004,3 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
-
-#: admin/systems/serverService-list.tpl.c:2
-msgid "Base"
-msgstr "Ветка"
-
-#: admin/systems/server_import.tpl.c:2
-msgid ""
-"Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
-" managed by it, so if you delete them or deactivate their OPSI tab, they "
-"will be removed from OPSI."
-msgstr ""

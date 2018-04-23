@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -18,61 +18,41 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: config/ejbca/class_ejbcaConfig.inc:28
-msgid "EJBCA plugin configuration"
-msgstr ""
-
-#: config/ejbca/class_ejbcaConfig.inc:29
-msgid "FusionDirectory ejbca plugin configuration"
-msgstr ""
-
-#: config/ejbca/class_ejbcaConfig.inc:42
-msgid "EJBCA plugin"
-msgstr ""
-
-#: config/ejbca/class_ejbcaConfig.inc:45
-msgid "EJBCA RDN"
-msgstr ""
-
-#: config/ejbca/class_ejbcaConfig.inc:45
-msgid "Branch in which ejbca certificates are stored"
-msgstr ""
-
-#: admin/ejbca/certificates/class_ejbcaCertificates.inc:29
 #: admin/ejbca/class_ejbcaManagement.inc:32
+#: admin/ejbca/certificates/class_ejbcaCertificates.inc:29
 msgid "EJBCA"
-msgstr ""
-
-#: admin/ejbca/certificates/class_ejbcaCertificates.inc:30
-msgid "Assign EJBCA certificates to a user"
-msgstr ""
-
-#: admin/ejbca/certificates/class_ejbcaCertificates.inc:48
-msgid "EJBCA certs"
-msgstr ""
-
-#: admin/ejbca/certificates/class_ejbcaCertificates.inc:52
-msgid "Certificates associated to this object"
-msgstr ""
+msgstr "EJBCA"
 
 #: admin/ejbca/class_ejbcaManagement.inc:33
 msgid "EJBCA certificates management"
-msgstr ""
+msgstr "EJBCA 인증서 관리"
 
 #: admin/ejbca/class_ejbcaManagement.inc:52
 msgid "Download"
 msgstr "다운로드"
 
+#: admin/ejbca/certificates/class_ejbcaCertificates.inc:30
+msgid "Assign EJBCA certificates to a user"
+msgstr "사용자에게 할당된 EJBCA 인증서"
+
+#: admin/ejbca/certificates/class_ejbcaCertificates.inc:48
+msgid "EJBCA certs"
+msgstr "EJBCA 인증"
+
+#: admin/ejbca/certificates/class_ejbcaCertificates.inc:52
+msgid "Certificates associated to this object"
+msgstr "이 개체와 연관된 인증서"
+
 #: admin/ejbca/class_ejbcaCertificate.inc:30
 #: admin/ejbca/class_ejbcaCertificate.inc:31
 #: admin/ejbca/class_ejbcaCertificate.inc:33
 msgid "EJBCA certificate"
-msgstr ""
+msgstr "EJBCA 인증서"
 
 #: admin/ejbca/class_ejbcaCertificate.inc:47
 #: admin/ejbca/class_ejbcaCertificate.inc:55
 msgid "Certificate"
-msgstr ""
+msgstr "인증서"
 
 #: admin/ejbca/class_ejbcaCertificate.inc:51
 msgid "Name"
@@ -80,8 +60,28 @@ msgstr "명칭"
 
 #: admin/ejbca/class_ejbcaCertificate.inc:51
 msgid "Common name"
-msgstr ""
+msgstr "일반 이름"
 
 #: admin/ejbca/class_ejbcaCertificate.inc:55
 msgid "Certificate content"
 msgstr "인증 컨텐츠"
+
+#: config/ejbca/class_ejbcaConfig.inc:28
+msgid "EJBCA plugin configuration"
+msgstr "EJBCA 플로그인 설정"
+
+#: config/ejbca/class_ejbcaConfig.inc:29
+msgid "FusionDirectory ejbca plugin configuration"
+msgstr "FusionDirectory ejbca 플러그인 설정"
+
+#: config/ejbca/class_ejbcaConfig.inc:42
+msgid "EJBCA plugin"
+msgstr "EJBCA 플러그인"
+
+#: config/ejbca/class_ejbcaConfig.inc:45
+msgid "EJBCA RDN"
+msgstr "EJBCA RDN"
+
+#: config/ejbca/class_ejbcaConfig.inc:45
+msgid "Branch in which ejbca certificates are stored"
+msgstr ""

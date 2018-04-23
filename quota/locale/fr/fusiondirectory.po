@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -17,73 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: personal/quota/class_quotaAccount.inc:101
-msgid "Quota"
-msgstr "Quota"
-
-#: personal/quota/class_quotaAccount.inc:102
-msgid "Plugin for quota support"
-msgstr "Gestion des quotas utilisateurs"
-
-#: personal/quota/class_quotaAccount.inc:120
-msgid "Quota information"
-msgstr "Informations sur les quotas"
-
-#: personal/quota/class_quotaAccount.inc:125
-msgid "Quota information for this user"
-msgstr "Informations sur les quotas de l'utilisateur"
-
-#: personal/quota/class_quotaAccount.inc:129
-#: admin/systems/services/quota/class_serviceQuota.inc:50
-msgid "Device"
-msgstr "Périphérique"
-
-#: personal/quota/class_quotaAccount.inc:129
-msgid "Device this quota is for"
-msgstr "Périphérique pour lequel le quota s'applique"
-
-#: personal/quota/class_quotaAccount.inc:133
-msgid "Block soft limit"
-msgstr "Taille limite"
-
-#: personal/quota/class_quotaAccount.inc:133
-msgid "Soft limit for the block the user can use"
-msgstr ""
-"Nombre maximal de blocs utilisables par l'utilisateur avant avertissement"
-
-#: personal/quota/class_quotaAccount.inc:142
-msgid "Block hard limit"
-msgstr "Taille critique"
-
-#: personal/quota/class_quotaAccount.inc:142
-msgid "Hard limit for the block the user can use"
-msgstr "Nombre maximal de blocs utilisables par l'utilisateur avant blocage"
-
-#: personal/quota/class_quotaAccount.inc:151
-msgid "Inode soft limit"
-msgstr "Nombre limite de fichiers"
-
-#: personal/quota/class_quotaAccount.inc:151
-msgid "Soft limit for the inodes the user can use"
-msgstr ""
-"Nombre maximal d'inode utilisables par l'utilisateur avant avertissement"
-
-#: personal/quota/class_quotaAccount.inc:160
-msgid "Inode hard limit"
-msgstr "Nombre critique de fichiers"
-
-#: personal/quota/class_quotaAccount.inc:160
-msgid "Hard limit for the inodes the user can use"
-msgstr "Nombre maximal d'inode utilisables par l'utilisateur avant blocage"
-
-#: personal/quota/class_quotaAccount.inc:169
-msgid "Server"
-msgstr "Serveur"
-
-#: personal/quota/class_quotaAccount.inc:169
-msgid "Server hosting the device this quota is for"
-msgstr "Serveur hébergeant le périphérique sur lequel s'applique le quota"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:29
 #: admin/systems/services/quota/class_serviceQuota.inc:30
@@ -101,6 +34,11 @@ msgstr "Partages"
 #: admin/systems/services/quota/class_serviceQuota.inc:46
 msgid "Quotas for the shares this server hosts"
 msgstr "Quota pour les partages fournis par ce serveur"
+
+#: admin/systems/services/quota/class_serviceQuota.inc:50
+#: personal/quota/class_quotaAccount.inc:129
+msgid "Device"
+msgstr "Périphérique"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:50
 msgid "Device concerned by this quota"
@@ -231,3 +169,65 @@ msgstr "Valeur d'encodage invalide : %s"
 #, php-format
 msgid "(%s by %s)"
 msgstr "(%s par %s)"
+
+#: personal/quota/class_quotaAccount.inc:101
+msgid "Quota"
+msgstr "Quota"
+
+#: personal/quota/class_quotaAccount.inc:102
+msgid "Plugin for quota support"
+msgstr "Gestion des quotas utilisateurs"
+
+#: personal/quota/class_quotaAccount.inc:120
+msgid "Quota information"
+msgstr "Informations sur les quotas"
+
+#: personal/quota/class_quotaAccount.inc:125
+msgid "Quota information for this user"
+msgstr "Informations sur les quotas de l'utilisateur"
+
+#: personal/quota/class_quotaAccount.inc:129
+msgid "Device this quota is for"
+msgstr "Périphérique pour lequel le quota s'applique"
+
+#: personal/quota/class_quotaAccount.inc:133
+msgid "Block soft limit"
+msgstr "Taille limite"
+
+#: personal/quota/class_quotaAccount.inc:133
+msgid "Soft limit for the block the user can use"
+msgstr ""
+"Nombre maximal de blocs utilisables par l'utilisateur avant avertissement"
+
+#: personal/quota/class_quotaAccount.inc:142
+msgid "Block hard limit"
+msgstr "Taille critique"
+
+#: personal/quota/class_quotaAccount.inc:142
+msgid "Hard limit for the block the user can use"
+msgstr "Nombre maximal de blocs utilisables par l'utilisateur avant blocage"
+
+#: personal/quota/class_quotaAccount.inc:151
+msgid "Inode soft limit"
+msgstr "Nombre limite de fichiers"
+
+#: personal/quota/class_quotaAccount.inc:151
+msgid "Soft limit for the inodes the user can use"
+msgstr ""
+"Nombre maximal d'inode utilisables par l'utilisateur avant avertissement"
+
+#: personal/quota/class_quotaAccount.inc:160
+msgid "Inode hard limit"
+msgstr "Nombre critique de fichiers"
+
+#: personal/quota/class_quotaAccount.inc:160
+msgid "Hard limit for the inodes the user can use"
+msgstr "Nombre maximal d'inode utilisables par l'utilisateur avant blocage"
+
+#: personal/quota/class_quotaAccount.inc:169
+msgid "Server"
+msgstr "Serveur"
+
+#: personal/quota/class_quotaAccount.inc:169
+msgid "Server hosting the device this quota is for"
+msgstr "Serveur hébergeant le périphérique sur lequel s'applique le quota"

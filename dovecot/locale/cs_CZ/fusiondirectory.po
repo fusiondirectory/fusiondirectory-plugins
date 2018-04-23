@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -17,20 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:50
-msgid "There are no IMAP compatible mail servers defined!"
-msgstr "Nejsou určeny žádné poštovní servery slučitelné s protokolem IMAP! "
-
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:55
-msgid "Mail server for this account is invalid!"
-msgstr "Poštovní server pro tento účet je neplatný!"
-
-#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:194
-#, php-format
-msgid "Error while trying to contact Dovecot server through Argonaut: %s"
-msgstr ""
-"Chyba při pokusu kontaktovat Dovecot server prostřednictvím Argonaut: %s"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:28
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:29
@@ -122,3 +108,17 @@ msgid "Use argonaut to create the user mailbox on the Dovecot server"
 msgstr ""
 "Pro vytvoření e-mailové schránky uživatele na Dovecot serveru použijte "
 "argonaut"
+
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:50
+msgid "There are no IMAP compatible mail servers defined!"
+msgstr "Nejsou určeny žádné poštovní servery slučitelné s protokolem IMAP! "
+
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:55
+msgid "Mail server for this account is invalid!"
+msgstr "Poštovní server pro tento účet je neplatný!"
+
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:194
+#, php-format
+msgid "Error while trying to contact Dovecot server through Argonaut: %s"
+msgstr ""
+"Chyba při pokusu kontaktovat Dovecot server prostřednictvím Argonaut: %s"

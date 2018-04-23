@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -18,18 +18,34 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: personal/nagios/class_nagiosAccount.inc:40
+#: config/nagios/class_nagiosConfig.inc:28
+msgid "Nagios configuration"
+msgstr "Nagios 설정"
+
+#: config/nagios/class_nagiosConfig.inc:29
+msgid "FusionDirectory nagios plugin configuration"
+msgstr "FusionDirectory nagios 플러그인 설정"
+
 #: config/nagios/class_nagiosConfig.inc:42
+#: personal/nagios/class_nagiosAccount.inc:40
 msgid "Nagios"
+msgstr "Nagios"
+
+#: config/nagios/class_nagiosConfig.inc:45
+msgid "Lconf prefix"
+msgstr "Lconf 접두사"
+
+#: config/nagios/class_nagiosConfig.inc:45
+msgid "Prefix used for lconf LDAP fields"
 msgstr ""
 
 #: personal/nagios/class_nagiosAccount.inc:41
 msgid "Nagios account settings"
-msgstr ""
+msgstr "Nagios 계정 설정"
 
 #: personal/nagios/class_nagiosAccount.inc:60
 msgid "Nagios Account"
-msgstr ""
+msgstr "Nagios 계정"
 
 #: personal/nagios/class_nagiosAccount.inc:63
 msgid "Alias"
@@ -37,60 +53,44 @@ msgstr "별칭"
 
 #: personal/nagios/class_nagiosAccount.inc:63
 msgid "Name of the nagios alias"
-msgstr ""
+msgstr "nagios 별칭의 이름"
 
 #: personal/nagios/class_nagiosAccount.inc:67
 msgid "Mail address"
-msgstr ""
+msgstr "메일 주소"
 
 #: personal/nagios/class_nagiosAccount.inc:67
 msgid "Email of the nagios alias"
-msgstr ""
+msgstr "nagios 별칭의 이메일"
 
 #: personal/nagios/class_nagiosAccount.inc:71
 msgid "Host notification period"
-msgstr ""
+msgstr "호스트 알림 기간"
 
 #: personal/nagios/class_nagiosAccount.inc:76
 msgid "Service notification period"
-msgstr ""
+msgstr "서비스 통지 기간"
 
 #: personal/nagios/class_nagiosAccount.inc:81
 msgid "Service notification options"
-msgstr ""
+msgstr "서비스 통지 옵션"
 
 #: personal/nagios/class_nagiosAccount.inc:86
 msgid "Host notification options"
-msgstr ""
+msgstr "호스트 알림 옵션"
 
 #: personal/nagios/class_nagiosAccount.inc:91
 msgid "Pager"
-msgstr ""
+msgstr "호출기"
 
 #: personal/nagios/class_nagiosAccount.inc:91
 msgid " Pager"
-msgstr ""
+msgstr "초출기"
 
 #: personal/nagios/class_nagiosAccount.inc:95
 msgid "Service notification commands"
-msgstr ""
+msgstr "서비스 통지 명령"
 
 #: personal/nagios/class_nagiosAccount.inc:99
 msgid "Host notification commands"
-msgstr ""
-
-#: config/nagios/class_nagiosConfig.inc:28
-msgid "Nagios configuration"
-msgstr ""
-
-#: config/nagios/class_nagiosConfig.inc:29
-msgid "FusionDirectory nagios plugin configuration"
-msgstr ""
-
-#: config/nagios/class_nagiosConfig.inc:45
-msgid "Lconf prefix"
-msgstr ""
-
-#: config/nagios/class_nagiosConfig.inc:45
-msgid "Prefix used for lconf LDAP fields"
 msgstr ""

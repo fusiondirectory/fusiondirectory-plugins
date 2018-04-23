@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -18,31 +18,19 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: config/sogo/class_sogoConfig.inc:28
-msgid "SOGo configuration"
-msgstr ""
-
-#: config/sogo/class_sogoConfig.inc:29
-msgid "FusionDirectory sogo plugin configuration"
-msgstr ""
-
-#: config/sogo/class_sogoConfig.inc:42 admin/sogo/class_sogoManagement.inc:33
-#: admin/sogo/class_sogoManagement.inc:38
+#: admin/sogo/class_sogoManagement.inc:33
+#: admin/sogo/class_sogoManagement.inc:38 config/sogo/class_sogoConfig.inc:42
 msgid "SOGo"
-msgstr ""
+msgstr "SOGo"
 
-#: config/sogo/class_sogoConfig.inc:45
-msgid "SOGo RDN"
-msgstr ""
-
-#: config/sogo/class_sogoConfig.inc:45
-msgid "Branch in which SOGo objects will be stored"
-msgstr ""
+#: admin/sogo/class_sogoManagement.inc:34
+msgid "SOGo management"
+msgstr "SOGo 관리"
 
 #: admin/sogo/class_sogoResource.inc:31 admin/sogo/class_sogoResource.inc:32
 #: admin/sogo/class_sogoResource.inc:35 admin/sogo/class_sogoResource.inc:53
 msgid "SOGo resource"
-msgstr ""
+msgstr "SOGo 자원"
 
 #: admin/sogo/class_sogoResource.inc:57
 msgid "Entry name"
@@ -58,16 +46,28 @@ msgstr "메일"
 
 #: admin/sogo/class_sogoResource.inc:67
 msgid "description"
-msgstr ""
+msgstr "설명"
 
 #: admin/sogo/class_sogoResource.inc:71
 msgid "Multiplebookings"
-msgstr ""
+msgstr "다중예약."
 
 #: admin/sogo/class_sogoResource.inc:76
 msgid "Kind"
+msgstr "종류"
+
+#: config/sogo/class_sogoConfig.inc:28
+msgid "SOGo configuration"
+msgstr "SOGo 설정"
+
+#: config/sogo/class_sogoConfig.inc:29
+msgid "FusionDirectory sogo plugin configuration"
 msgstr ""
 
-#: admin/sogo/class_sogoManagement.inc:34
-msgid "SOGo management"
-msgstr ""
+#: config/sogo/class_sogoConfig.inc:45
+msgid "SOGo RDN"
+msgstr "SOGo RDN"
+
+#: config/sogo/class_sogoConfig.inc:45
+msgid "Branch in which SOGo objects will be stored"
+msgstr "SOGo 개체가 저장될 브랜치"

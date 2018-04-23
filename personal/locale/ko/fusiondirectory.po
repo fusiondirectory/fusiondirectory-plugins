@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -17,6 +17,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: config/personal/class_personalConfig.inc:28
+msgid "Personal configuration"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:29
+msgid "FusionDirectory personal plugin configuration"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:42
+#: personal/personal/class_personalInfo.inc:85
+msgid "Personal"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow use of private email for password recovery"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow users to use their private email address for password recovery"
+msgstr ""
 
 #: personal/personal/class_personalInfo.inc:30
 msgid "Site"
@@ -32,11 +53,6 @@ msgstr ""
 
 #: personal/personal/class_personalInfo.inc:36
 msgid "Id of this user on this website"
-msgstr ""
-
-#: personal/personal/class_personalInfo.inc:85
-#: config/personal/class_personalConfig.inc:42
-msgid "Personal"
 msgstr ""
 
 #: personal/personal/class_personalInfo.inc:86
@@ -85,11 +101,11 @@ msgstr ""
 
 #: personal/personal/class_personalInfo.inc:128
 msgid "Country"
-msgstr ""
+msgstr "지역"
 
 #: personal/personal/class_personalInfo.inc:132
 msgid "Start date"
-msgstr ""
+msgstr "시작일자"
 
 #: personal/personal/class_personalInfo.inc:132
 msgid "Date this user joined the company"
@@ -97,7 +113,7 @@ msgstr ""
 
 #: personal/personal/class_personalInfo.inc:137
 msgid "End date"
-msgstr ""
+msgstr "종료일자"
 
 #: personal/personal/class_personalInfo.inc:137
 msgid "Date this user is supposed to leave the company"
@@ -113,7 +129,7 @@ msgstr ""
 
 #: personal/personal/class_personalInfo.inc:148
 msgid "Contact"
-msgstr ""
+msgstr "연락처"
 
 #: personal/personal/class_personalInfo.inc:152
 msgid "Social account"
@@ -153,20 +169,4 @@ msgstr ""
 
 #: personal/personal/class_socialHandlers.inc:141
 msgid "LinkedIn"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:28
-msgid "Personal configuration"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:29
-msgid "FusionDirectory personal plugin configuration"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:45
-msgid "Allow use of private email for password recovery"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:45
-msgid "Allow users to use their private email address for password recovery"
 msgstr ""

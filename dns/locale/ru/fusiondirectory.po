@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
@@ -17,34 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-
-#: config/dns/class_dnsConfig.inc:28
-msgid "DNS configuration"
-msgstr "Конфигурация DNS"
-
-#: config/dns/class_dnsConfig.inc:29
-msgid "FusionDirectory dns plugin configuration"
-msgstr "FusionDirectory конфигурация dns плагина"
-
-#: config/dns/class_dnsConfig.inc:42
-msgid "DNS config"
-msgstr "Конфигурация DNS"
-
-#: config/dns/class_dnsConfig.inc:45
-msgid "DNS RDN"
-msgstr "DNS RDN"
-
-#: config/dns/class_dnsConfig.inc:45
-msgid "Branch in which DNS zones will be stored"
-msgstr "Ветка в которой DNS зоны будут сохранены"
-
-#: config/dns/class_dnsConfig.inc:50
-msgid "Store final dot in domains"
-msgstr "Сохранять точку в конце доменов"
-
-#: config/dns/class_dnsConfig.inc:50
-msgid "Should FD store a final dot at the end of domains?"
-msgstr "Должен ли FD сохранять точку на конце доменов?"
 
 #: admin/dns/class_dnsAcl.inc:30 admin/dns/class_dnsAcl.inc:31
 #: admin/dns/class_dnsAcl.inc:33
@@ -69,6 +41,54 @@ msgstr ""
 
 #: admin/dns/class_dnsAcl.inc:56
 msgid "The ip address match list for this acl"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:123
+msgid "DNS"
+msgstr "DNS"
+
+#: admin/dns/class_dnsManagement.inc:35
+msgid "DNS Management"
+msgstr "Управление DNS"
+
+#: admin/dns/class_dnsManagement.inc:37
+msgid "Systems"
+msgstr "Системы"
+
+#: admin/dns/class_dnsManagement.inc:91 admin/dns/class_dnsManagement.inc:93
+#: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:307
+#: admin/systems/class_dnsHost.inc:313
+msgid "Could not run ldap2zone"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:91
+msgid "More than one server matches the SOA"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:93
+msgid "Could not find the primary server"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:106
+msgid "Could not get run ldap2zone"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
+msgid "Ldap2zone"
+msgstr "Ldap2zone"
+
+#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
+#, php-format
+msgid "Ldap2Zone called for zone \"%s\""
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:112 admin/dns/class_dnsZone.inc:368
+#: admin/systems/class_dnsHost.inc:319
+msgid "Error"
+msgstr "Ошибка"
+
+#: admin/dns/class_dnsManagement.inc:112 admin/systems/class_dnsHost.inc:319
+msgid "Argonaut client needs to be activated to use ldap2zone remotely"
 msgstr ""
 
 #: admin/dns/class_dnsView.inc:28 admin/dns/class_dnsView.inc:29
@@ -121,54 +141,6 @@ msgstr "Зоны DNS"
 
 #: admin/dns/class_dnsView.inc:66
 msgid "DNS zones in this view"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:123
-msgid "DNS"
-msgstr "DNS"
-
-#: admin/dns/class_dnsManagement.inc:35
-msgid "DNS Management"
-msgstr "Управление DNS"
-
-#: admin/dns/class_dnsManagement.inc:37
-msgid "Systems"
-msgstr "Системы"
-
-#: admin/dns/class_dnsManagement.inc:91 admin/dns/class_dnsManagement.inc:93
-#: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:307
-#: admin/systems/class_dnsHost.inc:313
-msgid "Could not run ldap2zone"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:91
-msgid "More than one server matches the SOA"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:93
-msgid "Could not find the primary server"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:106
-msgid "Could not get run ldap2zone"
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
-msgid "Ldap2zone"
-msgstr "Ldap2zone"
-
-#: admin/dns/class_dnsManagement.inc:108 admin/systems/class_dnsHost.inc:315
-#, php-format
-msgid "Ldap2Zone called for zone \"%s\""
-msgstr ""
-
-#: admin/dns/class_dnsManagement.inc:112 admin/dns/class_dnsZone.inc:368
-#: admin/systems/class_dnsHost.inc:319
-msgid "Error"
-msgstr "Ошибка"
-
-#: admin/dns/class_dnsManagement.inc:112 admin/systems/class_dnsHost.inc:319
-msgid "Argonaut client needs to be activated to use ldap2zone remotely"
 msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:27
@@ -660,6 +632,34 @@ msgstr "Обновить DNS"
 #, php-format
 msgid "%d records were removed in zone %s"
 msgstr "%d записей было удалено в зоне %s"
+
+#: config/dns/class_dnsConfig.inc:28
+msgid "DNS configuration"
+msgstr "Конфигурация DNS"
+
+#: config/dns/class_dnsConfig.inc:29
+msgid "FusionDirectory dns plugin configuration"
+msgstr "FusionDirectory конфигурация dns плагина"
+
+#: config/dns/class_dnsConfig.inc:42
+msgid "DNS config"
+msgstr "Конфигурация DNS"
+
+#: config/dns/class_dnsConfig.inc:45
+msgid "DNS RDN"
+msgstr "DNS RDN"
+
+#: config/dns/class_dnsConfig.inc:45
+msgid "Branch in which DNS zones will be stored"
+msgstr "Ветка в которой DNS зоны будут сохранены"
+
+#: config/dns/class_dnsConfig.inc:50
+msgid "Store final dot in domains"
+msgstr "Сохранять точку в конце доменов"
+
+#: config/dns/class_dnsConfig.inc:50
+msgid "Should FD store a final dot at the end of domains?"
+msgstr "Должен ли FD сохранять точку на конце доменов?"
 
 #: admin/systems/dnsrecords.tpl.c:2
 msgid "Insufficient rights"

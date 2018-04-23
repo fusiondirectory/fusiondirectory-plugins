@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -18,161 +18,6 @@ msgstr ""
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:29
-#: personal/ppolicy/class_ppolicyAccount.inc:44
-#: admin/ppolicy/class_ppolicy.inc:32 admin/ppolicy/class_ppolicy.inc:35
-msgid "Password policy"
-msgstr "Regola per la password"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:30
-msgid "Edit user's password policy"
-msgstr "Modifica la politica del cambio password per l'utente"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:47
-#: admin/ppolicy/class_ppolicy.inc:51
-msgid "Policy"
-msgstr "Regola"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:47
-msgid "Use a specific policy for this user"
-msgstr "Usa una politica specifica per questo utente"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:51
-msgid "Last password change"
-msgstr "Ultima modifica della password"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:51
-msgid "Last time the password for the entry was changed"
-msgstr "L'ultima volta in cui la password per le voci é stata cambiata"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:55
-msgid "Account locked time"
-msgstr "Tempo di blocco dell'account"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:55
-msgid "Time the account was locked"
-msgstr "Data del blocco dell'account"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:59
-msgid "Reset locking / force change"
-msgstr "Ripristino di bloccaggio / forza le modifiche"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:59
-msgid "Resets the lock status of this account and/or force a password change"
-msgstr ""
-"Ripristina lo stato di blocco del conto e/o imponi una modifica della "
-"password"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:62
-msgid "Force password change (resets locking)"
-msgstr "Forza la modifica della password (ripristina bloccaggio)"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:62
-msgid "Reset locking (same password)"
-msgstr "Ripristino di bloccaggio (stessa password)"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:77
-msgid "Use the default"
-msgstr "Usa il default"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:83
-msgid "Never"
-msgstr "Mai"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:90
-msgid "Unlocked"
-msgstr "Sbloccato"
-
-#: personal/ppolicy/class_ppolicyAccount.inc:92
-msgid "Locked permanently"
-msgstr "Bloccato in modo permanente"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:27
-msgid "Ppolicy"
-msgstr "Ppolicy"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:28
-msgid "Statistics about ppolicy expired users"
-msgstr "Statistiche sugli utenti ppolicy scaduti"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:40
-msgid "Expired accounts"
-msgstr "Account scaduti"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:45
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:8
-msgid "Locked accounts"
-msgstr "Account bloccati"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:58
-msgid "Login"
-msgstr "Nome utente"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:59
-#: addons/dashboard/class_dashBoardPPolicy.inc:64
-msgid "Name"
-msgstr "Nome"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:60
-#: addons/dashboard/class_dashBoardPPolicy.inc:66
-msgid "Phone number"
-msgstr "Numero di telefono"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:61
-msgid "Expiration date"
-msgstr "Data di scadenza"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:65
-msgid "Email"
-msgstr "Indirizzo di posta elettronica"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:86
-#: addons/dashboard/class_dashBoardPPolicy.inc:139
-msgid "Configuration error"
-msgstr "Errore di configurazione"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:87
-#, php-format
-msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
-msgstr "La ppolicy \"%s\" predefinta non é stata trovata nell'annuario LDAP"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:140
-#, php-format
-msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
-msgstr ""
-"La ppolicy  \"%s\" impostata per l'utente  \"%s\"  non é stata trovata "
-"nell'LDAP!"
-
-#: config/ppolicy/class_ppolicyConfig.inc:29
-msgid "Ppolicy plugin configuration"
-msgstr "Configurazione del plugin Ppolicy"
-
-#: config/ppolicy/class_ppolicyConfig.inc:30
-msgid "FusionDirectory ppolicy plugin configuration"
-msgstr "Configurazione del plugin ppolicy di FusionDirectory"
-
-#: config/ppolicy/class_ppolicyConfig.inc:43
-msgid "Ppolicy plugin"
-msgstr "Ppolicy plugin"
-
-#: config/ppolicy/class_ppolicyConfig.inc:46
-msgid "Ppolicy RDN"
-msgstr "Ppolicy RDN"
-
-#: config/ppolicy/class_ppolicyConfig.inc:46
-msgid "Branch in which ppolicies will be stored"
-msgstr "Ramo nel quale verranno immagazinate ppolicies"
-
-#: config/ppolicy/class_ppolicyConfig.inc:51
-msgid "Default ppolicy cn"
-msgstr "Cn di ppolicy predefinito"
-
-#: config/ppolicy/class_ppolicyConfig.inc:51
-msgid "What you put as default ppolicy in the overlay config"
-msgstr ""
-"Ciò che si mette come ppolicy default nella configurazione di "
-"sovrapposizione"
-
 #: admin/ppolicy/class_ppolicyManagement.inc:29
 msgid "Password policies"
 msgstr "Regole per la password"
@@ -181,9 +26,20 @@ msgstr "Regole per la password"
 msgid "Password policies management"
 msgstr "Gestione delle regole per la password"
 
+#: admin/ppolicy/class_ppolicy.inc:32 admin/ppolicy/class_ppolicy.inc:35
+#: personal/ppolicy/class_ppolicyAccount.inc:29
+#: personal/ppolicy/class_ppolicyAccount.inc:44
+msgid "Password policy"
+msgstr "Regola per la password"
+
 #: admin/ppolicy/class_ppolicy.inc:33
 msgid "Password policy for ppolicy overlay"
 msgstr "Regole per la password"
+
+#: admin/ppolicy/class_ppolicy.inc:51
+#: personal/ppolicy/class_ppolicyAccount.inc:47
+msgid "Policy"
+msgstr "Regola"
 
 #: admin/ppolicy/class_ppolicy.inc:56
 msgid "Policy name"
@@ -383,6 +239,150 @@ msgid ""
 msgstr ""
 "L'utente deve cambiare la propria password dopo il reset dell'account da "
 "parte di un amministratore in seguito ad un blocco automatico"
+
+#: config/ppolicy/class_ppolicyConfig.inc:29
+msgid "Ppolicy plugin configuration"
+msgstr "Configurazione del plugin Ppolicy"
+
+#: config/ppolicy/class_ppolicyConfig.inc:30
+msgid "FusionDirectory ppolicy plugin configuration"
+msgstr "Configurazione del plugin ppolicy di FusionDirectory"
+
+#: config/ppolicy/class_ppolicyConfig.inc:43
+msgid "Ppolicy plugin"
+msgstr "Ppolicy plugin"
+
+#: config/ppolicy/class_ppolicyConfig.inc:46
+msgid "Ppolicy RDN"
+msgstr "Ppolicy RDN"
+
+#: config/ppolicy/class_ppolicyConfig.inc:46
+msgid "Branch in which ppolicies will be stored"
+msgstr "Ramo nel quale verranno immagazinate ppolicies"
+
+#: config/ppolicy/class_ppolicyConfig.inc:51
+msgid "Default ppolicy cn"
+msgstr "Cn di ppolicy predefinito"
+
+#: config/ppolicy/class_ppolicyConfig.inc:51
+msgid "What you put as default ppolicy in the overlay config"
+msgstr ""
+"Ciò che si mette come ppolicy default nella configurazione di "
+"sovrapposizione"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:27
+msgid "Ppolicy"
+msgstr "Ppolicy"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:28
+msgid "Statistics about ppolicy expired users"
+msgstr "Statistiche sugli utenti ppolicy scaduti"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:40
+msgid "Expired accounts"
+msgstr "Account scaduti"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:45
+#: addons/dashboard/ppolicy_locked_accounts.tpl.c:8
+msgid "Locked accounts"
+msgstr "Account bloccati"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:58
+msgid "Login"
+msgstr "Nome utente"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:59
+#: addons/dashboard/class_dashBoardPPolicy.inc:64
+msgid "Name"
+msgstr "Nome"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:60
+#: addons/dashboard/class_dashBoardPPolicy.inc:66
+msgid "Phone number"
+msgstr "Numero di telefono"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:61
+msgid "Expiration date"
+msgstr "Data di scadenza"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:65
+msgid "Email"
+msgstr "Indirizzo di posta elettronica"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:86
+#: addons/dashboard/class_dashBoardPPolicy.inc:139
+msgid "Configuration error"
+msgstr "Errore di configurazione"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:87
+#, php-format
+msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
+msgstr "La ppolicy \"%s\" predefinta non é stata trovata nell'annuario LDAP"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:140
+#, php-format
+msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
+msgstr ""
+"La ppolicy  \"%s\" impostata per l'utente  \"%s\"  non é stata trovata "
+"nell'LDAP!"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:30
+msgid "Edit user's password policy"
+msgstr "Modifica la politica del cambio password per l'utente"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:47
+msgid "Use a specific policy for this user"
+msgstr "Usa una politica specifica per questo utente"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:51
+msgid "Last password change"
+msgstr "Ultima modifica della password"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:51
+msgid "Last time the password for the entry was changed"
+msgstr "L'ultima volta in cui la password per le voci é stata cambiata"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:55
+msgid "Account locked time"
+msgstr "Tempo di blocco dell'account"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:55
+msgid "Time the account was locked"
+msgstr "Data del blocco dell'account"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:59
+msgid "Reset locking / force change"
+msgstr "Ripristino di bloccaggio / forza le modifiche"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:59
+msgid "Resets the lock status of this account and/or force a password change"
+msgstr ""
+"Ripristina lo stato di blocco del conto e/o imponi una modifica della "
+"password"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:62
+msgid "Force password change (resets locking)"
+msgstr "Forza la modifica della password (ripristina bloccaggio)"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:62
+msgid "Reset locking (same password)"
+msgstr "Ripristino di bloccaggio (stessa password)"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:77
+msgid "Use the default"
+msgstr "Usa il default"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:83
+msgid "Never"
+msgstr "Mai"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:90
+msgid "Unlocked"
+msgstr "Sbloccato"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:92
+msgid "Locked permanently"
+msgstr "Bloccato in modo permanente"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:2
 msgid "There is one locked account"

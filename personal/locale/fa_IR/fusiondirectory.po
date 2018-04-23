@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Persian (Iran) (https://www.transifex.com/fusiondirectory/teams/12202/fa_IR/)\n"
@@ -17,6 +17,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa_IR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: config/personal/class_personalConfig.inc:28
+msgid "Personal configuration"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:29
+msgid "FusionDirectory personal plugin configuration"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:42
+#: personal/personal/class_personalInfo.inc:85
+msgid "Personal"
+msgstr "شخصی"
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow use of private email for password recovery"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow users to use their private email address for password recovery"
+msgstr ""
 
 #: personal/personal/class_personalInfo.inc:30
 msgid "Site"
@@ -33,11 +54,6 @@ msgstr ""
 #: personal/personal/class_personalInfo.inc:36
 msgid "Id of this user on this website"
 msgstr ""
-
-#: personal/personal/class_personalInfo.inc:85
-#: config/personal/class_personalConfig.inc:42
-msgid "Personal"
-msgstr "شخصی"
 
 #: personal/personal/class_personalInfo.inc:86
 msgid "Personal information"
@@ -153,20 +169,4 @@ msgstr ""
 
 #: personal/personal/class_socialHandlers.inc:141
 msgid "LinkedIn"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:28
-msgid "Personal configuration"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:29
-msgid "FusionDirectory personal plugin configuration"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:45
-msgid "Allow use of private email for password recovery"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:45
-msgid "Allow users to use their private email address for password recovery"
 msgstr ""

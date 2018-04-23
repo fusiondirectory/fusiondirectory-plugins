@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -18,170 +18,39 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:61
-msgid "Server did not return auth token"
-msgstr "Le serveur n'a pas retourné le jeton d'authentification"
-
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:126
-msgid "Partage API answer malformated"
-msgstr "Partage API réponse mal formée"
-
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:130
-#, php-format
-msgid "Partage API Auth failed: %s"
-msgstr "Partage API Auth a échoué: %s"
-
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:132
-msgid "Partage API Auth failed with no error message"
-msgstr "Partage API Auth a échoué sans message d'erreur"
-
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:141
-#, php-format
-msgid "Unable to connect to %s: %s"
-msgstr "Impossible de se connecter à %s: %s"
-
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:143
-#, php-format
-msgid "Unable to connect to %s"
-msgstr "Impossible de se connecter à %s"
-
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:238
-msgid "Warning"
-msgstr "Avertissement"
-
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:238
-#, php-format
-msgid ""
-"Several addresses were given in gosaMailForwardingAddress but only one is "
-"supported by PARTAGE. %s will be sent to PARTAGE."
-msgstr ""
-"Plusieurs adresses ont été fournies dans gosaMailForwardingAddress, mais une"
-" seule est prise en charge par PARTAGE. %s sera envoyé à PARTAGE."
-
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:470
-msgid "PARTAGE error"
-msgstr "Erreur PARTAGE"
-
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:471
-#, php-format
-msgid "Several users have uid \"%s\". Ignoring this member."
-msgstr "Plusieurs utilisateurs ont l'uid \"%s\". j'ignore ce membre."
-
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:510
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:523
-msgid "An account with the same email address already exists in Partage"
-msgstr "Un compte avec la même adresse de messagerie existe déjà dans Partage"
-
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:588
-msgid "Invalid value in fdRenaterPartageServerDeletionType"
-msgstr "Valeur non valide dans fdRenaterPartageServerDeletionType"
-
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:625
-msgid "Never"
-msgstr "Jamais"
-
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:632
-msgid "Last login"
-msgstr "Dernière connexion"
-
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:633
-msgid "Account status"
-msgstr "Statut du compte"
-
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:633
-msgid "Unknown"
-msgstr "Inconnu"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:29
 #: admin/groups/renater-partage/class_partageGroup.inc:29
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:29
 msgid "Partage"
 msgstr "Partage"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:30
-msgid "Partage sympa options"
-msgstr "Options sympa de Renater Partage"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:40
-#: admin/groups/renater-partage/class_partageGroup.inc:41
-msgid "Information"
-msgstr "Information"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:43
-msgid "Server"
-msgstr "Serveur"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:43
-msgid "Email server"
-msgstr "Serveur de messagerie"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:48
-#: admin/groups/renater-partage/class_partageGroup.inc:44
-msgid "Display name"
-msgstr "Nom à afficher"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:48
-#: admin/groups/renater-partage/class_partageGroup.inc:44
-msgid "Name to display for this group"
-msgstr "Nom à afficher pour ce groupe"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:52
-#: admin/groups/renater-partage/class_partageGroup.inc:48
-msgid "Hide from global catalog"
-msgstr "Masquer du catalogue global"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:52
-#: admin/groups/renater-partage/class_partageGroup.inc:48
-msgid "Whether this group should be hidden from the global catalog"
-msgstr "Est ce que ce groupe doit être caché dans le catalogue global"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:65
-#: admin/groups/renater-partage/class_partageGroup.inc:64
-msgid "Notes"
-msgstr "Notes"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:65
-#: admin/groups/renater-partage/class_partageGroup.inc:64
-msgid "Notes about this group"
-msgstr "Notes sur ce groupe"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:70
-msgid "Alternative addresses"
-msgstr "Adresses alternatives"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:70
-msgid "Alternative mail addresses for the list"
-msgstr "Adresses de courriel alternatives pour la liste"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:158
-#, php-format
-msgid "Mail method cannot connect: %s"
-msgstr "Le méthode de courriel ne peut pas se connecter : %s"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:161
-#, php-format
-msgid "Cannot update mailbox: %s"
-msgstr "Impossible de mettre à jour le compte : %s"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:182
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:186
-msgid "Mail error"
-msgstr "Erreur du serveur de courriel"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:182
-#, php-format
-msgid "Cannot remove mailbox, mail method cannot connect: %s"
-msgstr ""
-"Impossible de supprimer le compte de messagerie, impossible de se connecter "
-"à : %s"
-
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:186
-#, php-format
-msgid "Cannot remove mailbox: %s"
-msgstr "Impossible de supprimer le compte de messagerie : %s"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:30
 msgid "Partage group options"
 msgstr "Options de groupe de Renater Partage"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:41
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:40
+msgid "Information"
+msgstr "Information"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:44
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:48
+msgid "Display name"
+msgstr "Nom à afficher"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:44
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:48
+msgid "Name to display for this group"
+msgstr "Nom à afficher pour ce groupe"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:48
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:52
+msgid "Hide from global catalog"
+msgstr "Masquer du catalogue global"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:48
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:52
+msgid "Whether this group should be hidden from the global catalog"
+msgstr "Est ce que ce groupe doit être caché dans le catalogue global"
 
 #: admin/groups/renater-partage/class_partageGroup.inc:53
 msgid "Type"
@@ -208,6 +77,16 @@ msgid "Send a message to alert new members, they have joined this group"
 msgstr ""
 "Envoyer un message pour prévenir les nouveaux membres, ils ont rejoint ce "
 "groupe"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:64
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:65
+msgid "Notes"
+msgstr "Notes"
+
+#: admin/groups/renater-partage/class_partageGroup.inc:64
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:65
+msgid "Notes about this group"
+msgstr "Notes sur ce groupe"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:28
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:29
@@ -287,3 +166,124 @@ msgstr "Classe de services"
 msgid "Possible classes of service for this domain, separated by commas"
 msgstr ""
 "Classes de service possibles pour ce domaine, séparées par des virgules"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:30
+msgid "Partage sympa options"
+msgstr "Options sympa de Renater Partage"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:43
+msgid "Server"
+msgstr "Serveur"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:43
+msgid "Email server"
+msgstr "Serveur de messagerie"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:70
+msgid "Alternative addresses"
+msgstr "Adresses alternatives"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:70
+msgid "Alternative mail addresses for the list"
+msgstr "Adresses de courriel alternatives pour la liste"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:158
+#, php-format
+msgid "Mail method cannot connect: %s"
+msgstr "Le méthode de courriel ne peut pas se connecter : %s"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:161
+#, php-format
+msgid "Cannot update mailbox: %s"
+msgstr "Impossible de mettre à jour le compte : %s"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:182
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:186
+msgid "Mail error"
+msgstr "Erreur du serveur de courriel"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:182
+#, php-format
+msgid "Cannot remove mailbox, mail method cannot connect: %s"
+msgstr ""
+"Impossible de supprimer le compte de messagerie, impossible de se connecter "
+"à : %s"
+
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:186
+#, php-format
+msgid "Cannot remove mailbox: %s"
+msgstr "Impossible de supprimer le compte de messagerie : %s"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:61
+msgid "Server did not return auth token"
+msgstr "Le serveur n'a pas retourné le jeton d'authentification"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:126
+msgid "Partage API answer malformated"
+msgstr "Partage API réponse mal formée"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:130
+#, php-format
+msgid "Partage API Auth failed: %s"
+msgstr "Partage API Auth a échoué: %s"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:132
+msgid "Partage API Auth failed with no error message"
+msgstr "Partage API Auth a échoué sans message d'erreur"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:141
+#, php-format
+msgid "Unable to connect to %s: %s"
+msgstr "Impossible de se connecter à %s: %s"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:143
+#, php-format
+msgid "Unable to connect to %s"
+msgstr "Impossible de se connecter à %s"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:238
+msgid "Warning"
+msgstr "Avertissement"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:238
+#, php-format
+msgid ""
+"Several addresses were given in gosaMailForwardingAddress but only one is "
+"supported by PARTAGE. %s will be sent to PARTAGE."
+msgstr ""
+"Plusieurs adresses ont été fournies dans gosaMailForwardingAddress, mais une"
+" seule est prise en charge par PARTAGE. %s sera envoyé à PARTAGE."
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:470
+msgid "PARTAGE error"
+msgstr "Erreur PARTAGE"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:471
+#, php-format
+msgid "Several users have uid \"%s\". Ignoring this member."
+msgstr "Plusieurs utilisateurs ont l'uid \"%s\". j'ignore ce membre."
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:510
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:523
+msgid "An account with the same email address already exists in Partage"
+msgstr "Un compte avec la même adresse de messagerie existe déjà dans Partage"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:588
+msgid "Invalid value in fdRenaterPartageServerDeletionType"
+msgstr "Valeur non valide dans fdRenaterPartageServerDeletionType"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:625
+msgid "Never"
+msgstr "Jamais"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:632
+msgid "Last login"
+msgstr "Dernière connexion"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:633
+msgid "Account status"
+msgstr "Statut du compte"
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:633
+msgid "Unknown"
+msgstr "Inconnu"

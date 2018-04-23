@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
@@ -18,30 +18,18 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: config/ejbca/class_ejbcaConfig.inc:28
-msgid "EJBCA plugin configuration"
-msgstr ""
-
-#: config/ejbca/class_ejbcaConfig.inc:29
-msgid "FusionDirectory ejbca plugin configuration"
-msgstr ""
-
-#: config/ejbca/class_ejbcaConfig.inc:42
-msgid "EJBCA plugin"
-msgstr ""
-
-#: config/ejbca/class_ejbcaConfig.inc:45
-msgid "EJBCA RDN"
-msgstr ""
-
-#: config/ejbca/class_ejbcaConfig.inc:45
-msgid "Branch in which ejbca certificates are stored"
-msgstr ""
-
-#: admin/ejbca/certificates/class_ejbcaCertificates.inc:29
 #: admin/ejbca/class_ejbcaManagement.inc:32
+#: admin/ejbca/certificates/class_ejbcaCertificates.inc:29
 msgid "EJBCA"
 msgstr ""
+
+#: admin/ejbca/class_ejbcaManagement.inc:33
+msgid "EJBCA certificates management"
+msgstr ""
+
+#: admin/ejbca/class_ejbcaManagement.inc:52
+msgid "Download"
+msgstr "Скачать"
 
 #: admin/ejbca/certificates/class_ejbcaCertificates.inc:30
 msgid "Assign EJBCA certificates to a user"
@@ -54,14 +42,6 @@ msgstr ""
 #: admin/ejbca/certificates/class_ejbcaCertificates.inc:52
 msgid "Certificates associated to this object"
 msgstr ""
-
-#: admin/ejbca/class_ejbcaManagement.inc:33
-msgid "EJBCA certificates management"
-msgstr ""
-
-#: admin/ejbca/class_ejbcaManagement.inc:52
-msgid "Download"
-msgstr "Скачать"
 
 #: admin/ejbca/class_ejbcaCertificate.inc:30
 #: admin/ejbca/class_ejbcaCertificate.inc:31
@@ -85,3 +65,23 @@ msgstr "Фамилия"
 #: admin/ejbca/class_ejbcaCertificate.inc:55
 msgid "Certificate content"
 msgstr "Содержимое сетрификата"
+
+#: config/ejbca/class_ejbcaConfig.inc:28
+msgid "EJBCA plugin configuration"
+msgstr ""
+
+#: config/ejbca/class_ejbcaConfig.inc:29
+msgid "FusionDirectory ejbca plugin configuration"
+msgstr ""
+
+#: config/ejbca/class_ejbcaConfig.inc:42
+msgid "EJBCA plugin"
+msgstr ""
+
+#: config/ejbca/class_ejbcaConfig.inc:45
+msgid "EJBCA RDN"
+msgstr ""
+
+#: config/ejbca/class_ejbcaConfig.inc:45
+msgid "Branch in which ejbca certificates are stored"
+msgstr ""

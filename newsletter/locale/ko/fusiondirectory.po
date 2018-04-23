@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -18,10 +18,26 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: personal/newsletter/class_newsletterSubscriptions.inc:30
+#: config/newsletter/class_newsletterConfig.inc:28
+msgid "Newsletter configuration"
+msgstr "뉴스레터 설정"
+
+#: config/newsletter/class_newsletterConfig.inc:29
+msgid "FusionDirectory newsletter plugin configuration"
+msgstr "FusionDirectory 뉴스레터 플러그인 설정"
+
 #: config/newsletter/class_newsletterConfig.inc:41
+#: personal/newsletter/class_newsletterSubscriptions.inc:30
 msgid "Newsletter"
 msgstr "뉴스레터"
+
+#: config/newsletter/class_newsletterConfig.inc:45
+msgid "Newsletter choices"
+msgstr "뉴스레터 선택"
+
+#: config/newsletter/class_newsletterConfig.inc:45
+msgid "Newsletters the user can choose from"
+msgstr "사용자가 선택한 뉴스레터"
 
 #: personal/newsletter/class_newsletterSubscriptions.inc:31
 msgid "Newsletter subscriptions"
@@ -38,19 +54,3 @@ msgstr "가입"
 #: personal/newsletter/class_newsletterSubscriptions.inc:50
 msgid "Newsletter you are subscribed to"
 msgstr "가입된 뉴스레터"
-
-#: config/newsletter/class_newsletterConfig.inc:28
-msgid "Newsletter configuration"
-msgstr "뉴스레터 설정"
-
-#: config/newsletter/class_newsletterConfig.inc:29
-msgid "FusionDirectory newsletter plugin configuration"
-msgstr "FusionDirectory 뉴스레터 플러그인 설정"
-
-#: config/newsletter/class_newsletterConfig.inc:45
-msgid "Newsletter choices"
-msgstr "뉴스레터 선택"
-
-#: config/newsletter/class_newsletterConfig.inc:45
-msgid "Newsletters the user can choose from"
-msgstr "사용자가 선택한 뉴스레터"

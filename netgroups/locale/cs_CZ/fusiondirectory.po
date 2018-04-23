@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -18,49 +18,28 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: personal/netgroups/class_netgroupMembership.inc:43
-#: admin/netgroups/class_netgroup.inc:54
-#: admin/systems/netgroups/class_netgroupSystem.inc:26
-msgid "NIS Netgroup"
-msgstr "skupina v NIS"
+#: admin/netgroups/class_netgroupManagement.inc:34
+msgid "NIS Netgroups"
+msgstr "skupiny NIS"
 
-#: personal/netgroups/class_netgroupMembership.inc:44
-#: admin/systems/netgroups/class_netgroupSystem.inc:27
-msgid "NIS Netgroup member"
-msgstr "člen skupiny NIS"
+#: admin/netgroups/class_netgroupManagement.inc:35
+msgid "NIS Netgroup management"
+msgstr "Správa síťové NIS skupiny"
 
-#: personal/netgroups/class_netgroupMembership.inc:60
-msgid "Member of the following NIS Netgroups  "
-msgstr "Člen následujících NIS síťových skupin"
-
-#: personal/netgroups/class_netgroupMembership.inc:63
-msgid "NIS netgroup membership"
-msgstr "Členství v síťové skupiny NIS"
-
-#: config/netgroups/class_netgroupConfig.inc:28
-msgid "Netgroup configuration"
-msgstr "Nastavení síťové skupiny"
-
-#: config/netgroups/class_netgroupConfig.inc:29
-msgid "FusionDirectory netgroup plugin configuration"
-msgstr "Nastavení zásuvného modulu netgroup pro FusionDirectory"
-
-#: config/netgroups/class_netgroupConfig.inc:42
 #: admin/netgroups/class_netgroup.inc:50
+#: config/netgroups/class_netgroupConfig.inc:42
 msgid "Netgroup"
 msgstr "Síťová skupina"
-
-#: config/netgroups/class_netgroupConfig.inc:45
-msgid "Netgroup RDN"
-msgstr "Relativní rozlišený název síťové skupiny"
-
-#: config/netgroups/class_netgroupConfig.inc:45
-msgid "Branch in which netgroups will be stored"
-msgstr "Větev, ve které budou ukládány síťové skupiny"
 
 #: admin/netgroups/class_netgroup.inc:51
 msgid "NIS Netgroup settings"
 msgstr "Nastavení síťové skupiny v NIS"
+
+#: admin/netgroups/class_netgroup.inc:54
+#: admin/systems/netgroups/class_netgroupSystem.inc:26
+#: personal/netgroups/class_netgroupMembership.inc:43
+msgid "NIS Netgroup"
+msgstr "skupina v NIS"
 
 #: admin/netgroups/class_netgroup.inc:69
 msgid "Information"
@@ -99,10 +78,31 @@ msgstr "Členové systému"
 msgid "Netgroup members"
 msgstr "Členové síťové skupiny"
 
-#: admin/netgroups/class_netgroupManagement.inc:34
-msgid "NIS Netgroups"
-msgstr "skupiny NIS"
+#: admin/systems/netgroups/class_netgroupSystem.inc:27
+#: personal/netgroups/class_netgroupMembership.inc:44
+msgid "NIS Netgroup member"
+msgstr "člen skupiny NIS"
 
-#: admin/netgroups/class_netgroupManagement.inc:35
-msgid "NIS Netgroup management"
-msgstr "Správa síťové NIS skupiny"
+#: config/netgroups/class_netgroupConfig.inc:28
+msgid "Netgroup configuration"
+msgstr "Nastavení síťové skupiny"
+
+#: config/netgroups/class_netgroupConfig.inc:29
+msgid "FusionDirectory netgroup plugin configuration"
+msgstr "Nastavení zásuvného modulu netgroup pro FusionDirectory"
+
+#: config/netgroups/class_netgroupConfig.inc:45
+msgid "Netgroup RDN"
+msgstr "Relativní rozlišený název síťové skupiny"
+
+#: config/netgroups/class_netgroupConfig.inc:45
+msgid "Branch in which netgroups will be stored"
+msgstr "Větev, ve které budou ukládány síťové skupiny"
+
+#: personal/netgroups/class_netgroupMembership.inc:60
+msgid "Member of the following NIS Netgroups  "
+msgstr "Člen následujících NIS síťových skupin"
+
+#: personal/netgroups/class_netgroupMembership.inc:63
+msgid "NIS netgroup membership"
+msgstr "Členství v síťové skupiny NIS"

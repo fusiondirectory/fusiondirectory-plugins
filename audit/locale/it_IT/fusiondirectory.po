@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-06 18:52+0100\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -17,43 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: config/audit/class_auditConfig.inc:28
-msgid "Audit configuration"
-msgstr "Configurazione di audit"
-
-#: config/audit/class_auditConfig.inc:29
-msgid "FusionDirectory audit plugin configuration"
-msgstr "Configurazione del plugin di controllo di FusionDirectory"
-
-#: config/audit/class_auditConfig.inc:41
-#: admin/audit/class_auditManagement.inc:40
-msgid "Audit"
-msgstr "Controllo"
-
-#: config/audit/class_auditConfig.inc:44
-msgid "Audit RDN"
-msgstr "Controllo RDN"
-
-#: config/audit/class_auditConfig.inc:44
-msgid "Branch in which audit events will be stored"
-msgstr "Ramo nel quale gli eventi di controllo verranno immagazzinati"
-
-#: config/audit/class_auditConfig.inc:50
-msgid "Actions to audit"
-msgstr "Azioni da controllare"
-
-#: config/audit/class_auditConfig.inc:50
-msgid "Which actions should be stored in LDAP audit log"
-msgstr "Quali azioni devono essere conservati nel log di controllo LDAP"
-
-#: config/audit/class_auditConfig.inc:57
-msgid "Days to keep"
-msgstr "Giorni di conservazione"
-
-#: config/audit/class_auditConfig.inc:57
-msgid "Number of days of audit to keep in the LDAP when cleaning"
-msgstr "Numero di giorni di controllo da tenere nell'LDAP durante il cleaning"
 
 #: admin/audit/class_auditEvent.inc:53 admin/audit/class_auditEvent.inc:56
 msgid "Audit event"
@@ -124,6 +87,11 @@ msgstr "Risultato"
 msgid "Result or error"
 msgstr "Risultato o errore"
 
+#: admin/audit/class_auditManagement.inc:40
+#: config/audit/class_auditConfig.inc:41
+msgid "Audit"
+msgstr "Controllo"
+
 #: admin/audit/class_auditManagement.inc:41
 msgid "Audit events display"
 msgstr "Visualizzazione eventi di controllo"
@@ -135,3 +103,35 @@ msgstr "Tipo"
 #: admin/audit/class_auditManagement.inc:97
 msgid "Target"
 msgstr "Obiettivo"
+
+#: config/audit/class_auditConfig.inc:28
+msgid "Audit configuration"
+msgstr "Configurazione di audit"
+
+#: config/audit/class_auditConfig.inc:29
+msgid "FusionDirectory audit plugin configuration"
+msgstr "Configurazione del plugin di controllo di FusionDirectory"
+
+#: config/audit/class_auditConfig.inc:44
+msgid "Audit RDN"
+msgstr "Controllo RDN"
+
+#: config/audit/class_auditConfig.inc:44
+msgid "Branch in which audit events will be stored"
+msgstr "Ramo nel quale gli eventi di controllo verranno immagazzinati"
+
+#: config/audit/class_auditConfig.inc:50
+msgid "Actions to audit"
+msgstr "Azioni da controllare"
+
+#: config/audit/class_auditConfig.inc:50
+msgid "Which actions should be stored in LDAP audit log"
+msgstr "Quali azioni devono essere conservati nel log di controllo LDAP"
+
+#: config/audit/class_auditConfig.inc:57
+msgid "Days to keep"
+msgstr "Giorni di conservazione"
+
+#: config/audit/class_auditConfig.inc:57
+msgid "Number of days of audit to keep in the LDAP when cleaning"
+msgstr "Numero di giorni di controllo da tenere nell'LDAP durante il cleaning"
