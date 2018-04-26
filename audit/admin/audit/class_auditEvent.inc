@@ -37,7 +37,11 @@ class UserLinkAttribute extends DisplayLDAPAttribute
 {
   function renderFormInput ()
   {
-    return objects::link($this->value, 'user');
+    try {
+      return objects::link($this->value, 'user');
+    } catch (NonExistingLdapNodeException $e) {
+      return '<a><img src="geticon.php?context=status&amp;icon=dialog-warning&amp;size=16" alt="warning" class="center"/>&nbsp;'.sprintf(_('Unknown user: %s'), $this->value).'</a>';
+    }
   }
 }
 
