@@ -84,6 +84,7 @@ sonar_preview:
 
 # fusiondirectory-update-locale
 fusiondirectory-update-locale:
+  image: php:cli-stretch
   stage: transifex
   only:
     - branches
@@ -96,6 +97,7 @@ fusiondirectory-update-locale:
 
 # Update transifex
 update-transifex:
+  image: php:cli-stretch
   stage: transifex
   only:
     - /^1.*$/
