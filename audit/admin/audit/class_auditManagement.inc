@@ -61,6 +61,47 @@ class auditManagement extends simpleManagement
     unset($this->actions['removeConfirmed']);
   }
 
+  function configureFilter ()
+  {
+    $this->filter->xmlData['definition']['template'] = 'audit-filter.tpl';
+    if ($this->autoFilter) {
+      $this->configureFilterCategory();
+      $attributes = $this->autoFilterAttributes;
+      $filter     = '';
+
+      $tag    = 'STARTDATE';
+      $filter .= '$'.$tag;
+      $this->filter->elements[$tag] = array(
+        'type'    => 'date',
+        'tag'     => $tag,
+        'default' => '',
+        'unset'   => '',
+        'set'     => '(fdAuditDateTime>=$)'
+      );
+      $this->filter->elementValues[$tag] = '';
+
+      $tag    = 'ENDDATE';
+      $filter .= '$'.$tag;
+      $this->filter->elements[$tag] = array(
+        'type'    => 'date',
+        'tag'     => $tag,
+        'default' => '',
+        'unset'   => '',
+        'set'     => '(fdAuditDateTime<=$)'
+      );
+      $this->filter->elementValues[$tag] = '';
+
+      $attributes = array_values(array_unique($attributes));
+      $this->filter->query[0]['filter']       = '(&(objectClass=fdAuditEvent)'.$filter.'$NAME)';
+      $this->filter->query[0]['attribute']    = $attributes;
+      $this->filter->elements['NAME']['set']  = '(|('.join('=*$*)(', $attributes).'=*$*))';
+      $this->filter->elements['NAME']['autocomplete']['filter']     = '(&'.$filter.'(|('.join('=*$NAME*)(', $attributes).'=*$NAME*))'.')';
+      $this->filter->elements['NAME']['autocomplete']['attribute']  = $attributes;
+      uasort($this->filter->elements, 'strlenSort');
+      $this->filter->elements = array_reverse($this->filter->elements);
+    }
+  }
+
   function parseXML ($file)
   {
     $data = parent::parseXML($file);
@@ -104,6 +145,26 @@ class auditManagement extends simpleManagement
     );
     array_splice($data['list']['table']['column'], 1, count($data['list']['table']['column']), $columns);
     return $data;
+  }
+
+  function renderList()
+  {
+    global $config;
+    $smarty = get_smarty();
+    $filters = array(
+      array(
+        'id'    => 'STARTDATE',
+        'label' => _('Newer than')
+      ),
+      array(
+        'id'    => 'ENDDATE',
+        'label' => _('Older than')
+      ),
+    );
+    $smarty->assign('dateFilters', $filters);
+    $this->headpage->update();
+    $display = $this->headpage->render();
+    return $this->getHeader().$display;
   }
 
   static function filterDateTime()
