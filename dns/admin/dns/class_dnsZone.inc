@@ -257,7 +257,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     return $reverseZones;
   }
 
-  protected function loadAttrValue ($attrs)
+  protected function loadAttrValue (array $attrs)
   {
     global $config;
 
@@ -349,7 +349,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     sort($this->value);
   }
 
-  function fillLdapValue (&$attrs)
+  function fillLdapValue (array &$attrs)
   {
     foreach (array_keys(DnsRecordAttribute::$types) as $type) {
       if (!isset($attrs[$type])) {

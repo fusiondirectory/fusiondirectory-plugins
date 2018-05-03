@@ -216,12 +216,12 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  protected function loadAttrValue ($attrs)
+  protected function loadAttrValue (array $attrs)
   {
   }
 
   /* Not saving anything into base node */
-  function fillLdapValue (&$attrs)
+  function fillLdapValue (array &$attrs)
   {
     /* Remove crap made by plugin */
     unset ($attrs[$this->getLdapName()]);
@@ -439,7 +439,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     return $ids;
   }
 
-  function foreignKeyUpdate($oldvalue, $newvalue, $source)
+  function foreignKeyUpdate($oldvalue, $newvalue, array $source)
   {
     if (($source['CLASS'] == 'serverGeneric') && ($source['FIELD'] == 'dn') && ($source['MODE'] == 'move')) {
       $globalNode = $this->value[0][0];
@@ -464,7 +464,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  function foreignKeyCheck($value, $source)
+  function foreignKeyCheck($value, array $source)
   {
     if (($source['CLASS'] == 'serverGeneric') && ($source['FIELD'] == 'dn')) {
       $globalNode = $this->value[0][0];

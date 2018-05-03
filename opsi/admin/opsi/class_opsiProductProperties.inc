@@ -61,7 +61,7 @@ class ProductPropertyAttribute extends CompositeAttribute
     trigger_error('Should never be called');
   }
 
-  function writeValues($values)
+  function writeValues(array $values)
   {
     trigger_error('Should never be called');
   }

@@ -35,7 +35,7 @@ class MungedAttribute extends Attribute
     $this->flagList     = $flagList;
   }
 
-  protected function loadAttrValue ($attrs)
+  protected function loadAttrValue (array $attrs)
   {
     if (isset($attrs[$this->getLdapName()])) {
       $this->setValue($this->inputValue($attrs[$this->getLdapName()][0]));

@@ -51,7 +51,7 @@ class EpochDaysDateAttribute extends DateAttribute
     }
   }
 
-  protected function dateToLdap($dateValue)
+  protected function dateToLdap(DateTime $dateValue)
   {
     return floor($dateValue->format('U') / static::$secondsPerDay);
   }

@@ -71,7 +71,7 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
     $this->attributes[1]->resetToDefault();
   }
 
-  function writeValues ($values)
+  function writeValues (array $values)
   {
     if ($values[0] == '') {
       return '';
@@ -132,7 +132,7 @@ class SupannCursusAnneeAttribute extends SupannPrefixedSelectAttribute
 
 class SupannCompositeAttribute extends CompositeAttribute
 {
-  function __construct($description, $ldapName, $attributes, $acl = "", $label = "Composite attribute")
+  function __construct($description, $ldapName, array $attributes, $acl = "", $label = "Composite attribute")
   {
     parent::__construct($description, $ldapName, $attributes, '', '', $acl, $label);
   }
@@ -154,7 +154,7 @@ class SupannCompositeAttribute extends CompositeAttribute
     return $values;
   }
 
-  function writeValues($values)
+  function writeValues(array $values)
   {
     $value  = '';
     $i      = 0;

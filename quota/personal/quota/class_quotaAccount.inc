@@ -36,7 +36,7 @@ class QuotaEntryAttribute extends CharSeparatedCompositeAttribute
     return $values;
   }
 
-  function writeValues($values)
+  function writeValues(array $values)
   {
     if (!empty($values[5])) {
       $blocksize = $this->plugin->getBlockSize($values[5], $values[0]);

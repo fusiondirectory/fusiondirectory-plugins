@@ -40,7 +40,7 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
     parent::__construct ($label, $description, $ldapName, FALSE, $values, $acl);
   }
 
-  protected function loadAttrValue ($attrs)
+  protected function loadAttrValue (array $attrs)
   {
     global $config;
     if (isset($attrs['dn'])) {
@@ -64,7 +64,7 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
   }
 
   /* Not saving anything into base node */
-  function fillLdapValue (&$attrs)
+  function fillLdapValue (array &$attrs)
   {
   }
 

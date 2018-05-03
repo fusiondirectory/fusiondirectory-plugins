@@ -58,7 +58,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     $this->setInLdap(FALSE);
   }
 
-  protected function loadAttrValue ($attrs)
+  protected function loadAttrValue (array $attrs)
   {
   }
 
@@ -264,7 +264,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     }
   }
 
-  function fillLdapValue (&$attrs)
+  function fillLdapValue (array &$attrs)
   {
     if ($this->plugin->is_template) {
       $attrs[$this->getLdapName()] = array_map(

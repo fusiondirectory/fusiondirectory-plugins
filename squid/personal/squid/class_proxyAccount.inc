@@ -29,7 +29,7 @@ class workingTime extends CompositeAttribute
   /*!
    * \brief Write working time values
    */
-  function writeValues($values)
+  function writeValues(array $values)
   {
     return $values[0] * 60 + $values[1];
   }
