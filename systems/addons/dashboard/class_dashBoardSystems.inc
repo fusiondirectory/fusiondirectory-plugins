@@ -206,7 +206,7 @@ class dashboardSystems extends simplePlugin
       $nb_digits_suffix         = $nb_digits - strlen($prefix);
 
       /* generation of list of suffixe */
-      for ($d = $start_id;$d < pow(10, $nb_digits_suffix);$d++) {
+      for ($d = $start_id;$d < (10 ** $nb_digits_suffix);$d++) {
         /* padding : 34 on 4 digit become : 0034*/
         $array_complete_list[] = str_pad($d, $nb_digits_suffix, "0", STR_PAD_LEFT);
       }

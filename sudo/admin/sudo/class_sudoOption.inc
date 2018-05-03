@@ -39,7 +39,7 @@ class UsedOptionAttribute extends CompositeAttribute
     $this->attributes[$name]->setParent($this->plugin);
   }
 
-  function loadAttrValue ($attrs)
+  function loadAttrValue (array $attrs)
   {
     if (isset($attrs[$this->getLdapName()])) {
       $values = $attrs[$this->getLdapName()];
@@ -90,7 +90,7 @@ class UsedOptionAttribute extends CompositeAttribute
     return $value;
   }
 
-  function writeValues ($values)
+  function writeValues (array $values)
   {
     return array_values($values);
   }

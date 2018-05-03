@@ -79,7 +79,7 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
     }
   }
 
-  function loadAttrValue ($attrs)
+  function loadAttrValue (array $attrs)
   {
     if (isset($attrs[$this->getLdapName()])) {
       for ($i = 0; $i < $attrs[$this->getLdapName()]['count']; $i++) {

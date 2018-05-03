@@ -110,7 +110,7 @@ class AccessRightsAttribute extends CompositeAttribute
     return $values;
   }
 
-  function writeValues($values)
+  function writeValues(array $values)
   {
     $tmode  = '';
     foreach (array('s', 'u', 'g', 'o') as $type) {

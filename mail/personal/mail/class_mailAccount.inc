@@ -47,7 +47,7 @@ class MailQuotaAttribute extends IntAttribute
     }
   }
 
-  function renderAttribute(&$attributes, $readOnly)
+  function renderAttribute(array &$attributes, $readOnly)
   {
     parent::renderAttribute($attributes, $readOnly);
     $attributes[$this->getLdapName().'_usage'] = array(

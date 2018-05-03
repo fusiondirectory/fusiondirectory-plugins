@@ -132,11 +132,11 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
     if ($this->attributes[0]->getValue() == 'dynamic') {
       $mp = array(
         '%'  => 1,
-        'KB' => pow(1024, 0),
-        'MB' => pow(1024, 1),
-        'GB' => pow(1024, 2),
-        'TB' => pow(1024, 3),
-        'PB' => pow(1024, 4)
+        'KB' => 1024 ** 0,
+        'MB' => 1024 ** 1,
+        'GB' => 1024 ** 2,
+        'TB' => 1024 ** 3,
+        'PB' => 1024 ** 4
       );
       $res1 = $this->attributes[1]->getValue() * $mp[$this->attributes[2]->getValue()];
       $res2 = $this->attributes[3]->getValue() * $mp[$this->attributes[4]->getValue()];
@@ -164,7 +164,7 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
     $this->updateAttributes();
   }
 
-  function writeValues($values)
+  function writeValues(array $values)
   {
     if ($values[0] == 'remaining') {
       return '0-';

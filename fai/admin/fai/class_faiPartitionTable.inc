@@ -132,7 +132,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  protected function loadAttrValue ($attrs)
+  protected function loadAttrValue (array $attrs)
   {
     global $config;
     if (isset($attrs['dn'])) {
@@ -195,7 +195,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
   }
 
   /* Not saving anything into base node */
-  function fillLdapValue (&$attrs)
+  function fillLdapValue (array &$attrs)
   {
   }
 

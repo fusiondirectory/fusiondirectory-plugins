@@ -29,7 +29,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     $this->zoneDn = $zoneDn;
   }
 
-  protected function loadAttrValue ($attrs)
+  protected function loadAttrValue (array $attrs)
   {
   }
 
@@ -90,7 +90,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     }
   }
 
-  function fillLdapValue (&$attrs)
+  function fillLdapValue (array &$attrs)
   {
     if ($this->plugin->is_template) {
       $attrs[$this->getLdapName()] = array_map(

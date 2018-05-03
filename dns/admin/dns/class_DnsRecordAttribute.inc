@@ -20,7 +20,7 @@
 
 class LocRecordAttribute extends CompositeAttribute
 {
-  function __construct ($description, $ldapName, $attributes, $acl = '', $label = NULL)
+  function __construct ($description, $ldapName, array $attributes, $acl = '', $label = NULL)
   {
     $readFormat = '/^(?P<lat>[[:digit:] \.]+ [NS])\s+'.
                   '(?P<long>[[:digit:] \.]+ [EW])\s+'.
@@ -29,7 +29,7 @@ class LocRecordAttribute extends CompositeAttribute
     parent::__construct ($description, $ldapName, $attributes, $readFormat, FALSE, $acl, $label);
   }
 
-  function writeValues($values)
+  function writeValues(array $values)
   {
     /* '%s %s %.2fm[ %.2fm[ %.2fm[ %.2fm]]]' */
     $str = sprintf('%s %s %.2fm', $values['lat'], $values['long'], $values['alt']);
@@ -48,7 +48,7 @@ class LocRecordAttribute extends CompositeAttribute
 
 class LocRecordLatLongAttribute extends CompositeAttribute
 {
-  function __construct ($label, $description, $ldapName, $attributes, $acl = '')
+  function __construct ($label, $description, $ldapName, array $attributes, $acl = '')
   {
     $readFormat = '/^(?P<degrees>[[:digit:]]+)'.
                   '(\s+(?P<minutes>[[:digit:]]+)(\s+(?P<seconds>[[:digit:]\.]+))?)?'.
@@ -58,7 +58,7 @@ class LocRecordLatLongAttribute extends CompositeAttribute
     $this->setLinearRendering(TRUE);
   }
 
-  function writeValues($values)
+  function writeValues(array $values)
   {
     /* The format is: d1 [m1 [s1]] {"N"|"S"|"E"|"W"} */
     $str = $values['degrees'];
@@ -453,7 +453,7 @@ class DnsRecordAttribute extends CompositeAttribute
     return FALSE;
   }
 
-  function setAttributes ($attributes)
+  function setAttributes (array $attributes)
   {
     parent::setAttributes($attributes);
     $this->attributes[0]->setAcl($this->getHtmlId());

@@ -85,12 +85,12 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
     parent::__construct ($label, $description, $ldapName, FALSE, $values, $acl);
   }
 
-  protected function loadAttrValue ($attrs)
+  protected function loadAttrValue (array $attrs)
   {
   }
 
   /* Not saving anything into base node */
-  function fillLdapValue (&$attrs)
+  function fillLdapValue (array &$attrs)
   {
   }
 

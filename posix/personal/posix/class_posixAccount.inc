@@ -51,7 +51,7 @@ class EpochDaysDateAttribute extends DateAttribute
     }
   }
 
-  protected function dateToLdap($dateValue)
+  protected function dateToLdap(DateTime $dateValue)
   {
     return floor($dateValue->format('U') / static::$secondsPerDay);
   }
@@ -957,7 +957,7 @@ class posixAccount extends simplePlugin
     if (isset($tmp[1])) {
       $hwm = $tmp[1];
     } else {
-      $hwm = pow(2, 32);
+      $hwm = (2 ** 32);
     }
     /* Find out next free id near to UID_BASE */
     for ($id = $base; $id++; $id < $hwm) {
