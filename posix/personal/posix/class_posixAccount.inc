@@ -957,7 +957,7 @@ class posixAccount extends simplePlugin
     if (isset($tmp[1])) {
       $hwm = $tmp[1];
     } else {
-      $hwm = pow(2, 32);
+      $hwm = (2 ** 32);
     }
     /* Find out next free id near to UID_BASE */
     for ($id = $base; $id++; $id < $hwm) {
