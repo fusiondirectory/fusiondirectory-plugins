@@ -29,7 +29,7 @@ class mixedGroup extends simplePlugin
       'plShortName'   => _('Posix group'),
       'plDescription' => _('Posix group settings'),
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('ogroup-user'),
+      'plObjectType'  => array('ogroup-user','ogroup-ogroup'),
       'plPriority'    => 1,
 
       //~ 'plForeignKeys'  => array(
