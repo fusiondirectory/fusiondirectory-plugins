@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,34 +18,15 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/repository/class_repositoryConfig.inc:28
-msgid "Repository configuration"
-msgstr "Ρύθμιση του αποθετηρίου"
+#: admin/repository/class_repositoryManagement.inc:28
+#: admin/repository/class_repositoryManagement.inc:29
+msgid "Repository management"
+msgstr "Διαχείριση αποθετηρίου"
 
-#: config/repository/class_repositoryConfig.inc:29
-msgid "FusionDirectory repository plugin configuration"
-msgstr "Ρύθμιση προσθέτου του αποθετηρίου FusionDirectory"
-
-#: config/repository/class_repositoryConfig.inc:42
 #: admin/repository/class_repositoryManagement.inc:34
+#: config/repository/class_repositoryConfig.inc:42
 msgid "Repository"
 msgstr "Αποθετήριο"
-
-#: config/repository/class_repositoryConfig.inc:45
-msgid "Repository RDN"
-msgstr "RDN αποθετηρίου"
-
-#: config/repository/class_repositoryConfig.inc:45
-msgid "Branch in which repository objects will be stored"
-msgstr "Κλάδος στον οποίο θα αποθηκεύονται τα αντικείμενα του αποθετηρίου"
-
-#: config/repository/class_repositoryConfig.inc:51
-msgid "Repository types"
-msgstr "Τύποι αποθετηρίου"
-
-#: config/repository/class_repositoryConfig.inc:51
-msgid "Available repository types"
-msgstr "Διαθέσιμοι τύποι αποθετηρίου"
 
 #: admin/repository/class_buildRepository.inc:30
 #: admin/repository/class_buildRepository.inc:31
@@ -126,11 +107,6 @@ msgstr "Χρήστες"
 msgid "Users of this repository"
 msgstr "Χρήστες του αποθετηρίου"
 
-#: admin/repository/class_repositoryManagement.inc:28
-#: admin/repository/class_repositoryManagement.inc:29
-msgid "Repository management"
-msgstr "Διαχείριση αποθετηρίου"
-
 #: admin/repository/class_repositoryDistribution.inc:30
 #: admin/repository/class_repositoryDistribution.inc:31
 #: admin/repository/class_repositoryDistribution.inc:33
@@ -181,3 +157,27 @@ msgstr "Περιγραφή αυτής της ενότητας"
 #: admin/repository/class_repositorySection.inc:66
 msgid "The sections this one is based on"
 msgstr "Οι ενότητες στις οποίες βασίζεται"
+
+#: config/repository/class_repositoryConfig.inc:28
+msgid "Repository configuration"
+msgstr "Ρύθμιση του αποθετηρίου"
+
+#: config/repository/class_repositoryConfig.inc:29
+msgid "FusionDirectory repository plugin configuration"
+msgstr "Ρύθμιση προσθέτου του αποθετηρίου FusionDirectory"
+
+#: config/repository/class_repositoryConfig.inc:45
+msgid "Repository RDN"
+msgstr "RDN αποθετηρίου"
+
+#: config/repository/class_repositoryConfig.inc:45
+msgid "Branch in which repository objects will be stored"
+msgstr "Κλάδος στον οποίο θα αποθηκεύονται τα αντικείμενα του αποθετηρίου"
+
+#: config/repository/class_repositoryConfig.inc:51
+msgid "Repository types"
+msgstr "Τύποι αποθετηρίου"
+
+#: config/repository/class_repositoryConfig.inc:51
+msgid "Available repository types"
+msgstr "Διαθέσιμοι τύποι αποθετηρίου"

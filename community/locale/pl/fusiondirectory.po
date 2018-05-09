@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,63 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Polish (https://www.transifex.com/fusiondirectory/teams/12202/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-
-#: config/community/class_communityConfig.inc:28
-msgid "Community configuration"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:29
-msgid "FusionDirectory community plugin configuration"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:41
-msgid "Community"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:45
-msgid "Membership type choices"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:45
-msgid "Community membership types available in the user community tab"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:29
-msgid "Community project"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:30
-msgid "Community project dates and alternate address"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:42
-msgid "Project"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:45
-msgid "Project full name"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:45
-msgid "Full name of this project"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:49
-msgid "Project key"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:49
-msgid "ID used for this project in other softwares or databases"
-msgstr ""
 
 #: admin/departments/community/class_communityOrganization.inc:29
 msgid "Community organization"
@@ -153,3 +105,51 @@ msgstr "Stan"
 #: admin/departments/community/class_communityOrganization.inc:97
 msgid "Country"
 msgstr "Kraj"
+
+#: admin/departments/community/class_communityProject.inc:29
+msgid "Community project"
+msgstr ""
+
+#: admin/departments/community/class_communityProject.inc:30
+msgid "Community project dates and alternate address"
+msgstr ""
+
+#: admin/departments/community/class_communityProject.inc:42
+msgid "Project"
+msgstr ""
+
+#: admin/departments/community/class_communityProject.inc:45
+msgid "Project full name"
+msgstr ""
+
+#: admin/departments/community/class_communityProject.inc:45
+msgid "Full name of this project"
+msgstr ""
+
+#: admin/departments/community/class_communityProject.inc:49
+msgid "Project key"
+msgstr ""
+
+#: admin/departments/community/class_communityProject.inc:49
+msgid "ID used for this project in other softwares or databases"
+msgstr ""
+
+#: config/community/class_communityConfig.inc:28
+msgid "Community configuration"
+msgstr ""
+
+#: config/community/class_communityConfig.inc:29
+msgid "FusionDirectory community plugin configuration"
+msgstr ""
+
+#: config/community/class_communityConfig.inc:41
+msgid "Community"
+msgstr ""
+
+#: config/community/class_communityConfig.inc:45
+msgid "Membership type choices"
+msgstr ""
+
+#: config/community/class_communityConfig.inc:45
+msgid "Community membership types available in the user community tab"
+msgstr ""

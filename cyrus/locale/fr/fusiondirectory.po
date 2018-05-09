@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,65 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Côme Chilliet <come@chilliet.eu>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:50
-msgid "There are no IMAP compatible mail servers defined!"
-msgstr "Il n'y a aucun serveur IMAP compatible défini !"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:55
-msgid "Mail server for this account is invalid!"
-msgstr "Le serveur de courriel pour ce compte est invalide !"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:241
-msgid "IMAP error"
-msgstr "Erreur IMAP"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:241
-#, php-format
-msgid "Cannot modify IMAP mailbox quota: %s"
-msgstr "Impossible de modifier le quota de la boite IMAP : %s"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:315
-msgid "Mail info"
-msgstr "Informations de courriel"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:316
-#, php-format
-msgid ""
-"LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
-"Please delete it manually!"
-msgstr ""
-"L'entrée LDAP a été supprimée mais la boite de courriel (%s) est toujours présente dans cyrus.\n"
-"Veuillez la supprimer manuellement !"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:404
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:442
-msgid "The module imap_getacl is not implemented!"
-msgstr "Le module imap_getacl n’est pas implémenté !"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:510
-#, php-format
-msgid "Cannot retrieve SIEVE script: %s"
-msgstr "Impossible de récupérer le script SIEVE : %s"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:578
-#, php-format
-msgid "Cannot store SIEVE script: %s"
-msgstr "Impossible de stocker le script SIEVE : %s"
-
-#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:585
-#, php-format
-msgid "Cannot activate SIEVE script: %s"
-msgstr "Impossible d'activer le script SIEVE : %s"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:30
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:31
@@ -156,3 +106,53 @@ msgstr ""
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:102
 msgid "Options for contacting Cyrus sieve server"
 msgstr "Options pour contacter le serveur Sieve de Cyrus"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:50
+msgid "There are no IMAP compatible mail servers defined!"
+msgstr "Il n'y a aucun serveur IMAP compatible défini !"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:55
+msgid "Mail server for this account is invalid!"
+msgstr "Le serveur de courriel pour ce compte est invalide !"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:241
+msgid "IMAP error"
+msgstr "Erreur IMAP"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:241
+#, php-format
+msgid "Cannot modify IMAP mailbox quota: %s"
+msgstr "Impossible de modifier le quota de la boite IMAP : %s"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:315
+msgid "Mail info"
+msgstr "Informations de courriel"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:316
+#, php-format
+msgid ""
+"LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
+"Please delete it manually!"
+msgstr ""
+"L'entrée LDAP a été supprimée mais la boite de courriel (%s) est toujours présente dans cyrus.\n"
+"Veuillez la supprimer manuellement !"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:404
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:442
+msgid "The module imap_getacl is not implemented!"
+msgstr "Le module imap_getacl n’est pas implémenté !"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:510
+#, php-format
+msgid "Cannot retrieve SIEVE script: %s"
+msgstr "Impossible de récupérer le script SIEVE : %s"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:578
+#, php-format
+msgid "Cannot store SIEVE script: %s"
+msgstr "Impossible de stocker le script SIEVE : %s"
+
+#: personal/mail/mail-methods/class_mail-methods-cyrus.inc:585
+#, php-format
+msgid "Cannot activate SIEVE script: %s"
+msgstr "Impossible d'activer le script SIEVE : %s"

@@ -107,7 +107,7 @@ class socialHandler_gplus extends socialHandler
 
   function validate($value)
   {
-    return preg_replace('/^+/', '', $value);
+    return preg_replace('/^\+/', '', $value);
   }
 }
 

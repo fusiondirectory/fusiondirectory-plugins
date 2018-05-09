@@ -83,7 +83,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     }
     $ips    = $this->plugin->parent->getBaseObject()->ipHostNumber;
     $cn     = preg_replace('/\$$/', '', $this->plugin->parent->getBaseObject()->cn);
-    if (in_array($values[2], $ips) || ($values[0] == $cn) || preg_match('/'.preg_quote($cn.'.'.$this->getZoneName(), '/i').'/', $value[2])) {
+    if (in_array($values[2], $ips) || (!empty($cn) && (($values[0] == $cn) || preg_match('/'.preg_quote($cn.'.'.$this->getZoneName(), '/i').'/', $value[2])))) {
       return $values;
     } else {
       return array();
@@ -389,7 +389,7 @@ class dnsHost extends simplePlugin
             }
           }
         } elseif (!empty($oldips)) {
-          static::removeIpsFromZone($this->fdDNSZoneDn, array_diff($oldips, $newips));
+          static::removeIpsFromZones($this->fdDNSZoneDn, array_diff($oldips, $newips));
         }
       }
       if (!empty($messages)) {
@@ -458,7 +458,12 @@ class dnsHost extends simplePlugin
   {
     $messages = array();
     foreach ($zoneDns as $zoneDn) {
-      $tabObject = objects::open($zoneDn, 'dnsZone');
+      try {
+        $tabObject = objects::open($zoneDn, 'dnsZone');
+      } catch (NonExistingLdapNodeException $e) {
+        /* In this case the zone was just deleted/renamed, so nothing to do here, go on */
+        continue;
+      }
       $nbRecords = $tabObject->getBaseObject()->ipRemoved($ips);
       if ($nbRecords > 0) {
         $messages[] = sprintf(
@@ -475,7 +480,11 @@ class dnsHost extends simplePlugin
   {
     $messages = array();
     foreach ($zoneDns as $zoneDn) {
-      $tabObject = objects::open($zoneDn, 'dnsZone');
+      try {
+        $tabObject = objects::open($zoneDn, 'dnsZone');
+      } catch (NonExistingLdapNodeException $e) {
+        continue;
+      }
       $nbRecords = $tabObject->getBaseObject()->cnRemoved($cn);
       if ($nbRecords > 0) {
         $messages[] = sprintf(

@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
+"Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: config/class_webserviceConfig.inc:28
+msgid "Webservice configuration"
+msgstr "웹서비스 설정"
+
+#: config/class_webserviceConfig.inc:29
+msgid "FusionDirectory webservice plugin configuration"
+msgstr "FusionDirectory 웹서비스 플러그인 설정"
+
+#: config/class_webserviceConfig.inc:42
+msgid "Webservice"
+msgstr "웹서비스"
+
+#: config/class_webserviceConfig.inc:45
+msgid "Force SSL"
+msgstr "강제 SSL"
+
+#: config/class_webserviceConfig.inc:45
+msgid "Allow only HTTPS JSON-RPC requests"
+msgstr "HTTPS JSON-RPC 요청만 허용"
+
+#: html/jsonrpc.php:52
+#, php-format
+msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
+msgstr "FustionDirection 설정 %s/%s 을 읽을 수 없습니다. 중단됨."
+
+#: html/jsonrpc.php:62
+#, php-format
+msgid "Cannot locate file '%s' - please run '%s' to fix this"
+msgstr "'%s' 파일을 사용할 수 없습니다.  '%s' 를 실행해 주세요."
+
+#: html/jsonrpc.php:338 html/jsonrpc.php:421
+msgid "Plugin"
+msgstr "플러그인"
+
+#: html/jsonrpc.php:517
+#, php-format
+msgid "Cannot delete %s. It has been locked by %s."
+msgstr "'%s'를 지울 수 없습니다. %s에 의해 잠겨있습니다."
+
+#: html/jsonrpc.php:564 html/jsonrpc.php:593
+#, php-format
+msgid "Failed to get password method for account \"%s\". It has not been locked!"
+msgstr "\"%s\" 계정의 패스워드를 가져올 수 없습니다. 잠겨있지 않습니다."
+
+#: html/jsonrpc.php:589
+#, php-format
+msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
+msgstr "\"%s\"의 패스워드를 잠글 수 없습니다. \"%s\" 계정이 잠겨있지 않습니다."
+
+#: html/jsonrpc.php:596
+#, php-format
+msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
+msgstr "LDAP에서 계정 \"%s\"을 찾을 수 없습니다. 잠겨있지 않습니다."
+
+#: html/jsonrpc.php:634 html/jsonrpc.php:643
+#, php-format
+msgid "Failed to get password method for account \"%s\""
+msgstr "\"%s\" 계정의 패스워드를 가져올 수 없습니다. "
+
+#: html/jsonrpc.php:646
+#, php-format
+msgid "Could not find account \"%s\" in LDAP"
+msgstr "LDAP에서 계정 \"%s\"를 찾을 수 없습니다."
+
+#: html/jsonrpc.php:690
+msgid "This token is invalid"
+msgstr "토큰이 유효하지 않습니다."

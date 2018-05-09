@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Côme Chilliet <come@chilliet.eu>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,25 +18,13 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: config/autofs/class_autofsConfig.inc:28
-msgid "Autofs configuration"
-msgstr "Configuration Autofs"
+#: admin/autofs/class_autofsManagement.inc:31
+msgid "Auto fs"
+msgstr "Auto FS"
 
-#: config/autofs/class_autofsConfig.inc:29
-msgid "FusionDirectory autofs plugin configuration"
-msgstr "Configuration du plugin autofs"
-
-#: config/autofs/class_autofsConfig.inc:42
-msgid "AutoFS"
-msgstr "AutoFS"
-
-#: config/autofs/class_autofsConfig.inc:45
-msgid "AutoFS RDN"
-msgstr "Branche AutoFS"
-
-#: config/autofs/class_autofsConfig.inc:45
-msgid "Branch in which automount info will be stored"
-msgstr "Branche où seront stockés les points de montage automount"
+#: admin/autofs/class_autofsManagement.inc:32
+msgid "Auto fs management"
+msgstr "Gestion Autofs"
 
 #: admin/autofs/class_nisObject.inc:31 admin/autofs/class_nisObject.inc:32
 #: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:54
@@ -72,14 +60,6 @@ msgstr "Point de montage"
 msgid "The mount point this directory will be placed in"
 msgstr "Le point de montage dans lequel ce répertoire sera mis"
 
-#: admin/autofs/class_autofsManagement.inc:31
-msgid "Auto fs"
-msgstr "Auto FS"
-
-#: admin/autofs/class_autofsManagement.inc:32
-msgid "Auto fs management"
-msgstr "Gestion Autofs"
-
 #: admin/autofs/class_nisMap.inc:32
 msgid "Autofs mount point"
 msgstr "Point de montage Autofs"
@@ -87,3 +67,23 @@ msgstr "Point de montage Autofs"
 #: admin/autofs/class_nisMap.inc:53
 msgid "Name of the mount point"
 msgstr "Nom du point de montage"
+
+#: config/autofs/class_autofsConfig.inc:28
+msgid "Autofs configuration"
+msgstr "Configuration Autofs"
+
+#: config/autofs/class_autofsConfig.inc:29
+msgid "FusionDirectory autofs plugin configuration"
+msgstr "Configuration du plugin autofs"
+
+#: config/autofs/class_autofsConfig.inc:42
+msgid "AutoFS"
+msgstr "AutoFS"
+
+#: config/autofs/class_autofsConfig.inc:45
+msgid "AutoFS RDN"
+msgstr "Branche AutoFS"
+
+#: config/autofs/class_autofsConfig.inc:45
+msgid "Branch in which automount info will be stored"
+msgstr "Branche où seront stockés les points de montage automount"

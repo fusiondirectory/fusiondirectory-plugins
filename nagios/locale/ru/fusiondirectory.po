@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,9 +18,25 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: personal/nagios/class_nagiosAccount.inc:40
+#: config/nagios/class_nagiosConfig.inc:28
+msgid "Nagios configuration"
+msgstr ""
+
+#: config/nagios/class_nagiosConfig.inc:29
+msgid "FusionDirectory nagios plugin configuration"
+msgstr ""
+
 #: config/nagios/class_nagiosConfig.inc:42
+#: personal/nagios/class_nagiosAccount.inc:40
 msgid "Nagios"
+msgstr ""
+
+#: config/nagios/class_nagiosConfig.inc:45
+msgid "Lconf prefix"
+msgstr ""
+
+#: config/nagios/class_nagiosConfig.inc:45
+msgid "Prefix used for lconf LDAP fields"
 msgstr ""
 
 #: personal/nagios/class_nagiosAccount.inc:41
@@ -77,20 +93,4 @@ msgstr ""
 
 #: personal/nagios/class_nagiosAccount.inc:99
 msgid "Host notification commands"
-msgstr ""
-
-#: config/nagios/class_nagiosConfig.inc:28
-msgid "Nagios configuration"
-msgstr ""
-
-#: config/nagios/class_nagiosConfig.inc:29
-msgid "FusionDirectory nagios plugin configuration"
-msgstr ""
-
-#: config/nagios/class_nagiosConfig.inc:45
-msgid "Lconf prefix"
-msgstr ""
-
-#: config/nagios/class_nagiosConfig.inc:45
-msgid "Prefix used for lconf LDAP fields"
 msgstr ""

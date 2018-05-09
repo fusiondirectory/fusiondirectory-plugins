@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,61 +18,13 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: config/community/class_communityConfig.inc:28
-msgid "Community configuration"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:29
-msgid "FusionDirectory community plugin configuration"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:41
-msgid "Community"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:45
-msgid "Membership type choices"
-msgstr ""
-
-#: config/community/class_communityConfig.inc:45
-msgid "Community membership types available in the user community tab"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:29
-msgid "Community project"
-msgstr "Komunitní projekt"
-
-#: admin/departments/community/class_communityProject.inc:30
-msgid "Community project dates and alternate address"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:42
-msgid "Project"
-msgstr "Projekt"
-
-#: admin/departments/community/class_communityProject.inc:45
-msgid "Project full name"
-msgstr "Úplný název projektu"
-
-#: admin/departments/community/class_communityProject.inc:45
-msgid "Full name of this project"
-msgstr "Úplný název tohoto projektu"
-
-#: admin/departments/community/class_communityProject.inc:49
-msgid "Project key"
-msgstr ""
-
-#: admin/departments/community/class_communityProject.inc:49
-msgid "ID used for this project in other softwares or databases"
-msgstr ""
-
 #: admin/departments/community/class_communityOrganization.inc:29
 msgid "Community organization"
-msgstr ""
+msgstr "Uspořádání komunity"
 
 #: admin/departments/community/class_communityOrganization.inc:30
 msgid "Community organization dates and alternate address"
-msgstr ""
+msgstr "Údaje komunitní organizace a alternativní adresa"
 
 #: admin/departments/community/class_communityOrganization.inc:42
 msgid "Membership"
@@ -92,7 +44,7 @@ msgstr "Aktivní"
 
 #: admin/departments/community/class_communityOrganization.inc:50
 msgid "Is the membership of this organization active"
-msgstr ""
+msgstr "Je členství této organizace aktivní"
 
 #: admin/departments/community/class_communityOrganization.inc:54
 msgid "Hidden"
@@ -153,3 +105,53 @@ msgstr "stát"
 #: admin/departments/community/class_communityOrganization.inc:97
 msgid "Country"
 msgstr "země"
+
+#: admin/departments/community/class_communityProject.inc:29
+msgid "Community project"
+msgstr "Komunitní projekt"
+
+#: admin/departments/community/class_communityProject.inc:30
+msgid "Community project dates and alternate address"
+msgstr "Údaje komunitního projektu a alternativní adresa"
+
+#: admin/departments/community/class_communityProject.inc:42
+msgid "Project"
+msgstr "Projekt"
+
+#: admin/departments/community/class_communityProject.inc:45
+msgid "Project full name"
+msgstr "Úplný název projektu"
+
+#: admin/departments/community/class_communityProject.inc:45
+msgid "Full name of this project"
+msgstr "Úplný název tohoto projektu"
+
+#: admin/departments/community/class_communityProject.inc:49
+msgid "Project key"
+msgstr ""
+
+#: admin/departments/community/class_communityProject.inc:49
+msgid "ID used for this project in other softwares or databases"
+msgstr ""
+"Identifikátor použitý pro tento projekt v rámci ostatního software nebo "
+"databází"
+
+#: config/community/class_communityConfig.inc:28
+msgid "Community configuration"
+msgstr ""
+
+#: config/community/class_communityConfig.inc:29
+msgid "FusionDirectory community plugin configuration"
+msgstr "Nastavení zásuvného modulu komunita pro FusionDirectory"
+
+#: config/community/class_communityConfig.inc:41
+msgid "Community"
+msgstr ""
+
+#: config/community/class_communityConfig.inc:45
+msgid "Membership type choices"
+msgstr ""
+
+#: config/community/class_communityConfig.inc:45
+msgid "Community membership types available in the user community tab"
+msgstr "Typy členství v komunitě dostupné na kartě komunita uživatele"

@@ -69,6 +69,7 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
     $config = session::global_get('config');
     $plist  = session::global_get('plist');
     $ui     = session::global_get('ui');
+    initLanguage();
   } else {
     $config = new config(CONFIG_DIR."/".CONFIG_FILE, $BASE_DIR);
     if ($ldap === NULL) {
@@ -171,6 +172,12 @@ class fdRPCService
       }
       foreach ($tabs as $tab) {
         $pInfos = pluglist::pluginInfos($tab);
+        if ($pInfos === NULL) {
+          throw new FusionDirectoryException("Tab '$tab' of type '$type' does not exists");
+        }
+        if (!isset($pInfos['plCategory'])) {
+          throw new FusionDirectoryException("Tab '$tab' of type '$type' has no ACL category");
+        }
         if (!$plist->check_access(array('ACL' => join($self.',', $pInfos['plCategory']).$self))) {
           throw new FusionDirectoryException("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
         }
@@ -193,7 +200,7 @@ class fdRPCService
   protected function _ls ($type, $attrs = NULL, $ou = NULL, $filter = '')
   {
     $this->checkAccess($type);
-    return objects::ls($type, $attrs, $ou, $filter);
+    return objects::ls($type, $attrs, $ou, $filter, TRUE);
   }
 
   /*!
@@ -201,8 +208,15 @@ class fdRPCService
    */
   protected function _count ($type, $ou = NULL, $filter = '')
   {
+    global $ui;
     $this->checkAccess($type);
-    return objects::count($type, $ou, $filter);
+    $infos  = objects::infos($type);
+    $acl    = $infos['aclCategory'].'/'.$infos['mainTab'];
+    if (strpos($ui->get_permissions($ou, $acl), 'r') !== FALSE) {
+      return objects::count($type, $ou, $filter);
+    } else {
+      return count(objects::ls($type, NULL, $ou, $filter, TRUE));
+    }
   }
 
   /*!
@@ -271,7 +285,14 @@ class fdRPCService
     } elseif (!$tabobject->by_object[$tab]->displayHeader) {
       return array('errors' => array('Tab '.$tab.' cannot be deactivated, can’t remove it'));
     } elseif (!$tabobject->by_object[$tab]->is_account) {
-      return array('errors' => array('Tab '.$tab.' is not activated on '.$dn.', can’t remove it'));
+      return array('errors' => array('Tab '.$tab.' is not activated on "'.$dn.'", can’t remove it'));
+    } elseif (!$tabobject->by_object[$tab]->acl_is_removeable()) {
+      return array('errors' => array('You don\'t have sufficient rights to disable tab "'.$tab.'"'));
+    } else {
+      list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
+      if ($disabled) {
+        return array('errors' => array($text));
+      }
     }
     $_POST = array($tab.'_modify_state' => 1);
     $tabobject->save_object();
@@ -427,6 +448,10 @@ class fdRPCService
           $tabobject->by_object[$tab]->displayHeader &&
           !$tabobject->by_object[$tab]->is_account
         ) {
+        list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
+        if ($disabled) {
+          return array('errors' => array($text));
+        }
         if ($tabobject->by_object[$tab]->acl_is_createable()) {
           $tabobject->by_object[$tab]->is_account = TRUE;
         } else {
@@ -519,7 +544,7 @@ class fdRPCService
     }
 
     foreach ($dns as $dn) {
-      if (!preg_match('/w/', $ui->get_permissions($dn, 'user/password'))) {
+      if (!preg_match('/w/', $ui->get_permissions($dn, 'user/user', 'userLock'))) {
         $disallowed[] = $dn;
       }
     }
@@ -588,7 +613,7 @@ class fdRPCService
     }
 
     foreach ($dns as $dn) {
-      if (!preg_match('/r/', $ui->get_permissions($dn, 'user/password'))) {
+      if (!preg_match('/r/', $ui->get_permissions($dn, 'user/user', 'userLock'))) {
         $disallowed[] = $dn;
       }
     }
@@ -638,7 +663,7 @@ class fdRPCService
     $pwRecovery->email_address = $email;
     $dn = $pwRecovery->step2();
     if ($pwRecovery->step == 2) { /* No errors */
-      if (!preg_match('/w/', $ui->get_permissions($dn, 'user/password'))) {
+      if (!preg_match('/w/', $ui->get_permissions($dn, 'user/user', 'userPassword'))) {
         return array('errors' => array(msgPool::permModify($dn)));
       }
       $token = $pwRecovery->generateAndStoreToken();

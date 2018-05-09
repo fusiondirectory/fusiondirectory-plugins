@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,15 +8,48 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: addons/gpg/class_pgpServerInfo.inc:31 addons/gpg/class_pgpServerInfo.inc:32
+#: addons/gpg/class_pgpServerInfo.inc:38 addons/gpg/class_pgpServerInfo.inc:56
+msgid "GPG server info"
+msgstr "Πληροφορίες εξυπηρετητή GPG"
+
+#: addons/gpg/class_pgpServerInfo.inc:60
+msgid "Software"
+msgstr "Λογισμικό."
+
+#: addons/gpg/class_pgpServerInfo.inc:60
+msgid "Which software this GPG key server is running"
+msgstr "Ποιο λογισμικό  εκτελείται σε αυτό τον εξυπηρετητής κλειδιών GPG"
+
+#: addons/gpg/class_pgpServerInfo.inc:65
+msgid "GPG version"
+msgstr "Έκδοση GPG"
+
+#: addons/gpg/class_pgpServerInfo.inc:65
+msgid "Which version of GPG this key server is running"
+msgstr "Ποιά έκδοση του GPG που εκτελείται αυτός ο εξυπηρετητής κλειδιών"
+
+#: addons/gpg/class_pgpServerInfo.inc:70
+msgid "Branch in which keys are stored"
+msgstr "Κλάδος στο οποίο αποθηκεύονται τα κλειδιά"
+
+#: addons/gpg/class_pgpServerInfo.inc:74
+msgid "Keys RDN"
+msgstr "Κλειδιά RDN"
+
+#: addons/gpg/class_pgpServerInfo.inc:74
+msgid "Branch under base in which keys are stored"
+msgstr "Κλάδος κάτω από την βάση όπου αποθηκεύονται τα κλειδιά"
 
 #: personal/gpg/class_gpgAccount.inc:31
 msgid "GPG keys"
@@ -102,36 +135,3 @@ msgstr "Ημερομηνία λήξης"
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:72
 msgid "Type"
 msgstr "Τύπος"
-
-#: addons/gpg/class_pgpServerInfo.inc:31 addons/gpg/class_pgpServerInfo.inc:32
-#: addons/gpg/class_pgpServerInfo.inc:38 addons/gpg/class_pgpServerInfo.inc:56
-msgid "GPG server info"
-msgstr "Πληροφορίες εξυπηρετητή GPG"
-
-#: addons/gpg/class_pgpServerInfo.inc:60
-msgid "Software"
-msgstr "Λογισμικό."
-
-#: addons/gpg/class_pgpServerInfo.inc:60
-msgid "Which software this GPG key server is running"
-msgstr "Ποιο λογισμικό  εκτελείται σε αυτό τον εξυπηρετητής κλειδιών GPG"
-
-#: addons/gpg/class_pgpServerInfo.inc:65
-msgid "GPG version"
-msgstr "Έκδοση GPG"
-
-#: addons/gpg/class_pgpServerInfo.inc:65
-msgid "Which version of GPG this key server is running"
-msgstr "Ποιά έκδοση του GPG που εκτελείται αυτός ο εξυπηρετητής κλειδιών"
-
-#: addons/gpg/class_pgpServerInfo.inc:70
-msgid "Branch in which keys are stored"
-msgstr "Κλάδος στο οποίο αποθηκεύονται τα κλειδιά"
-
-#: addons/gpg/class_pgpServerInfo.inc:74
-msgid "Keys RDN"
-msgstr "Κλειδιά RDN"
-
-#: addons/gpg/class_pgpServerInfo.inc:74
-msgid "Branch under base in which keys are stored"
-msgstr "Κλάδος κάτω από την βάση όπου αποθηκεύονται τα κλειδιά"

@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,15 +8,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Catalan (https://www.transifex.com/fusiondirectory/teams/12202/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/debconfProfile/class_debconfProfileManagement.inc:32
+#: admin/systems/debconf/class_debconfStartup.inc:33
+msgid "Debconf"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileManagement.inc:33
+msgid "Debconf profile management"
+msgstr ""
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:71
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:85
@@ -82,15 +91,6 @@ msgstr ""
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:211
 msgid "Import"
-msgstr ""
-
-#: admin/debconfProfile/class_debconfProfileManagement.inc:32
-#: admin/systems/debconf/class_debconfStartup.inc:33
-msgid "Debconf"
-msgstr ""
-
-#: admin/debconfProfile/class_debconfProfileManagement.inc:33
-msgid "Debconf profile management"
 msgstr ""
 
 #: admin/systems/debconf/class_debconfStartup.inc:34

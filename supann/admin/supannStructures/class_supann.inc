@@ -74,8 +74,8 @@ class supann
   /* return the 64 first chars and "…" after if text is longer */
   static function truncate_label($str, $len = 50)
   {
-    if (strlen($str) > $len) {
-      return substr($str, 0, $len).'…';
+    if (mb_strlen($str) > $len) {
+      return mb_substr($str, 0, $len).'…';
     } else {
       return $str;
     }

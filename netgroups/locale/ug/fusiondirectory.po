@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: Uighur (https://www.transifex.com/fusiondirectory/teams/12202/ug/)\n"
 "MIME-Version: 1.0\n"
@@ -17,48 +17,27 @@ msgstr ""
 "Language: ug\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: personal/netgroups/class_netgroupMembership.inc:43
-#: admin/netgroups/class_netgroup.inc:54
-#: admin/systems/netgroups/class_netgroupSystem.inc:26
-msgid "NIS Netgroup"
+#: admin/netgroups/class_netgroupManagement.inc:34
+msgid "NIS Netgroups"
 msgstr ""
 
-#: personal/netgroups/class_netgroupMembership.inc:44
-#: admin/systems/netgroups/class_netgroupSystem.inc:27
-msgid "NIS Netgroup member"
+#: admin/netgroups/class_netgroupManagement.inc:35
+msgid "NIS Netgroup management"
 msgstr ""
 
-#: personal/netgroups/class_netgroupMembership.inc:60
-msgid "Member of the following NIS Netgroups  "
-msgstr ""
-
-#: personal/netgroups/class_netgroupMembership.inc:63
-msgid "NIS netgroup membership"
-msgstr ""
-
-#: config/netgroups/class_netgroupConfig.inc:28
-msgid "Netgroup configuration"
-msgstr ""
-
-#: config/netgroups/class_netgroupConfig.inc:29
-msgid "FusionDirectory netgroup plugin configuration"
-msgstr ""
-
-#: config/netgroups/class_netgroupConfig.inc:42
 #: admin/netgroups/class_netgroup.inc:50
+#: config/netgroups/class_netgroupConfig.inc:42
 msgid "Netgroup"
-msgstr ""
-
-#: config/netgroups/class_netgroupConfig.inc:45
-msgid "Netgroup RDN"
-msgstr ""
-
-#: config/netgroups/class_netgroupConfig.inc:45
-msgid "Branch in which netgroups will be stored"
 msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:51
 msgid "NIS Netgroup settings"
+msgstr ""
+
+#: admin/netgroups/class_netgroup.inc:54
+#: admin/systems/netgroups/class_netgroupSystem.inc:26
+#: personal/netgroups/class_netgroupMembership.inc:43
+msgid "NIS Netgroup"
 msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:69
@@ -98,10 +77,31 @@ msgstr ""
 msgid "Netgroup members"
 msgstr ""
 
-#: admin/netgroups/class_netgroupManagement.inc:34
-msgid "NIS Netgroups"
+#: admin/systems/netgroups/class_netgroupSystem.inc:27
+#: personal/netgroups/class_netgroupMembership.inc:44
+msgid "NIS Netgroup member"
 msgstr ""
 
-#: admin/netgroups/class_netgroupManagement.inc:35
-msgid "NIS Netgroup management"
+#: config/netgroups/class_netgroupConfig.inc:28
+msgid "Netgroup configuration"
+msgstr ""
+
+#: config/netgroups/class_netgroupConfig.inc:29
+msgid "FusionDirectory netgroup plugin configuration"
+msgstr ""
+
+#: config/netgroups/class_netgroupConfig.inc:45
+msgid "Netgroup RDN"
+msgstr ""
+
+#: config/netgroups/class_netgroupConfig.inc:45
+msgid "Branch in which netgroups will be stored"
+msgstr ""
+
+#: personal/netgroups/class_netgroupMembership.inc:60
+msgid "Member of the following NIS Netgroups  "
+msgstr ""
+
+#: personal/netgroups/class_netgroupMembership.inc:63
+msgid "NIS netgroup membership"
 msgstr ""

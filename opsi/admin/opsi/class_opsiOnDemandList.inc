@@ -48,7 +48,7 @@ class opsiOnDemandList extends opsiSoftwareList
         'attrs' => array(
           new SubmittingOPSIServerAttribute(
             _('OPSI server'), _('OPSI server to use for deployment'),
-            'fdOpsiServerDN', TRUE
+            'fdOpsiServerDn', TRUE
           ),
           new HostNameAttribute(
             _('Name'), _('Name of this OPSI profile'),

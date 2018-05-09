@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,21 +26,331 @@ msgstr ""
 "Ihre PHP-Installation hat nicht den mhash() bzw. die hash-Funktion. "
 "MD4-Hashes können nicht durchgeführt werden."
 
-#: personal/samba/class_sambaAccount.inc:31
-msgid "Samba Munged Dial"
-msgstr "Samba Munged Dial"
+#: admin/samba/class_sambaDomainManagement.inc:34
+msgid "Samba domains"
+msgstr "Samba-Domänen"
 
-#: personal/samba/class_sambaAccount.inc:158
-#: config/samba/class_sambaPluginConfig.inc:28
+#: admin/samba/class_sambaDomainManagement.inc:35
+msgid "Samba domain management"
+msgstr "Samba-Domänenverwaltung"
+
+#: admin/samba/class_sambaDomain.inc:30 admin/samba/class_sambaDomain.inc:31
+#: admin/samba/class_sambaDomain.inc:34
+msgid "Samba Domain"
+msgstr "Samba-Domäne"
+
+#: admin/samba/class_sambaDomain.inc:35
+msgid "Samba domain settings"
+msgstr "Samba-Domäneneinstellungen"
+
+#: admin/samba/class_sambaDomain.inc:51
+#: admin/systems/samba/class_sambaSystemTab.inc:44
+msgid "Properties"
+msgstr "Eigenschaften"
+
+#: admin/samba/class_sambaDomain.inc:54
+msgid "Domain name"
+msgstr "Domänenname"
+
+#: admin/samba/class_sambaDomain.inc:54
+msgid "Name of this domain"
+msgstr "Name dieser Domäne"
+
+#: admin/samba/class_sambaDomain.inc:58
+msgid "SID"
+msgstr "SID"
+
+#: admin/samba/class_sambaDomain.inc:58
+msgid "SID of this domain"
+msgstr "SID dieser Domäne"
+
+#: admin/samba/class_sambaDomain.inc:62
+msgid "Rid base"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:62
+msgid "Algorithmic rid base"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:66
+msgid "Minimum password age"
+msgstr "Minimales Passwort-Alter"
+
+#: admin/samba/class_sambaDomain.inc:67
+msgid ""
+"Minimum password age, in seconds (default: 0 => allow immediate password "
+"change)"
+msgstr ""
+"Minimales Passwortalter in Sekunden (Standard: 0 => sofortige "
+"Passwortänderung erlauben)"
+
+#: admin/samba/class_sambaDomain.inc:72
+msgid "Maximum password age"
+msgstr "Maximales Passwort-Alter"
+
+#: admin/samba/class_sambaDomain.inc:73
+msgid ""
+"Maximum password age, in seconds (default: -1 => never expire passwords)"
+msgstr ""
+"Maximales Passwortalter in Sekunden (Standard: -1 => nie ablaufende "
+"Passwörter)"
+
+#: admin/samba/class_sambaDomain.inc:78
+msgid "Next RID"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:79
+msgid "Next NT rid to give out for anything"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:83
+msgid "Next group RID"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:84
+msgid "Next NT rid to give out for groups"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:88
+msgid "Next user RID"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:89
+msgid "Next NT rid to give our for users"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:93
+msgid "Minimum password length"
+msgstr "Minimale Passwortlänge"
+
+#: admin/samba/class_sambaDomain.inc:94
+msgid "Minimal password length (default: 5)"
+msgstr "Minimale Passwortlänge (Standard: 5)"
+
+#: admin/samba/class_sambaDomain.inc:98
+msgid "Password history length"
+msgstr "Passwortverlauflänge"
+
+#: admin/samba/class_sambaDomain.inc:99
+msgid "Length of Password History Entries (default: 0 => off)"
+msgstr "Länge der Passwortchronikeinträge (Standard: 0 => aus)"
+
+#: admin/samba/class_sambaDomain.inc:103
+msgid "Logon to change password"
+msgstr "Anmelden zum Ändern des Passworts"
+
+#: admin/samba/class_sambaDomain.inc:104
+msgid "Force Users to logon for password change (default: 0 => off, 2 => on)"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:108
+msgid "Lockout duration"
+msgstr "Dauer der Sperre"
+
+#: admin/samba/class_sambaDomain.inc:109
+msgid "Lockout duration in minutes (default: 30, -1 => forever)"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:113
+msgid "Lockout observation window"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:114
+msgid "Reset time after lockout in minutes (default: 30)"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:118
+msgid "Lockout threshold"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:119
+msgid "Lockout users after bad logon attempts (default: 0 => off)"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:123
+msgid "Force logoff"
+msgstr "Abmelden erzwingen"
+
+#: admin/samba/class_sambaDomain.inc:124
+msgid "Disconnect Users outside logon hours (default: -1 => off, 0 => on)"
+msgstr ""
+
+#: admin/samba/class_sambaDomain.inc:128
+msgid "Refuse machine password change"
+msgstr "Verweigere Änderung der Passwörter für Computerkonten"
+
+#: admin/samba/class_sambaDomain.inc:129
+msgid "Allow Machine Password changes (default: 0 => off)"
+msgstr "Rechnerpasswortänderungen erlauben (Standard: 0 => aus)"
+
 #: admin/groups/samba/class_sambaGroup.inc:29
 #: admin/systems/samba/class_sambaSystemTab.inc:30
+#: config/samba/class_sambaPluginConfig.inc:28
+#: personal/samba/class_sambaAccount.inc:158
 msgid "Samba"
 msgstr "Samba"
 
-#: personal/samba/class_sambaAccount.inc:159
+#: admin/groups/samba/class_sambaGroup.inc:30
+msgid "Samba group settings"
+msgstr "Samba-Gruppeneinstellungen"
+
+#: admin/groups/samba/class_sambaGroup.inc:42
+#: admin/groups/samba/class_sambaGroup.inc:45
+#: admin/systems/samba/class_sambaSystemTab.inc:53
+#: personal/samba/class_sambaAccount.inc:199
+msgid "Domain"
+msgstr "Domäne"
+
+#: admin/groups/samba/class_sambaGroup.inc:45
+msgid "Samba domain"
+msgstr "Samba-Domäne"
+
+#: admin/groups/samba/class_sambaGroup.inc:49
+msgid "Samba information"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Group type"
+msgstr "Gruppentyp"
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Samba group type"
+msgstr "Samba-Gruppentyp"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:120
+msgid "Samba group"
+msgstr "Samba-Gruppe"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:120
+msgid "Domain admins"
+msgstr "Domänen-Administratoren"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:120
+msgid "Domain users"
+msgstr "Domänen-Benutzer"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:120
+msgid "Domain guests"
+msgstr "Domänen-Gäste"
+
+#: admin/groups/samba/class_sambaGroup.inc:106
+msgid "Configuration error"
+msgstr "Konfigurationsfehler"
+
+#: admin/groups/samba/class_sambaGroup.inc:106
+msgid "Cannot find group SID in your configuration!"
+msgstr "Kann keine Gruppen-SID in Ihrer Konfiguration finden!"
+
+#: admin/groups/samba/class_sambaGroup.inc:120
+#, php-format
+msgid "Special group (%d)"
+msgstr "Spezielle Gruppe (%d)"
+
+#: admin/groups/samba/class_sambaGroup.inc:133
+#: personal/samba/class_sambaAccount.inc:511
+#: personal/samba/class_sambaAccount.inc:537
+#: personal/samba/class_sambaAccount.inc:558
+msgid "Warning"
+msgstr "Warnung"
+
+#: admin/groups/samba/class_sambaGroup.inc:133
+#: personal/samba/class_sambaAccount.inc:511
+msgid "Undefined Samba SID detected. Please fix this problem manually!"
+msgstr ""
+"Undefinierte Samba SID festgestellt. Bitte beheben Sie dieses Problem "
+"manuell!"
+
+#: admin/systems/samba/class_argonautEventSambaShares.inc:27
+msgid "Update Samba Shares"
+msgstr "Samba-Freigaben aktualisieren"
+
+#: admin/systems/samba/class_sambaSystemTab.inc:31
+msgid "Windows workstation information"
+msgstr "Windows-Arbeitsstationinformation"
+
+#: admin/systems/samba/class_sambaSystemTab.inc:53
+#: personal/samba/class_sambaAccount.inc:199
+msgid "Samba domain name"
+msgstr "Samba Domänen-Name"
+
+#: config/samba/class_sambaPluginConfig.inc:29
+msgid "Samba plugin configuration"
+msgstr "Samba-Plugin-Konfiguration"
+
 #: config/samba/class_sambaPluginConfig.inc:41
+#: personal/samba/class_sambaAccount.inc:159
 msgid "Samba settings"
 msgstr "Samba-Einstellungen"
+
+#: config/samba/class_sambaPluginConfig.inc:44
+msgid "Samba ID mapping"
+msgstr "Samba ID Mapping"
+
+#: config/samba/class_sambaPluginConfig.inc:45
+msgid ""
+"Maintain sambaIdmapEntry objects. Depending on your setup this can "
+"drastically improve the windows login performance."
+msgstr ""
+"Warten von sambaldmapEntry Objekten. Abhängig von Ihrer Einstellung kann "
+"dies drastisch die Windowslogin-Leistung verbessern."
+
+#: config/samba/class_sambaPluginConfig.inc:49
+msgid "Samba SID"
+msgstr "Samba SID"
+
+#: config/samba/class_sambaPluginConfig.inc:50
+msgid ""
+"A samba SID if not available inside of the LDAP though samba schema. You can"
+" retrieve the current sid by net getlocalsid."
+msgstr ""
+"Eine Samba SID wenn nicht verfügbar innerhalb des LDAP durch samba schema. "
+"Sie können die aktuelle sid über getlocalsid einholen."
+
+#: config/samba/class_sambaPluginConfig.inc:55
+msgid "Samba rid base"
+msgstr "Samba rid base"
+
+#: config/samba/class_sambaPluginConfig.inc:56
+msgid ""
+"The base id to add to ordinary sid calculations - if not available inside of"
+" the LDAP though samba schema."
+msgstr ""
+"Die basis ID die normalen sid-Kalkulationen hinzugefügt werden soll -  falls"
+" nicht verfügbar innerhalb von des LDAP durch samba schemas."
+
+#: config/samba/class_sambaPluginConfig.inc:61
+msgid "Expiration date synchronisaton"
+msgstr "Synchronisation von Verfallsdatum"
+
+#: config/samba/class_sambaPluginConfig.inc:61
+msgid "Synchronisaton the expiration date with the POSIX one?"
+msgstr "Synchronisation des Verfallsdatum mit dem POSIX-betreffenden?"
+
+#: config/samba/class_sambaPluginConfig.inc:67
+msgid "Generate sambaLMPassword"
+msgstr "sambaLMPasswort generieren"
+
+#: config/samba/class_sambaPluginConfig.inc:67
+msgid "Needed to be compliant with Windows <= 98 or Samba < 3.2"
+msgstr "Benötigt um Kompatibilität mit Windows <=98 oder Samba < 3.2 zu haben"
+
+#: config/samba/class_sambaPluginConfig.inc:71
+msgid "Activate primary group warning"
+msgstr ""
+
+#: config/samba/class_sambaPluginConfig.inc:71
+msgid ""
+"Issue a warning if POSIX primary group cannot be converted to Samba primary "
+"group when activating the Samba tab of a user"
+msgstr ""
+
+#: personal/samba/class_sambaAccount.inc:31
+msgid "Samba Munged Dial"
+msgstr "Samba Munged Dial"
 
 #: personal/samba/class_sambaAccount.inc:183
 msgid "Samba profile"
@@ -65,18 +375,6 @@ msgstr "Homeverzeichnis-Pfad"
 #: personal/samba/class_sambaAccount.inc:227
 msgid "UNC path for the home drive"
 msgstr "UNC-Pfad für das Homelaufwerk"
-
-#: personal/samba/class_sambaAccount.inc:199
-#: admin/groups/samba/class_sambaGroup.inc:42
-#: admin/groups/samba/class_sambaGroup.inc:45
-#: admin/systems/samba/class_sambaSystemTab.inc:53
-msgid "Domain"
-msgstr "Domäne"
-
-#: personal/samba/class_sambaAccount.inc:199
-#: admin/systems/samba/class_sambaSystemTab.inc:53
-msgid "Samba domain name"
-msgstr "Samba Domänen-Name"
 
 #: personal/samba/class_sambaAccount.inc:203
 msgid "Script path"
@@ -314,20 +612,6 @@ msgstr ""
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr "Der Windows Benutzermanager erlaubt maximal acht Clients!"
 
-#: personal/samba/class_sambaAccount.inc:511
-#: personal/samba/class_sambaAccount.inc:537
-#: personal/samba/class_sambaAccount.inc:558
-#: admin/groups/samba/class_sambaGroup.inc:133
-msgid "Warning"
-msgstr "Warnung"
-
-#: personal/samba/class_sambaAccount.inc:511
-#: admin/groups/samba/class_sambaGroup.inc:133
-msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr ""
-"Undefinierte Samba SID festgestellt. Bitte beheben Sie dieses Problem "
-"manuell!"
-
 #: personal/samba/class_sambaAccount.inc:538
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
@@ -339,290 +623,6 @@ msgstr ""
 msgid ""
 "Cannot convert primary group to samba group: group samba tab is disabled!"
 msgstr ""
-
-#: config/samba/class_sambaPluginConfig.inc:29
-msgid "Samba plugin configuration"
-msgstr "Samba-Plugin-Konfiguration"
-
-#: config/samba/class_sambaPluginConfig.inc:44
-msgid "Samba ID mapping"
-msgstr "Samba ID Mapping"
-
-#: config/samba/class_sambaPluginConfig.inc:45
-msgid ""
-"Maintain sambaIdmapEntry objects. Depending on your setup this can "
-"drastically improve the windows login performance."
-msgstr ""
-"Warten von sambaldmapEntry Objekten. Abhängig von Ihrer Einstellung kann "
-"dies drastisch die Windowslogin-Leistung verbessern."
-
-#: config/samba/class_sambaPluginConfig.inc:49
-msgid "Samba SID"
-msgstr "Samba SID"
-
-#: config/samba/class_sambaPluginConfig.inc:50
-msgid ""
-"A samba SID if not available inside of the LDAP though samba schema. You can"
-" retrieve the current sid by net getlocalsid."
-msgstr ""
-"Eine Samba SID wenn nicht verfügbar innerhalb des LDAP durch samba schema. "
-"Sie können die aktuelle sid über getlocalsid einholen."
-
-#: config/samba/class_sambaPluginConfig.inc:55
-msgid "Samba rid base"
-msgstr "Samba rid base"
-
-#: config/samba/class_sambaPluginConfig.inc:56
-msgid ""
-"The base id to add to ordinary sid calculations - if not available inside of"
-" the LDAP though samba schema."
-msgstr ""
-"Die basis ID die normalen sid-Kalkulationen hinzugefügt werden soll -  falls"
-" nicht verfügbar innerhalb von des LDAP durch samba schemas."
-
-#: config/samba/class_sambaPluginConfig.inc:61
-msgid "Expiration date synchronisaton"
-msgstr "Synchronisation von Verfallsdatum"
-
-#: config/samba/class_sambaPluginConfig.inc:61
-msgid "Synchronisaton the expiration date with the POSIX one?"
-msgstr "Synchronisation des Verfallsdatum mit dem POSIX-betreffenden?"
-
-#: config/samba/class_sambaPluginConfig.inc:67
-msgid "Generate sambaLMPassword"
-msgstr "sambaLMPasswort generieren"
-
-#: config/samba/class_sambaPluginConfig.inc:67
-msgid "Needed to be compliant with Windows <= 98 or Samba < 3.2"
-msgstr "Benötigt um Kompatibilität mit Windows <=98 oder Samba < 3.2 zu haben"
-
-#: config/samba/class_sambaPluginConfig.inc:71
-msgid "Activate primary group warning"
-msgstr ""
-
-#: config/samba/class_sambaPluginConfig.inc:71
-msgid ""
-"Issue a warning if POSIX primary group cannot be converted to Samba primary "
-"group when activating the Samba tab of a user"
-msgstr ""
-
-#: admin/groups/samba/class_sambaGroup.inc:30
-msgid "Samba group settings"
-msgstr "Samba-Gruppeneinstellungen"
-
-#: admin/groups/samba/class_sambaGroup.inc:45
-msgid "Samba domain"
-msgstr "Samba-Domäne"
-
-#: admin/groups/samba/class_sambaGroup.inc:49
-msgid "Samba information"
-msgstr ""
-
-#: admin/groups/samba/class_sambaGroup.inc:56
-msgid "Group type"
-msgstr "Gruppentyp"
-
-#: admin/groups/samba/class_sambaGroup.inc:56
-msgid "Samba group type"
-msgstr "Samba-Gruppentyp"
-
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
-msgid "Samba group"
-msgstr "Samba-Gruppe"
-
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
-msgid "Domain admins"
-msgstr "Domänen-Administratoren"
-
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
-msgid "Domain users"
-msgstr "Domänen-Benutzer"
-
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
-msgid "Domain guests"
-msgstr "Domänen-Gäste"
-
-#: admin/groups/samba/class_sambaGroup.inc:106
-msgid "Configuration error"
-msgstr "Konfigurationsfehler"
-
-#: admin/groups/samba/class_sambaGroup.inc:106
-msgid "Cannot find group SID in your configuration!"
-msgstr "Kann keine Gruppen-SID in Ihrer Konfiguration finden!"
-
-#: admin/groups/samba/class_sambaGroup.inc:120
-#, php-format
-msgid "Special group (%d)"
-msgstr "Spezielle Gruppe (%d)"
-
-#: admin/samba/class_sambaDomainManagement.inc:34
-msgid "Samba domains"
-msgstr "Samba-Domänen"
-
-#: admin/samba/class_sambaDomainManagement.inc:35
-msgid "Samba domain management"
-msgstr "Samba-Domänenverwaltung"
-
-#: admin/samba/class_sambaDomain.inc:30 admin/samba/class_sambaDomain.inc:31
-#: admin/samba/class_sambaDomain.inc:34
-msgid "Samba Domain"
-msgstr "Samba-Domäne"
-
-#: admin/samba/class_sambaDomain.inc:35
-msgid "Samba domain settings"
-msgstr "Samba-Domäneneinstellungen"
-
-#: admin/samba/class_sambaDomain.inc:51
-#: admin/systems/samba/class_sambaSystemTab.inc:44
-msgid "Properties"
-msgstr "Eigenschaften"
-
-#: admin/samba/class_sambaDomain.inc:54
-msgid "Domain name"
-msgstr "Domänenname"
-
-#: admin/samba/class_sambaDomain.inc:54
-msgid "Name of this domain"
-msgstr "Name dieser Domäne"
-
-#: admin/samba/class_sambaDomain.inc:58
-msgid "SID"
-msgstr "SID"
-
-#: admin/samba/class_sambaDomain.inc:58
-msgid "SID of this domain"
-msgstr "SID dieser Domäne"
-
-#: admin/samba/class_sambaDomain.inc:62
-msgid "Rid base"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:62
-msgid "Algorithmic rid base"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:66
-msgid "Minimum password age"
-msgstr "Minimales Passwort-Alter"
-
-#: admin/samba/class_sambaDomain.inc:67
-msgid ""
-"Minimum password age, in seconds (default: 0 => allow immediate password "
-"change)"
-msgstr ""
-"Minimales Passwortalter in Sekunden (Standard: 0 => sofortige "
-"Passwortänderung erlauben)"
-
-#: admin/samba/class_sambaDomain.inc:72
-msgid "Maximum password age"
-msgstr "Maximales Passwort-Alter"
-
-#: admin/samba/class_sambaDomain.inc:73
-msgid ""
-"Maximum password age, in seconds (default: -1 => never expire passwords)"
-msgstr ""
-"Maximales Passwortalter in Sekunden (Standard: -1 => nie ablaufende "
-"Passwörter)"
-
-#: admin/samba/class_sambaDomain.inc:78
-msgid "Next RID"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:79
-msgid "Next NT rid to give out for anything"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:83
-msgid "Next group RID"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:84
-msgid "Next NT rid to give out for groups"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:88
-msgid "Next user RID"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:89
-msgid "Next NT rid to give our for users"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:93
-msgid "Minimum password length"
-msgstr "Minimale Passwortlänge"
-
-#: admin/samba/class_sambaDomain.inc:94
-msgid "Minimal password length (default: 5)"
-msgstr "Minimale Passwortlänge (Standard: 5)"
-
-#: admin/samba/class_sambaDomain.inc:98
-msgid "Password history length"
-msgstr "Passwortverlauflänge"
-
-#: admin/samba/class_sambaDomain.inc:99
-msgid "Length of Password History Entries (default: 0 => off)"
-msgstr "Länge der Passwortchronikeinträge (Standard: 0 => aus)"
-
-#: admin/samba/class_sambaDomain.inc:103
-msgid "Logon to change password"
-msgstr "Anmelden zum Ändern des Passworts"
-
-#: admin/samba/class_sambaDomain.inc:104
-msgid "Force Users to logon for password change (default: 0 => off, 2 => on)"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:108
-msgid "Lockout duration"
-msgstr "Dauer der Sperre"
-
-#: admin/samba/class_sambaDomain.inc:109
-msgid "Lockout duration in minutes (default: 30, -1 => forever)"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:113
-msgid "Lockout observation window"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:114
-msgid "Reset time after lockout in minutes (default: 30)"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:118
-msgid "Lockout threshold"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:119
-msgid "Lockout users after bad logon attempts (default: 0 => off)"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:123
-msgid "Force logoff"
-msgstr "Abmelden erzwingen"
-
-#: admin/samba/class_sambaDomain.inc:124
-msgid "Disconnect Users outside logon hours (default: -1 => off, 0 => on)"
-msgstr ""
-
-#: admin/samba/class_sambaDomain.inc:128
-msgid "Refuse machine password change"
-msgstr "Verweigere Änderung der Passwörter für Computerkonten"
-
-#: admin/samba/class_sambaDomain.inc:129
-msgid "Allow Machine Password changes (default: 0 => off)"
-msgstr "Rechnerpasswortänderungen erlauben (Standard: 0 => aus)"
-
-#: admin/systems/samba/class_sambaSystemTab.inc:31
-msgid "Windows workstation information"
-msgstr "Windows-Arbeitsstationinformation"
-
-#: admin/systems/samba/class_argonautEventSambaShares.inc:27
-msgid "Update Samba Shares"
-msgstr "Samba-Freigaben aktualisieren"
 
 #: personal/samba/sambaLogonHours.tpl.c:2
 msgid "Specify the hours this user is allowed to log in"

@@ -66,7 +66,11 @@ class systemImport extends simplePlugin
 
     $messages = array();
     $dhcps    = array();
-    $dns      = objects::ls('dnsZone');
+    try {
+      $dns    = objects::ls('dnsZone');
+    } catch (NonExistingObjectTypeException $e) {
+      $dns    = array();
+    }
     foreach ($hosts as $host) {
       if (!preg_match('/^([^.]+)\.(.*)$/', $host['id'], $m)) {
         $messages[$host['id']] = array(sprintf(_('Could not parse %s'), $host['id']));
@@ -84,54 +88,60 @@ class systemImport extends simplePlugin
       $baseObject = $tabObject->getBaseObject();
       $baseObject->cn   = $cn;
       $baseObject->description  = $host['description'];
-      if (!is_array($host['ipAddress'])) {
-        $host['ipAddress'] = array($host['ipAddress']);
+      if (!empty($host['ipAddress'])) {
+        if (!is_array($host['ipAddress'])) {
+          $host['ipAddress'] = array($host['ipAddress']);
+        }
+        $baseObject->ipHostNumber = $host['ipAddress'];
       }
-      $baseObject->ipHostNumber = $host['ipAddress'];
       $baseObject->macAddress   = $host['hardwareAddress'];
 
-      /* Get existing DHCP servers */
-      if (empty($dhcps)) {
-        list(, $dhcpParentNodes) = dhcpSystem::getDhcpParentNodes();
-        foreach ($dhcpParentNodes as $dn => $attrs) {
-          if (isset($attrs['dhcpNetMask'])) {
-            $dhcps[$dn] = array($attrs['cn'][0], normalize_netmask($attrs['dhcpNetMask'][0]));
-          }
-        }
-      }
-      /* Activate DHCP if we find a matching server */
-      if (!empty($baseObject->ipHostNumber)) {
-        foreach ($dhcps as $dn => $infos) {
-          list($ip, $mask) = $infos;
-          foreach ($baseObject->ipHostNumber as $ipHostNumber) {
-            if (tests::is_in_network($ip, $mask, $ipHostNumber)) {
-              $tabObject->by_object['dhcpSystem']->attributesAccess['dhcpHosts']->addPostValue(
-                array($dn, $baseObject->macAddress, $ipHostNumber, '')
-              );
-              $tabObject->by_object['dhcpSystem']->attributesAccess['dhcpHosts']->applyPostValue();
+      if (class_available('dhcpSystem')) {
+        /* Get existing DHCP servers */
+        if (empty($dhcps)) {
+          list(, $dhcpParentNodes) = dhcpSystem::getDhcpParentNodes();
+          foreach ($dhcpParentNodes as $dn => $attrs) {
+            if (isset($attrs['dhcpNetMask'])) {
+              $dhcps[$dn] = array($attrs['cn'][0], normalize_netmask($attrs['dhcpNetMask'][0]));
             }
           }
         }
-        if (empty($tabObject->by_object['dhcpSystem']->dhcpHosts)) {
-          $messages[$host['id']] = array(sprintf(_('No DHCP server found for IPs %s'), implode(',', $baseObject->ipHostNumber)));
+        /* Activate DHCP if we find a matching server */
+        if (!empty($baseObject->ipHostNumber)) {
+          foreach ($dhcps as $dn => $infos) {
+            list($ip, $mask) = $infos;
+            foreach ($baseObject->ipHostNumber as $ipHostNumber) {
+              if (tests::is_in_network($ip, $mask, $ipHostNumber)) {
+                $tabObject->by_object['dhcpSystem']->attributesAccess['dhcpHosts']->addPostValue(
+                  array($dn, $baseObject->macAddress, $ipHostNumber, '')
+                );
+                $tabObject->by_object['dhcpSystem']->attributesAccess['dhcpHosts']->applyPostValue();
+              }
+            }
+          }
+          if (empty($tabObject->by_object['dhcpSystem']->dhcpHosts)) {
+            $messages[$host['id']] = array(sprintf(_('No DHCP server found for IPs %s'), implode(',', $baseObject->ipHostNumber)));
+            continue;
+          }
+        }
+      }
+      if (class_available('dnsHost')) {
+        /* Activate DNS if we find a matching server */
+        $tabObject->by_object['dnsHost']->is_account = FALSE;
+        foreach ($dns as $dn => $value) {
+          if (preg_match('/^'.$zone.'\.?$/', $value)) {
+            $tabObject->by_object['dnsHost']->is_account  = TRUE;
+            $tabObject->by_object['dnsHost']->fdDNSZoneDn = array($dn);
+            foreach ($baseObject->ipHostNumber as $ipHostNumber) {
+              $tabObject->by_object['dnsHost']->addRecord($dn, array($cn, 'aRecord', $ipHostNumber, ''));
+            }
+            break;
+          }
+        }
+        if ($tabObject->by_object['dnsHost']->is_account == FALSE) {
+          $messages[$host['id']] = array(sprintf(_('No DNS server found for zone %s'), $zone));
           continue;
         }
-      }
-      /* Activate DNS if we find a matching server */
-      $tabObject->by_object['dnsHost']->is_account = FALSE;
-      foreach ($dns as $dn => $value) {
-        if (preg_match('/^'.$zone.'\.?$/', $value)) {
-          $tabObject->by_object['dnsHost']->is_account  = TRUE;
-          $tabObject->by_object['dnsHost']->fdDNSZoneDn = array($dn);
-          foreach ($baseObject->ipHostNumber as $ipHostNumber) {
-            $tabObject->by_object['dnsHost']->addRecord($dn, array($cn, 'aRecord', $ipHostNumber, ''));
-          }
-          break;
-        }
-      }
-      if ($tabObject->by_object['dnsHost']->is_account == FALSE) {
-        $messages[$host['id']] = array(sprintf(_('No DNS server found for zone %s'), $zone));
-        continue;
       }
 
       /* Fill other tabs as asked */

@@ -201,6 +201,12 @@ class ldapmanager extends simplePlugin
 
   function save()
   {
+    return array();
+  }
+
+  function remove($fulldelete = FALSE)
+  {
+    return array();
   }
 
   function get_allowed_bases()

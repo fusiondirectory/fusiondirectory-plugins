@@ -1,0 +1,83 @@
+# Specify docker image
+image: debian:stretch
+
+# Define variable to disable SSL verification of GIT
+variables:
+  GIT_SSL_NO_VERIFY: "true"
+
+stages:
+  - lint
+  - codestyle
+  - manpages
+  - transifex
+  - tarballs
+
+## Stage lint
+
+# PHP lint (jessie)
+create_php_lint_rapport_jessie:
+  image: php:5.6.33-cli-jessie
+  stage: lint
+  only:
+    - branches
+  script:
+    - find . -type f -name '*.php' -o -name '*.inc' -print0 | xargs -0 -n1 php -l
+
+# PHP lint (stretch)
+create_php_lint_rapport_stretch:
+  image: php:cli-stretch
+  stage: lint
+  only:
+    - branches
+  script:
+    - find . -type f -name '*.php' -o -name '*.inc' -print0 | xargs -0 -n1 php -l
+
+## Stage transifex
+
+# fusiondirectory-update-locale
+fusiondirectory-update-locale:
+  image: php:cli-stretch
+  stage: transifex
+  only:
+    - branches
+  before_script:
+    - apt-get update -qq
+    - apt-get install -y -qq gettext git
+  script:
+    - git clone https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
+    - ../dev-tools/locale-scripts/fusiondirectory-update-locale-plugins
+
+# Update transifex
+update-transifex:
+  image: php:cli-stretch
+  stage: transifex
+  only:
+    - /^1.*$/
+  before_script:
+    - apt-get update -qq
+    - apt-get install -y -qq gettext git transifex-client
+  script:
+    - git clone https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
+    - echo $'[https://www.transifex.com]\nhostname = https://www.transifex.com\nusername = '"$TRANSIFEX_USER"$'\npassword = '"$TRANSIFEX_PASSWORD"$'\ntoken = '"$TRANSIFEX_API_TOKEN"$'\n' > ~/.transifexrc
+    - tx pull -a -f
+    - ../dev-tools/locale-scripts/fusiondirectory-update-locale-plugins
+    - tx push -f -s -t --skip --no-interactive
+
+build-tarballs:
+  stage: tarballs
+  script:
+    - tar -cvzf fusiondirectory-plugins.tar.gz *
+  artifacts:
+    paths:
+    - fusiondirectory-plugins.tar.gz
+    expire_in: 1h
+
+build-release:
+  stage: tarballs
+  only:
+    - tags
+  script: 
+    - tar -cvzf fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"').tar.gz *
+  artifacts:
+    paths:
+      - fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"').tar.gz

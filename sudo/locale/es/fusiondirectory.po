@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Spanish (https://www.transifex.com/fusiondirectory/teams/12202/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,68 +18,14 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/sudo/class_sudoConfig.inc:28
-msgid "Sudo configuration"
-msgstr ""
-
-#: config/sudo/class_sudoConfig.inc:29
-msgid "FusionDirectory sudo plugin configuration"
-msgstr ""
-
-#: config/sudo/class_sudoConfig.inc:42 admin/sudo/class_sudoManagement.inc:32
-#: admin/sudo/class_sudoGeneric.inc:123
+#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:123
+#: config/sudo/class_sudoConfig.inc:42
 msgid "Sudo"
 msgstr "Sudo"
-
-#: config/sudo/class_sudoConfig.inc:45
-msgid "Sudo RDN"
-msgstr ""
-
-#: config/sudo/class_sudoConfig.inc:45
-msgid "Branch in which sudoers will be stored"
-msgstr ""
 
 #: admin/sudo/class_sudoManagement.inc:33
 msgid "Sudo management"
 msgstr "Administración Sudo"
-
-#: admin/sudo/class_sudoOption.inc:77
-msgid "Unknown option"
-msgstr "Opción desconocida"
-
-#: admin/sudo/class_sudoOption.inc:78
-#, php-format
-msgid "The sudo option '%s' is invalid!"
-msgstr "¡La opción Sudo %s no es válida!"
-
-#: admin/sudo/class_sudoOption.inc:273
-#, php-format
-msgid "%s (%s)"
-msgstr ""
-
-#: admin/sudo/class_sudoOption.inc:476
-msgid "Available options"
-msgstr "Opciones disponibles"
-
-#: admin/sudo/class_sudoOption.inc:479
-msgid "Option"
-msgstr "Opción"
-
-#: admin/sudo/class_sudoOption.inc:479
-msgid "Add a new sudo option"
-msgstr ""
-
-#: admin/sudo/class_sudoOption.inc:484 admin/sudo/class_sudoOption.inc:486
-msgid "Used sudo role options"
-msgstr ""
-
-#: admin/sudo/class_sudoOption.inc:553
-msgid "Options"
-msgstr "Opciones"
-
-#: admin/sudo/class_sudoOption.inc:554
-msgid "Sudo options"
-msgstr "Opciones Sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:124 admin/sudo/class_sudoGeneric.inc:128
 msgid "Sudo role"
@@ -154,4 +100,58 @@ msgstr "Prioridad"
 
 #: admin/sudo/class_sudoGeneric.inc:202
 msgid "This rule priority compared to others"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:77
+msgid "Unknown option"
+msgstr "Opción desconocida"
+
+#: admin/sudo/class_sudoOption.inc:78
+#, php-format
+msgid "The sudo option '%s' is invalid!"
+msgstr "¡La opción Sudo %s no es válida!"
+
+#: admin/sudo/class_sudoOption.inc:273
+#, php-format
+msgid "%s (%s)"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:476
+msgid "Available options"
+msgstr "Opciones disponibles"
+
+#: admin/sudo/class_sudoOption.inc:479
+msgid "Option"
+msgstr "Opción"
+
+#: admin/sudo/class_sudoOption.inc:479
+msgid "Add a new sudo option"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:484 admin/sudo/class_sudoOption.inc:486
+msgid "Used sudo role options"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:553
+msgid "Options"
+msgstr "Opciones"
+
+#: admin/sudo/class_sudoOption.inc:554
+msgid "Sudo options"
+msgstr "Opciones Sudo"
+
+#: config/sudo/class_sudoConfig.inc:28
+msgid "Sudo configuration"
+msgstr ""
+
+#: config/sudo/class_sudoConfig.inc:29
+msgid "FusionDirectory sudo plugin configuration"
+msgstr ""
+
+#: config/sudo/class_sudoConfig.inc:45
+msgid "Sudo RDN"
+msgstr ""
+
+#: config/sudo/class_sudoConfig.inc:45
+msgid "Branch in which sudoers will be stored"
 msgstr ""

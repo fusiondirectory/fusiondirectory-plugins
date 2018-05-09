@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,45 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Côme Chilliet <come@chilliet.eu>, 2016\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: config/dns/class_dnsConfig.inc:28
-msgid "DNS configuration"
-msgstr "Configuration DNS"
-
-#: config/dns/class_dnsConfig.inc:29
-msgid "FusionDirectory dns plugin configuration"
-msgstr "Configuration du plugin DNS"
-
-#: config/dns/class_dnsConfig.inc:42
-msgid "DNS config"
-msgstr "Configuration DNS"
-
-#: config/dns/class_dnsConfig.inc:45
-msgid "DNS RDN"
-msgstr "Branche DNS"
-
-#: config/dns/class_dnsConfig.inc:45
-msgid "Branch in which DNS zones will be stored"
-msgstr "Branche dans laquelle les zones DNS seront stockées"
-
-#: config/dns/class_dnsConfig.inc:50
-msgid "Store final dot in domains"
-msgstr "Stocker le point final dans les domaines"
-
-#: config/dns/class_dnsConfig.inc:50
-msgid "Should FD store a final dot at the end of domains?"
-msgstr ""
-"Est-ce que FusionDirectory doit stocker un point final à la fin des noms de "
-"domaines ?"
 
 #: admin/dns/class_dnsAcl.inc:30 admin/dns/class_dnsAcl.inc:31
 #: admin/dns/class_dnsAcl.inc:33
@@ -72,59 +42,6 @@ msgstr "Liste d'adresses"
 #: admin/dns/class_dnsAcl.inc:56
 msgid "The ip address match list for this acl"
 msgstr "La liste de correspondance d'adresse IP pour cette ACL"
-
-#: admin/dns/class_dnsView.inc:28 admin/dns/class_dnsView.inc:29
-#: admin/dns/class_dnsView.inc:31
-msgid "DNS view"
-msgstr "Vue DNS"
-
-#: admin/dns/class_dnsView.inc:45
-msgid "View"
-msgstr "Vue"
-
-#: admin/dns/class_dnsView.inc:49
-msgid "View name"
-msgstr "Nom de la vue"
-
-#: admin/dns/class_dnsView.inc:49
-msgid "Name of this view"
-msgstr "Nom de cette vue"
-
-#: admin/dns/class_dnsView.inc:53
-msgid "Match clients ACL"
-msgstr "ACL clients"
-
-#: admin/dns/class_dnsView.inc:53
-msgid ""
-"Name of the ACL to use for the source IP address of the incoming requests"
-msgstr ""
-"Nom de l'ACL à utiliser pour l'adresse IP source des requêtes entrantes"
-
-#: admin/dns/class_dnsView.inc:57
-msgid "Match destinations ACL"
-msgstr "ACL destinataires"
-
-#: admin/dns/class_dnsView.inc:57
-msgid ""
-"Name of the ACL to use for the destination IP address of the incoming "
-"requests"
-msgstr ""
-
-#: admin/dns/class_dnsView.inc:61
-msgid "Match recursive only"
-msgstr "Recursives seulement"
-
-#: admin/dns/class_dnsView.inc:61
-msgid "Match only recursive queries in this view"
-msgstr "Accepter uniquement les requêtes récursives dans cette vue"
-
-#: admin/dns/class_dnsView.inc:66 admin/systems/class_dnsHost.inc:141
-msgid "DNS zones"
-msgstr "Zones DNS"
-
-#: admin/dns/class_dnsView.inc:66
-msgid "DNS zones in this view"
-msgstr "Zones DNS dans cette vue"
 
 #: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:123
 msgid "DNS"
@@ -165,7 +82,7 @@ msgstr "Ldap2zone"
 msgid "Ldap2Zone called for zone \"%s\""
 msgstr "Ldap2Zone appelé pour la zone \"%s\""
 
-#: admin/dns/class_dnsManagement.inc:112 admin/dns/class_dnsZone.inc:372
+#: admin/dns/class_dnsManagement.inc:112 admin/dns/class_dnsZone.inc:368
 #: admin/systems/class_dnsHost.inc:319
 msgid "Error"
 msgstr "Erreur"
@@ -174,6 +91,60 @@ msgstr "Erreur"
 msgid "Argonaut client needs to be activated to use ldap2zone remotely"
 msgstr ""
 "Le client Argonaut doit être activé pour utiliser ldap2zone à distance"
+
+#: admin/dns/class_dnsView.inc:28 admin/dns/class_dnsView.inc:29
+#: admin/dns/class_dnsView.inc:31
+msgid "DNS view"
+msgstr "Vue DNS"
+
+#: admin/dns/class_dnsView.inc:45
+msgid "View"
+msgstr "Vue"
+
+#: admin/dns/class_dnsView.inc:49
+msgid "View name"
+msgstr "Nom de la vue"
+
+#: admin/dns/class_dnsView.inc:49
+msgid "Name of this view"
+msgstr "Nom de cette vue"
+
+#: admin/dns/class_dnsView.inc:53
+msgid "Match clients ACL"
+msgstr "ACL clients"
+
+#: admin/dns/class_dnsView.inc:53
+msgid ""
+"Name of the ACL to use for the source IP address of the incoming requests"
+msgstr ""
+"Nom de l'ACL à utiliser pour l'adresse IP source des requêtes entrantes"
+
+#: admin/dns/class_dnsView.inc:57
+msgid "Match destinations ACL"
+msgstr "ACL destinataires"
+
+#: admin/dns/class_dnsView.inc:57
+msgid ""
+"Name of the ACL to use for the destination IP address of the incoming "
+"requests"
+msgstr ""
+"Nom de l'ACL à utiliser pour l'adresse IP source des requêtes entrantes"
+
+#: admin/dns/class_dnsView.inc:61
+msgid "Match recursive only"
+msgstr "Recursives seulement"
+
+#: admin/dns/class_dnsView.inc:61
+msgid "Match only recursive queries in this view"
+msgstr "Accepter uniquement les requêtes récursives dans cette vue"
+
+#: admin/dns/class_dnsView.inc:66 admin/systems/class_dnsHost.inc:141
+msgid "DNS zones"
+msgstr "Zones DNS"
+
+#: admin/dns/class_dnsView.inc:66
+msgid "DNS zones in this view"
+msgstr "Zones DNS dans cette vue"
 
 #: admin/dns/class_DnsRecordAttribute.inc:27
 #, php-format
@@ -494,18 +465,20 @@ msgstr "Nom de sous-domaine relatif"
 msgid "DNS Record"
 msgstr "Enregistrement DNS"
 
-#: admin/dns/class_dnsZone.inc:360 admin/dns/class_dnsZone.inc:411
-#: admin/dns/class_dnsZone.inc:440
-msgid "LDAP error"
-msgstr "Erreur LDAP"
-
-#: admin/dns/class_dnsZone.inc:373
+#: admin/dns/class_dnsZone.inc:369
 #, php-format
 msgid "The IP %s does not match the selected reverse %s, it has been ignored"
 msgstr ""
 "L'adresse IP %s ne correspond pas à la zone inverse %s, elle a été ignorée"
 
-#: admin/dns/class_dnsZone.inc:565
+#: admin/dns/class_dnsZone.inc:471 admin/dns/class_dnsZone.inc:480
+#: admin/dns/class_dnsZone.inc:488 admin/dns/class_dnsZone.inc:496
+#: admin/dns/class_dnsZone.inc:517 admin/dns/class_dnsZone.inc:554
+#: admin/dns/class_dnsZone.inc:560 admin/dns/class_dnsZone.inc:572
+msgid "LDAP error"
+msgstr "Erreur LDAP"
+
+#: admin/dns/class_dnsZone.inc:667
 #, php-format
 msgid ""
 "\"%s\" must contain a domain name in lowercase and end with a final "
@@ -514,7 +487,7 @@ msgstr ""
 "«%s» doit contenir un nom de domaine en minuscule et se terminer par un "
 "point final.<br/><br/> Exemple : exemple.fr."
 
-#: admin/dns/class_dnsZone.inc:568
+#: admin/dns/class_dnsZone.inc:670
 #, php-format
 msgid ""
 "\"%s\" must contain a domain name in lowercase.<br/><br/>Example: "
@@ -523,24 +496,24 @@ msgstr ""
 "«%s» doit contenir un nom de domaine en minuscule.<br/><br/> Exemple : "
 "exemple.fr"
 
-#: admin/dns/class_dnsZone.inc:589 admin/dns/class_dnsZone.inc:590
-#: admin/dns/class_dnsZone.inc:592
+#: admin/dns/class_dnsZone.inc:691 admin/dns/class_dnsZone.inc:692
+#: admin/dns/class_dnsZone.inc:694
 msgid "DNS zone"
 msgstr "Zone DNS"
 
-#: admin/dns/class_dnsZone.inc:607
+#: admin/dns/class_dnsZone.inc:709
 msgid "Zone"
 msgstr "Zone"
 
-#: admin/dns/class_dnsZone.inc:611
+#: admin/dns/class_dnsZone.inc:713
 msgid "Zone name"
 msgstr "Nom de la zone"
 
-#: admin/dns/class_dnsZone.inc:621
+#: admin/dns/class_dnsZone.inc:723
 msgid "Reverse zones"
 msgstr "Zones inverses"
 
-#: admin/dns/class_dnsZone.inc:621
+#: admin/dns/class_dnsZone.inc:723
 #, php-format
 msgid ""
 "Reverse zones for this zone in the form xx.xx.in-addr.arpa%1$s or "
@@ -549,19 +522,19 @@ msgstr ""
 "Zones inverses pour cette zone sous la forme xx.xx.in-addr.arpa%1$s ou "
 "x.x.ip6.arpa%1$s"
 
-#: admin/dns/class_dnsZone.inc:634
+#: admin/dns/class_dnsZone.inc:736
 msgid "SOA record"
 msgstr "Enregistrement SOA"
 
-#: admin/dns/class_dnsZone.inc:637
+#: admin/dns/class_dnsZone.inc:739
 msgid "SOA Record"
 msgstr "Enregistrement SOA"
 
-#: admin/dns/class_dnsZone.inc:641
+#: admin/dns/class_dnsZone.inc:743
 msgid "Primary DNS server"
 msgstr "Serveur DNS primaire"
 
-#: admin/dns/class_dnsZone.inc:641
+#: admin/dns/class_dnsZone.inc:743
 msgid ""
 "Domain name of the name server that was the original or primary source of "
 "data for this zone"
@@ -569,11 +542,11 @@ msgstr ""
 "Nom de domaine du serveur de noms qui est la source d'origine ou primaire de"
 " données pour cette zone"
 
-#: admin/dns/class_dnsZone.inc:645
+#: admin/dns/class_dnsZone.inc:747
 msgid "Mail address"
 msgstr "Adresse de courriel"
 
-#: admin/dns/class_dnsZone.inc:645
+#: admin/dns/class_dnsZone.inc:747
 msgid ""
 "Domain name which specifies the mailbox of the person responsible for this "
 "zone"
@@ -581,38 +554,38 @@ msgstr ""
 "Nom de domaine qui spécifie la boite de courriel de la personne responsable "
 "de cette zone"
 
-#: admin/dns/class_dnsZone.inc:649
+#: admin/dns/class_dnsZone.inc:751
 msgid "Serial number"
 msgstr "Numéro de série"
 
-#: admin/dns/class_dnsZone.inc:649
+#: admin/dns/class_dnsZone.inc:751
 msgid "Version number of the original copy of the zone"
 msgstr "Numéro de version de la copie originale de la zone"
 
-#: admin/dns/class_dnsZone.inc:654
+#: admin/dns/class_dnsZone.inc:756
 msgid "Refresh"
 msgstr "Rafraîchir"
 
-#: admin/dns/class_dnsZone.inc:654
+#: admin/dns/class_dnsZone.inc:756
 msgid "Time interval before the zone should be refreshed"
 msgstr "Intervalle de temps avant que la zone doive être rafraîchie"
 
-#: admin/dns/class_dnsZone.inc:659
+#: admin/dns/class_dnsZone.inc:761
 msgid "Retry"
 msgstr "Réessayer"
 
-#: admin/dns/class_dnsZone.inc:659
+#: admin/dns/class_dnsZone.inc:761
 msgid ""
 "Time interval that should elapse before a failed refresh should be retried"
 msgstr ""
 "Intervalle de temps qui devrait s'écouler avant qu'un rafraîchissement "
 "défectueux doive être réessayé"
 
-#: admin/dns/class_dnsZone.inc:664
+#: admin/dns/class_dnsZone.inc:766
 msgid "Expire"
 msgstr "Expirer"
 
-#: admin/dns/class_dnsZone.inc:664
+#: admin/dns/class_dnsZone.inc:766
 msgid ""
 "Time value that specifies the upper limit on the time interval that can "
 "elapse before the zone is no longer authoritative"
@@ -620,19 +593,19 @@ msgstr ""
 "La valeur du temps qui spécifie la limite supérieure de l'intervalle de "
 "temps qui peut s'écouler avant que la zone ne soit plus autoritaire"
 
-#: admin/dns/class_dnsZone.inc:669
+#: admin/dns/class_dnsZone.inc:771
 msgid "TTL"
 msgstr "TTL"
 
-#: admin/dns/class_dnsZone.inc:669
+#: admin/dns/class_dnsZone.inc:771
 msgid "Minimum TTL field that should be exported with any RR from this zone"
 msgstr "Champ TTL minimum qui doit être exporté avec un RR de cette zone"
 
-#: admin/dns/class_dnsZone.inc:680
+#: admin/dns/class_dnsZone.inc:782
 msgid "Records"
 msgstr "Enregistrements"
 
-#: admin/dns/class_dnsZone.inc:684
+#: admin/dns/class_dnsZone.inc:786
 msgid "The DNS records for this zone"
 msgstr "Les enregistrements DNS pour cette zone"
 
@@ -675,10 +648,40 @@ msgstr "%d enregistrements ont été mis à jour de %s vers %s dans la zone %s"
 msgid "DNS update"
 msgstr "Mise à jour DNS"
 
-#: admin/systems/class_dnsHost.inc:465 admin/systems/class_dnsHost.inc:482
+#: admin/systems/class_dnsHost.inc:470 admin/systems/class_dnsHost.inc:491
 #, php-format
 msgid "%d records were removed in zone %s"
 msgstr "%d enregistrements ont été enlevés dans la zone %s"
+
+#: config/dns/class_dnsConfig.inc:28
+msgid "DNS configuration"
+msgstr "Configuration DNS"
+
+#: config/dns/class_dnsConfig.inc:29
+msgid "FusionDirectory dns plugin configuration"
+msgstr "Configuration du plugin DNS"
+
+#: config/dns/class_dnsConfig.inc:42
+msgid "DNS config"
+msgstr "Configuration DNS"
+
+#: config/dns/class_dnsConfig.inc:45
+msgid "DNS RDN"
+msgstr "Branche DNS"
+
+#: config/dns/class_dnsConfig.inc:45
+msgid "Branch in which DNS zones will be stored"
+msgstr "Branche dans laquelle les zones DNS seront stockées"
+
+#: config/dns/class_dnsConfig.inc:50
+msgid "Store final dot in domains"
+msgstr "Stocker le point final dans les domaines"
+
+#: config/dns/class_dnsConfig.inc:50
+msgid "Should FD store a final dot at the end of domains?"
+msgstr ""
+"Est-ce que FusionDirectory doit stocker un point final à la fin des noms de "
+"domaines ?"
 
 #: admin/systems/dnsrecords.tpl.c:2
 msgid "Insufficient rights"

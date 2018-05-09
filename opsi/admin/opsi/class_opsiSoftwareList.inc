@@ -52,7 +52,7 @@ class opsiSoftwareList extends simplePlugin
         'attrs' => array(
           new SubmittingOPSIServerAttribute(
             _('OPSI server'), _('OPSI server to use for deployment'),
-            'fdOpsiServerDN', TRUE
+            'fdOpsiServerDn', TRUE
           ),
           new HostNameAttribute(
             _('Name'), _('Name of this OPSI profile'),
@@ -103,7 +103,7 @@ class opsiSoftwareList extends simplePlugin
     if ($opsi_args == NULL) {
       $opsi_args = array('id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript','updateScript','productVersion','packageVersion');
     }
-    if (!isset($this->products[$this->fdOpsiServerDN])) {
+    if (!isset($this->products[$this->fdOpsiServerDn])) {
       $s_daemon = new supportDaemon();
       if (!$s_daemon->is_available()) {
         msg_dialog::display(
@@ -113,20 +113,20 @@ class opsiSoftwareList extends simplePlugin
         return;
       }
       $ldap = $config->get_ldap_link();
-      $ldap->cat($this->fdOpsiServerDN);
+      $ldap->cat($this->fdOpsiServerDn);
       if ($attrs = $ldap->fetch()) {
         if (isset($attrs['macAddress'])) {
           $this->macAddress = $attrs['macAddress'][0];
         } else {
           msg_dialog::display(
             _("No mac address"),
-            sprintf(_("Server %s has no mac address configured in the LDAP"), $this->fdOpsiServerDN), ERROR_DIALOG
+            sprintf(_("Server %s has no mac address configured in the LDAP"), $this->fdOpsiServerDn), ERROR_DIALOG
           );
           return FALSE;
         }
       } else {
         msg_dialog::display(
-          sprintf(_("Could not find %s in the LDAP"), $this->fdOpsiServerDN),
+          sprintf(_("Could not find %s in the LDAP"), $this->fdOpsiServerDn),
           msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
         );
         return FALSE;
@@ -139,13 +139,13 @@ class opsiSoftwareList extends simplePlugin
         );
         return;
       }
-      $this->products[$this->fdOpsiServerDN]['localboots'] = array();
+      $this->products[$this->fdOpsiServerDn]['localboots'] = array();
       foreach ($localboots as $localboot) {
-        $this->products[$this->fdOpsiServerDN]['localboots'][$localboot['id']] = $localboot;
+        $this->products[$this->fdOpsiServerDn]['localboots'][$localboot['id']] = $localboot;
       }
     }
     $choices = array();
-    foreach ($this->products[$this->fdOpsiServerDN]['localboots'] as $id => $infos) {
+    foreach ($this->products[$this->fdOpsiServerDn]['localboots'] as $id => $infos) {
       $choices[$id] = sprintf(_('%s (%s-%s)'), $infos['id'], $infos['productVersion'], $infos['packageVersion']);
     }
     $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setChoices(
@@ -160,7 +160,7 @@ class opsiSoftwareList extends simplePlugin
 
     $actions = array();
     foreach (array('setup', 'always', 'once', 'custom', 'userLogin', 'update') as $action) {
-      if (!empty($this->products[$this->fdOpsiServerDN]['localboots'][$localboot][$action.'Script'])) {
+      if (!empty($this->products[$this->fdOpsiServerDn]['localboots'][$localboot][$action.'Script'])) {
         $actions[] = strtolower($action);
       }
     }

@@ -89,6 +89,8 @@ class mailMethodRenaterPartage extends mailMethod
         array (
           'method'      => 'POST',
           'user_agent'  => $infos['user_agent'],
+          'header'      => 'Content-type: application/x-www-form-urlencoded'."\r\n"
+                          .'Content-Length: '.strlen($post)."\r\n",
           'content'     => $post
         ),
         $this->http_options
@@ -101,7 +103,17 @@ class mailMethodRenaterPartage extends mailMethod
     }
 
     $context  = stream_context_create($opts);
-    $fp = fopenWithErrorHandling($infos['uri'].'/'.$command, 'r', FALSE, $context);
+    $tries    = 0;
+    do {
+      /* Because of what seems to be a PARTAGE bug there is a 403 when you try
+       *  to access an entry which is not finished being created */
+      if ($tries) {
+        /* When retrying after 403, wait 10 seconds */
+        sleep(10);
+      }
+      $fp = fopenWithErrorHandling($infos['uri'].'/'.$command, 'r', FALSE, $context);
+      $tries++;
+    } while (is_array($fp) && preg_match('/403/', end($fp)) && ($tries < 3));
     if (!is_array($fp)) {
       $response = '';
       while ($row = fgets($fp)) {
@@ -261,7 +273,7 @@ class mailMethodRenaterPartage extends mailMethod
         }
       }
       $account['zimbraAccountStatus'] = ($mainTab->attributesAccess['userPassword']->isLocked() ? 'locked' : 'active');
-      $account['initials'] = strtoupper(substr($mainTab->givenName, 0, 1).substr($mainTab->sn, 0, 1));
+      $account['initials'] = mb_strtoupper(mb_substr($mainTab->givenName, 0, 1).mb_substr($mainTab->sn, 0, 1));
 
       /* Sync fields from SUPANN if tab is active */
       if (isset($this->parent->parent->by_object['supannAccount']) && $this->parent->parent->by_object['supannAccount']->is_account) {
@@ -632,7 +644,7 @@ class mailMethodRenaterPartage extends mailMethod
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search ('(&(objectClass=fdRenaterPartageServer)(fdRenaterPartageServerMailDomain=*))',
-                  array('cn', 'fdRenaterPartageServerUri', 'fdRenaterPartageServerMailDomain', 'fdRenaterPartageServerUserAgent'));
+                  array('cn', 'fdRenaterPartageServerUri', 'fdRenaterPartageServerMailDomain', 'fdRenaterPartageServerUserAgent', 'fdRenaterPartageServerDeletionType'));
     while ($attrs = $ldap->fetch()) {
       unset($attrs['fdRenaterPartageServerMailDomain']['count']);
       foreach ($attrs['fdRenaterPartageServerMailDomain'] as $domainAndKey) {

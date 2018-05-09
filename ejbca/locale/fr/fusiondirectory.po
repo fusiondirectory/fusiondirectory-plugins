@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-06-22 16:06+0200\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Côme Chilliet <come@chilliet.eu>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,30 +18,18 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: config/ejbca/class_ejbcaConfig.inc:28
-msgid "EJBCA plugin configuration"
-msgstr "Configuration EJBCA"
-
-#: config/ejbca/class_ejbcaConfig.inc:29
-msgid "FusionDirectory ejbca plugin configuration"
-msgstr "Configuration du plugin ejbca"
-
-#: config/ejbca/class_ejbcaConfig.inc:42
-msgid "EJBCA plugin"
-msgstr "Plugin EJBCA"
-
-#: config/ejbca/class_ejbcaConfig.inc:45
-msgid "EJBCA RDN"
-msgstr "Branche EJBCA"
-
-#: config/ejbca/class_ejbcaConfig.inc:45
-msgid "Branch in which ejbca certificates are stored"
-msgstr "Branche dans laquelle sont stockés les certificats EJBCA"
-
-#: admin/ejbca/certificates/class_ejbcaCertificates.inc:29
 #: admin/ejbca/class_ejbcaManagement.inc:32
+#: admin/ejbca/certificates/class_ejbcaCertificates.inc:29
 msgid "EJBCA"
 msgstr "EJBCA"
+
+#: admin/ejbca/class_ejbcaManagement.inc:33
+msgid "EJBCA certificates management"
+msgstr "Gestion des certificats EJBCA"
+
+#: admin/ejbca/class_ejbcaManagement.inc:52
+msgid "Download"
+msgstr "Téléchargement"
 
 #: admin/ejbca/certificates/class_ejbcaCertificates.inc:30
 msgid "Assign EJBCA certificates to a user"
@@ -54,14 +42,6 @@ msgstr "Certificats EJBCA"
 #: admin/ejbca/certificates/class_ejbcaCertificates.inc:52
 msgid "Certificates associated to this object"
 msgstr "Certificats associés a cet objet"
-
-#: admin/ejbca/class_ejbcaManagement.inc:33
-msgid "EJBCA certificates management"
-msgstr "Gestion des certificats EJBCA"
-
-#: admin/ejbca/class_ejbcaManagement.inc:52
-msgid "Download"
-msgstr "Téléchargement"
 
 #: admin/ejbca/class_ejbcaCertificate.inc:30
 #: admin/ejbca/class_ejbcaCertificate.inc:31
@@ -85,3 +65,23 @@ msgstr "Nom commun"
 #: admin/ejbca/class_ejbcaCertificate.inc:55
 msgid "Certificate content"
 msgstr "Contenu du certificat"
+
+#: config/ejbca/class_ejbcaConfig.inc:28
+msgid "EJBCA plugin configuration"
+msgstr "Configuration EJBCA"
+
+#: config/ejbca/class_ejbcaConfig.inc:29
+msgid "FusionDirectory ejbca plugin configuration"
+msgstr "Configuration du plugin ejbca"
+
+#: config/ejbca/class_ejbcaConfig.inc:42
+msgid "EJBCA plugin"
+msgstr "Plugin EJBCA"
+
+#: config/ejbca/class_ejbcaConfig.inc:45
+msgid "EJBCA RDN"
+msgstr "Branche EJBCA"
+
+#: config/ejbca/class_ejbcaConfig.inc:45
+msgid "Branch in which ejbca certificates are stored"
+msgstr "Branche dans laquelle sont stockés les certificats EJBCA"

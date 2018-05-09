@@ -27,6 +27,7 @@ class dashboardPpolicy extends simplePlugin
       'plShortName'   => _('Ppolicy'),
       'plDescription' => _('Statistics about ppolicy expired users'),
       'plObjectType'  => array('dashboard'),
+      'plPriority'    => 12,
 
       'plProvidedAcls'  => array()
     );
@@ -167,6 +168,9 @@ class dashboardPpolicy extends simplePlugin
         $next_expired_accounts[] = $expired_account;
       }
     }
+
+    uasort($expired_accounts, array('dashboardUsers','compareUsers'));
+    uasort($next_expired_accounts, array('dashboardUsers','compareUsers'));
 
     $this->expired = array(
       'columns'             => $this->expiredAccountsColumns,

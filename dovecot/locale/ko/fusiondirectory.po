@@ -1,0 +1,121 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2018-04-19 19:51+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
+"Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:28
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:29
+msgid "Dovecot (IMAP/POP3)"
+msgstr "Dovecot (IMAP/POP3)"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:29
+msgid "Services"
+msgstr "서비스"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:43
+msgid "Dovecot connection"
+msgstr "Dovecot 연결"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:46
+msgid "Connect URL for Dovecot server"
+msgstr "Dovecot 서버 연결 URL"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:50
+msgid "Hostname"
+msgstr "호스트명"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:50
+msgid "Hostname of the Dovecot server"
+msgstr "Dovecot 서버의 호스트명"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:54
+msgid "Port"
+msgstr "포트"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:54
+msgid "Port number on which Dovecot server should be contacted"
+msgstr "Dovecot 서버가 연결해야 할 포트 번호"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:59
+msgid "Option"
+msgstr "옵션"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:59
+msgid "Options for contacting Dovecot server"
+msgstr "Dovecot 서버 접속 옵션"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:64
+msgid "Validate TLS/SSL Certificates"
+msgstr "TLS / SSL 인증서 확인"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:64
+msgid "Weither or not to validate server certificates on connection"
+msgstr "연결시 서버 인증서의 유효성을 검사 여부"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:76
+msgid "Master credentials"
+msgstr "마스터 자격증명"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:79
+msgid "Admin user"
+msgstr "관리자"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:79
+msgid "Dovecot server admin user"
+msgstr "Dovecot 서버 관리자"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:83
+msgid "Password"
+msgstr "패스워드"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:83
+msgid "Admin user password"
+msgstr "관리자 패스워드"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:87
+msgid "Mail directory"
+msgstr "메일 디렉토리"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:87
+msgid "Path to the directory in which user maildirs must be created"
+msgstr ""
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:94
+msgid "Options"
+msgstr "옵션"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:97
+msgid "Create the user folder via Argonaut"
+msgstr "Argonaut를 통해 사용자 폴더 만들기"
+
+#: admin/systems/services/dovecot/class_serviceDovecot.inc:97
+msgid "Use argonaut to create the user mailbox on the Dovecot server"
+msgstr "argonaut를 사용하여 Dovecot 서버에 사용자 사서함을 만듭니다."
+
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:50
+msgid "There are no IMAP compatible mail servers defined!"
+msgstr "정의된 IMAP 호환 메일 서버가 없습니다!"
+
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:55
+msgid "Mail server for this account is invalid!"
+msgstr "이 계정의 메일 서버가 유효하지 않습니다!"
+
+#: personal/mail/mail-methods/class_mail-methods-dovecot.inc:194
+#, php-format
+msgid "Error while trying to contact Dovecot server through Argonaut: %s"
+msgstr "Argonaut를 통해 Dovecot 서버에 접속하는 동안 오류가 발생했습니다: %s"
