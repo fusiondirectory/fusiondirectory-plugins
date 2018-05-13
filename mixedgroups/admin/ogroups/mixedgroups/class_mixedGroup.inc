@@ -146,7 +146,9 @@ class mixedGroup extends simplePlugin
     foreach ($members as $dn) {
       $ldap->cat($dn, array('uid'));
       $attrs = $ldap->fetch();
-      $memberUid[] = $attrs['uid'][0];
+      if (isset($attrs['uid'][0])) {
+        $memberUid[] = $attrs['uid'][0];
+      }
     }
     $this->memberUid = $memberUid;
 
