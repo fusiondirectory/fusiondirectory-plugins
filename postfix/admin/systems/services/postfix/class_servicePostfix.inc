@@ -19,6 +19,26 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+class CatchallDomainAttribute extends StringAttribute
+{
+  function fixPostValue ($value)
+  {
+    /* prepend '@' for postfix catchall mapping */
+    if ($value) {
+      return '@'.parent::fixPostValue($value);
+    } else {
+      return $value;
+    }
+  }
+
+  function displayValue ($value)
+  {
+    /* remove initial '@' from display */
+    return '@' == substr($value, 0, 1) ? substr($value, 1) : $value;
+  }
+}
+
+
 class servicePostfix extends simpleService
 {
   var $objectclasses = array('fdPostfixServer');
@@ -95,6 +115,14 @@ class servicePostfix extends simpleService
                 '%s:%s', '', ''
               )
             )
+          ),
+          new SubNodesAttribute (
+            _('Catchall table'), _('Catchall table'),
+            'fdPostfixCatchallTable', 'fdPostfixCatchallTable',
+            array(
+              new CatchallDomainAttribute ('Domain', '', 'fdCatchallTableDomain'),
+              new MailAttribute ('Recipient', '', 'fdCatchallTableRecipient')
+            )
           )
         )
       ),
@@ -145,6 +173,7 @@ class servicePostfix extends simpleService
     global $config;
     $errors = parent::ldap_save();
     $this->attributesAccess['fdPostfixTransportTable']->postLdapSave($config->get_ldap_link());
+    $this->attributesAccess['fdPostfixCatchallTable']->postLdapSave($config->get_ldap_link());
     return $errors;
   }
 }
