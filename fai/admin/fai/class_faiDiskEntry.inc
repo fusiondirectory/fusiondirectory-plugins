@@ -167,7 +167,11 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
     }
 
     if ($this->plugin->FAIdiskType == 'disk') {
-      $part['cn'] = $this->plugin->cn.$part['FAIpartitionNr'];
+      if (preg_match('/^disk(\d+)$/', $this->plugin->cn)) {
+        $part['cn'] = $this->plugin->cn.'.'.$part['FAIpartitionNr'];
+      } else {
+        $part['cn'] = $this->plugin->cn.$part['FAIpartitionNr'];
+      }
     } elseif ($this->plugin->FAIdiskType == 'lvm') {
       /* Check if we need to update partition names of lvm compilations */
       if (isset($this->value[$part['FAIpartitionNr']])) {
@@ -400,7 +404,11 @@ class faiDiskEntry extends simplePlugin
     foreach ($partitions as $key => $val) {
       $partitions[$key]['FAIpartitionNr'] = $key;
       if ($this->FAIdiskType == 'disk') {
-        $partitions[$key]['cn'] = $this->cn.$key;
+        if (preg_match('/^disk(\d+)$/', $this->cn)) {
+          $partitions[$key]['cn'] = $this->cn.'.'.$key;
+        } else {
+          $partitions[$key]['cn'] = $this->cn.$key;
+        }
       } elseif ($this->FAIdiskType == 'lvm') {
         $partitions[$key]['FAIpartitionType'] = 'lvm';
       }
