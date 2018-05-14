@@ -282,6 +282,10 @@ class faiDiskEntry extends simplePlugin
       $this->attributesAccess['lvmDevices']->setDisabled(TRUE);
       $this->attributesAccess['lvmDevices']->setVisible(FALSE);
     }
+    if ($this->FAIdiskType != 'disk') {
+      $this->attributesAccess['disklabel']->setDisabled(TRUE);
+      $this->attributesAccess['disklabel']->setVisible(FALSE);
+    }
 
     if ($disk) {
       $this->is_edit     = TRUE;
