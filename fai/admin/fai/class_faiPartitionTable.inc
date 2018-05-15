@@ -113,6 +113,10 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
       'submit',
       'add'.$id.'_dialog_lvm',
       array('value' => _('Add LVM'))
+    ).$this->renderInputField(
+      'submit',
+      'add'.$id.'_dialog_cryptsetup',
+      array('value' => _('Add cryptsetup'))
     );
   }
 
@@ -128,6 +132,8 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
         $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, array(), 'raid'));
       } elseif (isset($_POST['add'.$id.'_dialog_lvm'])) {
         $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, array(), 'lvm'));
+      } elseif (isset($_POST['add'.$id.'_dialog_cryptsetup'])) {
+        $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, array(), 'cryptsetup'));
       }
     }
   }

@@ -119,7 +119,7 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
   function delPostValue ($key)
   {
     /* Create a list of all partitions that are used in
-     *  lvm or raid compilations.
+     *  lvm, raid or cryptsetup compilations.
      */
     $list = array();
     foreach ($this->plugin->parent->disks as $disk) {
@@ -128,6 +128,12 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
           $list[preg_replace('/:.*$/', '', $partname)][] = $disk;
         }
       } elseif ($disk['FAIdiskType'] == 'raid') {
+        foreach ($disk['partitions'] as $part) {
+          foreach (explode(',', $part['FAIpartitionSize']) as $partname) {
+            $list[preg_replace('/:.*$/', '', $partname)][] = $disk;
+          }
+        }
+      } elseif ($disk['FAIdiskType'] == 'cryptsetup') {
         foreach ($disk['partitions'] as $part) {
           foreach (explode(',', $part['FAIpartitionSize']) as $partname) {
             $list[preg_replace('/:.*$/', '', $partname)][] = $disk;
@@ -187,6 +193,9 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
     } elseif ($this->plugin->FAIdiskType == 'raid') {
       /* Set raid names to md# */
       $part['cn'] = 'md'.$part['FAIpartitionNr'];
+    } elseif ($this->plugin->FAIdiskType == 'cryptsetup') {
+      /* Set cryptsetup names to luks# */
+      $part['cn'] = 'luks'.$part['FAIpartitionNr'];
     }
 
     $this->value[$part['FAIpartitionNr']] = $part;
@@ -289,6 +298,10 @@ class faiDiskEntry extends simplePlugin
     if ($this->FAIdiskType != 'disk') {
       $this->attributesAccess['disklabel']->setDisabled(TRUE);
       $this->attributesAccess['disklabel']->setVisible(FALSE);
+    }
+    if ($this->FAIdiskType == 'cryptsetup') {
+      $this->attributesAccess['fstabkey']->setDisabled(TRUE);
+      $this->attributesAccess['fstabkey']->setVisible(FALSE);
     }
 
     if ($disk) {
@@ -423,6 +436,8 @@ class faiDiskEntry extends simplePlugin
     /* Assemble flags */
     if ($this->FAIdiskType == 'disk') {
       $tmp['FAIdiskOption'] = array('fstabkey:'.$this->fstabkey, 'disklabel:'.$this->disklabel);
+    } elseif ($this->FAIdiskType == 'cryptsetup') {
+      $tmp['FAIdiskOption'] = array();
     } else {
       $tmp['FAIdiskOption'] = array('fstabkey:'.$this->fstabkey);
     }
@@ -463,7 +478,7 @@ class faiDiskEntry extends simplePlugin
       }
     }
 
-    /* Assembe disk flags */
+    /* Assemble disk flags */
     if (!empty($bootable)) {
       $tmp['FAIdiskOption'][] = 'bootable:'.trim($bootable, ',');
     }
@@ -501,14 +516,12 @@ class faiDiskEntry extends simplePlugin
 
       foreach ($disk['partitions'] as $part) {
         // Add disks of raid arrays, to the used list.
-        if ($disk['FAIdiskType'] == 'raid') {
+        if (in_array($disk['FAIdiskType'], array('raid','cryptsetup'))) {
           foreach (explode(',', $part['FAIpartitionSize']) as $rDevice) {
             $used[] = preg_replace('/:.*$/i', '', $rDevice);
           }
-        }
-
-        // Collect all available disks
-        if ($disk['FAIdiskType'] == 'disk') {
+        } elseif ($disk['FAIdiskType'] == 'disk') {
+          // Collect all available disks
           $name = $part['cn'];
           if (!in_array($name, $this->lvmDevices)) {
             $may[] = $name;

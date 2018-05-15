@@ -288,6 +288,14 @@ class faiPartition extends simplePlugin
               TRUE
             )
           ),
+          new SelectAttribute(
+            _('Partition'), _('Partition to encrypt'),
+            'cryptsetupPartition', FALSE
+          ),
+          new StringAttribute(
+            _('Password'), _('Password to use for encryption. Leave empty to use a encryption key file instead.'),
+            'cryptsetupPassword', FALSE
+          ),
           new BooleanAttribute (
             _('Resize'), _('Resize existing partition'),
             'resize', FALSE
@@ -311,7 +319,7 @@ class faiPartition extends simplePlugin
             _('Filesystem'), _('The filesystem this partition should be formatted with'),
             'FAIfsType', TRUE,
             array('swap','ext2','ext3','ext4','reiserfs','xfs','btrfs','-'), 'ext4',
-            array(_('swap space'),_('ext2'),_('ext3'),_('ext4'),_('reiser fs'),_('xfs'),_('btrfs'),_('LVM/RAID'))
+            array(_('swap'),_('ext2'),_('ext3'),_('ext4'),_('reiser fs'),_('xfs'),_('btrfs'),_('LVM/RAID'))
           ),
           new BooleanAttribute (
             _('Encrypted'), _('Wether or not this partition is encrypted'),
@@ -382,6 +390,12 @@ class faiPartition extends simplePlugin
         'raid5' => _('RAID 5'),
         'raid6' => _('RAID 6')
       );
+    } elseif ($this->FAIdiskType == 'cryptsetup') {
+      $types  = array(
+        'luks'  => _('LUKS'),
+        'swap'  => _('Swap'),
+        'tmp'   => _('tmp'),
+      );
     } else {
       $types = array();
     }
@@ -396,6 +410,13 @@ class faiPartition extends simplePlugin
       if ($type == 'raid') {
         $object['raidDevices'] = $object['FAIpartitionSize'];
         unset($object['FAIpartitionSize']);
+      } elseif ($type == 'cryptsetup') {
+        $object['cryptsetupPartition'] = $object['FAIpartitionSize'];
+        unset($object['FAIpartitionSize']);
+        if (preg_match('/^luks:"(.+)"$/', $object['FAIpartitionType'], $m)) {
+          $object['FAIpartitionType']   = 'luks';
+          $object['cryptsetupPassword'] = $m[1];
+        }
       }
       foreach ($this->attributes as $attr) {
         if (isset($object[$attr])) {
@@ -415,6 +436,25 @@ class faiPartition extends simplePlugin
     if ($this->FAIdiskType != 'lvm') {
       $this->attributesAccess['cn']->setDisabled(TRUE);
     }
+
+    if ($this->FAIdiskType == 'cryptsetup') {
+      $this->attributesAccess['cryptsetupPartition']->setChoices($this->getPartitionList());
+      $this->attributesAccess['FAIpartitionSize']->setDisabled(TRUE);
+      $this->attributesAccess['FAIpartitionSize']->setVisible(FALSE);
+      $this->attributesInfo['flags']['name'] = _('Encryption settings');
+      $this->attributesAccess['resize']->setDisabled(TRUE);
+      $this->attributesAccess['resize']->setVisible(FALSE);
+      $this->attributesAccess['preserve']->setDisabled(TRUE);
+      $this->attributesAccess['preserve']->setVisible(FALSE);
+      $this->attributesAccess['bootable']->setDisabled(TRUE);
+      $this->attributesAccess['bootable']->setVisible(FALSE);
+    } else {
+      $this->attributesAccess['cryptsetupPartition']->setDisabled(TRUE);
+      $this->attributesAccess['cryptsetupPartition']->setVisible(FALSE);
+      $this->attributesAccess['cryptsetupPassword']->setDisabled(TRUE);
+      $this->attributesAccess['cryptsetupPassword']->setVisible(FALSE);
+    }
+
     if ($this->FAIdiskType == 'raid') {
       $this->attributesAccess['raidDevices']->attributes[0]->attribute->attributes[0]->setChoices($this->getPartitionList());
       $this->attributesAccess['FAIpartitionSize']->setDisabled(TRUE);
@@ -498,6 +538,13 @@ class faiPartition extends simplePlugin
     } elseif ($this->FAIdiskType == 'raid') {
       $ret['FAIpartitionSize'] = $ret['raidDevices'];
       unset($ret['raidDevices']);
+    } elseif ($this->FAIdiskType == 'cryptsetup') {
+      $ret['FAIpartitionSize'] = $ret['cryptsetupPartition'];
+      unset($ret['cryptsetupPartition']);
+      if (!empty($ret['cryptsetupPassword'])) {
+        $ret['FAIpartitionType'] .= ':"'.$ret['cryptsetupPassword'].'"';
+      }
+      unset($ret['cryptsetupPassword']);
     }
 
     return $ret;
@@ -530,10 +577,7 @@ class faiPartition extends simplePlugin
 
         // Collect all available disks
         if ($disk['FAIdiskType'] == 'disk') {
-          $name = $part['cn'];
-          if (!isset($this->raidDevices[$name])) {
-            $may[] = $name;
-          }
+          $may[] = $part['cn'];
         }
       }
     }
