@@ -132,9 +132,7 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
         }
       } elseif ($disk['FAIdiskType'] == 'cryptsetup') {
         foreach ($disk['partitions'] as $part) {
-          foreach (explode(',', $part['FAIpartitionSize']) as $partname) {
-            $list[preg_replace('/:.*$/', '', $partname)][] = $disk;
-          }
+          $list[$part['FAIpartitionSize']][] = $disk;
         }
       }
     }
