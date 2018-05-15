@@ -259,6 +259,10 @@ class faiDiskEntry extends simplePlugin
             array('msdos', 'gpt'), '',
             array('MSDOS', 'GPT')
           ),
+          new BooleanAttribute (
+            _('Random init'), _('Initialise all encrypted partitions with random data'),
+            'randinit', FALSE
+          ),
           new HiddenAttribute ('FAIdiskType')
         )
       ),
@@ -299,6 +303,9 @@ class faiDiskEntry extends simplePlugin
     if ($this->FAIdiskType == 'cryptsetup') {
       $this->attributesAccess['fstabkey']->setDisabled(TRUE);
       $this->attributesAccess['fstabkey']->setVisible(FALSE);
+    } else {
+      $this->attributesAccess['randinit']->setDisabled(TRUE);
+      $this->attributesAccess['randinit']->setVisible(FALSE);
     }
 
     if ($disk) {
@@ -364,6 +371,11 @@ class faiDiskEntry extends simplePlugin
                 $disk['partitions'][$presflag]['preserve'] = 'reinstall';
               }
             }
+            continue;
+          }
+
+          if ($option == 'randinit') {
+            $this->randinit = TRUE;
             continue;
           }
         }
@@ -434,7 +446,11 @@ class faiDiskEntry extends simplePlugin
     if ($this->FAIdiskType == 'disk') {
       $tmp['FAIdiskOption'] = array('fstabkey:'.$this->fstabkey, 'disklabel:'.$this->disklabel);
     } elseif ($this->FAIdiskType == 'cryptsetup') {
-      $tmp['FAIdiskOption'] = array();
+      if ($this->randinit) {
+        $tmp['FAIdiskOption'] = array('randinit');
+      } else {
+        $tmp['FAIdiskOption'] = array();
+      }
     } else {
       $tmp['FAIdiskOption'] = array('fstabkey:'.$this->fstabkey);
     }
