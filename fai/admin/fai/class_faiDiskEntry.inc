@@ -295,6 +295,8 @@ class faiDiskEntry extends simplePlugin
     if ($this->FAIdiskType != 'disk') {
       $this->attributesAccess['disklabel']->setDisabled(TRUE);
       $this->attributesAccess['disklabel']->setVisible(FALSE);
+      $this->attributesAccess['cn']->setDisabled(TRUE);
+      $this->attributesAccess['cn']->setValue($this->FAIdiskType);
     }
     if ($this->FAIdiskType == 'cryptsetup') {
       $this->attributesAccess['fstabkey']->setDisabled(TRUE);
