@@ -80,10 +80,11 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
   protected $dialogClass = 'DiskEntryDialog';
   protected $partitionAttributes  = array(
     'cn','description',
-    'FAIpartitionNr',   'FAIpartitionSize',   'FAImountPoint',
-    'FAIfsType',        'FAIpartitionType',   'FAImountOptions',
-    'FAIfsOptions',     'FAIpartitionFlags',  'FAIfsCreateOptions',
-    'FAIfsTuneOptions', 'FAIfsOptions',       'FAIpartitionFlags',
+    'FAIpartitionNr',     'FAIpartitionSize',
+    'FAIpartitionType',   'FAIpartitionFlags',
+    'FAImountPoint',      'FAImountOptions',
+    'FAIfsType',
+    'FAIfsCreateOptions', 'FAIfsTuneOptions',
     'FAIlvmDevice'
   );
 

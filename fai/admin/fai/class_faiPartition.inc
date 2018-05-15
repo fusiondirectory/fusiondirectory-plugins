@@ -331,16 +331,17 @@ class faiPartition extends simplePlugin
         'name'  => _('Options'),
         'attrs' => array(
           new StringAttribute (
+            _('Mount options'), _('Filesystem mount options'),
+            'FAImountOptions', FALSE,
+            'defaults'
+          ),
+          new StringAttribute (
             _('Create options'), _('Filesystem create options'),
             'FAIfsCreateOptions', FALSE
           ),
           new StringAttribute (
             _('Tune options'), _('Filesystem tune options'),
             'FAIfsTuneOptions', FALSE
-          ),
-          new StringAttribute (
-            _('Mount options'), _('Filesystem mount options'),
-            'FAIfsOptions', FALSE
           ),
         )
       )
@@ -427,6 +428,7 @@ class faiPartition extends simplePlugin
 
     if ($this->FAIdiskType == 'cryptsetup') {
       $this->attributesAccess['cryptsetupPartition']->setChoices($this->getPartitionList());
+      $this->attributesAccess['cryptsetupPartition']->setRequired(TRUE);
       $this->attributesAccess['FAIpartitionSize']->setDisabled(TRUE);
       $this->attributesAccess['FAIpartitionSize']->setVisible(FALSE);
       $this->attributesInfo['flags']['name'] = _('Encryption settings');
