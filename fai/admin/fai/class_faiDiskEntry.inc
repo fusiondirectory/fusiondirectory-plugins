@@ -97,9 +97,6 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
   protected function getAttributeArrayValue($key, $value)
   {
     $opt = array();
-    if (isset($value['encrypted']) && $value['encrypted']) {
-      $opt[] = _('encrypted');
-    }
     if (isset($value['bootable']) && $value['bootable']) {
       $opt[] = _('bootable');
     }
@@ -471,7 +468,7 @@ class faiDiskEntry extends simplePlugin
       }
 
       /* Unset non valid attributes */
-      foreach (array('bootable','encrypted','preserve','resize','FAIdiskType') as $attr) {
+      foreach (array('bootable','preserve','resize','FAIdiskType') as $attr) {
         if (isset($tmp['partitions'][$id][$attr])) {
           unset($tmp['partitions'][$id][$attr]);
         }

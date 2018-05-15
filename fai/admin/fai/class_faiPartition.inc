@@ -321,10 +321,6 @@ class faiPartition extends simplePlugin
             array('swap','ext2','ext3','ext4','reiserfs','xfs','btrfs','-'), 'ext4',
             array(_('swap'),_('ext2'),_('ext3'),_('ext4'),_('reiser fs'),_('xfs'),_('btrfs'),_('LVM/RAID'))
           ),
-          new BooleanAttribute (
-            _('Encrypted'), _('Wether or not this partition is encrypted'),
-            'encrypted', FALSE
-          ),
           new FaiMountPointAttribute (
             _('Mount point'), _('Mount point for this partition'),
             'FAImountPoint', TRUE
@@ -421,14 +417,6 @@ class faiPartition extends simplePlugin
       foreach ($this->attributes as $attr) {
         if (isset($object[$attr])) {
           $this->$attr = $object[$attr];
-        }
-      }
-
-      if (($this->FAIdiskType == 'disk') || ($this->FAIdiskType == 'lvm')) {
-        /* Check for encrypted partitions */
-        if (preg_match('/:encrypt$/', $this->FAImountPoint)) {
-          $this->FAImountPoint = preg_replace('/:encrypt/', '', $this->FAImountPoint);
-          $this->encrypted = TRUE;
         }
       }
     }
@@ -531,12 +519,7 @@ class faiPartition extends simplePlugin
       $ret[$attr] = $this->$attr;
     }
 
-    if (($this->FAIdiskType == 'disk') || ($this->FAIdiskType == 'lvm')) {
-      /* Add encryption flag to partition mount point */
-      if ($this->encrypted) {
-        $ret['FAImountPoint'] .= ':encrypt';
-      }
-    } elseif($this->FAIdiskType == 'raid') {
+    if ($this->FAIdiskType == 'raid') {
       $ret['FAIpartitionSize'] = $ret['raidDevices'];
       unset($ret['raidDevices']);
     } elseif ($this->FAIdiskType == 'cryptsetup') {
