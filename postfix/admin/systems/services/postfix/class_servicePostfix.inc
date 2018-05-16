@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,6 +18,33 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
+
+class CatchallDomainAttribute extends StringAttribute
+{
+  /*! \brief Return the ldap value in the correct intern format value
+   *
+   *  \param $ldapValue The value as found in the LDAP
+   */
+  function inputValue ($ldapValue)
+  {
+    /* remove initial '@' from value */
+    return preg_replace('/^@/', '', $ldapValue);
+  }
+
+  /*! \brief Computes LDAP value
+   */
+  function computeLdapValue ()
+  {
+    return '@'.$this->getValue();
+  }
+
+  function setValue ($value)
+  {
+    /* remove initial '@' if needed */
+    return parent::setValue(preg_replace('/^@/', '', $value));
+  }
+}
+
 
 class servicePostfix extends simpleService
 {
@@ -95,6 +122,20 @@ class servicePostfix extends simpleService
                 '%s:%s', '', ''
               )
             )
+          ),
+          new SubNodesAttribute (
+            _('Catchall table'), _('Catchall table'),
+            'fdPostfixCatchallTable', 'fdPostfixCatchallTable',
+            array(
+              new CatchallDomainAttribute (
+                _('Domain'), _('Domain concerned by this catchall rule'),
+                'fdCatchallTableDomain', TRUE
+              ),
+              new MailAttribute (
+                _('Recipient'), _('Recipient mail address for this catchall rule'),
+                'fdCatchallTableRecipient', TRUE
+              )
+            )
           )
         )
       ),
@@ -145,6 +186,7 @@ class servicePostfix extends simpleService
     global $config;
     $errors = parent::ldap_save();
     $this->attributesAccess['fdPostfixTransportTable']->postLdapSave($config->get_ldap_link());
+    $this->attributesAccess['fdPostfixCatchallTable']->postLdapSave($config->get_ldap_link());
     return $errors;
   }
 }
