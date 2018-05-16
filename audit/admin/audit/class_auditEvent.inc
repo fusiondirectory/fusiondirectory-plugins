@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2015-2016 FusionDirectory
+  Copyright (C) 2015-2018 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -75,6 +75,7 @@ class auditEvent extends simplePlugin
       'main' => array(
         'name'  => _('Event'),
         'attrs' => array(
+          new HiddenAttribute ('fdAuditId'),
           new GeneralizedTimeDisplayAttribute(
             _('Time'), _('Date and time this event happened'),
             'fdAuditDateTime', TRUE
@@ -88,6 +89,12 @@ class auditEvent extends simplePlugin
         )
       ),
     );
+  }
+
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
+  {
+    parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
+    $this->fdAuditId = mt_rand();
   }
 
   function compute_dn()
