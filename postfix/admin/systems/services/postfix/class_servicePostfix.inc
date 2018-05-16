@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,20 +21,27 @@
 
 class CatchallDomainAttribute extends StringAttribute
 {
-  function fixPostValue ($value)
+  /*! \brief Return the ldap value in the correct intern format value
+   *
+   *  \param $ldapValue The value as found in the LDAP
+   */
+  function inputValue ($ldapValue)
   {
-    /* prepend '@' for postfix catchall mapping */
-    if ($value) {
-      return '@'.parent::fixPostValue($value);
-    } else {
-      return $value;
-    }
+    /* remove initial '@' from value */
+    return preg_replace('/^@/', '', $ldapValue);
   }
 
-  function displayValue ($value)
+  /*! \brief Computes LDAP value
+   */
+  function computeLdapValue ()
   {
-    /* remove initial '@' from display */
-    return '@' == substr($value, 0, 1) ? substr($value, 1) : $value;
+    return '@'.$this->getValue();
+  }
+
+  function setValue ($value)
+  {
+    /* remove initial '@' if needed */
+    return parent::setValue(preg_replace('/^@/', '', $value));
   }
 }
 
@@ -120,8 +127,14 @@ class servicePostfix extends simpleService
             _('Catchall table'), _('Catchall table'),
             'fdPostfixCatchallTable', 'fdPostfixCatchallTable',
             array(
-              new CatchallDomainAttribute ('Domain', '', 'fdCatchallTableDomain'),
-              new MailAttribute ('Recipient', '', 'fdCatchallTableRecipient')
+              new CatchallDomainAttribute (
+                _('Domain'), _('Domain concerned by this catchall rule'),
+                'fdCatchallTableDomain', TRUE
+              ),
+              new MailAttribute (
+                _('Recipient'), _('Recipient mail address for this catchall rule'),
+                'fdCatchallTableRecipient', TRUE
+              )
             )
           )
         )
