@@ -76,8 +76,11 @@ class serviceRenaterPartage extends simpleMailMethodService
                   'renaterPartageDomainKey', TRUE
                 ),
                 new StringAttribute (
-                  _('Class of service'), _('Possible classes of service for this domain, separated by commas'),
-                  'renaterPartageDomainCOS', TRUE
+                  _('Classes of service'), _('Possible classes of service for this domain and their ids, separated by commas. Format is cos1Name|cos1Id,cos2Name|cos2Id.'),
+                  'renaterPartageDomainCOS', TRUE,
+                  '', '',
+                  '/^[^,|]+\|[^,|]+(,[^,|]+\|[^,|]+)*$/',
+                  'cos1|cos1id,cos2|cos2id'
                 )
               ),
               ':',
