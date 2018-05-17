@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class CatchallDomainAttribute extends StringAttribute
+class MailDomainAttribute extends StringAttribute
 {
   /*! \brief Return the ldap value in the correct intern format value
    *
@@ -127,13 +127,27 @@ class servicePostfix extends simpleService
             _('Catchall table'), _('Catchall table'),
             'fdPostfixCatchallTable', 'fdPostfixCatchallTable',
             array(
-              new CatchallDomainAttribute (
+              new MailDomainAttribute (
                 _('Domain'), _('Domain concerned by this catchall rule'),
                 'fdCatchallTableDomain', TRUE
               ),
               new MailAttribute (
                 _('Recipient'), _('Recipient mail address for this catchall rule'),
                 'fdCatchallTableRecipient', TRUE
+              )
+            )
+          ),
+          new SubNodesAttribute (
+            _('Domain alias table'), _('Domain alias table'),
+            'fdPostfixDomainAliasTable', 'fdPostfixDomainAliasTable',
+            array(
+              new MailDomainAttribute (
+                _('From'), _('Domain concerned by this alias rule'),
+                'fdDomainAliasTableFrom', TRUE
+              ),
+              new MailDomainAttribute (
+                _('To'), _('Recipient domain for this alias rule'),
+                'fdDomainAliasTableTo', TRUE
               )
             )
           )
@@ -187,6 +201,7 @@ class servicePostfix extends simpleService
     $errors = parent::ldap_save();
     $this->attributesAccess['fdPostfixTransportTable']->postLdapSave($config->get_ldap_link());
     $this->attributesAccess['fdPostfixCatchallTable']->postLdapSave($config->get_ldap_link());
+    $this->attributesAccess['fdPostfixDomainAliasTable']->postLdapSave($config->get_ldap_link());
     return $errors;
   }
 }
