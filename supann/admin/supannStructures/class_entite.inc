@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2016  FusionDirectory
+  Copyright (C) 2012-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -81,9 +81,9 @@ class entite extends simplePlugin
       'supann' => array(
         'name'  => _('SUPANN information'),
         'attrs' => array(
-          new SelectAttribute(
+          new SupannPrefixedSelectAttribute(
             _('Entity type'), _('The best SUPANN type that fits this entity'),
-            'supannTypeEntite', FALSE
+            'supannTypeEntite', FALSE, 'entite'
           ),
           new StringAttribute(
             _('Entity code'), _('The SUPANN code of this entity'),
@@ -130,12 +130,6 @@ class entite extends simplePlugin
       }
     }
     $this->attributesAccess['supannCodeEntiteParent']->setChoices($entity_codes, $entity_labels);
-
-    /* Generate list of entite */
-    list ($entity_codes, $entity_labels) = supann::get_choices_for('entite');
-    array_unshift($entity_codes, '');
-    array_unshift($entity_labels, '');
-    $this->attributesAccess['supannTypeEntite']->setChoices($entity_codes, $entity_labels);
 
     $this->attributesAccess['ou']->setUnique(TRUE);
     $this->attributesAccess['supannCodeEntite']->setUnique(TRUE);
