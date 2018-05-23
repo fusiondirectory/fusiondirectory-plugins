@@ -80,10 +80,11 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
   protected $dialogClass = 'DiskEntryDialog';
   protected $partitionAttributes  = array(
     'cn','description',
-    'FAIpartitionNr',   'FAIpartitionSize',   'FAImountPoint',
-    'FAIfsType',        'FAIpartitionType',   'FAImountOptions',
-    'FAIfsOptions',     'FAIpartitionFlags',  'FAIfsCreateOptions',
-    'FAIfsTuneOptions', 'FAIfsOptions',       'FAIpartitionFlags',
+    'FAIpartitionNr',     'FAIpartitionSize',
+    'FAIpartitionType',   'FAIpartitionFlags',
+    'FAImountPoint',      'FAImountOptions',
+    'FAIfsType',
+    'FAIfsCreateOptions', 'FAIfsTuneOptions',
     'FAIlvmDevice'
   );
 
@@ -101,19 +102,37 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
   function renderButtons ()
   {
     $id = $this->getHtmlId();
-    return $this->renderInputField(
+    $buttons = $this->renderInputField(
       'submit',
       'add'.$id.'_dialog',
-      array('value' => '{msgPool type=addButton}')
-    ).$this->renderInputField(
-      'submit',
-      'add'.$id.'_dialog_raid',
-      array('value' => _('Add RAID'))
-    ).$this->renderInputField(
-      'submit',
-      'add'.$id.'_dialog_lvm',
-      array('value' => _('Add LVM'))
+      array('value' => _('Add disk'))
     );
+
+    if (!isset($this->value['raid'])) {
+      $buttons .= $this->renderInputField(
+        'submit',
+        'add'.$id.'_dialog_raid',
+        array('value' => _('Add RAID'))
+      );
+    }
+
+    if (!isset($this->value['lvm'])) {
+      $buttons .= $this->renderInputField(
+        'submit',
+        'add'.$id.'_dialog_lvm',
+        array('value' => _('Add LVM'))
+      );
+    }
+
+    if (!isset($this->value['cryptsetup'])) {
+      $buttons .= $this->renderInputField(
+        'submit',
+        'add'.$id.'_dialog_cryptsetup',
+        array('value' => _('Add cryptsetup'))
+      );
+    }
+
+    return $buttons;
   }
 
   function loadPostValue ()
@@ -128,6 +147,8 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
         $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, array(), 'raid'));
       } elseif (isset($_POST['add'.$id.'_dialog_lvm'])) {
         $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, array(), 'lvm'));
+      } elseif (isset($_POST['add'.$id.'_dialog_cryptsetup'])) {
+        $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, array(), 'cryptsetup'));
       }
     }
   }
@@ -151,6 +172,9 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
             $diskInfos[$attr] = $subattrs[$attr][0];
           }
         }
+        if ($diskInfos['FAIdiskType'] != 'disk') {
+          $diskInfos['cn'] = $diskInfos['FAIdiskType'];
+        }
 
         // Get disk options, without 'count' index.
         $diskInfos['FAIdiskOption'] = array();
@@ -169,8 +193,8 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
         }
 
         $diskInfos['dn']                              = $subattrs['dn'];
-        $this->value[$diskInfos['dn']]                = $diskInfos;
-        $this->value[$diskInfos['dn']]['partitions']  = array();
+        $this->value[$diskInfos['cn']]                = $diskInfos;
+        $this->value[$diskInfos['cn']]['partitions']  = array();
       }
       /* Fetch partitions */
       foreach ($this->value as $name => $disk) {
@@ -270,8 +294,6 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
   function diskConfigured ($disk)
   {
     if (isset($disk['rename'])) {
-      unset($this->value[$disk['rename']['from']]);
-      $disk['cn'] = $disk['rename']['to'];
       unset($disk['rename']);
     }
 

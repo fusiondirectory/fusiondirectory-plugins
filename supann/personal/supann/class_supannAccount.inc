@@ -44,6 +44,9 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
   protected function supannUpdateSelect()
   {
     $prefix = $this->attributes[0]->getValue();
+    if (!isset($this->prefixedChoices[$prefix])) {
+      $this->prefixedChoices[$prefix] = array(array(), array());
+    }
     $this->attributes[1]->setChoices($this->prefixedChoices[$prefix][0], $this->prefixedChoices[$prefix][1]);
     $this->attributes[1]->setRequired($prefix != '');
   }
@@ -87,7 +90,12 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
     }
     $this->setValue($values);
     $v1 = $this->attributes[0]->displayValue($values[0]);
-    $v2 = $this->attributes[1]->displayValue($values[1]);
+    $choices2 = $this->attributes[1]->getDisplayChoices();
+    if (isset($choices2[$values[1]])) {
+      $v2 = $choices2[$values[1]];
+    } else {
+      $v2 = $values[1];
+    }
     return ($v1 == '' ? $v2 : $v1.': '.$v2);
   }
 }
