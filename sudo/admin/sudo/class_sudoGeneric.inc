@@ -261,7 +261,7 @@ class sudo extends simplePlugin
     }
   }
 
-  function foreignKeyUpdate($field, $oldvalue, $newvalue, $source)
+  function foreignKeyUpdate($field, $oldvalue, $newvalue, array $source)
   {
     if (($field == 'sudoUser') && (($source['CLASS'] == 'posixGroup') || ($source['CLASS'] == 'mixedGroup'))) {
       return parent::foreignKeyUpdate($field, '%'.$oldvalue, '%'.$newvalue, $source);

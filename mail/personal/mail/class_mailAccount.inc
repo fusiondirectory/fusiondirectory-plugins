@@ -223,7 +223,7 @@ class mailAccount extends simplePlugin
     }
   }
 
-  function foreignKeyUpdate ($field, $oldvalue, $newvalue, $source)
+  function foreignKeyUpdate($field, $oldvalue, $newvalue, array $source)
   {
     if ($field == 'gosaMailServer') {
       mailMethod::resetMailServersCache();

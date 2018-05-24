@@ -753,7 +753,7 @@ class posixAccount extends simplePlugin
     $this->fromTemplate = TRUE;
   }
 
-  function foreignKeyUpdate ($field, $oldvalue, $newvalue, $source)
+  function foreignKeyUpdate($field, $oldvalue, $newvalue, array $source)
   {
     $ret = parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
     if ($field == 'gidNumber') {

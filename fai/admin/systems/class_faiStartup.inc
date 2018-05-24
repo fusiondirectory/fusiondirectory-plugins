@@ -127,7 +127,7 @@ class faiStartup extends simplePlugin
     }
   }
 
-  function foreignKeyUpdate($field, $oldvalue, $newvalue, $source)
+  function foreignKeyUpdate($field, $oldvalue, $newvalue, array $source)
   {
     if ($field == 'FAIclass') {
       if ($this->attributesAccess['FAIclass']->attributes['profil']->getValue() == $oldvalue) {

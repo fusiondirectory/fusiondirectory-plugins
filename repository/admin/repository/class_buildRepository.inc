@@ -134,7 +134,7 @@ class buildRepository extends simplePlugin
     }
   }
 
-  function foreignKeyUpdate($field, $oldvalue, $newvalue, $source)
+  function foreignKeyUpdate($field, $oldvalue, $newvalue, array $source)
   {
     if ($field == 'fdRepoDistributionSection') {
       $values = $this->fdRepoDistributionSection;
