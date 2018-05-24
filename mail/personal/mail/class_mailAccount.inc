@@ -63,7 +63,6 @@ class MailQuotaAttribute extends IntAttribute
 class mailAccount extends simplePlugin
 {
   var $displayHeader  = TRUE;
-  var $objectclasses  = array('gosaMailAccount');
 
   private $mainSectionAttrs = array();
 
@@ -77,6 +76,7 @@ class mailAccount extends simplePlugin
       'plSmallIcon'     => 'geticon.php?context=applications&icon=internet-mail&size=16',
       'plSelfModify'    => TRUE,
       'plPriority'      => 4,
+      'plObjectClass'   => array('gosaMailAccount'),
       'plObjectType'    => array('user'),
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo()),
       'plForeignKeys'  => array(

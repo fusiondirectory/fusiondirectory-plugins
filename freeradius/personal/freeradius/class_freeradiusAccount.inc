@@ -21,14 +21,10 @@
 */
 
 
-class freeradiusAccount extends simplePlugin {
-
+class freeradiusAccount extends simplePlugin
+{
   var $displayHeader = TRUE;
-  var $objectclasses = array('radiusprofile');
 
-  /*!
-   * \brief Plugin information
-   */
   static function plInfo ()
   {
     return array(
@@ -39,6 +35,7 @@ class freeradiusAccount extends simplePlugin {
       'plSmallIcon'   => 'geticon.php?context=applications&icon=freeradius&size=16',
       'plSelfModify'  => TRUE,
       'plPriority'    => 11,
+      'plObjectClass' => array('radiusprofile'),
       'plObjectType'  => array('user'),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())

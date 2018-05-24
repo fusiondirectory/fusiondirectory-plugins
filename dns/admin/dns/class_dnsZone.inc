@@ -686,8 +686,6 @@ class FQDNAttribute extends StringAttribute
 
 class dnsZone extends simplePlugin
 {
-  var $objectclasses = array('dNSZone');
-
   public static function finalDot()
   {
     global $config;
@@ -699,9 +697,10 @@ class dnsZone extends simplePlugin
     return array(
       'plShortName'   => _('DNS zone'),
       'plDescription' => _('DNS zone'),
+      'plObjectClass' => array('dNSZone'),
+      'plFilter'      => '(&(objectClass=dNSZone)(relativeDomainName=@)(!(|(zoneName=*.arpa)(zoneName=*.arpa.))))',
       'plObjectType'  => array('dnsZone' => array(
         'name'        => _('DNS zone'),
-        'filter'      => '(&(objectClass=dNSZone)(relativeDomainName=@)(!(|(zoneName=*.arpa)(zoneName=*.arpa.))))',
         'ou'          => get_ou('dnsRDN'),
         'icon'        => 'geticon.php?context=applications&icon=dns&size=16',
         'mainAttr'    => 'zoneName'

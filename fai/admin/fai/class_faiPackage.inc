@@ -368,17 +368,16 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
 
 class faiPackage extends faiSimplePluginClass
 {
-  var $objectclasses = array('top','FAIclass','FAIpackageList','FAIrepository');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Package'),
       'plDescription' => _('FAI Package list'),
+      'plObjectClass' => array('FAIclass','FAIpackageList','FAIrepository'),
+      'plFilter'      => '(objectClass=FAIpackageList)',
       'plObjectType'  => array(
         'faiPackage' => array(
           'name'        => _('FAI Package'),
-          'filter'      => 'objectClass=FAIpackageList',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiPackageRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-packages&size=16'

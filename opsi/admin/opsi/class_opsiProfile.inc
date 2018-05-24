@@ -55,9 +55,6 @@ class SubmittingOPSIServerAttribute extends OPSIServerAttribute
 
 class opsiProfile extends simplePlugin
 {
-  var $mainTab = TRUE;
-  var $objectclasses   = array('opsiProfile');
-
   var $macAddress = NULL;
   var $products;
 
@@ -67,9 +64,9 @@ class opsiProfile extends simplePlugin
       'plShortName'   => _('OPSI profile'),
       'plDescription' => _('OPSI profile'),
       'plIcon'        => 'geticon.php?context=applications&icon=opsi&size=16',
+      'plObjectClass' => array('opsiProfile'),
       'plObjectType'  => array('opsiProfile' => array(
         'name'    => _('OPSI profile'),
-        'filter'  => 'objectClass=opsiProfile',
         'ou'      => get_ou('opsiRDN'),
         'icon'    => 'geticon.php?context=applications&icon=opsi&size=16',
       )),

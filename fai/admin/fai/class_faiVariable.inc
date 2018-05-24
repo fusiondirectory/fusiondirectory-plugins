@@ -20,17 +20,16 @@
 
 class faiVariable extends faiSimplePluginClass
 {
-  var $objectclasses = array('top','FAIclass','FAIvariable');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Variable'),
       'plDescription' => _('FAI variable'),
+      'plObjectClass' => array('FAIclass','FAIvariable'),
+      'plFilter'      => '(objectClass=FAIvariable)',
       'plObjectType'  => array(
         'faiVariable' => array(
           'name'        => _('FAI variable'),
-          'filter'      => 'objectClass=FAIvariable',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiVariableRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-variable&size=16'

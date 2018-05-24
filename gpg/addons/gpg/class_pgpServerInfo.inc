@@ -20,11 +20,6 @@
 
 class pgpServerInfo extends simplePlugin
 {
-  var $mainTab = TRUE;
-  /* This plugin only writes its objectClass */
-  var $objectclasses = array('pgpServerInfo');
-
-  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
@@ -33,10 +28,10 @@ class pgpServerInfo extends simplePlugin
       'plSection'     => 'conf',
       'plPriority'    => 5,
       'plIcon'        => 'geticon.php?context=applications&icon=gpg&size=48',
-      'plObjectType'    => array(
+      'plObjectClass' => array('pgpServerInfo'),
+      'plObjectType'  => array(
         'pgpServerInfo' => array(
           'name'        => _('GPG server info'),
-          'filter'      => 'objectClass=pgpServerInfo',
           'icon'        => 'geticon.php?context=applications&icon=gpg&size=16',
           'aclCategory' => 'configuration',
         )

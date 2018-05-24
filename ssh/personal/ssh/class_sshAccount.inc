@@ -71,7 +71,23 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
 class sshAccount extends simplePlugin
 {
   var $displayHeader = TRUE;
-  var $objectclasses = array('ldapPublicKey');
+
+  static function plInfo()
+  {
+    return array(
+      'plShortName'     => _('SSH'),
+      'plDescription'   => _('Edit user\'s SSH public keys'),
+      'plSelfModify'    => TRUE,
+      'plDepends'       => array('posixAccount'),
+      'plPriority'      => 6,
+      'plObjectClass'   => array('ldapPublicKey'),
+      'plObjectType'    => array('user'),
+      'plIcon'          => 'geticon.php?context=applications&icon=ssh&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=ssh&size=16',
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
 
   // The main function : information about attributes
   static function getAttributesInfo ()
@@ -95,23 +111,6 @@ class sshAccount extends simplePlugin
           )
         )
       )
-    );
-  }
-
-  static function plInfo()
-  {
-    return array(
-      'plShortName'     => _('SSH'),
-      'plDescription'   => _('Edit user\'s SSH public keys'),
-      'plFilter'        => '(objectClass=ldapPublicKey)',
-      'plSelfModify'    => TRUE,
-      'plDepends'       => array('posixAccount'),
-      'plPriority'      => 6,
-      'plObjectType'    => array('user'),
-      'plIcon'          => 'geticon.php?context=applications&icon=ssh&size=48',
-      'plSmallIcon'     => 'geticon.php?context=applications&icon=ssh&size=16',
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

@@ -20,13 +20,12 @@
 
 class personalConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdPersonalPluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Personal configuration'),
       'plDescription'   => _('FusionDirectory personal plugin configuration'),
+      'plObjectClass'   => array('fdPersonalPluginConf'),
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

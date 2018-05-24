@@ -22,8 +22,6 @@ class newsletterSubscriptions extends simplePlugin
 {
   var $displayHeader = TRUE;
 
-  var $objectclasses = array('fdNewsletterAccount');
-
   static function plInfo()
   {
     return array(
@@ -31,6 +29,7 @@ class newsletterSubscriptions extends simplePlugin
       'plDescription'   => _('Newsletter subscriptions'),
       'plFilter'        => '(objectClass=fdNewsletterAccount)',
       'plSelfModify'    => TRUE,
+      'plObjectClass'   => array('fdNewsletterAccount'),
       'plObjectType'    => array('user'),
       'plIcon'          => 'geticon.php?context=applications&icon=newsletter&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=newsletter&size=16',

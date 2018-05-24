@@ -20,14 +20,13 @@
 
 class serviceDHCP extends simpleService
 {
-  var $objectclasses = array('dhcpServer');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('DHCP service'),
       'plDescription' => _('DHCP service'),
       'plIcon'        => 'geticon.php?context=applications&icon=dhcp&size=16',
+      'plObjectClass' => array('dhcpServer'),
       'plForeignKeys' => array(
         'dhcpServiceDN' => 'dhcpConfiguration',
       ),

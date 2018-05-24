@@ -20,7 +20,6 @@
 
 class ipmiClient extends simplePlugin
 {
-  var $objectclasses  = array('ipmiClient');
   var $displayHeader  = TRUE;
 
   static function plInfo ()
@@ -28,6 +27,7 @@ class ipmiClient extends simplePlugin
     return array(
       'plShortName'     => _('IPMI client'),
       'plDescription'   => _('Edit IPMI client settings'),
+      'plObjectClass'   => array('ipmiClient'),
       'plObjectType'    => array('workstation','server'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

@@ -21,7 +21,6 @@
 
 class argonautFuseLTSPConfig extends simplePlugin
 {
-  var $objectclasses  = array('argonautFuseLTSPConfig');
   var $showActions    = FALSE;
   var $displayHeader  = TRUE;
 
@@ -32,6 +31,7 @@ class argonautFuseLTSPConfig extends simplePlugin
       'plShortName'     => _('Argonaut Fuse LTSP module settings'),
       'plDescription'   => _('Argonaut Fuse LTSP module settings').' ('._('Services').')',
       'plCategory'      => array('server'),
+      'plObjectClass'   => array('argonautFuseLTSPConfig'),
       'plObjectType'    => array('fusemodule'),
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

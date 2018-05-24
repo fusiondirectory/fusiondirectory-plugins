@@ -20,19 +20,14 @@
 
 class mailAliasDistribution extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array('top', 'mailAliasDistribution');
-
-  /* Return plugin information for acl handling  */
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('Temporary mail distribution'),
       'plDescription' => _('Temporary mail distribution'),
+      'plObjectClass' => array('mailAliasDistribution'),
       'plObjectType'  => array('mailAliasDistribution' => array(
         'name'        => _('Temporary mail distribution'),
-        'filter'      => 'objectClass=mailAliasDistribution',
         'aclCategory' => 'alias',
         'icon'        => 'geticon.php?context=applications&icon=alias-distribution&size=16',
         'ou'          => get_ou('aliasRDN'),

@@ -303,17 +303,16 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
 
 class faiPartitionTable extends faiSimplePluginClass
 {
-  var $objectclasses    = array('top','FAIclass','FAIpartitionTable');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Partition table'),
       'plDescription' => _('FAI partition table'),
+      'plObjectClass' => array('FAIclass','FAIpartitionTable'),
+      'plFilter'      => '(objectClass=FAIpartitionTable)',
       'plObjectType'  => array(
         'faiPartitionTable' => array(
           'name'        => _('FAI partition table'),
-          'filter'      => 'objectClass=FAIpartitionTable',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiPartitionTableRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-partitiontable&size=16'

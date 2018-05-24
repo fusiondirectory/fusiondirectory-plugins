@@ -20,17 +20,16 @@
 
 class autofsConfig extends simplePlugin
 {
-  var $objectclasses  = array("fdAutofsPluginConf");
-
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Autofs configuration"),
-      "plDescription"   => _("FusionDirectory autofs plugin configuration"),
-      "plCategory"      => array("configuration"),
-      "plObjectType"    => array("smallConfig"),
+      'plShortName'     => _('Autofs configuration'),
+      'plDescription'   => _('FusionDirectory autofs plugin configuration'),
+      'plObjectClass'   => array('fdAutofsPluginConf'),
+      'plCategory'      => array('configuration'),
+      'plObjectType'    => array('smallConfig'),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

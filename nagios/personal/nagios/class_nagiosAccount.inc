@@ -30,8 +30,6 @@
 
 class nagiosAccount extends simplePlugin
 {
-  var $objectclasses  = array('lconfContact');
-
   var $displayHeader  = TRUE;
 
   static function plInfo()
@@ -44,6 +42,7 @@ class nagiosAccount extends simplePlugin
       'plSmallIcon'   => 'geticon.php?context=applications&icon=nagios&size=16',
       'plSelfModify'  => TRUE,
       'plPriority'    => 7,
+      'plObjectClass' => array('lconfContact'),
       'plObjectType'  => array('user'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

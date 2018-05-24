@@ -21,16 +21,13 @@
 
 class serviceSympa extends simpleService
 {
-  /* This plugin only writes its objectClass */
-  var $objectclasses  = array("sympaServer");
-
-  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Sympa Server'),
       'plDescription' => _('Sympa Server').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=sympa&size=16',
+      'plObjectClass' => array('sympaServer'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

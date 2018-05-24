@@ -20,8 +20,20 @@
 
 class fiInventoryAgent extends simplePlugin
 {
-  var $objectclasses  = array('fusionInventoryAgent');
   var $displayHeader  = TRUE;
+
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('FusionInventory'),
+      'plDescription' => _('FusionInventory agent configuration'),
+      'plPriority'    => 90,
+      'plObjectClass' => array('fusionInventoryAgent'),
+      'plObjectType'  => array('workstation', 'server'),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
 
   static function getAttributesInfo ()
   {
@@ -67,19 +79,6 @@ class fiInventoryAgent extends simplePlugin
           ),
         )
       )
-    );
-  }
-
-  /* Return plugin information */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('FusionInventory'),
-      'plDescription' => _('FusionInventory agent configuration'),
-      'plPriority'    => 90,
-      'plObjectType'  => array('workstation', 'server'),
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 }

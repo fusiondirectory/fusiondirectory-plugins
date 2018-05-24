@@ -20,17 +20,15 @@
 
 class opsiOnDemandList extends opsiSoftwareList
 {
-  var $objectclasses   = array('opsiOnDemandList');
-
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('OPSI ondemand list'),
       'plDescription' => _('OPSI on demand software list'),
       'plIcon'        => 'geticon.php?context=applications&icon=opsi-on-demand&size=16',
+      'plObjectClass' => array('opsiOnDemandList'),
       'plObjectType'  => array('opsiOnDemandList' => array(
         'name'    => _('OPSI ondemand list'),
-        'filter'  => 'objectClass=opsiOnDemandList',
         'ou'      => get_ou('opsiRDN'),
         'icon'    => 'geticon.php?context=applications&icon=opsi-on-demand&size=16',
       )),

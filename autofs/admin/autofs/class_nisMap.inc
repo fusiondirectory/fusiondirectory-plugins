@@ -20,19 +20,14 @@
 
 class nisMap extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses  = array('nisMap', 'top');
-
-  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Mount point'),
       'plDescription'   => _('Autofs mount point'),
+      'plObjectClass'   => array('nisMap'),
       'plObjectType'    => array('nisMap' => array(
         'name'        => _('Mount point'),
-        'filter'      => 'objectClass=nisMap',
         'ou'          => get_ou('autofsRDN'),
         'icon'        => 'geticon.php?context=applications&icon=autofs-nis-netmap&size=16',
         'mainAttr'    => 'nisMapName',

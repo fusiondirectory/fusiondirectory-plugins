@@ -109,7 +109,6 @@ class CertificateFileAttribute extends FileAttribute
 class userCertificates extends simplePlugin
 {
   var $displayHeader = TRUE;
-  var $objectclasses = array('strongAuthenticationUser');
 
   static function plInfo()
   {
@@ -118,6 +117,7 @@ class userCertificates extends simplePlugin
       'plDescription'   => _('User certificates'),
       'plFilter'        => '(objectClass=strongAuthenticationUser)',
       'plSelfModify'    => TRUE,
+      'plObjectClass'   => array('strongAuthenticationUser'),
       'plObjectType'    => array('user'),
       'plIcon'          => 'geticon.php?context=types&icon=certificate&size=48',
       'plSmallIcon'     => 'geticon.php?context=types&icon=certificate&size=16',

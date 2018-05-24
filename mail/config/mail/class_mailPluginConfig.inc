@@ -20,17 +20,16 @@
 
 class mailPluginConfig extends simplePlugin
 {
-  var $objectclasses  = array("fdMailPluginConf");
-
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Mail"),
-      "plDescription"   => _("Mail plugin configuration"),
-      "plPriority"      => 3,
-      "plObjectType"    => array("configuration"),
+      'plShortName'     => _('Mail'),
+      'plDescription'   => _('Mail plugin configuration'),
+      'plPriority'      => 3,
+      'plObjectClass'   => array('fdMailPluginConf'),
+      'plObjectType'    => array('configuration'),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

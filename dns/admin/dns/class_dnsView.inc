@@ -20,16 +20,14 @@
 
 class dnsView extends simplePlugin
 {
-  var $objectclasses = array('fdDNSView');
-
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('DNS view'),
       'plDescription' => _('DNS view'),
+      'plObjectClass' => array('fdDNSView'),
       'plObjectType'  => array('dnsView' => array(
         'name'        => _('DNS view'),
-        'filter'      => '(objectClass=fdDNSView)',
         'ou'          => get_ou('dnsRDN'),
         'icon'        => 'geticon.php?context=applications&icon=dns&size=16'
       )),

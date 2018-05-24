@@ -21,16 +21,14 @@
 
 class application extends simplePlugin
 {
-  var $objectclasses = array('fdDesktopApplication');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Application'),
       'plDescription' => _('Application information'),
+      'plObjectClass' => array('fdDesktopApplication'),
       'plObjectType'  => array('application' => array(
         'name'    => _('Application'),
-        'filter'  => 'objectClass=fdDesktopApplication',
         'ou'      => get_ou('applicationsRDN'),
         'icon'    => 'geticon.php?context=mimetypes&icon=application-x-executable&size=16',
       )),

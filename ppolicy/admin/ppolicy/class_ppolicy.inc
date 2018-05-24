@@ -21,16 +21,12 @@
 
 class ppolicy extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array('device', 'pwdPolicy', 'pwdPolicyChecker');
-
-  /* Return plugin information for acl handling  */
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('Password policy'),
       'plDescription' => _('Password policy for ppolicy overlay'),
+      'plObjectClass' => array('device', 'pwdPolicy', 'pwdPolicyChecker'),
       'plObjectType'  => array('ppolicy' => array(
         'name'        => _('Password policy'),
         'filter'      => 'objectClass=pwdPolicy',

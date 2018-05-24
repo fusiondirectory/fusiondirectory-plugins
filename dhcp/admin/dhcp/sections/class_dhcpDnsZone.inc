@@ -20,14 +20,13 @@
 
 class dhcpDnsZone extends dhcpPlugin
 {
-  public $objectclasses = array('dhcpDnsZone');
-
   public static function plInfo()
   {
     return array(
       'plShortName'     => _('DHCP DNS update zone'),
       'plDescription'   => _('DHCP DNS update zone'),
       'plCategory'      => array('dhcpConfiguration'),
+      'plObjectClass'   => array('dhcpDnsZone'),
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }

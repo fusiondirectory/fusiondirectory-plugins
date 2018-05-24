@@ -21,20 +21,16 @@
 
 class componentGeneric extends ipHostPlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array('device', 'ieee802Device');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Component'),
       'plDescription' => _('Component information'),
+      'plObjectClass' => array('device', 'ieee802Device'),
       'plObjectType'  => array(
         'component' => array(
           'name'        => _('Network device'),
           'description' => _('Network device'),
-          'filter'      => '(&(objectClass=ieee802Device)(objectClass=device))',
           'icon'        => 'geticon.php?context=devices&icon=network-device&size=16',
           'ou'          => get_ou('componentRDN'),
         )

@@ -21,7 +21,6 @@
 class sambaGroup extends simplePlugin
 {
   var $displayHeader  = TRUE;
-  var $objectclasses  = array('sambaGroupMapping');
 
   static function plInfo()
   {
@@ -31,6 +30,7 @@ class sambaGroup extends simplePlugin
       'plFilter'      => '(objectClass=sambaGroupMapping)',
       'plIcon'        => 'geticon.php?context=applications&icon=samba&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=samba&size=16',
+      'plObjectClass' => array('sambaGroupMapping'),
       'plObjectType'  => array('group'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

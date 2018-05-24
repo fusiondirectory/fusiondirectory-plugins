@@ -20,14 +20,13 @@
 
 class serviceDovecot extends simpleMailMethodService
 {
-  var $objectclasses = array('fdDovecotServer');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Dovecot (IMAP/POP3)'),
       'plDescription'   => _('Dovecot (IMAP/POP3)').' ('._('Services').')',
       'plIcon'          => 'geticon.php?context=applications&icon=dovecot&size=16',
+      'plObjectClass'   => array('fdDovecotServer'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

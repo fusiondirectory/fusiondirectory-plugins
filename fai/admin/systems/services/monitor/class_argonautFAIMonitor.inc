@@ -20,14 +20,13 @@
 
 class argonautFAIMonitor extends simpleService
 {
-  var $objectclasses  = array('argonautFAIMonitorConfig');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Argonaut FAI monitor'),
       'plDescription'   => _('Argonaut FAI monitor settings'),
       'plIcon'          => 'geticon.php?context=applications&icon=fai&size=16',
+      'plObjectClass'   => array('argonautFAIMonitorConfig'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

@@ -21,19 +21,18 @@
 
 class argonautFuseOPSIConfig extends simplePlugin
 {
-  var $objectclasses  = array("argonautFuseOPSIConfig");
   var $showActions    = FALSE;
-  var $displayHeader     = TRUE;
+  var $displayHeader  = TRUE;
 
-  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Argonaut Fuse OPSI module settings"),
-      "plDescription"   => _("Argonaut Fuse OPSI module settings")." ("._("Services").")",
-      "plCategory"      => array("server"),
-      "plObjectType"    => array("fusemodule"),
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plShortName'     => _('Argonaut Fuse OPSI module settings'),
+      'plDescription'   => _('Argonaut Fuse OPSI module settings').' ('._('Services').')',
+      'plCategory'      => array('server'),
+      'plObjectClass'   => array('argonautFuseOPSIConfig'),
+      'plObjectType'    => array('fusemodule'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

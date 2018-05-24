@@ -20,18 +20,14 @@
 
 class repositoryDistribution extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array('fdBuildRepositoryDistribution');
-
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('Repository distribution'),
       'plDescription' => _('Repository distribution'),
+      'plObjectClass' => array('fdBuildRepositoryDistribution'),
       'plObjectType'  => array('repoDistribution' => array(
         'name'        => _('Repository distribution'),
-        'filter'      => 'objectClass=fdBuildRepositoryDistribution',
         'aclCategory' => 'repository',
         'ou'          => get_ou('repositoryRDN'),
         'icon'        => 'geticon.php?context=applications&icon=repository-distribution&size=16'

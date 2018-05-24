@@ -21,17 +21,15 @@
 
 class terminalStartup extends simplePlugin
 {
-  var $objectclasses = array('fdTerminalStartup');
-
   var $inheritance = array('gosaGroupOfNames' => 'member');
 
-  /* Return plugin information */
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Startup'),
       'plDescription'   => _('Terminal startup'),
       'plPriority'      => 2,
+      'plObjectClass'   => array('fdTerminalStartup'),
       'plObjectType'    => array('terminal', 'ogroup-dynamic'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

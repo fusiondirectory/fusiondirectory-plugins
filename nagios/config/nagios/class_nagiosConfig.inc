@@ -20,13 +20,12 @@
 
 class nagiosConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdNagiosPluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Nagios configuration'),
       'plDescription'   => _('FusionDirectory nagios plugin configuration'),
+      'plObjectClass'   => array('fdNagiosPluginConf'),
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

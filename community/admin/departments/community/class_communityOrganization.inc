@@ -20,7 +20,6 @@
 
 class communityOrganization extends simplePlugin
 {
-  var $objectclasses  = array('fdCommunityOrganization');
   var $displayHeader  = TRUE;
 
   static function plInfo ()
@@ -28,6 +27,7 @@ class communityOrganization extends simplePlugin
     return array(
       'plShortName'     => _('Community organization'),
       'plDescription'   => _('Community organization dates and alternate address'),
+      'plObjectClass'   => array('fdCommunityOrganization'),
       'plObjectType'    => array('organization'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

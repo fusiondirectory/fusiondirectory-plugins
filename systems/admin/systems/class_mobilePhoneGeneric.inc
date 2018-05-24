@@ -20,22 +20,19 @@
 
 class mobilePhoneGeneric extends ipHostPlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array('fdMobilePhone', 'ieee802Device');
-
-  var $inheritance = array("gosaGroupOfNames" => "member");
+  var $inheritance = array('gosaGroupOfNames' => 'member');
 
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Mobile phone'),
       'plDescription' => _('Mobile phone information'),
+      'plObjectClass' => array('fdMobilePhone', 'ieee802Device'),
+      'plFilter'      => '(objectClass=fdMobilePhone)',
       'plObjectType'  => array(
         'mobilePhone' => array(
           'name'        => _('Mobile phone'),
           'description' => _('Mobile phone'),
-          'filter'      => 'objectClass=fdMobilePhone',
           'icon'        => 'geticon.php?context=devices&icon=phone&size=16',
           'ou'          => get_ou('mobilePhoneRDN'),
         )

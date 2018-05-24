@@ -20,14 +20,13 @@
 
 class serviceRenaterPartage extends simpleMailMethodService
 {
-  var $objectclasses = array('fdRenaterPartageServer');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Renater Partage'),
       'plDescription'   => _('Renater Partage'),
       'plIcon'          => 'geticon.php?context=applications&icon=renater-partage&size=16',
+      'plObjectClass'   => array('fdRenaterPartageServer'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

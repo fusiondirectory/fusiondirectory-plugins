@@ -20,13 +20,13 @@
 
 class applicationsPluginConfig extends simplePlugin
 {
-  var $objectclasses = array('fdApplicationsPluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Applications'),
       'plDescription'   => _('Applications plugin configuration'),
+      'plObjectClass'   => array('fdApplicationsPluginConf'),
+      'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

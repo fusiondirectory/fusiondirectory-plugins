@@ -20,13 +20,12 @@
 
 class sympaConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdSympaPluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Sympa configuration'),
       'plDescription'   => _('FusionDirectory sympa plugin configuration'),
+      'plObjectClass'   => array('fdSympaPluginConf'),
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

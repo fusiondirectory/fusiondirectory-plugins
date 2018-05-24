@@ -20,16 +20,14 @@
 
 class webApplication extends simplePlugin
 {
-  var $objectclasses = array('fdWebApplication');
-
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('Web application'),
       'plDescription' => _('Web applicationts names, icons and links'),
+      'plObjectClass' => array('fdWebApplication'),
       'plObjectType'  => array('webApplication' => array(
         'name'        => _('Web application'),
-        'filter'      => 'objectClass=fdWebApplication',
         'ou'          => get_ou('webappsRDN'),
         'icon'        => 'geticon.php?context=categories&icon=applications-internet&size=16'
       )),

@@ -20,17 +20,16 @@
 
 class dsaConfig extends simplePlugin
 {
-  var $objectclasses  = array("fdDsaPluginConf");
-
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("DSA configuration"),
-      "plDescription"   => _("FusionDirectory dsa plugin configuration"),
-      "plCategory"      => array("configuration"),
-      "plObjectType"    => array("smallConfig"),
+      'plShortName'     => _('DSA configuration'),
+      'plDescription'   => _('FusionDirectory dsa plugin configuration'),
+      'plObjectClass'   => array('fdDsaPluginConf'),
+      'plCategory'      => array('configuration'),
+      'plObjectType'    => array('smallConfig'),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

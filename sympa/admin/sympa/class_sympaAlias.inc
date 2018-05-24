@@ -20,17 +20,14 @@
 
 class sympaAlias extends simplePlugin
 {
-  var $objectclasses = array('sympaAlias');
-
-  /* Return plugin information for acl handling */
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('Sympa list alias'),
       'plDescription' => _('Sympa list alias'),
+      'plObjectClass' => array('sympaAlias'),
       'plObjectType'  => array('sympaAlias' => array(
         'name'        => _('Sympa list alias'),
-        'filter'      => 'objectClass=sympaAlias',
         'icon'        => 'geticon.php?context=applications&icon=sympa&size=16',
         'ou'          => get_ou('sympaRDN'),
       )),

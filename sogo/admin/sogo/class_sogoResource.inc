@@ -20,19 +20,15 @@
 
 class sogoResource extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array('inetOrgPerson','top','CalendarResource');
-
-  /* Return plugin information for acl handling */
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('SOGo resource'),
       'plDescription' => _('SOGo resource'),
+      'plObjectClass' => array('inetOrgPerson','CalendarResource'),
+      'plFilter'      => '(objectClass=CalendarResource)',
       'plObjectType'  => array('sogoResource' => array(
         'name'        => _('SOGo resource'),
-        'filter'      => 'objectClass=CalendarResource',
         'aclCategory' => 'sogo',
         'ou'          => get_ou('sogoRDN'),
         'icon'        => 'geticon.php?context=applications&icon=sogo&size=16',

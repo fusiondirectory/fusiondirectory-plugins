@@ -145,8 +145,6 @@ class winstationSelect extends simpleSelectManagement
 
 class sambaAccount extends simplePlugin
 {
-  var $objectclasses = array('sambaSamAccount');
-
   var $displayHeader = TRUE;
 
   var $SID      = "";
@@ -163,6 +161,7 @@ class sambaAccount extends simplePlugin
       'plSelfModify'    => TRUE,
       'plDepends'       => array('posixAccount'),
       'plPriority'      => 5,
+      'plObjectClass'   => array('sambaSamAccount'),
       'plObjectType'    => array('user'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

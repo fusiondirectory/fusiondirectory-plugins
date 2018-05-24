@@ -21,20 +21,18 @@
 
 class printGeneric extends ipHostPlugin
 {
-  var $objectclasses  = array('fdPrinter', 'ieee802Device');
-
-  /* Return plugin information */
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Printer'),
       'plDescription' => _('Printer information'),
       'plPriority'    => 10,
+      'plObjectClass' => array('fdPrinter', 'ieee802Device'),
+      'plFilter'      => '(objectClass=fdPrinter)',
       'plObjectType'  => array('printer' =>
         array(
           'name'        => _('Printer'),
           'description' => _('Printer'),
-          'filter'      => 'objectClass=fdPrinter',
           'icon'        => 'geticon.php?context=devices&icon=printer&size=16',
           'ou'          => get_ou('printerRDN'),
         )

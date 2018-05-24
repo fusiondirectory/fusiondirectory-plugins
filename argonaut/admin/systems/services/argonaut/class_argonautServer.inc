@@ -21,10 +21,6 @@
 
 class argonautServer extends simpleService
 {
-  /* This plugin only writes its objectClass */
-  var $objectclasses  = array("argonautServer");
-
-  /* Return plugin information for acl handling */
   static function plInfo()
   {
     $acls = parent::generatePlProvidedAcls(static::getAttributesInfo());
@@ -35,12 +31,13 @@ class argonautServer extends simpleService
       'plShortName'   => _('Argonaut server'),
       'plDescription' => _('Argonaut server').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=argonaut&size=16',
+      'plObjectClass' => array('argonautServer'),
 
       'plProvidedAcls'  => $acls,
     );
   }
 
-    /*!
+  /*!
    *  \brief The main function : information about attributes
    */
   static function getAttributesInfo ()

@@ -18,18 +18,17 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class servicePuppet extends simpleService {
-  var $objectclasses = array('puppetServer');
-
-  // We also need this function that return some information about the plugin
+class servicePuppet extends simpleService
+{
   static function plInfo ()
   {
     return array(
-      'plShortName'       => _('Puppet server'),
-      'plDescription'     => _('This service allows you to use a puppet server'),
-      'plIcon'            => 'geticon.php?context=applications&icon=puppet&size=16',
+      'plShortName'     => _('Puppet server'),
+      'plDescription'   => _('This service allows you to use a puppet server'),
+      'plIcon'          => 'geticon.php?context=applications&icon=puppet&size=16',
+      'plObjectClass'   => array('puppetServer'),
 
-      'plProvidedAcls'    => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

@@ -38,8 +38,7 @@ class GroupMailsAttribute extends MailsAttribute
 class mailGroup extends simplePlugin
 {
   var $displayHeader  = TRUE;
-  var $objectclasses  = array('fdGroupMail');
-  /* Return plugin information for acl handling */
+
   static function plInfo()
   {
     return array(
@@ -49,6 +48,7 @@ class mailGroup extends simplePlugin
       'plIcon'          => 'geticon.php?context=applications&icon=internet-mail&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=internet-mail&size=16',
       'plPriority'      => 10,
+      'plObjectClass'   => array('fdGroupMail'),
       'plObjectType'    => array('group', 'ogroup-user'),
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

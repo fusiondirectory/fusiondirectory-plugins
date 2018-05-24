@@ -20,17 +20,16 @@
 
 class fiConfig extends simplePlugin
 {
-  var $objectclasses  = array("fdInventoryPluginConf");
-
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("FusionInventory configuration"),
-      "plDescription"   => _("FusionDirectory FusionInventory plugin configuration"),
-      "plCategory"      => array("configuration"),
-      "plObjectType"    => array("smallConfig"),
+      'plShortName'     => _('FusionInventory configuration'),
+      'plDescription'   => _('FusionDirectory FusionInventory plugin configuration'),
+      'plObjectClass'   => array('fdInventoryPluginConf'),
+      'plCategory'      => array('configuration'),
+      'plObjectType'    => array('smallConfig'),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

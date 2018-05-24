@@ -21,7 +21,6 @@
 
 class dashboardNetwork extends simplePlugin
 {
-  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(

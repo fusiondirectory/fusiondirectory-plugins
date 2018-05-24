@@ -20,13 +20,12 @@
 
 class dhcpConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdDhcpPluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('DHCP configuration'),
       'plDescription'   => _('FusionDirectory dhcp plugin configuration'),
+      'plObjectClass'   => array('fdDhcpPluginConf'),
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

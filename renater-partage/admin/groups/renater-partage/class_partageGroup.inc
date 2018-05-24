@@ -21,7 +21,6 @@
 class partageGroup extends simplePlugin
 {
   var $displayHeader  = TRUE;
-  var $objectclasses  = array('fdRenaterPartageGroup');
 
   static function plInfo()
   {
@@ -31,6 +30,7 @@ class partageGroup extends simplePlugin
       'plFilter'       => '(objectClass=fdRenaterPartageGroup)',
       'plSmallIcon'    => 'geticon.php?context=applications&icon=renater-partage&size=16',
       'plDepends'      => array('mailGroup'),
+      'plObjectClass'  => array('fdRenaterPartageGroup'),
       'plObjectType'   => array('group', 'ogroup-user'),
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

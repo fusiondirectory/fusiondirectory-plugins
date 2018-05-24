@@ -20,8 +20,6 @@
 
 class systemsPluginConfig extends simplePlugin
 {
-  var $objectclasses = array('fdSystemsPluginConf');
-
   static protected $ipClasses = array();
 
   static function plInfo()
@@ -29,6 +27,7 @@ class systemsPluginConfig extends simplePlugin
     return array(
       'plShortName'     => _('Systems'),
       'plDescription'   => _('Systems plugin configuration'),
+      'plObjectClass'   => array('fdSystemsPluginConf'),
       'plObjectType'    => array('configuration'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

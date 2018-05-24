@@ -21,9 +21,22 @@
 class gpgAccount extends simplePlugin
 {
   var $displayHeader = TRUE;
-  var $objectclasses = array('fdGpgAccount');
 
-  // The main function : information about attributes
+  static function plInfo()
+  {
+    return array(
+      'plShortName'     => _('GPG'),
+      'plDescription'   => _('Edit user\'s GPG IDs'),
+      'plSelfModify'    => TRUE,
+      'plObjectClass'   => array('fdGpgAccount'),
+      'plObjectType'    => array('user'),
+      'plIcon'          => 'geticon.php?context=applications&icon=gpg&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=gpg&size=16',
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
+
   static function getAttributesInfo ()
   {
     return array(
@@ -37,21 +50,6 @@ class gpgAccount extends simplePlugin
           )
         )
       )
-    );
-  }
-
-  static function plInfo()
-  {
-    return array(
-      'plShortName'     => _('GPG'),
-      'plDescription'   => _('Edit user\'s GPG IDs'),
-      'plFilter'        => '(objectClass=fdGpgAccount)',
-      'plSelfModify'    => TRUE,
-      'plObjectType'    => array('user'),
-      'plIcon'          => 'geticon.php?context=applications&icon=gpg&size=48',
-      'plSmallIcon'     => 'geticon.php?context=applications&icon=gpg&size=16',
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 }

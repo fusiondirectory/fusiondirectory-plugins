@@ -21,20 +21,17 @@
 
 class workstationGeneric extends ipHostPlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array('fdWorkstation', 'ieee802Device');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Workstation'),
       'plDescription' => _('Workstation information'),
+      'plObjectClass' => array('fdWorkstation', 'ieee802Device'),
+      'plFilter'      => '(objectClass=fdWorkstation)',
       'plObjectType'  => array('workstation' =>
         array(
           'name'        => _('Workstation'),
           'description' => _('Workstation'),
-          'filter'      => 'objectClass=fdWorkstation',
           'ou'          => get_ou('workstationRDN'),
           'icon'        => 'geticon.php?context=devices&icon=computer&size=16',
           'mainAttr'    => 'cn',

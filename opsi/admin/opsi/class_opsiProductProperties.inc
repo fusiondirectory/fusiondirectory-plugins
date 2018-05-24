@@ -90,8 +90,6 @@ class ProductPropertyAttribute extends CompositeAttribute
 
 class opsiProductProperties extends simplePlugin
 {
-  var $objectclasses = array('opsiProductProperties');
-
   var $properties = array();
 
   public static function plInfo()
@@ -99,6 +97,7 @@ class opsiProductProperties extends simplePlugin
     return array(
       'plShortName'   => _('Product properties'),
       'plDescription' => _('Product properties'),
+      'plObjectClass' => array('opsiProductProperties'),
       'plObjectType'  => array('opsiProfile'),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())

@@ -20,17 +20,15 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceSpamAssassin extends simpleService {
-
-  /* This plugin only writes its objectClass */
-  var $objectclasses = array('goSpamServer');
-
+class serviceSpamAssassin extends simpleService
+{
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Spamassassin service'),
       'plDescription' => _('Spamassassin service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=spamassassin&size=16',
+      'plObjectClass' => array('goSpamServer'),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

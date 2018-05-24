@@ -22,8 +22,7 @@
 
 class posixGroup extends simplePlugin
 {
-  public $objectclasses = array('posixGroup');
-  protected $locks      = array();
+  protected $locks = array();
 
   static function plInfo()
   {
@@ -33,12 +32,11 @@ class posixGroup extends simplePlugin
     return array(
       'plShortName'   => _('Group'),
       'plDescription' => _('POSIX group information'),
-      'plFilter'      => '(objectClass=posixGroup)',
+      'plObjectClass' => array('posixGroup'),
       'plObjectType'  => array('group' => array(
         'name'        => _('POSIX group'),
         'description' => _('POSIX user group'),
         'ou'          => get_ou('groupRDN'),
-        'filter'      => 'objectClass=posixGroup',
         'icon'        => 'geticon.php?context=types&icon=user-group&size=16',
         'mainAttr'    => 'cn',
       )),

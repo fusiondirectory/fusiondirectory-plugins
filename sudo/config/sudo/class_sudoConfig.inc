@@ -20,13 +20,12 @@
 
 class sudoConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdSudoPluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Sudo configuration'),
       'plDescription'   => _('FusionDirectory sudo plugin configuration'),
+      'plObjectClass'   => array('fdSudoPluginConf'),
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

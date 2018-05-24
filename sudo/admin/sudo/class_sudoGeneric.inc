@@ -114,18 +114,15 @@ class defaultRoleAttribute extends BooleanAttribute
  */
 class sudo extends simplePlugin
 {
-  public $objectclasses = array('sudoRole');
-  var $mainTab          = TRUE;
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Sudo'),
       'plDescription' => _('Sudo role'),
       'plIcon'        => 'geticon.php?context=applications&icon=sudo&size=48',
+      'plObjectClass' => array('sudoRole'),
       'plObjectType'  => array('sudo' => array(
         'name'      => _('Sudo role'),
-        'filter'    => 'objectClass=sudoRole',
         'icon'      => 'geticon.php?context=applications&icon=sudo&size=16',
         'ou'        => get_ou('sudoRDN'),
         'tabClass'  => 'sudotabs',

@@ -22,8 +22,6 @@ class argonautDNSConfig extends simpleService
 {
   protected static $showActions = FALSE;
 
-  var $objectclasses  = array('argonautDNSConfig');
-
   /* Return plugin information for acl handling */
   static function plInfo()
   {
@@ -31,6 +29,7 @@ class argonautDNSConfig extends simpleService
       'plShortName'     => _('Argonaut DNS settings'),
       'plDescription'   => _('Argonaut DNS settings').' ('._('Services').')',
       'plIcon'          => 'geticon.php?context=applications&icon=argonaut-dns&size=16',
+      'plObjectClass'   => array('argonautDNSConfig'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

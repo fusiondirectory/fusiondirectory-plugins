@@ -158,18 +158,15 @@ class DebconfImportAttribute extends FileAttribute
 
 class debconfProfileGeneric extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses   = array("top","organizationalUnit");
-
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('Debconf profile'),
       'plDescription' => _('Debconf profile information'),
+      'plObjectClass' => array('organizationalUnit'),
+      'plFilter'      => '(&(objectClass=organizationalUnit)(!(objectClass=gosaDepartment)))',
       'plObjectType'  => array('debconfProfile' => array(
         'name'      => _('Debconf profile'),
-        'filter'    => '(&(objectClass=organizationalUnit)(!(objectClass=gosaDepartment)))',
         'ou'        => get_ou('debconfRDN'),
         'icon'      => 'geticon.php?context=applications&icon=debconf&size=16',
         'mainAttr'  => 'ou',

@@ -20,17 +20,16 @@
 
 class aliasConfig extends simplePlugin
 {
-  var $objectclasses  = array("fdAliasPluginConf");
-
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Alias configuration"),
-      "plDescription"   => _("FusionDirectory alias plugin configuration"),
-      "plCategory"      => array("configuration"),
-      "plObjectType"    => array("smallConfig"),
+      'plShortName'     => _('Alias configuration'),
+      'plDescription'   => _('FusionDirectory alias plugin configuration'),
+      'plObjectClass'   => array('fdAliasPluginConf'),
+      'plCategory'      => array('configuration'),
+      'plObjectType'    => array('smallConfig'),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

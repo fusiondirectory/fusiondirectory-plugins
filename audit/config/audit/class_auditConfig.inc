@@ -20,13 +20,12 @@
 
 class auditConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdAuditPluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Audit configuration'),
       'plDescription'   => _('FusionDirectory audit plugin configuration'),
+      'plObjectClass'   => array('fdAuditPluginConf'),
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

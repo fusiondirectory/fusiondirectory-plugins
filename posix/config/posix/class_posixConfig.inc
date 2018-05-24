@@ -20,8 +20,6 @@
 
 class posixConfig extends simplePlugin
 {
-  var $objectclasses = array();
-
   static function plInfo()
   {
     return array(

@@ -20,7 +20,6 @@
 
 class opsiClient extends simplePlugin
 {
-  var $objectclasses  = array('opsiClient');
   var $displayHeader  = TRUE;
 
   var $inheritance = array('gosaGroupOfNames' => 'member');
@@ -35,6 +34,7 @@ class opsiClient extends simplePlugin
     return array(
       'plShortName'   => _('OPSI client'),
       'plDescription' => _('Edit OPSI client settings'),
+      'plObjectClass' => array('opsiClient'),
       'plObjectType'  => array('workstation', 'ogroup-dynamic'),
       'plDepends'     => array('sambaSystemTab'),
       'plConflicts'   => array('debconfStartup','faiStartup'),

@@ -18,7 +18,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-class netgroupSystem extends netgroupMembership {
+class netgroupSystem extends netgroupMembership
+{
   protected static $id_attr = 'cn';
 
   static function plInfo()

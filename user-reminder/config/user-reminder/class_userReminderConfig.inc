@@ -20,13 +20,12 @@
 
 class userReminderConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdUserReminderPluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('User reminder'),
       'plDescription'   => _('Configuration for the reminder of accounts expiration'),
+      'plObjectClass'   => array('fdUserReminderPluginConf'),
       'plObjectType'    => array('configuration'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

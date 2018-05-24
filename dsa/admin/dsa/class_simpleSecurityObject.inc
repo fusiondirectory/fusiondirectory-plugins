@@ -20,19 +20,15 @@
 
 class simpleSecurityObject extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array('organizationalRole', 'top', 'simpleSecurityObject');
-
-  /* Return plugin information for acl handling */
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('Simple security object'),
       'plDescription' => _('Simple security object'),
+      'plObjectClass' => array('organizationalRole', 'simpleSecurityObject'),
+      'plFilter'      => '(objectClass=simpleSecurityObject)',
       'plObjectType'  => array('simpleSecurityObject' => array(
         'name'        => _('Simple security object'),
-        'filter'      => 'objectClass=simpleSecurityObject',
         'aclCategory' => 'dsa',
         'ou'          => get_ou('dsaRDN'),
         'icon'        => 'geticon.php?context=applications&icon=dsa&size=16',

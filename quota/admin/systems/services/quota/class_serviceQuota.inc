@@ -21,14 +21,13 @@
 
 class serviceQuota extends simpleService
 {
-  var $objectclasses = array('quotaService');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Quota service'),
       'plDescription' => _('Quota service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=quota&size=16',
+      'plObjectClass' => array('quotaService'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

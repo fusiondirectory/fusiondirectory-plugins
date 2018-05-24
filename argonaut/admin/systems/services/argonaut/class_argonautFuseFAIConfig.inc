@@ -21,19 +21,18 @@
 
 class argonautFuseFAIConfig extends simplePlugin
 {
-  var $objectclasses  = array("argonautFuseFAIConfig");
   var $showActions    = FALSE;
-  var $displayHeader     = TRUE;
+  var $displayHeader  = TRUE;
 
-  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Argonaut Fuse FAI module settings"),
-      "plDescription"   => _("Argonaut Fuse FAI module settings")." ("._("Services").")",
-      "plCategory"      => array("server"),
-      "plObjectType"    => array("fusemodule"),
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plShortName'     => _('Argonaut Fuse FAI module settings'),
+      'plDescription'   => _('Argonaut Fuse FAI module settings').' ('._('Services').')',
+      'plCategory'      => array('server'),
+      'plObjectClass'   => array('argonautFuseFAIConfig'),
+      'plObjectType'    => array('fusemodule'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

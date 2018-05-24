@@ -48,14 +48,13 @@ class CatchallDomainAttribute extends StringAttribute
 
 class servicePostfix extends simpleService
 {
-  var $objectclasses = array('fdPostfixServer');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Postfix (SMTP)'),
       'plDescription' => _('Postfix (SMTP)').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=smtp&size=16',
+      'plObjectClass' => array('fdPostfixServer'),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

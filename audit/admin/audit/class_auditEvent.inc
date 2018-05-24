@@ -49,16 +49,14 @@ class auditEvent extends simplePlugin
 {
   public $base;
 
-  var $objectclasses = array('fdAuditEvent');
-
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('Audit event'),
       'plDescription' => _('An event like ldap modification which was registered by audit plugin'),
+      'plObjectClass' => array('fdAuditEvent'),
       'plObjectType'  => array('auditEvent' => array(
         'name'        => _('Audit event'),
-        'filter'      => 'objectClass=fdAuditEvent',
         'icon'        => 'geticon.php?context=applications&icon=audit&size=16',
         'ou'          => get_ou('auditRDN'),
         'mainAttr'    => FALSE,
