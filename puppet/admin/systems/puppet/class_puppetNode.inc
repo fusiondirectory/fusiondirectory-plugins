@@ -22,7 +22,18 @@
 class puppetNode extends simplePlugin
 {
   var $displayHeader  = TRUE;
-  var $objectclasses  = array("puppetClient");
+
+  static function plInfo ()
+  {
+    return array(
+      'plShortName'     => _('Puppet'),
+      'plDescription'   => _('Support for puppet schema in order to edit puppet classes and puppet vars'),
+      'plObjectClass'   => array('puppetClient'),
+      'plObjectType'    => array('server', 'workstation'),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
 
   static function getAttributesInfo ()
   {
@@ -55,19 +66,6 @@ class puppetNode extends simplePlugin
           ),
         )
       ),
-    );
-  }
-
-  // We also need this function that return some information about the plugin
-  static function plInfo ()
-  {
-    return array(
-      "plShortName"       => _("Puppet"),
-      "plDescription"     => _("Support for puppet schema in order to edit puppet classes and puppet vars"),
-      "plObjectType"      => array("server", "workstation"),
-
-      // But simplePlugin can generate the ACL list for us
-      "plProvidedAcls"    => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

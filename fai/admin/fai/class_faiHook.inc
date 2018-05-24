@@ -20,17 +20,16 @@
 
 class faiHook extends faiSimplePluginClass
 {
-  var $objectclasses = array('top','FAIclass','FAIhook');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Hook'),
       'plDescription' => _('FAI hook'),
+      'plObjectClass' => array('FAIclass','FAIhook'),
+      'plFilter'      => '(objectClass=FAIhook)',
       'plObjectType'  => array(
         'faiHook' => array(
           'name'        => _('FAI hook'),
-          'filter'      => 'objectClass=FAIhook',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiHookRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-hook&size=16'

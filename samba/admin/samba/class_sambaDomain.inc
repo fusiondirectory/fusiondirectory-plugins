@@ -20,20 +20,16 @@
 
 class sambaDomain extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array('sambaDomain');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Samba Domain'),
       'plDescription' => _('Samba Domain'),
+      'plObjectClass' => array('sambaDomain'),
       'plObjectType'  => array(
         'sambaDomain' => array(
           'name'        => _('Samba Domain'),
           'description' => _('Samba domain settings'),
-          'filter'      => '(objectClass=sambaDomain)',
           'icon'        => 'geticon.php?context=applications&icon=samba&size=16',
           'ou'          => '',
           'mainAttr'    => 'sambaDomainName',

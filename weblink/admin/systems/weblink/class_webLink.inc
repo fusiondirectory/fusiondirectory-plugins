@@ -20,7 +20,6 @@
 
 class webLink extends simplePlugin
 {
-  var $objectclasses  = array('webLink');
   var $displayHeader  = TRUE;
 
   var $inheritance = array('gosaGroupOfNames' => 'member');
@@ -30,6 +29,7 @@ class webLink extends simplePlugin
     return array(
       'plShortName'     => _('Web link'),
       'plDescription'   => _('Edit web link'),
+      'plObjectClass'   => array('webLink'),
       'plObjectType'    => array('workstation','server','ipmi','component','printer'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

@@ -142,6 +142,18 @@ class faiLogView extends simplePlugin
 
   var $displayHeader  = FALSE;
 
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('FAI Logs'),
+      'plDescription' => _('FAI Logs Viewer'),
+      'plPriority'    => 31,
+      'plObjectType'  => array('workstation', 'server', 'ogroup-dynamic'),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
+
   static function getAttributesInfo ()
   {
     return array(
@@ -163,19 +175,6 @@ class faiLogView extends simplePlugin
           ),
         )
       )
-    );
-  }
-
-  /* Return plugin information */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('FAI Logs'),
-      'plDescription' => _('FAI Logs Viewer'),
-      'plPriority'    => 31,
-      'plObjectType'  => array('workstation', 'server', 'ogroup-dynamic'),
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

@@ -20,14 +20,13 @@
 
 class dhcpSubnet extends dhcpPlugin
 {
-  public $objectclasses = array('dhcpSubnet');
-
   public static function plInfo()
   {
     return array(
       'plShortName'     => _('DHCP subnet'),
       'plDescription'   => _('DHCP subnet'),
       'plCategory'      => array('dhcpConfiguration'),
+      'plObjectClass'   => array('dhcpSubnet'),
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }

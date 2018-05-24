@@ -20,13 +20,12 @@
 
 class webserviceConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdWebservicePluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Webservice configuration'),
       'plDescription'   => _('FusionDirectory webservice plugin configuration'),
+      'plObjectClass'   => array('fdWebservicePluginConf'),
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

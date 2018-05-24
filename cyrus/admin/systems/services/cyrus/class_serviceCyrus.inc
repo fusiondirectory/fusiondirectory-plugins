@@ -21,15 +21,13 @@
 
 class serviceCyrus extends simpleMailMethodService
 {
-  var $objectclasses = array('fdCyrusServer');
-
-  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Cyrus (IMAP/POP3)'),
       'plDescription'   => _('Cyrus (IMAP/POP3)').' ('._('Services').')',
       'plIcon'          => 'geticon.php?context=applications&icon=cyrus&size=16',
+      'plObjectClass'   => array('fdCyrusServer'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

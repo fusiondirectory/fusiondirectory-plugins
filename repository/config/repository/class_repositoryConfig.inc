@@ -20,13 +20,12 @@
 
 class repositoryConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdRepositoryPluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Repository configuration'),
       'plDescription'   => _('FusionDirectory repository plugin configuration'),
+      'plObjectClass'   => array('fdRepositoryPluginConf'),
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

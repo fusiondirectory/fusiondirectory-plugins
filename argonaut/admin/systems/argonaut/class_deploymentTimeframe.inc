@@ -20,7 +20,6 @@
 
 class deploymentTimeframe extends simplePlugin
 {
-  var $objectclasses  = array('argonautDeploymentOptions');
   var $displayHeader  = TRUE;
 
   var $inheritance = array('gosaGroupOfNames' => 'member');
@@ -30,6 +29,7 @@ class deploymentTimeframe extends simplePlugin
     return array(
       'plShortName'     => _('Deployment time frame'),
       'plDescription'   => _('Edit deployment time frame'),
+      'plObjectClass'   => array('argonautDeploymentOptions'),
       'plObjectType'    => array('workstation','server','terminal','ogroup-dynamic'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

@@ -42,17 +42,14 @@ class CnNetgroupsAttribute extends DialogAttribute
 
 class netgroup extends simplePlugin
 {
-  var $objectclasses  = array("top", "nisNetgroup");
-  var $mainTab        = TRUE;
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Netgroup'),
       'plDescription' => _('NIS Netgroup settings'),
+      'plObjectClass' => array('nisNetgroup'),
       'plObjectType'  => array('netgroup' => array(
         'name'    => _('NIS Netgroup'),
-        'filter'  => 'objectClass=nisNetgroup',
         'ou'      => get_ou('netgroupRDN'),
         'icon'    => 'geticon.php?context=applications&icon=netgroups&size=16'
       )),

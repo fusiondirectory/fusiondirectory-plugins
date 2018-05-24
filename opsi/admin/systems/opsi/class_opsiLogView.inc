@@ -25,6 +25,18 @@ class opsiLogView extends simplePlugin
 
   var $displayHeader  = FALSE;
 
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('OPSI Logs'),
+      'plDescription' => _('OPSI Logs Viewer'),
+      'plPriority'    => 30,
+      'plObjectType'  => array('workstation'),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
+
   static function getAttributesInfo ()
   {
     return array(
@@ -42,19 +54,6 @@ class opsiLogView extends simplePlugin
           ),
         )
       )
-    );
-  }
-
-  /* Return plugin information */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('OPSI Logs'),
-      'plDescription' => _('OPSI Logs Viewer'),
-      'plPriority'    => 30,
-      'plObjectType'  => array('workstation'),
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

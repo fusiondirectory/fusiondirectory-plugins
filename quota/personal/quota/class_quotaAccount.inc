@@ -91,8 +91,6 @@ class QuotaEntryAttribute extends CharSeparatedCompositeAttribute
 
 class quotaAccount extends simplePlugin
 {
-  var $objectclasses = array('systemQuotas');
-
   var $displayHeader = TRUE;
 
   static function plInfo()
@@ -105,6 +103,7 @@ class quotaAccount extends simplePlugin
       'plSmallIcon'   => 'geticon.php?context=applications&icon=quota&size=16',
       'plSelfModify'  => TRUE,
       'plPriority'    => 8,
+      'plObjectClass' => array('systemQuotas'),
       'plObjectType'  => array('user'),
       'plDepends'     => array('posixAccount'),
 

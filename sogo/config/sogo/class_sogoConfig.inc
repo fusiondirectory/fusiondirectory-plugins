@@ -20,13 +20,12 @@
 
 class sogoConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdSogoPluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('SOGo configuration'),
       'plDescription'   => _('FusionDirectory sogo plugin configuration'),
+      'plObjectClass'   => array('fdSogoPluginConf'),
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

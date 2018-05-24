@@ -22,8 +22,17 @@
 
 class serviceLDAP extends simpleService
 {
-  /* This plugin only writes its objectClass */
-  var $objectclasses    = array('goLdapServer');
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('LDAP service'),
+      'plDescription' => _('LDAP').' ('._('Services').')',
+      'plIcon'        => 'geticon.php?context=applications&icon=ldap&size=16',
+      'plObjectClass' => array('goLdapServer'),
+
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
 
   // The main function : information about attributes
   static function getAttributesInfo ()
@@ -86,18 +95,6 @@ class serviceLDAP extends simpleService
           ),
         )
       ),
-    );
-  }
-
-  /* Return plugin information for acl handling */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('LDAP service'),
-      'plDescription' => _('LDAP').' ('._('Services').')',
-      'plIcon'        => 'geticon.php?context=applications&icon=ldap&size=16',
-
-      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 }

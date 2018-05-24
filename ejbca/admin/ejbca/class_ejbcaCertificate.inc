@@ -20,10 +20,6 @@
 
 class ejbcaCertificate extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array();
-
   public static function plInfo()
   {
     return array(

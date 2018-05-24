@@ -20,19 +20,14 @@
 
 class entite extends simplePlugin
 {
-  var $objectclasses = array('top','supannEntite','organizationalUnit');
-
-  var $mainTab = TRUE;
-
-  /* Return plugin information */
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Entity'),
       'plDescription' => _('SUPANN Entity Settings'),
+      'plObjectClass' => array('supannEntite','organizationalUnit'),
       'plObjectType'  => array('entite' => array(
         'name'        => _('SUPANN Entity'),
-        'filter'      => '(&(objectClass=supannEntite)(objectClass=organizationalUnit))',
         'ou'          => get_ou('supannStructuresRDN'),
         'mainAttr'    => 'supannCodeEntite',
         'icon'        => 'geticon.php?context=applications&icon=supann-entite&size=16',

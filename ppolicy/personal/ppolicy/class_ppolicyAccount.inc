@@ -21,8 +21,6 @@
 
 class ppolicyAccount extends simplePlugin
 {
-  var $objectclasses = array();
-
   static function plInfo()
   {
     return array(

@@ -20,13 +20,12 @@
 
 class communityConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdCommunityPluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Community configuration'),
       'plDescription'   => _('FusionDirectory community plugin configuration'),
+      'plObjectClass'   => array('fdCommunityPluginConf'),
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

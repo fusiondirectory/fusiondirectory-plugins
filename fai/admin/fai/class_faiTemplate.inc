@@ -138,17 +138,16 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
 
 class faiTemplate extends faiSimplePluginClass
 {
-  var $objectclasses    = array('top','FAIclass','FAItemplate');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Template'),
       'plDescription' => _('FAI template'),
+      'plObjectClass' => array('FAIclass','FAItemplate'),
+      'plFilter'      => '(objectClass=FAItemplate)',
       'plObjectType'  => array(
         'faiTemplate' => array(
           'name'        => _('FAI template'),
-          'filter'      => 'objectClass=FAItemplate',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiTemplateRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-template&size=16'

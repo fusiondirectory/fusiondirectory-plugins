@@ -20,14 +20,13 @@
 
 class dhcpPool extends dhcpPlugin
 {
-  public $objectclasses = array('dhcpPool');
-
   public static function plInfo()
   {
     return array(
       'plShortName'     => _('DHCP pool'),
       'plDescription'   => _('DHCP pool'),
       'plCategory'      => array('dhcpConfiguration'),
+      'plObjectClass'   => array('dhcpPool'),
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }

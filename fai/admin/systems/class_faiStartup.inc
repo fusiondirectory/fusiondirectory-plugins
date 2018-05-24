@@ -50,10 +50,7 @@ class faiStartup extends simplePlugin
 {
   var $displayHeader = TRUE;
 
-  /* attribute list for save action */
-  var $objectclasses  = array("FAIobject");
-
-  var $inheritance    = array("gosaGroupOfNames" => "member");
+  var $inheritance    = array('gosaGroupOfNames' => 'member');
   var $sdaemon_available;
 
   var $cache = array();
@@ -64,8 +61,9 @@ class faiStartup extends simplePlugin
       'plShortName'     => _('FAI'),
       'plDescription'   => _('Full automated installation'),
       'plPriority'      => 9,
+      'plObjectClass'   => array('FAIobject'),
       'plObjectType'    => array('workstation', 'server', 'ogroup-dynamic'),
-      'plForeignKeys'  => array(
+      'plForeignKeys'   => array(
         'FAIclass'   => array(
           array('faiProfile', 'cn', '(FAIclass=%oldvalue% :*)'),
         ),
@@ -129,7 +127,7 @@ class faiStartup extends simplePlugin
     }
   }
 
-  function foreignKeyUpdate($field, $oldvalue, $newvalue, $source)
+  function foreignKeyUpdate($field, $oldvalue, $newvalue, array $source)
   {
     if ($field == 'FAIclass') {
       if ($this->attributesAccess['FAIclass']->attributes['profil']->getValue() == $oldvalue) {

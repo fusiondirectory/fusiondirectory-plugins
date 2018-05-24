@@ -20,7 +20,6 @@
 
 class mixedGroup extends simplePlugin
 {
-  var $objectclasses  = array('posixGroup');
   protected $locks    = array();
 
   static function plInfo()
@@ -28,6 +27,7 @@ class mixedGroup extends simplePlugin
     return array(
       'plShortName'   => _('Posix group'),
       'plDescription' => _('Posix group settings'),
+      'plObjectClass' => array('posixGroup'),
       'plObjectType'  => array('ogroup-user'),
       'plPriority'    => 1,
 

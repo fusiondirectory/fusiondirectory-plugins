@@ -77,7 +77,6 @@ class EpochDaysDateAttribute extends DateAttribute
 class posixAccount extends simplePlugin
 {
   var $displayHeader = TRUE;
-  var $objectclasses = array('posixAccount', 'shadowAccount');
   protected $locks = array();
 
   protected $fromTemplate = FALSE;
@@ -92,6 +91,9 @@ class posixAccount extends simplePlugin
       'plSmallIcon'   => 'geticon.php?context=applications&icon=os-linux&size=16',
       'plSelfModify'  => TRUE,
       'plPriority'    => 2,
+      'plObjectClass' => array('posixAccount', 'shadowAccount'),
+      /* shadowAccount is not required */
+      'plFilter'      => '(objectClass=posixAccount)',
       'plObjectType'  => array('user'),
       'plForeignKeys' => array(
         'gidNumber' => array(
@@ -751,7 +753,7 @@ class posixAccount extends simplePlugin
     $this->fromTemplate = TRUE;
   }
 
-  function foreignKeyUpdate ($field, $oldvalue, $newvalue, $source)
+  function foreignKeyUpdate($field, $oldvalue, $newvalue, array $source)
   {
     $ret = parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
     if ($field == 'gidNumber') {

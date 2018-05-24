@@ -20,17 +20,16 @@
 
 class ejbcaConfig extends simplePlugin
 {
-  var $objectclasses  = array("fdEjbcaPluginConf");
-
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("EJBCA plugin configuration"),
-      "plDescription"   => _("FusionDirectory ejbca plugin configuration"),
-      "plCategory"      => array("configuration"),
-      "plObjectType"    => array("smallConfig"),
+      'plShortName'     => _('EJBCA plugin configuration'),
+      'plDescription'   => _('FusionDirectory ejbca plugin configuration'),
+      'plObjectClass'   => array('fdEjbcaPluginConf'),
+      'plCategory'      => array('configuration'),
+      'plObjectType'    => array('smallConfig'),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

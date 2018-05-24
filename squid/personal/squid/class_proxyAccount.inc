@@ -50,25 +50,18 @@ class workingTime extends CompositeAttribute
 
 class proxyAccount extends simplePlugin
 {
-  /* Definitions */
   var $displayHeader    = TRUE;
-  var $objectclasses    = array('gosaProxyAccount');
 
-  /*!
-   * \brief  Static  Function returning an ACL information array.
-   *
-   * \return Array   Returns an ACL array
-   */
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Proxy'),
       'plDescription'   => _('This allow to store basic squid settings in ldap for each user'),
-      'plFilter'        => '(objectClass=gosaProxyAccount)',
       'plIcon'          => 'geticon.php?context=applications&icon=squid&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=squid&size=16',
       'plSelfModify'    => TRUE,
       'plPriority'      => 9,
+      'plObjectClass'   => array('gosaProxyAccount'),
       'plObjectType'    => array('user'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

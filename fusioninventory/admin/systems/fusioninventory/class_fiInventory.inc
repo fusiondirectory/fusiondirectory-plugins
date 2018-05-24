@@ -20,7 +20,6 @@
 
 class fiInventory extends simplePlugin
 {
-  var $objectclasses  = array();
   var $displayHeader  = FALSE;
 
   protected $filter = '';

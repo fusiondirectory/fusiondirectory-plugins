@@ -47,16 +47,13 @@ class simpleMailMethodService extends simpleService
 
 class serviceIMAP extends simpleMailMethodService
 {
-  /* This plugin only writes its objectClass */
-  var $objectclasses = array('fdImapServer');
-
-  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
       'plShortName'   => _('IMAP/POP3 generic service'),
       'plDescription' => _('IMAP/POP3').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=imap&size=16',
+      'plObjectClass' => array('fdImapServer'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

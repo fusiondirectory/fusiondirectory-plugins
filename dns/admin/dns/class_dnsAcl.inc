@@ -20,18 +20,14 @@
 
 class dnsAcl extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array('fdDNSAcl');
-
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('DNS acl'),
       'plDescription' => _('DNS acl'),
+      'plObjectClass' => array('fdDNSAcl'),
       'plObjectType'  => array('dnsAcl' => array(
         'name'        => _('DNS acl'),
-        'filter'      => '(objectClass=fdDNSAcl)',
         'ou'          => get_ou('dnsRDN'),
         'icon'        => 'geticon.php?context=categories&icon=acl&size=16'
       )),

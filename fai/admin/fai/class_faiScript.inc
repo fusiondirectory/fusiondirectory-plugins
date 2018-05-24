@@ -20,19 +20,16 @@
 
 class faiScript extends faiSimplePluginClass
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array('top','FAIclass','FAIscript');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Script'),
       'plDescription' => _('FAI script'),
+      'plObjectClass' => array('FAIclass','FAIscript'),
+      'plFilter'      => '(objectClass=FAIscript)',
       'plObjectType'  => array(
         'faiScript' => array(
           'name'        => _('FAI script'),
-          'filter'      => 'objectClass=FAIscript',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiScriptRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-script&size=16'

@@ -20,7 +20,25 @@
 
 class serverGeneric extends workstationGeneric
 {
-  var $objectclasses = array('fdServer', 'ieee802Device');
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Server'),
+      'plDescription' => _('Server information'),
+      'plObjectClass' => array('fdServer', 'ieee802Device'),
+      'plFilter'      => '(objectClass=fdServer)',
+      'plObjectType'  => array(
+        'server' => array(
+          'name'        => _('Server'),
+          'description' => _('Server'),
+          'icon'        => 'geticon.php?context=devices&icon=server&size=16',
+          'ou'          => get_ou('serverRDN'),
+          'tabClass'    => 'servtabs',
+        )
+      ),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
 
   static function getAttributesInfo ($word = NULL, $rdn = NULL)
   {
@@ -31,25 +49,6 @@ class serverGeneric extends workstationGeneric
       $rdn = get_ou('serverRDN');
     }
     return parent::getAttributesInfo($word, $rdn);
-  }
-
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('Server'),
-      'plDescription' => _('Server information'),
-      'plObjectType'  => array(
-        'server' => array(
-          'name'        => _('Server'),
-          'description' => _('Server'),
-          'filter'      => 'objectClass=fdServer',
-          'icon'        => 'geticon.php?context=devices&icon=server&size=16',
-          'ou'          => get_ou('serverRDN'),
-          'tabClass'    => 'servtabs',
-        )
-      ),
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
   }
 }
 ?>

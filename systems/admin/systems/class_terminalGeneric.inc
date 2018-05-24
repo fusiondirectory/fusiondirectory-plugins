@@ -20,7 +20,25 @@
 
 class terminalGeneric extends workstationGeneric
 {
-  var $objectclasses = array('fdTerminal', 'ieee802Device');
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Terminal'),
+      'plDescription' => _('Terminal information'),
+      'plObjectClass' => array('fdTerminal', 'ieee802Device'),
+      'plFilter'      => '(objectClass=fdTerminal)',
+      'plObjectType'  => array('terminal' =>
+        array(
+          'name'        => _('Terminal'),
+          'description' => _('Terminal'),
+          'icon'        => 'geticon.php?context=devices&icon=terminal&size=16',
+          'ou'          => get_ou('terminalRDN'),
+        )
+      ),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
 
   /*!
    *  \brief The main function : information about attributes
@@ -34,26 +52,6 @@ class terminalGeneric extends workstationGeneric
       $rdn = get_ou('terminalRDN');
     }
     return parent::getAttributesInfo($word, $rdn);
-  }
-
-  /* Return plugin information for acl handling */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('Terminal'),
-      'plDescription' => _('Terminal information'),
-      'plObjectType'  => array('terminal' =>
-        array(
-          'name'        => _('Terminal'),
-          'description' => _('Terminal'),
-          'filter'      => 'objectClass=fdTerminal',
-          'icon'        => 'geticon.php?context=devices&icon=terminal&size=16',
-          'ou'          => get_ou('terminalRDN'),
-        )
-      ),
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
   }
 }
 

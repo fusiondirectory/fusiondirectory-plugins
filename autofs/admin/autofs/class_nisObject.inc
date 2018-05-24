@@ -20,19 +20,14 @@
 
 class nisObject extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses  = array('nisObject');
-
-  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Directory'),
       'plDescription'   => _('Directory'),
+      'plObjectClass'   => array('nisObject'),
       'plObjectType'    => array('nisObject' => array(
         'name'        => _('Directory'),
-        'filter'      => 'objectClass=nisObject',
         'ou'          => get_ou('autofsRDN'),
         'icon'        => 'geticon.php?context=applications&icon=autofs-nis-object&size=16',
         'mainAttr'    => 'cn',

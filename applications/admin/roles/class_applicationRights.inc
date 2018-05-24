@@ -20,8 +20,6 @@
 
 class applicationRights extends simplePlugin
 {
-  var $objectclasses = array('fdApplicationRights');
-
   var $displayHeader = TRUE;
 
   static function plInfo()
@@ -29,8 +27,8 @@ class applicationRights extends simplePlugin
     return array(
       'plShortName'   => _('Applications'),
       'plDescription' => _('Applications allowed for this role'),
-      'plFilter'      => '(objectClass=fdApplicationRights)',
       'plSmallIcon'   => 'geticon.php?context=mimetypes&icon=application-x-executable&size=16',
+      'plObjectClass' => array('fdApplicationRights'),
       'plObjectType'  => array('role'),
       'plForeignKeys' => array(
         'fdApplicationAllowed' => 'webApplication',

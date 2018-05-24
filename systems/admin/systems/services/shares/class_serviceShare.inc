@@ -21,14 +21,13 @@
 
 class serviceShare extends simpleService
 {
-  var $objectclasses = array('goShareServer');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Share service'),
       'plDescription' => _('Share service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=places&icon=folder-network&size=16',
+      'plObjectClass' => array('goShareServer'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

@@ -496,10 +496,6 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
 
 class dhcpConfiguration extends simplePlugin
 {
-  public $mainTab = TRUE;
-
-  public $objectclasses = array('dhcpService');
-
   public $types = array();
 
   static $sectionMap = array(
@@ -529,9 +525,9 @@ class dhcpConfiguration extends simplePlugin
     return array(
       'plShortName'   => _('DHCP configuration'),
       'plDescription' => _('DHCP configuration'),
+      'plObjectClass' => array('dhcpService'),
       'plObjectType'  => array('dhcpConfiguration' => array(
         'name'        => _('DHCP configuration'),
-        'filter'      => '(objectClass=dhcpService)',
         'ou'          => get_ou('dhcpRDN'),
         'icon'        => 'geticon.php?context=applications&icon=dhcp&size=16'
       )),

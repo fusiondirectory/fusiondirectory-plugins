@@ -21,17 +21,16 @@
 
 class ppolicyConfig extends simplePlugin
 {
-  var $objectclasses  = array("fdPpolicyPluginConf");
-
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Ppolicy plugin configuration"),
-      "plDescription"   => _("FusionDirectory ppolicy plugin configuration"),
-      "plCategory"      => array("configuration"),
-      "plObjectType"    => array("smallConfig"),
+      'plShortName'     => _('Ppolicy plugin configuration'),
+      'plDescription'   => _('FusionDirectory ppolicy plugin configuration'),
+      'plObjectClass'   => array('fdPpolicyPluginConf'),
+      'plCategory'      => array('configuration'),
+      'plObjectType'    => array('smallConfig'),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

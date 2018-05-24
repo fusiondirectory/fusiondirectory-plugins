@@ -20,14 +20,13 @@
 
 class dhcpSharedNetwork extends dhcpPlugin
 {
-  public $objectclasses = array('dhcpSharedNetwork');
-
   public static function plInfo()
   {
     return array(
       'plShortName'     => _('DHCP shared network'),
       'plDescription'   => _('DHCP shared network'),
       'plCategory'      => array('dhcpConfiguration'),
+      'plObjectClass'   => array('dhcpSharedNetwork'),
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }

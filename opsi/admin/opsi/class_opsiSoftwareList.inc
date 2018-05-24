@@ -20,9 +20,6 @@
 
 class opsiSoftwareList extends simplePlugin
 {
-  var $mainTab = TRUE;
-  var $objectclasses   = array('opsiSoftwareList');
-
   var $macAddress = NULL;
   var $products;
 
@@ -32,9 +29,9 @@ class opsiSoftwareList extends simplePlugin
       'plShortName'   => _('OPSI list'),
       'plDescription' => _('OPSI software list'),
       'plIcon'        => 'geticon.php?context=applications&icon=opsi-software-list&size=16',
+      'plObjectClass' => array('opsiSoftwareList'),
       'plObjectType'  => array('opsiSoftwareList' => array(
         'name'    => _('OPSI software list'),
-        'filter'  => 'objectClass=opsiSoftwareList',
         'ou'      => get_ou('opsiRDN'),
         'icon'    => 'geticon.php?context=applications&icon=opsi-software-list&size=16',
       )),

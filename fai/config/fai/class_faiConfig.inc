@@ -20,13 +20,12 @@
 
 class faiConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdFaiPluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('FAI configuration'),
       'plDescription'   => _('FusionDirectory fai plugin configuration'),
+      'plObjectClass'   => array('fdFaiPluginConf'),
       'plObjectType'    => array('configuration'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

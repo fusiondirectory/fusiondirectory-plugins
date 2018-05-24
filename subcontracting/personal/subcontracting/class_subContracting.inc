@@ -24,15 +24,12 @@ class subContractingAccount extends simplePlugin
   // we want it activated on all objects
   var $displayHeader = TRUE;
 
-  // Here we indicate which LDAP classes our plugin is using.
-  var $objectclasses = array('fdSubcontractingPerson');
-
   static function plInfo ()
   {
     return array(
       'plShortName'   => _('Subcontracting'),
       'plDescription' => _('Information needed for sub contracts'),
-      'plFilter'      => '(objectClass=fdSubcontractingPerson)',
+      'plObjectClass' => array('fdSubcontractingPerson'),
       'plObjectType'  => array('user'),
       'plIcon'        => 'geticon.php?context=applications&icon=subcontracting&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=subcontracting&size=16',

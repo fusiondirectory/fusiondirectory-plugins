@@ -117,7 +117,6 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
 
 class dnsHost extends simplePlugin
 {
-  var $objectclasses = array('fdDNSHost');
   var $displayHeader = TRUE;
 
   protected $zonesCache;
@@ -130,6 +129,7 @@ class dnsHost extends simplePlugin
       'plDescription'   => _('Edit the DNS zones of a system'),
       'plIcon'          => 'geticon.php?context=applications&icon=dns&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=dns&size=16',
+      'plObjectClass'   => array('fdDNSHost'),
       'plObjectType'    => array('server','workstation','terminal','printer','component','phone','mobilePhone'),
       'plPriority'      => 5,
       'plForeignKeys'  => array(

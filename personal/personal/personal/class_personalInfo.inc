@@ -77,7 +77,6 @@ class SocialAccountAttribute extends CompositeAttribute
 class personalInfo extends simplePlugin
 {
   var $displayHeader = TRUE;
-  var $objectclasses = array('fdPersonalInfo');
 
   static function plInfo()
   {
@@ -86,6 +85,7 @@ class personalInfo extends simplePlugin
       'plDescription'   => _('Personal information'),
       'plFilter'        => '(objectClass=fdPersonalInfo)',
       'plSelfModify'    => TRUE,
+      'plObjectClass'   => array('fdPersonalInfo'),
       'plObjectType'    => array('user'),
       'plIcon'          => 'geticon.php?context=applications&icon=user-info&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=user-info&size=16',

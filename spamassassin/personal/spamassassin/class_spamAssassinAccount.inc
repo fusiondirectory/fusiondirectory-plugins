@@ -21,7 +21,21 @@
 class spamAssassinAccount extends simplePlugin
 {
   var $displayHeader = TRUE;
-  var $objectclasses = array('fdSpamAssassinUser');
+
+  static function plInfo()
+  {
+    return array(
+      'plShortName'     => _('SpamAssassin'),
+      'plDescription'   => _('Edit user\'s spam rules'),
+      'plIcon'          => 'geticon.php?context=applications&icon=spamassassin&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=spamassassin&size=16',
+      'plSelfModify'    => TRUE,
+      'plObjectClass'   => array('fdSpamAssassinUser'),
+      'plObjectType'    => array('user'),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
 
   // The main function : information about attributes
   static function getAttributesInfo ()
@@ -56,21 +70,6 @@ class spamAssassinAccount extends simplePlugin
           )
         )
       )
-    );
-  }
-
-  static function plInfo()
-  {
-    return array(
-      'plShortName'     => _('SpamAssassin'),
-      'plDescription'   => _('Edit user\'s spam rules'),
-      'plFilter'        => '(objectClass=fdSpamAssassinUser)',
-      'plSelfModify'    => TRUE,
-      'plObjectType'    => array('user'),
-      'plIcon'          => 'geticon.php?context=applications&icon=spamassassin&size=48',
-      'plSmallIcon'     => 'geticon.php?context=applications&icon=spamassassin&size=16',
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 }

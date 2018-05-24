@@ -20,18 +20,14 @@
 
 class repositorySection extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array('fdBuildRepositorySection');
-
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('Repository section'),
       'plDescription' => _('Repository section'),
+      'plObjectClass' => array('fdBuildRepositorySection'),
       'plObjectType'  => array('repoSection' => array(
         'name'        => _('Repository section'),
-        'filter'      => 'objectClass=fdBuildRepositorySection',
         'aclCategory' => 'repository',
         'ou'          => get_ou('repositoryRDN'),
         'icon'        => 'geticon.php?context=applications&icon=repository-section&size=16',

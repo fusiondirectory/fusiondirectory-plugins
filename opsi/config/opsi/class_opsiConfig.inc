@@ -20,13 +20,12 @@
 
 class opsiConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdOpsiPluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('OPSI configuration'),
       'plDescription' => _('FusionDirectory OPSI plugin configuration'),
+      'plObjectClass' => array('fdOpsiPluginConf'),
       'plCategory'    => array('configuration'),
       'plObjectType'  => array('smallConfig'),
 

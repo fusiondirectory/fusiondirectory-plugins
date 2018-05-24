@@ -20,13 +20,12 @@
 
 class netgroupConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdNetgroupPluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Netgroup configuration'),
       'plDescription'   => _('FusionDirectory netgroup plugin configuration'),
+      'plObjectClass'   => array('fdNetgroupPluginConf'),
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

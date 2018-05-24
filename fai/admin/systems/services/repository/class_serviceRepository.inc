@@ -153,14 +153,13 @@ class serviceRepository extends simpleService
 {
   protected static $showActions = FALSE;
 
-  var $objectclasses  = array('FAIrepositoryServer');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Package repository'),
       'plDescription' => _('Package repository information'),
       'plIcon'        => 'geticon.php?context=mimetypes&icon=package-x-generic&size=16',
+      'plObjectClass' => array('FAIrepositoryServer'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

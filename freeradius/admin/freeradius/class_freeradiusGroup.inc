@@ -20,23 +20,20 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class freeradiusGroup extends simplePlugin {
-
+class freeradiusGroup extends simplePlugin
+{
   var $displayHeader = TRUE;
-  var $objectclasses = array('radiusprofile');
 
-  /*!
-   * \brief Plugin information
-   */
   static function plInfo ()
   {
     return array(
-      'plShortName'       => _('Freeradius'),
-      'plDescription'     => _('This Plugin is for Radius accounting based in FreeRadius'),
-      'plIcon'            => 'geticon.php?context=applications&icon=freeradius&size=48',
-      'plSmallIcon'       => 'geticon.php?context=applications&icon=freeradius&size=16',
-      'plObjectType'      => array('group'),
-      'plProvidedAcls'    => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plShortName'     => _('Freeradius'),
+      'plDescription'   => _('This Plugin is for Radius accounting based in FreeRadius'),
+      'plIcon'          => 'geticon.php?context=applications&icon=freeradius&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=freeradius&size=16',
+      'plObjectClass'   => array('radiusprofile'),
+      'plObjectType'    => array('group'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

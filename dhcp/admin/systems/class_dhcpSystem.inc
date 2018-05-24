@@ -280,8 +280,6 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
 
 class dhcpSystem extends simplePlugin
 {
-  var $objectclasses = array();
-
   protected $zonesCache;
   protected $loaded = FALSE;
 

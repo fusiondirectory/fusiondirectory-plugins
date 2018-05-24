@@ -21,7 +21,6 @@
 class ejbcaCertificates extends simplePlugin
 {
   var $displayHeader = TRUE;
-  var $objectclasses = array('fdEjbcaCertificates');
 
   static function plInfo()
   {
@@ -30,6 +29,7 @@ class ejbcaCertificates extends simplePlugin
       'plDescription'   => _('Assign EJBCA certificates to a user'),
       'plFilter'        => '(objectClass=fdEjbcaCertificates)',
       'plSelfModify'    => TRUE,
+      'plObjectClass'   => array('fdEjbcaCertificates'),
       'plObjectType'    => array('user','server','workstation','terminal','printer','component','phone','mobilePhone'),
       'plIcon'          => 'geticon.php?context=applications&icon=ejbca&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=ejbca&size=16',

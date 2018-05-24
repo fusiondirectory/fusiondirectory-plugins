@@ -116,7 +116,6 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
 
 class argonautClient extends simplePlugin
 {
-  var $objectclasses  = array('argonautClient');
   var $displayHeader  = TRUE;
 
   var $inheritance = array('gosaGroupOfNames' => 'member');
@@ -126,6 +125,7 @@ class argonautClient extends simplePlugin
     return array(
       'plShortName'     => _('Argonaut client'),
       'plDescription'   => _('Edit argonaut client settings'),
+      'plObjectClass'   => array('argonautClient'),
       'plObjectType'    => array('workstation','server','terminal','ogroup-dynamic'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

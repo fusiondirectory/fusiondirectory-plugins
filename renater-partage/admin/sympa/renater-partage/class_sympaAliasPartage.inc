@@ -21,15 +21,15 @@
 class sympaAliasPartage extends simplePlugin
 {
   var $displayHeader  = TRUE;
-  var $objectclasses  = array('fdRenaterPartageSympaAlias');
 
   static function plInfo()
   {
     return array(
-      'plShortName'    => _('Partage'),
-      'plDescription'  => _('Partage sympa options'),
-      'plObjectType'   => array('sympaAlias'),
-      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plShortName'     => _('Partage'),
+      'plDescription'   => _('Partage sympa options'),
+      'plObjectClass'   => array('fdRenaterPartageSympaAlias'),
+      'plObjectType'    => array('sympaAlias'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

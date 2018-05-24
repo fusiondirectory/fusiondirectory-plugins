@@ -20,19 +20,14 @@
 
 class mailAliasRedirection extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array('top', 'mailAliasRedirection');
-
-  /* Return plugin information for acl handling  */
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('Temporary mail redirection'),
       'plDescription' => _('Temporary mail redirection'),
+      'plObjectClass' => array('mailAliasRedirection'),
       'plObjectType'  => array('mailAliasRedirection' => array(
         'name'        => _('Temporary mail redirection'),
-        'filter'      => 'objectClass=mailAliasRedirection',
         'aclCategory' => 'alias',
         'icon'        => 'geticon.php?context=applications&icon=alias-redirection&size=16',
         'ou'          => get_ou('aliasRDN'),

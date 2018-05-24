@@ -23,8 +23,6 @@ class debconfStartup extends simplePlugin
 {
   var $displayHeader = TRUE;
 
-  var $objectclasses = array('debconfStartup');
-
   var $inheritance = array('gosaGroupOfNames' => 'member');
 
   static function plInfo()
@@ -33,6 +31,7 @@ class debconfStartup extends simplePlugin
       'plShortName'     => _('Debconf'),
       'plDescription'   => _('Debconf preseed startup'),
       'plPriority'      => 9,
+      'plObjectClass'   => array('debconfStartup'),
       'plObjectType'    => array('workstation', 'server', 'ogroup-dynamic'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

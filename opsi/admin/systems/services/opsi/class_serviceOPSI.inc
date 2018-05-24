@@ -20,15 +20,13 @@
 
 class serviceOPSI extends simpleService
 {
-  var $objectclasses = array('opsiServer');
-
-  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
       'plShortName'   => _('OPSI service'),
       'plDescription' => _('OPSI service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=opsi&size=16',
+      'plObjectClass' => array('opsiServer'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

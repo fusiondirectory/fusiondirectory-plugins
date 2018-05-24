@@ -214,8 +214,6 @@ class SupannOrderedArrayAttribute extends OrderedArrayAttribute
 
 class supannAccount extends simplePlugin
 {
-  var $objectclasses = array('eduPerson', 'supannPerson');
-
   var $displayHeader = TRUE;
 
   static function plInfo()
@@ -228,6 +226,7 @@ class supannAccount extends simplePlugin
       'plSmallIcon'   => 'geticon.php?context=applications&icon=supann&size=16',
       'plSelfModify'  => TRUE,
       'plPriority'    => 14,
+      'plObjectClass' => array('eduPerson','supannPerson'),
       'plObjectType'  => array('user'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

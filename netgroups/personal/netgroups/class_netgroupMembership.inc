@@ -30,9 +30,9 @@ class NetgroupsAttribute extends GroupsAttribute
   protected $dialogClass = 'NetgroupSelectDialog';
 }
 
-class netgroupMembership extends simplePlugin {
+class netgroupMembership extends simplePlugin
+{
   var $displayHeader = TRUE;
-  var $objectclasses = array("whatever");
   var $id;
   var $old_id;
   protected static $id_attr = 'uid';

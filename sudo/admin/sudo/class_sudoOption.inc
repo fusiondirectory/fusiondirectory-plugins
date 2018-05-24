@@ -330,7 +330,18 @@ class SudoOptionAttribute extends Attribute
 class sudoOption extends simplePlugin
 {
   var $displayHeader = FALSE;
-  var $objectclasses = array();
+
+  static function plInfo ()
+  {
+    return array(
+      'plShortName'   => _('Options'),
+      'plDescription' => _('Sudo options'),
+      'plObjectType'  => array('sudo'),
+      'plPriority'    => 2,
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
 
   // The main function : information about attributes
   static function getAttributesInfo ()
@@ -410,18 +421,6 @@ SCRIPT;
       $str = $cmd.$val;
     }
     return $str;
-  }
-
-  static function plInfo ()
-  {
-    return array(
-      'plShortName'   => _('Options'),
-      'plDescription' => _('Sudo options'),
-      'plObjectType'  => array('sudo'),
-      'plPriority'    => 2,
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
   }
 }
 ?>

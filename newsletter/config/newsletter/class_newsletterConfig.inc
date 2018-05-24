@@ -20,13 +20,12 @@
 
 class newsletterConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdNewsletterPluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Newsletter configuration'),
       'plDescription'   => _('FusionDirectory newsletter plugin configuration'),
+      'plObjectClass'   => array('fdNewsletterPluginConf'),
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

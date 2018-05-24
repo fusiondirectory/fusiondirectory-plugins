@@ -20,18 +20,14 @@
 
 class buildRepository extends simplePlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array('fdBuildRepository');
-
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('Build repository'),
       'plDescription' => _('Build repository'),
+      'plObjectClass' => array('fdBuildRepository'),
       'plObjectType'  => array('buildRepository' => array(
         'name'        => _('Build repository'),
-        'filter'      => 'objectClass=fdBuildRepository',
         'aclCategory' => 'repository',
         'ou'          => get_ou('repositoryRDN'),
         'icon'        => 'geticon.php?context=applications&icon=repository&size=16'
@@ -138,7 +134,7 @@ class buildRepository extends simplePlugin
     }
   }
 
-  function foreignKeyUpdate($field, $oldvalue, $newvalue, $source)
+  function foreignKeyUpdate($field, $oldvalue, $newvalue, array $source)
   {
     if ($field == 'fdRepoDistributionSection') {
       $values = $this->fdRepoDistributionSection;

@@ -20,13 +20,12 @@
 
 class supannConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdSupannPluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('SUPANN configuration'),
       'plDescription'   => _('FusionDirectory SUPANN plugin configuration'),
+      'plObjectClass'   => array('fdSupannPluginConf'),
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
 

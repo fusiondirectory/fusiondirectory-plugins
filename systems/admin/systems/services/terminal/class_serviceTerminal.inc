@@ -21,14 +21,13 @@
 
 class serviceTerminal extends simpleService
 {
-  var $objectclasses = array('goTerminalServer');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Terminal service'),
       'plDescription' => _('Terminal service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=devices&icon=terminal&size=16',
+      'plObjectClass' => array('goTerminalServer'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

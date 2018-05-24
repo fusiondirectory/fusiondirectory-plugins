@@ -20,14 +20,13 @@
 
 class sambaPluginConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdSambaPluginConf');
-
   static function plInfo()
   {
     return array(
       'plShortName'     => _('Samba'),
       'plDescription'   => _('Samba plugin configuration'),
       'plPriority'      => 2,
+      'plObjectClass'   => array('fdSambaPluginConf'),
       'plObjectType'    => array('configuration'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

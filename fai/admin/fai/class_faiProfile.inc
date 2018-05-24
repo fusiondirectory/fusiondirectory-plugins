@@ -20,19 +20,16 @@
 
 class faiProfile extends faiSimplePluginClass
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses    = array('top','FAIclass','FAIprofile');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Profile'),
       'plDescription' => _('FAI profile'),
+      'plObjectClass' => array('FAIclass','FAIprofile'),
+      'plFilter'      => '(objectClass=FAIprofile)',
       'plObjectType'  => array(
         'faiProfile' => array(
           'name'        => _('FAI Profile'),
-          'filter'      => 'objectClass=FAIprofile',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiProfileRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-profile&size=16'

@@ -20,17 +20,16 @@
 
 class dnsConfig extends simplePlugin
 {
-  var $objectclasses  = array("fdDnsPluginConf");
-
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("DNS configuration"),
-      "plDescription"   => _("FusionDirectory dns plugin configuration"),
-      "plCategory"      => array("configuration"),
-      "plObjectType"    => array("smallConfig"),
+      'plShortName'     => _('DNS configuration'),
+      'plDescription'   => _('FusionDirectory dns plugin configuration'),
+      'plObjectClass'   => array('fdDnsPluginConf'),
+      'plCategory'      => array('configuration'),
+      'plObjectType'    => array('smallConfig'),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 

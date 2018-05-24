@@ -20,19 +20,15 @@
 
 class etablissement extends simplePlugin
 {
-  var $objectclasses = array('top','supannEntite','organization','supannOrg','eduOrg');
-
-  var $mainTab = TRUE;
-
-  /* Return plugin information */
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Establishment'),
       'plDescription' => _('SUPANN Establishment Settings'),
+      'plObjectClass' => array('supannEntite','organization','supannOrg','eduOrg'),
+      'plFilter'      => '(&(objectClass=supannEntite)(objectClass=organization))',
       'plObjectType'  => array('etablissement' => array(
         'name'        => _('SUPANN Establishment'),
-        'filter'      => '(&(objectClass=supannEntite)(objectClass=organization))',
         'ou'          => get_ou('supannStructuresRDN'),
         'mainAttr'    => 'supannCodeEntite',
         'icon'        => 'geticon.php?context=applications&icon=supann-etablissement&size=16',

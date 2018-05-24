@@ -20,10 +20,6 @@
 
 class phoneGeneric extends ipHostPlugin
 {
-  var $mainTab = TRUE;
-
-  var $objectclasses = array('fdPhone', 'ieee802Device');
-
   var $inheritance = array('gosaGroupOfNames' => 'member');
 
   static function plInfo()
@@ -31,11 +27,12 @@ class phoneGeneric extends ipHostPlugin
     return array(
       'plShortName'   => _('Phone'),
       'plDescription' => _('Phone information'),
+      'plObjectClass' => array('fdPhone', 'ieee802Device'),
+      'plFilter'      => '(objectClass=fdPhone)',
       'plObjectType'  => array(
         'phone' => array(
           'name'        => _('Phone'),
           'description' => _('Phone hardware'),
-          'filter'      => 'objectClass=fdPhone',
           'icon'        => 'geticon.php?context=devices&icon=telephone&size=16',
           'ou'          => get_ou('phoneRDN'),
         )

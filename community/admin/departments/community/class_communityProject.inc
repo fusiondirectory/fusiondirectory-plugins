@@ -20,7 +20,6 @@
 
 class communityProject extends communityOrganization
 {
-  var $objectclasses  = array('fdCommunityProject');
   var $displayHeader  = TRUE;
 
   static function plInfo ()
@@ -28,6 +27,7 @@ class communityProject extends communityOrganization
     return array(
       'plShortName'     => _('Community project'),
       'plDescription'   => _('Community project dates and alternate address'),
+      'plObjectClass'   => array('fdCommunityProject'),
       'plObjectType'    => array('department'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
