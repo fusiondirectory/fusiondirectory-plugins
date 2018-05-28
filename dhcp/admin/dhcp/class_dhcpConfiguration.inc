@@ -578,7 +578,6 @@ class dhcpConfiguration extends simplePlugin
 
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['dhcpSections']->setHeight(400);
     $this->cn = $this->attributesAccess['dhcpSections']->getGlobalCn();
   }
 

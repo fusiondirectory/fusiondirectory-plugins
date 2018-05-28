@@ -106,17 +106,17 @@ class dashboardOpsi extends simplePlugin
     $id   = 'profileStats';
     $div  = new divSelectBox('rows'.$id);
     $smarty = get_smarty();
-    $div->SetHeight(90);
-    $div->SetHeaders(array(_('Profile'), _('Systems'), _('Groups')));
+    $div->setHeight(90);
+    $div->setHeaders(array(_('Profile'), _('Systems'), _('Groups')));
     foreach ($profiles as $dn => $profile) {
       $fields = array(
         array('string' => $profile['cn']),
         array('string' => objects::count('workstation', NULL, '(&(objectClass=opsiClient)(fdOpsiProfileDn='.$dn.'))', FALSE)),
         array('string' => objects::count('ogroup', NULL, '(&(objectClass=opsiClient)(fdOpsiProfileDn='.$dn.'))', FALSE)),
       );
-      $div->AddEntry($fields);
+      $div->addEntry($fields);
     }
-    return $div->DrawList();
+    return $div->drawList();
   }
 }
 ?>

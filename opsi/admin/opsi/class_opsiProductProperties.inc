@@ -146,7 +146,6 @@ class opsiProductProperties extends simplePlugin
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
-    $this->attributesAccess['fdOpsiProductProperty']->setHeight('auto');
   }
 
   public function execute()

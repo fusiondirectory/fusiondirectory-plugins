@@ -67,7 +67,7 @@ class AvailableLogsAttribute extends Attribute
     }
 
     /* Create list header */
-    $div->SetHeaders(array(
+    $div->setHeaders(array(
       $this->js_link(_('File')." $img1", array('sort_by' => 'file')),
       $this->js_link(_('Date')." $img2", array('sort_by' => 'time'))
     ));
@@ -99,15 +99,15 @@ class AvailableLogsAttribute extends Attribute
       $to_add = array_reverse($to_add);
     }
 
-    $div->SetHeight(200);
+    $div->setHeight(200);
 
     /* Append entries to list */
     foreach ($to_add as $entry) {
-      $div->AddEntry($entry);
+      $div->addEntry($entry);
     }
 
     $smarty = get_smarty();
-    $smarty->assign("div_$id", $div->DrawList());
+    $smarty->assign("div_$id", $div->drawList());
     $display = '';
     foreach (array('sort_by','time','file','mac') as $var) {
       $display .= '<input type="hidden" value="" name="'.$id.'_'.$var.'" id="'.$id.'_'.$var.'"/>'."\n";
