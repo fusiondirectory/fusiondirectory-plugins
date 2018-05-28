@@ -176,7 +176,7 @@ class opsiProfile extends simplePlugin
         }
       } else {
         msg_dialog::display(
-          sprintf_(_("Could not find %s in the LDAP"), $this->fdOpsiServerDn),
+          sprintf(_('Could not find %s in the LDAP'), $this->fdOpsiServerDn),
           msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
         );
         return FALSE;
