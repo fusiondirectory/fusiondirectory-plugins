@@ -191,10 +191,10 @@ class PgpKeyAttribute extends GenericDialogAttribute
   {
     $id   = $this->getHtmlId();
     $div  = new divSelectBox($id);
-    $div->SetHeight($this->height);
+    $div->setHeight($this->height);
     $headers    = array_values($this->displayed_values);
     $headers[]  = '';
-    $div->SetHeaders($headers);
+    $div->setHeaders($headers);
     // Updates and get display values
     $displays = $this->getDisplayValues();
     foreach ($displays as $key => $display_item) {
@@ -225,10 +225,10 @@ class PgpKeyAttribute extends GenericDialogAttribute
       }
       $img = '<input type="image" src="geticon.php?context=actions&icon=edit-delete&size=16" name="'.$id.'_del_'.$key.'" class="center"/>&nbsp;';
       $fields[] = array('html' => $img, 'attach' => 'style="border-right:0px;width:20px;"');
-      $div->AddEntry($fields);
+      $div->addEntry($fields);
     }
     $smarty = get_smarty();
-    $smarty->assign("div_$id", $div->DrawList());
+    $smarty->assign("div_$id", $div->drawList());
     return '{$div_'.$id.'}'."\n";
   }
 

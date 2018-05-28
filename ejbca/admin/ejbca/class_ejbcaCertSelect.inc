@@ -98,10 +98,10 @@ class EjbcaUserCertsAttribute extends GenericDialogAttribute
       $img = '<input type="image" src="geticon.php?context=actions&icon=download&size=16" name="'.$id.'_get_'.$key.'" class="center"/>';
       $img .= '<input type="image" src="geticon.php?context=actions&icon=edit-delete&size=16" name="'.$id.'_del_'.$key.'" class="center"/>';
       $fields[] = array('html' => $img, 'attach' => 'style="border-right:0px;width:32px;"');
-      $div->AddEntry($fields);
+      $div->addEntry($fields);
     }
     $smarty = get_smarty();
-    $smarty->assign("div_$id", $div->DrawList());
+    $smarty->assign("div_$id", $div->drawList());
     return '{$div_'.$id.'}'."\n";
   }
 
