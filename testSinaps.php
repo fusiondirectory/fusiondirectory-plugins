@@ -95,6 +95,15 @@ if (($codeOperation == 'DIFFUSION') && ($codeDomaine == 'STRUCTURE')) {
   die('Cannot handle '.$codeDomaine.' '.$codeOperation.' '.$operationVersion."\n");
 }
 
+/*TODO
+ * Ignorer si date validité pas atteinte
+ * Acquitter
+ * Pousser dans FD
+ * Détecter si création
+ * Gérer conflit
+ * Trancoder
+ */
+
 $reply = '';
 switch ($compressmode) {
   case 'none':
