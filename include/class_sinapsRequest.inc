@@ -52,6 +52,11 @@ class sinapsRequest
     return $this->data->domaine->donnees->operation->structure;
   }
 
+  public function getOperationPersonne()
+  {
+    return $this->data->domaine->donnees->operation->personne;
+  }
+
   public function acquittementFonctionnel($responseCode = 200, $codeAcquittement = 0, $message = '', $identifiantObjApp = NULL)
   {
     return '<?xml version="1.0" encoding="UTF-8"?>
@@ -178,6 +183,163 @@ class sinapsRequest
       }
     }
 
+    $uuid = static::genUUID();
+    $values['entite']['supannRefId'] = array(
+      '{PASSPORT}'.$uuid,
+    );
+
     return $values;
+  }
+
+  public function getUserValues()
+  {
+    $personne = $this->getOperationPersonne();
+    $mapping = array(
+      'civilite'        => array('supannAccount','supannCivilite'),
+      'nomUsage'        => array('user','sn'),
+      'descriptifLong'  => array('user','description'),
+      'dateNaissance'   => array('personalInfo','dateOfBirth'),
+      'sexe'            => array('personalInfo','gender'),
+    );
+    $values = array(
+      'user'          => array(),
+      'supannAccount' => array(),
+      'personalInfo'  => array(),
+    );
+
+    foreach ($mapping as $sinapsAttr => list($fdTab,$fdAttr)) {
+      if (isset($personne->$sinapsAttr)) {
+        $values[$fdTab][$fdAttr] = (string)$personne->$sinapsAttr;
+      }
+    }
+
+    if (isset($personne->prenoms)) {
+      //TODO stocker les autres prénoms?
+      $values['user']['givenName'] = preg_replace('/;.*$/', '', $personne->prenoms);
+    }
+
+    //TODO: methodeContact ou methodeDeContact?
+    foreach ($personne->methodesDeContact->methodeContact as $method) {
+      switch ((string)$method->typeMethodeContact) {
+        case 'TEL':
+          $values['user']['telephoneNumber'] = (string)$method->valeur;
+          //TODO supannAutreMail
+          //TODO supannAutreTelephone
+          break;
+        case 'FAX':
+          $values['user']['facsimileTelephoneNumber'] = (string)$method->valeur;
+          break;
+        case 'MAILPERSO':
+          $values['supannAccount']['supannMailPerso'] = (string)$method->valeur;
+          break;
+        case 'ADR':
+          if ((string)$method->adresse->temoinAdressePrincipale != 'true') {
+            echo 'Ignore adresse non principale'."\n";
+            continue;
+          }
+          $adresse = $this->convertAddress($method->adresse);
+          if ($adresse === FALSE) {
+            echo 'Ignore adresse non FR non ETR'."\n";
+            continue;
+          }
+          if ($method->adresse->codeTypeAdresse == 'ADRPERSO') {
+            $values['user']['homePostalAddress'] = $adresse;
+          } else {
+            $values['user']['postalAddress'] = $adresse;
+          }
+          break;
+        default:
+          echo 'ignoring codeTypeMethodeContact '.$method->typeMethodeContact."\n";
+      }
+    }
+
+    //~ foreach ($personne->liensStructure->lienStructure as $lienStructure) {
+      //~ if (((string)$lienStructure->codeTypeLien == 'HIE') && isset($lienStructure->codeStructureMere)) {
+        //~ //TODO: vérifier date de début, peut-être prendre identifiantExterne
+        //~ $values['user']['supannCodeEntiteParent'] = (string)$lienStructure->codeStructureMere;
+      //~ }
+    //~ }
+
+    $uuid = static::genUUID();
+    $values['supannAccount']['supannRefId'] = array(
+      '{PASSPORT}'.$uuid,
+    );
+
+    return $values;
+  }
+
+  protected function convertAddress($address)
+  {
+    $adresse = '';
+    if (!empty($address->adresseFR)) {
+      if (!empty($address->adresseFR->batiment)) {
+        $adresse .= $address->adresseFR->batiment;
+        if (!empty($address->adresseFR->etage)) {
+          $adresse .= ', '.$address->adresseFR->etage;
+        }
+        $adresse .= "\n";
+      }
+      $adresse .= $address->adresseFR->numeroVoie;
+      if (!empty($address->adresseFR->codeBTQC)) {
+        $adresse .= ' '.$address->adresseFR->codeBTQC;
+      }
+      $adresse .= ' '.$address->adresseFR->typeVoie;
+      $adresse .= ' '.$address->adresseFR->nomVoie;
+      $adresse .= "\n";
+      if (!empty($address->adresseFR->complement)) {
+        $adresse .= $address->adresseFR->complement."\n";
+      }
+      if (!empty($address->adresseFR->lieuDit)) {
+        $adresse .= $address->adresseFR->lieuDit."\n";
+      }
+      $adresse .= $address->adresseFR->codePostal;
+      $adresse .= ' '.$address->adresseFR->BD;
+      $adresse .= "\n";
+      $adresse .= "FRANCE\n";
+    } elseif (!empty($address->adresseETR)) {
+      if (!empty($address->adresseETR->batiment)) {
+        $adresse .= $address->adresseETR->batiment;
+        if (!empty($address->adresseETR->etage)) {
+          $adresse .= ', '.$address->adresseETR->etage;
+        }
+        $adresse .= "\n";
+      }
+      $adresse .= $address->adresseETR->numeroVoie;
+      $adresse .= ' '.$address->adresseETR->nomVoie;
+      $adresse .= "\n";
+      if (!empty($address->adresseETR->complement)) {
+        $adresse .= $address->adresseETR->complement."\n";
+      }
+      $adresse .= $address->adresseETR->codePostal;
+      $adresse .= ' '.$address->adresseETR->ville;
+      $adresse .= "\n";
+      $adresse .= $address->adresseETR->etat."\n";rfc
+      $adresse .= $address->adresseETR->pays."\n";
+    } else {
+      $adresse = FALSE;
+    }
+
+    return $adresse;
+  }
+
+  protected static function genUUID()
+  {
+    //UUID v4
+    return sprintf(
+      '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+      // 32 bits for "time_low"
+      mt_rand(0, 0xffff), mt_rand(0, 0xffff),
+      // 16 bits for "time_mid"
+      mt_rand(0, 0xffff),
+      // 16 bits for "time_hi_and_version",
+      // four most significant bits holds version number 4
+      mt_rand(0, 0x0fff) | 0x4000,
+      // 16 bits, 8 bits for "clk_seq_hi_res",
+      // 8 bits for "clk_seq_low",
+      // two most significant bits holds zero and one for variant DCE1.1
+      mt_rand(0, 0x3fff) | 0x8000,
+      // 48 bits for "node"
+      mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
+    );
   }
 }

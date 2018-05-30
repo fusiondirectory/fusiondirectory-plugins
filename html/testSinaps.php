@@ -17,17 +17,6 @@ if (!$http_raw_post_data) {
   return;
 }
 
-$compressmode = 'none';
-if (strpos($http_raw_post_data, '<?xml') === 0) {
-  $xml = $http_raw_post_data;
-} elseif ($xml = @gzuncompress($http_raw_post_data)) {
-  $compressmode = 'gzcompress';
-}
-
-if (strpos($xml, '<?xml') !== 0) {
-  error_log('failed to extract XML content');
-}
-
 function testAcquittement()
 {
   $ip   = '10.92.192.170';
@@ -55,7 +44,7 @@ function testAcquittement()
     'http' => array_merge(
       array (
         'method'  => 'POST',
-        'header'  => 'Content-type: application/xml'."\r\n".'Authorization: Basic '.base64_encode('admin:admin'),
+        'header'  => 'Content-type: application/xml'."\r\n".'Authorization: Basic '.base64_encode('PASSPORT:Irste@92'),
         'content' => $request,
       ),
       []
@@ -82,12 +71,15 @@ function testAcquittement()
   exit();
 }
 
-$request = new sinapsRequest($xml);
+$request = new sinapsRequest($http_raw_post_data;);
 
 echo $request->codeDomaine().' '.$request->codeOperation().' '.$request->operationVersion()."\n";
 if (($request->codeOperation() == 'DIFFUSION') && ($request->codeDomaine() == 'STRUCTURE')) {
   echo $request->acquittementTechnique(200, 'Diffusion de structure reçue')."\n";
   handleStructureDiffusion($request->getSupannEntiteValues());
+} elseif (($request->codeOperation() == 'DIFFUSION') && ($request->codeDomaine() == 'PERSONNE')) {
+  echo $request->acquittementTechnique(200, 'Diffusion de personne reçue')."\n";
+  print_r($request->getUserValues());
 } else {
   returnError('Cannot handle '.$request->codeDomaine().' '.$request->codeOperation().' '.$request->operationVersion()."\n");
 }
@@ -100,25 +92,6 @@ if (($request->codeOperation() == 'DIFFUSION') && ($request->codeDomaine() == 'S
  * Gérer conflit
  * Trancoder
  */
-
-$reply = '';
-switch ($compressmode) {
-  case 'none':
-    print $reply;
-    break;
-
-  case 'gzcompress':
-    print gzcompress($reply);
-    break;
-
-  case 'gzencode':
-    print gzencode($reply);
-    break;
-
-  case 'gzdeflate':
-    print gzdeflate($reply);
-    break;
-}
 
 function handleStructureDiffusion($values)
 {
