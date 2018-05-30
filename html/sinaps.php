@@ -23,7 +23,7 @@ if ($config->get_cfg_value('fdSinapsEnabled') != 'TRUE') {
   returnError('SINAPS integration is disabled'."\n");
 }
 
-$request = new sinapsRequest($http_raw_post_data;);
+$request = new sinapsRequest($http_raw_post_data);
 
 if (($request->codeOperation() == 'DIFFUSION') && ($request->codeDomaine() == 'STRUCTURE')) {
   echo $request->acquittementTechnique(200, 'Diffusion de structure reçue')."\n";

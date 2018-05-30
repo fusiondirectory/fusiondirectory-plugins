@@ -71,7 +71,7 @@ function testAcquittement()
   exit();
 }
 
-$request = new sinapsRequest($http_raw_post_data;);
+$request = new sinapsRequest($http_raw_post_data);
 
 echo $request->codeDomaine().' '.$request->codeOperation().' '.$request->operationVersion()."\n";
 if (($request->codeOperation() == 'DIFFUSION') && ($request->codeDomaine() == 'STRUCTURE')) {

@@ -313,7 +313,7 @@ class sinapsRequest
       $adresse .= $address->adresseETR->codePostal;
       $adresse .= ' '.$address->adresseETR->ville;
       $adresse .= "\n";
-      $adresse .= $address->adresseETR->etat."\n";rfc
+      $adresse .= $address->adresseETR->etat."\n";
       $adresse .= $address->adresseETR->pays."\n";
     } else {
       $adresse = FALSE;
