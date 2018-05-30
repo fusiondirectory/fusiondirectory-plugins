@@ -97,7 +97,7 @@ class etablissement extends simplePlugin
           new StringAttribute(
             _('SUPANN code'), _('The SUPANN code for this Establishment'),
             'supannCodeEntite', TRUE,
-            '', '', '/^[a-z0-9_-]*$/'.(strict_uid_mode() ? '' : 'i')
+            '', '', '/^[a-z0-9_-]*$/i'
           ),
           new StringAttribute(
             _('Legal name'), _('The legal name of this Establishment'),
