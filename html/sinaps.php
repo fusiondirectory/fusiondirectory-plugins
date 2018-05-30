@@ -108,13 +108,14 @@ class sinapsHandler extends standAlonePage
 
   function handleStructureDiffusion($request, $values)
   {
-    $uuid = $values['entite']['supannRefId'][0];
-    $entites = objects::ls('entite', 'ou', NULL, '(supannRefId='.$uuid.')');
-    $message = 'Entite created';
+    $uuid     = $values['entite']['supannRefId'][0];
+    $idObjApp = preg_replace('/^{PASSPORT}/', '', $uuid);
+    $entites  = objects::ls('entite', 'ou', NULL, '(supannRefId='.$uuid.')');
+    $message  = 'Entite created';
     if (!empty($entites)) {
       if (count($entites) > 1) {
         $error = 'Multiple entite matches id '.$uuid;
-        $this->sendAcquittement($request->acquittementFonctionnel(500, 10, $error, $dn));
+        $this->sendAcquittement($request->acquittementFonctionnel(500, 10, $error, $idObjApp));
         exit();
       } else {
         $dn = key($entites);
@@ -125,21 +126,22 @@ class sinapsHandler extends standAlonePage
     }
     $error = $this->fillObject('entite', $values, $dn);
     if ($error !== TRUE) {
-      $this->sendAcquittement($request->acquittementFonctionnel(500, 10, print_r($error, TRUE), $uuid));
+      $this->sendAcquittement($request->acquittementFonctionnel(500, 10, print_r($error, TRUE), $idObjApp));
     } else {
-      $this->sendAcquittement($request->acquittementFonctionnel(200, 0, $message, $uuid));
+      $this->sendAcquittement($request->acquittementFonctionnel(200, 0, $message, $idObjApp));
     }
   }
 
   function handlePersonneDiffusion($request, $values)
   {
-    $uuid = $values['supannAccount']['supannRefId'][0];
-    $entites = objects::ls('user', 'ou', NULL, '(supannRefId='.$uuid.')');
-    $message = 'User created';
+    $uuid     = $values['supannAccount']['supannRefId'][0];
+    $idObjApp = preg_replace('/^{PASSPORT}/', '', $uuid);
+    $entites  = objects::ls('user', 'ou', NULL, '(supannRefId='.$uuid.')');
+    $message  = 'User created';
     if (!empty($entites)) {
       if (count($entites) > 1) {
         $error = 'Multiple user matches id '.$uuid;
-        $this->sendAcquittement($request->acquittementFonctionnel(500, 10, $error, $dn));
+        $this->sendAcquittement($request->acquittementFonctionnel(500, 10, $error, $idObjApp));
         exit();
       } else {
         $dn = key($entites);
@@ -150,9 +152,9 @@ class sinapsHandler extends standAlonePage
     }
     $error = fillObject('user', $values, $dn);
     if ($error !== TRUE) {
-      $this->sendAcquittement($request->acquittementFonctionnel(500, 10, $error, $uuid));
+      $this->sendAcquittement($request->acquittementFonctionnel(500, 10, $error, $idObjApp));
     } else {
-      $this->sendAcquittement($request->acquittementFonctionnel(200, 0, $message, $uuid));
+      $this->sendAcquittement($request->acquittementFonctionnel(200, 0, $message, $idObjApp));
     }
   }
 

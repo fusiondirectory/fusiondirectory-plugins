@@ -90,6 +90,7 @@ class sinapsRequest
   public function getSupannEntiteValues()
   {
     $structure = $this->getOperationStructure();
+
     $mapping = array(
       'libelle20'       => 'ou',
       'descriptifLong'  => 'description',
@@ -97,8 +98,26 @@ class sinapsRequest
       'codeNature'      => 'supannTypeEntite',
     );
     $values = array(
-      'entite' => array(),
+      'entite' => array(
+        'supannRefId' => array(),
+      ),
     );
+
+    $uuid = '';
+
+    foreach ($structure->referenceCroisee->identifiantsExternes as $ref) {
+      if ($ref->identifiantApplication == 'PASSPORT') {
+        $uuid = $ref->identifiantExterne;
+      } else {
+        $values['entite']['supannRefId'][] = '{'.$ref->identifiantApplication.'}'.$ref->identifiantExterne;
+      }
+    }
+
+    if (empty($uuid)) {
+      $uuid = static::genUUID();
+    }
+
+    array_unshift($values['entite']['supannRefId'], '{PASSPORT}'.$uuid);
 
     foreach ($mapping as $sinapsAttr => $fdAttr) {
       if (isset($structure->$sinapsAttr)) {
@@ -183,11 +202,6 @@ class sinapsRequest
       }
     }
 
-    $uuid = static::genUUID();
-    $values['entite']['supannRefId'] = array(
-      '{PASSPORT}'.$uuid,
-    );
-
     return $values;
   }
 
@@ -203,9 +217,27 @@ class sinapsRequest
     );
     $values = array(
       'user'          => array(),
-      'supannAccount' => array(),
+      'supannAccount' => array(
+        'supannRefId' => array(),
+      ),
       'personalInfo'  => array(),
     );
+
+    $uuid = '';
+
+    foreach ($personne->referenceCroisee->identifiantsExternes as $ref) {
+      if ($ref->identifiantApplication == 'PASSPORT') {
+        $uuid = $ref->identifiantExterne;
+      } else {
+        $values['supannAccount']['supannRefId'][] = '{'.$ref->identifiantApplication.'}'.$ref->identifiantExterne;
+      }
+    }
+
+    if (empty($uuid)) {
+      $uuid = static::genUUID();
+    }
+
+    array_unshift($values['supannAccount']['supannRefId'], '{PASSPORT}'.$uuid);
 
     foreach ($mapping as $sinapsAttr => list($fdTab,$fdAttr)) {
       if (isset($personne->$sinapsAttr)) {
