@@ -30,17 +30,20 @@ class sinapsHandler extends standAlonePage
   protected $ackUrl;
   protected $login;
   protected $password;
+  protected $dumpFolder;
+  protected $request;
 
   function readLdapConfig()
   {
     global $config;
 
-    $this->ackUrl   = $config->get_cfg_value('SinapsAcknowledgmentURL');
-    $this->login    = $config->get_cfg_value('SinapsLogin');
-    $this->password = $config->get_cfg_value('SinapsPassword');
+    $this->ackUrl     = $config->get_cfg_value('SinapsAcknowledgmentURL');
+    $this->login      = $config->get_cfg_value('SinapsLogin');
+    $this->password   = $config->get_cfg_value('SinapsPassword');
+    $this->dumpFolder = $config->get_cfg_value('SinapsDumpFolder');
 
     if ($config->get_cfg_value('SinapsEnabled') != 'TRUE') {
-      $this->returnError($request, 'SINAPS integration is disabled'."\n");
+      $this->returnError('SINAPS integration is disabled'."\n");
     } else {
       return TRUE;
     }
@@ -54,27 +57,75 @@ class sinapsHandler extends standAlonePage
       return;
     }
 
-    $request = new sinapsRequest($http_raw_post_data);
+    $this->request = new sinapsRequest($http_raw_post_data);
 
-    if (($request->codeOperation() == 'DIFFUSION') && ($request->codeDomaine() == 'STRUCTURE')) {
-      echo $request->acquittementTechnique(200, 'Diffusion de structure reçue')."\n";
-      $this->handleStructureDiffusion($request, $request->getSupannEntiteValues());
-    } elseif (($request->codeOperation() == 'DIFFUSION') && ($request->codeDomaine() == 'PERSONNE')) {
-      echo $request->acquittementTechnique(200, 'Diffusion de personne reçue')."\n";
-      $this->handlePersonneDiffusion($request, $request->getUserValues());
+    $this->dumpFile(
+      $this->request->identifiantTransaction().'.xml',
+      $http_raw_post_data
+    );
+
+    if (($this->request->codeOperation() == 'DIFFUSION') && ($this->request->codeDomaine() == 'STRUCTURE')) {
+      $this->outputAcquittementTechnique($this->request->acquittementTechnique(200, 'Diffusion de structure reçue'));
+      $this->handleStructureDiffusion($this->request->getSupannEntiteValues());
+    } elseif (($this->request->codeOperation() == 'DIFFUSION') && ($this->request->codeDomaine() == 'PERSONNE')) {
+      $this->outputAcquittementTechnique($this->request->acquittementTechnique(200, 'Diffusion de personne reçue'));
+      $this->handlePersonneDiffusion($this->request->getUserValues());
     } else {
-      $this->returnError($request, 'Cannot handle '.$request->codeDomaine().' '.$request->codeOperation().' '.$request->operationVersion()."\n");
+      $this->returnError('Cannot handle '.$this->request->codeDomaine().' '.$this->request->codeOperation().' '.$this->request->operationVersion()."\n");
     }
   }
 
-  function returnError($request, $errorText)
+  function dumpFile($fileName, $fileContent)
   {
-    echo $request->acquittementTechnique(500, $errorText)."\n";
+    if (empty($this->dumpFolder)) {
+      return;
+    }
+
+    $fileName = $this->dumpFolder.'/'.$fileName;
+
+    if (!is_dir($this->dumpFolder)) {
+      if (!mkdir($this->dumpFolder, 0777, TRUE)) {
+        $this->returnError('Failed to create dump folder '.$this->dumpFolder, FALSE);
+      }
+    }
+    $fp = fopenWithErrorHandling($fileName, 'w');
+    if (!is_array($fp)) {
+      fwrite($fp, $fileContent);
+      fclose($fp);
+    } else {
+      if (!empty($fp)) {
+        $errormsg = implode("\n", $fp);
+      } else {
+        $errormsg = 'Unable to dump in '.$fileName;
+      }
+      $this->returnError($errormsg, FALSE);
+    }
+  }
+
+  function returnError($errorText, $dump = TRUE)
+  {
+    $acquittement = $this->request->acquittementTechnique(500, $errorText);
+    echo "$acquittement\n";
+    if ($dump) {
+      $this->dumpFile(
+        $this->request->identifiantTransaction().'-answer-error.xml',
+        $acquittement
+      );
+    }
     error_log('Error: '.$errorText);
     exit();
   }
 
-  function sendAcquittement($xml)
+  function outputAcquittementTechnique($acquittement)
+  {
+    echo "$acquittement\n";
+    $this->dumpFile(
+      $this->request->identifiantTransaction().'-answer.xml',
+      $acquittement
+    );
+  }
+
+  function sendAcquittementFonctionnel($xml)
   {
     // performs the HTTP(S) POST
     $opts = array (
@@ -89,12 +140,19 @@ class sinapsHandler extends standAlonePage
     $context  = stream_context_create($opts);
     $fp = fopenWithErrorHandling($this->ackUrl, 'r', FALSE, $context);
     if (!is_array($fp)) {
-      echo '***** Request *****'."\n".$xml.'***** End of request *****'."\n";
       $response = '';
       while ($row = fgets($fp)) {
         $response .= trim($row)."\n";
       }
-      echo '***** Server response *****'."\n".$response.'***** End of server response *****'."\n";
+
+      $this->dumpFile(
+        $this->request->identifiantTransaction().'-acquittement.xml',
+        $xml
+      );
+      $this->dumpFile(
+        $this->request->identifiantTransaction().'-acquittement-answer.xml',
+        $response
+      );
     } else {
       if (!empty($fp)) {
         $errormsg = implode("\n", $fp);
@@ -106,7 +164,7 @@ class sinapsHandler extends standAlonePage
     exit();
   }
 
-  function handleStructureDiffusion($request, $values)
+  function handleStructureDiffusion($values)
   {
     $uuid     = $values['entite']['supannRefId'][0];
     $idObjApp = preg_replace('/^{PASSPORT}/', '', $uuid);
@@ -115,7 +173,7 @@ class sinapsHandler extends standAlonePage
     if (!empty($entites)) {
       if (count($entites) > 1) {
         $error = 'Multiple entite matches id '.$uuid;
-        $this->sendAcquittement($request->acquittementFonctionnel(500, 10, $error, $idObjApp));
+        $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error, $idObjApp));
         exit();
       } else {
         $dn = key($entites);
@@ -126,13 +184,13 @@ class sinapsHandler extends standAlonePage
     }
     $error = $this->fillObject('entite', $values, $dn);
     if ($error !== TRUE) {
-      $this->sendAcquittement($request->acquittementFonctionnel(500, 10, print_r($error, TRUE), $idObjApp));
+      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, strip_tags(implode(', ', $error)), $idObjApp));
     } else {
-      $this->sendAcquittement($request->acquittementFonctionnel(200, 0, $message, $idObjApp));
+      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(200, 0, $message, $idObjApp));
     }
   }
 
-  function handlePersonneDiffusion($request, $values)
+  function handlePersonneDiffusion($values)
   {
     $uuid     = $values['supannAccount']['supannRefId'][0];
     $idObjApp = preg_replace('/^{PASSPORT}/', '', $uuid);
@@ -141,7 +199,7 @@ class sinapsHandler extends standAlonePage
     if (!empty($entites)) {
       if (count($entites) > 1) {
         $error = 'Multiple user matches id '.$uuid;
-        $this->sendAcquittement($request->acquittementFonctionnel(500, 10, $error, $idObjApp));
+        $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error, $idObjApp));
         exit();
       } else {
         $dn = key($entites);
@@ -152,9 +210,9 @@ class sinapsHandler extends standAlonePage
     }
     $error = fillObject('user', $values, $dn);
     if ($error !== TRUE) {
-      $this->sendAcquittement($request->acquittementFonctionnel(500, 10, $error, $idObjApp));
+      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, strip_tags(implode(', ', $error)), $idObjApp));
     } else {
-      $this->sendAcquittement($request->acquittementFonctionnel(200, 0, $message, $idObjApp));
+      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(200, 0, $message, $idObjApp));
     }
   }
 

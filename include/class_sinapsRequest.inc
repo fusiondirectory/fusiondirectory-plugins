@@ -65,11 +65,11 @@ class sinapsRequest
   <donnees>
     <operation codeOperation="CREATION" version="1.0">
       <acq:Acquittement>
-        <identifiantTransaction>'.$this->identifiantTransaction().'</identifiantTransaction>
-        <ResponseCode>'.$responseCode.'</ResponseCode>
-        <codeAcquittement>'.$codeAcquittement.'</codeAcquittement>
-        <messageAcquittement>'.$message.'</messageAcquittement>
-        <identifiantObjApp>'.$identifiantObjApp.'</identifiantObjApp>
+        <identifiantTransaction>'.htmlspecialchars($this->identifiantTransaction(), ENT_XML1).'</identifiantTransaction>
+        <ResponseCode>'.htmlspecialchars($responseCode, ENT_XML1).'</ResponseCode>
+        <codeAcquittement>'.htmlspecialchars($codeAcquittement, ENT_XML1).'</codeAcquittement>
+        <messageAcquittement>'.htmlspecialchars($message, ENT_XML1).'</messageAcquittement>
+        <identifiantObjApp>'.htmlspecialchars($identifiantObjApp, ENT_XML1).'</identifiantObjApp>
       </acq:Acquittement>
     </operation>
   </donnees>
@@ -79,12 +79,14 @@ class sinapsRequest
 
   public function acquittementTechnique($responseCode = 200, $message = '')
   {
-    return '<?xml version="1.0" encoding="UTF-8"?>
-<WebServiceHTTPResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="acquittementTechnique.xsd">
-  <IdentifiantTransaction>'.$this->identifiantTransaction().'</IdentifiantTransaction>
-  <ResponseCode>'.$responseCode.'</ResponseCode>
-  <ResponseMessage>'.$message.'</ResponseMessage>
-</WebServiceHTTPResponse>';
+    $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?>
+    <WebServiceHTTPResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="acquittementTechnique.xsd">
+    </WebServiceHTTPResponse>');
+    $xml->addChild('IdentifiantTransaction', $this->identifiantTransaction());
+    $xml->addChild('ResponseCode', $responseCode);
+    $xml->addChild('ResponseMessage', $message);
+
+    return $xml->asXML();
   }
 
   public function getSupannEntiteValues()
@@ -135,7 +137,7 @@ class sinapsRequest
           break;
         case 'ADR':
           if ((string)$method->adresse->temoinAdressePrincipale != 'true') {
-            echo 'Ignore adresse non principale'."\n";
+            trigger_error('Ignore adresse non principale');
             continue;
           }
           if (isset($method->adresse->adresseFR)) {
@@ -185,13 +187,13 @@ class sinapsRequest
             $adresse .= $method->adresse->adresseETR->etat."\n";
             $adresse .= $method->adresse->adresseETR->pays."\n";
           } else {
-            echo 'Ignore adresse non FR non ETR'."\n";
+            trigger_error('Ignore adresse non FR non ETR');
             continue;
           }
           $values['entite']['postalAddress'] = $adresse;
           break;
         default:
-          echo 'ignoring codeTypeMethodeContact '.$method->codeTypeMethodeContact."\n";
+          trigger_error('ignoring codeTypeMethodeContact '.$method->codeTypeMethodeContact);
       }
     }
 
@@ -266,12 +268,12 @@ class sinapsRequest
           break;
         case 'ADR':
           if ((string)$method->adresse->temoinAdressePrincipale != 'true') {
-            echo 'Ignore adresse non principale'."\n";
+            trigger_error('Ignore adresse non principale');
             continue;
           }
           $adresse = $this->convertAddress($method->adresse);
           if ($adresse === FALSE) {
-            echo 'Ignore adresse non FR non ETR'."\n";
+            trigger_error('Ignore adresse non FR non ETR');
             continue;
           }
           if ($method->adresse->codeTypeAdresse == 'ADRPERSO') {
@@ -281,7 +283,7 @@ class sinapsRequest
           }
           break;
         default:
-          echo 'ignoring codeTypeMethodeContact '.$method->typeMethodeContact."\n";
+          trigger_error('ignoring codeTypeMethodeContact '.$method->typeMethodeContact);
       }
     }
 

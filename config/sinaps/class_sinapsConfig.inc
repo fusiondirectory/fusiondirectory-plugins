@@ -58,6 +58,10 @@ class sinapsConfig extends simplePlugin
             _('Password'), _('Password to use for Basic Auth when contacting SINAPS services'),
             'fdSinapsPassword', FALSE
           ),
+          new StringAttribute (
+            _('Dump folder'), _('Folder in which received transactions should be dumped (leave empty to disable)'),
+            'fdSinapsDumpFolder', FALSE
+          ),
         )
       ),
     );

@@ -29,8 +29,19 @@ attributetype ( 1.3.6.1.4.1.38414.65.1.4 NAME 'fdSinapsPassword'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE)
 
+attributetype ( 1.3.6.1.4.1.38414.65.1.5 NAME 'fdSinapsDumpFolder'
+  DESC 'FusionDirectory - Folder in which received transactions should be dumped - absent means dump is disabled'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
 objectclass ( 1.3.6.1.4.1.38414.65.2.1 NAME 'fdSinapsPluginConf'
   DESC 'FusionDirectory sinaps plugin configuration'
   SUP top AUXILIARY
   MUST ( cn )
-  MAY ( fdSinapsEnabled $ fdSinapsAcknowledgmentURL $ fdSinapsLogin $ fdSinapsPassword ) )
+  MAY (
+    fdSinapsEnabled $ fdSinapsAcknowledgmentURL $
+    fdSinapsLogin $ fdSinapsPassword $
+    fdSinapsDumpFolder
+  ) )
