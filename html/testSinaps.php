@@ -27,13 +27,13 @@ function testAcquittement()
 <domaine code="ACQUITTEMENT">
   <donnees>
     <operation codeOperation="CREATION" version="1.0">
-      <acq:Acquittement>
+      <Acquittement>
         <identifiantTransaction>c53c34b9-cfba-4ffc-9ce3-7e9142bb5334</identifiantTransaction>
         <ResponseCode>500</ResponseCode>
         <codeAcquittement>10</codeAcquittement>
         <messageAcquittement>Objet metier integre - Test U09</messageAcquittement>
         <identifiantObjApp>id02-objet-app</identifiantObjApp>
-      </acq:Acquittement>
+      </Acquittement>
     </operation>
   </donnees>
 </domaine>

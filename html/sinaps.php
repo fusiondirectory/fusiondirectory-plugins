@@ -125,40 +125,43 @@ class sinapsHandler extends standAlonePage
     );
   }
 
+  protected static function sendPostRequest($url, $user, $password, $data)
+  {
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL,         $url);
+    curl_setopt($ch, CURLOPT_POST,        1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS,  $data);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/xml'));
+    curl_setopt($ch, CURLOPT_USERPWD, "$user:$password");
+    curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+
+    // receive server response ...
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+    $serverOutput = curl_exec($ch);
+
+    curl_close($ch);
+
+    return $serverOutput;
+  }
+
+
   function sendAcquittementFonctionnel($xml)
   {
-    // performs the HTTP(S) POST
-    $opts = array (
-      'http' => array (
-        'method'  => 'POST',
-        'header'  => 'Content-type: application/xml'."\r\n".'Authorization: Basic '.base64_encode($this->login.':'.$this->password),
-        'content' => $xml,
-      ),
-      'ssl' => array()
-    );
-
-    $context  = stream_context_create($opts);
-    $fp = fopenWithErrorHandling($this->ackUrl, 'r', FALSE, $context);
-    if (!is_array($fp)) {
-      $response = '';
-      while ($row = fgets($fp)) {
-        $response .= trim($row)."\n";
-      }
-
+    $answer = static::sendPostRequest($this->ackUrl, $this->login, $this->password, $xml);
+    if ($answer !== FALSE) {
       $this->dumpFile(
         $this->request->identifiantTransaction().'-acquittement.xml',
         $xml
       );
       $this->dumpFile(
         $this->request->identifiantTransaction().'-acquittement-answer.xml',
-        $response
+        $answer
       );
     } else {
-      if (!empty($fp)) {
-        $errormsg = implode("\n", $fp);
-      } else {
-        $errormsg = 'Unable to connect to '.$this->ackUrl;
-      }
+      $errormsg = 'Unable to connect to '.$this->ackUrl;
+      //TODO: returnError should not be used once acquittementTechnique was already sent it’s too late
       $this->returnError($errormsg);
     }
     exit();
