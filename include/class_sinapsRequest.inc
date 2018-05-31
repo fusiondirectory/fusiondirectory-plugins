@@ -64,13 +64,13 @@ class sinapsRequest
 <domaine code="ACQUITTEMENT">
   <donnees>
     <operation codeOperation="CREATION" version="1.0">
-      <acq:Acquittement>
+      <Acquittement>
         <identifiantTransaction>'.htmlspecialchars($this->identifiantTransaction(), ENT_XML1).'</identifiantTransaction>
         <ResponseCode>'.htmlspecialchars($responseCode, ENT_XML1).'</ResponseCode>
         <codeAcquittement>'.htmlspecialchars($codeAcquittement, ENT_XML1).'</codeAcquittement>
         <messageAcquittement>'.htmlspecialchars($message, ENT_XML1).'</messageAcquittement>
         <identifiantObjApp>'.htmlspecialchars($identifiantObjApp, ENT_XML1).'</identifiantObjApp>
-      </acq:Acquittement>
+      </Acquittement>
     </operation>
   </donnees>
 </domaine>
@@ -140,53 +140,8 @@ class sinapsRequest
             trigger_error('Ignore adresse non principale');
             continue;
           }
-          if (isset($method->adresse->adresseFR)) {
-            $adresse = '';
-            if (isset($method->adresse->adresseFR->batiment)) {
-              $adresse .= $method->adresse->adresseFR->batiment;
-              if (isset($method->adresse->adresseFR->etage)) {
-                $adresse .= ', '.$method->adresse->adresseFR->etage;
-              }
-              $adresse .= "\n";
-            }
-            $adresse .= $method->adresse->adresseFR->numeroVoie;
-            if (isset($method->adresse->adresseFR->codeBTQC)) {
-              $adresse .= ' '.$method->adresse->adresseFR->codeBTQC;
-            }
-            $adresse .= ' '.$method->adresse->adresseFR->typeVoie;
-            $adresse .= ' '.$method->adresse->adresseFR->nomVoie;
-            $adresse .= "\n";
-            if (isset($method->adresse->adresseFR->complement)) {
-              $adresse .= $method->adresse->adresseFR->complement."\n";
-            }
-            if (isset($method->adresse->adresseFR->lieuDit)) {
-              $adresse .= $method->adresse->adresseFR->lieuDit."\n";
-            }
-            $adresse .= $method->adresse->adresseFR->codePostal;
-            $adresse .= ' '.$method->adresse->adresseFR->BD;
-            $adresse .= "\n";
-            $adresse .= "FRANCE\n";
-          } elseif (isset($method->adresse->adresseETR)) {
-            $adresse = '';
-            if (isset($method->adresse->adresseETR->batiment)) {
-              $adresse .= $method->adresse->adresseETR->batiment;
-              if (isset($method->adresse->adresseETR->etage)) {
-                $adresse .= ', '.$method->adresse->adresseETR->etage;
-              }
-              $adresse .= "\n";
-            }
-            $adresse .= $method->adresse->adresseETR->numeroVoie;
-            $adresse .= ' '.$method->adresse->adresseETR->nomVoie;
-            $adresse .= "\n";
-            if (isset($method->adresse->adresseETR->complement)) {
-              $adresse .= $method->adresse->adresseETR->complement."\n";
-            }
-            $adresse .= $method->adresse->adresseETR->codePostal;
-            $adresse .= ' '.$method->adresse->adresseETR->ville;
-            $adresse .= "\n";
-            $adresse .= $method->adresse->adresseETR->etat."\n";
-            $adresse .= $method->adresse->adresseETR->pays."\n";
-          } else {
+          $adresse = $this->convertAddress($method->adresse);
+          if ($adresse === FALSE) {
             trigger_error('Ignore adresse non FR non ETR');
             continue;
           }
@@ -293,11 +248,6 @@ class sinapsRequest
         //~ $values['user']['supannCodeEntiteParent'] = (string)$lienStructure->codeStructureMere;
       //~ }
     //~ }
-
-    $uuid = static::genUUID();
-    $values['supannAccount']['supannRefId'] = array(
-      '{PASSPORT}'.$uuid,
-    );
 
     return $values;
   }
