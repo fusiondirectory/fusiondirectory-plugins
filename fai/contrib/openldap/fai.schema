@@ -313,21 +313,21 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.5.30 NAME 'FAIpartitionMethod'
 # Name       : FAIdiskOption
 # Description: Store new disk options like preserve_always, etc.
 attributetype ( 1.3.6.1.4.1.10098.1.1.5.31 NAME 'FAIdiskOption'
-    DESC 'Options for the disk creation'
+    DESC 'Options for the disk like preserve_always, etc.'
                 EQUALITY caseIgnoreIA5Match
                 SUBSTR caseIgnoreIA5SubstringsMatch
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
 # Name       : FAIdiskType
-# Description: Differenciate between lvm, raid and disk
+# Description: Differenciate between lvm, raid, cryptsetup and disk
 attributetype ( 1.3.6.1.4.1.10098.1.1.5.32 NAME 'FAIdiskType'
-    DESC 'Options for the disk creation'
+    DESC 'disk_config type. May be lvm, raid, cryptsetup or disk.'
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE)
 
 # Name       : FAIlvmDevice
 # Description: For lvm disk definitions, store the physical devices
 attributetype ( 1.3.6.1.4.1.10098.1.1.5.33 NAME 'FAIlvmDevice'
-    DESC 'Options for the disk creation'
+    DESC 'For lvm disk definitions, store the physical devices'
                 EQUALITY caseIgnoreIA5Match
                 SUBSTR caseIgnoreIA5SubstringsMatch
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
@@ -335,13 +335,13 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.5.33 NAME 'FAIlvmDevice'
 # Name       : FAIfsCreateOptions
 # Description: New option field to pass FS creation options
 attributetype ( 1.3.6.1.4.1.10098.1.1.5.34 NAME 'FAIfsCreateOptions'
-    DESC 'Options for the disk creation'
+    DESC 'Option field to pass FS creation options'
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
 # Name       : FAIfsTuneOptions
 # Description: New option field to pass FS tuning options
 attributetype ( 1.3.6.1.4.1.10098.1.1.5.35 NAME 'FAIfsTuneOptions'
-    DESC 'Options for the disk creation'
+    DESC 'Option field to pass FS tuning options'
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
 ##

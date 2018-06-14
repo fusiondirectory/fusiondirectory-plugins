@@ -97,9 +97,6 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
   protected function getAttributeArrayValue($key, $value)
   {
     $opt = array();
-    if (isset($value['encrypted']) && $value['encrypted']) {
-      $opt[] = _('encrypted');
-    }
     if (isset($value['bootable']) && $value['bootable']) {
       $opt[] = _('bootable');
     }
@@ -119,7 +116,7 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
   function delPostValue ($key)
   {
     /* Create a list of all partitions that are used in
-     *  lvm or raid compilations.
+     *  lvm, raid or cryptsetup compilations.
      */
     $list = array();
     foreach ($this->plugin->parent->disks as $disk) {
@@ -132,6 +129,10 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
           foreach (explode(',', $part['FAIpartitionSize']) as $partname) {
             $list[preg_replace('/:.*$/', '', $partname)][] = $disk;
           }
+        }
+      } elseif ($disk['FAIdiskType'] == 'cryptsetup') {
+        foreach ($disk['partitions'] as $part) {
+          $list[$part['FAIpartitionSize']][] = $disk;
         }
       }
     }
@@ -167,7 +168,11 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
     }
 
     if ($this->plugin->FAIdiskType == 'disk') {
-      $part['cn'] = $this->plugin->cn.$part['FAIpartitionNr'];
+      if (preg_match('/^disk(\d+)$/', $this->plugin->cn)) {
+        $part['cn'] = $this->plugin->cn.'.'.$part['FAIpartitionNr'];
+      } else {
+        $part['cn'] = $this->plugin->cn.$part['FAIpartitionNr'];
+      }
     } elseif ($this->plugin->FAIdiskType == 'lvm') {
       /* Check if we need to update partition names of lvm compilations */
       if (isset($this->value[$part['FAIpartitionNr']])) {
@@ -183,6 +188,9 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
     } elseif ($this->plugin->FAIdiskType == 'raid') {
       /* Set raid names to md# */
       $part['cn'] = 'md'.$part['FAIpartitionNr'];
+    } elseif ($this->plugin->FAIdiskType == 'cryptsetup') {
+      /* Set cryptsetup names to luks# */
+      $part['cn'] = 'luks'.$part['FAIpartitionNr'];
     }
 
     $this->value[$part['FAIpartitionNr']] = $part;
@@ -251,6 +259,10 @@ class faiDiskEntry extends simplePlugin
             array('msdos', 'gpt'), '',
             array('MSDOS', 'GPT')
           ),
+          new BooleanAttribute (
+            _('Random init'), _('Initialise all encrypted partitions with random data'),
+            'randinit', FALSE
+          ),
           new HiddenAttribute ('FAIdiskType')
         )
       ),
@@ -277,21 +289,37 @@ class faiDiskEntry extends simplePlugin
   {
     parent::__construct($dn, NULL, $parent);
 
-    $this->FAIdiskType  = $type;
-    if ($this->FAIdiskType != 'lvm') {
-      $this->attributesAccess['lvmDevices']->setDisabled(TRUE);
-      $this->attributesAccess['lvmDevices']->setVisible(FALSE);
-    }
-
     if ($disk) {
       $this->is_edit     = TRUE;
 
       $this->cn          = $disk['cn'];
       $this->description = $disk['description'];
       $this->attributesAccess['cn']->setInitialValue($this->cn);
+    }
 
-      /* Get devices used in volume base disks */
+    $this->FAIdiskType  = $type;
+    if ($this->FAIdiskType == 'lvm') {
       $this->attributesAccess['lvmDevices']->attribute->setChoices($this->getAvailablePartitions());
+    } else {
+      $this->attributesAccess['lvmDevices']->setDisabled(TRUE);
+      $this->attributesAccess['lvmDevices']->setVisible(FALSE);
+    }
+    if ($this->FAIdiskType != 'disk') {
+      $this->attributesAccess['disklabel']->setDisabled(TRUE);
+      $this->attributesAccess['disklabel']->setVisible(FALSE);
+      $this->attributesAccess['cn']->setDisabled(TRUE);
+      $this->attributesAccess['cn']->setValue($this->FAIdiskType);
+    }
+    if ($this->FAIdiskType == 'cryptsetup') {
+      $this->attributesAccess['fstabkey']->setDisabled(TRUE);
+      $this->attributesAccess['fstabkey']->setVisible(FALSE);
+    } else {
+      $this->attributesAccess['randinit']->setDisabled(TRUE);
+      $this->attributesAccess['randinit']->setVisible(FALSE);
+    }
+
+    if ($disk) {
+      /* Get devices used in volume base disks */
       if (isset($disk['FAIlvmDevice'])) {
         $this->lvmDevices = $disk['FAIlvmDevice'];
       }
@@ -348,6 +376,11 @@ class faiDiskEntry extends simplePlugin
             }
             continue;
           }
+
+          if ($option == 'randinit') {
+            $this->randinit = TRUE;
+            continue;
+          }
         }
       }
 
@@ -396,7 +429,11 @@ class faiDiskEntry extends simplePlugin
     foreach ($partitions as $key => $val) {
       $partitions[$key]['FAIpartitionNr'] = $key;
       if ($this->FAIdiskType == 'disk') {
-        $partitions[$key]['cn'] = $this->cn.$key;
+        if (preg_match('/^disk(\d+)$/', $this->cn)) {
+          $partitions[$key]['cn'] = $this->cn.'.'.$key;
+        } else {
+          $partitions[$key]['cn'] = $this->cn.$key;
+        }
       } elseif ($this->FAIdiskType == 'lvm') {
         $partitions[$key]['FAIpartitionType'] = 'lvm';
       }
@@ -411,6 +448,12 @@ class faiDiskEntry extends simplePlugin
     /* Assemble flags */
     if ($this->FAIdiskType == 'disk') {
       $tmp['FAIdiskOption'] = array('fstabkey:'.$this->fstabkey, 'disklabel:'.$this->disklabel);
+    } elseif ($this->FAIdiskType == 'cryptsetup') {
+      if ($this->randinit) {
+        $tmp['FAIdiskOption'] = array('randinit');
+      } else {
+        $tmp['FAIdiskOption'] = array();
+      }
     } else {
       $tmp['FAIdiskOption'] = array('fstabkey:'.$this->fstabkey);
     }
@@ -444,14 +487,14 @@ class faiDiskEntry extends simplePlugin
       }
 
       /* Unset non valid attributes */
-      foreach (array('bootable','encrypted','preserve','resize','FAIdiskType') as $attr) {
+      foreach (array('bootable','preserve','resize','FAIdiskType') as $attr) {
         if (isset($tmp['partitions'][$id][$attr])) {
           unset($tmp['partitions'][$id][$attr]);
         }
       }
     }
 
-    /* Assembe disk flags */
+    /* Assemble disk flags */
     if (!empty($bootable)) {
       $tmp['FAIdiskOption'][] = 'bootable:'.trim($bootable, ',');
     }
@@ -493,10 +536,8 @@ class faiDiskEntry extends simplePlugin
           foreach (explode(',', $part['FAIpartitionSize']) as $rDevice) {
             $used[] = preg_replace('/:.*$/i', '', $rDevice);
           }
-        }
-
-        // Collect all available disks
-        if ($disk['FAIdiskType'] == 'disk') {
+        } elseif ($disk['FAIdiskType'] == 'disk') {
+          // Collect all available disks
           $name = $part['cn'];
           if (!in_array($name, $this->lvmDevices)) {
             $may[] = $name;
