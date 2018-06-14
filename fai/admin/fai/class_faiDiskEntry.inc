@@ -289,8 +289,18 @@ class faiDiskEntry extends simplePlugin
   {
     parent::__construct($dn, NULL, $parent);
 
+    if ($disk) {
+      $this->is_edit     = TRUE;
+
+      $this->cn          = $disk['cn'];
+      $this->description = $disk['description'];
+      $this->attributesAccess['cn']->setInitialValue($this->cn);
+    }
+
     $this->FAIdiskType  = $type;
-    if ($this->FAIdiskType != 'lvm') {
+    if ($this->FAIdiskType == 'lvm') {
+      $this->attributesAccess['lvmDevices']->attribute->setChoices($this->getAvailablePartitions());
+    } else {
       $this->attributesAccess['lvmDevices']->setDisabled(TRUE);
       $this->attributesAccess['lvmDevices']->setVisible(FALSE);
     }
@@ -309,14 +319,7 @@ class faiDiskEntry extends simplePlugin
     }
 
     if ($disk) {
-      $this->is_edit     = TRUE;
-
-      $this->cn          = $disk['cn'];
-      $this->description = $disk['description'];
-      $this->attributesAccess['cn']->setInitialValue($this->cn);
-
       /* Get devices used in volume base disks */
-      $this->attributesAccess['lvmDevices']->attribute->setChoices($this->getAvailablePartitions());
       if (isset($disk['FAIlvmDevice'])) {
         $this->lvmDevices = $disk['FAIlvmDevice'];
       }
