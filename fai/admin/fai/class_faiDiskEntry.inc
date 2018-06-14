@@ -532,7 +532,7 @@ class faiDiskEntry extends simplePlugin
 
       foreach ($disk['partitions'] as $part) {
         // Add disks of raid arrays, to the used list.
-        if (in_array($disk['FAIdiskType'], array('raid','cryptsetup'))) {
+        if ($disk['FAIdiskType'] == 'raid') {
           foreach (explode(',', $part['FAIpartitionSize']) as $rDevice) {
             $used[] = preg_replace('/:.*$/i', '', $rDevice);
           }
