@@ -113,7 +113,7 @@ class sambaGroup extends simplePlugin
       $this->setGID(0);
     }
 
-    /* Don't loose special groups! If not key'ed above, add it to the combo box */
+    /* Don't lose special groups! If not key'ed above, add it to the combo box */
     if (!in_array($this->getGID(), $this->attributesAccess['sambaSID']->attributes[1]->getChoices())) {
       $this->attributesAccess['sambaSID']->attributes[1]->setChoices(
         array(0,                512,                513,                514,                $this->getGID()),
@@ -175,7 +175,8 @@ class sambaGroup extends simplePlugin
     parent::resetCopyInfos();
 
     /* Set a new SID */
-    $this->sambaSID = "";
+    $this->setSID('');
+    $this->attributesAccess['sambaDomainName']->setInitialValue('');
   }
 
   function getRidBase()
