@@ -97,7 +97,7 @@ class sinapsRequest
       'libelle20'       => 'ou',
       'descriptifLong'  => 'description',
       'codeStructure'   => 'supannCodeEntite',
-      'codeNature'      => 'supannTypeEntite',
+      'codeSousType'    => 'supannTypeEntite',
     );
     $values = array(
       'entite' => array(
