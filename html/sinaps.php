@@ -31,16 +31,21 @@ class sinapsHandler extends standAlonePage
   protected $login;
   protected $password;
   protected $dumpFolder;
+  protected $uuidPrefix;
+  protected $identifiantApplication;
+
   protected $request;
 
   function readLdapConfig()
   {
     global $config;
 
-    $this->ackUrl     = $config->get_cfg_value('SinapsAcknowledgmentURL');
-    $this->login      = $config->get_cfg_value('SinapsLogin');
-    $this->password   = $config->get_cfg_value('SinapsPassword');
-    $this->dumpFolder = $config->get_cfg_value('SinapsDumpFolder');
+    $this->ackUrl                 = $config->get_cfg_value('SinapsAcknowledgmentURL');
+    $this->login                  = $config->get_cfg_value('SinapsLogin');
+    $this->password               = $config->get_cfg_value('SinapsPassword');
+    $this->dumpFolder             = $config->get_cfg_value('SinapsDumpFolder');
+    $this->uuidPrefix             = $config->get_cfg_value('SinapsUuidPrefix', 'LDAPUUID');
+    $this->identifiantApplication = $config->get_cfg_value('SinapsIdentifiantApplication');
 
     if ($config->get_cfg_value('SinapsEnabled') != 'TRUE') {
       $this->returnError('SINAPS integration is disabled'."\n");
@@ -66,10 +71,10 @@ class sinapsHandler extends standAlonePage
 
     if (($this->request->codeOperation() == 'DIFFUSION') && ($this->request->codeDomaine() == 'STRUCTURE')) {
       $this->outputAcquittementTechnique($this->request->acquittementTechnique(200, 'Diffusion de structure reçue'));
-      $this->handleStructureDiffusion($this->request->getSupannEntiteValues());
+      $this->handleStructureDiffusion($this->request->getSupannEntiteValues($this));
     } elseif (($this->request->codeOperation() == 'DIFFUSION') && ($this->request->codeDomaine() == 'PERSONNE')) {
       $this->outputAcquittementTechnique($this->request->acquittementTechnique(200, 'Diffusion de personne reçue'));
-      $this->handlePersonneDiffusion($this->request->getUserValues());
+      $this->handlePersonneDiffusion($this->request->getUserValues($this));
     } else {
       $this->returnError('Cannot handle '.$this->request->codeDomaine().' '.$this->request->codeOperation().' '.$this->request->operationVersion()."\n");
     }
@@ -170,7 +175,7 @@ class sinapsHandler extends standAlonePage
   function handleStructureDiffusion($values)
   {
     $uuid     = $values['entite']['supannRefId'][0];
-    $idObjApp = preg_replace('/^{PASSPORT}/', '', $uuid);
+    $idObjApp = preg_replace('/^{'.$this->uuidPrefix.'}/', '', $uuid);
     $entites  = objects::ls('entite', 'ou', NULL, '(supannRefId='.$uuid.')');
     $message  = 'Entite created';
     if (!empty($entites)) {
@@ -196,7 +201,7 @@ class sinapsHandler extends standAlonePage
   function handlePersonneDiffusion($values)
   {
     $uuid     = $values['supannAccount']['supannRefId'][0];
-    $idObjApp = preg_replace('/^{PASSPORT}/', '', $uuid);
+    $idObjApp = preg_replace('/^{'$this->uuidPrefix'}/', '', $uuid);
     $entites  = objects::ls('user', 'ou', NULL, '(supannRefId='.$uuid.')');
     $message  = 'User created';
     if (!empty($entites)) {

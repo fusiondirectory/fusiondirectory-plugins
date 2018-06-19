@@ -62,6 +62,15 @@ class sinapsConfig extends simplePlugin
             _('Dump folder'), _('Folder in which received transactions should be dumped (leave empty to disable)'),
             'fdSinapsDumpFolder', FALSE
           ),
+          new StringAttribute (
+            _('Application identifier'), _('Application identifier present in cross references with FusionDirectory'),
+            'fdSinapsIdentifiantApplication', FALSE
+          ),
+          new StringAttribute (
+            _('UUID prefix'), _('Prefix used for UUID in supannRefId'),
+            'fdSinapsUuidPrefix', TRUE,
+            'LDAPUUID'
+          ),
         )
       ),
     );

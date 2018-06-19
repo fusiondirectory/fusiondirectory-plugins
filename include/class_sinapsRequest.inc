@@ -89,7 +89,7 @@ class sinapsRequest
     return $xml->asXML();
   }
 
-  public function getSupannEntiteValues()
+  public function getSupannEntiteValues(sinapsHandler $handler)
   {
     $structure = $this->getOperationStructure();
 
@@ -108,7 +108,7 @@ class sinapsRequest
     $uuid = '';
 
     foreach ($structure->referenceCroisee->identifiantsExternes as $ref) {
-      if ($ref->identifiantApplication == 'PASSPORT') {
+      if ($ref->identifiantApplication == $handler->identifiantApplication) {
         $uuid = $ref->identifiantExterne;
       } else {
         $values['entite']['supannRefId'][] = '{'.$ref->identifiantApplication.'}'.$ref->identifiantExterne;
@@ -119,7 +119,7 @@ class sinapsRequest
       $uuid = static::genUUID();
     }
 
-    array_unshift($values['entite']['supannRefId'], '{PASSPORT}'.$uuid);
+    array_unshift($values['entite']['supannRefId'], '{'.$handler->uuidPrefix.'}'.$uuid);
 
     foreach ($mapping as $sinapsAttr => $fdAttr) {
       if (isset($structure->$sinapsAttr)) {
@@ -162,7 +162,7 @@ class sinapsRequest
     return $values;
   }
 
-  public function getUserValues()
+  public function getUserValues(sinapsHandler $handler)
   {
     $personne = $this->getOperationPersonne();
     $mapping = array(
@@ -183,7 +183,7 @@ class sinapsRequest
     $uuid = '';
 
     foreach ($personne->referenceCroisee->identifiantsExternes as $ref) {
-      if ($ref->identifiantApplication == 'PASSPORT') {
+      if ($ref->identifiantApplication == $handler->identifiantApplication) {
         $uuid = $ref->identifiantExterne;
       } else {
         $values['supannAccount']['supannRefId'][] = '{'.$ref->identifiantApplication.'}'.$ref->identifiantExterne;
@@ -194,7 +194,7 @@ class sinapsRequest
       $uuid = static::genUUID();
     }
 
-    array_unshift($values['supannAccount']['supannRefId'], '{PASSPORT}'.$uuid);
+    array_unshift($values['supannAccount']['supannRefId'], '{'.$handler->uuidPrefix.'}'.$uuid);
 
     foreach ($mapping as $sinapsAttr => list($fdTab,$fdAttr)) {
       if (isset($personne->$sinapsAttr)) {

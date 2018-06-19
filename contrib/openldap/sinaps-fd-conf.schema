@@ -36,6 +36,20 @@ attributetype ( 1.3.6.1.4.1.38414.65.1.5 NAME 'fdSinapsDumpFolder'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE)
 
+attributetype ( 1.3.6.1.4.1.38414.65.1.6 NAME 'fdSinapsIdentifiantApplication'
+  DESC 'FusionDirectory - Application identifier present in cross references with FusionDirectory'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.7 NAME 'fdSinapsUuidPrefix'
+  DESC 'FusionDirectory - Prefix used for UUID in supannRefId'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
 objectclass ( 1.3.6.1.4.1.38414.65.2.1 NAME 'fdSinapsPluginConf'
   DESC 'FusionDirectory sinaps plugin configuration'
   SUP top AUXILIARY
@@ -43,5 +57,6 @@ objectclass ( 1.3.6.1.4.1.38414.65.2.1 NAME 'fdSinapsPluginConf'
   MAY (
     fdSinapsEnabled $ fdSinapsAcknowledgmentURL $
     fdSinapsLogin $ fdSinapsPassword $
-    fdSinapsDumpFolder
+    fdSinapsDumpFolder $
+    fdSinapsIdentifiantApplication $ fdSinapsUuidPrefix
   ) )
