@@ -564,6 +564,12 @@ class supannAccount extends simplePlugin
     $this->updateFieldsChoices();
   }
 
+  function adapt_from_template($attrs, $skip = array())
+  {
+    parent::adapt_from_template($attrs, $skip);
+    $this->updateFieldsChoices();
+  }
+
   protected function prepare_save ()
   {
     $this->attributesAccess['supannEtuInscription']->supannPrepareSave();
