@@ -28,11 +28,13 @@ require_once('variables.inc');
 class sinapsHandler extends standAlonePage
 {
   protected $ackUrl;
+  protected $acqUrl;
   protected $login;
   protected $password;
   protected $dumpFolder;
   protected $uuidPrefix;
   protected $identifiantApplication;
+  protected $tokens;
 
   protected $request;
 
@@ -41,11 +43,13 @@ class sinapsHandler extends standAlonePage
     global $config;
 
     $this->ackUrl                 = $config->get_cfg_value('SinapsAcknowledgmentURL');
+    $this->acqUrl                 = $config->get_cfg_value('SinapsAcquisitionURL');
     $this->login                  = $config->get_cfg_value('SinapsLogin');
     $this->password               = $config->get_cfg_value('SinapsPassword');
     $this->dumpFolder             = $config->get_cfg_value('SinapsDumpFolder');
     $this->uuidPrefix             = $config->get_cfg_value('SinapsUuidPrefix', 'LDAPUUID');
     $this->identifiantApplication = $config->get_cfg_value('SinapsIdentifiantApplication');
+    $this->tokens                 = $config->get_cfg_value('SinapsFDToken', array());
 
     if ($config->get_cfg_value('SinapsEnabled') != 'TRUE') {
       $this->returnError('SINAPS integration is disabled'."\n");
@@ -63,6 +67,10 @@ class sinapsHandler extends standAlonePage
     }
 
     $this->request = new sinapsRequest($http_raw_post_data);
+
+    if (!isset($_GET['token']) || !in_array($_GET['token'], $this->tokens)) {
+      $this->returnError('No token or invalid token was provided'."\n");
+    }
 
     $this->dumpFile(
       $this->request->identifiantTransaction().'.xml',
@@ -109,6 +117,16 @@ class sinapsHandler extends standAlonePage
 
   function returnError($errorText, $dump = TRUE)
   {
+    if (!is_object($this->request)) {
+      // If we were called too soon, for instance from readLdapConfig
+      $http_raw_post_data = file_get_contents('php://input');
+
+      if (!$http_raw_post_data) {
+        exit();
+      }
+
+      $this->request = new sinapsRequest($http_raw_post_data);
+    }
     $acquittement = $this->request->acquittementTechnique(500, $errorText);
     echo "$acquittement\n";
     if ($dump) {
@@ -201,7 +219,7 @@ class sinapsHandler extends standAlonePage
   function handlePersonneDiffusion($values)
   {
     $uuid     = $values['supannAccount']['supannRefId'][0];
-    $idObjApp = preg_replace('/^{'$this->uuidPrefix'}/', '', $uuid);
+    $idObjApp = preg_replace('/^{'.$this->uuidPrefix.'}/', '', $uuid);
     $entites  = objects::ls('user', 'ou', NULL, '(supannRefId='.$uuid.')');
     $message  = 'User created';
     if (!empty($entites)) {

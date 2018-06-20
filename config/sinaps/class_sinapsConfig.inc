@@ -46,6 +46,10 @@ class sinapsConfig extends simplePlugin
             TRUE
           ),
           new StringAttribute (
+            _('Acquisiton URL'), _('Full URL to which acquisiton events should be sent'),
+            'fdSinapsAcquisitionURL', FALSE
+          ),
+          new StringAttribute (
             _('Acknowledgement URL'), _('Full URL to which functionnal acknowledgement should be sent'),
             'fdSinapsAcknowledgmentURL', FALSE
           ),
@@ -70,6 +74,12 @@ class sinapsConfig extends simplePlugin
             _('UUID prefix'), _('Prefix used for UUID in supannRefId'),
             'fdSinapsUuidPrefix', TRUE,
             'LDAPUUID'
+          ),
+          new SetAttribute (
+            new StringAttribute (
+              _('API Tokens'), _('One of these API tokens will need to be present in the diffusion URL used by SINAPS'),
+              'fdSinapsFDToken', FALSE
+            )
           ),
         )
       ),
