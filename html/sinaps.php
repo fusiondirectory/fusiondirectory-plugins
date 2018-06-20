@@ -195,7 +195,7 @@ class sinapsHandler extends standAlonePage
   {
     $uuid     = $values['entite']['supannRefId'][0];
     $idObjApp = preg_replace('/^{'.$this->uuidPrefix.'}/', '', $uuid);
-    $entites  = objects::ls('entite', 'ou', NULL, '(supannRefId='.$uuid.')');
+    $entites  = objects::ls('entite', array('supannRefId' => '*'), NULL, '(supannRefId='.$uuid.')');
     $message  = 'Entite created';
     if (empty($entites)) {
       $dn = '';
@@ -205,6 +205,8 @@ class sinapsHandler extends standAlonePage
       exit();
     } else {
       $dn = key($entites);
+      /* Keep previous ref ids */
+      $values['entite']['supannRefId'] = array_values(array_unique(array_merge($values['entite']['supannRefId'], $entites[$dn]['supannRefId'])));
       $message = 'Entite updated';
     }
     if (!empty($values['entite']['supannCodeEntiteParent'])) {
