@@ -32,9 +32,10 @@ class sinapsHandler extends standAlonePage
   protected $login;
   protected $password;
   protected $dumpFolder;
-  protected $uuidPrefix;
-  protected $identifiantApplication;
   protected $tokens;
+
+  public $uuidPrefix;
+  public $identifiantApplication;
 
   protected $request;
 
