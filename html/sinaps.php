@@ -173,12 +173,12 @@ class sinapsHandler extends standAlonePage
 
   function sendAcquittementFonctionnel($xml)
   {
+    $this->dumpFile(
+      $this->request->identifiantTransaction().'-acquittement.xml',
+      $xml
+    );
     $answer = static::sendPostRequest($this->ackUrl, $this->login, $this->password, $xml);
     if ($answer !== FALSE) {
-      $this->dumpFile(
-        $this->request->identifiantTransaction().'-acquittement.xml',
-        $xml
-      );
       $this->dumpFile(
         $this->request->identifiantTransaction().'-acquittement-answer.xml',
         $answer
@@ -197,17 +197,30 @@ class sinapsHandler extends standAlonePage
     $idObjApp = preg_replace('/^{'.$this->uuidPrefix.'}/', '', $uuid);
     $entites  = objects::ls('entite', 'ou', NULL, '(supannRefId='.$uuid.')');
     $message  = 'Entite created';
-    if (!empty($entites)) {
-      if (count($entites) > 1) {
-        $error = 'Multiple entite matches id '.$uuid;
+    if (empty($entites)) {
+      $dn = '';
+    } elseif (count($entites) > 1) {
+      $error = 'Multiple entite matches id '.$uuid;
+      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error, $idObjApp));
+      exit();
+    } else {
+      $dn = key($entites);
+      $message = 'Entite updated';
+    }
+    if (!empty($values['entite']['supannCodeEntiteParent'])) {
+      // Replace supannRefId by supannCodeEntite value
+      $entites = objects::ls('entite', 'supannCodeEntite', NULL, '(supannRefId='.$values['entite']['supannCodeEntiteParent'].')');
+      if (empty($entites)) {
+        $error = 'Could not find parent '.$values['entite']['supannCodeEntiteParent'];
+        $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error, $idObjApp));
+        exit();
+      } elseif (count($entites) > 1) {
+        $error = 'Multiple entite matches id '.$values['entite']['supannCodeEntiteParent'];
         $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error, $idObjApp));
         exit();
       } else {
-        $dn = key($entites);
-        $message = 'Entite updated';
+        $values['entite']['supannCodeEntiteParent'] = reset($entites);
       }
-    } else {
-      $dn = '';
     }
     $error = $this->fillObject('entite', $values, $dn);
     if ($error !== TRUE) {

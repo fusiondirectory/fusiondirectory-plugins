@@ -154,8 +154,12 @@ class sinapsRequest
 
     foreach ($structure->liensStructure->lienStructure as $lienStructure) {
       if (((string)$lienStructure->codeTypeLien == 'HIE') && isset($lienStructure->codeStructureMere)) {
-        //TODO: vérifier date de début, peut-être prendre identifiantExterne
-        $values['entite']['supannCodeEntiteParent'] = (string)$lienStructure->codeStructureMere;
+        //TODO: vérifier date de début?
+        $mereUUID = $this->getUUIDFromReferenceCroisee($handler, $lienStructure->referenceCroisee);
+        if (!empty($mereUUID)) {
+          // TODO: warning si plusieurs?
+          $values['entite']['supannCodeEntiteParent'] = '{LDAPUUID}'.$mereUUID;
+        }
       }
     }
 
@@ -304,6 +308,17 @@ class sinapsRequest
     }
 
     return $adresse;
+  }
+
+  protected function getUUIDFromReferenceCroisee($handler, $referenceCroisee)
+  {
+    foreach ($referenceCroisee->identifiantsExternes as $ref) {
+      if ($ref->identifiantApplication == $handler->identifiantApplication) {
+        return $ref->identifiantExterne;
+      }
+    }
+
+    return '';
   }
 
   protected static function genUUID()
