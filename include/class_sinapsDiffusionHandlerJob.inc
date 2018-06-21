@@ -20,6 +20,7 @@
 
 class sinapsDiffusionHandlerJob
 {
+  protected $dryRun;
   protected $ackUrl;
   protected $acqUrl;
   protected $login;
@@ -36,6 +37,7 @@ class sinapsDiffusionHandlerJob
 
     $this->request = $request;
 
+    $this->dryRun                 = ($config->get_cfg_value('SinapsDryRun') == 'TRUE');
     $this->ackUrl                 = $config->get_cfg_value('SinapsAcknowledgmentURL');
     $this->acqUrl                 = $config->get_cfg_value('SinapsAcquisitionURL');
     $this->login                  = $config->get_cfg_value('SinapsLogin');
@@ -151,6 +153,13 @@ class sinapsDiffusionHandlerJob
 
   function fillObject($type, $values, &$dn)
   {
+    if ($this->dryRun) {
+      $this->dumpFile(
+        $this->request->identifiantTransaction().'-dryrun.txt',
+        "type:$type\ndn:$dn\n".print_r($values, TRUE)
+      );
+      return TRUE;
+    }
     if (empty($dn)) {
       $tabobject = objects::create($type);
     } else {

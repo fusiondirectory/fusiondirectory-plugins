@@ -45,6 +45,11 @@ class sinapsConfig extends simplePlugin
             'fdSinapsEnabled', FALSE,
             TRUE
           ),
+          new BooleanAttribute (
+            _('Dry run mode'), _('Do not insert data in FusionDirectory, dump it to a file'),
+            'fdSinapsDryRun', FALSE,
+            FALSE
+          ),
           new StringAttribute (
             _('Acquisiton URL'), _('Full URL to which acquisiton events should be sent'),
             'fdSinapsAcquisitionURL', FALSE
