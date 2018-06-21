@@ -1,0 +1,53 @@
+##
+## supann-ext-fd.schema - Needed by Fusion Directory for supann-ext
+##
+
+# Attributes
+attributetype ( 1.3.6.1.4.1.38414.66.1.1 NAME 'fdSupannStartDate'
+  DESC 'FusionDirectory - Start date of validity'
+  EQUALITY generalizedTimeMatch
+  ORDERING generalizedTimeOrderingMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.24
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.66.1.2 NAME 'fdSupannEndDate'
+  DESC 'FusionDirectory - End date of validity'
+  EQUALITY generalizedTimeMatch
+  ORDERING generalizedTimeOrderingMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.24
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.66.1.3 NAME 'fdSupannRelationEntiteType'
+  DESC 'FusionDirectory - Relation type'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{128} )
+
+attributetype ( 1.3.6.1.4.1.38414.66.1.4 NAME 'fdSupannRelationEntiteRole'
+  DESC 'FusionDirectory - Relation role'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{128} )
+
+attributetype ( 1.3.6.1.4.1.38414.66.1.5 NAME 'fdSupannRelationEntiteCode'
+  DESC 'FusionDirectory - Code of the entite we are in relation with'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{128} )
+
+attributetype ( 1.3.6.1.4.1.38414.66.1.6 NAME 'fdSupannRelationEntite'
+  DESC 'FusionDirectory - Relation'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{128} )
+
+# Object Class
+objectclass (1.3.6.1.4.1.38414.66.2.1 NAME 'fdSupannExt'
+  DESC 'FusionDirectory - audit event'
+  MUST ( )
+  MAY  (
+    fdSupannStartDate $ fdSupannEndDate $
+    fdSupannRelationEntiteType $ fdSupannRelationEntiteRole $ fdSupannRelationEntiteCode $
+    fdSupannRelationEntite
+  ) )
+
