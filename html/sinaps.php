@@ -71,7 +71,6 @@ class sinapsHandler extends standAlonePage
     );
 
     if (($this->request->codeOperation() == 'DIFFUSION') && (($this->request->codeDomaine() == 'STRUCTURE') || ($this->request->codeDomaine() == 'PERSONNE'))) {
-      $this->outputAcquittementTechnique($this->request->acquittementTechnique(200, 'Diffusion de '.$this->request->codeDomaine().' reçue'));
       $job = new sinapsDiffusionHandlerJob($this->request);
       $job->handleRequest();
     } else {
@@ -113,7 +112,7 @@ class sinapsHandler extends standAlonePage
 
       $this->request = new sinapsRequest($http_raw_post_data);
     }
-    $acquittement = $this->request->acquittementTechnique(500, $errorText);
+    $acquittement = $this->request->acquittementFonctionnel(500, 10, $errorText);
     echo "$acquittement\n";
     if ($dump) {
       $this->dumpFile(

@@ -59,22 +59,17 @@ class sinapsRequest
 
   public function acquittementFonctionnel($responseCode = 200, $codeAcquittement = 0, $message = '', $identifiantObjApp = NULL)
   {
-    return '<?xml version="1.0" encoding="UTF-8"?>
-<socle:root xmlns:socle="http://socle.sinaps.amue.fr/V1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:acq="http://referentiels.SINAPS.amue.fr/acquittementFonctionnel">
-<domaine code="ACQUITTEMENT">
-  <donnees>
-    <operation codeOperation="CREATION" version="1.0">
-      <Acquittement>
-        <identifiantTransaction>'.htmlspecialchars($this->identifiantTransaction(), ENT_XML1).'</identifiantTransaction>
-        <ResponseCode>'.htmlspecialchars($responseCode, ENT_XML1).'</ResponseCode>
-        <codeAcquittement>'.htmlspecialchars($codeAcquittement, ENT_XML1).'</codeAcquittement>
-        <messageAcquittement>'.htmlspecialchars($message, ENT_XML1).'</messageAcquittement>
-        <identifiantObjApp>'.htmlspecialchars($identifiantObjApp, ENT_XML1).'</identifiantObjApp>
-      </Acquittement>
-    </operation>
-  </donnees>
-</domaine>
-</socle:root>';
+    $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?>
+    <Acquittement xmlns:acq="http://referentiels.SINAPS.amue.fr/acquittementFonctionnel">
+    </Acquittement>');
+    $xml->addChild('ResponseCode', $responseCode);
+    $xml->addChild('messageAcquittement', $message);
+    $xml->addChild('codeAcquittement', $codeAcquittement);
+    if ($identifiantObjApp) {
+      $xml->addChild('identifiantObjApp', $identifiantObjApp);
+    }
+
+    return $xml->asXML();
   }
 
   public function acquittementTechnique($responseCode = 200, $message = '')

@@ -95,7 +95,6 @@ class sinapsDiffusionHandlerJob
     } elseif (count($entites) > 1) {
       $error = 'Multiple entite matches id '.$uuid;
       $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error, $idObjApp));
-      exit();
     } else {
       $dn = key($entites);
       /* Keep previous ref ids */
@@ -108,11 +107,9 @@ class sinapsDiffusionHandlerJob
       if (empty($entites)) {
         $error = 'Could not find parent '.$values['entite']['supannCodeEntiteParent'];
         $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error, $idObjApp));
-        exit();
       } elseif (count($entites) > 1) {
         $error = 'Multiple entite matches id '.$values['entite']['supannCodeEntiteParent'];
         $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error, $idObjApp));
-        exit();
       } else {
         $values['entite']['supannCodeEntiteParent'] = reset($entites);
       }
@@ -135,7 +132,6 @@ class sinapsDiffusionHandlerJob
       if (count($entites) > 1) {
         $error = 'Multiple user matches id '.$uuid;
         $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error, $idObjApp));
-        exit();
       } else {
         $dn = key($entites);
         $message = 'User updated';
@@ -202,17 +198,7 @@ class sinapsDiffusionHandlerJob
       $this->request->identifiantTransaction().'-acquittement.xml',
       $xml
     );
-    $answer = static::sendPostRequest($this->ackUrl, $this->login, $this->password, $xml);
-    if ($answer !== FALSE) {
-      $this->dumpFile(
-        $this->request->identifiantTransaction().'-acquittement-answer.xml',
-        $answer
-      );
-    } else {
-      $errormsg = 'Unable to connect to '.$this->ackUrl;
-      // We can only log the error here
-      error_log($errormsg);
-    }
+    echo "$xml\n";
     exit();
   }
 
