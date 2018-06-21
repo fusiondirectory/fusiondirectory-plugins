@@ -27,15 +27,8 @@ require_once('variables.inc');
 
 class sinapsHandler extends standAlonePage
 {
-  protected $ackUrl;
-  protected $acqUrl;
-  protected $login;
-  protected $password;
   protected $dumpFolder;
   protected $tokens;
-
-  public $uuidPrefix;
-  public $identifiantApplication;
 
   protected $request;
 
@@ -43,24 +36,23 @@ class sinapsHandler extends standAlonePage
   {
     global $config;
 
-    $this->ackUrl                 = $config->get_cfg_value('SinapsAcknowledgmentURL');
-    $this->acqUrl                 = $config->get_cfg_value('SinapsAcquisitionURL');
-    $this->login                  = $config->get_cfg_value('SinapsLogin');
-    $this->password               = $config->get_cfg_value('SinapsPassword');
     $this->dumpFolder             = $config->get_cfg_value('SinapsDumpFolder');
-    $this->uuidPrefix             = $config->get_cfg_value('SinapsUuidPrefix', 'LDAPUUID');
-    $this->identifiantApplication = $config->get_cfg_value('SinapsIdentifiantApplication');
     $this->tokens                 = $config->get_cfg_value('SinapsFDToken', array());
 
     if ($config->get_cfg_value('SinapsEnabled') != 'TRUE') {
       $this->returnError('SINAPS integration is disabled'."\n");
-    } else {
-      return TRUE;
+    } elseif (!empty($this->dumpFolder) && !is_dir($this->dumpFolder)) {
+      if (!mkdir($this->dumpFolder, 0777, TRUE)) {
+        $this->returnError('Failed to create dump folder '.$this->dumpFolder, FALSE);
+      }
     }
+    return TRUE;
   }
 
   function execute()
   {
+    global $config;
+
     $http_raw_post_data = file_get_contents('php://input');
 
     if (!$http_raw_post_data) {
@@ -78,12 +70,10 @@ class sinapsHandler extends standAlonePage
       $http_raw_post_data
     );
 
-    if (($this->request->codeOperation() == 'DIFFUSION') && ($this->request->codeDomaine() == 'STRUCTURE')) {
-      $this->outputAcquittementTechnique($this->request->acquittementTechnique(200, 'Diffusion de structure reçue'));
-      $this->handleStructureDiffusion($this->request->getSupannEntiteValues($this));
-    } elseif (($this->request->codeOperation() == 'DIFFUSION') && ($this->request->codeDomaine() == 'PERSONNE')) {
-      $this->outputAcquittementTechnique($this->request->acquittementTechnique(200, 'Diffusion de personne reçue'));
-      $this->handlePersonneDiffusion($this->request->getUserValues($this));
+    if (($this->request->codeOperation() == 'DIFFUSION') && (($this->request->codeDomaine() == 'STRUCTURE') || ($this->request->codeDomaine() == 'PERSONNE'))) {
+      $this->outputAcquittementTechnique($this->request->acquittementTechnique(200, 'Diffusion de '.$this->request->codeDomaine().' reçue'));
+      $job = new sinapsDiffusionHandlerJob($this->request);
+      $job->handleRequest();
     } else {
       $this->returnError('Cannot handle '.$this->request->codeDomaine().' '.$this->request->codeOperation().' '.$this->request->operationVersion()."\n");
     }
@@ -97,11 +87,6 @@ class sinapsHandler extends standAlonePage
 
     $fileName = $this->dumpFolder.'/'.$fileName;
 
-    if (!is_dir($this->dumpFolder)) {
-      if (!mkdir($this->dumpFolder, 0777, TRUE)) {
-        $this->returnError('Failed to create dump folder '.$this->dumpFolder, FALSE);
-      }
-    }
     $fp = fopenWithErrorHandling($fileName, 'w');
     if (!is_array($fp)) {
       fwrite($fp, $fileContent);
@@ -147,153 +132,6 @@ class sinapsHandler extends standAlonePage
       $this->request->identifiantTransaction().'-answer.xml',
       $acquittement
     );
-  }
-
-  protected static function sendPostRequest($url, $user, $password, $data)
-  {
-    $ch = curl_init();
-
-    curl_setopt($ch, CURLOPT_URL,         $url);
-    curl_setopt($ch, CURLOPT_POST,        1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS,  $data);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/xml'));
-    curl_setopt($ch, CURLOPT_USERPWD, "$user:$password");
-    curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-
-    // receive server response ...
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-
-    $serverOutput = curl_exec($ch);
-
-    curl_close($ch);
-
-    return $serverOutput;
-  }
-
-
-  function sendAcquittementFonctionnel($xml)
-  {
-    $this->dumpFile(
-      $this->request->identifiantTransaction().'-acquittement.xml',
-      $xml
-    );
-    $answer = static::sendPostRequest($this->ackUrl, $this->login, $this->password, $xml);
-    if ($answer !== FALSE) {
-      $this->dumpFile(
-        $this->request->identifiantTransaction().'-acquittement-answer.xml',
-        $answer
-      );
-    } else {
-      $errormsg = 'Unable to connect to '.$this->ackUrl;
-      //TODO: returnError should not be used once acquittementTechnique was already sent it’s too late
-      $this->returnError($errormsg);
-    }
-    exit();
-  }
-
-  function handleStructureDiffusion($values)
-  {
-    $uuid     = $values['entite']['supannRefId'][0];
-    $idObjApp = preg_replace('/^{'.$this->uuidPrefix.'}/', '', $uuid);
-    $entites  = objects::ls('entite', array('supannRefId' => '*'), NULL, '(supannRefId='.$uuid.')');
-    $message  = 'Entite created';
-    if (empty($entites)) {
-      $dn = '';
-    } elseif (count($entites) > 1) {
-      $error = 'Multiple entite matches id '.$uuid;
-      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error, $idObjApp));
-      exit();
-    } else {
-      $dn = key($entites);
-      /* Keep previous ref ids */
-      $values['entite']['supannRefId'] = array_values(array_unique(array_merge($values['entite']['supannRefId'], $entites[$dn]['supannRefId'])));
-      $message = 'Entite updated';
-    }
-    if (!empty($values['entite']['supannCodeEntiteParent'])) {
-      // Replace supannRefId by supannCodeEntite value
-      $entites = objects::ls('entite', 'supannCodeEntite', NULL, '(supannRefId='.$values['entite']['supannCodeEntiteParent'].')');
-      if (empty($entites)) {
-        $error = 'Could not find parent '.$values['entite']['supannCodeEntiteParent'];
-        $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error, $idObjApp));
-        exit();
-      } elseif (count($entites) > 1) {
-        $error = 'Multiple entite matches id '.$values['entite']['supannCodeEntiteParent'];
-        $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error, $idObjApp));
-        exit();
-      } else {
-        $values['entite']['supannCodeEntiteParent'] = reset($entites);
-      }
-    }
-    $error = $this->fillObject('entite', $values, $dn);
-    if ($error !== TRUE) {
-      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, strip_tags(implode(', ', $error)), $idObjApp));
-    } else {
-      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(200, 0, $message, $idObjApp));
-    }
-  }
-
-  function handlePersonneDiffusion($values)
-  {
-    $uuid     = $values['supannAccount']['supannRefId'][0];
-    $idObjApp = preg_replace('/^{'.$this->uuidPrefix.'}/', '', $uuid);
-    $entites  = objects::ls('user', 'ou', NULL, '(supannRefId='.$uuid.')');
-    $message  = 'User created';
-    if (!empty($entites)) {
-      if (count($entites) > 1) {
-        $error = 'Multiple user matches id '.$uuid;
-        $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error, $idObjApp));
-        exit();
-      } else {
-        $dn = key($entites);
-        $message = 'User updated';
-      }
-    } else {
-      $dn = '';
-    }
-    $error = fillObject('user', $values, $dn);
-    if ($error !== TRUE) {
-      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, strip_tags(implode(', ', $error)), $idObjApp));
-    } else {
-      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(200, 0, $message, $idObjApp));
-    }
-  }
-
-  function fillObject($type, $values, &$dn)
-  {
-    if (empty($dn)) {
-      $tabobject = objects::create($type);
-    } else {
-      $tabobject = objects::open($dn, $type);
-    }
-    foreach ($values as $tab => $tabvalues) {
-      if (!isset($tabobject->by_object[$tab])) {
-        return 'This tab does not exists: "'.$tab.'"';
-      }
-      if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
-          $tabobject->by_object[$tab]->displayHeader &&
-          !$tabobject->by_object[$tab]->is_account
-        ) {
-        list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
-        if ($disabled) {
-          return $text;
-        }
-        $tabobject->by_object[$tab]->is_account = TRUE;
-      }
-      $error = $tabobject->by_object[$tab]->deserializeValues($tabvalues);
-      if ($error !== TRUE) {
-        return $error;
-      }
-      $tabobject->current = $tab;
-      $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases may be needed */
-    }
-    $errors = $tabobject->save();
-    if (empty($dn)) {
-      $dn = $tabobject->dn;
-    }
-    if (!empty($errors)) {
-      return $errors;
-    }
-    return TRUE;
   }
 }
 

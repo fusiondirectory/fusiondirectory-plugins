@@ -89,7 +89,7 @@ class sinapsRequest
     return $xml->asXML();
   }
 
-  public function getSupannEntiteValues(sinapsHandler $handler)
+  public function getSupannEntiteValues($identifiantApplication, $uuidPrefix)
   {
     $structure = $this->getOperationStructure();
 
@@ -108,7 +108,7 @@ class sinapsRequest
     $uuid = '';
 
     foreach ($structure->referenceCroisee->identifiantsExternes as $ref) {
-      if ($ref->identifiantApplication == $handler->identifiantApplication) {
+      if ($ref->identifiantApplication == $identifiantApplication) {
         $uuid = $ref->identifiantExterne;
       } else {
         $values['entite']['supannRefId'][] = '{'.$ref->identifiantApplication.'}'.$ref->identifiantExterne;
@@ -119,7 +119,7 @@ class sinapsRequest
       $uuid = static::genUUID();
     }
 
-    array_unshift($values['entite']['supannRefId'], '{'.$handler->uuidPrefix.'}'.$uuid);
+    array_unshift($values['entite']['supannRefId'], '{'.$uuidPrefix.'}'.$uuid);
 
     foreach ($mapping as $sinapsAttr => $fdAttr) {
       if (isset($structure->$sinapsAttr)) {
@@ -155,7 +155,7 @@ class sinapsRequest
     foreach ($structure->liensStructure->lienStructure as $lienStructure) {
       if (((string)$lienStructure->codeTypeLien == 'HIE') && isset($lienStructure->codeStructureMere)) {
         //TODO: vérifier date de début?
-        $mereUUID = $this->getUUIDFromReferenceCroisee($handler, $lienStructure->referenceCroisee);
+        $mereUUID = $this->getUUIDFromReferenceCroisee($identifiantApplication, $lienStructure->referenceCroisee);
         if (!empty($mereUUID)) {
           // TODO: warning si plusieurs?
           $values['entite']['supannCodeEntiteParent'] = '{LDAPUUID}'.$mereUUID;
@@ -166,7 +166,7 @@ class sinapsRequest
     return $values;
   }
 
-  public function getUserValues(sinapsHandler $handler)
+  public function getUserValues($identifiantApplication, $uuidPrefix)
   {
     $personne = $this->getOperationPersonne();
     $mapping = array(
@@ -187,7 +187,7 @@ class sinapsRequest
     $uuid = '';
 
     foreach ($personne->referenceCroisee->identifiantsExternes as $ref) {
-      if ($ref->identifiantApplication == $handler->identifiantApplication) {
+      if ($ref->identifiantApplication == $identifiantApplication) {
         $uuid = $ref->identifiantExterne;
       } else {
         $values['supannAccount']['supannRefId'][] = '{'.$ref->identifiantApplication.'}'.$ref->identifiantExterne;
@@ -198,7 +198,7 @@ class sinapsRequest
       $uuid = static::genUUID();
     }
 
-    array_unshift($values['supannAccount']['supannRefId'], '{'.$handler->uuidPrefix.'}'.$uuid);
+    array_unshift($values['supannAccount']['supannRefId'], '{'.$uuidPrefix.'}'.$uuid);
 
     foreach ($mapping as $sinapsAttr => list($fdTab,$fdAttr)) {
       if (isset($personne->$sinapsAttr)) {
@@ -310,10 +310,10 @@ class sinapsRequest
     return $adresse;
   }
 
-  protected function getUUIDFromReferenceCroisee($handler, $referenceCroisee)
+  protected function getUUIDFromReferenceCroisee($identifiantApplication, $referenceCroisee)
   {
     foreach ($referenceCroisee->identifiantsExternes as $ref) {
-      if ($ref->identifiantApplication == $handler->identifiantApplication) {
+      if ($ref->identifiantApplication == $identifiantApplication) {
         return $ref->identifiantExterne;
       }
     }
