@@ -44,13 +44,13 @@ class supannStructureExt extends simplePlugin
         'name'  => _('Validity'),
         'attrs' => array(
           new GeneralizedTimeDateAttribute(
-            _('Start'), _('The date from which this structure will be valid'),
-            'fdSupannStartDate', TRUE,
+            _('Start date'), _('The date from which this structure will be valid'),
+            'fdSupannStartDate', FALSE,
             ''
           ),
           new GeneralizedTimeDateAttribute(
-            _('End'), _('The date after which this structure will not be valid anymore'),
-            'fdSupannEndDate', TRUE,
+            _('End date'), _('The date after which this structure will not be valid anymore'),
+            'fdSupannEndDate', FALSE,
             ''
           ),
         )
@@ -120,9 +120,14 @@ class supannStructureExt extends simplePlugin
       }
     }
     array_multisort($label_entites,         $code_entites);
-    array_multisort($label_etablissements,  $code_etablissements);
 
     $this->attributesAccess['fdSupannRelationEntite']->attribute->attributes[2]->setChoices($code_entites, $label_entites);
+  }
+
+  protected function prepare_save ()
+  {
+    $this->attributesAccess['fdSupannRelationEntite']->supannPrepareSave();
+    return parent::prepare_save();
   }
 }
 
