@@ -99,14 +99,17 @@ class sinapsRequest
         'supannRefId' => array(),
       ),
     );
+    //TODO: synchroniser dates avec supann-ext
 
     $uuid = '';
 
-    foreach ($structure->referenceCroisee->identifiantsExternes as $ref) {
-      if ($ref->identifiantApplication == $identifiantApplication) {
-        $uuid = $ref->identifiantExterne;
-      } else {
-        $values['entite']['supannRefId'][] = '{'.$ref->identifiantApplication.'}'.$ref->identifiantExterne;
+    if ($structure->referenceCroisee->identifiantsExternes != NULL) {
+      foreach ($structure->referenceCroisee->identifiantsExternes as $ref) {
+        if ($ref->identifiantApplication == $identifiantApplication) {
+          $uuid = $ref->identifiantExterne;
+        } else {
+          $values['entite']['supannRefId'][] = '{'.$ref->identifiantApplication.'}'.$ref->identifiantExterne;
+        }
       }
     }
 
@@ -122,38 +125,43 @@ class sinapsRequest
       }
     }
 
-    foreach ($structure->methodesDeContact->methodeDeContact as $method) {
-      switch ((string)$method->codeTypeMethodeContact) {
-        case 'TEL':
-          $values['entite']['telephoneNumber'] = (string)$method->valeur;
-          break;
-        case 'FAX':
-          $values['entite']['facsimileTelephoneNumber'] = (string)$method->valeur;
-          break;
-        case 'ADR':
-          if ((string)$method->adresse->temoinAdressePrincipale != 'true') {
-            trigger_error('Ignore adresse non principale');
-            continue;
-          }
-          $adresse = $this->convertAddress($method->adresse);
-          if ($adresse === FALSE) {
-            trigger_error('Ignore adresse non FR non ETR');
-            continue;
-          }
-          $values['entite']['postalAddress'] = $adresse;
-          break;
-        default:
-          trigger_error('ignoring codeTypeMethodeContact '.$method->codeTypeMethodeContact);
+    if ($structure->methodesDeContact->methodeDeContact != NULL) {
+      foreach ($structure->methodesDeContact->methodeDeContact as $method) {
+        //TODO: vérifier date de début/fin
+        switch ((string)$method->codeTypeMethodeContact) {
+          case 'TEL':
+            $values['entite']['telephoneNumber'] = (string)$method->valeur;
+            break;
+          case 'FAX':
+            $values['entite']['facsimileTelephoneNumber'] = (string)$method->valeur;
+            break;
+          case 'ADR':
+            if ((string)$method->adresse->temoinAdressePrincipale != 'true') {
+              trigger_error('Ignore adresse non principale');
+              continue;
+            }
+            $adresse = $this->convertAddress($method->adresse);
+            if ($adresse === FALSE) {
+              trigger_error('Ignore adresse non FR non ETR');
+              continue;
+            }
+            $values['entite']['postalAddress'] = $adresse;
+            break;
+          default:
+            trigger_error('ignoring codeTypeMethodeContact '.$method->codeTypeMethodeContact);
+        }
       }
     }
 
-    foreach ($structure->liensStructure->lienStructure as $lienStructure) {
-      if (((string)$lienStructure->codeTypeLien == 'HIE') && isset($lienStructure->codeStructureMere)) {
-        //TODO: vérifier date de début?
-        $mereUUID = $this->getUUIDFromReferenceCroisee($identifiantApplication, $lienStructure->referenceCroisee);
-        if (!empty($mereUUID)) {
-          // TODO: warning si plusieurs?
-          $values['entite']['supannCodeEntiteParent'] = '{LDAPUUID}'.$mereUUID;
+    if ($structure->liensStructure->lienStructure != NULL) {
+      foreach ($structure->liensStructure->lienStructure as $lienStructure) {
+        if (((string)$lienStructure->codeTypeLien == 'HIE') && isset($lienStructure->codeStructureMere)) {
+          //TODO: vérifier date de début/fin
+          $mereUUID = $this->getUUIDFromReferenceCroisee($identifiantApplication, $lienStructure->referenceCroisee);
+          if (!empty($mereUUID)) {
+            // TODO: warning si plusieurs?
+            $values['entite']['supannCodeEntiteParent'] = '{LDAPUUID}'.$mereUUID;
+          }
         }
       }
     }
@@ -181,11 +189,13 @@ class sinapsRequest
 
     $uuid = '';
 
-    foreach ($personne->referenceCroisee->identifiantsExternes as $ref) {
-      if ($ref->identifiantApplication == $identifiantApplication) {
-        $uuid = $ref->identifiantExterne;
-      } else {
-        $values['supannAccount']['supannRefId'][] = '{'.$ref->identifiantApplication.'}'.$ref->identifiantExterne;
+    if ($structure->referenceCroisee->identifiantsExternes != NULL) {
+      foreach ($personne->referenceCroisee->identifiantsExternes as $ref) {
+        if ($ref->identifiantApplication == $identifiantApplication) {
+          $uuid = $ref->identifiantExterne;
+        } else {
+          $values['supannAccount']['supannRefId'][] = '{'.$ref->identifiantApplication.'}'.$ref->identifiantExterne;
+        }
       }
     }
 
@@ -279,25 +289,25 @@ class sinapsRequest
       $adresse .= ' '.$address->adresseFR->BD;
       $adresse .= "\n";
       $adresse .= "FRANCE\n";
-    } elseif (!empty($address->adresseETR)) {
-      if (!empty($address->adresseETR->batiment)) {
-        $adresse .= $address->adresseETR->batiment;
-        if (!empty($address->adresseETR->etage)) {
-          $adresse .= ', '.$address->adresseETR->etage;
+    } elseif (!empty($address->adresseEtr)) {
+      if (!empty($address->adresseEtr->batiment)) {
+        $adresse .= $address->adresseEtr->batiment;
+        if (!empty($address->adresseEtr->etage)) {
+          $adresse .= ', '.$address->adresseEtr->etage;
         }
         $adresse .= "\n";
       }
-      $adresse .= $address->adresseETR->numeroVoie;
-      $adresse .= ' '.$address->adresseETR->nomVoie;
+      $adresse .= $address->adresseEtr->numeroVoie;
+      $adresse .= ' '.$address->adresseEtr->nomVoie;
       $adresse .= "\n";
-      if (!empty($address->adresseETR->complement)) {
-        $adresse .= $address->adresseETR->complement."\n";
+      if (!empty($address->adresseEtr->complement)) {
+        $adresse .= $address->adresseEtr->complement."\n";
       }
-      $adresse .= $address->adresseETR->codePostal;
-      $adresse .= ' '.$address->adresseETR->ville;
+      $adresse .= $address->adresseEtr->codePostal;
+      $adresse .= ' '.$address->adresseEtr->ville;
       $adresse .= "\n";
-      $adresse .= $address->adresseETR->etat."\n";
-      $adresse .= $address->adresseETR->pays."\n";
+      $adresse .= $address->adresseEtr->etat."\n";
+      $adresse .= $address->adresseEtr->pays."\n";
     } else {
       $adresse = FALSE;
     }
