@@ -89,17 +89,21 @@ class sinapsRequest
     $structure = $this->getOperationStructure();
 
     $mapping = array(
-      'libelle20'       => 'ou',
-      'descriptifLong'  => 'description',
-      'codeStructure'   => 'supannCodeEntite',
-      'codeSousType'    => 'supannTypeEntite',
+      'libelle20'         => array('entite','ou'),
+      'descriptifLong'    => array('entite','description'),
+      'codeStructure'     => array('entite','supannCodeEntite'),
+      'codeSousType'      => array('entite','supannTypeEntite'),
+      'dateDebutValidite' => array('supannStructureExt','fdSupannStartDate'),
+      'dateFinValidite'   => array('supannStructureExt','fdSupannEndDate'),
     );
     $values = array(
       'entite' => array(
-        'supannRefId' => array(),
+        'supannRefId'               => array(),
+        'telephoneNumber'           => '',
+        'facsimileTelephoneNumber'  => '',
+        'postalAddress'             => '',
       ),
     );
-    //TODO: synchroniser dates avec supann-ext
 
     $uuid = '';
 
@@ -119,15 +123,29 @@ class sinapsRequest
 
     array_unshift($values['entite']['supannRefId'], '{'.$uuidPrefix.'}'.$uuid);
 
-    foreach ($mapping as $sinapsAttr => $fdAttr) {
+    foreach ($mapping as $sinapsAttr => list($fdTab,$fdAttr)) {
       if (isset($structure->$sinapsAttr)) {
-        $values['entite'][$fdAttr] = (string)$structure->$sinapsAttr;
+        $values[$fdTab][$fdAttr] = (string)$structure->$sinapsAttr;
       }
     }
 
+    $now = new DateTime();
     if ($structure->methodesDeContact->methodeDeContact != NULL) {
       foreach ($structure->methodesDeContact->methodeDeContact as $method) {
-        //TODO: vérifier date de début/fin
+        if ($method->dateDebutValidite) {
+          $dateDebutValidite = new DateTime($method->dateDebutValidite);
+          if ($dateDebutValidite >= $now) {
+            // Method is not valid yet, skip it
+            continue;
+          }
+        }
+        if ($method->dateFinValidite) {
+          $dateFinValidite = new DateTime($method->dateFinValidite);
+          if ($dateFinValidite < $now) {
+            // Method is not valid anymore, skip it
+            continue;
+          }
+        }
         switch ((string)$method->codeTypeMethodeContact) {
           case 'TEL':
             $values['entite']['telephoneNumber'] = (string)$method->valeur;
