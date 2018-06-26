@@ -428,9 +428,9 @@ class supannAccount extends simplePlugin
             _('Personal ID'), _('supannEmpId - Employee identifier'),
             'supannEmpId', FALSE
           ),
-          new SelectAttribute(
+          new SupannPrefixedSelectAttribute(
             _('Personal corps'), _('supannEmpCorps'),
-            'supannEmpCorps', FALSE
+            'supannEmpCorps', FALSE, 'corps'
           ),
           new SetAttribute(
             new SupannPrefixedSelectAttribute(
@@ -529,9 +529,6 @@ class supannAccount extends simplePlugin
 
     list ($codes, $labels) = supann::get_choices_for('typediplome_SISE', '{SISE}');
     $this->attributesAccess['supannEtuInscription']->attribute->attributes[4]->setChoices($codes, $labels); // supannEtuTypeDiplome
-
-    list ($codes, $labels) = supann::get_choices_for('corps', '{NCORPS}');
-    $this->attributesAccess['supannEmpCorps']->setChoices($codes, $labels);
 
     $this->updateFieldsChoices();
   }
