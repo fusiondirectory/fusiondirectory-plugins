@@ -92,7 +92,7 @@ class auditEvent extends simplePlugin
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
   {
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
-    $this->fdAuditId = mt_rand();
+    $this->fdAuditId = random_int(0, PHP_INT_MAX);
   }
 
   function compute_dn()
