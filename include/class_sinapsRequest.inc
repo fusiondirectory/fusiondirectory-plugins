@@ -86,7 +86,8 @@ class sinapsRequest
 
   public function getSupannEntiteValues($identifiantApplication, $uuidPrefix)
   {
-    $structure = $this->getOperationStructure();
+    $structure  = $this->getOperationStructure();
+    $now        = new DateTime();
 
     $mapping = array(
       'libelle20'         => array('entite','ou'),
@@ -129,22 +130,10 @@ class sinapsRequest
       }
     }
 
-    $now = new DateTime();
     if ($structure->methodesDeContact->methodeDeContact != NULL) {
       foreach ($structure->methodesDeContact->methodeDeContact as $method) {
-        if ($method->dateDebutValidite) {
-          $dateDebutValidite = new DateTime($method->dateDebutValidite);
-          if ($dateDebutValidite >= $now) {
-            // Method is not valid yet, skip it
-            continue;
-          }
-        }
-        if ($method->dateFinValidite) {
-          $dateFinValidite = new DateTime($method->dateFinValidite);
-          if ($dateFinValidite < $now) {
-            // Method is not valid anymore, skip it
-            continue;
-          }
+        if (!$this->checkValidite($method, $now)) {
+          continue;
         }
         switch ((string)$method->codeTypeMethodeContact) {
           case 'TEL':
@@ -174,7 +163,9 @@ class sinapsRequest
     if ($structure->liensStructure->lienStructure != NULL) {
       foreach ($structure->liensStructure->lienStructure as $lienStructure) {
         if (((string)$lienStructure->codeTypeLien == 'HIE') && isset($lienStructure->codeStructureMere)) {
-          //TODO: vérifier date de début/fin
+          if (!$this->checkValidite($lienStructure, $now)) {
+            continue;
+          }
           $mereUUID = $this->getUUIDFromReferenceCroisee($identifiantApplication, $lienStructure->referenceCroisee);
           if (!empty($mereUUID)) {
             // TODO: warning si plusieurs?
@@ -279,7 +270,7 @@ class sinapsRequest
     return $values;
   }
 
-  protected function convertAddress($address)
+  protected function convertAddress(SimpleXMLElement $address)
   {
     $adresse = '';
     if (!empty($address->adresseFR)) {
@@ -331,6 +322,25 @@ class sinapsRequest
     }
 
     return $adresse;
+  }
+
+  protected function checkValidite(SimpleXMLElement $object, DateTime $now)
+  {
+    if ($object->dateDebutValidite) {
+      $dateDebutValidite = new DateTime($object->dateDebutValidite);
+      if ($dateDebutValidite >= $now) {
+        // Object is not valid yet, skip it
+        return FALSE;
+      }
+    }
+    if ($object->dateFinValidite) {
+      $dateFinValidite = new DateTime($object->dateFinValidite);
+      if ($dateFinValidite < $now) {
+        // Object is not valid anymore, skip it
+        return FALSE;
+      }
+    }
+    return TRUE;
   }
 
   protected function getUUIDFromReferenceCroisee($identifiantApplication, $referenceCroisee)
