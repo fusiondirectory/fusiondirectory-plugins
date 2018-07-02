@@ -139,7 +139,7 @@ class sinapsDiffusionHandlerJob
     } else {
       $dn = '';
     }
-    $error = fillObject('user', $values, $dn);
+    $error = $this->fillObject('user', $values, $dn);
     if ($error !== TRUE) {
       $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, strip_tags(implode(', ', $error)), $idObjApp));
     } else {

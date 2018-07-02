@@ -237,7 +237,10 @@ class sinapsRequest
           $values['user']['facsimileTelephoneNumber'] = (string)$method->valeur;
           break;
         case 'MAILPERSO':
-          $values['supannAccount']['supannMailPerso'] = (string)$method->valeur;
+          if (!isset($values['supannAccount']['supannMailPerso'])) {
+            $values['supannAccount']['supannMailPerso'] = array();
+          }
+          $values['supannAccount']['supannMailPerso'][] = (string)$method->valeur;
           break;
         case 'ADR':
           if ((string)$method->adresse->temoinAdressePrincipale != 'true') {
