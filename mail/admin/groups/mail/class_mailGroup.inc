@@ -134,6 +134,26 @@ class mailGroup extends simplePlugin
       $this->attributesAccess['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
       $this->attributesAccess['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
     }
+
+    /* Feature switches */
+
+    if ($this->mailMethod->localOnlyEnabled()) {
+      $this->attributesAccess['fdGroupMailLocalOnly']->setDisabled(FALSE);
+      $this->attributesAccess['fdGroupMailLocalOnly']->setVisible(TRUE);
+    } else {
+      $this->attributesAccess['fdGroupMailLocalOnly']->setDisabled(TRUE);
+      $this->attributesAccess['fdGroupMailLocalOnly']->setVisible(FALSE);
+      $this->attributesAccess['fdGroupMailLocalOnly']->setValue(FALSE);
+    }
+
+    if ($this->mailMethod->groupForwardingEnabled()) {
+      $this->attributesAccess['gosaMailForwardingAddress']->setDisabled(FALSE);
+      $this->attributesAccess['gosaMailForwardingAddress']->setVisible(TRUE);
+    } else {
+      $this->attributesAccess['gosaMailForwardingAddress']->setDisabled(TRUE);
+      $this->attributesAccess['gosaMailForwardingAddress']->setVisible(FALSE);
+      $this->attributesAccess['gosaMailForwardingAddress']->setValue(array());
+    }
   }
 
   protected function shouldSave()

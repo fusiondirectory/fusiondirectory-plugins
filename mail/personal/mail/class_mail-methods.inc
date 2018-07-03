@@ -67,10 +67,14 @@ class mailMethod
   protected $userObjectClasses  = array();
   protected $shareObjectClasses = array();
 
+  /* Features */
   protected $enableQuota            = TRUE;
   protected $enableVacation         = TRUE;
   protected $enableVacationRange    = FALSE;
   protected $enableFolderTypes      = FALSE;
+  protected $enableGroupForwarding  = TRUE;
+  protected $enableLocalOnly        = TRUE;
+  protected $enableForwardOnly      = TRUE;
 
   /* Default values */
   protected $quotaValue   = 0;
@@ -565,6 +569,30 @@ class mailMethod
   public function vacationRangeEnabled()
   {
     return ($this->vacationEnabled() && $this->enableVacationRange);
+  }
+
+  /*! \brief  Returns whether forwarding to group non-members is possible
+      @return Boolean TRUE, FALSE
+   */
+  public function groupForwardingEnabled()
+  {
+    return $this->enableGroupForwarding;
+  }
+
+  /*! \brief  Returns whether forcing to only send/recieve local mail is possible
+      @return Boolean TRUE, FALSE
+   */
+  public function localOnlyEnabled()
+  {
+    return $this->enableLocalOnly;
+  }
+
+  /*! \brief  Returns whether forwarding without storing the mail is possible
+      @return Boolean TRUE, FALSE
+   */
+  public function forwardOnlyEnabled()
+  {
+    return $this->enableForwardOnly;
   }
 
   /*! \brief  Checks dependencies to other FusionDirectory plugins.
