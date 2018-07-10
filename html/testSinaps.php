@@ -99,7 +99,7 @@ function handleStructureDiffusion($values)
   //~ $dn     = '';
   //~ $error  = fillObject('entite', $values, $dn);
   //~ if ($error !== TRUE) {
-    //~ sendAcquittement($request->acquittementFonctionnel(500, 10, $error, $dn));
+    //~ sendAcquittement($request->acquittementFonctionnel(500, 10, $error));
   //~ } else {
     //~ sendAcquittement($request->acquittementFonctionnel(200, 0, 'Entite created', $dn));
   //~ }

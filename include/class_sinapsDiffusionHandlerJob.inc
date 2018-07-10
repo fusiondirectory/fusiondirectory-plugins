@@ -94,7 +94,7 @@ class sinapsDiffusionHandlerJob
       $dn = '';
     } elseif (count($entites) > 1) {
       $error = 'Multiple entite matches id '.$uuid;
-      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error, $idObjApp));
+      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error));
     } else {
       $dn = key($entites);
       /* Keep previous ref ids */
@@ -106,17 +106,17 @@ class sinapsDiffusionHandlerJob
       $entites = objects::ls('entite', 'supannCodeEntite', NULL, '(supannRefId='.$values['entite']['supannCodeEntiteParent'].')');
       if (empty($entites)) {
         $error = 'Could not find parent '.$values['entite']['supannCodeEntiteParent'];
-        $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error, $idObjApp));
+        $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error));
       } elseif (count($entites) > 1) {
         $error = 'Multiple entite matches id '.$values['entite']['supannCodeEntiteParent'];
-        $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error, $idObjApp));
+        $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error));
       } else {
         $values['entite']['supannCodeEntiteParent'] = reset($entites);
       }
     }
     $error = $this->fillObject('entite', $values, $dn);
     if ($error !== TRUE) {
-      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, strip_tags(implode(', ', $error)), $idObjApp));
+      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, strip_tags(implode(', ', $error))));
     } else {
       $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(200, 0, $message, $idObjApp));
     }
@@ -131,7 +131,7 @@ class sinapsDiffusionHandlerJob
     if (!empty($entites)) {
       if (count($entites) > 1) {
         $error = 'Multiple user matches id '.$uuid;
-        $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error, $idObjApp));
+        $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error));
       } else {
         $dn = key($entites);
         $message = 'User updated';
@@ -141,7 +141,7 @@ class sinapsDiffusionHandlerJob
     }
     $error = $this->fillObject('user', $values, $dn);
     if ($error !== TRUE) {
-      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, strip_tags(implode(', ', $error)), $idObjApp));
+      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, strip_tags(implode(', ', $error))));
     } else {
       $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(200, 0, $message, $idObjApp));
     }
