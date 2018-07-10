@@ -54,11 +54,31 @@ class sinapsDiffusionHandlerJob
     }
 
     if ($this->request->codeDomaine() == 'STRUCTURE') {
-      $this->handleStructureDiffusion($this->request->getSupannEntiteValues($this->identifiantApplication, $this->uuidPrefix));
+      $this->handleStructureDiffusion($this->request->getSupannEntiteValues($this->identifiantApplication, $this->uuidPrefix, array($this, 'ldapUuidToCodeEntite')));
     } elseif ($this->request->codeDomaine() == 'PERSONNE') {
-      $this->handlePersonneDiffusion($this->request->getUserValues($this->identifiantApplication, $this->uuidPrefix));
+      $this->handlePersonneDiffusion($this->request->getUserValues($this->identifiantApplication, $this->uuidPrefix, array($this, 'ldapUuidToCodeEntite')));
     } else {
       throw new FusionDirectoryException('Invalid domain '.$this->request->codeDomaine());
+    }
+  }
+
+  function ldapUuidToCodeEntite($uuid)
+  {
+    /* Translate UUID refs to code entite
+     * This is done here to make sure sinapsRequest does not perform LDAP searches by itself
+     * */
+    if (!preg_match('/^{'.$this->uuidPrefix.'}/', $uuid)) {
+      $uuid = '{'.$this->uuidPrefix.'}'.$uuid;
+    }
+    $entites = objects::ls('entite', array('supannCodeEntite' => 1, 'supannTypeEntite' => 1), NULL, '(supannRefId='.$uuid.')');
+    if (empty($entites)) {
+      $error = 'Could not find parent '.$uuid;
+      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error));
+    } elseif (count($entites) > 1) {
+      $error = 'Multiple entite matches id '.$uuid;
+      $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error));
+    } else {
+      return reset($entites);
     }
   }
 
@@ -101,19 +121,6 @@ class sinapsDiffusionHandlerJob
       $values['entite']['supannRefId'] = array_values(array_unique(array_merge($values['entite']['supannRefId'], $entites[$dn]['supannRefId'])));
       $message = 'Entite updated';
     }
-    if (!empty($values['entite']['supannCodeEntiteParent'])) {
-      // Replace supannRefId by supannCodeEntite value
-      $entites = objects::ls('entite', 'supannCodeEntite', NULL, '(supannRefId='.$values['entite']['supannCodeEntiteParent'].')');
-      if (empty($entites)) {
-        $error = 'Could not find parent '.$values['entite']['supannCodeEntiteParent'];
-        $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error));
-      } elseif (count($entites) > 1) {
-        $error = 'Multiple entite matches id '.$values['entite']['supannCodeEntiteParent'];
-        $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error));
-      } else {
-        $values['entite']['supannCodeEntiteParent'] = reset($entites);
-      }
-    }
     $error = $this->fillObject('entite', $values, $dn);
     if ($error !== TRUE) {
       $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, strip_tags(implode(', ', $error))));
@@ -126,15 +133,16 @@ class sinapsDiffusionHandlerJob
   {
     $uuid     = $values['supannAccount']['supannRefId'][0];
     $idObjApp = preg_replace('/^{'.$this->uuidPrefix.'}/', '', $uuid);
-    $entites  = objects::ls('user', 'ou', NULL, '(supannRefId='.$uuid.')');
+    $users    = objects::ls('user', 'ou', NULL, '(supannRefId='.$uuid.')');
     $message  = 'User created';
-    if (!empty($entites)) {
-      if (count($entites) > 1) {
+    if (!empty($users)) {
+      if (count($users) > 1) {
         $error = 'Multiple user matches id '.$uuid;
         $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error));
       } else {
-        $dn = key($entites);
+        $dn = key($users);
         $message = 'User updated';
+        //TODO: Ne pas écraser les champs multivalué?
       }
     } else {
       $dn = '';

@@ -84,7 +84,7 @@ class sinapsRequest
     return $xml->asXML();
   }
 
-  public function getSupannEntiteValues($identifiantApplication, $uuidPrefix)
+  public function getSupannEntiteValues($identifiantApplication, $uuidPrefix, $ldapUuidToCodeEntiteCallback)
   {
     $structure  = $this->getOperationStructure();
     $now        = new DateTime();
@@ -168,8 +168,7 @@ class sinapsRequest
           }
           $mereUUID = $this->getUUIDFromReferenceCroisee($identifiantApplication, $lienStructure->referenceCroisee);
           if (!empty($mereUUID)) {
-            // TODO: warning si plusieurs?
-            $values['entite']['supannCodeEntiteParent'] = '{LDAPUUID}'.$mereUUID;
+            $values['entite']['supannCodeEntiteParent'] = $ldapUuidToCodeEntiteCallback($mereUUID)['supannCodeEntite'];
           }
         }
       }
@@ -178,9 +177,18 @@ class sinapsRequest
     return $values;
   }
 
-  public function getUserValues($identifiantApplication, $uuidPrefix)
+  public function getUserValues($identifiantApplication, $uuidPrefix, $ldapUuidToCodeEntiteCallback)
   {
-    $personne = $this->getOperationPersonne();
+    /* TODO
+     * FONCTION OCCUPÉE/Struture interne: supannEntiteAffectation
+     * FONCTION OCCUPÉE/Fonction RH: supannRoleGenerique
+     * AFFECTATION/Structure interne: supannEntiteAffectationPrincipale
+     * ÉLÉMENT DE CARRIÈRE/Statut: employeeType
+     * ÉLÉMENT DE CARRIÈRE/Corps: supannEmpCorps
+     * ÉLÉMENT DE CARRIÈRE/BAP Referens: supannActivite
+     */
+    $personne   = $this->getOperationPersonne();
+    $now        = new DateTime();
     $mapping = array(
       'civilite'        => array('supannAccount','supannCivilite'),
       'nomUsage'        => array('user','sn'),
@@ -192,13 +200,17 @@ class sinapsRequest
       'user'          => array(),
       'supannAccount' => array(
         'supannRefId' => array(),
+        'supannEntiteAffectation' => array(),
+        'supannRoleGenerique' => array(),
+        'supannTypeEntiteAffectation' => array(),
+        'supannRoleEntite' => array(),
       ),
       'personalInfo'  => array(),
     );
 
     $uuid = '';
 
-    if ($structure->referenceCroisee->identifiantsExternes != NULL) {
+    if ($personne->referenceCroisee->identifiantsExternes != NULL) {
       foreach ($personne->referenceCroisee->identifiantsExternes as $ref) {
         if ($ref->identifiantApplication == $identifiantApplication) {
           $uuid = $ref->identifiantExterne;
@@ -226,49 +238,74 @@ class sinapsRequest
     }
 
     //TODO: methodeContact ou methodeDeContact?
-    foreach ($personne->methodesDeContact->methodeContact as $method) {
-      switch ((string)$method->typeMethodeContact) {
-        case 'TEL':
-          $values['user']['telephoneNumber'] = (string)$method->valeur;
-          //TODO supannAutreMail
-          //TODO supannAutreTelephone
-          break;
-        case 'FAX':
-          $values['user']['facsimileTelephoneNumber'] = (string)$method->valeur;
-          break;
-        case 'MAILPERSO':
-          if (!isset($values['supannAccount']['supannMailPerso'])) {
-            $values['supannAccount']['supannMailPerso'] = array();
-          }
-          $values['supannAccount']['supannMailPerso'][] = (string)$method->valeur;
-          break;
-        case 'ADR':
-          if ((string)$method->adresse->temoinAdressePrincipale != 'true') {
-            trigger_error('Ignore adresse non principale');
-            continue;
-          }
-          $adresse = $this->convertAddress($method->adresse);
-          if ($adresse === FALSE) {
-            trigger_error('Ignore adresse non FR non ETR');
-            continue;
-          }
-          if ($method->adresse->codeTypeAdresse == 'ADRPERSO') {
-            $values['user']['homePostalAddress'] = $adresse;
-          } else {
-            $values['user']['postalAddress'] = $adresse;
-          }
-          break;
-        default:
-          trigger_error('ignoring codeTypeMethodeContact '.$method->typeMethodeContact);
+    if ($personne->methodesDeContact->methodeContact !== NULL) {
+      foreach ($personne->methodesDeContact->methodeContact as $method) {
+        if (!$this->checkValidite($method, $now)) {
+          continue;
+        }
+        switch ((string)$method->typeMethodeContact) {
+          case 'TEL':
+            $values['user']['telephoneNumber'] = (string)$method->valeur;
+            //TODO supannAutreMail
+            //TODO supannAutreTelephone
+            break;
+          case 'FAX':
+            $values['user']['facsimileTelephoneNumber'] = (string)$method->valeur;
+            break;
+          case 'MAILPERSO':
+            if (!isset($values['supannAccount']['supannMailPerso'])) {
+              $values['supannAccount']['supannMailPerso'] = array();
+            }
+            $values['supannAccount']['supannMailPerso'][] = (string)$method->valeur;
+            break;
+          case 'ADR':
+            if ((string)$method->adresse->temoinAdressePrincipale != 'true') {
+              trigger_error('Ignore adresse non principale');
+              continue;
+            }
+            $adresse = $this->convertAddress($method->adresse);
+            if ($adresse === FALSE) {
+              trigger_error('Ignore adresse non FR non ETR');
+              continue;
+            }
+            if ($method->adresse->codeTypeAdresse == 'ADRPERSO') {
+              $values['user']['homePostalAddress'] = $adresse;
+            } else {
+              $values['user']['postalAddress'] = $adresse;
+            }
+            break;
+          default:
+            trigger_error('ignoring codeTypeMethodeContact '.$method->typeMethodeContact);
+        }
       }
     }
 
-    //~ foreach ($personne->liensStructure->lienStructure as $lienStructure) {
-      //~ if (((string)$lienStructure->codeTypeLien == 'HIE') && isset($lienStructure->codeStructureMere)) {
-        //~ //TODO: vérifier date de début, peut-être prendre identifiantExterne
-        //~ $values['user']['supannCodeEntiteParent'] = (string)$lienStructure->codeStructureMere;
-      //~ }
-    //~ }
+    if ($personne->rattachements->rattachement != NULL) {
+      foreach ($personne->rattachements->rattachement as $rattachement) {
+        if (!$this->checkValidite($rattachement, $now)) {
+          continue;
+        }
+        if ($rattachement->fonctionsOccupees->fonctionOccupee != NULL) {
+          foreach ($rattachement->fonctionsOccupees->fonctionOccupee as $fonctionOccupee) {
+            if (!$this->checkValidite($fonctionOccupee, $now)) {
+              continue;
+            }
+            $values['supannAccount']['supannRoleGenerique'][] = (string)$fonctionOccupee->fonctionRh;
+            $UUID = $this->getUUIDFromReferenceCroisee($identifiantApplication, $fonctionOccupee->referenceCroisee);
+            if (!empty($UUID)) {
+              $entite = $ldapUuidToCodeEntiteCallback($UUID);
+              $values['supannAccount']['supannTypeEntiteAffectation'][] = $entite['supannTypeEntite'];
+              $values['supannAccount']['supannEntiteAffectation'][] = $entite['supannCodeEntite'];
+              $values['supannAccount']['supannRoleEntite'][] = array(
+                (string)$fonctionOccupee->fonctionRh,
+                $entite['supannTypeEntite'],
+                $entite['supannCodeEntite']
+              );
+            }
+          }
+        }
+      }
+    }
 
     return $values;
   }
@@ -348,6 +385,7 @@ class sinapsRequest
 
   protected function getUUIDFromReferenceCroisee($identifiantApplication, $referenceCroisee)
   {
+    // TODO: warning si plusieurs?
     foreach ($referenceCroisee->identifiantsExternes as $ref) {
       if ($ref->identifiantApplication == $identifiantApplication) {
         return $ref->identifiantExterne;
