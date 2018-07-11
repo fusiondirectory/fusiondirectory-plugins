@@ -69,6 +69,18 @@ attributetype ( 1.3.6.1.4.1.38414.65.1.10 NAME 'fdSinapsDryRun'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.65.1.11 NAME 'fdSinapsUserBase'
+  DESC 'FusionDirectory - Base in which users should be created when receiving a SINAPS diffusion'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.12 NAME 'fdSinapsUserTemplate'
+  DESC 'FusionDirectory - User template to use for user creation from SINAPS diffusion'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
 objectclass ( 1.3.6.1.4.1.38414.65.2.1 NAME 'fdSinapsPluginConf'
   DESC 'FusionDirectory sinaps plugin configuration'
   SUP top AUXILIARY
@@ -79,5 +91,6 @@ objectclass ( 1.3.6.1.4.1.38414.65.2.1 NAME 'fdSinapsPluginConf'
     fdSinapsDumpFolder $
     fdSinapsIdentifiantApplication $ fdSinapsUuidPrefix $
     fdSinapsAcquisitionURL $ fdSinapsFDToken $
-    fdSinapsDryRun
+    fdSinapsDryRun $
+    fdSinapsUserBase $ fdSinapsUserTemplate
   ) )

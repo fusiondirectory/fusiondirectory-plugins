@@ -28,6 +28,8 @@ class sinapsDiffusionHandlerJob
   protected $dumpFolder;
   protected $uuidPrefix;
   protected $identifiantApplication;
+  protected $userBase;
+  protected $userTemplate;
 
   protected $request;
 
@@ -45,6 +47,8 @@ class sinapsDiffusionHandlerJob
     $this->dumpFolder             = $config->get_cfg_value('SinapsDumpFolder');
     $this->uuidPrefix             = $config->get_cfg_value('SinapsUuidPrefix', 'LDAPUUID');
     $this->identifiantApplication = $config->get_cfg_value('SinapsIdentifiantApplication');
+    $this->userBase               = $config->get_cfg_value('SinapsUserBase', $config->current['BASE']);
+    $this->userTemplate           = $config->get_cfg_value('SinapsUserTemplate');
   }
 
   function handleRequest()
@@ -166,7 +170,22 @@ class sinapsDiffusionHandlerJob
       return TRUE;
     }
     if (empty($dn)) {
-      $tabobject = objects::create($type);
+      if (($type == 'user') && !empty($this->userTemplate)) {
+        $template = new template($type, $this->userTemplate);
+        $error    = $template->deserialize($values);
+        if ($error !== TRUE) {
+          return array($error);
+        }
+        $tabobject  = $template->apply();
+        $errors     = $tabobject->save();
+        if (!empty($errors)) {
+          return $errors;
+        }
+        $dn = $tabobject->dn;
+        return TRUE;
+      } else {
+        $tabobject = objects::create($type);
+      }
     } else {
       $tabobject = objects::open($dn, $type);
     }

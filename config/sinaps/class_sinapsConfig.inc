@@ -36,6 +36,8 @@ class sinapsConfig extends simplePlugin
 
   static function getAttributesInfo ()
   {
+    global $config;
+
     return array(
       'main' => array(
         'name'  => _('Sinaps'),
@@ -80,6 +82,15 @@ class sinapsConfig extends simplePlugin
             'fdSinapsUuidPrefix', TRUE,
             'LDAPUUID'
           ),
+          new StringAttribute (
+            _('User base'), _('Base in which users should be created when receiving a SINAPS diffusion'),
+            'fdSinapsUserBase', TRUE,
+            $config->current['BASE']
+          ),
+          new SelectAttribute (
+            _('User template'), _('User template to use for user creation from SINAPS diffusion'),
+            'fdSinapsUserTemplate', FALSE
+          ),
           new SetAttribute (
             new StringAttribute (
               _('API Tokens'), _('One of these API tokens will need to be present in the diffusion URL used by SINAPS'),
@@ -89,6 +100,17 @@ class sinapsConfig extends simplePlugin
         )
       ),
     );
+  }
+
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
+  {
+    if ($attributesInfo === NULL) {
+      $attributesInfo = $this->getAttributesInfo();
+    }
+    $userTemplates = objects::getTemplates('user');
+    $attributesInfo['main']['attrs'][10]->setChoices(array_keys($userTemplates), array_values($userTemplates));
+
+    parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
   }
 }
 ?>
