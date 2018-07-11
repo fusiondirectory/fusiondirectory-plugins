@@ -280,12 +280,33 @@ class sinapsRequest
       }
     }
 
-    if ($personne->rattachements->rattachement != NULL) {
+    if ($personne->rattachements->rattachement !== NULL) {
       foreach ($personne->rattachements->rattachement as $rattachement) {
         if (!$this->checkValidite($rattachement, $now)) {
           continue;
         }
-        if ($rattachement->fonctionsOccupees->fonctionOccupee != NULL) {
+
+        if ($rattachement->roles->role !== NULL) {
+          foreach ($rattachement->roles->role as $role) {
+            if (!$this->checkValidite($role, $now)) {
+              continue;
+            }
+            if ($role->typeRole != 'PR') {
+              continue;
+            }
+            if ($role->personneRessource->affectations->affectation !== NULL) {
+              foreach ($role->personneRessource->affectations->affectation as $affectation) {
+                $UUID = $this->getUUIDFromReferenceCroisee($identifiantApplication, $affectation->referenceCroisee);
+                if (!empty($UUID)) {
+                  $entite = $ldapUuidToCodeEntiteCallback($UUID);
+                  $values['supannAccount']['supannEntiteAffectation'][]         = $entite['supannCodeEntite'];
+                  $values['supannAccount']['supannEntiteAffectationPrincipale'] = $entite['supannCodeEntite'];
+                }
+              }
+            }
+          }
+        }
+        if ($rattachement->fonctionsOccupees->fonctionOccupee !== NULL) {
           foreach ($rattachement->fonctionsOccupees->fonctionOccupee as $fonctionOccupee) {
             if (!$this->checkValidite($fonctionOccupee, $now)) {
               continue;

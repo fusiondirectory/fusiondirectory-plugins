@@ -66,6 +66,7 @@ class sinapsDiffusionHandlerJob
   {
     /* Translate UUID refs to code entite
      * This is done here to make sure sinapsRequest does not perform LDAP searches by itself
+     * TODO add a cache
      * */
     if (!preg_match('/^{'.$this->uuidPrefix.'}/', $uuid)) {
       $uuid = '{'.$this->uuidPrefix.'}'.$uuid;
