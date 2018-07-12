@@ -138,7 +138,7 @@ class sinapsDiffusionHandlerJob
   {
     $uuid     = $values['supannAccount']['supannRefId'][0];
     $idObjApp = preg_replace('/^{'.$this->uuidPrefix.'}/', '', $uuid);
-    $users    = objects::ls('user', 'ou', NULL, '(supannRefId='.$uuid.')');
+    $users    = objects::ls('user', 'cn', NULL, '(supannRefId='.$uuid.')');
     $message  = 'User created';
     if (!empty($users)) {
       if (count($users) > 1) {
@@ -170,6 +170,9 @@ class sinapsDiffusionHandlerJob
       return TRUE;
     }
     if (empty($dn)) {
+      if (($type == 'user') && !empty($this->userBase)) {
+        $values['user']['base'] = $this->userBase;
+      }
       if (($type == 'user') && !empty($this->userTemplate)) {
         $template = new template($type, $this->userTemplate);
         $error    = $template->deserialize($values);
