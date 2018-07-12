@@ -57,7 +57,7 @@ class sinapsRequest
     return $this->data->domaine->donnees->operation->personne;
   }
 
-  public function acquittementFonctionnel($responseCode = 200, $codeAcquittement = 0, $message = '', $identifiantObjApp = NULL)
+  public function acquittementFonctionnel($responseCode = 200, $codeAcquittement = 0, $message = '', $identifiantObjApp = NULL, $synchrone = TRUE)
   {
     $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?>
     <Acquittement xmlns:acq="http://referentiels.SINAPS.amue.fr/acquittementFonctionnel">
@@ -69,7 +69,17 @@ class sinapsRequest
       $xml->addChild('identifiantObjApp', $identifiantObjApp);
     }
 
-    return $xml->asXML();
+    if ($synchrone) {
+      /* Hack because SINAPS API makes no sense and needs a prefix for Acquittement only for synchrone mode */
+      return preg_replace(
+        array('|<Acquittement |',   '|</Acquittement>$|'),
+        array('<acq:Acquittement ', '</acq:Acquittement>'),
+        $xml->asXML(),
+        1
+      );
+    } else {
+      return $xml->asXML();
+    }
   }
 
   public function acquittementTechnique($responseCode = 200, $message = '')
