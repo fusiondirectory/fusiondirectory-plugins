@@ -63,7 +63,7 @@ class dashboardSystems extends simplePlugin
     $this->pc_ids = $this->computer_ids_rules();
   }
 
-  function systems_stats ()
+  protected function systems_stats ()
   {
     global $config;
     $ldap = $config->get_ldap_link();
@@ -124,9 +124,13 @@ class dashboardSystems extends simplePlugin
     return $stats;
   }
 
-  function argonaut_stats ()
+  protected function argonaut_stats ()
   {
     global $config, $ui;
+
+    if (!class_available('argonautServer')) {
+      return FALSE;
+    }
 
     $argonaut_servers = objects::ls(
       'server',
@@ -161,7 +165,7 @@ class dashboardSystems extends simplePlugin
     );
   }
 
-  function computer_ids_rules ()
+  protected function computer_ids_rules ()
   {
     global $config;
     $ldap = $config->get_ldap_link();
