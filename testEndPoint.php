@@ -1,4 +1,8 @@
 <?php
+/*
+ * This is a script to test the sinaps plugin by sending it an arbitrary XML file
+ * Usage: php testEndPoint.php "http://url/fusiondirectory/sinaps.php?token=validtoken" /path/to/file.xml
+ * */
 
 sendPost(
   $argv[1],
