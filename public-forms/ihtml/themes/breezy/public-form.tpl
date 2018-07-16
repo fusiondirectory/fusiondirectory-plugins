@@ -24,7 +24,7 @@
           </div>
         </div>
         <div id="window-footer" class="plugbottom">
-          <input type="submit" name="template_continue" value="{t}Continue{/t}"/>
+          <input type="submit" name="form_submit" value="{msgPool type=okButton}"/>
         </div>
       </form>
     </div>
