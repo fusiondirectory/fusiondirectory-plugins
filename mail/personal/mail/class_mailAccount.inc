@@ -276,11 +276,46 @@ class mailAccount extends simplePlugin
       $this->attributesAccess['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
     }
 
-    if (!$this->mailMethod->vacationEnabled()) {
-      $this->attributesAccess['flag_vacation']->setValue(FALSE);
-      $this->attributesAccess['flag_vacation']->setDisabled(TRUE);
+    /* Feature switches */
+
+    if ($this->mailMethod->localOnlyEnabled()) {
+      $this->attributesAccess['flag_localonly']->setDisabled(FALSE);
+      $this->attributesAccess['flag_localonly']->setVisible(TRUE);
+    } else {
+      $this->attributesAccess['flag_localonly']->setDisabled(TRUE);
+      $this->attributesAccess['flag_localonly']->setVisible(FALSE);
+      $this->attributesAccess['flag_localonly']->setValue(FALSE);
     }
-    if (!$this->mailMethod->vacationRangeEnabled()) {
+
+    if ($this->mailMethod->forwardOnlyEnabled()) {
+      $this->attributesAccess['flag_ownmailbox']->setDisabled(FALSE);
+    } else {
+      $this->attributesAccess['flag_ownmailbox']->setDisabled(TRUE);
+      $this->attributesAccess['flag_ownmailbox']->setValue(FALSE);
+    }
+
+    if ($this->mailMethod->vacationEnabled()) {
+      $this->attributesAccess['flag_vacation']->setDisabled(FALSE);
+      $this->attributesAccess['flag_vacation']->setVisible(TRUE);
+    } else {
+      $this->attributesAccess['flag_vacation']->setDisabled(TRUE);
+      $this->attributesAccess['flag_vacation']->setVisible(FALSE);
+      $this->attributesAccess['flag_vacation']->setValue(FALSE);
+    }
+
+    if ($this->mailMethod->vacationRangeEnabled()) {
+      $this->attributesAccess['gosaVacationStop']->setDisabled(FALSE);
+      $this->attributesAccess['gosaVacationStart']->setDisabled(FALSE);
+      $this->attributesAccess['flag_vacation']->setManagedAttributes (
+        array (
+          'erase' => array (
+            FALSE => array (
+              'gosaVacationStart','gosaVacationStop','gosaVacationMessage'
+            )
+          )
+        )
+      );
+    } else {
       $this->attributesAccess['gosaVacationStart']->setDisabled(TRUE);
       $this->attributesAccess['gosaVacationStart']->setVisible(FALSE);
       $this->attributesAccess['gosaVacationStart']->setValue('');
@@ -292,16 +327,6 @@ class mailAccount extends simplePlugin
           'erase' => array (
             FALSE => array (
               'gosaVacationMessage'
-            )
-          )
-        )
-      );
-    } else {
-      $this->attributesAccess['flag_vacation']->setManagedAttributes (
-        array (
-          'erase' => array (
-            FALSE => array (
-              'gosaVacationStart','gosaVacationStop','gosaVacationMessage'
             )
           )
         )
