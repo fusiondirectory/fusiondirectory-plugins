@@ -38,13 +38,13 @@ class publicFormPage extends standAlonePage
 
     if (!isset($this->form) && isset($_GET['form'])) {
       /* Search for the form object */
-      $form = objects::ls('publicForm', array('dn' => 'raw', 'cn' => 1, 'fdPublicFormTitle' => 1, 'fdPublicFormText' => 1, 'fdPublicFormTemplateType' => 1, 'fdPublicFormTemplateDN' => 1), NULL, '(cn='.ldap_escape_f($_GET['form']).')');
-      if (count($form) <= 0) {
+      $forms = objects::ls('publicForm', array('dn' => 'raw', 'cn' => 1, 'fdPublicFormTitle' => 1, 'fdPublicFormText' => 1, 'fdPublicFormTemplateType' => 1, 'fdPublicFormTemplateDN' => 1), NULL, '(cn='.ldap_escape_f($_GET['form']).')');
+      if (count($forms) <= 0) {
         throw new FusionDirectoryException('Form "'.$_GET['form'].'" could not be found');
-      } elseif (count($form) > 1) {
+      } elseif (count($forms) > 1) {
         throw new FusionDirectoryException('Several forms match the name "'.$_GET['form'].'"');
       }
-      $this->form     = reset($form);
+      $this->form     = reset($forms);
       $this->template = new template($this->form['fdPublicFormTemplateType'], $this->form['fdPublicFormTemplateDN']);
     } elseif (!isset($this->form)) {
       throw new FusionDirectoryException('No form name given');
