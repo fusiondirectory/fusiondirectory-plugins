@@ -26,7 +26,7 @@ function sendPost($url, $xml)
   if (!is_array($fp)) {
     $response = '';
     while ($row = fgets($fp)) {
-      $response .= trim($row)."\n";
+      $response .= $row;
     }
     echo '***** Server response *****'."\n".$response.'***** End of server response *****'."\n";
   } else {

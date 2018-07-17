@@ -189,14 +189,6 @@ class sinapsRequest
 
   public function getUserValues($identifiantApplication, $uuidPrefix, $ldapUuidToCodeEntiteCallback)
   {
-    /* TODO
-     * FONCTION OCCUPÉE/Struture interne: supannEntiteAffectation
-     * FONCTION OCCUPÉE/Fonction RH: supannRoleGenerique
-     * AFFECTATION/Structure interne: supannEntiteAffectationPrincipale
-     * ÉLÉMENT DE CARRIÈRE/Statut: employeeType
-     * ÉLÉMENT DE CARRIÈRE/Corps: supannEmpCorps
-     * ÉLÉMENT DE CARRIÈRE/BAP Referens: supannActivite
-     */
     $personne   = $this->getOperationPersonne();
     $now        = new DateTime();
     $mapping = array(
@@ -209,11 +201,12 @@ class sinapsRequest
     $values = array(
       'user'          => array(),
       'supannAccount' => array(
-        'supannRefId' => array(),
-        'supannEntiteAffectation' => array(),
-        'supannRoleGenerique' => array(),
+        'supannRefId'                 => array(),
+        'supannEntiteAffectation'     => array(),
+        'supannRoleGenerique'         => array(),
         'supannTypeEntiteAffectation' => array(),
-        'supannRoleEntite' => array(),
+        'supannRoleEntite'            => array(),
+        'supannActivite'              => array(),
       ),
       'personalInfo'  => array(),
     );
@@ -306,11 +299,31 @@ class sinapsRequest
             }
             if ($role->personneRessource->affectations->affectation !== NULL) {
               foreach ($role->personneRessource->affectations->affectation as $affectation) {
+                if (!$this->checkValidite($affectation, $now)) {
+                  continue;
+                }
                 $UUID = $this->getUUIDFromReferenceCroisee($identifiantApplication, $affectation->referenceCroisee);
                 if (!empty($UUID)) {
                   $entite = $ldapUuidToCodeEntiteCallback($UUID);
                   $values['supannAccount']['supannEntiteAffectation'][]         = $entite['supannCodeEntite'];
                   $values['supannAccount']['supannEntiteAffectationPrincipale'] = $entite['supannCodeEntite'];
+                }
+              }
+            }
+            if ($role->personneRessource->elementsDeCarriere->elementCarriere !== NULL) {
+              foreach ($role->personneRessource->elementsDeCarriere->elementCarriere as $elementCarriere) {
+                if (!$this->checkValidite($elementCarriere, $now)) {
+                  continue;
+                }
+                /* Warning: supannEmpCorps and employeeType are mono-value so we replace them */
+                if ($elementCarriere->corps != NULL) {
+                  $values['supannAccount']['supannEmpCorps'] = (string)$elementCarriere->corps;
+                }
+                if ($elementCarriere->statutContrat != NULL) {
+                  $values['user']['employeeType'] = (string)$elementCarriere->statutContrat;
+                }
+                if ($elementCarriere->bapReferens != NULL) {
+                  $values['supannAccount']['supannActivite'][] = (string)$elementCarriere->bapReferens;
                 }
               }
             }
@@ -327,15 +340,17 @@ class sinapsRequest
               $entite = $ldapUuidToCodeEntiteCallback($UUID);
               $values['supannAccount']['supannTypeEntiteAffectation'][] = $entite['supannTypeEntite'];
               $values['supannAccount']['supannEntiteAffectation'][] = $entite['supannCodeEntite'];
-              $values['supannAccount']['supannRoleEntite'][] = array(
-                (string)$fonctionOccupee->fonctionRh,
-                $entite['supannTypeEntite'],
-                $entite['supannCodeEntite']
-              );
+              $values['supannAccount']['supannRoleEntite'][] =
+                '[role='.$fonctionOccupee->fonctionRh.']'.
+                '[type='.$entite['supannTypeEntite'].']'.
+                '[code='.$entite['supannCodeEntite'].']';
             }
           }
         }
       }
+    }
+    foreach (array('supannRefId','supannEntiteAffectation','supannRoleGenerique','supannTypeEntiteAffectation','supannRoleEntite','supannActivite') as $arrayattribute) {
+      $values['supannAccount'][$arrayattribute] = array_values(array_unique($values['supannAccount'][$arrayattribute]));
     }
 
     return $values;
