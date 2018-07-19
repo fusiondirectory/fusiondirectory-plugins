@@ -74,6 +74,10 @@ class opsiProfile extends simplePlugin
         'ou'      => get_ou('opsiRDN'),
         'icon'    => 'geticon.php?context=applications&icon=opsi&size=16',
       )),
+      'plForeignKeys'   => array(
+        'fdOpsiServerDn'      => 'serverGeneric',
+        'fdOpsiSoftwareList'  => 'opsiSoftwareList',
+      ),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

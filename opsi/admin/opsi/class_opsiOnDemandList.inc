@@ -35,6 +35,9 @@ class opsiOnDemandList extends opsiSoftwareList
         'ou'      => get_ou('opsiRDN'),
         'icon'    => 'geticon.php?context=applications&icon=opsi-on-demand&size=16',
       )),
+      'plForeignKeys'   => array(
+        'fdOpsiServerDn' => 'serverGeneric',
+      ),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
