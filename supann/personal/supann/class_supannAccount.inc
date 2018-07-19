@@ -560,6 +560,18 @@ class supannAccount extends simplePlugin
     );
   }
 
+  function check()
+  {
+    $message = parent::check();
+
+    $affiliations = $this->eduPersonAffiliation;
+    if (in_array('member', $affiliations) && in_array('affiliate', $affiliations)) {
+      $message[] = _('"member" and "affiliate" values are incompatible for eduPersonAffiliation. Please remove one of them.');
+    }
+
+    return $message;
+  }
+
   function save_object()
   {
     parent::save_object();
