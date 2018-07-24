@@ -69,6 +69,11 @@ class publicForm extends simplePlugin
             'fdPublicFormTemplateDN', TRUE,
             array(), '', NULL
           ),
+          new TextAreaAttribute(
+            _('Confirmation text'), _('Text shown once the object is created'),
+            'fdPublicFormFinalText', FALSE,
+            'Success'
+          ),
         )
       ),
     );
