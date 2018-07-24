@@ -113,7 +113,6 @@ class DebconfImportAttribute extends FileAttribute
     global $config;
     $matches = array();
     $str = fread($handle, 1024);
-    strpos($str, "dn:");
     // removing breaklines
     $tmp = str_replace ("\n", "", $str);
     // removing spaces
