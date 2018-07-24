@@ -22,6 +22,7 @@ class publicFormPage extends standAlonePage
 {
   protected $form;
   protected $template;
+  protected $done;
 
   function readLdapConfig()
   {
@@ -33,6 +34,10 @@ class publicFormPage extends standAlonePage
   function save_object()
   {
     if (!$this->activated) {
+      return;
+    }
+
+    if ($this->done) {
       return;
     }
 
@@ -52,13 +57,15 @@ class publicFormPage extends standAlonePage
 
     $this->template->save_object();
 
-    //~ $success = TRUE;
-    //~ /* Do we need to show error messages? */
-    //~ if (count($this->message) != 0) {
-      //~ /* Show error message and continue editing */
-      //~ msg_dialog::displayChecks($this->message);
-      //~ $success = FALSE;
-    //~ }
+    if (isset($_POST['form_submit'])) {
+      $tabobject  = $this->template->apply();
+      $errors     = $tabobject->save();
+      if (empty($errors)) {
+        $this->done = TRUE;
+      } else {
+        msg_dialog::displayChecks($errors);
+      }
+    }
   }
 
 
@@ -74,13 +81,19 @@ class publicFormPage extends standAlonePage
 
     $this->assignSmartyVars();
 
-    $templateOutput = $this->template->execute();
-    if ($this->template->dialogOpened()) {
-      //~ TODO
-      return $templateOutput;
+    if ($this->done) {
+      $smarty->assign('template_dialog', _('Object created successfully'));
     } else {
-      $smarty->assign('template_dialog', $templateOutput);
+      $templateOutput = $this->template->execute();
+      if ($this->template->dialogOpened()) {
+        //~ TODO
+        return $templateOutput;
+      } else {
+        $smarty->assign('template_dialog', $templateOutput);
+      }
     }
+
+    $smarty->assign('done', $this->done);
 
     $smarty->assign('form', $this->form);
 
