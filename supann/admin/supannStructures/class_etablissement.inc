@@ -141,7 +141,8 @@ class etablissement extends simplePlugin
     /* If we're the root etablissement, delete it too */
     $root_code = $this->get_root_code();
     if (($root_code !== FALSE) && ($root_code == $this->supannEtablissement)) {
-      $dn = 'o='.$this->o.','.$config->current['BASE'];
+      $dn   = 'o='.$this->o.','.$config->current['BASE'];
+      $ldap = $config->get_ldap_link();
       $ldap->rmdir($dn);
       if (!$ldap->success()) {
         msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()));
