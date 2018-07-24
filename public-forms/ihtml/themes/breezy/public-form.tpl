@@ -15,17 +15,27 @@
         </div>
         <div id="window-content">
           <div>
-            <p class="infotext">
-              {$form.fdPublicFormText|escape}
-            </p>
+            {if $done}
+              <p class="infotext">
+                {$form.fdPublicFormFinalText|escape}
+              </p>
+            {else}
+              <p class="infotext">
+                {$form.fdPublicFormText|escape}
+              </p>
 
-            <br/>
-            {$template_dialog}
+              <br/>
+              {$template_dialog}
+            {/if}
           </div>
         </div>
         {if !$done}
         <div id="window-footer" class="plugbottom">
-          <input type="submit" id="form_submit" name="form_submit" value="{msgPool type=okButton}"/>
+          <div>
+          </div>
+          <div>
+            <input type="submit" id="form_submit" name="form_submit" value="{msgPool type=okButton}"/>
+          </div>
         </div>
         {/if}
       </form>

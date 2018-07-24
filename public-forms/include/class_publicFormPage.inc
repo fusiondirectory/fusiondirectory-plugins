@@ -43,7 +43,20 @@ class publicFormPage extends standAlonePage
 
     if (!isset($this->form) && isset($_GET['form'])) {
       /* Search for the form object */
-      $forms = objects::ls('publicForm', array('dn' => 'raw', 'cn' => 1, 'fdPublicFormTitle' => 1, 'fdPublicFormText' => 1, 'fdPublicFormTemplateType' => 1, 'fdPublicFormTemplateDN' => 1), NULL, '(cn='.ldap_escape_f($_GET['form']).')');
+      $forms = objects::ls(
+        'publicForm',
+        array(
+          'dn'                        => 'raw',
+          'cn'                        => 1,
+          'fdPublicFormTitle'         => 1,
+          'fdPublicFormText'          => 1,
+          'fdPublicFormFinalText'     => 1,
+          'fdPublicFormTemplateType'  => 1,
+          'fdPublicFormTemplateDN'    => 1
+        ),
+        NULL,
+        '(cn='.ldap_escape_f($_GET['form']).')'
+      );
       if (count($forms) <= 0) {
         throw new FusionDirectoryException('Form "'.$_GET['form'].'" could not be found');
       } elseif (count($forms) > 1) {
@@ -81,9 +94,7 @@ class publicFormPage extends standAlonePage
 
     $this->assignSmartyVars();
 
-    if ($this->done) {
-      $smarty->assign('template_dialog', _('Object created successfully'));
-    } else {
+    if (!$this->done) {
       $templateOutput = $this->template->execute();
       if ($this->template->dialogOpened()) {
         //~ TODO
