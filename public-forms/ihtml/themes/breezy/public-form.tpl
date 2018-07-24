@@ -23,9 +23,11 @@
             {$template_dialog}
           </div>
         </div>
+        {if !$done}
         <div id="window-footer" class="plugbottom">
-          <input type="submit" name="form_submit" value="{msgPool type=okButton}"/>
+          <input type="submit" id="form_submit" name="form_submit" value="{msgPool type=okButton}"/>
         </div>
+        {/if}
       </form>
     </div>
   </div>
