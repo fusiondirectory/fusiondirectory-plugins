@@ -38,6 +38,7 @@
           </div>
         </div>
         {/if}
+        <input type="hidden" name="CSRFtoken" value="{$CSRFtoken}"/>
       </form>
     </div>
   </div>
