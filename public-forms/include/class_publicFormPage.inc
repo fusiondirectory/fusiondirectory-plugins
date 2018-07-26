@@ -64,6 +64,12 @@ class publicFormPage extends standAlonePage
       }
       $this->form     = reset($forms);
       $this->template = new template($this->form['fdPublicFormTemplateType'], $this->form['fdPublicFormTemplateDN']);
+      /* TODO this is only for POC */
+      $this->template->alterAttributes(
+        ['user' => ['telephoneNumber']],
+        ['user' => ['mobile']],
+        ['user' => ['base']]
+      );
     } elseif (!isset($this->form)) {
       throw new FusionDirectoryException('No form name given');
     }
@@ -98,7 +104,8 @@ class publicFormPage extends standAlonePage
       $templateOutput = $this->template->execute();
       if ($this->template->dialogOpened()) {
         //~ TODO
-        return $templateOutput;
+        $smarty->assign('template_dialog', $templateOutput);
+        //~ return $templateOutput;
       } else {
         $smarty->assign('template_dialog', $templateOutput);
       }
