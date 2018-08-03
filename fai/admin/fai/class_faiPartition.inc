@@ -318,8 +318,8 @@ class faiPartition extends simplePlugin
           new SelectAttribute (
             _('Filesystem'), _('The filesystem this partition should be formatted with'),
             'FAIfsType', TRUE,
-            array('swap','ext2','ext3','ext4','reiserfs','xfs','btrfs','-'), 'ext4',
-            array(_('swap'),_('ext2'),_('ext3'),_('ext4'),_('reiser fs'),_('xfs'),_('btrfs'),_('LVM/RAID'))
+            array('swap','vfat','ext2','ext3','ext4','reiserfs','xfs','btrfs','-'), 'ext4',
+            array(_('swap'),_('fat32'),_('ext2'),_('ext3'),_('ext4'),_('reiser fs'),_('xfs'),_('btrfs'),_('LVM/RAID'))
           ),
           new FaiMountPointAttribute (
             _('Mount point'), _('Mount point for this partition'),
