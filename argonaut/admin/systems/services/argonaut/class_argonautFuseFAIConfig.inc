@@ -1,8 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2016  FusionDirectory
+  Copyright (C) 2012-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,43 +20,40 @@
 
 class argonautFuseFAIConfig extends simplePlugin
 {
-  var $objectclasses  = array("argonautFuseFAIConfig");
+  var $objectclasses  = array('argonautFuseFAIConfig');
   var $showActions    = FALSE;
-  var $displayHeader     = TRUE;
+  var $displayHeader  = TRUE;
 
-  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Argonaut Fuse FAI module settings"),
-      "plDescription"   => _("Argonaut Fuse FAI module settings")." ("._("Services").")",
-      "plCategory"      => array("server"),
-      "plObjectType"    => array("fusemodule"),
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plShortName'     => _('Argonaut Fuse FAI module settings'),
+      'plDescription'   => _('Argonaut Fuse FAI module settings'),
+      'plCategory'      => array('server'),
+      'plObjectType'    => array('fusemodule'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
-  /*!
-   *  \brief The main function : information about attributes
-   */
   static function getAttributesInfo ()
   {
     return array (
       'fai' => array (
         'name'  => _('FAI'),
         'attrs' => array (
+          new IntAttribute (
+            _('FAI version'), _('Version of FAI installed on the server'),
+            'argonautFuseFaiVersion', TRUE,
+            4, 5, 5
+          ),
           new StringAttribute (
-            _('Fai flags'),
-            '',
-            'argonautFuseFaiFlags',
-            FALSE,
+            _('FAI flags'), _('Flags to pass to FAI'),
+            'argonautFuseFaiFlags', FALSE,
             'verbose,sshd,syslogd,createvt,reboot'
           ),
           new StringAttribute (
-            _('NFS root'),
-            '',
-            'argonautFuseNfsRoot',
-            TRUE,
+            _('NFS root'), '',
+            'argonautFuseNfsRoot', TRUE,
             '/srv/fai/nfsroot'
           ),
         )
