@@ -56,6 +56,34 @@ class argonautFuseFAIConfig extends simplePlugin
             'argonautFuseNfsRoot', TRUE,
             '/srv/fai/nfsroot'
           ),
+          new StringAttribute (
+            _('FAI 4 command line'), _('Command line for FAI 4 - should be "ip=dhcp root=/dev/nfs boot=live union=aufs"'),
+            'argonautFuseFai4Cmdline', TRUE,
+            'ip=dhcp root=/dev/nfs boot=live union=aufs'
+          ),
+          new StringAttribute (
+            _('FAI 5 command line'), _('Command line for FAI 5 - should be "ip=dhcp rootovl"'),
+            'argonautFuseFai5Cmdline', TRUE,
+            'ip=dhcp rootovl'
+          ),
+        )
+      )
+    );
+  }
+
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
+  {
+    parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
+
+    $this->attributesAccess['argonautFuseFaiVersion']->setManagedAttributes(
+      array(
+        'disable' => array (
+          4 => array (
+            'argonautFuseFai5Cmdline'
+          ),
+          5 => array (
+            'argonautFuseFai4Cmdline'
+          )
         )
       )
     );
