@@ -92,7 +92,11 @@ class sympaAliasPartage extends simplePlugin
     if (($name == 'cn') && isset($this->parent)) {
       return $this->parent->getBaseObject()->$name;
     } elseif (($name == 'mail') && isset($this->parent)) {
-      return $this->parent->getBaseObject()->cn.'@'.$this->getEmailDomain();
+      $cn = $this->parent->getBaseObject()->cn;
+      if (preg_match('/^(.*)@[^@]+$/', $cn, $m)) {
+        $cn = $m[1];
+      }
+      return $cn.'@'.$this->getEmailDomain();
     } else {
       /* Calling default behaviour */
       return parent::__get($name);
