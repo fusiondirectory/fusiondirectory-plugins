@@ -76,7 +76,7 @@ class supannStructureExt extends simplePlugin
                 new SupannPrefixedSelectAttribute(
                   _('Type'), _('Type'),
                   'fdSupannRelationEntiteType_type', TRUE,
-                  'relationtype'
+                  'entite'
                 ),
                 new SelectAttribute(
                   _('Entity'), _('Entity'),
