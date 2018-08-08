@@ -158,6 +158,24 @@ class mailMethodRenaterPartage extends mailMethod
     unset($this->tokenTime);
   }
 
+  /*! \brief Checks data consistency
+  */
+  public function check()
+  {
+    $messages = parent::check();
+    $servers  = static::getMailServers();
+    $infos    = $servers[$this->parent->gosaMailServer];
+
+    $alternates = $this->parent->gosaMailAlternateAddress;
+    foreach ($alternates as $alternate) {
+      if (!preg_match('/@'.preg_quote($infos['domain'], '/').'/$', $alternate)) {
+        $messages[] = sprintf(_('Email address "%s" does not use the correct partage domain "%s"'), $alternate, $infos['domain']);
+      }
+    }
+
+    return $messages;
+  }
+
   /*! \brief  Returns the connection status of this method.
       @return Boolean True if this method is connected else false.
    */
