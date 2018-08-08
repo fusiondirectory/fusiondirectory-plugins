@@ -157,6 +157,17 @@ class mailGroup extends simplePlugin
     }
   }
 
+  function check ()
+  {
+    $messages = parent::check();
+
+    if (!$this->is_template && is_object($this->mailMethod)) {
+      $messages = array_merge($messages, $this->mailMethod->check());
+    }
+
+    return $messages;
+  }
+
   protected function shouldSave()
   {
     /* mail method might have something to save (like password change from main tab for instance) */

@@ -274,6 +274,13 @@ class mailMethod
     }
   }
 
+  /*! \brief Checks data consistency
+  */
+  public function check()
+  {
+    return array();
+  }
+
   /*! \brief  Returns true the current object represents a valid account
               (Some methods may check imap accounts here.)
       @return Boolean TRUE if this is a valid account else FALSE
