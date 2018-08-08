@@ -124,6 +124,21 @@ class supannStructureExt extends simplePlugin
     $this->attributesAccess['fdSupannRelationEntite']->attribute->attributes[2]->setChoices($code_entites, $label_entites);
   }
 
+  function check ()
+  {
+    $errors = parent::check();
+
+    if (
+      ($this->attributesAccess['fdSupannStartDate']->getValue() != '') &&
+      ($this->attributesAccess['fdSupannEndDate']->getValue() != '') &&
+      ($this->attributesAccess['fdSupannStartDate']->getDateValue() > $this->attributesAccess['fdSupannEndDate']->getDateValue())
+      ) {
+      $errors[] = _('Start date must be smaller than end date');
+    }
+
+    return $errors;
+  }
+
   protected function prepare_save ()
   {
     $this->attributesAccess['fdSupannRelationEntite']->supannPrepareSave();
