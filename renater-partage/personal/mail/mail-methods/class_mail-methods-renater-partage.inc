@@ -168,7 +168,7 @@ class mailMethodRenaterPartage extends mailMethod
 
     $alternates = $this->parent->gosaMailAlternateAddress;
     foreach ($alternates as $alternate) {
-      if (!preg_match('/@'.preg_quote($infos['domain'], '/').'/$', $alternate)) {
+      if (!preg_match('/@'.preg_quote($infos['domain'], '/').'$/', $alternate)) {
         $messages[] = sprintf(_('Email address "%s" does not use the correct partage domain "%s"'), $alternate, $infos['domain']);
       }
     }
