@@ -105,9 +105,8 @@ class publicFormPage extends standAlonePage
     if (!$this->done) {
       $templateOutput = $this->template->execute();
       if ($this->template->dialogOpened()) {
-        //~ TODO
+        //~ TODO dialogs should be disabled for public forms
         $smarty->assign('template_dialog', $templateOutput);
-        //~ return $templateOutput;
       } else {
         $smarty->assign('template_dialog', $templateOutput);
       }
