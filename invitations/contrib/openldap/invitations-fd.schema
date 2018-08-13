@@ -1,0 +1,83 @@
+##
+## invitations-fd.schema - Needed by FusionDirectory for invitations plugin
+##
+## Maintained by the FusionDirectory Project <contact@fusiondirectory.org>
+##
+
+# Attributes
+
+attributetype ( 1.3.6.1.4.1.38414.69.10.1 NAME 'fdInvitationEmailSubject'
+  DESC 'FusionDirectory - Subject of the email sent for invitation'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{255}
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.69.10.2 NAME 'fdInvitationEmailContent'
+  DESC 'FusionDirectory - Content of the email sent for invitation'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.69.10.3 NAME 'fdInvitationFormDN'
+  DESC 'FusionDirectory - DN of the form used by this invitation'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.69.10.4 NAME 'fdInvitationAuthor'
+  DESC 'FusionDirectory - DN of the author of this invitation'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.69.11.1 NAME 'fdInscriptionEmailAddress'
+  DESC 'FusionDirectory - Email address to which the invitation was sent to'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256}
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.69.11.2 NAME 'fdInscriptionState'
+  DESC 'FusionDirectory - State of this inscription'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256}
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.69.11.3 NAME 'fdInscriptionLastChange'
+  DESC 'FusionDirectory - Date and author of the last state change'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256}
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.69.11.4 NAME 'fdInscriptionInvitationDN'
+  DESC 'FusionDirectory - DN of the invitation object used for this inscription'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.69.11.5 NAME 'fdInscriptionUserDN'
+  DESC 'FusionDirectory - DN of the user object created by this inscription'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
+# Objectclasses
+
+objectclass ( 1.3.6.1.4.1.38414.69.2.1 NAME 'fdInvitation'
+  DESC 'FusionDirectory - Invitation'
+  MUST ( cn )
+  MAY ( fdInvitationEmailSubject $ fdInvitationEmailContent $ fdInvitationFormDN $ fdInvitationAuthor ) )
+
+objectclass ( 1.3.6.1.4.1.38414.69.2.2 NAME 'fdInscription'
+  DESC 'FusionDirectory - Inscription status and information'
+  MUST ( fdInscriptionEmailAddress $ fdInscriptionState )
+  MAY ( fdInscriptionLastChange $
+        fdInscriptionInvitationDN $ fdInscriptionUserDN ) )
