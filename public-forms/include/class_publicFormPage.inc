@@ -83,6 +83,8 @@ class publicFormPage extends standAlonePage
         $this->done = TRUE;
       } else {
         msg_dialog::displayChecks($errors);
+        // TODO - Find a way to refill previous values in the fields
+        $this->template->reset();
       }
     }
   }
