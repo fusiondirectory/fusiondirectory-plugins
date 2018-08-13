@@ -28,7 +28,7 @@ class invitationManagement extends management
       'plDescription' => _('Manage invitations'),
       'plIcon'        => '',
       'plSection'     => 'accounts',
-      'plManages'     => array('invitation'),
+      'plManages'     => array('invitation','registration'),
 
       'plProvidedAcls' => array()
     );

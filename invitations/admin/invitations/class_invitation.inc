@@ -52,6 +52,10 @@ class invitation extends simplePlugin
             _('Name'), _('Name used to identify this invitation'),
             'cn', TRUE
           ),
+          new SelectAttribute(
+            _('Form'), _('Public form this invitation should link to'),
+            'fdInvitationFormDN', TRUE
+          ),
           new StringAttribute(
             _('Email subject'), _('Subject of the email sent for this invitation'),
             'fdInvitationEmailSubject', TRUE
@@ -60,10 +64,6 @@ class invitation extends simplePlugin
             _('Email content'), _('Content of the email sent for this invitation'),
             'fdInvitationEmailContent', TRUE
           ),
-          new SelectAttribute(
-            _('Form'), _('Public form this invitation should link to'),
-            'fdInvitationFormDN', TRUE
-          ),
           new DisplayLDAPAttribute(
             _('Author'), _('Author of this invitation'),
             'fdInvitationAuthor', FALSE,
@@ -71,6 +71,19 @@ class invitation extends simplePlugin
           ),
         )
       ),
+      'emails' => array(
+        'name'  => _('Emails'),
+        'attrs' => array(
+          new StringAttribute(
+            _('From email'), _('Email address set as "From" field and "Reply to" in the sent emails'),
+            'from_mail', FALSE
+          ),
+          new FileTextAreaAttribute(
+            _('Emails'), _('List of email adresses of people to invite - one per line'),
+            'emails', FALSE
+          ),
+        )
+      )
     );
   }
 
@@ -80,9 +93,79 @@ class invitation extends simplePlugin
       $attributesInfo = $this->getAttributesInfo();
     }
     $choices = objects::ls('publicForm');
-    $attributesInfo['main']['attrs'][4]->setChoices(array_keys($choices), array_values($choices));
+    $attributesInfo['main']['attrs'][2]->setChoices(array_keys($choices), array_values($choices));
+
+    $attributesInfo['emails']['attrs'][0]->setInLdap(FALSE);
+    $attributesInfo['emails']['attrs'][1]->setInLdap(FALSE);
 
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
+  }
+
+  function check()
+  {
+    $messages = parent::check();
+
+    $emails = explode("\n", $this->emails);
+    foreach ($emails as $email) {
+      if (!tests::is_email($email)) {
+        $messages[] = sprintf(_('"%s" is not a valid email address'), $email);
+      }
+    }
+
+    if (!empty($emails) && empty($this->from_mail)) {
+      $messages[] = sprintf(_('You need to fill the "%s" field in order to send invitations'), $this->attributesAccess['from_mail']->getLabel());
+    }
+
+    return $messages;
+  }
+
+  protected function shouldSave()
+  {
+    return (parent::shouldSave() || !empty($this->emails));
+  }
+
+  protected function ldap_save ()
+  {
+    global $ui;
+
+    $errors = parent::ldap_save();
+
+    if (!empty($errors)) {
+      return $errors;
+    }
+
+    $emails   = explode("\n", $this->emails);
+    $success  = 0;
+    foreach ($emails as $email) {
+      if (empty($email)) {
+        continue;
+      }
+      if (mail_utf8($email, FALSE, $this->from_mail, $this->fdInvitationEmailSubject, $this->fdInvitationEmailContent)) {
+        $tabObject  = objects::create('registration');
+        $baseObject = $tabObject->getBaseObject();
+
+        $baseObject->base                       = $this->base;
+        $baseObject->fdRegistrationEmailAddress = $email;
+        $baseObject->fdRegistrationState        = 'sent';
+        $baseObject->fdRegistrationLastChange   = date('c').':'.$ui->dn;
+        $baseObject->fdRegistrationInvitationDN = $this->dn;
+
+        $messages = $tabObject->save();
+        if (!empty($messages)) {
+          $errors[] = sprintf(_('Failed to create registration object for "%s", because of the following errors: %s'), $email, implode("\n", $messages));
+        } else {
+          $success++;
+        }
+      } else {
+        $errors[] = sprintf(_('Failed to send invitation email to "%s". Check your email settings.'), $email);
+      }
+    }
+
+    if ($success > 0) {
+      msg_dialog::display(_('Success'), sprintf(_('%d invitations were sent and saved successfully'), $success), INFO_DIALOG);
+    }
+
+    return $errors;
   }
 }
 ?>

@@ -34,36 +34,36 @@ attributetype ( 1.3.6.1.4.1.38414.69.10.4 NAME 'fdInvitationAuthor'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.69.11.1 NAME 'fdInscriptionEmailAddress'
-  DESC 'FusionDirectory - Email address to which the invitation was sent to'
+attributetype ( 1.3.6.1.4.1.38414.69.11.1 NAME 'fdRegistrationEmailAddress'
+  DESC 'FusionDirectory - Email address which the invitation was sent to'
   EQUALITY caseIgnoreIA5Match
   SUBSTR caseIgnoreIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256}
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.69.11.2 NAME 'fdInscriptionState'
-  DESC 'FusionDirectory - State of this inscription'
+attributetype ( 1.3.6.1.4.1.38414.69.11.2 NAME 'fdRegistrationState'
+  DESC 'FusionDirectory - State of this registration'
   EQUALITY caseIgnoreIA5Match
   SUBSTR caseIgnoreIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256}
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.69.11.3 NAME 'fdInscriptionLastChange'
+attributetype ( 1.3.6.1.4.1.38414.69.11.3 NAME 'fdRegistrationLastChange'
   DESC 'FusionDirectory - Date and author of the last state change'
   EQUALITY caseIgnoreIA5Match
   SUBSTR caseIgnoreIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256}
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.69.11.4 NAME 'fdInscriptionInvitationDN'
-  DESC 'FusionDirectory - DN of the invitation object used for this inscription'
+attributetype ( 1.3.6.1.4.1.38414.69.11.4 NAME 'fdRegistrationInvitationDN'
+  DESC 'FusionDirectory - DN of the invitation object used for this registration'
   EQUALITY caseIgnoreMatch
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.69.11.5 NAME 'fdInscriptionUserDN'
-  DESC 'FusionDirectory - DN of the user object created by this inscription'
+attributetype ( 1.3.6.1.4.1.38414.69.11.5 NAME 'fdRegistrationUserDN'
+  DESC 'FusionDirectory - DN of the user object created by this registration'
   EQUALITY caseIgnoreMatch
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
@@ -76,8 +76,8 @@ objectclass ( 1.3.6.1.4.1.38414.69.2.1 NAME 'fdInvitation'
   MUST ( cn )
   MAY ( fdInvitationEmailSubject $ fdInvitationEmailContent $ fdInvitationFormDN $ fdInvitationAuthor ) )
 
-objectclass ( 1.3.6.1.4.1.38414.69.2.2 NAME 'fdInscription'
-  DESC 'FusionDirectory - Inscription status and information'
-  MUST ( fdInscriptionEmailAddress $ fdInscriptionState )
-  MAY ( fdInscriptionLastChange $
-        fdInscriptionInvitationDN $ fdInscriptionUserDN ) )
+objectclass ( 1.3.6.1.4.1.38414.69.2.2 NAME 'fdRegistration'
+  DESC 'FusionDirectory - Registration status and information'
+  MUST ( fdRegistrationEmailAddress $ fdRegistrationState )
+  MAY ( fdRegistrationLastChange $
+        fdRegistrationInvitationDN $ fdRegistrationUserDN ) )

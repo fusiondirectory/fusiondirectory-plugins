@@ -44,6 +44,11 @@ class invitationsConfig extends simplePlugin
             'fdInvitationRDN', TRUE,
             'ou=invitations'
           ),
+          new StringAttribute (
+            _('Registrations RDN'), _('Branch in which registrations will be stored'),
+            'fdRegistrationRDN', TRUE,
+            'ou=registrations'
+          ),
         )
       ),
     );
