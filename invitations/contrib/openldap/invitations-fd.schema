@@ -69,6 +69,12 @@ attributetype ( 1.3.6.1.4.1.38414.69.11.5 NAME 'fdRegistrationUserDN'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.69.11.6 NAME 'fdRegistrationToken'
+  DESC 'FusionDirectory - Token to identify this registration'
+  EQUALITY octetStringMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.40{128}
+  SINGLE-VALUE )
+
 # Objectclasses
 
 objectclass ( 1.3.6.1.4.1.38414.69.2.1 NAME 'fdInvitation'

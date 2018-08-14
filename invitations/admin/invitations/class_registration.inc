@@ -69,6 +69,7 @@ class registration extends simplePlugin
             _('User object'), _('User object created by this registration'),
             'fdRegistrationUserDN', FALSE
           ),
+          new HiddenAttribute('fdRegistrationToken'),
         )
       ),
     );

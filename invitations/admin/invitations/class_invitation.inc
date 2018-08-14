@@ -140,7 +140,9 @@ class invitation extends simplePlugin
       if (empty($email)) {
         continue;
       }
-      if (mail_utf8($email, FALSE, $this->from_mail, $this->fdInvitationEmailSubject, $this->fdInvitationEmailContent)) {
+      $token  = standAlonePage::generateRandomHash();
+      $body   = sprintf($this->fdInvitationEmailContent, $token);
+      if (mail_utf8($email, FALSE, $this->from_mail, $this->fdInvitationEmailSubject, $body)) {
         $tabObject  = objects::create('registration');
         $baseObject = $tabObject->getBaseObject();
 
@@ -149,6 +151,7 @@ class invitation extends simplePlugin
         $baseObject->fdRegistrationState        = 'sent';
         $baseObject->fdRegistrationLastChange   = date('c').':'.$ui->dn;
         $baseObject->fdRegistrationInvitationDN = $this->dn;
+        $baseObject->fdRegistrationToken        = $token;
 
         $messages = $tabObject->save();
         if (!empty($messages)) {
