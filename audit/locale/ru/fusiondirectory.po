@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-04-19 19:51+0000\n"
+"POT-Creation-Date: 2018-08-07 08:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
@@ -18,70 +18,75 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: admin/audit/class_auditEvent.inc:53 admin/audit/class_auditEvent.inc:56
+#: admin/audit/class_auditEvent.inc:43
+#, php-format
+msgid "Unknown user: %s"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:57 admin/audit/class_auditEvent.inc:60
 msgid "Audit event"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:54
+#: admin/audit/class_auditEvent.inc:58
 msgid "An event like ldap modification which was registered by audit plugin"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:72
+#: admin/audit/class_auditEvent.inc:76
 msgid "Event"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:75
+#: admin/audit/class_auditEvent.inc:79
 #: admin/audit/class_auditManagement.inc:69
 msgid "Time"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:75
+#: admin/audit/class_auditEvent.inc:79
 msgid "Date and time this event happened"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:78
+#: admin/audit/class_auditEvent.inc:82
 #: admin/audit/class_auditManagement.inc:83
 msgid "Action"
 msgstr "Действие"
 
-#: admin/audit/class_auditEvent.inc:78
+#: admin/audit/class_auditEvent.inc:82
 msgid "Action type"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:79
+#: admin/audit/class_auditEvent.inc:83
 #: admin/audit/class_auditManagement.inc:76
 msgid "Author"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:79
+#: admin/audit/class_auditEvent.inc:83
 msgid "Action author"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:80
+#: admin/audit/class_auditEvent.inc:84
 msgid "Object type"
 msgstr "Тип объекта"
 
-#: admin/audit/class_auditEvent.inc:81
+#: admin/audit/class_auditEvent.inc:85
 msgid "Object"
 msgstr "Объект"
 
-#: admin/audit/class_auditEvent.inc:81
+#: admin/audit/class_auditEvent.inc:85
 msgid "Target object"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:82
+#: admin/audit/class_auditEvent.inc:86
 msgid "Attributes"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:82
+#: admin/audit/class_auditEvent.inc:86
 msgid "Target attributes"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:87
 msgid "Result"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:87
 msgid "Result or error"
 msgstr ""
 
