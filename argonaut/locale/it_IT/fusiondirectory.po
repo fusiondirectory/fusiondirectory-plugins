@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-04-19 19:51+0000\n"
+"POT-Creation-Date: 2018-08-07 08:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
+"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,7 +42,6 @@ msgid "Argonaut Fuse OPSI module settings"
 msgstr "Impostazioni del modulo Argonaut Fuse OPSI"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:33
 #: admin/systems/services/argonaut/class_argonautServer.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:31
@@ -69,22 +68,54 @@ msgstr "Server Opsi"
 msgid "Opsi lang"
 msgstr "Lingua di Opsi"
 
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:32
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:33
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:30
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:31
 msgid "Argonaut Fuse FAI module settings"
 msgstr "Impostazioni del modulo Argonaut Fuse FAI"
 
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:47
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:42
 msgid "FAI"
 msgstr "FAI"
 
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:50
-msgid "Fai flags"
-msgstr "Fai flags"
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:45
+msgid "FAI version"
+msgstr "Versione di FAI"
 
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:57
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:45
+msgid "Version of FAI installed on the server"
+msgstr "Versione di FAI installata sul server"
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:50
+msgid "FAI flags"
+msgstr "Flag FAI"
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:50
+msgid "Flags to pass to FAI"
+msgstr "Flag per passare a FAI"
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:55
 msgid "NFS root"
 msgstr "Radice NFS"
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:60
+msgid "FAI 4 command line"
+msgstr "Riga di comando FAI 4"
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:60
+msgid ""
+"Command line for FAI 4 - should be \"ip=dhcp root=/dev/nfs boot=live "
+"union=aufs\""
+msgstr ""
+"La riga di comando FAI 4 - dovrebbe essere \"ip=dhcp root=/dev/nfs boot=live"
+" union=aufs\""
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:65
+msgid "FAI 5 command line"
+msgstr "Riga di comando FAI 5"
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:65
+msgid "Command line for FAI 5 - should be \"ip=dhcp rootovl\""
+msgstr "La riga di comando FAI 5 - dovrebbe essere \"ip=dhcp rootovl\""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:31
 #: admin/systems/services/argonaut/class_argonautServer.inc:32

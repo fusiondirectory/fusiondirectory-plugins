@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-04-19 19:51+0000\n"
+"POT-Creation-Date: 2018-08-07 08:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -20,41 +20,41 @@ msgstr ""
 
 #: addons/ldapmanager/tabs_ldif.inc:31
 msgid "LDAP import/export"
-msgstr ""
+msgstr "LDAP 가져오기 / 내보내기"
 
 #: addons/ldapmanager/tabs_ldif.inc:32
 msgid "Allows the import or export of the ldap tree"
-msgstr ""
+msgstr "LDAP 트리 가져오기 또는 내보내기 허용"
 
 #: addons/ldapmanager/tabs_ldif.inc:36
 msgid "Ldap manager"
-msgstr ""
+msgstr "Ldap 관리자"
 
 #: addons/ldapmanager/class_ldapmanager.inc:45
 msgid "LDIF"
-msgstr ""
+msgstr "LDIF"
 
 #: addons/ldapmanager/class_ldapmanager.inc:46
 msgid "Export/Import the ldap tree to/from LDIF format"
-msgstr ""
+msgstr "LDIF 형식으로 /에서 LDIF 트리 내보내기 / 가져오기"
 
 #: addons/ldapmanager/class_ldapmanager.inc:48
 msgid "LDAP Manager"
-msgstr ""
+msgstr "LDAP 관리자"
 
 #: addons/ldapmanager/class_ldapmanager.inc:61
 #: addons/ldapmanager/class_ldapmanager.inc:74
 #: addons/ldapmanager/class_ldapmanager.inc:94
 msgid "Export"
-msgstr ""
+msgstr "내보내기"
 
 #: addons/ldapmanager/class_ldapmanager.inc:64
 msgid "DN of a single entry to export as ldif"
-msgstr ""
+msgstr "ldif로 내보낼 단일 항목의 DN"
 
 #: addons/ldapmanager/class_ldapmanager.inc:78
 msgid "Export single entry"
-msgstr ""
+msgstr "단일 항목 내보내기"
 
 #: addons/ldapmanager/class_ldapmanager.inc:81
 msgid "Filter"
@@ -62,37 +62,39 @@ msgstr "필터"
 
 #: addons/ldapmanager/class_ldapmanager.inc:81
 msgid "Filter to use for selecting objects to export"
-msgstr ""
+msgstr "내보낼 개체 선택에 사용할 필터"
 
 #: addons/ldapmanager/class_ldapmanager.inc:87
 msgid ""
 "Download a complete snapshot of the running LDAP directory for this base as "
 "ldif"
-msgstr ""
+msgstr "이 base에 대해 실행중인 LDAP 디렉토리의 전체 스냅 샷을 ldif로 다운로드"
 
 #: addons/ldapmanager/class_ldapmanager.inc:98
 msgid "Export complete LDIF for"
-msgstr ""
+msgstr "LDIF에 대한 전체 내보내기"
 
 #: addons/ldapmanager/class_ldapmanager.inc:103
 msgid "Import LDIF"
-msgstr ""
+msgstr "LDIF 가져오기"
 
 #: addons/ldapmanager/class_ldapmanager.inc:106
 msgid "Overwrite existing entries"
-msgstr ""
+msgstr "기존 항목 덮어쓰기"
 
 #: addons/ldapmanager/class_ldapmanager.inc:106
 msgid ""
 "Remove fields that are not in the LDIF from the LDAP entries if they were "
 "existing."
-msgstr ""
+msgstr "LDIF에 없는 필드를 기존 LDAP 항목에서 제거합니다."
 
 #: addons/ldapmanager/class_ldapmanager.inc:111
 msgid ""
 "Import an LDIF file into your LDAP. Remember that FusionDirectory will not "
 "check your LDIFs for FusionDirectory conformance."
 msgstr ""
+"LDIF 파일을 LDAP로 가져옵니다. FusionDirectory는 LDIF에서 FusionDirectory를 준수하는지 확인하지 "
+"않습니다."
 
 #: addons/ldapmanager/class_ldapmanager.inc:121
 #: addons/ldapmanager/class_csvimport.inc:81
@@ -102,7 +104,7 @@ msgstr "임포트"
 
 #: addons/ldapmanager/class_ldapmanager.inc:125
 msgid "Import LDIF file"
-msgstr ""
+msgstr "LDIF 파일 가져오기"
 
 #: addons/ldapmanager/class_ldapmanager.inc:153
 #: addons/ldapmanager/class_ldapmanager.inc:198
@@ -112,16 +114,16 @@ msgstr "lDAP 오류"
 #: addons/ldapmanager/class_ldapmanager.inc:154
 #, php-format
 msgid "No such object %s!"
-msgstr ""
+msgstr "그런 개체가 없습니다 %s!"
 
 #: addons/ldapmanager/class_ldapmanager.inc:174
 msgid "Permission error"
-msgstr ""
+msgstr "권한 오류"
 
 #: addons/ldapmanager/class_ldapmanager.inc:175
 #, php-format
 msgid "You have no permission to export %s!"
-msgstr ""
+msgstr "1%s을(를) 내보낼 권한이 없습니다!"
 
 #: addons/ldapmanager/class_ldapmanager.inc:181
 msgid "Error"
@@ -130,19 +132,19 @@ msgstr "오류"
 #: addons/ldapmanager/class_ldapmanager.inc:182
 #, php-format
 msgid "Failed to generate ldap export, error was \"%s\"!"
-msgstr ""
+msgstr "LDAP 내보내기를 생성하지 못했습니다. 오류는 \"%s\"입니다!"
 
 #: addons/ldapmanager/class_csvimport.inc:29
 msgid "CSV import"
-msgstr ""
+msgstr "CSV 내보내기"
 
 #: addons/ldapmanager/class_csvimport.inc:30
 msgid "Import of csv data into the ldap tree"
-msgstr ""
+msgstr "Import of csv data into the ldap tree"
 
 #: addons/ldapmanager/class_csvimport.inc:43
 msgid "Import CSV"
-msgstr ""
+msgstr "CSV 가져오기"
 
 #: addons/ldapmanager/class_csvimport.inc:46
 msgid "Object type"
@@ -150,53 +152,53 @@ msgstr "오브젝트 타입"
 
 #: addons/ldapmanager/class_csvimport.inc:46
 msgid "Type of objects you wish to import"
-msgstr ""
+msgstr "가져올 개체 유형"
 
 #: addons/ldapmanager/class_csvimport.inc:52
 msgid "Template"
-msgstr ""
+msgstr "템플릿"
 
 #: addons/ldapmanager/class_csvimport.inc:52
 msgid "Select a template to apply to imported entries"
-msgstr ""
+msgstr "가져온 항목에 적용할 템플릿을 선택하십시오."
 
 #: addons/ldapmanager/class_csvimport.inc:58
 msgid "CSV file"
-msgstr ""
+msgstr "CSV 파일"
 
 #: addons/ldapmanager/class_csvimport.inc:58
 msgid "Import a CSV file into your LDAP"
-msgstr ""
+msgstr "LDAP에 CSV 파일 가져오기"
 
 #: addons/ldapmanager/class_csvimport.inc:62
 msgid "Separator"
-msgstr ""
+msgstr "구분자"
 
 #: addons/ldapmanager/class_csvimport.inc:62
 msgid "Character used as separator in the CSV file"
-msgstr ""
+msgstr "CSV 파일에서 구분자로 사용되는 문자"
 
 #: addons/ldapmanager/class_csvimport.inc:72
 msgid "Fixed values"
-msgstr ""
+msgstr "고정값"
 
 #: addons/ldapmanager/class_csvimport.inc:72
 msgid ""
 "Some fixed values that you might wanna use in the filling of the template."
-msgstr ""
+msgstr "템플릿 작성 시 사용할 수 있는 고정값입니다."
 
 #: addons/ldapmanager/class_csvimport.inc:88
 msgid "Template filling"
-msgstr ""
+msgstr "템플릿 채우기"
 
 #: addons/ldapmanager/class_csvimport.inc:97
 msgid "Select fields associations"
-msgstr ""
+msgstr "필드 연결 선택"
 
 #: addons/ldapmanager/class_csvimport.inc:243
 #, php-format
 msgid "Import failed for line %d"
-msgstr ""
+msgstr "%d 행에 대한 가져오기가 실패했습니다."
 
 #: addons/ldapmanager/class_csvimport.inc:250
 msgid "Success"
@@ -205,4 +207,4 @@ msgstr "성공"
 #: addons/ldapmanager/class_csvimport.inc:250
 #, php-format
 msgid "Successfully imported %d entries"
-msgstr ""
+msgstr "%d 개 항목을 성공적으로 가져왔습니다."
