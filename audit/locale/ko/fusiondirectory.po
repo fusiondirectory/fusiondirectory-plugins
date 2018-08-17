@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-04-19 19:51+0000\n"
+"POT-Creation-Date: 2018-08-07 08:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -18,70 +18,75 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/audit/class_auditEvent.inc:53 admin/audit/class_auditEvent.inc:56
+#: admin/audit/class_auditEvent.inc:43
+#, php-format
+msgid "Unknown user: %s"
+msgstr "알 수없는 사용자 : %s"
+
+#: admin/audit/class_auditEvent.inc:57 admin/audit/class_auditEvent.inc:60
 msgid "Audit event"
 msgstr "감사 이벤트"
 
-#: admin/audit/class_auditEvent.inc:54
+#: admin/audit/class_auditEvent.inc:58
 msgid "An event like ldap modification which was registered by audit plugin"
 msgstr "감사 플러그인에 의해 등록된 LDAP 변경 등의 이벤트"
 
-#: admin/audit/class_auditEvent.inc:72
+#: admin/audit/class_auditEvent.inc:76
 msgid "Event"
 msgstr "이벤트"
 
-#: admin/audit/class_auditEvent.inc:75
+#: admin/audit/class_auditEvent.inc:79
 #: admin/audit/class_auditManagement.inc:69
 msgid "Time"
 msgstr "시간"
 
-#: admin/audit/class_auditEvent.inc:75
+#: admin/audit/class_auditEvent.inc:79
 msgid "Date and time this event happened"
 msgstr "이벤트가 발생한 날짜와 시간"
 
-#: admin/audit/class_auditEvent.inc:78
+#: admin/audit/class_auditEvent.inc:82
 #: admin/audit/class_auditManagement.inc:83
 msgid "Action"
 msgstr "액션"
 
-#: admin/audit/class_auditEvent.inc:78
+#: admin/audit/class_auditEvent.inc:82
 msgid "Action type"
 msgstr "액션 타입"
 
-#: admin/audit/class_auditEvent.inc:79
+#: admin/audit/class_auditEvent.inc:83
 #: admin/audit/class_auditManagement.inc:76
 msgid "Author"
 msgstr "작성자"
 
-#: admin/audit/class_auditEvent.inc:79
+#: admin/audit/class_auditEvent.inc:83
 msgid "Action author"
 msgstr "액션 작성자"
 
-#: admin/audit/class_auditEvent.inc:80
+#: admin/audit/class_auditEvent.inc:84
 msgid "Object type"
 msgstr "오브젝트 타입"
 
-#: admin/audit/class_auditEvent.inc:81
+#: admin/audit/class_auditEvent.inc:85
 msgid "Object"
 msgstr "오브젝트"
 
-#: admin/audit/class_auditEvent.inc:81
+#: admin/audit/class_auditEvent.inc:85
 msgid "Target object"
 msgstr "타겟 오브젝트"
 
-#: admin/audit/class_auditEvent.inc:82
+#: admin/audit/class_auditEvent.inc:86
 msgid "Attributes"
 msgstr "속성"
 
-#: admin/audit/class_auditEvent.inc:82
+#: admin/audit/class_auditEvent.inc:86
 msgid "Target attributes"
 msgstr "타겟 속성"
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:87
 msgid "Result"
 msgstr "결과"
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:87
 msgid "Result or error"
 msgstr "결과 또는 오류"
 
