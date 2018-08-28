@@ -84,11 +84,12 @@ class systemImport extends simplePlugin
 
   function massImport ($hosts, $type, $template_dn, $base = NULL)
   {
-    global $config;
+    global $config, $ui;
+
     if ($base === NULL) {
       $base = $config->current['BASE'];
     }
-    session::global_set("CurrentMainBase", $base);
+    $ui->setCurrentBase($base);
 
     $messages = array();
     $dhcps    = array();

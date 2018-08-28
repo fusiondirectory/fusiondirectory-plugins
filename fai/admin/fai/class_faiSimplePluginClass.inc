@@ -29,7 +29,7 @@ class faiSimplePluginClass extends simplePlugin
 
     if ($dn == 'new') {
       $ui = get_userinfo();
-      $this->base = dn2base(session::global_is_set('CurrentMainBase') ? 'cn=dummy,'.session::global_get('CurrentMainBase') : $ui->dn);
+      $this->base = $ui->getCurrentBase();
     } else {
       $this->base = dn2base($dn, get_ou(get_class($this).'RDN'));
     }
