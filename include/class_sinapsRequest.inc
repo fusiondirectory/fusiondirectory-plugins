@@ -113,6 +113,7 @@ class sinapsRequest
         'telephoneNumber'           => '',
         'facsimileTelephoneNumber'  => '',
         'postalAddress'             => '',
+        'supannCodeEntiteParent'    => '',
       ),
     );
 
