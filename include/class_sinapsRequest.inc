@@ -221,6 +221,9 @@ class sinapsRequest
         } elseif (in_array($ref->identifiantApplication, $identifiantApplicationSync)) {
           $values['supannAccount']['supannRefId'][] = '{'.$ref->identifiantApplication.'}'.$ref->identifiantExterne;
         }
+        if ($ref->identifiantApplication == 'SAP') {
+          $values['user']['employeeNumber'] = $ref->identifiantExterne;
+        }
       }
     }
 
