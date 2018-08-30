@@ -75,7 +75,15 @@ class sinapsConfig extends simplePlugin
           ),
           new StringAttribute (
             _('Application identifier'), _('Application identifier present in cross references with FusionDirectory'),
-            'fdSinapsIdentifiantApplication', FALSE
+            'fdSinapsIdentifiantApplication', TRUE,
+            'FUSIONDIRECTORY'
+          ),
+          new SetAttribute (
+            new StringAttribute (
+              _('Applications identifiers to sync'), _('List of applications identifiers for which cross references should be synced from SINAPS'),
+              'fdSinapsIdentifiantApplicationSync', FALSE
+            ),
+            array('SAP')
           ),
           new StringAttribute (
             _('UUID prefix'), _('Prefix used for UUID in supannRefId'),

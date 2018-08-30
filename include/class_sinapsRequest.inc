@@ -94,7 +94,7 @@ class sinapsRequest
     return $xml->asXML();
   }
 
-  public function getSupannEntiteValues($identifiantApplication, $uuidPrefix, $ldapUuidToCodeEntiteCallback)
+  public function getSupannEntiteValues($identifiantApplication, $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback)
   {
     $structure  = $this->getOperationStructure();
     $now        = new DateTime();
@@ -123,7 +123,7 @@ class sinapsRequest
       foreach ($structure->referenceCroisee->identifiantsExternes as $ref) {
         if ($ref->identifiantApplication == $identifiantApplication) {
           $uuid = $ref->identifiantExterne;
-        } else {
+        } elseif (in_array($ref->identifiantApplication, $identifiantApplicationSync)) {
           $values['entite']['supannRefId'][] = '{'.$ref->identifiantApplication.'}'.$ref->identifiantExterne;
         }
       }
@@ -188,7 +188,7 @@ class sinapsRequest
     return $values;
   }
 
-  public function getUserValues($identifiantApplication, $uuidPrefix, $ldapUuidToCodeEntiteCallback)
+  public function getUserValues($identifiantApplication, array $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback)
   {
     $personne   = $this->getOperationPersonne();
     $now        = new DateTime();
@@ -218,7 +218,7 @@ class sinapsRequest
       foreach ($personne->referenceCroisee->identifiantsExternes as $ref) {
         if ($ref->identifiantApplication == $identifiantApplication) {
           $uuid = $ref->identifiantExterne;
-        } else {
+        } elseif (in_array($ref->identifiantApplication, $identifiantApplicationSync)) {
           $values['supannAccount']['supannRefId'][] = '{'.$ref->identifiantApplication.'}'.$ref->identifiantExterne;
         }
       }

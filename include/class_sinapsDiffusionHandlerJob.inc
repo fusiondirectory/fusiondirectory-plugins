@@ -30,6 +30,7 @@ class sinapsDiffusionHandlerJob
   protected $identifiantApplication;
   protected $userBase;
   protected $userTemplate;
+  protected $identifiantApplicationSync;
 
   protected $request;
 
@@ -39,16 +40,17 @@ class sinapsDiffusionHandlerJob
 
     $this->request = $request;
 
-    $this->dryRun                 = ($config->get_cfg_value('SinapsDryRun') == 'TRUE');
-    $this->ackUrl                 = $config->get_cfg_value('SinapsAcknowledgmentURL');
-    $this->acqUrl                 = $config->get_cfg_value('SinapsAcquisitionURL');
-    $this->login                  = $config->get_cfg_value('SinapsLogin');
-    $this->password               = $config->get_cfg_value('SinapsPassword');
-    $this->dumpFolder             = $config->get_cfg_value('SinapsDumpFolder');
-    $this->uuidPrefix             = $config->get_cfg_value('SinapsUuidPrefix', 'LDAPUUID');
-    $this->identifiantApplication = $config->get_cfg_value('SinapsIdentifiantApplication');
-    $this->userBase               = $config->get_cfg_value('SinapsUserBase', $config->current['BASE']);
-    $this->userTemplate           = $config->get_cfg_value('SinapsUserTemplate');
+    $this->dryRun                     = ($config->get_cfg_value('SinapsDryRun') == 'TRUE');
+    $this->ackUrl                     = $config->get_cfg_value('SinapsAcknowledgmentURL');
+    $this->acqUrl                     = $config->get_cfg_value('SinapsAcquisitionURL');
+    $this->login                      = $config->get_cfg_value('SinapsLogin');
+    $this->password                   = $config->get_cfg_value('SinapsPassword');
+    $this->dumpFolder                 = $config->get_cfg_value('SinapsDumpFolder');
+    $this->uuidPrefix                 = $config->get_cfg_value('SinapsUuidPrefix', 'LDAPUUID');
+    $this->identifiantApplication     = $config->get_cfg_value('SinapsIdentifiantApplication');
+    $this->userBase                   = $config->get_cfg_value('SinapsUserBase', $config->current['BASE']);
+    $this->userTemplate               = $config->get_cfg_value('SinapsUserTemplate');
+    $this->identifiantApplicationSync = $config->get_cfg_value('SinapsIdentifiantApplicationSync', array());
   }
 
   function handleRequest()
@@ -58,9 +60,9 @@ class sinapsDiffusionHandlerJob
     }
 
     if ($this->request->codeDomaine() == 'STRUCTURE') {
-      $this->handleStructureDiffusion($this->request->getSupannEntiteValues($this->identifiantApplication, $this->uuidPrefix, array($this, 'ldapUuidToCodeEntite')));
+      $this->handleStructureDiffusion($this->request->getSupannEntiteValues($this->identifiantApplication, $this->identifiantApplicationSync, $this->uuidPrefix, array($this, 'ldapUuidToCodeEntite')));
     } elseif ($this->request->codeDomaine() == 'PERSONNE') {
-      $this->handlePersonneDiffusion($this->request->getUserValues($this->identifiantApplication, $this->uuidPrefix, array($this, 'ldapUuidToCodeEntite')));
+      $this->handlePersonneDiffusion($this->request->getUserValues($this->identifiantApplication, $this->identifiantApplicationSync, $this->uuidPrefix, array($this, 'ldapUuidToCodeEntite')));
     } else {
       throw new FusionDirectoryException('Invalid domain '.$this->request->codeDomaine());
     }
@@ -123,7 +125,14 @@ class sinapsDiffusionHandlerJob
     } else {
       $dn = key($entites);
       /* Keep previous ref ids */
-      $values['entite']['supannRefId'] = array_values(array_unique(array_merge($values['entite']['supannRefId'], $entites[$dn]['supannRefId'])));
+      foreach ($entites[$dn]['supannRefId'] as $supannRefId) {
+        if (preg_match('/^{([^}]+)}.+$/', $supannRefId, $m)) {
+          if (!in_array($m[1], $this->identifiantApplicationSync) && ($m[1] != $this->identifiantApplication)) {
+            $values['entite']['supannRefId'][] = $supannRefId;
+          }
+        }
+      }
+      $values['entite']['supannRefId'] = array_values(array_unique($values['entite']['supannRefId']));
       $message = 'Entite updated';
     }
     $error = $this->fillObject('entite', $values, $dn);
@@ -146,8 +155,16 @@ class sinapsDiffusionHandlerJob
         $this->sendAcquittementFonctionnel($this->request->acquittementFonctionnel(500, 10, $error));
       } else {
         $dn = key($users);
+        /* Keep previous ref ids */
+        foreach ($users[$dn]['supannRefId'] as $supannRefId) {
+          if (preg_match('/^{([^}]+)}.+$/', $supannRefId, $m)) {
+            if (!in_array($m[1], $this->identifiantApplicationSync) && ($m[1] != $this->identifiantApplication)) {
+              $values['supannAccount']['supannRefId'][] = $supannRefId;
+            }
+          }
+        }
+        $values['supannAccount']['supannRefId'] = array_values(array_unique($values['supannAccount']['supannRefId']));
         $message = 'User updated';
-        //TODO: Ne pas écraser les champs multivalué?
       }
     } else {
       $dn = '';
