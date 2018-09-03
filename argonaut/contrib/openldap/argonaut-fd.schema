@@ -356,6 +356,12 @@ attributetype ( 1.3.6.1.4.1.38414.2.14.15 NAME 'argonautFuseFaiForceHostname'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.2.14.16 NAME 'argonautFuseMultipleReleaseMode'
+  DESC 'Fusion Directory - Argonaut, fuse command line for FAI - Multiple release mode'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
 attributetype ( 1.3.6.1.4.1.38414.2.15.1 NAME 'argonautFAIMonitorPort'
   DESC 'Fusion Directory - Argonaut FAI monitor, port.'
   EQUALITY integerMatch
@@ -446,7 +452,7 @@ objectclass ( 1.3.6.1.4.1.38414.2.2.7 NAME 'argonautFuseFAIConfig'
   MUST ( argonautFuseNfsRoot )
   MAY ( argonautFuseFaiVersion $ argonautFuseFaiFlags $
         argonautFuseFai4Cmdline $ argonautFuseFai5Cmdline $
-        argonautFuseFaiForceHostname ) )
+        argonautFuseFaiForceHostname $ argonautFuseMultipleReleaseMode ) )
 
 objectclass ( 1.3.6.1.4.1.38414.2.2.8 NAME 'argonautFuseLTSPConfig'
   DESC 'An argonaut config for fuse LTSP module'
