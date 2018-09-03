@@ -66,6 +66,10 @@ class argonautFuseFAIConfig extends simplePlugin
             'argonautFuseFai5Cmdline', TRUE,
             'ip=dhcp rootovl'
           ),
+          new BooleanAttribute (
+            _('Multiple distro mode'), _('This enables a mode for multiple distributions usage which adds the release as a suffix to kernel, initrd and nfsroot in the PXE file'),
+            'argonautFuseMultipleReleaseMode'
+          ),
         )
       )
     );
