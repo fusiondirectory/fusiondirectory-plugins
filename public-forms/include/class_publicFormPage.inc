@@ -23,6 +23,8 @@ class publicFormPage extends standAlonePage
   protected $form;
   protected $template;
   protected $done;
+  // TODO fill this var by link/GET/LLNG
+  protected $registrationToken;
 
   function readLdapConfig()
   {
@@ -33,6 +35,8 @@ class publicFormPage extends standAlonePage
 
   function save_object()
   {
+    global $ui;
+
     if (!$this->activated) {
       return;
     }
@@ -77,10 +81,24 @@ class publicFormPage extends standAlonePage
     $this->template->save_object();
 
     if (isset($_POST['form_submit'])) {
-      $tabobject  = $this->template->apply();
-      $errors     = $tabobject->save();
+      $userTabObject  = $this->template->apply();
+      $errors         = $userTabObject->save();
       if (empty($errors)) {
         $this->done = TRUE;
+        if (isset($this->registrationToken)) {
+          $registrations = objects::ls('registration', NULL, NULL, '(fdRegistrationToken='.$this->registrationToken.')');
+          if (count($registrations) == 1) {
+            $tabObject  = objects::open(key($registrations), 'registration');
+            $baseObject = $tabObject->getBaseObject();
+
+            $baseObject->fdRegistrationUserDN     = $userTabObject->dn;
+            $baseObject->fdRegistrationState      = 'filled';
+            $baseObject->fdRegistrationLastChange = date('c').':'.$ui->dn;
+
+            $messages = $tabObject->save();
+            msg_dialog::displayChecks($messages);
+          }
+        }
       } else {
         msg_dialog::displayChecks($errors);
         // TODO - Find a way to refill previous values in the fields
