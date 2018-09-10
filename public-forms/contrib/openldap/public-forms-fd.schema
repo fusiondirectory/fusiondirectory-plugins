@@ -41,9 +41,18 @@ attributetype ( 1.3.6.1.4.1.38414.67.10.5 NAME 'fdPublicFormFinalText'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.67.10.5 NAME 'fdPublicFormPrivate'
+  DESC 'FusionDirectory - Whether this form is private (only for invitations)'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
 # Objectclasses
 
 objectclass ( 1.3.6.1.4.1.38414.67.2.1 NAME 'fdPublicForm'
   DESC 'FusionDirectory - Public form'
   MUST ( cn )
-  MAY ( fdPublicFormTitle $ fdPublicFormText $ fdPublicFormTemplateType $ fdPublicFormTemplateDN $ fdPublicFormFinalText ) )
+  MAY (
+    fdPublicFormTitle $ fdPublicFormText $
+    fdPublicFormTemplateType $ fdPublicFormTemplateDN $
+    fdPublicFormFinalText $ fdPublicFormPrivate ) )
