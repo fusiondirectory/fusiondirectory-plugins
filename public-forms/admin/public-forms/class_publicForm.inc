@@ -74,6 +74,11 @@ class publicForm extends simplePlugin
             'fdPublicFormFinalText', FALSE,
             'Success'
           ),
+          new BooleanAttribute(
+            _('Private'), _('Restrict this form to invitations'),
+            'fdPublicFormPrivate', FALSE,
+            FALSE
+          ),
         )
       ),
     );
@@ -86,6 +91,10 @@ class publicForm extends simplePlugin
     }
     $choices = template::getTemplatedTypes();
     $attributesInfo['main']['attrs'][4]->setChoices(array_keys($choices), array_values($choices));
+
+    if (!class_available(invitationManagement)) {
+      $attributesInfo['main']['attrs'][7]->setVisible(FALSE);
+    }
 
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
