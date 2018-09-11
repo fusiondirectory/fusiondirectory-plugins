@@ -18,17 +18,25 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class invitationManagement extends management
+class registrationManagement extends management
 {
+  public static $columns = array(
+    array('ObjectTypeColumn', array()),
+    array('LinkColumn',       array('attributes' => 'nameAttr',                 'label' => 'Email')),
+    array('LinkColumn',       array('attributes' => 'fdRegistrationState',      'label' => 'Status')),
+    array('LinkColumn',       array('attributes' => 'fdRegistrationLastChange', 'label' => 'Last change')),
+    array('ActionsColumn',    array('label' => 'Actions')),
+  );
+
   public static function plInfo()
   {
     return array(
-      'plShortName'   => _('Invitations'),
-      'plTitle'       => _('Invitations management'),
-      'plDescription' => _('Manage invitations'),
+      'plShortName'   => _('Registrations'),
+      'plTitle'       => _('Registrations management'),
+      'plDescription' => _('Manage registrations'),
       'plIcon'        => '',
       'plSection'     => 'accounts',
-      'plManages'     => array('invitation'),
+      'plManages'     => array('registration'),
 
       'plProvidedAcls' => array()
     );

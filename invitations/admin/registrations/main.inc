@@ -18,19 +18,4 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class invitationManagement extends management
-{
-  public static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('Invitations'),
-      'plTitle'       => _('Invitations management'),
-      'plDescription' => _('Manage invitations'),
-      'plIcon'        => '',
-      'plSection'     => 'accounts',
-      'plManages'     => array('invitation'),
-
-      'plProvidedAcls' => array()
-    );
-  }
-}
+management::mainInc('registrationManagement');

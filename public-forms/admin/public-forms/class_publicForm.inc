@@ -42,6 +42,8 @@ class publicForm extends simplePlugin
 
   static function getAttributesInfo ()
   {
+    global $config;
+
     return array(
       'main' => array(
         'name'  => _('Form'),
@@ -79,6 +81,11 @@ class publicForm extends simplePlugin
             'fdPublicFormPrivate', FALSE,
             FALSE
           ),
+          new StringAttribute(
+            _('Creation base'), _('Base in which objects will get created'),
+            'fdPublicFormCreationBase', TRUE,
+            $config->current['BASE']
+          ),
         )
       ),
     );
@@ -92,7 +99,7 @@ class publicForm extends simplePlugin
     $choices = template::getTemplatedTypes();
     $attributesInfo['main']['attrs'][4]->setChoices(array_keys($choices), array_values($choices));
 
-    if (!class_available(invitationManagement)) {
+    if (!class_available('invitationManagement')) {
       $attributesInfo['main']['attrs'][7]->setVisible(FALSE);
     }
 

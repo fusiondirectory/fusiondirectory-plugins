@@ -153,7 +153,7 @@ class invitation extends simplePlugin
         $baseObject->base                       = $this->base;
         $baseObject->fdRegistrationEmailAddress = $email;
         $baseObject->fdRegistrationState        = 'sent';
-        $baseObject->fdRegistrationLastChange   = date('c').':'.$ui->dn;
+        $baseObject->fdRegistrationLastChange   = date('c').'|'.$ui->dn;
         $baseObject->fdRegistrationInvitationDN = $this->dn;
         $baseObject->fdRegistrationToken        = $token;
 
@@ -175,4 +175,3 @@ class invitation extends simplePlugin
     return $errors;
   }
 }
-?>
