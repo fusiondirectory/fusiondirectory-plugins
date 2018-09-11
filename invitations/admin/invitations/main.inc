@@ -19,4 +19,3 @@
 */
 
 management::mainInc('invitationManagement');
-?>

@@ -18,6 +18,25 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+class RegistrationLastChangeAttribute extends DisplayLDAPAttribute
+{
+  function renderFormInput ()
+  {
+    $value = $this->getValue();
+    if (!empty($value)) {
+      list($ldapDate, $author) = explode('|', $value, 2);
+      $date = LdapGeneralizedTime::fromString($ldapDate);
+      $date->setTimezone(timezone::getDefaultTimeZone());
+      $value = sprintf(_('%s - by %s'), $date->format('Y-m-d H:i:s'), $author);
+    }
+    if ($this->allowSmarty) {
+      return $value;
+    } else {
+      return '{literal}'.$value.'{/literal}';
+    }
+  }
+}
+
 class registration extends simplePlugin
 {
   public static function plInfo()
@@ -57,7 +76,7 @@ class registration extends simplePlugin
             _('Status'), _('State of this registration'),
             'fdRegistrationState', FALSE
           ),
-          new DisplayLDAPAttribute(
+          new RegistrationLastChangeAttribute(
             _('Last change'), _('Date and author of the last state change'),
             'fdRegistrationLastChange', FALSE
           ),
@@ -80,4 +99,3 @@ class registration extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
   }
 }
-?>

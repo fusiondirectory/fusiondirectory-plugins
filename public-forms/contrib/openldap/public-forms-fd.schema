@@ -47,6 +47,13 @@ attributetype ( 1.3.6.1.4.1.38414.67.10.6 NAME 'fdPublicFormPrivate'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.67.10.7 NAME 'fdPublicFormCreationBase'
+  DESC 'FusionDirectory - Base in which the objects are created'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE )
+
 # Objectclasses
 
 objectclass ( 1.3.6.1.4.1.38414.67.2.1 NAME 'fdPublicForm'
@@ -55,4 +62,4 @@ objectclass ( 1.3.6.1.4.1.38414.67.2.1 NAME 'fdPublicForm'
   MAY (
     fdPublicFormTitle $ fdPublicFormText $
     fdPublicFormTemplateType $ fdPublicFormTemplateDN $
-    fdPublicFormFinalText $ fdPublicFormPrivate ) )
+    fdPublicFormFinalText $ fdPublicFormPrivate $ fdPublicFormCreationBase ) )

@@ -16,9 +16,9 @@
         <div id="window-content">
           <div>
             <p class="infotext">
-              Hello.
-              <a href="/privateform.php?token={$token|escape}">Click here to connect</a>
-              <a href="/publicform.php?token={$token|escape}">Click here if you fail to connect</a>
+              Hello.<br/>
+              <a href="privateform.php?token={$token|escape}">Click here to connect</a><br/>
+              <a href="publicform.php?token={$token|escape}">Click here if you fail to connect</a>
             </p>
           </div>
         </div>

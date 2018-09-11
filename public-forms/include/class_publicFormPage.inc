@@ -35,7 +35,7 @@ class publicFormPage extends standAlonePage
 
   function save_object()
   {
-    global $ui;
+    global $config, $ui;
 
     if (!$this->activated) {
       return;
@@ -79,7 +79,7 @@ class publicFormPage extends standAlonePage
         } elseif (count($invitations) > 1) {
           throw new FusionDirectoryException('Found several invitations matching token "'.$_GET['token'].'"');
         }
-        $this->invitation = reset($registrations);
+        $this->invitation = reset($invitations);
         /* Search for the form object */
         $forms = objects::ls(
           'publicForm',
@@ -91,11 +91,13 @@ class publicFormPage extends standAlonePage
             'fdPublicFormFinalText'     => 1,
             'fdPublicFormTemplateType'  => 1,
             'fdPublicFormTemplateDN'    => 1,
-            'fdPublicFormPrivate'       => 1
+            'fdPublicFormPrivate'       => 1,
+            'fdPublicFormCreationBase'  => 1
           ),
           $this->invitation['fdInvitationFormDN'],
           '', FALSE, 'base'
         );
+        $formName = $this->invitation['fdInvitationFormDN'];
       } elseif (isset($_GET['form'])) {
         /* Search for the form object */
         $forms = objects::ls(
@@ -108,18 +110,20 @@ class publicFormPage extends standAlonePage
             'fdPublicFormFinalText'     => 1,
             'fdPublicFormTemplateType'  => 1,
             'fdPublicFormTemplateDN'    => 1,
-            'fdPublicFormPrivate'       => 1
+            'fdPublicFormPrivate'       => 1,
+            'fdPublicFormCreationBase'  => 1
           ),
           NULL,
           '(cn='.ldap_escape_f($_GET['form']).')'
         );
+        $formName = $_GET['form'];
       } else {
         throw new FusionDirectoryException('Form name or token missing from URL');
       }
       if (count($forms) <= 0) {
-        throw new FusionDirectoryException('Form "'.$_GET['form'].'" could not be found');
+        throw new FusionDirectoryException('Form "'.$formName.'" could not be found');
       } elseif (count($forms) > 1) {
-        throw new FusionDirectoryException('Found several forms named "'.$_GET['form'].'"');
+        throw new FusionDirectoryException('Found several forms named "'.$formName.'"');
       }
       $this->form = reset($forms);
       if (!isset($this->registration) && isset($this->form['fdPublicFormPrivate']) && ($this->form['fdPublicFormPrivate'] == 'TRUE')) {
@@ -134,7 +138,15 @@ class publicFormPage extends standAlonePage
         ['user' => ['base']]
       );
       /* TODO Remplir les champs depuis les headers HTTP */
-      /* TODO Remplir la base en fonction de la base de l’invitation */
+      /* Fill base depending on publicForm creation base and invitation base */
+      $base = $this->form['fdPublicFormCreationBase'];
+      if (isset($this->invitation)) {
+        $invitationBase = preg_replace('/'.preg_quote($config->current['BASE'], '/').'$/', '', dn2base($this->invitation['dn'], get_ou('invitationRDN')));
+        if (!empty($invitationBase)) {
+          $base = $invitationBase.','.$base;
+        }
+      }
+      $this->template->base = $base;
     }
 
     $this->template->save_object();
@@ -153,7 +165,7 @@ class publicFormPage extends standAlonePage
 
           $baseObject->fdRegistrationUserDN     = $userTabObject->dn;
           $baseObject->fdRegistrationState      = 'filled';
-          $baseObject->fdRegistrationLastChange = date('c').':'.$ui->dn;
+          $baseObject->fdRegistrationLastChange = date('c').'|'.$ui->dn;
 
           $messages = $tabObject->save();
           msg_dialog::displayChecks($messages);
