@@ -31,6 +31,26 @@ class publicFormPage extends standAlonePage
   {
     parent::__construct($interactive);
     $this->request = $_SERVER['REQUEST_URI'];
+    /* TODO POC */
+    $this->alteredAttributes = array(
+      /* mandatory */
+      array(
+        'user'          => array('givenName', 'sn', 'displayName'),
+        'mailAccount'   => array('mail'),
+        'supannAccount' => array('eduPersonPrincipalName', 'supannEntiteAffectationPrincipale'),
+      ),
+      /* readonly */
+      array(
+        'user'          => array('uid', 'givenName', 'sn', 'displayName'),
+        'mailAccount'   => array('mail'),
+      ),
+      /* hidden */
+      array(
+        'user' => array('base'),
+        'supannAccount' => array('eduPersonAffiliation'),
+      ),
+    );
+    $this->providedAttributes = array('eduPersonPrincipalName', 'givenName', 'sn', 'displayName', 'eduPersonAffiliation', 'eduPersonPrimaryAffiliation', 'mail', 'supannListeRouge', 'supannEtuCursusAnnee');
   }
 
   function init()
@@ -151,13 +171,15 @@ class publicFormPage extends standAlonePage
         throw new FusionDirectoryException('Form "'.$this->form['cn'].'" is private and requires an invitation');
       }
       $this->template = new template($this->form['fdPublicFormTemplateType'], $this->form['fdPublicFormTemplateDN']);
-      /* TODO this is only for POC */
-      $this->template->alterAttributes(
-        ['user' => ['telephoneNumber']],
-        ['user' => ['mobile']],
-        ['user' => ['base']]
-      );
-      /* TODO Remplir les champs depuis les headers HTTP */
+      $this->template->alterAttributes(...$this->alteredAttributes);
+      /* TODO Remplir les champs depuis les headers HTTP
+      $values = array();
+      foreach ($this->providedAttributes as list($class, $attr)) {
+        if (isset($_SERVER['HTTP_'.strtoupper($attr)])) {
+          $values[$class][] = $_SERVER['HTTP_'.strtoupper($attr)];
+        }
+      }
+      $this->template->setValues($values);*/
     }
 
     $this->template->save_object();
@@ -195,12 +217,7 @@ class publicFormPage extends standAlonePage
         msg_dialog::displayChecks($errors);
         $this->template->reset();
         /* After the reset we need to call alterAttributes again */
-        /* TODO this is only for POC */
-        $this->template->alterAttributes(
-          ['user' => ['telephoneNumber']],
-          ['user' => ['mobile']],
-          ['user' => ['base']]
-        );
+        $this->template->alterAttributes(...$this->alteredAttributes);
         // This fill the saved values into the resetted template
         $this->template->setValues($values);
       }
