@@ -25,6 +25,26 @@ class publicFormPage extends standAlonePage
   protected $invitation;
   protected $template;
   protected $done;
+  protected $request;
+
+  function __construct($interactive = TRUE)
+  {
+    parent::__construct($interactive);
+    $this->request = $_SERVER['REQUEST_URI'];
+  }
+
+  function init()
+  {
+    parent::init();
+    if ($_SERVER['REQUEST_URI'] != $this->request) {
+      /* Reset page if we’re called with a different token or form */
+      unset($this->form);
+      unset($this->registration);
+      unset($this->invitation);
+      unset($this->template);
+      $this->done = FALSE;
+    }
+  }
 
   function readLdapConfig()
   {
@@ -138,6 +158,15 @@ class publicFormPage extends standAlonePage
         ['user' => ['base']]
       );
       /* TODO Remplir les champs depuis les headers HTTP */
+    }
+
+    $this->template->save_object();
+
+    if (isset($_POST['form_submit'])) {
+      // Save values for later
+      $values = $this->template->getValues();
+      // Apply the template
+      $userTabObject  = $this->template->apply();
       /* Fill base depending on publicForm creation base and invitation base */
       $base = $this->form['fdPublicFormCreationBase'];
       if (isset($this->invitation)) {
@@ -146,16 +175,8 @@ class publicFormPage extends standAlonePage
           $base = $invitationBase.','.$base;
         }
       }
-      $this->template->base = $base;
-    }
-
-    $this->template->save_object();
-
-    if (isset($_POST['form_submit'])) {
-      // Save values for later
-      $values = $this->template->getValues();
-      // Apply the template and try to save the object
-      $userTabObject  = $this->template->apply();
+      $userTabObject->getBaseObject()->base = $base;
+      // Try to save the object
       $errors         = $userTabObject->save();
       if (empty($errors)) {
         $this->done = TRUE;
