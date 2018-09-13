@@ -323,9 +323,6 @@ class sinapsRequest
                 if ($elementCarriere->corps != NULL) {
                   $values['supannAccount']['supannEmpCorps'] = (string)$elementCarriere->corps;
                 }
-                if ($elementCarriere->statutContrat != NULL) {
-                  $values['user']['employeeType'] = (string)$elementCarriere->statutContrat;
-                }
                 if ($elementCarriere->bapReferens != NULL) {
                   $values['supannAccount']['supannActivite'][] = (string)$elementCarriere->bapReferens;
                 }
