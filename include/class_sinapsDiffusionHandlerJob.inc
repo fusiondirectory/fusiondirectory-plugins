@@ -147,7 +147,7 @@ class sinapsDiffusionHandlerJob
   {
     $uuid     = $values['supannAccount']['supannRefId'][0];
     $idObjApp = preg_replace('/^{'.$this->uuidPrefix.'}/', '', $uuid);
-    $users    = objects::ls('user', 'cn', NULL, '(supannRefId='.$uuid.')');
+    $users    = objects::ls('user', array('supannRefId' => '*'), NULL, '(supannRefId='.$uuid.')');
     $message  = 'User created';
     if (!empty($users)) {
       if (count($users) > 1) {
