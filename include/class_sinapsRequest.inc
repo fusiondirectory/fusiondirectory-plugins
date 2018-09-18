@@ -442,7 +442,7 @@ class sinapsRequest
     return '';
   }
 
-  protected static function genUUID()
+  public static function genUUID()
   {
     //UUID v4
     return sprintf(

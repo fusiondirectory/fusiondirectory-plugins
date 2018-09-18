@@ -23,6 +23,14 @@ class sinapsRequestAcquisiton
   protected $data;
   protected $identifiantTransaction;
 
+  public static $attributes = array(
+    'supannRefId'                       => '*',
+    'telephoneNumber'                   => 1,
+    'facsimileTelephoneNumber'          => 1,
+    'supannMailPerso'                   => '*',
+    'supannEntiteAffectationPrincipale' => 1,
+  );
+
   public function __construct()
   {
     $this->identifiantTransaction = sinapsRequest::genUUID();
@@ -41,7 +49,7 @@ class sinapsRequestAcquisiton
     $this->data = new SimpleXMLElement($xml);
   }
 
-  public function fill(array $user, string $uuidPrefix)
+  public function fill(array $user, string $uuidPrefix, $codeEntiteToldapUuidCallback)
   {
     $personne = $this->data->domaine->donnees->operation->personne;
 
@@ -75,9 +83,13 @@ class sinapsRequestAcquisiton
         $i++;
       }
     }
-    // adresse?
 
     /* TODO - rattachements */
+    if (isset($user['supannEntiteAffectationPrincipale'])) {
+      $personne->rattachements->rattachement->identifiantStructureDeRattachement = $codeEntiteToldapUuidCallback($user['supannEntiteAffectationPrincipale']);
+      //~ $personne->rattachements->rattachement->roles->role->typeRole = ;
+      //~ $personne->rattachements->rattachement->roles->role->externe->typeExterne = ;
+    }
   }
 
   public function getXML()
