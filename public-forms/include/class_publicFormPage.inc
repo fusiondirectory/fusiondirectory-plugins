@@ -25,6 +25,56 @@ class publicFormPage extends standAlonePage
   protected $invitation;
   protected $template;
   protected $done;
+  protected $request;
+
+  function __construct($interactive = TRUE)
+  {
+    parent::__construct($interactive);
+    $this->request = $_SERVER['REQUEST_URI'];
+    /* TODO POC */
+    $this->alteredAttributes = array(
+      /* mandatory */
+      array(
+        'user'          => array('givenName', 'sn', 'displayName'),
+        'mailAccount'   => array('mail'),
+        'supannAccount' => array('eduPersonPrincipalName', 'supannEntiteAffectationPrincipale'),
+      ),
+      /* readonly */
+      array(
+        'user'          => array('uid', 'givenName', 'sn', 'displayName'),
+        'mailAccount'   => array('mail'),
+      ),
+      /* hidden */
+      array(
+        'user' => array('base'),
+        'supannAccount' => array('eduPersonAffiliation'),
+      ),
+    );
+    $this->providedAttributes = array(
+      array('supannAccount','eduPersonPrincipalName'),
+      array('user','givenName'),
+      array('user','sn'),
+      array('user','displayName'),
+      array('supannAccount','eduPersonAffiliation'),
+      array('supannAccount','eduPersonPrimaryAffiliation'),
+      array('mailAccount','mail'),
+      array('supannAccount','supannListeRouge'),
+      array('supannAccount','supannEtuCursusAnnee'),
+    );
+  }
+
+  function init()
+  {
+    parent::init();
+    if ($_SERVER['REQUEST_URI'] != $this->request) {
+      /* Reset page if we’re called with a different token or form */
+      unset($this->form);
+      unset($this->registration);
+      unset($this->invitation);
+      unset($this->template);
+      $this->done = FALSE;
+    }
+  }
 
   function readLdapConfig()
   {
@@ -131,13 +181,24 @@ class publicFormPage extends standAlonePage
         throw new FusionDirectoryException('Form "'.$this->form['cn'].'" is private and requires an invitation');
       }
       $this->template = new template($this->form['fdPublicFormTemplateType'], $this->form['fdPublicFormTemplateDN']);
-      /* TODO this is only for POC */
-      $this->template->alterAttributes(
-        ['user' => ['telephoneNumber']],
-        ['user' => ['mobile']],
-        ['user' => ['base']]
-      );
-      /* TODO Remplir les champs depuis les headers HTTP */
+      $this->template->alterAttributes(...$this->alteredAttributes);
+      /* Remplir les champs depuis les headers HTTP */
+      $values = array();
+      foreach ($this->providedAttributes as list($class, $attr)) {
+        if (isset($_SERVER['HTTP_AUTH_'.strtoupper($attr)])) {
+          $values[$class][$attr] = $_SERVER['HTTP_AUTH_'.strtoupper($attr)];
+        }
+      }
+      $this->template->setValues($values);
+    }
+
+    $this->template->save_object();
+
+    if (isset($_POST['form_submit'])) {
+      // Save values for later
+      $values = $this->template->getValues();
+      // Apply the template
+      $userTabObject  = $this->template->apply();
       /* Fill base depending on publicForm creation base and invitation base */
       $base = $this->form['fdPublicFormCreationBase'];
       if (isset($this->invitation)) {
@@ -146,16 +207,8 @@ class publicFormPage extends standAlonePage
           $base = $invitationBase.','.$base;
         }
       }
-      $this->template->base = $base;
-    }
-
-    $this->template->save_object();
-
-    if (isset($_POST['form_submit'])) {
-      // Save values for later
-      $values = $this->template->getValues();
-      // Apply the template and try to save the object
-      $userTabObject  = $this->template->apply();
+      $userTabObject->getBaseObject()->base = $base;
+      // Try to save the object
       $errors         = $userTabObject->save();
       if (empty($errors)) {
         $this->done = TRUE;
@@ -174,12 +227,7 @@ class publicFormPage extends standAlonePage
         msg_dialog::displayChecks($errors);
         $this->template->reset();
         /* After the reset we need to call alterAttributes again */
-        /* TODO this is only for POC */
-        $this->template->alterAttributes(
-          ['user' => ['telephoneNumber']],
-          ['user' => ['mobile']],
-          ['user' => ['base']]
-        );
+        $this->template->alterAttributes(...$this->alteredAttributes);
         // This fill the saved values into the resetted template
         $this->template->setValues($values);
       }
