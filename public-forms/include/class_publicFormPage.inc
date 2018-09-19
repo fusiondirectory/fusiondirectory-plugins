@@ -50,7 +50,17 @@ class publicFormPage extends standAlonePage
         'supannAccount' => array('eduPersonAffiliation'),
       ),
     );
-    $this->providedAttributes = array('eduPersonPrincipalName', 'givenName', 'sn', 'displayName', 'eduPersonAffiliation', 'eduPersonPrimaryAffiliation', 'mail', 'supannListeRouge', 'supannEtuCursusAnnee');
+    $this->providedAttributes = array(
+      array('supannAccount','eduPersonPrincipalName'),
+      array('user','givenName'),
+      array('user','sn'),
+      array('user','displayName'),
+      array('supannAccount','eduPersonAffiliation'),
+      array('supannAccount','eduPersonPrimaryAffiliation'),
+      array('mailAccount','mail'),
+      array('supannAccount','supannListeRouge'),
+      array('supannAccount','supannEtuCursusAnnee'),
+    );
   }
 
   function init()
@@ -172,14 +182,14 @@ class publicFormPage extends standAlonePage
       }
       $this->template = new template($this->form['fdPublicFormTemplateType'], $this->form['fdPublicFormTemplateDN']);
       $this->template->alterAttributes(...$this->alteredAttributes);
-      /* TODO Remplir les champs depuis les headers HTTP
+      /* Remplir les champs depuis les headers HTTP */
       $values = array();
       foreach ($this->providedAttributes as list($class, $attr)) {
-        if (isset($_SERVER['HTTP_'.strtoupper($attr)])) {
-          $values[$class][] = $_SERVER['HTTP_'.strtoupper($attr)];
+        if (isset($_SERVER['HTTP_AUTH_'.strtoupper($attr)])) {
+          $values[$class][$attr] = $_SERVER['HTTP_AUTH_'.strtoupper($attr)];
         }
       }
-      $this->template->setValues($values);*/
+      $this->template->setValues($values);
     }
 
     $this->template->save_object();
