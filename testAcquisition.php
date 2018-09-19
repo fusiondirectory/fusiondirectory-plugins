@@ -62,8 +62,6 @@ if (isset($options['url'])) {
   $options['url'] = 'https://localhost/fusiondirectory/jsonrpc.php';
 }
 
-print_r($options);
-
 $ssl_options = array(
 );
 $http_options = array(
@@ -76,7 +74,35 @@ if (isset($options['ca'])) {
 
 function codeEntiteToldapUuidCallback($codeEntite)
 {
-  return $codeEntite;
+  global $client, $session_id, $configuration;
+
+  /* Translate code entite to UUID refs
+   * This is done here to make sure sinapsRequestAcquisition does not perform LDAP searches by itself
+   * TODO add a cache
+   * */
+  $entites = $client->ls(
+    $session_id,
+    'entite',
+    array('supannRefId' => '*', 'supannTypeEntite' => 1, 'dn' => 'raw'),
+    NULL,
+    '(supannCodeEntite='.$codeEntite.')'
+  );
+  if (empty($entites)) {
+    $error = 'Could not find entity '.$codeEntite;
+    die ($error);
+  } elseif (count($entites) > 1) {
+    $error = 'Multiple entite matches codeEntite '.$codeEntite;
+    die ($error);
+  } else {
+    $entite = reset($entites);
+    foreach ($entite['supannRefId'] as $supannRefId) {
+      if (preg_match('/^{'.preg_quote($configuration['fdSinapsUuidPrefix'], '/').'}(.+)$/', $supannRefId, $m)) {
+        return $m[1];
+      }
+    }
+    $error = 'Could not find any UUID for '.$entite['dn'];
+    die ($error);
+  }
 }
 
 try {
@@ -85,23 +111,41 @@ try {
   /* Then we need to login. Here we log in the default LDAP */
   $session_id = $client->login(NULL, $options['login'], $options['password']);
 
-  $users = $client->ls($session_id, 'user', sinapsRequestAcquisiton::$attributes, $options['dn']);
-  $user = reset($users);
-  print_r($user);
-  $request = new sinapsRequestAcquisiton();
-  $request->fill($user, 'LDAPUUID', 'codeEntiteToldapUuidCallback');
-  echo $request->getXml();
-
-  $configuration = $client->ls(
+  $configurations = $client->ls(
     $session_id,
     'configuration',
     array(
+      'fdSinapsEnabled'         => 1,
       'fdSinapsAcquisitionURL'  => 1,
       'fdSinapsLogin'           => 1,
       'fdSinapsPassword'        => 1,
+      'fdSinapsUuidPrefix'      => 1,
     )
   );
-  print_r($configuration);
+  $configuration = reset($configurations);
+  if (isset($configuration['fdSinapsEnabled']) && ($configuration['fdSinapsEnabled'] == 'FALSE')) {
+    usage('Sinaps integration is disabled in FusionDirectory configuration');
+  }
+  if (!isset($configuration['fdSinapsPassword'])) {
+    usage('Sinaps password is not filled in FusionDirectory configuration');
+  }
+  if (!isset($configuration['fdSinapsAcquisitionURL'])) {
+    usage('Sinaps acquisition URL is not filled in FusionDirectory configuration');
+  }
+  if (!isset($configuration['fdSinapsUuidPrefix'])) {
+    $configuration['fdSinapsUuidPrefix'] = 'LDAPUUID';
+  }
+  if (!isset($configuration['fdSinapsLogin'])) {
+    $configuration['fdSinapsLogin'] = 'fusiondirectory';
+  }
+
+  $users = $client->ls($session_id, 'user', sinapsRequestAcquisiton::$attributes, $options['dn']);
+  $user = reset($users);
+
+  $request = new sinapsRequestAcquisiton();
+  $request->fill($user, $configuration['fdSinapsUuidPrefix'], 'codeEntiteToldapUuidCallback');
+  echo $request->getXml();
+
 } catch (jsonRPCClientRequestErrorException $e) {
   die($e->getMessage());
 } catch (jsonRPCClientNetworkErrorException $e) {
