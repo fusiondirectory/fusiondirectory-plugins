@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Spanish (Venezuela) (https://www.transifex.com/fusiondirectory/teams/12202/es_VE/)\n"
@@ -409,72 +409,79 @@ msgstr "no puede cambiar la contraseña"
 msgid "UID"
 msgstr "UID"
 
-#: personal/posix/class_posixAccount.inc:537
+#: personal/posix/class_posixAccount.inc:538
 #, php-format
 msgid "Group of user %s"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:783
-#: personal/posix/class_posixAccount.inc:804
-#: personal/posix/class_posixAccount.inc:998
+#: personal/posix/class_posixAccount.inc:560
+#, php-format
+msgid ""
+"Could not create automatic primary group (using gidNumber \"%s\"), because "
+"of the following errors"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:793
+#: personal/posix/class_posixAccount.inc:814
+#: personal/posix/class_posixAccount.inc:1008
 msgid "Warning"
 msgstr "Aviso"
 
-#: personal/posix/class_posixAccount.inc:783
+#: personal/posix/class_posixAccount.inc:793
 #, php-format
 msgid "Unknown ID allocation method \"%s\"!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:805
+#: personal/posix/class_posixAccount.inc:815
 #, php-format
 msgid "Timeout while waiting for lock. Ignoring lock from %s!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:832
-#: personal/posix/class_posixAccount.inc:872
-#: personal/posix/class_posixAccount.inc:884
-#: personal/posix/class_posixAccount.inc:888
-#: personal/posix/class_posixAccount.inc:895
-#: personal/posix/class_posixAccount.inc:904
-#: personal/posix/class_posixAccount.inc:966
+#: personal/posix/class_posixAccount.inc:842
+#: personal/posix/class_posixAccount.inc:882
+#: personal/posix/class_posixAccount.inc:894
+#: personal/posix/class_posixAccount.inc:898
+#: personal/posix/class_posixAccount.inc:905
+#: personal/posix/class_posixAccount.inc:914
+#: personal/posix/class_posixAccount.inc:976
 msgid "Error"
 msgstr "Error"
 
-#: personal/posix/class_posixAccount.inc:832
-#: personal/posix/class_posixAccount.inc:872
-#: personal/posix/class_posixAccount.inc:884
-#: personal/posix/class_posixAccount.inc:888
-#: personal/posix/class_posixAccount.inc:895
-#: personal/posix/class_posixAccount.inc:904
+#: personal/posix/class_posixAccount.inc:842
+#: personal/posix/class_posixAccount.inc:882
+#: personal/posix/class_posixAccount.inc:894
+#: personal/posix/class_posixAccount.inc:898
+#: personal/posix/class_posixAccount.inc:905
+#: personal/posix/class_posixAccount.inc:914
 msgid "Cannot allocate a free ID:"
 msgstr "No se puede asignar un identificador (ID) libre:"
 
-#: personal/posix/class_posixAccount.inc:832
+#: personal/posix/class_posixAccount.inc:842
 #, php-format
 msgid "%sPoolMin >= %sPoolMax!"
 msgstr "¡%sPoolMin >= %sPoolMax!"
 
-#: personal/posix/class_posixAccount.inc:864
+#: personal/posix/class_posixAccount.inc:874
 msgid "LDAP error"
 msgstr "Error de LDAP"
 
-#: personal/posix/class_posixAccount.inc:872
+#: personal/posix/class_posixAccount.inc:882
 msgid "sambaUnixIdPool is not unique!"
 msgstr "¡sambaUnixIdPool no es único!"
 
-#: personal/posix/class_posixAccount.inc:884
-#: personal/posix/class_posixAccount.inc:888
+#: personal/posix/class_posixAccount.inc:894
+#: personal/posix/class_posixAccount.inc:898
 msgid "no ID available!"
 msgstr "¡No hay ID disponibles!"
 
-#: personal/posix/class_posixAccount.inc:904
+#: personal/posix/class_posixAccount.inc:914
 msgid "maximum tries exceeded!"
 msgstr "¡Excedido el número de intentos máximo!"
 
-#: personal/posix/class_posixAccount.inc:966
+#: personal/posix/class_posixAccount.inc:976
 msgid "Cannot allocate a free ID!"
 msgstr "¡No se puede asignar un identificador (ID) libre!"
 
-#: personal/posix/class_posixAccount.inc:998
+#: personal/posix/class_posixAccount.inc:1008
 msgid "\"nextIdHook\" is not available. Using default base!"
 msgstr ""

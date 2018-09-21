@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: Indonesian (https://www.transifex.com/fusiondirectory/teams/12202/id/)\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr ""
 #: admin/systems/class_phoneGeneric.inc:52
 #: admin/systems/class_printGeneric.inc:58
 #: admin/systems/class_workstationGeneric.inc:58
-#: admin/systems/class_componentGeneric.inc:55
+#: admin/systems/class_componentGeneric.inc:54
 #: admin/systems/class_mobilePhoneGeneric.inc:56
 msgid "Properties"
 msgstr ""
@@ -44,7 +44,7 @@ msgstr ""
 #: admin/systems/class_printGeneric.inc:62
 #: admin/systems/class_workstationGeneric.inc:62
 #: admin/systems/services/shares/class_serviceShare.inc:51
-#: admin/systems/class_componentGeneric.inc:58
+#: admin/systems/class_componentGeneric.inc:57
 #: admin/systems/class_mobilePhoneGeneric.inc:60
 msgid "Name"
 msgstr ""
@@ -58,7 +58,7 @@ msgstr ""
 #: admin/systems/class_printGeneric.inc:66
 #: admin/systems/class_workstationGeneric.inc:67
 #: admin/systems/services/shares/class_serviceShare.inc:55
-#: admin/systems/class_componentGeneric.inc:62
+#: admin/systems/class_componentGeneric.inc:61
 #: admin/systems/class_mobilePhoneGeneric.inc:64
 msgid "Description"
 msgstr ""
@@ -88,7 +88,7 @@ msgstr ""
 #: admin/systems/class_phoneGeneric.inc:79
 #: admin/systems/class_printGeneric.inc:103
 #: admin/systems/class_workstationGeneric.inc:89
-#: admin/systems/class_componentGeneric.inc:69
+#: admin/systems/class_componentGeneric.inc:68
 #: admin/systems/class_mobilePhoneGeneric.inc:102
 msgid "Network settings"
 msgstr ""
@@ -96,7 +96,7 @@ msgstr ""
 #: admin/systems/class_phoneGeneric.inc:84
 #: admin/systems/class_printGeneric.inc:108
 #: admin/systems/class_workstationGeneric.inc:94
-#: admin/systems/class_componentGeneric.inc:73
+#: admin/systems/class_componentGeneric.inc:72
 #: admin/systems/class_mobilePhoneGeneric.inc:106
 msgid "IP address"
 msgstr ""
@@ -109,7 +109,7 @@ msgstr ""
 #: admin/systems/class_phoneGeneric.inc:90
 #: admin/systems/class_printGeneric.inc:114
 #: admin/systems/class_workstationGeneric.inc:100
-#: admin/systems/class_componentGeneric.inc:77
+#: admin/systems/class_componentGeneric.inc:76
 #: admin/systems/class_mobilePhoneGeneric.inc:110
 msgid "Mac address"
 msgstr ""
@@ -117,7 +117,7 @@ msgstr ""
 #: admin/systems/class_phoneGeneric.inc:90
 #: admin/systems/class_printGeneric.inc:114
 #: admin/systems/class_workstationGeneric.inc:100
-#: admin/systems/class_componentGeneric.inc:77
+#: admin/systems/class_componentGeneric.inc:76
 #: admin/systems/class_mobilePhoneGeneric.inc:110
 msgid "Mac address of this system"
 msgstr ""
@@ -355,7 +355,7 @@ msgid "Users which are allowed to administrate this printer"
 msgstr ""
 
 #: admin/systems/class_printGeneric.inc:108
-#: admin/systems/class_componentGeneric.inc:73
+#: admin/systems/class_componentGeneric.inc:72
 #: admin/systems/class_mobilePhoneGeneric.inc:106
 msgid "IP address this system uses"
 msgstr ""
@@ -642,10 +642,15 @@ msgid "Unknown action \"%s\""
 msgstr ""
 
 #: admin/systems/class_serverService.inc:314
-#: admin/systems/class_serverService.inc:327
-#: admin/systems/class_serverService.inc:338
+#: admin/systems/class_serverService.inc:321
+#: admin/systems/class_serverService.inc:334
+#: admin/systems/class_serverService.inc:345
 #, php-format
 msgid "Could not get execute action %s on service %s."
+msgstr ""
+
+#: admin/systems/class_serverService.inc:322
+msgid "This server has no mac address."
 msgstr ""
 
 #: admin/systems/class_serverGeneric.inc:28
@@ -663,24 +668,24 @@ msgstr ""
 msgid "Server information"
 msgstr ""
 
-#: admin/systems/class_componentGeneric.inc:31
+#: admin/systems/class_componentGeneric.inc:30
 msgid "Component"
 msgstr ""
 
-#: admin/systems/class_componentGeneric.inc:32
+#: admin/systems/class_componentGeneric.inc:31
 msgid "Component information"
 msgstr ""
 
+#: admin/systems/class_componentGeneric.inc:35
 #: admin/systems/class_componentGeneric.inc:36
-#: admin/systems/class_componentGeneric.inc:37
 msgid "Network device"
 msgstr ""
 
-#: admin/systems/class_componentGeneric.inc:58
+#: admin/systems/class_componentGeneric.inc:57
 msgid "The name of the component"
 msgstr ""
 
-#: admin/systems/class_componentGeneric.inc:62
+#: admin/systems/class_componentGeneric.inc:61
 msgid "A short description of the component"
 msgstr ""
 

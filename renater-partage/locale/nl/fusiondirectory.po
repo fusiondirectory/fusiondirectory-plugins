@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -135,7 +135,7 @@ msgid "Disable"
 msgstr "Uitschakelen"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:62
-#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:85
+#: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:88
 msgid "Domains"
 msgstr "Domeinen"
 
@@ -160,12 +160,14 @@ msgid "Key for this domain"
 msgstr "Sleutel voor dit domein"
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:79
-msgid "Class of service"
-msgstr "Serviceklasse"
+msgid "Classes of service"
+msgstr ""
 
 #: admin/systems/services/renater-partage/class_serviceRenaterPartage.inc:79
-msgid "Possible classes of service for this domain, separated by commas"
-msgstr "Mogelijke serviceklassen voor dit domein, gescheiden door komma's"
+msgid ""
+"Possible classes of service for this domain and their ids, separated by "
+"commas. Format is cos1Name|cos1Id,cos2Name|cos2Id."
+msgstr ""
 
 #: admin/sympa/renater-partage/class_sympaAliasPartage.inc:30
 msgid "Partage sympa options"
@@ -187,63 +189,68 @@ msgstr "Alternatieve adressen"
 msgid "Alternative mail addresses for the list"
 msgstr "Alternatieve e-mailadressen voor de lijst"
 
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:158
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:173
 #, php-format
 msgid "Mail method cannot connect: %s"
 msgstr "Mailmethode kan niet verbinden: %s"
 
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:161
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:176
 #, php-format
 msgid "Cannot update mailbox: %s"
 msgstr "Kan volgende mailbox niet updaten: %s"
 
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:182
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:186
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:197
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:201
 msgid "Mail error"
 msgstr "Mail-fout"
 
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:182
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:197
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr "Kan mailbox niet verwijderen, mail methode kan niet verbinden: %s"
 
-#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:186
+#: admin/sympa/renater-partage/class_sympaAliasPartage.inc:201
 #, php-format
 msgid "Cannot remove mailbox: %s"
 msgstr "Kan volgende mailbox niet verwijderen: %s"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:61
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:64
 msgid "Server did not return auth token"
 msgstr "Server stuurde geen auth token terug"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:126
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:129
 msgid "Partage API answer malformated"
 msgstr "Partage API antwoord fout geformateerd"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:130
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:133
 #, php-format
 msgid "Partage API Auth failed: %s"
 msgstr "Partage API Auth gefaald:  %s"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:132
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:135
 msgid "Partage API Auth failed with no error message"
 msgstr "Partage API Auth gefaald zonder foutboodschap"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:141
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:144
 #, php-format
 msgid "Unable to connect to %s: %s"
 msgstr "Niet in staat te verbinden met %s: %s"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:143
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:146
 #, php-format
 msgid "Unable to connect to %s"
 msgstr "Kan niet verbinden met %s"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:238
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:172
+#, php-format
+msgid "Email address \"%s\" does not use the correct partage domain \"%s\""
+msgstr ""
+
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:259
 msgid "Warning"
 msgstr "Waarschuwing"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:238
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:259
 #, php-format
 msgid ""
 "Several addresses were given in gosaMailForwardingAddress but only one is "
@@ -252,36 +259,36 @@ msgstr ""
 "Verscheidene adressen waren toegewezen in gosaMailForwardingAddress maar "
 "enkel één is ondersteund door PARTAGE. %s zal naar PARTAGE gezonden worden."
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:470
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:491
 msgid "PARTAGE error"
 msgstr "PARTAGE fout"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:471
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:492
 #, php-format
 msgid "Several users have uid \"%s\". Ignoring this member."
 msgstr "Verscheidene gebruikers hebben uid \"%s\". Dit lid wordt genegeerd."
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:510
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:523
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:531
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:544
 msgid "An account with the same email address already exists in Partage"
 msgstr "Een account met hetzelfde e-mail adres bestaat reeds in Partage"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:588
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:609
 msgid "Invalid value in fdRenaterPartageServerDeletionType"
 msgstr "Ongeldige waarde in fdRenaterPartageServerDeletionType"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:625
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:646
 msgid "Never"
 msgstr "Nooit"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:632
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:653
 msgid "Last login"
 msgstr "Recentste login"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:633
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:654
 msgid "Account status"
 msgstr "Accountstatus"
 
-#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:633
+#: personal/mail/mail-methods/class_mail-methods-renater-partage.inc:654
 msgid "Unknown"
 msgstr "Onbekend"

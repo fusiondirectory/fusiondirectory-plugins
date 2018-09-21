@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: config/class_webserviceConfig.inc:28
 msgid "Webservice configuration"
@@ -38,65 +38,65 @@ msgstr "Vynutit SSL"
 msgid "Allow only HTTPS JSON-RPC requests"
 msgstr "Přijímat JSON-RPC požadavky pouze přes HTTPS"
 
-#: html/jsonrpc.php:52
+#: html/jsonrpc.php:55
 #, php-format
 msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
 msgstr "Nastavení %s/%s FusionDirectory není čitelné. Akce byla zrušena."
 
-#: html/jsonrpc.php:62
+#: html/jsonrpc.php:65
 #, php-format
 msgid "Cannot locate file '%s' - please run '%s' to fix this"
 msgstr ""
 "Nemohu nalézt soubor '%s' – opravte to prosím spuštěním '%s' (na serveru)."
 
-#: html/jsonrpc.php:333 html/jsonrpc.php:416
+#: html/jsonrpc.php:342 html/jsonrpc.php:425
 msgid "Plugin"
 msgstr "Zásuvný modul"
 
-#: html/jsonrpc.php:513
+#: html/jsonrpc.php:522
 #, php-format
 msgid "Field \"%s\" is not multi-valuated"
 msgstr "Kolonka „%s“ není vícehodnotová"
 
-#: html/jsonrpc.php:528
+#: html/jsonrpc.php:537
 #, php-format
 msgid "Unknown field \"%s\""
 msgstr "Neznámá kolonka „%s“"
 
-#: html/jsonrpc.php:583
+#: html/jsonrpc.php:592
 #, php-format
 msgid "Cannot delete %s. It has been locked by %s."
 msgstr "%s nelze smazat. Je uzamčeno %s."
 
-#: html/jsonrpc.php:630 html/jsonrpc.php:659
+#: html/jsonrpc.php:639 html/jsonrpc.php:668
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr ""
 "Nepodařilo se zjistit jaká metoda je používána pro heslo u účtu „%s“. Nebyl "
 "proto uzamčen!"
 
-#: html/jsonrpc.php:655
+#: html/jsonrpc.php:664
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr ""
 "S metodou ukládání hesla „%s“ se zamykání nezdařilo. Účet „%s“ nebyl "
 "uzamčen!"
 
-#: html/jsonrpc.php:662
+#: html/jsonrpc.php:671
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr "Účet „%s“ se nepodařilo v LDAP najít. Nebyl proto uzamčen!"
 
-#: html/jsonrpc.php:700 html/jsonrpc.php:709
+#: html/jsonrpc.php:709 html/jsonrpc.php:718
 #, php-format
 msgid "Failed to get password method for account \"%s\""
 msgstr "Nepodařilo se zjistit jaká metoda je používána pro heslo u účtu „%s“"
 
-#: html/jsonrpc.php:712
+#: html/jsonrpc.php:721
 #, php-format
 msgid "Could not find account \"%s\" in LDAP"
 msgstr "Účet „%s“ se nepodařilo najít v LDAP."
 
-#: html/jsonrpc.php:756
+#: html/jsonrpc.php:765
 msgid "This token is invalid"
 msgstr "tato poukázka (token) je neplatná"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: admin/opsi/class_opsiSoftwareList.inc:32
 msgid "OPSI list"
@@ -77,27 +77,27 @@ msgstr "Produkty pro spuštění z vestavěného datového úložiště stroje"
 #: admin/opsi/class_opsiSoftwareList.inc:114
 #: admin/opsi/class_opsiProfile.inc:160
 #: admin/opsi/class_opsiProductProperties.inc:174
-#: admin/systems/opsi/class_opsiClient.inc:292
+#: admin/systems/opsi/class_opsiClient.inc:339
 msgid "Could not contact argonaut server"
 msgstr "Nedaří se kontaktovat argonaut server"
 
 #: admin/opsi/class_opsiSoftwareList.inc:126
 #: admin/opsi/class_opsiProfile.inc:172
-#: admin/systems/opsi/class_opsiClient.inc:303
+#: admin/systems/opsi/class_opsiClient.inc:350
 #: addons/opsi/class_opsiImport.inc:105
 msgid "No mac address"
 msgstr "Žádná MAC adresa"
 
 #: admin/opsi/class_opsiSoftwareList.inc:127
 #: admin/opsi/class_opsiProfile.inc:173
-#: admin/systems/opsi/class_opsiClient.inc:304
+#: admin/systems/opsi/class_opsiClient.inc:351
 #, php-format
 msgid "Server %s has no mac address configured in the LDAP"
 msgstr "Server %s nemá v LDAP uvedeny žádné MAC adresy"
 
 #: admin/opsi/class_opsiSoftwareList.inc:133
 #: admin/opsi/class_opsiProfile.inc:144 admin/opsi/class_opsiProfile.inc:179
-#: admin/systems/opsi/class_opsiClient.inc:310
+#: admin/systems/opsi/class_opsiClient.inc:357
 #, php-format
 msgid "Could not find %s in the LDAP"
 msgstr "%s nelze v LDAP nalézt"
@@ -105,13 +105,13 @@ msgstr "%s nelze v LDAP nalézt"
 #: admin/opsi/class_opsiSoftwareList.inc:141
 #: admin/opsi/class_opsiProfile.inc:187
 #: admin/opsi/class_opsiProductProperties.inc:189
-#: admin/systems/opsi/class_opsiClient.inc:338
-#: admin/systems/opsi/class_opsiClient.inc:350
+#: admin/systems/opsi/class_opsiClient.inc:385
+#: admin/systems/opsi/class_opsiClient.inc:397
 msgid "Failed to contact OPSI server"
 msgstr "Nezdařilo se kontaktovat OPSI server"
 
 #: admin/opsi/class_opsiSoftwareList.inc:153
-#: admin/systems/opsi/class_opsiClient.inc:357
+#: admin/systems/opsi/class_opsiClient.inc:404
 #, php-format
 msgid "%s (%s-%s)"
 msgstr "%s (%s–%s)"
@@ -283,48 +283,65 @@ msgstr "Sada nastavení OPSI, která má být použita na tomto klientovi"
 
 #: admin/systems/opsi/class_opsiClient.inc:73
 msgid "The localboot products to setup on this host"
-msgstr ""
+msgstr "Localboot produkty které nastavit na tomto stroji"
 
-#: admin/systems/opsi/class_opsiClient.inc:95
+#: admin/systems/opsi/class_opsiClient.inc:93
+msgid "Inherit group localboots"
+msgstr "převzít místní zavádění ze skupiny"
+
+#: admin/systems/opsi/class_opsiClient.inc:93
+msgid ""
+"If this is checked localboot configured in the group OPSI tab will be "
+"installed along with the localboots configured here"
+msgstr ""
+"Pokud je toto zaškrtnuto, místní zavádění nastavené na panelu skupiny OPSI "
+"bude nainstalováno vedle místních zavádění nastavených zde"
+
+#: admin/systems/opsi/class_opsiClient.inc:99
 msgid "Information"
 msgstr "Informace"
 
-#: admin/systems/opsi/class_opsiClient.inc:98
+#: admin/systems/opsi/class_opsiClient.inc:102
 msgid "Last seen"
 msgstr "Naposledy spatřeno"
 
-#: admin/systems/opsi/class_opsiClient.inc:98
+#: admin/systems/opsi/class_opsiClient.inc:102
 msgid "Last time this OPSI client was seen by the OPSI server"
 msgstr "Kdy naposledy byl OPSI klient viděn OPSI serverem"
 
-#: admin/systems/opsi/class_opsiClient.inc:145
+#: admin/systems/opsi/class_opsiClient.inc:175
 msgid "Could not get macAddress for OPSI server!"
 msgstr "Nedaří se získat MAC adresu pro OPSI server!"
 
-#: admin/systems/opsi/class_opsiClient.inc:154
-#: admin/systems/opsi/class_opsiClient.inc:265
+#: admin/systems/opsi/class_opsiClient.inc:184
+#: admin/systems/opsi/class_opsiClient.inc:295
 msgid "Could not remove OPSI information"
 msgstr "Nedaří se odebrat OPSI informaci"
 
-#: admin/systems/opsi/class_opsiClient.inc:184
+#: admin/systems/opsi/class_opsiClient.inc:214
 msgid "This member was not found or has no macAddress"
 msgstr "Člen nebyl nalezen nebo nemá nastaveno macAddress"
 
-#: admin/systems/opsi/class_opsiClient.inc:189
+#: admin/systems/opsi/class_opsiClient.inc:219
 #, php-format
 msgid "Could not get macAddress for \"%s\""
 msgstr "Nedaří se získat macAddress pro „%s“"
 
-#: admin/systems/opsi/class_opsiClient.inc:218
+#: admin/systems/opsi/class_opsiClient.inc:248
 msgid "Could not update OPSI information"
 msgstr "Nedaří se aktualizovat OPSI informaci"
 
-#: admin/systems/opsi/class_opsiClient.inc:319
+#: admin/systems/opsi/class_opsiClient.inc:325
+#, php-format
+msgid "Inherited (%s)"
+msgstr "Převzato (%s)"
+
+#: admin/systems/opsi/class_opsiClient.inc:366
 #, php-format
 msgid "Failed to contact OPSI server: %s"
 msgstr "Nepodařilo se kontaktovat OPSI server: %s"
 
-#: admin/systems/opsi/class_opsiClient.inc:321
+#: admin/systems/opsi/class_opsiClient.inc:368
 msgid "Never"
 msgstr "Nikdy"
 
@@ -396,11 +413,12 @@ msgstr "Importovat počítače s MS Windows z OPSI do F.D."
 
 #: addons/opsi/class_opsiImport.inc:58
 msgid "Import localboot products"
-msgstr ""
+msgstr "Importovat localboot produkty"
 
 #: addons/opsi/class_opsiImport.inc:58
 msgid "Import localboot product list configured in OPSI in the FD OPSI tab"
 msgstr ""
+"Importovat seznam localboot produktů nastavených v OPSI na kartě FD OPSI"
 
 #: addons/opsi/class_opsiImport.inc:94
 msgid "Argonaut server is not available"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: admin/inventory/class_inventoryManagement.inc:37
 msgid "Inventory objects"
@@ -138,15 +138,15 @@ msgstr "Objekt inventáře"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:93
 msgid "Matching system"
-msgstr "Odpovídající systémy"
+msgstr "Odpovídající systém"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:96
-#: admin/systems/fusioninventory/class_fiInventory.inc:372
+#: admin/systems/fusioninventory/class_fiInventory.inc:378
 msgid "System"
 msgstr "Systém"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:96
-#: admin/systems/fusioninventory/class_fiInventory.inc:372
+#: admin/systems/fusioninventory/class_fiInventory.inc:378
 msgid "System entry matching this inventory"
 msgstr "Systémová položka odpovídající tomuto inventáři"
 
@@ -166,15 +166,15 @@ msgstr "Uživatelé"
 msgid "Processes"
 msgstr "Procesy"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:320
+#: admin/systems/fusioninventory/class_fiInventory.inc:326
 msgid "Create a system based on this inventory"
 msgstr "Vytvořit systém na základě tohoto inventáře"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:335
+#: admin/systems/fusioninventory/class_fiInventory.inc:341
 msgid "Create"
 msgstr "Vytvořit"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:340
+#: admin/systems/fusioninventory/class_fiInventory.inc:346
 msgid "No matching system"
 msgstr "Žádný odpovídající systém"
 
@@ -216,7 +216,7 @@ msgstr "Obojí"
 
 #: config/fusioninventory/class_fiConfig.inc:52
 msgid "IP or Mac address"
-msgstr "IP či MAC adresa"
+msgstr "IP nebo hardwarová (MAC) adresa"
 
 #: html/collect.php:83
 #, php-format

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: include/class_smbHash.inc:369
 msgid ""
@@ -146,7 +146,7 @@ msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:108
 msgid "Lockout duration"
-msgstr "doba trvání odemčení"
+msgstr "Doba trvání uzamčení"
 
 #: admin/samba/class_sambaDomain.inc:109
 msgid "Lockout duration in minutes (default: 30, -1 => forever)"
@@ -259,15 +259,15 @@ msgstr "Ve vaší konfiguraci nelze nalézt SID skupiny!"
 msgid "Special group (%d)"
 msgstr "speciální skupina (%d)"
 
-#: admin/groups/samba/class_sambaGroup.inc:134
-#: personal/samba/class_sambaAccount.inc:511
-#: personal/samba/class_sambaAccount.inc:537
-#: personal/samba/class_sambaAccount.inc:558
+#: admin/groups/samba/class_sambaGroup.inc:137
+#: personal/samba/class_sambaAccount.inc:516
+#: personal/samba/class_sambaAccount.inc:542
+#: personal/samba/class_sambaAccount.inc:563
 msgid "Warning"
 msgstr "Varování"
 
-#: admin/groups/samba/class_sambaGroup.inc:134
-#: personal/samba/class_sambaAccount.inc:511
+#: admin/groups/samba/class_sambaGroup.inc:137
+#: personal/samba/class_sambaAccount.inc:516
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
 msgstr ""
 "Zjištěno nedefinované SID Samby. Prosím opravte tento problém ručním zásahem"
@@ -631,14 +631,14 @@ msgstr ""
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr "Správce uživatelských účtů v MS Windows povoluje maximálně 8 klientů!"
 
-#: personal/samba/class_sambaAccount.inc:538
+#: personal/samba/class_sambaAccount.inc:543
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr ""
 "Nemohu převést primární skupinu na skupinu Samby: skupinu se nepodařilo "
 "identifikovat!"
 
-#: personal/samba/class_sambaAccount.inc:559
+#: personal/samba/class_sambaAccount.inc:564
 msgid ""
 "Cannot convert primary group to samba group: group samba tab is disabled!"
 msgstr ""

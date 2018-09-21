@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:30
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:31
 msgid "Cyrus (IMAP/POP3)"
-msgstr ""
+msgstr "Cyrus (IMAP/POP3)"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:31
 msgid "Services"
@@ -29,54 +29,54 @@ msgstr "서비스"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:45
 msgid "Cyrus settings"
-msgstr ""
+msgstr "Cyrus 설정"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:48
 msgid "Connect URL for Cyrus server"
-msgstr ""
+msgstr "Cyrus 서버 접속 URL"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:52
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:93
 msgid "Hostname"
-msgstr ""
+msgstr "호스트명"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:52
 msgid "Hostname of the Cyrus server"
-msgstr ""
+msgstr "Cyrus 서버 호스트명"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:56
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:97
 msgid "Port"
-msgstr ""
+msgstr "포트"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:56
 msgid "Port number on which Cyrus server should be contacted"
-msgstr ""
+msgstr "Cyrus 서버에 접속하는 포트 번호"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:61
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:102
 msgid "Option"
-msgstr ""
+msgstr "옵션"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:61
 msgid "Options for contacting Cyrus server"
-msgstr ""
+msgstr "Cyrus 서버에 접속 옵션"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:66
 msgid "Valide certificats"
-msgstr ""
+msgstr "유효한 인증서"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:66
 msgid "Weither or not to validate server certificate on connexion"
-msgstr ""
+msgstr "연결시 서버 인증서의 유효성을 검사 여부"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:76
 msgid "Admin user"
-msgstr ""
+msgstr "관리자"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:76
 msgid "Imap server admin user"
-msgstr ""
+msgstr "Imap 서버 관리자"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:80
 msgid "Password"
@@ -84,48 +84,48 @@ msgstr "패스워드"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:80
 msgid "Admin user password"
-msgstr ""
+msgstr "관리자 패스워드"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:86
 msgid "Sieve settings"
-msgstr ""
+msgstr "Sieve 설정"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:89
 msgid "Sieve connect URL for Cyrus server"
-msgstr ""
+msgstr "Cyrus 서버의 Sieve 접속 URL"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:93
 msgid "Hostname of the Cyrus sieve server"
-msgstr ""
+msgstr "Cyrus sieve 서버의 호스트명"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:97
 msgid "Port number on which Cyrus sieve server should be contacted"
-msgstr ""
+msgstr "Cyrus sieve 서버에 접속하는 포트 번호"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:102
 msgid "Options for contacting Cyrus sieve server"
-msgstr ""
+msgstr "Cyrus sieve 서버 접속 옵션"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:50
 msgid "There are no IMAP compatible mail servers defined!"
-msgstr ""
+msgstr "정의된 IMAP 호환 메일 서버가 없습니다!"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:55
 msgid "Mail server for this account is invalid!"
-msgstr ""
+msgstr "이 계정의 메일 서버가 유효하지 않습니다!"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:241
 msgid "IMAP error"
-msgstr ""
+msgstr "IMAP 오류"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:241
 #, php-format
 msgid "Cannot modify IMAP mailbox quota: %s"
-msgstr ""
+msgstr "IMAP 사서함 할당량을 수정할 수 없습니다: %s"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:315
 msgid "Mail info"
-msgstr ""
+msgstr "메일 정보"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:316
 #, php-format
@@ -133,23 +133,25 @@ msgid ""
 "LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
 "Please delete it manually!"
 msgstr ""
+"LDAP 항목에서는 삭제되었으나 cyrus 편지함(%s)은 유지됩니다.\n"
+"수동으로 삭제를 바랍니다!"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:404
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:442
 msgid "The module imap_getacl is not implemented!"
-msgstr ""
+msgstr "모듈 imap_getacl이 구현되지 않았습니다!"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:510
 #, php-format
 msgid "Cannot retrieve SIEVE script: %s"
-msgstr ""
+msgstr "SIEVE 스크립트를 검색할 수  없습니다: %s"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:578
 #, php-format
 msgid "Cannot store SIEVE script: %s"
-msgstr ""
+msgstr "SIEVE 스크립트를 저장할 수 없습니다: %s"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:585
 #, php-format
 msgid "Cannot activate SIEVE script: %s"
-msgstr ""
+msgstr "SIEVE 스크립트를 활성화할 수 없습니다: %s"

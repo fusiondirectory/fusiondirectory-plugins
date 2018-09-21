@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: addons/ldapmanager/tabs_ldif.inc:31
 msgid "LDAP import/export"
@@ -28,7 +28,7 @@ msgstr "Umožňuje importovat či exportovat ldap strom"
 
 #: addons/ldapmanager/tabs_ldif.inc:36
 msgid "Ldap manager"
-msgstr "správce LDAPu"
+msgstr "Správa LDAP"
 
 #: addons/ldapmanager/class_ldapmanager.inc:45
 msgid "LDIF"
@@ -40,7 +40,7 @@ msgstr "Exportovat/importovat ldap strom do/z LDIF formátu"
 
 #: addons/ldapmanager/class_ldapmanager.inc:48
 msgid "LDAP Manager"
-msgstr "Správce LDAP"
+msgstr "Správa LDAP"
 
 #: addons/ldapmanager/class_ldapmanager.inc:61
 #: addons/ldapmanager/class_ldapmanager.inc:74
@@ -110,9 +110,9 @@ msgid "Import LDIF file"
 msgstr "Importovat LDIF soubor"
 
 #: addons/ldapmanager/class_ldapmanager.inc:153
-#: addons/ldapmanager/class_ldapmanager.inc:198
+#: addons/ldapmanager/class_ldapmanager.inc:203
 msgid "LDAP error"
-msgstr "chyba LDAPu"
+msgstr "Chyba LDAP"
 
 #: addons/ldapmanager/class_ldapmanager.inc:154
 #, php-format
@@ -136,6 +136,26 @@ msgstr "Chyba"
 #, php-format
 msgid "Failed to generate ldap export, error was \"%s\"!"
 msgstr "Vytvoření ldap exportu se nezdařilo, chyba je v %s!"
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid "Warning"
+msgstr "Varování"
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid ""
+"Nothing to import, please upload a non-empty file or fill the textarea."
+msgstr ""
+"Není co importovat, nahrajte neprázdný soubor nebo vyplňte textové pole."
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#: addons/ldapmanager/class_csvimport.inc:244
+msgid "Success"
+msgstr "Úspěch"
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#, php-format
+msgid "%d entries successfully imported"
+msgstr "%d položek úspěšně importováno"
 
 #: addons/ldapmanager/class_csvimport.inc:29
 msgid "CSV import"
@@ -203,10 +223,6 @@ msgstr "Vyberte přiřazení políček"
 #, php-format
 msgid "Import failed for line %d"
 msgstr "Import se nezdařil na řádku %d"
-
-#: addons/ldapmanager/class_csvimport.inc:244
-msgid "Success"
-msgstr "Úspěch"
 
 #: addons/ldapmanager/class_csvimport.inc:244
 #, php-format
