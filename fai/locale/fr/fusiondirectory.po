@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -30,14 +30,14 @@ msgstr "Variable FAI"
 #: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPackage.inc:396
 #: admin/fai/class_faiHook.inc:48 admin/fai/class_faiTemplate.inc:166
 #: admin/fai/class_faiTemplateEntry.inc:139
-#: admin/fai/class_faiPartitionTable.inc:309
+#: admin/fai/class_faiPartitionTable.inc:331
 msgid "Properties"
 msgstr "Propriétés"
 
 #: admin/fai/class_faiVariable.inc:51 admin/fai/class_faiScript.inc:53
 #: admin/fai/class_faiProfile.inc:52 admin/fai/class_faiPackage.inc:399
 #: admin/fai/class_faiHook.inc:51 admin/fai/class_faiTemplate.inc:169
-#: admin/fai/class_faiPartitionTable.inc:312
+#: admin/fai/class_faiPartitionTable.inc:334
 msgid "Class name"
 msgstr "Nom de la classe"
 
@@ -47,20 +47,20 @@ msgid "Variables class name"
 msgstr "Nom de la classe variables"
 
 #: admin/fai/class_faiVariable.inc:55 admin/fai/class_faiVariable.inc:73
-#: admin/fai/class_faiDiskEntry.inc:239 admin/fai/class_faiPartition.inc:246
+#: admin/fai/class_faiDiskEntry.inc:247 admin/fai/class_faiPartition.inc:246
 #: admin/fai/class_faiScript.inc:57 admin/fai/class_faiScript.inc:75
 #: admin/fai/class_faiProfile.inc:56 admin/fai/class_faiPackage.inc:403
 #: admin/fai/class_faiHook.inc:55 admin/fai/class_faiHook.inc:73
 #: admin/fai/class_faiTemplate.inc:173
 #: admin/fai/class_faiTemplateEntry.inc:146
-#: admin/fai/class_faiPartitionTable.inc:316
+#: admin/fai/class_faiPartitionTable.inc:338
 msgid "Description"
 msgstr "Description"
 
 #: admin/fai/class_faiVariable.inc:55 admin/fai/class_faiScript.inc:57
 #: admin/fai/class_faiProfile.inc:56 admin/fai/class_faiPackage.inc:403
 #: admin/fai/class_faiHook.inc:55 admin/fai/class_faiTemplate.inc:173
-#: admin/fai/class_faiPartitionTable.inc:316
+#: admin/fai/class_faiPartitionTable.inc:338
 msgid "Short description of the class"
 msgstr "Une courte description de cette classe"
 
@@ -75,7 +75,7 @@ msgstr "Variables dans cette classe"
 
 #: admin/fai/class_faiVariable.inc:69
 #: admin/fai/class_faiSimplePluginClass.inc:51
-#: admin/fai/class_faiDiskEntry.inc:233
+#: admin/fai/class_faiDiskEntry.inc:241
 #: admin/fai/packageSelect/selectPackage-list.xml:40
 #: admin/fai/class_faiPartition.inc:240 admin/fai/class_faiScript.inc:71
 #: admin/fai/class_faiHook.inc:69
@@ -101,23 +101,19 @@ msgid "The content of the variable"
 msgstr "Le contenu de la variable"
 
 #: admin/fai/class_faiDiskEntry.inc:101
-msgid "encrypted"
-msgstr "chiffré"
-
-#: admin/fai/class_faiDiskEntry.inc:104
 msgid "bootable"
 msgstr "amorçable"
 
-#: admin/fai/class_faiDiskEntry.inc:107
+#: admin/fai/class_faiDiskEntry.inc:104
 msgid "preserve"
 msgstr "préserver"
 
-#: admin/fai/class_faiDiskEntry.inc:145 admin/systems/class_faiLogView.inc:201
+#: admin/fai/class_faiDiskEntry.inc:146 admin/systems/class_faiLogView.inc:201
 #: admin/systems/class_faiLogView.inc:243
 msgid "Error"
 msgstr "Erreur"
 
-#: admin/fai/class_faiDiskEntry.inc:146
+#: admin/fai/class_faiDiskEntry.inc:147
 #, php-format
 msgid ""
 "The partition cannot be deleted while it is used in the \"%s\" disk "
@@ -126,71 +122,80 @@ msgstr ""
 "Ce disque ne peut pas être supprimé car il est utilisé par la définition de "
 "disque \"%s\" !"
 
-#: admin/fai/class_faiDiskEntry.inc:218
+#: admin/fai/class_faiDiskEntry.inc:226
 msgid "Partition table entry"
 msgstr "Entrée de la table des partitions"
 
-#: admin/fai/class_faiDiskEntry.inc:219
+#: admin/fai/class_faiDiskEntry.inc:227
 msgid "FAI partition table entry"
 msgstr "Entrée de la table de partition FAI"
 
-#: admin/fai/class_faiDiskEntry.inc:230 admin/fai/class_faiDiskEntry.inc:246
+#: admin/fai/class_faiDiskEntry.inc:238 admin/fai/class_faiDiskEntry.inc:254
 msgid "Device"
 msgstr "Périphérique"
 
-#: admin/fai/class_faiDiskEntry.inc:233
+#: admin/fai/class_faiDiskEntry.inc:241
 msgid "Disk name"
 msgstr "Nom du disque"
 
-#: admin/fai/class_faiDiskEntry.inc:239 admin/fai/class_faiPartition.inc:246
+#: admin/fai/class_faiDiskEntry.inc:247 admin/fai/class_faiPartition.inc:246
 msgid "Short description"
 msgstr "Description courte"
 
-#: admin/fai/class_faiDiskEntry.inc:243
+#: admin/fai/class_faiDiskEntry.inc:251
 msgid "fstab key"
 msgstr "Entrée fstab"
 
-#: admin/fai/class_faiDiskEntry.inc:243
+#: admin/fai/class_faiDiskEntry.inc:251
 msgid "Key to use in fstab file"
 msgstr "Clé à utiliser dans le fichier fstab"
 
-#: admin/fai/class_faiDiskEntry.inc:246
+#: admin/fai/class_faiDiskEntry.inc:254
 msgid "Label"
 msgstr "Étiquette"
 
-#: admin/fai/class_faiDiskEntry.inc:246
+#: admin/fai/class_faiDiskEntry.inc:254
 msgid "UUID"
 msgstr "UUID"
 
-#: admin/fai/class_faiDiskEntry.inc:249
+#: admin/fai/class_faiDiskEntry.inc:257
 msgid "Disk label"
 msgstr "Étiquette du disque"
 
-#: admin/fai/class_faiDiskEntry.inc:258
+#: admin/fai/class_faiDiskEntry.inc:263
+msgid "Random init"
+msgstr "Initialisation aléatoire"
+
+#: admin/fai/class_faiDiskEntry.inc:263
+msgid "Initialise all encrypted partitions with random data"
+msgstr ""
+"Initialiser toutes les partitions chiffrées avec des données aléatoires"
+
+#: admin/fai/class_faiDiskEntry.inc:270
 msgid "Partition entries"
 msgstr "Liste de partitions"
 
-#: admin/fai/class_faiDiskEntry.inc:263 admin/fai/class_faiPartition.inc:422
+#: admin/fai/class_faiDiskEntry.inc:275 admin/fai/class_faiPartition.inc:452
 msgid "Combined physical partitions"
 msgstr "Partitions physiques combinées"
 
-#: admin/fai/class_faiDiskEntry.inc:263
+#: admin/fai/class_faiDiskEntry.inc:275
 msgid "Physical partitions combined in this LVM volume"
 msgstr "Combination des partitions physiques dans volume LVM"
 
-#: admin/fai/class_faiDiskEntry.inc:269
-#: admin/fai/class_faiPartitionTable.inc:329
+#: admin/fai/class_faiDiskEntry.inc:281
+#: admin/fai/class_faiPartitionTable.inc:351
 msgid "Partitions in this class"
 msgstr "Partitions dans cette classe"
 
-#: admin/fai/class_faiDiskEntry.inc:538
+#: admin/fai/class_faiDiskEntry.inc:579
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration"
 msgstr ""
 "Vous avez plus de quatre partitions primaires dans votre configuration."
 
-#: admin/fai/class_faiDiskEntry.inc:542
+#: admin/fai/class_faiDiskEntry.inc:583
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions"
@@ -270,7 +275,7 @@ msgstr "Entrée de la table des partitions"
 msgid "FAI partition entry"
 msgstr "Entrée de la table de partition FAI"
 
-#: admin/fai/class_faiPartition.inc:229
+#: admin/fai/class_faiPartition.inc:229 admin/fai/class_faiPartition.inc:292
 msgid "Partition"
 msgstr "Partition"
 
@@ -282,12 +287,12 @@ msgstr "Type"
 msgid "Partition type"
 msgstr "Type de partition"
 
-#: admin/fai/class_faiPartition.inc:237 admin/fai/class_faiPartition.inc:374
+#: admin/fai/class_faiPartition.inc:237 admin/fai/class_faiPartition.inc:379
 msgid "Primary"
 msgstr "Primaire"
 
-#: admin/fai/class_faiPartition.inc:237 admin/fai/class_faiPartition.inc:371
-#: admin/fai/class_faiPartition.inc:375
+#: admin/fai/class_faiPartition.inc:237 admin/fai/class_faiPartition.inc:376
+#: admin/fai/class_faiPartition.inc:380
 msgid "Logical"
 msgstr "Logique"
 
@@ -328,146 +333,174 @@ msgid "Missing Raid device"
 msgstr "périphérique Raid manquant"
 
 #: admin/fai/class_faiPartition.inc:292
+msgid "Partition to encrypt"
+msgstr "Partition à chiffrer"
+
+#: admin/fai/class_faiPartition.inc:296
+msgid "Password"
+msgstr "Mot de passe"
+
+#: admin/fai/class_faiPartition.inc:296
+msgid ""
+"Password to use for encryption. Leave empty to use a encryption key file "
+"instead."
+msgstr ""
+"Mot de passe à utiliser pour le cryptage. Laissez vide pour utiliser un "
+"fichier de clé de chiffrement à la place."
+
+#: admin/fai/class_faiPartition.inc:300
 msgid "Resize"
 msgstr "Redimensionner"
 
-#: admin/fai/class_faiPartition.inc:292
+#: admin/fai/class_faiPartition.inc:300
 msgid "Resize existing partition"
 msgstr "Redimensionner une partition existante"
 
-#: admin/fai/class_faiPartition.inc:296
+#: admin/fai/class_faiPartition.inc:304
 msgid "Bootable"
 msgstr "Amorçable"
 
-#: admin/fai/class_faiPartition.inc:296
+#: admin/fai/class_faiPartition.inc:304
 msgid "Wether or not this partition can be booted"
 msgstr "La partition doit elle être bootable"
 
-#: admin/fai/class_faiPartition.inc:300
+#: admin/fai/class_faiPartition.inc:308
 msgid "Preserve"
 msgstr "Préserver"
 
-#: admin/fai/class_faiPartition.inc:300
+#: admin/fai/class_faiPartition.inc:308
 msgid "Does the partition need to be preserved"
 msgstr "La partition doit-elle être conservée"
 
-#: admin/fai/class_faiPartition.inc:303
+#: admin/fai/class_faiPartition.inc:311
 msgid "Never"
 msgstr "Jamais"
 
-#: admin/fai/class_faiPartition.inc:303
+#: admin/fai/class_faiPartition.inc:311
 msgid "Always"
 msgstr "Toujours"
 
-#: admin/fai/class_faiPartition.inc:303
+#: admin/fai/class_faiPartition.inc:311
 msgid "Reinstall"
 msgstr "Réinstaller"
 
-#: admin/fai/class_faiPartition.inc:308 admin/fai/class_faiPartition.inc:311
+#: admin/fai/class_faiPartition.inc:316 admin/fai/class_faiPartition.inc:319
 msgid "Filesystem"
 msgstr "Système de fichier"
 
-#: admin/fai/class_faiPartition.inc:311
+#: admin/fai/class_faiPartition.inc:319
 msgid "The filesystem this partition should be formatted with"
 msgstr "Le système de fichiers cette partition doit être formatée avec"
 
-#: admin/fai/class_faiPartition.inc:314
-msgid "swap space"
-msgstr "taille de la swap"
+#: admin/fai/class_faiPartition.inc:322
+msgid "swap"
+msgstr "swap"
 
-#: admin/fai/class_faiPartition.inc:314
+#: admin/fai/class_faiPartition.inc:322
+msgid "fat32"
+msgstr "fat32"
+
+#: admin/fai/class_faiPartition.inc:322
 msgid "ext2"
 msgstr "ext2"
 
-#: admin/fai/class_faiPartition.inc:314
+#: admin/fai/class_faiPartition.inc:322
 msgid "ext3"
 msgstr "ext3"
 
-#: admin/fai/class_faiPartition.inc:314
+#: admin/fai/class_faiPartition.inc:322
 msgid "ext4"
 msgstr "ext4"
 
-#: admin/fai/class_faiPartition.inc:314
+#: admin/fai/class_faiPartition.inc:322
 msgid "reiser fs"
 msgstr "reiser fs"
 
-#: admin/fai/class_faiPartition.inc:314
+#: admin/fai/class_faiPartition.inc:322
 msgid "xfs"
 msgstr "xfs"
 
-#: admin/fai/class_faiPartition.inc:314
+#: admin/fai/class_faiPartition.inc:322
 msgid "btrfs"
 msgstr "btrfs"
 
-#: admin/fai/class_faiPartition.inc:314
+#: admin/fai/class_faiPartition.inc:322
 msgid "LVM/RAID"
 msgstr "LVM/RAID"
 
-#: admin/fai/class_faiPartition.inc:317
-msgid "Encrypted"
-msgstr "Chiffré"
-
-#: admin/fai/class_faiPartition.inc:317
-msgid "Wether or not this partition is encrypted"
-msgstr "Si oui ou non cette partition est chiffré"
-
-#: admin/fai/class_faiPartition.inc:321
+#: admin/fai/class_faiPartition.inc:325
 msgid "Mount point"
 msgstr "Point de montage"
 
-#: admin/fai/class_faiPartition.inc:321
+#: admin/fai/class_faiPartition.inc:325
 msgid "Mount point for this partition"
 msgstr "Point de montage pour cette partition"
 
-#: admin/fai/class_faiPartition.inc:327
+#: admin/fai/class_faiPartition.inc:331
 msgid "Options"
 msgstr "Options"
 
-#: admin/fai/class_faiPartition.inc:330
-msgid "Create options"
-msgstr "Créer des options"
-
-#: admin/fai/class_faiPartition.inc:330
-msgid "Filesystem create options"
-msgstr "Options de création du système de fichier"
-
 #: admin/fai/class_faiPartition.inc:334
-msgid "Tune options"
-msgstr "Options de tuning"
-
-#: admin/fai/class_faiPartition.inc:334
-msgid "Filesystem tune options"
-msgstr "Options de tuning du système de fichier"
-
-#: admin/fai/class_faiPartition.inc:338
 msgid "Mount options"
 msgstr "Options de montage"
 
-#: admin/fai/class_faiPartition.inc:338
+#: admin/fai/class_faiPartition.inc:334
 msgid "Filesystem mount options"
 msgstr "Options de montage du système de fichier"
 
-#: admin/fai/class_faiPartition.inc:380
+#: admin/fai/class_faiPartition.inc:339
+msgid "Create options"
+msgstr "Options de création"
+
+#: admin/fai/class_faiPartition.inc:339
+msgid "Filesystem create options"
+msgstr "Options de création du système de fichier"
+
+#: admin/fai/class_faiPartition.inc:343
+msgid "Tune options"
+msgstr "Options de tuning"
+
+#: admin/fai/class_faiPartition.inc:343
+msgid "Filesystem tune options"
+msgstr "Options de tuning du système de fichier"
+
+#: admin/fai/class_faiPartition.inc:385
 msgid "RAID 0"
 msgstr "RAID 0"
 
-#: admin/fai/class_faiPartition.inc:381
+#: admin/fai/class_faiPartition.inc:386
 msgid "RAID 1"
 msgstr "RAID 1"
 
-#: admin/fai/class_faiPartition.inc:382
+#: admin/fai/class_faiPartition.inc:387
 msgid "RAID 5"
 msgstr "RAID 5"
 
-#: admin/fai/class_faiPartition.inc:383
+#: admin/fai/class_faiPartition.inc:388
 msgid "RAID 6"
 msgstr "RAID 6"
 
-#: admin/fai/class_faiPartition.inc:477
+#: admin/fai/class_faiPartition.inc:392
+msgid "LUKS"
+msgstr "LUKS"
+
+#: admin/fai/class_faiPartition.inc:393
+msgid "Swap"
+msgstr "Swap"
+
+#: admin/fai/class_faiPartition.inc:394
+msgid "tmp"
+msgstr "tmp"
+
+#: admin/fai/class_faiPartition.inc:434
+msgid "Encryption settings"
+msgstr "Paramètres de chiffrement"
+
+#: admin/fai/class_faiPartition.inc:507
 msgid "Raid arrays must contain at least two partitions!"
 msgstr "Les ensembles RAID doivent contenir au moins 2 partitions !"
 
-#: admin/fai/class_faiPartition.inc:479
+#: admin/fai/class_faiPartition.inc:509
 msgid ""
 "Raid 0 arrays can only be realized with a combination of two partitions!"
 msgstr ""
@@ -510,7 +543,7 @@ msgstr "Profil FAI"
 msgid "FAI Profile"
 msgstr "Profil FAI"
 
-#: admin/fai/class_faiProfile.inc:52 admin/fai/class_faiPartitionTable.inc:312
+#: admin/fai/class_faiProfile.inc:52 admin/fai/class_faiPartitionTable.inc:334
 msgid "Partition table class name"
 msgstr "Nom de la classe de partition"
 
@@ -566,8 +599,8 @@ msgid "Edit configuration"
 msgstr "Éditer la configuration"
 
 #: admin/fai/class_faiPackage.inc:251 admin/fai/class_faiTemplate.inc:109
-#: admin/fai/class_faiPartitionTable.inc:215
-#: admin/fai/class_faiPartitionTable.inc:256
+#: admin/fai/class_faiPartitionTable.inc:239
+#: admin/fai/class_faiPartitionTable.inc:280
 #: admin/systems/services/repository/class_serviceRepository.inc:241
 #: admin/systems/services/repository/class_serviceRepository.inc:258
 #: admin/systems/services/repository/class_serviceRepository.inc:262
@@ -742,24 +775,32 @@ msgstr "Accès"
 msgid "Access rights"
 msgstr "Droits d'accès"
 
-#: admin/fai/class_faiPartitionTable.inc:111
+#: admin/fai/class_faiPartitionTable.inc:108
+msgid "Add disk"
+msgstr "Ajouter un disque"
+
+#: admin/fai/class_faiPartitionTable.inc:115
 msgid "Add RAID"
 msgstr "Ajouter du RAID"
 
-#: admin/fai/class_faiPartitionTable.inc:115
+#: admin/fai/class_faiPartitionTable.inc:123
 msgid "Add LVM"
 msgstr "Ajouter un LVM"
 
-#: admin/fai/class_faiPartitionTable.inc:289
+#: admin/fai/class_faiPartitionTable.inc:131
+msgid "Add cryptsetup"
+msgstr "Ajouter cryptsetup"
+
+#: admin/fai/class_faiPartitionTable.inc:311
 msgid "Partition table"
 msgstr "Table des partitions"
 
-#: admin/fai/class_faiPartitionTable.inc:290
-#: admin/fai/class_faiPartitionTable.inc:293
+#: admin/fai/class_faiPartitionTable.inc:312
+#: admin/fai/class_faiPartitionTable.inc:315
 msgid "FAI partition table"
 msgstr "Table des partitions FAI"
 
-#: admin/fai/class_faiPartitionTable.inc:322
+#: admin/fai/class_faiPartitionTable.inc:344
 msgid "Discs"
 msgstr "Disques"
 

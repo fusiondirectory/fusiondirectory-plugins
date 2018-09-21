@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -110,7 +110,7 @@ msgid "Import LDIF file"
 msgstr "Importa file LDIF"
 
 #: addons/ldapmanager/class_ldapmanager.inc:153
-#: addons/ldapmanager/class_ldapmanager.inc:198
+#: addons/ldapmanager/class_ldapmanager.inc:203
 msgid "LDAP error"
 msgstr "Errore LDAP"
 
@@ -136,6 +136,27 @@ msgstr "Errore"
 #, php-format
 msgid "Failed to generate ldap export, error was \"%s\"!"
 msgstr "Impossibile generare l'esportazione LDAP, errore '%s' !"
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid "Warning"
+msgstr "Avvertimento"
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid ""
+"Nothing to import, please upload a non-empty file or fill the textarea."
+msgstr ""
+"Niente da importare, si prega di caricare un file non vuoto o riempire la "
+"textarea."
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#: addons/ldapmanager/class_csvimport.inc:244
+msgid "Success"
+msgstr "Completato"
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#, php-format
+msgid "%d entries successfully imported"
+msgstr "%dvoci importate con successo"
 
 #: addons/ldapmanager/class_csvimport.inc:29
 msgid "CSV import"
@@ -204,10 +225,6 @@ msgstr "Selezionare associazione di campi"
 #, php-format
 msgid "Import failed for line %d"
 msgstr "Importazione non riuscita per la linea %d"
-
-#: addons/ldapmanager/class_csvimport.inc:244
-msgid "Success"
-msgstr "Completato"
 
 #: addons/ldapmanager/class_csvimport.inc:244
 #, php-format

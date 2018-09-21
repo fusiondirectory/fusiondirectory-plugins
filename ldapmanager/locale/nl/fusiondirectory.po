@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2016\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2018\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -111,7 +111,7 @@ msgid "Import LDIF file"
 msgstr "Importeer LDIF bestand"
 
 #: addons/ldapmanager/class_ldapmanager.inc:153
-#: addons/ldapmanager/class_ldapmanager.inc:198
+#: addons/ldapmanager/class_ldapmanager.inc:203
 msgid "LDAP error"
 msgstr "LDAP fout"
 
@@ -137,6 +137,27 @@ msgstr "Fout"
 #, php-format
 msgid "Failed to generate ldap export, error was \"%s\"!"
 msgstr "Niet gelukt om de ldap export aan te maken, foutmelding is \"%s\"!"
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid "Warning"
+msgstr "Waarschuwing"
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid ""
+"Nothing to import, please upload a non-empty file or fill the textarea."
+msgstr ""
+"Rien à importer, s'il vous plaît télécharger un fichier non-vide ou remplir "
+"la zone de texte."
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#: addons/ldapmanager/class_csvimport.inc:244
+msgid "Success"
+msgstr "Succes"
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#, php-format
+msgid "%d entries successfully imported"
+msgstr "%dentrées importées avec succès"
 
 #: addons/ldapmanager/class_csvimport.inc:29
 msgid "CSV import"
@@ -204,10 +225,6 @@ msgstr "Selecteer veld verbindingen"
 #, php-format
 msgid "Import failed for line %d"
 msgstr "Import gefaald voor lijn %d"
-
-#: addons/ldapmanager/class_csvimport.inc:244
-msgid "Success"
-msgstr "Succes"
 
 #: addons/ldapmanager/class_csvimport.inc:244
 #, php-format

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -76,27 +76,27 @@ msgstr "Produit localboot OPSI"
 #: admin/opsi/class_opsiSoftwareList.inc:114
 #: admin/opsi/class_opsiProfile.inc:160
 #: admin/opsi/class_opsiProductProperties.inc:174
-#: admin/systems/opsi/class_opsiClient.inc:292
+#: admin/systems/opsi/class_opsiClient.inc:339
 msgid "Could not contact argonaut server"
 msgstr "Impossible de contacter le serveur Argonaut"
 
 #: admin/opsi/class_opsiSoftwareList.inc:126
 #: admin/opsi/class_opsiProfile.inc:172
-#: admin/systems/opsi/class_opsiClient.inc:303
+#: admin/systems/opsi/class_opsiClient.inc:350
 #: addons/opsi/class_opsiImport.inc:105
 msgid "No mac address"
 msgstr "Pas d'adresse mac"
 
 #: admin/opsi/class_opsiSoftwareList.inc:127
 #: admin/opsi/class_opsiProfile.inc:173
-#: admin/systems/opsi/class_opsiClient.inc:304
+#: admin/systems/opsi/class_opsiClient.inc:351
 #, php-format
 msgid "Server %s has no mac address configured in the LDAP"
 msgstr "Le serveur %s n'a pas d'adresse mac configure dans le LDAP"
 
 #: admin/opsi/class_opsiSoftwareList.inc:133
 #: admin/opsi/class_opsiProfile.inc:144 admin/opsi/class_opsiProfile.inc:179
-#: admin/systems/opsi/class_opsiClient.inc:310
+#: admin/systems/opsi/class_opsiClient.inc:357
 #, php-format
 msgid "Could not find %s in the LDAP"
 msgstr "Impossible de trouver %s dans l'annuaire LDAP"
@@ -104,13 +104,13 @@ msgstr "Impossible de trouver %s dans l'annuaire LDAP"
 #: admin/opsi/class_opsiSoftwareList.inc:141
 #: admin/opsi/class_opsiProfile.inc:187
 #: admin/opsi/class_opsiProductProperties.inc:189
-#: admin/systems/opsi/class_opsiClient.inc:338
-#: admin/systems/opsi/class_opsiClient.inc:350
+#: admin/systems/opsi/class_opsiClient.inc:385
+#: admin/systems/opsi/class_opsiClient.inc:397
 msgid "Failed to contact OPSI server"
 msgstr "Impossible de contacter le serveur OPSI"
 
 #: admin/opsi/class_opsiSoftwareList.inc:153
-#: admin/systems/opsi/class_opsiClient.inc:357
+#: admin/systems/opsi/class_opsiClient.inc:404
 #, php-format
 msgid "%s (%s-%s)"
 msgstr "%s (%s-%s)"
@@ -281,46 +281,63 @@ msgstr "Le profil OPSI à appliquer à ce client"
 msgid "The localboot products to setup on this host"
 msgstr "Les produits localboot à activer sur ce système"
 
-#: admin/systems/opsi/class_opsiClient.inc:95
+#: admin/systems/opsi/class_opsiClient.inc:93
+msgid "Inherit group localboots"
+msgstr "Hériter des localboots de groupe"
+
+#: admin/systems/opsi/class_opsiClient.inc:93
+msgid ""
+"If this is checked localboot configured in the group OPSI tab will be "
+"installed along with the localboots configured here"
+msgstr ""
+"Si cette option est cochée, les localboot configuré dans l'onglet OPSI du "
+"groupe seront installé avec les localboots configurés ici"
+
+#: admin/systems/opsi/class_opsiClient.inc:99
 msgid "Information"
 msgstr "Informations"
 
-#: admin/systems/opsi/class_opsiClient.inc:98
+#: admin/systems/opsi/class_opsiClient.inc:102
 msgid "Last seen"
 msgstr "Dernière connexion"
 
-#: admin/systems/opsi/class_opsiClient.inc:98
+#: admin/systems/opsi/class_opsiClient.inc:102
 msgid "Last time this OPSI client was seen by the OPSI server"
 msgstr "La dernière fois que ce client OPSI a été vu par le serveur OPSI"
 
-#: admin/systems/opsi/class_opsiClient.inc:145
+#: admin/systems/opsi/class_opsiClient.inc:175
 msgid "Could not get macAddress for OPSI server!"
 msgstr "Impossible d'obtenir l'adresse mac pour le serveur OPSI !"
 
-#: admin/systems/opsi/class_opsiClient.inc:154
-#: admin/systems/opsi/class_opsiClient.inc:265
+#: admin/systems/opsi/class_opsiClient.inc:184
+#: admin/systems/opsi/class_opsiClient.inc:295
 msgid "Could not remove OPSI information"
 msgstr "Effacement des informations OPSI impossible"
 
-#: admin/systems/opsi/class_opsiClient.inc:184
+#: admin/systems/opsi/class_opsiClient.inc:214
 msgid "This member was not found or has no macAddress"
 msgstr "Ce membre n'a pas été trouvé ou n'a pas d'adresse mac"
 
-#: admin/systems/opsi/class_opsiClient.inc:189
+#: admin/systems/opsi/class_opsiClient.inc:219
 #, php-format
 msgid "Could not get macAddress for \"%s\""
 msgstr "Impossible d'obtenir l'adresse mac pour \"%s\""
 
-#: admin/systems/opsi/class_opsiClient.inc:218
+#: admin/systems/opsi/class_opsiClient.inc:248
 msgid "Could not update OPSI information"
 msgstr "Mise à jour des informations OPSI impossible"
 
-#: admin/systems/opsi/class_opsiClient.inc:319
+#: admin/systems/opsi/class_opsiClient.inc:325
+#, php-format
+msgid "Inherited (%s)"
+msgstr "Hérité de (%s)"
+
+#: admin/systems/opsi/class_opsiClient.inc:366
 #, php-format
 msgid "Failed to contact OPSI server: %s"
 msgstr "Impossible de contacter le serveur OPSI: %s"
 
-#: admin/systems/opsi/class_opsiClient.inc:321
+#: admin/systems/opsi/class_opsiClient.inc:368
 msgid "Never"
 msgstr "Jamais"
 

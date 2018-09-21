@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2016\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -41,15 +41,15 @@ msgstr "Er is geen sjabloon voor dit profiel"
 msgid "Can't find entry %s in LDAP for profile %s"
 msgstr "Kan ingave niet vinden %s in LDAP voor profiel %s"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:139
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:138
 msgid "LDAP error"
 msgstr "LDAP fout"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:142
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:141
 msgid "LDIF error"
 msgstr "LDIF fout"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:152
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:151
 #, php-format
 msgid ""
 "In order to import a debconf file, please run the following command : "
@@ -62,38 +62,38 @@ msgstr ""
 "template.ldif </i><br/>With<b>filename</b>the file name, and <b>name</b> the"
 " desired name for the template. <br/>"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:168
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:172
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:167
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:171
 msgid "Debconf profile"
 msgstr "Debconf profiel"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:169
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:168
 msgid "Debconf profile information"
 msgstr "Debconf profiel informatie"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:187
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:190
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:186
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
 #: admin/debconfProfile/debconfProfile-filter.tpl.c:5
 msgid "Name"
 msgstr "Naam"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:188
 msgid "Import a debconf file"
 msgstr "Importeer een debconf bestand"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:190
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
 msgid "Name of this debconf template"
 msgstr "Naam van dit debconf sjabloon"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:194
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:193
 msgid "Entries"
 msgstr "Ingaves"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:196
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:195
 msgid "Debconf template answers"
 msgstr "Debconf sjabloon antwoorden"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:211
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:210
 msgid "Import"
 msgstr "Importeren"
 

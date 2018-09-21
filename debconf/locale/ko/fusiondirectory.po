@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -21,11 +21,11 @@ msgstr ""
 #: admin/debconfProfile/class_debconfProfileManagement.inc:32
 #: admin/systems/debconf/class_debconfStartup.inc:33
 msgid "Debconf"
-msgstr ""
+msgstr "Debconf"
 
 #: admin/debconfProfile/class_debconfProfileManagement.inc:33
 msgid "Debconf profile management"
-msgstr ""
+msgstr "Debconf 프로필 관리"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:71
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:85
@@ -34,22 +34,22 @@ msgstr "오류"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:71
 msgid "There is no template for this profile"
-msgstr ""
+msgstr "이 프로필에 대한 템플릿이 없습니다"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:86
 #, php-format
 msgid "Can't find entry %s in LDAP for profile %s"
-msgstr ""
+msgstr "프로필 %s의 LDAP에서 항목 %s를 찾을 수 없습니다."
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:139
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:138
 msgid "LDAP error"
 msgstr "lDAP 오류"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:142
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:141
 msgid "LDIF error"
-msgstr ""
+msgstr "LDIF 오류"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:152
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:151
 #, php-format
 msgid ""
 "In order to import a debconf file, please run the following command : "
@@ -57,66 +57,70 @@ msgid ""
 "template.ldif </i><br/>With <b>filename</b> the file name, and <b>name</b> "
 "the desired name for the template.<br/>"
 msgstr ""
+"debconfi 파일을 임포트하기 위해서는 아래 명령을 실행해 주세요 : <br/><i> debconf2ldif.pl -b "
+"ou=<b>name</b>,%s -k <b>filename</b> > template.ldif </i><br/>With "
+"<b>filename</b> the file name, and <b>name</b> the desired name for the "
+"template.<br/>"
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:167
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:171
+msgid "Debconf profile"
+msgstr "Debconfi 프로필"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:168
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:172
-msgid "Debconf profile"
-msgstr ""
-
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:169
 msgid "Debconf profile information"
-msgstr ""
+msgstr "Debconf 프로필 정보"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:187
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:190
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:186
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
 #: admin/debconfProfile/debconfProfile-filter.tpl.c:5
 msgid "Name"
 msgstr "명칭"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:188
 msgid "Import a debconf file"
-msgstr ""
+msgstr "debconf 파일 임포트"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:190
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
 msgid "Name of this debconf template"
-msgstr ""
+msgstr "debconf 템플릿의 이름"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:194
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:193
 msgid "Entries"
-msgstr ""
+msgstr "항목"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:196
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:195
 msgid "Debconf template answers"
-msgstr ""
+msgstr "Debconf 템플릿 응답"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:211
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:210
 msgid "Import"
-msgstr ""
+msgstr "임포트"
 
 #: admin/systems/debconf/class_debconfStartup.inc:34
 msgid "Debconf preseed startup"
-msgstr ""
+msgstr "Debconf 미리 시작"
 
 #: admin/systems/debconf/class_debconfStartup.inc:46
 msgid "Debconf settings"
-msgstr ""
+msgstr "Debconf 설정"
 
 #: admin/systems/debconf/class_debconfStartup.inc:49
 msgid "Profile"
-msgstr ""
+msgstr "프로필"
 
 #: admin/systems/debconf/class_debconfStartup.inc:49
 msgid "Debconf preseed profile to be used for installation"
-msgstr ""
+msgstr "설치에 사용되는 Debconf 미리 설정 프로파일"
 
 #: admin/systems/debconf/class_debconfStartup.inc:53
 msgid "Release"
-msgstr ""
+msgstr "릴리즈"
 
 #: admin/systems/debconf/class_debconfStartup.inc:53
 msgid "Debian release to install"
-msgstr ""
+msgstr "설치될 Debian 릴리즈"
 
 #: admin/debconfProfile/debconfProfile-filter.tpl.c:2
 msgid "Filter"
-msgstr ""
+msgstr "필터"

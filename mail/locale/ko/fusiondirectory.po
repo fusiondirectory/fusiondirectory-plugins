@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -71,54 +71,54 @@ msgstr "로컬메일만 허용"
 msgid ""
 "Whether this group mail is only allowed to receive messages from local "
 "senders"
-msgstr ""
+msgstr "이 그룹 메일은 로컬 보낸 사람의 메시지만 수신 할 수 있는지 여부"
 
-#: admin/groups/mail/class_mailGroup.inc:160
-#: personal/mail/class_mailAccount.inc:267
-#: personal/mail/class_mailAccount.inc:332
+#: admin/groups/mail/class_mailGroup.inc:191
+#: personal/mail/class_mailAccount.inc:276
+#: personal/mail/class_mailAccount.inc:377
 #, php-format
 msgid "Mail method cannot connect: %s"
 msgstr "메일방식 접속 불가: %s"
 
-#: admin/groups/mail/class_mailGroup.inc:163
-#: personal/mail/class_mailAccount.inc:335
+#: admin/groups/mail/class_mailGroup.inc:194
+#: personal/mail/class_mailAccount.inc:380
 #, php-format
 msgid "Cannot update mailbox: %s"
 msgstr "메일박스 업데이트 불가 %s"
 
-#: admin/groups/mail/class_mailGroup.inc:184
-#: admin/groups/mail/class_mailGroup.inc:188
+#: admin/groups/mail/class_mailGroup.inc:215
+#: admin/groups/mail/class_mailGroup.inc:219
 #: personal/mail/class_mailAccount.inc:45
-#: personal/mail/class_mailAccount.inc:267
-#: personal/mail/class_mailAccount.inc:270
-#: personal/mail/class_mailAccount.inc:338
-#: personal/mail/class_mailAccount.inc:349
-#: personal/mail/class_mailAccount.inc:378
-#: personal/mail/class_mailAccount.inc:382
+#: personal/mail/class_mailAccount.inc:276
+#: personal/mail/class_mailAccount.inc:279
+#: personal/mail/class_mailAccount.inc:383
+#: personal/mail/class_mailAccount.inc:394
+#: personal/mail/class_mailAccount.inc:423
+#: personal/mail/class_mailAccount.inc:427
 msgid "Mail error"
 msgstr "메일 에러"
 
-#: admin/groups/mail/class_mailGroup.inc:184
-#: personal/mail/class_mailAccount.inc:378
+#: admin/groups/mail/class_mailGroup.inc:215
+#: personal/mail/class_mailAccount.inc:423
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr "메일박스 삭제 불가, 메일방식 접속 불가: %s"
 
-#: admin/groups/mail/class_mailGroup.inc:188
-#: personal/mail/class_mailAccount.inc:382
+#: admin/groups/mail/class_mailGroup.inc:219
+#: personal/mail/class_mailAccount.inc:427
 #, php-format
 msgid "Cannot remove mailbox: %s"
 msgstr "메일박스 삭제 불가: %s"
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:32
+#: admin/systems/services/imap/class_serviceIMAP.inc:57
 msgid "IMAP/POP3 generic service"
 msgstr "IMAP/POP3 일반적인 서비스"
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
+#: admin/systems/services/imap/class_serviceIMAP.inc:58
 msgid "IMAP/POP3"
 msgstr "IMAP/POP3"
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
+#: admin/systems/services/imap/class_serviceIMAP.inc:58
 msgid "Services"
 msgstr "서비스"
 
@@ -172,7 +172,7 @@ msgstr "계정 삭제 시 메일박스 삭제"
 msgid ""
 "Determines if the mailbox should be removed from your IMAP server after the "
 "account is deleted in LDAP."
-msgstr ""
+msgstr "LDAP에서 계정이 삭제된 후 IMAP 서버에서 사서함을 제거할지 결정합니다."
 
 #: config/mail/class_mailPluginConfig.inc:71
 msgid "Cyrus autocreate folders"
@@ -182,7 +182,7 @@ msgstr "Cyrus 자동생성 폴더"
 msgid ""
 "List of personal IMAP folders that should be created along initial account "
 "creation."
-msgstr ""
+msgstr "초기 계정 생성시 생성해야하는 개인 IMAP 폴더 목록입니다."
 
 #: config/mail/class_mailPluginConfig.inc:77
 msgid "IMAP timeout"
@@ -285,38 +285,38 @@ msgstr "메일박스로 전달할 게 없음."
 
 #: personal/mail/class_mailAccount.inc:170
 msgid "Select if you want to forward mails without getting own copies of them"
-msgstr ""
+msgstr "메일 사본을 소유하지 않고 메일을 전달하려면 선택하십시오."
 
-#: personal/mail/class_mailAccount.inc:270
+#: personal/mail/class_mailAccount.inc:279
 #, php-format
 msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
 msgstr ""
 "메일박스 \"%s\"는 메일서버에 존재하지 않습니다.\n"
 "%s"
 
-#: personal/mail/class_mailAccount.inc:338
+#: personal/mail/class_mailAccount.inc:383
 #, php-format
 msgid "Cannot write quota settings: %s"
 msgstr "quota 설정을 쓸 수 없음: %s"
 
-#: personal/mail/class_mailAccount.inc:349
+#: personal/mail/class_mailAccount.inc:394
 #, php-format
 msgid "Mail error saving sieve settings: %s"
 msgstr "sieve 설정 저장 메일 오류: %s"
 
-#: personal/mail/class_mail-methods.inc:144
+#: personal/mail/class_mail-methods.inc:148
 msgid "Configuration error"
 msgstr "설정 오류"
 
-#: personal/mail/class_mail-methods.inc:145
+#: personal/mail/class_mail-methods.inc:149
 #, php-format
 msgid "The configured mail attribute '%s' is unsupported!"
 msgstr "설정된 메일 속성'%s'은 지원되지 않습니다!"
 
-#: personal/mail/class_mail-methods.inc:703
+#: personal/mail/class_mail-methods.inc:738
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: personal/mail/class_mail-methods.inc:705
+#: personal/mail/class_mail-methods.inc:740
 msgid "Unlimited"
 msgstr "제한없음"

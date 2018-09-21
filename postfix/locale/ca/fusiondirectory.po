@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Catalan (https://www.transifex.com/fusiondirectory/teams/12202/ca/)\n"
@@ -18,95 +18,132 @@ msgstr ""
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:29
-#: admin/systems/services/postfix/class_servicePostfix.inc:30
+#: admin/systems/services/postfix/class_servicePostfix.inc:56
+#: admin/systems/services/postfix/class_servicePostfix.inc:57
 msgid "Postfix (SMTP)"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:30
+#: admin/systems/services/postfix/class_servicePostfix.inc:57
 msgid "Services"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:44
+#: admin/systems/services/postfix/class_servicePostfix.inc:71
 msgid "Information"
 msgstr "Informació"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:47
+#: admin/systems/services/postfix/class_servicePostfix.inc:74
 msgid "Hostname"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:47
+#: admin/systems/services/postfix/class_servicePostfix.inc:74
 msgid "The host name."
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:52
+#: admin/systems/services/postfix/class_servicePostfix.inc:79
+#: admin/systems/services/postfix/class_servicePostfix.inc:131
 msgid "Domain"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:52
+#: admin/systems/services/postfix/class_servicePostfix.inc:79
 msgid "The domain."
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:57
+#: admin/systems/services/postfix/class_servicePostfix.inc:84
 msgid "Max mail header size (KB)"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:57
+#: admin/systems/services/postfix/class_servicePostfix.inc:84
 msgid "This value specifies the maximal header size."
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:62
+#: admin/systems/services/postfix/class_servicePostfix.inc:89
 msgid "Max mailbox size (KB)"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:62
+#: admin/systems/services/postfix/class_servicePostfix.inc:89
 msgid "Defines the maximal size of mail box."
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:67
+#: admin/systems/services/postfix/class_servicePostfix.inc:94
 msgid "Max message size (KB)"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:67
+#: admin/systems/services/postfix/class_servicePostfix.inc:94
 msgid "Specify the maximal size of a message."
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:74
+#: admin/systems/services/postfix/class_servicePostfix.inc:101
 msgid "Domains and routing"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:78
+#: admin/systems/services/postfix/class_servicePostfix.inc:105
 msgid "Domains to accept mail for"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:78
+#: admin/systems/services/postfix/class_servicePostfix.inc:105
 msgid "Postfix networks"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:83
+#: admin/systems/services/postfix/class_servicePostfix.inc:110
 msgid "Transport table"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:88
+#: admin/systems/services/postfix/class_servicePostfix.inc:115
 msgid "Transport rule"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:102
+#: admin/systems/services/postfix/class_servicePostfix.inc:127
+msgid "Catchall table"
+msgstr ""
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:131
+msgid "Domain concerned by this catchall rule"
+msgstr ""
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:135
+msgid "Recipient"
+msgstr ""
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:135
+msgid "Recipient mail address for this catchall rule"
+msgstr ""
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:141
+msgid "Domain alias table"
+msgstr ""
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:145
+msgid "From"
+msgstr ""
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:145
+msgid "Domain concerned by this alias rule"
+msgstr ""
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:149
+msgid "To"
+msgstr ""
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:149
+msgid "Recipient domain for this alias rule"
+msgstr ""
+
+#: admin/systems/services/postfix/class_servicePostfix.inc:157
 msgid "Restrictions"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:106
+#: admin/systems/services/postfix/class_servicePostfix.inc:161
 msgid "Restrictions for sender"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:115
+#: admin/systems/services/postfix/class_servicePostfix.inc:170
 msgid "For sender"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:120
+#: admin/systems/services/postfix/class_servicePostfix.inc:175
 msgid "Restrictions for recipient"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:129
+#: admin/systems/services/postfix/class_servicePostfix.inc:184
 msgid "For recipient"
 msgstr ""

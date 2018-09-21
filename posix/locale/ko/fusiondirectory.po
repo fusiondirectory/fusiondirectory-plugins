@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -408,72 +408,79 @@ msgstr "패스워드 변경불가"
 msgid "UID"
 msgstr "UID"
 
-#: personal/posix/class_posixAccount.inc:537
+#: personal/posix/class_posixAccount.inc:538
 #, php-format
 msgid "Group of user %s"
 msgstr "사용자 %s의 그룹"
 
-#: personal/posix/class_posixAccount.inc:783
-#: personal/posix/class_posixAccount.inc:804
-#: personal/posix/class_posixAccount.inc:998
+#: personal/posix/class_posixAccount.inc:560
+#, php-format
+msgid ""
+"Could not create automatic primary group (using gidNumber \"%s\"), because "
+"of the following errors"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:793
+#: personal/posix/class_posixAccount.inc:814
+#: personal/posix/class_posixAccount.inc:1008
 msgid "Warning"
 msgstr "ㅗ"
 
-#: personal/posix/class_posixAccount.inc:783
+#: personal/posix/class_posixAccount.inc:793
 #, php-format
 msgid "Unknown ID allocation method \"%s\"!"
 msgstr "알 수 없는 ID 할당방법 \"%s\"!"
 
-#: personal/posix/class_posixAccount.inc:805
+#: personal/posix/class_posixAccount.inc:815
 #, php-format
 msgid "Timeout while waiting for lock. Ignoring lock from %s!"
 msgstr "잠금 대시 타임아웃. %s 잠금 무시!"
 
-#: personal/posix/class_posixAccount.inc:832
-#: personal/posix/class_posixAccount.inc:872
-#: personal/posix/class_posixAccount.inc:884
-#: personal/posix/class_posixAccount.inc:888
-#: personal/posix/class_posixAccount.inc:895
-#: personal/posix/class_posixAccount.inc:904
-#: personal/posix/class_posixAccount.inc:966
+#: personal/posix/class_posixAccount.inc:842
+#: personal/posix/class_posixAccount.inc:882
+#: personal/posix/class_posixAccount.inc:894
+#: personal/posix/class_posixAccount.inc:898
+#: personal/posix/class_posixAccount.inc:905
+#: personal/posix/class_posixAccount.inc:914
+#: personal/posix/class_posixAccount.inc:976
 msgid "Error"
 msgstr "오류"
 
-#: personal/posix/class_posixAccount.inc:832
-#: personal/posix/class_posixAccount.inc:872
-#: personal/posix/class_posixAccount.inc:884
-#: personal/posix/class_posixAccount.inc:888
-#: personal/posix/class_posixAccount.inc:895
-#: personal/posix/class_posixAccount.inc:904
+#: personal/posix/class_posixAccount.inc:842
+#: personal/posix/class_posixAccount.inc:882
+#: personal/posix/class_posixAccount.inc:894
+#: personal/posix/class_posixAccount.inc:898
+#: personal/posix/class_posixAccount.inc:905
+#: personal/posix/class_posixAccount.inc:914
 msgid "Cannot allocate a free ID:"
 msgstr "ID를 할당할 수 없음"
 
-#: personal/posix/class_posixAccount.inc:832
+#: personal/posix/class_posixAccount.inc:842
 #, php-format
 msgid "%sPoolMin >= %sPoolMax!"
 msgstr "%s 풀 최소값 >= %s 풀 최대값!"
 
-#: personal/posix/class_posixAccount.inc:864
+#: personal/posix/class_posixAccount.inc:874
 msgid "LDAP error"
 msgstr "LDAP 오류"
 
-#: personal/posix/class_posixAccount.inc:872
+#: personal/posix/class_posixAccount.inc:882
 msgid "sambaUnixIdPool is not unique!"
 msgstr "삼바 Unix id 풀이 유일하지 않음!"
 
-#: personal/posix/class_posixAccount.inc:884
-#: personal/posix/class_posixAccount.inc:888
+#: personal/posix/class_posixAccount.inc:894
+#: personal/posix/class_posixAccount.inc:898
 msgid "no ID available!"
 msgstr "가능한 ID 없음!"
 
-#: personal/posix/class_posixAccount.inc:904
+#: personal/posix/class_posixAccount.inc:914
 msgid "maximum tries exceeded!"
 msgstr "최대 실행횟수 초과!"
 
-#: personal/posix/class_posixAccount.inc:966
+#: personal/posix/class_posixAccount.inc:976
 msgid "Cannot allocate a free ID!"
 msgstr "ID를 할당할 수 없음!"
 
-#: personal/posix/class_posixAccount.inc:998
+#: personal/posix/class_posixAccount.inc:1008
 msgid "\"nextIdHook\" is not available. Using default base!"
 msgstr "\"nextidHook\"은 사용가능하지 않음. 기본값 사용!"

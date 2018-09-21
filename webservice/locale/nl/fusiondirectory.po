@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -38,65 +38,65 @@ msgstr "SSL afdwingen"
 msgid "Allow only HTTPS JSON-RPC requests"
 msgstr "Laat enkel HTTPS JSON-RPC-aanvragen toe"
 
-#: html/jsonrpc.php:52
+#: html/jsonrpc.php:55
 #, php-format
 msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
 msgstr "FusionDirectory configuratie %s/%s is niet leesbaar. Afgebroken."
 
-#: html/jsonrpc.php:62
+#: html/jsonrpc.php:65
 #, php-format
 msgid "Cannot locate file '%s' - please run '%s' to fix this"
 msgstr ""
 "Kan bestand '%s' niet vinden. Gelieve '%s' uit te voeren om dit op te lossen"
 
-#: html/jsonrpc.php:333 html/jsonrpc.php:416
+#: html/jsonrpc.php:342 html/jsonrpc.php:425
 msgid "Plugin"
 msgstr "Plugin"
 
-#: html/jsonrpc.php:513
+#: html/jsonrpc.php:522
 #, php-format
 msgid "Field \"%s\" is not multi-valuated"
 msgstr "Veld \"%s\" is niet multi-waarde"
 
-#: html/jsonrpc.php:528
+#: html/jsonrpc.php:537
 #, php-format
 msgid "Unknown field \"%s\""
 msgstr "Onbekend veld \"%s\""
 
-#: html/jsonrpc.php:583
+#: html/jsonrpc.php:592
 #, php-format
 msgid "Cannot delete %s. It has been locked by %s."
 msgstr "Kan %s niet verwijderen. Het is vergrendeld door %s."
 
-#: html/jsonrpc.php:630 html/jsonrpc.php:659
+#: html/jsonrpc.php:639 html/jsonrpc.php:668
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr ""
 "Kan de wachtwoordmethode niet opvragen voor account \"%s\". Het is niet "
 "vergrendeld!"
 
-#: html/jsonrpc.php:655
+#: html/jsonrpc.php:664
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr ""
 "Wachtwoordmethode \"%s\" kon niet vergrendelen. Account \"%s\" is niet "
 "vergrendeld!"
 
-#: html/jsonrpc.php:662
+#: html/jsonrpc.php:671
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr "Account \"%s\" kon niet gevonden worden in LDAP. Het is niet vergrendeld."
 
-#: html/jsonrpc.php:700 html/jsonrpc.php:709
+#: html/jsonrpc.php:709 html/jsonrpc.php:718
 #, php-format
 msgid "Failed to get password method for account \"%s\""
 msgstr "Kan de wachtwoord methode niet opvragen voor account \"%s\"."
 
-#: html/jsonrpc.php:712
+#: html/jsonrpc.php:721
 #, php-format
 msgid "Could not find account \"%s\" in LDAP"
 msgstr "Account \"%s\" kon niet gevonden worden in LDAP"
 
-#: html/jsonrpc.php:756
+#: html/jsonrpc.php:765
 msgid "This token is invalid"
 msgstr "Deze token is niet geldig"

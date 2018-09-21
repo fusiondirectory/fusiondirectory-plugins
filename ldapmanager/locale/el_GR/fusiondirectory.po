@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -106,7 +106,7 @@ msgid "Import LDIF file"
 msgstr "Εισαγωγή αρχείου LDIF"
 
 #: addons/ldapmanager/class_ldapmanager.inc:153
-#: addons/ldapmanager/class_ldapmanager.inc:198
+#: addons/ldapmanager/class_ldapmanager.inc:203
 msgid "LDAP error"
 msgstr "Σφάλμα LDAP"
 
@@ -132,6 +132,25 @@ msgstr "Σφάλμα"
 #, php-format
 msgid "Failed to generate ldap export, error was \"%s\"!"
 msgstr "Αποτυχία δημιουργίας εξαγωγής ldap, το σφάλμα ήταν \"%s\"!"
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid "Warning"
+msgstr "Προειδοποίηση"
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid ""
+"Nothing to import, please upload a non-empty file or fill the textarea."
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#: addons/ldapmanager/class_csvimport.inc:244
+msgid "Success"
+msgstr "Επιτυχία"
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#, php-format
+msgid "%d entries successfully imported"
+msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:29
 msgid "CSV import"
@@ -199,10 +218,6 @@ msgstr "Επιλογή συσχετισμών πεδίων"
 #, php-format
 msgid "Import failed for line %d"
 msgstr ""
-
-#: addons/ldapmanager/class_csvimport.inc:244
-msgid "Success"
-msgstr "Επιτυχία"
 
 #: addons/ldapmanager/class_csvimport.inc:244
 #, php-format

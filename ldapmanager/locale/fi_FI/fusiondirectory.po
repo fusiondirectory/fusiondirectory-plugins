@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Finnish (Finland) (https://www.transifex.com/fusiondirectory/teams/12202/fi_FI/)\n"
@@ -105,7 +105,7 @@ msgid "Import LDIF file"
 msgstr ""
 
 #: addons/ldapmanager/class_ldapmanager.inc:153
-#: addons/ldapmanager/class_ldapmanager.inc:198
+#: addons/ldapmanager/class_ldapmanager.inc:203
 msgid "LDAP error"
 msgstr "LDAP virhe"
 
@@ -130,6 +130,25 @@ msgstr "Virhe"
 #: addons/ldapmanager/class_ldapmanager.inc:182
 #, php-format
 msgid "Failed to generate ldap export, error was \"%s\"!"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid "Warning"
+msgstr "Varoitus"
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid ""
+"Nothing to import, please upload a non-empty file or fill the textarea."
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#: addons/ldapmanager/class_csvimport.inc:244
+msgid "Success"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#, php-format
+msgid "%d entries successfully imported"
 msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:29
@@ -196,10 +215,6 @@ msgstr ""
 #: addons/ldapmanager/class_csvimport.inc:237
 #, php-format
 msgid "Import failed for line %d"
-msgstr ""
-
-#: addons/ldapmanager/class_csvimport.inc:244
-msgid "Success"
 msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:244

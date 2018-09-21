@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: include/class_supportDaemon.inc:107
 msgid "Multiple argonaut server found. Only one is supported"
@@ -29,7 +29,7 @@ msgstr "Není nastaven žádný argonaut server"
 #: include/class_supportDaemon.inc:641
 #, php-format
 msgid "Could not read \"%s\"!"
-msgstr "Nelze načíst %s!"
+msgstr "Nelze načíst „%s“!"
 
 #: include/class_supportDaemon.inc:645
 #, php-format
@@ -42,7 +42,6 @@ msgid "Argonaut Fuse OPSI module settings"
 msgstr "Nastavení Fuse OPSI modulu pro Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:33
 #: admin/systems/services/argonaut/class_argonautServer.inc:36
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:32
@@ -59,7 +58,7 @@ msgstr "účet správce Opsi"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:55
 msgid "Opsi password"
-msgstr "heslo k tomuto účtu"
+msgstr "Opsi heslo"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:60
 msgid "Opsi server"
@@ -69,23 +68,53 @@ msgstr "server Opsi"
 msgid "Opsi lang"
 msgstr "jazyk Opsi"
 
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:32
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:33
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:30
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:31
 msgid "Argonaut Fuse FAI module settings"
 msgstr "Nastavení Fuse FAI modulu pro Argonaut"
 
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:47
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:42
 msgid "FAI"
 msgstr "FAI"
 
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:50
-msgid "Fai flags"
-msgstr "příznaky FAI"
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:45
+msgid "FAI version"
+msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:57
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:45
+msgid "Version of FAI installed on the server"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:50
+msgid "FAI flags"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:50
+msgid "Flags to pass to FAI"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:55
 msgid "NFS root"
 msgstr ""
 "kořen struktury složek, nacházející se na síťovém souborovém systému (NFS)"
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:60
+msgid "FAI 4 command line"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:60
+msgid ""
+"Command line for FAI 4 - should be \"ip=dhcp root=/dev/nfs boot=live "
+"union=aufs\""
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:65
+msgid "FAI 5 command line"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:65
+msgid "Command line for FAI 5 - should be \"ip=dhcp rootovl\""
+msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:35
 #: admin/systems/services/argonaut/class_argonautServer.inc:36
@@ -403,6 +432,8 @@ msgid ""
 "LDAP base in which ldap2zone should search. Only usefull if you got several "
 "nodes for the same zone."
 msgstr ""
+"LDAP základ, ve kterém má ldap2zone hledat. Užitečné pouze pokud máte více "
+"uzlů pro stejnou zónu."
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:86
 msgid "Ldap2zone master settings"
@@ -449,10 +480,12 @@ msgid ""
 "Cause any host name for the zone to be checked for compliance with RFC 952 "
 "and RFC 1123 and take the defined action"
 msgstr ""
+"Způsobí že všechny názvy strojů pro zónu budou ověřovány na soulad s normami"
+" RFC 952 a RFC 1123 a podniknuta určená akce"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:113
 msgid "Ldap2zone slave settings"
-msgstr ""
+msgstr "Nastavení ldap2zone podřízeného"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:118
 msgid "Manage DNS Slaves"
@@ -466,7 +499,7 @@ msgstr "zóna"
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:122
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:156
 msgid "DNS zone this server should be declared as slave of"
-msgstr ""
+msgstr "DNZ zóna které podřízeným by tento server měl být deklarován"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:126
 msgid "master"
@@ -478,7 +511,7 @@ msgstr "IP adresy hlavních pro tuto zónu"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:130
 msgid "reverses"
-msgstr ""
+msgstr "obrací"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:130
 msgid "This server should be slave of reverses zones as well"
@@ -511,7 +544,7 @@ msgstr "Čas začátku tohoto rámce v podobě HH:MM"
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:56
 msgid "->"
-msgstr ""
+msgstr "->"
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:56
 msgid "Closing time for this frame as HH:MM"
@@ -859,7 +892,7 @@ msgstr "(Pře)Instalovat"
 
 #: addons/argonaut/class_argonautEventTypes.inc:105
 msgid "Refresh slave files (ldap2zone)"
-msgstr ""
+msgstr "Aktualizovat soubory podřízeného (ldap2zone)"
 
 #: addons/argonaut/import_events.tpl.c:2
 msgid ""

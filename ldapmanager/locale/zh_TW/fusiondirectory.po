@@ -1,0 +1,222 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language-Team: Chinese (Taiwan) (https://www.transifex.com/fusiondirectory/teams/12202/zh_TW/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: addons/ldapmanager/tabs_ldif.inc:31
+msgid "LDAP import/export"
+msgstr ""
+
+#: addons/ldapmanager/tabs_ldif.inc:32
+msgid "Allows the import or export of the ldap tree"
+msgstr ""
+
+#: addons/ldapmanager/tabs_ldif.inc:36
+msgid "Ldap manager"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:45
+msgid "LDIF"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:46
+msgid "Export/Import the ldap tree to/from LDIF format"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:48
+msgid "LDAP Manager"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:61
+#: addons/ldapmanager/class_ldapmanager.inc:74
+#: addons/ldapmanager/class_ldapmanager.inc:94
+msgid "Export"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:64
+msgid "DN of a single entry to export as ldif"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:78
+msgid "Export single entry"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:81
+msgid "Filter"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:81
+msgid "Filter to use for selecting objects to export"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:87
+msgid ""
+"Download a complete snapshot of the running LDAP directory for this base as "
+"ldif"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:98
+msgid "Export complete LDIF for"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:103
+msgid "Import LDIF"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:106
+msgid "Overwrite existing entries"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:106
+msgid ""
+"Remove fields that are not in the LDIF from the LDAP entries if they were "
+"existing."
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:111
+msgid ""
+"Import an LDIF file into your LDAP. Remember that FusionDirectory will not "
+"check your LDIFs for FusionDirectory conformance."
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:121
+#: addons/ldapmanager/class_csvimport.inc:81
+#: addons/ldapmanager/class_csvimport.inc:101
+msgid "Import"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:125
+msgid "Import LDIF file"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:153
+#: addons/ldapmanager/class_ldapmanager.inc:203
+msgid "LDAP error"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:154
+#, php-format
+msgid "No such object %s!"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:174
+msgid "Permission error"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:175
+#, php-format
+msgid "You have no permission to export %s!"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:181
+msgid "Error"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:182
+#, php-format
+msgid "Failed to generate ldap export, error was \"%s\"!"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid "Warning"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid ""
+"Nothing to import, please upload a non-empty file or fill the textarea."
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#: addons/ldapmanager/class_csvimport.inc:244
+msgid "Success"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#, php-format
+msgid "%d entries successfully imported"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:29
+msgid "CSV import"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:30
+msgid "Import of csv data into the ldap tree"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:43
+msgid "Import CSV"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:46
+msgid "Object type"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:46
+msgid "Type of objects you wish to import"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:52
+msgid "Template"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:52
+msgid "Select a template to apply to imported entries"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:58
+msgid "CSV file"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:58
+msgid "Import a CSV file into your LDAP"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:62
+msgid "Separator"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:62
+msgid "Character used as separator in the CSV file"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:72
+msgid "Fixed values"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:72
+msgid ""
+"Some fixed values that you might wanna use in the filling of the template."
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:88
+msgid "Template filling"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:91
+msgid "Select fields associations"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:237
+#, php-format
+msgid "Import failed for line %d"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:244
+#, php-format
+msgid "Successfully imported %d entries"
+msgstr ""

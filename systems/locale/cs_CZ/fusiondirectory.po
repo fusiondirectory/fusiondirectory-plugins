@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-09-07 10:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2016\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: admin/systems/class_phoneGeneric.inc:32
 #: admin/systems/class_phoneGeneric.inc:36
@@ -36,7 +36,7 @@ msgstr "Jaký telefonní přístroj"
 #: admin/systems/class_phoneGeneric.inc:52
 #: admin/systems/class_printGeneric.inc:58
 #: admin/systems/class_workstationGeneric.inc:58
-#: admin/systems/class_componentGeneric.inc:55
+#: admin/systems/class_componentGeneric.inc:54
 #: admin/systems/class_mobilePhoneGeneric.inc:56
 msgid "Properties"
 msgstr "Vlastnosti"
@@ -45,7 +45,7 @@ msgstr "Vlastnosti"
 #: admin/systems/class_printGeneric.inc:62
 #: admin/systems/class_workstationGeneric.inc:62
 #: admin/systems/services/shares/class_serviceShare.inc:51
-#: admin/systems/class_componentGeneric.inc:58
+#: admin/systems/class_componentGeneric.inc:57
 #: admin/systems/class_mobilePhoneGeneric.inc:60
 msgid "Name"
 msgstr "Název"
@@ -59,7 +59,7 @@ msgstr "Název telefonu"
 #: admin/systems/class_printGeneric.inc:66
 #: admin/systems/class_workstationGeneric.inc:67
 #: admin/systems/services/shares/class_serviceShare.inc:55
-#: admin/systems/class_componentGeneric.inc:62
+#: admin/systems/class_componentGeneric.inc:61
 #: admin/systems/class_mobilePhoneGeneric.inc:64
 msgid "Description"
 msgstr "Popis"
@@ -89,7 +89,7 @@ msgstr "Telefonní číslo telefonu"
 #: admin/systems/class_phoneGeneric.inc:79
 #: admin/systems/class_printGeneric.inc:103
 #: admin/systems/class_workstationGeneric.inc:89
-#: admin/systems/class_componentGeneric.inc:69
+#: admin/systems/class_componentGeneric.inc:68
 #: admin/systems/class_mobilePhoneGeneric.inc:102
 msgid "Network settings"
 msgstr "Nastavení sítě"
@@ -97,7 +97,7 @@ msgstr "Nastavení sítě"
 #: admin/systems/class_phoneGeneric.inc:84
 #: admin/systems/class_printGeneric.inc:108
 #: admin/systems/class_workstationGeneric.inc:94
-#: admin/systems/class_componentGeneric.inc:73
+#: admin/systems/class_componentGeneric.inc:72
 #: admin/systems/class_mobilePhoneGeneric.inc:106
 msgid "IP address"
 msgstr "IP addresa"
@@ -110,7 +110,7 @@ msgstr "IP adresy (v4 nebo v6) používané tímto systémem"
 #: admin/systems/class_phoneGeneric.inc:90
 #: admin/systems/class_printGeneric.inc:114
 #: admin/systems/class_workstationGeneric.inc:100
-#: admin/systems/class_componentGeneric.inc:77
+#: admin/systems/class_componentGeneric.inc:76
 #: admin/systems/class_mobilePhoneGeneric.inc:110
 msgid "Mac address"
 msgstr "MAC adresa"
@@ -118,10 +118,10 @@ msgstr "MAC adresa"
 #: admin/systems/class_phoneGeneric.inc:90
 #: admin/systems/class_printGeneric.inc:114
 #: admin/systems/class_workstationGeneric.inc:100
-#: admin/systems/class_componentGeneric.inc:77
+#: admin/systems/class_componentGeneric.inc:76
 #: admin/systems/class_mobilePhoneGeneric.inc:110
 msgid "Mac address of this system"
-msgstr "MAC adresa tohoto systému"
+msgstr "Hardwarová (MAC) adresa tohoto systému"
 
 #: admin/systems/serverService-list.xml:10
 msgid "List of services"
@@ -356,7 +356,7 @@ msgid "Users which are allowed to administrate this printer"
 msgstr "uživatelé, kteří smějí spravovat tuto tiskárnu"
 
 #: admin/systems/class_printGeneric.inc:108
-#: admin/systems/class_componentGeneric.inc:73
+#: admin/systems/class_componentGeneric.inc:72
 #: admin/systems/class_mobilePhoneGeneric.inc:106
 msgid "IP address this system uses"
 msgstr "IP adresy používané tímto systémem"
@@ -551,7 +551,7 @@ msgstr "Časový limit pro obdržení výsledku"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:61
 msgid "Deref"
-msgstr ""
+msgstr "Deref"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:61
 msgid "Specifies how alias dereferencing is done when performing a search"
@@ -584,7 +584,7 @@ msgstr "Umístění souboru s tls certifikátem cert. autority"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid "TLS ReqCert"
-msgstr ""
+msgstr "TLS ReqCert"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid ""
@@ -651,11 +651,16 @@ msgid "Unknown action \"%s\""
 msgstr "Neznámá akce „%s“"
 
 #: admin/systems/class_serverService.inc:314
-#: admin/systems/class_serverService.inc:327
-#: admin/systems/class_serverService.inc:338
+#: admin/systems/class_serverService.inc:321
+#: admin/systems/class_serverService.inc:334
+#: admin/systems/class_serverService.inc:345
 #, php-format
 msgid "Could not get execute action %s on service %s."
 msgstr "Nelze spustit akci %s na službě %s."
+
+#: admin/systems/class_serverService.inc:322
+msgid "This server has no mac address."
+msgstr "Tento server nemá žádnou MAC adresu."
 
 #: admin/systems/class_serverGeneric.inc:28
 msgid "server"
@@ -672,24 +677,24 @@ msgstr "Server"
 msgid "Server information"
 msgstr "Informace o serveru"
 
-#: admin/systems/class_componentGeneric.inc:31
+#: admin/systems/class_componentGeneric.inc:30
 msgid "Component"
 msgstr "Součást"
 
-#: admin/systems/class_componentGeneric.inc:32
+#: admin/systems/class_componentGeneric.inc:31
 msgid "Component information"
 msgstr "Informace o součásti"
 
+#: admin/systems/class_componentGeneric.inc:35
 #: admin/systems/class_componentGeneric.inc:36
-#: admin/systems/class_componentGeneric.inc:37
 msgid "Network device"
 msgstr "Síťové zařízení"
 
-#: admin/systems/class_componentGeneric.inc:58
+#: admin/systems/class_componentGeneric.inc:57
 msgid "The name of the component"
 msgstr "Název součásti"
 
-#: admin/systems/class_componentGeneric.inc:62
+#: admin/systems/class_componentGeneric.inc:61
 msgid "A short description of the component"
 msgstr "Stručný popis součásti"
 
@@ -947,7 +952,7 @@ msgstr "Povinná IP adresa"
 
 #: config/systems/class_systemsPluginConfig.inc:121
 msgid "Object types tabs for which IP field should be mandatory"
-msgstr ""
+msgstr "Karty typů objektu pro které má být kolonka IP adresa povinná"
 
 #: addons/dashboard/class_dashBoardSystems.inc:31
 msgid "Statistics and information about systems"
@@ -1055,6 +1060,7 @@ msgid_plural "%1 systems are configured to run an argonaut client."
 msgstr[0] "Pouze jeden systém je nastavený pro provoz argonaut klienta."
 msgstr[1] "Dva systémy jsou nastavené pro provoz argonaut klienta."
 msgstr[2] "%1 systémů je nastaveno pro provoz argonaut klienta."
+msgstr[3] "%1 systémů je nastaveno pro provoz argonaut klienta."
 
 #: addons/dashboard/systems_stats.tpl.c:11
 msgid "But no system is configured to run an argonaut client!"
@@ -1074,5 +1080,8 @@ msgstr[1] ""
 "Dva systémy jsou nastavené pro provoz argonaut klienta, ale není nastavený "
 "žádný argonaut server!"
 msgstr[2] ""
+"%1 systémů je nastavených pro provoz argonaut klienta, ale není nastavený "
+"žádný argonaut server!"
+msgstr[3] ""
 "%1 systémů je nastavených pro provoz argonaut klienta, ale není nastavený "
 "žádný argonaut server!"
