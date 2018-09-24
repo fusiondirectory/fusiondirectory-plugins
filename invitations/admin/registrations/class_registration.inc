@@ -25,7 +25,12 @@ class RegistrationLastChangeAttribute extends DisplayLDAPAttribute
     $value = $this->getValue();
     if (!empty($value)) {
       list($ldapDate, $author) = explode('|', $value, 2);
-      $date = LdapGeneralizedTime::fromString($ldapDate);
+      try {
+        $date = LdapGeneralizedTime::fromString($ldapDate);
+      } catch (LdapGeneralizedTimeBadFormatException $e) {
+        msg_dialog::display(_('Error'), $e->getMessage(), ERROR_DIALOG);
+        $date = new DateTime();
+      }
       $date->setTimezone(timezone::getDefaultTimeZone());
       $value = sprintf(_('%s - by %s'), $date->format('Y-m-d H:i:s'), $author);
     }
