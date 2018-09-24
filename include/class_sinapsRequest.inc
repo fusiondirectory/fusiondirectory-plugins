@@ -67,6 +67,8 @@ class sinapsRequest
     $xml->addChild('codeAcquittement', $codeAcquittement);
     if ($identifiantObjApp) {
       $xml->addChild('identifiantObjApp', $identifiantObjApp);
+    } else {
+      $xml->addChild('identifiantObjApp');
     }
 
     if ($synchrone) {
