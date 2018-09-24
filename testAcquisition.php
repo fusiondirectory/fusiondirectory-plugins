@@ -9,6 +9,8 @@ require_once('/usr/share/fusiondirectory/include/functions.inc');
 require_once('/usr/share/fusiondirectory/include/class_exceptions.inc');
 require_once('include/class_sinapsRequest.inc');
 require_once('include/class_sinapsRequestAcquisition.inc');
+require_once('include/class_sinapsDiffusionHandlerJob.inc');
+
 
 function usage($error = '')
 {
@@ -144,7 +146,12 @@ try {
 
   $request = new sinapsRequestAcquisiton();
   $request->fill($user, $configuration['fdSinapsUuidPrefix'], 'codeEntiteToldapUuidCallback');
-  echo $request->getXml();
+  $xml = $request->getXml();
+  echo "Request:\n$xml\n";
+
+  $answer = sinapsDiffusionHandlerJob::sendPostRequest($configuration['fdSinapsAcquisitionURL'], $configuration['fdSinapsLogin'], $configuration['fdSinapsPassword'], $xml);
+
+  echo "Answer:\n$answer\n";
 
 } catch (jsonRPCClientRequestErrorException $e) {
   die($e->getMessage());

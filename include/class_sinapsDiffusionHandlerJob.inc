@@ -250,7 +250,7 @@ class sinapsDiffusionHandlerJob
     exit();
   }
 
-  protected static function sendPostRequest($url, $user, $password, $data)
+  public static function sendPostRequest($url, $user, $password, $data)
   {
     $ch = curl_init();
 
