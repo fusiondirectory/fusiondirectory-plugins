@@ -91,3 +91,8 @@ objectclass ( 1.3.6.1.4.1.38414.69.2.2 NAME 'fdRegistration'
     fdRegistrationLastChange $
     fdRegistrationInvitationDN $ fdRegistrationUserDN $
     fdRegistrationToken ) )
+
+objectclass ( 1.3.6.1.4.1.38414.69.2.3 NAME 'fdUserRegistration' SUP top AUXILIARY
+  DESC 'FusionDirectory - This class is used to flag users as registrations awaiting approval'
+  MUST (  )
+  MAY (  ) )
