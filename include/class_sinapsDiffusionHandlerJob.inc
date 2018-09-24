@@ -179,6 +179,8 @@ class sinapsDiffusionHandlerJob
 
   function fillObject($type, $values, &$dn)
   {
+    global $config;
+
     if ($this->dryRun) {
       $this->dumpFile(
         $this->request->identifiantTransaction().'-dryrun.txt',
@@ -202,6 +204,45 @@ class sinapsDiffusionHandlerJob
           return $errors;
         }
         $dn = $tabobject->dn;
+
+        // Try to lock the entry
+        $ldap   = $config->get_ldap_link();
+        $errors = array();
+        $ldap->cat($dn, array('userPassword'));
+        if ($ldap->count() == 1) {
+          // We can't lock empty passwords.
+          $val = $ldap->fetch();
+          if (!isset($val['userPassword'])) {
+            $errors[] = sprintf(_('Failed to get password method for account "%s". It has not been locked!'), $dn);
+            return $errors;
+          }
+          // Detect the password method and try to lock
+          $method = passwordMethod::get_method($val['userPassword'][0], $dn);
+          if ($method instanceOf passwordMethod) {
+            $success = TRUE;
+            if (!$method->is_locked($dn)) {
+              $success = $method->lock_account($dn);
+            }
+
+            // Check if everything went fine.
+            if (!$success) {
+              $hn = $method->get_hash_name();
+              if (is_array($hn)) {
+                $hn = $hn[0];
+              }
+              $errors[] = sprintf(_('Password method "%s" failed locking. Account "%s" has not been locked!'), $hn, $dn);
+            }
+          } else {
+            // Can't lock unknown methods.
+            $errors[] = sprintf(_('Failed to get password method for account "%s". It has not been locked!'), $dn);
+          }
+        } else {
+          $errors[] = sprintf(_('Could not find account "%s" in LDAP. It has not been locked!'), $dn);
+        }
+        if (!empty($errors)) {
+          return $errors;
+        }
+
         return TRUE;
       } else {
         $tabobject = objects::create($type);
@@ -211,7 +252,7 @@ class sinapsDiffusionHandlerJob
     }
     foreach ($values as $tab => $tabvalues) {
       if (!isset($tabobject->by_object[$tab])) {
-        return 'This tab does not exists: "'.$tab.'"';
+        return array('This tab does not exists: "'.$tab.'"');
       }
       if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
           $tabobject->by_object[$tab]->displayHeader &&
