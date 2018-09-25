@@ -25,6 +25,21 @@ class sinapsRequest
   public function __construct($xml)
   {
     $this->data = new SimpleXMLElement($xml);
+    if (!isset($this->data->domaine)) {
+      throw new Exception('XML content is missing "domaine" tag');
+    }
+    if (!isset($this->data->domaine['code'])) {
+      throw new Exception('"domaine" tag is missing "code" attribute');
+    }
+    if (!isset($this->data->domaine->donnees->operation)) {
+      throw new Exception('XML content is missing "domaine>donnees>operation" tag');
+    }
+    if (!isset($this->data->domaine->donnees->operation['codeOperation'])) {
+      throw new Exception('"operation" tag is missing "codeOperation" attribute');
+    }
+    if (!isset($this->data->domaine->identifiantTransaction)) {
+      throw new Exception('"identifiantTransaction" tag is missing from "domaine" tag');
+    }
   }
 
   public function codeDomaine()
@@ -57,7 +72,7 @@ class sinapsRequest
     return $this->data->domaine->donnees->operation->personne;
   }
 
-  public function acquittementFonctionnel($responseCode = 200, $codeAcquittement = 0, $message = '', $identifiantObjApp = NULL, $synchrone = TRUE)
+  public static function acquittementFonctionnel($responseCode = 200, $codeAcquittement = 0, $message = '', $identifiantObjApp = NULL, $synchrone = TRUE)
   {
     $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?>
     <Acquittement xmlns:acq="http://referentiels.SINAPS.amue.fr/acquittementFonctionnel">
