@@ -25,12 +25,11 @@ class invitation extends simplePlugin
     return array(
       'plShortName'   => _('Invitation'),
       'plDescription' => _('Invitation to fill a public form'),
-      'plIcon'        => '',
       'plObjectClass' => array('fdInvitation'),
       'plObjectType'  => array('invitation' => array(
         'name'    => _('Invitation'),
         'ou'      => get_ou('invitationRDN'),
-        'icon'    => '',
+        'icon'    => 'geticon.php?context=types&icon=application&size=16',
       )),
       'plForeignKeys'   => array(
         'fdInvitationFormDN' => 'publicForm',

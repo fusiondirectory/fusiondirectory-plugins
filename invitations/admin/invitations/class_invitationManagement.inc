@@ -26,7 +26,7 @@ class invitationManagement extends management
       'plShortName'   => _('Invitations'),
       'plTitle'       => _('Invitations management'),
       'plDescription' => _('Manage invitations'),
-      'plIcon'        => '',
+      'plIcon'        => 'geticon.php?context=categories&icon=applications-other&size=48',
       'plSection'     => 'accounts',
       'plManages'     => array('invitation'),
 

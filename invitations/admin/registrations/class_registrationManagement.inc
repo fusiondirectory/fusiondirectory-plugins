@@ -18,6 +18,29 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+/*!
+ * \brief Column rendering registration state and last change
+ */
+class RegistrationColumn extends LinkColumn
+{
+  function renderCell(ListingEntry $entry)
+  {
+    $value = $this->getAttributeValue($entry);
+    if ($value == '') {
+      return '&nbsp;';
+    } else {
+      if ($this->attributes[0] == 'fdRegistrationState') {
+        $value = RegistrationStateAttribute::renderValue($value);
+      } elseif ($this->attributes[0] == 'fdRegistrationLastChange') {
+        $value = RegistrationLastChangeAttribute::renderValue($value);
+      } else {
+        $value = htmlentities($value, ENT_COMPAT, 'UTF-8');
+      }
+      return '<a href="?plug='.$_GET['plug'].'&amp;PID='.$entry->getPid().'&amp;act=listing_edit_'.$entry->row.'" title="'.$entry->dn.'">'.$value.'</a>';
+    }
+  }
+}
+
 class registrationManagement extends management
 {
   /* Deactivate copy/paste and snapshots */
@@ -25,11 +48,11 @@ class registrationManagement extends management
   public static $skipSnapshots  = TRUE;
 
   public static $columns = array(
-    array('ObjectTypeColumn', array()),
-    array('LinkColumn',       array('attributes' => 'nameAttr',                 'label' => 'Email')),
-    array('LinkColumn',       array('attributes' => 'fdRegistrationState',      'label' => 'Status')),
-    array('LinkColumn',       array('attributes' => 'fdRegistrationLastChange', 'label' => 'Last change')),
-    array('ActionsColumn',    array('label' => 'Actions')),
+    array('ObjectTypeColumn',   array()),
+    array('LinkColumn',         array('attributes' => 'nameAttr',                 'label' => 'Email')),
+    array('RegistrationColumn', array('attributes' => 'fdRegistrationState',      'label' => 'Status')),
+    array('RegistrationColumn', array('attributes' => 'fdRegistrationLastChange', 'label' => 'Last change')),
+    array('ActionsColumn',      array('label' => 'Actions')),
   );
 
   public $neededAttrs = array(
@@ -43,7 +66,7 @@ class registrationManagement extends management
       'plShortName'   => _('Registrations'),
       'plTitle'       => _('Registrations management'),
       'plDescription' => _('Manage registrations'),
-      'plIcon'        => '',
+      'plIcon'        => 'geticon.php?context=types&icon=contact&size=48',
       'plSection'     => 'accounts',
       'plManages'     => array('registration'),
 

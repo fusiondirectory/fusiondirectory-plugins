@@ -33,18 +33,6 @@ class GeneralizedTimeDisplayAttribute extends GeneralizedTimeDateAttribute
   }
 }
 
-class UserLinkAttribute extends DisplayLDAPAttribute
-{
-  function renderFormInput ()
-  {
-    try {
-      return objects::link($this->value, 'user');
-    } catch (NonExistingLdapNodeException $e) {
-      return '<a><img src="geticon.php?context=status&amp;icon=dialog-warning&amp;size=16" alt="warning" class="center"/>&nbsp;'.sprintf(_('Unknown user: %s'), $this->value).'</a>';
-    }
-  }
-}
-
 class auditEvent extends simplePlugin
 {
   public $base;
@@ -79,7 +67,7 @@ class auditEvent extends simplePlugin
             'fdAuditDateTime', TRUE
           ),
           new DisplayLDAPAttribute  (_('Action'),       _('Action type'),     'fdAuditAction',      TRUE),
-          new UserLinkAttribute     (_('Author'),       _('Action author'),   'fdAuditAuthorDN',    TRUE),
+          new ObjectLinkAttribute   (_('Author'),       _('Action author'),   'fdAuditAuthorDN',    TRUE, 'user'),
           new DisplayLDAPAttribute  (_('Object type'),  _('Object type'),     'fdAuditObjectType',  TRUE),
           new DisplayLDAPAttribute  (_('Object'),       _('Target object'),   'fdAuditObject',      TRUE),
           new DisplayLDAPArrayAttribute(_('Attributes'), _('Target attributes'), 'fdAuditAttributes', FALSE),
