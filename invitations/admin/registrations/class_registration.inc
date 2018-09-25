@@ -20,15 +20,59 @@
 
 class RegistrationLastChangeAttribute extends DisplayLDAPAttribute
 {
+  static function renderValue($value)
+  {
+    if (empty($value)) {
+      return $value;
+    }
+
+    list($ldapDate, $author) = explode('|', $value, 2);
+    try {
+      $date = new DateTime($ldapDate);
+    } catch (Exception $e) {
+      msg_dialog::display(_('Error'), $e->getMessage(), ERROR_DIALOG);
+      $date = new DateTime();
+    }
+    $date->setTimezone(timezone::getDefaultTimeZone());
+    try {
+      $author = objects::link($author, 'user');
+    } catch (NonExistingLdapNodeException $e) {
+      $author = '<img src="geticon.php?context=types&amp;icon=application&amp;size=16" alt="" class="center"/>&nbsp;'.$author;
+    }
+    return sprintf(_('%s - by %s'), $date->format('Y-m-d H:i:s'), $author);
+  }
+
   function renderFormInput ()
   {
-    $value = $this->getValue();
-    if (!empty($value)) {
-      list($ldapDate, $author) = explode('|', $value, 2);
-      $date = LdapGeneralizedTime::fromString($ldapDate);
-      $date->setTimezone(timezone::getDefaultTimeZone());
-      $value = sprintf(_('%s - by %s'), $date->format('Y-m-d H:i:s'), $author);
+    $value = static::renderValue($this->getValue());
+    if ($this->allowSmarty) {
+      return $value;
+    } else {
+      return '{literal}'.$value.'{/literal}';
     }
+  }
+}
+
+class RegistrationStateAttribute extends DisplayLDAPAttribute
+{
+  static function renderValue($value)
+  {
+    $values = array(
+      'sent'      => array(_('Sent'),     'geticon.php?context=action&amp;icon=up&amp;size=16'),
+      'filled'    => array(_('Filled'),   'geticon.php?context=applications&amp;icon=ldap&amp;size=16'),
+      'accepted'  => array(_('Accepted'), 'geticon.php?context=status&amp;icon=task-complete&amp;size=16'),
+      'rejected'  => array(_('Rejected'), 'geticon.php?context=status&amp;icon=task-failure&amp;size=16'),
+    );
+    if (isset($values[$value])) {
+      return sprintf('<img src="%2$s" alt="" class="center"/>&nbsp;%1$s', $values[$value][0], $values[$value][1]);
+    }
+
+    return $value;
+  }
+
+  function renderFormInput ()
+  {
+    $value = static::renderValue($this->getValue());
     if ($this->allowSmarty) {
       return $value;
     } else {
@@ -44,12 +88,11 @@ class registration extends simplePlugin
     return array(
       'plShortName'   => _('Registration'),
       'plDescription' => _('Registration sent through a public form'),
-      'plIcon'        => '',
       'plObjectClass' => array('fdRegistration'),
       'plObjectType'  => array('registration' => array(
         'name'      => _('Registration'),
         'ou'        => get_ou('registrationRDN'),
-        'icon'      => '',
+        'icon'      => 'geticon.php?context=types&icon=contact&size=16',
         'mainAttr'  => 'fdRegistrationEmailAddress',
       )),
       'plForeignKeys'   => array(
@@ -72,7 +115,7 @@ class registration extends simplePlugin
             _('Email address'), _('Email address which the invitation was sent to'),
             'fdRegistrationEmailAddress', TRUE
           ),
-          new DisplayLDAPAttribute(
+          new RegistrationStateAttribute(
             _('Status'), _('State of this registration'),
             'fdRegistrationState', FALSE
           ),
@@ -80,13 +123,15 @@ class registration extends simplePlugin
             _('Last change'), _('Date and author of the last state change'),
             'fdRegistrationLastChange', FALSE
           ),
-          new DisplayLDAPAttribute(
+          new ObjectLinkAttribute(
             _('Invitation'), _('Invitation object used to create this registration'),
-            'fdRegistrationInvitationDN', FALSE
+            'fdRegistrationInvitationDN', FALSE,
+            'invitation'
           ),
-          new DisplayLDAPAttribute(
+          new ObjectLinkAttribute(
             _('User object'), _('User object created by this registration'),
-            'fdRegistrationUserDN', FALSE
+            'fdRegistrationUserDN', FALSE,
+            'user'
           ),
           new HiddenAttribute('fdRegistrationToken'),
         )
