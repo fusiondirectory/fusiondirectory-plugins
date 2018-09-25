@@ -51,16 +51,17 @@ class publicFormPage extends standAlonePage
       ),
     );
     $this->providedAttributes = array(
-      array('supannAccount','eduPersonPrincipalName'),
       array('user','givenName'),
       array('user','sn'),
       array('user','displayName'),
+      array('mailAccount','mail'),
+      array('supannAccount','eduPersonPrincipalName'),
       array('supannAccount','eduPersonAffiliation'),
       array('supannAccount','eduPersonPrimaryAffiliation'),
-      array('mailAccount','mail'),
       array('supannAccount','supannListeRouge'),
       array('supannAccount','supannEtuCursusAnnee'),
     );
+    $this->providedMultiValueAttributes = array('eduPersonAffiliation');
   }
 
   function init()
@@ -186,7 +187,11 @@ class publicFormPage extends standAlonePage
       $values = array();
       foreach ($this->providedAttributes as list($class, $attr)) {
         if (isset($_SERVER['HTTP_AUTH_'.strtoupper($attr)])) {
-          $values[$class][$attr] = $_SERVER['HTTP_AUTH_'.strtoupper($attr)];
+          if (in_array($attr, $this->providedMultiValueAttributes)) {
+            $values[$class][$attr] = explode(';', $_SERVER['HTTP_AUTH_'.strtoupper($attr)]);
+          } else {
+            $values[$class][$attr] = $_SERVER['HTTP_AUTH_'.strtoupper($attr)];
+          }
         }
       }
       $this->template->setValues($values);
