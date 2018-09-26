@@ -75,6 +75,13 @@ class registrationManagement extends management
     );
   }
 
+  function __construct()
+  {
+    parent::__construct();
+
+    $this->filter->addElement(new RegistrationStateFilterElement($this->filter));
+  }
+
   protected function configureActions()
   {
     parent::configureActions();
