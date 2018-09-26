@@ -73,7 +73,7 @@ class RegistrationStateFilterElement extends FilterElement
   {
     if (strtoupper($type) == 'REGISTRATION') {
       $stateFilters = array();
-      foreach ($this->states as $key => $infos) {
+      foreach ($this->states as $infos) {
         if ($infos['checked']) {
           $stateFilters[] = $infos['filter'];
         }
