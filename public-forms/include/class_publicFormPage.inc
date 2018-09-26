@@ -26,30 +26,13 @@ class publicFormPage extends standAlonePage
   protected $template;
   protected $done;
   protected $request;
+  protected $prefill;
 
   function __construct($interactive = TRUE)
   {
     parent::__construct($interactive);
     $this->request = $_SERVER['REQUEST_URI'];
-    /* TODO POC */
-    $this->alteredAttributes = array(
-      /* mandatory */
-      array(
-        'user'          => array('givenName', 'sn', 'displayName'),
-        'mailAccount'   => array('mail'),
-        'supannAccount' => array('eduPersonPrincipalName', 'supannEntiteAffectationPrincipale'),
-      ),
-      /* readonly */
-      array(
-        'user'          => array('uid', 'givenName', 'sn', 'displayName'),
-        'mailAccount'   => array('mail'),
-      ),
-      /* hidden */
-      array(
-        'user' => array('base'),
-        'supannAccount' => array('eduPersonAffiliation'),
-      ),
-    );
+    /* TODO POC alteredAttributes/providedAttributes/providedMultiValueAttributes */
     $this->providedAttributes = array(
       array('user','givenName'),
       array('user','sn'),
@@ -73,7 +56,31 @@ class publicFormPage extends standAlonePage
       unset($this->registration);
       unset($this->invitation);
       unset($this->template);
-      $this->done = FALSE;
+      $this->done     = FALSE;
+      $this->request  = $_SERVER['REQUEST_URI'];
+    }
+    $this->prefill = preg_match('/privateform.php/', $this->request);
+    $this->alteredAttributes = array(
+      /* mandatory */
+      array(
+        'user'          => array('givenName', 'sn', 'displayName'),
+        'mailAccount'   => array('mail'),
+        'supannAccount' => array('eduPersonPrincipalName', 'supannEntiteAffectationPrincipale'),
+      ),
+      /* readonly */
+      array(
+        'user'          => array('uid', 'givenName', 'sn', 'displayName'),
+        'mailAccount'   => array('mail'),
+      ),
+      /* hidden */
+      array(
+        'user'          => array('base'),
+        'supannAccount' => array('eduPersonAffiliation'),
+      ),
+    );
+    if (!$this->prefill) {
+      /* Do not set readonly attributes in form with no prefill from IDP */
+      unset($this->alteredAttributes[1]);
     }
   }
 
@@ -105,7 +112,8 @@ class publicFormPage extends standAlonePage
           'registration',
           array(
             'dn'                          => 'raw',
-            'fdRegistrationInvitationDN'  => 1
+            'fdRegistrationEmailAddress'  => 1,
+            'fdRegistrationInvitationDN'  => 1,
           ),
           NULL,
           '(fdRegistrationToken='.ldap_escape_f($_GET['token']).')'
@@ -185,14 +193,26 @@ class publicFormPage extends standAlonePage
       $this->template->alterAttributes(...$this->alteredAttributes);
       /* Remplir les champs depuis les headers HTTP */
       $values = array();
-      foreach ($this->providedAttributes as list($class, $attr)) {
-        if (isset($_SERVER['HTTP_AUTH_'.strtoupper($attr)])) {
-          if (in_array($attr, $this->providedMultiValueAttributes)) {
-            $values[$class][$attr] = explode(';', $_SERVER['HTTP_AUTH_'.strtoupper($attr)]);
-          } else {
-            $values[$class][$attr] = $_SERVER['HTTP_AUTH_'.strtoupper($attr)];
+      if ($this->prefill) {
+        foreach ($this->providedAttributes as list($class, $attr)) {
+          if (isset($_SERVER['HTTP_AUTH_'.strtoupper($attr)])) {
+            if (!isset($values[$class])) {
+              $values[$class] = array();
+            }
+            if (in_array($attr, $this->providedMultiValueAttributes)) {
+              $values[$class][$attr] = explode(';', $_SERVER['HTTP_AUTH_'.strtoupper($attr)]);
+            } else {
+              $values[$class][$attr] = $_SERVER['HTTP_AUTH_'.strtoupper($attr)];
+            }
           }
         }
+      }
+      if (isset($this->registration['fdRegistrationEmailAddress']) && !isset($values['mailAccount']['mail'])) {
+        /* Fill email field with target email if empty */
+        if (!isset($values['mailAccount'])) {
+          $values['mailAccount'] = array();
+        }
+        $values['mailAccount']['mail'] = $this->registration['fdRegistrationEmailAddress'];
       }
       $this->template->setValues($values);
     }
