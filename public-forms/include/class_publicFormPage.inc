@@ -80,7 +80,7 @@ class publicFormPage extends standAlonePage
     );
     if (!$this->prefill) {
       /* Do not set readonly attributes in form with no prefill from IDP */
-      unset($this->alteredAttributes[1]);
+      $this->alteredAttributes[1] = array();
     }
   }
 
@@ -227,7 +227,7 @@ class publicFormPage extends standAlonePage
       /* Fill base depending on publicForm creation base and invitation base */
       $base = $this->form['fdPublicFormCreationBase'];
       if (isset($this->invitation)) {
-        $invitationBase = preg_replace('/'.preg_quote($config->current['BASE'], '/').'$/', '', dn2base($this->invitation['dn'], get_ou('invitationRDN')));
+        $invitationBase = preg_replace('/,'.preg_quote($config->current['BASE'], '/').'$/', '', dn2base($this->invitation['dn'], get_ou('invitationRDN')));
         if (!empty($invitationBase)) {
           $base = $invitationBase.','.$base;
         }
