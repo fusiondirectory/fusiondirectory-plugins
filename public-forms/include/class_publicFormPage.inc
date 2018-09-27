@@ -96,7 +96,7 @@ class publicFormPage extends standAlonePage
   {
     if (isset($_GET['token'])) {
       if (isset($_GET['form'])) {
-        throw new FusionDirectoryException('Invalid link, both token and form are provided');
+        throw new FusionDirectoryException(_('Invalid link, both token and form are provided'));
       }
       $registrations = objects::ls(
         'registration',
@@ -110,9 +110,9 @@ class publicFormPage extends standAlonePage
         '(fdRegistrationToken='.ldap_escape_f($_GET['token']).')'
       );
       if (count($registrations) <= 0) {
-        throw new FusionDirectoryException('Could not find any invitation matching token "'.$_GET['token'].'"');
+        throw new FusionDirectoryException(sprintf(_('Could not find any invitation matching token "%s"'), $_GET['token']));
       } elseif (count($registrations) > 1) {
-        throw new FusionDirectoryException('Found several invitations matching token "'.$_GET['token'].'"');
+        throw new FusionDirectoryException(sprintf(_('Found several invitations matching token "%s"'), $_GET['token']));
       }
       $this->registration = reset($registrations);
       $invitations = objects::ls(
@@ -125,9 +125,9 @@ class publicFormPage extends standAlonePage
         '', FALSE, 'base'
       );
       if (count($invitations) <= 0) {
-        throw new FusionDirectoryException('Could not find any invitation matching registration with token "'.$_GET['token'].'"');
+        throw new FusionDirectoryException(sprintf(_('Could not find any invitation matching registration with token "%s"'), $_GET['token']));
       } elseif (count($invitations) > 1) {
-        throw new FusionDirectoryException('Found several invitations matching token "'.$_GET['token'].'"');
+        throw new FusionDirectoryException(sprintf(_('Found several invitations matching token "%s"'), $_GET['token']));
       }
       $this->invitation = reset($invitations);
       /* Search for the form object */
@@ -168,12 +168,12 @@ class publicFormPage extends standAlonePage
       );
       $formName = $_GET['form'];
     } else {
-      throw new FusionDirectoryException('Form name or token missing from URL');
+      throw new FusionDirectoryException(_('Form name or token missing from URL'));
     }
     if (count($forms) <= 0) {
-      throw new FusionDirectoryException('Form "'.$formName.'" could not be found');
+      throw new FusionDirectoryException(sprintf(_('Form "%s" could not be found'), $formName));
     } elseif (count($forms) > 1) {
-      throw new FusionDirectoryException('Found several forms named "'.$formName.'"');
+      throw new FusionDirectoryException(sprintf(_('Found several forms named "%s"'), $formName));
     }
     $this->form = reset($forms);
     if (isset($this->registration)) {
@@ -182,7 +182,7 @@ class publicFormPage extends standAlonePage
     }
     if (!isset($this->registration) && isset($this->form['fdPublicFormPrivate']) && ($this->form['fdPublicFormPrivate'] == 'TRUE')) {
       // Private form and no token
-      throw new FusionDirectoryException('Form "'.$this->form['cn'].'" is private and requires an invitation');
+      throw new FusionDirectoryException(sprintf(_('Form "%s" is private and requires an invitation'), $this->form['cn']));
     }
   }
 

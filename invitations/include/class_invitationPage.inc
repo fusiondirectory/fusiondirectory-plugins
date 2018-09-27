@@ -41,7 +41,7 @@ class invitationPage extends standAlonePage
       $this->token = $_GET['token'];
       static::checkToken($this->token);
     } else {
-      throw new FusionDirectoryException('Token is missing from URL');
+      throw new FusionDirectoryException(_('Token is missing from URL'));
     }
   }
 
@@ -62,22 +62,22 @@ class invitationPage extends standAlonePage
         '(fdRegistrationToken='.ldap_escape_f($token).')'
       );
       if (count($registrations) <= 0) {
-        throw new FusionDirectoryException('Could not find any invitation matching token "'.$token.'"');
+        throw new FusionDirectoryException(sprintf(_('Could not find any invitation matching token "%s"'), $token));
       } elseif (count($registrations) > 1) {
-        throw new FusionDirectoryException('Found several invitations matching token "'.$token.'"');
+        throw new FusionDirectoryException(sprintf(_('Found several invitations matching token "%s"'), $token));
       }
       $registration = reset($registrations);
     }
     if ($registration['fdRegistrationState'] != 'sent') {
       switch ($registration['fdRegistrationState']) {
         case 'filled':
-          throw new FusionDirectoryException('This invitation has already been filled and is waiting approval');
+          throw new FusionDirectoryException(_('This invitation has already been filled and is waiting approval'));
         case 'accepted':
-          throw new FusionDirectoryException('This invitation has already been filled and approved. If you lost your password, please use the password recovery system.');
+          throw new FusionDirectoryException(_('This invitation has already been filled and approved. If you lost your password, please use the password recovery system.'));
         case 'rejected':
-          throw new FusionDirectoryException('This invitation has already been filled and rejected. Please contact your referent to get a new invitation if needed.');
+          throw new FusionDirectoryException(_('This invitation has already been filled and rejected. Please contact your referent to get a new invitation if needed.'));
         default:
-          throw new FusionDirectoryException('This invitation is in unknown state "'.$registration['fdRegistrationState'].'"');
+          throw new FusionDirectoryException(sprintf(_('This invitation is in unknown state "%s"'), $registration['fdRegistrationState']));
       }
     }
   }
