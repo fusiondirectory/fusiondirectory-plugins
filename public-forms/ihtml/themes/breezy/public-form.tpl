@@ -17,7 +17,11 @@
           <div>
             {if $done}
               <p class="infotext">
-                {$form.fdPublicFormFinalText|escape}
+                {if $errorMessage}
+                  {$errorMessage|escape}
+                {else}
+                  {$form.fdPublicFormFinalText|escape}
+                {/if}
               </p>
             {else}
               <p class="infotext">

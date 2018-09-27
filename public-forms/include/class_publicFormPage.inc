@@ -27,6 +27,7 @@ class publicFormPage extends standAlonePage
   protected $done;
   protected $request;
   protected $prefill;
+  protected $errorMessage;
 
   function __construct($interactive = TRUE)
   {
@@ -80,7 +81,7 @@ class publicFormPage extends standAlonePage
     );
     if (!$this->prefill) {
       /* Do not set readonly attributes in form with no prefill from IDP */
-      unset($this->alteredAttributes[1]);
+      $this->alteredAttributes[1] = array();
     }
   }
 
@@ -89,6 +90,100 @@ class publicFormPage extends standAlonePage
     global $config;
 
     return TRUE;
+  }
+
+  function fetchForm()
+  {
+    if (isset($_GET['token'])) {
+      if (isset($_GET['form'])) {
+        throw new FusionDirectoryException('Invalid link, both token and form are provided');
+      }
+      $registrations = objects::ls(
+        'registration',
+        array(
+          'dn'                          => 'raw',
+          'fdRegistrationEmailAddress'  => 1,
+          'fdRegistrationInvitationDN'  => 1,
+          'fdRegistrationState'         => 1,
+        ),
+        NULL,
+        '(fdRegistrationToken='.ldap_escape_f($_GET['token']).')'
+      );
+      if (count($registrations) <= 0) {
+        throw new FusionDirectoryException('Could not find any invitation matching token "'.$_GET['token'].'"');
+      } elseif (count($registrations) > 1) {
+        throw new FusionDirectoryException('Found several invitations matching token "'.$_GET['token'].'"');
+      }
+      $this->registration = reset($registrations);
+      $invitations = objects::ls(
+        'invitation',
+        array(
+          'dn'                  => 'raw',
+          'fdInvitationFormDN'  => 1
+        ),
+        $this->registration['fdRegistrationInvitationDN'],
+        '', FALSE, 'base'
+      );
+      if (count($invitations) <= 0) {
+        throw new FusionDirectoryException('Could not find any invitation matching registration with token "'.$_GET['token'].'"');
+      } elseif (count($invitations) > 1) {
+        throw new FusionDirectoryException('Found several invitations matching token "'.$_GET['token'].'"');
+      }
+      $this->invitation = reset($invitations);
+      /* Search for the form object */
+      $forms = objects::ls(
+        'publicForm',
+        array(
+          'dn'                        => 'raw',
+          'cn'                        => 1,
+          'fdPublicFormTitle'         => 1,
+          'fdPublicFormText'          => 1,
+          'fdPublicFormFinalText'     => 1,
+          'fdPublicFormTemplateType'  => 1,
+          'fdPublicFormTemplateDN'    => 1,
+          'fdPublicFormPrivate'       => 1,
+          'fdPublicFormCreationBase'  => 1
+        ),
+        $this->invitation['fdInvitationFormDN'],
+        '', FALSE, 'base'
+      );
+      $formName = $this->invitation['fdInvitationFormDN'];
+    } elseif (isset($_GET['form'])) {
+      /* Search for the form object */
+      $forms = objects::ls(
+        'publicForm',
+        array(
+          'dn'                        => 'raw',
+          'cn'                        => 1,
+          'fdPublicFormTitle'         => 1,
+          'fdPublicFormText'          => 1,
+          'fdPublicFormFinalText'     => 1,
+          'fdPublicFormTemplateType'  => 1,
+          'fdPublicFormTemplateDN'    => 1,
+          'fdPublicFormPrivate'       => 1,
+          'fdPublicFormCreationBase'  => 1
+        ),
+        NULL,
+        '(cn='.ldap_escape_f($_GET['form']).')'
+      );
+      $formName = $_GET['form'];
+    } else {
+      throw new FusionDirectoryException('Form name or token missing from URL');
+    }
+    if (count($forms) <= 0) {
+      throw new FusionDirectoryException('Form "'.$formName.'" could not be found');
+    } elseif (count($forms) > 1) {
+      throw new FusionDirectoryException('Found several forms named "'.$formName.'"');
+    }
+    $this->form = reset($forms);
+    if (isset($this->registration)) {
+      /* We wait for form to be fetched so that form name is shown even if invitation is unusable */
+      invitationPage::checkToken($this->registration);
+    }
+    if (!isset($this->registration) && isset($this->form['fdPublicFormPrivate']) && ($this->form['fdPublicFormPrivate'] == 'TRUE')) {
+      // Private form and no token
+      throw new FusionDirectoryException('Form "'.$this->form['cn'].'" is private and requires an invitation');
+    }
   }
 
   function save_object()
@@ -104,90 +199,12 @@ class publicFormPage extends standAlonePage
     }
 
     if (!isset($this->form)) {
-      if (isset($_GET['token'])) {
-        if (isset($_GET['form'])) {
-          throw new FusionDirectoryException('Invalid link, both token and form are provided');
-        }
-        $registrations = objects::ls(
-          'registration',
-          array(
-            'dn'                          => 'raw',
-            'fdRegistrationEmailAddress'  => 1,
-            'fdRegistrationInvitationDN'  => 1,
-          ),
-          NULL,
-          '(fdRegistrationToken='.ldap_escape_f($_GET['token']).')'
-        );
-        if (count($registrations) <= 0) {
-          throw new FusionDirectoryException('Could not find any invitation matching token "'.$_GET['token'].'"');
-        } elseif (count($registrations) > 1) {
-          throw new FusionDirectoryException('Found several invitations matching token "'.$_GET['token'].'"');
-        }
-        $this->registration = reset($registrations);
-        $invitations = objects::ls(
-          'invitation',
-          array(
-            'dn'                  => 'raw',
-            'fdInvitationFormDN'  => 1
-          ),
-          $this->registration['fdRegistrationInvitationDN'],
-          '', FALSE, 'base'
-        );
-        if (count($invitations) <= 0) {
-          throw new FusionDirectoryException('Could not find any invitation matching registration with token "'.$_GET['token'].'"');
-        } elseif (count($invitations) > 1) {
-          throw new FusionDirectoryException('Found several invitations matching token "'.$_GET['token'].'"');
-        }
-        $this->invitation = reset($invitations);
-        /* Search for the form object */
-        $forms = objects::ls(
-          'publicForm',
-          array(
-            'dn'                        => 'raw',
-            'cn'                        => 1,
-            'fdPublicFormTitle'         => 1,
-            'fdPublicFormText'          => 1,
-            'fdPublicFormFinalText'     => 1,
-            'fdPublicFormTemplateType'  => 1,
-            'fdPublicFormTemplateDN'    => 1,
-            'fdPublicFormPrivate'       => 1,
-            'fdPublicFormCreationBase'  => 1
-          ),
-          $this->invitation['fdInvitationFormDN'],
-          '', FALSE, 'base'
-        );
-        $formName = $this->invitation['fdInvitationFormDN'];
-      } elseif (isset($_GET['form'])) {
-        /* Search for the form object */
-        $forms = objects::ls(
-          'publicForm',
-          array(
-            'dn'                        => 'raw',
-            'cn'                        => 1,
-            'fdPublicFormTitle'         => 1,
-            'fdPublicFormText'          => 1,
-            'fdPublicFormFinalText'     => 1,
-            'fdPublicFormTemplateType'  => 1,
-            'fdPublicFormTemplateDN'    => 1,
-            'fdPublicFormPrivate'       => 1,
-            'fdPublicFormCreationBase'  => 1
-          ),
-          NULL,
-          '(cn='.ldap_escape_f($_GET['form']).')'
-        );
-        $formName = $_GET['form'];
-      } else {
-        throw new FusionDirectoryException('Form name or token missing from URL');
-      }
-      if (count($forms) <= 0) {
-        throw new FusionDirectoryException('Form "'.$formName.'" could not be found');
-      } elseif (count($forms) > 1) {
-        throw new FusionDirectoryException('Found several forms named "'.$formName.'"');
-      }
-      $this->form = reset($forms);
-      if (!isset($this->registration) && isset($this->form['fdPublicFormPrivate']) && ($this->form['fdPublicFormPrivate'] == 'TRUE')) {
-        // Private form and no token
-        throw new FusionDirectoryException('Form "'.$this->form['cn'].'" is private and requires an invitation');
+      try {
+        $this->fetchForm();
+      } catch (FusionDirectoryException $e) {
+        $this->done         = TRUE;
+        $this->errorMessage = $e->getMessage();
+        return;
       }
       $this->template = new template($this->form['fdPublicFormTemplateType'], $this->form['fdPublicFormTemplateDN']);
       $this->template->alterAttributes(...$this->alteredAttributes);
@@ -227,7 +244,7 @@ class publicFormPage extends standAlonePage
       /* Fill base depending on publicForm creation base and invitation base */
       $base = $this->form['fdPublicFormCreationBase'];
       if (isset($this->invitation)) {
-        $invitationBase = preg_replace('/'.preg_quote($config->current['BASE'], '/').'$/', '', dn2base($this->invitation['dn'], get_ou('invitationRDN')));
+        $invitationBase = preg_replace('/,'.preg_quote($config->current['BASE'], '/').'$/', '', dn2base($this->invitation['dn'], get_ou('invitationRDN')));
         if (!empty($invitationBase)) {
           $base = $invitationBase.','.$base;
         }
@@ -282,7 +299,8 @@ class publicFormPage extends standAlonePage
       }
     }
 
-    $smarty->assign('done', $this->done);
+    $smarty->assign('done',         $this->done);
+    $smarty->assign('errorMessage', $this->errorMessage);
 
     $smarty->assign('form', $this->form);
 

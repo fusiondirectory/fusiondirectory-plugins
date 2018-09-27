@@ -39,9 +39,46 @@ class invitationPage extends standAlonePage
 
     if (isset($_GET['token'])) {
       $this->token = $_GET['token'];
+      static::checkToken($this->token);
     }
   }
 
+  static function checkToken($token)
+  {
+    if (is_object($token)) {
+      $registration = $token;
+    } else {
+      $registrations = objects::ls(
+        'registration',
+        array(
+          'dn'                          => 'raw',
+          'fdRegistrationEmailAddress'  => 1,
+          'fdRegistrationInvitationDN'  => 1,
+          'fdRegistrationState'         => 1,
+        ),
+        NULL,
+        '(fdRegistrationToken='.ldap_escape_f($token).')'
+      );
+      if (count($registrations) <= 0) {
+        throw new FusionDirectoryException('Could not find any invitation matching token "'.$token.'"');
+      } elseif (count($registrations) > 1) {
+        throw new FusionDirectoryException('Found several invitations matching token "'.$token.'"');
+      }
+      $registration = reset($registrations);
+    }
+    if ($registration['fdRegistrationState'] != 'sent') {
+      switch ($registration['fdRegistrationState']) {
+        case 'filled':
+          throw new FusionDirectoryException('This invitation has already been filled and is waiting approval');
+        case 'accepted':
+          throw new FusionDirectoryException('This invitation has already been filled and approved. If you lost your password, please use the password recovery system.');
+        case 'rejected':
+          throw new FusionDirectoryException('This invitation has already been filled and rejected. Please contact your referent to get a new invitation if needed.');
+        default:
+          throw new FusionDirectoryException('This invitation is in unknown state "'.$registration['fdRegistrationState'].'"');
+      }
+    }
+  }
 
   function execute()
   {
@@ -49,7 +86,13 @@ class invitationPage extends standAlonePage
       return;
     }
 
-    $this->save_object();
+    $errorMessage = FALSE;
+
+    try {
+      $this->save_object();
+    } catch (FusionDirectoryException $e) {
+      $errorMessage = $e->getMessage();
+    }
 
     $smarty = get_smarty();
 
@@ -58,8 +101,10 @@ class invitationPage extends standAlonePage
     $smarty->append('css_files',    get_template_path('login.css'));
     $smarty->display(get_template_path('headers.tpl'));
 
-    $smarty->assign('activated',  $this->activated);
-    $smarty->assign('token',      $this->token);
+    $smarty->assign('errorMessage', $errorMessage);
+    $smarty->assign('activated',    $this->activated);
+    $smarty->assign('token',        $this->token);
+
     $smarty->display(get_template_path('invitation.tpl'));
   }
 }
