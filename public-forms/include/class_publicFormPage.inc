@@ -176,6 +176,25 @@ class publicFormPage extends standAlonePage
       throw new FusionDirectoryException('Found several forms named "'.$formName.'"');
     }
     $this->form = reset($forms);
+    if (isset($this->registration)) {
+      /* We wait for form to be fetched so that form name is shown even if invitation is unusable */
+      if ($this->registration['fdRegistrationState'] != 'sent') {
+        switch ($this->registration['fdRegistrationState']) {
+          case 'filled':
+            throw new FusionDirectoryException('This invitation has already been filled and is waiting approval');
+            break;
+          case 'accepted':
+            throw new FusionDirectoryException('This invitation has already been filled and approved. If you lost your password, please use the password recovery system.');
+            break;
+          case 'rejected':
+            throw new FusionDirectoryException('This invitation has already been filled and rejected. Please contact your referent to get a new invitation if needed.');
+            break;
+          default:
+            throw new FusionDirectoryException('This invitation is in unknown state "'.$this->registration['fdRegistrationState'].'"');
+            break;
+        }
+      }
+    }
     if (!isset($this->registration) && isset($this->form['fdPublicFormPrivate']) && ($this->form['fdPublicFormPrivate'] == 'TRUE')) {
       // Private form and no token
       throw new FusionDirectoryException('Form "'.$this->form['cn'].'" is private and requires an invitation');
