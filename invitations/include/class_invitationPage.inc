@@ -45,7 +45,7 @@ class invitationPage extends standAlonePage
 
   static function checkToken($token)
   {
-    if (is_object($token)) {
+    if (is_array($token)) {
       $registration = $token;
     } else {
       $registrations = objects::ls(
