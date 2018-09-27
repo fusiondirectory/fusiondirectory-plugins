@@ -55,16 +55,21 @@ class RegistrationLastChangeAttribute extends DisplayLDAPAttribute
 
 class RegistrationStateAttribute extends DisplayLDAPAttribute
 {
+  static function getStates()
+  {
+    return array(
+      'sent'      => array(_('Sent'),     'geticon.php?context=actions&icon=up&size=16'),
+      'filled'    => array(_('Filled'),   'geticon.php?context=applications&icon=ldap&size=16'),
+      'accepted'  => array(_('Accepted'), 'geticon.php?context=status&icon=task-complete&size=16'),
+      'rejected'  => array(_('Rejected'), 'geticon.php?context=status&icon=task-failure&size=16'),
+    );
+  }
+
   static function renderValue($value)
   {
-    $values = array(
-      'sent'      => array(_('Sent'),     'geticon.php?context=action&amp;icon=up&amp;size=16'),
-      'filled'    => array(_('Filled'),   'geticon.php?context=applications&amp;icon=ldap&amp;size=16'),
-      'accepted'  => array(_('Accepted'), 'geticon.php?context=status&amp;icon=task-complete&amp;size=16'),
-      'rejected'  => array(_('Rejected'), 'geticon.php?context=status&amp;icon=task-failure&amp;size=16'),
-    );
+    $values = static::getStates();
     if (isset($values[$value])) {
-      return sprintf('<img src="%2$s" alt="" class="center"/>&nbsp;%1$s', $values[$value][0], $values[$value][1]);
+      return sprintf('<img src="%2$s" alt="" class="center"/>&nbsp;%1$s', $values[$value][0], htmlentities($values[$value][1], ENT_COMPAT, 'UTF-8'));
     }
 
     return $value;

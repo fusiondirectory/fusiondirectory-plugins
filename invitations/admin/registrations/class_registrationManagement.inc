@@ -58,6 +58,7 @@ class registrationManagement extends management
   public $neededAttrs = array(
     'fdRegistrationUserDN'        => '1',
     'fdRegistrationInvitationDN'  => '1',
+    'fdRegistrationState'         => '1',
   );
 
   public static function plInfo()
@@ -72,6 +73,13 @@ class registrationManagement extends management
 
       'plProvidedAcls' => array()
     );
+  }
+
+  function __construct()
+  {
+    parent::__construct();
+
+    $this->filter->addElement(new RegistrationStateFilterElement($this->filter));
   }
 
   protected function configureActions()
@@ -93,6 +101,8 @@ class registrationManagement extends management
       )
     );
     $this->actions['accept']->setSeparator(TRUE);
+    $this->actions['reject']->setEnableFunction(array($this, 'enableAcceptReject'));
+    $this->actions['accept']->setEnableFunction(array($this, 'enableAcceptReject'));
   }
 
   /* !\brief Accept registration
@@ -115,6 +125,16 @@ class registrationManagement extends management
       add_lock ($dn, $ui->dn);
 
       $entry = $this->listing->getEntry($dn);
+
+      if (!$this->enableAcceptReject('accept', $entry)) {
+        msg_dialog::display(
+          _('Error'),
+          sprintf(_('Cannot accept registration %s, it\'s not in status "Filled".'), $dn),
+          ERROR_DIALOG
+        );
+        del_lock($dn);
+        continue;
+      }
 
       // Lock user object
       if ($user = get_lock($entry['fdRegistrationUserDN'])) {
@@ -183,6 +203,17 @@ class registrationManagement extends management
       add_lock ($dn, $ui->dn);
 
       $entry = $this->listing->getEntry($dn);
+
+      if (!$this->enableAcceptReject('reject', $entry)) {
+        msg_dialog::display(
+          _('Error'),
+          sprintf(_('Cannot reject registration %s, it\'s not in status "Filled".'), $dn),
+          ERROR_DIALOG
+        );
+        del_lock($dn);
+        continue;
+      }
+
       // Delete the user
       if ($user = get_lock($entry['fdRegistrationUserDN'])) {
         msg_dialog::display(
@@ -215,6 +246,20 @@ class registrationManagement extends management
       }
       // Remove the lock for the registration object
       del_lock($dn);
+    }
+  }
+
+  /*
+   * \brief Whether accept and reject actions should be enabled for an entry
+   */
+  function enableAcceptReject($action, ListingEntry $entry = NULL)
+  {
+    if ($entry !== NULL) {
+      /* For entries */
+      return ($entry['fdRegistrationState'] == 'filled');
+    } else {
+      /* For action menu */
+      return TRUE;
     }
   }
 
