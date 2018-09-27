@@ -274,9 +274,9 @@ class registrationManagement extends management
       '', FALSE, 'base'
     );
     if (count($invitations) <= 0) {
-      throw new FusionDirectoryException('Could not find invitation "'.$entry['fdRegistrationInvitationDN'].'"');
+      throw new FusionDirectoryException(sprintf(_('Could not find invitation "%s"'), $entry['fdRegistrationInvitationDN']));
     } elseif (count($invitations) > 1) {
-      throw new FusionDirectoryException('Found several invitations "'.$entry['fdRegistrationInvitationDN'].'"');
+      throw new FusionDirectoryException(sprintf(_('Found several invitations "%s"'), $entry['fdRegistrationInvitationDN']));
     }
     $invitation = reset($invitations);
     /* Search for the form object */
@@ -297,9 +297,9 @@ class registrationManagement extends management
       '', FALSE, 'base'
     );
     if (count($forms) <= 0) {
-      throw new FusionDirectoryException('Form "'.$invitation['fdInvitationFormDN'].'" could not be found');
+      throw new FusionDirectoryException(sprintf(_('Form "%s" could not be found'), $invitation['fdInvitationFormDN']));
     } elseif (count($forms) > 1) {
-      throw new FusionDirectoryException('Found several forms named "'.$invitation['fdInvitationFormDN'].'"');
+      throw new FusionDirectoryException(sprintf(_('Found several forms named "%s"'), $invitation['fdInvitationFormDN']));
     }
     return reset($forms);
   }
