@@ -129,7 +129,7 @@ class registrationManagement extends management
       if (!$this->enableAcceptReject('accept', $entry)) {
         msg_dialog::display(
           _('Error'),
-          sprintf(_('Cannot accept registration %s, it’s not in status "Filled".'), $dn),
+          sprintf(_('Cannot accept registration %s, it\'s not in status "Filled".'), $dn),
           ERROR_DIALOG
         );
         del_lock($dn);
@@ -207,7 +207,7 @@ class registrationManagement extends management
       if (!$this->enableAcceptReject('reject', $entry)) {
         msg_dialog::display(
           _('Error'),
-          sprintf(_('Cannot reject registration %s, it’s not in status "Filled".'), $dn),
+          sprintf(_('Cannot reject registration %s, it\'s not in status "Filled".'), $dn),
           ERROR_DIALOG
         );
         del_lock($dn);
