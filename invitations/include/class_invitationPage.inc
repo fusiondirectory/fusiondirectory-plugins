@@ -40,6 +40,8 @@ class invitationPage extends standAlonePage
     if (isset($_GET['token'])) {
       $this->token = $_GET['token'];
       static::checkToken($this->token);
+    } else {
+      throw new FusionDirectoryException('Token is missing from URL');
     }
   }
 
