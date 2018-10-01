@@ -305,6 +305,11 @@ class publicFormPage extends standAlonePage
     $smarty->assign('form', $this->form);
 
     $smarty->append('css_files',    get_template_path('login.css'));
+    if (isset($this->form['fdPublicFormTitle'])) {
+      $smarty->assign('title',      sprintf(_('Form - %s'), $this->form['fdPublicFormTitle']));
+    } else {
+      $smarty->assign('title',      _('Form'));
+    }
     $smarty->display(get_template_path('headers.tpl'));
 
     $smarty->assign('activated',      $this->activated);
