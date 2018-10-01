@@ -101,6 +101,7 @@ class invitationPage extends standAlonePage
     $this->assignSmartyVars();
 
     $smarty->append('css_files',    get_template_path('login.css'));
+    $smarty->assign('title',        _('Invitation'));
     $smarty->display(get_template_path('headers.tpl'));
 
     $smarty->assign('errorMessage', $errorMessage);
