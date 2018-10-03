@@ -164,12 +164,6 @@ class sinapsRequest
           continue;
         }
         switch ((string)$method->codeTypeMethodeContact) {
-          case 'TEL':
-            $values['entite']['telephoneNumber'] = (string)$method->valeur;
-            break;
-          case 'FAX':
-            $values['entite']['facsimileTelephoneNumber'] = (string)$method->valeur;
-            break;
           case 'ADR':
             if ((string)$method->adresse->temoinAdressePrincipale != 'true') {
               trigger_error('Ignore adresse non principale');
@@ -261,26 +255,20 @@ class sinapsRequest
       $values['user']['givenName'] = preg_replace('/;.*$/', '', $personne->prenoms);
     }
 
-    //TODO: methodeContact ou methodeDeContact?
     if ($personne->methodesDeContact->methodeContact !== NULL) {
       foreach ($personne->methodesDeContact->methodeContact as $method) {
         if (!$this->checkValidite($method, $now)) {
           continue;
         }
         switch ((string)$method->typeMethodeContact) {
-          case 'TEL':
-            $values['user']['telephoneNumber'] = (string)$method->valeur;
-            //TODO supannAutreMail
-            //TODO supannAutreTelephone
-            break;
-          case 'FAX':
-            $values['user']['facsimileTelephoneNumber'] = (string)$method->valeur;
+          case 'TELPERSO':
+            $values['user']['homePhone'] = (string)$method->valeur;
             break;
           case 'MAILPERSO':
-            if (!isset($values['supannAccount']['supannMailPerso'])) {
-              $values['supannAccount']['supannMailPerso'] = array();
+            if (!isset($values['personalInfo']['fdPrivateMail'])) {
+              $values['personalInfo']['fdPrivateMail'] = array();
             }
-            $values['supannAccount']['supannMailPerso'][] = (string)$method->valeur;
+            $values['personalInfo']['fdPrivateMail'][] = (string)$method->valeur;
             break;
           case 'ADR':
             if ((string)$method->adresse->temoinAdressePrincipale != 'true') {

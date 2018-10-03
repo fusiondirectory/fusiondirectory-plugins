@@ -67,21 +67,24 @@ class sinapsRequestAcquisiton
     /* methodesDeContact */
     $i = 0;
     if (isset($user['telephoneNumber'])) {
-      $personne->methodesDeContact->methodeContact[$i]->typeMethodeContact  = 'TEL';
+      $personne->methodesDeContact->methodeContact[$i]->typeMethodeContact  = 'TELPRO';
       $personne->methodesDeContact->methodeContact[$i]->valeur              = $user['telephoneNumber'];
       $i++;
     }
     if (isset($user['facsimileTelephoneNumber'])) {
-      $personne->methodesDeContact->methodeContact[$i]->typeMethodeContact  = 'FAX';
+      $personne->methodesDeContact->methodeContact[$i]->typeMethodeContact  = 'FAXPRO';
       $personne->methodesDeContact->methodeContact[$i]->valeur              = $user['facsimileTelephoneNumber'];
       $i++;
     }
-    if (isset($user['supannMailPerso'])) {
-      foreach ($user['supannMailPerso'] as $supannMailPerso) {
-        $personne->methodesDeContact->methodeContact[$i]->typeMethodeContact  = 'MAILPERSO';
-        $personne->methodesDeContact->methodeContact[$i]->valeur              = $supannMailPerso;
-        $i++;
-      }
+    if (isset($user['mail'])) {
+      $personne->methodesDeContact->methodeContact[$i]->typeMethodeContact  = 'MAILPRO';
+      $personne->methodesDeContact->methodeContact[$i]->valeur              = $user['mail'];
+      $i++;
+    }
+    if (isset($user['mobile'])) {
+      $personne->methodesDeContact->methodeContact[$i]->typeMethodeContact  = 'TELMOBILEPRO';
+      $personne->methodesDeContact->methodeContact[$i]->valeur              = $user['mobile'];
+      $i++;
     }
 
     /* TODO - rattachements */
