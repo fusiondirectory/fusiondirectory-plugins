@@ -39,7 +39,6 @@ class publicFormPage extends standAlonePage
       array('user','sn'),
       array('user','displayName'),
       array('mailAccount','mail'),
-      array('supannAccount','eduPersonPrincipalName'),
       array('supannAccount','eduPersonAffiliation'),
       array('supannAccount','eduPersonPrimaryAffiliation'),
       array('supannAccount','supannListeRouge'),
@@ -66,11 +65,11 @@ class publicFormPage extends standAlonePage
       array(
         'user'          => array('givenName', 'sn', 'displayName'),
         'mailAccount'   => array('mail'),
-        'supannAccount' => array('eduPersonPrincipalName', 'supannEntiteAffectationPrincipale'),
+        'supannAccount' => array('supannEntiteAffectationPrincipale'),
       ),
       /* readonly */
       array(
-        'user'          => array('uid', 'givenName', 'sn', 'displayName'),
+        'user'          => array('givenName', 'sn', 'displayName'),
         'mailAccount'   => array('mail'),
       ),
       /* hidden */
@@ -186,6 +185,42 @@ class publicFormPage extends standAlonePage
     }
   }
 
+  function getPrefilledValues()
+  {
+    $values = array();
+
+    if ($this->prefill) {
+      /* Fill fields from HTTP headers */
+      foreach ($this->providedAttributes as list($class, $attr)) {
+        if (isset($_SERVER['HTTP_AUTH_'.strtoupper($attr)])) {
+          if (!isset($values[$class])) {
+            $values[$class] = array();
+          }
+          if (in_array($attr, $this->providedMultiValueAttributes)) {
+            $values[$class][$attr] = explode(';', $_SERVER['HTTP_AUTH_'.strtoupper($attr)]);
+          } else {
+            $values[$class][$attr] = $_SERVER['HTTP_AUTH_'.strtoupper($attr)];
+          }
+        }
+      }
+    }
+
+    /* Special case: eduPersonPrincipalName */
+    if (isset($_SERVER['HTTP_AUTH_'.strtoupper('eduPersonPrincipalName')])) {
+      $values['supannAccount']['supannRefId'] = array('{RENATER}'.$_SERVER['HTTP_AUTH_'.strtoupper('eduPersonPrincipalName')]);
+    }
+
+    if (isset($this->registration['fdRegistrationEmailAddress']) && !isset($values['mailAccount']['mail'])) {
+      /* Fill email field with target email if empty */
+      if (!isset($values['mailAccount'])) {
+        $values['mailAccount'] = array();
+      }
+      $values['mailAccount']['mail'] = $this->registration['fdRegistrationEmailAddress'];
+    }
+
+    return $values;
+  }
+
   function save_object()
   {
     global $config, $ui;
@@ -208,30 +243,7 @@ class publicFormPage extends standAlonePage
       }
       $this->template = new template($this->form['fdPublicFormTemplateType'], $this->form['fdPublicFormTemplateDN']);
       $this->template->alterAttributes(...$this->alteredAttributes);
-      /* Remplir les champs depuis les headers HTTP */
-      $values = array();
-      if ($this->prefill) {
-        foreach ($this->providedAttributes as list($class, $attr)) {
-          if (isset($_SERVER['HTTP_AUTH_'.strtoupper($attr)])) {
-            if (!isset($values[$class])) {
-              $values[$class] = array();
-            }
-            if (in_array($attr, $this->providedMultiValueAttributes)) {
-              $values[$class][$attr] = explode(';', $_SERVER['HTTP_AUTH_'.strtoupper($attr)]);
-            } else {
-              $values[$class][$attr] = $_SERVER['HTTP_AUTH_'.strtoupper($attr)];
-            }
-          }
-        }
-      }
-      if (isset($this->registration['fdRegistrationEmailAddress']) && !isset($values['mailAccount']['mail'])) {
-        /* Fill email field with target email if empty */
-        if (!isset($values['mailAccount'])) {
-          $values['mailAccount'] = array();
-        }
-        $values['mailAccount']['mail'] = $this->registration['fdRegistrationEmailAddress'];
-      }
-      $this->template->setValues($values);
+      $this->template->setValues($this->getPrefilledValues(), TRUE);
     }
 
     $this->template->save_object();
