@@ -186,6 +186,37 @@ class publicFormPage extends standAlonePage
     }
   }
 
+  function getPrefilledValues()
+  {
+    $values = array();
+
+    if ($this->prefill) {
+      /* Fill fields from HTTP headers */
+      foreach ($this->providedAttributes as list($class, $attr)) {
+        if (isset($_SERVER['HTTP_AUTH_'.strtoupper($attr)])) {
+          if (!isset($values[$class])) {
+            $values[$class] = array();
+          }
+          if (in_array($attr, $this->providedMultiValueAttributes)) {
+            $values[$class][$attr] = explode(';', $_SERVER['HTTP_AUTH_'.strtoupper($attr)]);
+          } else {
+            $values[$class][$attr] = $_SERVER['HTTP_AUTH_'.strtoupper($attr)];
+          }
+        }
+      }
+    }
+
+    if (isset($this->registration['fdRegistrationEmailAddress']) && !isset($values['mailAccount']['mail'])) {
+      /* Fill email field with target email if empty */
+      if (!isset($values['mailAccount'])) {
+        $values['mailAccount'] = array();
+      }
+      $values['mailAccount']['mail'] = $this->registration['fdRegistrationEmailAddress'];
+    }
+
+    return $values;
+  }
+
   function save_object()
   {
     global $config, $ui;
@@ -208,30 +239,7 @@ class publicFormPage extends standAlonePage
       }
       $this->template = new template($this->form['fdPublicFormTemplateType'], $this->form['fdPublicFormTemplateDN']);
       $this->template->alterAttributes(...$this->alteredAttributes);
-      /* Remplir les champs depuis les headers HTTP */
-      $values = array();
-      if ($this->prefill) {
-        foreach ($this->providedAttributes as list($class, $attr)) {
-          if (isset($_SERVER['HTTP_AUTH_'.strtoupper($attr)])) {
-            if (!isset($values[$class])) {
-              $values[$class] = array();
-            }
-            if (in_array($attr, $this->providedMultiValueAttributes)) {
-              $values[$class][$attr] = explode(';', $_SERVER['HTTP_AUTH_'.strtoupper($attr)]);
-            } else {
-              $values[$class][$attr] = $_SERVER['HTTP_AUTH_'.strtoupper($attr)];
-            }
-          }
-        }
-      }
-      if (isset($this->registration['fdRegistrationEmailAddress']) && !isset($values['mailAccount']['mail'])) {
-        /* Fill email field with target email if empty */
-        if (!isset($values['mailAccount'])) {
-          $values['mailAccount'] = array();
-        }
-        $values['mailAccount']['mail'] = $this->registration['fdRegistrationEmailAddress'];
-      }
-      $this->template->setValues($values);
+      $this->template->setValues($this->getPrefilledValues(), TRUE);
     }
 
     $this->template->save_object();
