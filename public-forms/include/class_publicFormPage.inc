@@ -39,7 +39,6 @@ class publicFormPage extends standAlonePage
       array('user','sn'),
       array('user','displayName'),
       array('mailAccount','mail'),
-      array('supannAccount','eduPersonPrincipalName'),
       array('supannAccount','eduPersonAffiliation'),
       array('supannAccount','eduPersonPrimaryAffiliation'),
       array('supannAccount','supannListeRouge'),
@@ -66,11 +65,11 @@ class publicFormPage extends standAlonePage
       array(
         'user'          => array('givenName', 'sn', 'displayName'),
         'mailAccount'   => array('mail'),
-        'supannAccount' => array('eduPersonPrincipalName', 'supannEntiteAffectationPrincipale'),
+        'supannAccount' => array('supannEntiteAffectationPrincipale'),
       ),
       /* readonly */
       array(
-        'user'          => array('uid', 'givenName', 'sn', 'displayName'),
+        'user'          => array('givenName', 'sn', 'displayName'),
         'mailAccount'   => array('mail'),
       ),
       /* hidden */
@@ -204,6 +203,11 @@ class publicFormPage extends standAlonePage
           }
         }
       }
+    }
+
+    /* Special case: eduPersonPrincipalName */
+    if (isset($_SERVER['HTTP_AUTH_'.strtoupper('eduPersonPrincipalName')])) {
+      $values['supannAccount']['supannRefId'] = array('{RENATER}'.$_SERVER['HTTP_AUTH_'.strtoupper('eduPersonPrincipalName')]);
     }
 
     if (isset($this->registration['fdRegistrationEmailAddress']) && !isset($values['mailAccount']['mail'])) {
