@@ -26,25 +26,41 @@ class publicFormPage extends standAlonePage
   protected $template;
   protected $done;
   protected $request;
-  protected $prefill;
   protected $errorMessage;
+  protected $prefill = FALSE;
+
+  protected $providedAttributes;
+  protected $providedMultiValueAttributes;
+  protected $alteredAttributes;
 
   function __construct($interactive = TRUE)
   {
     parent::__construct($interactive);
     $this->request = $_SERVER['REQUEST_URI'];
-    /* TODO POC alteredAttributes/providedAttributes/providedMultiValueAttributes */
-    $this->providedAttributes = array(
-      array('user','givenName'),
-      array('user','sn'),
-      array('user','displayName'),
-      array('mailAccount','mail'),
-      array('supannAccount','eduPersonAffiliation'),
-      array('supannAccount','eduPersonPrimaryAffiliation'),
-      array('supannAccount','supannListeRouge'),
-      array('supannAccount','supannEtuCursusAnnee'),
+    $this->alteredAttributes = array(
+      /* mandatory */
+      array(
+        'user'          => array('givenName', 'sn'),
+        'mailAccount'   => array('mail'),
+        'supannAccount' => array('supannEntiteAffectationPrincipale'),
+      ),
+      /* readonly */
+      array(),
+      /* hidden */
+      array(
+        'user'          => array('base'),
+        'supannAccount' => array('eduPersonAffiliation'),
+      ),
     );
-    $this->providedMultiValueAttributes = array('eduPersonAffiliation');
+  }
+
+  function reset()
+  {
+    unset($this->form);
+    unset($this->registration);
+    unset($this->invitation);
+    unset($this->template);
+    $this->done = FALSE;
   }
 
   function init()
@@ -52,35 +68,8 @@ class publicFormPage extends standAlonePage
     parent::init();
     if ($_SERVER['REQUEST_URI'] != $this->request) {
       /* Reset page if we’re called with a different token or form */
-      unset($this->form);
-      unset($this->registration);
-      unset($this->invitation);
-      unset($this->template);
-      $this->done     = FALSE;
-      $this->request  = $_SERVER['REQUEST_URI'];
-    }
-    $this->prefill = preg_match('/privateform.php/', $this->request);
-    $this->alteredAttributes = array(
-      /* mandatory */
-      array(
-        'user'          => array('givenName', 'sn', 'displayName'),
-        'mailAccount'   => array('mail'),
-        'supannAccount' => array('supannEntiteAffectationPrincipale'),
-      ),
-      /* readonly */
-      array(
-        'user'          => array('givenName', 'sn', 'displayName'),
-        'mailAccount'   => array('mail'),
-      ),
-      /* hidden */
-      array(
-        'user'          => array('base'),
-        'supannAccount' => array('eduPersonAffiliation'),
-      ),
-    );
-    if (!$this->prefill) {
-      /* Do not set readonly attributes in form with no prefill from IDP */
-      $this->alteredAttributes[1] = array();
+      $this->reset();
+      $this->request = $_SERVER['REQUEST_URI'];
     }
   }
 
@@ -203,11 +192,11 @@ class publicFormPage extends standAlonePage
           }
         }
       }
-    }
 
-    /* Special case: eduPersonPrincipalName */
-    if (isset($_SERVER['HTTP_AUTH_'.strtoupper('eduPersonPrincipalName')])) {
-      $values['supannAccount']['supannRefId'] = array('{RENATER}'.$_SERVER['HTTP_AUTH_'.strtoupper('eduPersonPrincipalName')]);
+      /* Special case: eduPersonPrincipalName */
+      if (isset($_SERVER['HTTP_AUTH_'.strtoupper('eduPersonPrincipalName')])) {
+        $values['supannAccount']['supannRefId'] = array('{RENATER}'.$_SERVER['HTTP_AUTH_'.strtoupper('eduPersonPrincipalName')]);
+      }
     }
 
     if (isset($this->registration['fdRegistrationEmailAddress']) && !isset($values['mailAccount']['mail'])) {

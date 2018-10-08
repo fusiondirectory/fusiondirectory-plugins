@@ -22,5 +22,4 @@ require_once('../include/php_setup.inc');
 require_once('functions.inc');
 require_once('variables.inc');
 
-// Private form code is the same as public code, only difference is this endpoint will be behind SSO
-publicFormPage::run();
+privateFormPage::run();
