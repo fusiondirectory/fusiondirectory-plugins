@@ -8,48 +8,48 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: admin/systems/ipmi/class_ipmiClient.inc:29
+#: admin/systems/ipmi/class_ipmiClient.inc:28
 msgid "IPMI client"
 msgstr "Klient IPMI"
 
-#: admin/systems/ipmi/class_ipmiClient.inc:30
+#: admin/systems/ipmi/class_ipmiClient.inc:29
 msgid "Edit IPMI client settings"
 msgstr "Upravit nastavení IPMI klienta"
 
-#: admin/systems/ipmi/class_ipmiClient.inc:43
+#: admin/systems/ipmi/class_ipmiClient.inc:41
 msgid "IPMI client settings"
 msgstr "Nastavení IPMI klienta"
 
-#: admin/systems/ipmi/class_ipmiClient.inc:46
+#: admin/systems/ipmi/class_ipmiClient.inc:44
 msgid "IP"
 msgstr "IP adresa"
 
-#: admin/systems/ipmi/class_ipmiClient.inc:46
+#: admin/systems/ipmi/class_ipmiClient.inc:44
 msgid "IP of the IPMI interface"
 msgstr "IP adresa IPMI rozhraní"
 
-#: admin/systems/ipmi/class_ipmiClient.inc:50
+#: admin/systems/ipmi/class_ipmiClient.inc:48
 msgid "User login"
 msgstr "Přihlašovací jméno"
 
-#: admin/systems/ipmi/class_ipmiClient.inc:50
+#: admin/systems/ipmi/class_ipmiClient.inc:48
 msgid "IPMI user login"
 msgstr "Přihlašovací jméno k IPMI"
 
-#: admin/systems/ipmi/class_ipmiClient.inc:55
+#: admin/systems/ipmi/class_ipmiClient.inc:53
 msgid "User password"
 msgstr "Heslo uživatele"
 
-#: admin/systems/ipmi/class_ipmiClient.inc:55
+#: admin/systems/ipmi/class_ipmiClient.inc:53
 msgid "IPMI user password"
 msgstr "Heslo uživatele IPMI"

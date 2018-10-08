@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Portuguese (https://www.transifex.com/fusiondirectory/teams/12202/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,220 +26,220 @@ msgstr ""
 msgid "Password policies management"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:32 admin/ppolicy/class_ppolicy.inc:35
-#: personal/ppolicy/class_ppolicyAccount.inc:29
-#: personal/ppolicy/class_ppolicyAccount.inc:44
+#: admin/ppolicy/class_ppolicy.inc:27 admin/ppolicy/class_ppolicy.inc:31
+#: personal/ppolicy/class_ppolicyAccount.inc:27
+#: personal/ppolicy/class_ppolicyAccount.inc:42
 msgid "Password policy"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:33
+#: admin/ppolicy/class_ppolicy.inc:28
 msgid "Password policy for ppolicy overlay"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:51
-#: personal/ppolicy/class_ppolicyAccount.inc:47
+#: admin/ppolicy/class_ppolicy.inc:47
+#: personal/ppolicy/class_ppolicyAccount.inc:45
 msgid "Policy"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:56
+#: admin/ppolicy/class_ppolicy.inc:52
 msgid "Policy name"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:60
+#: admin/ppolicy/class_ppolicy.inc:56
 msgid "Description"
 msgstr "Descrição"
 
-#: admin/ppolicy/class_ppolicy.inc:60
+#: admin/ppolicy/class_ppolicy.inc:56
 msgid "A short description of this policy"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:64
+#: admin/ppolicy/class_ppolicy.inc:60
 msgid "Minimum length"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:64
+#: admin/ppolicy/class_ppolicy.inc:60
 msgid ""
 "Minimum length of the user supplied password - passwords shorter than this "
 "value will be rejected"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:69
+#: admin/ppolicy/class_ppolicy.inc:65
 msgid "Passwords in history"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:69
+#: admin/ppolicy/class_ppolicy.inc:65
 msgid ""
 "Number of passwords that are maintained in a list of previously used "
 "passwords"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:74
+#: admin/ppolicy/class_ppolicy.inc:70
 msgid "Minimum password age"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:74
+#: admin/ppolicy/class_ppolicy.inc:70
 msgid "Minimum time between password changes"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:79
+#: admin/ppolicy/class_ppolicy.inc:75
 msgid "Maximum password age"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:79
+#: admin/ppolicy/class_ppolicy.inc:75
 msgid ""
 "Maximum time a password is valid, after which it is deemed to be no longer "
 "usable and any bind operations attempted with the expired password will be "
 "treated as invalid"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:84
+#: admin/ppolicy/class_ppolicy.inc:80
 msgid "Expiry warning delay"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:84
+#: admin/ppolicy/class_ppolicy.inc:80
 msgid ""
 "Defines the start time - in seconds - prior to the password expiry that "
 "password expiry warning messages are returned in bind responses. 0 to "
 "disable"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:89
+#: admin/ppolicy/class_ppolicy.inc:85
 msgid "Grace period"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:89
+#: admin/ppolicy/class_ppolicy.inc:85
 msgid ""
 "Number of times a user is allowed to successfully bind using an expired "
 "password"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:94
+#: admin/ppolicy/class_ppolicy.inc:90
 msgid "Allow user change"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:94
+#: admin/ppolicy/class_ppolicy.inc:90
 msgid "Whether users are allowed to change their own passwords"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:99
+#: admin/ppolicy/class_ppolicy.inc:95
 msgid "Safe modify"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:99
+#: admin/ppolicy/class_ppolicy.inc:95
 msgid ""
 "Whether a user must send the current password during a password modification"
 " operation"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:104
+#: admin/ppolicy/class_ppolicy.inc:100
 msgid "Check quality"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:104
+#: admin/ppolicy/class_ppolicy.inc:100
 msgid "Decides what to do if the function in \"Check module\" is not available"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:107
+#: admin/ppolicy/class_ppolicy.inc:103
 msgid "Disabled"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:107
+#: admin/ppolicy/class_ppolicy.inc:103
 msgid "Ignore errors"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:107
+#: admin/ppolicy/class_ppolicy.inc:103
 msgid "Reject on errors"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:110
+#: admin/ppolicy/class_ppolicy.inc:106
 msgid "Check module"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:110
+#: admin/ppolicy/class_ppolicy.inc:106
 msgid ""
 "Name of a user supplied password quality check module that will be called to"
 " perform password quality checks and is only relevant if pwdCheckQuality is "
 "either 1 or 2"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:116
+#: admin/ppolicy/class_ppolicy.inc:112
 msgid "Lock out"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:120
+#: admin/ppolicy/class_ppolicy.inc:116
 msgid "Activate lock out"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:120
+#: admin/ppolicy/class_ppolicy.inc:116
 msgid ""
 "Whether to lock an account that had more consecutive failed bind attempts "
 "with invalid passwords than is defined by \"Maximum failures\""
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:125
+#: admin/ppolicy/class_ppolicy.inc:121
 msgid "Lock out duration"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:125
+#: admin/ppolicy/class_ppolicy.inc:121
 msgid ""
 "Time the account remains locked after an automatic lock out (0 means for "
 "ever)"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:130
+#: admin/ppolicy/class_ppolicy.inc:126
 msgid "Maximum failures"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:130
+#: admin/ppolicy/class_ppolicy.inc:126
 msgid ""
 "Number of consecutive password failures allowed before automatic lock out"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:135
+#: admin/ppolicy/class_ppolicy.inc:131
 msgid "Failure count interval"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:135
+#: admin/ppolicy/class_ppolicy.inc:131
 msgid ""
 "Time after which the count of consecutive password failures is reset even if"
 " no successful authentication has occurred"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:140
+#: admin/ppolicy/class_ppolicy.inc:136
 msgid "Must change"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:140
+#: admin/ppolicy/class_ppolicy.inc:136
 msgid ""
 "Whether the user must change their password after an account is reset by an "
 "administrator following an automatic lockout"
 msgstr ""
 
-#: config/ppolicy/class_ppolicyConfig.inc:29
+#: config/ppolicy/class_ppolicyConfig.inc:27
 msgid "Ppolicy plugin configuration"
 msgstr ""
 
-#: config/ppolicy/class_ppolicyConfig.inc:30
+#: config/ppolicy/class_ppolicyConfig.inc:28
 msgid "FusionDirectory ppolicy plugin configuration"
 msgstr ""
 
-#: config/ppolicy/class_ppolicyConfig.inc:43
+#: config/ppolicy/class_ppolicyConfig.inc:41
 msgid "Ppolicy plugin"
 msgstr ""
 
-#: config/ppolicy/class_ppolicyConfig.inc:46
+#: config/ppolicy/class_ppolicyConfig.inc:44
 msgid "Ppolicy RDN"
 msgstr ""
 
-#: config/ppolicy/class_ppolicyConfig.inc:46
+#: config/ppolicy/class_ppolicyConfig.inc:44
 msgid "Branch in which ppolicies will be stored"
 msgstr ""
 
-#: config/ppolicy/class_ppolicyConfig.inc:51
+#: config/ppolicy/class_ppolicyConfig.inc:49
 msgid "Default ppolicy cn"
 msgstr ""
 
-#: config/ppolicy/class_ppolicyConfig.inc:51
+#: config/ppolicy/class_ppolicyConfig.inc:49
 msgid "What you put as default ppolicy in the overlay config"
 msgstr ""
 
@@ -297,59 +297,59 @@ msgstr ""
 msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:30
+#: personal/ppolicy/class_ppolicyAccount.inc:28
 msgid "Edit user's password policy"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:47
+#: personal/ppolicy/class_ppolicyAccount.inc:45
 msgid "Use a specific policy for this user"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:51
+#: personal/ppolicy/class_ppolicyAccount.inc:49
 msgid "Last password change"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:51
+#: personal/ppolicy/class_ppolicyAccount.inc:49
 msgid "Last time the password for the entry was changed"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:55
+#: personal/ppolicy/class_ppolicyAccount.inc:53
 msgid "Account locked time"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:55
+#: personal/ppolicy/class_ppolicyAccount.inc:53
 msgid "Time the account was locked"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:59
+#: personal/ppolicy/class_ppolicyAccount.inc:57
 msgid "Reset locking / force change"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:59
+#: personal/ppolicy/class_ppolicyAccount.inc:57
 msgid "Resets the lock status of this account and/or force a password change"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:62
+#: personal/ppolicy/class_ppolicyAccount.inc:60
 msgid "Force password change (resets locking)"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:62
+#: personal/ppolicy/class_ppolicyAccount.inc:60
 msgid "Reset locking (same password)"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:77
+#: personal/ppolicy/class_ppolicyAccount.inc:75
 msgid "Use the default"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:83
+#: personal/ppolicy/class_ppolicyAccount.inc:81
 msgid "Never"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:90
+#: personal/ppolicy/class_ppolicyAccount.inc:88
 msgid "Unlocked"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:92
+#: personal/ppolicy/class_ppolicyAccount.inc:90
 msgid "Locked permanently"
 msgstr ""
 

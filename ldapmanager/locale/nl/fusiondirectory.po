@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -101,8 +101,8 @@ msgstr ""
 "niet checken op FusionDirectory conformiteit."
 
 #: addons/ldapmanager/class_ldapmanager.inc:121
-#: addons/ldapmanager/class_csvimport.inc:81
-#: addons/ldapmanager/class_csvimport.inc:101
+#: addons/ldapmanager/class_csvimport.inc:80
+#: addons/ldapmanager/class_csvimport.inc:100
 msgid "Import"
 msgstr "Importeren"
 
@@ -111,7 +111,7 @@ msgid "Import LDIF file"
 msgstr "Importeer LDIF bestand"
 
 #: addons/ldapmanager/class_ldapmanager.inc:153
-#: addons/ldapmanager/class_ldapmanager.inc:198
+#: addons/ldapmanager/class_ldapmanager.inc:203
 msgid "LDAP error"
 msgstr "LDAP fout"
 
@@ -138,6 +138,25 @@ msgstr "Fout"
 msgid "Failed to generate ldap export, error was \"%s\"!"
 msgstr "Niet gelukt om de ldap export aan te maken, foutmelding is \"%s\"!"
 
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid "Warning"
+msgstr "Waarschuwing"
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid ""
+"Nothing to import, please upload a non-empty file or fill the textarea."
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#: addons/ldapmanager/class_csvimport.inc:243
+msgid "Success"
+msgstr "Succes"
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#, php-format
+msgid "%d entries successfully imported"
+msgstr ""
+
 #: addons/ldapmanager/class_csvimport.inc:29
 msgid "CSV import"
 msgstr "CSV import"
@@ -146,70 +165,66 @@ msgstr "CSV import"
 msgid "Import of csv data into the ldap tree"
 msgstr "Importeer CSV data in de LDAP tree"
 
-#: addons/ldapmanager/class_csvimport.inc:43
+#: addons/ldapmanager/class_csvimport.inc:42
 msgid "Import CSV"
 msgstr "CSV importeren"
 
-#: addons/ldapmanager/class_csvimport.inc:46
+#: addons/ldapmanager/class_csvimport.inc:45
 msgid "Object type"
 msgstr "Object type"
 
-#: addons/ldapmanager/class_csvimport.inc:46
+#: addons/ldapmanager/class_csvimport.inc:45
 msgid "Type of objects you wish to import"
 msgstr "Type van object dat je wil importeren"
 
-#: addons/ldapmanager/class_csvimport.inc:52
+#: addons/ldapmanager/class_csvimport.inc:51
 msgid "Template"
 msgstr "Sjabloon"
 
-#: addons/ldapmanager/class_csvimport.inc:52
+#: addons/ldapmanager/class_csvimport.inc:51
 msgid "Select a template to apply to imported entries"
 msgstr "Selecteer een sjabloon om toe te passen op geïmporteerde invoer"
 
-#: addons/ldapmanager/class_csvimport.inc:58
+#: addons/ldapmanager/class_csvimport.inc:57
 msgid "CSV file"
 msgstr "CSV bestand"
 
-#: addons/ldapmanager/class_csvimport.inc:58
+#: addons/ldapmanager/class_csvimport.inc:57
 msgid "Import a CSV file into your LDAP"
 msgstr "Importeer een CSV bestand in de LDAP"
 
-#: addons/ldapmanager/class_csvimport.inc:62
+#: addons/ldapmanager/class_csvimport.inc:61
 msgid "Separator"
 msgstr "Separator"
 
-#: addons/ldapmanager/class_csvimport.inc:62
+#: addons/ldapmanager/class_csvimport.inc:61
 msgid "Character used as separator in the CSV file"
 msgstr "Karakter gebruikt als seperator in het CSV bestand"
 
-#: addons/ldapmanager/class_csvimport.inc:72
+#: addons/ldapmanager/class_csvimport.inc:71
 msgid "Fixed values"
 msgstr "Vaste waarden"
 
-#: addons/ldapmanager/class_csvimport.inc:72
+#: addons/ldapmanager/class_csvimport.inc:71
 msgid ""
 "Some fixed values that you might wanna use in the filling of the template."
 msgstr ""
 "Sommige vaste waardes die je kan gebruiken bij het invullen van de template"
 
-#: addons/ldapmanager/class_csvimport.inc:88
+#: addons/ldapmanager/class_csvimport.inc:87
 msgid "Template filling"
 msgstr "Sjabloon opvulling"
 
-#: addons/ldapmanager/class_csvimport.inc:91
+#: addons/ldapmanager/class_csvimport.inc:90
 msgid "Select fields associations"
 msgstr "Selecteer veld verbindingen"
 
-#: addons/ldapmanager/class_csvimport.inc:237
+#: addons/ldapmanager/class_csvimport.inc:236
 #, php-format
 msgid "Import failed for line %d"
 msgstr "Import gefaald voor lijn %d"
 
-#: addons/ldapmanager/class_csvimport.inc:244
-msgid "Success"
-msgstr "Succes"
-
-#: addons/ldapmanager/class_csvimport.inc:244
+#: addons/ldapmanager/class_csvimport.inc:243
 #, php-format
 msgid "Successfully imported %d entries"
 msgstr "Succesvol geïmporteerde %d ingaves"

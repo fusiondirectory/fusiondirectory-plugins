@@ -8,64 +8,64 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: addons/gpg/class_pgpServerInfo.inc:31 addons/gpg/class_pgpServerInfo.inc:32
-#: addons/gpg/class_pgpServerInfo.inc:38 addons/gpg/class_pgpServerInfo.inc:56
+#: addons/gpg/class_pgpServerInfo.inc:26 addons/gpg/class_pgpServerInfo.inc:27
+#: addons/gpg/class_pgpServerInfo.inc:34 addons/gpg/class_pgpServerInfo.inc:51
 msgid "GPG server info"
 msgstr "Informace o GPG serveru"
 
-#: addons/gpg/class_pgpServerInfo.inc:60
+#: addons/gpg/class_pgpServerInfo.inc:55
 msgid "Software"
 msgstr "Software"
 
-#: addons/gpg/class_pgpServerInfo.inc:60
+#: addons/gpg/class_pgpServerInfo.inc:55
 msgid "Which software this GPG key server is running"
 msgstr "Která implementace GPG je používána na tomto serveru s klíči"
 
-#: addons/gpg/class_pgpServerInfo.inc:65
+#: addons/gpg/class_pgpServerInfo.inc:60
 msgid "GPG version"
 msgstr "Verze GPG"
 
-#: addons/gpg/class_pgpServerInfo.inc:65
+#: addons/gpg/class_pgpServerInfo.inc:60
 msgid "Which version of GPG this key server is running"
 msgstr "Jaká verze nástroje GPG je na tomto serveru s klíči provozována"
 
-#: addons/gpg/class_pgpServerInfo.inc:70
+#: addons/gpg/class_pgpServerInfo.inc:65
 msgid "Branch in which keys are stored"
 msgstr "Větev, ve kterou jsou uloženy klíče"
 
-#: addons/gpg/class_pgpServerInfo.inc:74
+#: addons/gpg/class_pgpServerInfo.inc:69
 msgid "Keys RDN"
 msgstr "Relativní rozlišený název klíčů"
 
-#: addons/gpg/class_pgpServerInfo.inc:74
+#: addons/gpg/class_pgpServerInfo.inc:69
 msgid "Branch under base in which keys are stored"
 msgstr "Větev pod základem, ve které jsou uloženy klíče"
 
-#: personal/gpg/class_gpgAccount.inc:31
-msgid "GPG keys"
-msgstr "GPG klíče"
-
-#: personal/gpg/class_gpgAccount.inc:35
-msgid "GPG keys of this user"
-msgstr "GPG klíče tohoto uživatele"
-
-#: personal/gpg/class_gpgAccount.inc:46
+#: personal/gpg/class_gpgAccount.inc:28
 msgid "GPG"
 msgstr "GPG"
 
-#: personal/gpg/class_gpgAccount.inc:47
+#: personal/gpg/class_gpgAccount.inc:29
 msgid "Edit user's GPG IDs"
 msgstr "Upravit GPG identifikátory uživatele"
+
+#: personal/gpg/class_gpgAccount.inc:44
+msgid "GPG keys"
+msgstr "GPG klíče"
+
+#: personal/gpg/class_gpgAccount.inc:48
+msgid "GPG keys of this user"
+msgstr "GPG klíče tohoto uživatele"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
 msgid "Configuration error"

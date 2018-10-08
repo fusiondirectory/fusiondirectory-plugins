@@ -8,141 +8,136 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: config/user-reminder/class_userReminderConfig.inc:28
+#: config/user-reminder/class_userReminderConfig.inc:26
 msgid "User reminder"
 msgstr "Připomínání uživatelů"
 
-#: config/user-reminder/class_userReminderConfig.inc:29
+#: config/user-reminder/class_userReminderConfig.inc:27
 msgid "Configuration for the reminder of accounts expiration"
 msgstr "Nastavení připomínání blížícího se konce platnosti uživatelských účtů"
 
-#: config/user-reminder/class_userReminderConfig.inc:40
+#: config/user-reminder/class_userReminderConfig.inc:39
 msgid "User reminder settings"
 msgstr "Nastavení připomínání uživatele"
 
-#: config/user-reminder/class_userReminderConfig.inc:43
+#: config/user-reminder/class_userReminderConfig.inc:42
 msgid "Delay before expiration"
 msgstr "Prodleva před skončením platnosti"
 
-#: config/user-reminder/class_userReminderConfig.inc:43
+#: config/user-reminder/class_userReminderConfig.inc:42
 msgid "Days before expiration to send the first mail"
 msgstr "Kolik dnů před skončením platnosti poslat první e-mail"
 
-#: config/user-reminder/class_userReminderConfig.inc:48
+#: config/user-reminder/class_userReminderConfig.inc:47
 msgid "Delay before sending again"
 msgstr "Prodleva před opětovným odesláním"
 
-#: config/user-reminder/class_userReminderConfig.inc:48
+#: config/user-reminder/class_userReminderConfig.inc:47
 msgid "Days before sending a second mail (0 to disable)"
 msgstr "Kolik dnů předem poslat druhý e-mail (0 – nula – vypíná)"
 
-#: config/user-reminder/class_userReminderConfig.inc:53
+#: config/user-reminder/class_userReminderConfig.inc:52
 msgid "Extension of the validity"
 msgstr "Prodloužení platnosti"
 
-#: config/user-reminder/class_userReminderConfig.inc:53
+#: config/user-reminder/class_userReminderConfig.inc:52
 msgid "Extension of the duration of the account in days"
 msgstr "Prodloužení platnosti účtu (dny)"
 
-#: config/user-reminder/class_userReminderConfig.inc:58
+#: config/user-reminder/class_userReminderConfig.inc:57
 msgid "Sender email address"
 msgstr "E-mailová adresa odesilatele"
 
-#: config/user-reminder/class_userReminderConfig.inc:58
+#: config/user-reminder/class_userReminderConfig.inc:57
 msgid "Email address from which mails will be sent"
 msgstr "E-mailová adresa, ze které budou zprávy posílány"
 
-#: config/user-reminder/class_userReminderConfig.inc:63
+#: config/user-reminder/class_userReminderConfig.inc:62
 msgid "Allow use of alternate addresses"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:63
+#: config/user-reminder/class_userReminderConfig.inc:62
 msgid ""
 "Whether the field gosaMailAlternateAddress should be used as well to send "
 "reminders"
 msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:70
+#: config/user-reminder/class_userReminderConfig.inc:69
 msgid "Ppolicy email settings"
-msgstr "Ppolicy e-mailová nastavení"
+msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:73
-#: config/user-reminder/class_userReminderConfig.inc:99
+#: config/user-reminder/class_userReminderConfig.inc:72
+#: config/user-reminder/class_userReminderConfig.inc:98
 msgid "Forward alerts to the manager"
 msgstr "Přesměrovat výstrahy na vedoucího"
 
-#: config/user-reminder/class_userReminderConfig.inc:73
+#: config/user-reminder/class_userReminderConfig.inc:72
 msgid "Forward ppolicy alerts to the manager"
-msgstr "Přeposlat ppolicy výstrahy na nadřízeného"
+msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:78
-#: config/user-reminder/class_userReminderConfig.inc:104
-#: config/user-reminder/class_userReminderConfig.inc:130
+#: config/user-reminder/class_userReminderConfig.inc:77
+#: config/user-reminder/class_userReminderConfig.inc:103
+#: config/user-reminder/class_userReminderConfig.inc:129
 msgid "Subject"
 msgstr "Předmět"
 
-#: config/user-reminder/class_userReminderConfig.inc:78
+#: config/user-reminder/class_userReminderConfig.inc:77
 msgid "Subject of the ppolicy alert email"
-msgstr "Předmět výstražného ppolicy e-mailu"
+msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:80
+#: config/user-reminder/class_userReminderConfig.inc:79
 msgid "[FusionDirectory] Your password is about to expire"
-msgstr "[FusionDirectory] platnost vašeho hesla se blíží ke konci"
+msgstr ""
 
-#: config/user-reminder/class_userReminderConfig.inc:83
-#: config/user-reminder/class_userReminderConfig.inc:135
+#: config/user-reminder/class_userReminderConfig.inc:82
+#: config/user-reminder/class_userReminderConfig.inc:134
 #, php-format
 msgid "Body (%s are cn and login)"
 msgstr "Tělo (%s jsou běžný název a přihlašovací jméno)"
 
-#: config/user-reminder/class_userReminderConfig.inc:84
+#: config/user-reminder/class_userReminderConfig.inc:83
 #, php-format
 msgid ""
 "Body of the ppolicy alert email, sent when the user password is about to "
 "expire. Use %s for the cn and uid."
 msgstr ""
-"Tělo ppolicy výstražného e-mailu, odeslaného když se blíží konec platnosti "
-"hesla uživatele. Použijte %s pro cn a uid."
 
-#: config/user-reminder/class_userReminderConfig.inc:86
+#: config/user-reminder/class_userReminderConfig.inc:85
 #, php-format
 msgid ""
 "Dear %1$s,\n"
 "your password for account %2$s is about to expire, please change your password: \n"
 "https://"
 msgstr ""
-"Vážený/á %1$s,\n"
-"Platnost Vašeho heslo k účtu %2$s zanedlouho skončí, prosíme změňte si ho:\n"
-"https://"
 
-#: config/user-reminder/class_userReminderConfig.inc:96
+#: config/user-reminder/class_userReminderConfig.inc:95
 msgid "Alert email settings"
 msgstr "Nastavení výstražného e-mailu"
 
-#: config/user-reminder/class_userReminderConfig.inc:104
+#: config/user-reminder/class_userReminderConfig.inc:103
 msgid "Subject of the alert email"
 msgstr "Předmět výstražného e-mailu"
 
-#: config/user-reminder/class_userReminderConfig.inc:106
+#: config/user-reminder/class_userReminderConfig.inc:105
 msgid "[FusionDirectory] Your account is about to expire"
 msgstr "[FusionDirectory] Platnost vašeho účtu se blíží ke konci"
 
-#: config/user-reminder/class_userReminderConfig.inc:109
+#: config/user-reminder/class_userReminderConfig.inc:108
 #, php-format
 msgid "Body (%s are cn, login, and link token)"
 msgstr "Tělo (%s jsou běžné názvy, přihlašovací jméno a token odkazu)"
 
-#: config/user-reminder/class_userReminderConfig.inc:110
+#: config/user-reminder/class_userReminderConfig.inc:109
 #, php-format
 msgid ""
 "Body of the alert email, sent when the user is about to expire. Use %s for "
@@ -151,7 +146,7 @@ msgstr ""
 "Tělo výstražného e-mailu, posílaného když se blíží konec platnosti "
 "uživatelského účtu. Použijte %s pro cn, uid a token."
 
-#: config/user-reminder/class_userReminderConfig.inc:112
+#: config/user-reminder/class_userReminderConfig.inc:111
 #, php-format
 msgid ""
 "Dear %1$s,\n"
@@ -162,27 +157,27 @@ msgstr ""
 "platnost vašeho účtu %2$s zanedlouho skončí. Abyste tomu předešli, navštivte tento odkaz: \n"
 "https://"
 
-#: config/user-reminder/class_userReminderConfig.inc:122
+#: config/user-reminder/class_userReminderConfig.inc:121
 msgid "Confirmation email settings"
 msgstr "Nastavení potvrzovacího e-mailu"
 
-#: config/user-reminder/class_userReminderConfig.inc:125
+#: config/user-reminder/class_userReminderConfig.inc:124
 msgid "Forward confirmation to the manager"
 msgstr "Přeposlat potvrzení vedoucímu"
 
-#: config/user-reminder/class_userReminderConfig.inc:125
+#: config/user-reminder/class_userReminderConfig.inc:124
 msgid "Forward account extension confirmation to the manager"
 msgstr "Předat potvrzení prodloužení účtu nadřízenému"
 
-#: config/user-reminder/class_userReminderConfig.inc:130
+#: config/user-reminder/class_userReminderConfig.inc:129
 msgid "Subject of the confirmation email"
 msgstr "Předmět potvrzovacího e-mailu"
 
-#: config/user-reminder/class_userReminderConfig.inc:132
+#: config/user-reminder/class_userReminderConfig.inc:131
 msgid "[FusionDirectory] Your account expiration has been postponed"
 msgstr "[FusionDirectory] Skončení platnosti vašeho účtu bylo odloženo"
 
-#: config/user-reminder/class_userReminderConfig.inc:136
+#: config/user-reminder/class_userReminderConfig.inc:135
 #, php-format
 msgid ""
 "Body of the confirmation email, sent when the user has postponed expiration."
@@ -191,7 +186,7 @@ msgstr ""
 "Tělo potvrzovacího e-mailu, poslaného když uživatel posunul skončení "
 "platnosti. Pro cn a uid použijte %s."
 
-#: config/user-reminder/class_userReminderConfig.inc:138
+#: config/user-reminder/class_userReminderConfig.inc:137
 #, php-format
 msgid ""
 "Dear %1$s,\n"

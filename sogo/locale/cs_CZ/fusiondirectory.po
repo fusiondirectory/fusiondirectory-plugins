@@ -8,18 +8,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: admin/sogo/class_sogoManagement.inc:33
-#: admin/sogo/class_sogoManagement.inc:38 config/sogo/class_sogoConfig.inc:42
+#: admin/sogo/class_sogoManagement.inc:38 config/sogo/class_sogoConfig.inc:40
 msgid "SOGo"
 msgstr "SOGo"
 
@@ -27,47 +27,47 @@ msgstr "SOGo"
 msgid "SOGo management"
 msgstr "Správa SOGo"
 
-#: admin/sogo/class_sogoResource.inc:31 admin/sogo/class_sogoResource.inc:32
-#: admin/sogo/class_sogoResource.inc:35 admin/sogo/class_sogoResource.inc:53
+#: admin/sogo/class_sogoResource.inc:26 admin/sogo/class_sogoResource.inc:27
+#: admin/sogo/class_sogoResource.inc:31 admin/sogo/class_sogoResource.inc:48
 msgid "SOGo resource"
 msgstr "SOGo prostředek"
 
-#: admin/sogo/class_sogoResource.inc:57
+#: admin/sogo/class_sogoResource.inc:52
 msgid "Entry name"
 msgstr "Název položky"
 
-#: admin/sogo/class_sogoResource.inc:57
+#: admin/sogo/class_sogoResource.inc:52
 msgid "Account name"
 msgstr "Název účtu"
 
-#: admin/sogo/class_sogoResource.inc:61
+#: admin/sogo/class_sogoResource.inc:56
 msgid "Mail"
 msgstr "E-mail"
 
-#: admin/sogo/class_sogoResource.inc:67
+#: admin/sogo/class_sogoResource.inc:62
 msgid "description"
 msgstr "popis"
 
-#: admin/sogo/class_sogoResource.inc:71
+#: admin/sogo/class_sogoResource.inc:66
 msgid "Multiplebookings"
 msgstr "Vícenásobné rezervace"
 
-#: admin/sogo/class_sogoResource.inc:76
+#: admin/sogo/class_sogoResource.inc:71
 msgid "Kind"
 msgstr "Druh"
 
-#: config/sogo/class_sogoConfig.inc:28
+#: config/sogo/class_sogoConfig.inc:26
 msgid "SOGo configuration"
 msgstr "Nastavení SOGo"
 
-#: config/sogo/class_sogoConfig.inc:29
+#: config/sogo/class_sogoConfig.inc:27
 msgid "FusionDirectory sogo plugin configuration"
 msgstr "Nastavení zásuvného modulu sogo pro FusionDirectory"
 
-#: config/sogo/class_sogoConfig.inc:45
+#: config/sogo/class_sogoConfig.inc:43
 msgid "SOGo RDN"
 msgstr "Relativní rozlišený název SOGo"
 
-#: config/sogo/class_sogoConfig.inc:45
+#: config/sogo/class_sogoConfig.inc:43
 msgid "Branch in which SOGo objects will be stored"
 msgstr "Větev, ve které budou uloženy objekty SOGo"

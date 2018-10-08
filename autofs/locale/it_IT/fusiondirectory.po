@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,24 +26,24 @@ msgstr "Auto fs"
 msgid "Auto fs management"
 msgstr "Gestione di Auto fs"
 
-#: admin/autofs/class_nisObject.inc:31 admin/autofs/class_nisObject.inc:32
-#: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:54
+#: admin/autofs/class_nisObject.inc:26 admin/autofs/class_nisObject.inc:27
+#: admin/autofs/class_nisObject.inc:30 admin/autofs/class_nisObject.inc:49
 msgid "Directory"
 msgstr "Cartella"
 
-#: admin/autofs/class_nisObject.inc:58 admin/autofs/class_nisMap.inc:53
+#: admin/autofs/class_nisObject.inc:53 admin/autofs/class_nisMap.inc:48
 msgid "Name"
 msgstr "Nome"
 
-#: admin/autofs/class_nisObject.inc:58
+#: admin/autofs/class_nisObject.inc:53
 msgid "Name of this directory"
-msgstr "Nome di questa cartella"
+msgstr "Nome di questa directory"
 
-#: admin/autofs/class_nisObject.inc:64
+#: admin/autofs/class_nisObject.inc:59
 msgid "Automount entry"
 msgstr "Voce Automount"
 
-#: admin/autofs/class_nisObject.inc:64
+#: admin/autofs/class_nisObject.inc:59
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
@@ -51,40 +51,40 @@ msgstr ""
 "Il nome di questa cartella per il demone automount.\n"
 " Ad esempio 'auto.u' oppure '-fstype=nfs domaine.tld:/mount/directory'"
 
-#: admin/autofs/class_nisObject.inc:68 admin/autofs/class_nisMap.inc:31
-#: admin/autofs/class_nisMap.inc:34 admin/autofs/class_nisMap.inc:49
+#: admin/autofs/class_nisObject.inc:63 admin/autofs/class_nisMap.inc:26
+#: admin/autofs/class_nisMap.inc:30 admin/autofs/class_nisMap.inc:44
 msgid "Mount point"
 msgstr "Punto di montaggio"
 
-#: admin/autofs/class_nisObject.inc:68
+#: admin/autofs/class_nisObject.inc:63
 msgid "The mount point this directory will be placed in"
 msgstr "Il punto di montaggio in cui sarà posta questa cartella"
 
-#: admin/autofs/class_nisMap.inc:32
+#: admin/autofs/class_nisMap.inc:27
 msgid "Autofs mount point"
 msgstr "Punto di montaggio Autofs"
 
-#: admin/autofs/class_nisMap.inc:53
+#: admin/autofs/class_nisMap.inc:48
 msgid "Name of the mount point"
 msgstr "Nome del punto di montaggio"
 
-#: config/autofs/class_autofsConfig.inc:28
+#: config/autofs/class_autofsConfig.inc:26
 msgid "Autofs configuration"
 msgstr "Configurazione di Autofs"
 
-#: config/autofs/class_autofsConfig.inc:29
+#: config/autofs/class_autofsConfig.inc:27
 msgid "FusionDirectory autofs plugin configuration"
 msgstr "Configurazione del plugin Autofs di FusionDirectory"
 
-#: config/autofs/class_autofsConfig.inc:42
+#: config/autofs/class_autofsConfig.inc:40
 msgid "AutoFS"
 msgstr "AutoFS"
 
-#: config/autofs/class_autofsConfig.inc:45
+#: config/autofs/class_autofsConfig.inc:43
 msgid "AutoFS RDN"
 msgstr "RDN Autofs"
 
-#: config/autofs/class_autofsConfig.inc:45
+#: config/autofs/class_autofsConfig.inc:43
 msgid "Branch in which automount info will be stored"
 msgstr ""
 "Ramo nel quale saranno immagazzinate le informazioni relative ad automount"

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,112 +18,112 @@ msgstr ""
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:31
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:32
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:28
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:29
 msgid "Spamassassin service"
 msgstr "Servizio Spamassassin"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:32
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:29
 msgid "Services"
 msgstr "Servizi"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:46
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:44
 msgid "Spam tagging"
 msgstr "Etichettatura dello spam"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:49
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:47
 msgid "Rewrite header"
 msgstr "Riscrivi l'intestazione"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:53
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:51
 msgid "Required score"
 msgstr "Punteggio richiesto"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:53
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:51
 msgid "Select required score to tag mail as spam"
 msgstr "Scegli il punteggio richiesto per etichettare un messaggio come spam"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:59
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:57
 msgid "Trusted networks"
 msgstr "Reti affidabili"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:66
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:64
 msgid "Flags"
 msgstr "Flags"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:69
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:67
 msgid "Enable use of bayes filtering"
 msgstr "Attiva l'uso del metodo di filtraggio bayesiano"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:74
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:72
 msgid "Enable bayes auto learning"
 msgstr "Attiva l'apprendimento automatico per il metodo bayesiano"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:79
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:77
 msgid "Enable RBL checks"
 msgstr "Attiva le verifiche RBL"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:84
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:82
 msgid "Enable use of Razor"
 msgstr "Attiva l'uso di Razor"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:89
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:87
 msgid "Enable use of DCC"
 msgstr "Attiva l'uso di DCC"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:94
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:92
 msgid "Enable use of Pyzor"
 msgstr "Attiva l'uso di Pyzor"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:109
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:107
 msgid "Rules"
 msgstr "Regole"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:113
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:121
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:111
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:119
 msgid "Edit spam rule"
 msgstr "Modifica regola dello spam"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:116
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:114
 msgid "Name"
 msgstr "Nome"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:117
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:115
 msgid "Rule"
 msgstr "Regola"
 
-#: personal/spamassassin/class_spamAssassinAccount.inc:31
-msgid "Spam rules"
-msgstr "Regole dello spam"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:38
-msgid "SpamAssassin user preferences settings"
-msgstr "Impostazioni delle preferenze utente per SpamAssassin"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:42
-msgid "Directive"
-msgstr "Direttiva"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:42
-msgid "The name of a SpamAssassin configuration directive"
-msgstr "Il nome di una direttiva di configurazione di SpamAssassin"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:47
-msgid "Value"
-msgstr "Valore"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:47
-msgid "The value for the directive"
-msgstr "Il valore della direttiva"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:54
-msgid "SpamAssassin user rules"
-msgstr "Regole dell'utente di SpamAssassin"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:65
+#: personal/spamassassin/class_spamAssassinAccount.inc:28
 msgid "SpamAssassin"
 msgstr "SpamAssassin"
 
-#: personal/spamassassin/class_spamAssassinAccount.inc:66
+#: personal/spamassassin/class_spamAssassinAccount.inc:29
 msgid "Edit user's spam rules"
 msgstr "Modifica le regole dello spam per l'utente"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:45
+msgid "Spam rules"
+msgstr "Regole dello spam"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:52
+msgid "SpamAssassin user preferences settings"
+msgstr "Impostazioni delle preferenze utente per SpamAssassin"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:56
+msgid "Directive"
+msgstr "Direttiva"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:56
+msgid "The name of a SpamAssassin configuration directive"
+msgstr "Il nome di una direttiva di configurazione di SpamAssassin"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:61
+msgid "Value"
+msgstr "Valore"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:61
+msgid "The value for the directive"
+msgstr "Il valore della direttiva"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:68
+msgid "SpamAssassin user rules"
+msgstr "Regole dell'utente di SpamAssassin"

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2018\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:123
-#: config/sudo/class_sudoConfig.inc:42
+#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:120
+#: config/sudo/class_sudoConfig.inc:40
 msgid "Sudo"
 msgstr "Sudo"
 
@@ -27,35 +27,35 @@ msgstr "Sudo"
 msgid "Sudo management"
 msgstr "Gestion sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:124 admin/sudo/class_sudoGeneric.inc:128
+#: admin/sudo/class_sudoGeneric.inc:121 admin/sudo/class_sudoGeneric.inc:125
 msgid "Sudo role"
 msgstr "Rôle sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:155
+#: admin/sudo/class_sudoGeneric.inc:151
 msgid "Role settings"
 msgstr "Paramètres du rôle"
 
-#: admin/sudo/class_sudoGeneric.inc:161
+#: admin/sudo/class_sudoGeneric.inc:157
 msgid "Name"
 msgstr "Nom"
 
-#: admin/sudo/class_sudoGeneric.inc:161
+#: admin/sudo/class_sudoGeneric.inc:157
 msgid "Name of the role"
 msgstr "Nom du rôle "
 
-#: admin/sudo/class_sudoGeneric.inc:166
+#: admin/sudo/class_sudoGeneric.inc:162
 msgid "Description"
 msgstr "Description"
 
-#: admin/sudo/class_sudoGeneric.inc:166
+#: admin/sudo/class_sudoGeneric.inc:162
 msgid "Description for the new sudo role"
 msgstr "Description du nouveau rôle sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:171
+#: admin/sudo/class_sudoGeneric.inc:167
 msgid "Commands"
 msgstr "Commandes"
 
-#: admin/sudo/class_sudoGeneric.inc:172
+#: admin/sudo/class_sudoGeneric.inc:168
 msgid ""
 "A Unix command with optional command line arguments, potentially including "
 "globbing characters (aka wild cards)"
@@ -63,65 +63,65 @@ msgstr ""
 "Une commande Unix avec éventuellement des arguments de ligne de commande, y "
 "compris des caractères joker (wildcards)"
 
-#: admin/sudo/class_sudoGeneric.inc:178
+#: admin/sudo/class_sudoGeneric.inc:174
 msgid "Run as (user)"
 msgstr "Exécuter comme (utilisateur)"
 
-#: admin/sudo/class_sudoGeneric.inc:179
+#: admin/sudo/class_sudoGeneric.inc:175
 msgid "User(s) impersonated by sudo"
 msgstr "Utilisateur(s) utilisé(s) par sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:186
+#: admin/sudo/class_sudoGeneric.inc:182
 msgid "Run as (group)"
 msgstr "Exécuter comme (groupe)"
 
-#: admin/sudo/class_sudoGeneric.inc:187
+#: admin/sudo/class_sudoGeneric.inc:183
 msgid "Group(s) impersonated by sudo"
 msgstr "Groupe(s) utilisé(s) par sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:193
+#: admin/sudo/class_sudoGeneric.inc:189
 msgid "Systems"
 msgstr "Systèmes"
 
-#: admin/sudo/class_sudoGeneric.inc:193
+#: admin/sudo/class_sudoGeneric.inc:189
 msgid "A host name, IP address or IP network"
 msgstr "Un nom d'hôte, une adresse IP ou un réseau IP"
 
-#: admin/sudo/class_sudoGeneric.inc:198
+#: admin/sudo/class_sudoGeneric.inc:194
 msgid "Users and groups"
 msgstr "Utilisateurs et groupes"
 
-#: admin/sudo/class_sudoGeneric.inc:199
+#: admin/sudo/class_sudoGeneric.inc:195
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
 msgstr ""
 "Un nom d'utilisateur, ID utilisateur (préfixé par '#'), groupe Unix (préfixé"
 " par '%')"
 
-#: admin/sudo/class_sudoGeneric.inc:203
+#: admin/sudo/class_sudoGeneric.inc:199
 msgid "Priority"
 msgstr "Priorité"
 
-#: admin/sudo/class_sudoGeneric.inc:203
+#: admin/sudo/class_sudoGeneric.inc:199
 msgid "This rule priority compared to others"
 msgstr "La priorité de cette règle par rapport aux autres"
 
-#: admin/sudo/class_sudoGeneric.inc:208
+#: admin/sudo/class_sudoGeneric.inc:204
 msgid "Valid starting from"
 msgstr "Valable à partir de"
 
-#: admin/sudo/class_sudoGeneric.inc:208
+#: admin/sudo/class_sudoGeneric.inc:204
 msgid ""
 "Start of time interval for which the entry is valid (leave empty to disable)"
 msgstr ""
 "Début de l'intervalle de temps pour lequel l'entrée est valide (laissez vide"
 " pour désactiver)"
 
-#: admin/sudo/class_sudoGeneric.inc:213
+#: admin/sudo/class_sudoGeneric.inc:209
 msgid "Valid until"
 msgstr "Valable jusque"
 
-#: admin/sudo/class_sudoGeneric.inc:213
+#: admin/sudo/class_sudoGeneric.inc:209
 msgid ""
 "End of time interval for which the entry is valid (leave empty to disable)"
 msgstr ""
@@ -142,29 +142,29 @@ msgstr "L'option sudo '%s' est invalide !"
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: admin/sudo/class_sudoOption.inc:341
-msgid "Available options"
-msgstr "Options disponibles"
-
-#: admin/sudo/class_sudoOption.inc:344
-msgid "Option"
-msgstr "Option"
-
-#: admin/sudo/class_sudoOption.inc:344
-msgid "Add a new sudo option"
-msgstr "Ajouter une nouvelle option sudo "
-
-#: admin/sudo/class_sudoOption.inc:349 admin/sudo/class_sudoOption.inc:351
-msgid "Used sudo role options"
-msgstr "Options sudo utilisées"
-
-#: admin/sudo/class_sudoOption.inc:418
+#: admin/sudo/class_sudoOption.inc:337
 msgid "Options"
 msgstr "Options"
 
-#: admin/sudo/class_sudoOption.inc:419
+#: admin/sudo/class_sudoOption.inc:338
 msgid "Sudo options"
 msgstr "Options Sudo"
+
+#: admin/sudo/class_sudoOption.inc:352
+msgid "Available options"
+msgstr "Options disponibles"
+
+#: admin/sudo/class_sudoOption.inc:355
+msgid "Option"
+msgstr "Option"
+
+#: admin/sudo/class_sudoOption.inc:355
+msgid "Add a new sudo option"
+msgstr "Ajouter une nouvelle option sudo "
+
+#: admin/sudo/class_sudoOption.inc:360 admin/sudo/class_sudoOption.inc:362
+msgid "Used sudo role options"
+msgstr "Options sudo utilisées"
 
 #: admin/sudo/class_sudoOptions.inc:53
 msgid ""
@@ -221,7 +221,7 @@ msgid ""
 " to use sudo but not for this command"
 msgstr ""
 "Si vrai, un courriel sera envoyé à l’utilisateur mailto si l’utilisateur qui"
-" lance sudo est autorisé à utiliser sudo mais pas pour cette commande"
+" lance sudo est autorisé à utiliser sudo mais pas pour cette commande\""
 
 #: admin/sudo/class_sudoOptions.inc:88
 msgid "If set, users must authenticate on a per-tty basis"
@@ -233,7 +233,7 @@ msgid ""
 " authentication)"
 msgstr ""
 "Si vrai, les utilisateurs doivent s’authentifier avec un mot de passe (ou "
-"autre moyen d’authentification)"
+"d'autre moyen d’authentification)"
 
 #: admin/sudo/class_sudoOptions.inc:98
 msgid "If set, root is allowed to run sudo too"
@@ -264,7 +264,7 @@ msgid ""
 msgstr ""
 "Si vrai et que sudo est lancé avec l’option -s, la variable d’environnement "
 "HOME sera réglée sur le dossier personnel de l’utilisateur cible "
-"(habituellement root)"
+"(habituellement root) "
 
 #: admin/sudo/class_sudoOptions.inc:123
 msgid ""
@@ -293,8 +293,8 @@ msgid ""
 "Set this flag if you want to put fully qualified host names in the sudoers "
 "file"
 msgstr ""
-"Activez cette option si vous voulez mettre des noms d’hôtes complets (FQDN) "
-"dans le fichier sudoers"
+"Activez cette option si vous voulez mettre des noms d’hôtes complets dans le"
+" fichier sudoers"
 
 #: admin/sudo/class_sudoOptions.inc:143
 msgid "If set, sudo will insult users when they enter an incorrect password"
@@ -305,7 +305,7 @@ msgstr ""
 #: admin/sudo/class_sudoOptions.inc:148
 msgid "If set, sudo will only run when the user is logged in to a real tty"
 msgstr ""
-"Si vrai, sudo se lancera uniquement quand l’utilisateur est connecté à un "
+"i vrai, sudo se lancera uniquement quand l’utilisateur est connecté à un "
 "vrai tty"
 
 #: admin/sudo/class_sudoOptions.inc:153
@@ -365,7 +365,7 @@ msgid ""
 "If set, sudo will apply the defaults specified for the target user's login "
 "class if one exists"
 msgstr ""
-"Si elle est définie, sudo appliquera les valeurs par défaut spécifiées pour "
+"Si elle est définie, sudo appliquera les valeurs par défaut spécifiées pou "
 "la classe de connexion de l'utilisateur cible s'il en existe une"
 
 #: admin/sudo/class_sudoOptions.inc:193
@@ -448,8 +448,8 @@ msgid ""
 "The default user to run commands as if the -u option is not specified on the"
 " command line"
 msgstr ""
-"L’utilisateur par défaut sous lequel lancer les commandes si l’option -u "
-"n’est pas présente"
+"L’utilisateur par défaut sous lequel lancer les commandes si l’option n’est "
+"pas présente\""
 
 #: admin/sudo/class_sudoOptions.inc:258
 msgid "Syslog priority to use when user authenticates successfully"
@@ -471,7 +471,7 @@ msgid ""
 "running sudo to have a sane PATH environment variable you may want to use "
 "this."
 msgstr ""
-"Chemin utilisé pour chaque command lancée par sudo. Si vous ne faites pas "
+"Chemin utilisé pour chaque commande lancée par sudo. Si vous ne faites pas "
 "confiance aux personnes utilisant sudo pour avoir une variable "
 "d’environnement PATH correctement remplie vous pouvez utiliser ceci."
 
@@ -530,8 +530,8 @@ msgid ""
 "This option controls when a password will be required when a user runs sudo "
 "with the -l option"
 msgstr ""
-"Cette option contrôle quand un mot de passe sera requis si un utilisateur "
-"lance sudo avec l’option -l"
+"Cette option contrôle quand un mot de passe sera requis si un utilisateur \"\n"
+"\"lance sudo avec l’option -l"
 
 #: admin/sudo/class_sudoOptions.inc:333 admin/sudo/class_sudoOptions.inc:348
 #: admin/sudo/class_sudoOptions.inc:363
@@ -549,8 +549,8 @@ msgid ""
 "Environment variables to be removed from the user's environment when the "
 "env_reset option is not in effect"
 msgstr ""
-"Les variables d’environnement à retirer de l’environnement de l’utilisateur "
-"quand l’option env_reset n’est pas active"
+"\"Les variables d’environnement à retirer de l’environnement de "
+"l’utilisateur quand l’option env_reset n’est pas active"
 
 #: admin/sudo/class_sudoOptions.inc:343 admin/sudo/class_sudoOptions.inc:358
 #: admin/sudo/class_sudoOptions.inc:373
@@ -561,18 +561,18 @@ msgstr ""
 "Les variables d’environnement à retirer de l’environnement de l’utilisateur "
 "quand l’option env_reset est active"
 
-#: config/sudo/class_sudoConfig.inc:28
+#: config/sudo/class_sudoConfig.inc:26
 msgid "Sudo configuration"
 msgstr "Configuration sudo"
 
-#: config/sudo/class_sudoConfig.inc:29
+#: config/sudo/class_sudoConfig.inc:27
 msgid "FusionDirectory sudo plugin configuration"
 msgstr "Configuration du plugin sudo"
 
-#: config/sudo/class_sudoConfig.inc:45
+#: config/sudo/class_sudoConfig.inc:43
 msgid "Sudo RDN"
 msgstr "Branche sudo"
 
-#: config/sudo/class_sudoConfig.inc:45
+#: config/sudo/class_sudoConfig.inc:43
 msgid "Branch in which sudoers will be stored"
 msgstr "Branche où seront stockés les sudoers"
