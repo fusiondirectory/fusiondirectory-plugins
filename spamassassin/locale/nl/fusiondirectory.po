@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,112 +18,112 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:31
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:32
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:28
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:29
 msgid "Spamassassin service"
 msgstr "SpamAssassin service"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:32
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:29
 msgid "Services"
 msgstr "Services"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:46
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:44
 msgid "Spam tagging"
 msgstr "Spam markering"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:49
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:47
 msgid "Rewrite header"
 msgstr "Herschrijf header"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:53
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:51
 msgid "Required score"
 msgstr "Vereiste score"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:53
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:51
 msgid "Select required score to tag mail as spam"
 msgstr "Selecteer vereiste score om mail als spam te markeren"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:59
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:57
 msgid "Trusted networks"
 msgstr "Trusted netwerken"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:66
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:64
 msgid "Flags"
 msgstr "Vlaggen"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:69
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:67
 msgid "Enable use of bayes filtering"
 msgstr "Activeer het gebruik van bayes filtering"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:74
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:72
 msgid "Enable bayes auto learning"
 msgstr "Activeer bayes autolearning"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:79
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:77
 msgid "Enable RBL checks"
 msgstr "Activeer RBL controles"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:84
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:82
 msgid "Enable use of Razor"
 msgstr "Active gebruik van Razor"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:89
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:87
 msgid "Enable use of DCC"
 msgstr "Aanzetten van DCC"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:94
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:92
 msgid "Enable use of Pyzor"
 msgstr "Activeer gebuik van Pyzor"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:109
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:107
 msgid "Rules"
 msgstr "Regels"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:113
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:121
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:111
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:119
 msgid "Edit spam rule"
 msgstr "Bewerk spam regel"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:116
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:114
 msgid "Name"
 msgstr "Naam"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:117
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:115
 msgid "Rule"
 msgstr "Regel"
 
-#: personal/spamassassin/class_spamAssassinAccount.inc:31
-msgid "Spam rules"
-msgstr "Spamregels"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:38
-msgid "SpamAssassin user preferences settings"
-msgstr "SpamAssassin gebruikervoorkeurenconfiguratie"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:42
-msgid "Directive"
-msgstr "Richtlijn"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:42
-msgid "The name of a SpamAssassin configuration directive"
-msgstr "De naam van een SpamAssassin configuratierichtlijn"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:47
-msgid "Value"
-msgstr "Waarde"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:47
-msgid "The value for the directive"
-msgstr "De waarde van de richtlijn"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:54
-msgid "SpamAssassin user rules"
-msgstr "SpamAssasin gebruikersregels"
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:65
+#: personal/spamassassin/class_spamAssassinAccount.inc:28
 msgid "SpamAssassin"
 msgstr "SpamAssassin"
 
-#: personal/spamassassin/class_spamAssassinAccount.inc:66
+#: personal/spamassassin/class_spamAssassinAccount.inc:29
 msgid "Edit user's spam rules"
 msgstr "Bewerk gebruikers-spamregels"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:45
+msgid "Spam rules"
+msgstr "Spamregels"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:52
+msgid "SpamAssassin user preferences settings"
+msgstr "SpamAssassin gebruikervoorkeurenconfiguratie"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:56
+msgid "Directive"
+msgstr "Richtlijn"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:56
+msgid "The name of a SpamAssassin configuration directive"
+msgstr "De naam van een SpamAssassin configuratierichtlijn"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:61
+msgid "Value"
+msgstr "Waarde"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:61
+msgid "The value for the directive"
+msgstr "De waarde van de richtlijn"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:68
+msgid "SpamAssassin user rules"
+msgstr "SpamAssasin gebruikersregels"

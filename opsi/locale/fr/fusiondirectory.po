@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2017\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2018\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,156 +18,156 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: admin/opsi/class_opsiSoftwareList.inc:32
+#: admin/opsi/class_opsiSoftwareList.inc:29
 msgid "OPSI list"
 msgstr "Liste OPSI"
 
-#: admin/opsi/class_opsiSoftwareList.inc:33
-#: admin/opsi/class_opsiSoftwareList.inc:37
+#: admin/opsi/class_opsiSoftwareList.inc:30
+#: admin/opsi/class_opsiSoftwareList.inc:34
 msgid "OPSI software list"
 msgstr "Liste des logiciels OPSI"
 
-#: admin/opsi/class_opsiSoftwareList.inc:54
-#: admin/opsi/class_opsiOnDemandList.inc:50
+#: admin/opsi/class_opsiSoftwareList.inc:50
+#: admin/opsi/class_opsiOnDemandList.inc:47
 msgid "Infos"
 msgstr "Informations"
 
-#: admin/opsi/class_opsiSoftwareList.inc:58
-#: admin/opsi/class_opsiProfile.inc:94
-#: admin/opsi/class_opsiOnDemandList.inc:53
+#: admin/opsi/class_opsiSoftwareList.inc:54
+#: admin/opsi/class_opsiProfile.inc:90
+#: admin/opsi/class_opsiOnDemandList.inc:50
 msgid "OPSI server"
 msgstr "Serveur OPSI"
 
-#: admin/opsi/class_opsiSoftwareList.inc:58
-#: admin/opsi/class_opsiProfile.inc:94
-#: admin/opsi/class_opsiOnDemandList.inc:53
+#: admin/opsi/class_opsiSoftwareList.inc:54
+#: admin/opsi/class_opsiProfile.inc:90
+#: admin/opsi/class_opsiOnDemandList.inc:50
 msgid "OPSI server to use for deployment"
 msgstr "Serveur OPSI a utiliser pour le déploiement"
 
-#: admin/opsi/class_opsiSoftwareList.inc:62
-#: admin/opsi/class_opsiProfile.inc:90 admin/opsi/class_opsiProfile.inc:98
-#: admin/opsi/class_opsiOnDemandList.inc:57
-#: admin/opsi/class_opsiProductProperties.inc:113
+#: admin/opsi/class_opsiSoftwareList.inc:58
+#: admin/opsi/class_opsiProfile.inc:86 admin/opsi/class_opsiProfile.inc:94
+#: admin/opsi/class_opsiOnDemandList.inc:54
+#: admin/opsi/class_opsiProductProperties.inc:111
 msgid "Name"
 msgstr "Nom"
 
-#: admin/opsi/class_opsiSoftwareList.inc:62
-#: admin/opsi/class_opsiProfile.inc:98
-#: admin/opsi/class_opsiOnDemandList.inc:57
+#: admin/opsi/class_opsiSoftwareList.inc:58
+#: admin/opsi/class_opsiProfile.inc:94
+#: admin/opsi/class_opsiOnDemandList.inc:54
 msgid "Name of this OPSI profile"
 msgstr "Nom du profil OPSI"
 
-#: admin/opsi/class_opsiSoftwareList.inc:68
-#: admin/opsi/class_opsiOnDemandList.inc:67
-#: admin/systems/opsi/class_opsiClient.inc:69
+#: admin/opsi/class_opsiSoftwareList.inc:64
+#: admin/opsi/class_opsiOnDemandList.inc:64
+#: admin/systems/opsi/class_opsiClient.inc:68
 msgid "Softwares"
 msgstr "Logiciels"
 
-#: admin/opsi/class_opsiSoftwareList.inc:72
+#: admin/opsi/class_opsiSoftwareList.inc:68
 msgid "The localboot products to install with this list"
 msgstr "Les produits localboot à installer avec cette liste"
 
-#: admin/opsi/class_opsiSoftwareList.inc:85
-#: admin/opsi/class_opsiOnDemandList.inc:71
-#: admin/systems/opsi/class_opsiClient.inc:86
+#: admin/opsi/class_opsiSoftwareList.inc:81
+#: admin/opsi/class_opsiOnDemandList.inc:68
+#: admin/systems/opsi/class_opsiClient.inc:85
 msgid "Localboot products"
 msgstr "Produit localboot OPSI"
 
-#: admin/opsi/class_opsiSoftwareList.inc:114
-#: admin/opsi/class_opsiProfile.inc:160
-#: admin/opsi/class_opsiProductProperties.inc:174
-#: admin/systems/opsi/class_opsiClient.inc:292
+#: admin/opsi/class_opsiSoftwareList.inc:110
+#: admin/opsi/class_opsiProfile.inc:156
+#: admin/opsi/class_opsiProductProperties.inc:171
+#: admin/systems/opsi/class_opsiClient.inc:338
 msgid "Could not contact argonaut server"
 msgstr "Impossible de contacter le serveur Argonaut"
 
-#: admin/opsi/class_opsiSoftwareList.inc:126
-#: admin/opsi/class_opsiProfile.inc:172
-#: admin/systems/opsi/class_opsiClient.inc:303
-#: addons/opsi/class_opsiImport.inc:105
+#: admin/opsi/class_opsiSoftwareList.inc:122
+#: admin/opsi/class_opsiProfile.inc:168
+#: admin/systems/opsi/class_opsiClient.inc:349
+#: addons/opsi/class_opsiImport.inc:104
 msgid "No mac address"
 msgstr "Pas d'adresse mac"
 
-#: admin/opsi/class_opsiSoftwareList.inc:127
-#: admin/opsi/class_opsiProfile.inc:173
-#: admin/systems/opsi/class_opsiClient.inc:304
+#: admin/opsi/class_opsiSoftwareList.inc:123
+#: admin/opsi/class_opsiProfile.inc:169
+#: admin/systems/opsi/class_opsiClient.inc:350
 #, php-format
 msgid "Server %s has no mac address configured in the LDAP"
 msgstr "Le serveur %s n'a pas d'adresse mac configure dans le LDAP"
 
-#: admin/opsi/class_opsiSoftwareList.inc:133
-#: admin/opsi/class_opsiProfile.inc:144 admin/opsi/class_opsiProfile.inc:179
-#: admin/systems/opsi/class_opsiClient.inc:310
+#: admin/opsi/class_opsiSoftwareList.inc:129
+#: admin/opsi/class_opsiProfile.inc:140 admin/opsi/class_opsiProfile.inc:175
+#: admin/systems/opsi/class_opsiClient.inc:356
 #, php-format
 msgid "Could not find %s in the LDAP"
 msgstr "Impossible de trouver %s dans l'annuaire LDAP"
 
-#: admin/opsi/class_opsiSoftwareList.inc:141
-#: admin/opsi/class_opsiProfile.inc:187
-#: admin/opsi/class_opsiProductProperties.inc:189
-#: admin/systems/opsi/class_opsiClient.inc:338
-#: admin/systems/opsi/class_opsiClient.inc:350
+#: admin/opsi/class_opsiSoftwareList.inc:137
+#: admin/opsi/class_opsiProfile.inc:183
+#: admin/opsi/class_opsiProductProperties.inc:186
+#: admin/systems/opsi/class_opsiClient.inc:384
+#: admin/systems/opsi/class_opsiClient.inc:396
 msgid "Failed to contact OPSI server"
 msgstr "Impossible de contacter le serveur OPSI"
 
-#: admin/opsi/class_opsiSoftwareList.inc:153
-#: admin/systems/opsi/class_opsiClient.inc:357
+#: admin/opsi/class_opsiSoftwareList.inc:149
+#: admin/systems/opsi/class_opsiClient.inc:403
 #, php-format
 msgid "%s (%s-%s)"
 msgstr "%s (%s-%s)"
 
-#: admin/opsi/class_opsiProfile.inc:67 admin/opsi/class_opsiProfile.inc:68
-#: admin/opsi/class_opsiProfile.inc:72
+#: admin/opsi/class_opsiProfile.inc:64 admin/opsi/class_opsiProfile.inc:65
+#: admin/opsi/class_opsiProfile.inc:69
 msgid "OPSI profile"
 msgstr "Profil OPSI"
 
-#: admin/opsi/class_opsiProfile.inc:104
+#: admin/opsi/class_opsiProfile.inc:100
 msgid "Entries"
 msgstr "Entrées"
 
-#: admin/opsi/class_opsiProfile.inc:107
+#: admin/opsi/class_opsiProfile.inc:103
 msgid "Netboot product"
 msgstr "Produit netboot OPSI"
 
-#: admin/opsi/class_opsiProfile.inc:107
+#: admin/opsi/class_opsiProfile.inc:103
 msgid "The netboot product to use for this profile"
 msgstr "Le produit netboot à utiliser pour ce profil"
 
-#: admin/opsi/class_opsiProfile.inc:112
+#: admin/opsi/class_opsiProfile.inc:108
 msgid "Software lists"
 msgstr "Liste des logiciels OPSI"
 
-#: admin/opsi/class_opsiProfile.inc:112
+#: admin/opsi/class_opsiProfile.inc:108
 msgid "Software lists that will be installed with this profile"
 msgstr "Listes de logiciels qui seront installés avec ce profil"
 
-#: admin/opsi/class_opsiProfile.inc:206
+#: admin/opsi/class_opsiProfile.inc:202
 #, php-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: admin/opsi/class_opsiOnDemandList.inc:28
-#: admin/opsi/class_opsiOnDemandList.inc:33
+#: admin/opsi/class_opsiOnDemandList.inc:26
+#: admin/opsi/class_opsiOnDemandList.inc:31
 msgid "OPSI ondemand list"
 msgstr "Liste ondemand OPSI"
 
-#: admin/opsi/class_opsiOnDemandList.inc:29
+#: admin/opsi/class_opsiOnDemandList.inc:27
 msgid "OPSI on demand software list"
 msgstr "Liste de logiciels à la demande OPSI"
 
-#: admin/opsi/class_opsiOnDemandList.inc:61
+#: admin/opsi/class_opsiOnDemandList.inc:58
 msgid "Show details"
 msgstr "Montrer les détails"
 
-#: admin/opsi/class_opsiOnDemandList.inc:61
+#: admin/opsi/class_opsiOnDemandList.inc:58
 msgid "Show further information to the user"
 msgstr "Montrer plus d'informations à ,l'utilisateur"
 
-#: admin/opsi/class_opsiOnDemandList.inc:71
+#: admin/opsi/class_opsiOnDemandList.inc:68
 msgid "The localboot products to put in this list"
 msgstr "Les produits localboot à mettre dans cette liste"
 
 #: admin/opsi/class_opsiProfileManagement.inc:33
-#: config/opsi/class_opsiConfig.inc:42
+#: config/opsi/class_opsiConfig.inc:40
 #: addons/dashboard/class_dashBoardOpsi.inc:26
 msgid "OPSI"
 msgstr "OPSI"
@@ -176,167 +176,184 @@ msgstr "OPSI"
 msgid "OPSI profile management"
 msgstr "Gestion des profils OPSI"
 
-#: admin/opsi/class_opsiProductProperties.inc:100
-#: admin/opsi/class_opsiProductProperties.inc:101
+#: admin/opsi/class_opsiProductProperties.inc:98
+#: admin/opsi/class_opsiProductProperties.inc:99
 msgid "Product properties"
 msgstr "Propriétés du produit"
 
-#: admin/opsi/class_opsiProductProperties.inc:118
+#: admin/opsi/class_opsiProductProperties.inc:116
 msgid "Properties of the products of this profile"
 msgstr "Propriétés des produits de ce profil"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:29
-#: admin/systems/services/opsi/class_serviceOPSI.inc:30
+#: admin/systems/services/opsi/class_serviceOPSI.inc:26
+#: admin/systems/services/opsi/class_serviceOPSI.inc:27
 msgid "OPSI service"
 msgstr "Service OPSI"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:30
+#: admin/systems/services/opsi/class_serviceOPSI.inc:27
 msgid "Services"
 msgstr "Service"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:41
+#: admin/systems/services/opsi/class_serviceOPSI.inc:39
 msgid "OPSI Server information"
 msgstr "Informations sur le serveur OPSI"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:44
+#: admin/systems/services/opsi/class_serviceOPSI.inc:42
 msgid "Server URI"
 msgstr "URI du serveur"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:44
+#: admin/systems/services/opsi/class_serviceOPSI.inc:42
 msgid "The URI to use for connection"
 msgstr "URI utilisé pour la connexion au serveur"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:48
+#: admin/systems/services/opsi/class_serviceOPSI.inc:46
 msgid "User"
 msgstr "Utilisateur"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:48
+#: admin/systems/services/opsi/class_serviceOPSI.inc:46
 msgid "The user to use for connection"
 msgstr "Nom du compte utilisé pour la connexion"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:52
+#: admin/systems/services/opsi/class_serviceOPSI.inc:50
 msgid "Password"
 msgstr "Mot de passe"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:52
+#: admin/systems/services/opsi/class_serviceOPSI.inc:50
 msgid "The password to use for connection"
 msgstr "Mot de passe utilisé pour la connexion"
 
-#: admin/systems/opsi/class_opsiLogView.inc:32
-#: admin/systems/opsi/class_opsiLogView.inc:36
-msgid "Available logs"
-msgstr "Journaux systèmes disponibles"
-
-#: admin/systems/opsi/class_opsiLogView.inc:36
-msgid "Available log files"
-msgstr "Journaux systèmes disponibles"
-
-#: admin/systems/opsi/class_opsiLogView.inc:40
-msgid "Content of the selected log"
-msgstr "Contenu du journal système sélectionné"
-
-#: admin/systems/opsi/class_opsiLogView.inc:52
+#: admin/systems/opsi/class_opsiLogView.inc:31
 msgid "OPSI Logs"
 msgstr "Journaux systèmes OPSI"
 
-#: admin/systems/opsi/class_opsiLogView.inc:53
+#: admin/systems/opsi/class_opsiLogView.inc:32
 msgid "OPSI Logs Viewer"
 msgstr "Afficheur de journaux systèmes OPSI"
 
-#: admin/systems/opsi/class_opsiLogView.inc:82
-#: admin/systems/opsi/class_opsiLogView.inc:113
+#: admin/systems/opsi/class_opsiLogView.inc:44
+#: admin/systems/opsi/class_opsiLogView.inc:48
+msgid "Available logs"
+msgstr "Journaux systèmes disponibles"
+
+#: admin/systems/opsi/class_opsiLogView.inc:48
+msgid "Available log files"
+msgstr "Journaux systèmes disponibles"
+
+#: admin/systems/opsi/class_opsiLogView.inc:52
+msgid "Content of the selected log"
+msgstr "Contenu du journal système sélectionné"
+
+#: admin/systems/opsi/class_opsiLogView.inc:81
+#: admin/systems/opsi/class_opsiLogView.inc:112
 #: addons/dashboard/class_dashBoardOpsi.inc:91
 msgid "Error"
 msgstr "Erreur"
 
-#: admin/systems/opsi/class_opsiClient.inc:36
+#: admin/systems/opsi/class_opsiClient.inc:35
 msgid "OPSI client"
 msgstr "Client OPSI"
 
-#: admin/systems/opsi/class_opsiClient.inc:37
+#: admin/systems/opsi/class_opsiClient.inc:36
 msgid "Edit OPSI client settings"
 msgstr " Édition des paramètres OPSI du client"
 
-#: admin/systems/opsi/class_opsiClient.inc:56
+#: admin/systems/opsi/class_opsiClient.inc:55
 msgid "OPSI Client"
 msgstr "Client OPSI"
 
-#: admin/systems/opsi/class_opsiClient.inc:59
+#: admin/systems/opsi/class_opsiClient.inc:58
 msgid "OPSI Server"
 msgstr "Serveur OPSI"
 
-#: admin/systems/opsi/class_opsiClient.inc:59
+#: admin/systems/opsi/class_opsiClient.inc:58
 msgid "The OPSI Server this client is connected to"
 msgstr "Serveur OPSI sur lequel le client est connecté"
 
-#: admin/systems/opsi/class_opsiClient.inc:63
+#: admin/systems/opsi/class_opsiClient.inc:62
 msgid "OPSI Profile"
 msgstr "Profil OPSI"
 
-#: admin/systems/opsi/class_opsiClient.inc:63
+#: admin/systems/opsi/class_opsiClient.inc:62
 msgid "The OPSI Profile to apply to this client"
 msgstr "Le profil OPSI à appliquer à ce client"
 
-#: admin/systems/opsi/class_opsiClient.inc:73
+#: admin/systems/opsi/class_opsiClient.inc:72
 msgid "The localboot products to setup on this host"
-msgstr "Les produits localboot à activer sur ce système"
+msgstr "Les produits localboot à configurer sur cet hôte"
 
-#: admin/systems/opsi/class_opsiClient.inc:95
+#: admin/systems/opsi/class_opsiClient.inc:92
+msgid "Inherit group localboots"
+msgstr "Hériter les groupes locaux"
+
+#: admin/systems/opsi/class_opsiClient.inc:92
+msgid ""
+"If this is checked localboot configured in the group OPSI tab will be "
+"installed along with the localboots configured here"
+msgstr ""
+"Si cette case est cochée, les localboot configuré dans l'onglet OPSI du "
+"groupe seront installé avec les configurations locales configurées ici"
+
+#: admin/systems/opsi/class_opsiClient.inc:98
 msgid "Information"
 msgstr "Informations"
 
-#: admin/systems/opsi/class_opsiClient.inc:98
+#: admin/systems/opsi/class_opsiClient.inc:101
 msgid "Last seen"
-msgstr "Dernière connexion"
+msgstr "Dernière vue"
 
-#: admin/systems/opsi/class_opsiClient.inc:98
+#: admin/systems/opsi/class_opsiClient.inc:101
 msgid "Last time this OPSI client was seen by the OPSI server"
 msgstr "La dernière fois que ce client OPSI a été vu par le serveur OPSI"
 
-#: admin/systems/opsi/class_opsiClient.inc:145
+#: admin/systems/opsi/class_opsiClient.inc:174
 msgid "Could not get macAddress for OPSI server!"
 msgstr "Impossible d'obtenir l'adresse mac pour le serveur OPSI !"
 
-#: admin/systems/opsi/class_opsiClient.inc:154
-#: admin/systems/opsi/class_opsiClient.inc:265
+#: admin/systems/opsi/class_opsiClient.inc:183
+#: admin/systems/opsi/class_opsiClient.inc:294
 msgid "Could not remove OPSI information"
 msgstr "Effacement des informations OPSI impossible"
 
-#: admin/systems/opsi/class_opsiClient.inc:184
+#: admin/systems/opsi/class_opsiClient.inc:213
 msgid "This member was not found or has no macAddress"
 msgstr "Ce membre n'a pas été trouvé ou n'a pas d'adresse mac"
 
-#: admin/systems/opsi/class_opsiClient.inc:189
+#: admin/systems/opsi/class_opsiClient.inc:218
 #, php-format
 msgid "Could not get macAddress for \"%s\""
 msgstr "Impossible d'obtenir l'adresse mac pour \"%s\""
 
-#: admin/systems/opsi/class_opsiClient.inc:218
+#: admin/systems/opsi/class_opsiClient.inc:247
 msgid "Could not update OPSI information"
 msgstr "Mise à jour des informations OPSI impossible"
 
-#: admin/systems/opsi/class_opsiClient.inc:319
+#: admin/systems/opsi/class_opsiClient.inc:324
+#, php-format
+msgid "Inherited (%s)"
+msgstr "Hérité de (%s)"
+
+#: admin/systems/opsi/class_opsiClient.inc:365
 #, php-format
 msgid "Failed to contact OPSI server: %s"
-msgstr "Impossible de contacter le serveur OPSI: %s"
+msgstr "Impossible de contacter le serveur OPSI : %s"
 
-#: admin/systems/opsi/class_opsiClient.inc:321
+#: admin/systems/opsi/class_opsiClient.inc:367
 msgid "Never"
 msgstr "Jamais"
 
-#: config/opsi/class_opsiConfig.inc:28
+#: config/opsi/class_opsiConfig.inc:26
 msgid "OPSI configuration"
 msgstr "Configuration OPSI"
 
-#: config/opsi/class_opsiConfig.inc:29
+#: config/opsi/class_opsiConfig.inc:27
 msgid "FusionDirectory OPSI plugin configuration"
 msgstr "Configuration du plugin OPSI"
 
-#: config/opsi/class_opsiConfig.inc:45
+#: config/opsi/class_opsiConfig.inc:43
 msgid "OPSI RDN"
 msgstr "Branche OPSI"
 
-#: config/opsi/class_opsiConfig.inc:45
+#: config/opsi/class_opsiConfig.inc:43
 msgid "Branch in which OPSI profiles will be stored"
 msgstr "Branche où seront stockés les profiles OPSI"
 
@@ -369,8 +386,8 @@ msgstr "Groupes OPSI"
 msgid ""
 "Statistics for OPSI could not be computed because of the following error: %s"
 msgstr ""
-"Les statistiques pour le service OPSI n'ont pas pu être calculé en raison de"
-" l'erreur suivante : %s"
+"Les statistiques pour OPSI n'ont pas pu être calculées en raison de l'erreur"
+" suivante: %s"
 
 #: addons/dashboard/class_dashBoardOpsi.inc:110
 msgid "Profile"
@@ -384,7 +401,7 @@ msgstr "Systèmes"
 msgid "Groups"
 msgstr "Groupes"
 
-#: addons/opsi/class_opsiImport.inc:30 addons/opsi/class_opsiImport.inc:36
+#: addons/opsi/class_opsiImport.inc:30 addons/opsi/class_opsiImport.inc:35
 msgid "OPSI import"
 msgstr "Importation OPSI"
 
@@ -392,33 +409,33 @@ msgstr "Importation OPSI"
 msgid "Import windows stations from OPSI into FD"
 msgstr "Importer stations Windows de OPSI dans FD"
 
-#: addons/opsi/class_opsiImport.inc:58
+#: addons/opsi/class_opsiImport.inc:57
 msgid "Import localboot products"
-msgstr "Importer des produits localboot"
+msgstr "Importer les produit localboot OPSI"
 
-#: addons/opsi/class_opsiImport.inc:58
+#: addons/opsi/class_opsiImport.inc:57
 msgid "Import localboot product list configured in OPSI in the FD OPSI tab"
 msgstr ""
 "Importer la liste de produits localboot configurée dans OPSI dans l'onglet "
-"FD OPSI"
+"OPSI"
 
-#: addons/opsi/class_opsiImport.inc:94
+#: addons/opsi/class_opsiImport.inc:93
 msgid "Argonaut server is not available"
 msgstr "Serveur Argonaut indisponible"
 
-#: addons/opsi/class_opsiImport.inc:106
+#: addons/opsi/class_opsiImport.inc:105
 #, php-format
 msgid "Server \"%s\" has no mac address configured in the LDAP"
-msgstr "Le serveur \"%s\" n'a pas d'adresse MAC configurée dans le l\"annuaire LDAP"
+msgstr "Le serveur \"%s\" n'a pas d'adresse mac configure dans le LDAP"
 
-#: addons/opsi/class_opsiImport.inc:113
+#: addons/opsi/class_opsiImport.inc:112
 #, php-format
 msgid "Could not find \"%s\" in the LDAP"
-msgstr "Impossible de trouver %s dans l'annuaire LDAP"
+msgstr "Impossible de trouver \"%s\" dans l'annuaire LDAP"
 
-#: addons/opsi/class_opsiImport.inc:121 addons/opsi/class_opsiImport.inc:143
+#: addons/opsi/class_opsiImport.inc:120 addons/opsi/class_opsiImport.inc:142
 msgid "Could not get OPSI information"
-msgstr "Impossible d'obtenir les informations OPSI"
+msgstr "Impossible d'obtenir des informations sur OPSI"
 
 #: addons/opsi/opsiimport.tpl.c:2
 msgid ""

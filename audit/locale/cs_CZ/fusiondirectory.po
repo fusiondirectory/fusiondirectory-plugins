@@ -8,86 +8,86 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: admin/audit/class_auditEvent.inc:53 admin/audit/class_auditEvent.inc:56
+#: admin/audit/class_auditEvent.inc:43 admin/audit/class_auditEvent.inc:47
 msgid "Audit event"
 msgstr "Auditní událost"
 
-#: admin/audit/class_auditEvent.inc:54
+#: admin/audit/class_auditEvent.inc:44
 msgid "An event like ldap modification which was registered by audit plugin"
 msgstr ""
 "Úprava-událost v LDAP která byla zaznamenána auditním zásuvným modulem"
 
-#: admin/audit/class_auditEvent.inc:72
+#: admin/audit/class_auditEvent.inc:62
 msgid "Event"
 msgstr "Událost"
 
-#: admin/audit/class_auditEvent.inc:75
-#: admin/audit/class_auditManagement.inc:70
+#: admin/audit/class_auditEvent.inc:66
+#: admin/audit/class_auditManagement.inc:111
 msgid "Time"
 msgstr "Čas"
 
-#: admin/audit/class_auditEvent.inc:75
+#: admin/audit/class_auditEvent.inc:66
 msgid "Date and time this event happened"
 msgstr "Datum a čas události"
 
-#: admin/audit/class_auditEvent.inc:78
-#: admin/audit/class_auditManagement.inc:84
+#: admin/audit/class_auditEvent.inc:69
+#: admin/audit/class_auditManagement.inc:125
 msgid "Action"
 msgstr "Akce"
 
-#: admin/audit/class_auditEvent.inc:78
+#: admin/audit/class_auditEvent.inc:69
 msgid "Action type"
 msgstr "Typ akce"
 
-#: admin/audit/class_auditEvent.inc:79
-#: admin/audit/class_auditManagement.inc:77
+#: admin/audit/class_auditEvent.inc:70
+#: admin/audit/class_auditManagement.inc:118
 msgid "Author"
 msgstr "Autor"
 
-#: admin/audit/class_auditEvent.inc:79
+#: admin/audit/class_auditEvent.inc:70
 msgid "Action author"
 msgstr "Autor akce"
 
-#: admin/audit/class_auditEvent.inc:80
+#: admin/audit/class_auditEvent.inc:71
 msgid "Object type"
 msgstr "Typ objektu"
 
-#: admin/audit/class_auditEvent.inc:81
+#: admin/audit/class_auditEvent.inc:72
 msgid "Object"
 msgstr "Objekt"
 
-#: admin/audit/class_auditEvent.inc:81
+#: admin/audit/class_auditEvent.inc:72
 msgid "Target object"
 msgstr "Cílový objekt"
 
-#: admin/audit/class_auditEvent.inc:82
+#: admin/audit/class_auditEvent.inc:73
 msgid "Attributes"
 msgstr "Atributy"
 
-#: admin/audit/class_auditEvent.inc:82
+#: admin/audit/class_auditEvent.inc:73
 msgid "Target attributes"
 msgstr "Atributy cíle"
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:74
 msgid "Result"
 msgstr "Výsledek"
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:74
 msgid "Result or error"
 msgstr "Výsledek nebo chyba"
 
 #: admin/audit/class_auditManagement.inc:41
-#: config/audit/class_auditConfig.inc:41
+#: config/audit/class_auditConfig.inc:40
 msgid "Audit"
 msgstr "Audit"
 
@@ -95,42 +95,54 @@ msgstr "Audit"
 msgid "Audit events display"
 msgstr "Zobrazení auditních událostí"
 
-#: admin/audit/class_auditManagement.inc:91
+#: admin/audit/class_auditManagement.inc:132
 msgid "Type"
 msgstr "Typ"
 
-#: admin/audit/class_auditManagement.inc:98
+#: admin/audit/class_auditManagement.inc:139
 msgid "Target"
 msgstr "Cíl"
 
-#: config/audit/class_auditConfig.inc:28
+#: admin/audit/class_auditManagement.inc:157
+msgid "Newer than"
+msgstr ""
+
+#: admin/audit/class_auditManagement.inc:161
+msgid "Older than"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:26
 msgid "Audit configuration"
 msgstr "Nastavení auditování"
 
-#: config/audit/class_auditConfig.inc:29
+#: config/audit/class_auditConfig.inc:27
 msgid "FusionDirectory audit plugin configuration"
 msgstr "Nastavení auditního zásuvného modulu pro FusionDirectory"
 
-#: config/audit/class_auditConfig.inc:44
+#: config/audit/class_auditConfig.inc:43
 msgid "Audit RDN"
 msgstr "Relativní rozlišený název auditu"
 
-#: config/audit/class_auditConfig.inc:44
+#: config/audit/class_auditConfig.inc:43
 msgid "Branch in which audit events will be stored"
 msgstr "Větev ve které budou ukládány auditní události"
 
-#: config/audit/class_auditConfig.inc:50
+#: config/audit/class_auditConfig.inc:49
 msgid "Actions to audit"
 msgstr "Akce které auditovat"
 
-#: config/audit/class_auditConfig.inc:50
+#: config/audit/class_auditConfig.inc:49
 msgid "Which actions should be stored in LDAP audit log"
 msgstr "Které akce by měly být uloženy v LDAP auditním logu"
 
-#: config/audit/class_auditConfig.inc:57
+#: config/audit/class_auditConfig.inc:56
 msgid "Days to keep"
 msgstr "Kolik dnů ponechat"
 
-#: config/audit/class_auditConfig.inc:57
+#: config/audit/class_auditConfig.inc:56
 msgid "Number of days of audit to keep in the LDAP when cleaning"
 msgstr "Počet dnů po které ponechávat audit v LDAP při čištění"
+
+#: admin/audit/audit-filter.tpl.c:2
+msgid "Filter"
+msgstr "filtr"

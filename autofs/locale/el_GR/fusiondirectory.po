@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,24 +26,24 @@ msgstr "Auto fs"
 msgid "Auto fs management"
 msgstr "Διαχείριση Auto fs "
 
-#: admin/autofs/class_nisObject.inc:31 admin/autofs/class_nisObject.inc:32
-#: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:54
+#: admin/autofs/class_nisObject.inc:26 admin/autofs/class_nisObject.inc:27
+#: admin/autofs/class_nisObject.inc:30 admin/autofs/class_nisObject.inc:49
 msgid "Directory"
 msgstr "Κατάλογος"
 
-#: admin/autofs/class_nisObject.inc:58 admin/autofs/class_nisMap.inc:53
+#: admin/autofs/class_nisObject.inc:53 admin/autofs/class_nisMap.inc:48
 msgid "Name"
 msgstr "Όνομα"
 
-#: admin/autofs/class_nisObject.inc:58
+#: admin/autofs/class_nisObject.inc:53
 msgid "Name of this directory"
 msgstr "Όνομα αυτού του κατάλογο"
 
-#: admin/autofs/class_nisObject.inc:64
+#: admin/autofs/class_nisObject.inc:59
 msgid "Automount entry"
 msgstr "Καταχώρηση αυτόματης προσάρτησης"
 
-#: admin/autofs/class_nisObject.inc:64
+#: admin/autofs/class_nisObject.inc:59
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
@@ -51,39 +51,39 @@ msgstr ""
 "Η εγγραφή αυτού του καταλόγου για τον automount daemon.\n"
 " Για παράδειγμα 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
 
-#: admin/autofs/class_nisObject.inc:68 admin/autofs/class_nisMap.inc:31
-#: admin/autofs/class_nisMap.inc:34 admin/autofs/class_nisMap.inc:49
+#: admin/autofs/class_nisObject.inc:63 admin/autofs/class_nisMap.inc:26
+#: admin/autofs/class_nisMap.inc:30 admin/autofs/class_nisMap.inc:44
 msgid "Mount point"
 msgstr "Σημείο προσάρτησης"
 
-#: admin/autofs/class_nisObject.inc:68
+#: admin/autofs/class_nisObject.inc:63
 msgid "The mount point this directory will be placed in"
 msgstr "Το σημείο προσάρτησης αυτού του καταλόγου θα τοποθετηθεί"
 
-#: admin/autofs/class_nisMap.inc:32
+#: admin/autofs/class_nisMap.inc:27
 msgid "Autofs mount point"
 msgstr "Σημείο προσάρτησης Autofs"
 
-#: admin/autofs/class_nisMap.inc:53
+#: admin/autofs/class_nisMap.inc:48
 msgid "Name of the mount point"
 msgstr "Το όνομα του σημείου προσάρτησης"
 
-#: config/autofs/class_autofsConfig.inc:28
+#: config/autofs/class_autofsConfig.inc:26
 msgid "Autofs configuration"
 msgstr "Ρύθμιση Auto fs "
 
-#: config/autofs/class_autofsConfig.inc:29
+#: config/autofs/class_autofsConfig.inc:27
 msgid "FusionDirectory autofs plugin configuration"
 msgstr "Ρύθμιση προσθέτου FusionDirectory autofs"
 
-#: config/autofs/class_autofsConfig.inc:42
+#: config/autofs/class_autofsConfig.inc:40
 msgid "AutoFS"
 msgstr "AutoFS"
 
-#: config/autofs/class_autofsConfig.inc:45
+#: config/autofs/class_autofsConfig.inc:43
 msgid "AutoFS RDN"
 msgstr "AutoFS RDN"
 
-#: config/autofs/class_autofsConfig.inc:45
+#: config/autofs/class_autofsConfig.inc:43
 msgid "Branch in which automount info will be stored"
 msgstr "Κλάδος στον οποίο θα αποθηκεύονται πληροφορίες automount"

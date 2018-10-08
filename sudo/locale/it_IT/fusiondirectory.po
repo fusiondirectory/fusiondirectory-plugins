@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:123
-#: config/sudo/class_sudoConfig.inc:42
+#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:120
+#: config/sudo/class_sudoConfig.inc:40
 msgid "Sudo"
 msgstr "Sudo"
 
@@ -27,35 +27,35 @@ msgstr "Sudo"
 msgid "Sudo management"
 msgstr "Gestione di Sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:124 admin/sudo/class_sudoGeneric.inc:128
+#: admin/sudo/class_sudoGeneric.inc:121 admin/sudo/class_sudoGeneric.inc:125
 msgid "Sudo role"
 msgstr "Ruolo Sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:155
+#: admin/sudo/class_sudoGeneric.inc:151
 msgid "Role settings"
 msgstr "Impostazioni del ruolo"
 
-#: admin/sudo/class_sudoGeneric.inc:161
+#: admin/sudo/class_sudoGeneric.inc:157
 msgid "Name"
 msgstr "Nome"
 
-#: admin/sudo/class_sudoGeneric.inc:161
+#: admin/sudo/class_sudoGeneric.inc:157
 msgid "Name of the role"
 msgstr "Nome del ruolo"
 
-#: admin/sudo/class_sudoGeneric.inc:166
+#: admin/sudo/class_sudoGeneric.inc:162
 msgid "Description"
 msgstr "Descrizione"
 
-#: admin/sudo/class_sudoGeneric.inc:166
+#: admin/sudo/class_sudoGeneric.inc:162
 msgid "Description for the new sudo role"
 msgstr "Descrizione per il nuovo ruolo di sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:171
+#: admin/sudo/class_sudoGeneric.inc:167
 msgid "Commands"
 msgstr "comandi"
 
-#: admin/sudo/class_sudoGeneric.inc:172
+#: admin/sudo/class_sudoGeneric.inc:168
 msgid ""
 "A Unix command with optional command line arguments, potentially including "
 "globbing characters (aka wild cards)"
@@ -63,65 +63,65 @@ msgstr ""
 "Un comando Unix con gli argomenti della riga di comando opzionali, "
 "potenzialmente compresi i caratteri wildcard (jolly)"
 
-#: admin/sudo/class_sudoGeneric.inc:178
+#: admin/sudo/class_sudoGeneric.inc:174
 msgid "Run as (user)"
 msgstr "Esegui come utente"
 
-#: admin/sudo/class_sudoGeneric.inc:179
+#: admin/sudo/class_sudoGeneric.inc:175
 msgid "User(s) impersonated by sudo"
 msgstr "Utente(i) impersonato da Sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:186
+#: admin/sudo/class_sudoGeneric.inc:182
 msgid "Run as (group)"
 msgstr "Esegui come gruppo"
 
-#: admin/sudo/class_sudoGeneric.inc:187
+#: admin/sudo/class_sudoGeneric.inc:183
 msgid "Group(s) impersonated by sudo"
 msgstr "Grippo(i) impersonato da Sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:193
+#: admin/sudo/class_sudoGeneric.inc:189
 msgid "Systems"
 msgstr "Sistemi"
 
-#: admin/sudo/class_sudoGeneric.inc:193
+#: admin/sudo/class_sudoGeneric.inc:189
 msgid "A host name, IP address or IP network"
 msgstr "Un nome d'host, indirizzo IP o network IP"
 
-#: admin/sudo/class_sudoGeneric.inc:198
+#: admin/sudo/class_sudoGeneric.inc:194
 msgid "Users and groups"
 msgstr "Utenti e gruppi"
 
-#: admin/sudo/class_sudoGeneric.inc:199
+#: admin/sudo/class_sudoGeneric.inc:195
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
 msgstr ""
 "Un nome utente, ID utente (prefissato da '#'), gruppo Unix (prefissato da "
 "'%')"
 
-#: admin/sudo/class_sudoGeneric.inc:203
+#: admin/sudo/class_sudoGeneric.inc:199
 msgid "Priority"
 msgstr "Priorità"
 
-#: admin/sudo/class_sudoGeneric.inc:203
+#: admin/sudo/class_sudoGeneric.inc:199
 msgid "This rule priority compared to others"
 msgstr "La priorità di questa regola comparata alle altre"
 
-#: admin/sudo/class_sudoGeneric.inc:208
+#: admin/sudo/class_sudoGeneric.inc:204
 msgid "Valid starting from"
 msgstr "Valido a partire dal"
 
-#: admin/sudo/class_sudoGeneric.inc:208
+#: admin/sudo/class_sudoGeneric.inc:204
 msgid ""
 "Start of time interval for which the entry is valid (leave empty to disable)"
 msgstr ""
 "Inizio dell'intervallo di tempo per il quale la voce è valida (lasciare "
 "vuoto per disabilitare)"
 
-#: admin/sudo/class_sudoGeneric.inc:213
+#: admin/sudo/class_sudoGeneric.inc:209
 msgid "Valid until"
 msgstr "Valido fino al"
 
-#: admin/sudo/class_sudoGeneric.inc:213
+#: admin/sudo/class_sudoGeneric.inc:209
 msgid ""
 "End of time interval for which the entry is valid (leave empty to disable)"
 msgstr ""
@@ -142,29 +142,29 @@ msgstr "L'opzione di sudo '%s' non è valida !"
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: admin/sudo/class_sudoOption.inc:341
-msgid "Available options"
-msgstr "Opzioni disponibili"
-
-#: admin/sudo/class_sudoOption.inc:344
-msgid "Option"
-msgstr "Opzione"
-
-#: admin/sudo/class_sudoOption.inc:344
-msgid "Add a new sudo option"
-msgstr "Aggiungi una nuova opzione sudo"
-
-#: admin/sudo/class_sudoOption.inc:349 admin/sudo/class_sudoOption.inc:351
-msgid "Used sudo role options"
-msgstr "Opzioni utilizzate del ruolo sudo"
-
-#: admin/sudo/class_sudoOption.inc:418
+#: admin/sudo/class_sudoOption.inc:337
 msgid "Options"
 msgstr "Opzioni"
 
-#: admin/sudo/class_sudoOption.inc:419
+#: admin/sudo/class_sudoOption.inc:338
 msgid "Sudo options"
 msgstr "Opzioni di Sudo"
+
+#: admin/sudo/class_sudoOption.inc:352
+msgid "Available options"
+msgstr "Opzioni disponibili"
+
+#: admin/sudo/class_sudoOption.inc:355
+msgid "Option"
+msgstr "Opzione"
+
+#: admin/sudo/class_sudoOption.inc:355
+msgid "Add a new sudo option"
+msgstr "Aggiungi una nuova opzione sudo"
+
+#: admin/sudo/class_sudoOption.inc:360 admin/sudo/class_sudoOption.inc:362
+msgid "Used sudo role options"
+msgstr "Opzioni utilizzate del ruolo sudo"
 
 #: admin/sudo/class_sudoOptions.inc:53
 msgid ""
@@ -174,7 +174,7 @@ msgid ""
 msgstr ""
 "Quando si esegue la convalida con uno schema OTP (One Time Password) come S "
 "/ Key o OPIE, viene utilizzato un prompt a due righe per semplificare il "
-"taglia e incolla della sfida a una finestra locale"
+"taglio e l'incollaggio del challenge a una finestra locale"
 
 #: admin/sudo/class_sudoOptions.inc:58
 msgid ""
@@ -193,15 +193,15 @@ msgid ""
 "Send mail to the mailto user if the user running sudo does not enter the "
 "correct password"
 msgstr ""
-"Invia mail a mailto dall'utente se l'utente che sta eseguendo sudo non "
-"immette la password corretta"
+"Invia mail all'utente mailto se l'utente che sta eseguendo sudo non immette "
+"la password corretta"
 
 #: admin/sudo/class_sudoOptions.inc:73
 msgid ""
 "If set, mail will be sent to the mailto user if the invoking user is not in "
 "the sudoers file"
 msgstr ""
-"Se impostato, l'e-mail verrà inviata all'utente mailto se l'utente chiamante"
+"Se impostato, la posta verrà inviata all'utente mailto se l'utente chiamante"
 " non si trova nel file sudoers"
 
 #: admin/sudo/class_sudoOptions.inc:78
@@ -254,8 +254,8 @@ msgid ""
 "If set and sudo is invoked with no arguments it acts as if the -s option had"
 " been given"
 msgstr ""
-"Se set e sudo é invocato senza argomenti, si comporta come se fosse stata "
-"fornita l'opzione -s"
+"Se impostato e sudo viene invocato senza argomenti, si comporta come se "
+"fosse stata fornita l'opzione -s"
 
 #: admin/sudo/class_sudoOptions.inc:118
 msgid ""
@@ -264,7 +264,7 @@ msgid ""
 msgstr ""
 "Se abilitato e sudo viene richiamato con l'opzione -s, la variabile "
 "d'ambiente HOME verrà impostata sulla directory home dell'utente di "
-"destinazione (solitamente root)"
+"destinazione (generalmente root)"
 
 #: admin/sudo/class_sudoOptions.inc:123
 msgid ""
@@ -279,7 +279,7 @@ msgid ""
 "If the executable is simply not in the user's PATH, sudo will tell the user "
 "that they are not allowed to run it"
 msgstr ""
-"Se l'eseguibile non si trova semplicemente nel PATH dell'utente, sudo dirà "
+"Se l'eseguibile semplicemente non si trova nel PATH dell'utente, sudo dirà "
 "all'utente che non è autorizzato a eseguirlo"
 
 #: admin/sudo/class_sudoOptions.inc:133
@@ -348,7 +348,7 @@ msgid ""
 "target user"
 msgstr ""
 "Se impostato, sudo imposterà le variabili d'ambiente LOGNAME sul nome "
-"dell'utente di destinazione"
+"dell'uso di destinazione"
 
 #: admin/sudo/class_sudoOptions.inc:183
 msgid ""
@@ -377,19 +377,19 @@ msgstr ""
 
 #: admin/sudo/class_sudoOptions.inc:198
 msgid "If set, parsing of /etc/sudoers file will be skipped."
-msgstr "Se impostato, l'analisi del file /etc/sudoers verrà saltata."
+msgstr "Se impostato, l'analisi del file / etc / sudoers verrà saltata."
 
 #: admin/sudo/class_sudoOptions.inc:203
 msgid ""
 "The number of tries a user gets to enter his/her password before sudo logs "
 "the failure and exits"
 msgstr ""
-"Il numero di tentativi con cui un utente immette la propria password prima "
-"che sudo registri l'errore ed esca"
+"Il numero di tentativi con cui un utente inserisce la propria password prima"
+" che sudo registri l'errore e termini"
 
 #: admin/sudo/class_sudoOptions.inc:208
 msgid "Number of characters per line for the file log"
-msgstr "Numero di caratteri per riga per il log file"
+msgstr "Numero di caratteri per riga per il registro file"
 
 #: admin/sudo/class_sudoOptions.inc:213
 msgid ""
@@ -419,7 +419,7 @@ msgid ""
 "Subject of the mail sent to the mailto user. The escape %h will expand to "
 "the host name of the machine"
 msgstr ""
-"Oggetto della posta inviata all'utente mailto. L'escape% h si espanderà al "
+"Oggetto dell'e-mail inviata all'utente mailto. L'escape %h si espanderà al "
 "nome host della macchina"
 
 #: admin/sudo/class_sudoOptions.inc:233
@@ -468,8 +468,8 @@ msgstr ""
 #: admin/sudo/class_sudoOptions.inc:268
 msgid "A colon separated list of editors allowed to be used with visudo"
 msgstr ""
-"Una lista di editor separati da due punti ha permesso di essere utilizzata "
-"con visudo"
+"Una lista di editor separati da due punti ha il permesso di essere "
+"utilizzata con visudo"
 
 #: admin/sudo/class_sudoOptions.inc:278
 msgid ""
@@ -486,16 +486,16 @@ msgid ""
 "This option controls when a short lecture will be printed along with the "
 "password prompt"
 msgstr ""
-"Questa opzione controlla quando una breve conferenza verrà stampata insieme "
-"al prompt della password"
+"Questa opzione controlla quando verrà stampato un elenco di regole con la "
+"richiesta della password"
 
 #: admin/sudo/class_sudoOptions.inc:288
 msgid ""
 "Path to a file containing an alternate sudo lecture that will be used in "
 "place of the standard lecture"
 msgstr ""
-"Percorso di un file contenente una lezione sudo alternativa che verrà "
-"utilizzata al posto della lezione standard"
+"Percorso di un file contenente un altro elenco di regole sudo che verranno "
+"utilizzate al posto delle regole standard"
 
 #: admin/sudo/class_sudoOptions.inc:293
 msgid "Path to the sudo log file (not the syslog log file)"
@@ -508,7 +508,7 @@ msgstr "Funzione Syslog se syslog viene utilizzato per la registrazione"
 #: admin/sudo/class_sudoOptions.inc:303
 msgid "Path to mail program used to send warning mail"
 msgstr ""
-"Percorso verso il programma di posta utilizzato per inviare posta di avviso"
+"Percorso verso il programma di posta utilizzato per inviare e-mail di avviso"
 
 #: admin/sudo/class_sudoOptions.inc:308
 msgid "Flags to use when invoking mailer"
@@ -547,7 +547,7 @@ msgid ""
 "variable's value contains % or / characters"
 msgstr ""
 "Variabili d'ambiente da rimuovere dall'ambiente dell'utente se il valore "
-"della variabile contiene% o / caratteri"
+"della variabile contiene % o / caratteri"
 
 #: admin/sudo/class_sudoOptions.inc:338 admin/sudo/class_sudoOptions.inc:353
 #: admin/sudo/class_sudoOptions.inc:368
@@ -567,18 +567,18 @@ msgstr ""
 "Variabili d'ambiente da conservare nell'ambiente dell'utente quando è attiva"
 " l'opzione env_reset"
 
-#: config/sudo/class_sudoConfig.inc:28
+#: config/sudo/class_sudoConfig.inc:26
 msgid "Sudo configuration"
 msgstr "Configurazione di Sudo"
 
-#: config/sudo/class_sudoConfig.inc:29
+#: config/sudo/class_sudoConfig.inc:27
 msgid "FusionDirectory sudo plugin configuration"
 msgstr "Configurazione del plugin Sudo di FusionDirectory"
 
-#: config/sudo/class_sudoConfig.inc:45
+#: config/sudo/class_sudoConfig.inc:43
 msgid "Sudo RDN"
 msgstr "RDN Sudo"
 
-#: config/sudo/class_sudoConfig.inc:45
+#: config/sudo/class_sudoConfig.inc:43
 msgid "Branch in which sudoers will be stored"
 msgstr "Ramo nel quale i sudo saranno immagazzinati"

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Catalan (https://www.transifex.com/fusiondirectory/teams/12202/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 
 #: addons/ldapmanager/class_ldapmanager.inc:121
-#: addons/ldapmanager/class_csvimport.inc:81
-#: addons/ldapmanager/class_csvimport.inc:101
+#: addons/ldapmanager/class_csvimport.inc:80
+#: addons/ldapmanager/class_csvimport.inc:100
 msgid "Import"
 msgstr ""
 
@@ -105,7 +105,7 @@ msgid "Import LDIF file"
 msgstr ""
 
 #: addons/ldapmanager/class_ldapmanager.inc:153
-#: addons/ldapmanager/class_ldapmanager.inc:198
+#: addons/ldapmanager/class_ldapmanager.inc:203
 msgid "LDAP error"
 msgstr "Error d'LDAP"
 
@@ -132,6 +132,25 @@ msgstr "Error"
 msgid "Failed to generate ldap export, error was \"%s\"!"
 msgstr ""
 
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid "Warning"
+msgstr "Avís"
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid ""
+"Nothing to import, please upload a non-empty file or fill the textarea."
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#: addons/ldapmanager/class_csvimport.inc:243
+msgid "Success"
+msgstr "Èxit"
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#, php-format
+msgid "%d entries successfully imported"
+msgstr ""
+
 #: addons/ldapmanager/class_csvimport.inc:29
 msgid "CSV import"
 msgstr ""
@@ -140,69 +159,65 @@ msgstr ""
 msgid "Import of csv data into the ldap tree"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:43
+#: addons/ldapmanager/class_csvimport.inc:42
 msgid "Import CSV"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:46
+#: addons/ldapmanager/class_csvimport.inc:45
 msgid "Object type"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:46
+#: addons/ldapmanager/class_csvimport.inc:45
 msgid "Type of objects you wish to import"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:52
+#: addons/ldapmanager/class_csvimport.inc:51
 msgid "Template"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:52
+#: addons/ldapmanager/class_csvimport.inc:51
 msgid "Select a template to apply to imported entries"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:58
+#: addons/ldapmanager/class_csvimport.inc:57
 msgid "CSV file"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:58
+#: addons/ldapmanager/class_csvimport.inc:57
 msgid "Import a CSV file into your LDAP"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:62
+#: addons/ldapmanager/class_csvimport.inc:61
 msgid "Separator"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:62
+#: addons/ldapmanager/class_csvimport.inc:61
 msgid "Character used as separator in the CSV file"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:72
+#: addons/ldapmanager/class_csvimport.inc:71
 msgid "Fixed values"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:72
+#: addons/ldapmanager/class_csvimport.inc:71
 msgid ""
 "Some fixed values that you might wanna use in the filling of the template."
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:88
+#: addons/ldapmanager/class_csvimport.inc:87
 msgid "Template filling"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:91
+#: addons/ldapmanager/class_csvimport.inc:90
 msgid "Select fields associations"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:237
+#: addons/ldapmanager/class_csvimport.inc:236
 #, php-format
 msgid "Import failed for line %d"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:244
-msgid "Success"
-msgstr "Èxit"
-
-#: addons/ldapmanager/class_csvimport.inc:244
+#: addons/ldapmanager/class_csvimport.inc:243
 #, php-format
 msgid "Successfully imported %d entries"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -18,32 +18,32 @@ msgstr ""
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/dns/class_dnsAcl.inc:30 admin/dns/class_dnsAcl.inc:31
-#: admin/dns/class_dnsAcl.inc:33
+#: admin/dns/class_dnsAcl.inc:26 admin/dns/class_dnsAcl.inc:27
+#: admin/dns/class_dnsAcl.inc:30
 msgid "DNS acl"
 msgstr "ACL DNS"
 
-#: admin/dns/class_dnsAcl.inc:47
+#: admin/dns/class_dnsAcl.inc:43
 msgid "Acl"
 msgstr "ACL"
 
-#: admin/dns/class_dnsAcl.inc:51
+#: admin/dns/class_dnsAcl.inc:47
 msgid "ACL name"
 msgstr "Nome ACL"
 
-#: admin/dns/class_dnsAcl.inc:51
+#: admin/dns/class_dnsAcl.inc:47
 msgid "Name of this acl"
 msgstr "Nome di questa ACL"
 
-#: admin/dns/class_dnsAcl.inc:56
+#: admin/dns/class_dnsAcl.inc:52
 msgid "Address match list"
 msgstr "Indirizzo abbinamento lista"
 
-#: admin/dns/class_dnsAcl.inc:56
+#: admin/dns/class_dnsAcl.inc:52
 msgid "The ip address match list for this acl"
 msgstr "L'indirizzo IP abbinamento lista per questa ACL"
 
-#: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:129
+#: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:128
 msgid "DNS"
 msgstr "DNS"
 
@@ -82,7 +82,7 @@ msgstr "Zona LDAP2"
 msgid "Ldap2Zone called for zone \"%s\""
 msgstr "Ldap2Zone chiamata per la zona \"%s\""
 
-#: admin/dns/class_dnsManagement.inc:115 admin/dns/class_dnsZone.inc:380
+#: admin/dns/class_dnsManagement.inc:115 admin/dns/class_dnsZone.inc:381
 #: admin/systems/class_dnsHost.inc:328
 msgid "Error"
 msgstr "Errore"
@@ -92,39 +92,39 @@ msgid "Argonaut client needs to be activated to use ldap2zone remotely"
 msgstr ""
 "Il cliente Argonaut dev'essere attivato per utilizzare ldap2zone a distanza"
 
-#: admin/dns/class_dnsView.inc:28 admin/dns/class_dnsView.inc:29
-#: admin/dns/class_dnsView.inc:31
+#: admin/dns/class_dnsView.inc:26 admin/dns/class_dnsView.inc:27
+#: admin/dns/class_dnsView.inc:30
 msgid "DNS view"
 msgstr "Vista DNS"
 
-#: admin/dns/class_dnsView.inc:45
+#: admin/dns/class_dnsView.inc:43
 msgid "View"
 msgstr "Vista"
 
-#: admin/dns/class_dnsView.inc:49
+#: admin/dns/class_dnsView.inc:47
 msgid "View name"
 msgstr "Nome della vista"
 
-#: admin/dns/class_dnsView.inc:49
+#: admin/dns/class_dnsView.inc:47
 msgid "Name of this view"
 msgstr "Nome di questa vista"
 
-#: admin/dns/class_dnsView.inc:53
+#: admin/dns/class_dnsView.inc:51
 msgid "Match clients ACL"
 msgstr "Abbinamento cliente ACL"
 
-#: admin/dns/class_dnsView.inc:53
+#: admin/dns/class_dnsView.inc:51
 msgid ""
 "Name of the ACL to use for the source IP address of the incoming requests"
 msgstr ""
 "Nome della ACL da utilizzare per l' indirizzo IP di origine delle richieste "
 "in arrivo"
 
-#: admin/dns/class_dnsView.inc:57
+#: admin/dns/class_dnsView.inc:55
 msgid "Match destinations ACL"
 msgstr "Abbinamento destinazioni ACL"
 
-#: admin/dns/class_dnsView.inc:57
+#: admin/dns/class_dnsView.inc:55
 msgid ""
 "Name of the ACL to use for the destination IP address of the incoming "
 "requests"
@@ -132,23 +132,23 @@ msgstr ""
 "Nome dell'ACL da utilizzare per l'indirizzo IP di destinazione delle "
 "richieste in arrivo"
 
-#: admin/dns/class_dnsView.inc:61
+#: admin/dns/class_dnsView.inc:59
 msgid "Match recursive only"
 msgstr "Abbinamento query ricorsive"
 
-#: admin/dns/class_dnsView.inc:61
+#: admin/dns/class_dnsView.inc:59
 msgid "Match only recursive queries in this view"
 msgstr "Abbinare solo le query ricorsive in questa vista"
 
-#: admin/dns/class_dnsView.inc:66 admin/systems/class_dnsHost.inc:147
+#: admin/dns/class_dnsView.inc:64 admin/systems/class_dnsHost.inc:147
 msgid "DNS zones"
 msgstr "Zone DNS"
 
-#: admin/dns/class_dnsView.inc:66
+#: admin/dns/class_dnsView.inc:64
 msgid "DNS zones in this view"
 msgstr "Zone DNS in questa vista"
 
-#: admin/dns/class_DnsRecordAttribute.inc:117 admin/dns/class_dnsZone.inc:186
+#: admin/dns/class_DnsRecordAttribute.inc:117 admin/dns/class_dnsZone.inc:187
 msgid "Type"
 msgstr "Tipo"
 
@@ -423,7 +423,7 @@ msgstr "Reindirizzare verso"
 msgid "Domain that this subdomain is an alias of"
 msgstr "Dominio di cui questo sottodominio é un alias"
 
-#: admin/dns/class_DnsRecordAttribute.inc:368 admin/dns/class_dnsZone.inc:187
+#: admin/dns/class_DnsRecordAttribute.inc:368 admin/dns/class_dnsZone.inc:188
 msgid "Content"
 msgstr "Contenuto"
 
@@ -448,7 +448,7 @@ msgstr "record di %s"
 msgid "DNS record"
 msgstr "Record di DNS"
 
-#: admin/dns/class_dnsZone.inc:49 admin/dns/class_dnsZone.inc:185
+#: admin/dns/class_dnsZone.inc:49 admin/dns/class_dnsZone.inc:186
 msgid "Subdomain"
 msgstr "Sottodominio"
 
@@ -460,23 +460,23 @@ msgstr "Nome relativo di sottodominio"
 msgid "DNS Record"
 msgstr "Record DNS"
 
-#: admin/dns/class_dnsZone.inc:188
+#: admin/dns/class_dnsZone.inc:189
 msgid "Reverse"
-msgstr "Invertire"
+msgstr "Inverso"
 
-#: admin/dns/class_dnsZone.inc:381
+#: admin/dns/class_dnsZone.inc:382
 #, php-format
 msgid "The IP %s does not match the selected reverse %s, it has been ignored"
 msgstr "L'IP 1%s non corrisponde al reverse 1%s selezionato, è stato ignorato"
 
-#: admin/dns/class_dnsZone.inc:483 admin/dns/class_dnsZone.inc:492
-#: admin/dns/class_dnsZone.inc:500 admin/dns/class_dnsZone.inc:508
-#: admin/dns/class_dnsZone.inc:529 admin/dns/class_dnsZone.inc:562
-#: admin/dns/class_dnsZone.inc:568 admin/dns/class_dnsZone.inc:580
+#: admin/dns/class_dnsZone.inc:484 admin/dns/class_dnsZone.inc:493
+#: admin/dns/class_dnsZone.inc:501 admin/dns/class_dnsZone.inc:509
+#: admin/dns/class_dnsZone.inc:530 admin/dns/class_dnsZone.inc:563
+#: admin/dns/class_dnsZone.inc:569 admin/dns/class_dnsZone.inc:581
 msgid "LDAP error"
 msgstr "Errore LDAP"
 
-#: admin/dns/class_dnsZone.inc:675
+#: admin/dns/class_dnsZone.inc:676
 #, php-format
 msgid ""
 "\"%s\" must contain a domain name in lowercase and end with a final "
@@ -485,7 +485,7 @@ msgstr ""
 "\"%s\" deve contenere un nome di dominio in caratteri minuscoli e terminare "
 "con un punto finale.<br/>Esempio: example.com."
 
-#: admin/dns/class_dnsZone.inc:678
+#: admin/dns/class_dnsZone.inc:679
 #, php-format
 msgid ""
 "\"%s\" must contain a domain name in lowercase.<br/><br/>Example: "
@@ -494,8 +494,8 @@ msgstr ""
 "%s\" deve contenere un nome di dominio in minuscolo.<br/><br/>Esempio: "
 "esempio.com"
 
-#: admin/dns/class_dnsZone.inc:699 admin/dns/class_dnsZone.inc:700
-#: admin/dns/class_dnsZone.inc:702
+#: admin/dns/class_dnsZone.inc:698 admin/dns/class_dnsZone.inc:699
+#: admin/dns/class_dnsZone.inc:703
 msgid "DNS zone"
 msgstr "Zona DNS"
 
@@ -608,7 +608,7 @@ msgstr "Records"
 msgid "The DNS records for this zone"
 msgstr "Records DNS per questa zona"
 
-#: admin/systems/class_dnsHost.inc:130
+#: admin/systems/class_dnsHost.inc:129
 msgid "Edit the DNS zones of a system"
 msgstr "Modificare le zone DNS di un sistema"
 
@@ -652,31 +652,31 @@ msgstr "Aggiornamento DNS"
 msgid "%d records were removed in zone %s"
 msgstr "%d records sono stati rimossi nella zona %s"
 
-#: config/dns/class_dnsConfig.inc:28
+#: config/dns/class_dnsConfig.inc:26
 msgid "DNS configuration"
 msgstr "Configurazione del DNS"
 
-#: config/dns/class_dnsConfig.inc:29
+#: config/dns/class_dnsConfig.inc:27
 msgid "FusionDirectory dns plugin configuration"
 msgstr "Configurazione del plugin DNS di FusionDirectory"
 
-#: config/dns/class_dnsConfig.inc:42
+#: config/dns/class_dnsConfig.inc:40
 msgid "DNS config"
 msgstr "Configurazione del DNS"
 
-#: config/dns/class_dnsConfig.inc:45
+#: config/dns/class_dnsConfig.inc:43
 msgid "DNS RDN"
 msgstr "DNS RDN"
 
-#: config/dns/class_dnsConfig.inc:45
+#: config/dns/class_dnsConfig.inc:43
 msgid "Branch in which DNS zones will be stored"
 msgstr "Ramo nel quale le zone DNS verranno immagazzinate"
 
-#: config/dns/class_dnsConfig.inc:50
+#: config/dns/class_dnsConfig.inc:48
 msgid "Store final dot in domains"
 msgstr "COnservare punto finale in domini"
 
-#: config/dns/class_dnsConfig.inc:50
+#: config/dns/class_dnsConfig.inc:48
 msgid "Should FD store a final dot at the end of domains?"
 msgstr "Dovrebbe FD memorizzare un punto al termine dei domini ?"
 

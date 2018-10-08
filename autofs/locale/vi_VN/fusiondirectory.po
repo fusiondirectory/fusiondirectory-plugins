@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Vietnamese (Viet Nam) (https://www.transifex.com/fusiondirectory/teams/12202/vi_VN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,62 +26,62 @@ msgstr ""
 msgid "Auto fs management"
 msgstr ""
 
-#: admin/autofs/class_nisObject.inc:31 admin/autofs/class_nisObject.inc:32
-#: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:54
+#: admin/autofs/class_nisObject.inc:26 admin/autofs/class_nisObject.inc:27
+#: admin/autofs/class_nisObject.inc:30 admin/autofs/class_nisObject.inc:49
 msgid "Directory"
 msgstr "Thư mục"
 
-#: admin/autofs/class_nisObject.inc:58 admin/autofs/class_nisMap.inc:53
+#: admin/autofs/class_nisObject.inc:53 admin/autofs/class_nisMap.inc:48
 msgid "Name"
 msgstr "Tên"
 
-#: admin/autofs/class_nisObject.inc:58
+#: admin/autofs/class_nisObject.inc:53
 msgid "Name of this directory"
 msgstr ""
 
-#: admin/autofs/class_nisObject.inc:64
+#: admin/autofs/class_nisObject.inc:59
 msgid "Automount entry"
 msgstr ""
 
-#: admin/autofs/class_nisObject.inc:64
+#: admin/autofs/class_nisObject.inc:59
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
 msgstr ""
 
-#: admin/autofs/class_nisObject.inc:68 admin/autofs/class_nisMap.inc:31
-#: admin/autofs/class_nisMap.inc:34 admin/autofs/class_nisMap.inc:49
+#: admin/autofs/class_nisObject.inc:63 admin/autofs/class_nisMap.inc:26
+#: admin/autofs/class_nisMap.inc:30 admin/autofs/class_nisMap.inc:44
 msgid "Mount point"
 msgstr ""
 
-#: admin/autofs/class_nisObject.inc:68
+#: admin/autofs/class_nisObject.inc:63
 msgid "The mount point this directory will be placed in"
 msgstr ""
 
-#: admin/autofs/class_nisMap.inc:32
+#: admin/autofs/class_nisMap.inc:27
 msgid "Autofs mount point"
 msgstr ""
 
-#: admin/autofs/class_nisMap.inc:53
+#: admin/autofs/class_nisMap.inc:48
 msgid "Name of the mount point"
 msgstr ""
 
-#: config/autofs/class_autofsConfig.inc:28
+#: config/autofs/class_autofsConfig.inc:26
 msgid "Autofs configuration"
 msgstr ""
 
-#: config/autofs/class_autofsConfig.inc:29
+#: config/autofs/class_autofsConfig.inc:27
 msgid "FusionDirectory autofs plugin configuration"
 msgstr ""
 
-#: config/autofs/class_autofsConfig.inc:42
+#: config/autofs/class_autofsConfig.inc:40
 msgid "AutoFS"
 msgstr ""
 
-#: config/autofs/class_autofsConfig.inc:45
+#: config/autofs/class_autofsConfig.inc:43
 msgid "AutoFS RDN"
 msgstr ""
 
-#: config/autofs/class_autofsConfig.inc:45
+#: config/autofs/class_autofsConfig.inc:43
 msgid "Branch in which automount info will be stored"
 msgstr ""

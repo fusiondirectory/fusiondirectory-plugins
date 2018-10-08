@@ -8,89 +8,89 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/fusiondirectory/teams/12202/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr_TR\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: config/class_webserviceConfig.inc:28
+#: config/class_webserviceConfig.inc:26
 msgid "Webservice configuration"
 msgstr ""
 
-#: config/class_webserviceConfig.inc:29
+#: config/class_webserviceConfig.inc:27
 msgid "FusionDirectory webservice plugin configuration"
 msgstr ""
 
-#: config/class_webserviceConfig.inc:42
+#: config/class_webserviceConfig.inc:40
 msgid "Webservice"
 msgstr ""
 
-#: config/class_webserviceConfig.inc:45
+#: config/class_webserviceConfig.inc:43
 msgid "Force SSL"
 msgstr ""
 
-#: config/class_webserviceConfig.inc:45
+#: config/class_webserviceConfig.inc:43
 msgid "Allow only HTTPS JSON-RPC requests"
 msgstr ""
 
-#: html/jsonrpc.php:52
+#: html/jsonrpc.php:55
 #, php-format
 msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
 msgstr ""
 
-#: html/jsonrpc.php:62
+#: html/jsonrpc.php:65
 #, php-format
 msgid "Cannot locate file '%s' - please run '%s' to fix this"
 msgstr ""
 
-#: html/jsonrpc.php:333 html/jsonrpc.php:416
+#: html/jsonrpc.php:342 html/jsonrpc.php:425
 msgid "Plugin"
 msgstr ""
 
-#: html/jsonrpc.php:513
+#: html/jsonrpc.php:522
 #, php-format
 msgid "Field \"%s\" is not multi-valuated"
 msgstr ""
 
-#: html/jsonrpc.php:528
+#: html/jsonrpc.php:537
 #, php-format
 msgid "Unknown field \"%s\""
 msgstr ""
 
-#: html/jsonrpc.php:583
+#: html/jsonrpc.php:592
 #, php-format
 msgid "Cannot delete %s. It has been locked by %s."
 msgstr ""
 
-#: html/jsonrpc.php:630 html/jsonrpc.php:659
+#: html/jsonrpc.php:639 html/jsonrpc.php:668
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr ""
 
-#: html/jsonrpc.php:655
+#: html/jsonrpc.php:664
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr ""
 
-#: html/jsonrpc.php:662
+#: html/jsonrpc.php:671
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr ""
 
-#: html/jsonrpc.php:700 html/jsonrpc.php:709
+#: html/jsonrpc.php:709 html/jsonrpc.php:718
 #, php-format
 msgid "Failed to get password method for account \"%s\""
 msgstr ""
 
-#: html/jsonrpc.php:712
+#: html/jsonrpc.php:721
 #, php-format
 msgid "Could not find account \"%s\" in LDAP"
 msgstr ""
 
-#: html/jsonrpc.php:756
+#: html/jsonrpc.php:765
 msgid "This token is invalid"
 msgstr ""

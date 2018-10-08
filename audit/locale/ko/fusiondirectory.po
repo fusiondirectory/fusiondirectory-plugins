@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -18,75 +18,75 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/audit/class_auditEvent.inc:53 admin/audit/class_auditEvent.inc:56
+#: admin/audit/class_auditEvent.inc:43 admin/audit/class_auditEvent.inc:47
 msgid "Audit event"
 msgstr "감사 이벤트"
 
-#: admin/audit/class_auditEvent.inc:54
+#: admin/audit/class_auditEvent.inc:44
 msgid "An event like ldap modification which was registered by audit plugin"
 msgstr "감사 플러그인에 의해 등록된 LDAP 변경 등의 이벤트"
 
-#: admin/audit/class_auditEvent.inc:72
+#: admin/audit/class_auditEvent.inc:62
 msgid "Event"
 msgstr "이벤트"
 
-#: admin/audit/class_auditEvent.inc:75
-#: admin/audit/class_auditManagement.inc:70
+#: admin/audit/class_auditEvent.inc:66
+#: admin/audit/class_auditManagement.inc:111
 msgid "Time"
 msgstr "시간"
 
-#: admin/audit/class_auditEvent.inc:75
+#: admin/audit/class_auditEvent.inc:66
 msgid "Date and time this event happened"
 msgstr "이벤트가 발생한 날짜와 시간"
 
-#: admin/audit/class_auditEvent.inc:78
-#: admin/audit/class_auditManagement.inc:84
+#: admin/audit/class_auditEvent.inc:69
+#: admin/audit/class_auditManagement.inc:125
 msgid "Action"
 msgstr "액션"
 
-#: admin/audit/class_auditEvent.inc:78
+#: admin/audit/class_auditEvent.inc:69
 msgid "Action type"
 msgstr "액션 타입"
 
-#: admin/audit/class_auditEvent.inc:79
-#: admin/audit/class_auditManagement.inc:77
+#: admin/audit/class_auditEvent.inc:70
+#: admin/audit/class_auditManagement.inc:118
 msgid "Author"
 msgstr "작성자"
 
-#: admin/audit/class_auditEvent.inc:79
+#: admin/audit/class_auditEvent.inc:70
 msgid "Action author"
 msgstr "액션 작성자"
 
-#: admin/audit/class_auditEvent.inc:80
+#: admin/audit/class_auditEvent.inc:71
 msgid "Object type"
 msgstr "오브젝트 타입"
 
-#: admin/audit/class_auditEvent.inc:81
+#: admin/audit/class_auditEvent.inc:72
 msgid "Object"
 msgstr "오브젝트"
 
-#: admin/audit/class_auditEvent.inc:81
+#: admin/audit/class_auditEvent.inc:72
 msgid "Target object"
 msgstr "타겟 오브젝트"
 
-#: admin/audit/class_auditEvent.inc:82
+#: admin/audit/class_auditEvent.inc:73
 msgid "Attributes"
 msgstr "속성"
 
-#: admin/audit/class_auditEvent.inc:82
+#: admin/audit/class_auditEvent.inc:73
 msgid "Target attributes"
 msgstr "타겟 속성"
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:74
 msgid "Result"
 msgstr "결과"
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:74
 msgid "Result or error"
 msgstr "결과 또는 오류"
 
 #: admin/audit/class_auditManagement.inc:41
-#: config/audit/class_auditConfig.inc:41
+#: config/audit/class_auditConfig.inc:40
 msgid "Audit"
 msgstr "감사"
 
@@ -94,42 +94,54 @@ msgstr "감사"
 msgid "Audit events display"
 msgstr "감사 이벤트 표시"
 
-#: admin/audit/class_auditManagement.inc:91
+#: admin/audit/class_auditManagement.inc:132
 msgid "Type"
 msgstr "타입"
 
-#: admin/audit/class_auditManagement.inc:98
+#: admin/audit/class_auditManagement.inc:139
 msgid "Target"
 msgstr "타겟"
 
-#: config/audit/class_auditConfig.inc:28
+#: admin/audit/class_auditManagement.inc:157
+msgid "Newer than"
+msgstr "최신의"
+
+#: admin/audit/class_auditManagement.inc:161
+msgid "Older than"
+msgstr "이전의"
+
+#: config/audit/class_auditConfig.inc:26
 msgid "Audit configuration"
 msgstr "감사 설정"
 
-#: config/audit/class_auditConfig.inc:29
+#: config/audit/class_auditConfig.inc:27
 msgid "FusionDirectory audit plugin configuration"
 msgstr "FusionDirectory 감사 플러그인 설정"
 
-#: config/audit/class_auditConfig.inc:44
+#: config/audit/class_auditConfig.inc:43
 msgid "Audit RDN"
 msgstr "감사 RDN"
 
-#: config/audit/class_auditConfig.inc:44
+#: config/audit/class_auditConfig.inc:43
 msgid "Branch in which audit events will be stored"
 msgstr "감사 이벤트가 저장될 브랜치"
 
-#: config/audit/class_auditConfig.inc:50
+#: config/audit/class_auditConfig.inc:49
 msgid "Actions to audit"
 msgstr "감사 액션"
 
-#: config/audit/class_auditConfig.inc:50
+#: config/audit/class_auditConfig.inc:49
 msgid "Which actions should be stored in LDAP audit log"
 msgstr "액션은 LDAP 감사 로그에 저장됨"
 
-#: config/audit/class_auditConfig.inc:57
+#: config/audit/class_auditConfig.inc:56
 msgid "Days to keep"
 msgstr "보관 기간"
 
-#: config/audit/class_auditConfig.inc:57
+#: config/audit/class_auditConfig.inc:56
 msgid "Number of days of audit to keep in the LDAP when cleaning"
 msgstr "초기화 시 LDAP에 감사 기록 보관 기간"
+
+#: admin/audit/audit-filter.tpl.c:2
+msgid "Filter"
+msgstr "필터"

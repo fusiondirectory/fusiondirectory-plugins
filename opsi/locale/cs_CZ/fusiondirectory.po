@@ -8,170 +8,170 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: admin/opsi/class_opsiSoftwareList.inc:32
+#: admin/opsi/class_opsiSoftwareList.inc:29
 msgid "OPSI list"
 msgstr "OPSI seznam"
 
-#: admin/opsi/class_opsiSoftwareList.inc:33
-#: admin/opsi/class_opsiSoftwareList.inc:37
+#: admin/opsi/class_opsiSoftwareList.inc:30
+#: admin/opsi/class_opsiSoftwareList.inc:34
 msgid "OPSI software list"
 msgstr "OPSI seznam programového vybavení"
 
-#: admin/opsi/class_opsiSoftwareList.inc:54
-#: admin/opsi/class_opsiOnDemandList.inc:50
+#: admin/opsi/class_opsiSoftwareList.inc:50
+#: admin/opsi/class_opsiOnDemandList.inc:47
 msgid "Infos"
 msgstr "Informace"
 
-#: admin/opsi/class_opsiSoftwareList.inc:58
-#: admin/opsi/class_opsiProfile.inc:94
-#: admin/opsi/class_opsiOnDemandList.inc:53
+#: admin/opsi/class_opsiSoftwareList.inc:54
+#: admin/opsi/class_opsiProfile.inc:90
+#: admin/opsi/class_opsiOnDemandList.inc:50
 msgid "OPSI server"
 msgstr "OPSI server"
 
-#: admin/opsi/class_opsiSoftwareList.inc:58
-#: admin/opsi/class_opsiProfile.inc:94
-#: admin/opsi/class_opsiOnDemandList.inc:53
+#: admin/opsi/class_opsiSoftwareList.inc:54
+#: admin/opsi/class_opsiProfile.inc:90
+#: admin/opsi/class_opsiOnDemandList.inc:50
 msgid "OPSI server to use for deployment"
 msgstr "OPSI server pomocí kterého nasadit"
 
-#: admin/opsi/class_opsiSoftwareList.inc:62
-#: admin/opsi/class_opsiProfile.inc:90 admin/opsi/class_opsiProfile.inc:98
-#: admin/opsi/class_opsiOnDemandList.inc:57
-#: admin/opsi/class_opsiProductProperties.inc:113
+#: admin/opsi/class_opsiSoftwareList.inc:58
+#: admin/opsi/class_opsiProfile.inc:86 admin/opsi/class_opsiProfile.inc:94
+#: admin/opsi/class_opsiOnDemandList.inc:54
+#: admin/opsi/class_opsiProductProperties.inc:111
 msgid "Name"
 msgstr "Název"
 
-#: admin/opsi/class_opsiSoftwareList.inc:62
-#: admin/opsi/class_opsiProfile.inc:98
-#: admin/opsi/class_opsiOnDemandList.inc:57
+#: admin/opsi/class_opsiSoftwareList.inc:58
+#: admin/opsi/class_opsiProfile.inc:94
+#: admin/opsi/class_opsiOnDemandList.inc:54
 msgid "Name of this OPSI profile"
 msgstr "Název tohoto OPSI profilu"
 
-#: admin/opsi/class_opsiSoftwareList.inc:68
-#: admin/opsi/class_opsiOnDemandList.inc:67
-#: admin/systems/opsi/class_opsiClient.inc:69
+#: admin/opsi/class_opsiSoftwareList.inc:64
+#: admin/opsi/class_opsiOnDemandList.inc:64
+#: admin/systems/opsi/class_opsiClient.inc:68
 msgid "Softwares"
 msgstr "Programové vybavení"
 
-#: admin/opsi/class_opsiSoftwareList.inc:72
+#: admin/opsi/class_opsiSoftwareList.inc:68
 msgid "The localboot products to install with this list"
 msgstr ""
 "Produkty pro místní zavedení pro instalaci prostřednictvím tohoto seznamu"
 
-#: admin/opsi/class_opsiSoftwareList.inc:85
-#: admin/opsi/class_opsiOnDemandList.inc:71
-#: admin/systems/opsi/class_opsiClient.inc:86
+#: admin/opsi/class_opsiSoftwareList.inc:81
+#: admin/opsi/class_opsiOnDemandList.inc:68
+#: admin/systems/opsi/class_opsiClient.inc:85
 msgid "Localboot products"
 msgstr "Produkty pro spuštění z vestavěného datového úložiště stroje"
 
-#: admin/opsi/class_opsiSoftwareList.inc:114
-#: admin/opsi/class_opsiProfile.inc:160
-#: admin/opsi/class_opsiProductProperties.inc:174
-#: admin/systems/opsi/class_opsiClient.inc:292
+#: admin/opsi/class_opsiSoftwareList.inc:110
+#: admin/opsi/class_opsiProfile.inc:156
+#: admin/opsi/class_opsiProductProperties.inc:171
+#: admin/systems/opsi/class_opsiClient.inc:338
 msgid "Could not contact argonaut server"
 msgstr "Nedaří se kontaktovat argonaut server"
 
-#: admin/opsi/class_opsiSoftwareList.inc:126
-#: admin/opsi/class_opsiProfile.inc:172
-#: admin/systems/opsi/class_opsiClient.inc:303
-#: addons/opsi/class_opsiImport.inc:105
+#: admin/opsi/class_opsiSoftwareList.inc:122
+#: admin/opsi/class_opsiProfile.inc:168
+#: admin/systems/opsi/class_opsiClient.inc:349
+#: addons/opsi/class_opsiImport.inc:104
 msgid "No mac address"
 msgstr "Žádná MAC adresa"
 
-#: admin/opsi/class_opsiSoftwareList.inc:127
-#: admin/opsi/class_opsiProfile.inc:173
-#: admin/systems/opsi/class_opsiClient.inc:304
+#: admin/opsi/class_opsiSoftwareList.inc:123
+#: admin/opsi/class_opsiProfile.inc:169
+#: admin/systems/opsi/class_opsiClient.inc:350
 #, php-format
 msgid "Server %s has no mac address configured in the LDAP"
 msgstr "Server %s nemá v LDAP uvedeny žádné MAC adresy"
 
-#: admin/opsi/class_opsiSoftwareList.inc:133
-#: admin/opsi/class_opsiProfile.inc:144 admin/opsi/class_opsiProfile.inc:179
-#: admin/systems/opsi/class_opsiClient.inc:310
+#: admin/opsi/class_opsiSoftwareList.inc:129
+#: admin/opsi/class_opsiProfile.inc:140 admin/opsi/class_opsiProfile.inc:175
+#: admin/systems/opsi/class_opsiClient.inc:356
 #, php-format
 msgid "Could not find %s in the LDAP"
 msgstr "%s nelze v LDAP nalézt"
 
-#: admin/opsi/class_opsiSoftwareList.inc:141
-#: admin/opsi/class_opsiProfile.inc:187
-#: admin/opsi/class_opsiProductProperties.inc:189
-#: admin/systems/opsi/class_opsiClient.inc:338
-#: admin/systems/opsi/class_opsiClient.inc:350
+#: admin/opsi/class_opsiSoftwareList.inc:137
+#: admin/opsi/class_opsiProfile.inc:183
+#: admin/opsi/class_opsiProductProperties.inc:186
+#: admin/systems/opsi/class_opsiClient.inc:384
+#: admin/systems/opsi/class_opsiClient.inc:396
 msgid "Failed to contact OPSI server"
 msgstr "Nezdařilo se kontaktovat OPSI server"
 
-#: admin/opsi/class_opsiSoftwareList.inc:153
-#: admin/systems/opsi/class_opsiClient.inc:357
+#: admin/opsi/class_opsiSoftwareList.inc:149
+#: admin/systems/opsi/class_opsiClient.inc:403
 #, php-format
 msgid "%s (%s-%s)"
 msgstr "%s (%s–%s)"
 
-#: admin/opsi/class_opsiProfile.inc:67 admin/opsi/class_opsiProfile.inc:68
-#: admin/opsi/class_opsiProfile.inc:72
+#: admin/opsi/class_opsiProfile.inc:64 admin/opsi/class_opsiProfile.inc:65
+#: admin/opsi/class_opsiProfile.inc:69
 msgid "OPSI profile"
 msgstr "Sada nastavení OPSI"
 
-#: admin/opsi/class_opsiProfile.inc:104
+#: admin/opsi/class_opsiProfile.inc:100
 msgid "Entries"
 msgstr "Položky"
 
-#: admin/opsi/class_opsiProfile.inc:107
+#: admin/opsi/class_opsiProfile.inc:103
 msgid "Netboot product"
 msgstr "Produkt pro místní zavedení"
 
-#: admin/opsi/class_opsiProfile.inc:107
+#: admin/opsi/class_opsiProfile.inc:103
 msgid "The netboot product to use for this profile"
 msgstr "Netbot produkt pro tuto sadu nastavení"
 
-#: admin/opsi/class_opsiProfile.inc:112
+#: admin/opsi/class_opsiProfile.inc:108
 msgid "Software lists"
 msgstr "Seznamy programového vybavení"
 
-#: admin/opsi/class_opsiProfile.inc:112
+#: admin/opsi/class_opsiProfile.inc:108
 msgid "Software lists that will be installed with this profile"
 msgstr ""
 "Seznam programového vybavení, který bude nainstalován touto sadou nastavení"
 
-#: admin/opsi/class_opsiProfile.inc:206
+#: admin/opsi/class_opsiProfile.inc:202
 #, php-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: admin/opsi/class_opsiOnDemandList.inc:28
-#: admin/opsi/class_opsiOnDemandList.inc:33
+#: admin/opsi/class_opsiOnDemandList.inc:26
+#: admin/opsi/class_opsiOnDemandList.inc:31
 msgid "OPSI ondemand list"
 msgstr "OPSI seznam na vyžádání"
 
-#: admin/opsi/class_opsiOnDemandList.inc:29
+#: admin/opsi/class_opsiOnDemandList.inc:27
 msgid "OPSI on demand software list"
 msgstr "OPSI seznam na vyžádání: programové vybavení"
 
-#: admin/opsi/class_opsiOnDemandList.inc:61
+#: admin/opsi/class_opsiOnDemandList.inc:58
 msgid "Show details"
 msgstr "Zobrazit podrobnosti"
 
-#: admin/opsi/class_opsiOnDemandList.inc:61
+#: admin/opsi/class_opsiOnDemandList.inc:58
 msgid "Show further information to the user"
 msgstr "Zobrazit uživateli další informace"
 
-#: admin/opsi/class_opsiOnDemandList.inc:71
+#: admin/opsi/class_opsiOnDemandList.inc:68
 msgid "The localboot products to put in this list"
 msgstr ""
 "Produkty pro zavedení z vestavěného úložiště stroje, které umístit na tento "
 "seznam"
 
 #: admin/opsi/class_opsiProfileManagement.inc:33
-#: config/opsi/class_opsiConfig.inc:42
+#: config/opsi/class_opsiConfig.inc:40
 #: addons/dashboard/class_dashBoardOpsi.inc:26
 msgid "OPSI"
 msgstr "OPSI"
@@ -180,203 +180,218 @@ msgstr "OPSI"
 msgid "OPSI profile management"
 msgstr "Správa sady nastavení OPSI"
 
-#: admin/opsi/class_opsiProductProperties.inc:100
-#: admin/opsi/class_opsiProductProperties.inc:101
+#: admin/opsi/class_opsiProductProperties.inc:98
+#: admin/opsi/class_opsiProductProperties.inc:99
 msgid "Product properties"
 msgstr "Vlastnosti produktu"
 
-#: admin/opsi/class_opsiProductProperties.inc:118
+#: admin/opsi/class_opsiProductProperties.inc:116
 msgid "Properties of the products of this profile"
 msgstr "Vlastnosti produktů v této sadě nastavení"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:29
-#: admin/systems/services/opsi/class_serviceOPSI.inc:30
+#: admin/systems/services/opsi/class_serviceOPSI.inc:26
+#: admin/systems/services/opsi/class_serviceOPSI.inc:27
 msgid "OPSI service"
 msgstr "Služba OPSI"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:30
+#: admin/systems/services/opsi/class_serviceOPSI.inc:27
 msgid "Services"
 msgstr "Služby"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:41
+#: admin/systems/services/opsi/class_serviceOPSI.inc:39
 msgid "OPSI Server information"
 msgstr "Informace o OPSI serveru"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:44
+#: admin/systems/services/opsi/class_serviceOPSI.inc:42
 msgid "Server URI"
 msgstr "URI serveru"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:44
+#: admin/systems/services/opsi/class_serviceOPSI.inc:42
 msgid "The URI to use for connection"
 msgstr "URI adresa, kterou použít pro připojení"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:48
+#: admin/systems/services/opsi/class_serviceOPSI.inc:46
 msgid "User"
 msgstr "Uživatel"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:48
+#: admin/systems/services/opsi/class_serviceOPSI.inc:46
 msgid "The user to use for connection"
 msgstr "Uživatelský účet, který použít pro připojení"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:52
+#: admin/systems/services/opsi/class_serviceOPSI.inc:50
 msgid "Password"
 msgstr "Heslo"
 
-#: admin/systems/services/opsi/class_serviceOPSI.inc:52
+#: admin/systems/services/opsi/class_serviceOPSI.inc:50
 msgid "The password to use for connection"
 msgstr "Heslo pro spojení"
 
+#: admin/systems/opsi/class_opsiLogView.inc:31
+msgid "OPSI Logs"
+msgstr ""
+
 #: admin/systems/opsi/class_opsiLogView.inc:32
-#: admin/systems/opsi/class_opsiLogView.inc:36
+msgid "OPSI Logs Viewer"
+msgstr ""
+
+#: admin/systems/opsi/class_opsiLogView.inc:44
+#: admin/systems/opsi/class_opsiLogView.inc:48
 msgid "Available logs"
 msgstr "Provozní záznamy k dispozici"
 
-#: admin/systems/opsi/class_opsiLogView.inc:36
+#: admin/systems/opsi/class_opsiLogView.inc:48
 msgid "Available log files"
-msgstr "Soubory se záznamem událostí (log), které jsou k dispozici"
+msgstr ""
 
-#: admin/systems/opsi/class_opsiLogView.inc:40
+#: admin/systems/opsi/class_opsiLogView.inc:52
 msgid "Content of the selected log"
 msgstr "Obsah zvoleného provozního záznamu"
 
-#: admin/systems/opsi/class_opsiLogView.inc:52
-msgid "OPSI Logs"
-msgstr "OPSI logy"
-
-#: admin/systems/opsi/class_opsiLogView.inc:53
-msgid "OPSI Logs Viewer"
-msgstr "Prohlížeč OPSI logů"
-
-#: admin/systems/opsi/class_opsiLogView.inc:82
-#: admin/systems/opsi/class_opsiLogView.inc:113
+#: admin/systems/opsi/class_opsiLogView.inc:81
+#: admin/systems/opsi/class_opsiLogView.inc:112
 #: addons/dashboard/class_dashBoardOpsi.inc:91
 msgid "Error"
 msgstr "Chyba"
 
-#: admin/systems/opsi/class_opsiClient.inc:36
+#: admin/systems/opsi/class_opsiClient.inc:35
 msgid "OPSI client"
 msgstr "Klient OPSI"
 
-#: admin/systems/opsi/class_opsiClient.inc:37
+#: admin/systems/opsi/class_opsiClient.inc:36
 msgid "Edit OPSI client settings"
 msgstr "Upravit nastavení OPSI klienta"
 
-#: admin/systems/opsi/class_opsiClient.inc:56
+#: admin/systems/opsi/class_opsiClient.inc:55
 msgid "OPSI Client"
 msgstr "Klient OPSI"
 
-#: admin/systems/opsi/class_opsiClient.inc:59
+#: admin/systems/opsi/class_opsiClient.inc:58
 msgid "OPSI Server"
 msgstr "OPSI server"
 
-#: admin/systems/opsi/class_opsiClient.inc:59
+#: admin/systems/opsi/class_opsiClient.inc:58
 msgid "The OPSI Server this client is connected to"
 msgstr "OPSI server, ke kterému je tento klient připojen"
 
-#: admin/systems/opsi/class_opsiClient.inc:63
+#: admin/systems/opsi/class_opsiClient.inc:62
 msgid "OPSI Profile"
 msgstr "Profil OPSI"
 
-#: admin/systems/opsi/class_opsiClient.inc:63
+#: admin/systems/opsi/class_opsiClient.inc:62
 msgid "The OPSI Profile to apply to this client"
 msgstr "Sada nastavení OPSI, která má být použita na tomto klientovi"
 
-#: admin/systems/opsi/class_opsiClient.inc:73
+#: admin/systems/opsi/class_opsiClient.inc:72
 msgid "The localboot products to setup on this host"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:95
+#: admin/systems/opsi/class_opsiClient.inc:92
+msgid "Inherit group localboots"
+msgstr ""
+
+#: admin/systems/opsi/class_opsiClient.inc:92
+msgid ""
+"If this is checked localboot configured in the group OPSI tab will be "
+"installed along with the localboots configured here"
+msgstr ""
+
+#: admin/systems/opsi/class_opsiClient.inc:98
 msgid "Information"
 msgstr "Informace"
 
-#: admin/systems/opsi/class_opsiClient.inc:98
+#: admin/systems/opsi/class_opsiClient.inc:101
 msgid "Last seen"
-msgstr "Naposledy spatřeno"
+msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:98
+#: admin/systems/opsi/class_opsiClient.inc:101
 msgid "Last time this OPSI client was seen by the OPSI server"
-msgstr "Kdy naposledy byl OPSI klient viděn OPSI serverem"
+msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:145
+#: admin/systems/opsi/class_opsiClient.inc:174
 msgid "Could not get macAddress for OPSI server!"
 msgstr "Nedaří se získat MAC adresu pro OPSI server!"
 
-#: admin/systems/opsi/class_opsiClient.inc:154
-#: admin/systems/opsi/class_opsiClient.inc:265
+#: admin/systems/opsi/class_opsiClient.inc:183
+#: admin/systems/opsi/class_opsiClient.inc:294
 msgid "Could not remove OPSI information"
 msgstr "Nedaří se odebrat OPSI informaci"
 
-#: admin/systems/opsi/class_opsiClient.inc:184
+#: admin/systems/opsi/class_opsiClient.inc:213
 msgid "This member was not found or has no macAddress"
 msgstr "Člen nebyl nalezen nebo nemá nastaveno macAddress"
 
-#: admin/systems/opsi/class_opsiClient.inc:189
+#: admin/systems/opsi/class_opsiClient.inc:218
 #, php-format
 msgid "Could not get macAddress for \"%s\""
 msgstr "Nedaří se získat macAddress pro „%s“"
 
-#: admin/systems/opsi/class_opsiClient.inc:218
+#: admin/systems/opsi/class_opsiClient.inc:247
 msgid "Could not update OPSI information"
 msgstr "Nedaří se aktualizovat OPSI informaci"
 
-#: admin/systems/opsi/class_opsiClient.inc:319
+#: admin/systems/opsi/class_opsiClient.inc:324
+#, php-format
+msgid "Inherited (%s)"
+msgstr ""
+
+#: admin/systems/opsi/class_opsiClient.inc:365
 #, php-format
 msgid "Failed to contact OPSI server: %s"
-msgstr "Nepodařilo se kontaktovat OPSI server: %s"
+msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:321
+#: admin/systems/opsi/class_opsiClient.inc:367
 msgid "Never"
 msgstr "Nikdy"
 
-#: config/opsi/class_opsiConfig.inc:28
+#: config/opsi/class_opsiConfig.inc:26
 msgid "OPSI configuration"
 msgstr "Nastavení OPSI"
 
-#: config/opsi/class_opsiConfig.inc:29
+#: config/opsi/class_opsiConfig.inc:27
 msgid "FusionDirectory OPSI plugin configuration"
 msgstr "Nastavení nastavení zásuvného modulu OPSI pro FusionDirectory"
 
-#: config/opsi/class_opsiConfig.inc:45
+#: config/opsi/class_opsiConfig.inc:43
 msgid "OPSI RDN"
 msgstr "Relativní rozlišený název OPSI"
 
-#: config/opsi/class_opsiConfig.inc:45
+#: config/opsi/class_opsiConfig.inc:43
 msgid "Branch in which OPSI profiles will be stored"
 msgstr "Větev, ve které budou uchovávány OPSI profily"
 
 #: addons/dashboard/class_dashBoardOpsi.inc:27
 msgid "Statistics and information about OPSI"
-msgstr "Statistiky a informace o OPSI"
+msgstr ""
 
 #: addons/dashboard/class_dashBoardOpsi.inc:38
 msgid "Statistics"
-msgstr "Statistiky"
+msgstr ""
 
 #: addons/dashboard/class_dashBoardOpsi.inc:43
 msgid "Profiles"
-msgstr "Profily"
+msgstr ""
 
 #: addons/dashboard/class_dashBoardOpsi.inc:66
 msgid "OPSI servers"
-msgstr "OPSI servery"
+msgstr ""
 
 #: addons/dashboard/class_dashBoardOpsi.inc:72
 msgid "OPSI clients"
-msgstr "OPSI klienti"
+msgstr ""
 
 #: addons/dashboard/class_dashBoardOpsi.inc:78
 msgid "OPSI groups"
-msgstr "OPSI skupiny"
+msgstr ""
 
 #: addons/dashboard/class_dashBoardOpsi.inc:92
 #, php-format
 msgid ""
 "Statistics for OPSI could not be computed because of the following error: %s"
-msgstr "Statistiky pro OPSI nebylo možné spočítat kvůli následující chybě: %s"
+msgstr ""
 
 #: addons/dashboard/class_dashBoardOpsi.inc:110
 msgid "Profile"
-msgstr "profil"
+msgstr "Profil"
 
 #: addons/dashboard/class_dashBoardOpsi.inc:110
 msgid "Systems"
@@ -386,7 +401,7 @@ msgstr "Systémy"
 msgid "Groups"
 msgstr "Skupiny"
 
-#: addons/opsi/class_opsiImport.inc:30 addons/opsi/class_opsiImport.inc:36
+#: addons/opsi/class_opsiImport.inc:30 addons/opsi/class_opsiImport.inc:35
 msgid "OPSI import"
 msgstr "Importovat OPSI"
 
@@ -394,31 +409,31 @@ msgstr "Importovat OPSI"
 msgid "Import windows stations from OPSI into FD"
 msgstr "Importovat počítače s MS Windows z OPSI do F.D."
 
-#: addons/opsi/class_opsiImport.inc:58
+#: addons/opsi/class_opsiImport.inc:57
 msgid "Import localboot products"
 msgstr ""
 
-#: addons/opsi/class_opsiImport.inc:58
+#: addons/opsi/class_opsiImport.inc:57
 msgid "Import localboot product list configured in OPSI in the FD OPSI tab"
 msgstr ""
 
-#: addons/opsi/class_opsiImport.inc:94
+#: addons/opsi/class_opsiImport.inc:93
 msgid "Argonaut server is not available"
 msgstr "Server s Argonaut není dostupný"
 
-#: addons/opsi/class_opsiImport.inc:106
+#: addons/opsi/class_opsiImport.inc:105
 #, php-format
 msgid "Server \"%s\" has no mac address configured in the LDAP"
-msgstr "Serve „%s“ nemá v LDAP nastavenou žádnou MAC adresu"
+msgstr ""
 
-#: addons/opsi/class_opsiImport.inc:113
+#: addons/opsi/class_opsiImport.inc:112
 #, php-format
 msgid "Could not find \"%s\" in the LDAP"
-msgstr "„%s“ se nedaří v LDAP nalézt"
+msgstr ""
 
-#: addons/opsi/class_opsiImport.inc:121 addons/opsi/class_opsiImport.inc:143
+#: addons/opsi/class_opsiImport.inc:120 addons/opsi/class_opsiImport.inc:142
 msgid "Could not get OPSI information"
-msgstr "Nedaří se získat OPSI informaci"
+msgstr ""
 
 #: addons/opsi/opsiimport.tpl.c:2
 msgid ""

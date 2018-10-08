@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Swedish (https://www.transifex.com/fusiondirectory/teams/12202/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:123
-#: config/sudo/class_sudoConfig.inc:42
+#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:120
+#: config/sudo/class_sudoConfig.inc:40
 msgid "Sudo"
 msgstr ""
 
@@ -27,95 +27,95 @@ msgstr ""
 msgid "Sudo management"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:124 admin/sudo/class_sudoGeneric.inc:128
+#: admin/sudo/class_sudoGeneric.inc:121 admin/sudo/class_sudoGeneric.inc:125
 msgid "Sudo role"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:155
+#: admin/sudo/class_sudoGeneric.inc:151
 msgid "Role settings"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:161
+#: admin/sudo/class_sudoGeneric.inc:157
 msgid "Name"
 msgstr "Namn"
 
-#: admin/sudo/class_sudoGeneric.inc:161
+#: admin/sudo/class_sudoGeneric.inc:157
 msgid "Name of the role"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:166
+#: admin/sudo/class_sudoGeneric.inc:162
 msgid "Description"
 msgstr "Beskrivning"
 
-#: admin/sudo/class_sudoGeneric.inc:166
+#: admin/sudo/class_sudoGeneric.inc:162
 msgid "Description for the new sudo role"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:171
+#: admin/sudo/class_sudoGeneric.inc:167
 msgid "Commands"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:172
+#: admin/sudo/class_sudoGeneric.inc:168
 msgid ""
 "A Unix command with optional command line arguments, potentially including "
 "globbing characters (aka wild cards)"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:178
+#: admin/sudo/class_sudoGeneric.inc:174
 msgid "Run as (user)"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:179
+#: admin/sudo/class_sudoGeneric.inc:175
 msgid "User(s) impersonated by sudo"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:186
+#: admin/sudo/class_sudoGeneric.inc:182
 msgid "Run as (group)"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:187
+#: admin/sudo/class_sudoGeneric.inc:183
 msgid "Group(s) impersonated by sudo"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:193
+#: admin/sudo/class_sudoGeneric.inc:189
 msgid "Systems"
 msgstr "System"
 
-#: admin/sudo/class_sudoGeneric.inc:193
+#: admin/sudo/class_sudoGeneric.inc:189
 msgid "A host name, IP address or IP network"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:198
+#: admin/sudo/class_sudoGeneric.inc:194
 msgid "Users and groups"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:199
+#: admin/sudo/class_sudoGeneric.inc:195
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:203
+#: admin/sudo/class_sudoGeneric.inc:199
 msgid "Priority"
 msgstr "Prioritet"
 
-#: admin/sudo/class_sudoGeneric.inc:203
+#: admin/sudo/class_sudoGeneric.inc:199
 msgid "This rule priority compared to others"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:208
+#: admin/sudo/class_sudoGeneric.inc:204
 msgid "Valid starting from"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:208
+#: admin/sudo/class_sudoGeneric.inc:204
 msgid ""
 "Start of time interval for which the entry is valid (leave empty to disable)"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:213
+#: admin/sudo/class_sudoGeneric.inc:209
 msgid "Valid until"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:213
+#: admin/sudo/class_sudoGeneric.inc:209
 msgid ""
 "End of time interval for which the entry is valid (leave empty to disable)"
 msgstr ""
@@ -134,28 +134,28 @@ msgstr ""
 msgid "%s (%s)"
 msgstr ""
 
-#: admin/sudo/class_sudoOption.inc:341
-msgid "Available options"
-msgstr ""
-
-#: admin/sudo/class_sudoOption.inc:344
-msgid "Option"
-msgstr ""
-
-#: admin/sudo/class_sudoOption.inc:344
-msgid "Add a new sudo option"
-msgstr ""
-
-#: admin/sudo/class_sudoOption.inc:349 admin/sudo/class_sudoOption.inc:351
-msgid "Used sudo role options"
-msgstr ""
-
-#: admin/sudo/class_sudoOption.inc:418
+#: admin/sudo/class_sudoOption.inc:337
 msgid "Options"
 msgstr "Alternativ"
 
-#: admin/sudo/class_sudoOption.inc:419
+#: admin/sudo/class_sudoOption.inc:338
 msgid "Sudo options"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:352
+msgid "Available options"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:355
+msgid "Option"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:355
+msgid "Add a new sudo option"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:360 admin/sudo/class_sudoOption.inc:362
+msgid "Used sudo role options"
 msgstr ""
 
 #: admin/sudo/class_sudoOptions.inc:53
@@ -463,18 +463,18 @@ msgid ""
 "env_reset option is in effect"
 msgstr ""
 
-#: config/sudo/class_sudoConfig.inc:28
+#: config/sudo/class_sudoConfig.inc:26
 msgid "Sudo configuration"
 msgstr ""
 
-#: config/sudo/class_sudoConfig.inc:29
+#: config/sudo/class_sudoConfig.inc:27
 msgid "FusionDirectory sudo plugin configuration"
 msgstr ""
 
-#: config/sudo/class_sudoConfig.inc:45
+#: config/sudo/class_sudoConfig.inc:43
 msgid "Sudo RDN"
 msgstr ""
 
-#: config/sudo/class_sudoConfig.inc:45
+#: config/sudo/class_sudoConfig.inc:43
 msgid "Branch in which sudoers will be stored"
 msgstr ""

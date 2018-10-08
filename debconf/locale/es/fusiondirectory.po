@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/fusiondirectory/teams/12202/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/debconfProfile/class_debconfProfileManagement.inc:32
-#: admin/systems/debconf/class_debconfStartup.inc:33
+#: admin/systems/debconf/class_debconfStartup.inc:31
 msgid "Debconf"
 msgstr ""
 
@@ -41,15 +41,15 @@ msgstr ""
 msgid "Can't find entry %s in LDAP for profile %s"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:139
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:138
 msgid "LDAP error"
 msgstr "Error LDAP"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:142
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:141
 msgid "LDIF error"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:152
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:151
 #, php-format
 msgid ""
 "In order to import a debconf file, please run the following command : "
@@ -58,62 +58,62 @@ msgid ""
 "the desired name for the template.<br/>"
 msgstr ""
 
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:163
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:168
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:172
 msgid "Debconf profile"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:169
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:164
 msgid "Debconf profile information"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:187
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:190
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:182
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:185
 #: admin/debconfProfile/debconfProfile-filter.tpl.c:5
 msgid "Name"
 msgstr "Nombre"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:184
 msgid "Import a debconf file"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:190
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:185
 msgid "Name of this debconf template"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:194
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
 msgid "Entries"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:196
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:191
 msgid "Debconf template answers"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:211
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:206
 msgid "Import"
 msgstr "Importar"
 
-#: admin/systems/debconf/class_debconfStartup.inc:34
+#: admin/systems/debconf/class_debconfStartup.inc:32
 msgid "Debconf preseed startup"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:46
+#: admin/systems/debconf/class_debconfStartup.inc:45
 msgid "Debconf settings"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:49
+#: admin/systems/debconf/class_debconfStartup.inc:48
 msgid "Profile"
 msgstr "Perfil"
 
-#: admin/systems/debconf/class_debconfStartup.inc:49
+#: admin/systems/debconf/class_debconfStartup.inc:48
 msgid "Debconf preseed profile to be used for installation"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:53
+#: admin/systems/debconf/class_debconfStartup.inc:52
 msgid "Release"
 msgstr "Versión"
 
-#: admin/systems/debconf/class_debconfStartup.inc:53
+#: admin/systems/debconf/class_debconfStartup.inc:52
 msgid "Debian release to install"
 msgstr ""
 

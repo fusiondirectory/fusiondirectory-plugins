@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-02-07 11:54+0000\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Rombout de Neef <rombout.deneef@digipolis.be>, 2017\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,77 +18,77 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/audit/class_auditEvent.inc:53 admin/audit/class_auditEvent.inc:56
+#: admin/audit/class_auditEvent.inc:43 admin/audit/class_auditEvent.inc:47
 msgid "Audit event"
 msgstr "Audit gebeurtenis"
 
-#: admin/audit/class_auditEvent.inc:54
+#: admin/audit/class_auditEvent.inc:44
 msgid "An event like ldap modification which was registered by audit plugin"
 msgstr ""
 "Een gebeurtenis zoals ldap modificatie die geregistreerd was bij audit "
 "plugin"
 
-#: admin/audit/class_auditEvent.inc:72
+#: admin/audit/class_auditEvent.inc:62
 msgid "Event"
 msgstr "Gebeurtenis"
 
-#: admin/audit/class_auditEvent.inc:75
-#: admin/audit/class_auditManagement.inc:70
+#: admin/audit/class_auditEvent.inc:66
+#: admin/audit/class_auditManagement.inc:111
 msgid "Time"
 msgstr "Tijd"
 
-#: admin/audit/class_auditEvent.inc:75
+#: admin/audit/class_auditEvent.inc:66
 msgid "Date and time this event happened"
 msgstr "Datum en tijd van het plaats vinden van deze gebeurtenis"
 
-#: admin/audit/class_auditEvent.inc:78
-#: admin/audit/class_auditManagement.inc:84
+#: admin/audit/class_auditEvent.inc:69
+#: admin/audit/class_auditManagement.inc:125
 msgid "Action"
 msgstr "Actie"
 
-#: admin/audit/class_auditEvent.inc:78
+#: admin/audit/class_auditEvent.inc:69
 msgid "Action type"
 msgstr "Actie type"
 
-#: admin/audit/class_auditEvent.inc:79
-#: admin/audit/class_auditManagement.inc:77
+#: admin/audit/class_auditEvent.inc:70
+#: admin/audit/class_auditManagement.inc:118
 msgid "Author"
 msgstr "Auteur"
 
-#: admin/audit/class_auditEvent.inc:79
+#: admin/audit/class_auditEvent.inc:70
 msgid "Action author"
 msgstr "Actie Auteur"
 
-#: admin/audit/class_auditEvent.inc:80
+#: admin/audit/class_auditEvent.inc:71
 msgid "Object type"
 msgstr "Object type"
 
-#: admin/audit/class_auditEvent.inc:81
+#: admin/audit/class_auditEvent.inc:72
 msgid "Object"
 msgstr "Object"
 
-#: admin/audit/class_auditEvent.inc:81
+#: admin/audit/class_auditEvent.inc:72
 msgid "Target object"
 msgstr "Doel object"
 
-#: admin/audit/class_auditEvent.inc:82
+#: admin/audit/class_auditEvent.inc:73
 msgid "Attributes"
 msgstr "Attributen"
 
-#: admin/audit/class_auditEvent.inc:82
+#: admin/audit/class_auditEvent.inc:73
 msgid "Target attributes"
 msgstr "Doel attributen"
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:74
 msgid "Result"
 msgstr "Resultaat"
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:74
 msgid "Result or error"
 msgstr "Resultaat van fout"
 
 #: admin/audit/class_auditManagement.inc:41
-#: config/audit/class_auditConfig.inc:41
+#: config/audit/class_auditConfig.inc:40
 msgid "Audit"
 msgstr "Audit"
 
@@ -96,42 +96,54 @@ msgstr "Audit"
 msgid "Audit events display"
 msgstr "Audit gebeurtenissen weergave"
 
-#: admin/audit/class_auditManagement.inc:91
+#: admin/audit/class_auditManagement.inc:132
 msgid "Type"
 msgstr "Type"
 
-#: admin/audit/class_auditManagement.inc:98
+#: admin/audit/class_auditManagement.inc:139
 msgid "Target"
 msgstr "Doel"
 
-#: config/audit/class_auditConfig.inc:28
+#: admin/audit/class_auditManagement.inc:157
+msgid "Newer than"
+msgstr ""
+
+#: admin/audit/class_auditManagement.inc:161
+msgid "Older than"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:26
 msgid "Audit configuration"
 msgstr "Audit configuratie"
 
-#: config/audit/class_auditConfig.inc:29
+#: config/audit/class_auditConfig.inc:27
 msgid "FusionDirectory audit plugin configuration"
 msgstr "FusionDirectory audit plugin configuratie"
 
-#: config/audit/class_auditConfig.inc:44
+#: config/audit/class_auditConfig.inc:43
 msgid "Audit RDN"
 msgstr "Audit RDN"
 
-#: config/audit/class_auditConfig.inc:44
+#: config/audit/class_auditConfig.inc:43
 msgid "Branch in which audit events will be stored"
 msgstr "Tak waarin audit gebeurtenissen zullen worden opgeslagen"
 
-#: config/audit/class_auditConfig.inc:50
+#: config/audit/class_auditConfig.inc:49
 msgid "Actions to audit"
 msgstr "Akties om te auditeren"
 
-#: config/audit/class_auditConfig.inc:50
+#: config/audit/class_auditConfig.inc:49
 msgid "Which actions should be stored in LDAP audit log"
 msgstr "Welke acties moeten worden opgeslagen in LDAP audit Log"
 
-#: config/audit/class_auditConfig.inc:57
+#: config/audit/class_auditConfig.inc:56
 msgid "Days to keep"
 msgstr "Dagen om te bewaren"
 
-#: config/audit/class_auditConfig.inc:57
+#: config/audit/class_auditConfig.inc:56
 msgid "Number of days of audit to keep in the LDAP when cleaning"
 msgstr "Aantal auditdagen te bewaren in de LDAP bij opkuis"
+
+#: admin/audit/audit-filter.tpl.c:2
+msgid "Filter"
+msgstr "Filter"

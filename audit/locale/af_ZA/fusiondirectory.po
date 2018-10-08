@@ -1,0 +1,146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2018-10-08 12:18+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language-Team: Afrikaans (South Africa) (https://www.transifex.com/fusiondirectory/teams/12202/af_ZA/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: af_ZA\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/audit/class_auditEvent.inc:43 admin/audit/class_auditEvent.inc:47
+msgid "Audit event"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:44
+msgid "An event like ldap modification which was registered by audit plugin"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:62
+msgid "Event"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:66
+#: admin/audit/class_auditManagement.inc:111
+msgid "Time"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:66
+msgid "Date and time this event happened"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:69
+#: admin/audit/class_auditManagement.inc:125
+msgid "Action"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:69
+msgid "Action type"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:70
+#: admin/audit/class_auditManagement.inc:118
+msgid "Author"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:70
+msgid "Action author"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:71
+msgid "Object type"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:72
+msgid "Object"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:72
+msgid "Target object"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:73
+msgid "Attributes"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:73
+msgid "Target attributes"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:74
+msgid "Result"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:74
+msgid "Result or error"
+msgstr ""
+
+#: admin/audit/class_auditManagement.inc:41
+#: config/audit/class_auditConfig.inc:40
+msgid "Audit"
+msgstr ""
+
+#: admin/audit/class_auditManagement.inc:42
+msgid "Audit events display"
+msgstr ""
+
+#: admin/audit/class_auditManagement.inc:132
+msgid "Type"
+msgstr ""
+
+#: admin/audit/class_auditManagement.inc:139
+msgid "Target"
+msgstr ""
+
+#: admin/audit/class_auditManagement.inc:157
+msgid "Newer than"
+msgstr ""
+
+#: admin/audit/class_auditManagement.inc:161
+msgid "Older than"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:26
+msgid "Audit configuration"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:27
+msgid "FusionDirectory audit plugin configuration"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:43
+msgid "Audit RDN"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:43
+msgid "Branch in which audit events will be stored"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:49
+msgid "Actions to audit"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:49
+msgid "Which actions should be stored in LDAP audit log"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:56
+msgid "Days to keep"
+msgstr ""
+
+#: config/audit/class_auditConfig.inc:56
+msgid "Number of days of audit to keep in the LDAP when cleaning"
+msgstr ""
+
+#: admin/audit/audit-filter.tpl.c:2
+msgid "Filter"
+msgstr ""
