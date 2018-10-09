@@ -136,7 +136,7 @@ class sinapsRequest
 
     $uuid = '';
 
-    if ($structure->referenceCroisee->identifiantsExternes != NULL) {
+    if (isset($structure->referenceCroisee->identifiantsExternes)) {
       foreach ($structure->referenceCroisee->identifiantsExternes as $ref) {
         if ($ref->identifiantApplication == $identifiantApplication) {
           $uuid = $ref->identifiantExterne;
@@ -158,7 +158,7 @@ class sinapsRequest
       }
     }
 
-    if ($structure->methodesDeContact->methodeDeContact != NULL) {
+    if (isset($structure->methodesDeContact->methodeDeContact)) {
       foreach ($structure->methodesDeContact->methodeDeContact as $method) {
         if (!$this->checkValidite($method, $now)) {
           continue;
@@ -182,7 +182,7 @@ class sinapsRequest
       }
     }
 
-    if ($structure->liensStructure->lienStructure != NULL) {
+    if (isset($structure->liensStructure->lienStructure)) {
       foreach ($structure->liensStructure->lienStructure as $lienStructure) {
         if (((string)$lienStructure->codeTypeLien == 'HIE') && isset($lienStructure->codeStructureMere)) {
           if (!$this->checkValidite($lienStructure, $now)) {
@@ -225,7 +225,7 @@ class sinapsRequest
 
     $uuid = '';
 
-    if ($personne->referenceCroisee->identifiantsExternes != NULL) {
+    if (isset($personne->referenceCroisee->identifiantsExternes)) {
       foreach ($personne->referenceCroisee->identifiantsExternes as $ref) {
         if ($ref->identifiantApplication == $identifiantApplication) {
           $uuid = $ref->identifiantExterne;
@@ -255,7 +255,7 @@ class sinapsRequest
       $values['user']['givenName'] = preg_replace('/;.*$/', '', $personne->prenoms);
     }
 
-    if ($personne->methodesDeContact->methodeContact !== NULL) {
+    if (isset($personne->methodesDeContact->methodeContact)) {
       foreach ($personne->methodesDeContact->methodeContact as $method) {
         if (!$this->checkValidite($method, $now)) {
           continue;
@@ -292,13 +292,13 @@ class sinapsRequest
       }
     }
 
-    if ($personne->rattachements->rattachement !== NULL) {
+    if (isset($personne->rattachements->rattachement)) {
       foreach ($personne->rattachements->rattachement as $rattachement) {
         if (!$this->checkValidite($rattachement, $now)) {
           continue;
         }
 
-        if ($rattachement->roles->role !== NULL) {
+        if (isset($rattachement->roles->role)) {
           foreach ($rattachement->roles->role as $role) {
             if (!$this->checkValidite($role, $now)) {
               continue;
@@ -306,7 +306,7 @@ class sinapsRequest
             if ($role->typeRole != 'PR') {
               continue;
             }
-            if ($role->personneRessource->affectations->affectation !== NULL) {
+            if (isset($role->personneRessource->affectations->affectation)) {
               foreach ($role->personneRessource->affectations->affectation as $affectation) {
                 if (!$this->checkValidite($affectation, $now)) {
                   continue;
@@ -319,23 +319,23 @@ class sinapsRequest
                 }
               }
             }
-            if ($role->personneRessource->elementsDeCarriere->elementCarriere !== NULL) {
+            if (isset($role->personneRessource->elementsDeCarriere->elementCarriere)) {
               foreach ($role->personneRessource->elementsDeCarriere->elementCarriere as $elementCarriere) {
                 if (!$this->checkValidite($elementCarriere, $now)) {
                   continue;
                 }
                 /* Warning: supannEmpCorps and employeeType are mono-value so we replace them */
-                if ($elementCarriere->corps != NULL) {
+                if (isset($elementCarriere->corps)) {
                   $values['supannAccount']['supannEmpCorps'] = (string)$elementCarriere->corps;
                 }
-                if ($elementCarriere->bapReferens != NULL) {
+                if (isset($elementCarriere->bapReferens)) {
                   $values['supannAccount']['supannActivite'][] = (string)$elementCarriere->bapReferens;
                 }
               }
             }
           }
         }
-        if ($rattachement->fonctionsOccupees->fonctionOccupee !== NULL) {
+        if (isset($rattachement->fonctionsOccupees->fonctionOccupee)) {
           foreach ($rattachement->fonctionsOccupees->fonctionOccupee as $fonctionOccupee) {
             if (!$this->checkValidite($fonctionOccupee, $now)) {
               continue;

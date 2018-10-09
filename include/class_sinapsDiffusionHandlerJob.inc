@@ -79,7 +79,7 @@ class sinapsDiffusionHandlerJob
     }
     $entites = objects::ls('entite', array('supannCodeEntite' => 1, 'supannTypeEntite' => 1), NULL, '(supannRefId='.$uuid.')');
     if (empty($entites)) {
-      $error = 'Could not find parent '.$uuid;
+      $error = 'Could not find entite '.$uuid;
       $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 10, $error));
     } elseif (count($entites) > 1) {
       $error = 'Multiple entite matches id '.$uuid;
