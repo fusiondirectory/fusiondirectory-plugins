@@ -45,11 +45,12 @@ class publicFormPage extends standAlonePage
         'supannAccount' => array('supannEntiteAffectationPrincipale'),
       ),
       /* readonly */
-      array(),
+      array(
+        'supannAccount' => array('supannRefId'),
+      ),
       /* hidden */
       array(
         'user'          => array('base'),
-        'supannAccount' => array('eduPersonAffiliation'),
       ),
     );
   }
