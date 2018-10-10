@@ -27,7 +27,8 @@ class sinapsRequestAcquisiton
     'supannRefId'                       => '*',
     'telephoneNumber'                   => 1,
     'facsimileTelephoneNumber'          => 1,
-    'supannMailPerso'                   => '*',
+    'mail'                              => 1,
+    'mobile'                            => 1,
     'supannEntiteAffectationPrincipale' => 1,
   );
 
@@ -87,12 +88,12 @@ class sinapsRequestAcquisiton
       $i++;
     }
 
-    /* TODO - rattachements */
+    /* TODO - rattachements
     if (isset($user['supannEntiteAffectationPrincipale'])) {
       $personne->rattachements->rattachement->identifiantStructureDeRattachement = $codeEntiteToldapUuidCallback($user['supannEntiteAffectationPrincipale']);
-      //~ $personne->rattachements->rattachement->roles->role->typeRole = ;
-      //~ $personne->rattachements->rattachement->roles->role->externe->typeExterne = ;
-    }
+      $personne->rattachements->rattachement->roles->role->typeRole = ;
+      $personne->rattachements->rattachement->roles->role->externe->typeExterne = ;
+    } */
   }
 
   public function getXML()
