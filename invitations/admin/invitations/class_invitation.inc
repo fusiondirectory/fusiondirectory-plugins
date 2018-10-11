@@ -41,7 +41,7 @@ class invitation extends simplePlugin
 
   static function getAttributesInfo ()
   {
-    global $ui;
+    global $ui, $config;
     return array(
       'main' => array(
         'name'  => _('Invitation'),
@@ -62,10 +62,7 @@ class invitation extends simplePlugin
           new TextAreaAttribute(
             _('Email content'), _('Content of the email sent for this invitation'),
             'fdInvitationEmailContent', TRUE,
-            'Hello,'."\n\n".
-              'Please subscribe by going to https://'.$_SERVER['SERVER_NAME'].
-              (($_SERVER['SERVER_PORT'] != '80') ? ':'.$_SERVER['SERVER_PORT'] : '').
-              "/invitation.php?token=%s\n"
+            $config->get_cfg_value('InvitationDefaultEmailContent')
           ),
           new DisplayLDAPAttribute(
             _('Author'), _('Author of this invitation'),
