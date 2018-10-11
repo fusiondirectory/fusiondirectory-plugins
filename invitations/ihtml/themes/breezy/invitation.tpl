@@ -1,5 +1,5 @@
 <body onLoad="javascript:$$('div.debug_div').each(function (a) { a.hide(); });">
-  {* FusionDirectory public form - smarty template *}
+  {* FusionDirectory invitation - smarty template *}
   {$php_errors}
   {$msg_dialogs}
 
@@ -10,7 +10,7 @@
         <div id="window-titlebar">
           <img id="fd-logo" src="geticon.php?context=applications&amp;icon=fusiondirectory&amp;size=48" alt="FusionDirectory"/>
           <p>
-            Invitation
+            {t}Invitation{/t}
           </p>
         </div>
         <div id="window-content">
@@ -19,9 +19,9 @@
               {if $errorMessage}
                 {$errorMessage|escape}
               {else}
-                Hello.<br/>
-                <a href="privateform.php?token={$token|escape}">Click here to connect</a><br/>
-                <a href="publicform.php?token={$token|escape}">Click here if you fail to connect</a>
+                {t}Hello{/t}<br/>
+                <a href="privateform.php?token={$token|escape}">{t}Click here to connect{/t}</a><br/>
+                <a href="publicform.php?token={$token|escape}">{t}Click here if you fail to connect{/t}</a>
               {/if}
             </p>
           </div>
