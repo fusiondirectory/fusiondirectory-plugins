@@ -246,7 +246,7 @@ class publicFormPage extends standAlonePage
       /* Fill base depending on publicForm creation base and invitation base */
       $base = $this->form['fdPublicFormCreationBase'];
       if (isset($this->invitation)) {
-        $invitationBase = preg_replace('/,'.preg_quote($config->current['BASE'], '/').'$/', '', dn2base($this->invitation['dn'], get_ou('invitationRDN')));
+        $invitationBase = preg_replace('/,?'.preg_quote($config->current['BASE'], '/').'$/', '', dn2base($this->invitation['dn'], get_ou('invitationRDN')));
         if (!empty($invitationBase)) {
           $base = $invitationBase.','.$base;
         }
@@ -293,12 +293,8 @@ class publicFormPage extends standAlonePage
 
     if (!$this->done) {
       $templateOutput = $this->template->execute();
-      if ($this->template->dialogOpened()) {
-        //~ TODO dialogs should be disabled for public forms
-        $smarty->assign('template_dialog', $templateOutput);
-      } else {
-        $smarty->assign('template_dialog', $templateOutput);
-      }
+      // TODO - Check that no dialogs are opened?
+      $smarty->assign('template_dialog', $templateOutput);
     }
 
     $smarty->assign('done',         $this->done);

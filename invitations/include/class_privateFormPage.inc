@@ -28,7 +28,6 @@ class privateFormPage extends publicFormPage
     $this->providedAttributes = array(
       array('user','givenName'),
       array('user','sn'),
-      array('user','displayName'),
       array('mailAccount','mail'),
       array('supannAccount','eduPersonAffiliation'),
       array('supannAccount','eduPersonPrimaryAffiliation'),
@@ -39,7 +38,7 @@ class privateFormPage extends publicFormPage
     $this->prefill = TRUE;
     /* Set readonly attributes in form (prefill from IDP) */
     $this->alteredAttributes[1] = array(
-      'user'          => array('givenName', 'sn', 'displayName'),
+      'user'          => array('givenName', 'sn'),
       'supannAccount' => array('eduPersonAffiliation', 'supannRefId'),
       'mailAccount'   => array('mail'),
     );
