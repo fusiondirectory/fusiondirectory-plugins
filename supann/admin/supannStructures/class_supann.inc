@@ -57,8 +57,9 @@ class supann
         return array(array(), array());
       }
       while (($line = fgets($entiteList)) !== FALSE) {
-        if (!preg_match ('/^#/', $line)) {
-          $entite_line = preg_split('/;/', trim($line));
+        $line = trim($line);
+        if (!preg_match ('/^#/', $line) && !empty($line)) {
+          $entite_line = preg_split('/;/', $line);
 
           $entity_codes[]   = $prefix.$entite_line[0];
           $entity_labels[]  = static::truncate_label($entite_line[1]);
