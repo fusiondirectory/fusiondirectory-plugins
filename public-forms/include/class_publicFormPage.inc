@@ -187,7 +187,7 @@ class publicFormPage extends standAlonePage
             $values[$class] = array();
           }
           if (in_array($attr, $this->providedMultiValueAttributes)) {
-            $values[$class][$attr] = explode(';', $_SERVER['HTTP_AUTH_'.strtoupper($attr)]);
+            $values[$class][$attr] = explode('; ', $_SERVER['HTTP_AUTH_'.strtoupper($attr)]);
           } else {
             $values[$class][$attr] = $_SERVER['HTTP_AUTH_'.strtoupper($attr)];
           }
