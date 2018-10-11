@@ -92,6 +92,7 @@ class invitation extends simplePlugin
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
   {
+    global $ui;
     if ($attributesInfo === NULL) {
       $attributesInfo = $this->getAttributesInfo();
     }
@@ -102,6 +103,12 @@ class invitation extends simplePlugin
     $attributesInfo['emails']['attrs'][1]->setInLdap(FALSE);
 
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
+
+    /* Fill from_mail with connected user email address */
+    $users = objects::ls('user', 'mail', $ui->dn, '(mail=*)', FALSE, 'base');
+    if (!empty($users)) {
+      $this->from_mail = reset($users);
+    }
   }
 
   function check()
