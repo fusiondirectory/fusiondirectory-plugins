@@ -41,7 +41,7 @@ class invitation extends simplePlugin
 
   static function getAttributesInfo ()
   {
-    global $ui;
+    global $ui, $config;
     return array(
       'main' => array(
         'name'  => _('Invitation'),
@@ -62,10 +62,7 @@ class invitation extends simplePlugin
           new TextAreaAttribute(
             _('Email content'), _('Content of the email sent for this invitation'),
             'fdInvitationEmailContent', TRUE,
-            'Hello,'."\n\n".
-              'Please subscribe by going to https://'.$_SERVER['SERVER_NAME'].
-              (($_SERVER['SERVER_PORT'] != '80') ? ':'.$_SERVER['SERVER_PORT'] : '').
-              "/invitation.php?token=%s\n"
+            $config->get_cfg_value('InvitationDefaultEmailContent')
           ),
           new DisplayLDAPAttribute(
             _('Author'), _('Author of this invitation'),
@@ -92,6 +89,7 @@ class invitation extends simplePlugin
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
   {
+    global $ui;
     if ($attributesInfo === NULL) {
       $attributesInfo = $this->getAttributesInfo();
     }
@@ -102,6 +100,12 @@ class invitation extends simplePlugin
     $attributesInfo['emails']['attrs'][1]->setInLdap(FALSE);
 
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
+
+    /* Fill from_mail with connected user email address */
+    $users = objects::ls('user', 'mail', $ui->dn, '(mail=*)', FALSE, 'base');
+    if (!empty($users)) {
+      $this->from_mail = reset($users);
+    }
   }
 
   function check()

@@ -51,6 +51,19 @@ class invitationsConfig extends simplePlugin
           ),
         )
       ),
+      'default' => array(
+        'name'  => _('Invitations'),
+        'attrs' => array(
+          new TextAreaAttribute(
+            _('Default email content'), _('Default content of the email sent invitations'),
+            'fdInvitationDefaultEmailContent', TRUE,
+            'Hello,'."\n\n".
+              'Please subscribe by going to https://'.$_SERVER['SERVER_NAME'].
+              (($_SERVER['SERVER_PORT'] != '443') ? ':'.$_SERVER['SERVER_PORT'] : '').
+              "/invitation.php?token=%s\n"
+          ),
+        )
+      ),
     );
   }
 }
