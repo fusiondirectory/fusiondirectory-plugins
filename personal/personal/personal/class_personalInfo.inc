@@ -118,7 +118,8 @@ class personalInfo extends simplePlugin
           new DateAttribute (
             _('Date of birth'), _('Date of birth'),
             'dateOfBirth', FALSE,
-            'Y-m-d', ''
+            'Y-m-d', '',
+            '30 years ago'
           ),
           new SelectAttribute (
             _('Sex'), _('Gender'),

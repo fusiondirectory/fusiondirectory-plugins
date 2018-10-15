@@ -35,9 +35,9 @@ class EpochDaysDateAttribute extends DateAttribute
   /* 24 * 60 * 60 = 86400 */
   public static $secondsPerDay = 86400;
 
-  function __construct ($label, $description, $ldapName, $required, $defaultValue = 'now', $acl = '')
+  function __construct ($label, $description, $ldapName, $required, $defaultValue = 'now', $defaultDate = NULL, $acl = '')
   {
-    parent::__construct($label, $description, $ldapName, $required, '', $defaultValue, $acl);
+    parent::__construct($label, $description, $ldapName, $required, '', $defaultValue, $defaultDate, $acl);
   }
 
   protected function ldapToDate($ldapValue)
