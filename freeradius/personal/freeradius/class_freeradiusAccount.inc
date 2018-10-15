@@ -68,9 +68,9 @@ class freeradiusAccount extends simplePlugin
             ''
           ),
           new DateAttribute(
-              _('Expiration date'), _('Date of the expiration account'),
-              'radiusExpiration', FALSE,
-              'd M Y', ''
+            _('Expiration date'), _('Date of the expiration account'),
+            'radiusExpiration', FALSE,
+            'd M Y', ''
           ),
         )
       ),
