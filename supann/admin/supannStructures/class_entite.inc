@@ -59,11 +59,11 @@ class entite extends simplePlugin
       'admin' => array(
         'name'  => _('Administrative information'),
         'attrs' => array(
-          new StringAttribute(
+          new PhoneNumberAttribute(
             _('Telephone'), _('Phone number of this entity'),
             'telephoneNumber', FALSE
           ),
-          new StringAttribute(
+          new PhoneNumberAttribute(
             _('Fax'), _('Fax number of this entity'),
             'facsimileTelephoneNumber', FALSE
           ),
