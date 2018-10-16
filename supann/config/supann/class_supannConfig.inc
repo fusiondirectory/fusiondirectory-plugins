@@ -23,8 +23,8 @@ class supannConfig extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'     => _('SUPANN configuration'),
-      'plDescription'   => _('FusionDirectory SUPANN plugin configuration'),
+      'plShortName'     => _('SupAnn configuration'),
+      'plDescription'   => _('FusionDirectory SupAnn plugin configuration'),
       'plObjectClass'   => array('fdSupannPluginConf'),
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
@@ -37,15 +37,15 @@ class supannConfig extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('SUPANN'),
+        'name'  => _('SupAnn'),
         'attrs' => array(
           new StringAttribute (
-            _('SUPANN RDN'), _('Branch in which SUPANN structures will be stored'),
+            _('SupAnn RDN'), _('Branch in which SupAnn structures will be stored'),
             'fdSupannStructuresRDN', TRUE,
             'ou=structures'
           ),
           new BooleanAttribute (
-            _('SUPANN mail for recovery'), _('Allow the use of mail addresses from the personal mail address field from SUPANN account for password recovery'),
+            _('SupAnn mail for recovery'), _('Allow the use of mail addresses from the personal mail address field from SupAnn account for password recovery'),
             'fdSupannPasswordRecovery', FALSE,
             TRUE
           ),
