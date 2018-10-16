@@ -113,7 +113,7 @@ class SupannCursusAnneeAttribute extends SupannPrefixedSelectAttribute
 
     $this->attributes[0]->setChoices(
       array('L','M','D','X','B'),
-      array(_('Licence'),_('Master'),_('Ph.D.'),_('Another class of degree'),_('post-graduate year'))
+      array(_('Licence'),_('Master'),_('Ph.D.'),_('Another class of degree'),_('Post-graduate year'))
     );
     $yearLabels = array(
       _('None'),_('1st year'),_('2nd year'),_('3rd year'),
@@ -251,11 +251,11 @@ class supannAccount extends simplePlugin
             'supannAliasLogin', FALSE
           ),
           new StringAttribute(
-            _('eduPersonPrincipalName'), _('eduPersonPrincipalName - A name that look like <id>@<domain> which is unique for this domain, and has not be assigned to anyone else recently'),
+            _('eduPersonPrincipalName'), _('eduPersonPrincipalName - A name that looks like <id>@<domain> which is unique for this domain, and has not be assigned to anyone else recently'),
             'eduPersonPrincipalName', FALSE
           ),
           new StringAttribute(
-            _('Nick name'), _('eduPersonNickname - Can contain a nick name for this user'),
+            _('Nickname'), _('eduPersonNickname - Can contain a nickname for this user'),
             'eduPersonNickname', FALSE
           ),
           new SetAttribute(
@@ -291,27 +291,27 @@ class supannAccount extends simplePlugin
             )
           ),
           new BooleanAttribute(
-            _('red List'), _('supannListeRouge - Should this person be on the red list'),
+            _('Red list'), _('supannListeRouge - Should this person be on the red list'),
             'supannListeRouge', TRUE
           )
         )
       ),
       'affectation' => array(
-        'name'  => _('Affectation'),
+        'name'  => _('Assignment'),
         'attrs' => array(
           new SelectAttribute(
-            _('Entity primary assignment'), _('supannEntiteAffectationPrincipale - Main assignment of the person'),
+            _('Primary assignment'), _('supannEntiteAffectationPrincipale - Main assignment of the person'),
             'supannEntiteAffectationPrincipale', FALSE
           ),
           new SetAttribute(
             new SelectAttribute(
-              _('Entity assignment'), _('supannEntiteAffectation - represents assignments of the person in an institution, a component, service, etc.'),
+              _('Assignments'), _('supannEntiteAffectation - Represents assignments of the person in an institution, a component, service, etc.'),
               'supannEntiteAffectation', FALSE
             )
           ),
           new SetAttribute(
             new SupannPrefixedSelectAttribute(
-              _('Entity type assignment'), _('supannTypeEntiteAffectation'),
+              _('Entity types'), _('supannTypeEntiteAffectation - Types of the entities this person is assigned to'),
               'supannTypeEntiteAffectation', FALSE, 'entite'
             )
           ),
@@ -326,13 +326,13 @@ class supannAccount extends simplePlugin
           ),
           new SetAttribute(
             new SelectAttribute(
-              _('Affiliations'), _('eduPersonAffiliation - status of the person: student, BIATOSS, teacher, contract, retired, hosted staff (CNRS, INSERM, etc.), a former student, etc.'),
+              _('Affiliations'), _('eduPersonAffiliation - Status of the person: student, BIATOSS, teacher, contract, retired, hosted staff (CNRS, INSERM, etc.), a former student, etc.'),
               'eduPersonAffiliation', FALSE
             )
           ),
           new SetAttribute(
             new SelectAttribute(
-              _('Establishment'), _('supannEtablissement - institution or unit of administrative attachment of the person'),
+              _('Establishment'), _('supannEtablissement - Institution or unit of administrative attachment of the person'),
               'supannEtablissement', FALSE
             )
           ),
@@ -352,7 +352,7 @@ class supannAccount extends simplePlugin
         )
       ),
       'student2' => array(
-        'name'      => _('Student subscriptions'),
+        'name'      => _('Student registrations'),
         'class'     => array('fullwidth'),
         'template'  => get_template_path('student_subscription.tpl', TRUE, dirname(__FILE__)),
         'attrs'     => array(
@@ -367,20 +367,20 @@ class supannAccount extends simplePlugin
           new HiddenAttribute('supannEtuElementPedagogique'),
           new SupannOrderedArrayAttribute(
             new SupannCompositeAttribute(
-              _('supannEtuInscription - Subscriptions for this student'),
+              _('supannEtuInscription - Registrations for this student'),
               'supannEtuInscription',
               array(
                 new SelectAttribute(
-                  _('Establishment'), _('supannEtablissement - Etablissement in which this subscription was done'),
+                  _('Establishment'), _('supannEtablissement - Etablissement in which this registration was done'),
                   'supannEtablissement_etab', TRUE
                 ),
                 new IntAttribute(
-                  _('Year'), _('supannEtuAnneeInscription - The year this subscription will begin'),
+                  _('Year'), _('supannEtuAnneeInscription - The year this registration will begin'),
                   'supannEtuAnneeInscription_anneeinsc', TRUE,
                   $year - 100, $year + 100, $year
                 ),
                 new SelectAttribute(
-                  _('Subscription type'), _('supannEtuRegimeInscription - The type of this subscription'),
+                  _('Registration type'), _('supannEtuRegimeInscription - The type of this registration'),
                   'supannEtuRegimeInscription_regimeinsc', TRUE
                 ),
                 new SelectAttribute(
@@ -392,11 +392,11 @@ class supannAccount extends simplePlugin
                   'supannEtuTypeDiplome_typedip', TRUE
                 ),
                 new SupannCursusAnneeAttribute(
-                  _('Curriculum year '), _('supannEtuCursusAnnee - type of curriculum (L, M, D or X, ...) and the year in the diploma.'),
+                  _('Curriculum year '), _('supannEtuCursusAnnee - Type of curriculum (L, M, D or X, ...) and the year in the diploma.'),
                   'supannEtuCursusAnnee_cursusann', TRUE
                 ),
                 new SelectAttribute(
-                  _('Entity assignment'), _('supannEntiteAffectation_affect'),
+                  _('Entity assignment'), _('supannEntiteAffectation'),
                   'supannEntiteAffectation_affect', FALSE
                 ),
                 new SupannPrefixedSelectAttribute(
@@ -434,7 +434,7 @@ class supannAccount extends simplePlugin
           ),
           new SetAttribute(
             new SupannPrefixedSelectAttribute(
-              _('Activity'), _('supannActivite - category of profession'),
+              _('Activity'), _('supannActivite - Category of profession'),
               'supannActivite', FALSE, 'activite'
             )
           )
@@ -452,15 +452,15 @@ class supannAccount extends simplePlugin
               'supannRoleEntite',
               array(
                 new SupannPrefixedSelectAttribute(
-                  _('Generic role'), _('supannRoleGenerique - Generics Roles of the person in the facility'),
+                  _('Generic role'), _('supannRoleGenerique - Generic role of the person in the facility'),
                   'supannRoleGenerique_role', TRUE, 'role'
                 ),
                 new SelectAttribute(
-                  _('Entity assignment type'), _('supannTypeEntiteAffectation'),
+                  _('Entity type'), _('supannTypeEntiteAffectation - type of the assigned entity'),
                   'supannTypeEntiteAffectation_type', TRUE
                 ),
                 new SelectAttribute(
-                  _('Entity assignment'), _('supannEntiteAffectation - represents assignments of the person in an institution, a component, service, etc.'),
+                  _('Entity'), _('supannEntiteAffectation - Represents assignments of the person in an institution, a component, service, etc.'),
                   'supannEntiteAffectation_code', FALSE
                 ),
               ),

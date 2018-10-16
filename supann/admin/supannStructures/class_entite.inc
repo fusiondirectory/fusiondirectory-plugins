@@ -61,11 +61,11 @@ class entite extends simplePlugin
         'name'  => _('Administrative information'),
         'attrs' => array(
           new StringAttribute(
-            _('Telephone'), _('Phone number for this entity'),
+            _('Telephone'), _('Phone number of this entity'),
             'telephoneNumber', FALSE
           ),
           new StringAttribute(
-            _('Fax'), _('Fax number for this entity'),
+            _('Fax'), _('Fax number of this entity'),
             'facsimileTelephoneNumber', FALSE
           ),
           new PostalAddressAttribute(
@@ -82,7 +82,7 @@ class entite extends simplePlugin
         'name'  => _('SUPANN information'),
         'attrs' => array(
           new SupannPrefixedSelectAttribute(
-            _('Entity type'), _('The best SUPANN type that fits this entity'),
+            _('Entity type'), _('The SUPANN type that best fits this entity'),
             'supannTypeEntite', FALSE, 'entite'
           ),
           new StringAttribute(

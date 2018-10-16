@@ -52,15 +52,15 @@ class etablissement extends simplePlugin
         'name'  => _('Properties'),
         'attrs' => array(
           new BooleanAttribute(
-            _('Root Establishment'), _('Set this Establishment as the root one'),
+            _('Root establishment'), _('Set this establishment as the root one'),
             'set_root'
           ),
           new StringAttribute(
-            _('Name'), _('The name to write in the o attribute for this Establishment'),
+            _('Name'), _('The name to write in the o attribute for this establishment'),
             'o', TRUE
           ),
           new TextAreaAttribute(
-            _('Description'), _('A short description of this Establishment'),
+            _('Description'), _('A short description of this establishment'),
             'description', FALSE
           )
         )
@@ -69,19 +69,19 @@ class etablissement extends simplePlugin
         'name'  => _('Location'),
         'attrs' => array(
           new StringAttribute(
-            _('Location'), _('Usually the city where this Establishment is'),
+            _('Location'), _('Usually the city where this establishment is'),
             'l', FALSE
           ),
           new PostalAddressAttribute(
-            _('Address'), _('The postal address of this Establishment'),
+            _('Address'), _('The postal address of this establishment'),
             'postalAddress', FALSE
           ),
           new StringAttribute(
-            _('Telephone'), _('Phone number for this Establishment'),
+            _('Telephone'), _('Phone number of this establishment'),
             'telephoneNumber', FALSE
           ),
           new StringAttribute(
-            _('Fax'), _('Fax number for this Establishment'),
+            _('Fax'), _('Fax number of this establishment'),
             'facsimileTelephoneNumber', FALSE
           ),
         )
@@ -90,29 +90,29 @@ class etablissement extends simplePlugin
         'name'  => _('SUPANN properties'),
         'attrs' => array(
           new StringAttribute(
-            _('Establishment code'), _('The code of this Establishment (must have a prefix between {})'),
+            _('Establishment code'), _('The code of this establishment (must have a prefix between {})'),
             'supannEtablissement', TRUE,
             '', '', '/^{[^}]+}.*$/'
           ),
           new StringAttribute(
-            _('SUPANN code'), _('The SUPANN code for this Establishment'),
+            _('SUPANN code'), _('The SUPANN code for this establishment'),
             'supannCodeEntite', TRUE,
             '', '', '/^[a-z0-9_-]*$/i'
           ),
           new StringAttribute(
-            _('Legal name'), _('The legal name of this Establishment'),
+            _('Legal name'), _('The legal name of this establishment'),
             'eduOrgLegalName', TRUE
           ),
           new StringAttribute(
-            _('Home page URI'), _('The URI of this Establishment website home page'),
+            _('Home page URI'), _('The URI of this establishment website home page'),
             'eduOrgHomePageURI', FALSE
           ),
           new StringAttribute(
-            _('Institution URI'), _('The URI of this Establishment institution website'),
+            _('Institution URI'), _('The URI of this establishment institution website'),
             'eduOrgSuperiorURI', FALSE
           ),
           new StringAttribute(
-            _('White pages URI'), _('The URI of this Establishment white pages'),
+            _('White pages URI'), _('The URI of this establishment white pages'),
             'eduOrgWhitePagesURI', FALSE
           ),
         )
@@ -217,7 +217,7 @@ class etablissement extends simplePlugin
     $ldap->search('(objectClass=supannOrg)', array('*'), 'one');
 
     if ($ldap->count() > 1) {
-      msg_dialog::display(_('LDAP error'), 'There are several Establishment at root!');
+      msg_dialog::display(_('LDAP error'), 'There are several establishments at root!');
       return FALSE;
     } elseif ($ldap->count() > 0) {
       $attr = $ldap->fetch();
