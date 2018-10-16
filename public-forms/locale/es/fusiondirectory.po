@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-08-13 10:49+0200\n"
+"POT-Creation-Date: 2018-10-16 16:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/fusiondirectory/teams/12202/es/)\n"
@@ -17,6 +17,54 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: include/class_publicFormPage.inc:88
+msgid "Invalid link, both token and form are provided"
+msgstr ""
+
+#: include/class_publicFormPage.inc:102
+#, php-format
+msgid "Could not find any invitation matching token \"%s\""
+msgstr ""
+
+#: include/class_publicFormPage.inc:104 include/class_publicFormPage.inc:119
+#, php-format
+msgid "Found several invitations matching token \"%s\""
+msgstr ""
+
+#: include/class_publicFormPage.inc:117
+#, php-format
+msgid "Could not find any invitation matching registration with token \"%s\""
+msgstr ""
+
+#: include/class_publicFormPage.inc:160
+msgid "Form name or token missing from URL"
+msgstr ""
+
+#: include/class_publicFormPage.inc:163
+#, php-format
+msgid "Form \"%s\" could not be found"
+msgstr ""
+
+#: include/class_publicFormPage.inc:165
+#, php-format
+msgid "Found several forms named \"%s\""
+msgstr ""
+
+#: include/class_publicFormPage.inc:174
+#, php-format
+msgid "Form \"%s\" is private and requires an invitation"
+msgstr ""
+
+#: include/class_publicFormPage.inc:307
+#, php-format
+msgid "Form - %s"
+msgstr ""
+
+#: include/class_publicFormPage.inc:309
+#: admin/public-forms/class_publicForm.inc:49
+msgid "Form"
+msgstr ""
 
 #: admin/public-forms/class_publicFormManagement.inc:26
 #: config/public-forms/class_publicFormsConfig.inc:40
@@ -40,56 +88,68 @@ msgstr ""
 msgid "Public form which creates objects inside FusionDirectory"
 msgstr ""
 
-#: admin/public-forms/class_publicForm.inc:47
-msgid "Form"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:51
+#: admin/public-forms/class_publicForm.inc:53
 msgid "Name"
 msgstr "Nombre"
 
-#: admin/public-forms/class_publicForm.inc:51
+#: admin/public-forms/class_publicForm.inc:53
 msgid "Name used to identify this form"
 msgstr ""
 
-#: admin/public-forms/class_publicForm.inc:55
+#: admin/public-forms/class_publicForm.inc:57
 msgid "Title"
 msgstr "Título"
 
-#: admin/public-forms/class_publicForm.inc:55
+#: admin/public-forms/class_publicForm.inc:57
 msgid "Title of this form"
 msgstr ""
 
-#: admin/public-forms/class_publicForm.inc:59
+#: admin/public-forms/class_publicForm.inc:61
 msgid "Text"
 msgstr ""
 
-#: admin/public-forms/class_publicForm.inc:59
+#: admin/public-forms/class_publicForm.inc:61
 msgid "Text of the public form, shown before the form"
 msgstr ""
 
-#: admin/public-forms/class_publicForm.inc:63
+#: admin/public-forms/class_publicForm.inc:65
 msgid "Object type"
 msgstr ""
 
-#: admin/public-forms/class_publicForm.inc:63
+#: admin/public-forms/class_publicForm.inc:65
 msgid "Type of objects you wish to create from this form"
 msgstr ""
 
-#: admin/public-forms/class_publicForm.inc:68
+#: admin/public-forms/class_publicForm.inc:70
 msgid "Template"
 msgstr "Plantilla"
 
-#: admin/public-forms/class_publicForm.inc:68
+#: admin/public-forms/class_publicForm.inc:70
 msgid "Object template used by this form"
 msgstr ""
 
-#: admin/public-forms/class_publicForm.inc:73
+#: admin/public-forms/class_publicForm.inc:75
 msgid "Confirmation text"
 msgstr ""
 
-#: admin/public-forms/class_publicForm.inc:73
+#: admin/public-forms/class_publicForm.inc:75
 msgid "Text shown once the object is created"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:80
+msgid "Private"
+msgstr "Privado"
+
+#: admin/public-forms/class_publicForm.inc:80
+msgid "Restrict this form to invitations"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:85
+msgid "Creation base"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:85
+msgid "Base in which objects will get created"
 msgstr ""
 
 #: config/public-forms/class_publicFormsConfig.inc:26

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-08-13 17:36+0200\n"
+"POT-Creation-Date: 2018-10-16 21:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Vietnamese (Viet Nam) (https://www.transifex.com/fusiondirectory/teams/12202/vi_VN/)\n"
@@ -18,46 +18,140 @@ msgstr ""
 "Language: vi_VN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: include/class_invitationPage.inc:44
+msgid "Token is missing from URL"
+msgstr ""
+
+#: include/class_invitationPage.inc:65
+#, php-format
+msgid "Could not find any invitation matching token \"%s\""
+msgstr ""
+
+#: include/class_invitationPage.inc:67
+#, php-format
+msgid "Found several invitations matching token \"%s\""
+msgstr ""
+
+#: include/class_invitationPage.inc:74
+msgid "This invitation has already been filled and is waiting approval"
+msgstr ""
+
+#: include/class_invitationPage.inc:76
+msgid ""
+"This invitation has already been filled and approved. If you lost your "
+"password, please use the password recovery system."
+msgstr ""
+
+#: include/class_invitationPage.inc:78
+msgid ""
+"This invitation has already been filled and rejected. Please contact your "
+"referent to get a new invitation if needed."
+msgstr ""
+
+#: include/class_invitationPage.inc:80
+#, php-format
+msgid "This invitation is in unknown state \"%s\""
+msgstr ""
+
+#: include/class_invitationPage.inc:104
 #: admin/invitations/class_invitation.inc:26
-#: admin/invitations/class_invitation.inc:31
-#: admin/invitations/class_invitation.inc:48
-#: admin/invitations/class_registration.inc:65
+#: admin/invitations/class_invitation.inc:30
+#: admin/invitations/class_invitation.inc:47
+#: admin/registrations/class_registration.inc:132
+#: ihtml/themes/breezy/invitation.tpl.c:2
 msgid "Invitation"
+msgstr ""
+
+#: personal/invitations/class_userRegistration.inc:28
+#: admin/registrations/class_registration.inc:94
+#: admin/registrations/class_registration.inc:98
+#: admin/registrations/class_registration.inc:116
+msgid "Registration"
+msgstr ""
+
+#: personal/invitations/class_userRegistration.inc:29
+msgid "User registration status"
+msgstr ""
+
+#: personal/invitations/class_userRegistration.inc:43
+msgid "User registration"
+msgstr ""
+
+#: personal/invitations/class_userRegistration.inc:59
+msgid "This user object is a registration awaiting approval"
+msgstr ""
+
+#: config/invitations/class_invitationsConfig.inc:26
+msgid "Invitations configuration"
+msgstr ""
+
+#: config/invitations/class_invitationsConfig.inc:27
+msgid "FusionDirectory invitations plugin configuration"
+msgstr ""
+
+#: config/invitations/class_invitationsConfig.inc:40
+#: config/invitations/class_invitationsConfig.inc:55
+#: admin/invitations/class_invitationManagement.inc:26
+msgid "Invitations"
+msgstr ""
+
+#: config/invitations/class_invitationsConfig.inc:43
+msgid "Invitations RDN"
+msgstr ""
+
+#: config/invitations/class_invitationsConfig.inc:43
+msgid "Branch in which invitations will be stored"
+msgstr ""
+
+#: config/invitations/class_invitationsConfig.inc:48
+msgid "Registrations RDN"
+msgstr ""
+
+#: config/invitations/class_invitationsConfig.inc:48
+msgid "Branch in which registrations will be stored"
+msgstr ""
+
+#: config/invitations/class_invitationsConfig.inc:58
+msgid "Default email content"
+msgstr ""
+
+#: config/invitations/class_invitationsConfig.inc:58
+msgid "Default content of the email sent invitations"
 msgstr ""
 
 #: admin/invitations/class_invitation.inc:27
 msgid "Invitation to fill a public form"
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:52
+#: admin/invitations/class_invitation.inc:51
 msgid "Name"
 msgstr "Tên"
 
-#: admin/invitations/class_invitation.inc:52
+#: admin/invitations/class_invitation.inc:51
 msgid "Name used to identify this invitation"
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:56
+#: admin/invitations/class_invitation.inc:55
 msgid "Form"
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:56
+#: admin/invitations/class_invitation.inc:55
 msgid "Public form this invitation should link to"
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:60
+#: admin/invitations/class_invitation.inc:59
 msgid "Email subject"
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:60
+#: admin/invitations/class_invitation.inc:59
 msgid "Subject of the email sent for this invitation"
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:64
+#: admin/invitations/class_invitation.inc:63
 msgid "Email content"
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:64
+#: admin/invitations/class_invitation.inc:63
 msgid "Content of the email sent for this invitation"
 msgstr ""
 
@@ -86,40 +180,35 @@ msgstr ""
 msgid "List of email adresses of people to invite - one per line"
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:111
+#: admin/invitations/class_invitation.inc:118
 #, php-format
 msgid "\"%s\" is not a valid email address"
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:116
+#: admin/invitations/class_invitation.inc:123
 #, php-format
 msgid "You need to fill the \"%s\" field in order to send invitations"
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:155
+#: admin/invitations/class_invitation.inc:165
 #, php-format
 msgid ""
 "Failed to create registration object for \"%s\", because of the following "
 "errors: %s"
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:160
+#: admin/invitations/class_invitation.inc:170
 #, php-format
 msgid "Failed to send invitation email to \"%s\". Check your email settings."
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:165
+#: admin/invitations/class_invitation.inc:175
 msgid "Success"
 msgstr "Thành công"
 
-#: admin/invitations/class_invitation.inc:165
+#: admin/invitations/class_invitation.inc:175
 #, php-format
 msgid "%d invitations were sent and saved successfully"
-msgstr ""
-
-#: admin/invitations/class_invitationManagement.inc:26
-#: config/invitations/class_invitationsConfig.inc:40
-msgid "Invitations"
 msgstr ""
 
 #: admin/invitations/class_invitationManagement.inc:27
@@ -130,72 +219,159 @@ msgstr ""
 msgid "Manage invitations"
 msgstr ""
 
-#: admin/invitations/class_registration.inc:26
-#: admin/invitations/class_registration.inc:31
-#: admin/invitations/class_registration.inc:49
-msgid "Registration"
+#: admin/registrations/class_registrationManagement.inc:67
+msgid "Registrations"
 msgstr ""
 
-#: admin/invitations/class_registration.inc:27
+#: admin/registrations/class_registrationManagement.inc:68
+msgid "Registrations management"
+msgstr ""
+
+#: admin/registrations/class_registrationManagement.inc:69
+msgid "Manage registrations"
+msgstr ""
+
+#: admin/registrations/class_registrationManagement.inc:91
+msgid "Accept"
+msgstr ""
+
+#: admin/registrations/class_registrationManagement.inc:98
+msgid "Reject"
+msgstr ""
+
+#: admin/registrations/class_registrationManagement.inc:119
+#: admin/registrations/class_registrationManagement.inc:131
+#: admin/registrations/class_registrationManagement.inc:142
+#: admin/registrations/class_registrationManagement.inc:197
+#: admin/registrations/class_registrationManagement.inc:209
+#: admin/registrations/class_registrationManagement.inc:220
+#: admin/registrations/class_registration.inc:33
+msgid "Error"
+msgstr "Lỗi"
+
+#: admin/registrations/class_registrationManagement.inc:120
+#, php-format
+msgid "Cannot accept %s. It has been locked by %s."
+msgstr ""
+
+#: admin/registrations/class_registrationManagement.inc:132
+#, php-format
+msgid "Cannot accept registration %s, it's not in status \"Filled\"."
+msgstr ""
+
+#: admin/registrations/class_registrationManagement.inc:143
+#, php-format
+msgid "Cannot move %s. It has been locked by %s."
+msgstr ""
+
+#: admin/registrations/class_registrationManagement.inc:198
+#, php-format
+msgid "Cannot reject %s. It has been locked by %s."
+msgstr ""
+
+#: admin/registrations/class_registrationManagement.inc:210
+#, php-format
+msgid "Cannot reject registration %s, it's not in status \"Filled\"."
+msgstr ""
+
+#: admin/registrations/class_registrationManagement.inc:221
+#, php-format
+msgid "Cannot delete %s. It has been locked by %s."
+msgstr ""
+
+#: admin/registrations/class_registrationManagement.inc:277
+#, php-format
+msgid "Could not find invitation \"%s\""
+msgstr ""
+
+#: admin/registrations/class_registrationManagement.inc:279
+#, php-format
+msgid "Found several invitations \"%s\""
+msgstr ""
+
+#: admin/registrations/class_registrationManagement.inc:300
+#, php-format
+msgid "Form \"%s\" could not be found"
+msgstr ""
+
+#: admin/registrations/class_registrationManagement.inc:302
+#, php-format
+msgid "Found several forms named \"%s\""
+msgstr ""
+
+#: admin/registrations/class_registration.inc:42
+#, php-format
+msgid "%s - by %s"
+msgstr ""
+
+#: admin/registrations/class_registration.inc:61
+msgid "Sent"
+msgstr ""
+
+#: admin/registrations/class_registration.inc:62
+msgid "Filled"
+msgstr ""
+
+#: admin/registrations/class_registration.inc:63
+msgid "Accepted"
+msgstr ""
+
+#: admin/registrations/class_registration.inc:64
+msgid "Rejected"
+msgstr ""
+
+#: admin/registrations/class_registration.inc:95
 msgid "Registration sent through a public form"
 msgstr ""
 
-#: admin/invitations/class_registration.inc:53
+#: admin/registrations/class_registration.inc:120
 msgid "Email address"
 msgstr ""
 
-#: admin/invitations/class_registration.inc:53
+#: admin/registrations/class_registration.inc:120
 msgid "Email address which the invitation was sent to"
 msgstr ""
 
-#: admin/invitations/class_registration.inc:57
+#: admin/registrations/class_registration.inc:124
 msgid "Status"
 msgstr "Trạng thái"
 
-#: admin/invitations/class_registration.inc:57
+#: admin/registrations/class_registration.inc:124
 msgid "State of this registration"
 msgstr ""
 
-#: admin/invitations/class_registration.inc:61
+#: admin/registrations/class_registration.inc:128
 msgid "Last change"
 msgstr ""
 
-#: admin/invitations/class_registration.inc:61
+#: admin/registrations/class_registration.inc:128
 msgid "Date and author of the last state change"
 msgstr ""
 
-#: admin/invitations/class_registration.inc:65
+#: admin/registrations/class_registration.inc:132
 msgid "Invitation object used to create this registration"
 msgstr ""
 
-#: admin/invitations/class_registration.inc:69
+#: admin/registrations/class_registration.inc:137
 msgid "User object"
 msgstr ""
 
-#: admin/invitations/class_registration.inc:69
+#: admin/registrations/class_registration.inc:137
 msgid "User object created by this registration"
 msgstr ""
 
-#: config/invitations/class_invitationsConfig.inc:26
-msgid "Invitations configuration"
+#: admin/registrations/class_RegistrationStateFilterElement.inc:67
+msgid "Statuses"
 msgstr ""
 
-#: config/invitations/class_invitationsConfig.inc:27
-msgid "FusionDirectory invitations plugin configuration"
+#: ihtml/themes/breezy/invitation.tpl.c:5
+msgid "Hello"
 msgstr ""
 
-#: config/invitations/class_invitationsConfig.inc:43
-msgid "Invitations RDN"
+#: ihtml/themes/breezy/invitation.tpl.c:8
+msgid "Click here to connect"
 msgstr ""
 
-#: config/invitations/class_invitationsConfig.inc:43
-msgid "Branch in which invitations will be stored"
-msgstr ""
-
-#: config/invitations/class_invitationsConfig.inc:48
-msgid "Registrations RDN"
-msgstr ""
-
-#: config/invitations/class_invitationsConfig.inc:48
-msgid "Branch in which registrations will be stored"
+#: ihtml/themes/breezy/invitation.tpl.c:11
+msgid "Click here if you fail to connect"
 msgstr ""
