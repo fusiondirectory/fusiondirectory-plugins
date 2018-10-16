@@ -71,11 +71,11 @@ class etablissement extends simplePlugin
             _('Address'), _('The postal address of this establishment'),
             'postalAddress', FALSE
           ),
-          new StringAttribute(
+          new PhoneNumberAttribute(
             _('Telephone'), _('Phone number of this establishment'),
             'telephoneNumber', FALSE
           ),
-          new StringAttribute(
+          new PhoneNumberAttribute(
             _('Fax'), _('Fax number of this establishment'),
             'facsimileTelephoneNumber', FALSE
           ),
@@ -98,15 +98,15 @@ class etablissement extends simplePlugin
             _('Legal name'), _('The legal name of this establishment'),
             'eduOrgLegalName', TRUE
           ),
-          new StringAttribute(
+          new URLAttribute(
             _('Home page URI'), _('The URI of this establishment website home page'),
             'eduOrgHomePageURI', FALSE
           ),
-          new StringAttribute(
+          new URLAttribute(
             _('Institution URI'), _('The URI of this establishment institution website'),
             'eduOrgSuperiorURI', FALSE
           ),
-          new StringAttribute(
+          new URLAttribute(
             _('White pages URI'), _('The URI of this establishment white pages'),
             'eduOrgWhitePagesURI', FALSE
           ),

@@ -273,7 +273,7 @@ class supannAccount extends simplePlugin
         'name'  => _('Contact'),
         'attrs' => array(
           new SetAttribute(
-            new StringAttribute(
+            new PhoneNumberAttribute(
               _('Other phone numbers'), _('supannAutreTelephone - Other phone numbers for this user'),
               'supannAutreTelephone', FALSE
             )
