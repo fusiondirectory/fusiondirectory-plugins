@@ -39,7 +39,7 @@ class privateFormPage extends publicFormPage
     /* Set readonly attributes in form (prefill from IDP) */
     $this->alteredAttributes[1] = array(
       'user'          => array('givenName', 'sn'),
-      'supannAccount' => array('eduPersonAffiliation', 'supannRefId'),
+      'supannAccount' => array('eduPersonAffiliation', 'eduPersonPrimaryAffiliation', 'supannRefId'),
       'mailAccount'   => array('mail'),
     );
   }
