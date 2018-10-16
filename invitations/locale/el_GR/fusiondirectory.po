@@ -1,0 +1,201 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2018-08-13 17:36+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el_GR\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/invitations/class_invitation.inc:26
+#: admin/invitations/class_invitation.inc:31
+#: admin/invitations/class_invitation.inc:48
+#: admin/invitations/class_registration.inc:65
+msgid "Invitation"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:27
+msgid "Invitation to fill a public form"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:52
+msgid "Name"
+msgstr "Όνομα"
+
+#: admin/invitations/class_invitation.inc:52
+msgid "Name used to identify this invitation"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:56
+msgid "Form"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:56
+msgid "Public form this invitation should link to"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:60
+msgid "Email subject"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:60
+msgid "Subject of the email sent for this invitation"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:64
+msgid "Email content"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:64
+msgid "Content of the email sent for this invitation"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:68
+msgid "Author"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:68
+msgid "Author of this invitation"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:75
+#: admin/invitations/class_invitation.inc:82
+msgid "Emails"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:78
+msgid "From email"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:78
+msgid "Email address set as \"From\" field and \"Reply to\" in the sent emails"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:82
+msgid "List of email adresses of people to invite - one per line"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:111
+#, php-format
+msgid "\"%s\" is not a valid email address"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:116
+#, php-format
+msgid "You need to fill the \"%s\" field in order to send invitations"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:155
+#, php-format
+msgid ""
+"Failed to create registration object for \"%s\", because of the following "
+"errors: %s"
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:160
+#, php-format
+msgid "Failed to send invitation email to \"%s\". Check your email settings."
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:165
+msgid "Success"
+msgstr "Επιτυχία"
+
+#: admin/invitations/class_invitation.inc:165
+#, php-format
+msgid "%d invitations were sent and saved successfully"
+msgstr ""
+
+#: admin/invitations/class_invitationManagement.inc:26
+#: config/invitations/class_invitationsConfig.inc:40
+msgid "Invitations"
+msgstr ""
+
+#: admin/invitations/class_invitationManagement.inc:27
+msgid "Invitations management"
+msgstr ""
+
+#: admin/invitations/class_invitationManagement.inc:28
+msgid "Manage invitations"
+msgstr ""
+
+#: admin/invitations/class_registration.inc:26
+#: admin/invitations/class_registration.inc:31
+#: admin/invitations/class_registration.inc:49
+msgid "Registration"
+msgstr ""
+
+#: admin/invitations/class_registration.inc:27
+msgid "Registration sent through a public form"
+msgstr ""
+
+#: admin/invitations/class_registration.inc:53
+msgid "Email address"
+msgstr "Διευθύνση ηλεκτρονικής αλληλογγραφίας"
+
+#: admin/invitations/class_registration.inc:53
+msgid "Email address which the invitation was sent to"
+msgstr ""
+
+#: admin/invitations/class_registration.inc:57
+msgid "Status"
+msgstr "Κατάσταση"
+
+#: admin/invitations/class_registration.inc:57
+msgid "State of this registration"
+msgstr ""
+
+#: admin/invitations/class_registration.inc:61
+msgid "Last change"
+msgstr ""
+
+#: admin/invitations/class_registration.inc:61
+msgid "Date and author of the last state change"
+msgstr ""
+
+#: admin/invitations/class_registration.inc:65
+msgid "Invitation object used to create this registration"
+msgstr ""
+
+#: admin/invitations/class_registration.inc:69
+msgid "User object"
+msgstr ""
+
+#: admin/invitations/class_registration.inc:69
+msgid "User object created by this registration"
+msgstr ""
+
+#: config/invitations/class_invitationsConfig.inc:26
+msgid "Invitations configuration"
+msgstr ""
+
+#: config/invitations/class_invitationsConfig.inc:27
+msgid "FusionDirectory invitations plugin configuration"
+msgstr ""
+
+#: config/invitations/class_invitationsConfig.inc:43
+msgid "Invitations RDN"
+msgstr ""
+
+#: config/invitations/class_invitationsConfig.inc:43
+msgid "Branch in which invitations will be stored"
+msgstr ""
+
+#: config/invitations/class_invitationsConfig.inc:48
+msgid "Registrations RDN"
+msgstr ""
+
+#: config/invitations/class_invitationsConfig.inc:48
+msgid "Branch in which registrations will be stored"
+msgstr ""
