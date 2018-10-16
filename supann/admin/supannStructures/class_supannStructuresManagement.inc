@@ -32,8 +32,8 @@ class supannStructuresManagement extends simpleManagement
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('Supann structures'),
-      'plDescription' => _('Supann structures management'),
+      'plShortName'   => _('SupAnn structures'),
+      'plDescription' => _('SupAnn structures management'),
       'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 40,

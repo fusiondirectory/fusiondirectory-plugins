@@ -29,10 +29,9 @@ class etablissement extends simplePlugin
   {
     return array(
       'plShortName'   => _('Establishment'),
-      'plDescription' => _('SUPANN Establishment Settings'),
-      'plSelfModify'  => FALSE,
+      'plDescription' => _('SupAnn Establishment Settings'),
       'plObjectType'  => array('etablissement' => array(
-        'name'        => _('SUPANN Establishment'),
+        'name'        => _('SupAnn Establishment'),
         'filter'      => '(&(objectClass=supannEntite)(objectClass=organization))',
         'ou'          => get_ou('supannStructuresRDN'),
         'mainAttr'    => 'supannCodeEntite',
@@ -87,7 +86,7 @@ class etablissement extends simplePlugin
         )
       ),
       'supann' => array(
-        'name'  => _('SUPANN properties'),
+        'name'  => _('SupAnn properties'),
         'attrs' => array(
           new StringAttribute(
             _('Establishment code'), _('The code of this establishment (must have a prefix between {})'),
@@ -95,7 +94,7 @@ class etablissement extends simplePlugin
             '', '', '/^{[^}]+}.*$/'
           ),
           new StringAttribute(
-            _('SUPANN code'), _('The SUPANN code for this establishment'),
+            _('SupAnn code'), _('The SupAnn code for this establishment'),
             'supannCodeEntite', TRUE,
             '', '', '/^[a-z0-9_-]*$/i'
           ),
