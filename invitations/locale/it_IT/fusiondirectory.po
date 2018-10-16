@@ -1,0 +1,205 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2018-08-13 17:36+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
+"Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it_IT\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/invitations/class_invitation.inc:26
+#: admin/invitations/class_invitation.inc:31
+#: admin/invitations/class_invitation.inc:48
+#: admin/invitations/class_registration.inc:65
+msgid "Invitation"
+msgstr "Invito"
+
+#: admin/invitations/class_invitation.inc:27
+msgid "Invitation to fill a public form"
+msgstr "Invito a compilare un modulo pubblico"
+
+#: admin/invitations/class_invitation.inc:52
+msgid "Name"
+msgstr "Nome"
+
+#: admin/invitations/class_invitation.inc:52
+msgid "Name used to identify this invitation"
+msgstr "Nome utilizzato per identificare questo invito"
+
+#: admin/invitations/class_invitation.inc:56
+msgid "Form"
+msgstr "Modulo"
+
+#: admin/invitations/class_invitation.inc:56
+msgid "Public form this invitation should link to"
+msgstr "Modulo pubblico a cui questo invito dovrebbe collegarsi"
+
+#: admin/invitations/class_invitation.inc:60
+msgid "Email subject"
+msgstr "Oggetto dell'email"
+
+#: admin/invitations/class_invitation.inc:60
+msgid "Subject of the email sent for this invitation"
+msgstr "Oggetto dell'e-mail inviata per questo invito"
+
+#: admin/invitations/class_invitation.inc:64
+msgid "Email content"
+msgstr "Contenuto dell'e-mail"
+
+#: admin/invitations/class_invitation.inc:64
+msgid "Content of the email sent for this invitation"
+msgstr "Contenuto dell'e-mail inviata per questo invito"
+
+#: admin/invitations/class_invitation.inc:68
+msgid "Author"
+msgstr "Autore"
+
+#: admin/invitations/class_invitation.inc:68
+msgid "Author of this invitation"
+msgstr "Autore di questo invito"
+
+#: admin/invitations/class_invitation.inc:75
+#: admin/invitations/class_invitation.inc:82
+msgid "Emails"
+msgstr "E-mail"
+
+#: admin/invitations/class_invitation.inc:78
+msgid "From email"
+msgstr "Dall'e-mail"
+
+#: admin/invitations/class_invitation.inc:78
+msgid "Email address set as \"From\" field and \"Reply to\" in the sent emails"
+msgstr "Indirizzo e-mail impostato come \"Da\" e \"Rispondi a\" nelle e-mail inviate"
+
+#: admin/invitations/class_invitation.inc:82
+msgid "List of email adresses of people to invite - one per line"
+msgstr "Elenco di indirizzi e-mail delle persone da invitare - uno per riga"
+
+#: admin/invitations/class_invitation.inc:111
+#, php-format
+msgid "\"%s\" is not a valid email address"
+msgstr "\"%s\" non è un indirizzo e-mail valido"
+
+#: admin/invitations/class_invitation.inc:116
+#, php-format
+msgid "You need to fill the \"%s\" field in order to send invitations"
+msgstr "È necessario compilare il campo \"%s\" per inviare inviti"
+
+#: admin/invitations/class_invitation.inc:155
+#, php-format
+msgid ""
+"Failed to create registration object for \"%s\", because of the following "
+"errors: %s"
+msgstr ""
+"Impossibile creare l'oggetto di registrazione per \"%s\", a causa dei "
+"seguenti errori: %s"
+
+#: admin/invitations/class_invitation.inc:160
+#, php-format
+msgid "Failed to send invitation email to \"%s\". Check your email settings."
+msgstr ""
+"Impossibile inviare l'e-mail di invito a \"%s\". Controlla le tue "
+"impostazioni e-mail."
+
+#: admin/invitations/class_invitation.inc:165
+msgid "Success"
+msgstr "Completato"
+
+#: admin/invitations/class_invitation.inc:165
+#, php-format
+msgid "%d invitations were sent and saved successfully"
+msgstr "%dinviti sono stati inviati e salvati correttamente "
+
+#: admin/invitations/class_invitationManagement.inc:26
+#: config/invitations/class_invitationsConfig.inc:40
+msgid "Invitations"
+msgstr "Inviti"
+
+#: admin/invitations/class_invitationManagement.inc:27
+msgid "Invitations management"
+msgstr "Gestione degli inviti"
+
+#: admin/invitations/class_invitationManagement.inc:28
+msgid "Manage invitations"
+msgstr "Gestisci gli inviti"
+
+#: admin/invitations/class_registration.inc:26
+#: admin/invitations/class_registration.inc:31
+#: admin/invitations/class_registration.inc:49
+msgid "Registration"
+msgstr "Registrazione"
+
+#: admin/invitations/class_registration.inc:27
+msgid "Registration sent through a public form"
+msgstr "Registrazione inviata tramite un modulo pubblico"
+
+#: admin/invitations/class_registration.inc:53
+msgid "Email address"
+msgstr "Indirizzo di posta elettronica"
+
+#: admin/invitations/class_registration.inc:53
+msgid "Email address which the invitation was sent to"
+msgstr "Indirizzo e-mail a cui è stato inviato l'invito"
+
+#: admin/invitations/class_registration.inc:57
+msgid "Status"
+msgstr "Stato"
+
+#: admin/invitations/class_registration.inc:57
+msgid "State of this registration"
+msgstr "Stato di questa registrazione"
+
+#: admin/invitations/class_registration.inc:61
+msgid "Last change"
+msgstr "Ultima modifica"
+
+#: admin/invitations/class_registration.inc:61
+msgid "Date and author of the last state change"
+msgstr "Data e autore dell'ultimo cambiamento di stato"
+
+#: admin/invitations/class_registration.inc:65
+msgid "Invitation object used to create this registration"
+msgstr "Oggetto di invito utilizzato per creare questa registrazione"
+
+#: admin/invitations/class_registration.inc:69
+msgid "User object"
+msgstr "Oggetto utente"
+
+#: admin/invitations/class_registration.inc:69
+msgid "User object created by this registration"
+msgstr "Oggetto utente creato da questa registrazione"
+
+#: config/invitations/class_invitationsConfig.inc:26
+msgid "Invitations configuration"
+msgstr "Configurazione degli inviti"
+
+#: config/invitations/class_invitationsConfig.inc:27
+msgid "FusionDirectory invitations plugin configuration"
+msgstr "Configurazione del plugin inviti FusionDirectory"
+
+#: config/invitations/class_invitationsConfig.inc:43
+msgid "Invitations RDN"
+msgstr "Inviti RDN"
+
+#: config/invitations/class_invitationsConfig.inc:43
+msgid "Branch in which invitations will be stored"
+msgstr "Ramo in cui verranno archiviati gli inviti"
+
+#: config/invitations/class_invitationsConfig.inc:48
+msgid "Registrations RDN"
+msgstr "Registrazioni RDN"
+
+#: config/invitations/class_invitationsConfig.inc:48
+msgid "Branch in which registrations will be stored"
+msgstr "Ramo in cui verranno archiviate le registrazioni"
