@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-08-13 10:49+0200\n"
+"POT-Creation-Date: 2018-10-16 16:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: MCMic, 2018\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -18,10 +18,60 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: include/class_publicFormPage.inc:88
+msgid "Invalid link, both token and form are provided"
+msgstr "Lien non valide, jeton et formulaire fournis"
+
+#: include/class_publicFormPage.inc:102
+#, php-format
+msgid "Could not find any invitation matching token \"%s\""
+msgstr "Impossible de trouver un jeton d'invitation correspondant a \"%s\""
+
+#: include/class_publicFormPage.inc:104 include/class_publicFormPage.inc:119
+#, php-format
+msgid "Found several invitations matching token \"%s\""
+msgstr "Trouvé plusieurs invitations correspondant au jeton \"%s\""
+
+#: include/class_publicFormPage.inc:117
+#, php-format
+msgid "Could not find any invitation matching registration with token \"%s\""
+msgstr ""
+"Impossible de trouver une invitation correspondante à un enregistrement avec"
+" jeton \"%s\""
+
+#: include/class_publicFormPage.inc:160
+msgid "Form name or token missing from URL"
+msgstr "Nom de formulaire ou jeton manquant dans l'URL"
+
+#: include/class_publicFormPage.inc:163
+#, php-format
+msgid "Form \"%s\" could not be found"
+msgstr "Le formulaire \"%s\" n'a pas pu être trouvé"
+
+#: include/class_publicFormPage.inc:165
+#, php-format
+msgid "Found several forms named \"%s\""
+msgstr "Plusieurs formulaires nommés \"%s\" ont étés trouvés"
+
+#: include/class_publicFormPage.inc:174
+#, php-format
+msgid "Form \"%s\" is private and requires an invitation"
+msgstr "Le formulaire \"%s\" est privé et nécessite une invitation"
+
+#: include/class_publicFormPage.inc:307
+#, php-format
+msgid "Form - %s"
+msgstr "Formulaire - %s"
+
+#: include/class_publicFormPage.inc:309
+#: admin/public-forms/class_publicForm.inc:49
+msgid "Form"
+msgstr "Formulaire"
+
 #: admin/public-forms/class_publicFormManagement.inc:26
 #: config/public-forms/class_publicFormsConfig.inc:40
 msgid "Public forms"
-msgstr "Formulaires publiques"
+msgstr "Formulaires publics"
 
 #: admin/public-forms/class_publicFormManagement.inc:27
 msgid "Public forms management"
@@ -34,63 +84,75 @@ msgstr "Gérer les formulaires publics"
 #: admin/public-forms/class_publicForm.inc:26
 #: admin/public-forms/class_publicForm.inc:31
 msgid "Public form"
-msgstr "Formulaire publique"
+msgstr "Formulaire public"
 
 #: admin/public-forms/class_publicForm.inc:27
 msgid "Public form which creates objects inside FusionDirectory"
-msgstr "Formulaire publique qui créer des objets dans FusionDirectory"
+msgstr "Formulaire public qui créer des objets dans FusionDirectory"
 
-#: admin/public-forms/class_publicForm.inc:47
-msgid "Form"
-msgstr "Formulaire"
-
-#: admin/public-forms/class_publicForm.inc:51
+#: admin/public-forms/class_publicForm.inc:53
 msgid "Name"
 msgstr "Nom"
 
-#: admin/public-forms/class_publicForm.inc:51
+#: admin/public-forms/class_publicForm.inc:53
 msgid "Name used to identify this form"
 msgstr "Nom utilisé pour identifier ce formulaire"
 
-#: admin/public-forms/class_publicForm.inc:55
+#: admin/public-forms/class_publicForm.inc:57
 msgid "Title"
 msgstr "Titre"
 
-#: admin/public-forms/class_publicForm.inc:55
+#: admin/public-forms/class_publicForm.inc:57
 msgid "Title of this form"
 msgstr "Titre de ce formulaire"
 
-#: admin/public-forms/class_publicForm.inc:59
+#: admin/public-forms/class_publicForm.inc:61
 msgid "Text"
 msgstr "Texte"
 
-#: admin/public-forms/class_publicForm.inc:59
+#: admin/public-forms/class_publicForm.inc:61
 msgid "Text of the public form, shown before the form"
 msgstr "Texte du formulaire public, affiché avant le formulaire"
 
-#: admin/public-forms/class_publicForm.inc:63
+#: admin/public-forms/class_publicForm.inc:65
 msgid "Object type"
 msgstr "Type d'objet"
 
-#: admin/public-forms/class_publicForm.inc:63
+#: admin/public-forms/class_publicForm.inc:65
 msgid "Type of objects you wish to create from this form"
 msgstr "Type d'objets que vous souhaitez créer à partir de ce formulaire"
 
-#: admin/public-forms/class_publicForm.inc:68
+#: admin/public-forms/class_publicForm.inc:70
 msgid "Template"
 msgstr "Modèle"
 
-#: admin/public-forms/class_publicForm.inc:68
+#: admin/public-forms/class_publicForm.inc:70
 msgid "Object template used by this form"
 msgstr "Modèle d'objet utilisé par ce formulaire"
 
-#: admin/public-forms/class_publicForm.inc:73
+#: admin/public-forms/class_publicForm.inc:75
 msgid "Confirmation text"
 msgstr "Texte de confirmation"
 
-#: admin/public-forms/class_publicForm.inc:73
+#: admin/public-forms/class_publicForm.inc:75
 msgid "Text shown once the object is created"
 msgstr "Texte affiché une fois l'objet créé"
+
+#: admin/public-forms/class_publicForm.inc:80
+msgid "Private"
+msgstr "Privé"
+
+#: admin/public-forms/class_publicForm.inc:80
+msgid "Restrict this form to invitations"
+msgstr "Limiter ce formulaire aux invitations"
+
+#: admin/public-forms/class_publicForm.inc:85
+msgid "Creation base"
+msgstr "Base de création"
+
+#: admin/public-forms/class_publicForm.inc:85
+msgid "Base in which objects will get created"
+msgstr "Branche où seront stockés les objets"
 
 #: config/public-forms/class_publicFormsConfig.inc:26
 msgid "Public forms configuration"
