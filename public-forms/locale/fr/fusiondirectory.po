@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-10-16 16:35+0000\n"
+"POT-Creation-Date: 2018-10-16 20:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: MCMic, 2018\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -20,24 +20,24 @@ msgstr ""
 
 #: include/class_publicFormPage.inc:88
 msgid "Invalid link, both token and form are provided"
-msgstr "Lien non valide, jeton et formulaire fournis"
+msgstr "Lien invalide, le jeton et le formulaire ont tous deux été fournis"
 
 #: include/class_publicFormPage.inc:102
 #, php-format
 msgid "Could not find any invitation matching token \"%s\""
-msgstr "Impossible de trouver un jeton d'invitation correspondant a \"%s\""
+msgstr "Impossible de trouver une invitation correspondant au jeton \"%s\""
 
 #: include/class_publicFormPage.inc:104 include/class_publicFormPage.inc:119
 #, php-format
 msgid "Found several invitations matching token \"%s\""
-msgstr "Trouvé plusieurs invitations correspondant au jeton \"%s\""
+msgstr "Plusieurs invitations correspondant au jeton \"%s\" ont été trouvées"
 
 #: include/class_publicFormPage.inc:117
 #, php-format
 msgid "Could not find any invitation matching registration with token \"%s\""
 msgstr ""
-"Impossible de trouver une invitation correspondante à un enregistrement avec"
-" jeton \"%s\""
+"Impossible de trouver une invitation correspondant à l’inscription avec le "
+"jeton \"%s\""
 
 #: include/class_publicFormPage.inc:160
 msgid "Form name or token missing from URL"
@@ -51,7 +51,7 @@ msgstr "Le formulaire \"%s\" n'a pas pu être trouvé"
 #: include/class_publicFormPage.inc:165
 #, php-format
 msgid "Found several forms named \"%s\""
-msgstr "Plusieurs formulaires nommés \"%s\" ont étés trouvés"
+msgstr "Plusieurs formulaires nommés \"%s\" ont été trouvés"
 
 #: include/class_publicFormPage.inc:174
 #, php-format
@@ -152,7 +152,7 @@ msgstr "Base de création"
 
 #: admin/public-forms/class_publicForm.inc:85
 msgid "Base in which objects will get created"
-msgstr "Branche où seront stockés les objets"
+msgstr "Base où seront créés les objets"
 
 #: config/public-forms/class_publicFormsConfig.inc:26
 msgid "Public forms configuration"
