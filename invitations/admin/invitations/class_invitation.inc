@@ -80,7 +80,8 @@ class invitation extends simplePlugin
           ),
           new FileTextAreaAttribute(
             _('Emails'), _('List of email adresses of people to invite - one per line'),
-            'emails', FALSE
+            'emails', FALSE,
+            '.txt', TRUE, FALSE
           ),
         )
       )
