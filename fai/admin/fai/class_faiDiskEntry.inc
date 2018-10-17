@@ -407,7 +407,7 @@ class faiDiskEntry extends simplePlugin
 
     $buttons = '<p class="plugbottom">
                   <input type="submit" name="SaveDisk" value="'.msgPool::saveButton().'">
-                  <input type="submit" name="CancelDisk" value="'.msgPool::cancelButton().'" >
+                  <input type="submit" formnovalidate="formnovalidate" name="CancelDisk" value="'.msgPool::cancelButton().'" >
                 </p>';
     if ($this->displayPlugin) {
       return $this->header.$smarty->fetch($this->templatePath).$buttons;

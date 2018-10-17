@@ -263,7 +263,7 @@ class dnsHost extends simplePlugin
             $fqdn = '<strong>'.$fqdn.'</strong>';
             if (class_available('supportDaemon')) {
               $id = 'ldap2zone_refresh_'.base64_encode($attrs['zoneName'][0]);
-              $fqdn .= ' <input type="submit" name="'.$id.'" id="'.$id.'" value="{t}Refresh zone file{/t}"/>';
+              $fqdn .= ' <input type="submit" formnovalidate="formnovalidate" name="'.$id.'" id="'.$id.'" value="{t}Refresh zone file{/t}"/>';
             }
           }
           $attrId = 'soaRecord'.$zoneid;

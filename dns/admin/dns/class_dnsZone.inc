@@ -135,7 +135,7 @@ class DnsRecordDialog extends GenericDialog
     return $this->dialog->execute()."\n".
     '<p class="plugbottom">'."\n".
     '  <input type="submit" name="add_finish" value="'.msgPool::addButton().'"/>&nbsp;'."\n".
-    '  <input type="submit" name="add_cancel" value="'.msgPool::cancelButton().'"/>'."\n".
+    '  <input type="submit" formnovalidate="formnovalidate" name="add_cancel" value="'.msgPool::cancelButton().'"/>'."\n".
     '</p>';
   }
 

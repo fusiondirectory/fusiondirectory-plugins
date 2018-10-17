@@ -102,7 +102,7 @@ class DhcpSectionCreationDialog extends GenericDialog
     return $smarty->fetch(get_template_path('simpleplugin.tpl'))."\n".
     '<p class="plugbottom">'."\n".
     '  <input type="submit" name="'.$this->post_finish.'" value="'.msgPool::addButton().'"/>&nbsp;'."\n".
-    '  <input type="submit" name="'.$this->post_cancel.'" value="'.msgPool::cancelButton().'"/>'."\n".
+    '  <input type="submit" formnovalidate="formnovalidate" name="'.$this->post_cancel.'" value="'.msgPool::cancelButton().'"/>'."\n".
     '</p>';
   }
 

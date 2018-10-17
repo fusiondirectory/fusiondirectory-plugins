@@ -167,7 +167,7 @@ class argonautAction extends simplePlugin
     }
     return  '<p class="plugbottom">'.
             ' <input type="submit" name="save_event_dialog" value="'.msgPool::saveButton().'"/>'.
-            ' <input type="submit" name="abort_event_dialog" value="'.msgPool::cancelButton().'"/>'.
+            ' <input type="submit" formnovalidate="formnovalidate" name="abort_event_dialog" value="'.msgPool::cancelButton().'"/>'.
             '</p>';
   }
 

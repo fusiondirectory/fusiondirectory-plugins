@@ -123,7 +123,7 @@ class AvailableSudoOptionAttribute extends SelectAttribute
   function renderFormInput ()
   {
     $id = $this->getLdapName();
-    $button = '<input type="submit" name="add'.$id.'" id="add'.$id.'"'.
+    $button = '<input type="submit" formnovalidate="formnovalidate" name="add'.$id.'" id="add'.$id.'"'.
                 ($this->disabled ? ' disabled="disabled"' : '').
                 ' value="{msgPool type=addButton}"/>';
     $display = parent::renderFormInput();
