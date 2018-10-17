@@ -105,14 +105,20 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
     $buttons = $this->renderInputField(
       'submit',
       'add'.$id.'_dialog',
-      array('value' => _('Add disk'))
+      array(
+        'value'           => _('Add disk'),
+        'formnovalidate'  => 'formnovalidate'
+      )
     );
 
     if (!isset($this->value['raid'])) {
       $buttons .= $this->renderInputField(
         'submit',
         'add'.$id.'_dialog_raid',
-        array('value' => _('Add RAID'))
+        array(
+          'value'           => _('Add RAID'),
+          'formnovalidate'  => 'formnovalidate'
+        )
       );
     }
 
@@ -120,7 +126,10 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
       $buttons .= $this->renderInputField(
         'submit',
         'add'.$id.'_dialog_lvm',
-        array('value' => _('Add LVM'))
+        array(
+          'value'           => _('Add LVM'),
+          'formnovalidate'  => 'formnovalidate'
+        )
       );
     }
 
@@ -128,7 +137,10 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
       $buttons .= $this->renderInputField(
         'submit',
         'add'.$id.'_dialog_cryptsetup',
-        array('value' => _('Add cryptsetup'))
+        array(
+          'value'           => _('Add cryptsetup'),
+          'formnovalidate'  => 'formnovalidate'
+        )
       );
     }
 

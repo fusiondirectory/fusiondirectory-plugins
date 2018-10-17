@@ -98,7 +98,7 @@ class dhcpPlugin extends simplePlugin
     return parent::execute()."\n".
     '<p class="plugbottom">'."\n".
     '  <input type="submit" name="dhcp_save" value="'.msgPool::addButton().'"/>&nbsp;'."\n".
-    '  <input type="submit" name="dhcp_cancel" value="'.msgPool::cancelButton().'"/>'."\n".
+    '  <input type="submit" formnovalidate="formnovalidate" name="dhcp_cancel" value="'.msgPool::cancelButton().'"/>'."\n".
     '</p>';
   }
 

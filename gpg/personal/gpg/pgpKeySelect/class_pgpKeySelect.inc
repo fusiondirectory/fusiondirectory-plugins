@@ -246,7 +246,7 @@ class PgpKeyAttribute extends GenericDialogAttribute
   function renderButtons ()
   {
     $id = $this->getHtmlId();
-    $buttons  = '<input type="submit" name="add'.$id.'_dialog" id="add'.$id.'_dialog"'.
+    $buttons  = '<input type="submit" formnovalidate="formnovalidate" name="add'.$id.'_dialog" id="add'.$id.'_dialog"'.
                 ($this->disabled ? ' disabled="disabled"' : '').
                 ' value="{msgPool type=addButton}"/>';
     return $buttons;

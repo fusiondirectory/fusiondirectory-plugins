@@ -480,7 +480,7 @@ class faiPartition extends simplePlugin
 
     $buttons = '<p class="plugbottom">
                   <input type="submit" name="PartitionSave" value="'.msgPool::saveButton().'">
-                  <input type="submit" name="PartitionCancel" value="'.msgPool::cancelButton().'" >
+                  <input type="submit" formnovalidate="formnovalidate" name="PartitionCancel" value="'.msgPool::cancelButton().'" >
                 </p>';
     if ($this->displayPlugin) {
       return $this->header.$smarty->fetch($this->templatePath).$buttons;

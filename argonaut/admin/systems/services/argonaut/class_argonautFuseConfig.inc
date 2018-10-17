@@ -99,10 +99,10 @@ class argonautFuseConfig extends simpleService
    */
   function execute ()
   {
-    $str = "<div style='width:100%; text-align:right; clear:both; float:none;'>".
-           "  <input type='submit' name='SaveService' value='".msgPool::saveButton()."'>&nbsp;".
-           "  <input type='submit' name='CancelService' value='".msgPool::cancelButton()."'>".
-           "</div>";
+    $str = '<div style="width:100%; text-align:right; clear:both; float:none;">'.
+           '  <input type="submit" name="SaveService" value="'.msgPool::saveButton().'"/>&nbsp;'.
+           '  <input type="submit" formnovalidate="formnovalidate" name="CancelService" value="'.msgPool::cancelButton().'"/>'.
+           '</div>';
 
     $display = simplePlugin::execute();
 

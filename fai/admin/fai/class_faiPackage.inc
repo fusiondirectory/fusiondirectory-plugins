@@ -123,10 +123,10 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
   function renderButtons ()
   {
     $id = $this->getHtmlId();
-    $buttons  = '<input type="submit" name="add'.$id.'" id="add'.$id.'"'.
+    $buttons  = '<input type="submit" formnovalidate="formnovalidate" name="add'.$id.'" id="add'.$id.'"'.
                 ($this->disabled ? ' disabled="disabled"' : '').
                 ' value="{msgPool type=addButton}"/>';
-    $buttons  .= '<input type="submit" name="add'.$id.'_dialog" id="add'.$id.'_dialog"'.
+    $buttons  .= '<input type="submit" formnovalidate="formnovalidate" name="add'.$id.'_dialog" id="add'.$id.'_dialog"'.
                 ($this->disabled ? ' disabled="disabled"' : '').
                 ' value="{msgPool type=addButton}{t} from list{/t}"/>';
     return $buttons;

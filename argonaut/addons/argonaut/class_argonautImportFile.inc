@@ -95,7 +95,7 @@ class argonautImportFile extends simplePlugin
     return parent::execute().
     '<p class="plugbottom">'.
     ' <input type="submit" name="start_import" value="'._('Import').'" >'.
-    ' <input type="submit" name="import_abort" value="'.msgPool::backButton().'">'.
+    ' <input type="submit" formnovalidate="formnovalidate" name="import_abort" value="'.msgPool::backButton().'">'.
     '</p>';
   }
 

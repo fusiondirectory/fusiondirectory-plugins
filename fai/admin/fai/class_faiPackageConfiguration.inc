@@ -260,7 +260,7 @@ class faiPackageConfiguration extends simplePlugin
     return parent::execute().
       '<p class="plugbottom">'.
       '  <input type="submit" name="SaveObjectConfig" value="'.msgPool::applyButton().'"/>'.
-      '  <input type="submit" name="CancelObjectConfig" value="'.msgPool::cancelButton().'"/>'.
+      '  <input type="submit" formnovalidate="formnovalidate" name="CancelObjectConfig" value="'.msgPool::cancelButton().'"/>'.
       '</p>';
   }
 

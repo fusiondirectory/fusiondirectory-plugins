@@ -252,7 +252,7 @@ class argonautQueue extends simpleManagement
   {
     if ($this->dialogObject instanceof faiLogView) {
       return  '<p class="plugbottom">'.
-              ' <input type="submit" name="edit_cancel" value="'.msgPool::backButton().'"/>'.
+              ' <input type="submit" formnovalidate="formnovalidate" name="edit_cancel" value="'.msgPool::backButton().'"/>'.
               '</p>';
     } else {
       return parent::_getTabFooter();
