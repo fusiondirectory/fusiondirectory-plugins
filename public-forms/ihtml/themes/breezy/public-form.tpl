@@ -6,7 +6,7 @@
   <div id="window-container">
 
     <div id="window-div">
-      <form action="" name="mainform" id="mainform" method="post" enctype="multipart/form-data">
+      <form name="mainform" id="mainform" method="post" enctype="multipart/form-data">
         <div id="window-titlebar">
           <img id="fd-logo" src="geticon.php?context=applications&amp;icon=fusiondirectory&amp;size=48" alt="FusionDirectory"/>
           <p>
