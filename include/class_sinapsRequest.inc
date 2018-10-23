@@ -127,8 +127,6 @@ class sinapsRequest
     $values = array(
       'entite' => array(
         'supannRefId'               => array(),
-        'telephoneNumber'           => '',
-        'facsimileTelephoneNumber'  => '',
         'postalAddress'             => '',
         'supannCodeEntiteParent'    => '',
       ),
@@ -155,6 +153,8 @@ class sinapsRequest
     foreach ($mapping as $sinapsAttr => list($fdTab,$fdAttr)) {
       if (isset($structure->$sinapsAttr)) {
         $values[$fdTab][$fdAttr] = (string)$structure->$sinapsAttr;
+      } else {
+        $values[$fdTab][$fdAttr] = '';
       }
     }
 
@@ -211,16 +211,25 @@ class sinapsRequest
       'sexe'            => array('personalInfo','gender'),
     );
     $values = array(
-      'user'          => array(),
-      'supannAccount' => array(
-        'supannRefId'                 => array(),
-        'supannEntiteAffectation'     => array(),
-        'supannRoleGenerique'         => array(),
-        'supannTypeEntiteAffectation' => array(),
-        'supannRoleEntite'            => array(),
-        'supannActivite'              => array(),
+      'user'          => array(
+        'homePhone'                 => '',
+        'postalAddress'             => '',
+        'homePostalAddress'         => '',
+        'employeeNumber'            => '',
       ),
-      'personalInfo'  => array(),
+      'supannAccount' => array(
+        'supannRefId'                       => array(),
+        'supannEntiteAffectation'           => array(),
+        'supannRoleGenerique'               => array(),
+        'supannTypeEntiteAffectation'       => array(),
+        'supannRoleEntite'                  => array(),
+        'supannActivite'                    => array(),
+        'supannEmpCorps'                    => '',
+        'supannEntiteAffectationPrincipale' => '',
+      ),
+      'personalInfo'  => array(
+        'fdPrivateMail' => array(),
+      ),
     );
 
     $uuid = '';
@@ -247,6 +256,8 @@ class sinapsRequest
     foreach ($mapping as $sinapsAttr => list($fdTab,$fdAttr)) {
       if (isset($personne->$sinapsAttr)) {
         $values[$fdTab][$fdAttr] = (string)$personne->$sinapsAttr;
+      } else {
+        $values[$fdTab][$fdAttr] = '';
       }
     }
 
@@ -265,9 +276,6 @@ class sinapsRequest
             $values['user']['homePhone'] = (string)$method->valeur;
             break;
           case 'MAILPERSO':
-            if (!isset($values['personalInfo']['fdPrivateMail'])) {
-              $values['personalInfo']['fdPrivateMail'] = array();
-            }
             $values['personalInfo']['fdPrivateMail'][] = (string)$method->valeur;
             break;
           case 'ADR':
