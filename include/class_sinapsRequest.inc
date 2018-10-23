@@ -211,6 +211,7 @@ class sinapsRequest
       'sexe'            => array('personalInfo','gender'),
     );
     $values = array(
+      'lock'          => FALSE,
       'user'          => array(
         'homePhone'                 => '',
         'postalAddress'             => '',
@@ -252,6 +253,20 @@ class sinapsRequest
     }
 
     array_unshift($values['supannAccount']['supannRefId'], '{'.$uuidPrefix.'}'.$uuid);
+
+    if (!isset($personne->rattachements->rattachement)) {
+      /* This is a deletion */
+      /* Store current date as end of contract */
+      $values['personalInfo']['fdContractEndDate'] = $now->format('d.m.Y');
+      /* Lock the account */
+      $values['lock'] = TRUE;
+      /* Remove all contact info */
+      $values['user']['telephoneNumber']          = '';
+      $values['user']['facsimileTelephoneNumber'] = '';
+      $values['user']['mobile']                   = '';
+      $values['mailAccount']                      = FALSE;
+      return $values;
+    }
 
     foreach ($mapping as $sinapsAttr => list($fdTab,$fdAttr)) {
       if (isset($personne->$sinapsAttr)) {
@@ -363,6 +378,7 @@ class sinapsRequest
         }
       }
     }
+
     foreach (array('supannRefId','supannEntiteAffectation','supannRoleGenerique','supannTypeEntiteAffectation','supannRoleEntite','supannActivite') as $arrayattribute) {
       $values['supannAccount'][$arrayattribute] = array_values(array_unique($values['supannAccount'][$arrayattribute]));
     }

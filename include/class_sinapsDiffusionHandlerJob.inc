@@ -167,6 +167,10 @@ class sinapsDiffusionHandlerJob
         $message = 'User updated';
       }
     } else {
+      if ($values['lock']) {
+        $error = 'Cannot delete non-existing user '.$uuid;
+        $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 16, $error));
+      }
       $dn = '';
     }
     $error = $this->fillObject('user', $values, $dn);
@@ -180,6 +184,12 @@ class sinapsDiffusionHandlerJob
   function fillObject($type, $values, &$dn)
   {
     global $config;
+
+    $lock = FALSE;
+    if (isset($values['lock'])) {
+      $lock = $values['lock'];
+      unset($values['lock']);
+    }
 
     if ($this->dryRun) {
       $this->dumpFile(
@@ -205,40 +215,8 @@ class sinapsDiffusionHandlerJob
         }
         $dn = $tabobject->dn;
 
-        // Try to lock the entry
-        $ldap   = $config->get_ldap_link();
-        $errors = array();
-        $ldap->cat($dn, array('userPassword'));
-        if ($ldap->count() == 1) {
-          // We can't lock empty passwords.
-          $val = $ldap->fetch();
-          if (!isset($val['userPassword'])) {
-            $errors[] = sprintf(_('Failed to get password method for account "%s". It has not been locked!'), $dn);
-            return $errors;
-          }
-          // Detect the password method and try to lock
-          $method = passwordMethod::get_method($val['userPassword'][0], $dn);
-          if ($method instanceOf passwordMethod) {
-            $success = TRUE;
-            if (!$method->is_locked($dn)) {
-              $success = $method->lock_account($dn);
-            }
+        $errors = $this->lockUser($dn);
 
-            // Check if everything went fine.
-            if (!$success) {
-              $hn = $method->get_hash_name();
-              if (is_array($hn)) {
-                $hn = $hn[0];
-              }
-              $errors[] = sprintf(_('Password method "%s" failed locking. Account "%s" has not been locked!'), $hn, $dn);
-            }
-          } else {
-            // Can't lock unknown methods.
-            $errors[] = sprintf(_('Failed to get password method for account "%s". It has not been locked!'), $dn);
-          }
-        } else {
-          $errors[] = sprintf(_('Could not find account "%s" in LDAP. It has not been locked!'), $dn);
-        }
         if (!empty($errors)) {
           return $errors;
         }
@@ -254,19 +232,32 @@ class sinapsDiffusionHandlerJob
       if (!isset($tabobject->by_object[$tab])) {
         return array('This tab does not exists: "'.$tab.'"');
       }
-      if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
-          $tabobject->by_object[$tab]->displayHeader &&
-          !$tabobject->by_object[$tab]->is_account
-        ) {
-        list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
-        if ($disabled) {
-          return $text;
+      if ($tabvalues === FALSE) {
+        if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
+            $tabobject->by_object[$tab]->displayHeader &&
+            $tabobject->by_object[$tab]->is_account
+          ) {
+          list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
+          if ($disabled) {
+            return $text;
+          }
+          $tabobject->by_object[$tab]->is_account = FALSE;
         }
-        $tabobject->by_object[$tab]->is_account = TRUE;
-      }
-      $error = $tabobject->by_object[$tab]->deserializeValues($tabvalues);
-      if ($error !== TRUE) {
-        return $error;
+      } else {
+        if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
+            $tabobject->by_object[$tab]->displayHeader &&
+            !$tabobject->by_object[$tab]->is_account
+          ) {
+          list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
+          if ($disabled) {
+            return $text;
+          }
+          $tabobject->by_object[$tab]->is_account = TRUE;
+        }
+        $error = $tabobject->by_object[$tab]->deserializeValues($tabvalues);
+        if ($error !== TRUE) {
+          return $error;
+        }
       }
       $tabobject->current = $tab;
       $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases may be needed */
@@ -278,7 +269,56 @@ class sinapsDiffusionHandlerJob
     if (!empty($errors)) {
       return $errors;
     }
+    if ($lock) {
+      $errors = $this->lockUser($dn);
+
+      if (!empty($errors)) {
+        return $errors;
+      }
+    }
     return TRUE;
+  }
+
+  protected function lockUser($dn)
+  {
+    global $config;
+
+    // Try to lock the entry
+    $ldap   = $config->get_ldap_link();
+    $errors = array();
+    $ldap->cat($dn, array('userPassword'));
+    if ($ldap->count() == 1) {
+      // We can't lock empty passwords.
+      $val = $ldap->fetch();
+      if (!isset($val['userPassword'])) {
+        $errors[] = sprintf(_('Failed to get password method for account "%s". It has not been locked!'), $dn);
+        return $errors;
+      }
+      // Detect the password method and try to lock
+      $method = passwordMethod::get_method($val['userPassword'][0], $dn);
+      if ($method instanceOf passwordMethod) {
+        $success = TRUE;
+        if (!$method->is_locked($dn)) {
+          $success = $method->lock_account($dn);
+        }
+
+        // Check if everything went fine.
+        if (!$success) {
+          $hn = $method->get_hash_name();
+          if (is_array($hn)) {
+            $hn = $hn[0];
+          }
+          $errors[] = sprintf(_('Password method "%s" failed locking. Account "%s" has not been locked!'), $hn, $dn);
+        }
+      } else {
+        // Can't lock unknown methods.
+        $errors[] = sprintf(_('Failed to get password method for account "%s". It has not been locked!'), $dn);
+      }
+    } else {
+      $errors[] = sprintf(_('Could not find account "%s" in LDAP. It has not been locked!'), $dn);
+    }
+
+    return $errors;
   }
 
   function sendAcquittementFonctionnel($xml)
