@@ -117,11 +117,12 @@ try {
     $session_id,
     'configuration',
     array(
-      'fdSinapsEnabled'         => 1,
-      'fdSinapsAcquisitionURL'  => 1,
-      'fdSinapsLogin'           => 1,
-      'fdSinapsPassword'        => 1,
-      'fdSinapsUuidPrefix'      => 1,
+      'fdSinapsEnabled'               => 1,
+      'fdSinapsAcquisitionURL'        => 1,
+      'fdSinapsLogin'                 => 1,
+      'fdSinapsPassword'              => 1,
+      'fdSinapsUuidPrefix'            => 1,
+      'fdSinapsAcquisitonTypeExterne' => 1,
     )
   );
   $configuration = reset($configurations);
@@ -140,12 +141,15 @@ try {
   if (!isset($configuration['fdSinapsLogin'])) {
     $configuration['fdSinapsLogin'] = 'fusiondirectory';
   }
+  if (!isset($configuration['fdSinapsAcquisitonTypeExterne'])) {
+    $configuration['fdSinapsAcquisitonTypeExterne'] = 'FD';
+  }
 
   $users = $client->ls($session_id, 'user', sinapsRequestAcquisiton::$attributes, $options['dn']);
   $user = reset($users);
 
   $request = new sinapsRequestAcquisiton();
-  $request->fill($user, $configuration['fdSinapsUuidPrefix'], 'codeEntiteToldapUuidCallback');
+  $request->fill($user, $configuration['fdSinapsUuidPrefix'], $configuration['fdSinapsAcquisitonTypeExterne'], 'codeEntiteToldapUuidCallback');
   $xml = $request->getXml();
   echo "Request:\n$xml\n";
 

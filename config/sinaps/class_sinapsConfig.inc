@@ -78,6 +78,11 @@ class sinapsConfig extends simplePlugin
             'fdSinapsIdentifiantApplication', TRUE,
             'FUSIONDIRECTORY'
           ),
+          new StringAttribute (
+            _('Acquisition external type'), _('Set in typeExterne tag when sending acquisition data'),
+            'fdSinapsAcquisitonTypeExterne', TRUE,
+            'FD'
+          ),
           new SetAttribute (
             new StringAttribute (
               _('Applications identifiers to sync'), _('List of applications identifiers for which cross references should be synced from SINAPS'),

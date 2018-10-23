@@ -50,7 +50,7 @@ class sinapsRequestAcquisiton
     $this->data = new SimpleXMLElement($xml);
   }
 
-  public function fill(array $user, string $uuidPrefix, $codeEntiteToldapUuidCallback)
+  public function fill(array $user, string $uuidPrefix, string $typeExterne, $codeEntiteToldapUuidCallback)
   {
     $personne = $this->data->domaine->donnees->operation->personne;
 
@@ -88,12 +88,12 @@ class sinapsRequestAcquisiton
       $i++;
     }
 
-    /* TODO - rattachements
+    /* rattachements */
     if (isset($user['supannEntiteAffectationPrincipale'])) {
-      $personne->rattachements->rattachement->identifiantStructureDeRattachement = $codeEntiteToldapUuidCallback($user['supannEntiteAffectationPrincipale']);
-      $personne->rattachements->rattachement->roles->role->typeRole = ;
-      $personne->rattachements->rattachement->roles->role->externe->typeExterne = ;
-    } */
+      $personne->rattachements->rattachement->identifiantStructureDeRattachement  = $codeEntiteToldapUuidCallback($user['supannEntiteAffectationPrincipale']);
+      $personne->rattachements->rattachement->roles->role->typeRole               = 'EXT';
+      $personne->rattachements->rattachement->roles->role->externe->typeExterne   = $typeExterne;
+    }
   }
 
   public function getXML()
