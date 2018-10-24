@@ -21,6 +21,8 @@
 // Private form code is the same as public form, main difference is this endpoint will be behind SSO
 class privateFormPage extends publicFormPage
 {
+  protected $prefill = TRUE;
+
   function __construct($interactive = TRUE)
   {
     parent::__construct($interactive);
@@ -35,12 +37,38 @@ class privateFormPage extends publicFormPage
       array('supannAccount','supannEtuCursusAnnee'),
     );
     $this->providedMultiValueAttributes = array('eduPersonAffiliation');
-    $this->prefill = TRUE;
     /* Set readonly attributes in form (prefill from IDP) */
     $this->alteredAttributes[1] = array(
       'user'          => array('givenName', 'sn'),
       'supannAccount' => array('eduPersonAffiliation', 'eduPersonPrimaryAffiliation', 'supannRefId'),
       'mailAccount'   => array('mail'),
     );
+  }
+
+  protected function getPrefilledValues($values = array())
+  {
+    if ($this->prefill) {
+      /* Fill fields from HTTP headers */
+      foreach ($this->providedAttributes as list($class, $attr)) {
+        if (isset($_SERVER['HTTP_AUTH_'.strtoupper($attr)])) {
+          if (!isset($values[$class])) {
+            $values[$class] = array();
+          }
+          if (in_array($attr, $this->providedMultiValueAttributes)) {
+            $values[$class][$attr] = explode('; ', $_SERVER['HTTP_AUTH_'.strtoupper($attr)]);
+          } else {
+            $values[$class][$attr] = $_SERVER['HTTP_AUTH_'.strtoupper($attr)];
+          }
+        }
+      }
+
+      /* Special case: eduPersonPrincipalName */
+      if (isset($_SERVER['HTTP_AUTH_'.strtoupper('eduPersonPrincipalName')])) {
+        $values['supannAccount']['supannRefId'] = array('{RENATER}'.$_SERVER['HTTP_AUTH_'.strtoupper('eduPersonPrincipalName')]);
+        $values['user']['uid']                  = preg_replace('/@[^@]+$/', '', $_SERVER['HTTP_AUTH_'.strtoupper('eduPersonPrincipalName')]);
+      }
+    }
+
+    return parent::getPrefilledValues($values);
   }
 }

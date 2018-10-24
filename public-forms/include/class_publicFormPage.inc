@@ -46,11 +46,11 @@ class publicFormPage extends standAlonePage
       ),
       /* readonly */
       array(
-        'supannAccount' => array('supannRefId'),
       ),
       /* hidden */
       array(
         'user'          => array('base'),
+        'supannAccount' => array('supannRefId'),
       ),
     );
   }
@@ -81,7 +81,7 @@ class publicFormPage extends standAlonePage
     return TRUE;
   }
 
-  function fetchForm()
+  protected function fetchForm()
   {
     if (isset($_GET['token'])) {
       if (isset($_GET['form'])) {
@@ -175,31 +175,8 @@ class publicFormPage extends standAlonePage
     }
   }
 
-  function getPrefilledValues()
+  protected function getPrefilledValues($values = array())
   {
-    $values = array();
-
-    if ($this->prefill) {
-      /* Fill fields from HTTP headers */
-      foreach ($this->providedAttributes as list($class, $attr)) {
-        if (isset($_SERVER['HTTP_AUTH_'.strtoupper($attr)])) {
-          if (!isset($values[$class])) {
-            $values[$class] = array();
-          }
-          if (in_array($attr, $this->providedMultiValueAttributes)) {
-            $values[$class][$attr] = explode('; ', $_SERVER['HTTP_AUTH_'.strtoupper($attr)]);
-          } else {
-            $values[$class][$attr] = $_SERVER['HTTP_AUTH_'.strtoupper($attr)];
-          }
-        }
-      }
-
-      /* Special case: eduPersonPrincipalName */
-      if (isset($_SERVER['HTTP_AUTH_'.strtoupper('eduPersonPrincipalName')])) {
-        $values['supannAccount']['supannRefId'] = array('{RENATER}'.$_SERVER['HTTP_AUTH_'.strtoupper('eduPersonPrincipalName')]);
-      }
-    }
-
     if (isset($this->registration['fdRegistrationEmailAddress']) && !isset($values['mailAccount']['mail'])) {
       /* Fill email field with target email if empty */
       if (!isset($values['mailAccount'])) {
@@ -277,7 +254,6 @@ class publicFormPage extends standAlonePage
       }
     }
   }
-
 
   function execute()
   {
