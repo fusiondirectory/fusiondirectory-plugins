@@ -29,10 +29,9 @@ class entite extends simplePlugin
   {
     return array(
       'plShortName'   => _('Entity'),
-      'plDescription' => _('SUPANN Entity Settings'),
-      'plSelfModify'  => FALSE,
+      'plDescription' => _('SupAnn Entity Settings'),
       'plObjectType'  => array('entite' => array(
-        'name'        => _('SUPANN Entity'),
+        'name'        => _('SupAnn Entity'),
         'filter'      => '(&(objectClass=supannEntite)(objectClass=organizationalUnit))',
         'ou'          => get_ou('supannStructuresRDN'),
         'mainAttr'    => 'supannCodeEntite',
@@ -60,12 +59,12 @@ class entite extends simplePlugin
       'admin' => array(
         'name'  => _('Administrative information'),
         'attrs' => array(
-          new StringAttribute(
-            _('Telephone'), _('Phone number for this entity'),
+          new PhoneNumberAttribute(
+            _('Telephone'), _('Phone number of this entity'),
             'telephoneNumber', FALSE
           ),
-          new StringAttribute(
-            _('Fax'), _('Fax number for this entity'),
+          new PhoneNumberAttribute(
+            _('Fax'), _('Fax number of this entity'),
             'facsimileTelephoneNumber', FALSE
           ),
           new PostalAddressAttribute(
@@ -79,14 +78,14 @@ class entite extends simplePlugin
         )
       ),
       'supann' => array(
-        'name'  => _('SUPANN information'),
+        'name'  => _('SupAnn information'),
         'attrs' => array(
           new SupannPrefixedSelectAttribute(
-            _('Entity type'), _('The best SUPANN type that fits this entity'),
+            _('Entity type'), _('The SupAnn type that best fits this entity'),
             'supannTypeEntite', FALSE, 'entite'
           ),
           new StringAttribute(
-            _('Entity code'), _('The SUPANN code of this entity'),
+            _('Entity code'), _('The SupAnn code of this entity'),
             'supannCodeEntite', TRUE,
             '', '', '/^[a-z0-9_-]*$/i'
           ),
