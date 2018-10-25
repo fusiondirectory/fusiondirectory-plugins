@@ -208,8 +208,22 @@ class publicFormPage extends standAlonePage
         return;
       }
       $this->template = new template($this->form['fdPublicFormTemplateType'], $this->form['fdPublicFormTemplateDN']);
+      $values = $this->getPrefilledValues();
+      /* Check that mandatory readonly attributes are prefilled */
+      foreach ($this->alteredAttributes[1] as $tab => $attributes) {
+        foreach ($attributes as $key => $attribute) {
+          if (!isset($values[$tab][$attribute]) &&
+              (
+                (isset($this->alteredAttributes[0][$tab]) && in_array($attribute, $this->alteredAttributes[0][$tab])) ||
+                $this->template->getAttribute($tab, $attribute)->isRequired()
+              )
+            ) {
+            unset($this->alteredAttributes[1][$tab][$key]);
+          }
+        }
+      }
       $this->template->alterAttributes(...$this->alteredAttributes);
-      $this->template->setValues($this->getPrefilledValues(), TRUE);
+      $this->template->setValues($values, TRUE);
     }
 
     $this->template->save_object();
