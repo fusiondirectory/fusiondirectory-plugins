@@ -42,7 +42,6 @@ class publicFormPage extends standAlonePage
       array(
         'user'          => array('givenName', 'sn'),
         'mailAccount'   => array('mail'),
-        'supannAccount' => array('supannEntiteAffectationPrincipale'),
       ),
       /* readonly */
       array(
