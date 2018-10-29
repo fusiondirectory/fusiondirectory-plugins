@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-10-16 20:10+0000\n"
+"POT-Creation-Date: 2018-10-25 12:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:120
+#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:123
 #: config/sudo/class_sudoConfig.inc:40
 msgid "Sudo"
 msgstr "Sudo"
@@ -27,35 +27,35 @@ msgstr "Sudo"
 msgid "Sudo management"
 msgstr "SUDO-Verwaltung"
 
-#: admin/sudo/class_sudoGeneric.inc:121 admin/sudo/class_sudoGeneric.inc:125
+#: admin/sudo/class_sudoGeneric.inc:124 admin/sudo/class_sudoGeneric.inc:128
 msgid "Sudo role"
 msgstr "Sudo-Rolle"
 
-#: admin/sudo/class_sudoGeneric.inc:151
+#: admin/sudo/class_sudoGeneric.inc:154
 msgid "Role settings"
 msgstr "Rolleneinstellungen"
 
-#: admin/sudo/class_sudoGeneric.inc:157
+#: admin/sudo/class_sudoGeneric.inc:160
 msgid "Name"
 msgstr "Name"
 
-#: admin/sudo/class_sudoGeneric.inc:157
+#: admin/sudo/class_sudoGeneric.inc:160
 msgid "Name of the role"
 msgstr "Name der Rolle"
 
-#: admin/sudo/class_sudoGeneric.inc:162
+#: admin/sudo/class_sudoGeneric.inc:165
 msgid "Description"
 msgstr "Beschreibung"
 
-#: admin/sudo/class_sudoGeneric.inc:162
+#: admin/sudo/class_sudoGeneric.inc:165
 msgid "Description for the new sudo role"
 msgstr "Beschreibung für die neue sudo-Rolle"
 
-#: admin/sudo/class_sudoGeneric.inc:167
+#: admin/sudo/class_sudoGeneric.inc:170
 msgid "Commands"
 msgstr "Kommandos"
 
-#: admin/sudo/class_sudoGeneric.inc:168
+#: admin/sudo/class_sudoGeneric.inc:171
 msgid ""
 "A Unix command with optional command line arguments, potentially including "
 "globbing characters (aka wild cards)"
@@ -63,62 +63,62 @@ msgstr ""
 "Ein Unix-Befehl mit optionalen Kommandozeilenargumenten, potentiell "
 "inklusive globbing-Zeichen (aka wild cards)"
 
-#: admin/sudo/class_sudoGeneric.inc:174
+#: admin/sudo/class_sudoGeneric.inc:177
 msgid "Run as (user)"
 msgstr "Ausführen als (Benutzer)"
 
-#: admin/sudo/class_sudoGeneric.inc:175
+#: admin/sudo/class_sudoGeneric.inc:178
 msgid "User(s) impersonated by sudo"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:182
+#: admin/sudo/class_sudoGeneric.inc:185
 msgid "Run as (group)"
 msgstr "Ausführen als (Gruppe)"
 
-#: admin/sudo/class_sudoGeneric.inc:183
+#: admin/sudo/class_sudoGeneric.inc:186
 msgid "Group(s) impersonated by sudo"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:189
+#: admin/sudo/class_sudoGeneric.inc:192
 msgid "Systems"
 msgstr "Systeme"
 
-#: admin/sudo/class_sudoGeneric.inc:189
+#: admin/sudo/class_sudoGeneric.inc:192
 msgid "A host name, IP address or IP network"
 msgstr "Ein Hostname, IP Adresse oder IP-Netzwerk"
 
-#: admin/sudo/class_sudoGeneric.inc:194
+#: admin/sudo/class_sudoGeneric.inc:197
 msgid "Users and groups"
 msgstr "Benutzer und Gruppen"
 
-#: admin/sudo/class_sudoGeneric.inc:195
+#: admin/sudo/class_sudoGeneric.inc:198
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
 msgstr ""
 "Ein Benutzername, user ID (mit Prefix '#'), Unixgruppe (mit Prefix '#')"
 
-#: admin/sudo/class_sudoGeneric.inc:199
+#: admin/sudo/class_sudoGeneric.inc:202
 msgid "Priority"
 msgstr "Priorität"
 
-#: admin/sudo/class_sudoGeneric.inc:199
+#: admin/sudo/class_sudoGeneric.inc:202
 msgid "This rule priority compared to others"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:204
+#: admin/sudo/class_sudoGeneric.inc:207
 msgid "Valid starting from"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:204
+#: admin/sudo/class_sudoGeneric.inc:207
 msgid ""
 "Start of time interval for which the entry is valid (leave empty to disable)"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:209
+#: admin/sudo/class_sudoGeneric.inc:212
 msgid "Valid until"
 msgstr "Gültig bis"
 
-#: admin/sudo/class_sudoGeneric.inc:209
+#: admin/sudo/class_sudoGeneric.inc:212
 msgid ""
 "End of time interval for which the entry is valid (leave empty to disable)"
 msgstr ""
