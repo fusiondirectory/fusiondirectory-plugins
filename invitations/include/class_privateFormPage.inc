@@ -26,23 +26,8 @@ class privateFormPage extends publicFormPage
   function __construct($interactive = TRUE)
   {
     parent::__construct($interactive);
-    /* TODO POC alteredAttributes/providedAttributes/providedMultiValueAttributes */
-    $this->providedAttributes = array(
-      array('user','givenName'),
-      array('user','sn'),
-      array('mailAccount','mail'),
-      array('supannAccount','eduPersonAffiliation'),
-      array('supannAccount','eduPersonPrimaryAffiliation'),
-      array('supannAccount','supannListeRouge'),
-      array('supannAccount','supannEtuCursusAnnee'),
-    );
+    /* TODO POC providedMultiValueAttributes */
     $this->providedMultiValueAttributes = array('eduPersonAffiliation');
-    /* Set readonly attributes in form (prefill from IDP) */
-    $this->alteredAttributes[1] = array(
-      'user'          => array('givenName', 'sn'),
-      'supannAccount' => array('eduPersonAffiliation', 'eduPersonPrimaryAffiliation', 'supannRefId'),
-      'mailAccount'   => array('mail'),
-    );
   }
 
   protected function getPrefilledValues($values = array())

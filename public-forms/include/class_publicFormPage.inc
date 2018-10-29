@@ -37,21 +37,6 @@ class publicFormPage extends standAlonePage
   {
     parent::__construct($interactive);
     $this->request = $_SERVER['REQUEST_URI'];
-    $this->alteredAttributes = array(
-      /* mandatory */
-      array(
-        'user'          => array('givenName', 'sn'),
-        'mailAccount'   => array('mail'),
-      ),
-      /* readonly */
-      array(
-      ),
-      /* hidden */
-      array(
-        'user'          => array('base'),
-        'supannAccount' => array('supannRefId'),
-      ),
-    );
   }
 
   function reset()
@@ -122,15 +107,16 @@ class publicFormPage extends standAlonePage
       $forms = objects::ls(
         'publicForm',
         array(
-          'dn'                        => 'raw',
-          'cn'                        => 1,
-          'fdPublicFormTitle'         => 1,
-          'fdPublicFormText'          => 1,
-          'fdPublicFormFinalText'     => 1,
-          'fdPublicFormTemplateType'  => 1,
-          'fdPublicFormTemplateDN'    => 1,
-          'fdPublicFormPrivate'       => 1,
-          'fdPublicFormCreationBase'  => 1
+          'dn'                            => 'raw',
+          'cn'                            => 1,
+          'fdPublicFormTitle'             => 1,
+          'fdPublicFormText'              => 1,
+          'fdPublicFormFinalText'         => 1,
+          'fdPublicFormTemplateType'      => 1,
+          'fdPublicFormTemplateDN'        => 1,
+          'fdPublicFormPrivate'           => 1,
+          'fdPublicFormCreationBase'      => 1,
+          'fdPublicFormAlteredAttributes' => '*',
         ),
         $this->invitation['fdInvitationFormDN'],
         '', FALSE, 'base'
@@ -141,15 +127,16 @@ class publicFormPage extends standAlonePage
       $forms = objects::ls(
         'publicForm',
         array(
-          'dn'                        => 'raw',
-          'cn'                        => 1,
-          'fdPublicFormTitle'         => 1,
-          'fdPublicFormText'          => 1,
-          'fdPublicFormFinalText'     => 1,
-          'fdPublicFormTemplateType'  => 1,
-          'fdPublicFormTemplateDN'    => 1,
-          'fdPublicFormPrivate'       => 1,
-          'fdPublicFormCreationBase'  => 1
+          'dn'                            => 'raw',
+          'cn'                            => 1,
+          'fdPublicFormTitle'             => 1,
+          'fdPublicFormText'              => 1,
+          'fdPublicFormFinalText'         => 1,
+          'fdPublicFormTemplateType'      => 1,
+          'fdPublicFormTemplateDN'        => 1,
+          'fdPublicFormPrivate'           => 1,
+          'fdPublicFormCreationBase'      => 1,
+          'fdPublicFormAlteredAttributes' => '*',
         ),
         NULL,
         '(cn='.ldap_escape_f($_GET['form']).')'
@@ -208,20 +195,36 @@ class publicFormPage extends standAlonePage
         return;
       }
       $this->template = new template($this->form['fdPublicFormTemplateType'], $this->form['fdPublicFormTemplateDN']);
+
       $values = $this->getPrefilledValues();
-      /* Check that mandatory readonly attributes are prefilled */
-      foreach ($this->alteredAttributes[1] as $tab => $attributes) {
-        foreach ($attributes as $key => $attribute) {
-          if (!isset($values[$tab][$attribute]) &&
-              (
-                (isset($this->alteredAttributes[0][$tab]) && in_array($attribute, $this->alteredAttributes[0][$tab])) ||
-                $this->template->getAttribute($tab, $attribute)->isRequired()
-              )
-            ) {
-            unset($this->alteredAttributes[1][$tab][$key]);
+
+      $this->alteredAttributes  = array(array(),array(),array());
+      $this->providedAttributes = array();
+      foreach ($this->form['fdPublicFormAlteredAttributes'] as $alteredAttribute) {
+        list($attribute, $mandatory, $readonly, $imported, $hidden) = explode('|', $alteredAttribute, 5);
+        $tab = $this->template->getAttributeTab($attribute);
+        if ($mandatory) {
+          $this->alteredAttributes[0][$tab][] = $attribute;
+        }
+        if ($this->prefill) {
+          if ($readonly) {
+            /* Check that mandatory readonly attributes are prefilled */
+            if (
+                isset($values[$tab][$attribute]) ||
+                (!$mandatory && !$this->template->getAttribute($tab, $attribute)->isRequired())
+              ) {
+              $this->alteredAttributes[1][$tab][] = $attribute;
+            }
+          }
+          if ($imported) {
+            $this->providedAttributes[] = array($tab, $attribute);
           }
         }
+        if ($hidden) {
+          $this->alteredAttributes[2][$tab][] = $attribute;
+        }
       }
+
       $this->template->alterAttributes(...$this->alteredAttributes);
       $this->template->setValues($values, TRUE);
     }
