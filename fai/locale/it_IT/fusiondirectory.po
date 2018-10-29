@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-10-16 20:10+0000\n"
+"POT-Creation-Date: 2018-10-25 12:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -30,14 +30,14 @@ msgstr "Variabile FAI"
 #: admin/fai/class_faiProfile.inc:46 admin/fai/class_faiPackage.inc:395
 #: admin/fai/class_faiHook.inc:47 admin/fai/class_faiTemplate.inc:165
 #: admin/fai/class_faiTemplateEntry.inc:139
-#: admin/fai/class_faiPartitionTable.inc:330
+#: admin/fai/class_faiPartitionTable.inc:342
 msgid "Properties"
 msgstr "Proprietà"
 
 #: admin/fai/class_faiVariable.inc:50 admin/fai/class_faiScript.inc:50
 #: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPackage.inc:398
 #: admin/fai/class_faiHook.inc:50 admin/fai/class_faiTemplate.inc:168
-#: admin/fai/class_faiPartitionTable.inc:333
+#: admin/fai/class_faiPartitionTable.inc:345
 msgid "Class name"
 msgstr "Nome della classe"
 
@@ -53,14 +53,14 @@ msgstr "Nome di classe variabile"
 #: admin/fai/class_faiHook.inc:54 admin/fai/class_faiHook.inc:72
 #: admin/fai/class_faiTemplate.inc:172
 #: admin/fai/class_faiTemplateEntry.inc:146
-#: admin/fai/class_faiPartitionTable.inc:337
+#: admin/fai/class_faiPartitionTable.inc:349
 msgid "Description"
 msgstr "Descrizione"
 
 #: admin/fai/class_faiVariable.inc:54 admin/fai/class_faiScript.inc:54
 #: admin/fai/class_faiProfile.inc:53 admin/fai/class_faiPackage.inc:402
 #: admin/fai/class_faiHook.inc:54 admin/fai/class_faiTemplate.inc:172
-#: admin/fai/class_faiPartitionTable.inc:337
+#: admin/fai/class_faiPartitionTable.inc:349
 msgid "Short description of the class"
 msgstr "Breve descrizione della classe"
 
@@ -183,7 +183,7 @@ msgid "Physical partitions combined in this LVM volume"
 msgstr "Partizioni fisiche combinate in questo volume LVM"
 
 #: admin/fai/class_faiDiskEntry.inc:281
-#: admin/fai/class_faiPartitionTable.inc:350
+#: admin/fai/class_faiPartitionTable.inc:362
 msgid "Partitions in this class"
 msgstr "Partizioni in questa classe"
 
@@ -541,7 +541,7 @@ msgstr "Profilo FAI"
 msgid "FAI Profile"
 msgstr "Profilo FAI"
 
-#: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPartitionTable.inc:333
+#: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPartitionTable.inc:345
 msgid "Partition table class name"
 msgstr "Nome della tavola delle partizioni"
 
@@ -597,8 +597,8 @@ msgid "Edit configuration"
 msgstr "Modifica configurazione"
 
 #: admin/fai/class_faiPackage.inc:251 admin/fai/class_faiTemplate.inc:109
-#: admin/fai/class_faiPartitionTable.inc:239
-#: admin/fai/class_faiPartitionTable.inc:280
+#: admin/fai/class_faiPartitionTable.inc:251
+#: admin/fai/class_faiPartitionTable.inc:292
 #: admin/systems/services/repository/class_serviceRepository.inc:240
 #: admin/systems/services/repository/class_serviceRepository.inc:257
 #: admin/systems/services/repository/class_serviceRepository.inc:261
@@ -773,32 +773,32 @@ msgstr "Accesso"
 msgid "Access rights"
 msgstr "Opzioni di accesso"
 
-#: admin/fai/class_faiPartitionTable.inc:108
+#: admin/fai/class_faiPartitionTable.inc:109
 msgid "Add disk"
 msgstr "Aggiungi disco"
 
-#: admin/fai/class_faiPartitionTable.inc:115
+#: admin/fai/class_faiPartitionTable.inc:119
 msgid "Add RAID"
 msgstr "Aggiungi il RAID"
 
-#: admin/fai/class_faiPartitionTable.inc:123
+#: admin/fai/class_faiPartitionTable.inc:130
 msgid "Add LVM"
 msgstr "Aggiungi LVM"
 
-#: admin/fai/class_faiPartitionTable.inc:131
+#: admin/fai/class_faiPartitionTable.inc:141
 msgid "Add cryptsetup"
 msgstr "Aggiungi cryptsetup"
 
-#: admin/fai/class_faiPartitionTable.inc:309
+#: admin/fai/class_faiPartitionTable.inc:321
 msgid "Partition table"
 msgstr "Tavola delle partizioni"
 
-#: admin/fai/class_faiPartitionTable.inc:310
-#: admin/fai/class_faiPartitionTable.inc:315
+#: admin/fai/class_faiPartitionTable.inc:322
+#: admin/fai/class_faiPartitionTable.inc:327
 msgid "FAI partition table"
 msgstr "Tavola delle partizioni FAI"
 
-#: admin/fai/class_faiPartitionTable.inc:343
+#: admin/fai/class_faiPartitionTable.inc:355
 msgid "Discs"
 msgstr "Dischi"
 
