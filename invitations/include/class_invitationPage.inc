@@ -73,7 +73,7 @@ class invitationPage extends standAlonePage
         case 'filled':
           throw new FusionDirectoryException(_('This invitation has already been filled and is waiting approval'));
         case 'accepted':
-          throw new FusionDirectoryException(_('This invitation has already been filled and approved. If you lost your password, please use the password recovery system.'));
+          throw new FusionDirectoryException(_('This invitation has already been filled and approved'));
         case 'rejected':
           throw new FusionDirectoryException(_('This invitation has already been filled and rejected. Please contact your referent to get a new invitation if needed.'));
         default:

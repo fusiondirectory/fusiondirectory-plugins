@@ -198,8 +198,9 @@ class publicFormPage extends standAlonePage
 
       $values = $this->getPrefilledValues();
 
-      $this->alteredAttributes  = array(array(),array(),array());
-      $this->providedAttributes = array();
+      $this->alteredAttributes            = array(array(),array(),array());
+      $this->providedAttributes           = array();
+      $this->providedMultiValueAttributes = array();
       foreach ($this->form['fdPublicFormAlteredAttributes'] as $alteredAttribute) {
         list($attribute, $mandatory, $readonly, $imported, $hidden) = explode('|', $alteredAttribute, 5);
         $tab = $this->template->getAttributeTab($attribute);
@@ -218,6 +219,9 @@ class publicFormPage extends standAlonePage
           }
           if ($imported) {
             $this->providedAttributes[] = array($tab, $attribute);
+            if ($this->template->getAttribute($tab, $attribute) instanceof SetAttribute) {
+              $this->providedMultiValueAttributes[] = $attribute;
+            }
           }
         }
         if ($hidden) {

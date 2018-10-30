@@ -23,13 +23,6 @@ class privateFormPage extends publicFormPage
 {
   protected $prefill = TRUE;
 
-  function __construct($interactive = TRUE)
-  {
-    parent::__construct($interactive);
-    /* TODO POC providedMultiValueAttributes */
-    $this->providedMultiValueAttributes = array('eduPersonAffiliation');
-  }
-
   protected function getPrefilledValues($values = array())
   {
     if ($this->prefill) {
