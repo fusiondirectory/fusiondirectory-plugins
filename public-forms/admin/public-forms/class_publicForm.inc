@@ -86,6 +86,10 @@ class publicForm extends simplePlugin
             'fdPublicFormCreationBase', TRUE,
             $config->current['BASE']
           ),
+          new URLAttribute(
+            _('TOS URL'), _('Terms of service URL. If filled, this adds a mandatory checkbox to agree to the terms at this URL.'),
+            'fdPublicFormTosUrl', FALSE
+          ),
         )
       ),
     );

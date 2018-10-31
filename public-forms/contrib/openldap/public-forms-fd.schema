@@ -60,6 +60,12 @@ attributetype ( 1.3.6.1.4.1.38414.67.10.8 NAME 'fdPublicFormAlteredAttributes'
   SUBSTR caseExactIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
 
+attributetype ( 1.3.6.1.4.1.38414.67.10.9 NAME 'fdPublicFormTosUrl'
+  DESC 'FusionDirectory - Form TOS URL'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
 # Objectclasses
 
 objectclass ( 1.3.6.1.4.1.38414.67.2.1 NAME 'fdPublicForm'
@@ -69,4 +75,4 @@ objectclass ( 1.3.6.1.4.1.38414.67.2.1 NAME 'fdPublicForm'
     fdPublicFormTitle $ fdPublicFormText $
     fdPublicFormTemplateType $ fdPublicFormTemplateDN $
     fdPublicFormFinalText $ fdPublicFormPrivate $ fdPublicFormCreationBase $
-    fdPublicFormAlteredAttributes ) )
+    fdPublicFormAlteredAttributes $ fdPublicFormTosUrl ) )
