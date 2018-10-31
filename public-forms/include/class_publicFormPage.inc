@@ -88,6 +88,9 @@ class publicFormPage extends standAlonePage
         throw new FusionDirectoryException(sprintf(_('Found several invitations matching token "%s"'), $_GET['token']));
       }
       $this->registration = reset($registrations);
+      if (empty($this->registration['fdRegistrationInvitationDN'])) {
+        throw new FusionDirectoryException(sprintf(_('The invitation matching token "%s" does not exist anymore'), $_GET['token']));
+      }
       $invitations = objects::ls(
         'invitation',
         array(
