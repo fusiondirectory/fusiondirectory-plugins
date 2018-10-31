@@ -32,6 +32,9 @@
               {$template_dialog}
             {/if}
           </div>
+          {if (!$done and $form.fdPublicFormTosUrl)}
+            <label for="tosCheckBox"><input type="checkbox" id="tosCheckBox" name="tosCheckBox"/> {t 1=$form.fdPublicFormTosUrl escape=no}I agree to the <a target="_blank" href="%1">terms of service</a>{/t}</label>
+          {/if}
         </div>
         {if !$done}
         <div id="window-footer" class="plugbottom">

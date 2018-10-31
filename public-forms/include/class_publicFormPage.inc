@@ -116,6 +116,7 @@ class publicFormPage extends standAlonePage
           'fdPublicFormTemplateDN'        => 1,
           'fdPublicFormPrivate'           => 1,
           'fdPublicFormCreationBase'      => 1,
+          'fdPublicFormTosUrl'            => 1,
           'fdPublicFormAlteredAttributes' => '*',
         ),
         $this->invitation['fdInvitationFormDN'],
@@ -136,6 +137,7 @@ class publicFormPage extends standAlonePage
           'fdPublicFormTemplateDN'        => 1,
           'fdPublicFormPrivate'           => 1,
           'fdPublicFormCreationBase'      => 1,
+          'fdPublicFormTosUrl'            => 1,
           'fdPublicFormAlteredAttributes' => '*',
         ),
         NULL,
@@ -158,6 +160,92 @@ class publicFormPage extends standAlonePage
     if (!isset($this->registration) && isset($this->form['fdPublicFormPrivate']) && ($this->form['fdPublicFormPrivate'] == 'TRUE')) {
       // Private form and no token
       throw new FusionDirectoryException(sprintf(_('Form "%s" is private and requires an invitation'), $this->form['cn']));
+    }
+  }
+
+  protected function prepareTemplateObject()
+  {
+    $this->template = new template($this->form['fdPublicFormTemplateType'], $this->form['fdPublicFormTemplateDN']);
+
+    $values = $this->getPrefilledValues();
+
+    $this->alteredAttributes            = array(array(),array(),array());
+    $this->providedAttributes           = array();
+    $this->providedMultiValueAttributes = array();
+    foreach ($this->form['fdPublicFormAlteredAttributes'] as $alteredAttribute) {
+      list($attribute, $mandatory, $readonly, $imported, $hidden) = explode('|', $alteredAttribute, 5);
+      $tab = $this->template->getAttributeTab($attribute);
+      if ($mandatory) {
+        $this->alteredAttributes[0][$tab][] = $attribute;
+      }
+      if ($this->prefill) {
+        if ($readonly) {
+          /* Check that mandatory readonly attributes are prefilled */
+          if (
+              isset($values[$tab][$attribute]) ||
+              (!$mandatory && !$this->template->getAttribute($tab, $attribute)->isRequired())
+            ) {
+            $this->alteredAttributes[1][$tab][] = $attribute;
+          }
+        }
+        if ($imported) {
+          $this->providedAttributes[] = array($tab, $attribute);
+          if ($this->template->getAttribute($tab, $attribute) instanceof SetAttribute) {
+            $this->providedMultiValueAttributes[] = $attribute;
+          }
+        }
+      }
+      if ($hidden) {
+        $this->alteredAttributes[2][$tab][] = $attribute;
+      }
+    }
+
+    $this->template->alterAttributes(...$this->alteredAttributes);
+    $this->template->setValues($values, TRUE);
+  }
+
+  protected function submitForm()
+  {
+    /* Check TOS checkbox */
+    if (isset($this->form['fdPublicFormTosUrl']) && !isset($_POST['tosCheckBox'])) {
+      msg_dialog::display(_('Error'), _('You need to accept the terms of service to continue!'), ERROR_DIALOG);
+      return;
+    }
+    // Save values for later
+    $values = $this->template->getValues();
+    // Apply the template
+    $userTabObject  = $this->template->apply();
+    /* Fill base depending on publicForm creation base and invitation base */
+    $base = $this->form['fdPublicFormCreationBase'];
+    if (isset($this->invitation)) {
+      $invitationBase = preg_replace('/,?'.preg_quote($config->current['BASE'], '/').'$/', '', dn2base($this->invitation['dn'], get_ou('invitationRDN')));
+      if (!empty($invitationBase)) {
+        $base = $invitationBase.','.$base;
+      }
+    }
+    $userTabObject->getBaseObject()->base = $base;
+    // Try to save the object
+    $errors         = $userTabObject->save();
+    if (empty($errors)) {
+      $this->done = TRUE;
+      if (isset($this->registration)) {
+        $tabObject  = objects::open($this->registration['dn'], 'registration');
+        $baseObject = $tabObject->getBaseObject();
+
+        $baseObject->fdRegistrationUserDN     = $userTabObject->dn;
+        $baseObject->fdRegistrationState      = 'filled';
+        $baseObject->fdRegistrationLastChange = date('c').'|'.$ui->dn;
+
+        $messages = $tabObject->save();
+        msg_dialog::displayChecks($messages);
+      }
+    } else {
+      msg_dialog::displayChecks($errors);
+      $this->template->reset();
+      /* After the reset we need to call alterAttributes again */
+      $this->template->alterAttributes(...$this->alteredAttributes);
+      // This fill the saved values into the resetted template
+      $this->template->setValues($values);
     }
   }
 
@@ -194,84 +282,13 @@ class publicFormPage extends standAlonePage
         $this->errorMessage = $e->getMessage();
         return;
       }
-      $this->template = new template($this->form['fdPublicFormTemplateType'], $this->form['fdPublicFormTemplateDN']);
-
-      $values = $this->getPrefilledValues();
-
-      $this->alteredAttributes            = array(array(),array(),array());
-      $this->providedAttributes           = array();
-      $this->providedMultiValueAttributes = array();
-      foreach ($this->form['fdPublicFormAlteredAttributes'] as $alteredAttribute) {
-        list($attribute, $mandatory, $readonly, $imported, $hidden) = explode('|', $alteredAttribute, 5);
-        $tab = $this->template->getAttributeTab($attribute);
-        if ($mandatory) {
-          $this->alteredAttributes[0][$tab][] = $attribute;
-        }
-        if ($this->prefill) {
-          if ($readonly) {
-            /* Check that mandatory readonly attributes are prefilled */
-            if (
-                isset($values[$tab][$attribute]) ||
-                (!$mandatory && !$this->template->getAttribute($tab, $attribute)->isRequired())
-              ) {
-              $this->alteredAttributes[1][$tab][] = $attribute;
-            }
-          }
-          if ($imported) {
-            $this->providedAttributes[] = array($tab, $attribute);
-            if ($this->template->getAttribute($tab, $attribute) instanceof SetAttribute) {
-              $this->providedMultiValueAttributes[] = $attribute;
-            }
-          }
-        }
-        if ($hidden) {
-          $this->alteredAttributes[2][$tab][] = $attribute;
-        }
-      }
-
-      $this->template->alterAttributes(...$this->alteredAttributes);
-      $this->template->setValues($values, TRUE);
+      $this->prepareTemplateObject();
     }
 
     $this->template->save_object();
 
     if (isset($_POST['form_submit'])) {
-      // Save values for later
-      $values = $this->template->getValues();
-      // Apply the template
-      $userTabObject  = $this->template->apply();
-      /* Fill base depending on publicForm creation base and invitation base */
-      $base = $this->form['fdPublicFormCreationBase'];
-      if (isset($this->invitation)) {
-        $invitationBase = preg_replace('/,?'.preg_quote($config->current['BASE'], '/').'$/', '', dn2base($this->invitation['dn'], get_ou('invitationRDN')));
-        if (!empty($invitationBase)) {
-          $base = $invitationBase.','.$base;
-        }
-      }
-      $userTabObject->getBaseObject()->base = $base;
-      // Try to save the object
-      $errors         = $userTabObject->save();
-      if (empty($errors)) {
-        $this->done = TRUE;
-        if (isset($this->registration)) {
-          $tabObject  = objects::open($this->registration['dn'], 'registration');
-          $baseObject = $tabObject->getBaseObject();
-
-          $baseObject->fdRegistrationUserDN     = $userTabObject->dn;
-          $baseObject->fdRegistrationState      = 'filled';
-          $baseObject->fdRegistrationLastChange = date('c').'|'.$ui->dn;
-
-          $messages = $tabObject->save();
-          msg_dialog::displayChecks($messages);
-        }
-      } else {
-        msg_dialog::displayChecks($errors);
-        $this->template->reset();
-        /* After the reset we need to call alterAttributes again */
-        $this->template->alterAttributes(...$this->alteredAttributes);
-        // This fill the saved values into the resetted template
-        $this->template->setValues($values);
-      }
+      $this->submitForm();
     }
   }
 
