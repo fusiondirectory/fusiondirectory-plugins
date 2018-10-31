@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-10-25 12:10+0000\n"
+"POT-Creation-Date: 2018-10-31 15:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2018\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -32,19 +32,20 @@ msgstr "Impossible de trouver une invitation correspondant au jeton \"%s\""
 msgid "Found several invitations matching token \"%s\""
 msgstr "Plusieurs invitations correspondant au jeton \"%s\" ont été trouvées"
 
-#: include/class_invitationPage.inc:74
+#: include/class_invitationPage.inc:71
+#, php-format
+msgid "The invitation matching token \"%s\" does not exist anymore"
+msgstr "Le jeton correspondant à l'invitation \"%s\" n'existe plus"
+
+#: include/class_invitationPage.inc:77
 msgid "This invitation has already been filled and is waiting approval"
 msgstr "Cette invitation a déjà été remplie et est en attente d'approbation"
 
-#: include/class_invitationPage.inc:76
-msgid ""
-"This invitation has already been filled and approved. If you lost your "
-"password, please use the password recovery system."
-msgstr ""
-"Cette invitation a déjà été remplie et approuvée. Si vous avez perdu votre "
-"mot de passe, veuillez utiliser le système de récupération de mot de passe."
+#: include/class_invitationPage.inc:79
+msgid "This invitation has already been filled and approved"
+msgstr "Cette invitation a déjà été remplie et approuvée."
 
-#: include/class_invitationPage.inc:78
+#: include/class_invitationPage.inc:81
 msgid ""
 "This invitation has already been filled and rejected. Please contact your "
 "referent to get a new invitation if needed."
@@ -52,12 +53,12 @@ msgstr ""
 "Cette invitation a déjà été remplie et rejetée. Veuillez contacter votre "
 "référent pour obtenir une nouvelle invitation si nécessaire."
 
-#: include/class_invitationPage.inc:80
+#: include/class_invitationPage.inc:83
 #, php-format
 msgid "This invitation is in unknown state \"%s\""
 msgstr "Cette invitation est dans l’état inconnu \"%s\""
 
-#: include/class_invitationPage.inc:104
+#: include/class_invitationPage.inc:107
 #: admin/registrations/class_registration.inc:132
 #: admin/invitations/class_invitation.inc:26
 #: admin/invitations/class_invitation.inc:30

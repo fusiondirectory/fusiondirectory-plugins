@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-10-25 12:10+0000\n"
+"POT-Creation-Date: 2018-10-31 15:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/fusiondirectory/teams/12202/es/)\n"
@@ -32,28 +32,31 @@ msgstr ""
 msgid "Found several invitations matching token \"%s\""
 msgstr ""
 
-#: include/class_invitationPage.inc:74
+#: include/class_invitationPage.inc:71
+#, php-format
+msgid "The invitation matching token \"%s\" does not exist anymore"
+msgstr ""
+
+#: include/class_invitationPage.inc:77
 msgid "This invitation has already been filled and is waiting approval"
 msgstr ""
 
-#: include/class_invitationPage.inc:76
-msgid ""
-"This invitation has already been filled and approved. If you lost your "
-"password, please use the password recovery system."
+#: include/class_invitationPage.inc:79
+msgid "This invitation has already been filled and approved"
 msgstr ""
 
-#: include/class_invitationPage.inc:78
+#: include/class_invitationPage.inc:81
 msgid ""
 "This invitation has already been filled and rejected. Please contact your "
 "referent to get a new invitation if needed."
 msgstr ""
 
-#: include/class_invitationPage.inc:80
+#: include/class_invitationPage.inc:83
 #, php-format
 msgid "This invitation is in unknown state \"%s\""
 msgstr ""
 
-#: include/class_invitationPage.inc:104
+#: include/class_invitationPage.inc:107
 #: admin/registrations/class_registration.inc:132
 #: admin/invitations/class_invitation.inc:26
 #: admin/invitations/class_invitation.inc:30

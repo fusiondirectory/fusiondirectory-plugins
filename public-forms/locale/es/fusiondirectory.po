@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-10-25 12:10+0000\n"
+"POT-Creation-Date: 2018-10-31 15:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/fusiondirectory/teams/12202/es/)\n"
@@ -18,52 +18,120 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: include/class_publicFormPage.inc:87
+#: include/class_publicFormPage.inc:72
 msgid "Invalid link, both token and form are provided"
 msgstr ""
 
-#: include/class_publicFormPage.inc:101
+#: include/class_publicFormPage.inc:86
 #, php-format
 msgid "Could not find any invitation matching token \"%s\""
 msgstr ""
 
-#: include/class_publicFormPage.inc:103 include/class_publicFormPage.inc:118
+#: include/class_publicFormPage.inc:88 include/class_publicFormPage.inc:106
 #, php-format
 msgid "Found several invitations matching token \"%s\""
 msgstr ""
 
-#: include/class_publicFormPage.inc:116
+#: include/class_publicFormPage.inc:92
+#, php-format
+msgid "The invitation matching token \"%s\" does not exist anymore"
+msgstr ""
+
+#: include/class_publicFormPage.inc:104
 #, php-format
 msgid "Could not find any invitation matching registration with token \"%s\""
 msgstr ""
 
-#: include/class_publicFormPage.inc:159
+#: include/class_publicFormPage.inc:151
 msgid "Form name or token missing from URL"
 msgstr ""
 
-#: include/class_publicFormPage.inc:162
+#: include/class_publicFormPage.inc:154
 #, php-format
 msgid "Form \"%s\" could not be found"
 msgstr ""
 
-#: include/class_publicFormPage.inc:164
+#: include/class_publicFormPage.inc:156
 #, php-format
 msgid "Found several forms named \"%s\""
 msgstr ""
 
-#: include/class_publicFormPage.inc:173
+#: include/class_publicFormPage.inc:165
 #, php-format
 msgid "Form \"%s\" is private and requires an invitation"
 msgstr ""
 
-#: include/class_publicFormPage.inc:296
+#: include/class_publicFormPage.inc:214
+msgid "Error"
+msgstr "Error"
+
+#: include/class_publicFormPage.inc:214
+msgid "You need to accept the terms of service to continue!"
+msgstr ""
+
+#: include/class_publicFormPage.inc:323
 #, php-format
 msgid "Form - %s"
 msgstr ""
 
-#: include/class_publicFormPage.inc:298
+#: include/class_publicFormPage.inc:325
 #: admin/public-forms/class_publicForm.inc:49
 msgid "Form"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:26
+#: admin/public-forms/class_publicFormAlteration.inc:42
+msgid "Altered fields"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:27
+#: admin/public-forms/class_publicFormAlteration.inc:47
+msgid "Alteration on form fields"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:51
+#: admin/public-forms/class_publicFormAlteration.inc:100
+msgid "Field"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:51
+msgid "LDAP name of a form field"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:55
+#: admin/public-forms/class_publicFormAlteration.inc:101
+msgid "Mandatory"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:55
+msgid "Should this field be mandatory"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:61
+#: admin/public-forms/class_publicFormAlteration.inc:102
+msgid "Read only"
+msgstr "Solo lectura"
+
+#: admin/public-forms/class_publicFormAlteration.inc:61
+msgid "Should this field be read only"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:67
+#: admin/public-forms/class_publicFormAlteration.inc:103
+msgid "Imported"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:67
+msgid "Should this field be imported from HTTP headers"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:73
+#: admin/public-forms/class_publicFormAlteration.inc:104
+msgid "Hidden"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:73
+msgid "Should this field be hidden away"
 msgstr ""
 
 #: admin/public-forms/class_publicFormManagement.inc:26
@@ -152,6 +220,16 @@ msgstr ""
 msgid "Base in which objects will get created"
 msgstr ""
 
+#: admin/public-forms/class_publicForm.inc:90
+msgid "TOS URL"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:90
+msgid ""
+"Terms of service URL. If filled, this adds a mandatory checkbox to agree to "
+"the terms at this URL."
+msgstr ""
+
 #: config/public-forms/class_publicFormsConfig.inc:26
 msgid "Public forms configuration"
 msgstr ""
@@ -166,4 +244,8 @@ msgstr ""
 
 #: config/public-forms/class_publicFormsConfig.inc:43
 msgid "Branch in which public forms will be stored"
+msgstr ""
+
+#: ihtml/themes/breezy/public-form.tpl.c:2
+msgid "I agree to the <a target=\"_blank\" href=\"%1\">terms of service</a>"
 msgstr ""
