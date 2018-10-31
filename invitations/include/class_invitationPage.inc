@@ -67,6 +67,9 @@ class invitationPage extends standAlonePage
         throw new FusionDirectoryException(sprintf(_('Found several invitations matching token "%s"'), $token));
       }
       $registration = reset($registrations);
+      if (empty($registration['fdRegistrationInvitationDN'])) {
+        throw new FusionDirectoryException(sprintf(_('The invitation matching token "%s" does not exist anymore'), $_GET['token']));
+      }
     }
     if ($registration['fdRegistrationState'] != 'sent') {
       switch ($registration['fdRegistrationState']) {
