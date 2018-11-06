@@ -170,8 +170,6 @@ class publicFormPage extends standAlonePage
   {
     $this->template = new template($this->form['fdPublicFormTemplateType'], $this->form['fdPublicFormTemplateDN']);
 
-    $values = $this->getPrefilledValues();
-
     $this->alteredAttributes            = array(array(),array(),array());
     $this->providedAttributes           = array();
     $this->providedMultiValueAttributes = array();
@@ -183,13 +181,7 @@ class publicFormPage extends standAlonePage
       }
       if ($this->prefill) {
         if ($readonly) {
-          /* Check that mandatory readonly attributes are prefilled */
-          if (
-              isset($values[$tab][$attribute]) ||
-              (!$mandatory && !$this->template->getAttribute($tab, $attribute)->isRequired())
-            ) {
-            $this->alteredAttributes[1][$tab][] = $attribute;
-          }
+          $this->alteredAttributes[1][$tab][] = $attribute;
         }
         if ($imported) {
           $this->providedAttributes[] = array($tab, $attribute);
@@ -200,6 +192,22 @@ class publicFormPage extends standAlonePage
       }
       if ($hidden) {
         $this->alteredAttributes[2][$tab][] = $attribute;
+      }
+    }
+
+    $values = $this->getPrefilledValues();
+
+    /* Check that mandatory readonly attributes are prefilled */
+    foreach ($this->alteredAttributes[1] as $tab => $attributes) {
+      foreach ($attributes as $key => $attribute) {
+        if (!isset($values[$tab][$attribute]) &&
+            (
+              (isset($this->alteredAttributes[0][$tab]) && in_array($attribute, $this->alteredAttributes[0][$tab])) ||
+              $this->template->getAttribute($tab, $attribute)->isRequired()
+            )
+          ) {
+          unset($this->alteredAttributes[1][$tab][$key]);
+        }
       }
     }
 
