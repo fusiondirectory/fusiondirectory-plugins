@@ -3,13 +3,18 @@
 # This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Benoit Mortier <benoit.mortier@opensides.be>, 2018
+# fusiondirectory <contact@fusiondirectory.org>, 2018
+# MCMic, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-10-31 15:42+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2018-11-06 10:04+0000\n"
+"PO-Revision-Date: 2018-08-13 20:00+0000\n"
 "Last-Translator: MCMic, 2018\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +40,7 @@ msgstr "Plusieurs invitations correspondant au jeton \"%s\" ont été trouvées"
 #: include/class_publicFormPage.inc:92
 #, php-format
 msgid "The invitation matching token \"%s\" does not exist anymore"
-msgstr "Le jeton correspondant à l'invitation \"%s\" n'existe plus"
+msgstr "L’invitation correspondant au jeton \"%s\" n’existe plus"
 
 #: include/class_publicFormPage.inc:104
 #, php-format
@@ -63,20 +68,20 @@ msgstr "Plusieurs formulaires nommés \"%s\" ont été trouvés"
 msgid "Form \"%s\" is private and requires an invitation"
 msgstr "Le formulaire \"%s\" est privé et nécessite une invitation"
 
-#: include/class_publicFormPage.inc:214
+#: include/class_publicFormPage.inc:222
 msgid "Error"
 msgstr "Erreur"
 
-#: include/class_publicFormPage.inc:214
+#: include/class_publicFormPage.inc:222
 msgid "You need to accept the terms of service to continue!"
-msgstr "Vous devez accepter les conditions d'utilisation pour continuer !"
+msgstr "Vous devez accepter les conditions d'utilisation pour continuer !"
 
-#: include/class_publicFormPage.inc:323
+#: include/class_publicFormPage.inc:331
 #, php-format
 msgid "Form - %s"
 msgstr "Formulaire - %s"
 
-#: include/class_publicFormPage.inc:325
+#: include/class_publicFormPage.inc:333
 #: admin/public-forms/class_publicForm.inc:49
 msgid "Form"
 msgstr "Formulaire"
@@ -107,7 +112,7 @@ msgstr "Obligatoire"
 
 #: admin/public-forms/class_publicFormAlteration.inc:55
 msgid "Should this field be mandatory"
-msgstr "Est ce que ce champ doit etre obligatoire"
+msgstr "Est-ce que ce champ doit être obligatoire"
 
 #: admin/public-forms/class_publicFormAlteration.inc:61
 #: admin/public-forms/class_publicFormAlteration.inc:102
@@ -116,7 +121,7 @@ msgstr "Lecture seule"
 
 #: admin/public-forms/class_publicFormAlteration.inc:61
 msgid "Should this field be read only"
-msgstr "Est ce que ce champ doit être en lecture seule"
+msgstr "Est-ce que ce champ doit être en lecture seule"
 
 #: admin/public-forms/class_publicFormAlteration.inc:67
 #: admin/public-forms/class_publicFormAlteration.inc:103
@@ -125,16 +130,16 @@ msgstr "Importé"
 
 #: admin/public-forms/class_publicFormAlteration.inc:67
 msgid "Should this field be imported from HTTP headers"
-msgstr "Ce champ doit-il être importé depuis les  en-têtes HTTP ?"
+msgstr "Est-ce que champ doit être importé depuis les entêtes HTTP ?"
 
 #: admin/public-forms/class_publicFormAlteration.inc:73
 #: admin/public-forms/class_publicFormAlteration.inc:104
 msgid "Hidden"
-msgstr "Cachée"
+msgstr "Caché"
 
 #: admin/public-forms/class_publicFormAlteration.inc:73
 msgid "Should this field be hidden away"
-msgstr "Est ce que ce champ doit être caché"
+msgstr "Est-ce que ce champ doit être caché"
 
 #: admin/public-forms/class_publicFormManagement.inc:26
 #: config/public-forms/class_publicFormsConfig.inc:40
@@ -224,15 +229,15 @@ msgstr "Base où seront créés les objets"
 
 #: admin/public-forms/class_publicForm.inc:90
 msgid "TOS URL"
-msgstr "TOS URL"
+msgstr "URL des CGU"
 
 #: admin/public-forms/class_publicForm.inc:90
 msgid ""
 "Terms of service URL. If filled, this adds a mandatory checkbox to agree to "
 "the terms at this URL."
 msgstr ""
-"URL des conditions de service. Si rempli, cela ajoute une case à cocher "
-"obligatoire pour accepter les termes de cette URL."
+"URL des conditions générales d’utilisation. Si rempli, cela ajoute une case "
+"à cocher obligatoire pour accepter les conditions présentées par cette URL."
 
 #: config/public-forms/class_publicFormsConfig.inc:26
 msgid "Public forms configuration"
@@ -252,4 +257,6 @@ msgstr "Branche dans laquelle les formulaires publics seront stockés"
 
 #: ihtml/themes/breezy/public-form.tpl.c:2
 msgid "I agree to the <a target=\"_blank\" href=\"%1\">terms of service</a>"
-msgstr "J'accepte les conditions d'utilisation <a target=\"_blank\" href=\"%1\"></a>"
+msgstr ""
+"J'accepte les <a target=\"_blank\" href=\"%1\">conditions générales "
+"d'utilisation</a>"
