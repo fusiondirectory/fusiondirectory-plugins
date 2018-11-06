@@ -217,6 +217,8 @@ class publicFormPage extends standAlonePage
 
   protected function submitForm()
   {
+    global $config;
+
     /* Check TOS checkbox */
     if (isset($this->form['fdPublicFormTosUrl']) && !isset($_POST['tosCheckBox'])) {
       msg_dialog::display(_('Error'), _('You need to accept the terms of service to continue!'), ERROR_DIALOG);
