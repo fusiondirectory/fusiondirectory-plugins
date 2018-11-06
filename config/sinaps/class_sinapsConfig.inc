@@ -121,7 +121,7 @@ class sinapsConfig extends simplePlugin
       $attributesInfo = $this->getAttributesInfo();
     }
     $userTemplates = objects::getTemplates('user');
-    $attributesInfo['main']['attrs'][11]->setChoices(array_keys($userTemplates), array_values($userTemplates));
+    $attributesInfo['main']['attrs'][12]->setChoices(array_keys($userTemplates), array_values($userTemplates));
 
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
   }
