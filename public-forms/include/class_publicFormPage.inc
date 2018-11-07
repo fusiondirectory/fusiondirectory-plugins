@@ -217,7 +217,7 @@ class publicFormPage extends standAlonePage
 
   protected function submitForm()
   {
-    global $config;
+    global $config, $ui;
 
     /* Check TOS checkbox */
     if (isset($this->form['fdPublicFormTosUrl']) && !isset($_POST['tosCheckBox'])) {
@@ -277,7 +277,7 @@ class publicFormPage extends standAlonePage
 
   function save_object()
   {
-    global $config, $ui;
+    global $config;
 
     if (!$this->activated) {
       return;
