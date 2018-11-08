@@ -39,12 +39,6 @@ class privateFormPage extends publicFormPage
           }
         }
       }
-
-      /* Special case: eduPersonPrincipalName */
-      if (isset($_SERVER['HTTP_AUTH_'.strtoupper('eduPersonPrincipalName')])) {
-        $values['supannAccount']['supannRefId'] = array('{RENATER}'.$_SERVER['HTTP_AUTH_'.strtoupper('eduPersonPrincipalName')]);
-        $values['user']['uid']                  = preg_replace('/@[^@]+$/', '', $_SERVER['HTTP_AUTH_'.strtoupper('eduPersonPrincipalName')]);
-      }
     }
 
     return parent::getPrefilledValues($values);
