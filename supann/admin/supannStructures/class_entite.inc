@@ -33,6 +33,7 @@ class entite extends simplePlugin
         'icon'        => 'geticon.php?context=applications&icon=supann-entite&size=16',
         'nameAttr'    => 'ou',
       )),
+      'plSearchAttrs' => array('description', 'supannCodeEntiteParent'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
