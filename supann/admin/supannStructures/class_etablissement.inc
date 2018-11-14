@@ -34,6 +34,7 @@ class etablissement extends simplePlugin
         'icon'        => 'geticon.php?context=applications&icon=supann-etablissement&size=16',
         'nameAttr'    => 'o',
       )),
+      'plSearchAttrs' => array('description', 'supannEtablissement', 'eduOrgLegalName'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
