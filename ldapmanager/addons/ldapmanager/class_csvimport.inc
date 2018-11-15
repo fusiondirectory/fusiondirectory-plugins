@@ -229,9 +229,13 @@ class csvimport extends simplePlugin
         $values[$m[1]][$m[2]] = $this->compute_attribute_value($attribute, $row);
       }
       $this->template_object->reset();
-      $this->template_object->deserialize($values);
-      $tabObject = $this->template_object->apply();
-      $msgs = $tabObject->save();
+      $msgs = $this->template_object->deserialize($values);
+      if ($msgs === TRUE) {
+        $tabObject = $this->template_object->apply();
+        $msgs = $tabObject->save();
+      } elseif (!is_array($msgs)) {
+        $msgs = array($msgs);
+      }
       if (count($msgs)) {
         $msg = '<ul><li>'.implode('</li><li>', $msgs).'</li></ul>';
         msg_dialog::display(sprintf(_('Import failed for line %d'), $rownumber + 1), $msg, ERROR_DIALOG);
