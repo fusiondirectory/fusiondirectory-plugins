@@ -3,13 +3,16 @@
 # This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Choi Chris <chulwon.choi@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-08-07 08:41+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2018-09-03 11:55+0000\n"
+"PO-Revision-Date: 2017-11-03 10:31+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -66,7 +69,7 @@ msgstr "그룹 GID 값"
 #: admin/groups/posix/class_posixGroup.inc:150
 #: personal/posix/class_posixAccount.inc:425
 msgid "GID"
-msgstr ""
+msgstr "GID"
 
 #: admin/groups/posix/class_posixGroup.inc:74
 msgid "GID value for this group"
@@ -151,7 +154,7 @@ msgstr "다음 id"
 msgid ""
 "A script to be called for finding the next free id number for users or "
 "groups."
-msgstr ""
+msgstr "사용자 또는 그룹에 대해 다음 무료 ID 번호를 찾는 데 호출 할 스크립트."
 
 #: config/posix/class_posixConfig.inc:61
 msgid "Base number for user id"
@@ -191,7 +194,7 @@ msgstr "사용자 아이디 풀 최소값"
 
 #: config/posix/class_posixConfig.inc:79
 msgid "Minimum value for user id when using pool method"
-msgstr ""
+msgstr "풀 메소드 사용시 사용자 ID의 최소값"
 
 #: config/posix/class_posixConfig.inc:84
 msgid "Pool user id max"
@@ -343,7 +346,7 @@ msgstr "강제 패스워든 변경 주기(일)"
 msgid ""
 "The user will be forced to change his password after this number of days "
 "(leave empty to disable)"
-msgstr ""
+msgstr "사용자는이 일수가 지나면 비밀번호를 변경해야합니다 (사용하지 않으려면 비워 둡니다)"
 
 #: personal/posix/class_posixAccount.inc:181
 msgid "Password expiration date"
