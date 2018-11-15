@@ -108,6 +108,10 @@ class entite extends simplePlugin
     global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
 
+    if (empty($this->acl_base)) {
+      $this->set_acl_base($config->current['BASE']);
+    }
+
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search('(objectClass=supannEntite)', array('supannCodeEntite','ou','o'));
