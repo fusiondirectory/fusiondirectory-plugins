@@ -3,14 +3,19 @@
 # This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# fusiondirectory <contact@fusiondirectory.org>, 2017
+# Rombout de Neef <rombout.deneef@digipolis.be>, 2017
+# Lucien Antonissen <lucien.antonissen@digipolis.be>, 2017
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-08-07 08:41+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Rombout de Neef <rombout.deneef@digipolis.be>, 2017\n"
+"POT-Creation-Date: 2018-09-03 11:55+0000\n"
+"PO-Revision-Date: 2017-11-03 10:22+0000\n"
+"Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -113,6 +118,16 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:65
 msgid "Command line for FAI 5 - should be \"ip=dhcp rootovl\""
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:70
+msgid "Multiple distro mode"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:70
+msgid ""
+"This enables a mode for multiple distributions usage which adds the release "
+"as a suffix to kernel, initrd and nfsroot in the PXE file"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:31

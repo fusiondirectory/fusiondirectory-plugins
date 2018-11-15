@@ -3,13 +3,16 @@
 # This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Choi Chris <chulwon.choi@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-08-07 08:41+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2018-09-03 11:55+0000\n"
+"PO-Revision-Date: 2017-11-03 10:27+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -21,51 +24,51 @@ msgstr ""
 #: addons/gpg/class_pgpServerInfo.inc:31 addons/gpg/class_pgpServerInfo.inc:32
 #: addons/gpg/class_pgpServerInfo.inc:38 addons/gpg/class_pgpServerInfo.inc:56
 msgid "GPG server info"
-msgstr ""
+msgstr "GPG 서버 정보"
 
 #: addons/gpg/class_pgpServerInfo.inc:60
 msgid "Software"
-msgstr ""
+msgstr "소프트웨어"
 
 #: addons/gpg/class_pgpServerInfo.inc:60
 msgid "Which software this GPG key server is running"
-msgstr ""
+msgstr "이 GPG 키 서버가 실행중인 소프트웨어"
 
 #: addons/gpg/class_pgpServerInfo.inc:65
 msgid "GPG version"
-msgstr ""
+msgstr "GPG 버전"
 
 #: addons/gpg/class_pgpServerInfo.inc:65
 msgid "Which version of GPG this key server is running"
-msgstr ""
+msgstr "이 키 서버가 실행중인 GPG 버전"
 
 #: addons/gpg/class_pgpServerInfo.inc:70
 msgid "Branch in which keys are stored"
-msgstr ""
+msgstr "키가 저장되는 브랜치"
 
 #: addons/gpg/class_pgpServerInfo.inc:74
 msgid "Keys RDN"
-msgstr ""
+msgstr "키 RDN"
 
 #: addons/gpg/class_pgpServerInfo.inc:74
 msgid "Branch under base in which keys are stored"
-msgstr ""
+msgstr "키가 저장되어있는베이스 밑의 브랜치"
 
 #: personal/gpg/class_gpgAccount.inc:31
 msgid "GPG keys"
-msgstr ""
+msgstr "GPG 키"
 
 #: personal/gpg/class_gpgAccount.inc:35
 msgid "GPG keys of this user"
-msgstr ""
+msgstr "이 사용자의 GPG 키"
 
 #: personal/gpg/class_gpgAccount.inc:46
 msgid "GPG"
-msgstr ""
+msgstr "GPG"
 
 #: personal/gpg/class_gpgAccount.inc:47
 msgid "Edit user's GPG IDs"
-msgstr ""
+msgstr "사용자의 GPG ID 수정"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
 msgid "Configuration error"
@@ -73,51 +76,51 @@ msgstr "설정 에러"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
 msgid "You need to configure GPG base dn through the addons section first"
-msgstr ""
+msgstr "먼저 addons 섹션을 통해 GPG 기반 dn을 구성해야합니다."
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:138
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:40
 msgid "Key ID"
-msgstr ""
+msgstr "키 ID"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:139
 msgid "User ID"
-msgstr ""
+msgstr "사용자 ID"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:140
 msgid "Creation time"
-msgstr ""
+msgstr "생성시간"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:141
 msgid "Expiration"
-msgstr ""
+msgstr "만료"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:142
 msgid "Algorithm"
-msgstr ""
+msgstr "알고리즘"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:143
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:80
 msgid "Size"
-msgstr ""
+msgstr "크기"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:144
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:88
 msgid "Revoked"
-msgstr ""
+msgstr "철회"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:145
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
 msgid "Disabled"
-msgstr ""
+msgstr "미사용"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:11
 msgid "Please select the desired entries"
-msgstr ""
+msgstr "원하는 항목을 선택하십시오."
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:15
 msgid "PGP Key"
-msgstr ""
+msgstr "PGP 키"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:48
 msgid "User"
@@ -125,7 +128,7 @@ msgstr "사용자"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:56
 msgid "Creation date"
-msgstr ""
+msgstr "생성일자"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:64
 msgid "Expiration date"
