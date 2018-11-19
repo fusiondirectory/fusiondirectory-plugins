@@ -33,6 +33,18 @@ class RegistrationColumn extends LinkColumn
         $value = RegistrationStateAttribute::renderValue($value);
       } elseif ($this->attributes[0] == 'fdRegistrationLastChange') {
         $value = RegistrationLastChangeAttribute::renderValue($value);
+      } elseif ($this->attributes[0] == 'fdRegistrationUserDN') {
+        try {
+          $value = objects::link($value, 'user', '', NULL, FALSE, FALSE);
+        } catch (NonExistingLdapNodeException $e) {
+          $value = _('invalid');
+        }
+      } elseif ($this->attributes[0] == 'fdRegistrationInvitationDN') {
+        try {
+          $value = objects::link($value, 'invitation', '', NULL, FALSE, FALSE);
+        } catch (NonExistingLdapNodeException $e) {
+          $value = _('invalid');
+        }
       } else {
         $value = htmlentities($value, ENT_COMPAT, 'UTF-8');
       }
@@ -49,9 +61,11 @@ class registrationManagement extends management
 
   public static $columns = array(
     array('ObjectTypeColumn',   array()),
-    array('LinkColumn',         array('attributes' => 'nameAttr',                 'label' => 'Email')),
-    array('RegistrationColumn', array('attributes' => 'fdRegistrationState',      'label' => 'Status')),
-    array('RegistrationColumn', array('attributes' => 'fdRegistrationLastChange', 'label' => 'Last change')),
+    array('LinkColumn',         array('attributes' => 'nameAttr',                   'label' => 'Email')),
+    array('RegistrationColumn', array('attributes' => 'fdRegistrationInvitationDN', 'label' => 'Invitation')),
+    array('RegistrationColumn', array('attributes' => 'fdRegistrationState',        'label' => 'Status')),
+    array('RegistrationColumn', array('attributes' => 'fdRegistrationLastChange',   'label' => 'Last change')),
+    array('RegistrationColumn', array('attributes' => 'fdRegistrationUserDN',       'label' => 'User object')),
     array('ActionsColumn',      array('label' => 'Actions')),
   );
 
