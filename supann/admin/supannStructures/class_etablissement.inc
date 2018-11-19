@@ -118,6 +118,8 @@ class etablissement extends simplePlugin
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
+    global $config;
+
     parent::__construct($dn, $object, $parent, $mainTab);
 
     if (empty($this->acl_base)) {
