@@ -75,8 +75,8 @@ class invitation extends simplePlugin
         'name'  => _('Emails'),
         'attrs' => array(
           new StringAttribute(
-            _('From email'), _('Email address set as "From" field and "Reply to" in the sent emails'),
-            'from_mail', FALSE
+            _('Reply to'), _('Email address set as "Reply to" in the sent emails'),
+            'reply_to', FALSE
           ),
           new FileTextAreaAttribute(
             _('Emails'), _('List of email adresses of people to invite - one per line'),
@@ -102,10 +102,10 @@ class invitation extends simplePlugin
 
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
-    /* Fill from_mail with connected user email address */
+    /* Fill reply_to with connected user email address */
     $users = objects::ls('user', 'mail', $ui->dn, '(mail=*)', FALSE, 'base');
     if (!empty($users)) {
-      $this->from_mail = reset($users);
+      $this->reply_to = reset($users);
     }
   }
 
@@ -120,10 +120,6 @@ class invitation extends simplePlugin
       }
     }
 
-    if (!empty($emails) && empty($this->from_mail)) {
-      $messages[] = sprintf(_('You need to fill the "%s" field in order to send invitations'), $this->attributesAccess['from_mail']->getLabel());
-    }
-
     return $messages;
   }
 
@@ -134,7 +130,7 @@ class invitation extends simplePlugin
 
   protected function ldap_save ()
   {
-    global $ui;
+    global $ui, $config;
 
     $errors = parent::ldap_save();
 
@@ -150,7 +146,7 @@ class invitation extends simplePlugin
       }
       $token  = standAlonePage::generateRandomHash();
       $body   = sprintf($this->fdInvitationEmailContent, $token);
-      if (mail_utf8($email, FALSE, $this->from_mail, $this->fdInvitationEmailSubject, $body)) {
+      if (mail_utf8($email, $ui->cn, $config->get_cfg_value('InvitationFromEmailAddress'), $this->fdInvitationEmailSubject, $body, FALSE, $this->reply_to)) {
         $tabObject  = objects::create('registration');
         $baseObject = $tabObject->getBaseObject();
 
