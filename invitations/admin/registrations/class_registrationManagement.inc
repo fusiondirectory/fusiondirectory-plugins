@@ -62,10 +62,10 @@ class registrationManagement extends management
   public static $columns = array(
     array('ObjectTypeColumn',   array()),
     array('LinkColumn',         array('attributes' => 'nameAttr',                   'label' => 'Email')),
-    array('RegistrationColumn', array('attributes' => 'fdRegistrationInvitationDN', 'label' => 'Invitation')),
+    array('RegistrationColumn', array('attributes' => 'fdRegistrationUserDN',       'label' => 'User object')),
     array('RegistrationColumn', array('attributes' => 'fdRegistrationState',        'label' => 'Status')),
     array('RegistrationColumn', array('attributes' => 'fdRegistrationLastChange',   'label' => 'Last change')),
-    array('RegistrationColumn', array('attributes' => 'fdRegistrationUserDN',       'label' => 'User object')),
+    array('RegistrationColumn', array('attributes' => 'fdRegistrationInvitationDN', 'label' => 'Invitation')),
     array('ActionsColumn',      array('label' => 'Actions')),
   );
 
