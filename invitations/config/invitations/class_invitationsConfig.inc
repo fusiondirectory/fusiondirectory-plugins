@@ -50,7 +50,7 @@ class invitationsConfig extends simplePlugin
             'ou=registrations'
           ),
           new StringAttribute (
-            _('Email expeditor'), _('The email address used to send invitation emails. Be careful to select an address that your serveur can send from without being flagged as spam.'),
+            _('Email expeditor'), _('The email address used to send invitation emails. Be careful to select an address that your server can send from without being flagged as spam.'),
             'fdInvitationFromEmailAddress', TRUE,
             'no-reply@example.com'
           ),
