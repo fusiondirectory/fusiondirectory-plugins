@@ -5,17 +5,17 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
-# Benoit Mortier <benoit.mortier@opensides.be>, 2018
 # MCMic, 2018
+# Benoit Mortier <benoit.mortier@opensides.be>, 2018
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-06 10:04+0000\n"
+"POT-Creation-Date: 2018-11-20 15:47+0000\n"
 "PO-Revision-Date: 2018-08-27 16:26+0000\n"
-"Last-Translator: MCMic, 2018\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2018\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -73,12 +73,12 @@ msgid "Invitation"
 msgstr "Invitation"
 
 #: admin/registrations/class_registration.inc:33
-#: admin/registrations/class_registrationManagement.inc:119
-#: admin/registrations/class_registrationManagement.inc:131
-#: admin/registrations/class_registrationManagement.inc:142
-#: admin/registrations/class_registrationManagement.inc:197
-#: admin/registrations/class_registrationManagement.inc:209
-#: admin/registrations/class_registrationManagement.inc:220
+#: admin/registrations/class_registrationManagement.inc:133
+#: admin/registrations/class_registrationManagement.inc:145
+#: admin/registrations/class_registrationManagement.inc:156
+#: admin/registrations/class_registrationManagement.inc:211
+#: admin/registrations/class_registrationManagement.inc:223
+#: admin/registrations/class_registrationManagement.inc:234
 msgid "Error"
 msgstr "Erreur"
 
@@ -150,72 +150,77 @@ msgstr "Objet utilisateur"
 msgid "User object created by this registration"
 msgstr "Objet utilisateur créé par cette inscription"
 
-#: admin/registrations/class_registrationManagement.inc:67
+#: admin/registrations/class_registrationManagement.inc:40
+#: admin/registrations/class_registrationManagement.inc:46
+msgid "invalid"
+msgstr "Non valide"
+
+#: admin/registrations/class_registrationManagement.inc:81
 msgid "Registrations"
 msgstr "Inscriptions"
 
-#: admin/registrations/class_registrationManagement.inc:68
+#: admin/registrations/class_registrationManagement.inc:82
 msgid "Registrations management"
 msgstr "Gestion des inscriptions"
 
-#: admin/registrations/class_registrationManagement.inc:69
+#: admin/registrations/class_registrationManagement.inc:83
 msgid "Manage registrations"
 msgstr "Gérer les inscriptions"
 
-#: admin/registrations/class_registrationManagement.inc:91
+#: admin/registrations/class_registrationManagement.inc:105
 msgid "Accept"
 msgstr "Accepter"
 
-#: admin/registrations/class_registrationManagement.inc:98
+#: admin/registrations/class_registrationManagement.inc:112
 msgid "Reject"
 msgstr "Rejeter"
 
-#: admin/registrations/class_registrationManagement.inc:120
+#: admin/registrations/class_registrationManagement.inc:134
 #, php-format
 msgid "Cannot accept %s. It has been locked by %s."
 msgstr "Impossible d’accepter %s. Elle a été verrouillée par %s."
 
-#: admin/registrations/class_registrationManagement.inc:132
+#: admin/registrations/class_registrationManagement.inc:146
 #, php-format
 msgid "Cannot accept registration %s, it's not in status \"Filled\"."
 msgstr "Impossible d'accepter l'inscription %s, son statut n'est pas \"Remplie\"."
 
-#: admin/registrations/class_registrationManagement.inc:143
+#: admin/registrations/class_registrationManagement.inc:157
 #, php-format
 msgid "Cannot move %s. It has been locked by %s."
 msgstr "Impossible de déplacer %s. Elle a été verrouillée par %s."
 
-#: admin/registrations/class_registrationManagement.inc:198
+#: admin/registrations/class_registrationManagement.inc:212
 #, php-format
 msgid "Cannot reject %s. It has been locked by %s."
 msgstr "Impossible de rejeter %s. Elle a été verrouillée par %s."
 
-#: admin/registrations/class_registrationManagement.inc:210
+#: admin/registrations/class_registrationManagement.inc:224
 #, php-format
 msgid "Cannot reject registration %s, it's not in status \"Filled\"."
 msgstr "Impossible de rejeter l'inscription %s, son statut n'est pas \"Remplie\"."
 
-#: admin/registrations/class_registrationManagement.inc:221
+#: admin/registrations/class_registrationManagement.inc:235
 #, php-format
 msgid "Cannot delete %s. It has been locked by %s."
 msgstr "Impossible de supprimer %s. Elle a été verrouillée par %s."
 
-#: admin/registrations/class_registrationManagement.inc:277
+#: admin/registrations/class_registrationManagement.inc:291
 #, php-format
 msgid "Could not find invitation \"%s\""
 msgstr "Impossible de trouver l'invitation \"%s\""
 
-#: admin/registrations/class_registrationManagement.inc:279
+#: admin/registrations/class_registrationManagement.inc:293
 #, php-format
 msgid "Found several invitations \"%s\""
 msgstr "Plusieurs invitations trouvées pour \"%s\""
 
-#: admin/registrations/class_registrationManagement.inc:300
+#: admin/registrations/class_registrationManagement.inc:314
 #, php-format
 msgid "Form \"%s\" could not be found"
 msgstr "Le formulaire \"%s\" n'a pas pu être trouvé"
 
-#: admin/registrations/class_registrationManagement.inc:302
+#: admin/registrations/class_registrationManagement.inc:316
 #, php-format
 msgid "Found several forms named \"%s\""
 msgstr "Plusieurs formulaires nommés \"%s\" ont étés trouvés"
@@ -226,7 +231,7 @@ msgstr "Statuts"
 
 #: admin/invitations/class_invitationManagement.inc:26
 #: config/invitations/class_invitationsConfig.inc:40
-#: config/invitations/class_invitationsConfig.inc:55
+#: config/invitations/class_invitationsConfig.inc:60
 msgid "Invitations"
 msgstr "Invitations"
 
@@ -288,14 +293,14 @@ msgid "Emails"
 msgstr "Destinataires"
 
 #: admin/invitations/class_invitation.inc:78
-msgid "From email"
-msgstr "Expéditeur"
+msgid "Reply to"
+msgstr "Répondre à"
 
 #: admin/invitations/class_invitation.inc:78
-msgid "Email address set as \"From\" field and \"Reply to\" in the sent emails"
+msgid "Email address set as \"Reply to\" in the sent emails"
 msgstr ""
-"Adresse de courriel définie comme champ \"De\" et \"Répondre à\" dans les "
-"courriels envoyés"
+"Adresse de courriel définie comme champ \"Répondre à\" dans les courriels "
+"envoyés"
 
 #: admin/invitations/class_invitation.inc:82
 msgid "List of email adresses of people to invite - one per line"
@@ -306,12 +311,7 @@ msgstr "Liste des adresses courriel des personnes à inviter - une par ligne"
 msgid "\"%s\" is not a valid email address"
 msgstr "\"%s\" n'est pas une adresse courriel valide"
 
-#: admin/invitations/class_invitation.inc:124
-#, php-format
-msgid "You need to fill the \"%s\" field in order to send invitations"
-msgstr "Vous devez remplir le champ \"%s\" pour envoyer des invitations"
-
-#: admin/invitations/class_invitation.inc:166
+#: admin/invitations/class_invitation.inc:162
 #, php-format
 msgid ""
 "Failed to create registration object for \"%s\", because of the following "
@@ -320,18 +320,18 @@ msgstr ""
 "Impossible de créer un objet inscription pour \"%s\" en raison des erreurs "
 "suivantes: %s"
 
-#: admin/invitations/class_invitation.inc:171
+#: admin/invitations/class_invitation.inc:167
 #, php-format
 msgid "Failed to send invitation email to \"%s\". Check your email settings."
 msgstr ""
 "Échec de l'envoi du courriel d'invitation à \"%s\". Vérifiez vos paramètres "
 "de messagerie."
 
-#: admin/invitations/class_invitation.inc:176
+#: admin/invitations/class_invitation.inc:172
 msgid "Success"
 msgstr "Succès"
 
-#: admin/invitations/class_invitation.inc:176
+#: admin/invitations/class_invitation.inc:172
 #, php-format
 msgid "%d invitations were sent and saved successfully"
 msgstr "%d invitations ont été envoyées et enregistrées avec succès"
@@ -360,11 +360,24 @@ msgstr "Branches des inscriptions"
 msgid "Branch in which registrations will be stored"
 msgstr "Branche dans laquelle les inscriptions seront stockées"
 
-#: config/invitations/class_invitationsConfig.inc:58
+#: config/invitations/class_invitationsConfig.inc:53
+msgid "Email expeditor"
+msgstr "Expéditeur du courriel"
+
+#: config/invitations/class_invitationsConfig.inc:53
+msgid ""
+"The email address used to send invitation emails. Be careful to select an "
+"address that your server can send from without being flagged as spam."
+msgstr ""
+"L'adresse de courriel utilisée pour envoyer les courriels d'invitation. "
+"Veillez à sélectionner une adresse que votre serveur peut envoyer sans être "
+"signalé comme spam."
+
+#: config/invitations/class_invitationsConfig.inc:63
 msgid "Default email content"
 msgstr "Contenu par défaut du courriel"
 
-#: config/invitations/class_invitationsConfig.inc:58
+#: config/invitations/class_invitationsConfig.inc:63
 msgid "Default content of the email sent invitations"
 msgstr "Contenu par défaut des invitations envoyées par courrier électronique"
 
