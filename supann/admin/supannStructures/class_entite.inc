@@ -85,9 +85,11 @@ class entite extends simplePlugin
             'supannCodeEntite', TRUE,
             '', '', '/^[a-z0-9_-]*$/i'
           ),
-          new SelectAttribute(
-            _('Parent entity'), _('The parent entity of this entity'),
-            'supannCodeEntiteParent', FALSE
+          new SetAttribute(
+            new SelectAttribute(
+              _('Parent entities'), _('The parent entities of this entity'),
+              'supannCodeEntiteParent', FALSE
+            )
           ),
           new SetAttribute(
             new StringAttribute(
@@ -128,7 +130,7 @@ class entite extends simplePlugin
         }
       }
     }
-    $this->attributesAccess['supannCodeEntiteParent']->setChoices($entity_codes, $entity_labels);
+    $this->attributesAccess['supannCodeEntiteParent']->attribute->setChoices($entity_codes, $entity_labels);
 
     $this->attributesAccess['ou']->setUnique(TRUE);
     $this->attributesAccess['supannCodeEntite']->setUnique(TRUE);
