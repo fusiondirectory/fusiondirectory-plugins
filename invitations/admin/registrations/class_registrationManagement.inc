@@ -179,6 +179,31 @@ class registrationManagement extends management
       // Remove the lock for the user object
       del_lock($entry['fdRegistrationUserDN']);
 
+      // Unlock the user password if needed
+      $pwds = objects::ls('user', 'userPassword', $entry['fdRegistrationUserDN'], '(userPassword=*)', FALSE, 'base');
+      if (!empty($pwds)) {
+        $pwd    = reset($pwds);
+        $method = passwordMethod::get_method($pwd, $entry['fdRegistrationUserDN']);
+        if (
+            ($method instanceOf passwordMethod) &&
+            $method->is_lockable() &&
+            $method->is_locked($entry['fdRegistrationUserDN'])
+          ) {
+          $success = $method->unlock_account($entry['fdRegistrationUserDN']);
+
+          // Check if everything went fine.
+          if (!$success) {
+            $hn = $method->get_hash_name();
+            if (is_array($hn)) {
+              $hn = $hn[0];
+            }
+            msg_dialog::display(_('Account locking'),
+                sprintf(_('Unlocking failed using password method "%s". Account "%s" has not been unlocked!'),
+                  $hn, $entry['fdRegistrationUserDN']), ERROR_DIALOG);
+          }
+        }
+      }
+
       if (empty($errors)) {
         // Upon success, update registration object status and history
         $tabObject  = objects::open($dn, 'registration');
