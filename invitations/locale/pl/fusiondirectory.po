@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-06 10:04+0000\n"
+"POT-Creation-Date: 2018-11-20 15:47+0000\n"
 "PO-Revision-Date: 2018-08-27 16:26+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Polish (https://www.transifex.com/fusiondirectory/teams/12202/pl/)\n"
@@ -69,12 +69,12 @@ msgid "Invitation"
 msgstr ""
 
 #: admin/registrations/class_registration.inc:33
-#: admin/registrations/class_registrationManagement.inc:119
-#: admin/registrations/class_registrationManagement.inc:131
-#: admin/registrations/class_registrationManagement.inc:142
-#: admin/registrations/class_registrationManagement.inc:197
-#: admin/registrations/class_registrationManagement.inc:209
-#: admin/registrations/class_registrationManagement.inc:220
+#: admin/registrations/class_registrationManagement.inc:133
+#: admin/registrations/class_registrationManagement.inc:145
+#: admin/registrations/class_registrationManagement.inc:156
+#: admin/registrations/class_registrationManagement.inc:211
+#: admin/registrations/class_registrationManagement.inc:223
+#: admin/registrations/class_registrationManagement.inc:234
 msgid "Error"
 msgstr "Błąd"
 
@@ -146,72 +146,77 @@ msgstr ""
 msgid "User object created by this registration"
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:67
+#: admin/registrations/class_registrationManagement.inc:40
+#: admin/registrations/class_registrationManagement.inc:46
+msgid "invalid"
+msgstr ""
+
+#: admin/registrations/class_registrationManagement.inc:81
 msgid "Registrations"
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:68
+#: admin/registrations/class_registrationManagement.inc:82
 msgid "Registrations management"
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:69
+#: admin/registrations/class_registrationManagement.inc:83
 msgid "Manage registrations"
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:91
+#: admin/registrations/class_registrationManagement.inc:105
 msgid "Accept"
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:98
+#: admin/registrations/class_registrationManagement.inc:112
 msgid "Reject"
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:120
+#: admin/registrations/class_registrationManagement.inc:134
 #, php-format
 msgid "Cannot accept %s. It has been locked by %s."
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:132
+#: admin/registrations/class_registrationManagement.inc:146
 #, php-format
 msgid "Cannot accept registration %s, it's not in status \"Filled\"."
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:143
+#: admin/registrations/class_registrationManagement.inc:157
 #, php-format
 msgid "Cannot move %s. It has been locked by %s."
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:198
+#: admin/registrations/class_registrationManagement.inc:212
 #, php-format
 msgid "Cannot reject %s. It has been locked by %s."
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:210
+#: admin/registrations/class_registrationManagement.inc:224
 #, php-format
 msgid "Cannot reject registration %s, it's not in status \"Filled\"."
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:221
+#: admin/registrations/class_registrationManagement.inc:235
 #, php-format
 msgid "Cannot delete %s. It has been locked by %s."
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:277
+#: admin/registrations/class_registrationManagement.inc:291
 #, php-format
 msgid "Could not find invitation \"%s\""
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:279
+#: admin/registrations/class_registrationManagement.inc:293
 #, php-format
 msgid "Found several invitations \"%s\""
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:300
+#: admin/registrations/class_registrationManagement.inc:314
 #, php-format
 msgid "Form \"%s\" could not be found"
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:302
+#: admin/registrations/class_registrationManagement.inc:316
 #, php-format
 msgid "Found several forms named \"%s\""
 msgstr ""
@@ -222,7 +227,7 @@ msgstr ""
 
 #: admin/invitations/class_invitationManagement.inc:26
 #: config/invitations/class_invitationsConfig.inc:40
-#: config/invitations/class_invitationsConfig.inc:55
+#: config/invitations/class_invitationsConfig.inc:60
 msgid "Invitations"
 msgstr ""
 
@@ -284,11 +289,11 @@ msgid "Emails"
 msgstr ""
 
 #: admin/invitations/class_invitation.inc:78
-msgid "From email"
+msgid "Reply to"
 msgstr ""
 
 #: admin/invitations/class_invitation.inc:78
-msgid "Email address set as \"From\" field and \"Reply to\" in the sent emails"
+msgid "Email address set as \"Reply to\" in the sent emails"
 msgstr ""
 
 #: admin/invitations/class_invitation.inc:82
@@ -300,28 +305,23 @@ msgstr ""
 msgid "\"%s\" is not a valid email address"
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:124
-#, php-format
-msgid "You need to fill the \"%s\" field in order to send invitations"
-msgstr ""
-
-#: admin/invitations/class_invitation.inc:166
+#: admin/invitations/class_invitation.inc:162
 #, php-format
 msgid ""
 "Failed to create registration object for \"%s\", because of the following "
 "errors: %s"
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:171
+#: admin/invitations/class_invitation.inc:167
 #, php-format
 msgid "Failed to send invitation email to \"%s\". Check your email settings."
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:176
+#: admin/invitations/class_invitation.inc:172
 msgid "Success"
 msgstr "Powodzenie"
 
-#: admin/invitations/class_invitation.inc:176
+#: admin/invitations/class_invitation.inc:172
 #, php-format
 msgid "%d invitations were sent and saved successfully"
 msgstr ""
@@ -350,11 +350,21 @@ msgstr ""
 msgid "Branch in which registrations will be stored"
 msgstr ""
 
-#: config/invitations/class_invitationsConfig.inc:58
+#: config/invitations/class_invitationsConfig.inc:53
+msgid "Email expeditor"
+msgstr ""
+
+#: config/invitations/class_invitationsConfig.inc:53
+msgid ""
+"The email address used to send invitation emails. Be careful to select an "
+"address that your server can send from without being flagged as spam."
+msgstr ""
+
+#: config/invitations/class_invitationsConfig.inc:63
 msgid "Default email content"
 msgstr ""
 
-#: config/invitations/class_invitationsConfig.inc:58
+#: config/invitations/class_invitationsConfig.inc:63
 msgid "Default content of the email sent invitations"
 msgstr ""
 
