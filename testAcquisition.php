@@ -109,7 +109,7 @@ function codeEntiteToldapUuidCallback($codeEntite)
 
 try {
   /* We create the connection object */
-  $client = new jsonRPCClient($options['url'], $http_options, $ssl_options, false);
+  $client = new jsonRPCClient($options['url'], $http_options, $ssl_options, FALSE);
   /* Then we need to login. Here we log in the default LDAP */
   $session_id = $client->login(NULL, $options['login'], $options['password']);
 
@@ -117,12 +117,13 @@ try {
     $session_id,
     'configuration',
     array(
-      'fdSinapsEnabled'               => 1,
-      'fdSinapsAcquisitionURL'        => 1,
-      'fdSinapsLogin'                 => 1,
-      'fdSinapsPassword'              => 1,
-      'fdSinapsUuidPrefix'            => 1,
-      'fdSinapsAcquisitonTypeExterne' => 1,
+      'fdSinapsEnabled'                     => 1,
+      'fdSinapsAcquisitionURL'              => 1,
+      'fdSinapsLogin'                       => 1,
+      'fdSinapsPassword'                    => 1,
+      'fdSinapsUuidPrefix'                  => 1,
+      'fdSinapsAcquisitonTypeExterne'       => 1,
+      'fdSinapsAcquisitionContactMethodMap' => '*',
     )
   );
   $configuration = reset($configurations);
@@ -145,11 +146,21 @@ try {
     $configuration['fdSinapsAcquisitonTypeExterne'] = 'FD';
   }
 
-  $users = $client->ls($session_id, 'user', sinapsRequestAcquisiton::$attributes, $options['dn']);
+  $attributes = sinapsRequestAcquisiton::$attributes;
+
+  $mapping = array();
+  foreach ($configuration['fdSinapsAcquisitionContactMethodMap'] as $field) {
+    list($ldapField, $sinapsType) = explode('|', $field, 2);
+
+    $mapping[$ldapField]    = $sinapsType;
+    $attributes[$ldapField] = 1;
+  }
+
+  $users = $client->ls($session_id, 'user', $attributes, $options['dn']);
   $user = reset($users);
 
   $request = new sinapsRequestAcquisiton();
-  $request->fill($user, $configuration['fdSinapsUuidPrefix'], $configuration['fdSinapsAcquisitonTypeExterne'], 'codeEntiteToldapUuidCallback');
+  $request->fill($user, $configuration['fdSinapsUuidPrefix'], $configuration['fdSinapsAcquisitonTypeExterne'], $mapping, 'codeEntiteToldapUuidCallback');
   $xml = $request->getXml();
   echo "Request:\n$xml\n";
 

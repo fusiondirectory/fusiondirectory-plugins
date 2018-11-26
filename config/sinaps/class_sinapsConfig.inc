@@ -53,21 +53,8 @@ class sinapsConfig extends simplePlugin
             FALSE
           ),
           new StringAttribute (
-            _('Acquisiton URL'), _('Full URL to which acquisiton events should be sent'),
-            'fdSinapsAcquisitionURL', FALSE
-          ),
-          new StringAttribute (
             _('Acknowledgement URL'), _('Full URL to which functionnal acknowledgement should be sent'),
             'fdSinapsAcknowledgmentURL', FALSE
-          ),
-          new StringAttribute (
-            _('Login'), _('Login to use for Basic Auth when contacting SINAPS services'),
-            'fdSinapsLogin', FALSE,
-            'fusiondirectory'
-          ),
-          new PasswordAttribute (
-            _('Password'), _('Password to use for Basic Auth when contacting SINAPS services'),
-            'fdSinapsPassword', FALSE
           ),
           new StringAttribute (
             _('Dump folder'), _('Folder in which received transactions should be dumped (leave empty to disable)'),
@@ -77,11 +64,6 @@ class sinapsConfig extends simplePlugin
             _('Application identifier'), _('Application identifier present in cross references with FusionDirectory'),
             'fdSinapsIdentifiantApplication', TRUE,
             'FUSIONDIRECTORY'
-          ),
-          new StringAttribute (
-            _('Acquisition external type'), _('Set in typeExterne tag when sending acquisition data'),
-            'fdSinapsAcquisitonTypeExterne', TRUE,
-            'FD'
           ),
           new SetAttribute (
             new StringAttribute (
@@ -112,6 +94,51 @@ class sinapsConfig extends simplePlugin
           ),
         )
       ),
+      'acquisition' => array(
+        'name'  => _('Sinaps Acquisition'),
+        'attrs' => array(
+          new StringAttribute (
+            _('Acquisiton URL'), _('Full URL to which acquisiton events should be sent'),
+            'fdSinapsAcquisitionURL', FALSE
+          ),
+          new StringAttribute (
+            _('Login'), _('Login to use for Basic Auth when contacting SINAPS services'),
+            'fdSinapsLogin', FALSE,
+            'fusiondirectory'
+          ),
+          new PasswordAttribute (
+            _('Password'), _('Password to use for Basic Auth when contacting SINAPS services'),
+            'fdSinapsPassword', FALSE
+          ),
+          new StringAttribute (
+            _('Acquisition external type'), _('Set in typeExterne tag when sending acquisition data'),
+            'fdSinapsAcquisitonTypeExterne', TRUE,
+            'FD'
+          ),
+          new OrderedArrayAttribute (
+            new PipeSeparatedCompositeAttribute(
+              _('Which field to sync as contact methods in acquisition'),
+              'fdSinapsAcquisitionContactMethodMap',
+              array(
+                new StringAttribute (
+                  '', _('Name of an LDAP attribute'),
+                  'fdSinapsAcquisitionContactMethodMap_ldap', TRUE
+                ),
+                new StringAttribute (
+                  '', _('Name of the Sinaps attribute'),
+                  'fdSinapsAcquisitionContactMethodMap_sinaps', TRUE
+                ),
+              ),
+              '',
+              _('Contact methods')
+            ),
+            // no order
+            FALSE,
+            array('telephoneNumber|TELPRO','facsimileTelephoneNumber|FAXPRO','mail|MAILPRO','mobile|TELMOBILEPRO'),
+            TRUE
+          ),
+        )
+      ),
     );
   }
 
@@ -121,9 +148,11 @@ class sinapsConfig extends simplePlugin
       $attributesInfo = $this->getAttributesInfo();
     }
     $userTemplates = objects::getTemplates('user');
-    $attributesInfo['main']['attrs'][12]->setChoices(array_keys($userTemplates), array_values($userTemplates));
+    $attributesInfo['main']['attrs'][8]->setChoices(array_keys($userTemplates), array_values($userTemplates));
 
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
+
+    $this->attributesAccess['fdSinapsAcquisitionContactMethodMap']->setHeaders(array(_('LDAP'), _('Sinaps')));
   }
 }
 ?>

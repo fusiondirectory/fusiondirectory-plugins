@@ -94,6 +94,12 @@ attributetype ( 1.3.6.1.4.1.38414.65.1.14 NAME 'fdSinapsAcquisitonTypeExterne'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE)
 
+attributetype ( 1.3.6.1.4.1.38414.65.1.15 NAME 'fdSinapsAcquisitionContactMethodMap'
+  DESC 'FusionDirectory - Which field to sync as contact methods in acquisition'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
 objectclass ( 1.3.6.1.4.1.38414.65.2.1 NAME 'fdSinapsPluginConf'
   DESC 'FusionDirectory sinaps plugin configuration'
   SUP top AUXILIARY
@@ -106,5 +112,6 @@ objectclass ( 1.3.6.1.4.1.38414.65.2.1 NAME 'fdSinapsPluginConf'
     fdSinapsAcquisitionURL $ fdSinapsFDToken $
     fdSinapsDryRun $
     fdSinapsUserBase $ fdSinapsUserTemplate $
-    fdSinapsIdentifiantApplicationSync $ fdSinapsAcquisitonTypeExterne
+    fdSinapsIdentifiantApplicationSync $ fdSinapsAcquisitonTypeExterne $
+    fdSinapsAcquisitionContactMethodMap
   ) )

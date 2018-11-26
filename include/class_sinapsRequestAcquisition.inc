@@ -25,10 +25,6 @@ class sinapsRequestAcquisiton
 
   public static $attributes = array(
     'supannRefId'                       => '*',
-    'telephoneNumber'                   => 1,
-    'facsimileTelephoneNumber'          => 1,
-    'mail'                              => 1,
-    'mobile'                            => 1,
     'supannEntiteAffectationPrincipale' => 1,
   );
 
@@ -50,7 +46,7 @@ class sinapsRequestAcquisiton
     $this->data = new SimpleXMLElement($xml);
   }
 
-  public function fill(array $user, string $uuidPrefix, string $typeExterne, $codeEntiteToldapUuidCallback)
+  public function fill(array $user, string $uuidPrefix, string $typeExterne, array $methodeContactMapping, $codeEntiteToldapUuidCallback)
   {
     $personne = $this->data->domaine->donnees->operation->personne;
 
@@ -67,25 +63,12 @@ class sinapsRequestAcquisiton
 
     /* methodesDeContact */
     $i = 0;
-    if (isset($user['telephoneNumber'])) {
-      $personne->methodesDeContact->methodeContact[$i]->typeMethodeContact  = 'TELPRO';
-      $personne->methodesDeContact->methodeContact[$i]->valeur              = $user['telephoneNumber'];
-      $i++;
-    }
-    if (isset($user['facsimileTelephoneNumber'])) {
-      $personne->methodesDeContact->methodeContact[$i]->typeMethodeContact  = 'FAXPRO';
-      $personne->methodesDeContact->methodeContact[$i]->valeur              = $user['facsimileTelephoneNumber'];
-      $i++;
-    }
-    if (isset($user['mail'])) {
-      $personne->methodesDeContact->methodeContact[$i]->typeMethodeContact  = 'MAILPRO';
-      $personne->methodesDeContact->methodeContact[$i]->valeur              = $user['mail'];
-      $i++;
-    }
-    if (isset($user['mobile'])) {
-      $personne->methodesDeContact->methodeContact[$i]->typeMethodeContact  = 'TELMOBILEPRO';
-      $personne->methodesDeContact->methodeContact[$i]->valeur              = $user['mobile'];
-      $i++;
+    foreach ($methodeContactMapping as $ldapField => $sinapsType) {
+      if (isset($user[$ldapField])) {
+        $personne->methodesDeContact->methodeContact[$i]->typeMethodeContact  = $sinapsType;
+        $personne->methodesDeContact->methodeContact[$i]->valeur              = $user[$ldapField];
+        $i++;
+      }
     }
 
     /* rattachements */
