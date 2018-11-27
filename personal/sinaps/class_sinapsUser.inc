@@ -112,7 +112,7 @@ class sinapsUser extends simplePlugin
 
     if ($config->get_cfg_value('SinapsDryRun') != 'TRUE') {
       $answer = sinapsDiffusionHandlerJob::sendPostRequest($config->get_cfg_value('SinapsAcquisitionURL'), $config->get_cfg_value('SinapsLogin', 'fusiondirectory'), $config->get_cfg_value('SinapsPassword'), $xml);
-      sinapsDiffusionHandlerJob::dumpFile($date.'_acquittement-answer.xml', $xml);
+      sinapsDiffusionHandlerJob::dumpFile($date.'_acquittement-answer.xml', $answer);
     }
   }
 
