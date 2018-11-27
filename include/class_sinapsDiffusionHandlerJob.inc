@@ -25,7 +25,6 @@ class sinapsDiffusionHandlerJob
   protected $acqUrl;
   protected $login;
   protected $password;
-  protected $dumpFolder;
   protected $uuidPrefix;
   protected $identifiantApplication;
   protected $userBase;
@@ -45,7 +44,6 @@ class sinapsDiffusionHandlerJob
     $this->acqUrl                     = $config->get_cfg_value('SinapsAcquisitionURL');
     $this->login                      = $config->get_cfg_value('SinapsLogin');
     $this->password                   = $config->get_cfg_value('SinapsPassword');
-    $this->dumpFolder                 = $config->get_cfg_value('SinapsDumpFolder');
     $this->uuidPrefix                 = $config->get_cfg_value('SinapsUuidPrefix', 'LDAPUUID');
     $this->identifiantApplication     = $config->get_cfg_value('SinapsIdentifiantApplication');
     $this->userBase                   = $config->get_cfg_value('SinapsUserBase', $config->current['BASE']);
@@ -89,13 +87,16 @@ class sinapsDiffusionHandlerJob
     }
   }
 
-  function dumpFile($fileName, $fileContent)
+  public static function dumpFile($fileName, $fileContent)
   {
-    if (empty($this->dumpFolder)) {
+    global $config;
+    $dumpFolder = $config->get_cfg_value('SinapsDumpFolder');
+
+    if (empty($dumpFolder)) {
       return;
     }
 
-    $fileName = $this->dumpFolder.'/'.$fileName;
+    $fileName = $dumpFolder.'/'.$fileName;
 
     $fp = fopenWithErrorHandling($fileName, 'w');
     if (!is_array($fp)) {
@@ -192,7 +193,7 @@ class sinapsDiffusionHandlerJob
     }
 
     if ($this->dryRun) {
-      $this->dumpFile(
+      static::dumpFile(
         $this->request->identifiantTransaction().'-dryrun.txt',
         "type:$type\ndn:$dn\n".print_r($values, TRUE)
       );
@@ -323,7 +324,7 @@ class sinapsDiffusionHandlerJob
 
   function sendAcquittementFonctionnel($xml)
   {
-    $this->dumpFile(
+    static::dumpFile(
       $this->request->identifiantTransaction().'-acquittement.xml',
       $xml
     );
