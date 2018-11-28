@@ -33,7 +33,12 @@ class privateFormPage extends publicFormPage
             $values[$class] = array();
           }
           if (in_array($attr, $this->providedMultiValueAttributes)) {
-            $values[$class][$attr] = explode('; ', $_SERVER['HTTP_AUTH_'.strtoupper($attr)]);
+            if (empty($_SERVER['HTTP_AUTH_'.strtoupper($attr)])) {
+              /* Avoid having an array with an empty string inside */
+              $values[$class][$attr] = array();
+            } else {
+              $values[$class][$attr] = explode('; ', $_SERVER['HTTP_AUTH_'.strtoupper($attr)]);
+            }
           } else {
             $values[$class][$attr] = $_SERVER['HTTP_AUTH_'.strtoupper($attr)];
           }
