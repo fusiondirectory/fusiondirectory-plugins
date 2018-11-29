@@ -175,7 +175,7 @@ class csvimport extends simplePlugin
       $value = key($fields);
       next($fields);
     }
-    if (isset($attr_infos['attributes'])) {
+    if (in_array('CompositeAttribute', $attr_infos['type']) && isset($attr_infos['attributes'])) {
       $subattrs = array();
       foreach ($attr_infos['attributes'] as $subattr => $subattr_infos) {
         if ($subattr_infos['visible']) {
