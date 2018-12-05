@@ -180,7 +180,7 @@ class registrationManagement extends management
       del_lock($entry['fdRegistrationUserDN']);
 
       // Unlock the user password if needed
-      $pwds = objects::ls('user', 'userPassword', $entry['fdRegistrationUserDN'], '(userPassword=*)', FALSE, 'base');
+      $pwds = objects::ls('user', 'userPassword', $userTabObject->dn, '(userPassword=*)', FALSE, 'base');
       if (!empty($pwds)) {
         $pwd    = reset($pwds);
         $method = passwordMethod::get_method($pwd, $entry['fdRegistrationUserDN']);
