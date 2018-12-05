@@ -140,8 +140,15 @@ class invitation extends simplePlugin
 
     $emails   = explode("\n", $this->emails);
     $success  = 0;
+    $failed   = array();
     foreach ($emails as $email) {
       if (empty($email)) {
+        continue;
+      }
+      $registrations = objects::count('registration', NULL, '(fdRegistrationEmailAddress='.ldap_escape_f($email).')');
+      if ($registrations > 0) {
+        $errors[] = sprintf(_('There is already a registration object for "%s"'), $email);
+        $failed[] = $email;
         continue;
       }
       $token  = standAlonePage::generateRandomHash();
@@ -160,13 +167,17 @@ class invitation extends simplePlugin
         $messages = $tabObject->save();
         if (!empty($messages)) {
           $errors[] = sprintf(_('Failed to create registration object for "%s", because of the following errors: %s'), $email, implode("\n", $messages));
+          $failed[] = $email;
         } else {
           $success++;
         }
       } else {
         $errors[] = sprintf(_('Failed to send invitation email to "%s". Check your email settings.'), $email);
+        $failed[] = $email;
       }
     }
+
+    $this->emails = implode("\n", $failed);
 
     if ($success > 0) {
       msg_dialog::display(_('Success'), sprintf(_('%d invitations were sent and saved successfully'), $success), INFO_DIALOG);
