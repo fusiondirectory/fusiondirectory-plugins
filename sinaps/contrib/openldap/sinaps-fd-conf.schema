@@ -1,0 +1,117 @@
+##
+## sinaps-fd-conf.schema - Needed by Fusion Directory for managing sinaps plugin configuration backend
+##
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.1 NAME 'fdSinapsEnabled'
+  DESC 'FusionDirectory - Sinaps plugin status'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.2 NAME 'fdSinapsAcknowledgmentURL'
+  DESC 'FusionDirectory - Sinaps Full URL to which functionnal acknowledgement should be sent'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.3 NAME 'fdSinapsLogin'
+  DESC 'FusionDirectory - Login to use for Basic Auth when contacting SINAPS services'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.4 NAME 'fdSinapsPassword'
+  DESC 'FusionDirectory - Password to use for Basic Auth when contacting SINAPS services'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.5 NAME 'fdSinapsDumpFolder'
+  DESC 'FusionDirectory - Folder in which received transactions should be dumped - absent means dump is disabled'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.6 NAME 'fdSinapsIdentifiantApplication'
+  DESC 'FusionDirectory - Application identifier present in cross references with FusionDirectory'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.7 NAME 'fdSinapsUuidPrefix'
+  DESC 'FusionDirectory - Prefix used for UUID in supannRefId'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.8 NAME 'fdSinapsAcquisitionURL'
+  DESC 'FusionDirectory - Full URL to which acquisiton events should be sent'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.9 NAME 'fdSinapsFDToken'
+  DESC 'FusionDirectory - One of these API tokens will need to be present in the diffusion URL used by SINAPS'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.10 NAME 'fdSinapsDryRun'
+  DESC 'FusionDirectory - Sinaps dry run mode'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.11 NAME 'fdSinapsUserBase'
+  DESC 'FusionDirectory - Base in which users should be created when receiving a SINAPS diffusion'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.12 NAME 'fdSinapsUserTemplate'
+  DESC 'FusionDirectory - User template to use for user creation from SINAPS diffusion'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.13 NAME 'fdSinapsIdentifiantApplicationSync'
+  DESC 'FusionDirectory - List of applications identifiers for which cross references should be synced from SINAPS'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.14 NAME 'fdSinapsAcquisitonTypeExterne'
+  DESC 'FusionDirectory - Set in typeExterne tag when sending acquisition data'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.15 NAME 'fdSinapsAcquisitionContactMethodMap'
+  DESC 'FusionDirectory - Which field to sync as contact methods in acquisition'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+objectclass ( 1.3.6.1.4.1.38414.65.2.1 NAME 'fdSinapsPluginConf'
+  DESC 'FusionDirectory sinaps plugin configuration'
+  SUP top AUXILIARY
+  MUST ( cn )
+  MAY (
+    fdSinapsEnabled $ fdSinapsAcknowledgmentURL $
+    fdSinapsLogin $ fdSinapsPassword $
+    fdSinapsDumpFolder $
+    fdSinapsIdentifiantApplication $ fdSinapsUuidPrefix $
+    fdSinapsAcquisitionURL $ fdSinapsFDToken $
+    fdSinapsDryRun $
+    fdSinapsUserBase $ fdSinapsUserTemplate $
+    fdSinapsIdentifiantApplicationSync $ fdSinapsAcquisitonTypeExterne $
+    fdSinapsAcquisitionContactMethodMap
+  ) )
