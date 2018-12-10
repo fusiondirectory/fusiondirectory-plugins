@@ -135,7 +135,3 @@ $sinapsHandler = new sinapsHandler();
 $sinapsHandler->execute();
 
 exit();
-
-/*TODO
- * Ignorer si date validité pas atteinte
- */

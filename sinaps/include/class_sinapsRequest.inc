@@ -18,6 +18,10 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+class sinapsRequestException extends Exception
+{
+}
+
 class sinapsRequest
 {
   protected $data;
@@ -26,19 +30,19 @@ class sinapsRequest
   {
     $this->data = new SimpleXMLElement($xml);
     if (!isset($this->data->domaine)) {
-      throw new Exception('XML content is missing "domaine" tag');
+      throw new sinapsRequestException('XML content is missing "domaine" tag');
     }
     if (!isset($this->data->domaine['code'])) {
-      throw new Exception('"domaine" tag is missing "code" attribute');
+      throw new sinapsRequestException('"domaine" tag is missing "code" attribute');
     }
     if (!isset($this->data->domaine->donnees->operation)) {
-      throw new Exception('XML content is missing "domaine>donnees>operation" tag');
+      throw new sinapsRequestException('XML content is missing "domaine>donnees>operation" tag');
     }
     if (!isset($this->data->domaine->donnees->operation['codeOperation'])) {
-      throw new Exception('"operation" tag is missing "codeOperation" attribute');
+      throw new sinapsRequestException('"operation" tag is missing "codeOperation" attribute');
     }
     if (!isset($this->data->domaine->identifiantTransaction)) {
-      throw new Exception('"identifiantTransaction" tag is missing from "domaine" tag');
+      throw new sinapsRequestException('"identifiantTransaction" tag is missing from "domaine" tag');
     }
   }
 
@@ -277,7 +281,6 @@ class sinapsRequest
     }
 
     if (isset($personne->prenoms)) {
-      //TODO stocker les autres prénoms?
       $values['user']['givenName'] = preg_replace('/;.*$/', '', $personne->prenoms);
     }
 
@@ -461,7 +464,6 @@ class sinapsRequest
 
   protected function getUUIDFromReferenceCroisee($identifiantApplication, $referenceCroisee)
   {
-    // TODO: warning si plusieurs?
     foreach ($referenceCroisee->identifiantsExternes as $ref) {
       if ($ref->identifiantApplication == $identifiantApplication) {
         return $ref->identifiantExterne;

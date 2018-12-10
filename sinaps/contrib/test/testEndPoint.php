@@ -35,7 +35,7 @@ function sendPost($url, $xml)
     } else {
       $errormsg = 'Unable to connect to '.$url;
     }
-    throw new Exception($errormsg);
+    die($errormsg);
   }
   exit();
 }

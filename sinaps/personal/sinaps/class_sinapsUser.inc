@@ -48,7 +48,6 @@ class sinapsUser extends simplePlugin
 
     /* Translate code entite to UUID refs
      * This is done here to make sure sinapsRequestAcquisition does not perform LDAP searches by itself
-     * TODO add a cache
      * */
     $entites = objects::ls(
       'entite',
@@ -124,6 +123,4 @@ class sinapsUser extends simplePlugin
     } catch (FusionDirectoryException $e) {
     }
   }
-
-  //~ TODO prepare_remove too?
 }

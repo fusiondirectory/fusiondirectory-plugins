@@ -70,7 +70,6 @@ class sinapsDiffusionHandlerJob
   {
     /* Translate UUID refs to code entite
      * This is done here to make sure sinapsRequest does not perform LDAP searches by itself
-     * TODO add a cache
      * */
     if (!preg_match('/^{'.$this->uuidPrefix.'}/', $uuid)) {
       $uuid = '{'.$this->uuidPrefix.'}'.$uuid;
@@ -238,7 +237,7 @@ class sinapsDiffusionHandlerJob
             $tabobject->by_object[$tab]->displayHeader &&
             $tabobject->by_object[$tab]->is_account
           ) {
-          list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
+          list($disabled, , $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
           if ($disabled) {
             return $text;
           }
@@ -249,7 +248,7 @@ class sinapsDiffusionHandlerJob
             $tabobject->by_object[$tab]->displayHeader &&
             !$tabobject->by_object[$tab]->is_account
           ) {
-          list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
+          list($disabled, , $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
           if ($disabled) {
             return $text;
           }

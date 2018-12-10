@@ -80,7 +80,6 @@ function codeEntiteToldapUuidCallback($codeEntite)
 
   /* Translate code entite to UUID refs
    * This is done here to make sure sinapsRequestAcquisition does not perform LDAP searches by itself
-   * TODO add a cache
    * */
   $entites = $client->ls(
     $session_id,
