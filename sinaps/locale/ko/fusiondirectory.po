@@ -2,49 +2,40 @@
 # Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# Choi Chris <chulwon.choi@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-12-10 23:16+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
-"Language-Team: English\n"
-"Language: en\n"
+"POT-Creation-Date: 2018-12-10 21:41+0000\n"
+"PO-Revision-Date: 2018-12-10 21:10+0000\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
+"Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: include/class_sinapsDiffusionHandlerJob.inc:294
 #: include/class_sinapsDiffusionHandlerJob.inc:315
 #, php-format
-msgid ""
-"Failed to get password method for account \"%s\". It has not been locked!"
-msgstr ""
+msgid "Failed to get password method for account \"%s\". It has not been locked!"
+msgstr "\"%s\" 계정의 패스워드를 가져올 수 없습니다. 잠겨있지 않습니다."
 
 #: include/class_sinapsDiffusionHandlerJob.inc:311
 #, php-format
-msgid ""
-"Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
-msgstr ""
+msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
+msgstr "\"%s\"의 패스워드를 잠글 수 없습니다. \"%s\" 계정이 잠겨있지 않습니다."
 
 #: include/class_sinapsDiffusionHandlerJob.inc:318
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
-msgstr ""
-
-#: personal/sinaps/class_sinapsUser.inc:26
-#: personal/sinaps/class_sinapsUser.inc:27
-#: config/sinaps/class_sinapsConfig.inc:43
-#: config/sinaps/class_sinapsConfig.inc:155
-msgid "Sinaps"
-msgstr ""
-
-#: personal/sinaps/class_sinapsUser.inc:28
-msgid "Used to send acquisition request for users"
-msgstr ""
+msgstr "LDAP에서 계정 \"%s\"을 찾을 수 없습니다. 잠겨있지 않습니다."
 
 #: config/sinaps/class_sinapsConfig.inc:28
 msgid "SINAPS configuration"
@@ -52,6 +43,13 @@ msgstr ""
 
 #: config/sinaps/class_sinapsConfig.inc:29
 msgid "FusionDirectory SINAPS plugin configuration"
+msgstr ""
+
+#: config/sinaps/class_sinapsConfig.inc:43
+#: config/sinaps/class_sinapsConfig.inc:155
+#: personal/sinaps/class_sinapsUser.inc:26
+#: personal/sinaps/class_sinapsUser.inc:27
+msgid "Sinaps"
 msgstr ""
 
 #: config/sinaps/class_sinapsConfig.inc:46
@@ -93,7 +91,8 @@ msgid "Application identifier"
 msgstr ""
 
 #: config/sinaps/class_sinapsConfig.inc:64
-msgid "Application identifier present in cross references with FusionDirectory"
+msgid ""
+"Application identifier present in cross references with FusionDirectory"
 msgstr ""
 
 #: config/sinaps/class_sinapsConfig.inc:70
@@ -102,8 +101,8 @@ msgstr ""
 
 #: config/sinaps/class_sinapsConfig.inc:70
 msgid ""
-"List of applications identifiers for which cross references should be synced "
-"from SINAPS"
+"List of applications identifiers for which cross references should be synced"
+" from SINAPS"
 msgstr ""
 
 #: config/sinaps/class_sinapsConfig.inc:76
@@ -119,7 +118,8 @@ msgid "User base"
 msgstr ""
 
 #: config/sinaps/class_sinapsConfig.inc:81
-msgid "Base in which users should be created when receiving a SINAPS diffusion"
+msgid ""
+"Base in which users should be created when receiving a SINAPS diffusion"
 msgstr ""
 
 #: config/sinaps/class_sinapsConfig.inc:86
@@ -136,8 +136,8 @@ msgstr ""
 
 #: config/sinaps/class_sinapsConfig.inc:91
 msgid ""
-"One of these API tokens will need to be present in the diffusion URL used by "
-"SINAPS"
+"One of these API tokens will need to be present in the diffusion URL used by"
+" SINAPS"
 msgstr ""
 
 #: config/sinaps/class_sinapsConfig.inc:98
@@ -162,7 +162,7 @@ msgstr ""
 
 #: config/sinaps/class_sinapsConfig.inc:110
 msgid "Password"
-msgstr ""
+msgstr "패스워드"
 
 #: config/sinaps/class_sinapsConfig.inc:110
 msgid "Password to use for Basic Auth when contacting SINAPS services"
@@ -194,4 +194,8 @@ msgstr ""
 
 #: config/sinaps/class_sinapsConfig.inc:155
 msgid "LDAP"
+msgstr "LDAP"
+
+#: personal/sinaps/class_sinapsUser.inc:28
+msgid "Used to send acquisition request for users"
 msgstr ""
