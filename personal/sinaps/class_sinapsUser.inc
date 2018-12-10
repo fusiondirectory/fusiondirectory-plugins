@@ -101,18 +101,27 @@ class sinapsUser extends simplePlugin
       $attributes[$ldapField] = 1;
     }
 
+    $attributes['dn'] = 'raw';
+
     $users  = objects::ls('user', $attributes, $this->dn, '', FALSE, 'base');
     $user   = reset($users);
 
-    $request = new sinapsRequestAcquisiton();
-    $request->fill($user, $config->get_cfg_value('SinapsUuidPrefix', 'LDAPUUID'), $config->get_cfg_value('SinapsAcquisitonTypeExterne', 'FD'), $mapping, array($this, 'codeEntiteToldapUuidCallback'));
-    $xml = $request->getXml();
-    $date = date('Y-m-d_H-i-s');
-    sinapsDiffusionHandlerJob::dumpFile($date.'_acquittement.xml', $xml);
+    if (!is_array($user)) {
+      return;
+    }
 
-    if ($config->get_cfg_value('SinapsDryRun') != 'TRUE') {
-      $answer = sinapsDiffusionHandlerJob::sendPostRequest($config->get_cfg_value('SinapsAcquisitionURL'), $config->get_cfg_value('SinapsLogin', 'fusiondirectory'), $config->get_cfg_value('SinapsPassword'), $xml);
-      sinapsDiffusionHandlerJob::dumpFile($date.'_acquittement-answer.xml', $answer);
+    try {
+      $request = new sinapsRequestAcquisiton();
+      $request->fill($user, $config->get_cfg_value('SinapsUuidPrefix', 'LDAPUUID'), $config->get_cfg_value('SinapsAcquisitonTypeExterne', 'FD'), $mapping, array($this, 'codeEntiteToldapUuidCallback'));
+      $xml = $request->getXml();
+      $date = date('Y-m-d_H-i-s');
+      sinapsDiffusionHandlerJob::dumpFile($date.'_acquittement.xml', $xml);
+
+      if ($config->get_cfg_value('SinapsDryRun') != 'TRUE') {
+        $answer = sinapsDiffusionHandlerJob::sendPostRequest($config->get_cfg_value('SinapsAcquisitionURL'), $config->get_cfg_value('SinapsLogin', 'fusiondirectory'), $config->get_cfg_value('SinapsPassword'), $xml);
+        sinapsDiffusionHandlerJob::dumpFile($date.'_acquittement-answer.xml', $answer);
+      }
+    } catch (FusionDirectoryException $e) {
     }
   }
 

@@ -51,9 +51,11 @@ class sinapsRequestAcquisiton
     $personne = $this->data->domaine->donnees->operation->personne;
 
     /* identifiantExternePersonne */
-    foreach ($user['supannRefId'] as $supannRefId) {
-      if (preg_match('/^{'.preg_quote($uuidPrefix).'}(.+)$/', $supannRefId, $m)) {
-        $uuid = $m[1];
+    if (isset($user['supannRefId'])) {
+      foreach ($user['supannRefId'] as $supannRefId) {
+        if (preg_match('/^{'.preg_quote($uuidPrefix).'}(.+)$/', $supannRefId, $m)) {
+          $uuid = $m[1];
+        }
       }
     }
     if (!isset($uuid)) {
