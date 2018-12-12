@@ -53,10 +53,6 @@ class sinapsConfig extends simplePlugin
             FALSE
           ),
           new StringAttribute (
-            _('Acknowledgement URL'), _('Full URL to which functionnal acknowledgement should be sent'),
-            'fdSinapsAcknowledgmentURL', FALSE
-          ),
-          new StringAttribute (
             _('Dump folder'), _('Folder in which received transactions should be dumped (leave empty to disable)'),
             'fdSinapsDumpFolder', FALSE
           ),
@@ -148,7 +144,7 @@ class sinapsConfig extends simplePlugin
       $attributesInfo = $this->getAttributesInfo();
     }
     $userTemplates = objects::getTemplates('user');
-    $attributesInfo['main']['attrs'][8]->setChoices(array_keys($userTemplates), array_values($userTemplates));
+    $attributesInfo['main']['attrs'][7]->setChoices(array_keys($userTemplates), array_values($userTemplates));
 
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
