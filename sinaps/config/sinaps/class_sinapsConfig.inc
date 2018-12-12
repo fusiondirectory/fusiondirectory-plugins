@@ -98,7 +98,7 @@ class sinapsConfig extends simplePlugin
         'name'  => _('Sinaps Acquisition'),
         'attrs' => array(
           new StringAttribute (
-            _('Acquisiton URL'), _('Full URL to which acquisiton events should be sent'),
+            _('Acquisition URL'), _('Full URL to which acquisition events should be sent'),
             'fdSinapsAcquisitionURL', FALSE
           ),
           new StringAttribute (
@@ -112,7 +112,7 @@ class sinapsConfig extends simplePlugin
           ),
           new StringAttribute (
             _('Acquisition external type'), _('Set in typeExterne tag when sending acquisition data'),
-            'fdSinapsAcquisitonTypeExterne', TRUE,
+            'fdSinapsAcquisitionTypeExterne', TRUE,
             'FD'
           ),
           new OrderedArrayAttribute (

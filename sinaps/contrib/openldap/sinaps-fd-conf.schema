@@ -51,7 +51,7 @@ attributetype ( 1.3.6.1.4.1.38414.65.1.7 NAME 'fdSinapsUuidPrefix'
   SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.38414.65.1.8 NAME 'fdSinapsAcquisitionURL'
-  DESC 'FusionDirectory - Full URL to which acquisiton events should be sent'
+  DESC 'FusionDirectory - Full URL to which acquisition events should be sent'
   EQUALITY caseExactMatch
   SUBSTR caseExactSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
@@ -87,7 +87,7 @@ attributetype ( 1.3.6.1.4.1.38414.65.1.13 NAME 'fdSinapsIdentifiantApplicationSy
   SUBSTR caseExactSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
-attributetype ( 1.3.6.1.4.1.38414.65.1.14 NAME 'fdSinapsAcquisitonTypeExterne'
+attributetype ( 1.3.6.1.4.1.38414.65.1.14 NAME 'fdSinapsAcquisitionTypeExterne'
   DESC 'FusionDirectory - Set in typeExterne tag when sending acquisition data'
   EQUALITY caseExactMatch
   SUBSTR caseExactSubstringsMatch
@@ -112,6 +112,6 @@ objectclass ( 1.3.6.1.4.1.38414.65.2.1 NAME 'fdSinapsPluginConf'
     fdSinapsAcquisitionURL $ fdSinapsFDToken $
     fdSinapsDryRun $
     fdSinapsUserBase $ fdSinapsUserTemplate $
-    fdSinapsIdentifiantApplicationSync $ fdSinapsAcquisitonTypeExterne $
+    fdSinapsIdentifiantApplicationSync $ fdSinapsAcquisitionTypeExterne $
     fdSinapsAcquisitionContactMethodMap
   ) )
