@@ -90,7 +90,7 @@ class sinapsUser extends simplePlugin
       return array('Sinaps acquisition URL is not filled in FusionDirectory configuration');
     }
 
-    $attributes = sinapsRequestAcquisiton::$attributes;
+    $attributes = sinapsRequestAcquisition::$attributes;
 
     $mapping = array();
     foreach ($config->get_cfg_value('SinapsAcquisitionContactMethodMap', array()) as $field) {
@@ -110,8 +110,8 @@ class sinapsUser extends simplePlugin
     }
 
     try {
-      $request = new sinapsRequestAcquisiton();
-      $request->fill($user, $config->get_cfg_value('SinapsUuidPrefix', 'LDAPUUID'), $config->get_cfg_value('SinapsAcquisitonTypeExterne', 'FD'), $mapping, array($this, 'codeEntiteToldapUuidCallback'));
+      $request = new sinapsRequestAcquisition();
+      $request->fill($user, $config->get_cfg_value('SinapsUuidPrefix', 'LDAPUUID'), $config->get_cfg_value('SinapsAcquisitionTypeExterne', 'FD'), $mapping, array($this, 'codeEntiteToldapUuidCallback'));
       $xml = $request->getXml();
       $date = date('Y-m-d_H-i-s');
       sinapsDiffusionHandlerJob::dumpFile($date.'_acquittement.xml', $xml);
