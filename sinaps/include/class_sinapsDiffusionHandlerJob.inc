@@ -21,7 +21,6 @@
 class sinapsDiffusionHandlerJob
 {
   protected $dryRun;
-  protected $ackUrl;
   protected $acqUrl;
   protected $login;
   protected $password;
@@ -40,7 +39,6 @@ class sinapsDiffusionHandlerJob
     $this->request = $request;
 
     $this->dryRun                     = ($config->get_cfg_value('SinapsDryRun') == 'TRUE');
-    $this->ackUrl                     = $config->get_cfg_value('SinapsAcknowledgmentURL');
     $this->acqUrl                     = $config->get_cfg_value('SinapsAcquisitionURL');
     $this->login                      = $config->get_cfg_value('SinapsLogin');
     $this->password                   = $config->get_cfg_value('SinapsPassword');
