@@ -121,7 +121,7 @@ try {
       'fdSinapsLogin'                       => 1,
       'fdSinapsPassword'                    => 1,
       'fdSinapsUuidPrefix'                  => 1,
-      'fdSinapsAcquisitonTypeExterne'       => 1,
+      'fdSinapsAcquisitionTypeExterne'      => 1,
       'fdSinapsAcquisitionContactMethodMap' => '*',
     )
   );
@@ -141,11 +141,11 @@ try {
   if (!isset($configuration['fdSinapsLogin'])) {
     $configuration['fdSinapsLogin'] = 'fusiondirectory';
   }
-  if (!isset($configuration['fdSinapsAcquisitonTypeExterne'])) {
-    $configuration['fdSinapsAcquisitonTypeExterne'] = 'FD';
+  if (!isset($configuration['fdSinapsAcquisitionTypeExterne'])) {
+    $configuration['fdSinapsAcquisitionTypeExterne'] = 'FD';
   }
 
-  $attributes = sinapsRequestAcquisiton::$attributes;
+  $attributes = sinapsRequestAcquisition::$attributes;
 
   $mapping = array();
   foreach ($configuration['fdSinapsAcquisitionContactMethodMap'] as $field) {
@@ -158,8 +158,8 @@ try {
   $users = $client->ls($session_id, 'user', $attributes, $options['dn']);
   $user = reset($users);
 
-  $request = new sinapsRequestAcquisiton();
-  $request->fill($user, $configuration['fdSinapsUuidPrefix'], $configuration['fdSinapsAcquisitonTypeExterne'], $mapping, 'codeEntiteToldapUuidCallback');
+  $request = new sinapsRequestAcquisition();
+  $request->fill($user, $configuration['fdSinapsUuidPrefix'], $configuration['fdSinapsAcquisitionTypeExterne'], $mapping, 'codeEntiteToldapUuidCallback');
   $xml = $request->getXml();
   echo "Request:\n$xml\n";
 
