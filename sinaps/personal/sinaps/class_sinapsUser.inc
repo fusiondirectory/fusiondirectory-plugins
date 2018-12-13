@@ -33,13 +33,25 @@ class sinapsUser extends simplePlugin
       //~ 'plIcon'          => '',
       //~ 'plSmallIcon'     => '',
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => array()
     );
   }
 
   static function getAttributesInfo ()
   {
-    return array();
+    return array(
+      'main' => array(
+        'name'  => _('Sinaps'),
+        'class' => array('fullwidth'),
+        'attrs' => array(
+          new DisplayAttribute (
+            '', '',
+            'sinaps_explanation', FALSE,
+            _('This tab takes care of sending Acquisition event to Sinaps whenever a user is modified.')
+          ),
+        )
+      )
+    );
   }
 
   function codeEntiteToldapUuidCallback($codeEntite)
