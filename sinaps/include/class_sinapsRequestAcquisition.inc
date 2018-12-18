@@ -46,7 +46,7 @@ class sinapsRequestAcquisition
     $this->data = new SimpleXMLElement($xml);
   }
 
-  public function fill(array $user, string $uuidPrefix, string $typeExterne, array $methodeContactMapping, $codeEntiteToldapUuidCallback)
+  public function fill(array $user, string $uuidPrefix, string $typeExterne, array $methodeContactMapping, $codeEntiteToldapUuidCallback, $contractEnded = FALSE)
   {
     $personne = $this->data->domaine->donnees->operation->personne;
 
@@ -62,6 +62,11 @@ class sinapsRequestAcquisition
       throw new FusionDirectoryException('Cound not find uuid in supannRefId');
     }
     $personne->identifiantExternePersonne = $uuid;
+
+    if ($contractEnded) {
+      $personne->dateSuppression = date('Y-m-d');
+      return;
+    }
 
     /* methodesDeContact */
     $i = 0;
