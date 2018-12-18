@@ -102,6 +102,20 @@ class sinapsUser extends simplePlugin
       return array('Sinaps acquisition URL is not filled in FusionDirectory configuration');
     }
 
+    $contractEnded = FALSE;
+    if (isset($this->parent->by_object['personalInfo'])) {
+      $fdContractEndDate  = $this->parent->by_object['personalInfo']->attributesAccess['fdContractEndDate']->getDateValue();
+      $tomorrow           = new DateTime('tomorrow');
+      if ($fdContractEndDate < $tomorrow) {
+        if ($this->parent->by_object['personalInfo']->attributesAccess['fdContractEndDate']->hasChanged()) {
+          $contractEnded = TRUE;
+        } else {
+          /* Do not sync already deleted users */
+          return;
+        }
+      }
+    }
+
     $attributes = sinapsRequestAcquisition::$attributes;
 
     $mapping = array();
@@ -123,7 +137,7 @@ class sinapsUser extends simplePlugin
 
     try {
       $request = new sinapsRequestAcquisition();
-      $request->fill($user, $config->get_cfg_value('SinapsUuidPrefix', 'LDAPUUID'), $config->get_cfg_value('SinapsAcquisitionTypeExterne', 'FD'), $mapping, array($this, 'codeEntiteToldapUuidCallback'));
+      $request->fill($user, $config->get_cfg_value('SinapsUuidPrefix', 'LDAPUUID'), $config->get_cfg_value('SinapsAcquisitionTypeExterne', 'FD'), $mapping, array($this, 'codeEntiteToldapUuidCallback'), $contractEnded);
       $xml = $request->getXml();
       $date = date('Y-m-d_H-i-s');
       sinapsDiffusionHandlerJob::dumpFile($date.'_acquittement.xml', $xml);
