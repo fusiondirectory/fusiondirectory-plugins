@@ -396,7 +396,7 @@ class supannAccount extends simplePlugin
                   'supannEtuCursusAnnee_cursusann', TRUE
                 ),
                 new SelectAttribute(
-                  _('Entity assignment'), _('supannEntiteAffectation'),
+                  _('Entity assignment'), _('supannEntiteAffectation - To wich entities does this user belong to'),
                   'supannEntiteAffectation_affect', FALSE
                 ),
                 new SupannPrefixedSelectAttribute(
