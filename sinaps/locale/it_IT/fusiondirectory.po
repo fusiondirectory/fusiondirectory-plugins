@@ -5,15 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Paola Penati <paola.penati@opensides.be>, 2018
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-12-10 21:41+0000\n"
+"POT-Creation-Date: 2018-12-19 15:03+0000\n"
 "PO-Revision-Date: 2018-12-10 21:10+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,185 +22,201 @@ msgstr ""
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: include/class_sinapsDiffusionHandlerJob.inc:294
-#: include/class_sinapsDiffusionHandlerJob.inc:315
+#: include/class_sinapsDiffusionHandlerJob.inc:292
+#: include/class_sinapsDiffusionHandlerJob.inc:313
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr ""
 "Impossibile ottenere metodo di password per l'account\"%s\". Non è stato "
 "bloccato!"
 
-#: include/class_sinapsDiffusionHandlerJob.inc:311
+#: include/class_sinapsDiffusionHandlerJob.inc:309
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr ""
 "Il metodo di bloccaggio \"%s\" é fallito. L'account \"%s\" non é stato "
 "bloccato!"
 
-#: include/class_sinapsDiffusionHandlerJob.inc:318
+#: include/class_sinapsDiffusionHandlerJob.inc:316
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr "Account \"%s\" non trovato nella LDAP. Non é stato bloccato!"
 
 #: config/sinaps/class_sinapsConfig.inc:28
 msgid "SINAPS configuration"
-msgstr ""
+msgstr "Configurazione SINAPS"
 
 #: config/sinaps/class_sinapsConfig.inc:29
 msgid "FusionDirectory SINAPS plugin configuration"
-msgstr ""
+msgstr "Configurazione del plugin SINAPS di FusionDirectory"
 
 #: config/sinaps/class_sinapsConfig.inc:43
-#: config/sinaps/class_sinapsConfig.inc:155
+#: config/sinaps/class_sinapsConfig.inc:151
 #: personal/sinaps/class_sinapsUser.inc:26
 #: personal/sinaps/class_sinapsUser.inc:27
+#: personal/sinaps/class_sinapsUser.inc:44
 msgid "Sinaps"
-msgstr ""
+msgstr "Sinaps"
 
 #: config/sinaps/class_sinapsConfig.inc:46
 msgid "Enable SINAPS integration"
-msgstr ""
+msgstr "Abilita l'integrazione SINAPS"
 
 #: config/sinaps/class_sinapsConfig.inc:46
 msgid "Whether to enable the SINAPS integration"
-msgstr ""
+msgstr "Se abilitare l'integrazione SINAPS"
 
 #: config/sinaps/class_sinapsConfig.inc:51
 msgid "Dry run mode"
-msgstr ""
+msgstr "Modalità di funzionamento a secco"
 
 #: config/sinaps/class_sinapsConfig.inc:51
 msgid "Do not insert data in FusionDirectory, dump it to a file"
-msgstr ""
+msgstr "Non inserire dati in FusionDirectory, trasferiscili in un file"
 
 #: config/sinaps/class_sinapsConfig.inc:56
-msgid "Acknowledgement URL"
-msgstr ""
-
-#: config/sinaps/class_sinapsConfig.inc:56
-msgid "Full URL to which functionnal acknowledgement should be sent"
-msgstr ""
-
-#: config/sinaps/class_sinapsConfig.inc:60
 msgid "Dump folder"
-msgstr ""
+msgstr "Cartella rifiuti"
 
-#: config/sinaps/class_sinapsConfig.inc:60
+#: config/sinaps/class_sinapsConfig.inc:56
 msgid ""
 "Folder in which received transactions should be dumped (leave empty to "
 "disable)"
 msgstr ""
+"Cartella in cui le transazioni ricevute devono essere scaricate (lasciare "
+"vuoto per disabilitare)"
 
-#: config/sinaps/class_sinapsConfig.inc:64
+#: config/sinaps/class_sinapsConfig.inc:60
 msgid "Application identifier"
-msgstr ""
+msgstr "Identificativo dell'applicazione"
 
-#: config/sinaps/class_sinapsConfig.inc:64
+#: config/sinaps/class_sinapsConfig.inc:60
 msgid ""
 "Application identifier present in cross references with FusionDirectory"
 msgstr ""
+"Identificatore dell'applicazione presente nei riferimenti incrociati con "
+"FusionDirectory"
 
-#: config/sinaps/class_sinapsConfig.inc:70
+#: config/sinaps/class_sinapsConfig.inc:66
 msgid "Applications identifiers to sync"
-msgstr ""
+msgstr "Identificativi delle applicazioni da sincronizzare"
 
-#: config/sinaps/class_sinapsConfig.inc:70
+#: config/sinaps/class_sinapsConfig.inc:66
 msgid ""
 "List of applications identifiers for which cross references should be synced"
 " from SINAPS"
 msgstr ""
+"Elenco di identificatori di applicazioni per i quali i riferimenti "
+"incrociati devono essere sincronizzati da SINAPS"
 
-#: config/sinaps/class_sinapsConfig.inc:76
+#: config/sinaps/class_sinapsConfig.inc:72
 msgid "UUID prefix"
-msgstr ""
+msgstr "Prefisso UUID"
 
-#: config/sinaps/class_sinapsConfig.inc:76
+#: config/sinaps/class_sinapsConfig.inc:72
 msgid "Prefix used for UUID in supannRefId"
-msgstr ""
+msgstr "Prefisso utilizzato per UUID in supannRefId"
 
-#: config/sinaps/class_sinapsConfig.inc:81
+#: config/sinaps/class_sinapsConfig.inc:77
 msgid "User base"
-msgstr ""
+msgstr "Base utente"
 
-#: config/sinaps/class_sinapsConfig.inc:81
+#: config/sinaps/class_sinapsConfig.inc:77
 msgid ""
 "Base in which users should be created when receiving a SINAPS diffusion"
 msgstr ""
+"Base in cui devono essere creati gli utenti quando si riceve una diffusione "
+"SINAPS"
 
-#: config/sinaps/class_sinapsConfig.inc:86
+#: config/sinaps/class_sinapsConfig.inc:82
 msgid "User template"
-msgstr ""
+msgstr "Modello utente"
 
-#: config/sinaps/class_sinapsConfig.inc:86
+#: config/sinaps/class_sinapsConfig.inc:82
 msgid "User template to use for user creation from SINAPS diffusion"
 msgstr ""
+"Modello utente da utilizzare per la creazione dell'utente dalla diffusione "
+"SINAPS"
 
-#: config/sinaps/class_sinapsConfig.inc:91
+#: config/sinaps/class_sinapsConfig.inc:87
 msgid "API Tokens"
-msgstr ""
+msgstr "Token API "
 
-#: config/sinaps/class_sinapsConfig.inc:91
+#: config/sinaps/class_sinapsConfig.inc:87
 msgid ""
 "One of these API tokens will need to be present in the diffusion URL used by"
 " SINAPS"
 msgstr ""
+"Uno di questi token API dovrà essere presente nell'URL di diffusione "
+"utilizzato da SINAPS"
 
-#: config/sinaps/class_sinapsConfig.inc:98
+#: config/sinaps/class_sinapsConfig.inc:94
 msgid "Sinaps Acquisition"
-msgstr ""
+msgstr "Sinaps Acquisition"
+
+#: config/sinaps/class_sinapsConfig.inc:97
+msgid "Acquisition URL"
+msgstr "URL di acquisizione"
+
+#: config/sinaps/class_sinapsConfig.inc:97
+msgid "Full URL to which acquisition events should be sent"
+msgstr "URL completo a cui devono essere inviati gli eventi di acquisizione"
 
 #: config/sinaps/class_sinapsConfig.inc:101
-msgid "Acquisiton URL"
-msgstr ""
-
-#: config/sinaps/class_sinapsConfig.inc:101
-msgid "Full URL to which acquisiton events should be sent"
-msgstr ""
-
-#: config/sinaps/class_sinapsConfig.inc:105
 msgid "Login"
 msgstr "Nome utente"
 
-#: config/sinaps/class_sinapsConfig.inc:105
+#: config/sinaps/class_sinapsConfig.inc:101
 msgid "Login to use for Basic Auth when contacting SINAPS services"
 msgstr ""
+"Login da utilizzare per Basic Auth quando si contattano i servizi SINAPS"
 
-#: config/sinaps/class_sinapsConfig.inc:110
+#: config/sinaps/class_sinapsConfig.inc:106
 msgid "Password"
 msgstr "Password"
 
-#: config/sinaps/class_sinapsConfig.inc:110
+#: config/sinaps/class_sinapsConfig.inc:106
 msgid "Password to use for Basic Auth when contacting SINAPS services"
 msgstr ""
+"Password da utilizzare per l'autenticazione di base quando si contattano i "
+"servizi SINAPS"
 
-#: config/sinaps/class_sinapsConfig.inc:114
+#: config/sinaps/class_sinapsConfig.inc:110
 msgid "Acquisition external type"
-msgstr ""
+msgstr "Acquisizione tipo esterno"
 
-#: config/sinaps/class_sinapsConfig.inc:114
+#: config/sinaps/class_sinapsConfig.inc:110
 msgid "Set in typeExterne tag when sending acquisition data"
-msgstr ""
+msgstr "Imposta il tag typeExterne quando invii i dati di acquisizione"
+
+#: config/sinaps/class_sinapsConfig.inc:116
+msgid "Which field to sync as contact methods in acquisition"
+msgstr "Quale campo sincronizzare come metodi di contatto nell'acquisizione"
 
 #: config/sinaps/class_sinapsConfig.inc:120
-msgid "Which field to sync as contact methods in acquisition"
-msgstr ""
+msgid "Name of an LDAP attribute"
+msgstr "Nome di un attributo LDAP"
 
 #: config/sinaps/class_sinapsConfig.inc:124
-msgid "Name of an LDAP attribute"
-msgstr ""
-
-#: config/sinaps/class_sinapsConfig.inc:128
 msgid "Name of the Sinaps attribute"
-msgstr ""
+msgstr "Nome dell'attributo Sinaps"
 
-#: config/sinaps/class_sinapsConfig.inc:133
+#: config/sinaps/class_sinapsConfig.inc:129
 msgid "Contact methods"
-msgstr ""
+msgstr "Metodi di contatto"
 
-#: config/sinaps/class_sinapsConfig.inc:155
+#: config/sinaps/class_sinapsConfig.inc:151
 msgid "LDAP"
 msgstr "LDAP"
 
 #: personal/sinaps/class_sinapsUser.inc:28
 msgid "Used to send acquisition request for users"
+msgstr "Utilizzato per inviare una richiesta di acquisizione per gli utenti"
+
+#: personal/sinaps/class_sinapsUser.inc:50
+msgid ""
+"This tab takes care of sending Acquisition event to Sinaps whenever a user "
+"is modified."
 msgstr ""
+"Questa tab si occupa dell'invio di eventi di acquisizione a Sinaps ogni "
+"volta che un utente viene modificato."
