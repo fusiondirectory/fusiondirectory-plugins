@@ -61,6 +61,7 @@ class webApplication extends simplePlugin
           ),
         )
       ),
+
       'icon' => array(
         'name'  => _('Icon'),
         'attrs' => array(
@@ -75,6 +76,16 @@ class webApplication extends simplePlugin
           ),
         )
       ),
+      'roles' => array(
+        'name'  => _('Rôles'),
+        'attrs' => array(
+          new ArrayAttribute (
+            _('AvailablesRoles'), _('Roles availables on application'),
+            'fdApplicationAvailablesRoles', FALSE
+          ),
+        )
+      ),
+      
     );
   }
 }
