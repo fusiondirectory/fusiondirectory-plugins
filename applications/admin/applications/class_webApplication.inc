@@ -79,9 +79,11 @@ class webApplication extends simplePlugin
       'roles' => array(
         'name'  => _('Rôles'),
         'attrs' => array(
-          new ArrayAttribute (
-            _('AvailablesRoles'), _('Roles availables on application'),
-            'fdApplicationAvailablesRoles', FALSE
+          new SetAttribute(
+            new StringAttribute(
+              _('AvailablesRoles'), _('Roles availables on application'),
+              'fdApplicationAvailablesRoles', FALSE
+            )
           ),
         )
       ),
