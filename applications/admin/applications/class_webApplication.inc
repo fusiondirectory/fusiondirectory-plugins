@@ -79,14 +79,32 @@ class webApplication extends simplePlugin
       'roles' => array(
         'name'  => _('Rôles'),
         'attrs' => array(
-          new SetAttribute(
-            new StringAttribute(
-              _('AvailablesRoles'), _('Roles availables on application'),
-              'fdApplicationAvailablesRoles', FALSE
+          new OrderedArrayAttribute(
+            new PipeSeparatedCompositeAttribute(
+              _('Roles used per application'),
+              'fdApplicationAvailablesRoles',
+              array(
+                new StringAttribute(
+                  _('Code'),
+                  _('Short of this role'),
+                  'RoleShortCode',
+                  TRUE),
+                new StringAttribute(
+                  _('Description'),
+                  _('Description of this Role'),
+                  'RoleDesc',
+                  FALSE),
+                )
+              ),
+              // no order
+              FALSE,
+              array(),
+              // edit button
+              TRUE
             )
           ),
         )
-      ),
+      //),
       
     );
   }
