@@ -28,6 +28,121 @@
 
  */
  
+/* class for selection application */
+
+
+class ApplicationSelectAttribute extends CompositeAttribute
+{
+  protected $applicationChoices;
+
+  
+
+  function __construct($label, $description, $ldapName, $required, $filename, $acl = "")
+  {
+    $attributes = array(
+      new SelectAttribute('', '', $ldapName.'_app', $required),
+      new SelectAttribute('', '', $ldapName.'_role', $required)
+    );
+    parent::__construct($description, $ldapName, $attributes, '/^{(.*)}(.*)$/', '{%s}%s', $acl, $label);
+    $this->setLinearRendering(TRUE);
+
+//   $allApplications = objects::ls('webapplications',array('cn'=>1,'fdApplicationTitle' => 1, 'fdApplicationAvailablesRoles' => '*' ),NULL,'(objectClass=fdWebApplication)');
+//    var_dump($allApplications);
+
+//    $allchoices=array();
+//    $allRolesCode=array();
+//    $allRolesDesc=array();
+/*    foreach($allApplications as $key => $value){
+	    $allRolesCode=[];
+	    $allRolesDesc=[];
+	    foreach( $value['fdApplicationAvailablesRoles'] as $k => $v){
+		    $splitRoles=explode("|",$v);
+		    $allRolesCode[]=$splitRoles[0];
+		    $allRolesDesc[]=$splitRoles[1];
+	    }
+      	$allchoices[]=array($value =>array($allRolesCode,$allRolesDesc));
+    }
+
+    var_dump($allchoices); */
+
+
+
+    /*  $this->applicationChoices = FIXME: list des application */
+    /* a requeter depsui la bracnhe */
+
+    $this->applicationChoices = array("color" => array(array("blue", "red", "green"),array("bleu","rouge","vert")),
+	    			      "size" => array(array("small", "medium", "large"),array("petit","moyen","grand")));
+    
+    if (!$required) {
+      $this->applicationChoices[''] = array(array(''), array(_('None')));
+    }
+    $this->attributes[0]->setChoices(array_keys($this->applicationChoices));
+    $this->attributes[0]->setSubmitForm(TRUE);
+    $this->applicationUpdateSelect();
+    $this->setRequired($required);
+  }
+
+  protected function applicationUpdateSelect()
+  {
+    $prefix = $this->attributes[0]->getValue();
+    if (!isset($this->applicationChoices[$prefix])) {
+      $this->applicationChoices[$prefix] = array(array(), array());
+    }
+    $this->attributes[1]->setChoices($this->applicationChoices[$prefix][0], $this->applicationChoices[$prefix][1]);
+    $this->attributes[1]->setRequired($prefix != '');
+  }
+
+  function applyPostValue()
+  {
+    parent::applyPostValue();
+    $this->applicationUpdateSelect();
+  }
+
+  function setValue ($values)
+  {
+    if (!is_array($values)) {
+      $values = $this->inputValue($values);
+    }
+    $this->attributes[0]->setValue($values[0]);
+    $this->applicationUpdateSelect();
+    $this->attributes[1]->setValue($values[1]);
+  }
+
+  function resetToDefault ()
+  {
+    $this->attributes[0]->resetToDefault();
+    $this->applicationUpdateSelect();
+    $this->attributes[1]->resetToDefault();
+  }
+
+  function writeValues (array $values)
+  {
+    if ($values[0] == '') {
+      return '';
+    } else {
+      return parent::writeValues($values);
+    }
+  }
+
+  function displayValue($values)
+  {
+    if (!is_array($values)) {
+      $values = $this->inputValue($values);
+    }
+    $this->setValue($values);
+    $v1 = $this->attributes[0]->displayValue($values[0]);
+    $choices2 = $this->attributes[1]->getDisplayChoices();
+    if (isset($choices2[$values[1]])) {
+      $v2 = $choices2[$values[1]];
+      } else {
+      $v2 = $values[1];
+    }
+    return ($v1 == '' ? $v2 : $v1.': '.$v2);
+  }
+}
+
+
+
  
 
 
@@ -44,8 +159,8 @@ class applicationAccount extends simplePlugin
     return array(
       'plShortName'     => _('Applications'),
       'plDescription'   => _('applications settings'),
-      'plIcon'          => 'geticon.php?context=applications&icon=seafile&size=48',
-      'plSmallIcon'     => 'geticon.php?context=applications&icon=seafile&size=16',
+      'plIcon'          => 'geticon.php?context=applications&icon=applications&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=applications&size=16',
       'plDepends'       => array(),
       'plSelfModify'    => FALSE,
       'plPriority'      => 4,
@@ -64,21 +179,27 @@ class applicationAccount extends simplePlugin
     return array (
       'main' => array (
         'name'  => _('Applications account'),
-        'attrs' => array (
-      
-          new CompositeAttribute (
-            _('Informations for ftp login'),
-              'ftpLoginInfo',
-            array(
-              new StringAttribute (_('Login'),    _('Login for FTP'),     'ftpLogin'),
-              new StringAttribute (_('Password'), _('Password for FTP'),  'ftpPassword'),
-              new StringAttribute (_('Host'),     _('Host for FTP'),      'ftpHost'),
-              new IntAttribute    (_('Port'),     _('Port for FTP'),      'ftpPort', FALSE, 0, FALSE, 21),
-            ),
-          'ftp://%[^@:]:%[^@:]@%[^@:]:%d', // sscanf format
-          'ftp://%s:%s@%s:%d'              // sprintf format
+	'attrs' => array (
+          new OrderedArrayAttribute(
+            new PipeSeparatedCompositeAttribute(
+              _('Roles per each applications'),
+              'fdApplicationRoles',
+              array(
+                new applicationSelectAttribute(
+                  _('Roles'), _('Applications Roles - roles available for each applications'),
+                  'fdApplicationRoles', FALSE, 'webApplication'
+                  ),
+                )
+              ),
+              // no order
+              FALSE,
+              array(),
+              // edit button
+              TRUE
+            )
+          )
         ),
-      ),
+      
     );
   }
 
