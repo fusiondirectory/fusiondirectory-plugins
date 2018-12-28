@@ -40,15 +40,15 @@ attributetype ( 1.3.6.1.4.1.38414.46.10.6 NAME 'fdApplicationFlags'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
 # roles APP_ROLES per app
-attributetype ( 1.3.6.1.4.1.38414.46.10.7 NAME 'fdApplicationAvailablesRoles'
-  DESC 'FusionDirectory - Specifies the application Roles available per application - informations affects users'
+attributetype ( 1.3.6.1.4.1.38414.46.10.7 NAME 'fdApplicationAvailablesProfiles'
+  DESC 'FusionDirectory - Specifies the application profiles available per application - informations affects applications'
   EQUALITY caseIgnoreIA5Match
   SUBSTR caseIgnoreIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
 ### list of roles per user
-attributetype ( 1.3.6.1.4.1.38414.46.10.8 NAME 'fdApplicationRoles'
-  DESC 'FusionDirectory - Specifies the application Roles available per application - informations affects users'
+attributetype ( 1.3.6.1.4.1.38414.46.10.8 NAME 'fdApplicationProfiles'
+  DESC 'FusionDirectory - Specifies the application profiles available per application - informations affects users'
   EQUALITY caseIgnoreIA5Match
   SUBSTR caseIgnoreIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
@@ -70,7 +70,7 @@ objectclass ( 1.3.6.1.4.1.38414.46.2.1 NAME 'fdDesktopApplication'
 objectclass ( 1.3.6.1.4.1.38414.46.2.2 NAME 'fdWebApplication'
   DESC 'FusionDirectory - Web Applications storage for FusionDirectory'
   MUST ( cn $ labeledURI )
-  MAY ( fdApplicationTitle $ fdApplicationImage $ fdApplicationImageLocation $ description $ fdApplicationAvailablesRoles))
+  MAY ( fdApplicationTitle $ fdApplicationImage $ fdApplicationImageLocation $ description $ fdApplicationAvailablesProfiles))
 
 objectclass ( 1.3.6.1.4.1.38414.46.2.3 NAME 'fdApplicationRights'
   SUP top AUXILIARY
@@ -81,7 +81,7 @@ objectclass ( 1.3.6.1.4.1.38414.46.2.3 NAME 'fdApplicationRights'
 #### user class
 objectclass ( 1.3.6.1.4.1.38414.46.2.4 NAME 'fdApplicationAccount'
   SUP top AUXILIARY
-  DESC 'FusionDirectory - Class for affecting application clas and roles'
-  MUST ( fdApplicationRoles )
+  DESC 'FusionDirectory - Class for affecting application profiles to user'
+  MUST ( fdApplicationProfiles )
   MAY (  ))
 

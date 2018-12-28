@@ -49,14 +49,14 @@ class ApplicationSelectAttribute extends CompositeAttribute
     /* list of entity stored in LDAP tree */
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=fdWebApplication)', array('cn', 'fdApplicationAvailablesRoles'));
+    $ldap->search('(objectClass=fdWebApplication)', array('cn', 'fdApplicationAvailablesProfiles'));
 
     while ($attrs = $ldap->fetch()) {
       if (isset($attrs['cn'][0])) {
 	 $app = $attrs['cn'][0];
 	 $allRolesCode=[];
 	 $allRolesDesc=[];
-	foreach($attrs['fdApplicationAvailablesRoles'] as $val){
+	foreach($attrs['fdApplicationAvailablesProfiles'] as $val){
 		$splitRoles=explode('|',$val);
 		$allRolesCode[]=$splitRoles[0];
 		$allRolesDesc[]=$splitRoles[1];
@@ -180,11 +180,11 @@ class applicationAccount extends simplePlugin
           new OrderedArrayAttribute(
             new PipeSeparatedCompositeAttribute(
               _('Profiles per each applications'),
-              'fdApplicationRoles',
+              'fdApplicationProfiles',
               array(
                 new ApplicationSelectAttribute(
                   _('Profiles'), _('Applications Profiles - Profiles available for each applications'),
-                  'fdApplicationRoles', TRUE, 'webApplication'
+                  'fdApplicationProfiles', TRUE, 'webApplication'
                   ),
                 )
               ),

@@ -77,12 +77,13 @@ class webApplication extends simplePlugin
         )
       ),
       'roles' => array(
-        'name'  => _('Rôles'),
+	      'name'  => _('Profiles'),
+	      'class' => array('fullwidth'),
         'attrs' => array(
           new OrderedArrayAttribute(
-            new PipeSeparatedCompositeAttribute(
-              _('Roles used per application'),
-              'fdApplicationAvailablesRoles',
+	    new PipeSeparatedCompositeAttribute(
+              _('Profiles availables'),
+              'fdApplicationAvailablesProfiles',
               array(
                 new StringAttribute(
                   _('Code'),
