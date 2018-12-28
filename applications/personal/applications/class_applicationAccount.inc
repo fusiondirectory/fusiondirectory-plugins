@@ -21,7 +21,7 @@
 
 
 /*!
-  \brief   seafile plugin
+  \brief   application plugin
 
   This class provides the functionality to read and write all informations 
   for creating / editing / deleting remote seafiel account.
@@ -51,7 +51,6 @@ class ApplicationSelectAttribute extends CompositeAttribute
     $ldap->cd($config->current['BASE']);
     $ldap->search('(objectClass=fdWebApplication)', array('cn', 'fdApplicationAvailablesRoles'));
 
-    //parcours des ebregistremens
     while ($attrs = $ldap->fetch()) {
       if (isset($attrs['cn'][0])) {
 	 $app = $attrs['cn'][0];
@@ -64,12 +63,9 @@ class ApplicationSelectAttribute extends CompositeAttribute
 	        	
 	}
       }
-      $allchoices[$app]=array($allRolesCode,$allRolesDesc);
+      $this->applicationChoices[$app]=array($allRolesCode,$allRolesDesc);
     }
     
-    /* a requeter depsui la bracnhe */
-    $this->applicationChoices = $allchoices;
-
     if (!$required) {
       $this->applicationChoices[''] = array(array(''), array(_('None')));
     }
@@ -147,7 +143,6 @@ class applicationAccount extends simplePlugin
 {
   var $displayHeader  = TRUE;
   var $objectclasses  = array('fdApplicationAccount');
-  var $myclient	= '';
   
   private $mainSectionAttrs = array();
 
@@ -155,10 +150,10 @@ class applicationAccount extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'     => _('Applications'),
-      'plDescription'   => _('applications settings'),
-      'plIcon'          => 'geticon.php?context=applications&icon=applications&size=48',
-      'plSmallIcon'     => 'geticon.php?context=applications&icon=applications&size=16',
+      'plShortName'     => _('Profile'),
+      'plDescription'   => _('Profile per Application'),
+      'plIcon'          => 'geticon.php?context=types&icon=application&size=48',
+      'plSmallIcon'     => 'geticon.php?context=types&icon=application&size=16',
       'plDepends'       => array(),
       'plSelfModify'    => FALSE,
       'plPriority'      => 4,
@@ -184,11 +179,11 @@ class applicationAccount extends simplePlugin
 	'attrs' => array (
           new OrderedArrayAttribute(
             new PipeSeparatedCompositeAttribute(
-              _('Roles per each applications'),
+              _('Profiles per each applications'),
               'fdApplicationRoles',
               array(
                 new ApplicationSelectAttribute(
-                  _('Roles'), _('Applications Roles - roles available for each applications'),
+                  _('Profiles'), _('Applications Profiles - Profiles available for each applications'),
                   'fdApplicationRoles', TRUE, 'webApplication'
                   ),
                 )
@@ -210,25 +205,10 @@ class applicationAccount extends simplePlugin
   {
     $smarty = get_smarty();
 
-    #
-    # Fetch Seafile Server
-    #
     global $config;
 
     return parent::execute();
   }
-  
-
-
-
-  function prepare_save(){
-	parent::prepare_save();
-	global $config;
-	
-}
-
-
-
 
 }
 
