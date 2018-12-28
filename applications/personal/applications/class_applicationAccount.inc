@@ -35,8 +35,6 @@ class ApplicationSelectAttribute extends CompositeAttribute
 {
   protected $applicationChoices;
 
-  //global $config; 
-
   function __construct($label, $description, $ldapName, $required, $filename, $acl = "")
   {
     global $config;
@@ -68,41 +66,10 @@ class ApplicationSelectAttribute extends CompositeAttribute
       }
       $allchoices[$app]=array($allRolesCode,$allRolesDesc);
     }
-    print_r($allchoices);
-    print_r("<br>");
-
-   // $allApplications = objects::ls('webApplication',array('cn'=>1,'fdApplicationTitle' => 1, 'fdApplicationAvailablesRoles' => '*' ),NULL,'(objectClass=fdWebApplication)');
-   //$allApplications = objects::ls('webApplication');
-    //var_dump($allApplications);
-    //var_dump(objects);
-
-//    $allchoices=array();
-//    $allRolesCode=array();
-//    $allRolesDesc=array();
-/*    foreach($allApplications as $key => $value){
-	    $allRolesCode=[];
-	    $allRolesDesc=[];
-	    foreach( $value['fdApplicationAvailablesRoles'] as $k => $v){
-		    $splitRoles=explode("|",$v);
-		    $allRolesCode[]=$splitRoles[0];
-		    $allRolesDesc[]=$splitRoles[1];
-	    }
-      	$allchoices[]=array($value =>array($allRolesCode,$allRolesDesc));
-    }
-
-    var_dump($allchoices); */
-
-
-
-    /*  $this->applicationChoices = FIXME: list des application */
+    
     /* a requeter depsui la bracnhe */
     $this->applicationChoices = $allchoices;
 
-    //$this->applicationChoices = array("color" => array(array("blue", "red", "green"),array("bleu","rouge","vert")),
-//	    "size" => array(array("small", "medium", "large"),array("petit","moyen","grand")));
-
-    print_r($this->applicationChoices);
-    
     if (!$required) {
       $this->applicationChoices[''] = array(array(''), array(_('None')));
     }
@@ -185,43 +152,6 @@ class applicationAccount extends simplePlugin
   private $mainSectionAttrs = array();
 
 
-/*
-  function getApplicationsRoles()
-  {
-    $allApplications = objects::ls('webApplication',array('cn'=>1,'fdApplicationTitle' => 1, 'fdApplicationAvailablesRoles' => '*' ),NULL,'(objectClass=fdWebApplication)');
-    //var_dump($allApplications);
-
-    $allchoices=array();
-    $allRolesCode=array();
-    $allRolesDesc=array();
-    foreach($allApplications as $key => $value){
-            $allRolesCode=[];
-	    $allRolesDesc=[];
-	    foreach( $value['fdApplicationAvailablesRoles'] as $k => $v){
-		    //print("val : ".$v);
-                    $splitRoles=explode("|",$v);
-                    $allRolesCode[]=$splitRoles[0];
-		    $allRolesDesc[]=$splitRoles[1];
-		    //print("\nval :".$splitRoles[0]. " => ".$splitRoles[1]);
-	    }
-//	print("<br>");
-//	    var_dump($allRolesCode);
-//	    print("<br>");
-//	var_dump($allRolesDesc);
-        $allchoices[]=array($value['cn'] =>array($allRolesCode,$allRolesDesc));
-    }
-
-    return $allchoices;
-    //var_dump($allchoices);
-    /* Get List of server with LDAP service */
-/*    return objects::ls('server', NULL, NULL, '(objectClass=goLdapServer)');*/
-/*
-}
-*/
-  
-
-
-  
   static function plInfo()
   {
     return array(
