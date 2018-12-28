@@ -39,7 +39,7 @@ class ApplicationSelectAttribute extends CompositeAttribute
 
   function __construct($label, $description, $ldapName, $required, $filename, $acl = "")
   {
-    //global $config;
+    global $config;
     $attributes = array(
       new SelectAttribute('', '', $ldapName.'_app', $required),
       new SelectAttribute('', '', $ldapName.'_role', $required)
@@ -48,6 +48,28 @@ class ApplicationSelectAttribute extends CompositeAttribute
 
     parent::__construct($description, $ldapName, $attributes, '/^{(.*)}(.*)$/', '{%s}%s', $acl, $label);
     $this->setLinearRendering(TRUE);
+    /* list of entity stored in LDAP tree */
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(objectClass=fdWebApplication)', array('cn', 'fdApplicationAvailablesRoles'));
+
+    //parcours des ebregistremens
+    while ($attrs = $ldap->fetch()) {
+      if (isset($attrs['cn'][0])) {
+	 $app = $attrs['cn'][0];
+	 $allRolesCode=[];
+	 $allRolesDesc=[];
+	foreach($attrs['fdApplicationAvailablesRoles'] as $val){
+		$splitRoles=explode('|',$val);
+		$allRolesCode[]=$splitRoles[0];
+		$allRolesDesc[]=$splitRoles[1];
+	        	
+	}
+      }
+      $allchoices[$app]=array($allRolesCode,$allRolesDesc);
+    }
+    print_r($allchoices);
+    print_r("<br>");
 
    // $allApplications = objects::ls('webApplication',array('cn'=>1,'fdApplicationTitle' => 1, 'fdApplicationAvailablesRoles' => '*' ),NULL,'(objectClass=fdWebApplication)');
    //$allApplications = objects::ls('webApplication');
@@ -74,9 +96,12 @@ class ApplicationSelectAttribute extends CompositeAttribute
 
     /*  $this->applicationChoices = FIXME: list des application */
     /* a requeter depsui la bracnhe */
+    $this->applicationChoices = $allchoices;
 
-    $this->applicationChoices = array("color" => array(array("blue", "red", "green"),array("bleu","rouge","vert")),
-	    			      "size" => array(array("small", "medium", "large"),array("petit","moyen","grand")));
+    //$this->applicationChoices = array("color" => array(array("blue", "red", "green"),array("bleu","rouge","vert")),
+//	    "size" => array(array("small", "medium", "large"),array("petit","moyen","grand")));
+
+    print_r($this->applicationChoices);
     
     if (!$required) {
       $this->applicationChoices[''] = array(array(''), array(_('None')));
@@ -160,7 +185,7 @@ class applicationAccount extends simplePlugin
   private $mainSectionAttrs = array();
 
 
-
+/*
   function getApplicationsRoles()
   {
     $allApplications = objects::ls('webApplication',array('cn'=>1,'fdApplicationTitle' => 1, 'fdApplicationAvailablesRoles' => '*' ),NULL,'(objectClass=fdWebApplication)');
@@ -179,17 +204,20 @@ class applicationAccount extends simplePlugin
 		    $allRolesDesc[]=$splitRoles[1];
 		    //print("\nval :".$splitRoles[0]. " => ".$splitRoles[1]);
 	    }
-	print("<br>");
-	    var_dump($allRolesCode);
-	    print("<br>");
-	var_dump($allRolesDesc);
+//	print("<br>");
+//	    var_dump($allRolesCode);
+//	    print("<br>");
+//	var_dump($allRolesDesc);
         $allchoices[]=array($value['cn'] =>array($allRolesCode,$allRolesDesc));
     }
 
-    var_dump($allchoices);
+    return $allchoices;
+    //var_dump($allchoices);
     /* Get List of server with LDAP service */
 /*    return objects::ls('server', NULL, NULL, '(objectClass=goLdapServer)');*/
-  }
+/*
+}
+*/
   
 
 
@@ -213,7 +241,9 @@ class applicationAccount extends simplePlugin
 
   /*!
   *  \brief The main function : information about attributes
-  */
+   */
+
+
   static function getAttributesInfo ()
   {
 
@@ -254,7 +284,6 @@ class applicationAccount extends simplePlugin
     # Fetch Seafile Server
     #
     global $config;
-    $this->getApplicationsRoles();
 
     return parent::execute();
   }
