@@ -151,7 +151,7 @@ class applicationAccount extends simplePlugin
   {
     return array(
       'plShortName'     => _('Profile'),
-      'plDescription'   => _('Profile per Application'),
+      'plDescription'   => _('Profile per application'),
       'plIcon'          => 'geticon.php?context=types&icon=application&size=48',
       'plSmallIcon'     => 'geticon.php?context=types&icon=application&size=16',
       'plDepends'       => array(),
@@ -175,7 +175,8 @@ class applicationAccount extends simplePlugin
 
     return array (
       'main' => array (
-        'name'  => _('Applications account'),
+	'name'  => _('User profile per applications'),
+        'class' => array('fullwidth'),
 	'attrs' => array (
           new OrderedArrayAttribute(
             new PipeSeparatedCompositeAttribute(
@@ -183,7 +184,7 @@ class applicationAccount extends simplePlugin
               'fdApplicationProfiles',
               array(
                 new ApplicationSelectAttribute(
-                  _('Profiles'), _('Applications Profiles - Profiles available for each applications'),
+                  _('Profiles'), _('Profiles - Availables profiles for each applications'),
                   'fdApplicationProfiles', TRUE, 'webApplication'
                   ),
                 )
