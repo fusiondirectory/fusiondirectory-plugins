@@ -1013,6 +1013,7 @@ class posixAccount extends simplePlugin
         @DEBUG(DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, 'Result: '.$str);
         return $output[0];
       } else {
+        @DEBUG(DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, 'Result: '.$str);
         /* Invalid output */
         msg_dialog::display(
           _('Warning'),
