@@ -993,15 +993,40 @@ class posixAccount extends simplePlugin
       /* Call hook script - if present */
       $command = $config->get_cfg_value('nextIdHook');
 
-      if ($command != '') {
-        $command .= ' '.escapeshellarg($dn).' '.escapeshellarg($attrib);
-        if (check_command($command)) {
-          @DEBUG (DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, 'Execute');
-          exec($command, $output);
-          if (is_numeric($output[0])) {
-            return $output[0];
-          }
-        }
+      $command .= ' '.escapeshellarg($dn).' '.escapeshellarg($attrib);
+      @DEBUG (DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, 'Execute');
+      exec($command, $output, $returnCode);
+
+      $str = implode("\n", $output);
+      if ($returnCode != 0) {
+        /* Failure */
+        @DEBUG(DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, 'Execution failed code: '.$returnCode);
+        msg_dialog::display(
+          _('Warning'),
+          sprintf(
+            _("%s\nResult: %s\nUsing default base!"),
+            msgPool::cmdexecfailed('nextIdHook', $command),
+            $str
+          ),
+          WARNING_DIALOG
+        );
+        return $config->get_cfg_value('uidNumberBase');
+      } elseif (isset($output[0]) && is_numeric($output[0])) {
+        /* Success */
+        @DEBUG(DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, 'Result: '.$str);
+        return $output[0];
+      } else {
+        /* Invalid output */
+        msg_dialog::display(
+          _('Warning'),
+          sprintf(
+            _("%s\nResult: %s\nUsing default base!"),
+            _('"nextIdHook" did not return a valid output!'),
+            $str
+          ),
+          WARNING_DIALOG
+        );
+        return $config->get_cfg_value('uidNumberBase');
       }
     }
 
