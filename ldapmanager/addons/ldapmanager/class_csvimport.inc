@@ -128,6 +128,9 @@ class csvimport extends simplePlugin
   {
     $this->csv_data = $this->parse_csv($this->import_file);
 
+    /* Remove fields from previous import, if any */
+    $this->attributesAccess['fields']->setAttributes(array());
+
     $messages = $this->check();
     if (!empty($messages)) {
       msg_dialog::displayChecks($messages);
