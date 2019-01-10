@@ -103,7 +103,7 @@ class sinapsUser extends simplePlugin
     }
 
     $contractEnded = FALSE;
-    if (isset($this->parent->by_object['personalInfo'])) {
+    if (isset($this->parent->by_object['personalInfo']) && ($this->parent->by_object['personalInfo']->attributesAccess['fdContractEndDate']->getValue() != '')) {
       $fdContractEndDate  = $this->parent->by_object['personalInfo']->attributesAccess['fdContractEndDate']->getDateValue();
       $tomorrow           = new DateTime('tomorrow');
       if ($fdContractEndDate < $tomorrow) {
