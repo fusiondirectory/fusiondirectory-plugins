@@ -26,9 +26,9 @@ attributetype ( 1.3.6.1.4.1.38414.60.1.3 NAME 'fdAuditAuthorDN'
 
 attributetype ( 1.3.6.1.4.1.38414.60.1.4 NAME 'fdAuditObject'
   DESC 'FusionDirectory - audit event object'
-  EQUALITY caseExactIA5Match
-  SUBSTR caseExactIA5SubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
 attributetype ( 1.3.6.1.4.1.38414.60.1.5 NAME 'fdAuditObjectType'
