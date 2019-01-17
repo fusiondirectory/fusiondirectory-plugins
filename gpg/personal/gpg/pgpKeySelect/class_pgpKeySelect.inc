@@ -72,7 +72,7 @@ class pgpKeySelect extends simpleSelectManagement
     $this->filter->elements['NAME']['autocomplete']['attribute']  = $attributes;
   }
 
-  static function filterSingleValue($value, $func)
+  static function filterSingleValue(array $value, $func)
   {
     if (count($value) == 0) {
       return '&nbsp;';

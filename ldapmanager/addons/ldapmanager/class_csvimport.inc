@@ -251,7 +251,7 @@ class csvimport extends simplePlugin
     }
   }
 
-  private function compute_attribute_value($attribute, $row, $i = NULL)
+  private function compute_attribute_value($attribute, array $row, $i = NULL)
   {
     if ($attribute instanceof CompositeAttribute) {
       $value = array();
