@@ -156,7 +156,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   }
 
   /* Special LDAP treatment that this attribute does after plugin ldap save */
-  function postLdapSave ($ldap, $fullrewrite, $ipchanged, $oldips, $newips, $macchanged, $oldmacs, $newmacs)
+  function postLdapSave ($ldap, $fullrewrite, $ipchanged, array $oldips, array $newips, $macchanged, array $oldmacs, array $newmacs)
   {
     global $config, $ui;
 

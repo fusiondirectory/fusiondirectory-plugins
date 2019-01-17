@@ -665,7 +665,7 @@ class dhcpConfiguration extends simplePlugin
                 }
               }
             }
-            if ((count($values) == 1) && is_array($values)) {
+            if (is_array($values) && (count($values) == 1)) {
               $attrs[$attribute] = $values[0];
             } else {
               $attrs[$attribute] = $values;
