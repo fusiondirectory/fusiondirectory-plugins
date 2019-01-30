@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-12-19 15:03+0000\n"
+"POT-Creation-Date: 2019-01-10 10:09+0000\n"
 "PO-Revision-Date: 2017-02-02 06:52+0000\n"
 "Language-Team: Uighur (https://www.transifex.com/fusiondirectory/teams/12202/ug/)\n"
 "MIME-Version: 1.0\n"
@@ -421,7 +421,9 @@ msgstr ""
 
 #: personal/posix/class_posixAccount.inc:793
 #: personal/posix/class_posixAccount.inc:814
-#: personal/posix/class_posixAccount.inc:1008
+#: personal/posix/class_posixAccount.inc:1005
+#: personal/posix/class_posixAccount.inc:1022
+#: personal/posix/class_posixAccount.inc:1034
 msgid "Warning"
 msgstr ""
 
@@ -480,6 +482,19 @@ msgstr ""
 msgid "Cannot allocate a free ID!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:1008
+#: personal/posix/class_posixAccount.inc:1007
+#: personal/posix/class_posixAccount.inc:1024
+#, php-format
+msgid ""
+"%s\n"
+"Result: %s\n"
+"Using default base!"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:1025
+msgid "\"nextIdHook\" did not return a valid output!"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:1034
 msgid "\"nextIdHook\" is not available. Using default base!"
 msgstr ""
