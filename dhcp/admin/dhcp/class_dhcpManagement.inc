@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2016  FusionDirectory
+  Copyright (C) 2015-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,28 +18,18 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class dhcpManagement extends simpleManagement
+class dhcpManagement extends management
 {
-  protected $objectTypes  = array('dhcpConfiguration');
-
-  protected $departmentBrowser      = TRUE;
-  protected $departmentRootVisible  = TRUE;
-  protected $baseMode               = TRUE;
-
-  protected $autoFilterAttributes = array('dn', 'cn', 'description');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('DHCP'),
-      'plDescription' => _('DHCP Management'),
+      'plTitle'       => _('DHCP Management'),
+      'plDescription' => _('Manage DHCP configurations'),
       'plIcon'        => 'geticon.php?context=applications&icon=dhcp&size=48',
       'plSection'     => array('systems' => array('name' => _('Systems'), 'priority' => 10)),
       'plPriority'    => 2,
       'plManages'     => array('dhcpConfiguration'),
-
-      'plProvidedAcls'  => array()
     );
   }
 }
-?>

@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016 FusionDirectory
+  Copyright (C) 2013-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,27 +20,18 @@
 
 class sogoManagement extends simpleManagement
 {
-  // Tab definition
-  protected $objectTypes  = array('sogoResource');
-
-  protected $departmentBrowser      = TRUE;
-  protected $departmentRootVisible  = TRUE;
-  protected $baseMode               = TRUE;
-
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('SOGo'),
-      'plDescription' => _('SOGo management'),
+      'plTitle'       => _('SOGo management'),
+      'plDescription' => _('Manage SOGo resources'),
       'plIcon'        => 'geticon.php?context=applications&icon=sogo&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 50,
       'plCategory'    => array('sogo' => array('description'  => _('SOGo'),
                                               'objectClass'  => array('sogoResource'))),
       'plManages'     => array('sogoResource'),
-
-      'plProvidedAcls' => array()
     );
   }
 }
-?>
