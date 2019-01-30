@@ -31,6 +31,7 @@ class sympaAlias extends simplePlugin
         'icon'        => 'geticon.php?context=applications&icon=sympa&size=16',
         'ou'          => get_ou('sympaRDN'),
       )),
+      'plSearchAttrs' => array('description'),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
