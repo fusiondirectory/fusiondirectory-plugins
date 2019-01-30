@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016  FusionDirectory
+  Copyright (C) 2013-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,22 +18,20 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class applicationManagement extends simpleManagement
+class applicationManagement extends management
 {
-  protected $objectTypes  = array('application', 'webApplication');
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Applications'),
-      'plDescription' => _('Application management'),
+      'plTitle'       => _('Applications management'),
+      'plDescription' => _('Manage applications and web applications'),
       'plIcon'        => 'geticon.php?context=categories&icon=applications-other&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 60,
       'plManages'     => array('application', 'webApplication'),
 
       'plMenuProvider'  => TRUE,
-      'plProvidedAcls'  => array()
     );
   }
 
@@ -130,4 +128,3 @@ class applicationManagement extends simpleManagement
     );
   }
 }
-?>
