@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
 
-  Copyright (C) 2013-2016  FusionDirectory
+  Copyright (C) 2013-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,28 +19,18 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-class netgroupManagement extends simpleManagement
+class netgroupManagement extends management
 {
-  // Tab definition
-  protected $objectTypes  = array('netgroup');
-
-  protected $departmentBrowser      = TRUE;
-  protected $departmentRootVisible  = FALSE;
-  protected $baseMode               = TRUE;
-
   static function plInfo()
   {
     return array(
       'plShortName'   => _('NIS Netgroups'),
-      'plDescription' => _('NIS Netgroup management'),
+      'plTitle'       => _('NIS Netgroups management'),
+      'plDescription' => _('Manage NIS Netgroups'),
       'plIcon'        => 'geticon.php?context=applications&icon=netgroups&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 25,
       'plManages'     => array('netgroup'),
-
-      'plProvidedAcls' => array()
     );
   }
 }
-
-?>
