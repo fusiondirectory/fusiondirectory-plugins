@@ -1,7 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016  FusionDirectory
+
+  Copyright (C) 2003  Cajus Pollmeier
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,5 +20,22 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-simpleManagement::mainInc('sudoManagement');
-?>
+class DefaultRoleAttribute extends BooleanAttribute
+{
+  function __construct ($defaultValue)
+  {
+    parent::__construct('Default', 'hidden attribute', 'isDefaultRole', FALSE, $defaultValue, 'noacl');
+    $this->setInLdap(FALSE);
+    $this->setVisible(FALSE);
+  }
+
+  function setValue ($value)
+  {
+    global $config;
+    parent::setValue($value);
+    if ($this->getValue()) {
+      $this->plugin->attributesAccess['cn']->setValue('defaults');
+      $this->plugin->base = $config->current['BASE'];
+    }
+  }
+}
