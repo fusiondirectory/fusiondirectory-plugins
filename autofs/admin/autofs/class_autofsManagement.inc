@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016  FusionDirectory
+
+  Copyright (C) 2013-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,49 +19,27 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class autofsManagement extends simpleManagement
+class autofsManagement extends management
 {
-  protected $objectTypes  = array('nisMap', 'nisObject');
+  /* Default columns */
+  public static $columns = array(
+    array('ObjectTypeColumn',     array()),
+    array('LinkColumn',           array('attributes' => 'nameAttr',             'label' => 'Name')),
+    array('LinkColumn',           array('attributes' => 'nisMapName',           'label' => 'Mount point')),
+    array('LinkColumn',           array('attributes' => 'nisMapEntry',          'label' => 'Automount entry')),
+    array('ActionsColumn',        array('label' => 'Actions')),
+  );
 
-  protected $autoFilterAttributes = array('dn', 'cn', 'description', 'nisMapName', 'nisMapEntry');
-
-  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Auto fs'),
-      'plDescription' => _('Auto fs management'),
+      'plTitle'       => _('Auto fs management'),
+      'plDescription' => _('Manage auto fs mount points and directories'),
       'plIcon'        => 'geticon.php?context=applications&icon=autofs&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 5,
       'plManages'     => array('nisMap', 'nisObject'),
-
-      'plProvidedAcls' => array()
     );
-  }
-
-  function parseXML ($file)
-  {
-    $data = parent::parseXML($file);
-    $data['list']['table']['layout'] = '|20px;c||||150px;r|';
-    $columns = array(
-      array(
-        'label'         => 'Mount point',
-        'sortAttribute' => 'nisMapName',
-        'sortType'      => 'string',
-        'value'         => '%{filter:link(row,dn,"%s",nisMapName)}',
-        'export'        => 'true',
-      ),
-      array(
-        'label'         => 'Automount entry',
-        'sortAttribute' => 'nisMapEntry',
-        'sortType'      => 'string',
-        'value'         => '%{filter:link(row,dn,"%s",nisMapEntry)}',
-        'export'        => 'true',
-      ),
-    );
-    array_splice($data['list']['table']['column'], 2, 1, $columns);
-    return $data;
   }
 }
-?>

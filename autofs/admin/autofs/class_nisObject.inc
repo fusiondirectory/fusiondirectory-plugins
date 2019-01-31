@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016  FusionDirectory
+
+  Copyright (C) 2013-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -37,6 +38,7 @@ class nisObject extends simplePlugin
           array('nisMap', 'nisMapName'),
         ),
       ),
+      'plSearchAttrs' => array('nisMapName', 'nisMapEntry'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
@@ -108,4 +110,3 @@ class nisObject extends simplePlugin
               get_ou('autofsRDN').$this->base;
   }
 }
-?>
