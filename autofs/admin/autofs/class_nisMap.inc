@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016  FusionDirectory
+
+  Copyright (C) 2013-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -32,6 +33,7 @@ class nisMap extends simplePlugin
         'icon'        => 'geticon.php?context=applications&icon=autofs-nis-netmap&size=16',
         'mainAttr'    => 'nisMapName',
       )),
+      'plSearchAttrs' => array('nisMapName'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
@@ -53,6 +55,3 @@ class nisMap extends simplePlugin
     );
   }
 }
-
-
-?>

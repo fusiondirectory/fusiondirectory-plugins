@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class repositoryManagement extends simpleManagement
+class repositoryManagement extends management
 {
   public static function plInfo()
   {

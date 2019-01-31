@@ -705,6 +705,7 @@ class dnsZone extends simplePlugin
         'icon'        => 'geticon.php?context=applications&icon=dns&size=16',
         'mainAttr'    => 'zoneName'
       )),
+      'plSearchAttrs' => array('relativeDomainName', 'sOARecord'),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
     );

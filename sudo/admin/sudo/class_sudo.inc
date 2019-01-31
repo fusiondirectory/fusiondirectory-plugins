@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,99 +19,6 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
-
-class SudoUsersGroupsAttribute extends DialogAttribute
-{
-  protected $dialogClass = 'UserGroupSelectDialog';
-
-  function addValue ($dn, $entry)
-  {
-    if (in_array('posixGroup', $entry['objectClass']) || in_array('groupOfNames', $entry['objectClass'])) {
-      $name = trim("%".$entry['cn'][0]);
-    } elseif (isset($entry['uid'][0])) {
-      $name = trim($entry['uid'][0]);
-    }
-    if (!in_array($name, $this->value) && !in_array("!".$name, $this->value)) {
-      $this->value[] = $name;
-    }
-  }
-
-  function getFilterBlackList ()
-  {
-    $used = array();
-    foreach ($this->value as $name) {
-      $str = preg_replace("/^!/", "", $name);
-      if (preg_match("/^%/", $str)) {
-        $used['cn'][] = preg_replace("/^%/", "", $str);
-      } else {
-        $used['uid'][] = $str;
-      }
-    }
-    return $used;
-  }
-}
-
-class SudoSystemsAttribute extends SystemsAttribute
-{
-  function renderButtons ()
-  {
-    $id = $this->getHtmlId();
-    $buttons  = $this->renderInputField(
-      'submit', 'add'.$id.'_ALL',
-      array(
-        'value'           => 'ALL',
-        'formnovalidate'  => 'formnovalidate'
-      )
-    );
-    return $buttons.parent::renderButtons();
-  }
-
-  public function htmlIds()
-  {
-    $id = $this->getHtmlId();
-    $ids = parent::htmlIds();
-    $ids[] = 'add'.$id.'_ALL';
-    return $ids;
-  }
-
-  function loadPostValue ()
-  {
-    parent::loadPostValue();
-    if ($this->isVisible()) {
-      if (isset($_POST['add'.$this->getHtmlId().'_ALL'])) {
-        $this->value = array('ALL');
-      }
-    }
-  }
-
-  function addValue ($value, $attrs)
-  {
-    if (isset($this->value[0]) && ($this->value[0] === 'ALL')) {
-      unset($this->value[0]);
-    }
-    parent::addValue($value, $attrs);
-  }
-}
-
-class defaultRoleAttribute extends BooleanAttribute
-{
-  function __construct ($defaultValue)
-  {
-    parent::__construct('Default', 'hidden attribute', 'isDefaultRole', FALSE, $defaultValue, 'noacl');
-    $this->setInLdap(FALSE);
-    $this->setVisible(FALSE);
-  }
-
-  function setValue ($value)
-  {
-    global $config;
-    parent::setValue($value);
-    if ($this->getValue()) {
-      $this->plugin->attributesAccess['cn']->setValue('defaults');
-      $this->plugin->base = $config->current['BASE'];
-    }
-  }
-}
 
 /*! \brief Sudo generic class. Allow setting User/Host/Command/Runas
            for a sudo role object.
@@ -142,6 +50,7 @@ class sudo extends simplePlugin
           array('terminalGeneric', 'cn'),
         ),
       ),
+      'plSearchAttrs' => array('description', 'sudoUser', 'sudoHost'),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
@@ -154,7 +63,7 @@ class sudo extends simplePlugin
         'name'  => _('Role settings'),
         'class' => array('fullwidth'),
         'attrs' => array(
-          new defaultRoleAttribute (FALSE),
+          new DefaultRoleAttribute (FALSE),
           new BaseSelectorAttribute (get_ou('sudoRDN')),
           new StringAttribute (
             _('Name'), _('Name of the role'),
@@ -273,5 +182,3 @@ class sudo extends simplePlugin
     }
   }
 }
-
-?>

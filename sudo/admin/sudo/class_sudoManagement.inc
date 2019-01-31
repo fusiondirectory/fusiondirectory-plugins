@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,51 +20,45 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class sudoManagement extends simpleManagement
+class sudoManagement extends management
 {
-  protected $objectTypes = array('sudo');
-
-  protected $autoFilterAttributes = array('dn', 'cn', 'description', 'sudoUser', 'sudoHost');
-
-  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Sudo'),
-      'plDescription' => _('Sudo management'),
+      'plTitle'       => _('Sudo management'),
+      'plDescription' => _('Manage sudo roles'),
       'plIcon'        => 'geticon.php?context=applications&icon=sudo&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 45,
       'plManages'     => array('sudo'),
-
-      'plProvidedAcls' => array()
     );
   }
 
-  function configureHeadpage ()
+  protected function configureActions()
   {
-    parent::configureHeadpage();
-    $this->registerAction('new_default', 'newEntry');
-    $this->headpage->xmlData['actionmenu']['action'][0]['action'][] = array(
-      'name'  => 'new_default',
-      'type'  => 'entry',
-      'image' => 'geticon.php?context=applications&icon=sudo&size=16',
-      'label' => 'Default',
-      'acl'   => 'sudo/sudo[c]',
+    parent::configureActions();
+    $this->actions['new']->addAction(
+      new Action(
+        'new_default',
+        _('Default'),
+        'geticon.php?context=applications&icon=sudo&size=16',
+        0,
+        'newEntryDefault',
+        array('sudo/sudo/c'),
+        TRUE,
+        FALSE
+      )
     );
   }
 
-  function newEntry($action, array $target, array $all)
+  function newEntryDefault(array $action)
   {
-    $str = parent::newEntry('new_SUDO', $target, $all);
+    $action['subaction'] = 'SUDO';
+
+    parent::newEntry($action);
 
     /* This entry will become the default entry */
-    if ($action == 'new_default') {
-      $this->tabObject->set_default(TRUE);
-    }
-    if (!empty($str)) {
-      return $str;
-    }
+    $this->tabObject->set_default(TRUE);
   }
 }
-?>
