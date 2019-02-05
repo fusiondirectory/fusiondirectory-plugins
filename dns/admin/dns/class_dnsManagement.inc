@@ -21,7 +21,7 @@
 
 class dnsManagement extends management
 {
-  public $neededAttrs = array('sOARecord' => '1');
+  public $neededAttrs = array('sOARecord' => 1);
 
   /* Default columns */
   public static $columns = array(
