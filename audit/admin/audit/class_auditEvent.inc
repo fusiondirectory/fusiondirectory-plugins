@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2015-2018 FusionDirectory
+
+  Copyright (C) 2015-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -49,6 +50,8 @@ class auditEvent extends simplePlugin
         'ou'          => get_ou('auditRDN'),
         'mainAttr'    => FALSE,
       )),
+      'plSearchAttrs' => array('fdAuditAction','fdAuditAuthorDN','fdAuditObjectType',
+        'fdAuditObject','fdAuditAttributes','fdAuditResult'),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
@@ -88,4 +91,3 @@ class auditEvent extends simplePlugin
     return $this->create_unique_dn('fdAuditDateTime', get_ou('auditRDN').$this->base);
   }
 }
-?>

@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016 FusionDirectory
+
+  Copyright (C) 2013-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,34 +19,45 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class sambaDomainManagement extends simpleManagement
+class sambaDomainManagement extends management
 {
-  // Tab definition
-  protected $objectTypes  = array('sambaDomain');
+  protected $skipCpHandler  = TRUE;
 
-  protected $departmentBrowser      = FALSE;
-  protected $departmentRootVisible  = FALSE;
-  protected $baseMode               = FALSE;
-  protected $skipCpHandler          = TRUE;
+  /* Default columns - SID instead of description */
+  public static $columns = array(
+    array('ObjectTypeColumn', array()),
+    array('LinkColumn',       array('attributes' => 'nameAttr',    'label' => 'Name')),
+    array('LinkColumn',       array('attributes' => 'sambaSID',    'label' => 'SID')),
+    array('ActionsColumn',    array('label' => 'Actions')),
+  );
 
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('Samba domains'),
-      'plDescription' => _('Samba domain management'),
+      'plTitle'       => _('Samba domain management'),
+      'plDescription' => _('Manage Samba domains'),
       'plIcon'        => 'geticon.php?context=applications&icon=samba&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 40,
       'plManages'     => array('sambaDomain'),
-
-      'plProvidedAcls' => array()
     );
   }
 
-  function configureHeadpage ()
+  protected function setUpListing()
   {
-    parent::configureHeadpage();
-    unset($this->headpage->xmlData['actionmenu']['action'][0]);
+    /* Disable base mode */
+    $this->listing  = new managementListing($this, FALSE);
+  }
+
+  protected function configureActions()
+  {
+    parent::configureActions();
+
+    /* Remove create menu */
+    foreach ($this->actions['new']->listActions() as $actionName) {
+      unset($this->actionHandlers[$actionName]);
+    }
+    unset($this->actions['new']);
   }
 }
-?>

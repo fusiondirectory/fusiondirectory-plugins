@@ -20,13 +20,14 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class sympaManagement extends simpleManagement
+class sympaManagement extends management
 {
   public static function plInfo()
   {
     return array(
       'plShortName'   => _('Sympa'),
-      'plDescription' => _('Sympa management'),
+      'plTitle'       => _('Sympa management'),
+      'plDescription' => _('Manage sympa aliases'),
       'plIcon'        => 'geticon.php?context=applications&icon=sympa&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 26,
