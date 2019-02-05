@@ -35,6 +35,7 @@ class sambaDomain extends simplePlugin
           'mainAttr'    => 'sambaDomainName',
         )
       ),
+      'plSearchAttrs' => array('sambaSID'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
