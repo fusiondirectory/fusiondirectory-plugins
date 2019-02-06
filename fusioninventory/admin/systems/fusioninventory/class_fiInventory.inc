@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016  FusionDirectory
+
+  Copyright (C) 2013-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -81,6 +82,7 @@ class fiInventory extends simplePlugin
           'tabClass'    => 'simpleTabs_noSpecial',
         )
       ),
+      'plSearchAttrs' => array('cn','ipHostNumber','macAddress'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
@@ -96,6 +98,7 @@ class fiInventory extends simplePlugin
           new DisplayAttribute(_('System'), _('System entry matching this inventory'), 'matching'),
           new HiddenArrayAttribute('macAddress'),
           new HiddenArrayAttribute('ipHostNumber'),
+          new HiddenArrayAttribute('cn'),
         ),
       ),
       'hardware' => array(
@@ -138,9 +141,10 @@ class fiInventory extends simplePlugin
     if (preg_match('/'.preg_quote(get_ou('inventoryRDN').$config->current['BASE'], '/').'$/', $dn)) {
       $this->mainTab        = TRUE;
       $this->objectclasses  = array('fdInventoryContent');
-      $attributesInfo['hardware']['attrs'][] = new HiddenAttribute('cn');
       $attributesInfo['match']['attrs'][0]->setAllowHTML(TRUE);
     } else {
+      // Remove cn
+      unset($attributesInfo['hardware']['attrs'][3]);
       unset($attributesInfo['match']);
     }
 
@@ -397,4 +401,3 @@ class fiInventory extends simplePlugin
     }
   }
 }
-?>
