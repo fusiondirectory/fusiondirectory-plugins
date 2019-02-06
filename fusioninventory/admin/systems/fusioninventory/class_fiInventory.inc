@@ -59,6 +59,7 @@ class fiInventory extends simplePlugin
     'physicalvolumes' => 'hardware',
     'volumegroups'    => 'software',
     'licenseinfos'    => 'software',
+    'versionprovider' => 'other',
   );
 
   /* Return plugin information */
@@ -68,11 +69,11 @@ class fiInventory extends simplePlugin
       'plShortName'   => _('Inventory'),
       'plDescription' => _('Inventory Viewer'),
       'plPriority'    => 90,
+      'plObjectClass' => array('fdInventoryContent'),
       'plObjectType'  => array(
         'workstation', 'server',
         'inventory' => array(
           'description' => _('Inventory object'),
-          'filter'      => 'objectClass=fdInventoryContent',
           'mainAttr'    => 'cn',
           'icon'        => 'geticon.php?context=applications&icon=fusioninventory&size=16',
           'name'        => _('Inventory object'),
@@ -121,6 +122,12 @@ class fiInventory extends simplePlugin
         'attrs'     => array(new FakeAttribute('process_infos')),
         'template'  => get_template_path('inventory.tpl', TRUE, dirname(__FILE__)),
       ),
+      'other' => array(
+        'name'      => _('Other'),
+        'class'     => array('fullwidth'),
+        'attrs'     => array(new FakeAttribute('other_infos')),
+        'template'  => get_template_path('inventory.tpl', TRUE, dirname(__FILE__)),
+      ),
     );
   }
 
@@ -154,6 +161,7 @@ class fiInventory extends simplePlugin
         $this->software_infos = $infos['software'];
         $this->process_infos  = $infos['process'];
         $this->users_infos    = $infos['users'];
+        $this->other_infos    = $infos['other'];
       }
     }
     $smarty = get_smarty();
@@ -188,7 +196,7 @@ class fiInventory extends simplePlugin
         return array();
       }
       $macAddress   = $this->parent->getBaseObject()->macAddress;
-      if ($macAddress != '') {
+      if (!is_array($macAddress) && ($macAddress != '')) {
         $macAddress = array($macAddress);
       }
       $ipHostNumber = $this->parent->getBaseObject()->ipHostNumber;
@@ -238,6 +246,9 @@ class fiInventory extends simplePlugin
     $ldap->cd($dn);
     $ldap->search('(objectClass=*)', array('*'), 'one');
     $infos = array();
+    foreach (array_unique(static::$sections) as $section) {
+      $infos[$section] = array();
+    }
     while ($attrs = $ldap->fetch()) {
       $object = array();
       $cn     = FALSE;
@@ -269,6 +280,9 @@ class fiInventory extends simplePlugin
         continue;
       }
 
+      if (!isset(static::$sections[$class])) {
+        static::$sections[$class] = 'other';
+      }
       if (!isset($infos[static::$sections[$class]][$class])) {
         $infos[static::$sections[$class]][$class] = array('keys' => array(), 'objects' => array());
       }
