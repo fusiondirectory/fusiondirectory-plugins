@@ -69,14 +69,6 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
 
   $data = xml::xml2array($xml, 1);
   $data = $data['REQUEST']['CONTENT'];
-  $cpus = $data['CPUS'];
-  if (!is_numeric(key($cpus))) {
-    $cpus = array($cpus);
-  }
-  $os = $data['OPERATINGSYSTEM'];
-  if (!is_numeric(key($os))) {
-    $os = array($os);
-  }
 
   /* Check if CONFIG_FILE is accessible */
   if (!is_readable(CONFIG_DIR.'/'.CONFIG_FILE)) {
@@ -152,15 +144,34 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
         'objectClass' => 'fdInventory'.preg_replace('/_/', '', $key),
       );
       foreach ($object as $attr => $value) {
-        if (!(is_array($value) && empty($value))) {
-          $ldap_attrs['fdInventory'.preg_replace('/_/', '', $attr)] = $value;
+        if (is_array($value)) {
+          if (empty($value)) {
+            continue;
+          }
+          if (!is_numeric(key($value))) {
+            // Invalid value, json_encode it to get string value
+            $value = json_encode($value);
+          } else {
+            // Make sure indexes are continuous
+            $value = array_values($value);
+            // Make sure values are strings
+            foreach ($value as $k => $v) {
+              if (!is_string($v)) {
+                // Invalid value, json_encode it to get string value
+                $value[$k] = json_encode($v);
+              }
+            }
+          }
         }
+        $ldap_attrs['fdInventory'.preg_replace('/_/', '', $attr)] = $value;
       }
       $ldap->cd('cn='.$cn.','.$dn);
-      $ldap->add($ldap_attrs);
+      $r = $ldap->add($ldap_attrs);
       if (!$ldap->success()) {
         // We cannot stop at every error, or one missing objectClass in the schema will stop inventory
         error_log('LDAP: '.$ldap->get_error());
+      } elseif (!$r) {
+        error_log('LDAP: Failed to insert '.$key);
       }
     }
   }
