@@ -37,6 +37,8 @@ class workstationGeneric extends ipHostPlugin
           'mainAttr'    => 'cn',
         )
       ),
+      'plSearchAttrs' => array('description', 'ipHostNumber', 'macAddress'),
+
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
