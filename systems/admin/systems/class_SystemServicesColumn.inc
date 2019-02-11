@@ -43,7 +43,7 @@ class SystemServicesColumn extends Column
             'title' => $pInfos['plShortName'],
           );
         } else {
-          @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $pInfos['plShortName']." ($class)", 'No icon for');
+          @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $pInfos['plShortName'].' ('.$plug['CLASS'].')', 'No icon for');
         }
       }
     }
