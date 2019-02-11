@@ -35,6 +35,7 @@ class terminalGeneric extends workstationGeneric
           'ou'          => get_ou('terminalRDN'),
         )
       ),
+      'plSearchAttrs' => array('description', 'ipHostNumber', 'macAddress'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

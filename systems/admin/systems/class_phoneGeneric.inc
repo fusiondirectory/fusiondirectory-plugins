@@ -37,6 +37,7 @@ class phoneGeneric extends ipHostPlugin
           'ou'          => get_ou('phoneRDN'),
         )
       ),
+      'plSearchAttrs' => array('description', 'ipHostNumber', 'macAddress'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

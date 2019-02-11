@@ -36,6 +36,8 @@ class serverGeneric extends workstationGeneric
           'tabClass'    => 'servtabs',
         )
       ),
+      'plSearchAttrs' => array('description', 'ipHostNumber', 'macAddress'),
+
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }

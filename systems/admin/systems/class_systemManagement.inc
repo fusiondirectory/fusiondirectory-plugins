@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,42 +20,38 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class systemManagement extends simpleManagement
+class systemManagement extends management
 {
-  protected $objectTypes  = array('server','workstation','terminal','printer','component','phone','mobilePhone');
-
-  protected $departmentBrowser      = TRUE;
-  protected $departmentRootVisible  = FALSE;
-  protected $baseMode               = TRUE;
-  protected $multiSelect            = TRUE;
-
-  protected $autoFilter       = TRUE;
-  protected $autoActions      = TRUE;
-
-  protected $autoFilterAttributes = array('dn', 'cn', 'description', 'ipHostNumber', 'macAddress', 'gotoMode', 'FAIstate', 'FAIclass');
-
   public static $skipTemplates = FALSE;
 
   protected $siActive = FALSE;
+
+  public static $columns = array(
+    array('ObjectTypeColumn',     array()),
+    array('LinkColumn',           array('attributes' => 'nameAttr',                   'label' => 'Name')),
+    array('IpColumn',             array('attributes' => array('ipHostNumber' => '*'), 'label' => 'IP')),
+    array('Column',               array('attributes' => array('macAddress' => '*'),   'label' => 'Mac')),
+    array('LinkColumn',           array('attributes' => 'description',                'label' => 'Description')),
+    array('SystemServicesColumn', array('label' => 'Services')),
+    array('SystemReleaseColumn',  array('label' => 'Release')),
+    array('ActionsColumn',        array('label' => 'Actions')),
+  );
 
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Systems'),
-      'plDescription' => _('Systems Management'),
+      'plTitle'       => _('Systems Management'),
+      'plDescription' => _('Manage servers, computers, printers, phones and other devices'),
       'plIcon'        => 'geticon.php?context=devices&icon=computer&size=48',
       'plSection'     => array('systems' => array('name' => _('Systems'), 'priority' => 10)),
       'plPriority'    => 0,
       'plManages'     => array('server','workstation','terminal','printer','component','phone','mobilePhone'),
-
-      'plProvidedAcls'  => array()
     );
   }
 
   function __construct()
   {
-    $this->listXMLPath    = get_template_path('system-list.xml', TRUE, dirname(__FILE__));
-
     // Check if we are able to communicate with Argonaut server
     if (class_available('supportDaemon') && class_available('argonautAction')) {
       $o = new supportDaemon();
@@ -64,76 +61,68 @@ class systemManagement extends simpleManagement
     parent::__construct();
   }
 
-  function configureHeadpage ()
+  protected function configureActions()
   {
-    parent::configureHeadpage();
+    parent::configureActions();
 
-    $this->headpage->registerElementFilter('systemRelease', 'systemManagement::systemRelease');
-    $this->headpage->registerElementFilter('listServices',  'systemManagement::listServices');
-
-    // Register Daemon Events
     if ($this->siActive) {
-      $this->headpage->xmlData['actionmenu']['action'][2]['action'] = array();
-      $this->headpage->xmlData['actionmenu']['action'][3]['action'] = array();
+      $triggerActions   = array();
+      $scheduleActions  = array();
       $events = argonautEventTypes::get_event_types();
-      foreach ($events as $name => $data) {
-        $this->registerAction('T_'.$name, 'handleEvent');
-        $this->headpage->xmlData['actionmenu']['action'][2]['action'][] = array(
-        'name' => 'T_'.$name,
-        'type' => 'entry',
-        'image' => $data['img'],
-        'label' => $data['name'],
+      foreach ($events as $name => $infos) {
+        $triggerActions[] = new Action(
+          'trigger_'.$name, $infos['name'], $infos['img'],
+          '*', 'handleEvent'
         );
-        $this->registerAction('S_'.$name, 'handleEvent');
-        $this->headpage->xmlData['actionmenu']['action'][3]['action'][] = array(
-        'name' => 'S_'.$name,
-        'type' => 'entry',
-        'image' => $data['img'],
-        'label' => $data['name'],
+        $scheduleActions[] = new Action(
+          'schedule_'.$name, $infos['name'], $infos['img'],
+          '*', 'handleEvent'
         );
       }
-      $this->registerAction('ping', 'pingSystems');
-    } else {
-      unset($this->headpage->xmlData['actionmenu']['action'][2]);
-      unset($this->headpage->xmlData['actionmenu']['action'][3]);
-      unset($this->headpage->xmlData['actionmenu']['action'][4]);
-      $this->headpage->xmlData['actionmenu']['action'] = array_values($this->headpage->xmlData['actionmenu']['action']);
-    }
-    $this->registerAction('saveEvent', 'saveEventDialog');
-  }
+      $this->registerAction(
+        new SubMenuAction(
+          'trigger', _('Trigger action'), 'geticon.php?context=types&icon=action&size=16',
+          $triggerActions
+        )
+      );
+      $this->registerAction(
+        new SubMenuAction(
+          'schedule', _('Schedule action'), 'geticon.php?context=actions&icon=task-schedule&size=16',
+          $scheduleActions
+        )
+      );
+      $this->actions['trigger']->setSeparator(TRUE);
+      $this->registerAction(new HiddenAction('saveEvent', 'saveEventDialog'));
 
-  function configureFilter ()
-  {
-    parent::configureFilter();
-    /* We need all attributes to list services */
-    $this->filter->query[0]['attribute'] = '*';
+      /* Add ping action */
+      $this->registerAction(
+        new Action(
+          'ping', _('Ping'), 'geticon.php?context=actions&icon=task-start&size=16',
+          '+', 'pingSystems'
+        )
+      );
+    }
   }
 
   /*! \brief    Handle Argonaut events
    *            All schedules and triggered events are handled here.
    */
-  function handleEvent($action, array $target)
+  function handleEvent(array $action)
   {
     if (!$this->siActive) {
       return;
     }
 
     // Detect whether this event is scheduled or triggered.
-    $triggered = TRUE;
-    if (preg_match('/^S_/', $action)) {
-      $triggered = FALSE;
-    }
-
-    // Detect triggered or scheduled actions
-    $headpage = $this->getHeadpage();
-    $event = preg_replace('/^[TS]_/', '', $action);
+    $triggered  = ($action['action'] == 'trigger');
+    $event      = $action['subaction'];
 
     // Now send FAI/Argonaut events here.
     $mac = array();
 
     // Collect target mac addresses
-    foreach ($target as $dn) {
-      $obj = $headpage->getEntry($dn);
+    foreach ($action['targets'] as $dn) {
+      $obj = $this->listing->getEntry($dn);
       if (isset($obj['macAddress'][0])) {
         $mac[] = $obj['macAddress'][0];
       } else {
@@ -190,18 +179,17 @@ class systemManagement extends simpleManagement
 
   /*! \brief Ping those systems and show the result in the list
    */
-  function pingSystems($action, array $target)
+  function pingSystems(array $action)
   {
     if (!$this->siActive) {
       return;
     }
 
-    $headpage = $this->getHeadpage();
-    $macs     = array();
+    $macs = array();
 
     // Collect target mac addresses
-    foreach ($target as $dn) {
-      $obj = $headpage->getEntry($dn);
+    foreach ($action['targets'] as $dn) {
+      $obj = $this->listing->getEntry($dn);
       if (isset($obj['macAddress'][0])) {
         $macs[$dn] = $obj['macAddress'][0];
       } else {
@@ -224,14 +212,14 @@ class systemManagement extends simpleManagement
       if (!empty($res['results'])) {
         $msg .= '<ul>'."\n";
         foreach ($res['results'] as $mac => $on) {
-          $msg .= '<li style="list-style-type:'.($on ? 'disc' : 'circle').';">'.objects::link($dns[$mac], $this->getType($dns[$mac])).' - '.($on ? 'On' : 'Off').'</li>'."\n";
+          $msg .= '<li style="list-style-type:'.($on ? 'disc' : 'circle').';">'.objects::link($dns[$mac], $this->listing->getEntry($dns[$mac])->type).' - '.($on ? 'On' : 'Off').'</li>'."\n";
         }
         $msg .= "</ul>\n";
       }
       if (!empty($res['errors'])) {
         $msg .= '<ul style="list-style-type:square;">'."\n";
         foreach ($res['errors'] as $mac => $error) {
-          $msg .= '<li>'.objects::link($dns[$mac], $this->getType($dns[$mac])).' - '.$error.'</li>'."\n";
+          $msg .= '<li>'.objects::link($dns[$mac], $this->listing->getEntry($dns[$mac])->type).' - '.$error.'</li>'."\n";
         }
         $msg .= "</ul>\n";
       }
@@ -274,11 +262,11 @@ class systemManagement extends simpleManagement
     return $action;
   }
 
-  function handleSubAction($all)
+  function handleSubAction(array $action)
   {
-    if (parent::handleSubAction($all)) {
+    if (parent::handleSubAction($action)) {
       return TRUE;
-    } elseif (preg_match('/^service_([a-zA-Z_]+)$/', $all['subaction'], $m)) {
+    } elseif (preg_match('/^service_([a-zA-Z_]+)$/', $action['subaction'], $m)) {
       $service = $m[1];
       if (isset($this->tabObject->by_object['ServerService'])) {
         $this->tabObject->current = 'ServerService';
@@ -291,82 +279,4 @@ class systemManagement extends simpleManagement
     }
     return FALSE;
   }
-
-  static function systemRelease($a, $b, $c, $objectclasses = NULL, $class = NULL)
-  {
-    global $config;
-
-    // No objectclasses set - go ahead
-    if (!$objectclasses) {
-      return '&nbsp;';
-    }
-
-    // Skip non fai objects
-    if (!in_array_ics('FAIobject', $objectclasses)) {
-      return '&nbsp;';
-    }
-
-    // If we've an own fai class, just use this
-    if ($class && is_array($class)) {
-      foreach (explode(' ', $class[0]) as $element) {
-        if ($element[0] == ':') {
-          return '&nbsp;'.htmlentities(mb_substr($element, 1), ENT_COMPAT, 'UTF-8');
-        }
-      }
-    }
-
-    // Load information if needed
-    $ldap = $config->get_ldap_link();
-    $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=gosaGroupOfNames)(FAIclass=*)(member='.$b.'))', array('FAIclass','cn'));
-    while ($attrs = $ldap->fetch()) {
-      $rel = htmlentities(preg_replace('/^.*:/', '', $attrs['FAIclass'][0]), ENT_COMPAT, 'UTF-8');
-      $sys = htmlentities(sprintf(_('Inherited from %s'), $attrs['cn'][0]), ENT_COMPAT, 'UTF-8');
-      $str = '&nbsp;<img class="center" src="plugins/ogroups/images/ogroup.png"
-          title="'.$sys.'"
-          alt="'.$sys.'"/>&nbsp;'.$rel;
-      return $str;
-    }
-
-    return '&nbsp;';
-  }
-
-  static function listServices($row, $dn, $attrs)
-  {
-    global $config;
-    static $services = array();
-    if (empty($services)) {
-      foreach ($config->data['TABS']['SERVERSERVICE'] as $plug) {
-        if (class_available($plug['CLASS'])) {
-          $name = $plug['CLASS'];
-
-          $services[$name] = new $name($dn);
-        }
-      }
-    }
-
-    // Load information if needed
-    $services_imgs = array();
-    if (!empty($attrs)) {
-      foreach ($services as $class => $service) {
-        if ($service->is_this_account($attrs)) {
-          $infos = pluglist::pluginInfos($class);
-          if (isset($infos['plIcon'])) {
-            $services_imgs[] = '<input class="center" type="image" src="'.$infos['plIcon'].'" '.
-                               'alt="'.$infos['plShortName'].'" title="'.$infos['plShortName'].'" '.
-                               'name="listing_edit_service_'.$class.'_'.$row.'"/>';
-          } else {
-            @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $infos['plShortName']." ($class)", "No icon for");
-          }
-        }
-      }
-    }
-
-    $str = implode('', $services_imgs);
-    if ($str == '') {
-      $str = '&nbsp;';
-    }
-    return $str;
-  }
 }
-?>

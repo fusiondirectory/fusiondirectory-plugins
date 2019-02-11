@@ -35,6 +35,7 @@ class componentGeneric extends ipHostPlugin
           'ou'          => get_ou('componentRDN'),
         )
       ),
+      'plSearchAttrs' => array('description', 'ipHostNumber', 'macAddress'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

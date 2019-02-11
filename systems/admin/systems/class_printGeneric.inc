@@ -41,6 +41,7 @@ class printGeneric extends ipHostPlugin
         'fdPrinterUsers'      => 'user',
         'fdPrinterAdminUsers' => 'user',
       ),
+      'plSearchAttrs' => array('description', 'ipHostNumber', 'macAddress'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
