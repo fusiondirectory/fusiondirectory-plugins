@@ -29,7 +29,7 @@ class systemManagement extends management
   public static $columns = array(
     array('ObjectTypeColumn',     array()),
     array('LinkColumn',           array('attributes' => 'nameAttr',                   'label' => 'Name')),
-    array('Column',               array('attributes' => array('ipHostNumber' => '*'), 'label' => 'IP', 'sort' => 'ip')),
+    array('IpColumn',             array('attributes' => array('ipHostNumber' => '*'), 'label' => 'IP')),
     array('Column',               array('attributes' => array('macAddress' => '*'),   'label' => 'Mac')),
     array('LinkColumn',           array('attributes' => 'description',                'label' => 'Description')),
     array('SystemServicesColumn', array('label' => 'Services')),
