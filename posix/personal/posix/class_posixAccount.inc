@@ -250,7 +250,7 @@ class posixAccount extends simplePlugin
       $this->trustMode = 'byhost';
     }
 
-    $this->attributesAccess['uidNumber']->setUnique(TRUE);
+    $this->attributesAccess['uidNumber']->setUnique('whole');
     $this->attributesAccess['force_ids']->setInLdap(FALSE);
     $this->attributesAccess['force_ids']->setManagedAttributes(
       array(
