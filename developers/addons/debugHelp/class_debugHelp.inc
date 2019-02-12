@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2016  FusionDirectory
+
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -187,6 +188,19 @@ class debugHelp extends simplePlugin
     $code .= "}\n";
     send_binary_content($code, 'fusiondirectory.gv');
   }
-}
 
-?>
+  static function mainInc ($classname = NULL, $entry_dn = NULL, $tabs = FALSE, $edit_mode = FALSE, $objectType = FALSE)
+  {
+    global $config;
+
+    if ($classname === NULL) {
+      $classname = get_called_class();
+    }
+
+    if ($entry_dn === NULL) {
+      $entry_dn = $config->current['BASE'];
+    }
+
+    parent::mainInc($classname, $entry_dn, $tabs, $edit_mode, $objectType);
+  }
+}
