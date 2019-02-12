@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,24 +20,20 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ldiftabs extends simpleTabs_noSpecial
+class BaseSelectorOrDnAttribute extends BaseSelectorAttribute
 {
-  function save()
+  function applyPostValue ()
   {
-  }
-
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('LDAP import/export'),
-      'plDescription' => _('Allows the import or export of the ldap tree'),
-      'plIcon'        => 'geticon.php?context=applications&icon=ldapmanager&size=48',
-      'plSection'     => 'conf',
-      'plPriority'    => 10,
-      'plCategory'    => array('ldapmanager' => array('objectClass' => 'none', 'description' => _('Ldap manager'))),
-
-      'plProvidedAcls' => array()
-    );
+    global $config;
+    if (!$this->disabled && $this->isVisible()) {
+      if (isset($_POST[$this->getHtmlId()])) {
+        $ldap = $config->get_ldap_link();
+        if ($ldap->dn_exists($_POST[$this->getHtmlId()])) {
+          $this->setValue($_POST[$this->getHtmlId()]);
+          return;
+        }
+      }
+    }
+    return parent::applyPostValue();
   }
 }
-?>
