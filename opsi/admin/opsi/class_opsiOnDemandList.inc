@@ -78,7 +78,7 @@ class opsiOnDemandList extends opsiSoftwareList
   {
     simplePlugin::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
   }
 
   public function server_changed ($opsi_args = NULL)

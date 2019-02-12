@@ -113,7 +113,7 @@ class application extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
 
     $filename = './plugins/applications/images/default_icon.png';
 

@@ -81,7 +81,7 @@ class sogoResource extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['uid']->setUnique(TRUE);
+    $this->attributesAccess['uid']->setUnique('one');
 
     $this->attributesAccess['sn']->setValue($this->attributesAccess['uid']->getValue());
     $this->attributesAccess['cn']->setValue($this->attributesAccess['uid']->getValue());

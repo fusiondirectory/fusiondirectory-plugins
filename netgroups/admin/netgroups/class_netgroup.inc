@@ -109,7 +109,7 @@ class netgroup extends simplePlugin
     global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
     $this->attributesAccess['nisNetgroupTriple']->setVisible(FALSE);
     $this->attributesAccess['memberUsers']->setInLdap(FALSE);
     $this->attributesAccess['memberSystems']->setInLdap(FALSE);

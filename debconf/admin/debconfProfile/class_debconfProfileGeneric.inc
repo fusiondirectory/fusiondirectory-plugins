@@ -198,7 +198,7 @@ class debconfProfileGeneric extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['ou']->setUnique(TRUE);
+    $this->attributesAccess['ou']->setUnique('one');
     if (count($this->attributesAccess['debconfEntries']->attributes) == 0) {
       unset($this->attributesInfo['entries']);
       $this->attributesAccess['ou']->setVisible(FALSE);

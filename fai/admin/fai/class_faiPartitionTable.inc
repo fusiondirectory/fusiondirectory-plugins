@@ -370,7 +370,7 @@ class faiPartitionTable extends faiSimplePluginClass
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
   }
 
   protected function shouldSave()
