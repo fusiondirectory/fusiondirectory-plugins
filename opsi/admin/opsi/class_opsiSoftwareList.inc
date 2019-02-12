@@ -93,7 +93,7 @@ class opsiSoftwareList extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
     $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setSubmitForm('product_changed');
   }
 

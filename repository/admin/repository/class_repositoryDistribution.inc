@@ -83,7 +83,7 @@ class repositoryDistribution extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
 
     $distros = objects::ls('repoDistribution', 'cn');
     $this->attributesAccess['fdBasedOn']->attribute->setChoices(array_values($distros));

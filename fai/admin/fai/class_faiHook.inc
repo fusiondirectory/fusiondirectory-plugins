@@ -99,7 +99,7 @@ class faiHook extends faiSimplePluginClass
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique('one');
     $this->attributesAccess['hooks']->setLinearRendering(FALSE);
   }
 

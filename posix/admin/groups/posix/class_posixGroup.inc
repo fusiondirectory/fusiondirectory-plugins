@@ -124,7 +124,7 @@ class posixGroup extends simplePlugin
       $this->trustMode = 'byhost';
     }
 
-    $this->attributesAccess['gidNumber']->setUnique(TRUE);
+    $this->attributesAccess['gidNumber']->setUnique('whole');
     $this->attributesAccess['force_id']->setInLdap(FALSE);
     $this->attributesAccess['force_id']->setManagedAttributes(
       array(

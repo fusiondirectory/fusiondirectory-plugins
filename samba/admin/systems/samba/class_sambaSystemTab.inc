@@ -62,7 +62,7 @@ class sambaSystemTab extends simplePlugin
     global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['uid']->setUnique(TRUE);
+    $this->attributesAccess['uid']->setUnique('whole');
     $this->attributesAccess['sambaDomainName']->setChoices(array_keys($config->data['SERVERS']['SAMBA']));
     $this->attributesAccess['sambaDomainName']->setInLdap(FALSE);
 

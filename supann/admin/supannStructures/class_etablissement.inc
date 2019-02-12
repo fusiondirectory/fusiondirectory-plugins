@@ -126,10 +126,10 @@ class etablissement extends simplePlugin
       $this->set_acl_base($config->current['BASE']);
     }
 
-    $this->attributesAccess['o']->setUnique(TRUE);
-    $this->attributesAccess['supannCodeEntite']->setUnique(TRUE);
-    $this->attributesAccess['supannEtablissement']->setUnique(TRUE);
-    $this->attributesAccess['eduOrgLegalName']->setUnique(TRUE);
+    $this->attributesAccess['o']->setUnique('one');
+    $this->attributesAccess['supannCodeEntite']->setUnique('whole', '(objectClass=supannEntite)');
+    $this->attributesAccess['supannEtablissement']->setUnique('one');
+    $this->attributesAccess['eduOrgLegalName']->setUnique('one');
 
     $root_code = $this->get_root_code();
     $this->attributesAccess['set_root']->setInLdap(FALSE);
