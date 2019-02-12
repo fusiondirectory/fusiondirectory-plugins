@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
+
   Copyright (C) 2010-2012 Antoine Gallavardin
-  Copyright (C) 2013-2016 FusionDirectory
+  Copyright (C) 2013-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -482,7 +483,12 @@ class supannAccount extends simplePlugin
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     global $config;
+
     parent::__construct($dn, $object, $parent, $mainTab);
+
+    $this->attributesAccess['supannRefId']->setUnique('whole');
+    $this->attributesAccess['eduPersonPrincipalName']->setUnique('whole');
+    $this->attributesAccess['supannAutreMail']->setUnique('whole');
 
     /* list of entity stored in LDAP tree */
     $ldap = $config->get_ldap_link();
@@ -591,4 +597,3 @@ class supannAccount extends simplePlugin
     return parent::prepare_save();
   }
 }
-?>

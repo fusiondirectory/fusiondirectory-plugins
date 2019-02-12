@@ -134,7 +134,6 @@ class entite extends simplePlugin
 
     $this->attributesAccess['ou']->setUnique(TRUE);
     $this->attributesAccess['supannCodeEntite']->setUnique(TRUE);
+    $this->attributesAccess['supannRefId']->setUnique('whole');
   }
 }
-
-?>
