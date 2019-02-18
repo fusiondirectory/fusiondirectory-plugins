@@ -203,7 +203,7 @@ class sinapsRequest
     return $values;
   }
 
-  public function getUserValues($identifiantApplication, array $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback)
+  public function getUserValues($identifiantApplication, array $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback, array $userRoles)
   {
     $personne   = $this->getOperationPersonne();
     $now        = new DateTime();
@@ -258,7 +258,35 @@ class sinapsRequest
 
     array_unshift($values['supannAccount']['supannRefId'], '{'.$uuidPrefix.'}'.$uuid);
 
-    if (!isset($personne->rattachements->rattachement)) {
+    /* Check if the user still has at least one role which means he exists, otherwise this is a deletion */
+    $userRoleExists = array();
+    foreach ($userRoles as $typeRole) {
+      if (preg_match('^([^/]+)/(.+)$', $typeRole, $m)) {
+        $userRoleExists[$m[1]][] = $m[2];
+      } else {
+        $userRoleExists[$typeRole] = TRUE;
+      }
+    }
+    $deletion = TRUE;
+    if (isset($personne->rattachements->rattachement)) {
+      foreach ($personne->rattachements->rattachement as $rattachement) {
+        if (isset($rattachement->roles->role)) {
+          foreach ($rattachement->roles->role as $role) {
+            if (isset($userRoleExists[$role->typeRole])) {
+              if ($userRoleExists[$role->typeRole] === TRUE) {
+                $deletion = FALSE;
+                break 2;
+              }
+              if (in_array_ics($role->externe->typeExterne, $userRoleExists[$role->typeRole])) {
+                $deletion = FALSE;
+                break 2;
+              }
+            }
+          }
+        }
+      }
+    }
+    if ($deletion) {
       /* This is a deletion */
       /* Store current date as end of contract */
       $values['personalInfo']['fdContractEndDate'] = $now->format('d.m.Y');
