@@ -20,7 +20,7 @@
 
 class dhcpConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('DHCP configuration'),
@@ -33,13 +33,13 @@ class dhcpConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('DHCP config'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('DHCP RDN'), _('Branch in which DHCP configurations will be stored'),
             'fdDhcpRDN', TRUE,
             'ou=dhcp'

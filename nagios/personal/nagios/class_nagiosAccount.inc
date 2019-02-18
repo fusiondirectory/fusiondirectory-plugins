@@ -32,7 +32,7 @@ class nagiosAccount extends simplePlugin
 {
   var $displayHeader  = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Nagios'),
@@ -52,7 +52,7 @@ class nagiosAccount extends simplePlugin
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     $prefix = static::get_prefix();
     return array(
@@ -67,22 +67,22 @@ class nagiosAccount extends simplePlugin
             _('Mail address'), _('Email of the nagios alias'),
             $prefix.'Email', TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Host notification period'), _('Host notification period'),
             $prefix.'ContactHostNotificationPeriod', FALSE,
             array('24x7','24x5','8x5')
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Service notification period'), _('Service notification period'),
             $prefix.'ContactServiceNotificationPeriod', FALSE,
             array('24x7','24x5','8x5')
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Service notification options'), _('Service notification options'),
             $prefix.'ContactServiceNotificationOptions', FALSE,
             array('w,u,c,r,f','w,u,c,r','w,u,c','c,w','n')
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Host notification options'), _('Host notification options'),
             $prefix.'ContactHostNotificationOptions', FALSE,
             array('d,u,r,f','d,u,r','d,u','n')

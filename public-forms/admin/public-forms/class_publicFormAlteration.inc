@@ -20,7 +20,7 @@
 
 class publicFormAlteration extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Altered fields'),
@@ -33,7 +33,7 @@ class publicFormAlteration extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     global $config;
 

@@ -24,7 +24,7 @@ class csvImport extends simplePlugin
   protected $template_object;
   protected $cachedChoices;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('CSV import'),
@@ -36,35 +36,35 @@ class csvImport extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'import' => array(
         'name'  => _('Import CSV'),
         'attrs' => array(
-          new SelectAttribute (
+          new SelectAttribute(
             _('Object type'), _('Type of objects you wish to import'),
             'type', TRUE,
             array(), '', NULL,
             'import_file'
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Template'), _('Select a template to apply to imported entries'),
             'template_dn', TRUE,
             array(), '', NULL,
             'import_file'
           ),
-          new FileAttribute (
+          new FileAttribute(
             _('CSV file'), _('Import a CSV file into your LDAP'),
             'import_file', FALSE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Separator'), _('Character used as separator in the CSV file'),
             'separator', TRUE,
             array(',', ';'), '', NULL,
             'import_file'
           ),
-          new HiddenAttribute (
+          new HiddenAttribute(
             'valueSeparator', FALSE, '|'
           ),
           new SetAttribute(
@@ -75,7 +75,7 @@ class csvImport extends simplePlugin
               'import_file'
             )
           ),
-          new ButtonAttribute (
+          new ButtonAttribute(
             '', '',
             'import_submit',
             _('Import'),
@@ -87,7 +87,7 @@ class csvImport extends simplePlugin
       'fields' => array(
         'name'  => _('Template filling'),
         'attrs' => array(
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('Select fields associations'),
             'fields',
             array(),
@@ -95,7 +95,7 @@ class csvImport extends simplePlugin
             'import_file',
             ''
           ),
-          new ButtonAttribute (
+          new ButtonAttribute(
             '', '',
             'import_submit_fields',
             _('Import'),
@@ -348,12 +348,12 @@ class csvImport extends simplePlugin
     return $data;
   }
 
-  function save()
+  function save (): array
   {
     return array();
   }
 
-  function remove($fulldelete = FALSE)
+  function remove (bool $fulldelete = FALSE): array
   {
     return array();
   }

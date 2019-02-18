@@ -21,7 +21,7 @@
 
 class argonautFuseConfig extends simpleService
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Argonaut Fuse'),
@@ -36,20 +36,20 @@ class argonautFuseConfig extends simpleService
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array (
       'main' => array (
         'name'  => _('Basic settings'),
         'attrs' => array (
-          new StringAttribute (
+          new StringAttribute(
             _('Default mode'),
             '',
             'argonautFuseDefaultMode',
             TRUE,
             'install'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Log directory'),
             _('Directory in which argonaut-fuse will store its log'),
             'argonautFuseLogDir',
@@ -61,7 +61,7 @@ class argonautFuseConfig extends simpleService
       'tftp' => array (
         'name'  => _('TFTP'),
         'attrs' => array (
-          new StringAttribute (
+          new StringAttribute(
             _('Pxelinux cfg path'),
             _('Path where argonaut-fuse should store pxelinux.cfg'),
             'argonautFusePxelinuxCfg',
@@ -97,7 +97,7 @@ class argonautFuseConfig extends simpleService
 
   /*! \brief This function display the service and return the html code
    */
-  function execute ()
+  function execute (): string
   {
     $str = '<div style="width:100%; text-align:right; clear:both; float:none;">'.
            '  <input type="submit" name="SaveService" value="'.msgPool::saveButton().'"/>&nbsp;'.
@@ -117,7 +117,7 @@ class argonautFuseConfig extends simpleService
 
 
   /* Save data to object */
-  function save_object()
+  function save_object ()
   {
     parent::save_object();
     if (isset($_POST[get_class($this)."_posted"])) {
@@ -128,7 +128,7 @@ class argonautFuseConfig extends simpleService
     }
   }
 
-  function check()
+  function check (): array
   {
     $message = parent::check();
 
@@ -142,7 +142,7 @@ class argonautFuseConfig extends simpleService
     return $message;
   }
 
-  function set_acl_category($cat)
+  function set_acl_category ($cat)
   {
     parent::set_acl_category($cat);
     foreach ($this->plugin as &$plugin) {
@@ -151,7 +151,7 @@ class argonautFuseConfig extends simpleService
     unset($plugin);
   }
 
-  function set_acl_base($base)
+  function set_acl_base ($base)
   {
     parent::set_acl_base($base);
     foreach ($this->plugin as &$plugin) {
@@ -161,7 +161,7 @@ class argonautFuseConfig extends simpleService
   }
 
   /* Save to LDAP */
-  function save()
+  function save (): array
   {
     $errors = parent::save();
     if (!empty($errors)) {
@@ -183,7 +183,7 @@ class argonautFuseConfig extends simpleService
     unset($plugin);
   }
 
-  function remove($fulldelete = FALSE)
+  function remove (bool $fulldelete = FALSE): array
   {
     $errors = array();
     /* Remove objects */

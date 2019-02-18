@@ -32,7 +32,7 @@ class sinapsDiffusionHandlerJob
 
   protected $request;
 
-  function __construct(sinapsRequest $request)
+  function __construct (sinapsRequest $request)
   {
     global $config;
 

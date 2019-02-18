@@ -22,7 +22,7 @@ class phoneGeneric extends ipHostPlugin
 {
   var $inheritance = array('gosaGroupOfNames' => 'member');
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Phone'),
@@ -43,18 +43,18 @@ class phoneGeneric extends ipHostPlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
           new BaseSelectorAttribute(get_ou('phoneRDN')),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'), _('The name of the phone'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('A short description of the phone'),
             'description', FALSE
           ),
@@ -63,11 +63,11 @@ class phoneGeneric extends ipHostPlugin
       'phone' => array(
         'name'  => _('Phone'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Serial Number'), _('The serial number of the phone'),
             'serialNumber', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Telephone Number'), _('The telephone number of the phone'),
             'telephoneNumber', FALSE
           ),

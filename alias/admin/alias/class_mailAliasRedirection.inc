@@ -20,7 +20,7 @@
 
 class mailAliasRedirection extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Temporary mail redirection'),
@@ -38,27 +38,27 @@ class mailAliasRedirection extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       // Attributes are grouped by section
       'main' => array(
         'name'  => _('Mail redirection'),
         'attrs' => array(
-          new BaseSelectorAttribute (get_ou('aliasRDN')),
-          new HostNameAttribute (_('Name'), _('Name to identify this redirection'), 'cn', TRUE),
-          new TextAreaAttribute (
+          new BaseSelectorAttribute(get_ou('aliasRDN')),
+          new HostNameAttribute(_('Name'), _('Name to identify this redirection'), 'cn', TRUE),
+          new TextAreaAttribute(
             _('Description'), _('Description of this redirection'),
             'description', FALSE
           ),
           new SetAttribute(
-            new MailAttribute (
+            new MailAttribute(
               _('Redirect from'), _('Mail address from which you want to redirect'),
               'mail', TRUE
             )
           ),
           new SetAttribute(
-            new MailAttribute (
+            new MailAttribute(
               _('Redirect to'), _('Destination of this redirection'),
               'gosaMailForwardingAddress', TRUE
             )

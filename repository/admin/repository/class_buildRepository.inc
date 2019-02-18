@@ -20,7 +20,7 @@
 
 class buildRepository extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Build repository'),
@@ -46,7 +46,7 @@ class buildRepository extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     global $config;
 
@@ -54,27 +54,27 @@ class buildRepository extends simplePlugin
       'main' => array(
         'name'  => _('Build repository'),
         'attrs' => array(
-          new BaseSelectorAttribute (get_ou('repositoryRDN')),
-          new HostNameAttribute (
+          new BaseSelectorAttribute(get_ou('repositoryRDN')),
+          new HostNameAttribute(
             _('Name'), _('Unique name for this repository'),
             'cn', TRUE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Description'), _('Description of this repository'),
             'description', FALSE
           ),
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Distribution sections'), _('The distribution sections this repository provides'),
               'fdRepoDistributionSection', TRUE,
               array()
             )
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Private'), _('Is this repository private or public?'),
             'fdRepoPrivate', FALSE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Type'), _('Repository type'),
             'fdRepoType', TRUE,
             $config->get_cfg_value('repositoryTypes', array('debian'))
@@ -84,7 +84,7 @@ class buildRepository extends simplePlugin
       'users' => array(
         'name'  => _('Members'),
         'attrs' => array(
-          new UsersAttribute (
+          new UsersAttribute(
             _('Admins'), _('Admins of this repository'),
             'fdRepoAdmin', FALSE
           ),
@@ -134,7 +134,7 @@ class buildRepository extends simplePlugin
     }
   }
 
-  function foreignKeyUpdate($field, $oldvalue, $newvalue, array $source)
+  function foreignKeyUpdate (string $field, $oldvalue, $newvalue, array $source)
   {
     if ($field == 'fdRepoDistributionSection') {
       $values = $this->fdRepoDistributionSection;

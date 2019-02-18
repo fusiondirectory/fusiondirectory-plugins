@@ -22,7 +22,7 @@ class sambaGroup extends simplePlugin
 {
   var $displayHeader  = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Samba'),
@@ -37,7 +37,7 @@ class sambaGroup extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -125,7 +125,7 @@ class sambaGroup extends simplePlugin
     $this->attributesAccess['sambaSID']->attributes[1]->setInitialValue($this->getGID());
   }
 
-  function prepare_save()
+  function prepare_save (): array
   {
     global $config;
     $errors = parent::prepare_save();
@@ -177,7 +177,7 @@ class sambaGroup extends simplePlugin
     return $sid;
   }
 
-  function resetCopyInfos()
+  function resetCopyInfos ()
   {
     parent::resetCopyInfos();
 

@@ -21,7 +21,7 @@
 
 class componentGeneric extends ipHostPlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Component'),
@@ -44,17 +44,17 @@ class componentGeneric extends ipHostPlugin
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'), _('The name of the component'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('A short description of the component'),
             'description', FALSE
           ),

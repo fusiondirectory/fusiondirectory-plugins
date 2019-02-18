@@ -20,7 +20,7 @@
 
 class dhcpGroup extends dhcpPlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'     => _('DHCP group'),

@@ -20,7 +20,7 @@
 
 class posixConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('POSIX configuration'),
@@ -32,62 +32,62 @@ class posixConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Posix'),
         'class' => array('critical'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('POSIX groups RDN'), _('The branch where POSIX groups are stored.'),
             'fdGroupRDN', TRUE,
             'ou=groups'
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Group/user min id'),
             _('The minimum assignable user or group id to avoid security leaks with id 0 accounts.'),
             'fdMinId', FALSE,
             0, FALSE, 100
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Next id hook'), _('A script to be called for finding the next free id number for users or groups.'),
             'fdNextIdHook', FALSE
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Base number for user id'),
             _('Where to start looking for a new free user id.'),
             'fdUidNumberBase', FALSE,
             0, FALSE, 1100
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Base number for group id'),
             _('Where to start looking for a new free group id.'),
             'fdGidNumberBase', FALSE,
             0, FALSE, 1100
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Id allocation method'), _('Method to allocate user/group ids'),
             'fdIdAllocationMethod', TRUE,
             array('traditional', 'pool'), 'traditional',
             array(_('Traditional'), _('Samba unix id pool'))
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Pool user id min'), _('Minimum value for user id when using pool method'),
             'fdUidNumberPoolMin', FALSE,
             0, FALSE, 10000
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Pool user id max'), _('Maximum value for user id when using pool method'),
             'fdUidNumberPoolMax', FALSE,
             0, FALSE, 40000
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Pool group id min'), _('Minimum value for group id when using pool method'),
             'fdGidNumberPoolMin', FALSE,
             0, FALSE, 10000
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Pool group id max'), _('Maximum value for group id when using pool method'),
             'fdGidNumberPoolMax', FALSE,
             0, FALSE, 40000
@@ -98,14 +98,14 @@ class posixConfig extends simplePlugin
         'name'  => _('Shells'),
         'attrs' => array(
           new SetAttribute(
-            new StringAttribute (
+            new StringAttribute(
               _('Available shells'), _('Available POSIX shells for FD users.'),
               'fdShells', FALSE
             ),
             array('/bin/ash','/bin/bash','/bin/csh','/bin/sh','/bin/ksh',
                   '/bin/tcsh','/bin/dash','/bin/zsh','/sbin/nologin', '/bin/false', '/usr/bin/git-shell')
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Default shell'), _('Shell used by default when activating Unix tab.'),
             'fdDefaultShell', TRUE
           ),
@@ -132,7 +132,7 @@ class posixConfig extends simplePlugin
     );
   }
 
-  function save_object()
+  function save_object ()
   {
     parent::save_object();
     $this->attributesAccess['fdDefaultShell']->setChoices($this->fdShells);

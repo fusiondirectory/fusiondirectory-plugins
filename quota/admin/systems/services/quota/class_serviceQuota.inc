@@ -21,7 +21,7 @@
 
 class serviceQuota extends simpleService
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Quota service'),
@@ -33,7 +33,7 @@ class serviceQuota extends simpleService
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -164,7 +164,7 @@ class serviceQuota extends simpleService
 
   }
 
-  function getShares()
+  function getShares ()
   {
     /* loading of each array of any share delared on this server  */
     $shareInfos = array();
@@ -179,7 +179,7 @@ class serviceQuota extends simpleService
     return $shareInfos;
   }
 
-  function getLdapServers()
+  function getLdapServers ()
   {
     /* Get List of server with LDAP service */
     return objects::ls('server', NULL, NULL, '(objectClass=goLdapServer)');

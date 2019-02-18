@@ -20,7 +20,7 @@
 
 class serviceRenaterPartage extends simpleMailMethodService
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Renater Partage'),
@@ -32,7 +32,7 @@ class serviceRenaterPartage extends simpleMailMethodService
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array (
       'main' => array (
@@ -66,15 +66,15 @@ class serviceRenaterPartage extends simpleMailMethodService
               _('Domains handled by this Renater Partage server'),
               'fdRenaterPartageServerMailDomain',
               array(
-                new StringAttribute (
+                new StringAttribute(
                   _('Domain'), _('Domain handled by this server'),
                   'renaterPartageDomain', TRUE
                 ),
-                new StringAttribute (
+                new StringAttribute(
                   _('Key'), _('Key for this domain'),
                   'renaterPartageDomainKey', TRUE
                 ),
-                new StringAttribute (
+                new StringAttribute(
                   _('Classes of service'), _('Possible classes of service for this domain and their ids, separated by commas. Format is cos1Name|cos1Id,cos2Name|cos2Id.'),
                   'renaterPartageDomainCOS', TRUE,
                   '', '',
@@ -99,4 +99,3 @@ class serviceRenaterPartage extends simpleMailMethodService
     $this->attributesAccess['fdRenaterPartageServerMailDomain']->setLinearRendering(FALSE);
   }
 }
-?>

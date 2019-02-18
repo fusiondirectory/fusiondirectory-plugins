@@ -20,7 +20,7 @@
 
 class dhcpDnsZone extends dhcpPlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'     => _('DHCP DNS update zone'),
@@ -31,25 +31,25 @@ class dhcpDnsZone extends dhcpPlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('DHCP'),
         'attrs' => array(
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'), _('Name of this DHCP configuration'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('DNS Zone Server'), _('Master server of the DNS Zone'),
             'dhcpDnsZoneServer', TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Tsig key'), _('The TSig key DN'),
             'dhcpKeyDN', FALSE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Comments'), _('Comments about this DHCP object'),
             'dhcpComments', FALSE
           ),

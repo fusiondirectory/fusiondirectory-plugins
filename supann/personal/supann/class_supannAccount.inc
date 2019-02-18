@@ -24,7 +24,7 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
 {
   protected $prefixedChoices;
 
-  function __construct($label, $description, $ldapName, $required, $filename, $acl = "")
+  function __construct ($label, $description, $ldapName, $required, $filename, $acl = "")
   {
     $attributes = array(
       new SelectAttribute('', '', $ldapName.'_prefix', $required),
@@ -103,7 +103,7 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
 
 class SupannCursusAnneeAttribute extends SupannPrefixedSelectAttribute
 {
-  function __construct($label, $description, $ldapName, $required, $acl = "")
+  function __construct ($label, $description, $ldapName, $required, $acl = "")
   {
     $attributes = array(
       new SelectAttribute('', '', $ldapName.'_prefix', $required),
@@ -141,7 +141,7 @@ class SupannCursusAnneeAttribute extends SupannPrefixedSelectAttribute
 
 class SupannCompositeAttribute extends CompositeAttribute
 {
-  function __construct($description, $ldapName, array $attributes, $acl = "", $label = "Composite attribute")
+  function __construct ($description, $ldapName, array $attributes, $acl = "", $label = "Composite attribute")
   {
     parent::__construct($description, $ldapName, $attributes, '', '', $acl, $label);
   }
@@ -217,7 +217,7 @@ class supannAccount extends simplePlugin
 {
   var $displayHeader = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('SupAnn'),
@@ -235,7 +235,7 @@ class supannAccount extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     $year = intval(date('Y'));
     return array(
@@ -566,7 +566,7 @@ class supannAccount extends simplePlugin
     );
   }
 
-  function check()
+  function check (): array
   {
     $message = parent::check();
 
@@ -578,19 +578,19 @@ class supannAccount extends simplePlugin
     return $message;
   }
 
-  function save_object()
+  function save_object ()
   {
     parent::save_object();
     $this->updateFieldsChoices();
   }
 
-  function adapt_from_template($attrs, $skip = array())
+  function adapt_from_template (array $attrs, array $skip = array())
   {
     parent::adapt_from_template($attrs, $skip);
     $this->updateFieldsChoices();
   }
 
-  protected function prepare_save ()
+  protected function prepare_save (): array
   {
     $this->attributesAccess['supannEtuInscription']->supannPrepareSave();
     $this->attributesAccess['supannRoleEntite']->supannPrepareSave();

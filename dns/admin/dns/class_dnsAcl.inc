@@ -20,7 +20,7 @@
 
 class dnsAcl extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('DNS acl'),
@@ -36,19 +36,19 @@ class dnsAcl extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Acl'),
         'attrs' => array(
           new BaseSelectorAttribute(get_ou('dnsRDN')),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('ACL name'), _('Name of this acl'),
             'cn', TRUE
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Address match list'), _('The ip address match list for this acl'),
               'fdDNSAclMatchList', FALSE
             )

@@ -21,7 +21,7 @@
 
 class debugHelp extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Debug help'),
@@ -38,7 +38,7 @@ class debugHelp extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'diagram' => array(
@@ -106,7 +106,7 @@ class debugHelp extends simplePlugin
     $this->dump = $dump;
   }
 
-  function execute()
+  function execute (): string
   {
     $smarty = get_smarty();
     $smarty->assign('usePrototype', 'true');

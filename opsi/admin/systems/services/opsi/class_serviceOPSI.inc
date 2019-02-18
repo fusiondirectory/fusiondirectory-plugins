@@ -20,7 +20,7 @@
 
 class serviceOPSI extends simpleService
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('OPSI service'),
@@ -32,7 +32,7 @@ class serviceOPSI extends simpleService
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(

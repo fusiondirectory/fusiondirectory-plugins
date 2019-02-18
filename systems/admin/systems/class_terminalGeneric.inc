@@ -20,7 +20,7 @@
 
 class terminalGeneric extends workstationGeneric
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Terminal'),
@@ -44,7 +44,7 @@ class terminalGeneric extends workstationGeneric
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ($word = NULL, $rdn = NULL)
+  static function getAttributesInfo ($word = NULL, $rdn = NULL): array
   {
     if ($word === NULL) {
       $word = _('terminal');

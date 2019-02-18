@@ -41,7 +41,7 @@ class ipHostPlugin extends simplePlugin
   }
 
   /* Used by prepare_save and template::apply */
-  public function mergeObjectClasses(array $oc)
+  public function mergeObjectClasses (array $oc): array
   {
     $objectclasses = $oc;
     if (empty($this->ipHostNumber)) {

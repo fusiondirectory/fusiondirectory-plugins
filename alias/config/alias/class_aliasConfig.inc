@@ -20,7 +20,7 @@
 
 class aliasConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Alias configuration'),
@@ -33,13 +33,13 @@ class aliasConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Alias'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Alias RDN'), _('Branch in which aliases will be stored'),
             'fdAliasRDN', TRUE,
             'ou=alias'

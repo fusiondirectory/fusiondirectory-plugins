@@ -36,7 +36,7 @@ class faiSimplePluginClass extends simplePlugin
   }
 
   /* Check supplied data */
-  function check()
+  function check (): array
   {
     global $config;
     /* Call common method to give check the hook */
@@ -55,7 +55,7 @@ class faiSimplePluginClass extends simplePlugin
     return $message;
   }
 
-  function compute_dn()
+  function compute_dn (): string
   {
     return 'cn='.ldap_escape($this->cn, '', LDAP_ESCAPE_DN).','.get_ou(get_class($this).'RDN').$this->base;
   }

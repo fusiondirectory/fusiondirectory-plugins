@@ -20,7 +20,7 @@
 
 class serviceDovecot extends simpleMailMethodService
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Dovecot (IMAP/POP3)'),
@@ -35,7 +35,7 @@ class serviceDovecot extends simpleMailMethodService
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
       return array (
       'connection' => array (

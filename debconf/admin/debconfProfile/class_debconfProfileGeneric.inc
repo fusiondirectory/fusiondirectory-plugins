@@ -48,7 +48,7 @@ class DebconfEntriesAttribute extends CompositeAttribute
         $cn     = $entry['cn'][0];
         $desc   = (isset($entry['description'][0]) ? $entry['description'][0] : '');
         $default  = (isset($entry['value'][0]) ? $entry['default'][0] : '');
-        $this->attributes[$cn] = new StringAttribute ($cn, $desc, "debconfentry_$cn", FALSE, $default);
+        $this->attributes[$cn] = new StringAttribute($cn, $desc, "debconfentry_$cn", FALSE, $default);
         $this->attributes[$cn]->setInLdap(FALSE);
         $this->attributes[$cn]->setAcl($this->getAcl());
         //~ 'choices'
@@ -157,7 +157,7 @@ class DebconfImportAttribute extends FileAttribute
 
 class debconfProfileGeneric extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Debconf profile'),
@@ -174,21 +174,21 @@ class debconfProfileGeneric extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       // Attributes are grouped by section
       'main' => array(
         'name'  => _("Name"),
         'attrs' => array(
-          new DebconfImportAttribute ("", _("Import a debconf file"), "import"),
-          new StringAttribute (_("Name"), _("Name of this debconf template"), "ou", TRUE),
+          new DebconfImportAttribute("", _("Import a debconf file"), "import"),
+          new StringAttribute(_("Name"), _("Name of this debconf template"), "ou", TRUE),
         )
       ),
       'entries' => array(
         'name'  => _("Entries"),
         'attrs' => array(
-          new DebconfEntriesAttribute (_("Debconf template answers"), "debconfEntries"),
+          new DebconfEntriesAttribute(_("Debconf template answers"), "debconfEntries"),
         )
       ),
     );
@@ -210,7 +210,7 @@ class debconfProfileGeneric extends simplePlugin
     }
   }
 
-  function ldap_save()
+  function ldap_save (): array
   {
     $errors = parent::ldap_save();
     if (!empty($errors)) {

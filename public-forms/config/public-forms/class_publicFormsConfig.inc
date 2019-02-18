@@ -20,7 +20,7 @@
 
 class publicFormsConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Public forms configuration'),
@@ -33,13 +33,13 @@ class publicFormsConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Public forms'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Public forms RDN'), _('Branch in which public forms will be stored'),
             'fdPublicFormRDN', TRUE,
             'ou=forms'

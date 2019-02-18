@@ -24,17 +24,17 @@ class dhcpPlugin extends simplePlugin
 
   protected $base;
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('DHCP'),
         'attrs' => array(
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'), _('Name of this DHCP configuration'),
             'cn', TRUE
           ),
-          new OrderedArrayAttribute (
+          new OrderedArrayAttribute(
             new StringAttribute(
               _('Options'), _('The DHCP options'),
               'dhcpOption', FALSE
@@ -42,14 +42,14 @@ class dhcpPlugin extends simplePlugin
             // Order disabled, Default values, Edit enabled
             FALSE, array(), TRUE
           ),
-          new OrderedArrayAttribute (
+          new OrderedArrayAttribute(
             new StringAttribute(
               _('Statements'), _('The DHCP statements'),
               'dhcpStatements', FALSE
             ),
             FALSE, array(), TRUE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Comments'), _('Comments about this DHCP object'),
             'dhcpComments', FALSE
           ),
@@ -93,7 +93,7 @@ class dhcpPlugin extends simplePlugin
     $this->set_acl_base($this->base);
   }
 
-  function execute()
+  function execute (): string
   {
     return parent::execute()."\n".
     '<p class="plugbottom">'."\n".
@@ -102,10 +102,10 @@ class dhcpPlugin extends simplePlugin
     '</p>';
   }
 
-  function save()
+  function save (): array
   {
     $this->dn = $this->compute_dn();
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->dn, 'save');
+    @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->dn, 'save');
     $this->prepare_save();
     $this->attrs['cn']          = array($this->cn);
     $this->attrs['objectClass'] = $this->objectclasses;
@@ -114,12 +114,12 @@ class dhcpPlugin extends simplePlugin
     return $this->attrs;
   }
 
-  function compute_dn()
+  function compute_dn (): string
   {
     return 'cn='.ldap_escape_dn($this->attributesAccess['cn']->computeLdapValue()).','.$this->base;
   }
 
-  function getOption($option)
+  function getOption ($option)
   {
     if (isset($this->dhcpOption)) {
       foreach ($this->dhcpOption as $line) {
@@ -131,7 +131,7 @@ class dhcpPlugin extends simplePlugin
     return NULL;
   }
 
-  function getStatement($statement)
+  function getStatement ($statement)
   {
     if (isset($this->dhcpStatements)) {
       foreach ($this->dhcpStatements as $line) {

@@ -20,7 +20,7 @@
 
 class sympaConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Sympa configuration'),
@@ -33,13 +33,13 @@ class sympaConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Sympa'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Sympa RDN'), _('Branch in which Sympa objects will be stored'),
             'fdSympaRDN', TRUE,
             'ou=sympa'

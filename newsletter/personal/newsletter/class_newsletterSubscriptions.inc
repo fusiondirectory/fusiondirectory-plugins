@@ -22,7 +22,7 @@ class newsletterSubscriptions extends simplePlugin
 {
   var $displayHeader = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Newsletter'),
@@ -38,7 +38,7 @@ class newsletterSubscriptions extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     global $config;
     return array(
@@ -46,7 +46,7 @@ class newsletterSubscriptions extends simplePlugin
         'name'  => _('Personal info'),
         'attrs' => array(
           new SetAttribute(
-            new SelectAttribute (
+            new SelectAttribute(
               _('Subscriptions'), _('Newsletter you are subscribed to'),
               'fdNewsletterSubscriptions', FALSE,
               $config->get_cfg_value('newsletterChoices', array())

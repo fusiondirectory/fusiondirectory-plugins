@@ -142,7 +142,7 @@ class faiLogView extends simplePlugin
 
   var $displayHeader  = FALSE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('FAI Logs'),
@@ -154,7 +154,7 @@ class faiLogView extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'available' => array(
@@ -209,14 +209,14 @@ class faiLogView extends simplePlugin
     $this->ignore_account = FALSE;
   }
 
-  function is_this_account($attrs)
+  function is_this_account ($attrs)
   {
     /* Will not work when called from parent constructor (or when $attrs is not us) */
     return (count($this->attributesAccess['available_logs']->logs) > 0);
   }
 
 
-  function execute()
+  function execute (): string
   {
     if ($this->available_logs['file'] == '') {
       $this->attributesInfo['selected']['name'] = _('Selected file');

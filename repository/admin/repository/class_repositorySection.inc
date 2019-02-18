@@ -20,7 +20,7 @@
 
 class repositorySection extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Repository section'),
@@ -42,23 +42,23 @@ class repositorySection extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Repository section'),
         'attrs' => array(
-          new BaseSelectorAttribute (get_ou('repositoryRDN')),
-          new StringAttribute (
+          new BaseSelectorAttribute(get_ou('repositoryRDN')),
+          new StringAttribute(
             _('Name'), _('Unique name for this section'),
             'cn', TRUE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Description'), _('Description of this section'),
             'description', FALSE
           ),
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Based on'), _('The sections this one is based on'),
               'fdBasedOn', FALSE,
               array()

@@ -27,7 +27,7 @@ class faiPackageConfiguration extends simplePlugin
   protected $debconfAttributesTypes;
   protected $generatedDebconfAttributes;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('FAI package configuration'),
@@ -48,7 +48,7 @@ class faiPackageConfiguration extends simplePlugin
       @param  String  The release name (e.g. edge)
       @param  Array   The current package configuration.
    */
-  function __construct($dn, $packageName, $release, $values)
+  function __construct ($dn, $packageName, $release, $values)
   {
     $this->packageName  = $packageName;
 
@@ -252,7 +252,7 @@ class faiPackageConfiguration extends simplePlugin
     $this->debconfAttributesTypes[$infos['Name']] = $infos['Type'];
   }
 
-  function execute()
+  function execute (): string
   {
     $smarty = get_smarty();
     $acl    = $this->aclGetPermissions('FAIpartitions');
@@ -264,7 +264,7 @@ class faiPackageConfiguration extends simplePlugin
       '</p>';
   }
 
-  function save()
+  function save (): array
   {
     $tmp = array();
     foreach ($this->attributesAccess as $name => $attribute) {

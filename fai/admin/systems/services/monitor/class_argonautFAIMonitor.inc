@@ -20,7 +20,7 @@
 
 class argonautFAIMonitor extends simpleService
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Argonaut FAI monitor'),
@@ -32,28 +32,28 @@ class argonautFAIMonitor extends simpleService
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array (
     'config' => array (
         'name'  => _('Argonaut FAI monitor settings'),
         'attrs' => array (
-          new IntAttribute (
+          new IntAttribute(
             _('Port'), _('The port argonaut-fai-monitor should listen on. Default is 4711.'),
             'argonautFAIMonitorPort', FALSE,
             0, FALSE, 4711
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Timeout'), _('The timeout for bad clients. 0 to disable.'),
             'argonautFAIMonitorTimeout', FALSE,
             0, FALSE, 0
           ),
-          new TrimmedStringAttribute (
+          new TrimmedStringAttribute(
             _('CA certificate'), _('Path to the CA certificate file on Argonaut FAI monitor server'),
             'argonautFAIMonitorCaCertPath', FALSE,
             '/etc/ssl/certs/ca.cert'
           ),
-          new TrimmedStringAttribute (
+          new TrimmedStringAttribute(
             _('Log directory'), _('Directory in which argonaut-fai-monitor will store its log'),
             'argonautFAIMonitorLogDir', TRUE,
             '/var/log/argonaut'

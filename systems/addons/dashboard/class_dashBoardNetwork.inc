@@ -21,7 +21,7 @@
 
 class dashboardNetwork extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Network'),
@@ -33,7 +33,7 @@ class dashboardNetwork extends simplePlugin
     );
   }
 
-  static function getAttributesInfo()
+  static function getAttributesInfo (): array
   {
     return array(
       'dhcp' => array(

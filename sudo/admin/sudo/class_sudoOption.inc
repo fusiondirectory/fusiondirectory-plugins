@@ -116,7 +116,7 @@ class AvailableSudoOptionAttribute extends SelectAttribute
   {
     $choices = sudoOptions::listOptions();
     sort($choices);
-    parent::__construct ($label, $description, $ldapName, $required, $choices, "", NULL, $acl);
+    parent::__construct($label, $description, $ldapName, $required, $choices, "", NULL, $acl);
     $this->setInLdap(FALSE);
   }
 
@@ -229,7 +229,7 @@ class SudoOptionAttribute extends Attribute
     }
   }
 
-  function check ()
+  function check (): array
   {
     $error = parent::check();
     if (!empty($error)) {
@@ -331,7 +331,7 @@ class sudoOption extends simplePlugin
 {
   var $displayHeader = FALSE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Options'),
@@ -343,15 +343,13 @@ class sudoOption extends simplePlugin
     );
   }
 
-  // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
-      // Attributes are grouped by section
       'available_options' => array(
         'name'  => _('Available options'),
         'attrs' => array(
-          new AvailableSudoOptionAttribute (
+          new AvailableSudoOptionAttribute(
             _('Option'), _('Add a new sudo option'), 'availableSudoOptions'
           ),
         )
@@ -359,14 +357,14 @@ class sudoOption extends simplePlugin
       'used_options' => array(
         'name'  => _('Used sudo role options'),
         'attrs' => array(
-          new UsedOptionAttribute (_('Used sudo role options'), 'sudoOption')
+          new UsedOptionAttribute(_('Used sudo role options'), 'sudoOption')
         ),
         'template' => get_template_path('usedoptions_section.tpl', TRUE, dirname(__FILE__))
       ),
     );
   }
 
-  function execute ()
+  function execute (): string
   {
     $script = <<<SCRIPT
   <script type="text/javascript">
@@ -392,7 +390,7 @@ SCRIPT;
   /*!  \brief   Escape special chars in function parameters.
        @param   String the string to that must be escaped.
    */
-  public function escape_command($str)
+  public function escape_command ($str)
   {
     /* Check if given value is a command (/[a-z]/ ..)
      */
@@ -407,7 +405,7 @@ SCRIPT;
   /*!  \brief   Unescape special chars in function parameters.
        @param   String the string to that must be unescaped.
    */
-  public function unescape_command($str)
+  public function unescape_command ($str)
   {
     /* Check if given value is a command (/[a-z]/ ..)
      */

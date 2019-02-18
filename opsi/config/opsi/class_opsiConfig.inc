@@ -20,7 +20,7 @@
 
 class opsiConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('OPSI configuration'),
@@ -33,13 +33,13 @@ class opsiConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('OPSI'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('OPSI RDN'), _('Branch in which OPSI profiles will be stored'),
             'fdOpsiRDN', TRUE,
             'ou=opsi'

@@ -53,7 +53,7 @@ class SocialAccountAttribute extends CompositeAttribute
     return array($handlerClass::getName(), array('html' => $handler->linkify($this->attributes[1]->getValue())));
   }
 
-  function check ()
+  function check (): array
   {
     $error = parent::check();
     if (!empty($error)) {
@@ -78,7 +78,7 @@ class personalInfo extends simplePlugin
 {
   var $displayHeader = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Personal'),
@@ -95,13 +95,13 @@ class personalInfo extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Personal info'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Personal title'), _('Personal title - Examples of personal titles are "Ms", "Dr", "Prof" and "Rev"'),
             'personalTitle', FALSE
           ),
@@ -111,36 +111,36 @@ class personalInfo extends simplePlugin
               'fdNickName'
             )
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Badge Number'), _('Company badge number'),
             'fdBadge', FALSE
           ),
-          new DateAttribute (
+          new DateAttribute(
             _('Date of birth'), _('Date of birth'),
             'dateOfBirth', FALSE,
             'Y-m-d', '',
             '30 years ago'
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Sex'), _('Gender'),
             'gender', FALSE,
             array('', 'M', 'F'), '', array('', 'male', 'female')
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Country'), _('Country'),
             'co', FALSE
           ),
-          new GeneralizedTimeDateAttribute (
+          new GeneralizedTimeDateAttribute(
             _('Start date'), _('Date this user joined the company'),
             'fdContractStartDate', FALSE,
             ''
           ),
-          new GeneralizedTimeDateAttribute (
+          new GeneralizedTimeDateAttribute(
             _('End date'), _('Date this user is supposed to leave the company'),
             'fdContractEndDate', FALSE,
             ''
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Photo Visible'), _('Should the photo of the user be visible on external tools'),
             'fdPhotoVisible', FALSE, TRUE
           ),

@@ -21,7 +21,7 @@
 
 class nisMap extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Mount point'),
@@ -39,14 +39,14 @@ class nisMap extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Mount point'),
         'attrs' => array(
           new BaseSelectorAttribute(get_ou('autofsRDN')),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'), _('Name of the mount point'),
             'nisMapName', TRUE
           )

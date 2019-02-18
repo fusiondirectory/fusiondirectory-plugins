@@ -25,7 +25,7 @@ class supannStructureExt extends simplePlugin
   var $mainTab = TRUE;
 
   /* Return plugin information */
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('SUPANN-Ext'),
@@ -37,7 +37,7 @@ class supannStructureExt extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'validity' => array(
@@ -124,7 +124,7 @@ class supannStructureExt extends simplePlugin
     $this->attributesAccess['fdSupannRelationEntite']->attribute->attributes[2]->setChoices($code_entites, $label_entites);
   }
 
-  function check ()
+  function check (): array
   {
     $errors = parent::check();
 
@@ -139,7 +139,7 @@ class supannStructureExt extends simplePlugin
     return $errors;
   }
 
-  protected function prepare_save ()
+  protected function prepare_save (): array
   {
     $this->attributesAccess['fdSupannRelationEntite']->supannPrepareSave();
     return parent::prepare_save();

@@ -37,7 +37,7 @@ class netgroupMembership extends simplePlugin
   var $old_id;
   protected static $id_attr = 'uid';
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('NIS Netgroup'),
@@ -53,7 +53,7 @@ class netgroupMembership extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'groups' => array(
@@ -126,7 +126,7 @@ class netgroupMembership extends simplePlugin
     }
   }
 
-  function is_this_account($attrs)
+  function is_this_account ($attrs)
   {
     global $config;
     $class    = get_class($this);
@@ -151,7 +151,7 @@ class netgroupMembership extends simplePlugin
   }
 
   /* Save data to LDAP, depending on is_account we save or delete */
-  function ldap_save()
+  function ldap_save (): array
   {
     global $config;
     $this->update_id();

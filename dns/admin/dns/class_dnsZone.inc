@@ -20,7 +20,7 @@
 
 class DnsRecordPlugin extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     $plProvidedAcls = parent::generatePlProvidedAcls(static::getAttributesInfo());
 
@@ -38,19 +38,19 @@ class DnsRecordPlugin extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Record'),
         'class' => array('fullwidth'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Subdomain'), _('Relative subdomain name'),
             'relativeSubdomainName', FALSE,
             '', 'dnsRecord'
           ),
-          new DnsRecordAttribute (
+          new DnsRecordAttribute(
             _('Record'), _('DNS Record'),
             'dnsRecord', TRUE
           ),
@@ -96,11 +96,11 @@ class DnsRecordPlugin extends simplePlugin
     $this->attributesAccess['dnsRecord']->attributes[2]->setChoices($attribute->getReverseZones());
   }
 
-  function save()
+  function save (): array
   {
   }
 
-  function execute()
+  function execute (): string
   {
     $smarty = get_smarty();
     $attr   = $this->attributesAccess['dnsRecord'];
@@ -119,7 +119,7 @@ class DnsRecordDialog extends GenericDialog
 
   protected $plugin;
 
-  function __construct($simplePlugin, &$attribute, $value = array())
+  function __construct ($simplePlugin, &$attribute, $value = array())
   {
     $this->attribute  = $attribute;
     $this->plugin     = $simplePlugin;
@@ -218,7 +218,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  protected function getAttributeArrayValue($key, $value)
+  protected function getAttributeArrayValue ($key, $value)
   {
     return array(
       $value[0],
@@ -692,7 +692,7 @@ class dnsZone extends simplePlugin
     return ($config->get_cfg_value('DNSFinalDot', 'TRUE') == 'TRUE');
   }
 
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('DNS zone'),
@@ -711,31 +711,31 @@ class dnsZone extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Zone'),
         'attrs' => array(
           new BaseSelectorAttribute(get_ou('dnsRDN')),
-          new FQDNAttribute (
+          new FQDNAttribute(
             _('Zone name'), _('Zone name'),
             'zoneName', TRUE
           ),
-          new HiddenAttribute (
+          new HiddenAttribute(
             // Relative domain name
             'relativeDomainName', TRUE,
             '@'
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Reverse zones'), sprintf(_('Reverse zones for this zone in the form xx.xx.in-addr.arpa%1$s or x.x.ip6.arpa%1$s'), (dnsZone::finalDot() ? '.' : '')),
               'reverseZones', FALSE,
               '', '',
               '/^.*\.(in-addr|ip6)\.arpa'.(dnsZone::finalDot() ? '\.' : '').'$/i', '11.168.192.in-addr.arpa'.(dnsZone::finalDot() ? '.' : '')
             )
           ),
-          new HiddenAttribute (
+          new HiddenAttribute(
             'dNSClass', TRUE,
             'IN'
           ),
@@ -744,7 +744,7 @@ class dnsZone extends simplePlugin
       'soa' => array(
         'name'  => _('SOA record'),
         'attrs' => array(
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('SOA Record'),
             'sOARecord',
             array(
@@ -816,7 +816,7 @@ class dnsZone extends simplePlugin
     }
   }
 
-  function prepare_save ()
+  function prepare_save (): array
   {
     /* Update serial (Also thanks to this save is triggered if something changed - see simplePlugin::shouldSave) */
     if (
@@ -836,7 +836,7 @@ class dnsZone extends simplePlugin
     return parent::prepare_save();
   }
 
-  function ldap_save ()
+  function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();

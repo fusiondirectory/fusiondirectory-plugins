@@ -20,7 +20,7 @@
 
 class applicationsPluginConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Applications'),
@@ -33,23 +33,23 @@ class applicationsPluginConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'rdns' => array(
         'name'  => _('Applications'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Application RDN'), _('Branch in which applications will be stored'),
             'fdApplicationsRDN', TRUE,
             'ou=apps'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Web applications RDN'), _('Branch in which web applications will be stored'),
             'fdWebappsRDN', TRUE,
             'ou=apps'
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Show web applications in menu'), _('Whether to show web applications in FD main menu'),
             'fdWebappsMenu', TRUE,
             array('none', 'allowed', 'all'), 'none',

@@ -26,7 +26,7 @@ class sinapsRequest
 {
   protected $data;
 
-  public function __construct($xml)
+  public function __construct ($xml)
   {
     $this->data = new SimpleXMLElement($xml);
     if (!isset($this->data->domaine)) {

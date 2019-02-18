@@ -75,7 +75,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     $this->initialValue = $this->getValue();
   }
 
-  protected function getAttributeArrayValue($key, $value)
+  protected function getAttributeArrayValue ($key, $value)
   {
     $values = parent::getAttributeArrayValue($key, $value);
     if ($this->plugin->is_template) {
@@ -122,7 +122,7 @@ class dnsHost extends simplePlugin
   protected $zonesCache;
   protected $loaded = FALSE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('DNS'),
@@ -140,7 +140,7 @@ class dnsHost extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'zones' => array(
@@ -289,7 +289,7 @@ class dnsHost extends simplePlugin
     }
   }
 
-  function execute()
+  function execute (): string
   {
     $this->load();
     $smarty = get_smarty();
@@ -332,7 +332,7 @@ class dnsHost extends simplePlugin
     }
   }
 
-  function save()
+  function save (): array
   {
     global $config;
     $errors = parent::save();
@@ -437,7 +437,7 @@ class dnsHost extends simplePlugin
     return parent::post_remove();
   }
 
-  function adapt_from_template($attrs, $skip = array())
+  function adapt_from_template (array $attrs, array $skip = array())
   {
     parent::adapt_from_template($attrs, $skip);
     $this->reloadZoneChoices();

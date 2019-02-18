@@ -21,7 +21,7 @@
 
 class serviceShare extends simpleService
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Share service'),
@@ -33,7 +33,7 @@ class serviceShare extends simpleService
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(

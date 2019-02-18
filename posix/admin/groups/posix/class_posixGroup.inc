@@ -24,7 +24,7 @@ class posixGroup extends simplePlugin
 {
   protected $locks = array();
 
-  static function plInfo()
+  static function plInfo (): array
   {
     if (class_available('mixedGroup')) {
       return array();
@@ -48,7 +48,7 @@ class posixGroup extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -137,7 +137,7 @@ class posixGroup extends simplePlugin
     );
   }
 
-  function check()
+  function check (): array
   {
     global $config;
     $message = parent::check();
@@ -152,7 +152,7 @@ class posixGroup extends simplePlugin
     return $message;
   }
 
-  function resetCopyInfos()
+  function resetCopyInfos ()
   {
     parent::resetCopyInfos();
 
@@ -161,7 +161,7 @@ class posixGroup extends simplePlugin
     $this->gidNumber = "";
   }
 
-  function prepare_save()
+  function prepare_save (): array
   {
     if (!$this->force_id) {
       /* Handle gidNumber */
@@ -192,7 +192,7 @@ class posixGroup extends simplePlugin
     return $errors;
   }
 
-  function save()
+  function save (): array
   {
     $errors = parent::save();
 

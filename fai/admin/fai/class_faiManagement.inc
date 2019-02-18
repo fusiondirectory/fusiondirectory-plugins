@@ -22,7 +22,7 @@ class faiListing extends listing
 {
   private $builded = FALSE;
 
-  function __construct($data)
+  function __construct ($data)
   {
     parent::__construct($data);
     // Instanciate base selector
@@ -53,7 +53,7 @@ class faiBaseSelector extends baseSelector
 {
   protected $select;
 
-  function __construct($bases, $base = '')
+  function __construct ($bases, $base = '')
   {
     parent::__construct($bases, $base);
     $this->select = new SelectAttribute(
@@ -111,7 +111,7 @@ class faiManagement extends simpleManagement
 
   protected $headpageClass = 'faiListing';
 
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('FAI'),
@@ -127,7 +127,7 @@ class faiManagement extends simpleManagement
     );
   }
 
-  function execute ()
+  function execute (): string
   {
     if (empty($this->headpage->bases)) {
       return $this->getHeader().

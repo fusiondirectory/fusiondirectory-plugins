@@ -88,7 +88,7 @@ class RegistrationStateAttribute extends DisplayLDAPAttribute
 
 class registration extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Registration'),
@@ -109,7 +109,7 @@ class registration extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(

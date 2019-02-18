@@ -22,7 +22,7 @@ class communityOrganization extends simplePlugin
 {
   var $displayHeader  = TRUE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Community organization'),
@@ -34,27 +34,27 @@ class communityOrganization extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     global $config;
     return array(
       'membership' => array(
         'name'  => _('Membership'),
         'attrs' => array(
-          new SelectAttribute (
+          new SelectAttribute(
             _('Membership type'), _('Membership type of this organization'),
             'fdCommunityMembershipType', FALSE,
             $config->get_cfg_value('communityMembershipTypeChoices', array())
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Agreement signed'), _('Did this member returned the agreement signed'),
             'fdCommunityMembershipAgreement', FALSE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Active'), _('Is the membership of this organization active'),
             'fdCommunityMembershipActive', FALSE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Hidden'), _('Should this membership be hidden from listings'),
             'fdCommunityMembershipHidden', FALSE
           )
@@ -63,11 +63,11 @@ class communityOrganization extends simplePlugin
       'dates' => array(
         'name'  => _('Dates'),
         'attrs' => array(
-          new GeneralizedTimeDateAttribute (
+          new GeneralizedTimeDateAttribute(
             _('Start date'), _('Date of the beginning'),
             'fdCommunityStartDate', TRUE
           ),
-          new GeneralizedTimeDateAttribute (
+          new GeneralizedTimeDateAttribute(
             _('End date'), _('Date of the end'),
             'fdCommunityEndDate', FALSE,
             ''

@@ -37,7 +37,7 @@ class systemManagement extends management
     array('ActionsColumn',        array('label' => 'Actions')),
   );
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Systems'),

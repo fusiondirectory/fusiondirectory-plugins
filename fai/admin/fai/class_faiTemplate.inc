@@ -119,7 +119,7 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
     );
   }
 
-  function check ()
+  function check (): array
   {
     $error = parent::check();
     if (!empty($error)) {
@@ -138,7 +138,7 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
 
 class faiTemplate extends faiSimplePluginClass
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Template'),
@@ -158,17 +158,17 @@ class faiTemplate extends faiSimplePluginClass
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Class name'), _('Template class name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
@@ -178,7 +178,7 @@ class faiTemplate extends faiSimplePluginClass
         'name'  => _('Template files'),
         'class' => array('fullwidth'),
         'attrs' => array(
-          new FAITemplateFilesAttribute (
+          new FAITemplateFilesAttribute(
             '', _('Template files in this class'), 'templateFiles'
           ),
         )
@@ -186,13 +186,13 @@ class faiTemplate extends faiSimplePluginClass
     );
   }
 
-  protected function shouldSave()
+  protected function shouldSave (): bool
   {
     /* We need ldap_save to always run */
     return TRUE;
   }
 
-  function ldap_save ()
+  function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();

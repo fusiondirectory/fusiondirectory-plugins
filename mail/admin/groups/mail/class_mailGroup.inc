@@ -39,7 +39,7 @@ class mailGroup extends simplePlugin
 {
   var $displayHeader  = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Mail'),
@@ -54,32 +54,32 @@ class mailGroup extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Information'),
         'attrs' => array(
-          new MailAttribute (
+          new MailAttribute(
             _('Primary address'), _('The primary mail address'),
             'mail', TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Server'), _('Email server'),
             'gosaMailServer', TRUE,
             array('')
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Alternative addresses'), _('Alternative mail addresses for the group'),
               'gosaMailAlternateAddress'
             )
           ),
-          new GroupMailsAttribute (
+          new GroupMailsAttribute(
             _('Forward messages to non group members'), _('Forward messages to non group members'),
             'gosaMailForwardingAddress'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Only allowed to receive local mail'), _('Whether this group mail is only allowed to receive messages from local senders'),
             'fdGroupMailLocalOnly', FALSE,
             FALSE
@@ -157,7 +157,7 @@ class mailGroup extends simplePlugin
     }
   }
 
-  function check ()
+  function check (): array
   {
     $messages = parent::check();
 
@@ -168,13 +168,13 @@ class mailGroup extends simplePlugin
     return $messages;
   }
 
-  protected function shouldSave()
+  protected function shouldSave (): bool
   {
     /* mail method might have something to save (like password change from main tab for instance) */
     return TRUE;
   }
 
-  public function ldap_save()
+  public function ldap_save (): array
   {
     if (!empty($this->attrs)) {
       $errors = parent::ldap_save();

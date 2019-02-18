@@ -24,7 +24,7 @@ class deploymentTimeframe extends simplePlugin
 
   var $inheritance = array('gosaGroupOfNames' => 'member');
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Deployment time frame'),
@@ -37,7 +37,7 @@ class deploymentTimeframe extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -48,11 +48,11 @@ class deploymentTimeframe extends simplePlugin
               _('Time frames in which deployment is authorized'),
               'argonautDeploymentTimeframe',
               array(
-                new TimeHiAttribute (
+                new TimeHiAttribute(
                   '', _('Opening time for this frame as HH:MM'),
                   'begin', TRUE
                 ),
-                new TimeHiAttribute (
+                new TimeHiAttribute(
                   _('->'), _('Closing time for this frame as HH:MM'),
                   'end', TRUE
                 )

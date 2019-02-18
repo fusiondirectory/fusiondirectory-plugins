@@ -81,7 +81,7 @@ class posixAccount extends simplePlugin
 
   protected $fromTemplate = FALSE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Unix'),
@@ -112,7 +112,7 @@ class posixAccount extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     global $config;
     return array(
@@ -379,7 +379,7 @@ class posixAccount extends simplePlugin
     }
   }
 
-  function resetCopyInfos()
+  function resetCopyInfos ()
   {
     global $config;
     parent::resetCopyInfos();
@@ -402,7 +402,7 @@ class posixAccount extends simplePlugin
     $this->gidNumber = '';
   }
 
-  function check()
+  function check (): array
   {
     global $config;
     if (isset($this->parent) &&
@@ -447,7 +447,7 @@ class posixAccount extends simplePlugin
     return $message;
   }
 
-  protected function prepare_save()
+  protected function prepare_save (): array
   {
     global $config;
 
@@ -558,20 +558,20 @@ class posixAccount extends simplePlugin
           );
           return $errors;
         } else {
-          @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
+          @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
             sprintf('Primary group "%s" created, using gidNumber "%s".', $tabObject->dn, $this->gidNumber), '');
         }
       } else {
         $attrs = $ldap->fetch();
         $this->gidNumber = $attrs['gidNumber'][0];
-        @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
+        @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
           'Found and used: <i>'.$attrs['dn'].'</i>',
           sprintf('Primary group "%s" exists, gidNumber is "%s".', $this->getUid(), $this->gidNumber));
       }
     } else {
       /* Primary group was selected by user */
       $this->gidNumber = $this->primaryGroup;
-      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
+      @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
         sprintf('Primary group "%s" for user "%s" manually selected.',
         $this->gidNumber, $this->getUid()), '');
     }
@@ -621,7 +621,7 @@ class posixAccount extends simplePlugin
     return $errors;
   }
 
-  protected function shouldSave()
+  protected function shouldSave (): bool
   {
     if (parent::shouldSave()) {
       return TRUE;
@@ -632,7 +632,7 @@ class posixAccount extends simplePlugin
     return FALSE;
   }
 
-  function save()
+  function save (): array
   {
     $errors = parent::save();
 
@@ -644,7 +644,7 @@ class posixAccount extends simplePlugin
     return $errors;
   }
 
-  protected function ldap_save()
+  protected function ldap_save (): array
   {
     $errors = parent::ldap_save();
 
@@ -694,7 +694,7 @@ class posixAccount extends simplePlugin
     return $errors;
   }
 
-  protected function ldap_remove()
+  protected function ldap_remove (): array
   {
     /* Remove and write to LDAP */
     $errors = parent::ldap_remove();
@@ -722,7 +722,7 @@ class posixAccount extends simplePlugin
   }
 
   /* Adapt from template, using 'dn' */
-  function adapt_from_template($attrs, $skip = array())
+  function adapt_from_template (array $attrs, array $skip = array())
   {
     /* Include global link_info */
 
@@ -753,7 +753,7 @@ class posixAccount extends simplePlugin
     $this->fromTemplate = TRUE;
   }
 
-  function foreignKeyUpdate($field, $oldvalue, $newvalue, array $source)
+  function foreignKeyUpdate (string $field, $oldvalue, $newvalue, array $source)
   {
     $ret = parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
     if ($field == 'gidNumber') {
@@ -991,7 +991,7 @@ class posixAccount extends simplePlugin
       $command = $config->get_cfg_value('nextIdHook');
 
       $command .= ' '.escapeshellarg($dn).' '.escapeshellarg($attrib);
-      @DEBUG (DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, 'Execute');
+      @DEBUG(DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, 'Execute');
       exec($command, $output, $returnCode);
 
       $str = implode("\n", $output);

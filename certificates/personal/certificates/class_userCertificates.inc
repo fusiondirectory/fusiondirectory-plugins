@@ -110,7 +110,7 @@ class userCertificates extends simplePlugin
 {
   var $displayHeader = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Certificates'),
@@ -126,14 +126,14 @@ class userCertificates extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Certificates'),
         'attrs' => array(
           new CertificateOrderedArrayAttribute(
-            new CertificateFileAttribute (
+            new CertificateFileAttribute(
               '', _('Certificate content'),
               'userCertificate;binary', TRUE
             ),

@@ -20,7 +20,7 @@
 
 class faiHook extends faiSimplePluginClass
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Hook'),
@@ -40,17 +40,17 @@ class faiHook extends faiSimplePluginClass
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Class name'), _('Variables class name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
@@ -60,19 +60,19 @@ class faiHook extends faiSimplePluginClass
         'name'  => _('Hooks'),
         'class' => array('fullwidth'),
         'attrs' => array(
-          new SubNodesAttribute (
+          new SubNodesAttribute(
             '', _('Variables in this class'),
             'hooks', array('FAIhookEntry','FAIclass','top'),
             array(
-              new StringAttribute (
+              new StringAttribute(
                 _('Name'), _('The name of the variable'),
                 'cn', TRUE
               ),
-              new StringAttribute (
+              new StringAttribute(
                 _('Description'), _('A short description of the variable'),
                 'description', FALSE
               ),
-              new SelectAttribute (
+              new SelectAttribute(
                 _('Task'), _('Task to run'),
                 'FAItask', TRUE,
                 array('chboot','configure','debconf','error','extrbase',
@@ -80,7 +80,7 @@ class faiHook extends faiSimplePluginClass
                        'mountdisks','partition','prepareapt','repository',
                        'savelog','setup','softupdate','sysinfo','updatebase')
               ),
-              new FileTextAreaAttribute (
+              new FileTextAreaAttribute(
                 _('Script'), _('The script of this hook'),
                 'FAIscript', TRUE,
                 '.sh'
@@ -103,13 +103,13 @@ class faiHook extends faiSimplePluginClass
     $this->attributesAccess['hooks']->setLinearRendering(FALSE);
   }
 
-  protected function shouldSave()
+  protected function shouldSave (): bool
   {
     /* We need ldap_save to always run */
     return TRUE;
   }
 
-  function ldap_save ()
+  function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();

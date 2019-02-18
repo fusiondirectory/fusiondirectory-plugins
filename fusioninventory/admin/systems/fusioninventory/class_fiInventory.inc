@@ -64,7 +64,7 @@ class fiInventory extends simplePlugin
   );
 
   /* Return plugin information */
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Inventory'),
@@ -88,7 +88,7 @@ class fiInventory extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'match' => array(
@@ -156,7 +156,7 @@ class fiInventory extends simplePlugin
     $this->users_infos    = NULL;
   }
 
-  function execute()
+  function execute (): string
   {
     if ($this->hardware_infos === NULL) {
       $infos = $this->get_inventory_infos();
@@ -174,12 +174,12 @@ class fiInventory extends simplePlugin
     return parent::execute();
   }
 
-  function save()
+  function save (): array
   {
     return array();
   }
 
-  function remove($fulldelete = FALSE)
+  function remove (bool $fulldelete = FALSE): array
   {
     return array();
   }

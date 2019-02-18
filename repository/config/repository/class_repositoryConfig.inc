@@ -20,7 +20,7 @@
 
 class repositoryConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Repository configuration'),
@@ -33,19 +33,19 @@ class repositoryConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Repository'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Repository RDN'), _('Branch in which repository objects will be stored'),
             'fdRepositoryRDN', TRUE,
             'ou=repository'
           ),
           new SetAttribute(
-            new StringAttribute (
+            new StringAttribute(
               _('Repository types'), _('Available repository types'),
               'fdRepositoryTypes', TRUE
             ),

@@ -20,7 +20,7 @@
 
 class dsaConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('DSA configuration'),
@@ -33,13 +33,13 @@ class dsaConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('DSA'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('DSA RDN'), _('Branch in which Directory Service Account (dsa) will be stored'),
             'fdDSARDN', TRUE,
             'ou=dsa'

@@ -20,7 +20,7 @@
 
 class dnsConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('DNS configuration'),
@@ -33,18 +33,18 @@ class dnsConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('DNS config'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('DNS RDN'), _('Branch in which DNS zones will be stored'),
             'fdDnsRDN', TRUE,
             'ou=dns'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Store final dot in domains'), _('Should FD store a final dot at the end of domains?'),
             'fdDNSFinalDot', FALSE,
             TRUE

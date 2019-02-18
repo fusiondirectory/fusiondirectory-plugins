@@ -21,7 +21,7 @@
 
 class nisObject extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Directory'),
@@ -44,24 +44,24 @@ class nisObject extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Directory'),
         'attrs' => array(
           new BaseSelectorAttribute(get_ou('autofsRDN')),
-          new StringAttribute (
+          new StringAttribute(
             _('Name'), _('Name of this directory'),
             'cn', TRUE,
             '', '',
             '/^[a-z0-9\.\-\/]*$/i', 'nfsPartage'
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Automount entry'), _("The entry of this directory for the automount daemon.\n For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"),
             'nisMapEntry', TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Mount point'), _('The mount point this directory will be placed in'),
             'nisMapName', TRUE,
             array()
@@ -77,7 +77,7 @@ class nisObject extends simplePlugin
     $this->attributesAccess['nisMapName']->setChoices($this->getMountPoints());
   }
 
-  function save_object()
+  function save_object ()
   {
     parent::save_object();
     $this->attributesAccess['nisMapName']->setChoices($this->getMountPoints());
@@ -97,13 +97,13 @@ class nisObject extends simplePlugin
   }
 
   /* We need to fix the base */
-  function get_allowed_bases()
+  function get_allowed_bases (): array
   {
     $this->base = preg_replace('/^nisMapName=[^,]+,/', '', $this->base);
     return parent::get_allowed_bases();
   }
 
-  function compute_dn()
+  function compute_dn (): string
   {
     return 'cn='.ldap_escape($this->attributesAccess['cn']->getValue(), '', LDAP_ESCAPE_DN).','.
             'nisMapName='.ldap_escape($this->nisMapName, '', LDAP_ESCAPE_DN).','.

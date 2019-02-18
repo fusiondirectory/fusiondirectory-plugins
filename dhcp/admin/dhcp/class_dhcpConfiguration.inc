@@ -45,7 +45,7 @@ class dhcpConfiguration extends simplePlugin
 
   static $quote_option = array('domain-name');
 
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('DHCP configuration'),
@@ -67,7 +67,7 @@ class dhcpConfiguration extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -76,7 +76,7 @@ class dhcpConfiguration extends simplePlugin
         'attrs' => array(
           new BaseSelectorAttribute(get_ou('dhcpRDN')),
           new HiddenAttribute('cn'),
-          new DhcpSectionsAttribute (
+          new DhcpSectionsAttribute(
             '', _('The DHCP sections handled by this server'),
             'dhcpSections', FALSE
           )
@@ -107,24 +107,24 @@ class dhcpConfiguration extends simplePlugin
     $this->cn = $this->attributesAccess['dhcpSections']->getGlobalCn();
   }
 
-  function save_object()
+  function save_object ()
   {
     parent::save_object();
     $this->cn = $this->attributesAccess['dhcpSections']->getGlobalCn();
   }
 
-  function save()
+  function save (): array
   {
     $this->cn = $this->attributesAccess['dhcpSections']->getGlobalCn();
     return parent::save();
   }
 
-  protected function shouldSave()
+  protected function shouldSave (): bool
   {
     return TRUE;
   }
 
-  protected function ldap_save()
+  protected function ldap_save (): array
   {
     global $config;
     $this->ldap_error = 'Success';

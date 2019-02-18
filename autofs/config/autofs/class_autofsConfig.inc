@@ -20,7 +20,7 @@
 
 class autofsConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Autofs configuration'),
@@ -33,13 +33,13 @@ class autofsConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('AutoFS'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('AutoFS RDN'), _('Branch in which automount info will be stored'),
             'fdAutofsRDN', TRUE,
             'ou=autofs'

@@ -24,7 +24,7 @@ class webLink extends simplePlugin
 
   var $inheritance = array('gosaGroupOfNames' => 'member');
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Web link'),
@@ -36,13 +36,13 @@ class webLink extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'links' => array(
         'name'  => _('Links'),
         'attrs' => array(
-          new DisplayAttribute (
+          new DisplayAttribute(
             _('Links'), _('Web links to this computer'),
             'fdWebLink', FALSE
           ),
@@ -51,13 +51,13 @@ class webLink extends simplePlugin
       'settings' => array(
         'name'  => _('Settings'),
         'attrs' => array(
-          new SelectAttribute (
+          new SelectAttribute(
             _('Protocol'), _('Protocol to use to access this computer Web page'),
             'fdWebLinkProtocol', TRUE,
             array('https', 'http')
           ),
-          new SetAttribute (
-            new URLAttribute (
+          new SetAttribute(
+            new URLAttribute(
               _('Arbitrary links'), _('Any URL you want to associate to this computer'),
               'fdWebLinkURL', FALSE
             )

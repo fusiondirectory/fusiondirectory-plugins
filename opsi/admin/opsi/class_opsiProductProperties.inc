@@ -26,7 +26,7 @@ class SubmittingOPSIProductAttribute extends SelectAttribute
     $this->setSubmitForm($func);
   }
 
-  function check()
+  function check (): array
   {
   }
 
@@ -43,7 +43,7 @@ class ProductPropertyAttribute extends CompositeAttribute
     parent::__construct ($description, $ldapName, array(new StringAttribute('', '', 'fake')), '', '', $acl, $label);
   }
 
-  function check()
+  function check (): array
   {
   }
 
@@ -92,7 +92,7 @@ class opsiProductProperties extends simplePlugin
 {
   var $properties = array();
 
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Product properties'),
@@ -104,7 +104,7 @@ class opsiProductProperties extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -148,7 +148,7 @@ class opsiProductProperties extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
   }
 
-  public function execute()
+  public function execute (): string
   {
     $this->updateProductList();
     return parent::execute();

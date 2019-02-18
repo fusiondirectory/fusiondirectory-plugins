@@ -25,7 +25,7 @@ class debconfStartup extends simplePlugin
 
   var $inheritance = array('gosaGroupOfNames' => 'member');
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Debconf'),
@@ -38,17 +38,17 @@ class debconfStartup extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Debconf settings'),
         'attrs' => array(
-          new SelectAttribute (
+          new SelectAttribute(
             _('Profile'), _('Debconf preseed profile to be used for installation'),
             'debconfProfile', TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Release'), _('Debian release to install'),
             'debconfDebianRelease', TRUE,
             array('squeeze', 'unstable', 'wheezy')

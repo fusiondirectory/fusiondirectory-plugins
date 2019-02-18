@@ -54,7 +54,7 @@ class ServerService extends simpleManagement
 
   var $is_account;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Services'),

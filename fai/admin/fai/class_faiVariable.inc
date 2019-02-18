@@ -20,7 +20,7 @@
 
 class faiVariable extends faiSimplePluginClass
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Variable'),
@@ -40,17 +40,17 @@ class faiVariable extends faiSimplePluginClass
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Class name'), _('Variables class name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
@@ -60,19 +60,19 @@ class faiVariable extends faiSimplePluginClass
         'name'  => _('Variables'),
         'class' => array('fullwidth'),
         'attrs' => array(
-          new SubNodesAttribute (
+          new SubNodesAttribute(
             '', _('Variables in this class'),
             'variables', array('FAIvariableEntry','FAIclass','top'),
             array(
-              new StringAttribute (
+              new StringAttribute(
                 _('Name'), _('The name of the variable'),
                 'cn', TRUE
               ),
-              new StringAttribute (
+              new StringAttribute(
                 _('Description'), _('A short description of the variable'),
                 'description', FALSE
               ),
-              new StringAttribute (
+              new StringAttribute(
                 _('Content'), _('The content of the variable'),
                 'FAIvariableContent', TRUE
               ),
@@ -94,13 +94,13 @@ class faiVariable extends faiSimplePluginClass
     $this->attributesAccess['variables']->setLinearRendering(FALSE);
   }
 
-  protected function shouldSave()
+  protected function shouldSave (): bool
   {
     /* We need ldap_save to always run */
     return TRUE;
   }
 
-  function ldap_save ()
+  function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();

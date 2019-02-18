@@ -20,7 +20,7 @@
 
 class sinapsUser extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Sinaps'),
@@ -37,14 +37,14 @@ class sinapsUser extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Sinaps'),
         'class' => array('fullwidth'),
         'attrs' => array(
-          new DisplayAttribute (
+          new DisplayAttribute(
             '', '',
             'sinaps_explanation', FALSE,
             _('This tab takes care of sending Acquisition event to Sinaps whenever a user is modified.')
@@ -54,7 +54,7 @@ class sinapsUser extends simplePlugin
     );
   }
 
-  function codeEntiteToldapUuidCallback($codeEntite)
+  function codeEntiteToldapUuidCallback ($codeEntite)
   {
     global $config;
 
@@ -84,7 +84,7 @@ class sinapsUser extends simplePlugin
     throw new FusionDirectoryException($error);
   }
 
-  protected function prepare_save ()
+  protected function prepare_save (): array
   {
     global $config;
 
@@ -111,7 +111,7 @@ class sinapsUser extends simplePlugin
           $contractEnded = TRUE;
         } else {
           /* Do not sync already deleted users */
-          return;
+          return array();
         }
       }
     }
@@ -132,7 +132,7 @@ class sinapsUser extends simplePlugin
     $user   = reset($users);
 
     if (!is_array($user)) {
-      return;
+      return array();
     }
 
     try {
@@ -148,5 +148,7 @@ class sinapsUser extends simplePlugin
       }
     } catch (FusionDirectoryException $e) {
     }
+
+    return array();
   }
 }

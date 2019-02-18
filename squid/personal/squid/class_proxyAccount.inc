@@ -52,7 +52,7 @@ class proxyAccount extends simplePlugin
 {
   var $displayHeader    = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Proxy'),
@@ -71,7 +71,7 @@ class proxyAccount extends simplePlugin
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'section1' => array(
@@ -91,8 +91,8 @@ class proxyAccount extends simplePlugin
             _('Working Start'),
             'gosaProxyWorkingStart',
             array (
-              new SelectAttribute ( '',  _('HourStart'),   'hourstart',   TRUE, array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24), 1, array('01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24')),
-              new SelectAttribute ( ':', _('MinuteStart'), 'minutestart', TRUE, array('00','15','30','45'))
+              new SelectAttribute( '',  _('HourStart'),   'hourstart',   TRUE, array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24), 1, array('01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24')),
+              new SelectAttribute( ':', _('MinuteStart'), 'minutestart', TRUE, array('00','15','30','45'))
             ),
             // read format (not used)
             '',
@@ -106,18 +106,18 @@ class proxyAccount extends simplePlugin
             _('Working Stop'),
             'gosaProxyWorkingStop',
             array (
-              new SelectAttribute ( _('-'), _('HourStart'), 'hourstop',   TRUE, array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24), 1, array('01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24')),
-              new SelectAttribute ( _(':'), _('MinuteStop'), 'minutestop', TRUE, array('00','15','30','45'))
+              new SelectAttribute( _('-'), _('HourStart'), 'hourstop',   TRUE, array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24), 1, array('01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24')),
+              new SelectAttribute( _(':'), _('MinuteStop'), 'minutestop', TRUE, array('00','15','30','45'))
             ),
             '',
             ''
           ),
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('Restrict proxy usage by quota'),
             'gosaProxyQuota',
             array(
               new IntAttribute    ('',  _('Up'), 'quota_size', FALSE, 0, FALSE, 21),
-              new SelectAttribute ('', '', 'quota_unit', FALSE, array('k','m','g'), '', array('KB','MB','GB')),
+              new SelectAttribute('', '', 'quota_unit', FALSE, array('k','m','g'), '', array('KB','MB','GB')),
             ),
             '/^(\\d+)(.)$/',
             '%d%s',
@@ -125,14 +125,14 @@ class proxyAccount extends simplePlugin
             '',
             _('Restrict proxy usage by quota')
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('per'),
             _('per'),
             'gosaProxyQuotaPeriod',
             FALSE,
             array ('h','d','w','m'), "", array (_("hour"),_("day"),_("week"),_("month"))
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Start Working Hours'),
             _('Starting hours for internet access'),
             'enableWorkingTime',
@@ -141,7 +141,7 @@ class proxyAccount extends simplePlugin
             // acl
             'gosaProxyWorkingStart'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Proxy Quota'),
             _('Max Data quota for the proxy'),
             'enableQuota',

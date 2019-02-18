@@ -23,7 +23,7 @@ class sambaSystemTab extends simplePlugin
 {
   var $displayHeader = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Samba'),
@@ -36,19 +36,19 @@ class sambaSystemTab extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ($word = NULL, $rdn = NULL)
+  static function getAttributesInfo ($word = NULL, $rdn = NULL): array
   {
     return array(
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
-          new HiddenAttribute ('uid'),
-          new HiddenAttribute ('sambaSID'),
-          new HiddenAttribute ('homeDirectory', TRUE, '/dev/null'),
-          new HiddenAttribute ('uidNumber', TRUE, 1000),
-          new HiddenAttribute ('gidNumber', TRUE, 515),
-          new HiddenAttribute ('sambaAcctFlags', TRUE, '[W          ]'),
-          new SelectAttribute (
+          new HiddenAttribute('uid'),
+          new HiddenAttribute('sambaSID'),
+          new HiddenAttribute('homeDirectory', TRUE, '/dev/null'),
+          new HiddenAttribute('uidNumber', TRUE, 1000),
+          new HiddenAttribute('gidNumber', TRUE, 515),
+          new HiddenAttribute('sambaAcctFlags', TRUE, '[W          ]'),
+          new SelectAttribute(
             _('Domain'), _('Samba domain name'),
             'sambaDomainName', TRUE
           ),
@@ -100,13 +100,13 @@ class sambaSystemTab extends simplePlugin
     $this->attributesAccess['uid']->setValue($this->parent->getBaseObject()->cn.'$');
   }
 
-  function save_object()
+  function save_object ()
   {
     parent::save_object();
     $this->update_uid();
   }
 
-  function prepare_save()
+  function prepare_save (): array
   {
     global $config;
     $this->update_uid();

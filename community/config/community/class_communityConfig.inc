@@ -20,7 +20,7 @@
 
 class communityConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Community configuration'),
@@ -33,14 +33,14 @@ class communityConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Community'),
         'attrs' => array(
           new SetAttribute(
-            new StringAttribute (
+            new StringAttribute(
               _('Membership type choices'), _('Community membership types available in the user community tab'),
               'fdCommunityMembershipTypeChoices', FALSE
             ),

@@ -58,7 +58,7 @@ class opsiProfile extends simplePlugin
   var $macAddress = NULL;
   var $products;
 
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('OPSI profile'),
@@ -79,7 +79,7 @@ class opsiProfile extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(

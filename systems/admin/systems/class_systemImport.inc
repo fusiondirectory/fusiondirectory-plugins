@@ -48,12 +48,12 @@ class systemImport extends simplePlugin
             'type', TRUE,
             array(), '', NULL
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Template'), _('Select a template to apply to imported entries'),
             'template_dn', FALSE,
             array(), '', NULL
           ),
-          new ButtonAttribute (
+          new ButtonAttribute(
             '', '',
             'import',
             _('Import')
@@ -232,14 +232,14 @@ class systemImport extends simplePlugin
     $this->attributesAccess['template_dn']->setChoices(array_keys($templates), array_values($templates));
   }
 
-  function execute()
+  function execute (): string
   {
     $smarty = get_smarty();
     $smarty->assign('importResult', $this->messages);
     return parent::execute();
   }
 
-  function save()
+  function save (): array
   {
   }
 

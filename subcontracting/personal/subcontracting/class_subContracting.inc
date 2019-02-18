@@ -24,7 +24,7 @@ class subContractingAccount extends simplePlugin
   // we want it activated on all objects
   var $displayHeader = TRUE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Subcontracting'),
@@ -39,41 +39,41 @@ class subContractingAccount extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('SubContracting Information'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Intermediate'),
             _('Contact to the final customer'),
             'fdMissionIntermediate',
             FALSE,
             ''
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Final Customer'),
             _('Final Customer for this mission'),
             'fdMissionFinalCustomer',
             FALSE,
             ''
           ),
-          new MailAttribute (
+          new MailAttribute(
             _('Mail Address'),
             _('Mail address assigned for this mission'),
             'fdMissionMail',
             FALSE,
             ''
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Phone'),
             _('Phone number assigned for this mission'),
             'fdMissionPhone',
             FALSE,
             ''
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Street Address'),
             _('Address where this mission is executed'),
             'fdMissionAddress',

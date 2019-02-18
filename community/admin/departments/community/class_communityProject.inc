@@ -22,7 +22,7 @@ class communityProject extends communityOrganization
 {
   var $displayHeader  = TRUE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Community project'),
@@ -34,18 +34,18 @@ class communityProject extends communityOrganization
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     $infos = array_merge(
       array(
         'project' => array(
           'name'  => _('Project'),
           'attrs' => array(
-            new StringAttribute (
+            new StringAttribute(
               _('Project full name'), _('Full name of this project'),
               'fdProjectFullName', FALSE
             ),
-            new StringAttribute (
+            new StringAttribute(
               _('Project key'), _('ID used for this project in other softwares or databases'),
               'fdProjectKey', FALSE
             ),

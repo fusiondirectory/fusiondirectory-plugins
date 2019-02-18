@@ -20,7 +20,7 @@
 
 class sambaDomain extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Samba Domain'),
@@ -41,21 +41,21 @@ class sambaDomain extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Domain name'), _('Name of this domain'),
             'sambaDomainName', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('SID'), _('SID of this domain'),
             'sambaSID', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Rid base'), _('Algorithmic rid base'),
             'sambaAlgorithmicRidBase', FALSE
           ),
@@ -131,7 +131,7 @@ class sambaDomain extends simplePlugin
     );
   }
 
-  function compute_dn ()
+  function compute_dn (): string
   {
     global $config;
     return 'sambaDomainName='.ldap_escape($this->sambaDomainName, '', LDAP_ESCAPE_DN).','.$config->current['BASE'];

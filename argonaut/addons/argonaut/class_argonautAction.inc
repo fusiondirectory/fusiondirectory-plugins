@@ -30,7 +30,7 @@ class MacsAttribute extends GenericDialogAttribute
 
 class argonautAction extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Argonaut task'),
@@ -45,7 +45,7 @@ class argonautAction extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     $events = argonautEventTypes::get_event_types();
     return array(
@@ -111,7 +111,7 @@ class argonautAction extends simplePlugin
     );
   }
 
-  public function __construct($action, array $targets, $scheduled)
+  public function __construct ($action, array $targets, $scheduled)
   {
     global $config;
     parent::__construct($config->current['BASE']);
@@ -152,7 +152,7 @@ class argonautAction extends simplePlugin
     parent::loadAttributes();
   }
 
-  function execute()
+  function execute (): string
   {
     return parent::execute().$this->getFooter();
   }

@@ -23,7 +23,7 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
 {
   function __construct ($label, $description, $ldapName, $acl = "")
   {
-    parent::__construct (
+    parent::__construct(
       $description, $ldapName,
       array(
         new SelectAttribute(
@@ -64,7 +64,7 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
     $this->updateAttributes();
   }
 
-  function readValues($value)
+  function readValues ($value)
   {
     if (preg_match('/^([0-9]{1,})(KB|MB|GB|TB|PB|%)$/', $value, $m)) {
       // Fixed
@@ -90,7 +90,7 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
     }
   }
 
-  protected function updateAttributes()
+  protected function updateAttributes ()
   {
     switch ($this->attributes[0]->getValue()) {
       case 'remaining':
@@ -146,7 +146,7 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
     }
   }
 
-  function applyPostValue()
+  function applyPostValue ()
   {
     parent::applyPostValue();
     $this->updateAttributes();
@@ -164,7 +164,7 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
     $this->updateAttributes();
   }
 
-  function writeValues(array $values)
+  function writeValues (array $values)
   {
     if ($values[0] == 'remaining') {
       return '0-';
@@ -187,7 +187,7 @@ class FaiMountPointAttribute extends StringAttribute
     );
   }
 
-  function setPostValue($value)
+  function setPostValue ($value)
   {
     if ($value == '') {
       $value = '-';
@@ -198,7 +198,7 @@ class FaiMountPointAttribute extends StringAttribute
 
 class FaiRaidDevices extends OrderedArrayAttribute
 {
-  protected function getAttributeArrayValue($key, $value)
+  protected function getAttributeArrayValue ($key, $value)
   {
     $value = parent::getAttributeArrayValue($key, $value);
     return array(
@@ -211,7 +211,7 @@ class FaiRaidDevices extends OrderedArrayAttribute
 
 class faiPartition extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Partition entry'),
@@ -222,31 +222,31 @@ class faiPartition extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Partition'),
         'attrs' => array(
-          new HiddenAttribute ('FAIdiskType'),
-          new HiddenAttribute ('FAIpartitionNr', FALSE, 'undefined'),
-          new SelectAttribute (
+          new HiddenAttribute('FAIdiskType'),
+          new HiddenAttribute('FAIpartitionNr', FALSE, 'undefined'),
+          new SelectAttribute(
             _('Type'), _('Partition type'),
             'FAIpartitionType', TRUE,
             array('primary', 'logical'), '',
             array(_('Primary'), _('Logical'))
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Name'), _('Partition name'),
             'cn', TRUE,
             '', 'FAIpartitions',
             '/[a-z0-9_-]/i'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description'),
             'description', FALSE
           ),
-          new FaiPartitionSizeAttribute (
+          new FaiPartitionSizeAttribute(
             _('Size'), _('Size of this partition'),
             'FAIpartitionSize', FALSE
           ),
@@ -296,15 +296,15 @@ class faiPartition extends simplePlugin
             _('Password'), _('Password to use for encryption. Leave empty to use a encryption key file instead.'),
             'cryptsetupPassword', FALSE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Resize'), _('Resize existing partition'),
             'resize', FALSE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Bootable'), _('Wether or not this partition can be booted'),
             'bootable', FALSE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Preserve'), _('Does the partition need to be preserved'),
             'preserve', FALSE,
             array('','always','reinstall'), '',
@@ -315,13 +315,13 @@ class faiPartition extends simplePlugin
       'fs' => array(
         'name'  => _('Filesystem'),
         'attrs' => array(
-          new SelectAttribute (
+          new SelectAttribute(
             _('Filesystem'), _('The filesystem this partition should be formatted with'),
             'FAIfsType', TRUE,
             array('swap','vfat','ext2','ext3','ext4','reiserfs','xfs','btrfs','-'), 'ext4',
             array(_('swap'),_('fat32'),_('ext2'),_('ext3'),_('ext4'),_('reiser fs'),_('xfs'),_('btrfs'),_('LVM/RAID'))
           ),
-          new FaiMountPointAttribute (
+          new FaiMountPointAttribute(
             _('Mount point'), _('Mount point for this partition'),
             'FAImountPoint', TRUE
           ),
@@ -330,16 +330,16 @@ class faiPartition extends simplePlugin
       'options' => array(
         'name'  => _('Options'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Mount options'), _('Filesystem mount options'),
             'FAImountOptions', FALSE,
             'defaults'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Create options'), _('Filesystem create options'),
             'FAIfsCreateOptions', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Tune options'), _('Filesystem tune options'),
             'FAIfsTuneOptions', FALSE
           ),
@@ -348,7 +348,7 @@ class faiPartition extends simplePlugin
     );
   }
 
-  function __construct($object, $parent, $type)
+  function __construct ($object, $parent, $type)
   {
     parent::__construct(NULL, NULL, $parent);
 
@@ -462,7 +462,7 @@ class faiPartition extends simplePlugin
     }
   }
 
-  protected function loadAttributes()
+  protected function loadAttributes ()
   {
     foreach ($this->attributesAccess as &$attribute) {
       $attribute->setAcl('FAIpartitions');
@@ -471,7 +471,7 @@ class faiPartition extends simplePlugin
     parent::loadAttributes();
   }
 
-  function execute()
+  function execute (): string
   {
     $smarty = get_smarty();
     $acl    = $this->aclGetPermissions('FAIpartitions');
@@ -489,7 +489,7 @@ class faiPartition extends simplePlugin
     }
   }
 
-  function save_object()
+  function save_object ()
   {
     parent::save_object();
     if ($this->FAIfsType == 'swap') {
@@ -497,7 +497,7 @@ class faiPartition extends simplePlugin
     }
   }
 
-  function check()
+  function check (): array
   {
     $messages = parent::check();
 
@@ -513,7 +513,7 @@ class faiPartition extends simplePlugin
     return $messages;
   }
 
-  function save()
+  function save (): array
   {
     $ret = array();
     foreach ($this->attributes as $attr) {
@@ -538,7 +538,7 @@ class faiPartition extends simplePlugin
   /* Returns a list of all partitions that are useable
    *  for raid arrays.
    */
-  function getPartitionList()
+  function getPartitionList ()
   {
     $may = $used = array();
     foreach ($this->parent->parent->disks as $disk) {

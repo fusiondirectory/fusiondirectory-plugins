@@ -22,7 +22,7 @@ class userRegistration extends simplePlugin
 {
   protected $displayHeader  = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Registration'),
@@ -36,7 +36,7 @@ class userRegistration extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(

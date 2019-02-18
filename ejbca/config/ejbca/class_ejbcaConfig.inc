@@ -20,7 +20,7 @@
 
 class ejbcaConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('EJBCA plugin configuration'),
@@ -33,13 +33,13 @@ class ejbcaConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('EJBCA plugin'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('EJBCA RDN'), _('Branch in which ejbca certificates are stored'),
             'fdEjbcaRDN', TRUE,
             'ou=certificates'

@@ -20,7 +20,7 @@
 
 class netgroupConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Netgroup configuration'),
@@ -33,13 +33,13 @@ class netgroupConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Netgroup'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Netgroup RDN'), _('Branch in which netgroups will be stored'),
             'fdNetgroupRDN', TRUE,
             'ou=netgroups'

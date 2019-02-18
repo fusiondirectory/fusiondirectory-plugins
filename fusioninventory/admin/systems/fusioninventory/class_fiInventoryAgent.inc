@@ -22,7 +22,7 @@ class fiInventoryAgent extends simplePlugin
 {
   var $displayHeader  = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('FusionInventory'),
@@ -35,7 +35,7 @@ class fiInventoryAgent extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
