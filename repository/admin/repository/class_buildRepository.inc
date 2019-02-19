@@ -117,7 +117,7 @@ class buildRepository extends simplePlugin
     $this->attributesAccess['fdRepoDistributionSection']->attribute->setChoices(array_values($choices));
   }
 
-  function foreignKeyCheck ($field, $fieldvalue, $source)
+  function foreignKeyCheck (string $field, $fieldvalue, array $source)
   {
     if ($field == 'fdRepoDistributionSection') {
       $values = $this->fdRepoDistributionSection;

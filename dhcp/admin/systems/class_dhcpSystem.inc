@@ -327,7 +327,7 @@ class dhcpSystem extends simplePlugin
     return (count($this->dhcpHosts) > 0);
   }
 
-  function setTemplate ($bool)
+  function setTemplate (bool $bool)
   {
     parent::setTemplate($bool);
     $this->attributesAccess['dhcpHosts']->setParent($this);

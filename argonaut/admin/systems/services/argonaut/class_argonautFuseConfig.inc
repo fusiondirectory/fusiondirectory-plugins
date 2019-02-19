@@ -142,7 +142,7 @@ class argonautFuseConfig extends simpleService
     return $message;
   }
 
-  function set_acl_category ($cat)
+  function set_acl_category (string $cat)
   {
     parent::set_acl_category($cat);
     foreach ($this->plugin as &$plugin) {

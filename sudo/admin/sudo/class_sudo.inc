@@ -164,7 +164,7 @@ class sudo extends simplePlugin
     return preg_match("/^defaults$/i", $this->attributesAccess['cn']->getValue());
   }
 
-  function foreignKeyCheck ($field, $fieldvalue, $source)
+  function foreignKeyCheck (string $field, $fieldvalue, array $source)
   {
     if (($field == 'sudoUser') && (($source['CLASS'] == 'posixGroup') || ($source['CLASS'] == 'mixedGroup'))) {
       return parent::foreignKeyCheck($field, '%'.$fieldvalue, $source);
