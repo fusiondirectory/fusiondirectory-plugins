@@ -115,7 +115,7 @@ class faiStartup extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
   }
 
-  function foreignKeyCheck ($field, $fieldvalue, $source)
+  function foreignKeyCheck (string $field, $fieldvalue, array $source)
   {
     if ($field == 'FAIclass') {
       if ($this->attributesAccess['FAIclass']->attributes['profil']->getValue() == $fieldvalue) {

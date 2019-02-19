@@ -74,7 +74,7 @@ class webLink extends simplePlugin
     $this->attributesAccess['fdWebLink']->setAllowHTML(TRUE);
   }
 
-  function renderAttributes ($readOnly = FALSE)
+  function renderAttributes (bool $readOnly = FALSE)
   {
     $autoLinks = $this->computeLinks();
     $html = '';

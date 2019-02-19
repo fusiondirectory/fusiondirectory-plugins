@@ -482,7 +482,7 @@ class ServerService extends simpleManagement
 
   /*! \brief    Forward plugin acls
    */
-  function set_acl_category ($category)
+  function set_acl_category (string $category)
   {
     $this->acl_category = $category;
     foreach ($this->plugins as $name => $obj) {
@@ -490,7 +490,7 @@ class ServerService extends simpleManagement
     }
   }
 
-  function setTemplate ($bool)
+  function setTemplate (bool $bool)
   {
     foreach ($this->plugins as &$plugin) {
       $plugin->setTemplate($bool);
@@ -542,4 +542,3 @@ class ServerService extends simpleManagement
     return '&nbsp;';
   }
 }
-?>
