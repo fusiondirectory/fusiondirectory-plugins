@@ -49,7 +49,7 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
 
   function __construct ($description, $ldapName, $acl = "")
   {
-    parent::__construct ($description, $ldapName, array(), "", "", $acl);
+    parent::__construct($description, $ldapName, array(), "", "", $acl);
   }
 
   function setParent (&$plugin)

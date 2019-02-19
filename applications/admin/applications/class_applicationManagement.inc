@@ -20,7 +20,7 @@
 
 class applicationManagement extends management
 {
-  static function plInfo()
+  static function plInfo ()
   {
     return array(
       'plShortName'   => _('Applications'),
@@ -35,7 +35,7 @@ class applicationManagement extends management
     );
   }
 
-  static function getMenuEntries()
+  static function getMenuEntries ()
   {
     global $config, $ui;
     $mode = $config->get_cfg_value('WebappsMenu', 'none');

@@ -154,12 +154,12 @@ class sudo extends simplePlugin
   }
 
 
-  public function set_default($state)
+  public function set_default ($state)
   {
     $this->attributesAccess['isDefaultRole']->setValue($state);
   }
 
-  public function is_default()
+  public function is_default ()
   {
     return preg_match("/^defaults$/i", $this->attributesAccess['cn']->getValue());
   }

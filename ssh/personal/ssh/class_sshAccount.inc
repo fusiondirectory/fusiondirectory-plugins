@@ -52,7 +52,7 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
     return parent::getArrayValue();
   }
 
-  function readFile($handle)
+  function readFile ($handle)
   {
     $line = fgets($handle);
     if (preg_match($this->format, $line)) {
@@ -63,7 +63,7 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
     @fclose($handle);
   }
 
-  function fingerprint($data)
+  function fingerprint ($data)
   {
     $result = md5($data);
     $result = preg_replace('/(..)/', '\1:', $result);

@@ -123,7 +123,7 @@ class faiStartup extends simplePlugin
       }
       return FALSE;
     } else {
-      return parent::foreignKeyCheck ($field, $fieldvalue, $source);
+      return parent::foreignKeyCheck($field, $fieldvalue, $source);
     }
   }
 
@@ -141,7 +141,7 @@ class faiStartup extends simplePlugin
   /* Updates release and profiles list
    *  if not already done ($this->cache).
    */
-  function update_fai_cache()
+  function update_fai_cache ()
   {
     /* Get the list of available servers and their releases */
     if (!isset($this->cache['SERVERS'])) {

@@ -104,7 +104,7 @@ class nagiosAccount extends simplePlugin
     );
   }
 
-  static function get_prefix()
+  static function get_prefix ()
   {
     global $config;
     return $config->get_cfg_value('lconfPrefix', 'lconf');

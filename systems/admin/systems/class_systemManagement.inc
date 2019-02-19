@@ -50,7 +50,7 @@ class systemManagement extends management
     );
   }
 
-  function __construct()
+  function __construct ()
   {
     // Check if we are able to communicate with Argonaut server
     if (class_available('supportDaemon') && class_available('argonautAction')) {
@@ -61,7 +61,7 @@ class systemManagement extends management
     parent::__construct();
   }
 
-  protected function configureActions()
+  protected function configureActions ()
   {
     parent::configureActions();
 
@@ -107,7 +107,7 @@ class systemManagement extends management
   /*! \brief    Handle Argonaut events
    *            All schedules and triggered events are handled here.
    */
-  function handleEvent(array $action)
+  function handleEvent (array $action)
   {
     if (!$this->siActive) {
       return;
@@ -179,7 +179,7 @@ class systemManagement extends management
 
   /*! \brief Ping those systems and show the result in the list
    */
-  function pingSystems(array $action)
+  function pingSystems (array $action)
   {
     if (!$this->siActive) {
       return;
@@ -230,7 +230,7 @@ class systemManagement extends management
   /*! \brief  Save event dialogs.
    *          And append the new Argonaut event.
    */
-  function saveEventDialog()
+  function saveEventDialog ()
   {
     $this->dialogObject->save_object();
     $msgs = $this->dialogObject->check();
@@ -251,7 +251,7 @@ class systemManagement extends management
   /*! \brief  Detects actions/events send by the ui
    *           and the corresponding targets.
    */
-  function detectPostActions()
+  function detectPostActions ()
   {
     $action = parent::detectPostActions();
     if (isset($_POST['save_event_dialog'])) {
@@ -262,7 +262,7 @@ class systemManagement extends management
     return $action;
   }
 
-  function handleSubAction(array $action)
+  function handleSubAction (array $action)
   {
     if (parent::handleSubAction($action)) {
       return TRUE;

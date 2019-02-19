@@ -119,13 +119,13 @@ class csvImport extends simplePlugin
     $this->attributesAccess['import_submit_fields']->setDisabled(TRUE);
   }
 
-  function typeChanged()
+  function typeChanged ()
   {
     $templates = objects::getTemplates($this->type);
     $this->attributesAccess['template_dn']->setChoices(array_keys($templates), array_values($templates));
   }
 
-  function handle_import_submit()
+  function handle_import_submit ()
   {
     $this->csv_data = $this->parse_csv($this->import_file);
 
@@ -163,7 +163,7 @@ class csvImport extends simplePlugin
     $this->attributesAccess['import_submit_fields']->setDisabled(FALSE);
   }
 
-  private function build_attribute(&$fields, $class, $class_infos, $attr, $attr_infos)
+  private function build_attribute (&$fields, $class, $class_infos, $attr, $attr_infos)
   {
     $choices  = $fields;
     $value    = NULL;
@@ -222,7 +222,7 @@ class csvImport extends simplePlugin
     }
   }
 
-  function handle_import_submit_fields()
+  function handle_import_submit_fields ()
   {
     $success = 0;
     foreach ($this->csv_data as $rownumber => $row) {
@@ -252,7 +252,7 @@ class csvImport extends simplePlugin
     }
   }
 
-  private function compute_attribute_value($attribute, array $row, $i = NULL)
+  private function compute_attribute_value ($attribute, array $row, $i = NULL)
   {
     if ($attribute instanceof CompositeAttribute) {
       $value = array();
@@ -282,7 +282,7 @@ class csvImport extends simplePlugin
     }
   }
 
-  function parse_csv($str)
+  function parse_csv ($str)
   {
     $lines  = preg_split("/\n/", $str);
 

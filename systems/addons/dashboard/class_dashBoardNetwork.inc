@@ -64,7 +64,7 @@ class dashboardNetwork extends simplePlugin
     }
   }
 
-  function dhcp_infos()
+  function dhcp_infos ()
   {
     global $config, $ui;
 
@@ -107,7 +107,7 @@ class dashboardNetwork extends simplePlugin
     return $servers;
   }
 
-  function dns_infos()
+  function dns_infos ()
   {
     if (!class_available('dnsZone')) {
       return array();

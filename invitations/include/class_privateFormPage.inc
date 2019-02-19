@@ -23,7 +23,7 @@ class privateFormPage extends publicFormPage
 {
   protected $prefill = TRUE;
 
-  protected function getPrefilledValues($values = array())
+  protected function getPrefilledValues ($values = array())
   {
     if ($this->prefill) {
       /* Fill fields from HTTP headers */

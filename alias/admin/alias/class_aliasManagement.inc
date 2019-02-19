@@ -30,7 +30,7 @@ class aliasManagement extends management
     array('ActionsColumn',        array('label' => 'Actions')),
   );
 
-  public static function plInfo()
+  public static function plInfo ()
   {
     return array(
       'plShortName'   => _('Aliases'),

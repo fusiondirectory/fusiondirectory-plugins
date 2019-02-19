@@ -95,7 +95,7 @@ class ppolicyAccount extends simplePlugin
     }
   }
 
-  protected function loadAttributes()
+  protected function loadAttributes ()
   {
     global $config;
     if ($this->dn != 'new') {

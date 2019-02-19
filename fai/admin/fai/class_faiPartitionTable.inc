@@ -95,7 +95,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
 
   function __construct ($label, $description, $ldapName, $values = array(), $acl = '')
   {
-    parent::__construct ($label, $description, $ldapName, FALSE, $values, $acl);
+    parent::__construct($label, $description, $ldapName, FALSE, $values, $acl);
     $this->disks = &$this->value;
   }
 
@@ -293,7 +293,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  protected function getAttributeArrayValue($key, $value)
+  protected function getAttributeArrayValue ($key, $value)
   {
     return array(
       $value['FAIdiskType'],
@@ -387,7 +387,7 @@ class faiPartitionTable extends faiSimplePluginClass
     return $errors;
   }
 
-  function getUsedDiskNames()
+  function getUsedDiskNames ()
   {
     $ret = array();
     foreach ($this->FAIpartitions as $disk) {

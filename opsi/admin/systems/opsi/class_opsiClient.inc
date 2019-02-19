@@ -198,7 +198,7 @@ class opsiClient extends simplePlugin
     }
   }
 
-  function getMacAddresses()
+  function getMacAddresses ()
   {
     global $config;
     $macAddresses = array();
@@ -231,7 +231,7 @@ class opsiClient extends simplePlugin
     return $macAddresses;
   }
 
-  function update_or_insert()
+  function update_or_insert ()
   {
     global $config;
     $s_daemon     = new supportDaemon();

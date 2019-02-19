@@ -26,7 +26,7 @@ class debconfProfileManagement extends simpleManagement
   protected $departmentRootVisible  = FALSE;
   protected $baseMode               = FALSE;
 
-  static function plInfo()
+  static function plInfo ()
   {
     return array(
       'plShortName'   => _('Debconf'),
@@ -40,7 +40,7 @@ class debconfProfileManagement extends simpleManagement
     );
   }
 
-  function __construct()
+  function __construct ()
   {
     $this->filterXMLPath  = get_template_path('debconfProfile-filter.xml', TRUE, dirname(__FILE__));
     parent::__construct();

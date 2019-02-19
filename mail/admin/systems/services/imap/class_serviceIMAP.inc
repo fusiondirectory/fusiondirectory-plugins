@@ -32,7 +32,7 @@ class simpleMailMethodService extends simpleService
     return parent::prepare_save();
   }
 
-  protected function post_save()
+  protected function post_save ()
   {
     parent::post_save();
     mailMethod::resetMailServersCache();

@@ -24,7 +24,7 @@ class MacsAttribute extends GenericDialogAttribute
 
   function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = array(), $display_attr = 'cn', $acl = '')
   {
-    parent::__construct ($label, $description, $ldapName, $required, $defaultValue, 'macAddress', $display_attr, $acl);
+    parent::__construct($label, $description, $ldapName, $required, $defaultValue, 'macAddress', $display_attr, $acl);
   }
 }
 
@@ -143,7 +143,7 @@ class argonautAction extends simplePlugin
     $this->scheduled  = $scheduled;
   }
 
-  protected function loadAttributes()
+  protected function loadAttributes ()
   {
     foreach ($this->attributesAccess as &$attribute) {
       $attribute->setInLdap(FALSE);
@@ -160,7 +160,7 @@ class argonautAction extends simplePlugin
   /*! \brief  Returns the plugin footer (save cancel), displayed in the template.
     @return String  HTML footer part.
    */
-  protected function getFooter()
+  protected function getFooter ()
   {
     if (!$this->displayPlugin) {
       return '';
@@ -175,7 +175,7 @@ class argonautAction extends simplePlugin
     That should be written.
     @return Array e.g. 'status' => 'bla blub'
    */
-  public function computeData()
+  public function computeData ()
   {
     timezone::get_default_timezone();
     $ret = array('args' => array());

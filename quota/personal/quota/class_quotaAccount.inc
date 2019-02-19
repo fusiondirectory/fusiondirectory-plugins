@@ -25,7 +25,7 @@
 
 class QuotaEntryAttribute extends CharSeparatedCompositeAttribute
 {
-  function readValues($value)
+  function readValues ($value)
   {
     $values = parent::readValues($value);
     $blocksize = $this->plugin->getBlockSize($values[5], $values[0]);
@@ -36,7 +36,7 @@ class QuotaEntryAttribute extends CharSeparatedCompositeAttribute
     return $values;
   }
 
-  function writeValues(array $values)
+  function writeValues (array $values)
   {
     if (!empty($values[5])) {
       $blocksize = $this->plugin->getBlockSize($values[5], $values[0]);
@@ -48,13 +48,13 @@ class QuotaEntryAttribute extends CharSeparatedCompositeAttribute
     return parent::writeValues($values);
   }
 
-  function updateDeviceList()
+  function updateDeviceList ()
   {
     $quotaDeviceList = $this->plugin->getDeviceList($this->attributes[5]->getValue());
     $this->attributes[0]->setChoices(array_keys($quotaDeviceList), array_values($quotaDeviceList));
   }
 
-  function applyPostValue()
+  function applyPostValue ()
   {
     parent::applyPostValue();
     $this->updateDeviceList();
@@ -213,7 +213,7 @@ class quotaAccount extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
   }
 
-  function getDeviceList($server)
+  function getDeviceList ($server)
   {
     $quotaDeviceList = array();
     if (isset($this->quotaDeviceParameters[$server])) {
@@ -228,7 +228,7 @@ class quotaAccount extends simplePlugin
     return $quotaDeviceList;
   }
 
-  function getBlockSize($server, $device)
+  function getBlockSize ($server, $device)
   {
     foreach ($this->quotaDeviceParameters[$server] as $infos) {
       $quotas = explode(":", $infos);

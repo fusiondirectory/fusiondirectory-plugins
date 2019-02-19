@@ -82,7 +82,7 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
 
   function __construct ($label, $description, $ldapName, $values = array(), $acl = '')
   {
-    parent::__construct ($label, $description, $ldapName, FALSE, $values, $acl);
+    parent::__construct($label, $description, $ldapName, FALSE, $values, $acl);
   }
 
   protected function loadAttrValue (array $attrs)
@@ -153,7 +153,7 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
   }
 
   /* Bypass delPostValue check for edition */
-  protected function handleEdit($key)
+  protected function handleEdit ($key)
   {
     $this->editingValue = $this->value[$key];
     unset($this->postValue[$key]);
@@ -161,7 +161,7 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
   }
 
   /* Add or update a partition */
-  function updatePartition($part)
+  function updatePartition ($part)
   {
     if (!isset($part['FAIpartitionNr']) || ($part['FAIpartitionNr'] == 'undefined')) {
       $part['FAIpartitionNr'] = $this->get_free_partition_number();
@@ -197,12 +197,12 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
   }
 
   /* Add a partition back */
-  function addPartition($part)
+  function addPartition ($part)
   {
     $this->value[$part['FAIpartitionNr']] = $part;
   }
 
-  function get_free_partition_number()
+  function get_free_partition_number ()
   {
     $used = array();
     foreach ($this->value as $key => $part) {
@@ -388,7 +388,7 @@ class faiDiskEntry extends simplePlugin
     }
   }
 
-  protected function loadAttributes()
+  protected function loadAttributes ()
   {
     foreach ($this->attributesAccess as &$attribute) {
       $attribute->setInLdap(FALSE);
@@ -514,7 +514,7 @@ class faiDiskEntry extends simplePlugin
   /* Returns a list of available partitions that are useable in
    *  lvm disk setups.
    */
-  function getAvailablePartitions()
+  function getAvailablePartitions ()
   {
     $may  = array();
     $used = array();
@@ -557,7 +557,7 @@ class faiDiskEntry extends simplePlugin
   }
 
   /* Checks the disk combinations */
-  function check_disks($disk_to_add = array())
+  function check_disks ($disk_to_add = array())
   {
     $msgs = array();
 

@@ -32,11 +32,11 @@ class AvailableLogsAttribute extends Attribute
       // TRUE means up
       'sort_up'  => TRUE
     );
-    parent::__construct ('', $description, $ldapName, FALSE, $value, $acl);
+    parent::__construct('', $description, $ldapName, FALSE, $value, $acl);
     $this->setInLdap(FALSE);
   }
 
-  private function js_link($label, $vars)
+  private function js_link ($label, $vars)
   {
     $id   = $this->getHtmlId();
     $js = '';
@@ -235,7 +235,7 @@ class faiLogView extends simplePlugin
   }
 
 
-  private function get_log($mac, $date, $file)
+  private function get_log ($mac, $date, $file)
   {
     $res = $this->o_queue->get_log_file($mac, $date, $file);
     if ($this->o_queue->is_error()) {

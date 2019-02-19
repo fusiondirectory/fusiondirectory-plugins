@@ -20,7 +20,7 @@
 
 class publicFormManagement extends management
 {
-  public static function plInfo()
+  public static function plInfo ()
   {
     return array(
       'plShortName'   => _('Public forms'),

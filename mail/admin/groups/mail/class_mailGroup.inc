@@ -99,7 +99,7 @@ class mailGroup extends simplePlugin
   }
 
   /* We need $mailAccount->cn to return the cn for mailMethod */
-  public function __get($name)
+  public function __get ($name)
   {
     if (($name == 'cn') && isset($this->parent)) {
       return $this->parent->getBaseObject()->$name;
@@ -109,7 +109,7 @@ class mailGroup extends simplePlugin
     }
   }
 
-  public function __isset($name)
+  public function __isset ($name)
   {
     if (($name == 'cn') && isset($this->parent)) {
       return isset($this->parent->getBaseObject()->$name);
@@ -119,7 +119,7 @@ class mailGroup extends simplePlugin
     }
   }
 
-  public function mailServerChanged()
+  public function mailServerChanged ()
   {
     /* Intialize the used mailMethod */
     if ($this->gosaMailServer == '') {
@@ -208,7 +208,7 @@ class mailGroup extends simplePlugin
     return $errors;
   }
 
-  function post_remove()
+  function post_remove ()
   {
     /* Let the mailMethod remove this mailbox */
     if (!$this->is_template) {

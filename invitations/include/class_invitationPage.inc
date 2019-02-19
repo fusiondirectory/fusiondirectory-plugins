@@ -22,14 +22,14 @@ class invitationPage extends standAlonePage
 {
   protected $token;
 
-  function readLdapConfig()
+  function readLdapConfig ()
   {
     global $config;
 
     return TRUE;
   }
 
-  function save_object()
+  function save_object ()
   {
     global $ui;
 
@@ -45,7 +45,7 @@ class invitationPage extends standAlonePage
     }
   }
 
-  static function checkToken($token)
+  static function checkToken ($token)
   {
     if (is_array($token)) {
       $registration = $token;
@@ -85,7 +85,7 @@ class invitationPage extends standAlonePage
     }
   }
 
-  function execute()
+  function execute ()
   {
     if (!$this->activated) {
       return;

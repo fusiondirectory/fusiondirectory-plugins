@@ -36,7 +36,7 @@ class MailQuotaAttribute extends IntAttribute
 {
   private $quotaUsage;
 
-  function setMailMethod($mailMethod)
+  function setMailMethod ($mailMethod)
   {
     /* Read quota */
     $this->value = $mailMethod->getQuota($this->value);
@@ -47,7 +47,7 @@ class MailQuotaAttribute extends IntAttribute
     }
   }
 
-  function renderAttribute(array &$attributes, $readOnly)
+  function renderAttribute (array &$attributes, $readOnly)
   {
     parent::renderAttribute($attributes, $readOnly);
     $attributes[$this->getLdapName().'_usage'] = array(
@@ -199,7 +199,7 @@ class mailAccount extends simplePlugin
   }
 
   /* We need $mailAccount->uid to return the uid for mailMethod */
-  public function __get($name)
+  public function __get ($name)
   {
     if (in_array($name, array('cn','uid')) && isset($this->parent)) {
       return $this->parent->getBaseObject()->$name;
@@ -211,7 +211,7 @@ class mailAccount extends simplePlugin
     }
   }
 
-  public function __isset($name)
+  public function __isset ($name)
   {
     if (in_array($name, array('cn','uid')) && isset($this->parent)) {
       return isset($this->parent->getBaseObject()->$name);
@@ -229,10 +229,10 @@ class mailAccount extends simplePlugin
       mailMethod::resetMailServersCache();
       $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
     }
-    parent::foreignKeyUpdate ($field, $oldvalue, $newvalue, $source);
+    parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
   }
 
-  public function mailServerChanged()
+  public function mailServerChanged ()
   {
     /* Intialize the used mailMethod */
     if ($this->gosaMailServer == '') {
@@ -306,7 +306,7 @@ class mailAccount extends simplePlugin
     if ($this->mailMethod->vacationRangeEnabled()) {
       $this->attributesAccess['gosaVacationStop']->setDisabled(FALSE);
       $this->attributesAccess['gosaVacationStart']->setDisabled(FALSE);
-      $this->attributesAccess['flag_vacation']->setManagedAttributes (
+      $this->attributesAccess['flag_vacation']->setManagedAttributes(
         array (
           'erase' => array (
             FALSE => array (
@@ -322,7 +322,7 @@ class mailAccount extends simplePlugin
       $this->attributesAccess['gosaVacationStop']->setDisabled(TRUE);
       $this->attributesAccess['gosaVacationStop']->setVisible(FALSE);
       $this->attributesAccess['gosaVacationStop']->setValue('');
-      $this->attributesAccess['flag_vacation']->setManagedAttributes (
+      $this->attributesAccess['flag_vacation']->setManagedAttributes(
         array (
           'erase' => array (
             FALSE => array (
@@ -407,7 +407,7 @@ class mailAccount extends simplePlugin
     return $errors;
   }
 
-  function post_remove()
+  function post_remove ()
   {
     /* Let the mailMethod remove this mailbox */
     if (!$this->is_template) {

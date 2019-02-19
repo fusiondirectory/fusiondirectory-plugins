@@ -22,7 +22,7 @@ class filterFAIcustoms extends filter
 {
   var $customs = array();
 
-  function __construct($filename)
+  function __construct ($filename)
   {
     $release = session::get('packageSelect_Release');
     $this->customs = serviceRepository::getCustomReleases($release);
@@ -30,7 +30,7 @@ class filterFAIcustoms extends filter
     parent::__construct($filename);
   }
 
-  function load($filename)
+  function load ($filename)
   {
     $res = parent::load($filename);
 
@@ -47,7 +47,7 @@ class filterFAIcustoms extends filter
     return $res;
   }
 
-  function render()
+  function render ()
   {
     $smarty = get_smarty();
 

@@ -37,7 +37,7 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
 
   function __construct ($label, $description, $ldapName, $values = array(), $acl = '')
   {
-    parent::__construct ($label, $description, $ldapName, FALSE, $values, $acl);
+    parent::__construct($label, $description, $ldapName, FALSE, $values, $acl);
   }
 
   protected function loadAttrValue (array $attrs)
@@ -110,7 +110,7 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  protected function getAttributeArrayValue($key, $value)
+  protected function getAttributeArrayValue ($key, $value)
   {
     return array(
       $value['cn'],

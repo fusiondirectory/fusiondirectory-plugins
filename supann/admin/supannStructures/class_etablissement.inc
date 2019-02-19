@@ -210,7 +210,7 @@ class etablissement extends simplePlugin
     return $errors;
   }
 
-  function get_root_code()
+  function get_root_code ()
   {
     global $config;
     $ldap = $config->get_ldap_link();

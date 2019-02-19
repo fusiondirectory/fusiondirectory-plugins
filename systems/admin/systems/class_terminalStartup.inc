@@ -121,7 +121,7 @@ class terminalStartup extends simplePlugin
   }
 
   /*! \brief Create a list of useable servers for the currently selected protocol */
-  function updateServerList()
+  function updateServerList ()
   {
     $servers = objects::ls('server', NULL, NULL, '(&(objectClass=goTerminalServer)(gotoSessionType='.strtoupper($this->gotoXMethod).'))');
     $this->attributesAccess['gotoXdmcpServer']->setChoices($servers);

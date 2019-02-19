@@ -20,7 +20,7 @@
 
 class opsiOnDemandList extends opsiSoftwareList
 {
-  public static function plInfo()
+  public static function plInfo ()
   {
     return array(
       'plShortName'   => _('OPSI ondemand list'),

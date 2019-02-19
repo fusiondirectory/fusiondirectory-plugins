@@ -9,7 +9,7 @@ sendPost(
   file_get_contents($argv[2])
 );
 
-function sendPost($url, $xml)
+function sendPost ($url, $xml)
 {
   // performs the HTTP(S) POST
   $opts = array (
@@ -41,7 +41,7 @@ function sendPost($url, $xml)
 }
 
 /* Calls fopen, gives errors as an array if any, file handle if successful */
-function fopenWithErrorHandling(...$args)
+function fopenWithErrorHandling (...$args)
 {
   $errors = array();
   set_error_handler(

@@ -94,7 +94,7 @@ class serviceShare extends simpleService
     );
   }
 
-  function getCharsets()
+  function getCharsets ()
   {
     global $config;
     $charsets = array();

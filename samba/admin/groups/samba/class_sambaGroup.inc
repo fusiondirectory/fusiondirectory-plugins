@@ -158,7 +158,7 @@ class sambaGroup extends simplePlugin
   }
 
   /*! \brief Get a new SambaSID for a group */
-  function getSambaSID()
+  function getSambaSID ()
   {
     global $config;
     $ldap       = $config->get_ldap_link();
@@ -186,28 +186,28 @@ class sambaGroup extends simplePlugin
     $this->attributesAccess['sambaDomainName']->setInitialValue('');
   }
 
-  function getRidBase()
+  function getRidBase ()
   {
     global $config;
     return $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
   }
 
-  function getSID()
+  function getSID ()
   {
     return $this->attributesAccess['sambaSID']->attributes[0]->getValue();
   }
 
-  function setSID($value)
+  function setSID ($value)
   {
     $this->attributesAccess['sambaSID']->attributes[0]->setValue($value);
   }
 
-  function getGID()
+  function getGID ()
   {
     return $this->attributesAccess['sambaSID']->attributes[1]->getValue();
   }
 
-  function setGID($value)
+  function setGID ($value)
   {
     $this->attributesAccess['sambaSID']->attributes[1]->setValue($value);
   }

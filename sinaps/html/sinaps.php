@@ -32,7 +32,7 @@ class sinapsHandler extends standAlonePage
 
   protected $request;
 
-  function readLdapConfig()
+  function readLdapConfig ()
   {
     global $config;
 
@@ -49,7 +49,7 @@ class sinapsHandler extends standAlonePage
     return TRUE;
   }
 
-  function execute()
+  function execute ()
   {
     global $config;
 
@@ -82,7 +82,7 @@ class sinapsHandler extends standAlonePage
     }
   }
 
-  function dumpFile($fileName, $fileContent)
+  function dumpFile ($fileName, $fileContent)
   {
     if (empty($this->dumpFolder)) {
       return;
@@ -104,7 +104,7 @@ class sinapsHandler extends standAlonePage
     }
   }
 
-  function returnError($responseCode, $codeAcquittement, $errorText, $dump = TRUE)
+  function returnError ($responseCode, $codeAcquittement, $errorText, $dump = TRUE)
   {
     $acquittement = sinapsRequest::acquittementFonctionnel($responseCode, $codeAcquittement, $errorText);
     echo "$acquittement\n";
@@ -120,7 +120,7 @@ class sinapsHandler extends standAlonePage
     exit();
   }
 
-  function outputAcquittementTechnique($acquittement)
+  function outputAcquittementTechnique ($acquittement)
   {
     echo "$acquittement\n";
     $this->dumpFile(

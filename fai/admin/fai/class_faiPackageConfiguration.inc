@@ -73,7 +73,7 @@ class faiPackageConfiguration extends simplePlugin
     }
   }
 
-  protected function loadAttributesFromTemplate($tpl)
+  protected function loadAttributesFromTemplate ($tpl)
   {
     $attributesInfo = array(
       'main' => array(
@@ -178,7 +178,7 @@ class faiPackageConfiguration extends simplePlugin
     return $attributesInfo;
   }
 
-  protected function insertDebconfAttribute(&$attributesInfo, $infos)
+  protected function insertDebconfAttribute (&$attributesInfo, $infos)
   {
     switch ($infos['Type']) {
       case 'boolean':

@@ -130,7 +130,7 @@ class buildRepository extends simplePlugin
         }
       }
     } else {
-      return parent::foreignKeyCheck ($field, $fieldvalue, $source);
+      return parent::foreignKeyCheck($field, $fieldvalue, $source);
     }
   }
 

@@ -102,7 +102,7 @@ class opsiLogView extends simplePlugin
     return (count($this->attributesAccess['available_logs']->getChoices()) > 1);
   }
 
-  function loadLog()
+  function loadLog ()
   {
     if ($this->is_template) {
       return;

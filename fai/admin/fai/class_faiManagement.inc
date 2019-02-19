@@ -32,7 +32,7 @@ class faiListing extends listing
   /*!
    * \brief Refresh the bases list
    */
-  function refreshBasesList()
+  function refreshBasesList ()
   {
     if (!$this->builded) {
       return;
@@ -64,7 +64,7 @@ class faiBaseSelector extends baseSelector
     $this->select->setSubmitForm(TRUE);
   }
 
-  function setBases($bases)
+  function setBases ($bases)
   {
     $this->pathMapping = $bases;
 
@@ -73,7 +73,7 @@ class faiBaseSelector extends baseSelector
     }
   }
 
-  function update($force = FALSE)
+  function update ($force = FALSE)
   {
     if (!is_object($this->select)) {
       return TRUE;
@@ -147,7 +147,7 @@ class faiManagement extends simpleManagement
 
   /*! \brief   Returns a list of all releases for useable for drop down boxes.
    */
-  static function getReleaseList()
+  static function getReleaseList ()
   {
     global $config;
     $ldap = $config->get_ldap_link();

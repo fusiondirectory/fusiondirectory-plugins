@@ -12,7 +12,7 @@ require_once('include/class_sinapsRequestAcquisition.inc');
 require_once('include/class_sinapsDiffusionHandlerJob.inc');
 
 
-function usage($error = '')
+function usage ($error = '')
 {
   global $argv;
   if ($error) {
@@ -74,7 +74,7 @@ if (isset($options['ca'])) {
   $ssl_options['cafile'] = $options['ca'];
 }
 
-function codeEntiteToldapUuidCallback($codeEntite)
+function codeEntiteToldapUuidCallback ($codeEntite)
 {
   global $client, $session_id, $configuration;
 

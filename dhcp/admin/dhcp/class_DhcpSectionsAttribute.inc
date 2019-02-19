@@ -26,7 +26,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
   protected $subnet_expanded = FALSE;
   protected $dhcpObjectCache = array();
 
-  protected function getAttributeArrayValue($key, $value)
+  protected function getAttributeArrayValue ($key, $value)
   {
     $id = $this->getHtmlId();
     $subnetExpandImg = $this->renderInputField(
@@ -93,7 +93,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  protected function genRowIcons($key, $value)
+  protected function genRowIcons ($key, $value)
   {
     $id = $this->getHtmlId();
     list ($img, $nbicons) = parent::genRowIcons($key, $value);
@@ -117,7 +117,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     return array ($img, $nbicons);
   }
 
-  protected function handlePostValueActions($id, $postValue)
+  protected function handlePostValueActions ($id, $postValue)
   {
     if (parent::handlePostValueActions($id, $postValue)) {
       return TRUE;
@@ -150,14 +150,14 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     return FALSE;
   }
 
-  protected function handleEdit($key)
+  protected function handleEdit ($key)
   {
     $dn           = $this->value[$key][0];
     $editingValue = $this->dhcpObjectCache[$dn];
     $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, $this->objectType($dn), $dn, $editingValue));
   }
 
-  function delPostValue($key)
+  function delPostValue ($key)
   {
     $dn = $this->postValue[$key][0];
     $this->dhcpObjectCache[$dn] = array();
@@ -171,7 +171,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
   }
 
   /* Should be addValue but we need more attributes */
-  function editEnded($dn, $object, $olddn = FALSE)
+  function editEnded ($dn, $object, $olddn = FALSE)
   {
     $this->dhcpObjectCache[$dn] = $object;
     if (($olddn !== FALSE) && ($olddn !== $dn)) {
@@ -190,7 +190,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
   }
 
   /* Used by dhcpHost */
-  function addHost($parentDn, $cn, $mac, $ip)
+  function addHost ($parentDn, $cn, $mac, $ip)
   {
     $dn = 'cn='.$cn.','.$parentDn;
     $this->dhcpObjectCache[$dn] = array(
@@ -209,7 +209,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
   }
 
   /* Used by dhcpHost */
-  function delHost($dn)
+  function delHost ($dn)
   {
     if (($dn != '') && ($dn != 'new')) {
       $this->dhcpObjectCache[$dn] = array();
@@ -252,7 +252,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
   }
 
   /* Subfonction of reload function */
-  protected function reload_readItemFromLDAP(&$ldap, $attrs, &$final, $erase)
+  protected function reload_readItemFromLDAP (&$ldap, $attrs, &$final, $erase)
   {
     global $config;
     $sattrs = array();
@@ -293,7 +293,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
   }
 
   /* Subfonction of reload function */
-  protected function reload_refreshListFromCache(&$final)
+  protected function reload_refreshListFromCache (&$final)
   {
     $firstdn = NULL;
     foreach ($this->dhcpObjectCache as $dn => $sattrs) {
@@ -345,10 +345,10 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  function reload($erase = TRUE)
+  function reload ($erase = TRUE)
   {
     global $config;
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $erase, 'reload');
+    @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $erase, 'reload');
     /* Init LDAP and load list */
     $ldap = $config->get_ldap_link();
 
@@ -387,7 +387,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  function add_global_node()
+  function add_global_node ()
   {
     $attrs = array(
       'dn'              => $this->plugin->dn,
@@ -406,7 +406,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     $this->dhcpObjectCache[$this->plugin->dn]  = $attrs;
   }
 
-  function objectType($dn)
+  function objectType ($dn)
   {
     $types = array_keys($this->plugin->types);
 
@@ -422,7 +422,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     return '';
   }
 
-  function getCache()
+  function getCache ()
   {
     return $this->dhcpObjectCache;
   }
@@ -432,14 +432,14 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     return '';
   }
 
-  public function htmlIds()
+  public function htmlIds ()
   {
     $ids = parent::htmlIds();
     unset($ids[0]);
     return $ids;
   }
 
-  function foreignKeyUpdate($oldvalue, $newvalue, array $source)
+  function foreignKeyUpdate ($oldvalue, $newvalue, array $source)
   {
     if (($source['CLASS'] == 'serverGeneric') && ($source['FIELD'] == 'dn') && ($source['MODE'] == 'move')) {
       $globalNode = $this->value[0][0];
@@ -464,7 +464,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  function foreignKeyCheck($value, array $source)
+  function foreignKeyCheck ($value, array $source)
   {
     if (($source['CLASS'] == 'serverGeneric') && ($source['FIELD'] == 'dn')) {
       $globalNode = $this->value[0][0];
@@ -480,7 +480,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  function isIpInParentSubnet($dn, $ip)
+  function isIpInParentSubnet ($dn, $ip)
   {
     $parts = explode(',', $dn);
     do {

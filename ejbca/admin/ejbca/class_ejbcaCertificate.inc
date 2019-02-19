@@ -58,7 +58,7 @@ class ejbcaCertificate extends simplePlugin
     );
   }
 
-  function renderAttributes($readOnly = FALSE)
+  function renderAttributes ($readOnly = FALSE)
   {
     parent::renderAttributes(TRUE);
   }

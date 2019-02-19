@@ -100,17 +100,17 @@ class netgroupMembership extends simplePlugin
     $this->attributesAccess['nisMembership']->setInitialValue(array_keys($groupMembership));
   }
 
-  protected function triple_mask()
+  protected function triple_mask ()
   {
     return "/^\(\-?,".$this->old_id.",\S*\)$/";
   }
 
-  protected function triple_data()
+  protected function triple_data ()
   {
     return '(,'.$this->id.',)';
   }
 
-  protected function update_id()
+  protected function update_id ()
   {
     $class    = get_class($this);
     $id_attr  = $class::$id_attr;

@@ -8,7 +8,7 @@ require_once('variables.inc');
 
 $http_raw_post_data = file_get_contents('php://input');
 
-function returnError($errorText)
+function returnError ($errorText)
 {
   $protocol = (isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
   header($protocol.' 500 '.$errorText);
@@ -25,13 +25,13 @@ if (strpos($http_raw_post_data, "<?xml") === 0) {
   $xml = $http_raw_post_data;
 } elseif ($xml = @gzuncompress($http_raw_post_data)) {
   $compressmode = "gzcompress";
-} elseif ($xml = @gzinflate ("\x1f\x8b\x08\x00\x00\x00\x00\x00".$http_raw_post_data)) {
+} elseif ($xml = @gzinflate("\x1f\x8b\x08\x00\x00\x00\x00\x00".$http_raw_post_data)) {
   // ** OCS agent 2.0 Compatibility, but return in gzcompress
   $compressmode = "gzdeflate";
   if (strstr($xml, "<QUERY>PROLOG</QUERY>") && !strstr($xml, "<TOKEN>")) {
     $compressmode = "gzcompress";
   }
-} elseif ($xml = @gzinflate (substr($http_raw_post_data, 2))) {
+} elseif ($xml = @gzinflate(substr($http_raw_post_data, 2))) {
   // ** OCS agent 2.0 Compatibility, but return in gzcompress
   $compressmode = "gzdeflate";
   if (strstr($xml, "<QUERY>PROLOG</QUERY>") && !strstr($xml, "<TOKEN>")) {

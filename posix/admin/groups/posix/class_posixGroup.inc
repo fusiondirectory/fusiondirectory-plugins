@@ -204,7 +204,7 @@ class posixGroup extends simplePlugin
     return $errors;
   }
 
-  function addUser($dn, $uid)
+  function addUser ($dn, $uid)
   {
     $this->attributesAccess['memberUid']->addValue($dn,
       array(
@@ -215,7 +215,7 @@ class posixGroup extends simplePlugin
     );
   }
 
-  function removeUser($uid)
+  function removeUser ($uid)
   {
     $this->attributesAccess['memberUid']->searchAndRemove($uid);
   }

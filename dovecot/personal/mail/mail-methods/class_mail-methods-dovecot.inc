@@ -30,12 +30,12 @@ class mailMethodDovecot extends mailMethod
   protected $imap_handle  = NULL;
   protected $quota_loaded = FALSE;
 
-  public function is_connected()
+  public function is_connected ()
   {
     return (parent::is_connected() && $this->imap_handle);
   }
 
-  public function connect()
+  public function connect ()
   {
     global $config;
     parent::connect();
@@ -48,12 +48,12 @@ class mailMethodDovecot extends mailMethod
 
     if (!count($servers)) {
       $this->error = _("There are no IMAP compatible mail servers defined!");
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
           "<b>IMAP: No mail servers configured, check systems->server->service->imap.</b>", "");
       return FALSE;
     } elseif (!isset($servers[$this->parent->gosaMailServer])) {
       $this->error = _("Mail server for this account is invalid!");
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
           "<b>IMAP: The selected mail server '".$this->parent->gosaMailServer."' is invalid.</b>", "");
       return FALSE;
     } else {
@@ -78,7 +78,7 @@ class mailMethodDovecot extends mailMethod
         else the FusionDirectory UI may freeze for 60 seconds.
        (PHP default is 'default_socket_timeout = 60') */
     $timeout = $config->get_cfg_value("imapTimeout", 10);
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $timeout,
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $timeout,
           "<b>IMAP: Setting imap connect timeout to</b> (seconds)");
     imap_timeout(1, $timeout);
 
@@ -86,7 +86,7 @@ class mailMethodDovecot extends mailMethod
 
     /* Mailbox reachable? */
     if ($this->imap_handle === FALSE) {
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed</b> :".imap_last_error(),
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed</b> :".imap_last_error(),
         "<b>IMAP:</b> ".$cfg['admin']."@".$cfg['connect']);
       if ($cfg['mkdir']) {
         if ($this->argonautCreateFolder()) {
@@ -98,21 +98,21 @@ class mailMethodDovecot extends mailMethod
       if ($this->imap_handle === FALSE) {
         $this->error = imap_last_error();
 
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed</b> :".imap_last_error(),
+        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed</b> :".imap_last_error(),
           "<b>IMAP:</b> ".$cfg['admin']."@".$cfg['connect']);
 
         $this->connected = FALSE;
         return FALSE;
       }
     }
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>successful</b>",
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>successful</b>",
         "<b>IMAP:</b> ".$cfg['admin']."@".$cfg['connect']);
     $this->connected = TRUE;
 
     return TRUE;
   }
 
-  protected function loadQuota()
+  protected function loadQuota ()
   {
     global $config;
     if (!$this->quotaEnabled()) {
@@ -147,23 +147,23 @@ class mailMethodDovecot extends mailMethod
         } else {
           $quota = "(".$this->quotaUsage." / ".$this->quotaValue.")";
         }
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $quota,
+        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $quota,
             "<b>IMAP: Successfully received account quota</b>");
       } else {
         $this->quotaUsage = '';
         $this->quotaValue = '';
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '',
+        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '',
             "<b>IMAP: Received empty account quota information</b>");
       }
     } else {
       $this->error = imap_last_error();
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, imap_last_error(),
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, imap_last_error(),
           "<b>IMAP: Failed to receive account quota</b>");
     }
   }
 
   /* Get quota usage in MB */
-  public function getQuotaUsage()
+  public function getQuotaUsage ()
   {
     mailMethod::getQuotaUsage();
     if (!$this->quota_loaded) {
@@ -175,9 +175,9 @@ class mailMethodDovecot extends mailMethod
   /*
    * Create the folder for the user INBOX through Argonaut
    */
-  private function argonautCreateFolder()
+  private function argonautCreateFolder ()
   {
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
       "<b>Attempting to create folder through Argonaut</b> on server :".$this->parent->gosaMailServer);
 
     $servers  = parent::getMailServers();
@@ -205,14 +205,14 @@ class mailMethodDovecot extends mailMethod
     return FALSE;
   }
 
-  static public function get_server_list()
+  static public function get_server_list ()
   {
     global $config;
     $serverList = array();
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search ('(objectClass=fdDovecotServer)',
+    $ldap->search('(objectClass=fdDovecotServer)',
                   array('cn', 'fdDovecotConnect', 'fdDovecotAdmin', 'fdDovecotPassword', 'fdDovecotArgonautMkdir', 'macAddress'));
     while ($attrs = $ldap->fetch()) {
       $serverList[$attrs['cn'][0]] = array(

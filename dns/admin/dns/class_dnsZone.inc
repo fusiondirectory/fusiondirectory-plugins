@@ -191,7 +191,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     ));
   }
 
-  function getZoneName()
+  function getZoneName ()
   {
     if ($this->plugin instanceof dnsZone) {
       return $this->plugin->zoneName;
@@ -200,7 +200,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  function getZoneDn()
+  function getZoneDn ()
   {
     if ($this->plugin instanceof dnsZone) {
       return $this->plugin->dn;
@@ -209,7 +209,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  function getReverseZones()
+  function getReverseZones ()
   {
     if ($this->plugin instanceof dnsZone) {
       return $this->plugin->reverseZones;
@@ -365,7 +365,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  private function valueToNodes($value)
+  private function valueToNodes ($value)
   {
     /* Compute values into $nodes and $ptrs */
     $zoneDn     = $this->getZoneDn();
@@ -416,7 +416,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     return array($nodes, $ptrs, $nsRecords);
   }
 
-  protected function reverseZoneNeedUpdate(array $new, array $old, array $ptrs, array $initialPtrs, $reverseZone)
+  protected function reverseZoneNeedUpdate (array $new, array $old, array $ptrs, array $initialPtrs, $reverseZone)
   {
     // NS Record changes
     if (!empty($old['nSRecord'])) {
@@ -585,7 +585,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  function cnChanged($oldcn, $newcn)
+  function cnChanged ($oldcn, $newcn)
   {
     $nb = 0;
     foreach ($this->value as &$row) {
@@ -598,7 +598,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     return $nb;
   }
 
-  function ipChanged($oldip, $newip)
+  function ipChanged ($oldip, $newip)
   {
     $nb = 0;
     foreach ($this->value as &$row) {
@@ -611,7 +611,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     return $nb;
   }
 
-  function cnRemoved($oldcn)
+  function cnRemoved ($oldcn)
   {
     $nb = 0;
     foreach ($this->value as $key => $row) {
@@ -623,7 +623,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     return $nb;
   }
 
-  function ipRemoved($oldips)
+  function ipRemoved ($oldips)
   {
     $nb = 0;
     foreach ($this->value as $key => $row) {
@@ -635,14 +635,14 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     return $nb;
   }
 
-  protected function canWriteRecord($value)
+  protected function canWriteRecord ($value)
   {
     $ui     = get_userinfo();
     $rights = $ui->get_permissions($this->getZoneDn(), 'dnsZone/DnsRecordPlugin', 'dnsRecord_'.$value[1], $this->plugin->readOnly());
     return preg_match('/w/', $rights);
   }
 
-  protected function genRowIcons($key, $value)
+  protected function genRowIcons ($key, $value)
   {
     list ($img, $nbicons) = parent::genRowIcons($key, $value);
     if ($this->canWriteRecord($value)) {
@@ -652,14 +652,14 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  protected function handleEdit($key)
+  protected function handleEdit ($key)
   {
     if ($this->canWriteRecord($this->value[$key])) {
       return parent::handleEdit($key);
     }
   }
 
-  function delPostValue($key)
+  function delPostValue ($key)
   {
     if ($this->canWriteRecord($this->value[$key])) {
       return parent::delPostValue($key);
@@ -686,7 +686,7 @@ class FQDNAttribute extends StringAttribute
 
 class dnsZone extends simplePlugin
 {
-  public static function finalDot()
+  public static function finalDot ()
   {
     global $config;
     return ($config->get_cfg_value('DNSFinalDot', 'TRUE') == 'TRUE');
@@ -806,7 +806,7 @@ class dnsZone extends simplePlugin
     $this->attributesAccess['reverseZones']->setInLdap(FALSE);
   }
 
-  function prepareSavedAttributes()
+  function prepareSavedAttributes ()
   {
     parent::prepareSavedAttributes();
     foreach (array_keys(DnsRecordAttribute::$types) as $type) {

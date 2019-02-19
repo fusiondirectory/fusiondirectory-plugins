@@ -75,7 +75,7 @@ class ldapDump extends simplePlugin
     return parent::execute();
   }
 
-  function dumpLdapNode($attrs, $parent_dn = '')
+  function dumpLdapNode ($attrs, $parent_dn = '')
   {
     global $config;
     $node = array(

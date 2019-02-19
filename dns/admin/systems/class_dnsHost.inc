@@ -25,7 +25,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
 
   function __construct ($label, $description, $ldapName, $zoneDn, $defaultValue = array(), $acl = "")
   {
-    parent::__construct ($label, $description, $ldapName, FALSE, $defaultValue, $acl);
+    parent::__construct($label, $description, $ldapName, FALSE, $defaultValue, $acl);
     $this->zoneDn = $zoneDn;
   }
 
@@ -173,7 +173,7 @@ class dnsHost extends simplePlugin
     $this->reloadZoneChoices();
   }
 
-  protected function reloadZoneChoices()
+  protected function reloadZoneChoices ()
   {
     /* List DNS zones we can read */
     $this->zonesCache = objects::ls('dnsZone', NULL, NULL, '', TRUE);
@@ -200,7 +200,7 @@ class dnsHost extends simplePlugin
     $this->attributesAccess['fdDNSZoneDn']->setSubmitForm('zoneChanged');
   }
 
-  function zoneChanged()
+  function zoneChanged ()
   {
     global $config;
     $ldap     = $config->get_ldap_link();
@@ -281,7 +281,7 @@ class dnsHost extends simplePlugin
     }
   }
 
-  function load()
+  function load ()
   {
     if (!$this->loaded) {
       $this->zoneChanged();
@@ -452,7 +452,7 @@ class dnsHost extends simplePlugin
 
   /* Record example: array('host', 'aRecord', '192.168.1.1', '')
    * Fields are relativeDomainName, record type, record content, reverse zone (for a/aaaa) */
-  function addRecord($zoneDn, array $record)
+  function addRecord ($zoneDn, array $record)
   {
     if (isset($this->zonesCache[$zoneDn])) {
       $zoneid = preg_replace('/[\/\-,.#:; =]/', '_', $zoneDn);
@@ -463,7 +463,7 @@ class dnsHost extends simplePlugin
     $this->attributesAccess[$attrId]->addValue($record);
   }
 
-  static function removeIpsFromZones(array $zoneDns, array $ips)
+  static function removeIpsFromZones (array $zoneDns, array $ips)
   {
     $messages = array();
     foreach ($zoneDns as $zoneDn) {
@@ -485,7 +485,7 @@ class dnsHost extends simplePlugin
     return $messages;
   }
 
-  static function removeCnFromZones(array $zoneDns, $cn)
+  static function removeCnFromZones (array $zoneDns, $cn)
   {
     $messages = array();
     foreach ($zoneDns as $zoneDn) {

@@ -22,7 +22,7 @@
 
 class sudoManagement extends management
 {
-  static function plInfo()
+  static function plInfo ()
   {
     return array(
       'plShortName'   => _('Sudo'),
@@ -35,7 +35,7 @@ class sudoManagement extends management
     );
   }
 
-  protected function configureActions()
+  protected function configureActions ()
   {
     parent::configureActions();
     $this->actions['new']->addAction(
@@ -52,7 +52,7 @@ class sudoManagement extends management
     );
   }
 
-  function newEntryDefault(array $action)
+  function newEntryDefault (array $action)
   {
     $action['subaction'] = 'SUDO';
 

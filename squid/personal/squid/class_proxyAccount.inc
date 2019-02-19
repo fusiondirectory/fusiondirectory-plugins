@@ -24,12 +24,12 @@
  * \brief This class contains all the function to manage the working time
  *        for the proxyAccount class
  */
-class workingTime extends CompositeAttribute
+class WorkingTimeAttribute extends CompositeAttribute
 {
   /*!
    * \brief Write working time values
    */
-  function writeValues(array $values)
+  function writeValues (array $values)
   {
     return $values[0] * 60 + $values[1];
   }
@@ -37,7 +37,7 @@ class workingTime extends CompositeAttribute
   /*!
    * \brief Read working time values
    */
-  function readValues($val)
+  function readValues ($val)
   {
     $tab = array();
     $val = intval($val);
@@ -45,7 +45,6 @@ class workingTime extends CompositeAttribute
     $tab[0] = ($val - $tab[1]) / 60;
     return $tab;
   }
-
 }
 
 class proxyAccount extends simplePlugin
@@ -87,7 +86,7 @@ class proxyAccount extends simplePlugin
             FALSE,
             FALSE
           ),
-          new workingTime (
+          new WorkingTimeAttribute(
             _('Working Start'),
             'gosaProxyWorkingStart',
             array (
@@ -102,7 +101,7 @@ class proxyAccount extends simplePlugin
             '',
             _('Limit proxy access to working time')
           ),
-          new workingTime (
+          new WorkingTimeAttribute(
             _('Working Stop'),
             'gosaProxyWorkingStop',
             array (
@@ -116,7 +115,7 @@ class proxyAccount extends simplePlugin
             _('Restrict proxy usage by quota'),
             'gosaProxyQuota',
             array(
-              new IntAttribute    ('',  _('Up'), 'quota_size', FALSE, 0, FALSE, 21),
+              new IntAttribute('',  _('Up'), 'quota_size', FALSE, 0, FALSE, 21),
               new SelectAttribute('', '', 'quota_unit', FALSE, array('k','m','g'), '', array('KB','MB','GB')),
             ),
             '/^(\\d+)(.)$/',

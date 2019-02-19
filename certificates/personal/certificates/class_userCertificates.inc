@@ -20,7 +20,7 @@
 
 class CertificateOrderedArrayAttribute extends OrderedArrayAttribute
 {
-  protected function genRowIcons($key, $value)
+  protected function genRowIcons ($key, $value)
   {
     $id = $this->getHtmlId();
     list ($img, $nbicons) = parent::genRowIcons($key, $value);
@@ -38,7 +38,7 @@ class CertificateOrderedArrayAttribute extends OrderedArrayAttribute
     return array ($img, $nbicons);
   }
 
-  protected function handlePostValueActions($id, $postValue)
+  protected function handlePostValueActions ($id, $postValue)
   {
     if (parent::handlePostValueActions($id, $postValue)) {
       return TRUE;

@@ -46,37 +46,37 @@ class sinapsRequest
     }
   }
 
-  public function codeDomaine()
+  public function codeDomaine ()
   {
     return $this->data->domaine['code'];
   }
 
-  public function codeOperation()
+  public function codeOperation ()
   {
     return $this->data->domaine->donnees->operation['codeOperation'];
   }
 
-  public function operationVersion()
+  public function operationVersion ()
   {
     return $this->data->domaine->donnees->operation['version'];
   }
 
-  public function identifiantTransaction()
+  public function identifiantTransaction ()
   {
     return $this->data->domaine->identifiantTransaction;
   }
 
-  public function getOperationStructure()
+  public function getOperationStructure ()
   {
     return $this->data->domaine->donnees->operation->structure;
   }
 
-  public function getOperationPersonne()
+  public function getOperationPersonne ()
   {
     return $this->data->domaine->donnees->operation->personne;
   }
 
-  public static function acquittementFonctionnel($responseCode = 200, $codeAcquittement = 0, $message = '', $identifiantObjApp = NULL, $synchrone = TRUE)
+  public static function acquittementFonctionnel ($responseCode = 200, $codeAcquittement = 0, $message = '', $identifiantObjApp = NULL, $synchrone = TRUE)
   {
     $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?>
     <Acquittement xmlns:acq="http://referentiels.SINAPS.amue.fr/acquittementFonctionnel">
@@ -103,7 +103,7 @@ class sinapsRequest
     }
   }
 
-  public function acquittementTechnique($responseCode = 200, $message = '')
+  public function acquittementTechnique ($responseCode = 200, $message = '')
   {
     $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?>
     <WebServiceHTTPResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="acquittementTechnique.xsd">
@@ -115,7 +115,7 @@ class sinapsRequest
     return $xml->asXML();
   }
 
-  public function getSupannEntiteValues($identifiantApplication, $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback)
+  public function getSupannEntiteValues ($identifiantApplication, $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback)
   {
     $structure  = $this->getOperationStructure();
     $now        = new DateTime();
@@ -203,7 +203,7 @@ class sinapsRequest
     return $values;
   }
 
-  public function getUserValues($identifiantApplication, array $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback)
+  public function getUserValues ($identifiantApplication, array $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback)
   {
     $personne   = $this->getOperationPersonne();
     $now        = new DateTime();
@@ -389,7 +389,7 @@ class sinapsRequest
     return $values;
   }
 
-  protected function convertAddress(SimpleXMLElement $address)
+  protected function convertAddress (SimpleXMLElement $address)
   {
     $adresse = '';
     if (!empty($address->adresseFR)) {
@@ -443,7 +443,7 @@ class sinapsRequest
     return $adresse;
   }
 
-  protected function checkValidite(SimpleXMLElement $object, DateTime $now)
+  protected function checkValidite (SimpleXMLElement $object, DateTime $now)
   {
     if ($object->dateDebutValidite) {
       $dateDebutValidite = new DateTime($object->dateDebutValidite);
@@ -462,7 +462,7 @@ class sinapsRequest
     return TRUE;
   }
 
-  protected function getUUIDFromReferenceCroisee($identifiantApplication, $referenceCroisee)
+  protected function getUUIDFromReferenceCroisee ($identifiantApplication, $referenceCroisee)
   {
     foreach ($referenceCroisee->identifiantsExternes as $ref) {
       if ($ref->identifiantApplication == $identifiantApplication) {
@@ -473,7 +473,7 @@ class sinapsRequest
     return '';
   }
 
-  public static function genUUID()
+  public static function genUUID ()
   {
     //UUID v4
     return sprintf(

@@ -22,7 +22,7 @@
 class filterFAIPackages extends filterLDAPBlacklist
 {
 
-  static function query($parent, $base, $scope, $filter, $attributes, $category, $objectStorage = '')
+  static function query ($parent, $base, $scope, $filter, $attributes, $category, $objectStorage = '')
   {
     $customs = array();
     foreach ($parent->customs as $custom) {
@@ -66,7 +66,7 @@ class filterFAIPackages extends filterLDAPBlacklist
     return static::filterByBlacklist($pkgs);
   }
 
-  function save()
+  function save ()
   {
     $act = $this->detectPostActions();
     $headpage = $this->getHeadpage();

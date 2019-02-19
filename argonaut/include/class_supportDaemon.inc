@@ -48,7 +48,7 @@ class supportDaemon
   /*!
    * \brief constructor
    */
-  public function __construct()
+  public function __construct ()
   {
     global $config;
     /* This should only be the case if we call this from setup.
@@ -72,7 +72,7 @@ class supportDaemon
   /*!
    * \brief Load argonaut server config from argonaut service in ldap
    */
-  public function get_argonaut_host()
+  public function get_argonaut_host ()
   {
     global $config;
     $ldap = $config->get_ldap_link();
@@ -116,7 +116,7 @@ class supportDaemon
    *
    * \return boolean TRUE if the server pings, FALSE otherwise
    */
-  public function is_available()
+  public function is_available ()
   {
     if ($this->s_host == "") {
       $this->set_error($this->host_error);
@@ -164,9 +164,9 @@ class supportDaemon
     return TRUE;
   }
 
-  private function new_state($state_value)
+  private function new_state ($state_value)
   {
-    @DEBUG (DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $this->s_error, date('H.i.s').' Setting state ('.$state_value.') to ');
+    @DEBUG(DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $this->s_error, date('H.i.s').' Setting state ('.$state_value.') to ');
     session::global_set('argonaut_state', array(
       'date'  => time(),
       'error' => $this->s_error,
@@ -182,7 +182,7 @@ class supportDaemon
    *
    * \return TRUE if correctly appended FALSE otherwise
    */
-  public function append($event)
+  public function append ($event)
   {
     if (!($event instanceof argonautAction)) {
       $this->set_error('Event object passed to append was not of the expected argonautAction type');
@@ -209,9 +209,9 @@ class supportDaemon
    *
    * \return the returned value if correctly executed and FALSE otherwise
    */
-  public function append_call($action, $targets, $data)
+  public function append_call ($action, $targets, $data)
   {
-    @DEBUG (DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, array('action' => $action, 'targets' => $targets, 'data' => $data), date('H.i.s').' Appending call to');
+    @DEBUG(DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, array('action' => $action, 'targets' => $targets, 'data' => $data), date('H.i.s').' Appending call to');
     if ($this->s_host == '') {
       $this->set_error($this->host_error);
       return FALSE;
@@ -229,7 +229,7 @@ class supportDaemon
         $tmpTargets = $targets;
       }
       $status = $client->action($action, $tmpTargets, $data);
-      @DEBUG (DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $status, date('H.i.s').' Answer');
+      @DEBUG(DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $status, date('H.i.s').' Answer');
       $this->reset_error();
       $this->new_state(TRUE);
       if (is_array($status) && !is_array($targets) && isset($status[0])) {
@@ -254,9 +254,9 @@ class supportDaemon
    *
    * \param  String $str The Error message,
    */
-  private function set_error($str)
+  private function set_error ($str)
   {
-    @DEBUG (DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $str, date('H.i.s').' Setting error to');
+    @DEBUG(DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $str, date('H.i.s').' Setting error to');
     $this->b_error = TRUE;
     $this->s_error = $str;
   }
@@ -265,7 +265,7 @@ class supportDaemon
   /*!
    * \brief  Resets the error message.
    */
-  private function reset_error()
+  private function reset_error ()
   {
     $this->b_error = FALSE;
     $this->s_error = "";
@@ -277,7 +277,7 @@ class supportDaemon
    *
    * \return boolean returns TRUE or FALSE, whether there is an error or not.
    */
-  public function is_error()
+  public function is_error ()
   {
     return $this->b_error;
   }
@@ -288,7 +288,7 @@ class supportDaemon
    *
    * \return string Returns the last error.
    */
-  public function get_error()
+  public function get_error ()
   {
     $str = $this->s_error;
     $ret = "";
@@ -310,7 +310,7 @@ class supportDaemon
    *
    * \return array The entries formatted
    */
-  private function format_entries($entries)
+  private function format_entries ($entries)
   {
     global $config;
     timezone::get_default_timezone();
@@ -369,7 +369,7 @@ class supportDaemon
    *
    * \return array All queued entries as an array or FALSE if there is an error.
    */
-  public function get_queued_entries()
+  public function get_queued_entries ()
   {
     if ($this->s_host == "") {
       $this->set_error($this->host_error);
@@ -399,7 +399,7 @@ class supportDaemon
    *
    * \return array  Array of the requested entries.
   */
-  public function get_entries_by_id($ids)
+  public function get_entries_by_id ($ids)
   {
     return $this->get_entries("get_entries_by_id", $ids);
   }
@@ -411,7 +411,7 @@ class supportDaemon
    *
    * \return boolean TRUE on success FALSE otherwise.
    */
-  public function remove_entries($ids)
+  public function remove_entries ($ids)
   {
     if (!is_array($ids)) {
       trigger_error("Requires an array as parameter.");
@@ -448,7 +448,7 @@ class supportDaemon
    *
    * \return Boolean TRUE on success.
   */
-  public function remove_entry($id)
+  public function remove_entry ($id)
   {
     return $this->remove_entries(array($id));
   }
@@ -460,7 +460,7 @@ class supportDaemon
    *
    * \return array  array of the requested entry.
   */
-  public function get_entry_by_id($id)
+  public function get_entry_by_id ($id)
   {
     return $this->get_entries_by_id(array($id));
   }
@@ -472,7 +472,7 @@ class supportDaemon
    *
    * \return boolean Returns TRUE on success FALSE otherwise.
   */
-  public function process_entries_now($ids)
+  public function process_entries_now ($ids)
   {
     if (!is_array($ids)) {
       trigger_error("Requires an array as first parameter.");
@@ -509,7 +509,7 @@ class supportDaemon
    *
    * \return boolean Returns TRUE if currently installing FALSE otherwise.
    */
-  public function is_currently_installing($mac)
+  public function is_currently_installing ($mac)
   {
     $evts = $this->get_entries_by_mac(array($mac));
     if ($evts) {
@@ -531,7 +531,7 @@ class supportDaemon
    *
    * \return array  The entries for the requested mac addresses.
    */
-  public function get_entries_by_mac($macs)
+  public function get_entries_by_mac ($macs)
   {
     return $this->get_entries("get_entries_by_mac", $macs);
   }
@@ -545,7 +545,7 @@ class supportDaemon
    *
    * \return Array   The entries for the requested addresses.
    */
-  private function get_entries($func, $address)
+  private function get_entries ($func, $address)
   {
     if (!is_array($address)) {
       trigger_error("Requires an array as parameter.");
@@ -589,7 +589,7 @@ class supportDaemon
    *  MAC_00_01_6C_9D_B9_FA['install_20080311_090900']['FILES'][1]=syslog.log
    * \endcode
    */
-  public function get_log_info_for_mac($mac)
+  public function get_log_info_for_mac ($mac)
   {
     if (empty($mac)) {
       return FALSE;
@@ -631,7 +631,7 @@ class supportDaemon
    * \param string $file The log filename.
    *
    */
-  public function get_log_file($mac, $date, $file)
+  public function get_log_file ($mac, $date, $file)
   {
     $path = $this->logdir.strtolower("/$mac")."/$date/$file";
     if (is_file($path)) {
@@ -654,7 +654,7 @@ class supportDaemon
    *
    * \return boolean TRUE if the workstation is running an argonaut daemon
   */
-  public function ping($mac)
+  public function ping ($mac)
   {
     if ($this->s_host == "") {
       $this->set_error($this->host_error);
@@ -697,7 +697,7 @@ class supportDaemon
    *
    * \return Array   List of packages that fit the given parameters.
   */
-  public function FAI_get_packages($release, $attrs, $filters, $from = -1, $to = -1, $package_list = FALSE)
+  public function FAI_get_packages ($release, $attrs, $filters, $from = -1, $to = -1, $package_list = FALSE)
   {
     if ($this->s_host == "") {
       $this->set_error($this->host_error);
@@ -761,7 +761,7 @@ class supportDaemon
    *
    * \return string Escaped string
   */
-  public function escape_perl_chars($str)
+  public function escape_perl_chars ($str)
   {
     $patterns = array("/\+/", "/\*/", "/\./");
     $escaped  = array("\+",   "\*",   "\."  );
@@ -774,7 +774,7 @@ class supportDaemon
    *
    * \return array  All kernel packages for the given release
   */
-  public function FAI_get_kernels($release)
+  public function FAI_get_kernels ($release)
   {
     $kernels = $this->FAI_get_packages($release, array("package"), array("linux-image", '^kernel$'));
     foreach ($kernels as &$kernel) {
@@ -791,7 +791,7 @@ class supportDaemon
    *
    * \return TRUE if success or FALSE otherwise
   */
-  public function clean_queue_from_mac($macs)
+  public function clean_queue_from_mac ($macs)
   {
     if ($this->s_host == "") {
       $this->set_error($this->host_error);

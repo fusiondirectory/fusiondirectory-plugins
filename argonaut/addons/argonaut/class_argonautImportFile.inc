@@ -99,7 +99,7 @@ class argonautImportFile extends simplePlugin
     '</p>';
   }
 
-  function handle_import_submit()
+  function handle_import_submit ()
   {
     $this->parse_csv($this->import);
   }
@@ -149,7 +149,7 @@ class argonautImportFile extends simplePlugin
     parent::save_object();
   }
 
-  private function parse_csv($str)
+  private function parse_csv ($str)
   {
     /* Some file checks */
     $lines = preg_split('/\n/', $str);

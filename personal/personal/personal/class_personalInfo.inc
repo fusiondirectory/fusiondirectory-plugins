@@ -23,7 +23,7 @@ class SocialAccountAttribute extends CompositeAttribute
   function __construct ($label, $description, $ldapName, $acl = "")
   {
     $handlers = socialHandler::listHandlers();
-    parent::__construct (
+    parent::__construct(
       $description, $ldapName,
       array(
         new SelectAttribute(

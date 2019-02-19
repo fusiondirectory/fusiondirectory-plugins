@@ -42,7 +42,7 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
     $this->setRequired($required);
   }
 
-  protected function supannUpdateSelect()
+  protected function supannUpdateSelect ()
   {
     $prefix = $this->attributes[0]->getValue();
     if (!isset($this->prefixedChoices[$prefix])) {
@@ -52,7 +52,7 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
     $this->attributes[1]->setRequired($prefix != '');
   }
 
-  function applyPostValue()
+  function applyPostValue ()
   {
     parent::applyPostValue();
     $this->supannUpdateSelect();
@@ -84,7 +84,7 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
     }
   }
 
-  function displayValue($values)
+  function displayValue ($values)
   {
     if (!is_array($values)) {
       $values = $this->inputValue($values);
@@ -132,7 +132,7 @@ class SupannCursusAnneeAttribute extends SupannPrefixedSelectAttribute
     $this->supannUpdateSelect();
     $this->setRequired($required);
   }
-  protected function supannUpdateSelect()
+  protected function supannUpdateSelect ()
   {
     $prefix = $this->attributes[0]->getValue();
     $this->attributes[1]->setChoices($this->prefixedChoices[$prefix][0], $this->prefixedChoices[$prefix][1]);
@@ -146,7 +146,7 @@ class SupannCompositeAttribute extends CompositeAttribute
     parent::__construct($description, $ldapName, $attributes, '', '', $acl, $label);
   }
 
-  function readValues($value)
+  function readValues ($value)
   {
     $values = array();
     $m = array();
@@ -163,7 +163,7 @@ class SupannCompositeAttribute extends CompositeAttribute
     return $values;
   }
 
-  function writeValues(array $values)
+  function writeValues (array $values)
   {
     $value  = '';
     $i      = 0;
@@ -178,7 +178,7 @@ class SupannCompositeAttribute extends CompositeAttribute
     return $value;
   }
 
-  function supannGetValues(&$values)
+  function supannGetValues (&$values)
   {
     foreach ($this->attributes as &$attribute) {
       $shortname = preg_replace('/^([^_]+)_.*$/', '\\1', $attribute->getLdapName());
@@ -197,7 +197,7 @@ class SupannCompositeAttribute extends CompositeAttribute
 
 class SupannOrderedArrayAttribute extends OrderedArrayAttribute
 {
-  function supannPrepareSave()
+  function supannPrepareSave ()
   {
     $values = array();
     foreach ($this->value as $value) {
@@ -521,7 +521,7 @@ class supannAccount extends simplePlugin
     $this->supannInit();
   }
 
-  function supannInit()
+  function supannInit ()
   {
     list ($codes, $labels) = supann::get_choices_for('affiliation');
     $this->attributesAccess['eduPersonAffiliation']->attribute->setChoices($codes, $labels);
@@ -540,7 +540,7 @@ class supannAccount extends simplePlugin
   }
 
   /* Update choices of fields which depends on other fields values */
-  function updateFieldsChoices()
+  function updateFieldsChoices ()
   {
     $code_ent   = $this->attributesAccess['supannEntiteAffectation']->getValue();
     $label_ent  = $this->attributesAccess['supannEntiteAffectation']->getDisplayValues();

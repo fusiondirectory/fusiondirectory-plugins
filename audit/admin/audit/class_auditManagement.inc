@@ -34,7 +34,7 @@ class auditManagement extends management
     array('LinkColumn',                 array('attributes' => 'fdAuditObject',      'label' => 'Target')),
   );
 
-  public static function plInfo()
+  public static function plInfo ()
   {
     return array(
       'plShortName'   => _('Audit'),
@@ -46,20 +46,20 @@ class auditManagement extends management
     );
   }
 
-  function __construct()
+  function __construct ()
   {
     parent::__construct();
 
     $this->filter->addElement(new DateFilterElement($this->filter, 'fdAuditDateTime', _('Date')));
   }
 
-  protected function setUpListing()
+  protected function setUpListing ()
   {
     /* Disable base mode and multi select */
     $this->listing  = new managementListing($this, FALSE, FALSE);
   }
 
-  protected function configureActions()
+  protected function configureActions ()
   {
     parent::configureActions();
 

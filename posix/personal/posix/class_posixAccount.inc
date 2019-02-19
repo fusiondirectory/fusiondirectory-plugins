@@ -40,7 +40,7 @@ class EpochDaysDateAttribute extends DateAttribute
     parent::__construct($label, $description, $ldapName, $required, '', $defaultValue, $defaultDate, $acl);
   }
 
-  protected function ldapToDate($ldapValue)
+  protected function ldapToDate ($ldapValue)
   {
     $date = DateTime::createFromFormat('U', $ldapValue * static::$secondsPerDay, timezone::utc());
     if ($date !== FALSE) {
@@ -51,12 +51,12 @@ class EpochDaysDateAttribute extends DateAttribute
     }
   }
 
-  protected function dateToLdap(DateTime $dateValue)
+  protected function dateToLdap (DateTime $dateValue)
   {
     return floor($dateValue->format('U') / static::$secondsPerDay);
   }
 
-  function getEpochDays()
+  function getEpochDays ()
   {
     if (empty($this->value)) {
       return 0;
@@ -368,7 +368,7 @@ class posixAccount extends simplePlugin
     }
   }
 
-  function getUid()
+  function getUid ()
   {
     if (isset($this->parent)) {
       $baseobject = $this->parent->getBaseObject();
@@ -775,7 +775,7 @@ class posixAccount extends simplePlugin
    *
    * \return Return the next id or NULL if failed
    */
-  static function getNextId($attrib, $dn)
+  static function getNextId ($attrib, $dn)
   {
     global $config;
 
@@ -796,14 +796,14 @@ class posixAccount extends simplePlugin
   /*!
    * \brief Get next id and add a lock to prevent other user to use it before us
    */
-  static function getNextIdLock($attrib, $dn)
+  static function getNextIdLock ($attrib, $dn)
   {
     /* Calculate new id's. We need to place a lock before calling getNextId
        to get real unique values.
      */
     $wait = 10;
     while ($user = get_lock($attrib)) {
-      sleep (1);
+      sleep(1);
 
       /* Oups - timed out */
       if ($wait-- == 0) {
@@ -826,7 +826,7 @@ class posixAccount extends simplePlugin
    *
    * \return Return the next id or NULL if failed
    */
-  protected static function getNextIdPool($attrib)
+  protected static function getNextIdPool ($attrib)
   {
     global $config;
 
@@ -849,8 +849,8 @@ class posixAccount extends simplePlugin
     while ($tries--) {
 
       /* Look for ID map entry */
-      $ldap->cd ($config->current['BASE']);
-      $ldap->search ("(&(objectClass=sambaUnixIdPool)($attrib=*))", array("$attrib"));
+      $ldap->cd($config->current['BASE']);
+      $ldap->search("(&(objectClass=sambaUnixIdPool)($attrib=*))", array("$attrib"));
 
       /* If it does not exist, create one with these defaults */
       if ($ldap->count() == 0) {
@@ -923,20 +923,20 @@ class posixAccount extends simplePlugin
    *
    * \return Return the next id
    */
-  protected static function getNextIdTraditional($attrib)
+  protected static function getNextIdTraditional ($attrib)
   {
     global $config;
 
     $ids = array();
     $ldap = $config->get_ldap_link();
 
-    $ldap->cd ($config->current['BASE']);
+    $ldap->cd($config->current['BASE']);
     if (preg_match('/gidNumber/i', $attrib)) {
       $oc = 'posixGroup';
     } else {
       $oc = 'posixAccount';
     }
-    $ldap->search ("(&(objectClass=$oc)($attrib=*))", array("$attrib"));
+    $ldap->search("(&(objectClass=$oc)($attrib=*))", array("$attrib"));
 
     /* Get list of ids */
     while ($attrs = $ldap->fetch()) {
@@ -982,7 +982,7 @@ class posixAccount extends simplePlugin
    *
    * \param string $dn The DN
    */
-  protected static function getNextIdHook($attrib, $dn)
+  protected static function getNextIdHook ($attrib, $dn)
   {
     global $config;
 

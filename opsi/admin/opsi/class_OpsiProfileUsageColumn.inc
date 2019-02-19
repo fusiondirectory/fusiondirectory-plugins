@@ -24,7 +24,7 @@
  */
 class OpsiProfileUsageColumn extends Column
 {
-  function renderCell(ListingEntry $entry)
+  function renderCell (ListingEntry $entry)
   {
     if (strcasecmp($entry->type, 'opsiProfile') != 0) {
       return '&nbsp;';
@@ -48,7 +48,7 @@ class OpsiProfileUsageColumn extends Column
     }
   }
 
-  function compare(ListingEntry $ao, ListingEntry $bo)
+  function compare (ListingEntry $ao, ListingEntry $bo)
   {
     if ($ao->getTemplatedType() != $bo->getTemplatedType()) {
       return strcmp($ao->getTemplatedType(), $bo->getTemplatedType());
@@ -75,7 +75,7 @@ class OpsiProfileUsageColumn extends Column
     }
   }
 
-  protected function computeStats(ListingEntry $entry)
+  protected function computeStats (ListingEntry $entry)
   {
     if (isset($entry->cache[__CLASS__]['stats'])) {
       return $entry->cache[__CLASS__]['stats'];

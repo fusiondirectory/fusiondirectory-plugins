@@ -31,7 +31,7 @@ class sambaDomainManagement extends management
     array('ActionsColumn',    array('label' => 'Actions')),
   );
 
-  public static function plInfo()
+  public static function plInfo ()
   {
     return array(
       'plShortName'   => _('Samba domains'),
@@ -44,13 +44,13 @@ class sambaDomainManagement extends management
     );
   }
 
-  protected function setUpListing()
+  protected function setUpListing ()
   {
     /* Disable base mode */
     $this->listing  = new managementListing($this, FALSE);
   }
 
-  protected function configureActions()
+  protected function configureActions ()
   {
     parent::configureActions();
 

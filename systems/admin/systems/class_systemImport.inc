@@ -31,7 +31,7 @@ class systemImport extends simplePlugin
 {
   protected $types = array();
 
-  static function getAttributesInfo($filter = '')
+  static function getAttributesInfo ($filter = '')
   {
     return array(
       'import' => array(
@@ -226,7 +226,7 @@ class systemImport extends simplePlugin
     return $messages;
   }
 
-  function typeChanged()
+  function typeChanged ()
   {
     $templates = objects::getTemplates($this->type);
     $this->attributesAccess['template_dn']->setChoices(array_keys($templates), array_values($templates));
@@ -253,12 +253,12 @@ class systemImport extends simplePlugin
     $this->messages = $this->massImport($hosts, $this->type, $this->template_dn, $this->base);
   }
 
-  protected function getHosts($server_dn)
+  protected function getHosts ($server_dn)
   {
     die('Not implemented');
   }
 
-  protected function getExtraTabs($server_dn, $host)
+  protected function getExtraTabs ($server_dn, $host)
   {
     return array();
   }

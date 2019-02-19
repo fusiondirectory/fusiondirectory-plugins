@@ -49,7 +49,7 @@ class sinapsDiffusionHandlerJob
     $this->identifiantApplicationSync = $config->get_cfg_value('SinapsIdentifiantApplicationSync', array());
   }
 
-  function handleRequest()
+  function handleRequest ()
   {
     if ($this->request->codeOperation() != 'DIFFUSION') {
       throw new FusionDirectoryException('Invalid operation '.$this->request->codeOperation());
@@ -64,7 +64,7 @@ class sinapsDiffusionHandlerJob
     }
   }
 
-  function ldapUuidToCodeEntite($uuid)
+  function ldapUuidToCodeEntite ($uuid)
   {
     /* Translate UUID refs to code entite
      * This is done here to make sure sinapsRequest does not perform LDAP searches by itself
@@ -84,7 +84,7 @@ class sinapsDiffusionHandlerJob
     }
   }
 
-  public static function dumpFile($fileName, $fileContent)
+  public static function dumpFile ($fileName, $fileContent)
   {
     global $config;
     $dumpFolder = $config->get_cfg_value('SinapsDumpFolder');
@@ -109,7 +109,7 @@ class sinapsDiffusionHandlerJob
     }
   }
 
-  function handleStructureDiffusion($values)
+  function handleStructureDiffusion ($values)
   {
     $uuid     = $values['entite']['supannRefId'][0];
     $idObjApp = preg_replace('/^{'.$this->uuidPrefix.'}/', '', $uuid);
@@ -141,7 +141,7 @@ class sinapsDiffusionHandlerJob
     }
   }
 
-  function handlePersonneDiffusion($values)
+  function handlePersonneDiffusion ($values)
   {
     $uuid     = $values['supannAccount']['supannRefId'][0];
     $idObjApp = preg_replace('/^{'.$this->uuidPrefix.'}/', '', $uuid);
@@ -179,7 +179,7 @@ class sinapsDiffusionHandlerJob
     }
   }
 
-  function fillObject($type, $values, &$dn)
+  function fillObject ($type, $values, &$dn)
   {
     global $config;
 
@@ -277,7 +277,7 @@ class sinapsDiffusionHandlerJob
     return TRUE;
   }
 
-  protected function lockUser($dn)
+  protected function lockUser ($dn)
   {
     global $config;
 
@@ -319,7 +319,7 @@ class sinapsDiffusionHandlerJob
     return $errors;
   }
 
-  function sendAcquittementFonctionnel($xml)
+  function sendAcquittementFonctionnel ($xml)
   {
     static::dumpFile(
       $this->request->identifiantTransaction().'-acquittement.xml',
@@ -329,7 +329,7 @@ class sinapsDiffusionHandlerJob
     exit();
   }
 
-  public static function sendPostRequest($url, $user, $password, $data)
+  public static function sendPostRequest ($url, $user, $password, $data)
   {
     $ch = curl_init();
 

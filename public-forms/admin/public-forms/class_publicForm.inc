@@ -113,7 +113,7 @@ class publicForm extends simplePlugin
     $this->attributesAccess['fdPublicFormTemplateType']->setSubmitForm('typeChanged');
   }
 
-  function typeChanged()
+  function typeChanged ()
   {
     $templates = objects::getTemplates($this->fdPublicFormTemplateType);
     $this->attributesAccess['fdPublicFormTemplateDN']->setChoices(array_keys($templates), array_values($templates));

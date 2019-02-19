@@ -127,7 +127,7 @@ class ldifManager extends simplePlugin
     $this->attributesAccess['export_filter']->setInLdap(FALSE);
   }
 
-  function handle_single_submit()
+  function handle_single_submit ()
   {
     global $config;
     $ldap = $config->get_ldap_link();
@@ -142,13 +142,13 @@ class ldifManager extends simplePlugin
     $this->save_export($dn, $acl, 'base', 'entryExport.ldif');
   }
 
-  function handle_complete_submit()
+  function handle_complete_submit ()
   {
     $acl    = $this->attributesAccess['complete_export']->getAcl();
     $this->save_export($this->complete_export, $acl, 'sub', 'fullExport.ldif');
   }
 
-  function save_export($dn, $acl, $scope, $name)
+  function save_export ($dn, $acl, $scope, $name)
   {
     global $config;
     // An LDIF export was asked
@@ -172,7 +172,7 @@ class ldifManager extends simplePlugin
     }
   }
 
-  function handle_import_ldif_submit()
+  function handle_import_ldif_submit ()
   {
     global $config;
     if (empty($this->import)) {

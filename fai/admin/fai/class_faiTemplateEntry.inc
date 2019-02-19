@@ -37,11 +37,11 @@ class AccessRightsAttribute extends CompositeAttribute
       'o1' => new BooleanAttribute('', '', 'oe', FALSE),
       's1' => new BooleanAttribute('', '', 'os', FALSE),
     );
-    parent::__construct ($description, $ldapName, $attributes, FALSE, FALSE, $acl, $label);
+    parent::__construct($description, $ldapName, $attributes, FALSE, FALSE, $acl, $label);
     $this->setLinearRendering(TRUE);
   }
 
-  function renderFormInput()
+  function renderFormInput ()
   {
     foreach ($this->attributes as &$attribute) {
       $attribute->setDisabled($this->disabled);
@@ -90,7 +90,7 @@ class AccessRightsAttribute extends CompositeAttribute
     return $display;
   }
 
-  function readValues($value)
+  function readValues ($value)
   {
     $tmode  = "$value ";
     $m      = array();
@@ -110,7 +110,7 @@ class AccessRightsAttribute extends CompositeAttribute
     return $values;
   }
 
-  function writeValues(array $values)
+  function writeValues (array $values)
   {
     $tmode  = '';
     foreach (array('s', 'u', 'g', 'o') as $type) {

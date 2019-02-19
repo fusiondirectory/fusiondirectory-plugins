@@ -81,9 +81,9 @@ class argonautFuseConfig extends simpleService
     /* Load modules */
     $this->plugin = array();
     foreach ($config->data['TABS']['FUSEMODULETABS'] as $plug) {
-      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $plug['CLASS'], "Loading Fuse module");
+      @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $plug['CLASS'], "Loading Fuse module");
       if (!plugin_available($plug['CLASS'])) {
-        @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $plug['CLASS'], "Fuse module not available");
+        @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $plug['CLASS'], "Fuse module not available");
         continue;
       }
       $name = $plug['CLASS'];

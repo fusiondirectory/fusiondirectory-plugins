@@ -74,7 +74,7 @@ class webLink extends simplePlugin
     $this->attributesAccess['fdWebLink']->setAllowHTML(TRUE);
   }
 
-  function renderAttributes($readOnly = FALSE)
+  function renderAttributes ($readOnly = FALSE)
   {
     $autoLinks = $this->computeLinks();
     $html = '';
@@ -100,7 +100,7 @@ class webLink extends simplePlugin
     return parent::renderAttributes($readOnly);
   }
 
-  function computeLinks()
+  function computeLinks ()
   {
     global $config;
     if ($this->member_of_group) {

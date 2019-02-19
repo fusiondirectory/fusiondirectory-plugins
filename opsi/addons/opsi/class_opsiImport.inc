@@ -24,7 +24,7 @@ class opsiImport extends systemImport
   protected $types = array('workstation');
 
   /* Return plugin information for acl handling  */
-  static function plInfo()
+  static function plInfo ()
   {
     return array(
       'plShortName'   => _('OPSI import'),
@@ -44,7 +44,7 @@ class opsiImport extends systemImport
     );
   }
 
-  static function getAttributesInfo($filter = 'objectClass=opsiServer')
+  static function getAttributesInfo ($filter = 'objectClass=opsiServer')
   {
     $attributesInfo = parent::getAttributesInfo($filter);
     /* Add our checkbox just before the import button */
@@ -63,7 +63,7 @@ class opsiImport extends systemImport
     return $attributesInfo;
   }
 
-  protected function getExtraTabs($server_dn, $host)
+  protected function getExtraTabs ($server_dn, $host)
   {
     $extraTabs = array(
       'sambaSystemTab' => array(

@@ -28,7 +28,7 @@ class OPSIServerAttribute extends SelectAttribute
     }
   }
 
-  function updateChoices()
+  function updateChoices ()
   {
     global $config;
     $ldap = $config->get_ldap_link();

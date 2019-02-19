@@ -33,13 +33,13 @@ class publicFormPage extends standAlonePage
   protected $providedMultiValueAttributes;
   protected $alteredAttributes;
 
-  function __construct($interactive = TRUE)
+  function __construct ($interactive = TRUE)
   {
     parent::__construct($interactive);
     $this->request = $_SERVER['REQUEST_URI'];
   }
 
-  function reset()
+  function reset ()
   {
     unset($this->form);
     unset($this->registration);
@@ -48,7 +48,7 @@ class publicFormPage extends standAlonePage
     $this->done = FALSE;
   }
 
-  function init()
+  function init ()
   {
     parent::init();
     if ($_SERVER['REQUEST_URI'] != $this->request) {
@@ -58,14 +58,14 @@ class publicFormPage extends standAlonePage
     }
   }
 
-  function readLdapConfig()
+  function readLdapConfig ()
   {
     global $config;
 
     return TRUE;
   }
 
-  protected function fetchForm()
+  protected function fetchForm ()
   {
     if (isset($_GET['token'])) {
       if (isset($_GET['form'])) {
@@ -166,7 +166,7 @@ class publicFormPage extends standAlonePage
     }
   }
 
-  protected function prepareTemplateObject()
+  protected function prepareTemplateObject ()
   {
     $this->template = new template($this->form['fdPublicFormTemplateType'], $this->form['fdPublicFormTemplateDN']);
 
@@ -215,7 +215,7 @@ class publicFormPage extends standAlonePage
     $this->template->setValues($values, TRUE);
   }
 
-  protected function submitForm()
+  protected function submitForm ()
   {
     global $config, $ui;
 
@@ -262,7 +262,7 @@ class publicFormPage extends standAlonePage
     }
   }
 
-  protected function getPrefilledValues($values = array())
+  protected function getPrefilledValues ($values = array())
   {
     if (isset($this->registration['fdRegistrationEmailAddress']) && !isset($values['mailAccount']['mail'])) {
       /* Fill email field with target email if empty */
@@ -275,7 +275,7 @@ class publicFormPage extends standAlonePage
     return $values;
   }
 
-  function save_object()
+  function save_object ()
   {
     global $config;
 
@@ -305,7 +305,7 @@ class publicFormPage extends standAlonePage
     }
   }
 
-  function execute()
+  function execute ()
   {
     if (!$this->activated) {
       return;

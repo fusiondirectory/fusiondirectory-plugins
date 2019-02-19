@@ -70,7 +70,7 @@ class debugHelp extends simplePlugin
     $this->buildObjectTypesDump();
   }
 
-  function buildObjectTypesDump()
+  function buildObjectTypesDump ()
   {
     global $config;
     $dump = array();

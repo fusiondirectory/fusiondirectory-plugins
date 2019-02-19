@@ -22,7 +22,7 @@ class DebconfEntriesAttribute extends CompositeAttribute
 {
   function __construct ($description, $ldapName, $acl = "")
   {
-    parent::__construct ($description, $ldapName, array(), "", "", $acl);
+    parent::__construct($description, $ldapName, array(), "", "", $acl);
     $this->setInLdap(FALSE);
   }
 
@@ -74,7 +74,7 @@ class DebconfEntriesAttribute extends CompositeAttribute
     }
   }
 
-  function saveInLdap()
+  function saveInLdap ()
   {
     global $config;
     $ldap = $config->get_ldap_link();
@@ -100,7 +100,7 @@ class DebconfImportAttribute extends FileAttribute
 {
   function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = "", $acl = "")
   {
-    parent::__construct ($label, $description, $ldapName, $required, $defaultValue, $acl);
+    parent::__construct($label, $description, $ldapName, $required, $defaultValue, $acl);
     $this->setInLdap(FALSE);
   }
 
@@ -108,15 +108,15 @@ class DebconfImportAttribute extends FileAttribute
    *
    *  \param filehandle $handle The handle on the opened uploaded file
    */
-  function readFile($handle)
+  function readFile ($handle)
   {
     global $config;
     $matches = array();
     $str = fread($handle, 1024);
     // removing breaklines
-    $tmp = str_replace ("\n", "", $str);
+    $tmp = str_replace("\n", "", $str);
     // removing spaces
-    $tmp = str_replace (" ", "", $tmp);
+    $tmp = str_replace(" ", "", $tmp);
     if (preg_match( "/dn:.*,ou=templates,ou=([^,=]+),".get_ou("debconfRDN").
                     $config->current['BASE']."/",
                     // searching for dn: containing the template name
@@ -145,7 +145,7 @@ class DebconfImportAttribute extends FileAttribute
     }
   }
 
-  function renderFormInput()
+  function renderFormInput ()
   {
     global $config;
     return sprintf(_("In order to import a debconf file, please run the following command : <br/>".

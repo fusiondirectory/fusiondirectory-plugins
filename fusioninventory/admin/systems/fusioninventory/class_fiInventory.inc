@@ -184,7 +184,7 @@ class fiInventory extends simplePlugin
     return array();
   }
 
-  function get_inventory_infos()
+  function get_inventory_infos ()
   {
     global $config;
     $ldap = $config->get_ldap_link();
@@ -301,7 +301,7 @@ class fiInventory extends simplePlugin
     return $infos;
   }
 
-  function updateMatching()
+  function updateMatching ()
   {
     global $config;
     $systemTypes = array('server','workstation','terminal','printer','component','phone','mobilePhone');
@@ -370,7 +370,7 @@ class fiInventory extends simplePlugin
     }
   }
 
-  function createSystem()
+  function createSystem ()
   {
     list ($type, $dn) = explode(':', $_POST['matching_template'], 2);
     $infos = objects::infos($type);

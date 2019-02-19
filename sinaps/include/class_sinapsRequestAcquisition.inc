@@ -28,7 +28,7 @@ class sinapsRequestAcquisition
     'supannEntiteAffectationPrincipale' => 1,
   );
 
-  public function __construct()
+  public function __construct ()
   {
     $this->identifiantTransaction = sinapsRequest::genUUID();
     $xml = '<?xml version="1.0" encoding="UTF-8" ?>
@@ -46,7 +46,7 @@ class sinapsRequestAcquisition
     $this->data = new SimpleXMLElement($xml);
   }
 
-  public function fill(array $user, string $uuidPrefix, string $typeExterne, array $methodeContactMapping, $codeEntiteToldapUuidCallback, $contractEnded = FALSE)
+  public function fill (array $user, string $uuidPrefix, string $typeExterne, array $methodeContactMapping, $codeEntiteToldapUuidCallback, $contractEnded = FALSE)
   {
     $personne = $this->data->domaine->donnees->operation->personne;
 
@@ -86,7 +86,7 @@ class sinapsRequestAcquisition
     }
   }
 
-  public function getXML()
+  public function getXML ()
   {
     return $this->data->asXML();
   }

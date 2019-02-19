@@ -118,9 +118,9 @@ class application extends simplePlugin
     $filename = './plugins/applications/images/default_icon.png';
 
     if (file_exists($filename)) {
-      $fd = fopen ($filename, 'rb');
-      $this->attributesAccess['fdApplicationImage']->setDefaultValue(fread ($fd, filesize ($filename)));
-      fclose ($fd);
+      $fd = fopen($filename, 'rb');
+      $this->attributesAccess['fdApplicationImage']->setDefaultValue(fread($fd, filesize($filename)));
+      fclose($fd);
       if (empty($this->fdApplicationImage)) {
         $this->attributesAccess['fdApplicationImage']->resetToDefault();
       }

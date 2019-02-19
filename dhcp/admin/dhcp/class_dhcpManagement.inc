@@ -20,7 +20,7 @@
 
 class dhcpManagement extends management
 {
-  static function plInfo()
+  static function plInfo ()
   {
     return array(
       'plShortName'   => _('DHCP'),

@@ -31,7 +31,7 @@ class supannStructuresManagement extends management
     array('ActionsColumn',    array('label' => 'Actions')),
   );
 
-  static function plInfo()
+  static function plInfo ()
   {
     return array(
       'plShortName'   => _('SupAnn structures'),
@@ -45,7 +45,7 @@ class supannStructuresManagement extends management
     );
   }
 
-  protected function setUpListing()
+  protected function setUpListing ()
   {
     /* Set baseMode to FALSE */
     $this->listing  = new managementListing($this, FALSE);

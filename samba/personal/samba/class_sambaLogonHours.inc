@@ -73,7 +73,7 @@ class sambaLogonHours
     }
   }
 
-  function execute()
+  function execute ()
   {
     $week_days = msgPool::weekdays();
 
@@ -91,7 +91,7 @@ class sambaLogonHours
     return $smarty->fetch(get_template_path("sambaLogonHours.tpl", TRUE, dirname(__FILE__)));
   }
 
-  function save_object()
+  function save_object ()
   {
     /* Check if dialog was opened and if there were any changes */
     if (isset($_POST['sambaLogonHoursPosted'])) {
@@ -107,7 +107,7 @@ class sambaLogonHours
     }
   }
 
-  function save()
+  function save ()
   {
     /* Convert Matrix to Hex */
     $slh = "";

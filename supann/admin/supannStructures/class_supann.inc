@@ -22,7 +22,7 @@ class supann
 {
   static $choices_for = array();
 
-  static function get_prefixed_choices_for($shortname)
+  static function get_prefixed_choices_for ($shortname)
   {
     $dir  = @opendir(SUPANN_DIR);
     $m    = array();
@@ -39,7 +39,7 @@ class supann
     return $res;
   }
 
-  static function &get_choices_for($type, $prefix = '')
+  static function &get_choices_for ($type, $prefix = '')
   {
     if (isset(static::$choices_for[$prefix.$type])) {
       return static::$choices_for[$prefix.$type];
@@ -58,7 +58,7 @@ class supann
       }
       while (($line = fgets($entiteList)) !== FALSE) {
         $line = trim($line);
-        if (!preg_match ('/^#/', $line) && !empty($line)) {
+        if (!preg_match('/^#/', $line) && !empty($line)) {
           $entite_line = preg_split('/;/', $line);
 
           $entity_codes[]   = $prefix.$entite_line[0];
@@ -73,7 +73,7 @@ class supann
   }
 
   /* return the 64 first chars and "…" after if text is longer */
-  static function truncate_label($str, $len = 50)
+  static function truncate_label ($str, $len = 50)
   {
     if (mb_strlen($str) > $len) {
       return mb_substr($str, 0, $len).'…';
