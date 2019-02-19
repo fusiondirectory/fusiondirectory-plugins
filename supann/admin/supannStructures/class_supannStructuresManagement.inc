@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2018  FusionDirectory
+
+  Copyright (C) 2012-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -31,7 +32,7 @@ class supannStructuresManagement extends management
     array('ActionsColumn',    array('label' => 'Actions')),
   );
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('SupAnn structures'),

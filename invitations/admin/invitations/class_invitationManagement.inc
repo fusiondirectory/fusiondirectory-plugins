@@ -20,7 +20,7 @@
 
 class invitationManagement extends management
 {
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Invitations'),

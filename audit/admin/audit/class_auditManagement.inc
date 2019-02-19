@@ -34,7 +34,7 @@ class auditManagement extends management
     array('LinkColumn',                 array('attributes' => 'fdAuditObject',      'label' => 'Target')),
   );
 
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Audit'),

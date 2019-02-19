@@ -1,6 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2013-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
@@ -20,7 +21,7 @@
 
 class applicationManagement extends management
 {
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Applications'),
@@ -35,7 +36,7 @@ class applicationManagement extends management
     );
   }
 
-  static function getMenuEntries ()
+  static function getMenuEntries (): array
   {
     global $config, $ui;
     $mode = $config->get_cfg_value('WebappsMenu', 'none');

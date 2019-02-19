@@ -251,7 +251,7 @@ class systemManagement extends management
   /*! \brief  Detects actions/events send by the ui
    *           and the corresponding targets.
    */
-  function detectPostActions ()
+  function detectPostActions (): array
   {
     $action = parent::detectPostActions();
     if (isset($_POST['save_event_dialog'])) {
@@ -262,7 +262,7 @@ class systemManagement extends management
     return $action;
   }
 
-  function handleSubAction (array $action)
+  function handleSubAction (array $action): bool
   {
     if (parent::handleSubAction($action)) {
       return TRUE;

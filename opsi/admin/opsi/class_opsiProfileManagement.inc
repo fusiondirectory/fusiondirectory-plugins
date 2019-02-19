@@ -31,7 +31,7 @@ class opsiManagement extends management
   );
 
   /* Return plugin information for acl handling */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('OPSI'),

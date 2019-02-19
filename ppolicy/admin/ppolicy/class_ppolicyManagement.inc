@@ -1,6 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2014-2015 Dhatim
   Copyright (C) 2014-2019 FusionDirectory
 
@@ -21,7 +22,7 @@
 
 class ppolicyManagement extends management
 {
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Password policies'),

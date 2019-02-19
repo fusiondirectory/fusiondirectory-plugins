@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018 FusionDirectory
+
+  Copyright (C) 2017-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,7 +24,7 @@
  */
 class RegistrationColumn extends LinkColumn
 {
-  function renderCell (ListingEntry $entry)
+  function renderCell (ListingEntry $entry): string
   {
     $value = $this->getAttributeValue($entry);
     if ($value == '') {
@@ -75,7 +76,7 @@ class registrationManagement extends management
     'fdRegistrationState'         => '1',
   );
 
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Registrations'),
@@ -291,7 +292,7 @@ class registrationManagement extends management
   /*
    * \brief Whether accept and reject actions should be enabled for an entry
    */
-  function enableAcceptReject ($action, ListingEntry $entry = NULL)
+  function enableAcceptReject ($action, ListingEntry $entry = NULL): bool
   {
     if ($entry !== NULL) {
       /* For entries */
@@ -302,7 +303,7 @@ class registrationManagement extends management
     }
   }
 
-  protected function getFormFromRegistration (ListingEntry $entry)
+  protected function getFormFromRegistration (ListingEntry $entry): array
   {
     $invitations = objects::ls(
       'invitation',

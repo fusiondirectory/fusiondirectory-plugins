@@ -1,6 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2010 Antoine Gallavardin
   Copyright (C) 2012-2019 FusionDirectory
 
@@ -30,7 +31,7 @@ class aliasManagement extends management
     array('ActionsColumn',        array('label' => 'Actions')),
   );
 
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Aliases'),

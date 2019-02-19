@@ -21,7 +21,7 @@
 
 class netgroupManagement extends management
 {
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('NIS Netgroups'),

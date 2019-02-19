@@ -26,7 +26,7 @@ class SystemServicesColumn extends Column
 {
   protected $services;
 
-  function __construct (managementListing $parent, array $attributes = NULL, $label = NULL)
+  function __construct (managementListing $parent, array $attributes = NULL, string $label = NULL)
   {
     global $config;
 
@@ -54,7 +54,7 @@ class SystemServicesColumn extends Column
     $attrs['objectClass'] = '*';
   }
 
-  function renderCell (ListingEntry $entry)
+  function renderCell (ListingEntry $entry): string
   {
     $icons  = $this->computeIcons($entry);
     $result = '';
@@ -69,7 +69,7 @@ class SystemServicesColumn extends Column
     return $result;
   }
 
-  function compare (ListingEntry $ao, ListingEntry $bo)
+  function compare (ListingEntry $ao, ListingEntry $bo): int
   {
     if ($ao->getTemplatedType() != $bo->getTemplatedType()) {
       return strcmp($ao->getTemplatedType(), $bo->getTemplatedType());
@@ -82,7 +82,7 @@ class SystemServicesColumn extends Column
     return strcmp($a, $b);
   }
 
-  protected function computeSortString (ListingEntry $entry)
+  protected function computeSortString (ListingEntry $entry): string
   {
     if (isset($entry->cache[__CLASS__]['sort'])) {
       return $entry->cache[__CLASS__]['sort'];
@@ -100,7 +100,7 @@ class SystemServicesColumn extends Column
     return $entry->cache[__CLASS__]['sort'];
   }
 
-  protected function computeIcons (ListingEntry $entry)
+  protected function computeIcons (ListingEntry $entry): array
   {
     if (strtoupper($entry->getTemplatedType()) != 'SERVER') {
       return array();

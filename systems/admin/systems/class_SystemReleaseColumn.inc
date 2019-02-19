@@ -30,12 +30,12 @@ class SystemReleaseColumn extends Column
     $attrs['FAIclass']    = 1;
   }
 
-  function renderCell (ListingEntry $entry)
+  function renderCell (ListingEntry $entry): string
   {
     return $this->computeRelease($entry);
   }
 
-  function compare (ListingEntry $ao, ListingEntry $bo)
+  function compare (ListingEntry $ao, ListingEntry $bo): int
   {
     // Extract values from ao and bo
     $a = $this->computeRelease($ao);
@@ -44,7 +44,7 @@ class SystemReleaseColumn extends Column
     return strcmp($a, $b);
   }
 
-  protected function computeRelease (ListingEntry $entry)
+  protected function computeRelease (ListingEntry $entry): string
   {
     if (isset($entry->cache[__CLASS__]['release'])) {
       return $entry->cache[__CLASS__]['release'];
@@ -55,7 +55,7 @@ class SystemReleaseColumn extends Column
     return $entry->cache[__CLASS__]['release'];
   }
 
-  protected function searchRelease (ListingEntry $entry)
+  protected function searchRelease (ListingEntry $entry): string
   {
     global $config;
 

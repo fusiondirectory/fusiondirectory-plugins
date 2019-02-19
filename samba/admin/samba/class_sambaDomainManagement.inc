@@ -31,7 +31,7 @@ class sambaDomainManagement extends management
     array('ActionsColumn',    array('label' => 'Actions')),
   );
 
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Samba domains'),

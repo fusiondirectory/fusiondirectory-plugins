@@ -22,7 +22,7 @@
 
 class sudoManagement extends management
 {
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Sudo'),

@@ -30,7 +30,7 @@ class dnsManagement extends management
     array('ActionsColumn',        array('label' => 'Actions')),
   );
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('DNS'),
@@ -106,7 +106,7 @@ class dnsManagement extends management
     }
   }
 
-  public static function findServerByFQDN ($fqdn, $zoneDn = NULL)
+  public static function findServerByFQDN ($fqdn, $zoneDn = NULL): array
   {
     global $config;
     list ($serverCn, $serverZone) = explode('.', $fqdn, 2);
