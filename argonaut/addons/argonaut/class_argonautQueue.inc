@@ -36,7 +36,7 @@ class argonautQueue extends simpleManagement
   var $acl_base;
   protected $aclCategory = 'argonautQueue/';
 
-  static function plInfo()
+  static function plInfo ()
   {
     return array(
       'plShortName'   => _('Deployment queue'),
@@ -52,7 +52,7 @@ class argonautQueue extends simpleManagement
     );
   }
 
-  function __construct()
+  function __construct ()
   {
     global $config;
     $this->filterXMLPath  = get_template_path('deploy-filter.xml', TRUE, dirname(__FILE__));
@@ -81,7 +81,7 @@ class argonautQueue extends simpleManagement
     $this->headpage->registerElementFilter('filterStatus',    'argonautQueue::filterStatus');
   }
 
-  function importEvents()
+  function importEvents ()
   {
     $this->dialogObject = new argonautImportFile($this);
   }
@@ -89,13 +89,13 @@ class argonautQueue extends simpleManagement
   /*! \brief    Queue selected objects to be removed.
    *            Checks ACLs, Locks and ask for confirmation.
    */
-  protected function removeEntryRequested($action, array $target, array $all)
+  protected function removeEntryRequested ($action, array $target, array $all)
   {
     $nodelete   = array();
     $disallowed = array();
     $this->dns  = array();
 
-    @DEBUG (DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $target, 'Entry removal requested!');
+    @DEBUG(DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $target, 'Entry removal requested!');
 
     // Check permissons for each target
     foreach ($target as $dn) {
@@ -163,7 +163,7 @@ class argonautQueue extends simpleManagement
     }
   }
 
-  function removeEntryConfirmed($action, array $target, array $all)
+  function removeEntryConfirmed ($action, array $target, array $all)
   {
     timezone::get_default_timezone();
     $ids = array();
@@ -178,7 +178,7 @@ class argonautQueue extends simpleManagement
 
   /*! \brief  Force queue job to be aborted.
    */
-  function abortEvent($action, array $target)
+  function abortEvent ($action, array $target)
   {
     $macs     = array();
     $taskids  = array();
@@ -197,18 +197,18 @@ class argonautQueue extends simpleManagement
     $this->o_queue->remove_entries($taskids);
   }
 
-  function processNow($action, array $target)
+  function processNow ($action, array $target)
   {
     $this->execute_queue_entries($target);
   }
 
-  function retryAction($action, array $target)
+  function retryAction ($action, array $target)
   {
     $entry = $this->getHeadpage()->getEntry($target[0]);
     $this->dialogObject = new argonautAction($entry['HEADERTAG'][0], array($entry['MACADDRESS'][0]), FALSE);
   }
 
-  function showErrorEntry($action, array $target)
+  function showErrorEntry ($action, array $target)
   {
     if (count($target) == 1) {
       $entry  = $this->headpage->getEntry($target[0]);
@@ -217,7 +217,7 @@ class argonautQueue extends simpleManagement
     }
   }
 
-  function detectPostActions()
+  function detectPostActions ()
   {
     $action = parent::detectPostActions();
     if (isset($_POST['import_abort'])) {
@@ -233,7 +233,7 @@ class argonautQueue extends simpleManagement
   /*! \brief  Save event dialogs.
    *          And append the new Argonaut event.
    */
-  function saveEventDialog()
+  function saveEventDialog ()
   {
     $this->dialogObject->save_object();
     $msgs = $this->dialogObject->check();
@@ -248,7 +248,7 @@ class argonautQueue extends simpleManagement
     $this->closeDialogs();
   }
 
-  protected function _getTabFooter()
+  protected function _getTabFooter ()
   {
     if ($this->dialogObject instanceof faiLogView) {
       return  '<p class="plugbottom">'.
@@ -262,7 +262,7 @@ class argonautQueue extends simpleManagement
   /*! \brief  Force queue job to be done as far as possible.
    *  @return Boolean TRUE in case of success, else FALSE.
    */
-  private function execute_queue_entries($ids)
+  private function execute_queue_entries ($ids)
   {
     /* Only allow execution of paused or waiting entries */
     $update_ids = array();
@@ -284,7 +284,7 @@ class argonautQueue extends simpleManagement
     return TRUE;
   }
 
-  private function acl_is_removeable($dn)
+  private function acl_is_removeable ($dn)
   {
     if ($this->read_only) {
       return FALSE;
@@ -293,7 +293,7 @@ class argonautQueue extends simpleManagement
     return (strpos($ui->get_permissions($dn, $this->aclCategory.get_class($this), '0'), 'd') !== FALSE);
   }
 
-  static function filterHostName($mac, $name = '', $targetdn = '', $targettype = '')
+  static function filterHostName ($mac, $name = '', $targetdn = '', $targettype = '')
   {
     $text = '';
     if (isset($name[0]) && $name[0] != 'none') {
@@ -308,7 +308,7 @@ class argonautQueue extends simpleManagement
     }
   }
 
-  static function filterTask($tag, $progress)
+  static function filterTask ($tag, $progress)
   {
     $tag      = $tag[0];
     $progress = $progress[0];
@@ -337,7 +337,7 @@ class argonautQueue extends simpleManagement
     return $str;
   }
 
-  static function filterPeriod($periodic = array())
+  static function filterPeriod ($periodic = array())
   {
     $period = "&nbsp;-";
     if (isset($periodic[0]) && !preg_match("/none/i", $periodic[0])) {
@@ -349,7 +349,7 @@ class argonautQueue extends simpleManagement
     return $period;
   }
 
-  static function filterSchedule($stamp)
+  static function filterSchedule ($stamp)
   {
     if ($stamp['0'] == '19700101000000') {
       return _('immediately');
@@ -358,7 +358,7 @@ class argonautQueue extends simpleManagement
     }
   }
 
-  static function filterStatus($row, $status, $substatus)
+  static function filterStatus ($row, $status, $substatus)
   {
     $status     = $status[0];
     $substatus  = $substatus[0];

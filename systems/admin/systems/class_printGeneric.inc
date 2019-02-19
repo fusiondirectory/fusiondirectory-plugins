@@ -21,7 +21,7 @@
 
 class printGeneric extends ipHostPlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Printer'),
@@ -50,18 +50,18 @@ class printGeneric extends ipHostPlugin
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
           new BaseSelectorAttribute(get_ou('printerRDN')),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'), _('The name of the printer'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('A short description of the printer'),
             'description', FALSE
           ),
@@ -70,11 +70,11 @@ class printGeneric extends ipHostPlugin
       'details' => array(
         'name'  => _('Details'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Printer location'), _('The location of the printer'),
             'l', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Printer URL'), _('The URL of the printer'),
             'labeledURI', TRUE
           ),
@@ -120,15 +120,15 @@ class printGeneric extends ipHostPlugin
         'name'      => _('Windows paths'),
         'icon'      => 'geticon.php?context=devices&icon=computer-windows&size=16',
         'attrs'     => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Inf file'), _('Path to windows inf file for this printer'),
             'fdPrinterWindowsInfFile', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Driver directory'), _('Path to directory that contains windows drivers for this printer'),
             'fdPrinterWindowsDriverDir', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Driver name'), _('Windows name of the printer driver'),
             'fdPrinterWindowsDriverName', FALSE
           ),

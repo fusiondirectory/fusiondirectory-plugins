@@ -20,7 +20,7 @@
 
 class supannConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('SupAnn configuration'),
@@ -33,18 +33,18 @@ class supannConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('SupAnn'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('SupAnn RDN'), _('Branch in which SupAnn structures will be stored'),
             'fdSupannStructuresRDN', TRUE,
             'ou=structures'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('SupAnn mail for recovery'), _('Allow the use of mail addresses from the personal mail address field from SupAnn account for password recovery'),
             'fdSupannPasswordRecovery', FALSE,
             TRUE

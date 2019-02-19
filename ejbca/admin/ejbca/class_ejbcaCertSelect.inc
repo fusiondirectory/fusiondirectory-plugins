@@ -37,7 +37,7 @@ class EjbcaUserCertsAttribute extends GenericDialogAttribute
 
   function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = array(), $acl = '')
   {
-    parent::__construct ($label, $description, $ldapName, $required, $defaultValue, 'dn', NULL, $acl);
+    parent::__construct($label, $description, $ldapName, $required, $defaultValue, 'dn', NULL, $acl);
   }
 
   function addValue ($dn, $entry)
@@ -105,7 +105,7 @@ class EjbcaUserCertsAttribute extends GenericDialogAttribute
     return '{$div_'.$id.'}'."\n";
   }
 
-  public function htmlIds()
+  public function htmlIds ()
   {
     $id = $this->getHtmlId();
     $ids = array('add'.$id.'_dialog');

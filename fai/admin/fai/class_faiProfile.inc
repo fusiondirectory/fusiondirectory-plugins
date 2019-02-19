@@ -20,7 +20,7 @@
 
 class faiProfile extends faiSimplePluginClass
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Profile'),
@@ -39,17 +39,17 @@ class faiProfile extends faiSimplePluginClass
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Class name'), _('Partition table class name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),

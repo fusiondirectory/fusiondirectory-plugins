@@ -20,7 +20,7 @@
 
 class dhcpService extends dhcpPlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'     => _('DHCP service'),
@@ -31,7 +31,7 @@ class dhcpService extends dhcpPlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     $attributesInfo = parent::getAttributesInfo();
     $attributesInfo['main']['attrs'][2]->setDefaultValue(

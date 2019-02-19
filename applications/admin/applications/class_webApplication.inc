@@ -20,7 +20,7 @@
 
 class webApplication extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Web application'),
@@ -36,26 +36,26 @@ class webApplication extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Application'),
         'attrs' => array(
-          new BaseSelectorAttribute (get_ou('webappsRDN')),
-          new HostNameAttribute (
+          new BaseSelectorAttribute(get_ou('webappsRDN')),
+          new HostNameAttribute(
             _('Name'), _('Name or id for application'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('A short description of this application'),
             'description', FALSE
           ),
-          new URLAttribute (
+          new URLAttribute(
             _('URL'), _('Link to this application'),
             'labeledURI', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Display Name'), _('Displayed name for links to this application'),
             'fdApplicationTitle', TRUE
           ),
@@ -64,12 +64,12 @@ class webApplication extends simplePlugin
       'icon' => array(
         'name'  => _('Icon'),
         'attrs' => array(
-          new ImageAttribute (
+          new ImageAttribute(
             '', _('The icon for this application'),
             'fdApplicationImage', FALSE,
             48, 48, 'png'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Icon location'), _('Usual path to this application icon'),
             'fdApplicationImageLocation', FALSE
           ),

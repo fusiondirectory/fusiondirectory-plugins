@@ -20,7 +20,7 @@
 
 class dnsView extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('DNS view'),
@@ -36,26 +36,26 @@ class dnsView extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('View'),
         'attrs' => array(
           new BaseSelectorAttribute(get_ou('dnsRDN')),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('View name'), _('Name of this view'),
             'cn', TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Match clients ACL'), _('Name of the ACL to use for the source IP address of the incoming requests'),
             'fdDNSViewMatchClientsAcl', FALSE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Match destinations ACL'), _('Name of the ACL to use for the destination IP address of the incoming requests'),
             'fdDNSViewMatchDestinationsAcl', FALSE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Match recursive only'), _('Match only recursive queries in this view'),
             'fdDNSViewMatchRecursiveOnly', FALSE
           ),

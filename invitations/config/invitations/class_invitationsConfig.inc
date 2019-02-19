@@ -20,7 +20,7 @@
 
 class invitationsConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Invitations configuration'),
@@ -33,23 +33,23 @@ class invitationsConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Invitations'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Invitations RDN'), _('Branch in which invitations will be stored'),
             'fdInvitationRDN', TRUE,
             'ou=invitations'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Registrations RDN'), _('Branch in which registrations will be stored'),
             'fdRegistrationRDN', TRUE,
             'ou=registrations'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Email expeditor'), _('The email address used to send invitation emails. Be careful to select an address that your server can send from without being flagged as spam.'),
             'fdInvitationFromEmailAddress', TRUE,
             'no-reply@example.com'

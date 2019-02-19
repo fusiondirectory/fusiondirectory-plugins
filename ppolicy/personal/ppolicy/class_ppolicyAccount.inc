@@ -21,7 +21,7 @@
 
 class ppolicyAccount extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Password policy'),
@@ -35,7 +35,7 @@ class ppolicyAccount extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -95,7 +95,7 @@ class ppolicyAccount extends simplePlugin
     }
   }
 
-  protected function loadAttributes()
+  protected function loadAttributes ()
   {
     global $config;
     if ($this->dn != 'new') {
@@ -107,7 +107,7 @@ class ppolicyAccount extends simplePlugin
     parent::loadAttributes();
   }
 
-  protected function prepare_save ()
+  protected function prepare_save (): array
   {
     $errors = parent::prepare_save();
     if (!empty($this->pwdReset)) {
@@ -118,7 +118,7 @@ class ppolicyAccount extends simplePlugin
     return $errors;
   }
 
-  function remove($fulldelete = FALSE)
+  function remove (bool $fulldelete = FALSE): array
   {
     /* ppolicy fields are not real fields, they can’t be removed through ldap_modify
      * It’s not possible to remove ppolicy info from a user node anyway */

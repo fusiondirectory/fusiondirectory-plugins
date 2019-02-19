@@ -20,7 +20,7 @@
 
 class dhcpFailOverPeer extends dhcpPlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'     => _('DHCP failover peer'),
@@ -31,64 +31,64 @@ class dhcpFailOverPeer extends dhcpPlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('DHCP'),
         'attrs' => array(
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'), _('Name of this DHCP configuration'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Primary server'), _('IP address or DNS name of the server playing primary role in DHC Load Balancing and Fail over'),
             'dhcpFailOverPrimaryServer', TRUE
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Primary port'), _('Port on which primary server listens for connections from its fail over peer (secondary server)'),
             'dhcpFailOverPrimaryPort', TRUE,
             0, FALSE, 519
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Secondary server'), _('IP address or DNS name of the server playing secondary role in DHC Load Balancing and Fail over'),
             'dhcpFailOverSecondaryServer', TRUE
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Secondary port'), _('Port on which secondary server listens for connections from its fail over peer (primary server)'),
             'dhcpFailOverSecondaryPort', TRUE,
             0, FALSE, 520
           ),
-          new TimeAttribute (
+          new TimeAttribute(
             _('Response delay'), _('Maximum response time in seconds, before Server assumes that connection to fail over peer has failed'),
             'dhcpFailOverResponseDelay', FALSE,
             0, FALSE, 60
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Unacked updates'), _('Number of BNDUPD messages that server can send before it receives BNDACK from its fail over peer'),
             'dhcpFailOverUnackedUpdates', FALSE,
             0, FALSE, 10
           ),
-          new TimeAttribute (
+          new TimeAttribute(
             _('Maximum Client Lead Time'), _('Maximum Client Lead Time configuration in seconds, as defined in DHCP Failover Protocol [FAILOVR]'),
             'dhcpMaxClientLeadTime', TRUE,
             0, FALSE, 3600
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Split'), _('Split between the primary and secondary servers for fail over purpose'),
             'dhcpFailOverSplit', TRUE,
             0, FALSE, 128
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('HashBucketAssignment'), _('HashBucketAssignment bit map for the DHCP Server, as defined in DHC Load Balancing Algorithm [RFC 3074]'),
             'dhcpHashBucketAssignment', FALSE
           ),
-          new TimeAttribute (
+          new TimeAttribute(
             _('Load balance time'), _('Cutoff time in seconds, after which load balance is disabled'),
             'dhcpFailOverLoadBalanceTime', FALSE,
             0, FALSE, 3
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Comments'), _('Comments about this DHCP object'),
             'dhcpComments', FALSE
           ),

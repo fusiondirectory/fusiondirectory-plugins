@@ -27,7 +27,7 @@ class argonautImportFile extends simplePlugin
     '3' => 'OGROUP'
   );
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Argonaut task import'),
@@ -42,22 +42,22 @@ class argonautImportFile extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Import actions from CSV file'),
         'class' => array('fullwidth'),
         'attrs' => array(
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('Import a list of task into argonaut'),
             'import',
             array(
-              new FileAttribute (
+              new FileAttribute(
                 '', '',
                 'import_file', FALSE
               ),
-              new ButtonAttribute (
+              new ButtonAttribute(
                 '', '',
                 'import_submit',
                 _('Upload')
@@ -76,7 +76,7 @@ class argonautImportFile extends simplePlugin
     );
   }
 
-  public function __construct($parent)
+  public function __construct ($parent)
   {
     global $config;
     parent::__construct($config->current['BASE'], NULL, $parent);
@@ -88,7 +88,7 @@ class argonautImportFile extends simplePlugin
     $this->daemon_events  = argonautEventTypes::get_event_types();
   }
 
-  function execute()
+  function execute (): string
   {
     $smarty = get_smarty();
     $smarty->assign('jobtypes', join(',', array_keys($this->daemon_events)));
@@ -99,12 +99,12 @@ class argonautImportFile extends simplePlugin
     '</p>';
   }
 
-  function handle_import_submit()
+  function handle_import_submit ()
   {
     $this->parse_csv($this->import);
   }
 
-  function save_object()
+  function save_object ()
   {
     /* Import started */
     if (isset($_POST['start_import'])) {
@@ -149,7 +149,7 @@ class argonautImportFile extends simplePlugin
     parent::save_object();
   }
 
-  private function parse_csv($str)
+  private function parse_csv ($str)
   {
     /* Some file checks */
     $lines = preg_split('/\n/', $str);

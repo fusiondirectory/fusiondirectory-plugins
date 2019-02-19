@@ -20,7 +20,7 @@
 
 class simpleSecurityObject extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Simple security object'),
@@ -39,19 +39,19 @@ class simpleSecurityObject extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       // Attributes are grouped by section
       'main' => array(
         'name'  => _('Simple security object'),
         'attrs' => array(
-          new BaseSelectorAttribute (get_ou('dsaRDN')),
-          new HostNameAttribute (
+          new BaseSelectorAttribute(get_ou('dsaRDN')),
+          new HostNameAttribute(
             _('Entry name'), _('Account name'),
             'cn', TRUE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Description'), _('Description of this simple security object'),
             'description', FALSE
           ),
@@ -60,7 +60,7 @@ class simpleSecurityObject extends simplePlugin
       'password' => array(
         'name'  => _('Change password'),
         'attrs' => array(
-          new UserPasswordAttribute (
+          new UserPasswordAttribute(
             _('Password'), _('Password'),
             'userPassword', FALSE
           )

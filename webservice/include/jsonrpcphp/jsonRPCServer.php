@@ -35,7 +35,7 @@ class jsonRPCServer {
    * @param object $object
    * @return boolean
    */
-  public static function handle($object)
+  public static function handle ($object)
   {
     // checks if a JSON-RCP request has been received
     if (

@@ -23,7 +23,7 @@ class terminalStartup extends simplePlugin
 {
   var $inheritance = array('gosaGroupOfNames' => 'member');
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Startup'),
@@ -39,7 +39,7 @@ class terminalStartup extends simplePlugin
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'startup' => array (
@@ -121,7 +121,7 @@ class terminalStartup extends simplePlugin
   }
 
   /*! \brief Create a list of useable servers for the currently selected protocol */
-  function updateServerList()
+  function updateServerList ()
   {
     $servers = objects::ls('server', NULL, NULL, '(&(objectClass=goTerminalServer)(gotoSessionType='.strtoupper($this->gotoXMethod).'))');
     $this->attributesAccess['gotoXdmcpServer']->setChoices($servers);

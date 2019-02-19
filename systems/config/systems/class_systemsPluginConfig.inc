@@ -22,7 +22,7 @@ class systemsPluginConfig extends simplePlugin
 {
   static protected $ipClasses = array();
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Systems'),
@@ -34,48 +34,48 @@ class systemsPluginConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'rdns' => array(
         'name'  => _('LDAP tree for systems'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Systems RDN'), _('Branch in which systems will be stored'),
             'fdSystemRDN', TRUE,
             'ou=systems'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Server RDN'), _('Branch in which servers will be stored'),
             'fdServerRDN', TRUE,
             'ou=servers,ou=systems'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Workstations RDN'), _('Branch in which workstations will be stored'),
             'fdWorkstationRDN', TRUE,
             'ou=workstations,ou=systems'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Terminal RDN'), _('Branch in which terminals will be stored'),
             'fdTerminalRDN', TRUE,
             'ou=terminals,ou=systems'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Printer RDN'), _('Branch in which printers will be stored'),
             'fdPrinterRDN', TRUE,
             'ou=printers,ou=systems'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Component RDN'), _('Branch in which network devices will be stored'),
             'fdComponentRDN', TRUE,
             'ou=netdevices,ou=systems'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Phone RDN'), _('Branch in which phones will be stored'),
             'fdPhoneRDN', TRUE,
             'ou=phones,ou=systems'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Mobile phone RDN'), _('Branch in which mobile phones will be stored'),
             'fdMobilePhoneRDN', TRUE,
             'ou=mobile,ou=systems'
@@ -85,17 +85,17 @@ class systemsPluginConfig extends simplePlugin
       'config' => array(
         'name'  => _('Miscellaneous'),
         'attrs' => array(
-          new OrderedArrayAttribute (
+          new OrderedArrayAttribute(
             new CompositeAttribute(
               _('Available encodings for share services'),
               'fdEncodings',
               array(
-                new StringAttribute (
+                new StringAttribute(
                   _('Encoding'), _('The encoding code name'),
                   'encoding_code', TRUE, '', '',
                   '/^[^=]+$/'
                 ),
-                new StringAttribute (
+                new StringAttribute(
                   _('Label'), _('The encoding displayed name'),
                   'encoding_label', TRUE, '', '',
                   '/^[^=]+$/'

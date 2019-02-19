@@ -23,7 +23,7 @@ class puppetNode extends simplePlugin
 {
   var $displayHeader  = TRUE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Puppet'),
@@ -35,25 +35,25 @@ class puppetNode extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       // Attributes are grouped by section
       'section1' => array(
         'name'  => _("Puppet node settings"),
         'attrs' => array(
-          new SetAttribute (
-            new StringAttribute (_("Puppet class"), _("Puppet Node Class"), "puppetClass")
+          new SetAttribute(
+            new StringAttribute(_("Puppet class"), _("Puppet Node Class"), "puppetClass")
           ),
-          new SelectAttribute (_("Parent node"), _("Puppet Parent Node"),       "parentNode", FALSE),
-          new SelectAttribute (_("Environment"), _("Puppet Node Environment"),  "environment", TRUE),
-          new SetAttribute (
-            new CompositeAttribute (
+          new SelectAttribute(_("Parent node"), _("Puppet Parent Node"),       "parentNode", FALSE),
+          new SelectAttribute(_("Environment"), _("Puppet Node Environment"),  "environment", TRUE),
+          new SetAttribute(
+            new CompositeAttribute(
               _("A variable setting for puppet"),
               'puppetVar',
               array(
-                new StringAttribute ('',   _('Name of the variable'),   'puppetVar'),
-                new StringAttribute ('=',  _('Value of the variable'),  'puppetVarValue'),
+                new StringAttribute('',   _('Name of the variable'),   'puppetVar'),
+                new StringAttribute('=',  _('Value of the variable'),  'puppetVarValue'),
               ),
                // sscanf format
               '%[^ =]=%[^ ]',
@@ -91,7 +91,7 @@ class puppetNode extends simplePlugin
     $this->attributesAccess['environment']->setChoices($envs);
   }
 
-  public function getDisplayHeaderInfos()
+  public function getDisplayHeaderInfos (): array
   {
     list($disabled,$buttonText,$text) = parent::getDisplayHeaderInfos();
     if (!$this->is_account && !$disabled && empty($this->attributesAccess['environment']->getChoices())) {

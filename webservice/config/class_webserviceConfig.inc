@@ -20,7 +20,7 @@
 
 class webserviceConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Webservice configuration'),
@@ -33,13 +33,13 @@ class webserviceConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Webservice'),
         'attrs' => array(
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Force SSL'), _('Allow only HTTPS JSON-RPC requests'),
             'fdWebserviceForceSSL', TRUE,
             TRUE

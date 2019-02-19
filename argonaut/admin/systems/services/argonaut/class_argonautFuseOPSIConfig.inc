@@ -24,7 +24,7 @@ class argonautFuseOPSIConfig extends simplePlugin
   var $showActions    = FALSE;
   var $displayHeader  = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Argonaut Fuse OPSI module settings'),
@@ -39,28 +39,28 @@ class argonautFuseOPSIConfig extends simplePlugin
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array (
       'opsi' => array (
         'name'  => _('OPSI'),
         'attrs' => array (
-          new StringAttribute (
+          new StringAttribute(
             _('Opsi admin'),
             '',
             'argonautFuseOpsiAdmin'
           ),
-          new PasswordAttribute (
+          new PasswordAttribute(
             _('Opsi password'),
             '',
             'argonautFuseOpsiPassword'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Opsi server'),
             '',
             'argonautFuseOpsiServer'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Opsi lang'),
             '',
             'argonautFuseOpsiLang'

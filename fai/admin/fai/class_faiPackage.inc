@@ -46,13 +46,13 @@ class PackageConfigDialog extends GenericDialog
   protected $post_cancel = 'CancelObjectConfig';
   protected $post_finish = 'SaveObjectConfig';
 
-  function __construct($simplePlugin, &$attribute, $key, $pkg_config)
+  function __construct ($simplePlugin, &$attribute, $key, $pkg_config)
   {
     $this->attribute  = $attribute;
     $this->dialog     = new $this->dialogClass($simplePlugin->dn, $key, $simplePlugin->FAIdebianRelease, $pkg_config);
   }
 
-  function execute ()
+  function execute (): string
   {
     if (isset($_POST[$this->post_cancel])) {
       return $this->handle_cancel();
@@ -105,12 +105,12 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     );
   }
 
-  function addValue($value)
+  function addValue ($value)
   {
     $this->value[preg_replace('/\-$/', '', $value)] = $value;
   }
 
-  function readValue($value)
+  function readValue ($value)
   {
     return array(preg_replace('/\-$/', '', $value), $value);
   }
@@ -132,13 +132,13 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     return $buttons;
   }
 
-  public function htmlIds()
+  public function htmlIds ()
   {
     $id = $this->getHtmlId();
     return array_merge(array('add'.$id), parent::htmlIds());
   }
 
-  protected function getAttributeArrayValue($key, $value)
+  protected function getAttributeArrayValue ($key, $value)
   {
     if (!isset($this->buffer[$value])) {
       $this->genPkgs();
@@ -153,7 +153,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     return array($value, '', '');
   }
 
-  protected function genRowIcons($key, $value)
+  protected function genRowIcons ($key, $value)
   {
     $id = $this->getHtmlId();
     list ($img, $nbicons) = parent::genRowIcons($key, $value);
@@ -179,7 +179,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     return array ($img, $nbicons);
   }
 
-  protected function handleAddAndEditValue()
+  protected function handleAddAndEditValue ()
   {
     $id = $this->getHtmlId();
 
@@ -211,7 +211,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     parent::handleAddAndEditValue();
   }
 
-  function packageConfigured($packageConfig)
+  function packageConfigured ($packageConfig)
   {
     $this->configuredPackages = array_merge($this->configuredPackages, $packageConfig);
   }
@@ -257,7 +257,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
   /*! \brief  Reload the list of cached packages.
       @return Returns the currently cached list of packages.
    */
-  function genPkgs()
+  function genPkgs ()
   {
     if (empty($this->plugin->FAIdebianRelease)) {
       return;
@@ -299,7 +299,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
           }
         }
       }
-      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, count($packages), "$release done, packages left");
+      @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, count($packages), "$release done, packages left");
     }
 
     if (count($packages) > 0) {
@@ -312,7 +312,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     $this->genConfiguredPackages();
   }
 
-  function genConfiguredPackages()
+  function genConfiguredPackages ()
   {
     global $config;
     /* Fetch all package configurations from ldap */
@@ -368,7 +368,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
 
 class faiPackage extends faiSimplePluginClass
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Package'),
@@ -388,17 +388,17 @@ class faiPackage extends faiSimplePluginClass
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Class name'), _('Variables class name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
@@ -407,15 +407,15 @@ class faiPackage extends faiSimplePluginClass
       'repo' => array(
         'name'  => _('Repository'),
         'attrs' => array(
-          new DisplayLDAPAttribute (
+          new DisplayLDAPAttribute(
             _('Release'), _('Debian release concerned'),
             'FAIdebianRelease', FALSE
           ),
-          new DisplayLDAPArrayAttribute (
+          new DisplayLDAPArrayAttribute(
             _('Sections'), _('Sections concerned'),
             'FAIdebianSection', FALSE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Install method'), _('Install method to use for this package list'),
             'FAIinstallMethod', TRUE,
             array('install', 'ninstall', 'remove',
@@ -430,7 +430,7 @@ class faiPackage extends faiSimplePluginClass
         'name'  => _('Packages'),
         'class' => array('fullwidth'),
         'attrs' => array(
-          new PackagesAttribute (
+          new PackagesAttribute(
             '', _('Packages in this class'),
             'FAIpackage', TRUE
           )
@@ -453,7 +453,7 @@ class faiPackage extends faiSimplePluginClass
     session::set('packageSelect_Release', $this->FAIdebianRelease);
   }
 
-  function updateRelease()
+  function updateRelease ()
   {
     /* Assemble release name */
     $tmp = preg_replace('/'.preg_quote(get_ou('faiBaseRDN'), '/').'.*$/i', '', $this->base);
@@ -469,13 +469,13 @@ class faiPackage extends faiSimplePluginClass
     }
   }
 
-  protected function shouldSave()
+  protected function shouldSave (): bool
   {
     /* We need ldap_save to always run */
     return TRUE;
   }
 
-  function ldap_save ()
+  protected function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();
@@ -483,7 +483,7 @@ class faiPackage extends faiSimplePluginClass
     return $errors;
   }
 
-  function getServerInfos()
+  function getServerInfos ()
   {
     $servs    = serviceRepository::getServers();
     $ret      = array();

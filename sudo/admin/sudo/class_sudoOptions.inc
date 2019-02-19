@@ -23,25 +23,25 @@ class sudoOptions
 {
   private static $options = NULL;
 
-  public static function exists($option)
+  public static function exists ($option)
   {
     static::initOptionsArray();
     return isset(static::$options[$option]);
   }
 
-  public static function get($option)
+  public static function get ($option)
   {
     static::initOptionsArray();
     return static::$options[$option];
   }
 
-  public static function listOptions()
+  public static function listOptions ()
   {
     static::initOptionsArray();
     return array_keys(static::$options);
   }
 
-  private static function initOptionsArray()
+  private static function initOptionsArray ()
   {
     if (static::$options !== NULL) {
       return;

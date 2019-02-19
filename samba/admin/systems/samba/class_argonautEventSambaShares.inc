@@ -20,7 +20,7 @@
 
 class argonautEventTypesSambaShares
 {
-  static public function get_event_types_list()
+  static public function get_event_types_list ()
   {
     return array(
       'SambaShares.start' => array(

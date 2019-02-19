@@ -55,7 +55,7 @@ class faiStartup extends simplePlugin
 
   var $cache = array();
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('FAI'),
@@ -73,22 +73,22 @@ class faiStartup extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('FAI settings'),
         'attrs' => array(
-          new HiddenAttribute ('FAIstate'),
-          new CompositeAttribute (
+          new HiddenAttribute('FAIstate'),
+          new CompositeAttribute(
             _('FAI profil and release to be applied to this computer'),
             'FAIclass',
             array(
-              'release' => new FAIreleaseAttribute (
+              'release' => new FAIreleaseAttribute(
                 _('Release'), _('FAI debian release to be installed on this computer'),
                 'FAIrelease', TRUE
               ),
-              'profil' => new SelectAttribute (
+              'profil' => new SelectAttribute(
                 _('Profil'), _('FAI profil to be applied to this computer'),
                 'FAIprofile', TRUE
               ),
@@ -96,7 +96,7 @@ class faiStartup extends simplePlugin
             '/^(?P<profil>.+) :(?P<release>.+)$/',
             '%2$s :%1$s'
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Repository'), _('FAI Debian repository to be used for installation'),
             'FAIdebianMirror', TRUE
           ),
@@ -123,11 +123,11 @@ class faiStartup extends simplePlugin
       }
       return FALSE;
     } else {
-      return parent::foreignKeyCheck ($field, $fieldvalue, $source);
+      return parent::foreignKeyCheck($field, $fieldvalue, $source);
     }
   }
 
-  function foreignKeyUpdate($field, $oldvalue, $newvalue, array $source)
+  function foreignKeyUpdate (string $field, $oldvalue, $newvalue, array $source)
   {
     if ($field == 'FAIclass') {
       if ($this->attributesAccess['FAIclass']->attributes['profil']->getValue() == $oldvalue) {
@@ -141,7 +141,7 @@ class faiStartup extends simplePlugin
   /* Updates release and profiles list
    *  if not already done ($this->cache).
    */
-  function update_fai_cache()
+  function update_fai_cache ()
   {
     /* Get the list of available servers and their releases */
     if (!isset($this->cache['SERVERS'])) {

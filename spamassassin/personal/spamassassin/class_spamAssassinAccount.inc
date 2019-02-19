@@ -22,7 +22,7 @@ class spamAssassinAccount extends simplePlugin
 {
   var $displayHeader = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('SpamAssassin'),
@@ -38,7 +38,7 @@ class spamAssassinAccount extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -47,17 +47,17 @@ class spamAssassinAccount extends simplePlugin
         'attrs' => array(
         //~ A user object will have multiple spamassassin attributes, one for each preference setting.
         //~ The attributes themselves should be stored in the database. A spamassassin LDAP attribute should be set to the name of a SpamAssassin configuration directive followed by the value for the directive, separated by a space.
-          new SetAttribute (
-            new CompositeAttribute (
+          new SetAttribute(
+            new CompositeAttribute(
               _('SpamAssassin user preferences settings'),
             'fdSpamAssassinRules',
               array(
-                new SelectAttribute (
+                new SelectAttribute(
                   _('Directive'),    _('The name of a SpamAssassin configuration directive'),
                   'fdSpamAssassinRules_directive', TRUE,
                   array('score', 'whitelist_from', 'required_score')
                 ),
-                new StringAttribute (
+                new StringAttribute(
                   _('Value'), _('The value for the directive'),
                   'fdSpamAssassinRules_value'
                 ),

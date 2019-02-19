@@ -20,7 +20,7 @@
 
 class publicForm extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Public form'),
@@ -40,7 +40,7 @@ class publicForm extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     global $config;
 
@@ -61,7 +61,7 @@ class publicForm extends simplePlugin
             _('Text'), _('Text of the public form, shown before the form'),
             'fdPublicFormText', FALSE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Object type'), _('Type of objects you wish to create from this form'),
             'fdPublicFormTemplateType', TRUE,
             array(), 'USER', NULL
@@ -113,7 +113,7 @@ class publicForm extends simplePlugin
     $this->attributesAccess['fdPublicFormTemplateType']->setSubmitForm('typeChanged');
   }
 
-  function typeChanged()
+  function typeChanged ()
   {
     $templates = objects::getTemplates($this->fdPublicFormTemplateType);
     $this->attributesAccess['fdPublicFormTemplateDN']->setChoices(array_keys($templates), array_values($templates));

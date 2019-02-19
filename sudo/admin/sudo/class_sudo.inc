@@ -25,7 +25,7 @@
  */
 class sudo extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Sudo'),
@@ -56,68 +56,68 @@ class sudo extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array (
       'section1' => array (
         'name'  => _('Role settings'),
         'class' => array('fullwidth'),
         'attrs' => array(
-          new DefaultRoleAttribute (FALSE),
-          new BaseSelectorAttribute (get_ou('sudoRDN')),
-          new StringAttribute (
+          new DefaultRoleAttribute(FALSE),
+          new BaseSelectorAttribute(get_ou('sudoRDN')),
+          new StringAttribute(
             _('Name'), _('Name of the role'),
             'cn', TRUE,
             ''
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Description for the new sudo role'),
             'description', FALSE
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Commands'),
               _('A Unix command with optional command line arguments, potentially including globbing characters (aka wild cards)'),
               'sudoCommand', FALSE
             )
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Run as (user)'),
               _('User(s) impersonated by sudo'),
               'sudoRunAsUser', FALSE
             ),
             array('ALL')
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Run as (group)'),
               _('Group(s) impersonated by sudo'),
               'sudoRunAsGroup', FALSE
             ),
             array('ALL')
           ),
-          new SudoSystemsAttribute (
+          new SudoSystemsAttribute(
             _('Systems'), _('A host name, IP address or IP network'),
             'sudoHost', FALSE,
             array('ALL')
           ),
-          new SudoUsersGroupsAttribute (
+          new SudoUsersGroupsAttribute(
             _('Users and groups'),
             _("A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"),
             'sudoUser', FALSE
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Priority'), _('This rule priority compared to others'),
             'sudoOrder', FALSE,
             0, FALSE, 0
           ),
-          new GeneralizedTimeDateAttribute (
+          new GeneralizedTimeDateAttribute(
             _('Valid starting from'), _('Start of time interval for which the entry is valid (leave empty to disable)'),
             'sudoNotBefore', FALSE,
             ''
           ),
-          new GeneralizedTimeDateAttribute (
+          new GeneralizedTimeDateAttribute(
             _('Valid until'), _('End of time interval for which the entry is valid (leave empty to disable)'),
             'sudoNotAfter', FALSE,
             ''
@@ -154,12 +154,12 @@ class sudo extends simplePlugin
   }
 
 
-  public function set_default($state)
+  public function set_default ($state)
   {
     $this->attributesAccess['isDefaultRole']->setValue($state);
   }
 
-  public function is_default()
+  public function is_default ()
   {
     return preg_match("/^defaults$/i", $this->attributesAccess['cn']->getValue());
   }
@@ -173,7 +173,7 @@ class sudo extends simplePlugin
     }
   }
 
-  function foreignKeyUpdate($field, $oldvalue, $newvalue, array $source)
+  function foreignKeyUpdate (string $field, $oldvalue, $newvalue, array $source)
   {
     if (($field == 'sudoUser') && (($source['CLASS'] == 'posixGroup') || ($source['CLASS'] == 'mixedGroup'))) {
       return parent::foreignKeyUpdate($field, '%'.$oldvalue, '%'.$newvalue, $source);

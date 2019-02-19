@@ -135,7 +135,7 @@ class smbHash {
   /**
   * Fixes too large numbers
   */
-  private function x($i)
+  private function x ($i)
   {
     if ($i < 0) return 4294967296 - $i;
     else return $i;
@@ -146,7 +146,7 @@ class smbHash {
   * @param array $data
   * @return array
   */
-  private function lshift($count, $data)
+  private function lshift ($count, $data)
   {
     $ret = array();
     for ($i = 0; $i < sizeof($data); $i++) {
@@ -160,7 +160,7 @@ class smbHash {
   * @param array p permutation
   * @return array
   */
-  private function permute($in, $p, $n)
+  private function permute ($in, $p, $n)
   {
     $ret = array();
     for ($i = 0; $i < $n; $i++) {
@@ -174,7 +174,7 @@ class smbHash {
   * @param array $in2
   * @return array
   */
-  private function mxor($in1, $in2)
+  private function mxor ($in1, $in2)
   {
     $ret = array();
     for ($i = 0; $i < sizeof($in1); $i++) {
@@ -189,7 +189,7 @@ class smbHash {
   * @param boolean $forw
   * @return array
   */
-  function doHash($in, $key, $forw)
+  function doHash ($in, $key, $forw)
   {
     $ki = array();
 
@@ -265,7 +265,7 @@ class smbHash {
    * @param string $str
    * @return string key
    */
-  private function str_to_key($str)
+  private function str_to_key ($str)
   {
     $key[0] = $this->unsigned_shift_r($str[0], 1);
     $key[1] = (($str[0] & 0x01) << 6) | $this->unsigned_shift_r($str[1], 2);
@@ -289,7 +289,7 @@ class smbHash {
    * @param unknown_type $forw
    * @return unknown
    */
-  private function smb_hash($in, $key, $forw)
+  private function smb_hash ($in, $key, $forw)
   {
     $key2 = $this->str_to_key($key);
 
@@ -316,7 +316,7 @@ class smbHash {
    * @param unknown_type $in
    * @return unknown
    */
-  private function E_P16($in)
+  private function E_P16 ($in)
   {
     $p14 = array_values(unpack("C*", $in));
     $sp8 = array(0x4b, 0x47, 0x53, 0x21, 0x40, 0x23, 0x24, 0x25);
@@ -341,7 +341,7 @@ class smbHash {
   * @param string $password password
   * @return string hash value
   */
-  public function lmhash($password = "")
+  public function lmhash ($password = "")
   {
     $password = strtoupper($password);
     $password = substr($password, 0, 14);
@@ -359,7 +359,7 @@ class smbHash {
   * @param string $password password
   * @return string hash value
   */
-  public function nthash($password = "")
+  public function nthash ($password = "")
   {
     if (function_exists('mhash') && defined('MHASH_MD4')) {
       return strtoupper(bin2hex(mhash(MHASH_MD4, iconv('UTF-8', 'UTF-16LE', $password))));
@@ -375,7 +375,7 @@ class smbHash {
   *
   * PHP 4 only supports signed shifts by default.
   */
-  private function unsigned_shift_r($a, $b)
+  private function unsigned_shift_r ($a, $b)
   {
     $z = 0x80000000;
     if ($z & $a) {

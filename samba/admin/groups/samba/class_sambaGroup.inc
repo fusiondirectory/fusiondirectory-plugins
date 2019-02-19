@@ -22,7 +22,7 @@ class sambaGroup extends simplePlugin
 {
   var $displayHeader  = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Samba'),
@@ -37,7 +37,7 @@ class sambaGroup extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -125,7 +125,7 @@ class sambaGroup extends simplePlugin
     $this->attributesAccess['sambaSID']->attributes[1]->setInitialValue($this->getGID());
   }
 
-  function prepare_save()
+  function prepare_save (): array
   {
     global $config;
     $errors = parent::prepare_save();
@@ -158,7 +158,7 @@ class sambaGroup extends simplePlugin
   }
 
   /*! \brief Get a new SambaSID for a group */
-  function getSambaSID()
+  function getSambaSID ()
   {
     global $config;
     $ldap       = $config->get_ldap_link();
@@ -177,7 +177,7 @@ class sambaGroup extends simplePlugin
     return $sid;
   }
 
-  function resetCopyInfos()
+  function resetCopyInfos ()
   {
     parent::resetCopyInfos();
 
@@ -186,28 +186,28 @@ class sambaGroup extends simplePlugin
     $this->attributesAccess['sambaDomainName']->setInitialValue('');
   }
 
-  function getRidBase()
+  function getRidBase ()
   {
     global $config;
     return $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
   }
 
-  function getSID()
+  function getSID ()
   {
     return $this->attributesAccess['sambaSID']->attributes[0]->getValue();
   }
 
-  function setSID($value)
+  function setSID ($value)
   {
     $this->attributesAccess['sambaSID']->attributes[0]->setValue($value);
   }
 
-  function getGID()
+  function getGID ()
   {
     return $this->attributesAccess['sambaSID']->attributes[1]->getValue();
   }
 
-  function setGID($value)
+  function setGID ($value)
   {
     $this->attributesAccess['sambaSID']->attributes[1]->setValue($value);
   }

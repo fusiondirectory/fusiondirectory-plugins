@@ -32,11 +32,11 @@ class AvailableLogsAttribute extends Attribute
       // TRUE means up
       'sort_up'  => TRUE
     );
-    parent::__construct ('', $description, $ldapName, FALSE, $value, $acl);
+    parent::__construct('', $description, $ldapName, FALSE, $value, $acl);
     $this->setInLdap(FALSE);
   }
 
-  private function js_link($label, $vars)
+  private function js_link ($label, $vars)
   {
     $id   = $this->getHtmlId();
     $js = '';
@@ -142,7 +142,7 @@ class faiLogView extends simplePlugin
 
   var $displayHeader  = FALSE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('FAI Logs'),
@@ -154,7 +154,7 @@ class faiLogView extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'available' => array(
@@ -209,14 +209,14 @@ class faiLogView extends simplePlugin
     $this->ignore_account = FALSE;
   }
 
-  function is_this_account($attrs)
+  function is_this_account ($attrs)
   {
     /* Will not work when called from parent constructor (or when $attrs is not us) */
     return (count($this->attributesAccess['available_logs']->logs) > 0);
   }
 
 
-  function execute()
+  function execute (): string
   {
     if ($this->available_logs['file'] == '') {
       $this->attributesInfo['selected']['name'] = _('Selected file');
@@ -235,7 +235,7 @@ class faiLogView extends simplePlugin
   }
 
 
-  private function get_log($mac, $date, $file)
+  private function get_log ($mac, $date, $file)
   {
     $res = $this->o_queue->get_log_file($mac, $date, $file);
     if ($this->o_queue->is_error()) {

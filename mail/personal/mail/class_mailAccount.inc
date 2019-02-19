@@ -36,7 +36,7 @@ class MailQuotaAttribute extends IntAttribute
 {
   private $quotaUsage;
 
-  function setMailMethod($mailMethod)
+  function setMailMethod ($mailMethod)
   {
     /* Read quota */
     $this->value = $mailMethod->getQuota($this->value);
@@ -47,7 +47,7 @@ class MailQuotaAttribute extends IntAttribute
     }
   }
 
-  function renderAttribute(array &$attributes, $readOnly)
+  function renderAttribute (array &$attributes, $readOnly)
   {
     parent::renderAttribute($attributes, $readOnly);
     $attributes[$this->getLdapName().'_usage'] = array(
@@ -66,7 +66,7 @@ class mailAccount extends simplePlugin
 
   private $mainSectionAttrs = array();
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Mail'),
@@ -90,22 +90,22 @@ class mailAccount extends simplePlugin
   /*!
   *  \brief The main function : information about attributes
   */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array (
       'main' => array (
         'name'  => _('Mail account'),
         'attrs' => array (
-          new MailAttribute (
+          new MailAttribute(
             _('Primary address'), _('Primary mail address'),
             'mail', TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Server'), _('Specify the mail server where the user will be hosted on'),
             'gosaMailServer', FALSE,
             array()
           ),
-          new MailQuotaAttribute (
+          new MailQuotaAttribute(
             _('Quota size'), 'Define quota size in MB',
             'gosaMailQuota', FALSE,
             0, FALSE
@@ -115,13 +115,13 @@ class mailAccount extends simplePlugin
       'other_addresses' => array(
         'name'  => _('Other addresses and redirections'),
         'attrs' => array(
-          new SetAttribute (
-            new MailAttribute (
+          new SetAttribute(
+            new MailAttribute(
               _('Alternative addresses'), _('List of alternative mail addresses'),
               'gosaMailAlternateAddress'
             )
           ),
-          new MailsAttribute (
+          new MailsAttribute(
             _('Forward messages to'), _('Addresses to which messages should be forwarded'),
             'gosaMailForwardingAddress'
           )
@@ -130,23 +130,23 @@ class mailAccount extends simplePlugin
       'options1' => array(
         'name' => _('Vacation message'),
         'attrs' => array(
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Activate vacation message'),
             _('Select to automatically response with the vacation message defined below'),
             'flag_vacation', FALSE, FALSE, '',
             'V', ''
           ),
-          new DateAttribute (
+          new DateAttribute(
             _('from'), 'Starting date for vacation message',
             'gosaVacationStart', FALSE,
             'U'
           ),
-          new DateAttribute (
+          new DateAttribute(
             _('till'), 'Ending date for vacation message',
             'gosaVacationStop', FALSE,
             'U'
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Vacation message'), 'The message you wish be sent during your absence',
             'gosaVacationMessage'
           ),
@@ -155,18 +155,18 @@ class mailAccount extends simplePlugin
       'advanced' => array (
          'name' => _('Advanced mail options'),
          'attrs' => array (
-          new FlagsAttribute ('gosaMailDeliveryMode', array(
+          new FlagsAttribute('gosaMailDeliveryMode', array(
             'flag_ownmailbox',
             'flag_vacation',
             'flag_localonly'
           )),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('User is only allowed to send and receive local mails'),
             _('Select if user can only send and receive inside his own domain'),
             'flag_localonly', FALSE, FALSE, '',
             'L', ''
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('No delivery to own mailbox'),
             _('Select if you want to forward mails without getting own copies of them'),
             'flag_ownmailbox', FALSE, FALSE, '',
@@ -199,7 +199,7 @@ class mailAccount extends simplePlugin
   }
 
   /* We need $mailAccount->uid to return the uid for mailMethod */
-  public function __get($name)
+  public function __get ($name)
   {
     if (in_array($name, array('cn','uid')) && isset($this->parent)) {
       return $this->parent->getBaseObject()->$name;
@@ -211,7 +211,7 @@ class mailAccount extends simplePlugin
     }
   }
 
-  public function __isset($name)
+  public function __isset ($name)
   {
     if (in_array($name, array('cn','uid')) && isset($this->parent)) {
       return isset($this->parent->getBaseObject()->$name);
@@ -223,16 +223,16 @@ class mailAccount extends simplePlugin
     }
   }
 
-  function foreignKeyUpdate($field, $oldvalue, $newvalue, array $source)
+  function foreignKeyUpdate (string $field, $oldvalue, $newvalue, array $source)
   {
     if ($field == 'gosaMailServer') {
       mailMethod::resetMailServersCache();
       $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
     }
-    parent::foreignKeyUpdate ($field, $oldvalue, $newvalue, $source);
+    parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
   }
 
-  public function mailServerChanged()
+  public function mailServerChanged ()
   {
     /* Intialize the used mailMethod */
     if ($this->gosaMailServer == '') {
@@ -306,7 +306,7 @@ class mailAccount extends simplePlugin
     if ($this->mailMethod->vacationRangeEnabled()) {
       $this->attributesAccess['gosaVacationStop']->setDisabled(FALSE);
       $this->attributesAccess['gosaVacationStart']->setDisabled(FALSE);
-      $this->attributesAccess['flag_vacation']->setManagedAttributes (
+      $this->attributesAccess['flag_vacation']->setManagedAttributes(
         array (
           'erase' => array (
             FALSE => array (
@@ -322,7 +322,7 @@ class mailAccount extends simplePlugin
       $this->attributesAccess['gosaVacationStop']->setDisabled(TRUE);
       $this->attributesAccess['gosaVacationStop']->setVisible(FALSE);
       $this->attributesAccess['gosaVacationStop']->setValue('');
-      $this->attributesAccess['flag_vacation']->setManagedAttributes (
+      $this->attributesAccess['flag_vacation']->setManagedAttributes(
         array (
           'erase' => array (
             FALSE => array (
@@ -334,7 +334,7 @@ class mailAccount extends simplePlugin
     }
   }
 
-  function check ()
+  function check (): array
   {
     $messages = parent::check();
 
@@ -345,13 +345,13 @@ class mailAccount extends simplePlugin
     return $messages;
   }
 
-  protected function shouldSave()
+  protected function shouldSave (): bool
   {
     /* mail method might have something to save (like password change from main tab for instance) */
     return TRUE;
   }
 
-  public function ldap_save()
+  public function ldap_save (): array
   {
     if (!empty($this->attrs)) {
       $errors = parent::ldap_save();
@@ -379,7 +379,7 @@ class mailAccount extends simplePlugin
           /* Do not write sieve settings if this account is new and
              doesn't seem to exist. */
           if (!$this->initially_was_account && !$this->mailMethod->account_exists()) {
-            @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
+            @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
                 'Skipping sieve settings, the account doesn’t seem to be created already.', '');
           } else {
             if (!$this->mailMethod->saveSieveSettings()) {
@@ -388,7 +388,7 @@ class mailAccount extends simplePlugin
           }
         } else {
           if ($this->sieve_management) {
-            @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
+            @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
                 'User uses an own sieve script, skipping sieve update.', '');
             $this->sieve_management->save();
           }
@@ -407,7 +407,7 @@ class mailAccount extends simplePlugin
     return $errors;
   }
 
-  function post_remove()
+  function post_remove ()
   {
     /* Let the mailMethod remove this mailbox */
     if (!$this->is_template) {

@@ -23,7 +23,7 @@ class pureftpdAccount extends simplePlugin
 {
   var $displayHeader  = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Ftp'),
@@ -38,14 +38,14 @@ class pureftpdAccount extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
     // Attributes are grouped by section
       'section1' => array (
         'name'  => _('Bandwidth'),
         'attrs' => array (
-          new IntAttribute (
+          new IntAttribute(
             _('Upload bandwidth')._(' (kb/sec)'),
             _('Upload bandwidth'),
             'FTPUploadBandwidth',
@@ -54,7 +54,7 @@ class pureftpdAccount extends simplePlugin
             FALSE,
             ''
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Download bandwidth')._(' (kb/sec)'),
             _('Download bandwidth in kb/sec'),
             'FTPDownloadBandwidth',
@@ -68,7 +68,7 @@ class pureftpdAccount extends simplePlugin
       'section2' => array (
         'name'  => _('Ratio'),
         'attrs' => array(
-          new IntAttribute (
+          new IntAttribute(
             _('Uploaded files'),
             _('Uploaded files'),
             'FTPUploadRatio',
@@ -77,7 +77,7 @@ class pureftpdAccount extends simplePlugin
             FALSE,
             ''
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Downloaded files'),
             _('Downloaded files'),
             'FTPDownloadRatio',
@@ -91,7 +91,7 @@ class pureftpdAccount extends simplePlugin
       'section3' => array (
         'name' => ('Quota'),
         'attrs' => array (
-          new IntAttribute (
+          new IntAttribute(
             _('Files'),
             _('Quota files'),
             'FTPQuotaFiles',
@@ -100,7 +100,7 @@ class pureftpdAccount extends simplePlugin
             FALSE,
             ''
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Size')._(' (MB)'),
             _('Files size'),
             'FTPQuotaMBytes',
@@ -114,7 +114,7 @@ class pureftpdAccount extends simplePlugin
       'section4' => array (
         'name' => _('Miscellaneous'),
         'attrs' => array (
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Enable FTP access'), _('Enable or disable FTP access'),
             'FTPStatus', FALSE,
             TRUE

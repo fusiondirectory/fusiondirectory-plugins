@@ -22,7 +22,7 @@ class netgroupSystem extends netgroupMembership
 {
   protected static $id_attr = 'cn';
 
-  static function plInfo()
+  static function plInfo ()
   {
     return array(
       'plShortName'     => _('NIS Netgroup'),
@@ -33,12 +33,12 @@ class netgroupSystem extends netgroupMembership
     );
   }
 
-  protected function triple_mask()
+  protected function triple_mask ()
   {
     return "/^\(".$this->old_id.",\-?,\S*\)$/";
   }
 
-  protected function triple_data()
+  protected function triple_data ()
   {
     return '('.$this->id.',,)';
   }

@@ -25,7 +25,7 @@ class opsiLogView extends simplePlugin
 
   var $displayHeader  = FALSE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('OPSI Logs'),
@@ -37,7 +37,7 @@ class opsiLogView extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'logs' => array(
@@ -96,13 +96,13 @@ class opsiLogView extends simplePlugin
     $this->ignore_account = FALSE;
   }
 
-  function is_this_account($attrs)
+  function is_this_account ($attrs)
   {
     /* Will not work when called from parent constructor (or when $attrs is not us) */
     return (count($this->attributesAccess['available_logs']->getChoices()) > 1);
   }
 
-  function loadLog()
+  function loadLog ()
   {
     if ($this->is_template) {
       return;
@@ -117,12 +117,12 @@ class opsiLogView extends simplePlugin
     }
   }
 
-  function save()
+  function save (): array
   {
     return array();
   }
 
-  function remove($fulldelete = FALSE)
+  function remove (bool $fulldelete = FALSE): array
   {
     return array();
   }

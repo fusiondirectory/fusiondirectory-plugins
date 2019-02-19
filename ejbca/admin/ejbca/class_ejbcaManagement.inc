@@ -33,7 +33,7 @@ class ejbcaManagement extends management
     array('ActionsColumn',    array('label' => 'Actions')),
   );
 
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('EJBCA'),
@@ -46,7 +46,7 @@ class ejbcaManagement extends management
     );
   }
 
-  protected function configureActions()
+  protected function configureActions ()
   {
     parent::configureActions();
 
@@ -71,7 +71,7 @@ class ejbcaManagement extends management
     );
   }
 
-  function downloadEntry(array $action)
+  function downloadEntry (array $action)
   {
     $entry = $this->listing->getEntry($action['targets'][0]);
     session::set('binary', $entry['userCertificate;binary']);

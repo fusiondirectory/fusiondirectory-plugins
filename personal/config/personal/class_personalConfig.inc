@@ -20,7 +20,7 @@
 
 class personalConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Personal configuration'),
@@ -33,13 +33,13 @@ class personalConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Personal'),
         'attrs' => array(
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Allow use of private email for password recovery'), _('Allow users to use their private email address for password recovery'),
             'fdPrivateEmailPasswordRecovery', FALSE
           ),

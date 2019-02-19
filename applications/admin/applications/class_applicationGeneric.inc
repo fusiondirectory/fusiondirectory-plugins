@@ -21,7 +21,7 @@
 
 class application extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Application'),
@@ -37,26 +37,26 @@ class application extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Application'),
         'attrs' => array(
           new BaseSelectorAttribute(get_ou('applicationsRDN')),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Application name'), _('The name of this application'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('A short description of this application'),
             'description', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Execute'), _('The application to be executed'),
             'fdApplicationExecutePath', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Display name'), _('The displayed name for this application'),
             'fdApplicationTitle', FALSE
           ),
@@ -65,7 +65,7 @@ class application extends simplePlugin
       'icon' => array(
         'name'  => _('Icon'),
         'attrs' => array(
-          new ImageAttribute (
+          new ImageAttribute(
             '', _('The icon for this application'),
             'fdApplicationImage', FALSE,
             48, 48, 'png'
@@ -118,9 +118,9 @@ class application extends simplePlugin
     $filename = './plugins/applications/images/default_icon.png';
 
     if (file_exists($filename)) {
-      $fd = fopen ($filename, 'rb');
-      $this->attributesAccess['fdApplicationImage']->setDefaultValue(fread ($fd, filesize ($filename)));
-      fclose ($fd);
+      $fd = fopen($filename, 'rb');
+      $this->attributesAccess['fdApplicationImage']->setDefaultValue(fread($fd, filesize($filename)));
+      fclose($fd);
       if (empty($this->fdApplicationImage)) {
         $this->attributesAccess['fdApplicationImage']->resetToDefault();
       }

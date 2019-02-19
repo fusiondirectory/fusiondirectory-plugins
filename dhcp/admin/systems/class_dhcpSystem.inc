@@ -62,7 +62,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   {
   }
 
-  protected function getAttributeArrayValue($key, $value)
+  protected function getAttributeArrayValue ($key, $value)
   {
     return array_slice($value, 0, 3);
   }
@@ -92,7 +92,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     }
   }
 
-  function loadChoices()
+  function loadChoices ()
   {
     list($nodesChoices, $nodes) = dhcpSystem::getDhcpParentNodes();
     $macs   = $this->plugin->parent->getBaseObject()->macAddress;
@@ -107,7 +107,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     $this->setChoices($nodesChoices, $macs, $ips);
   }
 
-  function setChoices(array $parentNodes, array $macs, array $ips)
+  function setChoices (array $parentNodes, array $macs, array $ips)
   {
     $this->attribute->attributes[0]->setChoices(array_keys($parentNodes), array_values($parentNodes));
     if (is_object($this->plugin) && $this->plugin->is_template) {
@@ -128,7 +128,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     }
   }
 
-  function loadRecords()
+  function loadRecords ()
   {
     global $config;
 
@@ -246,7 +246,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     return $errors;
   }
 
-  function check ()
+  function check (): array
   {
     $error = parent::check();
     if (!empty($error)) {
@@ -283,7 +283,7 @@ class dhcpSystem extends simplePlugin
   protected $zonesCache;
   protected $loaded = FALSE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('DHCP'),
@@ -297,7 +297,7 @@ class dhcpSystem extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -319,7 +319,7 @@ class dhcpSystem extends simplePlugin
     $this->ignore_account = FALSE;
   }
 
-  function is_this_account($attrs)
+  function is_this_account ($attrs)
   {
     /* Will not work when call from constructor (or when $attrs is not us)
      * See DhcpHostsAttribute::setParent which sets is_account later
@@ -333,13 +333,13 @@ class dhcpSystem extends simplePlugin
     $this->attributesAccess['dhcpHosts']->setParent($this);
   }
 
-  function save_object()
+  function save_object ()
   {
     parent::save_object();
     $this->is_account = $this->is_this_account($this->attrs);
   }
 
-  static function getDhcpParentNodes()
+  static function getDhcpParentNodes ()
   {
     global $config;
     $ldap = $config->get_ldap_link();
@@ -365,7 +365,7 @@ class dhcpSystem extends simplePlugin
   }
 
   /* Returns error text if the IP is not in the given subnet LDAP node, or TRUE */
-  static function dhcpIsIpInSubnet($subnetAttrs, $ip)
+  static function dhcpIsIpInSubnet ($subnetAttrs, $ip)
   {
     if (isset($subnetAttrs['dhcpNetMask'][0])) {
       if (!tests::is_in_network($subnetAttrs['cn'][0], normalize_netmask($subnetAttrs['dhcpNetMask'][0]), $ip)) {
@@ -375,13 +375,13 @@ class dhcpSystem extends simplePlugin
     return TRUE;
   }
 
-  protected function shouldSave()
+  protected function shouldSave (): bool
   {
     /* We need ldap_save to always run */
     return TRUE;
   }
 
-  protected function ldap_save()
+  protected function ldap_save (): array
   {
     global $config;
 
@@ -404,7 +404,7 @@ class dhcpSystem extends simplePlugin
     );
   }
 
-  protected function ldap_remove()
+  protected function ldap_remove (): array
   {
     if ($this->is_template) {
       return parent::ldap_remove();
@@ -415,7 +415,7 @@ class dhcpSystem extends simplePlugin
     }
   }
 
-  function adapt_from_template($attrs, $skip = array())
+  function adapt_from_template (array $attrs, array $skip = array())
   {
     parent::adapt_from_template($attrs, $skip);
     $this->attributesAccess['dhcpHosts']->loadChoices();

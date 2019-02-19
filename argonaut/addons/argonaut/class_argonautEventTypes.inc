@@ -23,7 +23,7 @@ class argonautEventTypes
   /*! \brief  Returns a complete list of all available events.
     @return   Array   Containing info for all available events.
    */
-  static public function get_event_types()
+  static public function get_event_types ()
   {
     global $class_mapping;
     if (session::is_set('argonautEventTypes::get_event_types')) {
@@ -43,7 +43,7 @@ class argonautEventTypes
   /*! \brief  Returns event information, like menu strings, images ...
     @return   Array Event information.
    */
-  static public function get_event_info($action)
+  static public function get_event_info ($action)
   {
     $events = static::get_event_types();
     if (isset($events[$action])) {
@@ -60,7 +60,7 @@ class argonautEventTypes
 
 class argonautEventTypesSystem
 {
-  static public function get_event_types_list()
+  static public function get_event_types_list ()
   {
     return array(
       'System.halt' => array(
@@ -73,7 +73,7 @@ class argonautEventTypesSystem
 
 class argonautEventTypesDeployment
 {
-  static public function get_event_types_list()
+  static public function get_event_types_list ()
   {
     return array(
       'Deployment.reboot' => array(
@@ -98,7 +98,7 @@ class argonautEventTypesDeployment
 
 class argonautEventTypesLdap2zone
 {
-  static public function get_event_types_list()
+  static public function get_event_types_list ()
   {
     return array(
       'Ldap2Zone.slaves' => array(

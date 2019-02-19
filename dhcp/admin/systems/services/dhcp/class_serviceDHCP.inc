@@ -20,7 +20,7 @@
 
 class serviceDHCP extends simpleService
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('DHCP service'),
@@ -35,7 +35,7 @@ class serviceDHCP extends simpleService
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -43,7 +43,7 @@ class serviceDHCP extends simpleService
         'class' => array('fullwidth'),
         'attrs' => array(
           new SetAttribute(
-            new SelectAttribute (
+            new SelectAttribute(
               '', _('The DN of dhcpService object(s) which contain the configuration information'),
               'dhcpServiceDN'
             )

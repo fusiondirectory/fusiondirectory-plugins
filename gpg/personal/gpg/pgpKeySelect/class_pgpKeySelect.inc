@@ -28,7 +28,7 @@ class pgpKeySelect extends simpleSelectManagement
   protected $baseMode               = FALSE;
   protected $multiSelect            = TRUE;
 
-  function __construct()
+  function __construct ()
   {
     $this->listXMLPath = get_template_path('pgpKeySelect-list.xml', TRUE, dirname(__FILE__));
 
@@ -72,7 +72,7 @@ class pgpKeySelect extends simpleSelectManagement
     $this->filter->elements['NAME']['autocomplete']['attribute']  = $attributes;
   }
 
-  static function filterSingleValue(array $value, $func)
+  static function filterSingleValue (array $value, $func)
   {
     if (count($value) == 0) {
       return '&nbsp;';
@@ -81,17 +81,17 @@ class pgpKeySelect extends simpleSelectManagement
     return ($return === '' ? '&nbsp;' : $return);
   }
 
-  static function filterPgpDate($value = array())
+  static function filterPgpDate ($value = array())
   {
     return static::filterSingleValue($value, 'pgpDate');
   }
 
-  static function filterPgpSize($value = array())
+  static function filterPgpSize ($value = array())
   {
     return static::filterSingleValue($value, 'pgpSize');
   }
 
-  static function filterPgpRevoked($value = array())
+  static function filterPgpRevoked ($value = array())
   {
     if (empty($value)) {
       return 'No';
@@ -99,7 +99,7 @@ class pgpKeySelect extends simpleSelectManagement
     return static::pgpRevoked($value[0]);
   }
 
-  static function pgpDate($date)
+  static function pgpDate ($date)
   {
     if (empty($date)) {
       return $date;
@@ -107,13 +107,13 @@ class pgpKeySelect extends simpleSelectManagement
     return DateTime::createFromFormat('Ymd', substr($date, 0, 8))->format('d.m.Y');
   }
 
-  static function pgpSize($size)
+  static function pgpSize ($size)
   {
     // Remove useless 0 at the beginning
     return strval(intval($size));
   }
 
-  static function pgpRevoked($value)
+  static function pgpRevoked ($value)
   {
     // Remove useless 0 at the beginning
     return ($value == 0 ? 'No' : 'Yes');
@@ -133,7 +133,7 @@ class PgpKeyAttribute extends GenericDialogAttribute
 
   function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = array(), $acl = '')
   {
-    parent::__construct ($label, $description, $ldapName, $required, $defaultValue, 'dn', NULL, $acl);
+    parent::__construct($label, $description, $ldapName, $required, $defaultValue, 'dn', NULL, $acl);
     $this->displayed_values = array(
       'pgpKeyID'          => _('Key ID'),
       'pgpUserID'         => _('User ID'),
@@ -232,7 +232,7 @@ class PgpKeyAttribute extends GenericDialogAttribute
     return '{$div_'.$id.'}'."\n";
   }
 
-  public function htmlIds()
+  public function htmlIds ()
   {
     $id = $this->getHtmlId();
     $ids = array('add'.$id.'_dialog');

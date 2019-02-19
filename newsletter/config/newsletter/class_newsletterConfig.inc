@@ -20,7 +20,7 @@
 
 class newsletterConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Newsletter configuration'),
@@ -33,14 +33,14 @@ class newsletterConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Newsletter'),
         'attrs' => array(
           new SetAttribute(
-            new StringAttribute (
+            new StringAttribute(
               _('Newsletter choices'), _('Newsletters the user can choose from'),
               'fdNewsletterChoices', FALSE
             ),

@@ -21,7 +21,7 @@
 
 class serviceCyrus extends simpleMailMethodService
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Cyrus (IMAP/POP3)'),
@@ -36,13 +36,13 @@ class serviceCyrus extends simpleMailMethodService
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array (
       'cyrus' => array (
         'name'  => _('Cyrus settings'),
         'attrs' => array (
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('Connect URL for Cyrus server'),
             'fdCyrusConnect',
             array(
@@ -70,11 +70,11 @@ class serviceCyrus extends simpleMailMethodService
             '/^{(.*):(\\d+)\\/([^\\/]+)(.*)}$/',
             '{%s:%d/%s%s}'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Admin user'), _('Imap server admin user'),
             'fdCyrusAdmin', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Password'), _('Admin user password'),
             'fdCyrusPassword', TRUE
           ),
@@ -83,7 +83,7 @@ class serviceCyrus extends simpleMailMethodService
       'sieve' => array (
         'name'  => _('Sieve settings'),
         'attrs' => array (
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('Sieve connect URL for Cyrus server'),
             'fdCyrusSieveServer',
             array(
@@ -110,4 +110,3 @@ class serviceCyrus extends simpleMailMethodService
     );
   }
 }
-?>

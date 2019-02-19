@@ -20,7 +20,7 @@
 
 class etablissement extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Establishment'),
@@ -41,7 +41,7 @@ class etablissement extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -137,7 +137,7 @@ class etablissement extends simplePlugin
     $this->set_root = (($root_code !== FALSE) && ($root_code == $this->supannEtablissement));
   }
 
-  protected function ldap_remove()
+  protected function ldap_remove (): array
   {
     global $config;
     $errors = parent::ldap_remove();
@@ -158,7 +158,7 @@ class etablissement extends simplePlugin
     return array();
   }
 
-  function ldap_save()
+  function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();
@@ -210,7 +210,7 @@ class etablissement extends simplePlugin
     return $errors;
   }
 
-  function get_root_code()
+  function get_root_code ()
   {
     global $config;
     $ldap = $config->get_ldap_link();

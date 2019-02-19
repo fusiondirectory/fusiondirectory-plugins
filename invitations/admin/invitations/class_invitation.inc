@@ -20,7 +20,7 @@
 
 class invitation extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Invitation'),
@@ -39,7 +39,7 @@ class invitation extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     global $ui, $config;
     return array(
@@ -109,7 +109,7 @@ class invitation extends simplePlugin
     }
   }
 
-  function check()
+  function check (): array
   {
     $messages = parent::check();
 
@@ -123,12 +123,12 @@ class invitation extends simplePlugin
     return $messages;
   }
 
-  protected function shouldSave()
+  protected function shouldSave (): bool
   {
     return (parent::shouldSave() || !empty($this->emails));
   }
 
-  protected function ldap_save ()
+  protected function ldap_save (): array
   {
     global $ui, $config;
 

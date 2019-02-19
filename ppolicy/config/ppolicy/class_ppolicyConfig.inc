@@ -21,7 +21,7 @@
 
 class ppolicyConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Ppolicy plugin configuration'),
@@ -34,18 +34,18 @@ class ppolicyConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Ppolicy plugin'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Ppolicy RDN'), _('Branch in which ppolicies will be stored'),
             'fdPpolicyRDN', TRUE,
             'ou=ppolicies'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Default ppolicy cn'), _('What you put as default ppolicy in the overlay config'),
             'fdPpolicyDefaultCn', FALSE,
             'default'

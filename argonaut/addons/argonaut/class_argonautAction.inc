@@ -24,13 +24,13 @@ class MacsAttribute extends GenericDialogAttribute
 
   function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = array(), $display_attr = 'cn', $acl = '')
   {
-    parent::__construct ($label, $description, $ldapName, $required, $defaultValue, 'macAddress', $display_attr, $acl);
+    parent::__construct($label, $description, $ldapName, $required, $defaultValue, 'macAddress', $display_attr, $acl);
   }
 }
 
 class argonautAction extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Argonaut task'),
@@ -45,7 +45,7 @@ class argonautAction extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     $events = argonautEventTypes::get_event_types();
     return array(
@@ -111,7 +111,7 @@ class argonautAction extends simplePlugin
     );
   }
 
-  public function __construct($action, array $targets, $scheduled)
+  public function __construct ($action, array $targets, $scheduled)
   {
     global $config;
     parent::__construct($config->current['BASE']);
@@ -143,7 +143,7 @@ class argonautAction extends simplePlugin
     $this->scheduled  = $scheduled;
   }
 
-  protected function loadAttributes()
+  protected function loadAttributes ()
   {
     foreach ($this->attributesAccess as &$attribute) {
       $attribute->setInLdap(FALSE);
@@ -152,7 +152,7 @@ class argonautAction extends simplePlugin
     parent::loadAttributes();
   }
 
-  function execute()
+  function execute (): string
   {
     return parent::execute().$this->getFooter();
   }
@@ -160,7 +160,7 @@ class argonautAction extends simplePlugin
   /*! \brief  Returns the plugin footer (save cancel), displayed in the template.
     @return String  HTML footer part.
    */
-  protected function getFooter()
+  protected function getFooter ()
   {
     if (!$this->displayPlugin) {
       return '';
@@ -175,7 +175,7 @@ class argonautAction extends simplePlugin
     That should be written.
     @return Array e.g. 'status' => 'bla blub'
    */
-  public function computeData()
+  public function computeData ()
   {
     timezone::get_default_timezone();
     $ret = array('args' => array());

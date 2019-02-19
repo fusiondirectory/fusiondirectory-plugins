@@ -20,7 +20,7 @@
 
 class faiScript extends faiSimplePluginClass
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Script'),
@@ -40,17 +40,17 @@ class faiScript extends faiSimplePluginClass
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Class name'), _('Variables class name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
@@ -60,24 +60,24 @@ class faiScript extends faiSimplePluginClass
         'name'  => _('Scripts'),
         'class' => array('fullwidth'),
         'attrs' => array(
-          new SubNodesAttribute (
+          new SubNodesAttribute(
             '', _('Variables in this class'),
             'scripts', array('FAIscriptEntry','FAIclass','top'),
             array(
-              new StringAttribute (
+              new StringAttribute(
                 _('Name'), _('The name of the variable'),
                 'cn', TRUE
               ),
-              new StringAttribute (
+              new StringAttribute(
                 _('Description'), _('A short description of the variable'),
                 'description', FALSE
               ),
-              new IntAttribute (
+              new IntAttribute(
                 _('Priority'), _('Priority of this script (smaller is done first)'),
                 'FAIpriority', TRUE,
                 0, 99, 1
               ),
-              new FileTextAreaAttribute (
+              new FileTextAreaAttribute(
                 _('Script'), _('The script itself'),
                 'FAIscript', TRUE,
                 '.sh'
@@ -100,13 +100,13 @@ class faiScript extends faiSimplePluginClass
     $this->attributesAccess['scripts']->setLinearRendering(FALSE);
   }
 
-  protected function shouldSave()
+  protected function shouldSave (): bool
   {
     /* We need ldap_save to always run */
     return TRUE;
   }
 
-  function ldap_save ()
+  function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();

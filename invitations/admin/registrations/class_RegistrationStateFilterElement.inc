@@ -25,7 +25,7 @@ class RegistrationStateFilterElement extends FilterElement
 {
   protected $states;
 
-  public function __construct(managementFilter $parent)
+  public function __construct (managementFilter $parent)
   {
     global $config;
 
@@ -44,7 +44,7 @@ class RegistrationStateFilterElement extends FilterElement
     $this->states['filled']['checked'] = TRUE;
   }
 
-  public function update()
+  public function update ()
   {
     foreach ($this->states as $key => &$infos) {
       $infos['checked'] = isset($_POST['filter_state_'.$key]);
@@ -52,7 +52,7 @@ class RegistrationStateFilterElement extends FilterElement
     unset($infos);
   }
 
-  public function render()
+  public function render ()
   {
     $inputs = array();
     foreach ($this->states as $key => $infos) {
@@ -69,7 +69,7 @@ class RegistrationStateFilterElement extends FilterElement
     return $smarty->fetch(get_template_path('management/filter-element.tpl'));
   }
 
-  public function getFilters($type, array &$filters)
+  public function getFilters ($type, array &$filters)
   {
     if (strtoupper($type) == 'REGISTRATION') {
       $stateFilters = array();

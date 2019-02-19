@@ -20,7 +20,7 @@
 
 class nagiosConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Nagios configuration'),
@@ -33,13 +33,13 @@ class nagiosConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Nagios'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Lconf prefix'), _('Prefix used for lconf LDAP fields'),
             'fdLconfPrefix', TRUE,
             'lconf'

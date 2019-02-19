@@ -22,7 +22,7 @@ class argonautMirrorConfig extends simpleService
 {
   protected static $showActions = FALSE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Argonaut Mirror settings'),
@@ -34,13 +34,13 @@ class argonautMirrorConfig extends simpleService
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array (
     'section1' => array (
         'name'  => _('Argonaut mirror settings'),
         'attrs' => array (
-          new StringAttribute (
+          new StringAttribute(
             _('Local Debian mirror directory'),
             '',
             'argonautMirrorDir', FALSE,
@@ -51,7 +51,7 @@ class argonautMirrorConfig extends simpleService
       'section2' => array (
         'name' => _('Argonaut Debconf Crawler configuration'),
         'attrs' => array (
-          new StringAttribute (
+          new StringAttribute(
             _('Local packages folder'),
             _('Folder in which the crawler will store packages during analysis'),
             'argonautCrawlerPackagesFolder', FALSE,
@@ -62,39 +62,39 @@ class argonautMirrorConfig extends simpleService
       'section3' => array (
         'name' => _('Argonaut Repository configuration'),
         'attrs' => array (
-          new StringAttribute (
+          new StringAttribute(
             _('Proxy'),
             _('Specifies the http proxy (like Squid) to use for http and hftp method'),
             'argonautLdap2repProxy', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Log directory'), _('Directory in which logs should be stored'),
             'argonautLdap2repLogDir', FALSE,
             '/var/log/argonaut/'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Ignore errors'),
             _('Causes debmirror to ignore missing or broken deb and source files but still be pedantic about checking meta files'),
             'argonautLdap2repErrors', FALSE,
             FALSE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Source'), _('Include source in the mirror'),
             'argonautLdap2repSource', FALSE,
             TRUE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('GPG Check'), _('Fail if the Release.gpg file is missing'),
             'argonautLdap2repGPGCheck', FALSE,
             TRUE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Contents'),
             _('Additionally download Contents.<arch>.gz files (Note that these files can be relatively big and can change frequently)'),
             'argonautLdap2repContents', FALSE,
             FALSE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Verbose'), _('Wether to activate verbose mode'),
             'argonautLdap2repVerbose', FALSE,
             FALSE

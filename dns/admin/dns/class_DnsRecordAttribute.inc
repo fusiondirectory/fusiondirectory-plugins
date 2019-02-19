@@ -26,10 +26,10 @@ class LocRecordAttribute extends CompositeAttribute
                   '(?P<long>[[:digit:] \.]+ [EW])\s+'.
                   '(?P<alt>[[:digit:]\.]+)m?'.
                   '(\s+(?P<size>[[:digit:]\.]+)m?(\s+(?P<hp>[[:digit:]\.]+)m?(\s+(?P<vp>[[:digit:]\.]+)m?)?)?)?$/';
-    parent::__construct ($description, $ldapName, $attributes, $readFormat, FALSE, $acl, $label);
+    parent::__construct($description, $ldapName, $attributes, $readFormat, FALSE, $acl, $label);
   }
 
-  function writeValues(array $values)
+  function writeValues (array $values)
   {
     /* '%s %s %.2fm[ %.2fm[ %.2fm[ %.2fm]]]' */
     $str = sprintf('%s %s %.2fm', $values['lat'], $values['long'], $values['alt']);
@@ -54,11 +54,11 @@ class LocRecordLatLongAttribute extends CompositeAttribute
                   '(\s+(?P<minutes>[[:digit:]]+)(\s+(?P<seconds>[[:digit:]\.]+))?)?'.
                   '\s+(?P<dir>[NSEW])$/';
     $attributes['seconds']->setStep(.001);
-    parent::__construct ($description, $ldapName, $attributes, $readFormat, FALSE, $acl, $label);
+    parent::__construct($description, $ldapName, $attributes, $readFormat, FALSE, $acl, $label);
     $this->setLinearRendering(TRUE);
   }
 
-  function writeValues(array $values)
+  function writeValues (array $values)
   {
     /* The format is: d1 [m1 [s1]] {"N"|"S"|"E"|"W"} */
     $str = $values['degrees'];
@@ -111,7 +111,7 @@ class DnsRecordAttribute extends CompositeAttribute
     'aRecord', 'aAAARecord'
   );
 
-  function __construct($label, $description, $ldapName, $required)
+  function __construct ($label, $description, $ldapName, $required)
   {
     $attributes = array(
       new SelectAttribute(_('Type'), '', $ldapName.'_type', $required, array_keys(static::$types), '', array_values(static::$types)),
@@ -128,7 +128,7 @@ class DnsRecordAttribute extends CompositeAttribute
     $this->setRequired($required);
   }
 
-  function setParentIPs($ipv4, $ipv6, $fqdn)
+  function setParentIPs ($ipv4, $ipv6, $fqdn)
   {
     $this->parentIPs4   = $ipv4;
     $this->parentIPs4[] = '';
@@ -147,7 +147,7 @@ class DnsRecordAttribute extends CompositeAttribute
     }
   }
 
-  private function loadLocRecordFields($ldapName)
+  private function loadLocRecordFields ($ldapName)
   {
     $this->attributes[1] = new LocRecordAttribute(
       _('LOC Record'),
@@ -231,7 +231,7 @@ class DnsRecordAttribute extends CompositeAttribute
     );
   }
 
-  private function loadNaptrRecordFields($ldapName)
+  private function loadNaptrRecordFields ($ldapName)
   {
     $this->attributes[1] = new CharSeparatedCompositeAttribute(
       _('NAPTR Record'),
@@ -268,7 +268,7 @@ class DnsRecordAttribute extends CompositeAttribute
     );
   }
 
-  private function loadSrvRecordFields($ldapName)
+  private function loadSrvRecordFields ($ldapName)
   {
     $this->attributes[1] = new CharSeparatedCompositeAttribute(
       _('SRV Record'),
@@ -298,7 +298,7 @@ class DnsRecordAttribute extends CompositeAttribute
     );
   }
 
-  protected function updateFields()
+  protected function updateFields ()
   {
     $type = $this->attributes[0]->getValue();
     $ldapName = $this->getLdapName().'_'.$type.'_content';
@@ -378,7 +378,7 @@ class DnsRecordAttribute extends CompositeAttribute
     $this->setAttributes($this->attributes);
   }
 
-  function applyPostValue()
+  function applyPostValue ()
   {
     parent::applyPostValue();
     $this->updateFields();
@@ -420,7 +420,7 @@ class DnsRecordAttribute extends CompositeAttribute
     }
   }
 
-  static function getReverseZoneInfo($ipv6, $ip, $reverse)
+  static function getReverseZoneInfo ($ipv6, $ip, $reverse)
   {
     $mask = preg_replace('/\.(in-addr|ip6)\.arpa\.?$/i', '', $reverse);
     if (preg_match('/^([[:digit:]]+[-\/][[:digit:]]+).([\.[:digit:]]+)$/', $mask, $m)) {
@@ -436,7 +436,7 @@ class DnsRecordAttribute extends CompositeAttribute
     return array($mask, $reversedIp);
   }
 
-  static function matchReverseZone($type, $ip, $reverse)
+  static function matchReverseZone ($type, $ip, $reverse)
   {
     list($mask, $testString) = static::getReverseZoneInfo(($type == 'aAAARecord'), $ip, $reverse);
 

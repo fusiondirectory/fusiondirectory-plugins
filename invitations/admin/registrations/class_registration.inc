@@ -20,7 +20,7 @@
 
 class RegistrationLastChangeAttribute extends DisplayLDAPAttribute
 {
-  static function renderValue($value)
+  static function renderValue ($value)
   {
     if (empty($value)) {
       return $value;
@@ -55,7 +55,7 @@ class RegistrationLastChangeAttribute extends DisplayLDAPAttribute
 
 class RegistrationStateAttribute extends DisplayLDAPAttribute
 {
-  static function getStates()
+  static function getStates ()
   {
     return array(
       'sent'      => array(_('Sent'),     'geticon.php?context=actions&icon=up&size=16'),
@@ -65,7 +65,7 @@ class RegistrationStateAttribute extends DisplayLDAPAttribute
     );
   }
 
-  static function renderValue($value)
+  static function renderValue ($value)
   {
     $values = static::getStates();
     if (isset($values[$value])) {
@@ -88,7 +88,7 @@ class RegistrationStateAttribute extends DisplayLDAPAttribute
 
 class registration extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Registration'),
@@ -109,7 +109,7 @@ class registration extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(

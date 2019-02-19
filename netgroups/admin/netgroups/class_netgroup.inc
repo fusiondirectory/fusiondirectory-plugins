@@ -42,7 +42,7 @@ class CnNetgroupsAttribute extends DialogAttribute
 
 class netgroup extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Netgroup'),
@@ -59,7 +59,7 @@ class netgroup extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -138,7 +138,7 @@ class netgroup extends simplePlugin
     $this->memberSystems  = $cns;
   }
 
-  function prepare_save ()
+  function prepare_save (): array
   {
     $memberUsers    = $this->attributesAccess['memberUsers']->getDisplayValues();
     $memberSystems  = $this->memberSystems;

@@ -22,7 +22,7 @@
 
 class ldapManagerTabs extends simpleTabs_noSpecial
 {
-  static function plInfo()
+  static function plInfo ()
   {
     return array(
       'plShortName'   => _('LDAP import/export'),
@@ -34,11 +34,11 @@ class ldapManagerTabs extends simpleTabs_noSpecial
     );
   }
 
-  function save()
+  function save ()
   {
   }
 
-  static function mainInc()
+  static function mainInc ()
   {
     simplePlugin::mainInc(get_called_class(), 'new', TRUE, FALSE, 'ldapmanager');
   }

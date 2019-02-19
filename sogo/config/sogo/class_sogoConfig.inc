@@ -20,7 +20,7 @@
 
 class sogoConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('SOGo configuration'),
@@ -33,13 +33,13 @@ class sogoConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('SOGo'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('SOGo RDN'), _('Branch in which SOGo objects will be stored'),
             'fdSogoRDN', TRUE,
             'ou=resources'

@@ -22,7 +22,7 @@ class applicationRights extends simplePlugin
 {
   var $displayHeader = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Applications'),
@@ -38,14 +38,14 @@ class applicationRights extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Application list'),
         'attrs' => array(
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Applications'), _('The applications users with this role are allowed to launch'),
               'fdApplicationAllowed', TRUE
             )

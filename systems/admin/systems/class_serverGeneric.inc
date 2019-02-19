@@ -20,7 +20,7 @@
 
 class serverGeneric extends workstationGeneric
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Server'),
@@ -42,7 +42,7 @@ class serverGeneric extends workstationGeneric
     );
   }
 
-  static function getAttributesInfo ($word = NULL, $rdn = NULL)
+  static function getAttributesInfo ($word = NULL, $rdn = NULL): array
   {
     if ($word === NULL) {
       $word = _('server');

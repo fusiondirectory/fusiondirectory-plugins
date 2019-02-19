@@ -104,7 +104,7 @@ class jsonRPCClient {
    *
    * \param boolean $debug false
    */
-  public function __construct($url, $http_options = array(), $ssl_options = array(), $debug = FALSE)
+  public function __construct ($url, $http_options = array(), $ssl_options = array(), $debug = FALSE)
   {
     // server URL
     $this->url = $url;
@@ -129,7 +129,7 @@ class jsonRPCClient {
    *
    * \param boolean $notification
    */
-  public function setRPCNotification($notification)
+  public function setRPCNotification ($notification)
   {
     empty($notification) ?
               $this->notification = FALSE
@@ -146,7 +146,7 @@ class jsonRPCClient {
    *
    * \return array
    */
-  public function __call($method, $params)
+  public function __call ($method, $params)
   {
     $debug = "";
 

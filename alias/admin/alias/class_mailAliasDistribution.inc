@@ -20,7 +20,7 @@
 
 class mailAliasDistribution extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Temporary mail distribution'),
@@ -38,29 +38,29 @@ class mailAliasDistribution extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Mail distribution'),
         'attrs' => array(
-          new BaseSelectorAttribute (get_ou('aliasRDN')),
-          new HostNameAttribute (_('Name'), _('Name to identify this alias'), 'cn', TRUE),
-          new TextAreaAttribute (
+          new BaseSelectorAttribute(get_ou('aliasRDN')),
+          new HostNameAttribute(_('Name'), _('Name to identify this alias'), 'cn', TRUE),
+          new TextAreaAttribute(
             _('Description'), _('Description of this alias'),
             'description', FALSE
           ),
-          new MailAttribute (
+          new MailAttribute(
             _('Email address'), _('Email address'),
             'mail', TRUE
           ),
           new SetAttribute(
-            new MailAttribute (
+            new MailAttribute(
               _('Email aliases'), _('Aliases for this email address'),
               'gosaMailAlternateAddress', TRUE
             )
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Mail server'), _('Mail server for this alias'),
             'gosaMailServer', FALSE,
             array_keys(mailMethod::getMailServers())

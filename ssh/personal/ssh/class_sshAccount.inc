@@ -52,7 +52,7 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
     return parent::getArrayValue();
   }
 
-  function readFile($handle)
+  function readFile ($handle)
   {
     $line = fgets($handle);
     if (preg_match($this->format, $line)) {
@@ -63,7 +63,7 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
     @fclose($handle);
   }
 
-  function fingerprint($data)
+  function fingerprint ($data)
   {
     $result = md5($data);
     $result = preg_replace('/(..)/', '\1:', $result);
@@ -75,7 +75,7 @@ class sshAccount extends simplePlugin
 {
   var $displayHeader = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('SSH'),
@@ -93,7 +93,7 @@ class sshAccount extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -117,7 +117,7 @@ class sshAccount extends simplePlugin
     );
   }
 
-  function check()
+  function check (): array
   {
     $message = parent::check();
 

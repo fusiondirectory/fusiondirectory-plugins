@@ -22,7 +22,7 @@ class faiListing extends listing
 {
   private $builded = FALSE;
 
-  function __construct($data)
+  function __construct ($data)
   {
     parent::__construct($data);
     // Instanciate base selector
@@ -32,7 +32,7 @@ class faiListing extends listing
   /*!
    * \brief Refresh the bases list
    */
-  function refreshBasesList()
+  function refreshBasesList ()
   {
     if (!$this->builded) {
       return;
@@ -53,7 +53,7 @@ class faiBaseSelector extends baseSelector
 {
   protected $select;
 
-  function __construct($bases, $base = '')
+  function __construct ($bases, $base = '')
   {
     parent::__construct($bases, $base);
     $this->select = new SelectAttribute(
@@ -64,7 +64,7 @@ class faiBaseSelector extends baseSelector
     $this->select->setSubmitForm(TRUE);
   }
 
-  function setBases($bases)
+  function setBases ($bases)
   {
     $this->pathMapping = $bases;
 
@@ -73,7 +73,7 @@ class faiBaseSelector extends baseSelector
     }
   }
 
-  function update($force = FALSE)
+  function update ($force = FALSE)
   {
     if (!is_object($this->select)) {
       return TRUE;
@@ -111,7 +111,7 @@ class faiManagement extends simpleManagement
 
   protected $headpageClass = 'faiListing';
 
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('FAI'),
@@ -127,7 +127,7 @@ class faiManagement extends simpleManagement
     );
   }
 
-  function execute ()
+  function execute (): string
   {
     if (empty($this->headpage->bases)) {
       return $this->getHeader().
@@ -147,7 +147,7 @@ class faiManagement extends simpleManagement
 
   /*! \brief   Returns a list of all releases for useable for drop down boxes.
    */
-  static function getReleaseList()
+  static function getReleaseList ()
   {
     global $config;
     $ldap = $config->get_ldap_link();

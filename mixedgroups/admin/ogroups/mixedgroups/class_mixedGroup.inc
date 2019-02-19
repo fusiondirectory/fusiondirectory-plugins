@@ -22,7 +22,7 @@ class mixedGroup extends simplePlugin
 {
   protected $locks    = array();
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Posix group'),
@@ -35,7 +35,7 @@ class mixedGroup extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -108,7 +108,7 @@ class mixedGroup extends simplePlugin
     );
   }
 
-  function check()
+  function check (): array
   {
     global $config;
     $message = parent::check();
@@ -123,7 +123,7 @@ class mixedGroup extends simplePlugin
     return $message;
   }
 
-  function resetCopyInfos()
+  function resetCopyInfos ()
   {
     parent::resetCopyInfos();
 
@@ -132,7 +132,7 @@ class mixedGroup extends simplePlugin
     $this->gidNumber = "";
   }
 
-  function prepare_save()
+  function prepare_save (): array
   {
     global $config;
     $ldap = $config->get_ldap_link();
@@ -174,7 +174,7 @@ class mixedGroup extends simplePlugin
     return $errors;
   }
 
-  function save()
+  function save (): array
   {
     $errors = parent::save();
 
@@ -186,12 +186,12 @@ class mixedGroup extends simplePlugin
     return $errors;
   }
 
-  function addUser($dn, $uid)
+  function addUser ($dn, $uid)
   {
     $this->attributesAccess['memberUid']->addValue($dn, array('uid' => array($uid), 'cn' => array($uid)));
   }
 
-  function removeUser($uid)
+  function removeUser ($uid)
   {
     $this->attributesAccess['memberUid']->searchAndRemove($uid);
   }

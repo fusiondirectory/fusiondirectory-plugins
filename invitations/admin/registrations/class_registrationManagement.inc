@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018 FusionDirectory
+
+  Copyright (C) 2017-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,7 +24,7 @@
  */
 class RegistrationColumn extends LinkColumn
 {
-  function renderCell(ListingEntry $entry)
+  function renderCell (ListingEntry $entry): string
   {
     $value = $this->getAttributeValue($entry);
     if ($value == '') {
@@ -75,7 +76,7 @@ class registrationManagement extends management
     'fdRegistrationState'         => '1',
   );
 
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Registrations'),
@@ -89,14 +90,14 @@ class registrationManagement extends management
     );
   }
 
-  function __construct()
+  function __construct ()
   {
     parent::__construct();
 
     $this->filter->addElement(new RegistrationStateFilterElement($this->filter));
   }
 
-  protected function configureActions()
+  protected function configureActions ()
   {
     parent::configureActions();
 
@@ -121,10 +122,10 @@ class registrationManagement extends management
 
   /* !\brief Accept registration
    */
-  function acceptRegistration(array $action)
+  function acceptRegistration (array $action)
   {
     global $config, $ui;
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $action, 'Accept');
+    @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $action, 'Accept');
 
     foreach ($action['targets'] as $dn) {
       // Lock registration object
@@ -136,7 +137,7 @@ class registrationManagement extends management
         );
         continue;
       }
-      add_lock ($dn, $ui->dn);
+      add_lock($dn, $ui->dn);
 
       $entry = $this->listing->getEntry($dn);
 
@@ -160,7 +161,7 @@ class registrationManagement extends management
         del_lock($dn);
         continue;
       }
-      add_lock ($entry['fdRegistrationUserDN'], $ui->dn);
+      add_lock($entry['fdRegistrationUserDN'], $ui->dn);
 
       // TODO Détermine la date de peremption
       // Open the user
@@ -225,10 +226,10 @@ class registrationManagement extends management
 
   /* !\brief Reject registration
    */
-  function rejectRegistration(array $action)
+  function rejectRegistration (array $action)
   {
     global $config, $ui;
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $action, 'Reject');
+    @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $action, 'Reject');
 
     foreach ($action['targets'] as $dn) {
       if ($user = get_lock($dn)) {
@@ -239,7 +240,7 @@ class registrationManagement extends management
         );
         continue;
       }
-      add_lock ($dn, $ui->dn);
+      add_lock($dn, $ui->dn);
 
       $entry = $this->listing->getEntry($dn);
 
@@ -263,7 +264,7 @@ class registrationManagement extends management
         del_lock($dn);
         continue;
       }
-      add_lock ($entry['fdRegistrationUserDN'], $ui->dn);
+      add_lock($entry['fdRegistrationUserDN'], $ui->dn);
 
       // Delete the object
       $userTabObject = objects::open($entry['fdRegistrationUserDN'], 'user');
@@ -291,7 +292,7 @@ class registrationManagement extends management
   /*
    * \brief Whether accept and reject actions should be enabled for an entry
    */
-  function enableAcceptReject($action, ListingEntry $entry = NULL)
+  function enableAcceptReject ($action, ListingEntry $entry = NULL): bool
   {
     if ($entry !== NULL) {
       /* For entries */
@@ -302,7 +303,7 @@ class registrationManagement extends management
     }
   }
 
-  protected function getFormFromRegistration(ListingEntry $entry)
+  protected function getFormFromRegistration (ListingEntry $entry): array
   {
     $invitations = objects::ls(
       'invitation',

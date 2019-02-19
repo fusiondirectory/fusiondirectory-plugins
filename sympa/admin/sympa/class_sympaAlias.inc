@@ -20,7 +20,7 @@
 
 class sympaAlias extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Sympa list alias'),
@@ -38,26 +38,26 @@ class sympaAlias extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       // Attributes are grouped by section
       'main' => array(
         'name'  => _('Sympa list alias'),
         'attrs' => array(
-          new BaseSelectorAttribute (get_ou('sympaRDN')),
-          new StringAttribute (_('Name'), _('Name to identify this alias'), 'cn', TRUE),
-          new TextAreaAttribute (
+          new BaseSelectorAttribute(get_ou('sympaRDN')),
+          new StringAttribute(_('Name'), _('Name to identify this alias'), 'cn', TRUE),
+          new TextAreaAttribute(
             _('Description'), _('Description of this alias'),
             'description', FALSE
           ),
           new SetAttribute(
-            new MailAttribute (
+            new MailAttribute(
               _('Email address'), _('Email address'),
               'mail', TRUE
             )
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Sympa server'), _('Sympa server for this alias'),
             'sympaServerURL', TRUE,
             array()

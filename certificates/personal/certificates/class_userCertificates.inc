@@ -20,7 +20,7 @@
 
 class CertificateOrderedArrayAttribute extends OrderedArrayAttribute
 {
-  protected function genRowIcons($key, $value)
+  protected function genRowIcons ($key, $value)
   {
     $id = $this->getHtmlId();
     list ($img, $nbicons) = parent::genRowIcons($key, $value);
@@ -38,7 +38,7 @@ class CertificateOrderedArrayAttribute extends OrderedArrayAttribute
     return array ($img, $nbicons);
   }
 
-  protected function handlePostValueActions($id, $postValue)
+  protected function handlePostValueActions ($id, $postValue)
   {
     if (parent::handlePostValueActions($id, $postValue)) {
       return TRUE;
@@ -110,7 +110,7 @@ class userCertificates extends simplePlugin
 {
   var $displayHeader = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Certificates'),
@@ -126,14 +126,14 @@ class userCertificates extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Certificates'),
         'attrs' => array(
           new CertificateOrderedArrayAttribute(
-            new CertificateFileAttribute (
+            new CertificateFileAttribute(
               '', _('Certificate content'),
               'userCertificate;binary', TRUE
             ),

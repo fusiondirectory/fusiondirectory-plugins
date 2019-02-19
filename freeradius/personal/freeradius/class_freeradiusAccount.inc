@@ -25,7 +25,7 @@ class freeradiusAccount extends simplePlugin
 {
   var $displayHeader = TRUE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Freeradius'),
@@ -45,7 +45,7 @@ class freeradiusAccount extends simplePlugin
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
     // Attributes are grouped by section
@@ -78,7 +78,7 @@ class freeradiusAccount extends simplePlugin
         'name'  => _('Groups'),
         'attrs' => array(
           new SetAttribute(
-              new SelectAttribute (
+              new SelectAttribute(
               _('Groups'),
               _('FreeRadius Group'),
               'radiusGroupName',

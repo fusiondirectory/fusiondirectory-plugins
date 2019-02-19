@@ -25,7 +25,7 @@ require_once('variables.inc');
 
 class expiredUserPostpone extends standAlonePage
 {
-  function readLdapConfig()
+  function readLdapConfig ()
   {
     global $config;
     $this->forward_postpone = ($config->get_cfg_value('userReminderForwardConfirmation', 'TRUE') == 'TRUE');
@@ -39,7 +39,7 @@ class expiredUserPostpone extends standAlonePage
     return TRUE;
   }
 
-  function execute()
+  function execute ()
   {
     global $error_collector, $error_collector_mailto;
     if (!$this->activated) {
@@ -95,7 +95,7 @@ class expiredUserPostpone extends standAlonePage
     $smarty->display(get_template_path('user-reminder.tpl'));
   }
 
-  function checkToken($token)
+  function checkToken ($token)
   {
     global $config;
     $sha_token = '{SHA}'.base64_encode(hash('sha256', 'expired'.$token, TRUE));
@@ -117,7 +117,7 @@ class expiredUserPostpone extends standAlonePage
     }
   }
 
-  function deleteToken()
+  function deleteToken ()
   {
     global $config;
 
@@ -130,7 +130,7 @@ class expiredUserPostpone extends standAlonePage
     }
   }
 
-  function postponeExpiration()
+  function postponeExpiration ()
   {
     global $config;
     $dn = $this->getUserDn();
@@ -187,7 +187,7 @@ class expiredUserPostpone extends standAlonePage
     $this->sendConfirmationMail($cn, $email_address, $manager_mail);
   }
 
-  function sendConfirmationMail($cn, $email_address, $manager_mail)
+  function sendConfirmationMail ($cn, $email_address, $manager_mail)
   {
     if (empty($this->mail_body) || empty($this->mail_subject)) {
       return;
@@ -203,7 +203,7 @@ class expiredUserPostpone extends standAlonePage
     }
   }
 
-  function getUserDn()
+  function getUserDn ()
   {
     $users = objects::ls('user', NULL, NULL, '(uid='.$this->uid.')');
 

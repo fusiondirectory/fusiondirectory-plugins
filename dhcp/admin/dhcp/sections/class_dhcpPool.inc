@@ -20,7 +20,7 @@
 
 class dhcpPool extends dhcpPlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'     => _('DHCP pool'),
@@ -31,22 +31,22 @@ class dhcpPool extends dhcpPlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     $attributesInfo = parent::getAttributesInfo();
     $attributesInfo['pool'] = array(
       'name'  => _('Pool'),
       'attrs' => array(
-        new SetAttribute (
-          new StringAttribute (
+        new SetAttribute(
+          new StringAttribute(
             _('Range'), _('The starting & ending IP Addresses in the range (inclusive), separated by a space; if the range only contains one address, then just the address can be specified. Each range is defined as a separate value.'),
             'dhcpRange', TRUE,
             '', '',
             '/^[0-9\.:]+(\s[0-9\.:]+)?$/'
           )
         ),
-        new SetAttribute (
-          new StringAttribute (
+        new SetAttribute(
+          new StringAttribute(
             _('Permit list'), _('This attribute contains the permit lists associated with a pool. Each permit list is defined as a separate value.'),
             'dhcpPermitList', FALSE
           )

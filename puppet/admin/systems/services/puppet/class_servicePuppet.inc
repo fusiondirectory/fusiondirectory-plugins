@@ -20,7 +20,7 @@
 
 class servicePuppet extends simpleService
 {
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Puppet server'),
@@ -33,15 +33,15 @@ class servicePuppet extends simpleService
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       // Attributes are grouped by section
       'main' => array(
         'name'  => _('Puppet server'),
         'attrs' => array(
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Environments'),
               _('Available environments for puppet nodes'),
               'puppetAvailableEnvironment',

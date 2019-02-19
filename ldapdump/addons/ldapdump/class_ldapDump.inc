@@ -20,7 +20,7 @@
 
 class ldapDump extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('LDAP'),
@@ -32,7 +32,7 @@ class ldapDump extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -53,7 +53,7 @@ class ldapDump extends simplePlugin
     $this->dump = NULL;
   }
 
-  function execute()
+  function execute (): string
   {
     global $config;
     if ($this->dump === NULL) {
@@ -75,7 +75,7 @@ class ldapDump extends simplePlugin
     return parent::execute();
   }
 
-  function dumpLdapNode($attrs, $parent_dn = '')
+  function dumpLdapNode ($attrs, $parent_dn = '')
   {
     global $config;
     $node = array(
@@ -115,16 +115,16 @@ class ldapDump extends simplePlugin
     return $node;
   }
 
-  function check()
+  function check (): array
   {
   }
 
-  function save()
+  function save (): array
   {
     return array();
   }
 
-  function remove($fulldelete = FALSE)
+  function remove (bool $fulldelete = FALSE): array
   {
     return array();
   }

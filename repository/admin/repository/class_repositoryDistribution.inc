@@ -20,7 +20,7 @@
 
 class repositoryDistribution extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Repository distribution'),
@@ -45,30 +45,30 @@ class repositoryDistribution extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Repository distribution'),
         'attrs' => array(
-          new BaseSelectorAttribute (get_ou('repositoryRDN')),
-          new StringAttribute (
+          new BaseSelectorAttribute(get_ou('repositoryRDN')),
+          new StringAttribute(
             _('Name'), _('Unique name for this distribution'),
             'cn', TRUE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Description'), _('Description of this distribution'),
             'description', FALSE
           ),
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Section'), _('The sections this distribution contains'),
               'fdRepoSection', TRUE,
               array()
             )
           ),
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Based on'), _('The distributions this one is based on'),
               'fdBasedOn', FALSE,
               array()

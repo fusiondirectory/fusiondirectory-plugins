@@ -37,11 +37,11 @@ class AccessRightsAttribute extends CompositeAttribute
       'o1' => new BooleanAttribute('', '', 'oe', FALSE),
       's1' => new BooleanAttribute('', '', 'os', FALSE),
     );
-    parent::__construct ($description, $ldapName, $attributes, FALSE, FALSE, $acl, $label);
+    parent::__construct($description, $ldapName, $attributes, FALSE, FALSE, $acl, $label);
     $this->setLinearRendering(TRUE);
   }
 
-  function renderFormInput()
+  function renderFormInput ()
   {
     foreach ($this->attributes as &$attribute) {
       $attribute->setDisabled($this->disabled);
@@ -90,7 +90,7 @@ class AccessRightsAttribute extends CompositeAttribute
     return $display;
   }
 
-  function readValues($value)
+  function readValues ($value)
   {
     $tmode  = "$value ";
     $m      = array();
@@ -110,7 +110,7 @@ class AccessRightsAttribute extends CompositeAttribute
     return $values;
   }
 
-  function writeValues(array $values)
+  function writeValues (array $values)
   {
     $tmode  = '';
     foreach (array('s', 'u', 'g', 'o') as $type) {
@@ -132,21 +132,21 @@ class faiTemplateEntry extends simplePlugin
 {
   var $objectclasses  = array('top', 'FAIclass', 'FAItemplateEntry');
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
-          new PathAttribute (
+          new PathAttribute(
             _('File path'), _('Complete absolute template file path and name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the file'),
             'description', FALSE
           ),
-          new HiddenAttribute (
+          new HiddenAttribute(
             'FAItemplatePath', TRUE
           ),
         )
@@ -155,19 +155,19 @@ class faiTemplateEntry extends simplePlugin
         'name'  => _('Template attributes'),
         'class' => array('fullwidth'),
         'attrs' => array(
-          new FileTextAreaAttribute (
+          new FileTextAreaAttribute(
             _('Template file content'), _('Content of the template file'),
             'FAItemplateFile', TRUE
           ),
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('Owner and group of the file'), 'FAIowner',
             array(
-              new StringAttribute (
+              new StringAttribute(
                 _('Owner'), _('File owner'),
                 'owner', TRUE,
                 'root'
               ),
-              new StringAttribute (
+              new StringAttribute(
                 _('Group'), _('File group'),
                 'group', TRUE,
                 'root'
@@ -176,7 +176,7 @@ class faiTemplateEntry extends simplePlugin
             '/^([^.]+)\.([^.]+)$/',
             '%s.%s'
           ),
-          new AccessRightsAttribute (
+          new AccessRightsAttribute(
             _('Access'), _('Access rights'),
             'FAImode'
           )
@@ -185,7 +185,7 @@ class faiTemplateEntry extends simplePlugin
     );
   }
 
-  function save_object()
+  function save_object ()
   {
     if (isset($_FILES[$this->attributesAccess['FAItemplateFile']->getHtmlId()]['name'])) {
       $name = $_FILES[$this->attributesAccess['FAItemplateFile']->getHtmlId()]['name'];

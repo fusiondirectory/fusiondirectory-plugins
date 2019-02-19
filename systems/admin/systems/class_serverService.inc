@@ -54,7 +54,7 @@ class ServerService extends simpleManagement
 
   var $is_account;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Services'),
@@ -135,7 +135,7 @@ class ServerService extends simpleManagement
     $this->updateActionMenu();
   }
 
-  function updateActionMenu()
+  function updateActionMenu ()
   {
     $this->headpage->xmlData['actionmenu']['action'][0]['action'] = array();
     $available_services = $this->getAllUnusedServices();
@@ -156,7 +156,7 @@ class ServerService extends simpleManagement
 
   /*! \brief    Filter extra POST and GET variables for this plugin.
    */
-  function detectPostActions()
+  function detectPostActions ()
   {
     $action = parent::detectPostActions();
     if (isset($_POST['SaveService'])) {
@@ -170,7 +170,7 @@ class ServerService extends simpleManagement
   /*! \brief  Edit an existing service here.
    *          Somebody clicked on the paper and pencil icon.
    */
-  function editEntry($action, array $target, array $all)
+  function editEntry ($action, array $target, array $all)
   {
     $s_entry = array_pop($target);
     if ($this->plugins[$s_entry]->acl_is_readable("")) {
@@ -184,7 +184,7 @@ class ServerService extends simpleManagement
   /*! \brief  Editing an object was caneled.
    *          Close dialogs/tabs and remove locks.
    */
-  protected function cancelEdit()
+  protected function cancelEdit ()
   {
     if (($this->backup == NULL) && $this->current) {
       $this->plugins[$this->current] = new $this->current($this->dn, $this);
@@ -202,7 +202,7 @@ class ServerService extends simpleManagement
 
   /*! \brief  Let the user create a new service
    */
-  function newService($action = '')
+  function newService ($action = '')
   {
     $this->closeDialogs();
     $serv = preg_replace('/^new_/', '', $action);
@@ -214,7 +214,7 @@ class ServerService extends simpleManagement
 
   /*! \brief  Save the currently edited service.
    */
-  function saveService()
+  function saveService ()
   {
     $this->dialogObject->save_object();
     $msgs = $this->dialogObject->check();
@@ -233,7 +233,7 @@ class ServerService extends simpleManagement
   /*!\brief   Close all opened dialogs
    *          And reset "dialog open" flags to display bottom buttons again.
    */
-  function closeDialogs()
+  function closeDialogs ()
   {
     parent::closeDialogs();
     $this->dialog = FALSE;
@@ -244,7 +244,7 @@ class ServerService extends simpleManagement
 
   /*! \brief    Remove the selected service(s)
    */
-  protected function removeService($action, array $target)
+  protected function removeService ($action, array $target)
   {
     foreach ($target as $s_entry) {
       $new_obj = new $s_entry($this->dn, $this);
@@ -260,7 +260,7 @@ class ServerService extends simpleManagement
     }
   }
 
-  function renderList()
+  function renderList ()
   {
     /* Save services in session, will be used by filterServerService when updating list */
     session::set('ServerService', $this->plugins);
@@ -278,7 +278,7 @@ class ServerService extends simpleManagement
 
   /*! \brief    Updates the status for a list of services.
    */
-  function updateServiceStatus($action, array $target)
+  function updateServiceStatus ($action, array $target)
   {
     /* Skip if this is a new server */
     if ($this->dn == 'new') {
@@ -301,7 +301,7 @@ class ServerService extends simpleManagement
   /*! \brief    Updates the status of a service and
    *             calls an external hook if specified in fusiondirectory.conf
    */
-  private function updateSingleServiceStatus($action, $service)
+  private function updateSingleServiceStatus ($action, $service)
   {
     if ($this->plugins[$service]->is_account) {
       $this->updateServicesVars($service);
@@ -355,7 +355,7 @@ class ServerService extends simpleManagement
   /*! \brief   Returns a list of all used services
    *            CLASSNAME => _($this->plugins[*]->DisplayName);
    */
-  function getAllUsedServices()
+  function getAllUsedServices ()
   {
     $ret = array();
     foreach ($this->plugins as $name => $obj) {
@@ -372,7 +372,7 @@ class ServerService extends simpleManagement
 
   /*! \brief    Returns a list of all unused services.
    */
-  function getAllUnusedServices()
+  function getAllUnusedServices ()
   {
     $tmp = $this->getAllUsedServices();
     $pool_of_ocs = array();
@@ -410,21 +410,21 @@ class ServerService extends simpleManagement
 
   /*! \brief    No checks here.
    */
-  function check()
+  function check ()
   {
     return array();
   }
 
   /*! \brief    Keep posted form values in opened dialogs
    */
-  function save_object()
+  function save_object ()
   {
     // save_object of the dialog is called in management::execute
   }
 
   /*! \brief Remove all active services
    */
-  function remove($fulldelete = FALSE)
+  function remove ($fulldelete = FALSE)
   {
     $errors = array();
     foreach ($this->plugins as $name => $obj) {
@@ -441,7 +441,7 @@ class ServerService extends simpleManagement
 
   /*! \brief    Save all active services
    */
-  function save()
+  function save ()
   {
     $errors = array();
     foreach ($this->plugins as $name => $obj) {
@@ -461,7 +461,7 @@ class ServerService extends simpleManagement
 
   /*! \brief    Prepare active services to be copied.
    */
-  function resetCopyInfos()
+  function resetCopyInfos ()
   {
     $this->dn = 'new';
     foreach ($this->plugins as &$plugin) {
@@ -472,7 +472,7 @@ class ServerService extends simpleManagement
 
   /*! \brief    Forward plugin acls
    */
-  function set_acl_base($base)
+  function set_acl_base ($base)
   {
     $this->acl_base = $base;
     foreach ($this->plugins as $name => $obj) {
@@ -482,7 +482,7 @@ class ServerService extends simpleManagement
 
   /*! \brief    Forward plugin acls
    */
-  function set_acl_category($category)
+  function set_acl_category ($category)
   {
     $this->acl_category = $category;
     foreach ($this->plugins as $name => $obj) {
@@ -498,12 +498,12 @@ class ServerService extends simpleManagement
     unset($plugin);
   }
 
-  function getRequiredAttributes()
+  function getRequiredAttributes ()
   {
     return array();
   }
 
-  function adapt_from_template($attrs, $skip = array())
+  function adapt_from_template ($attrs, $skip = array())
   {
     foreach ($this->plugins as &$plugin) {
       $plugin->adapt_from_template($attrs, $skip);
@@ -515,7 +515,7 @@ class ServerService extends simpleManagement
    *            Used in the filter class for services.
    *             class_filterServerService.inc
    */
-  static function getServiceList()
+  static function getServiceList ()
   {
     return session::get('ServerService');
   }
@@ -523,7 +523,7 @@ class ServerService extends simpleManagement
   /*! \brief    Returns an image for the service status.
    *            Used in the service list class.
    */
-  static function filterServiceStatus($a, $b, $c, $d)
+  static function filterServiceStatus ($a, $b, $c, $d)
   {
     $img = '';
     if (isset($d['0'])) {

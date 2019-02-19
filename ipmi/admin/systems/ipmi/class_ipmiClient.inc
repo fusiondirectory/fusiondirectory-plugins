@@ -22,7 +22,7 @@ class ipmiClient extends simplePlugin
 {
   var $displayHeader  = TRUE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('IPMI client'),
@@ -34,22 +34,22 @@ class ipmiClient extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('IPMI client settings'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('IP'), _('IP of the IPMI interface'),
             'fdIpmiIP', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('User login'), _('IPMI user login'),
             'fdIpmiLogin', TRUE,
             ''
           ),
-          new PasswordAttribute (
+          new PasswordAttribute(
             _('User password'), _('IPMI user password'),
             'fdIpmiPassword', TRUE
           ),

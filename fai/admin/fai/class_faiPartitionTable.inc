@@ -28,7 +28,7 @@ class DiskEntryDialog extends GenericDialog
 
   protected $initialDialogValue = NULL;
 
-  function __construct($simplePlugin, $attribute, $disk = array(), $diskType = 'disk')
+  function __construct ($simplePlugin, $attribute, $disk = array(), $diskType = 'disk')
   {
     $this->attribute = $attribute;
     if (isset($disk['FAIdiskType'])) {
@@ -95,7 +95,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
 
   function __construct ($label, $description, $ldapName, $values = array(), $acl = '')
   {
-    parent::__construct ($label, $description, $ldapName, FALSE, $values, $acl);
+    parent::__construct($label, $description, $ldapName, FALSE, $values, $acl);
     $this->disks = &$this->value;
   }
 
@@ -293,7 +293,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  protected function getAttributeArrayValue($key, $value)
+  protected function getAttributeArrayValue ($key, $value)
   {
     return array(
       $value['FAIdiskType'],
@@ -315,7 +315,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
 
 class faiPartitionTable extends faiSimplePluginClass
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Partition table'),
@@ -335,17 +335,17 @@ class faiPartitionTable extends faiSimplePluginClass
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Class name'), _('Partition table class name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
@@ -355,10 +355,10 @@ class faiPartitionTable extends faiSimplePluginClass
         'name'  => _('Discs'),
         'class' => array('fullwidth'),
         'attrs' => array(
-          new HiddenAttribute (
+          new HiddenAttribute(
             'FAIpartitionMethod', FALSE, 'setup-storage'
           ),
-          new PartitionTableAttribute (
+          new PartitionTableAttribute(
             '', _('Partitions in this class'), 'FAIpartitions'
           )
         )
@@ -373,13 +373,13 @@ class faiPartitionTable extends faiSimplePluginClass
     $this->attributesAccess['cn']->setUnique('one');
   }
 
-  protected function shouldSave()
+  protected function shouldSave (): bool
   {
     /* We need ldap_save to always run */
     return TRUE;
   }
 
-  function ldap_save ()
+  function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();
@@ -387,7 +387,7 @@ class faiPartitionTable extends faiSimplePluginClass
     return $errors;
   }
 
-  function getUsedDiskNames()
+  function getUsedDiskNames ()
   {
     $ret = array();
     foreach ($this->FAIpartitions as $disk) {

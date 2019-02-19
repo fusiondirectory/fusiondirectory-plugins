@@ -38,7 +38,7 @@ class auditEvent extends simplePlugin
 {
   public $base;
 
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Audit event'),
@@ -58,23 +58,23 @@ class auditEvent extends simplePlugin
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Event'),
         'attrs' => array(
-          new HiddenAttribute ('fdAuditId'),
+          new HiddenAttribute('fdAuditId'),
           new GeneralizedTimeDisplayAttribute(
             _('Time'), _('Date and time this event happened'),
             'fdAuditDateTime', TRUE
           ),
-          new DisplayLDAPAttribute  (_('Action'),       _('Action type'),     'fdAuditAction',      TRUE),
-          new ObjectLinkAttribute   (_('Author'),       _('Action author'),   'fdAuditAuthorDN',    TRUE, 'user'),
-          new DisplayLDAPAttribute  (_('Object type'),  _('Object type'),     'fdAuditObjectType',  TRUE),
-          new DisplayLDAPAttribute  (_('Object'),       _('Target object'),   'fdAuditObject',      TRUE),
-          new DisplayLDAPArrayAttribute(_('Attributes'), _('Target attributes'), 'fdAuditAttributes', FALSE),
-          new DisplayLDAPAttribute  (_('Result'),       _('Result or error'), 'fdAuditResult',      FALSE),
+          new DisplayLDAPAttribute(_('Action'),           _('Action type'),       'fdAuditAction',      TRUE),
+          new ObjectLinkAttribute(_('Author'),            _('Action author'),     'fdAuditAuthorDN',    TRUE, 'user'),
+          new DisplayLDAPAttribute(_('Object type'),      _('Object type'),       'fdAuditObjectType',  TRUE),
+          new DisplayLDAPAttribute(_('Object'),           _('Target object'),     'fdAuditObject',      TRUE),
+          new DisplayLDAPArrayAttribute(_('Attributes'),  _('Target attributes'), 'fdAuditAttributes',  FALSE),
+          new DisplayLDAPAttribute(_('Result'),           _('Result or error'),   'fdAuditResult',      FALSE),
         )
       ),
     );
@@ -86,7 +86,7 @@ class auditEvent extends simplePlugin
     $this->fdAuditId = random_int(0, PHP_INT_MAX);
   }
 
-  function compute_dn()
+  function compute_dn (): string
   {
     return $this->create_unique_dn('fdAuditDateTime', get_ou('auditRDN').$this->base);
   }

@@ -22,7 +22,7 @@ class dhcpHost extends dhcpPlugin
 {
   private $parentPlugin;
 
-  public static function plInfo()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'     => _('DHCP host'),
@@ -33,7 +33,7 @@ class dhcpHost extends dhcpPlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     $attributesInfo = parent::getAttributesInfo();
     $attributesInfo['host'] = array(
@@ -42,13 +42,13 @@ class dhcpHost extends dhcpPlugin
         new CompositeAttribute(
           _('The client hardware address'), 'dhcpHWAddress',
           array(
-            new SelectAttribute (
+            new SelectAttribute(
               '', _('The hardware address type'),
               'dhcpHWAddress_type', TRUE,
               array(  'ethernet',   'fddi',   'token-ring'), 'ethernet',
               array(_('Ethernet'),_('FDDI'),_('Token Ring'))
             ),
-            new StringAttribute (
+            new StringAttribute(
               '', _('The client hardware address'),
               'dhcpHWAddress_address', TRUE
             ),
@@ -76,7 +76,7 @@ class dhcpHost extends dhcpPlugin
     parent::__construct($plugin, $dn, $attrs);
   }
 
-  function check()
+  function check (): array
   {
     $messages = parent::check();
     $dn = $this->dn;

@@ -33,7 +33,7 @@ class inventoryManagement extends management
     array('ActionsColumn',                  array('label' => 'Actions')),
   );
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Inventory objects'),
@@ -46,13 +46,13 @@ class inventoryManagement extends management
     );
   }
 
-  protected function setUpListing()
+  protected function setUpListing ()
   {
     /* Disable base mode */
     $this->listing  = new managementListing($this, FALSE);
   }
 
-  protected function configureActions()
+  protected function configureActions ()
   {
     parent::configureActions();
 

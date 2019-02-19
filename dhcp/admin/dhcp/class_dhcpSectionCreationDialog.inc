@@ -29,7 +29,7 @@ class DhcpSectionCreationDialog extends GenericDialog
   protected $initialObjectValue;
   protected $selectAttribute;
 
-  function __construct($simplePlugin, &$attribute, $classtype, $parentdn, $editingValue = NULL)
+  function __construct ($simplePlugin, &$attribute, $classtype, $parentdn, $editingValue = NULL)
   {
     $this->plugin     = $simplePlugin;
     $this->attribute  = $attribute;
@@ -127,7 +127,7 @@ class DhcpSectionCreationDialog extends GenericDialog
     return FALSE;
   }
 
-  function save_dhcp()
+  function save_dhcp ()
   {
     $this->dialog->save_object();
     $messages = $this->dialog->check();

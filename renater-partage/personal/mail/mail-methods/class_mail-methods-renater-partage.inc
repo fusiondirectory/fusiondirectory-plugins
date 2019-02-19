@@ -39,7 +39,7 @@ class mailMethodRenaterPartage extends mailMethod
   /*! \brief  Connect to renater PARTAGE API and store the auth token
       @return Boolean True if connection was successful
    */
-  public function connect()
+  public function connect ()
   {
     parent::connect();
     $servers = static::getMailServers();
@@ -71,7 +71,7 @@ class mailMethodRenaterPartage extends mailMethod
     }
   }
 
-  private function query($command, $post)
+  private function query ($command, $post)
   {
     $servers = static::getMailServers();
     $infos = $servers[$this->parent->gosaMailServer];
@@ -82,8 +82,8 @@ class mailMethodRenaterPartage extends mailMethod
       $post = preg_replace('/%5B[0-9]+%5D/simU', '%5B%5D', $post);
     }
 
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $command, '<b>MAIL: Command</b>');
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, htmlentities($post, ENT_COMPAT, 'UTF-8'),
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $command, '<b>MAIL: Command</b>');
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, htmlentities($post, ENT_COMPAT, 'UTF-8'),
       '<b>MAIL: Query</b>');
 
     // performs the HTTP(S) POST
@@ -123,7 +123,7 @@ class mailMethodRenaterPartage extends mailMethod
         $response .= trim($row)."\n";
       }
       $response = xml::xml2array($response, FALSE);
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $response, '<b>MAIL: Answer</b>');
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $response, '<b>MAIL: Answer</b>');
 
       if (!isset($response['Response']['status'])) {
         $this->error = _('Partage API answer malformated');
@@ -139,7 +139,7 @@ class mailMethodRenaterPartage extends mailMethod
 
       return $response;
     } else {
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $fp, '<b>MAIL: No Answer</b>');
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $fp, '<b>MAIL: No Answer</b>');
       if (!empty($fp)) {
         $this->error = sprintf(_('Unable to connect to %s: %s'), $infos['uri'], implode("\n", $fp));
       } else {
@@ -151,7 +151,7 @@ class mailMethodRenaterPartage extends mailMethod
 
   /*! \brief  Disconnect from the API (deletes the auth token)
    */
-  public function disconnect()
+  public function disconnect ()
   {
     parent::disconnect();
     unset($this->token);
@@ -160,7 +160,7 @@ class mailMethodRenaterPartage extends mailMethod
 
   /*! \brief Checks data consistency
   */
-  public function check()
+  public function check ()
   {
     $messages = parent::check();
     $servers  = static::getMailServers();
@@ -179,7 +179,7 @@ class mailMethodRenaterPartage extends mailMethod
   /*! \brief  Returns the connection status of this method.
       @return Boolean True if this method is connected else false.
    */
-  public function is_connected()
+  public function is_connected ()
   {
     /* If the token is older than 5 minutes it will get rejected. 5min = 300sec */
     return (parent::is_connected() && (time() - $this->tokenTime < 250));
@@ -188,13 +188,13 @@ class mailMethodRenaterPartage extends mailMethod
   /*! \brief  Returns true the current object represents a valid account
       @return Boolean TRUE if this is a valid account else FALSE
   */
-  public function account_exists()
+  public function account_exists ()
   {
     $this->reset_error();
     return $this->cacheAccount();
   }
 
-  private function cacheAccount()
+  private function cacheAccount ()
   {
     if (empty($this->account_id)) {
       return FALSE;
@@ -230,7 +230,7 @@ class mailMethodRenaterPartage extends mailMethod
    * We want:
    * [members] => Array ( user1, user2 )
    * */
-  private function cleanCachedAccountArrays()
+  private function cleanCachedAccountArrays ()
   {
     $keys = array('members', 'zimbraMailAlias', 'zimbraAllowFromAddress');
     foreach ($keys as $key) {
@@ -243,7 +243,7 @@ class mailMethodRenaterPartage extends mailMethod
     }
   }
 
-  private function getAccountArray($infos)
+  private function getAccountArray ($infos)
   {
     $account = array(
       'name'                                => $this->account_id,
@@ -335,7 +335,7 @@ class mailMethodRenaterPartage extends mailMethod
     return $account;
   }
 
-  private function createAccount($infos)
+  private function createAccount ($infos)
   {
     $account = $this->getAccountArray($infos);
 
@@ -364,7 +364,7 @@ class mailMethodRenaterPartage extends mailMethod
     return $this->query($command, $account);
   }
 
-  private function updateAccount($infos)
+  private function updateAccount ($infos)
   {
     /* Step 1 - We fill $account */
     $account = $this->getAccountArray($infos);
@@ -417,7 +417,7 @@ class mailMethodRenaterPartage extends mailMethod
     return TRUE;
   }
 
-  private function setAliases($initialAliases, $aliases)
+  private function setAliases ($initialAliases, $aliases)
   {
     $remove = array_diff($initialAliases, $aliases);
     $add    = array_diff($aliases, $initialAliases);
@@ -446,7 +446,7 @@ class mailMethodRenaterPartage extends mailMethod
     return TRUE;
   }
 
-  private function updateMembers()
+  private function updateMembers ()
   {
     global $config;
 
@@ -518,7 +518,7 @@ class mailMethodRenaterPartage extends mailMethod
     return TRUE;
   }
 
-  public function updateMailbox()
+  public function updateMailbox ()
   {
     parent::updateMailbox();
     $servers = static::getMailServers();
@@ -592,7 +592,7 @@ class mailMethodRenaterPartage extends mailMethod
     return TRUE;
   }
 
-  public function deleteMailbox()
+  public function deleteMailbox ()
   {
     parent::deleteMailbox();
     $servers = static::getMailServers();
@@ -619,7 +619,7 @@ class mailMethodRenaterPartage extends mailMethod
   /*! \brief  Returns the used quota in MiB
       @return Integer Quota used.
    */
-  public function getQuotaUsage()
+  public function getQuotaUsage ()
   {
     if ($this->cacheAccount()) {
       /* Partage sends quota in bytes */
@@ -631,7 +631,7 @@ class mailMethodRenaterPartage extends mailMethod
   /*! \brief  Returns the quota restrictions in MiB.
       @return Integer Quota restrictions.
    */
-  public function getQuota($quotaValue)
+  public function getQuota ($quotaValue)
   {
     if ($this->cacheAccount()) {
       /* Partage sends quota in bytes */
@@ -640,7 +640,7 @@ class mailMethodRenaterPartage extends mailMethod
     return $quotaValue;
   }
 
-  public function additionalInformations()
+  public function additionalInformations ()
   {
     if ($this->cacheAccount()) {
       $lastlogin = _('Never');
@@ -657,14 +657,14 @@ class mailMethodRenaterPartage extends mailMethod
     return array();
   }
 
-  static public function get_server_list()
+  static public function get_server_list ()
   {
     global $config;
     $serverList = array();
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search ('(&(objectClass=fdRenaterPartageServer)(fdRenaterPartageServerMailDomain=*))',
+    $ldap->search('(&(objectClass=fdRenaterPartageServer)(fdRenaterPartageServerMailDomain=*))',
                   array('cn', 'fdRenaterPartageServerUri', 'fdRenaterPartageServerMailDomain', 'fdRenaterPartageServerUserAgent', 'fdRenaterPartageServerDeletionType'));
     while ($attrs = $ldap->fetch()) {
       unset($attrs['fdRenaterPartageServerMailDomain']['count']);

@@ -21,7 +21,7 @@
 */
 
 /* File header is treated as constant. It cannot be defined inside the class if $PHP_VERSION < 5 */
-define ("FILEHEADER",
+define("FILEHEADER",
         "20002000200020002000200020002000".
         "20002000200020002000200020002000".
         "20002000200020002000200020002000".
@@ -30,7 +30,7 @@ define ("FILEHEADER",
         "20002000200020002000200020002000".
         "5000");
 /* This is the old header, it is needed to automatically convert old mungedDials to new ones */
-define ("FILEHEADER_OLD",
+define("FILEHEADER_OLD",
         "6d000800200020002000200020002000".
         "20002000200020002000200020002000".
         "20002000200020002000200064000100".
@@ -79,7 +79,7 @@ class sambaMungedDial
 
   var $old_behavior = FALSE;
 
-  function strhex($string)
+  function strhex ($string)
   {
     $hex = "";
 
@@ -90,7 +90,7 @@ class sambaMungedDial
     return $hex;
   }
 
-  function hexstr($hex)
+  function hexstr ($hex)
   {
     $string = "";
 
@@ -101,7 +101,7 @@ class sambaMungedDial
     return $string;
   }
 
-  function endian($src)
+  function endian ($src)
   {
     return substr($src, 2, 2).substr($src, 0, 2);
   }
@@ -124,7 +124,7 @@ class sambaMungedDial
     return (int)($usecs / (60 * 1000));
   }
 
-  function to8bit($string)
+  function to8bit ($string)
   {
     $result = "";
 
@@ -138,7 +138,7 @@ class sambaMungedDial
     return $result;
   }
 
-  function is_samba_path($path)
+  function is_samba_path ($path)
   {
     if ($path == "") {
       return TRUE;
@@ -148,7 +148,7 @@ class sambaMungedDial
       return FALSE;
     }
 
-    return preg_match ("/\\\\.+$/", $path);
+    return preg_match("/\\\\.+$/", $path);
   }
 
   /* Encode full MungedDial-String */
@@ -188,7 +188,7 @@ class sambaMungedDial
   }
 
   /* Setup parameter given by paramName to MungedDial-Format */
-  function munge($paramName, $paramValue, $isString)
+  function munge ($paramName, $paramValue, $isString)
   {
     $result = "";
 
@@ -226,7 +226,7 @@ class sambaMungedDial
   }
 
   /* Takes a base64-encoded MungedDial-String and returns an array of included parameters and values */
-  function decode_munged($munge)
+  function decode_munged ($munge)
   {
     $result = array(
       'CtxCfgPresent'           => '551e0bb0',

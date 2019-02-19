@@ -29,7 +29,7 @@ class opsiClient extends simplePlugin
 
   protected $initialOpsiId = NULL;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('OPSI client'),
@@ -48,7 +48,7 @@ class opsiClient extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -131,7 +131,7 @@ class opsiClient extends simplePlugin
     }
   }
 
-  function save_object()
+  function save_object ()
   {
     parent::save_object();
     if ($this->member_of_group) {
@@ -144,7 +144,7 @@ class opsiClient extends simplePlugin
     }
   }
 
-  function prepare_save()
+  function prepare_save (): array
   {
     if ($this->member_of_group && (($this->fdOpsiProfileDn == 'inherited') || $this->fdOpsiLocalbootInherit)) {
       $this->fdOpsiServerDn = 'inherited';
@@ -152,7 +152,7 @@ class opsiClient extends simplePlugin
     return parent::prepare_save();
   }
 
-  function save()
+  function save (): array
   {
     global $config;
     if ($this->initially_was_account && $this->editing_group() && !$this->is_template) {
@@ -198,7 +198,7 @@ class opsiClient extends simplePlugin
     }
   }
 
-  function getMacAddresses()
+  function getMacAddresses ()
   {
     global $config;
     $macAddresses = array();
@@ -231,7 +231,7 @@ class opsiClient extends simplePlugin
     return $macAddresses;
   }
 
-  function update_or_insert()
+  function update_or_insert ()
   {
     global $config;
     $s_daemon     = new supportDaemon();
@@ -251,7 +251,7 @@ class opsiClient extends simplePlugin
     }
   }
 
-  function remove($fulldelete = FALSE)
+  function remove (bool $fulldelete = FALSE): array
   {
     if ($this->member_of_group && !$this->is_template) {
       // If the winstation is member of an ogroup which has OPSI activated, we must update_or_insert information
@@ -262,7 +262,7 @@ class opsiClient extends simplePlugin
     return parent::remove($fulldelete);
   }
 
-  protected function ldap_remove()
+  protected function ldap_remove (): array
   {
     global $config;
 

@@ -20,7 +20,7 @@
 
 class sudoConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Sudo configuration'),
@@ -33,13 +33,13 @@ class sudoConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Sudo'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Sudo RDN'), _('Branch in which sudoers will be stored'),
             'fdSudoRDN', TRUE,
             'ou=sudoers'

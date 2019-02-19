@@ -12,15 +12,15 @@
 // TODO before next release:  remove ::status() and dependencies
 
 
-define ("F_NO", 0);
-define ("F_OK", 1);
-define ("F_DATA", 2);
-define ("F_HEAD", 3);
+define("F_NO", 0);
+define("F_OK", 1);
+define("F_DATA", 2);
+define("F_HEAD", 3);
 
-define ("EC_NOT_LOGGED_IN", 0);
-define ("EC_QUOTA", 10);
-define ("EC_NOSCRIPTS", 20);
-define ("EC_UNKNOWN", 255);
+define("EC_NOT_LOGGED_IN", 0);
+define("EC_QUOTA", 10);
+define("EC_NOSCRIPTS", 20);
+define("EC_UNKNOWN", 255);
 /*
 
    SIEVE-PHP.LIB VERSION 0.0.8
@@ -90,7 +90,7 @@ class sieve
   //also add a connection type, like PLAIN, MD5, etc...
 
 
-  function get_response()
+  function get_response ()
   {
     if($this->loggedin == false or feof($this->fp)){
       $this->error = EC_NOT_LOGGED_IN;
@@ -200,7 +200,7 @@ class sieve
     } /* end else */
   } /* end get_response() */
 
-  function __construct($host, $port, $user, $pass, $auth="",$options ="", $auth_types="PLAIN DIGEST-MD5")
+  function __construct ($host, $port, $user, $pass, $auth="",$options ="", $auth_types="PLAIN DIGEST-MD5")
   {
     $this->host=$host;
     $this->port=$port;
@@ -223,11 +223,11 @@ class sieve
     $this->error_raw="";
     $this->options = $options;
 
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->error_raw,
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->error_raw,
         "<b>SIEVE: Host: $host:$port. Options: $options - Auth Types: $auth_types </b>");
   }
 
-  function parse_for_quotes($string)
+  function parse_for_quotes ($string)
   {
     /* This function tokenizes a line of input by quote marks and returns them as an array */
 
@@ -255,7 +255,7 @@ class sieve
       return false;
   } /* end function */
 
-  function status($string)
+  function status ($string)
   {
     //this should probably be replaced by a smarter parser.
 
@@ -282,13 +282,13 @@ class sieve
     } /* end switch */
   } /* end status() */
 
-  function sieve_login()
+  function sieve_login ()
   {
 
     $this->fp=@fsockopen($this->host,$this->port,$err_id,$err_str);
     if($this->fp == false){
 
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,$this->error_raw,
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,$this->error_raw,
           "<b>SIEVE: Socket connection failed. (".$this->host.":".$this->port.")</b>");
 
       $this->error_raw = $err_str;
@@ -366,7 +366,7 @@ class sieve
     if(sieve::status($this->line) == F_NO){   //here we should do some returning of error codes?
       $this->error=EC_UNKNOWN;
 
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,$this->error_raw,
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,$this->error_raw,
           "<b>SIEVE: Unknown sieve response, giving up.</b>");
 
       $this->error_raw = "Server not allowing connections.";
@@ -388,7 +388,7 @@ class sieve
      * #TODO Maybe there is a better solution for this?
      */
     if($this->auth_in_use == ""){
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,$this->error_raw,
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,$this->error_raw,
           "<b>SIEVE: No authentification mechanisms received, try using PLAIN!.</b>");
         $this->auth_in_use  = "PLAIN";
     }
@@ -405,7 +405,7 @@ class sieve
     if(isset($this->capabilities['implementation'])){
       $imp = $this->capabilities['implementation'];
     }
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,$imp,
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,$imp,
         "<b>SIEVE: Socket connection established. </b>");
 
     /* call our authentication program */
@@ -413,7 +413,7 @@ class sieve
 
   }
 
-  function sieve_logout()
+  function sieve_logout ()
   {
     if($this->loggedin==false)
       return false;
@@ -421,14 +421,14 @@ class sieve
     fputs($this->fp,"LOGOUT\r\n");
     fclose($this->fp);
 
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
         "<b>SIEVE: Logout!</b>");
 
     $this->loggedin=false;
     return true;
   }
 
-  function sieve_sendscript($scriptname, $script)
+  function sieve_sendscript ($scriptname, $script)
   {
     if($this->loggedin==false)
       return false;
@@ -438,11 +438,11 @@ class sieve
     fputs($this->fp, "$this->script\r\n");
 
     if(sieve::get_response()){
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
           "<b>SIEVE: Script '".$scriptname."' successfully send!</b>");
       return(TRUE);
     }else{
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
           "<b>SIEVE: Script couldn't be send!</b>");
       return(FALSE);
     }
@@ -450,7 +450,7 @@ class sieve
 
   //it appears the timsieved does not honor the NUMBER type.  see lex.c in timsieved src.
   //don't expect this function to work yet.  I might have messed something up here, too.
-  function sieve_havespace($scriptname, $scriptsize)
+  function sieve_havespace ($scriptname, $scriptsize)
   {
     if($this->loggedin==false)
       return false;
@@ -459,7 +459,7 @@ class sieve
 
   }
 
-  function sieve_setactivescript($scriptname)
+  function sieve_setactivescript ($scriptname)
   {
     if($this->loggedin==false)
       return false;
@@ -467,17 +467,17 @@ class sieve
     fputs($this->fp, "SETACTIVE \"$scriptname\"\r\n");
 
     if(sieve::get_response()){
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
           "<b>SIEVE: Set active script '".$scriptname."' was successful!</b>");
       return(TRUE);
     }else{
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
           "<b>SIEVE: Set active script '".$scriptname."' failed!</b>");
       return(FALSE);
     }
   }
 
-  function sieve_getscript($scriptname)
+  function sieve_getscript ($scriptname)
   {
     unset($this->script);
     if($this->loggedin==false)
@@ -486,18 +486,18 @@ class sieve
     fputs($this->fp, "GETSCRIPT \"$scriptname\"\r\n");
 
     if(sieve::get_response()){
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
           "<b>SIEVE: Get script '".$scriptname."' was successful!</b>");
       return(TRUE);
     }else{
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
           "<b>SIEVE: Get script '".$scriptname."' failed!</b>");
       return(FALSE);
     }
   }
 
 
-  function sieve_deletescript($scriptname)
+  function sieve_deletescript ($scriptname)
   {
     if($this->loggedin==false)
       return false;
@@ -505,35 +505,35 @@ class sieve
     fputs($this->fp, "DELETESCRIPT \"$scriptname\"\r\n");
 
     if(sieve::get_response()){
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
           "<b>SIEVE: Delete script '".$scriptname."' was successful!</b>");
       return(TRUE);
     }else{
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
           "<b>SIEVE: Delete  script '".$scriptname."' failed!</b>");
       return(FALSE);
     }
   }
 
 
-  function sieve_listscripts()
+  function sieve_listscripts ()
   {
     fputs($this->fp, "LISTSCRIPTS\r\n");
     sieve::get_response();    //should always return true, even if there are no scripts...
     if(isset($this->found_script) and $this->found_script){
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, implode($this->response,", "),
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, implode($this->response,", "),
           "<b>SIEVE: List scripts was successful!</b>");
       return true;
     }else{
       $this->error=EC_NOSCRIPTS;  //sieve::getresponse has no way of telling wether a script was found...
       $this->error_raw="No scripts found for this account.";
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->error_raw,
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->error_raw,
           "<b>SIEVE: List scripts returned no scripts</b>");
       return false;
     }
   }
 
-  function sieve_alive()
+  function sieve_alive ()
   {
     if(!isset($this->fp) or $this->fp==0){
       $this->error = EC_NOT_LOGGED_IN;
@@ -548,7 +548,7 @@ class sieve
   }
 
 
-  function authenticate()
+  function authenticate ()
   {
 
     /* Check if a TLS bases connection is required
@@ -562,31 +562,31 @@ class sieve
         /* Initiate TLS and get response
          */
         if (@ fputs ($this->fp, "STARTTLS\r\n") === false) {
-          @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"couldn't send data to socket.",
+          @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"couldn't send data to socket.",
               "<b>SIEVE: TLS couldn't be initiated. </b>");
           $this->error_raw = "fputs() returned 'false'"; return (false);
         }
         @ $linha = fgets ($this->fp, 1024);
         if ($linha === false) {
           $this->error_raw = "fgets() returned 'false'";
-          @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"couldn't read data from socket.",
+          @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"couldn't read data from socket.",
               "<b>SIEVE: TLS couldn't be initiated. </b>");
           return (false);
         }
-        if (! preg_match ("/\\s*OK\\s/i", $linha)) {
-          @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"server returned '".trim ($linha)."' instead of 'OK'",
+        if (! preg_match("/\\s*OK\\s/i", $linha)) {
+          @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"server returned '".trim ($linha)."' instead of 'OK'",
               "<b>SIEVE: TLS couldn't be initiated. </b>");
           $this->error_raw = "expected an 'OK', but server replied: '" . trim ($linha) . "'";
           return (false);
         }
         if (! @ stream_socket_enable_crypto ($this->fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
-          @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
+          @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
               "The socket doesn't seem to support STREAM_CRYPTO_METHOD_TLS_CLIENT",
               "<b>SIEVE: TLS couldn't be initiated. </b>");
           $this->error_raw = "stream_socket_enable_crypto() returned 'false'";
           return (false);
         }
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
+        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
             "<b>SIEVE: TLS successfully initiated. </b>");
       }
     }
@@ -607,13 +607,13 @@ class sieve
 
         if(sieve::status($this->line) == F_NO){
           $this->error_raw = $this->line;
-          @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
+          @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
               "<b>SIEVE: Authentication for '".$this->user."-".$this->auth_in_use."' failed.</b>");
 
           return false;
         }
 
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
+        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
             "<b>SIEVE: Authentication for '".$this->user."-".$this->auth_in_use."' was successful.</b>");
         $this->loggedin=true;
         return true;
@@ -621,7 +621,7 @@ class sieve
 
       default:
       {
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"Unsupported authentication method '".$this->auth_in_use."'!",
+        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"Unsupported authentication method '".$this->auth_in_use."'!",
             "<b>SIEVE: Authentication for '".$this->user."' with type '".$this->auth_in_use."' failed.</b>");
 
         $this->error_raw = "Unsupported authentication method '".$this->auth_in_use."'!";

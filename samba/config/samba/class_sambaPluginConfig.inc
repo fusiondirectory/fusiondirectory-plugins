@@ -20,7 +20,7 @@
 
 class sambaPluginConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Samba'),
@@ -33,40 +33,40 @@ class sambaPluginConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'samba' => array(
         'name'  => _('Samba settings'),
         'attrs' => array(
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Samba ID mapping'),
             _('Maintain sambaIdmapEntry objects. Depending on your setup this can drastically improve the windows login performance.'),
             'fdSambaIdMapping'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Samba SID'),
             _('A samba SID if not available inside of the LDAP though samba schema. You can retrieve the current sid by net getlocalsid.'),
             'fdSambaSID', FALSE,
             '0-815-4711'
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Samba rid base'),
             _('The base id to add to ordinary sid calculations - if not available inside of the LDAP though samba schema.'),
             'fdSambaRidBase', FALSE,
             0, FALSE, 1
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Expiration date synchronisaton'), _('Synchronisaton the expiration date with the POSIX one?'),
             'fdSambaExpirationSync', FALSE,
             array('', 'posix', 'samba'), '',
             array('Do not synchronise', 'Synchronise from POSIX', 'Synchronise to POSIX')
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Generate sambaLMPassword'), _('Needed to be compliant with Windows <= 98 or Samba < 3.2'),
             'fdSambaGenLMPassword', FALSE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Activate primary group warning'), _('Issue a warning if POSIX primary group cannot be converted to Samba primary group when activating the Samba tab of a user'),
             'fdSambaPrimaryGroupWarning', FALSE
           )

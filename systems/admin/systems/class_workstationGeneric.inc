@@ -21,7 +21,7 @@
 
 class workstationGeneric extends ipHostPlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Workstation'),
@@ -43,7 +43,7 @@ class workstationGeneric extends ipHostPlugin
     );
   }
 
-  static function getAttributesInfo ($word = NULL, $rdn = NULL)
+  static function getAttributesInfo ($word = NULL, $rdn = NULL): array
   {
     if ($word === NULL) {
       $word = _('workstation');
@@ -56,22 +56,22 @@ class workstationGeneric extends ipHostPlugin
         'name'  => _('Properties'),
         'attrs' => array(
           new BaseSelectorAttribute($rdn),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'),
             sprintf(_('The name of the %s'), $word),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'),
             sprintf(_('A short description of the %s'), $word),
             'description', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Location'),
             sprintf(_('The location of the %s'), $word),
             'l', FALSE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             sprintf(_('Lock this %s'), $word),
             sprintf(_('This will prevent the %s from being reinstalled'), $word),
             'fdMode',
@@ -111,7 +111,7 @@ class workstationGeneric extends ipHostPlugin
     $this->attributesAccess['cn']->setUnique('one');
   }
 
-  protected function post_remove()
+  protected function post_remove ()
   {
     /* Clean queue from entries with this mac */
     if (class_available('supportDaemon')) {
@@ -122,4 +122,3 @@ class workstationGeneric extends ipHostPlugin
     return parent::post_remove();
   }
 }
-?>

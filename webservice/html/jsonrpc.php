@@ -29,7 +29,7 @@
 ini_set('session.use_cookies', 0);
 ini_set('session.use_only_cookies', 1);
 
-function authenticateHeader($message = 'Authentication required')
+function authenticateHeader ($message = 'Authentication required')
 {
   header('WWW-Authenticate: Basic realm="FusionDirectory"');
   header('HTTP/1.0 401 Unauthorized');
@@ -42,7 +42,7 @@ require_once("functions.inc");
 require_once("variables.inc");
 require_once("jsonrpcphp/jsonRPCServer.php");
 
-function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
+function initiateRPCSession ($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
 {
   global $config, $class_mapping, $BASE_DIR, $ui, $ssl;
 
@@ -125,7 +125,7 @@ class fdRPCService
   {
   }
 
-  function __call($method, $params)
+  function __call ($method, $params)
   {
     global $config;
     if (preg_match('/^_(.*)$/', $method, $m)) {
@@ -156,7 +156,7 @@ class fdRPCService
     return call_user_func_array(array($this, '_'.$method), $params);
   }
 
-  protected function checkAccess($type, $tabs = NULL, $dn = NULL)
+  protected function checkAccess ($type, $tabs = NULL, $dn = NULL)
   {
     global $ui;
     $infos = objects::infos($type);
@@ -226,7 +226,7 @@ class fdRPCService
   /*!
    * \brief Get information about objectType $type
    */
-  protected function _infos($type)
+  protected function _infos ($type)
   {
     $this->checkAccess($type);
 
@@ -241,7 +241,7 @@ class fdRPCService
   /*!
    * \brief List existing object types
    */
-  protected function _listTypes()
+  protected function _listTypes ()
   {
     $types  = objects::types();
 
@@ -256,7 +256,7 @@ class fdRPCService
   /*!
    * \brief List tabs on an object
    */
-  protected function _listTabs($type, $dn = NULL)
+  protected function _listTabs ($type, $dn = NULL)
   {
     $this->checkAccess($type, NULL, $dn);
 
@@ -279,7 +279,7 @@ class fdRPCService
   /*!
    * \brief Deactivate a tab of an object
    */
-  protected function _removetab($type, $dn, $tab)
+  protected function _removetab ($type, $dn, $tab)
   {
     $this->checkAccess($type, $tab, $dn);
     $tabobject = objects::open($dn, $type);
@@ -310,7 +310,7 @@ class fdRPCService
   /*!
    * \brief Get all form fields from an object (or object type)
    */
-  protected function _formfields($type, $dn = NULL, $tab = NULL)
+  protected function _formfields ($type, $dn = NULL, $tab = NULL)
   {
     $this->checkAccess($type, $tab, $dn);
 
@@ -360,7 +360,7 @@ class fdRPCService
   /*!
    * \brief Update values of an object's attributes using POST as if the webpage was sent
    */
-  protected function _formpost($type, $dn, $tab, $values)
+  protected function _formpost ($type, $dn, $tab, $values)
   {
     $this->checkAccess($type, $tab, $dn);
 
@@ -393,7 +393,7 @@ class fdRPCService
   /*!
    * \brief Get all internal fields from an object (or object type)
    */
-  protected function _getfields($type, $dn = NULL, $tab = NULL)
+  protected function _getfields ($type, $dn = NULL, $tab = NULL)
   {
     $this->checkAccess($type, $tab, $dn);
 
@@ -436,7 +436,7 @@ class fdRPCService
   /*!
    * \brief Set internal values of an object's attributes and save it
    */
-  protected function _setfields($type, $dn, $values)
+  protected function _setfields ($type, $dn, $values)
   {
     $this->checkAccess($type, array_keys($values), $dn);
     if ($dn === NULL) {
@@ -479,7 +479,7 @@ class fdRPCService
   /*!
    * \brief Add values to an object's attributes and save it
    */
-  protected function _addvalues($type, $dn, $values)
+  protected function _addvalues ($type, $dn, $values)
   {
     return $this->adddelvalues($type, $dn, $values, TRUE);
   }
@@ -487,12 +487,12 @@ class fdRPCService
   /*!
    * \brief Delete values from an object's attributes and save it
    */
-  protected function _delvalues($type, $dn, $values)
+  protected function _delvalues ($type, $dn, $values)
   {
     return $this->adddelvalues($type, $dn, $values, FALSE);
   }
 
-  private function adddelvalues($type, $dn, $values, $add)
+  private function adddelvalues ($type, $dn, $values, $add)
   {
     $this->checkAccess($type, array_keys($values), $dn);
     if ($dn === NULL) {
@@ -550,7 +550,7 @@ class fdRPCService
   /*!
    * \brief Get all internal fields from a template
    */
-  protected function _gettemplate($type, $dn)
+  protected function _gettemplate ($type, $dn)
   {
     $this->checkAccess($type, NULL, $dn);
 
@@ -561,7 +561,7 @@ class fdRPCService
   /*!
    * \brief
    */
-  protected function _usetemplate($type, $dn, $values)
+  protected function _usetemplate ($type, $dn, $values)
   {
     $this->checkAccess($type, NULL, $dn);
 
@@ -581,7 +581,7 @@ class fdRPCService
   /*!
    * \brief Delete an object
    */
-  protected function _delete($type, $dn)
+  protected function _delete ($type, $dn)
   {
     global $ui;
     $infos = objects::infos($type);
@@ -591,7 +591,7 @@ class fdRPCService
       if ($user = get_lock($dn)) {
         return array('errors' => array(sprintf(_('Cannot delete %s. It has been locked by %s.'), $dn, $user)));
       }
-      add_lock ($dn, $ui->dn);
+      add_lock($dn, $ui->dn);
 
       // Delete the object
       $tabobject = objects::open($dn, $type);
@@ -607,7 +607,7 @@ class fdRPCService
   /*!
    * \brief Lock or unlock a user
    */
-  protected function _lockUser($dns, $type = 'toggle')
+  protected function _lockUser ($dns, $type = 'toggle')
   {
     global $config, $ui;
 
@@ -679,7 +679,7 @@ class fdRPCService
   /*!
    * \brief Test if a user is locked
    */
-  protected function _isUserLocked($dns)
+  protected function _isUserLocked ($dns)
   {
     global $config, $ui;
 
@@ -730,7 +730,7 @@ class fdRPCService
   /*!
    * \brief Generate recovery token for a user
    */
-  protected function _recoveryGenToken($email)
+  protected function _recoveryGenToken ($email)
   {
     global $ui;
 
@@ -752,7 +752,7 @@ class fdRPCService
   /*!
    * \brief Change a user password using a recovery token
    */
-  protected function _recoveryConfirmPasswordChange($uid, $password1, $password2, $token)
+  protected function _recoveryConfirmPasswordChange ($uid, $password1, $password2, $token)
   {
     $pwRecovery = new passwordRecovery(FALSE);
     $pwRecovery->uid = $uid;

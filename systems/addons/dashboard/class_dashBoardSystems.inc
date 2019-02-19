@@ -24,7 +24,7 @@ class dashboardSystems extends simplePlugin
   /* default values */
   var $default_start_computer_id = 0;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Systems'),
@@ -36,7 +36,7 @@ class dashboardSystems extends simplePlugin
     );
   }
 
-  static function getAttributesInfo()
+  static function getAttributesInfo (): array
   {
     return array(
       'stats' => array(

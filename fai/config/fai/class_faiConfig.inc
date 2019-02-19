@@ -20,7 +20,7 @@
 
 class faiConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('FAI configuration'),
@@ -32,13 +32,13 @@ class faiConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     $attrs = array(
       'main' => array(
         'name'  => _('FAI'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Fai base RDN'), _('Branch in which fai branches will be stored'),
             'fdFaiBaseRDN', TRUE,
             'ou=fai,ou=configs,ou=systems'
@@ -53,7 +53,7 @@ class faiConfig extends simplePlugin
       } else {
         $default = 'ou='.strtolower($rdn).'s';
       }
-      $attrs['main']['attrs'][] = new StringAttribute (
+      $attrs['main']['attrs'][] = new StringAttribute(
         sprintf(_('Fai %s RDN'), _(strtolower($rdn))),
         sprintf(_('Relative branch in which fai %s will be stored'), _(strtolower($rdn).'s')),
         'fdFai'.$rdn.'RDN', TRUE,

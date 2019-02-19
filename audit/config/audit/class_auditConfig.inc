@@ -20,7 +20,7 @@
 
 class auditConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Audit configuration'),
@@ -33,26 +33,26 @@ class auditConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
         'name'  => _('Audit'),
         'attrs' => array(
-          new StringAttribute (
+          new StringAttribute(
             _('Audit RDN'), _('Branch in which audit events will be stored'),
             'fdAuditRDN', TRUE,
             'ou=audit'
           ),
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Actions to audit'), _('Which actions should be stored in LDAP audit log'),
               'fdAuditActions', TRUE,
               logging::$validActions
             ),
             array('modify','create','remove')
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Days to keep'), _('Number of days of audit to keep in the LDAP when cleaning'),
             'fdAuditRotationDelay', TRUE,
             1, FALSE, 120

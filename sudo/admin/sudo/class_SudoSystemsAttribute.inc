@@ -35,7 +35,7 @@ class SudoSystemsAttribute extends SystemsAttribute
     return $buttons.parent::renderButtons();
   }
 
-  public function htmlIds()
+  public function htmlIds ()
   {
     $id = $this->getHtmlId();
     $ids = parent::htmlIds();

@@ -64,7 +64,7 @@ class fiInventory extends simplePlugin
   );
 
   /* Return plugin information */
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Inventory'),
@@ -88,7 +88,7 @@ class fiInventory extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'match' => array(
@@ -156,7 +156,7 @@ class fiInventory extends simplePlugin
     $this->users_infos    = NULL;
   }
 
-  function execute()
+  function execute (): string
   {
     if ($this->hardware_infos === NULL) {
       $infos = $this->get_inventory_infos();
@@ -174,17 +174,17 @@ class fiInventory extends simplePlugin
     return parent::execute();
   }
 
-  function save()
+  function save (): array
   {
     return array();
   }
 
-  function remove($fulldelete = FALSE)
+  function remove (bool $fulldelete = FALSE): array
   {
     return array();
   }
 
-  function get_inventory_infos()
+  function get_inventory_infos ()
   {
     global $config;
     $ldap = $config->get_ldap_link();
@@ -301,7 +301,7 @@ class fiInventory extends simplePlugin
     return $infos;
   }
 
-  function updateMatching()
+  function updateMatching ()
   {
     global $config;
     $systemTypes = array('server','workstation','terminal','printer','component','phone','mobilePhone');
@@ -370,7 +370,7 @@ class fiInventory extends simplePlugin
     }
   }
 
-  function createSystem()
+  function createSystem ()
   {
     list ($type, $dn) = explode(':', $_POST['matching_template'], 2);
     $infos = objects::infos($type);

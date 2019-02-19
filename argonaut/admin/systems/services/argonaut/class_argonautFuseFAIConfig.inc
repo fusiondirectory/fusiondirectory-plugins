@@ -23,7 +23,7 @@ class argonautFuseFAIConfig extends simplePlugin
   var $showActions    = FALSE;
   var $displayHeader  = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'     => _('Argonaut Fuse FAI module settings'),
@@ -35,38 +35,38 @@ class argonautFuseFAIConfig extends simplePlugin
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array (
       'fai' => array (
         'name'  => _('FAI'),
         'attrs' => array (
-          new IntAttribute (
+          new IntAttribute(
             _('FAI version'), _('Version of FAI installed on the server'),
             'argonautFuseFaiVersion', TRUE,
             4, 5, 5
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('FAI flags'), _('Flags to pass to FAI'),
             'argonautFuseFaiFlags', FALSE,
             'verbose,sshd,syslogd,createvt,reboot'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('NFS root'), '',
             'argonautFuseNfsRoot', TRUE,
             '/srv/fai/nfsroot'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('FAI 4 command line'), _('Command line for FAI 4 - should be "ip=dhcp root=/dev/nfs boot=live union=aufs"'),
             'argonautFuseFai4Cmdline', TRUE,
             'ip=dhcp root=/dev/nfs boot=live union=aufs'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('FAI 5 command line'), _('Command line for FAI 5 - should be "ip=dhcp rootovl"'),
             'argonautFuseFai5Cmdline', TRUE,
             'ip=dhcp rootovl'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Multiple distro mode'), _('This enables a mode for multiple distributions usage which adds the release as a suffix to kernel, initrd and nfsroot in the PXE file'),
             'argonautFuseMultipleReleaseMode'
           ),

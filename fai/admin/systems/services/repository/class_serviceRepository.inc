@@ -21,7 +21,7 @@
 
 class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
 {
-  function __construct($description, $ldapName, $acl = "", $label = "Composite attribute")
+  function __construct ($description, $ldapName, $acl = "", $label = "Composite attribute")
   {
     parent::__construct(
       $description,
@@ -85,13 +85,13 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
     $this->attributes[7]->setSubmitForm(TRUE);
   }
 
-  function setParent(&$plugin)
+  function setParent (&$plugin)
   {
     $this->updateFields();
     parent::setParent($plugin);
   }
 
-  function updateFields()
+  function updateFields ()
   {
     $dn = NULL;
     if (is_object($this->plugin)) {
@@ -115,7 +115,7 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
     $this->attributes[4]->setChoices($modeChoices);
   }
 
-  function applyPostValue()
+  function applyPostValue ()
   {
     parent::applyPostValue();
     $this->updateFields();
@@ -132,7 +132,7 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
     parent::setValue($values);
   }
 
-  function readValues($value)
+  function readValues ($value)
   {
     $values = parent::readValues($value);
     if (!isset($values[8])) {
@@ -153,7 +153,7 @@ class serviceRepository extends simpleService
 {
   protected static $showActions = FALSE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('Package repository'),
@@ -165,7 +165,7 @@ class serviceRepository extends simpleService
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -196,7 +196,7 @@ class serviceRepository extends simpleService
     $this->attributesAccess['FAIrepository']->setLinearRendering(FALSE);
   }
 
-  static function isOfDistribution($attrs, $distribution)
+  static function isOfDistribution ($attrs, $distribution)
   {
     if (!isset($attrs['FAIrepository'])) {
       return FALSE;
@@ -204,7 +204,7 @@ class serviceRepository extends simpleService
     return preg_match('/'.preg_quote($distribution, '/').'$/', $attrs['FAIrepository'][0]);
   }
 
-  function ldap_save()
+  function ldap_save (): array
   {
     $errors = parent::ldap_save();
 
@@ -268,7 +268,7 @@ class serviceRepository extends simpleService
    *
    * \return array All configured repository servers
   */
-  static function getServers()
+  static function getServers ()
   {
     global $config;
 
@@ -305,7 +305,7 @@ class serviceRepository extends simpleService
    *
    * \return array All configured customs releases based on the given release
   */
-  static function getCustomReleases($release)
+  static function getCustomReleases ($release)
   {
     $list     = array();
     $servers  = static::getServers();
@@ -319,7 +319,7 @@ class serviceRepository extends simpleService
     return array_values($list);
   }
 
-  static function getParentServers($distribution, $dn = NULL)
+  static function getParentServers ($distribution, $dn = NULL)
   {
     global $config;
 
