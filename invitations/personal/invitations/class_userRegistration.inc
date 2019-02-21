@@ -27,7 +27,7 @@ class userRegistration extends simplePlugin
     return array(
       'plShortName'   => _('Registration'),
       'plDescription' => _('User registration status'),
-      'plSmallIcon'   => 'geticon.php?context=types&icon=registration&size=16',
+      'plSmallIcon'   => 'geticon.php?context=status&icon=pending&size=16',
       'plObjectClass' => array('fdUserRegistration'),
       'plObjectType'  => array('user'),
       'plSelfModify'  => FALSE,
