@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -188,7 +189,7 @@ class servicePostfix extends simpleService
     );
   }
 
-  protected function shouldSave ()
+  protected function shouldSave (): bool
   {
     /* We need ldap_save to always run */
     return TRUE;
@@ -204,4 +205,3 @@ class servicePostfix extends simpleService
     return $errors;
   }
 }
-?>
