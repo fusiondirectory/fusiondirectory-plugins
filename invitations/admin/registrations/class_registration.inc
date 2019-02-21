@@ -58,10 +58,10 @@ class RegistrationStateAttribute extends DisplayLDAPAttribute
   static function getStates ()
   {
     return array(
-      'sent'      => array(_('Sent'),     'geticon.php?context=actions&icon=up&size=16'),
-      'filled'    => array(_('Filled'),   'geticon.php?context=applications&icon=ldap&size=16'),
-      'accepted'  => array(_('Accepted'), 'geticon.php?context=status&icon=task-complete&size=16'),
-      'rejected'  => array(_('Rejected'), 'geticon.php?context=status&icon=task-failure&size=16'),
+      'sent'      => array(_('Sent'),     'geticon.php?context=status&icon=sent&size=16'),
+      'filled'    => array(_('Filled'),   'geticon.php?context=status&icon=filled&size=16'),
+      'accepted'  => array(_('Accepted'), 'geticon.php?context=status&icon=accepted&size=16'),
+      'rejected'  => array(_('Rejected'), 'geticon.php?context=status&icon=rejected&size=16'),
     );
   }
 
@@ -97,7 +97,7 @@ class registration extends simplePlugin
       'plObjectType'  => array('registration' => array(
         'name'      => _('Registration'),
         'ou'        => get_ou('registrationRDN'),
-        'icon'      => 'geticon.php?context=types&icon=contact&size=16',
+        'icon'      => 'geticon.php?context=types&icon=registration&size=16',
         'mainAttr'  => 'fdRegistrationEmailAddress',
       )),
       'plForeignKeys'   => array(

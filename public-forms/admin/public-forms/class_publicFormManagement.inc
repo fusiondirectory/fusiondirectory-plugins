@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018 FusionDirectory
+
+  Copyright (C) 2017-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -26,11 +27,9 @@ class publicFormManagement extends management
       'plShortName'   => _('Public forms'),
       'plTitle'       => _('Public forms management'),
       'plDescription' => _('Manage public forms'),
-      'plIcon'        => '',
+      'plIcon'        => 'geticon.php?context=types&icon=publicform&size=48',
       'plSection'     => 'accounts',
       'plManages'     => array('publicForm'),
-
-      'plProvidedAcls' => array()
     );
   }
 }
