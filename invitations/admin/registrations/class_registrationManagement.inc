@@ -82,11 +82,9 @@ class registrationManagement extends management
       'plShortName'   => _('Registrations'),
       'plTitle'       => _('Registrations management'),
       'plDescription' => _('Manage registrations'),
-      'plIcon'        => 'geticon.php?context=types&icon=contact&size=48',
+      'plIcon'        => 'geticon.php?context=types&icon=registration&size=48',
       'plSection'     => 'accounts',
       'plManages'     => array('registration'),
-
-      'plProvidedAcls' => array()
     );
   }
 
@@ -103,14 +101,14 @@ class registrationManagement extends management
 
     $this->registerAction(
       new Action(
-        'accept', _('Accept'), 'geticon.php?context=actions&icon=add&size=16',
+        'accept', _('Accept'), 'geticon.php?context=actions&icon=accept&size=16',
         '+', 'acceptRegistration',
         array('registration/registration/fdRegistrationState:w')
       )
     );
     $this->registerAction(
       new Action(
-        'reject', _('Reject'), 'geticon.php?context=actions&icon=remove&size=16',
+        'reject', _('Reject'), 'geticon.php?context=actions&icon=reject&size=16',
         '+', 'rejectRegistration',
         array('registration/registration/fdRegistrationState:w')
       )

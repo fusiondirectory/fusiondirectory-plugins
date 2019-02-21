@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018 FusionDirectory
+
+  Copyright (C) 2017-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -25,7 +26,6 @@ class publicFormAlteration extends simplePlugin
     return array(
       'plShortName'   => _('Altered fields'),
       'plDescription' => _('Alteration on form fields'),
-      'plIcon'        => '',
       'plObjectClass' => array(),
       'plObjectType'  => array('publicForm'),
 
@@ -106,4 +106,3 @@ class publicFormAlteration extends simplePlugin
     );
   }
 }
-?>

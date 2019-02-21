@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018 FusionDirectory
+
+  Copyright (C) 2017-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -25,12 +26,11 @@ class publicForm extends simplePlugin
     return array(
       'plShortName'   => _('Public form'),
       'plDescription' => _('Public form which creates objects inside FusionDirectory'),
-      'plIcon'        => '',
       'plObjectClass' => array('fdPublicForm'),
       'plObjectType'  => array('publicForm' => array(
         'name'    => _('Public form'),
         'ou'      => get_ou('publicFormRDN'),
-        'icon'    => '',
+        'icon'    => 'geticon.php?context=types&icon=publicform&size=16',
       )),
       //~ 'plForeignKeys'   => array(
         //~ 'fdPublicFormTemplateDN' => '?',
@@ -119,4 +119,3 @@ class publicForm extends simplePlugin
     $this->attributesAccess['fdPublicFormTemplateDN']->setChoices(array_keys($templates), array_values($templates));
   }
 }
-?>
