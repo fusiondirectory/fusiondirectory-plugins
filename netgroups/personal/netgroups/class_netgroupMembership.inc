@@ -32,9 +32,9 @@ class NetgroupsAttribute extends GroupsAttribute
 
 class netgroupMembership extends simplePlugin
 {
-  var $displayHeader = TRUE;
-  var $id;
-  var $old_id;
+  protected $displayHeader = TRUE;
+  protected $id;
+  protected $old_id;
   protected static $id_attr = 'uid';
 
   static function plInfo (): array
@@ -154,8 +154,9 @@ class netgroupMembership extends simplePlugin
   function ldap_save (): array
   {
     global $config;
+
     $this->update_id();
-    /* Call parents save to prepare $this->attrs */
+
     $ldap   = $config->get_ldap_link();
     $attrs  = array();
     $attrs['objectClass'] = array('top','nisNetgroup');
@@ -227,7 +228,7 @@ class netgroupMembership extends simplePlugin
         $ldap->modify($attrs);
       }
     }
+
+    return array();
   }
 }
-
-?>
