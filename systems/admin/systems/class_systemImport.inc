@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014-2018  FusionDirectory
+
+  Copyright (C) 2014-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -31,7 +32,7 @@ class systemImport extends simplePlugin
 {
   protected $types = array();
 
-  static function getAttributesInfo ($filter = '')
+  static function getAttributesInfo (string $filter = ''): array
   {
     return array(
       'import' => array(
@@ -241,6 +242,7 @@ class systemImport extends simplePlugin
 
   function save (): array
   {
+    return array();
   }
 
   function handle_import ()
@@ -258,9 +260,8 @@ class systemImport extends simplePlugin
     die('Not implemented');
   }
 
-  protected function getExtraTabs ($server_dn, $host)
+  protected function getExtraTabs ($server_dn, $host): array
   {
     return array();
   }
 }
-?>

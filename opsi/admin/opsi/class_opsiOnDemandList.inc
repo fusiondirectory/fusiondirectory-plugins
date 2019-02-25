@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016 FusionDirectory
+
+  Copyright (C) 2013-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,7 +21,7 @@
 
 class opsiOnDemandList extends opsiSoftwareList
 {
-  public static function plInfo ()
+  public static function plInfo (): array
   {
     return array(
       'plShortName'   => _('OPSI ondemand list'),
@@ -40,7 +41,7 @@ class opsiOnDemandList extends opsiSoftwareList
     );
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     return array(
       'main' => array(
@@ -89,4 +90,3 @@ class opsiOnDemandList extends opsiSoftwareList
     return parent::server_changed($opsi_args);
   }
 }
-?>
