@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
+
   Copyright (C) 2010 Antoine Gallavardin
-  Copyright (C) 2011-2016 FusionDirectory project
+  Copyright (C) 2011-2019 FusionDirectory project
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -24,7 +25,7 @@ class opsiImport extends systemImport
   protected $types = array('workstation');
 
   /* Return plugin information for acl handling  */
-  static function plInfo ()
+  static function plInfo (): array
   {
     return array(
       'plShortName'   => _('OPSI import'),
@@ -44,7 +45,7 @@ class opsiImport extends systemImport
     );
   }
 
-  static function getAttributesInfo ($filter = 'objectClass=opsiServer')
+  static function getAttributesInfo (string $filter = 'objectClass=opsiServer'): array
   {
     $attributesInfo = parent::getAttributesInfo($filter);
     /* Add our checkbox just before the import button */
@@ -63,7 +64,7 @@ class opsiImport extends systemImport
     return $attributesInfo;
   }
 
-  protected function getExtraTabs ($server_dn, $host)
+  protected function getExtraTabs ($server_dn, $host): array
   {
     $extraTabs = array(
       'sambaSystemTab' => array(
@@ -163,4 +164,3 @@ class opsiImport extends systemImport
     return $hosts;
   }
 }
-?>
