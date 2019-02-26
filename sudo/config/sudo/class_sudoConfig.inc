@@ -49,4 +49,3 @@ class sudoConfig extends simplePlugin
     );
   }
 }
-?>

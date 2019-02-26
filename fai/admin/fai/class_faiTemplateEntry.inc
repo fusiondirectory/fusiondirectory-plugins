@@ -198,4 +198,3 @@ class faiTemplateEntry extends simplePlugin
     $this->FAItemplatePath = $this->cn;
   }
 }
-?>

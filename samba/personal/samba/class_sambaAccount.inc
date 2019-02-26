@@ -630,5 +630,3 @@ class sambaAccount extends simplePlugin
     return parent::showInTemplate($attr, $templateAttrs);
   }
 }
-
-?>

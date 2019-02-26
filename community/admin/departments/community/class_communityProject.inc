@@ -58,4 +58,3 @@ class communityProject extends communityOrganization
     return $infos;
   }
 }
-?>

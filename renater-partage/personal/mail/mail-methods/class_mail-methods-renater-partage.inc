@@ -691,4 +691,3 @@ class mailMethodRenaterPartage extends mailMethod
     return $serverList;
   }
 }
-?>

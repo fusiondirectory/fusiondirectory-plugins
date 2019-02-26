@@ -120,7 +120,6 @@ class mailMethod
     } else {
       $this->type = $type;
     }
-
   }
 
   /*! \brief  Intialize attributes and config settings.
@@ -358,7 +357,7 @@ class mailMethod
     if (isset($this->parent->mail)) {
       $mail = $this->parent->mail;
       if (preg_match('/\@/', $mail)) {
-        list($mailpart,$domain) = explode('@', $mail);
+        list($mailpart, $domain) = explode('@', $mail);
       }
     }
 
@@ -441,7 +440,7 @@ class mailMethod
     if (isset($this->parent->mail)) {
       $mail = $this->parent->mail;
       if (preg_match('/\@/', $mail)) {
-        list($mailpart,$domain) = explode('@', $mail);
+        list($mailpart, $domain) = explode('@', $mail);
       }
     }
 
@@ -463,7 +462,7 @@ class mailMethod
     }
 
     if (preg_match("/\@/", $acc_id)) {
-      list($mail,$domain) = explode('@', $acc_id);
+      list($mail, $domain) = explode('@', $acc_id);
       $str = trim($mail . $folder . '@' . $domain);
     } else {
       $str = trim($acc_id . $folder);
@@ -787,4 +786,3 @@ class mailMethod
     return array();
   }
 }
-?>

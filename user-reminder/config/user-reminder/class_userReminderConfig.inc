@@ -166,4 +166,3 @@ class userReminderConfig extends simplePlugin
     parent::post_save();
   }
 }
-?>

@@ -55,4 +55,3 @@ class packageSelect extends simpleSelectManagement
     return $ret;
   }
 }
-?>

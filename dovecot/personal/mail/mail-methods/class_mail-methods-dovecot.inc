@@ -228,4 +228,3 @@ class mailMethodDovecot extends mailMethod
     return $serverList;
   }
 }
-?>

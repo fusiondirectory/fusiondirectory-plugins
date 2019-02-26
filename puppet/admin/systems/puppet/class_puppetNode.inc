@@ -93,7 +93,7 @@ class puppetNode extends simplePlugin
 
   public function getDisplayHeaderInfos (): array
   {
-    list($disabled,$buttonText,$text) = parent::getDisplayHeaderInfos();
+    list($disabled, $buttonText, $text) = parent::getDisplayHeaderInfos();
     if (!$this->is_account && !$disabled && empty($this->attributesAccess['environment']->getChoices())) {
       $disabled = TRUE;
       $text     = _('You need to add the puppet service to a server to be able to use this tab');
@@ -101,5 +101,3 @@ class puppetNode extends simplePlugin
     return array($disabled,$buttonText,$text);
   }
 }
-
-?>

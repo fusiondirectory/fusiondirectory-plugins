@@ -113,7 +113,7 @@ class argonautQueue extends simpleManagement
       if ($this->acl_is_removeable($task['TARGETDN'])) {
         /* Only remove WAITING or ERROR entries */
         if (in_array($task['STATUS'], array('waiting','error','processed')) ||
-            ($task['STATUS'] == 'processing' && !preg_match('/install/', $task['HEADERTAG'])) ) {
+            ($task['STATUS'] == 'processing' && !preg_match('/install/', $task['HEADERTAG']))) {
           $this->dns[] = $dn;
         } else {
           $nodelete[] = $j_name;
@@ -332,7 +332,7 @@ class argonautQueue extends simpleManagement
       }
     }
     if ($progress) {
-        $str .= "&nbsp;(".htmlentities($progress, ENT_COMPAT, 'UTF-8')."%)";
+      $str .= "&nbsp;(".htmlentities($progress, ENT_COMPAT, 'UTF-8')."%)";
     }
     return $str;
   }
@@ -378,11 +378,10 @@ class argonautQueue extends simpleManagement
        STATUS == "processing" && PROGRESS == NUMERIC
      */
     if ($status == 'processing' && $substatus) {
-        $status = $substatus;
+      $status = $substatus;
     } elseif ($status == 'processing') {
-        $status = preg_replace('/ /', '&nbsp;', _('in progress'));
+      $status = preg_replace('/ /', '&nbsp;', _('in progress'));
     }
     return $status;
   }
 }
-?>

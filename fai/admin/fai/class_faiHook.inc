@@ -117,4 +117,3 @@ class faiHook extends faiSimplePluginClass
     return $errors;
   }
 }
-?>

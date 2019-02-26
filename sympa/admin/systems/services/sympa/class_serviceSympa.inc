@@ -33,7 +33,7 @@ class serviceSympa extends simpleService
     );
   }
 
-    /*!
+  /*!
    *  \brief The main function : information about attributes
    */
   static function getAttributesInfo (): array
@@ -59,4 +59,3 @@ class serviceSympa extends simpleService
     );
   }
 }
-?>

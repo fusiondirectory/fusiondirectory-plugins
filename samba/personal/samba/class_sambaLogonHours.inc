@@ -140,7 +140,7 @@ class sambaLogonHours
     }
 
     /* Create uppercase HEX chars */
-    $ret = strtoupper( $tmp);
+    $ret = strtoupper($tmp);
 
     /* All hours and days selected */
     if (substr_count($ret, 'F') == 42) {
@@ -178,4 +178,3 @@ class SambaLogonHoursDialog
     return $this->dialog->execute();
   }
 }
-?>

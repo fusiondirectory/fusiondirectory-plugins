@@ -280,7 +280,7 @@ class sambaMungedDial
 
       /* If string parameter, convert */
       if (in_array($ctxParmName, $this->stringParams)) {
-          $ctxParm = sambaMungedDial::hexstr($ctxParm);
+        $ctxParm = sambaMungedDial::hexstr($ctxParm);
       }
       /* If time parameter, convert */
       if (in_array($ctxParmName, $this->timeParams)) {
@@ -551,4 +551,3 @@ class sambaMungedDial
     }
   }
 }
-?>

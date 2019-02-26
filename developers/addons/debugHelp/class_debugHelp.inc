@@ -164,7 +164,7 @@ class debugHelp extends simplePlugin
         $nodes  .= "\t".'node [shape=plaintext,label="'.$tabclass.'",color=white] '.$tabclass.";\n";
       }
       foreach ($tabs as $tab) {
-        if (!class_available($tab['CLASS']))  {
+        if (!class_available($tab['CLASS'])) {
           continue;
         }
         if ($tabclass == 'tabclass_SERVERSERVICE') {

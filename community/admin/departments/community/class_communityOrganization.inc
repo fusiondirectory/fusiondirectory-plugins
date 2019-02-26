@@ -106,4 +106,3 @@ class communityOrganization extends simplePlugin
     );
   }
 }
-?>

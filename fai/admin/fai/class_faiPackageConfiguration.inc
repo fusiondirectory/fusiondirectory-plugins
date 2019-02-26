@@ -278,4 +278,3 @@ class faiPackageConfiguration extends simplePlugin
     return $tmp;
   }
 }
-?>

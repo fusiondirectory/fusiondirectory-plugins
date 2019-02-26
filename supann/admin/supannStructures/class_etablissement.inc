@@ -229,4 +229,3 @@ class etablissement extends simplePlugin
     }
   }
 }
-?>

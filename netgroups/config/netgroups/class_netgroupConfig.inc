@@ -49,4 +49,3 @@ class netgroupConfig extends simplePlugin
     );
   }
 }
-?>

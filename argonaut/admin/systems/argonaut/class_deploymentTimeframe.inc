@@ -68,5 +68,3 @@ class deploymentTimeframe extends simplePlugin
     );
   }
 }
-
-?>

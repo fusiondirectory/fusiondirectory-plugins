@@ -197,7 +197,7 @@ class faiLogView extends simplePlugin
       /* Query for log files */
       $res = $this->o_queue->get_log_info_for_mac($this->mac);
       if ($this->o_queue->is_error()) {
-          msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
+        msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
       }
 
       /* Check if there is at least one log file */
@@ -245,4 +245,3 @@ class faiLogView extends simplePlugin
     return $res;
   }
 }
-?>

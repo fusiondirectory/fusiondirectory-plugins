@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class filterArgonautEvents extends  filterLDAP
+class filterArgonautEvents extends filterLDAP
 {
   static function query ($parent, $base, $scope, $filter, $attributes, $category, $objectStorage = "")
   {
@@ -105,7 +105,7 @@ class filterArgonautEvents extends  filterLDAP
 
       /* If WAITING or ERROR add remove action
        */
-      if ( $acl_is_removeable && in_array($entry['STATUS'], array("waiting","error","processed"))) {
+      if ($acl_is_removeable && in_array($entry['STATUS'], array("waiting","error","processed"))) {
         $entry['objectClass'][] = "FAKE_OC__remove";
       }
       if ($acl_is_writeable && in_array($entry['STATUS'], array("processing")) && !preg_match("/install/", $entry['HEADERTAG'])) {
@@ -133,4 +133,3 @@ class filterArgonautEvents extends  filterLDAP
     return $data;
   }
 }
-?>

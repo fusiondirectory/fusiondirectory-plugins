@@ -85,4 +85,3 @@ class subContractingAccount extends simplePlugin
     );
   }
 }
-?>

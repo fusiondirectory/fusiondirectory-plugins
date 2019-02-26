@@ -132,5 +132,3 @@ class webLink extends simplePlugin
     );
   }
 }
-
-?>

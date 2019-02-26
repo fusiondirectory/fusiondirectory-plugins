@@ -62,4 +62,3 @@ class auditConfig extends simplePlugin
     );
   }
 }
-?>

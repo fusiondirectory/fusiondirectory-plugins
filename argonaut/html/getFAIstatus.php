@@ -48,4 +48,3 @@ $res    = $o->get_entries_by_mac(explode(",", $_GET['mac']));
 foreach ($res as $entry) {
   echo $entry['MACADDRESS']."|".$entry['PROGRESS']."\n";
 }
-?>

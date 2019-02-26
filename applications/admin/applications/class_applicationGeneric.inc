@@ -127,4 +127,3 @@ class application extends simplePlugin
     }
   }
 }
-?>

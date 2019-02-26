@@ -112,4 +112,3 @@ class mobilePhoneGeneric extends ipHostPlugin
     );
   }
 }
-?>

@@ -396,4 +396,3 @@ class faiPartitionTable extends faiSimplePluginClass
     return $ret;
   }
 }
-?>

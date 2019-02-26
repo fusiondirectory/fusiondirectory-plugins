@@ -23,4 +23,3 @@ class memberNisnetgroupSelect extends simpleSelectManagement
 {
   protected $objectTypes = array('netgroup');
 }
-?>

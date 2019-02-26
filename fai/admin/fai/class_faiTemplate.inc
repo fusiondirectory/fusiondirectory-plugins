@@ -200,4 +200,3 @@ class faiTemplate extends faiSimplePluginClass
     return $errors;
   }
 }
-?>

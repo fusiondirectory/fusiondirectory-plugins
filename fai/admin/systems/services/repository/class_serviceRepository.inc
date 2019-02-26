@@ -354,4 +354,3 @@ class serviceRepository extends simpleService
     return $list;
   }
 }
-?>

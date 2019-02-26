@@ -340,4 +340,3 @@ class publicFormPage extends standAlonePage
     $smarty->display(get_template_path('public-form.tpl'));
   }
 }
-?>

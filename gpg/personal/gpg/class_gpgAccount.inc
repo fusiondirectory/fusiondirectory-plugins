@@ -53,4 +53,3 @@ class gpgAccount extends simplePlugin
     );
   }
 }
-?>

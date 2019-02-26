@@ -54,4 +54,3 @@ class debconfProfileManagement extends simpleManagement
     return $data;
   }
 }
-?>

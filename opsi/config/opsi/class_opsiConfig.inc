@@ -49,4 +49,3 @@ class opsiConfig extends simplePlugin
     );
   }
 }
-?>

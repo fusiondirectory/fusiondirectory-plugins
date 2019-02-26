@@ -421,5 +421,3 @@ class opsiClient extends simplePlugin
     $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[1]->setChoices($actions);
   }
 }
-
-?>

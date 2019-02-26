@@ -300,7 +300,7 @@ class csvImport extends simplePlugin
 
         $cells  = str_getcsv($line, $this->separator);
 
-        if (count($cells) > $anz ) {
+        if (count($cells) > $anz) {
           $anz = count($cells);
         }
       }

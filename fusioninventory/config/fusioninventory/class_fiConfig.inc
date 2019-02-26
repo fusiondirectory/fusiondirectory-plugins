@@ -55,4 +55,3 @@ class fiConfig extends simplePlugin
     );
   }
 }
-?>

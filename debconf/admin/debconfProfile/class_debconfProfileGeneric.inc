@@ -117,7 +117,7 @@ class DebconfImportAttribute extends FileAttribute
     $tmp = str_replace("\n", "", $str);
     // removing spaces
     $tmp = str_replace(" ", "", $tmp);
-    if (preg_match( "/dn:.*,ou=templates,ou=([^,=]+),".get_ou("debconfRDN").
+    if (preg_match("/dn:.*,ou=templates,ou=([^,=]+),".get_ou("debconfRDN").
                     $config->current['BASE']."/",
                     // searching for dn: containing the template name
                     $tmp, $matches) > 0) {
@@ -221,4 +221,3 @@ class debconfProfileGeneric extends simplePlugin
     }
   }
 }
-?>

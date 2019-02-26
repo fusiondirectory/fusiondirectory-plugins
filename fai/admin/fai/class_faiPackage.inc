@@ -497,4 +497,3 @@ class faiPackage extends faiSimplePluginClass
     return $ret;
   }
 }
-?>

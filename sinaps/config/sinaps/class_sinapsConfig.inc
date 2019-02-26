@@ -151,4 +151,3 @@ class sinapsConfig extends simplePlugin
     $this->attributesAccess['fdSinapsAcquisitionContactMethodMap']->setHeaders(array(_('LDAP'), _('Sinaps')));
   }
 }
-?>

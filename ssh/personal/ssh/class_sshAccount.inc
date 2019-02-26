@@ -136,4 +136,3 @@ class sshAccount extends simplePlugin
     return $message;
   }
 }
-?>

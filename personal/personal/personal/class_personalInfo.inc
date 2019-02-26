@@ -167,4 +167,3 @@ class personalInfo extends simplePlugin
     );
   }
 }
-?>

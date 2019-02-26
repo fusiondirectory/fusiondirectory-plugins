@@ -164,4 +164,3 @@ class faiManagement extends simpleManagement
     return $list;
   }
 }
-?>

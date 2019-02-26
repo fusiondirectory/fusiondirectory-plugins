@@ -25,5 +25,3 @@ require_once('variables.inc');
 $expiredPostpone = new expiredUserPostpone();
 
 $expiredPostpone->execute();
-
-?>

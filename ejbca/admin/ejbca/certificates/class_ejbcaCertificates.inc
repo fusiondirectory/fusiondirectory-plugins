@@ -58,4 +58,3 @@ class ejbcaCertificates extends simplePlugin
     );
   }
 }
-?>

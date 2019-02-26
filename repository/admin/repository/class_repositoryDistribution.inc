@@ -91,5 +91,3 @@ class repositoryDistribution extends simplePlugin
     $this->attributesAccess['fdRepoSection']->attribute->setChoices(array_values($sections));
   }
 }
-
-?>

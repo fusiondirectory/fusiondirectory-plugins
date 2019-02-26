@@ -252,5 +252,3 @@ class PgpKeyAttribute extends GenericDialogAttribute
     return $buttons;
   }
 }
-
-?>

@@ -124,4 +124,3 @@ class ppolicyAccount extends simplePlugin
      * It’s not possible to remove ppolicy info from a user node anyway */
   }
 }
-?>

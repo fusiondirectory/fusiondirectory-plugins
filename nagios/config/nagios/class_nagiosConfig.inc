@@ -49,4 +49,3 @@ class nagiosConfig extends simplePlugin
     );
   }
 }
-?>

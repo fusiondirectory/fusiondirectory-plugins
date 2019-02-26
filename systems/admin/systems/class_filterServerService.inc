@@ -50,4 +50,3 @@ class filterServerService
     return array_values($list);
   }
 }
-?>

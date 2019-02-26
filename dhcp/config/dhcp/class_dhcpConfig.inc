@@ -49,4 +49,3 @@ class dhcpConfig extends simplePlugin
     );
   }
 }
-?>

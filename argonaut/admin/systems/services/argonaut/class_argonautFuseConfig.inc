@@ -203,4 +203,3 @@ class argonautFuseConfig extends simpleService
     return parent::remove($fulldelete);
   }
 }
-?>

@@ -63,4 +63,3 @@ class faiConfig extends simplePlugin
     return $attrs;
   }
 }
-?>

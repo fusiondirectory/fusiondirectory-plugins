@@ -37,7 +37,8 @@ $Id$
 *
 * @package lam
 */
-class smbHash {
+class smbHash
+{
 
   // Contants used in lanlam hash calculations
   // Ported from SAMBA/source/libsmb/smbdes.c:perm1[56]
@@ -137,8 +138,11 @@ class smbHash {
   */
   private function x ($i)
   {
-    if ($i < 0) return 4294967296 - $i;
-    else return $i;
+    if ($i < 0) {
+      return 4294967296 - $i;
+    } else {
+      return $i;
+    }
   }
 
   /**
@@ -207,7 +211,9 @@ class smbHash {
       $d = $this->lshift($this->sc[$i], $d);
 
       $cd = $c;
-      for ($k = 0; $k < sizeof($d); $k++) $cd[] = $d[$k];
+      for ($k = 0; $k < sizeof($d); $k++) {
+        $cd[] = $d[$k];
+      }
       $ki[$i] = $this->permute($cd, $this->perm2, 48);
     }
 
@@ -251,11 +257,17 @@ class smbHash {
       }
       $pcb = $this->permute($cb, $this->perm5, 32);
       $r2 = $this->mxor($l, $pcb);
-      for ($k = 0; $k < 32; $k++) $l[$k] = $r[$k];
-      for ($k = 0; $k < 32; $k++) $r[$k] = $r2[$k];
+      for ($k = 0; $k < 32; $k++) {
+        $l[$k] = $r[$k];
+      }
+      for ($k = 0; $k < 32; $k++) {
+        $r[$k] = $r2[$k];
+      }
     }
     $rl = $r;
-    for ($i = 0; $i < sizeof($l); $i++) $rl[] = $l[$i];
+    for ($i = 0; $i < sizeof($l); $i++) {
+      $rl[] = $l[$i];
+    }
     return $this->permute($rl, $this->perm6, 64);
   }
 
@@ -303,7 +315,7 @@ class smbHash {
       $out[$i] = 0;
     }
     for ($i = 0; $i < 64; $i++) {
-      if ( $outb[$i] )  {
+      if ($outb[$i]) {
         $out[$i / 8] |= (1 << (7 - ($i % 8)));
       }
     }
@@ -388,7 +400,4 @@ class smbHash {
     }
     return $a;
   }
-
 }
-
-?>

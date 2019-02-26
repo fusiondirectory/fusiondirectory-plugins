@@ -22,7 +22,6 @@
 
 class simpleMailMethodService extends simpleService
 {
-
   protected function prepare_save (): array
   {
     if (!$this->shouldSave()) {
@@ -72,4 +71,3 @@ class serviceIMAP extends simpleMailMethodService
     return '<b>This server runs an IMAP or POP3 server</b>'.parent::execute();
   }
 }
-?>

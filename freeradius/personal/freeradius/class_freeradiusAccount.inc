@@ -167,5 +167,3 @@ class freeradiusAccount extends simplePlugin
     $this->attributesAccess['radiusGroupName']->attribute->setChoices($groups);
   }
 }
-
-?>

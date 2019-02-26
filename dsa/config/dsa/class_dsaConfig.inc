@@ -49,4 +49,3 @@ class dsaConfig extends simplePlugin
     );
   }
 }
-?>

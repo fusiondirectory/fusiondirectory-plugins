@@ -157,4 +157,3 @@ class netgroup extends simplePlugin
     return parent::prepare_save();
   }
 }
-?>

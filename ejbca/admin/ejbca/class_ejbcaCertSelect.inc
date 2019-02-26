@@ -125,5 +125,3 @@ class EjbcaUserCertsAttribute extends GenericDialogAttribute
     return $buttons;
   }
 }
-
-?>

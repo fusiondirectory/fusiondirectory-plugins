@@ -144,4 +144,3 @@ class userCertificates extends simplePlugin
     );
   }
 }
-?>

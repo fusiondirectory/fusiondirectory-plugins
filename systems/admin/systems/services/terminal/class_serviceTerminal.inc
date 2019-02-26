@@ -35,7 +35,7 @@ class serviceTerminal extends simpleService
 
   static function getAttributesInfo (): array
   {
-      return array (
+    return array (
       'section1' => array (
         'name'  => _('Terminal service'),
         'attrs' => array (
@@ -63,5 +63,3 @@ class serviceTerminal extends simpleService
     );
   }
 }
-
-?>

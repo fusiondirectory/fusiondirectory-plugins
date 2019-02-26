@@ -49,4 +49,3 @@ class aliasConfig extends simplePlugin
     );
   }
 }
-?>

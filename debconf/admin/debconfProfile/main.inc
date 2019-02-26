@@ -19,5 +19,3 @@
 */
 
 simpleManagement::mainInc('debconfProfileManagement');
-
-?>

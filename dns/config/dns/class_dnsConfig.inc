@@ -54,4 +54,3 @@ class dnsConfig extends simplePlugin
     );
   }
 }
-?>

@@ -114,4 +114,3 @@ class invitationPage extends standAlonePage
     $smarty->display(get_template_path('invitation.tpl'));
   }
 }
-?>

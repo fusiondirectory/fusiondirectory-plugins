@@ -73,4 +73,3 @@ class spamAssassinAccount extends simplePlugin
     );
   }
 }
-?>

@@ -790,4 +790,3 @@ if (!jsonRPCServer::handle($service)) {
   echo "no request\n";
   echo session_id()."\n";
 }
-?>

@@ -146,4 +146,3 @@ class systemsPluginConfig extends simplePlugin
     $this->attributesAccess['fdMandatoryIpClasses']->attribute->setChoices(array_keys(static::$ipClasses), array_values(static::$ipClasses));
   }
 }
-?>

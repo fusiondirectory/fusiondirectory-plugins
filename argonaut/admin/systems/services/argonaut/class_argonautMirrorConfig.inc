@@ -104,4 +104,3 @@ class argonautMirrorConfig extends simpleService
     );
   }
 }
-?>

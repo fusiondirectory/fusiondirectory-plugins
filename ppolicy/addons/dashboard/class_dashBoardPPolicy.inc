@@ -183,4 +183,3 @@ class dashboardPpolicy extends simplePlugin
     );
   }
 }
-?>

@@ -49,7 +49,8 @@ class jsonRPCClientBadArgsException extends jsonRPCClientException
  *
  * \author sergio <jsonrpcphp@inservibile.org>
  */
-class jsonRPCClient {
+class jsonRPCClient
+{
 
   /*!
    * \brief Debug state
@@ -245,10 +246,8 @@ class jsonRPCClient {
       }
 
       return $response['result'];
-
     } else {
       return TRUE;
     }
   }
 }
-?>

@@ -49,4 +49,3 @@ class sogoConfig extends simplePlugin
     );
   }
 }
-?>

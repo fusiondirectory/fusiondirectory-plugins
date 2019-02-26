@@ -196,5 +196,3 @@ class mixedGroup extends simplePlugin
     $this->attributesAccess['memberUid']->searchAndRemove($uid);
   }
 }
-
-?>

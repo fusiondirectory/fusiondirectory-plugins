@@ -190,4 +190,3 @@ class argonautImportFile extends simplePlugin
     $this->attributesAccess['events']->setPostValue($events);
   }
 }
-?>

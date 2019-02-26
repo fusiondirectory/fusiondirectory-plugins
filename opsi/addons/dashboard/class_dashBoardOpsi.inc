@@ -119,4 +119,3 @@ class dashboardOpsi extends simplePlugin
     return $div->drawList();
   }
 }
-?>

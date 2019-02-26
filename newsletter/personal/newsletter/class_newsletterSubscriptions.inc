@@ -57,4 +57,3 @@ class newsletterSubscriptions extends simplePlugin
     );
   }
 }
-?>

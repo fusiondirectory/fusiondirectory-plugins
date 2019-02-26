@@ -32,4 +32,3 @@ class mailAddressSelect extends simpleSelectManagement
       '(&(objectClass=gosaMailAccount)'.$this->filter->elements['NAME']['autocomplete']['filter'].')';
   }
 }
-?>

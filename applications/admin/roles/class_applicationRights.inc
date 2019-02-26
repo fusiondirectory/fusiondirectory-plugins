@@ -68,4 +68,3 @@ class applicationRights extends simplePlugin
     );
   }
 }
-?>

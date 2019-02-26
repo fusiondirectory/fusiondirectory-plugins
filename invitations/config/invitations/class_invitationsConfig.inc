@@ -72,4 +72,3 @@ class invitationsConfig extends simplePlugin
     );
   }
 }
-?>

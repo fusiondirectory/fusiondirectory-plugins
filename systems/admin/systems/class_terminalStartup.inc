@@ -127,5 +127,3 @@ class terminalStartup extends simplePlugin
     $this->attributesAccess['gotoXdmcpServer']->setChoices($servers);
   }
 }
-
-?>

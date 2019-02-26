@@ -85,4 +85,3 @@ class faiProfile extends faiSimplePluginClass
     $this->attributesAccess['FAIclass']->attributes[0]->attribute->setChoices($choices);
   }
 }
-?>

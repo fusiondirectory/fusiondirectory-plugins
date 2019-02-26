@@ -191,4 +191,3 @@ class ppolicy extends simplePlugin
     }
   }
 }
-?>

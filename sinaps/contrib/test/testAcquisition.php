@@ -166,7 +166,6 @@ try {
   $answer = sinapsDiffusionHandlerJob::sendPostRequest($configuration['fdSinapsAcquisitionURL'], $configuration['fdSinapsLogin'], $configuration['fdSinapsPassword'], $xml);
 
   echo "Answer:\n$answer\n";
-
 } catch (jsonRPCClientRequestErrorException $e) {
   die($e->getMessage());
 } catch (jsonRPCClientNetworkErrorException $e) {

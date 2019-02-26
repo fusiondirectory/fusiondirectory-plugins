@@ -108,4 +108,3 @@ class faiVariable extends faiSimplePluginClass
     return $errors;
   }
 }
-?>

@@ -49,4 +49,3 @@ class publicFormsConfig extends simplePlugin
     );
   }
 }
-?>

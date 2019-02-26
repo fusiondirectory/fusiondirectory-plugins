@@ -127,4 +127,3 @@ class opsiLogView extends simplePlugin
     return array();
   }
 }
-?>

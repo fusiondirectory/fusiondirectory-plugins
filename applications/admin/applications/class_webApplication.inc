@@ -78,4 +78,3 @@ class webApplication extends simplePlugin
     );
   }
 }
-?>

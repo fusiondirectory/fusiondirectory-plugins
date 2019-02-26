@@ -28,7 +28,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * @author sergio <jsonrpcphp@inservibile.org>
  */
-class jsonRPCServer {
+class jsonRPCServer
+{
   /**
    * This function handle a request binding it to a given object
    *
@@ -94,4 +95,3 @@ class jsonRPCServer {
     return TRUE;
   }
 }
-?>

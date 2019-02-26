@@ -73,5 +73,3 @@ class freeradiusGroup extends simplePlugin
     );
   }
 }
-
-?>

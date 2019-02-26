@@ -77,10 +77,8 @@ class sympaAlias extends simplePlugin
     $ldap->search('(objectClass=sympaServer)', array('sympaServerURL'));
     $server = array();
     while ($attrs = $ldap->fetch()) {
-        $server[] = $attrs['sympaServerURL'][0];
+      $server[] = $attrs['sympaServerURL'][0];
     }
     $this->attributesInfo['main']['attrs']['sympaServerURL']->setChoices($server);
   }
 }
-
-?>

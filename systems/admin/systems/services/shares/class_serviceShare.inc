@@ -115,4 +115,3 @@ class serviceShare extends simpleService
     return $charsets;
   }
 }
-?>

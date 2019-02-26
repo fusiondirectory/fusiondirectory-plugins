@@ -88,4 +88,3 @@ class mailPluginConfig extends simplePlugin
     );
   }
 }
-?>

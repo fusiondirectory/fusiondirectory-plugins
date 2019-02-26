@@ -238,4 +238,3 @@ class dashboardSystems extends simplePlugin
     return $output_next_computer_ids;
   }
 }
-?>

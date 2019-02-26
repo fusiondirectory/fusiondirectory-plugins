@@ -626,4 +626,3 @@ class mailMethodCyrus extends mailMethod
     return $serverList;
   }
 }
-?>

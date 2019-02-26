@@ -211,6 +211,4 @@ class sambaGroup extends simplePlugin
   {
     $this->attributesAccess['sambaSID']->attributes[1]->setValue($value);
   }
-
 }
-?>

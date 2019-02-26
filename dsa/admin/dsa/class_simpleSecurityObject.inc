@@ -69,5 +69,3 @@ class simpleSecurityObject extends simplePlugin
     );
   }
 }
-
-?>

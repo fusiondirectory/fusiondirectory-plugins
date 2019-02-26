@@ -145,5 +145,3 @@ class supannStructureExt extends simplePlugin
     return parent::prepare_save();
   }
 }
-
-?>

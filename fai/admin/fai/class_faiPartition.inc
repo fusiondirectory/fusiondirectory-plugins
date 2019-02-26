@@ -577,4 +577,3 @@ class faiPartition extends simplePlugin
     return $ret;
   }
 }
-?>

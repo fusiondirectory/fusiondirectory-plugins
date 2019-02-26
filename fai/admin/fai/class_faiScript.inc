@@ -114,4 +114,3 @@ class faiScript extends faiSimplePluginClass
     return $errors;
   }
 }
-?>

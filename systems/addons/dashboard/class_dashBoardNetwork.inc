@@ -134,4 +134,3 @@ class dashboardNetwork extends simplePlugin
     return array_values($servers);
   }
 }
-?>

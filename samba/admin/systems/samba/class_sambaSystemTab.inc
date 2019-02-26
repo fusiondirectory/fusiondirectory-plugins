@@ -139,4 +139,3 @@ class sambaSystemTab extends simplePlugin
     return $errors;
   }
 }
-?>

@@ -49,4 +49,3 @@ class autofsConfig extends simplePlugin
     );
   }
 }
-?>

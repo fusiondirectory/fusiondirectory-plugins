@@ -55,4 +55,3 @@ class ppolicyConfig extends simplePlugin
     );
   }
 }
-?>

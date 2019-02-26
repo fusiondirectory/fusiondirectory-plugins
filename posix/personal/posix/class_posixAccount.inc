@@ -1032,4 +1032,3 @@ class posixAccount extends simplePlugin
     return $config->get_cfg_value('uidNumberBase');
   }
 }
-?>

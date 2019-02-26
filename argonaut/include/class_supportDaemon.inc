@@ -516,7 +516,6 @@ class supportDaemon
       foreach ($evts as $evt) {
         if (($evt['STATUS'] == "processing") &&
             in_array($evt['HEADERTAG'], array("reinstall","update"))) {
-
           return TRUE;
         }
       }
@@ -607,7 +606,7 @@ class supportDaemon
     $ret = array();
     foreach ($dates as $date) {
       if ($date == "." || $date == "..") {
-          continue;
+        continue;
       }
       $ret[$date]['DATE_STR']  = $date;
       $ret[$date]['REAL_DATE'] = strtotime(preg_replace("/[^0-9]*/", "", $date));
@@ -825,5 +824,3 @@ class supportDaemon
     }
   }
 }
-
-?>

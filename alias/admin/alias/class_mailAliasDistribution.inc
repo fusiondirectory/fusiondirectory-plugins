@@ -77,5 +77,3 @@ class mailAliasDistribution extends simplePlugin
     );
   }
 }
-
-?>

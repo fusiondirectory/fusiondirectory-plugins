@@ -75,4 +75,3 @@ class sambaPluginConfig extends simplePlugin
     );
   }
 }
-?>

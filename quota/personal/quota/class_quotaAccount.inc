@@ -239,4 +239,3 @@ class quotaAccount extends simplePlugin
     return FALSE;
   }
 }
-?>

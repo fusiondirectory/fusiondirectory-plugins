@@ -56,4 +56,3 @@ class repositoryConfig extends simplePlugin
     );
   }
 }
-?>

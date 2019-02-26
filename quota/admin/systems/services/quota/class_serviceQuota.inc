@@ -161,7 +161,6 @@ class serviceQuota extends simpleService
     $this->attributesAccess['quotaMsgCharsetSupport']->setChoices(
       array_keys($charsets), array_values($charsets)
     );
-
   }
 
   function getShares ()
@@ -185,4 +184,3 @@ class serviceQuota extends simpleService
     return objects::ls('server', NULL, NULL, '(objectClass=goLdapServer)');
   }
 }
-?>

@@ -55,5 +55,3 @@ class terminalGeneric extends workstationGeneric
     return parent::getAttributesInfo($word, $rdn);
   }
 }
-
-?>

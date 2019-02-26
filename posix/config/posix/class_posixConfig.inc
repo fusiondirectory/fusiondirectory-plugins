@@ -138,4 +138,3 @@ class posixConfig extends simplePlugin
     $this->attributesAccess['fdDefaultShell']->setChoices($this->fdShells);
   }
 }
-?>

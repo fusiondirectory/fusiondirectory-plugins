@@ -158,4 +158,3 @@ class argonautServer extends simpleService
     return $fields;
   }
 }
-?>

@@ -61,4 +61,3 @@ class serviceDHCP extends simpleService
     parent::__construct($dn, $parent, $attributesInfo);
   }
 }
-?>

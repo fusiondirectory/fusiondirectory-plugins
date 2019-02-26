@@ -94,5 +94,3 @@ class sogoResource extends simplePlugin
     $this->attributesAccess['cn']->setValue($this->attributesAccess['uid']->getValue());
   }
 }
-
-?>

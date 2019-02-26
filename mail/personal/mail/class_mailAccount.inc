@@ -425,5 +425,3 @@ class mailAccount extends simplePlugin
     parent::post_remove();
   }
 }
-
-?>

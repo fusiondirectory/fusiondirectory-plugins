@@ -160,5 +160,3 @@ class buildRepository extends simplePlugin
     }
   }
 }
-
-?>

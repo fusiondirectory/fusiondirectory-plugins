@@ -79,5 +79,3 @@ class repositorySection extends simplePlugin
     $this->attributesAccess['fdBasedOn']->attribute->setChoices(array_values($sections));
   }
 }
-
-?>

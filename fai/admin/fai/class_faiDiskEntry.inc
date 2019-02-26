@@ -209,7 +209,7 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
       $used[$key] = $part['FAIpartitionNr'];
     }
     $id = 1;
-    while (in_array($id, $used) && $id < 16 ) {
+    while (in_array($id, $used) && $id < 16) {
       $id++;
     }
     return $id;
@@ -587,4 +587,3 @@ class faiDiskEntry extends simplePlugin
     return $msgs;
   }
 }
-?>

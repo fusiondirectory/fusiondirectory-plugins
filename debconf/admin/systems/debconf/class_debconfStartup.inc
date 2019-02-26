@@ -78,4 +78,3 @@ class debconfStartup extends simplePlugin
     $this->attributesInfo['main']['attrs']['debconfProfile']->setChoices($profiles);
   }
 }
-?>

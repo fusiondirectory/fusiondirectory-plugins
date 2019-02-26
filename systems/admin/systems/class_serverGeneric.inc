@@ -53,4 +53,3 @@ class serverGeneric extends workstationGeneric
     return parent::getAttributesInfo($word, $rdn);
   }
 }
-?>

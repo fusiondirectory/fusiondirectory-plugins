@@ -48,4 +48,3 @@ class personalConfig extends simplePlugin
     );
   }
 }
-?>

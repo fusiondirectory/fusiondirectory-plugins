@@ -21,7 +21,6 @@
 
 class filterFAIPackages extends filterLDAPBlacklist
 {
-
   static function query ($parent, $base, $scope, $filter, $attributes, $category, $objectStorage = '')
   {
     $customs = array();
@@ -80,4 +79,3 @@ class filterFAIPackages extends filterLDAPBlacklist
     return $ret;
   }
 }
-?>

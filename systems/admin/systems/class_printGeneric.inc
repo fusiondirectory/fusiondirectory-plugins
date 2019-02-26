@@ -137,4 +137,3 @@ class printGeneric extends ipHostPlugin
     );
   }
 }
-?>

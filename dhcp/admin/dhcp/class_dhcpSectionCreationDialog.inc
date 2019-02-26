@@ -141,4 +141,3 @@ class DhcpSectionCreationDialog extends GenericDialog
     return FALSE;
   }
 }
-?>

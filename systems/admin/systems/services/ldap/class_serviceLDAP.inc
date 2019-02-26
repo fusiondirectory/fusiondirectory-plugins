@@ -98,4 +98,3 @@ class serviceLDAP extends simpleService
     );
   }
 }
-?>

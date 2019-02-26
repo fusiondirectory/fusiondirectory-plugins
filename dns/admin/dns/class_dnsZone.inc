@@ -550,7 +550,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
             'zoneName'            => $reverseZone,
             'dNSClass'            => 'IN',
             'pTRRecord'           => array_map(
-              function ($name) use ($zoneName) {
+              function ($name) use ($zoneName)
+              {
                 return (empty($name) ? '' : $name.'.').$zoneName;
               },
               $names

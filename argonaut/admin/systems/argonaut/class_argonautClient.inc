@@ -214,5 +214,3 @@ class argonautClient extends simplePlugin
     );
   }
 }
-
-?>

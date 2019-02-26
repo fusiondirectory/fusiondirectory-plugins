@@ -193,4 +193,3 @@ class argonautAction extends simplePlugin
     return $ret;
   }
 }
-?>

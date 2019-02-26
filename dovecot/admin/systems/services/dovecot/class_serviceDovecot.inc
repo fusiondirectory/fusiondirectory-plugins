@@ -37,7 +37,7 @@ class serviceDovecot extends simpleMailMethodService
    */
   static function getAttributesInfo (): array
   {
-      return array (
+    return array (
       'connection' => array (
         'name'  => _('Dovecot connection'),
         'attrs' => array (

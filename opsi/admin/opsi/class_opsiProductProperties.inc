@@ -256,4 +256,3 @@ class opsiProductProperties extends simplePlugin
     $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[2]->setAttributes(array($attr));
   }
 }
-?>

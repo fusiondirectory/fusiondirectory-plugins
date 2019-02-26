@@ -149,7 +149,7 @@ class faiStartup extends simplePlugin
       $this->cache['SERVERS'] = array();
       foreach ($tmp as $entry) {
         if ($entry['INSTALL'] != 'install') {
-            continue;
+          continue;
         }
         $rel = $entry['FAI_RELEASE'];
         if (!isset($this->cache['SERVERS'][$rel])) {
@@ -175,5 +175,3 @@ class faiStartup extends simplePlugin
     }
   }
 }
-
-?>
