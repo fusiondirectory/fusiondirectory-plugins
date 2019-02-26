@@ -22,7 +22,6 @@
 
 class simpleMailMethodService extends simpleService
 {
-
   protected function prepare_save (): array
   {
     if (!$this->shouldSave()) {
@@ -49,14 +48,14 @@ class serviceIMAP extends simpleMailMethodService
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('IMAP/POP3 generic service'),
       'plDescription' => _('IMAP/POP3').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=imap&size=16',
-      'plObjectClass' => array('fdImapServer'),
+      'plObjectClass' => ['fdImapServer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -64,7 +63,7 @@ class serviceIMAP extends simpleMailMethodService
    */
   static function getAttributesInfo (): array
   {
-    return array();
+    return [];
   }
 
   function execute (): string
@@ -72,4 +71,3 @@ class serviceIMAP extends simpleMailMethodService
     return '<b>This server runs an IMAP or POP3 server</b>'.parent::execute();
   }
 }
-?>

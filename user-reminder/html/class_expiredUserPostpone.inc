@@ -50,7 +50,7 @@ class expiredUserPostpone extends standAlonePage
       // Check if the token match
       $this->uid = $_GET['uid'];
       if ($this->checkToken($_GET['token'])) {
-        $this->message = array();
+        $this->message = [];
         $this->postponeExpiration();
         if (!empty($this->message)) {
           msg_dialog::displayChecks($this->message);
@@ -164,13 +164,13 @@ class expiredUserPostpone extends standAlonePage
     if ($this->forward_postpone) {
       $ldap = $config->get_ldap_link();
       if (empty($manager_dn)) {
-        $ldap->cat($userTabs->getBaseObject()->base, array('manager'));
+        $ldap->cat($userTabs->getBaseObject()->base, ['manager']);
         if ($attrs = $ldap->fetch() && isset($attrs['manager'][0])) {
           $manager_dn = $attrs['manager'][0];
         }
       }
       if (!empty($manager_dn)) {
-        $ldap->cat($manager_dn, array('cn', 'mail', 'gosaMailAlternateAddress', 'supannAutreMail', 'fdPrivateMail'));
+        $ldap->cat($manager_dn, ['cn', 'mail', 'gosaMailAlternateAddress', 'supannAutreMail', 'fdPrivateMail']);
         if ($attrs = $ldap->fetch()) {
           if (!empty($attrs['mail'][0])) {
             $manager_mail = $attrs['mail'][0];

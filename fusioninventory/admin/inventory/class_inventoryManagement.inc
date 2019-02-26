@@ -25,25 +25,25 @@ class inventoryManagement extends management
   public static $skipSnapshots  = TRUE;
 
   /* Default columns */
-  public static $columns = array(
-    array('ObjectTypeColumn',               array()),
-    array('LinkColumn',                     array('attributes' => 'cn',             'label' => 'IP')),
-    array('LinkColumn',                     array('attributes' => array('macAddress' => '*'),     'label' => 'Macs')),
-    array('InventoryOperatingSystemColumn', array('label' => 'Operating Systems')),
-    array('ActionsColumn',                  array('label' => 'Actions')),
-  );
+  public static $columns = [
+    ['ObjectTypeColumn',               []],
+    ['LinkColumn',                     ['attributes' => 'cn',             'label' => 'IP']],
+    ['LinkColumn',                     ['attributes' => ['macAddress' => '*'],     'label' => 'Macs']],
+    ['InventoryOperatingSystemColumn', ['label' => 'Operating Systems']],
+    ['ActionsColumn',                  ['label' => 'Actions']],
+  ];
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Inventory objects'),
       'plTitle'       => _('Inventory objects'),
       'plDescription' => _('Browse inventory objects'),
       'plIcon'        => 'geticon.php?context=applications&icon=fusioninventory&size=48',
       'plSection'     => 'reporting',
       'plPriority'    => 5,
-      'plManages'     => array('inventory'),
-    );
+      'plManages'     => ['inventory'],
+    ];
   }
 
   protected function setUpListing ()

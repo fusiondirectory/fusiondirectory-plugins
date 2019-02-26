@@ -75,8 +75,8 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
     returnError(sprintf(_('FusionDirectory configuration %s/%s is not readable. Aborted.'), CONFIG_DIR, CONFIG_FILE));
   }
 
-  $macs = array();
-  $ips  = array();
+  $macs = [];
+  $ips  = [];
   foreach ($data['NETWORKS'] as $network) {
     if (isset($network['MACADDR']) && ($network['MACADDR'] != '00:00:00:00:00:00')) {
       $macs[] = $network['MACADDR'];
@@ -119,13 +119,13 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
   /* Create root node */
   $ldap->cd($dn);
   $ldap->add(
-    array(
+    [
       'cn'                        => $_SERVER['REMOTE_ADDR'],
-      'objectClass'               => array('fdInventoryContent'),
+      'objectClass'               => ['fdInventoryContent'],
       'macAddress'                => $macs,
       'ipHostNumber'              => $ips,
       'fdInventoryVERSIONCLIENT'  => $data['VERSIONCLIENT'],
-    )
+    ]
   );
   if (!$ldap->success()) {
     returnError('LDAP: '.$ldap->get_error());
@@ -135,14 +135,14 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
 
   foreach ($data as $key => $objects) {
     if (!is_numeric(key($objects))) {
-      $objects = array($objects);
+      $objects = [$objects];
     }
     foreach ($objects as $i => $object) {
       $cn         = strtolower($key).$i;
-      $ldap_attrs = array(
+      $ldap_attrs = [
         'cn' => $cn,
         'objectClass' => 'fdInventory'.preg_replace('/_/', '', $key),
-      );
+      ];
       foreach ($object as $attr => $value) {
         if (is_array($value)) {
           if (empty($value)) {

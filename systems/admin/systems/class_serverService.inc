@@ -21,12 +21,12 @@
 
 class ServerService extends simpleManagement
 {
-  static public $actionStatus = array(
+  static public $actionStatus = [
     'start'   => 'running',
     'stop'    => 'stopped',
     'restart' => 'running',
     'status'  => '',
-  );
+  ];
 
   protected $departmentBrowser      = FALSE;
   protected $departmentRootVisible  = FALSE;
@@ -39,7 +39,7 @@ class ServerService extends simpleManagement
   var $skipFooter       = TRUE;
   var $skipHeader       = TRUE;
   var $skipCpHandler    = TRUE;
-  var $plugins          = array();
+  var $plugins          = [];
   var $current          = "";
   var $dialog           = FALSE;
   var $read_only        = FALSE;
@@ -56,14 +56,14 @@ class ServerService extends simpleManagement
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Services'),
       'plDescription' => _('Server services'),
-      'plObjectType'  => array('server'),
+      'plObjectType'  => ['server'],
       'plPrority'     => 5,
 
-      'plProvidedAcls'  => array()
-    );
+      'plProvidedAcls'  => []
+    ];
   }
 
   function __construct ($dn, $object, $parent = NULL)
@@ -137,7 +137,7 @@ class ServerService extends simpleManagement
 
   function updateActionMenu ()
   {
-    $this->headpage->xmlData['actionmenu']['action'][0]['action'] = array();
+    $this->headpage->xmlData['actionmenu']['action'][0]['action'] = [];
     $available_services = $this->getAllUnusedServices();
     foreach ($available_services as $class => $label) {
       $icon = 'geticon.php?context=actions&icon=document-new&size=16';
@@ -145,12 +145,12 @@ class ServerService extends simpleManagement
       if (isset($infos['plIcon'])) {
         $icon = $infos['plIcon'];
       }
-      $this->headpage->xmlData['actionmenu']['action'][0]['action'][] = array(
+      $this->headpage->xmlData['actionmenu']['action'][0]['action'][] = [
         'name' => 'new_'.$class,
         'type' => 'entry',
         'image' => $icon,
         'label' => $label,
-      );
+      ];
     }
   }
 
@@ -269,7 +269,7 @@ class ServerService extends simpleManagement
 
   function updateServicesVars ($service)
   {
-    foreach (array('cn','dn') as $var) {
+    foreach (['cn','dn'] as $var) {
       if (isset($this->$var)) {
         $this->plugins[$service]->$var = $this->$var;
       }
@@ -325,7 +325,7 @@ class ServerService extends simpleManagement
           $target = $target[0];
         }
         if ($action == 'status') {
-          $res = $s_daemon->append_call('Service.is_running', $target, array('args' => array($service)));
+          $res = $s_daemon->append_call('Service.is_running', $target, ['args' => [$service]]);
 
           if ($s_daemon->is_error()) {
             msg_dialog::display(
@@ -336,7 +336,7 @@ class ServerService extends simpleManagement
             $this->plugins[$service]->setStatus($res == 'yes' ? 'running' : 'stopped');
           }
         } else {
-          $res = $s_daemon->append_call('Service.manage', $target, array('args' => array($service, $action)));
+          $res = $s_daemon->append_call('Service.manage', $target, ['args' => [$service, $action]]);
 
           if ($s_daemon->is_error()) {
             msg_dialog::display(
@@ -357,7 +357,7 @@ class ServerService extends simpleManagement
    */
   function getAllUsedServices ()
   {
-    $ret = array();
+    $ret = [];
     foreach ($this->plugins as $name => $obj) {
       if ($obj->is_account) {
         if (isset($obj->DisplayName)) {
@@ -375,7 +375,7 @@ class ServerService extends simpleManagement
   function getAllUnusedServices ()
   {
     $tmp = $this->getAllUsedServices();
-    $pool_of_ocs = array();
+    $pool_of_ocs = [];
     foreach ($tmp as $name => $value) {
       $pool_of_ocs[] = get_class($this->plugins[$name]);
       if (isset($this->plugins[$name]->conflicts)) {
@@ -383,14 +383,14 @@ class ServerService extends simpleManagement
       }
     }
 
-    $ret = array();
+    $ret = [];
     foreach ($this->plugins as $name => $obj) {
       if (!$obj->acl_is_createable()) {
         continue;
       }
 
       /* Skip all pluigns that will lead into conflicts */
-      $conflicts = array();
+      $conflicts = [];
       if (isset($obj->conflicts)) {
         $conflicts = $obj->conflicts;
       }
@@ -412,7 +412,7 @@ class ServerService extends simpleManagement
    */
   function check ()
   {
-    return array();
+    return [];
   }
 
   /*! \brief    Keep posted form values in opened dialogs
@@ -426,7 +426,7 @@ class ServerService extends simpleManagement
    */
   function remove ($fulldelete = FALSE)
   {
-    $errors = array();
+    $errors = [];
     foreach ($this->plugins as $name => $obj) {
       $this->updateServicesVars($name);
       if ($this->plugins[$name]->initially_was_account) {
@@ -443,7 +443,7 @@ class ServerService extends simpleManagement
    */
   function save ()
   {
-    $errors = array();
+    $errors = [];
     foreach ($this->plugins as $name => $obj) {
       $this->updateServicesVars($name);
 
@@ -500,10 +500,10 @@ class ServerService extends simpleManagement
 
   function getRequiredAttributes ()
   {
-    return array();
+    return [];
   }
 
-  function adapt_from_template ($attrs, $skip = array())
+  function adapt_from_template ($attrs, $skip = [])
   {
     foreach ($this->plugins as &$plugin) {
       $plugin->adapt_from_template($attrs, $skip);

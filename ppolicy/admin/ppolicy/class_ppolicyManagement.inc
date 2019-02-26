@@ -24,14 +24,14 @@ class ppolicyManagement extends management
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Password policies'),
       'plTitle'       => _('Password policies management'),
       'plDescription' => _('Manage password policies'),
       'plIcon'        => 'geticon.php?context=applications&icon=ppolicy&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 57,
-      'plManages'     => array('ppolicy'),
-    );
+      'plManages'     => ['ppolicy'],
+    ];
   }
 }

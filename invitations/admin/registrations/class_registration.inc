@@ -57,12 +57,12 @@ class RegistrationStateAttribute extends DisplayLDAPAttribute
 {
   static function getStates ()
   {
-    return array(
-      'sent'      => array(_('Sent'),     'geticon.php?context=status&icon=sent&size=16'),
-      'filled'    => array(_('Filled'),   'geticon.php?context=status&icon=filled&size=16'),
-      'accepted'  => array(_('Accepted'), 'geticon.php?context=status&icon=accepted&size=16'),
-      'rejected'  => array(_('Rejected'), 'geticon.php?context=status&icon=rejected&size=16'),
-    );
+    return [
+      'sent'      => [_('Sent'),     'geticon.php?context=status&icon=sent&size=16'],
+      'filled'    => [_('Filled'),   'geticon.php?context=status&icon=filled&size=16'],
+      'accepted'  => [_('Accepted'), 'geticon.php?context=status&icon=accepted&size=16'],
+      'rejected'  => [_('Rejected'), 'geticon.php?context=status&icon=rejected&size=16'],
+    ];
   }
 
   static function renderValue ($value)
@@ -90,31 +90,31 @@ class registration extends simplePlugin
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Registration'),
       'plDescription' => _('Registration sent through a public form'),
-      'plObjectClass' => array('fdRegistration'),
-      'plObjectType'  => array('registration' => array(
+      'plObjectClass' => ['fdRegistration'],
+      'plObjectType'  => ['registration' => [
         'name'      => _('Registration'),
         'ou'        => get_ou('registrationRDN'),
         'icon'      => 'geticon.php?context=types&icon=registration&size=16',
         'mainAttr'  => 'fdRegistrationEmailAddress',
-      )),
-      'plForeignKeys'   => array(
+      ]],
+      'plForeignKeys'   => [
         'fdRegistrationInvitationDN'  => 'invitation',
         'fdRegistrationUserDN'        => 'user',
-      ),
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Registration'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('registrationRDN')),
           new DisplayLDAPAttribute(
             _('Email address'), _('Email address which the invitation was sent to'),
@@ -139,9 +139,9 @@ class registration extends simplePlugin
             'user'
           ),
           new HiddenAttribute('fdRegistrationToken'),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)

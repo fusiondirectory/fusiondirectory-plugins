@@ -26,10 +26,10 @@ class dhcpPlugin extends simplePlugin
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('DHCP'),
-        'attrs' => array(
+        'attrs' => [
           new HostNameAttribute(
             _('Name'), _('Name of this DHCP configuration'),
             'cn', TRUE
@@ -40,22 +40,22 @@ class dhcpPlugin extends simplePlugin
               'dhcpOption', FALSE
             ),
             // Order disabled, Default values, Edit enabled
-            FALSE, array(), TRUE
+            FALSE, [], TRUE
           ),
           new OrderedArrayAttribute(
             new StringAttribute(
               _('Statements'), _('The DHCP statements'),
               'dhcpStatements', FALSE
             ),
-            FALSE, array(), TRUE
+            FALSE, [], TRUE
           ),
           new TextAreaAttribute(
             _('Comments'), _('Comments about this DHCP object'),
             'dhcpComments', FALSE
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($plugin, $dn, $attrs = NULL)
@@ -69,10 +69,10 @@ class dhcpPlugin extends simplePlugin
             $value['count'] = count($value);
           }
         } else {
-          $value = array(
+          $value = [
             $value,
             'count' => 1
-          );
+          ];
         }
       }
       unset($value);
@@ -107,7 +107,7 @@ class dhcpPlugin extends simplePlugin
     $this->dn = $this->compute_dn();
     @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->dn, 'save');
     $this->prepare_save();
-    $this->attrs['cn']          = array($this->cn);
+    $this->attrs['cn']          = [$this->cn];
     $this->attrs['objectClass'] = $this->objectclasses;
     $this->attrs['dn']          = $this->dn;
     $this->attrs['MODIFIED']    = TRUE;

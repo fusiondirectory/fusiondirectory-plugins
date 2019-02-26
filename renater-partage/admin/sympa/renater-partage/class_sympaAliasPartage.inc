@@ -24,25 +24,25 @@ class sympaAliasPartage extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Partage'),
       'plDescription'   => _('Partage sympa options'),
-      'plObjectClass'   => array('fdRenaterPartageSympaAlias'),
-      'plObjectType'    => array('sympaAlias'),
+      'plObjectClass'   => ['fdRenaterPartageSympaAlias'],
+      'plObjectType'    => ['sympaAlias'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Information'),
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Server'), _('Email server'),
             'gosaMailServer', TRUE,
-            array('')
+            ['']
           ),
           new StringAttribute(
             _('Display name'), _('Name to display for this group'),
@@ -71,9 +71,9 @@ class sympaAliasPartage extends simplePlugin
               'gosaMailAlternateAddress'
             )
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -164,7 +164,7 @@ class sympaAliasPartage extends simplePlugin
       }
     }
 
-    $errors = array();
+    $errors = [];
 
     /* Only do IMAP actions if we are not a template */
     if (!$this->is_template) {

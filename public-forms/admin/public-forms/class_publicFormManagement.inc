@@ -23,13 +23,13 @@ class publicFormManagement extends management
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Public forms'),
       'plTitle'       => _('Public forms management'),
       'plDescription' => _('Manage public forms'),
       'plIcon'        => 'geticon.php?context=types&icon=publicform&size=48',
       'plSection'     => 'accounts',
-      'plManages'     => array('publicForm'),
-    );
+      'plManages'     => ['publicForm'],
+    ];
   }
 }

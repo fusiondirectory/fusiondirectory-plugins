@@ -27,7 +27,7 @@ class socialHandler
   static function listHandlers ()
   {
     global $class_mapping;
-    $available = array();
+    $available = [];
     foreach ($class_mapping as $class => $path) {
       if (preg_match('/^socialHandler_(.+)/', $class, $m)) {
         $available[$m[1]] = $class::getName();

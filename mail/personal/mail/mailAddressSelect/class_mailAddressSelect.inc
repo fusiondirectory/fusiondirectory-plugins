@@ -20,8 +20,8 @@
 
 class mailAddressSelect extends simpleSelectManagement
 {
-  protected $objectTypes          = array('user', 'group');
-  protected $autoFilterAttributes = array('dn', 'cn', 'description', 'mail');
+  protected $objectTypes          = ['user', 'group'];
+  protected $autoFilterAttributes = ['dn', 'cn', 'description', 'mail'];
 
   function configureFilter ()
   {
@@ -32,4 +32,3 @@ class mailAddressSelect extends simpleSelectManagement
       '(&(objectClass=gosaMailAccount)'.$this->filter->elements['NAME']['autocomplete']['filter'].')';
   }
 }
-?>

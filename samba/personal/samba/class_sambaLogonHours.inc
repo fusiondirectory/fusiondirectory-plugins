@@ -22,7 +22,7 @@
 class sambaLogonHours
 {
   var $sambaLogonHours = "";
-  var $Matrix          = array();
+  var $Matrix          = [];
   var $timezone        = 0;
   var $acl;
 
@@ -64,7 +64,7 @@ class sambaLogonHours
     }
 
     /* Create matrix */
-    $this->Matrix = array();
+    $this->Matrix = [];
     for ($day = 0; $day < 7; $day++) {
       for ($hour  = 0; $hour < 24; $hour++) {
         $bitpos  = ($day * 24 + $hour) % 168;
@@ -80,7 +80,7 @@ class sambaLogonHours
     $smarty = get_smarty();
     $smarty->assign("acl", preg_match("/w/i", $this->acl));
 
-    $hours = array();
+    $hours = [];
     for ($i = 0; $i < 24; $i++) {
       $hours[$i] = $i;
     }
@@ -140,7 +140,7 @@ class sambaLogonHours
     }
 
     /* Create uppercase HEX chars */
-    $ret = strtoupper( $tmp);
+    $ret = strtoupper($tmp);
 
     /* All hours and days selected */
     if (substr_count($ret, 'F') == 42) {
@@ -178,4 +178,3 @@ class SambaLogonHoursDialog
     return $this->dialog->execute();
   }
 }
-?>

@@ -23,10 +23,10 @@ class sinapsRequestAcquisition
   protected $data;
   protected $identifiantTransaction;
 
-  public static $attributes = array(
+  public static $attributes = [
     'supannRefId'                       => '*',
     'supannEntiteAffectationPrincipale' => 1,
-  );
+  ];
 
   public function __construct ()
   {

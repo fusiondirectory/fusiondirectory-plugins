@@ -23,34 +23,34 @@ class pgpServerInfo extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('GPG server info'),
       'plDescription' => _('GPG server info'),
       'plSection'     => 'conf',
       'plPriority'    => 5,
       'plIcon'        => 'geticon.php?context=applications&icon=gpg&size=48',
-      'plObjectClass' => array('pgpServerInfo'),
-      'plObjectType'  => array(
-        'pgpServerInfo' => array(
+      'plObjectClass' => ['pgpServerInfo'],
+      'plObjectType'  => [
+        'pgpServerInfo' => [
           'name'        => _('GPG server info'),
           'icon'        => 'geticon.php?context=applications&icon=gpg&size=16',
           'aclCategory' => 'configuration',
-        )
-      ),
+        ]
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
     global $config;
-    return array(
+    return [
       // Attributes are grouped by section
-      'main' => array(
+      'main' => [
         'name'  => _('GPG server info'),
-        'attrs' => array(
+        'attrs' => [
           new HiddenAttribute('cn', TRUE, 'pgpServerInfo'),
           new StringAttribute(
             _('Software'), _('Which software this GPG key server is running'),
@@ -65,19 +65,19 @@ class pgpServerInfo extends simplePlugin
           new CompositeAttribute(
             _('Branch in which keys are stored'),
             'pgpBaseKeySpaceDN',
-            array(
+            [
               new StringAttribute(
                 _('Keys RDN'), _('Branch under base in which keys are stored'),
                 'BaseKeyBranchDN', TRUE,
                 'ou=PGP Keys,'
               )
-            ),
+            ],
             '/^(.*)'.$config->current['BASE'].'$/',
             '%s'.$config->current['BASE']
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   protected function ldap_save (): array

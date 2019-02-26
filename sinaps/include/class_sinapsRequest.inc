@@ -93,8 +93,8 @@ class sinapsRequest
     if ($synchrone) {
       /* Hack because SINAPS API makes no sense and needs a prefix for Acquittement only for synchrone mode */
       return preg_replace(
-        array('|<Acquittement |',   '|</Acquittement>$|'),
-        array('<acq:Acquittement ', '</acq:Acquittement>'),
+        ['|<Acquittement |',   '|</Acquittement>$|'],
+        ['<acq:Acquittement ', '</acq:Acquittement>'],
         $xml->asXML(),
         1
       );
@@ -120,21 +120,21 @@ class sinapsRequest
     $structure  = $this->getOperationStructure();
     $now        = new DateTime();
 
-    $mapping = array(
-      'libelle20'         => array('entite','ou'),
-      'descriptifLong'    => array('entite','description'),
-      'codeStructure'     => array('entite','supannCodeEntite'),
-      'codeSousType'      => array('entite','supannTypeEntite'),
-      'dateDebutValidite' => array('supannStructureExt','fdSupannStartDate'),
-      'dateFinValidite'   => array('supannStructureExt','fdSupannEndDate'),
-    );
-    $values = array(
-      'entite' => array(
-        'supannRefId'               => array(),
+    $mapping = [
+      'libelle20'         => ['entite','ou'],
+      'descriptifLong'    => ['entite','description'],
+      'codeStructure'     => ['entite','supannCodeEntite'],
+      'codeSousType'      => ['entite','supannTypeEntite'],
+      'dateDebutValidite' => ['supannStructureExt','fdSupannStartDate'],
+      'dateFinValidite'   => ['supannStructureExt','fdSupannEndDate'],
+    ];
+    $values = [
+      'entite' => [
+        'supannRefId'               => [],
         'postalAddress'             => '',
         'supannCodeEntiteParent'    => '',
-      ),
-    );
+      ],
+    ];
 
     $uuid = '';
 
@@ -154,7 +154,7 @@ class sinapsRequest
 
     array_unshift($values['entite']['supannRefId'], '{'.$uuidPrefix.'}'.$uuid);
 
-    foreach ($mapping as $sinapsAttr => list($fdTab,$fdAttr)) {
+    foreach ($mapping as $sinapsAttr => list($fdTab, $fdAttr)) {
       if (isset($structure->$sinapsAttr)) {
         $values[$fdTab][$fdAttr] = (string)$structure->$sinapsAttr;
       } else {
@@ -207,35 +207,35 @@ class sinapsRequest
   {
     $personne   = $this->getOperationPersonne();
     $now        = new DateTime();
-    $mapping = array(
-      'civilite'        => array('supannAccount','supannCivilite'),
-      'nomUsage'        => array('user','sn'),
-      'descriptifLong'  => array('user','description'),
-      'dateNaissance'   => array('personalInfo','dateOfBirth'),
-      'sexe'            => array('personalInfo','gender'),
-    );
-    $values = array(
+    $mapping = [
+      'civilite'        => ['supannAccount','supannCivilite'],
+      'nomUsage'        => ['user','sn'],
+      'descriptifLong'  => ['user','description'],
+      'dateNaissance'   => ['personalInfo','dateOfBirth'],
+      'sexe'            => ['personalInfo','gender'],
+    ];
+    $values = [
       'lock'          => FALSE,
-      'user'          => array(
+      'user'          => [
         'homePhone'                 => '',
         'postalAddress'             => '',
         'homePostalAddress'         => '',
         'employeeNumber'            => '',
-      ),
-      'supannAccount' => array(
-        'supannRefId'                       => array(),
-        'supannEntiteAffectation'           => array(),
-        'supannRoleGenerique'               => array(),
-        'supannTypeEntiteAffectation'       => array(),
-        'supannRoleEntite'                  => array(),
-        'supannActivite'                    => array(),
+      ],
+      'supannAccount' => [
+        'supannRefId'                       => [],
+        'supannEntiteAffectation'           => [],
+        'supannRoleGenerique'               => [],
+        'supannTypeEntiteAffectation'       => [],
+        'supannRoleEntite'                  => [],
+        'supannActivite'                    => [],
         'supannEmpCorps'                    => '',
         'supannEntiteAffectationPrincipale' => '',
-      ),
-      'personalInfo'  => array(
-        'fdPrivateMail' => array(),
-      ),
-    );
+      ],
+      'personalInfo'  => [
+        'fdPrivateMail' => [],
+      ],
+    ];
 
     $uuid = '';
 
@@ -272,7 +272,7 @@ class sinapsRequest
       return $values;
     }
 
-    foreach ($mapping as $sinapsAttr => list($fdTab,$fdAttr)) {
+    foreach ($mapping as $sinapsAttr => list($fdTab, $fdAttr)) {
       if (isset($personne->$sinapsAttr)) {
         $values[$fdTab][$fdAttr] = (string)$personne->$sinapsAttr;
       } else {
@@ -382,7 +382,7 @@ class sinapsRequest
       }
     }
 
-    foreach (array('supannRefId','supannEntiteAffectation','supannRoleGenerique','supannTypeEntiteAffectation','supannRoleEntite','supannActivite') as $arrayattribute) {
+    foreach (['supannRefId','supannEntiteAffectation','supannRoleGenerique','supannTypeEntiteAffectation','supannRoleEntite','supannActivite'] as $arrayattribute) {
       $values['supannAccount'][$arrayattribute] = array_values(array_unique($values['supannAccount'][$arrayattribute]));
     }
 

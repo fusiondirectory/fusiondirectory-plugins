@@ -26,14 +26,14 @@ class argonautFuseOPSIConfig extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Argonaut Fuse OPSI module settings'),
       'plDescription'   => _('Argonaut Fuse OPSI module settings').' ('._('Services').')',
-      'plCategory'      => array('server'),
-      'plObjectClass'   => array('argonautFuseOPSIConfig'),
-      'plObjectType'    => array('fusemodule'),
+      'plCategory'      => ['server'],
+      'plObjectClass'   => ['argonautFuseOPSIConfig'],
+      'plObjectType'    => ['fusemodule'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -41,10 +41,10 @@ class argonautFuseOPSIConfig extends simplePlugin
    */
   static function getAttributesInfo (): array
   {
-    return array (
-      'opsi' => array (
+    return  [
+      'opsi' => [
         'name'  => _('OPSI'),
-        'attrs' => array (
+        'attrs' => [
           new StringAttribute(
             _('Opsi admin'),
             '',
@@ -65,8 +65,8 @@ class argonautFuseOPSIConfig extends simplePlugin
             '',
             'argonautFuseOpsiLang'
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }

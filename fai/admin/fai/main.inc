@@ -22,4 +22,3 @@ simpleManagement::mainInc('faiManagement');
 if ($cleanup) {
   $ui->setCurrentBase(NULL);
 }
-?>

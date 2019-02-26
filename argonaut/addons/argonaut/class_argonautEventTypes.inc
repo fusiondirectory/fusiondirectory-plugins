@@ -29,7 +29,7 @@ class argonautEventTypes
     if (session::is_set('argonautEventTypes::get_event_types')) {
       return session::get('argonautEventTypes::get_event_types');
     } else {
-      $ret = array();
+      $ret = [];
       foreach (array_keys($class_mapping) as $class) {
         if (preg_match('/^argonautEventTypes.+$/', $class)) {
           $ret = array_merge($ret, $class::get_event_types_list());
@@ -62,12 +62,12 @@ class argonautEventTypesSystem
 {
   static public function get_event_types_list ()
   {
-    return array(
-      'System.halt' => array(
+    return [
+      'System.halt' => [
         'name'  => _('Switch off'),
         'img'   => 'geticon.php?context=actions&icon=system-shutdown&size=16'
-      )
-    );
+      ]
+    ];
   }
 }
 
@@ -75,24 +75,24 @@ class argonautEventTypesDeployment
 {
   static public function get_event_types_list ()
   {
-    return array(
-      'Deployment.reboot' => array(
+    return [
+      'Deployment.reboot' => [
         'name'  => _('Reboot'),
         'img'   => 'geticon.php?context=actions&icon=system-reboot&size=16'
-      ),
-      'Deployment.wake' => array(
+      ],
+      'Deployment.wake' => [
         'name'  => _('Wake up'),
         'img'   => 'geticon.php?context=status&icon=task-running&size=16'
-      ),
-      'Deployment.update' => array(
+      ],
+      'Deployment.update' => [
         'name'  => _('Software update'),
         'img'   => 'geticon.php?context=actions&icon=system-update&size=16'
-      ),
-      'Deployment.reinstall' => array(
+      ],
+      'Deployment.reinstall' => [
         'name'  => _('(Re)Install'),
         'img'   => 'geticon.php?context=actions&icon=system-reinstall&size=16'
-      ),
-    );
+      ],
+    ];
   }
 }
 
@@ -100,11 +100,11 @@ class argonautEventTypesLdap2zone
 {
   static public function get_event_types_list ()
   {
-    return array(
-      'Ldap2Zone.slaves' => array(
+    return [
+      'Ldap2Zone.slaves' => [
         'name'  => _('Refresh slave files (ldap2zone)'),
         'img'   => 'geticon.php?context=actions&icon=view-refresh&size=16'
-      )
-    );
+      ]
+    ];
   }
 }

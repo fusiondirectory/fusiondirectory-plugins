@@ -22,24 +22,24 @@
 class autofsManagement extends management
 {
   /* Default columns */
-  public static $columns = array(
-    array('ObjectTypeColumn',     array()),
-    array('LinkColumn',           array('attributes' => 'nameAttr',             'label' => 'Name')),
-    array('LinkColumn',           array('attributes' => 'nisMapName',           'label' => 'Mount point')),
-    array('LinkColumn',           array('attributes' => 'nisMapEntry',          'label' => 'Automount entry')),
-    array('ActionsColumn',        array('label' => 'Actions')),
-  );
+  public static $columns = [
+    ['ObjectTypeColumn',     []],
+    ['LinkColumn',           ['attributes' => 'nameAttr',             'label' => 'Name']],
+    ['LinkColumn',           ['attributes' => 'nisMapName',           'label' => 'Mount point']],
+    ['LinkColumn',           ['attributes' => 'nisMapEntry',          'label' => 'Automount entry']],
+    ['ActionsColumn',        ['label' => 'Actions']],
+  ];
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Auto fs'),
       'plTitle'       => _('Auto fs management'),
       'plDescription' => _('Manage auto fs mount points and directories'),
       'plIcon'        => 'geticon.php?context=applications&icon=autofs&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 5,
-      'plManages'     => array('nisMap', 'nisObject'),
-    );
+      'plManages'     => ['nisMap', 'nisObject'],
+    ];
   }
 }

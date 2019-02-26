@@ -37,7 +37,7 @@ class sinapsHandler extends standAlonePage
     global $config;
 
     $this->dumpFolder             = $config->get_cfg_value('SinapsDumpFolder');
-    $this->tokens                 = $config->get_cfg_value('SinapsFDToken', array());
+    $this->tokens                 = $config->get_cfg_value('SinapsFDToken', []);
 
     if ($config->get_cfg_value('SinapsEnabled') != 'TRUE') {
       $this->returnError(400, 1, 'SINAPS integration is disabled'."\n");

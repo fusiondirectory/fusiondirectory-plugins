@@ -21,14 +21,14 @@
 
 class DhcpHostsAttribute extends OrderedArrayAttribute
 {
-  private $nodesCache = array();
+  private $nodesCache = [];
   private static $templateValueSeparator = '^';
 
-  function __construct ($label, $description, $ldapName, array $values = array(), $acl = '')
+  function __construct ($label, $description, $ldapName, array $values = [], $acl = '')
   {
     $attribute = new CompositeAttribute(
       $description, $ldapName,
-      array(
+      [
         new SelectAttribute(
           '', _('The DHCP configuration or subsection in which this host should be added'),
           $ldapName.'_parent', TRUE
@@ -44,18 +44,18 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
         new HiddenAttribute(
           'dn'
         )
-      ),
+      ],
       FALSE,
       FALSE,
       $acl,
       $label
     );
     parent::__construct($attribute, FALSE, $values, TRUE);
-    $this->setHeaders(array(
+    $this->setHeaders([
       _('Parent'),
       _('Mac'),
       _('IP')
-    ));
+    ]);
     $this->setInLdap(FALSE);
   }
 
@@ -74,7 +74,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     if (is_object($this->plugin)) {
       $this->loadChoices();
       if ($this->plugin->is_template) {
-        $this->value = array();
+        $this->value = [];
         $this->loadAdditionalTemplatesValues();
       } else {
         $this->loadRecords();
@@ -98,11 +98,11 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     list($nodesChoices, $nodes) = dhcpSystem::getDhcpParentNodes();
     $macs   = $this->plugin->parent->getBaseObject()->macAddress;
     if (!is_array($macs)) {
-      $macs = array($macs);
+      $macs = [$macs];
     }
     $ips    = $this->plugin->parent->getBaseObject()->ipHostNumber;
     if (!is_array($ips)) {
-      $ips = array($ips);
+      $ips = [$ips];
     }
     $this->nodesCache = $nodes;
     $this->setChoices($nodesChoices, $macs, $ips);
@@ -133,11 +133,11 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   {
     global $config;
 
-    $this->value = array();
+    $this->value = [];
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=dhcpHost)(cn='.$this->plugin->parent->getBaseObject()->cn.')(dhcpHWAddress=*))', array('dhcpStatements','dhcpHWAddress','dn'));
+    $ldap->search('(&(objectClass=dhcpHost)(cn='.$this->plugin->parent->getBaseObject()->cn.')(dhcpHWAddress=*))', ['dhcpStatements','dhcpHWAddress','dn']);
     while ($attrs = $ldap->fetch()) {
       $ip = '';
       foreach ($attrs['dhcpStatements'] as $statement) {
@@ -146,12 +146,12 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
           break;
         }
       }
-      $this->value[] = array(
+      $this->value[] = [
         preg_replace('/^[^,]+,/', '', $attrs['dn']),
         preg_replace('/ethernet (([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))/', '\\1', $attrs['dhcpHWAddress'][0]),
         $ip,
         $attrs['dn']
-      );
+      ];
     }
     $this->initialValue = $this->getValue();
   }
@@ -221,7 +221,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       $errors = $dhcpTabs->save();
       msg_dialog::displayChecks($errors);
     }
-    $errors = array();
+    $errors = [];
     foreach ($values as $value) {
       $configDn = $value[0];
       if (preg_match('/([^,]+,'.preg_quote(get_ou('dhcpRDN')).'.*'.preg_quote($config->current['BASE']).')$/', $value[0], $m)) {
@@ -286,32 +286,32 @@ class dhcpSystem extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('DHCP'),
       'plDescription'   => _('Edit the DHCP zones of a system'),
       'plIcon'          => 'geticon.php?context=applications&icon=dhcp&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=dhcp&size=16',
-      'plObjectType'    => array('server','workstation','terminal','printer','component','phone','mobilePhone'),
+      'plObjectType'    => ['server','workstation','terminal','printer','component','phone','mobilePhone'],
       'plPriority'      => 4,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('DHCP zones'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new DhcpHostsAttribute(
             '', _('DHCP hosts declared for this system'),
             'dhcpHosts'
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -346,10 +346,10 @@ class dhcpSystem extends simplePlugin
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search('(|(objectClass=dhcpService)(objectClass=dhcpGroup)'.
-                    '(objectClass=dhcpSubnet)(objectClass=dhcpSharedNetwork))', array('cn', 'dhcpNetMask'));
+                    '(objectClass=dhcpSubnet)(objectClass=dhcpSharedNetwork))', ['cn', 'dhcpNetMask']);
 
-    $nodes    = array();
-    $choices  = array();
+    $nodes    = [];
+    $choices  = [];
     while ($attrs = $ldap->fetch()) {
       $subdn = preg_replace('/,'.preg_quote(get_ou('dhcpRDN')).'.+$/', '', $attrs['dn']);
       $parts = ldap_explode_dn($subdn, 1);
@@ -362,7 +362,7 @@ class dhcpSystem extends simplePlugin
       }
       $nodes[$attrs['dn']] = $attrs;
     }
-    return array($choices, $nodes);
+    return [$choices, $nodes];
   }
 
   /* Returns error text if the IP is not in the given subnet LDAP node, or TRUE */
@@ -411,12 +411,12 @@ class dhcpSystem extends simplePlugin
       return parent::ldap_remove();
     } elseif (($this->dn != '') && ($this->dn != 'new')) {
       /* Remove all records */
-      $this->attributesAccess['dhcpHosts']->setValue(array());
+      $this->attributesAccess['dhcpHosts']->setValue([]);
       return $this->ldap_save();
     }
   }
 
-  function adapt_from_template (array $attrs, array $skip = array())
+  function adapt_from_template (array $attrs, array $skip = [])
   {
     parent::adapt_from_template($attrs, $skip);
     $this->attributesAccess['dhcpHosts']->loadChoices();

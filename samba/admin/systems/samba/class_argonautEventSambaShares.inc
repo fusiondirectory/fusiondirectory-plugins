@@ -22,11 +22,11 @@ class argonautEventTypesSambaShares
 {
   static public function get_event_types_list ()
   {
-    return array(
-      'SambaShares.start' => array(
+    return [
+      'SambaShares.start' => [
         'name'  => _('Update Samba Shares'),
         'img'   => 'geticon.php?context=applications&icon=samba&size=16'
-      ),
-    );
+      ],
+    ];
   }
 }

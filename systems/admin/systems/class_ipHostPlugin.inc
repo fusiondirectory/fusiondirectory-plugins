@@ -32,7 +32,7 @@ class ipHostPlugin extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['ipHostNumber']->setRequired(
-      in_array(get_class($this), $config->get_cfg_value('mandatoryIpClasses', array()))
+      in_array(get_class($this), $config->get_cfg_value('mandatoryIpClasses', []))
     );
     $this->attributesAccess['ipHostNumber']->setUnique('whole', '(objectClass=ipHost)');
     if (isset($this->attributesAccess['macAddress'])) {
@@ -45,7 +45,7 @@ class ipHostPlugin extends simplePlugin
   {
     $objectclasses = $oc;
     if (empty($this->ipHostNumber)) {
-      $objectclasses = array_remove_entries_ics(array('ipHost'), $objectclasses);
+      $objectclasses = array_remove_entries_ics(['ipHost'], $objectclasses);
     } else {
       $objectclasses[] = 'ipHost';
     }

@@ -84,7 +84,7 @@ class OpsiProfileUsageColumn extends Column
     $systems  = objects::count('workstation', NULL, '(&(objectClass=opsiClient)(fdOpsiProfileDn='.$entry->dn.'))', FALSE);
     $groups   = objects::count('ogroup',      NULL, '(&(objectClass=opsiClient)(fdOpsiProfileDn='.$entry->dn.'))', FALSE);
 
-    $entry->cache[__CLASS__]['stats'] = array($systems, $groups);
+    $entry->cache[__CLASS__]['stats'] = [$systems, $groups];
 
     return $entry->cache[__CLASS__]['stats'];
   }

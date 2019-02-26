@@ -23,28 +23,28 @@ class ldapDump extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('LDAP'),
       'plDescription' => _('LDAP Dump'),
-      'plObjectType'  => array('special'),
+      'plObjectType'  => ['special'],
       'plPriority'    => 99,
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'      => _('LDAP Dump'),
-        'class'     => array('fullwidth'),
-        'attrs'     => array(
+        'class'     => ['fullwidth'],
+        'attrs'     => [
           new FakeAttribute('dump')
-        ),
+        ],
         'template'  => get_template_path('ldapdump.tpl', TRUE, dirname(__FILE__))
-      ),
-    );
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -61,11 +61,11 @@ class ldapDump extends simplePlugin
       $ui = get_userinfo();
       if (preg_match('/r/', $ui->get_complete_category_acls($this->acl_base, $this->parent->acl_category))) {
         $ldap = $config->get_ldap_link();
-        $ldap->cat($this->dn, array('*','createTimestamp','modifyTimestamp'));
+        $ldap->cat($this->dn, ['*','createTimestamp','modifyTimestamp']);
         if ($attrs = $ldap->fetch()) {
-          $this->dump = array($this->dumpLdapNode($attrs, $config->current['BASE']));
+          $this->dump = [$this->dumpLdapNode($attrs, $config->current['BASE'])];
         } else {
-          $this->dump = array();
+          $this->dump = [];
         }
       } else {
         $this->dump = FALSE;
@@ -79,21 +79,21 @@ class ldapDump extends simplePlugin
   function dumpLdapNode ($attrs, $parent_dn = '')
   {
     global $config;
-    $node = array(
+    $node = [
       'dn'        => $attrs['dn'],
       'name'      => preg_replace('/,'.preg_quote($parent_dn).'$/', '', $attrs['dn']),
-      'attrs'     => array(),
-      'subnodes'  => array(),
-    );
+      'attrs'     => [],
+      'subnodes'  => [],
+    ];
     for ($i = 0; $i < $attrs['count']; $i++) {
       $key                  = $attrs[$i];
-      if (in_array($key, array('createTimestamp', 'modifyTimestamp'))) {
+      if (in_array($key, ['createTimestamp', 'modifyTimestamp'])) {
         continue;
       }
       $node['attrs'][$key]  = $attrs[$key];
       unset($node['attrs'][$key]['count']);
     }
-    $timestamps = array();
+    $timestamps = [];
     if (isset($attrs['createTimestamp'][0])) {
       $date = LdapGeneralizedTime::fromString($attrs['createTimestamp'][0]);
       $date->setTimezone(timezone::getDefaultTimeZone());
@@ -108,7 +108,7 @@ class ldapDump extends simplePlugin
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($attrs['dn']);
-    $ldap->search('(objectClass=*)', array('*','createTimestamp','modifyTimestamp'), 'one');
+    $ldap->search('(objectClass=*)', ['*','createTimestamp','modifyTimestamp'], 'one');
     while ($attrs = $ldap->fetch()) {
       $node['subnodes'][$attrs['dn']] = $this->dumpLdapNode($attrs, $node['dn']);
     }
@@ -118,16 +118,16 @@ class ldapDump extends simplePlugin
 
   function check (): array
   {
-    return array();
+    return [];
   }
 
   function save (): array
   {
-    return array();
+    return [];
   }
 
   function remove (bool $fulldelete = FALSE): array
   {
-    return array();
+    return [];
   }
 }

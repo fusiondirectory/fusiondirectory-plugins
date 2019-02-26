@@ -20,4 +20,3 @@
 
 /* Using a fake dn so that ACLs are handled correctly */
 opsiImport::mainInc('opsiImport', 'new', FALSE, FALSE);
-?>

@@ -21,26 +21,26 @@
 
 class dnsManagement extends management
 {
-  public $neededAttrs = array('sOARecord' => 1);
+  public $neededAttrs = ['sOARecord' => 1];
 
   /* Default columns */
-  public static $columns = array(
-    array('ObjectTypeColumn',     array()),
-    array('LinkColumn',           array('attributes' => 'nameAttr',             'label' => 'Name')),
-    array('ActionsColumn',        array('label' => 'Actions')),
-  );
+  public static $columns = [
+    ['ObjectTypeColumn',     []],
+    ['LinkColumn',           ['attributes' => 'nameAttr',             'label' => 'Name']],
+    ['ActionsColumn',        ['label' => 'Actions']],
+  ];
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('DNS'),
       'plTitle'       => _('DNS Management'),
       'plDescription' => _('Manage DNS zones and views'),
       'plIcon'        => 'geticon.php?context=applications&icon=dns&size=48',
-      'plSection'     => array('systems' => array('name' => _('Systems'), 'priority' => 10)),
+      'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 10]],
       'plPriority'    => 1,
-      'plManages'     => array('dnsZone', 'dnsView', 'dnsAcl'),
-    );
+      'plManages'     => ['dnsZone', 'dnsView', 'dnsAcl'],
+    ];
   }
 
   protected function configureActions ()
@@ -55,10 +55,10 @@ class dnsManagement extends management
           'geticon.php?context=actions&icon=view-refresh&size=16',
           '+',
           'ldap2zoneRefresh',
-          array('w'),
+          ['w'],
           TRUE,
           TRUE,
-          array('dnsZone')
+          ['dnsZone']
         )
       );
       $this->actions['zonerefresh']->setSeparator(TRUE);
@@ -92,7 +92,7 @@ class dnsManagement extends management
               $target = $target[0];
             }
             $zoneName = $entry['zoneName'];
-            $s_daemon->append_call('Ldap2Zone.start', $target, array('args' => array($zoneName)));
+            $s_daemon->append_call('Ldap2Zone.start', $target, ['args' => [$zoneName]]);
             if ($s_daemon->is_error()) {
               msg_dialog::display(_('Could not get run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG);
             } else {
@@ -112,8 +112,8 @@ class dnsManagement extends management
     list ($serverCn, $serverZone) = explode('.', $fqdn, 2);
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ips = array();
-    $ldap->search('(&(|(aRecord=*)(aAAARecord=*))(relativeDomainName='.$serverCn.')(zoneName='.$serverZone.'))', array('aRecord', 'aAAARecord'));
+    $ips = [];
+    $ldap->search('(&(|(aRecord=*)(aAAARecord=*))(relativeDomainName='.$serverCn.')(zoneName='.$serverZone.'))', ['aRecord', 'aAAARecord']);
     while ($attrs = $ldap->fetch()) {
       if (isset($attrs['aRecord'])) {
         unset($attrs['aRecord']['count']);
@@ -131,6 +131,6 @@ class dnsManagement extends management
       }
       return objects::ls('server', NULL, NULL, $filter);
     }
-    return array();
+    return [];
   }
 }

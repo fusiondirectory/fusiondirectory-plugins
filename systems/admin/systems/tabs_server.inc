@@ -33,5 +33,3 @@ class servtabs extends simpleTabs
     return $errors;
   }
 }
-
-?>

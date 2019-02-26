@@ -24,15 +24,15 @@ class sudoManagement extends management
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Sudo'),
       'plTitle'       => _('Sudo management'),
       'plDescription' => _('Manage sudo roles'),
       'plIcon'        => 'geticon.php?context=applications&icon=sudo&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 45,
-      'plManages'     => array('sudo'),
-    );
+      'plManages'     => ['sudo'],
+    ];
   }
 
   protected function configureActions ()
@@ -45,7 +45,7 @@ class sudoManagement extends management
         'geticon.php?context=applications&icon=sudo&size=16',
         0,
         'newEntryDefault',
-        array('sudo/sudo/c'),
+        ['sudo/sudo/c'],
         TRUE,
         FALSE
       )

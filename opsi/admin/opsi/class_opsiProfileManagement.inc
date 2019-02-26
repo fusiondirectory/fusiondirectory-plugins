@@ -22,24 +22,24 @@
 class opsiManagement extends management
 {
   /* Default columns */
-  public static $columns = array(
-    array('ObjectTypeColumn',       array()),
-    array('LinkColumn',             array('attributes' => 'nameAttr',             'label' => 'Name')),
-    array('LinkColumn',             array('attributes' => 'description',          'label' => 'Description')),
-    array('OpsiProfileUsageColumn', array('label' => 'Usage')),
-    array('ActionsColumn',          array('label' => 'Actions')),
-  );
+  public static $columns = [
+    ['ObjectTypeColumn',       []],
+    ['LinkColumn',             ['attributes' => 'nameAttr',             'label' => 'Name']],
+    ['LinkColumn',             ['attributes' => 'description',          'label' => 'Description']],
+    ['OpsiProfileUsageColumn', ['label' => 'Usage']],
+    ['ActionsColumn',          ['label' => 'Actions']],
+  ];
 
   /* Return plugin information for acl handling */
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('OPSI'),
       'plDescription' => _('OPSI profile management'),
       'plIcon'        => 'geticon.php?context=applications&icon=opsi&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 25,
-      'plManages'     => array('opsiProfile', 'opsiSoftwareList'),
-    );
+      'plManages'     => ['opsiProfile', 'opsiSoftwareList'],
+    ];
   }
 }

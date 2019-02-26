@@ -23,33 +23,33 @@ class nisObject extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Directory'),
       'plDescription'   => _('Directory'),
-      'plObjectClass'   => array('nisObject'),
-      'plObjectType'    => array('nisObject' => array(
+      'plObjectClass'   => ['nisObject'],
+      'plObjectType'    => ['nisObject' => [
         'name'        => _('Directory'),
         'ou'          => get_ou('autofsRDN'),
         'icon'        => 'geticon.php?context=applications&icon=autofs-nis-object&size=16',
         'mainAttr'    => 'cn',
-      )),
-      'plForeignKeys'  => array(
-        'nisMapName'   => array(
-          array('nisMap', 'nisMapName'),
-        ),
-      ),
-      'plSearchAttrs' => array('nisMapName', 'nisMapEntry'),
+      ]],
+      'plForeignKeys'  => [
+        'nisMapName'   => [
+          ['nisMap', 'nisMapName'],
+        ],
+      ],
+      'plSearchAttrs' => ['nisMapName', 'nisMapEntry'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Directory'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('autofsRDN')),
           new StringAttribute(
             _('Name'), _('Name of this directory'),
@@ -64,11 +64,11 @@ class nisObject extends simplePlugin
           new SelectAttribute(
             _('Mount point'), _('The mount point this directory will be placed in'),
             'nisMapName', TRUE,
-            array()
+            []
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -88,8 +88,8 @@ class nisObject extends simplePlugin
     global $config;
     $ldap = $config->get_ldap_link();
     $ldap->cd(get_ou('autofsRDN').$this->base);
-    $ldap->search('(objectClass=nisMap)', array('nisMapName'));
-    $nisMaps = array();
+    $ldap->search('(objectClass=nisMap)', ['nisMapName']);
+    $nisMaps = [];
     while ($attrs = $ldap->fetch()) {
       $nisMaps[] = $attrs['nisMapName'][0];
     }

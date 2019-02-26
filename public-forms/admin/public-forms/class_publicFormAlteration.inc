@@ -23,30 +23,30 @@ class publicFormAlteration extends simplePlugin
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Altered fields'),
       'plDescription' => _('Alteration on form fields'),
-      'plObjectClass' => array(),
-      'plObjectType'  => array('publicForm'),
+      'plObjectClass' => [],
+      'plObjectType'  => ['publicForm'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
     global $config;
 
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Altered fields'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new OrderedArrayAttribute(
             new PipeSeparatedCompositeAttribute(
               _('Alteration on form fields'),
               'fdPublicFormAlteredAttributes',
-              array(
+              [
                 new StringAttribute(
                   _('Field'), _('LDAP name of a form field'),
                   'fdPublicFormAlteredAttributes_field', TRUE
@@ -75,20 +75,20 @@ class publicFormAlteration extends simplePlugin
                   FALSE, '',
                   'hidden', ''
                 ),
-              ),
+              ],
               '',
               ''
             ),
             // no order
             FALSE,
             // default value
-            array('base||||hidden'),
+            ['base||||hidden'],
             // edit enabled
             TRUE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
@@ -96,13 +96,13 @@ class publicFormAlteration extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
     $this->attributesAccess['fdPublicFormAlteredAttributes']->setHeaders(
-      array(
+      [
         _('Field'),
         _('Mandatory'),
         _('Read only'),
         _('Imported'),
         _('Hidden'),
-      )
+      ]
     );
   }
 }

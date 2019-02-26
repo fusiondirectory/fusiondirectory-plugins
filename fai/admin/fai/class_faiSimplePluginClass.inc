@@ -60,4 +60,3 @@ class faiSimplePluginClass extends simplePlugin
     return 'cn='.ldap_escape($this->cn, '', LDAP_ESCAPE_DN).','.get_ou(get_class($this).'RDN').$this->base;
   }
 }
-?>

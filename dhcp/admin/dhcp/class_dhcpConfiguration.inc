@@ -21,73 +21,73 @@
 
 class dhcpConfiguration extends simplePlugin
 {
-  public $types = array();
+  public $types = [];
 
-  static $sectionMap = array(
-    'dhcpService'       => array(
+  static $sectionMap = [
+    'dhcpService'       => [
       'dhcpSharedNetwork','dhcpSubnet','dhcpGroup',
       'dhcpHost','dhcpClass','dhcpTSigKey','dhcpDnsZone','dhcpFailOverPeer'
-    ),
-    'dhcpClass'         => array('dhcpSubClass'),
-    'dhcpSubClass'      => array(),
-    'dhcpHost'          => array(),
-    'dhcpGroup'         => array('dhcpHost'),
-    'dhcpPool'          => array(),
-    'dhcpSubnet'        => array(
+    ],
+    'dhcpClass'         => ['dhcpSubClass'],
+    'dhcpSubClass'      => [],
+    'dhcpHost'          => [],
+    'dhcpGroup'         => ['dhcpHost'],
+    'dhcpPool'          => [],
+    'dhcpSubnet'        => [
       'dhcpPool','dhcpGroup',
       'dhcpHost','dhcpClass','dhcpTSigKey','dhcpDnsZone','dhcpFailOverPeer'
-    ),
-    'dhcpSharedNetwork' => array('dhcpSubnet', 'dhcpPool','dhcpTSigKey','dhcpDnsZone','dhcpFailOverPeer'),
-    'dhcpFailOverPeer'  => array(),
-    'dhcpTSigKey'       => array(),
-    'dhcpDnsZone'       => array()
-  );
+    ],
+    'dhcpSharedNetwork' => ['dhcpSubnet', 'dhcpPool','dhcpTSigKey','dhcpDnsZone','dhcpFailOverPeer'],
+    'dhcpFailOverPeer'  => [],
+    'dhcpTSigKey'       => [],
+    'dhcpDnsZone'       => []
+  ];
 
-  static $quote_option = array('domain-name');
+  static $quote_option = ['domain-name'];
 
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('DHCP configuration'),
       'plDescription' => _('DHCP configuration'),
-      'plObjectClass' => array('dhcpService'),
-      'plObjectType'  => array('dhcpConfiguration' => array(
+      'plObjectClass' => ['dhcpService'],
+      'plObjectType'  => ['dhcpConfiguration' => [
         'name'        => _('DHCP configuration'),
         'ou'          => get_ou('dhcpRDN'),
         'icon'        => 'geticon.php?context=applications&icon=dhcp&size=16'
-      )),
-      'plForeignKeys'   => array(
-        'dhcpSections' => array(
-          array('serverGeneric', 'dn', '(|(dhcpPrimaryDN=%oldvalue%)(dhcpSecondaryDN=%oldvalue%))'),
-        ),
-      ),
-      'plSearchAttrs' => array('description'),
+      ]],
+      'plForeignKeys'   => [
+        'dhcpSections' => [
+          ['serverGeneric', 'dn', '(|(dhcpPrimaryDN=%oldvalue%)(dhcpSecondaryDN=%oldvalue%))'],
+        ],
+      ],
+      'plSearchAttrs' => ['description'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('DHCP Objects'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('dhcpRDN')),
           new HiddenAttribute('cn'),
           new DhcpSectionsAttribute(
             '', _('The DHCP sections handled by this server'),
             'dhcpSections', FALSE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
-    $this->types = array(
+    $this->types = [
       'dhcpLog'           => _('Logging'),
       'dhcpService'       => _('Global options'),
       'dhcpClass'         => _('Class'),
@@ -100,7 +100,7 @@ class dhcpConfiguration extends simplePlugin
       'dhcpSharedNetwork' => _('Shared network'),
       'dhcpTSigKey'       => _('DNS update key'),
       'dhcpDnsZone'       => _('DNS update zones')
-    );
+    ];
 
     parent::__construct($dn, $object, $parent, $mainTab);
 
@@ -133,7 +133,7 @@ class dhcpConfiguration extends simplePlugin
     $ldap->cd($config->current['BASE']);
     $ldap->create_missing_trees(preg_replace('/^[^,]+,/', '', $this->dn));
     $cache  = $this->attributesAccess['dhcpSections']->getCache();
-    $errors = array();
+    $errors = [];
     $new    = ($this->orig_dn == 'new');
     foreach ($cache as $dn => $data) {
       if (($this->dn != $this->orig_dn) && !$new) {
@@ -164,13 +164,13 @@ class dhcpConfiguration extends simplePlugin
         }
 
         /* Build new entry */
-        $attrs = array();
+        $attrs = [];
         foreach ($data as $attribute => $values) {
           if ($attribute == 'MODIFIED' || $attribute == 'dn') {
             continue;
           }
 
-          if (in_array($attribute, array('dhcpServerDN','dhcpFailOverPeerDN'))) {
+          if (in_array($attribute, ['dhcpServerDN','dhcpFailOverPeerDN'])) {
             foreach ($values as $v_key => $value) {
               $values[$v_key] = preg_replace('/'.preg_quote($this->orig_dn, '/').'$/i', $this->dn, $value);
             }
@@ -192,7 +192,7 @@ class dhcpConfiguration extends simplePlugin
               $attrs[$attribute] = $values;
             }
           } elseif ($modify) {
-            $attrs[$attribute] = array();
+            $attrs[$attribute] = [];
           }
         }
 

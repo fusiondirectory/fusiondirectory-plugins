@@ -23,26 +23,26 @@ class ejbcaCertificate extends simplePlugin
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('EJBCA certificate'),
       'plDescription' => _('EJBCA certificate'),
-      'plObjectType'  => array('ejbcaCertificate' => array(
+      'plObjectType'  => ['ejbcaCertificate' => [
         'name'        => _('EJBCA certificate'),
         'filter'      => 'userCertificate;binary=*',
         'ou'          => get_ou('ejbcaRDN'),
         'icon'        => 'geticon.php?context=applications&icon=ejbca&size=16'
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Certificate'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('ejbcaRDN')),
           new HostNameAttribute(
             _('Name'), _('Common name'),
@@ -53,9 +53,9 @@ class ejbcaCertificate extends simplePlugin
             'userCertificate;binary', TRUE,
             '.der'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function renderAttributes (bool $readOnly = FALSE)
@@ -65,11 +65,11 @@ class ejbcaCertificate extends simplePlugin
 
   function save (): array
   {
-    return array();
+    return [];
   }
 
   function remove (bool $fulldelete = FALSE): array
   {
-    return array();
+    return [];
   }
 }

@@ -40,30 +40,30 @@ class auditEvent extends simplePlugin
 
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Audit event'),
       'plDescription' => _('An event like ldap modification which was registered by audit plugin'),
-      'plObjectClass' => array('fdAuditEvent'),
-      'plObjectType'  => array('auditEvent' => array(
+      'plObjectClass' => ['fdAuditEvent'],
+      'plObjectType'  => ['auditEvent' => [
         'name'        => _('Audit event'),
         'icon'        => 'geticon.php?context=applications&icon=audit&size=16',
         'ou'          => get_ou('auditRDN'),
         'mainAttr'    => FALSE,
-      )),
-      'plSearchAttrs' => array('fdAuditAction','fdAuditAuthorDN','fdAuditObjectType',
-        'fdAuditObject','fdAuditAttributes','fdAuditResult'),
+      ]],
+      'plSearchAttrs' => ['fdAuditAction','fdAuditAuthorDN','fdAuditObjectType',
+        'fdAuditObject','fdAuditAttributes','fdAuditResult'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Event'),
-        'attrs' => array(
+        'attrs' => [
           new HiddenAttribute('fdAuditId'),
           new GeneralizedTimeDisplayAttribute(
             _('Time'), _('Date and time this event happened'),
@@ -75,9 +75,9 @@ class auditEvent extends simplePlugin
           new DisplayLDAPAttribute(_('Object'),           _('Target object'),     'fdAuditObject',      TRUE),
           new DisplayLDAPArrayAttribute(_('Attributes'),  _('Target attributes'), 'fdAuditAttributes',  FALSE),
           new DisplayLDAPAttribute(_('Result'),           _('Result or error'),   'fdAuditResult',      FALSE),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)

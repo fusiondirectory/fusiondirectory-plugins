@@ -24,24 +24,24 @@ class sambaDomainManagement extends management
   protected $skipCpHandler  = TRUE;
 
   /* Default columns - SID instead of description */
-  public static $columns = array(
-    array('ObjectTypeColumn', array()),
-    array('LinkColumn',       array('attributes' => 'nameAttr',    'label' => 'Name')),
-    array('LinkColumn',       array('attributes' => 'sambaSID',    'label' => 'SID')),
-    array('ActionsColumn',    array('label' => 'Actions')),
-  );
+  public static $columns = [
+    ['ObjectTypeColumn', []],
+    ['LinkColumn',       ['attributes' => 'nameAttr',    'label' => 'Name']],
+    ['LinkColumn',       ['attributes' => 'sambaSID',    'label' => 'SID']],
+    ['ActionsColumn',    ['label' => 'Actions']],
+  ];
 
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Samba domains'),
       'plTitle'       => _('Samba domain management'),
       'plDescription' => _('Manage Samba domains'),
       'plIcon'        => 'geticon.php?context=applications&icon=samba&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 40,
-      'plManages'     => array('sambaDomain'),
-    );
+      'plManages'     => ['sambaDomain'],
+    ];
   }
 
   protected function setUpListing ()

@@ -22,21 +22,21 @@ class dhcpFailOverPeer extends dhcpPlugin
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('DHCP failover peer'),
       'plDescription'   => _('DHCP failover peer'),
-      'plCategory'      => array('dhcpConfiguration'),
-      'plObjectClass'   => array('dhcpFailOverPeer'),
+      'plCategory'      => ['dhcpConfiguration'],
+      'plObjectClass'   => ['dhcpFailOverPeer'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('DHCP'),
-        'attrs' => array(
+        'attrs' => [
           new HostNameAttribute(
             _('Name'), _('Name of this DHCP configuration'),
             'cn', TRUE
@@ -92,8 +92,8 @@ class dhcpFailOverPeer extends dhcpPlugin
             _('Comments'), _('Comments about this DHCP object'),
             'dhcpComments', FALSE
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }

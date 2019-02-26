@@ -27,10 +27,10 @@ class SudoSystemsAttribute extends SystemsAttribute
     $id = $this->getHtmlId();
     $buttons  = $this->renderInputField(
       'submit', 'add'.$id.'_ALL',
-      array(
+      [
         'value'           => 'ALL',
         'formnovalidate'  => 'formnovalidate'
-      )
+      ]
     );
     return $buttons.parent::renderButtons();
   }
@@ -48,7 +48,7 @@ class SudoSystemsAttribute extends SystemsAttribute
     parent::loadPostValue();
     if ($this->isVisible()) {
       if (isset($_POST['add'.$this->getHtmlId().'_ALL'])) {
-        $this->value = array('ALL');
+        $this->value = ['ALL'];
       }
     }
   }

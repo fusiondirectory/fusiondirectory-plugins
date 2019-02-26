@@ -24,14 +24,14 @@ class sympaManagement extends management
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Sympa'),
       'plTitle'       => _('Sympa management'),
       'plDescription' => _('Manage sympa aliases'),
       'plIcon'        => 'geticon.php?context=applications&icon=sympa&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 26,
-      'plManages'     => array('sympaAlias'),
-    );
+      'plManages'     => ['sympaAlias'],
+    ];
   }
 }
