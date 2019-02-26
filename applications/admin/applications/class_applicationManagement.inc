@@ -23,17 +23,17 @@ class applicationManagement extends management
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Applications'),
       'plTitle'       => _('Applications management'),
       'plDescription' => _('Manage applications and web applications'),
       'plIcon'        => 'geticon.php?context=categories&icon=applications-other&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 60,
-      'plManages'     => array('application', 'webApplication'),
+      'plManages'     => ['application', 'webApplication'],
 
       'plMenuProvider'  => TRUE,
-    );
+    ];
   }
 
   static function getMenuEntries (): array
@@ -41,28 +41,28 @@ class applicationManagement extends management
     global $config, $ui;
     $mode = $config->get_cfg_value('WebappsMenu', 'none');
     if ($mode == 'none') {
-      return array(array(), array());
+      return [[], []];
     }
     $ldap = $config->get_ldap_link();
     if ($mode == 'all') {
       /* using raw to have the same results than with allowed mode */
       $apps = objects::ls(
         'webApplication',
-        array(
+        [
           'cn'                          => 'raw',
           'description'                 => 'raw',
           'labeledURI'                  => 'raw',
           'fdApplicationTitle'          => 'raw',
           'fdApplicationImageLocation'  => 'raw',
           'fdApplicationImage'          => 'raw',
-        )
+        ]
       );
     } else { /* allowed */
-      $apps   = array();
+      $apps   = [];
       if (is_object($ui) && isset($ui->dn)) {
         $roles  = objects::ls(
           'role',
-          array('fdApplicationAllowed' => '*'),
+          ['fdApplicationAllowed' => '*'],
           NULL,
           '(&(objectClass=fdApplicationRights)(roleOccupant='.$ui->dn.'))'
         );
@@ -82,25 +82,25 @@ class applicationManagement extends management
       }
     }
     ksort($apps);
-    $sections = array(
-      'webapps' => array('name' => _('Web applications'), 'priority' => 100)
-    );
-    $entries = array(
-      'webapps' => array()
-    );
+    $sections = [
+      'webapps' => ['name' => _('Web applications'), 'priority' => 100]
+    ];
+    $entries = [
+      'webapps' => []
+    ];
     foreach ($apps as $dn => $app) {
       $base = preg_replace('/^[^,]+,'.preg_quote(get_ou('webappsRDN'), '/').'/', '', $dn);
       $section = 'webapps';
       if ($base != $config->current['BASE']) {
-        $ldap->cat($base, array('dn', 'ou', 'description'), '(&(ou=*)(description=*))');
+        $ldap->cat($base, ['dn', 'ou', 'description'], '(&(ou=*)(description=*))');
         if ($attrs = $ldap->fetch()) {
           $section = $attrs['ou'][0];
           if (!isset($sections[$section])) {
-            $sections[$section] = array(
+            $sections[$section] = [
               'name'      => $attrs['description'][0],
               'priority'  => 101
-            );
-            $entries[$section] = array();
+            ];
+            $entries[$section] = [];
           }
         }
       }
@@ -115,17 +115,17 @@ class applicationManagement extends management
       }
       $name   = $app['cn'][0];
       $title  = (isset($app['fdApplicationTitle'][0]) ? $app['fdApplicationTitle'][0] : $name);
-      $entries[$section][] = array(
+      $entries[$section][] = [
         'NAME'        => $name,
         'TITLE'       => $title,
         'DESCRIPTION' => (isset($app['description'][0]) ? $app['description'][0] : $title),
         'LINK'        => $app['labeledURI'][0],
         'ICONPATH'    => $path,
-      );
+      ];
     }
-    return array(
+    return [
       $sections,
       $entries
-    );
+    ];
   }
 }

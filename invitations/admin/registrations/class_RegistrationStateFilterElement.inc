@@ -33,12 +33,12 @@ class RegistrationStateFilterElement extends FilterElement
 
     $states = RegistrationStateAttribute::getStates();
     foreach ($states as $key => list($label, $icon)) {
-      $this->states[$key] = array(
+      $this->states[$key] = [
         'filter'  => '(fdRegistrationState='.$key.')',
         'label'   => $label,
         'icon'    => $icon,
         'checked' => FALSE,
-      );
+      ];
     }
 
     $this->states['filled']['checked'] = TRUE;
@@ -54,14 +54,14 @@ class RegistrationStateFilterElement extends FilterElement
 
   public function render ()
   {
-    $inputs = array();
+    $inputs = [];
     foreach ($this->states as $key => $infos) {
-      $inputs['filter_state_'.$key] = array(
+      $inputs['filter_state_'.$key] = [
         'name'    => $infos['label'],
         'desc'    => $infos['label'].' '.$infos['filter'],
         'icon'    => (isset($infos['icon']) ? $infos['icon'] : NULL),
         'checked' => $infos['checked'],
-      );
+      ];
     }
     $smarty = get_smarty();
     $smarty->assign('NAME',   _('Statuses'));
@@ -72,7 +72,7 @@ class RegistrationStateFilterElement extends FilterElement
   public function getFilters ($type, array &$filters)
   {
     if (strtoupper($type) == 'REGISTRATION') {
-      $stateFilters = array();
+      $stateFilters = [];
       foreach ($this->states as $infos) {
         if ($infos['checked']) {
           $stateFilters[] = $infos['filter'];

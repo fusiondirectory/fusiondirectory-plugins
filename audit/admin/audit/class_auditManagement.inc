@@ -25,25 +25,25 @@ class auditManagement extends management
   public static $skipSnapshots  = TRUE;
 
   /* Default columns */
-  public static $columns = array(
-    array('ObjectTypeColumn',           array()),
-    array('LdapGeneralizedTimeColumn',  array('attributes' => 'fdAuditDateTime',    'label' => 'Time')),
-    array('LinkColumn',                 array('attributes' => 'fdAuditAuthorDN',    'label' => 'Author')),
-    array('LinkColumn',                 array('attributes' => 'fdAuditAction',      'label' => 'Action')),
-    array('LinkColumn',                 array('attributes' => 'fdAuditObjectType',  'label' => 'Type')),
-    array('LinkColumn',                 array('attributes' => 'fdAuditObject',      'label' => 'Target')),
-  );
+  public static $columns = [
+    ['ObjectTypeColumn',           []],
+    ['LdapGeneralizedTimeColumn',  ['attributes' => 'fdAuditDateTime',    'label' => 'Time']],
+    ['LinkColumn',                 ['attributes' => 'fdAuditAuthorDN',    'label' => 'Author']],
+    ['LinkColumn',                 ['attributes' => 'fdAuditAction',      'label' => 'Action']],
+    ['LinkColumn',                 ['attributes' => 'fdAuditObjectType',  'label' => 'Type']],
+    ['LinkColumn',                 ['attributes' => 'fdAuditObject',      'label' => 'Target']],
+  ];
 
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Audit'),
       'plTitle'       => _('Audit events'),
       'plDescription' => _('Browse audit events'),
       'plIcon'        => 'geticon.php?context=applications&icon=audit&size=48',
       'plSection'     => 'reporting',
-      'plManages'     => array('auditEvent'),
-    );
+      'plManages'     => ['auditEvent'],
+    ];
   }
 
   function __construct ()
@@ -64,7 +64,7 @@ class auditManagement extends management
     parent::configureActions();
 
     /* Remove create, remove */
-    $removeActions = array('new', 'remove');
+    $removeActions = ['new', 'remove'];
     foreach ($removeActions as $action) {
       foreach ($this->actions[$action]->listActions() as $actionName) {
         unset($this->actionHandlers[$actionName]);

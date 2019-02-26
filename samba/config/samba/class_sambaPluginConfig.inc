@@ -22,23 +22,23 @@ class sambaPluginConfig extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Samba'),
       'plDescription'   => _('Samba plugin configuration'),
       'plPriority'      => 2,
-      'plObjectClass'   => array('fdSambaPluginConf'),
-      'plObjectType'    => array('configuration'),
+      'plObjectClass'   => ['fdSambaPluginConf'],
+      'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'samba' => array(
+    return [
+      'samba' => [
         'name'  => _('Samba settings'),
-        'attrs' => array(
+        'attrs' => [
           new BooleanAttribute(
             _('Samba ID mapping'),
             _('Maintain sambaIdmapEntry objects. Depending on your setup this can drastically improve the windows login performance.'),
@@ -59,8 +59,8 @@ class sambaPluginConfig extends simplePlugin
           new SelectAttribute(
             _('Expiration date synchronisaton'), _('Synchronisaton the expiration date with the POSIX one?'),
             'fdSambaExpirationSync', FALSE,
-            array('', 'posix', 'samba'), '',
-            array('Do not synchronise', 'Synchronise from POSIX', 'Synchronise to POSIX')
+            ['', 'posix', 'samba'], '',
+            ['Do not synchronise', 'Synchronise from POSIX', 'Synchronise to POSIX']
           ),
           new BooleanAttribute(
             _('Generate sambaLMPassword'), _('Needed to be compliant with Windows <= 98 or Samba < 3.2'),
@@ -70,8 +70,8 @@ class sambaPluginConfig extends simplePlugin
             _('Activate primary group warning'), _('Issue a warning if POSIX primary group cannot be converted to Samba primary group when activating the Samba tab of a user'),
             'fdSambaPrimaryGroupWarning', FALSE
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

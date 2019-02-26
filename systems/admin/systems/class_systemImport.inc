@@ -30,15 +30,15 @@ class ImportServerAttribute extends ObjectSelectAttribute
 
 class systemImport extends simplePlugin
 {
-  protected $types = array();
+  protected $types = [];
 
   static function getAttributesInfo (string $filter = ''): array
   {
-    return array(
-      'import' => array(
+    return [
+      'import' => [
         'template'  => get_template_path('server_import.tpl', TRUE, dirname(__FILE__)),
         'name'      => _('Import'),
-        'attrs'     => array(
+        'attrs'     => [
           new BaseSelectorAttribute(get_ou('workstationRDN')),
           new ImportServerAttribute(
             _('Server'), _('The server you wish to import hosts from'),
@@ -47,21 +47,21 @@ class systemImport extends simplePlugin
           new SelectAttribute(
             _('Type'), _('Type of objects you wish to import'),
             'type', TRUE,
-            array(), '', NULL
+            [], '', NULL
           ),
           new SelectAttribute(
             _('Template'), _('Select a template to apply to imported entries'),
             'template_dn', FALSE,
-            array(), '', NULL
+            [], '', NULL
           ),
           new ButtonAttribute(
             '', '',
             'import',
             _('Import')
           )
-        ),
-      ),
-    );
+        ],
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -70,7 +70,7 @@ class systemImport extends simplePlugin
     $this->messages = FALSE;
 
     $this->attributesAccess['type']->setSubmitForm('typeChanged');
-    $choices = array();
+    $choices = [];
     foreach ($this->types as $type) {
       $infos = objects::infos($type);
       $choices[$type] = $infos['name'];
@@ -92,32 +92,32 @@ class systemImport extends simplePlugin
     }
     $ui->setCurrentBase($base);
 
-    $messages = array();
-    $dhcps    = array();
+    $messages = [];
+    $dhcps    = [];
     try {
       $dns    = objects::ls('dnsZone');
     } catch (NonExistingObjectTypeException $e) {
-      $dns    = array();
+      $dns    = [];
     }
     if (!empty($template_dn)) {
       $template = new template($type, $template_dn);
     }
     foreach ($hosts as $host) {
       if (!preg_match('/^([^.]+)\.(.*)$/', $host['id'], $m)) {
-        $messages[$host['id']] = array(sprintf(_('Could not parse %s'), $host['id']));
+        $messages[$host['id']] = [sprintf(_('Could not parse %s'), $host['id'])];
         continue;
       }
       $cn   = $m[1];
       $zone = $m[2];
       if (empty($host['ipAddress'])) {
-        $host['ipAddress'] = array();
+        $host['ipAddress'] = [];
       } elseif (!is_array($host['ipAddress'])) {
-        $host['ipAddress'] = array($host['ipAddress']);
+        $host['ipAddress'] = [$host['ipAddress']];
       }
       if (empty($host['hardwareAddress'])) {
-        $host['hardwareAddress'] = array();
+        $host['hardwareAddress'] = [];
       } elseif (!is_array($host['hardwareAddress'])) {
-        $host['hardwareAddress'] = array($host['hardwareAddress']);
+        $host['hardwareAddress'] = [$host['hardwareAddress']];
       }
 
       if (empty($template_dn)) {
@@ -135,15 +135,15 @@ class systemImport extends simplePlugin
       } else {
         $template->reset();
         // For now we only need to import workstations
-        $values = array(
-          'workstationGeneric' => array(
+        $values = [
+          'workstationGeneric' => [
             'base'          => $base,
             'cn'            => $cn,
             'description'   => $host['description'],
             'ipHostNumber'  => $host['ipAddress'],
             'macAddress'    => $host['hardwareAddress'],
-          )
-        );
+          ]
+        ];
         $error = $template->deserialize($values);
         if ($error !== TRUE) {
           $messages[$host['id']] = $error;
@@ -159,7 +159,7 @@ class systemImport extends simplePlugin
           list(, $dhcpParentNodes) = dhcpSystem::getDhcpParentNodes();
           foreach ($dhcpParentNodes as $dn => $attrs) {
             if (isset($attrs['dhcpNetMask'])) {
-              $dhcps[$dn] = array($attrs['cn'][0], normalize_netmask($attrs['dhcpNetMask'][0]));
+              $dhcps[$dn] = [$attrs['cn'][0], normalize_netmask($attrs['dhcpNetMask'][0])];
             }
           }
         }
@@ -170,14 +170,14 @@ class systemImport extends simplePlugin
             foreach ($baseObject->ipHostNumber as $ipHostNumber) {
               if (tests::is_in_network($ip, $mask, $ipHostNumber)) {
                 $tabObject->by_object['dhcpSystem']->attributesAccess['dhcpHosts']->addPostValue(
-                  array($dn, $baseObject->macAddress, $ipHostNumber, '')
+                  [$dn, $baseObject->macAddress, $ipHostNumber, '']
                 );
                 $tabObject->by_object['dhcpSystem']->attributesAccess['dhcpHosts']->applyPostValue();
               }
             }
           }
           if (empty($tabObject->by_object['dhcpSystem']->dhcpHosts)) {
-            $messages[$host['id']] = array(sprintf(_('No DHCP server found for IPs %s'), implode(',', $baseObject->ipHostNumber)));
+            $messages[$host['id']] = [sprintf(_('No DHCP server found for IPs %s'), implode(',', $baseObject->ipHostNumber))];
             continue;
           }
         }
@@ -188,15 +188,15 @@ class systemImport extends simplePlugin
         foreach ($dns as $dn => $value) {
           if (preg_match('/^'.$zone.'\.?$/', $value)) {
             $tabObject->by_object['dnsHost']->is_account  = TRUE;
-            $tabObject->by_object['dnsHost']->fdDNSZoneDn = array($dn);
+            $tabObject->by_object['dnsHost']->fdDNSZoneDn = [$dn];
             foreach ($baseObject->ipHostNumber as $ipHostNumber) {
-              $tabObject->by_object['dnsHost']->addRecord($dn, array($cn, 'aRecord', $ipHostNumber, ''));
+              $tabObject->by_object['dnsHost']->addRecord($dn, [$cn, 'aRecord', $ipHostNumber, '']);
             }
             break;
           }
         }
         if ($tabObject->by_object['dnsHost']->is_account == FALSE) {
-          $messages[$host['id']] = array(sprintf(_('No DNS server found for zone %s'), $zone));
+          $messages[$host['id']] = [sprintf(_('No DNS server found for zone %s'), $zone)];
           continue;
         }
       }
@@ -242,7 +242,7 @@ class systemImport extends simplePlugin
 
   function save (): array
   {
-    return array();
+    return [];
   }
 
   function handle_import ()
@@ -262,6 +262,6 @@ class systemImport extends simplePlugin
 
   protected function getExtraTabs ($server_dn, $host): array
   {
-    return array();
+    return [];
   }
 }

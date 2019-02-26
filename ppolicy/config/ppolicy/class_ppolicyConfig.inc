@@ -23,23 +23,23 @@ class ppolicyConfig extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Ppolicy plugin configuration'),
       'plDescription'   => _('FusionDirectory ppolicy plugin configuration'),
-      'plObjectClass'   => array('fdPpolicyPluginConf'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectClass'   => ['fdPpolicyPluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Ppolicy plugin'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Ppolicy RDN'), _('Branch in which ppolicies will be stored'),
             'fdPpolicyRDN', TRUE,
@@ -50,8 +50,8 @@ class ppolicyConfig extends simplePlugin
             'fdPpolicyDefaultCn', FALSE,
             'default'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

@@ -22,35 +22,35 @@ class serviceDHCP extends simpleService
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('DHCP service'),
       'plDescription' => _('DHCP service'),
       'plIcon'        => 'geticon.php?context=applications&icon=dhcp&size=16',
-      'plObjectClass' => array('dhcpServer'),
-      'plForeignKeys' => array(
+      'plObjectClass' => ['dhcpServer'],
+      'plForeignKeys' => [
         'dhcpServiceDN' => 'dhcpConfiguration',
-      ),
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('DHCP configurations'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new SetAttribute(
             new SelectAttribute(
               '', _('The DN of dhcpService object(s) which contain the configuration information'),
               'dhcpServiceDN'
             )
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $parent = NULL)

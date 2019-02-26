@@ -24,48 +24,48 @@ class dhcpHost extends dhcpPlugin
 
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('DHCP host'),
       'plDescription'   => _('DHCP host'),
-      'plCategory'      => array('dhcpConfiguration'),
-      'plObjectClass'   => array('dhcpHost'),
+      'plCategory'      => ['dhcpConfiguration'],
+      'plObjectClass'   => ['dhcpHost'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
     $attributesInfo = parent::getAttributesInfo();
-    $attributesInfo['host'] = array(
+    $attributesInfo['host'] = [
       'name'  => _('Host'),
-      'attrs' => array(
+      'attrs' => [
         new CompositeAttribute(
           _('The client hardware address'), 'dhcpHWAddress',
-          array(
+          [
             new SelectAttribute(
               '', _('The hardware address type'),
               'dhcpHWAddress_type', TRUE,
-              array(  'ethernet',   'fddi',   'token-ring'), 'ethernet',
-              array(_('Ethernet'),_('FDDI'),_('Token Ring'))
+              [  'ethernet',   'fddi',   'token-ring'], 'ethernet',
+              [_('Ethernet'),_('FDDI'),_('Token Ring')]
             ),
             new StringAttribute(
               '', _('The client hardware address'),
               'dhcpHWAddress_address', TRUE
             ),
-          ),
+          ],
           '/^([^ ]+) ([^ ]+)$/',
           '%s %s',
           '',
           _('Hardware address')
         )
-      )
-    );
+      ]
+    ];
     $attributesInfo['host']['attrs'][0]->setRequired(TRUE);
     $attributesInfo['host']['attrs'][0]->setLinearRendering(TRUE);
     $attributesInfo['main']['attrs'][2]->setDefaultValue(
-      array(
+      [
         'fixed-address ip',
-      )
+      ]
     );
     return $attributesInfo;
   }

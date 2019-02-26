@@ -22,30 +22,30 @@ class webserviceConfig extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Webservice configuration'),
       'plDescription'   => _('FusionDirectory webservice plugin configuration'),
-      'plObjectClass'   => array('fdWebservicePluginConf'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectClass'   => ['fdWebservicePluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Webservice'),
-        'attrs' => array(
+        'attrs' => [
           new BooleanAttribute(
             _('Force SSL'), _('Allow only HTTPS JSON-RPC requests'),
             'fdWebserviceForceSSL', TRUE,
             TRUE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

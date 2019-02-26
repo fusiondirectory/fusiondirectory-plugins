@@ -22,38 +22,38 @@ class buildRepository extends simplePlugin
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Build repository'),
       'plDescription' => _('Build repository'),
-      'plObjectClass' => array('fdBuildRepository'),
-      'plObjectType'  => array('buildRepository' => array(
+      'plObjectClass' => ['fdBuildRepository'],
+      'plObjectType'  => ['buildRepository' => [
         'name'        => _('Build repository'),
         'aclCategory' => 'repository',
         'ou'          => get_ou('repositoryRDN'),
         'icon'        => 'geticon.php?context=applications&icon=repository&size=16'
-      )),
-      'plForeignKeys'  => array(
+      ]],
+      'plForeignKeys'  => [
         'fdRepoAdmin'     => 'user',
         'fdRepoUploader'  => 'user',
         'fdRepoUser'      => 'user',
-        'fdRepoDistributionSection'   => array(
-          array('repositoryDistribution', 'cn', '(fdRepoDistributionSection=%oldvalue%|*)'),
-          array('repositorySection',      'cn', '(fdRepoDistributionSection=*|%oldvalue%)'),
-        ),
-      ),
+        'fdRepoDistributionSection'   => [
+          ['repositoryDistribution', 'cn', '(fdRepoDistributionSection=%oldvalue%|*)'],
+          ['repositorySection',      'cn', '(fdRepoDistributionSection=*|%oldvalue%)'],
+        ],
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
     global $config;
 
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Build repository'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('repositoryRDN')),
           new HostNameAttribute(
             _('Name'), _('Unique name for this repository'),
@@ -67,7 +67,7 @@ class buildRepository extends simplePlugin
             new SelectAttribute(
               _('Distribution sections'), _('The distribution sections this repository provides'),
               'fdRepoDistributionSection', TRUE,
-              array()
+              []
             )
           ),
           new BooleanAttribute(
@@ -77,13 +77,13 @@ class buildRepository extends simplePlugin
           new SelectAttribute(
             _('Type'), _('Repository type'),
             'fdRepoType', TRUE,
-            $config->get_cfg_value('repositoryTypes', array('debian'))
+            $config->get_cfg_value('repositoryTypes', ['debian'])
           )
-        )
-      ),
-      'users' => array(
+        ]
+      ],
+      'users' => [
         'name'  => _('Members'),
-        'attrs' => array(
+        'attrs' => [
           new UsersAttribute(
             _('Admins'), _('Admins of this repository'),
             'fdRepoAdmin', FALSE
@@ -96,9 +96,9 @@ class buildRepository extends simplePlugin
             _('Users'), _('Users of this repository'),
             'fdRepoUser', FALSE
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -107,8 +107,8 @@ class buildRepository extends simplePlugin
 
     $this->attributesAccess['cn']->setUnique('one');
 
-    $distros = objects::ls('repoDistribution', array('cn' => '1', 'fdRepoSection' => '*'));
-    $choices = array();
+    $distros = objects::ls('repoDistribution', ['cn' => '1', 'fdRepoSection' => '*']);
+    $choices = [];
     foreach ($distros as $infos) {
       foreach ($infos['fdRepoSection'] as $section) {
         $choices[] = $infos['cn'].'|'.$section;

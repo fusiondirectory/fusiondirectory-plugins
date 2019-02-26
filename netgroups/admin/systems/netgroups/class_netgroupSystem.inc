@@ -25,13 +25,13 @@ class netgroupSystem extends netgroupMembership
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('NIS Netgroup'),
       'plDescription'   => _('NIS Netgroup member'),
       'plPriority'      => 3,
-      'plObjectType'    => array('workstation','terminal','server','printer'),
+      'plObjectType'    => ['workstation','terminal','server','printer'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   protected function triple_mask ()

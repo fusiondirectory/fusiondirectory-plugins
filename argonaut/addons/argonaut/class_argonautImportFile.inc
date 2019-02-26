@@ -20,39 +20,39 @@
 
 class argonautImportFile extends simplePlugin
 {
-  protected $csv_fields = array(
+  protected $csv_fields = [
     '0' => 'TIMESTAMP',
     '1' => 'MAC',
     '2' => 'HEADER',
     '3' => 'OGROUP'
-  );
+  ];
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Argonaut task import'),
       'plDescription' => _('Imports argonaut tasks from CSV file'),
-      'plObjectType'  => array('argonautQueueImport' => array(
+      'plObjectType'  => ['argonautQueueImport' => [
         'name'        => _('Argonaut task import'),
         'aclCategory' => 'argonautQueue',
         'icon'        => 'geticon.php?context=applications&icon=argonaut&size=16',
-      )),
+      ]],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Import actions from CSV file'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new CompositeAttribute(
             _('Import a list of task into argonaut'),
             'import',
-            array(
+            [
               new FileAttribute(
                 '', '',
                 'import_file', FALSE
@@ -62,18 +62,18 @@ class argonautImportFile extends simplePlugin
                 'import_submit',
                 _('Upload')
               )
-            ),
+            ],
             '', '%s%s', '',
             _('Import file')
           )
-        )
-      ),
-      'events' => array(
+        ]
+      ],
+      'events' => [
         'name'      => _('Imported tasks'),
-        'attrs'     => array(new FakeAttribute('events')),
+        'attrs'     => [new FakeAttribute('events')],
         'template'  => get_template_path('import_events.tpl', TRUE, dirname(__FILE__)),
-      ),
-    );
+      ],
+    ];
   }
 
   public function __construct ($parent)
@@ -84,7 +84,7 @@ class argonautImportFile extends simplePlugin
     $this->attributesAccess['import']->setInLdap(FALSE);
     $this->attributesAccess['import']->setLinearRendering(TRUE);
 
-    $this->events         = array();
+    $this->events         = [];
     $this->daemon_events  = argonautEventTypes::get_event_types();
   }
 
@@ -129,11 +129,11 @@ class argonautImportFile extends simplePlugin
         foreach ($events as $key => $event) {
           /* Create event */
           if (empty($event['TIMESTAMP'])) {
-            $data = array();
+            $data = [];
           } else {
-            $data = array('timestamp' => $event['TIMESTAMP']);
+            $data = ['timestamp' => $event['TIMESTAMP']];
           }
-          $this->parent->o_queue->append_call($event['HEADER'], array($event['MAC']), $data);
+          $this->parent->o_queue->append_call($event['HEADER'], [$event['MAC']], $data);
           if ($this->parent->o_queue->is_error()) {
             msg_dialog::display(_('Infrastructure service'), msgPool::siError($this->parent->o_queue->get_error()), ERROR_DIALOG);
             $fail++;
@@ -159,7 +159,7 @@ class argonautImportFile extends simplePlugin
     }
 
     /* Reset current events */
-    $events = array();
+    $events = [];
 
     /* Parse each line of the given file */
     foreach ($lines as $line) {
@@ -170,7 +170,7 @@ class argonautImportFile extends simplePlugin
 
       /* Load values from file */
       $fields = explode(';', $line);
-      $event  = array();
+      $event  = [];
       foreach ($this->csv_fields as $key => $val) {
         $event[$val] = '';
         if (isset($fields[$key])) {

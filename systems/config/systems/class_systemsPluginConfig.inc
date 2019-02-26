@@ -20,26 +20,26 @@
 
 class systemsPluginConfig extends simplePlugin
 {
-  static protected $ipClasses = array();
+  static protected $ipClasses = [];
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Systems'),
       'plDescription'   => _('Systems plugin configuration'),
-      'plObjectClass'   => array('fdSystemsPluginConf'),
-      'plObjectType'    => array('configuration'),
+      'plObjectClass'   => ['fdSystemsPluginConf'],
+      'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'rdns' => array(
+    return [
+      'rdns' => [
         'name'  => _('LDAP tree for systems'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Systems RDN'), _('Branch in which systems will be stored'),
             'fdSystemRDN', TRUE,
@@ -80,16 +80,16 @@ class systemsPluginConfig extends simplePlugin
             'fdMobilePhoneRDN', TRUE,
             'ou=mobile,ou=systems'
           ),
-        )
-      ),
-      'config' => array(
+        ]
+      ],
+      'config' => [
         'name'  => _('Miscellaneous'),
-        'attrs' => array(
+        'attrs' => [
           new OrderedArrayAttribute(
             new CompositeAttribute(
               _('Available encodings for share services'),
               'fdEncodings',
-              array(
+              [
                 new StringAttribute(
                   _('Encoding'), _('The encoding code name'),
                   'encoding_code', TRUE, '', '',
@@ -100,19 +100,19 @@ class systemsPluginConfig extends simplePlugin
                   'encoding_label', TRUE, '', '',
                   '/^[^=]+$/'
                 ),
-              ),
+              ],
               '/^([^=]*)=([^=]*)$/',
               '%s=%s',
               '',
               _('Encodings')
             ),
             FALSE, /* no order */
-            array(
+            [
               'UTF-8=UTF-8', 'ISO8859-1=ISO8859-1 (Latin 1)',
               'ISO8859-2=ISO8859-2 (Latin 2)', 'ISO8859-3=ISO8859-3 (Latin 3)',
               'ISO8859-4=ISO8859-4 (Latin 4)', 'ISO8859-5=ISO8859-5 (Latin 5)',
               'cp850=CP850 (Europe)'
-            ),
+            ],
             TRUE /* edit enabled */
           ),
           new SetAttribute(
@@ -120,11 +120,11 @@ class systemsPluginConfig extends simplePlugin
               _('Mandatory IP'), _('Object types tabs for which IP field should be mandatory'),
               'fdMandatoryIpClasses', FALSE
             ),
-            array('componentGeneric','printGeneric','workstationGeneric','terminalGeneric','serverGeneric')
+            ['componentGeneric','printGeneric','workstationGeneric','terminalGeneric','serverGeneric']
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -133,7 +133,7 @@ class systemsPluginConfig extends simplePlugin
 
     if (empty(static::$ipClasses)) {
       $plist = session::global_get('plist');
-      static::$ipClasses = array();
+      static::$ipClasses = [];
       foreach ($plist->info as $cname => $info) {
         if ($cname == 'all') {
           continue;

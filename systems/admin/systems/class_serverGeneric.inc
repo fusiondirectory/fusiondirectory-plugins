@@ -22,24 +22,24 @@ class serverGeneric extends workstationGeneric
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Server'),
       'plDescription' => _('Server information'),
-      'plObjectClass' => array('fdServer', 'ieee802Device'),
+      'plObjectClass' => ['fdServer', 'ieee802Device'],
       'plFilter'      => '(objectClass=fdServer)',
-      'plObjectType'  => array(
-        'server' => array(
+      'plObjectType'  => [
+        'server' => [
           'name'        => _('Server'),
           'description' => _('Server'),
           'icon'        => 'geticon.php?context=devices&icon=server&size=16',
           'ou'          => get_ou('serverRDN'),
           'tabClass'    => 'servtabs',
-        )
-      ),
-      'plSearchAttrs' => array('description', 'ipHostNumber', 'macAddress'),
+        ]
+      ],
+      'plSearchAttrs' => ['description', 'ipHostNumber', 'macAddress'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ($word = NULL, $rdn = NULL): array

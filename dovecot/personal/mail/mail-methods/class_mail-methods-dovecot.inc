@@ -186,8 +186,8 @@ class mailMethodDovecot extends mailMethod
     $o_queue = new supportDaemon();
     if (!$o_queue->is_error()) {
       $o_queue->append_call('Dovecot.create_mailbox',
-                            array($cfg['mac']),
-                            array('args' => array($this->account_id, $this->parent->uidNumber, $this->parent->gidNumber)));
+                            [$cfg['mac']],
+                            ['args' => [$this->account_id, $this->parent->uidNumber, $this->parent->gidNumber]]);
     }
     /* If we got an error while connecting or sending the call */
     if ($o_queue->is_error()) {
@@ -208,21 +208,21 @@ class mailMethodDovecot extends mailMethod
   static public function get_server_list ()
   {
     global $config;
-    $serverList = array();
+    $serverList = [];
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search('(objectClass=fdDovecotServer)',
-                  array('cn', 'fdDovecotConnect', 'fdDovecotAdmin', 'fdDovecotPassword', 'fdDovecotArgonautMkdir', 'macAddress'));
+                  ['cn', 'fdDovecotConnect', 'fdDovecotAdmin', 'fdDovecotPassword', 'fdDovecotArgonautMkdir', 'macAddress']);
     while ($attrs = $ldap->fetch()) {
-      $serverList[$attrs['cn'][0]] = array(
+      $serverList[$attrs['cn'][0]] = [
         'server_dn' => $attrs['dn'],
         'connect'   => $attrs['fdDovecotConnect'][0],
         'admin'     => $attrs['fdDovecotAdmin'][0],
         'password'  => $attrs['fdDovecotPassword'][0],
         'mkdir'     => (isset($attrs['fdDovecotArgonautMkdir']) ? (strtoupper($attrs['fdDovecotArgonautMkdir'][0]) == 'TRUE') : TRUE),
         'mac'       => $attrs['macAddress'][0],
-      );
+      ];
     }
 
     return $serverList;

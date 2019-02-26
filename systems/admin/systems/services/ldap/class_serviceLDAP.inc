@@ -24,26 +24,26 @@ class serviceLDAP extends simpleService
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('LDAP service'),
       'plDescription' => _('LDAP').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=ldap&size=16',
-      'plObjectClass' => array('goLdapServer'),
+      'plObjectClass' => ['goLdapServer'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
     global $config;
-    return array(
+    return [
       // Attributes are grouped by section
-      'main' => array(
+      'main' => [
         'name'  => _('LDAP service'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new StringAttribute(
             _('LDAP Base'), _('The LDAP base to use for this LDAP server'),
             'goLdapBase', TRUE,
@@ -69,7 +69,7 @@ class serviceLDAP extends simpleService
           new SelectAttribute(
             _('Deref'), _('Specifies how alias dereferencing is done when performing a search'),
             'goLdapDeref', TRUE,
-            array('never','searching','finding','always'), 'never'
+            ['never','searching','finding','always'], 'never'
           ),
           new StringAttribute(
             _('TLS Cert'), _('Filepath to tls certificate'),
@@ -86,15 +86,15 @@ class serviceLDAP extends simpleService
           new SelectAttribute(
             _('TLS ReqCert'), _('Specifies what checks to perform on server certificates in a TLS session, if any'),
             'goLdapReqCert', TRUE,
-            array('never','allow','try','demand'), 'never'
+            ['never','allow','try','demand'], 'never'
           ),
           new SelectAttribute(
             _('TLS CrlCheck'), _('Specifies if the Certificate Revocation List (CRL) of the CA should be used to verify if the server certificates have  not  been  revoked'),
             'goLdapCrlCheck', TRUE,
-            array('none','peer','all'), 'none'
+            ['none','peer','all'], 'none'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

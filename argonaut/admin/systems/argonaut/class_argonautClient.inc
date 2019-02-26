@@ -21,7 +21,7 @@
 
 class ArgonautServiceNameAttribute extends CompositeAttribute
 {
-  static private $argonautService_defaults = array(
+  static private $argonautService_defaults = [
     "folder"              => "/etc/init.d",
     "serviceCUPS"         => "cups",
     "serviceMail"         => "postfix",
@@ -39,17 +39,17 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
     "argonautServer"      => "argonaut-server",
     "argonautFAIMonitor"  => "argonaut-fai-monitor",
     "argonautFuseConfig"  => "argonaut-fuse",
-  );
+  ];
 
-  static private $argonautService_blacklist = array(
+  static private $argonautService_blacklist = [
     "argonautDNSConfig",
     "argonautMirrorConfig",
     "serviceRepository",
-  );
+  ];
 
   function __construct ($description, $ldapName, $acl = "")
   {
-    parent::__construct($description, $ldapName, array(), "", "", $acl);
+    parent::__construct($description, $ldapName, [], "", "", $acl);
   }
 
   function setParent (&$plugin)
@@ -61,11 +61,11 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
   function loadServiceNames ()
   {
     global $config;
-    $this->attributes = array();
+    $this->attributes = [];
     // Get services tabs list from config
     $services = $config->data['TABS']['SERVERSERVICE'];
     // Add fake "folder" tab at the beginning
-    $services = array_merge(array(array('CLASS' => 'folder')), $services);
+    $services = array_merge([['CLASS' => 'folder']], $services);
 
     foreach ($services as $tab) {
       $name = $tab['CLASS'];
@@ -118,27 +118,27 @@ class argonautClient extends simplePlugin
 {
   var $displayHeader  = TRUE;
 
-  var $inheritance = array('gosaGroupOfNames' => 'member');
+  var $inheritance = ['gosaGroupOfNames' => 'member'];
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Argonaut client'),
       'plDescription'   => _('Edit argonaut client settings'),
-      'plObjectClass'   => array('argonautClient'),
-      'plObjectType'    => array('workstation','server','terminal','ogroup-dynamic'),
+      'plObjectClass'   => ['argonautClient'],
+      'plObjectType'    => ['workstation','server','terminal','ogroup-dynamic'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _("Argonaut client settings"),
-        'attrs' => array(
+        'attrs' => [
           new IntAttribute(
             _('Client port'), _('Port used by argonaut client for JSON-RPC'),
             'argonautClientPort', TRUE,
@@ -147,7 +147,7 @@ class argonautClient extends simplePlugin
           new SelectAttribute(
             _('Protocol'), _('Protocol to use for argonaut'),
             'argonautClientProtocol', TRUE,
-            array('http', 'https')
+            ['http', 'https']
           ),
           new StringAttribute(
             _('WakeOnLan interface'), _('Interface used by argonaut for WakeOnLan'),
@@ -164,11 +164,11 @@ class argonautClient extends simplePlugin
             'argonautClientLogDir', TRUE,
             '/var/log/argonaut'
           ),
-        )
-      ),
-      'ssl' => array (
+        ]
+      ],
+      'ssl' => [
         'name'  => _('SSL paths'),
-        'attrs' => array (
+        'attrs' => [
           new TrimmedStringAttribute(
             _('Key'), _('Path to the private key file on Argonaut client'),
             'argonautClientKeyPath', FALSE,
@@ -188,29 +188,29 @@ class argonautClient extends simplePlugin
             _('CN of the certificate'), _('The CN in this client certificate'),
             'argonautClientCertCN', FALSE
           ),
-        )
-      ),
-      'serviceNames' => array(
+        ]
+      ],
+      'serviceNames' => [
         'name'  => _("Service names"),
-        'attrs' => array(
+        'attrs' => [
           new ArgonautServiceNameAttribute(_("Argonaut service names"), "argonautServiceName"),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
     $this->attributesAccess['argonautClientProtocol']->setManagedAttributes(
-      array(
-        'disable' => array (
-          'http' => array (
+      [
+        'disable' => [
+          'http' => [
             'argonautClientKeyPath','argonautClientCertPath','argonautClientCaCertPath',
             'argonautClientCertCN'
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
   }
 }

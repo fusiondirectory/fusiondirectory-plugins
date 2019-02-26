@@ -20,7 +20,7 @@
 
 class pgpKeySelect extends simpleSelectManagement
 {
-  protected $objectTypes  = array();
+  protected $objectTypes  = [];
   protected $autoFilter   = FALSE;
 
   protected $departmentBrowser      = FALSE;
@@ -52,18 +52,18 @@ class pgpKeySelect extends simpleSelectManagement
     $ldap = $config->get_ldap_link();
     $ldap->cat('cn=pgpServerInfo,'.$config->current['BASE']);
     if ($pgpServerInfo = $ldap->fetch()) {
-      $this->storagePoints = array(
+      $this->storagePoints = [
         preg_replace(
           '/'.$config->current['BASE'].'$/', '',
           $pgpServerInfo['pgpBaseKeySpaceDN'][0]
         )
-      );
+      ];
     } else {
       msg_dialog::display(_('Configuration error'), _('You need to configure GPG base dn through the addons section first'));
     }
     $this->filter->setObjectStorage($this->storagePoints);
     $this->filter->category = 'user';
-    $attributes = array('pgpKeyID', 'pgpUserID', 'pgpKeyCreateTime', 'pgpKeyExpireTime', 'pgpKeyType', 'pgpKeySize');
+    $attributes = ['pgpKeyID', 'pgpUserID', 'pgpKeyCreateTime', 'pgpKeyExpireTime', 'pgpKeyType', 'pgpKeySize'];
     $this->filter->query[0]['backend']      = 'LDAPBlacklist';
     $this->filter->query[0]['filter']       = '$NAME';
     $this->filter->query[0]['attribute']    = $attributes;
@@ -81,17 +81,17 @@ class pgpKeySelect extends simpleSelectManagement
     return ($return === '' ? '&nbsp;' : $return);
   }
 
-  static function filterPgpDate ($value = array())
+  static function filterPgpDate ($value = [])
   {
     return static::filterSingleValue($value, 'pgpDate');
   }
 
-  static function filterPgpSize ($value = array())
+  static function filterPgpSize ($value = [])
   {
     return static::filterSingleValue($value, 'pgpSize');
   }
 
-  static function filterPgpRevoked ($value = array())
+  static function filterPgpRevoked ($value = [])
   {
     if (empty($value)) {
       return 'No';
@@ -131,10 +131,10 @@ class PgpKeyAttribute extends GenericDialogAttribute
   protected $height           = 200;
   protected $displayed_values;
 
-  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = array(), $acl = '')
+  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = [], $acl = '')
   {
     parent::__construct($label, $description, $ldapName, $required, $defaultValue, 'dn', NULL, $acl);
-    $this->displayed_values = array(
+    $this->displayed_values = [
       'pgpKeyID'          => _('Key ID'),
       'pgpUserID'         => _('User ID'),
       'pgpKeyCreateTime'  => _('Creation time'),
@@ -143,7 +143,7 @@ class PgpKeyAttribute extends GenericDialogAttribute
       'pgpKeySize'        => _('Size'),
       'pgpRevoked'        => _('Revoked'),
       'pgpDisabled'       => _('Disabled')
-    );
+    ];
   }
 
   function addValue ($dn, $entry)
@@ -198,7 +198,7 @@ class PgpKeyAttribute extends GenericDialogAttribute
     // Updates and get display values
     $displays = $this->getDisplayValues();
     foreach ($displays as $key => $display_item) {
-      $fields = array();
+      $fields = [];
       foreach (array_keys($this->displayed_values) as $field) {
         if (isset($display_item[$field][0]) && !empty($display_item[$field][0])) {
           $display = $display_item[$field][0];
@@ -214,17 +214,17 @@ class PgpKeyAttribute extends GenericDialogAttribute
           } elseif ($field == 'pgpDisabled') {
             $display = pgpKeySelect::pgpRevoked($display);
           }
-          $fields[] = array('string' => $display);
+          $fields[] = ['string' => $display];
         } else {
           $display = '';
           if (($field == 'pgpRevoked') || ($field == 'pgpDisabled')) {
             $display = pgpKeySelect::pgpRevoked($display);
           }
-          $fields[] = array('string' => $display);
+          $fields[] = ['string' => $display];
         }
       }
       $img = '<input type="image" src="geticon.php?context=actions&icon=edit-delete&size=16" name="'.$id.'_del_'.$key.'" class="center"/>&nbsp;';
-      $fields[] = array('html' => $img, 'attach' => 'style="border-right:0px;width:20px;"');
+      $fields[] = ['html' => $img, 'attach' => 'style="border-right:0px;width:20px;"'];
       $div->addEntry($fields);
     }
     $smarty = get_smarty();
@@ -235,7 +235,7 @@ class PgpKeyAttribute extends GenericDialogAttribute
   public function htmlIds ()
   {
     $id = $this->getHtmlId();
-    $ids = array('add'.$id.'_dialog');
+    $ids = ['add'.$id.'_dialog'];
     $nb_values = count($this->value);
     for ($i = 0; $i < $nb_values; ++$i) {
       $ids[] = $id.'_del_'.$i;

@@ -24,26 +24,26 @@ class ejbcaManagement extends management
   public static $skipSnapshots  = TRUE;
   protected $skipCpHandler      = TRUE;
 
-  public $neededAttrs = array('userCertificate;binary' => 1);
+  public $neededAttrs = ['userCertificate;binary' => 1];
 
   /* Default columns - no description for certificates */
-  public static $columns = array(
-    array('ObjectTypeColumn', array()),
-    array('LinkColumn',       array('attributes' => 'nameAttr',    'label' => 'Name')),
-    array('ActionsColumn',    array('label' => 'Actions')),
-  );
+  public static $columns = [
+    ['ObjectTypeColumn', []],
+    ['LinkColumn',       ['attributes' => 'nameAttr',    'label' => 'Name']],
+    ['ActionsColumn',    ['label' => 'Actions']],
+  ];
 
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('EJBCA'),
       'plTitle'       => _('EJBCA certificates management'),
       'plDescription' => _('Manage EJBCA certificates'),
       'plIcon'        => 'geticon.php?context=applications&icon=ejbca&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 50,
-      'plManages'     => array('ejbcaCertificate'),
-    );
+      'plManages'     => ['ejbcaCertificate'],
+    ];
   }
 
   protected function configureActions ()
@@ -64,7 +64,7 @@ class ejbcaManagement extends management
         'geticon.php?context=actions&icon=download&size=16',
         1,
         'downloadEntry',
-        array('ejbcaCertificate/ejbcaCertificate/r'),
+        ['ejbcaCertificate/ejbcaCertificate/r'],
         FALSE,
         TRUE
       )

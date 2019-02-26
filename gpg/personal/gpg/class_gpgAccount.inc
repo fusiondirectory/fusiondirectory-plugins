@@ -24,32 +24,32 @@ class gpgAccount extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('GPG'),
       'plDescription'   => _('Edit user\'s GPG IDs'),
       'plSelfModify'    => TRUE,
-      'plObjectClass'   => array('fdGpgAccount'),
-      'plObjectType'    => array('user'),
+      'plObjectClass'   => ['fdGpgAccount'],
+      'plObjectType'    => ['user'],
       'plIcon'          => 'geticon.php?context=applications&icon=gpg&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=gpg&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('GPG keys'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new PgpKeyAttribute(
             '', _('GPG keys of this user'),
             'fdUserKeyDN', TRUE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }

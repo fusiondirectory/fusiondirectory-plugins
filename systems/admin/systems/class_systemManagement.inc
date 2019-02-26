@@ -26,28 +26,28 @@ class systemManagement extends management
 
   protected $siActive = FALSE;
 
-  public static $columns = array(
-    array('ObjectTypeColumn',     array()),
-    array('LinkColumn',           array('attributes' => 'nameAttr',                   'label' => 'Name')),
-    array('IpColumn',             array('attributes' => array('ipHostNumber' => '*'), 'label' => 'IP')),
-    array('Column',               array('attributes' => array('macAddress' => '*'),   'label' => 'Mac')),
-    array('LinkColumn',           array('attributes' => 'description',                'label' => 'Description')),
-    array('SystemServicesColumn', array('label' => 'Services')),
-    array('SystemReleaseColumn',  array('label' => 'Release')),
-    array('ActionsColumn',        array('label' => 'Actions')),
-  );
+  public static $columns = [
+    ['ObjectTypeColumn',     []],
+    ['LinkColumn',           ['attributes' => 'nameAttr',                   'label' => 'Name']],
+    ['IpColumn',             ['attributes' => ['ipHostNumber' => '*'], 'label' => 'IP']],
+    ['Column',               ['attributes' => ['macAddress' => '*'],   'label' => 'Mac']],
+    ['LinkColumn',           ['attributes' => 'description',                'label' => 'Description']],
+    ['SystemServicesColumn', ['label' => 'Services']],
+    ['SystemReleaseColumn',  ['label' => 'Release']],
+    ['ActionsColumn',        ['label' => 'Actions']],
+  ];
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Systems'),
       'plTitle'       => _('Systems Management'),
       'plDescription' => _('Manage servers, computers, printers, phones and other devices'),
       'plIcon'        => 'geticon.php?context=devices&icon=computer&size=48',
-      'plSection'     => array('systems' => array('name' => _('Systems'), 'priority' => 10)),
+      'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 10]],
       'plPriority'    => 0,
-      'plManages'     => array('server','workstation','terminal','printer','component','phone','mobilePhone'),
-    );
+      'plManages'     => ['server','workstation','terminal','printer','component','phone','mobilePhone'],
+    ];
   }
 
   function __construct ()
@@ -66,8 +66,8 @@ class systemManagement extends management
     parent::configureActions();
 
     if ($this->siActive) {
-      $triggerActions   = array();
-      $scheduleActions  = array();
+      $triggerActions   = [];
+      $scheduleActions  = [];
       $events = argonautEventTypes::get_event_types();
       foreach ($events as $name => $infos) {
         $triggerActions[] = new Action(
@@ -118,7 +118,7 @@ class systemManagement extends management
     $event      = $action['subaction'];
 
     // Now send FAI/Argonaut events here.
-    $mac = array();
+    $mac = [];
 
     // Collect target mac addresses
     foreach ($action['targets'] as $dn) {
@@ -139,12 +139,12 @@ class systemManagement extends management
     /* Skip installation or update trigerred events,
      *  if this entry is currently processing.
      */
-    if ($triggered && in_array($event, array('reinstall','update'))) {
+    if ($triggered && in_array($event, ['reinstall','update'])) {
       foreach ($mac as $key => $mac_address) {
         if ($o_queue->is_currently_installing($mac_address)) {
           msg_dialog::display(_('Action canceled'), sprintf(_('System %s is currently installing'), $dn), ERROR_DIALOG);
           unset($mac[$key]);
-          logging::log('security', 'systems/'.get_class($this), '', array(), 'Skip adding "argonautAction::'.$event.'" for mac "'.$mac_address.'", there is already a job in progress.');
+          logging::log('security', 'systems/'.get_class($this), '', [], 'Skip adding "argonautAction::'.$event.'" for mac "'.$mac_address.'", there is already a job in progress.');
         }
       }
     }
@@ -185,7 +185,7 @@ class systemManagement extends management
       return;
     }
 
-    $macs = array();
+    $macs = [];
 
     // Collect target mac addresses
     foreach ($action['targets'] as $dn) {
@@ -203,7 +203,7 @@ class systemManagement extends management
 
     $o_queue  = new supportDaemon();
 
-    $res = $o_queue->append_call('ping', array_values($macs), array('fullresult' => 1));
+    $res = $o_queue->append_call('ping', array_values($macs), ['fullresult' => 1]);
     if ($o_queue->is_error()) {
       msg_dialog::display(_('Infrastructure service'), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
     } else {
@@ -270,7 +270,7 @@ class systemManagement extends management
       $service = $m[1];
       if (isset($this->tabObject->by_object['ServerService'])) {
         $this->tabObject->current = 'ServerService';
-        $all = array('action'  => 'edit', 'targets' => array($service));
+        $all = ['action'  => 'edit', 'targets' => [$service]];
         $this->tabObject->by_object['ServerService']->editEntry($all['action'], $all['targets'], $all);
       } else {
         trigger_error("Unknown tab: ServerService");

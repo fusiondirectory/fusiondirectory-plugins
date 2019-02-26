@@ -22,28 +22,28 @@ class mailPluginConfig extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Mail'),
       'plDescription'   => _('Mail plugin configuration'),
       'plPriority'      => 3,
-      'plObjectClass'   => array('fdMailPluginConf'),
-      'plObjectType'    => array('configuration'),
+      'plObjectClass'   => ['fdMailPluginConf'],
+      'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'mail' => array(
+    return [
+      'mail' => [
         'name'  => _('Mail settings'),
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Account identification attribute'),
             _('Which attribute will be used to create accounts.'),
             'fdMailAttribute', TRUE,
-            array('mail', 'uid')
+            ['mail', 'uid']
           ),
           new StringAttribute(
             _('Mail user template'),
@@ -83,8 +83,8 @@ class mailPluginConfig extends simplePlugin
             _('Prefix to add for mail shared folders.'),
             'fdMailSharedPrefix'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

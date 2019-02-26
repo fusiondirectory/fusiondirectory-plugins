@@ -22,36 +22,36 @@ class sinapsUser extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Sinaps'),
       'plTitle'         => _('Sinaps'),
       'plDescription'   => _('Used to send acquisition request for users'),
       'plFilter'        => '(objectClass=*)',
       'plSelfModify'    => FALSE,
-      'plObjectClass'   => array(),
-      'plObjectType'    => array('user'),
+      'plObjectClass'   => [],
+      'plObjectType'    => ['user'],
       //~ 'plIcon'          => '',
       //~ 'plSmallIcon'     => '',
 
-      'plProvidedAcls'  => array()
-    );
+      'plProvidedAcls'  => []
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Sinaps'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new DisplayAttribute(
             '', '',
             'sinaps_explanation', FALSE,
             _('This tab takes care of sending Acquisition event to Sinaps whenever a user is modified.')
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function codeEntiteToldapUuidCallback ($codeEntite)
@@ -63,7 +63,7 @@ class sinapsUser extends simplePlugin
      * */
     $entites = objects::ls(
       'entite',
-      array('supannRefId' => '*', 'supannTypeEntite' => 1, 'dn' => 'raw'),
+      ['supannRefId' => '*', 'supannTypeEntite' => 1, 'dn' => 'raw'],
       NULL,
       '(supannCodeEntite='.$codeEntite.')'
     );
@@ -96,10 +96,10 @@ class sinapsUser extends simplePlugin
     }
 
     if ($config->get_cfg_value('SinapsEnabled', 'FALSE') == 'FALSE') {
-      return array();
+      return [];
     }
     if ($config->get_cfg_value('SinapsAcquisitionURL', '') == '') {
-      return array('Sinaps acquisition URL is not filled in FusionDirectory configuration');
+      return ['Sinaps acquisition URL is not filled in FusionDirectory configuration'];
     }
 
     $contractEnded = FALSE;
@@ -111,15 +111,15 @@ class sinapsUser extends simplePlugin
           $contractEnded = TRUE;
         } else {
           /* Do not sync already deleted users */
-          return array();
+          return [];
         }
       }
     }
 
     $attributes = sinapsRequestAcquisition::$attributes;
 
-    $mapping = array();
-    foreach ($config->get_cfg_value('SinapsAcquisitionContactMethodMap', array()) as $field) {
+    $mapping = [];
+    foreach ($config->get_cfg_value('SinapsAcquisitionContactMethodMap', []) as $field) {
       list($ldapField, $sinapsType) = explode('|', $field, 2);
 
       $mapping[$ldapField]    = $sinapsType;
@@ -132,12 +132,12 @@ class sinapsUser extends simplePlugin
     $user   = reset($users);
 
     if (!is_array($user)) {
-      return array();
+      return [];
     }
 
     try {
       $request = new sinapsRequestAcquisition();
-      $request->fill($user, $config->get_cfg_value('SinapsUuidPrefix', 'LDAPUUID'), $config->get_cfg_value('SinapsAcquisitionTypeExterne', 'FD'), $mapping, array($this, 'codeEntiteToldapUuidCallback'), $contractEnded);
+      $request->fill($user, $config->get_cfg_value('SinapsUuidPrefix', 'LDAPUUID'), $config->get_cfg_value('SinapsAcquisitionTypeExterne', 'FD'), $mapping, [$this, 'codeEntiteToldapUuidCallback'], $contractEnded);
       $xml = $request->getXml();
       $date = date('Y-m-d_H-i-s');
       sinapsDiffusionHandlerJob::dumpFile($date.'_acquittement.xml', $xml);
@@ -149,6 +149,6 @@ class sinapsUser extends simplePlugin
     } catch (FusionDirectoryException $e) {
     }
 
-    return array();
+    return [];
   }
 }

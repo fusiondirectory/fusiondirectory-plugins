@@ -29,7 +29,7 @@ class filterArgonautEvents extends filterLDAP
     $events  = argonautEventTypes::get_event_types();
 
     /* Get tags that will be used in queue searches */
-    $event_tags = array("none");
+    $event_tags = ["none"];
     foreach ($events as $action => $evt) {
       $event_tags[] = $action;
     }
@@ -37,12 +37,12 @@ class filterArgonautEvents extends filterLDAP
     $entries = $o_queue->get_queued_entries($event_tags, 0, 9999999, "id");
     if ($o_queue->is_error()) {
       msg_dialog::display(_("Error"), sprintf(_("Cannot load queue entries: %s"), "<br><br>".$o_queue->get_error()), ERROR_DIALOG);
-      return array();
+      return [];
     }
 
     /* Assign entries by id.
      */
-    $data = array();
+    $data = [];
     $ui   = get_userinfo();
 
 
@@ -66,7 +66,7 @@ class filterArgonautEvents extends filterLDAP
 
       /* If WAITING add priority action
        */
-      if (in_array($entry['STATUS'], array("waiting")) && $acl_is_writeable) {
+      if (in_array($entry['STATUS'], ["waiting"]) && $acl_is_writeable) {
         $entry['objectClass'][] = "FAKE_OC__prioUp";
         $entry['objectClass'][] = "FAKE_OC__prioDown";
         $entry['objectClass'][] = "FAKE_OC__prioPause";
@@ -74,45 +74,45 @@ class filterArgonautEvents extends filterLDAP
 
       /* If PAUSED add resume action
        */
-      if (in_array($entry['STATUS'], array("paused")) && $acl_is_writeable) {
+      if (in_array($entry['STATUS'], ["paused"]) && $acl_is_writeable) {
         $entry['objectClass'][] = "FAKE_OC__prioResume";
       }
 
       /* If PAUSED or WAITING add execution action
        */
-      if (in_array($entry['STATUS'], array("paused","waiting")) && $acl_is_writeable) {
+      if (in_array($entry['STATUS'], ["paused","waiting"]) && $acl_is_writeable) {
         $entry['objectClass'][] = "FAKE_OC__processNow";
       }
 
       /* If PAUSED or WAITING add edit action
        */
-      if (in_array($entry['STATUS'], array("waiting")) && $acl_is_writeable) {
+      if (in_array($entry['STATUS'], ["waiting"]) && $acl_is_writeable) {
         $entry['objectClass'][] = "FAKE_OC__edit";
       }
 
 
       /* If PROCESSING add abort action
        */
-      if (in_array($entry['STATUS'], array("processing")) && preg_match("/install/", $entry['HEADERTAG']) && $acl_is_writeable) {
+      if (in_array($entry['STATUS'], ["processing"]) && preg_match("/install/", $entry['HEADERTAG']) && $acl_is_writeable) {
         $entry['objectClass'][] = "FAKE_OC__abort";
       }
 
       /* If ERROR add retry action
        */
-      if (in_array($entry['STATUS'], array("error")) && $acl_is_writeable) {
+      if (in_array($entry['STATUS'], ["error"]) && $acl_is_writeable) {
         $entry['objectClass'][] = "FAKE_OC__retry";
       }
 
       /* If WAITING or ERROR add remove action
        */
-      if ($acl_is_removeable && in_array($entry['STATUS'], array("waiting","error","processed"))) {
+      if ($acl_is_removeable && in_array($entry['STATUS'], ["waiting","error","processed"])) {
         $entry['objectClass'][] = "FAKE_OC__remove";
       }
-      if ($acl_is_writeable && in_array($entry['STATUS'], array("processing")) && !preg_match("/install/", $entry['HEADERTAG'])) {
+      if ($acl_is_writeable && in_array($entry['STATUS'], ["processing"]) && !preg_match("/install/", $entry['HEADERTAG'])) {
         $entry['objectClass'][] = "FAKE_OC__remove";
       }
 
-      $item = array();
+      $item = [];
       $item['count']  = 0;
       $item['EVENT']  = $entry;
       $item['dn']     = $entry['MACADDRESS'].",".$entry['TIMESTAMP'];
@@ -120,7 +120,7 @@ class filterArgonautEvents extends filterLDAP
       foreach ($entry as $name => $value) {
         $item[] = $name;
         if (!is_array($value)) {
-          $item[$name] = array('count' => 1, $value);
+          $item[$name] = ['count' => 1, $value];
         } else {
           $item[$name] = $value;
           $item[$name]['count'] = count($value);

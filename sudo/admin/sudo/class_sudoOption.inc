@@ -23,7 +23,7 @@ class UsedOptionAttribute extends CompositeAttribute
 {
   function __construct ($description, $ldapName, $acl = "")
   {
-    parent::__construct($description, $ldapName, array(), "", "", $acl);
+    parent::__construct($description, $ldapName, [], "", "", $acl);
   }
 
   function addOption ($name, $params, $value = NULL)
@@ -67,7 +67,7 @@ class UsedOptionAttribute extends CompositeAttribute
          */
         $value = $this->plugin->unescape_command($value);
 
-        $opt = preg_replace(array('/\-$/','/\+$/'), array('_moins','_plus'), $opt);
+        $opt = preg_replace(['/\-$/','/\+$/'], ['_moins','_plus'], $opt);
 
         /* Check if the given value is part of our options list.
            If it is not, add it as type STRING and display a warning.
@@ -79,7 +79,7 @@ class UsedOptionAttribute extends CompositeAttribute
             WARNING_DIALOG
           );
         } else {
-          $this->addOption($opt, sudoOptions::get($opt), array('negate' => $negation,'value' => $value));
+          $this->addOption($opt, sudoOptions::get($opt), ['negate' => $negation,'value' => $value]);
         }
       }
     }
@@ -134,7 +134,7 @@ class AvailableSudoOptionAttribute extends SelectAttribute
     $outputs = array_map(
       function ($choice)
       {
-        $opt = preg_replace(array('/_moins$/','/_plus$/'), array('-','+'), $choice);
+        $opt = preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $choice);
         return sprintf(_("%s (%s)"), $opt, sudoOptions::get($choice)['TYPE']);
       },
       $choices
@@ -159,17 +159,17 @@ class ListSudoOptionAttribute extends SetAttribute
 {
   function __construct ($name, $desc, $defaultValue, $acl = "")
   {
-    parent::__construct(new StringAttribute(preg_replace(array('/_moins$/','/_plus$/'), array('-','+'), $name), $desc, $name, FALSE, $defaultValue, $acl));
+    parent::__construct(new StringAttribute(preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $name), $desc, $name, FALSE, $defaultValue, $acl));
   }
 
   function getValue ()
   {
     if (count($this->value) <= 0) {
-      return preg_replace(array('/_moins$/','/_plus$/'), array('-','+'), $this->getLdapName()).'=';
+      return preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $this->getLdapName()).'=';
     } elseif (count($this->value) > 1) {
-      return preg_replace(array('/_moins$/','/_plus$/'), array('-','+'), $this->getLdapName()).'="'.implode(' ', $this->value).'"';
+      return preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $this->getLdapName()).'="'.implode(' ', $this->value).'"';
     } else {
-      return preg_replace(array('/_moins$/','/_plus$/'), array('-','+'), $this->getLdapName()).'='.$this->value[0];
+      return preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $this->getLdapName()).'='.$this->value[0];
     }
   }
 
@@ -183,12 +183,12 @@ class ListSudoOptionAttribute extends SetAttribute
     if (isset($value['value'])) {
       $value = $value['value'];
       if ($value == "") {
-        $value = array();
+        $value = [];
       } elseif ($value[0] != '"') {
-        $value = array($value);
+        $value = [$value];
       } else {
         $value = preg_split('/ /',
-          preg_replace(array('/^"/','/"$/'), '', $value)
+          preg_replace(['/^"/','/"$/'], '', $value)
         );
       }
     }
@@ -202,15 +202,15 @@ class SudoOptionAttribute extends Attribute
 
   function __construct ($name, $desc, $type, $defaultValue, $acl = "")
   {
-    parent::__construct($name, $desc, $name, FALSE, array('negate' => FALSE, 'value' => $defaultValue), $acl);
+    parent::__construct($name, $desc, $name, FALSE, ['negate' => FALSE, 'value' => $defaultValue], $acl);
     $this->type = $type;
   }
 
   function loadPostValue ()
   {
-    if (in_array($this->type, array('STRING','INTEGER','BOOLEAN'))) {
+    if (in_array($this->type, ['STRING','INTEGER','BOOLEAN'])) {
       if (isset($_POST[$this->getLdapName()])) {
-        $this->setPostValue(array('negate' => FALSE, 'value' => $_POST[$this->getLdapName()]));
+        $this->setPostValue(['negate' => FALSE, 'value' => $_POST[$this->getLdapName()]]);
       }
     } else {
       if (isset($_POST[$this->getLdapName().'_selection'])) {
@@ -221,9 +221,9 @@ class SudoOptionAttribute extends Attribute
         }
 
         if ($sel == "FALSE" || $sel == "TRUE") {
-          $this->setPostValue(array('negate' => FALSE, 'value' => $sel));
+          $this->setPostValue(['negate' => FALSE, 'value' => $sel]);
         } else {
-          $this->setPostValue(array('negate' => $this->postValue['negate'], 'value' => $val));
+          $this->setPostValue(['negate' => $this->postValue['negate'], 'value' => $val]);
         }
       }
     }
@@ -246,9 +246,9 @@ class SudoOptionAttribute extends Attribute
     $id = $this->getLdapName();
     $value = htmlentities($this->value['value'], ENT_COMPAT, 'UTF-8');
     $smarty = get_smarty();
-    $smarty->assign("boolStringOptions", array("FALSE","TRUE","STRING"));
-    $smarty->assign("boolIntOptions", array("FALSE","TRUE","INTEGER"));
-    $smarty->assign("booleanOptions", array("FALSE","TRUE"));
+    $smarty->assign("boolStringOptions", ["FALSE","TRUE","STRING"]);
+    $smarty->assign("boolIntOptions", ["FALSE","TRUE","INTEGER"]);
+    $smarty->assign("booleanOptions", ["FALSE","TRUE"]);
     if ($this->type == "STRING") {
       $display = '<input type="text" name="'.$id.'" id="'.$id.'" value="'.$value.'" />';
     } elseif ($this->type == "LISTS") {
@@ -294,7 +294,7 @@ class SudoOptionAttribute extends Attribute
       if ($value == "FALSE") {
         $option = "!".$option;
       }
-    } elseif (in_array($this->type, array("STRING","INTEGER","LISTS"))) {
+    } elseif (in_array($this->type, ["STRING","INTEGER","LISTS"])) {
       if ($value == "") {
         $option = $name;
       } else {
@@ -303,7 +303,7 @@ class SudoOptionAttribute extends Attribute
       if ($neg) {
         $option = "!".$option;
       }
-    } elseif (in_array($this->type, array("STRING_BOOL","BOOL_INTEGER"))) {
+    } elseif (in_array($this->type, ["STRING_BOOL","BOOL_INTEGER"])) {
       if ($value == "FALSE") {
         $option = "!".$name;
       } elseif ($value == "TRUE") {
@@ -333,35 +333,35 @@ class sudoOption extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Options'),
       'plDescription' => _('Sudo options'),
-      'plObjectType'  => array('sudo'),
+      'plObjectType'  => ['sudo'],
       'plPriority'    => 2,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'available_options' => array(
+    return [
+      'available_options' => [
         'name'  => _('Available options'),
-        'attrs' => array(
+        'attrs' => [
           new AvailableSudoOptionAttribute(
             _('Option'), _('Add a new sudo option'), 'availableSudoOptions'
           ),
-        )
-      ),
-      'used_options' => array(
+        ]
+      ],
+      'used_options' => [
         'name'  => _('Used sudo role options'),
-        'attrs' => array(
+        'attrs' => [
           new UsedOptionAttribute(_('Used sudo role options'), 'sudoOption')
-        ),
+        ],
         'template' => get_template_path('usedoptions_section.tpl', TRUE, dirname(__FILE__))
-      ),
-    );
+      ],
+    ];
   }
 
   function execute (): string
@@ -413,8 +413,8 @@ SCRIPT;
       $cmd = preg_replace("/^([^ ]*).*$/", "\\1", $str);
       $val = preg_replace("/^[^ ]*(.*)$/", "\\1", $str);
       $val = preg_replace(
-        array("/\\\\\\\\/", "/\\\\,/", "/\\\\:/", "/\\\\=/"),
-        array("\\",",",":","="), $val
+        ["/\\\\\\\\/", "/\\\\,/", "/\\\\:/", "/\\\\=/"],
+        ["\\",",",":","="], $val
       );
       $str = $cmd.$val;
     }

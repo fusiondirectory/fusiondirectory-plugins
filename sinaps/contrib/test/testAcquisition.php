@@ -24,7 +24,7 @@ function usage ($error = '')
 
 $options = getopt(
   'Ph',
-  array(
+  [
     'help',
     'url:',
     'ca:',
@@ -32,7 +32,7 @@ $options = getopt(
     'password:',
     'server:',
     'dn:',
-  )
+  ]
 );
 
 if (isset($options['h']) || isset($options['help'])) {
@@ -64,11 +64,11 @@ if (isset($options['url'])) {
   $options['url'] = 'https://localhost/fusiondirectory/jsonrpc.php';
 }
 
-$ssl_options = array(
-);
-$http_options = array(
+$ssl_options = [
+];
+$http_options = [
   'timeout' => 10
-);
+];
 
 if (isset($options['ca'])) {
   $ssl_options['cafile'] = $options['ca'];
@@ -84,7 +84,7 @@ function codeEntiteToldapUuidCallback ($codeEntite)
   $entites = $client->ls(
     $session_id,
     'entite',
-    array('supannRefId' => '*', 'supannTypeEntite' => 1, 'dn' => 'raw'),
+    ['supannRefId' => '*', 'supannTypeEntite' => 1, 'dn' => 'raw'],
     NULL,
     '(supannCodeEntite='.$codeEntite.')'
   );
@@ -115,7 +115,7 @@ try {
   $configurations = $client->ls(
     $session_id,
     'configuration',
-    array(
+    [
       'fdSinapsEnabled'                     => 1,
       'fdSinapsAcquisitionURL'              => 1,
       'fdSinapsLogin'                       => 1,
@@ -123,7 +123,7 @@ try {
       'fdSinapsUuidPrefix'                  => 1,
       'fdSinapsAcquisitionTypeExterne'      => 1,
       'fdSinapsAcquisitionContactMethodMap' => '*',
-    )
+    ]
   );
   $configuration = reset($configurations);
   if (isset($configuration['fdSinapsEnabled']) && ($configuration['fdSinapsEnabled'] == 'FALSE')) {
@@ -147,7 +147,7 @@ try {
 
   $attributes = sinapsRequestAcquisition::$attributes;
 
-  $mapping = array();
+  $mapping = [];
   foreach ($configuration['fdSinapsAcquisitionContactMethodMap'] as $field) {
     list($ldapField, $sinapsType) = explode('|', $field, 2);
 

@@ -21,7 +21,7 @@
 
 class packageSelect extends simpleSelectManagement
 {
-  protected $objectTypes  = array();
+  protected $objectTypes  = [];
   protected $autoFilter   = FALSE;
 
   protected $departmentBrowser      = FALSE;
@@ -46,9 +46,9 @@ class packageSelect extends simpleSelectManagement
     $act = $this->detectPostActions();
     $headpage = $this->getHeadpage();
     if (!isset($act['targets'])) {
-      return array();
+      return [];
     }
-    $ret = array();
+    $ret = [];
     foreach ($act['targets'] as $dn) {
       $ret[] = $headpage->getEntry($dn);
     }

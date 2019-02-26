@@ -25,14 +25,14 @@ class argonautDNSConfig extends simpleService
   /* Return plugin information for acl handling */
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Argonaut DNS settings'),
       'plDescription'   => _('Argonaut DNS settings').' ('._('Services').')',
       'plIcon'          => 'geticon.php?context=applications&icon=argonaut-dns&size=16',
-      'plObjectClass'   => array('argonautDNSConfig'),
+      'plObjectClass'   => ['argonautDNSConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
 
@@ -45,10 +45,10 @@ class argonautDNSConfig extends simpleService
     if (class_available('ZoneNameAttribute')) {
       $zoneAttributeClass = 'ZoneNameAttribute';
     }
-    return array (
-      'main' => array (
+    return  [
+      'main' => [
         'name'  => _('Ldap2zone global settings'),
-        'attrs' => array (
+        'attrs' => [
           new StringAttribute(
             _('Bind directory'), _('The directory in which conf file must be created'),
             'argonautLdap2zoneBindDir', TRUE,
@@ -79,11 +79,11 @@ class argonautDNSConfig extends simpleService
             _('Search base'), _('LDAP base in which ldap2zone should search. Only usefull if you got several nodes for the same zone.'),
             'argonautLdap2zoneSearchBase', FALSE
           ),
-        )
-      ),
-      'master' => array (
+        ]
+      ],
+      'master' => [
         'name'  => _('Ldap2zone master settings'),
-        'attrs' => array (
+        'attrs' => [
           new BooleanAttribute(
             _('Ignore reverse zone'), _('Do not write reverse zone'),
             'argonautLdap2zoneNoReverse', FALSE
@@ -91,7 +91,7 @@ class argonautDNSConfig extends simpleService
           new SelectAttribute(
             _('Notify'), '',
             'argonautLdap2zoneNotify', FALSE,
-            array('yes','no','explicit')
+            ['yes','no','explicit']
           ),
           new StringAttribute(
             _('Allow update'), _('Allow update (semicolon separated and ended)'),
@@ -104,19 +104,19 @@ class argonautDNSConfig extends simpleService
           new SelectAttribute(
             _('Check names'), _('Cause any host name for the zone to be checked for compliance with RFC 952 and RFC 1123 and take the defined action'),
             'argonautLdap2zoneCheckNames', FALSE,
-            array('','warn','fail','ignore'), ''
+            ['','warn','fail','ignore'], ''
           ),
-        )
-      ),
-      'slave' => array (
+        ]
+      ],
+      'slave' => [
         'name'  => _('Ldap2zone slave settings'),
-        'class' => array('fullwidth'),
-        'attrs' => array (
+        'class' => ['fullwidth'],
+        'attrs' => [
           new OrderedArrayAttribute(
             new PipeSeparatedCompositeAttribute(
               _('Manage DNS Slaves'),
               'argonautLdap2zoneSlaveZones',
-              array(
+              [
                 new $zoneAttributeClass(
                   _('zone'), _('DNS zone this server should be declared as slave of'),
                   'Ldap2zoneSlaveZone', TRUE
@@ -131,17 +131,17 @@ class argonautDNSConfig extends simpleService
                   TRUE, '',
                   'reverse', 'noreverse'
                 )
-              ),
+              ],
               '',
               _('DNS slaves')
             ),
             FALSE,
-            array(),
+            [],
             TRUE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $parent = NULL)

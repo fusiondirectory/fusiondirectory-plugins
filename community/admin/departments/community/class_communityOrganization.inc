@@ -24,27 +24,27 @@ class communityOrganization extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Community organization'),
       'plDescription'   => _('Community organization dates and alternate address'),
-      'plObjectClass'   => array('fdCommunityOrganization'),
-      'plObjectType'    => array('organization'),
+      'plObjectClass'   => ['fdCommunityOrganization'],
+      'plObjectType'    => ['organization'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
     global $config;
-    return array(
-      'membership' => array(
+    return [
+      'membership' => [
         'name'  => _('Membership'),
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Membership type'), _('Membership type of this organization'),
             'fdCommunityMembershipType', FALSE,
-            $config->get_cfg_value('communityMembershipTypeChoices', array())
+            $config->get_cfg_value('communityMembershipTypeChoices', [])
           ),
           new BooleanAttribute(
             _('Agreement signed'), _('Did this member returned the agreement signed'),
@@ -58,11 +58,11 @@ class communityOrganization extends simplePlugin
             _('Hidden'), _('Should this membership be hidden from listings'),
             'fdCommunityMembershipHidden', FALSE
           )
-        )
-      ),
-      'dates' => array(
+        ]
+      ],
+      'dates' => [
         'name'  => _('Dates'),
-        'attrs' => array(
+        'attrs' => [
           new GeneralizedTimeDateAttribute(
             _('Start date'), _('Date of the beginning'),
             'fdCommunityStartDate', TRUE
@@ -72,11 +72,11 @@ class communityOrganization extends simplePlugin
             'fdCommunityEndDate', FALSE,
             ''
           ),
-        )
-      ),
-      'address' => array (
+        ]
+      ],
+      'address' => [
         'name'  => _('Contact'),
-        'attrs' => array (
+        'attrs' => [
           new StringAttribute(
             _('First name'), _('First name'),
             'fdOrganizationAlternateFirstName', FALSE
@@ -101,8 +101,8 @@ class communityOrganization extends simplePlugin
             _('Country'), _('Country'),
             'fdOrganizationAlternateCountry', FALSE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

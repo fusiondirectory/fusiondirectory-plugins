@@ -24,35 +24,35 @@ class applicationRights extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Applications'),
       'plDescription' => _('Applications allowed for this role'),
       'plSmallIcon'   => 'geticon.php?context=mimetypes&icon=application-x-executable&size=16',
-      'plObjectClass' => array('fdApplicationRights'),
-      'plObjectType'  => array('role'),
-      'plForeignKeys' => array(
+      'plObjectClass' => ['fdApplicationRights'],
+      'plObjectType'  => ['role'],
+      'plForeignKeys' => [
         'fdApplicationAllowed' => 'webApplication',
-      ),
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Application list'),
-        'attrs' => array(
+        'attrs' => [
           new SetAttribute(
             new SelectAttribute(
               _('Applications'), _('The applications users with this role are allowed to launch'),
               'fdApplicationAllowed', TRUE
             )
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)

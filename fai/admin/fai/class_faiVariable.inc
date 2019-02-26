@@ -22,30 +22,30 @@ class faiVariable extends faiSimplePluginClass
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Variable'),
       'plDescription' => _('FAI variable'),
-      'plObjectClass' => array('FAIclass','FAIvariable'),
+      'plObjectClass' => ['FAIclass','FAIvariable'],
       'plFilter'      => '(objectClass=FAIvariable)',
-      'plObjectType'  => array(
-        'faiVariable' => array(
+      'plObjectType'  => [
+        'faiVariable' => [
           'name'        => _('FAI variable'),
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiVariableRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-variable&size=16'
-        )
-      ),
+        ]
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new HostNameAttribute(
             _('Class name'), _('Variables class name'),
             'cn', TRUE
@@ -54,16 +54,16 @@ class faiVariable extends faiSimplePluginClass
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
-        )
-      ),
-      'vars' => array(
+        ]
+      ],
+      'vars' => [
         'name'  => _('Variables'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new SubNodesAttribute(
             '', _('Variables in this class'),
-            'variables', array('FAIvariableEntry','FAIclass','top'),
-            array(
+            'variables', ['FAIvariableEntry','FAIclass','top'],
+            [
               new StringAttribute(
                 _('Name'), _('The name of the variable'),
                 'cn', TRUE
@@ -76,14 +76,14 @@ class faiVariable extends faiSimplePluginClass
                 _('Content'), _('The content of the variable'),
                 'FAIvariableContent', TRUE
               ),
-            ),
+            ],
             FALSE, /* no order */
-            array(),
+            [],
             TRUE /* edit enabled */
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)

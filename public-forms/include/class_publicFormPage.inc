@@ -73,12 +73,12 @@ class publicFormPage extends standAlonePage
       }
       $registrations = objects::ls(
         'registration',
-        array(
+        [
           'dn'                          => 'raw',
           'fdRegistrationEmailAddress'  => 1,
           'fdRegistrationInvitationDN'  => 1,
           'fdRegistrationState'         => 1,
-        ),
+        ],
         NULL,
         '(fdRegistrationToken='.ldap_escape_f($_GET['token']).')'
       );
@@ -93,10 +93,10 @@ class publicFormPage extends standAlonePage
       }
       $invitations = objects::ls(
         'invitation',
-        array(
+        [
           'dn'                  => 'raw',
           'fdInvitationFormDN'  => 1
-        ),
+        ],
         $this->registration['fdRegistrationInvitationDN'],
         '', FALSE, 'base'
       );
@@ -109,7 +109,7 @@ class publicFormPage extends standAlonePage
       /* Search for the form object */
       $forms = objects::ls(
         'publicForm',
-        array(
+        [
           'dn'                            => 'raw',
           'cn'                            => 1,
           'fdPublicFormTitle'             => 1,
@@ -121,7 +121,7 @@ class publicFormPage extends standAlonePage
           'fdPublicFormCreationBase'      => 1,
           'fdPublicFormTosUrl'            => 1,
           'fdPublicFormAlteredAttributes' => '*',
-        ),
+        ],
         $this->invitation['fdInvitationFormDN'],
         '', FALSE, 'base'
       );
@@ -130,7 +130,7 @@ class publicFormPage extends standAlonePage
       /* Search for the form object */
       $forms = objects::ls(
         'publicForm',
-        array(
+        [
           'dn'                            => 'raw',
           'cn'                            => 1,
           'fdPublicFormTitle'             => 1,
@@ -142,7 +142,7 @@ class publicFormPage extends standAlonePage
           'fdPublicFormCreationBase'      => 1,
           'fdPublicFormTosUrl'            => 1,
           'fdPublicFormAlteredAttributes' => '*',
-        ),
+        ],
         NULL,
         '(cn='.ldap_escape_f($_GET['form']).')'
       );
@@ -170,9 +170,9 @@ class publicFormPage extends standAlonePage
   {
     $this->template = new template($this->form['fdPublicFormTemplateType'], $this->form['fdPublicFormTemplateDN']);
 
-    $this->alteredAttributes            = array(array(),array(),array());
-    $this->providedAttributes           = array();
-    $this->providedMultiValueAttributes = array();
+    $this->alteredAttributes            = [[],[],[]];
+    $this->providedAttributes           = [];
+    $this->providedMultiValueAttributes = [];
     foreach ($this->form['fdPublicFormAlteredAttributes'] as $alteredAttribute) {
       list($attribute, $mandatory, $readonly, $imported, $hidden) = explode('|', $alteredAttribute, 5);
       $tab = $this->template->getAttributeTab($attribute);
@@ -184,7 +184,7 @@ class publicFormPage extends standAlonePage
           $this->alteredAttributes[1][$tab][] = $attribute;
         }
         if ($imported) {
-          $this->providedAttributes[] = array($tab, $attribute);
+          $this->providedAttributes[] = [$tab, $attribute];
           if ($this->template->getAttribute($tab, $attribute) instanceof SetAttribute) {
             $this->providedMultiValueAttributes[] = $attribute;
           }
@@ -262,12 +262,12 @@ class publicFormPage extends standAlonePage
     }
   }
 
-  protected function getPrefilledValues ($values = array())
+  protected function getPrefilledValues ($values = [])
   {
     if (isset($this->registration['fdRegistrationEmailAddress']) && !isset($values['mailAccount']['mail'])) {
       /* Fill email field with target email if empty */
       if (!isset($values['mailAccount'])) {
-        $values['mailAccount'] = array();
+        $values['mailAccount'] = [];
       }
       $values['mailAccount']['mail'] = $this->registration['fdRegistrationEmailAddress'];
     }

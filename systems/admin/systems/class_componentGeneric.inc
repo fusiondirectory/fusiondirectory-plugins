@@ -23,22 +23,22 @@ class componentGeneric extends ipHostPlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Component'),
       'plDescription' => _('Component information'),
-      'plObjectClass' => array('device', 'ieee802Device'),
-      'plObjectType'  => array(
-        'component' => array(
+      'plObjectClass' => ['device', 'ieee802Device'],
+      'plObjectType'  => [
+        'component' => [
           'name'        => _('Network device'),
           'description' => _('Network device'),
           'icon'        => 'geticon.php?context=devices&icon=network-device&size=16',
           'ou'          => get_ou('componentRDN'),
-        )
-      ),
-      'plSearchAttrs' => array('description', 'ipHostNumber', 'macAddress'),
+        ]
+      ],
+      'plSearchAttrs' => ['description', 'ipHostNumber', 'macAddress'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -46,10 +46,10 @@ class componentGeneric extends ipHostPlugin
    */
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new HostNameAttribute(
             _('Name'), _('The name of the component'),
             'cn', TRUE
@@ -59,12 +59,12 @@ class componentGeneric extends ipHostPlugin
             'description', FALSE
           ),
           new BaseSelectorAttribute(get_ou("componentRDN")),
-        )
-      ),
-      'network' => array(
+        ]
+      ],
+      'network' => [
         'name'      => _('Network settings'),
         'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
-        'attrs'     => array(
+        'attrs'     => [
           new IPAttribute(
             _('IP address'), _('IP address this system uses'),
             'ipHostNumber', TRUE
@@ -73,8 +73,8 @@ class componentGeneric extends ipHostPlugin
             _('Mac address'), _('Mac address of this system'),
             'macAddress', FALSE
           ),
-        ),
-      ),
-    );
+        ],
+      ],
+    ];
   }
 }

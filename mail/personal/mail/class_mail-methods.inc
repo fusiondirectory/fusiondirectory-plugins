@@ -63,9 +63,9 @@ class mailMethod
   protected $mailSharedPrefix = '';
 
   /* The attribute mapping for this class  Source --> Destination */
-  protected $attributes         = array();
-  protected $userObjectClasses  = array();
-  protected $shareObjectClasses = array();
+  protected $attributes         = [];
+  protected $userObjectClasses  = [];
+  protected $shareObjectClasses = [];
 
   /* Features */
   protected $enableQuota            = TRUE;
@@ -88,9 +88,9 @@ class mailMethod
   protected $error              = '';
   protected $parent             = NULL;
 
-  protected $default_acls = array('__anyone__' => 'p', '__member__' => 'lrswp');
+  protected $default_acls = ['__anyone__' => 'p', '__member__' => 'lrswp'];
 
-  protected $acl_map = array(
+  protected $acl_map = [
     'lrsw'      => 'read',
     'lrswp'     => 'post',
     'p'         => 'external post',
@@ -99,9 +99,9 @@ class mailMethod
     'lrswipcd'  => 'write',
     'lrswipcda' => 'admin',
     ' '         => 'none'
-  );
+  ];
 
-  protected $acl_mapping = array();
+  protected $acl_mapping = [];
 
   /*! \brief  Constructs the mail class
       @param  Object  Plugin  The initator
@@ -115,7 +115,7 @@ class mailMethod
       trigger_error('mailMethod with invalid parent object initialized.');
     }
 
-    if (!in_array($this->type, array('user','group'))) {
+    if (!in_array($this->type, ['user','group'])) {
       trigger_error('Unknown mail class type used "'.$type.'".');
     } else {
       $this->type = $type;
@@ -139,7 +139,7 @@ class mailMethod
        is overridden in the configuration file */
     if ($config->get_cfg_value('mailAttribute', '') != '') {
       $new_uattrib = strtolower($config->get_cfg_value('mailAttribute'));
-      if (in_array($new_uattrib, array('mail','uid'))) {
+      if (in_array($new_uattrib, ['mail','uid'])) {
         $this->uattrib = $new_uattrib;
       } else {
         @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$new_uattrib."</b>",
@@ -202,11 +202,11 @@ class mailMethod
     } else {
       $this->parent->attrs['objectClass'] =
         array_remove_entries_ics($this->shareObjectClasses, $this->parent->attrs['objectClass']);
-      $this->parent->attrs['gosaSharedFolderTarget'] = array();
+      $this->parent->attrs['gosaSharedFolderTarget'] = [];
     }
     foreach ($this->attributes as $source => $dest) {
-      $this->attrs[$dest]   = array();
-      $this->attrs[$source] = array();
+      $this->attrs[$dest]   = [];
+      $this->attrs[$source] = [];
     }
   }
 
@@ -277,7 +277,7 @@ class mailMethod
   */
   public function check ()
   {
-    return array();
+    return [];
   }
 
   /*! \brief  Returns true the current object represents a valid account
@@ -363,7 +363,7 @@ class mailMethod
 
     /* Create account_id
      */
-    $from   = array("/%cn%/i","/%uid%/i","/%prefix%/i","/%uattrib%/i","/%domain%/i","/%mailpart%/i","/%mail%/i");
+    $from   = ["/%cn%/i","/%uid%/i","/%prefix%/i","/%uattrib%/i","/%domain%/i","/%mailpart%/i","/%mail%/i"];
     $uid    = '';
     $cn     = '';
     $attrib = '';
@@ -378,7 +378,7 @@ class mailMethod
     if (isset($this->parent->$uattrib)) {
       $attrib = $this->parent->$uattrib;
     }
-    $to     = array($cn,$uid,$prefix,$attrib,$domain,$mailpart,$mail);
+    $to     = [$cn,$uid,$prefix,$attrib,$domain,$mailpart,$mail];
     $acc_id = trim(strtolower(preg_replace($from, $to, $acc_string)));
 
     /* Check for not replaced pattern.
@@ -445,8 +445,8 @@ class mailMethod
     }
 
     /* Create account_id */
-    $from   = array("/%cn%/i","/%uid%/i","/%prefix%/i","/%uattrib%/i","/%domain%/i","/%mailpart%/i","/%mail%/i");
-    $to     = array($this->parent->cn,$this->parent->uid,$prefix,$this->parent->$uattrib, $domain, $mailpart,$mail);
+    $from   = ["/%cn%/i","/%uid%/i","/%prefix%/i","/%uattrib%/i","/%domain%/i","/%mailpart%/i","/%mail%/i"];
+    $to     = [$this->parent->cn,$this->parent->uid,$prefix,$this->parent->$uattrib, $domain, $mailpart,$mail];
     $acc_id = trim(strtolower(preg_replace($from, $to, $acc_string)));
 
     /* Check for not replaced pattern */
@@ -558,7 +558,7 @@ class mailMethod
    */
   public function getMailboxList ()
   {
-    return array("INBOX");
+    return ["INBOX"];
   }
 
   /*! \brief  Returns whether the vacation is enabled
@@ -626,7 +626,7 @@ class mailMethod
       return session::global_get('mailServers');
     }
     $methods = mailMethod::get_methods();
-    $servers = array();
+    $servers = [];
     foreach ($methods as $class) {
       $servers = array_merge($servers, $class::get_server_list());
     }
@@ -645,7 +645,7 @@ class mailMethod
   static public function get_methods ()
   {
     global $class_mapping;
-    $available = array('mailMethod' => 'mailMethod');
+    $available = ['mailMethod' => 'mailMethod'];
     foreach ($class_mapping as $class => $path) {
       if (preg_match('/^mailMethod.+/', $class)) {
         $available[$class] = $class;
@@ -746,13 +746,13 @@ class mailMethod
   static public function get_server_list ()
   {
     global $config;
-    $serverList = array();
+    $serverList = [];
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=fdImapServer)', array('cn'));
+    $ldap->search('(objectClass=fdImapServer)', ['cn']);
     while ($attrs = $ldap->fetch()) {
-      $serverList[$attrs['cn'][0]] = array(
+      $serverList[$attrs['cn'][0]] = [
         'server_dn'     => $attrs['dn'],
         'connect'       => '',
         'admin'         => '',
@@ -760,7 +760,7 @@ class mailMethod
         'sieve_server'  => '',
         'sieve_option'  => '',
         'sieve_port'    => ''
-      );
+      ];
     }
 
     return $serverList;
@@ -783,6 +783,6 @@ class mailMethod
 
   public function additionalInformations ()
   {
-    return array();
+    return [];
   }
 }

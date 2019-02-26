@@ -24,52 +24,52 @@ class spamAssassinAccount extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('SpamAssassin'),
       'plDescription'   => _('Edit user\'s spam rules'),
       'plIcon'          => 'geticon.php?context=applications&icon=spamassassin&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=spamassassin&size=16',
       'plSelfModify'    => TRUE,
-      'plObjectClass'   => array('fdSpamAssassinUser'),
-      'plObjectType'    => array('user'),
+      'plObjectClass'   => ['fdSpamAssassinUser'],
+      'plObjectType'    => ['user'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Spam rules'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
         //~ A user object will have multiple spamassassin attributes, one for each preference setting.
         //~ The attributes themselves should be stored in the database. A spamassassin LDAP attribute should be set to the name of a SpamAssassin configuration directive followed by the value for the directive, separated by a space.
           new SetAttribute(
             new CompositeAttribute(
               _('SpamAssassin user preferences settings'),
             'fdSpamAssassinRules',
-              array(
+              [
                 new SelectAttribute(
                   _('Directive'),    _('The name of a SpamAssassin configuration directive'),
                   'fdSpamAssassinRules_directive', TRUE,
-                  array('score', 'whitelist_from', 'required_score')
+                  ['score', 'whitelist_from', 'required_score']
                 ),
                 new StringAttribute(
                   _('Value'), _('The value for the directive'),
                   'fdSpamAssassinRules_value'
                 ),
-              ),
+              ],
               '/^(\S*) (.*)$/',
               '%s %s',
               '',
               _('SpamAssassin user rules')
             )
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }

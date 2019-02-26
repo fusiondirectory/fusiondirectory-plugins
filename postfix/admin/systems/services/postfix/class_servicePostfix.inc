@@ -51,14 +51,14 @@ class servicePostfix extends simpleService
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Postfix (SMTP)'),
       'plDescription' => _('Postfix (SMTP)').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=smtp&size=16',
-      'plObjectClass' => array('fdPostfixServer'),
+      'plObjectClass' => ['fdPostfixServer'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -66,10 +66,10 @@ class servicePostfix extends simpleService
   */
   static function getAttributesInfo (): array
   {
-    return array (
-      'section1' => array (
+    return  [
+      'section1' => [
         'name'  => _('Information'),
-        'attrs' => array (
+        'attrs' => [
           new StringAttribute(
             _('Hostname'), _('The host name.'),
             'postfixMyHostname', TRUE,
@@ -95,11 +95,11 @@ class servicePostfix extends simpleService
             'postfixMessageSizeLimit', FALSE,
             FALSE, FALSE, 0
           )
-        )
-      ),
-      'routing' => array (
+        ]
+      ],
+      'routing' => [
         'name' => _('Domains and routing'),
-        'attrs' => array (
+        'attrs' => [
           new SetAttribute(
             new StringAttribute(
               _('Domains to accept mail for'), _('Postfix networks'),
@@ -109,24 +109,24 @@ class servicePostfix extends simpleService
           new SubNodesAttribute(
             _('Transport table'), _('Transport table'),
             'fdPostfixTransportTable', 'fdPostfixTransportTable',
-            array(
+            [
               new StringAttribute('', '', 'fdTransportTableMatch'),
               new CompositeAttribute(
                 _('Transport rule'),
                 'fdTransportTableRule',
-                array(
+                [
                   new StringAttribute('', '', 'transport', TRUE, 'smtp'),
                   new StringAttribute('', '', 'nexthop', FALSE),
-                ),
+                ],
                 '/^([^:]+):(.*)$/',
                 '%s:%s', '', ''
               )
-            )
+            ]
           ),
           new SubNodesAttribute(
             _('Catchall table'), _('Catchall table'),
             'fdPostfixCatchallTable', 'fdPostfixCatchallTable',
-            array(
+            [
               new MailDomainAttribute(
                 _('Domain'), _('Domain concerned by this catchall rule'),
                 'fdCatchallTableDomain', TRUE
@@ -135,12 +135,12 @@ class servicePostfix extends simpleService
                 _('Recipient'), _('Recipient mail address for this catchall rule'),
                 'fdCatchallTableRecipient', TRUE
               )
-            )
+            ]
           ),
           new SubNodesAttribute(
             _('Domain alias table'), _('Domain alias table'),
             'fdPostfixDomainAliasTable', 'fdPostfixDomainAliasTable',
-            array(
+            [
               new MailDomainAttribute(
                 _('From'), _('Domain concerned by this alias rule'),
                 'fdDomainAliasTableFrom', TRUE
@@ -149,22 +149,22 @@ class servicePostfix extends simpleService
                 _('To'), _('Recipient domain for this alias rule'),
                 'fdDomainAliasTableTo', TRUE
               )
-            )
+            ]
           )
-        )
-      ),
-      'section3' => array (
+        ]
+      ],
+      'section3' => [
         'name' => _('Restrictions'),
-        'attrs' => array (
+        'attrs' => [
           new OrderedArrayAttribute(
             new CompositeAttribute(
              _('Restrictions for sender'),
             'postfixSenderRestrictions',
-              array(
+              [
                 new StringAttribute('', '', 'first2'),
-                new SelectAttribute('', '', 'filter2', TRUE, array('FILTER'), 'FILTER'),
+                new SelectAttribute('', '', 'filter2', TRUE, ['FILTER'], 'FILTER'),
                 new StringAttribute('', '', 'second2'),
-              ),
+              ],
               '/^(.*) ([^:]+) (.*)$/',
               '%s %s %s',
               '', _('For sender')
@@ -174,19 +174,19 @@ class servicePostfix extends simpleService
             new CompositeAttribute(
              _('Restrictions for recipient'),
             'postfixRecipientRestrictions',
-              array(
+              [
                 new StringAttribute('', '', 'first3'),
-                new SelectAttribute('', '', 'filter3', TRUE, array('FILTER'), 'FILTER'),
+                new SelectAttribute('', '', 'filter3', TRUE, ['FILTER'], 'FILTER'),
                 new StringAttribute('', '', 'second3'),
-              ),
+              ],
               '/^(.*) ([^:]+) (.*)$/',
               '%s %s %s',
               '', _('For recipient')
             )
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   protected function shouldSave (): bool

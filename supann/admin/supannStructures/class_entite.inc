@@ -22,39 +22,39 @@ class entite extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Entity'),
       'plDescription' => _('SupAnn Entity Settings'),
-      'plObjectClass' => array('supannEntite','organizationalUnit'),
-      'plObjectType'  => array('entite' => array(
+      'plObjectClass' => ['supannEntite','organizationalUnit'],
+      'plObjectType'  => ['entite' => [
         'name'        => _('SupAnn Entity'),
         'ou'          => get_ou('supannStructuresRDN'),
         'mainAttr'    => 'supannCodeEntite',
         'icon'        => 'geticon.php?context=applications&icon=supann-entite&size=16',
         'nameAttr'    => 'ou',
-      )),
-      'plSearchAttrs' => array('description', 'supannCodeEntiteParent'),
+      ]],
+      'plSearchAttrs' => ['description', 'supannCodeEntiteParent'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Entity'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Name'), _('The name to write in the ou attribute for this entity'),
             'ou', TRUE
           )
-        )
-      ),
-      'admin' => array(
+        ]
+      ],
+      'admin' => [
         'name'  => _('Administrative information'),
-        'attrs' => array(
+        'attrs' => [
           new PhoneNumberAttribute(
             _('Telephone'), _('Phone number of this entity'),
             'telephoneNumber', FALSE
@@ -71,11 +71,11 @@ class entite extends simplePlugin
             _('Description'), _('Short description of this entity'),
             'description', FALSE
           ),
-        )
-      ),
-      'supann' => array(
+        ]
+      ],
+      'supann' => [
         'name'  => _('SupAnn information'),
-        'attrs' => array(
+        'attrs' => [
           new SupannPrefixedSelectAttribute(
             _('Entity type'), _('The SupAnn type that best fits this entity'),
             'supannTypeEntite', FALSE, 'entite'
@@ -100,9 +100,9 @@ class entite extends simplePlugin
               '/^{[^}]+}.+$/'
             )
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -116,10 +116,10 @@ class entite extends simplePlugin
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=supannEntite)', array('supannCodeEntite','ou','o'));
+    $ldap->search('(objectClass=supannEntite)', ['supannCodeEntite','ou','o']);
 
-    $entity_codes   = array('');
-    $entity_labels  = array('');
+    $entity_codes   = [''];
+    $entity_labels  = [''];
     while ($attrs = $ldap->fetch()) {
       if (isset($attrs['supannCodeEntite'][0])) {
         $entity_codes[] = $attrs['supannCodeEntite'][0];

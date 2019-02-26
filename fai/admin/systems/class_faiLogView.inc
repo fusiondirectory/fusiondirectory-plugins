@@ -21,17 +21,17 @@
 
 class AvailableLogsAttribute extends Attribute
 {
-  var $logs     = array();
+  var $logs     = [];
 
   function __construct ($description, $ldapName, $acl = "")
   {
-    $value = array(
+    $value = [
       'file'      => '',
       'time'      => '',
       'sort_by'   => 'time',
       // TRUE means up
       'sort_up'  => TRUE
-    );
+    ];
     parent::__construct('', $description, $ldapName, FALSE, $value, $acl);
     $this->setInLdap(FALSE);
   }
@@ -67,13 +67,13 @@ class AvailableLogsAttribute extends Attribute
     }
 
     /* Create list header */
-    $div->setHeaders(array(
-      $this->js_link(_('File')." $img1", array('sort_by' => 'file')),
-      $this->js_link(_('Date')." $img2", array('sort_by' => 'time'))
-    ));
+    $div->setHeaders([
+      $this->js_link(_('File')." $img1", ['sort_by' => 'file']),
+      $this->js_link(_('Date')." $img2", ['sort_by' => 'time'])
+    ]);
 
     /* Create sortable array */
-    $to_add   = array();
+    $to_add   = [];
     $sort_by  = $this->value['sort_by'];
     foreach ($this->logs as $time => $data) {
       $rtime = $data['REAL_DATE'];
@@ -83,13 +83,13 @@ class AvailableLogsAttribute extends Attribute
           $highlight = 'background-color:#CCCCCC';
         }
 
-        $use_link = $this->js_link('%str%', array('time' => $time, 'file' => $file, 'mac' => $mac));
-        $to_add[$$sort_by.$file.$time] = array(
-          array('html' => preg_replace('/%str%/', $file, $use_link),
-                'attach' => ''),
-          array('html' => preg_replace('/%str%/', date('d.m.Y H:i:s', $rtime), $use_link),
-                'attach' => ''),
-        );
+        $use_link = $this->js_link('%str%', ['time' => $time, 'file' => $file, 'mac' => $mac]);
+        $to_add[$$sort_by.$file.$time] = [
+          ['html' => preg_replace('/%str%/', $file, $use_link),
+                'attach' => ''],
+          ['html' => preg_replace('/%str%/', date('d.m.Y H:i:s', $rtime), $use_link),
+                'attach' => ''],
+        ];
       }
     }
 
@@ -109,7 +109,7 @@ class AvailableLogsAttribute extends Attribute
     $smarty = get_smarty();
     $smarty->assign("div_$id", $div->drawList());
     $display = '';
-    foreach (array('sort_by','time','file','mac') as $var) {
+    foreach (['sort_by','time','file','mac'] as $var) {
       $display .= '<input type="hidden" value="" name="'.$id.'_'.$var.'" id="'.$id.'_'.$var.'"/>'."\n";
     }
     return $this->renderAcl($display).'{$div_'.$id.'}'."\n";
@@ -120,12 +120,12 @@ class AvailableLogsAttribute extends Attribute
     if ($this->isVisible()) {
       $id   = $this->getHtmlId();
       $this->postValue = $this->value;
-      foreach (array('time','file') as $attr) {
+      foreach (['time','file'] as $attr) {
         if (isset($_POST[$id.'_'.$attr])) {
           $this->postValue[$attr] = $_POST[$id.'_'.$attr];
         }
       }
-      if (isset($_POST[$id.'_sort_by']) && in_array($_POST[$id.'_sort_by'], array('file','time'))) {
+      if (isset($_POST[$id.'_sort_by']) && in_array($_POST[$id.'_sort_by'], ['file','time'])) {
         if ($_POST[$id.'_sort_by'] == $this->postValue['sort_by']) {
           $this->postValue['sort_up'] = !$this->postValue['sort_up'];
         }
@@ -144,38 +144,38 @@ class faiLogView extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('FAI Logs'),
       'plDescription' => _('FAI Logs Viewer'),
       'plPriority'    => 31,
-      'plObjectType'  => array('workstation', 'server', 'ogroup-dynamic'),
+      'plObjectType'  => ['workstation', 'server', 'ogroup-dynamic'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'available' => array(
+    return [
+      'available' => [
         'name'  => _('Available logs'),
-        'attrs' => array(
+        'attrs' => [
           new AvailableLogsAttribute(
             _('Available logs'), 'available_logs'
           ),
-        )
-      ),
-      'selected' => array(
+        ]
+      ],
+      'selected' => [
         'name'  => _('Selected log'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new DisplayAttribute(
             '', _('Content of the selected log'),
             'display_log'
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)

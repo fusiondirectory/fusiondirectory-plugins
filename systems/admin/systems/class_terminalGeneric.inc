@@ -22,23 +22,23 @@ class terminalGeneric extends workstationGeneric
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Terminal'),
       'plDescription' => _('Terminal information'),
-      'plObjectClass' => array('fdTerminal', 'ieee802Device'),
+      'plObjectClass' => ['fdTerminal', 'ieee802Device'],
       'plFilter'      => '(objectClass=fdTerminal)',
-      'plObjectType'  => array('terminal' =>
-        array(
+      'plObjectType'  => ['terminal' =>
+        [
           'name'        => _('Terminal'),
           'description' => _('Terminal'),
           'icon'        => 'geticon.php?context=devices&icon=terminal&size=16',
           'ou'          => get_ou('terminalRDN'),
-        )
-      ),
-      'plSearchAttrs' => array('description', 'ipHostNumber', 'macAddress'),
+        ]
+      ],
+      'plSearchAttrs' => ['description', 'ipHostNumber', 'macAddress'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!

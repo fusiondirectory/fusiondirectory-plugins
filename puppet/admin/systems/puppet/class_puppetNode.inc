@@ -25,23 +25,23 @@ class puppetNode extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Puppet'),
       'plDescription'   => _('Support for puppet schema in order to edit puppet classes and puppet vars'),
-      'plObjectClass'   => array('puppetClient'),
-      'plObjectType'    => array('server', 'workstation'),
+      'plObjectClass'   => ['puppetClient'],
+      'plObjectType'    => ['server', 'workstation'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
+    return [
       // Attributes are grouped by section
-      'section1' => array(
+      'section1' => [
         'name'  => _("Puppet node settings"),
-        'attrs' => array(
+        'attrs' => [
           new SetAttribute(
             new StringAttribute(_("Puppet class"), _("Puppet Node Class"), "puppetClass")
           ),
@@ -51,10 +51,10 @@ class puppetNode extends simplePlugin
             new CompositeAttribute(
               _("A variable setting for puppet"),
               'puppetVar',
-              array(
+              [
                 new StringAttribute('',   _('Name of the variable'),   'puppetVar'),
                 new StringAttribute('=',  _('Value of the variable'),  'puppetVarValue'),
-              ),
+              ],
                // sscanf format
               '%[^ =]=%[^ ]',
               // sprintf format
@@ -64,9 +64,9 @@ class puppetNode extends simplePlugin
               'Puppet Vars'
             )
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -76,14 +76,14 @@ class puppetNode extends simplePlugin
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=puppetClient)', array('cn'));
-    $nodes = array();
+    $ldap->search('(objectClass=puppetClient)', ['cn']);
+    $nodes = [];
     while ($attrs = $ldap->fetch()) {
       $nodes[] = $attrs['cn'][0];
     }
     $this->attributesAccess['parentNode']->setChoices($nodes);
-    $ldap->search('(objectClass=puppetServer)', array('puppetAvailableEnvironment'));
-    $envs = array();
+    $ldap->search('(objectClass=puppetServer)', ['puppetAvailableEnvironment']);
+    $envs = [];
     if ($attrs = $ldap->fetch()) {
       $envs = $attrs['puppetAvailableEnvironment'];
       unset($envs['count']);
@@ -98,6 +98,6 @@ class puppetNode extends simplePlugin
       $disabled = TRUE;
       $text     = _('You need to add the puppet service to a server to be able to use this tab');
     }
-    return array($disabled,$buttonText,$text);
+    return [$disabled,$buttonText,$text];
   }
 }

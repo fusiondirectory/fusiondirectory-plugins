@@ -52,12 +52,12 @@ class invitationPage extends standAlonePage
     } else {
       $registrations = objects::ls(
         'registration',
-        array(
+        [
           'dn'                          => 'raw',
           'fdRegistrationEmailAddress'  => 1,
           'fdRegistrationInvitationDN'  => 1,
           'fdRegistrationState'         => 1,
-        ),
+        ],
         NULL,
         '(fdRegistrationToken='.ldap_escape_f($token).')'
       );

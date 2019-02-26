@@ -23,26 +23,26 @@ class application extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Application'),
       'plDescription' => _('Application information'),
-      'plObjectClass' => array('fdDesktopApplication'),
-      'plObjectType'  => array('application' => array(
+      'plObjectClass' => ['fdDesktopApplication'],
+      'plObjectType'  => ['application' => [
         'name'    => _('Application'),
         'ou'      => get_ou('applicationsRDN'),
         'icon'    => 'geticon.php?context=mimetypes&icon=application-x-executable&size=16',
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Application'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('applicationsRDN')),
           new HostNameAttribute(
             _('Application name'), _('The name of this application'),
@@ -60,21 +60,21 @@ class application extends simplePlugin
             _('Display name'), _('The displayed name for this application'),
             'fdApplicationTitle', FALSE
           ),
-        )
-      ),
-      'icon' => array(
+        ]
+      ],
+      'icon' => [
         'name'  => _('Icon'),
-        'attrs' => array(
+        'attrs' => [
           new ImageAttribute(
             '', _('The icon for this application'),
             'fdApplicationImage', FALSE,
             48, 48, 'png'
           ),
-        )
-      ),
-      'options' => array(
+        ]
+      ],
+      'options' => [
         'name'  => _('Options'),
-        'attrs' => array(
+        'attrs' => [
           new BooleanAttribute(
             _('Only executable for member'), _('Only executable by the memebers of the group'),
             'flag_group', FALSE, FALSE, '',
@@ -102,11 +102,11 @@ class application extends simplePlugin
           ),
           new FlagsAttribute(
             'fdApplicationFlags',
-            array('flag_group','flag_overwrite','flag_desktop','flag_menu','flag_launchbar')
+            ['flag_group','flag_overwrite','flag_desktop','flag_menu','flag_launchbar']
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)

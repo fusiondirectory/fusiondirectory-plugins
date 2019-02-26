@@ -22,22 +22,22 @@ class argonautFAIMonitor extends simpleService
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Argonaut FAI monitor'),
       'plDescription'   => _('Argonaut FAI monitor settings'),
       'plIcon'          => 'geticon.php?context=applications&icon=fai&size=16',
-      'plObjectClass'   => array('argonautFAIMonitorConfig'),
+      'plObjectClass'   => ['argonautFAIMonitorConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array (
-    'config' => array (
+    return [
+      'config' => [
         'name'  => _('Argonaut FAI monitor settings'),
-        'attrs' => array (
+        'attrs' => [
           new IntAttribute(
             _('Port'), _('The port argonaut-fai-monitor should listen on. Default is 4711.'),
             'argonautFAIMonitorPort', FALSE,
@@ -58,8 +58,8 @@ class argonautFAIMonitor extends simpleService
             'argonautFAIMonitorLogDir', TRUE,
             '/var/log/argonaut'
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }

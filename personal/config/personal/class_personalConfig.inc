@@ -22,29 +22,29 @@ class personalConfig extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Personal configuration'),
       'plDescription'   => _('FusionDirectory personal plugin configuration'),
-      'plObjectClass'   => array('fdPersonalPluginConf'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectClass'   => ['fdPersonalPluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Personal'),
-        'attrs' => array(
+        'attrs' => [
           new BooleanAttribute(
             _('Allow use of private email for password recovery'), _('Allow users to use their private email address for password recovery'),
             'fdPrivateEmailPasswordRecovery', FALSE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

@@ -23,13 +23,13 @@ class invitationManagement extends management
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Invitations'),
       'plTitle'       => _('Invitations management'),
       'plDescription' => _('Manage invitations'),
       'plIcon'        => 'geticon.php?context=types&icon=invitation&size=48',
       'plSection'     => 'accounts',
-      'plManages'     => array('invitation'),
-    );
+      'plManages'     => ['invitation'],
+    ];
   }
 }

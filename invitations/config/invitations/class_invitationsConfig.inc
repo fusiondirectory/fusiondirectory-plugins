@@ -22,23 +22,23 @@ class invitationsConfig extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Invitations configuration'),
       'plDescription' => _('FusionDirectory invitations plugin configuration'),
-      'plObjectClass' => array('fdInvitationsPluginConf'),
-      'plCategory'    => array('configuration'),
-      'plObjectType'  => array('smallConfig'),
+      'plObjectClass' => ['fdInvitationsPluginConf'],
+      'plCategory'    => ['configuration'],
+      'plObjectType'  => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Invitations'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Invitations RDN'), _('Branch in which invitations will be stored'),
             'fdInvitationRDN', TRUE,
@@ -54,11 +54,11 @@ class invitationsConfig extends simplePlugin
             'fdInvitationFromEmailAddress', TRUE,
             'no-reply@example.com'
           ),
-        )
-      ),
-      'default' => array(
+        ]
+      ],
+      'default' => [
         'name'  => _('Invitations'),
-        'attrs' => array(
+        'attrs' => [
           new TextAreaAttribute(
             _('Default email content'), _('Default content of the email sent invitations'),
             'fdInvitationDefaultEmailContent', TRUE,
@@ -67,8 +67,8 @@ class invitationsConfig extends simplePlugin
               (($_SERVER['SERVER_PORT'] != '443') ? ':'.$_SERVER['SERVER_PORT'] : '').
               "/invitation.php?token=%s\n"
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

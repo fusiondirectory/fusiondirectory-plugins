@@ -22,30 +22,30 @@ class aliasConfig extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Alias configuration'),
       'plDescription'   => _('FusionDirectory alias plugin configuration'),
-      'plObjectClass'   => array('fdAliasPluginConf'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectClass'   => ['fdAliasPluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Alias'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Alias RDN'), _('Branch in which aliases will be stored'),
             'fdAliasRDN', TRUE,
             'ou=alias'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

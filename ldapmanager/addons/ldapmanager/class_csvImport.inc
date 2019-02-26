@@ -26,32 +26,32 @@ class csvImport extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('CSV import'),
       'plDescription' => _('Import of csv data into the ldap tree'),
-      'plObjectType'  => array('ldapmanager'),
+      'plObjectType'  => ['ldapmanager'],
       'plPriority'    => 3,
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'import' => array(
+    return [
+      'import' => [
         'name'  => _('Import CSV'),
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Object type'), _('Type of objects you wish to import'),
             'type', TRUE,
-            array(), '', NULL,
+            [], '', NULL,
             'import_file'
           ),
           new SelectAttribute(
             _('Template'), _('Select a template to apply to imported entries'),
             'template_dn', TRUE,
-            array(), '', NULL,
+            [], '', NULL,
             'import_file'
           ),
           new FileAttribute(
@@ -61,7 +61,7 @@ class csvImport extends simplePlugin
           new SelectAttribute(
             _('Separator'), _('Character used as separator in the CSV file'),
             'separator', TRUE,
-            array(',', ';'), '', NULL,
+            [',', ';'], '', NULL,
             'import_file'
           ),
           new HiddenAttribute(
@@ -82,15 +82,15 @@ class csvImport extends simplePlugin
             NULL, '',
             'import_file'
           )
-        )
-      ),
-      'fields' => array(
+        ]
+      ],
+      'fields' => [
         'name'  => _('Template filling'),
-        'attrs' => array(
+        'attrs' => [
           new CompositeAttribute(
             _('Select fields associations'),
             'fields',
-            array(),
+            [],
             '', '',
             'import_file',
             ''
@@ -102,9 +102,9 @@ class csvImport extends simplePlugin
             NULL, '',
             'import_file'
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -130,7 +130,7 @@ class csvImport extends simplePlugin
     $this->csv_data = $this->parse_csv($this->import_file);
 
     /* Remove fields from previous import, if any */
-    $this->attributesAccess['fields']->setAttributes(array());
+    $this->attributesAccess['fields']->setAttributes([]);
 
     $messages = $this->check();
     if (!empty($messages)) {
@@ -141,7 +141,7 @@ class csvImport extends simplePlugin
     $this->template_object = new template($this->type, $this->template_dn);
 
     /* Add nonrequired field filling feature */
-    $fields = array();
+    $fields = [];
     if (isset($this->csv_data[0])) {
       foreach ($this->csv_data[0] as $key => $field_value) {
         $fields[$key] = $key.' - '.$field_value;
@@ -149,8 +149,8 @@ class csvImport extends simplePlugin
     }
     $fields = array_merge($fields, $this->fixed_values);
     $tpl_attributes = $this->template_object->serialize();
-    $attributesObjects = array();
-    $this->cachedChoices = array();
+    $attributesObjects = [];
+    $this->cachedChoices = [];
     reset($fields);
     foreach ($tpl_attributes as $class => $class_infos) {
       foreach ($class_infos['attrs'] as $attr => $attr_infos) {
@@ -180,12 +180,12 @@ class csvImport extends simplePlugin
       next($fields);
     }
     if (in_array('CompositeAttribute', $attr_infos['type']) && isset($attr_infos['attributes'])) {
-      $subattrs = array();
+      $subattrs = [];
       foreach ($attr_infos['attributes'] as $subattr => $subattr_infos) {
         if ($subattr_infos['visible']) {
           $subattribute = $this->build_attribute($fields, $class, $class_infos, $subattr, $subattr_infos);
         } else {
-          $this->cachedChoices['template_'.$class.':'.$subattr] = array($attr_infos['value']);
+          $this->cachedChoices['template_'.$class.':'.$subattr] = [$attr_infos['value']];
           $subattribute = new HiddenAttribute('template_'.$class.':'.$subattr, FALSE, count($fields));
         }
         $subattrs[] = $subattribute;
@@ -226,7 +226,7 @@ class csvImport extends simplePlugin
   {
     $success = 0;
     foreach ($this->csv_data as $rownumber => $row) {
-      $values = array();
+      $values = [];
       foreach ($this->attributesAccess['fields']->attributes as $attribute) {
         preg_match('/^template_([^:]+):(.*)$/', $attribute->getLdapName(), $m);
         $values[$m[1]][$m[2]] = $this->compute_attribute_value($attribute, $row);
@@ -237,7 +237,7 @@ class csvImport extends simplePlugin
         $tabObject = $this->template_object->apply();
         $msgs = $tabObject->save();
       } elseif (!is_array($msgs)) {
-        $msgs = array($msgs);
+        $msgs = [$msgs];
       }
       if (count($msgs)) {
         $msg = '<ul><li>'.implode('</li><li>', $msgs).'</li></ul>';
@@ -255,7 +255,7 @@ class csvImport extends simplePlugin
   private function compute_attribute_value ($attribute, array $row, $i = NULL)
   {
     if ($attribute instanceof CompositeAttribute) {
-      $value = array();
+      $value = [];
       foreach ($attribute->attributes as $key => $subattribute) {
         $value[$key] = $this->compute_attribute_value($subattribute, $row);
       }
@@ -265,7 +265,7 @@ class csvImport extends simplePlugin
       $i = $attribute->getValue();
     }
     if (is_array($i)) {
-      $value = array();
+      $value = [];
       foreach ($i as $j) {
         $v = explode($this->valueSeparator, $this->compute_attribute_value($attribute, $row, $j));
         $value = array_merge($value, $v);
@@ -288,7 +288,7 @@ class csvImport extends simplePlugin
 
     $anz    = 0;
     $rest   = 0;
-    $data   = array();
+    $data   = [];
 
     /* check column count */
     if (is_array($lines)) {
@@ -312,7 +312,7 @@ class csvImport extends simplePlugin
       /* Generate array with output info  */
       if (is_array($lines)) {
         foreach ($lines as $line) {
-          $line_data = array();
+          $line_data = [];
           $rest = 0;
           $cnt  = 0;
 
@@ -350,11 +350,11 @@ class csvImport extends simplePlugin
 
   function save (): array
   {
-    return array();
+    return [];
   }
 
   function remove (bool $fulldelete = FALSE): array
   {
-    return array();
+    return [];
   }
 }

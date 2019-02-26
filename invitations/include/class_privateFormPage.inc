@@ -23,19 +23,19 @@ class privateFormPage extends publicFormPage
 {
   protected $prefill = TRUE;
 
-  protected function getPrefilledValues ($values = array())
+  protected function getPrefilledValues ($values = [])
   {
     if ($this->prefill) {
       /* Fill fields from HTTP headers */
       foreach ($this->providedAttributes as list($class, $attr)) {
         if (isset($_SERVER['HTTP_AUTH_'.strtoupper($attr)])) {
           if (!isset($values[$class])) {
-            $values[$class] = array();
+            $values[$class] = [];
           }
           if (in_array($attr, $this->providedMultiValueAttributes)) {
             if (empty($_SERVER['HTTP_AUTH_'.strtoupper($attr)])) {
               /* Avoid having an array with an empty string inside */
-              $values[$class][$attr] = array();
+              $values[$class][$attr] = [];
             } else {
               $values[$class][$attr] = explode('; ', $_SERVER['HTTP_AUTH_'.strtoupper($attr)]);
             }

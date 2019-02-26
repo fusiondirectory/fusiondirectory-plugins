@@ -24,37 +24,37 @@ class ejbcaCertificates extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('EJBCA'),
       'plDescription'   => _('Assign EJBCA certificates to a user'),
       'plFilter'        => '(objectClass=fdEjbcaCertificates)',
       'plSelfModify'    => TRUE,
-      'plObjectClass'   => array('fdEjbcaCertificates'),
-      'plObjectType'    => array('user','server','workstation','terminal','printer','component','phone','mobilePhone'),
+      'plObjectClass'   => ['fdEjbcaCertificates'],
+      'plObjectType'    => ['user','server','workstation','terminal','printer','component','phone','mobilePhone'],
       'plIcon'          => 'geticon.php?context=applications&icon=ejbca&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=ejbca&size=16',
-      'plForeignKeys'   => array(
+      'plForeignKeys'   => [
         'fdEjbcaCertDN' => 'ejbcaCertificate',
-      ),
+      ],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('EJBCA certs'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new EjbcaUserCertsAttribute(
             '', _('Certificates associated to this object'),
             'fdEjbcaCertDN', TRUE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }

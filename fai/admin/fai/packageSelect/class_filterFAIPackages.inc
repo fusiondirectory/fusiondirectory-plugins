@@ -23,17 +23,17 @@ class filterFAIPackages extends filterLDAPBlacklist
 {
   static function query ($parent, $base, $scope, $filter, $attributes, $category, $objectStorage = '')
   {
-    $customs = array();
+    $customs = [];
     foreach ($parent->customs as $custom) {
       if ($parent->elementValues[$custom] == 'true') {
         $customs[] = $custom;
       }
     }
     $filter     = preg_replace('/\*/', '', $filter);
-    $pkgs       = array();
+    $pkgs       = [];
     $q          = new supportDaemon();
-    $filter     = array("$filter");
-    $attrs      = array('distribution', 'package', 'version', 'section', 'timestamp');
+    $filter     = ["$filter"];
+    $attrs      = ['distribution', 'package', 'version', 'section', 'timestamp'];
     $release    = session::get('packageSelect_Release');
     $ret        = $q->FAI_get_packages($release, $attrs, $filter, 0, 200);
     if ($q->is_error()) {
@@ -43,20 +43,20 @@ class filterFAIPackages extends filterLDAPBlacklist
         $ret2 = $q->FAI_get_packages($customs[$i], $attrs, $filter, 0, 200 - count($ret));
         if ($q->is_error()) {
           msg_dialog::display(_('Infrastructure service'), msgPool::siError($q->get_error()), ERROR_DIALOG);
-          return array();
+          return [];
         }
         $ret = array_merge($ret, $ret2);
       }
       foreach ($ret as $attr) {
         $attr['objectClass'] = 'FAKE_OC__FaiPackage';
 
-        $item = array();
+        $item = [];
         $item['dn']     = 'dn='.$attr['PACKAGE'].','.$attr['DISTRIBUTION'].','.$base;
         $item['count']  = 0;
         foreach ($attr as $key => $value) {
           $item['count']++;
           $item[] = $key;
-          $item[$key] = array('count' => 1, $value);
+          $item[$key] = ['count' => 1, $value];
         }
         $pkgs[] = $item;
       }
@@ -70,9 +70,9 @@ class filterFAIPackages extends filterLDAPBlacklist
     $act = $this->detectPostActions();
     $headpage = $this->getHeadpage();
     if (!isset($act['targets'])) {
-      return array();
+      return [];
     }
-    $ret = array();
+    $ret = [];
     foreach ($act['targets'] as $dn) {
       $ret[] = $headpage->getEntry($dn);
     }

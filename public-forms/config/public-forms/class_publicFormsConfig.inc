@@ -22,30 +22,30 @@ class publicFormsConfig extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Public forms configuration'),
       'plDescription' => _('FusionDirectory public forms plugin configuration'),
-      'plObjectClass' => array('fdPublicFormsPluginConf'),
-      'plCategory'    => array('configuration'),
-      'plObjectType'  => array('smallConfig'),
+      'plObjectClass' => ['fdPublicFormsPluginConf'],
+      'plCategory'    => ['configuration'],
+      'plObjectType'  => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Public forms'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Public forms RDN'), _('Branch in which public forms will be stored'),
             'fdPublicFormRDN', TRUE,
             'ou=forms'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

@@ -22,7 +22,7 @@ class SubmittingOPSIProductAttribute extends SelectAttribute
 {
   function __construct ($label, $description, $ldapName, $required, $func, $acl = '')
   {
-    parent::__construct($label, $description, $ldapName, $required, array(), '', NULL, $acl);
+    parent::__construct($label, $description, $ldapName, $required, [], '', NULL, $acl);
     $this->setSubmitForm($func);
   }
 
@@ -40,7 +40,7 @@ class ProductPropertyAttribute extends CompositeAttribute
 {
   function __construct ($label, $description, $ldapName, $acl = "")
   {
-    parent::__construct($description, $ldapName, array(new StringAttribute('', '', 'fake')), '', '', $acl, $label);
+    parent::__construct($description, $ldapName, [new StringAttribute('', '', 'fake')], '', '', $acl, $label);
   }
 
   function check (): array
@@ -70,7 +70,7 @@ class ProductPropertyAttribute extends CompositeAttribute
   {
     $values = json_decode($value);
     if ($this->attributes[0] instanceof SetAttribute) {
-      return array($values);
+      return [$values];
     } else {
       return $values;
     }
@@ -83,39 +83,39 @@ class ProductPropertyAttribute extends CompositeAttribute
     if ($this->attributes[0] instanceof SetAttribute) {
       return json_encode($values);
     } else {
-      return json_encode(array($values));
+      return json_encode([$values]);
     }
   }
 }
 
 class opsiProductProperties extends simplePlugin
 {
-  var $properties = array();
+  var $properties = [];
 
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Product properties'),
       'plDescription' => _('Product properties'),
-      'plObjectClass' => array('opsiProductProperties'),
-      'plObjectType'  => array('opsiProfile'),
+      'plObjectClass' => ['opsiProductProperties'],
+      'plObjectType'  => ['opsiProfile'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Name'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
               _('Properties of the products of this profile'),
               'fdOpsiProductProperty',
-              array(
+              [
                 new SubmittingOPSIProductAttribute(
                   '', '',
                   'productId', TRUE,
@@ -129,18 +129,18 @@ class opsiProductProperties extends simplePlugin
                 new ProductPropertyAttribute(
                   '', '', 'propertyValue'
                 ),
-              ),
+              ],
               '|', '', ''
             ),
             // no order
             FALSE,
-            array(),
+            [],
             // edit button
             TRUE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -176,10 +176,10 @@ class opsiProductProperties extends simplePlugin
       $properties = $s_daemon->append_call(
         'OPSI.get_product_properties',
         $this->parent->getBaseObject()->macAddress,
-        array('args' => array(
-          array(),
-          array('productId' => $productid)
-        ))
+        ['args' => [
+          [],
+          ['productId' => $productid]
+        ]]
       );
       if ($s_daemon->is_error()) {
         msg_dialog::display(
@@ -188,13 +188,13 @@ class opsiProductProperties extends simplePlugin
         );
         return;
       }
-      $this->properties[$productid] = array();
+      $this->properties[$productid] = [];
       foreach ($properties as $property) {
         $this->properties[$productid][$property['propertyId']] = $property;
       }
     }
-    $choices_values = array();
-    $choices_labels = array();
+    $choices_values = [];
+    $choices_labels = [];
     foreach ($this->properties[$productid] as $property) {
       $choices_values[] = $property['propertyId'];
       $choices_labels[] = $property['propertyId'].' ('.join(',',
@@ -253,6 +253,6 @@ class opsiProductProperties extends simplePlugin
     if ($property['multiValue']) {
       $attr = new SetAttribute($attr, $property['defaultValues']);
     }
-    $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[2]->setAttributes(array($attr));
+    $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[2]->setAttributes([$attr]);
   }
 }

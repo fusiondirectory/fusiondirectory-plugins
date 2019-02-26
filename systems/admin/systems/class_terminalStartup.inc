@@ -21,19 +21,19 @@
 
 class terminalStartup extends simplePlugin
 {
-  var $inheritance = array('gosaGroupOfNames' => 'member');
+  var $inheritance = ['gosaGroupOfNames' => 'member'];
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Startup'),
       'plDescription'   => _('Terminal startup'),
       'plPriority'      => 2,
-      'plObjectClass'   => array('fdTerminalStartup'),
-      'plObjectType'    => array('terminal', 'ogroup-dynamic'),
+      'plObjectClass'   => ['fdTerminalStartup'],
+      'plObjectType'    => ['terminal', 'ogroup-dynamic'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -41,10 +41,10 @@ class terminalStartup extends simplePlugin
    */
   static function getAttributesInfo (): array
   {
-    return array(
-      'startup' => array (
+    return [
+      'startup' => [
         'name' => _('Startup parameters'),
-        'attrs' => array (
+        'attrs' => [
           new SelectAttribute(
             _('Root server'), _('The root server the terminal should be using'),
             'gotoTerminalPath', FALSE
@@ -53,27 +53,27 @@ class terminalStartup extends simplePlugin
             _('Swap server'), _('The swap server the terminal should be using'),
             'gotoSwapServer', FALSE
           ),
-        )
-      ),
-      'remote_desktop' => array(
+        ]
+      ],
+      'remote_desktop' => [
         'name'  => _('Remote desktop'),
         'icon'  => 'geticon.php?context=devices&icon=server&size=16',
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Connect method'), _('Connect method'),
             'gotoXMethod', FALSE,
-            array('XDMCP', 'LDM', 'SHELL', 'TELNET', 'RDP'),
+            ['XDMCP', 'LDM', 'SHELL', 'TELNET', 'RDP'],
             '',
-            array(_('XDMCP'), _('LDM'), _('Shell'), _('Telnet'), _('Windows RDP'))
+            [_('XDMCP'), _('LDM'), _('Shell'), _('Telnet'), _('Windows RDP')]
           ),
           new SelectAttribute(
             _('Terminal server'), _('Terminal server'),
             'gotoXdmcpServer', FALSE,
-            array()
+            []
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -83,9 +83,9 @@ class terminalStartup extends simplePlugin
     $this->attributesAccess['gotoXMethod']->setSubmitForm('updateServerList');
 
     /* Get NFS and NBD server lists */
-    $nfs = array();
-    $nbd = array();
-    $shareServers = objects::ls('server', array('cn' => 1, 'goExportEntry' => '*'), NULL, '(&(objectClass=goShareServer)(goExportEntry=*))');
+    $nfs = [];
+    $nbd = [];
+    $shareServers = objects::ls('server', ['cn' => 1, 'goExportEntry' => '*'], NULL, '(&(objectClass=goShareServer)(goExportEntry=*))');
     foreach ($shareServers as $server) {
       foreach ($server['goExportEntry'] as $entry) {
         $parts = explode('|', $entry);

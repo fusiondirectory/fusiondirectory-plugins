@@ -30,8 +30,8 @@ class mailMethodRenaterPartage extends mailMethod
   protected $user_id  = '%MAIL%';
   protected $share_id = '%MAIL%';
 
-  private $http_options = array();
-  private $ssl_options = array();
+  private $http_options = [];
+  private $ssl_options = [];
   private $token;
   private $tokenTime;
   private $cachedAccount;
@@ -50,11 +50,11 @@ class mailMethodRenaterPartage extends mailMethod
     $ts = time();
     $preauth = hash_hmac('sha1', $infos['domain'].'|'.$ts, $infos['key']);
 
-    $request = array(
+    $request = [
       'domain'    => $infos['domain'],
       'timestamp' => $ts,
       'preauth'   => $preauth
-    );
+    ];
 
     $response = $this->query('Auth', $request);
 
@@ -87,19 +87,19 @@ class mailMethodRenaterPartage extends mailMethod
       '<b>MAIL: Query</b>');
 
     // performs the HTTP(S) POST
-    $opts = array (
+    $opts = [
       'http' => array_merge(
-        array (
+        [
           'method'      => 'POST',
           'user_agent'  => $infos['user_agent'],
           'header'      => 'Content-type: application/x-www-form-urlencoded'."\r\n"
                           .'Content-Length: '.strlen($post)."\r\n",
           'content'     => $post
-        ),
+        ],
         $this->http_options
       ),
       'ssl' => $this->ssl_options
-    );
+    ];
 
     if ($command != 'Auth') {
       $command .= '/'.$this->token;
@@ -208,13 +208,13 @@ class mailMethodRenaterPartage extends mailMethod
       $command    = 'GetGroup';
       $answerkey  = 'group';
     }
-    $answer = $this->query($command, array('name' => $this->account_id));
+    $answer = $this->query($command, ['name' => $this->account_id]);
     if (($answer !== FALSE) && isset($answer['Response'][$answerkey])) {
-      $this->cachedAccount = array(
+      $this->cachedAccount = [
         'account' => $answer['Response'][$answerkey],
         'id'      => $this->account_id,
         'time'    => time()
-      );
+      ];
       $this->cleanCachedAccountArrays();
       return TRUE;
     } else {
@@ -232,7 +232,7 @@ class mailMethodRenaterPartage extends mailMethod
    * */
   private function cleanCachedAccountArrays ()
   {
-    $keys = array('members', 'zimbraMailAlias', 'zimbraAllowFromAddress');
+    $keys = ['members', 'zimbraMailAlias', 'zimbraAllowFromAddress'];
     foreach ($keys as $key) {
       if (isset($this->cachedAccount['account'][$key])) {
         $this->cachedAccount['account'][$key] = array_values($this->cachedAccount['account'][$key]);
@@ -245,9 +245,9 @@ class mailMethodRenaterPartage extends mailMethod
 
   private function getAccountArray ($infos)
   {
-    $account = array(
+    $account = [
       'name'                                => $this->account_id,
-    );
+    ];
     if ($this->type == 'user') {
       $account['zimbraCOSId']                         = $infos['cos_id'];
       $account['zimbraMailQuota']                     = $this->parent->gosaMailQuota * 1024 * 1024;
@@ -263,18 +263,18 @@ class mailMethodRenaterPartage extends mailMethod
     }
 
     if ($this->type == 'user') {
-      $mainFields = array(
+      $mainFields = [
         'sn', 'givenName', 'description',
         'l', 'st',
         'telephoneNumber', 'mobile', 'pager', 'facsimileTelephoneNumber',
         'displayName', 'homePhone',
         'title', 'ou',
         'street', 'postalCode', 'postOfficeBox'
-      );
+      ];
     } else {
-      $mainFields = array(
+      $mainFields = [
         'description'
-      );
+      ];
     }
     $mainTab = $this->parent->parent->getBaseObject();
     foreach ($mainFields as $field) {
@@ -284,10 +284,10 @@ class mailMethodRenaterPartage extends mailMethod
     }
 
     if ($this->type == 'user') {
-      $userMatchingFields = array(
+      $userMatchingFields = [
         'o' => 'company',
         'roomNumber' => 'physicalDeliveryOfficeName'
-      );
+      ];
       foreach ($userMatchingFields as $fdField => $partageField) {
         if (isset($mainTab->$fdField)) {
           $account[$partageField] = $mainTab->$fdField;
@@ -316,11 +316,11 @@ class mailMethodRenaterPartage extends mailMethod
         $partageTabName = 'sympaAliasPartage';
       }
       if (isset($this->parent->parent->by_object[$partageTabName]) && $this->parent->parent->by_object[$partageTabName]->is_account) {
-        $partageFields = array(
+        $partageFields = [
           'displayName' => 'displayName',
           'fdRenaterPartageGroupMailStatus' => 'zimbraMailStatus',
           'fdRenaterPartageGroupNotes' => 'zimbraNotes'
-        );
+        ];
         $partageTab = $this->parent->parent->by_object[$partageTabName];
         foreach ($partageFields as $fdField => $partageField) {
           if (isset($partageTab->$fdField)) {
@@ -379,7 +379,7 @@ class mailMethodRenaterPartage extends mailMethod
       }
     }
     /* If value of zimbraAccountStatus is not something we understand, do not touch it (example: closed) */
-    if (isset($this->cachedAccount['account']['zimbraAccountStatus']) && !in_array($this->cachedAccount['account']['zimbraAccountStatus'], array('active', 'locked'))) {
+    if (isset($this->cachedAccount['account']['zimbraAccountStatus']) && !in_array($this->cachedAccount['account']['zimbraAccountStatus'], ['active', 'locked'])) {
       unset($account['zimbraAccountStatus']);
     }
 
@@ -402,10 +402,10 @@ class mailMethodRenaterPartage extends mailMethod
     if ($this->type == 'user') {
       $userTab = $this->parent->parent->getBaseObject();
       if ($userTab->attributesAccess['userPassword']->getClear() != '') {
-        $account = array(
+        $account = [
           'name'      => $this->account_id,
           'password'  => $userTab->attributesAccess['userPassword']->getClear()
-        );
+        ];
         $answer = $this->query('SetPassword', $account);
 
         if ($answer === FALSE) {
@@ -427,7 +427,7 @@ class mailMethodRenaterPartage extends mailMethod
       $command = 'RemoveDistributionListAlias';
     }
     foreach ($remove as $alias) {
-      $answer = $this->query($command, array('name' => $this->account_id, 'alias' => $alias));
+      $answer = $this->query($command, ['name' => $this->account_id, 'alias' => $alias]);
       if ($answer === FALSE) {
         return FALSE;
       }
@@ -438,7 +438,7 @@ class mailMethodRenaterPartage extends mailMethod
       $command = 'AddDistributionListAlias';
     }
     foreach ($add as $alias) {
-      $answer = $this->query($command, array('name' => $this->account_id, 'alias' => $alias));
+      $answer = $this->query($command, ['name' => $this->account_id, 'alias' => $alias]);
       if ($answer === FALSE) {
         return FALSE;
       }
@@ -450,17 +450,17 @@ class mailMethodRenaterPartage extends mailMethod
   {
     global $config;
 
-    if (!in_array($this->type, array('group','sympaAlias'))) {
+    if (!in_array($this->type, ['group','sympaAlias'])) {
       return TRUE;
     }
 
     $this->cacheAccount();
-    $oldmembers = array();
+    $oldmembers = [];
     if (isset($this->cachedAccount['account']['members'])) {
       $oldmembers = $this->cachedAccount['account']['members'];
     }
     $mainTab = $this->parent->parent->getBaseObject();
-    $newmembers = array();
+    $newmembers = [];
     if ($this->type == 'sympaAlias') {
       $newmember = '';
       /* We take the shortest mail to filter out -editor and other addresses */
@@ -469,7 +469,7 @@ class mailMethodRenaterPartage extends mailMethod
           $newmember = $mail;
         }
       }
-      $newmembers = array($newmember);
+      $newmembers = [$newmember];
     } elseif (isset($mainTab->member)) {
       $ldap = $config->get_ldap_link();
       $dns = $mainTab->member;
@@ -503,13 +503,13 @@ class mailMethodRenaterPartage extends mailMethod
     $remove = array_diff($oldmembers, $newmembers);
     $add    = array_diff($newmembers, $oldmembers);
     if (!empty($remove)) {
-      $answer = $this->query('RemoveGroupMembers', array('name' => $this->account_id, 'members' => $remove));
+      $answer = $this->query('RemoveGroupMembers', ['name' => $this->account_id, 'members' => $remove]);
       if ($answer === FALSE) {
         return FALSE;
       }
     }
     if (!empty($add)) {
-      $answer = $this->query('AddGroupMembers', array('name' => $this->account_id, 'members' => $add));
+      $answer = $this->query('AddGroupMembers', ['name' => $this->account_id, 'members' => $add]);
       if ($answer === FALSE) {
         return FALSE;
       }
@@ -545,10 +545,10 @@ class mailMethodRenaterPartage extends mailMethod
           return FALSE;
         }
 
-        $account = array(
+        $account = [
           'name'    => $this->initial_account_id,
           'newname' => $this->account_id
-        );
+        ];
         if ($this->type == 'user') {
           $command = 'RenameAccount';
         } else {
@@ -601,15 +601,15 @@ class mailMethodRenaterPartage extends mailMethod
     if ($this->account_exists()) {
       if ($this->type == 'user') {
         if ($infos['delete_type'] == 'delete') {
-          $answer = $this->query('DeleteAccount', array('name' => $this->initial_account_id));
+          $answer = $this->query('DeleteAccount', ['name' => $this->initial_account_id]);
         } elseif ($infos['delete_type'] == 'disable') {
-          $answer = $this->query('ModifyAccount', array('name' => $this->initial_account_id, 'zimbraAccountStatus' => 'closed'));
+          $answer = $this->query('ModifyAccount', ['name' => $this->initial_account_id, 'zimbraAccountStatus' => 'closed']);
         } else {
           $answer = FALSE;
           $this->error = _('Invalid value in fdRenaterPartageServerDeletionType');
         }
       } else {
-        $answer = $this->query('DeleteGroup', array('name' => $this->initial_account_id));
+        $answer = $this->query('DeleteGroup', ['name' => $this->initial_account_id]);
       }
       return ($answer !== FALSE);
     }
@@ -649,23 +649,23 @@ class mailMethodRenaterPartage extends mailMethod
         $date->setTimezone(timezone::getDefaultTimeZone());
         $lastlogin = $date->format('Y-m-d H:i:s');
       }
-      return array(
+      return [
         _('Last login')     => $lastlogin,
         _('Account status') => (isset($this->cachedAccount['account']['zimbraAccountStatus']) ? $this->cachedAccount['account']['zimbraAccountStatus'] : _('Unknown')),
-      );
+      ];
     }
-    return array();
+    return [];
   }
 
   static public function get_server_list ()
   {
     global $config;
-    $serverList = array();
+    $serverList = [];
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search('(&(objectClass=fdRenaterPartageServer)(fdRenaterPartageServerMailDomain=*))',
-                  array('cn', 'fdRenaterPartageServerUri', 'fdRenaterPartageServerMailDomain', 'fdRenaterPartageServerUserAgent', 'fdRenaterPartageServerDeletionType'));
+                  ['cn', 'fdRenaterPartageServerUri', 'fdRenaterPartageServerMailDomain', 'fdRenaterPartageServerUserAgent', 'fdRenaterPartageServerDeletionType']);
     while ($attrs = $ldap->fetch()) {
       unset($attrs['fdRenaterPartageServerMailDomain']['count']);
       foreach ($attrs['fdRenaterPartageServerMailDomain'] as $domainAndKey) {
@@ -674,7 +674,7 @@ class mailMethodRenaterPartage extends mailMethod
         foreach ($cosArray as $cos) {
           list ($cosName, $cosId) = explode('|', $cos);
           $deleteMode = (isset($attrs['fdRenaterPartageServerDeletionType'][0]) ? $attrs['fdRenaterPartageServerDeletionType'][0] : 'delete');
-          $serverList[$attrs['cn'][0].' - '.$domain.' - '.$cosName] = array(
+          $serverList[$attrs['cn'][0].' - '.$domain.' - '.$cosName] = [
             'server_dn'   => $attrs['dn'],
             'user_agent'  => $attrs['fdRenaterPartageServerUserAgent'][0],
             'uri'         => $attrs['fdRenaterPartageServerUri'][0],
@@ -683,7 +683,7 @@ class mailMethodRenaterPartage extends mailMethod
             'key'         => $key,
             'cos_name'    => $cosName,
             'cos_id'      => $cosId
-          );
+          ];
         }
       }
     }

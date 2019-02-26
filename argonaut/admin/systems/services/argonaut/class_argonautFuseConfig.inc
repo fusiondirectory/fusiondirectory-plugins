@@ -23,14 +23,14 @@ class argonautFuseConfig extends simpleService
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Argonaut Fuse'),
       'plDescription'   => _('Argonaut Fuse settings'),
       'plIcon'          => 'geticon.php?context=applications&icon=argonaut-fuse&size=16',
-      'plObjectClass'   => array('argonautFuseConfig'),
+      'plObjectClass'   => ['argonautFuseConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -38,10 +38,10 @@ class argonautFuseConfig extends simpleService
    */
   static function getAttributesInfo (): array
   {
-    return array (
-      'main' => array (
+    return  [
+      'main' => [
         'name'  => _('Basic settings'),
-        'attrs' => array (
+        'attrs' => [
           new StringAttribute(
             _('Default mode'),
             '',
@@ -56,11 +56,11 @@ class argonautFuseConfig extends simpleService
             TRUE,
             '/var/log/argonaut'
           ),
-        )
-      ),
-      'tftp' => array (
+        ]
+      ],
+      'tftp' => [
         'name'  => _('TFTP'),
-        'attrs' => array (
+        'attrs' => [
           new StringAttribute(
             _('Pxelinux cfg path'),
             _('Path where argonaut-fuse should store pxelinux.cfg'),
@@ -68,9 +68,9 @@ class argonautFuseConfig extends simpleService
             TRUE,
             '/srv/tftp/pxelinux.cfg'
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $parent = NULL)
@@ -79,7 +79,7 @@ class argonautFuseConfig extends simpleService
     parent::__construct($dn, $parent);
 
     /* Load modules */
-    $this->plugin = array();
+    $this->plugin = [];
     foreach ($config->data['TABS']['FUSEMODULETABS'] as $plug) {
       @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $plug['CLASS'], "Loading Fuse module");
       if (!plugin_available($plug['CLASS'])) {
@@ -185,7 +185,7 @@ class argonautFuseConfig extends simpleService
 
   function remove (bool $fulldelete = FALSE): array
   {
-    $errors = array();
+    $errors = [];
     /* Remove objects */
     foreach ($this->plugin as &$plugin) {
       $plugin->dn = $this->dn;

@@ -27,7 +27,7 @@ class freeradiusAccount extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Freeradius'),
       'plDescription' => _('This Plugin is for Radius accounting based in FreeRadius'),
       'plFilter'      => '(objectClass=radiusprofile)',
@@ -35,11 +35,11 @@ class freeradiusAccount extends simplePlugin
       'plSmallIcon'   => 'geticon.php?context=applications&icon=freeradius&size=16',
       'plSelfModify'  => TRUE,
       'plPriority'    => 11,
-      'plObjectClass' => array('radiusprofile'),
-      'plObjectType'  => array('user'),
+      'plObjectClass' => ['radiusprofile'],
+      'plObjectType'  => ['user'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -47,11 +47,11 @@ class freeradiusAccount extends simplePlugin
    */
   static function getAttributesInfo (): array
   {
-    return array(
+    return [
     // Attributes are grouped by section
-    'section1' => array(
+    'section1' => [
         'name'  => _('Support 802.1x'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Tunnel medium type'), _('Name of the tunnel medium type'),
             'radiusTunnelMediumType', TRUE,
@@ -72,25 +72,25 @@ class freeradiusAccount extends simplePlugin
             'radiusExpiration', FALSE,
             'd M Y', ''
           ),
-        )
-      ),
-      'section2' => array(
+        ]
+      ],
+      'section2' => [
         'name'  => _('Groups'),
-        'attrs' => array(
+        'attrs' => [
           new SetAttribute(
               new SelectAttribute(
               _('Groups'),
               _('FreeRadius Group'),
               'radiusGroupName',
               FALSE,
-              array("")
+              [""]
             )
           ),
-        ),
-      ),
-      'section3' => array(
+        ],
+      ],
+      'section3' => [
         'name'  => _('User preferences'),
-          'attrs' => array(
+          'attrs' => [
             new StringAttribute(
               _('Protocol'), _('Protocol'),
               'radiusFramedProtocol', FALSE,
@@ -144,9 +144,9 @@ class freeradiusAccount extends simplePlugin
               FALSE,
               2
             )
-          )
-        )
-    );
+          ]
+        ]
+    ];
   }
 
   /*!
@@ -159,8 +159,8 @@ class freeradiusAccount extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=radiusprofile)', array('cn'));
-    $groups = array();
+    $ldap->search('(objectClass=radiusprofile)', ['cn']);
+    $groups = [];
     while ($attrs = $ldap->fetch()) {
       $groups[] = $attrs['cn'][0];
     }

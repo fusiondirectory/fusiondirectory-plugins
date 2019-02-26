@@ -26,7 +26,7 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
     parent::__construct(
       $description,
       $ldapName,
-      array(
+      [
         new StringAttribute(
           _('URL'), _('Repository url'),
           'mirrorUrl', TRUE
@@ -34,7 +34,7 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
         new SelectAttribute(
           _('Parent server'), _('Parent repository server'),
           'mirrorParent', FALSE,
-          array(), ''
+          [], ''
         ),
         new StringAttribute(
           _('Release'), _('Release used on this repository'),
@@ -51,7 +51,7 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
         new SelectAttribute(
           _('Mirror mode'), _('Is this mirror an installation repository? Is its release a custom one?'),
           'mirrorMode', TRUE,
-          array('install','update','custom')
+          ['install','update','custom']
         ),
         new BooleanAttribute(
           _('Local mirror'), _('Is this mirror a local or a network mirror?'),
@@ -71,14 +71,14 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
         new SelectAttribute(
           _('Distribution'), _('Which distribution is this repository for'),
           'distribution', TRUE,
-          array('debian','centos')
+          ['debian','centos']
         ),
         new StringAttribute(
           _('Path pattern'), _('How this repository is organized (only for RPM repositories)'),
           'pathMask', FALSE,
           '%RELEASE%/%SECTION%/%ARCH%/'
         ),
-      ),
+      ],
       $acl,
       $label
     );
@@ -106,10 +106,10 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
         },
         serviceRepository::getReleaseList($this->attributes[7]->getValue())
       );
-      $modeChoices = array_merge(array('install', 'update'), $releaseList);
+      $modeChoices = array_merge(['install', 'update'], $releaseList);
       $this->attributes[8]->setVisible(FALSE);
     } else {
-      $modeChoices = array('install', 'update');
+      $modeChoices = ['install', 'update'];
       $this->attributes[8]->setVisible(TRUE);
     }
     $this->attributes[4]->setChoices($modeChoices);
@@ -155,24 +155,24 @@ class serviceRepository extends simpleService
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Package repository'),
       'plDescription' => _('Package repository information'),
       'plIcon'        => 'geticon.php?context=mimetypes&icon=package-x-generic&size=16',
-      'plObjectClass' => array('FAIrepositoryServer'),
+      'plObjectClass' => ['FAIrepositoryServer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'template'  => get_template_path('fai_repository.tpl', TRUE, dirname(__FILE__)),
         'name'      => _('Repositories'),
-        'class'     => array('fullwidth'),
-        'attrs'     => array(
+        'class'     => ['fullwidth'],
+        'attrs'     => [
           new OrderedArrayAttribute(
             new FAIRepositoryAttribute(
               _('Repositories this server hosts'),
@@ -180,13 +180,13 @@ class serviceRepository extends simpleService
             ),
             // no order
             FALSE,
-            array(),
+            [],
             // edit button
             TRUE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $parent = NULL)
@@ -213,7 +213,7 @@ class serviceRepository extends simpleService
     }
 
     $repos  = $this->attributesAccess['FAIrepository']->getArrayValues();
-    $done   = array();
+    $done   = [];
     foreach ($repos as $repo) {
       $release = $repo[2];
       if (($repo[4] == 'install') && (!isset($done[$release]))) {
@@ -232,7 +232,7 @@ class serviceRepository extends simpleService
     // Check if FAI branch is here
     $fai  = "ou=$distribution,".get_ou('faiBaseRDN').$config->current['BASE'];
     $ldap = $config->get_ldap_link();
-    $ldap->cat($fai, array('dn'));
+    $ldap->cat($fai, ['dn']);
     if (!$ldap->count()) {
       $ldap->cd($config->current['BASE']);
       $ldap->create_missing_trees($fai);
@@ -244,13 +244,13 @@ class serviceRepository extends simpleService
 
     // Check if FAI release branch is here
     $dn = "ou=$release,$fai";
-    $ldap->cat($dn, array('dn'));
+    $ldap->cat($dn, ['dn']);
     if (!$ldap->count()) {
       $ldap->cd($dn);
-      $ldap->add(array('objectClass' => array('organizationalUnit','FAIbranch'), 'ou' => $release));
+      $ldap->add(['objectClass' => ['organizationalUnit','FAIbranch'], 'ou' => $release]);
       if ($ldap->success()) {
         // Add classes OUs
-        foreach (array('Script', 'Hook', 'Template', 'Variable', 'Profile', 'Package', 'Partition') as $type) {
+        foreach (['Script', 'Hook', 'Template', 'Variable', 'Profile', 'Package', 'Partition'] as $type) {
           $ldap->cd($dn);
           $ldap->create_missing_trees(get_ou('fai'.$type.'RDN').$dn);
           if (!$ldap->success()) {
@@ -274,9 +274,9 @@ class serviceRepository extends simpleService
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(FAIrepository=*)(objectClass=FAIrepositoryServer))', array('FAIrepository'));
+    $ldap->search('(&(FAIrepository=*)(objectClass=FAIrepositoryServer))', ['FAIrepository']);
 
-    $repos = array();
+    $repos = [];
     while ($entry = $ldap->fetch()) {
       if (isset($entry['FAIrepository'])) {
         // Add an entry for each Repository configured for server
@@ -286,10 +286,10 @@ class serviceRepository extends simpleService
           $infos['URL']           = $tmp[0];
           $infos['PARENT_SERVER'] = $tmp[1];
           $infos['FAI_RELEASE']   = $tmp[2];
-          $infos['SECTIONS']      = (empty($tmp[3]) ? array() : explode(',', $tmp[3]));
+          $infos['SECTIONS']      = (empty($tmp[3]) ? [] : explode(',', $tmp[3]));
           $infos['INSTALL']       = $tmp[4];
           $infos['LOCAL']         = $tmp[5];
-          $infos['ARCHS']         = (empty($tmp[6]) ? array() : explode(',', $tmp[6]));
+          $infos['ARCHS']         = (empty($tmp[6]) ? [] : explode(',', $tmp[6]));
           $infos['DIST']          = (isset($tmp[7]) ? $tmp[7] : 'debian');
           $repos[] = $infos;
         }
@@ -307,7 +307,7 @@ class serviceRepository extends simpleService
   */
   static function getCustomReleases ($release)
   {
-    $list     = array();
+    $list     = [];
     $servers  = static::getServers();
 
     foreach ($servers as $server) {
@@ -325,9 +325,9 @@ class serviceRepository extends simpleService
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=FAIrepositoryServer)(FAIrepository=*|'.$distribution.'|*))', array('dn','cn'));
+    $ldap->search('(&(objectClass=FAIrepositoryServer)(FAIrepository=*|'.$distribution.'|*))', ['dn','cn']);
 
-    $ret = array();
+    $ret = [];
     while ($attr = $ldap->fetch()) {
       if ($attr['dn'] == $dn) {
         continue;
@@ -345,9 +345,9 @@ class serviceRepository extends simpleService
 
     $ldap = $config->get_ldap_link();
     $ldap->cd('ou='.$distribution.','.get_ou('faiBaseRDN').$config->current['BASE']);
-    $ldap->search('(objectClass=FAIbranch)', array('ou'), 'one');
+    $ldap->search('(objectClass=FAIbranch)', ['ou'], 'one');
 
-    $list = array();
+    $list = [];
     while ($release = $ldap->fetch()) {
       $list[] = $release['ou'][0];
     }

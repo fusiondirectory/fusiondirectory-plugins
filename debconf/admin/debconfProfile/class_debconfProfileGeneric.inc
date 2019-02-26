@@ -22,7 +22,7 @@ class DebconfEntriesAttribute extends CompositeAttribute
 {
   function __construct ($description, $ldapName, $acl = "")
   {
-    parent::__construct($description, $ldapName, array(), "", "", $acl);
+    parent::__construct($description, $ldapName, [], "", "", $acl);
     $this->setInLdap(FALSE);
   }
 
@@ -37,7 +37,7 @@ class DebconfEntriesAttribute extends CompositeAttribute
   function loadEntries ()
   {
     global $config;
-    $this->attributes = array();
+    $this->attributes = [];
 
     /* Load template */
     $ldap = $config->get_ldap_link();
@@ -80,15 +80,15 @@ class DebconfEntriesAttribute extends CompositeAttribute
     $ldap = $config->get_ldap_link();
     foreach ($this->attributes as $cn => $attribute) {
       $dn = "cn=$cn,ou=questions,".$this->plugin->dn;
-      $ldap->cat($dn, array("objectClass"));
+      $ldap->cat($dn, ["objectClass"]);
       if ($ldap->count() != 1) {
         msg_dialog::display(_("Error"),
           sprintf(_("Can't find entry %s in LDAP for profile %s"), $cn, $this->plugin->dn),
           ERROR_DIALOG);
       } else {
-        $attrs = array(
-          'value' => array($attribute->getValue()),
-        );
+        $attrs = [
+          'value' => [$attribute->getValue()],
+        ];
         $ldap->cd($dn);
         $ldap->modify($attrs);
       }
@@ -111,7 +111,7 @@ class DebconfImportAttribute extends FileAttribute
   function readFile ($handle)
   {
     global $config;
-    $matches = array();
+    $matches = [];
     $str = fread($handle, 1024);
     // removing breaklines
     $tmp = str_replace("\n", "", $str);
@@ -159,39 +159,39 @@ class debconfProfileGeneric extends simplePlugin
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Debconf profile'),
       'plDescription' => _('Debconf profile information'),
-      'plObjectClass' => array('organizationalUnit'),
+      'plObjectClass' => ['organizationalUnit'],
       'plFilter'      => '(&(objectClass=organizationalUnit)(!(objectClass=gosaDepartment)))',
-      'plObjectType'  => array('debconfProfile' => array(
+      'plObjectType'  => ['debconfProfile' => [
         'name'      => _('Debconf profile'),
         'ou'        => get_ou('debconfRDN'),
         'icon'      => 'geticon.php?context=applications&icon=debconf&size=16',
         'mainAttr'  => 'ou',
-      )),
+      ]],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
+    return [
       // Attributes are grouped by section
-      'main' => array(
+      'main' => [
         'name'  => _("Name"),
-        'attrs' => array(
+        'attrs' => [
           new DebconfImportAttribute("", _("Import a debconf file"), "import"),
           new StringAttribute(_("Name"), _("Name of this debconf template"), "ou", TRUE),
-        )
-      ),
-      'entries' => array(
+        ]
+      ],
+      'entries' => [
         'name'  => _("Entries"),
-        'attrs' => array(
+        'attrs' => [
           new DebconfEntriesAttribute(_("Debconf template answers"), "debconfEntries"),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)

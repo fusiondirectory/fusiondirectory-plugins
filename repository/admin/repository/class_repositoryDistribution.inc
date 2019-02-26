@@ -22,35 +22,35 @@ class repositoryDistribution extends simplePlugin
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Repository distribution'),
       'plDescription' => _('Repository distribution'),
-      'plObjectClass' => array('fdBuildRepositoryDistribution'),
-      'plObjectType'  => array('repoDistribution' => array(
+      'plObjectClass' => ['fdBuildRepositoryDistribution'],
+      'plObjectType'  => ['repoDistribution' => [
         'name'        => _('Repository distribution'),
         'aclCategory' => 'repository',
         'ou'          => get_ou('repositoryRDN'),
         'icon'        => 'geticon.php?context=applications&icon=repository-distribution&size=16'
-      )),
-      'plForeignKeys'  => array(
-        'fdBasedOn' => array(
-          array('repositoryDistribution', 'cn'),
-        ),
-        'fdRepoSection' => array(
-          array('repositorySection', 'cn'),
-        ),
-      ),
+      ]],
+      'plForeignKeys'  => [
+        'fdBasedOn' => [
+          ['repositoryDistribution', 'cn'],
+        ],
+        'fdRepoSection' => [
+          ['repositorySection', 'cn'],
+        ],
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Repository distribution'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('repositoryRDN')),
           new StringAttribute(
             _('Name'), _('Unique name for this distribution'),
@@ -64,19 +64,19 @@ class repositoryDistribution extends simplePlugin
             new SelectAttribute(
               _('Section'), _('The sections this distribution contains'),
               'fdRepoSection', TRUE,
-              array()
+              []
             )
           ),
           new SetAttribute(
             new SelectAttribute(
               _('Based on'), _('The distributions this one is based on'),
               'fdBasedOn', FALSE,
-              array()
+              []
             )
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)

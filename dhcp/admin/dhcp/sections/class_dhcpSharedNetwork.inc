@@ -22,24 +22,24 @@ class dhcpSharedNetwork extends dhcpPlugin
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('DHCP shared network'),
       'plDescription'   => _('DHCP shared network'),
-      'plCategory'      => array('dhcpConfiguration'),
-      'plObjectClass'   => array('dhcpSharedNetwork'),
+      'plCategory'      => ['dhcpConfiguration'],
+      'plObjectClass'   => ['dhcpSharedNetwork'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
     $attributesInfo = parent::getAttributesInfo();
     $attributesInfo['main']['attrs'][2]->setDefaultValue(
-      array(
+      [
         'deny unknown-clients',
         'deny bootp',
         'deny booting',
-      )
+      ]
     );
     return $attributesInfo;
   }

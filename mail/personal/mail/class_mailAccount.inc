@@ -50,12 +50,12 @@ class MailQuotaAttribute extends IntAttribute
   function renderAttribute (array &$attributes, $readOnly)
   {
     parent::renderAttribute($attributes, $readOnly);
-    $attributes[$this->getLdapName().'_usage'] = array(
+    $attributes[$this->getLdapName().'_usage'] = [
       'htmlid'      => $this->getHtmlId().'_usage',
       'label'       => '{literal}'._('Quota usage').'{/literal}',
       'description' => _('Part of the quota which is used'),
       'input'       => mailMethod::quota_to_image($this->quotaUsage, $this->value),
-    );
+    ];
   }
 }
 
@@ -64,11 +64,11 @@ class mailAccount extends simplePlugin
 {
   var $displayHeader  = TRUE;
 
-  private $mainSectionAttrs = array();
+  private $mainSectionAttrs = [];
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Mail'),
       'plDescription'   => _('Mail settings'),
       'plFilter'        => '(mail=*)',
@@ -76,15 +76,15 @@ class mailAccount extends simplePlugin
       'plSmallIcon'     => 'geticon.php?context=applications&icon=internet-mail&size=16',
       'plSelfModify'    => TRUE,
       'plPriority'      => 4,
-      'plObjectClass'   => array('gosaMailAccount'),
-      'plObjectType'    => array('user'),
+      'plObjectClass'   => ['gosaMailAccount'],
+      'plObjectType'    => ['user'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo()),
-      'plForeignKeys'  => array(
-        'gosaMailServer' => array(
-          array('serverGeneric', 'cn'),
-        )
-      )
-    );
+      'plForeignKeys'  => [
+        'gosaMailServer' => [
+          ['serverGeneric', 'cn'],
+        ]
+      ]
+    ];
   }
 
   /*!
@@ -92,10 +92,10 @@ class mailAccount extends simplePlugin
   */
   static function getAttributesInfo (): array
   {
-    return array (
-      'main' => array (
+    return  [
+      'main' => [
         'name'  => _('Mail account'),
-        'attrs' => array (
+        'attrs' => [
           new MailAttribute(
             _('Primary address'), _('Primary mail address'),
             'mail', TRUE
@@ -103,18 +103,18 @@ class mailAccount extends simplePlugin
           new SelectAttribute(
             _('Server'), _('Specify the mail server where the user will be hosted on'),
             'gosaMailServer', FALSE,
-            array()
+            []
           ),
           new MailQuotaAttribute(
             _('Quota size'), 'Define quota size in MB',
             'gosaMailQuota', FALSE,
             0, FALSE
           )
-        )
-      ),
-      'other_addresses' => array(
+        ]
+      ],
+      'other_addresses' => [
         'name'  => _('Other addresses and redirections'),
-        'attrs' => array(
+        'attrs' => [
           new SetAttribute(
             new MailAttribute(
               _('Alternative addresses'), _('List of alternative mail addresses'),
@@ -125,11 +125,11 @@ class mailAccount extends simplePlugin
             _('Forward messages to'), _('Addresses to which messages should be forwarded'),
             'gosaMailForwardingAddress'
           )
-        )
-      ),
-      'options1' => array(
+        ]
+      ],
+      'options1' => [
         'name' => _('Vacation message'),
-        'attrs' => array(
+        'attrs' => [
           new BooleanAttribute(
             _('Activate vacation message'),
             _('Select to automatically response with the vacation message defined below'),
@@ -150,16 +150,16 @@ class mailAccount extends simplePlugin
             _('Vacation message'), 'The message you wish be sent during your absence',
             'gosaVacationMessage'
           ),
-        )
-      ),
-      'advanced' => array (
-         'name' => _('Advanced mail options'),
-         'attrs' => array (
-          new FlagsAttribute('gosaMailDeliveryMode', array(
+        ]
+      ],
+      'advanced' => [
+        'name' => _('Advanced mail options'),
+        'attrs' => [
+          new FlagsAttribute('gosaMailDeliveryMode', [
             'flag_ownmailbox',
             'flag_vacation',
             'flag_localonly'
-          )),
+          ]),
           new BooleanAttribute(
             _('User is only allowed to send and receive local mails'),
             _('Select if user can only send and receive inside his own domain'),
@@ -172,9 +172,9 @@ class mailAccount extends simplePlugin
             'flag_ownmailbox', FALSE, FALSE, '',
             'I', ''
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -201,9 +201,9 @@ class mailAccount extends simplePlugin
   /* We need $mailAccount->uid to return the uid for mailMethod */
   public function __get ($name)
   {
-    if (in_array($name, array('cn','uid')) && isset($this->parent)) {
+    if (in_array($name, ['cn','uid']) && isset($this->parent)) {
       return $this->parent->getBaseObject()->$name;
-    } elseif (in_array($name, array('uidNumber','gidNumber')) && isset($this->parent)) {
+    } elseif (in_array($name, ['uidNumber','gidNumber']) && isset($this->parent)) {
       return $this->parent->by_object['posixAccount']->$name;
     } else {
       /* Calling default behaviour */
@@ -213,9 +213,9 @@ class mailAccount extends simplePlugin
 
   public function __isset ($name)
   {
-    if (in_array($name, array('cn','uid')) && isset($this->parent)) {
+    if (in_array($name, ['cn','uid']) && isset($this->parent)) {
       return isset($this->parent->getBaseObject()->$name);
-    } elseif (in_array($name, array('uidNumber','gidNumber')) && isset($this->parent)) {
+    } elseif (in_array($name, ['uidNumber','gidNumber']) && isset($this->parent)) {
       return isset($this->parent->by_object['posixAccount']->$name);
     } else {
       /* Calling default behaviour */
@@ -307,13 +307,13 @@ class mailAccount extends simplePlugin
       $this->attributesAccess['gosaVacationStop']->setDisabled(FALSE);
       $this->attributesAccess['gosaVacationStart']->setDisabled(FALSE);
       $this->attributesAccess['flag_vacation']->setManagedAttributes(
-        array (
-          'erase' => array (
-            FALSE => array (
+        [
+          'erase' => [
+            FALSE => [
               'gosaVacationStart','gosaVacationStop','gosaVacationMessage'
-            )
-          )
-        )
+            ]
+          ]
+        ]
       );
     } else {
       $this->attributesAccess['gosaVacationStart']->setDisabled(TRUE);
@@ -323,13 +323,13 @@ class mailAccount extends simplePlugin
       $this->attributesAccess['gosaVacationStop']->setVisible(FALSE);
       $this->attributesAccess['gosaVacationStop']->setValue('');
       $this->attributesAccess['flag_vacation']->setManagedAttributes(
-        array (
-          'erase' => array (
-            FALSE => array (
+        [
+          'erase' => [
+            FALSE => [
               'gosaVacationMessage'
-            )
-          )
-        )
+            ]
+          ]
+        ]
       );
     }
   }
@@ -360,7 +360,7 @@ class mailAccount extends simplePlugin
       }
     }
 
-    $errors = array();
+    $errors = [];
 
     /* Only do IMAP actions if we are not a template */
     if (!$this->is_template) {

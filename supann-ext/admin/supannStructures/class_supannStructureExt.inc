@@ -20,29 +20,29 @@
 
 class supannStructureExt extends simplePlugin
 {
-  var $objectclasses = array('fdSupannExt');
+  var $objectclasses = ['fdSupannExt'];
 
   var $mainTab = TRUE;
 
   /* Return plugin information */
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('SUPANN-Ext'),
       'plDescription' => _('SUPANN Non-Official Extension'),
-      'plObjectType'  => array('entite', 'etablissement'),
+      'plObjectType'  => ['entite', 'etablissement'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
-    return array(
-      'validity' => array(
+    return [
+      'validity' => [
         'name'  => _('Validity'),
-        'attrs' => array(
+        'attrs' => [
           new GeneralizedTimeDateAttribute(
             _('Start date'), _('The date from which this structure will be valid'),
             'fdSupannStartDate', FALSE,
@@ -53,12 +53,12 @@ class supannStructureExt extends simplePlugin
             'fdSupannEndDate', FALSE,
             ''
           ),
-        )
-      ),
-      'relation' => array(
+        ]
+      ],
+      'relation' => [
         'name'  => _('Relations'),
-        'class'     => array('fullwidth'),
-        'attrs'     => array(
+        'class'     => ['fullwidth'],
+        'attrs'     => [
           /* These attributes are handled by the SupannOrderedArrayAttribute */
           new HiddenAttribute('fdSupannRelationEntiteType'),
           new HiddenAttribute('fdSupannRelationEntiteRole'),
@@ -67,7 +67,7 @@ class supannStructureExt extends simplePlugin
             new SupannCompositeAttribute(
               _('fdSupannRelationEntite'),
               'fdSupannRelationEntite',
-              array(
+              [
                 new SupannPrefixedSelectAttribute(
                   _('Role'), _('Role'),
                   'fdSupannRelationEntiteRole_role', TRUE,
@@ -82,20 +82,20 @@ class supannStructureExt extends simplePlugin
                   _('Entity'), _('Entity'),
                   'fdSupannRelationEntiteCode_code', FALSE
                 ),
-              ),
+              ],
               '',
               // no label
               ''
             ),
             // no order
             FALSE,
-            array(),
+            [],
             // no edit button
             FALSE
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -105,10 +105,10 @@ class supannStructureExt extends simplePlugin
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=supannEntite)', array('supannCodeEntite', 'ou', 'o','supannEtablissement'));
+    $ldap->search('(objectClass=supannEntite)', ['supannCodeEntite', 'ou', 'o','supannEtablissement']);
 
-    $code_entites   = array();
-    $label_entites  = array();
+    $code_entites   = [];
+    $label_entites  = [];
     while ($attrs = $ldap->fetch()) {
       if (isset($attrs['supannCodeEntite'][0])) {
         $code_entites[] = $attrs['supannCodeEntite'][0];

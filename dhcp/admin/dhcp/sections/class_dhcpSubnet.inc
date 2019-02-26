@@ -22,21 +22,21 @@ class dhcpSubnet extends dhcpPlugin
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('DHCP subnet'),
       'plDescription'   => _('DHCP subnet'),
-      'plCategory'      => array('dhcpConfiguration'),
-      'plObjectClass'   => array('dhcpSubnet'),
+      'plCategory'      => ['dhcpConfiguration'],
+      'plObjectClass'   => ['dhcpSubnet'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
     $attributesInfo = parent::getAttributesInfo();
-    $attributesInfo['subnet'] = array(
+    $attributesInfo['subnet'] = [
       'name'  => _('Subnet'),
-      'attrs' => array(
+      'attrs' => [
         new IntAttribute(
           _('Mask length'), _('The subnet mask length for the subnet. The mask can be easily computed from this length.'),
           'dhcpNetMask', TRUE,
@@ -50,8 +50,8 @@ class dhcpSubnet extends dhcpPlugin
             '/^[0-9\.:]+(\s[0-9\.:]+)?$/'
           )
         ),
-      )
-    );
+      ]
+    ];
     $attributesInfo['main']['attrs'][0] = new IPAttribute(
       _('Network address'), _('Network address of this subnet'),
       'cn', TRUE

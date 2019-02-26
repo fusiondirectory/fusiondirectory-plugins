@@ -22,23 +22,23 @@ class dnsConfig extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('DNS configuration'),
       'plDescription'   => _('FusionDirectory dns plugin configuration'),
-      'plObjectClass'   => array('fdDnsPluginConf'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectClass'   => ['fdDnsPluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('DNS config'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('DNS RDN'), _('Branch in which DNS zones will be stored'),
             'fdDnsRDN', TRUE,
@@ -49,8 +49,8 @@ class dnsConfig extends simplePlugin
             'fdDNSFinalDot', FALSE,
             TRUE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

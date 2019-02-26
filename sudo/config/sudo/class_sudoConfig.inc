@@ -22,30 +22,30 @@ class sudoConfig extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Sudo configuration'),
       'plDescription'   => _('FusionDirectory sudo plugin configuration'),
-      'plObjectClass'   => array('fdSudoPluginConf'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectClass'   => ['fdSudoPluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Sudo'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Sudo RDN'), _('Branch in which sudoers will be stored'),
             'fdSudoRDN', TRUE,
             'ou=sudoers'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

@@ -23,30 +23,30 @@ class dashboardNetwork extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Network'),
       'plDescription' => _('Statistics and various information'),
-      'plObjectType'  => array('dashboard'),
+      'plObjectType'  => ['dashboard'],
       'plPriority'    => 22,
 
-      'plProvidedAcls'  => array()
-    );
+      'plProvidedAcls'  => []
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'dhcp' => array(
+    return [
+      'dhcp' => [
         'name'  => _('DHCP'),
-        'attrs' => array(new FakeAttribute('dhcp_infos')),
+        'attrs' => [new FakeAttribute('dhcp_infos')],
         'template' => get_template_path('network_dhcp.tpl', TRUE, dirname(__FILE__)),
-      ),
-      'dns' => array(
+      ],
+      'dns' => [
         'name'  => _('DNS'),
-        'attrs' => array(new FakeAttribute('dns_infos')),
+        'attrs' => [new FakeAttribute('dns_infos')],
         'template' => get_template_path('network_dhcp.tpl', TRUE, dirname(__FILE__)),
-      ),
-    );
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -69,13 +69,13 @@ class dashboardNetwork extends simplePlugin
     global $config, $ui;
 
     if (!class_available('dhcpService')) {
-      return array();
+      return [];
     }
 
     try {
-      $objects = objects::ls('server', array('cn' => 'raw', 'dhcpServiceDN' => 1), NULL, '(objectClass=dhcpServer)', TRUE);
+      $objects = objects::ls('server', ['cn' => 'raw', 'dhcpServiceDN' => 1], NULL, '(objectClass=dhcpServer)', TRUE);
     } catch (FusionDirectoryException $e) {
-      $objects = array();
+      $objects = [];
       msg_dialog::display(
         _('Error'),
         sprintf(_('Statistics for DHCP could not be computed because of the following error: %s'), $e->getMessage()),
@@ -83,25 +83,25 @@ class dashboardNetwork extends simplePlugin
       );
     }
 
-    $servers = array();
+    $servers = [];
     foreach ($objects as $dn => $attrs) {
-      $zones = array();
+      $zones = [];
       if (strpos($ui->get_permissions($attrs['dhcpServiceDN'], 'dhcpConfiguration/dhcpSubnet', 'dhcpNetMask'), 'r') !== FALSE) {
         $ldap_zone = $config->get_ldap_link();
         $ldap_zone->cd($attrs['dhcpServiceDN']);
-        $ldap_zone->search('(objectClass=dhcpSubnet)', array('cn','dhcpNetMask'));
+        $ldap_zone->search('(objectClass=dhcpSubnet)', ['cn','dhcpNetMask']);
         while ($attrs_zone = $ldap_zone->fetch()) {
-          $zones[] = array(
+          $zones[] = [
             'text' => $attrs_zone['cn'][0]."/".$attrs_zone['dhcpNetMask'][0]
-          );
+          ];
         }
       }
 
-      $servers[] = array(
+      $servers[] = [
         'name'  => $attrs['cn'][0],
         'link'  => objects::link($dn, 'server', 'service_serviceDHCP', $attrs, FALSE),
         'zones' => $zones
-      );
+      ];
     }
 
     return $servers;
@@ -110,24 +110,24 @@ class dashboardNetwork extends simplePlugin
   function dns_infos ()
   {
     if (!class_available('dnsZone')) {
-      return array();
+      return [];
     }
-    $servers  = array();
-    $zones    = objects::ls('dnsZone', array('zoneName' => 1, 'sOARecord' => 1), NULL, '', TRUE);
+    $servers  = [];
+    $zones    = objects::ls('dnsZone', ['zoneName' => 1, 'sOARecord' => 1], NULL, '', TRUE);
     foreach ($zones as $zonedn => $zone) {
       list ($fqdn)  = explode(' ', $zone['sOARecord']);
       $search = dnsManagement::findServerByFQDN($fqdn, $zonedn);
       foreach ($search as $dn => $name) {
         if (!isset($servers[$dn])) {
-          $servers[$dn] = array(
+          $servers[$dn] = [
             'name'  => $name,
             'link'  => objects::link($dn, 'server', 'tab_dnsHost', $name, FALSE),
-            'zones' => array()
-          );
+            'zones' => []
+          ];
         }
-        $servers[$dn]['zones'][] = array(
+        $servers[$dn]['zones'][] = [
           'link' => objects::link($zonedn, 'dnsZone', '', $zone['zoneName'], FALSE)
-        );
+        ];
       }
     }
 

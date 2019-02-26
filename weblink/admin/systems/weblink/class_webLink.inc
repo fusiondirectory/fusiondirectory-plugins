@@ -22,39 +22,39 @@ class webLink extends simplePlugin
 {
   var $displayHeader  = TRUE;
 
-  var $inheritance = array('gosaGroupOfNames' => 'member');
+  var $inheritance = ['gosaGroupOfNames' => 'member'];
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Web link'),
       'plDescription'   => _('Edit web link'),
-      'plObjectClass'   => array('webLink'),
-      'plObjectType'    => array('workstation','server','ipmi','component','printer'),
+      'plObjectClass'   => ['webLink'],
+      'plObjectType'    => ['workstation','server','ipmi','component','printer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'links' => array(
+    return [
+      'links' => [
         'name'  => _('Links'),
-        'attrs' => array(
+        'attrs' => [
           new DisplayAttribute(
             _('Links'), _('Web links to this computer'),
             'fdWebLink', FALSE
           ),
-        )
-      ),
-      'settings' => array(
+        ]
+      ],
+      'settings' => [
         'name'  => _('Settings'),
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Protocol'), _('Protocol to use to access this computer Web page'),
             'fdWebLinkProtocol', TRUE,
-            array('https', 'http')
+            ['https', 'http']
           ),
           new SetAttribute(
             new URLAttribute(
@@ -62,9 +62,9 @@ class webLink extends simplePlugin
               'fdWebLinkURL', FALSE
             )
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -111,7 +111,7 @@ class webLink extends simplePlugin
     $basetab  = $this->parent->getBaseObject();
     $hosts    = $basetab->ipHostNumber;
     if (!is_array($hosts)) {
-      $hosts = array($hosts);
+      $hosts = [$hosts];
     }
     if (isset($this->parent->by_object['dnsHost']) && ($this->parent->by_object['dnsHost']->is_account)) {
       $zones  = $this->parent->by_object['dnsHost']->fdDNSZoneDn;

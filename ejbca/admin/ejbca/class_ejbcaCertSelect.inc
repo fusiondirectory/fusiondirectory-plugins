@@ -21,9 +21,9 @@
 
 class ejbcaCertificateSelectManagement extends simpleSelectManagement
 {
-  protected $objectTypes = array('ejbcaCertificate');
+  protected $objectTypes = ['ejbcaCertificate'];
 
-  protected $autoFilterAttributes = array('dn', 'cn', 'description', 'userCertificate');
+  protected $autoFilterAttributes = ['dn', 'cn', 'description', 'userCertificate'];
 }
 
 class EjbcaCertSelectDialog extends GenericSelectDialog
@@ -35,7 +35,7 @@ class EjbcaUserCertsAttribute extends GenericDialogAttribute
 {
   protected $dialogClass      = 'EjbcaCertSelectDialog';
 
-  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = array(), $acl = '')
+  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = [], $acl = '')
   {
     parent::__construct($label, $description, $ldapName, $required, $defaultValue, 'dn', NULL, $acl);
   }
@@ -92,12 +92,12 @@ class EjbcaUserCertsAttribute extends GenericDialogAttribute
     // Updates and get display values
     $displays = $this->getDisplayValues();
     foreach ($displays as $key => $display_item) {
-      $fields = array(
-        array('string'  => $display_item['cn'][0])
-      );
+      $fields = [
+        ['string'  => $display_item['cn'][0]]
+      ];
       $img = '<input type="image" src="geticon.php?context=actions&icon=download&size=16" name="'.$id.'_get_'.$key.'" class="center"/>';
       $img .= '<input type="image" src="geticon.php?context=actions&icon=edit-delete&size=16" name="'.$id.'_del_'.$key.'" class="center"/>';
-      $fields[] = array('html' => $img, 'attach' => 'style="border-right:0px;width:32px;"');
+      $fields[] = ['html' => $img, 'attach' => 'style="border-right:0px;width:32px;"'];
       $div->addEntry($fields);
     }
     $smarty = get_smarty();
@@ -108,7 +108,7 @@ class EjbcaUserCertsAttribute extends GenericDialogAttribute
   public function htmlIds ()
   {
     $id = $this->getHtmlId();
-    $ids = array('add'.$id.'_dialog');
+    $ids = ['add'.$id.'_dialog'];
     $nb_values = count($this->value);
     for ($i = 0; $i < $nb_values; ++$i) {
       $ids[] = $id.'_del_'.$i;

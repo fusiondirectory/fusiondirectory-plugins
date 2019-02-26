@@ -23,7 +23,7 @@ class AccessRightsAttribute extends CompositeAttribute
 {
   function __construct ($label, $description, $ldapName, $acl = "")
   {
-    $attributes = array(
+    $attributes = [
       'u4' => new BooleanAttribute('', '', 'ur', FALSE, TRUE),
       'u2' => new BooleanAttribute('', '', 'uw', FALSE, TRUE),
       'u1' => new BooleanAttribute('', '', 'ue', FALSE),
@@ -36,7 +36,7 @@ class AccessRightsAttribute extends CompositeAttribute
       'o2' => new BooleanAttribute('', '', 'ow', FALSE),
       'o1' => new BooleanAttribute('', '', 'oe', FALSE),
       's1' => new BooleanAttribute('', '', 'os', FALSE),
-    );
+    ];
     parent::__construct($description, $ldapName, $attributes, FALSE, FALSE, $acl, $label);
     $this->setLinearRendering(TRUE);
   }
@@ -93,8 +93,8 @@ class AccessRightsAttribute extends CompositeAttribute
   function readValues ($value)
   {
     $tmode  = "$value ";
-    $m      = array();
-    foreach (array('s', 'u', 'g', 'o') as $type) {
+    $m      = [];
+    foreach (['s', 'u', 'g', 'o'] as $type) {
       $current  = substr($tmode, 0, 1);
       $tmode    = preg_replace('/^./', '', $tmode);
       $nr       = 1;
@@ -103,7 +103,7 @@ class AccessRightsAttribute extends CompositeAttribute
         $nr += $nr;
       }
     }
-    $values = array();
+    $values = [];
     foreach (array_keys($this->attributes) as $name) {
       $values[] = $m[$name];
     }
@@ -113,7 +113,7 @@ class AccessRightsAttribute extends CompositeAttribute
   function writeValues (array $values)
   {
     $tmode  = '';
-    foreach (array('s', 'u', 'g', 'o') as $type) {
+    foreach (['s', 'u', 'g', 'o'] as $type) {
       $nr   = 1;
       $dest = 0;
       while ($nr < 5) {
@@ -130,14 +130,14 @@ class AccessRightsAttribute extends CompositeAttribute
 
 class faiTemplateEntry extends simplePlugin
 {
-  var $objectclasses  = array('top', 'FAIclass', 'FAItemplateEntry');
+  var $objectclasses  = ['top', 'FAIclass', 'FAItemplateEntry'];
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new PathAttribute(
             _('File path'), _('Complete absolute template file path and name'),
             'cn', TRUE
@@ -149,19 +149,19 @@ class faiTemplateEntry extends simplePlugin
           new HiddenAttribute(
             'FAItemplatePath', TRUE
           ),
-        )
-      ),
-      'template' => array(
+        ]
+      ],
+      'template' => [
         'name'  => _('Template attributes'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new FileTextAreaAttribute(
             _('Template file content'), _('Content of the template file'),
             'FAItemplateFile', TRUE
           ),
           new CompositeAttribute(
             _('Owner and group of the file'), 'FAIowner',
-            array(
+            [
               new StringAttribute(
                 _('Owner'), _('File owner'),
                 'owner', TRUE,
@@ -172,7 +172,7 @@ class faiTemplateEntry extends simplePlugin
                 'group', TRUE,
                 'root'
               ),
-            ),
+            ],
             '/^([^.]+)\.([^.]+)$/',
             '%s.%s'
           ),
@@ -180,9 +180,9 @@ class faiTemplateEntry extends simplePlugin
             _('Access'), _('Access rights'),
             'FAImode'
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function save_object ()

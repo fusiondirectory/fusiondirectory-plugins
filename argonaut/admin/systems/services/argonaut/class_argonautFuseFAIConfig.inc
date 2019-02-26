@@ -25,22 +25,22 @@ class argonautFuseFAIConfig extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Argonaut Fuse FAI module settings'),
       'plDescription'   => _('Argonaut Fuse FAI module settings'),
-      'plCategory'      => array('server'),
-      'plObjectClass'   => array('argonautFuseFAIConfig'),
-      'plObjectType'    => array('fusemodule'),
+      'plCategory'      => ['server'],
+      'plObjectClass'   => ['argonautFuseFAIConfig'],
+      'plObjectType'    => ['fusemodule'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array (
-      'fai' => array (
+    return  [
+      'fai' => [
         'name'  => _('FAI'),
-        'attrs' => array (
+        'attrs' => [
           new IntAttribute(
             _('FAI version'), _('Version of FAI installed on the server'),
             'argonautFuseFaiVersion', TRUE,
@@ -70,9 +70,9 @@ class argonautFuseFAIConfig extends simplePlugin
             _('Multiple distro mode'), _('This enables a mode for multiple distributions usage which adds the release as a suffix to kernel, initrd and nfsroot in the PXE file'),
             'argonautFuseMultipleReleaseMode'
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
@@ -80,16 +80,16 @@ class argonautFuseFAIConfig extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
     $this->attributesAccess['argonautFuseFaiVersion']->setManagedAttributes(
-      array(
-        'disable' => array (
-          4 => array (
+      [
+        'disable' => [
+          4 => [
             'argonautFuseFai5Cmdline'
-          ),
-          5 => array (
+          ],
+          5 => [
             'argonautFuseFai4Cmdline'
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
   }
 }

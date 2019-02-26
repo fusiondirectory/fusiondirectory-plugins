@@ -22,24 +22,24 @@ class servicePuppet extends simpleService
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Puppet server'),
       'plDescription'   => _('This service allows you to use a puppet server'),
       'plIcon'          => 'geticon.php?context=applications&icon=puppet&size=16',
-      'plObjectClass'   => array('puppetServer'),
+      'plObjectClass'   => ['puppetServer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
-    return array(
+    return [
       // Attributes are grouped by section
-      'main' => array(
+      'main' => [
         'name'  => _('Puppet server'),
-        'attrs' => array(
+        'attrs' => [
           new SetAttribute(
             new StringAttribute(
               _('Environments'),
@@ -47,10 +47,10 @@ class servicePuppet extends simpleService
               'puppetAvailableEnvironment',
               TRUE
             ),
-            array('production')
+            ['production']
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

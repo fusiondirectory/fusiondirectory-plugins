@@ -24,20 +24,20 @@ class filterServerService
   static function query ($parent, $base, $scope, $filter, $attributes, $category, $objectStorage = "")
   {
     $plugins  = ServerService::getServiceList();
-    $list     = array();
+    $list     = [];
     foreach ($plugins as $name => $obj) {
       if ($obj->is_account) {
         $data = $plugins[$name]->getListEntry();
-        $data['objectClass']  = array('FAKE_OC_ServerService');
+        $data['objectClass']  = ['FAKE_OC_ServerService'];
         $data['name']         = $name;
-        foreach (array('AllowStatus','AllowStart','AllowStop','AllowRestart','AllowRemove','AllowEdit') as $key) {
+        foreach (['AllowStatus','AllowStart','AllowStop','AllowRestart','AllowRemove','AllowEdit'] as $key) {
           if ($data[$key]) {
             $data['objectClass'][] = $key;
           }
         }
         foreach ($data as $key => $value) {
           if (!is_array($value)) {
-            $value = array($value);
+            $value = [$value];
           }
           $list[$name][]              = $key;
           $list[$name][$key]          = $value;

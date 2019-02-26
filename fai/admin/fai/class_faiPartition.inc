@@ -25,12 +25,12 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
   {
     parent::__construct(
       $description, $ldapName,
-      array(
+      [
         new SelectAttribute(
           '', _('Type of sizing - fixed, dynamic or all remaining space'),
           'FAIpartitionSizeType', TRUE,
-          array('fixed', 'dynamic', 'remaining'), '',
-          array(_('Fixed'), _('Dynamic'), _('Remaining space'))
+          ['fixed', 'dynamic', 'remaining'], '',
+          [_('Fixed'), _('Dynamic'), _('Remaining space')]
         ),
         new IntAttribute(
           '', '',
@@ -40,8 +40,8 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
         new SelectAttribute(
           '', '',
           'FAIpartitionSizeStart_unit', TRUE,
-          array('KB','MB','GB','TB','PB','%'), 'MB',
-          array(_('KB'),_('MB'),_('GB'),_('TB'),_('PB'),'%')
+          ['KB','MB','GB','TB','PB','%'], 'MB',
+          [_('KB'),_('MB'),_('GB'),_('TB'),_('PB'),'%']
         ),
         new IntAttribute(
           '-', '',
@@ -51,10 +51,10 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
         new SelectAttribute(
           '', '',
           'FAIpartitionSizeStop_unit', TRUE,
-          array('KB','MB','GB','TB','PB','%'), 'MB',
-          array(_('KB'),_('MB'),_('GB'),_('TB'),_('PB'),'%')
+          ['KB','MB','GB','TB','PB','%'], 'MB',
+          [_('KB'),_('MB'),_('GB'),_('TB'),_('PB'),'%']
         )
-      ),
+      ],
       '',
       '',
       $acl, $label
@@ -68,25 +68,25 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
   {
     if (preg_match('/^([0-9]{1,})(KB|MB|GB|TB|PB|%)$/', $value, $m)) {
       // Fixed
-      return array(
+      return [
         'fixed',
         $m[1],$m[2],
         0,'',
-      );
+      ];
     } elseif (preg_match('/^([0-9]{1,})(KB|MB|GB|TB|PB|%)-([0-9]{1,})(KB|MB|GB|TB|PB|%)$/', $value)) {
       // Dynamic range
-      return array(
+      return [
         'dynamic',
         $m[1],$m[2],
         $m[3],$m[4],
-      );
+      ];
     } elseif (preg_match('/^0?\-$/', $value)) {
       // Dynamic range
-      return array(
+      return [
         'remaining',
         0,'',
         0,'',
-      );
+      ];
     }
   }
 
@@ -130,14 +130,14 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
     }
     unset($attribute);
     if ($this->attributes[0]->getValue() == 'dynamic') {
-      $mp = array(
+      $mp = [
         '%'  => 1,
         'KB' => 1024 ** 0,
         'MB' => 1024 ** 1,
         'GB' => 1024 ** 2,
         'TB' => 1024 ** 3,
         'PB' => 1024 ** 4
-      );
+      ];
       $res1 = $this->attributes[1]->getValue() * $mp[$this->attributes[2]->getValue()];
       $res2 = $this->attributes[3]->getValue() * $mp[$this->attributes[4]->getValue()];
       if ($res1 > $res2) {
@@ -201,11 +201,11 @@ class FaiRaidDevices extends OrderedArrayAttribute
   protected function getAttributeArrayValue ($key, $value)
   {
     $value = parent::getAttributeArrayValue($key, $value);
-    return array(
+    return [
       $value[0],
       ($value[1] ? 'spare' : ''),
       ($value[2] ? 'missing' : '')
-    );
+    ];
   }
 }
 
@@ -213,28 +213,28 @@ class faiPartition extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Partition entry'),
       'plDescription'   => _('FAI partition entry'),
-      'plCategory'      => array('fai'),
+      'plCategory'      => ['fai'],
       /* No ACL, we use the one for FAIpartitions */
-      'plProvidedAcls'  => array()
-    );
+      'plProvidedAcls'  => []
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Partition'),
-        'attrs' => array(
+        'attrs' => [
           new HiddenAttribute('FAIdiskType'),
           new HiddenAttribute('FAIpartitionNr', FALSE, 'undefined'),
           new SelectAttribute(
             _('Type'), _('Partition type'),
             'FAIpartitionType', TRUE,
-            array('primary', 'logical'), '',
-            array(_('Primary'), _('Logical'))
+            ['primary', 'logical'], '',
+            [_('Primary'), _('Logical')]
           ),
           new StringAttribute(
             _('Name'), _('Partition name'),
@@ -250,17 +250,17 @@ class faiPartition extends simplePlugin
             _('Size'), _('Size of this partition'),
             'FAIpartitionSize', FALSE
           ),
-        )
-      ),
-      'flags' => array(
+        ]
+      ],
+      'flags' => [
         'name'  => _('Flags'),
-        'attrs' => array(
+        'attrs' => [
           new CommaListAttribute(
             'raidDevices',
             new FaiRaidDevices(
               new CompositeAttribute(
                 '', 'raidDevices_composite',
-                array(
+                [
                   new SelectAttribute(
                     '', _('Combined physical partitions in this RAID'),
                     'raidDevices_select', FALSE
@@ -277,14 +277,14 @@ class faiPartition extends simplePlugin
                     FALSE, '',
                     ':missing', ''
                   )
-                ),
+                ],
                 '/^([^:]+)(:spare|)(:missing|)$/',
                 '%s%s%s',
                 '',
                 ''
               ),
               FALSE,
-              array(),
+              [],
               TRUE
             )
           ),
@@ -307,29 +307,29 @@ class faiPartition extends simplePlugin
           new SelectAttribute(
             _('Preserve'), _('Does the partition need to be preserved'),
             'preserve', FALSE,
-            array('','always','reinstall'), '',
-            array(_('Never'),_('Always'),_('Reinstall'))
+            ['','always','reinstall'], '',
+            [_('Never'),_('Always'),_('Reinstall')]
           ),
-        )
-      ),
-      'fs' => array(
+        ]
+      ],
+      'fs' => [
         'name'  => _('Filesystem'),
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Filesystem'), _('The filesystem this partition should be formatted with'),
             'FAIfsType', TRUE,
-            array('swap','vfat','ext2','ext3','ext4','reiserfs','xfs','btrfs','-'), 'ext4',
-            array(_('swap'),_('fat32'),_('ext2'),_('ext3'),_('ext4'),_('reiser fs'),_('xfs'),_('btrfs'),_('LVM/RAID'))
+            ['swap','vfat','ext2','ext3','ext4','reiserfs','xfs','btrfs','-'], 'ext4',
+            [_('swap'),_('fat32'),_('ext2'),_('ext3'),_('ext4'),_('reiser fs'),_('xfs'),_('btrfs'),_('LVM/RAID')]
           ),
           new FaiMountPointAttribute(
             _('Mount point'), _('Mount point for this partition'),
             'FAImountPoint', TRUE
           ),
-        )
-      ),
-      'options' => array(
+        ]
+      ],
+      'options' => [
         'name'  => _('Options'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Mount options'), _('Filesystem mount options'),
             'FAImountOptions', FALSE,
@@ -343,9 +343,9 @@ class faiPartition extends simplePlugin
             _('Tune options'), _('Filesystem tune options'),
             'FAIfsTuneOptions', FALSE
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($object, $parent, $type)
@@ -353,7 +353,7 @@ class faiPartition extends simplePlugin
     parent::__construct(NULL, NULL, $parent);
 
     $this->attributesAccess['FAIfsType']->setManagedAttributes(
-      array('disable' => array ('swap' => array ('FAImountPoint')))
+      ['disable' => ['swap' => ['FAImountPoint']]]
     );
 
     $this->FAIdiskType  = $type;
@@ -362,7 +362,7 @@ class faiPartition extends simplePlugin
       /* Check if we should be able to add primary partitions */
       $disablePrimary = FALSE;
       if (!$object || ($object['FAIpartitionType'] == 'logical')) {
-        $types = array('logical' => array(), 'primary' => array());
+        $types = ['logical' => [], 'primary' => []];
         foreach ($this->parent->partitions as $part) {
           $types[$part['FAIpartitionType']][$part['FAIpartitionNr']] = 1;
         }
@@ -373,28 +373,28 @@ class faiPartition extends simplePlugin
         }
       }
       if ($disablePrimary) {
-        $types = array('logical' => _('Logical'));
+        $types = ['logical' => _('Logical')];
       } else {
-        $types  = array(
+        $types  = [
           'primary' => _('Primary'),
           'logical' => _('Logical')
-        );
+        ];
       }
     } elseif ($this->FAIdiskType == 'raid') {
-      $types  = array(
+      $types  = [
         'raid0' => _('RAID 0'),
         'raid1' => _('RAID 1'),
         'raid5' => _('RAID 5'),
         'raid6' => _('RAID 6')
-      );
+      ];
     } elseif ($this->FAIdiskType == 'cryptsetup') {
-      $types  = array(
+      $types  = [
         'luks'  => _('LUKS'),
         'swap'  => _('Swap'),
         'tmp'   => _('tmp'),
-      );
+      ];
     } else {
-      $types = array();
+      $types = [];
     }
     $this->attributesAccess['FAIpartitionType']->setChoices(array_keys($types), array_values($types));
     if (empty($types)) {
@@ -515,7 +515,7 @@ class faiPartition extends simplePlugin
 
   function save (): array
   {
-    $ret = array();
+    $ret = [];
     foreach ($this->attributes as $attr) {
       $ret[$attr] = $this->$attr;
     }
@@ -540,7 +540,7 @@ class faiPartition extends simplePlugin
    */
   function getPartitionList ()
   {
-    $may = $used = array();
+    $may = $used = [];
     foreach ($this->parent->parent->disks as $disk) {
       // Skip ourselves
       if ($disk['cn'] == $this->parent->cn) {
@@ -568,7 +568,7 @@ class faiPartition extends simplePlugin
     }
 
     // Check which of the available disks are unused.
-    $ret = array();
+    $ret = [];
     foreach ($may as $val) {
       if (!in_array($val, $used)) {
         $ret[$val] = $val;

@@ -23,29 +23,29 @@ class serviceShare extends simpleService
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Share service'),
       'plDescription' => _('Share service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=places&icon=folder-network&size=16',
-      'plObjectClass' => array('goShareServer'),
+      'plObjectClass' => ['goShareServer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'template'  => get_template_path('service_share.tpl', TRUE, dirname(__FILE__)),
         'name'      => _('Shares'),
-        'class'     => array('fullwidth'),
-        'attrs'     => array(
+        'class'     => ['fullwidth'],
+        'attrs'     => [
           new OrderedArrayAttribute(
             new PipeSeparatedCompositeAttribute(
               _('Shares this server hosts'),
               'goExportEntry',
-              array(
+              [
                 new StringAttribute(
                   _('Name'), _('Name of this share'),
                   'shareName', TRUE
@@ -57,11 +57,11 @@ class serviceShare extends simpleService
                 new SelectAttribute(
                   _('Type'), _('Type of share'),
                   'shareType', TRUE,
-                  array('CIFS','NBD','NCP','NFS','netatalk','samba','local')
+                  ['CIFS','NBD','NCP','NFS','netatalk','samba','local']
                 ),
                 new SelectAttribute(
                   _('Codepage'), _('Codepage for this share'),
-                  'shareCodepage', TRUE, array()
+                  'shareCodepage', TRUE, []
                 ),
                 new StringAttribute(
                   _('Path / Volume'), _('Path or volume concerned by this share'),
@@ -70,17 +70,17 @@ class serviceShare extends simpleService
                 new StringAttribute(
                   _('Option'), _('Special option(s) for this share'), 'shareOption'
                 ),
-              )
+              ]
             ),
             // no order
             FALSE,
-            array(),
+            [],
             // edit button
             TRUE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $parent = NULL)
@@ -97,7 +97,7 @@ class serviceShare extends simpleService
   function getCharsets ()
   {
     global $config;
-    $charsets = array();
+    $charsets = [];
 
     $configEncodings = $config->get_cfg_value('encodings', NULL);
     if ($configEncodings === NULL) {

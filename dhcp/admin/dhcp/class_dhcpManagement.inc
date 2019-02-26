@@ -23,14 +23,14 @@ class dhcpManagement extends management
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('DHCP'),
       'plTitle'       => _('DHCP Management'),
       'plDescription' => _('Manage DHCP configurations'),
       'plIcon'        => 'geticon.php?context=applications&icon=dhcp&size=48',
-      'plSection'     => array('systems' => array('name' => _('Systems'), 'priority' => 10)),
+      'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 10]],
       'plPriority'    => 2,
-      'plManages'     => array('dhcpConfiguration'),
-    );
+      'plManages'     => ['dhcpConfiguration'],
+    ];
   }
 }

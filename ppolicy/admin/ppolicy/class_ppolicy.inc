@@ -23,29 +23,29 @@ class ppolicy extends simplePlugin
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Password policy'),
       'plDescription' => _('Password policy for ppolicy overlay'),
-      'plObjectClass' => array('device', 'pwdPolicy', 'pwdPolicyChecker'),
-      'plObjectType'  => array('ppolicy' => array(
+      'plObjectClass' => ['device', 'pwdPolicy', 'pwdPolicyChecker'],
+      'plObjectType'  => ['ppolicy' => [
         'name'        => _('Password policy'),
         'filter'      => 'objectClass=pwdPolicy',
         'ou'          => get_ou('ppolicyRDN'),
         'icon'        => 'geticon.php?context=applications&icon=ppolicy&size=16'
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
-    return array(
+    return [
       // Attributes are grouped by section
-      'main' => array(
+      'main' => [
         'name'  => _('Policy'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('ppolicyRDN')),
           new HiddenAttribute('pwdAttribute', TRUE, 'userPassword'),
           new HostNameAttribute(
@@ -99,19 +99,19 @@ class ppolicy extends simplePlugin
           new SelectAttribute(
             _('Check quality'), _('Decides what to do if the function in "Check module" is not available'),
             'pwdCheckQuality', TRUE,
-            array(0, 1, 2), 0,
-            array(_('Disabled'), _('Ignore errors'), _('Reject on errors'))
+            [0, 1, 2], 0,
+            [_('Disabled'), _('Ignore errors'), _('Reject on errors')]
           ),
           new StringAttribute(
             _('Check module'), _('Name of a user supplied password quality check module that will be called to perform password quality checks and is only relevant if pwdCheckQuality is either 1 or 2'),
             'pwdCheckModule', FALSE
           ),
-        )
-      ),
-      'lockout' => array(
+        ]
+      ],
+      'lockout' => [
         'name'  => _('Lock out'),
         'attrs' =>
-        array(
+        [
           new BooleanAttribute(
             _('Activate lock out'), _('Whether to lock an account that had more consecutive failed bind attempts with invalid passwords than is defined by "Maximum failures"'),
             'pwdLockout', FALSE,
@@ -137,9 +137,9 @@ class ppolicy extends simplePlugin
             'pwdMustChange', FALSE,
             FALSE // default
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -148,41 +148,41 @@ class ppolicy extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['pwdMaxAge']->attributes[0]->setManagedAttributes(
-      array (
-        'disable' => array (
-          0 => array (
+      [
+        'disable' => [
+          0 => [
             'pwdExpireWarning', 'pwdGraceAuthNLimit'
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
     $this->attributesAccess['pwdLockout']->setManagedAttributes(
-      array (
-        'disable' => array (
-          FALSE => array (
+      [
+        'disable' => [
+          FALSE => [
             'pwdLockoutDuration',       'pwdMaxFailure',
             'pwdFailureCountInterval',  'pwdMustChange'
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
     $this->attributesAccess['pwdAllowUserChange']->setManagedAttributes(
-      array (
-        'disable' => array (
-          FALSE => array (
+      [
+        'disable' => [
+          FALSE => [
             'pwdSafeModify',
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
     $this->attributesAccess['pwdCheckQuality']->setManagedAttributes(
-      array (
-        'disable' => array (
-          0 => array (
+      [
+        'disable' => [
+          0 => [
             'pwdCheckModule'
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
 
     if (objects::count('ppolicy') == 0) {

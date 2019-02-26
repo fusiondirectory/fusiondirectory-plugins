@@ -24,44 +24,44 @@ class argonautMirrorConfig extends simpleService
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Argonaut Mirror settings'),
       'plDescription'   => _('Argonaut Mirror settings'),
       'plIcon'          => 'geticon.php?context=applications&icon=argonaut-mirror&size=16',
-      'plObjectClass'   => array('argonautMirrorConfig'),
+      'plObjectClass'   => ['argonautMirrorConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array (
-    'section1' => array (
+    return  [
+    'section1' => [
         'name'  => _('Argonaut mirror settings'),
-        'attrs' => array (
+        'attrs' => [
           new StringAttribute(
             _('Local Debian mirror directory'),
             '',
             'argonautMirrorDir', FALSE,
             '/srv/www/debian'
           )
-        )
-      ),
-      'section2' => array (
+        ]
+      ],
+      'section2' => [
         'name' => _('Argonaut Debconf Crawler configuration'),
-        'attrs' => array (
+        'attrs' => [
           new StringAttribute(
             _('Local packages folder'),
             _('Folder in which the crawler will store packages during analysis'),
             'argonautCrawlerPackagesFolder', FALSE,
             '/var/cache/argonaut/packages'
           )
-        )
-      ),
-      'section3' => array (
+        ]
+      ],
+      'section3' => [
         'name' => _('Argonaut Repository configuration'),
-        'attrs' => array (
+        'attrs' => [
           new StringAttribute(
             _('Proxy'),
             _('Specifies the http proxy (like Squid) to use for http and hftp method'),
@@ -99,8 +99,8 @@ class argonautMirrorConfig extends simpleService
             'argonautLdap2repVerbose', FALSE,
             FALSE
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }

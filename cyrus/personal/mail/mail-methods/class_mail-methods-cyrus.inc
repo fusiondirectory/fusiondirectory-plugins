@@ -21,7 +21,7 @@
 
 class mailMethodCyrus extends mailMethod
 {
-  protected $ServerList   = array();
+  protected $ServerList   = [];
   protected $imap_handle  = NULL;
   protected $quota_loaded = FALSE;
 
@@ -102,7 +102,7 @@ class mailMethodCyrus extends mailMethod
   {
     if (!$this->is_connected() || !$this->imap_handle) {
       trigger_error("Method not connected, catch error.");
-      return array();
+      return [];
     }
 
     /* Get server config */
@@ -144,7 +144,7 @@ class mailMethodCyrus extends mailMethod
     $this->reset_error();
 
     /* Load quota settings */
-    $result = array("quotaUsage" => "","gosaMailQuota" => "");
+    $result = ["quotaUsage" => "","gosaMailQuota" => ""];
     $quota_value = @imap_get_quota($this->imap_handle, $this->account_id);
 
     /* Reset error queue, imap_qet_quota() will fail if the quota wasn't set yet.
@@ -323,10 +323,10 @@ class mailMethodCyrus extends mailMethod
   {
     if (!$this->is_connected() || !$this->imap_handle) {
       trigger_error("Method not connected, catch error.");
-      return array();
+      return [];
     }
 
-    $result = array();
+    $result = [];
 
     /* Get server config */
     $cfg = $this->ServerList[$this->parent->gosaMailServer];
@@ -382,7 +382,7 @@ class mailMethodCyrus extends mailMethod
       @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, imap_last_error(),
           "<b>IMAP: Cannot receive mailbox folders.</b>");
       $this->error = imap_last_error();
-      return array();
+      return [];
     }
 
     /* Append "INBOX" to the folder array if result is empty and request comes from user dialog */
@@ -593,12 +593,12 @@ class mailMethodCyrus extends mailMethod
   static public function get_server_list ()
   {
     global $config;
-    $serverList = array();
+    $serverList = [];
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search('(objectClass=fdCyrusServer)',
-                  array('cn', 'fdCyrusConnect', 'fdCyrusAdmin', 'fdCyrusPassword', 'fdCyrusSieveServer'));
+                  ['cn', 'fdCyrusConnect', 'fdCyrusAdmin', 'fdCyrusPassword', 'fdCyrusSieveServer']);
     while ($attrs = $ldap->fetch()) {
 
       /* Check if the given fdCyrusSieveServer is in the new style "{cn:port/option}"
@@ -612,7 +612,7 @@ class mailMethodCyrus extends mailMethod
         $sieve_port   = "";
       }
 
-      $serverList[$attrs['cn'][0]] = array(
+      $serverList[$attrs['cn'][0]] = [
         "server_dn"     => $attrs['dn'],
         "connect"       => $attrs['fdCyrusConnect'][0],
         "admin"         => $attrs['fdCyrusAdmin'][0],
@@ -620,7 +620,7 @@ class mailMethodCyrus extends mailMethod
         "sieve_server"  => $sieve_server,
         "sieve_option"  => $sieve_option,
         "sieve_port"    => $sieve_port
-      );
+      ];
     }
 
     return $serverList;

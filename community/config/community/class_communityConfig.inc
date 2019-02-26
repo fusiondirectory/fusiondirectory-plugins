@@ -22,32 +22,32 @@ class communityConfig extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Community configuration'),
       'plDescription'   => _('FusionDirectory community plugin configuration'),
-      'plObjectClass'   => array('fdCommunityPluginConf'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectClass'   => ['fdCommunityPluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Community'),
-        'attrs' => array(
+        'attrs' => [
           new SetAttribute(
             new StringAttribute(
               _('Membership type choices'), _('Community membership types available in the user community tab'),
               'fdCommunityMembershipTypeChoices', FALSE
             ),
-            array()
+            []
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

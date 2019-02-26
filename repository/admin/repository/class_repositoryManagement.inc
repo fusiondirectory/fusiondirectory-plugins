@@ -23,18 +23,18 @@ class repositoryManagement extends management
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Repositories'),
       'plTitle'       => _('Repositories management'),
       'plDescription' => _('Manage repositories'),
       'plIcon'        => 'geticon.php?context=applications&icon=repository&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 22,
-      'plCategory'    => array('repository' => array(
+      'plCategory'    => ['repository' => [
         'description'  => _('Repository'),
-        'objectClass'  => array('fdBuildRepository', 'fdBuildRepositoryDistribution', 'fdBuildRepositorySection')
-      )),
-      'plManages'     => array('buildRepository', 'repoDistribution', 'repoSection'),
-    );
+        'objectClass'  => ['fdBuildRepository', 'fdBuildRepositoryDistribution', 'fdBuildRepositorySection']
+      ]],
+      'plManages'     => ['buildRepository', 'repoDistribution', 'repoSection'],
+    ];
   }
 }

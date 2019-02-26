@@ -22,26 +22,26 @@ class webApplication extends simplePlugin
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Web application'),
       'plDescription' => _('Web applicationts names, icons and links'),
-      'plObjectClass' => array('fdWebApplication'),
-      'plObjectType'  => array('webApplication' => array(
+      'plObjectClass' => ['fdWebApplication'],
+      'plObjectType'  => ['webApplication' => [
         'name'        => _('Web application'),
         'ou'          => get_ou('webappsRDN'),
         'icon'        => 'geticon.php?context=categories&icon=applications-internet&size=16'
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Application'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('webappsRDN')),
           new HostNameAttribute(
             _('Name'), _('Name or id for application'),
@@ -59,11 +59,11 @@ class webApplication extends simplePlugin
             _('Display Name'), _('Displayed name for links to this application'),
             'fdApplicationTitle', TRUE
           ),
-        )
-      ),
-      'icon' => array(
+        ]
+      ],
+      'icon' => [
         'name'  => _('Icon'),
-        'attrs' => array(
+        'attrs' => [
           new ImageAttribute(
             '', _('The icon for this application'),
             'fdApplicationImage', FALSE,
@@ -73,8 +73,8 @@ class webApplication extends simplePlugin
             _('Icon location'), _('Usual path to this application icon'),
             'fdApplicationImageLocation', FALSE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

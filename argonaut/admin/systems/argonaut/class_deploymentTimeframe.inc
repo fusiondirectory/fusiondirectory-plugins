@@ -22,32 +22,32 @@ class deploymentTimeframe extends simplePlugin
 {
   var $displayHeader  = TRUE;
 
-  var $inheritance = array('gosaGroupOfNames' => 'member');
+  var $inheritance = ['gosaGroupOfNames' => 'member'];
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Deployment time frame'),
       'plDescription'   => _('Edit deployment time frame'),
-      'plObjectClass'   => array('argonautDeploymentOptions'),
-      'plObjectType'    => array('workstation','server','terminal','ogroup-dynamic'),
+      'plObjectClass'   => ['argonautDeploymentOptions'],
+      'plObjectType'    => ['workstation','server','terminal','ogroup-dynamic'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Time frames'),
-        'attrs' => array(
+        'attrs' => [
           new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
               _('Time frames in which deployment is authorized'),
               'argonautDeploymentTimeframe',
-              array(
+              [
                 new TimeHiAttribute(
                   '', _('Opening time for this frame as HH:MM'),
                   'begin', TRUE
@@ -56,15 +56,15 @@ class deploymentTimeframe extends simplePlugin
                   _('->'), _('Closing time for this frame as HH:MM'),
                   'end', TRUE
                 )
-              ),
+              ],
               '-',
               '',
               _('Time frames')
             ),
-            FALSE, array(), TRUE
+            FALSE, [], TRUE
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

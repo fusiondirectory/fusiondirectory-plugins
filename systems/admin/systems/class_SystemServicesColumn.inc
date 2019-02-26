@@ -32,16 +32,16 @@ class SystemServicesColumn extends Column
 
     parent::__construct($parent, NULL, $label);
 
-    $this->services = array();
+    $this->services = [];
 
     foreach ($config->data['TABS']['SERVERSERVICE'] as $plug) {
       if (class_available($plug['CLASS'])) {
         $pInfos = pluglist::pluginInfos($plug['CLASS']);
         if (isset($pInfos['plIcon'])) {
-          $this->services[$plug['CLASS']] = array(
+          $this->services[$plug['CLASS']] = [
             'icon'  => $pInfos['plIcon'],
             'title' => $pInfos['plShortName'],
-          );
+          ];
         } else {
           @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $pInfos['plShortName'].' ('.$plug['CLASS'].')', 'No icon for');
         }
@@ -103,13 +103,13 @@ class SystemServicesColumn extends Column
   protected function computeIcons (ListingEntry $entry): array
   {
     if (strtoupper($entry->getTemplatedType()) != 'SERVER') {
-      return array();
+      return [];
     }
     if (isset($entry->cache[__CLASS__]['icons'])) {
       return $entry->cache[__CLASS__]['icons'];
     }
 
-    $icons = array();
+    $icons = [];
 
     if (!empty($entry)) {
       if ($entry->isTemplate()) {
@@ -120,15 +120,15 @@ class SystemServicesColumn extends Column
       foreach ($this->services as $class => $infos) {
         $status = $class::isAccount($attrs);
         if ($status !== FALSE) {
-          $icons[] = array(
+          $icons[] = [
             'icon'  => $infos['icon'],
             'title' => $infos['title'],
             'class' => $class,
-          );
+          ];
         } else {
-          $icons[] = array(
+          $icons[] = [
             'class' => $class,
-          );
+          ];
         }
       }
     }

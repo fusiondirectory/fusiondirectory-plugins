@@ -22,29 +22,29 @@ class dashboardOpsi extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('OPSI'),
       'plDescription' => _('Statistics and information about OPSI'),
-      'plObjectType'  => array('dashboard'),
+      'plObjectType'  => ['dashboard'],
 
-      'plProvidedAcls'  => array()
-    );
+      'plProvidedAcls'  => []
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'stats' => array(
+    return [
+      'stats' => [
         'name'  => _('Statistics'),
-        'attrs' => array(new FakeAttribute('stats')),
+        'attrs' => [new FakeAttribute('stats')],
         'template' => get_template_path('opsi_stats.tpl', TRUE, dirname(__FILE__)),
-      ),
-      'profiles' => array(
+      ],
+      'profiles' => [
         'name'  => _('Profiles'),
-        'attrs' => array(new FakeAttribute('profiles')),
+        'attrs' => [new FakeAttribute('profiles')],
         'template' => get_template_path('opsi_profiles.tpl', TRUE, dirname(__FILE__)),
-      ),
-    );
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -61,26 +61,26 @@ class dashboardOpsi extends simplePlugin
     $ldap = $config->get_ldap_link();
 
     /* Statistics */
-    $stats = array(
-      array(
+    $stats = [
+      [
         'name'    => _('OPSI servers'),
         'type'    => 'server',
         'filter'  => '(objectClass=opsiServer)',
         'img'   => 'geticon.php?context=devices&icon=server&size=16'
-      ),
-      array(
+      ],
+      [
         'name'  => _('OPSI clients'),
         'type'    => 'workstation',
         'filter'  => '(objectClass=opsiClient)',
         'img'     => 'geticon.php?context=devices&icon=computer&size=16'
-      ),
-      array(
+      ],
+      [
         'name'  => _('OPSI groups'),
         'type'    => 'ogroup',
         'filter'  => '(objectClass=opsiClient)',
         'img'     => 'geticon.php?context=types&icon=resource-group&size=16'
-      ),
-    );
+      ],
+    ];
 
     foreach ($stats as &$stat) {
       try {
@@ -101,19 +101,19 @@ class dashboardOpsi extends simplePlugin
 
   function profile_stats ()
   {
-    $profiles = objects::ls('opsiProfile', array('cn' => 1, 'fdOpsiServerDn' => 1, 'fdOpsiNetbootProduct' => 1, 'fdOpsiSoftwareList' => '*'), NULL, '', TRUE, 'subtree');
+    $profiles = objects::ls('opsiProfile', ['cn' => 1, 'fdOpsiServerDn' => 1, 'fdOpsiNetbootProduct' => 1, 'fdOpsiSoftwareList' => '*'], NULL, '', TRUE, 'subtree');
 
     $id   = 'profileStats';
     $div  = new divSelectBox('rows'.$id);
     $smarty = get_smarty();
     $div->setHeight(90);
-    $div->setHeaders(array(_('Profile'), _('Systems'), _('Groups')));
+    $div->setHeaders([_('Profile'), _('Systems'), _('Groups')]);
     foreach ($profiles as $dn => $profile) {
-      $fields = array(
-        array('string' => $profile['cn']),
-        array('string' => objects::count('workstation', NULL, '(&(objectClass=opsiClient)(fdOpsiProfileDn='.$dn.'))', FALSE)),
-        array('string' => objects::count('ogroup', NULL, '(&(objectClass=opsiClient)(fdOpsiProfileDn='.$dn.'))', FALSE)),
-      );
+      $fields = [
+        ['string' => $profile['cn']],
+        ['string' => objects::count('workstation', NULL, '(&(objectClass=opsiClient)(fdOpsiProfileDn='.$dn.'))', FALSE)],
+        ['string' => objects::count('ogroup', NULL, '(&(objectClass=opsiClient)(fdOpsiProfileDn='.$dn.'))', FALSE)],
+      ];
       $div->addEntry($fields);
     }
     return $div->drawList();

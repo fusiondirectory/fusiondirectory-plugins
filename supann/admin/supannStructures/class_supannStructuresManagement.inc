@@ -23,27 +23,27 @@ class supannStructuresManagement extends management
 {
   public static $skipTemplates = FALSE;
 
-  public static $columns = array(
-    array('ObjectTypeColumn', array()),
-    array('LinkColumn',       array('attributes' => 'nameAttr',               'label' => 'Name')),
-    array('LinkColumn',       array('attributes' => 'supannCodeEntite',       'label' => 'supannCodeEntite')),
-    array('LinkColumn',       array('attributes' => 'supannCodeEntiteParent', 'label' => 'Parent')),
-    array('LinkColumn',       array('attributes' => 'description',            'label' => 'Description')),
-    array('ActionsColumn',    array('label' => 'Actions')),
-  );
+  public static $columns = [
+    ['ObjectTypeColumn', []],
+    ['LinkColumn',       ['attributes' => 'nameAttr',               'label' => 'Name']],
+    ['LinkColumn',       ['attributes' => 'supannCodeEntite',       'label' => 'supannCodeEntite']],
+    ['LinkColumn',       ['attributes' => 'supannCodeEntiteParent', 'label' => 'Parent']],
+    ['LinkColumn',       ['attributes' => 'description',            'label' => 'Description']],
+    ['ActionsColumn',    ['label' => 'Actions']],
+  ];
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('SupAnn structures'),
       'plDescription' => _('SupAnn structures management'),
       'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 40,
-      'plManages'     => array('etablissement', 'entite'),
+      'plManages'     => ['etablissement', 'entite'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 
   protected function setUpListing ()

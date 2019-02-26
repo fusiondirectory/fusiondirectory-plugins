@@ -23,24 +23,24 @@ class workstationGeneric extends ipHostPlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Workstation'),
       'plDescription' => _('Workstation information'),
-      'plObjectClass' => array('fdWorkstation', 'ieee802Device'),
+      'plObjectClass' => ['fdWorkstation', 'ieee802Device'],
       'plFilter'      => '(objectClass=fdWorkstation)',
-      'plObjectType'  => array('workstation' =>
-        array(
+      'plObjectType'  => ['workstation' =>
+        [
           'name'        => _('Workstation'),
           'description' => _('Workstation'),
           'ou'          => get_ou('workstationRDN'),
           'icon'        => 'geticon.php?context=devices&icon=computer&size=16',
           'mainAttr'    => 'cn',
-        )
-      ),
-      'plSearchAttrs' => array('description', 'ipHostNumber', 'macAddress'),
+        ]
+      ],
+      'plSearchAttrs' => ['description', 'ipHostNumber', 'macAddress'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ($word = NULL, $rdn = NULL): array
@@ -51,10 +51,10 @@ class workstationGeneric extends ipHostPlugin
     if ($rdn === NULL) {
       $rdn = get_ou('workstationRDN');
     }
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute($rdn),
           new HostNameAttribute(
             _('Name'),
@@ -81,12 +81,12 @@ class workstationGeneric extends ipHostPlugin
             'locked',
             'unlocked'
           ),
-        )
-      ),
-      'network' => array(
+        ]
+      ],
+      'network' => [
         'name'      => _('Network settings'),
         'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
-        'attrs'     => array(
+        'attrs'     => [
           new SetAttribute(
             new IPAttribute(
               _('IP address'), _('IP addresses this system uses (v4 or v6)'),
@@ -99,9 +99,9 @@ class workstationGeneric extends ipHostPlugin
               'macAddress', FALSE
             )
           ),
-        ),
-      ),
-    );
+        ],
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)

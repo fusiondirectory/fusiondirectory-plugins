@@ -75,11 +75,11 @@ class LocRecordLatLongAttribute extends CompositeAttribute
 
 class DnsRecordAttribute extends CompositeAttribute
 {
-  protected $parentIPs4 = array('');
-  protected $parentIPs6 = array('');
+  protected $parentIPs4 = [''];
+  protected $parentIPs6 = [''];
   protected $parentFQDN = '';
 
-  public static $types = array(
+  public static $types = [
     'aRecord'     => 'A',
     //~ 'a6Record'    => 'A6',
     'aAAARecord'  => 'AAAA',
@@ -104,23 +104,23 @@ class DnsRecordAttribute extends CompositeAttribute
     'sRVRecord'   => 'SRV',
     'sSHFPRecord' => 'SSHFP',
     'tXTRecord'   => 'TXT',
-  );
+  ];
 
   /* Types which might match reverse zone records */
-  public static $reverseTypes = array(
+  public static $reverseTypes = [
     'aRecord', 'aAAARecord'
-  );
+  ];
 
   function __construct ($label, $description, $ldapName, $required)
   {
-    $attributes = array(
+    $attributes = [
       new SelectAttribute(_('Type'), '', $ldapName.'_type', $required, array_keys(static::$types), '', array_values(static::$types)),
       new HiddenAttribute($ldapName.'_nofield'),
       new SelectAttribute(
         _('Reverse zone'), _('Reverse zone this record should be in, if any'),
         'reverse', FALSE
       ),
-    );
+    ];
     parent::__construct($description, $ldapName, $attributes, FALSE, FALSE, '', $label);
     $this->setLinearRendering(TRUE);
     $this->attributes[0]->setSubmitForm(TRUE);
@@ -152,11 +152,11 @@ class DnsRecordAttribute extends CompositeAttribute
     $this->attributes[1] = new LocRecordAttribute(
       _('LOC Record'),
       $ldapName,
-      array(
+      [
         'lat' => new LocRecordLatLongAttribute(
           _('Latitude'), _('Latitude'),
           $ldapName.'_latitude',
-          array(
+          [
             'degrees' => new IntAttribute(
               '', _('Degrees'),
               $ldapName.'_lat_degrees', TRUE,
@@ -175,15 +175,15 @@ class DnsRecordAttribute extends CompositeAttribute
             'dir' => new SelectAttribute(
               '', _('North/South'),
               $ldapName.'_lat_direction', TRUE,
-              array('N', 'S'), '',
-              array(_('North'), _('South'))
+              ['N', 'S'], '',
+              [_('North'), _('South')]
             ),
-          )
+          ]
         ),
         'long' => new LocRecordLatLongAttribute(
           _('Longitude'), _('Longitude'),
           $ldapName.'_longitude',
-          array(
+          [
             'degrees' => new IntAttribute(
               '', _('Degrees'),
               $ldapName.'_long_degrees', TRUE,
@@ -202,10 +202,10 @@ class DnsRecordAttribute extends CompositeAttribute
             'dir' => new SelectAttribute(
               '', _('East/West'),
               $ldapName.'_long_direction', TRUE,
-              array('E', 'W'), '',
-              array(_('East'), _('West'))
+              ['E', 'W'], '',
+              [_('East'), _('West')]
             ),
-          )
+          ]
         ),
         'alt' => new FloatAttribute(
           _('Altitude (meters)'), '',
@@ -227,7 +227,7 @@ class DnsRecordAttribute extends CompositeAttribute
           $ldapName.'_vp', FALSE,
           0, 90000000, ''
         ),
-      )
+      ]
     );
   }
 
@@ -236,7 +236,7 @@ class DnsRecordAttribute extends CompositeAttribute
     $this->attributes[1] = new CharSeparatedCompositeAttribute(
       _('NAPTR Record'),
       $ldapName,
-      array(
+      [
         new IntAttribute(
           _('Order'), _('Integer specifying the order in which the NAPTR records MUST be processed to ensure the correct ordering of rules.  Low numbers are processed before high numbers.'),
           $ldapName.'_order', TRUE,
@@ -263,7 +263,7 @@ class DnsRecordAttribute extends CompositeAttribute
           _('Replacement'), _('The next NAME to query for NAPTR, SRV, or address records depending on the value of the flags field.'),
           $ldapName.'_replace', TRUE
         ),
-      ),
+      ],
       ' '
     );
   }
@@ -273,7 +273,7 @@ class DnsRecordAttribute extends CompositeAttribute
     $this->attributes[1] = new CharSeparatedCompositeAttribute(
       _('SRV Record'),
       $ldapName,
-      array(
+      [
         new IntAttribute(
           _('Priority'), _('Priority of the target host, lower value means more preferred'),
           $ldapName.'_priority', TRUE,
@@ -293,7 +293,7 @@ class DnsRecordAttribute extends CompositeAttribute
           _('Target'), _('Canonical hostname of the machine providing the service, ending in a dot'),
           $ldapName.'_target', TRUE
         ),
-      ),
+      ],
       ' '
     );
   }
@@ -325,7 +325,7 @@ class DnsRecordAttribute extends CompositeAttribute
           $this->attributes[1] = new CharSeparatedCompositeAttribute(
             _('MX Record'),
             $ldapName,
-            array(
+            [
               new IntAttribute(
                 _('Priority'), _('Preference given to this RR among others at the same owner, lower values are preferred'),
                 $ldapName.'_priority', TRUE,
@@ -335,7 +335,7 @@ class DnsRecordAttribute extends CompositeAttribute
                 _('Target'), _('Domain name which specifies a host willing to act as a mail exchange for the owner name'),
                 $ldapName.'_target', TRUE
               ),
-            ),
+            ],
             ' '
           );
           break;
@@ -433,7 +433,7 @@ class DnsRecordAttribute extends CompositeAttribute
       $reversedIp = implode('.', array_reverse(explode('.', $ip)));
     }
 
-    return array($mask, $reversedIp);
+    return [$mask, $reversedIp];
   }
 
   static function matchReverseZone ($type, $ip, $reverse)

@@ -20,7 +20,7 @@
 
 class debconfProfileManagement extends simpleManagement
 {
-  protected $objectTypes  = array('debconfProfile');
+  protected $objectTypes  = ['debconfProfile'];
 
   protected $departmentBrowser      = FALSE;
   protected $departmentRootVisible  = FALSE;
@@ -28,16 +28,16 @@ class debconfProfileManagement extends simpleManagement
 
   static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Debconf'),
       'plDescription' => _('Debconf profile management'),
       'plIcon'        => 'geticon.php?context=applications&icon=debconf&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 21,
-      'plManages'     => array('debconfProfile'),
+      'plManages'     => ['debconfProfile'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 
   function __construct ()

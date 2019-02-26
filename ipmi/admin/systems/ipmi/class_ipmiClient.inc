@@ -24,22 +24,22 @@ class ipmiClient extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('IPMI client'),
       'plDescription'   => _('Edit IPMI client settings'),
-      'plObjectClass'   => array('ipmiClient'),
-      'plObjectType'    => array('workstation','server'),
+      'plObjectClass'   => ['ipmiClient'],
+      'plObjectType'    => ['workstation','server'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('IPMI client settings'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('IP'), _('IP of the IPMI interface'),
             'fdIpmiIP', TRUE
@@ -53,8 +53,8 @@ class ipmiClient extends simplePlugin
             _('User password'), _('IPMI user password'),
             'fdIpmiPassword', TRUE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

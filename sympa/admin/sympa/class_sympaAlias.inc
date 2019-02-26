@@ -22,29 +22,29 @@ class sympaAlias extends simplePlugin
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Sympa list alias'),
       'plDescription' => _('Sympa list alias'),
-      'plObjectClass' => array('sympaAlias'),
-      'plObjectType'  => array('sympaAlias' => array(
+      'plObjectClass' => ['sympaAlias'],
+      'plObjectType'  => ['sympaAlias' => [
         'name'        => _('Sympa list alias'),
         'icon'        => 'geticon.php?context=applications&icon=sympa&size=16',
         'ou'          => get_ou('sympaRDN'),
-      )),
-      'plSearchAttrs' => array('description'),
+      ]],
+      'plSearchAttrs' => ['description'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
-    return array(
+    return [
       // Attributes are grouped by section
-      'main' => array(
+      'main' => [
         'name'  => _('Sympa list alias'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('sympaRDN')),
           new StringAttribute(_('Name'), _('Name to identify this alias'), 'cn', TRUE),
           new TextAreaAttribute(
@@ -60,11 +60,11 @@ class sympaAlias extends simplePlugin
           new SelectAttribute(
             _('Sympa server'), _('Sympa server for this alias'),
             'sympaServerURL', TRUE,
-            array()
+            []
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -74,8 +74,8 @@ class sympaAlias extends simplePlugin
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=sympaServer)', array('sympaServerURL'));
-    $server = array();
+    $ldap->search('(objectClass=sympaServer)', ['sympaServerURL']);
+    $server = [];
     while ($attrs = $ldap->fetch()) {
       $server[] = $attrs['sympaServerURL'][0];
     }

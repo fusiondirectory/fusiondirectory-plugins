@@ -31,7 +31,7 @@ class GroupMailsAttribute extends MailsAttribute
 
   function getFilterBlackList ()
   {
-    return array('mail' => $this->getForbiddenValues());
+    return ['mail' => $this->getForbiddenValues()];
   }
 }
 
@@ -41,25 +41,25 @@ class mailGroup extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Mail'),
       'plDescription'   => _('Group mail options'),
       'plFilter'        => '(objectClass=fdGroupMail)',
       'plIcon'          => 'geticon.php?context=applications&icon=internet-mail&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=internet-mail&size=16',
       'plPriority'      => 10,
-      'plObjectClass'   => array('fdGroupMail'),
-      'plObjectType'    => array('group', 'ogroup-user'),
+      'plObjectClass'   => ['fdGroupMail'],
+      'plObjectType'    => ['group', 'ogroup-user'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Information'),
-        'attrs' => array(
+        'attrs' => [
           new MailAttribute(
             _('Primary address'), _('The primary mail address'),
             'mail', TRUE
@@ -67,7 +67,7 @@ class mailGroup extends simplePlugin
           new SelectAttribute(
             _('Server'), _('Email server'),
             'gosaMailServer', TRUE,
-            array('')
+            ['']
           ),
           new SetAttribute(
             new StringAttribute(
@@ -84,9 +84,9 @@ class mailGroup extends simplePlugin
             'fdGroupMailLocalOnly', FALSE,
             FALSE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -153,7 +153,7 @@ class mailGroup extends simplePlugin
     } else {
       $this->attributesAccess['gosaMailForwardingAddress']->setDisabled(TRUE);
       $this->attributesAccess['gosaMailForwardingAddress']->setVisible(FALSE);
-      $this->attributesAccess['gosaMailForwardingAddress']->setValue(array());
+      $this->attributesAccess['gosaMailForwardingAddress']->setValue([]);
     }
   }
 
@@ -183,7 +183,7 @@ class mailGroup extends simplePlugin
       }
     }
 
-    $errors = array();
+    $errors = [];
 
     /* Only do IMAP actions if we are not a template */
     if (!$this->is_template) {

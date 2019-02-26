@@ -22,30 +22,30 @@ class simpleSecurityObject extends simplePlugin
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Simple security object'),
       'plDescription' => _('Simple security object'),
-      'plObjectClass' => array('organizationalRole', 'simpleSecurityObject'),
+      'plObjectClass' => ['organizationalRole', 'simpleSecurityObject'],
       'plFilter'      => '(objectClass=simpleSecurityObject)',
-      'plObjectType'  => array('simpleSecurityObject' => array(
+      'plObjectType'  => ['simpleSecurityObject' => [
         'name'        => _('Simple security object'),
         'aclCategory' => 'dsa',
         'ou'          => get_ou('dsaRDN'),
         'icon'        => 'geticon.php?context=applications&icon=dsa&size=16',
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
-    return array(
+    return [
       // Attributes are grouped by section
-      'main' => array(
+      'main' => [
         'name'  => _('Simple security object'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('dsaRDN')),
           new HostNameAttribute(
             _('Entry name'), _('Account name'),
@@ -55,17 +55,17 @@ class simpleSecurityObject extends simplePlugin
             _('Description'), _('Description of this simple security object'),
             'description', FALSE
           ),
-        )
-      ),
-      'password' => array(
+        ]
+      ],
+      'password' => [
         'name'  => _('Change password'),
-        'attrs' => array(
+        'attrs' => [
           new UserPasswordAttribute(
             _('Password'), _('Password'),
             'userPassword', FALSE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }

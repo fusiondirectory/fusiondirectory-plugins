@@ -26,40 +26,40 @@ class dashboardSystems extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Systems'),
       'plDescription' => _('Statistics and information about systems'),
-      'plObjectType'  => array('dashboard'),
+      'plObjectType'  => ['dashboard'],
       'plPriority'    => 20,
 
-      'plProvidedAcls'  => array()
-    );
+      'plProvidedAcls'  => []
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'stats' => array(
+    return [
+      'stats' => [
         'name'  => _('Statistics'),
-        'attrs' => array(new FakeAttribute('stats')),
+        'attrs' => [new FakeAttribute('stats')],
         'template' => get_template_path('systems_stats.tpl', TRUE, dirname(__FILE__)),
-      ),
-      'pc_ids' => array(
+      ],
+      'pc_ids' => [
         'name'  => _('Computer name to use by unit'),
-        'attrs' => array(new FakeAttribute('pc_ids')),
+        'attrs' => [new FakeAttribute('pc_ids')],
         'template' => get_template_path('systems_pcids.tpl', TRUE, dirname(__FILE__)),
-      ),
-    );
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->stats = array(
+    $this->stats = [
       'systems' => $this->systems_stats(),
       'argonaut' => $this->argonaut_stats(),
-    );
+    ];
     $this->pc_ids = $this->computer_ids_rules();
   }
 
@@ -69,40 +69,40 @@ class dashboardSystems extends simplePlugin
     $ldap = $config->get_ldap_link();
 
     /* Statistics */
-    $stats = array(
-      array('name'  => _('Workstations'),
+    $stats = [
+      ['name'  => _('Workstations'),
             'type'  => 'workstation',
             'img'   => 'geticon.php?context=devices&icon=computer&size=16'
-      ),
-      array('name'  => _('Servers'),
+      ],
+      ['name'  => _('Servers'),
             'type'  => 'server',
             'img'   => 'geticon.php?context=devices&icon=server&size=16'
-      ),
-      array('name'    => _('Windows Workstations'),
+      ],
+      ['name'    => _('Windows Workstations'),
             'type'    => 'workstation',
             'filter'  => '(objectClass=sambaSamAccount)',
             'img'     => 'geticon.php?context=devices&icon=computer-windows&size=16'
-      ),
-      array('name'  => _('Terminals'),
+      ],
+      ['name'  => _('Terminals'),
             'type'  => 'terminal',
             'img'   => 'geticon.php?context=devices&icon=terminal&size=16'
-      ),
-      array('name'  => _('Printers'),
+      ],
+      ['name'  => _('Printers'),
             'type'  => 'printer',
             'img'   => 'geticon.php?context=devices&icon=printer&size=16'
-      ),
-      array('name'  => _('Phones'),
+      ],
+      ['name'  => _('Phones'),
             'type'  => 'phone',
             'img'   => 'geticon.php?context=devices&icon=telephone&size=16'
-      ),
-      array('name'  => _('Components'),
+      ],
+      ['name'  => _('Components'),
             'type'  => 'component',
             'img'   => 'geticon.php?context=devices&icon=network-device&size=16'
-      ),
-      array('name'  => _('Mobile phones'),
+      ],
+      ['name'  => _('Mobile phones'),
             'type'  => 'mobilePhone',
-            'img'   => 'geticon.php?context=devices&icon=phone&size=16'),
-    );
+            'img'   => 'geticon.php?context=devices&icon=phone&size=16'],
+    ];
 
     foreach ($stats as $key => &$stat) {
       try {
@@ -134,16 +134,16 @@ class dashboardSystems extends simplePlugin
 
     $argonaut_servers = objects::ls(
       'server',
-      array('cn' => 'raw','ipHostNumber' => 'raw','argonautProtocol' => 'raw','argonautPort' => 'raw'),
+      ['cn' => 'raw','ipHostNumber' => 'raw','argonautProtocol' => 'raw','argonautPort' => 'raw'],
       NULL,
       '(objectClass=argonautServer)',
       TRUE
     );
     $nb_argonaut_server = count($argonaut_servers);
-    $argonaut_server    = array();
+    $argonaut_server    = [];
     if ($nb_argonaut_server == 1) {
       $attrs = reset($argonaut_servers);
-      foreach (array('cn','ipHostNumber','argonautProtocol','argonautPort') as $key) {
+      foreach (['cn','ipHostNumber','argonautProtocol','argonautPort'] as $key) {
         $argonaut_server[$key] = $attrs[$key][0];
       }
       $argonaut_server['link'] = objects::link(key($argonaut_servers), 'server', 'service_serviceArgonaut', $attrs);
@@ -154,15 +154,15 @@ class dashboardSystems extends simplePlugin
     } else {
       $ldap = $config->get_ldap_link();
       $ldap->cd($config->current['BASE']);
-      $ldap->search('(objectClass=argonautClient)', array('cn'));
+      $ldap->search('(objectClass=argonautClient)', ['cn']);
       $nb_argonaut_clients = $ldap->count();
     }
 
-    return array(
+    return [
       'nb_servers'  => $nb_argonaut_server,
       'server'      => $argonaut_server,
       'nb_clients'  => $nb_argonaut_clients,
-    );
+    ];
   }
 
   protected function computer_ids_rules ()
@@ -182,9 +182,9 @@ class dashboardSystems extends simplePlugin
     */
 
     $output_next_computer_ids = "";
-    $computer_ids_rules = $config->get_cfg_value('dashboardPrefix', array('PC'));
+    $computer_ids_rules = $config->get_cfg_value('dashboardPrefix', ['PC']);
     if (!is_array($computer_ids_rules)) {
-      $computer_ids_rules = array($computer_ids_rules);
+      $computer_ids_rules = [$computer_ids_rules];
     }
 
     $nb_digits = $config->get_cfg_value('dashboardNumberOfDigit', 3);
@@ -192,9 +192,9 @@ class dashboardSystems extends simplePlugin
     /* running all the table */
     foreach ($computer_ids_rules as $rule) {
       /* aray initialization*/
-      $array_complete_list  = array();
-      $array_real_list      = array();
-      $unused_computer_ids  = array();
+      $array_complete_list  = [];
+      $array_real_list      = [];
+      $unused_computer_ids  = [];
       /* get computer ids configuration */
       $config_ids = explode("=", $rule);
       /* fist is is the prefix */
@@ -217,7 +217,7 @@ class dashboardSystems extends simplePlugin
 
       /* request of all computer beginning by the prefix */
       $request = '(&(cn='.$prefix.'*)(ou:dn:=systems))';
-      $ldap->search($request, array("cn"));
+      $ldap->search($request, ["cn"]);
       while ($attrs = $ldap->fetch()) {
         /* if a computer is a windows host, we have to delete the $ at the end */
         $computer_id        = str_replace("$", "", $attrs["cn"][0]);

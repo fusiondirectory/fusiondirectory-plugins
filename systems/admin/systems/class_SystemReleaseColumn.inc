@@ -81,7 +81,7 @@ class SystemReleaseColumn extends Column
     // Load information if needed
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=gosaGroupOfNames)(FAIclass=*)(member='.$entry->dn.'))', array('FAIclass','cn'));
+    $ldap->search('(&(objectClass=gosaGroupOfNames)(FAIclass=*)(member='.$entry->dn.'))', ['FAIclass','cn']);
     while ($attrs = $ldap->fetch()) {
       $rel = htmlentities(preg_replace('/^.*:/', '', $attrs['FAIclass'][0]), ENT_COMPAT, 'UTF-8');
       $sys = htmlentities(sprintf(_('Inherited from %s'), $attrs['cn'][0]), ENT_COMPAT, 'UTF-8');

@@ -34,8 +34,8 @@ class supportDaemon
 {
   private $s_host       = "";
   private $host_error   = "";
-  private $http_options = array();
-  private $ssl_options  = array();
+  private $http_options = [];
+  private $ssl_options  = [];
 
   private $s_error      = "";
   private $b_error      = FALSE;
@@ -79,25 +79,25 @@ class supportDaemon
     $ldap->cd($config->current['BASE']);
     $ldap->search(
       "(objectClass=argonautServer)",
-      array(
+      [
         'cn','ipHostNumber','argonautProtocol','argonautPort',
         'argonautTimeout','argonautCertCN',
         'argonautServerToken'
-      )
+      ]
     );
     if ($ldap->count() == 1) {
       $ldap_infos = $ldap->fetch();
       if (isset($ldap_infos['argonautTimeout'][0])) {
-        $this->http_options = array(
+        $this->http_options = [
           'timeout' => $ldap_infos['argonautTimeout'][0]
-        );
+        ];
         if ($ldap_infos['argonautProtocol'][0] == 'https') {
-          $this->ssl_options = array(
+          $this->ssl_options = [
             'cafile'            => $config->get_cfg_value('SslCaCertPath'),
             'peer_name'         => $ldap_infos['argonautCertCN'][0],
             'verify_peer'       => TRUE,
             'verify_peer_name'  => TRUE,
-          );
+          ];
           $sshaMethod = new passwordMethodssha();
           $this->http_options['header'] = 'Authorization: Basic '.base64_encode('fd:'.$sshaMethod->generate_hash($ldap_infos['argonautServerToken'][0]));
         }
@@ -167,11 +167,11 @@ class supportDaemon
   private function new_state ($state_value)
   {
     @DEBUG(DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $this->s_error, date('H.i.s').' Setting state ('.$state_value.') to ');
-    session::global_set('argonaut_state', array(
+    session::global_set('argonaut_state', [
       'date'  => time(),
       'error' => $this->s_error,
       'value' => $state_value
-    ));
+    ]);
     return $state_value;
   }
 
@@ -211,7 +211,7 @@ class supportDaemon
    */
   public function append_call ($action, $targets, $data)
   {
-    @DEBUG(DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, array('action' => $action, 'targets' => $targets, 'data' => $data), date('H.i.s').' Appending call to');
+    @DEBUG(DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, ['action' => $action, 'targets' => $targets, 'data' => $data], date('H.i.s').' Appending call to');
     if ($this->s_host == '') {
       $this->set_error($this->host_error);
       return FALSE;
@@ -224,7 +224,7 @@ class supportDaemon
     try {
       $client = new jsonRPCClient($this->s_host, $this->http_options, $this->ssl_options);
       if (!is_array($targets)) {
-        $tmpTargets = array($targets);
+        $tmpTargets = [$targets];
       } else {
         $tmpTargets = $targets;
       }
@@ -314,8 +314,8 @@ class supportDaemon
   {
     global $config;
     timezone::get_default_timezone();
-    $entries_r  = array();
-    $macInfos   = array();
+    $entries_r  = [];
+    $macInfos   = [];
     $ldap       = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     foreach ($entries as &$entry) {
@@ -324,18 +324,18 @@ class supportDaemon
 
       /* Do an ldap search only if we haven't done it for the same mac before */
       if (!isset($macInfos[$entry_r['MACADDRESS']])) {
-        $types = array('workstation','server','terminal');
+        $types = ['workstation','server','terminal'];
         foreach ($types as $type) {
-          $objects = objects::ls($type, array('dn' => 'raw', 'cn' => 1), NULL, '(macAddress='.$entry_r['MACADDRESS'].')');
+          $objects = objects::ls($type, ['dn' => 'raw', 'cn' => 1], NULL, '(macAddress='.$entry_r['MACADDRESS'].')');
           if (count($objects) > 1) {
             trigger_error('Duplicated mac address '.$entry_r['MACADDRESS'].' in LDAP');
           }
           if (count($objects) > 0) {
-            $macInfos[$entry_r['MACADDRESS']] = array(
+            $macInfos[$entry_r['MACADDRESS']] = [
               'dn'    => reset($objects)['dn'],
               'type'  => $type,
               'cn'    => reset($objects)['cn']
-            );
+            ];
             break;
           }
         }
@@ -450,7 +450,7 @@ class supportDaemon
   */
   public function remove_entry ($id)
   {
-    return $this->remove_entries(array($id));
+    return $this->remove_entries([$id]);
   }
 
   /*!
@@ -462,7 +462,7 @@ class supportDaemon
   */
   public function get_entry_by_id ($id)
   {
-    return $this->get_entries_by_id(array($id));
+    return $this->get_entries_by_id([$id]);
   }
 
   /*!
@@ -511,11 +511,11 @@ class supportDaemon
    */
   public function is_currently_installing ($mac)
   {
-    $evts = $this->get_entries_by_mac(array($mac));
+    $evts = $this->get_entries_by_mac([$mac]);
     if ($evts) {
       foreach ($evts as $evt) {
         if (($evt['STATUS'] == "processing") &&
-            in_array($evt['HEADERTAG'], array("reinstall","update"))) {
+            in_array($evt['HEADERTAG'], ["reinstall","update"])) {
           return TRUE;
         }
       }
@@ -603,7 +603,7 @@ class supportDaemon
       /* directory does not exists */
       return FALSE;
     }
-    $ret = array();
+    $ret = [];
     foreach ($dates as $date) {
       if ($date == "." || $date == "..") {
         continue;
@@ -700,10 +700,10 @@ class supportDaemon
   {
     if ($this->s_host == "") {
       $this->set_error($this->host_error);
-      return array();
+      return [];
     }
     if ($this->saved_state() == FALSE) {
-      return array();
+      return [];
     }
 
     // filters is a package name list
@@ -716,7 +716,7 @@ class supportDaemon
     try {
       $client = new jsonRPCClient($this->s_host, $this->http_options, $this->ssl_options);
       $res = $client->get_packages($release, $attrs, $filters, $from, $to);
-      $to_return = array();
+      $to_return = [];
       $attrs = array_map('strtoupper', $attrs);
       foreach ($res as $distribution => $packages) {
         $words = preg_split("/\//", $distribution);
@@ -745,11 +745,11 @@ class supportDaemon
       $this->set_error($e->getMessage());
       // connection is OK
       $this->new_state(TRUE);
-      return array();
+      return [];
     } catch (jsonRPCClientNetworkErrorException $e) {
       $this->set_error($e->getMessage());
       $this->new_state(FALSE);
-      return array();
+      return [];
     }
   }
 
@@ -762,8 +762,8 @@ class supportDaemon
   */
   public function escape_perl_chars ($str)
   {
-    $patterns = array("/\+/", "/\*/", "/\./");
-    $escaped  = array("\+",   "\*",   "\."  );
+    $patterns = ["/\+/", "/\*/", "/\./"];
+    $escaped  = ["\+",   "\*",   "\."  ];
     return preg_replace($patterns, $escaped, $str);
   }
 
@@ -775,7 +775,7 @@ class supportDaemon
   */
   public function FAI_get_kernels ($release)
   {
-    $kernels = $this->FAI_get_packages($release, array("package"), array("linux-image", '^kernel$'));
+    $kernels = $this->FAI_get_packages($release, ["package"], ["linux-image", '^kernel$']);
     foreach ($kernels as &$kernel) {
       $kernel = $kernel['PACKAGE'];
     }
@@ -804,7 +804,7 @@ class supportDaemon
       return TRUE;
     }
     if (!is_array($macs)) {
-      $macs = array($macs);
+      $macs = [$macs];
     }
 
     try {

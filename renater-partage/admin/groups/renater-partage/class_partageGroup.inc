@@ -24,24 +24,24 @@ class partageGroup extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'    => _('Partage'),
       'plDescription'  => _('Partage group options'),
       'plFilter'       => '(objectClass=fdRenaterPartageGroup)',
       'plSmallIcon'    => 'geticon.php?context=applications&icon=renater-partage&size=16',
-      'plDepends'      => array('mailGroup'),
-      'plObjectClass'  => array('fdRenaterPartageGroup'),
-      'plObjectType'   => array('group', 'ogroup-user'),
+      'plDepends'      => ['mailGroup'],
+      'plObjectClass'  => ['fdRenaterPartageGroup'],
+      'plObjectType'   => ['group', 'ogroup-user'],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Information'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Display name'), _('Name to display for this group'),
             'displayName'
@@ -54,8 +54,8 @@ class partageGroup extends simplePlugin
           new SelectAttribute(
             _('Type'), _('Type of PARTAGE group'),
             'fdRenaterPartageGroupMailStatus', TRUE,
-            array('enabled','disabled'), 'enabled',
-            array(_('Distribution list'), _('Group'))
+            ['enabled','disabled'], 'enabled',
+            [_('Distribution list'), _('Group')]
           ),
           new BooleanAttribute(
             _('Alert new members'), _('Send a message to alert new members, they have joined this group'),
@@ -66,8 +66,8 @@ class partageGroup extends simplePlugin
             _('Notes'), _('Notes about this group'),
             'fdRenaterPartageGroupNotes', FALSE
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }

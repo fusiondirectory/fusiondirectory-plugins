@@ -22,16 +22,16 @@ class dsaManagement extends management
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('DSA'),
       'plTitle'       => _('DSA management'),
       'plDescription' => _('Manage simple security objects'),
       'plIcon'        => 'geticon.php?context=applications&icon=dsa&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 55,
-      'plCategory'    => array('dsa' => array('description'  => _('DSA'),
-                                              'objectClass'  => array('simpleSecurityObject'))),
-      'plManages'     => array('simpleSecurityObject'),
-    );
+      'plCategory'    => ['dsa' => ['description'  => _('DSA'),
+                                              'objectClass'  => ['simpleSecurityObject']]],
+      'plManages'     => ['simpleSecurityObject'],
+    ];
   }
 }

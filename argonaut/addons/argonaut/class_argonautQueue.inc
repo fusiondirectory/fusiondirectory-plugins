@@ -38,18 +38,18 @@ class argonautQueue extends simpleManagement
 
   static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Deployment queue'),
       'plDescription' => _('Provide a mechanism to automatically activate systems'),
       'plIcon'        => 'geticon.php?context=applications&icon=argonaut&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 30,
-      'plCategory'    => array('argonautQueue' => array('objectClass' => 'none', 'description' => _('Deployment queue'))),
+      'plCategory'    => ['argonautQueue' => ['objectClass' => 'none', 'description' => _('Deployment queue')]],
 
-      'plProvidedAcls' => array(
+      'plProvidedAcls' => [
         'deploymentQueue' => _('Deployment queue')
-      )
-    );
+      ]
+    ];
   }
 
   function __construct ()
@@ -91,9 +91,9 @@ class argonautQueue extends simpleManagement
    */
   protected function removeEntryRequested ($action, array $target, array $all)
   {
-    $nodelete   = array();
-    $disallowed = array();
-    $this->dns  = array();
+    $nodelete   = [];
+    $disallowed = [];
+    $this->dns  = [];
 
     @DEBUG(DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $target, 'Entry removal requested!');
 
@@ -112,7 +112,7 @@ class argonautQueue extends simpleManagement
 
       if ($this->acl_is_removeable($task['TARGETDN'])) {
         /* Only remove WAITING or ERROR entries */
-        if (in_array($task['STATUS'], array('waiting','error','processed')) ||
+        if (in_array($task['STATUS'], ['waiting','error','processed']) ||
             ($task['STATUS'] == 'processing' && !preg_match('/install/', $task['HEADERTAG']))) {
           $this->dns[] = $dn;
         } else {
@@ -133,25 +133,25 @@ class argonautQueue extends simpleManagement
 
     // We've at least one entry to delete.
     if (count($this->dns)) {
-      $objects = array();
+      $objects = [];
       foreach ($this->dns as $dn) {
         $tmp  = $this->headpage->getEntry($dn);
         $task = $tmp['EVENT'];
         $infos = argonautEventTypes::get_event_info($task['HEADERTAG']);
         if ($infos) {
-          $objects[] = array(
+          $objects[] = [
             'name'  => $infos['name'],
             'dn'    => $dn,
             'icon'  => $infos['img'],
             'type'  => 'task'
-          );
+          ];
         } else {
-          $objects[] = array(
+          $objects[] = [
             'name'  => $task['HEADERTAG'],
             'dn'    => $dn,
             'icon'  => '',
             'type'  => 'task'
-          );
+          ];
         }
       }
 
@@ -166,7 +166,7 @@ class argonautQueue extends simpleManagement
   function removeEntryConfirmed ($action, array $target, array $all)
   {
     timezone::get_default_timezone();
-    $ids = array();
+    $ids = [];
     foreach ($this->dns as $dn) {
       $entry  = $this->headpage->getEntry($dn);
       if ($this->acl_is_removeable($entry['EVENT']['TARGETDN'])) {
@@ -180,8 +180,8 @@ class argonautQueue extends simpleManagement
    */
   function abortEvent ($action, array $target)
   {
-    $macs     = array();
-    $taskids  = array();
+    $macs     = [];
+    $taskids  = [];
     $headpage = $this->getHeadpage();
     foreach ($target as $id) {
       $tmp        = $headpage->getEntry($id);
@@ -189,7 +189,7 @@ class argonautQueue extends simpleManagement
       $taskids[]  = $tmp['EVENT']['ID'];
     }
 
-    $this->o_queue->append_call('wakeup', $macs, array());
+    $this->o_queue->append_call('wakeup', $macs, []);
     if ($this->o_queue->is_error()) {
       msg_dialog::display(_('Info'), sprintf(_('%s'), $this->o_queue->get_error()), INFO_DIALOG);
     }
@@ -205,7 +205,7 @@ class argonautQueue extends simpleManagement
   function retryAction ($action, array $target)
   {
     $entry = $this->getHeadpage()->getEntry($target[0]);
-    $this->dialogObject = new argonautAction($entry['HEADERTAG'][0], array($entry['MACADDRESS'][0]), FALSE);
+    $this->dialogObject = new argonautAction($entry['HEADERTAG'][0], [$entry['MACADDRESS'][0]], FALSE);
   }
 
   function showErrorEntry ($action, array $target)
@@ -265,11 +265,11 @@ class argonautQueue extends simpleManagement
   private function execute_queue_entries ($ids)
   {
     /* Only allow execution of paused or waiting entries */
-    $update_ids = array();
+    $update_ids = [];
     foreach ($ids as $id) {
       $tmp    = $this->headpage->getEntry($id);
       $entry  = $tmp['EVENT'];
-      if (in_array($entry['STATUS'], array('paused','waiting'))) {
+      if (in_array($entry['STATUS'], ['paused','waiting'])) {
         $update_ids[] = $entry['ID'];
       }
     }
@@ -337,7 +337,7 @@ class argonautQueue extends simpleManagement
     return $str;
   }
 
-  static function filterPeriod ($periodic = array())
+  static function filterPeriod ($periodic = [])
   {
     $period = "&nbsp;-";
     if (isset($periodic[0]) && !preg_match("/none/i", $periodic[0])) {

@@ -22,23 +22,23 @@ class auditConfig extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Audit configuration'),
       'plDescription'   => _('FusionDirectory audit plugin configuration'),
-      'plObjectClass'   => array('fdAuditPluginConf'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectClass'   => ['fdAuditPluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Audit'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Audit RDN'), _('Branch in which audit events will be stored'),
             'fdAuditRDN', TRUE,
@@ -50,15 +50,15 @@ class auditConfig extends simplePlugin
               'fdAuditActions', TRUE,
               logging::$validActions
             ),
-            array('modify','create','remove')
+            ['modify','create','remove']
           ),
           new IntAttribute(
             _('Days to keep'), _('Number of days of audit to keep in the LDAP when cleaning'),
             'fdAuditRotationDelay', TRUE,
             1, FALSE, 120
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

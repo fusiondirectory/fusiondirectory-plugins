@@ -23,16 +23,16 @@ class sogoManagement extends management
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('SOGo'),
       'plTitle'       => _('SOGo management'),
       'plDescription' => _('Manage SOGo resources'),
       'plIcon'        => 'geticon.php?context=applications&icon=sogo&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 50,
-      'plCategory'    => array('sogo' => array('description'  => _('SOGo'),
-                                              'objectClass'  => array('sogoResource'))),
-      'plManages'     => array('sogoResource'),
-    );
+      'plCategory'    => ['sogo' => ['description'  => _('SOGo'),
+                                              'objectClass'  => ['sogoResource']]],
+      'plManages'     => ['sogoResource'],
+    ];
   }
 }

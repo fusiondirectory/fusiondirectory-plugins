@@ -103,7 +103,7 @@ class faiBaseSelector extends baseSelector
 class faiManagement extends simpleManagement
 {
   // Tab definition
-  protected $objectTypes  = array('faiVariable', 'faiHook', 'faiScript', 'faiPackage', 'faiPartitionTable', 'faiTemplate', 'faiProfile');
+  protected $objectTypes  = ['faiVariable', 'faiHook', 'faiScript', 'faiPackage', 'faiPartitionTable', 'faiTemplate', 'faiProfile'];
 
   protected $departmentBrowser      = FALSE;
   protected $departmentRootVisible  = FALSE;
@@ -113,18 +113,18 @@ class faiManagement extends simpleManagement
 
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('FAI'),
       'plDescription' => _('Manage FAI software packages and deployment recipes'),
       'plIcon'        => 'geticon.php?context=applications&icon=fai&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 20,
-      'plCategory'    => array('fai' => array('description'  => _('FAI'),
-                                              'objectClass'  => array('FAIclass'))),
-      'plManages'     => array('faiVariable', 'faiHook', 'faiScript', 'faiPackage', 'faiPartitionTable', 'faiTemplate', 'faiProfile'),
+      'plCategory'    => ['fai' => ['description'  => _('FAI'),
+                                              'objectClass'  => ['FAIclass']]],
+      'plManages'     => ['faiVariable', 'faiHook', 'faiScript', 'faiPackage', 'faiPartitionTable', 'faiTemplate', 'faiProfile'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 
   function execute (): string
@@ -152,9 +152,9 @@ class faiManagement extends simpleManagement
     global $config;
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=FAIbranch)', array('ou','FAIstate'));
+    $ldap->search('(objectClass=FAIbranch)', ['ou','FAIstate']);
 
-    $list = array();
+    $list = [];
 
     while ($release = $ldap->fetch()) {
       preg_match('/[^,],ou=([^,]+),/', $release['dn'], $m);

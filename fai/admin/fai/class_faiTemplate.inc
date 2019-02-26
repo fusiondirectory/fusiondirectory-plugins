@@ -28,14 +28,14 @@ class TemplateFileDialog extends GenericSimplePluginDialog
 class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
 {
   protected $dialogClass = 'TemplateFileDialog';
-  protected $templateAttributes = array(
+  protected $templateAttributes = [
     'cn','description',
     'FAItemplatePath','FAItemplateFile','FAIowner','FAImode'
-  );
+  ];
 
   protected $templateFilter = '(&(objectClass=FAIclass)(objectClass=FAItemplateEntry))';
 
-  function __construct ($label, $description, $ldapName, $values = array(), $acl = '')
+  function __construct ($label, $description, $ldapName, $values = [], $acl = '')
   {
     parent::__construct($label, $description, $ldapName, FALSE, $values, $acl);
   }
@@ -46,13 +46,13 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
     if (isset($attrs['dn'])) {
       $ldap = $config->get_ldap_link();
       $ldap->cd($attrs['dn']);
-      $ldap->search($this->templateFilter, array('*'), 'one');
-      $this->value = array();
+      $ldap->search($this->templateFilter, ['*'], 'one');
+      $this->value = [];
       while ($subattrs = $ldap->fetch()) {
         $attrsWrapper = new stdClass();
         $attrsWrapper->attrs = $subattrs;
         $dialog = new faiTemplateEntry($subattrs['dn'], $attrsWrapper);
-        $value = array();
+        $value = [];
         foreach ($this->templateAttributes as $attribute) {
           $value[$attribute] = $dialog->$attribute;
         }
@@ -73,8 +73,8 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
   {
     /* First delete all old nodes */
     $ldap->cd($this->plugin->dn);
-    $ldap->search($this->templateFilter, array('dn'), 'one');
-    $delete = array();
+    $ldap->search($this->templateFilter, ['dn'], 'one');
+    $delete = [];
     while ($attrs = $ldap->fetch()) {
       $delete[] = $attrs['dn'];
     }
@@ -84,7 +84,7 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
     /* Then add our values */
     foreach ($this->value as $val) {
       $attrs = $val;
-      $attrs['objectClass'] = array('top','FAIClass','FAItemplateEntry');
+      $attrs['objectClass'] = ['top','FAIClass','FAItemplateEntry'];
       $sub_dn = $this->compute_sub_dn($val);
       $this->ldap_add($ldap, $sub_dn, $attrs);
     }
@@ -112,11 +112,11 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
 
   protected function getAttributeArrayValue ($key, $value)
   {
-    return array(
+    return [
       $value['cn'],
       $value['description'],
       humanReadableSize(strlen($value['FAItemplateFile'])),
-    );
+    ];
   }
 
   function check (): array
@@ -125,7 +125,7 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
     if (!empty($error)) {
       return $error;
     } else {
-      $used_cn = array();
+      $used_cn = [];
       foreach ($this->value as $value) {
         if (isset($used_cn[$value['cn']])) {
           return sprintf(_('There are several files with the same path: %s'), $value['cn']);
@@ -140,30 +140,30 @@ class faiTemplate extends faiSimplePluginClass
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Template'),
       'plDescription' => _('FAI template'),
-      'plObjectClass' => array('FAIclass','FAItemplate'),
+      'plObjectClass' => ['FAIclass','FAItemplate'],
       'plFilter'      => '(objectClass=FAItemplate)',
-      'plObjectType'  => array(
-        'faiTemplate' => array(
+      'plObjectType'  => [
+        'faiTemplate' => [
           'name'        => _('FAI template'),
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiTemplateRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-template&size=16'
-        )
-      ),
+        ]
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new HostNameAttribute(
             _('Class name'), _('Template class name'),
             'cn', TRUE
@@ -172,18 +172,18 @@ class faiTemplate extends faiSimplePluginClass
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
-        )
-      ),
-      'table' => array(
+        ]
+      ],
+      'table' => [
         'name'  => _('Template files'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new FAITemplateFilesAttribute(
             '', _('Template files in this class'), 'templateFiles'
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   protected function shouldSave (): bool

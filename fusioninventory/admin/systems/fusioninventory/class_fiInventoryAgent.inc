@@ -24,23 +24,23 @@ class fiInventoryAgent extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('FusionInventory'),
       'plDescription' => _('FusionInventory agent configuration'),
       'plPriority'    => 90,
-      'plObjectClass' => array('fusionInventoryAgent'),
-      'plObjectType'  => array('workstation', 'server'),
+      'plObjectClass' => ['fusionInventoryAgent'],
+      'plObjectType'  => ['workstation', 'server'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Configuration'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Server'), _('Server which FI will send inventory infos'),
             'fiAgentServer', FALSE
@@ -55,11 +55,11 @@ class fiInventoryAgent extends simplePlugin
             'fiAgentWait', FALSE,
             0, FALSE
           ),
-        ),
-      ),
-      'http' => array(
+        ],
+      ],
+      'http' => [
         'name'  => _('Web Interface'),
-        'attrs' => array(
+        'attrs' => [
           new BooleanAttribute(
             _('Disable web interface'), _('Do not use web interface'),
             'fiAgentNoHttpd', FALSE
@@ -77,8 +77,8 @@ class fiInventoryAgent extends simplePlugin
             _('Trust'), _('IPs allowed to launch inventory task through web interface'),
             'fiAgentHttpdTrust', FALSE
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }

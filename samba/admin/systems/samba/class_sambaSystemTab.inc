@@ -25,23 +25,23 @@ class sambaSystemTab extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Samba'),
       'plDescription' => _('Windows workstation information'),
-      'plObjectClass' => array('posixAccount','sambaSamAccount'),
-      'plObjectType'  => array('workstation'),
+      'plObjectClass' => ['posixAccount','sambaSamAccount'],
+      'plObjectType'  => ['workstation'],
       'plPriority'    => 6,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ($word = NULL, $rdn = NULL): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new HiddenAttribute('uid'),
           new HiddenAttribute('sambaSID'),
           new HiddenAttribute('homeDirectory', TRUE, '/dev/null'),
@@ -52,9 +52,9 @@ class sambaSystemTab extends simplePlugin
             _('Domain'), _('Samba domain name'),
             'sambaDomainName', TRUE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -71,7 +71,7 @@ class sambaSystemTab extends simplePlugin
       $this->SID = preg_replace('/-[^-]+$/', '', $this->sambaSID);
       $ldap = $config->get_ldap_link();
       $ldap->cd($config->current['BASE']);
-      $ldap->search('(&(objectClass=sambaDomain)(sambaSID='.$this->SID.'))', array('sambaAlgorithmicRidBase','sambaDomainName'));
+      $ldap->search('(&(objectClass=sambaDomain)(sambaSID='.$this->SID.'))', ['sambaAlgorithmicRidBase','sambaDomainName']);
       if ($ldap->count() != 0) {
         $attrs = $ldap->fetch();
         if (isset($attrs['sambaAlgorithmicRidBase'])) {
@@ -128,7 +128,7 @@ class sambaSystemTab extends simplePlugin
         $sid = $this->SID.'-'.($uidNumber * 2 + $this->ridBase);
         $ldap = $config->get_ldap_link();
         $ldap->cd($config->current['BASE']);
-        $ldap->search('(sambaSID='.$sid.')', array('sambaSID'));
+        $ldap->search('(sambaSID='.$sid.')', ['sambaSID']);
         $uidNumber++;
       } while ($ldap->count() != 0);
       $uidNumber--;

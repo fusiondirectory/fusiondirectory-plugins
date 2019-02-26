@@ -22,30 +22,30 @@ class opsiConfig extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('OPSI configuration'),
       'plDescription' => _('FusionDirectory OPSI plugin configuration'),
-      'plObjectClass' => array('fdOpsiPluginConf'),
-      'plCategory'    => array('configuration'),
-      'plObjectType'  => array('smallConfig'),
+      'plObjectClass' => ['fdOpsiPluginConf'],
+      'plCategory'    => ['configuration'],
+      'plObjectType'  => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('OPSI'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('OPSI RDN'), _('Branch in which OPSI profiles will be stored'),
             'fdOpsiRDN', TRUE,
             'ou=opsi'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

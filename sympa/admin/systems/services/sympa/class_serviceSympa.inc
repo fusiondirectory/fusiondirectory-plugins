@@ -23,14 +23,14 @@ class serviceSympa extends simpleService
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Sympa Server'),
       'plDescription' => _('Sympa Server').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=sympa&size=16',
-      'plObjectClass' => array('sympaServer'),
+      'plObjectClass' => ['sympaServer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -38,10 +38,10 @@ class serviceSympa extends simpleService
    */
   static function getAttributesInfo (): array
   {
-    return array (
-      'main' => array (
+    return  [
+      'main' => [
         'name'  => _('Sympa server'),
-        'attrs' => array (
+        'attrs' => [
           new StringAttribute(
             _('URL'), _('URL to access the sympa server'),
             'sympaServerURL', TRUE
@@ -54,8 +54,8 @@ class serviceSympa extends simpleService
             _('Password'), _('Password to access sympa server SOAP API.'),
             'sympaServerPassword', FALSE
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

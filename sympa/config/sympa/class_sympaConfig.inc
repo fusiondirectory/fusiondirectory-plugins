@@ -22,30 +22,30 @@ class sympaConfig extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Sympa configuration'),
       'plDescription'   => _('FusionDirectory sympa plugin configuration'),
-      'plObjectClass'   => array('fdSympaPluginConf'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectClass'   => ['fdSympaPluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Sympa'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Sympa RDN'), _('Branch in which Sympa objects will be stored'),
             'fdSympaRDN', TRUE,
             'ou=sympa'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

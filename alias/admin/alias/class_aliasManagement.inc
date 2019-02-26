@@ -23,28 +23,28 @@
 class aliasManagement extends management
 {
   /* Default columns */
-  public static $columns = array(
-    array('ObjectTypeColumn',     array()),
-    array('LinkColumn',           array('attributes' => 'nameAttr',             'label' => 'Name')),
-    array('LinkColumn',           array('attributes' => 'description',          'label' => 'Description')),
-    array('UnixTimestampColumn',  array('attributes' => 'aliasExpirationDate',  'label' => 'Expiration date')),
-    array('ActionsColumn',        array('label' => 'Actions')),
-  );
+  public static $columns = [
+    ['ObjectTypeColumn',     []],
+    ['LinkColumn',           ['attributes' => 'nameAttr',             'label' => 'Name']],
+    ['LinkColumn',           ['attributes' => 'description',          'label' => 'Description']],
+    ['UnixTimestampColumn',  ['attributes' => 'aliasExpirationDate',  'label' => 'Expiration date']],
+    ['ActionsColumn',        ['label' => 'Actions']],
+  ];
 
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Aliases'),
       'plTitle'       => _('Alias management'),
       'plDescription' => _('Manage aliases'),
       'plIcon'        => 'geticon.php?context=applications&icon=alias&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 26,
-      'plCategory'    => array('alias' => array('description'  => _('Mail aliases'),
-                                                'objectClass'  => array('mailAliasRedirection','mailAliasDistribution'))),
-      'plManages'     => array('mailAliasDistribution','mailAliasRedirection'),
+      'plCategory'    => ['alias' => ['description'  => _('Mail aliases'),
+                                                'objectClass'  => ['mailAliasRedirection','mailAliasDistribution']]],
+      'plManages'     => ['mailAliasDistribution','mailAliasRedirection'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 }

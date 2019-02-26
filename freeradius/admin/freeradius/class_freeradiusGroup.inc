@@ -26,15 +26,15 @@ class freeradiusGroup extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Freeradius'),
       'plDescription'   => _('This Plugin is for Radius accounting based in FreeRadius'),
       'plIcon'          => 'geticon.php?context=applications&icon=freeradius&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=freeradius&size=16',
-      'plObjectClass'   => array('radiusprofile'),
-      'plObjectType'    => array('group'),
+      'plObjectClass'   => ['radiusprofile'],
+      'plObjectType'    => ['group'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -42,11 +42,11 @@ class freeradiusGroup extends simplePlugin
    */
   static function getAttributesInfo (): array
   {
-    return array(
+    return [
     // Attributes are grouped by section
-    'section1' => array(
+    'section1' => [
         'name'  => _('Support 802.1x'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Tunnel medium type'),
             _('Name of the tunnel medium type'),
@@ -68,8 +68,8 @@ class freeradiusGroup extends simplePlugin
             FALSE,
             ''
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }

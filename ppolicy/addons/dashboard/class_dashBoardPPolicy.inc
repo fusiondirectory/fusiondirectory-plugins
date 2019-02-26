@@ -23,49 +23,49 @@ class dashboardPpolicy extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Ppolicy'),
       'plDescription' => _('Statistics about ppolicy expired users'),
-      'plObjectType'  => array('dashboard'),
+      'plObjectType'  => ['dashboard'],
       'plPriority'    => 12,
 
-      'plProvidedAcls'  => array()
-    );
+      'plProvidedAcls'  => []
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'expired_accounts' => array(
+    return [
+      'expired_accounts' => [
         'name'  => _('Expired accounts'),
-        'attrs' => array(new FakeAttribute('expired')),
+        'attrs' => [new FakeAttribute('expired')],
         'template' => get_template_path('users_accounts.tpl', TRUE, dirname(__FILE__)),
-      ),
-      'locked_accounts' => array(
+      ],
+      'locked_accounts' => [
         'name'  => _('Locked accounts'),
-        'attrs' => array(new FakeAttribute('locked')),
+        'attrs' => [new FakeAttribute('locked')],
         'template' => get_template_path('ppolicy_locked_accounts.tpl', TRUE, dirname(__FILE__)),
-      ),
-    );
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->expiredAccountsColumns = array(
-      'user' => array(
+    $this->expiredAccountsColumns = [
+      'user' => [
         'uid'             => _('Login'),
         'cn'              => _('Name'),
         'telephoneNumber' => _('Phone number'),
         'expirationDate'  => _('Expiration date'),
-      ),
-      'manager' => array(
+      ],
+      'manager' => [
         'manager_cn'      => _('Name'),
         'manager_mail'    => _('Email'),
         'manager_phone'   => _('Phone number'),
-      )
-    );
+      ]
+    ];
 
     $this->compute_accounts_info();
   }
@@ -79,7 +79,7 @@ class dashboardPpolicy extends simplePlugin
     $ppolicydn = $config->get_cfg_value('ppolicyDefaultCn', '');
     if (!empty($ppolicydn)) {
       $ppolicydn = 'cn='.$ppolicydn.','.get_ou('ppolicyRDN').$config->current['BASE'];
-      $ldap->cat($ppolicydn, array('pwdMaxAge'));
+      $ldap->cat($ppolicydn, ['pwdMaxAge']);
       $policy = $ldap->fetch();
       if (!$policy) {
         msg_dialog::display(
@@ -100,7 +100,7 @@ class dashboardPpolicy extends simplePlugin
     $now = new DateTime('now', timezone::utc());
 
     /* search all expired accounts */
-    $users = objects::ls('user', array(
+    $users = objects::ls('user', [
         'dn'                    => 'raw',
         'uid'                   => 'raw',
         'cn'                    => 'raw',
@@ -110,12 +110,12 @@ class dashboardPpolicy extends simplePlugin
         'pwdChangedTime'        => 1,
         'pwdPolicySubentry'     => 1,
         'pwdAccountLockedTime'  => 1,
-      ), NULL, '(|(pwdAccountLockedTime=*)(pwdChangedTime=*))', TRUE);
-    $locked_users           = array();
-    $expired_accounts       = array();
-    $next_expired_accounts  = array();
+      ], NULL, '(|(pwdAccountLockedTime=*)(pwdChangedTime=*))', TRUE);
+    $locked_users           = [];
+    $expired_accounts       = [];
+    $next_expired_accounts  = [];
     // ppolicies cache
-    $maxAges = array();
+    $maxAges = [];
     foreach ($users as $user) {
       if (isset($user['pwdAccountLockedTime'])) {
         $locked_user  = dashboardUsers::get_user_infos($user);
@@ -132,7 +132,7 @@ class dashboardPpolicy extends simplePlugin
         if (isset($maxAges[$user['pwdPolicySubentry']])) {
           $maxAge = $maxAges[$user['pwdPolicySubentry']];
         } else {
-          $ldap->cat($user['pwdPolicySubentry'], array('pwdMaxAge'));
+          $ldap->cat($user['pwdPolicySubentry'], ['pwdMaxAge']);
           $policy = $ldap->fetch();
           if (!$policy) {
             msg_dialog::display(
@@ -169,17 +169,17 @@ class dashboardPpolicy extends simplePlugin
       }
     }
 
-    uasort($expired_accounts, array('dashboardUsers','compareUsers'));
-    uasort($next_expired_accounts, array('dashboardUsers','compareUsers'));
+    uasort($expired_accounts, ['dashboardUsers','compareUsers']);
+    uasort($next_expired_accounts, ['dashboardUsers','compareUsers']);
 
-    $this->expired = array(
+    $this->expired = [
       'columns'             => $this->expiredAccountsColumns,
       'accounts'            => $expired_accounts,
       'accounts_next_days'  => $next_expired_accounts,
       'next_days'           => $next_expired_days,
-    );
-    $this->locked = array(
+    ];
+    $this->locked = [
       'accounts'  => $locked_users,
-    );
+    ];
   }
 }

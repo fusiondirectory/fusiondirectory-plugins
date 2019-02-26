@@ -22,31 +22,31 @@ class sogoResource extends simplePlugin
 {
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('SOGo resource'),
       'plDescription' => _('SOGo resource'),
-      'plObjectClass' => array('inetOrgPerson','CalendarResource'),
+      'plObjectClass' => ['inetOrgPerson','CalendarResource'],
       'plFilter'      => '(objectClass=CalendarResource)',
-      'plObjectType'  => array('sogoResource' => array(
+      'plObjectType'  => ['sogoResource' => [
         'name'        => _('SOGo resource'),
         'aclCategory' => 'sogo',
         'ou'          => get_ou('sogoRDN'),
         'icon'        => 'geticon.php?context=applications&icon=sogo&size=16',
         'mainAttr'    => 'uid'
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
-    return array(
+    return [
       // Attributes are grouped by section
-      'main' => array(
+      'main' => [
         'name'  => _('SOGo resource'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('sogoRDN')),
           new HostNameAttribute(
             _('Entry name'), _('Account name'),
@@ -70,11 +70,11 @@ class sogoResource extends simplePlugin
           new SelectAttribute(
             _('Kind'), _('Kind'),
             'Kind', FALSE,
-            array('location', 'thing', 'group')
+            ['location', 'thing', 'group']
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)

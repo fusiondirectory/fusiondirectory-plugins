@@ -23,27 +23,27 @@ class debconfStartup extends simplePlugin
 {
   var $displayHeader = TRUE;
 
-  var $inheritance = array('gosaGroupOfNames' => 'member');
+  var $inheritance = ['gosaGroupOfNames' => 'member'];
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Debconf'),
       'plDescription'   => _('Debconf preseed startup'),
       'plPriority'      => 9,
-      'plObjectClass'   => array('debconfStartup'),
-      'plObjectType'    => array('workstation', 'server', 'ogroup-dynamic'),
+      'plObjectClass'   => ['debconfStartup'],
+      'plObjectType'    => ['workstation', 'server', 'ogroup-dynamic'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Debconf settings'),
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Profile'), _('Debconf preseed profile to be used for installation'),
             'debconfProfile', TRUE
@@ -51,11 +51,11 @@ class debconfStartup extends simplePlugin
           new SelectAttribute(
             _('Release'), _('Debian release to install'),
             'debconfDebianRelease', TRUE,
-            array('squeeze', 'unstable', 'wheezy')
+            ['squeeze', 'unstable', 'wheezy']
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -68,10 +68,10 @@ class debconfStartup extends simplePlugin
     $ldap->cd(get_ou('debconfRDN').$config->current['BASE']);
     $ldap->search(
       'objectClass=organizationalUnit',
-      array('ou'),
+      ['ou'],
       'one'
     );
-    $profiles = array();
+    $profiles = [];
     while ($attrs = $ldap->fetch()) {
       $profiles[] = $attrs['ou'][0];
     }

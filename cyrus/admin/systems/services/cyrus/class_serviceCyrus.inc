@@ -23,14 +23,14 @@ class serviceCyrus extends simpleMailMethodService
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Cyrus (IMAP/POP3)'),
       'plDescription'   => _('Cyrus (IMAP/POP3)').' ('._('Services').')',
       'plIcon'          => 'geticon.php?context=applications&icon=cyrus&size=16',
-      'plObjectClass'   => array('fdCyrusServer'),
+      'plObjectClass'   => ['fdCyrusServer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -38,14 +38,14 @@ class serviceCyrus extends simpleMailMethodService
    */
   static function getAttributesInfo (): array
   {
-    return array (
-      'cyrus' => array (
+    return  [
+      'cyrus' => [
         'name'  => _('Cyrus settings'),
-        'attrs' => array (
+        'attrs' => [
           new CompositeAttribute(
             _('Connect URL for Cyrus server'),
             'fdCyrusConnect',
-            array(
+            [
               new StringAttribute(
                 _('Hostname'), _('Hostname of the Cyrus server'),
                 'cyrusConnectURL', TRUE
@@ -58,15 +58,15 @@ class serviceCyrus extends simpleMailMethodService
               new SelectAttribute(
                 _('Option'), _('Options for contacting Cyrus server'),
                 'cyrusConnectOptions1', TRUE,
-                array('notls', 'tls', 'ssl'), 'notls'
+                ['notls', 'tls', 'ssl'], 'notls'
               ),
               new SelectAttribute(
                 _('Valide certificats'), _('Weither or not to validate server certificate on connexion'),
                 'cyrusConnectOptions2', FALSE,
-                array('', '/validate-cert', '/novalidate-cert'), '',
-                array('', 'validate',       'no-validate')
+                ['', '/validate-cert', '/novalidate-cert'], '',
+                ['', 'validate',       'no-validate']
               )
-            ),
+            ],
             '/^{(.*):(\\d+)\\/([^\\/]+)(.*)}$/',
             '{%s:%d/%s%s}'
           ),
@@ -78,15 +78,15 @@ class serviceCyrus extends simpleMailMethodService
             _('Password'), _('Admin user password'),
             'fdCyrusPassword', TRUE
           ),
-        )
-      ),
-      'sieve' => array (
+        ]
+      ],
+      'sieve' => [
         'name'  => _('Sieve settings'),
-        'attrs' => array (
+        'attrs' => [
           new CompositeAttribute(
             _('Sieve connect URL for Cyrus server'),
             'fdCyrusSieveServer',
-            array(
+            [
               new StringAttribute(
                 _('Hostname'), _('Hostname of the Cyrus sieve server'),
                 'cyrusSieveConnectURL', TRUE
@@ -99,14 +99,14 @@ class serviceCyrus extends simpleMailMethodService
               new SelectAttribute(
                 _('Option'), _('Options for contacting Cyrus sieve server'),
                 'cyrusSieveConnectOptions', TRUE,
-                array('notls', 'tls', 'ssl'), 'notls'
+                ['notls', 'tls', 'ssl'], 'notls'
               ),
-            ),
+            ],
             '/^{(.*):(\\d+)\\/([^\\/]+)}$/',
             '{%s:%d/%s}'
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }

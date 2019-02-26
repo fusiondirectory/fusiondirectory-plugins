@@ -23,14 +23,14 @@ class netgroupManagement extends management
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('NIS Netgroups'),
       'plTitle'       => _('NIS Netgroups management'),
       'plDescription' => _('Manage NIS Netgroups'),
       'plIcon'        => 'geticon.php?context=applications&icon=netgroups&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 25,
-      'plManages'     => array('netgroup'),
-    );
+      'plManages'     => ['netgroup'],
+    ];
   }
 }

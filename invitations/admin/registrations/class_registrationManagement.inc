@@ -60,32 +60,32 @@ class registrationManagement extends management
   protected $skipCpHandler      = TRUE;
   public static $skipSnapshots  = TRUE;
 
-  public static $columns = array(
-    array('ObjectTypeColumn',   array()),
-    array('LinkColumn',         array('attributes' => 'nameAttr',                   'label' => 'Email')),
-    array('RegistrationColumn', array('attributes' => 'fdRegistrationUserDN',       'label' => 'User object')),
-    array('RegistrationColumn', array('attributes' => 'fdRegistrationState',        'label' => 'Status')),
-    array('RegistrationColumn', array('attributes' => 'fdRegistrationLastChange',   'label' => 'Last change')),
-    array('RegistrationColumn', array('attributes' => 'fdRegistrationInvitationDN', 'label' => 'Invitation')),
-    array('ActionsColumn',      array('label' => 'Actions')),
-  );
+  public static $columns = [
+    ['ObjectTypeColumn',   []],
+    ['LinkColumn',         ['attributes' => 'nameAttr',                   'label' => 'Email']],
+    ['RegistrationColumn', ['attributes' => 'fdRegistrationUserDN',       'label' => 'User object']],
+    ['RegistrationColumn', ['attributes' => 'fdRegistrationState',        'label' => 'Status']],
+    ['RegistrationColumn', ['attributes' => 'fdRegistrationLastChange',   'label' => 'Last change']],
+    ['RegistrationColumn', ['attributes' => 'fdRegistrationInvitationDN', 'label' => 'Invitation']],
+    ['ActionsColumn',      ['label' => 'Actions']],
+  ];
 
-  public $neededAttrs = array(
+  public $neededAttrs = [
     'fdRegistrationUserDN'        => '1',
     'fdRegistrationInvitationDN'  => '1',
     'fdRegistrationState'         => '1',
-  );
+  ];
 
   public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Registrations'),
       'plTitle'       => _('Registrations management'),
       'plDescription' => _('Manage registrations'),
       'plIcon'        => 'geticon.php?context=types&icon=registration&size=48',
       'plSection'     => 'accounts',
-      'plManages'     => array('registration'),
-    );
+      'plManages'     => ['registration'],
+    ];
   }
 
   function __construct ()
@@ -103,19 +103,19 @@ class registrationManagement extends management
       new Action(
         'accept', _('Accept'), 'geticon.php?context=actions&icon=accept&size=16',
         '+', 'acceptRegistration',
-        array('registration/registration/fdRegistrationState:w')
+        ['registration/registration/fdRegistrationState:w']
       )
     );
     $this->registerAction(
       new Action(
         'reject', _('Reject'), 'geticon.php?context=actions&icon=reject&size=16',
         '+', 'rejectRegistration',
-        array('registration/registration/fdRegistrationState:w')
+        ['registration/registration/fdRegistrationState:w']
       )
     );
     $this->actions['accept']->setSeparator(TRUE);
-    $this->actions['reject']->setEnableFunction(array($this, 'enableAcceptReject'));
-    $this->actions['accept']->setEnableFunction(array($this, 'enableAcceptReject'));
+    $this->actions['reject']->setEnableFunction([$this, 'enableAcceptReject']);
+    $this->actions['accept']->setEnableFunction([$this, 'enableAcceptReject']);
   }
 
   /* !\brief Accept registration
@@ -305,9 +305,9 @@ class registrationManagement extends management
   {
     $invitations = objects::ls(
       'invitation',
-      array(
+      [
         'fdInvitationFormDN'  => 1
-      ),
+      ],
       $entry['fdRegistrationInvitationDN'],
       '', FALSE, 'base'
     );
@@ -320,7 +320,7 @@ class registrationManagement extends management
     /* Search for the form object */
     $forms = objects::ls(
       'publicForm',
-      array(
+      [
         'dn'                        => 'raw',
         'cn'                        => 1,
         'fdPublicFormTitle'         => 1,
@@ -330,7 +330,7 @@ class registrationManagement extends management
         'fdPublicFormTemplateDN'    => 1,
         'fdPublicFormPrivate'       => 1,
         'fdPublicFormCreationBase'  => 1
-      ),
+      ],
       $invitation['fdInvitationFormDN'],
       '', FALSE, 'base'
     );

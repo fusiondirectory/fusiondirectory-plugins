@@ -43,11 +43,11 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
           $type = $match[3];
           break;
       }
-      return array(
+      return [
         $type,
         $fingerprint,
         $comment
-      );
+      ];
     }
     return parent::getArrayValue();
   }
@@ -77,30 +77,30 @@ class sshAccount extends simplePlugin
 
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('SSH'),
       'plDescription'   => _('Edit user\'s SSH public keys'),
       'plSelfModify'    => TRUE,
-      'plDepends'       => array('posixAccount'),
+      'plDepends'       => ['posixAccount'],
       'plPriority'      => 6,
-      'plObjectClass'   => array('ldapPublicKey'),
-      'plObjectType'    => array('user'),
+      'plObjectClass'   => ['ldapPublicKey'],
+      'plObjectType'    => ['user'],
       'plIcon'          => 'geticon.php?context=applications&icon=ssh&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=ssh&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('SSH Keys'),
         'icon'  => 'geticon.php?context=status&icon=dialog-password&size=16',
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new OrderedArrayAttribute(
             new SSHPublicKeyAttribute(
               '', _('SSH public keys for this user'),
@@ -108,20 +108,20 @@ class sshAccount extends simplePlugin
             ),
             // no order
             FALSE,
-            array(),
+            [],
             // edit enabled
             TRUE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function check (): array
   {
     $message = parent::check();
 
-    $fingerprints = array();
+    $fingerprints = [];
     $values = $this->attributesAccess['sshPublicKey']->getValue();
     foreach ($values as $value) {
       $this->attributesAccess['sshPublicKey']->attribute->setValue($value);

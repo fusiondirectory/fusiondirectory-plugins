@@ -43,11 +43,11 @@ class InventoryOperatingSystemColumn extends LinkColumn
       return $entry->cache[__CLASS__]['value'];
     }
 
-    $trans = array();
+    $trans = [];
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($entry->dn);
-    $ldap->search('(objectClass=fdInventoryOPERATINGSYSTEM)', array('fdInventoryNAME','fdInventoryFQDN'), 'one');
+    $ldap->search('(objectClass=fdInventoryOPERATINGSYSTEM)', ['fdInventoryNAME','fdInventoryFQDN'], 'one');
     while ($attrs = $ldap->fetch()) {
       $link = $attrs['fdInventoryNAME'][0];
       if (isset($attrs['fdInventoryFQDN'][0])) {

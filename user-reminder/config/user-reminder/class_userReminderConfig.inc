@@ -22,22 +22,22 @@ class userReminderConfig extends simplePlugin
 {
   static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('User reminder'),
       'plDescription'   => _('Configuration for the reminder of accounts expiration'),
-      'plObjectClass'   => array('fdUserReminderPluginConf'),
-      'plObjectType'    => array('configuration'),
+      'plObjectClass'   => ['fdUserReminderPluginConf'],
+      'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('User reminder settings'),
-        'attrs' => array(
+        'attrs' => [
           new IntAttribute(
             _('Delay before expiration'), _('Days before expiration to send the first mail'),
             'fdUserReminderAlertDelay', TRUE,
@@ -63,11 +63,11 @@ class userReminderConfig extends simplePlugin
             'fdUserReminderUseAlternate', TRUE,
             TRUE
           ),
-        )
-      ),
-      'emailppolicy' => array(
+        ]
+      ],
+      'emailppolicy' => [
         'name'  => _('Ppolicy email settings'),
-        'attrs' => array(
+        'attrs' => [
           new BooleanAttribute(
             _('Forward alerts to the manager'), _('Forward ppolicy alerts to the manager'),
             'fdUserReminderForwardPpolicyAlert', FALSE,
@@ -89,11 +89,11 @@ class userReminderConfig extends simplePlugin
               (empty($_SERVER['REQUEST_URI']) ? $_SERVER['PATH_INFO'] : $_SERVER['REQUEST_URI']).
               "\n")
           )
-        )
-      ),
-      'email1' => array(
+        ]
+      ],
+      'email1' => [
         'name'  => _('Alert email settings'),
-        'attrs' => array(
+        'attrs' => [
           new BooleanAttribute(
             _('Forward alerts to the manager'), _('Forward alerts to the manager'),
             'fdUserReminderForwardAlert', TRUE,
@@ -115,11 +115,11 @@ class userReminderConfig extends simplePlugin
               (empty($_SERVER['REQUEST_URI']) ? $_SERVER['PATH_INFO'] : $_SERVER['REQUEST_URI']).
               '/expired_postpone.php?uid=%2$s&token=%3$s'."\n")
           )
-        )
-      ),
-      'email2' => array(
+        ]
+      ],
+      'email2' => [
         'name'  => _('Confirmation email settings'),
-        'attrs' => array(
+        'attrs' => [
           new BooleanAttribute(
             _('Forward confirmation to the manager'), _('Forward account extension confirmation to the manager'),
             'fdUserReminderForwardConfirmation', TRUE,
@@ -141,9 +141,9 @@ class userReminderConfig extends simplePlugin
             FALSE,
             'ou=reminder'
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
