@@ -26,8 +26,6 @@
  * */
 class fdRPCService
 {
-  public $ldap;
-
   function __construct ()
   {
   }
@@ -131,12 +129,6 @@ class fdRPCService
     } else {
       static::initiateRPCSession(array_shift($params));
     }
-
-    $this->ldap = $config->get_ldap_link();
-    if (!$this->ldap->success()) {
-      throw new FusionDirectoryException('Ldap error: '.$this->ldap->get_error());
-    }
-    $this->ldap->cd($config->current['BASE']);
 
     return call_user_func_array([$this, '_'.$method], $params);
   }
