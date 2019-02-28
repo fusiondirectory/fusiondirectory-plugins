@@ -91,11 +91,14 @@ class fdRPCService
       }
       if ($user !== NULL) {
         $ui = ldap_login_user($user, $pwd);
+        if (!$ui) {
+          static::authenticateHeader('Invalid user or pwd '.$user.'/'.$pwd);
+        }
       } else {
         $ui = ldap_login_user($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
-      }
-      if (!$ui) {
-        static::authenticateHeader('Invalid user or pwd '.$_SERVER['PHP_AUTH_USER'].'/'.$_SERVER['PHP_AUTH_PW']);
+        if (!$ui) {
+          static::authenticateHeader('Invalid user or pwd '.$_SERVER['PHP_AUTH_USER'].'/'.$_SERVER['PHP_AUTH_PW']);
+        }
       }
       session::global_set('LOGIN', TRUE);
       $plist = new pluglist();

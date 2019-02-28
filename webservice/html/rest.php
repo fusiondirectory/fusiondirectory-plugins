@@ -28,14 +28,14 @@
 ini_set('session.use_cookies', 0);
 ini_set('session.use_only_cookies', 1);
 
-require_once("../include/php_setup.inc");
-require_once("functions.inc");
-require_once("variables.inc");
-require_once("webservice/class_fdRPCService.inc");
+require_once('../include/php_setup.inc');
+require_once('functions.inc');
+require_once('variables.inc');
+require_once('webservice/class_fdRPCService.inc');
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: Content-Type, Session-Token, Authorization");
-header("Access-Control-Allow-Methods: GET, POST, DELETE, PUT");
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: Content-Type, Session-Token, Authorization, Access-Control-Allow-Headers, X-Requested-With');
+header('Access-Control-Allow-Methods: GET, POST, DELETE, PUT, OPTIONS');
 
 /*!
  * \brief This class is the JSON-RPC webservice of FusionDirectory
@@ -53,6 +53,11 @@ class fdRestService extends fdRPCService
     $request  = explode('/', trim($_SERVER['PATH_INFO'], '/'));
     $input    = json_decode(file_get_contents('php://input'), TRUE);
 
+    if ($method == 'OPTIONS') {
+      /* Used by some GUI to get headers */
+      exit;
+    }
+
     if ($request[0] == 'login') {
       /* Login method have the following parameters: LDAP, user, password */
       static::initiateRPCSession(
@@ -66,6 +71,7 @@ class fdRestService extends fdRPCService
     } elseif ($request[0] != 'ldaps') {
       static::initiateRPCSession($_SERVER['HTTP_SESSION_TOKEN']);
     }
+    Language::setHeaders(session::global_get('lang'), 'application/json');
 
     if (count($request) == 0) {
       http_response_code(400);
