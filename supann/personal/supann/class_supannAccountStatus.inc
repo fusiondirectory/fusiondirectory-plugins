@@ -142,10 +142,10 @@ class supannAccountStatus extends simplePlugin
   /* Update choices of fields which depends on other fields values */
   function updateFieldsChoices ()
   {
-    $substatus = $this->substatus[$this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[1]->getValue()];
+    $substatusChoices = $this->substatus[$this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[1]->getValue()];
     $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[2]->setChoices(
-      array_keys($substatus),
-      array_values($substatus)
+      array_keys($substatusChoices),
+      array_values($substatusChoices)
     );
   }
 }
