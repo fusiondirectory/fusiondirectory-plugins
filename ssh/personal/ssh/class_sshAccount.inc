@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
 class SSHPublicKeyAttribute extends FileTextAreaAttribute
 {
   /* cache for key extracted information */
-  protected $format = '/^([-[:alnum:]=",.]+\s+)?(disabled-)?(ssh-(dss|rsa)|ecdsa-sha2-nistp\d{3})\s+([[:alnum:]+\/.=]+)(\s+([[:graph:][:space:]]+))?\s*$/';
+  protected $format = '/^([-[:alnum:]=",.]+\s+)?(disabled-)?(ssh-(dss|rsa|ed25519)|ecdsa-sha2-nistp\d{3})\s+([[:alnum:]+\/.=]+)(\s+([[:graph:][:space:]]+))?\s*$/';
 
   function getArrayValue ()
   {
@@ -32,13 +32,16 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
       switch ($match[3]) {
         case 'ssh-dss':
           $type = 'DSA';
-        break;
+          break;
         case 'ssh-rsa':
           $type = 'RSA';
-        break;
+          break;
+        case 'ssh-ed25519':
+          $type = 'Ed25519';
+          break;
         default:
           $type = $match[3];
-        break;
+          break;
       }
       return array(
         $type,
@@ -123,8 +126,8 @@ class sshAccount extends simplePlugin
     foreach ($values as $value) {
       $this->attributesAccess['sshPublicKey']->attribute->setValue($value);
       $arrayValue = $this->attributesAccess['sshPublicKey']->attribute->getArrayValue();
-      if (in_array($arrayValue[1],$fingerprints)) {
-        $message[] = sprintf(_('Error : there are several keys with fingerprint %s'),$arrayValue[1]);
+      if (in_array($arrayValue[1], $fingerprints)) {
+        $message[] = sprintf(_('Error : there are several keys with fingerprint %s'), $arrayValue[1]);
       } else {
         $fingerprints[] = $arrayValue[1];
       }

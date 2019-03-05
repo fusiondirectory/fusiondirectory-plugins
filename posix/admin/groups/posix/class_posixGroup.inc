@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -175,7 +175,10 @@ class posixGroup extends simplePlugin
       }
     }
 
-    parent::prepare_save();
+    $errors = parent::prepare_save();
+    if (!empty($errors)) {
+      return $errors;
+    }
 
     if ($this->trustMode == 'fullaccess') {
       $this->attrs['host'] = array('*');
@@ -187,6 +190,8 @@ class posixGroup extends simplePlugin
     } elseif (($this->trustMode == "") && (($key = array_search('hostObject', $this->attrs['objectClass'])) !== FALSE)) {
       unset($this->attrs['objectClass'][$key]);
     }
+
+    return $errors;
   }
 
   function save()

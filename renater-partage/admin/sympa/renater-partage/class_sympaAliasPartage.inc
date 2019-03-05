@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017 FusionDirectory
+  Copyright (C) 2017-2018 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -92,7 +92,11 @@ class sympaAliasPartage extends simplePlugin
     if (($name == 'cn') && isset($this->parent)) {
       return $this->parent->getBaseObject()->$name;
     } elseif (($name == 'mail') && isset($this->parent)) {
-      return $this->parent->getBaseObject()->cn.'@'.$this->getEmailDomain();
+      $cn = $this->parent->getBaseObject()->cn;
+      if (preg_match('/^(.*)@[^@]+$/', $cn, $m)) {
+        $cn = $m[1];
+      }
+      return $cn.'@'.$this->getEmailDomain();
     } else {
       /* Calling default behaviour */
       return parent::__get($name);
@@ -132,6 +136,17 @@ class sympaAliasPartage extends simplePlugin
     }
     $this->mailMethod = mailMethod::getInstance($method, $this, 'sympaAlias');
     $this->mailMethod->fixAttributesOnLoad();
+  }
+
+  function check ()
+  {
+    $messages = parent::check();
+
+    if (!$this->is_template && is_object($this->mailMethod)) {
+      $messages = array_merge($messages, $this->mailMethod->check());
+    }
+
+    return $messages;
   }
 
   protected function shouldSave()

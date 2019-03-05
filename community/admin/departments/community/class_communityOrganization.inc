@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016  FusionDirectory
+  Copyright (C) 2016-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -45,6 +45,10 @@ class communityOrganization extends simplePlugin
             _('Membership type'), _('Membership type of this organization'),
             'fdCommunityMembershipType', FALSE,
             $config->get_cfg_value('communityMembershipTypeChoices', array())
+          ),
+          new BooleanAttribute (
+            _('Agreement signed'), _('Did this member returned the agreement signed'),
+            'fdCommunityMembershipAgreement', FALSE
           ),
           new BooleanAttribute (
             _('Active'), _('Is the membership of this organization active'),

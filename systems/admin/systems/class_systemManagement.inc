@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -93,9 +93,11 @@ class systemManagement extends simpleManagement
         'label' => $data['name'],
         );
       }
+      $this->registerAction('ping', 'pingSystems');
     } else {
       unset($this->headpage->xmlData['actionmenu']['action'][2]);
       unset($this->headpage->xmlData['actionmenu']['action'][3]);
+      unset($this->headpage->xmlData['actionmenu']['action'][4]);
       $this->headpage->xmlData['actionmenu']['action'] = array_values($this->headpage->xmlData['actionmenu']['action']);
     }
     $this->registerAction('saveEvent', 'saveEventDialog');
@@ -166,20 +168,75 @@ class systemManagement extends simpleManagement
     // Prepare event to be added
     $events   = argonautEventTypes::get_event_types();
     if (isset($events[$event])) {
-      $this->dialogObject = new argonautAction($event, $mac);
+      $this->dialogObject = new argonautAction($event, $mac, !$triggered);
 
       if ($triggered) {
-        $this->dialogObject->scheduled = FALSE;
         $res = $o_queue->append($this->dialogObject);
         if ($o_queue->is_error()) {
           msg_dialog::display(_('Infrastructure service'), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
         } else {
-          msg_dialog::display(_('Action triggered'), sprintf(_('Action called without error (result was "%s")'), $res), INFO_DIALOG);
+          if (is_array($res) && (count($res) > 1)) {
+            msg_dialog::display(_('Action triggered'), sprintf(_('Action called without error (results were "%s")'), implode(', ', $res)), INFO_DIALOG);
+          } else {
+            if (is_array($res)) {
+              $res = $res[0];
+            }
+            msg_dialog::display(_('Action triggered'), sprintf(_('Action called without error (result was "%s")'), $res), INFO_DIALOG);
+          }
         }
         $this->closeDialogs();
-      } else {
-        $this->dialogObject->scheduled = TRUE;
       }
+    }
+  }
+
+  /*! \brief Ping those systems and show the result in the list
+   */
+  function pingSystems($action, array $target)
+  {
+    if (!$this->siActive) {
+      return;
+    }
+
+    $headpage = $this->getHeadpage();
+    $macs     = array();
+
+    // Collect target mac addresses
+    foreach ($target as $dn) {
+      $obj = $headpage->getEntry($dn);
+      if (isset($obj['macAddress'][0])) {
+        $macs[$dn] = $obj['macAddress'][0];
+      } else {
+        msg_dialog::display(_('Action canceled'), sprintf(_('System %s has no mac address defined, cannot trigger action'), $dn), ERROR_DIALOG);
+      }
+    }
+
+    if (count($macs) == 0) {
+      return;
+    }
+
+    $o_queue  = new supportDaemon();
+
+    $res = $o_queue->append_call('ping', array_values($macs), array('fullresult' => 1));
+    if ($o_queue->is_error()) {
+      msg_dialog::display(_('Infrastructure service'), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+    } else {
+      $dns = array_flip($macs);
+      $msg = '';
+      if (!empty($res['results'])) {
+        $msg .= '<ul>'."\n";
+        foreach ($res['results'] as $mac => $on) {
+          $msg .= '<li style="list-style-type:'.($on ? 'disc' : 'circle').';">'.objects::link($dns[$mac], $this->getType($dns[$mac])).' - '.($on ? 'On' : 'Off').'</li>'."\n";
+        }
+        $msg .= "</ul>\n";
+      }
+      if (!empty($res['errors'])) {
+        $msg .= '<ul style="list-style-type:square;">'."\n";
+        foreach ($res['errors'] as $mac => $error) {
+          $msg .= '<li>'.objects::link($dns[$mac], $this->getType($dns[$mac])).' - '.$error.'</li>'."\n";
+        }
+        $msg .= "</ul>\n";
+      }
+      msg_dialog::display(_('Ping results'), $msg, INFO_DIALOG);
     }
   }
 

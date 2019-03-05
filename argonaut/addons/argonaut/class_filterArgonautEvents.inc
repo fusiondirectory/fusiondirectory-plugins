@@ -2,7 +2,7 @@
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -46,12 +46,20 @@ class filterArgonautEvents extends  filterLDAP
     $ui   = get_userinfo();
 
 
-    $acl_base = $config->current['BASE'];
-    $acl_is_writeable   = preg_match('/w/', $ui->get_permissions($acl_base, "argonautQueue/argonautQueue", "0"));
-    $acl_is_removeable  = preg_match('/d/', $ui->get_permissions($acl_base, "argonautQueue/argonautQueue", "0"));
-    $acl_is_readable    = preg_match('/r/', $ui->get_permissions($acl_base, "argonautQueue/argonautQueue", "0"));
-
     foreach ($entries as $entry) {
+      if (isset($entry['TARGETDN'])) {
+        $acl_base = $entry['TARGETDN'];
+      } else {
+        $acl_base = $config->current['BASE'];
+      }
+
+      $acl_is_writeable   = preg_match('/w/', $ui->get_permissions($acl_base, "argonautQueue/argonautQueue", "0"));
+      $acl_is_removeable  = preg_match('/d/', $ui->get_permissions($acl_base, "argonautQueue/argonautQueue", "0"));
+      $acl_is_readable    = preg_match('/r/', $ui->get_permissions($acl_base, "argonautQueue/argonautQueue", "0"));
+
+      if (!$acl_is_readable) {
+        continue;
+      }
 
       // Detect entry status
       $entry['objectClass'][] = "FAKE_OC__gotoEvent";
@@ -76,12 +84,6 @@ class filterArgonautEvents extends  filterLDAP
         $entry['objectClass'][] = "FAKE_OC__processNow";
       }
 
-      /* Add logview button, currently ever.
-       */
-      if ($acl_is_readable) {
-        $entry['objectClass'][] = "FAKE_OC__viewLogs";
-      }
-
       /* If PAUSED or WAITING add edit action
        */
       if (in_array($entry['STATUS'], array("waiting")) && $acl_is_writeable) {
@@ -93,6 +95,12 @@ class filterArgonautEvents extends  filterLDAP
        */
       if (in_array($entry['STATUS'], array("processing")) && preg_match("/install/", $entry['HEADERTAG']) && $acl_is_writeable) {
         $entry['objectClass'][] = "FAKE_OC__abort";
+      }
+
+      /* If ERROR add retry action
+       */
+      if (in_array($entry['STATUS'], array("error")) && $acl_is_writeable) {
+        $entry['objectClass'][] = "FAKE_OC__retry";
       }
 
       /* If WAITING or ERROR add remove action

@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:24+0000\n"
+"POT-Creation-Date: 2019-01-30 17:20+0000\n"
+"PO-Revision-Date: 2016-08-29 15:08+0000\n"
 "Last-Translator: Jonah Bohlmann <jokabo66@gmail.com>, 2018\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
 "MIME-Version: 1.0\n"
@@ -26,12 +26,12 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:39
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:39
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:39
-#: admin/systems/class_dhcpSystem.inc:280
+#: admin/systems/class_dhcpSystem.inc:291
 msgid "DHCP"
 msgstr "DHCP"
 
 #: admin/dhcp/class_dhcpPlugin.inc:34
-#: admin/dhcp/class_dhcpConfiguration.inc:246
+#: admin/dhcp/class_dhcpConfiguration.inc:245
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:42
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:42
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:42
@@ -111,22 +111,22 @@ msgstr "DHCP Subnetz verwerfen"
 msgid "Fold"
 msgstr "Klappen"
 
+#: admin/dhcp/class_dhcpConfiguration.inc:110
 #: admin/dhcp/class_dhcpConfiguration.inc:111
-#: admin/dhcp/class_dhcpConfiguration.inc:112
 msgid "Insert new DHCP section"
 msgstr "Füge neue DHCP-Sektion ein"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:366
-#: admin/dhcp/class_dhcpConfiguration.inc:407
-#: admin/dhcp/class_dhcpConfiguration.inc:576
+#: admin/dhcp/class_dhcpConfiguration.inc:365
+#: admin/dhcp/class_dhcpConfiguration.inc:405
+#: admin/dhcp/class_dhcpConfiguration.inc:570
 msgid "Global options"
 msgstr "Globale Optionen"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:422
+#: admin/dhcp/class_dhcpConfiguration.inc:420
 msgid "Error"
 msgstr "Fehler"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:422
+#: admin/dhcp/class_dhcpConfiguration.inc:420
 msgid ""
 "The DHCP configuration set is unkown. Please contact your system "
 "administrator."
@@ -134,65 +134,65 @@ msgstr ""
 "Der DHCP-Konfigurationssatz ist unbekannt. Bitte benachrichtigen Sie Ihren "
 "System-Administrator."
 
-#: admin/dhcp/class_dhcpConfiguration.inc:532
+#: admin/dhcp/class_dhcpConfiguration.inc:530
+#: admin/dhcp/class_dhcpConfiguration.inc:531
 #: admin/dhcp/class_dhcpConfiguration.inc:533
-#: admin/dhcp/class_dhcpConfiguration.inc:535
 #: config/dhcp/class_dhcpConfig.inc:28
 msgid "DHCP configuration"
 msgstr "DHCP-Konfiguration"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:554
+#: admin/dhcp/class_dhcpConfiguration.inc:552
 msgid "DHCP Objects"
 msgstr "DHCP-Objekte"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:564
+#: admin/dhcp/class_dhcpConfiguration.inc:558
 msgid "The DHCP sections handled by this server"
-msgstr "DHCP Bereiche, welche von diesem Server verwaltet werden"
+msgstr "Die DHCP Bereiche, welche von diesem Server verwaltet werden"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:575
+#: admin/dhcp/class_dhcpConfiguration.inc:569
 msgid "Logging"
 msgstr "Protokollierung"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:577
+#: admin/dhcp/class_dhcpConfiguration.inc:571
 msgid "Class"
 msgstr "Klasse"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:578
+#: admin/dhcp/class_dhcpConfiguration.inc:572
 msgid "Subclass"
 msgstr "Subklasse"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:579
+#: admin/dhcp/class_dhcpConfiguration.inc:573
 #: admin/dhcp/sections/class_dhcpHost.inc:40
 msgid "Host"
 msgstr "System"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:580
+#: admin/dhcp/class_dhcpConfiguration.inc:574
 msgid "Group"
 msgstr "Gruppe"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:581
+#: admin/dhcp/class_dhcpConfiguration.inc:575
 #: admin/dhcp/sections/class_dhcpPool.inc:39
 msgid "Pool"
 msgstr "Vorrat"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:582
+#: admin/dhcp/class_dhcpConfiguration.inc:576
 #: admin/dhcp/sections/class_dhcpSubnet.inc:39
 msgid "Subnet"
 msgstr "Subnetz"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:583
+#: admin/dhcp/class_dhcpConfiguration.inc:577
 msgid "Failover peer"
 msgstr "Host für Ausfallsicherung"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:584
+#: admin/dhcp/class_dhcpConfiguration.inc:578
 msgid "Shared network"
 msgstr "Verteiltes Netzwerk"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:585
+#: admin/dhcp/class_dhcpConfiguration.inc:579
 msgid "DNS update key"
 msgstr "DNS-Update-Schlüssel"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:586
+#: admin/dhcp/class_dhcpConfiguration.inc:580
 msgid "DNS update zones"
 msgstr "DNS-Update-Zonen"
 
@@ -234,7 +234,7 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpSharedNetwork.inc:28
 #: admin/dhcp/sections/class_dhcpSharedNetwork.inc:29
 msgid "DHCP shared network"
-msgstr "Geteiltes DHCP Netzwerk"
+msgstr "Geteilte DHCP Netzwerk"
 
 #: admin/dhcp/sections/class_dhcpPool.inc:28
 #: admin/dhcp/sections/class_dhcpPool.inc:29
@@ -267,12 +267,12 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpGroup.inc:28
 #: admin/dhcp/sections/class_dhcpGroup.inc:29
 msgid "DHCP group"
-msgstr ""
+msgstr "DHCP-Gruppe"
 
 #: admin/dhcp/sections/class_dhcpClass.inc:28
 #: admin/dhcp/sections/class_dhcpClass.inc:29
 msgid "DHCP class"
-msgstr ""
+msgstr "DHCP-Klasse"
 
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:28
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:29
@@ -297,8 +297,8 @@ msgstr ""
 
 #: admin/dhcp/sections/class_dhcpService.inc:28
 #: admin/dhcp/sections/class_dhcpService.inc:29
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:46
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:47
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:28
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:29
 msgid "DHCP service"
 msgstr "DHCP Dienst"
 
@@ -321,7 +321,7 @@ msgstr "Sekundärer DHCP-Server"
 #: admin/dhcp/sections/class_dhcpSubClass.inc:28
 #: admin/dhcp/sections/class_dhcpSubClass.inc:29
 msgid "DHCP subclass"
-msgstr ""
+msgstr "DHCP-Subklasse"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:28
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:29
@@ -427,7 +427,7 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpSubnet.inc:28
 #: admin/dhcp/sections/class_dhcpSubnet.inc:29
 msgid "DHCP subnet"
-msgstr ""
+msgstr "DHCP-Subnetz"
 
 #: admin/dhcp/sections/class_dhcpSubnet.inc:42
 msgid "Mask length"
@@ -454,7 +454,7 @@ msgstr ""
 
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:46
 msgid "DNS Zone Server"
-msgstr "DNS Zone Server"
+msgstr "DNS-Zonenserver"
 
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:46
 msgid "Master server of the DNS Zone"
@@ -468,26 +468,14 @@ msgstr ""
 msgid "The TSig key DN"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:29
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:43
 msgid "DHCP configurations"
 msgstr "DHCP-Konfigurationen"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:34
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:48
 msgid ""
 "The DN of dhcpService object(s) which contain the configuration information"
 msgstr ""
-
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:55
-msgid "Start service"
-msgstr "Dienst starten"
-
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:57
-msgid "Stop service"
-msgstr "Dienst stoppen"
-
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:59
-msgid "Restart service"
-msgstr "Dienst neustarten"
 
 #: admin/systems/class_dhcpSystem.inc:32
 msgid ""
@@ -495,40 +483,52 @@ msgid ""
 msgstr ""
 
 #: admin/systems/class_dhcpSystem.inc:36
-#: admin/systems/class_dhcpSystem.inc:109
+#: admin/systems/class_dhcpSystem.inc:115
 msgid "The Mac address to use in the DHCP host record"
 msgstr ""
 
 #: admin/systems/class_dhcpSystem.inc:40
-#: admin/systems/class_dhcpSystem.inc:114
+#: admin/systems/class_dhcpSystem.inc:120
 msgid "The IP address to use in the DHCP host record"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:228
+#: admin/systems/class_dhcpSystem.inc:54
+msgid "Parent"
+msgstr ""
+
+#: admin/systems/class_dhcpSystem.inc:55
+msgid "Mac"
+msgstr ""
+
+#: admin/systems/class_dhcpSystem.inc:56
+msgid "IP"
+msgstr "IP"
+
+#: admin/systems/class_dhcpSystem.inc:233
 #, php-format
 msgid ""
 "\"%s\" is locked (by \"%s\" since %s), could not save modifications to this "
 "DHCP configuration"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:251
+#: admin/systems/class_dhcpSystem.inc:256
 #, php-format
 msgid "The value for multivaluated field \"%s\" is not an array"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:281
+#: admin/systems/class_dhcpSystem.inc:292
 msgid "Edit the DHCP zones of a system"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:295
+#: admin/systems/class_dhcpSystem.inc:306
 msgid "DHCP zones"
 msgstr "DHCP-Zonen"
 
-#: admin/systems/class_dhcpSystem.inc:299
+#: admin/systems/class_dhcpSystem.inc:310
 msgid "DHCP hosts declared for this system"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:363
+#: admin/systems/class_dhcpSystem.inc:374
 #, php-format
 msgid "The ip %s is not in the network %s/%d"
 msgstr ""

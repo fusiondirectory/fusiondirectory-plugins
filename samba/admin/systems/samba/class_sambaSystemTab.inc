@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2017  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ class sambaSystemTab extends simplePlugin
       'plDescription' => _('Windows workstation information'),
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('workstation'),
-      'plPriority'    => 5,
+      'plPriority'    => 6,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
@@ -111,7 +111,10 @@ class sambaSystemTab extends simplePlugin
   {
     global $config;
     $this->update_uid();
-    parent::prepare_save();
+    $errors = parent::prepare_save();
+    if (!empty($errors)) {
+      return $errors;
+    }
 
     // Check if the sambaSID exist and that it is correct
     // If not get it from config and generate a new sid
@@ -133,6 +136,8 @@ class sambaSystemTab extends simplePlugin
       $this->attrs['sambaSID']  = $sid;
       $this->attrs['uidNumber'] = $uidNumber + $this->ridBase;
     }
+
+    return $errors;
   }
 }
 ?>

@@ -4,14 +4,21 @@
 
 # Attributes
 attributetype ( 1.3.6.1.4.1.38414.30.1.1 NAME 'fdWebLinkProtocol'
-  DESC 'Fusion Directory - Web link protocol'
+  DESC 'FusionDirectory - Web link protocol'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.30.1.2 NAME 'fdWebLinkURL'
+  DESC 'FusionDirectory - An arbitrary web URL'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
 # Object Class
 objectclass ( 1.3.6.1.4.1.38414.30.2.1 NAME 'webLink'
-  DESC 'weblink'
+  DESC 'FusionDirectory - weblink tab'
   SUP top AUXILIARY
-  MUST ( fdWebLinkProtocol ) )
+  MUST ( fdWebLinkProtocol )
+  MAY ( fdWebLinkURL ) )
 

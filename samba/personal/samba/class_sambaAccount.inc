@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -500,7 +500,12 @@ class sambaAccount extends simplePlugin
   function prepare_save()
   {
     global $config;
-    parent::prepare_save();
+
+    $errors = parent::prepare_save();
+    if (!empty($errors)) {
+      return $errors;
+    }
+
     /* Load uid and gid of this 'dn' */
     $posixAccount = $this->parent->by_object['posixAccount'];
     $uidNumber    = $posixAccount->uidNumber;
@@ -605,6 +610,8 @@ class sambaAccount extends simplePlugin
         $this->attrs['sambaKickoffTime'] = array();
       }
     }
+
+    return $errors;
   }
 
   function adapt_from_template($attrs, $skip = array())

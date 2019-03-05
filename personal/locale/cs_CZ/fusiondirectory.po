@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:30+0000\n"
+"POT-Creation-Date: 2019-01-30 17:21+0000\n"
+"PO-Revision-Date: 2016-08-29 15:16+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr "Nastavení zásuvného modulu Osobní pro FusionDirectory"
 #: config/personal/class_personalConfig.inc:42
 #: personal/personal/class_personalInfo.inc:85
 msgid "Personal"
-msgstr "osobní"
+msgstr "Osobní"
 
 #: config/personal/class_personalConfig.inc:45
 msgid "Allow use of private email for password recovery"
@@ -62,7 +62,7 @@ msgstr "Identifikátor tohoto uživatele na tomto webu"
 
 #: personal/personal/class_personalInfo.inc:86
 msgid "Personal information"
-msgstr "osobní informace"
+msgstr "Osobní údaje"
 
 #: personal/personal/class_personalInfo.inc:101
 msgid "Personal info"
@@ -106,23 +106,23 @@ msgstr "Pohlaví"
 
 #: personal/personal/class_personalInfo.inc:128
 msgid "Country"
-msgstr "země"
+msgstr "Země"
 
 #: personal/personal/class_personalInfo.inc:132
 msgid "Start date"
-msgstr ""
+msgstr "Datum začátku"
 
 #: personal/personal/class_personalInfo.inc:132
 msgid "Date this user joined the company"
-msgstr ""
+msgstr "Datum kdy uživatel nastoupil do organizace"
 
 #: personal/personal/class_personalInfo.inc:137
 msgid "End date"
-msgstr ""
+msgstr "Datum ukončení"
 
 #: personal/personal/class_personalInfo.inc:137
 msgid "Date this user is supposed to leave the company"
-msgstr "Datum kdy má tento uživatel opouštět společnost"
+msgstr "Datum kdy má tento uživatel opouštět organizaci"
 
 #: personal/personal/class_personalInfo.inc:142
 msgid "Photo Visible"
@@ -134,7 +134,7 @@ msgstr "Zda má být foto uživatele viditelné pro vnější nástroje"
 
 #: personal/personal/class_personalInfo.inc:148
 msgid "Contact"
-msgstr "kontakt"
+msgstr "Kontakt"
 
 #: personal/personal/class_personalInfo.inc:152
 msgid "Social account"
@@ -175,3 +175,14 @@ msgstr "Diaspora účet má podobu uživatel@server"
 #: personal/personal/class_socialHandlers.inc:141
 msgid "LinkedIn"
 msgstr "LinkedIn"
+
+#: personal/personal/class_socialHandlers.inc:151
+msgid "ORCID"
+msgstr "ORCID"
+
+#: personal/personal/class_socialHandlers.inc:164
+msgid ""
+"ORCID account IDs must look like XXXX-XXXX-XXXX-XXXX where X are digits"
+msgstr ""
+"Je třeba, aby identifikátory ORCID účtu měly podobu XXXX-XXXX-XXXX-XXXX, kde"
+" X jsou číslice"

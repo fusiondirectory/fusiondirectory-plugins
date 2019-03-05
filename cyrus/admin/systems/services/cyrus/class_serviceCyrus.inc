@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceCyrus extends simpleService
+class serviceCyrus extends simpleMailMethodService
 {
   var $objectclasses = array('fdCyrusServer');
 
@@ -110,18 +110,6 @@ class serviceCyrus extends simpleService
         )
       )
     );
-  }
-
-  protected function post_save()
-  {
-    parent::post_save();
-    mailMethod::resetMailServersCache();
-  }
-
-  protected function post_remove ()
-  {
-    parent::post_remove();
-    mailMethod::resetMailServersCache();
   }
 }
 ?>

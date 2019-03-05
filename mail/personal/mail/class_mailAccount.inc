@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2007  Fabian Hicker
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -197,6 +197,15 @@ class mailAccount extends simplePlugin
     }
   }
 
+  function is_this_account($attrs)
+  {
+    if (parent::is_this_account($attrs)) {
+      return TRUE;
+    } else {
+      return !empty($attrs['mail'][0]);
+    }
+  }
+
   /* We need $mailAccount->uid to return the uid for mailMethod */
   public function __get($name)
   {
@@ -220,6 +229,15 @@ class mailAccount extends simplePlugin
       /* Calling default behaviour */
       return parent::__isset($name);
     }
+  }
+
+  function foreignKeyUpdate ($field, $oldvalue, $newvalue, $source)
+  {
+    if ($field == 'gosaMailServer') {
+      mailMethod::resetMailServersCache();
+      $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
+    }
+    parent::foreignKeyUpdate ($field, $oldvalue, $newvalue, $source);
   }
 
   public function mailServerChanged()
@@ -266,11 +284,46 @@ class mailAccount extends simplePlugin
       $this->attributesAccess['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
     }
 
-    if (!$this->mailMethod->vacationEnabled()) {
-      $this->attributesAccess['flag_vacation']->setValue(FALSE);
-      $this->attributesAccess['flag_vacation']->setDisabled(TRUE);
+    /* Feature switches */
+
+    if ($this->mailMethod->localOnlyEnabled()) {
+      $this->attributesAccess['flag_localonly']->setDisabled(FALSE);
+      $this->attributesAccess['flag_localonly']->setVisible(TRUE);
+    } else {
+      $this->attributesAccess['flag_localonly']->setDisabled(TRUE);
+      $this->attributesAccess['flag_localonly']->setVisible(FALSE);
+      $this->attributesAccess['flag_localonly']->setValue(FALSE);
     }
-    if (!$this->mailMethod->vacationRangeEnabled()) {
+
+    if ($this->mailMethod->forwardOnlyEnabled()) {
+      $this->attributesAccess['flag_ownmailbox']->setDisabled(FALSE);
+    } else {
+      $this->attributesAccess['flag_ownmailbox']->setDisabled(TRUE);
+      $this->attributesAccess['flag_ownmailbox']->setValue(FALSE);
+    }
+
+    if ($this->mailMethod->vacationEnabled()) {
+      $this->attributesAccess['flag_vacation']->setDisabled(FALSE);
+      $this->attributesAccess['flag_vacation']->setVisible(TRUE);
+    } else {
+      $this->attributesAccess['flag_vacation']->setDisabled(TRUE);
+      $this->attributesAccess['flag_vacation']->setVisible(FALSE);
+      $this->attributesAccess['flag_vacation']->setValue(FALSE);
+    }
+
+    if ($this->mailMethod->vacationRangeEnabled()) {
+      $this->attributesAccess['gosaVacationStop']->setDisabled(FALSE);
+      $this->attributesAccess['gosaVacationStart']->setDisabled(FALSE);
+      $this->attributesAccess['flag_vacation']->setManagedAttributes (
+        array (
+          'erase' => array (
+            FALSE => array (
+              'gosaVacationStart','gosaVacationStop','gosaVacationMessage'
+            )
+          )
+        )
+      );
+    } else {
       $this->attributesAccess['gosaVacationStart']->setDisabled(TRUE);
       $this->attributesAccess['gosaVacationStart']->setVisible(FALSE);
       $this->attributesAccess['gosaVacationStart']->setValue('');
@@ -286,17 +339,18 @@ class mailAccount extends simplePlugin
           )
         )
       );
-    } else {
-      $this->attributesAccess['flag_vacation']->setManagedAttributes (
-        array (
-          'erase' => array (
-            FALSE => array (
-              'gosaVacationStart','gosaVacationStop','gosaVacationMessage'
-            )
-          )
-        )
-      );
     }
+  }
+
+  function check ()
+  {
+    $messages = parent::check();
+
+    if (!$this->is_template && is_object($this->mailMethod)) {
+      $messages = array_merge($messages, $this->mailMethod->check());
+    }
+
+    return $messages;
   }
 
   protected function shouldSave()

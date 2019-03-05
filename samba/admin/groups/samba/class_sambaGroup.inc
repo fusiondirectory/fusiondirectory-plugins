@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016  FusionDirectory
+  Copyright (C) 2013-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -28,7 +28,8 @@ class sambaGroup extends simplePlugin
     return array(
       'plShortName'   => _('Samba'),
       'plDescription' => _('Samba group settings'),
-      'plSelfModify'  => FALSE,
+      'plIcon'        => 'geticon.php?context=applications&icon=samba&size=48',
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=samba&size=16',
       'plObjectType'  => array('group'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
@@ -126,7 +127,10 @@ class sambaGroup extends simplePlugin
   function prepare_save()
   {
     global $config;
-    parent::prepare_save();
+    $errors = parent::prepare_save();
+    if (!empty($errors)) {
+      return $errors;
+    }
 
     // Generate rid / primaryGroupId
     if (!isset($config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'])) {
@@ -148,6 +152,8 @@ class sambaGroup extends simplePlugin
     } else {
       $this->attrs['sambaSID'] = $this->sambaSID;
     }
+
+    return $errors;
   }
 
   /*! \brief Get a new SambaSID for a group */

@@ -27,7 +27,7 @@
       <label>Target</label>
       <sortAttribute>MACADDRESS</sortAttribute>
       <sortType>string</sortType>
-      <value>%{filter:hostName(MACADDRESS,PLAINNAME)}</value>
+      <value>%{filter:hostName(MACADDRESS,PLAINNAME,TARGETDN,TARGETTYPE)}</value>
       <export>true</export>
     </column>
 
@@ -121,11 +121,11 @@
     </action>
 
     <action>
-      <name>viewLogs</name>
+      <name>retry</name>
       <type>entry</type>
-      <objectclass>FAKE_OC__viewLogs</objectclass>
-      <image>geticon.php?context=actions&amp;icon=view-logs&amp;size=16</image>
-      <label>View logs</label>
+      <objectclass>FAKE_OC__retry</objectclass>
+      <image>geticon.php?context=actions&amp;icon=view-refresh&amp;size=16</image>
+      <label>Retry</label>
     </action>
 
     <action>

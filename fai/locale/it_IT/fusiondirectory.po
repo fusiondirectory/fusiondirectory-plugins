@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:26+0000\n"
+"POT-Creation-Date: 2019-01-30 17:20+0000\n"
+"PO-Revision-Date: 2016-08-29 15:10+0000\n"
 "Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -110,10 +110,10 @@ msgstr "Avviabile"
 
 #: admin/fai/class_faiDiskEntry.inc:104
 msgid "preserve"
-msgstr "preserve"
+msgstr "conserva"
 
-#: admin/fai/class_faiDiskEntry.inc:146 admin/systems/class_faiLogView.inc:204
-#: admin/systems/class_faiLogView.inc:239
+#: admin/fai/class_faiDiskEntry.inc:146 admin/systems/class_faiLogView.inc:201
+#: admin/systems/class_faiLogView.inc:243
 msgid "Error"
 msgstr "Errore"
 
@@ -136,7 +136,7 @@ msgstr "Elenco della tavola delle partizioni FAI"
 
 #: admin/fai/class_faiDiskEntry.inc:238 admin/fai/class_faiDiskEntry.inc:254
 msgid "Device"
-msgstr "Dispositivi"
+msgstr "Dispositivo"
 
 #: admin/fai/class_faiDiskEntry.inc:241
 msgid "Disk name"
@@ -148,7 +148,7 @@ msgstr "Breve descrizione"
 
 #: admin/fai/class_faiDiskEntry.inc:251
 msgid "fstab key"
-msgstr "Elenco fstab"
+msgstr "chiave fstab"
 
 #: admin/fai/class_faiDiskEntry.inc:251
 msgid "Key to use in fstab file"
@@ -207,7 +207,7 @@ msgstr ""
 
 #: admin/fai/packageSelect/selectPackage-list.xml:11
 msgid "Please select the desired entries"
-msgstr "Seleziona le entries desiderate"
+msgstr "Si prega di selezionare le voci desiderate"
 
 #: admin/fai/packageSelect/selectPackage-list.xml:15
 #: admin/fai/class_faiPackage.inc:376
@@ -389,7 +389,7 @@ msgstr "Installa di nuovo"
 
 #: admin/fai/class_faiPartition.inc:316 admin/fai/class_faiPartition.inc:319
 msgid "Filesystem"
-msgstr "File system"
+msgstr "Filesystem"
 
 #: admin/fai/class_faiPartition.inc:319
 msgid "The filesystem this partition should be formatted with"
@@ -398,6 +398,10 @@ msgstr "Il filesystem con cui questa partizione dovrebbe essere formattata"
 #: admin/fai/class_faiPartition.inc:322
 msgid "swap"
 msgstr "scambiare"
+
+#: admin/fai/class_faiPartition.inc:322
+msgid "fat32"
+msgstr "fat32"
 
 #: admin/fai/class_faiPartition.inc:322
 msgid "ext2"
@@ -495,11 +499,11 @@ msgstr "tmp"
 msgid "Encryption settings"
 msgstr "Impostazioni di crittografia"
 
-#: admin/fai/class_faiPartition.inc:508
+#: admin/fai/class_faiPartition.inc:507
 msgid "Raid arrays must contain at least two partitions!"
 msgstr "Gli arrays RAID devono contenere almeno 2 partizioni !"
 
-#: admin/fai/class_faiPartition.inc:510
+#: admin/fai/class_faiPartition.inc:509
 msgid ""
 "Raid 0 arrays can only be realized with a combination of two partitions!"
 msgstr "Gli arrays RAID 0 possono essere composti solo da 2 partizioni !"
@@ -515,7 +519,7 @@ msgstr "Script FAI"
 
 #: admin/fai/class_faiScript.inc:63
 msgid "Scripts"
-msgstr "Scripts"
+msgstr "Script"
 
 #: admin/fai/class_faiScript.inc:79
 msgid "Priority"
@@ -581,8 +585,8 @@ msgid ""
 msgstr ""
 "Queste domande debconf \"%s\" vengono generate dinamicamente durante "
 "l'installazione del pacchetto e richiedono di scegliere tra le opzioni "
-"specifiche che non possono essere presentate qui. Al fine di avere effetto "
-"il testo inserito deve essere una delle scelte valide."
+"specifiche che non possono essere presentate qui. Il testo inserito deve "
+"essere una delle scelte valide affinché abbia effetto."
 
 #: admin/fai/class_faiPackage.inc:163
 msgid "Mark for installation"
@@ -599,9 +603,9 @@ msgstr "Modifica configurazione"
 #: admin/fai/class_faiPackage.inc:251 admin/fai/class_faiTemplate.inc:109
 #: admin/fai/class_faiPartitionTable.inc:239
 #: admin/fai/class_faiPartitionTable.inc:280
-#: admin/systems/services/repository/class_serviceRepository.inc:240
-#: admin/systems/services/repository/class_serviceRepository.inc:257
-#: admin/systems/services/repository/class_serviceRepository.inc:261
+#: admin/systems/services/repository/class_serviceRepository.inc:241
+#: admin/systems/services/repository/class_serviceRepository.inc:258
+#: admin/systems/services/repository/class_serviceRepository.inc:262
 msgid "LDAP error"
 msgstr "Errore LDAP"
 
@@ -619,7 +623,7 @@ msgstr "Pacchetto FAI"
 
 #: admin/fai/class_faiPackage.inc:409 admin/systems/class_faiStartup.inc:103
 msgid "Repository"
-msgstr "Deposito"
+msgstr "Repository"
 
 #: admin/fai/class_faiPackage.inc:412 admin/systems/class_faiStartup.inc:91
 #: admin/systems/services/repository/class_serviceRepository.inc:40
@@ -702,7 +706,7 @@ msgstr "Modelli di file"
 
 #: admin/fai/class_faiTemplate.inc:183
 msgid "Template files in this class"
-msgstr "File modello di questa classe"
+msgstr "File modelli di questa classe"
 
 #: admin/fai/class_faiManagement.inc:117 admin/fai/class_faiManagement.inc:122
 #: admin/systems/class_faiStartup.inc:64 config/fai/class_faiConfig.inc:41
@@ -779,7 +783,7 @@ msgstr "Aggiungi disco"
 
 #: admin/fai/class_faiPartitionTable.inc:115
 msgid "Add RAID"
-msgstr "Aggiungi il RAID"
+msgstr "Aggiungi RAID"
 
 #: admin/fai/class_faiPartitionTable.inc:123
 msgid "Add LVM"
@@ -818,32 +822,32 @@ msgstr "File"
 msgid "Date"
 msgstr "Data"
 
-#: admin/systems/class_faiLogView.inc:151
-#: admin/systems/class_faiLogView.inc:154
+#: admin/systems/class_faiLogView.inc:149
+#: admin/systems/class_faiLogView.inc:152
 msgid "Available logs"
 msgstr "Logs di sistema disponibili"
 
-#: admin/systems/class_faiLogView.inc:159
+#: admin/systems/class_faiLogView.inc:157
 msgid "Selected log"
 msgstr "Logs di sistema selezionato"
 
-#: admin/systems/class_faiLogView.inc:163
+#: admin/systems/class_faiLogView.inc:161
 msgid "Content of the selected log"
 msgstr "Contenuto del log selezionato"
 
-#: admin/systems/class_faiLogView.inc:175
+#: admin/systems/class_faiLogView.inc:173
 msgid "FAI Logs"
-msgstr "Connessioni FAI"
+msgstr "Log FAI"
 
-#: admin/systems/class_faiLogView.inc:176
+#: admin/systems/class_faiLogView.inc:174
 msgid "FAI Logs Viewer"
-msgstr "Connessioni FAI"
+msgstr "Visualizzatore log FAI"
 
-#: admin/systems/class_faiLogView.inc:219
+#: admin/systems/class_faiLogView.inc:223
 msgid "Selected file"
 msgstr "File selezionato"
 
-#: admin/systems/class_faiLogView.inc:227
+#: admin/systems/class_faiLogView.inc:231
 #, php-format
 msgid "Selected file: %s"
 msgstr "File selezionato: %s "
@@ -894,7 +898,7 @@ msgstr "Server di repository genitore"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:40
 msgid "Release used on this repository"
-msgstr "Release utilizzata in questo repository"
+msgstr "Versione utilizzata in questo repository"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:47
 msgid "Sections available on this repository"
@@ -902,13 +906,13 @@ msgstr "Sezioni disponibili in questo repository"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:52
 msgid "Mirror mode"
-msgstr "Modo Mirror"
+msgstr "Modalità Mirror"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:52
 msgid ""
 "Is this mirror an installation repository? Is its release a custom one?"
 msgstr ""
-"Questo Mirror è un repository d'installazione? La sua Release è "
+"Questo Mirror è un repository d'installazione? La sua versione è "
 "personalizzata?"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:57
@@ -943,19 +947,19 @@ msgstr "Modello di path"
 msgid "How this repository is organized (only for RPM repositories)"
 msgstr "Com'é organizzato il repository (solo per repository RPM)"
 
-#: admin/systems/services/repository/class_serviceRepository.inc:160
+#: admin/systems/services/repository/class_serviceRepository.inc:161
 msgid "Package repository"
 msgstr "Pacchetto del repository"
 
-#: admin/systems/services/repository/class_serviceRepository.inc:161
+#: admin/systems/services/repository/class_serviceRepository.inc:162
 msgid "Package repository information"
 msgstr "Informazioni sul pacchetto del repository"
 
-#: admin/systems/services/repository/class_serviceRepository.inc:173
+#: admin/systems/services/repository/class_serviceRepository.inc:174
 msgid "Repositories"
-msgstr "Repositories"
+msgstr "Repository"
 
-#: admin/systems/services/repository/class_serviceRepository.inc:178
+#: admin/systems/services/repository/class_serviceRepository.inc:179
 msgid "Repositories this server hosts"
 msgstr "Repository che questo server ospita"
 
@@ -998,7 +1002,7 @@ msgstr ""
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:58
 msgid "Log directory"
-msgstr "Cartella degli errori"
+msgstr "Log degli errori"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:58
 msgid "Directory in which argonaut-fai-monitor will store its log"

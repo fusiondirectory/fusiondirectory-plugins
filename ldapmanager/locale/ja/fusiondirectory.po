@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:28+0000\n"
+"POT-Creation-Date: 2019-01-30 17:21+0000\n"
+"PO-Revision-Date: 2016-08-29 15:14+0000\n"
 "Language-Team: Japanese (https://www.transifex.com/fusiondirectory/teams/12202/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -95,7 +95,7 @@ msgstr ""
 
 #: addons/ldapmanager/class_ldapmanager.inc:121
 #: addons/ldapmanager/class_csvimport.inc:81
-#: addons/ldapmanager/class_csvimport.inc:107
+#: addons/ldapmanager/class_csvimport.inc:101
 msgid "Import"
 msgstr ""
 
@@ -104,7 +104,7 @@ msgid "Import LDIF file"
 msgstr ""
 
 #: addons/ldapmanager/class_ldapmanager.inc:153
-#: addons/ldapmanager/class_ldapmanager.inc:198
+#: addons/ldapmanager/class_ldapmanager.inc:203
 msgid "LDAP error"
 msgstr ""
 
@@ -129,6 +129,25 @@ msgstr ""
 #: addons/ldapmanager/class_ldapmanager.inc:182
 #, php-format
 msgid "Failed to generate ldap export, error was \"%s\"!"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid "Warning"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid ""
+"Nothing to import, please upload a non-empty file or fill the textarea."
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#: addons/ldapmanager/class_csvimport.inc:251
+msgid "Success"
+msgstr ""
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#, php-format
+msgid "%d entries successfully imported"
 msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:29
@@ -188,20 +207,16 @@ msgstr ""
 msgid "Template filling"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:97
+#: addons/ldapmanager/class_csvimport.inc:91
 msgid "Select fields associations"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:243
+#: addons/ldapmanager/class_csvimport.inc:244
 #, php-format
 msgid "Import failed for line %d"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:250
-msgid "Success"
-msgstr ""
-
-#: addons/ldapmanager/class_csvimport.inc:250
+#: addons/ldapmanager/class_csvimport.inc:251
 #, php-format
 msgid "Successfully imported %d entries"
 msgstr ""

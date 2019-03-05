@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -91,7 +91,7 @@ class argonautImportFile extends simplePlugin
   function execute()
   {
     $smarty = get_smarty();
-    $smarty->assign('jobtypes', join(',',array_keys($this->daemon_events)));
+    $smarty->assign('jobtypes', join(',', array_keys($this->daemon_events)));
     return parent::execute().
     '<p class="plugbottom">'.
     ' <input type="submit" name="start_import" value="'._('Import').'" >'.

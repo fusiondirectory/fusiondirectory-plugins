@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016 FusionDirectory
+  Copyright (C) 2013-2018 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -53,6 +53,7 @@ class opsiSoftwareList extends simplePlugin
       'main' => array(
         'name'  => _('Infos'),
         'attrs' => array(
+          new BaseSelectorAttribute(get_ou('opsiRDN')),
           new SubmittingOPSIServerAttribute(
             _('OPSI server'), _('OPSI server to use for deployment'),
             'fdOpsiServerDn', TRUE
@@ -134,7 +135,7 @@ class opsiSoftwareList extends simplePlugin
         );
         return FALSE;
       }
-      $localboots = $s_daemon->append_call('OPSI.get_localboots', array($this->macAddress), array('args' => array($opsi_args)));
+      $localboots = $s_daemon->append_call('OPSI.get_localboots', $this->macAddress, array('args' => array($opsi_args)));
       if ($s_daemon->is_error()) {
         msg_dialog::display(
           _('Failed to contact OPSI server'),

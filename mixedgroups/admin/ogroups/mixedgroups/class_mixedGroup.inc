@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2016  FusionDirectory
+  Copyright (C) 2015-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -31,10 +31,6 @@ class mixedGroup extends simplePlugin
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('ogroup-user'),
       'plPriority'    => 1,
-
-      //~ 'plForeignKeys'  => array(
-        //~ 'memberUid' => array('user','uid')
-      //~ ),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
@@ -160,7 +156,10 @@ class mixedGroup extends simplePlugin
       }
     }
 
-    parent::prepare_save();
+    $errors = parent::prepare_save();
+    if (!empty($errors)) {
+      return $errors;
+    }
 
     if ($this->trustMode == 'fullaccess') {
       $this->attrs['host'] = array('*');
@@ -172,6 +171,8 @@ class mixedGroup extends simplePlugin
     } elseif (($this->trustMode == "") && (($key = array_search('hostObject', $this->attrs['objectClass'])) !== FALSE)) {
       unset($this->attrs['objectClass'][$key]);
     }
+
+    return $errors;
   }
 
   function save()

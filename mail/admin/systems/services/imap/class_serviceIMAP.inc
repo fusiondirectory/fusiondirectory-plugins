@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,7 +20,32 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceIMAP extends simpleService
+class simpleMailMethodService extends simpleService
+{
+
+  protected function prepare_save ()
+  {
+    if (!$this->shouldSave()) {
+      // Reset mail server cache now as post_save won’t be called
+      mailMethod::resetMailServersCache();
+    }
+    return parent::prepare_save();
+  }
+
+  protected function post_save()
+  {
+    parent::post_save();
+    mailMethod::resetMailServersCache();
+  }
+
+  protected function post_remove ()
+  {
+    parent::post_remove();
+    mailMethod::resetMailServersCache();
+  }
+}
+
+class serviceIMAP extends simpleMailMethodService
 {
   /* This plugin only writes its objectClass */
   var $objectclasses = array('fdImapServer');
@@ -48,18 +73,6 @@ class serviceIMAP extends simpleService
   function execute()
   {
     return '<b>This server runs an IMAP or POP3 server</b>'.parent::execute();
-  }
-
-  protected function post_save()
-  {
-    parent::post_save();
-    mailMethod::resetMailServersCache();
-  }
-
-  protected function post_remove ()
-  {
-    parent::post_remove();
-    mailMethod::resetMailServersCache();
   }
 }
 ?>

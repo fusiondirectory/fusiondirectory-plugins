@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:23+0000\n"
+"POT-Creation-Date: 2019-01-30 17:20+0000\n"
+"PO-Revision-Date: 2016-08-29 15:06+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -36,79 +36,87 @@ msgstr "Členství"
 
 #: admin/departments/community/class_communityOrganization.inc:45
 msgid "Membership type"
-msgstr ""
+msgstr "Typ členství"
 
 #: admin/departments/community/class_communityOrganization.inc:45
 msgid "Membership type of this organization"
-msgstr ""
+msgstr "Typ členství této organizace"
 
 #: admin/departments/community/class_communityOrganization.inc:50
+msgid "Agreement signed"
+msgstr "Dohoda podepsána"
+
+#: admin/departments/community/class_communityOrganization.inc:50
+msgid "Did this member returned the agreement signed"
+msgstr "Zda tento člen vrátil dohodu podepsanou"
+
+#: admin/departments/community/class_communityOrganization.inc:54
 msgid "Active"
 msgstr "Aktivní"
 
-#: admin/departments/community/class_communityOrganization.inc:50
+#: admin/departments/community/class_communityOrganization.inc:54
 msgid "Is the membership of this organization active"
 msgstr "Je členství této organizace aktivní"
 
-#: admin/departments/community/class_communityOrganization.inc:54
+#: admin/departments/community/class_communityOrganization.inc:58
 msgid "Hidden"
 msgstr "Skryté"
 
-#: admin/departments/community/class_communityOrganization.inc:54
+#: admin/departments/community/class_communityOrganization.inc:58
 msgid "Should this membership be hidden from listings"
-msgstr ""
+msgstr "Má být toto členství skryto ve výpisech"
 
-#: admin/departments/community/class_communityOrganization.inc:60
+#: admin/departments/community/class_communityOrganization.inc:64
 msgid "Dates"
-msgstr ""
+msgstr "Datumy"
 
-#: admin/departments/community/class_communityOrganization.inc:63
+#: admin/departments/community/class_communityOrganization.inc:67
 msgid "Start date"
-msgstr ""
+msgstr "Datum začátku"
 
-#: admin/departments/community/class_communityOrganization.inc:63
+#: admin/departments/community/class_communityOrganization.inc:67
 msgid "Date of the beginning"
-msgstr ""
+msgstr "Datum začátku"
 
-#: admin/departments/community/class_communityOrganization.inc:67
+#: admin/departments/community/class_communityOrganization.inc:71
 msgid "End date"
-msgstr ""
+msgstr "Datum ukončení"
 
-#: admin/departments/community/class_communityOrganization.inc:67
+#: admin/departments/community/class_communityOrganization.inc:71
 msgid "Date of the end"
-msgstr ""
+msgstr "Datum konce"
 
-#: admin/departments/community/class_communityOrganization.inc:74
+#: admin/departments/community/class_communityOrganization.inc:78
 msgid "Contact"
-msgstr "kontakt"
-
-#: admin/departments/community/class_communityOrganization.inc:77
-msgid "First name"
-msgstr "jméno"
+msgstr "Kontakt"
 
 #: admin/departments/community/class_communityOrganization.inc:81
+msgid "First name"
+msgstr "Jméno"
+
+#: admin/departments/community/class_communityOrganization.inc:85
 msgid "Last name"
-msgstr "příjmení"
+msgstr "Příjmení"
 
-#: admin/departments/community/class_communityOrganization.inc:85
+#: admin/departments/community/class_communityOrganization.inc:89
 msgid "Address"
-msgstr "adresa"
+msgstr "Adresa"
 
-#: admin/departments/community/class_communityOrganization.inc:85
+#: admin/departments/community/class_communityOrganization.inc:89
 msgid "A postal address"
 msgstr "Poštovní adresa"
 
-#: admin/departments/community/class_communityOrganization.inc:89
+#: admin/departments/community/class_communityOrganization.inc:93
 msgid "City"
 msgstr "Město"
 
-#: admin/departments/community/class_communityOrganization.inc:93
-msgid "State"
-msgstr "stát"
-
 #: admin/departments/community/class_communityOrganization.inc:97
+msgid "State"
+msgstr "Stát"
+
+#: admin/departments/community/class_communityOrganization.inc:101
 msgid "Country"
-msgstr "země"
+msgstr "Země"
 
 #: admin/departments/community/class_communityProject.inc:29
 msgid "Community project"
@@ -132,7 +140,7 @@ msgstr "Úplný název tohoto projektu"
 
 #: admin/departments/community/class_communityProject.inc:49
 msgid "Project key"
-msgstr ""
+msgstr "Klíč projektu"
 
 #: admin/departments/community/class_communityProject.inc:49
 msgid "ID used for this project in other softwares or databases"
@@ -142,7 +150,7 @@ msgstr ""
 
 #: config/community/class_communityConfig.inc:28
 msgid "Community configuration"
-msgstr ""
+msgstr "Nastavení komunity"
 
 #: config/community/class_communityConfig.inc:29
 msgid "FusionDirectory community plugin configuration"
@@ -150,11 +158,11 @@ msgstr "Nastavení zásuvného modulu komunita pro FusionDirectory"
 
 #: config/community/class_communityConfig.inc:41
 msgid "Community"
-msgstr ""
+msgstr "Komunita"
 
 #: config/community/class_communityConfig.inc:45
 msgid "Membership type choices"
-msgstr ""
+msgstr "Volby typu členství"
 
 #: config/community/class_communityConfig.inc:45
 msgid "Community membership types available in the user community tab"

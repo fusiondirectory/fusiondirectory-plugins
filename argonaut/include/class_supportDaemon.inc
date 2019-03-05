@@ -2,7 +2,7 @@
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -203,7 +203,7 @@ class supportDaemon
    *
    * \param string $action    The action to call
    *
-   * \param Array  $targets   The concerned mac addresses
+   * \param Array  $targets   The concerned mac addresses. If this is not an array the result will be unpacked.
    *
    * \param Array  $data      The data to send (timestamp, periodic and args, see Argonaut protocol)
    *
@@ -223,11 +223,21 @@ class supportDaemon
     /* Append an entry */
     try {
       $client = new jsonRPCClient($this->s_host, $this->http_options, $this->ssl_options);
-      $status = $client->action($action, $targets, $data);
+      if (!is_array($targets)) {
+        $tmpTargets = array($targets);
+      } else {
+        $tmpTargets = $targets;
+      }
+      $status = $client->action($action, $tmpTargets, $data);
       @DEBUG (DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $status, date('H.i.s').' Answer');
       $this->reset_error();
       $this->new_state(TRUE);
-      return $status[0];
+      if (is_array($status) && !is_array($targets) && isset($status[0])) {
+        /* Return first value */
+        return $status[0];
+      } else {
+        return $status;
+      }
     } catch (jsonRPCClientRequestErrorException $e) {
       $this->set_error($e->getMessage());
       // connection is OK
@@ -305,7 +315,7 @@ class supportDaemon
     global $config;
     timezone::get_default_timezone();
     $entries_r  = array();
-    $macToCn    = array();
+    $macInfos   = array();
     $ldap       = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     foreach ($entries as &$entry) {
@@ -313,14 +323,29 @@ class supportDaemon
       $entry_r['MACADDRESS']  = $entry['target'];
 
       /* Do an ldap search only if we haven't done it for the same mac before */
-      if (isset($macToCn[$entry_r['MACADDRESS']])) {
-        $entry_r['PLAINNAME'] = $macToCn[$entry_r['MACADDRESS']];
-      } else {
-        $ldap->search('(macAddress='.$entry_r['MACADDRESS'].')', array('cn'));
-        if ($ldap_infos = $ldap->fetch()) {
-          $macToCn[$entry_r['MACADDRESS']]  = $ldap_infos['cn'][0];
-          $entry_r['PLAINNAME']             = $ldap_infos['cn'][0];
+      if (!isset($macInfos[$entry_r['MACADDRESS']])) {
+        $types = array('workstation','server','terminal');
+        foreach ($types as $type) {
+          $objects = objects::ls($type, array('dn' => 'raw', 'cn' => 1), NULL, '(macAddress='.$entry_r['MACADDRESS'].')');
+          if (count($objects) > 1) {
+            trigger_error('Duplicated mac address '.$entry_r['MACADDRESS'].' in LDAP');
+          }
+          if (count($objects) > 0) {
+            $macInfos[$entry_r['MACADDRESS']] = array(
+              'dn'    => reset($objects)['dn'],
+              'type'  => $type,
+              'cn'    => reset($objects)['cn']
+            );
+            break;
+          }
         }
+      }
+      if (isset($macInfos[$entry_r['MACADDRESS']])) {
+        $entry_r['PLAINNAME']   = $macInfos[$entry_r['MACADDRESS']]['cn'];
+        $entry_r['TARGETDN']    = $macInfos[$entry_r['MACADDRESS']]['dn'];
+        $entry_r['TARGETTYPE']  = $macInfos[$entry_r['MACADDRESS']]['type'];
+      } else {
+        $entry_r['PLAINNAME']   = $entry_r['MACADDRESS'];
       }
 
       $entry_r['ERROR']     = $entry['error'];
@@ -334,7 +359,7 @@ class supportDaemon
 
       $entries_r[] = $entry_r;
     }
-    unset($entries);
+    unset($entry);
     return $entries_r;
   }
 
@@ -468,7 +493,7 @@ class supportDaemon
       return $this->new_state(TRUE);
     } catch (jsonRPCClientRequestErrorException $e) {
       $this->set_error($e->getMessage());
-       // connection is OK
+      // connection is OK
       $this->new_state(TRUE);
       return FALSE;
     } catch (jsonRPCClientNetworkErrorException $e) {
@@ -593,7 +618,7 @@ class supportDaemon
         $ret[$date]['FILES'][] = $file;
       }
     }
-    return array($mac => $ret);
+    return $ret;
   }
 
   /*!
@@ -719,7 +744,7 @@ class supportDaemon
       return $to_return;
     } catch (jsonRPCClientRequestErrorException $e) {
       $this->set_error($e->getMessage());
-       // connection is OK
+      // connection is OK
       $this->new_state(TRUE);
       return array();
     } catch (jsonRPCClientNetworkErrorException $e) {
@@ -766,7 +791,7 @@ class supportDaemon
    *
    * \return TRUE if success or FALSE otherwise
   */
-  public function clean_queue_from_mac($mac)
+  public function clean_queue_from_mac($macs)
   {
     if ($this->s_host == "") {
       $this->set_error($this->host_error);
@@ -776,10 +801,17 @@ class supportDaemon
       return FALSE;
     }
 
+    if (empty($macs)) {
+      return TRUE;
+    }
+    if (!is_array($macs)) {
+      $macs = array($macs);
+    }
+
     try {
       $client = new jsonRPCClient($this->s_host, $this->http_options, $this->ssl_options);
       $this->reset_error();
-      $taskids = $client->get_entries_by_mac(array($mac));
+      $taskids = $client->get_entries_by_mac($macs);
       $client->remove_entries($taskids);
       return $this->new_state(TRUE);
     } catch (jsonRPCClientRequestErrorException $e) {

@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -70,12 +70,10 @@ class terminalStartup extends simplePlugin
             '',
             array(_('XDMCP'), _('LDM'), _('Shell'), _('Telnet'), _('Windows RDP'))
           ),
-          new SetAttribute(
-            new SelectAttribute(
-              _('Terminal server'), _('Terminal server'),
-              'gotoXdmcpServer', FALSE,
-              array()
-            )
+          new SelectAttribute(
+            _('Terminal server'), _('Terminal server'),
+            'gotoXdmcpServer', FALSE,
+            array()
           )
         )
       ),
@@ -130,7 +128,7 @@ class terminalStartup extends simplePlugin
   function updateServerList()
   {
     $servers = objects::ls('server', NULL, NULL, '(&(objectClass=goTerminalServer)(gotoSessionType='.strtoupper($this->gotoXMethod).'))');
-    $this->attributesAccess['gotoXdmcpServer']->attribute->setChoices($servers);
+    $this->attributesAccess['gotoXdmcpServer']->setChoices($servers);
   }
 }
 

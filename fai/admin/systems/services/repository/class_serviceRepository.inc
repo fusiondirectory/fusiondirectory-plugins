@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -151,8 +151,9 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
 
 class serviceRepository extends simpleService
 {
+  protected static $showActions = FALSE;
+
   var $objectclasses  = array('FAIrepositoryServer');
-  var $showActions    = FALSE;
 
   static function plInfo()
   {
@@ -286,11 +287,11 @@ class serviceRepository extends simpleService
           $infos['URL']           = $tmp[0];
           $infos['PARENT_SERVER'] = $tmp[1];
           $infos['FAI_RELEASE']   = $tmp[2];
-          $infos['SECTIONS']      = (empty($tmp[3])?array():explode(',', $tmp[3]));
+          $infos['SECTIONS']      = (empty($tmp[3]) ? array() : explode(',', $tmp[3]));
           $infos['INSTALL']       = $tmp[4];
           $infos['LOCAL']         = $tmp[5];
-          $infos['ARCHS']         = (empty($tmp[6])?array():explode(',', $tmp[6]));
-          $infos['DIST']          = (isset($tmp[7])?$tmp[7]:'debian');
+          $infos['ARCHS']         = (empty($tmp[6]) ? array() : explode(',', $tmp[6]));
+          $infos['DIST']          = (isset($tmp[7]) ? $tmp[7] : 'debian');
           $repos[] = $infos;
         }
       }

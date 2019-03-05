@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2012-2016 FusionDirectory
+  Copyright (C) 2012-2018 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -49,7 +49,7 @@ class sympaAlias extends simplePlugin
         'name'  => _('Sympa list alias'),
         'attrs' => array(
           new BaseSelectorAttribute (get_ou('sympaRDN')),
-          new HostNameAttribute (_('Name'), _('Name to identify this alias'), 'cn', TRUE),
+          new StringAttribute (_('Name'), _('Name to identify this alias'), 'cn', TRUE),
           new TextAreaAttribute (
             _('Description'), _('Description of this alias'),
             'description', FALSE

@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
   Copyright (C) 2014-2015  Dhatim
-  Copyright (C) 2014-2016  FusionDirectory project
+  Copyright (C) 2014-2018  FusionDirectory project
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -110,7 +110,7 @@ class dashboardPpolicy extends simplePlugin
         'pwdChangedTime'        => 1,
         'pwdPolicySubentry'     => 1,
         'pwdAccountLockedTime'  => 1,
-      ), NULL, '(|(pwdAccountLockedTime=*)(pwdChangedTime=*))');
+      ), NULL, '(|(pwdAccountLockedTime=*)(pwdChangedTime=*))', TRUE);
     $locked_users           = array();
     $expired_accounts       = array();
     $next_expired_accounts  = array();

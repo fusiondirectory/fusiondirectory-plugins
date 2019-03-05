@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2016 FusionDirectory
+  Copyright (C) 2015-2018 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class phoneGeneric extends simplePlugin
+class phoneGeneric extends ipHostPlugin
 {
   var $mainTab = TRUE;
 
@@ -85,25 +85,15 @@ class phoneGeneric extends simplePlugin
               'ipHostNumber', FALSE
             )
           ),
-          new MacAddressAttribute(
-            _('Mac address'), _('Mac address of this system'),
-            'macAddress', FALSE
+          new SetAttribute(
+            new MacAddressAttribute(
+              _('Mac address'), _('Mac address of this system'),
+              'macAddress', FALSE
+            )
           ),
         ),
       ),
     );
-  }
-
-  /* Used by prepare_save and template::apply */
-  public function mergeObjectClasses(array $oc)
-  {
-    $objectclasses = $oc;
-    if (empty($this->ipHostNumber)) {
-      $objectclasses = array_remove_entries_ics(array('ipHost'), $objectclasses);
-    } else {
-      $objectclasses[] = 'ipHost';
-    }
-    return array_merge_unique($objectclasses, $this->objectclasses);
   }
 }
 ?>

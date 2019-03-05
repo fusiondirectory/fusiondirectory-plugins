@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2016  FusionDirectory
+  Copyright (C) 2015-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -50,6 +50,12 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       $label
     );
     parent::__construct($attribute, FALSE, $values, TRUE);
+    $this->setHeaders(array(
+      _('Parent'),
+      _('Mac'),
+      _('IP')
+    ));
+    $this->setInLdap(FALSE);
   }
 
   protected function loadAttrValue ($attrs)
@@ -150,7 +156,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   }
 
   /* Special LDAP treatment that this attribute does after plugin ldap save */
-  function postLdapSave ($ldap, $fullrewrite, $ipchanged, $oldips, $newips, $macchanged, $oldmacs, $newmacs)
+  function postLdapSave ($ldap, $fullrewrite, $ipchanged, array $oldips, array $newips, $macchanged, array $oldmacs, array $newmacs)
   {
     global $config, $ui;
 
@@ -197,7 +203,6 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     }
 
     $valueHashes    = array_flip(array_map('join', $values));
-    //~ $iValueHashes   = array_flip(array_map('join', $iValues));
     foreach ($iValues as $value) {
       $hash = join($value);
       if (isset($valueHashes[$hash]) && !$fullrewrite) {
@@ -262,7 +267,13 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
   function fillLdapValue (&$attrs)
   {
     if ($this->plugin->is_template) {
-      $attrs[$this->getLdapName()] = array_map(function ($v) {return implode(static::$templateValueSeparator, $v);}, $this->value);
+      $attrs[$this->getLdapName()] = array_map(
+        function ($v)
+        {
+          return implode(static::$templateValueSeparator, $v);
+        },
+        $this->value
+      );
     }
   }
 }
@@ -372,7 +383,7 @@ class dhcpSystem extends simplePlugin
     return TRUE;
   }
 
-  function ldap_save()
+  protected function ldap_save()
   {
     global $config;
 
@@ -390,15 +401,15 @@ class dhcpSystem extends simplePlugin
       $baseObject->attributeInitialValue('ipHostNumber'),
       $baseObject->attributeValue('ipHostNumber'),
       $baseObject->attributeHaveChanged('macAddress'),
-      array($baseObject->attributeInitialValue('macAddress')),
-      array($baseObject->attributeValue('macAddress'))
+      $baseObject->attributeInitialValue('macAddress'),
+      $baseObject->attributeValue('macAddress')
     );
   }
 
-  function remove_from_parent()
+  protected function ldap_remove()
   {
     if ($this->is_template) {
-      return parent::remove_from_parent();
+      return parent::ldap_remove();
     } elseif (($this->dn != '') && ($this->dn != 'new')) {
       /* Remove all records */
       $this->attributesAccess['dhcpHosts']->setValue(array());

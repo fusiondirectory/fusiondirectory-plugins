@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2014-2015  Dhatim
-  Copyright (C) 2014-2016  FusionDirectory
+  Copyright (C) 2014-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -111,15 +111,16 @@ class ppolicyAccount extends simplePlugin
 
   protected function prepare_save ()
   {
-    parent::prepare_save();
+    $errors = parent::prepare_save();
     if (!empty($this->pwdReset)) {
       $this->attrs['pwdAccountLockedTime'] = array();
     } else {
       unset($this->attrs['pwdAccountLockedTime']);
     }
+    return $errors;
   }
 
-  function remove_from_parent()
+  function remove($fulldelete = FALSE)
   {
     /* ppolicy fields are not real fields, they can’t be removed through ldap_modify
      * It’s not possible to remove ppolicy info from a user node anyway */

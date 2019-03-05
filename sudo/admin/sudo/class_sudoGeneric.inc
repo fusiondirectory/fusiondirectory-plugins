@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ class SudoUsersGroupsAttribute extends DialogAttribute
 
   function addValue ($dn, $entry)
   {
-    if (in_array("posixGroup", $entry['objectClass'])) {
+    if (in_array('posixGroup', $entry['objectClass']) || in_array('groupOfNames', $entry['objectClass'])) {
       $name = trim("%".$entry['cn'][0]);
     } elseif (isset($entry['uid'][0])) {
       $name = trim($entry['uid'][0]);
@@ -135,6 +135,7 @@ class sudo extends simplePlugin
         'sudoUser'   => array(
           array('user', 'uid', '(sudoUser=%oldvalue%)'),
           array('posixGroup', 'cn', '(sudoUser=%|%%oldvalue%)'),
+          array('mixedGroup', 'cn', '(sudoUser=%|%%oldvalue%)'),
         ),
         'sudoHost'   => array(
           array('serverGeneric', 'cn'),
@@ -202,7 +203,17 @@ class sudo extends simplePlugin
             _('Priority'), _('This rule priority compared to others'),
             'sudoOrder', FALSE,
             0, FALSE, 0
-          )
+          ),
+          new GeneralizedTimeDateAttribute (
+            _('Valid starting from'), _('Start of time interval for which the entry is valid (leave empty to disable)'),
+            'sudoNotBefore', FALSE,
+            ''
+          ),
+          new GeneralizedTimeDateAttribute (
+            _('Valid until'), _('End of time interval for which the entry is valid (leave empty to disable)'),
+            'sudoNotAfter', FALSE,
+            ''
+          ),
         )
       ),
     );
@@ -247,7 +258,7 @@ class sudo extends simplePlugin
 
   function foreignKeyCheck ($field, $fieldvalue, $source)
   {
-    if (($field == 'sudoUser') && ($source['CLASS'] == 'posixGroup')) {
+    if (($field == 'sudoUser') && (($source['CLASS'] == 'posixGroup') || ($source['CLASS'] == 'mixedGroup'))) {
       return parent::foreignKeyCheck($field, '%'.$fieldvalue, $source);
     } else {
       return parent::foreignKeyCheck($field, $fieldvalue, $source);
@@ -256,7 +267,7 @@ class sudo extends simplePlugin
 
   function foreignKeyUpdate($field, $oldvalue, $newvalue, $source)
   {
-    if (($field == 'sudoUser') && ($source['CLASS'] == 'posixGroup')) {
+    if (($field == 'sudoUser') && (($source['CLASS'] == 'posixGroup') || ($source['CLASS'] == 'mixedGroup'))) {
       return parent::foreignKeyUpdate($field, '%'.$oldvalue, '%'.$newvalue, $source);
     } else {
       return parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);

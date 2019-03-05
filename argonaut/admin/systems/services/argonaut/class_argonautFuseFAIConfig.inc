@@ -1,8 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2016  FusionDirectory
+  Copyright (C) 2012-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,45 +20,74 @@
 
 class argonautFuseFAIConfig extends simplePlugin
 {
-  var $objectclasses  = array("argonautFuseFAIConfig");
+  var $objectclasses  = array('argonautFuseFAIConfig');
   var $showActions    = FALSE;
-  var $displayHeader     = TRUE;
+  var $displayHeader  = TRUE;
 
-  /* Return plugin information for acl handling */
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Argonaut Fuse FAI module settings"),
-      "plDescription"   => _("Argonaut Fuse FAI module settings")." ("._("Services").")",
-      "plCategory"      => array("server"),
-      "plObjectType"    => array("fusemodule"),
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plShortName'     => _('Argonaut Fuse FAI module settings'),
+      'plDescription'   => _('Argonaut Fuse FAI module settings'),
+      'plCategory'      => array('server'),
+      'plObjectType'    => array('fusemodule'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
-  /*!
-   *  \brief The main function : information about attributes
-   */
   static function getAttributesInfo ()
   {
     return array (
       'fai' => array (
         'name'  => _('FAI'),
         'attrs' => array (
+          new IntAttribute (
+            _('FAI version'), _('Version of FAI installed on the server'),
+            'argonautFuseFaiVersion', TRUE,
+            4, 5, 5
+          ),
           new StringAttribute (
-            _('Fai flags'),
-            '',
-            'argonautFuseFaiFlags',
-            FALSE,
+            _('FAI flags'), _('Flags to pass to FAI'),
+            'argonautFuseFaiFlags', FALSE,
             'verbose,sshd,syslogd,createvt,reboot'
           ),
           new StringAttribute (
-            _('NFS root'),
-            '',
-            'argonautFuseNfsRoot',
-            TRUE,
+            _('NFS root'), '',
+            'argonautFuseNfsRoot', TRUE,
             '/srv/fai/nfsroot'
           ),
+          new StringAttribute (
+            _('FAI 4 command line'), _('Command line for FAI 4 - should be "ip=dhcp root=/dev/nfs boot=live union=aufs"'),
+            'argonautFuseFai4Cmdline', TRUE,
+            'ip=dhcp root=/dev/nfs boot=live union=aufs'
+          ),
+          new StringAttribute (
+            _('FAI 5 command line'), _('Command line for FAI 5 - should be "ip=dhcp rootovl"'),
+            'argonautFuseFai5Cmdline', TRUE,
+            'ip=dhcp rootovl'
+          ),
+          new BooleanAttribute (
+            _('Multiple distro mode'), _('This enables a mode for multiple distributions usage which adds the release as a suffix to kernel, initrd and nfsroot in the PXE file'),
+            'argonautFuseMultipleReleaseMode'
+          ),
+        )
+      )
+    );
+  }
+
+  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
+  {
+    parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
+
+    $this->attributesAccess['argonautFuseFaiVersion']->setManagedAttributes(
+      array(
+        'disable' => array (
+          4 => array (
+            'argonautFuseFai5Cmdline'
+          ),
+          5 => array (
+            'argonautFuseFai4Cmdline'
+          )
         )
       )
     );

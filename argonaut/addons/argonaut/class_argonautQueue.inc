@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -29,7 +29,8 @@ class argonautQueue extends simpleManagement
   protected $autoActions      = FALSE;
 
   protected $skipCpHandler    = TRUE;
-  protected $skipSnapHandler  = TRUE;
+
+  public static $skipSnapshots = TRUE;
 
   var $read_only = FALSE;
   var $acl_base;
@@ -67,10 +68,11 @@ class argonautQueue extends simpleManagement
   {
     parent::configureHeadpage();
     $this->registerAction('processNow', 'processNow');
-    $this->registerAction('viewLogs',   'viewLogs');
     $this->registerAction('abort',      'abortEvent');
     $this->registerAction('import',     'importEvents');
     $this->registerAction('showError',  'showErrorEntry');
+    $this->registerAction('retry',      'retryAction');
+    $this->registerAction('saveEvent',  'saveEventDialog');
 
     $this->headpage->registerElementFilter('hostName',        'argonautQueue::filterHostName');
     $this->headpage->registerElementFilter('filterTask',      'argonautQueue::filterTask');
@@ -89,10 +91,7 @@ class argonautQueue extends simpleManagement
    */
   protected function removeEntryRequested($action, array $target, array $all)
   {
-    if (!$this->acl_is_removeable()) {
-      msg_dialog::display(_('Permission'), msgPool::permDelete(), ERROR_DIALOG);
-      return;
-    }
+    $nodelete   = array();
     $disallowed = array();
     $this->dns  = array();
 
@@ -111,18 +110,25 @@ class argonautQueue extends simpleManagement
         $j_name = $task['ID']." - ".$task['HEADERTAG']."&nbsp;".$task['MACADDRESS'];
       }
 
-      /* Only remove WAITING or ERROR entries */
-      if (in_array($task['STATUS'], array('waiting','error','processed')) ||
-          ($task['STATUS'] == 'processing' && !preg_match('/install/', $task['HEADERTAG'])) ) {
-        $this->dns[] = $dn;
+      if ($this->acl_is_removeable($task['TARGETDN'])) {
+        /* Only remove WAITING or ERROR entries */
+        if (in_array($task['STATUS'], array('waiting','error','processed')) ||
+            ($task['STATUS'] == 'processing' && !preg_match('/install/', $task['HEADERTAG'])) ) {
+          $this->dns[] = $dn;
+        } else {
+          $nodelete[] = $j_name;
+        }
       } else {
-        $disallowed[] = $j_name;
+        $disallowed[] = $dn;
       }
     }
-    if (count($disallowed)) {
+    if (count($nodelete)) {
       msg_dialog::display(_('Remove'),
           sprintf(_('The following jobs couldn\'t be deleted, they have to be aborted: %s'),
-            '<br/>'.msgPool::buildList($disallowed)), INFO_DIALOG);
+            '<br/>'.msgPool::buildList($nodelete)), INFO_DIALOG);
+    }
+    if (count($disallowed)) {
+      msg_dialog::display(_('Permission'), msgPool::permDelete($disallowed), INFO_DIALOG);
     }
 
     // We've at least one entry to delete.
@@ -159,15 +165,15 @@ class argonautQueue extends simpleManagement
 
   function removeEntryConfirmed($action, array $target, array $all)
   {
-    if ($this->acl_is_removeable()) {
-      timezone::get_default_timezone();
-      $ids = array();
-      foreach ($this->dns as $dn) {
-        $entry  = $this->headpage->getEntry($dn);
+    timezone::get_default_timezone();
+    $ids = array();
+    foreach ($this->dns as $dn) {
+      $entry  = $this->headpage->getEntry($dn);
+      if ($this->acl_is_removeable($entry['EVENT']['TARGETDN'])) {
         $ids[]  = $entry['EVENT']['ID'];
       }
-      $this->o_queue->remove_entries($ids);
     }
+    $this->o_queue->remove_entries($ids);
   }
 
   /*! \brief  Force queue job to be aborted.
@@ -196,14 +202,10 @@ class argonautQueue extends simpleManagement
     $this->execute_queue_entries($target);
   }
 
-  function viewLogs($action, array $target)
+  function retryAction($action, array $target)
   {
-    if (count($target) == 1) {
-      $entry        = $this->getHeadpage()->getEntry($target[0]);
-      $attrsWrapper = new stdClass();
-      $attrsWrapper->attrs = $entry['EVENT'];
-      $this->dialogObject = new faiLogView('', $attrsWrapper, $this);
-    }
+    $entry = $this->getHeadpage()->getEntry($target[0]);
+    $this->dialogObject = new argonautAction($entry['HEADERTAG'][0], array($entry['MACADDRESS'][0]), FALSE);
   }
 
   function showErrorEntry($action, array $target)
@@ -220,8 +222,30 @@ class argonautQueue extends simpleManagement
     $action = parent::detectPostActions();
     if (isset($_POST['import_abort'])) {
       $action['action'] = 'cancel';
+    } elseif (isset($_POST['save_event_dialog'])) {
+      $action['action'] = 'saveEvent';
+    } elseif (isset($_POST['abort_event_dialog'])) {
+      $action['action'] = 'cancel';
     }
     return $action;
+  }
+
+  /*! \brief  Save event dialogs.
+   *          And append the new Argonaut event.
+   */
+  function saveEventDialog()
+  {
+    $this->dialogObject->save_object();
+    $msgs = $this->dialogObject->check();
+    if (count($msgs)) {
+      msg_dialog::displayChecks($msgs);
+      return;
+    }
+    $this->o_queue->append($this->dialogObject);
+    if ($this->o_queue->is_error()) {
+      msg_dialog::display(_('Infrastructure service'), msgPool::siError($this->o_queue->get_error()), ERROR_DIALOG);
+    }
+    $this->closeDialogs();
   }
 
   protected function _getTabFooter()
@@ -260,21 +284,28 @@ class argonautQueue extends simpleManagement
     return TRUE;
   }
 
-  private function acl_is_removeable()
+  private function acl_is_removeable($dn)
   {
     if ($this->read_only) {
       return FALSE;
     }
     $ui = get_userinfo();
-    return preg_match('/d/', $ui->get_permissions($this->acl_base, $this->aclCategory.get_class($this), '0'));
+    return (strpos($ui->get_permissions($dn, $this->aclCategory.get_class($this), '0'), 'd') !== FALSE);
   }
 
-  static function filterHostName($mac, $name = '')
+  static function filterHostName($mac, $name = '', $targetdn = '', $targettype = '')
   {
+    $text = '';
     if (isset($name[0]) && $name[0] != 'none') {
-      return htmlentities($name[0].' ('.$mac[0].')', ENT_COMPAT, 'UTF-8');
+      $text = $name[0].' ('.$mac[0].')';
+    } else {
+      $text = $mac[0];
     }
-    return htmlentities($mac[0], ENT_COMPAT, 'UTF-8');
+    if (!empty($targetdn[0]) && !empty($targettype[0])) {
+      return objects::link($targetdn[0], $targettype[0], '', $text, TRUE);
+    } else {
+      return htmlentities($text, ENT_COMPAT, 'UTF-8');
+    }
   }
 
   static function filterTask($tag, $progress)

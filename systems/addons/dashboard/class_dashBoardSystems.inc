@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
   Copyright (C) 2010 Antoine Gallavardin
-  Copyright (C) 2011-2016 FusionDirectory project
+  Copyright (C) 2011-2018 FusionDirectory project
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -63,7 +63,7 @@ class dashboardSystems extends simplePlugin
     $this->pc_ids = $this->computer_ids_rules();
   }
 
-  function systems_stats ()
+  protected function systems_stats ()
   {
     global $config;
     $ldap = $config->get_ldap_link();
@@ -79,7 +79,8 @@ class dashboardSystems extends simplePlugin
             'img'   => 'geticon.php?context=devices&icon=server&size=16'
       ),
       array('name'    => _('Windows Workstations'),
-            'filter'  => '(&(objectClass=sambaSamAccount)(uid=*$))',
+            'type'    => 'workstation',
+            'filter'  => '(objectClass=sambaSamAccount)',
             'img'     => 'geticon.php?context=devices&icon=computer-windows&size=16'
       ),
       array('name'  => _('Terminals'),
@@ -103,13 +104,19 @@ class dashboardSystems extends simplePlugin
             'img'   => 'geticon.php?context=devices&icon=phone&size=16'),
     );
 
-    foreach ($stats as &$stat) {
-      if (isset($stat['filter'])) {
-        $ldap->cd($config->current['BASE']);
-        $ldap->search($stat['filter'], array("cn"));
-        $stat['nb'] = $ldap->count();
-      } else {
-        $stat['nb'] = objects::count($stat['type']);
+    foreach ($stats as $key => &$stat) {
+      try {
+        $stat['nb'] = count(objects::ls($stat['type'], NULL, NULL, (isset($stat['filter']) ? $stat['filter'] : ''), TRUE));
+        if ($stat['nb'] == 0) {
+          unset($stats[$key]);
+        }
+      } catch (FusionDirectoryException $e) {
+        unset($stats[$key]);
+        msg_dialog::display(
+          _('LDAP error'),
+          sprintf(_('Statistics for type "%s" could not be computed because of the following error: %s'), $stat['type'], $e->getMessage()),
+          ERROR_DIALOG
+        );
       }
     }
     unset($stat);
@@ -117,23 +124,39 @@ class dashboardSystems extends simplePlugin
     return $stats;
   }
 
-  function argonaut_stats ()
+  protected function argonaut_stats ()
   {
-    global $config;
-    $ldap = $config->get_ldap_link();
-    $ldap->cd($config->current['BASE']);
-    $ldap->search("(objectClass=argonautServer)", array('cn','ipHostNumber','argonautProtocol','argonautPort'));
-    $nb_argonaut_server = $ldap->count();
-    $argonaut_server = array();
+    global $config, $ui;
+
+    if (!class_available('argonautServer')) {
+      return FALSE;
+    }
+
+    $argonaut_servers = objects::ls(
+      'server',
+      array('cn' => 'raw','ipHostNumber' => 'raw','argonautProtocol' => 'raw','argonautPort' => 'raw'),
+      NULL,
+      '(objectClass=argonautServer)',
+      TRUE
+    );
+    $nb_argonaut_server = count($argonaut_servers);
+    $argonaut_server    = array();
     if ($nb_argonaut_server == 1) {
-      $attrs = $ldap->fetch();
+      $attrs = reset($argonaut_servers);
       foreach (array('cn','ipHostNumber','argonautProtocol','argonautPort') as $key) {
         $argonaut_server[$key] = $attrs[$key][0];
       }
-      $argonaut_server['link'] = objects::link($attrs['dn'], 'server', 'service_serviceArgonaut', $attrs);
+      $argonaut_server['link'] = objects::link(key($argonaut_servers), 'server', 'service_serviceArgonaut', $attrs);
     }
-    $ldap->search("(objectClass=argonautClient)", array('cn'));
-    $nb_argonaut_clients = $ldap->count();
+
+    if (strpos($ui->get_permissions($config->current['BASE'], 'server/argonautClient', ''), 'r') === FALSE) {
+      $nb_argonaut_clients = 0;
+    } else {
+      $ldap = $config->get_ldap_link();
+      $ldap->cd($config->current['BASE']);
+      $ldap->search('(objectClass=argonautClient)', array('cn'));
+      $nb_argonaut_clients = $ldap->count();
+    }
 
     return array(
       'nb_servers'  => $nb_argonaut_server,
@@ -142,7 +165,7 @@ class dashboardSystems extends simplePlugin
     );
   }
 
-  function computer_ids_rules ()
+  protected function computer_ids_rules ()
   {
     global $config;
     $ldap = $config->get_ldap_link();

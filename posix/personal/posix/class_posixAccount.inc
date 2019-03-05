@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -450,9 +450,10 @@ class posixAccount extends simplePlugin
     return $message;
   }
 
-  function prepare_save()
+  protected function prepare_save()
   {
     global $config;
+
     /* Fill gecos */
     if (isset($this->parent) && $this->parent !== NULL) {
       $this->gecos = rewrite($this->parent->getBaseObject()->cn);
@@ -554,7 +555,11 @@ class posixAccount extends simplePlugin
 
         $errors = $tabObject->save();
         if (!empty($errors)) {
-          msg_dialog::displayChecks($errors);
+          array_unshift(
+            $errors,
+            sprintf(_('Could not create automatic primary group (using gidNumber "%s"), because of the following errors'), $this->gidNumber)
+          );
+          return $errors;
         } else {
           @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
             sprintf('Primary group "%s" created, using gidNumber "%s".', $tabObject->dn, $this->gidNumber), '');
@@ -586,7 +591,10 @@ class posixAccount extends simplePlugin
       }
     }
 
-    parent::prepare_save();
+    $errors = parent::prepare_save();
+    if (!empty($errors)) {
+      return $errors;
+    }
 
     if ($this->trustMode == 'fullaccess') {
       $this->attrs['host'] = array('*');
@@ -612,6 +620,8 @@ class posixAccount extends simplePlugin
       }
       $this->attrs['mustchangepassword'] = ($this->mustchangepassword ? 'TRUE' : 'FALSE');
     }
+
+    return $errors;
   }
 
   protected function shouldSave()
@@ -637,7 +647,7 @@ class posixAccount extends simplePlugin
     return $errors;
   }
 
-  function ldap_save()
+  protected function ldap_save()
   {
     $errors = parent::ldap_save();
 
@@ -687,31 +697,31 @@ class posixAccount extends simplePlugin
     return $errors;
   }
 
-  /* remove object from parent */
-  function remove_from_parent()
+  protected function ldap_remove()
   {
-    global $config;
-    /* Cancel if there's nothing to do here */
-    if ((!$this->initially_was_account) || (!$this->acl_is_removeable())) {
-      return;
-    }
-
     /* Remove and write to LDAP */
-    $errors = parent::remove_from_parent();
+    $errors = parent::ldap_remove();
     if (!empty($errors)) {
       return $errors;
     }
 
-    /* Delete group only if cn is uid and there are no other members inside */
-    $ldap = $config->get_ldap_link();
-    $ldap->cd ($config->current['BASE']);
-    $ldap->search ('(&(objectClass=posixGroup)(gidNumber='.ldap_escape_f($this->gidNumber).')(cn='.ldap_escape_f($this->getUid()).'))', array('cn', 'memberUid'));
-    if ($ldap->count() != 0) {
-      $attrs = $ldap->fetch();
-      if ($attrs['cn'][0] == $this->getUid() && !isset($this->attrs['memberUid'])) {
-        $ldap->rmDir($attrs['dn']);
+    if (!$this->is_template) {
+      /* Delete group only if cn is uid and there are no other members inside */
+      if (class_available('mixedGroup')) {
+        $type = 'ogroup';
+      } else {
+        $type = 'group';
+      }
+      $groups = objects::ls($type, array('cn' => 1, 'memberUid' => '*'), NULL, '(&(objectClass=posixGroup)(gidNumber='.ldap_escape_f($this->gidNumber).')(cn='.ldap_escape_f($this->getUid()).'))');
+      foreach ($groups as $dn => $group) {
+        if (empty($group['memberUid']) || ((count($group['memberUid']) == 1) && ($group['memberUid'][0] == $this->getUid()))) {
+          $tabobject = objects::open($dn, $type);
+          $tabobject->delete();
+        }
       }
     }
+
+    return array();
   }
 
   /* Adapt from template, using 'dn' */
@@ -983,15 +993,41 @@ class posixAccount extends simplePlugin
       /* Call hook script - if present */
       $command = $config->get_cfg_value('nextIdHook');
 
-      if ($command != '') {
-        $command .= ' '.escapeshellarg($dn).' '.escapeshellarg($attrib);
-        if (check_command($command)) {
-          @DEBUG (DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, 'Execute');
-          exec($command, $output);
-          if (is_numeric($output[0])) {
-            return $output[0];
-          }
-        }
+      $command .= ' '.escapeshellarg($dn).' '.escapeshellarg($attrib);
+      @DEBUG (DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, 'Execute');
+      exec($command, $output, $returnCode);
+
+      $str = implode("\n", $output);
+      if ($returnCode != 0) {
+        /* Failure */
+        @DEBUG(DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, 'Execution failed code: '.$returnCode);
+        msg_dialog::display(
+          _('Warning'),
+          sprintf(
+            _("%s\nResult: %s\nUsing default base!"),
+            msgPool::cmdexecfailed('nextIdHook', $command),
+            $str
+          ),
+          WARNING_DIALOG
+        );
+        return $config->get_cfg_value('uidNumberBase');
+      } elseif (isset($output[0]) && is_numeric($output[0])) {
+        /* Success */
+        @DEBUG(DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, 'Result: '.$str);
+        return $output[0];
+      } else {
+        @DEBUG(DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, 'Result: '.$str);
+        /* Invalid output */
+        msg_dialog::display(
+          _('Warning'),
+          sprintf(
+            _("%s\nResult: %s\nUsing default base!"),
+            _('"nextIdHook" did not return a valid output!'),
+            $str
+          ),
+          WARNING_DIALOG
+        );
+        return $config->get_cfg_value('uidNumberBase');
       }
     }
 

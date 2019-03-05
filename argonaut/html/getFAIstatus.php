@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@
 
 session_cache_limiter("private");
 session::start();
-session::global_set('errorsAlreadyPosted',array());
+session::global_set('errorsAlreadyPosted', array());
 
 /* Logged in? Simple security check */
 if (!session::global_is_set('ui')) {
@@ -38,14 +38,14 @@ if (!session::global_is_set('ui')) {
 }
 
 /* There must be a mac address given */
-if(!isset($_GET['mac'])){
+if (!isset($_GET['mac'])) {
   return;
 }
 
 $config = session::global_get("config");
-$o =  new supportDaemon();
-$res = $o->get_entries_by_mac(explode(",", $_GET['mac']));
-foreach($res as $entry){
+$o      = new supportDaemon();
+$res    = $o->get_entries_by_mac(explode(",", $_GET['mac']));
+foreach ($res as $entry) {
   echo $entry['MACADDRESS']."|".$entry['PROGRESS']."\n";
 }
 ?>

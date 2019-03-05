@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2017
+# fusiondirectory <contact@fusiondirectory.org>, 2018
 # Benoit Mortier <benoit.mortier@opensides.be>, 2018
 # 
 #, fuzzy
@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:22+0000\n"
+"POT-Creation-Date: 2019-01-30 17:20+0000\n"
+"PO-Revision-Date: 2016-08-29 15:43+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2018\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -41,77 +41,85 @@ msgstr ""
 msgid "Event"
 msgstr "Évènement"
 
-#: admin/audit/class_auditEvent.inc:79
-#: admin/audit/class_auditManagement.inc:69
+#: admin/audit/class_auditEvent.inc:80
+#: admin/audit/class_auditManagement.inc:111
 msgid "Time"
 msgstr "Temps"
 
-#: admin/audit/class_auditEvent.inc:79
+#: admin/audit/class_auditEvent.inc:80
 msgid "Date and time this event happened"
 msgstr "Date et heure à laquelle cet évènement est arrivé"
 
-#: admin/audit/class_auditEvent.inc:82
-#: admin/audit/class_auditManagement.inc:83
+#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditManagement.inc:125
 msgid "Action"
 msgstr "Action"
 
-#: admin/audit/class_auditEvent.inc:82
+#: admin/audit/class_auditEvent.inc:83
 msgid "Action type"
 msgstr "Type d'action"
 
-#: admin/audit/class_auditEvent.inc:83
-#: admin/audit/class_auditManagement.inc:76
+#: admin/audit/class_auditEvent.inc:84
+#: admin/audit/class_auditManagement.inc:118
 msgid "Author"
 msgstr "Auteur"
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:84
 msgid "Action author"
 msgstr "Auteur de l'action"
 
-#: admin/audit/class_auditEvent.inc:84
+#: admin/audit/class_auditEvent.inc:85
 msgid "Object type"
 msgstr "Type d'objet"
 
-#: admin/audit/class_auditEvent.inc:85
+#: admin/audit/class_auditEvent.inc:86
 msgid "Object"
 msgstr "Objet"
 
-#: admin/audit/class_auditEvent.inc:85
+#: admin/audit/class_auditEvent.inc:86
 msgid "Target object"
 msgstr "Objet cible"
 
-#: admin/audit/class_auditEvent.inc:86
+#: admin/audit/class_auditEvent.inc:87
 msgid "Attributes"
 msgstr "Attributs"
 
-#: admin/audit/class_auditEvent.inc:86
+#: admin/audit/class_auditEvent.inc:87
 msgid "Target attributes"
 msgstr "Attributs cibles"
 
-#: admin/audit/class_auditEvent.inc:87
+#: admin/audit/class_auditEvent.inc:88
 msgid "Result"
 msgstr "Résultat"
 
-#: admin/audit/class_auditEvent.inc:87
+#: admin/audit/class_auditEvent.inc:88
 msgid "Result or error"
 msgstr "Résultat ou erreur"
 
-#: admin/audit/class_auditManagement.inc:40
+#: admin/audit/class_auditManagement.inc:41
 #: config/audit/class_auditConfig.inc:41
 msgid "Audit"
 msgstr "Audit"
 
-#: admin/audit/class_auditManagement.inc:41
+#: admin/audit/class_auditManagement.inc:42
 msgid "Audit events display"
 msgstr "Affichage des événements d'audit"
 
-#: admin/audit/class_auditManagement.inc:90
+#: admin/audit/class_auditManagement.inc:132
 msgid "Type"
 msgstr "Type"
 
-#: admin/audit/class_auditManagement.inc:97
+#: admin/audit/class_auditManagement.inc:139
 msgid "Target"
 msgstr "Cible"
+
+#: admin/audit/class_auditManagement.inc:157
+msgid "Newer than"
+msgstr "Plus récent que"
+
+#: admin/audit/class_auditManagement.inc:161
+msgid "Older than"
+msgstr "Plus vieux que"
 
 #: config/audit/class_auditConfig.inc:28
 msgid "Audit configuration"
@@ -144,3 +152,7 @@ msgstr "Nombre de jours à conserver"
 #: config/audit/class_auditConfig.inc:57
 msgid "Number of days of audit to keep in the LDAP when cleaning"
 msgstr "Nombre de jours d'audit à conserver dans le LDAP lors du nettoyage"
+
+#: admin/audit/audit-filter.tpl.c:2
+msgid "Filter"
+msgstr "Filtre"

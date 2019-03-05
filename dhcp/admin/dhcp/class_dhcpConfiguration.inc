@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -54,7 +54,6 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
       return array('not in cache',$dn,'');
     }
 
-    //~ $link = "<a href='?plug=".$_GET['plug']."&act=edit&id=".$key."'>".$value[1]."</a>";
     $link = $value[1];
 
     $objtype = $this->objectType($dn);
@@ -394,7 +393,6 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
       'dn'              => $this->plugin->dn,
       'cn'              => array($this->plugin->cn),
       'objectClass'     => array('top', 'dhcpService'),
-      //~ 'dhcpPrimaryDN'   => array($this->plugin->dn),
       'dhcpStatements'  => array(
         'default-lease-time 600',
         'max-lease-time 7200',
@@ -555,10 +553,6 @@ class dhcpConfiguration extends simplePlugin
         'class' => array('fullwidth'),
         'attrs' => array(
           new BaseSelectorAttribute(get_ou('dhcpRDN')),
-          //~ new HostNameAttribute (
-            //~ _('Name'), _('Name of this DHCP configuration'),
-            //~ 'cn', TRUE
-          //~ ),
           new HiddenAttribute('cn'),
           new DhcpSectionsAttribute (
             '', _('The DHCP sections handled by this server'),
@@ -671,7 +665,7 @@ class dhcpConfiguration extends simplePlugin
                 }
               }
             }
-            if ((count($values) == 1) && is_array($values)) {
+            if (is_array($values) && (count($values) == 1)) {
               $attrs[$attribute] = $values[0];
             } else {
               $attrs[$attribute] = $values;
@@ -698,7 +692,6 @@ class dhcpConfiguration extends simplePlugin
       }
     }
 
-    //~ parent::ldap_save();
     return $errors;
   }
 }

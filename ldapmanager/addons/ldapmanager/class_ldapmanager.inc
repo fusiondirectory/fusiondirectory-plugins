@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -111,7 +111,7 @@ class ldapmanager extends simplePlugin
             _('Import an LDIF file into your LDAP. Remember that FusionDirectory will not check your LDIFs for FusionDirectory conformance.'),
             'import',
             array(
-              new FileAttribute (
+              new FileTextAreaAttribute (
                 '', '',
                 'import_ldif_file', FALSE
               ),
@@ -191,9 +191,14 @@ class ldapmanager extends simplePlugin
   function handle_import_ldif_submit()
   {
     global $config;
+    if (empty($this->import)) {
+      msg_dialog::display(_('Warning'), _('Nothing to import, please upload a non-empty file or fill the textarea.'), WARNING_DIALOG);
+      return;
+    }
     $ldap = $config->get_ldap_link();
     try {
-      $ldap->import_complete_ldif($this->import, !$this->overwrite, FALSE);
+      $nb = $ldap->import_complete_ldif($this->import, !$this->overwrite, FALSE);
+      msg_dialog::display(_('Success'), sprintf(_('%d entries successfully imported'), $nb), INFO_DIALOG);
     } catch (FusionDirectoryException $e) {
       msg_dialog::display(_('LDAP error'), $e->getMessage(), ERROR_DIALOG);
     }

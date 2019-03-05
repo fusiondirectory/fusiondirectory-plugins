@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,9 +19,9 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class printGeneric extends simplePlugin
+class printGeneric extends ipHostPlugin
 {
-  var $objectclasses  = array('fdPrinter', 'ipHost', 'ieee802Device');
+  var $objectclasses  = array('fdPrinter', 'ieee802Device');
 
   /* Return plugin information */
   static function plInfo()
@@ -109,9 +109,11 @@ class printGeneric extends simplePlugin
               'ipHostNumber', TRUE
             )
           ),
-          new MacAddressAttribute(
-            _('Mac address'), _('Mac address of this system'),
-            'macAddress', FALSE
+          new SetAttribute(
+            new MacAddressAttribute(
+              _('Mac address'), _('Mac address of this system'),
+              'macAddress', FALSE
+            )
           ),
         ),
       ),

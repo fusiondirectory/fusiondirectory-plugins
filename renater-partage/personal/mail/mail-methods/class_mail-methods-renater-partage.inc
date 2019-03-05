@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016-2017  FusionDirectory
+  Copyright (C) 2016-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,6 +23,9 @@ class mailMethodRenaterPartage extends mailMethod
   protected $enableQuota            = TRUE;
   protected $enableVacation         = FALSE;
   protected $enableFolderTypes      = FALSE;
+  protected $enableGroupForwarding  = FALSE;
+  protected $enableLocalOnly        = FALSE;
+  protected $enableForwardOnly      = FALSE;
 
   protected $user_id  = '%MAIL%';
   protected $share_id = '%MAIL%';
@@ -153,6 +156,24 @@ class mailMethodRenaterPartage extends mailMethod
     parent::disconnect();
     unset($this->token);
     unset($this->tokenTime);
+  }
+
+  /*! \brief Checks data consistency
+  */
+  public function check()
+  {
+    $messages = parent::check();
+    $servers  = static::getMailServers();
+    $infos    = $servers[$this->parent->gosaMailServer];
+
+    $alternates = $this->parent->gosaMailAlternateAddress;
+    foreach ($alternates as $alternate) {
+      if (!preg_match('/@'.preg_quote($infos['domain'], '/').'$/', $alternate)) {
+        $messages[] = sprintf(_('Email address "%s" does not use the correct partage domain "%s"'), $alternate, $infos['domain']);
+      }
+    }
+
+    return $messages;
   }
 
   /*! \brief  Returns the connection status of this method.
@@ -602,7 +623,7 @@ class mailMethodRenaterPartage extends mailMethod
   {
     if ($this->cacheAccount()) {
       /* Partage sends quota in bytes */
-      return ($this->cachedAccount['account']['used'] / (1024 * 1024));
+      return $this->cachedAccount['account']['used'] / (1024 * 1024);
     }
     return parent::getQuotaUsage();
   }
@@ -614,7 +635,7 @@ class mailMethodRenaterPartage extends mailMethod
   {
     if ($this->cacheAccount()) {
       /* Partage sends quota in bytes */
-      return ($this->cachedAccount['account']['quota'] / (1024 * 1024));
+      return $this->cachedAccount['account']['quota'] / (1024 * 1024);
     }
     return $quotaValue;
   }

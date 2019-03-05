@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2009-2010 Bas Tichelaar
-  Copyright (C) 2013-2016  FusionDirectory
+  Copyright (C) 2013-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -43,12 +43,13 @@ class mailGroup extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'    => _('Mail'),
-      'plDescription'  => _('Group mail options'),
-      'plSelfModify'   => FALSE,
-      'plPriority'     => 10,
-      'plObjectType'   => array('group', 'ogroup-user'),
-      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plShortName'     => _('Mail'),
+      'plDescription'   => _('Group mail options'),
+      'plIcon'          => 'geticon.php?context=applications&icon=internet-mail&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=internet-mail&size=16',
+      'plPriority'      => 10,
+      'plObjectType'    => array('group', 'ogroup-user'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
   }
 
@@ -133,6 +134,37 @@ class mailGroup extends simplePlugin
       $this->attributesAccess['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
       $this->attributesAccess['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
     }
+
+    /* Feature switches */
+
+    if ($this->mailMethod->localOnlyEnabled()) {
+      $this->attributesAccess['fdGroupMailLocalOnly']->setDisabled(FALSE);
+      $this->attributesAccess['fdGroupMailLocalOnly']->setVisible(TRUE);
+    } else {
+      $this->attributesAccess['fdGroupMailLocalOnly']->setDisabled(TRUE);
+      $this->attributesAccess['fdGroupMailLocalOnly']->setVisible(FALSE);
+      $this->attributesAccess['fdGroupMailLocalOnly']->setValue(FALSE);
+    }
+
+    if ($this->mailMethod->groupForwardingEnabled()) {
+      $this->attributesAccess['gosaMailForwardingAddress']->setDisabled(FALSE);
+      $this->attributesAccess['gosaMailForwardingAddress']->setVisible(TRUE);
+    } else {
+      $this->attributesAccess['gosaMailForwardingAddress']->setDisabled(TRUE);
+      $this->attributesAccess['gosaMailForwardingAddress']->setVisible(FALSE);
+      $this->attributesAccess['gosaMailForwardingAddress']->setValue(array());
+    }
+  }
+
+  function check ()
+  {
+    $messages = parent::check();
+
+    if (!$this->is_template && is_object($this->mailMethod)) {
+      $messages = array_merge($messages, $this->mailMethod->check());
+    }
+
+    return $messages;
   }
 
   protected function shouldSave()

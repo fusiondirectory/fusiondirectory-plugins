@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:22+0000\n"
+"POT-Creation-Date: 2019-01-30 17:20+0000\n"
+"PO-Revision-Date: 2016-08-29 15:05+0000\n"
 "Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "Naam"
 
 #: admin/autofs/class_nisObject.inc:58
 msgid "Name of this directory"
-msgstr "Naam van de map"
+msgstr "Naam van deze map"
 
 #: admin/autofs/class_nisObject.inc:64
 msgid "Automount entry"
@@ -52,25 +52,25 @@ msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
 msgstr ""
-"De ingave van deze directory voor de automount daemon. Bij voorbeeld "
-"'auto.u' of '-fstype=nfs domaine.tld:/mount/directory'"
+"De ingave van deze directory voor de automount deamon. \n"
+"Bijvoorbeeld 'auto.u' of '-fstype=nfsdomaine.tld:/mount/directory"
 
 #: admin/autofs/class_nisObject.inc:68 admin/autofs/class_nisMap.inc:31
 #: admin/autofs/class_nisMap.inc:34 admin/autofs/class_nisMap.inc:49
 msgid "Mount point"
-msgstr "Koppelpunt"
+msgstr "Mount punt"
 
 #: admin/autofs/class_nisObject.inc:68
 msgid "The mount point this directory will be placed in"
-msgstr "De mountpoint in dewelke deze directory zal geplaatst worden"
+msgstr "Het mountpunt waarin deze directory zal geplaatst worden."
 
 #: admin/autofs/class_nisMap.inc:32
 msgid "Autofs mount point"
-msgstr "Autofs mountpoint"
+msgstr "Autofs mount punt"
 
 #: admin/autofs/class_nisMap.inc:53
 msgid "Name of the mount point"
-msgstr "Naam van het mountpoint"
+msgstr "Naam van het mount punt."
 
 #: config/autofs/class_autofsConfig.inc:28
 msgid "Autofs configuration"
@@ -90,4 +90,4 @@ msgstr "AutoFS RDN"
 
 #: config/autofs/class_autofsConfig.inc:45
 msgid "Branch in which automount info will be stored"
-msgstr "Tak in dewelke automount info zal opgeslagen worden"
+msgstr "Tak in dewelke automount info zal worden opgeslagen"

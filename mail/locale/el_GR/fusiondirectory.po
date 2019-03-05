@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:28+0000\n"
+"POT-Creation-Date: 2019-01-30 17:21+0000\n"
+"PO-Revision-Date: 2016-08-29 15:14+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
 "MIME-Version: 1.0\n"
@@ -31,98 +31,98 @@ msgstr "Αλληλογραφία"
 msgid "Group mail options"
 msgstr "Επιλογές ομάδων αλληλογραφίας"
 
-#: admin/groups/mail/class_mailGroup.inc:59
+#: admin/groups/mail/class_mailGroup.inc:60
 msgid "Information"
 msgstr "Πληροφορίες"
 
-#: admin/groups/mail/class_mailGroup.inc:62
+#: admin/groups/mail/class_mailGroup.inc:63
 #: personal/mail/class_mailAccount.inc:99
 msgid "Primary address"
 msgstr "Κύρια διεύθυνση"
 
-#: admin/groups/mail/class_mailGroup.inc:62
+#: admin/groups/mail/class_mailGroup.inc:63
 msgid "The primary mail address"
 msgstr "Κύρια διεύθυνση αλληλογραφίας"
 
-#: admin/groups/mail/class_mailGroup.inc:66
+#: admin/groups/mail/class_mailGroup.inc:67
 #: personal/mail/class_mailAccount.inc:103
 msgid "Server"
 msgstr "Εξυπηρετητής"
 
-#: admin/groups/mail/class_mailGroup.inc:66
+#: admin/groups/mail/class_mailGroup.inc:67
 msgid "Email server"
 msgstr ""
 
-#: admin/groups/mail/class_mailGroup.inc:72
+#: admin/groups/mail/class_mailGroup.inc:73
 #: personal/mail/class_mailAccount.inc:119
 msgid "Alternative addresses"
 msgstr "Εναλλακτικές διευθύνσεις"
 
-#: admin/groups/mail/class_mailGroup.inc:72
+#: admin/groups/mail/class_mailGroup.inc:73
 msgid "Alternative mail addresses for the group"
 msgstr "Εναλλακτική διεύθυνση e-mail για αυτή την ομάδα"
 
-#: admin/groups/mail/class_mailGroup.inc:77
+#: admin/groups/mail/class_mailGroup.inc:78
 msgid "Forward messages to non group members"
 msgstr "Προώθηση μηνυμάτων στα μη μέλη της ομάδας"
 
-#: admin/groups/mail/class_mailGroup.inc:81
+#: admin/groups/mail/class_mailGroup.inc:82
 msgid "Only allowed to receive local mail"
 msgstr "Επιτρέπεται να λαμβάνουν μόνο τοπική αλληλογραφία"
 
-#: admin/groups/mail/class_mailGroup.inc:81
+#: admin/groups/mail/class_mailGroup.inc:82
 msgid ""
 "Whether this group mail is only allowed to receive messages from local "
 "senders"
 msgstr ""
 "Αν επιτρέπεται σε αυτή την ομάδα να δέχεται μηνύματα από τοπικούς αποστολείς"
 
-#: admin/groups/mail/class_mailGroup.inc:159
-#: personal/mail/class_mailAccount.inc:258
-#: personal/mail/class_mailAccount.inc:323
+#: admin/groups/mail/class_mailGroup.inc:191
+#: personal/mail/class_mailAccount.inc:276
+#: personal/mail/class_mailAccount.inc:377
 #, php-format
 msgid "Mail method cannot connect: %s"
 msgstr ""
 
-#: admin/groups/mail/class_mailGroup.inc:162
-#: personal/mail/class_mailAccount.inc:326
+#: admin/groups/mail/class_mailGroup.inc:194
+#: personal/mail/class_mailAccount.inc:380
 #, php-format
 msgid "Cannot update mailbox: %s"
 msgstr ""
 
-#: admin/groups/mail/class_mailGroup.inc:183
-#: admin/groups/mail/class_mailGroup.inc:187
+#: admin/groups/mail/class_mailGroup.inc:215
+#: admin/groups/mail/class_mailGroup.inc:219
 #: personal/mail/class_mailAccount.inc:45
-#: personal/mail/class_mailAccount.inc:258
-#: personal/mail/class_mailAccount.inc:261
-#: personal/mail/class_mailAccount.inc:329
-#: personal/mail/class_mailAccount.inc:340
-#: personal/mail/class_mailAccount.inc:369
-#: personal/mail/class_mailAccount.inc:373
+#: personal/mail/class_mailAccount.inc:276
+#: personal/mail/class_mailAccount.inc:279
+#: personal/mail/class_mailAccount.inc:383
+#: personal/mail/class_mailAccount.inc:394
+#: personal/mail/class_mailAccount.inc:423
+#: personal/mail/class_mailAccount.inc:427
 msgid "Mail error"
 msgstr "Σφάλμα αλληλογραφίας"
 
-#: admin/groups/mail/class_mailGroup.inc:183
-#: personal/mail/class_mailAccount.inc:369
+#: admin/groups/mail/class_mailGroup.inc:215
+#: personal/mail/class_mailAccount.inc:423
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr ""
 
-#: admin/groups/mail/class_mailGroup.inc:187
-#: personal/mail/class_mailAccount.inc:373
+#: admin/groups/mail/class_mailGroup.inc:219
+#: personal/mail/class_mailAccount.inc:427
 #, php-format
 msgid "Cannot remove mailbox: %s"
 msgstr "Αδυναμία διαγραφής γραμματοκιβωτίου: %s"
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:32
+#: admin/systems/services/imap/class_serviceIMAP.inc:57
 msgid "IMAP/POP3 generic service"
 msgstr "Υπηρεσία IMAP/POP3"
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
+#: admin/systems/services/imap/class_serviceIMAP.inc:58
 msgid "IMAP/POP3"
 msgstr "IMAP/POP3"
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
+#: admin/systems/services/imap/class_serviceIMAP.inc:58
 msgid "Services"
 msgstr "Υπηρεσίες"
 
@@ -300,34 +300,34 @@ msgstr ""
 "Επιλέξτε αν θέλετε να προωθείται η αλληλογραφία χωρίς να λαμβάνονται "
 "αντίγραφα αυτών"
 
-#: personal/mail/class_mailAccount.inc:261
+#: personal/mail/class_mailAccount.inc:279
 #, php-format
 msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:329
+#: personal/mail/class_mailAccount.inc:383
 #, php-format
 msgid "Cannot write quota settings: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:340
+#: personal/mail/class_mailAccount.inc:394
 #, php-format
 msgid "Mail error saving sieve settings: %s"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:144
+#: personal/mail/class_mail-methods.inc:148
 msgid "Configuration error"
 msgstr "Σφάλμα ρύθμισης"
 
-#: personal/mail/class_mail-methods.inc:145
+#: personal/mail/class_mail-methods.inc:149
 #, php-format
 msgid "The configured mail attribute '%s' is unsupported!"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:703
+#: personal/mail/class_mail-methods.inc:738
 msgid "Unknown"
 msgstr "Άγνωστο"
 
-#: personal/mail/class_mail-methods.inc:705
+#: personal/mail/class_mail-methods.inc:740
 msgid "Unlimited"
 msgstr "Απεριόριστο"

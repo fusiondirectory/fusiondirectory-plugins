@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -99,7 +99,7 @@ class AccessRightsAttribute extends CompositeAttribute
       $tmode    = preg_replace('/^./', '', $tmode);
       $nr       = 1;
       while ($nr < 5) {
-        $m[$type.$nr] = ($current & $nr?'TRUE':'FALSE');
+        $m[$type.$nr] = ($current & $nr ? 'TRUE' : 'FALSE');
         $nr += $nr;
       }
     }

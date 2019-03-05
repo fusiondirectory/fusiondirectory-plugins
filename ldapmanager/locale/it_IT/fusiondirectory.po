@@ -4,16 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2017
+# fusiondirectory <contact@fusiondirectory.org>, 2018
+# Paola Penati <paola.penati@opensides.be>, 2018
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:28+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
+"POT-Creation-Date: 2019-01-30 17:21+0000\n"
+"PO-Revision-Date: 2016-08-29 15:14+0000\n"
+"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -104,7 +105,7 @@ msgstr ""
 
 #: addons/ldapmanager/class_ldapmanager.inc:121
 #: addons/ldapmanager/class_csvimport.inc:81
-#: addons/ldapmanager/class_csvimport.inc:107
+#: addons/ldapmanager/class_csvimport.inc:101
 msgid "Import"
 msgstr "Importa"
 
@@ -113,7 +114,7 @@ msgid "Import LDIF file"
 msgstr "Importa file LDIF"
 
 #: addons/ldapmanager/class_ldapmanager.inc:153
-#: addons/ldapmanager/class_ldapmanager.inc:198
+#: addons/ldapmanager/class_ldapmanager.inc:203
 msgid "LDAP error"
 msgstr "Errore LDAP"
 
@@ -139,6 +140,27 @@ msgstr "Errore"
 #, php-format
 msgid "Failed to generate ldap export, error was \"%s\"!"
 msgstr "Impossibile generare l'esportazione LDAP, errore '%s' !"
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid "Warning"
+msgstr "Avvertimento"
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid ""
+"Nothing to import, please upload a non-empty file or fill the textarea."
+msgstr ""
+"Niente da importare, si prega di caricare un file non vuoto o riempire la "
+"textarea."
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#: addons/ldapmanager/class_csvimport.inc:251
+msgid "Success"
+msgstr "Completato"
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#, php-format
+msgid "%d entries successfully imported"
+msgstr "%dvoci importate con successo"
 
 #: addons/ldapmanager/class_csvimport.inc:29
 msgid "CSV import"
@@ -199,20 +221,16 @@ msgstr ""
 msgid "Template filling"
 msgstr "Riempimento dei modelli"
 
-#: addons/ldapmanager/class_csvimport.inc:97
+#: addons/ldapmanager/class_csvimport.inc:91
 msgid "Select fields associations"
 msgstr "Selezionare associazione di campi"
 
-#: addons/ldapmanager/class_csvimport.inc:243
+#: addons/ldapmanager/class_csvimport.inc:244
 #, php-format
 msgid "Import failed for line %d"
 msgstr "Importazione non riuscita per la linea %d"
 
-#: addons/ldapmanager/class_csvimport.inc:250
-msgid "Success"
-msgstr "Completato"
-
-#: addons/ldapmanager/class_csvimport.inc:250
+#: addons/ldapmanager/class_csvimport.inc:251
 #, php-format
 msgid "Successfully imported %d entries"
 msgstr "%d di dati importati con successo"

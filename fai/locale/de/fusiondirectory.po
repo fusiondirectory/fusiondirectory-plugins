@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:26+0000\n"
+"POT-Creation-Date: 2019-01-30 17:20+0000\n"
+"PO-Revision-Date: 2016-08-29 15:10+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
 "MIME-Version: 1.0\n"
@@ -111,8 +111,8 @@ msgstr "bootbar"
 msgid "preserve"
 msgstr "bewahren"
 
-#: admin/fai/class_faiDiskEntry.inc:146 admin/systems/class_faiLogView.inc:204
-#: admin/systems/class_faiLogView.inc:239
+#: admin/fai/class_faiDiskEntry.inc:146 admin/systems/class_faiLogView.inc:201
+#: admin/systems/class_faiLogView.inc:243
 msgid "Error"
 msgstr "Fehler"
 
@@ -385,10 +385,14 @@ msgstr "Dateisystem"
 
 #: admin/fai/class_faiPartition.inc:319
 msgid "The filesystem this partition should be formatted with"
-msgstr ""
+msgstr "Das Dateisystem dieser Partition sollte formatiert werden mit"
 
 #: admin/fai/class_faiPartition.inc:322
 msgid "swap"
+msgstr ""
+
+#: admin/fai/class_faiPartition.inc:322
+msgid "fat32"
 msgstr ""
 
 #: admin/fai/class_faiPartition.inc:322
@@ -425,7 +429,7 @@ msgstr "Einhänge-Pfad"
 
 #: admin/fai/class_faiPartition.inc:325
 msgid "Mount point for this partition"
-msgstr ""
+msgstr "Einhängepunkt für diese Partition"
 
 #: admin/fai/class_faiPartition.inc:331
 msgid "Options"
@@ -487,11 +491,11 @@ msgstr ""
 msgid "Encryption settings"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:508
+#: admin/fai/class_faiPartition.inc:507
 msgid "Raid arrays must contain at least two partitions!"
 msgstr "RAID-Arrays müssen mindestens zwei Partitionen enthalten!"
 
-#: admin/fai/class_faiPartition.inc:510
+#: admin/fai/class_faiPartition.inc:509
 msgid ""
 "Raid 0 arrays can only be realized with a combination of two partitions!"
 msgstr ""
@@ -589,9 +593,9 @@ msgstr "Konfiguration bearbeiten"
 #: admin/fai/class_faiPackage.inc:251 admin/fai/class_faiTemplate.inc:109
 #: admin/fai/class_faiPartitionTable.inc:239
 #: admin/fai/class_faiPartitionTable.inc:280
-#: admin/systems/services/repository/class_serviceRepository.inc:240
-#: admin/systems/services/repository/class_serviceRepository.inc:257
-#: admin/systems/services/repository/class_serviceRepository.inc:261
+#: admin/systems/services/repository/class_serviceRepository.inc:241
+#: admin/systems/services/repository/class_serviceRepository.inc:258
+#: admin/systems/services/repository/class_serviceRepository.inc:262
 msgid "LDAP error"
 msgstr "LDAP-Fehler"
 
@@ -808,32 +812,32 @@ msgstr "Datei"
 msgid "Date"
 msgstr "Datum"
 
-#: admin/systems/class_faiLogView.inc:151
-#: admin/systems/class_faiLogView.inc:154
+#: admin/systems/class_faiLogView.inc:149
+#: admin/systems/class_faiLogView.inc:152
 msgid "Available logs"
 msgstr "Verfügbare Protokolle"
 
-#: admin/systems/class_faiLogView.inc:159
+#: admin/systems/class_faiLogView.inc:157
 msgid "Selected log"
 msgstr "Ausgewähltes Protokoll"
 
-#: admin/systems/class_faiLogView.inc:163
+#: admin/systems/class_faiLogView.inc:161
 msgid "Content of the selected log"
 msgstr "Inhalt des ausgewählten Protokolls"
 
-#: admin/systems/class_faiLogView.inc:175
+#: admin/systems/class_faiLogView.inc:173
 msgid "FAI Logs"
 msgstr "FAI-Protokolle"
 
-#: admin/systems/class_faiLogView.inc:176
+#: admin/systems/class_faiLogView.inc:174
 msgid "FAI Logs Viewer"
 msgstr "FAI-Protokollbetrachter"
 
-#: admin/systems/class_faiLogView.inc:219
+#: admin/systems/class_faiLogView.inc:223
 msgid "Selected file"
 msgstr "Ausgewählte Datei"
 
-#: admin/systems/class_faiLogView.inc:227
+#: admin/systems/class_faiLogView.inc:231
 #, php-format
 msgid "Selected file: %s"
 msgstr "Ausgewählte Datei: %s"
@@ -931,25 +935,25 @@ msgstr ""
 
 #: admin/systems/services/repository/class_serviceRepository.inc:77
 msgid "Path pattern"
-msgstr ""
+msgstr "Pfadmuster"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:77
 msgid "How this repository is organized (only for RPM repositories)"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceRepository.inc:160
+#: admin/systems/services/repository/class_serviceRepository.inc:161
 msgid "Package repository"
 msgstr "Paketrepositorium"
 
-#: admin/systems/services/repository/class_serviceRepository.inc:161
+#: admin/systems/services/repository/class_serviceRepository.inc:162
 msgid "Package repository information"
 msgstr "Paketrepositoriumsinformation"
 
-#: admin/systems/services/repository/class_serviceRepository.inc:173
+#: admin/systems/services/repository/class_serviceRepository.inc:174
 msgid "Repositories"
 msgstr "Repositories"
 
-#: admin/systems/services/repository/class_serviceRepository.inc:178
+#: admin/systems/services/repository/class_serviceRepository.inc:179
 msgid "Repositories this server hosts"
 msgstr "Repositories, die dieser Server bereitstellt"
 

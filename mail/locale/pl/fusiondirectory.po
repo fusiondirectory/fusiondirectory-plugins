@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:28+0000\n"
+"POT-Creation-Date: 2019-01-30 17:21+0000\n"
+"PO-Revision-Date: 2016-08-29 15:14+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Polish (https://www.transifex.com/fusiondirectory/teams/12202/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -31,97 +31,97 @@ msgstr "Poczta"
 msgid "Group mail options"
 msgstr ""
 
-#: admin/groups/mail/class_mailGroup.inc:59
+#: admin/groups/mail/class_mailGroup.inc:60
 msgid "Information"
 msgstr "Informacja"
 
-#: admin/groups/mail/class_mailGroup.inc:62
+#: admin/groups/mail/class_mailGroup.inc:63
 #: personal/mail/class_mailAccount.inc:99
 msgid "Primary address"
 msgstr "Adres podstawowy"
 
-#: admin/groups/mail/class_mailGroup.inc:62
+#: admin/groups/mail/class_mailGroup.inc:63
 msgid "The primary mail address"
 msgstr ""
 
-#: admin/groups/mail/class_mailGroup.inc:66
+#: admin/groups/mail/class_mailGroup.inc:67
 #: personal/mail/class_mailAccount.inc:103
 msgid "Server"
 msgstr "Serwer"
 
-#: admin/groups/mail/class_mailGroup.inc:66
+#: admin/groups/mail/class_mailGroup.inc:67
 msgid "Email server"
 msgstr ""
 
-#: admin/groups/mail/class_mailGroup.inc:72
+#: admin/groups/mail/class_mailGroup.inc:73
 #: personal/mail/class_mailAccount.inc:119
 msgid "Alternative addresses"
 msgstr "Adresy alternatywne"
 
-#: admin/groups/mail/class_mailGroup.inc:72
+#: admin/groups/mail/class_mailGroup.inc:73
 msgid "Alternative mail addresses for the group"
 msgstr ""
 
-#: admin/groups/mail/class_mailGroup.inc:77
+#: admin/groups/mail/class_mailGroup.inc:78
 msgid "Forward messages to non group members"
 msgstr "Przekaż wiadomości do członków bez grupy"
 
-#: admin/groups/mail/class_mailGroup.inc:81
+#: admin/groups/mail/class_mailGroup.inc:82
 msgid "Only allowed to receive local mail"
 msgstr ""
 
-#: admin/groups/mail/class_mailGroup.inc:81
+#: admin/groups/mail/class_mailGroup.inc:82
 msgid ""
 "Whether this group mail is only allowed to receive messages from local "
 "senders"
 msgstr ""
 
-#: admin/groups/mail/class_mailGroup.inc:159
-#: personal/mail/class_mailAccount.inc:258
-#: personal/mail/class_mailAccount.inc:323
+#: admin/groups/mail/class_mailGroup.inc:191
+#: personal/mail/class_mailAccount.inc:276
+#: personal/mail/class_mailAccount.inc:377
 #, php-format
 msgid "Mail method cannot connect: %s"
 msgstr ""
 
-#: admin/groups/mail/class_mailGroup.inc:162
-#: personal/mail/class_mailAccount.inc:326
+#: admin/groups/mail/class_mailGroup.inc:194
+#: personal/mail/class_mailAccount.inc:380
 #, php-format
 msgid "Cannot update mailbox: %s"
 msgstr ""
 
-#: admin/groups/mail/class_mailGroup.inc:183
-#: admin/groups/mail/class_mailGroup.inc:187
+#: admin/groups/mail/class_mailGroup.inc:215
+#: admin/groups/mail/class_mailGroup.inc:219
 #: personal/mail/class_mailAccount.inc:45
-#: personal/mail/class_mailAccount.inc:258
-#: personal/mail/class_mailAccount.inc:261
-#: personal/mail/class_mailAccount.inc:329
-#: personal/mail/class_mailAccount.inc:340
-#: personal/mail/class_mailAccount.inc:369
-#: personal/mail/class_mailAccount.inc:373
+#: personal/mail/class_mailAccount.inc:276
+#: personal/mail/class_mailAccount.inc:279
+#: personal/mail/class_mailAccount.inc:383
+#: personal/mail/class_mailAccount.inc:394
+#: personal/mail/class_mailAccount.inc:423
+#: personal/mail/class_mailAccount.inc:427
 msgid "Mail error"
 msgstr ""
 
-#: admin/groups/mail/class_mailGroup.inc:183
-#: personal/mail/class_mailAccount.inc:369
+#: admin/groups/mail/class_mailGroup.inc:215
+#: personal/mail/class_mailAccount.inc:423
 #, php-format
 msgid "Cannot remove mailbox, mail method cannot connect: %s"
 msgstr ""
 
-#: admin/groups/mail/class_mailGroup.inc:187
-#: personal/mail/class_mailAccount.inc:373
+#: admin/groups/mail/class_mailGroup.inc:219
+#: personal/mail/class_mailAccount.inc:427
 #, php-format
 msgid "Cannot remove mailbox: %s"
 msgstr ""
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:32
+#: admin/systems/services/imap/class_serviceIMAP.inc:57
 msgid "IMAP/POP3 generic service"
 msgstr ""
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
+#: admin/systems/services/imap/class_serviceIMAP.inc:58
 msgid "IMAP/POP3"
 msgstr ""
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
+#: admin/systems/services/imap/class_serviceIMAP.inc:58
 msgid "Services"
 msgstr "Usługi"
 
@@ -291,34 +291,34 @@ msgstr "Nie dostarczaj do własnej skrzynki"
 msgid "Select if you want to forward mails without getting own copies of them"
 msgstr "Zaznacz jeśli chcesz przekazywać pocztę bez zachowania kopii"
 
-#: personal/mail/class_mailAccount.inc:261
+#: personal/mail/class_mailAccount.inc:279
 #, php-format
 msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:329
+#: personal/mail/class_mailAccount.inc:383
 #, php-format
 msgid "Cannot write quota settings: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:340
+#: personal/mail/class_mailAccount.inc:394
 #, php-format
 msgid "Mail error saving sieve settings: %s"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:144
+#: personal/mail/class_mail-methods.inc:148
 msgid "Configuration error"
 msgstr "Błąd konfiguracji"
 
-#: personal/mail/class_mail-methods.inc:145
+#: personal/mail/class_mail-methods.inc:149
 #, php-format
 msgid "The configured mail attribute '%s' is unsupported!"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:703
+#: personal/mail/class_mail-methods.inc:738
 msgid "Unknown"
 msgstr "Nieznane"
 
-#: personal/mail/class_mail-methods.inc:705
+#: personal/mail/class_mail-methods.inc:740
 msgid "Unlimited"
 msgstr ""

@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2017
+# fusiondirectory <contact@fusiondirectory.org>, 2016
 # Pavel Borecki <pavel.borecki@gmail.com>, 2018
 # 
 #, fuzzy
@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:27+0000\n"
+"POT-Creation-Date: 2019-01-30 17:20+0000\n"
+"PO-Revision-Date: 2016-08-29 15:11+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -34,44 +34,44 @@ msgstr ""
 "Tento zásuvný modul slouží pro správu ověřování Radius, založeném na "
 "implementaci FreeRadius"
 
-#: admin/freeradius/class_freeradiusGroup.inc:49
+#: admin/freeradius/class_freeradiusGroup.inc:51
 #: personal/freeradius/class_freeradiusAccount.inc:55
 msgid "Support 802.1x"
 msgstr "Podpora 802.1x"
 
-#: admin/freeradius/class_freeradiusGroup.inc:52
+#: admin/freeradius/class_freeradiusGroup.inc:54
 #: personal/freeradius/class_freeradiusAccount.inc:58
 msgid "Tunnel medium type"
 msgstr "Typ média tunelu"
 
-#: admin/freeradius/class_freeradiusGroup.inc:53
+#: admin/freeradius/class_freeradiusGroup.inc:55
 #: personal/freeradius/class_freeradiusAccount.inc:58
 msgid "Name of the tunnel medium type"
 msgstr "Název typu média tunelu"
 
-#: admin/freeradius/class_freeradiusGroup.inc:59
+#: admin/freeradius/class_freeradiusGroup.inc:61
 #: personal/freeradius/class_freeradiusAccount.inc:63
 msgid "Tunnel type"
 msgstr "Typ tunelu"
 
-#: admin/freeradius/class_freeradiusGroup.inc:60
+#: admin/freeradius/class_freeradiusGroup.inc:62
 #: personal/freeradius/class_freeradiusAccount.inc:63
 msgid "Name of the tunnel type"
 msgstr "Název typu tunelu"
 
-#: admin/freeradius/class_freeradiusGroup.inc:66
+#: admin/freeradius/class_freeradiusGroup.inc:68
 #: personal/freeradius/class_freeradiusAccount.inc:68
 msgid "VLAN id"
 msgstr "Identifikátor virtuální sítě (vlan)"
 
-#: admin/freeradius/class_freeradiusGroup.inc:67
+#: admin/freeradius/class_freeradiusGroup.inc:69
 #: personal/freeradius/class_freeradiusAccount.inc:68
 msgid "VLAN identifier"
 msgstr "identifikátor VLAN"
 
 #: personal/freeradius/class_freeradiusAccount.inc:73
 msgid "Expiration date"
-msgstr "Datum vypršení platnosti"
+msgstr "Datum skončení platnosti"
 
 #: personal/freeradius/class_freeradiusAccount.inc:73
 msgid "Date of the expiration account"
@@ -80,7 +80,7 @@ msgstr "Datum skončení platnosti účtu"
 #: personal/freeradius/class_freeradiusAccount.inc:80
 #: personal/freeradius/class_freeradiusAccount.inc:84
 msgid "Groups"
-msgstr "skupiny"
+msgstr "Skupiny"
 
 #: personal/freeradius/class_freeradiusAccount.inc:85
 msgid "FreeRadius Group"
@@ -116,7 +116,7 @@ msgstr "Typ služby"
 
 #: personal/freeradius/class_freeradiusAccount.inc:129
 msgid "Session Timeout"
-msgstr "Časový limit relace"
+msgstr "Časový limit sezení"
 
 #: personal/freeradius/class_freeradiusAccount.inc:136
 msgid "Idle Timeout"

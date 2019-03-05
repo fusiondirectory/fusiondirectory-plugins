@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2016  FusionDirectory
+  Copyright (C) 2015-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,6 +22,20 @@ class serviceDHCP extends simpleService
 {
   var $objectclasses = array('dhcpServer');
 
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('DHCP service'),
+      'plDescription' => _('DHCP service'),
+      'plIcon'        => 'geticon.php?context=applications&icon=dhcp&size=16',
+      'plForeignKeys' => array(
+        'dhcpServiceDN' => 'dhcpConfiguration',
+      ),
+
+      'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    );
+  }
+
   static function getAttributesInfo ()
   {
     return array(
@@ -37,27 +51,6 @@ class serviceDHCP extends simpleService
           )
         )
       ),
-    );
-  }
-
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('DHCP service'),
-      'plDescription' => _('DHCP service'),
-      'plIcon'        => 'geticon.php?context=applications&icon=dhcp&size=16',
-      'plForeignKeys'   => array(
-        'dhcpServiceDN' => 'dhcpConfiguration',
-      ),
-
-      'plProvidedAcls' => array(
-        // Remove this to hide the start button at all.
-        'start'         => _('Start service'),
-        // Remove this to hide the stop button at all.
-        'stop'          => _('Stop service'),
-        // Remove this to hide the restart button at all.
-        'restart'       => _('Restart service')
-      )
     );
   }
 

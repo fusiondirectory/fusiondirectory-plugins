@@ -1,6 +1,6 @@
 <?php
 /*
-					COPYRIGHT
+          COPYRIGHT
 
 Copyright 2007 Sergio Vaccaro <sergio@inservibile.org>
 Copyright 2013-2018 FusionDirectory
@@ -29,69 +29,69 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  * @author sergio <jsonrpcphp@inservibile.org>
  */
 class jsonRPCServer {
-	/**
-	 * This function handle a request binding it to a given object
-	 *
-	 * @param object $object
-	 * @return boolean
-	 */
-	public static function handle($object) {
+  /**
+   * This function handle a request binding it to a given object
+   *
+   * @param object $object
+   * @return boolean
+   */
+  public static function handle($object)
+  {
+    // checks if a JSON-RCP request has been received
+    if (
+      $_SERVER['REQUEST_METHOD'] != 'POST' ||
+      empty($_SERVER['CONTENT_TYPE']) ||
+      $_SERVER['CONTENT_TYPE'] != 'application/json'
+      ) {
+      // This is not a JSON-RPC request
+      return FALSE;
+    }
 
-		// checks if a JSON-RCP request has been received
-		if (
-			$_SERVER['REQUEST_METHOD'] != 'POST' ||
-			empty($_SERVER['CONTENT_TYPE']) ||
-			$_SERVER['CONTENT_TYPE'] != 'application/json'
-			) {
-			// This is not a JSON-RPC request
-			return false;
-		}
+    // reads the input data
+    $request = json_decode(file_get_contents('php://input'), TRUE);
 
-		// reads the input data
-		$request = json_decode(file_get_contents('php://input'),true);
+    // executes the task on local object
+    try {
+      if (($result = @call_user_func_array(array($object,$request['method']), $request['params'])) !== FALSE) {
+        $response = array (
+                  'id' => $request['id'],
+                  'result' => $result,
+                  'error' => NULL
+                  );
+      } else {
+        $response = array (
+                  'id' => $request['id'],
+                  'result' => NULL,
+                  'error' => 'unknown method or incorrect parameters'
+                  );
+      }
+    } catch (Exception $e) {
+      $response = array (
+                'id' => $request['id'],
+                'result' => NULL,
+                'error' => $e->getMessage()
+                );
+    }
 
-		// executes the task on local object
-		try {
-			if (($result = @call_user_func_array(array($object,$request['method']),$request['params'])) !== FALSE) {
-				$response = array (
-									'id' => $request['id'],
-									'result' => $result,
-									'error' => NULL
-									);
-			} else {
-				$response = array (
-									'id' => $request['id'],
-									'result' => NULL,
-									'error' => 'unknown method or incorrect parameters'
-									);
-			}
-		} catch (Exception $e) {
-			$response = array (
-								'id' => $request['id'],
-								'result' => NULL,
-								'error' => $e->getMessage()
-								);
-		}
-
-		// output the response
+    // output the response
     // notifications don't want response
-		if (!empty($request['id'])) {
-			header('content-type: text/javascript');
-			$res = json_encode($response);
-			if ($res === FALSE) {
-				$response = array (
-					'id' => $request['id'],
-					'result' => NULL,
-					'error' => 'Failed to encode response: '.json_last_error_msg()
-				);
-				echo json_encode($response);
-			} else {
-				echo $res;
-			}
-		}
+    if (!empty($request['id'])) {
+      header('content-type: text/javascript');
+      $res = json_encode($response);
+      if ($res === FALSE) {
+        $response = array (
+          'id' => $request['id'],
+          'result' => NULL,
+          'error' => 'Failed to encode response: '.json_last_error_msg()
+        );
+        echo json_encode($response);
+      } else {
+        echo $res;
+      }
+    }
 
-		// finish
-		return true;
-	}
+    // finish
+    return TRUE;
+  }
 }
 ?>

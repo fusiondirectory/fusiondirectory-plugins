@@ -3,7 +3,7 @@
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2009 GONICUS GmbH
   Copyright (C) 2012 WILLIAME Jeremy
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -33,6 +33,8 @@ class freeradiusGroup extends simplePlugin {
     return array(
       'plShortName'       => _('Freeradius'),
       'plDescription'     => _('This Plugin is for Radius accounting based in FreeRadius'),
+      'plIcon'            => 'geticon.php?context=applications&icon=freeradius&size=48',
+      'plSmallIcon'       => 'geticon.php?context=applications&icon=freeradius&size=16',
       'plObjectType'      => array('group'),
       'plProvidedAcls'    => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );

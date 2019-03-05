@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2017
+# fusiondirectory <contact@fusiondirectory.org>, 2016
 # Pavel Borecki <pavel.borecki@gmail.com>, 2018
 # 
 #, fuzzy
@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:27+0000\n"
+"POT-Creation-Date: 2019-01-30 17:20+0000\n"
+"PO-Revision-Date: 2016-08-29 15:11+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -22,11 +22,11 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: admin/inventory/class_inventoryManagement.inc:36
+#: admin/inventory/class_inventoryManagement.inc:37
 msgid "Inventory objects"
 msgstr "Objekty inventáře"
 
-#: admin/inventory/class_inventoryManagement.inc:37
+#: admin/inventory/class_inventoryManagement.inc:38
 msgid "Browse inventory objects"
 msgstr "Procházet objekty inventáře"
 
@@ -49,23 +49,23 @@ msgstr "Operační systémy"
 
 #: admin/inventory/inventory-list.xml:50
 msgid "Actions"
-msgstr "akce"
+msgstr "Akce"
 
 #: admin/inventory/inventory-list.xml:61 admin/inventory/inventory-list.xml:85
 msgid "Edit"
-msgstr "upravit"
+msgstr "Upravit"
 
 #: admin/inventory/inventory-list.xml:68 admin/inventory/inventory-list.xml:92
 msgid "Remove"
-msgstr "odebrat"
+msgstr "Odebrat"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:30
 msgid "Configuration"
-msgstr "nastavení"
+msgstr "Nastavení"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:33
 msgid "Server"
-msgstr "server"
+msgstr "Server"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:33
 msgid "Server which FI will send inventory infos"
@@ -106,7 +106,7 @@ msgstr "Síťové rozhraní, na kterém očekávat spojení"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:60
 msgid "Port"
-msgstr "port"
+msgstr "Port"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:65
 msgid "Trust"
@@ -156,15 +156,15 @@ msgstr "Systémová položka odpovídající tomuto inventáři"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:102
 msgid "Hardware"
-msgstr "hardware"
+msgstr "Hardware"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:108
 msgid "Software"
-msgstr "software"
+msgstr "Software"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:114
 msgid "Users"
-msgstr "uživatelé"
+msgstr "Uživatelé"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:120
 msgid "Processes"
@@ -176,11 +176,11 @@ msgstr "Vytvořit systém na základě tohoto inventáře"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:341
 msgid "Create"
-msgstr "vytvořit"
+msgstr "Vytvořit"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:346
 msgid "No matching system"
-msgstr ""
+msgstr "Žádný odpovídající systém"
 
 #: config/fusioninventory/class_fiConfig.inc:28
 msgid "FusionInventory configuration"
@@ -220,7 +220,7 @@ msgstr "Obojí"
 
 #: config/fusioninventory/class_fiConfig.inc:52
 msgid "IP or Mac address"
-msgstr "IP či MAC adresa"
+msgstr "IP nebo hardwarová (MAC) adresa"
 
 #: html/collect.php:83
 #, php-format

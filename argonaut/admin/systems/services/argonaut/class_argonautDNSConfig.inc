@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2017 FusionDirectory
+  Copyright (C) 2011-2018 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,8 +20,9 @@
 
 class argonautDNSConfig extends simpleService
 {
+  protected static $showActions = FALSE;
+
   var $objectclasses  = array('argonautDNSConfig');
-  var $showActions    = FALSE;
 
   /* Return plugin information for acl handling */
   static function plInfo()
@@ -143,6 +144,21 @@ class argonautDNSConfig extends simpleService
       )
     );
   }
-}
 
-?>
+  function __construct ($dn = NULL, $parent = NULL)
+  {
+    global $config;
+    $attributesInfo = $this->getAttributesInfo();
+    $zones = objects::ls('dnsZone', NULL, NULL, '', TRUE);
+    if (!empty($zones)) {
+      $attributes = $attributesInfo['slave']['attrs'][0]->attribute->attributes;
+      $attributes[0] = new SelectAttribute(
+        _('zone'), _('DNS zone this server should be declared as slave of'),
+        'Ldap2zoneSlaveZone', TRUE,
+        $zones
+      );
+      $attributesInfo['slave']['attrs'][0]->attribute->setAttributes($attributes);
+    }
+    parent::__construct($dn, $parent, $attributesInfo);
+  }
+}

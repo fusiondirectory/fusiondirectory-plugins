@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2016 FusionDirectory
+  Copyright (C) 2015-2018 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -87,12 +87,6 @@ class csvimport extends simplePlugin
       'fields' => array(
         'name'  => _('Template filling'),
         'attrs' => array(
-          /*new SetAttribute(
-            new SelectAttribute(
-              _('Additional fields'), _('Non-required template field that you still want to provide'),
-              'additionals', FALSE
-            )
-          ),*/
           new CompositeAttribute (
             _('Select fields associations'),
             'fields',
@@ -134,6 +128,9 @@ class csvimport extends simplePlugin
   function handle_import_submit()
   {
     $this->csv_data = $this->parse_csv($this->import_file);
+
+    /* Remove fields from previous import, if any */
+    $this->attributesAccess['fields']->setAttributes(array());
 
     $messages = $this->check();
     if (!empty($messages)) {
@@ -235,9 +232,13 @@ class csvimport extends simplePlugin
         $values[$m[1]][$m[2]] = $this->compute_attribute_value($attribute, $row);
       }
       $this->template_object->reset();
-      $this->template_object->deserialize($values);
-      $tabObject = $this->template_object->apply();
-      $msgs = $tabObject->save();
+      $msgs = $this->template_object->deserialize($values);
+      if ($msgs === TRUE) {
+        $tabObject = $this->template_object->apply();
+        $msgs = $tabObject->save();
+      } elseif (!is_array($msgs)) {
+        $msgs = array($msgs);
+      }
       if (count($msgs)) {
         $msg = '<ul><li>'.implode('</li><li>', $msgs).'</li></ul>';
         msg_dialog::display(sprintf(_('Import failed for line %d'), $rownumber + 1), $msg, ERROR_DIALOG);
@@ -251,7 +252,7 @@ class csvimport extends simplePlugin
     }
   }
 
-  private function compute_attribute_value($attribute, $row, $i = NULL)
+  private function compute_attribute_value($attribute, array $row, $i = NULL)
   {
     if ($attribute instanceof CompositeAttribute) {
       $value = array();

@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:37+0000\n"
+"POT-Creation-Date: 2019-01-30 17:21+0000\n"
+"PO-Revision-Date: 2016-08-29 15:23+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,6 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: admin/systems/weblink/class_webLink.inc:31
-#: admin/systems/weblink/class_webLink.inc:44
 msgid "Web link"
 msgstr "웹 링크"
 
@@ -30,18 +29,31 @@ msgstr "웹 링크"
 msgid "Edit web link"
 msgstr "웹 링크 편집"
 
+#: admin/systems/weblink/class_webLink.inc:44
 #: admin/systems/weblink/class_webLink.inc:47
-msgid "Protocol"
-msgstr "프로토콜"
-
-#: admin/systems/weblink/class_webLink.inc:47
-msgid "Protocol to use to access this computer Web page"
-msgstr "웹 페이지에 접근할 시 사용할 프로토콜"
-
-#: admin/systems/weblink/class_webLink.inc:52
 msgid "Links"
 msgstr "링크"
 
-#: admin/systems/weblink/class_webLink.inc:52
+#: admin/systems/weblink/class_webLink.inc:47
 msgid "Web links to this computer"
 msgstr "이 컴퓨터의 웹 링크"
+
+#: admin/systems/weblink/class_webLink.inc:53
+msgid "Settings"
+msgstr "설정"
+
+#: admin/systems/weblink/class_webLink.inc:56
+msgid "Protocol"
+msgstr "프로토콜"
+
+#: admin/systems/weblink/class_webLink.inc:56
+msgid "Protocol to use to access this computer Web page"
+msgstr "웹 페이지에 접근할 시 사용할 프로토콜"
+
+#: admin/systems/weblink/class_webLink.inc:62
+msgid "Arbitrary links"
+msgstr "임의 링크"
+
+#: admin/systems/weblink/class_webLink.inc:62
+msgid "Any URL you want to associate to this computer"
+msgstr "이 컴퓨터와 연관된 URL"

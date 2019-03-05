@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2017  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -67,10 +67,14 @@ class mailMethod
   protected $userObjectClasses  = array();
   protected $shareObjectClasses = array();
 
+  /* Features */
   protected $enableQuota            = TRUE;
   protected $enableVacation         = TRUE;
   protected $enableVacationRange    = FALSE;
   protected $enableFolderTypes      = FALSE;
+  protected $enableGroupForwarding  = TRUE;
+  protected $enableLocalOnly        = TRUE;
+  protected $enableForwardOnly      = TRUE;
 
   /* Default values */
   protected $quotaValue   = 0;
@@ -268,6 +272,13 @@ class mailMethod
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, get_class($this), '<b>MAIL: Disconnect method</b>');
       $this->connected = FALSE;
     }
+  }
+
+  /*! \brief Checks data consistency
+  */
+  public function check()
+  {
+    return array();
   }
 
   /*! \brief  Returns true the current object represents a valid account
@@ -565,6 +576,30 @@ class mailMethod
   public function vacationRangeEnabled()
   {
     return ($this->vacationEnabled() && $this->enableVacationRange);
+  }
+
+  /*! \brief  Returns whether forwarding to group non-members is possible
+      @return Boolean TRUE, FALSE
+   */
+  public function groupForwardingEnabled()
+  {
+    return $this->enableGroupForwarding;
+  }
+
+  /*! \brief  Returns whether forcing to only send/recieve local mail is possible
+      @return Boolean TRUE, FALSE
+   */
+  public function localOnlyEnabled()
+  {
+    return $this->enableLocalOnly;
+  }
+
+  /*! \brief  Returns whether forwarding without storing the mail is possible
+      @return Boolean TRUE, FALSE
+   */
+  public function forwardOnlyEnabled()
+  {
+    return $this->enableForwardOnly;
   }
 
   /*! \brief  Checks dependencies to other FusionDirectory plugins.

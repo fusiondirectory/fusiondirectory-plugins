@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:33+0000\n"
+"POT-Creation-Date: 2019-01-30 17:21+0000\n"
+"PO-Revision-Date: 2016-08-29 15:19+0000\n"
 "Language-Team: Uighur (https://www.transifex.com/fusiondirectory/teams/12202/ug/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Language: ug\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: include/class_smbHash.inc:356
+#: include/class_smbHash.inc:369
 msgid ""
 "Your PHP install does not have the mhash() nor the hash function. Cannot do "
 "MD4 hashes."
@@ -187,71 +187,71 @@ msgstr ""
 msgid "Samba group settings"
 msgstr ""
 
-#: admin/groups/samba/class_sambaGroup.inc:42
-#: admin/groups/samba/class_sambaGroup.inc:45
+#: admin/groups/samba/class_sambaGroup.inc:43
+#: admin/groups/samba/class_sambaGroup.inc:46
 #: admin/systems/samba/class_sambaSystemTab.inc:53
 #: personal/samba/class_sambaAccount.inc:199
 msgid "Domain"
 msgstr ""
 
-#: admin/groups/samba/class_sambaGroup.inc:45
+#: admin/groups/samba/class_sambaGroup.inc:46
 msgid "Samba domain"
 msgstr ""
 
-#: admin/groups/samba/class_sambaGroup.inc:49
+#: admin/groups/samba/class_sambaGroup.inc:50
 msgid "Samba information"
 msgstr ""
 
-#: admin/groups/samba/class_sambaGroup.inc:56
+#: admin/groups/samba/class_sambaGroup.inc:57
 msgid "Group type"
 msgstr ""
 
-#: admin/groups/samba/class_sambaGroup.inc:56
+#: admin/groups/samba/class_sambaGroup.inc:57
 msgid "Samba group type"
 msgstr ""
 
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
+#: admin/groups/samba/class_sambaGroup.inc:61
+#: admin/groups/samba/class_sambaGroup.inc:121
 msgid "Samba group"
 msgstr ""
 
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
+#: admin/groups/samba/class_sambaGroup.inc:61
+#: admin/groups/samba/class_sambaGroup.inc:121
 msgid "Domain admins"
 msgstr ""
 
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
+#: admin/groups/samba/class_sambaGroup.inc:61
+#: admin/groups/samba/class_sambaGroup.inc:121
 msgid "Domain users"
 msgstr ""
 
-#: admin/groups/samba/class_sambaGroup.inc:60
-#: admin/groups/samba/class_sambaGroup.inc:120
+#: admin/groups/samba/class_sambaGroup.inc:61
+#: admin/groups/samba/class_sambaGroup.inc:121
 msgid "Domain guests"
 msgstr ""
 
-#: admin/groups/samba/class_sambaGroup.inc:106
+#: admin/groups/samba/class_sambaGroup.inc:107
 msgid "Configuration error"
 msgstr ""
 
-#: admin/groups/samba/class_sambaGroup.inc:106
+#: admin/groups/samba/class_sambaGroup.inc:107
 msgid "Cannot find group SID in your configuration!"
 msgstr ""
 
-#: admin/groups/samba/class_sambaGroup.inc:120
+#: admin/groups/samba/class_sambaGroup.inc:121
 #, php-format
 msgid "Special group (%d)"
 msgstr ""
 
-#: admin/groups/samba/class_sambaGroup.inc:133
-#: personal/samba/class_sambaAccount.inc:511
-#: personal/samba/class_sambaAccount.inc:537
-#: personal/samba/class_sambaAccount.inc:558
+#: admin/groups/samba/class_sambaGroup.inc:137
+#: personal/samba/class_sambaAccount.inc:516
+#: personal/samba/class_sambaAccount.inc:542
+#: personal/samba/class_sambaAccount.inc:563
 msgid "Warning"
 msgstr ""
 
-#: admin/groups/samba/class_sambaGroup.inc:133
-#: personal/samba/class_sambaAccount.inc:511
+#: admin/groups/samba/class_sambaGroup.inc:137
+#: personal/samba/class_sambaAccount.inc:516
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
 msgstr ""
 
@@ -597,12 +597,12 @@ msgstr ""
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:538
+#: personal/samba/class_sambaAccount.inc:543
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:559
+#: personal/samba/class_sambaAccount.inc:564
 msgid ""
 "Cannot convert primary group to samba group: group samba tab is disabled!"
 msgstr ""

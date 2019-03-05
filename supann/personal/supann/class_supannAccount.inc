@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
   Copyright (C) 2010-2012 Antoine Gallavardin
-  Copyright (C) 2013-2016 FusionDirectory
+  Copyright (C) 2013-2018 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -44,6 +44,9 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
   protected function supannUpdateSelect()
   {
     $prefix = $this->attributes[0]->getValue();
+    if (!isset($this->prefixedChoices[$prefix])) {
+      $this->prefixedChoices[$prefix] = array(array(), array());
+    }
     $this->attributes[1]->setChoices($this->prefixedChoices[$prefix][0], $this->prefixedChoices[$prefix][1]);
     $this->attributes[1]->setRequired($prefix != '');
   }
@@ -87,8 +90,13 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
     }
     $this->setValue($values);
     $v1 = $this->attributes[0]->displayValue($values[0]);
-    $v2 = $this->attributes[1]->displayValue($values[1]);
-    return ($v1 == ''?$v2:$v1.': '.$v2);
+    $choices2 = $this->attributes[1]->getDisplayChoices();
+    if (isset($choices2[$values[1]])) {
+      $v2 = $choices2[$values[1]];
+    } else {
+      $v2 = $values[1];
+    }
+    return ($v1 == '' ? $v2 : $v1.': '.$v2);
   }
 }
 
@@ -105,7 +113,7 @@ class SupannCursusAnneeAttribute extends SupannPrefixedSelectAttribute
 
     $this->attributes[0]->setChoices(
       array('L','M','D','X','B'),
-      array(_('Licence'),_('Master'),_('Ph.D.'),_('Another class of degree'),_('post-graduate year'))
+      array(_('Licence'),_('Master'),_('Ph.D.'),_('Another class of degree'),_('Post-graduate year'))
     );
     $yearLabels = array(
       _('None'),_('1st year'),_('2nd year'),_('3rd year'),
@@ -243,11 +251,11 @@ class supannAccount extends simplePlugin
             'supannAliasLogin', FALSE
           ),
           new StringAttribute(
-            _('eduPersonPrincipalName'), _('eduPersonPrincipalName - A name that look like <id>@<domain> which is unique for this domain, and has not be assigned to anyone else recently'),
+            _('eduPersonPrincipalName'), _('eduPersonPrincipalName - A name that looks like <id>@<domain> which is unique for this domain, and has not be assigned to anyone else recently'),
             'eduPersonPrincipalName', FALSE
           ),
           new StringAttribute(
-            _('Nick name'), _('eduPersonNickname - Can contain a nick name for this user'),
+            _('Nickname'), _('eduPersonNickname - Can contain a nickname for this user'),
             'eduPersonNickname', FALSE
           ),
           new SetAttribute(
@@ -265,7 +273,7 @@ class supannAccount extends simplePlugin
         'name'  => _('Contact'),
         'attrs' => array(
           new SetAttribute(
-            new StringAttribute(
+            new PhoneNumberAttribute(
               _('Other phone numbers'), _('supannAutreTelephone - Other phone numbers for this user'),
               'supannAutreTelephone', FALSE
             )
@@ -283,28 +291,28 @@ class supannAccount extends simplePlugin
             )
           ),
           new BooleanAttribute(
-            _('red List'), _('supannListeRouge - Should this person be on the red list'),
+            _('Red list'), _('supannListeRouge - Should this person be on the red list'),
             'supannListeRouge', TRUE
           )
         )
       ),
       'affectation' => array(
-        'name'  => _('Affectation'),
+        'name'  => _('Assignment'),
         'attrs' => array(
           new SelectAttribute(
-            _('Entity primary assignment'), _('supannEntiteAffectationPrincipale - Main assignment of the person'),
+            _('Primary assignment'), _('supannEntiteAffectationPrincipale - Main assignment of the person'),
             'supannEntiteAffectationPrincipale', FALSE
           ),
           new SetAttribute(
             new SelectAttribute(
-              _('Entity assignment'), _('supannEntiteAffectation - represents assignments of the person in an institution, a component, service, etc.'),
+              _('Assignments'), _('supannEntiteAffectation - Represents assignments of the person in an institution, a component, service, etc.'),
               'supannEntiteAffectation', FALSE
             )
           ),
           new SetAttribute(
-            new SelectAttribute(
-              _('Entity type assignment'), _('supannTypeEntiteAffectation'),
-              'supannTypeEntiteAffectation', FALSE
+            new SupannPrefixedSelectAttribute(
+              _('Entity types'), _('supannTypeEntiteAffectation - Types of the entities this person is assigned to'),
+              'supannTypeEntiteAffectation', FALSE, 'entite'
             )
           ),
         )
@@ -318,13 +326,13 @@ class supannAccount extends simplePlugin
           ),
           new SetAttribute(
             new SelectAttribute(
-              _('Affiliations'), _('eduPersonAffiliation - status of the person: student, BIATOSS, teacher, contract, retired, hosted staff (CNRS, INSERM, etc.), a former student, etc.'),
+              _('Affiliations'), _('eduPersonAffiliation - Status of the person: student, BIATOSS, teacher, contract, retired, hosted staff (CNRS, INSERM, etc.), a former student, etc.'),
               'eduPersonAffiliation', FALSE
             )
           ),
           new SetAttribute(
             new SelectAttribute(
-              _('Establishment'), _('supannEtablissement - institution or unit of administrative attachment of the person'),
+              _('Establishment'), _('supannEtablissement - Institution or unit of administrative attachment of the person'),
               'supannEtablissement', FALSE
             )
           ),
@@ -344,7 +352,7 @@ class supannAccount extends simplePlugin
         )
       ),
       'student2' => array(
-        'name'      => _('Student subscriptions'),
+        'name'      => _('Student registrations'),
         'class'     => array('fullwidth'),
         'template'  => get_template_path('student_subscription.tpl', TRUE, dirname(__FILE__)),
         'attrs'     => array(
@@ -359,20 +367,20 @@ class supannAccount extends simplePlugin
           new HiddenAttribute('supannEtuElementPedagogique'),
           new SupannOrderedArrayAttribute(
             new SupannCompositeAttribute(
-              _('supannEtuInscription - Subscriptions for this student'),
+              _('supannEtuInscription - Registrations for this student'),
               'supannEtuInscription',
               array(
                 new SelectAttribute(
-                  _('Establishment'), _('supannEtablissement - Etablissement in which this subscription was done'),
+                  _('Establishment'), _('supannEtablissement - Etablissement in which this registration was done'),
                   'supannEtablissement_etab', TRUE
                 ),
                 new IntAttribute(
-                  _('Year'), _('supannEtuAnneeInscription - The year this subscription will begin'),
+                  _('Year'), _('supannEtuAnneeInscription - The year this registration will begin'),
                   'supannEtuAnneeInscription_anneeinsc', TRUE,
                   $year - 100, $year + 100, $year
                 ),
                 new SelectAttribute(
-                  _('Subscription type'), _('supannEtuRegimeInscription - The type of this subscription'),
+                  _('Registration type'), _('supannEtuRegimeInscription - The type of this registration'),
                   'supannEtuRegimeInscription_regimeinsc', TRUE
                 ),
                 new SelectAttribute(
@@ -384,11 +392,11 @@ class supannAccount extends simplePlugin
                   'supannEtuTypeDiplome_typedip', TRUE
                 ),
                 new SupannCursusAnneeAttribute(
-                  _('Curriculum year '), _('supannEtuCursusAnnee - type of curriculum (L, M, D or X, ...) and the year in the diploma.'),
+                  _('Curriculum year '), _('supannEtuCursusAnnee - Type of curriculum (L, M, D or X, ...) and the year in the diploma.'),
                   'supannEtuCursusAnnee_cursusann', TRUE
                 ),
                 new SelectAttribute(
-                  _('Entity assignment'), _('supannEntiteAffectation_affect'),
+                  _('Entity assignment'), _('supannEntiteAffectation - To wich entities does this user belong to'),
                   'supannEntiteAffectation_affect', FALSE
                 ),
                 new SupannPrefixedSelectAttribute(
@@ -420,13 +428,13 @@ class supannAccount extends simplePlugin
             _('Personal ID'), _('supannEmpId - Employee identifier'),
             'supannEmpId', FALSE
           ),
-          new SelectAttribute(
+          new SupannPrefixedSelectAttribute(
             _('Personal corps'), _('supannEmpCorps'),
-            'supannEmpCorps', FALSE
+            'supannEmpCorps', FALSE, 'corps'
           ),
           new SetAttribute(
             new SupannPrefixedSelectAttribute(
-              _('Activity'), _('supannActivite - category of profession'),
+              _('Activity'), _('supannActivite - Category of profession'),
               'supannActivite', FALSE, 'activite'
             )
           )
@@ -444,15 +452,15 @@ class supannAccount extends simplePlugin
               'supannRoleEntite',
               array(
                 new SupannPrefixedSelectAttribute(
-                  _('Generic role'), _('supannRoleGenerique - Generics Roles of the person in the facility'),
+                  _('Generic role'), _('supannRoleGenerique - Generic role of the person in the facility'),
                   'supannRoleGenerique_role', TRUE, 'role'
                 ),
                 new SelectAttribute(
-                  _('Entity assignment type'), _('supannTypeEntiteAffectation'),
+                  _('Entity type'), _('supannTypeEntiteAffectation - type of the assigned entity'),
                   'supannTypeEntiteAffectation_type', TRUE
                 ),
                 new SelectAttribute(
-                  _('Entity assignment'), _('supannEntiteAffectation - represents assignments of the person in an institution, a component, service, etc.'),
+                  _('Entity'), _('supannEntiteAffectation - Represents assignments of the person in an institution, a component, service, etc.'),
                   'supannEntiteAffectation_code', FALSE
                 ),
               ),
@@ -509,9 +517,6 @@ class supannAccount extends simplePlugin
 
   function supannInit()
   {
-    list ($codes, $labels) = supann::get_choices_for('entite', '{SUPANN}');
-    $this->attributesAccess['supannTypeEntiteAffectation']->attribute->setChoices($codes, $labels);
-
     list ($codes, $labels) = supann::get_choices_for('affiliation');
     $this->attributesAccess['eduPersonAffiliation']->attribute->setChoices($codes, $labels);
     $this->attributesAccess['supannEtuInscription']->setLinearRendering(FALSE);
@@ -524,9 +529,6 @@ class supannAccount extends simplePlugin
 
     list ($codes, $labels) = supann::get_choices_for('typediplome_SISE', '{SISE}');
     $this->attributesAccess['supannEtuInscription']->attribute->attributes[4]->setChoices($codes, $labels); // supannEtuTypeDiplome
-
-    list ($codes, $labels) = supann::get_choices_for('corps', '{NCORPS}');
-    $this->attributesAccess['supannEmpCorps']->setChoices($codes, $labels);
 
     $this->updateFieldsChoices();
   }
@@ -586,7 +588,7 @@ class supannAccount extends simplePlugin
   {
     $this->attributesAccess['supannEtuInscription']->supannPrepareSave();
     $this->attributesAccess['supannRoleEntite']->supannPrepareSave();
-    parent::prepare_save();
+    return parent::prepare_save();
   }
 }
 ?>

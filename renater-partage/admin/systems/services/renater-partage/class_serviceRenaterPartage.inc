@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016-2017  FusionDirectory
+  Copyright (C) 2016-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceRenaterPartage extends simpleService
+class serviceRenaterPartage extends simpleMailMethodService
 {
   var $objectclasses = array('fdRenaterPartageServer');
 
@@ -76,8 +76,11 @@ class serviceRenaterPartage extends simpleService
                   'renaterPartageDomainKey', TRUE
                 ),
                 new StringAttribute (
-                  _('Class of service'), _('Possible classes of service for this domain, separated by commas'),
-                  'renaterPartageDomainCOS', TRUE
+                  _('Classes of service'), _('Possible classes of service for this domain and their ids, separated by commas. Format is cos1Name|cos1Id,cos2Name|cos2Id.'),
+                  'renaterPartageDomainCOS', TRUE,
+                  '', '',
+                  '/^[^,|]+\|[^,|]+(,[^,|]+\|[^,|]+)*$/',
+                  'cos1|cos1id,cos2|cos2id'
                 )
               ),
               ':',
@@ -95,18 +98,6 @@ class serviceRenaterPartage extends simpleService
   {
     parent::__construct($dn, $parent);
     $this->attributesAccess['fdRenaterPartageServerMailDomain']->setLinearRendering(FALSE);
-  }
-
-  protected function post_save()
-  {
-    parent::post_save();
-    mailMethod::resetMailServersCache();
-  }
-
-  protected function post_remove ()
-  {
-    parent::post_remove();
-    mailMethod::resetMailServersCache();
   }
 }
 ?>

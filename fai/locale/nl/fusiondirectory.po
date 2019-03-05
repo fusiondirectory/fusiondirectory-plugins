@@ -5,7 +5,6 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2017
-# Rombout de Neef <rombout.deneef@digipolis.be>, 2017
 # Lucien Antonissen <lucien.antonissen@digipolis.be>, 2018
 # 
 #, fuzzy
@@ -13,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:26+0000\n"
+"POT-Creation-Date: 2019-01-30 17:20+0000\n"
+"PO-Revision-Date: 2016-08-29 15:10+0000\n"
 "Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2018\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +28,7 @@ msgstr "Variabele"
 
 #: admin/fai/class_faiVariable.inc:29 admin/fai/class_faiVariable.inc:32
 msgid "FAI variable"
-msgstr "FAI variabel"
+msgstr "FAI variabele"
 
 #: admin/fai/class_faiVariable.inc:48 admin/fai/class_faiScript.inc:50
 #: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPackage.inc:396
@@ -49,7 +48,7 @@ msgstr "Klassenaam"
 #: admin/fai/class_faiVariable.inc:51 admin/fai/class_faiScript.inc:53
 #: admin/fai/class_faiPackage.inc:399 admin/fai/class_faiHook.inc:51
 msgid "Variables class name"
-msgstr ""
+msgstr "Variabele klassenaam"
 
 #: admin/fai/class_faiVariable.inc:55 admin/fai/class_faiVariable.inc:73
 #: admin/fai/class_faiDiskEntry.inc:247 admin/fai/class_faiPartition.inc:246
@@ -67,7 +66,7 @@ msgstr "Omschrijving"
 #: admin/fai/class_faiHook.inc:55 admin/fai/class_faiTemplate.inc:173
 #: admin/fai/class_faiPartitionTable.inc:338
 msgid "Short description of the class"
-msgstr ""
+msgstr "Korte beschrijving van de klasse"
 
 #: admin/fai/class_faiVariable.inc:61
 msgid "Variables"
@@ -76,7 +75,7 @@ msgstr "Variabelen"
 #: admin/fai/class_faiVariable.inc:65 admin/fai/class_faiScript.inc:67
 #: admin/fai/class_faiHook.inc:65
 msgid "Variables in this class"
-msgstr ""
+msgstr "Variabelen in deze klasse"
 
 #: admin/fai/class_faiVariable.inc:69
 #: admin/fai/class_faiSimplePluginClass.inc:51
@@ -95,7 +94,7 @@ msgstr "De naam van de variabele"
 #: admin/fai/class_faiVariable.inc:73 admin/fai/class_faiScript.inc:75
 #: admin/fai/class_faiHook.inc:73
 msgid "A short description of the variable"
-msgstr ""
+msgstr "Een korte beschrijving van de variabele"
 
 #: admin/fai/class_faiVariable.inc:77
 msgid "Content"
@@ -103,18 +102,18 @@ msgstr "Inhoud"
 
 #: admin/fai/class_faiVariable.inc:77
 msgid "The content of the variable"
-msgstr ""
+msgstr "De inhoud van de variabele"
 
 #: admin/fai/class_faiDiskEntry.inc:101
 msgid "bootable"
-msgstr "bootable"
+msgstr "opstartbaar"
 
 #: admin/fai/class_faiDiskEntry.inc:104
 msgid "preserve"
 msgstr "behouden"
 
-#: admin/fai/class_faiDiskEntry.inc:146 admin/systems/class_faiLogView.inc:204
-#: admin/systems/class_faiLogView.inc:239
+#: admin/fai/class_faiDiskEntry.inc:146 admin/systems/class_faiLogView.inc:201
+#: admin/systems/class_faiLogView.inc:243
 msgid "Error"
 msgstr "Fout"
 
@@ -124,14 +123,16 @@ msgid ""
 "The partition cannot be deleted while it is used in the \"%s\" disk "
 "definition!"
 msgstr ""
+"De partitie kan niet verwijderd worden terwijl het in gebruik is in de "
+"\"%s\" disk definitie!"
 
 #: admin/fai/class_faiDiskEntry.inc:226
 msgid "Partition table entry"
-msgstr "Partitie table invoer"
+msgstr "Partitie tabelinvoer"
 
 #: admin/fai/class_faiDiskEntry.inc:227
 msgid "FAI partition table entry"
-msgstr "FAI partitie table invoer"
+msgstr "FAI partitie tabelinvoer"
 
 #: admin/fai/class_faiDiskEntry.inc:238 admin/fai/class_faiDiskEntry.inc:254
 msgid "Device"
@@ -139,19 +140,19 @@ msgstr "Apparaat"
 
 #: admin/fai/class_faiDiskEntry.inc:241
 msgid "Disk name"
-msgstr ""
+msgstr "Disk naam"
 
 #: admin/fai/class_faiDiskEntry.inc:247 admin/fai/class_faiPartition.inc:246
 msgid "Short description"
-msgstr ""
+msgstr "korte omschrijving"
 
 #: admin/fai/class_faiDiskEntry.inc:251
 msgid "fstab key"
-msgstr "fstab key"
+msgstr "fstab sleutel"
 
 #: admin/fai/class_faiDiskEntry.inc:251
 msgid "Key to use in fstab file"
-msgstr ""
+msgstr "sleutel om in fstab bestand te gebruiken"
 
 #: admin/fai/class_faiDiskEntry.inc:254
 msgid "Label"
@@ -163,7 +164,7 @@ msgstr "UUID"
 
 #: admin/fai/class_faiDiskEntry.inc:257
 msgid "Disk label"
-msgstr "Disk label"
+msgstr "Disklabel"
 
 #: admin/fai/class_faiDiskEntry.inc:263
 msgid "Random init"
@@ -183,24 +184,26 @@ msgstr "Gecombineerd fysieke partities"
 
 #: admin/fai/class_faiDiskEntry.inc:275
 msgid "Physical partitions combined in this LVM volume"
-msgstr ""
+msgstr "Fysieke partitie gecombineerd in dit LVM volume"
 
 #: admin/fai/class_faiDiskEntry.inc:281
 #: admin/fai/class_faiPartitionTable.inc:351
 msgid "Partitions in this class"
-msgstr ""
+msgstr "Partitie in deze klasse"
 
 #: admin/fai/class_faiDiskEntry.inc:579
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration"
-msgstr ""
+msgstr "Je hebt meer dan vier primaire partitie tabelrijen in je configuratie"
 
 #: admin/fai/class_faiDiskEntry.inc:583
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions"
 msgstr ""
+"Ja mag niet meer dan drie primaire partities hebben als je logische "
+"partities gebruikt."
 
 #: admin/fai/packageSelect/selectPackage-list.xml:11
 msgid "Please select the desired entries"
@@ -225,6 +228,7 @@ msgstr "Infrastructuurservice"
 #: admin/fai/class_faiPartition.inc:30
 msgid "Type of sizing - fixed, dynamic or all remaining space"
 msgstr ""
+"Op de juiste maat brengen - fixed, dynamisch of alle resterende ruimte"
 
 #: admin/fai/class_faiPartition.inc:33
 msgid "Fixed"
@@ -236,7 +240,7 @@ msgstr "Dynamisch"
 
 #: admin/fai/class_faiPartition.inc:33
 msgid "Remaining space"
-msgstr ""
+msgstr "Resterende ruimte"
 
 #: admin/fai/class_faiPartition.inc:44 admin/fai/class_faiPartition.inc:55
 msgid "KB"
@@ -260,19 +264,19 @@ msgstr "PB"
 
 #: admin/fai/class_faiPartition.inc:144
 msgid "Minimum partition size"
-msgstr "Minimale partitie grootte"
+msgstr "Minimale partitiegrootte"
 
 #: admin/fai/class_faiPartition.inc:144
 msgid "Maximum partition size"
-msgstr "Maximale partitie grootte"
+msgstr "Maximale partitiegrootte"
 
 #: admin/fai/class_faiPartition.inc:217
 msgid "Partition entry"
-msgstr ""
+msgstr "Partitie-ingave"
 
 #: admin/fai/class_faiPartition.inc:218
 msgid "FAI partition entry"
-msgstr ""
+msgstr "FAI partitie-ingave"
 
 #: admin/fai/class_faiPartition.inc:229 admin/fai/class_faiPartition.inc:292
 msgid "Partition"
@@ -284,7 +288,7 @@ msgstr "Type"
 
 #: admin/fai/class_faiPartition.inc:234
 msgid "Partition type"
-msgstr "Partitie type"
+msgstr "Partitietype"
 
 #: admin/fai/class_faiPartition.inc:237 admin/fai/class_faiPartition.inc:379
 msgid "Primary"
@@ -305,7 +309,7 @@ msgstr "Grootte"
 
 #: admin/fai/class_faiPartition.inc:250
 msgid "Size of this partition"
-msgstr ""
+msgstr "Grootte van deze partitie"
 
 #: admin/fai/class_faiPartition.inc:256
 msgid "Flags"
@@ -313,11 +317,11 @@ msgstr "Vlaggen"
 
 #: admin/fai/class_faiPartition.inc:265
 msgid "Combined physical partitions in this RAID"
-msgstr ""
+msgstr "Gecombineerde fysieke partitie in deze RAID"
 
 #: admin/fai/class_faiPartition.inc:269
 msgid "Spare"
-msgstr ""
+msgstr "Reserve"
 
 #: admin/fai/class_faiPartition.inc:269
 msgid "Spare Raid device"
@@ -325,7 +329,7 @@ msgstr "Reserve Raid apparaat"
 
 #: admin/fai/class_faiPartition.inc:275
 msgid "Missing"
-msgstr ""
+msgstr "Ontbrekend"
 
 #: admin/fai/class_faiPartition.inc:275
 msgid "Missing Raid device"
@@ -347,19 +351,19 @@ msgstr ""
 
 #: admin/fai/class_faiPartition.inc:300
 msgid "Resize"
-msgstr ""
+msgstr "Grootte herinstellen"
 
 #: admin/fai/class_faiPartition.inc:300
 msgid "Resize existing partition"
-msgstr "Resize bestaande partitie"
+msgstr "Grootte aanpassen bestaande partitie"
 
 #: admin/fai/class_faiPartition.inc:304
 msgid "Bootable"
-msgstr "Bootable"
+msgstr "Opstartbaar"
 
 #: admin/fai/class_faiPartition.inc:304
 msgid "Wether or not this partition can be booted"
-msgstr ""
+msgstr "Of de partitie al dan niet kan opgestart worden"
 
 #: admin/fai/class_faiPartition.inc:308
 msgid "Preserve"
@@ -375,7 +379,7 @@ msgstr "Nooit"
 
 #: admin/fai/class_faiPartition.inc:311
 msgid "Always"
-msgstr ""
+msgstr "Altijd"
 
 #: admin/fai/class_faiPartition.inc:311
 msgid "Reinstall"
@@ -383,14 +387,19 @@ msgstr "Herinstalleer"
 
 #: admin/fai/class_faiPartition.inc:316 admin/fai/class_faiPartition.inc:319
 msgid "Filesystem"
-msgstr "Filesystem"
+msgstr "Bestandsysteem"
 
 #: admin/fai/class_faiPartition.inc:319
 msgid "The filesystem this partition should be formatted with"
 msgstr ""
+"Het bestandssysteem met dewelke deze partitie moet geformatteerd worden"
 
 #: admin/fai/class_faiPartition.inc:322
 msgid "swap"
+msgstr ""
+
+#: admin/fai/class_faiPartition.inc:322
+msgid "fat32"
 msgstr ""
 
 #: admin/fai/class_faiPartition.inc:322
@@ -427,7 +436,7 @@ msgstr "Koppelpunt"
 
 #: admin/fai/class_faiPartition.inc:325
 msgid "Mount point for this partition"
-msgstr ""
+msgstr "Mountpunt voor deze partitie"
 
 #: admin/fai/class_faiPartition.inc:331
 msgid "Options"
@@ -439,7 +448,7 @@ msgstr "Koppelopties"
 
 #: admin/fai/class_faiPartition.inc:334
 msgid "Filesystem mount options"
-msgstr ""
+msgstr "Filesysteemmountopties"
 
 #: admin/fai/class_faiPartition.inc:339
 msgid "Create options"
@@ -447,15 +456,15 @@ msgstr "Opties aanmaken"
 
 #: admin/fai/class_faiPartition.inc:339
 msgid "Filesystem create options"
-msgstr "Filesystem creatie opties"
+msgstr "Bestandsysteem aanmaakopties"
 
 #: admin/fai/class_faiPartition.inc:343
 msgid "Tune options"
-msgstr "Tune opties"
+msgstr "Afstemopties"
 
 #: admin/fai/class_faiPartition.inc:343
 msgid "Filesystem tune options"
-msgstr ""
+msgstr "Filesysteemregelopties"
 
 #: admin/fai/class_faiPartition.inc:385
 msgid "RAID 0"
@@ -489,11 +498,11 @@ msgstr ""
 msgid "Encryption settings"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:508
+#: admin/fai/class_faiPartition.inc:507
 msgid "Raid arrays must contain at least two partitions!"
-msgstr "RAID-arrays moet ten minste twee partities bevatten!"
+msgstr "RAID-arrays moeten minstens twee partities bevatten!"
 
-#: admin/fai/class_faiPartition.inc:510
+#: admin/fai/class_faiPartition.inc:509
 msgid ""
 "Raid 0 arrays can only be realized with a combination of two partitions!"
 msgstr ""
@@ -519,11 +528,11 @@ msgstr "Prioriteit"
 
 #: admin/fai/class_faiScript.inc:79
 msgid "Priority of this script (smaller is done first)"
-msgstr ""
+msgstr "Prioriteit van deze script (kleiner wordt eerst uitgevoerd)"
 
 #: admin/fai/class_faiScript.inc:84
 msgid "The script itself"
-msgstr ""
+msgstr "De script zelf"
 
 #: admin/fai/class_faiProfile.inc:30
 msgid "Profile"
@@ -539,7 +548,7 @@ msgstr "FAI profiel"
 
 #: admin/fai/class_faiProfile.inc:52 admin/fai/class_faiPartitionTable.inc:334
 msgid "Partition table class name"
-msgstr ""
+msgstr "Partitietabel-klassenaam"
 
 #: admin/fai/class_faiProfile.inc:63
 msgid "FAI classes"
@@ -547,21 +556,21 @@ msgstr "FAI klassen"
 
 #: admin/fai/class_faiProfile.inc:63
 msgid "FAI classes which are part of this profile"
-msgstr ""
+msgstr "FAI klassen welke een deel zijn van dit profiel"
 
 #: admin/fai/class_faiPackageConfiguration.inc:33
 #: admin/fai/class_faiPackageConfiguration.inc:36
 msgid "FAI package configuration"
-msgstr ""
+msgstr "FAI pakketconfiguratie"
 
 #: admin/fai/class_faiPackageConfiguration.inc:34
 msgid "Configure debconf options of a package"
-msgstr ""
+msgstr "Configureer debconf opties van een pakket"
 
 #: admin/fai/class_faiPackageConfiguration.inc:80
 #, php-format
 msgid "Debconf information for package \"%s\""
-msgstr ""
+msgstr "Debconf informatie voor pakket \"%s\""
 
 #: admin/fai/class_faiPackageConfiguration.inc:172
 msgid "Warning"
@@ -575,25 +584,29 @@ msgid ""
 "presented here. The entered text needs to be one of the valid choices in "
 "order to take effect."
 msgstr ""
+"De debconf-vragen \"%s\" worden dynamisch aangemaakt tijdens "
+"pakketinstallatie en vereisen de keuze tussen bepaalde opties die hier niet "
+"kunnen weergegeven worden. De ingevoerde tekst moet één van de toegelaten "
+"keuzes zijn om het gewenste effect te verkrijgen."
 
 #: admin/fai/class_faiPackage.inc:163
 msgid "Mark for installation"
-msgstr "Mask voor installatie"
+msgstr "Markeer voor installatie"
 
 #: admin/fai/class_faiPackage.inc:167
 msgid "Mark for removal"
-msgstr ""
+msgstr "Markeer voor verwijdering"
 
 #: admin/fai/class_faiPackage.inc:172
 msgid "Edit configuration"
-msgstr "Bewerk de configuratie"
+msgstr "Bewerk configuratie"
 
 #: admin/fai/class_faiPackage.inc:251 admin/fai/class_faiTemplate.inc:109
 #: admin/fai/class_faiPartitionTable.inc:239
 #: admin/fai/class_faiPartitionTable.inc:280
-#: admin/systems/services/repository/class_serviceRepository.inc:240
-#: admin/systems/services/repository/class_serviceRepository.inc:257
-#: admin/systems/services/repository/class_serviceRepository.inc:261
+#: admin/systems/services/repository/class_serviceRepository.inc:241
+#: admin/systems/services/repository/class_serviceRepository.inc:258
+#: admin/systems/services/repository/class_serviceRepository.inc:262
 msgid "LDAP error"
 msgstr "LDAP fout"
 
@@ -603,7 +616,7 @@ msgstr "Onbekende pakketen"
 
 #: admin/fai/class_faiPackage.inc:377
 msgid "FAI Package list"
-msgstr "FAI pakket lijst"
+msgstr "FAI pakketlijst"
 
 #: admin/fai/class_faiPackage.inc:380
 msgid "FAI Package"
@@ -616,11 +629,11 @@ msgstr "Verzamelplaats"
 #: admin/fai/class_faiPackage.inc:412 admin/systems/class_faiStartup.inc:91
 #: admin/systems/services/repository/class_serviceRepository.inc:40
 msgid "Release"
-msgstr "Distributie versie"
+msgstr "Distributieversie"
 
 #: admin/fai/class_faiPackage.inc:412
 msgid "Debian release concerned"
-msgstr ""
+msgstr "Betreffende Debian release "
 
 #: admin/fai/class_faiPackage.inc:416
 #: admin/systems/services/repository/class_serviceRepository.inc:47
@@ -629,15 +642,15 @@ msgstr "Secties"
 
 #: admin/fai/class_faiPackage.inc:416
 msgid "Sections concerned"
-msgstr ""
+msgstr "Betreffende secties"
 
 #: admin/fai/class_faiPackage.inc:420
 msgid "Install method"
-msgstr "Installatie methode"
+msgstr "Installatiemethode"
 
 #: admin/fai/class_faiPackage.inc:420
 msgid "Install method to use for this package list"
-msgstr ""
+msgstr "Installatie methode om te gebruiken voor deze pakketlijst"
 
 #: admin/fai/class_faiPackage.inc:431
 msgid "Packages"
@@ -645,15 +658,15 @@ msgstr "Pakketten"
 
 #: admin/fai/class_faiPackage.inc:435
 msgid "Packages in this class"
-msgstr ""
+msgstr "Pakketten in deze klasse"
 
 #: admin/fai/class_faiHook.inc:28
 msgid "Hook"
-msgstr "Aansluiting"
+msgstr "Haak"
 
 #: admin/fai/class_faiHook.inc:29 admin/fai/class_faiHook.inc:32
 msgid "FAI hook"
-msgstr "FAI Aansluiting"
+msgstr "FAI Haak"
 
 #: admin/fai/class_faiHook.inc:61
 msgid "Hooks"
@@ -669,12 +682,12 @@ msgstr "Uit te voeren taak"
 
 #: admin/fai/class_faiHook.inc:85
 msgid "The script of this hook"
-msgstr ""
+msgstr "De script van deze haak"
 
 #: admin/fai/class_faiTemplate.inc:131
 #, php-format
 msgid "There are several files with the same path: %s"
-msgstr ""
+msgstr "Er zijn verschillende bestanden met hetzelfde pad: %s"
 
 #: admin/fai/class_faiTemplate.inc:146
 msgid "Template"
@@ -686,15 +699,15 @@ msgstr "FAI sjabloon"
 
 #: admin/fai/class_faiTemplate.inc:169
 msgid "Template class name"
-msgstr ""
+msgstr "Sjabloon klassenaam"
 
 #: admin/fai/class_faiTemplate.inc:179
 msgid "Template files"
-msgstr ""
+msgstr "Sjabloonbestanden"
 
 #: admin/fai/class_faiTemplate.inc:183
 msgid "Template files in this class"
-msgstr ""
+msgstr "Sjabloonbestand in deze klasse"
 
 #: admin/fai/class_faiManagement.inc:117 admin/fai/class_faiManagement.inc:122
 #: admin/systems/class_faiStartup.inc:64 config/fai/class_faiConfig.inc:41
@@ -707,39 +720,40 @@ msgstr "Beheer FAI software pakketten and deployment recepten"
 
 #: admin/fai/class_faiManagement.inc:138
 msgid "There are no FAI branches"
-msgstr ""
+msgstr "Er zijn geen FAI branches"
 
 #: admin/fai/class_faiManagement.inc:141
 msgid " Please add at least one repository service to create those."
 msgstr ""
+"A.u.b. voeg ten minste één repository service toe om deze aan te maken"
 
 #: admin/fai/class_faiTemplateEntry.inc:142
 msgid "File path"
-msgstr ""
+msgstr "Bestandspad"
 
 #: admin/fai/class_faiTemplateEntry.inc:142
 msgid "Complete absolute template file path and name"
-msgstr ""
+msgstr "Vervolledig absoluut sjabloon bestandspad en naam"
 
 #: admin/fai/class_faiTemplateEntry.inc:146
 msgid "Short description of the file"
-msgstr ""
+msgstr "Korte omschrijving van dit bestand"
 
 #: admin/fai/class_faiTemplateEntry.inc:155
 msgid "Template attributes"
-msgstr "Sjabloon atributen"
+msgstr "Sjabloonattributen"
 
 #: admin/fai/class_faiTemplateEntry.inc:159
 msgid "Template file content"
-msgstr ""
+msgstr "Sjabloon bestandsinhoud"
 
 #: admin/fai/class_faiTemplateEntry.inc:159
 msgid "Content of the template file"
-msgstr "Inhoud van de template"
+msgstr "Inhoud van het sjabloon"
 
 #: admin/fai/class_faiTemplateEntry.inc:163
 msgid "Owner and group of the file"
-msgstr ""
+msgstr "Eigenaar en groep van het bestand"
 
 #: admin/fai/class_faiTemplateEntry.inc:166
 msgid "Owner"
@@ -755,7 +769,7 @@ msgstr "Groep"
 
 #: admin/fai/class_faiTemplateEntry.inc:171
 msgid "File group"
-msgstr ""
+msgstr "Bestandsgroep"
 
 #: admin/fai/class_faiTemplateEntry.inc:180
 msgid "Access"
@@ -763,7 +777,7 @@ msgstr "Toegang"
 
 #: admin/fai/class_faiTemplateEntry.inc:180
 msgid "Access rights"
-msgstr ""
+msgstr "Toegangsrechten"
 
 #: admin/fai/class_faiPartitionTable.inc:108
 msgid "Add disk"
@@ -775,7 +789,7 @@ msgstr "Raid toevoegen"
 
 #: admin/fai/class_faiPartitionTable.inc:123
 msgid "Add LVM"
-msgstr ""
+msgstr "Voeg LVM toe"
 
 #: admin/fai/class_faiPartitionTable.inc:131
 msgid "Add cryptsetup"
@@ -788,7 +802,7 @@ msgstr "Partitietabel"
 #: admin/fai/class_faiPartitionTable.inc:312
 #: admin/fai/class_faiPartitionTable.inc:315
 msgid "FAI partition table"
-msgstr "FAI partitie tafel"
+msgstr "FAI partitietafel"
 
 #: admin/fai/class_faiPartitionTable.inc:344
 msgid "Discs"
@@ -796,11 +810,11 @@ msgstr "Schijven"
 
 #: admin/systems/class_faiLogView.inc:57
 msgid "Sort down"
-msgstr ""
+msgstr "Sorteer neerwaarts"
 
 #: admin/systems/class_faiLogView.inc:59
 msgid "Sort up"
-msgstr ""
+msgstr "Sorteer opwaarts"
 
 #: admin/systems/class_faiLogView.inc:71
 msgid "File"
@@ -810,32 +824,32 @@ msgstr "Bestand"
 msgid "Date"
 msgstr "Datum"
 
-#: admin/systems/class_faiLogView.inc:151
-#: admin/systems/class_faiLogView.inc:154
+#: admin/systems/class_faiLogView.inc:149
+#: admin/systems/class_faiLogView.inc:152
 msgid "Available logs"
 msgstr "Beschikbare logs"
 
-#: admin/systems/class_faiLogView.inc:159
+#: admin/systems/class_faiLogView.inc:157
 msgid "Selected log"
 msgstr "Geselecteerde log"
 
-#: admin/systems/class_faiLogView.inc:163
+#: admin/systems/class_faiLogView.inc:161
 msgid "Content of the selected log"
-msgstr ""
+msgstr "Inhoud van de geselecteerde log"
 
-#: admin/systems/class_faiLogView.inc:175
+#: admin/systems/class_faiLogView.inc:173
 msgid "FAI Logs"
-msgstr ""
+msgstr "FAI logs"
 
-#: admin/systems/class_faiLogView.inc:176
+#: admin/systems/class_faiLogView.inc:174
 msgid "FAI Logs Viewer"
-msgstr ""
+msgstr "FAI Logs Viewer"
 
-#: admin/systems/class_faiLogView.inc:219
+#: admin/systems/class_faiLogView.inc:223
 msgid "Selected file"
 msgstr "Geselecteerd bestand"
 
-#: admin/systems/class_faiLogView.inc:227
+#: admin/systems/class_faiLogView.inc:231
 #, php-format
 msgid "Selected file: %s"
 msgstr "Geselecteerd bestand: %s"
@@ -886,11 +900,11 @@ msgstr "Parent repository server"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:40
 msgid "Release used on this repository"
-msgstr ""
+msgstr "Release gebruikt in deze repository"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:47
 msgid "Sections available on this repository"
-msgstr ""
+msgstr "Secties beschikbaar in deze repository"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:52
 msgid "Mirror mode"
@@ -924,40 +938,40 @@ msgstr "Distributie"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:72
 msgid "Which distribution is this repository for"
-msgstr ""
+msgstr "Voor welke distributie is deze repository"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:77
 msgid "Path pattern"
-msgstr ""
+msgstr "Padpatroon"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:77
 msgid "How this repository is organized (only for RPM repositories)"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceRepository.inc:160
-msgid "Package repository"
-msgstr ""
+msgstr "Hoe deze repository georganiseerd is (alleen voor RPM repositories)"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:161
-msgid "Package repository information"
-msgstr ""
+msgid "Package repository"
+msgstr "Pakketrepository"
 
-#: admin/systems/services/repository/class_serviceRepository.inc:173
+#: admin/systems/services/repository/class_serviceRepository.inc:162
+msgid "Package repository information"
+msgstr "Pakketrepository-informatie"
+
+#: admin/systems/services/repository/class_serviceRepository.inc:174
 msgid "Repositories"
 msgstr "Repositories"
 
-#: admin/systems/services/repository/class_serviceRepository.inc:178
+#: admin/systems/services/repository/class_serviceRepository.inc:179
 msgid "Repositories this server hosts"
 msgstr "Repositories op deze server"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:28
 msgid "Argonaut FAI monitor"
-msgstr ""
+msgstr "Argonaut FAI monitor"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:29
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:40
 msgid "Argonaut FAI monitor settings"
-msgstr ""
+msgstr "Argonaut FAI monitor instellingen"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:43
 msgid "Port"
@@ -966,14 +980,16 @@ msgstr "Poort"
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:43
 msgid "The port argonaut-fai-monitor should listen on. Default is 4711."
 msgstr ""
+"De poort naar dewelke de argonaut-fai-monitor moet luisteren. Standaard is "
+"4711."
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:48
 msgid "Timeout"
-msgstr "Timeout"
+msgstr "Time-out"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:48
 msgid "The timeout for bad clients. 0 to disable."
-msgstr ""
+msgstr "De time-out voor corrupte cliënten. 0 is afgezet."
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:53
 msgid "CA certificate"
@@ -981,15 +997,15 @@ msgstr "CA certificaat"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:53
 msgid "Path to the CA certificate file on Argonaut FAI monitor server"
-msgstr ""
+msgstr "Pad naar het CA-certificaatbestand op de Argonaut FAI monitor server"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:58
 msgid "Log directory"
-msgstr "Log map"
+msgstr "Logdirectory"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:58
 msgid "Directory in which argonaut-fai-monitor will store its log"
-msgstr ""
+msgstr "Directory in dewelke argonaut-fai-monitor zijn log zal opslaan"
 
 #: config/fai/class_faiConfig.inc:28
 msgid "FAI configuration"
@@ -997,25 +1013,25 @@ msgstr "FAI configuratie"
 
 #: config/fai/class_faiConfig.inc:29
 msgid "FusionDirectory fai plugin configuration"
-msgstr "FusionDirectory fai plugin configuratie"
+msgstr "FusionDirectory fai plugin-configuratie"
 
 #: config/fai/class_faiConfig.inc:44
 msgid "Fai base RDN"
-msgstr ""
+msgstr "Fai basis RDN"
 
 #: config/fai/class_faiConfig.inc:44
 msgid "Branch in which fai branches will be stored"
-msgstr ""
+msgstr "branch in dewelke fai branches zullen worden opgeslagen"
 
 #: config/fai/class_faiConfig.inc:59
 #, php-format
 msgid "Fai %s RDN"
-msgstr ""
+msgstr "Fai %s RDN"
 
 #: config/fai/class_faiConfig.inc:60
 #, php-format
 msgid "Relative branch in which fai %s will be stored"
-msgstr ""
+msgstr "Relatieve branch in dewelke fai %s zal worden opgeslagen"
 
 #: config/fai/class_faiConfig.inc:60
 msgid "s"

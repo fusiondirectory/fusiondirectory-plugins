@@ -1,9 +1,8 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,11 +19,11 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class workstationGeneric extends simplePlugin
+class workstationGeneric extends ipHostPlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array('fdWorkstation', 'ipHost', 'ieee802Device');
+  var $objectclasses = array('fdWorkstation', 'ieee802Device');
 
   static function plInfo()
   {
@@ -96,9 +95,11 @@ class workstationGeneric extends simplePlugin
               'ipHostNumber', TRUE
             )
           ),
-          new MacAddressAttribute(
-            _('Mac address'), _('Mac address of this system'),
-            'macAddress', FALSE
+          new SetAttribute(
+            new MacAddressAttribute(
+              _('Mac address'), _('Mac address of this system'),
+              'macAddress', FALSE
+            )
           ),
         ),
       ),
@@ -110,27 +111,17 @@ class workstationGeneric extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
-    $this->attributesAccess['ipHostNumber']->setUnique('whole', '(objectClass=ipHost)');
-    $this->attributesAccess['macAddress']->setUnique('whole', '(objectClass=ieee802Device)');
   }
 
-  function remove_from_parent()
+  protected function post_remove()
   {
-    if (!$this->initially_was_account) {
-      return;
+    /* Clean queue from entries with this mac */
+    if (class_available('supportDaemon')) {
+      $q = new supportDaemon();
+      $q->clean_queue_from_mac($this->attributesAccess['macAddress']->getInitialValue());
     }
 
-    if ($this->acl_is_removeable()) {
-      $errors = parent::remove_from_parent();
-
-      /* Clean queue form entries with this mac */
-      if (class_available('supportDaemon') && tests::is_mac($this->attributesAccess['macAddress']->getInitialValue())) {
-        $q = new supportDaemon();
-        $q->clean_queue_from_mac($this->attributesAccess['macAddress']->getInitialValue());
-      }
-
-      return $errors;
-    }
+    return parent::post_remove();
   }
 }
 ?>

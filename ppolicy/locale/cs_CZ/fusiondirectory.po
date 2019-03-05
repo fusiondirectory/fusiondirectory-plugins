@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:31+0000\n"
+"POT-Creation-Date: 2019-01-30 17:21+0000\n"
+"PO-Revision-Date: 2016-08-29 15:17+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -51,11 +51,11 @@ msgstr "Název zásady"
 
 #: admin/ppolicy/class_ppolicy.inc:60
 msgid "Description"
-msgstr "popis"
+msgstr "Popis"
 
 #: admin/ppolicy/class_ppolicy.inc:60
 msgid "A short description of this policy"
-msgstr ""
+msgstr "Stručný popis této zásady"
 
 #: admin/ppolicy/class_ppolicy.inc:64
 msgid "Minimum length"
@@ -147,7 +147,7 @@ msgstr "Zda při změně hesla po uživateli vyžadovat to stávající"
 
 #: admin/ppolicy/class_ppolicy.inc:104
 msgid "Check quality"
-msgstr ""
+msgstr "Zkontrolovat kvalitu"
 
 #: admin/ppolicy/class_ppolicy.inc:104
 msgid "Decides what to do if the function in \"Check module\" is not available"
@@ -164,11 +164,11 @@ msgstr "Nevšímat si chyb"
 
 #: admin/ppolicy/class_ppolicy.inc:107
 msgid "Reject on errors"
-msgstr ""
+msgstr "Odmítnout při chybách"
 
 #: admin/ppolicy/class_ppolicy.inc:110
 msgid "Check module"
-msgstr ""
+msgstr "Zkontrolovat modul"
 
 #: admin/ppolicy/class_ppolicy.inc:110
 msgid ""
@@ -296,16 +296,16 @@ msgstr "uživatelské jméno"
 #: addons/dashboard/class_dashBoardPPolicy.inc:59
 #: addons/dashboard/class_dashBoardPPolicy.inc:64
 msgid "Name"
-msgstr "název"
+msgstr "Název"
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:60
 #: addons/dashboard/class_dashBoardPPolicy.inc:66
 msgid "Phone number"
-msgstr "telefonní číslo"
+msgstr "Telefonní číslo"
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:61
 msgid "Expiration date"
-msgstr "Datum vypršení platnosti"
+msgstr "Datum skončení platnosti"
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:65
 msgid "Email"
@@ -314,7 +314,7 @@ msgstr "E-mail"
 #: addons/dashboard/class_dashBoardPPolicy.inc:86
 #: addons/dashboard/class_dashBoardPPolicy.inc:139
 msgid "Configuration error"
-msgstr "chyba v nastavení"
+msgstr "Chyba v nastavení"
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:87
 #, php-format
@@ -385,10 +385,10 @@ msgstr "Trvale uzamčeno"
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:2
 msgid "There is one locked account"
 msgid_plural "There are %1 locked accounts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Je zde jeden zamčený účet"
+msgstr[1] "Jsou zde dva zamčené účty"
+msgstr[2] "Je zde %1 zamčených účtů"
+msgstr[3] "Je zde %1 zamčených účtů"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:5
 msgid "There is no locked account"

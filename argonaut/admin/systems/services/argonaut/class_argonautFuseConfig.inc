@@ -2,7 +2,7 @@
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -101,11 +101,6 @@ class argonautFuseConfig extends simpleService
    */
   function execute ()
   {
-    if ($this->is_account && !$this->view_logged) {
-      $this->view_logged = TRUE;
-      logging::log('view', 'server/'.get_class($this), $this->dn);
-    }
-
     $str = "<div style='width:100%; text-align:right; clear:both; float:none;'>".
            "  <input type='submit' name='SaveService' value='".msgPool::saveButton()."'>&nbsp;".
            "  <input type='submit' name='CancelService' value='".msgPool::cancelButton()."'>".
@@ -181,7 +176,7 @@ class argonautFuseConfig extends simpleService
       if ($plugin->is_account) {
         $errors = $plugin->save();
       } else {
-        $errors = $plugin->remove_from_parent();
+        $errors = $plugin->remove(FALSE);
       }
       if (!empty($errors)) {
         msg_dialog::displayChecks($errors);
@@ -190,23 +185,24 @@ class argonautFuseConfig extends simpleService
     unset($plugin);
   }
 
-  function remove_from_parent()
+  function remove($fulldelete = FALSE)
   {
     $errors = array();
     /* Remove objects */
     foreach ($this->plugin as &$plugin) {
       $plugin->dn = $this->dn;
-      $result = $plugin->remove_from_parent();
+      $result = $plugin->remove($fulldelete);
       if (!empty($result)) {
         $errors = array_merge($errors, $result);
       }
     }
     unset($plugin);
-    $result = parent::remove_from_parent();
-    if (!empty($result)) {
-      $errors = array_merge($result, $errors);
+
+    if (!empty($errors)) {
+      return $errors;
     }
-    return $errors;
+
+    return parent::remove($fulldelete);
   }
 }
 ?>

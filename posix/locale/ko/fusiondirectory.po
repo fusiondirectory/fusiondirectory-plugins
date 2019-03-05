@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:31+0000\n"
+"POT-Creation-Date: 2019-01-30 17:21+0000\n"
+"PO-Revision-Date: 2017-02-02 06:52+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -83,7 +83,7 @@ msgstr "그룹 멤버"
 #: admin/groups/posix/class_posixGroup.inc:91
 #: personal/posix/class_posixAccount.inc:203
 msgid "System trust"
-msgstr "시스템 신뢰"
+msgstr "시스템 트러스트"
 
 #: admin/groups/posix/class_posixGroup.inc:95
 #: personal/posix/class_posixAccount.inc:207
@@ -114,7 +114,7 @@ msgstr "호스트에 접근 허용"
 
 #: admin/groups/posix/class_posixGroup.inc:102
 msgid "Only allow this group to connect to this list of hosts"
-msgstr "호스트 리스트에 접근 가능 그룹"
+msgstr "그룹만 호스트 리스트에 접근 허용"
 
 #: config/posix/class_posixConfig.inc:28
 msgid "POSIX configuration"
@@ -154,7 +154,7 @@ msgstr "다음 id"
 msgid ""
 "A script to be called for finding the next free id number for users or "
 "groups."
-msgstr "사용자 또는 그룹에 대해 다음 무료 ID 번호를 찾는 데 호출 할 스크립트."
+msgstr "사용자 또는 그룹의 다음 id 번호를 찾기 위해 호출될 스크립트"
 
 #: config/posix/class_posixConfig.inc:61
 msgid "Base number for user id"
@@ -174,7 +174,7 @@ msgstr "새로운 group id를 찾을 시작값"
 
 #: config/posix/class_posixConfig.inc:73
 msgid "Id allocation method"
-msgstr "Id 할당발법"
+msgstr "Id 할당방법"
 
 #: config/posix/class_posixConfig.inc:73
 msgid "Method to allocate user/group ids"
@@ -182,7 +182,7 @@ msgstr "사용자/그룹 id 의 할당방법"
 
 #: config/posix/class_posixConfig.inc:76
 msgid "Traditional"
-msgstr "Samba unix id 풀"
+msgstr "Traditional"
 
 #: config/posix/class_posixConfig.inc:76
 msgid "Samba unix id pool"
@@ -190,11 +190,11 @@ msgstr "Samba unix id 풀"
 
 #: config/posix/class_posixConfig.inc:79
 msgid "Pool user id min"
-msgstr "사용자 아이디 풀 최소값"
+msgstr "사용자 id 풀 최소값"
 
 #: config/posix/class_posixConfig.inc:79
 msgid "Minimum value for user id when using pool method"
-msgstr "풀 메소드 사용시 사용자 ID의 최소값"
+msgstr "풀을 사용하는 경우 user id 최소값"
 
 #: config/posix/class_posixConfig.inc:84
 msgid "Pool user id max"
@@ -202,7 +202,7 @@ msgstr "사용자 id 풀 최대값"
 
 #: config/posix/class_posixConfig.inc:84
 msgid "Maximum value for user id when using pool method"
-msgstr "풀을 사용하는 경우 group id 최소값"
+msgstr "풀을 사용하는 경우 group id 최대값"
 
 #: config/posix/class_posixConfig.inc:89
 msgid "Pool group id min"
@@ -287,7 +287,7 @@ msgstr "사용자  unix 계정의 상태"
 
 #: personal/posix/class_posixAccount.inc:140
 msgid "Force user/group id"
-msgstr "사용자/그룹 id"
+msgstr "사용자/그룹 id 강제"
 
 #: personal/posix/class_posixAccount.inc:140
 msgid "Force user id and group id values for this user"
@@ -330,7 +330,7 @@ msgstr "최초 로그인 시 패스워드를 변경해야 합니다.(강제 패�
 
 #: personal/posix/class_posixAccount.inc:171
 msgid "Minimum delay between password changes (days)"
-msgstr "최소 비밀번호 변경 주기(일)"
+msgstr "최소 비밀번호 변경 기간(일)"
 
 #: personal/posix/class_posixAccount.inc:171
 msgid ""
@@ -340,13 +340,13 @@ msgstr "해당 일자 전에 패스워드를 변경할 수 없습니다.(미사�
 
 #: personal/posix/class_posixAccount.inc:176
 msgid "Delay before forcing password change (days)"
-msgstr "강제 패스워든 변경 주기(일)"
+msgstr "강제 패스워든 변경 기간(일)"
 
 #: personal/posix/class_posixAccount.inc:176
 msgid ""
 "The user will be forced to change his password after this number of days "
 "(leave empty to disable)"
-msgstr "사용자는이 일수가 지나면 비밀번호를 변경해야합니다 (사용하지 않으려면 비워 둡니다)"
+msgstr "해당 일자 이후에는 패스워드를 강제로 변경합니다.(미사용 시 공백)"
 
 #: personal/posix/class_posixAccount.inc:181
 msgid "Password expiration date"
@@ -365,7 +365,7 @@ msgstr "사용자 제한 전 비활성화 기간(일)"
 msgid ""
 "Maximum delay of inactivity after password expiration before the user is "
 "disabled (leave empty to disable)"
-msgstr "사용자가 미사용이 되기 전 패스워드가 만료된 이후 최대 기간"
+msgstr "사용자가 미사용이 되기 전에 패스워드가 만료된 이후 최대 비활성화 기간(미사용 시 공백)"
 
 #: personal/posix/class_posixAccount.inc:191
 msgid "Delay for user warning before password expiry (days)"
@@ -379,7 +379,7 @@ msgstr "패스워드가 만료되기 전 해당 일자 동안 경고를 받게 �
 
 #: personal/posix/class_posixAccount.inc:214
 msgid "Only allow this user to connect to this list of hosts"
-msgstr " 호스트 리스트에 만 접속 허용"
+msgstr " 호스트 리스트에만 접속 허용"
 
 #: personal/posix/class_posixAccount.inc:292
 msgid "automatic"
@@ -387,7 +387,7 @@ msgstr "자동"
 
 #: personal/posix/class_posixAccount.inc:353
 msgid "expired"
-msgstr "마료"
+msgstr "만료"
 
 #: personal/posix/class_posixAccount.inc:355
 msgid "grace time active"
@@ -397,7 +397,7 @@ msgstr "활성화 시간"
 #: personal/posix/class_posixAccount.inc:360
 #: personal/posix/class_posixAccount.inc:362
 msgid "active"
-msgstr "gㅘ"
+msgstr "활성화"
 
 #: personal/posix/class_posixAccount.inc:358
 msgid "password expired"
@@ -405,78 +405,100 @@ msgstr "패스워드 만료"
 
 #: personal/posix/class_posixAccount.inc:360
 msgid "password not changeable"
-msgstr "패스워드를 변경불가"
+msgstr "패스워드 변경불가"
 
 #: personal/posix/class_posixAccount.inc:422
 msgid "UID"
 msgstr "UID"
 
-#: personal/posix/class_posixAccount.inc:537
+#: personal/posix/class_posixAccount.inc:538
 #, php-format
 msgid "Group of user %s"
 msgstr "사용자 %s의 그룹"
 
-#: personal/posix/class_posixAccount.inc:783
-#: personal/posix/class_posixAccount.inc:804
-#: personal/posix/class_posixAccount.inc:998
+#: personal/posix/class_posixAccount.inc:560
+#, php-format
+msgid ""
+"Could not create automatic primary group (using gidNumber \"%s\"), because "
+"of the following errors"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:793
+#: personal/posix/class_posixAccount.inc:814
+#: personal/posix/class_posixAccount.inc:1005
+#: personal/posix/class_posixAccount.inc:1022
+#: personal/posix/class_posixAccount.inc:1034
 msgid "Warning"
 msgstr "ㅗ"
 
-#: personal/posix/class_posixAccount.inc:783
+#: personal/posix/class_posixAccount.inc:793
 #, php-format
 msgid "Unknown ID allocation method \"%s\"!"
 msgstr "알 수 없는 ID 할당방법 \"%s\"!"
 
-#: personal/posix/class_posixAccount.inc:805
+#: personal/posix/class_posixAccount.inc:815
 #, php-format
 msgid "Timeout while waiting for lock. Ignoring lock from %s!"
 msgstr "잠금 대시 타임아웃. %s 잠금 무시!"
 
-#: personal/posix/class_posixAccount.inc:832
-#: personal/posix/class_posixAccount.inc:872
-#: personal/posix/class_posixAccount.inc:884
-#: personal/posix/class_posixAccount.inc:888
-#: personal/posix/class_posixAccount.inc:895
-#: personal/posix/class_posixAccount.inc:904
-#: personal/posix/class_posixAccount.inc:966
+#: personal/posix/class_posixAccount.inc:842
+#: personal/posix/class_posixAccount.inc:882
+#: personal/posix/class_posixAccount.inc:894
+#: personal/posix/class_posixAccount.inc:898
+#: personal/posix/class_posixAccount.inc:905
+#: personal/posix/class_posixAccount.inc:914
+#: personal/posix/class_posixAccount.inc:976
 msgid "Error"
 msgstr "오류"
 
-#: personal/posix/class_posixAccount.inc:832
-#: personal/posix/class_posixAccount.inc:872
-#: personal/posix/class_posixAccount.inc:884
-#: personal/posix/class_posixAccount.inc:888
-#: personal/posix/class_posixAccount.inc:895
-#: personal/posix/class_posixAccount.inc:904
+#: personal/posix/class_posixAccount.inc:842
+#: personal/posix/class_posixAccount.inc:882
+#: personal/posix/class_posixAccount.inc:894
+#: personal/posix/class_posixAccount.inc:898
+#: personal/posix/class_posixAccount.inc:905
+#: personal/posix/class_posixAccount.inc:914
 msgid "Cannot allocate a free ID:"
 msgstr "ID를 할당할 수 없음"
 
-#: personal/posix/class_posixAccount.inc:832
+#: personal/posix/class_posixAccount.inc:842
 #, php-format
 msgid "%sPoolMin >= %sPoolMax!"
 msgstr "%s 풀 최소값 >= %s 풀 최대값!"
 
-#: personal/posix/class_posixAccount.inc:864
+#: personal/posix/class_posixAccount.inc:874
 msgid "LDAP error"
-msgstr "lDAP 오류"
+msgstr "LDAP 오류"
 
-#: personal/posix/class_posixAccount.inc:872
+#: personal/posix/class_posixAccount.inc:882
 msgid "sambaUnixIdPool is not unique!"
 msgstr "삼바 Unix id 풀이 유일하지 않음!"
 
-#: personal/posix/class_posixAccount.inc:884
-#: personal/posix/class_posixAccount.inc:888
+#: personal/posix/class_posixAccount.inc:894
+#: personal/posix/class_posixAccount.inc:898
 msgid "no ID available!"
 msgstr "가능한 ID 없음!"
 
-#: personal/posix/class_posixAccount.inc:904
+#: personal/posix/class_posixAccount.inc:914
 msgid "maximum tries exceeded!"
-msgstr "최대 실행횟수 초과"
+msgstr "최대 실행횟수 초과!"
 
-#: personal/posix/class_posixAccount.inc:966
+#: personal/posix/class_posixAccount.inc:976
 msgid "Cannot allocate a free ID!"
 msgstr "ID를 할당할 수 없음!"
 
-#: personal/posix/class_posixAccount.inc:998
+#: personal/posix/class_posixAccount.inc:1007
+#: personal/posix/class_posixAccount.inc:1024
+#, php-format
+msgid ""
+"%s\n"
+"Result: %s\n"
+"Using default base!"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:1025
+msgid "\"nextIdHook\" did not return a valid output!"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:1034
 msgid "\"nextIdHook\" is not available. Using default base!"
 msgstr "\"nextidHook\"은 사용가능하지 않음. 기본값 사용!"

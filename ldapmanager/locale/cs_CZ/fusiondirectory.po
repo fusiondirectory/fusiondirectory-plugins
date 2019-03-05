@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2017
+# fusiondirectory <contact@fusiondirectory.org>, 2016
 # Pavel Borecki <pavel.borecki@gmail.com>, 2018
 # 
 #, fuzzy
@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:28+0000\n"
+"POT-Creation-Date: 2019-01-30 17:21+0000\n"
+"PO-Revision-Date: 2016-08-29 15:14+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "Umožňuje importovat či exportovat ldap strom"
 
 #: addons/ldapmanager/tabs_ldif.inc:36
 msgid "Ldap manager"
-msgstr "správce LDAPu"
+msgstr "Správa LDAP"
 
 #: addons/ldapmanager/class_ldapmanager.inc:45
 msgid "LDIF"
@@ -44,7 +44,7 @@ msgstr "Exportovat/importovat ldap strom do/z LDIF formátu"
 
 #: addons/ldapmanager/class_ldapmanager.inc:48
 msgid "LDAP Manager"
-msgstr "Správce LDAP"
+msgstr "Správa LDAP"
 
 #: addons/ldapmanager/class_ldapmanager.inc:61
 #: addons/ldapmanager/class_ldapmanager.inc:74
@@ -58,7 +58,7 @@ msgstr "Rozlišený název položky, která má být samostatně exportována do
 
 #: addons/ldapmanager/class_ldapmanager.inc:78
 msgid "Export single entry"
-msgstr "exportovat jedinou položku"
+msgstr "Exportovat jedinou položku"
 
 #: addons/ldapmanager/class_ldapmanager.inc:81
 msgid "Filter"
@@ -105,7 +105,7 @@ msgstr ""
 
 #: addons/ldapmanager/class_ldapmanager.inc:121
 #: addons/ldapmanager/class_csvimport.inc:81
-#: addons/ldapmanager/class_csvimport.inc:107
+#: addons/ldapmanager/class_csvimport.inc:101
 msgid "Import"
 msgstr "import(ovat)"
 
@@ -114,9 +114,9 @@ msgid "Import LDIF file"
 msgstr "Importovat LDIF soubor"
 
 #: addons/ldapmanager/class_ldapmanager.inc:153
-#: addons/ldapmanager/class_ldapmanager.inc:198
+#: addons/ldapmanager/class_ldapmanager.inc:203
 msgid "LDAP error"
-msgstr "chyba LDAPu"
+msgstr "Chyba LDAP"
 
 #: addons/ldapmanager/class_ldapmanager.inc:154
 #, php-format
@@ -134,12 +134,32 @@ msgstr "Nejste oprávněn(a) exportovat %s!"
 
 #: addons/ldapmanager/class_ldapmanager.inc:181
 msgid "Error"
-msgstr "chyba"
+msgstr "Chyba"
 
 #: addons/ldapmanager/class_ldapmanager.inc:182
 #, php-format
 msgid "Failed to generate ldap export, error was \"%s\"!"
 msgstr "Vytvoření ldap exportu se nezdařilo, chyba je v %s!"
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid "Warning"
+msgstr "Varování"
+
+#: addons/ldapmanager/class_ldapmanager.inc:195
+msgid ""
+"Nothing to import, please upload a non-empty file or fill the textarea."
+msgstr ""
+"Není co importovat, nahrajte neprázdný soubor nebo vyplňte textové pole."
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#: addons/ldapmanager/class_csvimport.inc:251
+msgid "Success"
+msgstr "Úspěch"
+
+#: addons/ldapmanager/class_ldapmanager.inc:201
+#, php-format
+msgid "%d entries successfully imported"
+msgstr "%d položek úspěšně importováno"
 
 #: addons/ldapmanager/class_csvimport.inc:29
 msgid "CSV import"
@@ -163,7 +183,7 @@ msgstr "Typ objektů, které chcete importovat"
 
 #: addons/ldapmanager/class_csvimport.inc:52
 msgid "Template"
-msgstr "šablona"
+msgstr "Šablona"
 
 #: addons/ldapmanager/class_csvimport.inc:52
 msgid "Select a template to apply to imported entries"
@@ -199,20 +219,16 @@ msgstr ""
 msgid "Template filling"
 msgstr "Vyplňování šablony"
 
-#: addons/ldapmanager/class_csvimport.inc:97
+#: addons/ldapmanager/class_csvimport.inc:91
 msgid "Select fields associations"
 msgstr "Vyberte přiřazení políček"
 
-#: addons/ldapmanager/class_csvimport.inc:243
+#: addons/ldapmanager/class_csvimport.inc:244
 #, php-format
 msgid "Import failed for line %d"
 msgstr "Import se nezdařil na řádku %d"
 
-#: addons/ldapmanager/class_csvimport.inc:250
-msgid "Success"
-msgstr "úspěch"
-
-#: addons/ldapmanager/class_csvimport.inc:250
+#: addons/ldapmanager/class_csvimport.inc:251
 #, php-format
 msgid "Successfully imported %d entries"
 msgstr "%d položek bylo úspěšně importováno"

@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2016  FusionDirectory
+  Copyright (C) 2015-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -66,6 +66,7 @@ class DnsRecordPlugin extends simplePlugin
   function __construct ($parent, $attribute, $value = NULL)
   {
     parent::__construct($parent->dn, $parent);
+    $this->set_acl_base($parent->acl_base);
 
     $this->attributesAccess['relativeSubdomainName']->setInLdap(FALSE);
     $this->attributesAccess['dnsRecord']->setInLdap(FALSE);
@@ -177,6 +178,18 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
   protected $zoneName;
   protected $zoneDn;
   protected $initialReverseZones;
+
+  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = array(), $acl = "")
+  {
+    parent::__construct($label, $description, $ldapName, $required, $defaultValue, $acl);
+    $this->setHeaders(array(
+      _('Subdomain'),
+      _('Type'),
+      _('Content'),
+      _('Reverse'),
+      ''
+    ));
+  }
 
   function getZoneName()
   {
@@ -518,10 +531,6 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       }
     }
 
-    $zoneNameWithFinalDot = $zoneName;
-    if (!preg_match('/\.$/', $zoneNameWithFinalDot)) {
-      $zoneNameWithFinalDot .= '.';
-    }
     foreach ($this->reverseZones as $reverseZone) {
       $reverseDn  = 'zoneName='.$reverseZone.','.$zoneDn;
       $ipv6       = preg_match('/ip6/', $reverseZone);
@@ -541,8 +550,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
             'zoneName'            => $reverseZone,
             'dNSClass'            => 'IN',
             'pTRRecord'           => array_map(
-              function ($name) use ($zoneNameWithFinalDot) {
-                return (empty($name) ? '' : $name.'.').$zoneNameWithFinalDot;
+              function ($name) use ($zoneName) {
+                return (empty($name) ? '' : $name.'.').$zoneName;
               },
               $names
             ),
@@ -658,7 +667,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
   }
 }
 
-class ZoneNameAttribute extends StringAttribute
+class FQDNAttribute extends StringAttribute
 {
   function validate ()
   {
@@ -666,7 +675,7 @@ class ZoneNameAttribute extends StringAttribute
       $regexp = '/^(([a-z0-9\-]{1,63})\.)+$/';
       $error  = _('"%s" must contain a domain name in lowercase and end with a final dot.<br/><br/>Example: example.com.');
     } else {
-      $regexp = '/^(([a-z0-9\-]{1,63})\.)*[a-z]{1,63}$/';
+      $regexp = '/^(([a-z0-9\-]{1,63})\.)*[a-z0-9\-]{1,63}$/';
       $error  = _('"%s" must contain a domain name in lowercase.<br/><br/>Example: example.com');
     }
     if (!preg_match($regexp, $this->value)) {
@@ -709,12 +718,12 @@ class dnsZone extends simplePlugin
         'name'  => _('Zone'),
         'attrs' => array(
           new BaseSelectorAttribute(get_ou('dnsRDN')),
-          new ZoneNameAttribute (
+          new FQDNAttribute (
             _('Zone name'), _('Zone name'),
             'zoneName', TRUE
           ),
           new HiddenAttribute (
-            //~ _('Relative domain name'), _('Relative domain name'),
+            // Relative domain name
             'relativeDomainName', TRUE,
             '@'
           ),
@@ -824,7 +833,7 @@ class dnsZone extends simplePlugin
       }
       $this->attributesAccess['sOARecord']->attributes[2]->setValue($serial);
     }
-    parent::prepare_save();
+    return parent::prepare_save();
   }
 
   function ldap_save ()

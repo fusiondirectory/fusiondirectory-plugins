@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -46,8 +46,8 @@ class DebconfEntriesAttribute extends CompositeAttribute
     while ($entry = $ldap->fetch()) {
       if (isset($entry['cn'][0])) {
         $cn     = $entry['cn'][0];
-        $desc   = (isset($entry['description'][0])?$entry['description'][0]:'');
-        $default  = (isset($entry['value'][0])?$entry['default'][0]:'');
+        $desc   = (isset($entry['description'][0]) ? $entry['description'][0] : '');
+        $default  = (isset($entry['value'][0]) ? $entry['default'][0] : '');
         $this->attributes[$cn] = new StringAttribute ($cn, $desc, "debconfentry_$cn", FALSE, $default);
         $this->attributes[$cn]->setInLdap(FALSE);
         $this->attributes[$cn]->setAcl($this->getAcl());
@@ -113,7 +113,6 @@ class DebconfImportAttribute extends FileAttribute
     global $config;
     $matches = array();
     $str = fread($handle, 1024);
-    strpos($str, "dn:");
     // removing breaklines
     $tmp = str_replace ("\n", "", $str);
     // removing spaces

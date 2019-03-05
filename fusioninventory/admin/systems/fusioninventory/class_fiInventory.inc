@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016  FusionDirectory
+  Copyright (C) 2013-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -179,7 +179,7 @@ class fiInventory extends simplePlugin
     $ldap = $config->get_ldap_link();
 
     if ($this->mainTab) {
-      $dn = $this->dn;
+      $dn           = $this->dn;
       $macAddress   = $this->attrs['macAddress'];
       $ipHostNumber = $this->attrs['ipHostNumber'];
       unset($macAddress['count']);

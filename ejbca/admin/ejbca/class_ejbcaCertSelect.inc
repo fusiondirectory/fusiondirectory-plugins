@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014-2016 FusionDirectory
+  Copyright (C) 2014-2018 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -120,7 +120,7 @@ class EjbcaUserCertsAttribute extends GenericDialogAttribute
   {
     $id = $this->getHtmlId();
     $buttons  = '<input type="submit" name="add'.$id.'_dialog" id="add'.$id.'_dialog"'.
-                ($this->disabled? ' disabled="disabled"':'').
+                ($this->disabled ? ' disabled="disabled"' : '').
                 ' value="{msgPool type=addButton}"/>';
     return $buttons;
   }

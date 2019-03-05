@@ -109,6 +109,14 @@
     </action>
 
     <action>
+      <name>ping</name>
+      <type>entry</type>
+      <image>geticon.php?context=actions&amp;icon=task-start&amp;size=16</image>
+      <label>Ping</label>
+      <depends>argonautAction</depends>
+    </action>
+
+    <action>
       <type>separator</type>
     </action>
 

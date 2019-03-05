@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014-2016  FusionDirectory
+  Copyright (C) 2014-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -61,6 +61,7 @@ class applicationRights extends simplePlugin
 
     $apps = objects::ls('application');
     $apps = array_merge($apps, objects::ls('webApplication'));
+    asort($apps);
     $this->attributesAccess['fdApplicationAllowed']->attribute->setChoices(
       array_keys($apps),
       array_values($apps)

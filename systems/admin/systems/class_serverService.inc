@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -39,7 +39,6 @@ class ServerService extends simpleManagement
   var $skipFooter       = TRUE;
   var $skipHeader       = TRUE;
   var $skipCpHandler    = TRUE;
-  var $skipSnapHandler  = TRUE;
   var $plugins          = array();
   var $current          = "";
   var $dialog           = FALSE;
@@ -50,6 +49,8 @@ class ServerService extends simpleManagement
   var $parent;
   var $acl_category     = "";
   var $acl_base         = "";
+
+  public static $skipSnapshots = TRUE;
 
   var $is_account;
 
@@ -90,7 +91,7 @@ class ServerService extends simpleManagement
 
         $this->plugins[$name] = new $name($dn, $this);
 
-        /* Capture all service objectClases, necessary for acl handling */
+        /* Capture all service objectClasses, necessary for acl handling */
         if (isset($this->plugins[$name]->objectclasses)) {
           foreach ($this->plugins[$name]->objectclasses as $oc) {
             $this->objectclasses[] = $oc;
@@ -98,6 +99,21 @@ class ServerService extends simpleManagement
         }
       }
     }
+
+    uasort($this->plugins,
+      function($a, $b)
+      {
+        $aName = get_class($a);
+        $bName = get_class($b);
+        if (isset($a->DisplayName)) {
+          $aName = $a->DisplayName;
+        }
+        if (isset($b->DisplayName)) {
+          $bName = $b->DisplayName;
+        }
+        return strcmp($aName, $bName);
+      }
+    );
 
     parent::__construct();
   }
@@ -299,7 +315,17 @@ class ServerService extends simpleManagement
           msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
         );
       } else {
-        $target = array($this->parent->getBaseObject()->macAddress);
+        $target = $this->parent->getBaseObject()->macAddress;
+        if (empty($target)) {
+          msg_dialog::display(
+            sprintf(_('Could not get execute action %s on service %s.'), $action, $service),
+            _('This server has no mac address.'), ERROR_DIALOG
+          );
+          return;
+        }
+        if (is_array($target)) {
+          $target = $target[0];
+        }
         if ($action == 'status') {
           $res = $s_daemon->append_call('Service.is_running', $target, array('args' => array($service)));
 
@@ -396,22 +422,17 @@ class ServerService extends simpleManagement
   function save_object()
   {
     // save_object of the dialog is called in management::execute
-    //~ if ($this->dialog && is_object($this->dialogObject)) {
-      //~ if (method_exists($this->dialogObject, 'save_object')) {
-        //~ $this->dialogObject->save_object();
-      //~ }
-    //~ }
   }
 
-  /*! \brief    Remove all active services
+  /*! \brief Remove all active services
    */
-  function remove_from_parent()
+  function remove($fulldelete = FALSE)
   {
     $errors = array();
     foreach ($this->plugins as $name => $obj) {
       $this->updateServicesVars($name);
       if ($this->plugins[$name]->initially_was_account) {
-        $result = $this->plugins[$name]->remove_from_parent();
+        $result = $this->plugins[$name]->remove($fulldelete);
         if (!empty($result)) {
           $errors = array_merge($errors, $result);
         }
@@ -431,7 +452,7 @@ class ServerService extends simpleManagement
       if ($this->plugins[$name]->is_account) {
         $result = $this->plugins[$name]->save();
       } elseif ($this->plugins[$name]->initially_was_account) {
-        $result = $this->plugins[$name]->remove_from_parent();
+        $result = $this->plugins[$name]->remove(FALSE);
       }
       if (!empty($result)) {
         $errors = array_merge($errors, $result);

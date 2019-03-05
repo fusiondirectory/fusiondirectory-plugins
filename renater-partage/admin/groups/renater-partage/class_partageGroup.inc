@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017 FusionDirectory
+  Copyright (C) 2017-2018 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -28,6 +28,7 @@ class partageGroup extends simplePlugin
     return array(
       'plShortName'    => _('Partage'),
       'plDescription'  => _('Partage group options'),
+      'plSmallIcon'    => 'geticon.php?context=applications&icon=renater-partage&size=16',
       'plDepends'      => array('mailGroup'),
       'plObjectType'   => array('group', 'ogroup-user'),
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())

@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:23+0000\n"
+"POT-Creation-Date: 2019-01-30 17:20+0000\n"
+"PO-Revision-Date: 2016-08-29 15:06+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -23,89 +23,97 @@ msgstr ""
 
 #: admin/departments/community/class_communityOrganization.inc:29
 msgid "Community organization"
-msgstr "커뮤니티 구성"
+msgstr "커뮤니티 조직"
 
 #: admin/departments/community/class_communityOrganization.inc:30
 msgid "Community organization dates and alternate address"
-msgstr "커뮤니티 조직 일자 및 대체 주소"
+msgstr "커뮤니티 조직 날짜 및 대체 주소"
 
 #: admin/departments/community/class_communityOrganization.inc:42
 msgid "Membership"
-msgstr "멤버십"
+msgstr "회원"
 
 #: admin/departments/community/class_communityOrganization.inc:45
 msgid "Membership type"
-msgstr "멤버십 유형"
+msgstr "회원 유형"
 
 #: admin/departments/community/class_communityOrganization.inc:45
 msgid "Membership type of this organization"
-msgstr "조직의 멤버십 유형"
+msgstr "조직의 회원 유형"
 
 #: admin/departments/community/class_communityOrganization.inc:50
+msgid "Agreement signed"
+msgstr "계약체결"
+
+#: admin/departments/community/class_communityOrganization.inc:50
+msgid "Did this member returned the agreement signed"
+msgstr "이 회원이 계약서를 반환했습니까"
+
+#: admin/departments/community/class_communityOrganization.inc:54
 msgid "Active"
 msgstr "활성화"
 
-#: admin/departments/community/class_communityOrganization.inc:50
+#: admin/departments/community/class_communityOrganization.inc:54
 msgid "Is the membership of this organization active"
 msgstr "이 조직의 회원 자격이 활성화되어 있습니까"
 
-#: admin/departments/community/class_communityOrganization.inc:54
+#: admin/departments/community/class_communityOrganization.inc:58
 msgid "Hidden"
 msgstr "숨김"
 
-#: admin/departments/community/class_communityOrganization.inc:54
+#: admin/departments/community/class_communityOrganization.inc:58
 msgid "Should this membership be hidden from listings"
 msgstr "이 멤버십을 목록에서 숨겨야합니까"
 
-#: admin/departments/community/class_communityOrganization.inc:60
+#: admin/departments/community/class_communityOrganization.inc:64
 msgid "Dates"
 msgstr "일자"
 
-#: admin/departments/community/class_communityOrganization.inc:63
+#: admin/departments/community/class_communityOrganization.inc:67
 msgid "Start date"
 msgstr "시작일자"
 
-#: admin/departments/community/class_communityOrganization.inc:63
-msgid "Date of the beginning"
-msgstr "시작일자"
-
 #: admin/departments/community/class_communityOrganization.inc:67
+msgid "Date of the beginning"
+msgstr "시작날짜"
+
+#: admin/departments/community/class_communityOrganization.inc:71
 msgid "End date"
 msgstr "종료일자"
 
-#: admin/departments/community/class_communityOrganization.inc:67
+#: admin/departments/community/class_communityOrganization.inc:71
 msgid "Date of the end"
-msgstr "종료일자"
+msgstr "종료날짜"
 
-#: admin/departments/community/class_communityOrganization.inc:74
+#: admin/departments/community/class_communityOrganization.inc:78
 msgid "Contact"
 msgstr "연락처"
 
-#: admin/departments/community/class_communityOrganization.inc:77
-msgid "First name"
-msgstr "성"
-
 #: admin/departments/community/class_communityOrganization.inc:81
+msgid "First name"
+msgstr "이름"
+
+#: admin/departments/community/class_communityOrganization.inc:85
 msgid "Last name"
 msgstr "성"
 
-#: admin/departments/community/class_communityOrganization.inc:85
+#: admin/departments/community/class_communityOrganization.inc:89
 msgid "Address"
 msgstr "주소"
 
-#: admin/departments/community/class_communityOrganization.inc:85
-msgid "A postal address"
-msgstr "우편번호"
-
 #: admin/departments/community/class_communityOrganization.inc:89
+msgid "A postal address"
+msgstr "우편주소"
+
+#: admin/departments/community/class_communityOrganization.inc:93
 msgid "City"
 msgstr "도시"
 
-#: admin/departments/community/class_communityOrganization.inc:93
-msgid "State"
-msgstr "wn"
-
 #: admin/departments/community/class_communityOrganization.inc:97
+msgid "State"
+msgstr "주"
+
+#: admin/departments/community/class_communityOrganization.inc:101
 msgid "Country"
 msgstr "지역"
 
@@ -155,4 +163,4 @@ msgstr "회원 유형 선택"
 
 #: config/community/class_communityConfig.inc:45
 msgid "Community membership types available in the user community tab"
-msgstr "사용자 커뮤니티 탭에서 사용가능한 커뮤니티 회원 유형"
+msgstr "사용자 커뮤니티 탭에서 사용할 수 있는 커뮤니티 회원 유형"

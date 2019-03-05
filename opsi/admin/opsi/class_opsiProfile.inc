@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014-2016 FusionDirectory
+  Copyright (C) 2014-2018 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -89,6 +89,7 @@ class opsiProfile extends simplePlugin
       'main' => array(
         'name'  => _('Name'),
         'attrs' => array(
+          new BaseSelectorAttribute(get_ou('opsiRDN')),
           new SubmittingOPSIServerAttribute(
             _('OPSI server'), _('OPSI server to use for deployment'),
             'fdOpsiServerDn', TRUE
@@ -180,7 +181,7 @@ class opsiProfile extends simplePlugin
         );
         return FALSE;
       }
-      $netboots = $s_daemon->append_call('OPSI.get_netboots', array($this->macAddress), array('args' => array(array('id','name'))));
+      $netboots = $s_daemon->append_call('OPSI.get_netboots', $this->macAddress, array('args' => array(array('id','name'))));
       if ($s_daemon->is_error()) {
         msg_dialog::display(
           _('Failed to contact OPSI server'),
@@ -191,7 +192,6 @@ class opsiProfile extends simplePlugin
       $this->products[$this->fdOpsiServerDn]['netboots'] = $netboots;
 
       $ldap->cd($config->current['BASE']);
-      //~ $ldap->search('(&(|(objectClass=opsiOnDemandList)(objectClass=opsiSoftwareList))(fdOpsiServerDN='.$this->fdOpsiServerDN.'))', array('cn'));
       $ldap->search('(&(objectClass=opsiSoftwareList)(fdOpsiServerDn='.$this->fdOpsiServerDn.'))', array('cn'));
       $lists = array();
       while ($attrs = $ldap->fetch()) {

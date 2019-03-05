@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016  FusionDirectory
+  Copyright (C) 2013-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -40,18 +40,29 @@ class webLink extends simplePlugin
   static function getAttributesInfo ()
   {
     return array(
-      'main' => array(
-        'name'  => _('Web link'),
+      'links' => array(
+        'name'  => _('Links'),
+        'attrs' => array(
+          new DisplayAttribute (
+            _('Links'), _('Web links to this computer'),
+            'fdWebLink', FALSE
+          ),
+        )
+      ),
+      'settings' => array(
+        'name'  => _('Settings'),
         'attrs' => array(
           new SelectAttribute (
             _('Protocol'), _('Protocol to use to access this computer Web page'),
             'fdWebLinkProtocol', TRUE,
             array('https', 'http')
           ),
-          new DisplayAttribute (
-            _('Links'), _('Web links to this computer'),
-            'fdWebLink', FALSE
-          )
+          new SetAttribute (
+            new URLAttribute (
+              _('Arbitrary links'), _('Any URL you want to associate to this computer'),
+              'fdWebLinkURL', FALSE
+            )
+          ),
         )
       ),
     );
@@ -66,14 +77,27 @@ class webLink extends simplePlugin
 
   function renderAttributes($readOnly = FALSE)
   {
-    $links = $this->computeLinks();
-    $this->fdWebLink = implode('<br/>'."\n", array_map(
-      function ($link)
-      {
-        return '<a target="_blank" href="'.$link.'">'.$link.'</a>';
-      },
-      $links
-    ));
+    $autoLinks = $this->computeLinks();
+    $html = '';
+    if (count($this->fdWebLinkURL) > 0) {
+      $html .= '<ul>'.implode("\n", array_map(
+        function ($link)
+        {
+          return '<li><a target="_blank" href="'.$link.'">'.$link.'</a></li>';
+        },
+        $this->fdWebLinkURL
+      )).'</ul>'."\n";
+    }
+    if (!empty($autoLinks)) {
+      $html .= '<ul>'.implode("\n", array_map(
+        function ($link)
+        {
+          return '<li><a target="_blank" href="'.$link.'">'.$link.'</a></li>';
+        },
+        $autoLinks
+      )).'</ul>'."\n";
+    }
+    $this->fdWebLink = $html;
     return parent::renderAttributes($readOnly);
   }
 

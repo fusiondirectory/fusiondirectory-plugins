@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-09-03 11:55+0000\n"
-"PO-Revision-Date: 2017-11-03 10:26+0000\n"
+"POT-Creation-Date: 2019-01-30 17:20+0000\n"
+"PO-Revision-Date: 2016-08-29 15:10+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -21,22 +21,22 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/ejbca/class_ejbcaManagement.inc:32
+#: admin/ejbca/class_ejbcaManagement.inc:33
 #: admin/ejbca/certificates/class_ejbcaCertificates.inc:29
 msgid "EJBCA"
 msgstr "EJBCA"
 
-#: admin/ejbca/class_ejbcaManagement.inc:33
+#: admin/ejbca/class_ejbcaManagement.inc:34
 msgid "EJBCA certificates management"
 msgstr "EJBCA 인증서 관리"
 
-#: admin/ejbca/class_ejbcaManagement.inc:52
+#: admin/ejbca/class_ejbcaManagement.inc:53
 msgid "Download"
 msgstr "다운로드"
 
 #: admin/ejbca/certificates/class_ejbcaCertificates.inc:30
 msgid "Assign EJBCA certificates to a user"
-msgstr "사용자에게 할당된 EJBCA 인증서"
+msgstr "사용자에게 EJBCA 인증서 할당"
 
 #: admin/ejbca/certificates/class_ejbcaCertificates.inc:48
 msgid "EJBCA certs"
@@ -44,7 +44,7 @@ msgstr "EJBCA 인증"
 
 #: admin/ejbca/certificates/class_ejbcaCertificates.inc:52
 msgid "Certificates associated to this object"
-msgstr "이 개체와 연관된 인증서"
+msgstr "이 개체와 연결된 인증서"
 
 #: admin/ejbca/class_ejbcaCertificate.inc:30
 #: admin/ejbca/class_ejbcaCertificate.inc:31
@@ -67,7 +67,7 @@ msgstr "일반 이름"
 
 #: admin/ejbca/class_ejbcaCertificate.inc:55
 msgid "Certificate content"
-msgstr "인증 컨텐츠"
+msgstr "인증서 내용"
 
 #: config/ejbca/class_ejbcaConfig.inc:28
 msgid "EJBCA plugin configuration"

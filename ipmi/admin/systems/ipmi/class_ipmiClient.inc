@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016  FusionDirectory
+  Copyright (C) 2013-2018  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,8 +22,6 @@ class ipmiClient extends simplePlugin
 {
   var $objectclasses  = array('ipmiClient');
   var $displayHeader  = TRUE;
-
-  //~ var $inheritance = array("gosaGroupOfNames" => "member");
 
   static function plInfo ()
   {
