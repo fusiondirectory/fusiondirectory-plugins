@@ -19,21 +19,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class GeneralizedTimeDisplayAttribute extends GeneralizedTimeDateAttribute
-{
-  function getValue ()
-  {
-    return $this->computeLdapValue();
-  }
-
-  function renderFormInput ()
-  {
-    $date = $this->getDateValue();
-    $date->setTimezone(timezone::getDefaultTimeZone());
-    return htmlentities($date->format('Y-m-d, H:i:s'), ENT_COMPAT, 'UTF-8');
-  }
-}
-
 class auditEvent extends simplePlugin
 {
   public $base;

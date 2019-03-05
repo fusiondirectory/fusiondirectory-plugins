@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -29,50 +30,6 @@
   relevant for posixAccounts and shadowAccounts from/to the LDAP. It
   does syntax checking and displays the formulars required.
  */
-
-class EpochDaysDateAttribute extends DateAttribute
-{
-  /* 24 * 60 * 60 = 86400 */
-  public static $secondsPerDay = 86400;
-
-  function __construct ($label, $description, $ldapName, $required, $defaultValue = 'now', $defaultDate = NULL, $acl = '')
-  {
-    parent::__construct($label, $description, $ldapName, $required, '', $defaultValue, $defaultDate, $acl);
-  }
-
-  protected function ldapToDate ($ldapValue)
-  {
-    $date = DateTime::createFromFormat('U', $ldapValue * static::$secondsPerDay, timezone::utc());
-    if ($date !== FALSE) {
-      return $date;
-    } else {
-      trigger_error('LDAP value for '.$this->getLdapName().' was not in the right date format.');
-      return new DateTime($ldapValue, timezone::utc());
-    }
-  }
-
-  protected function dateToLdap (DateTime $dateValue)
-  {
-    return floor($dateValue->format('U') / static::$secondsPerDay);
-  }
-
-  function getEpochDays ()
-  {
-    if (empty($this->value)) {
-      return 0;
-    } else {
-      try {
-        return $this->dateToLdap($this->getDateValue());
-      } catch (Exception $e) {
-        if (is_object($this->plugin) && $this->plugin->is_template) {
-          return $this->value;
-        } else {
-          throw $e;
-        }
-      }
-    }
-  }
-}
 
 class posixAccount extends simplePlugin
 {
