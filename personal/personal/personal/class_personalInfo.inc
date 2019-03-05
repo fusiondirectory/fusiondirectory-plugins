@@ -119,7 +119,8 @@ class personalInfo extends simplePlugin
             _('Date of birth'), _('Date of birth'),
             'dateOfBirth', FALSE,
             'Y-m-d', '',
-            '30 years ago'
+            // min and max:
+            NULL, 'now'
           ),
           new SelectAttribute(
             _('Sex'), _('Gender'),
