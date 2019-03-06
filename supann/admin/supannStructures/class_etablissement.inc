@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2018  FusionDirectory
+
+  Copyright (C) 2012-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -93,10 +94,29 @@ class etablissement extends simplePlugin
             'supannEtablissement', TRUE,
             '', '', '/^{[^}]+}.*$/'
           ),
+          new SupannPrefixedSelectAttribute(
+            _('Establishment type'), _('The SupAnn type that best fits this Establishment'),
+            'supannTypeEntite', FALSE, 'entite'
+          ),
           new StringAttribute(
             _('SupAnn code'), _('The SupAnn code for this establishment'),
             'supannCodeEntite', TRUE,
             '', '', '/^[a-z0-9_-]*$/i'
+          ),
+          new SetAttribute(
+            new SelectAttribute(
+              _('Parent entities'), _('The parent entities of this entity'),
+              'supannCodeEntiteParent', FALSE
+            )
+          ),
+          new SetAttribute(
+            new StringAttribute(
+              _('Reference IDs'), _('supannRefId - IDs/links for this entity on other systems'),
+              'supannRefId', FALSE,
+              '', '',
+               // Validation regexp: it must have a prefix
+              '/^{[^}]+}.+$/'
+            )
           ),
           new StringAttribute(
             _('Legal name'), _('The legal name of this establishment'),
@@ -123,10 +143,15 @@ class etablissement extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['o']->setUnique(TRUE);
-    $this->attributesAccess['supannCodeEntite']->setUnique(TRUE);
-    $this->attributesAccess['supannEtablissement']->setUnique(TRUE);
-    $this->attributesAccess['eduOrgLegalName']->setUnique(TRUE);
+    if (empty($this->acl_base)) {
+      $this->set_acl_base($config->current['BASE']);
+    }
+
+    $this->attributesAccess['o']->setUnique('one');
+    $this->attributesAccess['supannCodeEntite']->setUnique('whole', '(objectClass=supannEntite)');
+    $this->attributesAccess['supannRefId']->setUnique('whole', '(objectClass=supannEntite)');
+    $this->attributesAccess['supannEtablissement']->setUnique('one');
+    $this->attributesAccess['eduOrgLegalName']->setUnique('one');
 
     $root_code = $this->get_root_code();
     $this->attributesAccess['set_root']->setInLdap(FALSE);
@@ -226,4 +251,3 @@ class etablissement extends simplePlugin
     }
   }
 }
-?>
