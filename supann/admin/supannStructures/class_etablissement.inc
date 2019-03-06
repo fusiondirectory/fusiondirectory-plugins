@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2016  FusionDirectory
+
+  Copyright (C) 2012-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -58,20 +59,12 @@ class etablissement extends simplePlugin
           new TextAreaAttribute(
             _('Description'), _('A short description of this establishment'),
             'description', FALSE
-          )
+          ),
         ]
       ],
       'location' => [
         'name'  => _('Location'),
         'attrs' => [
-          new StringAttribute(
-            _('Location'), _('Usually the city where this establishment is'),
-            'l', FALSE
-          ),
-          new PostalAddressAttribute(
-            _('Address'), _('The postal address of this establishment'),
-            'postalAddress', FALSE
-          ),
           new PhoneNumberAttribute(
             _('Telephone'), _('Phone number of this establishment'),
             'telephoneNumber', FALSE
@@ -79,6 +72,14 @@ class etablissement extends simplePlugin
           new PhoneNumberAttribute(
             _('Fax'), _('Fax number of this establishment'),
             'facsimileTelephoneNumber', FALSE
+          ),
+          new StringAttribute(
+            _('Location'), _('Usually the city where this establishment is'),
+            'l', FALSE
+          ),
+          new PostalAddressAttribute(
+            _('Address'), _('The postal address of this establishment'),
+            'postalAddress', FALSE
           ),
         ]
       ],
@@ -90,10 +91,29 @@ class etablissement extends simplePlugin
             'supannEtablissement', TRUE,
             '', '', '/^{[^}]+}.*$/'
           ),
+          new SupannPrefixedSelectAttribute(
+            _('Establishment type'), _('The SupAnn type that best fits this Establishment'),
+            'supannTypeEntite', FALSE, 'entite'
+          ),
           new StringAttribute(
             _('SupAnn code'), _('The SupAnn code for this establishment'),
             'supannCodeEntite', TRUE,
             '', '', '/^[a-z0-9_-]*$/i'
+          ),
+          new SetAttribute(
+            new SelectAttribute(
+              _('Parent entities'), _('The parent entities of this entity'),
+              'supannCodeEntiteParent', FALSE
+            )
+          ),
+          new SetAttribute(
+            new StringAttribute(
+              _('Reference IDs'), _('supannRefId - IDs/links for this entity on other systems'),
+              'supannRefId', FALSE,
+              '', '',
+               // Validation regexp: it must have a prefix
+              '/^{[^}]+}.+$/'
+            )
           ),
           new StringAttribute(
             _('Legal name'), _('The legal name of this establishment'),
@@ -128,6 +148,7 @@ class etablissement extends simplePlugin
 
     $this->attributesAccess['o']->setUnique('one');
     $this->attributesAccess['supannCodeEntite']->setUnique('whole', '(objectClass=supannEntite)');
+    $this->attributesAccess['supannRefId']->setUnique('whole', '(objectClass=supannEntite)');
     $this->attributesAccess['supannEtablissement']->setUnique('one');
     $this->attributesAccess['eduOrgLegalName']->setUnique('one');
 
