@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2018  FusionDirectory
+
+  Copyright (C) 2012-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -49,7 +50,11 @@ class entite extends simplePlugin
           new StringAttribute(
             _('Name'), _('The name to write in the ou attribute for this entity'),
             'ou', TRUE
-          )
+          ),
+          new TextAreaAttribute(
+            _('Description'), _('Short description of this entity'),
+            'description', FALSE
+          ),
         ]
       ],
       'admin' => [
@@ -66,10 +71,6 @@ class entite extends simplePlugin
           new PostalAddressAttribute(
             _('Postal address'), _('Postal address of this entity'),
             'postalAddress', FALSE
-          ),
-          new TextAreaAttribute(
-            _('Description'), _('Short description of this entity'),
-            'description', FALSE
           ),
         ]
       ],
@@ -134,6 +135,6 @@ class entite extends simplePlugin
 
     $this->attributesAccess['ou']->setUnique('one');
     $this->attributesAccess['supannCodeEntite']->setUnique('whole', '(objectClass=supannEntite)');
-    $this->attributesAccess['supannRefId']->setUnique('whole');
+    $this->attributesAccess['supannRefId']->setUnique('whole', '(objectClass=supannEntite)');
   }
 }
