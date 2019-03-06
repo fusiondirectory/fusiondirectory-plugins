@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
+
   Copyright (C) 2010 Antoine Gallavardin
-  Copyright (C) 2011-2016 FusionDirectory project
+  Copyright (C) 2011-2019 FusionDirectory project
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,30 +22,30 @@
 
 class opsiImport extends systemImport
 {
-  protected $types = array('workstation');
+  protected $types = ['workstation'];
 
   /* Return plugin information for acl handling  */
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('OPSI import'),
       'plDescription' => _('Import windows stations from OPSI into FD'),
       'plIcon'        => 'geticon.php?context=applications&icon=opsi&size=48',
-      'plObjectType'  => array(
-        'opsiImport' => array(
+      'plObjectType'  => [
+        'opsiImport' => [
           'name'      => _('OPSI import'),
           'tabClass'  => 'simpleTabs_noSpecial',
           'mainAttr'  => FALSE,
-        )
-      ),
+        ]
+      ],
       'plSection'     => 'conf',
       'plPriority'    => 15,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo($filter = 'objectClass=opsiServer')
+  static function getAttributesInfo (string $filter = 'objectClass=opsiServer'): array
   {
     $attributesInfo = parent::getAttributesInfo($filter);
     /* Add our checkbox just before the import button */
@@ -52,28 +53,28 @@ class opsiImport extends systemImport
       $attributesInfo['import']['attrs'],
       -1,
       0,
-      array(
+      [
         new BooleanAttribute(
           _('Import localboot products'), _('Import localboot product list configured in OPSI in the FD OPSI tab'),
           'importLocalboots', FALSE,
           FALSE
         )
-      )
+      ]
     );
     return $attributesInfo;
   }
 
-  protected function getExtraTabs($server_dn, $host)
+  protected function getExtraTabs ($server_dn, $host): array
   {
-    $extraTabs = array(
-      'sambaSystemTab' => array(
+    $extraTabs = [
+      'sambaSystemTab' => [
         'is_account'      => TRUE,
-      ),
-      'opsiClient' => array(
+      ],
+      'opsiClient' => [
         'is_account'      => TRUE,
         'fdOpsiServerDn'  => $server_dn,
-      )
-    );
+      ]
+    ];
 
     if ($this->importLocalboots) {
       if (!empty($host['localboots'])) {
@@ -114,7 +115,7 @@ class opsiImport extends systemImport
       );
       return FALSE;
     }
-    $hosts = $s_daemon->append_call('OPSI.host_getObjects', $macAddress, array('args' => array(array(), array('type' => 'OpsiClient'))));
+    $hosts = $s_daemon->append_call('OPSI.host_getObjects', $macAddress, ['args' => [[], ['type' => 'OpsiClient']]]);
     if ($s_daemon->is_error()) {
       msg_dialog::display(
         _('Could not get OPSI information'),
@@ -128,14 +129,14 @@ class opsiImport extends systemImport
         $res = $s_daemon->append_call(
           'OPSI.productOnClient_getObjects',
           $macAddress,
-          array('args' => array(
-            array(),
-            array(
+          ['args' => [
+            [],
+            [
               'clientId'    => $host['id'],
               'type'        => 'ProductOnClient',
               'productType' => 'LocalbootProduct',
-            )
-          ))
+            ]
+          ]]
         );
         if ($s_daemon->is_error()) {
           msg_dialog::display(
@@ -144,7 +145,7 @@ class opsiImport extends systemImport
           );
           return FALSE;
         }
-        $host['localboots'] = array();
+        $host['localboots'] = [];
         foreach ($res as $productOnClient) {
           if ($productOnClient['productId'] == 'opsi-winst') {
             /* opsi-winst cannot be installed and has no actions */
@@ -163,4 +164,3 @@ class opsiImport extends systemImport
     return $hosts;
   }
 }
-?>

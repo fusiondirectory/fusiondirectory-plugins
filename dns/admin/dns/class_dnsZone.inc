@@ -20,7 +20,7 @@
 
 class DnsRecordPlugin extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
     $plProvidedAcls = parent::generatePlProvidedAcls(static::getAttributesInfo());
 
@@ -30,33 +30,33 @@ class DnsRecordPlugin extends simplePlugin
       $plProvidedAcls['dnsRecord_'.$id] = sprintf(_('%s record'), $name);
     }
 
-    return array(
+    return [
       'plShortName'     => _('DNS record'),
       'plDescription'   => _('DNS record'),
-      'plCategory'      => array('dnsZone'),
+      'plCategory'      => ['dnsZone'],
       'plProvidedAcls'  => $plProvidedAcls
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Record'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
-          new StringAttribute (
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new StringAttribute(
             _('Subdomain'), _('Relative subdomain name'),
             'relativeSubdomainName', FALSE,
             '', 'dnsRecord'
           ),
-          new DnsRecordAttribute (
+          new DnsRecordAttribute(
             _('Record'), _('DNS Record'),
             'dnsRecord', TRUE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   /*
@@ -96,11 +96,11 @@ class DnsRecordPlugin extends simplePlugin
     $this->attributesAccess['dnsRecord']->attributes[2]->setChoices($attribute->getReverseZones());
   }
 
-  function save()
+  function save (): array
   {
   }
 
-  function execute()
+  function execute (): string
   {
     $smarty = get_smarty();
     $attr   = $this->attributesAccess['dnsRecord'];
@@ -119,7 +119,7 @@ class DnsRecordDialog extends GenericDialog
 
   protected $plugin;
 
-  function __construct($simplePlugin, &$attribute, $value = array())
+  function __construct ($simplePlugin, &$attribute, $value = [])
   {
     $this->attribute  = $attribute;
     $this->plugin     = $simplePlugin;
@@ -156,7 +156,7 @@ class DnsRecordDialog extends GenericDialog
     if ($relativeSubdomainName == '@') {
       $relativeSubdomainName = '';
     }
-    $ret = array_merge(array($relativeSubdomainName), $this->dialog->dnsRecord);
+    $ret = array_merge([$relativeSubdomainName], $this->dialog->dnsRecord);
     $this->attribute->addValue($ret);
     return FALSE;
   }
@@ -174,24 +174,24 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
 {
   protected $height       = 400;
   protected $dialogClass  = 'DnsRecordDialog';
-  protected $reverseZones = array();
+  protected $reverseZones = [];
   protected $zoneName;
   protected $zoneDn;
   protected $initialReverseZones;
 
-  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = array(), $acl = "")
+  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = [], $acl = "")
   {
     parent::__construct($label, $description, $ldapName, $required, $defaultValue, $acl);
-    $this->setHeaders(array(
+    $this->setHeaders([
       _('Subdomain'),
       _('Type'),
       _('Content'),
       _('Reverse'),
       ''
-    ));
+    ]);
   }
 
-  function getZoneName()
+  function getZoneName ()
   {
     if ($this->plugin instanceof dnsZone) {
       return $this->plugin->zoneName;
@@ -200,7 +200,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  function getZoneDn()
+  function getZoneDn ()
   {
     if ($this->plugin instanceof dnsZone) {
       return $this->plugin->dn;
@@ -209,7 +209,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  function getReverseZones()
+  function getReverseZones ()
   {
     if ($this->plugin instanceof dnsZone) {
       return $this->plugin->reverseZones;
@@ -218,14 +218,14 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  protected function getAttributeArrayValue($key, $value)
+  protected function getAttributeArrayValue ($key, $value)
   {
-    return array(
+    return [
       $value[0],
       DnsRecordAttribute::$types[$value[1]],
       $value[2],
       $value[3]
-    );
+    ];
   }
 
   protected function loadReverseZones ($attrs)
@@ -235,8 +235,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     /* Get reverse zones */
     $ldap = $config->get_ldap_link();
     $ldap->cd($attrs['dn']);
-    $ldap->search('(&(objectClass=dNSZone)(relativeDomainName=@)(zoneName=*))', array('zoneName','nSRecord','sOARecord'), 'one');
-    $reverseZones = array();
+    $ldap->search('(&(objectClass=dNSZone)(relativeDomainName=@)(zoneName=*))', ['zoneName','nSRecord','sOARecord'], 'one');
+    $reverseZones = [];
     while ($subattrs = $ldap->fetch()) {
       $reverseZones[$subattrs['dn']] = $subattrs;
     }
@@ -261,15 +261,15 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
   {
     global $config;
 
-    $this->value = array();
-    $aRecords = array(
-      'aRecord'     => array(),
-      'aAAARecord'  => array()
-    );
+    $this->value = [];
+    $aRecords = [
+      'aRecord'     => [],
+      'aAAARecord'  => []
+    ];
     foreach (array_keys(DnsRecordAttribute::$types) as $type) {
       if (isset($attrs[$type]['count'])) {
         for ($i = 0; $i < $attrs[$type]['count']; $i++) {
-          $this->value[] = array('', $type, $attrs[$type][$i], '');
+          $this->value[] = ['', $type, $attrs[$type][$i], ''];
           if (in_array($type, DnsRecordAttribute::$reverseTypes)) {
             end($this->value);
             $ip = $attrs[$type][$i];
@@ -284,7 +284,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     if (isset($attrs['dn'])) {
       $ldap = $config->get_ldap_link();
       $ldap->cd($attrs['dn']);
-      $ldap->search('(&(objectClass=dNSZone)(zoneName='.$attrs['zoneName'][0].'))', array_merge(array('relativeDomainName'), array_keys(DnsRecordAttribute::$types)), 'one');
+      $ldap->search('(&(objectClass=dNSZone)(zoneName='.$attrs['zoneName'][0].'))', array_merge(['relativeDomainName'], array_keys(DnsRecordAttribute::$types)), 'one');
       while ($subattrs = $ldap->fetch()) {
         for ($i = 0; $i < $subattrs['count']; $i++) {
           $type = $subattrs[$i];
@@ -292,7 +292,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
             continue;
           }
           for ($j = 0; $j < $subattrs[$type]['count']; $j++) {
-            $this->value[] = array($subattrs['relativeDomainName'][0], $type, $subattrs[$type][$j], '');
+            $this->value[] = [$subattrs['relativeDomainName'][0], $type, $subattrs[$type][$j], ''];
             if (in_array($type, DnsRecordAttribute::$reverseTypes)) {
               end($this->value);
               $ip = $subattrs[$type][$j];
@@ -320,7 +320,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
           $baseIp = implode('.', array_reverse(explode('.', $baseIp)));
         }
         $ldap->cd($reverseZoneDn);
-        $ldap->search('(objectClass=dNSZone)', array('relativeDomainName', 'pTRRecord'), 'one');
+        $ldap->search('(objectClass=dNSZone)', ['relativeDomainName', 'pTRRecord'], 'one');
         while ($subattrs = $ldap->fetch()) {
           unset($subattrs['pTRRecord']['count']);
           foreach ($subattrs['pTRRecord'] as $ptrRecord) {
@@ -344,7 +344,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       }
       $this->initialReverseZones = $reverseZones;
     } else {
-      $this->initialReverseZones = array();
+      $this->initialReverseZones = [];
     }
     sort($this->value);
   }
@@ -353,7 +353,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
   {
     foreach (array_keys(DnsRecordAttribute::$types) as $type) {
       if (!isset($attrs[$type])) {
-        $attrs[$type] = array();
+        $attrs[$type] = [];
       }
     }
     foreach ($this->value as $line) {
@@ -365,14 +365,14 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  private function valueToNodes($value)
+  private function valueToNodes ($value)
   {
     /* Compute values into $nodes and $ptrs */
     $zoneDn     = $this->getZoneDn();
     $zoneName   = $this->getZoneName();
-    $nodes      = array();
-    $ptrs       = array();
-    $nsRecords  = array();
+    $nodes      = [];
+    $ptrs       = [];
+    $nsRecords  = [];
     foreach ($value as $line) {
       list ($domain, $type, $content, $reverse) = $line;
       if (!empty($reverse)) {
@@ -384,10 +384,10 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
           );
         } else {
           if (!isset($ptrs[$reverse])) {
-            $ptrs[$reverse] = array();
+            $ptrs[$reverse] = [];
           }
           if (!isset($ptrs[$reverse][$content])) {
-            $ptrs[$reverse][$content] = array();
+            $ptrs[$reverse][$content] = [];
           }
           $ptrs[$reverse][$content][] = $domain;
         }
@@ -401,22 +401,22 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       }
       $dn = 'relativeDomainName='.$domain.','.$zoneDn;
       if (!isset($nodes[$dn])) {
-        $nodes[$dn] = array(
-          'objectClass'         => array('dNSZone'),
+        $nodes[$dn] = [
+          'objectClass'         => ['dNSZone'],
           'relativeDomainName'  => $domain,
           'zoneName'            => $zoneName,
           'dNSClass'            => 'IN',
-        );
+        ];
       }
       if (!isset($nodes[$dn][$type])) {
-        $nodes[$dn][$type] = array();
+        $nodes[$dn][$type] = [];
       }
       $nodes[$dn][$type][] = $content;
     }
-    return array($nodes, $ptrs, $nsRecords);
+    return [$nodes, $ptrs, $nsRecords];
   }
 
-  protected function reverseZoneNeedUpdate(array $new, array $old, array $ptrs, array $initialPtrs, $reverseZone)
+  protected function reverseZoneNeedUpdate (array $new, array $old, array $ptrs, array $initialPtrs, $reverseZone)
   {
     // NS Record changes
     if (!empty($old['nSRecord'])) {
@@ -465,14 +465,14 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       /* Write this reverse under the zone dn */
       $reverseDn = 'zoneName='.$reverseZone.','.$zoneDn;
       /* Copy NS records and SOA from zone */
-      $node = array(
-        'objectClass'         => array('dNSZone'),
+      $node = [
+        'objectClass'         => ['dNSZone'],
         'zoneName'            => $reverseZone,
         'relativeDomainName'  => '@',
         'dNSClass'            => 'IN',
         'sOARecord'           => $this->plugin->sOARecord,
         'nSRecord'            => $nsRecords
-      );
+      ];
       $ldap->cd($reverseDn);
       if (isset($oldReverseZones[$reverseDn])) {
         if (!$soaChanged && !$this->reverseZoneNeedUpdate($node, $oldReverseZones[$reverseDn], $ptrs, $initialPtrs, $reverseZone)) {
@@ -519,7 +519,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         }
         foreach (array_keys(DnsRecordAttribute::$types) as $type) {
           if (!isset($node[$type])) {
-            $node[$type] = array();
+            $node[$type] = [];
           }
         }
         $ldap->modify($node);
@@ -545,18 +545,19 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
           $relativeDomainName = preg_replace('/\.'.preg_quote($mask).'$/', '', $reversedIp);
           $dn = 'relativeDomainName='.$relativeDomainName.','.$reverseDn;
           $ldap->cd($dn);
-          $node = array(
-            'objectClass'         => array('dNSZone'),
+          $node = [
+            'objectClass'         => ['dNSZone'],
             'zoneName'            => $reverseZone,
             'dNSClass'            => 'IN',
             'pTRRecord'           => array_map(
-              function ($name) use ($zoneName) {
+              function ($name) use ($zoneName)
+              {
                 return (empty($name) ? '' : $name.'.').$zoneName;
               },
               $names
             ),
             'relativeDomainName'  => $relativeDomainName,
-          );
+          ];
           if (isset($initialPtrs[$reverseZone][$ip])) {
             $ldap->modify($node);
             if (!$ldap->success()) {
@@ -585,7 +586,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  function cnChanged($oldcn, $newcn)
+  function cnChanged ($oldcn, $newcn)
   {
     $nb = 0;
     foreach ($this->value as &$row) {
@@ -598,7 +599,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     return $nb;
   }
 
-  function ipChanged($oldip, $newip)
+  function ipChanged ($oldip, $newip)
   {
     $nb = 0;
     foreach ($this->value as &$row) {
@@ -611,7 +612,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     return $nb;
   }
 
-  function cnRemoved($oldcn)
+  function cnRemoved ($oldcn)
   {
     $nb = 0;
     foreach ($this->value as $key => $row) {
@@ -623,7 +624,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     return $nb;
   }
 
-  function ipRemoved($oldips)
+  function ipRemoved ($oldips)
   {
     $nb = 0;
     foreach ($this->value as $key => $row) {
@@ -635,31 +636,31 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     return $nb;
   }
 
-  protected function canWriteRecord($value)
+  protected function canWriteRecord ($value)
   {
     $ui     = get_userinfo();
     $rights = $ui->get_permissions($this->getZoneDn(), 'dnsZone/DnsRecordPlugin', 'dnsRecord_'.$value[1], $this->plugin->readOnly());
     return preg_match('/w/', $rights);
   }
 
-  protected function genRowIcons($key, $value)
+  protected function genRowIcons ($key, $value)
   {
     list ($img, $nbicons) = parent::genRowIcons($key, $value);
     if ($this->canWriteRecord($value)) {
-      return array($img, $nbicons);
+      return [$img, $nbicons];
     } else {
-      return array('', 0);
+      return ['', 0];
     }
   }
 
-  protected function handleEdit($key)
+  protected function handleEdit ($key)
   {
     if ($this->canWriteRecord($this->value[$key])) {
       return parent::handleEdit($key);
     }
   }
 
-  function delPostValue($key)
+  function delPostValue ($key)
   {
     if ($this->canWriteRecord($this->value[$key])) {
       return parent::delPostValue($key);
@@ -686,68 +687,68 @@ class FQDNAttribute extends StringAttribute
 
 class dnsZone extends simplePlugin
 {
-  public static function finalDot()
+  public static function finalDot ()
   {
     global $config;
     return ($config->get_cfg_value('DNSFinalDot', 'TRUE') == 'TRUE');
   }
 
-  public static function plInfo()
+  public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('DNS zone'),
       'plDescription' => _('DNS zone'),
-      'plObjectClass' => array('dNSZone'),
+      'plObjectClass' => ['dNSZone'],
       'plFilter'      => '(&(objectClass=dNSZone)(relativeDomainName=@)(!(|(zoneName=*.arpa)(zoneName=*.arpa.))))',
-      'plObjectType'  => array('dnsZone' => array(
+      'plObjectType'  => ['dnsZone' => [
         'name'        => _('DNS zone'),
         'ou'          => get_ou('dnsRDN'),
         'icon'        => 'geticon.php?context=applications&icon=dns&size=16',
         'mainAttr'    => 'zoneName'
-      )),
-      'plSearchAttrs' => array('relativeDomainName', 'sOARecord'),
+      ]],
+      'plSearchAttrs' => ['relativeDomainName', 'sOARecord'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo()),
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Zone'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('dnsRDN')),
-          new FQDNAttribute (
+          new FQDNAttribute(
             _('Zone name'), _('Zone name'),
             'zoneName', TRUE
           ),
-          new HiddenAttribute (
+          new HiddenAttribute(
             // Relative domain name
             'relativeDomainName', TRUE,
             '@'
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Reverse zones'), sprintf(_('Reverse zones for this zone in the form xx.xx.in-addr.arpa%1$s or x.x.ip6.arpa%1$s'), (dnsZone::finalDot() ? '.' : '')),
               'reverseZones', FALSE,
               '', '',
               '/^.*\.(in-addr|ip6)\.arpa'.(dnsZone::finalDot() ? '\.' : '').'$/i', '11.168.192.in-addr.arpa'.(dnsZone::finalDot() ? '.' : '')
             )
           ),
-          new HiddenAttribute (
+          new HiddenAttribute(
             'dNSClass', TRUE,
             'IN'
           ),
-        )
-      ),
-      'soa' => array(
+        ]
+      ],
+      'soa' => [
         'name'  => _('SOA record'),
-        'attrs' => array(
-          new CompositeAttribute (
+        'attrs' => [
+          new CompositeAttribute(
             _('SOA Record'),
             'sOARecord',
-            array(
+            [
               new FQDNAttribute(
                 _('Primary DNS server'), _('Domain name of the name server that was the original or primary source of data for this zone'),
                 'soaRecord_primary', TRUE
@@ -781,23 +782,23 @@ class dnsZone extends simplePlugin
                 'soaRecord_ttl', TRUE,
                 0, FALSE, 6400
               ),
-            ),
+            ],
             '/^(\S*) (\S*) (\S*) (\S*) (\S*) (\S*) (\S*)$/',
             '%s %s %s %s %s %s %s'
           ),
-        )
-      ),
-      'records' => array(
+        ]
+      ],
+      'records' => [
         'name'  => _('Records'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new DnsRecordsAttribute(
             '', _('The DNS records for this zone'),
             'dnsRecords', FALSE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -806,7 +807,7 @@ class dnsZone extends simplePlugin
     $this->attributesAccess['reverseZones']->setInLdap(FALSE);
   }
 
-  function prepareSavedAttributes()
+  function prepareSavedAttributes ()
   {
     parent::prepareSavedAttributes();
     foreach (array_keys(DnsRecordAttribute::$types) as $type) {
@@ -816,7 +817,7 @@ class dnsZone extends simplePlugin
     }
   }
 
-  function prepare_save ()
+  function prepare_save (): array
   {
     /* Update serial (Also thanks to this save is triggered if something changed - see simplePlugin::shouldSave) */
     if (
@@ -836,7 +837,7 @@ class dnsZone extends simplePlugin
     return parent::prepare_save();
   }
 
-  function ldap_save ()
+  function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();

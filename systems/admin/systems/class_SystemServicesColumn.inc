@@ -26,35 +26,35 @@ class SystemServicesColumn extends Column
 {
   protected $services;
 
-  function __construct(managementListing $parent, array $attributes = NULL, $label = NULL)
+  function __construct (managementListing $parent, array $attributes = NULL, string $label = NULL)
   {
     global $config;
 
     parent::__construct($parent, NULL, $label);
 
-    $this->services = array();
+    $this->services = [];
 
     foreach ($config->data['TABS']['SERVERSERVICE'] as $plug) {
       if (class_available($plug['CLASS'])) {
         $pInfos = pluglist::pluginInfos($plug['CLASS']);
         if (isset($pInfos['plIcon'])) {
-          $this->services[$plug['CLASS']] = array(
+          $this->services[$plug['CLASS']] = [
             'icon'  => $pInfos['plIcon'],
             'title' => $pInfos['plShortName'],
-          );
+          ];
         } else {
-          @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $pInfos['plShortName'].' ('.$plug['CLASS'].')', 'No icon for');
+          @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $pInfos['plShortName'].' ('.$plug['CLASS'].')', 'No icon for');
         }
       }
     }
   }
 
-  function fillNeededAttributes(array &$attrs)
+  function fillNeededAttributes (array &$attrs)
   {
     $attrs['objectClass'] = '*';
   }
 
-  function renderCell(ListingEntry $entry)
+  function renderCell (ListingEntry $entry): string
   {
     $icons  = $this->computeIcons($entry);
     $result = '';
@@ -69,7 +69,7 @@ class SystemServicesColumn extends Column
     return $result;
   }
 
-  function compare(ListingEntry $ao, ListingEntry $bo)
+  function compare (ListingEntry $ao, ListingEntry $bo): int
   {
     if ($ao->getTemplatedType() != $bo->getTemplatedType()) {
       return strcmp($ao->getTemplatedType(), $bo->getTemplatedType());
@@ -82,7 +82,7 @@ class SystemServicesColumn extends Column
     return strcmp($a, $b);
   }
 
-  protected function computeSortString(ListingEntry $entry)
+  protected function computeSortString (ListingEntry $entry): string
   {
     if (isset($entry->cache[__CLASS__]['sort'])) {
       return $entry->cache[__CLASS__]['sort'];
@@ -100,16 +100,16 @@ class SystemServicesColumn extends Column
     return $entry->cache[__CLASS__]['sort'];
   }
 
-  protected function computeIcons(ListingEntry $entry)
+  protected function computeIcons (ListingEntry $entry): array
   {
     if (strtoupper($entry->getTemplatedType()) != 'SERVER') {
-      return array();
+      return [];
     }
     if (isset($entry->cache[__CLASS__]['icons'])) {
       return $entry->cache[__CLASS__]['icons'];
     }
 
-    $icons = array();
+    $icons = [];
 
     if (!empty($entry)) {
       if ($entry->isTemplate()) {
@@ -120,15 +120,15 @@ class SystemServicesColumn extends Column
       foreach ($this->services as $class => $infos) {
         $status = $class::isAccount($attrs);
         if ($status !== FALSE) {
-          $icons[] = array(
+          $icons[] = [
             'icon'  => $infos['icon'],
             'title' => $infos['title'],
             'class' => $class,
-          );
+          ];
         } else {
-          $icons[] = array(
+          $icons[] = [
             'class' => $class,
-          );
+          ];
         }
       }
     }

@@ -22,23 +22,23 @@
 
 class ldapManagerTabs extends simpleTabs_noSpecial
 {
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('LDAP import/export'),
       'plDescription' => _('Allows the import or export of the ldap tree'),
       'plIcon'        => 'geticon.php?context=applications&icon=ldapmanager&size=48',
       'plSection'     => 'conf',
       'plPriority'    => 10,
-      'plCategory'    => array('ldapmanager' => array('objectClass' => 'none', 'description' => _('Ldap manager'))),
-    );
+      'plCategory'    => ['ldapmanager' => ['objectClass' => 'none', 'description' => _('Ldap manager')]],
+    ];
   }
 
-  function save()
+  function save ()
   {
   }
 
-  static function mainInc()
+  static function mainInc ()
   {
     simplePlugin::mainInc(get_called_class(), 'new', TRUE, FALSE, 'ldapmanager');
   }

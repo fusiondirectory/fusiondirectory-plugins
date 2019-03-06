@@ -1,6 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2015-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
@@ -20,16 +21,16 @@
 
 class dhcpManagement extends management
 {
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('DHCP'),
       'plTitle'       => _('DHCP Management'),
       'plDescription' => _('Manage DHCP configurations'),
       'plIcon'        => 'geticon.php?context=applications&icon=dhcp&size=48',
-      'plSection'     => array('systems' => array('name' => _('Systems'), 'priority' => 10)),
+      'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 10]],
       'plPriority'    => 2,
-      'plManages'     => array('dhcpConfiguration'),
-    );
+      'plManages'     => ['dhcpConfiguration'],
+    ];
   }
 }

@@ -20,51 +20,51 @@
 
 class dhcpDnsZone extends dhcpPlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('DHCP DNS update zone'),
       'plDescription'   => _('DHCP DNS update zone'),
-      'plCategory'      => array('dhcpConfiguration'),
-      'plObjectClass'   => array('dhcpDnsZone'),
+      'plCategory'      => ['dhcpConfiguration'],
+      'plObjectClass'   => ['dhcpDnsZone'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('DHCP'),
-        'attrs' => array(
-          new HostNameAttribute (
+        'attrs' => [
+          new HostNameAttribute(
             _('Name'), _('Name of this DHCP configuration'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('DNS Zone Server'), _('Master server of the DNS Zone'),
             'dhcpDnsZoneServer', TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Tsig key'), _('The TSig key DN'),
             'dhcpKeyDN', FALSE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Comments'), _('Comments about this DHCP object'),
             'dhcpComments', FALSE
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($plugin, $dn, $attrs = NULL)
   {
     global $config;
     parent::__construct($plugin, $dn, $attrs);
-    $keys = array();
+    $keys = [];
     $ldap = $config->get_ldap_link();
-    $ldap->search('(objectClass=dhcpTSigKey)', array('dn','cn'));
+    $ldap->search('(objectClass=dhcpTSigKey)', ['dn','cn']);
     while ($attrs = $ldap->fetch()) {
       $keys[$attrs['dn']] = $attrs['cn'][0];
     }

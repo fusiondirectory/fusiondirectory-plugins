@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018 FusionDirectory
+
+  Copyright (C) 2017-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,7 +24,7 @@
  */
 class RegistrationColumn extends LinkColumn
 {
-  function renderCell(ListingEntry $entry)
+  function renderCell (ListingEntry $entry): string
   {
     $value = $this->getAttributeValue($entry);
     if ($value == '') {
@@ -59,72 +60,70 @@ class registrationManagement extends management
   protected $skipCpHandler      = TRUE;
   public static $skipSnapshots  = TRUE;
 
-  public static $columns = array(
-    array('ObjectTypeColumn',   array()),
-    array('LinkColumn',         array('attributes' => 'nameAttr',                   'label' => 'Email')),
-    array('RegistrationColumn', array('attributes' => 'fdRegistrationUserDN',       'label' => 'User object')),
-    array('RegistrationColumn', array('attributes' => 'fdRegistrationState',        'label' => 'Status')),
-    array('RegistrationColumn', array('attributes' => 'fdRegistrationLastChange',   'label' => 'Last change')),
-    array('RegistrationColumn', array('attributes' => 'fdRegistrationInvitationDN', 'label' => 'Invitation')),
-    array('ActionsColumn',      array('label' => 'Actions')),
-  );
+  public static $columns = [
+    ['ObjectTypeColumn',   []],
+    ['LinkColumn',         ['attributes' => 'nameAttr',                   'label' => 'Email']],
+    ['RegistrationColumn', ['attributes' => 'fdRegistrationUserDN',       'label' => 'User object']],
+    ['RegistrationColumn', ['attributes' => 'fdRegistrationState',        'label' => 'Status']],
+    ['RegistrationColumn', ['attributes' => 'fdRegistrationLastChange',   'label' => 'Last change']],
+    ['RegistrationColumn', ['attributes' => 'fdRegistrationInvitationDN', 'label' => 'Invitation']],
+    ['ActionsColumn',      ['label' => 'Actions']],
+  ];
 
-  public $neededAttrs = array(
+  public $neededAttrs = [
     'fdRegistrationUserDN'        => '1',
     'fdRegistrationInvitationDN'  => '1',
     'fdRegistrationState'         => '1',
-  );
+  ];
 
-  public static function plInfo()
+  public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Registrations'),
       'plTitle'       => _('Registrations management'),
       'plDescription' => _('Manage registrations'),
-      'plIcon'        => 'geticon.php?context=types&icon=contact&size=48',
+      'plIcon'        => 'geticon.php?context=types&icon=registration&size=48',
       'plSection'     => 'accounts',
-      'plManages'     => array('registration'),
-
-      'plProvidedAcls' => array()
-    );
+      'plManages'     => ['registration'],
+    ];
   }
 
-  function __construct()
+  function __construct ()
   {
     parent::__construct();
 
     $this->filter->addElement(new RegistrationStateFilterElement($this->filter));
   }
 
-  protected function configureActions()
+  protected function configureActions ()
   {
     parent::configureActions();
 
     $this->registerAction(
       new Action(
-        'accept', _('Accept'), 'geticon.php?context=actions&icon=add&size=16',
+        'accept', _('Accept'), 'geticon.php?context=actions&icon=accept&size=16',
         '+', 'acceptRegistration',
-        array('registration/registration/fdRegistrationState:w')
+        ['registration/registration/fdRegistrationState:w']
       )
     );
     $this->registerAction(
       new Action(
-        'reject', _('Reject'), 'geticon.php?context=actions&icon=remove&size=16',
+        'reject', _('Reject'), 'geticon.php?context=actions&icon=reject&size=16',
         '+', 'rejectRegistration',
-        array('registration/registration/fdRegistrationState:w')
+        ['registration/registration/fdRegistrationState:w']
       )
     );
     $this->actions['accept']->setSeparator(TRUE);
-    $this->actions['reject']->setEnableFunction(array($this, 'enableAcceptReject'));
-    $this->actions['accept']->setEnableFunction(array($this, 'enableAcceptReject'));
+    $this->actions['reject']->setEnableFunction([$this, 'enableAcceptReject']);
+    $this->actions['accept']->setEnableFunction([$this, 'enableAcceptReject']);
   }
 
   /* !\brief Accept registration
    */
-  function acceptRegistration(array $action)
+  function acceptRegistration (array $action)
   {
     global $config, $ui;
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $action, 'Accept');
+    @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $action, 'Accept');
 
     foreach ($action['targets'] as $dn) {
       // Lock registration object
@@ -136,7 +135,7 @@ class registrationManagement extends management
         );
         continue;
       }
-      add_lock ($dn, $ui->dn);
+      add_lock($dn, $ui->dn);
 
       $entry = $this->listing->getEntry($dn);
 
@@ -160,7 +159,7 @@ class registrationManagement extends management
         del_lock($dn);
         continue;
       }
-      add_lock ($entry['fdRegistrationUserDN'], $ui->dn);
+      add_lock($entry['fdRegistrationUserDN'], $ui->dn);
 
       // TODO Détermine la date de peremption
       // Open the user
@@ -225,10 +224,10 @@ class registrationManagement extends management
 
   /* !\brief Reject registration
    */
-  function rejectRegistration(array $action)
+  function rejectRegistration (array $action)
   {
     global $config, $ui;
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $action, 'Reject');
+    @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $action, 'Reject');
 
     foreach ($action['targets'] as $dn) {
       if ($user = get_lock($dn)) {
@@ -239,7 +238,7 @@ class registrationManagement extends management
         );
         continue;
       }
-      add_lock ($dn, $ui->dn);
+      add_lock($dn, $ui->dn);
 
       $entry = $this->listing->getEntry($dn);
 
@@ -263,7 +262,7 @@ class registrationManagement extends management
         del_lock($dn);
         continue;
       }
-      add_lock ($entry['fdRegistrationUserDN'], $ui->dn);
+      add_lock($entry['fdRegistrationUserDN'], $ui->dn);
 
       // Delete the object
       $userTabObject = objects::open($entry['fdRegistrationUserDN'], 'user');
@@ -291,7 +290,7 @@ class registrationManagement extends management
   /*
    * \brief Whether accept and reject actions should be enabled for an entry
    */
-  function enableAcceptReject($action, ListingEntry $entry = NULL)
+  function enableAcceptReject ($action, ListingEntry $entry = NULL): bool
   {
     if ($entry !== NULL) {
       /* For entries */
@@ -302,13 +301,13 @@ class registrationManagement extends management
     }
   }
 
-  protected function getFormFromRegistration(ListingEntry $entry)
+  protected function getFormFromRegistration (ListingEntry $entry): array
   {
     $invitations = objects::ls(
       'invitation',
-      array(
+      [
         'fdInvitationFormDN'  => 1
-      ),
+      ],
       $entry['fdRegistrationInvitationDN'],
       '', FALSE, 'base'
     );
@@ -321,7 +320,7 @@ class registrationManagement extends management
     /* Search for the form object */
     $forms = objects::ls(
       'publicForm',
-      array(
+      [
         'dn'                        => 'raw',
         'cn'                        => 1,
         'fdPublicFormTitle'         => 1,
@@ -331,7 +330,7 @@ class registrationManagement extends management
         'fdPublicFormTemplateDN'    => 1,
         'fdPublicFormPrivate'       => 1,
         'fdPublicFormCreationBase'  => 1
-      ),
+      ],
       $invitation['fdInvitationFormDN'],
       '', FALSE, 'base'
     );

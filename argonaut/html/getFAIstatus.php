@@ -28,12 +28,12 @@
 
 session_cache_limiter("private");
 session::start();
-session::global_set('errorsAlreadyPosted', array());
+session::global_set('errorsAlreadyPosted', []);
 
 /* Logged in? Simple security check */
 if (!session::global_is_set('ui')) {
-  logging::log('security', 'unknown', '', array(), 'Error: getFAIstatus.php called without session');
-  header ('Location: index.php');
+  logging::log('security', 'unknown', '', [], 'Error: getFAIstatus.php called without session');
+  header('Location: index.php');
   exit;
 }
 
@@ -48,4 +48,3 @@ $res    = $o->get_entries_by_mac(explode(",", $_GET['mac']));
 foreach ($res as $entry) {
   echo $entry['MACADDRESS']."|".$entry['PROGRESS']."\n";
 }
-?>

@@ -20,38 +20,38 @@
 
 class dhcpSubnet extends dhcpPlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('DHCP subnet'),
       'plDescription'   => _('DHCP subnet'),
-      'plCategory'      => array('dhcpConfiguration'),
-      'plObjectClass'   => array('dhcpSubnet'),
+      'plCategory'      => ['dhcpConfiguration'],
+      'plObjectClass'   => ['dhcpSubnet'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     $attributesInfo = parent::getAttributesInfo();
-    $attributesInfo['subnet'] = array(
+    $attributesInfo['subnet'] = [
       'name'  => _('Subnet'),
-      'attrs' => array(
-        new IntAttribute (
+      'attrs' => [
+        new IntAttribute(
           _('Mask length'), _('The subnet mask length for the subnet. The mask can be easily computed from this length.'),
           'dhcpNetMask', TRUE,
           0, 255, 24
         ),
-        new SetAttribute (
-          new StringAttribute (
+        new SetAttribute(
+          new StringAttribute(
             _('Range'), _('The starting & ending IP Addresses in the range (inclusive), separated by a space; if the range only contains one address, then just the address can be specified. Each range is defined as a separate value.'),
             'dhcpRange', FALSE,
             '', '',
             '/^[0-9\.:]+(\s[0-9\.:]+)?$/'
           )
         ),
-      )
-    );
+      ]
+    ];
     $attributesInfo['main']['attrs'][0] = new IPAttribute(
       _('Network address'), _('Network address of this subnet'),
       'cn', TRUE

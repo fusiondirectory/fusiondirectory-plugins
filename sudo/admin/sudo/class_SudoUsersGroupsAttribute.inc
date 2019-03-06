@@ -38,7 +38,7 @@ class SudoUsersGroupsAttribute extends DialogAttribute
 
   function getFilterBlackList ()
   {
-    $used = array();
+    $used = [];
     foreach ($this->value as $name) {
       $str = preg_replace("/^!/", "", $name);
       if (preg_match("/^%/", $str)) {

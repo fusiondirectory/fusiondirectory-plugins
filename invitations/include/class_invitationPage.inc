@@ -22,14 +22,14 @@ class invitationPage extends standAlonePage
 {
   protected $token;
 
-  function readLdapConfig()
+  function readLdapConfig ()
   {
     global $config;
 
     return TRUE;
   }
 
-  function save_object()
+  function save_object ()
   {
     global $ui;
 
@@ -45,19 +45,19 @@ class invitationPage extends standAlonePage
     }
   }
 
-  static function checkToken($token)
+  static function checkToken ($token)
   {
     if (is_array($token)) {
       $registration = $token;
     } else {
       $registrations = objects::ls(
         'registration',
-        array(
+        [
           'dn'                          => 'raw',
           'fdRegistrationEmailAddress'  => 1,
           'fdRegistrationInvitationDN'  => 1,
           'fdRegistrationState'         => 1,
-        ),
+        ],
         NULL,
         '(fdRegistrationToken='.ldap_escape_f($token).')'
       );
@@ -85,7 +85,7 @@ class invitationPage extends standAlonePage
     }
   }
 
-  function execute()
+  function execute ()
   {
     if (!$this->activated) {
       return;
@@ -114,4 +114,3 @@ class invitationPage extends standAlonePage
     $smarty->display(get_template_path('invitation.tpl'));
   }
 }
-?>

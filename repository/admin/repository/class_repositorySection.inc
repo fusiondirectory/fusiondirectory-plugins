@@ -20,53 +20,53 @@
 
 class repositorySection extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Repository section'),
       'plDescription' => _('Repository section'),
-      'plObjectClass' => array('fdBuildRepositorySection'),
-      'plObjectType'  => array('repoSection' => array(
+      'plObjectClass' => ['fdBuildRepositorySection'],
+      'plObjectType'  => ['repoSection' => [
         'name'        => _('Repository section'),
         'aclCategory' => 'repository',
         'ou'          => get_ou('repositoryRDN'),
         'icon'        => 'geticon.php?context=applications&icon=repository-section&size=16',
-      )),
-      'plForeignKeys'  => array(
-        'fdBasedOn' => array(
-          array('repositorySection',  'cn'),
-        )
-      ),
+      ]],
+      'plForeignKeys'  => [
+        'fdBasedOn' => [
+          ['repositorySection',  'cn'],
+        ]
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Repository section'),
-        'attrs' => array(
-          new BaseSelectorAttribute (get_ou('repositoryRDN')),
-          new StringAttribute (
+        'attrs' => [
+          new BaseSelectorAttribute(get_ou('repositoryRDN')),
+          new StringAttribute(
             _('Name'), _('Unique name for this section'),
             'cn', TRUE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Description'), _('Description of this section'),
             'description', FALSE
           ),
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Based on'), _('The sections this one is based on'),
               'fdBasedOn', FALSE,
-              array()
+              []
             )
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -79,5 +79,3 @@ class repositorySection extends simplePlugin
     $this->attributesAccess['fdBasedOn']->attribute->setChoices(array_values($sections));
   }
 }
-
-?>

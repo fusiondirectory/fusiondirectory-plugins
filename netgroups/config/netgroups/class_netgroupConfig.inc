@@ -20,33 +20,32 @@
 
 class netgroupConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Netgroup configuration'),
       'plDescription'   => _('FusionDirectory netgroup plugin configuration'),
-      'plObjectClass'   => array('fdNetgroupPluginConf'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectClass'   => ['fdNetgroupPluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Netgroup'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Netgroup RDN'), _('Branch in which netgroups will be stored'),
             'fdNetgroupRDN', TRUE,
             'ou=netgroups'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
-?>

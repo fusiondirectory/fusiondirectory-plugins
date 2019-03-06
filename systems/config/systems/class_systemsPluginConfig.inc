@@ -20,99 +20,99 @@
 
 class systemsPluginConfig extends simplePlugin
 {
-  static protected $ipClasses = array();
+  static protected $ipClasses = [];
 
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Systems'),
       'plDescription'   => _('Systems plugin configuration'),
-      'plObjectClass'   => array('fdSystemsPluginConf'),
-      'plObjectType'    => array('configuration'),
+      'plObjectClass'   => ['fdSystemsPluginConf'],
+      'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'rdns' => array(
+    return [
+      'rdns' => [
         'name'  => _('LDAP tree for systems'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Systems RDN'), _('Branch in which systems will be stored'),
             'fdSystemRDN', TRUE,
             'ou=systems'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Server RDN'), _('Branch in which servers will be stored'),
             'fdServerRDN', TRUE,
             'ou=servers,ou=systems'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Workstations RDN'), _('Branch in which workstations will be stored'),
             'fdWorkstationRDN', TRUE,
             'ou=workstations,ou=systems'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Terminal RDN'), _('Branch in which terminals will be stored'),
             'fdTerminalRDN', TRUE,
             'ou=terminals,ou=systems'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Printer RDN'), _('Branch in which printers will be stored'),
             'fdPrinterRDN', TRUE,
             'ou=printers,ou=systems'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Component RDN'), _('Branch in which network devices will be stored'),
             'fdComponentRDN', TRUE,
             'ou=netdevices,ou=systems'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Phone RDN'), _('Branch in which phones will be stored'),
             'fdPhoneRDN', TRUE,
             'ou=phones,ou=systems'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Mobile phone RDN'), _('Branch in which mobile phones will be stored'),
             'fdMobilePhoneRDN', TRUE,
             'ou=mobile,ou=systems'
           ),
-        )
-      ),
-      'config' => array(
+        ]
+      ],
+      'config' => [
         'name'  => _('Miscellaneous'),
-        'attrs' => array(
-          new OrderedArrayAttribute (
+        'attrs' => [
+          new OrderedArrayAttribute(
             new CompositeAttribute(
               _('Available encodings for share services'),
               'fdEncodings',
-              array(
-                new StringAttribute (
+              [
+                new StringAttribute(
                   _('Encoding'), _('The encoding code name'),
                   'encoding_code', TRUE, '', '',
                   '/^[^=]+$/'
                 ),
-                new StringAttribute (
+                new StringAttribute(
                   _('Label'), _('The encoding displayed name'),
                   'encoding_label', TRUE, '', '',
                   '/^[^=]+$/'
                 ),
-              ),
+              ],
               '/^([^=]*)=([^=]*)$/',
               '%s=%s',
               '',
               _('Encodings')
             ),
             FALSE, /* no order */
-            array(
+            [
               'UTF-8=UTF-8', 'ISO8859-1=ISO8859-1 (Latin 1)',
               'ISO8859-2=ISO8859-2 (Latin 2)', 'ISO8859-3=ISO8859-3 (Latin 3)',
               'ISO8859-4=ISO8859-4 (Latin 4)', 'ISO8859-5=ISO8859-5 (Latin 5)',
               'cp850=CP850 (Europe)'
-            ),
+            ],
             TRUE /* edit enabled */
           ),
           new SetAttribute(
@@ -120,11 +120,11 @@ class systemsPluginConfig extends simplePlugin
               _('Mandatory IP'), _('Object types tabs for which IP field should be mandatory'),
               'fdMandatoryIpClasses', FALSE
             ),
-            array('componentGeneric','printGeneric','workstationGeneric','terminalGeneric','serverGeneric')
+            ['componentGeneric','printGeneric','workstationGeneric','terminalGeneric','serverGeneric']
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -133,7 +133,7 @@ class systemsPluginConfig extends simplePlugin
 
     if (empty(static::$ipClasses)) {
       $plist = session::global_get('plist');
-      static::$ipClasses = array();
+      static::$ipClasses = [];
       foreach ($plist->info as $cname => $info) {
         if ($cname == 'all') {
           continue;
@@ -146,4 +146,3 @@ class systemsPluginConfig extends simplePlugin
     $this->attributesAccess['fdMandatoryIpClasses']->attribute->setChoices(array_keys(static::$ipClasses), array_values(static::$ipClasses));
   }
 }
-?>

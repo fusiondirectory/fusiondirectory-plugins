@@ -21,7 +21,7 @@
 
 class servtabs extends simpleTabs
 {
-  function save()
+  function save ()
   {
     $errors = parent::save();
 
@@ -33,5 +33,3 @@ class servtabs extends simpleTabs
     return $errors;
   }
 }
-
-?>

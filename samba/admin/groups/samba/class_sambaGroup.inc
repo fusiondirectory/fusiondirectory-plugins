@@ -22,27 +22,27 @@ class sambaGroup extends simplePlugin
 {
   var $displayHeader  = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Samba'),
       'plDescription' => _('Samba group settings'),
       'plFilter'      => '(objectClass=sambaGroupMapping)',
       'plIcon'        => 'geticon.php?context=applications&icon=samba&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=samba&size=16',
-      'plObjectClass' => array('sambaGroupMapping'),
-      'plObjectType'  => array('group'),
+      'plObjectClass' => ['sambaGroupMapping'],
+      'plObjectType'  => ['group'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Domain'),
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Domain'), _('Samba domain'),
             'sambaDomainName', TRUE
@@ -50,18 +50,18 @@ class sambaGroup extends simplePlugin
           new CompositeAttribute(
             _('Samba information'),
             'sambaSID',
-            array(
+            [
               new HiddenAttribute(
                 'SID'
               ),
               new SelectAttribute(
                 _('Group type'), _('Samba group type'),
                 'GID', TRUE,
-                array(0,                512,                513,                514),
+                [0,                512,                513,                514],
                 0,
-                array(_("Samba group"), _("Domain admins"), _("Domain users"),  _("Domain guests"))
+                [_("Samba group"), _("Domain admins"), _("Domain users"),  _("Domain guests")]
               )
-            ),
+            ],
             '/^([^ ]+)-([0-9]+)$/',
             '%s-%d'
           ),
@@ -69,9 +69,9 @@ class sambaGroup extends simplePlugin
             'sambaGroupType', TRUE,
             2
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -118,14 +118,14 @@ class sambaGroup extends simplePlugin
     /* Don't lose special groups! If not key'ed above, add it to the combo box */
     if (!in_array($this->getGID(), $this->attributesAccess['sambaSID']->attributes[1]->getChoices())) {
       $this->attributesAccess['sambaSID']->attributes[1]->setChoices(
-        array(0,                512,                513,                514,                $this->getGID()),
-        array(_("Samba group"), _("Domain admins"), _("Domain users"),  _("Domain guests"), sprintf(_("Special group (%d)"), $this->getGID()))
+        [0,                512,                513,                514,                $this->getGID()],
+        [_("Samba group"), _("Domain admins"), _("Domain users"),  _("Domain guests"), sprintf(_("Special group (%d)"), $this->getGID())]
       );
     }
     $this->attributesAccess['sambaSID']->attributes[1]->setInitialValue($this->getGID());
   }
 
-  function prepare_save()
+  function prepare_save (): array
   {
     global $config;
     $errors = parent::prepare_save();
@@ -158,7 +158,7 @@ class sambaGroup extends simplePlugin
   }
 
   /*! \brief Get a new SambaSID for a group */
-  function getSambaSID()
+  function getSambaSID ()
   {
     global $config;
     $ldap       = $config->get_ldap_link();
@@ -170,14 +170,14 @@ class sambaGroup extends simplePlugin
     do {
       $sid = $this->getSID()."-".($gidNumber * 2 + $this->getRidBase() + 1);
       $ldap->cd($config->current['BASE']);
-      $ldap->search("(sambaSID=$sid)", array("sambaSID"));
+      $ldap->search("(sambaSID=$sid)", ["sambaSID"]);
       $gidNumber++;
     } while ($ldap->count() != 0);
 
     return $sid;
   }
 
-  function resetCopyInfos()
+  function resetCopyInfos ()
   {
     parent::resetCopyInfos();
 
@@ -186,31 +186,29 @@ class sambaGroup extends simplePlugin
     $this->attributesAccess['sambaDomainName']->setInitialValue('');
   }
 
-  function getRidBase()
+  function getRidBase ()
   {
     global $config;
     return $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
   }
 
-  function getSID()
+  function getSID ()
   {
     return $this->attributesAccess['sambaSID']->attributes[0]->getValue();
   }
 
-  function setSID($value)
+  function setSID ($value)
   {
     $this->attributesAccess['sambaSID']->attributes[0]->setValue($value);
   }
 
-  function getGID()
+  function getGID ()
   {
     return $this->attributesAccess['sambaSID']->attributes[1]->getValue();
   }
 
-  function setGID($value)
+  function setGID ($value)
   {
     $this->attributesAccess['sambaSID']->attributes[1]->setValue($value);
   }
-
 }
-?>

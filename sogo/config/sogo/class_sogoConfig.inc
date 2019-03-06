@@ -20,33 +20,32 @@
 
 class sogoConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('SOGo configuration'),
       'plDescription'   => _('FusionDirectory sogo plugin configuration'),
-      'plObjectClass'   => array('fdSogoPluginConf'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectClass'   => ['fdSogoPluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('SOGo'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('SOGo RDN'), _('Branch in which SOGo objects will be stored'),
             'fdSogoRDN', TRUE,
             'ou=resources'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
-?>

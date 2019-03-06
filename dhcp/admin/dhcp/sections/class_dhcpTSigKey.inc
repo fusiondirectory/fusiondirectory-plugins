@@ -20,42 +20,42 @@
 
 class dhcpTSigKey extends dhcpPlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('DHCP DNS update key'),
       'plDescription'   => _('DHCP DNS update key'),
-      'plCategory'      => array('dhcpConfiguration'),
-      'plObjectClass'   => array('dhcpTSigKey'),
+      'plCategory'      => ['dhcpConfiguration'],
+      'plObjectClass'   => ['dhcpTSigKey'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('DHCP'),
-        'attrs' => array(
-          new HostNameAttribute (
+        'attrs' => [
+          new HostNameAttribute(
             _('Name'), _('Name of this DHCP configuration'),
             'cn', TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Algorithm'), _('Algorithm to generate TSIG Key'),
             'dhcpKeyAlgorithm', TRUE,
-            array('HMAC-MD5','RSAMD5','RSASHA1','DSA','DH')
+            ['HMAC-MD5','RSAMD5','RSASHA1','DSA','DH']
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Secret'), _('Secret to generate TSIG Key'),
             'dhcpKeySecret', TRUE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Comments'), _('Comments about this DHCP object'),
             'dhcpComments', FALSE
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }

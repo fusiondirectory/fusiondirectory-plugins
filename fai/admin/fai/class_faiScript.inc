@@ -20,76 +20,76 @@
 
 class faiScript extends faiSimplePluginClass
 {
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Script'),
       'plDescription' => _('FAI script'),
-      'plObjectClass' => array('FAIclass','FAIscript'),
+      'plObjectClass' => ['FAIclass','FAIscript'],
       'plFilter'      => '(objectClass=FAIscript)',
-      'plObjectType'  => array(
-        'faiScript' => array(
+      'plObjectType'  => [
+        'faiScript' => [
           'name'        => _('FAI script'),
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiScriptRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-script&size=16'
-        )
-      ),
+        ]
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
-          new HostNameAttribute (
+        'attrs' => [
+          new HostNameAttribute(
             _('Class name'), _('Variables class name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
-        )
-      ),
-      'vars' => array(
+        ]
+      ],
+      'vars' => [
         'name'  => _('Scripts'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
-          new SubNodesAttribute (
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new SubNodesAttribute(
             '', _('Variables in this class'),
-            'scripts', array('FAIscriptEntry','FAIclass','top'),
-            array(
-              new StringAttribute (
+            'scripts', ['FAIscriptEntry','FAIclass','top'],
+            [
+              new StringAttribute(
                 _('Name'), _('The name of the variable'),
                 'cn', TRUE
               ),
-              new StringAttribute (
+              new StringAttribute(
                 _('Description'), _('A short description of the variable'),
                 'description', FALSE
               ),
-              new IntAttribute (
+              new IntAttribute(
                 _('Priority'), _('Priority of this script (smaller is done first)'),
                 'FAIpriority', TRUE,
                 0, 99, 1
               ),
-              new FileTextAreaAttribute (
+              new FileTextAreaAttribute(
                 _('Script'), _('The script itself'),
                 'FAIscript', TRUE,
                 '.sh'
               ),
-            ),
+            ],
             FALSE, /* no order */
-            array(),
+            [],
             TRUE /* edit enabled */
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -100,13 +100,13 @@ class faiScript extends faiSimplePluginClass
     $this->attributesAccess['scripts']->setLinearRendering(FALSE);
   }
 
-  protected function shouldSave()
+  protected function shouldSave (): bool
   {
     /* We need ldap_save to always run */
     return TRUE;
   }
 
-  function ldap_save ()
+  function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();
@@ -114,4 +114,3 @@ class faiScript extends faiSimplePluginClass
     return $errors;
   }
 }
-?>

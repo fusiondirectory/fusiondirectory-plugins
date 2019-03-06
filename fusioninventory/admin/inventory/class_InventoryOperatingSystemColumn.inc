@@ -24,7 +24,7 @@
  */
 class InventoryOperatingSystemColumn extends LinkColumn
 {
-  function renderCell(ListingEntry $entry)
+  function renderCell (ListingEntry $entry): string
   {
     $trans = $this->computeValue($entry);
 
@@ -35,7 +35,7 @@ class InventoryOperatingSystemColumn extends LinkColumn
     return '&nbsp;';
   }
 
-  protected function computeValue(ListingEntry $entry)
+  protected function computeValue (ListingEntry $entry): string
   {
     global $config;
 
@@ -43,11 +43,11 @@ class InventoryOperatingSystemColumn extends LinkColumn
       return $entry->cache[__CLASS__]['value'];
     }
 
-    $trans = array();
+    $trans = [];
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($entry->dn);
-    $ldap->search('(objectClass=fdInventoryOPERATINGSYSTEM)', array('fdInventoryNAME','fdInventoryFQDN'), 'one');
+    $ldap->search('(objectClass=fdInventoryOPERATINGSYSTEM)', ['fdInventoryNAME','fdInventoryFQDN'], 'one');
     while ($attrs = $ldap->fetch()) {
       $link = $attrs['fdInventoryNAME'][0];
       if (isset($attrs['fdInventoryFQDN'][0])) {
@@ -61,7 +61,7 @@ class InventoryOperatingSystemColumn extends LinkColumn
     return $entry->cache[__CLASS__]['value'];
   }
 
-  function compare(ListingEntry $ao, ListingEntry $bo)
+  function compare (ListingEntry $ao, ListingEntry $bo): int
   {
     if ($ao->getTemplatedType() != $bo->getTemplatedType()) {
       return strcmp($ao->getTemplatedType(), $bo->getTemplatedType());

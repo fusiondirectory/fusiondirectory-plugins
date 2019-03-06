@@ -30,7 +30,7 @@ class PartitionDialog extends GenericDialog
 
   protected $plugin;
 
-  function __construct($simplePlugin, $attribute, $partition = array())
+  function __construct ($simplePlugin, $attribute, $partition = [])
   {
     $this->attribute  = $attribute;
     $this->plugin     = $simplePlugin;
@@ -80,9 +80,9 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
 {
   protected $dialogClass = 'PartitionDialog';
 
-  function __construct ($label, $description, $ldapName, $values = array(), $acl = '')
+  function __construct ($label, $description, $ldapName, $values = [], $acl = '')
   {
-    parent::__construct ($label, $description, $ldapName, FALSE, $values, $acl);
+    parent::__construct($label, $description, $ldapName, FALSE, $values, $acl);
   }
 
   protected function loadAttrValue (array $attrs)
@@ -94,22 +94,22 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
   {
   }
 
-  protected function getAttributeArrayValue($key, $value)
+  protected function getAttributeArrayValue ($key, $value)
   {
-    $opt = array();
+    $opt = [];
     if (isset($value['bootable']) && $value['bootable']) {
       $opt[] = _('bootable');
     }
     if (!empty($value['preserve'])) {
       $opt[] = _('preserve').':'.$value['preserve'];
     }
-    return array(
+    return [
       $value['description'],
       $value['FAIpartitionType'],
       $value['FAImountPoint'],
       $value['FAIpartitionSize'],
       implode(', ', $opt),
-    );
+    ];
   }
 
   /* Only allow to remove partitions if they are not in use elsewhere */
@@ -118,7 +118,7 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
     /* Create a list of all partitions that are used in
      *  lvm, raid or cryptsetup compilations.
      */
-    $list = array();
+    $list = [];
     foreach ($this->plugin->parent->disks as $disk) {
       if ($disk['FAIdiskType'] == 'lvm') {
         foreach ($disk['FAIlvmDevice'] as $partname) {
@@ -153,7 +153,7 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
   }
 
   /* Bypass delPostValue check for edition */
-  protected function handleEdit($key)
+  protected function handleEdit ($key)
   {
     $this->editingValue = $this->value[$key];
     unset($this->postValue[$key]);
@@ -161,7 +161,7 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
   }
 
   /* Add or update a partition */
-  function updatePartition($part)
+  function updatePartition ($part)
   {
     if (!isset($part['FAIpartitionNr']) || ($part['FAIpartitionNr'] == 'undefined')) {
       $part['FAIpartitionNr'] = $this->get_free_partition_number();
@@ -197,19 +197,19 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
   }
 
   /* Add a partition back */
-  function addPartition($part)
+  function addPartition ($part)
   {
     $this->value[$part['FAIpartitionNr']] = $part;
   }
 
-  function get_free_partition_number()
+  function get_free_partition_number ()
   {
-    $used = array();
+    $used = [];
     foreach ($this->value as $key => $part) {
       $used[$key] = $part['FAIpartitionNr'];
     }
     $id = 1;
-    while (in_array($id, $used) && $id < 16 ) {
+    while (in_array($id, $used) && $id < 16) {
       $id++;
     }
     return $id;
@@ -220,69 +220,69 @@ class faiDiskEntry extends simplePlugin
 {
   protected $is_edit = FALSE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Partition table entry'),
       'plDescription'   => _('FAI partition table entry'),
-      'plCategory'      => array('fai'),
+      'plCategory'      => ['fai'],
       /* No ACL, we use the one for FAIpartitions */
-      'plProvidedAcls'  => array()
-    );
+      'plProvidedAcls'  => []
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Device'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Name'), _('Disk name'),
             'cn', TRUE,
             '', 'FAIpartitions',
             '/[a-z0-9_-]/i'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description'),
             'description', FALSE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('fstab key'), _('Key to use in fstab file'),
             'fstabkey', TRUE,
-            array('device', 'label', 'uuid'), '',
-            array(_('Device'), _('Label'), _('UUID'))
+            ['device', 'label', 'uuid'], '',
+            [_('Device'), _('Label'), _('UUID')]
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Disk label'), _('Disk label'),
             'disklabel', TRUE,
-            array('msdos', 'gpt'), '',
-            array('MSDOS', 'GPT')
+            ['msdos', 'gpt'], '',
+            ['MSDOS', 'GPT']
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Random init'), _('Initialise all encrypted partitions with random data'),
             'randinit', FALSE
           ),
-          new HiddenAttribute ('FAIdiskType')
-        )
-      ),
-      'partitions' => array(
+          new HiddenAttribute('FAIdiskType')
+        ]
+      ],
+      'partitions' => [
         'name'  => _('Partition entries'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
-          new SetAttribute (
-            new SelectAttribute (
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new SetAttribute(
+            new SelectAttribute(
               _('Combined physical partitions'), _('Physical partitions combined in this LVM volume'),
               'lvmDevices', FALSE,
-              array()
+              []
             )
           ),
-          new DiskPartitionsAttribute (
+          new DiskPartitionsAttribute(
             '', _('Partitions in this class'), 'partitions'
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn, $parent, $disk, $type)
@@ -388,7 +388,7 @@ class faiDiskEntry extends simplePlugin
     }
   }
 
-  protected function loadAttributes()
+  protected function loadAttributes ()
   {
     foreach ($this->attributesAccess as &$attribute) {
       $attribute->setInLdap(FALSE);
@@ -398,7 +398,7 @@ class faiDiskEntry extends simplePlugin
     parent::loadAttributes();
   }
 
-  function execute()
+  function execute (): string
   {
     $smarty = get_smarty();
     $acl    = $this->aclGetPermissions('FAIpartitions');
@@ -416,9 +416,9 @@ class faiDiskEntry extends simplePlugin
     }
   }
 
-  function save()
+  function save (): array
   {
-    $tmp = array();
+    $tmp = [];
     $tmp['cn']          = $this->cn;
     $tmp['description'] = $this->description;
 
@@ -447,15 +447,15 @@ class faiDiskEntry extends simplePlugin
 
     /* Assemble flags */
     if ($this->FAIdiskType == 'disk') {
-      $tmp['FAIdiskOption'] = array('fstabkey:'.$this->fstabkey, 'disklabel:'.$this->disklabel);
+      $tmp['FAIdiskOption'] = ['fstabkey:'.$this->fstabkey, 'disklabel:'.$this->disklabel];
     } elseif ($this->FAIdiskType == 'cryptsetup') {
       if ($this->randinit) {
-        $tmp['FAIdiskOption'] = array('randinit');
+        $tmp['FAIdiskOption'] = ['randinit'];
       } else {
-        $tmp['FAIdiskOption'] = array();
+        $tmp['FAIdiskOption'] = [];
       }
     } else {
-      $tmp['FAIdiskOption'] = array('fstabkey:'.$this->fstabkey);
+      $tmp['FAIdiskOption'] = ['fstabkey:'.$this->fstabkey];
     }
 
     /* If hdd name has changed, tell partitionTable to rename it */
@@ -487,7 +487,7 @@ class faiDiskEntry extends simplePlugin
       }
 
       /* Unset non valid attributes */
-      foreach (array('bootable','preserve','resize','FAIdiskType') as $attr) {
+      foreach (['bootable','preserve','resize','FAIdiskType'] as $attr) {
         if (isset($tmp['partitions'][$id][$attr])) {
           unset($tmp['partitions'][$id][$attr]);
         }
@@ -514,10 +514,10 @@ class faiDiskEntry extends simplePlugin
   /* Returns a list of available partitions that are useable in
    *  lvm disk setups.
    */
-  function getAvailablePartitions()
+  function getAvailablePartitions ()
   {
-    $may  = array();
-    $used = array();
+    $may  = [];
+    $used = [];
 
     foreach ($this->parent->disks as $disk) {
       // Skip ourselves
@@ -547,7 +547,7 @@ class faiDiskEntry extends simplePlugin
     }
 
     // Check which of the available disks are unused.
-    $ret = array();
+    $ret = [];
     foreach ($may as $val) {
       if (!in_array($val, $used)) {
         $ret[$val] = $val;
@@ -557,9 +557,9 @@ class faiDiskEntry extends simplePlugin
   }
 
   /* Checks the disk combinations */
-  function check_disks($disk_to_add = array())
+  function check_disks ($disk_to_add = [])
   {
-    $msgs = array();
+    $msgs = [];
 
     /* Check 'disk' combinations.
      *  - There can be four primary partitions.
@@ -567,7 +567,7 @@ class faiDiskEntry extends simplePlugin
      *     three 'primary' partitions.
      */
     if ($this->FAIdiskType == 'disk') {
-      $types = array('logical' => array(), 'primary' => array());
+      $types = ['logical' => [], 'primary' => []];
       $types[$disk_to_add['FAIpartitionType']][$disk_to_add['FAIpartitionNr']] = 1;
       foreach ($this->partitions as $part) {
         $types[$part['FAIpartitionType']][$part['FAIpartitionNr']] = 1;
@@ -587,4 +587,3 @@ class faiDiskEntry extends simplePlugin
     return $msgs;
   }
 }
-?>

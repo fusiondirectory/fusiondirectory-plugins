@@ -22,34 +22,34 @@ class userRegistration extends simplePlugin
 {
   protected $displayHeader  = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Registration'),
       'plDescription' => _('User registration status'),
-      'plSmallIcon'   => '',
-      'plObjectClass' => array('fdUserRegistration'),
-      'plObjectType'  => array('user'),
+      'plSmallIcon'   => 'geticon.php?context=status&icon=pending&size=16',
+      'plObjectClass' => ['fdUserRegistration'],
+      'plObjectType'  => ['user'],
       'plSelfModify'  => FALSE,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'      => _('User registration'),
-        'class'     => array('fullwidth'),
-        'attrs'     => array(
+        'class'     => ['fullwidth'],
+        'attrs'     => [
           new DisplayAttribute(
             '', '',
             'msg', FALSE
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)

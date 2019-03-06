@@ -21,46 +21,46 @@
 
 class debugHelp extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Debug help'),
       'plDescription' => _('Debug help tools'),
       'plSection'     => 'reporting',
       'plPriority'    => 1,
       'plIcon'        => 'geticon.php?context=categories&icon=applications-development&size=48',
-      'plObjectType'  => array('debug' => array(
+      'plObjectType'  => ['debug' => [
         'name'      => _('Debug help'),
         'mainAttr'  => FALSE
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'diagram' => array(
+    return [
+      'diagram' => [
         'name'      => _('Diagrams'),
-        'class'     => array('fullwidth'),
-        'attrs'     => array(
+        'class'     => ['fullwidth'],
+        'attrs'     => [
           new ButtonAttribute(
             _('Object types diagram'), '',
             'links',
             _('Get'), 'buildDiagram'
           )
-        )
-      ),
-      'objectTypes' => array(
+        ]
+      ],
+      'objectTypes' => [
         'name'      => _('Object Types'),
-        'class'     => array('fullwidth'),
-        'attrs'     => array(
+        'class'     => ['fullwidth'],
+        'attrs'     => [
           new FakeAttribute('dump')
-        ),
+        ],
         'template'  => get_template_path('debughelp.tpl', TRUE, dirname(__FILE__))
-      ),
-    );
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -70,26 +70,26 @@ class debugHelp extends simplePlugin
     $this->buildObjectTypesDump();
   }
 
-  function buildObjectTypesDump()
+  function buildObjectTypesDump ()
   {
     global $config;
-    $dump = array();
+    $dump = [];
     foreach ($config->data['OBJECTS'] as $type => $infos) {
       if (isset($infos['icon'])) {
         $img = $infos['icon'];
       } else {
         $img = 'images/empty.png';
       }
-      $node = array(
+      $node = [
         'img'       => $img,
         'name'      => $infos['name'],
-        'attrs'     => array(),
-        'subnodes'  => array()
-      );
-      foreach (array('aclCategory', 'mainAttr', 'ou', 'filter', 'tabClass', 'tabGroup', 'mainTab', 'management') as $key) {
+        'attrs'     => [],
+        'subnodes'  => []
+      ];
+      foreach (['aclCategory', 'mainAttr', 'ou', 'filter', 'tabClass', 'tabGroup', 'mainTab', 'management'] as $key) {
         if (isset($infos[$key])) {
           if ($infos[$key] != '') {
-            $node['attrs'][$key] = array($infos[$key]);
+            $node['attrs'][$key] = [$infos[$key]];
           } else {
             $node['attrs'][$key] = '&nbsp;';
           }
@@ -106,7 +106,7 @@ class debugHelp extends simplePlugin
     $this->dump = $dump;
   }
 
-  function execute()
+  function execute (): string
   {
     $smarty = get_smarty();
     $smarty->assign('usePrototype', 'true');
@@ -164,7 +164,7 @@ class debugHelp extends simplePlugin
         $nodes  .= "\t".'node [shape=plaintext,label="'.$tabclass.'",color=white] '.$tabclass.";\n";
       }
       foreach ($tabs as $tab) {
-        if (!class_available($tab['CLASS']))  {
+        if (!class_available($tab['CLASS'])) {
           continue;
         }
         if ($tabclass == 'tabclass_SERVERSERVICE') {

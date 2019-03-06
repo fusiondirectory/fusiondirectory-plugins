@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016 FusionDirectory
+
+  Copyright (C) 2013-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,32 +21,32 @@
 
 class opsiOnDemandList extends opsiSoftwareList
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('OPSI ondemand list'),
       'plDescription' => _('OPSI on demand software list'),
       'plIcon'        => 'geticon.php?context=applications&icon=opsi-on-demand&size=16',
-      'plObjectClass' => array('opsiOnDemandList'),
-      'plObjectType'  => array('opsiOnDemandList' => array(
+      'plObjectClass' => ['opsiOnDemandList'],
+      'plObjectType'  => ['opsiOnDemandList' => [
         'name'    => _('OPSI ondemand list'),
         'ou'      => get_ou('opsiRDN'),
         'icon'    => 'geticon.php?context=applications&icon=opsi-on-demand&size=16',
-      )),
-      'plForeignKeys'   => array(
+      ]],
+      'plForeignKeys'   => [
         'fdOpsiServerDn' => 'serverGeneric',
-      ),
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Infos'),
-        'attrs' => array(
+        'attrs' => [
           new SubmittingOPSIServerAttribute(
             _('OPSI server'), _('OPSI server to use for deployment'),
             'fdOpsiServerDn', TRUE
@@ -58,20 +59,20 @@ class opsiOnDemandList extends opsiSoftwareList
             _('Show details'), _('Show further information to the user'),
             'fdOpsiOnDemandShowDetails', FALSE
           ),
-        )
-      ),
-      'products' => array(
+        ]
+      ],
+      'products' => [
         'name'  => _('Softwares'),
-        'attrs' => array(
+        'attrs' => [
           new SetAttribute(
             new SelectAttribute(
               _('Localboot products'), _('The localboot products to put in this list'),
               'fdOpsiLocalbootProduct', FALSE
             )
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -84,9 +85,8 @@ class opsiOnDemandList extends opsiSoftwareList
   public function server_changed ($opsi_args = NULL)
   {
     if ($opsi_args === NULL) {
-      $opsi_args = array('id','name');
+      $opsi_args = ['id','name'];
     }
     return parent::server_changed($opsi_args);
   }
 }
-?>

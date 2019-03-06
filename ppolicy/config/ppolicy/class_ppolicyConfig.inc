@@ -21,38 +21,37 @@
 
 class ppolicyConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Ppolicy plugin configuration'),
       'plDescription'   => _('FusionDirectory ppolicy plugin configuration'),
-      'plObjectClass'   => array('fdPpolicyPluginConf'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectClass'   => ['fdPpolicyPluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Ppolicy plugin'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Ppolicy RDN'), _('Branch in which ppolicies will be stored'),
             'fdPpolicyRDN', TRUE,
             'ou=ppolicies'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Default ppolicy cn'), _('What you put as default ppolicy in the overlay config'),
             'fdPpolicyDefaultCn', FALSE,
             'default'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
-?>

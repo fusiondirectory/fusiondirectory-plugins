@@ -1,6 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2013-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
@@ -20,20 +21,20 @@
 
 class repositoryManagement extends management
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Repositories'),
       'plTitle'       => _('Repositories management'),
       'plDescription' => _('Manage repositories'),
       'plIcon'        => 'geticon.php?context=applications&icon=repository&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 22,
-      'plCategory'    => array('repository' => array(
+      'plCategory'    => ['repository' => [
         'description'  => _('Repository'),
-        'objectClass'  => array('fdBuildRepository', 'fdBuildRepositoryDistribution', 'fdBuildRepositorySection')
-      )),
-      'plManages'     => array('buildRepository', 'repoDistribution', 'repoSection'),
-    );
+        'objectClass'  => ['fdBuildRepository', 'fdBuildRepositoryDistribution', 'fdBuildRepositorySection']
+      ]],
+      'plManages'     => ['buildRepository', 'repoDistribution', 'repoSection'],
+    ];
   }
 }

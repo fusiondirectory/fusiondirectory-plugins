@@ -1,0 +1,479 @@
+openapi: 3.0.0
+info:
+  description: This FusionDirectory REST API
+  version: 1.0.0
+  title: FusionDirectory
+  contact:
+    email: contact@fusiondirectory.org
+  license:
+    name: GPL2+
+servers:
+  - url: 'http://localhost/fusiondirectory/rest.php'
+security:
+  - session: []
+tags:
+  - name: tools
+    description: API related stuff
+  - name: objects
+    description: 'List, get, create, delete objects'
+  - name: types
+    description: Get information on object types and tabs
+paths:
+  /login:
+    post:
+      summary: Login to the API
+      security: []
+      tags:
+        - tools
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                ldap:
+                  description: The ldap server to connect to
+                  type: string
+                user:
+                  description: The user to login as
+                  type: string
+                password:
+                  description: The password to use
+                  type: string
+              required:
+                - user
+                - password
+      responses:
+        '200':
+          description: An API token
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /ldaps:
+    get:
+      summary: List possible values for ldap parameter for login action
+      security: []
+      tags:
+        - tools
+      responses:
+        '200':
+          description: An API token
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /token:
+    get:
+      summary: Get session token for current session
+      tags:
+        - tools
+      responses:
+        '200':
+          description: An API token
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /types:
+    get:
+      summary: List all types
+      tags:
+        - types
+      responses:
+        '200':
+          description: A list of types
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeList'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/types/{type}':
+    get:
+      summary: Get informations on a type
+      tags:
+        - types
+      parameters:
+        - name: type
+          in: path
+          required: true
+          description: The type to search for
+          schema:
+            type: string
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Type'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/types/{type}/{tab}':
+    get:
+      summary: Get informations on a tab
+      tags:
+        - types
+      parameters:
+        - name: type
+          in: path
+          required: true
+          description: The object type
+          schema:
+            type: string
+        - name: tab
+          in: path
+          required: true
+          description: The tab
+          schema:
+            type: string
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TabInfo'
+              example: {
+                        "sections": {
+                          "main": {
+                            "name": "Information",
+                            "attrs": [
+                              "base",
+                              "cn",
+                              "description",
+                              "telephoneNumber",
+                              "facsimileTelephoneNumber"
+                            ]
+                          },
+                          "members": {
+                            "name": "Role members",
+                            "attrs": [
+                              "roleOccupant"
+                            ]
+                          }
+                        },
+                        "sections_order": [
+                          "main",
+                          "members"
+                        ]
+                      }
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/objects/{type}':
+    get:
+      summary: Search objects of specific type
+      tags:
+        - objects
+      parameters:
+        - name: type
+          in: path
+          required: true
+          description: The type to search for
+          schema:
+            type: string
+        - $ref: '#/components/parameters/base'
+        - $ref: '#/components/parameters/filter'
+        - name: attrs
+          in: query
+          required: false
+          description: The attributes to return
+          schema:
+            type: object
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/objects/{type}/{dn}':
+    get:
+      summary: Get attributes values from object main tab
+      tags:
+        - objects
+      parameters:
+        - name: type
+          in: path
+          required: true
+          description: The type to search for
+          schema:
+            type: string
+        - name: dn
+          in: path
+          required: true
+          description: The dn of the object
+          schema:
+            type: string
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/objects/{type}/{dn}/{tab}':
+    get:
+      summary: Get attributes values from object specific tab
+      tags:
+        - objects
+      parameters:
+        - name: type
+          in: path
+          required: true
+          description: The type to search for
+          schema:
+            type: string
+        - name: dn
+          in: path
+          required: true
+          description: The dn of the object
+          schema:
+            type: string
+        - name: tab
+          in: path
+          required: true
+          description: The tab CLASS
+          schema:
+            type: string
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/objects/{type}/{dn}/{tab}/{attribute}':
+    get:
+      summary: Get a single attribute value(s)
+      tags:
+        - objects
+      parameters:
+        - name: type
+          in: path
+          required: true
+          description: The type to search for
+          schema:
+            type: string
+        - name: dn
+          in: path
+          required: true
+          description: The dn of the object
+          schema:
+            type: string
+        - name: tab
+          in: path
+          required: true
+          description: The tab CLASS
+          schema:
+            type: string
+        - name: attribute
+          in: path
+          required: true
+          description: The attribute
+          schema:
+            type: string
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Object:
+      type: object
+      additionalProperties:
+        anyOf: 
+          - type: string
+          - type: array
+            items:
+              type: string
+          - type: object
+    SearchResult:
+      type: object
+      additionalProperties:
+        anyOf: 
+          - type: string
+          - type: array
+            items:
+              type: string
+    Type:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Role"
+        description:
+          type: string
+          example: "Organizational role"
+        mainAttr:
+          type: string
+          example: "cn"
+        nameAttr:
+          type: string
+          example: "cn"
+        icon:
+          type: string
+          example: "geticon.php?context=types&icon=role&size=16"
+        ou:
+          type: string
+          example: "ou=roles,"
+        mainTab:
+          type: string
+          example: "roleGeneric"
+        templateActive:
+          type: boolean
+        snapshotActive:
+          type: boolean
+        aclCategory:
+          type: string
+          example: "role"
+        filter:
+          type: string
+          example: "(&(objectClass=organizationalRole)(!(objectClass=simpleSecurityObject)))"
+        management:
+          type: string
+          example: "groupManagement"
+        filterRDN:
+          type: string
+          example: "(ou:dn:=roles)"
+        tabs:
+          type: array
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/TabDef'
+          example: [{
+                      "CLASS": "roleGeneric",
+                      "NAME": "Role"
+                    },
+                    {
+                      "CLASS": "applicationRights",
+                      "NAME": "Applications"
+                    }]
+    TypeList:
+      type: object
+      additionalProperties:
+        type: string
+      example: {"CONFIGURATION":"FusionDirectory configuration","DASHBOARD":"Dashboard","OGROUP":"Group","SPECIAL":"special","ROLE":"Role","USER":"User","LOCALITY":"Locality","DEPARTMENT":"Department","DCOBJECT":"Domain Component","COUNTRY":"Country","ACLROLE":"ACL role","ACLASSIGNMENT":"ACL assignment","ORGANIZATION":"Organization","DOMAIN":"Domain"}
+    TabDef:
+      type: object
+      required: [CLASS,NAME]
+      properties:
+        CLASS:
+          type: string
+        NAME:
+          type: string
+    TabInfo:
+      type: object
+      properties:
+        sections:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/SectionInfo'
+        sections_order:
+          type: array
+          example: ["main","members"]
+          items: 
+            type: string
+    SectionInfo:
+      type: object
+      properties:
+        name: 
+          type: string
+          example: "Information"
+        attrs:
+          type: array
+          example: ["base","cn","description","telephoneNumber","facsimileTelephoneNumber"]
+          items:
+            type: string
+    Error:
+      required:
+        - message
+      properties:
+        message:
+          type: string
+  parameters:
+    base:
+      name: base
+      example: "dc=example,dc=com"
+      description: The LDAP base to use
+      in: query
+      schema:
+        type: string
+    filter:
+      name: filter
+      example: "(cn=a*)"
+      description: An LDAP filter to search with
+      in: query
+      schema:
+        type: string
+  securitySchemes:
+    session:
+      type: apiKey
+      name: Session-Token
+      in: header

@@ -1,6 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2013-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
@@ -20,18 +21,18 @@
 
 class sogoManagement extends management
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('SOGo'),
       'plTitle'       => _('SOGo management'),
       'plDescription' => _('Manage SOGo resources'),
       'plIcon'        => 'geticon.php?context=applications&icon=sogo&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 50,
-      'plCategory'    => array('sogo' => array('description'  => _('SOGo'),
-                                              'objectClass'  => array('sogoResource'))),
-      'plManages'     => array('sogoResource'),
-    );
+      'plCategory'    => ['sogo' => ['description'  => _('SOGo'),
+                                              'objectClass'  => ['sogoResource']]],
+      'plManages'     => ['sogoResource'],
+    ];
   }
 }

@@ -22,61 +22,61 @@ class communityOrganization extends simplePlugin
 {
   var $displayHeader  = TRUE;
 
-  static function plInfo ()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Community organization'),
       'plDescription'   => _('Community organization dates and alternate address'),
-      'plObjectClass'   => array('fdCommunityOrganization'),
-      'plObjectType'    => array('organization'),
+      'plObjectClass'   => ['fdCommunityOrganization'],
+      'plObjectType'    => ['organization'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     global $config;
-    return array(
-      'membership' => array(
+    return [
+      'membership' => [
         'name'  => _('Membership'),
-        'attrs' => array(
-          new SelectAttribute (
+        'attrs' => [
+          new SelectAttribute(
             _('Membership type'), _('Membership type of this organization'),
             'fdCommunityMembershipType', FALSE,
-            $config->get_cfg_value('communityMembershipTypeChoices', array())
+            $config->get_cfg_value('communityMembershipTypeChoices', [])
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Agreement signed'), _('Did this member returned the agreement signed'),
             'fdCommunityMembershipAgreement', FALSE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Active'), _('Is the membership of this organization active'),
             'fdCommunityMembershipActive', FALSE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Hidden'), _('Should this membership be hidden from listings'),
             'fdCommunityMembershipHidden', FALSE
           )
-        )
-      ),
-      'dates' => array(
+        ]
+      ],
+      'dates' => [
         'name'  => _('Dates'),
-        'attrs' => array(
-          new GeneralizedTimeDateAttribute (
+        'attrs' => [
+          new GeneralizedTimeDateAttribute(
             _('Start date'), _('Date of the beginning'),
             'fdCommunityStartDate', TRUE
           ),
-          new GeneralizedTimeDateAttribute (
+          new GeneralizedTimeDateAttribute(
             _('End date'), _('Date of the end'),
             'fdCommunityEndDate', FALSE,
             ''
           ),
-        )
-      ),
-      'address' => array (
+        ]
+      ],
+      'address' => [
         'name'  => _('Contact'),
-        'attrs' => array (
+        'attrs' => [
           new StringAttribute(
             _('First name'), _('First name'),
             'fdOrganizationAlternateFirstName', FALSE
@@ -101,9 +101,8 @@ class communityOrganization extends simplePlugin
             _('Country'), _('Country'),
             'fdOrganizationAlternateCountry', FALSE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
-?>

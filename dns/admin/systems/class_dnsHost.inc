@@ -23,9 +23,9 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
 {
   private static $templateValueSeparator = '^';
 
-  function __construct ($label, $description, $ldapName, $zoneDn, $defaultValue = array(), $acl = "")
+  function __construct ($label, $description, $ldapName, $zoneDn, $defaultValue = [], $acl = "")
   {
-    parent::__construct ($label, $description, $ldapName, FALSE, $defaultValue, $acl);
+    parent::__construct($label, $description, $ldapName, FALSE, $defaultValue, $acl);
     $this->zoneDn = $zoneDn;
   }
 
@@ -40,7 +40,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
       if (!$this->plugin->is_template) {
         $this->loadRecords();
       } else {
-        $this->value = array();
+        $this->value = [];
         $this->loadAdditionalTemplatesValues();
       }
     }
@@ -75,7 +75,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     $this->initialValue = $this->getValue();
   }
 
-  protected function getAttributeArrayValue($key, $value)
+  protected function getAttributeArrayValue ($key, $value)
   {
     $values = parent::getAttributeArrayValue($key, $value);
     if ($this->plugin->is_template) {
@@ -86,7 +86,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     if (in_array($values[2], $ips) || (!empty($cn) && (($values[0] == $cn) || preg_match('/'.preg_quote($cn.'.'.$this->getZoneName(), '/i').'/', $value[2])))) {
       return $values;
     } else {
-      return array();
+      return [];
     }
   }
 
@@ -122,48 +122,48 @@ class dnsHost extends simplePlugin
   protected $zonesCache;
   protected $loaded = FALSE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('DNS'),
       'plDescription'   => _('Edit the DNS zones of a system'),
       'plIcon'          => 'geticon.php?context=applications&icon=dns&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=dns&size=16',
-      'plObjectClass'   => array('fdDNSHost'),
-      'plObjectType'    => array('server','workstation','terminal','printer','component','phone','mobilePhone'),
+      'plObjectClass'   => ['fdDNSHost'],
+      'plObjectType'    => ['server','workstation','terminal','printer','component','phone','mobilePhone'],
       'plPriority'      => 5,
-      'plForeignKeys'  => array(
+      'plForeignKeys'  => [
         'fdDNSZoneDn' => 'dnsZone'
-      ),
+      ],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'zones' => array(
+    return [
+      'zones' => [
         'name'  => _('DNS zones'),
-        'attrs' => array(
+        'attrs' => [
           new SetAttribute(
             new SelectAttribute(
               '', _('DNS zones for this host'),
               'fdDNSZoneDn', TRUE
             )
           )
-        )
-      ),
-      'soa' => array(
+        ]
+      ],
+      'soa' => [
         'name'  => _('SOA records'),
-        'attrs' => array()
-      ),
-      'records' => array(
+        'attrs' => []
+      ],
+      'records' => [
         'name'  => _('DNS Records'),
-        'class' => array('fullwidth'),
-        'attrs' => array()
-      ),
-    );
+        'class' => ['fullwidth'],
+        'attrs' => []
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -173,7 +173,7 @@ class dnsHost extends simplePlugin
     $this->reloadZoneChoices();
   }
 
-  protected function reloadZoneChoices()
+  protected function reloadZoneChoices ()
   {
     /* List DNS zones we can read */
     $this->zonesCache = objects::ls('dnsZone', NULL, NULL, '', TRUE);
@@ -192,7 +192,7 @@ class dnsHost extends simplePlugin
     $counts = array_count_values($this->zonesCache);
     foreach ($this->zonesCache as $dn => &$name) {
       if ($counts[$name] > 1) {
-        $name .= ' ('.preg_replace(array('/^[^,]+,/', '/,'.preg_quote($config->current['BASE']).'$/'), '', $dn).')';
+        $name .= ' ('.preg_replace(['/^[^,]+,/', '/,'.preg_quote($config->current['BASE']).'$/'], '', $dn).')';
       }
     }
     unset($name);
@@ -200,7 +200,7 @@ class dnsHost extends simplePlugin
     $this->attributesAccess['fdDNSZoneDn']->setSubmitForm('zoneChanged');
   }
 
-  function zoneChanged()
+  function zoneChanged ()
   {
     global $config;
     $ldap     = $config->get_ldap_link();
@@ -228,15 +228,15 @@ class dnsHost extends simplePlugin
         $cn = '';
       }
       $cn = preg_replace('/\$$/', '', $cn);
-      $this->attributesInfo['soa'] = array(
+      $this->attributesInfo['soa'] = [
         'name'  => _('Primary servers'),
-        'attrs' => array()
-      );
-      $this->attributesInfo['records'] = array(
+        'attrs' => []
+      ];
+      $this->attributesInfo['records'] = [
         'name'  => _('DNS Records'),
-        'class' => array('fullwidth'),
-        'attrs' => array()
-      );
+        'class' => ['fullwidth'],
+        'attrs' => []
+      ];
       foreach ($dnsZones as $dn) {
         if (isset($this->zonesCache[$dn])) {
           $name   = $this->zonesCache[$dn];
@@ -250,7 +250,7 @@ class dnsHost extends simplePlugin
           new DnsRecordsFilteredAttribute(
             $name, sprintf(_('The DNS records for zone "%s"'), $name),
             $attrId, $dn,
-            array(), 'dnsRecords'
+            [], 'dnsRecords'
           )
         );
 
@@ -281,7 +281,7 @@ class dnsHost extends simplePlugin
     }
   }
 
-  function load()
+  function load ()
   {
     if (!$this->loaded) {
       $this->zoneChanged();
@@ -289,7 +289,7 @@ class dnsHost extends simplePlugin
     }
   }
 
-  function execute()
+  function execute (): string
   {
     $this->load();
     $smarty = get_smarty();
@@ -317,7 +317,7 @@ class dnsHost extends simplePlugin
               if (is_array($target)) {
                 $target = $target[0];
               }
-              $s_daemon->append_call('Ldap2Zone.start', $target, array('args' => array($zone)));
+              $s_daemon->append_call('Ldap2Zone.start', $target, ['args' => [$zone]]);
               if ($s_daemon->is_error()) {
                 msg_dialog::display(_('Could not run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG);
               } else {
@@ -332,7 +332,7 @@ class dnsHost extends simplePlugin
     }
   }
 
-  function save()
+  function save (): array
   {
     global $config;
     $errors = parent::save();
@@ -345,7 +345,7 @@ class dnsHost extends simplePlugin
     /* Update records if IP or CN changed */
     if ($this->initially_was_account) {
       $baseObject = $this->parent->getBaseObject();
-      $messages   = array();
+      $messages   = [];
       $oldcn      = preg_replace('/\$$/', '', $baseObject->attributeInitialValue('cn'));
       $oldips     = $baseObject->attributeInitialValue('ipHostNumber');
 
@@ -414,7 +414,7 @@ class dnsHost extends simplePlugin
     /* Remove records of our IP or CN */
     if ($this->initially_was_account) {
       $baseObject = $this->parent->getBaseObject();
-      $messages   = array();
+      $messages   = [];
       $oldcn      = preg_replace('/\$$/', '', $baseObject->attributeInitialValue('cn'));
       $oldips     = $baseObject->attributeInitialValue('ipHostNumber');
 
@@ -437,7 +437,7 @@ class dnsHost extends simplePlugin
     return parent::post_remove();
   }
 
-  function adapt_from_template($attrs, $skip = array())
+  function adapt_from_template (array $attrs, array $skip = [])
   {
     parent::adapt_from_template($attrs, $skip);
     $this->reloadZoneChoices();
@@ -452,7 +452,7 @@ class dnsHost extends simplePlugin
 
   /* Record example: array('host', 'aRecord', '192.168.1.1', '')
    * Fields are relativeDomainName, record type, record content, reverse zone (for a/aaaa) */
-  function addRecord($zoneDn, array $record)
+  function addRecord ($zoneDn, array $record)
   {
     if (isset($this->zonesCache[$zoneDn])) {
       $zoneid = preg_replace('/[\/\-,.#:; =]/', '_', $zoneDn);
@@ -463,9 +463,9 @@ class dnsHost extends simplePlugin
     $this->attributesAccess[$attrId]->addValue($record);
   }
 
-  static function removeIpsFromZones(array $zoneDns, array $ips)
+  static function removeIpsFromZones (array $zoneDns, array $ips)
   {
-    $messages = array();
+    $messages = [];
     foreach ($zoneDns as $zoneDn) {
       try {
         $tabObject = objects::open($zoneDn, 'dnsZone');
@@ -485,9 +485,9 @@ class dnsHost extends simplePlugin
     return $messages;
   }
 
-  static function removeCnFromZones(array $zoneDns, $cn)
+  static function removeCnFromZones (array $zoneDns, $cn)
   {
-    $messages = array();
+    $messages = [];
     foreach ($zoneDns as $zoneDn) {
       try {
         $tabObject = objects::open($zoneDn, 'dnsZone');

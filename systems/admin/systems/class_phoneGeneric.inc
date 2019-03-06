@@ -20,63 +20,63 @@
 
 class phoneGeneric extends ipHostPlugin
 {
-  var $inheritance = array('gosaGroupOfNames' => 'member');
+  var $inheritance = ['gosaGroupOfNames' => 'member'];
 
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Phone'),
       'plDescription' => _('Phone information'),
-      'plObjectClass' => array('fdPhone', 'ieee802Device'),
+      'plObjectClass' => ['fdPhone', 'ieee802Device'],
       'plFilter'      => '(objectClass=fdPhone)',
-      'plObjectType'  => array(
-        'phone' => array(
+      'plObjectType'  => [
+        'phone' => [
           'name'        => _('Phone'),
           'description' => _('Phone hardware'),
           'icon'        => 'geticon.php?context=devices&icon=telephone&size=16',
           'ou'          => get_ou('phoneRDN'),
-        )
-      ),
-      'plSearchAttrs' => array('description', 'ipHostNumber', 'macAddress'),
+        ]
+      ],
+      'plSearchAttrs' => ['description', 'ipHostNumber', 'macAddress'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('phoneRDN')),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'), _('The name of the phone'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('A short description of the phone'),
             'description', FALSE
           ),
-        )
-      ),
-      'phone' => array(
+        ]
+      ],
+      'phone' => [
         'name'  => _('Phone'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Serial Number'), _('The serial number of the phone'),
             'serialNumber', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Telephone Number'), _('The telephone number of the phone'),
             'telephoneNumber', FALSE
           ),
-        )
-      ),
-      'network' => array(
+        ]
+      ],
+      'network' => [
         'name'      => _('Network settings'),
         'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
-        'attrs'     => array(
+        'attrs'     => [
           new SetAttribute(
             new IPAttribute(
               _('IP address'), _('IP addresses this system uses (v4 or v6)'),
@@ -89,9 +89,8 @@ class phoneGeneric extends ipHostPlugin
               'macAddress', FALSE
             )
           ),
-        ),
-      ),
-    );
+        ],
+      ],
+    ];
   }
 }
-?>

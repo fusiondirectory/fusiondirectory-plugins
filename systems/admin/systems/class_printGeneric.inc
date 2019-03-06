@@ -21,87 +21,87 @@
 
 class printGeneric extends ipHostPlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Printer'),
       'plDescription' => _('Printer information'),
       'plPriority'    => 10,
-      'plObjectClass' => array('fdPrinter', 'ieee802Device'),
+      'plObjectClass' => ['fdPrinter', 'ieee802Device'],
       'plFilter'      => '(objectClass=fdPrinter)',
-      'plObjectType'  => array('printer' =>
-        array(
+      'plObjectType'  => ['printer' =>
+        [
           'name'        => _('Printer'),
           'description' => _('Printer'),
           'icon'        => 'geticon.php?context=devices&icon=printer&size=16',
           'ou'          => get_ou('printerRDN'),
-        )
-      ),
-      'plForeignKeys'  => array(
+        ]
+      ],
+      'plForeignKeys'  => [
         'fdPrinterUsers'      => 'user',
         'fdPrinterAdminUsers' => 'user',
-      ),
-      'plSearchAttrs' => array('description', 'ipHostNumber', 'macAddress'),
+      ],
+      'plSearchAttrs' => ['description', 'ipHostNumber', 'macAddress'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('printerRDN')),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'), _('The name of the printer'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('A short description of the printer'),
             'description', FALSE
           ),
-        )
-      ),
-      'details' => array(
+        ]
+      ],
+      'details' => [
         'name'  => _('Details'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Printer location'), _('The location of the printer'),
             'l', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Printer URL'), _('The URL of the printer'),
             'labeledURI', TRUE
           ),
-        )
-      ),
-      'users' => array(
+        ]
+      ],
+      'users' => [
         'name'  => _('Users which are allowed to use this printer'),
-        'attrs' => array(
+        'attrs' => [
           new UsersAttribute(
             '', _('Users which are allowed to use this printer'),
             'fdPrinterUsers', FALSE
           )
-        )
-      ),
-      'admins' => array(
+        ]
+      ],
+      'admins' => [
         'name'  => _('Users which are allowed to administrate this printer'),
-        'attrs' => array(
+        'attrs' => [
           new UsersAttribute(
             '', _('Users which are allowed to administrate this printer'),
             'fdPrinterAdminUsers', FALSE
           )
-        )
-      ),
-      'network' => array(
+        ]
+      ],
+      'network' => [
         'name'      => _('Network settings'),
         'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
-        'attrs'     => array(
+        'attrs'     => [
           new SetAttribute(
             new IPAttribute(
               _('IP address'), _('IP address this system uses'),
@@ -114,27 +114,26 @@ class printGeneric extends ipHostPlugin
               'macAddress', FALSE
             )
           ),
-        ),
-      ),
-      'windows' => array(
+        ],
+      ],
+      'windows' => [
         'name'      => _('Windows paths'),
         'icon'      => 'geticon.php?context=devices&icon=computer-windows&size=16',
-        'attrs'     => array(
-          new StringAttribute (
+        'attrs'     => [
+          new StringAttribute(
             _('Inf file'), _('Path to windows inf file for this printer'),
             'fdPrinterWindowsInfFile', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Driver directory'), _('Path to directory that contains windows drivers for this printer'),
             'fdPrinterWindowsDriverDir', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Driver name'), _('Windows name of the printer driver'),
             'fdPrinterWindowsDriverName', FALSE
           ),
-        ),
-      ),
-    );
+        ],
+      ],
+    ];
   }
 }
-?>

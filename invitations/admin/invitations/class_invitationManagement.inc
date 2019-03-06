@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018 FusionDirectory
+
+  Copyright (C) 2017-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,17 +21,15 @@
 
 class invitationManagement extends management
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Invitations'),
       'plTitle'       => _('Invitations management'),
       'plDescription' => _('Manage invitations'),
-      'plIcon'        => 'geticon.php?context=categories&icon=applications-other&size=48',
+      'plIcon'        => 'geticon.php?context=types&icon=invitation&size=48',
       'plSection'     => 'accounts',
-      'plManages'     => array('invitation'),
-
-      'plProvidedAcls' => array()
-    );
+      'plManages'     => ['invitation'],
+    ];
   }
 }

@@ -49,7 +49,8 @@ class jsonRPCClientBadArgsException extends jsonRPCClientException
  *
  * \author sergio <jsonrpcphp@inservibile.org>
  */
-class jsonRPCClient {
+class jsonRPCClient
+{
 
   /*!
    * \brief Debug state
@@ -104,7 +105,7 @@ class jsonRPCClient {
    *
    * \param boolean $debug false
    */
-  public function __construct($url, $http_options = array(), $ssl_options = array(), $debug = FALSE)
+  public function __construct ($url, $http_options = [], $ssl_options = [], $debug = FALSE)
   {
     // server URL
     $this->url = $url;
@@ -129,7 +130,7 @@ class jsonRPCClient {
    *
    * \param boolean $notification
    */
-  public function setRPCNotification($notification)
+  public function setRPCNotification ($notification)
   {
     empty($notification) ?
               $this->notification = FALSE
@@ -146,7 +147,7 @@ class jsonRPCClient {
    *
    * \return array
    */
-  public function __call($method, $params)
+  public function __call ($method, $params)
   {
     $debug = "";
 
@@ -171,26 +172,26 @@ class jsonRPCClient {
     }
 
     // prepares the request
-    $request = array(
+    $request = [
             'method' => $method,
             'params' => $params,
             'id' => $currentId
-            );
+            ];
     $request = json_encode($request);
     $this->debug && $debug .= '***** Request *****'."\n".$request."\n".'***** End Of request *****'."\n\n";
 
     // performs the HTTP(S) POST
-    $opts = array (
+    $opts = [
       'http' => array_merge(
-        array (
+        [
           'method'  => 'POST',
           'header'  => 'Content-type: application/json',
           'content' => $request
-        ),
+        ],
         $this->http_options
       ),
       'ssl' => $this->ssl_options
-    );
+    ];
 
     $context  = stream_context_create($opts);
     $fp = fopenWithErrorHandling($this->url, 'r', FALSE, $context);
@@ -245,10 +246,8 @@ class jsonRPCClient {
       }
 
       return $response['result'];
-
     } else {
       return TRUE;
     }
   }
 }
-?>

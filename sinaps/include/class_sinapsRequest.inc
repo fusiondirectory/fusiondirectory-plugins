@@ -26,7 +26,7 @@ class sinapsRequest
 {
   protected $data;
 
-  public function __construct($xml)
+  public function __construct ($xml)
   {
     $this->data = new SimpleXMLElement($xml);
     if (!isset($this->data->domaine)) {
@@ -46,37 +46,37 @@ class sinapsRequest
     }
   }
 
-  public function codeDomaine()
+  public function codeDomaine ()
   {
     return $this->data->domaine['code'];
   }
 
-  public function codeOperation()
+  public function codeOperation ()
   {
     return $this->data->domaine->donnees->operation['codeOperation'];
   }
 
-  public function operationVersion()
+  public function operationVersion ()
   {
     return $this->data->domaine->donnees->operation['version'];
   }
 
-  public function identifiantTransaction()
+  public function identifiantTransaction ()
   {
     return $this->data->domaine->identifiantTransaction;
   }
 
-  public function getOperationStructure()
+  public function getOperationStructure ()
   {
     return $this->data->domaine->donnees->operation->structure;
   }
 
-  public function getOperationPersonne()
+  public function getOperationPersonne ()
   {
     return $this->data->domaine->donnees->operation->personne;
   }
 
-  public static function acquittementFonctionnel($responseCode = 200, $codeAcquittement = 0, $message = '', $identifiantObjApp = NULL, $synchrone = TRUE)
+  public static function acquittementFonctionnel ($responseCode = 200, $codeAcquittement = 0, $message = '', $identifiantObjApp = NULL, $synchrone = TRUE)
   {
     $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?>
     <Acquittement xmlns:acq="http://referentiels.SINAPS.amue.fr/acquittementFonctionnel">
@@ -93,8 +93,8 @@ class sinapsRequest
     if ($synchrone) {
       /* Hack because SINAPS API makes no sense and needs a prefix for Acquittement only for synchrone mode */
       return preg_replace(
-        array('|<Acquittement |',   '|</Acquittement>$|'),
-        array('<acq:Acquittement ', '</acq:Acquittement>'),
+        ['|<Acquittement |',   '|</Acquittement>$|'],
+        ['<acq:Acquittement ', '</acq:Acquittement>'],
         $xml->asXML(),
         1
       );
@@ -103,7 +103,7 @@ class sinapsRequest
     }
   }
 
-  public function acquittementTechnique($responseCode = 200, $message = '')
+  public function acquittementTechnique ($responseCode = 200, $message = '')
   {
     $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?>
     <WebServiceHTTPResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="acquittementTechnique.xsd">
@@ -115,26 +115,26 @@ class sinapsRequest
     return $xml->asXML();
   }
 
-  public function getSupannEntiteValues($identifiantApplication, $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback)
+  public function getSupannEntiteValues ($identifiantApplication, $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback)
   {
     $structure  = $this->getOperationStructure();
     $now        = new DateTime();
 
-    $mapping = array(
-      'libelle20'         => array('entite','ou'),
-      'descriptifLong'    => array('entite','description'),
-      'codeStructure'     => array('entite','supannCodeEntite'),
-      'codeSousType'      => array('entite','supannTypeEntite'),
-      'dateDebutValidite' => array('supannStructureExt','fdSupannStartDate'),
-      'dateFinValidite'   => array('supannStructureExt','fdSupannEndDate'),
-    );
-    $values = array(
-      'entite' => array(
-        'supannRefId'               => array(),
+    $mapping = [
+      'libelle20'         => ['entite','ou'],
+      'descriptifLong'    => ['entite','description'],
+      'codeStructure'     => ['entite','supannCodeEntite'],
+      'codeSousType'      => ['entite','supannTypeEntite'],
+      'dateDebutValidite' => ['supannStructureExt','fdSupannStartDate'],
+      'dateFinValidite'   => ['supannStructureExt','fdSupannEndDate'],
+    ];
+    $values = [
+      'entite' => [
+        'supannRefId'               => [],
         'postalAddress'             => '',
         'supannCodeEntiteParent'    => '',
-      ),
-    );
+      ],
+    ];
 
     $uuid = '';
 
@@ -154,7 +154,7 @@ class sinapsRequest
 
     array_unshift($values['entite']['supannRefId'], '{'.$uuidPrefix.'}'.$uuid);
 
-    foreach ($mapping as $sinapsAttr => list($fdTab,$fdAttr)) {
+    foreach ($mapping as $sinapsAttr => list($fdTab, $fdAttr)) {
       if (isset($structure->$sinapsAttr)) {
         $values[$fdTab][$fdAttr] = (string)$structure->$sinapsAttr;
       } else {
@@ -203,39 +203,39 @@ class sinapsRequest
     return $values;
   }
 
-  public function getUserValues($identifiantApplication, array $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback, array $userRoles)
+  public function getUserValues ($identifiantApplication, array $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback, array $userRoles)
   {
     $personne   = $this->getOperationPersonne();
     $now        = new DateTime();
-    $mapping = array(
-      'civilite'        => array('supannAccount','supannCivilite'),
-      'nomUsage'        => array('user','sn'),
-      'descriptifLong'  => array('user','description'),
-      'dateNaissance'   => array('personalInfo','dateOfBirth'),
-      'sexe'            => array('personalInfo','gender'),
-    );
-    $values = array(
+    $mapping = [
+      'civilite'        => ['supannAccount','supannCivilite'],
+      'nomUsage'        => ['user','sn'],
+      'descriptifLong'  => ['user','description'],
+      'dateNaissance'   => ['personalInfo','dateOfBirth'],
+      'sexe'            => ['personalInfo','gender'],
+    ];
+    $values = [
       'lock'          => FALSE,
-      'user'          => array(
+      'user'          => [
         'homePhone'                 => '',
         'postalAddress'             => '',
         'homePostalAddress'         => '',
         'employeeNumber'            => '',
-      ),
-      'supannAccount' => array(
-        'supannRefId'                       => array(),
-        'supannEntiteAffectation'           => array(),
-        'supannRoleGenerique'               => array(),
-        'supannTypeEntiteAffectation'       => array(),
-        'supannRoleEntite'                  => array(),
-        'supannActivite'                    => array(),
+      ],
+      'supannAccount' => [
+        'supannRefId'                       => [],
+        'supannEntiteAffectation'           => [],
+        'supannRoleGenerique'               => [],
+        'supannTypeEntiteAffectation'       => [],
+        'supannRoleEntite'                  => [],
+        'supannActivite'                    => [],
         'supannEmpCorps'                    => '',
         'supannEntiteAffectationPrincipale' => '',
-      ),
-      'personalInfo'  => array(
-        'fdPrivateMail' => array(),
-      ),
-    );
+      ],
+      'personalInfo'  => [
+        'fdPrivateMail' => [],
+      ],
+    ];
 
     $uuid = '';
 
@@ -259,7 +259,7 @@ class sinapsRequest
     array_unshift($values['supannAccount']['supannRefId'], '{'.$uuidPrefix.'}'.$uuid);
 
     /* Check if the user still has at least one role which means he exists, otherwise this is a deletion */
-    $userRoleExists = array();
+    $userRoleExists = [];
     foreach ($userRoles as $typeRole) {
       if (preg_match('^([^/]+)/(.+)$', $typeRole, $m)) {
         $userRoleExists[$m[1]][] = $m[2];
@@ -300,7 +300,7 @@ class sinapsRequest
       return $values;
     }
 
-    foreach ($mapping as $sinapsAttr => list($fdTab,$fdAttr)) {
+    foreach ($mapping as $sinapsAttr => list($fdTab, $fdAttr)) {
       if (isset($personne->$sinapsAttr)) {
         $values[$fdTab][$fdAttr] = (string)$personne->$sinapsAttr;
       } else {
@@ -410,14 +410,14 @@ class sinapsRequest
       }
     }
 
-    foreach (array('supannRefId','supannEntiteAffectation','supannRoleGenerique','supannTypeEntiteAffectation','supannRoleEntite','supannActivite') as $arrayattribute) {
+    foreach (['supannRefId','supannEntiteAffectation','supannRoleGenerique','supannTypeEntiteAffectation','supannRoleEntite','supannActivite'] as $arrayattribute) {
       $values['supannAccount'][$arrayattribute] = array_values(array_unique($values['supannAccount'][$arrayattribute]));
     }
 
     return $values;
   }
 
-  protected function convertAddress(SimpleXMLElement $address)
+  protected function convertAddress (SimpleXMLElement $address)
   {
     $adresse = '';
     if (!empty($address->adresseFR)) {
@@ -471,7 +471,7 @@ class sinapsRequest
     return $adresse;
   }
 
-  protected function checkValidite(SimpleXMLElement $object, DateTime $now)
+  protected function checkValidite (SimpleXMLElement $object, DateTime $now)
   {
     if ($object->dateDebutValidite) {
       $dateDebutValidite = new DateTime($object->dateDebutValidite);
@@ -490,7 +490,7 @@ class sinapsRequest
     return TRUE;
   }
 
-  protected function getUUIDFromReferenceCroisee($identifiantApplication, $referenceCroisee)
+  protected function getUUIDFromReferenceCroisee ($identifiantApplication, $referenceCroisee)
   {
     foreach ($referenceCroisee->identifiantsExternes as $ref) {
       if ($ref->identifiantApplication == $identifiantApplication) {
@@ -501,7 +501,7 @@ class sinapsRequest
     return '';
   }
 
-  public static function genUUID()
+  public static function genUUID ()
   {
     //UUID v4
     return sprintf(

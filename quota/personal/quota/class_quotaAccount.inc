@@ -25,7 +25,7 @@
 
 class QuotaEntryAttribute extends CharSeparatedCompositeAttribute
 {
-  function readValues($value)
+  function readValues ($value)
   {
     $values = parent::readValues($value);
     $blocksize = $this->plugin->getBlockSize($values[5], $values[0]);
@@ -36,7 +36,7 @@ class QuotaEntryAttribute extends CharSeparatedCompositeAttribute
     return $values;
   }
 
-  function writeValues(array $values)
+  function writeValues (array $values)
   {
     if (!empty($values[5])) {
       $blocksize = $this->plugin->getBlockSize($values[5], $values[0]);
@@ -48,13 +48,13 @@ class QuotaEntryAttribute extends CharSeparatedCompositeAttribute
     return parent::writeValues($values);
   }
 
-  function updateDeviceList()
+  function updateDeviceList ()
   {
     $quotaDeviceList = $this->plugin->getDeviceList($this->attributes[5]->getValue());
     $this->attributes[0]->setChoices(array_keys($quotaDeviceList), array_values($quotaDeviceList));
   }
 
-  function applyPostValue()
+  function applyPostValue ()
   {
     parent::applyPostValue();
     $this->updateDeviceList();
@@ -93,9 +93,9 @@ class quotaAccount extends simplePlugin
 {
   var $displayHeader = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Quota'),
       'plDescription' => _('Plugin for quota support'),
       'plFilter'      => '(objectClass=systemQuotas)',
@@ -103,28 +103,28 @@ class quotaAccount extends simplePlugin
       'plSmallIcon'   => 'geticon.php?context=applications&icon=quota&size=16',
       'plSelfModify'  => TRUE,
       'plPriority'    => 8,
-      'plObjectClass' => array('systemQuotas'),
-      'plObjectType'  => array('user'),
-      'plDepends'     => array('posixAccount'),
+      'plObjectClass' => ['systemQuotas'],
+      'plObjectType'  => ['user'],
+      'plDepends'     => ['posixAccount'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'template'  => get_template_path('quota_section.tpl', TRUE, dirname(__FILE__)),
-        'class'     => array('fullwidth'),
+        'class'     => ['fullwidth'],
         'name'      => _('Quota information'),
         'icon'      => 'geticon.php?context=applications&icon=quota&size=16',
-        'attrs'     => array(
+        'attrs'     => [
           new OrderedArrayAttribute(
             new QuotaEntryAttribute(
               _('Quota information for this user'),
               'quota',
-              array(
+              [
                 new SelectAttribute(
                   _('Device'), _('Device this quota is for'),
                   'quotaDevice', TRUE
@@ -169,18 +169,18 @@ class quotaAccount extends simplePlugin
                   _('Server'), _('Server hosting the device this quota is for'),
                   'quotaServer', TRUE
                 ),
-              ),
+              ],
               ':'
             ),
             // no order
             FALSE,
-            array(),
+            [],
             // edit button
             TRUE
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -189,9 +189,9 @@ class quotaAccount extends simplePlugin
     /* Get List of server with Quota service */
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=quotaService)', array('cn','description','quotaDeviceParameters'));
-    $this->quotaDeviceParameters = array();
-    $quotaServersList = array();
+    $ldap->search('(objectClass=quotaService)', ['cn','description','quotaDeviceParameters']);
+    $this->quotaDeviceParameters = [];
+    $quotaServersList = [];
     while ($attrs = $ldap->fetch()) {
       $this->quotaDeviceParameters[$attrs['cn'][0]] = $attrs['quotaDeviceParameters'];
       unset($this->quotaDeviceParameters[$attrs['cn'][0]]['count']);
@@ -213,9 +213,9 @@ class quotaAccount extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
   }
 
-  function getDeviceList($server)
+  function getDeviceList ($server)
   {
-    $quotaDeviceList = array();
+    $quotaDeviceList = [];
     if (isset($this->quotaDeviceParameters[$server])) {
       foreach ($this->quotaDeviceParameters[$server] as $infos) {
         $quotas = explode(":", $infos);
@@ -228,7 +228,7 @@ class quotaAccount extends simplePlugin
     return $quotaDeviceList;
   }
 
-  function getBlockSize($server, $device)
+  function getBlockSize ($server, $device)
   {
     foreach ($this->quotaDeviceParameters[$server] as $infos) {
       $quotas = explode(":", $infos);
@@ -239,4 +239,3 @@ class quotaAccount extends simplePlugin
     return FALSE;
   }
 }
-?>

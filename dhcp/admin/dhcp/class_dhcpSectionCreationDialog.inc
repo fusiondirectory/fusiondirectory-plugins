@@ -29,7 +29,7 @@ class DhcpSectionCreationDialog extends GenericDialog
   protected $initialObjectValue;
   protected $selectAttribute;
 
-  function __construct($simplePlugin, &$attribute, $classtype, $parentdn, $editingValue = NULL)
+  function __construct ($simplePlugin, &$attribute, $classtype, $parentdn, $editingValue = NULL)
   {
     $this->plugin     = $simplePlugin;
     $this->attribute  = $attribute;
@@ -43,7 +43,7 @@ class DhcpSectionCreationDialog extends GenericDialog
     $this->initialObjectValue = $editingValue;
 
     $sections = dhcpConfiguration::$sectionMap[$this->classtype];
-    $t_sections = array();
+    $t_sections = [];
     foreach ($sections as $section) {
       $t_sections[$section] = $this->plugin->types[$section];
     }
@@ -88,13 +88,13 @@ class DhcpSectionCreationDialog extends GenericDialog
     $smarty->assign('section',        _('Create new DHCP section'));
     $smarty->assign('sectionId',      'dhcpCreation');
     $smarty->assign('sectionClasses', '');
-    $attributes = array();
+    $attributes = [];
     $smarty->assign($this->selectAttribute->getAcl().'ACL', 'rwcdm');
     $this->selectAttribute->renderAttribute($attributes, FALSE);
     $smarty->assign('attributes', $attributes);
-    $sections = array(
+    $sections = [
       'dhcp' => $smarty->fetch(get_template_path('simpleplugin_section.tpl'))
-    );
+    ];
     $smarty->assign('sections', $sections);
     $smarty->assign('hiddenPostedInput', get_class($this).'_posted');
     $smarty->assign('focusedField', $this->selectAttribute->getLdapName());
@@ -127,7 +127,7 @@ class DhcpSectionCreationDialog extends GenericDialog
     return FALSE;
   }
 
-  function save_dhcp()
+  function save_dhcp ()
   {
     $this->dialog->save_object();
     $messages = $this->dialog->check();
@@ -141,4 +141,3 @@ class DhcpSectionCreationDialog extends GenericDialog
     return FALSE;
   }
 }
-?>

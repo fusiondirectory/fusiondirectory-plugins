@@ -25,7 +25,7 @@ require_once('variables.inc');
 
 class expiredUserPostpone extends standAlonePage
 {
-  function readLdapConfig()
+  function readLdapConfig ()
   {
     global $config;
     $this->forward_postpone = ($config->get_cfg_value('userReminderForwardConfirmation', 'TRUE') == 'TRUE');
@@ -39,7 +39,7 @@ class expiredUserPostpone extends standAlonePage
     return TRUE;
   }
 
-  function execute()
+  function execute ()
   {
     global $error_collector, $error_collector_mailto;
     if (!$this->activated) {
@@ -50,7 +50,7 @@ class expiredUserPostpone extends standAlonePage
       // Check if the token match
       $this->uid = $_GET['uid'];
       if ($this->checkToken($_GET['token'])) {
-        $this->message = array();
+        $this->message = [];
         $this->postponeExpiration();
         if (!empty($this->message)) {
           msg_dialog::displayChecks($this->message);
@@ -95,7 +95,7 @@ class expiredUserPostpone extends standAlonePage
     $smarty->display(get_template_path('user-reminder.tpl'));
   }
 
-  function checkToken($token)
+  function checkToken ($token)
   {
     global $config;
     $sha_token = '{SHA}'.base64_encode(hash('sha256', 'expired'.$token, TRUE));
@@ -117,7 +117,7 @@ class expiredUserPostpone extends standAlonePage
     }
   }
 
-  function deleteToken()
+  function deleteToken ()
   {
     global $config;
 
@@ -130,7 +130,7 @@ class expiredUserPostpone extends standAlonePage
     }
   }
 
-  function postponeExpiration()
+  function postponeExpiration ()
   {
     global $config;
     $dn = $this->getUserDn();
@@ -164,13 +164,13 @@ class expiredUserPostpone extends standAlonePage
     if ($this->forward_postpone) {
       $ldap = $config->get_ldap_link();
       if (empty($manager_dn)) {
-        $ldap->cat($userTabs->getBaseObject()->base, array('manager'));
+        $ldap->cat($userTabs->getBaseObject()->base, ['manager']);
         if ($attrs = $ldap->fetch() && isset($attrs['manager'][0])) {
           $manager_dn = $attrs['manager'][0];
         }
       }
       if (!empty($manager_dn)) {
-        $ldap->cat($manager_dn, array('cn', 'mail', 'gosaMailAlternateAddress', 'supannAutreMail', 'fdPrivateMail'));
+        $ldap->cat($manager_dn, ['cn', 'mail', 'gosaMailAlternateAddress', 'supannAutreMail', 'fdPrivateMail']);
         if ($attrs = $ldap->fetch()) {
           if (!empty($attrs['mail'][0])) {
             $manager_mail = $attrs['mail'][0];
@@ -187,7 +187,7 @@ class expiredUserPostpone extends standAlonePage
     $this->sendConfirmationMail($cn, $email_address, $manager_mail);
   }
 
-  function sendConfirmationMail($cn, $email_address, $manager_mail)
+  function sendConfirmationMail ($cn, $email_address, $manager_mail)
   {
     if (empty($this->mail_body) || empty($this->mail_subject)) {
       return;
@@ -203,7 +203,7 @@ class expiredUserPostpone extends standAlonePage
     }
   }
 
-  function getUserDn()
+  function getUserDn ()
   {
     $users = objects::ls('user', NULL, NULL, '(uid='.$this->uid.')');
 

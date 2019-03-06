@@ -21,25 +21,25 @@
 
 class serviceTerminal extends simpleService
 {
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Terminal service'),
       'plDescription' => _('Terminal service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=devices&icon=terminal&size=16',
-      'plObjectClass' => array('goTerminalServer'),
+      'plObjectClass' => ['goTerminalServer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-      return array (
-      'section1' => array (
+    return  [
+      'section1' => [
         'name'  => _('Terminal service'),
-        'attrs' => array (
-          new BooleanAttribute (
+        'attrs' => [
+          new BooleanAttribute(
             _('Temporary disable login'),
             _('Disables the login on this terminal server'),
             'goXdmcpIsEnabled', FALSE,
@@ -48,20 +48,18 @@ class serviceTerminal extends simpleService
             1,
             0
           ),
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Supported session types'),
               _('The session types supported by this terminal server'),
               'gotoSessionType', FALSE,
-              array('XDMCP', 'LDM', 'SHELL', 'TELNET', 'RDP'),
+              ['XDMCP', 'LDM', 'SHELL', 'TELNET', 'RDP'],
               '',
-              array(_('XDMCP'), _('LDM'), _('Shell'), _('Telnet'), _('Windows RDP'))
+              [_('XDMCP'), _('LDM'), _('Shell'), _('Telnet'), _('Windows RDP')]
             )
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }
-
-?>

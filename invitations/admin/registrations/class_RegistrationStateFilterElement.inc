@@ -25,7 +25,7 @@ class RegistrationStateFilterElement extends FilterElement
 {
   protected $states;
 
-  public function __construct(managementFilter $parent)
+  public function __construct (managementFilter $parent)
   {
     global $config;
 
@@ -33,18 +33,18 @@ class RegistrationStateFilterElement extends FilterElement
 
     $states = RegistrationStateAttribute::getStates();
     foreach ($states as $key => list($label, $icon)) {
-      $this->states[$key] = array(
+      $this->states[$key] = [
         'filter'  => '(fdRegistrationState='.$key.')',
         'label'   => $label,
         'icon'    => $icon,
         'checked' => FALSE,
-      );
+      ];
     }
 
     $this->states['filled']['checked'] = TRUE;
   }
 
-  public function update()
+  public function update ()
   {
     foreach ($this->states as $key => &$infos) {
       $infos['checked'] = isset($_POST['filter_state_'.$key]);
@@ -52,16 +52,16 @@ class RegistrationStateFilterElement extends FilterElement
     unset($infos);
   }
 
-  public function render()
+  public function render ()
   {
-    $inputs = array();
+    $inputs = [];
     foreach ($this->states as $key => $infos) {
-      $inputs['filter_state_'.$key] = array(
+      $inputs['filter_state_'.$key] = [
         'name'    => $infos['label'],
         'desc'    => $infos['label'].' '.$infos['filter'],
         'icon'    => (isset($infos['icon']) ? $infos['icon'] : NULL),
         'checked' => $infos['checked'],
-      );
+      ];
     }
     $smarty = get_smarty();
     $smarty->assign('NAME',   _('Statuses'));
@@ -69,10 +69,10 @@ class RegistrationStateFilterElement extends FilterElement
     return $smarty->fetch(get_template_path('management/filter-element.tpl'));
   }
 
-  public function getFilters($type, array &$filters)
+  public function getFilters ($type, array &$filters)
   {
     if (strtoupper($type) == 'REGISTRATION') {
-      $stateFilters = array();
+      $stateFilters = [];
       foreach ($this->states as $infos) {
         if ($infos['checked']) {
           $stateFilters[] = $infos['filter'];

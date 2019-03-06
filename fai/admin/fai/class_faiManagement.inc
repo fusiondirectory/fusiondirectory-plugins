@@ -22,7 +22,7 @@ class faiListing extends listing
 {
   private $builded = FALSE;
 
-  function __construct($data)
+  function __construct ($data)
   {
     parent::__construct($data);
     // Instanciate base selector
@@ -32,7 +32,7 @@ class faiListing extends listing
   /*!
    * \brief Refresh the bases list
    */
-  function refreshBasesList()
+  function refreshBasesList ()
   {
     if (!$this->builded) {
       return;
@@ -53,7 +53,7 @@ class faiBaseSelector extends baseSelector
 {
   protected $select;
 
-  function __construct($bases, $base = '')
+  function __construct ($bases, $base = '')
   {
     parent::__construct($bases, $base);
     $this->select = new SelectAttribute(
@@ -64,7 +64,7 @@ class faiBaseSelector extends baseSelector
     $this->select->setSubmitForm(TRUE);
   }
 
-  function setBases($bases)
+  function setBases ($bases)
   {
     $this->pathMapping = $bases;
 
@@ -73,7 +73,7 @@ class faiBaseSelector extends baseSelector
     }
   }
 
-  function update($force = FALSE)
+  function update ($force = FALSE)
   {
     if (!is_object($this->select)) {
       return TRUE;
@@ -103,7 +103,7 @@ class faiBaseSelector extends baseSelector
 class faiManagement extends simpleManagement
 {
   // Tab definition
-  protected $objectTypes  = array('faiVariable', 'faiHook', 'faiScript', 'faiPackage', 'faiPartitionTable', 'faiTemplate', 'faiProfile');
+  protected $objectTypes  = ['faiVariable', 'faiHook', 'faiScript', 'faiPackage', 'faiPartitionTable', 'faiTemplate', 'faiProfile'];
 
   protected $departmentBrowser      = FALSE;
   protected $departmentRootVisible  = FALSE;
@@ -111,23 +111,23 @@ class faiManagement extends simpleManagement
 
   protected $headpageClass = 'faiListing';
 
-  public static function plInfo()
+  public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('FAI'),
       'plDescription' => _('Manage FAI software packages and deployment recipes'),
       'plIcon'        => 'geticon.php?context=applications&icon=fai&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 20,
-      'plCategory'    => array('fai' => array('description'  => _('FAI'),
-                                              'objectClass'  => array('FAIclass'))),
-      'plManages'     => array('faiVariable', 'faiHook', 'faiScript', 'faiPackage', 'faiPartitionTable', 'faiTemplate', 'faiProfile'),
+      'plCategory'    => ['fai' => ['description'  => _('FAI'),
+                                              'objectClass'  => ['FAIclass']]],
+      'plManages'     => ['faiVariable', 'faiHook', 'faiScript', 'faiPackage', 'faiPartitionTable', 'faiTemplate', 'faiProfile'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 
-  function execute ()
+  function execute (): string
   {
     if (empty($this->headpage->bases)) {
       return $this->getHeader().
@@ -147,14 +147,14 @@ class faiManagement extends simpleManagement
 
   /*! \brief   Returns a list of all releases for useable for drop down boxes.
    */
-  static function getReleaseList()
+  static function getReleaseList ()
   {
     global $config;
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=FAIbranch)', array('ou','FAIstate'));
+    $ldap->search('(objectClass=FAIbranch)', ['ou','FAIstate']);
 
-    $list = array();
+    $list = [];
 
     while ($release = $ldap->fetch()) {
       preg_match('/[^,],ou=([^,]+),/', $release['dn'], $m);
@@ -164,4 +164,3 @@ class faiManagement extends simpleManagement
     return $list;
   }
 }
-?>

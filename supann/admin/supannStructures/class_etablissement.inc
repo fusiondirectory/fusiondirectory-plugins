@@ -20,33 +20,33 @@
 
 class etablissement extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Establishment'),
       'plDescription' => _('SupAnn Establishment Settings'),
-      'plObjectClass' => array('supannEntite','organization','supannOrg','eduOrg'),
+      'plObjectClass' => ['supannEntite','organization','supannOrg','eduOrg'],
       'plFilter'      => '(&(objectClass=supannEntite)(objectClass=organization))',
-      'plObjectType'  => array('etablissement' => array(
+      'plObjectType'  => ['etablissement' => [
         'name'        => _('SupAnn Establishment'),
         'ou'          => get_ou('supannStructuresRDN'),
         'mainAttr'    => 'supannCodeEntite',
         'icon'        => 'geticon.php?context=applications&icon=supann-etablissement&size=16',
         'nameAttr'    => 'o',
-      )),
-      'plSearchAttrs' => array('description', 'supannEtablissement', 'eduOrgLegalName'),
+      ]],
+      'plSearchAttrs' => ['description', 'supannEtablissement', 'eduOrgLegalName'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new BooleanAttribute(
             _('Root establishment'), _('Set this establishment as the root one'),
             'set_root'
@@ -59,11 +59,11 @@ class etablissement extends simplePlugin
             _('Description'), _('A short description of this establishment'),
             'description', FALSE
           )
-        )
-      ),
-      'location' => array(
+        ]
+      ],
+      'location' => [
         'name'  => _('Location'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Location'), _('Usually the city where this establishment is'),
             'l', FALSE
@@ -80,11 +80,11 @@ class etablissement extends simplePlugin
             _('Fax'), _('Fax number of this establishment'),
             'facsimileTelephoneNumber', FALSE
           ),
-        )
-      ),
-      'supann' => array(
+        ]
+      ],
+      'supann' => [
         'name'  => _('SupAnn properties'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Establishment code'), _('The code of this establishment (must have a prefix between {})'),
             'supannEtablissement', TRUE,
@@ -111,9 +111,9 @@ class etablissement extends simplePlugin
             _('White pages URI'), _('The URI of this establishment white pages'),
             'eduOrgWhitePagesURI', FALSE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -137,7 +137,7 @@ class etablissement extends simplePlugin
     $this->set_root = (($root_code !== FALSE) && ($root_code == $this->supannEtablissement));
   }
 
-  protected function ldap_remove()
+  protected function ldap_remove (): array
   {
     global $config;
     $errors = parent::ldap_remove();
@@ -155,10 +155,10 @@ class etablissement extends simplePlugin
         msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()));
       }
     }
-    return array();
+    return [];
   }
 
-  function ldap_save()
+  function ldap_save (): array
   {
     global $config;
     $errors = parent::ldap_save();
@@ -193,7 +193,7 @@ class etablissement extends simplePlugin
     }
 
     if ($root_mode) {
-      $root_attrs['objectClass'] = array('top','dcObject','organization','supannOrg','eduOrg');
+      $root_attrs['objectClass'] = ['top','dcObject','organization','supannOrg','eduOrg'];
       $root_attrs['dc'] = $root_attrs['o'];
       unset($root_attrs['supannCodeEntite']);
       $dn = 'o='.$this->o.','.$config->current['BASE'];
@@ -210,13 +210,13 @@ class etablissement extends simplePlugin
     return $errors;
   }
 
-  function get_root_code()
+  function get_root_code ()
   {
     global $config;
     $ldap = $config->get_ldap_link();
 
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=supannOrg)', array('*'), 'one');
+    $ldap->search('(objectClass=supannOrg)', ['*'], 'one');
 
     if ($ldap->count() > 1) {
       msg_dialog::display(_('LDAP error'), 'There are several establishments at root!');
@@ -229,4 +229,3 @@ class etablissement extends simplePlugin
     }
   }
 }
-?>

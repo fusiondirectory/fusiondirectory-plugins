@@ -22,39 +22,38 @@ class newsletterSubscriptions extends simplePlugin
 {
   var $displayHeader = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Newsletter'),
       'plDescription'   => _('Newsletter subscriptions'),
       'plFilter'        => '(objectClass=fdNewsletterAccount)',
       'plSelfModify'    => TRUE,
-      'plObjectClass'   => array('fdNewsletterAccount'),
-      'plObjectType'    => array('user'),
+      'plObjectClass'   => ['fdNewsletterAccount'],
+      'plObjectType'    => ['user'],
       'plIcon'          => 'geticon.php?context=applications&icon=newsletter&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=newsletter&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     global $config;
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Personal info'),
-        'attrs' => array(
+        'attrs' => [
           new SetAttribute(
-            new SelectAttribute (
+            new SelectAttribute(
               _('Subscriptions'), _('Newsletter you are subscribed to'),
               'fdNewsletterSubscriptions', FALSE,
-              $config->get_cfg_value('newsletterChoices', array())
+              $config->get_cfg_value('newsletterChoices', [])
             )
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
-?>

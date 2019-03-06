@@ -20,42 +20,42 @@
 
 class sambaDomain extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Samba Domain'),
       'plDescription' => _('Samba Domain'),
-      'plObjectClass' => array('sambaDomain'),
-      'plObjectType'  => array(
-        'sambaDomain' => array(
+      'plObjectClass' => ['sambaDomain'],
+      'plObjectType'  => [
+        'sambaDomain' => [
           'name'        => _('Samba Domain'),
           'description' => _('Samba domain settings'),
           'icon'        => 'geticon.php?context=applications&icon=samba&size=16',
           'ou'          => '',
           'mainAttr'    => 'sambaDomainName',
-        )
-      ),
-      'plSearchAttrs' => array('sambaSID'),
+        ]
+      ],
+      'plSearchAttrs' => ['sambaSID'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Domain name'), _('Name of this domain'),
             'sambaDomainName', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('SID'), _('SID of this domain'),
             'sambaSID', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Rid base'), _('Algorithmic rid base'),
             'sambaAlgorithmicRidBase', FALSE
           ),
@@ -126,12 +126,12 @@ class sambaDomain extends simplePlugin
             _('Allow Machine Password changes (default: 0 => off)'),
             'sambaRefuseMachinePwdChange'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
-  function compute_dn ()
+  function compute_dn (): string
   {
     global $config;
     return 'sambaDomainName='.ldap_escape($this->sambaDomainName, '', LDAP_ESCAPE_DN).','.$config->current['BASE'];

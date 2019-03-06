@@ -20,72 +20,71 @@
 
 class mailPluginConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Mail'),
       'plDescription'   => _('Mail plugin configuration'),
       'plPriority'      => 3,
-      'plObjectClass'   => array('fdMailPluginConf'),
-      'plObjectType'    => array('configuration'),
+      'plObjectClass'   => ['fdMailPluginConf'],
+      'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'mail' => array(
+    return [
+      'mail' => [
         'name'  => _('Mail settings'),
-        'attrs' => array(
-          new SelectAttribute (
+        'attrs' => [
+          new SelectAttribute(
             _('Account identification attribute'),
             _('Which attribute will be used to create accounts.'),
             'fdMailAttribute', TRUE,
-            array('mail', 'uid')
+            ['mail', 'uid']
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Mail user template'),
             _('Override the user account creation syntax.'),
             'fdMailUserCreation'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Mail folder template'),
             _('Override the methods default account creation syntax.'),
             'fdMailFolderCreation'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Use cyrus UNIX style'),
             _("Determines if 'foo/bar' or 'foo.bar' should be uses as namespaces in IMAP."),
             'fdCyrusUseSlashes'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Delete mailbox on account deletion'),
             _('Determines if the mailbox should be removed from your IMAP server after the account is deleted in LDAP.'),
             'fdCyrusDeleteMailbox'
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Cyrus autocreate folders'),
               _('List of personal IMAP folders that should be created along initial account creation.'),
               'fdCyrusAutocreateFolders'
             )
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('IMAP timeout'),
             _('Sets the connection timeout for imap actions.'),
             'fdImapTimeout', FALSE,
             0, FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Shared prefix'),
             _('Prefix to add for mail shared folders.'),
             'fdMailSharedPrefix'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
-?>

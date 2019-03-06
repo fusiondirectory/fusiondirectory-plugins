@@ -20,47 +20,47 @@
 
 class mailAliasDistribution extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Temporary mail distribution'),
       'plDescription' => _('Temporary mail distribution'),
-      'plObjectClass' => array('mailAliasDistribution'),
-      'plObjectType'  => array('mailAliasDistribution' => array(
+      'plObjectClass' => ['mailAliasDistribution'],
+      'plObjectType'  => ['mailAliasDistribution' => [
         'name'        => _('Temporary mail distribution'),
         'aclCategory' => 'alias',
         'icon'        => 'geticon.php?context=applications&icon=alias-distribution&size=16',
         'ou'          => get_ou('aliasRDN'),
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Mail distribution'),
-        'attrs' => array(
-          new BaseSelectorAttribute (get_ou('aliasRDN')),
-          new HostNameAttribute (_('Name'), _('Name to identify this alias'), 'cn', TRUE),
-          new TextAreaAttribute (
+        'attrs' => [
+          new BaseSelectorAttribute(get_ou('aliasRDN')),
+          new HostNameAttribute(_('Name'), _('Name to identify this alias'), 'cn', TRUE),
+          new TextAreaAttribute(
             _('Description'), _('Description of this alias'),
             'description', FALSE
           ),
-          new MailAttribute (
+          new MailAttribute(
             _('Email address'), _('Email address'),
             'mail', TRUE
           ),
           new SetAttribute(
-            new MailAttribute (
+            new MailAttribute(
               _('Email aliases'), _('Aliases for this email address'),
               'gosaMailAlternateAddress', TRUE
             )
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Mail server'), _('Mail server for this alias'),
             'gosaMailServer', FALSE,
             array_keys(mailMethod::getMailServers())
@@ -72,10 +72,8 @@ class mailAliasDistribution extends simplePlugin
             'U',
             ''
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
-
-?>

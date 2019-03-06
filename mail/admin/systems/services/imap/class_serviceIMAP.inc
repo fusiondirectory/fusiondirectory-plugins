@@ -22,8 +22,7 @@
 
 class simpleMailMethodService extends simpleService
 {
-
-  protected function prepare_save ()
+  protected function prepare_save (): array
   {
     if (!$this->shouldSave()) {
       // Reset mail server cache now as post_save won’t be called
@@ -32,7 +31,7 @@ class simpleMailMethodService extends simpleService
     return parent::prepare_save();
   }
 
-  protected function post_save()
+  protected function post_save ()
   {
     parent::post_save();
     mailMethod::resetMailServersCache();
@@ -47,29 +46,28 @@ class simpleMailMethodService extends simpleService
 
 class serviceIMAP extends simpleMailMethodService
 {
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('IMAP/POP3 generic service'),
       'plDescription' => _('IMAP/POP3').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=imap&size=16',
-      'plObjectClass' => array('fdImapServer'),
+      'plObjectClass' => ['fdImapServer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array();
+    return [];
   }
 
-  function execute()
+  function execute (): string
   {
     return '<b>This server runs an IMAP or POP3 server</b>'.parent::execute();
   }
 }
-?>

@@ -20,33 +20,32 @@
 
 class dhcpConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('DHCP configuration'),
       'plDescription'   => _('FusionDirectory dhcp plugin configuration'),
-      'plObjectClass'   => array('fdDhcpPluginConf'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectClass'   => ['fdDhcpPluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('DHCP config'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('DHCP RDN'), _('Branch in which DHCP configurations will be stored'),
             'fdDhcpRDN', TRUE,
             'ou=dhcp'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
-?>

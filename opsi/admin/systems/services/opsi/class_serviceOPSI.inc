@@ -20,24 +20,24 @@
 
 class serviceOPSI extends simpleService
 {
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('OPSI service'),
       'plDescription' => _('OPSI service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=opsi&size=16',
-      'plObjectClass' => array('opsiServer'),
+      'plObjectClass' => ['opsiServer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'      => _('OPSI Server information'),
-        'attrs'     => array(
+        'attrs'     => [
           new StringAttribute(
             _('Server URI'), _('The URI to use for connection'),
             'fdOpsiServerURI', TRUE
@@ -50,9 +50,9 @@ class serviceOPSI extends simpleService
             _('Password'), _('The password to use for connection'),
             'fdOpsiServerPassword', TRUE
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $parent = NULL)
@@ -77,4 +77,3 @@ class serviceOPSI extends simpleService
     }
   }
 }
-?>

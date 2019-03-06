@@ -19,65 +19,50 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class GeneralizedTimeDisplayAttribute extends GeneralizedTimeDateAttribute
-{
-  function getValue ()
-  {
-    return $this->computeLdapValue();
-  }
-
-  function renderFormInput ()
-  {
-    $date = $this->getDateValue();
-    $date->setTimezone(timezone::getDefaultTimeZone());
-    return htmlentities($date->format('Y-m-d, H:i:s'), ENT_COMPAT, 'UTF-8');
-  }
-}
-
 class auditEvent extends simplePlugin
 {
   public $base;
 
-  public static function plInfo()
+  public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Audit event'),
       'plDescription' => _('An event like ldap modification which was registered by audit plugin'),
-      'plObjectClass' => array('fdAuditEvent'),
-      'plObjectType'  => array('auditEvent' => array(
+      'plObjectClass' => ['fdAuditEvent'],
+      'plObjectType'  => ['auditEvent' => [
         'name'        => _('Audit event'),
         'icon'        => 'geticon.php?context=applications&icon=audit&size=16',
         'ou'          => get_ou('auditRDN'),
         'mainAttr'    => FALSE,
-      )),
-      'plSearchAttrs' => array('fdAuditAction','fdAuditAuthorDN','fdAuditObjectType',
-        'fdAuditObject','fdAuditAttributes','fdAuditResult'),
+      ]],
+      'plSearchAttrs' => ['fdAuditAction','fdAuditAuthorDN','fdAuditObjectType',
+        'fdAuditObject','fdAuditAttributes','fdAuditResult'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Event'),
-        'attrs' => array(
-          new HiddenAttribute ('fdAuditId'),
+        'attrs' => [
+          new HiddenAttribute('fdAuditId'),
           new GeneralizedTimeDisplayAttribute(
             _('Time'), _('Date and time this event happened'),
             'fdAuditDateTime', TRUE
           ),
-          new DisplayLDAPAttribute  (_('Action'),       _('Action type'),     'fdAuditAction',      TRUE),
-          new ObjectLinkAttribute   (_('Author'),       _('Action author'),   'fdAuditAuthorDN',    TRUE, 'user'),
-          new DisplayLDAPAttribute  (_('Object type'),  _('Object type'),     'fdAuditObjectType',  TRUE),
-          new DisplayLDAPAttribute  (_('Object'),       _('Target object'),   'fdAuditObject',      TRUE),
-          new DisplayLDAPArrayAttribute(_('Attributes'), _('Target attributes'), 'fdAuditAttributes', FALSE),
-          new DisplayLDAPAttribute  (_('Result'),       _('Result or error'), 'fdAuditResult',      FALSE),
-        )
-      ),
-    );
+          new DisplayLDAPAttribute(_('Action'),           _('Action type'),       'fdAuditAction',      TRUE),
+          new ObjectLinkAttribute(_('Author'),            _('Action author'),     'fdAuditAuthorDN',    TRUE, 'user'),
+          new DisplayLDAPAttribute(_('Object type'),      _('Object type'),       'fdAuditObjectType',  TRUE),
+          new DisplayLDAPAttribute(_('Object'),           _('Target object'),     'fdAuditObject',      TRUE),
+          new DisplayLDAPArrayAttribute(_('Attributes'),  _('Target attributes'), 'fdAuditAttributes',  FALSE),
+          new DisplayLDAPAttribute(_('Result'),           _('Result or error'),   'fdAuditResult',      FALSE),
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
@@ -86,7 +71,7 @@ class auditEvent extends simplePlugin
     $this->fdAuditId = random_int(0, PHP_INT_MAX);
   }
 
-  function compute_dn()
+  function compute_dn (): string
   {
     return $this->create_unique_dn('fdAuditDateTime', get_ou('auditRDN').$this->base);
   }

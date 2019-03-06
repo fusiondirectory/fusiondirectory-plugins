@@ -21,111 +21,111 @@
 
 class argonautServer extends simpleService
 {
-  static function plInfo()
+  static function plInfo (): array
   {
     $acls = parent::generatePlProvidedAcls(static::getAttributesInfo());
     unset($acls['simpleServiceStart']);
     unset($acls['simpleServiceStop']);
     unset($acls['simpleServiceRestart']);
-    return array(
+    return [
       'plShortName'   => _('Argonaut server'),
       'plDescription' => _('Argonaut server').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=argonaut&size=16',
-      'plObjectClass' => array('argonautServer'),
+      'plObjectClass' => ['argonautServer'],
 
       'plProvidedAcls'  => $acls,
-    );
+    ];
   }
 
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array (
-      'server' => array (
+    return  [
+      'server' => [
         'name'  => _('Argonaut server'),
-        'attrs' => array (
-          new BooleanAttribute (
+        'attrs' => [
+          new BooleanAttribute(
             _('Delete finished tasks'),
             _('Wether or not argonaut server should delete successfully finished tasks'),
             'argonautDeleteFinished', FALSE,
             TRUE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Get packages information'),
             _('Wether or not argonaut server should get packages information from repositories at start and then once a day. Needed for FAI package list creation.'),
             'argonautFetchPackages', FALSE,
             TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Protocol'), _('Protocol to use for argonaut'),
             'argonautProtocol', TRUE,
-            array('http', 'https')
+            ['http', 'https']
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Port'),
             _('Port on which the argonaut server will be listening'),
             'argonautPort', TRUE,
             0 /*min*/, FALSE /*no max*/, 8080 /*default value*/
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Timeout'),
             _('Time in seconds before to consider an argonaut client or server as down'),
             'argonautTimeout', FALSE,
             1 /*min*/, FALSE /*no max*/,
             10
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Log directory'),
             _('Directory in which argonaut will store its log'),
             'argonautLogDir', FALSE,
             '/var/log/argonaut'
           )
-        )
-      ),
-      'wakeonlan' => array (
+        ]
+      ],
+      'wakeonlan' => [
         'name'  => _('Wake on lan'),
-        'attrs' => array (
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Interface'),
             _('Interface to use for sending WakeOnLan requests'),
             'argonautWakeOnLanInterface', FALSE,
             'eth0'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('IP tool'), _('IP tool to use'),
             'argonautIpTool', FALSE,
             '/sbin/ifconfig'
           ),
-        )
-      ),
-      'ssl' => array (
+        ]
+      ],
+      'ssl' => [
         'name'  => _('SSL paths'),
-        'attrs' => array (
-          new TrimmedStringAttribute (
+        'attrs' => [
+          new TrimmedStringAttribute(
             _('Key'), _('Path to the private key file on Argonaut server'),
             'argonautKeyPath', FALSE,
             '/etc/ssl/private/argonaut.key'
           ),
-          new TrimmedStringAttribute (
+          new TrimmedStringAttribute(
             _('Certificate'), _('Path to the certificate file on Argonaut server'),
             'argonautCertPath', FALSE,
             '/etc/ssl/certs/argonaut.cert'
           ),
-          new TrimmedStringAttribute (
+          new TrimmedStringAttribute(
             _('CA certificate'), _('Path to the CA certificate file on Argonaut server'),
             'argonautCaCertPath', FALSE,
             '/etc/ssl/certs/ca.cert'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('CN of the certificate'), _('The CN in the server certificate'),
             'argonautCertCN', FALSE
           ),
-          new HiddenAttribute ('argonautServerToken'),
-        )
-      )
-    );
+          new HiddenAttribute('argonautServerToken'),
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $parent = NULL)
@@ -135,18 +135,18 @@ class argonautServer extends simpleService
       $this->argonautServerToken = md5(random_int(0, PHP_INT_MAX));
     }
     $this->attributesAccess['argonautProtocol']->setManagedAttributes(
-      array(
-        'disable' => array (
-          'http' => array (
+      [
+        'disable' => [
+          'http' => [
             'argonautKeyPath','argonautCertPath','argonautCaCertPath','argonautCertCN'
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
   }
 
   /*! \brief Get service information for serverService plugin */
-  function getListEntry()
+  function getListEntry ()
   {
     $fields = parent::getListEntry();
 
@@ -158,4 +158,3 @@ class argonautServer extends simpleService
     return $fields;
   }
 }
-?>

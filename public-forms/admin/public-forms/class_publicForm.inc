@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018 FusionDirectory
+
+  Copyright (C) 2017-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,34 +21,33 @@
 
 class publicForm extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Public form'),
       'plDescription' => _('Public form which creates objects inside FusionDirectory'),
-      'plIcon'        => '',
-      'plObjectClass' => array('fdPublicForm'),
-      'plObjectType'  => array('publicForm' => array(
+      'plObjectClass' => ['fdPublicForm'],
+      'plObjectType'  => ['publicForm' => [
         'name'    => _('Public form'),
         'ou'      => get_ou('publicFormRDN'),
-        'icon'    => '',
-      )),
+        'icon'    => 'geticon.php?context=types&icon=publicform&size=16',
+      ]],
       //~ 'plForeignKeys'   => array(
         //~ 'fdPublicFormTemplateDN' => '?',
       //~ ),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     global $config;
 
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Form'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('publicFormRDN')),
           new HostNameAttribute(
             _('Name'), _('Name used to identify this form'),
@@ -61,15 +61,15 @@ class publicForm extends simplePlugin
             _('Text'), _('Text of the public form, shown before the form'),
             'fdPublicFormText', FALSE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Object type'), _('Type of objects you wish to create from this form'),
             'fdPublicFormTemplateType', TRUE,
-            array(), 'USER', NULL
+            [], 'USER', NULL
           ),
           new SelectAttribute(
             _('Template'), _('Object template used by this form'),
             'fdPublicFormTemplateDN', TRUE,
-            array(), '', NULL
+            [], '', NULL
           ),
           new TextAreaAttribute(
             _('Confirmation text'), _('Text shown once the object is created'),
@@ -90,9 +90,9 @@ class publicForm extends simplePlugin
             _('TOS URL'), _('Terms of service URL. If filled, this adds a mandatory checkbox to agree to the terms at this URL.'),
             'fdPublicFormTosUrl', FALSE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
@@ -113,10 +113,9 @@ class publicForm extends simplePlugin
     $this->attributesAccess['fdPublicFormTemplateType']->setSubmitForm('typeChanged');
   }
 
-  function typeChanged()
+  function typeChanged ()
   {
     $templates = objects::getTemplates($this->fdPublicFormTemplateType);
     $this->attributesAccess['fdPublicFormTemplateDN']->setChoices(array_keys($templates), array_values($templates));
   }
 }
-?>

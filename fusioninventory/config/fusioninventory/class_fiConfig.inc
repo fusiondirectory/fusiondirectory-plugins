@@ -20,39 +20,38 @@
 
 class fiConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('FusionInventory configuration'),
       'plDescription'   => _('FusionDirectory FusionInventory plugin configuration'),
-      'plObjectClass'   => array('fdInventoryPluginConf'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectClass'   => ['fdInventoryPluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('FusionInventory'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Inventory RDN'), _('Branch in which inventory objects will be stored'),
             'fdInventoryRDN', TRUE,
             'ou=inventory'
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Inventory matching'), _('Criteria to link an inventory result to a system'),
             'fdInventoryMatching', TRUE,
-            array('mac','ip','both','either'), 'mac',
-            array(_('Mac address'), _('IP address'), _('Both'), _('IP or Mac address'))
+            ['mac','ip','both','either'], 'mac',
+            [_('Mac address'), _('IP address'), _('Both'), _('IP or Mac address')]
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
-?>

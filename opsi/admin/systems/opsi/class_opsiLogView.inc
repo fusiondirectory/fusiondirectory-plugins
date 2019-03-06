@@ -25,25 +25,25 @@ class opsiLogView extends simplePlugin
 
   var $displayHeader  = FALSE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('OPSI Logs'),
       'plDescription' => _('OPSI Logs Viewer'),
       'plPriority'    => 30,
-      'plObjectType'  => array('workstation'),
+      'plObjectType'  => ['workstation'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'logs' => array(
+    return [
+      'logs' => [
         'name'  => _('Available logs'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new SelectAttribute(
             _('Available logs'), _('Available log files'),
             'available_logs', FALSE
@@ -52,9 +52,9 @@ class opsiLogView extends simplePlugin
             '', _('Content of the selected log'),
             'display_log'
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -76,7 +76,7 @@ class opsiLogView extends simplePlugin
 
       if (isset($this->parent->by_object['opsiClient']) && $this->parent->by_object['opsiClient']->is_account && ($this->mac != '')) {
         /* Query for log files */
-        $res = $this->o_queue->append_call('System.list_logs', $this->mac, array('args' => array()));
+        $res = $this->o_queue->append_call('System.list_logs', $this->mac, ['args' => []]);
         if ($this->o_queue->is_error()) {
           msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
         }
@@ -96,18 +96,18 @@ class opsiLogView extends simplePlugin
     $this->ignore_account = FALSE;
   }
 
-  function is_this_account($attrs)
+  function is_this_account ($attrs)
   {
     /* Will not work when called from parent constructor (or when $attrs is not us) */
     return (count($this->attributesAccess['available_logs']->getChoices()) > 1);
   }
 
-  function loadLog()
+  function loadLog ()
   {
     if ($this->is_template) {
       return;
     }
-    $res = $this->o_queue->append_call('System.get_log', $this->mac, array('args' => array($this->available_logs)));
+    $res = $this->o_queue->append_call('System.get_log', $this->mac, ['args' => [$this->available_logs]]);
     if ($this->o_queue->is_error()) {
       msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
     } else {
@@ -117,14 +117,13 @@ class opsiLogView extends simplePlugin
     }
   }
 
-  function save()
+  function save (): array
   {
-    return array();
+    return [];
   }
 
-  function remove($fulldelete = FALSE)
+  function remove (bool $fulldelete = FALSE): array
   {
-    return array();
+    return [];
   }
 }
-?>

@@ -20,32 +20,32 @@
 
 class invitation extends simplePlugin
 {
-  public static function plInfo()
+  public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Invitation'),
       'plDescription' => _('Invitation to fill a public form'),
-      'plObjectClass' => array('fdInvitation'),
-      'plObjectType'  => array('invitation' => array(
+      'plObjectClass' => ['fdInvitation'],
+      'plObjectType'  => ['invitation' => [
         'name'    => _('Invitation'),
         'ou'      => get_ou('invitationRDN'),
-        'icon'    => 'geticon.php?context=types&icon=application&size=16',
-      )),
-      'plForeignKeys'   => array(
+        'icon'    => 'geticon.php?context=types&icon=invitation&size=16',
+      ]],
+      'plForeignKeys'   => [
         'fdInvitationFormDN' => 'publicForm',
-      ),
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
     global $ui, $config;
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Invitation'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('invitationRDN')),
           new HostNameAttribute(
             _('Name'), _('Name used to identify this invitation'),
@@ -69,11 +69,11 @@ class invitation extends simplePlugin
             'fdInvitationAuthor', FALSE,
             $ui->dn
           ),
-        )
-      ),
-      'emails' => array(
+        ]
+      ],
+      'emails' => [
         'name'  => _('Emails'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Reply to'), _('Email address set as "Reply to" in the sent emails'),
             'reply_to', FALSE
@@ -83,9 +83,9 @@ class invitation extends simplePlugin
             'emails', FALSE,
             '.txt', TRUE, FALSE
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
@@ -109,7 +109,7 @@ class invitation extends simplePlugin
     }
   }
 
-  function check()
+  function check (): array
   {
     $messages = parent::check();
 
@@ -123,12 +123,12 @@ class invitation extends simplePlugin
     return $messages;
   }
 
-  protected function shouldSave()
+  protected function shouldSave (): bool
   {
     return (parent::shouldSave() || !empty($this->emails));
   }
 
-  protected function ldap_save ()
+  protected function ldap_save (): array
   {
     global $ui, $config;
 
@@ -140,7 +140,7 @@ class invitation extends simplePlugin
 
     $emails   = explode("\n", $this->emails);
     $success  = 0;
-    $failed   = array();
+    $failed   = [];
     foreach ($emails as $email) {
       if (empty($email)) {
         continue;

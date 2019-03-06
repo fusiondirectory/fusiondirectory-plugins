@@ -20,38 +20,37 @@
 
 class dnsConfig extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('DNS configuration'),
       'plDescription'   => _('FusionDirectory dns plugin configuration'),
-      'plObjectClass'   => array('fdDnsPluginConf'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectClass'   => ['fdDnsPluginConf'],
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('DNS config'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('DNS RDN'), _('Branch in which DNS zones will be stored'),
             'fdDnsRDN', TRUE,
             'ou=dns'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Store final dot in domains'), _('Should FD store a final dot at the end of domains?'),
             'fdDNSFinalDot', FALSE,
             TRUE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
-?>

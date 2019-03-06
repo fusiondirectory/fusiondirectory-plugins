@@ -20,85 +20,85 @@
 
 class mobilePhoneGeneric extends ipHostPlugin
 {
-  var $inheritance = array('gosaGroupOfNames' => 'member');
+  var $inheritance = ['gosaGroupOfNames' => 'member'];
 
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('Mobile phone'),
       'plDescription' => _('Mobile phone information'),
-      'plObjectClass' => array('fdMobilePhone', 'ieee802Device'),
+      'plObjectClass' => ['fdMobilePhone', 'ieee802Device'],
       'plFilter'      => '(objectClass=fdMobilePhone)',
-      'plObjectType'  => array(
-        'mobilePhone' => array(
+      'plObjectType'  => [
+        'mobilePhone' => [
           'name'        => _('Mobile phone'),
           'description' => _('Mobile phone'),
           'icon'        => 'geticon.php?context=devices&icon=phone&size=16',
           'ou'          => get_ou('mobilePhoneRDN'),
-        )
-      ),
-      'plSearchAttrs' => array('description', 'ipHostNumber', 'macAddress'),
+        ]
+      ],
+      'plSearchAttrs' => ['description', 'ipHostNumber', 'macAddress'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('mobilePhoneRDN')),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'), _('The name of the mobile phone'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('A short description of the mobile phone'),
             'description', FALSE
           ),
-        )
-      ),
-      'phone' => array(
+        ]
+      ],
+      'phone' => [
         'name'  => _('Phone'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Serial Number'), _('The serial number of the mobile phone'),
             'serialNumber', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('IMEI Number'), _('The IMEI number of the mobile phone'),
             'fdMobileIMEI', FALSE, '', '',
             '/[[:digit:]]+/'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('OS'), _('The Operating System installed on this phone'),
             'fdMobileOS', FALSE
           ),
-        )
-      ),
-      'simcard' => array(
+        ]
+      ],
+      'simcard' => [
         'name'  => _('SimCard'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Telephone Number'), _('The telephone number of the mobile phone'),
             'telephoneNumber', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('PUK Number'), _('The PUK number of the simcard in this mobile phone'),
             'fdMobilePUK', FALSE, '', '',
             '/[[:digit:]]+/'
           ),
-        )
-      ),
-      'network' => array(
+        ]
+      ],
+      'network' => [
         'name'      => _('Network settings'),
         'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
-        'attrs'     => array(
+        'attrs'     => [
           new IPAttribute(
             _('IP address'), _('IP address this system uses'),
             'ipHostNumber', FALSE
@@ -107,9 +107,8 @@ class mobilePhoneGeneric extends ipHostPlugin
             _('Mac address'), _('Mac address of this system'),
             'macAddress', FALSE
           ),
-        ),
-      ),
-    );
+        ],
+      ],
+    ];
   }
 }
-?>

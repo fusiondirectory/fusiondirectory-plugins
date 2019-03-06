@@ -23,29 +23,29 @@ class pureftpdAccount extends simplePlugin
 {
   var $displayHeader  = TRUE;
 
-  static function plInfo()
+  static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'     => _('Ftp'),
       'plDescription'   => _('Pure ftp account').'&nbsp;('._('Connectivity addon').')',
       'plIcon'          => 'geticon.php?context=applications&icon=pureftpd&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=pureftpd&size=16',
       'plSelfModify'    => TRUE,
       'plPriority'      => 10,
-      'plObjectClass'   => array('PureFTPdUser'),
-      'plObjectType'    => array('user'),
+      'plObjectClass'   => ['PureFTPdUser'],
+      'plObjectType'    => ['user'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
+    return [
     // Attributes are grouped by section
-      'section1' => array (
+      'section1' => [
         'name'  => _('Bandwidth'),
-        'attrs' => array (
-          new IntAttribute (
+        'attrs' => [
+          new IntAttribute(
             _('Upload bandwidth')._(' (kb/sec)'),
             _('Upload bandwidth'),
             'FTPUploadBandwidth',
@@ -54,7 +54,7 @@ class pureftpdAccount extends simplePlugin
             FALSE,
             ''
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Download bandwidth')._(' (kb/sec)'),
             _('Download bandwidth in kb/sec'),
             'FTPDownloadBandwidth',
@@ -63,12 +63,12 @@ class pureftpdAccount extends simplePlugin
             FALSE,
             ''
           )
-        )
-      ),
-      'section2' => array (
+        ]
+      ],
+      'section2' => [
         'name'  => _('Ratio'),
-        'attrs' => array(
-          new IntAttribute (
+        'attrs' => [
+          new IntAttribute(
             _('Uploaded files'),
             _('Uploaded files'),
             'FTPUploadRatio',
@@ -77,7 +77,7 @@ class pureftpdAccount extends simplePlugin
             FALSE,
             ''
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Downloaded files'),
             _('Downloaded files'),
             'FTPDownloadRatio',
@@ -86,12 +86,12 @@ class pureftpdAccount extends simplePlugin
             FALSE,
             ''
           )
-        )
-      ),
-      'section3' => array (
+        ]
+      ],
+      'section3' => [
         'name' => ('Quota'),
-        'attrs' => array (
-          new IntAttribute (
+        'attrs' => [
+          new IntAttribute(
             _('Files'),
             _('Quota files'),
             'FTPQuotaFiles',
@@ -100,7 +100,7 @@ class pureftpdAccount extends simplePlugin
             FALSE,
             ''
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Size')._(' (MB)'),
             _('Files size'),
             'FTPQuotaMBytes',
@@ -109,20 +109,18 @@ class pureftpdAccount extends simplePlugin
             FALSE,
             ''
           )
-        )
-      ),
-      'section4' => array (
+        ]
+      ],
+      'section4' => [
         'name' => _('Miscellaneous'),
-        'attrs' => array (
-          new BooleanAttribute (
+        'attrs' => [
+          new BooleanAttribute(
             _('Enable FTP access'), _('Enable or disable FTP access'),
             'FTPStatus', FALSE,
             TRUE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }
-
-?>

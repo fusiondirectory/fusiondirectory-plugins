@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014-2016 FusionDirectory
+
+  Copyright (C) 2014-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -28,14 +29,14 @@ class OPSIServerAttribute extends SelectAttribute
     }
   }
 
-  function updateChoices()
+  function updateChoices ()
   {
     global $config;
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=opsiServer)', array('cn'));
-    $serversdn    = array();
-    $serverslabel = array();
+    $ldap->search('(objectClass=opsiServer)', ['cn']);
+    $serversdn    = [];
+    $serverslabel = [];
     while ($attrs = $ldap->fetch()) {
       $serversdn[]    = $attrs['dn'];
       $serverslabel[] = $attrs['cn'][0];
@@ -48,7 +49,7 @@ class SubmittingOPSIServerAttribute extends OPSIServerAttribute
 {
   function __construct ($label, $description, $ldapName, $required = FALSE, $acl = "")
   {
-    parent::__construct($label, $description, $ldapName, $required, array(), "", NULL, $acl);
+    parent::__construct($label, $description, $ldapName, $required, [], "", NULL, $acl);
     $this->setSubmitForm('server_changed');
   }
 }
@@ -58,33 +59,33 @@ class opsiProfile extends simplePlugin
   var $macAddress = NULL;
   var $products;
 
-  public static function plInfo()
+  public static function plInfo (): array
   {
-    return array(
+    return [
       'plShortName'   => _('OPSI profile'),
       'plDescription' => _('OPSI profile'),
       'plIcon'        => 'geticon.php?context=applications&icon=opsi&size=16',
-      'plObjectClass' => array('opsiProfile'),
-      'plObjectType'  => array('opsiProfile' => array(
+      'plObjectClass' => ['opsiProfile'],
+      'plObjectType'  => ['opsiProfile' => [
         'name'    => _('OPSI profile'),
         'ou'      => get_ou('opsiRDN'),
         'icon'    => 'geticon.php?context=applications&icon=opsi&size=16',
-      )),
-      'plForeignKeys'   => array(
+      ]],
+      'plForeignKeys'   => [
         'fdOpsiServerDn'      => 'serverGeneric',
         'fdOpsiSoftwareList'  => 'opsiSoftwareList',
-      ),
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  static function getAttributesInfo ()
+  static function getAttributesInfo (): array
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Name'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('opsiRDN')),
           new SubmittingOPSIServerAttribute(
             _('OPSI server'), _('OPSI server to use for deployment'),
@@ -94,11 +95,11 @@ class opsiProfile extends simplePlugin
             _('Name'), _('Name of this OPSI profile'),
             'cn', TRUE
           ),
-        )
-      ),
-      'products' => array(
+        ]
+      ],
+      'products' => [
         'name'  => _('Entries'),
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Netboot product'), _('The netboot product to use for this profile'),
             'fdOpsiNetbootProduct', FALSE
@@ -109,16 +110,16 @@ class opsiProfile extends simplePlugin
               'fdOpsiSoftwareList', FALSE
             )
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   /* Returns list of all products installed by this profile */
   public function getProductList ()
   {
     global $config;
-    $products = array();
+    $products = [];
     $netboot  = $this->fdOpsiNetbootProduct;
     if ($netboot != '') {
       $products[] = $netboot;
@@ -177,7 +178,7 @@ class opsiProfile extends simplePlugin
         );
         return FALSE;
       }
-      $netboots = $s_daemon->append_call('OPSI.get_netboots', $this->macAddress, array('args' => array(array('id','name'))));
+      $netboots = $s_daemon->append_call('OPSI.get_netboots', $this->macAddress, ['args' => [['id','name']]]);
       if ($s_daemon->is_error()) {
         msg_dialog::display(
           _('Failed to contact OPSI server'),
@@ -188,15 +189,15 @@ class opsiProfile extends simplePlugin
       $this->products[$this->fdOpsiServerDn]['netboots'] = $netboots;
 
       $ldap->cd($config->current['BASE']);
-      $ldap->search('(&(objectClass=opsiSoftwareList)(fdOpsiServerDn='.$this->fdOpsiServerDn.'))', array('cn'));
-      $lists = array();
+      $ldap->search('(&(objectClass=opsiSoftwareList)(fdOpsiServerDn='.$this->fdOpsiServerDn.'))', ['cn']);
+      $lists = [];
       while ($attrs = $ldap->fetch()) {
         $lists[$attrs['dn']] = $attrs['cn'][0];
       }
       $this->products[$this->fdOpsiServerDn]['lists'] = $lists;
     }
-    $choices_values = array();
-    $choices_labels = array();
+    $choices_values = [];
+    $choices_labels = [];
     foreach ($this->products[$this->fdOpsiServerDn]['netboots'] as $netboot) {
       $choices_values[] = $netboot['id'];
       $choices_labels[] = sprintf(_('%s (%s)'), $netboot['id'], $netboot['name']);
@@ -208,4 +209,3 @@ class opsiProfile extends simplePlugin
     );
   }
 }
-?>
