@@ -25,7 +25,7 @@ class mailMethodRenaterPartage extends mailMethod
   protected $enableFolderTypes      = FALSE;
   protected $enableGroupForwarding  = FALSE;
   protected $enableLocalOnly        = FALSE;
-  protected $enableForwardOnly      = FALSE;
+  protected $enableForwardOnly      = TRUE;
 
   protected $user_id  = '%MAIL%';
   protected $share_id = '%MAIL%';
