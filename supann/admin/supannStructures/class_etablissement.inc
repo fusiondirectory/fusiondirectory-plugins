@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2018  FusionDirectory
+
+  Copyright (C) 2012-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -93,10 +94,29 @@ class etablissement extends simplePlugin
             'supannEtablissement', TRUE,
             '', '', '/^{[^}]+}.*$/'
           ),
+          new SupannPrefixedSelectAttribute(
+            _('Establishment type'), _('The SupAnn type that best fits this Establishment'),
+            'supannTypeEntite', FALSE, 'entite'
+          ),
           new StringAttribute(
             _('SupAnn code'), _('The SupAnn code for this establishment'),
             'supannCodeEntite', TRUE,
             '', '', '/^[a-z0-9_-]*$/i'
+          ),
+          new SetAttribute(
+            new SelectAttribute(
+              _('Parent entities'), _('The parent entities of this entity'),
+              'supannCodeEntiteParent', FALSE
+            )
+          ),
+          new SetAttribute(
+            new StringAttribute(
+              _('Reference IDs'), _('supannRefId - IDs/links for this entity on other systems'),
+              'supannRefId', FALSE,
+              '', '',
+               // Validation regexp: it must have a prefix
+              '/^{[^}]+}.+$/'
+            )
           ),
           new StringAttribute(
             _('Legal name'), _('The legal name of this establishment'),
@@ -123,15 +143,21 @@ class etablissement extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->attributesAccess['o']->setUnique(TRUE);
-    $this->attributesAccess['supannCodeEntite']->setUnique(TRUE);
-    $this->attributesAccess['supannEtablissement']->setUnique(TRUE);
-    $this->attributesAccess['eduOrgLegalName']->setUnique(TRUE);
+    if (empty($this->acl_base)) {
+      $this->set_acl_base($config->current['BASE']);
+    }
+
+    $this->attributesAccess['o']->setUnique('one');
+    $this->attributesAccess['supannCodeEntite']->setUnique('whole', '(objectClass=supannEntite)');
+    $this->attributesAccess['supannRefId']->setUnique('whole', '(objectClass=supannEntite)');
+    $this->attributesAccess['supannEtablissement']->setUnique('one');
+    $this->attributesAccess['eduOrgLegalName']->setUnique('one');
 
     $root_code = $this->get_root_code();
     $this->attributesAccess['set_root']->setInLdap(FALSE);
     $this->attributesAccess['set_root']->setDisabled(($root_code !== FALSE) && ($root_code != $this->supannEtablissement));
     $this->set_root = (($root_code !== FALSE) && ($root_code == $this->supannEtablissement));
+    $this->attributes['set_root']->setInitialValue($this->set_root);
   }
 
   protected function ldap_remove()
@@ -158,12 +184,14 @@ class etablissement extends simplePlugin
   function ldap_save()
   {
     global $config;
+
     $errors = parent::ldap_save();
 
     $ldap = $config->get_ldap_link();
 
-    $root_mode = FALSE;
-    $root_code = $this->get_root_code();
+    $wasRoot    = $this->attributes['set_root']->getInitialValue();
+    $root_mode  = FALSE;
+    $root_code  = $this->get_root_code();
     if (($root_code === FALSE) && ($this->set_root)) {
       /* Set this etablissement as root one */
       $ldap->cat($this->dn);
@@ -180,30 +208,34 @@ class etablissement extends simplePlugin
         }
       }
       $root_mode  = 'add';
-    } elseif (($root_code !== FALSE) && ($root_code == $this->supannEtablissement) && $this->set_root) {
+    } elseif (($root_code !== FALSE) && $wasRoot && $this->set_root) {
       /* We are the root etablissement, we need to update it */
       $root_attrs = $this->attrs;
       $root_mode  = 'modify';
-    } elseif (($root_code !== FALSE) && ($root_code == $this->supannEtablissement) && !$this->set_root) {
+    } elseif (($root_code !== FALSE) && $wasRoot && !$this->set_root) {
       /* We are the root etablissement, we want to delete it */
       $root_mode = 'delete';
     }
 
     if ($root_mode) {
-      $root_attrs['objectClass'] = array('top','dcObject','organization','supannOrg','eduOrg');
-      $root_attrs['dc'] = $root_attrs['o'];
-      unset($root_attrs['supannCodeEntite']);
       $dn = 'o='.$this->o.','.$config->current['BASE'];
       if ($root_mode == 'delete') {
         $ldap->rmdir($dn);
       } else {
+        $root_attrs['objectClass'] = array('top','dcObject','organization','supannOrg','eduOrg');
+        $root_attrs['dc'] = $root_attrs['o'];
+        unset($root_attrs['supannTypeEntite']);
+        unset($root_attrs['supannCodeEntite']);
+        unset($root_attrs['supannCodeEntiteParent']);
+        unset($root_attrs['supannRefId']);
         $ldap->cd($dn);
         $ldap->$root_mode($root_attrs);
       }
       if (!$ldap->success()) {
-        $errors[] = msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class());
+        $errors[] = msgPool::ldaperror($ldap->get_error(), $dn, 0, get_class());
       }
     }
+
     return $errors;
   }
 
@@ -226,4 +258,3 @@ class etablissement extends simplePlugin
     }
   }
 }
-?>
