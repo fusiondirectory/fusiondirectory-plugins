@@ -88,6 +88,13 @@ class sinapsConfig extends simplePlugin
               'fdSinapsFDToken', FALSE
             )
           ),
+          new SetAttribute (
+            new StringAttribute (
+              _('User roles'), _('Roles which means a user still exists if present'),
+              'fdSinapsUserRole', TRUE
+            ),
+            array('PR', 'EXT/PRA')
+          ),
         )
       ),
       'acquisition' => array(
