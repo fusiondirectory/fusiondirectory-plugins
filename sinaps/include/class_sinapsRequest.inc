@@ -368,6 +368,9 @@ class sinapsRequest
                 $UUID = $this->getUUIDFromReferenceCroisee($identifiantApplication, $affectation->referenceCroisee);
                 if (!empty($UUID)) {
                   $entite = $ldapUuidToCodeEntiteCallback($UUID);
+                  if (isset($entite['supannTypeEntite'])) {
+                    $values['supannAccount']['supannTypeEntiteAffectation'][] = $entite['supannTypeEntite'];
+                  }
                   $values['supannAccount']['supannEntiteAffectation'][]         = $entite['supannCodeEntite'];
                   $values['supannAccount']['supannEntiteAffectationPrincipale'] = $entite['supannCodeEntite'];
                 }
@@ -397,7 +400,7 @@ class sinapsRequest
             $values['supannAccount']['supannRoleGenerique'][] = (string)$fonctionOccupee->fonctionRh;
             $UUID = $this->getUUIDFromReferenceCroisee($identifiantApplication, $fonctionOccupee->referenceCroisee);
             if (!empty($UUID)) {
-              $entite = $ldapUuidToCodeEntiteCallback($UUID);
+              $entite = $ldapUuidToCodeEntiteCallback($UUID, TRUE);
               $values['supannAccount']['supannTypeEntiteAffectation'][] = $entite['supannTypeEntite'];
               $values['supannAccount']['supannEntiteAffectation'][] = $entite['supannCodeEntite'];
               $values['supannAccount']['supannRoleEntite'][] =
