@@ -65,7 +65,7 @@ class sinapsDiffusionHandlerJob
     }
   }
 
-  function ldapUuidToCodeEntite($uuid)
+  function ldapUuidToCodeEntite ($uuid, $typeNeeded = FALSE)
   {
     /* Translate UUID refs to code entite
      * This is done here to make sure sinapsRequest does not perform LDAP searches by itself
@@ -73,7 +73,7 @@ class sinapsDiffusionHandlerJob
     if (!preg_match('/^{'.$this->uuidPrefix.'}/', $uuid)) {
       $uuid = '{'.$this->uuidPrefix.'}'.$uuid;
     }
-    $entites = objects::ls('entite', array('supannCodeEntite' => 1, 'supannTypeEntite' => 1), NULL, '(supannRefId='.$uuid.')');
+    $entites = objects::ls(array('entite','etablissement'), array('supannCodeEntite' => 1, 'supannTypeEntite' => 1), NULL, '(supannRefId='.$uuid.')');
     if (empty($entites)) {
       $error = 'Could not find entite '.$uuid;
       $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 10, $error));
@@ -81,7 +81,16 @@ class sinapsDiffusionHandlerJob
       $error = 'Multiple entite matches id '.$uuid;
       $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 11, $error));
     } else {
-      return reset($entites);
+      $entite = reset($entites);
+      if (!isset($entite['supannCodeEntite'])) {
+        $error = 'Entite '.key($entites).' has no supannCodeEntite';
+        $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 17, $error));
+      }
+      if ($typeNeeded && !isset($entite['supannTypeEntite'])) {
+        $error = 'Entite '.key($entites).' has no supannTypeEntite';
+        $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 18, $error));
+      }
+      return $entite;
     }
   }
 
