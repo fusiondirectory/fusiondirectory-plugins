@@ -73,8 +73,8 @@ class sinapsUser extends simplePlugin
      * This is done here to make sure sinapsRequestAcquisition does not perform LDAP searches by itself
      * */
     $entites = objects::ls(
-      'entite',
-      array('supannRefId' => '*', 'supannTypeEntite' => 1, 'dn' => 'raw'),
+      array('entite','etablissement'),
+      array('supannRefId' => '*', 'dn' => 'raw'),
       NULL,
       '(supannCodeEntite='.$codeEntite.')'
     );
