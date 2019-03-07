@@ -81,9 +81,10 @@ class sinapsRequestAcquisition
     /* rattachements */
     if (isset($user['supannEntiteAffectationPrincipale'])) {
       $personne->rattachements->rattachement->identifiantStructureDeRattachement  = $codeEntiteToldapUuidCallback($user['supannEntiteAffectationPrincipale']);
-      $personne->rattachements->rattachement->roles->role->typeRole               = 'EXT';
-      $personne->rattachements->rattachement->roles->role->externe->typeExterne   = $typeExterne;
     }
+
+    $personne->rattachements->rattachement->roles->role->typeRole               = 'EXT';
+    $personne->rattachements->rattachement->roles->role->externe->typeExterne   = $typeExterne;
   }
 
   public function getXML ()
