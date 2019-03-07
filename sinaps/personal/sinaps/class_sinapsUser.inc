@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018  FusionDirectory
+
+  Copyright (C) 2017-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -26,14 +27,13 @@ class sinapsUser extends simplePlugin
       'plShortName'     => _('Sinaps'),
       'plTitle'         => _('Sinaps'),
       'plDescription'   => _('Used to send acquisition request for users'),
-      'plFilter'        => '(objectClass=*)',
       'plSelfModify'    => FALSE,
       'plObjectClass'   => [],
       'plObjectType'    => ['user'],
       //~ 'plIcon'          => '',
       //~ 'plSmallIcon'     => '',
 
-      'plProvidedAcls'  => []
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
@@ -49,9 +49,20 @@ class sinapsUser extends simplePlugin
             'sinaps_explanation', FALSE,
             _('This tab takes care of sending Acquisition event to Sinaps whenever a user is modified.')
           ),
+          new BooleanAttribute(
+            _('Force Sinaps Acquisition'), _('Send Acquisition data even if data was not modified in FusionDirectory'),
+            'force_acquisition', FALSE
+          ),
         ]
       ]
     ];
+  }
+
+  function __construct (string $dn = NULL, $object = NULL, $parent = NULL, bool $mainTab = FALSE, array $attributesInfo = NULL)
+  {
+    parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
+
+    $this->attributesAccess['force_acquisition']->setInLdap(FALSE);
   }
 
   function codeEntiteToldapUuidCallback ($codeEntite)
@@ -98,6 +109,7 @@ class sinapsUser extends simplePlugin
     if ($config->get_cfg_value('SinapsEnabled', 'FALSE') == 'FALSE') {
       return [];
     }
+
     if ($config->get_cfg_value('SinapsAcquisitionURL', '') == '') {
       return ['Sinaps acquisition URL is not filled in FusionDirectory configuration'];
     }
@@ -124,6 +136,25 @@ class sinapsUser extends simplePlugin
 
       $mapping[$ldapField]    = $sinapsType;
       $attributes[$ldapField] = 1;
+    }
+
+    if (!$this->force_acquisition) {
+      /* Skip sync if no field changed */
+      $sync = FALSE;
+      foreach (array_keys($attributes) as $ldapField) {
+        foreach ($this->parent->by_object as $class => $tab) {
+          if (isset($tab->attributesAccess[$ldapField])) {
+            if ($tab->attributesAccess[$ldapField]->hasChanged()) {
+              $sync = TRUE;
+              break 2;
+            }
+            break;
+          }
+        }
+      }
+      if (!$sync) {
+        return [];
+      }
     }
 
     $attributes['dn'] = 'raw';
