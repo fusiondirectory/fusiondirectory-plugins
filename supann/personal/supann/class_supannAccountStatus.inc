@@ -92,7 +92,8 @@ class supannAccountStatus extends simplePlugin
             FALSE,
             [],
             TRUE
-          )
+          ),
+          new HiddenArrayAttribute('supannRessourceEtat', FALSE, []),
         ]
       ],
     ];
@@ -137,6 +138,21 @@ class supannAccountStatus extends simplePlugin
     ]);
     $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[1]->setSubmitForm('updateFieldsChoices');
     $this->updateFieldsChoices();
+
+    /* Import from supannRessourceEtat if needed */
+    if (!empty($this->supannRessourceEtat) && empty($this->supannRessourceEtatDate)) {
+      $this->supannRessourceEtatDate = array_map(
+        function ($supannRessourceEtat)
+        {
+          if (strpos($supannRessourceEtat, ':') === FALSE) {
+            return $supannRessourceEtat.':::';
+          } else {
+            return $supannRessourceEtat.'::';
+          }
+        },
+        $this->supannRessourceEtat
+      );
+    }
   }
 
   /* Update choices of fields which depends on other fields values */
@@ -147,5 +163,23 @@ class supannAccountStatus extends simplePlugin
       array_keys($substatusChoices),
       array_values($substatusChoices)
     );
+  }
+
+  protected function prepare_save (): array
+  {
+    /* Copy active states over to supannRessourceEtat */
+    $this->supannRessourceEtat = array_map(
+      function ($supannRessourceEtatDate)
+      {
+        list($state,$substate) = explode(':', $supannRessourceEtatDate);
+        if (empty($substate)) {
+          return $state;
+        } else {
+          return $state.':'.$substate;
+        }
+      },
+      $this->supannRessourceEtatDate
+    );
+    return parent::prepare_save();
   }
 }
