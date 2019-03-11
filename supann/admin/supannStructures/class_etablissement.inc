@@ -156,7 +156,7 @@ class etablissement extends simplePlugin
     $this->attributesAccess['set_root']->setInLdap(FALSE);
     $this->attributesAccess['set_root']->setDisabled(($root_code !== FALSE) && ($root_code != $this->supannEtablissement));
     $this->set_root = (($root_code !== FALSE) && ($root_code == $this->supannEtablissement));
-    $this->attributes['set_root']->setInitialValue($this->set_root);
+    $this->attributesAccess['set_root']->setInitialValue($this->set_root);
   }
 
   protected function ldap_remove (): array
@@ -188,7 +188,7 @@ class etablissement extends simplePlugin
 
     $ldap = $config->get_ldap_link();
 
-    $wasRoot    = $this->attributes['set_root']->getInitialValue();
+    $wasRoot    = $this->attributesAccess['set_root']->getInitialValue();
     $root_mode  = FALSE;
     $root_code  = $this->get_root_code();
     if (($root_code === FALSE) && ($this->set_root)) {
