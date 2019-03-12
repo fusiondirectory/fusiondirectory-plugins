@@ -182,4 +182,21 @@ class supannAccountStatus extends simplePlugin
     );
     return parent::prepare_save();
   }
+
+  function check (): array
+  {
+    $errors = parent::check();
+
+    $labels = [];
+    foreach ($this->supannRessourceEtatDate as $line) {
+      list($label) = explode(':', $line, 2);
+      if (in_array($label, $labels)) {
+        $errors[] = sprintf(_('Label "%s" is present more than once in supannRessourceEtatDate'), $label);
+      } else {
+        $labels[] = $label;
+      }
+    }
+
+    return $errors;
+  }
 }
