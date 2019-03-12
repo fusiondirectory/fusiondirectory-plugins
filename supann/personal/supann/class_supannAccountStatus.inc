@@ -105,26 +105,7 @@ class supannAccountStatus extends simplePlugin
 
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->substatus = [
-      'A' => [
-        'SupannAnticipe'  => _('Anticipated'),
-        'SupannActif'     => _('Active'),
-        'SupannSursis'    => _('Extension'),
-      ],
-      'I' => [
-        'SupannPrecree'       => _('Precreated'),
-        'SupannCree'          => _('Created'),
-        'SupannExpire'        => _('Expired'),
-        'SupannInactif'       => _('Inactive'),
-        'SupannSupprDonnees'  => _('Data deletion'),
-        'SupannSupprCompte'   => _('Account deletion'),
-      ],
-      'S' => [
-        'SupannVerrouille'          => _('Locked'),
-        'SupannVerrouAdministratif' => _('Administrative lock'),
-        'SupannVerrouTechnique'     => _('Technical lock'),
-      ],
-    ];
+    $this->substatus = static::getConfiguredSubstates();
 
     $this->attributesAccess['supannRessourceEtatDate']->setLinearRendering(FALSE);
     $this->attributesAccess['supannRessourceEtatDate']->setRequired(TRUE);
@@ -198,5 +179,62 @@ class supannAccountStatus extends simplePlugin
     }
 
     return $errors;
+  }
+
+  static function getOfficialSubstates (): array
+  {
+    return [
+      'A' => [
+        'SupannAnticipe'  => _('Anticipated'),
+        'SupannActif'     => _('Active'),
+        'SupannSursis'    => _('Extension'),
+      ],
+      'I' => [
+        'SupannPrecree'       => _('Precreated'),
+        'SupannCree'          => _('Created'),
+        'SupannExpire'        => _('Expired'),
+        'SupannInactif'       => _('Inactive'),
+        'SupannSupprDonnees'  => _('Data deletion'),
+        'SupannSupprCompte'   => _('Account deletion'),
+      ],
+      'S' => [
+        'SupannVerrouille'          => _('Locked'),
+        'SupannVerrouAdministratif' => _('Administrative lock'),
+        'SupannVerrouTechnique'     => _('Technical lock'),
+      ],
+    ];
+  }
+
+  static function getConfiguredSubstates (): array
+  {
+    global $config;
+
+    $officialSubstates = static::getOfficialSubstates();
+
+    $substates = [
+      'A' => [],
+      'I' => [],
+      'S' => [],
+    ];
+
+    $labels = [];
+
+    foreach ($config->get_cfg_value('SupannRessourceSubStatesLabels', []) as $line) {
+      list($substate,$label) = explode(':', $line, 2);
+      $labels[$substate] = $label;
+    }
+
+    foreach ($config->get_cfg_value('SupannRessourceSubStates', []) as $line) {
+      list(,$state,$substate) = explode(':', $line, 3);
+      if (isset($officialSubstates[$state][$substate])) {
+        $substates[$state][$substate] = $officialSubstates[$state][$substate];
+      } elseif (isset($labels[$substate])) {
+        $substates[$state][$substate] = $labels[$substate];
+      } else {
+        $substates[$state][$substate] = $substate;
+      }
+    }
+
+    return $substates;
   }
 }
