@@ -92,7 +92,8 @@ class supannAccountStatus extends simplePlugin
             FALSE,
             [],
             TRUE
-          )
+          ),
+          new HiddenArrayAttribute('supannRessourceEtat', FALSE, []),
         ]
       ],
     ];
@@ -104,7 +105,85 @@ class supannAccountStatus extends simplePlugin
 
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $this->substatus = [
+    $this->substatus = static::getConfiguredSubstates();
+
+    $this->attributesAccess['supannRessourceEtatDate']->setLinearRendering(FALSE);
+    $this->attributesAccess['supannRessourceEtatDate']->setRequired(TRUE);
+    $this->attributesAccess['supannRessourceEtatDate']->setHeaders([
+      _('Resource'),
+      _('Status'),
+      _('Substatus'),
+      _('Begin'),
+      _('End'),
+      ''
+    ]);
+    $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[1]->setSubmitForm('updateFieldsChoices');
+    $this->updateFieldsChoices();
+
+    /* Import from supannRessourceEtat if needed */
+    if (!empty($this->supannRessourceEtat) && empty($this->supannRessourceEtatDate)) {
+      $this->supannRessourceEtatDate = array_map(
+        function ($supannRessourceEtat)
+        {
+          if (strpos($supannRessourceEtat, ':') === FALSE) {
+            return $supannRessourceEtat.':::';
+          } else {
+            return $supannRessourceEtat.'::';
+          }
+        },
+        $this->supannRessourceEtat
+      );
+    }
+  }
+
+  /* Update choices of fields which depends on other fields values */
+  function updateFieldsChoices ()
+  {
+    $substatusChoices = $this->substatus[$this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[1]->getValue()];
+    $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[2]->setChoices(
+      array_keys($substatusChoices),
+      array_values($substatusChoices)
+    );
+  }
+
+  protected function prepare_save (): array
+  {
+    /* Copy active states over to supannRessourceEtat */
+    $this->supannRessourceEtat = array_map(
+      function ($supannRessourceEtatDate)
+      {
+        list($state,$substate) = explode(':', $supannRessourceEtatDate);
+        if (empty($substate)) {
+          return $state;
+        } else {
+          return $state.':'.$substate;
+        }
+      },
+      $this->supannRessourceEtatDate
+    );
+    return parent::prepare_save();
+  }
+
+  function check (): array
+  {
+    $errors = parent::check();
+
+    $labels = [];
+    foreach ($this->supannRessourceEtatDate as $line) {
+      list($label) = explode(':', $line, 2);
+      if (in_array($label, $labels)) {
+        $errors[] = sprintf(_('Label "%s" is present more than once in supannRessourceEtatDate'), $label);
+      } else {
+        $labels[] = $label;
+      }
+    }
+
+    return $errors;
+  }
+
+  static function getOfficialSubstates (): array
+  {
+    return [
       'A' => [
         'SupannAnticipe'  => _('Anticipated'),
         'SupannActif'     => _('Active'),
@@ -124,28 +203,38 @@ class supannAccountStatus extends simplePlugin
         'SupannVerrouTechnique'     => _('Technical lock'),
       ],
     ];
-
-    $this->attributesAccess['supannRessourceEtatDate']->setLinearRendering(FALSE);
-    $this->attributesAccess['supannRessourceEtatDate']->setRequired(TRUE);
-    $this->attributesAccess['supannRessourceEtatDate']->setHeaders([
-      _('Resource'),
-      _('Status'),
-      _('Substatus'),
-      _('Begin'),
-      _('End'),
-      ''
-    ]);
-    $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[1]->setSubmitForm('updateFieldsChoices');
-    $this->updateFieldsChoices();
   }
 
-  /* Update choices of fields which depends on other fields values */
-  function updateFieldsChoices ()
+  static function getConfiguredSubstates (): array
   {
-    $substatusChoices = $this->substatus[$this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[1]->getValue()];
-    $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[2]->setChoices(
-      array_keys($substatusChoices),
-      array_values($substatusChoices)
-    );
+    global $config;
+
+    $officialSubstates = static::getOfficialSubstates();
+
+    $substates = [
+      'A' => [],
+      'I' => [],
+      'S' => [],
+    ];
+
+    $labels = [];
+
+    foreach ($config->get_cfg_value('SupannRessourceSubStatesLabels', []) as $line) {
+      list($substate,$label) = explode(':', $line, 2);
+      $labels[$substate] = $label;
+    }
+
+    foreach ($config->get_cfg_value('SupannRessourceSubStates', []) as $line) {
+      list(,$state,$substate) = explode(':', $line, 3);
+      if (isset($officialSubstates[$state][$substate])) {
+        $substates[$state][$substate] = $officialSubstates[$state][$substate];
+      } elseif (isset($labels[$substate])) {
+        $substates[$state][$substate] = $labels[$substate];
+      } else {
+        $substates[$state][$substate] = $substate;
+      }
+    }
+
+    return $substates;
   }
 }
