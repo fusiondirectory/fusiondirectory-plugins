@@ -5,15 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Benoit Mortier <benoit.mortier@opensides.be>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:34+0000\n"
 "PO-Revision-Date: 2018-08-13 19:59+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2019\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -67,7 +68,7 @@ msgstr "Verplichte GID waarde voor deze groep"
 
 #: admin/groups/posix/class_posixGroup.inc:72
 #: admin/groups/posix/class_posixGroup.inc:148
-#: personal/posix/class_posixAccount.inc:422
+#: personal/posix/class_posixAccount.inc:379
 msgid "GID"
 msgstr "GID"
 
@@ -81,34 +82,34 @@ msgid "Group members"
 msgstr "Groepsleden"
 
 #: admin/groups/posix/class_posixGroup.inc:89
-#: personal/posix/class_posixAccount.inc:206
+#: personal/posix/class_posixAccount.inc:163
 msgid "System trust"
 msgstr "Systeem-trust"
 
 #: admin/groups/posix/class_posixGroup.inc:93
-#: personal/posix/class_posixAccount.inc:210
+#: personal/posix/class_posixAccount.inc:167
 msgid "Trust mode"
 msgstr "Trust-modus"
 
 #: admin/groups/posix/class_posixGroup.inc:93
-#: personal/posix/class_posixAccount.inc:210
+#: personal/posix/class_posixAccount.inc:167
 msgid "Type of authorization for those hosts"
 msgstr "Type van authorisatie voor deze hosts"
 
 #: admin/groups/posix/class_posixGroup.inc:97
-#: personal/posix/class_posixAccount.inc:214
-#: personal/posix/class_posixAccount.inc:236
+#: personal/posix/class_posixAccount.inc:171
+#: personal/posix/class_posixAccount.inc:193
 msgid "disabled"
 msgstr "gedeactiveerd"
 
 #: admin/groups/posix/class_posixGroup.inc:97
-#: personal/posix/class_posixAccount.inc:214
-#: personal/posix/class_posixAccount.inc:236
+#: personal/posix/class_posixAccount.inc:171
+#: personal/posix/class_posixAccount.inc:193
 msgid "full access"
 msgstr "volledige toegang"
 
 #: admin/groups/posix/class_posixGroup.inc:97
-#: personal/posix/class_posixAccount.inc:214
+#: personal/posix/class_posixAccount.inc:171
 msgid "allow access to these hosts"
 msgstr "sta toegang op deze hosts toe"
 
@@ -244,89 +245,89 @@ msgstr "Standaard shell"
 msgid "Shell used by default when activating Unix tab."
 msgstr "Standaard shell gebruikt bij activatie Unix tab"
 
-#: personal/posix/class_posixAccount.inc:87
-#: personal/posix/class_posixAccount.inc:120
+#: personal/posix/class_posixAccount.inc:44
+#: personal/posix/class_posixAccount.inc:77
 msgid "Unix"
 msgstr "Unix"
 
-#: personal/posix/class_posixAccount.inc:88
+#: personal/posix/class_posixAccount.inc:45
 msgid "Edit users POSIX settings"
 msgstr "Bewerk gebruikers POSIX instellingen"
 
-#: personal/posix/class_posixAccount.inc:124
+#: personal/posix/class_posixAccount.inc:81
 msgid "Home directory"
 msgstr "Persoonlijke directory"
 
-#: personal/posix/class_posixAccount.inc:124
+#: personal/posix/class_posixAccount.inc:81
 msgid "The path to the home directory of this user"
 msgstr "Het pad naar de home directory van de user"
 
-#: personal/posix/class_posixAccount.inc:129
+#: personal/posix/class_posixAccount.inc:86
 msgid "Shell"
 msgstr "Shell"
 
-#: personal/posix/class_posixAccount.inc:129
+#: personal/posix/class_posixAccount.inc:86
 msgid "Which shell should be used when this user log in"
 msgstr "Welke shell gebruikt moet worden als deze gebruiker inlogt"
 
-#: personal/posix/class_posixAccount.inc:131
+#: personal/posix/class_posixAccount.inc:88
 msgid "unconfigured"
 msgstr "ongeconfigureerd"
 
-#: personal/posix/class_posixAccount.inc:135
+#: personal/posix/class_posixAccount.inc:92
 msgid "Primary group"
 msgstr "Primaire groep"
 
-#: personal/posix/class_posixAccount.inc:135
+#: personal/posix/class_posixAccount.inc:92
 msgid "Primary group for this user"
 msgstr "Primaire groep voor deze gebruiker"
 
-#: personal/posix/class_posixAccount.inc:139
+#: personal/posix/class_posixAccount.inc:96
 msgid "Status"
 msgstr "Status"
 
-#: personal/posix/class_posixAccount.inc:139
+#: personal/posix/class_posixAccount.inc:96
 msgid "Status of this user unix account"
 msgstr "Status van deze gebruiker unix account"
 
-#: personal/posix/class_posixAccount.inc:143
+#: personal/posix/class_posixAccount.inc:100
 msgid "Force user/group id"
 msgstr "Verplicht gebruiker/groep-id"
 
-#: personal/posix/class_posixAccount.inc:143
+#: personal/posix/class_posixAccount.inc:100
 msgid "Force user id and group id values for this user"
 msgstr "Verplicht gebruikers-id en groeps-id waardes voor deze gebruiker"
 
-#: personal/posix/class_posixAccount.inc:147
+#: personal/posix/class_posixAccount.inc:104
 msgid "User id"
 msgstr "Gebruikers-id"
 
-#: personal/posix/class_posixAccount.inc:147
+#: personal/posix/class_posixAccount.inc:104
 msgid "User id value for this user"
 msgstr "Gebruikers-id waarde voor deze gebruiker"
 
-#: personal/posix/class_posixAccount.inc:152
+#: personal/posix/class_posixAccount.inc:109
 msgid "Group id"
 msgstr "Groeps-id"
 
-#: personal/posix/class_posixAccount.inc:152
+#: personal/posix/class_posixAccount.inc:109
 msgid "Group id value for this user"
 msgstr "Groeps-id waarde voor deze gebruiker"
 
-#: personal/posix/class_posixAccount.inc:159
-#: personal/posix/class_posixAccount.inc:162
+#: personal/posix/class_posixAccount.inc:116
+#: personal/posix/class_posixAccount.inc:119
 msgid "Group membership"
 msgstr "Groep lidmaatschap"
 
-#: personal/posix/class_posixAccount.inc:166
+#: personal/posix/class_posixAccount.inc:123
 msgid "Account"
 msgstr "Account"
 
-#: personal/posix/class_posixAccount.inc:170
+#: personal/posix/class_posixAccount.inc:127
 msgid "User must change password on first login"
 msgstr "Gebruiker moet het paswoord bij de eerste aanmelding veranderen"
 
-#: personal/posix/class_posixAccount.inc:170
+#: personal/posix/class_posixAccount.inc:127
 msgid ""
 "User must change password on first login (needs a value for Delay before "
 "forcing password change)"
@@ -334,11 +335,11 @@ msgstr ""
 "Gebruiker moet paswoord veranderen bij eerste inlog (heeft een uitstelwaarde"
 " nodig voordat paswoord verandering wordt afgedwongen)"
 
-#: personal/posix/class_posixAccount.inc:174
+#: personal/posix/class_posixAccount.inc:131
 msgid "Minimum delay between password changes (days)"
 msgstr "Minimum uitstel tussen paswoord veranderingen (dagen) "
 
-#: personal/posix/class_posixAccount.inc:174
+#: personal/posix/class_posixAccount.inc:131
 msgid ""
 "The user won't be able to change his password before this number of days "
 "(leave empty to disable)"
@@ -346,11 +347,11 @@ msgstr ""
 "De gebruiker zal niet in staat zijn om zijn paswoord te veranderen voordat "
 "dit aantal dagen verstreken is (leeg laten bij niet gebruik)"
 
-#: personal/posix/class_posixAccount.inc:179
+#: personal/posix/class_posixAccount.inc:136
 msgid "Delay before forcing password change (days)"
 msgstr "Periode voor het afdwingen van een paswoord verandering (dagen)"
 
-#: personal/posix/class_posixAccount.inc:179
+#: personal/posix/class_posixAccount.inc:136
 msgid ""
 "The user will be forced to change his password after this number of days "
 "(leave empty to disable)"
@@ -358,22 +359,22 @@ msgstr ""
 "De gebruiker zal gedwongen worden om zijn paswoord te veranderen na dit "
 "aantal dagen (leeg laten bij niet gebruik)"
 
-#: personal/posix/class_posixAccount.inc:184
+#: personal/posix/class_posixAccount.inc:141
 msgid "Password expiration date"
 msgstr "Paswoord vervaldatum"
 
-#: personal/posix/class_posixAccount.inc:184
+#: personal/posix/class_posixAccount.inc:141
 msgid ""
 "Date after which this user password will expire (leave empty to disable)"
 msgstr ""
 "Datum na dewelke het gebruiker paswoord zal vervallen (leeg laten bij niet "
 "gebruik)"
 
-#: personal/posix/class_posixAccount.inc:189
+#: personal/posix/class_posixAccount.inc:146
 msgid "Delay of inactivity before disabling user (days)"
 msgstr "Periode van inactiviteit voor het uitschakelen van gebruikers (dagen)"
 
-#: personal/posix/class_posixAccount.inc:189
+#: personal/posix/class_posixAccount.inc:146
 msgid ""
 "Maximum delay of inactivity after password expiration before the user is "
 "disabled (leave empty to disable)"
@@ -381,12 +382,12 @@ msgstr ""
 "Maximum periode van inactiviteit na paswoord vervaldatum voordat de "
 "gebruiker disabled wordt gezet (leeg laten bij niet gebruik)"
 
-#: personal/posix/class_posixAccount.inc:194
+#: personal/posix/class_posixAccount.inc:151
 msgid "Delay for user warning before password expiry (days)"
 msgstr ""
 "Periode voor gebruikerswaarschuwingen voordat paswoord vervalt (dagen)"
 
-#: personal/posix/class_posixAccount.inc:194
+#: personal/posix/class_posixAccount.inc:151
 msgid ""
 "The user will be warned this number of days before his password expiration "
 "(leave empty to disable)"
@@ -394,113 +395,130 @@ msgstr ""
 "De gebruiker zal dit aantal dagen voor paswoord vervaldatum gewaarschuwd "
 "worden (laat leeg bij niet gebruik)"
 
-#: personal/posix/class_posixAccount.inc:217
+#: personal/posix/class_posixAccount.inc:174
 msgid "Only allow this user to connect to this list of hosts"
 msgstr "Laat alleen deze gebruiker toe om te verbinden met de lijst van hosts"
 
-#: personal/posix/class_posixAccount.inc:295
+#: personal/posix/class_posixAccount.inc:252
 msgid "automatic"
 msgstr "automatisch"
 
-#: personal/posix/class_posixAccount.inc:356
+#: personal/posix/class_posixAccount.inc:313
 msgid "expired"
 msgstr "verlopen"
 
-#: personal/posix/class_posixAccount.inc:358
+#: personal/posix/class_posixAccount.inc:315
 msgid "grace time active"
 msgstr "gratie tijd actief"
 
-#: personal/posix/class_posixAccount.inc:361
-#: personal/posix/class_posixAccount.inc:363
-#: personal/posix/class_posixAccount.inc:365
+#: personal/posix/class_posixAccount.inc:318
+#: personal/posix/class_posixAccount.inc:320
+#: personal/posix/class_posixAccount.inc:322
 msgid "active"
 msgstr "actief"
 
-#: personal/posix/class_posixAccount.inc:361
+#: personal/posix/class_posixAccount.inc:318
 msgid "password expired"
 msgstr "paswoord vervallen"
 
-#: personal/posix/class_posixAccount.inc:363
+#: personal/posix/class_posixAccount.inc:320
 msgid "password not changeable"
 msgstr "paswoord niet wijzigbaar"
 
-#: personal/posix/class_posixAccount.inc:419
+#: personal/posix/class_posixAccount.inc:376
 msgid "UID"
 msgstr "UID"
 
-#: personal/posix/class_posixAccount.inc:535
+#: personal/posix/class_posixAccount.inc:492
 #, php-format
 msgid "Group of user %s"
 msgstr "Groep van gebruikers %s"
 
-#: personal/posix/class_posixAccount.inc:557
+#: personal/posix/class_posixAccount.inc:514
 #, php-format
 msgid ""
 "Could not create automatic primary group (using gidNumber \"%s\"), because "
 "of the following errors"
 msgstr ""
+"Impossible de créer un groupe principal automatique (à l'aide de gidNumber "
+"\"%s\"), en raison des erreurs suivantes"
 
-#: personal/posix/class_posixAccount.inc:790
-#: personal/posix/class_posixAccount.inc:811
-#: personal/posix/class_posixAccount.inc:1005
+#: personal/posix/class_posixAccount.inc:747
+#: personal/posix/class_posixAccount.inc:768
+#: personal/posix/class_posixAccount.inc:959
+#: personal/posix/class_posixAccount.inc:976
+#: personal/posix/class_posixAccount.inc:988
 msgid "Warning"
 msgstr "Waarschuwing"
 
-#: personal/posix/class_posixAccount.inc:790
+#: personal/posix/class_posixAccount.inc:747
 #, php-format
 msgid "Unknown ID allocation method \"%s\"!"
 msgstr "Onbekende ID allocatiemethode \"%s\"!"
 
-#: personal/posix/class_posixAccount.inc:812
+#: personal/posix/class_posixAccount.inc:769
 #, php-format
 msgid "Timeout while waiting for lock. Ignoring lock from %s!"
 msgstr "Timeout tijdens het wachten voor een lock. Negeer lock van %s!"
 
-#: personal/posix/class_posixAccount.inc:839
-#: personal/posix/class_posixAccount.inc:879
-#: personal/posix/class_posixAccount.inc:891
-#: personal/posix/class_posixAccount.inc:895
-#: personal/posix/class_posixAccount.inc:902
-#: personal/posix/class_posixAccount.inc:911
-#: personal/posix/class_posixAccount.inc:973
+#: personal/posix/class_posixAccount.inc:796
+#: personal/posix/class_posixAccount.inc:836
+#: personal/posix/class_posixAccount.inc:848
+#: personal/posix/class_posixAccount.inc:852
+#: personal/posix/class_posixAccount.inc:859
+#: personal/posix/class_posixAccount.inc:868
+#: personal/posix/class_posixAccount.inc:930
 msgid "Error"
 msgstr "Fout"
 
-#: personal/posix/class_posixAccount.inc:839
-#: personal/posix/class_posixAccount.inc:879
-#: personal/posix/class_posixAccount.inc:891
-#: personal/posix/class_posixAccount.inc:895
-#: personal/posix/class_posixAccount.inc:902
-#: personal/posix/class_posixAccount.inc:911
+#: personal/posix/class_posixAccount.inc:796
+#: personal/posix/class_posixAccount.inc:836
+#: personal/posix/class_posixAccount.inc:848
+#: personal/posix/class_posixAccount.inc:852
+#: personal/posix/class_posixAccount.inc:859
+#: personal/posix/class_posixAccount.inc:868
 msgid "Cannot allocate a free ID:"
 msgstr "Kan geen vrij ID alloceren:"
 
-#: personal/posix/class_posixAccount.inc:839
+#: personal/posix/class_posixAccount.inc:796
 #, php-format
 msgid "%sPoolMin >= %sPoolMax!"
 msgstr "%sPoolMin >=%sPoolMax!"
 
-#: personal/posix/class_posixAccount.inc:871
+#: personal/posix/class_posixAccount.inc:828
 msgid "LDAP error"
 msgstr "LDAP fout"
 
-#: personal/posix/class_posixAccount.inc:879
+#: personal/posix/class_posixAccount.inc:836
 msgid "sambaUnixIdPool is not unique!"
 msgstr "sambaUnixIdPool is niet uniek!"
 
-#: personal/posix/class_posixAccount.inc:891
-#: personal/posix/class_posixAccount.inc:895
+#: personal/posix/class_posixAccount.inc:848
+#: personal/posix/class_posixAccount.inc:852
 msgid "no ID available!"
 msgstr "Geen ID beschikbaar!"
 
-#: personal/posix/class_posixAccount.inc:911
+#: personal/posix/class_posixAccount.inc:868
 msgid "maximum tries exceeded!"
 msgstr "maximum pogingen overschreden!"
 
-#: personal/posix/class_posixAccount.inc:973
+#: personal/posix/class_posixAccount.inc:930
 msgid "Cannot allocate a free ID!"
 msgstr "Kan geen vrij ID toekennen!"
 
-#: personal/posix/class_posixAccount.inc:1005
+#: personal/posix/class_posixAccount.inc:961
+#: personal/posix/class_posixAccount.inc:978
+#, php-format
+msgid ""
+"%s\n"
+"Result: %s\n"
+"Using default base!"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:979
+msgid "\"nextIdHook\" did not return a valid output!"
+msgstr ""
+
+#: personal/posix/class_posixAccount.inc:988
 msgid "\"nextIdHook\" is not available. Using default base!"
 msgstr "\"nextIdHook\" is niet beschikbaar. Gebruik standaard basis!"

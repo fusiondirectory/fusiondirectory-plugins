@@ -5,15 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Choi Chris <chulwon.choi@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:35+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,16 +25,16 @@ msgstr ""
 #: admin/systems/services/sympa/class_serviceSympa.inc:27
 #: admin/systems/services/sympa/class_serviceSympa.inc:28
 msgid "Sympa Server"
-msgstr ""
+msgstr "Sympa 서버"
 
 #: admin/systems/services/sympa/class_serviceSympa.inc:28
 msgid "Services"
 msgstr "서비스"
 
 #: admin/systems/services/sympa/class_serviceSympa.inc:43
-#: admin/sympa/class_sympaAlias.inc:60
+#: admin/sympa/class_sympaAlias.inc:61
 msgid "Sympa server"
-msgstr ""
+msgstr "Sympa 서버"
 
 #: admin/systems/services/sympa/class_serviceSympa.inc:46
 msgid "URL"
@@ -41,7 +42,7 @@ msgstr "URL"
 
 #: admin/systems/services/sympa/class_serviceSympa.inc:46
 msgid "URL to access the sympa server"
-msgstr ""
+msgstr "sympa 서버에 접속할 URL"
 
 #: admin/systems/services/sympa/class_serviceSympa.inc:50
 msgid "User"
@@ -49,7 +50,7 @@ msgstr "사용자"
 
 #: admin/systems/services/sympa/class_serviceSympa.inc:50
 msgid "User to access sympa server SOAP API."
-msgstr ""
+msgstr "sympa 서버 SOAP API에 액세스하는 사용자."
 
 #: admin/systems/services/sympa/class_serviceSympa.inc:54
 msgid "Password"
@@ -57,58 +58,62 @@ msgstr "패스워드"
 
 #: admin/systems/services/sympa/class_serviceSympa.inc:54
 msgid "Password to access sympa server SOAP API."
-msgstr ""
+msgstr "sympa 서버 SOAP API에 액세스하는 패스워드."
 
-#: admin/sympa/class_sympaManagement.inc:33
+#: admin/sympa/class_sympaManagement.inc:28
 #: config/sympa/class_sympaConfig.inc:40
 msgid "Sympa"
-msgstr ""
+msgstr "Sympa"
 
-#: admin/sympa/class_sympaManagement.inc:34
+#: admin/sympa/class_sympaManagement.inc:29
 msgid "Sympa management"
+msgstr "Sympa 관리"
+
+#: admin/sympa/class_sympaManagement.inc:30
+msgid "Manage sympa aliases"
 msgstr ""
 
 #: admin/sympa/class_sympaAlias.inc:26 admin/sympa/class_sympaAlias.inc:27
-#: admin/sympa/class_sympaAlias.inc:30 admin/sympa/class_sympaAlias.inc:45
+#: admin/sympa/class_sympaAlias.inc:30 admin/sympa/class_sympaAlias.inc:46
 msgid "Sympa list alias"
-msgstr ""
+msgstr "Sympa 목록 별칭"
 
-#: admin/sympa/class_sympaAlias.inc:48
+#: admin/sympa/class_sympaAlias.inc:49
 msgid "Name"
 msgstr "명칭"
 
-#: admin/sympa/class_sympaAlias.inc:48
+#: admin/sympa/class_sympaAlias.inc:49
 msgid "Name to identify this alias"
 msgstr "별칭 확인"
 
-#: admin/sympa/class_sympaAlias.inc:50
+#: admin/sympa/class_sympaAlias.inc:51
 msgid "Description"
 msgstr "설명"
 
-#: admin/sympa/class_sympaAlias.inc:50
+#: admin/sympa/class_sympaAlias.inc:51
 msgid "Description of this alias"
 msgstr "별칭 설명"
 
-#: admin/sympa/class_sympaAlias.inc:55
+#: admin/sympa/class_sympaAlias.inc:56
 msgid "Email address"
 msgstr "메일 주소"
 
-#: admin/sympa/class_sympaAlias.inc:60
+#: admin/sympa/class_sympaAlias.inc:61
 msgid "Sympa server for this alias"
-msgstr ""
+msgstr "이 별칭에 대한 Sympa 서버"
 
 #: config/sympa/class_sympaConfig.inc:26
 msgid "Sympa configuration"
-msgstr ""
+msgstr "Sympa 설정"
 
 #: config/sympa/class_sympaConfig.inc:27
 msgid "FusionDirectory sympa plugin configuration"
-msgstr ""
+msgstr "FusionDirectory sympa 플러그인 설정"
 
 #: config/sympa/class_sympaConfig.inc:43
 msgid "Sympa RDN"
-msgstr ""
+msgstr "Sympa RDN"
 
 #: config/sympa/class_sympaConfig.inc:43
 msgid "Branch in which Sympa objects will be stored"
-msgstr ""
+msgstr "Sympa 개체가 저장될 브랜치"

@@ -5,16 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
-# Choi Chris <chulwon.choi@gmail.com>, 2018
+# Choi Chris <chulwon.choi@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:34+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
-"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -154,7 +154,7 @@ msgstr ""
 
 #: admin/fai/class_faiDiskEntry.inc:254
 msgid "Label"
-msgstr ""
+msgstr "라"
 
 #: admin/fai/class_faiDiskEntry.inc:254
 msgid "UUID"
@@ -203,7 +203,7 @@ msgstr ""
 
 #: admin/fai/packageSelect/selectPackage-list.xml:11
 msgid "Please select the desired entries"
-msgstr ""
+msgstr "원하는 항목을 선택하십시오."
 
 #: admin/fai/packageSelect/selectPackage-list.xml:15
 #: admin/fai/class_faiPackage.inc:374
@@ -214,12 +214,12 @@ msgstr ""
 msgid "Version"
 msgstr ""
 
-#: admin/fai/packageSelect/class_filterFAIPackages.inc:41
-#: admin/fai/packageSelect/class_filterFAIPackages.inc:46
+#: admin/fai/packageSelect/class_filterFAIPackages.inc:40
+#: admin/fai/packageSelect/class_filterFAIPackages.inc:45
 #: admin/fai/class_faiPackageConfiguration.inc:59
 #: admin/fai/class_faiPackage.inc:287
 msgid "Infrastructure service"
-msgstr ""
+msgstr "인프라 서비스"
 
 #: admin/fai/class_faiPartition.inc:30
 msgid "Type of sizing - fixed, dynamic or all remaining space"
@@ -300,7 +300,7 @@ msgstr ""
 
 #: admin/fai/class_faiPartition.inc:250
 msgid "Size"
-msgstr ""
+msgstr "크기"
 
 #: admin/fai/class_faiPartition.inc:250
 msgid "Size of this partition"
@@ -308,7 +308,7 @@ msgstr ""
 
 #: admin/fai/class_faiPartition.inc:256
 msgid "Flags"
-msgstr ""
+msgstr "플래그"
 
 #: admin/fai/class_faiPartition.inc:265
 msgid "Combined physical partitions in this RAID"
@@ -516,7 +516,7 @@ msgstr ""
 
 #: admin/fai/class_faiScript.inc:76
 msgid "Priority"
-msgstr ""
+msgstr "우선 순위"
 
 #: admin/fai/class_faiScript.inc:76
 msgid "Priority of this script (smaller is done first)"
@@ -528,7 +528,7 @@ msgstr ""
 
 #: admin/fai/class_faiProfile.inc:26
 msgid "Profile"
-msgstr ""
+msgstr "프로필"
 
 #: admin/fai/class_faiProfile.inc:27
 msgid "FAI profile"
@@ -617,7 +617,7 @@ msgstr ""
 #: admin/fai/class_faiPackage.inc:411 admin/systems/class_faiStartup.inc:88
 #: admin/systems/services/repository/class_serviceRepository.inc:40
 msgid "Release"
-msgstr ""
+msgstr "릴리즈"
 
 #: admin/fai/class_faiPackage.inc:411
 msgid "Debian release concerned"
@@ -662,7 +662,7 @@ msgstr ""
 
 #: admin/fai/class_faiHook.inc:76
 msgid "Task"
-msgstr ""
+msgstr "태스크"
 
 #: admin/fai/class_faiHook.inc:76
 msgid "Task to run"
@@ -679,7 +679,7 @@ msgstr ""
 
 #: admin/fai/class_faiTemplate.inc:144
 msgid "Template"
-msgstr ""
+msgstr "템플릿"
 
 #: admin/fai/class_faiTemplate.inc:145 admin/fai/class_faiTemplate.inc:150
 msgid "FAI template"
@@ -700,7 +700,7 @@ msgstr ""
 #: admin/fai/class_faiManagement.inc:117 admin/fai/class_faiManagement.inc:122
 #: admin/systems/class_faiStartup.inc:61 config/fai/class_faiConfig.inc:39
 msgid "FAI"
-msgstr ""
+msgstr "FAI"
 
 #: admin/fai/class_faiManagement.inc:118
 msgid "Manage FAI software packages and deployment recipes"
@@ -961,7 +961,7 @@ msgstr ""
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:42
 msgid "Port"
-msgstr ""
+msgstr "포트"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:42
 msgid "The port argonaut-fai-monitor should listen on. Default is 4711."
@@ -969,7 +969,7 @@ msgstr ""
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:47
 msgid "Timeout"
-msgstr ""
+msgstr "타임아웃"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:47
 msgid "The timeout for bad clients. 0 to disable."
@@ -977,7 +977,7 @@ msgstr ""
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:52
 msgid "CA certificate"
-msgstr ""
+msgstr "CA 인증서"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:52
 msgid "Path to the CA certificate file on Argonaut FAI monitor server"
@@ -985,7 +985,7 @@ msgstr ""
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:57
 msgid "Log directory"
-msgstr ""
+msgstr "로그 디렉토리"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:57
 msgid "Directory in which argonaut-fai-monitor will store its log"

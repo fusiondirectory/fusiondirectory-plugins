@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Paola Penati <paola.penati@opensides.be>, 2018
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Paola Penati <paola.penati@opensides.be>, 2018
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:34+0000\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,46 +24,48 @@ msgstr ""
 
 #: include/class_publicFormPage.inc:72
 msgid "Invalid link, both token and form are provided"
-msgstr ""
+msgstr "Link non valido, sono forniti sia token che modulo"
 
 #: include/class_publicFormPage.inc:86
 #, php-format
 msgid "Could not find any invitation matching token \"%s\""
-msgstr ""
+msgstr "Impossibile trovare alcun invito corrispondente al  token \"%s\""
 
 #: include/class_publicFormPage.inc:88 include/class_publicFormPage.inc:106
 #, php-format
 msgid "Found several invitations matching token \"%s\""
-msgstr ""
+msgstr "Trovato diversi inviti corrispondenti a token \"%s\""
 
 #: include/class_publicFormPage.inc:92
 #, php-format
 msgid "The invitation matching token \"%s\" does not exist anymore"
-msgstr ""
+msgstr "Il token di invito a corrispondenza \"%s\" non esiste più"
 
 #: include/class_publicFormPage.inc:104
 #, php-format
 msgid "Could not find any invitation matching registration with token \"%s\""
 msgstr ""
+"Impossibile trovare una registrazione di abbinamento di invito con il token "
+"\"%s\""
 
 #: include/class_publicFormPage.inc:151
 msgid "Form name or token missing from URL"
-msgstr ""
+msgstr "Nome del modulo o token mancante dall'URL"
 
 #: include/class_publicFormPage.inc:154
 #, php-format
 msgid "Form \"%s\" could not be found"
-msgstr ""
+msgstr "Impossibile trovare il modulo \"%s\""
 
 #: include/class_publicFormPage.inc:156
 #, php-format
 msgid "Found several forms named \"%s\""
-msgstr ""
+msgstr "Trovato diversi formulari denominati \"%s\""
 
 #: include/class_publicFormPage.inc:165
 #, php-format
 msgid "Form \"%s\" is private and requires an invitation"
-msgstr ""
+msgstr "Il modulo \"%s\" è privato e richiede un invito"
 
 #: include/class_publicFormPage.inc:224
 msgid "Error"
@@ -71,45 +73,45 @@ msgstr "Errore"
 
 #: include/class_publicFormPage.inc:224
 msgid "You need to accept the terms of service to continue!"
-msgstr ""
+msgstr "Devi accettare i termini di servizio per continuare!"
 
 #: include/class_publicFormPage.inc:333
 #, php-format
 msgid "Form - %s"
-msgstr ""
+msgstr "Modulo - %s"
 
 #: include/class_publicFormPage.inc:335
 #: admin/public-forms/class_publicForm.inc:49
 msgid "Form"
 msgstr "Modulo"
 
-#: admin/public-forms/class_publicFormAlteration.inc:26
+#: admin/public-forms/class_publicFormAlteration.inc:27
 #: admin/public-forms/class_publicFormAlteration.inc:42
 msgid "Altered fields"
-msgstr ""
+msgstr "Campi alterati"
 
-#: admin/public-forms/class_publicFormAlteration.inc:27
+#: admin/public-forms/class_publicFormAlteration.inc:28
 #: admin/public-forms/class_publicFormAlteration.inc:47
 msgid "Alteration on form fields"
-msgstr ""
+msgstr "Alterazione nei campi modulo"
 
 #: admin/public-forms/class_publicFormAlteration.inc:51
 #: admin/public-forms/class_publicFormAlteration.inc:100
 msgid "Field"
-msgstr ""
+msgstr "Campo"
 
 #: admin/public-forms/class_publicFormAlteration.inc:51
 msgid "LDAP name of a form field"
-msgstr ""
+msgstr "Nome LDAP di un campo modulo"
 
 #: admin/public-forms/class_publicFormAlteration.inc:55
 #: admin/public-forms/class_publicFormAlteration.inc:101
 msgid "Mandatory"
-msgstr ""
+msgstr "Obbligatorio"
 
 #: admin/public-forms/class_publicFormAlteration.inc:55
 msgid "Should this field be mandatory"
-msgstr ""
+msgstr "Questo campo dovrebbe essere obbligatorio"
 
 #: admin/public-forms/class_publicFormAlteration.inc:61
 #: admin/public-forms/class_publicFormAlteration.inc:102
@@ -118,16 +120,16 @@ msgstr "Solo lettura"
 
 #: admin/public-forms/class_publicFormAlteration.inc:61
 msgid "Should this field be read only"
-msgstr ""
+msgstr "Questo campo deve essere in sola lettura"
 
 #: admin/public-forms/class_publicFormAlteration.inc:67
 #: admin/public-forms/class_publicFormAlteration.inc:103
 msgid "Imported"
-msgstr ""
+msgstr "Importato"
 
 #: admin/public-forms/class_publicFormAlteration.inc:67
 msgid "Should this field be imported from HTTP headers"
-msgstr ""
+msgstr "Questo campo deve essere importato dalle intestazioni HTTP"
 
 #: admin/public-forms/class_publicFormAlteration.inc:73
 #: admin/public-forms/class_publicFormAlteration.inc:104
@@ -136,27 +138,27 @@ msgstr "Nascosto"
 
 #: admin/public-forms/class_publicFormAlteration.inc:73
 msgid "Should this field be hidden away"
-msgstr ""
+msgstr "Questo campo dovrebbe essere nascosto"
 
-#: admin/public-forms/class_publicFormManagement.inc:26
+#: admin/public-forms/class_publicFormManagement.inc:27
 #: config/public-forms/class_publicFormsConfig.inc:40
 msgid "Public forms"
 msgstr "Moduli pubblici"
 
-#: admin/public-forms/class_publicFormManagement.inc:27
+#: admin/public-forms/class_publicFormManagement.inc:28
 msgid "Public forms management"
 msgstr "Gestione dei moduli pubblici"
 
-#: admin/public-forms/class_publicFormManagement.inc:28
+#: admin/public-forms/class_publicFormManagement.inc:29
 msgid "Manage public forms"
 msgstr "Gestire moduli pubblici"
 
-#: admin/public-forms/class_publicForm.inc:26
+#: admin/public-forms/class_publicForm.inc:27
 #: admin/public-forms/class_publicForm.inc:31
 msgid "Public form"
 msgstr "Modulo pubblico"
 
-#: admin/public-forms/class_publicForm.inc:27
+#: admin/public-forms/class_publicForm.inc:28
 msgid "Public form which creates objects inside FusionDirectory"
 msgstr "Modulo pubblico che crea oggetti all'interno di FusionDirectory"
 
@@ -214,25 +216,27 @@ msgstr "Privato"
 
 #: admin/public-forms/class_publicForm.inc:80
 msgid "Restrict this form to invitations"
-msgstr ""
+msgstr "Limita questo modulo agli inviti"
 
 #: admin/public-forms/class_publicForm.inc:85
 msgid "Creation base"
-msgstr ""
+msgstr "Base di creazione"
 
 #: admin/public-forms/class_publicForm.inc:85
 msgid "Base in which objects will get created"
-msgstr ""
+msgstr "Base in cui verranno creati gli oggetti"
 
 #: admin/public-forms/class_publicForm.inc:90
 msgid "TOS URL"
-msgstr ""
+msgstr "URL TOS"
 
 #: admin/public-forms/class_publicForm.inc:90
 msgid ""
 "Terms of service URL. If filled, this adds a mandatory checkbox to agree to "
 "the terms at this URL."
 msgstr ""
+"Termini dell'URL del servizio. Se riempito, aggiunge una casella di "
+"controllo obbligatoria per accettare i termini su questo URL."
 
 #: config/public-forms/class_publicFormsConfig.inc:26
 msgid "Public forms configuration"
@@ -253,3 +257,5 @@ msgstr "Ramo in cui verranno archiviati i moduli pubblici"
 #: ihtml/themes/breezy/public-form.tpl.c:2
 msgid "I agree to the <a target=\"_blank\" href=\"%1\">terms of service</a>"
 msgstr ""
+"Sono d'accordo con i <a target=\"_blank\" href=\"%1\"> termini di servizio "
+"</a>"

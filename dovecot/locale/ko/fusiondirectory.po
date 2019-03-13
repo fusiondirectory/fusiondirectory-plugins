@@ -5,15 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Choi Chris <chulwon.choi@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:34+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +25,7 @@ msgstr ""
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:26
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:27
 msgid "Dovecot (IMAP/POP3)"
-msgstr ""
+msgstr "Dovecot (IMAP/POP3)"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:27
 msgid "Services"
@@ -32,55 +33,55 @@ msgstr "서비스"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:42
 msgid "Dovecot connection"
-msgstr ""
+msgstr "Dovecot 연결"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:45
 msgid "Connect URL for Dovecot server"
-msgstr ""
+msgstr "Dovecot 서버 연결 URL"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:49
 msgid "Hostname"
-msgstr ""
+msgstr "호스트명"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:49
 msgid "Hostname of the Dovecot server"
-msgstr ""
+msgstr "Dovecot 서버의 호스트명"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:53
 msgid "Port"
-msgstr ""
+msgstr "포트"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:53
 msgid "Port number on which Dovecot server should be contacted"
-msgstr ""
+msgstr "Dovecot 서버에 접속해야 하는 포트 번호"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:58
 msgid "Option"
-msgstr ""
+msgstr "옵션"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:58
 msgid "Options for contacting Dovecot server"
-msgstr ""
+msgstr "Dovecot 서버 접속 옵션"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:63
 msgid "Validate TLS/SSL Certificates"
-msgstr ""
+msgstr "TLS / SSL 인증서 확인"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:63
 msgid "Weither or not to validate server certificates on connection"
-msgstr ""
+msgstr "연결시 서버 인증서의 유효성을 검사 여부"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:75
 msgid "Master credentials"
-msgstr ""
+msgstr "마스터 자격증명"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:78
 msgid "Admin user"
-msgstr ""
+msgstr "관리자"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:78
 msgid "Dovecot server admin user"
-msgstr ""
+msgstr "Dovecot 서버 관리자"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:82
 msgid "Password"
@@ -88,15 +89,15 @@ msgstr "패스워드"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:82
 msgid "Admin user password"
-msgstr ""
+msgstr "관리자 패스워드"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:86
 msgid "Mail directory"
-msgstr ""
+msgstr "메일 디렉토리"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:86
 msgid "Path to the directory in which user maildirs must be created"
-msgstr ""
+msgstr "사용자 maildir을 작성해야하는 디렉토리 경로"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:93
 msgid "Options"
@@ -104,21 +105,21 @@ msgstr "옵션"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:96
 msgid "Create the user folder via Argonaut"
-msgstr ""
+msgstr "Argonaut를 통해 사용자 폴더 만들기"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:96
 msgid "Use argonaut to create the user mailbox on the Dovecot server"
-msgstr ""
+msgstr "argonaut를 사용하여 Dovecot 서버에 사용자 사서함을 만듭니다."
 
 #: personal/mail/mail-methods/class_mail-methods-dovecot.inc:50
 msgid "There are no IMAP compatible mail servers defined!"
-msgstr ""
+msgstr "정의된 IMAP 호환 메일 서버가 없습니다!"
 
 #: personal/mail/mail-methods/class_mail-methods-dovecot.inc:55
 msgid "Mail server for this account is invalid!"
-msgstr ""
+msgstr "이 계정의 메일 서버가 유효하지 않습니다!"
 
 #: personal/mail/mail-methods/class_mail-methods-dovecot.inc:194
 #, php-format
 msgid "Error while trying to contact Dovecot server through Argonaut: %s"
-msgstr ""
+msgstr "Argonaut를 통해 Dovecot 서버에 접속하는 동안 오류가 발생했습니다: %s"

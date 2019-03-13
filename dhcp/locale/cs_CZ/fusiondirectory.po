@@ -5,15 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Pavel Borecki <pavel.borecki@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:34+0000\n"
 "PO-Revision-Date: 2018-08-13 19:52+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,19 +22,19 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: admin/dhcp/class_dhcpPlugin.inc:31 admin/dhcp/class_dhcpManagement.inc:34
+#: admin/dhcp/class_dhcpPlugin.inc:31 admin/dhcp/class_dhcpManagement.inc:27
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:38
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:38
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:38
-#: admin/systems/class_dhcpSystem.inc:289
+#: admin/systems/class_dhcpSystem.inc:290
 msgid "DHCP"
 msgstr "DHCP"
 
 #: admin/dhcp/class_dhcpPlugin.inc:34
-#: admin/dhcp/class_dhcpConfiguration.inc:245
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:41
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:41
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:41
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:245
 msgid "Name"
 msgstr "Název"
 
@@ -74,11 +75,15 @@ msgstr "Komentáře"
 msgid "Comments about this DHCP object"
 msgstr "Komentáře k tomuto DHCP objektu"
 
-#: admin/dhcp/class_dhcpManagement.inc:35
+#: admin/dhcp/class_dhcpManagement.inc:28
 msgid "DHCP Management"
 msgstr "Správa DHCP"
 
-#: admin/dhcp/class_dhcpManagement.inc:37
+#: admin/dhcp/class_dhcpManagement.inc:29
+msgid "Manage DHCP configurations"
+msgstr ""
+
+#: admin/dhcp/class_dhcpManagement.inc:31
 msgid "Systems"
 msgstr "Systémy"
 
@@ -94,103 +99,71 @@ msgstr "Zvolte typ sekce, která má být vytvořena"
 msgid "Create new DHCP section"
 msgstr "Vytvořit novou sekci DHCP"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:36
-msgid "Expand DHCP subnet"
-msgstr "Rozšířit DHCP podsíť"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:37
-msgid "Expand"
-msgstr "Rozbalit"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:46
-msgid "Fold DHCP subnet"
-msgstr "Sbalit DHCP podsíť"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:47
-msgid "Fold"
-msgstr "Sbalit"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:110
-#: admin/dhcp/class_dhcpConfiguration.inc:111
-msgid "Insert new DHCP section"
-msgstr "Vložit novou DHCP sekci"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:365
-#: admin/dhcp/class_dhcpConfiguration.inc:405
-#: admin/dhcp/class_dhcpConfiguration.inc:566
-msgid "Global options"
-msgstr "globální volby"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:420
-msgid "Error"
-msgstr "Chyba"
-
-#: admin/dhcp/class_dhcpConfiguration.inc:420
-msgid ""
-"The DHCP configuration set is unkown. Please contact your system "
-"administrator."
-msgstr ""
-"Nastavení DHCP jsou neznámá. Kontaktujte prosím svého správce systémů."
-
-#: admin/dhcp/class_dhcpConfiguration.inc:526
-#: admin/dhcp/class_dhcpConfiguration.inc:527
-#: admin/dhcp/class_dhcpConfiguration.inc:530
+#: admin/dhcp/class_dhcpConfiguration.inc:51
+#: admin/dhcp/class_dhcpConfiguration.inc:52
+#: admin/dhcp/class_dhcpConfiguration.inc:55
 #: config/dhcp/class_dhcpConfig.inc:26
 msgid "DHCP configuration"
 msgstr "Nastavení DHCP"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:548
+#: admin/dhcp/class_dhcpConfiguration.inc:74
 msgid "DHCP Objects"
 msgstr "DHCP objekty"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:554
+#: admin/dhcp/class_dhcpConfiguration.inc:80
 msgid "The DHCP sections handled by this server"
 msgstr "DHCP sekce, obsluhovaná tímto serverem"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:565
+#: admin/dhcp/class_dhcpConfiguration.inc:91
 msgid "Logging"
 msgstr "pořizování protokolovacích záznamů (logů)"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:567
+#: admin/dhcp/class_dhcpConfiguration.inc:92
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:365
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:405
+msgid "Global options"
+msgstr "globální volby"
+
+#: admin/dhcp/class_dhcpConfiguration.inc:93
 msgid "Class"
 msgstr "Třída"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:568
+#: admin/dhcp/class_dhcpConfiguration.inc:94
 msgid "Subclass"
 msgstr "Podtřída"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:569
+#: admin/dhcp/class_dhcpConfiguration.inc:95
 #: admin/dhcp/sections/class_dhcpHost.inc:40
 msgid "Host"
 msgstr "Stroj"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:570
+#: admin/dhcp/class_dhcpConfiguration.inc:96
 msgid "Group"
 msgstr "Skupina"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:571
+#: admin/dhcp/class_dhcpConfiguration.inc:97
 #: admin/dhcp/sections/class_dhcpPool.inc:38
 msgid "Pool"
 msgstr "rozsah"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:572
+#: admin/dhcp/class_dhcpConfiguration.inc:98
 #: admin/dhcp/sections/class_dhcpSubnet.inc:38
 msgid "Subnet"
 msgstr "Podsíť"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:573
+#: admin/dhcp/class_dhcpConfiguration.inc:99
 msgid "Failover peer"
 msgstr "záložní server"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:574
+#: admin/dhcp/class_dhcpConfiguration.inc:100
 msgid "Shared network"
 msgstr "Sdílená síť"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:575
+#: admin/dhcp/class_dhcpConfiguration.inc:101
 msgid "DNS update key"
 msgstr "klíč pro aktualizaci DNS"
 
-#: admin/dhcp/class_dhcpConfiguration.inc:576
+#: admin/dhcp/class_dhcpConfiguration.inc:102
 msgid "DNS update zones"
 msgstr "zóny aktualizace DNS"
 
@@ -340,6 +313,8 @@ msgid ""
 "IP address or DNS name of the server playing primary role in DHC Load "
 "Balancing and Fail over"
 msgstr ""
+"IP adresa nebo DNS název serveru, který má roli hlavního v DHC rozdělování "
+"zátěže a převzetí služby při selhání"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:49
 msgid "Primary port"
@@ -362,6 +337,8 @@ msgid ""
 "IP address or DNS name of the server playing secondary role in DHC Load "
 "Balancing and Fail over"
 msgstr ""
+"IP adresa nebo DNS název serveru, který má roli záložního v DHC rozdělování "
+"zátěže a převzetí služby při selhání"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:58
 msgid "Secondary port"
@@ -401,13 +378,15 @@ msgstr ""
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:73
 msgid "Maximum Client Lead Time"
-msgstr ""
+msgstr "Maximální lead čas klienta"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:73
 msgid ""
 "Maximum Client Lead Time configuration in seconds, as defined in DHCP "
 "Failover Protocol [FAILOVR]"
 msgstr ""
+"Maximální nastavení lead čas klineta (v sekundách), jak je určeno v DHCP "
+"protokolu převzetí služby v případě výpadku [FAILOVR]"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:78
 msgid "Split"
@@ -426,6 +405,8 @@ msgid ""
 "HashBucketAssignment bit map for the DHCP Server, as defined in DHC Load "
 "Balancing Algorithm [RFC 3074]"
 msgstr ""
+"HashBucketAssignment bitová mapa pro DHCP server, jak je určeno v DHC "
+"altoritmu rozdělování zátěže [RFC 3074]"
 
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:87
 msgid "Load balance time"
@@ -434,6 +415,7 @@ msgstr "Čas rozprostření zátěže"
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:87
 msgid "Cutoff time in seconds, after which load balance is disabled"
 msgstr ""
+"Cutoff čas (v sekundách), po jehož uplynutí je rozdělování zátěže vypnuto"
 
 #: admin/dhcp/sections/class_dhcpSubnet.inc:26
 #: admin/dhcp/sections/class_dhcpSubnet.inc:27
@@ -478,7 +460,39 @@ msgstr "Tsig klíč"
 
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:49
 msgid "The TSig key DN"
+msgstr "Rozlišený název (DN) TSig klíče"
+
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:36
+msgid "Expand DHCP subnet"
+msgstr "Rozšířit DHCP podsíť"
+
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:37
+msgid "Expand"
+msgstr "Rozbalit"
+
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:46
+msgid "Fold DHCP subnet"
+msgstr "Sbalit DHCP podsíť"
+
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:47
+msgid "Fold"
+msgstr "Sbalit"
+
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:110
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:111
+msgid "Insert new DHCP section"
+msgstr "Vložit novou DHCP sekci"
+
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:420
+msgid "Error"
+msgstr "Chyba"
+
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:420
+msgid ""
+"The DHCP configuration set is unkown. Please contact your system "
+"administrator."
 msgstr ""
+"Nastavení DHCP jsou neznámá. Kontaktujte prosím svého správce systémů."
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:42
 msgid "DHCP configurations"
@@ -488,36 +502,37 @@ msgstr "Nastavení DHCP"
 msgid ""
 "The DN of dhcpService object(s) which contain the configuration information"
 msgstr ""
+"Rozlišený název (DN) objektů dhcpService, které obsahují údaje nastavení"
 
-#: admin/systems/class_dhcpSystem.inc:32
+#: admin/systems/class_dhcpSystem.inc:33
 msgid ""
 "The DHCP configuration or subsection in which this host should be added"
 msgstr ""
 "Nastavení DHCP nebo dílčí sekce do které by měl tento stroj být přidán"
 
-#: admin/systems/class_dhcpSystem.inc:36
-#: admin/systems/class_dhcpSystem.inc:115
+#: admin/systems/class_dhcpSystem.inc:37
+#: admin/systems/class_dhcpSystem.inc:116
 msgid "The Mac address to use in the DHCP host record"
 msgstr "MAC adresa kterou použít v DHCP záznamu pro stroj"
 
-#: admin/systems/class_dhcpSystem.inc:40
-#: admin/systems/class_dhcpSystem.inc:120
+#: admin/systems/class_dhcpSystem.inc:41
+#: admin/systems/class_dhcpSystem.inc:121
 msgid "The IP address to use in the DHCP host record"
 msgstr "IP adresa kterou použít v DHCP záznamu pro stroj"
 
-#: admin/systems/class_dhcpSystem.inc:54
-msgid "Parent"
-msgstr ""
-
 #: admin/systems/class_dhcpSystem.inc:55
-msgid "Mac"
-msgstr ""
+msgid "Parent"
+msgstr "Nadřazené"
 
 #: admin/systems/class_dhcpSystem.inc:56
+msgid "Mac"
+msgstr "Mac"
+
+#: admin/systems/class_dhcpSystem.inc:57
 msgid "IP"
 msgstr "IP adresa"
 
-#: admin/systems/class_dhcpSystem.inc:233
+#: admin/systems/class_dhcpSystem.inc:234
 #, php-format
 msgid ""
 "\"%s\" is locked (by \"%s\" since %s), could not save modifications to this "
@@ -526,24 +541,24 @@ msgstr ""
 "„%s“ je uzamčeno („%s“ od „%s“), není možné uložit úpravy v tomto DHCP "
 "nastavení"
 
-#: admin/systems/class_dhcpSystem.inc:256
+#: admin/systems/class_dhcpSystem.inc:257
 #, php-format
 msgid "The value for multivaluated field \"%s\" is not an array"
 msgstr "Hodnota pro vícehodnotovou kolonku „%s“ není pole"
 
-#: admin/systems/class_dhcpSystem.inc:290
+#: admin/systems/class_dhcpSystem.inc:291
 msgid "Edit the DHCP zones of a system"
 msgstr "Upravit DHCP zóny systému"
 
-#: admin/systems/class_dhcpSystem.inc:304
+#: admin/systems/class_dhcpSystem.inc:305
 msgid "DHCP zones"
 msgstr "DHCP zóny"
 
-#: admin/systems/class_dhcpSystem.inc:308
+#: admin/systems/class_dhcpSystem.inc:309
 msgid "DHCP hosts declared for this system"
 msgstr "DHCP stroje deklarované pro tento systém"
 
-#: admin/systems/class_dhcpSystem.inc:372
+#: admin/systems/class_dhcpSystem.inc:373
 #, php-format
 msgid "The ip %s is not in the network %s/%d"
 msgstr "IP adresa %s není v síti %s/%d"
@@ -558,7 +573,7 @@ msgstr "Nastavení DHCP"
 
 #: config/dhcp/class_dhcpConfig.inc:43
 msgid "DHCP RDN"
-msgstr ""
+msgstr "Relativní rozlišený název DHCP"
 
 #: config/dhcp/class_dhcpConfig.inc:43
 msgid "Branch in which DHCP configurations will be stored"

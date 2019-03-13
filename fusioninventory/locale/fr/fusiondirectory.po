@@ -5,15 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Benoit Mortier <benoit.mortier@opensides.be>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:34+0000\n"
 "PO-Revision-Date: 2018-08-13 19:54+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2019\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,42 +22,14 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: admin/inventory/class_inventoryManagement.inc:37
+#: admin/inventory/class_inventoryManagement.inc:39
+#: admin/inventory/class_inventoryManagement.inc:40
 msgid "Inventory objects"
 msgstr "Objets d'inventaire"
 
-#: admin/inventory/class_inventoryManagement.inc:38
+#: admin/inventory/class_inventoryManagement.inc:41
 msgid "Browse inventory objects"
 msgstr "Parcourir les objets d'inventaire"
-
-#: admin/inventory/inventory-list.xml:7
-msgid "NO LABEL"
-msgstr "Pas de titre"
-
-#: admin/inventory/inventory-list.xml:28
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:68
-msgid "IP"
-msgstr "IP"
-
-#: admin/inventory/inventory-list.xml:36
-msgid "Macs"
-msgstr "Macs"
-
-#: admin/inventory/inventory-list.xml:44
-msgid "Operating Systems"
-msgstr "Systèmes d'exploitation"
-
-#: admin/inventory/inventory-list.xml:50
-msgid "Actions"
-msgstr "Actions"
-
-#: admin/inventory/inventory-list.xml:61 admin/inventory/inventory-list.xml:85
-msgid "Edit"
-msgstr "Editer"
-
-#: admin/inventory/inventory-list.xml:68 admin/inventory/inventory-list.xml:92
-msgid "Remove"
-msgstr "Supprimer"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:28
 #: config/fusioninventory/class_fiConfig.inc:40
@@ -109,6 +82,10 @@ msgid "Do not use web interface"
 msgstr "Ne pas utiliser l'interface Web"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:68
+msgid "IP"
+msgstr "IP"
+
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:68
 msgid "Network interface to listen to"
 msgstr "Interface réseau sur laquelle écouter"
 
@@ -124,58 +101,62 @@ msgstr "Mode de confiance"
 msgid "IPs allowed to launch inventory task through web interface"
 msgstr "IPs autorisées à lancer des tâches d'inventaire via l'interface web"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:68
+#: admin/systems/fusioninventory/class_fiInventory.inc:70
 msgid "Inventory"
 msgstr "Inventaire"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:69
+#: admin/systems/fusioninventory/class_fiInventory.inc:71
 msgid "Inventory Viewer"
 msgstr "Affichage de l'inventaire"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:74
-#: admin/systems/fusioninventory/class_fiInventory.inc:78
+#: admin/systems/fusioninventory/class_fiInventory.inc:77
+#: admin/systems/fusioninventory/class_fiInventory.inc:80
 msgid "Inventory object"
 msgstr "Objet d'inventaire"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:92
+#: admin/systems/fusioninventory/class_fiInventory.inc:95
 msgid "Matching system"
 msgstr "système correspondant"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:95
-#: admin/systems/fusioninventory/class_fiInventory.inc:377
+#: admin/systems/fusioninventory/class_fiInventory.inc:98
+#: admin/systems/fusioninventory/class_fiInventory.inc:395
 msgid "System"
 msgstr "Système"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:95
-#: admin/systems/fusioninventory/class_fiInventory.inc:377
+#: admin/systems/fusioninventory/class_fiInventory.inc:98
+#: admin/systems/fusioninventory/class_fiInventory.inc:395
 msgid "System entry matching this inventory"
 msgstr "l'entrée du système correspondant à cet inventaire"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:101
+#: admin/systems/fusioninventory/class_fiInventory.inc:105
 msgid "Hardware"
 msgstr "Matériel"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:107
+#: admin/systems/fusioninventory/class_fiInventory.inc:111
 msgid "Software"
 msgstr "Logiciel"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:113
+#: admin/systems/fusioninventory/class_fiInventory.inc:117
 msgid "Users"
 msgstr "Utilisateurs"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:119
+#: admin/systems/fusioninventory/class_fiInventory.inc:123
 msgid "Processes"
 msgstr "Processus"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:325
+#: admin/systems/fusioninventory/class_fiInventory.inc:129
+msgid "Other"
+msgstr "Autre"
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:343
 msgid "Create a system based on this inventory"
 msgstr "Créer un système basé sur cet inventaire"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:340
+#: admin/systems/fusioninventory/class_fiInventory.inc:358
 msgid "Create"
 msgstr "Créer"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:345
+#: admin/systems/fusioninventory/class_fiInventory.inc:363
 msgid "No matching system"
 msgstr "Pas de système correspondant"
 
@@ -219,7 +200,7 @@ msgstr "Les deux"
 msgid "IP or Mac address"
 msgstr "Adresse IP ou Mac"
 
-#: html/collect.php:83
+#: html/collect.php:75
 #, php-format
 msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
 msgstr ""

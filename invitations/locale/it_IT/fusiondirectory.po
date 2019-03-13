@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Paola Penati <paola.penati@opensides.be>, 2018
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Paola Penati <paola.penati@opensides.be>, 2018
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:34+0000\n"
 "PO-Revision-Date: 2018-08-27 16:26+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,41 +24,43 @@ msgstr ""
 
 #: include/class_invitationPage.inc:44
 msgid "Token is missing from URL"
-msgstr ""
+msgstr "Il token è mancante dall'URL"
 
 #: include/class_invitationPage.inc:65
 #, php-format
 msgid "Could not find any invitation matching token \"%s\""
-msgstr ""
+msgstr "Impossibile trovare alcun invito corrispondente al  token \"%s\""
 
 #: include/class_invitationPage.inc:67
 #, php-format
 msgid "Found several invitations matching token \"%s\""
-msgstr ""
+msgstr "Trovato diversi inviti corrispondenti a token \"%s\""
 
 #: include/class_invitationPage.inc:71
 #, php-format
 msgid "The invitation matching token \"%s\" does not exist anymore"
-msgstr ""
+msgstr "Il token di invito a corrispondenza \"%s\" non esiste più"
 
 #: include/class_invitationPage.inc:77
 msgid "This invitation has already been filled and is waiting approval"
-msgstr ""
+msgstr "Questo invito è già stato compilato ed è in attesa di approvazione"
 
 #: include/class_invitationPage.inc:79
 msgid "This invitation has already been filled and approved"
-msgstr ""
+msgstr "Questo invito è già stato compilato e approvato"
 
 #: include/class_invitationPage.inc:81
 msgid ""
 "This invitation has already been filled and rejected. Please contact your "
 "referent to get a new invitation if needed."
 msgstr ""
+"Questo invito è già stato compilato e respinto. Si prega di contattare il "
+"referente per ottenere un nuovo invito, se necessario."
 
 #: include/class_invitationPage.inc:83
 #, php-format
 msgid "This invitation is in unknown state \"%s\""
-msgstr ""
+msgstr "Questo invito è in stato sconosciuto \"%s\""
 
 #: include/class_invitationPage.inc:107
 #: admin/registrations/class_registration.inc:132
@@ -70,35 +72,35 @@ msgid "Invitation"
 msgstr "Invito"
 
 #: admin/registrations/class_registration.inc:33
-#: admin/registrations/class_registrationManagement.inc:133
-#: admin/registrations/class_registrationManagement.inc:145
-#: admin/registrations/class_registrationManagement.inc:156
-#: admin/registrations/class_registrationManagement.inc:211
-#: admin/registrations/class_registrationManagement.inc:223
-#: admin/registrations/class_registrationManagement.inc:234
+#: admin/registrations/class_registrationManagement.inc:132
+#: admin/registrations/class_registrationManagement.inc:144
+#: admin/registrations/class_registrationManagement.inc:155
+#: admin/registrations/class_registrationManagement.inc:235
+#: admin/registrations/class_registrationManagement.inc:247
+#: admin/registrations/class_registrationManagement.inc:258
 msgid "Error"
 msgstr "Errore"
 
 #: admin/registrations/class_registration.inc:42
 #, php-format
 msgid "%s - by %s"
-msgstr ""
+msgstr "%s - di %s"
 
 #: admin/registrations/class_registration.inc:61
 msgid "Sent"
-msgstr ""
+msgstr "Inviato"
 
 #: admin/registrations/class_registration.inc:62
 msgid "Filled"
-msgstr ""
+msgstr "Pieno"
 
 #: admin/registrations/class_registration.inc:63
 msgid "Accepted"
-msgstr ""
+msgstr "Accettato"
 
 #: admin/registrations/class_registration.inc:64
 msgid "Rejected"
-msgstr ""
+msgstr "Rifiutato"
 
 #: admin/registrations/class_registration.inc:94
 #: admin/registrations/class_registration.inc:98
@@ -147,96 +149,109 @@ msgstr "Oggetto utente"
 msgid "User object created by this registration"
 msgstr "Oggetto utente creato da questa registrazione"
 
-#: admin/registrations/class_registrationManagement.inc:40
-#: admin/registrations/class_registrationManagement.inc:46
+#: admin/registrations/class_registrationManagement.inc:41
+#: admin/registrations/class_registrationManagement.inc:47
 msgid "invalid"
-msgstr ""
-
-#: admin/registrations/class_registrationManagement.inc:81
-msgid "Registrations"
-msgstr ""
+msgstr "invalido"
 
 #: admin/registrations/class_registrationManagement.inc:82
-msgid "Registrations management"
-msgstr ""
+msgid "Registrations"
+msgstr "Iscrizioni"
 
 #: admin/registrations/class_registrationManagement.inc:83
+msgid "Registrations management"
+msgstr "Gestione delle registrazioni"
+
+#: admin/registrations/class_registrationManagement.inc:84
 msgid "Manage registrations"
-msgstr ""
+msgstr "Gestire le registrazioni"
 
-#: admin/registrations/class_registrationManagement.inc:105
+#: admin/registrations/class_registrationManagement.inc:104
 msgid "Accept"
-msgstr ""
+msgstr "Accettare"
 
-#: admin/registrations/class_registrationManagement.inc:112
+#: admin/registrations/class_registrationManagement.inc:111
 msgid "Reject"
-msgstr ""
+msgstr "Rifiutare"
 
-#: admin/registrations/class_registrationManagement.inc:134
+#: admin/registrations/class_registrationManagement.inc:133
 #, php-format
 msgid "Cannot accept %s. It has been locked by %s."
-msgstr ""
+msgstr "Impossibile accettare %s. È stato bloccato da %s."
 
-#: admin/registrations/class_registrationManagement.inc:146
+#: admin/registrations/class_registrationManagement.inc:145
 #, php-format
 msgid "Cannot accept registration %s, it's not in status \"Filled\"."
-msgstr ""
+msgstr "Impossibile accettare la registrazione %s, non è in stato \"Pieno\"."
 
-#: admin/registrations/class_registrationManagement.inc:157
+#: admin/registrations/class_registrationManagement.inc:156
 #, php-format
 msgid "Cannot move %s. It has been locked by %s."
-msgstr ""
+msgstr "Impossibile spostare %s. È stato bloccato da %s."
 
-#: admin/registrations/class_registrationManagement.inc:212
+#: admin/registrations/class_registrationManagement.inc:199
+msgid "Account locking"
+msgstr "Blocco dell'account"
+
+#: admin/registrations/class_registrationManagement.inc:200
+#, php-format
+msgid ""
+"Unlocking failed using password method \"%s\". Account \"%s\" has not been "
+"unlocked!"
+msgstr ""
+"Sblocco non riuscito utilizzando il metodo password \"%s\". L'account \"%s\""
+" non è stato sbloccato!"
+
+#: admin/registrations/class_registrationManagement.inc:236
 #, php-format
 msgid "Cannot reject %s. It has been locked by %s."
-msgstr ""
+msgstr "Impossibile rifiutare %s. È stato bloccato da %s."
 
-#: admin/registrations/class_registrationManagement.inc:224
+#: admin/registrations/class_registrationManagement.inc:248
 #, php-format
 msgid "Cannot reject registration %s, it's not in status \"Filled\"."
-msgstr ""
+msgstr "Impossibile rifiutare la registrazione %s, non è in stato \"Riempito\"."
 
-#: admin/registrations/class_registrationManagement.inc:235
+#: admin/registrations/class_registrationManagement.inc:259
 #, php-format
 msgid "Cannot delete %s. It has been locked by %s."
 msgstr "Non puoi cancellare %s perché é ancora utilizzata da %s"
 
-#: admin/registrations/class_registrationManagement.inc:291
+#: admin/registrations/class_registrationManagement.inc:315
 #, php-format
 msgid "Could not find invitation \"%s\""
-msgstr ""
+msgstr "Impossibile trovare l'invito \"%s\""
 
-#: admin/registrations/class_registrationManagement.inc:293
+#: admin/registrations/class_registrationManagement.inc:317
 #, php-format
 msgid "Found several invitations \"%s\""
-msgstr ""
+msgstr "Trovato diversi inviti \"%s\""
 
-#: admin/registrations/class_registrationManagement.inc:314
+#: admin/registrations/class_registrationManagement.inc:338
 #, php-format
 msgid "Form \"%s\" could not be found"
-msgstr ""
+msgstr "Impossibile trovare il modulo \"%s\""
 
-#: admin/registrations/class_registrationManagement.inc:316
+#: admin/registrations/class_registrationManagement.inc:340
 #, php-format
 msgid "Found several forms named \"%s\""
-msgstr ""
+msgstr "Trovato diversi formulari denominati \"%s\""
 
 #: admin/registrations/class_RegistrationStateFilterElement.inc:67
 msgid "Statuses"
-msgstr ""
+msgstr "Stati"
 
-#: admin/invitations/class_invitationManagement.inc:26
+#: admin/invitations/class_invitationManagement.inc:27
 #: config/invitations/class_invitationsConfig.inc:40
 #: config/invitations/class_invitationsConfig.inc:60
 msgid "Invitations"
 msgstr "Inviti"
 
-#: admin/invitations/class_invitationManagement.inc:27
+#: admin/invitations/class_invitationManagement.inc:28
 msgid "Invitations management"
 msgstr "Gestione degli inviti"
 
-#: admin/invitations/class_invitationManagement.inc:28
+#: admin/invitations/class_invitationManagement.inc:29
 msgid "Manage invitations"
 msgstr "Gestisci gli inviti"
 
@@ -291,11 +306,11 @@ msgstr "E-mail"
 
 #: admin/invitations/class_invitation.inc:78
 msgid "Reply to"
-msgstr ""
+msgstr "Rispondi a"
 
 #: admin/invitations/class_invitation.inc:78
 msgid "Email address set as \"Reply to\" in the sent emails"
-msgstr ""
+msgstr "Indirizzo email impostato come \"Rispondi a\" nelle e-mail inviate"
 
 #: admin/invitations/class_invitation.inc:82
 msgid "List of email adresses of people to invite - one per line"
@@ -306,7 +321,12 @@ msgstr "Elenco di indirizzi e-mail delle persone da invitare - uno per riga"
 msgid "\"%s\" is not a valid email address"
 msgstr "\"%s\" non è un indirizzo e-mail valido"
 
-#: admin/invitations/class_invitation.inc:162
+#: admin/invitations/class_invitation.inc:150
+#, php-format
+msgid "There is already a registration object for \"%s\""
+msgstr "Esiste già un oggetto di registrazione per \"%s\""
+
+#: admin/invitations/class_invitation.inc:169
 #, php-format
 msgid ""
 "Failed to create registration object for \"%s\", because of the following "
@@ -315,18 +335,18 @@ msgstr ""
 "Impossibile creare l'oggetto di registrazione per \"%s\", a causa dei "
 "seguenti errori: %s"
 
-#: admin/invitations/class_invitation.inc:167
+#: admin/invitations/class_invitation.inc:175
 #, php-format
 msgid "Failed to send invitation email to \"%s\". Check your email settings."
 msgstr ""
 "Impossibile inviare l'e-mail di invito a \"%s\". Controlla le tue "
 "impostazioni e-mail."
 
-#: admin/invitations/class_invitation.inc:172
+#: admin/invitations/class_invitation.inc:183
 msgid "Success"
 msgstr "Completato"
 
-#: admin/invitations/class_invitation.inc:172
+#: admin/invitations/class_invitation.inc:183
 #, php-format
 msgid "%d invitations were sent and saved successfully"
 msgstr "%dinviti sono stati inviati e salvati correttamente "
@@ -357,42 +377,45 @@ msgstr "Ramo in cui verranno archiviate le registrazioni"
 
 #: config/invitations/class_invitationsConfig.inc:53
 msgid "Email expeditor"
-msgstr ""
+msgstr "Email expeditor"
 
 #: config/invitations/class_invitationsConfig.inc:53
 msgid ""
 "The email address used to send invitation emails. Be careful to select an "
 "address that your server can send from without being flagged as spam."
 msgstr ""
+"L'indirizzo email utilizzato per inviare email di invito. Fai attenzione a "
+"selezionare un indirizzo che il tuo server può inviare senza essere "
+"contrassegnato come spam."
 
 #: config/invitations/class_invitationsConfig.inc:63
 msgid "Default email content"
-msgstr ""
+msgstr "Contenuto email predefinito"
 
 #: config/invitations/class_invitationsConfig.inc:63
 msgid "Default content of the email sent invitations"
-msgstr ""
+msgstr "Contenuto predefinito degli inviti inviati via email"
 
 #: personal/invitations/class_userRegistration.inc:29
 msgid "User registration status"
-msgstr ""
+msgstr "Stato di registrazione dell'utente"
 
 #: personal/invitations/class_userRegistration.inc:43
 msgid "User registration"
-msgstr ""
+msgstr "Registrazione utente"
 
 #: personal/invitations/class_userRegistration.inc:59
 msgid "This user object is a registration awaiting approval"
-msgstr ""
+msgstr "Questo oggetto utente è una registrazione in attesa di approvazione"
 
 #: ihtml/themes/breezy/invitation.tpl.c:5
 msgid "Hello"
-msgstr ""
+msgstr "Ciao"
 
 #: ihtml/themes/breezy/invitation.tpl.c:8
 msgid "Click here to connect"
-msgstr ""
+msgstr "Clicca qui per connetterti"
 
 #: ihtml/themes/breezy/invitation.tpl.c:11
 msgid "Click here if you fail to connect"
-msgstr ""
+msgstr "Clicca qui se non riesci a connetterti"

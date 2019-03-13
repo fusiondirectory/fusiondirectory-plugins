@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:35+0000\n"
 "PO-Revision-Date: 2018-08-13 20:06+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2018\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -21,6 +21,77 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: include/webservice/class_fdRPCService.inc:51
+#, php-format
+msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
+msgstr ""
+"Le fichier de configuration de FusionDirectory %s/%s ne peut être lu. "
+"Abandon."
+
+#: include/webservice/class_fdRPCService.inc:61
+#, php-format
+msgid "Cannot locate file '%s' - please run '%s' to fix this"
+msgstr ""
+"Le fichier '%s' n’a pas été trouvé - veuillez exécuter '%s' pour régler ce "
+"problème"
+
+#: include/webservice/class_fdRPCService.inc:322
+#: include/webservice/class_fdRPCService.inc:405
+msgid "Plugin"
+msgstr "Plugin"
+
+#: include/webservice/class_fdRPCService.inc:502
+#, php-format
+msgid "Field \"%s\" is not multi-valuated"
+msgstr "Champ \"%s\" est pas multi valué"
+
+#: include/webservice/class_fdRPCService.inc:517
+#, php-format
+msgid "Unknown field \"%s\""
+msgstr "Champ inconnu «%s»"
+
+#: include/webservice/class_fdRPCService.inc:572
+#, php-format
+msgid "Cannot delete %s. It has been locked by %s."
+msgstr "Impossible de supprimer %s. Il a été verrouillé par %s."
+
+#: include/webservice/class_fdRPCService.inc:619
+#: include/webservice/class_fdRPCService.inc:648
+#, php-format
+msgid "Failed to get password method for account \"%s\". It has not been locked!"
+msgstr ""
+"Impossible d'obtenir la méthode de mot de passe pour le compte \"%s\". Le "
+"compte n'a pas été verrouillé !"
+
+#: include/webservice/class_fdRPCService.inc:644
+#, php-format
+msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
+msgstr ""
+"La méthode de mot de passe \"%s\" a échoué. Le compte \"%s\" n'a pas été "
+"verrouillé !"
+
+#: include/webservice/class_fdRPCService.inc:651
+#, php-format
+msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
+msgstr ""
+"Impossible de trouver le compte \"%s\" dans le LDAP. Il n'a pas été "
+"verrouillé !"
+
+#: include/webservice/class_fdRPCService.inc:689
+#: include/webservice/class_fdRPCService.inc:698
+#, php-format
+msgid "Failed to get password method for account \"%s\""
+msgstr "Impossible d'obtenir la méthode de mot de passe pour le compte \"%s\""
+
+#: include/webservice/class_fdRPCService.inc:701
+#, php-format
+msgid "Could not find account \"%s\" in LDAP"
+msgstr "Impossible de trouver le compte \"%s\" dans le LDAP"
+
+#: include/webservice/class_fdRPCService.inc:745
+msgid "This token is invalid"
+msgstr "Le jeton n'est pas valide"
 
 #: config/class_webserviceConfig.inc:26
 msgid "Webservice configuration"
@@ -41,71 +112,3 @@ msgstr "Forcer le SSL"
 #: config/class_webserviceConfig.inc:43
 msgid "Allow only HTTPS JSON-RPC requests"
 msgstr "Ne permettre que les connexions JSON-RPC en HTTPS"
-
-#: html/jsonrpc.php:55
-#, php-format
-msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
-msgstr ""
-"Le fichier de configuration de FusionDirectory %s/%s ne peut être lu. "
-"Abandon."
-
-#: html/jsonrpc.php:65
-#, php-format
-msgid "Cannot locate file '%s' - please run '%s' to fix this"
-msgstr ""
-"Le fichier '%s' n’a pas été trouvé - veuillez exécuter '%s' pour régler ce "
-"problème"
-
-#: html/jsonrpc.php:342 html/jsonrpc.php:425
-msgid "Plugin"
-msgstr "Plugin"
-
-#: html/jsonrpc.php:522
-#, php-format
-msgid "Field \"%s\" is not multi-valuated"
-msgstr "Champ \"%s\" est pas multi valué"
-
-#: html/jsonrpc.php:537
-#, php-format
-msgid "Unknown field \"%s\""
-msgstr "Champ inconnu «%s»"
-
-#: html/jsonrpc.php:592
-#, php-format
-msgid "Cannot delete %s. It has been locked by %s."
-msgstr "Impossible de supprimer %s. Il a été verrouillé par %s."
-
-#: html/jsonrpc.php:639 html/jsonrpc.php:668
-#, php-format
-msgid "Failed to get password method for account \"%s\". It has not been locked!"
-msgstr ""
-"Impossible d'obtenir la méthode de mot de passe pour le compte \"%s\". Le "
-"compte n'a pas été verrouillé !"
-
-#: html/jsonrpc.php:664
-#, php-format
-msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
-msgstr ""
-"La méthode de mot de passe \"%s\" a échoué. Le compte \"%s\" n'a pas été "
-"verrouillé !"
-
-#: html/jsonrpc.php:671
-#, php-format
-msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
-msgstr ""
-"Impossible de trouver le compte \"%s\" dans le LDAP. Il n'a pas été "
-"verrouillé !"
-
-#: html/jsonrpc.php:709 html/jsonrpc.php:718
-#, php-format
-msgid "Failed to get password method for account \"%s\""
-msgstr "Impossible d'obtenir la méthode de mot de passe pour le compte \"%s\""
-
-#: html/jsonrpc.php:721
-#, php-format
-msgid "Could not find account \"%s\" in LDAP"
-msgstr "Impossible de trouver le compte \"%s\" dans le LDAP"
-
-#: html/jsonrpc.php:765
-msgid "This token is invalid"
-msgstr "Le jeton n'est pas valide"

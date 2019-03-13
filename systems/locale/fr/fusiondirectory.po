@@ -5,16 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
-# Benoit Mortier <benoit.mortier@opensides.be>, 2018
+# Benoit Mortier <benoit.mortier@opensides.be>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:35+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2018\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2019\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,8 +24,8 @@ msgstr ""
 
 #: admin/systems/class_phoneGeneric.inc:28
 #: admin/systems/class_phoneGeneric.inc:34
-#: admin/systems/class_phoneGeneric.inc:63
-#: admin/systems/class_mobilePhoneGeneric.inc:66
+#: admin/systems/class_phoneGeneric.inc:64
+#: admin/systems/class_mobilePhoneGeneric.inc:67
 msgid "Phone"
 msgstr "Téléphone"
 
@@ -37,93 +37,93 @@ msgstr "Informations du téléphone"
 msgid "Phone hardware"
 msgstr "Matériel téléphonique"
 
-#: admin/systems/class_phoneGeneric.inc:49
-#: admin/systems/class_printGeneric.inc:56
-#: admin/systems/class_workstationGeneric.inc:54
-#: admin/systems/class_componentGeneric.inc:50
-#: admin/systems/class_mobilePhoneGeneric.inc:52
+#: admin/systems/class_phoneGeneric.inc:50
+#: admin/systems/class_printGeneric.inc:57
+#: admin/systems/class_workstationGeneric.inc:56
+#: admin/systems/class_componentGeneric.inc:51
+#: admin/systems/class_mobilePhoneGeneric.inc:53
 msgid "Properties"
 msgstr "Propriétés"
 
-#: admin/systems/class_phoneGeneric.inc:53 admin/systems/system-list.xml:31
-#: admin/systems/class_printGeneric.inc:60
-#: admin/systems/class_workstationGeneric.inc:58
+#: admin/systems/class_phoneGeneric.inc:54
+#: admin/systems/class_printGeneric.inc:61
+#: admin/systems/class_workstationGeneric.inc:60
 #: admin/systems/services/shares/class_serviceShare.inc:50
-#: admin/systems/class_componentGeneric.inc:53
-#: admin/systems/class_mobilePhoneGeneric.inc:56
+#: admin/systems/class_componentGeneric.inc:54
+#: admin/systems/class_mobilePhoneGeneric.inc:57
 msgid "Name"
 msgstr "Nom"
 
-#: admin/systems/class_phoneGeneric.inc:53
+#: admin/systems/class_phoneGeneric.inc:54
 msgid "The name of the phone"
 msgstr "Le nom du téléphone"
 
-#: admin/systems/class_phoneGeneric.inc:57
-#: admin/systems/serverService-list.xml:35 admin/systems/system-list.xml:55
-#: admin/systems/class_printGeneric.inc:64
-#: admin/systems/class_workstationGeneric.inc:63
+#: admin/systems/class_phoneGeneric.inc:58
+#: admin/systems/serverService-list.xml:35
+#: admin/systems/class_printGeneric.inc:65
+#: admin/systems/class_workstationGeneric.inc:65
 #: admin/systems/services/shares/class_serviceShare.inc:54
-#: admin/systems/class_componentGeneric.inc:57
-#: admin/systems/class_mobilePhoneGeneric.inc:60
+#: admin/systems/class_componentGeneric.inc:58
+#: admin/systems/class_mobilePhoneGeneric.inc:61
 msgid "Description"
 msgstr "Description"
 
-#: admin/systems/class_phoneGeneric.inc:57
+#: admin/systems/class_phoneGeneric.inc:58
 msgid "A short description of the phone"
 msgstr "Une courte description du téléphone"
 
-#: admin/systems/class_phoneGeneric.inc:66
-#: admin/systems/class_mobilePhoneGeneric.inc:69
+#: admin/systems/class_phoneGeneric.inc:67
+#: admin/systems/class_mobilePhoneGeneric.inc:70
 msgid "Serial Number"
 msgstr "Numéro de série"
 
-#: admin/systems/class_phoneGeneric.inc:66
+#: admin/systems/class_phoneGeneric.inc:67
 msgid "The serial number of the phone"
 msgstr "Le numéro de série du téléphone"
 
-#: admin/systems/class_phoneGeneric.inc:70
-#: admin/systems/class_mobilePhoneGeneric.inc:87
+#: admin/systems/class_phoneGeneric.inc:71
+#: admin/systems/class_mobilePhoneGeneric.inc:88
 msgid "Telephone Number"
 msgstr "Numéro de téléphone"
 
-#: admin/systems/class_phoneGeneric.inc:70
+#: admin/systems/class_phoneGeneric.inc:71
 msgid "The telephone number of the phone"
 msgstr "Le numéro du téléphone"
 
-#: admin/systems/class_phoneGeneric.inc:76
-#: admin/systems/class_printGeneric.inc:101
-#: admin/systems/class_workstationGeneric.inc:85
-#: admin/systems/class_componentGeneric.inc:64
-#: admin/systems/class_mobilePhoneGeneric.inc:98
+#: admin/systems/class_phoneGeneric.inc:77
+#: admin/systems/class_printGeneric.inc:102
+#: admin/systems/class_workstationGeneric.inc:87
+#: admin/systems/class_componentGeneric.inc:65
+#: admin/systems/class_mobilePhoneGeneric.inc:99
 msgid "Network settings"
 msgstr "Paramètres réseaux"
 
-#: admin/systems/class_phoneGeneric.inc:81
-#: admin/systems/class_printGeneric.inc:106
-#: admin/systems/class_workstationGeneric.inc:90
-#: admin/systems/class_componentGeneric.inc:68
-#: admin/systems/class_mobilePhoneGeneric.inc:102
+#: admin/systems/class_phoneGeneric.inc:82
+#: admin/systems/class_printGeneric.inc:107
+#: admin/systems/class_workstationGeneric.inc:92
+#: admin/systems/class_componentGeneric.inc:69
+#: admin/systems/class_mobilePhoneGeneric.inc:103
 msgid "IP address"
 msgstr "Adresse IP"
 
-#: admin/systems/class_phoneGeneric.inc:81
-#: admin/systems/class_workstationGeneric.inc:90
+#: admin/systems/class_phoneGeneric.inc:82
+#: admin/systems/class_workstationGeneric.inc:92
 msgid "IP addresses this system uses (v4 or v6)"
 msgstr "Ce système utilise les adresses IP (v4 ou v6)"
 
-#: admin/systems/class_phoneGeneric.inc:87
-#: admin/systems/class_printGeneric.inc:112
-#: admin/systems/class_workstationGeneric.inc:96
-#: admin/systems/class_componentGeneric.inc:72
-#: admin/systems/class_mobilePhoneGeneric.inc:106
+#: admin/systems/class_phoneGeneric.inc:88
+#: admin/systems/class_printGeneric.inc:113
+#: admin/systems/class_workstationGeneric.inc:98
+#: admin/systems/class_componentGeneric.inc:73
+#: admin/systems/class_mobilePhoneGeneric.inc:107
 msgid "Mac address"
 msgstr "Adresse Mac"
 
-#: admin/systems/class_phoneGeneric.inc:87
-#: admin/systems/class_printGeneric.inc:112
-#: admin/systems/class_workstationGeneric.inc:96
-#: admin/systems/class_componentGeneric.inc:72
-#: admin/systems/class_mobilePhoneGeneric.inc:106
+#: admin/systems/class_phoneGeneric.inc:88
+#: admin/systems/class_printGeneric.inc:113
+#: admin/systems/class_workstationGeneric.inc:98
+#: admin/systems/class_componentGeneric.inc:73
+#: admin/systems/class_mobilePhoneGeneric.inc:107
 msgid "Mac address of this system"
 msgstr "Adresse Mac de ce système"
 
@@ -139,15 +139,15 @@ msgstr "Service"
 msgid "!"
 msgstr "!"
 
-#: admin/systems/serverService-list.xml:43 admin/systems/system-list.xml:79
+#: admin/systems/serverService-list.xml:43
 msgid "Actions"
 msgstr "Actions"
 
-#: admin/systems/serverService-list.xml:54 admin/systems/system-list.xml:90
+#: admin/systems/serverService-list.xml:54
 msgid "Create"
 msgstr "Créer"
 
-#: admin/systems/serverService-list.xml:69 admin/systems/system-list.xml:127
+#: admin/systems/serverService-list.xml:69
 msgid "Remove"
 msgstr "Supprimer"
 
@@ -249,54 +249,6 @@ msgstr "hérité"
 msgid "Local swap"
 msgstr "Swap local"
 
-#: admin/systems/system-list.xml:10
-msgid "List of systems"
-msgstr "Liste des systèmes"
-
-#: admin/systems/system-list.xml:39
-msgid "IP"
-msgstr "IP"
-
-#: admin/systems/system-list.xml:47
-msgid "MAC"
-msgstr "MAC"
-
-#: admin/systems/system-list.xml:63
-#: admin/systems/services/shares/class_serviceShare.inc:28
-#: admin/systems/services/ldap/class_serviceLDAP.inc:29
-#: admin/systems/services/terminal/class_serviceTerminal.inc:28
-#: admin/systems/class_serverService.inc:60
-msgid "Services"
-msgstr "Service"
-
-#: admin/systems/system-list.xml:71
-msgid "Release"
-msgstr "Version"
-
-#: admin/systems/system-list.xml:100
-msgid "Trigger action"
-msgstr "Déclencher une action"
-
-#: admin/systems/system-list.xml:107
-msgid "Schedule action"
-msgstr "Programmer une action"
-
-#: admin/systems/system-list.xml:115
-msgid "Ping"
-msgstr "Ping"
-
-#: admin/systems/system-list.xml:155
-msgid "New object from template"
-msgstr "Créer un nouvel objet depuis un modèle"
-
-#: admin/systems/system-list.xml:167
-msgid "Edit system"
-msgstr "Éditer le système"
-
-#: admin/systems/system-list.xml:181
-msgid "Remove system"
-msgstr "Supprimer le système"
-
 #: admin/systems/class_terminalGeneric.inc:26
 #: admin/systems/class_terminalGeneric.inc:32
 #: admin/systems/class_terminalGeneric.inc:33
@@ -307,7 +259,7 @@ msgstr "Terminal"
 msgid "Terminal information"
 msgstr "Informations du terminal"
 
-#: admin/systems/class_terminalGeneric.inc:49
+#: admin/systems/class_terminalGeneric.inc:50
 msgid "terminal"
 msgstr "terminal"
 
@@ -321,76 +273,76 @@ msgstr "Imprimante"
 msgid "Printer information"
 msgstr "Informations de l’imprimante"
 
-#: admin/systems/class_printGeneric.inc:60
+#: admin/systems/class_printGeneric.inc:61
 msgid "The name of the printer"
 msgstr "Le nom de l'imprimante"
 
-#: admin/systems/class_printGeneric.inc:64
+#: admin/systems/class_printGeneric.inc:65
 msgid "A short description of the printer"
 msgstr "Courte description de l'imprimante"
 
-#: admin/systems/class_printGeneric.inc:70
+#: admin/systems/class_printGeneric.inc:71
 msgid "Details"
 msgstr "Détails"
 
-#: admin/systems/class_printGeneric.inc:73
+#: admin/systems/class_printGeneric.inc:74
 msgid "Printer location"
 msgstr "Localisation de l'imprimante"
 
-#: admin/systems/class_printGeneric.inc:73
+#: admin/systems/class_printGeneric.inc:74
 msgid "The location of the printer"
 msgstr "La localisation de l'imprimante"
 
-#: admin/systems/class_printGeneric.inc:77
+#: admin/systems/class_printGeneric.inc:78
 msgid "Printer URL"
 msgstr "URL de l'imprimante"
 
-#: admin/systems/class_printGeneric.inc:77
+#: admin/systems/class_printGeneric.inc:78
 msgid "The URL of the printer"
 msgstr "L'URL de l'imprimante"
 
-#: admin/systems/class_printGeneric.inc:83
-#: admin/systems/class_printGeneric.inc:86
+#: admin/systems/class_printGeneric.inc:84
+#: admin/systems/class_printGeneric.inc:87
 msgid "Users which are allowed to use this printer"
 msgstr "Utilisateurs qui sont autorisés à utiliser cette imprimante"
 
-#: admin/systems/class_printGeneric.inc:92
-#: admin/systems/class_printGeneric.inc:95
+#: admin/systems/class_printGeneric.inc:93
+#: admin/systems/class_printGeneric.inc:96
 msgid "Users which are allowed to administrate this printer"
 msgstr "Utilisateurs qui sont autorisés à administrer cette imprimante"
 
-#: admin/systems/class_printGeneric.inc:106
-#: admin/systems/class_componentGeneric.inc:68
-#: admin/systems/class_mobilePhoneGeneric.inc:102
+#: admin/systems/class_printGeneric.inc:107
+#: admin/systems/class_componentGeneric.inc:69
+#: admin/systems/class_mobilePhoneGeneric.inc:103
 msgid "IP address this system uses"
 msgstr "L'adresse ip de cet imprimante"
 
-#: admin/systems/class_printGeneric.inc:119
+#: admin/systems/class_printGeneric.inc:120
 msgid "Windows paths"
 msgstr "Répertoires Windows"
 
-#: admin/systems/class_printGeneric.inc:123
+#: admin/systems/class_printGeneric.inc:124
 msgid "Inf file"
 msgstr "Fichier inf"
 
-#: admin/systems/class_printGeneric.inc:123
+#: admin/systems/class_printGeneric.inc:124
 msgid "Path to windows inf file for this printer"
 msgstr "Le chemin vers le fichier inf de cette imprimante"
 
-#: admin/systems/class_printGeneric.inc:127
+#: admin/systems/class_printGeneric.inc:128
 msgid "Driver directory"
 msgstr "Répertoire des pilotes"
 
-#: admin/systems/class_printGeneric.inc:127
+#: admin/systems/class_printGeneric.inc:128
 msgid "Path to directory that contains windows drivers for this printer"
 msgstr ""
 "Le chemin vers le répertoire qui contient les pilotes pour cette imprimante"
 
-#: admin/systems/class_printGeneric.inc:131
+#: admin/systems/class_printGeneric.inc:132
 msgid "Driver name"
 msgstr "Nom du pilote"
 
-#: admin/systems/class_printGeneric.inc:131
+#: admin/systems/class_printGeneric.inc:132
 msgid "Windows name of the printer driver"
 msgstr "Nom windows de ce pilote d'imprimante"
 
@@ -404,35 +356,35 @@ msgstr "Station de travail"
 msgid "Workstation information"
 msgstr "Informations de la station de travail"
 
-#: admin/systems/class_workstationGeneric.inc:47
+#: admin/systems/class_workstationGeneric.inc:49
 msgid "workstation"
 msgstr "station de travail"
 
-#: admin/systems/class_workstationGeneric.inc:59
+#: admin/systems/class_workstationGeneric.inc:61
 #, php-format
 msgid "The name of the %s"
 msgstr "Le nom de ce %s"
 
-#: admin/systems/class_workstationGeneric.inc:64
+#: admin/systems/class_workstationGeneric.inc:66
 #, php-format
 msgid "A short description of the %s"
 msgstr "Une courte description de ce %s"
 
-#: admin/systems/class_workstationGeneric.inc:68
+#: admin/systems/class_workstationGeneric.inc:70
 msgid "Location"
 msgstr "Lieu"
 
-#: admin/systems/class_workstationGeneric.inc:69
+#: admin/systems/class_workstationGeneric.inc:71
 #, php-format
 msgid "The location of the %s"
 msgstr "L'emplacement de ce %s"
 
-#: admin/systems/class_workstationGeneric.inc:73
+#: admin/systems/class_workstationGeneric.inc:75
 #, php-format
 msgid "Lock this %s"
 msgstr "Verrouiller ce %s"
 
-#: admin/systems/class_workstationGeneric.inc:74
+#: admin/systems/class_workstationGeneric.inc:76
 #, php-format
 msgid "This will prevent the %s from being reinstalled"
 msgstr "Ceci empêchera ce %s d'être réinstallé"
@@ -441,6 +393,13 @@ msgstr "Ceci empêchera ce %s d'être réinstallé"
 #: admin/systems/services/shares/class_serviceShare.inc:28
 msgid "Share service"
 msgstr "Service de partage"
+
+#: admin/systems/services/shares/class_serviceShare.inc:28
+#: admin/systems/services/ldap/class_serviceLDAP.inc:29
+#: admin/systems/services/terminal/class_serviceTerminal.inc:28
+#: admin/systems/class_serverService.inc:60
+msgid "Services"
+msgstr "Service"
 
 #: admin/systems/services/shares/class_serviceShare.inc:41
 msgid "Shares"
@@ -459,7 +418,7 @@ msgid "Description of this share"
 msgstr "Description du partage"
 
 #: admin/systems/services/shares/class_serviceShare.inc:58
-#: admin/systems/class_systemImport.inc:47
+#: admin/systems/class_systemImport.inc:48
 msgid "Type"
 msgstr "Type"
 
@@ -638,6 +597,11 @@ msgstr "Type de sessions supportées"
 msgid "The session types supported by this terminal server"
 msgstr "Les types de sessions supportés par ce serveur de terminaux"
 
+#: admin/systems/class_SystemReleaseColumn.inc:87
+#, php-format
+msgid "Inherited from %s"
+msgstr "Hérité de %s"
+
 #: admin/systems/class_serverService.inc:61
 msgid "Server services"
 msgstr "Services serveur"
@@ -670,7 +634,7 @@ msgstr "Ce serveur n'a pas d'adresse mac."
 #: admin/systems/class_serverGeneric.inc:26
 #: admin/systems/class_serverGeneric.inc:32
 #: admin/systems/class_serverGeneric.inc:33
-#: admin/systems/class_systemImport.inc:43
+#: admin/systems/class_systemImport.inc:44
 msgid "Server"
 msgstr "Serveur"
 
@@ -678,7 +642,7 @@ msgstr "Serveur"
 msgid "Server information"
 msgstr "Information du serveur"
 
-#: admin/systems/class_serverGeneric.inc:46
+#: admin/systems/class_serverGeneric.inc:48
 msgid "server"
 msgstr "serveur"
 
@@ -695,16 +659,16 @@ msgstr "Information du composant"
 msgid "Network device"
 msgstr "Périphérique réseau"
 
-#: admin/systems/class_componentGeneric.inc:53
+#: admin/systems/class_componentGeneric.inc:54
 msgid "The name of the component"
 msgstr "Nom du composant"
 
-#: admin/systems/class_componentGeneric.inc:57
+#: admin/systems/class_componentGeneric.inc:58
 msgid "A short description of the component"
 msgstr "Description courte du composant"
 
 #: admin/systems/class_systemManagement.inc:43
-#: admin/systems/class_systemManagement.inc:46
+#: admin/systems/class_systemManagement.inc:47
 #: config/systems/class_systemsPluginConfig.inc:28
 #: addons/dashboard/class_dashBoardSystems.inc:30
 msgid "Systems"
@@ -714,87 +678,100 @@ msgstr "Systèmes"
 msgid "Systems Management"
 msgstr "Gestion des systèmes"
 
-#: admin/systems/class_systemManagement.inc:140
-#: admin/systems/class_systemManagement.inc:156
-#: admin/systems/class_systemManagement.inc:208
+#: admin/systems/class_systemManagement.inc:45
+msgid "Manage servers, computers, printers, phones and other devices"
+msgstr ""
+"Gérer les serveurs, ordinateurs, imprimantes, téléphones et autres "
+"périphériques"
+
+#: admin/systems/class_systemManagement.inc:84
+msgid "Trigger action"
+msgstr "Déclencher une action"
+
+#: admin/systems/class_systemManagement.inc:90
+msgid "Schedule action"
+msgstr "Programmer une action"
+
+#: admin/systems/class_systemManagement.inc:100
+msgid "Ping"
+msgstr "Ping"
+
+#: admin/systems/class_systemManagement.inc:129
+#: admin/systems/class_systemManagement.inc:145
+#: admin/systems/class_systemManagement.inc:196
 msgid "Action canceled"
 msgstr "Action annulée"
 
-#: admin/systems/class_systemManagement.inc:140
-#: admin/systems/class_systemManagement.inc:208
+#: admin/systems/class_systemManagement.inc:129
+#: admin/systems/class_systemManagement.inc:196
 #, php-format
 msgid "System %s has no mac address defined, cannot trigger action"
 msgstr ""
 "Le système %s n'a pas d'adresse mac définie, impossible de déclencher "
 "l'action"
 
-#: admin/systems/class_systemManagement.inc:156
+#: admin/systems/class_systemManagement.inc:145
 #, php-format
 msgid "System %s is currently installing"
 msgstr "Le système %s est actuellement en cours d'installation"
 
-#: admin/systems/class_systemManagement.inc:175
-#: admin/systems/class_systemManagement.inc:220
-#: admin/systems/class_systemManagement.inc:257
+#: admin/systems/class_systemManagement.inc:164
+#: admin/systems/class_systemManagement.inc:208
+#: admin/systems/class_systemManagement.inc:245
 msgid "Infrastructure service"
 msgstr "Service d’infrastructure"
 
-#: admin/systems/class_systemManagement.inc:178
-#: admin/systems/class_systemManagement.inc:183
+#: admin/systems/class_systemManagement.inc:167
+#: admin/systems/class_systemManagement.inc:172
 msgid "Action triggered"
 msgstr "Action déclenchée"
 
-#: admin/systems/class_systemManagement.inc:178
+#: admin/systems/class_systemManagement.inc:167
 #, php-format
 msgid "Action called without error (results were \"%s\")"
 msgstr "Action appelée sans erreur (résultat : «%s»)"
 
-#: admin/systems/class_systemManagement.inc:183
+#: admin/systems/class_systemManagement.inc:172
 #, php-format
 msgid "Action called without error (result was \"%s\")"
 msgstr "Action appelée sans erreur (résultat : «%s»)"
 
-#: admin/systems/class_systemManagement.inc:238
+#: admin/systems/class_systemManagement.inc:226
 msgid "Ping results"
 msgstr "Résultats de ping"
 
-#: admin/systems/class_systemManagement.inc:324
-#, php-format
-msgid "Inherited from %s"
-msgstr "Hérité de %s"
-
-#: admin/systems/class_systemImport.inc:39
-#: admin/systems/class_systemImport.inc:59
+#: admin/systems/class_systemImport.inc:40
+#: admin/systems/class_systemImport.inc:60
 msgid "Import"
 msgstr "Importer"
 
-#: admin/systems/class_systemImport.inc:43
+#: admin/systems/class_systemImport.inc:44
 msgid "The server you wish to import hosts from"
 msgstr "Le serveur duquel vous souhaitez importer des machines"
 
-#: admin/systems/class_systemImport.inc:47
+#: admin/systems/class_systemImport.inc:48
 msgid "Type of objects you wish to import"
 msgstr "Le type d'objet que vous voulez importer"
 
-#: admin/systems/class_systemImport.inc:52
+#: admin/systems/class_systemImport.inc:53
 msgid "Template"
 msgstr "Modèle"
 
-#: admin/systems/class_systemImport.inc:52
+#: admin/systems/class_systemImport.inc:53
 msgid "Select a template to apply to imported entries"
 msgstr "Sélectionnez un modèle à appliquer aux entrées importées"
 
-#: admin/systems/class_systemImport.inc:106
+#: admin/systems/class_systemImport.inc:107
 #, php-format
 msgid "Could not parse %s"
 msgstr "Impossible de lire le contenu de %s"
 
-#: admin/systems/class_systemImport.inc:179
+#: admin/systems/class_systemImport.inc:180
 #, php-format
 msgid "No DHCP server found for IPs %s"
 msgstr "Pas de serveur DHCP trouvé pour l'IP %s"
 
-#: admin/systems/class_systemImport.inc:198
+#: admin/systems/class_systemImport.inc:199
 #, php-format
 msgid "No DNS server found for zone %s"
 msgstr "Pas de serveur DNS trouvé pour la zone %s"
@@ -809,47 +786,47 @@ msgstr "Téléphone portable"
 msgid "Mobile phone information"
 msgstr "Information du téléphone portable"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:56
+#: admin/systems/class_mobilePhoneGeneric.inc:57
 msgid "The name of the mobile phone"
 msgstr "Nom du téléphone portable"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:60
+#: admin/systems/class_mobilePhoneGeneric.inc:61
 msgid "A short description of the mobile phone"
 msgstr "Courte description du téléphone portable"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:69
+#: admin/systems/class_mobilePhoneGeneric.inc:70
 msgid "The serial number of the mobile phone"
 msgstr "Numéro de série du téléphone portable"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:73
+#: admin/systems/class_mobilePhoneGeneric.inc:74
 msgid "IMEI Number"
 msgstr "Numéro IMEI"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:73
+#: admin/systems/class_mobilePhoneGeneric.inc:74
 msgid "The IMEI number of the mobile phone"
 msgstr "Numéro IMEI du téléphone portable"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:78
+#: admin/systems/class_mobilePhoneGeneric.inc:79
 msgid "OS"
 msgstr "Système d'exploitation"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:78
+#: admin/systems/class_mobilePhoneGeneric.inc:79
 msgid "The Operating System installed on this phone"
 msgstr "Système d'exploitation installé sur ce téléphone"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:84
+#: admin/systems/class_mobilePhoneGeneric.inc:85
 msgid "SimCard"
 msgstr "Carte SIM"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:87
+#: admin/systems/class_mobilePhoneGeneric.inc:88
 msgid "The telephone number of the mobile phone"
 msgstr "Numéro du téléphone portable"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:91
+#: admin/systems/class_mobilePhoneGeneric.inc:92
 msgid "PUK Number"
 msgstr "Numéro PUK"
 
-#: admin/systems/class_mobilePhoneGeneric.inc:91
+#: admin/systems/class_mobilePhoneGeneric.inc:92
 msgid "The PUK number of the simcard in this mobile phone"
 msgstr "Numéro PUK de la carte SIM du téléphone portable"
 

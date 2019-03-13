@@ -5,15 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Benoit Mortier <benoit.mortier@opensides.be>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:34+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2019\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,16 +22,20 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: admin/ejbca/class_ejbcaManagement.inc:33
+#: admin/ejbca/class_ejbcaManagement.inc:39
 #: admin/ejbca/certificates/class_ejbcaCertificates.inc:28
 msgid "EJBCA"
 msgstr "EJBCA"
 
-#: admin/ejbca/class_ejbcaManagement.inc:34
+#: admin/ejbca/class_ejbcaManagement.inc:40
 msgid "EJBCA certificates management"
 msgstr "Gestion des certificats EJBCA"
 
-#: admin/ejbca/class_ejbcaManagement.inc:53
+#: admin/ejbca/class_ejbcaManagement.inc:41
+msgid "Manage EJBCA certificates"
+msgstr "Gérer les certificats EJBCA"
+
+#: admin/ejbca/class_ejbcaManagement.inc:63
 msgid "Download"
 msgstr "Téléchargement"
 
@@ -46,26 +51,26 @@ msgstr "Certificats EJBCA"
 msgid "Certificates associated to this object"
 msgstr "Certificats associés a cet objet"
 
-#: admin/ejbca/class_ejbcaCertificate.inc:26
 #: admin/ejbca/class_ejbcaCertificate.inc:27
-#: admin/ejbca/class_ejbcaCertificate.inc:29
+#: admin/ejbca/class_ejbcaCertificate.inc:28
+#: admin/ejbca/class_ejbcaCertificate.inc:30
 msgid "EJBCA certificate"
 msgstr "Certificat EJBCA"
 
-#: admin/ejbca/class_ejbcaCertificate.inc:43
-#: admin/ejbca/class_ejbcaCertificate.inc:51
+#: admin/ejbca/class_ejbcaCertificate.inc:44
+#: admin/ejbca/class_ejbcaCertificate.inc:52
 msgid "Certificate"
 msgstr "Certificat"
 
-#: admin/ejbca/class_ejbcaCertificate.inc:47
+#: admin/ejbca/class_ejbcaCertificate.inc:48
 msgid "Name"
 msgstr "Nom"
 
-#: admin/ejbca/class_ejbcaCertificate.inc:47
+#: admin/ejbca/class_ejbcaCertificate.inc:48
 msgid "Common name"
 msgstr "Nom commun"
 
-#: admin/ejbca/class_ejbcaCertificate.inc:51
+#: admin/ejbca/class_ejbcaCertificate.inc:52
 msgid "Certificate content"
 msgstr "Contenu du certificat"
 
