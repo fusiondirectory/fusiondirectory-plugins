@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2017 FusionDirectory
+
+  Copyright (C) 2015-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,10 +24,11 @@ class posixConfig extends simplePlugin
   static function plInfo (): array
   {
     return [
-      'plShortName'     => _('POSIX configuration'),
+      'plShortName'     => _('POSIX'),
+      'plTitle'         => _('POSIX configuration'),
       'plDescription'   => _('FusionDirectory POSIX plugin configuration'),
-      'plCategory'      => ['configuration'],
-      'plObjectType'    => ['smallConfig'],
+      'plPriority'      => 2,
+      'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -36,7 +38,7 @@ class posixConfig extends simplePlugin
   {
     return [
       'main' => [
-        'name'  => _('Posix'),
+        'name'  => _('POSIX'),
         'class' => ['critical'],
         'attrs' => [
           new StringAttribute(

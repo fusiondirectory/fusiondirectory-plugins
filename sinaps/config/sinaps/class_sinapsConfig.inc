@@ -24,11 +24,11 @@ class sinapsConfig extends simplePlugin
   static function plInfo (): array
   {
     return [
-      'plShortName'     => _('SINAPS configuration'),
+      'plShortName'     => _('SINAPS'),
+      'plTitle'         => _('SINAPS configuration'),
       'plDescription'   => _('FusionDirectory SINAPS plugin configuration'),
       'plObjectClass'   => ['fdSinapsPluginConf'],
-      'plCategory'      => ['configuration'],
-      'plObjectType'    => ['smallConfig'],
+      'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -40,7 +40,7 @@ class sinapsConfig extends simplePlugin
 
     return [
       'main' => [
-        'name'  => _('Sinaps'),
+        'name'  => _('SINAPS'),
         'attrs' => [
           new BooleanAttribute(
             _('Enable SINAPS integration'), _('Whether to enable the SINAPS integration'),
@@ -98,7 +98,7 @@ class sinapsConfig extends simplePlugin
         ]
       ],
       'acquisition' => [
-        'name'  => _('Sinaps Acquisition'),
+        'name'  => _('Acquisition'),
         'attrs' => [
           new StringAttribute(
             _('Acquisition URL'), _('Full URL to which acquisition events should be sent'),

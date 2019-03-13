@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018 FusionDirectory
+
+  Copyright (C) 2017-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,11 +24,11 @@ class invitationsConfig extends simplePlugin
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('Invitations configuration'),
+      'plShortName'   => _('Invitations'),
+      'plTitle'       => _('Invitations configuration'),
       'plDescription' => _('FusionDirectory invitations plugin configuration'),
       'plObjectClass' => ['fdInvitationsPluginConf'],
-      'plCategory'    => ['configuration'],
-      'plObjectType'  => ['smallConfig'],
+      'plObjectType'  => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -37,7 +38,7 @@ class invitationsConfig extends simplePlugin
   {
     return [
       'main' => [
-        'name'  => _('Invitations'),
+        'name'  => _('LDAP'),
         'attrs' => [
           new StringAttribute(
             _('Invitations RDN'), _('Branch in which invitations will be stored'),
@@ -49,16 +50,16 @@ class invitationsConfig extends simplePlugin
             'fdRegistrationRDN', TRUE,
             'ou=registrations'
           ),
+        ]
+      ],
+      'default' => [
+        'name'  => _('Emails'),
+        'attrs' => [
           new StringAttribute(
             _('Email expeditor'), _('The email address used to send invitation emails. Be careful to select an address that your server can send from without being flagged as spam.'),
             'fdInvitationFromEmailAddress', TRUE,
             'no-reply@example.com'
           ),
-        ]
-      ],
-      'default' => [
-        'name'  => _('Invitations'),
-        'attrs' => [
           new TextAreaAttribute(
             _('Default email content'), _('Default content of the email sent invitations'),
             'fdInvitationDefaultEmailContent', TRUE,
