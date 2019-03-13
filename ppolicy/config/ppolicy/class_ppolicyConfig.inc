@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2014-2015 Dhatim
-  Copyright (C) 2014-2016 FusionDirectory
+  Copyright (C) 2014-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -38,7 +39,7 @@ class ppolicyConfig extends simplePlugin
   {
     return [
       'main' => [
-        'name'  => _('Ppolicy plugin'),
+        'name'  => _('Ppolicy'),
         'attrs' => [
           new StringAttribute(
             _('Ppolicy RDN'), _('Branch in which ppolicies will be stored'),
