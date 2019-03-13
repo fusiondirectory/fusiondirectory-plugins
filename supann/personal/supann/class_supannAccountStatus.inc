@@ -51,14 +51,14 @@ class supannAccountStatus extends simplePlugin
         'name'  => _('Status'),
         'attrs' => [
           new OrderedArrayAttribute(
-            new CharSeparatedCompositeAttribute(
+            new CompositeAttribute(
               _('State of the account and associated resources'),
               'supannRessourceEtatDate',
               [
                 new SelectAttribute(
                   _('Resource'), _('Which resource this state concerns'),
                   'supannRessourceEtatDate_label', TRUE,
-                  ['{COMPTE}','{MAIL}'], '',
+                  ['COMPTE','MAIL'], '',
                   [_('Account'), _('Mail')]
                 ),
                 new SelectAttribute(
@@ -85,7 +85,8 @@ class supannAccountStatus extends simplePlugin
                   'now', NULL
                 ),
               ],
-              ':',
+              '/^\{([^}]+)\}([^:]+):([^:]*):([^:]*):([^:]*)$/',
+              '{%s}%s:%s:%s:%s',
               '',
               ''
             ),
@@ -139,7 +140,7 @@ class supannAccountStatus extends simplePlugin
   /* Update choices of fields which depends on other fields values */
   function updateFieldsChoices ()
   {
-    $substatusChoices = $this->substatus[$this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[1]->getValue()];
+    $substatusChoices = $this->substatus[$this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[1]->getValue()] ?? [];
     $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[2]->setChoices(
       array_keys($substatusChoices),
       array_values($substatusChoices)
@@ -152,11 +153,11 @@ class supannAccountStatus extends simplePlugin
     $this->supannRessourceEtat = array_map(
       function ($supannRessourceEtatDate)
       {
-        list($state,$substate) = explode(':', $supannRessourceEtatDate);
+        list($labelstate,$substate) = explode(':', $supannRessourceEtatDate);
         if (empty($substate)) {
-          return $state;
+          return $labelstate;
         } else {
-          return $state.':'.$substate;
+          return $labelstate.':'.$substate;
         }
       },
       $this->supannRessourceEtatDate
@@ -170,7 +171,7 @@ class supannAccountStatus extends simplePlugin
 
     $labels = [];
     foreach ($this->supannRessourceEtatDate as $line) {
-      list($label) = explode(':', $line, 2);
+      $label = preg_replace('/^\{([^}]+)\}.*$/', '\1',  $line);
       if (in_array($label, $labels)) {
         $errors[] = sprintf(_('Label "%s" is present more than once in supannRessourceEtatDate'), $label);
       } else {
