@@ -5,15 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Choi Chris <chulwon.choi@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:35+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -67,17 +68,17 @@ msgstr "메일이 발송될 이메일주소"
 
 #: config/user-reminder/class_userReminderConfig.inc:62
 msgid "Allow use of alternate addresses"
-msgstr ""
+msgstr "대체 주소 사용 허용"
 
 #: config/user-reminder/class_userReminderConfig.inc:62
 msgid ""
 "Whether the field gosaMailAlternateAddress should be used as well to send "
 "reminders"
-msgstr ""
+msgstr "미리 알림을 보내려면 gosaMailAlternateAddress 필드를 사용해야하는지 여부"
 
 #: config/user-reminder/class_userReminderConfig.inc:69
 msgid "Ppolicy email settings"
-msgstr ""
+msgstr "이메일 설정 정책"
 
 #: config/user-reminder/class_userReminderConfig.inc:72
 #: config/user-reminder/class_userReminderConfig.inc:98
@@ -86,7 +87,7 @@ msgstr "관리자에게 경고 전달"
 
 #: config/user-reminder/class_userReminderConfig.inc:72
 msgid "Forward ppolicy alerts to the manager"
-msgstr ""
+msgstr "관리자에게 정책경고 전달"
 
 #: config/user-reminder/class_userReminderConfig.inc:77
 #: config/user-reminder/class_userReminderConfig.inc:103
@@ -96,11 +97,11 @@ msgstr "제목"
 
 #: config/user-reminder/class_userReminderConfig.inc:77
 msgid "Subject of the ppolicy alert email"
-msgstr ""
+msgstr "정책 경고 이메일의 제목"
 
 #: config/user-reminder/class_userReminderConfig.inc:79
 msgid "[FusionDirectory] Your password is about to expire"
-msgstr ""
+msgstr "[FustionDirectory] 패스워드가 만료 임박"
 
 #: config/user-reminder/class_userReminderConfig.inc:82
 #: config/user-reminder/class_userReminderConfig.inc:134
@@ -113,7 +114,7 @@ msgstr "내용(%s은 cn과 로그인)"
 msgid ""
 "Body of the ppolicy alert email, sent when the user password is about to "
 "expire. Use %s for the cn and uid."
-msgstr ""
+msgstr "사용자 패스워드 만료가 임박할 때 보낼 정책 경고 이메일의 내용. cn과 uid로 %s를 사용하세요."
 
 #: config/user-reminder/class_userReminderConfig.inc:85
 #, php-format
@@ -122,6 +123,9 @@ msgid ""
 "your password for account %2$s is about to expire, please change your password: \n"
 "https://"
 msgstr ""
+"%1$s님, \n"
+"계정 %2$s에 대한 패스워드 만료가 임박했으니 패스워드를 변경해 주세요.\n"
+"https://"
 
 #: config/user-reminder/class_userReminderConfig.inc:95
 msgid "Alert email settings"

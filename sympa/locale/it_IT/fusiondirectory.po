@@ -5,15 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Paola Penati <paola.penati@opensides.be>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:35+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2019\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,7 +32,7 @@ msgid "Services"
 msgstr "Servizi"
 
 #: admin/systems/services/sympa/class_serviceSympa.inc:43
-#: admin/sympa/class_sympaAlias.inc:60
+#: admin/sympa/class_sympaAlias.inc:61
 msgid "Sympa server"
 msgstr "Server Sympa"
 
@@ -59,41 +60,45 @@ msgstr "Password"
 msgid "Password to access sympa server SOAP API."
 msgstr "Password per accedere al SOAP API del Server Sympa."
 
-#: admin/sympa/class_sympaManagement.inc:33
+#: admin/sympa/class_sympaManagement.inc:28
 #: config/sympa/class_sympaConfig.inc:40
 msgid "Sympa"
 msgstr "Sympa"
 
-#: admin/sympa/class_sympaManagement.inc:34
+#: admin/sympa/class_sympaManagement.inc:29
 msgid "Sympa management"
 msgstr "Gestione di Sympa"
 
+#: admin/sympa/class_sympaManagement.inc:30
+msgid "Manage sympa aliases"
+msgstr "Gestisci gli alias sympa"
+
 #: admin/sympa/class_sympaAlias.inc:26 admin/sympa/class_sympaAlias.inc:27
-#: admin/sympa/class_sympaAlias.inc:30 admin/sympa/class_sympaAlias.inc:45
+#: admin/sympa/class_sympaAlias.inc:30 admin/sympa/class_sympaAlias.inc:46
 msgid "Sympa list alias"
 msgstr "Elenco alias sympa"
 
-#: admin/sympa/class_sympaAlias.inc:48
+#: admin/sympa/class_sympaAlias.inc:49
 msgid "Name"
 msgstr "Nome"
 
-#: admin/sympa/class_sympaAlias.inc:48
+#: admin/sympa/class_sympaAlias.inc:49
 msgid "Name to identify this alias"
 msgstr "Nome per identificare questo alias"
 
-#: admin/sympa/class_sympaAlias.inc:50
+#: admin/sympa/class_sympaAlias.inc:51
 msgid "Description"
 msgstr "Descrizione"
 
-#: admin/sympa/class_sympaAlias.inc:50
+#: admin/sympa/class_sympaAlias.inc:51
 msgid "Description of this alias"
 msgstr "Descrizione di questo alias"
 
-#: admin/sympa/class_sympaAlias.inc:55
+#: admin/sympa/class_sympaAlias.inc:56
 msgid "Email address"
 msgstr "Indirizzo di posta elettronica"
 
-#: admin/sympa/class_sympaAlias.inc:60
+#: admin/sympa/class_sympaAlias.inc:61
 msgid "Sympa server for this alias"
 msgstr "Server Sympa per questo alias"
 

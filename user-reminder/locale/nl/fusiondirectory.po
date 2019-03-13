@@ -5,15 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Lucien Antonissen <lucien.antonissen@digipolis.be>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:35+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2019\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -67,17 +68,19 @@ msgstr "Email adres van waaruit de mails zullen verzonden worden"
 
 #: config/user-reminder/class_userReminderConfig.inc:62
 msgid "Allow use of alternate addresses"
-msgstr ""
+msgstr "Laat het gebruik toe van alternate adressen"
 
 #: config/user-reminder/class_userReminderConfig.inc:62
 msgid ""
 "Whether the field gosaMailAlternateAddress should be used as well to send "
 "reminders"
 msgstr ""
+"Of het veld gosaMailAlternateAddress ook moet gebruikt worden om reminders "
+"te sturen"
 
 #: config/user-reminder/class_userReminderConfig.inc:69
 msgid "Ppolicy email settings"
-msgstr ""
+msgstr "Ppolicy e-mailinstellingen"
 
 #: config/user-reminder/class_userReminderConfig.inc:72
 #: config/user-reminder/class_userReminderConfig.inc:98
@@ -86,7 +89,7 @@ msgstr "Doorsturen alarmberichten naar de manager"
 
 #: config/user-reminder/class_userReminderConfig.inc:72
 msgid "Forward ppolicy alerts to the manager"
-msgstr ""
+msgstr "Doorsturen ppolicy alarmberichten naar de manager"
 
 #: config/user-reminder/class_userReminderConfig.inc:77
 #: config/user-reminder/class_userReminderConfig.inc:103
@@ -96,11 +99,11 @@ msgstr "Onderwerp"
 
 #: config/user-reminder/class_userReminderConfig.inc:77
 msgid "Subject of the ppolicy alert email"
-msgstr ""
+msgstr "Onderwerp van de ppolicy alarm-mail"
 
 #: config/user-reminder/class_userReminderConfig.inc:79
 msgid "[FusionDirectory] Your password is about to expire"
-msgstr ""
+msgstr "[FusionDirectory] Je paswoord vervalt spoedig"
 
 #: config/user-reminder/class_userReminderConfig.inc:82
 #: config/user-reminder/class_userReminderConfig.inc:134
@@ -114,6 +117,9 @@ msgid ""
 "Body of the ppolicy alert email, sent when the user password is about to "
 "expire. Use %s for the cn and uid."
 msgstr ""
+"Body van het ppolicy-alarmberichten, verzonden wanneer het "
+"gebruikerspaswoord tegen vervaldatum aanloopt. Gebruik  %s voor de cn en "
+"uid."
 
 #: config/user-reminder/class_userReminderConfig.inc:85
 #, php-format
@@ -122,6 +128,9 @@ msgid ""
 "your password for account %2$s is about to expire, please change your password: \n"
 "https://"
 msgstr ""
+"Beste %1$s,\n"
+" je paswoord voor account %2$s zal spoedig vervallen, verander je paswoord a.u.b.: \n"
+"https://"
 
 #: config/user-reminder/class_userReminderConfig.inc:95
 msgid "Alert email settings"

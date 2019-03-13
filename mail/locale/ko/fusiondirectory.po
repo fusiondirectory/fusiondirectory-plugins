@@ -5,15 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Choi Chris <chulwon.choi@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:34+0000\n"
 "PO-Revision-Date: 2018-08-13 19:57+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,7 +75,7 @@ msgstr "로컬메일만 허용"
 msgid ""
 "Whether this group mail is only allowed to receive messages from local "
 "senders"
-msgstr ""
+msgstr "이 그룹 메일은 로컬 보낸 사람의 메시지만 수신 할 수 있는지 여부"
 
 #: admin/groups/mail/class_mailGroup.inc:192
 #: personal/mail/class_mailAccount.inc:268
@@ -113,15 +114,15 @@ msgstr "메일박스 삭제 불가, 메일방식 접속 불가: %s"
 msgid "Cannot remove mailbox: %s"
 msgstr "메일박스 삭제 불가: %s"
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:53
+#: admin/systems/services/imap/class_serviceIMAP.inc:52
 msgid "IMAP/POP3 generic service"
 msgstr "IMAP/POP3 일반적인 서비스"
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:54
+#: admin/systems/services/imap/class_serviceIMAP.inc:53
 msgid "IMAP/POP3"
 msgstr "IMAP/POP3"
 
-#: admin/systems/services/imap/class_serviceIMAP.inc:54
+#: admin/systems/services/imap/class_serviceIMAP.inc:53
 msgid "Services"
 msgstr "서비스"
 
@@ -175,7 +176,7 @@ msgstr "계정 삭제 시 메일박스 삭제"
 msgid ""
 "Determines if the mailbox should be removed from your IMAP server after the "
 "account is deleted in LDAP."
-msgstr ""
+msgstr "LDAP에서 계정이 삭제된 후 IMAP 서버에서 사서함을 제거할지 결정합니다."
 
 #: config/mail/class_mailPluginConfig.inc:70
 msgid "Cyrus autocreate folders"
@@ -185,7 +186,7 @@ msgstr "Cyrus 자동생성 폴더"
 msgid ""
 "List of personal IMAP folders that should be created along initial account "
 "creation."
-msgstr ""
+msgstr "초기 계정 생성시 생성해야하는 개인 IMAP 폴더 목록입니다."
 
 #: config/mail/class_mailPluginConfig.inc:76
 msgid "IMAP timeout"
@@ -288,7 +289,7 @@ msgstr "메일박스로 전달할 게 없음."
 
 #: personal/mail/class_mailAccount.inc:171
 msgid "Select if you want to forward mails without getting own copies of them"
-msgstr ""
+msgstr "메일 사본을 소유하지 않고 메일을 전달하려면 선택하십시오."
 
 #: personal/mail/class_mailAccount.inc:271
 #, php-format
@@ -307,19 +308,19 @@ msgstr "quota 설정을 쓸 수 없음: %s"
 msgid "Mail error saving sieve settings: %s"
 msgstr "sieve 설정 저장 메일 오류: %s"
 
-#: personal/mail/class_mail-methods.inc:148
+#: personal/mail/class_mail-methods.inc:147
 msgid "Configuration error"
 msgstr "설정 오류"
 
-#: personal/mail/class_mail-methods.inc:149
+#: personal/mail/class_mail-methods.inc:148
 #, php-format
 msgid "The configured mail attribute '%s' is unsupported!"
 msgstr "설정된 메일 속성'%s'은 지원되지 않습니다!"
 
-#: personal/mail/class_mail-methods.inc:738
+#: personal/mail/class_mail-methods.inc:737
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: personal/mail/class_mail-methods.inc:740
+#: personal/mail/class_mail-methods.inc:739
 msgid "Unlimited"
 msgstr "제한없음"

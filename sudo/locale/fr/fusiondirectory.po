@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2018
-# Benoit Mortier <benoit.mortier@opensides.be>, 2018
+# fusiondirectory <contact@fusiondirectory.org>, 2019
+# Benoit Mortier <benoit.mortier@opensides.be>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:35+0000\n"
 "PO-Revision-Date: 2018-08-13 20:04+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2018\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2019\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,44 +22,52 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:123
+#: admin/sudo/class_sudoManagement.inc:28 admin/sudo/class_sudo.inc:31
 #: config/sudo/class_sudoConfig.inc:40
 msgid "Sudo"
 msgstr "Sudo"
 
-#: admin/sudo/class_sudoManagement.inc:33
+#: admin/sudo/class_sudoManagement.inc:29
 msgid "Sudo management"
 msgstr "Gestion sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:124 admin/sudo/class_sudoGeneric.inc:128
+#: admin/sudo/class_sudoManagement.inc:30
+msgid "Manage sudo roles"
+msgstr "Gérer les rôles sudo"
+
+#: admin/sudo/class_sudoManagement.inc:44
+msgid "Default"
+msgstr "Défaut"
+
+#: admin/sudo/class_sudo.inc:32 admin/sudo/class_sudo.inc:36
 msgid "Sudo role"
 msgstr "Rôle sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:154
+#: admin/sudo/class_sudo.inc:63
 msgid "Role settings"
 msgstr "Paramètres du rôle"
 
-#: admin/sudo/class_sudoGeneric.inc:160
+#: admin/sudo/class_sudo.inc:69
 msgid "Name"
 msgstr "Nom"
 
-#: admin/sudo/class_sudoGeneric.inc:160
+#: admin/sudo/class_sudo.inc:69
 msgid "Name of the role"
 msgstr "Nom du rôle "
 
-#: admin/sudo/class_sudoGeneric.inc:165
+#: admin/sudo/class_sudo.inc:74
 msgid "Description"
 msgstr "Description"
 
-#: admin/sudo/class_sudoGeneric.inc:165
+#: admin/sudo/class_sudo.inc:74
 msgid "Description for the new sudo role"
 msgstr "Description du nouveau rôle sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:170
+#: admin/sudo/class_sudo.inc:79
 msgid "Commands"
 msgstr "Commandes"
 
-#: admin/sudo/class_sudoGeneric.inc:171
+#: admin/sudo/class_sudo.inc:80
 msgid ""
 "A Unix command with optional command line arguments, potentially including "
 "globbing characters (aka wild cards)"
@@ -67,65 +75,65 @@ msgstr ""
 "Une commande Unix avec éventuellement des arguments de ligne de commande, y "
 "compris des caractères joker (wildcards)"
 
-#: admin/sudo/class_sudoGeneric.inc:177
+#: admin/sudo/class_sudo.inc:86
 msgid "Run as (user)"
 msgstr "Exécuter comme (utilisateur)"
 
-#: admin/sudo/class_sudoGeneric.inc:178
+#: admin/sudo/class_sudo.inc:87
 msgid "User(s) impersonated by sudo"
 msgstr "Utilisateur(s) utilisé(s) par sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:185
+#: admin/sudo/class_sudo.inc:94
 msgid "Run as (group)"
 msgstr "Exécuter comme (groupe)"
 
-#: admin/sudo/class_sudoGeneric.inc:186
+#: admin/sudo/class_sudo.inc:95
 msgid "Group(s) impersonated by sudo"
 msgstr "Groupe(s) utilisé(s) par sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:192
+#: admin/sudo/class_sudo.inc:101
 msgid "Systems"
 msgstr "Systèmes"
 
-#: admin/sudo/class_sudoGeneric.inc:192
+#: admin/sudo/class_sudo.inc:101
 msgid "A host name, IP address or IP network"
 msgstr "Un nom d'hôte, une adresse IP ou un réseau IP"
 
-#: admin/sudo/class_sudoGeneric.inc:197
+#: admin/sudo/class_sudo.inc:106
 msgid "Users and groups"
 msgstr "Utilisateurs et groupes"
 
-#: admin/sudo/class_sudoGeneric.inc:198
+#: admin/sudo/class_sudo.inc:107
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
 msgstr ""
 "Un nom d'utilisateur, ID utilisateur (préfixé par '#'), groupe Unix (préfixé"
 " par '%')"
 
-#: admin/sudo/class_sudoGeneric.inc:202
+#: admin/sudo/class_sudo.inc:111
 msgid "Priority"
 msgstr "Priorité"
 
-#: admin/sudo/class_sudoGeneric.inc:202
+#: admin/sudo/class_sudo.inc:111
 msgid "This rule priority compared to others"
 msgstr "La priorité de cette règle par rapport aux autres"
 
-#: admin/sudo/class_sudoGeneric.inc:207
+#: admin/sudo/class_sudo.inc:116
 msgid "Valid starting from"
 msgstr "Valable à partir de"
 
-#: admin/sudo/class_sudoGeneric.inc:207
+#: admin/sudo/class_sudo.inc:116
 msgid ""
 "Start of time interval for which the entry is valid (leave empty to disable)"
 msgstr ""
 "Début de l'intervalle de temps pour lequel l'entrée est valide (laissez vide"
 " pour désactiver)"
 
-#: admin/sudo/class_sudoGeneric.inc:212
+#: admin/sudo/class_sudo.inc:121
 msgid "Valid until"
 msgstr "Valable jusque"
 
-#: admin/sudo/class_sudoGeneric.inc:212
+#: admin/sudo/class_sudo.inc:121
 msgid ""
 "End of time interval for which the entry is valid (leave empty to disable)"
 msgstr ""
@@ -154,19 +162,19 @@ msgstr "Options"
 msgid "Sudo options"
 msgstr "Options Sudo"
 
-#: admin/sudo/class_sudoOption.inc:352
+#: admin/sudo/class_sudoOption.inc:350
 msgid "Available options"
 msgstr "Options disponibles"
 
-#: admin/sudo/class_sudoOption.inc:355
+#: admin/sudo/class_sudoOption.inc:353
 msgid "Option"
 msgstr "Option"
 
-#: admin/sudo/class_sudoOption.inc:355
+#: admin/sudo/class_sudoOption.inc:353
 msgid "Add a new sudo option"
 msgstr "Ajouter une nouvelle option sudo "
 
-#: admin/sudo/class_sudoOption.inc:360 admin/sudo/class_sudoOption.inc:362
+#: admin/sudo/class_sudoOption.inc:358 admin/sudo/class_sudoOption.inc:360
 msgid "Used sudo role options"
 msgstr "Options sudo utilisées"
 

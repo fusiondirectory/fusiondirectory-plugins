@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:35+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Spanish (Venezuela) (https://www.transifex.com/fusiondirectory/teams/12202/es_VE/)\n"
@@ -31,7 +31,7 @@ msgid "Services"
 msgstr "Servicios"
 
 #: admin/systems/services/sympa/class_serviceSympa.inc:43
-#: admin/sympa/class_sympaAlias.inc:60
+#: admin/sympa/class_sympaAlias.inc:61
 msgid "Sympa server"
 msgstr ""
 
@@ -59,41 +59,45 @@ msgstr "Contraseña"
 msgid "Password to access sympa server SOAP API."
 msgstr ""
 
-#: admin/sympa/class_sympaManagement.inc:33
+#: admin/sympa/class_sympaManagement.inc:28
 #: config/sympa/class_sympaConfig.inc:40
 msgid "Sympa"
 msgstr ""
 
-#: admin/sympa/class_sympaManagement.inc:34
+#: admin/sympa/class_sympaManagement.inc:29
 msgid "Sympa management"
 msgstr ""
 
+#: admin/sympa/class_sympaManagement.inc:30
+msgid "Manage sympa aliases"
+msgstr ""
+
 #: admin/sympa/class_sympaAlias.inc:26 admin/sympa/class_sympaAlias.inc:27
-#: admin/sympa/class_sympaAlias.inc:30 admin/sympa/class_sympaAlias.inc:45
+#: admin/sympa/class_sympaAlias.inc:30 admin/sympa/class_sympaAlias.inc:46
 msgid "Sympa list alias"
 msgstr ""
 
-#: admin/sympa/class_sympaAlias.inc:48
+#: admin/sympa/class_sympaAlias.inc:49
 msgid "Name"
 msgstr "Nombre"
 
-#: admin/sympa/class_sympaAlias.inc:48
+#: admin/sympa/class_sympaAlias.inc:49
 msgid "Name to identify this alias"
 msgstr ""
 
-#: admin/sympa/class_sympaAlias.inc:50
+#: admin/sympa/class_sympaAlias.inc:51
 msgid "Description"
 msgstr "Descripción"
 
-#: admin/sympa/class_sympaAlias.inc:50
+#: admin/sympa/class_sympaAlias.inc:51
 msgid "Description of this alias"
 msgstr ""
 
-#: admin/sympa/class_sympaAlias.inc:55
+#: admin/sympa/class_sympaAlias.inc:56
 msgid "Email address"
 msgstr "Dirección de correo"
 
-#: admin/sympa/class_sympaAlias.inc:60
+#: admin/sympa/class_sympaAlias.inc:61
 msgid "Sympa server for this alias"
 msgstr ""
 

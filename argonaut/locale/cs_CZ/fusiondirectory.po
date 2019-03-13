@@ -5,15 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Pavel Borecki <pavel.borecki@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:34+0000\n"
 "PO-Revision-Date: 2018-08-13 19:49+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,12 +30,12 @@ msgstr "Nalezeno více argonaut serverů. Použit je možné ale pouze jeden"
 msgid "There is no argonaut server configured"
 msgstr "Není nastaven žádný argonaut server"
 
-#: include/class_supportDaemon.inc:641
+#: include/class_supportDaemon.inc:640
 #, php-format
 msgid "Could not read \"%s\"!"
 msgstr "Nelze načíst %s!"
 
-#: include/class_supportDaemon.inc:645
+#: include/class_supportDaemon.inc:644
 #, php-format
 msgid "\"%s\" is not a file!"
 msgstr "„%s“ není soubor!"
@@ -445,6 +446,8 @@ msgid ""
 "LDAP base in which ldap2zone should search. Only usefull if you got several "
 "nodes for the same zone."
 msgstr ""
+"LDAP základ, ve kterém má ldap2zone hledat. Užitečné pouze pokud máte více "
+"uzlů pro stejnou zónu."
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:85
 msgid "Ldap2zone master settings"
@@ -491,10 +494,12 @@ msgid ""
 "Cause any host name for the zone to be checked for compliance with RFC 952 "
 "and RFC 1123 and take the defined action"
 msgstr ""
+"Způsobí že všechny názvy strojů pro zónu budou ověřovány na soulad s normami"
+" RFC 952 a RFC 1123 a podniknuta určená akce"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:112
 msgid "Ldap2zone slave settings"
-msgstr ""
+msgstr "Nastavení ldap2zone podřízeného"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:117
 msgid "Manage DNS Slaves"
@@ -508,7 +513,7 @@ msgstr "zóna"
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:155
 msgid "DNS zone this server should be declared as slave of"
-msgstr ""
+msgstr "DNZ zóna které podřízeným by tento server měl být deklarován"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:125
 msgid "master"
@@ -520,7 +525,7 @@ msgstr "IP adresy hlavních pro tuto zónu"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:129
 msgid "reverses"
-msgstr ""
+msgstr "obrací"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:129
 msgid "This server should be slave of reverses zones as well"
@@ -532,32 +537,32 @@ msgstr "Podřízená DNS"
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:30
 msgid "Deployment time frame"
-msgstr ""
+msgstr "Časový rámec nasazení"
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:31
 msgid "Edit deployment time frame"
-msgstr ""
+msgstr "Upravit časový rámec nasazení"
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:44
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:62
 msgid "Time frames"
-msgstr ""
+msgstr "Časové rámce"
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:48
 msgid "Time frames in which deployment is authorized"
-msgstr ""
+msgstr "Časový rámec ve kterém je nasazení autorizováno"
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:52
 msgid "Opening time for this frame as HH:MM"
-msgstr ""
+msgstr "Čas začátku tohoto rámce v podobě HH:MM"
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:56
 msgid "->"
-msgstr ""
+msgstr "->"
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:56
 msgid "Closing time for this frame as HH:MM"
-msgstr ""
+msgstr "Uzavírací čas pro tento rámec v podobě HH:MM"
 
 #: admin/systems/argonaut/class_argonautClient.inc:126
 msgid "Argonaut client"
@@ -713,15 +718,15 @@ msgstr "Akce"
 
 #: addons/argonaut/class_argonautAction.inc:56
 msgid "The action you are about to schedule"
-msgstr ""
+msgstr "Akce kterou se chystáte naplánovat"
 
 #: addons/argonaut/class_argonautAction.inc:68
 msgid "Scheduled"
-msgstr ""
+msgstr "Naplánováno"
 
 #: addons/argonaut/class_argonautAction.inc:68
 msgid "Wether this job should be scheduled or ran right away"
-msgstr ""
+msgstr "Zda má být tato úloha naplánována nebo spuštěna teď hned"
 
 #: addons/argonaut/class_argonautAction.inc:77
 msgid "Periodical job"
@@ -901,7 +906,7 @@ msgstr "(Pře)Instalovat"
 
 #: addons/argonaut/class_argonautEventTypes.inc:105
 msgid "Refresh slave files (ldap2zone)"
-msgstr ""
+msgstr "Aktualizovat soubory podřízeného (ldap2zone)"
 
 #: addons/argonaut/import_events.tpl.c:2
 msgid ""

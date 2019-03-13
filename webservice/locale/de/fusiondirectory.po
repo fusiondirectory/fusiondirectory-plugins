@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:35+0000\n"
 "PO-Revision-Date: 2018-08-13 20:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
@@ -20,6 +20,69 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: include/webservice/class_fdRPCService.inc:51
+#, php-format
+msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
+msgstr "FusionDirectory Konfiguration %s/%s ist nicht lesbar. Abgebrochen."
+
+#: include/webservice/class_fdRPCService.inc:61
+#, php-format
+msgid "Cannot locate file '%s' - please run '%s' to fix this"
+msgstr ""
+"Konnte Datei '%s' nicht finden - bitte führen Sie '%s' aus um das Problem zu"
+" beseitigen"
+
+#: include/webservice/class_fdRPCService.inc:322
+#: include/webservice/class_fdRPCService.inc:405
+msgid "Plugin"
+msgstr "Erweiterung"
+
+#: include/webservice/class_fdRPCService.inc:502
+#, php-format
+msgid "Field \"%s\" is not multi-valuated"
+msgstr ""
+
+#: include/webservice/class_fdRPCService.inc:517
+#, php-format
+msgid "Unknown field \"%s\""
+msgstr "Unbekanntes Feld \"%s\""
+
+#: include/webservice/class_fdRPCService.inc:572
+#, php-format
+msgid "Cannot delete %s. It has been locked by %s."
+msgstr ""
+
+#: include/webservice/class_fdRPCService.inc:619
+#: include/webservice/class_fdRPCService.inc:648
+#, php-format
+msgid "Failed to get password method for account \"%s\". It has not been locked!"
+msgstr ""
+
+#: include/webservice/class_fdRPCService.inc:644
+#, php-format
+msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
+msgstr ""
+
+#: include/webservice/class_fdRPCService.inc:651
+#, php-format
+msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
+msgstr ""
+
+#: include/webservice/class_fdRPCService.inc:689
+#: include/webservice/class_fdRPCService.inc:698
+#, php-format
+msgid "Failed to get password method for account \"%s\""
+msgstr ""
+
+#: include/webservice/class_fdRPCService.inc:701
+#, php-format
+msgid "Could not find account \"%s\" in LDAP"
+msgstr ""
+
+#: include/webservice/class_fdRPCService.inc:745
+msgid "This token is invalid"
+msgstr "Das Token ist nicht gültig"
 
 #: config/class_webserviceConfig.inc:26
 msgid "Webservice configuration"
@@ -40,63 +103,3 @@ msgstr "SSL erzwingen"
 #: config/class_webserviceConfig.inc:43
 msgid "Allow only HTTPS JSON-RPC requests"
 msgstr "Nur HTTPS JSON-RPC-Anfragen erlauben"
-
-#: html/jsonrpc.php:55
-#, php-format
-msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
-msgstr "FusionDirectory Konfiguration %s/%s ist nicht lesbar. Abgebrochen."
-
-#: html/jsonrpc.php:65
-#, php-format
-msgid "Cannot locate file '%s' - please run '%s' to fix this"
-msgstr ""
-"Konnte Datei '%s' nicht finden - bitte führen Sie '%s' aus um das Problem zu"
-" beseitigen"
-
-#: html/jsonrpc.php:342 html/jsonrpc.php:425
-msgid "Plugin"
-msgstr "Erweiterung"
-
-#: html/jsonrpc.php:522
-#, php-format
-msgid "Field \"%s\" is not multi-valuated"
-msgstr ""
-
-#: html/jsonrpc.php:537
-#, php-format
-msgid "Unknown field \"%s\""
-msgstr "Unbekanntes Feld \"%s\""
-
-#: html/jsonrpc.php:592
-#, php-format
-msgid "Cannot delete %s. It has been locked by %s."
-msgstr ""
-
-#: html/jsonrpc.php:639 html/jsonrpc.php:668
-#, php-format
-msgid "Failed to get password method for account \"%s\". It has not been locked!"
-msgstr ""
-
-#: html/jsonrpc.php:664
-#, php-format
-msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
-msgstr ""
-
-#: html/jsonrpc.php:671
-#, php-format
-msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
-msgstr ""
-
-#: html/jsonrpc.php:709 html/jsonrpc.php:718
-#, php-format
-msgid "Failed to get password method for account \"%s\""
-msgstr ""
-
-#: html/jsonrpc.php:721
-#, php-format
-msgid "Could not find account \"%s\" in LDAP"
-msgstr ""
-
-#: html/jsonrpc.php:765
-msgid "This token is invalid"
-msgstr "Das Token ist nicht gültig"

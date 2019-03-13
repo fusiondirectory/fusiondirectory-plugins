@@ -5,15 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Choi Chris <chulwon.choi@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:34+0000\n"
 "PO-Revision-Date: 2018-08-13 20:02+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,18 +22,22 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: include/class_smbHash.inc:369
+#: include/class_smbHash.inc:381
 msgid ""
 "Your PHP install does not have the mhash() nor the hash function. Cannot do "
 "MD4 hashes."
 msgstr ""
 
-#: admin/samba/class_sambaDomainManagement.inc:34
+#: admin/samba/class_sambaDomainManagement.inc:37
 msgid "Samba domains"
 msgstr ""
 
-#: admin/samba/class_sambaDomainManagement.inc:35
+#: admin/samba/class_sambaDomainManagement.inc:38
 msgid "Samba domain management"
+msgstr ""
+
+#: admin/samba/class_sambaDomainManagement.inc:39
+msgid "Manage Samba domains"
 msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:26 admin/samba/class_sambaDomain.inc:27
@@ -44,139 +49,139 @@ msgstr ""
 msgid "Samba domain settings"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:47
+#: admin/samba/class_sambaDomain.inc:48
 #: admin/systems/samba/class_sambaSystemTab.inc:43
 msgid "Properties"
 msgstr "설정"
 
-#: admin/samba/class_sambaDomain.inc:50
+#: admin/samba/class_sambaDomain.inc:51
 msgid "Domain name"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:50
+#: admin/samba/class_sambaDomain.inc:51
 msgid "Name of this domain"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:54
+#: admin/samba/class_sambaDomain.inc:55
 msgid "SID"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:54
+#: admin/samba/class_sambaDomain.inc:55
 msgid "SID of this domain"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:58
+#: admin/samba/class_sambaDomain.inc:59
 msgid "Rid base"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:58
+#: admin/samba/class_sambaDomain.inc:59
 msgid "Algorithmic rid base"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:62
+#: admin/samba/class_sambaDomain.inc:63
 msgid "Minimum password age"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:63
+#: admin/samba/class_sambaDomain.inc:64
 msgid ""
 "Minimum password age, in seconds (default: 0 => allow immediate password "
 "change)"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:68
+#: admin/samba/class_sambaDomain.inc:69
 msgid "Maximum password age"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:69
+#: admin/samba/class_sambaDomain.inc:70
 msgid ""
 "Maximum password age, in seconds (default: -1 => never expire passwords)"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:74
+#: admin/samba/class_sambaDomain.inc:75
 msgid "Next RID"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:75
+#: admin/samba/class_sambaDomain.inc:76
 msgid "Next NT rid to give out for anything"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:79
+#: admin/samba/class_sambaDomain.inc:80
 msgid "Next group RID"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:80
+#: admin/samba/class_sambaDomain.inc:81
 msgid "Next NT rid to give out for groups"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:84
+#: admin/samba/class_sambaDomain.inc:85
 msgid "Next user RID"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:85
+#: admin/samba/class_sambaDomain.inc:86
 msgid "Next NT rid to give our for users"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:89
+#: admin/samba/class_sambaDomain.inc:90
 msgid "Minimum password length"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:90
+#: admin/samba/class_sambaDomain.inc:91
 msgid "Minimal password length (default: 5)"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:94
+#: admin/samba/class_sambaDomain.inc:95
 msgid "Password history length"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:95
+#: admin/samba/class_sambaDomain.inc:96
 msgid "Length of Password History Entries (default: 0 => off)"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:99
+#: admin/samba/class_sambaDomain.inc:100
 msgid "Logon to change password"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:100
+#: admin/samba/class_sambaDomain.inc:101
 msgid "Force Users to logon for password change (default: 0 => off, 2 => on)"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:104
+#: admin/samba/class_sambaDomain.inc:105
 msgid "Lockout duration"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:105
+#: admin/samba/class_sambaDomain.inc:106
 msgid "Lockout duration in minutes (default: 30, -1 => forever)"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:109
+#: admin/samba/class_sambaDomain.inc:110
 msgid "Lockout observation window"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:110
+#: admin/samba/class_sambaDomain.inc:111
 msgid "Reset time after lockout in minutes (default: 30)"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:114
+#: admin/samba/class_sambaDomain.inc:115
 msgid "Lockout threshold"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:115
+#: admin/samba/class_sambaDomain.inc:116
 msgid "Lockout users after bad logon attempts (default: 0 => off)"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:119
+#: admin/samba/class_sambaDomain.inc:120
 msgid "Force logoff"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:120
+#: admin/samba/class_sambaDomain.inc:121
 msgid "Disconnect Users outside logon hours (default: -1 => off, 0 => on)"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:124
+#: admin/samba/class_sambaDomain.inc:125
 msgid "Refuse machine password change"
 msgstr ""
 
-#: admin/samba/class_sambaDomain.inc:125
+#: admin/samba/class_sambaDomain.inc:126
 msgid "Allow Machine Password changes (default: 0 => off)"
 msgstr ""
 
@@ -196,7 +201,7 @@ msgstr ""
 #: admin/systems/samba/class_sambaSystemTab.inc:52
 #: personal/samba/class_sambaAccount.inc:199
 msgid "Domain"
-msgstr ""
+msgstr "도메"
 
 #: admin/groups/samba/class_sambaGroup.inc:47
 msgid "Samba domain"
@@ -385,7 +390,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:214
 msgid "Terminal server"
-msgstr ""
+msgstr "터미널 서버"
 
 #: personal/samba/class_sambaAccount.inc:218
 msgid "Allow login on terminal server"

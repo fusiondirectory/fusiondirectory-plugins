@@ -5,15 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Pavel Borecki <pavel.borecki@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:34+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -167,11 +168,11 @@ msgstr "Označení jednotky datového úložiště"
 
 #: admin/fai/class_faiDiskEntry.inc:263
 msgid "Random init"
-msgstr ""
+msgstr "Náhodný limit"
 
 #: admin/fai/class_faiDiskEntry.inc:263
 msgid "Initialise all encrypted partitions with random data"
-msgstr ""
+msgstr "Přepsat všechny oddíly k šifrování náhodnými daty"
 
 #: admin/fai/class_faiDiskEntry.inc:270
 msgid "Partition entries"
@@ -216,8 +217,8 @@ msgstr "Balíček"
 msgid "Version"
 msgstr "Verze"
 
-#: admin/fai/packageSelect/class_filterFAIPackages.inc:41
-#: admin/fai/packageSelect/class_filterFAIPackages.inc:46
+#: admin/fai/packageSelect/class_filterFAIPackages.inc:40
+#: admin/fai/packageSelect/class_filterFAIPackages.inc:45
 #: admin/fai/class_faiPackageConfiguration.inc:59
 #: admin/fai/class_faiPackage.inc:287
 msgid "Infrastructure service"
@@ -323,7 +324,7 @@ msgstr "Náhradní"
 
 #: admin/fai/class_faiPartition.inc:269
 msgid "Spare Raid device"
-msgstr ""
+msgstr "Náhradní zařízení v RAID"
 
 #: admin/fai/class_faiPartition.inc:275
 msgid "Missing"
@@ -331,11 +332,11 @@ msgstr "Chybějící"
 
 #: admin/fai/class_faiPartition.inc:275
 msgid "Missing Raid device"
-msgstr ""
+msgstr "Chybí RAID zařízení"
 
 #: admin/fai/class_faiPartition.inc:292
 msgid "Partition to encrypt"
-msgstr ""
+msgstr "Oddíl který zašifrovat"
 
 #: admin/fai/class_faiPartition.inc:296
 msgid "Password"
@@ -346,6 +347,8 @@ msgid ""
 "Password to use for encryption. Leave empty to use a encryption key file "
 "instead."
 msgstr ""
+"Šifrovací heslo. Pokud chcete namísto něj použít soubor se šifrovacím "
+"klíčem, nevyplňujte."
 
 #: admin/fai/class_faiPartition.inc:300
 msgid "Resize"
@@ -369,7 +372,7 @@ msgstr "Zachovat"
 
 #: admin/fai/class_faiPartition.inc:308
 msgid "Does the partition need to be preserved"
-msgstr ""
+msgstr "Oddíl je třeba zachovat"
 
 #: admin/fai/class_faiPartition.inc:311
 msgid "Never"
@@ -393,7 +396,7 @@ msgstr "Souborový systém, který vytvořit na tomto oddílu"
 
 #: admin/fai/class_faiPartition.inc:322
 msgid "swap"
-msgstr ""
+msgstr "swap"
 
 #: admin/fai/class_faiPartition.inc:322
 msgid "fat32"
@@ -481,19 +484,19 @@ msgstr "RAID 6"
 
 #: admin/fai/class_faiPartition.inc:392
 msgid "LUKS"
-msgstr ""
+msgstr "LUKS"
 
 #: admin/fai/class_faiPartition.inc:393
 msgid "Swap"
-msgstr ""
+msgstr "Swap"
 
 #: admin/fai/class_faiPartition.inc:394
 msgid "tmp"
-msgstr ""
+msgstr "tmp"
 
 #: admin/fai/class_faiPartition.inc:434
 msgid "Encryption settings"
-msgstr ""
+msgstr "Nastavení šifrování"
 
 #: admin/fai/class_faiPartition.inc:507
 msgid "Raid arrays must contain at least two partitions!"
@@ -580,6 +583,9 @@ msgid ""
 "presented here. The entered text needs to be one of the valid choices in "
 "order to take effect."
 msgstr ""
+"Debconf dotazy „%s“ dynamicky vytvářené při instalaci balíčku a vyžadují "
+"volbu mezi konkrétními předvolbami které zde nemohou být přítomné. Aby "
+"fungovalo je třeba, aby zadaný text byl některou z platných voleb."
 
 #: admin/fai/class_faiPackage.inc:163
 msgid "Mark for installation"
@@ -670,7 +676,7 @@ msgstr "úkol"
 
 #: admin/fai/class_faiHook.inc:76
 msgid "Task to run"
-msgstr ""
+msgstr "Úloha kterou spustit"
 
 #: admin/fai/class_faiHook.inc:84
 msgid "The script of this hook"
@@ -772,7 +778,7 @@ msgstr "Přístupová práva"
 
 #: admin/fai/class_faiPartitionTable.inc:109
 msgid "Add disk"
-msgstr ""
+msgstr "Přidat jednotku"
 
 #: admin/fai/class_faiPartitionTable.inc:119
 msgid "Add RAID"
@@ -784,7 +790,7 @@ msgstr "Přidat LVM"
 
 #: admin/fai/class_faiPartitionTable.inc:141
 msgid "Add cryptsetup"
-msgstr ""
+msgstr "Přidat cryptsetup"
 
 #: admin/fai/class_faiPartitionTable.inc:321
 msgid "Partition table"

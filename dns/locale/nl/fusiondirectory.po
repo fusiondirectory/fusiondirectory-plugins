@@ -5,15 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Lucien Antonissen <lucien.antonissen@digipolis.be>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:34+0000\n"
 "PO-Revision-Date: 2018-08-13 19:52+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2019\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -46,51 +47,65 @@ msgstr "Adres lijst van overeenkomst"
 msgid "The ip address match list for this acl"
 msgstr "IP-adres lijst van overeenkomst voor deze acl"
 
-#: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:128
+#: admin/dns/class_dnsManagement.inc:36 admin/systems/class_dnsHost.inc:128
 msgid "DNS"
 msgstr "DNS"
 
-#: admin/dns/class_dnsManagement.inc:35
+#: admin/dns/class_dnsManagement.inc:37
 msgid "DNS Management"
 msgstr "DNS beheer"
 
-#: admin/dns/class_dnsManagement.inc:37
+#: admin/dns/class_dnsManagement.inc:38
+msgid "Manage DNS zones and views"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:40
 msgid "Systems"
 msgstr "Systemen"
 
-#: admin/dns/class_dnsManagement.inc:91 admin/dns/class_dnsManagement.inc:93
-#: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:313
+#: admin/dns/class_dnsManagement.inc:54 admin/dns/class_dnsManagement.inc:74
+msgid "Refresh Zone"
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:74
+#, php-format
+msgid "Invalid target \"%s\" passed for action \"%s\""
+msgstr ""
+
+#: admin/dns/class_dnsManagement.inc:79 admin/dns/class_dnsManagement.inc:81
+#: admin/dns/class_dnsManagement.inc:87 admin/systems/class_dnsHost.inc:313
 #: admin/systems/class_dnsHost.inc:322
 msgid "Could not run ldap2zone"
 msgstr "Kan ldap2zone niet uitvoeren "
 
-#: admin/dns/class_dnsManagement.inc:91
+#: admin/dns/class_dnsManagement.inc:79
 msgid "More than one server matches the SOA"
 msgstr "Meer dan één server komt overeen met de SOA"
 
-#: admin/dns/class_dnsManagement.inc:93
-msgid "Could not find the primary server"
-msgstr "Kan de primaire server niet vinden"
+#: admin/dns/class_dnsManagement.inc:81
+#, php-format
+msgid "Could not find the primary server \"%s\""
+msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:109
+#: admin/dns/class_dnsManagement.inc:97
 msgid "Could not get run ldap2zone"
 msgstr "Kan ldap2zone niet uitvoeren"
 
-#: admin/dns/class_dnsManagement.inc:111 admin/systems/class_dnsHost.inc:324
+#: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:324
 msgid "Ldap2zone"
 msgstr "LDAP2zone"
 
-#: admin/dns/class_dnsManagement.inc:111 admin/systems/class_dnsHost.inc:324
+#: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:324
 #, php-format
 msgid "Ldap2Zone called for zone \"%s\""
 msgstr "Ldap2Zone opgevraagd voor zone \"%s\""
 
-#: admin/dns/class_dnsManagement.inc:115 admin/dns/class_dnsZone.inc:381
+#: admin/dns/class_dnsManagement.inc:103 admin/dns/class_dnsZone.inc:381
 #: admin/systems/class_dnsHost.inc:328
 msgid "Error"
 msgstr "Fout"
 
-#: admin/dns/class_dnsManagement.inc:115 admin/systems/class_dnsHost.inc:328
+#: admin/dns/class_dnsManagement.inc:103 admin/systems/class_dnsHost.inc:328
 msgid "Argonaut client needs to be activated to use ldap2zone remotely"
 msgstr ""
 "Argonaut cliënt moet geactiveerd worden om ldap2zone op afstand te gebruiken"
@@ -460,7 +475,7 @@ msgstr "DNS record"
 
 #: admin/dns/class_dnsZone.inc:189
 msgid "Reverse"
-msgstr ""
+msgstr "Omgekeerd"
 
 #: admin/dns/class_dnsZone.inc:382
 #, php-format
@@ -471,12 +486,12 @@ msgstr ""
 
 #: admin/dns/class_dnsZone.inc:484 admin/dns/class_dnsZone.inc:493
 #: admin/dns/class_dnsZone.inc:501 admin/dns/class_dnsZone.inc:509
-#: admin/dns/class_dnsZone.inc:530 admin/dns/class_dnsZone.inc:563
-#: admin/dns/class_dnsZone.inc:569 admin/dns/class_dnsZone.inc:581
+#: admin/dns/class_dnsZone.inc:530 admin/dns/class_dnsZone.inc:564
+#: admin/dns/class_dnsZone.inc:570 admin/dns/class_dnsZone.inc:582
 msgid "LDAP error"
 msgstr "LDAP fout"
 
-#: admin/dns/class_dnsZone.inc:676
+#: admin/dns/class_dnsZone.inc:677
 #, php-format
 msgid ""
 "\"%s\" must contain a domain name in lowercase and end with a final "
@@ -485,7 +500,7 @@ msgstr ""
 "\"%s\" moet een domeinnaam bevatten geschreven in kleine letters en "
 "eindigend op een punt. <br/><br/> Voorbeeld: example.com."
 
-#: admin/dns/class_dnsZone.inc:679
+#: admin/dns/class_dnsZone.inc:680
 #, php-format
 msgid ""
 "\"%s\" must contain a domain name in lowercase.<br/><br/>Example: "
@@ -494,24 +509,24 @@ msgstr ""
 "\"%s\" moet een domein bevatten geschreven in kleine letters. <br/> <br/> "
 "Voorbeeld: example.com"
 
-#: admin/dns/class_dnsZone.inc:698 admin/dns/class_dnsZone.inc:699
-#: admin/dns/class_dnsZone.inc:703
+#: admin/dns/class_dnsZone.inc:699 admin/dns/class_dnsZone.inc:700
+#: admin/dns/class_dnsZone.inc:704
 msgid "DNS zone"
 msgstr "DNZ zone"
 
-#: admin/dns/class_dnsZone.inc:717
+#: admin/dns/class_dnsZone.inc:719
 msgid "Zone"
 msgstr "Zone"
 
-#: admin/dns/class_dnsZone.inc:721
+#: admin/dns/class_dnsZone.inc:723
 msgid "Zone name"
 msgstr "Zonenaam"
 
-#: admin/dns/class_dnsZone.inc:731
+#: admin/dns/class_dnsZone.inc:733
 msgid "Reverse zones"
 msgstr "Reverse zones"
 
-#: admin/dns/class_dnsZone.inc:731
+#: admin/dns/class_dnsZone.inc:733
 #, php-format
 msgid ""
 "Reverse zones for this zone in the form xx.xx.in-addr.arpa%1$s or "
@@ -520,19 +535,19 @@ msgstr ""
 "Reverse zones voor deze zone in de vorm xx.xx.in-addr.arpa %1$s of "
 "x.x.ip6.arpa %1$s"
 
-#: admin/dns/class_dnsZone.inc:744
+#: admin/dns/class_dnsZone.inc:746
 msgid "SOA record"
 msgstr "SOA record"
 
-#: admin/dns/class_dnsZone.inc:747
+#: admin/dns/class_dnsZone.inc:749
 msgid "SOA Record"
 msgstr "SOA record"
 
-#: admin/dns/class_dnsZone.inc:751
+#: admin/dns/class_dnsZone.inc:753
 msgid "Primary DNS server"
 msgstr "Primaire DNS server"
 
-#: admin/dns/class_dnsZone.inc:751
+#: admin/dns/class_dnsZone.inc:753
 msgid ""
 "Domain name of the name server that was the original or primary source of "
 "data for this zone"
@@ -540,48 +555,48 @@ msgstr ""
 "Domein naam van de naamserver die de originele of primaire databron voor "
 "deze zone is"
 
-#: admin/dns/class_dnsZone.inc:755
+#: admin/dns/class_dnsZone.inc:757
 msgid "Mail address"
 msgstr "E-mail adres"
 
-#: admin/dns/class_dnsZone.inc:755
+#: admin/dns/class_dnsZone.inc:757
 msgid ""
 "Domain name which specifies the mailbox of the person responsible for this "
 "zone"
 msgstr "Domein naam die de mailbox van de zoneverantwoordelijke bepaalt"
 
-#: admin/dns/class_dnsZone.inc:759
+#: admin/dns/class_dnsZone.inc:761
 msgid "Serial number"
 msgstr "Serienummer"
 
-#: admin/dns/class_dnsZone.inc:759
+#: admin/dns/class_dnsZone.inc:761
 msgid "Version number of the original copy of the zone"
 msgstr "Versienummer van de originele kopie van de zone"
 
-#: admin/dns/class_dnsZone.inc:764
+#: admin/dns/class_dnsZone.inc:766
 msgid "Refresh"
 msgstr "Refresh"
 
-#: admin/dns/class_dnsZone.inc:764
+#: admin/dns/class_dnsZone.inc:766
 msgid "Time interval before the zone should be refreshed"
 msgstr "Tijdsinterval voordat de zone refreshed moet worden"
 
-#: admin/dns/class_dnsZone.inc:769
+#: admin/dns/class_dnsZone.inc:771
 msgid "Retry"
 msgstr "Opnieuw proberen"
 
-#: admin/dns/class_dnsZone.inc:769
+#: admin/dns/class_dnsZone.inc:771
 msgid ""
 "Time interval that should elapse before a failed refresh should be retried"
 msgstr ""
 "Tijd die voorbij zou moeten zijn voordat er een gefaalde refresh opnieuw "
 "geprobeerd wordt. "
 
-#: admin/dns/class_dnsZone.inc:774
+#: admin/dns/class_dnsZone.inc:776
 msgid "Expire"
 msgstr "Vervallen"
 
-#: admin/dns/class_dnsZone.inc:774
+#: admin/dns/class_dnsZone.inc:776
 msgid ""
 "Time value that specifies the upper limit on the time interval that can "
 "elapse before the zone is no longer authoritative"
@@ -589,19 +604,19 @@ msgstr ""
 "Tijdstip die de bovenlimiet op het tijdsinterval bepaalt dat kan vervallen "
 "voordat de zone zijn autoriteit verliest"
 
-#: admin/dns/class_dnsZone.inc:779
+#: admin/dns/class_dnsZone.inc:781
 msgid "TTL"
 msgstr "TTL"
 
-#: admin/dns/class_dnsZone.inc:779
+#: admin/dns/class_dnsZone.inc:781
 msgid "Minimum TTL field that should be exported with any RR from this zone"
 msgstr "Minimum TTL veld dat geëxporteerd  wordt met elke RR van deze zone"
 
-#: admin/dns/class_dnsZone.inc:790
+#: admin/dns/class_dnsZone.inc:792
 msgid "Records"
 msgstr "Records"
 
-#: admin/dns/class_dnsZone.inc:794
+#: admin/dns/class_dnsZone.inc:796
 msgid "The DNS records for this zone"
 msgstr "De DNS records voor deze zone"
 

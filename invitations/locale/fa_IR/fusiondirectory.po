@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:34+0000\n"
 "PO-Revision-Date: 2018-08-27 16:26+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Persian (Iran) (https://www.transifex.com/fusiondirectory/teams/12202/fa_IR/)\n"
@@ -69,12 +69,12 @@ msgid "Invitation"
 msgstr ""
 
 #: admin/registrations/class_registration.inc:33
-#: admin/registrations/class_registrationManagement.inc:133
-#: admin/registrations/class_registrationManagement.inc:145
-#: admin/registrations/class_registrationManagement.inc:156
-#: admin/registrations/class_registrationManagement.inc:211
-#: admin/registrations/class_registrationManagement.inc:223
-#: admin/registrations/class_registrationManagement.inc:234
+#: admin/registrations/class_registrationManagement.inc:132
+#: admin/registrations/class_registrationManagement.inc:144
+#: admin/registrations/class_registrationManagement.inc:155
+#: admin/registrations/class_registrationManagement.inc:235
+#: admin/registrations/class_registrationManagement.inc:247
+#: admin/registrations/class_registrationManagement.inc:258
 msgid "Error"
 msgstr "خطا"
 
@@ -146,77 +146,88 @@ msgstr ""
 msgid "User object created by this registration"
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:40
-#: admin/registrations/class_registrationManagement.inc:46
+#: admin/registrations/class_registrationManagement.inc:41
+#: admin/registrations/class_registrationManagement.inc:47
 msgid "invalid"
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:81
+#: admin/registrations/class_registrationManagement.inc:82
 msgid "Registrations"
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:82
+#: admin/registrations/class_registrationManagement.inc:83
 msgid "Registrations management"
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:83
+#: admin/registrations/class_registrationManagement.inc:84
 msgid "Manage registrations"
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:105
+#: admin/registrations/class_registrationManagement.inc:104
 msgid "Accept"
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:112
+#: admin/registrations/class_registrationManagement.inc:111
 msgid "Reject"
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:134
+#: admin/registrations/class_registrationManagement.inc:133
 #, php-format
 msgid "Cannot accept %s. It has been locked by %s."
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:146
+#: admin/registrations/class_registrationManagement.inc:145
 #, php-format
 msgid "Cannot accept registration %s, it's not in status \"Filled\"."
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:157
+#: admin/registrations/class_registrationManagement.inc:156
 #, php-format
 msgid "Cannot move %s. It has been locked by %s."
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:212
+#: admin/registrations/class_registrationManagement.inc:199
+msgid "Account locking"
+msgstr ""
+
+#: admin/registrations/class_registrationManagement.inc:200
+#, php-format
+msgid ""
+"Unlocking failed using password method \"%s\". Account \"%s\" has not been "
+"unlocked!"
+msgstr ""
+
+#: admin/registrations/class_registrationManagement.inc:236
 #, php-format
 msgid "Cannot reject %s. It has been locked by %s."
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:224
+#: admin/registrations/class_registrationManagement.inc:248
 #, php-format
 msgid "Cannot reject registration %s, it's not in status \"Filled\"."
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:235
+#: admin/registrations/class_registrationManagement.inc:259
 #, php-format
 msgid "Cannot delete %s. It has been locked by %s."
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:291
+#: admin/registrations/class_registrationManagement.inc:315
 #, php-format
 msgid "Could not find invitation \"%s\""
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:293
+#: admin/registrations/class_registrationManagement.inc:317
 #, php-format
 msgid "Found several invitations \"%s\""
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:314
+#: admin/registrations/class_registrationManagement.inc:338
 #, php-format
 msgid "Form \"%s\" could not be found"
 msgstr ""
 
-#: admin/registrations/class_registrationManagement.inc:316
+#: admin/registrations/class_registrationManagement.inc:340
 #, php-format
 msgid "Found several forms named \"%s\""
 msgstr ""
@@ -225,17 +236,17 @@ msgstr ""
 msgid "Statuses"
 msgstr ""
 
-#: admin/invitations/class_invitationManagement.inc:26
+#: admin/invitations/class_invitationManagement.inc:27
 #: config/invitations/class_invitationsConfig.inc:40
 #: config/invitations/class_invitationsConfig.inc:60
 msgid "Invitations"
 msgstr ""
 
-#: admin/invitations/class_invitationManagement.inc:27
+#: admin/invitations/class_invitationManagement.inc:28
 msgid "Invitations management"
 msgstr ""
 
-#: admin/invitations/class_invitationManagement.inc:28
+#: admin/invitations/class_invitationManagement.inc:29
 msgid "Manage invitations"
 msgstr ""
 
@@ -305,23 +316,28 @@ msgstr ""
 msgid "\"%s\" is not a valid email address"
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:162
+#: admin/invitations/class_invitation.inc:150
+#, php-format
+msgid "There is already a registration object for \"%s\""
+msgstr ""
+
+#: admin/invitations/class_invitation.inc:169
 #, php-format
 msgid ""
 "Failed to create registration object for \"%s\", because of the following "
 "errors: %s"
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:167
+#: admin/invitations/class_invitation.inc:175
 #, php-format
 msgid "Failed to send invitation email to \"%s\". Check your email settings."
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:172
+#: admin/invitations/class_invitation.inc:183
 msgid "Success"
 msgstr ""
 
-#: admin/invitations/class_invitation.inc:172
+#: admin/invitations/class_invitation.inc:183
 #, php-format
 msgid "%d invitations were sent and saved successfully"
 msgstr ""

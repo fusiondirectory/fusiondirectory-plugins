@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2018-11-20 15:47+0000\n"
+"POT-Creation-Date: 2019-03-12 13:34+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Swedish (https://www.transifex.com/fusiondirectory/teams/12202/sv/)\n"
@@ -21,16 +21,20 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/ejbca/class_ejbcaManagement.inc:33
+#: admin/ejbca/class_ejbcaManagement.inc:39
 #: admin/ejbca/certificates/class_ejbcaCertificates.inc:28
 msgid "EJBCA"
 msgstr ""
 
-#: admin/ejbca/class_ejbcaManagement.inc:34
+#: admin/ejbca/class_ejbcaManagement.inc:40
 msgid "EJBCA certificates management"
 msgstr ""
 
-#: admin/ejbca/class_ejbcaManagement.inc:53
+#: admin/ejbca/class_ejbcaManagement.inc:41
+msgid "Manage EJBCA certificates"
+msgstr ""
+
+#: admin/ejbca/class_ejbcaManagement.inc:63
 msgid "Download"
 msgstr "Ladda ner"
 
@@ -46,26 +50,26 @@ msgstr ""
 msgid "Certificates associated to this object"
 msgstr ""
 
-#: admin/ejbca/class_ejbcaCertificate.inc:26
 #: admin/ejbca/class_ejbcaCertificate.inc:27
-#: admin/ejbca/class_ejbcaCertificate.inc:29
+#: admin/ejbca/class_ejbcaCertificate.inc:28
+#: admin/ejbca/class_ejbcaCertificate.inc:30
 msgid "EJBCA certificate"
 msgstr ""
 
-#: admin/ejbca/class_ejbcaCertificate.inc:43
-#: admin/ejbca/class_ejbcaCertificate.inc:51
+#: admin/ejbca/class_ejbcaCertificate.inc:44
+#: admin/ejbca/class_ejbcaCertificate.inc:52
 msgid "Certificate"
 msgstr ""
 
-#: admin/ejbca/class_ejbcaCertificate.inc:47
+#: admin/ejbca/class_ejbcaCertificate.inc:48
 msgid "Name"
 msgstr "Namn"
 
-#: admin/ejbca/class_ejbcaCertificate.inc:47
+#: admin/ejbca/class_ejbcaCertificate.inc:48
 msgid "Common name"
 msgstr "Namn"
 
-#: admin/ejbca/class_ejbcaCertificate.inc:51
+#: admin/ejbca/class_ejbcaCertificate.inc:52
 msgid "Certificate content"
 msgstr ""
 
