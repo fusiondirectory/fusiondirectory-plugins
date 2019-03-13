@@ -26,11 +26,11 @@ class supannConfig extends simplePlugin
   static function plInfo (): array
   {
     return [
-      'plShortName'     => _('SupAnn configuration'),
+      'plShortName'     => _('SupAnn'),
+      'plTitle'         => _('SupAnn configuration'),
       'plDescription'   => _('FusionDirectory SupAnn plugin configuration'),
       'plObjectClass'   => ['fdSupannPluginConf'],
-      'plCategory'      => ['configuration'],
-      'plObjectType'    => ['smallConfig'],
+      'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];

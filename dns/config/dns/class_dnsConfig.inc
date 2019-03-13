@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2016 FusionDirectory
+
+  Copyright (C) 2012-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -37,7 +38,7 @@ class dnsConfig extends simplePlugin
   {
     return [
       'main' => [
-        'name'  => _('DNS config'),
+        'name'  => _('DNS'),
         'attrs' => [
           new StringAttribute(
             _('DNS RDN'), _('Branch in which DNS zones will be stored'),

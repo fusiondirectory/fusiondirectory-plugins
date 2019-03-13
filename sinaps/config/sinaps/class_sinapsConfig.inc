@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018 FusionDirectory
+
+  Copyright (C) 2017-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,15 +21,14 @@
 
 class sinapsConfig extends simplePlugin
 {
-  var $objectclasses  = ['fdSinapsPluginConf'];
-
   static function plInfo (): array
   {
     return [
-      'plShortName'     => _('SINAPS configuration'),
+      'plShortName'     => _('SINAPS'),
+      'plTitle'         => _('SINAPS configuration'),
       'plDescription'   => _('FusionDirectory SINAPS plugin configuration'),
-      'plCategory'      => ['configuration'],
-      'plObjectType'    => ['smallConfig'],
+      'plObjectClass'   => ['fdSinapsPluginConf'],
+      'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -40,7 +40,7 @@ class sinapsConfig extends simplePlugin
 
     return [
       'main' => [
-        'name'  => _('Sinaps'),
+        'name'  => _('SINAPS'),
         'attrs' => [
           new BooleanAttribute(
             _('Enable SINAPS integration'), _('Whether to enable the SINAPS integration'),
@@ -98,7 +98,7 @@ class sinapsConfig extends simplePlugin
         ]
       ],
       'acquisition' => [
-        'name'  => _('Sinaps Acquisition'),
+        'name'  => _('Acquisition'),
         'attrs' => [
           new StringAttribute(
             _('Acquisition URL'), _('Full URL to which acquisition events should be sent'),
