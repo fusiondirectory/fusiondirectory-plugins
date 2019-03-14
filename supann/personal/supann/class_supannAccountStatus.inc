@@ -182,6 +182,24 @@ class supannAccountStatus extends simplePlugin implements userTabLockingAction
     return $errors;
   }
 
+  protected function post_save ()
+  {
+    foreach ($this->supannRessourceEtatDate as $line) {
+      list ($label, $state, $substate, $start, $end) = $this->attributesAccess['supannRessourceEtatDate']->readValues($line);
+      if ($label == 'COMPTE') {
+        if ($state == 'A') {
+          /* Unlock account */
+          userManagement::lockUser('unlock', $this->parent->getBaseObject()->userPassword, $this->dn);
+        } elseif ($state == 'S') {
+          /* Lock account */
+          userManagement::lockUser('lock', $this->parent->getBaseObject()->userPassword, $this->dn);
+        }
+        break;
+      }
+    }
+    parent::post_save();
+  }
+
   public function fillLockingLDAPAttrs (string $mode, array &$modify)
   {
     if (empty($this->supannRessourceEtatDate)) {
