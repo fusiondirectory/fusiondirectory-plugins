@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-class supannAccountStatus extends simplePlugin
+class supannAccountStatus extends simplePlugin implements UserTabLockingAction
 {
   protected $displayHeader = TRUE;
 
@@ -51,14 +51,14 @@ class supannAccountStatus extends simplePlugin
         'name'  => _('Status'),
         'attrs' => [
           new OrderedArrayAttribute(
-            new CharSeparatedCompositeAttribute(
+            new CompositeAttribute(
               _('State of the account and associated resources'),
               'supannRessourceEtatDate',
               [
                 new SelectAttribute(
                   _('Resource'), _('Which resource this state concerns'),
                   'supannRessourceEtatDate_label', TRUE,
-                  ['{COMPTE}','{MAIL}'], '',
+                  ['COMPTE','MAIL'], '',
                   [_('Account'), _('Mail')]
                 ),
                 new SelectAttribute(
@@ -85,7 +85,8 @@ class supannAccountStatus extends simplePlugin
                   'now', NULL
                 ),
               ],
-              ':',
+              '/^\{([^}]+)\}([^:]+):([^:]*):([^:]*):([^:]*)$/',
+              '{%s}%s:%s:%s:%s',
               '',
               ''
             ),
@@ -139,7 +140,7 @@ class supannAccountStatus extends simplePlugin
   /* Update choices of fields which depends on other fields values */
   function updateFieldsChoices ()
   {
-    $substatusChoices = $this->substatus[$this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[1]->getValue()];
+    $substatusChoices = $this->substatus[$this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[1]->getValue()] ?? [];
     $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[2]->setChoices(
       array_keys($substatusChoices),
       array_values($substatusChoices)
@@ -152,11 +153,11 @@ class supannAccountStatus extends simplePlugin
     $this->supannRessourceEtat = array_map(
       function ($supannRessourceEtatDate)
       {
-        list($state,$substate) = explode(':', $supannRessourceEtatDate);
+        list($labelstate,$substate) = explode(':', $supannRessourceEtatDate);
         if (empty($substate)) {
-          return $state;
+          return $labelstate;
         } else {
-          return $state.':'.$substate;
+          return $labelstate.':'.$substate;
         }
       },
       $this->supannRessourceEtatDate
@@ -170,7 +171,7 @@ class supannAccountStatus extends simplePlugin
 
     $labels = [];
     foreach ($this->supannRessourceEtatDate as $line) {
-      list($label) = explode(':', $line, 2);
+      $label = preg_replace('/^\{([^}]+)\}.*$/', '\1',  $line);
       if (in_array($label, $labels)) {
         $errors[] = sprintf(_('Label "%s" is present more than once in supannRessourceEtatDate'), $label);
       } else {
@@ -179,6 +180,49 @@ class supannAccountStatus extends simplePlugin
     }
 
     return $errors;
+  }
+
+  protected function post_save ()
+  {
+    foreach ($this->supannRessourceEtatDate as $line) {
+      list ($label, $state, $substate, $start, $end) = $this->attributesAccess['supannRessourceEtatDate']->readValues($line);
+      if ($label == 'COMPTE') {
+        if ($state == 'A') {
+          /* Unlock account */
+          userManagement::lockUser('unlock', $this->parent->getBaseObject()->userPassword, $this->dn);
+        } elseif ($state == 'S') {
+          /* Lock account */
+          userManagement::lockUser('lock', $this->parent->getBaseObject()->userPassword, $this->dn);
+        }
+        break;
+      }
+    }
+    parent::post_save();
+  }
+
+  public function fillLockingLDAPAttrs (string $mode, array &$modify)
+  {
+    if (empty($this->supannRessourceEtatDate)) {
+      return;
+    }
+    $modify['supannRessourceEtatDate']  = [];
+    $modify['supannRessourceEtat']      = [];
+    foreach ($this->supannRessourceEtatDate as $line) {
+      list ($label, $state, $substate, $start, $end) = $this->attributesAccess['supannRessourceEtatDate']->readValues($line);
+      if (($label == 'COMPTE') && ($state == 'A') && ($mode == 'LOCK')) {
+        /* Lock account */
+        $modify['supannRessourceEtatDate'][]  = '{'.$label.'}S:SupannVerrouille:'.date('Ymd').':';
+        $modify['supannRessourceEtat'][]      = '{'.$label.'}S:SupannVerrouille';
+      } elseif (($label == 'COMPTE') && ($state == 'S') && ($mode == 'UNLOCK')) {
+        /* Unlock account */
+        $modify['supannRessourceEtatDate'][]  = '{'.$label.'}A:SupannActif:'.date('Ymd').':';
+        $modify['supannRessourceEtat'][]      = '{'.$label.'}A:SupannActif';
+      } else {
+        /* Do not touch other fields */
+        $modify['supannRessourceEtatDate'][]  = $line;
+        $modify['supannRessourceEtat'][]      = '{'.$label.'}'.$state.(empty($substate) ? '' : ':'.$substate);
+      }
+    }
   }
 
   static function getOfficialSubstates (): array

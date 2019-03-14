@@ -71,7 +71,7 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
   }
 }
 
-class sshAccount extends simplePlugin
+class sshAccount extends simplePlugin implements UserTabLockingAction
 {
   var $displayHeader = TRUE;
 
@@ -134,5 +134,20 @@ class sshAccount extends simplePlugin
     }
 
     return $message;
+  }
+
+  public function fillLockingLDAPAttrs (string $mode, array &$modify)
+  {
+    if (!isset($this->attrs['sshPublicKey'])) {
+      return;
+    }
+    $modify['sshPublicKey'] = [];
+    for ($i = 0; $i < $this->attrs['sshPublicKey']['count']; ++$i) {
+      if ($mode == 'LOCK') {
+        $modify['sshPublicKey'][] = preg_replace('/^/', 'disabled-', $this->attrs['sshPublicKey'][$i]);
+      } else {
+        $modify['sshPublicKey'][] = preg_replace('/^disabled-/', '', $this->attrs['sshPublicKey'][$i]);
+      }
+    }
   }
 }

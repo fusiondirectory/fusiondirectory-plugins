@@ -143,7 +143,7 @@ class winstationSelect extends simpleSelectManagement
   protected $autoFilterAttributes = ['dn', 'cn', 'uid', 'description'];
 }
 
-class sambaAccount extends simplePlugin
+class sambaAccount extends simplePlugin implements UserTabLockingAction
 {
   var $displayHeader = TRUE;
 
@@ -628,5 +628,35 @@ class sambaAccount extends simplePlugin
       return FALSE;
     }
     return parent::showInTemplate($attr, $templateAttrs);
+  }
+
+  public function fillLockingLDAPAttrs (string $mode, array &$modify)
+  {
+    global $config;
+
+    if (!isset($this->attrs['sambaNTPassword'][0])) {
+      return;
+    }
+
+    $modify['sambaNTPassword'] = $this->attrs['sambaNTPassword'][0];
+    if ($config->get_cfg_value('sambaGenLMPassword', 'FALSE') == 'TRUE') {
+      $modify['sambaLMPassword'] = $this->attrs['sambaLMPassword'][0];
+    } else {
+      $modify['sambaLMPassword'] = [];
+    }
+    foreach (['sambaNTPassword', 'sambaLMPassword'] as $attr) {
+      if (is_array($modify[$attr])) {
+        continue;
+      }
+      if ($mode == 'LOCK') {
+        /* Lock entry */
+        if (!preg_match('/^\!/', $modify[$attr])) {
+          $modify[$attr] = '!'.$modify[$attr];
+        }
+      } else {
+        /* Unlock entry */
+        $modify[$attr] = preg_replace('/^\!/', '', $modify[$attr]);
+      }
+    }
   }
 }
