@@ -71,7 +71,7 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
   }
 }
 
-class sshAccount extends simplePlugin implements userTabLockingAction
+class sshAccount extends simplePlugin implements UserTabLockingAction
 {
   var $displayHeader = TRUE;
 

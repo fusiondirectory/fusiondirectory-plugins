@@ -143,7 +143,7 @@ class winstationSelect extends simpleSelectManagement
   protected $autoFilterAttributes = ['dn', 'cn', 'uid', 'description'];
 }
 
-class sambaAccount extends simplePlugin implements userTabLockingAction
+class sambaAccount extends simplePlugin implements UserTabLockingAction
 {
   var $displayHeader = TRUE;
 

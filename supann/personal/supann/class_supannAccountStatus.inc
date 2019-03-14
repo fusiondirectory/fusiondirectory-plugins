@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-class supannAccountStatus extends simplePlugin implements userTabLockingAction
+class supannAccountStatus extends simplePlugin implements UserTabLockingAction
 {
   protected $displayHeader = TRUE;
 
