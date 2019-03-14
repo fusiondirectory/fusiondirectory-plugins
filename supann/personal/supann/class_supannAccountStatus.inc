@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-class supannAccountStatus extends simplePlugin
+class supannAccountStatus extends simplePlugin implements userTabLockingAction
 {
   protected $displayHeader = TRUE;
 
@@ -180,6 +180,31 @@ class supannAccountStatus extends simplePlugin
     }
 
     return $errors;
+  }
+
+  public function fillLockingLDAPAttrs (string $mode, array &$modify)
+  {
+    if (empty($this->supannRessourceEtatDate)) {
+      return;
+    }
+    $modify['supannRessourceEtatDate']  = [];
+    $modify['supannRessourceEtat']      = [];
+    foreach ($this->supannRessourceEtatDate as $line) {
+      list ($label, $state, $substate, $start, $end) = $this->attributesAccess['supannRessourceEtatDate']->readValues($line);
+      if (($label == 'COMPTE') && ($state == 'A') && ($mode == 'LOCK')) {
+        /* Lock account */
+        $modify['supannRessourceEtatDate'][]  = '{'.$label.'}S:SupannVerrouille:'.date('Ymd').':';
+        $modify['supannRessourceEtat'][]      = '{'.$label.'}S:SupannVerrouille';
+      } elseif (($label == 'COMPTE') && ($state == 'S') && ($mode == 'UNLOCK')) {
+        /* Unlock account */
+        $modify['supannRessourceEtatDate'][]  = '{'.$label.'}A:SupannActif:'.date('Ymd').':';
+        $modify['supannRessourceEtat'][]      = '{'.$label.'}A:SupannActif';
+      } else {
+        /* Do not touch other fields */
+        $modify['supannRessourceEtatDate'][]  = $line;
+        $modify['supannRessourceEtat'][]      = '{'.$label.'}'.$state.(empty($substate) ? '' : ':'.$substate);
+      }
+    }
   }
 
   static function getOfficialSubstates (): array
