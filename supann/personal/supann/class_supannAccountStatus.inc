@@ -185,7 +185,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
   protected function post_save ()
   {
     foreach ($this->supannRessourceEtatDate as $line) {
-      list ($label, $state, $substate, $start, $end) = $this->attributesAccess['supannRessourceEtatDate']->readValues($line);
+      list ($label, $state, $substate, $start, $end) = $this->attributesAccess['supannRessourceEtatDate']->attribute->readValues($line);
       if ($label == 'COMPTE') {
         if ($state == 'A') {
           /* Unlock account */
@@ -208,7 +208,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     $modify['supannRessourceEtatDate']  = [];
     $modify['supannRessourceEtat']      = [];
     foreach ($this->supannRessourceEtatDate as $line) {
-      list ($label, $state, $substate, $start, $end) = $this->attributesAccess['supannRessourceEtatDate']->readValues($line);
+      list ($label, $state, $substate, $start, $end) = $this->attributesAccess['supannRessourceEtatDate']->attribute->readValues($line);
       if (($label == 'COMPTE') && ($state == 'A') && ($mode == 'LOCK')) {
         /* Lock account */
         $modify['supannRessourceEtatDate'][]  = '{'.$label.'}S:SupannVerrouille:'.date('Ymd').':';
