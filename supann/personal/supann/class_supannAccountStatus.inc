@@ -190,7 +190,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
         if ($state == 'A') {
           /* Unlock account */
           userManagement::lockUser('unlock', $this->parent->getBaseObject()->userPassword, $this->dn);
-        } elseif ($state == 'S') {
+        } elseif (($state == 'S') || ($state == 'I')) {
           /* Lock account */
           userManagement::lockUser('lock', $this->parent->getBaseObject()->userPassword, $this->dn);
         }
@@ -213,7 +213,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
         /* Lock account */
         $modify['supannRessourceEtatDate'][]  = '{'.$label.'}S:SupannVerrouille:'.date('Ymd').':';
         $modify['supannRessourceEtat'][]      = '{'.$label.'}S:SupannVerrouille';
-      } elseif (($label == 'COMPTE') && ($state == 'S') && ($mode == 'UNLOCK')) {
+      } elseif (($label == 'COMPTE') && (($state == 'S') || ($state == 'I')) && ($mode == 'UNLOCK')) {
         /* Unlock account */
         $modify['supannRessourceEtatDate'][]  = '{'.$label.'}A:SupannActif:'.date('Ymd').':';
         $modify['supannRessourceEtat'][]      = '{'.$label.'}A:SupannActif';
