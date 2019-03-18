@@ -108,6 +108,16 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
 
     $this->substatus = static::getConfiguredSubstates();
 
+    $resources = ['COMPTE' => _('Account'),'MAIL' => _('Mail')];
+    foreach ($config->get_cfg_value('SupannRessourceLabels', []) as $line) {
+      list($resource,$label) = explode(':', $line, 2);
+      $resources[$resource] = $label;
+    }
+    $this->attributesAccess['supannRessourceEtatDate']->attribute->attributes[0]->setChoices(
+      array_keys($resources),
+      array_values($resources)
+    );
+
     $this->attributesAccess['supannRessourceEtatDate']->setLinearRendering(FALSE);
     $this->attributesAccess['supannRessourceEtatDate']->setRequired(TRUE);
     $this->attributesAccess['supannRessourceEtatDate']->setHeaders([
