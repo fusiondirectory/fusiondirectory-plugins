@@ -17,13 +17,19 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.2 NAME 'fdSupannPasswordRecovery'
   SINGLE-VALUE )
 
 attributetype ( 1.3.6.1.4.1.38414.17.1.3 NAME 'fdSupannRessourceSubStates'
-  DESC 'FusionDirectory - SupAnn supannRessourceEtatDate allowed substates'
+  DESC 'FusionDirectory - SupAnn supannRessourceEtatDate allowed substates - format state:substate'
   EQUALITY caseExactIA5Match
   SUBSTR caseExactIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
 attributetype ( 1.3.6.1.4.1.38414.17.1.4 NAME 'fdSupannRessourceSubStatesLabels'
-  DESC 'FusionDirectory - SupAnn labels for custom supannRessourceEtatDate substates'
+  DESC 'FusionDirectory - SupAnn labels for custom supannRessourceEtatDate substates - format substate:label'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
+
+attributetype ( 1.3.6.1.4.1.38414.17.1.5 NAME 'fdSupannRessourceLabels'
+  DESC 'FusionDirectory - SupAnn custom resources for supannRessourceEtatDate - format resource:label'
   EQUALITY caseIgnoreMatch
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
@@ -35,5 +41,5 @@ objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
   MUST ( cn )
   MAY (
     fdSupannStructuresRDN $ fdSupannPasswordRecovery $
-    fdSupannRessourceSubStates $ fdSupannRessourceSubStatesLabels
+    fdSupannRessourceSubStates $ fdSupannRessourceSubStatesLabels $ fdSupannRessourceLabels
   ) )

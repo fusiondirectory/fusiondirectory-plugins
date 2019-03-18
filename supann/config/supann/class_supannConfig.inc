@@ -62,6 +62,28 @@ class supannConfig extends simplePlugin
           ),
           new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
+              _('Custom resources and their labels'),
+              'fdSupannRessourceLabels',
+              [
+                new StringAttribute(
+                  _('Resource'), _('String that will be stored between {} in supannRessourceEtatDate'),
+                  'fdSupannRessourceLabels_resource', TRUE
+                ),
+                new StringAttribute(
+                  _('Label'), _('Label shown for this resource'),
+                  'fdSupannRessourceLabels_label', TRUE
+                ),
+              ],
+              ':',
+              '',
+              _('Custom resources')
+            ),
+            FALSE,
+            [],
+            TRUE
+          ),
+          new OrderedArrayAttribute(
+            new CharSeparatedCompositeAttribute(
               _('Allowed substates for an account'),
               'fdSupannRessourceSubStates',
               [
