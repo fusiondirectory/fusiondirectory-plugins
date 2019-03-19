@@ -27,7 +27,7 @@ class posixConfig extends simplePlugin
       'plShortName'     => _('POSIX'),
       'plTitle'         => _('POSIX configuration'),
       'plDescription'   => _('FusionDirectory POSIX plugin configuration'),
-      'plPriority'      => 2,
+      'plPriority'      => 4,
       'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

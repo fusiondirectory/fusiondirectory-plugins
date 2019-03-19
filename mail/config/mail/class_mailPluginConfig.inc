@@ -25,7 +25,7 @@ class mailPluginConfig extends simplePlugin
     return [
       'plShortName'     => _('Mail'),
       'plDescription'   => _('Mail plugin configuration'),
-      'plPriority'      => 3,
+      'plPriority'      => 6,
       'plObjectClass'   => ['fdMailPluginConf'],
       'plObjectType'    => ['configuration'],
 

@@ -25,7 +25,7 @@ class sambaPluginConfig extends simplePlugin
     return [
       'plShortName'     => _('Samba'),
       'plDescription'   => _('Samba plugin configuration'),
-      'plPriority'      => 2,
+      'plPriority'      => 8,
       'plObjectClass'   => ['fdSambaPluginConf'],
       'plObjectType'    => ['configuration'],
 
