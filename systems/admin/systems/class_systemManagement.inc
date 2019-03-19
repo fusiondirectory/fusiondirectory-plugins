@@ -28,10 +28,10 @@ class systemManagement extends management
 
   public static $columns = [
     ['ObjectTypeColumn',     []],
-    ['LinkColumn',           ['attributes' => 'nameAttr',                   'label' => 'Name']],
-    ['IpColumn',             ['attributes' => ['ipHostNumber' => '*'], 'label' => 'IP']],
-    ['Column',               ['attributes' => ['macAddress' => '*'],   'label' => 'Mac']],
-    ['LinkColumn',           ['attributes' => 'description',                'label' => 'Description']],
+    ['LinkColumn',           ['attributes' => 'nameAttr',     'label' => 'Name']],
+    ['IpColumn',             ['attributes' => 'ipHostNumber', 'label' => 'IP']],
+    ['Column',               ['attributes' => 'macAddress',   'label' => 'Mac']],
+    ['LinkColumn',           ['attributes' => 'description',  'label' => 'Description']],
     ['SystemServicesColumn', ['label' => 'Services']],
     ['SystemReleaseColumn',  ['label' => 'Release']],
     ['ActionsColumn',        ['label' => 'Actions']],

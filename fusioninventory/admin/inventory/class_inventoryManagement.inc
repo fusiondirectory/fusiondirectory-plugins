@@ -28,7 +28,7 @@ class inventoryManagement extends management
   public static $columns = [
     ['ObjectTypeColumn',               []],
     ['LinkColumn',                     ['attributes' => 'cn',             'label' => 'IP']],
-    ['LinkColumn',                     ['attributes' => ['macAddress' => '*'],     'label' => 'Macs']],
+    ['LinkColumn',                     ['attributes' => 'macAddress',     'label' => 'Macs']],
     ['InventoryOperatingSystemColumn', ['label' => 'Operating Systems']],
     ['ActionsColumn',                  ['label' => 'Actions']],
   ];
