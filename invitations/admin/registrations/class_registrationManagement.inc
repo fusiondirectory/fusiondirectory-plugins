@@ -24,9 +24,8 @@
  */
 class RegistrationColumn extends LinkColumn
 {
-  function renderCell (ListingEntry $entry): string
+  protected function renderSingleValue (ListingEntry $entry, string $value): string
   {
-    $value = $this->getAttributeValue($entry);
     if ($value == '') {
       return '&nbsp;';
     } else {
@@ -49,7 +48,7 @@ class RegistrationColumn extends LinkColumn
       } else {
         $value = htmlentities($value, ENT_COMPAT, 'UTF-8');
       }
-      return '<a href="?plug='.$_GET['plug'].'&amp;PID='.$entry->getPid().'&amp;act=listing_edit_'.$entry->row.'" title="'.$entry->dn.'">'.$value.'</a>';
+      return $this->renderLink($entry, $value);
     }
   }
 }
