@@ -28,6 +28,7 @@ class sinapsConfig extends simplePlugin
       'plTitle'         => _('SINAPS configuration'),
       'plDescription'   => _('FusionDirectory SINAPS plugin configuration'),
       'plObjectClass'   => ['fdSinapsPluginConf'],
+      'plPriority'      => 12,
       'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

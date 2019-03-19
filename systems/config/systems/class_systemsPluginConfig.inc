@@ -28,6 +28,7 @@ class systemsPluginConfig extends simplePlugin
       'plShortName'     => _('Systems'),
       'plDescription'   => _('Systems plugin configuration'),
       'plObjectClass'   => ['fdSystemsPluginConf'],
+      'plPriority'      => 20,
       'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

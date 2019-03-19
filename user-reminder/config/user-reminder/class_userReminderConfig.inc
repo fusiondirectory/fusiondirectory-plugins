@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016 FusionDirectory
+
+  Copyright (C) 2016-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,9 +24,11 @@ class userReminderConfig extends simplePlugin
   static function plInfo (): array
   {
     return [
-      'plShortName'     => _('User reminder'),
+      'plShortName'     => _('Reminder'),
+      'plTitle'         => _('User reminder'),
       'plDescription'   => _('Configuration for the reminder of accounts expiration'),
       'plObjectClass'   => ['fdUserReminderPluginConf'],
+      'plPriority'      => 16,
       'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

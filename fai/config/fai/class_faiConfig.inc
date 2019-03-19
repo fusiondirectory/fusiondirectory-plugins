@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2016 FusionDirectory
+
+  Copyright (C) 2013-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,9 +24,11 @@ class faiConfig extends simplePlugin
   static function plInfo (): array
   {
     return [
-      'plShortName'     => _('FAI configuration'),
+      'plShortName'     => _('FAI'),
+      'plTitle'         => _('FAI configuration'),
       'plDescription'   => _('FusionDirectory fai plugin configuration'),
       'plObjectClass'   => ['fdFaiPluginConf'],
+      'plPriority'      => 22,
       'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

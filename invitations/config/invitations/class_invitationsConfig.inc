@@ -28,6 +28,7 @@ class invitationsConfig extends simplePlugin
       'plTitle'       => _('Invitations configuration'),
       'plDescription' => _('FusionDirectory invitations plugin configuration'),
       'plObjectClass' => ['fdInvitationsPluginConf'],
+      'plPriority'    => 18,
       'plObjectType'  => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())

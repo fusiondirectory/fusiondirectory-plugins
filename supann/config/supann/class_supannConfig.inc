@@ -30,6 +30,7 @@ class supannConfig extends simplePlugin
       'plTitle'         => _('SupAnn configuration'),
       'plDescription'   => _('FusionDirectory SupAnn plugin configuration'),
       'plObjectClass'   => ['fdSupannPluginConf'],
+      'plPriority'      => 10,
       'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
