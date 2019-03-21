@@ -138,9 +138,37 @@ class expiredUserPostpone extends standAlonePage
       return;
     }
     $userTabs = objects::open($dn, 'user');
-    $date = $userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue();
-    $date->add(new DateInterval('P'.$this->postpone_days.'D'));
-    $userTabs->by_object['posixAccount']->shadowExpire = $date;
+    if (
+      isset($userTabs->by_object['posixAccount']) &&
+      $userTabs->by_object['posixAccount']->is_account &&
+      ($userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getValue() != '')
+    ) {
+      $date = $userTabs->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue();
+      $date->add(new DateInterval('P'.$this->postpone_days.'D'));
+      $userTabs->by_object['posixAccount']->shadowExpire = $date;
+    }
+    if (
+      isset($userTabs->by_object['supannAccountStatus']) &&
+      $userTabs->by_object['supannAccountStatus']->is_account
+    ) {
+      $supannRessourceEtatDateValues = [];
+      foreach ($userTabs->by_object['supannAccountStatus']->supannRessourceEtatDate as $line) {
+        list ($label, $state, $substate, $start, $end) = $userTabs->by_object['supannAccountStatus']->attributesAccess['supannRessourceEtatDate']->attribute->readValues($line);
+        if (($label == 'COMPTE') && ($state == 'A') && ($end != '')) {
+          /* Postpone enddate */
+          $date = new DateTime($end);
+          $date->add(new DateInterval('P'.$this->postpone_days.'D'));
+          if ($substate != 'SupannSursis') {
+            /* Set start date to current date if substate changed */
+            $start = date('Ymd');
+          }
+          $supannRessourceEtatDateValues[] = '{COMPTE}A:SupannSursis:'.$start.':'.$date->format('Ymd');
+        } else {
+          $supannRessourceEtatDateValues[] = $line;
+        }
+      }
+      $userTabs->by_object['supannAccountStatus']->supannRessourceEtatDate = $supannRessourceEtatDateValues;
+    }
     $error = $userTabs->save();
     if (!empty($error)) {
       $this->message = $error;
