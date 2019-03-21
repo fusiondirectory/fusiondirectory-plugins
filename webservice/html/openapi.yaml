@@ -342,12 +342,50 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+    put:
+      summary: Set attribute value(s)
+      tags:
+        - objects
+      parameters:
+        - name: type
+          in: path
+          required: true
+          description: The type of the object
+          schema:
+            type: string
+        - name: dn
+          in: path
+          required: true
+          description: The dn of the object
+          schema:
+            type: string
+        - name: tab
+          in: path
+          required: true
+          description: The tab CLASS
+          schema:
+            type: string
+        - name: attribute
+          in: path
+          required: true
+          description: The attribute
+          schema:
+            type: string
+      responses:
+        '200':
+          description: success
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Object:
       type: object
       additionalProperties:
-        anyOf: 
+        anyOf:
           - type: string
           - type: array
             items:
@@ -356,7 +394,7 @@ components:
     SearchResult:
       type: object
       additionalProperties:
-        anyOf: 
+        anyOf:
           - type: string
           - type: array
             items:
@@ -438,12 +476,12 @@ components:
         sections_order:
           type: array
           example: ["main","members"]
-          items: 
+          items:
             type: string
     SectionInfo:
       type: object
       properties:
-        name: 
+        name:
           type: string
           example: "Information"
         attrs:
