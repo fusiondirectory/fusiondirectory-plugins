@@ -39,6 +39,14 @@ header('Access-Control-Allow-Methods: GET, POST, DELETE, PUT, OPTIONS');
 
 class RestServiceEndPointError extends FusionDirectoryException
 {
+  public function toArray ()
+  {
+    return [
+      'message' => $this->getMessage(),
+      'line'    => $this->getLine(),
+      'file'    => $this->getFile(),
+    ];
+  }
 }
 
 class RestServiceEndPointErrors extends FusionDirectoryException
@@ -59,7 +67,15 @@ class RestServiceEndPointErrors extends FusionDirectoryException
 
   public function toJson ()
   {
-    return json_encode($errors);
+    return json_encode(
+      array_map(
+        function ($error)
+        {
+          return $error->toArray();
+        },
+        $this->errors
+      )
+    );
   }
 }
 
@@ -113,6 +129,9 @@ class fdRestService extends fdRPCService
     } catch (RestServiceEndPointErrors $e) {
       http_response_code(400);
       echo $e->toJson();
+    } catch (RestServiceEndPointError $e) {
+      http_response_code(400);
+      echo json_encode([$e->toArray()]);
     } catch (Exception $e) {
       http_response_code(400);
       echo json_encode([['message' => $e->getMessage()]]);
@@ -173,7 +192,7 @@ class fdRestService extends fdRPCService
     if ($tab === NULL) {
       $object = $tabobject->getBaseObject();
     } elseif (!isset($tabobject->by_object[$tab])) {
-      throw new RestServiceEndPointErrors(['This tab does not exists: "'.$tab.'"']);
+      throw new RestServiceEndPointError('This tab does not exists: "'.$tab.'"');
     } else {
       $object = $tabobject->by_object[$tab];
     }
@@ -185,17 +204,17 @@ class fdRestService extends fdRPCService
       ) {
       list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
       if ($disabled) {
-        throw new RestServiceEndPointErrors([$text]);
+        throw new RestServiceEndPointError($text);
       }
       if ($tabobject->by_object[$tab]->acl_is_createable()) {
         $tabobject->by_object[$tab]->is_account = TRUE;
       } else {
-        throw new RestServiceEndPointErrors(['You don\'t have sufficient rights to enable tab "'.$tab.'"']);
+        throw new RestServiceEndPointError('You don\'t have sufficient rights to enable tab "'.$tab.'"');
       }
     }
     $error = $tabobject->by_object[$tab]->deserializeValues([$attribute => $input]);
     if ($error !== TRUE) {
-      throw new RestServiceEndPointErrors([$error]);
+      throw new RestServiceEndPointError($error);
     }
 
     /* Should not do much as POST is empty, but in some cases is needed */
