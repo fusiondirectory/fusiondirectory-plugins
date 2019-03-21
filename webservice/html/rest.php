@@ -37,6 +37,48 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: Content-Type, Session-Token, Authorization, Access-Control-Allow-Headers, X-Requested-With');
 header('Access-Control-Allow-Methods: GET, POST, DELETE, PUT, OPTIONS');
 
+class RestServiceEndPointError extends FusionDirectoryException
+{
+  public function toArray ()
+  {
+    return [
+      'message' => $this->getMessage(),
+      'line'    => $this->getLine(),
+      'file'    => $this->getFile(),
+    ];
+  }
+}
+
+class RestServiceEndPointErrors extends FusionDirectoryException
+{
+  protected $errors;
+
+  public function __construct (array $errors)
+  {
+    parent::__construct();
+    $this->errors = $errors;
+    foreach ($this->errors as &$error) {
+      if (is_string($error)) {
+        $error = new RestServiceEndPointError($error);
+      }
+    }
+    unset($error);
+  }
+
+  public function toJson ()
+  {
+    return json_encode(
+      array_map(
+        function ($error)
+        {
+          return $error->toArray();
+        },
+        $this->errors
+      )
+    );
+  }
+}
+
 /*!
  * \brief This class is the JSON-RPC webservice of FusionDirectory
  *
@@ -82,10 +124,17 @@ class fdRestService extends fdRPCService
       $endpoint = 'endpoint_'.array_shift($request).'_'.$method.'_'.count($request);
       $result   = $this->$endpoint($input, ...$request);
 
+      http_response_code(200);
       echo json_encode($result)."\n";
+    } catch (RestServiceEndPointErrors $e) {
+      http_response_code(400);
+      echo $e->toJson();
+    } catch (RestServiceEndPointError $e) {
+      http_response_code(400);
+      echo json_encode([$e->toArray()]);
     } catch (Exception $e) {
       http_response_code(400);
-      die('Error: '.$e->getMessage());
+      echo json_encode([['message' => $e->getMessage()]]);
     }
   }
 
@@ -133,6 +182,51 @@ class fdRestService extends fdRPCService
       }
     }
     return $attributes;
+  }
+
+  protected function endpoint_objects_PUT_4 ($input, string $type, string $dn, string $tab = NULL, string $attribute = NULL): string
+  {
+    $this->checkAccess($type, $tab, $dn);
+
+    $tabobject = objects::open($dn, $type);
+    if ($tab === NULL) {
+      $object = $tabobject->getBaseObject();
+    } elseif (!isset($tabobject->by_object[$tab])) {
+      throw new RestServiceEndPointError('This tab does not exists: "'.$tab.'"');
+    } else {
+      $object = $tabobject->by_object[$tab];
+    }
+    if (!is_subclass_of($object, 'simplePlugin')) {
+      throw new FusionDirectoryException('Invalid tab');
+    }
+    if ($tabobject->by_object[$tab]->displayHeader &&
+        !$tabobject->by_object[$tab]->is_account
+      ) {
+      list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
+      if ($disabled) {
+        throw new RestServiceEndPointError($text);
+      }
+      if ($tabobject->by_object[$tab]->acl_is_createable()) {
+        $tabobject->by_object[$tab]->is_account = TRUE;
+      } else {
+        throw new RestServiceEndPointError('You don\'t have sufficient rights to enable tab "'.$tab.'"');
+      }
+    }
+    $error = $tabobject->by_object[$tab]->deserializeValues([$attribute => $input]);
+    if ($error !== TRUE) {
+      throw new RestServiceEndPointError($error);
+    }
+
+    /* Should not do much as POST is empty, but in some cases is needed */
+    $tabobject->current = $tab;
+    $tabobject->save_object();
+
+    $errors = $tabobject->save();
+    if (!empty($errors)) {
+      throw new RestServiceEndPointErrors($errors);
+    }
+
+    return $tabobject->dn;
   }
 
   protected function endpoint_token_GET_0 ($input): string
