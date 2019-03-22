@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-12 13:34+0000\n"
+"POT-Creation-Date: 2019-03-21 14:04+0000\n"
 "PO-Revision-Date: 2018-08-13 19:52+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:38
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:38
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:38
-#: admin/systems/class_dhcpSystem.inc:290
+#: admin/systems/class_dhcpSystem.inc:290 config/dhcp/class_dhcpConfig.inc:41
 msgid "DHCP"
 msgstr "DHCP"
 
@@ -102,7 +102,7 @@ msgstr "DHCP 섹션 만들기"
 #: admin/dhcp/class_dhcpConfiguration.inc:51
 #: admin/dhcp/class_dhcpConfiguration.inc:52
 #: admin/dhcp/class_dhcpConfiguration.inc:55
-#: config/dhcp/class_dhcpConfig.inc:26
+#: config/dhcp/class_dhcpConfig.inc:27
 msgid "DHCP configuration"
 msgstr "DHCP 구성"
 
@@ -537,18 +537,14 @@ msgstr "이 시스템에 대해 선언 된 DHCP 호스트"
 msgid "The ip %s is not in the network %s/%d"
 msgstr "IP %s이 (가) 네트워크 %s / %d에 없습니다"
 
-#: config/dhcp/class_dhcpConfig.inc:27
+#: config/dhcp/class_dhcpConfig.inc:28
 msgid "FusionDirectory dhcp plugin configuration"
 msgstr "FusionDirectory dhcp 플러그인 구성"
 
-#: config/dhcp/class_dhcpConfig.inc:40
-msgid "DHCP config"
-msgstr "DHCP 구성"
-
-#: config/dhcp/class_dhcpConfig.inc:43
+#: config/dhcp/class_dhcpConfig.inc:44
 msgid "DHCP RDN"
 msgstr "DHCP RDN"
 
-#: config/dhcp/class_dhcpConfig.inc:43
+#: config/dhcp/class_dhcpConfig.inc:44
 msgid "Branch in which DHCP configurations will be stored"
 msgstr "DHCP 구성이 저장되는 브랜치"

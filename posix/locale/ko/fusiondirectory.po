@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-12 13:34+0000\n"
+"POT-Creation-Date: 2019-03-21 14:05+0000\n"
 "PO-Revision-Date: 2018-08-13 19:59+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -116,127 +116,127 @@ msgstr "호스트에 접근 허용"
 msgid "Only allow this group to connect to this list of hosts"
 msgstr "그룹만 호스트 리스트에 접근 허용"
 
-#: config/posix/class_posixConfig.inc:26
+#: config/posix/class_posixConfig.inc:27 config/posix/class_posixConfig.inc:41
+msgid "POSIX"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:28
 msgid "POSIX configuration"
 msgstr "POSIX 설정"
 
-#: config/posix/class_posixConfig.inc:27
+#: config/posix/class_posixConfig.inc:29
 msgid "FusionDirectory POSIX plugin configuration"
 msgstr "FusionDirectory POSIX 플러그인 설정"
 
-#: config/posix/class_posixConfig.inc:39
-msgid "Posix"
-msgstr "Posix"
-
-#: config/posix/class_posixConfig.inc:43
+#: config/posix/class_posixConfig.inc:45
 msgid "POSIX groups RDN"
 msgstr "POSIX 그룹 RDN"
 
-#: config/posix/class_posixConfig.inc:43
+#: config/posix/class_posixConfig.inc:45
 msgid "The branch where POSIX groups are stored."
 msgstr "POSIX 그룹이 저장될 브랜치"
 
-#: config/posix/class_posixConfig.inc:48
+#: config/posix/class_posixConfig.inc:50
 msgid "Group/user min id"
 msgstr "그룹/사용자 id 최소값"
 
-#: config/posix/class_posixConfig.inc:49
+#: config/posix/class_posixConfig.inc:51
 msgid ""
 "The minimum assignable user or group id to avoid security leaks with id 0 "
 "accounts."
 msgstr "id 0을 가진 계정이 보안노툴을 방지하기 위해 최소 할당할 user id 또는 group id"
 
-#: config/posix/class_posixConfig.inc:54
+#: config/posix/class_posixConfig.inc:56
 msgid "Next id hook"
 msgstr "다음 id"
 
-#: config/posix/class_posixConfig.inc:54
+#: config/posix/class_posixConfig.inc:56
 msgid ""
 "A script to be called for finding the next free id number for users or "
 "groups."
 msgstr "사용자 또는 그룹의 다음 id 번호를 찾기 위해 호출될 스크립트"
 
-#: config/posix/class_posixConfig.inc:58
+#: config/posix/class_posixConfig.inc:60
 msgid "Base number for user id"
 msgstr "사용자 id의 기본 숫자"
 
-#: config/posix/class_posixConfig.inc:59
+#: config/posix/class_posixConfig.inc:61
 msgid "Where to start looking for a new free user id."
 msgstr "새로운 user id를 찾을 시작값"
 
-#: config/posix/class_posixConfig.inc:64
+#: config/posix/class_posixConfig.inc:66
 msgid "Base number for group id"
 msgstr "그룹 id의 기본 숫자"
 
-#: config/posix/class_posixConfig.inc:65
+#: config/posix/class_posixConfig.inc:67
 msgid "Where to start looking for a new free group id."
 msgstr "새로운 group id를 찾을 시작값"
 
-#: config/posix/class_posixConfig.inc:70
+#: config/posix/class_posixConfig.inc:72
 msgid "Id allocation method"
 msgstr "Id 할당방법"
 
-#: config/posix/class_posixConfig.inc:70
+#: config/posix/class_posixConfig.inc:72
 msgid "Method to allocate user/group ids"
 msgstr "사용자/그룹 id 의 할당방법"
 
-#: config/posix/class_posixConfig.inc:73
+#: config/posix/class_posixConfig.inc:75
 msgid "Traditional"
 msgstr "Traditional"
 
-#: config/posix/class_posixConfig.inc:73
+#: config/posix/class_posixConfig.inc:75
 msgid "Samba unix id pool"
 msgstr "Samba unix id 풀"
 
-#: config/posix/class_posixConfig.inc:76
+#: config/posix/class_posixConfig.inc:78
 msgid "Pool user id min"
 msgstr "사용자 id 풀 최소값"
 
-#: config/posix/class_posixConfig.inc:76
+#: config/posix/class_posixConfig.inc:78
 msgid "Minimum value for user id when using pool method"
 msgstr "풀을 사용하는 경우 user id 최소값"
 
-#: config/posix/class_posixConfig.inc:81
+#: config/posix/class_posixConfig.inc:83
 msgid "Pool user id max"
 msgstr "사용자 id 풀 최대값"
 
-#: config/posix/class_posixConfig.inc:81
+#: config/posix/class_posixConfig.inc:83
 msgid "Maximum value for user id when using pool method"
 msgstr "풀을 사용하는 경우 group id 최대값"
 
-#: config/posix/class_posixConfig.inc:86
+#: config/posix/class_posixConfig.inc:88
 msgid "Pool group id min"
 msgstr "그룹 id 풀 최소값"
 
-#: config/posix/class_posixConfig.inc:86
+#: config/posix/class_posixConfig.inc:88
 msgid "Minimum value for group id when using pool method"
 msgstr "풀을 사용하는 경우 group id 최소값"
 
-#: config/posix/class_posixConfig.inc:91
+#: config/posix/class_posixConfig.inc:93
 msgid "Pool group id max"
 msgstr "그룹 id 풀 최대값"
 
-#: config/posix/class_posixConfig.inc:91
+#: config/posix/class_posixConfig.inc:93
 msgid "Maximum value for group id when using pool method"
 msgstr "풀을 사용하는 경우 group id 최대값"
 
-#: config/posix/class_posixConfig.inc:98
+#: config/posix/class_posixConfig.inc:100
 msgid "Shells"
 msgstr "쉘"
 
-#: config/posix/class_posixConfig.inc:102
+#: config/posix/class_posixConfig.inc:104
 msgid "Available shells"
 msgstr "가능한 쉘"
 
-#: config/posix/class_posixConfig.inc:102
+#: config/posix/class_posixConfig.inc:104
 msgid "Available POSIX shells for FD users."
 msgstr "FD 사용자를 위해 가능한 POSIX 쉘"
 
-#: config/posix/class_posixConfig.inc:109
+#: config/posix/class_posixConfig.inc:111
 msgid "Default shell"
 msgstr "기본 쉘"
 
-#: config/posix/class_posixConfig.inc:109
+#: config/posix/class_posixConfig.inc:111
 msgid "Shell used by default when activating Unix tab."
 msgstr "Unix 탭이 활성화될 때 사용될 기본 쉘"
 

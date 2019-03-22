@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-12 13:34+0000\n"
+"POT-Creation-Date: 2019-03-21 14:04+0000\n"
 "PO-Revision-Date: 2018-08-13 19:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Norwegian Bokmål (https://www.transifex.com/fusiondirectory/teams/12202/nb/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:38
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:38
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:38
-#: admin/systems/class_dhcpSystem.inc:290
+#: admin/systems/class_dhcpSystem.inc:290 config/dhcp/class_dhcpConfig.inc:41
 msgid "DHCP"
 msgstr ""
 
@@ -101,7 +101,7 @@ msgstr ""
 #: admin/dhcp/class_dhcpConfiguration.inc:51
 #: admin/dhcp/class_dhcpConfiguration.inc:52
 #: admin/dhcp/class_dhcpConfiguration.inc:55
-#: config/dhcp/class_dhcpConfig.inc:26
+#: config/dhcp/class_dhcpConfig.inc:27
 msgid "DHCP configuration"
 msgstr ""
 
@@ -534,18 +534,14 @@ msgstr ""
 msgid "The ip %s is not in the network %s/%d"
 msgstr ""
 
-#: config/dhcp/class_dhcpConfig.inc:27
+#: config/dhcp/class_dhcpConfig.inc:28
 msgid "FusionDirectory dhcp plugin configuration"
 msgstr ""
 
-#: config/dhcp/class_dhcpConfig.inc:40
-msgid "DHCP config"
-msgstr ""
-
-#: config/dhcp/class_dhcpConfig.inc:43
+#: config/dhcp/class_dhcpConfig.inc:44
 msgid "DHCP RDN"
 msgstr ""
 
-#: config/dhcp/class_dhcpConfig.inc:43
+#: config/dhcp/class_dhcpConfig.inc:44
 msgid "Branch in which DHCP configurations will be stored"
 msgstr ""

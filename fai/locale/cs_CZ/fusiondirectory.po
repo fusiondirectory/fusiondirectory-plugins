@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-12 13:34+0000\n"
+"POT-Creation-Date: 2019-03-21 14:04+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -400,7 +400,7 @@ msgstr "swap"
 
 #: admin/fai/class_faiPartition.inc:322
 msgid "fat32"
-msgstr ""
+msgstr "fat32"
 
 #: admin/fai/class_faiPartition.inc:322
 msgid "ext2"
@@ -708,7 +708,8 @@ msgid "Template files in this class"
 msgstr "Soubory se šablonami v této třídě"
 
 #: admin/fai/class_faiManagement.inc:117 admin/fai/class_faiManagement.inc:122
-#: admin/systems/class_faiStartup.inc:61 config/fai/class_faiConfig.inc:39
+#: admin/systems/class_faiStartup.inc:61 config/fai/class_faiConfig.inc:27
+#: config/fai/class_faiConfig.inc:42
 msgid "FAI"
 msgstr "FAI"
 
@@ -1004,33 +1005,33 @@ msgstr "složka pro protokolovací záznamy"
 msgid "Directory in which argonaut-fai-monitor will store its log"
 msgstr "Složka ve které argonaut-fai-monitor ukládá své záznamy událostí"
 
-#: config/fai/class_faiConfig.inc:26
+#: config/fai/class_faiConfig.inc:28
 msgid "FAI configuration"
 msgstr "Nastavení FAI"
 
-#: config/fai/class_faiConfig.inc:27
+#: config/fai/class_faiConfig.inc:29
 msgid "FusionDirectory fai plugin configuration"
 msgstr "Nastavení zásuvného modulu fai pro FusionDirectory"
 
-#: config/fai/class_faiConfig.inc:42
+#: config/fai/class_faiConfig.inc:45
 msgid "Fai base RDN"
 msgstr "Základ relativního rozlišeného názvu FAI"
 
-#: config/fai/class_faiConfig.inc:42
+#: config/fai/class_faiConfig.inc:45
 msgid "Branch in which fai branches will be stored"
 msgstr "Větev, ve které budou ukládány fai větve"
 
-#: config/fai/class_faiConfig.inc:57
+#: config/fai/class_faiConfig.inc:60
 #, php-format
 msgid "Fai %s RDN"
 msgstr "Relativní rozlišený název FAI %s"
 
-#: config/fai/class_faiConfig.inc:58
+#: config/fai/class_faiConfig.inc:61
 #, php-format
 msgid "Relative branch in which fai %s will be stored"
 msgstr "Relativní větev ve které bude uložena fai %s"
 
-#: config/fai/class_faiConfig.inc:58
+#: config/fai/class_faiConfig.inc:61
 msgid "s"
 msgstr "s"
 

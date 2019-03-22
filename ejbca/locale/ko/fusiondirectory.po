@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-12 13:34+0000\n"
+"POT-Creation-Date: 2019-03-21 14:04+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -24,6 +24,7 @@ msgstr ""
 
 #: admin/ejbca/class_ejbcaManagement.inc:39
 #: admin/ejbca/certificates/class_ejbcaCertificates.inc:28
+#: config/ejbca/class_ejbcaConfig.inc:41
 msgid "EJBCA"
 msgstr "EJBCA"
 
@@ -74,22 +75,18 @@ msgstr "일반 이름"
 msgid "Certificate content"
 msgstr "인증서 내용"
 
-#: config/ejbca/class_ejbcaConfig.inc:26
+#: config/ejbca/class_ejbcaConfig.inc:27
 msgid "EJBCA plugin configuration"
 msgstr "EJBCA 플로그인 설정"
 
-#: config/ejbca/class_ejbcaConfig.inc:27
+#: config/ejbca/class_ejbcaConfig.inc:28
 msgid "FusionDirectory ejbca plugin configuration"
 msgstr "FusionDirectory ejbca 플러그인 설정"
 
-#: config/ejbca/class_ejbcaConfig.inc:40
-msgid "EJBCA plugin"
-msgstr "EJBCA 플러그인"
-
-#: config/ejbca/class_ejbcaConfig.inc:43
+#: config/ejbca/class_ejbcaConfig.inc:44
 msgid "EJBCA RDN"
 msgstr "EJBCA RDN"
 
-#: config/ejbca/class_ejbcaConfig.inc:43
+#: config/ejbca/class_ejbcaConfig.inc:44
 msgid "Branch in which ejbca certificates are stored"
 msgstr "ejbca 인증서가 저장된 브랜치"

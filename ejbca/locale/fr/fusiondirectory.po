@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-12 13:34+0000\n"
+"POT-Creation-Date: 2019-03-21 14:04+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2019\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -24,6 +24,7 @@ msgstr ""
 
 #: admin/ejbca/class_ejbcaManagement.inc:39
 #: admin/ejbca/certificates/class_ejbcaCertificates.inc:28
+#: config/ejbca/class_ejbcaConfig.inc:41
 msgid "EJBCA"
 msgstr "EJBCA"
 
@@ -74,22 +75,18 @@ msgstr "Nom commun"
 msgid "Certificate content"
 msgstr "Contenu du certificat"
 
-#: config/ejbca/class_ejbcaConfig.inc:26
+#: config/ejbca/class_ejbcaConfig.inc:27
 msgid "EJBCA plugin configuration"
 msgstr "Configuration EJBCA"
 
-#: config/ejbca/class_ejbcaConfig.inc:27
+#: config/ejbca/class_ejbcaConfig.inc:28
 msgid "FusionDirectory ejbca plugin configuration"
 msgstr "Configuration du plugin ejbca"
 
-#: config/ejbca/class_ejbcaConfig.inc:40
-msgid "EJBCA plugin"
-msgstr "Plugin EJBCA"
-
-#: config/ejbca/class_ejbcaConfig.inc:43
+#: config/ejbca/class_ejbcaConfig.inc:44
 msgid "EJBCA RDN"
 msgstr "Branche EJBCA"
 
-#: config/ejbca/class_ejbcaConfig.inc:43
+#: config/ejbca/class_ejbcaConfig.inc:44
 msgid "Branch in which ejbca certificates are stored"
 msgstr "Branche dans laquelle sont stockés les certificats EJBCA"

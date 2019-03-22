@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-12 13:35+0000\n"
+"POT-Creation-Date: 2019-03-21 14:05+0000\n"
 "PO-Revision-Date: 2018-08-13 20:04+0000\n"
 "Last-Translator: Paola Penati <paola.penati@opensides.be>, 2019\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
@@ -267,31 +267,32 @@ msgid "The SupAnn code of this entity"
 msgstr "Il codice SupAnn di questa entità"
 
 #: config/supann/class_supannConfig.inc:29
-msgid "SupAnn configuration"
-msgstr "Configurazione SupAnn"
-
-#: config/supann/class_supannConfig.inc:30
-msgid "FusionDirectory SupAnn plugin configuration"
-msgstr "Configurazione del plugin SupAnn di FusionDirectory"
-
-#: config/supann/class_supannConfig.inc:50
+#: config/supann/class_supannConfig.inc:51
 #: personal/supann/class_supannAccount.inc:223
 msgid "SupAnn"
 msgstr "SUPANN"
 
-#: config/supann/class_supannConfig.inc:54
+#: config/supann/class_supannConfig.inc:30
+msgid "SupAnn configuration"
+msgstr "Configurazione SupAnn"
+
+#: config/supann/class_supannConfig.inc:31
+msgid "FusionDirectory SupAnn plugin configuration"
+msgstr "Configurazione del plugin SupAnn di FusionDirectory"
+
+#: config/supann/class_supannConfig.inc:55
 msgid "SupAnn RDN"
 msgstr "SupAnn RDN"
 
-#: config/supann/class_supannConfig.inc:54
+#: config/supann/class_supannConfig.inc:55
 msgid "Branch in which SupAnn structures will be stored"
 msgstr "Ramo in cui verranno memorizzate le strutture SupAnn"
 
-#: config/supann/class_supannConfig.inc:59
+#: config/supann/class_supannConfig.inc:60
 msgid "SupAnn mail for recovery"
 msgstr "E-mail SupAnn per il recupero"
 
-#: config/supann/class_supannConfig.inc:59
+#: config/supann/class_supannConfig.inc:60
 msgid ""
 "Allow the use of mail addresses from the personal mail address field from "
 "SupAnn account for password recovery"
@@ -299,67 +300,90 @@ msgstr ""
 "Consentire l'utilizzo di indirizzi di posta dal campo dell'indirizzo di "
 "posta personale dall'account SupAnn per il recupero della password"
 
-#: config/supann/class_supannConfig.inc:65
+#: config/supann/class_supannConfig.inc:66
+msgid "Custom resources and their labels"
+msgstr "Risorse personalizzate e le loro etichette"
+
+#: config/supann/class_supannConfig.inc:70
+#: personal/supann/class_supannAccountStatus.inc:59
+#: personal/supann/class_supannAccountStatus.inc:124
+msgid "Resource"
+msgstr "Risorsa"
+
+#: config/supann/class_supannConfig.inc:70
+msgid "String that will be stored between {} in supannRessourceEtatDate"
+msgstr "Stringa che verrà archiviata tra {} in supannRessourceEtatDate"
+
+#: config/supann/class_supannConfig.inc:74
+#: config/supann/class_supannConfig.inc:119
+msgid "Label"
+msgstr "Etichetta"
+
+#: config/supann/class_supannConfig.inc:74
+msgid "Label shown for this resource"
+msgstr "Etichetta mostrata per questa risorsa"
+
+#: config/supann/class_supannConfig.inc:80
+msgid "Custom resources"
+msgstr "Risorse personalizzate"
+
+#: config/supann/class_supannConfig.inc:88
 msgid "Allowed substates for an account"
 msgstr "Substati consentiti per un account"
 
-#: config/supann/class_supannConfig.inc:69
+#: config/supann/class_supannConfig.inc:92
 #: personal/supann/class_supannAccountStatus.inc:51
 #: personal/supann/class_supannAccountStatus.inc:65
-#: personal/supann/class_supannAccountStatus.inc:114
+#: personal/supann/class_supannAccountStatus.inc:125
 msgid "Status"
 msgstr "Stato"
 
-#: config/supann/class_supannConfig.inc:69
+#: config/supann/class_supannConfig.inc:92
 msgid "Active status this substatus is tied to"
 msgstr "Stato attivo a cui questo sottostato è legato"
 
-#: config/supann/class_supannConfig.inc:72
+#: config/supann/class_supannConfig.inc:95
 #: personal/supann/class_supannAccountStatus.inc:68
-#: personal/supann/class_supannAccountStatus.inc:189
+#: personal/supann/class_supannAccountStatus.inc:243
 msgid "Active"
 msgstr "Attivo"
 
-#: config/supann/class_supannConfig.inc:72
+#: config/supann/class_supannConfig.inc:95
 #: personal/supann/class_supannAccountStatus.inc:68
-#: personal/supann/class_supannAccountStatus.inc:196
+#: personal/supann/class_supannAccountStatus.inc:250
 msgid "Inactive"
 msgstr "Inattivo"
 
-#: config/supann/class_supannConfig.inc:72
+#: config/supann/class_supannConfig.inc:95
 #: personal/supann/class_supannAccountStatus.inc:68
 msgid "Suspended"
 msgstr "Sospeso"
 
-#: config/supann/class_supannConfig.inc:75
-#: config/supann/class_supannConfig.inc:92
+#: config/supann/class_supannConfig.inc:98
+#: config/supann/class_supannConfig.inc:115
 #: personal/supann/class_supannAccountStatus.inc:71
-#: personal/supann/class_supannAccountStatus.inc:115
+#: personal/supann/class_supannAccountStatus.inc:126
 msgid "Substatus"
 msgstr "Stato secondario"
 
-#: config/supann/class_supannConfig.inc:75
-#: config/supann/class_supannConfig.inc:92
+#: config/supann/class_supannConfig.inc:98
+#: config/supann/class_supannConfig.inc:115
 msgid "LDAP value for this substatus"
 msgstr "Valore LDAP per questo sottostato"
 
-#: config/supann/class_supannConfig.inc:81
+#: config/supann/class_supannConfig.inc:104
 msgid "Substates"
 msgstr "Sottostati"
 
-#: config/supann/class_supannConfig.inc:88
+#: config/supann/class_supannConfig.inc:111
 msgid "Labels for custom substates"
 msgstr "Etichette per sottostazioni personalizzate"
 
-#: config/supann/class_supannConfig.inc:96
-msgid "Label"
-msgstr "Etichetta"
-
-#: config/supann/class_supannConfig.inc:96
+#: config/supann/class_supannConfig.inc:119
 msgid "Label shown for this substatus"
 msgstr "Etichetta mostrata per questo sottostato"
 
-#: config/supann/class_supannConfig.inc:102
+#: config/supann/class_supannConfig.inc:125
 msgid "Custom labels"
 msgstr "Etichette personalizzate"
 
@@ -778,19 +802,16 @@ msgid "State of the account and associated resources"
 msgstr "Stato dell'account e risorse associate"
 
 #: personal/supann/class_supannAccountStatus.inc:59
-#: personal/supann/class_supannAccountStatus.inc:113
-msgid "Resource"
-msgstr "Risorsa"
-
-#: personal/supann/class_supannAccountStatus.inc:59
 msgid "Which resource this state concerns"
 msgstr "Quale risorsa questo stato riguarda"
 
 #: personal/supann/class_supannAccountStatus.inc:62
+#: personal/supann/class_supannAccountStatus.inc:111
 msgid "Account"
 msgstr "Account"
 
 #: personal/supann/class_supannAccountStatus.inc:62
+#: personal/supann/class_supannAccountStatus.inc:111
 msgid "Mail"
 msgstr "Mail"
 
@@ -814,55 +835,55 @@ msgstr "Data di fine"
 msgid "Date this status will end"
 msgstr "Data alla quale questo stato terminerà"
 
-#: personal/supann/class_supannAccountStatus.inc:116
+#: personal/supann/class_supannAccountStatus.inc:127
 msgid "Begin"
 msgstr "Inizia"
 
-#: personal/supann/class_supannAccountStatus.inc:117
+#: personal/supann/class_supannAccountStatus.inc:128
 msgid "End"
 msgstr "Fine"
 
-#: personal/supann/class_supannAccountStatus.inc:175
+#: personal/supann/class_supannAccountStatus.inc:186
 #, php-format
 msgid "Label \"%s\" is present more than once in supannRessourceEtatDate"
 msgstr "L'etichetta \"%s\" è presente più di una volta in supannRessourceEtatDate"
 
-#: personal/supann/class_supannAccountStatus.inc:188
+#: personal/supann/class_supannAccountStatus.inc:242
 msgid "Anticipated"
 msgstr "Anticipato"
 
-#: personal/supann/class_supannAccountStatus.inc:190
+#: personal/supann/class_supannAccountStatus.inc:244
 msgid "Extension"
 msgstr "Estensione"
 
-#: personal/supann/class_supannAccountStatus.inc:193
+#: personal/supann/class_supannAccountStatus.inc:247
 msgid "Precreated"
 msgstr " Precreated "
 
-#: personal/supann/class_supannAccountStatus.inc:194
+#: personal/supann/class_supannAccountStatus.inc:248
 msgid "Created"
 msgstr "Creato"
 
-#: personal/supann/class_supannAccountStatus.inc:195
+#: personal/supann/class_supannAccountStatus.inc:249
 msgid "Expired"
 msgstr "Scaduto"
 
-#: personal/supann/class_supannAccountStatus.inc:197
+#: personal/supann/class_supannAccountStatus.inc:251
 msgid "Data deletion"
 msgstr "Cancellazione dei dati"
 
-#: personal/supann/class_supannAccountStatus.inc:198
+#: personal/supann/class_supannAccountStatus.inc:252
 msgid "Account deletion"
 msgstr "Cancellazione dell'account"
 
-#: personal/supann/class_supannAccountStatus.inc:201
+#: personal/supann/class_supannAccountStatus.inc:255
 msgid "Locked"
 msgstr "Bloccato"
 
-#: personal/supann/class_supannAccountStatus.inc:202
+#: personal/supann/class_supannAccountStatus.inc:256
 msgid "Administrative lock"
 msgstr "Blocco amministrativo"
 
-#: personal/supann/class_supannAccountStatus.inc:203
+#: personal/supann/class_supannAccountStatus.inc:257
 msgid "Technical lock"
 msgstr "Blocco tecnico"
