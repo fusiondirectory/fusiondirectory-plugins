@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-12 13:34+0000\n"
+"POT-Creation-Date: 2019-03-21 14:05+0000\n"
 "PO-Revision-Date: 2018-08-13 19:59+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Russian (https://www.transifex.com/fusiondirectory/teams/12202/ru/)\n"
@@ -116,31 +116,31 @@ msgstr "разрешить доступ только на эти хосты"
 msgid "Only allow this group to connect to this list of hosts"
 msgstr "Позволить подключаться этой группе только к хостам из списка"
 
-#: config/posix/class_posixConfig.inc:26
+#: config/posix/class_posixConfig.inc:27 config/posix/class_posixConfig.inc:41
+msgid "POSIX"
+msgstr ""
+
+#: config/posix/class_posixConfig.inc:28
 msgid "POSIX configuration"
 msgstr ""
 
-#: config/posix/class_posixConfig.inc:27
+#: config/posix/class_posixConfig.inc:29
 msgid "FusionDirectory POSIX plugin configuration"
 msgstr ""
 
-#: config/posix/class_posixConfig.inc:39
-msgid "Posix"
-msgstr "Posix"
-
-#: config/posix/class_posixConfig.inc:43
+#: config/posix/class_posixConfig.inc:45
 msgid "POSIX groups RDN"
 msgstr ""
 
-#: config/posix/class_posixConfig.inc:43
+#: config/posix/class_posixConfig.inc:45
 msgid "The branch where POSIX groups are stored."
 msgstr ""
 
-#: config/posix/class_posixConfig.inc:48
+#: config/posix/class_posixConfig.inc:50
 msgid "Group/user min id"
 msgstr "Минимальный id групп/пользователей"
 
-#: config/posix/class_posixConfig.inc:49
+#: config/posix/class_posixConfig.inc:51
 msgid ""
 "The minimum assignable user or group id to avoid security leaks with id 0 "
 "accounts."
@@ -149,11 +149,11 @@ msgstr ""
 "назначен, чтобы избежать дыры в безопасности с идентификатором учетной "
 "записи равным 0."
 
-#: config/posix/class_posixConfig.inc:54
+#: config/posix/class_posixConfig.inc:56
 msgid "Next id hook"
 msgstr ""
 
-#: config/posix/class_posixConfig.inc:54
+#: config/posix/class_posixConfig.inc:56
 msgid ""
 "A script to be called for finding the next free id number for users or "
 "groups."
@@ -161,90 +161,90 @@ msgstr ""
 "Скрипт, который будет вызваться при нахождении следующего свободного номера "
 "id для пользователей иил групп."
 
-#: config/posix/class_posixConfig.inc:58
+#: config/posix/class_posixConfig.inc:60
 msgid "Base number for user id"
 msgstr "Начальное значение для id пользователя"
 
-#: config/posix/class_posixConfig.inc:59
+#: config/posix/class_posixConfig.inc:61
 msgid "Where to start looking for a new free user id."
 msgstr ""
 "Откуда начинать смотреть значение для нового свободного id пользователя."
 
-#: config/posix/class_posixConfig.inc:64
+#: config/posix/class_posixConfig.inc:66
 msgid "Base number for group id"
 msgstr "Начальное значение для id группы"
 
-#: config/posix/class_posixConfig.inc:65
+#: config/posix/class_posixConfig.inc:67
 msgid "Where to start looking for a new free group id."
 msgstr "Откуда начинать смотреть значение для нового свободного id группы."
 
-#: config/posix/class_posixConfig.inc:70
+#: config/posix/class_posixConfig.inc:72
 msgid "Id allocation method"
 msgstr "Метод выделения id"
 
-#: config/posix/class_posixConfig.inc:70
+#: config/posix/class_posixConfig.inc:72
 msgid "Method to allocate user/group ids"
 msgstr "Метод выделения идентификаторов для пользователей и групп"
 
-#: config/posix/class_posixConfig.inc:73
+#: config/posix/class_posixConfig.inc:75
 msgid "Traditional"
 msgstr "Традиционный"
 
-#: config/posix/class_posixConfig.inc:73
+#: config/posix/class_posixConfig.inc:75
 msgid "Samba unix id pool"
 msgstr "Пул id для samba и unix"
 
-#: config/posix/class_posixConfig.inc:76
+#: config/posix/class_posixConfig.inc:78
 msgid "Pool user id min"
 msgstr "Минимальное значение id пользователей в пуле"
 
-#: config/posix/class_posixConfig.inc:76
+#: config/posix/class_posixConfig.inc:78
 msgid "Minimum value for user id when using pool method"
 msgstr ""
 "Минимальное значение для id пользователя, при использовании пул метода"
 
-#: config/posix/class_posixConfig.inc:81
+#: config/posix/class_posixConfig.inc:83
 msgid "Pool user id max"
 msgstr "Максимальное значение id пользователя в пуле"
 
-#: config/posix/class_posixConfig.inc:81
+#: config/posix/class_posixConfig.inc:83
 msgid "Maximum value for user id when using pool method"
 msgstr ""
 "Максимальное значение для id пользователя, при использовании пул метода"
 
-#: config/posix/class_posixConfig.inc:86
+#: config/posix/class_posixConfig.inc:88
 msgid "Pool group id min"
 msgstr "Минимальное значение id группы в пуле"
 
-#: config/posix/class_posixConfig.inc:86
+#: config/posix/class_posixConfig.inc:88
 msgid "Minimum value for group id when using pool method"
 msgstr "Минимальное значение для id группы, при использовании пул метода"
 
-#: config/posix/class_posixConfig.inc:91
+#: config/posix/class_posixConfig.inc:93
 msgid "Pool group id max"
 msgstr "Максимальное значение id группы в пуле"
 
-#: config/posix/class_posixConfig.inc:91
+#: config/posix/class_posixConfig.inc:93
 msgid "Maximum value for group id when using pool method"
 msgstr "Максимальное значение для id группы, при использовании пул метода"
 
-#: config/posix/class_posixConfig.inc:98
+#: config/posix/class_posixConfig.inc:100
 msgid "Shells"
 msgstr ""
 
-#: config/posix/class_posixConfig.inc:102
+#: config/posix/class_posixConfig.inc:104
 msgid "Available shells"
 msgstr "Доступные оболочки"
 
-#: config/posix/class_posixConfig.inc:102
+#: config/posix/class_posixConfig.inc:104
 msgid "Available POSIX shells for FD users."
 msgstr "Доступные POSIX шеллы для пользователей FD"
 
-#: config/posix/class_posixConfig.inc:109
+#: config/posix/class_posixConfig.inc:111
 msgid "Default shell"
 msgstr ""
 
-#: config/posix/class_posixConfig.inc:109
+#: config/posix/class_posixConfig.inc:111
 msgid "Shell used by default when activating Unix tab."
 msgstr ""
 

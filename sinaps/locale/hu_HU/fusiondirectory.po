@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-12 13:35+0000\n"
+"POT-Creation-Date: 2019-03-21 14:05+0000\n"
 "PO-Revision-Date: 2018-12-10 21:11+0000\n"
 "Language-Team: Hungarian (Hungary) (https://www.transifex.com/fusiondirectory/teams/12202/hu_HU/)\n"
 "MIME-Version: 1.0\n"
@@ -33,6 +33,11 @@ msgstr ""
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr ""
 
+#: config/sinaps/class_sinapsConfig.inc:27
+#: config/sinaps/class_sinapsConfig.inc:44
+msgid "SINAPS"
+msgstr ""
+
 #: config/sinaps/class_sinapsConfig.inc:28
 msgid "SINAPS configuration"
 msgstr ""
@@ -41,156 +46,155 @@ msgstr ""
 msgid "FusionDirectory SINAPS plugin configuration"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:43
-#: config/sinaps/class_sinapsConfig.inc:158
-#: personal/sinaps/class_sinapsUser.inc:27
-#: personal/sinaps/class_sinapsUser.inc:28
-#: personal/sinaps/class_sinapsUser.inc:44
-msgid "Sinaps"
-msgstr ""
-
-#: config/sinaps/class_sinapsConfig.inc:46
+#: config/sinaps/class_sinapsConfig.inc:47
 msgid "Enable SINAPS integration"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:46
+#: config/sinaps/class_sinapsConfig.inc:47
 msgid "Whether to enable the SINAPS integration"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:51
+#: config/sinaps/class_sinapsConfig.inc:52
 msgid "Dry run mode"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:51
+#: config/sinaps/class_sinapsConfig.inc:52
 msgid "Do not insert data in FusionDirectory, dump it to a file"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:56
+#: config/sinaps/class_sinapsConfig.inc:57
 msgid "Dump folder"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:56
+#: config/sinaps/class_sinapsConfig.inc:57
 msgid ""
 "Folder in which received transactions should be dumped (leave empty to "
 "disable)"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:60
+#: config/sinaps/class_sinapsConfig.inc:61
 msgid "Application identifier"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:60
+#: config/sinaps/class_sinapsConfig.inc:61
 msgid ""
 "Application identifier present in cross references with FusionDirectory"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:66
+#: config/sinaps/class_sinapsConfig.inc:67
 msgid "Applications identifiers to sync"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:66
+#: config/sinaps/class_sinapsConfig.inc:67
 msgid ""
 "List of applications identifiers for which cross references should be synced"
 " from SINAPS"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:72
+#: config/sinaps/class_sinapsConfig.inc:73
 msgid "UUID prefix"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:72
+#: config/sinaps/class_sinapsConfig.inc:73
 msgid "Prefix used for UUID in supannRefId"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:77
+#: config/sinaps/class_sinapsConfig.inc:78
 msgid "User base"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:77
+#: config/sinaps/class_sinapsConfig.inc:78
 msgid ""
 "Base in which users should be created when receiving a SINAPS diffusion"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:82
+#: config/sinaps/class_sinapsConfig.inc:83
 msgid "User template"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:82
+#: config/sinaps/class_sinapsConfig.inc:83
 msgid "User template to use for user creation from SINAPS diffusion"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:87
+#: config/sinaps/class_sinapsConfig.inc:88
 msgid "API Tokens"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:87
+#: config/sinaps/class_sinapsConfig.inc:88
 msgid ""
 "One of these API tokens will need to be present in the diffusion URL used by"
 " SINAPS"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:93
+#: config/sinaps/class_sinapsConfig.inc:94
 msgid "User roles"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:93
+#: config/sinaps/class_sinapsConfig.inc:94
 msgid "Roles which means a user still exists if present"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:101
-msgid "Sinaps Acquisition"
+#: config/sinaps/class_sinapsConfig.inc:102
+msgid "Acquisition"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:104
+#: config/sinaps/class_sinapsConfig.inc:105
 msgid "Acquisition URL"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:104
+#: config/sinaps/class_sinapsConfig.inc:105
 msgid "Full URL to which acquisition events should be sent"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:108
+#: config/sinaps/class_sinapsConfig.inc:109
 msgid "Login"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:108
+#: config/sinaps/class_sinapsConfig.inc:109
 msgid "Login to use for Basic Auth when contacting SINAPS services"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:113
+#: config/sinaps/class_sinapsConfig.inc:114
 msgid "Password"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:113
+#: config/sinaps/class_sinapsConfig.inc:114
 msgid "Password to use for Basic Auth when contacting SINAPS services"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:117
+#: config/sinaps/class_sinapsConfig.inc:118
 msgid "Acquisition external type"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:117
+#: config/sinaps/class_sinapsConfig.inc:118
 msgid "Set in typeExterne tag when sending acquisition data"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:123
+#: config/sinaps/class_sinapsConfig.inc:124
 msgid "Which field to sync as contact methods in acquisition"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:127
+#: config/sinaps/class_sinapsConfig.inc:128
 msgid "Name of an LDAP attribute"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:131
+#: config/sinaps/class_sinapsConfig.inc:132
 msgid "Name of the Sinaps attribute"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:136
+#: config/sinaps/class_sinapsConfig.inc:137
 msgid "Contact methods"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:158
+#: config/sinaps/class_sinapsConfig.inc:159
 msgid "LDAP"
+msgstr ""
+
+#: config/sinaps/class_sinapsConfig.inc:159
+#: personal/sinaps/class_sinapsUser.inc:27
+#: personal/sinaps/class_sinapsUser.inc:28
+#: personal/sinaps/class_sinapsUser.inc:44
+msgid "Sinaps"
 msgstr ""
 
 #: personal/sinaps/class_sinapsUser.inc:29

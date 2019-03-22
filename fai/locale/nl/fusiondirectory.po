@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-12 13:34+0000\n"
+"POT-Creation-Date: 2019-03-21 14:04+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2019\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -710,7 +710,8 @@ msgid "Template files in this class"
 msgstr "Sjabloonbestand in deze klasse"
 
 #: admin/fai/class_faiManagement.inc:117 admin/fai/class_faiManagement.inc:122
-#: admin/systems/class_faiStartup.inc:61 config/fai/class_faiConfig.inc:39
+#: admin/systems/class_faiStartup.inc:61 config/fai/class_faiConfig.inc:27
+#: config/fai/class_faiConfig.inc:42
 msgid "FAI"
 msgstr "FAI"
 
@@ -1007,33 +1008,33 @@ msgstr "Logdirectory"
 msgid "Directory in which argonaut-fai-monitor will store its log"
 msgstr "Directory in dewelke argonaut-fai-monitor zijn log zal opslaan"
 
-#: config/fai/class_faiConfig.inc:26
+#: config/fai/class_faiConfig.inc:28
 msgid "FAI configuration"
 msgstr "FAI configuratie"
 
-#: config/fai/class_faiConfig.inc:27
+#: config/fai/class_faiConfig.inc:29
 msgid "FusionDirectory fai plugin configuration"
 msgstr "FusionDirectory fai plugin-configuratie"
 
-#: config/fai/class_faiConfig.inc:42
+#: config/fai/class_faiConfig.inc:45
 msgid "Fai base RDN"
 msgstr "Fai basis RDN"
 
-#: config/fai/class_faiConfig.inc:42
+#: config/fai/class_faiConfig.inc:45
 msgid "Branch in which fai branches will be stored"
 msgstr "branch in dewelke fai branches zullen worden opgeslagen"
 
-#: config/fai/class_faiConfig.inc:57
+#: config/fai/class_faiConfig.inc:60
 #, php-format
 msgid "Fai %s RDN"
 msgstr "Fai %s RDN"
 
-#: config/fai/class_faiConfig.inc:58
+#: config/fai/class_faiConfig.inc:61
 #, php-format
 msgid "Relative branch in which fai %s will be stored"
 msgstr "Relatieve branch in dewelke fai %s zal worden opgeslagen"
 
-#: config/fai/class_faiConfig.inc:58
+#: config/fai/class_faiConfig.inc:61
 msgid "s"
 msgstr "s"
 

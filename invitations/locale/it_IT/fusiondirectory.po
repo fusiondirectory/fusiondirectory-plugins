@@ -5,16 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
-# Paola Penati <paola.penati@opensides.be>, 2018
+# Paola Penati <paola.penati@opensides.be>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-12 13:34+0000\n"
+"POT-Creation-Date: 2019-03-21 14:04+0000\n"
 "PO-Revision-Date: 2018-08-27 16:26+0000\n"
-"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
+"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2019\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -72,12 +72,12 @@ msgid "Invitation"
 msgstr "Invito"
 
 #: admin/registrations/class_registration.inc:33
-#: admin/registrations/class_registrationManagement.inc:132
-#: admin/registrations/class_registrationManagement.inc:144
-#: admin/registrations/class_registrationManagement.inc:155
-#: admin/registrations/class_registrationManagement.inc:235
-#: admin/registrations/class_registrationManagement.inc:247
-#: admin/registrations/class_registrationManagement.inc:258
+#: admin/registrations/class_registrationManagement.inc:131
+#: admin/registrations/class_registrationManagement.inc:143
+#: admin/registrations/class_registrationManagement.inc:154
+#: admin/registrations/class_registrationManagement.inc:234
+#: admin/registrations/class_registrationManagement.inc:246
+#: admin/registrations/class_registrationManagement.inc:257
 msgid "Error"
 msgstr "Errore"
 
@@ -149,51 +149,51 @@ msgstr "Oggetto utente"
 msgid "User object created by this registration"
 msgstr "Oggetto utente creato da questa registrazione"
 
-#: admin/registrations/class_registrationManagement.inc:41
-#: admin/registrations/class_registrationManagement.inc:47
+#: admin/registrations/class_registrationManagement.inc:40
+#: admin/registrations/class_registrationManagement.inc:46
 msgid "invalid"
 msgstr "invalido"
 
-#: admin/registrations/class_registrationManagement.inc:82
+#: admin/registrations/class_registrationManagement.inc:81
 msgid "Registrations"
 msgstr "Iscrizioni"
 
-#: admin/registrations/class_registrationManagement.inc:83
+#: admin/registrations/class_registrationManagement.inc:82
 msgid "Registrations management"
 msgstr "Gestione delle registrazioni"
 
-#: admin/registrations/class_registrationManagement.inc:84
+#: admin/registrations/class_registrationManagement.inc:83
 msgid "Manage registrations"
 msgstr "Gestire le registrazioni"
 
-#: admin/registrations/class_registrationManagement.inc:104
+#: admin/registrations/class_registrationManagement.inc:103
 msgid "Accept"
 msgstr "Accettare"
 
-#: admin/registrations/class_registrationManagement.inc:111
+#: admin/registrations/class_registrationManagement.inc:110
 msgid "Reject"
 msgstr "Rifiutare"
 
-#: admin/registrations/class_registrationManagement.inc:133
+#: admin/registrations/class_registrationManagement.inc:132
 #, php-format
 msgid "Cannot accept %s. It has been locked by %s."
 msgstr "Impossibile accettare %s. È stato bloccato da %s."
 
-#: admin/registrations/class_registrationManagement.inc:145
+#: admin/registrations/class_registrationManagement.inc:144
 #, php-format
 msgid "Cannot accept registration %s, it's not in status \"Filled\"."
 msgstr "Impossibile accettare la registrazione %s, non è in stato \"Pieno\"."
 
-#: admin/registrations/class_registrationManagement.inc:156
+#: admin/registrations/class_registrationManagement.inc:155
 #, php-format
 msgid "Cannot move %s. It has been locked by %s."
 msgstr "Impossibile spostare %s. È stato bloccato da %s."
 
-#: admin/registrations/class_registrationManagement.inc:199
+#: admin/registrations/class_registrationManagement.inc:198
 msgid "Account locking"
 msgstr "Blocco dell'account"
 
-#: admin/registrations/class_registrationManagement.inc:200
+#: admin/registrations/class_registrationManagement.inc:199
 #, php-format
 msgid ""
 "Unlocking failed using password method \"%s\". Account \"%s\" has not been "
@@ -202,37 +202,37 @@ msgstr ""
 "Sblocco non riuscito utilizzando il metodo password \"%s\". L'account \"%s\""
 " non è stato sbloccato!"
 
-#: admin/registrations/class_registrationManagement.inc:236
+#: admin/registrations/class_registrationManagement.inc:235
 #, php-format
 msgid "Cannot reject %s. It has been locked by %s."
 msgstr "Impossibile rifiutare %s. È stato bloccato da %s."
 
-#: admin/registrations/class_registrationManagement.inc:248
+#: admin/registrations/class_registrationManagement.inc:247
 #, php-format
 msgid "Cannot reject registration %s, it's not in status \"Filled\"."
 msgstr "Impossibile rifiutare la registrazione %s, non è in stato \"Riempito\"."
 
-#: admin/registrations/class_registrationManagement.inc:259
+#: admin/registrations/class_registrationManagement.inc:258
 #, php-format
 msgid "Cannot delete %s. It has been locked by %s."
 msgstr "Non puoi cancellare %s perché é ancora utilizzata da %s"
 
-#: admin/registrations/class_registrationManagement.inc:315
+#: admin/registrations/class_registrationManagement.inc:314
 #, php-format
 msgid "Could not find invitation \"%s\""
 msgstr "Impossibile trovare l'invito \"%s\""
 
-#: admin/registrations/class_registrationManagement.inc:317
+#: admin/registrations/class_registrationManagement.inc:316
 #, php-format
 msgid "Found several invitations \"%s\""
 msgstr "Trovato diversi inviti \"%s\""
 
-#: admin/registrations/class_registrationManagement.inc:338
+#: admin/registrations/class_registrationManagement.inc:337
 #, php-format
 msgid "Form \"%s\" could not be found"
 msgstr "Impossibile trovare il modulo \"%s\""
 
-#: admin/registrations/class_registrationManagement.inc:340
+#: admin/registrations/class_registrationManagement.inc:339
 #, php-format
 msgid "Found several forms named \"%s\""
 msgstr "Trovato diversi formulari denominati \"%s\""
@@ -242,8 +242,7 @@ msgid "Statuses"
 msgstr "Stati"
 
 #: admin/invitations/class_invitationManagement.inc:27
-#: config/invitations/class_invitationsConfig.inc:40
-#: config/invitations/class_invitationsConfig.inc:60
+#: config/invitations/class_invitationsConfig.inc:27
 msgid "Invitations"
 msgstr "Inviti"
 
@@ -301,6 +300,7 @@ msgstr "Autore di questo invito"
 
 #: admin/invitations/class_invitation.inc:75
 #: admin/invitations/class_invitation.inc:82
+#: config/invitations/class_invitationsConfig.inc:57
 msgid "Emails"
 msgstr "E-mail"
 
@@ -351,35 +351,39 @@ msgstr "Completato"
 msgid "%d invitations were sent and saved successfully"
 msgstr "%dinviti sono stati inviati e salvati correttamente "
 
-#: config/invitations/class_invitationsConfig.inc:26
+#: config/invitations/class_invitationsConfig.inc:28
 msgid "Invitations configuration"
 msgstr "Configurazione degli inviti"
 
-#: config/invitations/class_invitationsConfig.inc:27
+#: config/invitations/class_invitationsConfig.inc:29
 msgid "FusionDirectory invitations plugin configuration"
 msgstr "Configurazione del plugin inviti FusionDirectory"
 
-#: config/invitations/class_invitationsConfig.inc:43
+#: config/invitations/class_invitationsConfig.inc:42
+msgid "LDAP"
+msgstr "LDAP"
+
+#: config/invitations/class_invitationsConfig.inc:45
 msgid "Invitations RDN"
 msgstr "Inviti RDN"
 
-#: config/invitations/class_invitationsConfig.inc:43
+#: config/invitations/class_invitationsConfig.inc:45
 msgid "Branch in which invitations will be stored"
 msgstr "Ramo in cui verranno archiviati gli inviti"
 
-#: config/invitations/class_invitationsConfig.inc:48
+#: config/invitations/class_invitationsConfig.inc:50
 msgid "Registrations RDN"
 msgstr "Registrazioni RDN"
 
-#: config/invitations/class_invitationsConfig.inc:48
+#: config/invitations/class_invitationsConfig.inc:50
 msgid "Branch in which registrations will be stored"
 msgstr "Ramo in cui verranno archiviate le registrazioni"
 
-#: config/invitations/class_invitationsConfig.inc:53
+#: config/invitations/class_invitationsConfig.inc:60
 msgid "Email expeditor"
 msgstr "Email expeditor"
 
-#: config/invitations/class_invitationsConfig.inc:53
+#: config/invitations/class_invitationsConfig.inc:60
 msgid ""
 "The email address used to send invitation emails. Be careful to select an "
 "address that your server can send from without being flagged as spam."
@@ -388,11 +392,11 @@ msgstr ""
 "selezionare un indirizzo che il tuo server può inviare senza essere "
 "contrassegnato come spam."
 
-#: config/invitations/class_invitationsConfig.inc:63
+#: config/invitations/class_invitationsConfig.inc:65
 msgid "Default email content"
 msgstr "Contenuto email predefinito"
 
-#: config/invitations/class_invitationsConfig.inc:63
+#: config/invitations/class_invitationsConfig.inc:65
 msgid "Default content of the email sent invitations"
 msgstr "Contenuto predefinito degli inviti inviati via email"
 
