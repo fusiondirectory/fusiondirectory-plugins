@@ -148,7 +148,11 @@ class argonautDNSConfig extends simpleService
   {
     global $config;
     $attributesInfo = $this->getAttributesInfo();
-    $zones = objects::ls('dnsZone', NULL, NULL, '', TRUE);
+    try {
+      $zones = objects::ls('dnsZone', NULL, NULL, '', TRUE);
+    } catch (NonExistingObjectTypeException $e) {
+      $zones = [];
+    }
     if (!empty($zones)) {
       $attributes = $attributesInfo['slave']['attrs'][0]->attribute->attributes;
       $attributes[0] = new SelectAttribute(
