@@ -69,6 +69,7 @@ class fiInventory extends simplePlugin
     return [
       'plShortName'   => _('Inventory'),
       'plDescription' => _('Inventory Viewer'),
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=fusioninventory&size=16',
       'plPriority'    => 90,
       'plObjectClass' => ['fdInventoryContent'],
       'plObjectType'  => [

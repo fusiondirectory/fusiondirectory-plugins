@@ -125,6 +125,7 @@ class argonautClient extends simplePlugin
     return [
       'plShortName'     => _('Argonaut client'),
       'plDescription'   => _('Edit argonaut client settings'),
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=argonaut&size=16',
       'plObjectClass'   => ['argonautClient'],
       'plObjectType'    => ['workstation','server','terminal','ogroup-dynamic'],
 

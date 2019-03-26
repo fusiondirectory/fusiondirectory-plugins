@@ -28,6 +28,7 @@ class puppetNode extends simplePlugin
     return [
       'plShortName'     => _('Puppet'),
       'plDescription'   => _('Support for puppet schema in order to edit puppet classes and puppet vars'),
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=puppet&size=16',
       'plObjectClass'   => ['puppetClient'],
       'plObjectType'    => ['server', 'workstation'],
 

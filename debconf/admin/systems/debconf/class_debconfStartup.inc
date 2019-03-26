@@ -30,6 +30,7 @@ class debconfStartup extends simplePlugin
     return [
       'plShortName'     => _('Debconf'),
       'plDescription'   => _('Debconf preseed startup'),
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=debconf&size=16',
       'plPriority'      => 9,
       'plObjectClass'   => ['debconfStartup'],
       'plObjectType'    => ['workstation', 'server', 'ogroup-dynamic'],

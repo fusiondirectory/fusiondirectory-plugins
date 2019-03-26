@@ -28,6 +28,7 @@ class terminalStartup extends simplePlugin
     return [
       'plShortName'     => _('Startup'),
       'plDescription'   => _('Terminal startup'),
+      'plSmallIcon'     => 'geticon.php?context=devices&icon=terminal&size=16',
       'plPriority'      => 2,
       'plObjectClass'   => ['fdTerminalStartup'],
       'plObjectType'    => ['terminal', 'ogroup-dynamic'],
