@@ -52,7 +52,7 @@ class RegistrationStateFilterElement extends FilterElement
     unset($infos);
   }
 
-  public function render ()
+  public function render (): string
   {
     $inputs = [];
     foreach ($this->states as $key => $infos) {
@@ -69,7 +69,7 @@ class RegistrationStateFilterElement extends FilterElement
     return $smarty->fetch(get_template_path('management/filter-element.tpl'));
   }
 
-  public function getFilters ($type, array &$filters)
+  public function getFilters (string $type, array &$filters): bool
   {
     if (strtoupper($type) == 'REGISTRATION') {
       $stateFilters = [];

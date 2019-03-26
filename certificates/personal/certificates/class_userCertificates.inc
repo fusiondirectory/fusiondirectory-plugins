@@ -63,7 +63,7 @@ class CertificateFileAttribute extends FileAttribute
   static $pemEnd     = "-----END CERTIFICATE-----";
 
   /* Return the value as an array of values to be displayed in a table columns */
-  function getArrayValue ()
+  function getArrayValue (): array
   {
     $value = $this->getValue();
     if (!strpos($value, static::$pemBegin)) {

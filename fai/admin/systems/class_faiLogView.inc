@@ -47,7 +47,7 @@ class AvailableLogsAttribute extends Attribute
     return '<a href="javascript:'.htmlentities($js, ENT_COMPAT, 'UTF-8').'">'.$label."</a>";
   }
 
-  function renderFormInput ()
+  function renderFormInput (): string
   {
     $id   = $this->getHtmlId();
     $div  = new divSelectBox($id);

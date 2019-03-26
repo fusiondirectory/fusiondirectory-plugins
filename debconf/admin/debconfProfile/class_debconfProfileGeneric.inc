@@ -26,7 +26,7 @@ class DebconfEntriesAttribute extends CompositeAttribute
     $this->setInLdap(FALSE);
   }
 
-  function setParent (&$plugin)
+  function setParent (simplePlugin &$plugin)
   {
     parent::setParent($plugin);
     if (is_object($this->plugin)) {
@@ -145,7 +145,7 @@ class DebconfImportAttribute extends FileAttribute
     }
   }
 
-  function renderFormInput ()
+  function renderFormInput (): string
   {
     global $config;
     return sprintf(_("In order to import a debconf file, please run the following command : <br/>".

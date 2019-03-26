@@ -85,7 +85,7 @@ class UsedOptionAttribute extends CompositeAttribute
     }
   }
 
-  function readValues ($value)
+  function readValues (string $value): array
   {
     return $value;
   }
@@ -120,7 +120,7 @@ class AvailableSudoOptionAttribute extends SelectAttribute
     $this->setInLdap(FALSE);
   }
 
-  function renderFormInput ()
+  function renderFormInput (): string
   {
     $id = $this->getLdapName();
     $button = '<input type="submit" formnovalidate="formnovalidate" name="add'.$id.'" id="add'.$id.'"'.
@@ -241,7 +241,7 @@ class SudoOptionAttribute extends Attribute
     }
   }
 
-  function renderFormInput ()
+  function renderFormInput (): string
   {
     $id = $this->getLdapName();
     $value = htmlentities($this->value['value'], ENT_COMPAT, 'UTF-8');

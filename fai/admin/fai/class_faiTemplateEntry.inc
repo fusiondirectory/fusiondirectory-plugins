@@ -41,7 +41,7 @@ class AccessRightsAttribute extends CompositeAttribute
     $this->setLinearRendering(TRUE);
   }
 
-  function renderFormInput ()
+  function renderFormInput (): string
   {
     foreach ($this->attributes as &$attribute) {
       $attribute->setDisabled($this->disabled);
@@ -90,7 +90,7 @@ class AccessRightsAttribute extends CompositeAttribute
     return $display;
   }
 
-  function readValues ($value)
+  function readValues (string $value): array
   {
     $tmode  = "$value ";
     $m      = [];

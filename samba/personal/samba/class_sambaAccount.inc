@@ -44,7 +44,7 @@ class MungedAttribute extends Attribute
     }
   }
 
-  function setParent (&$plugin)
+  function setParent (simplePlugin &$plugin)
   {
     $this->plugin = $plugin;
     if (is_object($this->plugin)) {

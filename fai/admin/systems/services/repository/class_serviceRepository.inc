@@ -85,7 +85,7 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
     $this->attributes[7]->setSubmitForm(TRUE);
   }
 
-  function setParent (&$plugin)
+  function setParent (simplePlugin &$plugin)
   {
     $this->updateFields();
     parent::setParent($plugin);
@@ -132,7 +132,7 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
     parent::setValue($values);
   }
 
-  function readValues ($value)
+  function readValues (string $value): array
   {
     $values = parent::readValues($value);
     if (!isset($values[8])) {

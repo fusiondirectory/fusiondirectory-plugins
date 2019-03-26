@@ -25,7 +25,7 @@
 
 class QuotaEntryAttribute extends CharSeparatedCompositeAttribute
 {
-  function readValues ($value)
+  function readValues (string $value): array
   {
     $values = parent::readValues($value);
     $blocksize = $this->plugin->getBlockSize($values[5], $values[0]);
