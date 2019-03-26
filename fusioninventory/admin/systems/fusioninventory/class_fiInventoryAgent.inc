@@ -27,6 +27,7 @@ class fiInventoryAgent extends simplePlugin
     return [
       'plShortName'   => _('FusionInventory'),
       'plDescription' => _('FusionInventory agent configuration'),
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=fusioninventory&size=16',
       'plPriority'    => 90,
       'plObjectClass' => ['fusionInventoryAgent'],
       'plObjectType'  => ['workstation', 'server'],

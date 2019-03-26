@@ -34,6 +34,7 @@ class opsiClient extends simplePlugin
     return [
       'plShortName'   => _('OPSI client'),
       'plDescription' => _('Edit OPSI client settings'),
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=opsi&size=16',
       'plObjectClass' => ['opsiClient'],
       'plObjectType'  => ['workstation', 'ogroup-dynamic'],
       'plDepends'     => ['sambaSystemTab'],

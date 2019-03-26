@@ -97,6 +97,7 @@ class opsiProductProperties extends simplePlugin
     return [
       'plShortName'   => _('Product properties'),
       'plDescription' => _('Product properties'),
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=opsi&size=16',
       'plObjectClass' => ['opsiProductProperties'],
       'plObjectType'  => ['opsiProfile'],
 

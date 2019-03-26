@@ -29,6 +29,7 @@ class communityOrganization extends simplePlugin
       'plDescription'   => _('Community organization dates and alternate address'),
       'plObjectClass'   => ['fdCommunityOrganization'],
       'plObjectType'    => ['organization'],
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=community&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];

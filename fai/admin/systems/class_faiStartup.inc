@@ -60,6 +60,7 @@ class faiStartup extends simplePlugin
     return [
       'plShortName'     => _('FAI'),
       'plDescription'   => _('Full automated installation'),
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=fai&size=16',
       'plPriority'      => 9,
       'plObjectClass'   => ['FAIobject'],
       'plObjectType'    => ['workstation', 'server', 'ogroup-dynamic'],

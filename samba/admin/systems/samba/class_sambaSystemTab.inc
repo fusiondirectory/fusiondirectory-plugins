@@ -28,6 +28,7 @@ class sambaSystemTab extends simplePlugin
     return [
       'plShortName'   => _('Samba'),
       'plDescription' => _('Windows workstation information'),
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=samba&size=16',
       'plObjectClass' => ['posixAccount','sambaSamAccount'],
       'plObjectType'  => ['workstation'],
       'plPriority'    => 6,

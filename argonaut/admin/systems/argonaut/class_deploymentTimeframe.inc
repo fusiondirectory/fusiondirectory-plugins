@@ -29,6 +29,7 @@ class deploymentTimeframe extends simplePlugin
     return [
       'plShortName'     => _('Deployment time frame'),
       'plDescription'   => _('Edit deployment time frame'),
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=argonaut&size=16',
       'plObjectClass'   => ['argonautDeploymentOptions'],
       'plObjectType'    => ['workstation','server','terminal','ogroup-dynamic'],
 

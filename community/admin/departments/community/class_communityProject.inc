@@ -29,6 +29,7 @@ class communityProject extends communityOrganization
       'plDescription'   => _('Community project dates and alternate address'),
       'plObjectClass'   => ['fdCommunityProject'],
       'plObjectType'    => ['department'],
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=community&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];

@@ -27,6 +27,7 @@ class sympaAliasPartage extends simplePlugin
     return [
       'plShortName'     => _('Partage'),
       'plDescription'   => _('Partage sympa options'),
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=renater-partage&size=16',
       'plObjectClass'   => ['fdRenaterPartageSympaAlias'],
       'plObjectType'    => ['sympaAlias'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
