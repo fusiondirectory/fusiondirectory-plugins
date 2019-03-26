@@ -30,7 +30,7 @@ class SubmittingOPSIProductAttribute extends SelectAttribute
   {
   }
 
-  function displayValue ($value)
+  function displayValue ($value): string
   {
     return $value;
   }
@@ -47,7 +47,7 @@ class ProductPropertyAttribute extends CompositeAttribute
   {
   }
 
-  function displayValue ($value)
+  function displayValue ($value): string
   {
     $array = json_decode($value);
     if (is_array($array) && (count($array) == 1)) {
@@ -56,7 +56,7 @@ class ProductPropertyAttribute extends CompositeAttribute
     return $value;
   }
 
-  function readValues ($value)
+  function readValues (string $value): array
   {
     trigger_error('Should never be called');
   }

@@ -21,7 +21,7 @@
 
 class OPSIServerAttribute extends SelectAttribute
 {
-  function setParent (&$plugin)
+  function setParent (simplePlugin &$plugin)
   {
     parent::setParent($plugin);
     if (is_object($this->plugin)) {

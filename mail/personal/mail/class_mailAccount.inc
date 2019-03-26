@@ -19,19 +19,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-
-/*!
-  \brief   mail plugin
-
-  This class provides the functionality to read and write all attributes
-  relevant for mail accounts from/to the LDAP.
-
-  It does syntax checking and displays the formulars required.
-  Special handling like sieve or imap actions will be implemented
-  by the mailMethods.
-
- */
-
 class MailQuotaAttribute extends IntAttribute
 {
   private $quotaUsage;
@@ -47,7 +34,7 @@ class MailQuotaAttribute extends IntAttribute
     }
   }
 
-  function renderAttribute (array &$attributes, $readOnly)
+  function renderAttribute (array &$attributes, bool $readOnly)
   {
     parent::renderAttribute($attributes, $readOnly);
     $attributes[$this->getLdapName().'_usage'] = [
@@ -59,7 +46,17 @@ class MailQuotaAttribute extends IntAttribute
   }
 }
 
+/*!
+  \brief   mail plugin
 
+  This class provides the functionality to read and write all attributes
+  relevant for mail accounts from/to the LDAP.
+
+  It does syntax checking and displays the formulars required.
+  Special handling like sieve or imap actions will be implemented
+  by the mailMethods.
+
+ */
 class mailAccount extends simplePlugin
 {
   var $displayHeader  = TRUE;

@@ -43,7 +43,7 @@ class SocialAccountAttribute extends CompositeAttribute
     );
   }
 
-  function getArrayValue ()
+  function getArrayValue (): array
   {
     $handlerClass = 'socialHandler_'.$this->attributes[0]->getValue();
     if (!class_available($handlerClass)) {

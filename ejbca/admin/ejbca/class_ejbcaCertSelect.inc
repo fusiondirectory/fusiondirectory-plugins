@@ -85,7 +85,7 @@ class EjbcaUserCertsAttribute extends GenericDialogAttribute
     }
   }
 
-  function renderOnlyFormInput ()
+  function renderOnlyFormInput (): string
   {
     $id   = $this->getHtmlId();
     $div  = new divSelectBox($id);
@@ -105,7 +105,7 @@ class EjbcaUserCertsAttribute extends GenericDialogAttribute
     return '{$div_'.$id.'}'."\n";
   }
 
-  public function htmlIds ()
+  public function htmlIds (): array
   {
     $id = $this->getHtmlId();
     $ids = ['add'.$id.'_dialog'];

@@ -24,7 +24,7 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
 {
   protected $prefixedChoices;
 
-  function __construct ($label, $description, $ldapName, $required, $filename, $acl = "")
+  function __construct (string $label, string $description, string $ldapName, bool $required, string $filename, string $acl = '')
   {
     $attributes = [
       new SelectAttribute('', '', $ldapName.'_prefix', $required),
@@ -84,7 +84,7 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
     }
   }
 
-  function displayValue ($values)
+  function displayValue ($values): string
   {
     if (!is_array($values)) {
       $values = $this->inputValue($values);
@@ -146,7 +146,7 @@ class SupannCompositeAttribute extends CompositeAttribute
     parent::__construct($description, $ldapName, $attributes, '', '', $acl, $label);
   }
 
-  function readValues ($value)
+  function readValues (string $value): array
   {
     $values = [];
     $m = [];

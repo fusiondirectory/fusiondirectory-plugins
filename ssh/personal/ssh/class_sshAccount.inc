@@ -24,7 +24,7 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
   /* cache for key extracted information */
   protected $format = '/^([-[:alnum:]=",.]+\s+)?(disabled-)?(ssh-(dss|rsa|ed25519)|ecdsa-sha2-nistp\d{3})\s+([[:alnum:]+\/.=]+)(\s+([[:graph:][:space:]]+))?\s*$/';
 
-  function getArrayValue ()
+  function getArrayValue (): array
   {
     if (preg_match($this->format, $this->value, $match)) {
       $fingerprint  = $this->fingerprint(base64_decode($match[5]));

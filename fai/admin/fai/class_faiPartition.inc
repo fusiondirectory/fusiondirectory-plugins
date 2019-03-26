@@ -64,7 +64,7 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
     $this->updateAttributes();
   }
 
-  function readValues ($value)
+  function readValues (string $value): array
   {
     if (preg_match('/^([0-9]{1,})(KB|MB|GB|TB|PB|%)$/', $value, $m)) {
       // Fixed

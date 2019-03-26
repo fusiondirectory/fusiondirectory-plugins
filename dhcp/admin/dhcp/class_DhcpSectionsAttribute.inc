@@ -227,7 +227,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     unset ($attrs[$this->getLdapName()]);
   }
 
-  function setParent (&$plugin)
+  function setParent (simplePlugin &$plugin)
   {
     parent::setParent($plugin);
     if (is_object($this->plugin)) {
@@ -432,7 +432,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     return '';
   }
 
-  public function htmlIds ()
+  public function htmlIds (): array
   {
     $ids = parent::htmlIds();
     unset($ids[0]);
@@ -464,7 +464,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  function foreignKeyCheck ($value, array $source)
+  function foreignKeyCheck ($value, array $source): bool
   {
     if (($source['CLASS'] == 'serverGeneric') && ($source['FIELD'] == 'dn')) {
       $globalNode = $this->value[0][0];

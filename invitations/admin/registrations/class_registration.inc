@@ -42,7 +42,7 @@ class RegistrationLastChangeAttribute extends DisplayLDAPAttribute
     return sprintf(_('%s - by %s'), $date->format('Y-m-d H:i:s'), $author);
   }
 
-  function renderFormInput ()
+  function renderFormInput (): string
   {
     $value = static::renderValue($this->getValue());
     if ($this->allowSmarty) {
@@ -75,7 +75,7 @@ class RegistrationStateAttribute extends DisplayLDAPAttribute
     return $value;
   }
 
-  function renderFormInput ()
+  function renderFormInput (): string
   {
     $value = static::renderValue($this->getValue());
     if ($this->allowSmarty) {

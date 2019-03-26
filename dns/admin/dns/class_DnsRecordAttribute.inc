@@ -443,7 +443,7 @@ class DnsRecordAttribute extends CompositeAttribute
     return preg_match('/\.'.preg_quote($mask).'$/', $testString);
   }
 
-  function getAcl ()
+  function getAcl (): string
   {
     return $this->getHtmlId().'_'.$this->attributes[0]->getValue();
   }
