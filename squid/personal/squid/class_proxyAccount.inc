@@ -1,9 +1,9 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ class WorkingTimeAttribute extends CompositeAttribute
   /*!
    * \brief Read working time values
    */
-  function readValues ($val)
+  function readValues (string $val): array
   {
     $tab = [];
     $val = intval($val);
