@@ -127,20 +127,10 @@ class SambaFlagsAttribute extends FlagsAttribute
 
 class WinstationsAttribute extends SystemsAttribute
 {
-  protected $dialogClass = 'WinstationSelectDialog';
-}
-
-class WinstationSelectDialog extends GenericSelectDialog
-{
-  protected $dialogClass = 'winstationSelect';
-}
-
-class winstationSelect extends simpleSelectManagement
-{
-  protected $objectTypes = [
-    'winstation'
-  ];
-  protected $autoFilterAttributes = ['dn', 'cn', 'uid', 'description'];
+  function __construct (string $label, string $description, string $ldapName, bool $required, array $objectTypes = ['workstation'], array $defaultValue = [], string $store_attr = 'cn', string $display_attr = 'cn', string $acl = '')
+  {
+    parent::__construct($label, $description, $ldapName, $required, $objectTypes, $defaultValue, $store_attr, $display_attr, $acl);
+  }
 }
 
 class sambaAccount extends simplePlugin implements UserTabLockingAction
