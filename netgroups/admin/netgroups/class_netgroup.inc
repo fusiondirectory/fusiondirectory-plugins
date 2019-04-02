@@ -3,7 +3,7 @@
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
 
   Copyright (C) 2011 Alejandro Escanero Blanco (aescanero@gmail.com)
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,26 +19,6 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
-
-class CnNetgroupsAttribute extends DialogAttribute
-{
-  protected $dialogClass = "NetgroupSelectDialog";
-
-  function addValue ($dn, $entry)
-  {
-    $value = $entry['cn'][0];
-    if (!in_array($value, $this->value)) {
-      $this->value[]    = $value;
-    }
-  }
-
-  function getFilterBlackList ()
-  {
-    $cns    = $this->getValue();
-    $cns[]  = $this->plugin->cn;
-    return ['cn' => $cns];
-  }
-}
 
 class netgroup extends simplePlugin
 {
@@ -98,7 +78,12 @@ class netgroup extends simplePlugin
         'name'  => _('Netgroup members'),
         'icon'  => 'geticon.php?context=applications&icon=netgroups&size=16',
         'attrs' => [
-          new CnNetgroupsAttribute('', _('NIS netgroup members'), 'memberNisNetgroup'),
+          new ObjectsAttribute(
+            '', _('NIS netgroup membership'),
+            'nisMembership', TRUE,
+            ['netgroup'], [],
+            'cn', 'cn'
+          ),
         ]
       ],
     ];

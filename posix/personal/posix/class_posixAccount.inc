@@ -116,7 +116,11 @@ class posixAccount extends simplePlugin
         'name'  => _('Group membership'),
         'icon'  => 'geticon.php?context=types&icon=user-group&size=16',
         'attrs' => [
-          new GroupsAttribute('', _('Group membership'), 'groupMembership')
+          new ObjectsAttribute(
+            '', _('Group membership'),
+            'groupMembership', FALSE,
+            ['group']
+          ),
         ]
       ],
       'account' => [
