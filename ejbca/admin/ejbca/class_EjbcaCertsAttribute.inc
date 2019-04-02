@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014-2016 FusionDirectory
+
+  Copyright (C) 2014-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,26 +19,17 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-
-class ejbcaCertificateSelectManagement extends simpleSelectManagement
+class EjbcaCertsAttribute extends ObjectsAttribute
 {
-  protected $objectTypes = ['ejbcaCertificate'];
-
-  protected $autoFilterAttributes = ['dn', 'cn', 'description', 'userCertificate'];
-}
-
-class EjbcaCertSelectDialog extends GenericSelectDialog
-{
-  protected $dialogClass = 'ejbcaCertificateSelectManagement';
-}
-
-class EjbcaUserCertsAttribute extends GenericDialogAttribute
-{
-  protected $dialogClass      = 'EjbcaCertSelectDialog';
-
-  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = [], $acl = '')
+  function __construct ($label, $description, $ldapName, $required, $defaultValue = [], $acl = '')
   {
-    parent::__construct($label, $description, $ldapName, $required, $defaultValue, 'dn', NULL, $acl);
+    parent::__construct($label, $description, $ldapName, $required, ['ejbcaCertificate'], $defaultValue, 'dn', 'cn', $acl);
+    $this->selectManagementParameters[2] = [
+      'objectClass'             => '*',
+      'dn'                      => 'raw',
+      'cn'                      => '*',
+      'userCertificate;binary'  => '*',
+    ];
   }
 
   function addValue ($dn, $entry)

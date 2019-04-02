@@ -49,7 +49,7 @@ class ejbcaCertificates extends simplePlugin
         'name'  => _('EJBCA certs'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new EjbcaUserCertsAttribute(
+          new EjbcaCertsAttribute(
             '', _('Certificates associated to this object'),
             'fdEjbcaCertDN', TRUE
           )
