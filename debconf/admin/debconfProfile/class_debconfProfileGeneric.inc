@@ -63,7 +63,7 @@ class DebconfEntriesAttribute extends CompositeAttribute
         if (isset($this->attributes[$cn])) {
           $this->attributes[$cn]->setValue($entry['value'][0]);
           // set initialValue
-          $this->attributes[$cn]->loadValue(NULL);
+          $this->attributes[$cn]->loadValue([]);
           //~ 'flags'
           //~ 'owners'
           //~ 'template'
@@ -219,5 +219,6 @@ class debconfProfileGeneric extends simplePlugin
     if (isset($this->attributesInfo['entries'])) {
       $this->attributesInfo['entries']['attrs']['debconfEntries']->saveInLdap();
     }
+    return [];
   }
 }

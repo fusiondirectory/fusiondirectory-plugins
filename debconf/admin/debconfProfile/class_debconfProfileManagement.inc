@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2016  FusionDirectory
+
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,13 +19,14 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class debconfProfileManagement extends simpleManagement
+class debconfProfileManagement extends management
 {
-  protected $objectTypes  = ['debconfProfile'];
-
-  protected $departmentBrowser      = FALSE;
-  protected $departmentRootVisible  = FALSE;
-  protected $baseMode               = FALSE;
+  /* Default columns */
+  public static $columns = [
+    ['ObjectTypeColumn', []],
+    ['LinkColumn',       ['attributes' => 'nameAttr',    'label' => 'Name']],
+    ['ActionsColumn',    ['label' => 'Actions']],
+  ];
 
   static function plInfo ()
   {
@@ -40,17 +42,9 @@ class debconfProfileManagement extends simpleManagement
     ];
   }
 
-  function __construct ()
+  protected function setUpListing ()
   {
-    $this->filterXMLPath  = get_template_path('debconfProfile-filter.xml', TRUE, dirname(__FILE__));
-    parent::__construct();
-  }
-
-  function parseXML ($file)
-  {
-    $data = parent::parseXML($file);
-    $data['list']['table']['column'][1]['sortAttribute']  = 'ou';
-    $data['list']['table']['column'][1]['value']          = '%{filter:link(row,dn,"%s",ou)}';
-    return $data;
+    /* Set baseMode to FALSE */
+    $this->listing  = new managementListing($this, FALSE);
   }
 }
