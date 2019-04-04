@@ -66,7 +66,7 @@ class faiManagement extends management
 
   static function mainInc ($classname = NULL, $objectTypes = FALSE)
   {
-    global $ui;
+    global $ui, $cleanup;
 
     parent::mainInc($classname, $objectTypes);
 
