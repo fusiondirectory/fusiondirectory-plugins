@@ -107,7 +107,10 @@ class argonautImportFile extends simplePlugin
   function save_object ()
   {
     /* Import started */
-    if (isset($_POST['start_import'])) {
+    if (isset($_POST['import_abort'])) {
+      $this->parent->cancelEdit();
+      return;
+    } elseif (isset($_POST['start_import'])) {
       $events = $this->events;
       $error  = FALSE;
       foreach ($events as $event) {
