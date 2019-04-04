@@ -46,6 +46,11 @@ class faiManagement extends management
     $this->listing  = new faiListing($this);
   }
 
+  protected function setUpFilter ()
+  {
+    $this->filter   = new managementFilter($this, TRUE);
+  }
+
   function execute (): string
   {
     if ($this->listing->noFaiBranches()) {
@@ -66,7 +71,7 @@ class faiManagement extends management
 
   static function mainInc ($classname = NULL, $objectTypes = FALSE)
   {
-    global $ui;
+    global $ui, $cleanup;
 
     parent::mainInc($classname, $objectTypes);
 
