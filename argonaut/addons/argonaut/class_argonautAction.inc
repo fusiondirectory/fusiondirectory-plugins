@@ -111,10 +111,10 @@ class argonautAction extends simplePlugin
     ];
   }
 
-  public function __construct ($action, array $targets, $scheduled)
+  public function __construct (management $parent, string $action, array $targets, bool $scheduled)
   {
     global $config;
-    parent::__construct($config->current['BASE']);
+    parent::__construct($config->current['BASE'], NULL, $parent);
 
     $this->attributesAccess['scheduled']->setManagedAttributes(
       [
@@ -152,9 +152,41 @@ class argonautAction extends simplePlugin
     parent::loadAttributes();
   }
 
+  function save_object ()
+  {
+    parent::save_object();
+    if (isset($_POST['abort_event_dialog'])) {
+      $this->handle_cancel();
+    } elseif (isset($_POST['save_event_dialog'])) {
+      $this->handle_finish();
+    }
+  }
+
   function execute (): string
   {
     return parent::execute().$this->getFooter();
+  }
+
+  protected function handle_finish ()
+  {
+    $msgs = $this->check();
+    if (count($msgs)) {
+      msg_dialog::displayChecks($msgs);
+      return;
+    }
+    if ($this->parent->siActive) {
+      $o_queue = new supportDaemon();
+      $o_queue->append($this);
+      if ($o_queue->is_error()) {
+        msg_dialog::display(_('Infrastructure service'), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+      }
+      $this->parent->closeDialogs();
+    }
+  }
+
+  protected function handle_cancel ()
+  {
+    $this->parent->cancelEdit();
   }
 
   /*! \brief  Returns the plugin footer (save cancel), displayed in the template.

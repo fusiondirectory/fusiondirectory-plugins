@@ -92,7 +92,6 @@ class systemManagement extends management
         )
       );
       $this->actions['trigger']->setSeparator(TRUE);
-      $this->registerAction(new HiddenAction('saveEvent', 'saveEventDialog'));
 
       /* Add ping action */
       $this->registerAction(
@@ -156,7 +155,7 @@ class systemManagement extends management
     // Prepare event to be added
     $events   = argonautEventTypes::get_event_types();
     if (isset($events[$event])) {
-      $this->dialogObject = new argonautAction($event, $mac, !$triggered);
+      $this->dialogObject = new argonautAction($this, $event, $mac, !$triggered);
 
       if ($triggered) {
         $res = $o_queue->append($this->dialogObject);
@@ -225,41 +224,6 @@ class systemManagement extends management
       }
       msg_dialog::display(_('Ping results'), $msg, INFO_DIALOG);
     }
-  }
-
-  /*! \brief  Save event dialogs.
-   *          And append the new Argonaut event.
-   */
-  function saveEventDialog ()
-  {
-    $this->dialogObject->save_object();
-    $msgs = $this->dialogObject->check();
-    if (count($msgs)) {
-      msg_dialog::displayChecks($msgs);
-      return;
-    }
-    if ($this->siActive) {
-      $o_queue = new supportDaemon();
-      $o_queue->append($this->dialogObject);
-      if ($o_queue->is_error()) {
-        msg_dialog::display(_('Infrastructure service'), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
-      }
-      $this->closeDialogs();
-    }
-  }
-
-  /*! \brief  Detects actions/events send by the ui
-   *           and the corresponding targets.
-   */
-  function detectPostActions (): array
-  {
-    $action = parent::detectPostActions();
-    if (isset($_POST['save_event_dialog'])) {
-      $action['action'] = 'saveEvent';
-    } elseif (isset($_POST['abort_event_dialog'])) {
-      $action['action'] = 'cancel';
-    }
-    return $action;
   }
 
   function handleSubAction (array $action): bool
