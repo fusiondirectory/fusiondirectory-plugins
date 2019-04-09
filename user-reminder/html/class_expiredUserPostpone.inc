@@ -153,11 +153,14 @@ class expiredUserPostpone extends standAlonePage
     if (isset($userTabs->by_object['mailAccount'])) {
       $email_address  = $userTabs->by_object['mailAccount']->mail;
     } elseif ($this->use_alternate && isset($userTabs->by_object['mailAccount']) && !empty($userTabs->by_object['mailAccount']->gosaMailAlternateAddress)) {
-      $email_address  = reset($userTabs->by_object['mailAccount']->gosaMailAlternateAddress);
+      $email_address  = $userTabs->by_object['mailAccount']->gosaMailAlternateAddress;
     } elseif (isset($userTabs->by_object['supannAccount']) && !empty($userTabs->by_object['supannAccount']->supannAutreMail)) {
-      $email_address  = reset($userTabs->by_object['supannAccount']->supannAutreMail);
+      $email_address  = $userTabs->by_object['supannAccount']->supannAutreMail;
     } elseif (isset($userTabs->by_object['personalInfo']) && !empty($userTabs->by_object['personalInfo']->fdPrivateMail)) {
       $email_address  = $userTabs->by_object['personalInfo']->fdPrivateMail;
+    }
+    if (is_array($email_address)) {
+      $email_address = reset($email_address);
     }
 
     $manager_mail = '';
