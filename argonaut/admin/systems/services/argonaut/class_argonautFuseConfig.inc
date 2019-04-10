@@ -151,7 +151,7 @@ class argonautFuseConfig extends simpleService
     unset($plugin);
   }
 
-  function set_acl_base ($base)
+  function set_acl_base (string $base)
   {
     parent::set_acl_base($base);
     foreach ($this->plugin as &$plugin) {
