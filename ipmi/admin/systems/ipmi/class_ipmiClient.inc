@@ -28,6 +28,8 @@ class ipmiClient extends simplePlugin
     return array(
       'plShortName'     => _('IPMI client'),
       'plDescription'   => _('Edit IPMI client settings'),
+      'plIcon'          => 'geticon.php?context=applications&icon=ipmi&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=ipmi&size=16',
       'plSelfModify'    => FALSE,
       'plCategory'      => array('workstation','server'),
       'plObjectType'    => array('workstation','server'),
