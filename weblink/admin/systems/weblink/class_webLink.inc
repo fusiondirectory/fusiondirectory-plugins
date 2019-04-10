@@ -30,6 +30,8 @@ class webLink extends simplePlugin
     return array(
       'plShortName'     => _('Web link'),
       'plDescription'   => _('Edit web link'),
+      'plIcon'          => 'geticon.php?context=applications&icon=weblink&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=weblink&size=16',
       'plSelfModify'    => FALSE,
       'plObjectType'    => array('workstation','server','ipmi','component','printer'),
 
