@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ServerService extends simpleManagement
+class servicesManagement extends management implements SimpleTab
 {
   static public $actionStatus = [
     'start'   => 'running',
@@ -28,37 +29,45 @@ class ServerService extends simpleManagement
     'status'  => '',
   ];
 
-  protected $departmentBrowser      = FALSE;
-  protected $departmentRootVisible  = FALSE;
-  protected $baseMode               = FALSE;
-
-  protected $autoFilter   = FALSE;
-  protected $autoActions  = FALSE;
-
-  var $ignore_account   = TRUE;
-  var $skipFooter       = TRUE;
-  var $skipHeader       = TRUE;
-  var $skipCpHandler    = TRUE;
-  var $plugins          = [];
-  var $current          = "";
-  var $dialog           = FALSE;
-  var $read_only        = FALSE;
-  var $backup           = NULL;
-  var $acl;
-  var $cn;
-  var $parent;
-  var $acl_category     = "";
-  var $acl_base         = "";
+  protected $skipCpHandler     = TRUE;
 
   public static $skipSnapshots = TRUE;
 
-  var $is_account;
+  public static $skipTemplates = TRUE;
+
+  protected $skipConfiguration = TRUE;
+
+  /* Vars needed for simpleTabs */
+  public $is_account      = TRUE;
+  public $ignore_account  = TRUE;
+  public $dn;
+  public $is_template     = FALSE;
+  public $parent          = NULL;
+  public $acl_base        = '';
+  public $acl_category    = '';
+
+  protected $plugins      = [];
+  protected $current      = '';
+  protected $dialog       = FALSE;
+  protected $backup       = NULL;
+
+  var $read_only      = FALSE;
+  var $acl;
+  var $cn;
+
+  /* Default columns */
+  public static $columns = [
+    ['Column',        ['attributes' => 'ServiceStatusColumn', 'label' => '!']],
+    ['LinkColumn',    ['attributes' => 'Message',             'label' => 'Description']],
+    ['ActionsColumn', ['label' => 'Actions']],
+  ];
 
   static function plInfo (): array
   {
     return [
       'plShortName'   => _('Services'),
       'plDescription' => _('Server services'),
+      'plIcon'        => '',
       'plObjectType'  => ['server'],
       'plPrority'     => 5,
 
@@ -66,7 +75,7 @@ class ServerService extends simpleManagement
     ];
   }
 
-  function __construct ($dn, $object, $parent = NULL)
+  function __construct (string $dn, $object, $parent = NULL)
   {
     global $config;
 
@@ -79,84 +88,165 @@ class ServerService extends simpleManagement
     /* Initialize acl base */
     $this->set_acl_base($this->dn);
 
-    $this->filterXMLPath  = get_template_path('serverService-filter.xml', TRUE, dirname(__FILE__));
-    $this->listXMLPath    = get_template_path('serverService-list.xml',   TRUE, dirname(__FILE__));
-
     // Initialize list of used and useable services.
     foreach ($config->data['TABS']['SERVERSERVICE'] as $plug) {
       if (class_available($plug['CLASS'])) {
         $name = $plug['CLASS'];
 
         $this->plugins[$name] = new $name($dn, $this);
-
-        /* Capture all service objectClasses, necessary for acl handling */
-        if (isset($this->plugins[$name]->objectclasses)) {
-          foreach ($this->plugins[$name]->objectclasses as $oc) {
-            $this->objectclasses[] = $oc;
-          }
-        }
       }
     }
 
     uasort($this->plugins,
       function($a, $b)
       {
-        $aName = get_class($a);
-        $bName = get_class($b);
-        if (isset($a->DisplayName)) {
-          $aName = $a->DisplayName;
-        }
-        if (isset($b->DisplayName)) {
-          $bName = $b->DisplayName;
-        }
-        return strcmp($aName, $bName);
+        return strcmp($a->DisplayName ?? get_class($a), $b->DisplayName ?? get_class($b));
       }
     );
 
-    parent::__construct();
+    parent::__construct([]);
   }
 
-  function configureHeadpage ()
+  protected function setUpListing ()
   {
-    parent::configureHeadpage();
-    $this->headpage->registerElementFilter('filterServiceStatus', 'ServerService::filterServiceStatus');
+    /* Set baseMode to FALSE */
+    $this->listing  = new managementListing($this, FALSE);
+  }
 
-    $this->registerAction('new',                'newService');
-    foreach ($this->plugins as $name => $obj) {
-      $this->registerAction('new_'.$name,       'newService');
-    }
-    $this->registerAction('remove',             'removeService');
-    $this->registerAction('saveService',        'saveService');
-    $this->registerAction('cancelService',      'cancelEdit');
-    $this->registerAction('status',             'updateServiceStatus');
-    $this->registerAction('restart',            'updateServiceStatus');
-    $this->registerAction('stop',               'updateServiceStatus');
-    $this->registerAction('start',              'updateServiceStatus');
+  protected function setUpFilter ()
+  {
+    $this->filter   = new servicesManagementFilter($this);
+  }
+
+  protected function configureActions ()
+  {
     $this->updateActionMenu();
+
+    $this->registerAction(
+      new ServiceAction(
+        'edit', _('Edit service'), 'geticon.php?context=actions&icon=document-edit&size=16',
+        '1', 'editEntry',
+        ['w'],
+        FALSE, TRUE
+      )
+    );
+
+    $this->registerAction(
+      new ServiceAction(
+        'remove', _('Remove'), 'geticon.php?context=actions&icon=edit-delete&size=16',
+        '+', 'removeService',
+        ['d']
+      )
+    );
+
+    $this->actions['remove']->setSeparator(TRUE);
+
+    // Add export actions
+    $exportMenu = [];
+    foreach ($this->exporters as $action => $exporter) {
+      $exportMenu[] = new ServiceAction(
+        $action, $exporter['label'], $exporter['image'],
+        '0', 'export'
+      );
+    }
+    $this->registerAction(
+      new SubMenuAction(
+        'export', _('Export list'), 'geticon.php?context=actions&icon=document-export&size=16',
+        $exportMenu
+      )
+    );
+
+    $this->actions['export']->setSeparator(TRUE);
+
+    $this->registerAction(
+      new ServiceAction(
+        'status', _('Get status'), 'geticon.php?context=actions&icon=view-refresh&size=16',
+        '1', 'updateServiceStatus',
+        ['simpleServiceStatus:w'],
+        FALSE, TRUE
+      )
+    );
+
+    $this->registerAction(
+      new ServiceAction(
+        'start', _('Start'), 'geticon.php?context=actions&icon=task-start&size=16',
+        '1', 'updateServiceStatus',
+        ['simpleServiceStart:w'],
+        FALSE, TRUE
+      )
+    );
+
+    $this->registerAction(
+      new ServiceAction(
+        'stop', _('Stop'), 'geticon.php?context=actions&icon=task-stop&size=16',
+        '1', 'updateServiceStatus',
+        ['simpleServiceStop:w'],
+        FALSE, TRUE
+      )
+    );
+
+    $this->registerAction(
+      new ServiceAction(
+        'restart', _('Restart'), 'geticon.php?context=actions&icon=view-refresh&size=16',
+        '1', 'updateServiceStatus',
+        ['simpleServiceRestart:w'],
+        FALSE, TRUE
+      )
+    );
+
+    $this->registerAction(new HiddenAction('saveService',   'saveService'));
+    $this->registerAction(new HiddenAction('cancelService', 'cancelEdit'));
+
+    $this->actions['status']->setEnableFunction([$this, 'enableServiceAction']);
+    $this->actions['start']->setEnableFunction([$this, 'enableServiceAction']);
+    $this->actions['stop']->setEnableFunction([$this, 'enableServiceAction']);
+    $this->actions['restart']->setEnableFunction([$this, 'enableServiceAction']);
   }
 
-  function updateActionMenu ()
+  public function enableServiceAction ($action, ListingEntry $entry = NULL): bool
   {
-    $this->headpage->xmlData['actionmenu']['action'][0]['action'] = [];
+    if ($entry === NULL) {
+      return FALSE;
+    } else {
+      switch ($action) {
+        case 'status':
+          return $entry['AllowStatus'][0];
+        case 'start':
+          return $entry['AllowStart'][0];
+        case 'stop':
+          return $entry['AllowStop'][0];
+        case 'restart':
+          return $entry['AllowRestart'][0];
+        default:
+          return FALSE;
+      }
+    }
+  }
+
+  protected function updateActionMenu ()
+  {
+    $category = (empty($this->acl_category) ? 'server' : $this->acl_category);
+    $createMenu   = [];
     $available_services = $this->getAllUnusedServices();
     foreach ($available_services as $class => $label) {
-      $icon = 'geticon.php?context=actions&icon=document-new&size=16';
       $infos = pluglist::pluginInfos($class);
-      if (isset($infos['plIcon'])) {
-        $icon = $infos['plIcon'];
-      }
-      $this->headpage->xmlData['actionmenu']['action'][0]['action'][] = [
-        'name' => 'new_'.$class,
-        'type' => 'entry',
-        'image' => $icon,
-        'label' => $label,
-      ];
+      $createMenu[] = new Action(
+        'new_'.$class, $label, ($infos['plIcon'] ?? 'geticon.php?context=actions&icon=document-new&size=16'),
+        '0', 'newService',
+        [$category.'/'.$class.'/c']
+      );
     }
+    $this->registerAction(
+      new SubMenuAction(
+        'new', _('Create'), 'geticon.php?context=actions&icon=document-new&size=16',
+        $createMenu
+      )
+    );
   }
 
   /*! \brief    Filter extra POST and GET variables for this plugin.
    */
-  function detectPostActions ()
+  function detectPostActions (): array
   {
     $action = parent::detectPostActions();
     if (isset($_POST['SaveService'])) {
@@ -170,10 +260,10 @@ class ServerService extends simpleManagement
   /*! \brief  Edit an existing service here.
    *          Somebody clicked on the paper and pencil icon.
    */
-  function editEntry ($action, array $target, array $all)
+  function editEntry (array $action)
   {
-    $s_entry = array_pop($target);
-    if ($this->plugins[$s_entry]->acl_is_readable("")) {
+    $s_entry = array_pop($action['targets']);
+    if ($this->plugins[$s_entry]->acl_is_readable('')) {
       $this->backup       = get_object_vars($this->plugins[$s_entry]);
       $this->dialogObject = $this->plugins[$s_entry];
       $this->dialog       = TRUE;
@@ -181,10 +271,10 @@ class ServerService extends simpleManagement
     }
   }
 
-  /*! \brief  Editing an object was caneled.
+  /*! \brief  Editing an object was canceled.
    *          Close dialogs/tabs and remove locks.
    */
-  protected function cancelEdit ()
+  function cancelEdit ()
   {
     if (($this->backup == NULL) && $this->current) {
       $this->plugins[$this->current] = new $this->current($this->dn, $this);
@@ -202,10 +292,10 @@ class ServerService extends simpleManagement
 
   /*! \brief  Let the user create a new service
    */
-  function newService ($action = '')
+  function newService (array $action)
   {
     $this->closeDialogs();
-    $serv = preg_replace('/^new_/', '', $action);
+    $serv = preg_replace('/^new_/', '', $action['action']);
     $this->plugins[$serv]->is_account = TRUE;
     $this->dialogObject               = $this->plugins[$serv];
     $this->current                    = $serv;
@@ -214,7 +304,7 @@ class ServerService extends simpleManagement
 
   /*! \brief  Save the currently edited service.
    */
-  function saveService ()
+  function saveService (array $action)
   {
     $this->dialogObject->save_object();
     $msgs = $this->dialogObject->check();
@@ -237,34 +327,25 @@ class ServerService extends simpleManagement
   {
     parent::closeDialogs();
     $this->dialog = FALSE;
-    /* Get our dn back */
-    $this->dn     = $this->last_dn;
     set_object_info($this->dn);
   }
 
   /*! \brief    Remove the selected service(s)
    */
-  protected function removeService ($action, array $target)
+  function removeService (array $action)
   {
-    foreach ($target as $s_entry) {
+    foreach ($action['targets'] as $s_entry) {
       $new_obj = new $s_entry($this->dn, $this);
       $new_obj->set_acl_base($this->acl_base);
-      $new_obj->set_acl_category(preg_replace("/\/$/", "", $this->acl_category));
+      $new_obj->set_acl_category(preg_replace('/\/$/', '', $this->acl_category));
       $tmp = $new_obj->getListEntry();
 
       /* Check if we are allowed to remove this service */
-      if ($tmp['AllowRemove']) {
+      if ($tmp['AllowRemove'][0]) {
         $this->plugins[$s_entry]              = $new_obj;
         $this->plugins[$s_entry]->is_account  = FALSE;
       }
     }
-  }
-
-  function renderList ()
-  {
-    /* Save services in session, will be used by filterServerService when updating list */
-    session::set('ServerService', $this->plugins);
-    return parent::renderList();
   }
 
   function updateServicesVars ($service)
@@ -278,7 +359,7 @@ class ServerService extends simpleManagement
 
   /*! \brief    Updates the status for a list of services.
    */
-  function updateServiceStatus ($action, array $target)
+  function updateServiceStatus (array $action)
   {
     /* Skip if this is a new server */
     if ($this->dn == 'new') {
@@ -287,21 +368,21 @@ class ServerService extends simpleManagement
     }
 
     /* Is this an existing action */
-    if (!isset(static::$actionStatus[$action])) {
-      msg_dialog::display(_('Error'), sprintf(_('Unknown action "%s"'), $action), ERROR_DIALOG);
+    if (!isset(static::$actionStatus[$action['action']])) {
+      msg_dialog::display(_('Error'), sprintf(_('Unknown action "%s"'), $action['action']), ERROR_DIALOG);
       return;
     }
 
     /* Handle state changes for services */
-    foreach ($target as $service) {
-      $this->updateSingleServiceStatus($action, $service);
+    foreach ($action['targets'] as $service) {
+      $this->updateSingleServiceStatus($action['action'], $service);
     }
   }
 
   /*! \brief    Updates the status of a service and
    *             calls an external hook if specified in fusiondirectory.conf
    */
-  private function updateSingleServiceStatus ($action, $service)
+  private function updateSingleServiceStatus (string $action, string $service)
   {
     if ($this->plugins[$service]->is_account) {
       $this->updateServicesVars($service);
@@ -355,16 +436,12 @@ class ServerService extends simpleManagement
   /*! \brief   Returns a list of all used services
    *            CLASSNAME => _($this->plugins[*]->DisplayName);
    */
-  function getAllUsedServices ()
+  function getAllUsedServices (): array
   {
     $ret = [];
     foreach ($this->plugins as $name => $obj) {
       if ($obj->is_account) {
-        if (isset($obj->DisplayName)) {
-          $ret[$name] = $obj->DisplayName;
-        } else {
-          $ret[$name] = $name;
-        }
+        $ret[$name] = ($obj->DisplayName ?? $name);
       }
     }
     return $ret;
@@ -372,7 +449,7 @@ class ServerService extends simpleManagement
 
   /*! \brief    Returns a list of all unused services.
    */
-  function getAllUnusedServices ()
+  function getAllUnusedServices (): array
   {
     $tmp = $this->getAllUsedServices();
     $pool_of_ocs = [];
@@ -390,27 +467,29 @@ class ServerService extends simpleManagement
       }
 
       /* Skip all pluigns that will lead into conflicts */
-      $conflicts = [];
-      if (isset($obj->conflicts)) {
-        $conflicts = $obj->conflicts;
-      }
+      $conflicts = ($obj->conflicts ?? []);
       $conflicts[] = get_class($obj);
-      if (count(array_uintersect($conflicts, $pool_of_ocs, "strcasecmp"))) {
+      if (count(array_uintersect($conflicts, $pool_of_ocs, 'strcasecmp'))) {
         continue;
       }
 
-      if (isset($obj->DisplayName)) {
-        $ret[$name] = $obj->DisplayName;
-      } else {
-        $ret[$name] = $name;
-      }
+      $ret[$name] = ($obj->DisplayName ?? $name);
     }
     return $ret;
   }
 
+  /*! \brief    Returns the services list.
+   *
+   * Used in the filter class for services class_servicesManagementFilter.inc
+   */
+  public function getServiceList ()
+  {
+    return $this->plugins;
+  }
+
   /*! \brief    No checks here.
    */
-  function check ()
+  public function check (): array
   {
     return [];
   }
@@ -424,7 +503,7 @@ class ServerService extends simpleManagement
 
   /*! \brief Remove all active services
    */
-  function remove ($fulldelete = FALSE)
+  public function remove (bool $fulldelete = FALSE): array
   {
     $errors = [];
     foreach ($this->plugins as $name => $obj) {
@@ -441,7 +520,7 @@ class ServerService extends simpleManagement
 
   /*! \brief    Save all active services
    */
-  function save ()
+  public function save (): array
   {
     $errors = [];
     foreach ($this->plugins as $name => $obj) {
@@ -461,36 +540,35 @@ class ServerService extends simpleManagement
 
   /*! \brief    Prepare active services to be copied.
    */
-  function resetCopyInfos ()
+  public function resetCopyInfos ()
   {
     $this->dn = 'new';
-    foreach ($this->plugins as &$plugin) {
-      $plugin->resetCopyInfos();
+    foreach ($this->plugins as $obj) {
+      $obj->resetCopyInfos();
     }
-    unset($plugin);
   }
 
   /*! \brief    Forward plugin acls
    */
-  function set_acl_base ($base)
+  public function set_acl_base (string $base)
   {
     $this->acl_base = $base;
-    foreach ($this->plugins as $name => $obj) {
-      $this->plugins[$name]->set_acl_base($base);
+    foreach ($this->plugins as $obj) {
+      $obj->set_acl_base($base);
     }
   }
 
   /*! \brief    Forward plugin acls
    */
-  function set_acl_category (string $category)
+  public function set_acl_category (string $category)
   {
     $this->acl_category = $category;
-    foreach ($this->plugins as $name => $obj) {
-      $this->plugins[$name]->set_acl_category($category);
+    foreach ($this->plugins as $obj) {
+      $obj->set_acl_category($category);
     }
   }
 
-  function setTemplate (bool $bool)
+  public function setTemplate (bool $bool)
   {
     foreach ($this->plugins as &$plugin) {
       $plugin->setTemplate($bool);
@@ -498,47 +576,88 @@ class ServerService extends simpleManagement
     unset($plugin);
   }
 
-  function getRequiredAttributes ()
+  public function getRequiredAttributes (): array
   {
     return [];
   }
 
-  function adapt_from_template ($attrs, $skip = [])
+  public function adapt_from_template (array $attrs, array $skip = [])
   {
-    foreach ($this->plugins as &$plugin) {
-      $plugin->adapt_from_template($attrs, $skip);
+    foreach ($this->plugins as $obj) {
+      $obj->adapt_from_template($attrs, $skip);
     }
-    unset($plugin);
   }
 
-  /*! \brief    Returns the services list.
-   *            Used in the filter class for services.
-   *             class_filterServerService.inc
+  /*!
+   * \brief Can we delete the object
+   *
+   * Only used on main tab
+   *
+   * \param string $base
    */
-  static function getServiceList ()
+  public function acl_is_removeable (string $base = NULL): bool
   {
-    return session::get('ServerService');
-  }
-
-  /*! \brief    Returns an image for the service status.
-   *            Used in the service list class.
-   */
-  static function filterServiceStatus ($a, $b, $c, $d)
-  {
-    $img = '';
-    if (isset($d['0'])) {
-      switch ($d[0]) {
-        case 'stopped':
-          $img = 'geticon.php?context=status&icon=task-stopped&size=16';
-          break;
-        case 'running':
-          $img = 'geticon.php?context=status&icon=task-running&size=16';
-          break;
+    foreach ($this->plugins as $name => $obj) {
+      $this->updateServicesVars($name);
+      if ($obj->initially_was_account && !$obj->acl_is_removeable($base)) {
+        return FALSE;
       }
     }
-    if (!empty($img)) {
-      return '<img src="'.$img.'"/>';
+    return TRUE;
+  }
+
+  /*!
+   * \brief Sets whether the opened objet has an edit button
+   *
+   * \param bool $needEditMode
+   */
+  public function setNeedEditMode (bool $needEditMode)
+  {
+  }
+
+  /*!
+   * \brief Is there a modal dialog opened
+   */
+  public function is_modal_dialog (): bool
+  {
+    return $this->dialogOpened();
+  }
+
+  /*!
+   * \brief Returns TRUE if this attribute should be asked in the creation by template dialog
+   */
+  public function showInTemplate (string $attr, array $templateAttrs): bool
+  {
+    return FALSE;
+  }
+
+  /*!
+   * \brief Deserialize values
+   */
+  public function deserializeValues (array $values, bool $checkAcl = TRUE)
+  {
+  }
+
+  /*!
+   * \brief Get the acl permissions for an attribute or the plugin itself
+   */
+  public function aclGetPermissions ($attribute = '0', string $base = NULL, bool $skipWrite = FALSE): string
+  {
+    return '';
+  }
+
+  /*!
+   * \brief Merge in objectClasses needed by this tab
+   *
+   *  Used by prepare_save and template::apply
+   */
+  public function mergeObjectClasses (array $oc): array
+  {
+    foreach ($this->plugins as $plugin) {
+      if ($plugin->is_account || $plugin->ignore_account) {
+        $oc = $plugin->mergeObjectClasses($oc);
+      }
     }
-    return '&nbsp;';
+    return $oc;
   }
 }

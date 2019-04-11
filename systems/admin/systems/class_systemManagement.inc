@@ -232,12 +232,12 @@ class systemManagement extends management
       return TRUE;
     } elseif (preg_match('/^service_([a-zA-Z_]+)$/', $action['subaction'], $m)) {
       $service = $m[1];
-      if (isset($this->tabObject->by_object['ServerService'])) {
-        $this->tabObject->current = 'ServerService';
+      if (isset($this->tabObject->by_object['servicesManagement'])) {
+        $this->tabObject->current = 'servicesManagement';
         $all = ['action'  => 'edit', 'targets' => [$service]];
-        $this->tabObject->by_object['ServerService']->editEntry($all['action'], $all['targets'], $all);
+        $this->tabObject->by_object['servicesManagement']->editEntry($all);
       } else {
-        trigger_error("Unknown tab: ServerService");
+        trigger_error('Unknown tab: servicesManagement');
       }
       return TRUE;
     }

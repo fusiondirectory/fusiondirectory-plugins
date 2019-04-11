@@ -145,7 +145,7 @@ class argonautServer extends simpleService
     );
   }
 
-  /*! \brief Get service information for serverService plugin */
+  /*! \brief Get service information */
   function getListEntry ()
   {
     $fields = parent::getListEntry();

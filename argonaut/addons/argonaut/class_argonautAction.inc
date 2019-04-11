@@ -28,8 +28,11 @@ class MacsAttribute extends GenericDialogAttribute
   }
 }
 
-class argonautAction extends simplePlugin
+class argonautAction extends ManagementDialog
 {
+  protected $post_cancel = 'abort_event_dialog';
+  protected $post_finish = 'save_event_dialog';
+
   static function plInfo (): array
   {
     return [
@@ -152,21 +155,6 @@ class argonautAction extends simplePlugin
     parent::loadAttributes();
   }
 
-  function save_object ()
-  {
-    parent::save_object();
-    if (isset($_POST['abort_event_dialog'])) {
-      $this->handle_cancel();
-    } elseif (isset($_POST['save_event_dialog'])) {
-      $this->handle_finish();
-    }
-  }
-
-  function execute (): string
-  {
-    return parent::execute().$this->getFooter();
-  }
-
   protected function handle_finish ()
   {
     $msgs = $this->check();
@@ -182,25 +170,6 @@ class argonautAction extends simplePlugin
       }
       $this->parent->closeDialogs();
     }
-  }
-
-  protected function handle_cancel ()
-  {
-    $this->parent->cancelEdit();
-  }
-
-  /*! \brief  Returns the plugin footer (save cancel), displayed in the template.
-    @return String  HTML footer part.
-   */
-  protected function getFooter ()
-  {
-    if (!$this->displayPlugin) {
-      return '';
-    }
-    return  '<p class="plugbottom">'.
-            ' <input type="submit" name="save_event_dialog" value="'.msgPool::saveButton().'"/>'.
-            ' <input type="submit" formnovalidate="formnovalidate" name="abort_event_dialog" value="'.msgPool::cancelButton().'"/>'.
-            '</p>';
   }
 
   /*! brief  Returns an array containing all attributes \
