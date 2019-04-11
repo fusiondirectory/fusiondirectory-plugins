@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class servicesManagement extends management implements simpleTab
+class servicesManagement extends management implements SimpleTab
 {
   static public $actionStatus = [
     'start'   => 'running',
