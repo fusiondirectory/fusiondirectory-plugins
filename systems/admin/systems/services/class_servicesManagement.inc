@@ -57,8 +57,8 @@ class servicesManagement extends management implements SimpleTab
 
   /* Default columns */
   public static $columns = [
-    ['Column',        ['attributes' => 'Status',  'label' => '!']],
-    ['LinkColumn',    ['attributes' => 'Message', 'label' => 'Description']],
+    ['Column',        ['attributes' => 'ServiceStatusColumn', 'label' => '!']],
+    ['LinkColumn',    ['attributes' => 'Message',             'label' => 'Description']],
     ['ActionsColumn', ['label' => 'Actions']],
   ];
 
@@ -124,6 +124,15 @@ class servicesManagement extends management implements SimpleTab
 
     $this->registerAction(
       new Action(
+        'edit', _('Edit service'), 'geticon.php?context=actions&icon=document-edit&size=16',
+        '1', 'editEntry',
+        [],
+        FALSE, TRUE
+      )
+    );
+
+    $this->registerAction(
+      new Action(
         'remove', _('Remove'), 'geticon.php?context=actions&icon=edit-delete&size=16',
         '+', 'removeService',
         []
@@ -180,15 +189,6 @@ class servicesManagement extends management implements SimpleTab
       new Action(
         'restart', _('Restart'), 'geticon.php?context=actions&icon=view-refresh&size=16',
         '1', 'updateServiceStatus',
-        [],
-        FALSE, TRUE
-      )
-    );
-
-    $this->registerAction(
-      new Action(
-        'edit', _('Edit service'), 'geticon.php?context=actions&icon=document-edit&size=16',
-        '1', 'editEntry',
         [],
         FALSE, TRUE
       )
@@ -634,27 +634,5 @@ class servicesManagement extends management implements SimpleTab
       }
     }
     return $oc;
-  }
-
-  /*! \brief    Returns an image for the service status.
-   *            Used in the service list class.
-   */
-  static function filterServiceStatus ($a, $b, $c, $d)
-  {
-    $img = '';
-    if (isset($d['0'])) {
-      switch ($d[0]) {
-        case 'stopped':
-          $img = 'geticon.php?context=status&icon=task-stopped&size=16';
-          break;
-        case 'running':
-          $img = 'geticon.php?context=status&icon=task-running&size=16';
-          break;
-      }
-    }
-    if (!empty($img)) {
-      return '<img src="'.$img.'"/>';
-    }
-    return '&nbsp;';
   }
 }
