@@ -123,19 +123,19 @@ class servicesManagement extends management implements SimpleTab
     $this->updateActionMenu();
 
     $this->registerAction(
-      new Action(
+      new ServiceAction(
         'edit', _('Edit service'), 'geticon.php?context=actions&icon=document-edit&size=16',
         '1', 'editEntry',
-        [],
+        ['w'],
         FALSE, TRUE
       )
     );
 
     $this->registerAction(
-      new Action(
+      new ServiceAction(
         'remove', _('Remove'), 'geticon.php?context=actions&icon=edit-delete&size=16',
         '+', 'removeService',
-        []
+        ['d']
       )
     );
 
@@ -144,7 +144,7 @@ class servicesManagement extends management implements SimpleTab
     // Add export actions
     $exportMenu = [];
     foreach ($this->exporters as $action => $exporter) {
-      $exportMenu[] = new Action(
+      $exportMenu[] = new ServiceAction(
         $action, $exporter['label'], $exporter['image'],
         '0', 'export'
       );
@@ -159,43 +159,68 @@ class servicesManagement extends management implements SimpleTab
     $this->actions['export']->setSeparator(TRUE);
 
     $this->registerAction(
-      new Action(
+      new ServiceAction(
         'status', _('Get status'), 'geticon.php?context=actions&icon=view-refresh&size=16',
         '1', 'updateServiceStatus',
-        [],
+        ['simpleServiceStatus:w'],
         FALSE, TRUE
       )
     );
 
     $this->registerAction(
-      new Action(
+      new ServiceAction(
         'start', _('Start'), 'geticon.php?context=actions&icon=task-start&size=16',
         '1', 'updateServiceStatus',
-        [],
+        ['simpleServiceStart:w'],
         FALSE, TRUE
       )
     );
 
     $this->registerAction(
-      new Action(
+      new ServiceAction(
         'stop', _('Stop'), 'geticon.php?context=actions&icon=task-stop&size=16',
         '1', 'updateServiceStatus',
-        [],
+        ['simpleServiceStop:w'],
         FALSE, TRUE
       )
     );
 
     $this->registerAction(
-      new Action(
+      new ServiceAction(
         'restart', _('Restart'), 'geticon.php?context=actions&icon=view-refresh&size=16',
         '1', 'updateServiceStatus',
-        [],
+        ['simpleServiceRestart:w'],
         FALSE, TRUE
       )
     );
 
     $this->registerAction(new HiddenAction('saveService',   'saveService'));
     $this->registerAction(new HiddenAction('cancelService', 'cancelEdit'));
+
+    $this->actions['status']->setEnableFunction([$this, 'enableServiceAction']);
+    $this->actions['start']->setEnableFunction([$this, 'enableServiceAction']);
+    $this->actions['stop']->setEnableFunction([$this, 'enableServiceAction']);
+    $this->actions['restart']->setEnableFunction([$this, 'enableServiceAction']);
+  }
+
+  public function enableServiceAction ($action, ListingEntry $entry = NULL): bool
+  {
+    if ($entry === NULL) {
+      return FALSE;
+    } else {
+      switch ($action) {
+        case 'status':
+          return $entry['AllowStatus'][0];
+        case 'start':
+          return $entry['AllowStart'][0];
+        case 'stop':
+          return $entry['AllowStop'][0];
+        case 'restart':
+          return $entry['AllowRestart'][0];
+        default:
+          return FALSE;
+      }
+    }
   }
 
   protected function updateActionMenu ()
@@ -246,7 +271,7 @@ class servicesManagement extends management implements SimpleTab
     }
   }
 
-  /*! \brief  Editing an object was caneled.
+  /*! \brief  Editing an object was canceled.
    *          Close dialogs/tabs and remove locks.
    */
   function cancelEdit ()
@@ -316,7 +341,7 @@ class servicesManagement extends management implements SimpleTab
       $tmp = $new_obj->getListEntry();
 
       /* Check if we are allowed to remove this service */
-      if ($tmp['AllowRemove']) {
+      if ($tmp['AllowRemove'][0]) {
         $this->plugins[$s_entry]              = $new_obj;
         $this->plugins[$s_entry]->is_account  = FALSE;
       }

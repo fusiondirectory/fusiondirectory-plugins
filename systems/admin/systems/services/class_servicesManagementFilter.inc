@@ -64,7 +64,7 @@ class servicesManagementFilter extends managementFilter
         if (!isset($this->parent->dn)) {
           echo "<h1>".get_class($this->parent)."</h1>\n";
         }
-        $entries[$name] = new ListingEntry($this->parent->listing, 'service', $this->parent->dn, $data, $row++);
+        $entries[$name] = new ServiceListingEntry($this->parent->listing, $name, $data, $row++);
       }
     }
     return [$entries, ['service' => count($entries)]];
