@@ -225,7 +225,7 @@ class servicesManagement extends management implements SimpleTab
 
   protected function updateActionMenu ()
   {
-    $acl_category = (empty($this->acl_category) ? 'server' : $this->acl_category);
+    $category = (empty($this->acl_category) ? 'server' : $this->acl_category);
     $createMenu   = [];
     $available_services = $this->getAllUnusedServices();
     foreach ($available_services as $class => $label) {
@@ -233,7 +233,7 @@ class servicesManagement extends management implements SimpleTab
       $createMenu[] = new Action(
         'new_'.$class, $label, ($infos['plIcon'] ?? 'geticon.php?context=actions&icon=document-new&size=16'),
         '0', 'newService',
-        [$acl_category.'/'.$class.'/c']
+        [$category.'/'.$class.'/c']
       );
     }
     $this->registerAction(
