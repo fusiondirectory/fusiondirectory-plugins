@@ -35,6 +35,8 @@ class servicesManagement extends management implements simpleTab
 
   public static $skipTemplates = TRUE;
 
+  protected $skipConfiguration = TRUE;
+
   /* Vars needed for simpleTabs */
   public $is_account      = TRUE;
   public $ignore_account  = TRUE;
