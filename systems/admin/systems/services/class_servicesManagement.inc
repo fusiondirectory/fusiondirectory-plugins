@@ -295,7 +295,10 @@ class servicesManagement extends management implements SimpleTab
   function newService (array $action)
   {
     $this->closeDialogs();
-    $serv = preg_replace('/^new_/', '', $action['action']);
+    $serv = $action['subaction'];
+    if (!isset($this->plugins[$serv])) {
+      throw new FusionDirectoryException('Unknown service '.$serv);
+    }
     $this->plugins[$serv]->is_account = TRUE;
     $this->dialogObject               = $this->plugins[$serv];
     $this->current                    = $serv;
