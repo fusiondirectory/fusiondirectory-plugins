@@ -83,8 +83,9 @@ class argonautQueueFilter extends managementFilter
       }
 
       $dn           = $entry['MACADDRESS'].','.$entry['TIMESTAMP'];
-      /* We give $acl_base as the dn to ListingEntry so that its ACLs checks works correctly */
-      $entries[$dn] = new ListingEntry($this->parent->listing, 'argonautTask', $acl_base, $entry, $row++);
+      $entries[$dn] = new ListingEntry($this->parent->listing, 'argonautTask', $dn, $entry, $row++);
+      /* Set ACL base so that the ACLs checks works correctly ($dn is not a dn) */
+      $entries[$dn]->aclBase = $acl_base;
     }
 
     return [$entries, ['argonautTask' => count($entries)]];
