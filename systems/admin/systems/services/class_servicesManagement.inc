@@ -344,7 +344,7 @@ class servicesManagement extends management implements SimpleTab
       $tmp = $new_obj->getListEntry();
 
       /* Check if we are allowed to remove this service */
-      if ($tmp['AllowRemove'][0]) {
+      if ($tmp['AllowRemove']) {
         $this->plugins[$s_entry]              = $new_obj;
         $this->plugins[$s_entry]->is_account  = FALSE;
       }
