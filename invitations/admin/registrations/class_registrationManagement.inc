@@ -70,9 +70,9 @@ class registrationManagement extends management
   ];
 
   public $neededAttrs = [
-    'fdRegistrationUserDN'        => '1',
-    'fdRegistrationInvitationDN'  => '1',
-    'fdRegistrationState'         => '1',
+    'fdRegistrationUserDN'        => '*',
+    'fdRegistrationInvitationDN'  => '*',
+    'fdRegistrationState'         => '*',
   ];
 
   public static function plInfo (): array
@@ -149,20 +149,20 @@ class registrationManagement extends management
       }
 
       // Lock user object
-      if ($user = get_lock($entry['fdRegistrationUserDN'])) {
+      if ($user = get_lock($entry['fdRegistrationUserDN'][0])) {
         msg_dialog::display(
           _('Error'),
-          sprintf(_('Cannot move %s. It has been locked by %s.'), $entry['fdRegistrationUserDN'], $user),
+          sprintf(_('Cannot move %s. It has been locked by %s.'), $entry['fdRegistrationUserDN'][0], $user),
           ERROR_DIALOG
         );
         del_lock($dn);
         continue;
       }
-      add_lock($entry['fdRegistrationUserDN'], $ui->dn);
+      add_lock($entry['fdRegistrationUserDN'][0], $ui->dn);
 
       // TODO Détermine la date de peremption
       // Open the user
-      $userTabObject = objects::open($entry['fdRegistrationUserDN'], 'user');
+      $userTabObject = objects::open($entry['fdRegistrationUserDN'][0], 'user');
       // Move it with the other users
       $form = $this->getFormFromRegistration($entry);
       $userTabObject->getBaseObject()->base = preg_replace(
@@ -175,19 +175,19 @@ class registrationManagement extends management
       $errors = $userTabObject->save();
 
       // Remove the lock for the user object
-      del_lock($entry['fdRegistrationUserDN']);
+      del_lock($entry['fdRegistrationUserDN'][0]);
 
       // Unlock the user password if needed
       $pwds = objects::ls('user', 'userPassword', $userTabObject->dn, '(userPassword=*)', FALSE, 'base');
       if (!empty($pwds)) {
         $pwd    = reset($pwds);
-        $method = passwordMethod::get_method($pwd, $entry['fdRegistrationUserDN']);
+        $method = passwordMethod::get_method($pwd, $entry['fdRegistrationUserDN'][0]);
         if (
             ($method instanceOf passwordMethod) &&
             $method->is_lockable() &&
-            $method->is_locked($entry['fdRegistrationUserDN'])
+            $method->is_locked($entry['fdRegistrationUserDN'][0])
           ) {
-          $success = $method->unlock_account($entry['fdRegistrationUserDN']);
+          $success = $method->unlock_account($entry['fdRegistrationUserDN'][0]);
 
           // Check if everything went fine.
           if (!$success) {
@@ -197,7 +197,7 @@ class registrationManagement extends management
             }
             msg_dialog::display(_('Account locking'),
                 sprintf(_('Unlocking failed using password method "%s". Account "%s" has not been unlocked!'),
-                  $hn, $entry['fdRegistrationUserDN']), ERROR_DIALOG);
+                  $hn, $entry['fdRegistrationUserDN'][0]), ERROR_DIALOG);
           }
         }
       }
@@ -252,23 +252,23 @@ class registrationManagement extends management
       }
 
       // Delete the user
-      if ($user = get_lock($entry['fdRegistrationUserDN'])) {
+      if ($user = get_lock($entry['fdRegistrationUserDN'][0])) {
         msg_dialog::display(
           _('Error'),
-          sprintf(_('Cannot delete %s. It has been locked by %s.'), $entry['fdRegistrationUserDN'], $user),
+          sprintf(_('Cannot delete %s. It has been locked by %s.'), $entry['fdRegistrationUserDN'][0], $user),
           ERROR_DIALOG
         );
         del_lock($dn);
         continue;
       }
-      add_lock($entry['fdRegistrationUserDN'], $ui->dn);
+      add_lock($entry['fdRegistrationUserDN'][0], $ui->dn);
 
       // Delete the object
-      $userTabObject = objects::open($entry['fdRegistrationUserDN'], 'user');
+      $userTabObject = objects::open($entry['fdRegistrationUserDN'][0], 'user');
       $success = $userTabObject->delete();
 
       // Remove the lock for the user object
-      del_lock($entry['fdRegistrationUserDN']);
+      del_lock($entry['fdRegistrationUserDN'][0]);
       if ($success) {
         // Upon success, update registration object status and history
         $tabObject  = objects::open($dn, 'registration');
@@ -293,7 +293,7 @@ class registrationManagement extends management
   {
     if ($entry !== NULL) {
       /* For entries */
-      return ($entry['fdRegistrationState'] == 'filled');
+      return ($entry['fdRegistrationState'][0] == 'filled');
     } else {
       /* For action menu */
       return TRUE;
@@ -307,13 +307,13 @@ class registrationManagement extends management
       [
         'fdInvitationFormDN'  => 1
       ],
-      $entry['fdRegistrationInvitationDN'],
+      $entry['fdRegistrationInvitationDN'][0],
       '', FALSE, 'base'
     );
     if (count($invitations) <= 0) {
-      throw new FusionDirectoryException(sprintf(_('Could not find invitation "%s"'), $entry['fdRegistrationInvitationDN']));
+      throw new FusionDirectoryException(sprintf(_('Could not find invitation "%s"'), $entry['fdRegistrationInvitationDN'][0]));
     } elseif (count($invitations) > 1) {
-      throw new FusionDirectoryException(sprintf(_('Found several invitations "%s"'), $entry['fdRegistrationInvitationDN']));
+      throw new FusionDirectoryException(sprintf(_('Found several invitations "%s"'), $entry['fdRegistrationInvitationDN'][0]));
     }
     $invitation = reset($invitations);
     /* Search for the form object */

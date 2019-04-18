@@ -21,7 +21,7 @@
 
 class dnsManagement extends management
 {
-  public $neededAttrs = ['sOARecord' => 1];
+  public $neededAttrs = ['sOARecord' => '*'];
 
   /* Default columns */
   public static $columns = [
@@ -73,7 +73,7 @@ class dnsManagement extends management
         /* Only refresh zones */
         throw new FusionDirectoryException(sprintf(_('Invalid target "%s" passed for action "%s"'), $zoneDn, _('Refresh Zone')));
       }
-      list ($fqdn) = explode(' ', $entry['sOARecord']);
+      list ($fqdn) = explode(' ', $entry['sOARecord'][0]);
       $servers = static::findServerByFQDN($fqdn, $zoneDn);
       if (count($servers) > 1) {
         msg_dialog::display(_('Could not run ldap2zone'), _('More than one server matches the SOA'), ERROR_DIALOG);
