@@ -78,7 +78,7 @@ class ServiceAction extends Action
           $checkAcl .= $ui->get_permissions($dn, $acl['category'].'/'.$class, $acl['attribute']);
         }
       } else {
-        $checkAcl = $ui->get_permissions($entry->dn, $acl['category'].'/'.$acl['class'], $acl['attribute']);
+        $checkAcl = $ui->get_permissions($entry->aclBase, $acl['category'].'/'.$acl['class'], $acl['attribute']);
       }
 
       // Check rights
