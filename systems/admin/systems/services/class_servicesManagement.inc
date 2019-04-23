@@ -490,6 +490,16 @@ class servicesManagement extends management implements SimpleTab
     return $this->plugins;
   }
 
+  /*! \brief Returns service if activated, FALSE otherwise */
+  public function getServiceObject (string $tab)
+  {
+    if (isset($this->plugins[$tab]) && $this->plugins[$tab]->is_account) {
+      return $this->plugins[$tab];
+    } else {
+      return FALSE;
+    }
+  }
+
   /*! \brief    No checks here.
    */
   public function check (): array
