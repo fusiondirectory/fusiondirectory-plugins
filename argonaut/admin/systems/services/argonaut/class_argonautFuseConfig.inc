@@ -1,8 +1,8 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2016  FusionDirectory
+
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,6 +21,8 @@
 
 class argonautFuseConfig extends simpleService
 {
+  protected $plugin;
+
   static function plInfo (): array
   {
     return [
@@ -94,7 +96,6 @@ class argonautFuseConfig extends simpleService
     }
   }
 
-
   /*! \brief This function display the service and return the html code
    */
   function execute (): string
@@ -106,25 +107,22 @@ class argonautFuseConfig extends simpleService
 
     $display = simplePlugin::execute();
 
-    foreach ($this->plugin as &$plugin) {
+    foreach ($this->plugin as $plugin) {
       $display .= '<p class="seperator plugbottom">&nbsp;</p><div></div>';
       $display .= $plugin->execute();
     }
-    unset($plugin);
 
     return $display.$str;
   }
-
 
   /* Save data to object */
   function save_object ()
   {
     parent::save_object();
-    if (isset($_POST[get_class($this)."_posted"])) {
-      foreach ($this->plugin as &$plugin) {
+    if (isset($_POST[get_class($this).'_posted'])) {
+      foreach ($this->plugin as $plugin) {
         $plugin->save_object();
       }
-      unset($plugin);
     }
   }
 
@@ -132,12 +130,11 @@ class argonautFuseConfig extends simpleService
   {
     $message = parent::check();
 
-    foreach ($this->plugin as &$plugin) {
+    foreach ($this->plugin as $plugin) {
       if ($plugin->is_account) {
         $message = array_merge($message, $plugin->check());
       }
     }
-    unset($plugin);
 
     return $message;
   }
@@ -145,19 +142,17 @@ class argonautFuseConfig extends simpleService
   function set_acl_category (string $cat)
   {
     parent::set_acl_category($cat);
-    foreach ($this->plugin as &$plugin) {
+    foreach ($this->plugin as $plugin) {
       $plugin->set_acl_category($cat);
     }
-    unset($plugin);
   }
 
   function set_acl_base (string $base)
   {
     parent::set_acl_base($base);
-    foreach ($this->plugin as &$plugin) {
+    foreach ($this->plugin as $plugin) {
       $plugin->set_acl_base($base);
     }
-    unset($plugin);
   }
 
   /* Save to LDAP */
@@ -167,8 +162,9 @@ class argonautFuseConfig extends simpleService
     if (!empty($errors)) {
       return $errors;
     }
+
     /* Save objects */
-    foreach ($this->plugin as &$plugin) {
+    foreach ($this->plugin as $plugin) {
       $plugin->dn = $this->dn;
 
       if ($plugin->is_account) {
@@ -177,24 +173,25 @@ class argonautFuseConfig extends simpleService
         $errors = $plugin->remove(FALSE);
       }
       if (!empty($errors)) {
-        msg_dialog::displayChecks($errors);
+        return $errors;
       }
     }
-    unset($plugin);
+
+    return [];
   }
 
   function remove (bool $fulldelete = FALSE): array
   {
     $errors = [];
+
     /* Remove objects */
-    foreach ($this->plugin as &$plugin) {
+    foreach ($this->plugin as $plugin) {
       $plugin->dn = $this->dn;
       $result = $plugin->remove($fulldelete);
       if (!empty($result)) {
         $errors = array_merge($errors, $result);
       }
     }
-    unset($plugin);
 
     if (!empty($errors)) {
       return $errors;
