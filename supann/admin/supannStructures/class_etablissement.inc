@@ -162,7 +162,13 @@ class etablissement extends simplePlugin
     $this->attributesAccess['set_root']->setInitialValue($this->set_root);
   }
 
-  protected function ldap_remove()
+  protected function shouldSave ()
+  {
+    /* We need to call ldap_save if set_root is or was checked, even if nothing else changed */
+    return (parent::shouldSave() || $this->set_root || $this->attributesAccess['set_root']->getInitialValue());
+  }
+
+  protected function ldap_remove ()
   {
     global $config;
     $errors = parent::ldap_remove();
