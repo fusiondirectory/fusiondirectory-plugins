@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014-2018  FusionDirectory
+
+  Copyright (C) 2014-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -88,26 +89,6 @@ class socialHandler_twitter extends socialHandler
   function validate($value)
   {
     return preg_replace('/^@/', '', $value);
-  }
-}
-
-class socialHandler_gplus extends socialHandler
-{
-  static function getName()
-  {
-    return _('Google+');
-  }
-
-  protected $baseurl = 'https://plus.google.com';
-
-  function linkify($value)
-  {
-    return $this->link($this->baseurl.'/+'.$value, '+'.$value);
-  }
-
-  function validate($value)
-  {
-    return preg_replace('/^\+/', '', $value);
   }
 }
 
