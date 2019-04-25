@@ -132,7 +132,7 @@ class sinapsRequest
       'entite' => [
         'supannRefId'               => [],
         'postalAddress'             => '',
-        'supannCodeEntiteParent'    => '',
+        'supannCodeEntiteParent'    => [],
       ],
     ];
 
@@ -194,7 +194,7 @@ class sinapsRequest
           }
           $mereUUID = $this->getUUIDFromReferenceCroisee($identifiantApplication, $lienStructure->referenceCroisee);
           if (!empty($mereUUID)) {
-            $values['entite']['supannCodeEntiteParent'] = $ldapUuidToCodeEntiteCallback($mereUUID)['supannCodeEntite'];
+            $values['entite']['supannCodeEntiteParent'][] = $ldapUuidToCodeEntiteCallback($mereUUID)['supannCodeEntite'];
           }
         }
       }
