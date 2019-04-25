@@ -242,7 +242,7 @@ class sinapsRequest
     if (isset($personne->referenceCroisee->identifiantsExternes)) {
       foreach ($personne->referenceCroisee->identifiantsExternes as $ref) {
         if ($ref->identifiantApplication == $identifiantApplication) {
-          $uuid = $ref->identifiantExterne;
+          $uuid = (string)$ref->identifiantExterne;
         } elseif (in_array($ref->identifiantApplication, $identifiantApplicationSync)) {
           $values['supannAccount']['supannRefId'][] = '{'.$ref->identifiantApplication.'}'.$ref->identifiantExterne;
         }
@@ -272,12 +272,12 @@ class sinapsRequest
       foreach ($personne->rattachements->rattachement as $rattachement) {
         if (isset($rattachement->roles->role)) {
           foreach ($rattachement->roles->role as $role) {
-            if (isset($userRoleExists[$role->typeRole])) {
-              if ($userRoleExists[$role->typeRole] === TRUE) {
+            if (isset($userRoleExists[(string)$role->typeRole])) {
+              if ($userRoleExists[(string)$role->typeRole] === TRUE) {
                 $deletion = FALSE;
                 break 2;
               }
-              if (in_array_ics($role->externe->typeExterne, $userRoleExists[$role->typeRole])) {
+              if (in_array_ics((string)$role->externe->typeExterne, $userRoleExists[(string)$role->typeRole])) {
                 $deletion = FALSE;
                 break 2;
               }
@@ -334,7 +334,7 @@ class sinapsRequest
               trigger_error('Ignore adresse non FR non ETR');
               continue;
             }
-            if ($method->adresse->codeTypeAdresse == 'ADRPERSO') {
+            if ((string)$method->adresse->codeTypeAdresse == 'ADRPERSO') {
               $values['user']['homePostalAddress'] = $adresse;
             } else {
               $values['user']['postalAddress'] = $adresse;
