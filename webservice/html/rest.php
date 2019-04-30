@@ -184,6 +184,24 @@ class fdRestService extends fdRPCService
     return $attributes;
   }
 
+  protected function endpoint_objects_POST_1 ($input, string $type): string
+  {
+    if (!isset($input['attrs'])) {
+      throw new RestServiceEndPointError('Missing parameter "attrs" in POST data');
+    }
+    if (isset($input['template'])) {
+      $result = $this->_usetemplate($type, $input['template'], $input['attrs']);
+    } else {
+      $result = $this->_setfields($type, NULL, $input['attrs']);
+    }
+
+    if (is_array($result) && isset($result['errors'])) {
+      throw new RestServiceEndPointErrors($result['errors']);
+    }
+
+    return $result;
+  }
+
   protected function endpoint_objects_PUT_4 ($input, string $type, string $dn, string $tab = NULL, string $attribute = NULL): string
   {
     $this->checkAccess($type, $tab, $dn);

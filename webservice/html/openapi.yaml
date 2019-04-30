@@ -231,6 +231,43 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+    post:
+      summary: Create an object of specific type
+      tags:
+        - objects
+      parameters:
+        - name: type
+          in: path
+          required: true
+          description: The type to create
+          schema:
+            type: string
+        - $ref: '#/components/parameters/base'
+        - name: attrs
+          in: query
+          required: true
+          description: The attributes of the object to create, grouped by tab
+          schema:
+            type: object
+        - name: template
+          in: query
+          required: false
+          description: The template to use to create the object
+          schema:
+            type: string
+      responses:
+        '200':
+          description: DN of the created object
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   '/objects/{type}/{dn}':
     get:
       summary: Get attributes values from object main tab
