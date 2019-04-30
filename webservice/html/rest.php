@@ -184,6 +184,37 @@ class fdRestService extends fdRPCService
     return $attributes;
   }
 
+  protected function endpoint_objects_GET_4 ($input, string $type, string $dn, string $tab, string $attribute)
+  {
+    $this->checkAccess($type, $tab, $dn);
+
+    $tabobject = objects::open($dn, $type);
+
+    if (!isset($tabobject->by_object[$tab])) {
+      throw new RestServiceEndPointError('This tab does not exists: "'.$tab.'"');
+    }
+
+    $object = $tabobject->by_object[$tab];
+
+    if (!is_subclass_of($object, 'simplePlugin')) {
+      throw new FusionDirectoryException('Invalid tab');
+    }
+
+    if (!isset($object->attributesAccess[$attribute])) {
+      throw new FusionDirectoryException('Unknown attribute');
+    }
+
+    if ($object->displayHeader && !$object->is_account) {
+      return NULL;
+    }
+
+    if (!$object->acl_is_readable($object->attributesAccess[$attribute]->getAcl())) {
+      throw new RestServiceEndPointError('Not enough rights to read "'.$attribute.'"');
+    }
+
+    return $object->attributesAccess[$attribute]->getValue();
+  }
+
   protected function endpoint_objects_POST_1 ($input, string $type): string
   {
     if (!isset($input['attrs'])) {
