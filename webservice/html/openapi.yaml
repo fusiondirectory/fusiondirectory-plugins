@@ -417,6 +417,84 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+    post:
+      summary: Add attribute values. Only on multivaluated attributes.
+      tags:
+        - objects
+        - multivaluated
+      parameters:
+        - name: type
+          in: path
+          required: true
+          description: The type of the object
+          schema:
+            type: string
+        - name: dn
+          in: path
+          required: true
+          description: The dn of the object
+          schema:
+            type: string
+        - name: tab
+          in: path
+          required: true
+          description: The tab CLASS
+          schema:
+            type: string
+        - name: attribute
+          in: path
+          required: true
+          description: The attribute
+          schema:
+            type: string
+      responses:
+        '200':
+          description: success
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete attribute values. Only on multivaluated attributes.
+      tags:
+        - objects
+        - multivaluated
+      parameters:
+        - name: type
+          in: path
+          required: true
+          description: The type of the object
+          schema:
+            type: string
+        - name: dn
+          in: path
+          required: true
+          description: The dn of the object
+          schema:
+            type: string
+        - name: tab
+          in: path
+          required: true
+          description: The tab CLASS
+          schema:
+            type: string
+        - name: attribute
+          in: path
+          required: true
+          description: The attribute
+          schema:
+            type: string
+      responses:
+        '200':
+          description: success
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Object:
