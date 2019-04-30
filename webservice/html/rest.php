@@ -247,6 +247,28 @@ class fdRestService extends fdRPCService
     return $tabobject->dn;
   }
 
+  protected function endpoint_objects_POST_4 ($input, string $type, string $dn, string $tab = NULL, string $attribute = NULL): string
+  {
+    $result = $this->_addvalues($type, $dn, [$tab => [$attribute => $input]]);
+
+    if (is_array($result) && isset($result['errors'])) {
+      throw new RestServiceEndPointErrors($result['errors']);
+    }
+
+    return $result;
+  }
+
+  protected function endpoint_objects_DELETE_4 ($input, string $type, string $dn, string $tab = NULL, string $attribute = NULL): string
+  {
+    $result = $this->_delvalues($type, $dn, [$tab => [$attribute => $input]]);
+
+    if (is_array($result) && isset($result['errors'])) {
+      throw new RestServiceEndPointErrors($result['errors']);
+    }
+
+    return $result;
+  }
+
   protected function endpoint_token_GET_0 ($input): string
   {
     return $this->_getId();
