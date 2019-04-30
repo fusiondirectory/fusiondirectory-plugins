@@ -21,6 +21,7 @@ tags:
 paths:
   /login:
     post:
+      operationId: login
       summary: Login to the API
       security: []
       tags:
@@ -64,6 +65,7 @@ paths:
   /ldaps:
     get:
       summary: List possible values for ldap parameter for login action
+      operationId: listLdaps
       security: []
       tags:
         - tools
@@ -85,6 +87,7 @@ paths:
   /token:
     get:
       summary: Get session token for current session
+      operationId: getToken
       tags:
         - tools
       responses:
@@ -103,6 +106,7 @@ paths:
   /types:
     get:
       summary: List all types
+      operationId: listTypes
       tags:
         - types
       responses:
@@ -121,6 +125,7 @@ paths:
   '/types/{type}':
     get:
       summary: Get informations on a type
+      operationId: getTypeInfo
       tags:
         - types
       parameters:
@@ -146,6 +151,7 @@ paths:
   '/types/{type}/{tab}':
     get:
       summary: Get informations on a tab
+      operationId: getTabInfo
       tags:
         - types
       parameters:
@@ -201,6 +207,7 @@ paths:
   '/objects/{type}':
     get:
       summary: Search objects of specific type
+      operationId: listObjects
       tags:
         - objects
       parameters:
@@ -233,6 +240,7 @@ paths:
                 $ref: '#/components/schemas/Error'
     post:
       summary: Create an object of specific type
+      operationId: createObject
       tags:
         - objects
       parameters:
@@ -271,6 +279,7 @@ paths:
   '/objects/{type}/{dn}':
     get:
       summary: Get attributes values from object main tab
+      operationId: getObjectMainTab
       tags:
         - objects
       parameters:
@@ -302,6 +311,7 @@ paths:
   '/objects/{type}/{dn}/{tab}':
     get:
       summary: Get attributes values from object specific tab
+      operationId: getObjectTab
       tags:
         - objects
       parameters:
@@ -339,6 +349,7 @@ paths:
   '/objects/{type}/{dn}/{tab}/{attribute}':
     get:
       summary: Get a single attribute value(s)
+      operationId: getAttributeValues
       tags:
         - objects
       parameters:
@@ -381,6 +392,7 @@ paths:
                 $ref: '#/components/schemas/Error'
     put:
       summary: Set attribute value(s)
+      operationId: setAttributeValues
       tags:
         - objects
       parameters:
@@ -419,6 +431,7 @@ paths:
                 $ref: '#/components/schemas/Error'
     post:
       summary: Add attribute values. Only on multivaluated attributes.
+      operationId: addAttributeValues
       tags:
         - objects
         - multivaluated
@@ -458,6 +471,7 @@ paths:
                 $ref: '#/components/schemas/Error'
     delete:
       summary: Delete attribute values. Only on multivaluated attributes.
+      operationId: deleteAttributeValues
       tags:
         - objects
         - multivaluated
