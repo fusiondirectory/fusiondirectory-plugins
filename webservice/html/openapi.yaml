@@ -251,18 +251,19 @@ paths:
           schema:
             type: string
         - $ref: '#/components/parameters/base'
-        - name: attrs
-          in: query
-          required: true
-          description: The attributes of the object to create, grouped by tab
-          schema:
-            type: object
-        - name: template
-          in: query
-          required: false
-          description: The template to use to create the object
-          schema:
-            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                attrs:
+                  description: The attributes of the object to create, grouped by tab
+                  type: object
+                template:
+                  description: The template to use to create the object
+                  type: string
+              required:
+                - attrs
       responses:
         '200':
           description: DN of the created object
@@ -420,6 +421,12 @@ paths:
           description: The attribute
           schema:
             type: string
+      requestBody:
+        description: The new value(s)
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnyThing'
       responses:
         '200':
           description: success
@@ -460,6 +467,14 @@ paths:
           description: The attribute
           schema:
             type: string
+      requestBody:
+        description: The values to add
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/AnyThing'
       responses:
         '200':
           description: success
@@ -500,6 +515,14 @@ paths:
           description: The attribute
           schema:
             type: string
+      requestBody:
+        description: The values to remove
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/AnyThing'
       responses:
         '200':
           description: success
@@ -511,6 +534,13 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    AnyThing:
+      anyOf:
+        - type: string
+        - type: array
+          items:
+            $ref: '#/components/schemas/AnyThing'
+        - type: object
     Object:
       type: object
       additionalProperties:
