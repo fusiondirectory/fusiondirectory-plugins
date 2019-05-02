@@ -177,7 +177,7 @@ class fdRestService extends fdRPCService
     foreach ($fields as $section) {
       foreach ($section['attrs'] as $attr) {
         if ($object->acl_is_readable($attr->getAcl())) {
-          $attributes[$attr->getLdapName()] = $attr->getValue();
+          $attributes[$attr->getLdapName()] = $attr->serializeValue();
         }
       }
     }
@@ -212,7 +212,7 @@ class fdRestService extends fdRPCService
       throw new RestServiceEndPointError('Not enough rights to read "'.$attribute.'"');
     }
 
-    return $object->attributesAccess[$attribute]->getValue();
+    return $object->attributesAccess[$attribute]->serializeValue();
   }
 
   protected function endpoint_objects_POST_1 ($input, string $type): string
