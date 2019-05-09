@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018 FusionDirectory
+  Copyright (C) 2017-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -361,18 +361,23 @@ class sinapsRequest
               continue;
             }
             if (isset($role->personneRessource->affectations->affectation)) {
+              $quotiteMax = NULL;
               foreach ($role->personneRessource->affectations->affectation as $affectation) {
                 if (!$this->checkValidite($affectation, $now)) {
                   continue;
                 }
                 $UUID = $this->getUUIDFromReferenceCroisee($identifiantApplication, $affectation->referenceCroisee);
+                $quotite  = (isset($affectation->quotite) ? (int)$affectation->quotite : 0);
                 if (!empty($UUID)) {
                   $entite = $ldapUuidToCodeEntiteCallback($UUID);
                   if (isset($entite['supannTypeEntite'])) {
                     $values['supannAccount']['supannTypeEntiteAffectation'][] = $entite['supannTypeEntite'];
                   }
                   $values['supannAccount']['supannEntiteAffectation'][]         = $entite['supannCodeEntite'];
-                  $values['supannAccount']['supannEntiteAffectationPrincipale'] = $entite['supannCodeEntite'];
+                  if (($quotiteMax === NULL) || ($quotite > $quotiteMax)) {
+                    $quotiteMax = $quotite;
+                    $values['supannAccount']['supannEntiteAffectationPrincipale'] = $entite['supannCodeEntite'];
+                  }
                 }
               }
             }
