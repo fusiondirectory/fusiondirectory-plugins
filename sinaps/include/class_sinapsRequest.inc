@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018 FusionDirectory
+  Copyright (C) 2017-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -261,7 +261,7 @@ class sinapsRequest
     /* Check if the user still has at least one role which means he exists, otherwise this is a deletion */
     $userRoleExists = [];
     foreach ($userRoles as $typeRole) {
-      if (preg_match('^([^/]+)/(.+)$', $typeRole, $m)) {
+      if (preg_match('|^([^/]+)/(.+)$|', $typeRole, $m)) {
         $userRoleExists[$m[1]][] = $m[2];
       } else {
         $userRoleExists[$typeRole] = TRUE;
@@ -361,18 +361,23 @@ class sinapsRequest
               continue;
             }
             if (isset($role->personneRessource->affectations->affectation)) {
+              $quotiteMax = NULL;
               foreach ($role->personneRessource->affectations->affectation as $affectation) {
                 if (!$this->checkValidite($affectation, $now)) {
                   continue;
                 }
-                $UUID = $this->getUUIDFromReferenceCroisee($identifiantApplication, $affectation->referenceCroisee);
+                $UUID     = (string)$affectation->identifiantStructureInterne;
+                $quotite  = (isset($affectation->quotite) ? (int)$affectation->quotite : 0);
                 if (!empty($UUID)) {
                   $entite = $ldapUuidToCodeEntiteCallback($UUID);
                   if (isset($entite['supannTypeEntite'])) {
                     $values['supannAccount']['supannTypeEntiteAffectation'][] = $entite['supannTypeEntite'];
                   }
                   $values['supannAccount']['supannEntiteAffectation'][]         = $entite['supannCodeEntite'];
-                  $values['supannAccount']['supannEntiteAffectationPrincipale'] = $entite['supannCodeEntite'];
+                  if (($quotiteMax === NULL) || ($quotite > $quotiteMax)) {
+                    $quotiteMax                                                   = $quotite;
+                    $values['supannAccount']['supannEntiteAffectationPrincipale'] = $entite['supannCodeEntite'];
+                  }
                 }
               }
             }
@@ -398,7 +403,7 @@ class sinapsRequest
               continue;
             }
             $values['supannAccount']['supannRoleGenerique'][] = (string)$fonctionOccupee->fonctionRh;
-            $UUID = $this->getUUIDFromReferenceCroisee($identifiantApplication, $fonctionOccupee->referenceCroisee);
+            $UUID                                             = (string)$fonctionOccupee->identifiantStructureInterne;
             if (!empty($UUID)) {
               $entite = $ldapUuidToCodeEntiteCallback($UUID, TRUE);
               $values['supannAccount']['supannTypeEntiteAffectation'][] = $entite['supannTypeEntite'];
