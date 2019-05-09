@@ -261,7 +261,7 @@ class sinapsRequest
     /* Check if the user still has at least one role which means he exists, otherwise this is a deletion */
     $userRoleExists = [];
     foreach ($userRoles as $typeRole) {
-      if (preg_match('^([^/]+)/(.+)$', $typeRole, $m)) {
+      if (preg_match('|^([^/]+)/(.+)$|', $typeRole, $m)) {
         $userRoleExists[$m[1]][] = $m[2];
       } else {
         $userRoleExists[$typeRole] = TRUE;
