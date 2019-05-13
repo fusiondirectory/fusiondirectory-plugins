@@ -70,6 +70,7 @@ class servicesManagement extends management implements SimpleTab
       'plIcon'        => '',
       'plObjectType'  => ['server'],
       'plPrority'     => 5,
+      'plSubTabs'     => 'SERVERSERVICE',
 
       'plProvidedAcls'  => []
     ];
@@ -263,6 +264,9 @@ class servicesManagement extends management implements SimpleTab
   function editEntry (array $action)
   {
     $s_entry = array_pop($action['targets']);
+    if (!isset($this->plugins[$s_entry])) {
+      throw new FusionDirectoryException('No service "'.$s_entry.'" in '.json_encode(array_keys($this->plugins)));
+    }
     if ($this->plugins[$s_entry]->acl_is_readable('')) {
       $this->backup       = get_object_vars($this->plugins[$s_entry]);
       $this->dialogObject = $this->plugins[$s_entry];

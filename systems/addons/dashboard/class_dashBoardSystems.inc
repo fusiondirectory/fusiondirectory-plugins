@@ -146,7 +146,7 @@ class dashboardSystems extends simplePlugin
       foreach (['cn','ipHostNumber','argonautProtocol','argonautPort'] as $key) {
         $argonaut_server[$key] = $attrs[$key][0];
       }
-      $argonaut_server['link'] = objects::link(key($argonaut_servers), 'server', 'service_serviceArgonaut', $attrs);
+      $argonaut_server['link'] = objects::link(key($argonaut_servers), 'server', 'service_argonautServer', $attrs);
     }
 
     if (strpos($ui->get_permissions($config->current['BASE'], 'server/argonautClient', ''), 'r') === FALSE) {
