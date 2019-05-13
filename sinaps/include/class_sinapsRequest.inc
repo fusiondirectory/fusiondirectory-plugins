@@ -278,6 +278,16 @@ class sinapsRequest
                 break 2;
               }
               if (in_array_ics((string)$role->externe->typeExterne, $userRoleExists[(string)$role->typeRole])) {
+                if (!empty($role->externe->identifiantStructureInterne)) {
+                  /* Store identifiantStructureInterne in supannEntiteAffectationPrincipale */
+                  $UUID   = (string)$role->externe->identifiantStructureInterne;
+                  $entite = $ldapUuidToCodeEntiteCallback($UUID);
+                  if (isset($entite['supannTypeEntite'])) {
+                    $values['supannAccount']['supannTypeEntiteAffectation'][] = $entite['supannTypeEntite'];
+                  }
+                  $values['supannAccount']['supannEntiteAffectation'][]         = $entite['supannCodeEntite'];
+                  $values['supannAccount']['supannEntiteAffectationPrincipale'] = $entite['supannCodeEntite'];
+                }
                 $deletion = FALSE;
                 break 2;
               }
