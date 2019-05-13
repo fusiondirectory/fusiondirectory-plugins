@@ -63,6 +63,7 @@ class ServerService extends simpleManagement
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('server'),
       'plPrority'     => 5,
+      'plSubTabs'     => 'SERVERSERVICE',
 
       'plProvidedAcls'  => array()
     );
