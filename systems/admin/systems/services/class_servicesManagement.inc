@@ -70,6 +70,7 @@ class servicesManagement extends management implements SimpleTab
       'plIcon'        => '',
       'plObjectType'  => ['server'],
       'plPrority'     => 5,
+      'plSubTabs'     => 'SERVERSERVICE',
 
       'plProvidedAcls'  => []
     ];
