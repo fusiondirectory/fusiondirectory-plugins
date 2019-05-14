@@ -30,6 +30,7 @@ paths:
         content:
           application/json:
             schema:
+              type: object
               properties:
                 ldap:
                   description: The ldap server to connect to
@@ -37,9 +38,11 @@ paths:
                 user:
                   description: The user to login as
                   type: string
+                  example: "fd-admin"
                 password:
                   description: The password to use
                   type: string
+                  example: "password"
               required:
                 - user
                 - password
@@ -71,13 +74,16 @@ paths:
         - tools
       responses:
         '200':
-          description: An API token
+          description: The list of LDAPs
           content:
             application/json:
               schema:
                 type: object
                 additionalProperties:
                   type: string
+                example: {
+                          'default': 'default'
+                        }
         default:
           description: Unexpected error
           content:
@@ -205,6 +211,9 @@ paths:
           description: The attributes to return
           schema:
             type: object
+            example:
+              sn: 1
+              title: "*"
       responses:
         '200':
           description: success
@@ -230,13 +239,24 @@ paths:
         content:
           application/json:
             schema:
+              type: object
               properties:
                 attrs:
                   description: The attributes of the object to create, grouped by tab
                   type: object
+                  example: {
+                            "user": {
+                              "givenName": "John",
+                              "sn": "Smith"
+                            },
+                            "posixAccount": {
+                              "homeDirectory": "/home/john"
+                            }
+                          }
                 template:
                   description: The template to use to create the object
                   type: string
+                  example: "cn=user-template,ou=templates,ou=people,dc=example,dc=com"
               required:
                 - attrs
       responses:
@@ -307,20 +327,14 @@ paths:
         - $ref: '#/components/parameters/type'
         - $ref: '#/components/parameters/dn'
         - $ref: '#/components/parameters/tab'
-        - name: attribute
-          in: path
-          required: true
-          description: The attribute
-          example: "homeDirectory"
-          schema:
-            type: string
+        - $ref: '#/components/parameters/attribute'
       responses:
         '200':
           description: success
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/AnyThing'
         default:
           description: Unexpected error
           content:
@@ -336,12 +350,7 @@ paths:
         - $ref: '#/components/parameters/type'
         - $ref: '#/components/parameters/dn'
         - $ref: '#/components/parameters/tab'
-        - name: attribute
-          in: path
-          required: true
-          description: The attribute
-          schema:
-            type: string
+        - $ref: '#/components/parameters/attribute'
       requestBody:
         description: The new value(s)
         content:
@@ -367,12 +376,7 @@ paths:
         - $ref: '#/components/parameters/type'
         - $ref: '#/components/parameters/dn'
         - $ref: '#/components/parameters/tab'
-        - name: attribute
-          in: path
-          required: true
-          description: The attribute
-          schema:
-            type: string
+        - $ref: '#/components/parameters/attribute'
       requestBody:
         description: The values to add
         content:
@@ -400,12 +404,7 @@ paths:
         - $ref: '#/components/parameters/type'
         - $ref: '#/components/parameters/dn'
         - $ref: '#/components/parameters/tab'
-        - name: attribute
-          in: path
-          required: true
-          description: The attribute
-          schema:
-            type: string
+        - $ref: '#/components/parameters/attribute'
       requestBody:
         description: The values to remove
         content:
@@ -580,6 +579,14 @@ components:
       example: "posixAccount"
       required: true
       description: An existing tab CLASS
+      schema:
+        type: string
+    attribute:
+      name: attribute
+      in: path
+      example: "homeDirectory"
+      required: true
+      description: The attribute
       schema:
         type: string
   securitySchemes:
