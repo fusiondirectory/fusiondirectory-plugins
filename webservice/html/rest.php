@@ -86,6 +86,12 @@ class RestServiceEndPointErrors extends FusionDirectoryException
  * */
 class fdRestService extends fdRPCService
 {
+  public static function authenticateHeader ($message = 'Authentication required')
+  {
+    header('Content-Type: application/json');
+    parent::authenticateHeader(json_encode($message));
+  }
+
   public function treatRequest ()
   {
     global $_SERVER;
@@ -100,27 +106,29 @@ class fdRestService extends fdRPCService
       exit;
     }
 
-    if ($request[0] == 'login') {
-      /* Login method have the following parameters: LDAP, user, password */
-      static::initiateRPCSession(
-        NULL,
-        ($input['ldap'] ?? $_GET['ldap'] ?? NULL),
-        ($input['user'] ?? $_GET['user'] ?? ''),
-        ($input['password'] ?? $_GET['password'] ?? '')
-      );
-      $request  = ['token'];
-      $method   = 'GET';
-    } elseif ($request[0] != 'ldaps') {
-      static::initiateRPCSession($_SERVER['HTTP_SESSION_TOKEN']);
-    }
-    Language::setHeaders(session::global_get('lang'), 'application/json');
-
-    if (count($request) == 0) {
-      http_response_code(400);
-      die('No request');
-    }
-
     try {
+      if ($request[0] == 'login') {
+        /* Login method have the following parameters: LDAP, user, password */
+        static::initiateRPCSession(
+          NULL,
+          ($input['ldap'] ?? $_GET['ldap'] ?? NULL),
+          ($input['user'] ?? $_GET['user'] ?? ''),
+          ($input['password'] ?? $_GET['password'] ?? '')
+        );
+        $request  = ['token'];
+        $method   = 'GET';
+      } elseif ($request[0] == 'ldaps') {
+        static::initiateRPCSession(NULL, NULL, NULL, NULL, FALSE);
+      } else {
+        static::initiateRPCSession($_SERVER['HTTP_SESSION_TOKEN']);
+      }
+      Language::setHeaders(session::global_get('lang'), 'application/json');
+
+      if (count($request) == 0) {
+        http_response_code(400);
+        die('No request');
+      }
+
       $endpoint = 'endpoint_'.array_shift($request).'_'.$method.'_'.count($request);
       $result   = $this->$endpoint($input, ...$request);
 
@@ -307,6 +315,7 @@ class fdRestService extends fdRPCService
 
   protected function endpoint_ldaps_GET_0 ($input): array
   {
+    global $BASE_DIR;
     $config = new config(CONFIG_DIR.'/'.CONFIG_FILE, $BASE_DIR);
     session::global_set('DEBUGLEVEL', 0);
     $ldaps  = [];

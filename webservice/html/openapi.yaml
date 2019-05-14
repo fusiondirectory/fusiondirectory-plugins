@@ -75,8 +75,8 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
+                type: object
+                additionalProperties:
                   type: string
         default:
           description: Unexpected error
@@ -129,12 +129,7 @@ paths:
       tags:
         - types
       parameters:
-        - name: type
-          in: path
-          required: true
-          description: The type to search for
-          schema:
-            type: string
+        - $ref: '#/components/parameters/type'
       responses:
         '200':
           description: success
@@ -155,18 +150,8 @@ paths:
       tags:
         - types
       parameters:
-        - name: type
-          in: path
-          required: true
-          description: The object type
-          schema:
-            type: string
-        - name: tab
-          in: path
-          required: true
-          description: The tab
-          schema:
-            type: string
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/tab'
       responses:
         '200':
           description: success
@@ -211,12 +196,7 @@ paths:
       tags:
         - objects
       parameters:
-        - name: type
-          in: path
-          required: true
-          description: The type to search for
-          schema:
-            type: string
+        - $ref: '#/components/parameters/type'
         - $ref: '#/components/parameters/base'
         - $ref: '#/components/parameters/filter'
         - name: attrs
@@ -244,12 +224,7 @@ paths:
       tags:
         - objects
       parameters:
-        - name: type
-          in: path
-          required: true
-          description: The type to create
-          schema:
-            type: string
+        - $ref: '#/components/parameters/type'
         - $ref: '#/components/parameters/base'
       requestBody:
         content:
@@ -284,18 +259,8 @@ paths:
       tags:
         - objects
       parameters:
-        - name: type
-          in: path
-          required: true
-          description: The type to search for
-          schema:
-            type: string
-        - name: dn
-          in: path
-          required: true
-          description: The dn of the object
-          schema:
-            type: string
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
       responses:
         '200':
           description: success
@@ -316,24 +281,9 @@ paths:
       tags:
         - objects
       parameters:
-        - name: type
-          in: path
-          required: true
-          description: The type to search for
-          schema:
-            type: string
-        - name: dn
-          in: path
-          required: true
-          description: The dn of the object
-          schema:
-            type: string
-        - name: tab
-          in: path
-          required: true
-          description: The tab CLASS
-          schema:
-            type: string
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+        - $ref: '#/components/parameters/tab'
       responses:
         '200':
           description: success
@@ -354,28 +304,14 @@ paths:
       tags:
         - objects
       parameters:
-        - name: type
-          in: path
-          required: true
-          description: The type to search for
-          schema:
-            type: string
-        - name: dn
-          in: path
-          required: true
-          description: The dn of the object
-          schema:
-            type: string
-        - name: tab
-          in: path
-          required: true
-          description: The tab CLASS
-          schema:
-            type: string
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+        - $ref: '#/components/parameters/tab'
         - name: attribute
           in: path
           required: true
           description: The attribute
+          example: "homeDirectory"
           schema:
             type: string
       responses:
@@ -397,24 +333,9 @@ paths:
       tags:
         - objects
       parameters:
-        - name: type
-          in: path
-          required: true
-          description: The type of the object
-          schema:
-            type: string
-        - name: dn
-          in: path
-          required: true
-          description: The dn of the object
-          schema:
-            type: string
-        - name: tab
-          in: path
-          required: true
-          description: The tab CLASS
-          schema:
-            type: string
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+        - $ref: '#/components/parameters/tab'
         - name: attribute
           in: path
           required: true
@@ -443,24 +364,9 @@ paths:
         - objects
         - multivaluated
       parameters:
-        - name: type
-          in: path
-          required: true
-          description: The type of the object
-          schema:
-            type: string
-        - name: dn
-          in: path
-          required: true
-          description: The dn of the object
-          schema:
-            type: string
-        - name: tab
-          in: path
-          required: true
-          description: The tab CLASS
-          schema:
-            type: string
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+        - $ref: '#/components/parameters/tab'
         - name: attribute
           in: path
           required: true
@@ -491,24 +397,9 @@ paths:
         - objects
         - multivaluated
       parameters:
-        - name: type
-          in: path
-          required: true
-          description: The type of the object
-          schema:
-            type: string
-        - name: dn
-          in: path
-          required: true
-          description: The dn of the object
-          schema:
-            type: string
-        - name: tab
-          in: path
-          required: true
-          description: The tab CLASS
-          schema:
-            type: string
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+        - $ref: '#/components/parameters/tab'
         - name: attribute
           in: path
           required: true
@@ -667,6 +558,30 @@ components:
       example: "(cn=a*)"
       description: An LDAP filter to search with
       in: query
+      schema:
+        type: string
+    type:
+      name: type
+      in: path
+      example: "user"
+      required: true
+      description: An object type
+      schema:
+        type: string
+    dn:
+      name: dn
+      in: path
+      example: "uid=fd-admin,dc=example,dc=com"
+      required: true
+      description: The dn of an existing object
+      schema:
+        type: string
+    tab:
+      name: tab
+      in: path
+      example: "posixAccount"
+      required: true
+      description: An existing tab CLASS
       schema:
         type: string
   securitySchemes:
