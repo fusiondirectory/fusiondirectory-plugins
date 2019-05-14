@@ -38,7 +38,7 @@ class fdRPCService
     exit;
   }
 
-  public static function initiateRPCSession ($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
+  public static function initiateRPCSession ($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL, bool $userLogin = TRUE)
   {
     global $config, $class_mapping, $BASE_DIR, $ui, $ssl;
 
@@ -80,34 +80,36 @@ class fdRPCService
       }
       session::global_set('DEBUGLEVEL', 0);
 
-      if (($ssl != "") &&
+      if (($ssl != '') &&
             (($config->get_cfg_value('webserviceForceSSL', 'TRUE') == 'TRUE') ||
              ($config->get_cfg_value('forcessl') == 'TRUE'))) {
         throw new FusionDirectoryException("HTTP connexions are not allowed, please use HTTPS: $ssl\n");
       }
 
-      if (!isset($_SERVER['PHP_AUTH_USER']) && ($user === NULL)) {
-        static::authenticateHeader();
-      }
-      if ($user !== NULL) {
-        $ui = ldap_login_user($user, $pwd);
-        if (!$ui) {
-          static::authenticateHeader('Invalid user or pwd '.$user.'/'.$pwd);
+      if ($userLogin) {
+        if (!isset($_SERVER['PHP_AUTH_USER']) && ($user === NULL)) {
+          static::authenticateHeader();
         }
-      } else {
-        $ui = ldap_login_user($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
-        if (!$ui) {
-          static::authenticateHeader('Invalid user or pwd '.$_SERVER['PHP_AUTH_USER'].'/'.$_SERVER['PHP_AUTH_PW']);
+        if ($user !== NULL) {
+          $ui = ldap_login_user($user, $pwd);
+          if (!$ui) {
+            static::authenticateHeader('Invalid user or pwd '.$user.'/'.$pwd);
+          }
+        } else {
+          $ui = ldap_login_user($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
+          if (!$ui) {
+            static::authenticateHeader('Invalid user or pwd '.$_SERVER['PHP_AUTH_USER'].'/'.$_SERVER['PHP_AUTH_PW']);
+          }
         }
+        session::global_set('LOGIN', TRUE);
+        $plist = new pluglist();
+        $config->loadPlist($plist);
+        $config->get_departments();
+        $config->make_idepartments();
+        session::global_set('ui',     $ui);
+        session::global_set('plist',  $plist);
+        session::global_set('config', $config);
       }
-      session::global_set('LOGIN', TRUE);
-      $plist = new pluglist();
-      $config->loadPlist($plist);
-      $config->get_departments();
-      $config->make_idepartments();
-      session::global_set('config', $config);
-      session::global_set('plist',  $plist);
-      session::global_set('ui',     $ui);
     }
   }
 
