@@ -492,9 +492,7 @@ components:
         tabs:
           type: array
           items:
-            type: array
-            items:
-              $ref: '#/components/schemas/TabDef'
+            $ref: '#/components/schemas/TabDef'
           example: [{
                       "CLASS": "roleGeneric",
                       "NAME": "Role"
