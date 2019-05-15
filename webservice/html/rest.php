@@ -107,6 +107,12 @@ class fdRestService extends fdRPCService
     }
 
     try {
+      if (implode('', $request) == 'openapi.yaml') {
+        $this->sendOpenAPI('yaml');
+      } elseif (implode('', $request) == 'openapi.json') {
+        $this->sendOpenAPI('json');
+      }
+
       if ($request[0] == 'login') {
         /* Login method have the following parameters: LDAP, user, password */
         static::initiateRPCSession(
@@ -151,6 +157,48 @@ class fdRestService extends fdRPCService
     if (preg_match('/^endpoint_([^_]+)_([^_]+)_([^_]+)$/', $method, $m)) {
       throw new FusionDirectoryException(sprintf('Invalid request for endpoint %s: %s with %d path elements', $m[1], $m[2], $m[3]));
     }
+  }
+
+  protected function sendOpenAPI (string $format)
+  {
+    global $BASE_DIR;
+    header('Content-Type: application/'.$format);
+    if (!is_callable('yaml_parse_file')) {
+      /* Fallback when php-yaml is missing */
+      if (format != 'yaml') {
+        throw new FusionDirectoryException('You need php-yaml to be able to convert to other formats');
+      } else {
+        readfile($BASE_DIR.'/html/openapi.yaml');
+      }
+    }
+    $data = yaml_parse_file($BASE_DIR.'/html/openapi.yaml');
+    if ($data === FALSE) {
+      throw new FusionDirectoryException('Parsing openapi.yaml failed');
+    }
+    if (!is_array($data)) {
+      throw new FusionDirectoryException('openapi.yaml is invalid');
+    }
+
+    $server = 'https://';
+    if (empty($_SERVER['HTTP_X_FORWARDED_HOST'])) {
+      $server .= $_SERVER['HTTP_HOST'];
+    } else {
+      $server .= $_SERVER['HTTP_X_FORWARDED_HOST'];
+    }
+    $server .= preg_replace('|/openapi.'.$format.'$|', '', $_SERVER['REQUEST_URI']);
+    $data['servers'] = [['url' => $server]];
+
+    switch ($format) {
+      case 'json':
+        echo json_encode($data, JSON_PRETTY_PRINT);
+        break;
+      case 'yaml':
+        echo yaml_emit($data, YAML_UTF8_ENCODING);
+        break;
+      default:
+        throw new FusionDirectoryException(sprintf('Unsupported openapi format: ', $format));
+    }
+    exit;
   }
 
   protected function endpoint_objects_GET_1 ($input, string $type): array
