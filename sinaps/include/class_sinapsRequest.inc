@@ -210,7 +210,6 @@ class sinapsRequest
     $mapping = [
       'civilite'        => ['supannAccount','supannCivilite'],
       'nomUsage'        => ['user','sn'],
-      'descriptifLong'  => ['user','description'],
       'dateNaissance'   => ['personalInfo','dateOfBirth'],
       'sexe'            => ['personalInfo','gender'],
     ];
