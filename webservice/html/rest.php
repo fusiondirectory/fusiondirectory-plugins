@@ -131,8 +131,7 @@ class fdRestService extends fdRPCService
       Language::setHeaders(session::global_get('lang'), 'application/json');
 
       if (count($request) == 0) {
-        http_response_code(400);
-        die('No request');
+        throw new RestServiceEndPointError('Empty request received');
       }
 
       $endpoint = 'endpoint_'.array_shift($request).'_'.$method.'_'.count($request);
@@ -155,7 +154,7 @@ class fdRestService extends fdRPCService
   public function __call ($method, $params)
   {
     if (preg_match('/^endpoint_([^_]+)_([^_]+)_([^_]+)$/', $method, $m)) {
-      throw new FusionDirectoryException(sprintf('Invalid request for endpoint %s: %s with %d path elements', $m[1], $m[2], $m[3]));
+      throw new RestServiceEndPointError(sprintf('Invalid request for endpoint %s: %s with %d path elements', $m[1], $m[2], $m[3]));
     }
   }
 
@@ -166,17 +165,17 @@ class fdRestService extends fdRPCService
     if (!is_callable('yaml_parse_file')) {
       /* Fallback when php-yaml is missing */
       if (format != 'yaml') {
-        throw new FusionDirectoryException('You need php-yaml to be able to convert to other formats');
+        throw new RestServiceEndPointError('You need php-yaml to be able to convert to other formats');
       } else {
         readfile($BASE_DIR.'/html/openapi.yaml');
       }
     }
     $data = yaml_parse_file($BASE_DIR.'/html/openapi.yaml');
     if ($data === FALSE) {
-      throw new FusionDirectoryException('Parsing openapi.yaml failed');
+      throw new RestServiceEndPointError('Parsing openapi.yaml failed');
     }
     if (!is_array($data)) {
-      throw new FusionDirectoryException('openapi.yaml is invalid');
+      throw new RestServiceEndPointError('openapi.yaml is invalid');
     }
 
     $server = 'https://';
@@ -196,7 +195,7 @@ class fdRestService extends fdRPCService
         echo yaml_emit($data, YAML_UTF8_ENCODING);
         break;
       default:
-        throw new FusionDirectoryException(sprintf('Unsupported openapi format: ', $format));
+        throw new RestServiceEndPointError(sprintf('Unsupported openapi format: ', $format));
     }
     exit;
   }
@@ -226,7 +225,7 @@ class fdRestService extends fdRPCService
       $object = $tabobject->by_object[$tab];
     }
     if (!is_subclass_of($object, 'simplePlugin')) {
-      throw new FusionDirectoryException('Invalid tab');
+      throw new RestServiceEndPointError('Invalid tab');
     }
     $attributes = [];
     $fields = $object->attributesInfo;
@@ -253,11 +252,11 @@ class fdRestService extends fdRPCService
     $object = $tabobject->by_object[$tab];
 
     if (!is_subclass_of($object, 'simplePlugin')) {
-      throw new FusionDirectoryException('Invalid tab');
+      throw new RestServiceEndPointError('Invalid tab');
     }
 
     if (!isset($object->attributesAccess[$attribute])) {
-      throw new FusionDirectoryException('Unknown attribute');
+      throw new RestServiceEndPointError('Unknown attribute');
     }
 
     if ($object->displayHeader && !$object->is_account) {
@@ -302,7 +301,7 @@ class fdRestService extends fdRPCService
       $object = $tabobject->by_object[$tab];
     }
     if (!is_subclass_of($object, 'simplePlugin')) {
-      throw new FusionDirectoryException('Invalid tab');
+      throw new RestServiceEndPointError('Invalid tab');
     }
     if ($tabobject->by_object[$tab]->displayHeader &&
         !$tabobject->by_object[$tab]->is_account
@@ -390,7 +389,7 @@ class fdRestService extends fdRPCService
     $tabobject  = objects::create($type);
     $object     = $tabobject->by_object[$tab];
     if (!is_subclass_of($object, 'simplePlugin')) {
-      throw new FusionDirectoryException('Invalid tab');
+      throw new RestServiceEndPointError('Invalid tab');
     }
     $fields = $object->attributesInfo;
     foreach ($fields as &$section) {
