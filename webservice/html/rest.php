@@ -96,17 +96,20 @@ class fdRestService extends fdRPCService
   {
     global $_SERVER;
 
-    // Get the HTTP method, path and body of the request
-    $method   = $_SERVER['REQUEST_METHOD'];
-    $request  = explode('/', trim($_SERVER['PATH_INFO'], '/'));
-    $input    = json_decode(file_get_contents('php://input'), TRUE);
-
-    if ($method == 'OPTIONS') {
-      /* Used by some GUI to get headers */
-      exit;
-    }
-
     try {
+      // Get the HTTP method, path and body of the request
+      $method   = $_SERVER['REQUEST_METHOD'];
+      $request  = explode('/', trim($_SERVER['PATH_INFO'], '/'));
+      $input    = json_decode(file_get_contents('php://input'), TRUE);
+      if (json_last_error() != JSON_ERROR_NONE) {
+        throw new RestServiceEndPointError('Error while decoding input JSON: '.json_last_error_msg());
+      }
+
+      if ($method == 'OPTIONS') {
+        /* Used by some GUI to get headers */
+        exit;
+      }
+
       if (implode('', $request) == 'openapi.yaml') {
         $this->sendOpenAPI('yaml');
       } elseif (implode('', $request) == 'openapi.json') {
@@ -134,11 +137,22 @@ class fdRestService extends fdRPCService
         throw new RestServiceEndPointError('Empty request received');
       }
 
-      $endpoint = 'endpoint_'.array_shift($request).'_'.$method.'_'.count($request);
-      $result   = $this->$endpoint($input, ...$request);
+      $responseCode = 200;
 
-      http_response_code(200);
-      echo json_encode($result)."\n";
+      $endpoint = 'endpoint_'.array_shift($request).'_'.$method.'_'.count($request);
+      $result   = $this->$endpoint($responseCode, $input, ...$request);
+
+      http_response_code($responseCode);
+      if ($responseCode == 204) {
+        /* 204 - No Content */
+        echo "\n";
+      } else {
+        $json = json_encode($result);
+        if (json_last_error() != JSON_ERROR_NONE) {
+          throw new RestServiceEndPointError('Error while encoding JSON result: '.json_last_error_msg());
+        }
+        echo $json."\n";
+      }
     } catch (RestServiceEndPointErrors $e) {
       http_response_code(400);
       echo $e->toJson();
@@ -200,17 +214,17 @@ class fdRestService extends fdRPCService
     exit;
   }
 
-  protected function endpoint_objects_GET_1 ($input, string $type): array
+  protected function endpoint_objects_GET_1 (int &$responseCode, $input, string $type): array
   {
     return $this->_ls($type, ($_GET['attrs'] ?? NULL), ($_GET['base'] ?? NULL), ($_GET['filter'] ?? ''));
   }
 
-  protected function endpoint_objects_GET_2 ($input, string $type, string $dn = NULL): array
+  protected function endpoint_objects_GET_2 (int &$responseCode, $input, string $type, string $dn = NULL): array
   {
     return $this->endpoint_objects_GET_3($input, $type, $dn, NULL);
   }
 
-  protected function endpoint_objects_GET_3 ($input, string $type, string $dn = NULL, string $tab = NULL): array
+  protected function endpoint_objects_GET_3 (int &$responseCode, $input, string $type, string $dn = NULL, string $tab = NULL): array
   {
     $this->checkAccess($type, $tab, $dn);
 
@@ -239,7 +253,7 @@ class fdRestService extends fdRPCService
     return $attributes;
   }
 
-  protected function endpoint_objects_GET_4 ($input, string $type, string $dn, string $tab, string $attribute)
+  protected function endpoint_objects_GET_4 (int &$responseCode, $input, string $type, string $dn, string $tab, string $attribute)
   {
     $this->checkAccess($type, $tab, $dn);
 
@@ -270,7 +284,7 @@ class fdRestService extends fdRPCService
     return $object->attributesAccess[$attribute]->serializeValue();
   }
 
-  protected function endpoint_objects_POST_1 ($input, string $type): string
+  protected function endpoint_objects_POST_1 (int &$responseCode, $input, string $type): string
   {
     if (!isset($input['attrs'])) {
       throw new RestServiceEndPointError('Missing parameter "attrs" in POST data');
@@ -288,7 +302,7 @@ class fdRestService extends fdRPCService
     return $result;
   }
 
-  protected function endpoint_objects_PUT_4 ($input, string $type, string $dn, string $tab = NULL, string $attribute = NULL): string
+  protected function endpoint_objects_PUT_4 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL, string $attribute = NULL)
   {
     $this->checkAccess($type, $tab, $dn);
 
@@ -330,10 +344,10 @@ class fdRestService extends fdRPCService
       throw new RestServiceEndPointErrors($errors);
     }
 
-    return $tabobject->dn;
+    $responseCode = 204;
   }
 
-  protected function endpoint_objects_POST_4 ($input, string $type, string $dn, string $tab = NULL, string $attribute = NULL): string
+  protected function endpoint_objects_POST_4 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL, string $attribute = NULL)
   {
     $result = $this->_addvalues($type, $dn, [$tab => [$attribute => $input]]);
 
@@ -341,10 +355,21 @@ class fdRestService extends fdRPCService
       throw new RestServiceEndPointErrors($result['errors']);
     }
 
-    return $result;
+    $responseCode = 204;
   }
 
-  protected function endpoint_objects_DELETE_4 ($input, string $type, string $dn, string $tab = NULL, string $attribute = NULL): string
+  protected function endpoint_objects_DELETE_2 (int &$responseCode, $input, string $type, string $dn)
+  {
+    $result = $this->_delete($type, $dn);
+
+    if (is_array($result) && isset($result['errors'])) {
+      throw new RestServiceEndPointErrors($result['errors']);
+    }
+
+    $responseCode = 204;
+  }
+
+  protected function endpoint_objects_DELETE_4 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL, string $attribute = NULL)
   {
     $result = $this->_delvalues($type, $dn, [$tab => [$attribute => $input]]);
 
@@ -352,15 +377,15 @@ class fdRestService extends fdRPCService
       throw new RestServiceEndPointErrors($result['errors']);
     }
 
-    return $result;
+    $responseCode = 204;
   }
 
-  protected function endpoint_token_GET_0 ($input): string
+  protected function endpoint_token_GET_0 (int &$responseCode, $input): string
   {
     return $this->_getId();
   }
 
-  protected function endpoint_ldaps_GET_0 ($input): array
+  protected function endpoint_ldaps_GET_0 (int &$responseCode, $input): array
   {
     global $BASE_DIR;
     $config = new config(CONFIG_DIR.'/'.CONFIG_FILE, $BASE_DIR);
@@ -372,17 +397,17 @@ class fdRestService extends fdRPCService
     return $ldaps;
   }
 
-  protected function endpoint_types_GET_0 ($input): array
+  protected function endpoint_types_GET_0 (int &$responseCode, $input): array
   {
     return $this->_listTypes();
   }
 
-  protected function endpoint_types_GET_1 ($input, string $type): array
+  protected function endpoint_types_GET_1 (int &$responseCode, $input, string $type): array
   {
     return $this->_infos($type);
   }
 
-  protected function endpoint_types_GET_2 ($input, string $type, string $tab): array
+  protected function endpoint_types_GET_2 (int &$responseCode, $input, string $type, string $tab): array
   {
     $this->checkAccess($type, $tab);
 

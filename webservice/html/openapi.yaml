@@ -138,7 +138,7 @@ paths:
         - $ref: '#/components/parameters/type'
       responses:
         '200':
-          description: success
+          description: Information about the type
           content:
             application/json:
               schema:
@@ -160,7 +160,7 @@ paths:
         - $ref: '#/components/parameters/tab'
       responses:
         '200':
-          description: success
+          description: Information about the tab
           content:
             application/json:
               schema:
@@ -216,7 +216,7 @@ paths:
               title: "*"
       responses:
         '200':
-          description: success
+          description: Search results
           content:
             application/json:
               schema:
@@ -283,11 +283,28 @@ paths:
         - $ref: '#/components/parameters/dn'
       responses:
         '200':
-          description: success
+          description: Attribute values
           content:
             application/json:
               schema:
                 type: object
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete the object
+      operationId: deleteObject
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+      responses:
+        '204':
+          description: success
         default:
           description: Unexpected error
           content:
@@ -306,7 +323,7 @@ paths:
         - $ref: '#/components/parameters/tab'
       responses:
         '200':
-          description: success
+          description: Attribute values
           content:
             application/json:
               schema:
@@ -330,7 +347,7 @@ paths:
         - $ref: '#/components/parameters/attribute'
       responses:
         '200':
-          description: success
+          description: The attribute value(s)
           content:
             application/json:
               schema:
@@ -358,7 +375,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AnyThing'
       responses:
-        '200':
+        '204':
           description: success
         default:
           description: Unexpected error
@@ -386,7 +403,7 @@ paths:
               items:
                 $ref: '#/components/schemas/AnyThing'
       responses:
-        '200':
+        '204':
           description: success
         default:
           description: Unexpected error
@@ -414,7 +431,7 @@ paths:
               items:
                 $ref: '#/components/schemas/AnyThing'
       responses:
-        '200':
+        '204':
           description: success
         default:
           description: Unexpected error
