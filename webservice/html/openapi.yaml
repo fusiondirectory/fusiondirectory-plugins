@@ -260,7 +260,7 @@ paths:
               required:
                 - attrs
       responses:
-        '200':
+        '201':
           description: DN of the created object
           content:
             application/json:

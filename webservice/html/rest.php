@@ -149,7 +149,7 @@ class fdRestService extends fdRPCService
       } else {
         $json = json_encode($result);
         if (json_last_error() != JSON_ERROR_NONE) {
-          throw new RestServiceEndPointError('Error while encoding JSON result: '.json_last_error_msg());
+          throw new RestServiceEndPointError('Error while encoding JSON result: '.json_last_error_msg(), 500);
         }
         echo $json."\n";
       }
@@ -157,18 +157,37 @@ class fdRestService extends fdRPCService
       http_response_code(400);
       echo $e->toJson();
     } catch (RestServiceEndPointError $e) {
-      http_response_code(400);
+      if ($e->getCode() != 0) {
+        http_response_code($e->getCode());
+      } else {
+        http_response_code(400);
+      }
       echo json_encode([$e->toArray()]);
+    } catch (NonExistingLdapNodeException $e) {
+      http_response_code(404);
+      echo json_encode(
+        [[
+          'message' => $e->getMessage(),
+          'line'    => $e->getLine(),
+          'file'    => $e->getFile(),
+        ]]
+      );
     } catch (Exception $e) {
       http_response_code(400);
-      echo json_encode([['message' => $e->getMessage()]]);
+      echo json_encode(
+        [[
+          'message' => $e->getMessage(),
+          'line'    => $e->getLine(),
+          'file'    => $e->getFile(),
+        ]]
+      );
     }
   }
 
   public function __call ($method, $params)
   {
     if (preg_match('/^endpoint_([^_]+)_([^_]+)_([^_]+)$/', $method, $m)) {
-      throw new RestServiceEndPointError(sprintf('Invalid request for endpoint %s: %s with %d path elements', $m[1], $m[2], $m[3]));
+      throw new RestServiceEndPointError(sprintf('Invalid request for endpoint %s: %s with %d path elements', $m[1], $m[2], $m[3]), 405);
     }
   }
 
@@ -179,17 +198,17 @@ class fdRestService extends fdRPCService
     if (!is_callable('yaml_parse_file')) {
       /* Fallback when php-yaml is missing */
       if (format != 'yaml') {
-        throw new RestServiceEndPointError('You need php-yaml to be able to convert to other formats');
+        throw new RestServiceEndPointError('You need php-yaml to be able to convert to other formats', 406);
       } else {
         readfile($BASE_DIR.'/html/openapi.yaml');
       }
     }
     $data = yaml_parse_file($BASE_DIR.'/html/openapi.yaml');
     if ($data === FALSE) {
-      throw new RestServiceEndPointError('Parsing openapi.yaml failed');
+      throw new RestServiceEndPointError('Parsing openapi.yaml failed', 500);
     }
     if (!is_array($data)) {
-      throw new RestServiceEndPointError('openapi.yaml is invalid');
+      throw new RestServiceEndPointError('openapi.yaml is invalid', 500);
     }
 
     $server = 'https://';
@@ -209,7 +228,7 @@ class fdRestService extends fdRPCService
         echo yaml_emit($data, YAML_UTF8_ENCODING);
         break;
       default:
-        throw new RestServiceEndPointError(sprintf('Unsupported openapi format: ', $format));
+        throw new RestServiceEndPointError(sprintf('Unsupported openapi format: ', $format), 406);
     }
     exit;
   }
@@ -236,10 +255,13 @@ class fdRestService extends fdRPCService
     if ($tab === NULL) {
       $object = $tabobject->getBaseObject();
     } else {
+      if (!isset($tabobject->by_object[$tab])) {
+        throw new RestServiceEndPointError('This tab does not exists: "'.$tab.'"', 404);
+      }
       $object = $tabobject->by_object[$tab];
     }
     if (!is_subclass_of($object, 'simplePlugin')) {
-      throw new RestServiceEndPointError('Invalid tab');
+      throw new RestServiceEndPointError('Invalid tab', 501);
     }
     $attributes = [];
     $fields = $object->attributesInfo;
@@ -260,17 +282,17 @@ class fdRestService extends fdRPCService
     $tabobject = objects::open($dn, $type);
 
     if (!isset($tabobject->by_object[$tab])) {
-      throw new RestServiceEndPointError('This tab does not exists: "'.$tab.'"');
+      throw new RestServiceEndPointError('This tab does not exists: "'.$tab.'"', 404);
     }
 
     $object = $tabobject->by_object[$tab];
 
     if (!is_subclass_of($object, 'simplePlugin')) {
-      throw new RestServiceEndPointError('Invalid tab');
+      throw new RestServiceEndPointError('Invalid tab', 501);
     }
 
     if (!isset($object->attributesAccess[$attribute])) {
-      throw new RestServiceEndPointError('Unknown attribute');
+      throw new RestServiceEndPointError('Unknown attribute', 404);
     }
 
     if ($object->displayHeader && !$object->is_account) {
@@ -278,7 +300,7 @@ class fdRestService extends fdRPCService
     }
 
     if (!$object->acl_is_readable($object->attributesAccess[$attribute]->getAcl())) {
-      throw new RestServiceEndPointError('Not enough rights to read "'.$attribute.'"');
+      throw new RestServiceEndPointError('Not enough rights to read "'.$attribute.'"', 403);
     }
 
     return $object->attributesAccess[$attribute]->serializeValue();
@@ -299,6 +321,8 @@ class fdRestService extends fdRPCService
       throw new RestServiceEndPointErrors($result['errors']);
     }
 
+    $responseCode = 201;
+
     return $result;
   }
 
@@ -310,12 +334,12 @@ class fdRestService extends fdRPCService
     if ($tab === NULL) {
       $object = $tabobject->getBaseObject();
     } elseif (!isset($tabobject->by_object[$tab])) {
-      throw new RestServiceEndPointError('This tab does not exists: "'.$tab.'"');
+      throw new RestServiceEndPointError('This tab does not exists: "'.$tab.'"', 404);
     } else {
       $object = $tabobject->by_object[$tab];
     }
     if (!is_subclass_of($object, 'simplePlugin')) {
-      throw new RestServiceEndPointError('Invalid tab');
+      throw new RestServiceEndPointError('Invalid tab', 501);
     }
     if ($tabobject->by_object[$tab]->displayHeader &&
         !$tabobject->by_object[$tab]->is_account
@@ -327,7 +351,7 @@ class fdRestService extends fdRPCService
       if ($tabobject->by_object[$tab]->acl_is_createable()) {
         $tabobject->by_object[$tab]->is_account = TRUE;
       } else {
-        throw new RestServiceEndPointError('You don\'t have sufficient rights to enable tab "'.$tab.'"');
+        throw new RestServiceEndPointError('You don\'t have sufficient rights to enable tab "'.$tab.'"', 403);
       }
     }
     $error = $tabobject->by_object[$tab]->deserializeValues([$attribute => $input]);
@@ -412,9 +436,12 @@ class fdRestService extends fdRPCService
     $this->checkAccess($type, $tab);
 
     $tabobject  = objects::create($type);
+    if (!isset($tabobject->by_object[$tab])) {
+      throw new RestServiceEndPointError('This tab does not exists: "'.$tab.'"', 404);
+    }
     $object     = $tabobject->by_object[$tab];
     if (!is_subclass_of($object, 'simplePlugin')) {
-      throw new RestServiceEndPointError('Invalid tab');
+      throw new RestServiceEndPointError('Invalid tab', 501);
     }
     $fields = $object->attributesInfo;
     foreach ($fields as &$section) {
