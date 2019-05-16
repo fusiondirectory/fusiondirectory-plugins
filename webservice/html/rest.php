@@ -100,9 +100,14 @@ class fdRestService extends fdRPCService
       // Get the HTTP method, path and body of the request
       $method   = $_SERVER['REQUEST_METHOD'];
       $request  = explode('/', trim($_SERVER['PATH_INFO'], '/'));
-      $input    = json_decode(file_get_contents('php://input'), TRUE);
-      if (json_last_error() != JSON_ERROR_NONE) {
-        throw new RestServiceEndPointError('Error while decoding input JSON: '.json_last_error_msg());
+      $rawInput = file_get_contents('php://input');
+      if ($rawInput === '') {
+        $input  = NULL;
+      } else {
+        $input  = json_decode($rawInput, TRUE);
+        if (json_last_error() != JSON_ERROR_NONE) {
+          throw new RestServiceEndPointError('Error while decoding input JSON: '.json_last_error_msg());
+        }
       }
 
       if ($method == 'OPTIONS') {
