@@ -96,17 +96,20 @@ class fdRestService extends fdRPCService
   {
     global $_SERVER;
 
-    // Get the HTTP method, path and body of the request
-    $method   = $_SERVER['REQUEST_METHOD'];
-    $request  = explode('/', trim($_SERVER['PATH_INFO'], '/'));
-    $input    = json_decode(file_get_contents('php://input'), TRUE);
-
-    if ($method == 'OPTIONS') {
-      /* Used by some GUI to get headers */
-      exit;
-    }
-
     try {
+      // Get the HTTP method, path and body of the request
+      $method   = $_SERVER['REQUEST_METHOD'];
+      $request  = explode('/', trim($_SERVER['PATH_INFO'], '/'));
+      $input    = json_decode(file_get_contents('php://input'), TRUE);
+      if (json_last_error() != JSON_ERROR_NONE) {
+        throw new RestServiceEndPointError('Error while decoding input JSON: '.json_last_error_msg());
+      }
+
+      if ($method == 'OPTIONS') {
+        /* Used by some GUI to get headers */
+        exit;
+      }
+
       if (implode('', $request) == 'openapi.yaml') {
         $this->sendOpenAPI('yaml');
       } elseif (implode('', $request) == 'openapi.json') {
@@ -131,31 +134,60 @@ class fdRestService extends fdRPCService
       Language::setHeaders(session::global_get('lang'), 'application/json');
 
       if (count($request) == 0) {
-        http_response_code(400);
-        die('No request');
+        throw new RestServiceEndPointError('Empty request received');
       }
 
-      $endpoint = 'endpoint_'.array_shift($request).'_'.$method.'_'.count($request);
-      $result   = $this->$endpoint($input, ...$request);
+      $responseCode = 200;
 
-      http_response_code(200);
-      echo json_encode($result)."\n";
+      $endpoint = 'endpoint_'.array_shift($request).'_'.$method.'_'.count($request);
+      $result   = $this->$endpoint($responseCode, $input, ...$request);
+
+      http_response_code($responseCode);
+      if ($responseCode == 204) {
+        /* 204 - No Content */
+        echo "\n";
+      } else {
+        $json = json_encode($result);
+        if (json_last_error() != JSON_ERROR_NONE) {
+          throw new RestServiceEndPointError('Error while encoding JSON result: '.json_last_error_msg(), 500);
+        }
+        echo $json."\n";
+      }
     } catch (RestServiceEndPointErrors $e) {
       http_response_code(400);
       echo $e->toJson();
     } catch (RestServiceEndPointError $e) {
-      http_response_code(400);
+      if ($e->getCode() != 0) {
+        http_response_code($e->getCode());
+      } else {
+        http_response_code(400);
+      }
       echo json_encode([$e->toArray()]);
+    } catch (NonExistingLdapNodeException $e) {
+      http_response_code(404);
+      echo json_encode(
+        [[
+          'message' => $e->getMessage(),
+          'line'    => $e->getLine(),
+          'file'    => $e->getFile(),
+        ]]
+      );
     } catch (Exception $e) {
       http_response_code(400);
-      echo json_encode([['message' => $e->getMessage()]]);
+      echo json_encode(
+        [[
+          'message' => $e->getMessage(),
+          'line'    => $e->getLine(),
+          'file'    => $e->getFile(),
+        ]]
+      );
     }
   }
 
   public function __call ($method, $params)
   {
     if (preg_match('/^endpoint_([^_]+)_([^_]+)_([^_]+)$/', $method, $m)) {
-      throw new FusionDirectoryException(sprintf('Invalid request for endpoint %s: %s with %d path elements', $m[1], $m[2], $m[3]));
+      throw new RestServiceEndPointError(sprintf('Invalid request for endpoint %s: %s with %d path elements', $m[1], $m[2], $m[3]), 405);
     }
   }
 
@@ -166,17 +198,17 @@ class fdRestService extends fdRPCService
     if (!is_callable('yaml_parse_file')) {
       /* Fallback when php-yaml is missing */
       if (format != 'yaml') {
-        throw new FusionDirectoryException('You need php-yaml to be able to convert to other formats');
+        throw new RestServiceEndPointError('You need php-yaml to be able to convert to other formats', 406);
       } else {
         readfile($BASE_DIR.'/html/openapi.yaml');
       }
     }
     $data = yaml_parse_file($BASE_DIR.'/html/openapi.yaml');
     if ($data === FALSE) {
-      throw new FusionDirectoryException('Parsing openapi.yaml failed');
+      throw new RestServiceEndPointError('Parsing openapi.yaml failed', 500);
     }
     if (!is_array($data)) {
-      throw new FusionDirectoryException('openapi.yaml is invalid');
+      throw new RestServiceEndPointError('openapi.yaml is invalid', 500);
     }
 
     $server = 'https://';
@@ -196,22 +228,22 @@ class fdRestService extends fdRPCService
         echo yaml_emit($data, YAML_UTF8_ENCODING);
         break;
       default:
-        throw new FusionDirectoryException(sprintf('Unsupported openapi format: ', $format));
+        throw new RestServiceEndPointError(sprintf('Unsupported openapi format: ', $format), 406);
     }
     exit;
   }
 
-  protected function endpoint_objects_GET_1 ($input, string $type): array
+  protected function endpoint_objects_GET_1 (int &$responseCode, $input, string $type): array
   {
     return $this->_ls($type, ($_GET['attrs'] ?? NULL), ($_GET['base'] ?? NULL), ($_GET['filter'] ?? ''));
   }
 
-  protected function endpoint_objects_GET_2 ($input, string $type, string $dn = NULL): array
+  protected function endpoint_objects_GET_2 (int &$responseCode, $input, string $type, string $dn = NULL): array
   {
     return $this->endpoint_objects_GET_3($input, $type, $dn, NULL);
   }
 
-  protected function endpoint_objects_GET_3 ($input, string $type, string $dn = NULL, string $tab = NULL): array
+  protected function endpoint_objects_GET_3 (int &$responseCode, $input, string $type, string $dn = NULL, string $tab = NULL): array
   {
     $this->checkAccess($type, $tab, $dn);
 
@@ -223,10 +255,13 @@ class fdRestService extends fdRPCService
     if ($tab === NULL) {
       $object = $tabobject->getBaseObject();
     } else {
+      if (!isset($tabobject->by_object[$tab])) {
+        throw new RestServiceEndPointError('This tab does not exists: "'.$tab.'"', 404);
+      }
       $object = $tabobject->by_object[$tab];
     }
     if (!is_subclass_of($object, 'simplePlugin')) {
-      throw new FusionDirectoryException('Invalid tab');
+      throw new RestServiceEndPointError('Invalid tab', 501);
     }
     $attributes = [];
     $fields = $object->attributesInfo;
@@ -240,24 +275,24 @@ class fdRestService extends fdRPCService
     return $attributes;
   }
 
-  protected function endpoint_objects_GET_4 ($input, string $type, string $dn, string $tab, string $attribute)
+  protected function endpoint_objects_GET_4 (int &$responseCode, $input, string $type, string $dn, string $tab, string $attribute)
   {
     $this->checkAccess($type, $tab, $dn);
 
     $tabobject = objects::open($dn, $type);
 
     if (!isset($tabobject->by_object[$tab])) {
-      throw new RestServiceEndPointError('This tab does not exists: "'.$tab.'"');
+      throw new RestServiceEndPointError('This tab does not exists: "'.$tab.'"', 404);
     }
 
     $object = $tabobject->by_object[$tab];
 
     if (!is_subclass_of($object, 'simplePlugin')) {
-      throw new FusionDirectoryException('Invalid tab');
+      throw new RestServiceEndPointError('Invalid tab', 501);
     }
 
     if (!isset($object->attributesAccess[$attribute])) {
-      throw new FusionDirectoryException('Unknown attribute');
+      throw new RestServiceEndPointError('Unknown attribute', 404);
     }
 
     if ($object->displayHeader && !$object->is_account) {
@@ -265,13 +300,13 @@ class fdRestService extends fdRPCService
     }
 
     if (!$object->acl_is_readable($object->attributesAccess[$attribute]->getAcl())) {
-      throw new RestServiceEndPointError('Not enough rights to read "'.$attribute.'"');
+      throw new RestServiceEndPointError('Not enough rights to read "'.$attribute.'"', 403);
     }
 
     return $object->attributesAccess[$attribute]->serializeValue();
   }
 
-  protected function endpoint_objects_POST_1 ($input, string $type): string
+  protected function endpoint_objects_POST_1 (int &$responseCode, $input, string $type): string
   {
     if (!isset($input['attrs'])) {
       throw new RestServiceEndPointError('Missing parameter "attrs" in POST data');
@@ -286,10 +321,12 @@ class fdRestService extends fdRPCService
       throw new RestServiceEndPointErrors($result['errors']);
     }
 
+    $responseCode = 201;
+
     return $result;
   }
 
-  protected function endpoint_objects_PUT_4 ($input, string $type, string $dn, string $tab = NULL, string $attribute = NULL): string
+  protected function endpoint_objects_PUT_4 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL, string $attribute = NULL)
   {
     $this->checkAccess($type, $tab, $dn);
 
@@ -297,12 +334,12 @@ class fdRestService extends fdRPCService
     if ($tab === NULL) {
       $object = $tabobject->getBaseObject();
     } elseif (!isset($tabobject->by_object[$tab])) {
-      throw new RestServiceEndPointError('This tab does not exists: "'.$tab.'"');
+      throw new RestServiceEndPointError('This tab does not exists: "'.$tab.'"', 404);
     } else {
       $object = $tabobject->by_object[$tab];
     }
     if (!is_subclass_of($object, 'simplePlugin')) {
-      throw new FusionDirectoryException('Invalid tab');
+      throw new RestServiceEndPointError('Invalid tab', 501);
     }
     if ($tabobject->by_object[$tab]->displayHeader &&
         !$tabobject->by_object[$tab]->is_account
@@ -314,7 +351,7 @@ class fdRestService extends fdRPCService
       if ($tabobject->by_object[$tab]->acl_is_createable()) {
         $tabobject->by_object[$tab]->is_account = TRUE;
       } else {
-        throw new RestServiceEndPointError('You don\'t have sufficient rights to enable tab "'.$tab.'"');
+        throw new RestServiceEndPointError('You don\'t have sufficient rights to enable tab "'.$tab.'"', 403);
       }
     }
     $error = $tabobject->by_object[$tab]->deserializeValues([$attribute => $input]);
@@ -331,10 +368,10 @@ class fdRestService extends fdRPCService
       throw new RestServiceEndPointErrors($errors);
     }
 
-    return $tabobject->dn;
+    $responseCode = 204;
   }
 
-  protected function endpoint_objects_POST_4 ($input, string $type, string $dn, string $tab = NULL, string $attribute = NULL): string
+  protected function endpoint_objects_POST_4 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL, string $attribute = NULL)
   {
     $result = $this->_addvalues($type, $dn, [$tab => [$attribute => $input]]);
 
@@ -342,10 +379,21 @@ class fdRestService extends fdRPCService
       throw new RestServiceEndPointErrors($result['errors']);
     }
 
-    return $result;
+    $responseCode = 204;
   }
 
-  protected function endpoint_objects_DELETE_4 ($input, string $type, string $dn, string $tab = NULL, string $attribute = NULL): string
+  protected function endpoint_objects_DELETE_2 (int &$responseCode, $input, string $type, string $dn)
+  {
+    $result = $this->_delete($type, $dn);
+
+    if (is_array($result) && isset($result['errors'])) {
+      throw new RestServiceEndPointErrors($result['errors']);
+    }
+
+    $responseCode = 204;
+  }
+
+  protected function endpoint_objects_DELETE_4 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL, string $attribute = NULL)
   {
     $result = $this->_delvalues($type, $dn, [$tab => [$attribute => $input]]);
 
@@ -353,15 +401,15 @@ class fdRestService extends fdRPCService
       throw new RestServiceEndPointErrors($result['errors']);
     }
 
-    return $result;
+    $responseCode = 204;
   }
 
-  protected function endpoint_token_GET_0 ($input): string
+  protected function endpoint_token_GET_0 (int &$responseCode, $input): string
   {
     return $this->_getId();
   }
 
-  protected function endpoint_ldaps_GET_0 ($input): array
+  protected function endpoint_ldaps_GET_0 (int &$responseCode, $input): array
   {
     global $BASE_DIR;
     $config = new config(CONFIG_DIR.'/'.CONFIG_FILE, $BASE_DIR);
@@ -373,24 +421,27 @@ class fdRestService extends fdRPCService
     return $ldaps;
   }
 
-  protected function endpoint_types_GET_0 ($input): array
+  protected function endpoint_types_GET_0 (int &$responseCode, $input): array
   {
     return $this->_listTypes();
   }
 
-  protected function endpoint_types_GET_1 ($input, string $type): array
+  protected function endpoint_types_GET_1 (int &$responseCode, $input, string $type): array
   {
     return $this->_infos($type);
   }
 
-  protected function endpoint_types_GET_2 ($input, string $type, string $tab): array
+  protected function endpoint_types_GET_2 (int &$responseCode, $input, string $type, string $tab): array
   {
     $this->checkAccess($type, $tab);
 
     $tabobject  = objects::create($type);
+    if (!isset($tabobject->by_object[$tab])) {
+      throw new RestServiceEndPointError('This tab does not exists: "'.$tab.'"', 404);
+    }
     $object     = $tabobject->by_object[$tab];
     if (!is_subclass_of($object, 'simplePlugin')) {
-      throw new FusionDirectoryException('Invalid tab');
+      throw new RestServiceEndPointError('Invalid tab', 501);
     }
     $fields = $object->attributesInfo;
     foreach ($fields as &$section) {
