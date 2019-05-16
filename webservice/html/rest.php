@@ -245,7 +245,7 @@ class fdRestService extends fdRPCService
 
   protected function endpoint_objects_GET_2 (int &$responseCode, $input, string $type, string $dn = NULL): array
   {
-    return $this->endpoint_objects_GET_3($input, $type, $dn, NULL);
+    return $this->endpoint_objects_GET_3($responseCode, $input, $type, $dn, NULL);
   }
 
   protected function endpoint_objects_GET_3 (int &$responseCode, $input, string $type, string $dn = NULL, string $tab = NULL): array
