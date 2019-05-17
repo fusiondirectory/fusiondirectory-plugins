@@ -131,7 +131,7 @@ class fdRestService extends fdRPCService
         );
         $request  = ['token'];
         $method   = 'GET';
-      } elseif ($request[0] == 'ldaps') {
+      } elseif ($request[0] == 'directories') {
         static::initiateRPCSession(NULL, NULL, NULL, NULL, FALSE);
       } else {
         static::initiateRPCSession($_SERVER['HTTP_SESSION_TOKEN']);
@@ -376,7 +376,7 @@ class fdRestService extends fdRPCService
     $responseCode = 204;
   }
 
-  protected function endpoint_objects_POST_4 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL, string $attribute = NULL)
+  protected function endpoint_objects_PATCH_4 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL, string $attribute = NULL)
   {
     $result = $this->_addvalues($type, $dn, [$tab => [$attribute => $input]]);
 
@@ -414,7 +414,7 @@ class fdRestService extends fdRPCService
     return $this->_getId();
   }
 
-  protected function endpoint_ldaps_GET_0 (int &$responseCode, $input): array
+  protected function endpoint_directories_GET_0 (int &$responseCode, $input): array
   {
     global $BASE_DIR;
     $config = new config(CONFIG_DIR.'/'.CONFIG_FILE, $BASE_DIR);

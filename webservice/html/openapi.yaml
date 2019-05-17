@@ -12,10 +12,14 @@ servers:
 security:
   - session: []
 tags:
-  - name: tools
-    description: API related stuff
+  - name: authentification
+    description: Authentification methods
   - name: objects
     description: 'List, get, create, delete objects'
+  - name: attributes
+    description: 'List, get, create, delete attributes'
+  - name: multivaluated
+    description: 'List, get, create, delete attributes'
   - name: types
     description: Get information on object types and tabs
 paths:
@@ -25,7 +29,7 @@ paths:
       summary: Login to the API
       security: []
       tags:
-        - tools
+        - authentification
       requestBody:
         content:
           application/json:
@@ -65,13 +69,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /ldaps:
+  /directories:
     get:
-      summary: List possible values for ldap parameter for login action
+      summary: Values from the directory selection drop-down list
       operationId: listLdaps
       security: []
       tags:
-        - tools
+        - authentification
       responses:
         '200':
           description: The list of LDAPs
@@ -95,7 +99,7 @@ paths:
       summary: Get session token for current session
       operationId: getToken
       tags:
-        - tools
+        - authentification
       responses:
         '200':
           description: An API token
@@ -277,7 +281,7 @@ paths:
       summary: Get attributes values from object main tab
       operationId: getObjectMainTab
       tags:
-        - objects
+        - attributes
       parameters:
         - $ref: '#/components/parameters/type'
         - $ref: '#/components/parameters/dn'
@@ -316,7 +320,7 @@ paths:
       summary: Get attributes values from object specific tab
       operationId: getObjectTab
       tags:
-        - objects
+        - attributes
       parameters:
         - $ref: '#/components/parameters/type'
         - $ref: '#/components/parameters/dn'
@@ -339,7 +343,7 @@ paths:
       summary: Get a single attribute value(s)
       operationId: getAttributeValues
       tags:
-        - objects
+        - attributes
       parameters:
         - $ref: '#/components/parameters/type'
         - $ref: '#/components/parameters/dn'
@@ -362,7 +366,7 @@ paths:
       summary: Set attribute value(s)
       operationId: setAttributeValues
       tags:
-        - objects
+        - attributes
       parameters:
         - $ref: '#/components/parameters/type'
         - $ref: '#/components/parameters/dn'
@@ -383,11 +387,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-    post:
+    patch:
       summary: Add attribute values. Only on multivaluated attributes.
       operationId: addAttributeValues
       tags:
-        - objects
         - multivaluated
       parameters:
         - $ref: '#/components/parameters/type'
@@ -415,7 +418,6 @@ paths:
       summary: Delete attribute values. Only on multivaluated attributes.
       operationId: deleteAttributeValues
       tags:
-        - objects
         - multivaluated
       parameters:
         - $ref: '#/components/parameters/type'
