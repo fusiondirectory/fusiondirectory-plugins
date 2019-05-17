@@ -12,8 +12,8 @@ servers:
 security:
   - session: []
 tags:
-  - name: tools
-    description: API related stuff
+  - name: authentification
+    description: Authentification methods
   - name: objects
     description: 'List, get, create, delete objects'
   - name: types
@@ -25,7 +25,7 @@ paths:
       summary: Login to the API
       security: []
       tags:
-        - tools
+        - authentification
       requestBody:
         content:
           application/json:
@@ -71,7 +71,7 @@ paths:
       operationId: listLdaps
       security: []
       tags:
-        - tools
+        - authentification
       responses:
         '200':
           description: The list of LDAPs
@@ -95,7 +95,7 @@ paths:
       summary: Get session token for current session
       operationId: getToken
       tags:
-        - tools
+        - authentification
       responses:
         '200':
           description: An API token
