@@ -376,7 +376,7 @@ class fdRestService extends fdRPCService
     $responseCode = 204;
   }
 
-  protected function endpoint_objects_POST_4 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL, string $attribute = NULL)
+  protected function endpoint_objects_PATCH_4 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL, string $attribute = NULL)
   {
     $result = $this->_addvalues($type, $dn, [$tab => [$attribute => $input]]);
 

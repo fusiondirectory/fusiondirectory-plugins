@@ -18,6 +18,8 @@ tags:
     description: 'List, get, create, delete objects'
   - name: attributes
     description: 'List, get, create, delete attributes'
+  - name: multivaluated
+    description: 'List, get, create, delete attributes'
   - name: types
     description: Get information on object types and tabs
 paths:
@@ -385,11 +387,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-    post:
+    patch:
       summary: Add attribute values. Only on multivaluated attributes.
       operationId: addAttributeValues
       tags:
-        - attributes
         - multivaluated
       parameters:
         - $ref: '#/components/parameters/type'
@@ -417,7 +418,6 @@ paths:
       summary: Delete attribute values. Only on multivaluated attributes.
       operationId: deleteAttributeValues
       tags:
-        - attributes
         - multivaluated
       parameters:
         - $ref: '#/components/parameters/type'
