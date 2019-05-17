@@ -65,9 +65,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /ldaps:
+  /directories:
     get:
-      summary: List possible values for ldap parameter for login action
+      summary: Values from the directory selection drop-down list
       operationId: listLdaps
       security: []
       tags:
