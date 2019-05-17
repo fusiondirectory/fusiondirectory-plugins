@@ -16,6 +16,8 @@ tags:
     description: Authentification methods
   - name: objects
     description: 'List, get, create, delete objects'
+  - name: attributes
+    description: 'List, get, create, delete attributes'
   - name: types
     description: Get information on object types and tabs
 paths:
@@ -277,7 +279,7 @@ paths:
       summary: Get attributes values from object main tab
       operationId: getObjectMainTab
       tags:
-        - objects
+        - attributes
       parameters:
         - $ref: '#/components/parameters/type'
         - $ref: '#/components/parameters/dn'
@@ -316,7 +318,7 @@ paths:
       summary: Get attributes values from object specific tab
       operationId: getObjectTab
       tags:
-        - objects
+        - attributes
       parameters:
         - $ref: '#/components/parameters/type'
         - $ref: '#/components/parameters/dn'
@@ -339,7 +341,7 @@ paths:
       summary: Get a single attribute value(s)
       operationId: getAttributeValues
       tags:
-        - objects
+        - attributes
       parameters:
         - $ref: '#/components/parameters/type'
         - $ref: '#/components/parameters/dn'
@@ -362,7 +364,7 @@ paths:
       summary: Set attribute value(s)
       operationId: setAttributeValues
       tags:
-        - objects
+        - attributes
       parameters:
         - $ref: '#/components/parameters/type'
         - $ref: '#/components/parameters/dn'
@@ -387,7 +389,7 @@ paths:
       summary: Add attribute values. Only on multivaluated attributes.
       operationId: addAttributeValues
       tags:
-        - objects
+        - attributes
         - multivaluated
       parameters:
         - $ref: '#/components/parameters/type'
@@ -415,7 +417,7 @@ paths:
       summary: Delete attribute values. Only on multivaluated attributes.
       operationId: deleteAttributeValues
       tags:
-        - objects
+        - attributes
         - multivaluated
       parameters:
         - $ref: '#/components/parameters/type'
