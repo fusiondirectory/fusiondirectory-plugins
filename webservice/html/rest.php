@@ -249,20 +249,23 @@ class fdRestService extends fdRPCService
     return $this->_ls($type, ($_GET['attrs'] ?? NULL), ($_GET['base'] ?? NULL), ($_GET['filter'] ?? ''));
   }
 
-  protected function endpoint_objects_GET_2 (int &$responseCode, $input, string $type, string $dn = NULL): array
+  protected function endpoint_objects_GET_2 (int &$responseCode, $input, string $type, string $dn): array
   {
     return $this->endpoint_objects_GET_3($responseCode, $input, $type, $dn, NULL);
   }
 
-  protected function endpoint_objects_GET_3 (int &$responseCode, $input, string $type, string $dn = NULL, string $tab = NULL): array
+  protected function endpoint_objects_GET_3 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL): array
   {
+    global $config;
+
     $this->checkAccess($type, $tab, $dn);
 
-    if ($dn === NULL) {
-      $tabobject = objects::create($type);
-    } else {
-      $tabobject = objects::open($dn, $type);
+    if ((strtolower($type) == 'configuration') && ($dn != CONFIGRDN.$config->current['BASE'])) {
+      throw new NonExistingLdapNodeException('Could not open configuration at dn '.$this->dn);
     }
+
+    $tabobject = objects::open($dn, $type);
+
     if ($tab === NULL) {
       $object = $tabobject->getBaseObject();
     } else {
