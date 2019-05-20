@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  description: This FusionDirectory REST API
+  description: The FusionDirectory REST API
   version: 1.0.0
   title: FusionDirectory
   contact:
@@ -8,7 +8,7 @@ info:
   license:
     name: GPL2+
 servers:
-  - url: 'http://localhost/fusiondirectory/rest.php'
+  - url: 'http://localhost/fusiondirectory/rest.php/v1'
 security:
   - session: []
 tags:
