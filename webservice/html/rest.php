@@ -238,6 +238,12 @@ class fdRestService extends fdRPCService
     exit;
   }
 
+  protected function endpoint_logout_POST_0 (int &$responseCode, $input)
+  {
+    $this->_logout();
+    $responseCode = 204;
+  }
+
   protected function endpoint_objects_GET_1 (int &$responseCode, $input, string $type): array
   {
     return $this->_ls($type, ($_GET['attrs'] ?? NULL), ($_GET['base'] ?? NULL), ($_GET['filter'] ?? ''));

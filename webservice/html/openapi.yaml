@@ -94,6 +94,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /logout:
+    post:
+      operationId: logout
+      summary: End the currently opened session
+      tags:
+        - authentification
+      responses:
+        '204':
+          description: success
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /token:
     get:
       summary: Get session token for current session
