@@ -125,7 +125,7 @@ class fdRestService extends fdRPCService
         /* Login method have the following parameters: LDAP, user, password */
         static::initiateRPCSession(
           NULL,
-          ($input['ldap'] ?? $_GET['ldap'] ?? NULL),
+          ($input['directory'] ?? $_GET['directory'] ?? NULL),
           ($input['user'] ?? $_GET['user'] ?? ''),
           ($input['password'] ?? $_GET['password'] ?? '')
         );

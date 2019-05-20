@@ -36,8 +36,8 @@ paths:
             schema:
               type: object
               properties:
-                ldap:
-                  description: The ldap server to connect to
+                directory:
+                  description: The LDAP directory to log into. Use /directories to get possible values.
                   type: string
                 user:
                   description: The user to login as
@@ -71,14 +71,14 @@ paths:
                 $ref: '#/components/schemas/Error'
   /directories:
     get:
-      summary: Values from the directory selection drop-down list
-      operationId: listLdaps
+      summary: List possible values for directory parameter for login action
+      operationId: listDirectories
       security: []
       tags:
         - authentification
       responses:
         '200':
-          description: The list of LDAPs
+          description: The list of LDAP directories that can be specified as directory parameter for /login endpoint
           content:
             application/json:
               schema:
