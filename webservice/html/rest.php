@@ -35,7 +35,7 @@ require_once('webservice/class_fdRPCService.inc');
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: Content-Type, Session-Token, Authorization, Access-Control-Allow-Headers, X-Requested-With');
-header('Access-Control-Allow-Methods: GET, POST, DELETE, PUT, OPTIONS');
+header('Access-Control-Allow-Methods: GET, POST, DELETE, PUT, OPTIONS, PATCH');
 
 class RestServiceEndPointError extends FusionDirectoryException
 {
@@ -121,22 +121,30 @@ class fdRestService extends fdRPCService
         $this->sendOpenAPI('json');
       }
 
-      if ($request[0] == 'login') {
+      if ($request[1] == 'login') {
         /* Login method have the following parameters: LDAP, user, password */
         static::initiateRPCSession(
           NULL,
-          ($input['ldap'] ?? $_GET['ldap'] ?? NULL),
+          ($input['directory'] ?? $_GET['directory'] ?? NULL),
           ($input['user'] ?? $_GET['user'] ?? ''),
           ($input['password'] ?? $_GET['password'] ?? '')
         );
         $request  = ['token'];
         $method   = 'GET';
-      } elseif ($request[0] == 'directories') {
+      } elseif ($request[1] == 'directories') {
         static::initiateRPCSession(NULL, NULL, NULL, NULL, FALSE);
       } else {
         static::initiateRPCSession($_SERVER['HTTP_SESSION_TOKEN']);
       }
       Language::setHeaders(session::global_get('lang'), 'application/json');
+
+      $version = array_shift($request);
+
+      if (empty($version)) {
+        throw new RestServiceEndPointError('API Version is missing from request');
+      } elseif ($version != 'v1') {
+        throw new RestServiceEndPointError('Version "'.$version.'" is either invalid or not supported');
+      }
 
       if (count($request) == 0) {
         throw new RestServiceEndPointError('Empty request received');
@@ -238,25 +246,34 @@ class fdRestService extends fdRPCService
     exit;
   }
 
+  protected function endpoint_logout_POST_0 (int &$responseCode, $input)
+  {
+    $this->_logout();
+    $responseCode = 204;
+  }
+
   protected function endpoint_objects_GET_1 (int &$responseCode, $input, string $type): array
   {
     return $this->_ls($type, ($_GET['attrs'] ?? NULL), ($_GET['base'] ?? NULL), ($_GET['filter'] ?? ''));
   }
 
-  protected function endpoint_objects_GET_2 (int &$responseCode, $input, string $type, string $dn = NULL): array
+  protected function endpoint_objects_GET_2 (int &$responseCode, $input, string $type, string $dn): array
   {
     return $this->endpoint_objects_GET_3($responseCode, $input, $type, $dn, NULL);
   }
 
-  protected function endpoint_objects_GET_3 (int &$responseCode, $input, string $type, string $dn = NULL, string $tab = NULL): array
+  protected function endpoint_objects_GET_3 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL): array
   {
+    global $config;
+
     $this->checkAccess($type, $tab, $dn);
 
-    if ($dn === NULL) {
-      $tabobject = objects::create($type);
-    } else {
-      $tabobject = objects::open($dn, $type);
+    if ((strtolower($type) == 'configuration') && ($dn != CONFIGRDN.$config->current['BASE'])) {
+      throw new NonExistingLdapNodeException('Could not open configuration at dn '.$this->dn);
     }
+
+    $tabobject = objects::open($dn, $type);
+
     if ($tab === NULL) {
       $object = $tabobject->getBaseObject();
     } else {
