@@ -35,7 +35,7 @@ require_once('webservice/class_fdRPCService.inc');
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: Content-Type, Session-Token, Authorization, Access-Control-Allow-Headers, X-Requested-With');
-header('Access-Control-Allow-Methods: GET, POST, DELETE, PUT, OPTIONS');
+header('Access-Control-Allow-Methods: GET, POST, DELETE, PUT, OPTIONS, PATCH');
 
 class RestServiceEndPointError extends FusionDirectoryException
 {
