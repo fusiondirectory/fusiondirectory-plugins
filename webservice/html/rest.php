@@ -256,22 +256,30 @@ class fdRestService extends fdRPCService
 
   protected function endpoint_logout_POST_0 (int &$responseCode, $input)
   {
+    $this->assertNoInput($input);
+
     $this->_logout();
     $responseCode = 204;
   }
 
   protected function endpoint_objects_GET_1 (int &$responseCode, $input, string $type): array
   {
+    $this->assertNoInput($input);
+
     return $this->_ls($type, ($_GET['attrs'] ?? NULL), ($_GET['base'] ?? NULL), ($_GET['filter'] ?? ''));
   }
 
   protected function endpoint_objects_GET_2 (int &$responseCode, $input, string $type, string $dn): array
   {
+    $this->assertNoInput($input);
+
     return $this->endpoint_objects_GET_3($responseCode, $input, $type, $dn, NULL);
   }
 
   protected function endpoint_objects_GET_3 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL): array
   {
+    $this->assertNoInput($input);
+
     global $config;
 
     $this->checkAccess($type, $tab, $dn);
@@ -307,6 +315,8 @@ class fdRestService extends fdRPCService
 
   protected function endpoint_objects_GET_4 (int &$responseCode, $input, string $type, string $dn, string $tab, string $attribute)
   {
+    $this->assertNoInput($input);
+
     $this->checkAccess($type, $tab, $dn);
 
     $tabobject = objects::open($dn, $type);
@@ -338,6 +348,8 @@ class fdRestService extends fdRPCService
 
   protected function endpoint_objects_POST_1 (int &$responseCode, $input, string $type): string
   {
+    $this->assertInput($input);
+
     if (!isset($input['attrs'])) {
       throw new RestServiceEndPointError('Missing parameter "attrs" in POST data');
     }
@@ -358,6 +370,8 @@ class fdRestService extends fdRPCService
 
   protected function endpoint_objects_PUT_4 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL, string $attribute = NULL)
   {
+    $this->assertInput($input);
+
     $this->checkAccess($type, $tab, $dn);
 
     $tabobject = objects::open($dn, $type);
@@ -401,8 +415,14 @@ class fdRestService extends fdRPCService
     $responseCode = 204;
   }
 
-  protected function endpoint_objects_PATCH_4 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL, string $attribute = NULL)
+  protected function endpoint_objects_PATCH_5 (int &$responseCode, $input, string $type, string $dn, string $tab, string $attribute, string $values)
   {
+    $this->assertInput($input);
+
+    if ($values !== 'values') {
+      throw new RestServiceEndPointError('Invalid request for endpoint objects: PATCH with 5 path elements', 405);
+    }
+
     $result = $this->_addvalues($type, $dn, [$tab => [$attribute => $input]]);
 
     if (is_array($result) && isset($result['errors'])) {
@@ -414,6 +434,8 @@ class fdRestService extends fdRPCService
 
   protected function endpoint_objects_DELETE_2 (int &$responseCode, $input, string $type, string $dn)
   {
+    $this->assertNoInput($input);
+
     $result = $this->_delete($type, $dn);
 
     if (is_array($result) && isset($result['errors'])) {
@@ -423,8 +445,54 @@ class fdRestService extends fdRPCService
     $responseCode = 204;
   }
 
-  protected function endpoint_objects_DELETE_4 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL, string $attribute = NULL)
+  protected function endpoint_objects_DELETE_4 (int &$responseCode, $input, string $type, string $dn, string $tab, string $attribute)
   {
+    $this->assertNoInput($input);
+
+    $this->checkAccess($type, $tab, $dn);
+
+    $tabobject = objects::open($dn, $type);
+
+    if (!isset($tabobject->by_object[$tab])) {
+      throw new RestServiceEndPointError('This tab does not exists: "'.$tab.'"', 404);
+    }
+
+    $object = $tabobject->by_object[$tab];
+
+    if (!is_subclass_of($object, 'simplePlugin')) {
+      throw new RestServiceEndPointError('Invalid tab', 501);
+    }
+
+    if (!isset($object->attributesAccess[$attribute])) {
+      throw new RestServiceEndPointError('Unknown attribute', 404);
+    }
+
+    if ($object->displayHeader && !$object->is_account) {
+      throw new RestServiceEndPointError('Inactive tab', 400);
+    }
+
+    if (!$object->acl_is_readable($object->attributesAccess[$attribute]->getAcl())) {
+      throw new RestServiceEndPointError('Not enough rights to read "'.$attribute.'"', 403);
+    }
+
+    $object->attributesAccess[$attribute]->resetToDefault();
+
+    $errors = $tabobject->save();
+    if (!empty($errors)) {
+      throw new RestServiceEndPointErrors($errors);
+    }
+
+    return $object->attributesAccess[$attribute]->serializeValue();
+  }
+
+  protected function endpoint_objects_DELETE_5 (int &$responseCode, $input, string $type, string $dn, string $tab, string $attribute, string $values)
+  {
+    $this->assertInput($input);
+
+    if ($values !== 'values') {
+      throw new RestServiceEndPointError('Invalid request for endpoint objects: DELETE with 5 path elements', 405);
+    }
+
     $result = $this->_delvalues($type, $dn, [$tab => [$attribute => $input]]);
 
     if (is_array($result) && isset($result['errors'])) {
@@ -436,11 +504,15 @@ class fdRestService extends fdRPCService
 
   protected function endpoint_token_GET_0 (int &$responseCode, $input): string
   {
+    $this->assertNoInput($input);
+
     return $this->_getId();
   }
 
   protected function endpoint_directories_GET_0 (int &$responseCode, $input): array
   {
+    $this->assertNoInput($input);
+
     global $BASE_DIR;
     $config = new config(CONFIG_DIR.'/'.CONFIG_FILE, $BASE_DIR);
     session::global_set('DEBUGLEVEL', 0);
@@ -453,16 +525,22 @@ class fdRestService extends fdRPCService
 
   protected function endpoint_types_GET_0 (int &$responseCode, $input): array
   {
+    $this->assertNoInput($input);
+
     return $this->_listTypes();
   }
 
   protected function endpoint_types_GET_1 (int &$responseCode, $input, string $type): array
   {
+    $this->assertNoInput($input);
+
     return $this->_infos($type);
   }
 
   protected function endpoint_types_GET_2 (int &$responseCode, $input, string $type, string $tab): array
   {
+    $this->assertNoInput($input);
+
     $this->checkAccess($type, $tab);
 
     $tabobject  = objects::create($type);
@@ -485,6 +563,20 @@ class fdRestService extends fdRPCService
     }
     unset($section);
     return ['sections' => $fields, 'sections_order' => array_keys($fields)];
+  }
+
+  private function assertNoInput ($input)
+  {
+    if ($input !== NULL) {
+      throw new RestServiceEndPointError('Invalid request: unexpected request body, should be empty', 400);
+    }
+  }
+
+  private function assertInput ($input)
+  {
+    if ($input === NULL) {
+      throw new RestServiceEndPointError('Invalid request: body is missing', 400);
+    }
   }
 }
 
