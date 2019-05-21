@@ -402,6 +402,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+    delete:
+      summary: Reset the attribute to its default value
+      operationId: resetAttributeValue
+      tags:
+        - attributes
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+        - $ref: '#/components/parameters/tab'
+        - $ref: '#/components/parameters/attribute'
+      responses:
+        '200':
+          description: The attribute value(s)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnyThing'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/objects/{type}/{dn}/{tab}/{attribute}/values':
     patch:
       summary: Add attribute values. Only on multivaluated attributes.
       operationId: addAttributeValues
