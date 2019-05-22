@@ -119,7 +119,7 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
     ];
   }
 
-  function check (): array
+  function check ()
   {
     $error = parent::check();
     if (!empty($error)) {

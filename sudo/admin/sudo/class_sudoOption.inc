@@ -229,7 +229,7 @@ class SudoOptionAttribute extends Attribute
     }
   }
 
-  function check (): array
+  function check ()
   {
     $error = parent::check();
     if (!empty($error)) {

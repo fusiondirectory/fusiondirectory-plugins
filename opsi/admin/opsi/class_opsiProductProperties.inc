@@ -26,7 +26,7 @@ class SubmittingOPSIProductAttribute extends SelectAttribute
     $this->setSubmitForm($func);
   }
 
-  function check (): array
+  function check ()
   {
   }
 
@@ -43,7 +43,7 @@ class ProductPropertyAttribute extends CompositeAttribute
     parent::__construct($description, $ldapName, [new StringAttribute('', '', 'fake')], '', '', $acl, $label);
   }
 
-  function check (): array
+  function check ()
   {
   }
 
