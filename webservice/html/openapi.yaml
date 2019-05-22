@@ -330,6 +330,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+    patch:
+      summary: Set the object attributes
+      operationId: modifyObject
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+      requestBody:
+        description: The new values for the attributes, grouped by tab
+        content:
+          application/json:
+            schema:
+              type: object
+              example: {
+                        "user": {
+                          "givenName": "John",
+                          "sn": "Smith"
+                        },
+                        "posixAccount": {
+                          "homeDirectory": "/home/john"
+                        }
+                      }
+      responses:
+        '204':
+          description: success
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   '/objects/{type}/{dn}/{tab}':
     get:
       summary: Get attributes values from object specific tab
@@ -347,6 +379,52 @@ paths:
             application/json:
               schema:
                 type: object
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      summary: Set the object attributes of a specific tab
+      operationId: modifyObjectTab
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+        - $ref: '#/components/parameters/tab'
+      requestBody:
+        description: The new values for the attributes
+        content:
+          application/json:
+            schema:
+              type: object
+              example: {
+                        "givenName": "John",
+                        "sn": "Smith"
+                      }
+      responses:
+        '204':
+          description: success
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Deactivate the tab
+      operationId: disableTab
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+        - $ref: '#/components/parameters/tab'
+      responses:
+        '204':
+          description: success
         default:
           description: Unexpected error
           content:
