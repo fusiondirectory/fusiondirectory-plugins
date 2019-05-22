@@ -369,6 +369,26 @@ class fdRestService extends fdRPCService
     return $result;
   }
 
+  protected function endpoint_objects_PATCH_2 (int &$responseCode, $input, string $type, string $dn)
+  {
+    $this->assertInput($input);
+
+    $result = $this->_setfields($type, $dn, $input);
+
+    if (is_array($result) && isset($result['errors'])) {
+      throw new RestServiceEndPointErrors($result['errors']);
+    }
+
+    $responseCode = 204;
+  }
+
+  protected function endpoint_objects_PATCH_3 (int &$responseCode, $input, string $type, string $dn, string $tab)
+  {
+    $this->assertInput($input);
+
+    $this->endpoint_objects_PATCH_2($responseCode, [$tab => $input], $type, $dn);
+  }
+
   protected function endpoint_objects_PUT_4 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL, string $attribute = NULL)
   {
     $this->assertInput($input);
@@ -438,6 +458,19 @@ class fdRestService extends fdRPCService
     $this->assertNoInput($input);
 
     $result = $this->_delete($type, $dn);
+
+    if (is_array($result) && isset($result['errors'])) {
+      throw new RestServiceEndPointErrors($result['errors']);
+    }
+
+    $responseCode = 204;
+  }
+
+  protected function endpoint_objects_DELETE_3 (int &$responseCode, $input, string $type, string $dn, string $tab)
+  {
+    $this->assertNoInput($input);
+
+    $result = $this->_removetab($type, $dn, $tab);
 
     if (is_array($result) && isset($result['errors'])) {
       throw new RestServiceEndPointErrors($result['errors']);
