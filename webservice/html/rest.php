@@ -147,6 +147,7 @@ class fdRestService extends fdRPCService
         );
         $request  = ['token'];
         $method   = 'GET';
+        $input    = NULL;
       } elseif ($request[0] == 'directories') {
         static::initiateRPCSession(NULL, NULL, NULL, NULL, FALSE);
       } else {
