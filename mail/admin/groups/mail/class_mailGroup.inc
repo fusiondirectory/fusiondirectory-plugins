@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2009-2010 Bas Tichelaar
-  Copyright (C) 2013-2016  FusionDirectory
+  Copyright (C) 2013-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -66,8 +67,8 @@ class mailGroup extends simplePlugin
           ),
           new SelectAttribute(
             _('Server'), _('Email server'),
-            'gosaMailServer', TRUE,
-            ['']
+            'gosaMailServer', FALSE,
+            []
           ),
           new SetAttribute(
             new StringAttribute(
@@ -117,6 +118,15 @@ class mailGroup extends simplePlugin
       /* Calling default behaviour */
       return parent::__isset($name);
     }
+  }
+
+  function foreignKeyUpdate (string $field, $oldvalue, $newvalue, array $source)
+  {
+    if ($field == 'gosaMailServer') {
+      mailMethod::resetMailServersCache();
+      $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
+    }
+    parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
   }
 
   public function mailServerChanged ()
