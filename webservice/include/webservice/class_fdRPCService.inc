@@ -19,6 +19,58 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+class WebServiceError extends FusionDirectoryException
+{
+  public function toArray ()
+  {
+    return [
+      'message' => $this->getMessage(),
+      'line'    => $this->getLine(),
+      'file'    => $this->getFile(),
+    ];
+  }
+}
+
+class WebServiceErrors extends FusionDirectoryException
+{
+  protected $errors;
+
+  public function __construct (array $errors)
+  {
+    parent::__construct();
+    $this->errors = $errors;
+    foreach ($this->errors as &$error) {
+      if (is_string($error)) {
+        $error = new WebServiceError($error);
+      }
+    }
+    unset($error);
+  }
+
+  public function toJson ()
+  {
+    return json_encode(
+      array_map(
+        function ($error)
+        {
+          return $error->toArray();
+        },
+        $this->errors
+      )
+    );
+  }
+
+  public function toStringArray ()
+  {
+    return array_map(
+      function ($e) {
+        return $e->getMessage();
+      },
+      $this->errors
+    );
+  }
+}
+
 /*!
  * \brief This class is the webservice of FusionDirectory
  *
@@ -111,31 +163,6 @@ class fdRPCService
         session::global_set('config', $config);
       }
     }
-  }
-
-  function __call ($method, $params)
-  {
-    global $config;
-    if (preg_match('/^_(.*)$/', $method, $m)) {
-      throw new FusionDirectoryException("Non existing method '$m[1]'");
-    }
-
-    if ($method == 'listLdaps') {
-      $config = new config(CONFIG_DIR."/".CONFIG_FILE, $BASE_DIR);
-      $ldaps = [];
-      foreach ($config->data['LOCATIONS'] as $id => $location) {
-        $ldaps[$id] = $location['NAME'];
-      }
-      return $ldaps;
-    } elseif ($method == 'login') {
-      /* Login method have the following parameters: LDAP, user, password */
-      static::initiateRPCSession(NULL, array_shift($params), array_shift($params), array_shift($params));
-      $method = 'getId';
-    } else {
-      static::initiateRPCSession(array_shift($params));
-    }
-
-    return call_user_func_array([$this, '_'.$method], $params);
   }
 
   protected function checkAccess ($type, $tabs = NULL, $dn = NULL)
@@ -261,30 +288,30 @@ class fdRPCService
   /*!
    * \brief Deactivate a tab of an object
    */
-  protected function _removetab ($type, $dn, $tab)
+  protected function _removetab (string $type, string $dn, string $tab): string
   {
     $this->checkAccess($type, $tab, $dn);
     $tabobject = objects::open($dn, $type);
     $tabobject->current = $tab;
     if (!is_subclass_of($tabobject->by_object[$tab], 'simplePlugin')) {
-      return ['errors' => ['Tab '.$tab.' is not based on simplePlugin, can’t remove it']];
+      throw new WebServiceError('Tab '.$tab.' is not based on simplePlugin, can’t remove it', 501);
     } elseif (!$tabobject->by_object[$tab]->displayHeader) {
-      return ['errors' => ['Tab '.$tab.' cannot be deactivated, can’t remove it']];
+      throw new WebServiceError('Tab '.$tab.' cannot be deactivated, can’t remove it');
     } elseif (!$tabobject->by_object[$tab]->is_account) {
-      return ['errors' => ['Tab '.$tab.' is not activated on "'.$dn.'", can’t remove it']];
+      throw new WebServiceError('Tab '.$tab.' is not activated on "'.$dn.'", can’t remove it');
     } elseif (!$tabobject->by_object[$tab]->acl_is_removeable()) {
-      return ['errors' => ['You don\'t have sufficient rights to disable tab "'.$tab.'"']];
+      throw new WebServiceError('You don\'t have sufficient rights to disable tab "'.$tab.'"', 403);
     } else {
       list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
       if ($disabled) {
-        return ['errors' => [$text]];
+        throw new WebServiceError($text);
       }
     }
     $_POST = [$tab.'_modify_state' => 1];
     $tabobject->save_object();
     $errors = $tabobject->save();
     if (!empty($errors)) {
-      return ['errors' => $errors];
+      throw new WebServiceErrors($errors);
     }
     return $tabobject->dn;
   }
@@ -367,7 +394,7 @@ class fdRPCService
     $tabobject->save_object();
     $errors = $tabobject->save();
     if (!empty($errors)) {
-      return ['errors' => $errors];
+      throw new WebServiceErrors($errors);
     }
     return $tabobject->dn;
   }
@@ -418,7 +445,7 @@ class fdRPCService
   /*!
    * \brief Set internal values of an object's attributes and save it
    */
-  protected function _setfields ($type, $dn, $values)
+  protected function _setfields (string $type, $dn, $values): string
   {
     $this->checkAccess($type, array_keys($values), $dn);
     if ($dn === NULL) {
@@ -428,7 +455,7 @@ class fdRPCService
     }
     foreach ($values as $tab => $tabvalues) {
       if (!isset($tabobject->by_object[$tab])) {
-        return ['errors' => ['This tab does not exists: "'.$tab.'"']];
+        throw new WebServiceError('This tab does not exists: "'.$tab.'"', 404);
       }
       if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
           $tabobject->by_object[$tab]->displayHeader &&
@@ -436,24 +463,24 @@ class fdRPCService
         ) {
         list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
         if ($disabled) {
-          return ['errors' => [$text]];
+          throw new WebServiceError($text);
         }
         if ($tabobject->by_object[$tab]->acl_is_createable()) {
           $tabobject->by_object[$tab]->is_account = TRUE;
         } else {
-          return ['errors' => ['You don\'t have sufficient rights to enable tab "'.$tab.'"']];
+          throw new WebServiceError('You don\'t have sufficient rights to enable tab "'.$tab.'"', 403);
         }
       }
       $error = $tabobject->by_object[$tab]->deserializeValues($tabvalues);
       if ($error !== TRUE) {
-        return ['errors' => [$error]];
+        throw new WebServiceError($error);
       }
       $tabobject->current = $tab;
       $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases is needed */
     }
     $errors = $tabobject->save();
     if (!empty($errors)) {
-      return ['errors' => $errors];
+      throw new WebServiceErrors($errors);
     }
     return $tabobject->dn;
   }
@@ -461,7 +488,7 @@ class fdRPCService
   /*!
    * \brief Add values to an object's attributes and save it
    */
-  protected function _addvalues ($type, $dn, $values)
+  protected function _addvalues (string $type, $dn, $values): string
   {
     return $this->adddelvalues($type, $dn, $values, TRUE);
   }
@@ -469,22 +496,22 @@ class fdRPCService
   /*!
    * \brief Delete values from an object's attributes and save it
    */
-  protected function _delvalues ($type, $dn, $values)
+  protected function _delvalues (string $type, $dn, $values): string
   {
     return $this->adddelvalues($type, $dn, $values, FALSE);
   }
 
-  private function adddelvalues ($type, $dn, $values, $add)
+  private function adddelvalues (string $type, $dn, $values, bool $add): string
   {
     $this->checkAccess($type, array_keys($values), $dn);
     if ($dn === NULL) {
-      return ['errors' => ['No DN provided']];
+      throw new WebServiceError('No DN provided');
     } else {
       $tabobject = objects::open($dn, $type);
     }
     foreach ($values as $tab => $tabvalues) {
       if (!isset($tabobject->by_object[$tab])) {
-        return ['errors' => ['This tab does not exists: "'.$tab.'"']];
+        throw new WebServiceError('This tab does not exists: "'.$tab.'"', 404);
       }
       if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
           $tabobject->by_object[$tab]->displayHeader &&
@@ -493,7 +520,7 @@ class fdRPCService
         if ($tabobject->by_object[$tab]->acl_is_createable()) {
           $tabobject->by_object[$tab]->is_account = TRUE;
         } else {
-          return ['errors' => ['You don\'t have sufficient rights to enable tab "'.$tab.'"']];
+          throw new WebServiceError('You don\'t have sufficient rights to enable tab "'.$tab.'"', 403);
         }
       }
       foreach ($tabvalues as $name => $newvalues) {
@@ -501,7 +528,7 @@ class fdRPCService
           if ($tabobject->by_object[$tab]->attrIsWriteable($name)) {
             $attrvalues = $tabobject->by_object[$tab]->attributesAccess[$name]->getValue();
             if (!is_array($attrvalues)) {
-              return ['errors' => [sprintf(_('Field "%s" is not multi-valuated'), $name)]];
+              throw new WebServiceError(sprintf(_('Field "%s" is not multi-valuated'), $name));
             }
             if (!is_array($newvalues)) {
               $newvalues = [$newvalues];
@@ -513,10 +540,10 @@ class fdRPCService
             }
             $tabobject->by_object[$tab]->attributesAccess[$name]->setValue($attrvalues);
           } else {
-            return ['errors' => [msgPool::permModify($dn, $name)]];
+            throw new WebServiceError(msgPool::permModify($dn, $name), 403);
           }
         } else {
-          return ['errors' => [sprintf(_('Unknown field "%s"'), $name)]];
+          throw new WebServiceError(sprintf(_('Unknown field "%s"'), $name), 404);
         }
       }
       $tabobject->current = $tab;
@@ -524,7 +551,7 @@ class fdRPCService
     }
     $errors = $tabobject->save();
     if (!empty($errors)) {
-      return ['errors' => $errors];
+      throw new WebServiceErrors($errors);
     }
     return $tabobject->dn;
   }
@@ -543,19 +570,19 @@ class fdRPCService
   /*!
    * \brief
    */
-  protected function _usetemplate ($type, $dn, $values)
+  protected function _usetemplate (string $type, string $dn, $values): string
   {
     $this->checkAccess($type, NULL, $dn);
 
     $template = new template($type, $dn);
     $error    = $template->deserialize($values);
     if ($error !== TRUE) {
-      return ['errors' => [$error]];
+      throw new WebServiceError($error);
     }
     $tabobject = $template->apply();
     $errors = $tabobject->save();
     if (!empty($errors)) {
-      return ['errors' => $errors];
+      throw new WebServiceErrors($errors);
     }
     return $tabobject->dn;
   }
@@ -563,27 +590,27 @@ class fdRPCService
   /*!
    * \brief Delete an object
    */
-  protected function _delete ($type, $dn)
+  protected function _delete (string $type, string $dn)
   {
     global $ui;
     $infos = objects::infos($type);
     // Check permissions, are we allowed to remove this object?
     $acl = $ui->get_permissions($dn, $infos['aclCategory'].'/'.$infos['mainTab']);
-    if (preg_match('/d/', $acl)) {
-      if ($user = get_lock($dn)) {
-        return ['errors' => [sprintf(_('Cannot delete %s. It has been locked by %s.'), $dn, $user)]];
-      }
-      add_lock($dn, $ui->dn);
-
-      // Delete the object
-      $tabobject = objects::open($dn, $type);
-      $tabobject->delete();
-
-      // Remove the lock for the current object.
-      del_lock($dn);
-    } else {
-      return ['errors' => [msgPool::permDelete($dn)]];
+    if (strpos($acl, 'd') === FALSE) {
+      throw new WebServiceError(msgPool::permDelete($dn), 403);
     }
+
+    if ($user = get_lock($dn)) {
+      throw new WebServiceError(sprintf(_('Cannot delete %s. It has been locked by %s.'), $dn, $user));
+    }
+    add_lock($dn, $ui->dn);
+
+    // Delete the object
+    $tabobject = objects::open($dn, $type);
+    $tabobject->delete();
+
+    // Remove the lock for the current object.
+    del_lock($dn);
   }
 
   /*!
@@ -601,12 +628,12 @@ class fdRPCService
     }
 
     foreach ($dns as $dn) {
-      if (!preg_match('/w/', $ui->get_permissions($dn, 'user/user', 'userLock'))) {
+      if (strpos($ui->get_permissions($dn, 'user/user', 'userLock'), 'w') === FALSE) {
         $disallowed[] = $dn;
       }
     }
     if (count($disallowed)) {
-      return ['errors' => [msgPool::permModify($disallowed)]];
+      throw new WebServiceError(msgPool::permModify($disallowed), 403);
     }
 
     // Try to lock/unlock the entries.
@@ -654,7 +681,7 @@ class fdRPCService
       }
     }
     if (!empty($errors)) {
-      return ['errors' => $errors];
+      throw new WebServiceErrors($errors);
     }
   }
 
@@ -670,12 +697,12 @@ class fdRPCService
     }
 
     foreach ($dns as $dn) {
-      if (!preg_match('/r/', $ui->get_permissions($dn, 'user/user', 'userLock'))) {
+      if (strpos($ui->get_permissions($dn, 'user/user', 'userLock'), 'r') === FALSE) {
         $disallowed[] = $dn;
       }
     }
     if (count($disallowed)) {
-      return ['errors' => [msgPool::permView($disallowed)]];
+      throw new WebServiceError(msgPool::permView($disallowed), 403);
     }
 
     // Try to lock/unlock the entries.
@@ -704,7 +731,7 @@ class fdRPCService
       }
     }
     if (!empty($errors)) {
-      return ['errors' => $errors];
+      throw new WebServiceErrors($errors);
     }
     return $result;
   }
@@ -720,15 +747,15 @@ class fdRPCService
     $pwRecovery->email_address = $email;
     $dn = $pwRecovery->step2();
     if ($pwRecovery->step == 2) { /* No errors */
-      if (!preg_match('/w/', $ui->get_permissions($dn, 'user/user', 'userPassword'))) {
-        return ['errors' => [msgPool::permModify($dn)]];
+      if (strpos($ui->get_permissions($dn, 'user/user', 'userPassword'), 'w') === FALSE) {
+        throw new WebServiceError(msgPool::permModify($dn), 403);
       }
       $token = $pwRecovery->generateAndStoreToken();
       if (empty($pwRecovery->message) && ($token !== FALSE)) {
         return ['token' => $token, 'uid' => $pwRecovery->uid];
       }
     }
-    return ['errors' => $pwRecovery->message];
+    throw new WebServiceErrors($pwRecovery->message);
   }
 
   /*!
@@ -746,7 +773,7 @@ class fdRPCService
     } else {
       $pwRecovery->message[] = _('This token is invalid');
     }
-    return ['errors' => $pwRecovery->message];
+    throw new WebServiceErrors($pwRecovery->message);
   }
 
   /*!

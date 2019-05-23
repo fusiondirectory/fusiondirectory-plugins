@@ -35,7 +35,41 @@ require_once("variables.inc");
 require_once("jsonrpcphp/jsonRPCServer.php");
 require_once("webservice/class_fdRPCService.inc");
 
-$service = new fdRPCService();
+class fdJSONRPCService extends fdRPCService
+{
+  function __call ($method, $params)
+  {
+    global $config;
+    if (preg_match('/^_(.*)$/', $method, $m)) {
+      throw new FusionDirectoryException("Non existing method '$m[1]'");
+    }
+
+    if ($method == 'listLdaps') {
+      $config = new config(CONFIG_DIR."/".CONFIG_FILE, $BASE_DIR);
+      $ldaps = [];
+      foreach ($config->data['LOCATIONS'] as $id => $location) {
+        $ldaps[$id] = $location['NAME'];
+      }
+      return $ldaps;
+    } elseif ($method == 'login') {
+      /* Login method have the following parameters: LDAP, user, password */
+      static::initiateRPCSession(NULL, array_shift($params), array_shift($params), array_shift($params));
+      $method = 'getId';
+    } else {
+      static::initiateRPCSession(array_shift($params));
+    }
+
+    try {
+      return call_user_func_array([$this, '_'.$method], $params);
+    } catch (WebServiceErrors $e) {
+      return ['errors' => $e->toStringArray()];
+    } catch (WebServiceError $e) {
+      return ['errors' => [$e->getMessage()]];
+    }
+  }
+}
+
+$service = new fdJSONRPCService();
 if (!jsonRPCServer::handle($service)) {
   echo "no request\n";
   echo session_id()."\n";
