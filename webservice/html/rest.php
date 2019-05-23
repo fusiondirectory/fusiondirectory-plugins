@@ -323,23 +323,21 @@ class fdRestService extends fdRPCService
     return $result;
   }
 
-  protected function endpoint_objects_PATCH_2 (int &$responseCode, $input, string $type, string $dn)
+  protected function endpoint_objects_PATCH_2 (int &$responseCode, $input, string $type, string $dn): string
   {
     $this->assertInput($input);
 
     $result = $this->_setfields($type, $dn, $input);
 
-    $responseCode = 204;
+    return $result;
   }
 
-  protected function endpoint_objects_PATCH_3 (int &$responseCode, $input, string $type, string $dn, string $tab)
+  protected function endpoint_objects_PATCH_3 (int &$responseCode, $input, string $type, string $dn, string $tab): string
   {
-    $this->assertInput($input);
-
     $this->endpoint_objects_PATCH_2($responseCode, [$tab => $input], $type, $dn);
   }
 
-  protected function endpoint_objects_PUT_4 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL, string $attribute = NULL)
+  protected function endpoint_objects_PUT_4 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL, string $attribute = NULL): string
   {
     $this->assertInput($input);
 
@@ -383,10 +381,10 @@ class fdRestService extends fdRPCService
       throw new WebServiceErrors($errors);
     }
 
-    $responseCode = 204;
+    return $tabobject->dn;
   }
 
-  protected function endpoint_objects_PATCH_5 (int &$responseCode, $input, string $type, string $dn, string $tab, string $attribute, string $values)
+  protected function endpoint_objects_PATCH_5 (int &$responseCode, $input, string $type, string $dn, string $tab, string $attribute, string $values): string
   {
     $this->assertInput($input);
 
@@ -396,7 +394,7 @@ class fdRestService extends fdRPCService
 
     $result = $this->_addvalues($type, $dn, [$tab => [$attribute => $input]]);
 
-    $responseCode = 204;
+    return $result;
   }
 
   protected function endpoint_objects_DELETE_2 (int &$responseCode, $input, string $type, string $dn)

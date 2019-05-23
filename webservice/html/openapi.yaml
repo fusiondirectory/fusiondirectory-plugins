@@ -354,8 +354,12 @@ paths:
                         }
                       }
       responses:
-        '204':
-          description: success
+        '200':
+          description: DN of the modified object
+          content:
+            application/json:
+              schema:
+                type: string
         default:
           description: Unexpected error
           content:
@@ -405,8 +409,12 @@ paths:
                         "sn": "Smith"
                       }
       responses:
-        '204':
-          description: success
+        '200':
+          description: DN of the modified object
+          content:
+            application/json:
+              schema:
+                type: string
         default:
           description: Unexpected error
           content:
@@ -472,8 +480,12 @@ paths:
             schema:
               $ref: '#/components/schemas/AnyThing'
       responses:
-        '204':
-          description: success
+        '200':
+          description: DN of the modified object
+          content:
+            application/json:
+              schema:
+                type: string
         default:
           description: Unexpected error
           content:
@@ -523,8 +535,12 @@ paths:
               items:
                 $ref: '#/components/schemas/AnyThing'
       responses:
-        '204':
-          description: success
+        '200':
+          description: DN of the modified object
+          content:
+            application/json:
+              schema:
+                type: string
         default:
           description: Unexpected error
           content:
