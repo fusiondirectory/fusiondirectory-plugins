@@ -117,21 +117,30 @@ class entite extends simplePlugin
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=supannEntite)', ['supannCodeEntite','ou','o']);
+    $ldap->search('(objectClass=supannEntite)', ['supannCodeEntite','ou','o','description']);
 
-    $entity_codes   = [''];
-    $entity_labels  = [''];
+    $code_entites   = [''];
+    $label_entites  = [''];
     while ($attrs = $ldap->fetch()) {
       if (isset($attrs['supannCodeEntite'][0])) {
-        $entity_codes[] = $attrs['supannCodeEntite'][0];
-        if (isset($attrs['ou'][0])) {
-          $entity_labels[] = $attrs['ou'][0]." (".$attrs['supannCodeEntite'][0].")";
+        $code_entites[] = $attrs['supannCodeEntite'][0];
+        if (isset($attrs['description'][0])) {
+          $description = $attrs['description'][0];
+          if (mb_strlen($description, 'UTF-8') > 30) {
+            $description = mb_substr($description, 0, 27, 'UTF-8').'...';
+          }
+          $description = ' ('.$description.')';
         } else {
-          $entity_labels[] = $attrs['o'][0]." (".$attrs['supannCodeEntite'][0].")";
+          $description = '';
+        }
+        if (isset($attrs['ou'][0])) {
+          $label_entites[] = $attrs['ou'][0].$description;
+        } else {
+          $label_entites[] = $attrs['o'][0].$description;
         }
       }
     }
-    $this->attributesAccess['supannCodeEntiteParent']->attribute->setChoices($entity_codes, $entity_labels);
+    $this->attributesAccess['supannCodeEntiteParent']->attribute->setChoices($code_entites, $label_entites);
 
     $this->attributesAccess['ou']->setUnique('one');
     $this->attributesAccess['supannCodeEntite']->setUnique('whole', '(objectClass=supannEntite)');
