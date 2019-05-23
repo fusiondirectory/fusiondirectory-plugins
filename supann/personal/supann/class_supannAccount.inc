@@ -493,7 +493,7 @@ class supannAccount extends simplePlugin
     /* list of entity stored in LDAP tree */
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=supannEntite)', ['supannCodeEntite', 'ou', 'o','supannEtablissement']);
+    $ldap->search('(objectClass=supannEntite)', ['supannCodeEntite', 'ou', 'o','supannEtablissement','description']);
 
     $code_entites   = [];
     $label_entites  = [];
@@ -502,14 +502,23 @@ class supannAccount extends simplePlugin
     while ($attrs = $ldap->fetch()) {
       if (isset($attrs['supannCodeEntite'][0])) {
         $code_entites[] = $attrs['supannCodeEntite'][0];
-        if (isset($attrs['ou'][0])) {
-          $label_entites[] = $attrs['ou'][0]." (".$attrs['supannCodeEntite'][0].")";
+        if (isset($attrs['description'][0])) {
+          $description = $attrs['description'][0];
+          if (mb_strlen($description, 'UTF-8') > 30) {
+            $description = mb_substr($description, 0, 27, 'UTF-8').'...';
+          }
+          $description = ' ('.$description.')';
         } else {
-          $label_entites[] = $attrs['o'][0]." (".$attrs['supannCodeEntite'][0].")";
+          $description = '';
+        }
+        if (isset($attrs['ou'][0])) {
+          $label_entites[] = $attrs['ou'][0].$description;
+        } else {
+          $label_entites[] = $attrs['o'][0].$description;
         }
         if (isset($attrs['supannEtablissement'][0])) {
           $code_etablissements[]  = $attrs['supannEtablissement'][0];
-          $label_etablissements[] = $attrs['o'][0]." (".$attrs['supannEtablissement'][0].")";
+          $label_etablissements[] = $attrs['o'][0].' ('.$attrs['supannEtablissement'][0].')';
         }
       }
     }
