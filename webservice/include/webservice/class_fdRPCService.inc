@@ -209,11 +209,14 @@ class fdRPCService
   /*!
    * \brief Get list of object of objectType $type in $ou
    */
-  protected function _ls ($type, $attrs = NULL, $ou = NULL, $filter = '')
+  protected function _ls ($type, $attrs = NULL, $ou = NULL, $filter = '', $scope = 'subtree', $templateSearch = FALSE)
   {
     global $config, $ui;
     $this->checkAccess($type);
-    return objects::ls($type, $attrs, $ou, $filter, TRUE);
+    if (!in_array($scope, ['base','one','subtree'])) {
+      throw new WebServiceError(sprintf('Invalid scope "%s"', $scope));
+    }
+    return objects::ls($type, $attrs, $ou, $filter, TRUE, $scope, $templateSearch);
   }
 
   /*!
