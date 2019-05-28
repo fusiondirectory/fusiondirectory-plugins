@@ -176,7 +176,7 @@ class fdRPCService
       $self = '';
     }
     if (!$plist->check_access(['ACL' => $infos['aclCategory'].$self])) {
-      throw new FusionDirectoryException("Unsufficient rights for accessing type '$type$self'");
+      throw new WebServiceError(sprintf('Unsufficient rights for accessing type "%s%s"', $type, $self), 403);
     }
     if ($tabs !== NULL) {
       if (!is_array($tabs)) {
@@ -185,13 +185,13 @@ class fdRPCService
       foreach ($tabs as $tab) {
         $pInfos = pluglist::pluginInfos($tab);
         if ($pInfos === NULL) {
-          throw new FusionDirectoryException("Tab '$tab' of type '$type' does not exists");
+          throw new WebServiceError(sprintf('Tab "%s" of type "%s" does not exists', $tab, $type), 404);
         }
         if (!isset($pInfos['plCategory'])) {
-          throw new FusionDirectoryException("Tab '$tab' of type '$type' has no ACL category");
+          throw new WebServiceError(sprintf('Tab "%s" of type "%s" has no ACL category', $tab, $type), 500);
         }
         if (!$plist->check_access(['ACL' => join($self.',', $pInfos['plCategory']).$self])) {
-          throw new FusionDirectoryException("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
+          throw new WebServiceError(sprintf('Unsufficient rights for accessing tab "%s" of type "%s%s"', $tab, $type, $self), 403);
         }
       }
     }
