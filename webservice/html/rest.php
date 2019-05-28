@@ -225,7 +225,7 @@ class fdRestService extends fdRPCService
   {
     $this->assertNoInput($input);
 
-    return $this->_ls($type, ($_GET['attrs'] ?? NULL), ($_GET['base'] ?? NULL), ($_GET['filter'] ?? ''));
+    return $this->_ls($type, ($_GET['attrs'] ?? NULL), ($_GET['base'] ?? NULL), ($_GET['filter'] ?? ''), ($_GET['scope'] ?? 'subtree'), ($_GET['templates'] ?? FALSE));
   }
 
   protected function endpoint_objects_GET_2 (int &$responseCode, $input, string $type, string $dn): array

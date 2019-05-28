@@ -233,6 +233,20 @@ paths:
             example:
               sn: 1
               title: "*"
+        - name: scope
+          in: query
+          required: false
+          description: The scope, defaults to subtree
+          schema:
+            type: string
+            example: "subtree"
+        - name: templates
+          in: query
+          required: false
+          description: Whether to search for templates instead of standard objects, defaults to false
+          schema:
+            type: boolean
+            example: false
       responses:
         '200':
           description: Search results
