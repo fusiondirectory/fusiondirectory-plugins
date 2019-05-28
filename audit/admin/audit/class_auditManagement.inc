@@ -50,7 +50,7 @@ class auditManagement extends management
   {
     parent::__construct();
 
-    $this->filter->addElement(new DateFilterElement($this->filter, 'fdAuditDateTime', _('Date')));
+    $this->filter->addElement(new DateFilterElement($this->filter, 'fdAuditDateTime', _('Date'), date('Y-m-d')));
   }
 
   protected function setUpListing ()
