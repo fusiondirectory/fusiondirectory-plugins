@@ -47,7 +47,12 @@ class fdRestService extends fdRPCService
   public static function authenticateHeader ($message = 'Authentication required')
   {
     header('Content-Type: application/json');
-    parent::authenticateHeader(json_encode($message));
+    parent::authenticateHeader(static::encodeJson($message));
+  }
+
+  protected static function encodeJson ($value)
+  {
+    return json_encode($value, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
   }
 
   public function treatRequest ()
@@ -127,7 +132,7 @@ class fdRestService extends fdRPCService
         /* 204 - No Content */
         echo "\n";
       } else {
-        $json = json_encode($result);
+        $json = static::encodeJson($result);
         if (json_last_error() != JSON_ERROR_NONE) {
           throw new WebServiceError('Error while encoding JSON result: '.json_last_error_msg(), 500);
         }
@@ -142,10 +147,10 @@ class fdRestService extends fdRPCService
       } else {
         http_response_code(400);
       }
-      echo json_encode([$e->toArray()]);
+      echo static::encodeJson([$e->toArray()]);
     } catch (NonExistingLdapNodeException $e) {
       http_response_code(404);
-      echo json_encode(
+      echo static::encodeJson(
         [[
           'message' => $e->getMessage(),
           'line'    => $e->getLine(),
@@ -154,7 +159,7 @@ class fdRestService extends fdRPCService
       );
     } catch (Exception $e) {
       http_response_code(400);
-      echo json_encode(
+      echo static::encodeJson(
         [[
           'message' => $e->getMessage(),
           'line'    => $e->getLine(),
@@ -202,7 +207,7 @@ class fdRestService extends fdRPCService
 
     switch ($format) {
       case 'json':
-        echo json_encode($data, JSON_PRETTY_PRINT);
+        echo json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
         break;
       case 'yaml':
         echo yaml_emit($data, YAML_UTF8_ENCODING);
