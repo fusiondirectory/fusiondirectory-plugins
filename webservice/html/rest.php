@@ -260,6 +260,9 @@ class fdRestService extends fdRPCService
     if (!is_subclass_of($object, 'simplePlugin')) {
       throw new WebServiceError('Invalid tab', 501);
     }
+    if (!$object->is_account && !$object->ignore_account) {
+      throw new WebServiceError(sprintf('Tab "%s" is inactive', $tab));
+    }
     $attributes = [];
     $fields = $object->attributesInfo;
     foreach ($fields as $section) {
@@ -294,12 +297,12 @@ class fdRestService extends fdRPCService
       throw new WebServiceError('Unknown attribute', 404);
     }
 
-    if ($object->displayHeader && !$object->is_account) {
-      return NULL;
-    }
-
     if (!$object->acl_is_readable($object->attributesAccess[$attribute]->getAcl())) {
       throw new WebServiceError('Not enough rights to read "'.$attribute.'"', 403);
+    }
+
+    if (!$object->is_account && !$object->ignore_account) {
+      throw new WebServiceError(sprintf('Tab "%s" is inactive', $tab));
     }
 
     return $object->attributesAccess[$attribute]->serializeValue();
