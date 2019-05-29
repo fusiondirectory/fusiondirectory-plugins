@@ -307,8 +307,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   '/objects/{type}/{dn}':
     get:
-      summary: Get attributes values from object main tab
-      operationId: getObjectMainTab
+      summary: List tabs of the object, with name and status
+      operationId: listObjectTabs
       tags:
         - attributes
       parameters:
@@ -316,11 +316,43 @@ paths:
         - $ref: '#/components/parameters/dn'
       responses:
         '200':
-          description: Attribute values
+          description: Tab list
           content:
             application/json:
               schema:
-                type: object
+                type: array
+                items:
+                  type: object
+                  required: [class,name,active]
+                  properties:
+                    class:
+                      type: string
+                    name:
+                      type: string
+                    active:
+                      type: boolean
+                example: [
+                            {
+                              "class": "roleGeneric",
+                              "name": "Role",
+                              "active": true
+                            },
+                            {
+                              "class": "applicationRights",
+                              "name": "Applications",
+                              "active": false
+                            },
+                            {
+                              "class": "reference",
+                              "name": "References",
+                              "active": true
+                            },
+                            {
+                              "class": "ldapDump",
+                              "name": "LDAP",
+                              "active": true
+                            }
+                          ]
         default:
           description: Unexpected error
           content:
@@ -659,12 +691,12 @@ components:
           items:
             $ref: '#/components/schemas/TabDef'
           example: [{
-                      "CLASS": "roleGeneric",
-                      "NAME": "Role"
+                      "class": "roleGeneric",
+                      "name": "Role"
                     },
                     {
-                      "CLASS": "applicationRights",
-                      "NAME": "Applications"
+                      "class": "applicationRights",
+                      "name": "Applications"
                     }]
     TypeList:
       type: object
@@ -673,11 +705,11 @@ components:
       example: {"CONFIGURATION":"FusionDirectory configuration","DASHBOARD":"Dashboard","OGROUP":"Group","SPECIAL":"special","ROLE":"Role","USER":"User","LOCALITY":"Locality","DEPARTMENT":"Department","DCOBJECT":"Domain Component","COUNTRY":"Country","ACLROLE":"ACL role","ACLASSIGNMENT":"ACL assignment","ORGANIZATION":"Organization","DOMAIN":"Domain"}
     TabDef:
       type: object
-      required: [CLASS,NAME]
+      required: [class,name]
       properties:
-        CLASS:
+        class:
           type: string
-        NAME:
+        name:
           type: string
     TabInfo:
       type: object
@@ -744,7 +776,7 @@ components:
       in: path
       example: "posixAccount"
       required: true
-      description: An existing tab CLASS
+      description: An existing tab class
       schema:
         type: string
     attribute:
