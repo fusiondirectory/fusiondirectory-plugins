@@ -428,7 +428,7 @@ paths:
             application/json:
               schema:
                 type: object
-                example:{
+                example: {
                           "user": [
                             "sn",
                             "givenName",
@@ -646,6 +646,49 @@ paths:
           description: success
         default:
           description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/userlock/{dn}':
+    get:
+      summary: Get lock state of a user
+      operationId: getLockState
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/dn'
+      responses:
+        '200':
+          description: Whether the user is locked
+          content:
+            application/json:
+              schema:
+                type: boolean
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Set lock state of a user
+      operationId: setLockState
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/dn'
+      requestBody:
+        description: Whether to lock or unlock the user
+        content:
+          application/json:
+            schema:
+              type: boolean
+      responses:
+        '204':
+          description: Success
+        default:
+          description: unexpected error
           content:
             application/json:
               schema:

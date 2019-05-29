@@ -564,6 +564,22 @@ class fdRestService extends fdRPCService
     return ['sections' => $fields, 'sections_order' => array_keys($fields)];
   }
 
+  protected function endpoint_userlock_GET_1 (int &$responseCode, $input, string $dn): bool
+  {
+    $this->assertNoInput($input);
+
+    return $this->_isUserLocked([$dn])[$dn];
+  }
+
+  protected function endpoint_userlock_PUT_1 (int &$responseCode, $input, string $dn)
+  {
+    $this->assertInput($input);
+
+    $this->_lockUser([$dn], ($input ? 'lock' : 'unlock'));
+
+    $responseCode = 204;
+  }
+
   private function assertNoInput ($input)
   {
     if ($input !== NULL) {
