@@ -232,7 +232,16 @@ class fdRestService extends fdRPCService
   {
     $this->assertNoInput($input);
 
-    return $this->endpoint_objects_GET_3($responseCode, $input, $type, $dn, NULL);
+    $tabs = $this->_listTabs($type, $dn);
+
+    return array_map(
+      function ($key, $array) {
+        $array['class'] = $key;
+        return $array;
+      },
+      array_keys($tabs),
+      $tabs
+    );
   }
 
   protected function endpoint_objects_GET_3 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL): array
@@ -503,7 +512,12 @@ class fdRestService extends fdRPCService
   {
     $this->assertNoInput($input);
 
-    return $this->_infos($type);
+    $infos = $this->_infos($type);
+
+    /* Convert CLASS and NAME keys to lowercase */
+    $infos['tabs'] = array_map('array_change_key_case', $infos['tabs']);
+
+    return $infos;
   }
 
   protected function endpoint_types_GET_2 (int &$responseCode, $input, string $type, string $tab): array
