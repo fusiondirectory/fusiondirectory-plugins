@@ -255,6 +255,17 @@ class fdRestService extends fdRPCService
 
     global $config;
 
+    if ($tab == 'templatefields') {
+      $data = $this->_gettemplate($type, $dn);
+      $data = array_map(
+        function ($tabData) {
+          return array_keys($tabData['attrs']);
+        },
+        $data
+      );
+      return $data;
+    }
+
     $this->checkAccess($type, $tab, $dn);
 
     if ((strtolower($type) == 'configuration') && ($dn != CONFIGRDN.$config->current['BASE'])) {

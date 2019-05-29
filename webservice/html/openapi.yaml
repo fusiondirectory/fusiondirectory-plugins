@@ -310,7 +310,7 @@ paths:
       summary: List tabs of the object, with name and status
       operationId: listObjectTabs
       tags:
-        - attributes
+        - objects
       parameters:
         - $ref: '#/components/parameters/type'
         - $ref: '#/components/parameters/dn'
@@ -406,6 +406,36 @@ paths:
             application/json:
               schema:
                 type: string
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/objects/{type}/{dn}/templatefields':
+    get:
+      summary: List fields asked to use a specific template
+      operationId: getTemplateFields
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+      responses:
+        '200':
+          description: Attribute list grouped by tab
+          content:
+            application/json:
+              schema:
+                type: object
+                example:{
+                          "user": [
+                            "sn",
+                            "givenName",
+                            "base",
+                            "uid"
+                          ]
+                        }
         default:
           description: Unexpected error
           content:
