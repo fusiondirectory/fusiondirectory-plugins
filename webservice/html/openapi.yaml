@@ -22,6 +22,8 @@ tags:
     description: 'List, get, create, delete attributes'
   - name: types
     description: Get information on object types and tabs
+  - name: recovery
+    description: Use password recovery mecanism
 paths:
   /login:
     post:
@@ -684,6 +686,84 @@ paths:
           application/json:
             schema:
               type: boolean
+      responses:
+        '204':
+          description: Success
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/recovery':
+    get:
+      summary: Generate recovery token for a user
+      operationId: getRecoveryToken
+      tags:
+        - recovery
+      parameters:
+        - name: email
+          in: query
+          required: true
+          description: The email address of the user
+          schema:
+            type: string
+            example: "email@example.com"
+      responses:
+        '200':
+          description: Token and uid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    description: Recovery token
+                    type: string
+                    example: "opaquetokenstring"
+                  uid:
+                    description: The uid of the user
+                    type: string
+                    example: "fd-admin"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Change a user password using a recovery token
+      operationId: confirmRecoveryPasswordChange
+      tags:
+        - recovery
+      requestBody:
+        description: User information
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  description: Recovery token
+                  type: string
+                  example: "opaquetokenstring"
+                uid:
+                  description: The uid of the user
+                  type: string
+                  example: "fd-admin"
+                password1:
+                  description: First password entered by the user
+                  type: string
+                  example: "newpassword"
+                password2:
+                  description: Second password entered by the user
+                  type: string
+                  example: "newpassword"
+              required:
+                - uid
+                - password1
+                - password2
+                - token
       responses:
         '204':
           description: Success
