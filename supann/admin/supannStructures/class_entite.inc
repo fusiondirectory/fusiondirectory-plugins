@@ -115,6 +115,19 @@ class entite extends simplePlugin
       $this->set_acl_base($config->current['BASE']);
     }
 
+    list($code_entites, $label_entites) = static::listPossibleParentEntities();
+
+    $this->attributesAccess['supannCodeEntiteParent']->attribute->setChoices($code_entites, $label_entites);
+
+    $this->attributesAccess['ou']->setUnique('one');
+    $this->attributesAccess['supannCodeEntite']->setUnique('whole', '(objectClass=supannEntite)');
+    $this->attributesAccess['supannRefId']->setUnique('whole', '(objectClass=supannEntite)');
+  }
+
+  static public function listPossibleParentEntities (): array
+  {
+    global $config;
+
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search('(objectClass=supannEntite)', ['supannCodeEntite','ou','o','description']);
@@ -140,10 +153,7 @@ class entite extends simplePlugin
         }
       }
     }
-    $this->attributesAccess['supannCodeEntiteParent']->attribute->setChoices($code_entites, $label_entites);
 
-    $this->attributesAccess['ou']->setUnique('one');
-    $this->attributesAccess['supannCodeEntite']->setUnique('whole', '(objectClass=supannEntite)');
-    $this->attributesAccess['supannRefId']->setUnique('whole', '(objectClass=supannEntite)');
+    return [$code_entites, $label_entites];
   }
 }

@@ -146,6 +146,10 @@ class etablissement extends simplePlugin
       $this->set_acl_base($config->current['BASE']);
     }
 
+    list($code_entites, $label_entites) = entite::listPossibleParentEntities();
+
+    $this->attributesAccess['supannCodeEntiteParent']->attribute->setChoices($code_entites, $label_entites);
+
     $this->attributesAccess['o']->setUnique('one');
     $this->attributesAccess['supannCodeEntite']->setUnique('whole', '(objectClass=supannEntite)');
     $this->attributesAccess['supannRefId']->setUnique('whole', '(objectClass=supannEntite)');
