@@ -76,13 +76,13 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
                   _('Start date'), _('Date this status started'),
                   'supannRessourceEtatDate_start', FALSE,
                   'Ymd', '',
-                  NULL, 'now'
+                  NULL, 'today'
                 ),
                 new DateAttribute(
                   _('End date'), _('Date this status will end'),
                   'supannRessourceEtatDate_end', FALSE,
                   'Ymd', '',
-                  'now', NULL
+                  'today', NULL
                 ),
               ],
               '/^\{([^}]+)\}([^:]+):([^:]*):([^:]*):([^:]*)$/',
