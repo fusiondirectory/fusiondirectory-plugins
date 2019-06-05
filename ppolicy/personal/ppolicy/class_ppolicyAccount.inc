@@ -122,5 +122,6 @@ class ppolicyAccount extends simplePlugin
   {
     /* ppolicy fields are not real fields, they can’t be removed through ldap_modify
      * It’s not possible to remove ppolicy info from a user node anyway */
+    return [];
   }
 }

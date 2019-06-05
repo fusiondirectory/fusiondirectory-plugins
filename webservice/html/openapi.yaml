@@ -41,6 +41,7 @@ paths:
                 directory:
                   description: The LDAP directory to log into. Use /directories to get possible values.
                   type: string
+                  example: "default"
                 user:
                   description: The user to login as
                   type: string
@@ -87,9 +88,9 @@ paths:
                 type: object
                 additionalProperties:
                   type: string
-                example: {
-                          'default': 'default'
-                        }
+              example: {
+                        'default': 'default'
+                      }
         default:
           description: Unexpected error
           content:
@@ -189,25 +190,30 @@ paths:
               example: {
                         "sections": {
                           "main": {
-                            "name": "Information",
+                            "name": "Personal info",
                             "attrs": [
-                              "base",
-                              "cn",
-                              "description",
-                              "telephoneNumber",
-                              "facsimileTelephoneNumber"
+                              "personalTitle",
+                              "fdNickName",
+                              "fdBadge",
+                              "dateOfBirth",
+                              "gender",
+                              "co",
+                              "fdContractStartDate",
+                              "fdContractEndDate",
+                              "fdPhotoVisible"
                             ]
                           },
-                          "members": {
-                            "name": "Role members",
+                          "contact": {
+                            "name": "Contact",
                             "attrs": [
-                              "roleOccupant"
+                              "fdSocialAccount",
+                              "fdPrivateMail"
                             ]
                           }
                         },
                         "sections_order": [
                           "main",
-                          "members"
+                          "contact"
                         ]
                       }
         default:
@@ -232,23 +238,25 @@ paths:
           description: The attributes to return
           schema:
             type: object
-            example:
-              sn: 1
-              title: "*"
+          example:
+            sn: 1
+            title: "*"
         - name: scope
           in: query
           required: false
           description: The scope, defaults to subtree
           schema:
             type: string
-            example: "subtree"
+            default: "subtree"
+          example: "subtree"
         - name: templates
           in: query
           required: false
           description: Whether to search for templates instead of standard objects, defaults to false
           schema:
             type: boolean
-            example: false
+            default: false
+          example: false
       responses:
         '200':
           description: Search results
@@ -284,8 +292,8 @@ paths:
                               "givenName": "John",
                               "sn": "Smith"
                             },
-                            "posixAccount": {
-                              "homeDirectory": "/home/john"
+                            "personalInfo": {
+                              "personalTitle": "Dr"
                             }
                           }
                 template:
@@ -392,15 +400,15 @@ paths:
           application/json:
             schema:
               type: object
-              example: {
-                        "user": {
-                          "givenName": "John",
-                          "sn": "Smith"
-                        },
-                        "posixAccount": {
-                          "homeDirectory": "/home/john"
-                        }
+            example: {
+                      "user": {
+                        "givenName": "John",
+                        "sn": "Smith"
+                      },
+                      "posixAccount": {
+                        "homeDirectory": "/home/john"
                       }
+                    }
       responses:
         '200':
           description: DN of the modified object
@@ -430,14 +438,14 @@ paths:
             application/json:
               schema:
                 type: object
-                example: {
-                          "user": [
-                            "sn",
-                            "givenName",
-                            "base",
-                            "uid"
-                          ]
-                        }
+              example: {
+                        "user": [
+                          "sn",
+                          "givenName",
+                          "base",
+                          "uid"
+                        ]
+                      }
         default:
           description: Unexpected error
           content:
@@ -482,10 +490,9 @@ paths:
           application/json:
             schema:
               type: object
-              example: {
-                        "givenName": "John",
-                        "sn": "Smith"
-                      }
+            example: {
+                      "fdNickName": ["Jonny"]
+                    }
       responses:
         '200':
           description: DN of the modified object
@@ -557,6 +564,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AnyThing'
+            example: ["jsmith@example.com"]
       responses:
         '200':
           description: DN of the modified object
@@ -612,6 +620,7 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/AnyThing'
+            example: ['jsmith2@example.com']
       responses:
         '200':
           description: DN of the modified object
@@ -643,6 +652,7 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/AnyThing'
+            example: ['jsmith2@example.com']
       responses:
         '204':
           description: success
@@ -686,6 +696,7 @@ paths:
           application/json:
             schema:
               type: boolean
+            example: true
       responses:
         '204':
           description: Success
@@ -708,10 +719,10 @@ paths:
           description: The email address of the user
           schema:
             type: string
-            example: "email@example.com"
+          example: "email@example.com"
       responses:
         '200':
-          description: Token and uid
+          description: Token and login
           content:
             application/json:
               schema:
@@ -721,8 +732,8 @@ paths:
                     description: Recovery token
                     type: string
                     example: "opaquetokenstring"
-                  uid:
-                    description: The uid of the user
+                  login:
+                    description: The login of the user
                     type: string
                     example: "fd-admin"
         default:
@@ -747,8 +758,8 @@ paths:
                   description: Recovery token
                   type: string
                   example: "opaquetokenstring"
-                uid:
-                  description: The uid of the user
+                login:
+                  description: The login of the user
                   type: string
                   example: "fd-admin"
                 password1:
@@ -760,7 +771,7 @@ paths:
                   type: string
                   example: "newpassword"
               required:
-                - uid
+                - login
                 - password1
                 - password2
                 - token
@@ -919,7 +930,7 @@ components:
     dn:
       name: dn
       in: path
-      example: "uid=fd-admin,dc=example,dc=com"
+      example: "uid=jsmith,ou=people,dc=example,dc=com"
       required: true
       description: The dn of an existing object
       schema:
@@ -927,7 +938,7 @@ components:
     tab:
       name: tab
       in: path
-      example: "posixAccount"
+      example: "personalInfo"
       required: true
       description: An existing tab class
       schema:
@@ -935,7 +946,7 @@ components:
     attribute:
       name: attribute
       in: path
-      example: "homeDirectory"
+      example: "fdPrivateMail"
       required: true
       description: The attribute
       schema:
