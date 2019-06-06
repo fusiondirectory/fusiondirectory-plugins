@@ -110,6 +110,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
 
   function setChoices (array $parentNodes, array $macs, array $ips)
   {
+    asort($parentNodes, SORT_NATURAL);
     $this->attribute->attributes[0]->setChoices(array_keys($parentNodes), array_values($parentNodes));
     if (is_object($this->plugin) && $this->plugin->is_template) {
       $this->attribute->attributes[1] = new StringAttribute(
