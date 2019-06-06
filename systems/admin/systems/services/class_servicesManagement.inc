@@ -677,4 +677,13 @@ class servicesManagement extends management implements SimpleTab
     }
     return $oc;
   }
+
+  /*!
+   * \brief Fill attributes which may be used in hooks
+   *
+   *  Used by simplePlugin::callHook
+   */
+  public function fillHookAttrs (array &$addAttrs)
+  {
+  }
 }
