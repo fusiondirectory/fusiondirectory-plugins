@@ -580,24 +580,24 @@ class fdRestService extends fdRPCService
     $responseCode = 204;
   }
 
-  protected function endpoint_recovery_GET_0 (int &$responseCode, $input, string $dn): array
+  protected function endpoint_recovery_GET_0 (int &$responseCode, $input): array
   {
     $this->assertNoInput($input);
 
     return $this->_recoveryGenToken($_GET['email'] ?? NULL);
   }
 
-  protected function endpoint_recovery_PUT_0 (int &$responseCode, $input, string $dn)
+  protected function endpoint_recovery_PUT_0 (int &$responseCode, $input)
   {
     $this->assertInput($input);
 
-    foreach (['uid','token','password1','password2'] as $param) {
+    foreach (['login','token','password1','password2'] as $param) {
       if (!isset($input[$param])) {
         throw new WebServiceError('Missing parameter "'.$param.'" in POST data');
       }
     }
 
-    $this->_recoveryConfirmPasswordChange($input['uid'], $input['password1'], $input['password2'], $input['token']);
+    $this->_recoveryConfirmPasswordChange($input['login'], $input['password1'], $input['password2'], $input['token']);
 
     $responseCode = 204;
   }

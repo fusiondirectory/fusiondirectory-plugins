@@ -747,36 +747,36 @@ class fdRPCService
     global $ui;
 
     $pwRecovery = new passwordRecovery(FALSE);
-    $pwRecovery->email_address = $email;
-    $dn = $pwRecovery->step2();
-    if ($pwRecovery->step == 2) { /* No errors */
+    $dn = $pwRecovery->step2($email);
+    if ($dn !== FALSE) {
+      /* No errors */
       if (strpos($ui->get_permissions($dn, 'user/user', 'userPassword'), 'w') === FALSE) {
         throw new WebServiceError(msgPool::permModify($dn), 403);
       }
       $token = $pwRecovery->generateAndStoreToken();
-      if (empty($pwRecovery->message) && ($token !== FALSE)) {
-        return ['token' => $token, 'uid' => $pwRecovery->uid];
+      if ($token !== FALSE) {
+        return ['token' => $token, 'login' => $pwRecovery->getLogin()];
       }
     }
-    throw new WebServiceErrors($pwRecovery->message);
+    throw new WebServiceErrors($pwRecovery->getErrorMessages());
   }
 
   /*!
    * \brief Change a user password using a recovery token
    */
-  protected function _recoveryConfirmPasswordChange ($uid, $password1, $password2, $token)
+  protected function _recoveryConfirmPasswordChange ($login, $password1, $password2, $token)
   {
     $pwRecovery = new passwordRecovery(FALSE);
-    $pwRecovery->uid = $uid;
+    $pwRecovery->setLogin($login);
     if ($pwRecovery->checkToken($token)) {
       $success = $pwRecovery->changeUserPassword($password1, $password2);
       if ($success) {
         return TRUE;
       }
     } else {
-      $pwRecovery->message[] = _('This token is invalid');
+      throw new WebServiceError(_('This token is invalid'));
     }
-    throw new WebServiceErrors($pwRecovery->message);
+    throw new WebServiceErrors($pwRecovery->getErrorMessages());
   }
 
   /*!
