@@ -238,13 +238,13 @@ class RestClient implements Iterator, ArrayAccess
 
   public function parse_response ($response)
   {
-    $headers = [];
+    $response_headers = [];
     $this->response_status_lines = [];
     $line = strtok($response, "\n");
     do {
       if (strlen(trim($line)) == 0) {
         // Since we tokenize on \n, use the remaining \r to detect empty lines.
-        if (count($headers) > 0) {
+        if (count($response_headers) > 0) {
           break;
         } // Must be the newline after headers, move on to response body
       } elseif (strpos($line, 'HTTP') === 0) {
@@ -256,25 +256,24 @@ class RestClient implements Iterator, ArrayAccess
         $key = trim(strtolower(str_replace('-', '_', $key)));
         $value = trim($value);
 
-        if (empty($headers[$key])) {
-          $headers[$key] = $value;
-        } elseif (is_array($headers[$key])) {
-          $headers[$key][] = $value;
+        if (empty($response_headers[$key])) {
+          $response_headers[$key] = $value;
+        } elseif (is_array($response_headers[$key])) {
+          $response_headers[$key][] = $value;
         } else {
-          $headers[$key] = [$headers[$key], $value];
+          $response_headers[$key] = [$response_headers[$key], $value];
         }
       }
     } while ($line = strtok("\n"));
 
-    $this->headers = (object) $headers;
+    $this->headers = (object) $response_headers;
     $this->response = strtok("");
   }
 
   public function get_response_format ()
   {
     if (!$this->response) {
-      throw new RestClientException(
-                "A response must exist before it can be decoded.");
+      throw new RestClientException("A response must exist before it can be decoded.");
     }
 
     // User-defined format.
@@ -283,14 +282,14 @@ class RestClient implements Iterator, ArrayAccess
     }
 
     // Extract format from response content-type header.
-    if (!empty($this->headers->content_type)) {
-      if (preg_match($this->options['format_regex'], $this->headers->content_type, $matches)) {
-        return $matches[2];
-      }
+    if (
+        !empty($this->headers->content_type) &&
+        preg_match($this->options['format_regex'], $this->headers->content_type, $matches)
+      ) {
+      return $matches[2];
     }
 
-    throw new RestClientException(
-            "Response format could not be determined.");
+    throw new RestClientException("Response format could not be determined.");
   }
 
   public function decode_response ()
