@@ -590,7 +590,7 @@ paths:
         - $ref: '#/components/parameters/attribute'
       responses:
         '200':
-          description: The attribute value(s)
+          description: The attribute new value(s)
           content:
             application/json:
               schema:
