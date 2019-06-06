@@ -747,6 +747,11 @@ class fdRPCService
     global $ui;
 
     $pwRecovery = new passwordRecovery(FALSE);
+
+    if (!$pwRecovery->isActivated()) {
+      throw new WebServiceError(_('Password recovery is not activated'));
+    }
+
     $dn = $pwRecovery->step2($email);
     if ($dn !== FALSE) {
       /* No errors */
@@ -767,6 +772,11 @@ class fdRPCService
   protected function _recoveryConfirmPasswordChange ($login, $password1, $password2, $token)
   {
     $pwRecovery = new passwordRecovery(FALSE);
+
+    if (!$pwRecovery->isActivated()) {
+      throw new WebServiceError(_('Password recovery is not activated'));
+    }
+
     $pwRecovery->setLogin($login);
     if ($pwRecovery->checkToken($token)) {
       $success = $pwRecovery->changeUserPassword($password1, $password2);
