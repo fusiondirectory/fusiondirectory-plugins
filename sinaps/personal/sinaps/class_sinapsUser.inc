@@ -30,8 +30,8 @@ class sinapsUser extends simplePlugin
       'plSelfModify'    => FALSE,
       'plObjectClass'   => array(),
       'plObjectType'    => array('user'),
-      //~ 'plIcon'          => '',
-      //~ 'plSmallIcon'     => '',
+      'plIcon'        => 'geticon.php?context=applications&icon=sinaps&size=48',
+      'plSmallIcon'   => 'geticon.php?context=applications&icon=sinaps&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     );
