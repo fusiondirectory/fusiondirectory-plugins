@@ -145,7 +145,33 @@ class userReminderConfig extends simplePlugin
             'ou=reminder'
           )
         ]
-      ]
+      ],
+      'email3' => [
+        'name'  => _('Expiration email settings'),
+        'attrs' => [
+          new BooleanAttribute(
+            _('Send an email'), _('Whether to send an email after expiration to inform the user'),
+            'fdUserReminderExpiration', TRUE,
+            FALSE
+          ),
+          new BooleanAttribute(
+            _('Forward to the manager'), _('Forward account expiration to the manager'),
+            'fdUserReminderForwardExpiration', TRUE,
+            TRUE
+          ),
+          new StringAttribute(
+            _('Subject'), _('Subject of the expiration email'),
+            'fdUserReminderExpirationSubject', FALSE,
+            _('[FusionDirectory] Your account has expired')
+          ),
+          new TextAreaAttribute(
+            _('Body (%s are cn and login)'),
+            _('Body of the expiration email, sent when the user has expired. Use %s for the cn and uid.'),
+            'fdUserReminderExpirationBody', FALSE,
+            _('Dear %1$s,'."\n".' your account %2$s has expired.'."\n")
+          ),
+        ]
+      ],
     ];
   }
 
@@ -158,6 +184,18 @@ class userReminderConfig extends simplePlugin
       $this->attributesAccess['fdUserReminderPpolicyAlertSubject']->setDisabled(TRUE);
       $this->attributesAccess['fdUserReminderPpolicyAlertBody']->setDisabled(TRUE);
     }
+
+    $this->attributesAccess['fdUserReminderExpiration']->setManagedAttributes(
+      [
+        'disable' => [
+          FALSE => [
+            'fdUserReminderForwardExpiration',
+            'fdUserReminderExpirationSubject',
+            'fdUserReminderExpirationBody',
+          ]
+        ]
+      ]
+    );
   }
 
   protected function post_save ()
