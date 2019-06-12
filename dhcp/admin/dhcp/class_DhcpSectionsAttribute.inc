@@ -26,6 +26,17 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
   protected $subnet_expanded = FALSE;
   protected $dhcpObjectCache = [];
 
+  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = [], $acl = "")
+  {
+    parent::__construct($label, $description, $ldapName, $required, $defaultValue, $acl);
+    $this->setHeaders([
+      _('Object'),
+      _('IP'),
+      _('Mac'),
+      '',
+    ]);
+  }
+
   protected function getAttributeArrayValue ($key, $value)
   {
     $id = $this->getHtmlId();
@@ -78,17 +89,18 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
             $link = '&nbsp;&nbsp;'.$subnetExpandImg.$link;
           }
         }
+        $ip = $dhcpObject->getOption('routers');
         return [
           ['html' => $link],
-          ['html' => $dhcpObject->getOption('routers')],
+          (($ip === NULL) ? '' : $ip),
           ''
         ];
       }
     } else {
       return [
         ['html' => $link],
-        ['html' => $dhcpObject->getStatement('fixed-address')],
-        ['html' => preg_replace('/^[^ ]+ /', '', isset($dhcpObject->dhcpHWAddress) ? $dhcpObject->dhcpHWAddress : '')],
+        $dhcpObject->getStatement('fixed-address'),
+        preg_replace('/^[^ ]+ /', '', (isset($dhcpObject->dhcpHWAddress) ? $dhcpObject->dhcpHWAddress : '')),
       ];
     }
   }
