@@ -45,13 +45,13 @@ class netgroup extends simplePlugin
       'main' => [
         'name'  => _('Information'),
         'attrs' => [
+          new BaseSelectorAttribute(get_ou('netgroupRDN')),
           new HostNameAttribute(
-            _('Name'), _('Name of this NIS netgroup'), 'cn'
+            _('Name'), _('Name of this NIS netgroup'), 'cn', TRUE
           ),
           new StringAttribute(
             _('Description'), _('Description of this NIS netgroup'), 'description'
           ),
-          new BaseSelectorAttribute(get_ou('netgroupRDN'))
         ]
       ],
       'users' => [
@@ -79,8 +79,8 @@ class netgroup extends simplePlugin
         'icon'  => 'geticon.php?context=applications&icon=netgroups&size=16',
         'attrs' => [
           new ObjectsAttribute(
-            '', _('NIS netgroup membership'),
-            'nisMembership', TRUE,
+            '', _('NIS netgroup members'),
+            'memberNisNetgroup', FALSE,
             ['netgroup'], [],
             'cn', 'cn'
           ),
