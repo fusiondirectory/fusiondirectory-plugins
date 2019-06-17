@@ -71,7 +71,7 @@ class argonautQueue extends management
     $this->listing  = new managementListing($this, FALSE);
   }
 
-  protected function setUpFilter ()
+  protected function setUpFilter (array $filterElementDefinitions)
   {
     $this->filter   = new argonautQueueFilter($this);
   }

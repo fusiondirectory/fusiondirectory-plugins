@@ -63,7 +63,11 @@ class netgroup extends simplePlugin
           ),
           new UsersAttribute(
             '', _('NIS netgroup members'), 'memberUsers',
-            FALSE, [], 'dn', 'uid'
+            FALSE, [], 'dn', 'uid',
+            [
+              ['TabFilterElement',    []],
+              ['FixedFilterElement',  ['(objectClass=posixAccount)']],
+            ]
           ),
         ]
       ],

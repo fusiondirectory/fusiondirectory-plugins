@@ -1,9 +1,9 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -129,7 +129,11 @@ class WinstationsAttribute extends SystemsAttribute
 {
   function __construct (string $label, string $description, string $ldapName, bool $required, array $objectTypes = ['workstation'], array $defaultValue = [], string $store_attr = 'cn', string $display_attr = 'cn', string $acl = '')
   {
-    parent::__construct($label, $description, $ldapName, $required, $objectTypes, $defaultValue, $store_attr, $display_attr, $acl);
+    $filterElementDefinitions = [
+      ['TabFilterElement',    []],
+      ['FixedFilterElement',  ['(objectClass=sambaSamAccount)']],
+    ];
+    parent::__construct($label, $description, $ldapName, $required, $objectTypes, $defaultValue, $store_attr, $display_attr, $filterElementDefinitions, $acl);
   }
 }
 

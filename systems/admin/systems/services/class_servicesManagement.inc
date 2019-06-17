@@ -114,7 +114,7 @@ class servicesManagement extends management implements SimpleTab
     $this->listing  = new managementListing($this, FALSE);
   }
 
-  protected function setUpFilter ()
+  protected function setUpFilter (array $filterElementDefinitions)
   {
     $this->filter   = new servicesManagementFilter($this);
   }
