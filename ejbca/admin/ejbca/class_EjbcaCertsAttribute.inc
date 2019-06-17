@@ -23,7 +23,7 @@ class EjbcaCertsAttribute extends ObjectsAttribute
 {
   function __construct ($label, $description, $ldapName, $required, $defaultValue = [], $acl = '')
   {
-    parent::__construct($label, $description, $ldapName, $required, ['ejbcaCertificate'], $defaultValue, 'dn', 'cn', $acl);
+    parent::__construct($label, $description, $ldapName, $required, ['ejbcaCertificate'], $defaultValue, 'dn', 'cn', NULL, $acl);
     $this->selectManagementParameters[2] = [
       'objectClass'             => '*',
       'dn'                      => 'raw',

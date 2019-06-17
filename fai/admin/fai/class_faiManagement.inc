@@ -46,9 +46,9 @@ class faiManagement extends management
     $this->listing  = new faiListing($this);
   }
 
-  protected function setUpFilter ()
+  protected function setUpFilter (array $filterElementDefinitions)
   {
-    $this->filter   = new managementFilter($this, TRUE);
+    $this->filter   = new managementFilter($this, TRUE, $filterElementDefinitions);
   }
 
   function execute (): string
