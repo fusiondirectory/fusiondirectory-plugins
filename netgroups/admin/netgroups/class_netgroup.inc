@@ -58,9 +58,7 @@ class netgroup extends simplePlugin
         'name'  => _('User members'),
         'icon'  => 'geticon.php?context=types&icon=user&size=16',
         'attrs' => [
-          new SetAttribute(
-            new StringAttribute('nisNetgroupTriple', '', 'nisNetgroupTriple')
-          ),
+          new HiddenArrayAttribute('nisNetgroupTriple'),
           new UsersAttribute(
             '', _('NIS netgroup members'), 'memberUsers',
             FALSE, [], 'dn', 'uid',
@@ -99,7 +97,6 @@ class netgroup extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['cn']->setUnique('one');
-    $this->attributesAccess['nisNetgroupTriple']->setVisible(FALSE);
     $this->attributesAccess['memberUsers']->setInLdap(FALSE);
     $this->attributesAccess['memberSystems']->setInLdap(FALSE);
     $triples      = $this->attributesAccess['nisNetgroupTriple']->getValue();
