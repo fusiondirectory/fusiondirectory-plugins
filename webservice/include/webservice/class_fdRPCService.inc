@@ -142,17 +142,25 @@ class fdRPCService
         if (!isset($_SERVER['PHP_AUTH_USER']) && ($user === NULL)) {
           static::authenticateHeader();
         }
-        if ($user !== NULL) {
-          $ui = ldap_login_user($user, $pwd);
-          if (!$ui) {
-            static::authenticateHeader('Invalid user or pwd '.$user.'/'.$pwd);
-          }
-        } else {
-          $ui = ldap_login_user($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
-          if (!$ui) {
-            static::authenticateHeader('Invalid user or pwd '.$_SERVER['PHP_AUTH_USER'].'/'.$_SERVER['PHP_AUTH_PW']);
-          }
+        if ($user === NULL) {
+          $user = $_SERVER['PHP_AUTH_USER'];
+          $pwd  = $_SERVER['PHP_AUTH_PW'];
         }
+        $ui = userinfo::loginUser($user, $pwd);
+        if (!$ui) {
+          static::authenticateHeader('Invalid user or password');
+        }
+
+        /* Check account expiration */
+        $expired = $ui->expired_status();
+        if ($expired == PPOLICY_ACCOUNT_EXPIRED) {
+          static::authenticateHeader(_('It seems your user password has expired. Please use password recovery to change it.'));
+        }
+
+        if ($expired == POSIX_ACCOUNT_EXPIRED) {
+          static::authenticateHeader(_('Account expired. Please contact your system administrator!'));
+        }
+
         session::global_set('LOGIN', TRUE);
         $plist = new pluglist();
         $config->loadPlist($plist);
