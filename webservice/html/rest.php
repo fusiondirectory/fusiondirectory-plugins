@@ -226,11 +226,11 @@ class fdRestService extends fdRPCService
     $responseCode = 204;
   }
 
-  protected function endpoint_objects_GET_1 (int &$responseCode, $input, string $type): array
+  protected function endpoint_objects_GET_1 (int &$responseCode, $input, string $type): stdClass
   {
     $this->assertNoInput($input);
 
-    return $this->_ls($type, ($_GET['attrs'] ?? NULL), ($_GET['base'] ?? NULL), ($_GET['filter'] ?? ''), ($_GET['scope'] ?? 'subtree'), ($_GET['templates'] ?? FALSE));
+    return (object)$this->_ls($type, ($_GET['attrs'] ?? NULL), ($_GET['base'] ?? NULL), ($_GET['filter'] ?? ''), ($_GET['scope'] ?? 'subtree'), ($_GET['templates'] ?? FALSE));
   }
 
   protected function endpoint_objects_GET_2 (int &$responseCode, $input, string $type, string $dn): array
@@ -249,7 +249,7 @@ class fdRestService extends fdRPCService
     );
   }
 
-  protected function endpoint_objects_GET_3 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL): array
+  protected function endpoint_objects_GET_3 (int &$responseCode, $input, string $type, string $dn, string $tab = NULL): stdClass
   {
     $this->assertNoInput($input);
 
@@ -263,7 +263,7 @@ class fdRestService extends fdRPCService
         },
         $data
       );
-      return $data;
+      return (object)$data;
     }
 
     $this->checkAccess($type, $tab, $dn);
@@ -297,7 +297,7 @@ class fdRestService extends fdRPCService
         }
       }
     }
-    return $attributes;
+    return (object)$attributes;
   }
 
   protected function endpoint_objects_GET_4 (int &$responseCode, $input, string $type, string $dn, string $tab, string $attribute)
@@ -503,7 +503,7 @@ class fdRestService extends fdRPCService
     return $this->_getId();
   }
 
-  protected function endpoint_directories_GET_0 (int &$responseCode, $input): array
+  protected function endpoint_directories_GET_0 (int &$responseCode, $input): stdClass
   {
     $this->assertNoInput($input);
 
@@ -514,14 +514,14 @@ class fdRestService extends fdRPCService
     foreach ($config->data['LOCATIONS'] as $id => $location) {
       $ldaps[$id] = $location['NAME'];
     }
-    return $ldaps;
+    return (object)$ldaps;
   }
 
-  protected function endpoint_types_GET_0 (int &$responseCode, $input): array
+  protected function endpoint_types_GET_0 (int &$responseCode, $input): stdClass
   {
     $this->assertNoInput($input);
 
-    return $this->_listTypes();
+    return (object)$this->_listTypes();
   }
 
   protected function endpoint_types_GET_1 (int &$responseCode, $input, string $type): array
