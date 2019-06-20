@@ -114,14 +114,28 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
   }
 
   /* Special LDAP treatment that this attribute does after plugin ldap save */
-  function postLdapSave ($ldap)
+  function postLdapSave ($ldap): array
   {
+    global $ui;
+
     if ($this->plugin->is_template) {
-      return;
+      return [];
+    }
+
+    /* Check locking */
+    if ($locks = get_locks($this->getZoneDn())) {
+      return [sprintf(_('"%s" is locked (by "%s" since %s), could not save modifications to this DNS zone'), $locks[0]['object'], $locks[0]['user'], date('%Y-%m-%d, %H:%M:%S', $locks[0]['timestamp']))];
+    } else {
+      /* Lock the current entry */
+      add_lock($this->getZoneDn(), $ui->dn);
     }
     $zoneTabs = objects::open($this->getZoneDn(), 'dnsZone');
     $zoneTabs->getBaseObject()->attributesAccess['dnsRecords']->setValue($this->getValue());
-    $zoneTabs->save();
+    $errors = $zoneTabs->save();
+
+    del_lock($this->getZoneDn());
+
+    return $errors;
   }
 }
 
@@ -344,14 +358,24 @@ class dnsHost extends simplePlugin
 
   function save (): array
   {
-    global $config;
+    global $config, $ui;
+
     $errors = parent::save();
+
     foreach ($this->attributesInfo['records']['attrs'] as &$attr) {
       if ($attr->hasChanged()) {
-        $attr->postLdapSave($config->get_ldap_link());
+        $errors = array_merge(
+          $errors,
+          $attr->postLdapSave($config->get_ldap_link())
+        );
       }
     }
     unset($attr);
+
+    if (!empty($errors)) {
+      return $errors;
+    }
+
     /* Update records if IP or CN changed */
     if ($this->initially_was_account) {
       $baseObject = $this->parent->getBaseObject();
@@ -359,23 +383,55 @@ class dnsHost extends simplePlugin
       $oldcn      = preg_replace('/\$$/', '', $baseObject->attributeInitialValue('cn'));
       $oldips     = $baseObject->attributeInitialValue('ipHostNumber');
 
-      $oldzones = $this->attributeInitialValue('fdDNSZoneDn');
-      $newzones = $this->attributeValue('fdDNSZoneDn');
-      if ($this->attributeHaveChanged('fdDNSZoneDn') && !empty($oldzones)) {
+      $oldzones     = $this->attributeInitialValue('fdDNSZoneDn');
+      $currentzones = $this->attributeValue('fdDNSZoneDn');
+      $removedzones = array_diff($oldzones, $currentzones);
+
+      $removalsNeeded = ($this->attributeHaveChanged('fdDNSZoneDn') && !empty($oldzones));
+      $cnChanged      = ($baseObject->attributeHaveChanged('cn') && !empty($oldcn));
+      $ipChanged      = $baseObject->attributeHaveChanged('ipHostNumber');
+
+      $locks  = [];
+
+      /* Lock zones */
+      $zonesToLock = [];
+      if ($removalsNeeded) {
+        $zonesToLock = $removedzones;
+      }
+      if ($cnChanged || $ipChanged) {
+        $zonesToLock = array_merge($zonesToLock, $currentzones);
+      }
+      foreach ($zonesToLock as $zoneDn) {
+        /* Check locking */
+        if ($locks = get_locks($zoneDn)) {
+          $errors[] = sprintf(_('"%s" is locked (by "%s" since %s), could not save modifications to this DNS zone'), $locks[0]['object'], $locks[0]['user'], date('%Y-%m-%d, %H:%M:%S', $locks[0]['timestamp']));
+          break;
+        } else {
+          /* Lock the current entry */
+          add_lock($zoneDn, $ui->dn);
+          $locks[] = $zoneDn;
+        }
+      }
+
+      if (!empty($errors)) {
+        del_lock($locks);
+        return $errors;
+      }
+
+      if ($removalsNeeded) {
         $messages = array_merge(
           $messages,
-          static::removeIpsFromZones(array_diff($oldzones, $newzones), $oldips)
+          static::removeIpsFromZones($removedzones, $oldips)
         );
         $messages = array_merge(
           $messages,
-          static::removeCnFromZones(array_diff($oldzones, $newzones), $oldcn)
+          static::removeCnFromZones($removedzones, $oldcn)
         );
       }
 
-      if ($baseObject->attributeHaveChanged('cn') && !empty($oldcn)) {
-        $newcn      = preg_replace('/\$$/', '', $baseObject->attributeValue('cn'));
-        $dnsZones   = $this->fdDNSZoneDn;
-        foreach ($dnsZones as $dn) {
+      if ($cnChanged) {
+        $newcn = preg_replace('/\$$/', '', $baseObject->attributeValue('cn'));
+        foreach ($currentzones as $dn) {
           $tabObject = objects::open($dn, 'dnsZone');
           $nbRecords = $tabObject->getBaseObject()->cnChanged($oldcn, $newcn);
           if ($nbRecords > 0) {
@@ -390,11 +446,10 @@ class dnsHost extends simplePlugin
         }
       }
 
-      if ($baseObject->attributeHaveChanged('ipHostNumber')) {
+      if ($ipChanged) {
         $newips = $baseObject->attributeValue('ipHostNumber');
         if ((count($oldips) == 1) && (count($newips) == 1)) {
-          $dnsZones   = $this->fdDNSZoneDn;
-          foreach ($dnsZones as $dn) {
+          foreach ($currentzones as $dn) {
             $tabObject = objects::open($dn, 'dnsZone');
             $nbRecords = $tabObject->getBaseObject()->ipChanged(reset($oldips), reset($newips));
             if ($nbRecords > 0) {
@@ -408,12 +463,15 @@ class dnsHost extends simplePlugin
             }
           }
         } elseif (!empty($oldips)) {
-          static::removeIpsFromZones($this->fdDNSZoneDn, array_diff($oldips, $newips));
+          static::removeIpsFromZones($currentzones, array_diff($oldips, $newips));
         }
       }
+
       if (!empty($messages)) {
         msg_dialog::display(_('DNS update'), implode("<br/>\n", $messages)."<br/>\n", INFO_DIALOG);
       }
+
+      del_lock($locks);
     }
 
     return $errors;
