@@ -1,9 +1,6 @@
 <body onLoad="javascript:$$('div.debug_div').each(function (a) { a.hide(); });">
   {* FusionDirectory user reminder - smarty template *}
   {$php_errors}
-  <div>
-    {include file={filePath file="setup_header.tpl"}}
-  </div>
 
   <div id="window-container">
 
