@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-01-30 17:20+0000\n"
+"POT-Creation-Date: 2019-06-27 08:29+0000\n"
 "PO-Revision-Date: 2016-08-29 15:08+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2016\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -46,7 +46,7 @@ msgstr ""
 msgid "The ip address match list for this acl"
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:129
+#: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:139
 msgid "DNS"
 msgstr "DNS"
 
@@ -59,8 +59,8 @@ msgid "Systems"
 msgstr "Systems"
 
 #: admin/dns/class_dnsManagement.inc:91 admin/dns/class_dnsManagement.inc:93
-#: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:313
-#: admin/systems/class_dnsHost.inc:322
+#: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:323
+#: admin/systems/class_dnsHost.inc:332
 msgid "Could not run ldap2zone"
 msgstr ""
 
@@ -76,21 +76,21 @@ msgstr ""
 msgid "Could not get run ldap2zone"
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:111 admin/systems/class_dnsHost.inc:324
+#: admin/dns/class_dnsManagement.inc:111 admin/systems/class_dnsHost.inc:334
 msgid "Ldap2zone"
 msgstr ""
 
-#: admin/dns/class_dnsManagement.inc:111 admin/systems/class_dnsHost.inc:324
+#: admin/dns/class_dnsManagement.inc:111 admin/systems/class_dnsHost.inc:334
 #, php-format
 msgid "Ldap2Zone called for zone \"%s\""
 msgstr ""
 
 #: admin/dns/class_dnsManagement.inc:115 admin/dns/class_dnsZone.inc:381
-#: admin/systems/class_dnsHost.inc:328
+#: admin/systems/class_dnsHost.inc:338
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: admin/dns/class_dnsManagement.inc:115 admin/systems/class_dnsHost.inc:328
+#: admin/dns/class_dnsManagement.inc:115 admin/systems/class_dnsHost.inc:338
 msgid "Argonaut client needs to be activated to use ldap2zone remotely"
 msgstr ""
 
@@ -138,7 +138,7 @@ msgstr ""
 msgid "Match only recursive queries in this view"
 msgstr ""
 
-#: admin/dns/class_dnsView.inc:66 admin/systems/class_dnsHost.inc:147
+#: admin/dns/class_dnsView.inc:66 admin/systems/class_dnsHost.inc:157
 msgid "DNS zones"
 msgstr "Ζώνες DNS"
 
@@ -558,46 +558,46 @@ msgstr ""
 msgid "The DNS records for this zone"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:130
+#: admin/systems/class_dnsHost.inc:140
 msgid "Edit the DNS zones of a system"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:151
+#: admin/systems/class_dnsHost.inc:161
 msgid "DNS zones for this host"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:158
+#: admin/systems/class_dnsHost.inc:168
 msgid "SOA records"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:162 admin/systems/class_dnsHost.inc:236
+#: admin/systems/class_dnsHost.inc:172 admin/systems/class_dnsHost.inc:246
 msgid "DNS Records"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:232
+#: admin/systems/class_dnsHost.inc:242
 msgid "Primary servers"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:251
+#: admin/systems/class_dnsHost.inc:261
 #, php-format
 msgid "The DNS records for zone \"%s\""
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:273
+#: admin/systems/class_dnsHost.inc:283
 #, php-format
 msgid "The primary server for zone \"%s\""
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:373 admin/systems/class_dnsHost.inc:392
+#: admin/systems/class_dnsHost.inc:383 admin/systems/class_dnsHost.inc:402
 #, php-format
 msgid "%d records were updated from %s to %s in zone %s"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:405 admin/systems/class_dnsHost.inc:434
+#: admin/systems/class_dnsHost.inc:415 admin/systems/class_dnsHost.inc:444
 msgid "DNS update"
 msgstr ""
 
-#: admin/systems/class_dnsHost.inc:479 admin/systems/class_dnsHost.inc:500
+#: admin/systems/class_dnsHost.inc:489 admin/systems/class_dnsHost.inc:510
 #, php-format
 msgid "%d records were removed in zone %s"
 msgstr ""
