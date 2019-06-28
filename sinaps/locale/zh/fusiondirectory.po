@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-01-30 17:21+0000\n"
+"POT-Creation-Date: 2019-06-27 08:29+0000\n"
 "PO-Revision-Date: 2018-12-10 21:10+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Chinese (https://www.transifex.com/fusiondirectory/teams/12202/zh/)\n"
@@ -21,18 +21,18 @@ msgstr ""
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: include/class_sinapsDiffusionHandlerJob.inc:292
-#: include/class_sinapsDiffusionHandlerJob.inc:313
+#: include/class_sinapsDiffusionHandlerJob.inc:302
+#: include/class_sinapsDiffusionHandlerJob.inc:323
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr ""
 
-#: include/class_sinapsDiffusionHandlerJob.inc:309
+#: include/class_sinapsDiffusionHandlerJob.inc:319
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr ""
 
-#: include/class_sinapsDiffusionHandlerJob.inc:316
+#: include/class_sinapsDiffusionHandlerJob.inc:326
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr ""
@@ -46,9 +46,9 @@ msgid "FusionDirectory SINAPS plugin configuration"
 msgstr ""
 
 #: config/sinaps/class_sinapsConfig.inc:43
-#: config/sinaps/class_sinapsConfig.inc:151
-#: personal/sinaps/class_sinapsUser.inc:26
+#: config/sinaps/class_sinapsConfig.inc:158
 #: personal/sinaps/class_sinapsUser.inc:27
+#: personal/sinaps/class_sinapsUser.inc:28
 #: personal/sinaps/class_sinapsUser.inc:44
 msgid "Sinaps"
 msgstr ""
@@ -133,63 +133,71 @@ msgid ""
 " SINAPS"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:94
+#: config/sinaps/class_sinapsConfig.inc:93
+msgid "User roles"
+msgstr ""
+
+#: config/sinaps/class_sinapsConfig.inc:93
+msgid "Roles which means a user still exists if present"
+msgstr ""
+
+#: config/sinaps/class_sinapsConfig.inc:101
 msgid "Sinaps Acquisition"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:97
+#: config/sinaps/class_sinapsConfig.inc:104
 msgid "Acquisition URL"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:97
+#: config/sinaps/class_sinapsConfig.inc:104
 msgid "Full URL to which acquisition events should be sent"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:101
+#: config/sinaps/class_sinapsConfig.inc:108
 msgid "Login"
 msgstr "登录名"
 
-#: config/sinaps/class_sinapsConfig.inc:101
+#: config/sinaps/class_sinapsConfig.inc:108
 msgid "Login to use for Basic Auth when contacting SINAPS services"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:106
+#: config/sinaps/class_sinapsConfig.inc:113
 msgid "Password"
 msgstr "口令"
 
-#: config/sinaps/class_sinapsConfig.inc:106
+#: config/sinaps/class_sinapsConfig.inc:113
 msgid "Password to use for Basic Auth when contacting SINAPS services"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:110
+#: config/sinaps/class_sinapsConfig.inc:117
 msgid "Acquisition external type"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:110
+#: config/sinaps/class_sinapsConfig.inc:117
 msgid "Set in typeExterne tag when sending acquisition data"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:116
+#: config/sinaps/class_sinapsConfig.inc:123
 msgid "Which field to sync as contact methods in acquisition"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:120
+#: config/sinaps/class_sinapsConfig.inc:127
 msgid "Name of an LDAP attribute"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:124
+#: config/sinaps/class_sinapsConfig.inc:131
 msgid "Name of the Sinaps attribute"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:129
+#: config/sinaps/class_sinapsConfig.inc:136
 msgid "Contact methods"
 msgstr ""
 
-#: config/sinaps/class_sinapsConfig.inc:151
+#: config/sinaps/class_sinapsConfig.inc:158
 msgid "LDAP"
 msgstr ""
 
-#: personal/sinaps/class_sinapsUser.inc:28
+#: personal/sinaps/class_sinapsUser.inc:29
 msgid "Used to send acquisition request for users"
 msgstr ""
 
@@ -197,4 +205,12 @@ msgstr ""
 msgid ""
 "This tab takes care of sending Acquisition event to Sinaps whenever a user "
 "is modified."
+msgstr ""
+
+#: personal/sinaps/class_sinapsUser.inc:53
+msgid "Force Sinaps Acquisition"
+msgstr ""
+
+#: personal/sinaps/class_sinapsUser.inc:53
+msgid "Send Acquisition data even if data was not modified in FusionDirectory"
 msgstr ""
