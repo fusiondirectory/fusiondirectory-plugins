@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-01-30 17:20+0000\n"
+"POT-Creation-Date: 2019-06-27 08:29+0000\n"
 "PO-Revision-Date: 2016-08-29 15:08+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -47,7 +47,7 @@ msgstr "Seznam shod adresy"
 msgid "The ip address match list for this acl"
 msgstr "Seznam IP adres pro porovnávání s tímto ACL seznamem"
 
-#: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:129
+#: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:139
 msgid "DNS"
 msgstr "DNS"
 
@@ -60,8 +60,8 @@ msgid "Systems"
 msgstr "Systémy"
 
 #: admin/dns/class_dnsManagement.inc:91 admin/dns/class_dnsManagement.inc:93
-#: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:313
-#: admin/systems/class_dnsHost.inc:322
+#: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:323
+#: admin/systems/class_dnsHost.inc:332
 msgid "Could not run ldap2zone"
 msgstr "Nedaří se spustit ldap2zone"
 
@@ -77,21 +77,21 @@ msgstr "Nedaří se nalézt hlavní server"
 msgid "Could not get run ldap2zone"
 msgstr "Nedaří se spustit ldap2zone"
 
-#: admin/dns/class_dnsManagement.inc:111 admin/systems/class_dnsHost.inc:324
+#: admin/dns/class_dnsManagement.inc:111 admin/systems/class_dnsHost.inc:334
 msgid "Ldap2zone"
 msgstr "Ldap2zone"
 
-#: admin/dns/class_dnsManagement.inc:111 admin/systems/class_dnsHost.inc:324
+#: admin/dns/class_dnsManagement.inc:111 admin/systems/class_dnsHost.inc:334
 #, php-format
 msgid "Ldap2Zone called for zone \"%s\""
 msgstr "Ldap2Zone vyvoláno pro zónu „%s“"
 
 #: admin/dns/class_dnsManagement.inc:115 admin/dns/class_dnsZone.inc:381
-#: admin/systems/class_dnsHost.inc:328
+#: admin/systems/class_dnsHost.inc:338
 msgid "Error"
 msgstr "Chyba"
 
-#: admin/dns/class_dnsManagement.inc:115 admin/systems/class_dnsHost.inc:328
+#: admin/dns/class_dnsManagement.inc:115 admin/systems/class_dnsHost.inc:338
 msgid "Argonaut client needs to be activated to use ldap2zone remotely"
 msgstr "Pro použití ldap2zone je třeba, aby byl aktivovaný argonaut klient"
 
@@ -141,7 +141,7 @@ msgstr "Hledat shodu pouze rekurzivně"
 msgid "Match only recursive queries in this view"
 msgstr "V tomto pohledu hledat shodu pouze v rekurzivních dotazech"
 
-#: admin/dns/class_dnsView.inc:66 admin/systems/class_dnsHost.inc:147
+#: admin/dns/class_dnsView.inc:66 admin/systems/class_dnsHost.inc:157
 msgid "DNS zones"
 msgstr "DNS zóny"
 
@@ -602,46 +602,46 @@ msgstr "Záznamy"
 msgid "The DNS records for this zone"
 msgstr "DNS záznamy pro tuto zónu"
 
-#: admin/systems/class_dnsHost.inc:130
+#: admin/systems/class_dnsHost.inc:140
 msgid "Edit the DNS zones of a system"
 msgstr "Upravit DNS zóny systému"
 
-#: admin/systems/class_dnsHost.inc:151
+#: admin/systems/class_dnsHost.inc:161
 msgid "DNS zones for this host"
 msgstr "DNS zóny pro tento stroj"
 
-#: admin/systems/class_dnsHost.inc:158
+#: admin/systems/class_dnsHost.inc:168
 msgid "SOA records"
 msgstr "SOA záznamy"
 
-#: admin/systems/class_dnsHost.inc:162 admin/systems/class_dnsHost.inc:236
+#: admin/systems/class_dnsHost.inc:172 admin/systems/class_dnsHost.inc:246
 msgid "DNS Records"
 msgstr "DNS záznamy"
 
-#: admin/systems/class_dnsHost.inc:232
+#: admin/systems/class_dnsHost.inc:242
 msgid "Primary servers"
 msgstr "Hlavní servery"
 
-#: admin/systems/class_dnsHost.inc:251
+#: admin/systems/class_dnsHost.inc:261
 #, php-format
 msgid "The DNS records for zone \"%s\""
 msgstr "DNS záznamy pro zónu „%s“"
 
-#: admin/systems/class_dnsHost.inc:273
+#: admin/systems/class_dnsHost.inc:283
 #, php-format
 msgid "The primary server for zone \"%s\""
 msgstr "Hlavní server pro zónu „%s“"
 
-#: admin/systems/class_dnsHost.inc:373 admin/systems/class_dnsHost.inc:392
+#: admin/systems/class_dnsHost.inc:383 admin/systems/class_dnsHost.inc:402
 #, php-format
 msgid "%d records were updated from %s to %s in zone %s"
 msgstr "%d záznamů bylo aktualizováno z %s do %s v zóně %s"
 
-#: admin/systems/class_dnsHost.inc:405 admin/systems/class_dnsHost.inc:434
+#: admin/systems/class_dnsHost.inc:415 admin/systems/class_dnsHost.inc:444
 msgid "DNS update"
 msgstr "Aktualizace DNS"
 
-#: admin/systems/class_dnsHost.inc:479 admin/systems/class_dnsHost.inc:500
+#: admin/systems/class_dnsHost.inc:489 admin/systems/class_dnsHost.inc:510
 #, php-format
 msgid "%d records were removed in zone %s"
 msgstr "%d záznamů bylo odebráno v zóně %s"
