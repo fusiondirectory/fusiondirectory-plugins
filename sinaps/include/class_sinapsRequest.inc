@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018 FusionDirectory
+  Copyright (C) 2017-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -132,7 +132,7 @@ class sinapsRequest
       'entite' => array(
         'supannRefId'               => array(),
         'postalAddress'             => '',
-        'supannCodeEntiteParent'    => '',
+        'supannCodeEntiteParent'    => array(),
       ),
     );
 
@@ -194,7 +194,7 @@ class sinapsRequest
           }
           $mereUUID = $this->getUUIDFromReferenceCroisee($identifiantApplication, $lienStructure->referenceCroisee);
           if (!empty($mereUUID)) {
-            $values['entite']['supannCodeEntiteParent'] = $ldapUuidToCodeEntiteCallback($mereUUID)['supannCodeEntite'];
+            $values['entite']['supannCodeEntiteParent'][] = $ldapUuidToCodeEntiteCallback($mereUUID)['supannCodeEntite'];
           }
         }
       }
@@ -203,14 +203,13 @@ class sinapsRequest
     return $values;
   }
 
-  public function getUserValues($identifiantApplication, array $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback)
+  public function getUserValues($identifiantApplication, array $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback, array $userRoles)
   {
     $personne   = $this->getOperationPersonne();
     $now        = new DateTime();
     $mapping = array(
       'civilite'        => array('supannAccount','supannCivilite'),
       'nomUsage'        => array('user','sn'),
-      'descriptifLong'  => array('user','description'),
       'dateNaissance'   => array('personalInfo','dateOfBirth'),
       'sexe'            => array('personalInfo','gender'),
     );
@@ -242,7 +241,7 @@ class sinapsRequest
     if (isset($personne->referenceCroisee->identifiantsExternes)) {
       foreach ($personne->referenceCroisee->identifiantsExternes as $ref) {
         if ($ref->identifiantApplication == $identifiantApplication) {
-          $uuid = $ref->identifiantExterne;
+          $uuid = (string)$ref->identifiantExterne;
         } elseif (in_array($ref->identifiantApplication, $identifiantApplicationSync)) {
           $values['supannAccount']['supannRefId'][] = '{'.$ref->identifiantApplication.'}'.$ref->identifiantExterne;
         }
@@ -258,7 +257,45 @@ class sinapsRequest
 
     array_unshift($values['supannAccount']['supannRefId'], '{'.$uuidPrefix.'}'.$uuid);
 
-    if (!isset($personne->rattachements->rattachement)) {
+    /* Check if the user still has at least one role which means he exists, otherwise this is a deletion */
+    $userRoleExists = array();
+    foreach ($userRoles as $typeRole) {
+      if (preg_match('|^([^/]+)/(.+)$|', $typeRole, $m)) {
+        $userRoleExists[$m[1]][] = $m[2];
+      } else {
+        $userRoleExists[$typeRole] = TRUE;
+      }
+    }
+    $deletion = TRUE;
+    if (isset($personne->rattachements->rattachement)) {
+      foreach ($personne->rattachements->rattachement as $rattachement) {
+        if (isset($rattachement->roles->role)) {
+          foreach ($rattachement->roles->role as $role) {
+            if (isset($userRoleExists[(string)$role->typeRole])) {
+              if ($userRoleExists[(string)$role->typeRole] === TRUE) {
+                $deletion = FALSE;
+                break 2;
+              }
+              if (in_array_ics((string)$role->externe->typeExterne, $userRoleExists[(string)$role->typeRole])) {
+                if (!empty($role->externe->identifiantStructureInterne)) {
+                  /* Store identifiantStructureInterne in supannEntiteAffectationPrincipale */
+                  $UUID   = (string)$role->externe->identifiantStructureInterne;
+                  $entite = $ldapUuidToCodeEntiteCallback($UUID);
+                  if (isset($entite['supannTypeEntite'])) {
+                    $values['supannAccount']['supannTypeEntiteAffectation'][] = $entite['supannTypeEntite'];
+                  }
+                  $values['supannAccount']['supannEntiteAffectation'][]         = $entite['supannCodeEntite'];
+                  $values['supannAccount']['supannEntiteAffectationPrincipale'] = $entite['supannCodeEntite'];
+                }
+                $deletion = FALSE;
+                break 2;
+              }
+            }
+          }
+        }
+      }
+    }
+    if ($deletion) {
       /* This is a deletion */
       /* Store current date as end of contract */
       $values['personalInfo']['fdContractEndDate'] = $now->format('d.m.Y');
@@ -306,7 +343,7 @@ class sinapsRequest
               trigger_error('Ignore adresse non FR non ETR');
               continue;
             }
-            if ($method->adresse->codeTypeAdresse == 'ADRPERSO') {
+            if ((string)$method->adresse->codeTypeAdresse == 'ADRPERSO') {
               $values['user']['homePostalAddress'] = $adresse;
             } else {
               $values['user']['postalAddress'] = $adresse;
@@ -333,15 +370,23 @@ class sinapsRequest
               continue;
             }
             if (isset($role->personneRessource->affectations->affectation)) {
+              $quotiteMax = NULL;
               foreach ($role->personneRessource->affectations->affectation as $affectation) {
                 if (!$this->checkValidite($affectation, $now)) {
                   continue;
                 }
-                $UUID = $this->getUUIDFromReferenceCroisee($identifiantApplication, $affectation->referenceCroisee);
+                $UUID     = (string)$affectation->identifiantStructureInterne;
+                $quotite  = (isset($affectation->quotite) ? (int)$affectation->quotite : 0);
                 if (!empty($UUID)) {
                   $entite = $ldapUuidToCodeEntiteCallback($UUID);
+                  if (isset($entite['supannTypeEntite'])) {
+                    $values['supannAccount']['supannTypeEntiteAffectation'][] = $entite['supannTypeEntite'];
+                  }
                   $values['supannAccount']['supannEntiteAffectation'][]         = $entite['supannCodeEntite'];
-                  $values['supannAccount']['supannEntiteAffectationPrincipale'] = $entite['supannCodeEntite'];
+                  if (($quotiteMax === NULL) || ($quotite > $quotiteMax)) {
+                    $quotiteMax                                                   = $quotite;
+                    $values['supannAccount']['supannEntiteAffectationPrincipale'] = $entite['supannCodeEntite'];
+                  }
                 }
               }
             }
@@ -367,9 +412,9 @@ class sinapsRequest
               continue;
             }
             $values['supannAccount']['supannRoleGenerique'][] = (string)$fonctionOccupee->fonctionRh;
-            $UUID = $this->getUUIDFromReferenceCroisee($identifiantApplication, $fonctionOccupee->referenceCroisee);
+            $UUID                                             = (string)$fonctionOccupee->identifiantStructureInterne;
             if (!empty($UUID)) {
-              $entite = $ldapUuidToCodeEntiteCallback($UUID);
+              $entite = $ldapUuidToCodeEntiteCallback($UUID, TRUE);
               $values['supannAccount']['supannTypeEntiteAffectation'][] = $entite['supannTypeEntite'];
               $values['supannAccount']['supannEntiteAffectation'][] = $entite['supannCodeEntite'];
               $values['supannAccount']['supannRoleEntite'][] =

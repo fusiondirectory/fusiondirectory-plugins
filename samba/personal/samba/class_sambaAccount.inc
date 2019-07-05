@@ -621,6 +621,14 @@ class sambaAccount extends simplePlugin
     $this->sambaSID = "";
   }
 
+  function callHook($cmd, array $addAttrs = array(), &$returnOutput = array(), &$returnCode = NULL)
+  {
+    $addAttrs['passwordMethod'] = $this->parent->getBaseObject()->attributesAccess['userPassword']->getMethod();
+    $addAttrs['userLocked']     = $this->parent->getBaseObject()->attributesAccess['userPassword']->isLocked();
+    $addAttrs['passwordClear']  = $this->parent->getBaseObject()->attributesAccess['userPassword']->getClear();
+    return parent::callHook($cmd, $addAttrs, $returnOutput, $returnCode);
+  }
+
   /* Returns TRUE if this attribute should be asked in the creation by template dialog */
   function showInTemplate($attr, $templateAttrs)
   {
