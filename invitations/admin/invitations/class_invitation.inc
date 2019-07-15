@@ -67,7 +67,7 @@ class invitation extends simplePlugin
           new DisplayLDAPAttribute(
             _('Author'), _('Author of this invitation'),
             'fdInvitationAuthor', FALSE,
-            $ui->dn
+            ($ui->dn ?? '')
           ),
         ]
       ],
