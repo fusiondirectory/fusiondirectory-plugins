@@ -201,6 +201,6 @@ class ldifManager extends simplePlugin
   function get_allowed_bases (): array
   {
     global $config;
-    return $config->idepartments;
+    return $config->getDepartmentTree();
   }
 }
