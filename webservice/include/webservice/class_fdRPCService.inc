@@ -164,8 +164,7 @@ class fdRPCService
         session::global_set('LOGIN', TRUE);
         $plist = new pluglist();
         $config->loadPlist($plist);
-        $config->get_departments();
-        $config->make_idepartments();
+        $config->resetDepartmentCache();
         session::global_set('ui',     $ui);
         session::global_set('plist',  $plist);
         session::global_set('config', $config);
