@@ -151,6 +151,9 @@ class fdRPCService
           static::authenticateHeader('Invalid user or password');
         }
 
+        $plist = new pluglist();
+        $config->loadPlist($plist);
+
         /* Check account expiration */
         $expired = $ui->expired_status();
         if ($expired == PPOLICY_ACCOUNT_EXPIRED) {
@@ -162,9 +165,6 @@ class fdRPCService
         }
 
         session::global_set('LOGIN', TRUE);
-        $plist = new pluglist();
-        $config->loadPlist($plist);
-        $config->resetDepartmentCache();
         session::global_set('ui',     $ui);
         session::global_set('plist',  $plist);
         session::global_set('config', $config);
