@@ -111,10 +111,6 @@ class entite extends simplePlugin
     global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    if (empty($this->acl_base)) {
-      $this->set_acl_base($config->current['BASE']);
-    }
-
     list($code_entites, $label_entites) = static::listPossibleParentEntities();
 
     $this->attributesAccess['supannCodeEntiteParent']->attribute->setChoices($code_entites, $label_entites);

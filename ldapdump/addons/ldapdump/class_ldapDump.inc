@@ -59,7 +59,7 @@ class ldapDump extends simplePlugin
     global $config;
     if ($this->dump === NULL) {
       $ui = get_userinfo();
-      if (preg_match('/r/', $ui->get_complete_category_acls($this->acl_base, $this->parent->acl_category))) {
+      if (preg_match('/r/', $ui->get_complete_category_acls($this->getAclBase(), $this->parent->acl_category))) {
         $ldap = $config->get_ldap_link();
         $ldap->cat($this->dn, ['*','createTimestamp','modifyTimestamp']);
         if ($attrs = $ldap->fetch()) {

@@ -43,7 +43,6 @@ class servicesManagement extends management implements SimpleTab
   public $dn;
   public $is_template     = FALSE;
   public $parent          = NULL;
-  public $acl_base        = '';
   public $acl_category    = '';
 
   protected $plugins      = [];
@@ -85,9 +84,6 @@ class servicesManagement extends management implements SimpleTab
       $this->attrs = $object->attrs;
     }
     $this->parent = $parent;
-
-    /* Initialize acl base */
-    $this->set_acl_base($this->dn);
 
     // Initialize list of used and useable services.
     foreach ($config->data['TABS']['SERVERSERVICE'] as $plug) {
@@ -282,7 +278,6 @@ class servicesManagement extends management implements SimpleTab
   {
     if (($this->backup == NULL) && $this->current) {
       $this->plugins[$this->current] = new $this->current($this->dn, $this);
-      $this->plugins[$this->current]->set_acl_base($this->acl_base);
       $this->plugins[$this->current]->set_acl_category(preg_replace('/\/$/', '', $this->acl_category));
     } elseif (is_array($this->backup)) {
       foreach ($this->backup as $name => $value) {
@@ -343,7 +338,6 @@ class servicesManagement extends management implements SimpleTab
   {
     foreach ($action['targets'] as $s_entry) {
       $new_obj = new $s_entry($this->dn, $this);
-      $new_obj->set_acl_base($this->acl_base);
       $new_obj->set_acl_category(preg_replace('/\/$/', '', $this->acl_category));
       $tmp = $new_obj->getListEntry();
 
@@ -562,16 +556,6 @@ class servicesManagement extends management implements SimpleTab
     $this->dn = 'new';
     foreach ($this->plugins as $obj) {
       $obj->resetCopyInfos();
-    }
-  }
-
-  /*! \brief    Forward plugin acls
-   */
-  public function set_acl_base (string $base)
-  {
-    $this->acl_base = $base;
-    foreach ($this->plugins as $obj) {
-      $obj->set_acl_base($base);
     }
   }
 
