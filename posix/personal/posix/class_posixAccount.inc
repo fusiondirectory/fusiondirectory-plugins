@@ -143,12 +143,12 @@ class posixAccount extends simplePlugin
           new IntAttribute(
             _('User id'), _('User id value for this user'),
             'uidNumber', FALSE,
-            0, FALSE, ''
+            $config->get_cfg_value('minId', 0), FALSE, ''
           ),
           new IntAttribute(
             _('Group id'), _('Group id value for this user'),
             'gidNumber', FALSE,
-            0, FALSE, ''
+            $config->get_cfg_value('minId', 0), FALSE, ''
           )
         )
       ),
@@ -408,23 +408,8 @@ class posixAccount extends simplePlugin
   function check()
   {
     global $config;
-    if (isset($this->parent) &&
-        isset($this->parent->getBaseObject()->is_template) &&
-        $this->parent->getBaseObject()->is_template) {
-      $message = array();
-    } else {
-      $message = parent::check();
-    }
 
-    /* Check ID's if they are forced by user */
-    if ($this->force_ids) {
-      if ($this->uidNumber < $config->get_cfg_value('minId')) {
-        $message[] = msgPool::toosmall(_('UID'), $config->get_cfg_value('minId'));
-      }
-      if ($this->gidNumber < $config->get_cfg_value('minId')) {
-        $message[] = msgPool::toosmall(_('GID'), $config->get_cfg_value('minId'));
-      }
-    }
+    $message = parent::check();
 
     /* Check shadow settings */
     if ($this->shadowWarning !== '') {
