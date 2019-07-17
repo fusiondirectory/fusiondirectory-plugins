@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016  FusionDirectory
+
+  Copyright (C) 2016-2019 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,6 +23,4 @@ require_once('../include/php_setup.inc');
 require_once('functions.inc');
 require_once('variables.inc');
 
-$expiredPostpone = new expiredUserPostpone();
-
-$expiredPostpone->execute();
+expiredUserPostpone::run();
