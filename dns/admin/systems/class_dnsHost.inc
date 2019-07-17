@@ -391,7 +391,7 @@ class dnsHost extends simplePlugin
       $cnChanged      = ($baseObject->attributeHaveChanged('cn') && !empty($oldcn));
       $ipChanged      = $baseObject->attributeHaveChanged('ipHostNumber');
 
-      $locks  = [];
+      $lockedDns  = [];
 
       /* Lock zones */
       $zonesToLock = [];
@@ -409,12 +409,12 @@ class dnsHost extends simplePlugin
         } else {
           /* Lock the current entry */
           add_lock($zoneDn, $ui->dn);
-          $locks[] = $zoneDn;
+          $lockedDns[] = $zoneDn;
         }
       }
 
       if (!empty($errors)) {
-        del_lock($locks);
+        del_lock($lockedDns);
         return $errors;
       }
 
@@ -471,7 +471,7 @@ class dnsHost extends simplePlugin
         msg_dialog::display(_('DNS update'), implode("<br/>\n", $messages)."<br/>\n", INFO_DIALOG);
       }
 
-      del_lock($locks);
+      del_lock($lockedDns);
     }
 
     return $errors;
