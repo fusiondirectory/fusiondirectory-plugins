@@ -90,7 +90,6 @@ class dhcpPlugin extends simplePlugin
     } else {
       trigger_error('Invalid use of dhcpPlugin class');
     }
-    $this->set_acl_base($this->base);
   }
 
   function execute (): string

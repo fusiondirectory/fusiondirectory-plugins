@@ -126,7 +126,6 @@ class systemImport extends simplePlugin
           $objectType = $host['objectType'];
         }
         $tabObject = objects::create($objectType);
-        $tabObject->set_acl_base($base);
         $baseObject = $tabObject->getBaseObject();
         $baseObject->cn           = $cn;
         $baseObject->description  = $host['description'];

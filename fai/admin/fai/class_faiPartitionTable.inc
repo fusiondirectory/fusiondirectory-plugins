@@ -36,11 +36,7 @@ class DiskEntryDialog extends GenericDialog
     }
     $this->dialog = new $this->dialogClass($simplePlugin->dn, $attribute, $disk, $diskType);
 
-    $base = $simplePlugin->dn;
-    if ($base == 'new') {
-      $base = $simplePlugin->base;
-    }
-    $this->dialog->set_acl_base($base);
+    $this->dialog->base = $simplePlugin->base;
     $this->dialog->set_acl_category('fai');
     if (!empty($disk)) {
       $this->initialDialogValue = $disk;

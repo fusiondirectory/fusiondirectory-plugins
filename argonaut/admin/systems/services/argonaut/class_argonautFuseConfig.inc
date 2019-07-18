@@ -92,7 +92,6 @@ class argonautFuseConfig extends simpleService
       $this->plugin[$name] = new $name($dn, $parent, $parent);
 
       $this->plugin[$name]->set_acl_category($this->acl_category);
-      $this->plugin[$name]->set_acl_base($this->dn);
     }
   }
 
@@ -144,14 +143,6 @@ class argonautFuseConfig extends simpleService
     parent::set_acl_category($cat);
     foreach ($this->plugin as $plugin) {
       $plugin->set_acl_category($cat);
-    }
-  }
-
-  function set_acl_base (string $base)
-  {
-    parent::set_acl_base($base);
-    foreach ($this->plugin as $plugin) {
-      $plugin->set_acl_base($base);
     }
   }
 

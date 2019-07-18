@@ -318,7 +318,7 @@ class dnsHost extends simplePlugin
     $this->load();
     $smarty = get_smarty();
     $ui     = get_userinfo();
-    $acl    = $ui->get_permissions($this->acl_base, 'dnsZone/dnsZone', 'dnsRecords', $this->read_only);
+    $acl    = $ui->get_permissions($this->getAclBase(), 'dnsZone/dnsZone', 'dnsRecords', $this->read_only);
     $smarty->assign('dnsRecordsACL', $acl);
     return parent::execute();
   }
