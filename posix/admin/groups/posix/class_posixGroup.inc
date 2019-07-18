@@ -139,10 +139,10 @@ class posixGroup extends simplePlugin
     );
     if ($this->is_template) {
       /* Template specific handling */
-      if (isset($this->attrs['force_ids'])) {
-        $this->force_ids = ($this->attrs['force_ids'][0] != 'FALSE');
+      if (isset($this->attrs['force_id'])) {
+        $this->force_id = ($this->attrs['force_id'][0] != 'FALSE');
       }
-      if (!$this->force_ids) {
+      if (!$this->force_id) {
         $this->gidNumber = '';
       }
     }
@@ -190,14 +190,14 @@ class posixGroup extends simplePlugin
     }
 
     if ($this->is_template) {
-      if ($this->force_ids) {
+      if ($this->force_id) {
         if ($this->gidNumber == '%askme%') {
-          $this->attrs['force_ids'] = '%askme%';
+          $this->attrs['force_id'] = '%askme%';
         } else {
-          $this->attrs['force_ids'] = 'TRUE';
+          $this->attrs['force_id'] = 'TRUE';
         }
       } else {
-        $this->attrs['force_ids']   = 'FALSE';
+        $this->attrs['force_id']   = 'FALSE';
       }
     }
 
