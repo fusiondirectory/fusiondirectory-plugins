@@ -52,6 +52,8 @@ class posixGroup extends simplePlugin
 
   static function getAttributesInfo ()
   {
+    global $config;
+
     return array(
       'main' => array(
         'name'  => _('Properties'),
@@ -73,7 +75,7 @@ class posixGroup extends simplePlugin
           new IntAttribute(
             _('GID'), _('GID value for this group'),
             'gidNumber', FALSE,
-            0, FALSE, ''
+            $config->get_cfg_value('minId', 0), FALSE, ''
           )
         )
       ),
@@ -137,21 +139,15 @@ class posixGroup extends simplePlugin
         )
       )
     );
-  }
-
-  function check()
-  {
-    global $config;
-    $message = parent::check();
-
-    /* Check ID's if they are forced by user */
-    if ($this->force_id) {
-      if ($this->gidNumber < $config->get_cfg_value("minId")) {
-        $message[] = msgPool::toosmall(_("GID"), $config->get_cfg_value("minId"));
+    if ($this->is_template) {
+      /* Template specific handling */
+      if (isset($this->attrs['force_id'])) {
+        $this->force_id = ($this->attrs['force_id'][0] != 'FALSE');
+      }
+      if (!$this->force_id) {
+        $this->gidNumber = '';
       }
     }
-
-    return $message;
   }
 
   function resetCopyInfos()
@@ -167,11 +163,15 @@ class posixGroup extends simplePlugin
   {
     if (!$this->force_id) {
       /* Handle gidNumber */
-      if ($this->attributesAccess['gidNumber']->getInitialValue() != "") {
-        $this->gidNumber = $this->attributesAccess['gidNumber']->getInitialValue();
+      if ($this->is_template) {
+        $this->gidNumber = '';
       } else {
-        $this->gidNumber = posixAccount::getNextIdLock('gidNumber', $this->dn);
-        $this->locks[] = 'gidNumber';
+        if ($this->attributesAccess['gidNumber']->getInitialValue() != '') {
+          $this->gidNumber = $this->attributesAccess['gidNumber']->getInitialValue();
+        } else {
+          $this->gidNumber = posixAccount::getNextIdLock('gidNumber', $this->dn);
+          $this->locks[] = 'gidNumber';
+        }
       }
     }
 
@@ -189,6 +189,18 @@ class posixGroup extends simplePlugin
       $this->attrs['objectClass'][] = 'hostObject';
     } elseif (($this->trustMode == "") && (($key = array_search('hostObject', $this->attrs['objectClass'])) !== FALSE)) {
       unset($this->attrs['objectClass'][$key]);
+    }
+
+    if ($this->is_template) {
+      if ($this->force_id) {
+        if ($this->gidNumber == '%askme%') {
+          $this->attrs['force_id'] = '%askme%';
+        } else {
+          $this->attrs['force_id'] = 'TRUE';
+        }
+      } else {
+        $this->attrs['force_id']   = 'FALSE';
+      }
     }
 
     return $errors;
