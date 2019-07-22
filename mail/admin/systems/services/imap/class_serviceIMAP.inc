@@ -49,8 +49,8 @@ class serviceIMAP extends simpleMailMethodService
   static function plInfo (): array
   {
     return [
-      'plShortName'   => _('IMAP/POP3 generic service'),
-      'plDescription' => _('IMAP/POP3').' ('._('Services').')',
+      'plShortName'   => _('IMAP generic service'),
+      'plDescription' => _('IMAP').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=imap&size=16',
       'plObjectClass' => ['fdImapServer'],
 
@@ -68,6 +68,6 @@ class serviceIMAP extends simpleMailMethodService
 
   function execute (): string
   {
-    return '<b>This server runs an IMAP or POP3 server</b>'.parent::execute();
+    return '<b>This server runs an IMAP server</b>'.parent::execute();
   }
 }
