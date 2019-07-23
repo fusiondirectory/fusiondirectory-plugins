@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2014-2015  Dhatim
-  Copyright (C) 2014-2016  FusionDirectory
+  Copyright (C) 2014-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ppolicyAccount extends simplePlugin
+class ppolicyAccount extends simplePlugin implements UserTabLockingAction
 {
   static function plInfo (): array
   {
@@ -123,5 +124,14 @@ class ppolicyAccount extends simplePlugin
     /* ppolicy fields are not real fields, they can’t be removed through ldap_modify
      * It’s not possible to remove ppolicy info from a user node anyway */
     return [];
+  }
+
+  public function fillLockingLDAPAttrs (string $mode, array &$modify)
+  {
+    if ($mode == 'LOCK') {
+      $modify['pwdAccountLockedTime'] = '000001010000Z';
+    } else {
+      $modify['pwdAccountLockedTime'] = [];
+    }
   }
 }
