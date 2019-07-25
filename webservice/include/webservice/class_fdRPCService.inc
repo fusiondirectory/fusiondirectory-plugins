@@ -146,9 +146,10 @@ class fdRPCService
           $user = $_SERVER['PHP_AUTH_USER'];
           $pwd  = $_SERVER['PHP_AUTH_PW'];
         }
-        $ui = userinfo::loginUser($user, $pwd);
-        if (!$ui) {
-          static::authenticateHeader('Invalid user or password');
+        try {
+          $ui = userinfo::loginUser($user, $pwd);
+        } catch (LoginFailureException $e) {
+          static::authenticateHeader($e->getMessage());
         }
 
         $plist = new pluglist();
@@ -156,8 +157,8 @@ class fdRPCService
 
         /* Check account expiration */
         $expired = $ui->expired_status();
-        if ($expired == PPOLICY_ACCOUNT_EXPIRED) {
-          static::authenticateHeader(_('It seems your user password has expired. Please use password recovery to change it.'));
+        if ($expired == POSIX_FORCE_PASSWORD_CHANGE) {
+          static::authenticateHeader(_('Your password has expired, please set a new one.'));
         }
 
         if ($expired == POSIX_ACCOUNT_EXPIRED) {
