@@ -130,8 +130,7 @@ class ppolicyAccount extends simplePlugin implements UserTabLockingAction
   {
     if ($mode == 'LOCK') {
       $modify['pwdAccountLockedTime'] = '000001010000Z';
-    } else {
-      $modify['pwdAccountLockedTime'] = [];
     }
+    /* For unlock there is nothing to do as core unlock changes the password it removes ppolicy lock anyway */
   }
 }
