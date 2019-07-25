@@ -111,6 +111,8 @@ update-transifex:
 
 build-tarballs:
   stage: tarballs
+  only:
+    - tags
   script:
     - tar -cvzf fusiondirectory-plugins.tar.gz *
   artifacts:
