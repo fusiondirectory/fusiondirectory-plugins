@@ -119,6 +119,7 @@ class sudo extends simplePlugin
 
   static function plInfo()
   {
+    $posixGroupClass = (class_available('mixedGroup') ? 'ogroup' : 'posixGroup');
     return array(
       'plShortName'   => _('Sudo'),
       'plDescription' => _('Sudo role'),
@@ -134,8 +135,7 @@ class sudo extends simplePlugin
       'plForeignKeys'  => array(
         'sudoUser'   => array(
           array('user', 'uid', '(sudoUser=%oldvalue%)'),
-          array('posixGroup', 'cn', '(sudoUser=%|%%oldvalue%)'),
-          array('mixedGroup', 'cn', '(sudoUser=%|%%oldvalue%)'),
+          array($posixGroupClass, 'cn', '(sudoUser=%|%%oldvalue%)'),
         ),
         'sudoHost'   => array(
           array('serverGeneric', 'cn'),
@@ -258,7 +258,7 @@ class sudo extends simplePlugin
 
   function foreignKeyCheck ($field, $fieldvalue, $source)
   {
-    if (($field == 'sudoUser') && (($source['CLASS'] == 'posixGroup') || ($source['CLASS'] == 'mixedGroup'))) {
+    if (($field == 'sudoUser') && (($source['CLASS'] == 'posixGroup') || ($source['CLASS'] == 'ogroup'))) {
       return parent::foreignKeyCheck($field, '%'.$fieldvalue, $source);
     } else {
       return parent::foreignKeyCheck($field, $fieldvalue, $source);
@@ -267,7 +267,7 @@ class sudo extends simplePlugin
 
   function foreignKeyUpdate($field, $oldvalue, $newvalue, $source)
   {
-    if (($field == 'sudoUser') && (($source['CLASS'] == 'posixGroup') || ($source['CLASS'] == 'mixedGroup'))) {
+    if (($field == 'sudoUser') && (($source['CLASS'] == 'posixGroup') || ($source['CLASS'] == 'ogroup'))) {
       return parent::foreignKeyUpdate($field, '%'.$oldvalue, '%'.$newvalue, $source);
     } else {
       return parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
