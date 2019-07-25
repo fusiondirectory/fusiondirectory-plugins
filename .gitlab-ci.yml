@@ -36,12 +36,13 @@ create_php_lint_rapport_stretch:
 
 # PHP codesniffer
 create_php_code_sniffer_rapport_13:
+  image: php:cli-stretch
   stage: codestyle
   only:
     - branches
   before_script:
     - apt-get update -qq
-    - apt-get install -y -qq  git php-cli php-codesniffer
+    - apt-get install -y -qq  git php-codesniffer
   script:
     - git clone https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git -b 1.3 ../dev-tools
     - find . -type f -name '*.php' -o -name '*.inc' > ./filelist
@@ -124,7 +125,7 @@ build-release:
   stage: tarballs
   only:
     - tags
-  script: 
+  script:
     - tar -cvzf fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"').tar.gz *
   artifacts:
     paths:
