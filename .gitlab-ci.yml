@@ -27,13 +27,10 @@ create_php_lint_rapport_stretch:
 
 # PHP codesniffer
 create_php_code_sniffer_rapport:
-  image: php:cli-stretch
+  image: phpcodesniffer-cli:stretch
   stage: codestyle
   only:
     - branches
-  before_script:
-    - apt-get update -qq
-    - apt-get install -y -qq  git php-codesniffer
   script:
     - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
     - find . -type f -name '*.php' -o -name '*.inc' > ./filelist
