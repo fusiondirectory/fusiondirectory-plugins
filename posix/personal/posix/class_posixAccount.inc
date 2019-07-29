@@ -33,10 +33,11 @@
 
 class posixAccount extends simplePlugin
 {
-  var $displayHeader = TRUE;
-  protected $locks = [];
+  protected $displayHeader        = TRUE;
 
-  protected $fromTemplate = FALSE;
+  protected $locks                = [];
+  protected $fromTemplate         = FALSE;
+  protected $savedGroupMembership = [];
 
   static function plInfo (): array
   {
