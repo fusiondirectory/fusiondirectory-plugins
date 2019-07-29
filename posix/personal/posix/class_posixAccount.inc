@@ -80,7 +80,8 @@ class posixAccount extends simplePlugin
   var $objectclasses = array('posixAccount', 'shadowAccount');
   protected $locks = array();
 
-  protected $fromTemplate = FALSE;
+  protected $fromTemplate         = FALSE;
+  protected $savedGroupMembership = array();
 
   static function plInfo()
   {
