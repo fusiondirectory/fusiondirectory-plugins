@@ -90,7 +90,7 @@ class DhcpSectionCreationDialog extends GenericDialog
     $smarty->assign('sectionClasses', '');
     $attributes = [];
     $smarty->assign($this->selectAttribute->getAcl().'ACL', 'rwcdm');
-    $this->selectAttribute->renderAttribute($attributes, FALSE);
+    $this->selectAttribute->renderAttribute($attributes, FALSE, TRUE, TRUE);
     $smarty->assign('attributes', $attributes);
     $sections = [
       'dhcp' => $smarty->fetch(get_template_path('simpleplugin_section.tpl'))

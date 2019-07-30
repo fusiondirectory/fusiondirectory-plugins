@@ -34,14 +34,18 @@ class MailQuotaAttribute extends IntAttribute
     }
   }
 
-  function renderAttribute (array &$attributes, bool $readOnly)
+  function renderAttribute (array &$attributes, bool $readOnly, bool $readable, bool $writable)
   {
-    parent::renderAttribute($attributes, $readOnly);
+    parent::renderAttribute($attributes, $readOnly, $readable, $writable);
     $attributes[$this->getLdapName().'_usage'] = [
-      'htmlid'      => $this->getHtmlId().'_usage',
-      'label'       => '{literal}'._('Quota usage').'{/literal}',
-      'description' => _('Part of the quota which is used'),
-      'input'       => mailMethod::quota_to_image($this->quotaUsage, $this->value),
+      'htmlid'        => $this->getHtmlId().'_usage',
+      'label'         => '{literal}'._('Quota usage').'{/literal}',
+      'description'   => _('Part of the quota which is used'),
+      'input'         => mailMethod::quota_to_image($this->quotaUsage, $this->value),
+      'subattribute'  => FALSE,
+      'required'      => FALSE,
+      'readable'      => $readable,
+      'writable'      => $writable,
     ];
   }
 }
