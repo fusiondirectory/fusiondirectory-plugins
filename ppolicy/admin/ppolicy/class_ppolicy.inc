@@ -132,6 +132,11 @@ class ppolicy extends simplePlugin
             'pwdFailureCountInterval', FALSE,
             0, FALSE
           ),
+          new IntAttribute(
+            _('Stored failures'), _('Maximum number of failed bind attempts to store in a user\'s entry. If not present, or its value is 0, then it defaults to the value of "Maximum failures". If that value is also 0, the default is 5.'),
+            'pwdMaxRecordedFailure', FALSE,
+            0, FALSE
+          ),
           new BooleanAttribute(
             _('Must change'), _('Whether the user must change their password after an account is reset by an administrator following an automatic lockout'),
             'pwdMustChange', FALSE,
