@@ -639,6 +639,11 @@ class servicesManagement extends management implements SimpleTab
   {
   }
 
+  public function aclHasPermissions (): bool
+  {
+    return FALSE;
+  }
+
   /*!
    * \brief Get the acl permissions for an attribute or the plugin itself
    */
