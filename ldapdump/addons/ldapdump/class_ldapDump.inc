@@ -54,12 +54,23 @@ class ldapDump extends simplePlugin
     $this->dump = NULL;
   }
 
+  function aclHasPermissions (): bool
+  {
+    return TRUE;
+  }
+
+  function aclGetPermissions ($attribute = '0', string $base = NULL, bool $skipWrite = FALSE): string
+  {
+    global $ui;
+    /* You need complete rights on the category to see anything in this tab */
+    return $ui->get_complete_category_acls($this->getAclBase(), $this->parent->acl_category);
+  }
+
   function execute (): string
   {
     global $config;
     if ($this->dump === NULL) {
-      $ui = get_userinfo();
-      if (preg_match('/r/', $ui->get_complete_category_acls($this->getAclBase(), $this->parent->acl_category))) {
+      if (preg_match('/r/', $this->aclGetPermissions())) {
         $ldap = $config->get_ldap_link();
         $ldap->cat($this->dn, ['*','createTimestamp','modifyTimestamp']);
         if ($attrs = $ldap->fetch()) {
