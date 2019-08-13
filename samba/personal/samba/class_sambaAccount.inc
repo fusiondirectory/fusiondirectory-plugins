@@ -146,6 +146,14 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
 
   static function plInfo (): array
   {
+    global $config;
+
+    if ($config->get_cfg_value('sambaDependsOnPosix', 'TRUE') !== 'FALSE') {
+      $plDepends = ['posixAccount'];
+    } else {
+      $plDepends = [];
+    }
+
     return [
       'plShortName'     => _('Samba'),
       'plDescription'   => _('Samba settings'),
@@ -153,7 +161,7 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
       'plIcon'          => 'geticon.php?context=applications&icon=samba&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=samba&size=16',
       'plSelfModify'    => TRUE,
-      'plDepends'       => ['posixAccount'],
+      'plDepends'       => $plDepends,
       'plPriority'      => 5,
       'plObjectClass'   => ['sambaSamAccount'],
       'plObjectType'    => ['user'],
@@ -460,7 +468,6 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
     /* Set a new SID */
     $this->sambaSID = "";
   }
-
 
   /* Check for input problems */
   function check (): array
