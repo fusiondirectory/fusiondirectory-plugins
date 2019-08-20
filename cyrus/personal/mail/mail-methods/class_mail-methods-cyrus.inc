@@ -490,8 +490,8 @@ class mailMethodCyrus extends mailMethod
     /* Try to login into sieve
      */
     $cfg    = $this->ServerList[$this->parent->gosaMailServer];
-    $sieve  = new sieve($cfg["sieve_server"], $cfg["sieve_port"], $this->getUAttribValue(),
-                        $cfg["password"], $cfg["admin"], $cfg["sieve_option"]);
+    $sieve  = new sieve($cfg["sieve_server"], $cfg["sieve_port"], $cfg["admin"],
+                        $cfg["password"], $this->getUAttribValue(), $cfg["sieve_option"]);
     if (!$sieve->sieve_login()) {
       @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $sieve->error_raw, "<b>SIEVE: login failed.</b>");
       $this->error = $sieve->error_raw;
@@ -600,17 +600,7 @@ class mailMethodCyrus extends mailMethod
     $ldap->search('(objectClass=fdCyrusServer)',
                   ['cn', 'fdCyrusConnect', 'fdCyrusAdmin', 'fdCyrusPassword', 'fdCyrusSieveServer']);
     while ($attrs = $ldap->fetch()) {
-
-      /* Check if the given fdCyrusSieveServer is in the new style "{cn:port/option}"
-         or the old style just "cn".
-       */
-      if (preg_match("/\{/", $attrs['fdCyrusSieveServer'][0])) {
-        sscanf($attrs['fdCyrusSieveServer'][0], '{%[^{}:]:%d%[^{}]}', $sieve_server, $sieve_port, $sieve_option);
-      } else {
-        $sieve_server = $attrs['fdCyrusSieveServer'][0];
-        $sieve_option = "";
-        $sieve_port   = "";
-      }
+      sscanf($attrs['fdCyrusSieveServer'][0], '{%[^{}:]:%d/%[^{}]}', $sieve_server, $sieve_port, $sieve_option);
 
       $serverList[$attrs['cn'][0]] = [
         "server_dn"     => $attrs['dn'],
