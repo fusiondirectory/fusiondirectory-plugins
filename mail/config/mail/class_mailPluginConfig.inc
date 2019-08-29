@@ -46,18 +46,18 @@ class mailPluginConfig extends simplePlugin
             ['mail', 'uid']
           ),
           new StringAttribute(
-            _('Mail user template'),
-            _('Override the user account creation syntax.'),
+            _('User account template'),
+            _('Override the user account creation syntax. Default is %PREFIX%%UATTRIB%.'),
             'fdMailUserCreation'
           ),
           new StringAttribute(
-            _('Mail folder template'),
-            _('Override the methods default account creation syntax.'),
+            _('Group account template'),
+            _('Override the group account creation syntax. Default is %PREFIX%%UATTRIB%.'),
             'fdMailFolderCreation'
           ),
           new BooleanAttribute(
             _('Use cyrus UNIX style'),
-            _("Determines if 'foo/bar' or 'foo.bar' should be uses as namespaces in IMAP."),
+            _('Determines if "foo/bar" or "foo.bar" should be uses as namespaces in IMAP.'),
             'fdCyrusUseSlashes'
           ),
           new BooleanAttribute(
