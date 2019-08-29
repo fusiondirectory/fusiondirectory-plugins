@@ -317,14 +317,14 @@ class argonautQueue extends management
     }
   }
 
-  protected function _getTabFooter ()
+  protected function getTabFooter ()
   {
     if ($this->dialogObject instanceof faiLogView) {
       return  '<p class="plugbottom">'.
               ' <input type="submit" formnovalidate="formnovalidate" name="edit_cancel" value="'.msgPool::backButton().'"/>'.
               '</p>';
     } else {
-      return parent::_getTabFooter();
+      return parent::getTabFooter();
     }
   }
 
