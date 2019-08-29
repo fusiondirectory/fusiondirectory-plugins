@@ -150,7 +150,7 @@ class socialHandler_orcid extends socialHandler
     return $value;
   }
 
-  public static function orcidCheckSum (string $orcid): string
+  public static function orcidCheckSum ($orcid)
   {
     /* Remove hyphens, remove last digit, convert to array */
     $baseDigits = str_split(str_replace('-', '', substr($orcid, 0, -1)));
