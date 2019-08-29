@@ -248,14 +248,14 @@ class argonautQueue extends simpleManagement
     $this->closeDialogs();
   }
 
-  protected function _getTabFooter()
+  protected function getTabFooter()
   {
     if ($this->dialogObject instanceof faiLogView) {
       return  '<p class="plugbottom">'.
               ' <input type="submit" name="edit_cancel" value="'.msgPool::backButton().'"/>'.
               '</p>';
     } else {
-      return parent::_getTabFooter();
+      return parent::getTabFooter();
     }
   }
 
