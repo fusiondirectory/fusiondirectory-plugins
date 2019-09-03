@@ -317,7 +317,7 @@ class argonautQueue extends management
     }
   }
 
-  protected function getTabFooter ()
+  protected function getTabFooter (): string
   {
     if ($this->dialogObject instanceof faiLogView) {
       return  '<p class="plugbottom">'.
