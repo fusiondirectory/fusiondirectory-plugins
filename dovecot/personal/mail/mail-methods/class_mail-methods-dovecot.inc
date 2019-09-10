@@ -162,10 +162,20 @@ class mailMethodDovecot extends mailMethod
     }
   }
 
+  /* Get quota in MB */
+  public function getQuota ($quota)
+  {
+    parent::getQuota($quota);
+    if (!$this->quota_loaded) {
+      $this->loadQuota();
+    }
+    return $this->quotaValue;
+  }
+
   /* Get quota usage in MB */
   public function getQuotaUsage ()
   {
-    mailMethod::getQuotaUsage();
+    parent::getQuotaUsage();
     if (!$this->quota_loaded) {
       $this->loadQuota();
     }
