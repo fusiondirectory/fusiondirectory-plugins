@@ -276,11 +276,21 @@ class mailMethodCyrus extends mailMethod
         if ($folders !== NULL) {
           $cyrus_delim = ($this->cyrusUseSlashes ? '/' : '.');
 
+          /* We need to move the domain to the end
+           * Example: user/john/Drafts@domain.com instead of user/john@domain.com/Drafts
+          */
+          $account  = $this->account_id;
+          $suffix   = '';
+          if (preg_match('/^(.+)(\@[^@]+)$/', $this->account_id, $m)) {
+            $account  = $m[1];
+            $suffix   = $m[2];
+          }
+
           // Walk thru list of specified folders
           foreach ($folders as $folder) {
             @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<b>'.$this->account_id.'</b>',
               '<b>IMAP: Add/Update account folder '.$folder.'</b> on server :'.$this->parent->gosaMailServer);
-            if (!imap_createmailbox($this->imap_handle, $cfg['connect'].$this->account_id.$cyrus_delim.$folder)) {
+            if (!imap_createmailbox($this->imap_handle, $cfg['connect'].$account.$cyrus_delim.$folder.$suffix)) {
               $this->error = imap_last_error();
               return FALSE;
             }
