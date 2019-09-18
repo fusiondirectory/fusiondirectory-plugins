@@ -507,11 +507,6 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
       return $errors;
     }
 
-    /* Load uid and gid of this 'dn' */
-    $posixAccount = $this->parent->by_object['posixAccount'];
-    $uidNumber    = $posixAccount->uidNumber;
-    $gidNumber    = $posixAccount->gidNumber;
-
     // Generate rid / primaryGroupId
     if (!isset($config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'])) {
       msg_dialog::display(_("Warning"), _("Undefined Samba SID detected. Please fix this problem manually!"), WARNING_DIALOG);
@@ -521,23 +516,27 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
     }
 
     // Need to generate a new uniqe uid/gid combination?
-    if (($this->sambaSID == "") || $this->attributesAccess['sambaDomainName']->hasChanged()) {
+    if (($this->sambaSID == '') || $this->attributesAccess['sambaDomainName']->hasChanged()) {
       $ldap = $config->get_ldap_link();
-      $uidNumber_tmp = $uidNumber;
+      if ($config->get_cfg_value('sambaDependsOnPosix', 'TRUE') !== 'FALSE') {
+        $tmpNumber = $this->parent->by_object['posixAccount']->uidNumber;
+      } else {
+        $tmpNumber = 1;
+      }
       do {
-        $sid = $this->SID."-".($uidNumber_tmp * 2 + $this->ridBase);
+        $sid = $this->SID."-".($tmpNumber * 2 + $this->ridBase);
         $ldap->cd($config->current['BASE']);
         $ldap->search("(sambaSID=$sid)", ["sambaSID"]);
-        $uidNumber_tmp++;
+        $tmpNumber++;
       } while ($ldap->count() > 0);
       $this->attrs['sambaSID'] = $sid;
     }
 
-    if (!$this->is_template) {
+    if (!$this->is_template && isset($this->parent->by_object['posixAccount']) && $this->parent->by_object['posixAccount']->is_account) {
       $ldap = $config->get_ldap_link();
       // Check for users primary group
       $ldap->cd($config->current['BASE']);
-      $ldap->search("(&(objectClass=posixGroup)(gidNumber=".$gidNumber."))", ["cn"]);
+      $ldap->search('(&(objectClass=posixGroup)(gidNumber='.$this->parent->by_object['posixAccount']->gidNumber.'))', ['cn']);
       if ($ldap->count() != 1) {
         msg_dialog::display(
           _("Warning"),
