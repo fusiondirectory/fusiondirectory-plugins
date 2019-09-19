@@ -71,10 +71,10 @@ class mailMethod
   protected $enableQuota            = TRUE;
   protected $enableVacation         = TRUE;
   protected $enableVacationRange    = FALSE;
-  protected $enableFolderTypes      = FALSE;
   protected $enableGroupForwarding  = TRUE;
   protected $enableLocalOnly        = TRUE;
   protected $enableForwardOnly      = TRUE;
+  protected $enableGroupACLs        = FALSE;
 
   /* Default values */
   protected $quotaValue   = 0;
@@ -88,17 +88,15 @@ class mailMethod
   protected $error              = '';
   protected $parent             = NULL;
 
-  protected $default_acls = ['__anyone__' => 'p', '__member__' => 'lrswp'];
-
   protected $acl_map = [
-    'lrsw'      => 'read',
-    'lrswp'     => 'post',
-    'p'         => 'external post',
-    'lrswip'    => 'append',
-    'lrswipd'   => 'delete',
-    'lrswipcd'  => 'write',
-    'lrswipcda' => 'admin',
-    ' '         => 'none'
+    ' '           => 'none',
+    'p'           => 'external post',
+    'lrs'         => 'read',
+    'lrsp'        => 'post',
+    'lrspxte'     => 'delete',
+    'lrsip'       => 'append',
+    'lrswipkxte'  => 'write',
+    'lrswipkxtea' => 'admin',
   ];
 
   protected $acl_mapping = [];
@@ -151,7 +149,7 @@ class mailMethod
 
     /* Create ACL map */
     foreach ($this->acl_map as $acl => $name) {
-      $this->acl_mapping[$acl] = _($name);
+      $this->acl_mapping[$acl] = sprintf(_('%s (%s)'), _($name), $acl);
     }
 
     /* Check if we have an individual user/folder creation syntax */
@@ -409,65 +407,25 @@ class mailMethod
    */
   public function create_folder_id ($folder)
   {
+    $cyrus_delim = ($this->cyrusUseSlashes ? '/' : '.');
     if (!empty($folder)) {
-      $folder = trim(preg_replace("/^INBOX[\.\/]*/i", "", $folder));
+      $folder = trim(preg_replace("/^INBOX[\.\/]*/i", '', $folder));
     }
     if (!empty($folder)) {
-      $folder = "/".$folder;
+      $folder = $cyrus_delim.$folder;
     }
 
-    /* Build account identicator */
-    if ($this->type == "user") {
-      $prefix     = $this->user_prefix;
-      $acc_string = $this->user_id;
-    } else {
-      $prefix     = $this->share_prefix;
-      $acc_string = $this->share_id;
+    /* We need to move the domain to the end
+     * Example: user/john/Drafts@domain.com instead of user/john@domain.com/Drafts
+    */
+    $account  = $this->account_id;
+    $suffix   = '';
+    if (preg_match('/^(.+)(\@[^@]+)$/', $this->account_id, $m)) {
+      $account  = $m[1];
+      $suffix   = $m[2];
     }
 
-    /* Create account prefix and respect "cyrusUseSlashes"
-       Do not replace escaped dots for cyrusUseSlashes.
-     */
-    $uattrib = $this->uattrib;
-    if ($this->cyrusUseSlashes) {
-      $prefix     = preg_replace('/([^\\\\])\./', "\\1/", $prefix);
-      $acc_string = preg_replace('/([^\\\\])\./', "\\1/", $acc_string);
-    }
-    $prefix     = preg_replace("/\\\\([\.\/])/", "\\1", $prefix);
-    $acc_string = preg_replace("/\\\\([\.\/])/", "\\1", $acc_string);
-
-    $mail = $domain = $mailpart = '';
-    if (isset($this->parent->mail)) {
-      $mail = $this->parent->mail;
-      if (preg_match('/\@/', $mail)) {
-        list($mailpart, $domain) = explode('@', $mail);
-      }
-    }
-
-    /* Create account_id */
-    $from   = ["/%cn%/i","/%uid%/i","/%prefix%/i","/%uattrib%/i","/%domain%/i","/%mailpart%/i","/%mail%/i"];
-    $to     = [$this->parent->cn,$this->parent->uid,$prefix,$this->parent->$uattrib, $domain, $mailpart,$mail];
-    $acc_id = trim(strtolower(preg_replace($from, $to, $acc_string)));
-
-    /* Check for not replaced pattern */
-    if (preg_match("/%/", $acc_id)) {
-      $notr = preg_replace("/^[^%]*/", '', $acc_id);
-      if (!empty($notr)) {
-        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<b>Warning</b>',
-            sprintf("<b>MAIL: WARNING unknown pattern in account creation string '%s' near '%s'</b>", $acc_id, $notr));
-
-        /* Remove incomprehensible patterns */
-        $acc_id = preg_replace("/%[^%]+%/", '', $acc_id);
-      }
-    }
-
-    if (preg_match("/\@/", $acc_id)) {
-      list($mail, $domain) = explode('@', $acc_id);
-      $str = trim($mail . $folder . '@' . $domain);
-    } else {
-      $str = trim($acc_id . $folder);
-    }
-    return $str;
+    return trim($account.$folder.$suffix);
   }
 
   /*! \brief Saves sieve settings
@@ -585,6 +543,13 @@ class mailMethod
     return $this->enableGroupForwarding;
   }
 
+  /*! \brief  Returns whether IMAP ACLs are supported for group members
+   */
+  public function groupAclsEnabled (): bool
+  {
+    return $this->enableGroupACLs;
+  }
+
   /*! \brief  Returns whether forcing to only send/recieve local mail is possible
       @return Boolean TRUE, FALSE
    */
@@ -686,23 +651,14 @@ class mailMethod
 
   /*! \brief  Returns configured acls
    */
-  public function getFolderACLs ($folder_acls)
+  public function getFolderACLs (): array
   {
-    /* Merge given ACL with acl mapping
-       This ensures that no ACL will accidentally overwritten by fusiondirectory.
-     */
-    foreach ($folder_acls as $acl) {
-      if (!isset($this->acl_mapping[$acl])) {
-        $this->acl_mapping[$acl] = $acl;
-      }
-    }
-
-    return $folder_acls;
+    return [];
   }
 
   /*! \brief  Write ACLs back to imap or what ever
    */
-  public function setFolderACLs ($array)
+  public function setFolderACLs (array $acls): bool
   {
     return TRUE;
   }
@@ -710,7 +666,7 @@ class mailMethod
   /*! \brief  Returns a list of all possible acls.
       @return Array   ACLs.
   */
-  public function getAclTypes ()
+  public function getAclTypes (): array
   {
     return $this->acl_mapping;
   }
@@ -764,21 +720,6 @@ class mailMethod
     }
 
     return $serverList;
-  }
-
-  /*! \brief  Returns the default sharedFolder ACLs for this method.
-      @return Array Returns an array containg acls for __member__ and __anyone__
-   */
-  public function getDefaultACLs ()
-  {
-    $tmp = $this->default_acls;
-    if (!isset($tmp['__member__'])) {
-      $tmp['__member__'] = " ";
-    }
-    if (!isset($tmp['__anyone__'])) {
-      $tmp['__anyone__'] = " ";
-    }
-    return $tmp;
   }
 
   public function additionalInformations ()

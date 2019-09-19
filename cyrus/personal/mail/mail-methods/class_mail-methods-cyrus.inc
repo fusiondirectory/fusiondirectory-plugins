@@ -33,7 +33,7 @@ class mailMethodCyrus extends mailMethod
 
   protected $enableQuota            = TRUE;
   protected $enableVacationRange    = FALSE;
-  protected $enableFolderTypes      = FALSE;
+  protected $enableGroupACLs        = TRUE;
 
   protected function init ()
   {
@@ -45,6 +45,7 @@ class mailMethodCyrus extends mailMethod
   {
     global $config;
     parent::connect();
+    $this->connected = FALSE;
 
     if (!count($this->ServerList)) {
       $this->error = _("There are no IMAP compatible mail servers defined!");
@@ -88,7 +89,6 @@ class mailMethodCyrus extends mailMethod
       @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed</b> :".imap_last_error(),
         "<b>IMAP:</b> ".$cfg['admin']."@".$cfg['connect']);
 
-      $this->connected = FALSE;
       return FALSE;
     }
     @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>successful</b>",
@@ -265,7 +265,7 @@ class mailMethodCyrus extends mailMethod
       $list = imap_listmailbox($this->imap_handle, $cfg["connect"], $this->account_id);
       if ($list === FALSE) {
         @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
-          "<b>IMAP: Add/Update account</b> on server :".$this->parent->gosaMailServer);
+          "<b>IMAP: Add account</b> on server :".$this->parent->gosaMailServer);
         if (!imap_createmailbox($this->imap_handle, $cfg["connect"].$this->account_id)) {
           $this->error = imap_last_error();
           return FALSE;
@@ -274,23 +274,11 @@ class mailMethodCyrus extends mailMethod
         /* Autocreate configured default folders */
         $folders = $config->get_cfg_value('cyrusAutocreateFolders', NULL);
         if ($folders !== NULL) {
-          $cyrus_delim = ($this->cyrusUseSlashes ? '/' : '.');
-
-          /* We need to move the domain to the end
-           * Example: user/john/Drafts@domain.com instead of user/john@domain.com/Drafts
-          */
-          $account  = $this->account_id;
-          $suffix   = '';
-          if (preg_match('/^(.+)(\@[^@]+)$/', $this->account_id, $m)) {
-            $account  = $m[1];
-            $suffix   = $m[2];
-          }
-
           // Walk thru list of specified folders
           foreach ($folders as $folder) {
             @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<b>'.$this->account_id.'</b>',
               '<b>IMAP: Add/Update account folder '.$folder.'</b> on server :'.$this->parent->gosaMailServer);
-            if (!imap_createmailbox($this->imap_handle, $cfg['connect'].$account.$cyrus_delim.$folder.$suffix)) {
+            if (!imap_createmailbox($this->imap_handle, $cfg['connect'].$this->create_folder_id($folder))) {
               $this->error = imap_last_error();
               return FALSE;
             }
@@ -405,45 +393,71 @@ class mailMethodCyrus extends mailMethod
 
   /*! \brief  Returns configured acls
    */
-  public function getFolderACLs ($folder_acls)
+  public function getFolderACLs (): array
   {
     $this->reset_error();
 
+    if (!$this->is_connected() || !$this->imap_handle) {
+      trigger_error("Method not connected, catch error.");
+      return [];
+    }
+
     /* imap_getacl available? */
     if (!function_exists('imap_getacl')) {
-      $this->error = _("The module imap_getacl is not implemented!");
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "The imap_getacl module is missing!",
-          "<b>IMAP: Cannot set folder acls.</b>");
-      return $folder_acls;
+      $this->error = _('The module imap_getacl is not implemented!');
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, 'The imap_getacl module is missing!',
+          '<b>IMAP: Cannot set folder acls</b>');
+      return [];
     }
 
-    /* Get ACLs and merge them with the already given acls (ldap)
-     */
+    /* Get ACLs */
     $this->build_account_id();
     $acls = imap_getacl($this->imap_handle, $this->account_id);
-    foreach ($acls as $user => $acl) {
-      if ($user == "anyone") {
-        // Map to internal placeholder
-        $user = "__anyone__";
-      }
-      $folder_acls[$user] = $acl;
-    }
 
-    /* Merge given ACL with acl mapping
-       This ensures that no ACL will accidentally overwritten by fusiondirectory.
-     */
-    foreach ($folder_acls as $user => $acl) {
+    foreach ($acls as $user => &$acl) {
+      $acl = $this->expandAndSortACL($acl);
       if (!isset($this->acl_mapping[$acl])) {
+        /* Merge given ACL with acl mapping
+           This ensures that no ACL will accidentally be overwritten
+         */
         $this->acl_mapping[$acl] = $acl;
       }
     }
+    unset($acl);
 
-    return $folder_acls;
+    if (!isset($acls['anyone'])) {
+      $acls['anyone'] = '';
+    }
+
+    return $acls;
+  }
+
+  /*! \brief Put ACLs rights always in the same order and expand legacy rights
+   */
+  protected function expandAndSortACL (string $acl): string
+  {
+    $letters = 'lrswipkxtea';
+    if (strpos($acl, 'c') !== FALSE) {
+      /* Expand c to kx */
+      $acl .= 'kx';
+    }
+    if (strpos($acl, 'd') !== FALSE) {
+      /* Expand d to xte */
+      $acl .= 'xte';
+    }
+    $res = '';
+    foreach (str_split($letters) as $letter) {
+      if (strpos($acl, $letter) !== FALSE) {
+        $res .= $letter;
+      }
+    }
+
+    return $res;
   }
 
   /*! \brief  Write ACLs back to imap or what ever
    */
-  public function setFolderACLs ($permissions)
+  public function setFolderACLs (array $acls): bool
   {
     $this->reset_error();
 
@@ -454,6 +468,8 @@ class mailMethodCyrus extends mailMethod
           "<b>IMAP: Cannot set folder acls.</b>");
       return FALSE;
     }
+
+    $this->build_account_id();
 
     /* Get list of subfolders */
     $folders = $this->getMailboxList();
@@ -477,7 +493,7 @@ class mailMethodCyrus extends mailMethod
     foreach ($folders as $subfolder) {
       $folder_id = $this->create_folder_id($subfolder);
 
-      foreach ($permissions as $user => $acl) {
+      foreach ($acls as $user => $acl) {
         imap_setacl($this->imap_handle, $folder_id, $user, $acl);
         @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $folder_id." -> ".$user.": ".$acl,
             "<b>IMAP: Setting new folder permissions.</b>");

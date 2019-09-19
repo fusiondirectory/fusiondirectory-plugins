@@ -76,6 +76,11 @@ class mailGroup extends simplePlugin
               'gosaMailAlternateAddress'
             )
           ),
+        ]
+      ],
+      'options' => [
+        'name'  => _('Options'),
+        'attrs' => [
           new GroupMailsAttribute(
             _('Forward messages to non group members'), _('Forward messages to non group members'),
             'gosaMailForwardingAddress'
@@ -84,7 +89,38 @@ class mailGroup extends simplePlugin
             _('Only allowed to receive local mail'), _('Whether this group mail is only allowed to receive messages from local senders'),
             'fdGroupMailLocalOnly', FALSE,
             FALSE
-          )
+          ),
+          new SelectAttribute(
+            _('Default ACL'), _('ACL for people not in the group'),
+            'defaultACL', TRUE
+          ),
+          new SelectAttribute(
+            _('Members ACL'), _('ACL for members of the group'),
+            'fdGroupMailMembersAcl', TRUE
+          ),
+          new OrderedArrayAttribute(
+            new PipeSeparatedCompositeAttribute(
+              _('Special ACLs for specific members'),
+              'specialACLs',
+              [
+                new SelectAttribute(
+                  '', _('Email'),
+                  'specialACLsEmail', TRUE,
+                  []
+                ),
+                new SelectAttribute(
+                  '', _('ACL'),
+                  'specialACLsAcl', TRUE,
+                  []
+                ),
+              ],
+              '',
+              _('Special ACLs')
+            ),
+            // no order
+            FALSE,
+            []
+          ),
         ]
       ]
     ];
@@ -94,9 +130,14 @@ class mailGroup extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
+    $this->attributesAccess['defaultACL']->setInLdap(FALSE);
+    $this->attributesAccess['specialACLs']->setInLdap(FALSE);
+
     $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
     $this->attributesAccess['gosaMailServer']->setSubmitForm('mailServerChanged');
     $this->mailServerChanged();
+
+    $this->attributesAccess['specialACLs']->attribute->attributes[0]->setChoices($this->getMemberEmailList());
   }
 
   /* We need $mailAccount->cn to return the cn for mailMethod */
@@ -165,10 +206,54 @@ class mailGroup extends simplePlugin
       $this->attributesAccess['gosaMailForwardingAddress']->setVisible(FALSE);
       $this->attributesAccess['gosaMailForwardingAddress']->setValue([]);
     }
+
+    if ($this->mailMethod->groupAclsEnabled()) {
+      $this->attributesAccess['defaultACL']->setDisabled(FALSE);
+      $this->attributesAccess['defaultACL']->setVisible(TRUE);
+      $this->attributesAccess['fdGroupMailMembersAcl']->setDisabled(FALSE);
+      $this->attributesAccess['fdGroupMailMembersAcl']->setVisible(TRUE);
+      $this->attributesAccess['specialACLs']->setDisabled(FALSE);
+      $this->attributesAccess['specialACLs']->setVisible(TRUE);
+
+      $this->attributesAccess['defaultACL']->setDefaultValue('p');
+      $this->attributesAccess['fdGroupMailMembersAcl']->setDefaultValue('lrsp');
+
+      if ($this->mailMethod->connect()) {
+        $acls = $this->mailMethod->getFolderACLs();
+      }
+      $aclTypes = $this->mailMethod->getAclTypes();
+      $this->attributesAccess['defaultACL']->setChoices(array_keys($aclTypes), array_values($aclTypes));
+      $this->attributesAccess['fdGroupMailMembersAcl']->setChoices(array_keys($aclTypes), array_values($aclTypes));
+      $this->attributesAccess['specialACLs']->attribute->attributes[1]->setChoices(array_keys($aclTypes), array_values($aclTypes));
+      if (isset($acls)) {
+        $this->attributesAccess['defaultACL']->setValue($acls['anyone']);
+        $specialACLs = [];
+        foreach ($acls as $email => $acl) {
+          if (($email != 'anyone') && ($acl != $this->fdGroupMailMembersAcl)) {
+            $specialACLs[] = $email.'|'.$acl;
+          }
+        }
+        $this->specialACLs = $specialACLs;
+      }
+    } else {
+      $this->attributesAccess['defaultACL']->setDisabled(TRUE);
+      $this->attributesAccess['defaultACL']->setVisible(FALSE);
+      $this->attributesAccess['defaultACL']->setValue('');
+      $this->attributesAccess['fdGroupMailMembersAcl']->setDisabled(TRUE);
+      $this->attributesAccess['fdGroupMailMembersAcl']->setVisible(FALSE);
+      $this->attributesAccess['fdGroupMailMembersAcl']->setValue('');
+      $this->attributesAccess['specialACLs']->setDisabled(TRUE);
+      $this->attributesAccess['specialACLs']->setVisible(FALSE);
+      $this->attributesAccess['specialACLs']->setValue([]);
+    }
   }
 
-  function check (): array
+  public function check (): array
   {
+    if ($this->is_account) {
+      $this->attributesAccess['specialACLs']->attribute->attributes[0]->setChoices($this->getMemberEmailList());
+    }
+
     $messages = parent::check();
 
     if (!$this->is_template && is_object($this->mailMethod)) {
@@ -182,6 +267,62 @@ class mailGroup extends simplePlugin
   {
     /* mail method might have something to save (like password change from main tab for instance) */
     return TRUE;
+  }
+
+  protected function getMemberEmailList (): array
+  {
+    global $config;
+
+    $mainTab = $this->parent->getBaseObject();
+    $newmembers = [];
+    if (isset($mainTab->member)) {
+      $ldap = $config->get_ldap_link();
+      $dns  = $mainTab->member;
+      foreach ($dns as $dn) {
+        $ldap->cat($dn);
+        $attrs = $ldap->fetch();
+        if (isset($attrs['mail'][0])) {
+          $newmembers[] = $attrs['mail'][0];
+        }
+      }
+    } elseif (isset($mainTab->memberUid)) {
+      $ldap = $config->get_ldap_link();
+      $ldap->cd($config->current['BASE']);
+      $uids = $mainTab->memberUid;
+      foreach ($uids as $uid) {
+        $ldap->search('(&(objectClass=inetOrgPerson)(uid='.$uid.'))');
+        if ($ldap->count() > 1) {
+          msg_dialog::display(
+            _('Error'),
+            sprintf(_('Several users have uid "%s". Ignoring this member.'), $uid),
+            ERROR_DIALOG
+          );
+        } elseif ($ldap->count() == 1) {
+          $attrs = $ldap->fetch();
+          if (isset($attrs['mail'][0])) {
+            $newmembers[] = $attrs['mail'][0];
+          }
+        }
+      }
+    }
+
+    return $newmembers;
+  }
+
+  public function execute (): string
+  {
+    if ($this->is_account) {
+      $this->attributesAccess['specialACLs']->attribute->attributes[0]->setChoices($this->getMemberEmailList());
+    }
+    return parent::execute();
+  }
+
+  public function save_object ()
+  {
+    if ($this->is_account) {
+      $this->attributesAccess['specialACLs']->attribute->attributes[0]->setChoices($this->getMemberEmailList());
+    }
+    parent::save_object();
   }
 
   public function ldap_save (): array
@@ -203,6 +344,22 @@ class mailGroup extends simplePlugin
       } else {
         if (!$this->mailMethod->updateMailbox()) {
           $errors[] = sprintf(_('Cannot update mailbox: %s'), $this->mailMethod->get_error());
+        }
+        if ($this->mailMethod->groupAclsEnabled()) {
+          $acls = [
+            'anyone' => $this->defaultACL
+          ];
+
+          foreach ($this->getMemberEmailList() as $member) {
+            $acls[$member] = $this->fdGroupMailMembersAcl;
+          }
+
+          foreach ($this->specialACLs as $specialACL) {
+            list($email, $acl) = explode('|', $specialACL, 2);
+            $acls[$email] = $acl;
+          }
+
+          $this->mailMethod->setFolderACLs($acls);
         }
       }
     }
