@@ -414,7 +414,7 @@ class mailMethodCyrus extends mailMethod
     $this->build_account_id();
     $acls = imap_getacl($this->imap_handle, $this->account_id);
 
-    foreach ($acls as $user => &$acl) {
+    foreach ($acls as &$acl) {
       $acl = $this->expandAndSortACL($acl);
       if (!isset($this->acl_mapping[$acl])) {
         /* Merge given ACL with acl mapping
