@@ -1,0 +1,30 @@
+##
+## mailrouting.schema - Needed by FusionDirectory for storing mailroutine attributes
+##
+## Benoit Mortier <benoit.mortier@fusiondirectory.org>
+##
+## 24/09/2019
+##
+
+# Attributes
+attributetype ( 2.16.840.1.113730.3.1.13 NAME 'mailLocalAddress'
+ DESC 'RFC 822 email address of this recipient'
+ EQUALITY caseIgnoreIA5Match
+ SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256} )
+
+attributetype ( 2.16.840.1.113730.3.1.18 NAME 'mailHost'
+ DESC 'FQDN of the MTA that is the final SMTP destination of messages to this recipient'
+ EQUALITY caseIgnoreIA5Match
+ SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256}
+ SINGLE-VALUE )
+
+attributetype ( 2.16.840.1.113730.3.1.47 NAME 'mailRoutingAddress'
+ DESC 'RFC 822 routing address of this recipient'
+ EQUALITY caseIgnoreIA5Match
+ SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256}
+ SINGLE-VALUE )
+
+# Object Class
+objectclass ( 2.16.840.1.113730.3.2.147 NAME 'inetLocalMailRecipient'  SUP top AUXILIARY
+ DESC 'Internet local mail recipient'
+ MAY ( mailLocalAddress $ mailHost $ mailRoutingAddress ) )
