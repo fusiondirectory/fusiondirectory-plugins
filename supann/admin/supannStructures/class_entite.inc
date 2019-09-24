@@ -36,7 +36,7 @@ class entite extends simplePlugin
       ]],
       'plSearchAttrs' => ['description', 'supannCodeEntiteParent'],
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo(), TRUE)
     ];
   }
 

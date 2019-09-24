@@ -37,7 +37,7 @@ class etablissement extends simplePlugin
       ]],
       'plSearchAttrs' => ['description', 'supannEtablissement', 'eduOrgLegalName'],
 
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo(), TRUE)
     ];
   }
 
