@@ -48,6 +48,17 @@ class sinapsDiffusionHandlerJob
     $this->userTemplate               = $config->get_cfg_value('SinapsUserTemplate');
     $this->identifiantApplicationSync = $config->get_cfg_value('SinapsIdentifiantApplicationSync', []);
     $this->userRoles                  = $config->get_cfg_value('SinapsUserRole', ['PR', 'EXT/PRA']);
+
+    $this->userMapping = [];
+    foreach ($config->get_cfg_value('SinapsUserDiffusionMap', []) as $line) {
+      list($sinaps, $tab, $field) = explode('|', $line);
+      $this->userMapping[$sinaps] = [$tab,$field];
+    }
+    $this->structureMapping = [];
+    foreach ($config->get_cfg_value('SinapsStructureDiffusionMap', []) as $line) {
+      list($sinaps, $tab, $field) = explode('|', $line);
+      $this->structureMapping[$sinaps] = [$tab,$field];
+    }
   }
 
   function handleRequest ()
@@ -57,9 +68,9 @@ class sinapsDiffusionHandlerJob
     }
 
     if ($this->request->codeDomaine() == 'STRUCTURE') {
-      $this->handleStructureDiffusion($this->request->getSupannEntiteValues($this->identifiantApplication, $this->identifiantApplicationSync, $this->uuidPrefix, [$this, 'ldapUuidToCodeEntite']));
+      $this->handleStructureDiffusion($this->request->getSupannEntiteValues($this->identifiantApplication, $this->identifiantApplicationSync, $this->uuidPrefix, [$this, 'ldapUuidToCodeEntite'], $this->structureMapping));
     } elseif ($this->request->codeDomaine() == 'PERSONNE') {
-      $this->handlePersonneDiffusion($this->request->getUserValues($this->identifiantApplication, $this->identifiantApplicationSync, $this->uuidPrefix, [$this, 'ldapUuidToCodeEntite'], $this->userRoles));
+      $this->handlePersonneDiffusion($this->request->getUserValues($this->identifiantApplication, $this->identifiantApplicationSync, $this->uuidPrefix, [$this, 'ldapUuidToCodeEntite'], $this->userRoles, $this->userMapping));
     } else {
       throw new FusionDirectoryException('Invalid domain '.$this->request->codeDomaine());
     }
