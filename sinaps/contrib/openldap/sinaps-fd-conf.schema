@@ -106,6 +106,18 @@ attributetype ( 1.3.6.1.4.1.38414.65.1.16 NAME 'fdSinapsUserRole'
   SUBSTR caseExactSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
+attributetype ( 1.3.6.1.4.1.38414.65.1.17 NAME 'fdSinapsUserDiffusionMap'
+  DESC 'FusionDirectory - Which field to sync for users in diffusion'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.65.1.18 NAME 'fdSinapsStructureDiffusionMap'
+  DESC 'FusionDirectory - Which field to sync for structures in diffusion'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
 objectclass ( 1.3.6.1.4.1.38414.65.2.1 NAME 'fdSinapsPluginConf'
   DESC 'FusionDirectory sinaps plugin configuration'
   SUP top AUXILIARY
@@ -119,5 +131,6 @@ objectclass ( 1.3.6.1.4.1.38414.65.2.1 NAME 'fdSinapsPluginConf'
     fdSinapsDryRun $
     fdSinapsUserBase $ fdSinapsUserTemplate $
     fdSinapsIdentifiantApplicationSync $ fdSinapsAcquisitionTypeExterne $
-    fdSinapsAcquisitionContactMethodMap $ fdSinapsUserRole
+    fdSinapsAcquisitionContactMethodMap $ fdSinapsUserRole $
+    fdSinapsUserDiffusionMap $ fdSinapsStructureDiffusionMap
   ) )
