@@ -61,19 +61,24 @@ class sinapsConfig extends simplePlugin
             'fdSinapsIdentifiantApplication', TRUE,
             'FUSIONDIRECTORY'
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new StringAttribute(
+            _('UUID prefix'), _('Prefix used for UUID in supannRefId'),
+            'fdSinapsUuidPrefix', TRUE,
+            'LDAPUUID'
+          ),
+        )
+      ),
+      'diffusion' => array(
+        'name'  => _('Diffusion'),
+        'attrs' => array(
+          new SetAttribute(
+            new StringAttribute(
               _('Applications identifiers to sync'), _('List of applications identifiers for which cross references should be synced from SINAPS'),
               'fdSinapsIdentifiantApplicationSync', FALSE
             ),
             array('SAP')
           ),
-          new StringAttribute (
-            _('UUID prefix'), _('Prefix used for UUID in supannRefId'),
-            'fdSinapsUuidPrefix', TRUE,
-            'LDAPUUID'
-          ),
-          new StringAttribute (
+          new StringAttribute(
             _('User base'), _('Base in which users should be created when receiving a SINAPS diffusion'),
             'fdSinapsUserBase', TRUE,
             $config->current['BASE']
@@ -94,6 +99,70 @@ class sinapsConfig extends simplePlugin
               'fdSinapsUserRole', TRUE
             ),
             array('PR', 'EXT/PRA')
+          ),
+          new OrderedArrayAttribute(
+            new PipeSeparatedCompositeAttribute(
+              _('Which field to sync in diffusion'),
+              'fdSinapsUserDiffusionMap',
+              array(
+                new StringAttribute(
+                  '', _('Name of the Sinaps attribute'),
+                  'fdSinapsUserDiffusionMap_sinaps', TRUE
+                ),
+                new StringAttribute(
+                  '', _('Name of the FD tab'),
+                  'fdSinapsUserDiffusionMap_tab', TRUE
+                ),
+                new StringAttribute(
+                  '', _('Name of the FD field'),
+                  'fdSinapsUserDiffusionMap_field', TRUE
+                ),
+              ),
+              '',
+              _('User field mapping')
+            ),
+            // no order
+            FALSE,
+            array(
+              'civilite|supannAccount|supannCivilite',
+              'nomUsage|user|sn',
+              'dateNaissance|personalInfo|dateOfBirth',
+              'sexe|personalInfo|gender'
+            ),
+            TRUE
+          ),
+          new OrderedArrayAttribute(
+            new PipeSeparatedCompositeAttribute(
+              _('Which field to sync in diffusion'),
+              'fdSinapsStructureDiffusionMap',
+              array(
+                new StringAttribute(
+                  '', _('Name of the Sinaps attribute'),
+                  'fdSinapsStructureDiffusionMap_sinaps', TRUE
+                ),
+                new StringAttribute(
+                  '', _('Name of the FD tab'),
+                  'fdSinapsStructureDiffusionMap_tab', TRUE
+                ),
+                new StringAttribute(
+                  '', _('Name of the FD field'),
+                  'fdSinapsStructureDiffusionMap_field', TRUE
+                ),
+              ),
+              '',
+              _('Structure field mapping')
+            ),
+            // no order
+            FALSE,
+            array(
+              'libelle20|entite|ou',
+              'descriptifLong|entite|description',
+              'codeStructure|entite|supannCodeEntite',
+              'codeSousType|entite|supannTypeEntite',
+              'dateDebutValidite|supannStructureExt|fdSupannStartDate',
+              'dateFinValidite|supannStructureExt|fdSupannEndDate',
+            ),
+            TRUE
           ),
         )
       ),
@@ -151,11 +220,12 @@ class sinapsConfig extends simplePlugin
       $attributesInfo = $this->getAttributesInfo();
     }
     $userTemplates = objects::getTemplates('user');
-    $attributesInfo['main']['attrs'][7]->setChoices(array_keys($userTemplates), array_values($userTemplates));
+    $attributesInfo['diffusion']['attrs'][2]->setChoices(array_keys($userTemplates), array_values($userTemplates));
 
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
     $this->attributesAccess['fdSinapsAcquisitionContactMethodMap']->setHeaders(array(_('LDAP'), _('Sinaps')));
+    $this->attributesAccess['fdSinapsUserDiffusionMap']->setHeaders(array(_('Sinaps'), _('Tab'), _('Field')));
+    $this->attributesAccess['fdSinapsStructureDiffusionMap']->setHeaders(array(_('Sinaps'), _('Tab'), _('Field')));
   }
 }
-?>

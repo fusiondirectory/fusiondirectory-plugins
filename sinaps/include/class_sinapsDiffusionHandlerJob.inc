@@ -48,6 +48,17 @@ class sinapsDiffusionHandlerJob
     $this->userTemplate               = $config->get_cfg_value('SinapsUserTemplate');
     $this->identifiantApplicationSync = $config->get_cfg_value('SinapsIdentifiantApplicationSync', array());
     $this->userRoles                  = $config->get_cfg_value('SinapsUserRole', array('PR', 'EXT/PRA'));
+
+    $this->userMapping = array();
+    foreach ($config->get_cfg_value('SinapsUserDiffusionMap', array()) as $line) {
+      list($sinaps, $tab, $field) = explode('|', $line);
+      $this->userMapping[$sinaps] = array($tab,$field);
+    }
+    $this->structureMapping = array();
+    foreach ($config->get_cfg_value('SinapsStructureDiffusionMap', array()) as $line) {
+      list($sinaps, $tab, $field) = explode('|', $line);
+      $this->structureMapping[$sinaps] = array($tab,$field);
+    }
   }
 
   function handleRequest()
@@ -57,9 +68,9 @@ class sinapsDiffusionHandlerJob
     }
 
     if ($this->request->codeDomaine() == 'STRUCTURE') {
-      $this->handleStructureDiffusion($this->request->getSupannEntiteValues($this->identifiantApplication, $this->identifiantApplicationSync, $this->uuidPrefix, array($this, 'ldapUuidToCodeEntite')));
+      $this->handleStructureDiffusion($this->request->getSupannEntiteValues($this->identifiantApplication, $this->identifiantApplicationSync, $this->uuidPrefix, array($this, 'ldapUuidToCodeEntite'), $this->structureMapping));
     } elseif ($this->request->codeDomaine() == 'PERSONNE') {
-      $this->handlePersonneDiffusion($this->request->getUserValues($this->identifiantApplication, $this->identifiantApplicationSync, $this->uuidPrefix, array($this, 'ldapUuidToCodeEntite'), $this->userRoles));
+      $this->handlePersonneDiffusion($this->request->getUserValues($this->identifiantApplication, $this->identifiantApplicationSync, $this->uuidPrefix, array($this, 'ldapUuidToCodeEntite'), $this->userRoles, $this->userMapping));
     } else {
       throw new FusionDirectoryException('Invalid domain '.$this->request->codeDomaine());
     }

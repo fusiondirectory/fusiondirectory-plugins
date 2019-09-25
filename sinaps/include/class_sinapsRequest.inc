@@ -115,19 +115,10 @@ class sinapsRequest
     return $xml->asXML();
   }
 
-  public function getSupannEntiteValues($identifiantApplication, $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback)
+  public function getSupannEntiteValues($identifiantApplication, $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback, array $mapping)
   {
     $structure  = $this->getOperationStructure();
     $now        = new DateTime();
-
-    $mapping = array(
-      'libelle20'         => array('entite','ou'),
-      'descriptifLong'    => array('entite','description'),
-      'codeStructure'     => array('entite','supannCodeEntite'),
-      'codeSousType'      => array('entite','supannTypeEntite'),
-      'dateDebutValidite' => array('supannStructureExt','fdSupannStartDate'),
-      'dateFinValidite'   => array('supannStructureExt','fdSupannEndDate'),
-    );
     $values = array(
       'entite' => array(
         'supannRefId'               => array(),
@@ -203,16 +194,10 @@ class sinapsRequest
     return $values;
   }
 
-  public function getUserValues($identifiantApplication, array $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback, array $userRoles)
+  public function getUserValues($identifiantApplication, array $identifiantApplicationSync, $uuidPrefix, $ldapUuidToCodeEntiteCallback, array $userRoles, array $mapping)
   {
     $personne   = $this->getOperationPersonne();
     $now        = new DateTime();
-    $mapping = array(
-      'civilite'        => array('supannAccount','supannCivilite'),
-      'nomUsage'        => array('user','sn'),
-      'dateNaissance'   => array('personalInfo','dateOfBirth'),
-      'sexe'            => array('personalInfo','gender'),
-    );
     $values = array(
       'lock'          => FALSE,
       'user'          => array(
