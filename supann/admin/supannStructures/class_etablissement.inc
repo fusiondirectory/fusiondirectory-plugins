@@ -86,10 +86,12 @@ class etablissement extends simplePlugin
       'supann' => [
         'name'  => _('SupAnn properties'),
         'attrs' => [
-          new StringAttribute(
-            _('Establishment code'), _('The code of this establishment (must have a prefix between {})'),
-            'supannEtablissement', TRUE,
-            '', '', '/^{[^}]+}.*$/'
+          new SetAttribute(
+            new StringAttribute(
+              _('Establishment code'), _('The code of this establishment (must have a prefix between {})'),
+              'supannEtablissement', TRUE,
+              '', '', '/^{[^}]+}.*$/'
+            )
           ),
           new SupannPrefixedSelectAttribute(
             _('Establishment type'), _('The SupAnn type that best fits this Establishment'),
@@ -154,8 +156,8 @@ class etablissement extends simplePlugin
 
     $root_code = $this->get_root_code();
     $this->attributesAccess['set_root']->setInLdap(FALSE);
-    $this->attributesAccess['set_root']->setDisabled(($root_code !== FALSE) && ($root_code != $this->supannEtablissement));
-    $this->set_root = (($root_code !== FALSE) && ($root_code == $this->supannEtablissement));
+    $this->attributesAccess['set_root']->setDisabled(($root_code !== FALSE) && !in_array($root_code, $this->supannEtablissement));
+    $this->set_root = (($root_code !== FALSE) && in_array($root_code, $this->supannEtablissement));
     $this->attributesAccess['set_root']->setInitialValue($this->set_root);
   }
 
@@ -175,7 +177,7 @@ class etablissement extends simplePlugin
 
     /* If we're the root etablissement, delete it too */
     $root_code = $this->get_root_code();
-    if (($root_code !== FALSE) && ($root_code == $this->supannEtablissement)) {
+    if (($root_code !== FALSE) && in_array($root_code, $this->supannEtablissement)) {
       $dn   = 'o='.$this->o.','.$config->current['BASE'];
       $ldap = $config->get_ldap_link();
       $ldap->rmdir($dn);

@@ -516,9 +516,11 @@ class supannAccount extends simplePlugin
         } else {
           $label_entites[] = $attrs['o'][0].$description;
         }
-        if (isset($attrs['supannEtablissement'][0])) {
-          $code_etablissements[]  = $attrs['supannEtablissement'][0];
-          $label_etablissements[] = $attrs['o'][0].' ('.$attrs['supannEtablissement'][0].')';
+        if (isset($attrs['supannEtablissement'])) {
+          for ($i = 0; $i < $attrs['supannEtablissement']['count']; $i++) {
+            $code_etablissements[]  = $attrs['supannEtablissement'][$i];
+            $label_etablissements[] = $attrs['o'][0].' ('.$attrs['supannEtablissement'][$i].')';
+          }
         }
       }
     }
