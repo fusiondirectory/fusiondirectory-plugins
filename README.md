@@ -41,7 +41,13 @@ This question can be solved by creating:
 
 ## Get help
 
+### Community support
+
 There are a couple ways you can try [to get help][get help].You can also join the `#fusiondirectory` IRC channel at freenode.net.
+
+### Professional support
+
+If you need professional support you can [get support][get support] and chose one of the options available. 
 
 You can [register on our system][register] and enter issues [FusionDirectory][issues-core] for the core program, and 
 [FusionDirectory Plugins][issues-plugins] for plugins.
@@ -66,7 +72,9 @@ If you like [FusionDirectory][FusionDirectory] and would like to [donate][donate
 
 [FusionDirectory]: https://www.fusiondirectory.org/
 
-[get help]: https://www.fusiondirectory.org/contact-us/
+[get help]: https://www.fusiondirectory.org/en/communaute/
+
+[get support]: https://www.fusiondirectory.org/en/support/
 
 [register]: https://register.fusiondirectory.org
 
