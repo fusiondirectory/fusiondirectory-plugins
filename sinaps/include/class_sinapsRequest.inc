@@ -145,11 +145,13 @@ class sinapsRequest
 
     array_unshift($values['entite']['supannRefId'], '{'.$uuidPrefix.'}'.$uuid);
 
-    foreach ($mapping as $sinapsAttr => list($fdTab,$fdAttr)) {
-      if (isset($structure->$sinapsAttr)) {
-        $values[$fdTab][$fdAttr] = (string)$structure->$sinapsAttr;
-      } else {
+    foreach ($mapping as $xpath => list($fdTab, $fdAttr)) {
+      $nodes = $structure->xpath($xpath);
+      if (empty($nodes)) {
         $values[$fdTab][$fdAttr] = '';
+      } else {
+        /* Note: We only support monovalued attributes through custom mapping for now */
+        $values[$fdTab][$fdAttr] = (string)$nodes[0];
       }
     }
 
@@ -294,11 +296,13 @@ class sinapsRequest
       return $values;
     }
 
-    foreach ($mapping as $sinapsAttr => list($fdTab,$fdAttr)) {
-      if (isset($personne->$sinapsAttr)) {
-        $values[$fdTab][$fdAttr] = (string)$personne->$sinapsAttr;
-      } else {
+    foreach ($mapping as $xpath => list($fdTab, $fdAttr)) {
+      $nodes = $personne->xpath($xpath);
+      if (empty($nodes)) {
         $values[$fdTab][$fdAttr] = '';
+      } else {
+        /* Note: We only support monovalued attributes through custom mapping for now */
+        $values[$fdTab][$fdAttr] = (string)$nodes[0];
       }
     }
 
