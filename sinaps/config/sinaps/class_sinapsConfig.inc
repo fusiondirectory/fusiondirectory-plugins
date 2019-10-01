@@ -107,7 +107,7 @@ class sinapsConfig extends simplePlugin
               'fdSinapsUserDiffusionMap',
               [
                 new StringAttribute(
-                  '', _('Name of the Sinaps attribute'),
+                  '', _('XPath for the XML value to fetch'),
                   'fdSinapsUserDiffusionMap_sinaps', TRUE
                 ),
                 new StringAttribute(
@@ -138,7 +138,7 @@ class sinapsConfig extends simplePlugin
               'fdSinapsStructureDiffusionMap',
               [
                 new StringAttribute(
-                  '', _('Name of the Sinaps attribute'),
+                  '', _('XPath for the XML value to fetch'),
                   'fdSinapsStructureDiffusionMap_sinaps', TRUE
                 ),
                 new StringAttribute(
@@ -226,7 +226,7 @@ class sinapsConfig extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
     $this->attributesAccess['fdSinapsAcquisitionContactMethodMap']->setHeaders([_('LDAP'), _('Sinaps')]);
-    $this->attributesAccess['fdSinapsUserDiffusionMap']->setHeaders([_('Sinaps'), _('Tab'), _('Field')]);
-    $this->attributesAccess['fdSinapsStructureDiffusionMap']->setHeaders([_('Sinaps'), _('Tab'), _('Field')]);
+    $this->attributesAccess['fdSinapsUserDiffusionMap']->setHeaders([_('XPath'), _('Tab'), _('Field')]);
+    $this->attributesAccess['fdSinapsStructureDiffusionMap']->setHeaders([_('XPath'), _('Tab'), _('Field')]);
   }
 }
