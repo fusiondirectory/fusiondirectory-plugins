@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-21 14:04+0000\n"
+"POT-Creation-Date: 2019-10-01 16:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:58+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -34,60 +34,60 @@ msgstr ""
 msgid "Manage NIS Netgroups"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:48
+#: admin/netgroups/class_netgroup.inc:28
 #: config/netgroups/class_netgroupConfig.inc:40
 msgid "Netgroup"
 msgstr "넷그룹"
 
-#: admin/netgroups/class_netgroup.inc:49
+#: admin/netgroups/class_netgroup.inc:29
 msgid "NIS Netgroup settings"
 msgstr "NIS 넷그룹 설정"
 
-#: admin/netgroups/class_netgroup.inc:52
+#: admin/netgroups/class_netgroup.inc:32
 #: admin/systems/netgroups/class_netgroupSystem.inc:29
-#: personal/netgroups/class_netgroupMembership.inc:43
+#: personal/netgroups/class_netgroupMembership.inc:33
 msgid "NIS Netgroup"
 msgstr "NIS 넷그룹"
 
-#: admin/netgroups/class_netgroup.inc:66
+#: admin/netgroups/class_netgroup.inc:46
 msgid "Information"
 msgstr "정보"
 
-#: admin/netgroups/class_netgroup.inc:69
+#: admin/netgroups/class_netgroup.inc:50
 msgid "Name"
 msgstr "명칭"
 
-#: admin/netgroups/class_netgroup.inc:69
+#: admin/netgroups/class_netgroup.inc:50
 msgid "Name of this NIS netgroup"
 msgstr "NIS netgroup의 이름"
 
-#: admin/netgroups/class_netgroup.inc:72
+#: admin/netgroups/class_netgroup.inc:53
 msgid "Description"
 msgstr "설명"
 
-#: admin/netgroups/class_netgroup.inc:72
+#: admin/netgroups/class_netgroup.inc:53
 msgid "Description of this NIS netgroup"
 msgstr "NIS netgroup에 대한 설명"
 
-#: admin/netgroups/class_netgroup.inc:78
+#: admin/netgroups/class_netgroup.inc:58
 msgid "User members"
 msgstr "사용자 멤버"
 
-#: admin/netgroups/class_netgroup.inc:85 admin/netgroups/class_netgroup.inc:94
-#: admin/netgroups/class_netgroup.inc:101
+#: admin/netgroups/class_netgroup.inc:63 admin/netgroups/class_netgroup.inc:76
+#: admin/netgroups/class_netgroup.inc:84
 msgid "NIS netgroup members"
 msgstr "NIS netgroup 멤버"
 
-#: admin/netgroups/class_netgroup.inc:91
+#: admin/netgroups/class_netgroup.inc:73
 msgid "System members"
 msgstr "시스템 멤버"
 
-#: admin/netgroups/class_netgroup.inc:98
+#: admin/netgroups/class_netgroup.inc:80
 msgid "Netgroup members"
 msgstr "Netgroup 멤버"
 
 #: admin/systems/netgroups/class_netgroupSystem.inc:30
-#: personal/netgroups/class_netgroupMembership.inc:44
+#: personal/netgroups/class_netgroupMembership.inc:34
 msgid "NIS Netgroup member"
 msgstr "NIS Netgroup 멤버"
 
@@ -107,10 +107,10 @@ msgstr "Netgroup RDN"
 msgid "Branch in which netgroups will be stored"
 msgstr "넷 그룹을 저장할 브랜치"
 
-#: personal/netgroups/class_netgroupMembership.inc:60
+#: personal/netgroups/class_netgroupMembership.inc:50
 msgid "Member of the following NIS Netgroups  "
 msgstr "다음의 NIS Netgroups 멤버"
 
-#: personal/netgroups/class_netgroupMembership.inc:63
+#: personal/netgroups/class_netgroupMembership.inc:54
 msgid "NIS netgroup membership"
 msgstr "NIS netgroup 멤버쉽"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-21 14:04+0000\n"
+"POT-Creation-Date: 2019-10-01 16:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Language-Team: Uighur (https://www.transifex.com/fusiondirectory/teams/12202/ug/)\n"
 "MIME-Version: 1.0\n"
@@ -29,14 +29,14 @@ msgstr ""
 #: admin/fai/class_faiProfile.inc:46 admin/fai/class_faiPackage.inc:395
 #: admin/fai/class_faiHook.inc:47 admin/fai/class_faiTemplate.inc:165
 #: admin/fai/class_faiTemplateEntry.inc:139
-#: admin/fai/class_faiPartitionTable.inc:342
+#: admin/fai/class_faiPartitionTable.inc:338
 msgid "Properties"
 msgstr ""
 
 #: admin/fai/class_faiVariable.inc:50 admin/fai/class_faiScript.inc:50
 #: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPackage.inc:398
 #: admin/fai/class_faiHook.inc:50 admin/fai/class_faiTemplate.inc:168
-#: admin/fai/class_faiPartitionTable.inc:345
+#: admin/fai/class_faiPartitionTable.inc:341
 msgid "Class name"
 msgstr ""
 
@@ -52,14 +52,14 @@ msgstr ""
 #: admin/fai/class_faiHook.inc:54 admin/fai/class_faiHook.inc:72
 #: admin/fai/class_faiTemplate.inc:172
 #: admin/fai/class_faiTemplateEntry.inc:146
-#: admin/fai/class_faiPartitionTable.inc:349
+#: admin/fai/class_faiPartitionTable.inc:345
 msgid "Description"
 msgstr ""
 
 #: admin/fai/class_faiVariable.inc:54 admin/fai/class_faiScript.inc:54
 #: admin/fai/class_faiProfile.inc:53 admin/fai/class_faiPackage.inc:402
 #: admin/fai/class_faiHook.inc:54 admin/fai/class_faiTemplate.inc:172
-#: admin/fai/class_faiPartitionTable.inc:349
+#: admin/fai/class_faiPartitionTable.inc:345
 msgid "Short description of the class"
 msgstr ""
 
@@ -180,7 +180,7 @@ msgid "Physical partitions combined in this LVM volume"
 msgstr ""
 
 #: admin/fai/class_faiDiskEntry.inc:281
-#: admin/fai/class_faiPartitionTable.inc:362
+#: admin/fai/class_faiPartitionTable.inc:358
 msgid "Partitions in this class"
 msgstr ""
 
@@ -533,7 +533,7 @@ msgstr ""
 msgid "FAI Profile"
 msgstr ""
 
-#: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPartitionTable.inc:345
+#: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPartitionTable.inc:341
 msgid "Partition table class name"
 msgstr ""
 
@@ -585,8 +585,8 @@ msgid "Edit configuration"
 msgstr ""
 
 #: admin/fai/class_faiPackage.inc:251 admin/fai/class_faiTemplate.inc:109
-#: admin/fai/class_faiPartitionTable.inc:251
-#: admin/fai/class_faiPartitionTable.inc:292
+#: admin/fai/class_faiPartitionTable.inc:247
+#: admin/fai/class_faiPartitionTable.inc:288
 #: admin/systems/services/repository/class_serviceRepository.inc:240
 #: admin/systems/services/repository/class_serviceRepository.inc:257
 #: admin/systems/services/repository/class_serviceRepository.inc:261
@@ -605,11 +605,11 @@ msgstr ""
 msgid "FAI Package"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:408 admin/systems/class_faiStartup.inc:100
+#: admin/fai/class_faiPackage.inc:408 admin/systems/class_faiStartup.inc:101
 msgid "Repository"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:411 admin/systems/class_faiStartup.inc:88
+#: admin/fai/class_faiPackage.inc:411 admin/systems/class_faiStartup.inc:89
 #: admin/systems/services/repository/class_serviceRepository.inc:40
 msgid "Release"
 msgstr ""
@@ -692,21 +692,21 @@ msgstr ""
 msgid "Template files in this class"
 msgstr ""
 
-#: admin/fai/class_faiManagement.inc:117 admin/fai/class_faiManagement.inc:122
+#: admin/fai/class_faiManagement.inc:27 admin/fai/class_faiManagement.inc:34
 #: admin/systems/class_faiStartup.inc:61 config/fai/class_faiConfig.inc:27
 #: config/fai/class_faiConfig.inc:42
 msgid "FAI"
 msgstr ""
 
-#: admin/fai/class_faiManagement.inc:118
+#: admin/fai/class_faiManagement.inc:28
 msgid "Manage FAI software packages and deployment recipes"
 msgstr ""
 
-#: admin/fai/class_faiManagement.inc:138
+#: admin/fai/class_faiManagement.inc:62
 msgid "There are no FAI branches"
 msgstr ""
 
-#: admin/fai/class_faiManagement.inc:141
+#: admin/fai/class_faiManagement.inc:65
 msgid " Please add at least one repository service to create those."
 msgstr ""
 
@@ -762,32 +762,32 @@ msgstr ""
 msgid "Access rights"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:109
+#: admin/fai/class_faiPartitionTable.inc:105
 msgid "Add disk"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:119
+#: admin/fai/class_faiPartitionTable.inc:115
 msgid "Add RAID"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:130
+#: admin/fai/class_faiPartitionTable.inc:126
 msgid "Add LVM"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:141
+#: admin/fai/class_faiPartitionTable.inc:137
 msgid "Add cryptsetup"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:321
+#: admin/fai/class_faiPartitionTable.inc:317
 msgid "Partition table"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:322
-#: admin/fai/class_faiPartitionTable.inc:327
+#: admin/fai/class_faiPartitionTable.inc:318
+#: admin/fai/class_faiPartitionTable.inc:323
 msgid "FAI partition table"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:355
+#: admin/fai/class_faiPartitionTable.inc:351
 msgid "Discs"
 msgstr ""
 
@@ -841,27 +841,27 @@ msgstr ""
 msgid "Full automated installation"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:80
+#: admin/systems/class_faiStartup.inc:81
 msgid "FAI settings"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:84
+#: admin/systems/class_faiStartup.inc:85
 msgid "FAI profil and release to be applied to this computer"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:88
+#: admin/systems/class_faiStartup.inc:89
 msgid "FAI debian release to be installed on this computer"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:92
+#: admin/systems/class_faiStartup.inc:93
 msgid "Profil"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:92
+#: admin/systems/class_faiStartup.inc:93
 msgid "FAI profil to be applied to this computer"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:100
+#: admin/systems/class_faiStartup.inc:101
 msgid "FAI Debian repository to be used for installation"
 msgstr ""
 

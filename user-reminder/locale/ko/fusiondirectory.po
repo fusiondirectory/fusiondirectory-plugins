@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-21 14:05+0000\n"
+"POT-Creation-Date: 2019-10-01 16:31+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -96,6 +96,7 @@ msgstr "관리자에게 정책경고 전달"
 #: config/user-reminder/class_userReminderConfig.inc:80
 #: config/user-reminder/class_userReminderConfig.inc:106
 #: config/user-reminder/class_userReminderConfig.inc:132
+#: config/user-reminder/class_userReminderConfig.inc:163
 msgid "Subject"
 msgstr "제목"
 
@@ -109,6 +110,7 @@ msgstr "[FustionDirectory] 패스워드가 만료 임박"
 
 #: config/user-reminder/class_userReminderConfig.inc:85
 #: config/user-reminder/class_userReminderConfig.inc:137
+#: config/user-reminder/class_userReminderConfig.inc:168
 #, php-format
 msgid "Body (%s are cn and login)"
 msgstr "내용(%s은 cn과 로그인)"
@@ -202,9 +204,55 @@ msgstr ""
 "%1$s님, \n"
 "%2$s 계정의 만료가 정상적으로연기되었습니다.\n"
 
+#: config/user-reminder/class_userReminderConfig.inc:150
+msgid "Expiration email settings"
+msgstr ""
+
+#: config/user-reminder/class_userReminderConfig.inc:153
+msgid "Send an email"
+msgstr ""
+
+#: config/user-reminder/class_userReminderConfig.inc:153
+msgid "Whether to send an email after expiration to inform the user"
+msgstr ""
+
+#: config/user-reminder/class_userReminderConfig.inc:158
+msgid "Forward to the manager"
+msgstr ""
+
+#: config/user-reminder/class_userReminderConfig.inc:158
+msgid "Forward account expiration to the manager"
+msgstr ""
+
+#: config/user-reminder/class_userReminderConfig.inc:163
+msgid "Subject of the expiration email"
+msgstr ""
+
+#: config/user-reminder/class_userReminderConfig.inc:165
+msgid "[FusionDirectory] Your account has expired"
+msgstr ""
+
+#: config/user-reminder/class_userReminderConfig.inc:169
+#, php-format
+msgid ""
+"Body of the expiration email, sent when the user has expired. Use %s for the"
+" cn and uid."
+msgstr ""
+
+#: config/user-reminder/class_userReminderConfig.inc:171
+#, php-format
+msgid ""
+"Dear %1$s,\n"
+" your account %2$s has expired.\n"
+msgstr ""
+
 #: html/class_expiredUserPostpone.inc:59
 msgid "This token is invalid"
 msgstr "토큰이 유효하지 않습니다."
+
+#: html/class_expiredUserPostpone.inc:62
+msgid "Token is missing from URL"
+msgstr ""
 
 #: html/class_expiredUserPostpone.inc:230
 msgid "Contact your administrator, there was a problem with mail server"

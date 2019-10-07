@@ -6,15 +6,16 @@
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
 # Paola Penati <paola.penati@opensides.be>, 2019
+# Paola PENATI <paola.penati@fusiondirectory.org>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-21 14:05+0000\n"
+"POT-Creation-Date: 2019-10-01 16:31+0000\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
-"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2019\n"
+"Last-Translator: Paola PENATI <paola.penati@fusiondirectory.org>, 2019\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,8 +36,8 @@ msgid "Manage password policies"
 msgstr "Gestire le politiche delle password"
 
 #: admin/ppolicy/class_ppolicy.inc:27 admin/ppolicy/class_ppolicy.inc:31
-#: personal/ppolicy/class_ppolicyAccount.inc:27
-#: personal/ppolicy/class_ppolicyAccount.inc:42
+#: personal/ppolicy/class_ppolicyAccount.inc:28
+#: personal/ppolicy/class_ppolicyAccount.inc:43
 msgid "Password policy"
 msgstr "Regola per la password"
 
@@ -45,7 +46,7 @@ msgid "Password policy for ppolicy overlay"
 msgstr "Regole per la password"
 
 #: admin/ppolicy/class_ppolicy.inc:47
-#: personal/ppolicy/class_ppolicyAccount.inc:45
+#: personal/ppolicy/class_ppolicyAccount.inc:46
 msgid "Policy"
 msgstr "Regola"
 
@@ -237,10 +238,24 @@ msgstr ""
 "azzerato anche se non ha subito alcuna autenticazione"
 
 #: admin/ppolicy/class_ppolicy.inc:136
+msgid "Stored failures"
+msgstr "Guasti memorizzati"
+
+#: admin/ppolicy/class_ppolicy.inc:136
+msgid ""
+"Maximum number of failed bind attempts to store in a user's entry. If not "
+"present, or its value is 0, then it defaults to the value of \"Maximum "
+"failures\". If that value is also 0, the default is 5."
+msgstr ""
+"Numero massimo di tentativi di bind non riusciti da memorizzare nella voce "
+"di un utente. Se non presente, o il suo valore è 0, il valore predefinito è "
+"\"Errori massimi\". Se anche quel valore è 0, il valore predefinito è 5."
+
+#: admin/ppolicy/class_ppolicy.inc:141
 msgid "Must change"
 msgstr "Permesso di cambiare"
 
-#: admin/ppolicy/class_ppolicy.inc:136
+#: admin/ppolicy/class_ppolicy.inc:141
 msgid ""
 "Whether the user must change their password after an account is reset by an "
 "administrator following an automatic lockout"
@@ -331,61 +346,61 @@ msgstr ""
 "La ppolicy  \"%s\" impostata per l'utente  \"%s\"  non é stata trovata "
 "nell'LDAP!"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:28
+#: personal/ppolicy/class_ppolicyAccount.inc:29
 msgid "Edit user's password policy"
 msgstr "Modifica la politica del cambio password per l'utente"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:45
+#: personal/ppolicy/class_ppolicyAccount.inc:46
 msgid "Use a specific policy for this user"
 msgstr "Usa una politica specifica per questo utente"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:49
+#: personal/ppolicy/class_ppolicyAccount.inc:50
 msgid "Last password change"
 msgstr "Ultima modifica della password"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:49
+#: personal/ppolicy/class_ppolicyAccount.inc:50
 msgid "Last time the password for the entry was changed"
 msgstr "L'ultima volta in cui la password per le voci é stata cambiata"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:53
+#: personal/ppolicy/class_ppolicyAccount.inc:54
 msgid "Account locked time"
 msgstr "Tempo di blocco dell'account"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:53
+#: personal/ppolicy/class_ppolicyAccount.inc:54
 msgid "Time the account was locked"
 msgstr "Data del blocco dell'account"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:57
+#: personal/ppolicy/class_ppolicyAccount.inc:58
 msgid "Reset locking / force change"
 msgstr "Ripristino di bloccaggio / forza le modifiche"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:57
+#: personal/ppolicy/class_ppolicyAccount.inc:58
 msgid "Resets the lock status of this account and/or force a password change"
 msgstr ""
 "Ripristina lo stato di blocco del conto e/o imponi una modifica della "
 "password"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:60
+#: personal/ppolicy/class_ppolicyAccount.inc:61
 msgid "Force password change (resets locking)"
 msgstr "Forza la modifica della password (ripristina bloccaggio)"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:60
+#: personal/ppolicy/class_ppolicyAccount.inc:61
 msgid "Reset locking (same password)"
 msgstr "Ripristino di bloccaggio (stessa password)"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:75
+#: personal/ppolicy/class_ppolicyAccount.inc:76
 msgid "Use the default"
 msgstr "Usa il default"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:81
+#: personal/ppolicy/class_ppolicyAccount.inc:82
 msgid "Never"
 msgstr "Mai"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:88
+#: personal/ppolicy/class_ppolicyAccount.inc:89
 msgid "Unlocked"
 msgstr "Sbloccato"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:90
+#: personal/ppolicy/class_ppolicyAccount.inc:91
 msgid "Locked permanently"
 msgstr "Bloccato in modo permanente"
 

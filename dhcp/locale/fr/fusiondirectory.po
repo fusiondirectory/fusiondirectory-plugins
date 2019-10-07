@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2018
-# Benoit Mortier <benoit.mortier@opensides.be>, 2019
+# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019
+# fusiondirectory <contact@fusiondirectory.org>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-21 14:04+0000\n"
+"POT-Creation-Date: 2019-10-01 16:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:52+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2019\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2019\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:38
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:38
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:38
-#: admin/systems/class_dhcpSystem.inc:290 config/dhcp/class_dhcpConfig.inc:41
+#: admin/systems/class_dhcpSystem.inc:291 config/dhcp/class_dhcpConfig.inc:41
 msgid "DHCP"
 msgstr "DHCP"
 
@@ -34,7 +34,7 @@ msgstr "DHCP"
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:41
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:41
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:41
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:245
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:257
 msgid "Name"
 msgstr "Nom"
 
@@ -119,8 +119,8 @@ msgid "Logging"
 msgstr "Journaux systèmes"
 
 #: admin/dhcp/class_dhcpConfiguration.inc:92
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:365
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:405
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:377
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:417
 msgid "Global options"
 msgstr "Options globales"
 
@@ -464,32 +464,46 @@ msgstr "Clé Tsig"
 msgid "The TSig key DN"
 msgstr "Le DN de la clef Tsig"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:36
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:33
+msgid "Object"
+msgstr "Objet"
+
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:34
+#: admin/systems/class_dhcpSystem.inc:57
+msgid "IP"
+msgstr "IP"
+
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:35
+#: admin/systems/class_dhcpSystem.inc:56
+msgid "Mac"
+msgstr "Mac"
+
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:47
 msgid "Expand DHCP subnet"
 msgstr "Déplier le sous-réseau DHCP"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:37
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:48
 msgid "Expand"
 msgstr "Déplier"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:46
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:57
 msgid "Fold DHCP subnet"
 msgstr "Replier le sous-réseau DHCP"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:47
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:58
 msgid "Fold"
 msgstr "Replier"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:110
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:111
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:122
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:123
 msgid "Insert new DHCP section"
 msgstr "Insérer une nouvelle section DHCP"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:420
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:432
 msgid "Error"
 msgstr "Erreur"
 
-#: admin/dhcp/class_DhcpSectionsAttribute.inc:420
+#: admin/dhcp/class_DhcpSectionsAttribute.inc:432
 msgid ""
 "The DHCP configuration set is unkown. Please contact your system "
 "administrator."
@@ -516,12 +530,12 @@ msgstr ""
 "ajouté"
 
 #: admin/systems/class_dhcpSystem.inc:37
-#: admin/systems/class_dhcpSystem.inc:116
+#: admin/systems/class_dhcpSystem.inc:117
 msgid "The Mac address to use in the DHCP host record"
 msgstr "L'adresse Mac à utiliser dans l'enregistrement d'hôte DHCP"
 
 #: admin/systems/class_dhcpSystem.inc:41
-#: admin/systems/class_dhcpSystem.inc:121
+#: admin/systems/class_dhcpSystem.inc:122
 msgid "The IP address to use in the DHCP host record"
 msgstr "L'adresse IP à utiliser dans l'enregistrement d'hôte DHCP"
 
@@ -529,15 +543,7 @@ msgstr "L'adresse IP à utiliser dans l'enregistrement d'hôte DHCP"
 msgid "Parent"
 msgstr "Parent"
 
-#: admin/systems/class_dhcpSystem.inc:56
-msgid "Mac"
-msgstr "Mac"
-
-#: admin/systems/class_dhcpSystem.inc:57
-msgid "IP"
-msgstr "IP"
-
-#: admin/systems/class_dhcpSystem.inc:234
+#: admin/systems/class_dhcpSystem.inc:235
 #, php-format
 msgid ""
 "\"%s\" is locked (by \"%s\" since %s), could not save modifications to this "
@@ -546,24 +552,24 @@ msgstr ""
 "\"%s\" est verrouillé (par \"%s\" depuis %s), impossible d'enregistrer les "
 "modifications apportées à cette configuration DHCP"
 
-#: admin/systems/class_dhcpSystem.inc:257
+#: admin/systems/class_dhcpSystem.inc:258
 #, php-format
 msgid "The value for multivaluated field \"%s\" is not an array"
 msgstr "La valeur du champ multivalué \"%s\" n'est pas un tableau"
 
-#: admin/systems/class_dhcpSystem.inc:291
+#: admin/systems/class_dhcpSystem.inc:292
 msgid "Edit the DHCP zones of a system"
 msgstr "Éditer les zones DHCP d'un système"
 
-#: admin/systems/class_dhcpSystem.inc:305
+#: admin/systems/class_dhcpSystem.inc:306
 msgid "DHCP zones"
 msgstr "Zones DHCP"
 
-#: admin/systems/class_dhcpSystem.inc:309
+#: admin/systems/class_dhcpSystem.inc:310
 msgid "DHCP hosts declared for this system"
 msgstr "Hôtes DHCP déclarés pour ce système"
 
-#: admin/systems/class_dhcpSystem.inc:373
+#: admin/systems/class_dhcpSystem.inc:374
 #, php-format
 msgid "The ip %s is not in the network %s/%d"
 msgstr "L'IP %s n'est pas dans le réseau %s/%d"

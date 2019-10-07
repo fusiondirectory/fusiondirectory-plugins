@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-21 14:04+0000\n"
+"POT-Creation-Date: 2019-10-01 16:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:49+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -158,12 +158,12 @@ msgstr ""
 "필요합니다."
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:62
-#: admin/systems/argonaut/class_argonautClient.inc:148
+#: admin/systems/argonaut/class_argonautClient.inc:149
 msgid "Protocol"
 msgstr "프로토콜"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:62
-#: admin/systems/argonaut/class_argonautClient.inc:148
+#: admin/systems/argonaut/class_argonautClient.inc:149
 msgid "Protocol to use for argonaut"
 msgstr "Argonaut에 사용할 프로토콜"
 
@@ -185,9 +185,9 @@ msgid ""
 msgstr "Argonaut 클라이언트 또는 서버를 다운 된 것으로 간주하기 전의 초 단위 시간"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:80
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:53
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:55
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
-#: admin/systems/argonaut/class_argonautClient.inc:163
+#: admin/systems/argonaut/class_argonautClient.inc:164
 msgid "Log directory"
 msgstr "로그 디렉토리"
 
@@ -216,12 +216,12 @@ msgid "IP tool to use"
 msgstr "사용할 IP 도구"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:104
-#: admin/systems/argonaut/class_argonautClient.inc:170
+#: admin/systems/argonaut/class_argonautClient.inc:171
 msgid "SSL paths"
 msgstr "SSL 경로"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:107
-#: admin/systems/argonaut/class_argonautClient.inc:173
+#: admin/systems/argonaut/class_argonautClient.inc:174
 msgid "Key"
 msgstr "키"
 
@@ -230,7 +230,7 @@ msgid "Path to the private key file on Argonaut server"
 msgstr "Argonaut 서버의 개인 키 파일 경로"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:112
-#: admin/systems/argonaut/class_argonautClient.inc:178
+#: admin/systems/argonaut/class_argonautClient.inc:179
 msgid "Certificate"
 msgstr "인증서"
 
@@ -239,7 +239,7 @@ msgid "Path to the certificate file on Argonaut server"
 msgstr "Argonaut 서버의 인증서 파일 경로"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:117
-#: admin/systems/argonaut/class_argonautClient.inc:183
+#: admin/systems/argonaut/class_argonautClient.inc:184
 msgid "CA certificate"
 msgstr "CA 인증서"
 
@@ -248,7 +248,7 @@ msgid "Path to the CA certificate file on Argonaut server"
 msgstr "Argonaut 서버의 CA 인증서 파일 경로"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:122
-#: admin/systems/argonaut/class_argonautClient.inc:188
+#: admin/systems/argonaut/class_argonautClient.inc:189
 msgid "CN of the certificate"
 msgstr "인증서의 CN"
 
@@ -256,35 +256,35 @@ msgstr "인증서의 CN"
 msgid "The CN in the server certificate"
 msgstr "서버 인증서의 CN"
 
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:27
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:29
 msgid "Argonaut Fuse"
 msgstr "Argonaut Fuse"
 
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:28
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:30
 msgid "Argonaut Fuse settings"
 msgstr "Argonaut Fuse 설정"
 
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:43
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:45
 msgid "Basic settings"
 msgstr "기본 설정"
 
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:46
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:48
 msgid "Default mode"
 msgstr "기본 모드"
 
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:54
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:56
 msgid "Directory in which argonaut-fuse will store its log"
 msgstr "argonaut-fuse가 로그를 저장할 디렉토리"
 
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:62
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:64
 msgid "TFTP"
 msgstr "TFTP"
 
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:65
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:67
 msgid "Pxelinux cfg path"
 msgstr "Pxelinux cfg 경로"
 
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:66
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:68
 msgid "Path where argonaut-fuse should store pxelinux.cfg"
 msgstr "argonaut-fuse가 pxelinux.cfg를 저장해야하는 경로"
 
@@ -488,12 +488,12 @@ msgid "Manage DNS Slaves"
 msgstr "DNS 슬레이브 관리"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:155
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:159
 msgid "zone"
 msgstr "영역"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:155
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:159
 msgid "DNS zone this server should be declared as slave of"
 msgstr "이 서버의 DNS 영역은 다음 중 슬레이브로 선언되어야합니다."
 
@@ -525,24 +525,24 @@ msgstr "배포 시간 프레임"
 msgid "Edit deployment time frame"
 msgstr "배포 시간 프레임 편집"
 
-#: admin/systems/argonaut/class_deploymentTimeframe.inc:44
-#: admin/systems/argonaut/class_deploymentTimeframe.inc:62
+#: admin/systems/argonaut/class_deploymentTimeframe.inc:45
+#: admin/systems/argonaut/class_deploymentTimeframe.inc:63
 msgid "Time frames"
 msgstr "시간 프레임"
 
-#: admin/systems/argonaut/class_deploymentTimeframe.inc:48
+#: admin/systems/argonaut/class_deploymentTimeframe.inc:49
 msgid "Time frames in which deployment is authorized"
 msgstr "배포가 승인된 시간 프레임"
 
-#: admin/systems/argonaut/class_deploymentTimeframe.inc:52
+#: admin/systems/argonaut/class_deploymentTimeframe.inc:53
 msgid "Opening time for this frame as HH:MM"
 msgstr "이 프레임의 시작시간 HH : MM"
 
-#: admin/systems/argonaut/class_deploymentTimeframe.inc:56
+#: admin/systems/argonaut/class_deploymentTimeframe.inc:57
 msgid "->"
 msgstr "->"
 
-#: admin/systems/argonaut/class_deploymentTimeframe.inc:56
+#: admin/systems/argonaut/class_deploymentTimeframe.inc:57
 msgid "Closing time for this frame as HH:MM"
 msgstr "이 프레임의 종료시간 HH : MM"
 
@@ -554,59 +554,59 @@ msgstr "Argonaut 클라이언트"
 msgid "Edit argonaut client settings"
 msgstr "Argonaut 클라이언트 설정 편집"
 
-#: admin/systems/argonaut/class_argonautClient.inc:140
+#: admin/systems/argonaut/class_argonautClient.inc:141
 msgid "Argonaut client settings"
 msgstr "Argonaut 클라이언트 설정"
 
-#: admin/systems/argonaut/class_argonautClient.inc:143
+#: admin/systems/argonaut/class_argonautClient.inc:144
 msgid "Client port"
 msgstr "클라이언트 포트"
 
-#: admin/systems/argonaut/class_argonautClient.inc:143
+#: admin/systems/argonaut/class_argonautClient.inc:144
 msgid "Port used by argonaut client for JSON-RPC"
 msgstr "JSON-RPC 용 argonaut 클라이언트가 사용하는 포트"
 
-#: admin/systems/argonaut/class_argonautClient.inc:153
+#: admin/systems/argonaut/class_argonautClient.inc:154
 msgid "WakeOnLan interface"
 msgstr "WakeOnLan 인터페이스"
 
-#: admin/systems/argonaut/class_argonautClient.inc:153
+#: admin/systems/argonaut/class_argonautClient.inc:154
 msgid "Interface used by argonaut for WakeOnLan"
 msgstr "WakeOnLan을 위해 argonaut에서 사용되는 인터페이스"
 
-#: admin/systems/argonaut/class_argonautClient.inc:158
+#: admin/systems/argonaut/class_argonautClient.inc:159
 msgid "TaskId file"
 msgstr "TaskId 파"
 
-#: admin/systems/argonaut/class_argonautClient.inc:158
+#: admin/systems/argonaut/class_argonautClient.inc:159
 msgid "File which argonaut will use to store its task id when booting"
 msgstr "argonaut가 부팅 할 때 작업 ID를 저장하는 데 사용할 파일"
 
-#: admin/systems/argonaut/class_argonautClient.inc:163
+#: admin/systems/argonaut/class_argonautClient.inc:164
 msgid "Directory in which argonaut client should write its logs"
 msgstr "argonaut 클라이언트가 로그를 작성해야하는 디렉토리"
 
-#: admin/systems/argonaut/class_argonautClient.inc:173
+#: admin/systems/argonaut/class_argonautClient.inc:174
 msgid "Path to the private key file on Argonaut client"
 msgstr "Argonaut 클라이언트의 개인 키 파일 경로"
 
-#: admin/systems/argonaut/class_argonautClient.inc:178
+#: admin/systems/argonaut/class_argonautClient.inc:179
 msgid "Path to the certificate file on Argonaut client"
 msgstr "Argonaut 클라이언트의 인증서 파일 경로"
 
-#: admin/systems/argonaut/class_argonautClient.inc:183
+#: admin/systems/argonaut/class_argonautClient.inc:184
 msgid "Path to the CA certificate file on Argonaut client"
 msgstr "Argonaut 클라이언트의 CA 인증서 파일 경로"
 
-#: admin/systems/argonaut/class_argonautClient.inc:188
+#: admin/systems/argonaut/class_argonautClient.inc:189
 msgid "The CN in this client certificate"
 msgstr "클라이언트 인증서의 CN"
 
-#: admin/systems/argonaut/class_argonautClient.inc:194
+#: admin/systems/argonaut/class_argonautClient.inc:195
 msgid "Service names"
 msgstr "서비스 이름"
 
-#: admin/systems/argonaut/class_argonautClient.inc:196
+#: admin/systems/argonaut/class_argonautClient.inc:197
 msgid "Argonaut service names"
 msgstr "Argonaut 서비스 이름"
 
@@ -640,226 +640,195 @@ msgid "Imported tasks"
 msgstr "가져온 작업"
 
 #: addons/argonaut/class_argonautImportFile.inc:97
-#: addons/argonaut/class_argonautImportFile.inc:121
-#: addons/argonaut/class_argonautImportFile.inc:145
-#: addons/argonaut/class_argonautImportFile.inc:157
-#: addons/argonaut/deploy-list.xml:79
+#: addons/argonaut/class_argonautImportFile.inc:124
+#: addons/argonaut/class_argonautImportFile.inc:148
+#: addons/argonaut/class_argonautImportFile.inc:160
+#: addons/argonaut/class_argonautQueue.inc:88
 msgid "Import"
 msgstr "가져오기"
 
-#: addons/argonaut/class_argonautImportFile.inc:122
+#: addons/argonaut/class_argonautImportFile.inc:125
 msgid "Fix the errors in your CSV file first"
 msgstr "먼저 CSV 파일의 오류 수정"
 
-#: addons/argonaut/class_argonautImportFile.inc:138
-#: addons/argonaut/class_argonautQueue.inc:246
+#: addons/argonaut/class_argonautImportFile.inc:141
+#: addons/argonaut/class_argonautAction.inc:169
 msgid "Infrastructure service"
 msgstr "인프라 서비스"
 
-#: addons/argonaut/class_argonautImportFile.inc:145
+#: addons/argonaut/class_argonautImportFile.inc:148
 #, php-format
 msgid "Import complete: %s events successfully send, %s failed"
 msgstr "가져 오기 완료 : %s개의 이벤트가 성공적으로 보내졌습니다. %s은 실패했습니다."
 
-#: addons/argonaut/class_argonautImportFile.inc:157
+#: addons/argonaut/class_argonautImportFile.inc:160
 msgid "file is empty"
 msgstr "파일이 비어있음"
 
-#: addons/argonaut/class_argonautImportFile.inc:182
+#: addons/argonaut/class_argonautImportFile.inc:185
 #: addons/argonaut/import_events.tpl.c:23
 msgid "MAC"
 msgstr "MAC"
 
-#: addons/argonaut/class_argonautImportFile.inc:185
-#: addons/argonaut/deploy-list.xml:14 addons/argonaut/import_events.tpl.c:26
+#: addons/argonaut/class_argonautImportFile.inc:188
+#: addons/argonaut/import_events.tpl.c:26
 msgid "Event"
 msgstr "이벤트"
 
-#: addons/argonaut/class_argonautAction.inc:36
 #: addons/argonaut/class_argonautAction.inc:39
+#: addons/argonaut/class_argonautAction.inc:42
 msgid "Argonaut task"
 msgstr "Argonaut 작업"
 
-#: addons/argonaut/class_argonautAction.inc:37
+#: addons/argonaut/class_argonautAction.inc:40
 msgid "Schedule an argonaut task"
 msgstr "argonaut 작업 예약"
 
-#: addons/argonaut/class_argonautAction.inc:53
-#: addons/argonaut/class_argonautAction.inc:73
-#: addons/argonaut/deploy-list.xml:51
+#: addons/argonaut/class_argonautAction.inc:56
+#: addons/argonaut/class_argonautAction.inc:76
 msgid "Schedule"
 msgstr "스케"
 
-#: addons/argonaut/class_argonautAction.inc:56
+#: addons/argonaut/class_argonautAction.inc:59
 msgid "Action"
 msgstr "액션"
 
-#: addons/argonaut/class_argonautAction.inc:56
+#: addons/argonaut/class_argonautAction.inc:59
 msgid "The action you are about to schedule"
 msgstr "스케을 잡으려는 작업"
 
-#: addons/argonaut/class_argonautAction.inc:68
+#: addons/argonaut/class_argonautAction.inc:71
 msgid "Scheduled"
 msgstr "예정"
 
-#: addons/argonaut/class_argonautAction.inc:68
+#: addons/argonaut/class_argonautAction.inc:71
 msgid "Wether this job should be scheduled or ran right away"
 msgstr "작업을 예약하거나 즉시 실행해야 할지 여"
 
-#: addons/argonaut/class_argonautAction.inc:77
+#: addons/argonaut/class_argonautAction.inc:80
 msgid "Periodical job"
 msgstr "정기적인 직업"
 
-#: addons/argonaut/class_argonautAction.inc:77
+#: addons/argonaut/class_argonautAction.inc:80
 msgid "Wether this job should repeat in time"
 msgstr "시간 내 작업이 반복되어야할지 여부"
 
-#: addons/argonaut/class_argonautAction.inc:81
+#: addons/argonaut/class_argonautAction.inc:84
 msgid "How often this task should be repeated"
 msgstr "얼마나 자주 작업이 반복해야 하는지"
 
-#: addons/argonaut/class_argonautAction.inc:92
+#: addons/argonaut/class_argonautAction.inc:95
 msgid "Minutes"
 msgstr "분"
 
-#: addons/argonaut/class_argonautAction.inc:92
+#: addons/argonaut/class_argonautAction.inc:95
 msgid "Hours"
 msgstr "시간"
 
-#: addons/argonaut/class_argonautAction.inc:92
+#: addons/argonaut/class_argonautAction.inc:95
 msgid "Days"
 msgstr "일"
 
-#: addons/argonaut/class_argonautAction.inc:92
+#: addons/argonaut/class_argonautAction.inc:95
 msgid "Weeks"
 msgstr "주"
 
-#: addons/argonaut/class_argonautAction.inc:92
+#: addons/argonaut/class_argonautAction.inc:95
 msgid "Months"
 msgstr "월"
 
-#: addons/argonaut/class_argonautAction.inc:98
-#: addons/argonaut/deploy-list.xml:43
+#: addons/argonaut/class_argonautAction.inc:101
 msgid "Period"
 msgstr "기간"
 
-#: addons/argonaut/class_argonautAction.inc:103
+#: addons/argonaut/class_argonautAction.inc:106
 msgid "Targets"
 msgstr "대상"
 
-#: addons/argonaut/class_argonautAction.inc:106
+#: addons/argonaut/class_argonautAction.inc:109
 msgid "Targets for this task"
 msgstr "이 작업의 대상"
 
-#: addons/argonaut/class_filterArgonautEvents.inc:39
-#: addons/argonaut/class_argonautQueue.inc:280
-#: addons/argonaut/class_argonautQueue.inc:371
+#: addons/argonaut/class_argonautQueueColumn.inc:107
+msgid "immediately"
+msgstr "즉시"
+
+#: addons/argonaut/class_argonautQueueColumn.inc:116
+msgid "Waiting"
+msgstr "대기"
+
+#: addons/argonaut/class_argonautQueueColumn.inc:119
+msgid "Show error"
+msgstr "오류 표시"
+
+#: addons/argonaut/class_argonautQueueColumn.inc:120
+#: addons/argonaut/class_argonautQueue.inc:348
+#: addons/argonaut/class_argonautQueueFilter.inc:66
 #: addons/argonaut/import_events.tpl.c:32
 msgid "Error"
 msgstr "오류"
 
-#: addons/argonaut/class_filterArgonautEvents.inc:39
-#, php-format
-msgid "Cannot load queue entries: %s"
-msgstr "대기열 항목을 로드 할 수 없습니다 : %s"
+#: addons/argonaut/class_argonautQueueColumn.inc:123
+msgid "Processed"
+msgstr "처리됨"
 
-#: addons/argonaut/class_argonautQueue.inc:42
-#: addons/argonaut/class_argonautQueue.inc:47
-#: addons/argonaut/class_argonautQueue.inc:50
+#: addons/argonaut/class_argonautQueueColumn.inc:132
+msgid "in progress"
+msgstr "진행 중"
+
+#: addons/argonaut/class_argonautQueue.inc:48
+#: addons/argonaut/class_argonautQueue.inc:53
+#: addons/argonaut/class_argonautQueue.inc:56
 msgid "Deployment queue"
 msgstr "배포 대기열"
 
-#: addons/argonaut/class_argonautQueue.inc:43
+#: addons/argonaut/class_argonautQueue.inc:49
 msgid "Provide a mechanism to automatically activate systems"
 msgstr "시스템을 자동으로 활성화하는 메커니즘 제공"
 
-#: addons/argonaut/class_argonautQueue.inc:126
-#: addons/argonaut/deploy-list.xml:86 addons/argonaut/deploy-list.xml:136
+#: addons/argonaut/class_argonautQueue.inc:96
+#: addons/argonaut/class_argonautQueue.inc:229
 msgid "Remove"
 msgstr "제거"
 
-#: addons/argonaut/class_argonautQueue.inc:127
+#: addons/argonaut/class_argonautQueue.inc:106
+msgid "Abort"
+msgstr "중단"
+
+#: addons/argonaut/class_argonautQueue.inc:116
+msgid "Process now"
+msgstr "지금 처리"
+
+#: addons/argonaut/class_argonautQueue.inc:124
+msgid "Retry"
+msgstr "재시도"
+
+#: addons/argonaut/class_argonautQueue.inc:230
 #, php-format
 msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
 msgstr "다음 작업을 삭제할 수 없으며 중단해야합니다 : %s"
 
-#: addons/argonaut/class_argonautQueue.inc:131
+#: addons/argonaut/class_argonautQueue.inc:234
 msgid "Permission"
 msgstr "허가"
 
-#: addons/argonaut/class_argonautQueue.inc:194
+#: addons/argonaut/class_argonautQueue.inc:295
 msgid "Info"
 msgstr "정보"
 
-#: addons/argonaut/class_argonautQueue.inc:194
+#: addons/argonaut/class_argonautQueue.inc:295
 #, php-format
 msgid "%s"
 msgstr "%s"
 
-#: addons/argonaut/class_argonautQueue.inc:216
+#: addons/argonaut/class_argonautQueue.inc:316
 msgid "Error detail"
 msgstr "오류 세부 정보"
 
-#: addons/argonaut/class_argonautQueue.inc:280
+#: addons/argonaut/class_argonautQueue.inc:348
 #, php-format
 msgid "Cannot update queue entries."
 msgstr "대기열 항목을 업데이트 할 수 없습니다."
-
-#: addons/argonaut/class_argonautQueue.inc:355
-msgid "immediately"
-msgstr "즉시"
-
-#: addons/argonaut/class_argonautQueue.inc:367
-msgid "Waiting"
-msgstr "대기"
-
-#: addons/argonaut/class_argonautQueue.inc:370
-msgid "Show error"
-msgstr "오류 표시"
-
-#: addons/argonaut/class_argonautQueue.inc:374
-msgid "Processed"
-msgstr "처리됨"
-
-#: addons/argonaut/class_argonautQueue.inc:383
-msgid "in progress"
-msgstr "진행 중"
-
-#: addons/argonaut/deploy-list.xml:10
-msgid "List of queued jobs"
-msgstr "대기중인 작업 목록"
-
-#: addons/argonaut/deploy-list.xml:27
-msgid "Target"
-msgstr "타겟"
-
-#: addons/argonaut/deploy-list.xml:35
-msgid "Task"
-msgstr "태스크"
-
-#: addons/argonaut/deploy-list.xml:59
-msgid "Status"
-msgstr "상태"
-
-#: addons/argonaut/deploy-list.xml:67
-msgid "Actions"
-msgstr "작업"
-
-#: addons/argonaut/deploy-list.xml:97 addons/argonaut/deploy-list.xml:144
-msgid "Abort"
-msgstr "중단"
-
-#: addons/argonaut/deploy-list.xml:108
-msgid "Execute"
-msgstr "실행"
-
-#: addons/argonaut/deploy-list.xml:120
-msgid "Process now"
-msgstr "지금 처리"
-
-#: addons/argonaut/deploy-list.xml:128
-msgid "Retry"
-msgstr "재시도"
 
 #: addons/argonaut/class_argonautEventTypes.inc:67
 msgid "Switch off"
@@ -884,6 +853,11 @@ msgstr "(재)설치"
 #: addons/argonaut/class_argonautEventTypes.inc:105
 msgid "Refresh slave files (ldap2zone)"
 msgstr "슬레이브 파일 새로고침(ldap2zone)"
+
+#: addons/argonaut/class_argonautQueueFilter.inc:66
+#, php-format
+msgid "Cannot load queue entries: <br/><br/>%s"
+msgstr ""
 
 #: addons/argonaut/import_events.tpl.c:2
 msgid ""

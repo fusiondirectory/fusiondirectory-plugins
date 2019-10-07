@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-21 14:04+0000\n"
+"POT-Creation-Date: 2019-10-01 16:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:51+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Arabic (https://www.transifex.com/fusiondirectory/teams/12202/ar/)\n"
@@ -21,12 +21,12 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: admin/debconfProfile/class_debconfProfileManagement.inc:32
+#: admin/debconfProfile/class_debconfProfileManagement.inc:34
 #: admin/systems/debconf/class_debconfStartup.inc:31
 msgid "Debconf"
 msgstr ""
 
-#: admin/debconfProfile/class_debconfProfileManagement.inc:33
+#: admin/debconfProfile/class_debconfProfileManagement.inc:35
 msgid "Debconf profile management"
 msgstr ""
 
@@ -72,7 +72,6 @@ msgstr ""
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:182
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:185
-#: admin/debconfProfile/debconfProfile-filter.tpl.c:5
 msgid "Name"
 msgstr "الإسم"
 
@@ -100,26 +99,22 @@ msgstr ""
 msgid "Debconf preseed startup"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:45
+#: admin/systems/debconf/class_debconfStartup.inc:46
 msgid "Debconf settings"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:48
+#: admin/systems/debconf/class_debconfStartup.inc:49
 msgid "Profile"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:48
+#: admin/systems/debconf/class_debconfStartup.inc:49
 msgid "Debconf preseed profile to be used for installation"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:52
+#: admin/systems/debconf/class_debconfStartup.inc:53
 msgid "Release"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:52
+#: admin/systems/debconf/class_debconfStartup.inc:53
 msgid "Debian release to install"
-msgstr ""
-
-#: admin/debconfProfile/debconfProfile-filter.tpl.c:2
-msgid "Filter"
 msgstr ""
