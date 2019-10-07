@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-06-27 08:29+0000\n"
+"POT-Creation-Date: 2019-10-01 16:18+0000\n"
 "PO-Revision-Date: 2016-08-29 15:14+0000\n"
 "Last-Translator: Lucien Antonissen <lucien.antonissen@digipolis.be>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -145,31 +145,30 @@ msgid "Which attribute will be used to create accounts."
 msgstr "Welk attribuut wordt gebruikt om accounts aan te maken."
 
 #: config/mail/class_mailPluginConfig.inc:50
-msgid "Mail user template"
-msgstr "Mail gebruiker sjabloon"
+msgid "User account template"
+msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:51
-msgid "Override the user account creation syntax."
-msgstr "Overschrijf de gebruikers account aanmaak syntax."
+msgid ""
+"Override the user account creation syntax. Default is %PREFIX%%UATTRIB%."
+msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:55
-msgid "Mail folder template"
-msgstr "Mail folder sjabloon"
+msgid "Group account template"
+msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:56
-msgid "Override the methods default account creation syntax."
-msgstr "Overschrijf de standaard methode account aanmaak syntax."
+msgid ""
+"Override the group account creation syntax. Default is %PREFIX%%UATTRIB%."
+msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:60
 msgid "Use cyrus UNIX style"
 msgstr "Gebruik cyrus UNIX style"
 
 #: config/mail/class_mailPluginConfig.inc:61
-msgid ""
-"Determines if 'foo/bar' or 'foo.bar' should be uses as namespaces in IMAP."
+msgid "Determines if \"foo/bar\" or \"foo.bar\" should be uses as namespaces in IMAP."
 msgstr ""
-"Bepaal of 'foo/bar' of 'foo.bar' zou moeten gebruikt worden als namespace in"
-" IMAP."
 
 #: config/mail/class_mailPluginConfig.inc:65
 msgid "Delete mailbox on account deletion"
