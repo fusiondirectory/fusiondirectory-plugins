@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-21 14:05+0000\n"
+"POT-Creation-Date: 2019-10-01 16:31+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2019\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
@@ -58,7 +58,6 @@ msgid "The name of the phone"
 msgstr "Der Name des Telefons"
 
 #: admin/systems/class_phoneGeneric.inc:58
-#: admin/systems/serverService-list.xml:35
 #: admin/systems/class_printGeneric.inc:65
 #: admin/systems/class_workstationGeneric.inc:65
 #: admin/systems/services/shares/class_serviceShare.inc:54
@@ -126,54 +125,6 @@ msgstr "MAC-Adresse"
 msgid "Mac address of this system"
 msgstr "MAC-Adresse von diesem System"
 
-#: admin/systems/serverService-list.xml:10
-msgid "List of services"
-msgstr "Liste der Dienste"
-
-#: admin/systems/serverService-list.xml:14
-msgid "Service"
-msgstr "Dienst"
-
-#: admin/systems/serverService-list.xml:27
-msgid "!"
-msgstr "!"
-
-#: admin/systems/serverService-list.xml:43
-msgid "Actions"
-msgstr "Aktionen"
-
-#: admin/systems/serverService-list.xml:54
-msgid "Create"
-msgstr "Anlegen"
-
-#: admin/systems/serverService-list.xml:69
-msgid "Remove"
-msgstr "Entfernen"
-
-#: admin/systems/serverService-list.xml:89
-msgid "Get status"
-msgstr "Status erhalten"
-
-#: admin/systems/serverService-list.xml:97
-msgid "Start"
-msgstr "Start"
-
-#: admin/systems/serverService-list.xml:105
-msgid "Stop"
-msgstr "Beenden"
-
-#: admin/systems/serverService-list.xml:113
-msgid "Restart"
-msgstr "Neustart"
-
-#: admin/systems/serverService-list.xml:121
-msgid "Edit service"
-msgstr "Dienst bearbeiten"
-
-#: admin/systems/serverService-list.xml:129
-msgid "Remove service"
-msgstr "Dienst entfernen"
-
 #: admin/systems/class_terminalStartup.inc:29
 msgid "Startup"
 msgstr "Start"
@@ -182,69 +133,69 @@ msgstr "Start"
 msgid "Terminal startup"
 msgstr "Terminal-Start"
 
-#: admin/systems/class_terminalStartup.inc:46
+#: admin/systems/class_terminalStartup.inc:47
 msgid "Startup parameters"
 msgstr "Startparameter"
 
-#: admin/systems/class_terminalStartup.inc:49
+#: admin/systems/class_terminalStartup.inc:50
 msgid "Root server"
 msgstr "Root-Server"
 
-#: admin/systems/class_terminalStartup.inc:49
+#: admin/systems/class_terminalStartup.inc:50
 msgid "The root server the terminal should be using"
 msgstr "Der root-Server den das Terminal verwenden sollte"
 
-#: admin/systems/class_terminalStartup.inc:53
+#: admin/systems/class_terminalStartup.inc:54
 msgid "Swap server"
 msgstr "Auslagerungsaerver"
 
-#: admin/systems/class_terminalStartup.inc:53
+#: admin/systems/class_terminalStartup.inc:54
 msgid "The swap server the terminal should be using"
 msgstr "Der swap-Server den das Terminal verwenden sollte"
 
-#: admin/systems/class_terminalStartup.inc:59
+#: admin/systems/class_terminalStartup.inc:60
 msgid "Remote desktop"
 msgstr "Entfernte Arbeitsfläche"
 
-#: admin/systems/class_terminalStartup.inc:63
+#: admin/systems/class_terminalStartup.inc:64
 msgid "Connect method"
 msgstr "Verbindungsmethode"
 
-#: admin/systems/class_terminalStartup.inc:67
+#: admin/systems/class_terminalStartup.inc:68
 #: admin/systems/services/terminal/class_serviceTerminal.inc:58
 msgid "XDMCP"
 msgstr "XDMCP"
 
-#: admin/systems/class_terminalStartup.inc:67
+#: admin/systems/class_terminalStartup.inc:68
 #: admin/systems/services/terminal/class_serviceTerminal.inc:58
 msgid "LDM"
 msgstr "LDM"
 
-#: admin/systems/class_terminalStartup.inc:67
+#: admin/systems/class_terminalStartup.inc:68
 #: admin/systems/services/terminal/class_serviceTerminal.inc:58
 msgid "Shell"
 msgstr "Shell"
 
-#: admin/systems/class_terminalStartup.inc:67
+#: admin/systems/class_terminalStartup.inc:68
 #: admin/systems/services/terminal/class_serviceTerminal.inc:58
 msgid "Telnet"
 msgstr "Telnet"
 
-#: admin/systems/class_terminalStartup.inc:67
+#: admin/systems/class_terminalStartup.inc:68
 #: admin/systems/services/terminal/class_serviceTerminal.inc:58
 msgid "Windows RDP"
 msgstr "Windows RDP"
 
-#: admin/systems/class_terminalStartup.inc:70
+#: admin/systems/class_terminalStartup.inc:71
 msgid "Terminal server"
 msgstr "Terminal-Server"
 
-#: admin/systems/class_terminalStartup.inc:105
-#: admin/systems/class_terminalStartup.inc:116
+#: admin/systems/class_terminalStartup.inc:106
+#: admin/systems/class_terminalStartup.inc:117
 msgid "inherited"
 msgstr "geerbt"
 
-#: admin/systems/class_terminalStartup.inc:113
+#: admin/systems/class_terminalStartup.inc:114
 msgid "Local swap"
 msgstr "Lokaler Auslagerungsspeicher"
 
@@ -387,17 +338,85 @@ msgstr "Sperren dieser %s"
 msgid "This will prevent the %s from being reinstalled"
 msgstr "Dies wird verhindern dass %s neu installiert wird"
 
+#: admin/systems/services/class_servicesManagement.inc:67
+#: admin/systems/services/shares/class_serviceShare.inc:28
+#: admin/systems/services/ldap/class_serviceLDAP.inc:29
+#: admin/systems/services/terminal/class_serviceTerminal.inc:28
+msgid "Services"
+msgstr "Dienste"
+
+#: admin/systems/services/class_servicesManagement.inc:68
+msgid "Server services"
+msgstr "Serverdienste"
+
+#: admin/systems/services/class_servicesManagement.inc:124
+msgid "Edit service"
+msgstr "Dienst bearbeiten"
+
+#: admin/systems/services/class_servicesManagement.inc:133
+msgid "Remove"
+msgstr "Entfernen"
+
+#: admin/systems/services/class_servicesManagement.inc:151
+msgid "Export list"
+msgstr "Liste exportieren"
+
+#: admin/systems/services/class_servicesManagement.inc:160
+msgid "Get status"
+msgstr "Status erhalten"
+
+#: admin/systems/services/class_servicesManagement.inc:169
+msgid "Start"
+msgstr "Start"
+
+#: admin/systems/services/class_servicesManagement.inc:178
+msgid "Stop"
+msgstr "Beenden"
+
+#: admin/systems/services/class_servicesManagement.inc:187
+msgid "Restart"
+msgstr "Neustart"
+
+#: admin/systems/services/class_servicesManagement.inc:238
+msgid "Create"
+msgstr "Anlegen"
+
+#: admin/systems/services/class_servicesManagement.inc:315
+#: admin/systems/services/class_servicesManagement.inc:373
+#: admin/systems/services/shares/class_serviceShare.inc:104
+#: addons/dashboard/class_dashBoardNetwork.inc:80
+msgid "Error"
+msgstr "Fehler"
+
+#: admin/systems/services/class_servicesManagement.inc:367
+msgid "Information"
+msgstr "Information"
+
+#: admin/systems/services/class_servicesManagement.inc:367
+msgid "Cannot update service status until it has been saved!"
+msgstr "Kann den Dienststatus nicht aktualisieren bis er gespeichert wurde!"
+
+#: admin/systems/services/class_servicesManagement.inc:373
+#, php-format
+msgid "Unknown action \"%s\""
+msgstr "Unbekannte Aktion \"%s\""
+
+#: admin/systems/services/class_servicesManagement.inc:394
+#: admin/systems/services/class_servicesManagement.inc:401
+#: admin/systems/services/class_servicesManagement.inc:414
+#: admin/systems/services/class_servicesManagement.inc:425
+#, php-format
+msgid "Could not get execute action %s on service %s."
+msgstr "Konnte ausführbare Aktion %s auf Dienst %s nicht bekommen."
+
+#: admin/systems/services/class_servicesManagement.inc:402
+msgid "This server has no mac address."
+msgstr ""
+
 #: admin/systems/services/shares/class_serviceShare.inc:27
 #: admin/systems/services/shares/class_serviceShare.inc:28
 msgid "Share service"
 msgstr "Freigabendienst"
-
-#: admin/systems/services/shares/class_serviceShare.inc:28
-#: admin/systems/services/ldap/class_serviceLDAP.inc:29
-#: admin/systems/services/terminal/class_serviceTerminal.inc:28
-#: admin/systems/class_serverService.inc:60
-msgid "Services"
-msgstr "Dienste"
 
 #: admin/systems/services/shares/class_serviceShare.inc:41
 msgid "Shares"
@@ -447,13 +466,6 @@ msgstr "Option"
 #: admin/systems/services/shares/class_serviceShare.inc:71
 msgid "Special option(s) for this share"
 msgstr "Spezielle Option(en) für diese Freigabe"
-
-#: admin/systems/services/shares/class_serviceShare.inc:104
-#: admin/systems/class_serverService.inc:223
-#: admin/systems/class_serverService.inc:291
-#: addons/dashboard/class_dashBoardNetwork.inc:80
-msgid "Error"
-msgstr "Fehler"
 
 #: admin/systems/services/shares/class_serviceShare.inc:104
 msgid "You need to configure encodings first"
@@ -596,35 +608,6 @@ msgstr "Die von diesem Terminalserver unterstützten Sitzungstypen"
 msgid "Inherited from %s"
 msgstr "Geerbt von %s"
 
-#: admin/systems/class_serverService.inc:61
-msgid "Server services"
-msgstr "Serverdienste"
-
-#: admin/systems/class_serverService.inc:285
-msgid "Information"
-msgstr "Information"
-
-#: admin/systems/class_serverService.inc:285
-msgid "Cannot update service status until it has been saved!"
-msgstr "Kann den Dienststatus nicht aktualisieren bis er gespeichert wurde!"
-
-#: admin/systems/class_serverService.inc:291
-#, php-format
-msgid "Unknown action \"%s\""
-msgstr "Unbekannte Aktion \"%s\""
-
-#: admin/systems/class_serverService.inc:312
-#: admin/systems/class_serverService.inc:319
-#: admin/systems/class_serverService.inc:332
-#: admin/systems/class_serverService.inc:343
-#, php-format
-msgid "Could not get execute action %s on service %s."
-msgstr "Konnte ausführbare Aktion %s auf Dienst %s nicht bekommen."
-
-#: admin/systems/class_serverService.inc:320
-msgid "This server has no mac address."
-msgstr ""
-
 #: admin/systems/class_serverGeneric.inc:26
 #: admin/systems/class_serverGeneric.inc:32
 #: admin/systems/class_serverGeneric.inc:33
@@ -684,49 +667,48 @@ msgstr "Aktion auslösen"
 msgid "Schedule action"
 msgstr "Aktion planen"
 
-#: admin/systems/class_systemManagement.inc:100
+#: admin/systems/class_systemManagement.inc:99
 msgid "Ping"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:129
-#: admin/systems/class_systemManagement.inc:145
-#: admin/systems/class_systemManagement.inc:196
+#: admin/systems/class_systemManagement.inc:128
+#: admin/systems/class_systemManagement.inc:144
+#: admin/systems/class_systemManagement.inc:195
 msgid "Action canceled"
 msgstr "Aktion abgebrochen"
 
-#: admin/systems/class_systemManagement.inc:129
-#: admin/systems/class_systemManagement.inc:196
+#: admin/systems/class_systemManagement.inc:128
+#: admin/systems/class_systemManagement.inc:195
 #, php-format
 msgid "System %s has no mac address defined, cannot trigger action"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:145
+#: admin/systems/class_systemManagement.inc:144
 #, php-format
 msgid "System %s is currently installing"
 msgstr "System %s wird derzeit installiert"
 
-#: admin/systems/class_systemManagement.inc:164
-#: admin/systems/class_systemManagement.inc:208
-#: admin/systems/class_systemManagement.inc:245
+#: admin/systems/class_systemManagement.inc:163
+#: admin/systems/class_systemManagement.inc:207
 msgid "Infrastructure service"
 msgstr "Infrastrukturdienst"
 
-#: admin/systems/class_systemManagement.inc:167
-#: admin/systems/class_systemManagement.inc:172
+#: admin/systems/class_systemManagement.inc:166
+#: admin/systems/class_systemManagement.inc:171
 msgid "Action triggered"
 msgstr "Aktion ausgelöst"
 
-#: admin/systems/class_systemManagement.inc:167
+#: admin/systems/class_systemManagement.inc:166
 #, php-format
 msgid "Action called without error (results were \"%s\")"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:172
+#: admin/systems/class_systemManagement.inc:171
 #, php-format
 msgid "Action called without error (result was \"%s\")"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:226
+#: admin/systems/class_systemManagement.inc:225
 msgid "Ping results"
 msgstr ""
 
@@ -756,12 +738,12 @@ msgstr ""
 msgid "Could not parse %s"
 msgstr "Konnte %s nicht parsen"
 
-#: admin/systems/class_systemImport.inc:180
+#: admin/systems/class_systemImport.inc:179
 #, php-format
 msgid "No DHCP server found for IPs %s"
 msgstr ""
 
-#: admin/systems/class_systemImport.inc:199
+#: admin/systems/class_systemImport.inc:198
 #, php-format
 msgid "No DNS server found for zone %s"
 msgstr "Kein DNS-Server für Zone %s gefunden"
@@ -1004,10 +986,6 @@ msgstr "DNS"
 msgid ""
 "Statistics for DHCP could not be computed because of the following error: %s"
 msgstr ""
-
-#: admin/systems/serverService-list.tpl.c:2
-msgid "Base"
-msgstr "Basis"
 
 #: admin/systems/server_import.tpl.c:2
 msgid ""

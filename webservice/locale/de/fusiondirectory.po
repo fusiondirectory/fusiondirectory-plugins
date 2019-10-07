@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-21 14:05+0000\n"
+"POT-Creation-Date: 2019-10-01 16:31+0000\n"
 "PO-Revision-Date: 2018-08-13 20:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
@@ -21,66 +21,79 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: include/webservice/class_fdRPCService.inc:51
+#: include/webservice/class_fdRPCService.inc:103
 #, php-format
 msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
 msgstr "FusionDirectory Konfiguration %s/%s ist nicht lesbar. Abgebrochen."
 
-#: include/webservice/class_fdRPCService.inc:61
+#: include/webservice/class_fdRPCService.inc:113
 #, php-format
 msgid "Cannot locate file '%s' - please run '%s' to fix this"
 msgstr ""
 "Konnte Datei '%s' nicht finden - bitte führen Sie '%s' aus um das Problem zu"
 " beseitigen"
 
-#: include/webservice/class_fdRPCService.inc:322
-#: include/webservice/class_fdRPCService.inc:405
+#: include/webservice/class_fdRPCService.inc:161
+msgid "Your password has expired, please set a new one."
+msgstr ""
+
+#: include/webservice/class_fdRPCService.inc:165
+msgid "Account expired. Please contact your system administrator!"
+msgstr ""
+
+#: include/webservice/class_fdRPCService.inc:362
+#: include/webservice/class_fdRPCService.inc:445
 msgid "Plugin"
 msgstr "Erweiterung"
 
-#: include/webservice/class_fdRPCService.inc:502
+#: include/webservice/class_fdRPCService.inc:542
 #, php-format
 msgid "Field \"%s\" is not multi-valuated"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:517
+#: include/webservice/class_fdRPCService.inc:557
 #, php-format
 msgid "Unknown field \"%s\""
 msgstr "Unbekanntes Feld \"%s\""
 
-#: include/webservice/class_fdRPCService.inc:572
+#: include/webservice/class_fdRPCService.inc:615
 #, php-format
 msgid "Cannot delete %s. It has been locked by %s."
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:619
-#: include/webservice/class_fdRPCService.inc:648
+#: include/webservice/class_fdRPCService.inc:659
+#: include/webservice/class_fdRPCService.inc:688
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:644
+#: include/webservice/class_fdRPCService.inc:684
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:651
+#: include/webservice/class_fdRPCService.inc:691
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:689
-#: include/webservice/class_fdRPCService.inc:698
+#: include/webservice/class_fdRPCService.inc:729
+#: include/webservice/class_fdRPCService.inc:738
 #, php-format
 msgid "Failed to get password method for account \"%s\""
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:701
+#: include/webservice/class_fdRPCService.inc:741
 #, php-format
 msgid "Could not find account \"%s\" in LDAP"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:745
+#: include/webservice/class_fdRPCService.inc:760
+#: include/webservice/class_fdRPCService.inc:785
+msgid "Password recovery is not activated"
+msgstr ""
+
+#: include/webservice/class_fdRPCService.inc:795
 msgid "This token is invalid"
 msgstr "Das Token ist nicht gültig"
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-21 14:04+0000\n"
+"POT-Creation-Date: 2019-10-01 16:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:54+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -40,64 +40,64 @@ msgstr "FusionInventory"
 msgid "FusionInventory agent configuration"
 msgstr "Nastavení agenta FusionInventory"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:42
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:43
 msgid "Configuration"
 msgstr "Nastavení"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:45
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:46
 msgid "Server"
 msgstr "Server"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:45
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:46
 msgid "Server which FI will send inventory infos"
 msgstr "Server, který F.I. bude posílat údaje o inventáři "
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:49
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:50
 msgid "Delay time"
 msgstr "Délka prodlevy"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:49
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:50
 msgid "Maximum initial delay before first target, in seconds"
 msgstr "Nejvyšší umožněná počáteční prodleva před prvním cílem, v sekundách"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:54
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:55
 msgid "Wait"
 msgstr "Čekat"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:54
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:72
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:55
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:73
 msgid "Maximum delay between each targets, in seconds"
 msgstr "Nejvyšší umožněná prodleva mezi oběma cíli, v sekundách"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:61
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:62
 msgid "Web Interface"
 msgstr "Webové rozhraní"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:64
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:65
 msgid "Disable web interface"
 msgstr "Vypnout webové rozhraní"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:64
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:65
 msgid "Do not use web interface"
 msgstr "Nepoužívat webové rozhraní"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:68
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:69
 msgid "IP"
 msgstr "IP adresa"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:68
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:69
 msgid "Network interface to listen to"
 msgstr "Síťové rozhraní, na kterém očekávat spojení"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:72
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:73
 msgid "Port"
 msgstr "Port"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:77
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:78
 msgid "Trust"
 msgstr "Důvěra"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:77
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:78
 msgid "IPs allowed to launch inventory task through web interface"
 msgstr ""
 "IP adresy počítačů, ze kterých je možné spouštět úkony inventarizace z "
@@ -111,54 +111,54 @@ msgstr "Inventář"
 msgid "Inventory Viewer"
 msgstr "Prohlížeč inventáře"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:77
-#: admin/systems/fusioninventory/class_fiInventory.inc:80
+#: admin/systems/fusioninventory/class_fiInventory.inc:78
+#: admin/systems/fusioninventory/class_fiInventory.inc:81
 msgid "Inventory object"
 msgstr "Objekt inventáře"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:95
+#: admin/systems/fusioninventory/class_fiInventory.inc:96
 msgid "Matching system"
 msgstr "Odpovídající systémy"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:98
-#: admin/systems/fusioninventory/class_fiInventory.inc:395
+#: admin/systems/fusioninventory/class_fiInventory.inc:99
+#: admin/systems/fusioninventory/class_fiInventory.inc:396
 msgid "System"
 msgstr "Systém"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:98
-#: admin/systems/fusioninventory/class_fiInventory.inc:395
+#: admin/systems/fusioninventory/class_fiInventory.inc:99
+#: admin/systems/fusioninventory/class_fiInventory.inc:396
 msgid "System entry matching this inventory"
 msgstr "Systémová položka odpovídající tomuto inventáři"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:105
+#: admin/systems/fusioninventory/class_fiInventory.inc:106
 msgid "Hardware"
 msgstr "Hardware"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:111
+#: admin/systems/fusioninventory/class_fiInventory.inc:112
 msgid "Software"
 msgstr "Software"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:117
+#: admin/systems/fusioninventory/class_fiInventory.inc:118
 msgid "Users"
 msgstr "Uživatelé"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:123
+#: admin/systems/fusioninventory/class_fiInventory.inc:124
 msgid "Processes"
 msgstr "Procesy"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:129
+#: admin/systems/fusioninventory/class_fiInventory.inc:130
 msgid "Other"
 msgstr "Ostatní"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:343
+#: admin/systems/fusioninventory/class_fiInventory.inc:344
 msgid "Create a system based on this inventory"
 msgstr "Vytvořit systém na základě tohoto inventáře"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:358
+#: admin/systems/fusioninventory/class_fiInventory.inc:359
 msgid "Create"
 msgstr "Vytvořit"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:363
+#: admin/systems/fusioninventory/class_fiInventory.inc:364
 msgid "No matching system"
 msgstr "Žádný odpovídající systém"
 

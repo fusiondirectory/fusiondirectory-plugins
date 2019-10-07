@@ -6,16 +6,16 @@
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2019
 # MCMic, 2019
-# Benoit Mortier <benoit.mortier@opensides.be>, 2019
+# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-21 14:05+0000\n"
+"POT-Creation-Date: 2019-10-01 16:31+0000\n"
 "PO-Revision-Date: 2018-08-13 20:04+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2019\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -106,84 +106,84 @@ msgstr "L’adresse postale de cet établissement"
 msgid "SupAnn properties"
 msgstr "Propriétés SupAnn"
 
-#: admin/supannStructures/class_etablissement.inc:90
+#: admin/supannStructures/class_etablissement.inc:91
 msgid "Establishment code"
 msgstr "Code établissement"
 
-#: admin/supannStructures/class_etablissement.inc:90
+#: admin/supannStructures/class_etablissement.inc:91
 msgid "The code of this establishment (must have a prefix between {})"
 msgstr "Le code de cet établissement (doit avoir un préfixe entre { })"
 
-#: admin/supannStructures/class_etablissement.inc:95
+#: admin/supannStructures/class_etablissement.inc:97
 msgid "Establishment type"
 msgstr "Type d'établissement"
 
-#: admin/supannStructures/class_etablissement.inc:95
+#: admin/supannStructures/class_etablissement.inc:97
 msgid "The SupAnn type that best fits this Establishment"
 msgstr "Le type SupAnn qui correspond le mieux à cet établissement"
 
-#: admin/supannStructures/class_etablissement.inc:99
+#: admin/supannStructures/class_etablissement.inc:101
 msgid "SupAnn code"
 msgstr "Code SupAnn"
 
-#: admin/supannStructures/class_etablissement.inc:99
+#: admin/supannStructures/class_etablissement.inc:101
 msgid "The SupAnn code for this establishment"
 msgstr "Le code SupAnn de cet établissement"
 
-#: admin/supannStructures/class_etablissement.inc:105
+#: admin/supannStructures/class_etablissement.inc:107
 #: admin/supannStructures/class_entite.inc:91
 msgid "Parent entities"
 msgstr "Entités parentes"
 
-#: admin/supannStructures/class_etablissement.inc:105
+#: admin/supannStructures/class_etablissement.inc:107
 #: admin/supannStructures/class_entite.inc:91
 msgid "The parent entities of this entity"
 msgstr "Les entités parentes de cette entité"
 
-#: admin/supannStructures/class_etablissement.inc:111
+#: admin/supannStructures/class_etablissement.inc:113
 #: admin/supannStructures/class_entite.inc:97
 msgid "Reference IDs"
 msgstr "Ids de référence"
 
-#: admin/supannStructures/class_etablissement.inc:111
+#: admin/supannStructures/class_etablissement.inc:113
 #: admin/supannStructures/class_entite.inc:97
 msgid "supannRefId - IDs/links for this entity on other systems"
 msgstr "supannRefId - ID / liens pour cette entité sur d'autres systèmes"
 
-#: admin/supannStructures/class_etablissement.inc:119
+#: admin/supannStructures/class_etablissement.inc:121
 msgid "Legal name"
 msgstr "Nom officiel"
 
-#: admin/supannStructures/class_etablissement.inc:119
+#: admin/supannStructures/class_etablissement.inc:121
 msgid "The legal name of this establishment"
 msgstr "Le nom officiel de cet établissement"
 
-#: admin/supannStructures/class_etablissement.inc:123
+#: admin/supannStructures/class_etablissement.inc:125
 msgid "Home page URI"
 msgstr "Site web officiel"
 
-#: admin/supannStructures/class_etablissement.inc:123
+#: admin/supannStructures/class_etablissement.inc:125
 msgid "The URI of this establishment website home page"
 msgstr "L’URI du site web de cet établissement"
 
-#: admin/supannStructures/class_etablissement.inc:127
+#: admin/supannStructures/class_etablissement.inc:129
 msgid "Institution URI"
 msgstr "Site web de l'institution"
 
-#: admin/supannStructures/class_etablissement.inc:127
+#: admin/supannStructures/class_etablissement.inc:129
 msgid "The URI of this establishment institution website"
 msgstr "L’URI du site web de l’institution de cet établissement"
 
-#: admin/supannStructures/class_etablissement.inc:131
+#: admin/supannStructures/class_etablissement.inc:133
 msgid "White pages URI"
 msgstr "Annuaire pages blanches"
 
-#: admin/supannStructures/class_etablissement.inc:131
+#: admin/supannStructures/class_etablissement.inc:133
 msgid "The URI of this establishment white pages"
 msgstr "L’URI des pages blanches de cet établissement"
 
-#: admin/supannStructures/class_etablissement.inc:177
-#: admin/supannStructures/class_etablissement.inc:250
+#: admin/supannStructures/class_etablissement.inc:185
+#: admin/supannStructures/class_etablissement.inc:258
 msgid "LDAP error"
 msgstr "Erreur LDAP"
 
@@ -785,7 +785,7 @@ msgstr ""
 msgid "supannTypeEntiteAffectation - type of the assigned entity"
 msgstr "supannTypeEntiteAffectation - Type de l’entité affectée"
 
-#: personal/supann/class_supannAccount.inc:575
+#: personal/supann/class_supannAccount.inc:586
 msgid ""
 "\"member\" and \"affiliate\" values are incompatible for "
 "eduPersonAffiliation. Please remove one of them."

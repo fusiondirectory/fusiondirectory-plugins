@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-21 14:05+0000\n"
+"POT-Creation-Date: 2019-10-01 16:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:59+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -38,82 +38,80 @@ msgstr "POSIX skupina"
 msgid "POSIX user group"
 msgstr "POSIX skupina uživatelů"
 
-#: admin/groups/posix/class_posixGroup.inc:55
+#: admin/groups/posix/class_posixGroup.inc:57
 msgid "Properties"
 msgstr "Vlastnosti"
 
-#: admin/groups/posix/class_posixGroup.inc:59
+#: admin/groups/posix/class_posixGroup.inc:61
 msgid "Name"
 msgstr "Název"
 
-#: admin/groups/posix/class_posixGroup.inc:59
+#: admin/groups/posix/class_posixGroup.inc:61
 msgid "Name of this group"
 msgstr "Název této skupiny"
 
-#: admin/groups/posix/class_posixGroup.inc:64
+#: admin/groups/posix/class_posixGroup.inc:66
 msgid "Description"
 msgstr "Popis"
 
-#: admin/groups/posix/class_posixGroup.inc:64
+#: admin/groups/posix/class_posixGroup.inc:66
 msgid "Short description of this group"
 msgstr "Stručný popis této skupiny"
 
-#: admin/groups/posix/class_posixGroup.inc:68
+#: admin/groups/posix/class_posixGroup.inc:70
 msgid "Force GID"
 msgstr "vynutit GID"
 
-#: admin/groups/posix/class_posixGroup.inc:68
+#: admin/groups/posix/class_posixGroup.inc:70
 msgid "Force GID value for this group"
 msgstr "Vynutit konkrétní identifikátor pro tuto skupinu"
 
-#: admin/groups/posix/class_posixGroup.inc:72
-#: admin/groups/posix/class_posixGroup.inc:148
-#: personal/posix/class_posixAccount.inc:379
+#: admin/groups/posix/class_posixGroup.inc:74
 msgid "GID"
 msgstr "GID"
 
-#: admin/groups/posix/class_posixGroup.inc:72
+#: admin/groups/posix/class_posixGroup.inc:74
 msgid "GID value for this group"
 msgstr "Identifikátor (GID) pro tuto skupinu"
 
-#: admin/groups/posix/class_posixGroup.inc:79
-#: admin/groups/posix/class_posixGroup.inc:82
+#: admin/groups/posix/class_posixGroup.inc:81
+#: admin/groups/posix/class_posixGroup.inc:84
 msgid "Group members"
 msgstr "Členové skupiny"
 
-#: admin/groups/posix/class_posixGroup.inc:89
-#: personal/posix/class_posixAccount.inc:163
+#: admin/groups/posix/class_posixGroup.inc:91
+#: personal/posix/class_posixAccount.inc:168
 msgid "System trust"
 msgstr "systém důvěryhodnosti"
 
-#: admin/groups/posix/class_posixGroup.inc:93
-#: personal/posix/class_posixAccount.inc:167
+#: admin/groups/posix/class_posixGroup.inc:95
+#: personal/posix/class_posixAccount.inc:172
 msgid "Trust mode"
 msgstr "režim důvěryhodnosti"
 
-#: admin/groups/posix/class_posixGroup.inc:93
-#: personal/posix/class_posixAccount.inc:167
+#: admin/groups/posix/class_posixGroup.inc:95
+#: personal/posix/class_posixAccount.inc:172
 msgid "Type of authorization for those hosts"
 msgstr "Typ ověřování pro tyto stroje"
 
-#: admin/groups/posix/class_posixGroup.inc:97
-#: personal/posix/class_posixAccount.inc:171
-#: personal/posix/class_posixAccount.inc:193
+#: admin/groups/posix/class_posixGroup.inc:99
+#: personal/posix/class_posixAccount.inc:176
+#: personal/posix/class_posixAccount.inc:198
 msgid "disabled"
 msgstr "zakázáno"
 
-#: admin/groups/posix/class_posixGroup.inc:97
-#: personal/posix/class_posixAccount.inc:171
-#: personal/posix/class_posixAccount.inc:193
+#: admin/groups/posix/class_posixGroup.inc:99
+#: personal/posix/class_posixAccount.inc:176
+#: personal/posix/class_posixAccount.inc:198
 msgid "full access"
 msgstr "plný přístup"
 
-#: admin/groups/posix/class_posixGroup.inc:97
-#: personal/posix/class_posixAccount.inc:171
+#: admin/groups/posix/class_posixGroup.inc:99
+#: personal/posix/class_posixAccount.inc:176
 msgid "allow access to these hosts"
 msgstr "povolit přístup k těmto strojům"
 
-#: admin/groups/posix/class_posixGroup.inc:100
+#: admin/groups/posix/class_posixGroup.inc:102
 msgid "Only allow this group to connect to this list of hosts"
 msgstr "Této skupině umožnit připojení pouze na stroje z tohoto seznamu"
 
@@ -253,91 +251,91 @@ msgstr "Výchozí shell"
 msgid "Shell used by default when activating Unix tab."
 msgstr "Shell použitý jako výchozí při aktivaci Unix karty."
 
-#: personal/posix/class_posixAccount.inc:44
-#: personal/posix/class_posixAccount.inc:77
+#: personal/posix/class_posixAccount.inc:45
+#: personal/posix/class_posixAccount.inc:78
 msgid "Unix"
 msgstr "Unix"
 
-#: personal/posix/class_posixAccount.inc:45
+#: personal/posix/class_posixAccount.inc:46
 msgid "Edit users POSIX settings"
 msgstr "upravit POSIXová nastavení uživatele"
 
-#: personal/posix/class_posixAccount.inc:81
+#: personal/posix/class_posixAccount.inc:82
 msgid "Home directory"
 msgstr "Domovská složka"
 
-#: personal/posix/class_posixAccount.inc:81
+#: personal/posix/class_posixAccount.inc:82
 msgid "The path to the home directory of this user"
 msgstr "Umístění domovské složky tohoto uživatele"
 
-#: personal/posix/class_posixAccount.inc:86
+#: personal/posix/class_posixAccount.inc:87
 msgid "Shell"
 msgstr "shell"
 
-#: personal/posix/class_posixAccount.inc:86
+#: personal/posix/class_posixAccount.inc:87
 msgid "Which shell should be used when this user log in"
 msgstr "Který shell by měl být použit, když se uživatel přihlásí"
 
-#: personal/posix/class_posixAccount.inc:88
+#: personal/posix/class_posixAccount.inc:89
 msgid "unconfigured"
 msgstr "nenastaveno"
 
-#: personal/posix/class_posixAccount.inc:92
+#: personal/posix/class_posixAccount.inc:93
 msgid "Primary group"
 msgstr "Hlavní skupina"
 
-#: personal/posix/class_posixAccount.inc:92
+#: personal/posix/class_posixAccount.inc:93
 msgid "Primary group for this user"
 msgstr "Hlavní skupina tohoto uživatele"
 
-#: personal/posix/class_posixAccount.inc:96
+#: personal/posix/class_posixAccount.inc:97
 msgid "Status"
 msgstr "Stav"
 
-#: personal/posix/class_posixAccount.inc:96
+#: personal/posix/class_posixAccount.inc:97
 msgid "Status of this user unix account"
 msgstr "Stav tohoto unixového uživatelského účtu"
 
-#: personal/posix/class_posixAccount.inc:100
+#: personal/posix/class_posixAccount.inc:101
 msgid "Force user/group id"
 msgstr "Vynutit konkrétní identifikátor uživatele/skupiny"
 
-#: personal/posix/class_posixAccount.inc:100
+#: personal/posix/class_posixAccount.inc:101
 msgid "Force user id and group id values for this user"
 msgstr ""
 "Pro tohoto uživatele vynutit konkrétní identifikátory uživatele a jeho "
 "hlavní skupiny"
 
-#: personal/posix/class_posixAccount.inc:104
+#: personal/posix/class_posixAccount.inc:105
 msgid "User id"
 msgstr "Identifikátor uživatele"
 
-#: personal/posix/class_posixAccount.inc:104
+#: personal/posix/class_posixAccount.inc:105
 msgid "User id value for this user"
 msgstr "Hodnota identifikátoru účtu tohoto uživatele"
 
-#: personal/posix/class_posixAccount.inc:109
+#: personal/posix/class_posixAccount.inc:110
 msgid "Group id"
 msgstr "Idenifikátor skupiny"
 
-#: personal/posix/class_posixAccount.inc:109
+#: personal/posix/class_posixAccount.inc:110
 msgid "Group id value for this user"
 msgstr "Hodnota identifikátoru hlavní skupiny tohoto uživatele"
 
-#: personal/posix/class_posixAccount.inc:116
-#: personal/posix/class_posixAccount.inc:119
+#: personal/posix/class_posixAccount.inc:117
+#: personal/posix/class_posixAccount.inc:121
 msgid "Group membership"
 msgstr "Členství ve skupinách"
 
-#: personal/posix/class_posixAccount.inc:123
+#: personal/posix/class_posixAccount.inc:128
 msgid "Account"
 msgstr "Účet"
 
-#: personal/posix/class_posixAccount.inc:127
+#: personal/posix/class_posixAccount.inc:132
 msgid "User must change password on first login"
 msgstr "Uživatel musí při prvním přihlášení změnit heslo."
 
-#: personal/posix/class_posixAccount.inc:127
+#: personal/posix/class_posixAccount.inc:132
 msgid ""
 "User must change password on first login (needs a value for Delay before "
 "forcing password change)"
@@ -345,11 +343,11 @@ msgstr ""
 "Při prvním přihlášení musí uživatel změnit heslo (vyžaduje nastavenou "
 "hodnotu u Prodleva před vynucením změny hesla)"
 
-#: personal/posix/class_posixAccount.inc:131
+#: personal/posix/class_posixAccount.inc:136
 msgid "Minimum delay between password changes (days)"
 msgstr "Minimální prodleva mezi změnami hesla (dny)"
 
-#: personal/posix/class_posixAccount.inc:131
+#: personal/posix/class_posixAccount.inc:136
 msgid ""
 "The user won't be able to change his password before this number of days "
 "(leave empty to disable)"
@@ -357,11 +355,11 @@ msgstr ""
 "Uživatel nebude moci změnit své heslo před uplynutím tohoto počtu dnů "
 "(nevyplnění funkci vypíná)"
 
-#: personal/posix/class_posixAccount.inc:136
+#: personal/posix/class_posixAccount.inc:141
 msgid "Delay before forcing password change (days)"
 msgstr "Prodleva před vynucením změny hesla (dny)"
 
-#: personal/posix/class_posixAccount.inc:136
+#: personal/posix/class_posixAccount.inc:141
 msgid ""
 "The user will be forced to change his password after this number of days "
 "(leave empty to disable)"
@@ -369,22 +367,22 @@ msgstr ""
 "Po tomto počtu dnů bude uživatel přiměn ke změně hesla (nevyplnění funkce "
 "vypíná)"
 
-#: personal/posix/class_posixAccount.inc:141
+#: personal/posix/class_posixAccount.inc:146
 msgid "Password expiration date"
 msgstr "Datum skončení platnosti hesla"
 
-#: personal/posix/class_posixAccount.inc:141
+#: personal/posix/class_posixAccount.inc:146
 msgid ""
 "Date after which this user password will expire (leave empty to disable)"
 msgstr ""
 "Datum po kterém skončí platnost hesla uživatele (nevyplnění tuto funkci "
 "vypíná)"
 
-#: personal/posix/class_posixAccount.inc:146
+#: personal/posix/class_posixAccount.inc:151
 msgid "Delay of inactivity before disabling user (days)"
 msgstr "Délka nečinnosti uživatele, po které bude účet uživatele vypnut (dny)"
 
-#: personal/posix/class_posixAccount.inc:146
+#: personal/posix/class_posixAccount.inc:151
 msgid ""
 "Maximum delay of inactivity after password expiration before the user is "
 "disabled (leave empty to disable)"
@@ -393,11 +391,11 @@ msgstr ""
 "než dojde k jeho vypnutí (zůstane ovšem zachován). Nevyplnění tuto funkci "
 "vypíná"
 
-#: personal/posix/class_posixAccount.inc:151
+#: personal/posix/class_posixAccount.inc:156
 msgid "Delay for user warning before password expiry (days)"
 msgstr "Prodleva varování uživatele před skončením platnosti hesla (dny)"
 
-#: personal/posix/class_posixAccount.inc:151
+#: personal/posix/class_posixAccount.inc:156
 msgid ""
 "The user will be warned this number of days before his password expiration "
 "(leave empty to disable)"
@@ -405,46 +403,42 @@ msgstr ""
 "Uživatel bude varován nastavený počet dnů předem před skončením platnosti "
 "hesla (nevyplnění tuto funkci vypíná)"
 
-#: personal/posix/class_posixAccount.inc:174
+#: personal/posix/class_posixAccount.inc:179
 msgid "Only allow this user to connect to this list of hosts"
 msgstr "Tomuto uživateli povolit připojení pouze na počítače z tohoto seznamu"
 
-#: personal/posix/class_posixAccount.inc:252
+#: personal/posix/class_posixAccount.inc:257
 msgid "automatic"
 msgstr "automatické"
 
-#: personal/posix/class_posixAccount.inc:313
+#: personal/posix/class_posixAccount.inc:318
 msgid "expired"
 msgstr "platnost skončila"
 
-#: personal/posix/class_posixAccount.inc:315
+#: personal/posix/class_posixAccount.inc:320
 msgid "grace time active"
 msgstr "běží čas odkladu"
 
-#: personal/posix/class_posixAccount.inc:318
-#: personal/posix/class_posixAccount.inc:320
-#: personal/posix/class_posixAccount.inc:322
+#: personal/posix/class_posixAccount.inc:323
+#: personal/posix/class_posixAccount.inc:325
+#: personal/posix/class_posixAccount.inc:327
 msgid "active"
 msgstr "aktivní"
 
-#: personal/posix/class_posixAccount.inc:318
+#: personal/posix/class_posixAccount.inc:323
 msgid "password expired"
 msgstr "platnost hesla skončila"
 
-#: personal/posix/class_posixAccount.inc:320
+#: personal/posix/class_posixAccount.inc:325
 msgid "password not changeable"
 msgstr "heslo nelze změnit"
 
-#: personal/posix/class_posixAccount.inc:376
-msgid "UID"
-msgstr "UID"
-
-#: personal/posix/class_posixAccount.inc:492
+#: personal/posix/class_posixAccount.inc:482
 #, php-format
 msgid "Group of user %s"
 msgstr "Skupina uživatele %s"
 
-#: personal/posix/class_posixAccount.inc:514
+#: personal/posix/class_posixAccount.inc:504
 #, php-format
 msgid ""
 "Could not create automatic primary group (using gidNumber \"%s\"), because "
@@ -453,73 +447,73 @@ msgstr ""
 "Automatickou hlavní skupinu (pomocí gidNumber „%s“) se nedaří vytvořit  "
 "kvůli následujícím chybám"
 
-#: personal/posix/class_posixAccount.inc:747
-#: personal/posix/class_posixAccount.inc:768
-#: personal/posix/class_posixAccount.inc:959
-#: personal/posix/class_posixAccount.inc:976
-#: personal/posix/class_posixAccount.inc:988
+#: personal/posix/class_posixAccount.inc:737
+#: personal/posix/class_posixAccount.inc:758
+#: personal/posix/class_posixAccount.inc:949
+#: personal/posix/class_posixAccount.inc:966
+#: personal/posix/class_posixAccount.inc:978
 msgid "Warning"
 msgstr "Varování"
 
-#: personal/posix/class_posixAccount.inc:747
+#: personal/posix/class_posixAccount.inc:737
 #, php-format
 msgid "Unknown ID allocation method \"%s\"!"
 msgstr "Neznámá metoda přiřazování identifikátorů „%s“!"
 
-#: personal/posix/class_posixAccount.inc:769
+#: personal/posix/class_posixAccount.inc:759
 #, php-format
 msgid "Timeout while waiting for lock. Ignoring lock from %s!"
 msgstr ""
 "Překročení časového limitu při čekání na zámek. Zámek od %s nebude brán v "
 "potaz!"
 
-#: personal/posix/class_posixAccount.inc:796
-#: personal/posix/class_posixAccount.inc:836
-#: personal/posix/class_posixAccount.inc:848
-#: personal/posix/class_posixAccount.inc:852
-#: personal/posix/class_posixAccount.inc:859
-#: personal/posix/class_posixAccount.inc:868
-#: personal/posix/class_posixAccount.inc:930
+#: personal/posix/class_posixAccount.inc:786
+#: personal/posix/class_posixAccount.inc:826
+#: personal/posix/class_posixAccount.inc:838
+#: personal/posix/class_posixAccount.inc:842
+#: personal/posix/class_posixAccount.inc:849
+#: personal/posix/class_posixAccount.inc:858
+#: personal/posix/class_posixAccount.inc:920
 msgid "Error"
 msgstr "Chyba"
 
-#: personal/posix/class_posixAccount.inc:796
-#: personal/posix/class_posixAccount.inc:836
-#: personal/posix/class_posixAccount.inc:848
-#: personal/posix/class_posixAccount.inc:852
-#: personal/posix/class_posixAccount.inc:859
-#: personal/posix/class_posixAccount.inc:868
+#: personal/posix/class_posixAccount.inc:786
+#: personal/posix/class_posixAccount.inc:826
+#: personal/posix/class_posixAccount.inc:838
+#: personal/posix/class_posixAccount.inc:842
+#: personal/posix/class_posixAccount.inc:849
+#: personal/posix/class_posixAccount.inc:858
 msgid "Cannot allocate a free ID:"
 msgstr "Není k dispozici volné ID:"
 
-#: personal/posix/class_posixAccount.inc:796
+#: personal/posix/class_posixAccount.inc:786
 #, php-format
 msgid "%sPoolMin >= %sPoolMax!"
 msgstr "%sPoolMin >= %sPoolMax!"
 
-#: personal/posix/class_posixAccount.inc:828
+#: personal/posix/class_posixAccount.inc:818
 msgid "LDAP error"
 msgstr "chyba LDAPu"
 
-#: personal/posix/class_posixAccount.inc:836
+#: personal/posix/class_posixAccount.inc:826
 msgid "sambaUnixIdPool is not unique!"
 msgstr "Identifikátor sambaUnixIdPool není jedinečný!"
 
-#: personal/posix/class_posixAccount.inc:848
-#: personal/posix/class_posixAccount.inc:852
+#: personal/posix/class_posixAccount.inc:838
+#: personal/posix/class_posixAccount.inc:842
 msgid "no ID available!"
 msgstr "Není k dispozici ID!"
 
-#: personal/posix/class_posixAccount.inc:868
+#: personal/posix/class_posixAccount.inc:858
 msgid "maximum tries exceeded!"
 msgstr "překročen maximální počet neúspěšných pokusů!"
 
-#: personal/posix/class_posixAccount.inc:930
+#: personal/posix/class_posixAccount.inc:920
 msgid "Cannot allocate a free ID!"
 msgstr "Není k dispozici volné ID – není co přidělit!"
 
-#: personal/posix/class_posixAccount.inc:961
-#: personal/posix/class_posixAccount.inc:978
+#: personal/posix/class_posixAccount.inc:951
+#: personal/posix/class_posixAccount.inc:968
 #, php-format
 msgid ""
 "%s\n"
@@ -527,10 +521,10 @@ msgid ""
 "Using default base!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:979
+#: personal/posix/class_posixAccount.inc:969
 msgid "\"nextIdHook\" did not return a valid output!"
 msgstr ""
 
-#: personal/posix/class_posixAccount.inc:988
+#: personal/posix/class_posixAccount.inc:978
 msgid "\"nextIdHook\" is not available. Using default base!"
 msgstr "„nextIdHook“ není k dispozici. Bude použit výchozí základ!"

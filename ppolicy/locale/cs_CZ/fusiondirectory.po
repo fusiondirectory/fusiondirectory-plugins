@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-21 14:05+0000\n"
+"POT-Creation-Date: 2019-10-01 16:31+0000\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -35,8 +35,8 @@ msgid "Manage password policies"
 msgstr "Spravovat zásady hesel"
 
 #: admin/ppolicy/class_ppolicy.inc:27 admin/ppolicy/class_ppolicy.inc:31
-#: personal/ppolicy/class_ppolicyAccount.inc:27
-#: personal/ppolicy/class_ppolicyAccount.inc:42
+#: personal/ppolicy/class_ppolicyAccount.inc:28
+#: personal/ppolicy/class_ppolicyAccount.inc:43
 msgid "Password policy"
 msgstr "Zásada hesel"
 
@@ -45,7 +45,7 @@ msgid "Password policy for ppolicy overlay"
 msgstr "Pravidla pro hesla pro překrytí ppolicy"
 
 #: admin/ppolicy/class_ppolicy.inc:47
-#: personal/ppolicy/class_ppolicyAccount.inc:45
+#: personal/ppolicy/class_ppolicyAccount.inc:46
 msgid "Policy"
 msgstr "Zásada"
 
@@ -237,10 +237,21 @@ msgstr ""
 "zadáním hesla."
 
 #: admin/ppolicy/class_ppolicy.inc:136
+msgid "Stored failures"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:136
+msgid ""
+"Maximum number of failed bind attempts to store in a user's entry. If not "
+"present, or its value is 0, then it defaults to the value of \"Maximum "
+"failures\". If that value is also 0, the default is 5."
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:141
 msgid "Must change"
 msgstr "Vynutit změnu"
 
-#: admin/ppolicy/class_ppolicy.inc:136
+#: admin/ppolicy/class_ppolicy.inc:141
 msgid ""
 "Whether the user must change their password after an account is reset by an "
 "administrator following an automatic lockout"
@@ -327,59 +338,59 @@ msgstr "Výchozí ppolicy %s nebyla v LDAP nalezena!"
 msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
 msgstr "Zásada Ppolicy %s, nastavená pro uživatele %s nebyla v LDAP nalezena!"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:28
+#: personal/ppolicy/class_ppolicyAccount.inc:29
 msgid "Edit user's password policy"
 msgstr "Upravit zásady hesel uživatelů"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:45
+#: personal/ppolicy/class_ppolicyAccount.inc:46
 msgid "Use a specific policy for this user"
 msgstr "Pro tohoto uživatele použít zvláštní zásady"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:49
+#: personal/ppolicy/class_ppolicyAccount.inc:50
 msgid "Last password change"
 msgstr "Heslo bylo naposledy změněno"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:49
+#: personal/ppolicy/class_ppolicyAccount.inc:50
 msgid "Last time the password for the entry was changed"
 msgstr "Kdy bylo heslo k této položce změněno naposledy"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:53
+#: personal/ppolicy/class_ppolicyAccount.inc:54
 msgid "Account locked time"
 msgstr "Doba, po kterou je účet uzamčen"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:53
+#: personal/ppolicy/class_ppolicyAccount.inc:54
 msgid "Time the account was locked"
 msgstr "Okamžik zamčení účtu"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:57
+#: personal/ppolicy/class_ppolicyAccount.inc:58
 msgid "Reset locking / force change"
 msgstr "Resetovat uzamykání / vynutit změnu"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:57
+#: personal/ppolicy/class_ppolicyAccount.inc:58
 msgid "Resets the lock status of this account and/or force a password change"
 msgstr "Resetuje zamčený status tohoto účtu a/nebo vynutí změnu hesla"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:60
+#: personal/ppolicy/class_ppolicyAccount.inc:61
 msgid "Force password change (resets locking)"
 msgstr "Vynutit změnu hesla (resetuje zamykání)"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:60
+#: personal/ppolicy/class_ppolicyAccount.inc:61
 msgid "Reset locking (same password)"
 msgstr "Resetovat uzamčení (stejné heslo)"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:75
+#: personal/ppolicy/class_ppolicyAccount.inc:76
 msgid "Use the default"
 msgstr "Použít výchozí"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:81
+#: personal/ppolicy/class_ppolicyAccount.inc:82
 msgid "Never"
 msgstr "Nikdy"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:88
+#: personal/ppolicy/class_ppolicyAccount.inc:89
 msgid "Unlocked"
 msgstr "Odemčeno"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:90
+#: personal/ppolicy/class_ppolicyAccount.inc:91
 msgid "Locked permanently"
 msgstr "Trvale uzamčeno"
 

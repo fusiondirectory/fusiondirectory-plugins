@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-21 14:04+0000\n"
+"POT-Creation-Date: 2019-10-01 16:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -34,14 +34,14 @@ msgstr "proměnná pro FAI"
 #: admin/fai/class_faiProfile.inc:46 admin/fai/class_faiPackage.inc:395
 #: admin/fai/class_faiHook.inc:47 admin/fai/class_faiTemplate.inc:165
 #: admin/fai/class_faiTemplateEntry.inc:139
-#: admin/fai/class_faiPartitionTable.inc:342
+#: admin/fai/class_faiPartitionTable.inc:338
 msgid "Properties"
 msgstr "Vlastnosti"
 
 #: admin/fai/class_faiVariable.inc:50 admin/fai/class_faiScript.inc:50
 #: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPackage.inc:398
 #: admin/fai/class_faiHook.inc:50 admin/fai/class_faiTemplate.inc:168
-#: admin/fai/class_faiPartitionTable.inc:345
+#: admin/fai/class_faiPartitionTable.inc:341
 msgid "Class name"
 msgstr "Název třídy"
 
@@ -57,14 +57,14 @@ msgstr "Název třídy proměnných"
 #: admin/fai/class_faiHook.inc:54 admin/fai/class_faiHook.inc:72
 #: admin/fai/class_faiTemplate.inc:172
 #: admin/fai/class_faiTemplateEntry.inc:146
-#: admin/fai/class_faiPartitionTable.inc:349
+#: admin/fai/class_faiPartitionTable.inc:345
 msgid "Description"
 msgstr "Popis"
 
 #: admin/fai/class_faiVariable.inc:54 admin/fai/class_faiScript.inc:54
 #: admin/fai/class_faiProfile.inc:53 admin/fai/class_faiPackage.inc:402
 #: admin/fai/class_faiHook.inc:54 admin/fai/class_faiTemplate.inc:172
-#: admin/fai/class_faiPartitionTable.inc:349
+#: admin/fai/class_faiPartitionTable.inc:345
 msgid "Short description of the class"
 msgstr "Stručný popis třídy"
 
@@ -187,7 +187,7 @@ msgid "Physical partitions combined in this LVM volume"
 msgstr "Fyzické oddíly zkombinované v tomto LVM svazku"
 
 #: admin/fai/class_faiDiskEntry.inc:281
-#: admin/fai/class_faiPartitionTable.inc:362
+#: admin/fai/class_faiPartitionTable.inc:358
 msgid "Partitions in this class"
 msgstr "Oddíly v této třídě"
 
@@ -545,7 +545,7 @@ msgstr "profil FAI"
 msgid "FAI Profile"
 msgstr "Sada nastavení FAI"
 
-#: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPartitionTable.inc:345
+#: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPartitionTable.inc:341
 msgid "Partition table class name"
 msgstr "Název třídy tabulky oddílů"
 
@@ -600,8 +600,8 @@ msgid "Edit configuration"
 msgstr "Upravit nastavení"
 
 #: admin/fai/class_faiPackage.inc:251 admin/fai/class_faiTemplate.inc:109
-#: admin/fai/class_faiPartitionTable.inc:251
-#: admin/fai/class_faiPartitionTable.inc:292
+#: admin/fai/class_faiPartitionTable.inc:247
+#: admin/fai/class_faiPartitionTable.inc:288
 #: admin/systems/services/repository/class_serviceRepository.inc:240
 #: admin/systems/services/repository/class_serviceRepository.inc:257
 #: admin/systems/services/repository/class_serviceRepository.inc:261
@@ -620,11 +620,11 @@ msgstr "seznam balíčků pro FAI"
 msgid "FAI Package"
 msgstr "FAI balíček"
 
-#: admin/fai/class_faiPackage.inc:408 admin/systems/class_faiStartup.inc:100
+#: admin/fai/class_faiPackage.inc:408 admin/systems/class_faiStartup.inc:101
 msgid "Repository"
 msgstr "Repozitář"
 
-#: admin/fai/class_faiPackage.inc:411 admin/systems/class_faiStartup.inc:88
+#: admin/fai/class_faiPackage.inc:411 admin/systems/class_faiStartup.inc:89
 #: admin/systems/services/repository/class_serviceRepository.inc:40
 msgid "Release"
 msgstr "Vydání"
@@ -707,21 +707,21 @@ msgstr "Soubory se šablonami"
 msgid "Template files in this class"
 msgstr "Soubory se šablonami v této třídě"
 
-#: admin/fai/class_faiManagement.inc:117 admin/fai/class_faiManagement.inc:122
+#: admin/fai/class_faiManagement.inc:27 admin/fai/class_faiManagement.inc:34
 #: admin/systems/class_faiStartup.inc:61 config/fai/class_faiConfig.inc:27
 #: config/fai/class_faiConfig.inc:42
 msgid "FAI"
 msgstr "FAI"
 
-#: admin/fai/class_faiManagement.inc:118
+#: admin/fai/class_faiManagement.inc:28
 msgid "Manage FAI software packages and deployment recipes"
 msgstr "Spravovat FAI balíčky programového vybavení a skripty pro nasazování"
 
-#: admin/fai/class_faiManagement.inc:138
+#: admin/fai/class_faiManagement.inc:62
 msgid "There are no FAI branches"
 msgstr "Nejsou zde žádné FAI větve"
 
-#: admin/fai/class_faiManagement.inc:141
+#: admin/fai/class_faiManagement.inc:65
 msgid " Please add at least one repository service to create those."
 msgstr "Pro vytvoření těchto přidejte alespoň jeden repozitář."
 
@@ -777,32 +777,32 @@ msgstr "Přístup"
 msgid "Access rights"
 msgstr "Přístupová práva"
 
-#: admin/fai/class_faiPartitionTable.inc:109
+#: admin/fai/class_faiPartitionTable.inc:105
 msgid "Add disk"
 msgstr "Přidat jednotku"
 
-#: admin/fai/class_faiPartitionTable.inc:119
+#: admin/fai/class_faiPartitionTable.inc:115
 msgid "Add RAID"
 msgstr "přidat RAID"
 
-#: admin/fai/class_faiPartitionTable.inc:130
+#: admin/fai/class_faiPartitionTable.inc:126
 msgid "Add LVM"
 msgstr "Přidat LVM"
 
-#: admin/fai/class_faiPartitionTable.inc:141
+#: admin/fai/class_faiPartitionTable.inc:137
 msgid "Add cryptsetup"
 msgstr "Přidat cryptsetup"
 
-#: admin/fai/class_faiPartitionTable.inc:321
+#: admin/fai/class_faiPartitionTable.inc:317
 msgid "Partition table"
 msgstr "Tabulka rozdělení úložiště"
 
-#: admin/fai/class_faiPartitionTable.inc:322
-#: admin/fai/class_faiPartitionTable.inc:327
+#: admin/fai/class_faiPartitionTable.inc:318
+#: admin/fai/class_faiPartitionTable.inc:323
 msgid "FAI partition table"
 msgstr "tabulka dělení úložiště pro FAI"
 
-#: admin/fai/class_faiPartitionTable.inc:355
+#: admin/fai/class_faiPartitionTable.inc:351
 msgid "Discs"
 msgstr "úložné jednotky"
 
@@ -856,28 +856,28 @@ msgstr "Zvolený soubor: %s"
 msgid "Full automated installation"
 msgstr "Plně automatizovaná instalace"
 
-#: admin/systems/class_faiStartup.inc:80
+#: admin/systems/class_faiStartup.inc:81
 msgid "FAI settings"
 msgstr "nastavení FAI"
 
-#: admin/systems/class_faiStartup.inc:84
+#: admin/systems/class_faiStartup.inc:85
 msgid "FAI profil and release to be applied to this computer"
 msgstr "Profil FAI a vydání, které má být použito na tento počítač"
 
-#: admin/systems/class_faiStartup.inc:88
+#: admin/systems/class_faiStartup.inc:89
 msgid "FAI debian release to be installed on this computer"
 msgstr ""
 "FAI vydání systému Debian, které má být nainstalováno na tento počítač"
 
-#: admin/systems/class_faiStartup.inc:92
+#: admin/systems/class_faiStartup.inc:93
 msgid "Profil"
 msgstr "Sada nastavení"
 
-#: admin/systems/class_faiStartup.inc:92
+#: admin/systems/class_faiStartup.inc:93
 msgid "FAI profil to be applied to this computer"
 msgstr "Profil FAI, který má být použit na tento počítač"
 
-#: admin/systems/class_faiStartup.inc:100
+#: admin/systems/class_faiStartup.inc:101
 msgid "FAI Debian repository to be used for installation"
 msgstr "FAI repozitář systému Debian, který má být použit pro instalaci"
 

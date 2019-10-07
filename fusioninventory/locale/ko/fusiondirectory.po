@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-21 14:04+0000\n"
+"POT-Creation-Date: 2019-10-01 16:31+0000\n"
 "PO-Revision-Date: 2018-08-13 19:54+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -40,64 +40,64 @@ msgstr ""
 msgid "FusionInventory agent configuration"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:42
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:43
 msgid "Configuration"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:45
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:46
 msgid "Server"
 msgstr "서버"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:45
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:46
 msgid "Server which FI will send inventory infos"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:49
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:50
 msgid "Delay time"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:49
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:50
 msgid "Maximum initial delay before first target, in seconds"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:54
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:55
 msgid "Wait"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:54
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:72
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:55
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:73
 msgid "Maximum delay between each targets, in seconds"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:61
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:62
 msgid "Web Interface"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:64
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:65
 msgid "Disable web interface"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:64
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:65
 msgid "Do not use web interface"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:68
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:69
 msgid "IP"
 msgstr "IP"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:68
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:69
 msgid "Network interface to listen to"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:72
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:73
 msgid "Port"
 msgstr "포트"
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:77
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:78
 msgid "Trust"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:77
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:78
 msgid "IPs allowed to launch inventory task through web interface"
 msgstr ""
 
@@ -109,54 +109,54 @@ msgstr ""
 msgid "Inventory Viewer"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:77
-#: admin/systems/fusioninventory/class_fiInventory.inc:80
+#: admin/systems/fusioninventory/class_fiInventory.inc:78
+#: admin/systems/fusioninventory/class_fiInventory.inc:81
 msgid "Inventory object"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:95
+#: admin/systems/fusioninventory/class_fiInventory.inc:96
 msgid "Matching system"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:98
-#: admin/systems/fusioninventory/class_fiInventory.inc:395
+#: admin/systems/fusioninventory/class_fiInventory.inc:99
+#: admin/systems/fusioninventory/class_fiInventory.inc:396
 msgid "System"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:98
-#: admin/systems/fusioninventory/class_fiInventory.inc:395
+#: admin/systems/fusioninventory/class_fiInventory.inc:99
+#: admin/systems/fusioninventory/class_fiInventory.inc:396
 msgid "System entry matching this inventory"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:105
+#: admin/systems/fusioninventory/class_fiInventory.inc:106
 msgid "Hardware"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:111
+#: admin/systems/fusioninventory/class_fiInventory.inc:112
 msgid "Software"
 msgstr "소프트웨어"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:117
+#: admin/systems/fusioninventory/class_fiInventory.inc:118
 msgid "Users"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:123
+#: admin/systems/fusioninventory/class_fiInventory.inc:124
 msgid "Processes"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:129
+#: admin/systems/fusioninventory/class_fiInventory.inc:130
 msgid "Other"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:343
+#: admin/systems/fusioninventory/class_fiInventory.inc:344
 msgid "Create a system based on this inventory"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:358
+#: admin/systems/fusioninventory/class_fiInventory.inc:359
 msgid "Create"
 msgstr "생성"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:363
+#: admin/systems/fusioninventory/class_fiInventory.inc:364
 msgid "No matching system"
 msgstr ""
 

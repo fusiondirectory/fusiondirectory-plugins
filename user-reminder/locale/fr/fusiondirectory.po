@@ -5,16 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
-# Benoit Mortier <benoit.mortier@opensides.be>, 2019
+# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-03-21 14:05+0000\n"
+"POT-Creation-Date: 2019-10-01 16:31+0000\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2019\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -98,6 +98,7 @@ msgstr "Transférer les alertes au responsable"
 #: config/user-reminder/class_userReminderConfig.inc:80
 #: config/user-reminder/class_userReminderConfig.inc:106
 #: config/user-reminder/class_userReminderConfig.inc:132
+#: config/user-reminder/class_userReminderConfig.inc:163
 msgid "Subject"
 msgstr "Sujet"
 
@@ -111,6 +112,7 @@ msgstr "[FusionDirectory] Votre compte est sur le point d'expirer"
 
 #: config/user-reminder/class_userReminderConfig.inc:85
 #: config/user-reminder/class_userReminderConfig.inc:137
+#: config/user-reminder/class_userReminderConfig.inc:168
 #, php-format
 msgid "Body (%s are cn and login)"
 msgstr "Corps (les %s sont le cn et l’identifiant)"
@@ -210,9 +212,63 @@ msgstr ""
 "Cher %1$s,\n"
 "l’expiration de votre compte %2$s a été reportée avec succès.\n"
 
+#: config/user-reminder/class_userReminderConfig.inc:150
+msgid "Expiration email settings"
+msgstr "Paramètres pour les messages d'expiration"
+
+#: config/user-reminder/class_userReminderConfig.inc:153
+msgid "Send an email"
+msgstr "Envoyer un e-mail"
+
+#: config/user-reminder/class_userReminderConfig.inc:153
+msgid "Whether to send an email after expiration to inform the user"
+msgstr ""
+"S'il faut envoyer un courrier électronique après l'expiration pour informer "
+"l'utilisateur"
+
+#: config/user-reminder/class_userReminderConfig.inc:158
+msgid "Forward to the manager"
+msgstr "Transférer les alertes au responsable"
+
+#: config/user-reminder/class_userReminderConfig.inc:158
+msgid "Forward account expiration to the manager"
+msgstr "Transférer la confirmation de l'expiration du compte au responsable"
+
+#: config/user-reminder/class_userReminderConfig.inc:163
+msgid "Subject of the expiration email"
+msgstr "Sujet du courriel d'expiration"
+
+#: config/user-reminder/class_userReminderConfig.inc:165
+msgid "[FusionDirectory] Your account has expired"
+msgstr "[FusionDirectory] Votre compte est expiré"
+
+#: config/user-reminder/class_userReminderConfig.inc:169
+#, php-format
+msgid ""
+"Body of the expiration email, sent when the user has expired. Use %s for the"
+" cn and uid."
+msgstr ""
+"Corps du courriel d'expiration, envoyé lorsque le compte de l'utilisateur a "
+"expiré. Utilisez %s pour le cn et l’identifiant."
+
+#: config/user-reminder/class_userReminderConfig.inc:171
+#, php-format
+msgid ""
+"Dear %1$s,\n"
+" your account %2$s has expired.\n"
+msgstr ""
+"Cher %1$s,\n"
+"\n"
+"votre compte %2$s a expiré.\n"
+"\n"
+
 #: html/class_expiredUserPostpone.inc:59
 msgid "This token is invalid"
 msgstr "Ce jeton n'est pas valide"
+
+#: html/class_expiredUserPostpone.inc:62
+msgid "Token is missing from URL"
+msgstr "Le jeton est absent de l'URL"
 
 #: html/class_expiredUserPostpone.inc:230
 msgid "Contact your administrator, there was a problem with mail server"
