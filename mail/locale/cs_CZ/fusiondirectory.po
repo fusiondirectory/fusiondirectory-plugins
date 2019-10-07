@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-06-27 08:29+0000\n"
+"POT-Creation-Date: 2019-10-01 16:18+0000\n"
 "PO-Revision-Date: 2016-08-29 15:14+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -146,31 +146,30 @@ msgid "Which attribute will be used to create accounts."
 msgstr "Který atribut má být použit pro vytváření účtů."
 
 #: config/mail/class_mailPluginConfig.inc:50
-msgid "Mail user template"
-msgstr "Šablona uživatele e-mailu"
+msgid "User account template"
+msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:51
-msgid "Override the user account creation syntax."
-msgstr "Přebít syntaxi vytváření uživatelského účtu."
+msgid ""
+"Override the user account creation syntax. Default is %PREFIX%%UATTRIB%."
+msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:55
-msgid "Mail folder template"
-msgstr "Šablona složky e-mailu"
+msgid "Group account template"
+msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:56
-msgid "Override the methods default account creation syntax."
-msgstr "Přebít způsoby syntaxe vytvoření výchozího účtu."
+msgid ""
+"Override the group account creation syntax. Default is %PREFIX%%UATTRIB%."
+msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:60
 msgid "Use cyrus UNIX style"
 msgstr "Použít cyrus v unixovém stylu"
 
 #: config/mail/class_mailPluginConfig.inc:61
-msgid ""
-"Determines if 'foo/bar' or 'foo.bar' should be uses as namespaces in IMAP."
+msgid "Determines if \"foo/bar\" or \"foo.bar\" should be uses as namespaces in IMAP."
 msgstr ""
-"Určuje, zda mají mít jmenné prostory v IMAP podobu něco/neco nebo něco.něco "
-"."
 
 #: config/mail/class_mailPluginConfig.inc:65
 msgid "Delete mailbox on account deletion"
