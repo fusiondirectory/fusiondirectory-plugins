@@ -23,7 +23,7 @@ class faiBaseSelector extends baseSelector
 {
   protected $select;
 
-  function __construct (array $bases, string $base = NULL)
+  function __construct (array $bases, string $base = '')
   {
     parent::__construct($bases, $base);
     $this->select = new SelectAttribute(
@@ -34,7 +34,7 @@ class faiBaseSelector extends baseSelector
     $this->select->setSubmitForm(TRUE);
   }
 
-  function setBases ($bases)
+  function setBases (array $bases)
   {
     $this->pathMapping = $bases;
 
@@ -43,7 +43,7 @@ class faiBaseSelector extends baseSelector
     }
   }
 
-  function update ($force = FALSE)
+  function update (bool $force = FALSE): bool
   {
     if (!is_object($this->select)) {
       return TRUE;
