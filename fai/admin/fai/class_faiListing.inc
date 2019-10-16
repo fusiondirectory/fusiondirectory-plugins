@@ -27,6 +27,9 @@ class faiListing extends managementListing
 
     if ($this->baseMode) {
       // Instanciate base selector
+      if (!is_string($this->base)) {
+        $this->base = '';
+      }
       $this->baseSelector = new faiBaseSelector($this->bases, $this->base);
       $this->refreshBasesList();
     } else {
