@@ -120,6 +120,7 @@ class publicFormPage extends standAlonePage
           'fdPublicFormPrivate'           => 1,
           'fdPublicFormCreationBase'      => 1,
           'fdPublicFormTosUrl'            => 1,
+          'fdPublicFormCaptcha'           => 1,
           'fdPublicFormAlteredAttributes' => '*',
         ],
         $this->invitation['fdInvitationFormDN'],
@@ -141,6 +142,7 @@ class publicFormPage extends standAlonePage
           'fdPublicFormPrivate'           => 1,
           'fdPublicFormCreationBase'      => 1,
           'fdPublicFormTosUrl'            => 1,
+          'fdPublicFormCaptcha'           => 1,
           'fdPublicFormAlteredAttributes' => '*',
         ],
         NULL,
@@ -218,6 +220,16 @@ class publicFormPage extends standAlonePage
   protected function submitForm ()
   {
     global $config, $ui;
+
+    /* Check Captcha */
+    if (isset($this->form['fdPublicFormCaptcha']) && ($this->form['fdPublicFormCaptcha'] == 'TRUE')) {
+      require_once($config->get_cfg_value('PublicFormSecurimagePath'));
+      $securimage = new Securimage();
+      if (!$securimage->check($_POST['captcha_code'])) {
+        msg_dialog::display(_('Error'), _('Captcha code was wrong!'), ERROR_DIALOG);
+        return;
+      }
+    }
 
     /* Check TOS checkbox */
     if (isset($this->form['fdPublicFormTosUrl']) && !isset($_POST['tosCheckBox'])) {
@@ -307,6 +319,8 @@ class publicFormPage extends standAlonePage
 
   function execute ()
   {
+    global $config;
+
     if (!$this->activated) {
       return;
     }
@@ -321,6 +335,11 @@ class publicFormPage extends standAlonePage
       $templateOutput = $this->template->execute();
       // TODO - Check that no dialogs are opened?
       $smarty->assign('template_dialog', $templateOutput);
+
+      if (isset($this->form['fdPublicFormCaptcha']) && ($this->form['fdPublicFormCaptcha'] == 'TRUE')) {
+        require_once($config->get_cfg_value('PublicFormSecurimagePath'));
+        $smarty->assign('captcha', Securimage::getCaptchaHtml(['securimage_path' => 'securimage/']));
+      }
     }
 
     $smarty->assign('done',         $this->done);

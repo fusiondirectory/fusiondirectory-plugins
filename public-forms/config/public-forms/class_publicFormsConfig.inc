@@ -44,6 +44,10 @@ class publicFormsConfig extends simplePlugin
             'fdPublicFormRDN', TRUE,
             'ou=forms'
           ),
+          new StringAttribute(
+            _('Securimage path'), _('If you wish to use captchas in your forms, you need to install securimage'),
+            'fdPublicFormSecurimagePath', FALSE
+          ),
         ]
       ],
     ];
