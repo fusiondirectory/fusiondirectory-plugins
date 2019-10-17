@@ -45,8 +45,12 @@ class publicFormsConfig extends simplePlugin
             'ou=forms'
           ),
           new StringAttribute(
-            _('Securimage path'), _('If you wish to use captchas in your forms, you need to install securimage'),
+            _('Securimage path'), _('If you wish to use captchas in your forms, you need to install securimage. Specify here the path to the main class.'),
             'fdPublicFormSecurimagePath', FALSE
+          ),
+          new StringAttribute(
+            _('Securimage URI'), _('The base URI at which securimage is available'),
+            'fdPublicFormSecurimageURI', FALSE
           ),
         ]
       ],

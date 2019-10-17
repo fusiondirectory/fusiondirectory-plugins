@@ -325,6 +325,41 @@ class publicFormPage extends standAlonePage
       return;
     }
 
+    if (isset($_GET['captcha'])) {
+      /* We cannot use securimage_show.php and securimage_play.php because they cannot access our session
+       * So we use publicform.php?captcha=show and publicform.php?captcha=play instead */
+      require_once($config->get_cfg_value('PublicFormSecurimagePath'));
+
+      /* Showing or playing captcha */
+      switch ($_GET['captcha']) {
+        case 'show':
+          $img = new Securimage();
+
+          // set namespace if supplied to script via HTTP GET
+          if (!empty($_GET['namespace'])) {
+            $img->setNamespace($_GET['namespace']);
+          }
+
+          $img->show();
+          break;
+        case 'play':
+          $img = new Securimage();
+
+          // set namespace if supplied to script via HTTP GET
+          if (!empty($_GET['namespace'])) {
+            $img->setNamespace($_GET['namespace']);
+          }
+
+          // mp3 or wav format
+          $format = ((isset($_GET['format']) && strtolower($_GET['format']) == 'mp3') ? 'mp3' : NULL);
+
+          $img->outputAudioFile($format);
+          break;
+        default:
+      }
+      return;
+    }
+
     $this->save_object();
 
     $smarty = get_smarty();
@@ -338,7 +373,7 @@ class publicFormPage extends standAlonePage
 
       if (isset($this->form['fdPublicFormCaptcha']) && ($this->form['fdPublicFormCaptcha'] == 'TRUE')) {
         require_once($config->get_cfg_value('PublicFormSecurimagePath'));
-        $smarty->assign('captcha', Securimage::getCaptchaHtml(['securimage_path' => 'securimage/']));
+        $smarty->assign('captcha', ['securimage_uri' => $config->get_cfg_value('PublicFormSecurimageURI', 'securimage/')]);
       }
     }
 
