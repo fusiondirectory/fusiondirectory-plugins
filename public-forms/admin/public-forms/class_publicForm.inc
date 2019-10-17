@@ -90,6 +90,11 @@ class publicForm extends simplePlugin
             _('TOS URL'), _('Terms of service URL. If filled, this adds a mandatory checkbox to agree to the terms at this URL.'),
             'fdPublicFormTosUrl', FALSE
           ),
+          new BooleanAttribute(
+            _('Captcha'), _('Add a captcha to the form'),
+            'fdPublicFormCaptcha', FALSE,
+            FALSE
+          ),
         ]
       ],
     ];
@@ -97,6 +102,8 @@ class publicForm extends simplePlugin
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
   {
+    global $config;
+
     if ($attributesInfo === NULL) {
       $attributesInfo = $this->getAttributesInfo();
     }
@@ -111,6 +118,12 @@ class publicForm extends simplePlugin
 
     $this->typeChanged();
     $this->attributesAccess['fdPublicFormTemplateType']->setSubmitForm('typeChanged');
+
+    if ($config->get_cfg_value('PublicFormSecurimagePath', '') == '') {
+      $this->attributesAccess['fdPublicFormCaptcha']->setDisabled(TRUE);
+      $this->attributesAccess['fdPublicFormCaptcha']->setValue(FALSE);
+      $this->attributesAccess['fdPublicFormCaptcha']->setVisible(FALSE);
+    }
   }
 
   function typeChanged ()

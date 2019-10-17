@@ -120,6 +120,7 @@ class publicFormPage extends standAlonePage
           'fdPublicFormPrivate'           => 1,
           'fdPublicFormCreationBase'      => 1,
           'fdPublicFormTosUrl'            => 1,
+          'fdPublicFormCaptcha'           => 1,
           'fdPublicFormAlteredAttributes' => '*',
         ],
         $this->invitation['fdInvitationFormDN'],
@@ -141,6 +142,7 @@ class publicFormPage extends standAlonePage
           'fdPublicFormPrivate'           => 1,
           'fdPublicFormCreationBase'      => 1,
           'fdPublicFormTosUrl'            => 1,
+          'fdPublicFormCaptcha'           => 1,
           'fdPublicFormAlteredAttributes' => '*',
         ],
         NULL,
@@ -218,6 +220,16 @@ class publicFormPage extends standAlonePage
   protected function submitForm ()
   {
     global $config, $ui;
+
+    /* Check Captcha */
+    if (isset($this->form['fdPublicFormCaptcha']) && ($this->form['fdPublicFormCaptcha'] == 'TRUE')) {
+      require_once($config->get_cfg_value('PublicFormSecurimagePath'));
+      $securimage = new Securimage();
+      if (!$securimage->check($_POST['captcha_code'])) {
+        msg_dialog::display(_('Error'), _('Captcha code was wrong!'), ERROR_DIALOG);
+        return;
+      }
+    }
 
     /* Check TOS checkbox */
     if (isset($this->form['fdPublicFormTosUrl']) && !isset($_POST['tosCheckBox'])) {
@@ -307,7 +319,44 @@ class publicFormPage extends standAlonePage
 
   function execute ()
   {
+    global $config;
+
     if (!$this->activated) {
+      return;
+    }
+
+    if (isset($_GET['captcha'])) {
+      /* We cannot use securimage_show.php and securimage_play.php because they cannot access our session
+       * So we use publicform.php?captcha=show and publicform.php?captcha=play instead */
+      require_once($config->get_cfg_value('PublicFormSecurimagePath'));
+
+      /* Showing or playing captcha */
+      switch ($_GET['captcha']) {
+        case 'show':
+          $img = new Securimage();
+
+          // set namespace if supplied to script via HTTP GET
+          if (!empty($_GET['namespace'])) {
+            $img->setNamespace($_GET['namespace']);
+          }
+
+          $img->show();
+          break;
+        case 'play':
+          $img = new Securimage();
+
+          // set namespace if supplied to script via HTTP GET
+          if (!empty($_GET['namespace'])) {
+            $img->setNamespace($_GET['namespace']);
+          }
+
+          // mp3 or wav format
+          $format = ((isset($_GET['format']) && strtolower($_GET['format']) == 'mp3') ? 'mp3' : NULL);
+
+          $img->outputAudioFile($format);
+          break;
+        default:
+      }
       return;
     }
 
@@ -321,6 +370,11 @@ class publicFormPage extends standAlonePage
       $templateOutput = $this->template->execute();
       // TODO - Check that no dialogs are opened?
       $smarty->assign('template_dialog', $templateOutput);
+
+      if (isset($this->form['fdPublicFormCaptcha']) && ($this->form['fdPublicFormCaptcha'] == 'TRUE')) {
+        require_once($config->get_cfg_value('PublicFormSecurimagePath'));
+        $smarty->assign('captcha', ['securimage_uri' => $config->get_cfg_value('PublicFormSecurimageURI', 'securimage/')]);
+      }
     }
 
     $smarty->assign('done',         $this->done);

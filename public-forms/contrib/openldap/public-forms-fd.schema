@@ -66,6 +66,12 @@ attributetype ( 1.3.6.1.4.1.38414.67.10.9 NAME 'fdPublicFormTosUrl'
   SUBSTR caseExactSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
+attributetype ( 1.3.6.1.4.1.38414.67.10.10 NAME 'fdPublicFormCaptcha'
+  DESC 'FusionDirectory - Whether this form should contain a captcha'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
 # Objectclasses
 
 objectclass ( 1.3.6.1.4.1.38414.67.2.1 NAME 'fdPublicForm'
@@ -75,4 +81,4 @@ objectclass ( 1.3.6.1.4.1.38414.67.2.1 NAME 'fdPublicForm'
     fdPublicFormTitle $ fdPublicFormText $
     fdPublicFormTemplateType $ fdPublicFormTemplateDN $
     fdPublicFormFinalText $ fdPublicFormPrivate $ fdPublicFormCreationBase $
-    fdPublicFormAlteredAttributes $ fdPublicFormTosUrl ) )
+    fdPublicFormAlteredAttributes $ fdPublicFormTosUrl $ fdPublicFormCaptcha ) )
