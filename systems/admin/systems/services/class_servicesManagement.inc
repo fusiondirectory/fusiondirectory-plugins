@@ -47,7 +47,6 @@ class servicesManagement extends management implements SimpleTab
 
   protected $plugins      = [];
   protected $current      = '';
-  protected $dialog       = FALSE;
   protected $backup       = NULL;
 
   var $read_only      = FALSE;
@@ -266,7 +265,6 @@ class servicesManagement extends management implements SimpleTab
     if ($this->plugins[$s_entry]->acl_is_readable('')) {
       $this->backup       = get_object_vars($this->plugins[$s_entry]);
       $this->dialogObject = $this->plugins[$s_entry];
-      $this->dialog       = TRUE;
       $this->current      = $s_entry;
     }
   }
@@ -301,7 +299,6 @@ class servicesManagement extends management implements SimpleTab
     $this->plugins[$serv]->is_account = TRUE;
     $this->dialogObject               = $this->plugins[$serv];
     $this->current                    = $serv;
-    $this->dialog                     = TRUE;
   }
 
   /*! \brief  Save the currently edited service.
@@ -320,16 +317,6 @@ class servicesManagement extends management implements SimpleTab
       $this->backup = NULL;
       $this->updateActionMenu();
     }
-  }
-
-  /*!\brief   Close all opened dialogs
-   *          And reset "dialog open" flags to display bottom buttons again.
-   */
-  function closeDialogs ()
-  {
-    parent::closeDialogs();
-    $this->dialog = FALSE;
-    set_object_info($this->dn);
   }
 
   /*! \brief    Remove the selected service(s)
