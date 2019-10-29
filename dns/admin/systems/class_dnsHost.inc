@@ -528,7 +528,7 @@ class dnsHost extends simplePlugin
       return FALSE;
     }
     $attrId = 'zoneRecords'.$zoneid;
-    $this->attributesAccess[$attrId]->addValue($record);
+    $this->attributesAccess[$attrId]->addValue('', $record);
   }
 
   static function removeIpsFromZones (array $zoneDns, array $ips)

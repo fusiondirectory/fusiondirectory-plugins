@@ -53,11 +53,11 @@ class SudoSystemsAttribute extends SystemsAttribute
     }
   }
 
-  function addValue ($value, $attrs)
+  function addValue (string $dn, $entry = NULL)
   {
     if (isset($this->value[0]) && ($this->value[0] === 'ALL')) {
       unset($this->value[0]);
     }
-    parent::addValue($value, $attrs);
+    parent::addValue($dn, $entry);
   }
 }

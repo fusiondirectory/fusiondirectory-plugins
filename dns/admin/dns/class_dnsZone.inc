@@ -156,14 +156,14 @@ class DnsRecordDialog extends GenericDialog
       $relativeSubdomainName = '';
     }
     $ret = array_merge([$relativeSubdomainName], $this->dialog->dnsRecord);
-    $this->attribute->addValue($ret);
+    $this->attribute->addValue('', $ret);
     return FALSE;
   }
 
   function handle_cancel ()
   {
     if ($this->initialDialogValue !== NULL) {
-      $this->attribute->addValue($this->initialDialogValue);
+      $this->attribute->addValue('', $this->initialDialogValue);
     }
     return FALSE;
   }

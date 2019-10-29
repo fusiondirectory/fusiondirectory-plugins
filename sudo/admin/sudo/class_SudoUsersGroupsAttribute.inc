@@ -24,7 +24,7 @@ class SudoUsersGroupsAttribute extends DialogAttribute
 {
   protected $dialogClass = 'UserGroupSelectDialog';
 
-  function addValue ($dn, $entry)
+  function addValue (string $dn, $entry = NULL)
   {
     if (in_array('posixGroup', $entry['objectClass']) || in_array('groupOfNames', $entry['objectClass'])) {
       $name = trim("%".$entry['cn'][0]);
