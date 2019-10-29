@@ -1,8 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+
+  Copyright (C) 2011-2019  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,22 +19,27 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class filterFAIPackages extends filterLDAPBlacklist
+class packageSelectManagementFilter extends managementFilter
 {
-  static function query ($parent, $base, $scope, $filter, $attributes, $category, $objectStorage = '')
+  function __construct (management $parent, bool $fixedScope = NULL, array $filterElementDefinitions = [])
   {
+    $filterElementDefinitions[] = ['PackageSelectCustomFilterElement', []];
+
+    parent::__construct ($parent, $fixedScope, $filterElementDefinitions);
+  }
+
+  function query (array $attrs, string $base): array
+  {
+    //~ static function query ($parent, $base, $scope, $filter, $attributes, $category, $objectStorage = '')
     $customs = [];
-    foreach ($parent->customs as $custom) {
-      if ($parent->elementValues[$custom] == 'true') {
-        $customs[] = $custom;
-      }
-    }
-    $filter     = preg_replace('/\*/', '', $filter);
-    $pkgs       = [];
+    $this->filterElements[0]->getFilters('faiRepositoryPackage', $customs);
+
+    $entries    = [];
+    $row        = 0;
     $q          = new supportDaemon();
-    $filter     = ["$filter"];
+    $filter     = [$this->search];
     $attrs      = ['distribution', 'package', 'version', 'section', 'timestamp'];
-    $release    = session::get('packageSelect_Release');
+    $release    = $this->parent->getRelease();
     $ret        = $q->FAI_get_packages($release, $attrs, $filter, 0, 200);
     if ($q->is_error()) {
       msg_dialog::display(_('Infrastructure service'), msgPool::siError($q->get_error()), ERROR_DIALOG);
@@ -48,34 +53,19 @@ class filterFAIPackages extends filterLDAPBlacklist
         $ret = array_merge($ret, $ret2);
       }
       foreach ($ret as $attr) {
-        $attr['objectClass'] = 'FAKE_OC__FaiPackage';
-
-        $item = [];
-        $item['dn']     = 'dn='.$attr['PACKAGE'].','.$attr['DISTRIBUTION'].','.$base;
-        $item['count']  = 0;
-        foreach ($attr as $key => $value) {
-          $item['count']++;
-          $item[] = $key;
-          $item[$key] = ['count' => 1, $value];
+        if (in_array($attr['PACKAGE'], $this->parent->blackList['PACKAGE'])) {
+          continue;
         }
-        $pkgs[] = $item;
+        $item = [];
+        foreach ($attr as $key => $value) {
+          $item[$key] = [$value];
+        }
+        $dn   = 'dn='.$attr['PACKAGE'].','.$attr['DISTRIBUTION'].','.$base;
+        $entries[$dn] = new ListingEntry($this->parent->listing, 'faiRepositoryPackage', $dn, $item, $row++);
+        $entries[$dn]->aclBase = $base;
       }
     }
 
-    return static::filterByBlacklist($pkgs);
-  }
-
-  function save ()
-  {
-    $act = $this->detectPostActions();
-    $headpage = $this->getHeadpage();
-    if (!isset($act['targets'])) {
-      return [];
-    }
-    $ret = [];
-    foreach ($act['targets'] as $dn) {
-      $ret[] = $headpage->getEntry($dn);
-    }
-    return $ret;
+    return [$entries, ['faiRepositoryPackage' => count($entries)]];
   }
 }

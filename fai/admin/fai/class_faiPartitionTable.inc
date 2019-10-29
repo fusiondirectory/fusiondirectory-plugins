@@ -65,7 +65,7 @@ class DiskEntryDialog extends GenericDialog
   function handle_cancel ()
   {
     if ($this->initialDialogValue !== NULL) {
-      $this->attribute->addValue($this->initialDialogValue);
+      $this->attribute->addValue('', $this->initialDialogValue);
     }
     return FALSE;
   }
