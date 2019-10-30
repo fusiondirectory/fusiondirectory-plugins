@@ -32,7 +32,7 @@ class EjbcaCertsAttribute extends ObjectsAttribute
     ];
   }
 
-  function addValue ($dn, $entry)
+  function addValue (string $dn, $entry = NULL)
   {
     if (!in_array($dn, $this->value)) {
       $this->value[]    = $dn;
