@@ -63,7 +63,7 @@ class pgpKeySelect extends simpleSelectManagement
     }
     $this->filter->setObjectStorage($this->storagePoints);
     $this->filter->category = 'user';
-    $attributes = ['pgpKeyID', 'pgpUserID', 'pgpKeyCreateTime', 'pgpKeyExpireTime', 'pgpKeyType', 'pgpKeySize'];
+    $attributes = ['pgpCertID', 'pgpKeyID', 'pgpUserID', 'pgpKeyCreateTime', 'pgpKeyExpireTime', 'pgpKeyType', 'pgpKeySize'];
     $this->filter->query[0]['backend']      = 'LDAPBlacklist';
     $this->filter->query[0]['filter']       = '$NAME';
     $this->filter->query[0]['attribute']    = $attributes;
@@ -80,7 +80,7 @@ class pgpKeySelect extends simpleSelectManagement
     if (($value === FALSE) || ($value === '')) {
       return '&nbsp;';
     }
-    $return = static::$func($value[0]);
+    $return = static::$func($value);
     return ($return === '' ? '&nbsp;' : $return);
   }
 
@@ -138,6 +138,7 @@ class PgpKeyAttribute extends GenericDialogAttribute
   {
     parent::__construct($label, $description, $ldapName, $required, $defaultValue, 'dn', NULL, $acl);
     $this->displayed_values = [
+      'pgpCertID'         => _('Cert ID'),
       'pgpKeyID'          => _('Key ID'),
       'pgpUserID'         => _('User ID'),
       'pgpKeyCreateTime'  => _('Creation time'),
