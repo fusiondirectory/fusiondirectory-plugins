@@ -25,47 +25,54 @@ class packageSelectManagementFilter extends managementFilter
   {
     $filterElementDefinitions[] = ['PackageSelectCustomFilterElement', []];
 
-    parent::__construct ($parent, $fixedScope, $filterElementDefinitions);
+    parent::__construct($parent, $fixedScope, $filterElementDefinitions);
   }
 
   function query (array $attrs, string $base): array
   {
-    //~ static function query ($parent, $base, $scope, $filter, $attributes, $category, $objectStorage = '')
-    $customs = [];
-    $this->filterElements[0]->getFilters('faiRepositoryPackage', $customs);
-
-    $entries    = [];
-    $row        = 0;
-    $q          = new supportDaemon();
-    $filter     = [$this->search];
-    $attrs      = ['distribution', 'package', 'version', 'section', 'timestamp'];
-    $release    = $this->parent->getRelease();
-    $ret        = $q->FAI_get_packages($release, $attrs, $filter, 0, 200);
-    if ($q->is_error()) {
-      msg_dialog::display(_('Infrastructure service'), msgPool::siError($q->get_error()), ERROR_DIALOG);
-    } else {
-      for ($i = 0;(count($ret) < 200) && ($i < count($customs));$i++) {
-        $ret2 = $q->FAI_get_packages($customs[$i], $attrs, $filter, 0, 200 - count($ret));
-        if ($q->is_error()) {
-          msg_dialog::display(_('Infrastructure service'), msgPool::siError($q->get_error()), ERROR_DIALOG);
-          return [];
-        }
-        $ret = array_merge($ret, $ret2);
+    $objectTypeCount  = [];
+    $entries          = [];
+    $row              = 0;
+    $q                = new supportDaemon();
+    $filter           = [$this->search];
+    $attrs            = ['distribution', 'package', 'version', 'section', 'timestamp'];
+    $release          = $this->parent->getRelease();
+    foreach ($this->parent->objectTypes as $type) {
+      if (!$this->types['filter_type_'.$type]['show']) {
+        continue;
       }
-      foreach ($ret as $attr) {
-        if (in_array($attr['PACKAGE'], $this->parent->blackList['PACKAGE'])) {
-          continue;
+
+      $customs = [];
+      $this->filterElements[0]->getFilters($type, $customs);
+
+      $ret        = $q->FAI_get_packages($release, $attrs, $filter, 0, 200);
+      if ($q->is_error()) {
+        msg_dialog::display(_('Infrastructure service'), msgPool::siError($q->get_error()), ERROR_DIALOG);
+      } else {
+        for ($i = 0;(count($ret) < 200) && ($i < count($customs));$i++) {
+          $ret2 = $q->FAI_get_packages($customs[$i], $attrs, $filter, 0, 200 - count($ret));
+          if ($q->is_error()) {
+            msg_dialog::display(_('Infrastructure service'), msgPool::siError($q->get_error()), ERROR_DIALOG);
+            return [];
+          }
+          $ret = array_merge($ret, $ret2);
         }
-        $item = [];
-        foreach ($attr as $key => $value) {
-          $item[$key] = [$value];
+        $objectTypeCount[$type] = count($ret);
+        foreach ($ret as $attr) {
+          if (in_array($attr['PACKAGE'], $this->parent->blackList['PACKAGE'])) {
+            continue;
+          }
+          $item = [];
+          foreach ($attr as $key => $value) {
+            $item[$key] = [$value];
+          }
+          $dn   = 'dn='.$attr['PACKAGE'].','.$attr['DISTRIBUTION'].','.$base;
+          $entries[$dn] = new ListingEntry($this->parent->listing, $type, $dn, $item, $row++);
+          $entries[$dn]->aclBase = $base;
         }
-        $dn   = 'dn='.$attr['PACKAGE'].','.$attr['DISTRIBUTION'].','.$base;
-        $entries[$dn] = new ListingEntry($this->parent->listing, 'faiRepositoryPackage', $dn, $item, $row++);
-        $entries[$dn]->aclBase = $base;
       }
     }
 
-    return [$entries, ['faiRepositoryPackage' => count($entries)]];
+    return [$entries, $objectTypeCount];
   }
 }

@@ -88,6 +88,6 @@ class argonautQueueFilter extends managementFilter
       $entries[$dn]->aclBase = $acl_base;
     }
 
-    return [$entries, ['argonautTask' => count($entries)]];
+    return [$entries, ['ARGONAUTTASK' => count($entries)]];
   }
 }

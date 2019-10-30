@@ -21,9 +21,23 @@
 
 class packageSelectManagement extends selectManagement
 {
+  /* Create faiRepositoryPackage object type */
+  static function plInfo (): array
+  {
+    return [
+      'plShortName'   => 'Package selection',
+      'plDescription' => 'Package selection for FAI package class',
+      'plObjectType'  => ['faiRepositoryPackage' => [
+        'name'        => _('Package'),
+        'aclCategory' => 'fai',
+        'icon'        => 'geticon.php?context=applications&icon=fai-packages&size=16',
+      ]],
+    ];
+  }
+
   /* Default columns */
   public static $columns = [
-    //~ ['ObjectTypeColumn', []],
+    ['ObjectTypeColumn', []],
     ['LinkColumn',       ['attributes' => 'PACKAGE',  'label' => 'Package']],
     ['LinkColumn',       ['attributes' => 'VERSION',  'label' => 'Version']],
   ];
@@ -58,12 +72,12 @@ class packageSelectManagement extends selectManagement
     $this->filter   = new packageSelectManagementFilter($this, TRUE, $filterElementDefinitions);
   }
 
-  public function getCustomReleases(): array
+  public function getCustomReleases (): array
   {
     return serviceRepository::getCustomReleases($this->parentPlugin->FAIdebianRelease);
   }
 
-  public function getRelease(): string
+  public function getRelease (): string
   {
     return $this->parentPlugin->FAIdebianRelease;
   }
