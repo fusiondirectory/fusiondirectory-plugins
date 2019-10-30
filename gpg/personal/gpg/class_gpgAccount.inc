@@ -44,7 +44,7 @@ class gpgAccount extends simplePlugin
         'name'  => _('GPG keys'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new PgpKeyAttribute(
+          new PgpKeysAttribute(
             '', _('GPG keys of this user'),
             'fdUserKeyDN', TRUE
           )
