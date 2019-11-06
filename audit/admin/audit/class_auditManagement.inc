@@ -57,6 +57,8 @@ class auditManagement extends management
   {
     /* Disable base mode and multi select */
     $this->listing  = new managementListing($this, FALSE, FALSE);
+    /* Newer events first */
+    $this->listing->setSortColumn(1, TRUE);
   }
 
   protected function configureActions ()
