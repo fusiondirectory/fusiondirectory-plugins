@@ -35,7 +35,7 @@ class auditEvent extends simplePlugin
         'ou'          => get_ou('auditRDN'),
         'mainAttr'    => FALSE,
       ]],
-      'plSearchAttrs' => ['fdAuditAction','fdAuditAuthorDN','fdAuditObjectType',
+      'plSearchAttrs' => ['fdAuditAction','fdAuditAuthorDN','fdAuditAuthorIP','fdAuditObjectType',
         'fdAuditObject','fdAuditAttributes','fdAuditResult'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
@@ -54,12 +54,13 @@ class auditEvent extends simplePlugin
             _('Time'), _('Date and time this event happened'),
             'fdAuditDateTime', TRUE
           ),
-          new DisplayLDAPAttribute(_('Action'),           _('Action type'),       'fdAuditAction',      TRUE),
-          new ObjectLinkAttribute(_('Author'),            _('Action author'),     'fdAuditAuthorDN',    TRUE, 'user'),
-          new DisplayLDAPAttribute(_('Object type'),      _('Object type'),       'fdAuditObjectType',  TRUE),
-          new DisplayLDAPAttribute(_('Object'),           _('Target object'),     'fdAuditObject',      TRUE),
-          new DisplayLDAPArrayAttribute(_('Attributes'),  _('Target attributes'), 'fdAuditAttributes',  FALSE),
-          new DisplayLDAPAttribute(_('Result'),           _('Result or error'),   'fdAuditResult',      FALSE),
+          new DisplayLDAPAttribute(_('Action'),           _('Action type'),               'fdAuditAction',      TRUE),
+          new ObjectLinkAttribute(_('Author'),            _('Action author'),             'fdAuditAuthorDN',    TRUE, 'user'),
+          new DisplayLDAPAttribute(_('Author IP'),        _('Action author IP address'),  'fdAuditAuthorIP',    FALSE),
+          new DisplayLDAPAttribute(_('Object type'),      _('Object type'),               'fdAuditObjectType',  TRUE),
+          new DisplayLDAPAttribute(_('Object'),           _('Target object'),             'fdAuditObject',      TRUE),
+          new DisplayLDAPArrayAttribute(_('Attributes'),  _('Target attributes'),         'fdAuditAttributes',  FALSE),
+          new DisplayLDAPAttribute(_('Result'),           _('Result or error'),           'fdAuditResult',      FALSE),
         ]
       ],
     ];
@@ -68,7 +69,8 @@ class auditEvent extends simplePlugin
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
   {
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
-    $this->fdAuditId = random_int(0, PHP_INT_MAX);
+    $this->fdAuditId        = random_int(0, PHP_INT_MAX);
+    $this->fdAuditAuthorIP  = ($_SERVER['REMOTE_ADDR'] ?? '');
   }
 
   function compute_dn (): string

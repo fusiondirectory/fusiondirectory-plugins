@@ -29,6 +29,7 @@ class auditManagement extends management
     ['ObjectTypeColumn',           []],
     ['LdapGeneralizedTimeColumn',  ['attributes' => 'fdAuditDateTime',    'label' => 'Time']],
     ['LinkColumn',                 ['attributes' => 'fdAuditAuthorDN',    'label' => 'Author']],
+    ['LinkColumn',                 ['attributes' => 'fdAuditAuthorIP',    'label' => 'IP']],
     ['LinkColumn',                 ['attributes' => 'fdAuditAction',      'label' => 'Action']],
     ['LinkColumn',                 ['attributes' => 'fdAuditObjectType',  'label' => 'Type']],
     ['LinkColumn',                 ['attributes' => 'fdAuditObject',      'label' => 'Target']],
