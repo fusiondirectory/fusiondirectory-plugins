@@ -52,6 +52,14 @@ class auditManagement extends management
     parent::__construct();
 
     $this->filter->addElement(new DateFilterElement($this->filter, 'fdAuditDateTime', _('Date'), date('Y-m-d')));
+    $items = [];
+    foreach (logging::$validActions as $validAction) {
+      $items[$validAction] = [
+        'name'    => $validAction,
+        'filter'  => '(fdAuditAction='.$validAction.')',
+      ];
+    }
+    $this->filter->addElement(new CheckBoxesFilterElement($this->filter, _('Action'), $items, '|'));
   }
 
   protected function setUpListing ()
