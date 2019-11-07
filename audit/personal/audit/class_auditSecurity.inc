@@ -60,6 +60,10 @@ class auditSecurity extends simplePlugin
       _('Time'),
       _('Result'),
     ]);
+  }
+
+  protected function loadEvents()
+  {
     $events = objects::ls(
       'auditEvent',
       [
@@ -96,6 +100,12 @@ class auditSecurity extends simplePlugin
       }
     );
     $this->fdAuditSecurityLog = $events;
+  }
+
+  public function execute (): string
+  {
+    $this->loadEvents();
+    return parent::execute();
   }
 
   protected function getUid (): string
