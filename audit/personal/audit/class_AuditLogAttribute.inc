@@ -42,8 +42,35 @@ class AuditLogAttribute extends OrderedArrayAttribute
     } catch (Exception $e) {
       $time = $event['fdAuditDateTime'];
     }
+    switch ($event['fdAuditAction']) {
+      case 'security':
+        if ($event['fdAuditObjectType'] == 'login') {
+          $name = _('Sign in');
+        } elseif ($event['fdAuditObjectType'] == 'logout') {
+          $name = _('Sign out');
+        } else {
+          $name = $event['fdAuditObjectType'];
+        }
+        break;
+      case 'modify':
+        if (in_array('userPassword', $event['fdAuditAttributes'])) {
+          $name = _('Password modification');
+        } else {
+          $name = sprintf(_('Account modification (%s)'), implode(',', $event['fdAuditAttributes']));
+        }
+        break;
+      case 'create':
+      case 'remove':
+      case 'copy':
+      case 'snapshot':
+      case 'view':
+      case 'debug':
+      default:
+        $name = $event['fdAuditAction'].' '.$event['fdAuditObjectType'];
+        break;
+    }
     return [
-      $event['fdAuditObjectType'],
+      $name,
       $author,
       $event['fdAuditAuthorIP'] ?? '',
       $time,

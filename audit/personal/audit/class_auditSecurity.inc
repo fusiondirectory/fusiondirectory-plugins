@@ -63,6 +63,7 @@ class auditSecurity extends simplePlugin
     $events = objects::ls(
       'auditEvent',
       [
+        'fdAuditAction'     => 1,
         'fdAuditDateTime'   => 1,
         'fdAuditAuthorDN'   => 1,
         'fdAuditAuthorIP'   => 1,
@@ -72,7 +73,20 @@ class auditSecurity extends simplePlugin
         'fdAuditResult'     => 1
       ],
       NULL,
-      '(&(|(fdAuditAction=security)(fdAuditAttributes=userPassword))(|(fdAuditObject='.$this->getUid().')(fdAuditObject='.$this->dn.')(fdAuditAuthorDN='.$this->dn.')))'
+      '(|'.
+        '(&'.
+          '(fdAuditAction=security)'.
+          '(|'.
+            '(fdAuditObject='.ldap_escape_f($this->getUid()).')'.
+            '(fdAuditObject='.ldap_escape_f($this->dn).')'.
+            '(fdAuditAuthorDN='.ldap_escape_f($this->dn).')'.
+          ')'.
+        ')'.
+        '(&'.
+          '(fdAuditAttributes=userPassword)'.
+          '(fdAuditObject='.ldap_escape_f($this->dn).')'.
+        ')'.
+      ')'
     );
     uasort(
       $events,
