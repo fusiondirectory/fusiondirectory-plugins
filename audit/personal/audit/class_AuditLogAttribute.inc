@@ -33,7 +33,7 @@ class AuditLogAttribute extends OrderedArrayAttribute
   protected function getAttributeArrayValue ($key, $event)
   {
     try {
-      $author = ['html' => objects::link($event['fdAuditAuthorDN'], 'user')];
+      $author = ['html' => objects::link($event['fdAuditAuthorDN'], 'user', '', NULL, TRUE, ($event['fdAuditAuthorDN'] != $this->plugin->dn))];
     } catch (FusionDirectoryException $e) {
       $author = $event['fdAuditAuthorDN'];
     }
