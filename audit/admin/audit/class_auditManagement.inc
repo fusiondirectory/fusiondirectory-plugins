@@ -29,6 +29,7 @@ class auditManagement extends management
     ['ObjectTypeColumn',           []],
     ['LdapGeneralizedTimeColumn',  ['attributes' => 'fdAuditDateTime',    'label' => 'Time']],
     ['LinkColumn',                 ['attributes' => 'fdAuditAuthorDN',    'label' => 'Author']],
+    ['LinkColumn',                 ['attributes' => 'fdAuditAuthorIP',    'label' => 'IP']],
     ['LinkColumn',                 ['attributes' => 'fdAuditAction',      'label' => 'Action']],
     ['LinkColumn',                 ['attributes' => 'fdAuditObjectType',  'label' => 'Type']],
     ['LinkColumn',                 ['attributes' => 'fdAuditObject',      'label' => 'Target']],
@@ -51,12 +52,22 @@ class auditManagement extends management
     parent::__construct();
 
     $this->filter->addElement(new DateFilterElement($this->filter, 'fdAuditDateTime', _('Date'), date('Y-m-d')));
+    $items = [];
+    foreach (logging::$validActions as $validAction) {
+      $items[$validAction] = [
+        'name'    => $validAction,
+        'filter'  => '(fdAuditAction='.$validAction.')',
+      ];
+    }
+    $this->filter->addElement(new CheckBoxesFilterElement($this->filter, _('Action'), $items, '|'));
   }
 
   protected function setUpListing ()
   {
     /* Disable base mode and multi select */
     $this->listing  = new managementListing($this, FALSE, FALSE);
+    /* Newer events first */
+    $this->listing->setSortColumn(1, TRUE);
   }
 
   protected function configureActions ()
