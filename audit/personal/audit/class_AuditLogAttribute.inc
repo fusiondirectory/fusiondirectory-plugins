@@ -66,7 +66,8 @@ class AuditLogAttribute extends OrderedArrayAttribute
     return '';
   }
 
-  public static function formatDateDiff($date) {
+  public static function formatDateDiff ($date)
+  {
     $now = new DateTime();
     $interval = $now->diff($date);
 

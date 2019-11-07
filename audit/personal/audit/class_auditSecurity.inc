@@ -37,15 +37,14 @@ class auditSecurity extends simplePlugin
   {
     return [
       'main' => [
-        'name'      => _('Security audit'),
-        'class'     => ['fullwidth'],
-        'attrs'     => [
+        'name'  => _('Security audit'),
+        'class' => ['fullwidth'],
+        'attrs' => [
           new AuditLogAttribute(
             '', _('Important events involving your account'),
             'fdAuditSecurityLog'
           ),
         ],
-        //~ 'template'  => get_template_path('securityaudit.tpl', TRUE, dirname(__FILE__))
       ],
     ];
   }
