@@ -62,7 +62,7 @@ class auditSecurity extends simplePlugin
     ]);
   }
 
-  protected function loadEvents()
+  protected function loadEvents ()
   {
     $events = objects::ls(
       'auditEvent',
