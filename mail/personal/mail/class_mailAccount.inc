@@ -107,7 +107,7 @@ class mailAccount extends simplePlugin
             []
           ),
           new MailQuotaAttribute(
-            _('Quota size'), 'Define quota size in MB',
+            _('Quota size'), _('Define quota size in MiB'),
             'gosaMailQuota', FALSE,
             0, FALSE
           )
