@@ -137,7 +137,7 @@ class mailMethodDovecot extends mailMethod
         if (($quota_value['STORAGE']['limit'] == 2147483647) || ($quota_value['STORAGE']['limit'] <= 0)) {
           $this->quotaValue = '';
         } else {
-          $this->quotaValue = int($quota_value['STORAGE']['limit'] / 1024);
+          $this->quotaValue = (int)($quota_value['STORAGE']['limit'] / 1024);
         }
         $this->quota_loaded = TRUE;
 
