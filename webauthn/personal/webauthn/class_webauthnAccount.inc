@@ -111,7 +111,12 @@ class webauthnAccount extends simplePlugin
 
     // new Instance of the server library.
     // make sure that $rpId is the domain name.
-    $WebAuthn = new \WebAuthn\WebAuthn('WebAuthn Library', 'localhost', $formats);
+    if (!empty($_SERVER['HTTP_X_FORWARDED_HOST'])) {
+      $host = $_SERVER['HTTP_X_FORWARDED_HOST'];
+    } else {
+      $host = $_SERVER['SERVER_NAME'];
+    }
+    $WebAuthn = new \WebAuthn\WebAuthn('FusionDirectory', $host, $formats);
 
     // add root certificates to validate new registrations
     /*if ($_GET['solo']) {

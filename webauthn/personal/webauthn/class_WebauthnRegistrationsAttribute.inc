@@ -27,6 +27,13 @@ class WebauthnRegistrationsAttribute extends OrderedArrayAttribute
     $this->edit_enabled = FALSE;
     $this->attribute    = FALSE;
     $this->order        = FALSE;
+    $this->setHeaders([
+      _('Issuer'),
+      _('Subject'),
+      _('Signature count'),
+      _('Domain'),
+      '',
+    ]);
   }
 
   function addRegistration (string $value)
@@ -39,14 +46,9 @@ class WebauthnRegistrationsAttribute extends OrderedArrayAttribute
   {
     $data = json_decode($json, TRUE);
     return [
-      //~ $data['credentialId'],
-      //~ print_r($data['credentialPublicKey'], TRUE),
-      //~ print_r($data['certificateChain'], TRUE),
-      //~ print_r($data['certificate'], TRUE),
       $data['certificateIssuer'],
       $data['certificateSubject'],
       ($data['signatureCounter'] ?? 0),
-      //~ print_r($data['AAGUID'], TRUE),
       $data['rpId'],
     ];
   }
