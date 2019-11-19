@@ -243,6 +243,7 @@ paths:
             'b64' means an array of base64 encoded values and is mainly useful for binary attributes."
           schema:
             type: object
+          style: deepObject
           example:
             sn: 1
             title: "*"
