@@ -58,62 +58,59 @@ function webauthnNewRegistration()
  * checks a FIDO2 registration
  * @returns {undefined}
  */
-function checkregistration()
+function webauthnCheckRegistration()
 {
   if (!window.fetch || !navigator.credentials || !navigator.credentials.create) {
-      window.alert('Browser not supported.');
-      return;
+    window.alert('Browser not supported.');
+    return;
   }
 
   // get default args
-  window.fetch('server.php?fn=getGetArgs' + getGetParams(), {method:'GET',cache:'no-cache'}).then(function(response) {
+  window.fetch(window.location.href + '?webauthn=getGetArgs', {method:'GET',cache:'no-cache'}).then(function(response) {
       return response.json();
 
-      // convert base64 to arraybuffer
   }).then(function(json) {
+    // convert base64 to arraybuffer
 
+    if (json.success === false) {
       // error handling
-      if (json.success === false) {
-          throw new Error(json.msg);
-      }
+      throw new Error(json.msg);
+    }
 
-      // replace binary base64 data with ArrayBuffer. a other way to do this
-      // is the reviver function of JSON.parse()
-      recursiveBase64StrToArrayBuffer(json);
-      return json;
-
-     // create credentials
+    // replace binary base64 data with ArrayBuffer. a other way to do this
+    // is the reviver function of JSON.parse()
+    recursiveBase64StrToArrayBuffer(json);
+    return json;
   }).then(function(getCredentialArgs) {
-      return navigator.credentials.get(getCredentialArgs);
+    // create credentials
+    return navigator.credentials.get(getCredentialArgs);
 
-      // convert to base64
   }).then(function(cred) {
-      return {
-          id: cred.rawId ? arrayBufferToBase64(cred.rawId) : null,
-          clientDataJSON: cred.response.clientDataJSON  ? arrayBufferToBase64(cred.response.clientDataJSON) : null,
-          authenticatorData: cred.response.authenticatorData ? arrayBufferToBase64(cred.response.authenticatorData) : null,
-          signature : cred.response.signature ? arrayBufferToBase64(cred.response.signature) : null
-      };
-
-      // transfer to server
+    // convert to base64
+    return {
+      id: cred.rawId ? arrayBufferToBase64(cred.rawId) : null,
+      clientDataJSON: cred.response.clientDataJSON  ? arrayBufferToBase64(cred.response.clientDataJSON) : null,
+      authenticatorData: cred.response.authenticatorData ? arrayBufferToBase64(cred.response.authenticatorData) : null,
+      signature : cred.response.signature ? arrayBufferToBase64(cred.response.signature) : null
+    };
   }).then(JSON.stringify).then(function(AuthenticatorAttestationResponse) {
-      return window.fetch('server.php?fn=processGet' + getGetParams(), {method:'POST', body: AuthenticatorAttestationResponse, cache:'no-cache'});
+    // transfer to server
+    return window.fetch(window.location.href + '?webauthn=processGet', {method:'POST', body: AuthenticatorAttestationResponse, cache:'no-cache'});
 
-      // convert to json
   }).then(function(response) {
-      return response.json();
-
-      // analyze response
+    // convert to json
+    return response.json();
   }).then(function(json) {
-     if (json.success) {
-         window.alert(json.msg || 'login success');
-     } else {
-         throw new Error(json.msg);
-     }
+    // analyze response
+    if (json.success) {
+      document.location = 'main.php';
+    } else {
+      throw new Error(json.msg);
+    }
 
-     // catch errors
   }).catch(function(err) {
-      window.alert(err.message || 'unknown error occured');
+    // catch errors
+    window.alert(err.message || 'unknown error occured');
   });
 }
 

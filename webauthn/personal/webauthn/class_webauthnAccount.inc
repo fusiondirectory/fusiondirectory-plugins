@@ -66,7 +66,6 @@ class webauthnAccount extends simplePlugin
             print(json_encode($this->getCreateArgs()));
             break;
           case 'processCreate':
-          //~ TODO : corriger Unused bytes after data item.
             print(json_encode($this->processCreate()));
             break;
           default:
@@ -75,7 +74,7 @@ class webauthnAccount extends simplePlugin
       } catch (Throwable $ex) {
         $return           = new stdClass();
         $return->success  = FALSE;
-        $return->msg      = "$ex";//->getMessage();
+        $return->msg      = $ex->getMessage();
         print(json_encode($return));
       }
       exit();
@@ -164,6 +163,19 @@ class webauthnAccount extends simplePlugin
 
     $data = $WebAuthn->processCreate($clientDataJSON, $attestationObject, $challenge);
 
+    $this->attributesAccess['fdWebauthnRegistrations']->addRegistration(static::serializeRegistration($data));
+
+    $return           = new stdClass();
+    $return->success  = TRUE;
+    $return->msg      = 'Registration Success! ' . count($this->fdWebauthnRegistrations) . ' registrations.';
+
+    session::un_set('challenge');
+
+    return $return;
+  }
+
+  static public function serializeRegistration (object $data): string
+  {
     $safeData = [];
     foreach (['rpId','credentialPublicKey','certificateChain','certificate','certificateIssuer','certificateSubject','signatureCounter'] as $stringField) {
       $safeData[$stringField] = $data->$stringField;
@@ -173,14 +185,16 @@ class webauthnAccount extends simplePlugin
       $safeData[$binField] = base64_encode($data->$binField);
     }
 
-    $this->attributesAccess['fdWebauthnRegistrations']->addRegistration(json_encode($safeData));
+    return json_encode($safeData);
+  }
 
-    $return           = new stdClass();
-    $return->success  = TRUE;
-    $return->msg      = 'Registration Success! ' . count($this->fdWebauthnRegistrations) . ' registrations.';
+  static public function unserializeRegistration (string $json): array
+  {
+    $data = json_decode($json, TRUE);
+    foreach (['credentialId','AAGUID'] as $binField) {
+      $data[$binField] = base64_decode($data[$binField]);
+    }
 
-    session::un_set('challenge');
-
-    return $return;
+    return $data;
   }
 }
