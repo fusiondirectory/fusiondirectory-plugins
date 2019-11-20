@@ -227,7 +227,7 @@ class LoginWebAuthnPost extends LoginPost
     }
 
     if ($credentialPublicKey === NULL) {
-      throw new Exception('Public Key for credential ID not found!');
+      throw new FusionDirectoryException('Public Key for credential ID not found!');
     }
 
     // process the get request. throws WebAuthnException if it fails
