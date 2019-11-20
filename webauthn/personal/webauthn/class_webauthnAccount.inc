@@ -72,6 +72,7 @@ class webauthnAccount extends simplePlugin
             throw new FusionDirectoryException('Unknown operation '.$_GET['webauthn']);
         }
       } catch (Throwable $ex) {
+        session::un_set('challenge');
         $return           = new stdClass();
         $return->success  = FALSE;
         $return->msg      = $ex->getMessage();
@@ -85,28 +86,12 @@ class webauthnAccount extends simplePlugin
     return parent::execute();
   }
 
-  protected function initWebAuthnObject ()
+  static public function initWebAuthnObject ()
   {
+    global $config;
+
     // Formats
-    $formats = array();
-    //~ if ($_GET['fmt_android-key']) {
-      $formats[] = 'android-key';
-    //~ }
-    //~ if ($_GET['fmt_android-safetynet']) {
-      $formats[] = 'android-safetynet';
-    //~ }
-    //~ if ($_GET['fmt_fido-u2f']) {
-      $formats[] = 'fido-u2f';
-    //~ }
-    //~ if ($_GET['fmt_none']) {
-      $formats[] = 'none';
-    //~ }
-    //~ if ($_GET['fmt_packed']) {
-      $formats[] = 'packed';
-    //~ }
-    //~ if ($_GET['fmt_tpm']) {
-      //~ $formats[] = 'tpm';
-    //~ }
+    $formats = $config->get_cfg_value('WebauthnFormats', ['android-key','fido-u2f','packed']);
 
     // new Instance of the server library.
     // make sure that $rpId is the domain name.
@@ -117,21 +102,6 @@ class webauthnAccount extends simplePlugin
     }
     $WebAuthn = new \WebAuthn\WebAuthn('FusionDirectory', $host, $formats);
 
-    // add root certificates to validate new registrations
-    /*if ($_GET['solo']) {
-      $WebAuthn->addRootCertificates('rootCertificates/solo.pem');
-    }
-    if ($_GET['yubico']) {
-      $WebAuthn->addRootCertificates('rootCertificates/yubico.pem');
-    }
-    if ($_GET['hypersecu']) {
-      $WebAuthn->addRootCertificates('rootCertificates/hypersecu.pem');
-    }
-    if ($_GET['google']) {
-      $WebAuthn->addRootCertificates('rootCertificates/globalSign.pem');
-      $WebAuthn->addRootCertificates('rootCertificates/googleHardware.pem');
-    }*/
-
     return $WebAuthn;
   }
 
@@ -139,9 +109,8 @@ class webauthnAccount extends simplePlugin
   {
     global $ui;
 
-    $WebAuthn = $this->initWebAuthnObject();
+    $WebAuthn = static::initWebAuthnObject();
 
-    //~ ($userId, $userName, $userDisplayName, $timeout=20, $requireResidentKey=false, $requireUserVerification=false, $excludeCredentialIds=array()) {
     $createArgs = $WebAuthn->getCreateArgs($ui->dn, $ui->uid, $ui->cn, 20, FALSE);
 
     session::set('challenge', $WebAuthn->getChallenge());
@@ -151,7 +120,7 @@ class webauthnAccount extends simplePlugin
 
   protected function processCreate ()
   {
-    $WebAuthn = $this->initWebAuthnObject();
+    $WebAuthn = static::initWebAuthnObject();
 
     $post = trim(file_get_contents('php://input'));
     if ($post) {

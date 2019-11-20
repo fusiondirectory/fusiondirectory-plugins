@@ -49,7 +49,7 @@ class LoginWebAuthnPost extends LoginPost
         session::un_set('challenge');
         $return           = new stdClass();
         $return->success  = FALSE;
-        $return->msg      = "$ex";//->getMessage();
+        $return->msg      = $ex->getMessage();
         print(json_encode($return));
       }
       exit();
@@ -179,61 +179,11 @@ class LoginWebAuthnPost extends LoginPost
     exit();
   }
 
-  static protected function initWebAuthnObject ()
-  {
-    // Formats
-    $formats = [];
-    //~ if ($_GET['fmt_android-key']) {
-      $formats[] = 'android-key';
-    //~ }
-    //~ if ($_GET['fmt_android-safetynet']) {
-      $formats[] = 'android-safetynet';
-    //~ }
-    //~ if ($_GET['fmt_fido-u2f']) {
-      $formats[] = 'fido-u2f';
-    //~ }
-    //~ if ($_GET['fmt_none']) {
-      $formats[] = 'none';
-    //~ }
-    //~ if ($_GET['fmt_packed']) {
-      $formats[] = 'packed';
-    //~ }
-    //~ if ($_GET['fmt_tpm']) {
-      //~ $formats[] = 'tpm';
-    //~ }
-
-    // new Instance of the server library.
-    // make sure that $rpId is the domain name.
-    if (!empty($_SERVER['HTTP_X_FORWARDED_HOST'])) {
-      $host = $_SERVER['HTTP_X_FORWARDED_HOST'];
-    } else {
-      $host = $_SERVER['SERVER_NAME'];
-    }
-    $WebAuthn = new \WebAuthn\WebAuthn('FusionDirectory', $host, $formats);
-
-    // add root certificates to validate new registrations
-    /*if ($_GET['solo']) {
-      $WebAuthn->addRootCertificates('rootCertificates/solo.pem');
-    }
-    if ($_GET['yubico']) {
-      $WebAuthn->addRootCertificates('rootCertificates/yubico.pem');
-    }
-    if ($_GET['hypersecu']) {
-      $WebAuthn->addRootCertificates('rootCertificates/hypersecu.pem');
-    }
-    if ($_GET['google']) {
-      $WebAuthn->addRootCertificates('rootCertificates/globalSign.pem');
-      $WebAuthn->addRootCertificates('rootCertificates/googleHardware.pem');
-    }*/
-
-    return $WebAuthn;
-  }
-
   static protected function getGetArgs ()
   {
     global $ui;
 
-    $WebAuthn = static::initWebAuthnObject();
+    $WebAuthn = webauthnAccount::initWebAuthnObject();
 
     $ids = [];
     $fdWebauthnRegistrations = session::get('fdWebauthnRegistrations');
@@ -253,7 +203,7 @@ class LoginWebAuthnPost extends LoginPost
   {
     global $config;
 
-    $WebAuthn = static::initWebAuthnObject();
+    $WebAuthn = webauthnAccount::initWebAuthnObject();
 
     $post = trim(file_get_contents('php://input'));
     if ($post) {
@@ -303,5 +253,7 @@ class LoginWebAuthnPost extends LoginPost
     logging::log('security', 'login', $ui->uid, [], 'Logged in successfully');
     session::set('connected', 1);
     session::set('DEBUGLEVEL', $config->get_cfg_value('DEBUGLEVEL'));
+    session::un_set('challenge');
+    session::un_set('fdWebauthnRegistrations');
   }
 }

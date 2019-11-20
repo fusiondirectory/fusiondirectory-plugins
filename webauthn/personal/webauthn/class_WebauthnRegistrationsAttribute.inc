@@ -53,21 +53,6 @@ class WebauthnRegistrationsAttribute extends OrderedArrayAttribute
     ];
   }
 
-  /*protected function genRowIcons ($key, $value)
-  {
-    return ['', 0];
-  }
-
-  public function htmlIds (): array
-  {
-    return [];
-  }
-
-  function renderButtons ()
-  {
-    return '';
-  }*/
-
   function renderButtons ()
   {
     $id = $this->getHtmlId();
