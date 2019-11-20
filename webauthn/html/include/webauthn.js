@@ -1,3 +1,9 @@
+/*
+  Copyright (C) 2018 Lukas Buchs
+  Copyright (C) 2019 FusionDirectory
+  license https://github.com/lbuchs/WebAuthn/blob/master/LICENSE MIT
+*/
+
 /**
  * creates a new FIDO2 registration
  * @returns {undefined}
