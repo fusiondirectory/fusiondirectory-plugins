@@ -65,6 +65,8 @@ class LoginWebAuthnPost extends LoginPost
 
     static::init();
 
+    session::un_set('fdWebauthnRegistrations');
+
     $smarty->assign('focusfield', 'username');
 
     if (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password'])) {
@@ -115,7 +117,7 @@ class LoginWebAuthnPost extends LoginPost
     return TRUE;
   }
 
-  /*! \brief Display the login page and exit() */
+  /*! \brief Redirect to the second factor page */
   static protected function redirectSecondFactorPage ()
   {
     session::un_set('connected');
@@ -123,7 +125,7 @@ class LoginWebAuthnPost extends LoginPost
     exit;
   }
 
-  /*! \brief Display the login page and exit() */
+  /*! \brief Display the second factor page and exit() */
   static function displaySecondFactorPage ()
   {
     global $smarty,$message,$config,$ssl,$error_collector,$error_collector_mailto;
@@ -194,6 +196,7 @@ class LoginWebAuthnPost extends LoginPost
 
     $getArgs = $WebAuthn->getGetArgs($ids);
 
+    /* Serializing avoids failed autoload of WebAuthn classes before our require_once (at session start) */
     session::set('challenge', serialize($WebAuthn->getChallenge()));
 
     return $getArgs;
@@ -209,12 +212,12 @@ class LoginWebAuthnPost extends LoginPost
     if ($post) {
       $post = json_decode($post);
     }
-    $clientDataJSON = base64_decode($post->clientDataJSON);
-    $authenticatorData = base64_decode($post->authenticatorData);
-    $signature = base64_decode($post->signature);
-    $id = base64_decode($post->id);
-    $challenge = unserialize(session::get('challenge'));
-    $credentialPublicKey = NULL;
+    $clientDataJSON       = base64_decode($post->clientDataJSON);
+    $authenticatorData    = base64_decode($post->authenticatorData);
+    $signature            = base64_decode($post->signature);
+    $id                   = base64_decode($post->id);
+    $challenge            = unserialize(session::get('challenge'));
+    $credentialPublicKey  = NULL;
 
     $fdWebauthnRegistrations = session::get('fdWebauthnRegistrations');
 
@@ -249,7 +252,6 @@ class LoginWebAuthnPost extends LoginPost
 
     $ui = session::get('ui');
 
-    /* Not account expired or password forced change go to main page */
     logging::log('security', 'login', $ui->uid, [], 'Logged in successfully');
     session::set('connected', 1);
     session::set('DEBUGLEVEL', $config->get_cfg_value('DEBUGLEVEL'));

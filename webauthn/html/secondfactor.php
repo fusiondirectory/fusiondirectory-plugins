@@ -39,16 +39,28 @@ textdomain($domain);
 session::start();
 reset_errors();
 
-CSRFProtection::check();
-
-$ui     = session::get('ui');
-$config = session::get('config');
-
-/* If SSL is forced, just forward to the SSL enabled site */
-if (($config->get_cfg_value('forcessl') == 'TRUE') && ($ssl != '')) {
+/* Force SSL for second factor */
+if ($ssl != '') {
   header("Location: $ssl");
   exit;
 }
+
+CSRFProtection::check();
+
+/* Logged in? Redirect to FD */
+if (session::is_set('connected')) {
+  header('Location: main.php');
+  exit;
+}
+
+/* Missing data? Redirect to login */
+if (!session::is_set('ui') || !session::is_set('config')) {
+  header('Location: index.php');
+  exit;
+}
+
+$ui     = session::get('ui');
+$config = session::get('config');
 
 timezone::setDefaultTimezoneFromConfig();
 
@@ -73,6 +85,8 @@ if (session::get('_LAST_PAGE_REQUEST') != '') {
 }
 session::set('_LAST_PAGE_REQUEST', time());
 
+LoginWebAuthnPost::processWebAuthnJavascriptRequests();
+
 session::set('DEBUGLEVEL', $config->get_cfg_value('DEBUGLEVEL'));
 
 /* Set template compile directory */
@@ -80,5 +94,4 @@ $smarty->compile_dir = $config->get_cfg_value('templateCompileDirectory', SPOOL_
 
 Language::init();
 
-LoginWebAuthnPost::processWebAuthnJavascriptRequests();
 LoginWebAuthnPost::displaySecondFactorPage();
