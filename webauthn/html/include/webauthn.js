@@ -161,29 +161,6 @@ function arrayBufferToBase64(buffer) {
 }
 
 /**
- * Get URL parameter
- * @returns {String}
- */
-function getGetParams() {
-  let url = '';
-  url += '&yubico=' + (document.getElementById('cert_yubico').checked ? '1' : '0');
-  url += '&solo=' + (document.getElementById('cert_solo').checked ? '1' : '0');
-  url += '&hypersecu=' + (document.getElementById('cert_hypersecu').checked ? '1' : '0');
-  url += '&google=' + (document.getElementById('cert_google').checked ? '1' : '0');
-
-  url += '&requireResidentKey=' + (document.getElementById('requireResidentKey').checked ? '1' : '0');
-
-  url += '&fmt_android-key=' + (document.getElementById('fmt_android-key').checked ? '1' : '0');
-  url += '&fmt_android-safetynet=' + (document.getElementById('fmt_android-safetynet').checked ? '1' : '0');
-  url += '&fmt_fido-u2f=' + (document.getElementById('fmt_fido-u2f').checked ? '1' : '0');
-  url += '&fmt_none=' + (document.getElementById('fmt_none').checked ? '1' : '0');
-  url += '&fmt_packed=' + (document.getElementById('fmt_packed').checked ? '1' : '0');
-  url += '&fmt_tpm=' + (document.getElementById('fmt_tpm').checked ? '1' : '0');
-
-  return url;
-}
-
-/**
  * force https on load
  * @returns {undefined}
  */
