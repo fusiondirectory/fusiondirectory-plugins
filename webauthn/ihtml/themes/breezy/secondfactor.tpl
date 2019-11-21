@@ -43,7 +43,6 @@
 
 <script type="text/javascript">
 <!--
-  focus_field("{$focusfield}");
   next_msg_dialog();
   webauthnCheckRegistration();
 -->

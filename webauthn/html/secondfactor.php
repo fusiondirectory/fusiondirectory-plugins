@@ -37,6 +37,7 @@ textdomain($domain);
 
 /* Remember everything we did after the last click */
 session::start();
+session::set('DEBUGLEVEL', 0);
 reset_errors();
 
 /* Force SSL for second factor */
