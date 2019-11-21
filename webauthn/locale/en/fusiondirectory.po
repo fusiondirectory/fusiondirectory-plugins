@@ -1,0 +1,113 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2019-11-21 11:12+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: config/webauthn/class_WebauthnConfig.inc:27
+#: config/webauthn/class_WebauthnConfig.inc:44
+#: personal/webauthn/class_webauthnAccount.inc:30
+msgid "WebAuthn"
+msgstr ""
+
+#: config/webauthn/class_WebauthnConfig.inc:28
+msgid "WebAuthn configuration"
+msgstr ""
+
+#: config/webauthn/class_WebauthnConfig.inc:29
+msgid "FusionDirectory WebAuthn plugin configuration"
+msgstr ""
+
+#: config/webauthn/class_WebauthnConfig.inc:48
+msgid "Formats"
+msgstr ""
+
+#: config/webauthn/class_WebauthnConfig.inc:48
+msgid "List of allowed formats"
+msgstr ""
+
+#: include/login/class_LoginWebAuthnPost.inc:31
+msgid "HTML form and 2nd factor"
+msgstr ""
+
+#: include/login/class_LoginWebAuthnPost.inc:91
+msgid "Warning"
+msgstr ""
+
+#: include/login/class_LoginWebAuthnPost.inc:91
+msgid ""
+"Your browser has cookies disabled. Please enable cookies and reload this "
+"page before logging in!"
+msgstr ""
+
+#: include/login/class_LoginWebAuthnPost.inc:106
+msgid "Could not fetch user"
+msgstr ""
+
+#: include/login/class_LoginWebAuthnPost.inc:111
+msgid "2nd factor information missing"
+msgstr ""
+
+#: include/login/class_LoginWebAuthnPost.inc:147
+msgid "Second factor"
+msgstr ""
+
+#: include/login/class_LoginWebAuthnPost.inc:157
+#, php-format
+msgid "Warning: <a href=\"%s\">Session is not encrypted!</a>"
+msgstr ""
+
+#: personal/webauthn/class_WebauthnRegistrationsAttribute.inc:31
+msgid "Issuer"
+msgstr ""
+
+#: personal/webauthn/class_WebauthnRegistrationsAttribute.inc:32
+msgid "Subject"
+msgstr ""
+
+#: personal/webauthn/class_WebauthnRegistrationsAttribute.inc:33
+msgid "Signature count"
+msgstr ""
+
+#: personal/webauthn/class_WebauthnRegistrationsAttribute.inc:34
+msgid "Domain"
+msgstr ""
+
+#: personal/webauthn/class_webauthnAccount.inc:31
+msgid "Manage double factor authentication"
+msgstr ""
+
+#: personal/webauthn/class_webauthnAccount.inc:46
+msgid "Devices"
+msgstr ""
+
+#: personal/webauthn/class_webauthnAccount.inc:50
+msgid "Registrations"
+msgstr ""
+
+#: personal/webauthn/class_webauthnAccount.inc:50
+msgid "Registrations for this user"
+msgstr ""
+
+#: ihtml/themes/breezy/secondfactor.tpl.c:2
+msgid "Two factor authentication"
+msgstr ""
+
+#: ihtml/themes/breezy/secondfactor.tpl.c:5
+msgid ""
+"Trying to communicate with your device. Plug it in (if you haven't already) "
+"and press the button on the device now."
+msgstr ""
