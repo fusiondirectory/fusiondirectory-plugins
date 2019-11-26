@@ -72,7 +72,7 @@ class webauthnAccount extends simplePlugin
             throw new FusionDirectoryException('Unknown operation '.$_GET['webauthn']);
         }
       } catch (Throwable $ex) {
-        session::un_set('challenge');
+        session::un_set('WebauthnChallenge');
         $return           = new stdClass();
         $return->success  = FALSE;
         $return->msg      = $ex->getMessage();
@@ -113,7 +113,7 @@ class webauthnAccount extends simplePlugin
 
     $createArgs = $WebAuthn->getCreateArgs($ui->dn, $ui->uid, $ui->cn, 20, FALSE);
 
-    session::set('challenge', $WebAuthn->getChallenge());
+    session::set('WebauthnChallenge', $WebAuthn->getChallenge());
 
     return $createArgs;
   }
@@ -128,7 +128,7 @@ class webauthnAccount extends simplePlugin
     }
     $clientDataJSON     = base64_decode($post->clientDataJSON);
     $attestationObject  = base64_decode($post->attestationObject);
-    $challenge          = session::get('challenge');
+    $challenge          = session::get('WebauthnChallenge');
 
     $data = $WebAuthn->processCreate($clientDataJSON, $attestationObject, $challenge);
 
@@ -138,7 +138,7 @@ class webauthnAccount extends simplePlugin
     $return->success  = TRUE;
     $return->msg      = 'Registration Success! ' . count($this->fdWebauthnRegistrations) . ' registrations.';
 
-    session::un_set('challenge');
+    session::un_set('WebauthnChallenge');
 
     return $return;
   }
