@@ -164,12 +164,12 @@ class sinapsRequest
           case 'ADR':
             if ((string)$method->adresse->temoinAdressePrincipale != 'true') {
               trigger_error('Ignore adresse non principale');
-              continue;
+              continue 2;
             }
             $adresse = $this->convertAddress($method->adresse);
             if ($adresse === FALSE) {
               trigger_error('Ignore adresse non FR non ETR');
-              continue;
+              continue 2;
             }
             $values['entite']['postalAddress'] = $adresse;
             break;
@@ -325,12 +325,12 @@ class sinapsRequest
           case 'ADR':
             if ((string)$method->adresse->temoinAdressePrincipale != 'true') {
               trigger_error('Ignore adresse non principale');
-              continue;
+              continue 2;
             }
             $adresse = $this->convertAddress($method->adresse);
             if ($adresse === FALSE) {
               trigger_error('Ignore adresse non FR non ETR');
-              continue;
+              continue 2;
             }
             if ((string)$method->adresse->codeTypeAdresse == 'ADRPERSO') {
               $values['user']['homePostalAddress'] = $adresse;
