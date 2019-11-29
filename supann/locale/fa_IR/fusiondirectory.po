@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-10-01 16:31+0000\n"
+"POT-Creation-Date: 2019-11-27 09:44+0000\n"
 "PO-Revision-Date: 2018-08-13 20:04+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Persian (Iran) (https://www.transifex.com/fusiondirectory/teams/12202/fa_IR/)\n"
@@ -20,6 +20,56 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa_IR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: admin/groups/supann/class_supannGroup.inc:28
+#: config/supann/class_supannConfig.inc:29
+#: config/supann/class_supannConfig.inc:51
+#: personal/supann/class_supannAccount.inc:223
+msgid "SupAnn"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:29
+msgid "SupAnn group"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:41
+msgid "Information"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:44
+#: personal/supann/class_supannAccountStatus.inc:82
+msgid "End date"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:44
+msgid "Date at which the validity of this group ends"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:49
+msgid "Readers"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:49
+msgid "Users or groups allowed to read the member list of this group"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:53
+msgid "Admins"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:53
+msgid "Users or groups allowed to edit this group"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:58
+#: personal/supann/class_supannAccount.inc:264
+msgid "Ref ids"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:58
+#: personal/supann/class_supannAccount.inc:264
+msgid "supannRefId - IDs/links for this user on other systems"
+msgstr ""
 
 #: admin/supannStructures/class_etablissement.inc:27
 #: personal/supann/class_supannAccount.inc:336
@@ -265,12 +315,6 @@ msgstr ""
 msgid "The SupAnn code of this entity"
 msgstr ""
 
-#: config/supann/class_supannConfig.inc:29
-#: config/supann/class_supannConfig.inc:51
-#: personal/supann/class_supannAccount.inc:223
-msgid "SupAnn"
-msgstr ""
-
 #: config/supann/class_supannConfig.inc:30
 msgid "SupAnn configuration"
 msgstr ""
@@ -485,14 +529,6 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:259
 msgid "eduPersonNickname - Can contain a nickname for this user"
-msgstr ""
-
-#: personal/supann/class_supannAccount.inc:264
-msgid "Ref ids"
-msgstr ""
-
-#: personal/supann/class_supannAccount.inc:264
-msgid "supannRefId - IDs/links for this user on other systems"
 msgstr ""
 
 #: personal/supann/class_supannAccount.inc:274
@@ -794,10 +830,6 @@ msgstr ""
 
 #: personal/supann/class_supannAccountStatus.inc:76
 msgid "Date this status started"
-msgstr ""
-
-#: personal/supann/class_supannAccountStatus.inc:82
-msgid "End date"
 msgstr ""
 
 #: personal/supann/class_supannAccountStatus.inc:82

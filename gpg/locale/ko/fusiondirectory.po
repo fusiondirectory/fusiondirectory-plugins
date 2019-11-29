@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-10-01 16:31+0000\n"
+"POT-Creation-Date: 2019-11-27 09:44+0000\n"
 "PO-Revision-Date: 2018-08-13 19:54+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -71,70 +71,62 @@ msgstr "GPG 키"
 msgid "GPG keys of this user"
 msgstr "이 사용자의 GPG 키"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
-msgid "Configuration error"
-msgstr "설정 에러"
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:27
+msgid "PGP Key selection"
+msgstr ""
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
-msgid "You need to configure GPG base dn through the addons section first"
-msgstr "먼저 addons 섹션을 통해 GPG 기반 dn을 구성해야합니다."
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:28
+msgid "PGP Key selection for a user"
+msgstr ""
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:141
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:40
-msgid "Key ID"
-msgstr "키 ID"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:142
-msgid "User ID"
-msgstr "사용자 ID"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:143
-msgid "Creation time"
-msgstr "생성시간"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:144
-msgid "Expiration"
-msgstr "만료"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:145
-msgid "Algorithm"
-msgstr "알고리즘"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:146
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:80
-msgid "Size"
-msgstr "크기"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:147
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:88
-msgid "Revoked"
-msgstr "철회"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:148
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
-msgid "Disabled"
-msgstr "미사용"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:11
-msgid "Please select the desired entries"
-msgstr "원하는 항목을 선택하십시오."
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:15
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:30
 msgid "PGP Key"
 msgstr "PGP 키"
 
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:48
-msgid "User"
-msgstr "사용자"
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:31
+msgid "PGP Key information"
+msgstr ""
 
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:56
-msgid "Creation date"
-msgstr "생성일자"
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:77
+msgid "Configuration error"
+msgstr "설정 에러"
 
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:64
-msgid "Expiration date"
-msgstr "만료일자"
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:77
+msgid "You need to configure GPG base dn through the addons section first"
+msgstr "먼저 addons 섹션을 통해 GPG 기반 dn을 구성해야합니다."
 
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:72
-msgid "Type"
-msgstr "타입"
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:85
+msgid "Cert ID"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:86
+msgid "Key ID"
+msgstr "키 ID"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:87
+msgid "User ID"
+msgstr "사용자 ID"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:88
+msgid "Creation time"
+msgstr "생성시간"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:89
+msgid "Expiration"
+msgstr "만료"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:90
+msgid "Algorithm"
+msgstr "알고리즘"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:91
+msgid "Size"
+msgstr "크기"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:92
+msgid "Revoked"
+msgstr "철회"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:93
+msgid "Disabled"
+msgstr "미사용"

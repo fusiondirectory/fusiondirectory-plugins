@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-10-01 16:31+0000\n"
+"POT-Creation-Date: 2019-11-27 09:44+0000\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -46,39 +46,43 @@ msgstr ""
 msgid "Could not find any invitation matching registration with token \"%s\""
 msgstr ""
 
-#: include/class_publicFormPage.inc:151
+#: include/class_publicFormPage.inc:153
 msgid "Form name or token missing from URL"
-msgstr ""
-
-#: include/class_publicFormPage.inc:154
-#, php-format
-msgid "Form \"%s\" could not be found"
 msgstr ""
 
 #: include/class_publicFormPage.inc:156
 #, php-format
+msgid "Form \"%s\" could not be found"
+msgstr ""
+
+#: include/class_publicFormPage.inc:158
+#, php-format
 msgid "Found several forms named \"%s\""
 msgstr ""
 
-#: include/class_publicFormPage.inc:165
+#: include/class_publicFormPage.inc:167
 #, php-format
 msgid "Form \"%s\" is private and requires an invitation"
 msgstr ""
 
-#: include/class_publicFormPage.inc:224
+#: include/class_publicFormPage.inc:229 include/class_publicFormPage.inc:236
 msgid "Error"
 msgstr "오류"
 
-#: include/class_publicFormPage.inc:224
+#: include/class_publicFormPage.inc:229
+msgid "Captcha code was wrong!"
+msgstr ""
+
+#: include/class_publicFormPage.inc:236
 msgid "You need to accept the terms of service to continue!"
 msgstr ""
 
-#: include/class_publicFormPage.inc:333
+#: include/class_publicFormPage.inc:387
 #, php-format
 msgid "Form - %s"
 msgstr ""
 
-#: include/class_publicFormPage.inc:335
+#: include/class_publicFormPage.inc:389
 #: admin/public-forms/class_publicForm.inc:49
 msgid "Form"
 msgstr ""
@@ -234,6 +238,14 @@ msgid ""
 "the terms at this URL."
 msgstr ""
 
+#: admin/public-forms/class_publicForm.inc:94
+msgid "Captcha"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:94
+msgid "Add a captcha to the form"
+msgstr ""
+
 #: config/public-forms/class_publicFormsConfig.inc:26
 msgid "Public forms configuration"
 msgstr ""
@@ -248,6 +260,24 @@ msgstr ""
 
 #: config/public-forms/class_publicFormsConfig.inc:43
 msgid "Branch in which public forms will be stored"
+msgstr ""
+
+#: config/public-forms/class_publicFormsConfig.inc:48
+msgid "Securimage path"
+msgstr ""
+
+#: config/public-forms/class_publicFormsConfig.inc:48
+msgid ""
+"If you wish to use captchas in your forms, you need to install securimage. "
+"Specify here the path to the main class."
+msgstr ""
+
+#: config/public-forms/class_publicFormsConfig.inc:52
+msgid "Securimage URI"
+msgstr ""
+
+#: config/public-forms/class_publicFormsConfig.inc:52
+msgid "The base URI at which securimage is available"
 msgstr ""
 
 #: ihtml/themes/breezy/public-form.tpl.c:2

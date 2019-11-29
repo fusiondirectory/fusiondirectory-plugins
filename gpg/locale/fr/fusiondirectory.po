@@ -6,15 +6,16 @@
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
 # MCMic, 2019
+# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-10-01 16:31+0000\n"
+"POT-Creation-Date: 2019-11-27 09:44+0000\n"
 "PO-Revision-Date: 2018-08-13 19:54+0000\n"
-"Last-Translator: MCMic, 2019\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,72 +72,64 @@ msgstr "Clés GPG"
 msgid "GPG keys of this user"
 msgstr "Liste des clés GPG de cet utilisateur"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:27
+msgid "PGP Key selection"
+msgstr "Sélection de la clé PGP"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:28
+msgid "PGP Key selection for a user"
+msgstr "Sélection de la clé PGP pour un utilisateur"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:30
+msgid "PGP Key"
+msgstr "Clé PGP"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:31
+msgid "PGP Key information"
+msgstr "Informations clés sur PGP"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:77
 msgid "Configuration error"
 msgstr "Erreur de configuration"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:77
 msgid "You need to configure GPG base dn through the addons section first"
 msgstr ""
 "Vous devez configurer d'abord le DN de base de GPG, dans la section "
 "«Configuration»"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:141
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:40
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:85
+msgid "Cert ID"
+msgstr "Cert ID"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:86
 msgid "Key ID"
 msgstr "ID de la clef"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:142
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:87
 msgid "User ID"
 msgstr "ID de l'utilisateur"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:143
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:88
 msgid "Creation time"
 msgstr "Date de création"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:144
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:89
 msgid "Expiration"
 msgstr "Date d'expiration"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:145
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:90
 msgid "Algorithm"
 msgstr "Algorithme"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:146
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:80
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:91
 msgid "Size"
 msgstr "Taille"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:147
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:88
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:92
 msgid "Revoked"
 msgstr "Révoquée"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:148
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:93
 msgid "Disabled"
 msgstr "Désactivée"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:11
-msgid "Please select the desired entries"
-msgstr "Veuillez sélectionner les entrées désirées"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:15
-msgid "PGP Key"
-msgstr "Clé PGP"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:48
-msgid "User"
-msgstr "Utilisateur"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:56
-msgid "Creation date"
-msgstr "Date de création"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:64
-msgid "Expiration date"
-msgstr "Date d'expiration"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:72
-msgid "Type"
-msgstr "Type"

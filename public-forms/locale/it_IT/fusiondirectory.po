@@ -6,15 +6,16 @@
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
 # Paola Penati <paola.penati@opensides.be>, 2018
+# Paola <paola.penati@fusiondirectory.org>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-10-01 16:31+0000\n"
+"POT-Creation-Date: 2019-11-27 09:44+0000\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
-"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
+"Last-Translator: Paola <paola.penati@fusiondirectory.org>, 2019\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,39 +49,43 @@ msgstr ""
 "Impossibile trovare una registrazione di abbinamento di invito con il token "
 "\"%s\""
 
-#: include/class_publicFormPage.inc:151
+#: include/class_publicFormPage.inc:153
 msgid "Form name or token missing from URL"
 msgstr "Nome del modulo o token mancante dall'URL"
 
-#: include/class_publicFormPage.inc:154
+#: include/class_publicFormPage.inc:156
 #, php-format
 msgid "Form \"%s\" could not be found"
 msgstr "Impossibile trovare il modulo \"%s\""
 
-#: include/class_publicFormPage.inc:156
+#: include/class_publicFormPage.inc:158
 #, php-format
 msgid "Found several forms named \"%s\""
 msgstr "Trovato diversi formulari denominati \"%s\""
 
-#: include/class_publicFormPage.inc:165
+#: include/class_publicFormPage.inc:167
 #, php-format
 msgid "Form \"%s\" is private and requires an invitation"
 msgstr "Il modulo \"%s\" è privato e richiede un invito"
 
-#: include/class_publicFormPage.inc:224
+#: include/class_publicFormPage.inc:229 include/class_publicFormPage.inc:236
 msgid "Error"
 msgstr "Errore"
 
-#: include/class_publicFormPage.inc:224
+#: include/class_publicFormPage.inc:229
+msgid "Captcha code was wrong!"
+msgstr "Il codice captcha era sbagliato!"
+
+#: include/class_publicFormPage.inc:236
 msgid "You need to accept the terms of service to continue!"
 msgstr "Devi accettare i termini di servizio per continuare!"
 
-#: include/class_publicFormPage.inc:333
+#: include/class_publicFormPage.inc:387
 #, php-format
 msgid "Form - %s"
 msgstr "Modulo - %s"
 
-#: include/class_publicFormPage.inc:335
+#: include/class_publicFormPage.inc:389
 #: admin/public-forms/class_publicForm.inc:49
 msgid "Form"
 msgstr "Modulo"
@@ -238,6 +243,14 @@ msgstr ""
 "Termini dell'URL del servizio. Se riempito, aggiunge una casella di "
 "controllo obbligatoria per accettare i termini su questo URL."
 
+#: admin/public-forms/class_publicForm.inc:94
+msgid "Captcha"
+msgstr "Captcha"
+
+#: admin/public-forms/class_publicForm.inc:94
+msgid "Add a captcha to the form"
+msgstr "Aggiungi un captcha al modulo"
+
 #: config/public-forms/class_publicFormsConfig.inc:26
 msgid "Public forms configuration"
 msgstr "Configurazione dei moduli pubblici"
@@ -253,6 +266,26 @@ msgstr "Moduli pubblici RDN"
 #: config/public-forms/class_publicFormsConfig.inc:43
 msgid "Branch in which public forms will be stored"
 msgstr "Ramo in cui verranno archiviati i moduli pubblici"
+
+#: config/public-forms/class_publicFormsConfig.inc:48
+msgid "Securimage path"
+msgstr "Percorso di Securimage"
+
+#: config/public-forms/class_publicFormsConfig.inc:48
+msgid ""
+"If you wish to use captchas in your forms, you need to install securimage. "
+"Specify here the path to the main class."
+msgstr ""
+"Se desideri utilizzare captcha nei tuoi moduli, devi installare securimage. "
+"Specificare qui il percorso della classe principale."
+
+#: config/public-forms/class_publicFormsConfig.inc:52
+msgid "Securimage URI"
+msgstr "URI Securimage"
+
+#: config/public-forms/class_publicFormsConfig.inc:52
+msgid "The base URI at which securimage is available"
+msgstr "L'URI di base in cui è disponibile securimage"
 
 #: ihtml/themes/breezy/public-form.tpl.c:2
 msgid "I agree to the <a target=\"_blank\" href=\"%1\">terms of service</a>"

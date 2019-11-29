@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-10-01 16:31+0000\n"
+"POT-Creation-Date: 2019-11-27 09:44+0000\n"
 "PO-Revision-Date: 2018-08-13 19:57+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -190,21 +190,23 @@ msgstr "계정 생성에 사용되는 속성"
 
 #: config/mail/class_mailPluginConfig.inc:49
 msgid "User account template"
-msgstr ""
+msgstr "사용자 계정 템플릿"
 
 #: config/mail/class_mailPluginConfig.inc:50
 msgid ""
 "Override the user account creation syntax. Default is %PREFIX%%UATTRIB%."
 msgstr ""
+"사용자 계정 생성 문법을 재정의합니다.\n"
+"기본값은 %PREFIX1%%UATTRIB%."
 
 #: config/mail/class_mailPluginConfig.inc:54
 msgid "Group account template"
-msgstr ""
+msgstr "그룹 계정 템플릿"
 
 #: config/mail/class_mailPluginConfig.inc:55
 msgid ""
 "Override the group account creation syntax. Default is %PREFIX%%UATTRIB%."
-msgstr ""
+msgstr "그룹 계정 생성 문법을 재정의합니다.  기본값은 %PREFIX1%%UATTRIB%."
 
 #: config/mail/class_mailPluginConfig.inc:59
 msgid "Use cyrus UNIX style"
@@ -212,7 +214,7 @@ msgstr "cyrus 유닉스 방식 사용"
 
 #: config/mail/class_mailPluginConfig.inc:60
 msgid "Determines if \"foo/bar\" or \"foo.bar\" should be uses as namespaces in IMAP."
-msgstr ""
+msgstr "IMAP 네임스페이스에서 \"foo/bar\" 또는 \"foo.bar\"로 사용하지 여부를 결정"
 
 #: config/mail/class_mailPluginConfig.inc:64
 msgid "Delete mailbox on account deletion"
@@ -278,6 +280,10 @@ msgstr "호스팅 중인 메일서버를 지정하시오."
 #: personal/mail/class_mailAccount.inc:110
 msgid "Quota size"
 msgstr "Quota 크기"
+
+#: personal/mail/class_mailAccount.inc:110
+msgid "Define quota size in MiB"
+msgstr "MiB에서 할당량 크기 정의"
 
 #: personal/mail/class_mailAccount.inc:117
 msgid "Other addresses and redirections"

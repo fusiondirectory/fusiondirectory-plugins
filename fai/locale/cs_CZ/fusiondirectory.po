@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-10-01 16:31+0000\n"
+"POT-Creation-Date: 2019-11-27 09:44+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -31,7 +31,7 @@ msgid "FAI variable"
 msgstr "proměnná pro FAI"
 
 #: admin/fai/class_faiVariable.inc:47 admin/fai/class_faiScript.inc:47
-#: admin/fai/class_faiProfile.inc:46 admin/fai/class_faiPackage.inc:395
+#: admin/fai/class_faiProfile.inc:46 admin/fai/class_faiPackage.inc:99
 #: admin/fai/class_faiHook.inc:47 admin/fai/class_faiTemplate.inc:165
 #: admin/fai/class_faiTemplateEntry.inc:139
 #: admin/fai/class_faiPartitionTable.inc:338
@@ -39,21 +39,21 @@ msgid "Properties"
 msgstr "Vlastnosti"
 
 #: admin/fai/class_faiVariable.inc:50 admin/fai/class_faiScript.inc:50
-#: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPackage.inc:398
+#: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPackage.inc:102
 #: admin/fai/class_faiHook.inc:50 admin/fai/class_faiTemplate.inc:168
 #: admin/fai/class_faiPartitionTable.inc:341
 msgid "Class name"
 msgstr "Název třídy"
 
 #: admin/fai/class_faiVariable.inc:50 admin/fai/class_faiScript.inc:50
-#: admin/fai/class_faiPackage.inc:398 admin/fai/class_faiHook.inc:50
+#: admin/fai/class_faiPackage.inc:102 admin/fai/class_faiHook.inc:50
 msgid "Variables class name"
 msgstr "Název třídy proměnných"
 
 #: admin/fai/class_faiVariable.inc:54 admin/fai/class_faiVariable.inc:72
 #: admin/fai/class_faiDiskEntry.inc:247 admin/fai/class_faiPartition.inc:246
 #: admin/fai/class_faiScript.inc:54 admin/fai/class_faiScript.inc:72
-#: admin/fai/class_faiProfile.inc:53 admin/fai/class_faiPackage.inc:402
+#: admin/fai/class_faiProfile.inc:53 admin/fai/class_faiPackage.inc:106
 #: admin/fai/class_faiHook.inc:54 admin/fai/class_faiHook.inc:72
 #: admin/fai/class_faiTemplate.inc:172
 #: admin/fai/class_faiTemplateEntry.inc:146
@@ -62,7 +62,7 @@ msgid "Description"
 msgstr "Popis"
 
 #: admin/fai/class_faiVariable.inc:54 admin/fai/class_faiScript.inc:54
-#: admin/fai/class_faiProfile.inc:53 admin/fai/class_faiPackage.inc:402
+#: admin/fai/class_faiProfile.inc:53 admin/fai/class_faiPackage.inc:106
 #: admin/fai/class_faiHook.inc:54 admin/fai/class_faiTemplate.inc:172
 #: admin/fai/class_faiPartitionTable.inc:345
 msgid "Short description of the class"
@@ -79,10 +79,8 @@ msgstr "Proměnné v této třídě"
 
 #: admin/fai/class_faiVariable.inc:68
 #: admin/fai/class_faiSimplePluginClass.inc:51
-#: admin/fai/class_faiDiskEntry.inc:241
-#: admin/fai/packageSelect/selectPackage-list.xml:40
-#: admin/fai/class_faiPartition.inc:240 admin/fai/class_faiScript.inc:68
-#: admin/fai/class_faiHook.inc:68
+#: admin/fai/class_faiDiskEntry.inc:241 admin/fai/class_faiPartition.inc:240
+#: admin/fai/class_faiScript.inc:68 admin/fai/class_faiHook.inc:68
 msgid "Name"
 msgstr "Název"
 
@@ -204,25 +202,53 @@ msgid ""
 msgstr ""
 "Při použití logických oddílů není možné mít více než tři hlavní oddíly"
 
-#: admin/fai/packageSelect/selectPackage-list.xml:11
-msgid "Please select the desired entries"
-msgstr "vyberte prosím požadované položky"
-
-#: admin/fai/packageSelect/selectPackage-list.xml:15
-#: admin/fai/class_faiPackage.inc:374
+#: admin/fai/packageSelect/class_packageSelectManagement.inc:31
+#: admin/fai/class_faiPackage.inc:78
 msgid "Package"
 msgstr "Balíček"
 
-#: admin/fai/packageSelect/selectPackage-list.xml:48
-msgid "Version"
-msgstr "Verze"
-
-#: admin/fai/packageSelect/class_filterFAIPackages.inc:40
-#: admin/fai/packageSelect/class_filterFAIPackages.inc:45
+#: admin/fai/packageSelect/class_packageSelectManagementFilter.inc:50
+#: admin/fai/packageSelect/class_packageSelectManagementFilter.inc:55
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:239
 #: admin/fai/class_faiPackageConfiguration.inc:59
-#: admin/fai/class_faiPackage.inc:287
 msgid "Infrastructure service"
 msgstr "Služba infrastruktury"
+
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:115
+msgid "Mark for installation"
+msgstr "Označit k instalaci"
+
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:119
+msgid "Mark for removal"
+msgstr "Označit k odebrání"
+
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:124
+msgid "Edit configuration"
+msgstr "Upravit nastavení"
+
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:203
+#: admin/fai/class_faiTemplate.inc:109
+#: admin/fai/class_faiPartitionTable.inc:247
+#: admin/fai/class_faiPartitionTable.inc:288
+#: admin/systems/services/repository/class_serviceRepository.inc:240
+#: admin/systems/services/repository/class_serviceRepository.inc:257
+#: admin/systems/services/repository/class_serviceRepository.inc:261
+msgid "LDAP error"
+msgstr "chyba LDAPu"
+
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:258
+msgid "Unkown packages"
+msgstr "Neznámé balíčky"
+
+#: admin/fai/packageSelect/class_PackageSelectCustomFilterElement.inc:57
+#: admin/fai/packageSelect/class_PackageSelectCustomFilterElement.inc:58
+#, php-format
+msgid "Custom %s"
+msgstr ""
+
+#: admin/fai/packageSelect/class_PackageSelectCustomFilterElement.inc:64
+msgid "Customs"
+msgstr ""
 
 #: admin/fai/class_faiPartition.inc:30
 msgid "Type of sizing - fixed, dynamic or all remaining space"
@@ -587,74 +613,49 @@ msgstr ""
 "volbu mezi konkrétními předvolbami které zde nemohou být přítomné. Aby "
 "fungovalo je třeba, aby zadaný text byl některou z platných voleb."
 
-#: admin/fai/class_faiPackage.inc:163
-msgid "Mark for installation"
-msgstr "Označit k instalaci"
-
-#: admin/fai/class_faiPackage.inc:167
-msgid "Mark for removal"
-msgstr "Označit k odebrání"
-
-#: admin/fai/class_faiPackage.inc:172
-msgid "Edit configuration"
-msgstr "Upravit nastavení"
-
-#: admin/fai/class_faiPackage.inc:251 admin/fai/class_faiTemplate.inc:109
-#: admin/fai/class_faiPartitionTable.inc:247
-#: admin/fai/class_faiPartitionTable.inc:288
-#: admin/systems/services/repository/class_serviceRepository.inc:240
-#: admin/systems/services/repository/class_serviceRepository.inc:257
-#: admin/systems/services/repository/class_serviceRepository.inc:261
-msgid "LDAP error"
-msgstr "chyba LDAPu"
-
-#: admin/fai/class_faiPackage.inc:306
-msgid "Unkown packages"
-msgstr "Neznámé balíčky"
-
-#: admin/fai/class_faiPackage.inc:375
+#: admin/fai/class_faiPackage.inc:79
 msgid "FAI Package list"
 msgstr "seznam balíčků pro FAI"
 
-#: admin/fai/class_faiPackage.inc:380
+#: admin/fai/class_faiPackage.inc:84
 msgid "FAI Package"
 msgstr "FAI balíček"
 
-#: admin/fai/class_faiPackage.inc:408 admin/systems/class_faiStartup.inc:101
+#: admin/fai/class_faiPackage.inc:112 admin/systems/class_faiStartup.inc:101
 msgid "Repository"
 msgstr "Repozitář"
 
-#: admin/fai/class_faiPackage.inc:411 admin/systems/class_faiStartup.inc:89
+#: admin/fai/class_faiPackage.inc:115 admin/systems/class_faiStartup.inc:89
 #: admin/systems/services/repository/class_serviceRepository.inc:40
 msgid "Release"
 msgstr "Vydání"
 
-#: admin/fai/class_faiPackage.inc:411
+#: admin/fai/class_faiPackage.inc:115
 msgid "Debian release concerned"
 msgstr "Týkající se vydání distribuce Debian"
 
-#: admin/fai/class_faiPackage.inc:415
+#: admin/fai/class_faiPackage.inc:119
 #: admin/systems/services/repository/class_serviceRepository.inc:47
 msgid "Sections"
 msgstr "oddíly"
 
-#: admin/fai/class_faiPackage.inc:415
+#: admin/fai/class_faiPackage.inc:119
 msgid "Sections concerned"
 msgstr "Sekce, kterých se týká"
 
-#: admin/fai/class_faiPackage.inc:419
+#: admin/fai/class_faiPackage.inc:123
 msgid "Install method"
 msgstr "způsob instalace"
 
-#: admin/fai/class_faiPackage.inc:419
+#: admin/fai/class_faiPackage.inc:123
 msgid "Install method to use for this package list"
 msgstr "Způsob kterým mají být nainstalovány balíčky z tohoto seznamu"
 
-#: admin/fai/class_faiPackage.inc:430
+#: admin/fai/class_faiPackage.inc:134
 msgid "Packages"
 msgstr "Balíčky"
 
-#: admin/fai/class_faiPackage.inc:434
+#: admin/fai/class_faiPackage.inc:138
 msgid "Packages in this class"
 msgstr "Balíčky v této třídě"
 
@@ -1034,11 +1035,3 @@ msgstr "Relativní větev ve které bude uložena fai %s"
 #: config/fai/class_faiConfig.inc:61
 msgid "s"
 msgstr "s"
-
-#: admin/fai/packageSelect/selectPackage-filter.tpl.c:2
-msgid "Filter"
-msgstr "filtr"
-
-#: admin/fai/packageSelect/selectPackage-filter.tpl.c:5
-msgid "A maximum of 200 entries will be shown here."
-msgstr "Nebude zde zobrazeno více než 200 položek."

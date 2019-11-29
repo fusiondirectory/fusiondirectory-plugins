@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-10-01 16:31+0000\n"
+"POT-Creation-Date: 2019-11-27 09:44+0000\n"
 "PO-Revision-Date: 2018-08-13 20:04+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -22,11 +22,61 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: admin/groups/supann/class_supannGroup.inc:28
+#: config/supann/class_supannConfig.inc:29
+#: config/supann/class_supannConfig.inc:51
+#: personal/supann/class_supannAccount.inc:223
+msgid "SupAnn"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:29
+msgid "SupAnn group"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:41
+msgid "Information"
+msgstr "정보"
+
+#: admin/groups/supann/class_supannGroup.inc:44
+#: personal/supann/class_supannAccountStatus.inc:82
+msgid "End date"
+msgstr "종료일자"
+
+#: admin/groups/supann/class_supannGroup.inc:44
+msgid "Date at which the validity of this group ends"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:49
+msgid "Readers"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:49
+msgid "Users or groups allowed to read the member list of this group"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:53
+msgid "Admins"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:53
+msgid "Users or groups allowed to edit this group"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:58
+#: personal/supann/class_supannAccount.inc:264
+msgid "Ref ids"
+msgstr ""
+
+#: admin/groups/supann/class_supannGroup.inc:58
+#: personal/supann/class_supannAccount.inc:264
+msgid "supannRefId - IDs/links for this user on other systems"
+msgstr ""
+
 #: admin/supannStructures/class_etablissement.inc:27
 #: personal/supann/class_supannAccount.inc:336
 #: personal/supann/class_supannAccount.inc:375
 msgid "Establishment"
-msgstr ""
+msgstr "설립"
 
 #: admin/supannStructures/class_etablissement.inc:28
 msgid "SupAnn Establishment Settings"
@@ -74,7 +124,7 @@ msgstr "위치"
 #: admin/supannStructures/class_etablissement.inc:69
 #: admin/supannStructures/class_entite.inc:64
 msgid "Telephone"
-msgstr ""
+msgstr "전화"
 
 #: admin/supannStructures/class_etablissement.inc:69
 msgid "Phone number of this establishment"
@@ -83,7 +133,7 @@ msgstr ""
 #: admin/supannStructures/class_etablissement.inc:73
 #: admin/supannStructures/class_entite.inc:68
 msgid "Fax"
-msgstr ""
+msgstr "팩스"
 
 #: admin/supannStructures/class_etablissement.inc:73
 msgid "Fax number of this establishment"
@@ -107,7 +157,7 @@ msgstr ""
 
 #: admin/supannStructures/class_etablissement.inc:91
 msgid "Establishment code"
-msgstr ""
+msgstr "시설 코드"
 
 #: admin/supannStructures/class_etablissement.inc:91
 msgid "The code of this establishment (must have a prefix between {})"
@@ -264,12 +314,6 @@ msgstr ""
 
 #: admin/supannStructures/class_entite.inc:85
 msgid "The SupAnn code of this entity"
-msgstr ""
-
-#: config/supann/class_supannConfig.inc:29
-#: config/supann/class_supannConfig.inc:51
-#: personal/supann/class_supannAccount.inc:223
-msgid "SupAnn"
 msgstr ""
 
 #: config/supann/class_supannConfig.inc:30
@@ -486,14 +530,6 @@ msgstr "닉네임"
 
 #: personal/supann/class_supannAccount.inc:259
 msgid "eduPersonNickname - Can contain a nickname for this user"
-msgstr ""
-
-#: personal/supann/class_supannAccount.inc:264
-msgid "Ref ids"
-msgstr ""
-
-#: personal/supann/class_supannAccount.inc:264
-msgid "supannRefId - IDs/links for this user on other systems"
 msgstr ""
 
 #: personal/supann/class_supannAccount.inc:274
@@ -796,10 +832,6 @@ msgstr "시작일자"
 #: personal/supann/class_supannAccountStatus.inc:76
 msgid "Date this status started"
 msgstr ""
-
-#: personal/supann/class_supannAccountStatus.inc:82
-msgid "End date"
-msgstr "종료일자"
 
 #: personal/supann/class_supannAccountStatus.inc:82
 msgid "Date this status will end"
