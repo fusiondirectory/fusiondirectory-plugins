@@ -4,17 +4,19 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2019
 # Paola Penati <paola.penati@opensides.be>, 2019
+# fusiondirectory <contact@fusiondirectory.org>, 2019
+# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019
+# Paola <paola.penati@fusiondirectory.org>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-10-01 16:31+0000\n"
+"POT-Creation-Date: 2019-11-27 09:44+0000\n"
 "PO-Revision-Date: 2018-08-13 19:50+0000\n"
-"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2019\n"
+"Last-Translator: Paola <paola.penati@fusiondirectory.org>, 2019\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,10 +35,12 @@ msgstr ""
 "revisione"
 
 #: admin/audit/class_auditEvent.inc:50
+#: personal/audit/class_auditSecurity.inc:57
 msgid "Event"
 msgstr "Evento"
 
 #: admin/audit/class_auditEvent.inc:54
+#: personal/audit/class_auditSecurity.inc:60
 msgid "Time"
 msgstr "Tempo"
 
@@ -45,6 +49,7 @@ msgid "Date and time this event happened"
 msgstr "Data e ora in cui questo evento é accaduto"
 
 #: admin/audit/class_auditEvent.inc:57
+#: admin/audit/class_auditManagement.inc:62
 msgid "Action"
 msgstr "Azione"
 
@@ -53,6 +58,7 @@ msgid "Action type"
 msgstr "Tipo di azione"
 
 #: admin/audit/class_auditEvent.inc:58
+#: personal/audit/class_auditSecurity.inc:58
 msgid "Author"
 msgstr "Autore"
 
@@ -61,47 +67,56 @@ msgid "Action author"
 msgstr "Azione autore"
 
 #: admin/audit/class_auditEvent.inc:59
+msgid "Author IP"
+msgstr "Autore IP"
+
+#: admin/audit/class_auditEvent.inc:59
+msgid "Action author IP address"
+msgstr "Indirizzo IP dell'autore dell'azione"
+
+#: admin/audit/class_auditEvent.inc:60
 msgid "Object type"
 msgstr "Tipo di oggetto"
 
-#: admin/audit/class_auditEvent.inc:60
+#: admin/audit/class_auditEvent.inc:61
 msgid "Object"
 msgstr "Oggetto"
 
-#: admin/audit/class_auditEvent.inc:60
+#: admin/audit/class_auditEvent.inc:61
 msgid "Target object"
 msgstr "Oggetto di destinazione"
 
-#: admin/audit/class_auditEvent.inc:61
+#: admin/audit/class_auditEvent.inc:62
 msgid "Attributes"
 msgstr "Attributi"
 
-#: admin/audit/class_auditEvent.inc:61
+#: admin/audit/class_auditEvent.inc:62
 msgid "Target attributes"
 msgstr "Attributi di destinazione"
 
-#: admin/audit/class_auditEvent.inc:62
+#: admin/audit/class_auditEvent.inc:63
+#: personal/audit/class_auditSecurity.inc:61
 msgid "Result"
 msgstr "Risultato"
 
-#: admin/audit/class_auditEvent.inc:62
+#: admin/audit/class_auditEvent.inc:63
 msgid "Result or error"
 msgstr "Risultato o errore"
 
-#: admin/audit/class_auditManagement.inc:40
+#: admin/audit/class_auditManagement.inc:41
 #: config/audit/class_auditConfig.inc:40
 msgid "Audit"
 msgstr "Controllo"
 
-#: admin/audit/class_auditManagement.inc:41
+#: admin/audit/class_auditManagement.inc:42
 msgid "Audit events"
 msgstr "Eventi di controllo"
 
-#: admin/audit/class_auditManagement.inc:42
+#: admin/audit/class_auditManagement.inc:43
 msgid "Browse audit events"
 msgstr "Sfoglia gli eventi di controllo"
 
-#: admin/audit/class_auditManagement.inc:53
+#: admin/audit/class_auditManagement.inc:54
 msgid "Date"
 msgstr "Data"
 
@@ -136,3 +151,71 @@ msgstr "Giorni di conservazione"
 #: config/audit/class_auditConfig.inc:56
 msgid "Number of days of audit to keep in the LDAP when cleaning"
 msgstr "Numero di giorni di controllo da tenere nell'LDAP durante il cleaning"
+
+#: personal/audit/class_auditSecurity.inc:27
+msgid "Security"
+msgstr "Sicurezza"
+
+#: personal/audit/class_auditSecurity.inc:28
+#: personal/audit/class_auditSecurity.inc:40
+msgid "Security audit"
+msgstr "Audit di sicurezza"
+
+#: personal/audit/class_auditSecurity.inc:44
+msgid "Important events involving your account"
+msgstr "Eventi importanti che coinvolgono il tuo account"
+
+#: personal/audit/class_auditSecurity.inc:59
+msgid "Origin"
+msgstr "Origine"
+
+#: personal/audit/class_AuditLogAttribute.inc:48
+msgid "Sign in"
+msgstr "Accedi"
+
+#: personal/audit/class_AuditLogAttribute.inc:50
+msgid "Sign out"
+msgstr "Termina la sessione"
+
+#: personal/audit/class_AuditLogAttribute.inc:57
+msgid "Password modification"
+msgstr "Modifica password"
+
+#: personal/audit/class_AuditLogAttribute.inc:59
+#, php-format
+msgid "Account modification (%s)"
+msgstr "Modifica account (%s)"
+
+#: personal/audit/class_AuditLogAttribute.inc:102
+#, php-format
+msgid "%s years(s) ago"
+msgstr "%sanno(i) fa"
+
+#: personal/audit/class_AuditLogAttribute.inc:105
+#, php-format
+msgid "%s month(s) ago"
+msgstr "%smese(i) fa"
+
+#: personal/audit/class_AuditLogAttribute.inc:108
+#, php-format
+msgid "%s day(s) ago"
+msgstr "%s giorno(i) fa"
+
+#: personal/audit/class_AuditLogAttribute.inc:111
+#, php-format
+msgid "%s hour(s) ago"
+msgstr "%sora(e) fa"
+
+#: personal/audit/class_AuditLogAttribute.inc:114
+#, php-format
+msgid "%s minute(s) ago"
+msgstr "%sminuto(i) fa"
+
+#: personal/audit/class_AuditLogAttribute.inc:117
+#, php-format
+msgid "%s second(s) ago"
+msgstr "%s secondo(i) fa"
+
+#: personal/audit/class_AuditLogAttribute.inc:120
+msgid "Now"
+msgstr "Ora"

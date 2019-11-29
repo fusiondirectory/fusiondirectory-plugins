@@ -6,15 +6,16 @@
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
 # Paola Penati <paola.penati@opensides.be>, 2018
+# Paola <paola.penati@fusiondirectory.org>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-10-01 16:31+0000\n"
+"POT-Creation-Date: 2019-11-27 09:44+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
-"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2018\n"
+"Last-Translator: Paola <paola.penati@fusiondirectory.org>, 2019\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,7 +32,7 @@ msgid "FAI variable"
 msgstr "Variabile FAI"
 
 #: admin/fai/class_faiVariable.inc:47 admin/fai/class_faiScript.inc:47
-#: admin/fai/class_faiProfile.inc:46 admin/fai/class_faiPackage.inc:395
+#: admin/fai/class_faiProfile.inc:46 admin/fai/class_faiPackage.inc:99
 #: admin/fai/class_faiHook.inc:47 admin/fai/class_faiTemplate.inc:165
 #: admin/fai/class_faiTemplateEntry.inc:139
 #: admin/fai/class_faiPartitionTable.inc:338
@@ -39,21 +40,21 @@ msgid "Properties"
 msgstr "Proprietà"
 
 #: admin/fai/class_faiVariable.inc:50 admin/fai/class_faiScript.inc:50
-#: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPackage.inc:398
+#: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPackage.inc:102
 #: admin/fai/class_faiHook.inc:50 admin/fai/class_faiTemplate.inc:168
 #: admin/fai/class_faiPartitionTable.inc:341
 msgid "Class name"
 msgstr "Nome della classe"
 
 #: admin/fai/class_faiVariable.inc:50 admin/fai/class_faiScript.inc:50
-#: admin/fai/class_faiPackage.inc:398 admin/fai/class_faiHook.inc:50
+#: admin/fai/class_faiPackage.inc:102 admin/fai/class_faiHook.inc:50
 msgid "Variables class name"
 msgstr "Nome di classe variabile"
 
 #: admin/fai/class_faiVariable.inc:54 admin/fai/class_faiVariable.inc:72
 #: admin/fai/class_faiDiskEntry.inc:247 admin/fai/class_faiPartition.inc:246
 #: admin/fai/class_faiScript.inc:54 admin/fai/class_faiScript.inc:72
-#: admin/fai/class_faiProfile.inc:53 admin/fai/class_faiPackage.inc:402
+#: admin/fai/class_faiProfile.inc:53 admin/fai/class_faiPackage.inc:106
 #: admin/fai/class_faiHook.inc:54 admin/fai/class_faiHook.inc:72
 #: admin/fai/class_faiTemplate.inc:172
 #: admin/fai/class_faiTemplateEntry.inc:146
@@ -62,7 +63,7 @@ msgid "Description"
 msgstr "Descrizione"
 
 #: admin/fai/class_faiVariable.inc:54 admin/fai/class_faiScript.inc:54
-#: admin/fai/class_faiProfile.inc:53 admin/fai/class_faiPackage.inc:402
+#: admin/fai/class_faiProfile.inc:53 admin/fai/class_faiPackage.inc:106
 #: admin/fai/class_faiHook.inc:54 admin/fai/class_faiTemplate.inc:172
 #: admin/fai/class_faiPartitionTable.inc:345
 msgid "Short description of the class"
@@ -79,10 +80,8 @@ msgstr "Variabili di questa classe"
 
 #: admin/fai/class_faiVariable.inc:68
 #: admin/fai/class_faiSimplePluginClass.inc:51
-#: admin/fai/class_faiDiskEntry.inc:241
-#: admin/fai/packageSelect/selectPackage-list.xml:40
-#: admin/fai/class_faiPartition.inc:240 admin/fai/class_faiScript.inc:68
-#: admin/fai/class_faiHook.inc:68
+#: admin/fai/class_faiDiskEntry.inc:241 admin/fai/class_faiPartition.inc:240
+#: admin/fai/class_faiScript.inc:68 admin/fai/class_faiHook.inc:68
 msgid "Name"
 msgstr "Nome"
 
@@ -205,25 +204,53 @@ msgstr ""
 "Non puoi avere più di 3 partizioni primarie quando usi delle partizioni "
 "logiche"
 
-#: admin/fai/packageSelect/selectPackage-list.xml:11
-msgid "Please select the desired entries"
-msgstr "Seleziona le entries desiderate"
-
-#: admin/fai/packageSelect/selectPackage-list.xml:15
-#: admin/fai/class_faiPackage.inc:374
+#: admin/fai/packageSelect/class_packageSelectManagement.inc:31
+#: admin/fai/class_faiPackage.inc:78
 msgid "Package"
 msgstr "Pacchetto"
 
-#: admin/fai/packageSelect/selectPackage-list.xml:48
-msgid "Version"
-msgstr "Versione"
-
-#: admin/fai/packageSelect/class_filterFAIPackages.inc:40
-#: admin/fai/packageSelect/class_filterFAIPackages.inc:45
+#: admin/fai/packageSelect/class_packageSelectManagementFilter.inc:50
+#: admin/fai/packageSelect/class_packageSelectManagementFilter.inc:55
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:239
 #: admin/fai/class_faiPackageConfiguration.inc:59
-#: admin/fai/class_faiPackage.inc:287
 msgid "Infrastructure service"
 msgstr "Servizio d'infrastruttura"
+
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:115
+msgid "Mark for installation"
+msgstr "Marca per l'installazione"
+
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:119
+msgid "Mark for removal"
+msgstr "Marca per la rimozione"
+
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:124
+msgid "Edit configuration"
+msgstr "Modifica configurazione"
+
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:203
+#: admin/fai/class_faiTemplate.inc:109
+#: admin/fai/class_faiPartitionTable.inc:247
+#: admin/fai/class_faiPartitionTable.inc:288
+#: admin/systems/services/repository/class_serviceRepository.inc:240
+#: admin/systems/services/repository/class_serviceRepository.inc:257
+#: admin/systems/services/repository/class_serviceRepository.inc:261
+msgid "LDAP error"
+msgstr "Errore LDAP"
+
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:258
+msgid "Unkown packages"
+msgstr "Pacchetti sconosciuti"
+
+#: admin/fai/packageSelect/class_PackageSelectCustomFilterElement.inc:57
+#: admin/fai/packageSelect/class_PackageSelectCustomFilterElement.inc:58
+#, php-format
+msgid "Custom %s"
+msgstr "Personalizza %s"
+
+#: admin/fai/packageSelect/class_PackageSelectCustomFilterElement.inc:64
+msgid "Customs"
+msgstr "Personalizzazioni"
 
 #: admin/fai/class_faiPartition.inc:30
 msgid "Type of sizing - fixed, dynamic or all remaining space"
@@ -519,7 +546,7 @@ msgstr "Script FAI"
 
 #: admin/fai/class_faiScript.inc:60
 msgid "Scripts"
-msgstr "Scripts"
+msgstr "Script"
 
 #: admin/fai/class_faiScript.inc:76
 msgid "Priority"
@@ -588,74 +615,49 @@ msgstr ""
 "specifiche che non possono essere presentate qui. Al fine di avere effetto "
 "il testo inserito deve essere una delle scelte valide."
 
-#: admin/fai/class_faiPackage.inc:163
-msgid "Mark for installation"
-msgstr "Marca per l'installazione"
-
-#: admin/fai/class_faiPackage.inc:167
-msgid "Mark for removal"
-msgstr "Marca per la rimozione"
-
-#: admin/fai/class_faiPackage.inc:172
-msgid "Edit configuration"
-msgstr "Modifica configurazione"
-
-#: admin/fai/class_faiPackage.inc:251 admin/fai/class_faiTemplate.inc:109
-#: admin/fai/class_faiPartitionTable.inc:247
-#: admin/fai/class_faiPartitionTable.inc:288
-#: admin/systems/services/repository/class_serviceRepository.inc:240
-#: admin/systems/services/repository/class_serviceRepository.inc:257
-#: admin/systems/services/repository/class_serviceRepository.inc:261
-msgid "LDAP error"
-msgstr "Errore LDAP"
-
-#: admin/fai/class_faiPackage.inc:306
-msgid "Unkown packages"
-msgstr "Pacchetti sconosciuti"
-
-#: admin/fai/class_faiPackage.inc:375
+#: admin/fai/class_faiPackage.inc:79
 msgid "FAI Package list"
 msgstr "Elenco dei pacchetti FAI"
 
-#: admin/fai/class_faiPackage.inc:380
+#: admin/fai/class_faiPackage.inc:84
 msgid "FAI Package"
 msgstr "Pacchetto FAI"
 
-#: admin/fai/class_faiPackage.inc:408 admin/systems/class_faiStartup.inc:101
+#: admin/fai/class_faiPackage.inc:112 admin/systems/class_faiStartup.inc:101
 msgid "Repository"
 msgstr "Deposito"
 
-#: admin/fai/class_faiPackage.inc:411 admin/systems/class_faiStartup.inc:89
+#: admin/fai/class_faiPackage.inc:115 admin/systems/class_faiStartup.inc:89
 #: admin/systems/services/repository/class_serviceRepository.inc:40
 msgid "Release"
 msgstr "Versione"
 
-#: admin/fai/class_faiPackage.inc:411
+#: admin/fai/class_faiPackage.inc:115
 msgid "Debian release concerned"
 msgstr "Versione Debian da installare"
 
-#: admin/fai/class_faiPackage.inc:415
+#: admin/fai/class_faiPackage.inc:119
 #: admin/systems/services/repository/class_serviceRepository.inc:47
 msgid "Sections"
 msgstr "Sezioni"
 
-#: admin/fai/class_faiPackage.inc:415
+#: admin/fai/class_faiPackage.inc:119
 msgid "Sections concerned"
 msgstr "Sezioni interessate"
 
-#: admin/fai/class_faiPackage.inc:419
+#: admin/fai/class_faiPackage.inc:123
 msgid "Install method"
 msgstr "Metodo d'installazione"
 
-#: admin/fai/class_faiPackage.inc:419
+#: admin/fai/class_faiPackage.inc:123
 msgid "Install method to use for this package list"
 msgstr "Installa metodo da utilizzare per questa lista di pacchetti"
 
-#: admin/fai/class_faiPackage.inc:430
+#: admin/fai/class_faiPackage.inc:134
 msgid "Packages"
 msgstr "Pacchetti"
 
-#: admin/fai/class_faiPackage.inc:434
+#: admin/fai/class_faiPackage.inc:138
 msgid "Packages in this class"
 msgstr "Pacchetti in questa classe"
 
@@ -958,7 +960,7 @@ msgstr "Informazioni sul pacchetto del repository"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:173
 msgid "Repositories"
-msgstr "Repositories"
+msgstr "Repository"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:178
 msgid "Repositories this server hosts"
@@ -1038,11 +1040,3 @@ msgstr "Ramo relativo in cui verranno memorizzati FAI %s"
 #: config/fai/class_faiConfig.inc:61
 msgid "s"
 msgstr "%s"
-
-#: admin/fai/packageSelect/selectPackage-filter.tpl.c:2
-msgid "Filter"
-msgstr "Filtro"
-
-#: admin/fai/packageSelect/selectPackage-filter.tpl.c:5
-msgid "A maximum of 200 entries will be shown here."
-msgstr "Saranno mostrate un massimo di 200 entries."

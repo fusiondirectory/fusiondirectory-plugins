@@ -5,15 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# Paola <paola.penati@fusiondirectory.org>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-10-01 16:31+0000\n"
+"POT-Creation-Date: 2019-11-27 09:44+0000\n"
 "PO-Revision-Date: 2018-08-13 19:54+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: Paola <paola.penati@fusiondirectory.org>, 2019\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,71 +71,63 @@ msgstr "Chiavi GPG"
 msgid "GPG keys of this user"
 msgstr "Chiavi GPG di questo utente"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:27
+msgid "PGP Key selection"
+msgstr "Selezione Chiave PGP"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:28
+msgid "PGP Key selection for a user"
+msgstr "Selezione chiave PGP per un utente"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:30
+msgid "PGP Key"
+msgstr "Chiave PGP"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:31
+msgid "PGP Key information"
+msgstr "Informazioni Chiave PGP"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:77
 msgid "Configuration error"
 msgstr "Errore di configurazione"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:77
 msgid "You need to configure GPG base dn through the addons section first"
 msgstr ""
 "Devi prima di tutto configurare la bse dn per GPG, nella sezione addons"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:141
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:40
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:85
+msgid "Cert ID"
+msgstr "Cert ID"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:86
 msgid "Key ID"
 msgstr "ID della chiave"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:142
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:87
 msgid "User ID"
 msgstr "ID dell'utente"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:143
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:88
 msgid "Creation time"
 msgstr "Data di creazione"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:144
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:89
 msgid "Expiration"
 msgstr "Data di scadenza"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:145
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:90
 msgid "Algorithm"
 msgstr "Algoritmo"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:146
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:80
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:91
 msgid "Size"
 msgstr "Dimensione"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:147
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:88
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:92
 msgid "Revoked"
 msgstr "Revocato"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:148
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:93
 msgid "Disabled"
 msgstr "Disabilitato"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:11
-msgid "Please select the desired entries"
-msgstr "Seleziona le entries desiderate"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:15
-msgid "PGP Key"
-msgstr "Chiave PGP"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:48
-msgid "User"
-msgstr "Utente"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:56
-msgid "Creation date"
-msgstr "Data di creazione"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:64
-msgid "Expiration date"
-msgstr "Data di scadenza"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:72
-msgid "Type"
-msgstr "Tipo"

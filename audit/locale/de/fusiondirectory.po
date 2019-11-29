@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-10-01 16:31+0000\n"
+"POT-Creation-Date: 2019-11-27 09:44+0000\n"
 "PO-Revision-Date: 2018-08-13 19:50+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2019\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
@@ -30,10 +30,12 @@ msgid "An event like ldap modification which was registered by audit plugin"
 msgstr ""
 
 #: admin/audit/class_auditEvent.inc:50
+#: personal/audit/class_auditSecurity.inc:57
 msgid "Event"
 msgstr "Ereignis"
 
 #: admin/audit/class_auditEvent.inc:54
+#: personal/audit/class_auditSecurity.inc:60
 msgid "Time"
 msgstr "Zeit"
 
@@ -42,6 +44,7 @@ msgid "Date and time this event happened"
 msgstr ""
 
 #: admin/audit/class_auditEvent.inc:57
+#: admin/audit/class_auditManagement.inc:62
 msgid "Action"
 msgstr "Aktion"
 
@@ -50,6 +53,7 @@ msgid "Action type"
 msgstr ""
 
 #: admin/audit/class_auditEvent.inc:58
+#: personal/audit/class_auditSecurity.inc:58
 msgid "Author"
 msgstr "Autor"
 
@@ -58,47 +62,56 @@ msgid "Action author"
 msgstr ""
 
 #: admin/audit/class_auditEvent.inc:59
+msgid "Author IP"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:59
+msgid "Action author IP address"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:60
 msgid "Object type"
 msgstr "Objecttyp"
 
-#: admin/audit/class_auditEvent.inc:60
+#: admin/audit/class_auditEvent.inc:61
 msgid "Object"
 msgstr "Objekt"
 
-#: admin/audit/class_auditEvent.inc:60
+#: admin/audit/class_auditEvent.inc:61
 msgid "Target object"
 msgstr "Zielobjekt"
 
-#: admin/audit/class_auditEvent.inc:61
+#: admin/audit/class_auditEvent.inc:62
 msgid "Attributes"
 msgstr "Attribute"
 
-#: admin/audit/class_auditEvent.inc:61
+#: admin/audit/class_auditEvent.inc:62
 msgid "Target attributes"
 msgstr "Zielattribute"
 
-#: admin/audit/class_auditEvent.inc:62
+#: admin/audit/class_auditEvent.inc:63
+#: personal/audit/class_auditSecurity.inc:61
 msgid "Result"
 msgstr "Ergebnis"
 
-#: admin/audit/class_auditEvent.inc:62
+#: admin/audit/class_auditEvent.inc:63
 msgid "Result or error"
 msgstr "Ergebnis oder Fehler"
 
-#: admin/audit/class_auditManagement.inc:40
+#: admin/audit/class_auditManagement.inc:41
 #: config/audit/class_auditConfig.inc:40
 msgid "Audit"
 msgstr "Audit"
 
-#: admin/audit/class_auditManagement.inc:41
+#: admin/audit/class_auditManagement.inc:42
 msgid "Audit events"
 msgstr ""
 
-#: admin/audit/class_auditManagement.inc:42
+#: admin/audit/class_auditManagement.inc:43
 msgid "Browse audit events"
 msgstr ""
 
-#: admin/audit/class_auditManagement.inc:53
+#: admin/audit/class_auditManagement.inc:54
 msgid "Date"
 msgstr "Datum"
 
@@ -132,4 +145,72 @@ msgstr ""
 
 #: config/audit/class_auditConfig.inc:56
 msgid "Number of days of audit to keep in the LDAP when cleaning"
+msgstr ""
+
+#: personal/audit/class_auditSecurity.inc:27
+msgid "Security"
+msgstr ""
+
+#: personal/audit/class_auditSecurity.inc:28
+#: personal/audit/class_auditSecurity.inc:40
+msgid "Security audit"
+msgstr ""
+
+#: personal/audit/class_auditSecurity.inc:44
+msgid "Important events involving your account"
+msgstr ""
+
+#: personal/audit/class_auditSecurity.inc:59
+msgid "Origin"
+msgstr ""
+
+#: personal/audit/class_AuditLogAttribute.inc:48
+msgid "Sign in"
+msgstr "Anmelden"
+
+#: personal/audit/class_AuditLogAttribute.inc:50
+msgid "Sign out"
+msgstr "Abmelden"
+
+#: personal/audit/class_AuditLogAttribute.inc:57
+msgid "Password modification"
+msgstr ""
+
+#: personal/audit/class_AuditLogAttribute.inc:59
+#, php-format
+msgid "Account modification (%s)"
+msgstr ""
+
+#: personal/audit/class_AuditLogAttribute.inc:102
+#, php-format
+msgid "%s years(s) ago"
+msgstr ""
+
+#: personal/audit/class_AuditLogAttribute.inc:105
+#, php-format
+msgid "%s month(s) ago"
+msgstr ""
+
+#: personal/audit/class_AuditLogAttribute.inc:108
+#, php-format
+msgid "%s day(s) ago"
+msgstr ""
+
+#: personal/audit/class_AuditLogAttribute.inc:111
+#, php-format
+msgid "%s hour(s) ago"
+msgstr ""
+
+#: personal/audit/class_AuditLogAttribute.inc:114
+#, php-format
+msgid "%s minute(s) ago"
+msgstr ""
+
+#: personal/audit/class_AuditLogAttribute.inc:117
+#, php-format
+msgid "%s second(s) ago"
+msgstr ""
+
+#: personal/audit/class_AuditLogAttribute.inc:120
+msgid "Now"
 msgstr ""

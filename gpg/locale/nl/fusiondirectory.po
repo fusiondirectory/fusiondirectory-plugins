@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-10-01 16:31+0000\n"
+"POT-Creation-Date: 2019-11-27 09:44+0000\n"
 "PO-Revision-Date: 2018-08-13 19:54+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
@@ -70,70 +70,62 @@ msgstr "GPG sleutels"
 msgid "GPG keys of this user"
 msgstr "GPG sleutels van deze gebruiker"
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
-msgid "Configuration error"
-msgstr "Configuratiefout"
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:27
+msgid "PGP Key selection"
+msgstr ""
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:62
-msgid "You need to configure GPG base dn through the addons section first"
-msgstr "Je moet GPG basis dn eerst configureren in de add-ons sectie "
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:28
+msgid "PGP Key selection for a user"
+msgstr ""
 
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:141
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:40
-msgid "Key ID"
-msgstr "Sleutel-ID"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:142
-msgid "User ID"
-msgstr "Gebruikers-ID"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:143
-msgid "Creation time"
-msgstr "Tijd van aanmaak"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:144
-msgid "Expiration"
-msgstr "Verval"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:145
-msgid "Algorithm"
-msgstr "Algoritme"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:146
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:80
-msgid "Size"
-msgstr "Grootte"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:147
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:88
-msgid "Revoked"
-msgstr "Ingetrokken"
-
-#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:148
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
-msgid "Disabled"
-msgstr "Niet actief"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:11
-msgid "Please select the desired entries"
-msgstr "Gelieve de gewenste gegevens te selecteren"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:15
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:30
 msgid "PGP Key"
 msgstr "PGP sleutel"
 
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:48
-msgid "User"
-msgstr "Gebruiker"
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:31
+msgid "PGP Key information"
+msgstr ""
 
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:56
-msgid "Creation date"
-msgstr "Datum van aanmaak"
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:77
+msgid "Configuration error"
+msgstr "Configuratiefout"
 
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:64
-msgid "Expiration date"
-msgstr "Vervaldatum"
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:77
+msgid "You need to configure GPG base dn through the addons section first"
+msgstr "Je moet GPG basis dn eerst configureren in de add-ons sectie "
 
-#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:72
-msgid "Type"
-msgstr "Type"
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:85
+msgid "Cert ID"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:86
+msgid "Key ID"
+msgstr "Sleutel-ID"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:87
+msgid "User ID"
+msgstr "Gebruikers-ID"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:88
+msgid "Creation time"
+msgstr "Tijd van aanmaak"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:89
+msgid "Expiration"
+msgstr "Verval"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:90
+msgid "Algorithm"
+msgstr "Algoritme"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:91
+msgid "Size"
+msgstr "Grootte"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:92
+msgid "Revoked"
+msgstr "Ingetrokken"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:93
+msgid "Disabled"
+msgstr "Niet actief"

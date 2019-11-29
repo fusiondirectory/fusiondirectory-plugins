@@ -4,23 +4,75 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2019
 # Paola Penati <paola.penati@opensides.be>, 2019
+# fusiondirectory <contact@fusiondirectory.org>, 2019
+# Paola <paola.penati@fusiondirectory.org>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-10-01 16:31+0000\n"
+"POT-Creation-Date: 2019-11-27 09:44+0000\n"
 "PO-Revision-Date: 2018-08-13 20:04+0000\n"
-"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2019\n"
+"Last-Translator: Paola <paola.penati@fusiondirectory.org>, 2019\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/groups/supann/class_supannGroup.inc:28
+#: config/supann/class_supannConfig.inc:29
+#: config/supann/class_supannConfig.inc:51
+#: personal/supann/class_supannAccount.inc:223
+msgid "SupAnn"
+msgstr "SUPANN"
+
+#: admin/groups/supann/class_supannGroup.inc:29
+msgid "SupAnn group"
+msgstr "Gruppo SupAnn"
+
+#: admin/groups/supann/class_supannGroup.inc:41
+msgid "Information"
+msgstr "Informazione"
+
+#: admin/groups/supann/class_supannGroup.inc:44
+#: personal/supann/class_supannAccountStatus.inc:82
+msgid "End date"
+msgstr "Data di fine"
+
+#: admin/groups/supann/class_supannGroup.inc:44
+msgid "Date at which the validity of this group ends"
+msgstr "Data in cui termina la validità di questo gruppo"
+
+#: admin/groups/supann/class_supannGroup.inc:49
+msgid "Readers"
+msgstr "Lettori"
+
+#: admin/groups/supann/class_supannGroup.inc:49
+msgid "Users or groups allowed to read the member list of this group"
+msgstr ""
+"Utenti o gruppi autorizzati a leggere l'elenco dei membri di questo gruppo"
+
+#: admin/groups/supann/class_supannGroup.inc:53
+msgid "Admins"
+msgstr "Amministratori"
+
+#: admin/groups/supann/class_supannGroup.inc:53
+msgid "Users or groups allowed to edit this group"
+msgstr "Utenti o gruppi autorizzati a modificare questo gruppo"
+
+#: admin/groups/supann/class_supannGroup.inc:58
+#: personal/supann/class_supannAccount.inc:264
+msgid "Ref ids"
+msgstr "Ref ids"
+
+#: admin/groups/supann/class_supannGroup.inc:58
+#: personal/supann/class_supannAccount.inc:264
+msgid "supannRefId - IDs/links for this user on other systems"
+msgstr "supannRefId - Links ID per questo utente su altri sistemi"
 
 #: admin/supannStructures/class_etablissement.inc:27
 #: personal/supann/class_supannAccount.inc:336
@@ -266,12 +318,6 @@ msgstr "Tipo di entità"
 msgid "The SupAnn code of this entity"
 msgstr "Il codice SupAnn di questa entità"
 
-#: config/supann/class_supannConfig.inc:29
-#: config/supann/class_supannConfig.inc:51
-#: personal/supann/class_supannAccount.inc:223
-msgid "SupAnn"
-msgstr "SUPANN"
-
 #: config/supann/class_supannConfig.inc:30
 msgid "SupAnn configuration"
 msgstr "Configurazione SupAnn"
@@ -491,14 +537,6 @@ msgstr "Soprannome"
 #: personal/supann/class_supannAccount.inc:259
 msgid "eduPersonNickname - Can contain a nickname for this user"
 msgstr "eduPersonNickname - Può contenere un nickname per questo utente"
-
-#: personal/supann/class_supannAccount.inc:264
-msgid "Ref ids"
-msgstr "Ref ids"
-
-#: personal/supann/class_supannAccount.inc:264
-msgid "supannRefId - IDs/links for this user on other systems"
-msgstr "supannRefId - Links ID per questo utente su altri sistemi"
 
 #: personal/supann/class_supannAccount.inc:274
 msgid "Contact"
@@ -826,10 +864,6 @@ msgstr "Data d'inizio"
 #: personal/supann/class_supannAccountStatus.inc:76
 msgid "Date this status started"
 msgstr "Data alla quale questo stato é iniziato"
-
-#: personal/supann/class_supannAccountStatus.inc:82
-msgid "End date"
-msgstr "Data di fine"
 
 #: personal/supann/class_supannAccountStatus.inc:82
 msgid "Date this status will end"

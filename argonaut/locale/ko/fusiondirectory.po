@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-10-01 16:31+0000\n"
+"POT-Creation-Date: 2019-11-27 09:44+0000\n"
 "PO-Revision-Date: 2018-08-13 19:49+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -83,19 +83,19 @@ msgstr "FAI"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:45
 msgid "FAI version"
-msgstr ""
+msgstr "FAI 버전"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:45
 msgid "Version of FAI installed on the server"
-msgstr ""
+msgstr "서버에 설치된 FAI 버전"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:50
 msgid "FAI flags"
-msgstr ""
+msgstr "FAI 플래그"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:50
 msgid "Flags to pass to FAI"
-msgstr ""
+msgstr "FAI로 전달된 플래그"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:55
 msgid "NFS root"
@@ -103,31 +103,31 @@ msgstr "NFS root"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:60
 msgid "FAI 4 command line"
-msgstr ""
+msgstr "FAI 커맨드 라인"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:60
 msgid ""
 "Command line for FAI 4 - should be \"ip=dhcp root=/dev/nfs boot=live "
 "union=aufs\""
-msgstr ""
+msgstr "FAI 4를 위한 커맨드 라인 - \"ip=dhcp root=/dev/nfs boot=live union=aufs\""
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:65
 msgid "FAI 5 command line"
-msgstr ""
+msgstr "FAI 5 커맨드 라인"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:65
 msgid "Command line for FAI 5 - should be \"ip=dhcp rootovl\""
-msgstr ""
+msgstr "FAI 5를 위한 커맨드 라인 - \"ip=dhcp rootovl\" 필수"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:70
 msgid "Multiple distro mode"
-msgstr ""
+msgstr "다중 distro 모드"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:70
 msgid ""
 "This enables a mode for multiple distributions usage which adds the release "
 "as a suffix to kernel, initrd and nfsroot in the PXE file"
-msgstr ""
+msgstr "PXE 파일에서 커널, initrd 및 nfsroot에 접미사로 릴리스를 추가하는 다중 배포 사용 모드를 활성화합니다."
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:31
 #: admin/systems/services/argonaut/class_argonautServer.inc:32
@@ -857,7 +857,7 @@ msgstr "슬레이브 파일 새로고침(ldap2zone)"
 #: addons/argonaut/class_argonautQueueFilter.inc:66
 #, php-format
 msgid "Cannot load queue entries: <br/><br/>%s"
-msgstr ""
+msgstr "대기열 항목을 로드 할 수 없습니다 : <br/><br/> %s"
 
 #: addons/argonaut/import_events.tpl.c:2
 msgid ""
