@@ -1,0 +1,15 @@
+##
+## totp-fd.schema - Needed by Fusion Directory for managing TOTP registrations
+##
+
+# Attributes
+attributetype ( 1.3.6.1.4.1.38414.75.1.1 NAME 'fdTOTPTokens'
+  DESC 'FusionDirectory - TOTP registrations stored as date|uri'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
+# Objectclasses
+objectclass (1.3.6.1.4.1.38414.75.2.1 NAME 'fdTOTPUser' SUP top AUXILIARY
+  DESC 'FusionDirectory - User TOTP tab'
+  MUST ( fdTOTPTokens ) )
