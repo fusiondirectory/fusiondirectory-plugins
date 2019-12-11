@@ -58,7 +58,7 @@ class TOTPAddDialog extends GenericDialog
     $this->otpcode = ($_POST['otpcode'] ?? '');
   }
 
-  function check(): array
+  function check (): array
   {
     /* Check that code was filled and correct */
     if (empty($this->otpcode)) {

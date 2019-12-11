@@ -46,7 +46,7 @@ class TOTPRegistrationsAttribute extends DialogOrderedArrayAttribute
     return implode('|', $value);
   }
 
-  public function getUserUid(): string
+  public function getUserUid (): string
   {
     return $this->plugin->parent->getBaseObject()->uid;
   }
