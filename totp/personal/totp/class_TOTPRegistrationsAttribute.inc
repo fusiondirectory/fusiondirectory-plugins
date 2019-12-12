@@ -38,7 +38,7 @@ class TOTPRegistrationsAttribute extends DialogOrderedArrayAttribute
 
   function readValue ($value)
   {
-    return explode('|', $value, 2);
+    return [count($this->value), explode('|', $value, 2)];
   }
 
   function writeValue ($key, $value)

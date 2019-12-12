@@ -39,18 +39,20 @@ class TOTPAddDialog extends GenericDialog
 
   function __construct ($simplePlugin, $attribute)
   {
+    global $config;
+
     $this->attribute = $attribute;
 
-    if (!empty($_SERVER['HTTP_X_FORWARDED_HOST'])) {
-      $host = $_SERVER['HTTP_X_FORWARDED_HOST'];
-    } else {
-      $host = $_SERVER['SERVER_NAME'];
-    }
-
     /* Create a TOTP object */
-    $this->otp = OTPHP\TOTP::create();
+    $this->otp = OTPHP\TOTP::create(
+      NULL,
+      $config->get_cfg_value('TotpPeriod', 30),
+      $config->get_cfg_value('TotpDigest', 'sha1'),
+      $config->get_cfg_value('TotpDigits', 6)
+    );
     $this->otp->setLabel($this->attribute->getUserUid());
-    $this->otp->setIssuer($host);
+    $this->otp->setIssuer(URL::getHostName());
+    $this->otp->setParameter('image', URL::buildAbsoluteUrl('/geticon.php?context=applications&icon=fusiondirectory&size=48'));
   }
 
   function save_object ()
