@@ -54,45 +54,4 @@ class totpAccount extends simplePlugin
       ]
     ];
   }
-
-  static public function initTOTPObject ()
-  {
-    global $config, $ui;
-
-    if (!empty($_SERVER['HTTP_X_FORWARDED_HOST'])) {
-      $host = $_SERVER['HTTP_X_FORWARDED_HOST'];
-    } else {
-      $host = $_SERVER['SERVER_NAME'];
-    }
-
-    $otp = TOTP::create();
-    $otp->setLabel($ui->uid); //FIXME
-    $otp->setIssuer('FusionDirectory');
-
-    return $otp;
-  }
-
-  static public function serializeRegistration (object $data): string
-  {
-    $safeData = [];
-    foreach (['rpId','credentialPublicKey','certificateChain','certificate','certificateIssuer','certificateSubject','signatureCounter'] as $stringField) {
-      $safeData[$stringField] = $data->$stringField;
-    }
-    foreach (['credentialId','AAGUID'] as $binField) {
-      // base64 encode binary fields
-      $safeData[$binField] = base64_encode($data->$binField);
-    }
-
-    return json_encode($safeData);
-  }
-
-  static public function unserializeRegistration (string $json): array
-  {
-    $data = json_decode($json, TRUE);
-    foreach (['credentialId','AAGUID'] as $binField) {
-      $data[$binField] = base64_decode($data[$binField]);
-    }
-
-    return $data;
-  }
 }
