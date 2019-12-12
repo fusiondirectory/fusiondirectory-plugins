@@ -66,7 +66,7 @@ class SecondFactorTotp
       $fdTOTPTokens = session::get('fdTOTPTokens');
 
       foreach ($fdTOTPTokens as $fdTOTPToken) {
-        list($date, $uri) = explode('|', $fdTOTPToken);
+        list(, $uri) = explode('|', $fdTOTPToken);
         $otp = OTPHP\Factory::loadFromProvisioningUri($uri);
         if ($otp->verify($_POST['otpcode'])) {
           static::redirect();
