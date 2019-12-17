@@ -92,11 +92,11 @@ class mailGroup extends simplePlugin
           ),
           new SelectAttribute(
             _('Default ACL'), _('ACL for people not in the group'),
-            'defaultACL', TRUE
+            'defaultACL', FALSE
           ),
           new SelectAttribute(
             _('Members ACL'), _('ACL for members of the group'),
-            'fdGroupMailMembersAcl', TRUE
+            'fdGroupMailMembersAcl', FALSE
           ),
           new OrderedArrayAttribute(
             new PipeSeparatedCompositeAttribute(

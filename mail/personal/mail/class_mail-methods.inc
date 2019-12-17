@@ -89,7 +89,7 @@ class mailMethod
   protected $parent             = NULL;
 
   protected $acl_map = [
-    ' '           => 'none',
+    ''            => 'none',
     'p'           => 'external post',
     'lrs'         => 'read',
     'lrsp'        => 'post',
