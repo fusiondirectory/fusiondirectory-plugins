@@ -67,6 +67,12 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     return [preg_replace('/\-$/', '', $value), $value];
   }
 
+  protected function sortValues ()
+  {
+    /* Keep key => value association */
+    asort($this->value);
+  }
+
   function getFilterBlackList ()
   {
     return ['PACKAGE' => array_keys($this->value)];
