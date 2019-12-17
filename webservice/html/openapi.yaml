@@ -235,7 +235,11 @@ paths:
         - name: attrs
           in: query
           required: false
-          description: The attributes to return
+          description: "The attributes to return: the keys must be the wanted attributes,
+            and the values can be either 1, '*', 'b64' or 'raw' depending if you want a
+            single value or an array of values. Other values are considered to be 1.
+            'raw' means untouched LDAP value and is only useful for dns.
+            'b64' means an array of base64 encoded values and is mainly useful for binary attributes."
           schema:
             type: object
           example:
