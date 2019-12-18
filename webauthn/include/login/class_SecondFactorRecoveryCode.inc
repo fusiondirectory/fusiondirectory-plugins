@@ -18,22 +18,11 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-require_once('otphp/OTPInterface.php');
-require_once('otphp/TOTPInterface.php');
-require_once('otphp/ParameterTrait.php');
-require_once('otphp/OTP.php');
-require_once('otphp/TOTP.php');
-require_once('otphp/Factory.php');
-require_once('beberlei/assert/lib/Assert/Assertion.php');
-require_once('paragonie/constant_time_encoding/src/Binary.php');
-require_once('paragonie/constant_time_encoding/src/EncoderInterface.php');
-require_once('paragonie/constant_time_encoding/src/Base32.php');
-
-class SecondFactorTotp
+class SecondFactorRecoveryCode
 {
   static function init ()
   {
-    session::un_set('fdTOTPTokens');
+    session::un_set('fdWebauthnRecoveryCode');
   }
 
   /*! \brief Checks if connected user has second factor active */
@@ -43,17 +32,17 @@ class SecondFactorTotp
 
     $ldap = $config->get_ldap_link();
 
-    $ldap->cat($ui->dn, ['fdTOTPTokens']);
+    $ldap->cat($ui->dn, ['fdWebauthnRecoveryCode']);
     $attrs = $ldap->fetch();
     if (!$attrs) {
       throw new FusionDirectoryException(_('Could not fetch user'));
     }
-    unset($attrs['fdTOTPTokens']['count']);
-    if (empty($attrs['fdTOTPTokens'])) {
+    unset($attrs['fdWebauthnRecoveryCode']['fdWebauthnRecoveryCode']);
+    if (empty($attrs['fdWebauthnRecoveryCode'])) {
       return FALSE;
     }
 
-    session::set('fdTOTPTokens', $attrs['fdTOTPTokens']);
+    session::set('fdWebauthnRecoveryCode', $attrs['fdWebauthnRecoveryCode']);
 
     return TRUE;
   }
@@ -62,13 +51,15 @@ class SecondFactorTotp
   static function earlyProcess ()
   {
     global $message;
-    if (isset($_POST['otpcode'])) {
-      $fdTOTPTokens = session::get('fdTOTPTokens');
+    if (isset($_POST['recoverycode'])) {
+      $fdWebauthnRecoveryCodes = session::get('fdWebauthnRecoveryCode');
 
-      foreach ($fdTOTPTokens as $fdTOTPToken) {
-        list(, $uri) = explode('|', $fdTOTPToken);
-        $otp = OTPHP\Factory::loadFromProvisioningUri($uri);
-        if ($otp->verify($_POST['otpcode'])) {
+      foreach ($fdWebauthnRecoveryCodes as $fdWebauthnRecoveryCode) {
+        list(, $hash) = explode('|', $fdWebauthnRecoveryCode, 2);
+        if (password_verify($_POST['recoverycode'], $hash)) {
+          /* TODO:
+           * delete this recovery code so that it can only be used once
+           * Warn the user that he needs to generate a new one */
           static::redirect();
         }
       }
@@ -77,7 +68,7 @@ class SecondFactorTotp
       sleep(5);
 
       /* Inform the user that validation failed */
-      $message = _('Validation of TOTP code failed');
+      $message = _('Validation of recovery code failed');
     }
   }
 
@@ -85,16 +76,16 @@ class SecondFactorTotp
   {
     global $smarty;
 
-    if (!session::is_set('fdTOTPTokens')) {
+    if (!session::is_set('fdWebauthnRecoveryCode')) {
       return NULL;
     }
 
-    return '<label for="otpcode">'._('Enter TOTP Code here: ').'<input type="text" id="otpcode" name="otpcode"/></label>';
+    return '<label for="otpcode">'._('Or enter recovery Code here: ').'<input type="text" id="recoverycode" name="recoverycode"/></label>';
   }
 
   static function redirect ()
   {
-    session::un_set('fdTOTPTokens');
+    session::un_set('fdWebauthnRecoveryCode');
     LoginMethod::redirect();
   }
 }

@@ -43,22 +43,21 @@ class webauthnAccount extends simplePlugin
   {
     return [
       'main' => [
-        'name'  => _('Devices'),
+        'name'  => _('Second factor'),
         'class' => ['fullwidth'],
         'attrs' => [
           new WebauthnRegistrationsAttribute(
-            _('Registrations'), _('Registrations for this user'),
+            _('WebAuthn'), _('Registrations for this user'),
             'fdWebauthnRegistrations'
-          )
-        ]
-      ],
-      'totp' => [
-        'name'  => _('TOTP'),
-        'class' => ['fullwidth'],
-        'attrs' => [
+          ),
           new TOTPRegistrationsAttribute(
-            _('Codes'), _('TOTP codes for this user'),
+            _('TOTP'), _('TOTP codes for this user'),
             'fdTOTPTokens'
+          ),
+          /* TODO: change this for multivalue, display generation dates and allow deletion */
+          new ButtonAttribute(
+            _('Recovery code'), _('Single use recovery code in case you lose all your devices. Print it and store it. Do not save it on your computer.'),
+            'fdWebauthnRecoveryCode', _('Generate')
           )
         ]
       ]
@@ -94,6 +93,24 @@ class webauthnAccount extends simplePlugin
     $smarty->append('js_files', 'include/webauthn.js');
 
     return parent::execute();
+  }
+
+  function handle_fdWebauthnRecoveryCode ()
+  {
+    $len        = random_int(10, 15);
+    /* All letters and numbers except 0, O and o to avoid confusion */
+    $base       = 'ABCDEFGHKLMNPQRSTWXYZabcdefghjkmnpqrstwxyz123456789';
+    $max        = strlen($base) - 1;
+    $randomhash = '';
+    while (strlen($randomhash) < $len + 1) {
+      $randomhash .= $base[random_int(0, $max)];
+    }
+    $this->fdWebauthnRecoveryCode = date('Y-m-d').'|'.password_hash($randomhash, PASSWORD_DEFAULT);
+    msg_dialog::display(
+      _('Recovery code'),
+      sprintf(_('Here is your recovery code: %s<br/><br/>Print and hide it. Do not save it on your computer. You may only use it once.'), $randomhash),
+      INFO_DIALOG
+    );
   }
 
   static public function initWebAuthnObject ()
