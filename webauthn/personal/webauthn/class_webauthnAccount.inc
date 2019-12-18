@@ -48,7 +48,17 @@ class webauthnAccount extends simplePlugin
         'attrs' => [
           new WebauthnRegistrationsAttribute(
             _('Registrations'), _('Registrations for this user'),
-            'fdWebauthnRegistrations', TRUE
+            'fdWebauthnRegistrations'
+          )
+        ]
+      ],
+      'totp' => [
+        'name'  => _('TOTP'),
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new TOTPRegistrationsAttribute(
+            _('Codes'), _('TOTP codes for this user'),
+            'fdTOTPTokens'
           )
         ]
       ]
