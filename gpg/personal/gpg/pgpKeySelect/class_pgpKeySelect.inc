@@ -60,6 +60,11 @@ class pgpKeySelect extends selectManagement
   {
     /* Set baseMode to FALSE */
     $this->listing  = new managementListing($this, FALSE, $this->multiSelect);
+
+    $infos = objects::infos($this->objectTypes[0]);
+    if ($infos['ou'] == 'unknown') {
+      msg_dialog::display(_('Configuration error'), _('You need to configure GPG base dn through the addons section first'));
+    }
   }
 
   public static function getPgpKeysOu (): string
@@ -74,8 +79,7 @@ class pgpKeySelect extends selectManagement
         $pgpServerInfo['pgpBaseKeySpaceDN'][0]
       );
     } else {
-      msg_dialog::display(_('Configuration error'), _('You need to configure GPG base dn through the addons section first'));
-      return '';
+      return 'unknown';
     }
   }
 
