@@ -58,7 +58,7 @@ class SecondFactorTotp
     return TRUE;
   }
 
-  /*! \brief Process WebAuthn Javascript Requests */
+  /*! \brief Process POST */
   static function earlyProcess ()
   {
     global $message;

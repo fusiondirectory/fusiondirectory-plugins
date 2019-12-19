@@ -40,7 +40,7 @@ class webauthnConfig extends simplePlugin
     global $config;
 
     return [
-      'main' => [
+      'webauthn' => [
         'name'  => _('WebAuthn'),
         'attrs' => [
           new SetAttribute(
@@ -50,6 +50,26 @@ class webauthnConfig extends simplePlugin
               ['android-key','android-safetynet','fido-u2f','packed','none']
             ),
             ['android-key','fido-u2f','packed']
+          ),
+        ]
+      ],
+      'totp' => [
+        'name'  => _('TOTP'),
+        'attrs' => [
+          new SelectAttribute(
+            _('Digest'), _('Digest to use for TOTP tokens'),
+            'fdTotpDigest', TRUE,
+            hash_algos(), 'sha1'
+          ),
+          new IntAttribute(
+            _('Period'), _('Validity period for TOTP tokens'),
+            'fdTotpPeriod', TRUE,
+            1, FALSE, 30
+          ),
+          new IntAttribute(
+            _('Digits'), _('Number of digits for TOTP tokens'),
+            'fdTotpDigits', TRUE,
+            1, FALSE, 6
           ),
         ]
       ],

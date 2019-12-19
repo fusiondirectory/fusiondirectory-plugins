@@ -2,16 +2,36 @@
 ## webauthn-fd-conf.schema - Needed by Fusion Directory for managing webauthn plugin configuration backend
 ##
 
-attributetype ( 1.3.6.1.4.1.38414.74.1.1 NAME 'fdWebauthnFormats'
+attributetype ( 1.3.6.1.4.1.38414.74.10.1 NAME 'fdWebauthnFormats'
   DESC 'FusionDirectory - Allowed webauthn formats'
   EQUALITY caseExactMatch
   SUBSTR caseExactSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.74.11.1 NAME 'fdTotpDigest'
+  DESC 'FusionDirectory - Digest for TOTP tokens (default is sha1)'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.74.11.2 NAME 'fdTotpPeriod'
+  DESC 'FusionDirectory - Period in seconds for TOTP tokens (default is 30)'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.74.11.3 NAME 'fdTotpDigits'
+  DESC 'FusionDirectory - Number of digits for TOTP tokens (default is 6)'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE)
 
 objectclass ( 1.3.6.1.4.1.38414.74.2.1 NAME 'fdWebauthnPluginConf'
   DESC 'FusionDirectory webauthn plugin configuration'
   SUP top AUXILIARY
   MUST ( cn )
   MAY (
-    fdWebauthnFormats
+    fdWebauthnFormats $
+    fdTotpDigest $ fdTotpPeriod $ fdTotpDigits
   ) )

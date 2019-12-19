@@ -43,12 +43,20 @@ class webauthnAccount extends simplePlugin
   {
     return [
       'main' => [
-        'name'  => _('Devices'),
+        'name'  => _('Second factor'),
         'class' => ['fullwidth'],
         'attrs' => [
           new WebauthnRegistrationsAttribute(
-            _('Registrations'), _('Registrations for this user'),
-            'fdWebauthnRegistrations', TRUE
+            _('WebAuthn'), _('Registrations for this user'),
+            'fdWebauthnRegistrations'
+          ),
+          new TOTPRegistrationsAttribute(
+            _('TOTP'), _('TOTP codes for this user'),
+            'fdTOTPTokens'
+          ),
+          new RecoveryCodesAttribute(
+            _('Recovery codes'), _('Single use recovery codes in case you lose all your devices. Print it and store it. Do not save it on your computer.'),
+            'fdWebauthnRecoveryCode'
           )
         ]
       ]
