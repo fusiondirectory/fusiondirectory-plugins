@@ -37,7 +37,7 @@ class SecondFactorRecoveryCode
     if (!$attrs) {
       throw new FusionDirectoryException(_('Could not fetch user'));
     }
-    unset($attrs['fdWebauthnRecoveryCode']['fdWebauthnRecoveryCode']);
+    unset($attrs['fdWebauthnRecoveryCode']['count']);
     if (empty($attrs['fdWebauthnRecoveryCode'])) {
       return FALSE;
     }
@@ -50,16 +50,38 @@ class SecondFactorRecoveryCode
   /*! \brief Process POST */
   static function earlyProcess ()
   {
-    global $message;
+    global $message, $config, $ui;
+
     if (isset($_POST['recoverycode'])) {
       $fdWebauthnRecoveryCodes = session::get('fdWebauthnRecoveryCode');
 
-      foreach ($fdWebauthnRecoveryCodes as $fdWebauthnRecoveryCode) {
+      foreach ($fdWebauthnRecoveryCodes as $key => $fdWebauthnRecoveryCode) {
         list(, $hash) = explode('|', $fdWebauthnRecoveryCode, 2);
         if (password_verify($_POST['recoverycode'], $hash)) {
-          /* TODO:
-           * delete this recovery code so that it can only be used once
-           * Warn the user that he needs to generate a new one */
+          /* Delete this recovery code so that it can only be used once */
+          unset($fdWebauthnRecoveryCodes[$key]);
+          $ldap = $config->get_ldap_link();
+          $ldap->cd($ui->dn);
+          $ldap->modify(['fdWebauthnRecoveryCode' => array_values($fdWebauthnRecoveryCodes)]);
+
+          /* Warn the user that he needs to generate a new one */
+          if ($ldap->success()) {
+            msg_dialog::display(
+              _('Recovery code'),
+              _('You connected using a recovery code as second factor. This code has been deleted and will not be usable again in the future. Generate a new one if you need.'),
+              INFO_DIALOG
+            );
+          } else {
+            msg_dialog::display(
+              _('Recovery code'),
+              sprintf(
+                _('You connected using a recovery code as second factor, but we failed to delete it for future use: %s'),
+                msgPool::ldaperror($ldap->get_error(), $ui->dn, LDAP_MOD)
+              ),
+              ERROR_DIALOG
+            );
+          }
+
           static::redirect();
         }
       }
