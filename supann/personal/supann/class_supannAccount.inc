@@ -280,15 +280,84 @@ class supannAccount extends simplePlugin
             )
           ),
           new SetAttribute(
+            new CompositeAttribute(
+              _('supannTelephonePrive - Private phone numbers for this user'),
+              'supannTelephonePrive',
+              [
+                new SelectAttribute(
+                  '', _('Phone number type'),
+                  'supannTelephonePrive_prefix', TRUE,
+                  ['MOBPERSO','FIXEPERSO','MOBPARENTS','FIXEPARENTS','MOBPRO','FIXEPRO','SECOURS'],
+                  '',
+                  [_('Personal mobile'),_('Personal landline'),_('Legal representative mobile'),_('Legal representative landline'),_('Professional mobile'),_('Professional landline'),_('Secours')]
+                ),
+                new PhoneNumberAttribute(
+                  '', _('Phone number'),
+                  'supannTelephonePrive_number', TRUE
+                ),
+              ],
+              '/^{(.+)}(.*)$/',
+              '{%s}%s',
+              '',
+              _('Private phone numbers')
+            )
+          ),
+          new SetAttribute(
             new MailAttribute(
-              _('Other mail addresses'), _('supannAutreMail - Other mail addresses for this user. Each must be unique'),
+              _('Other email addresses'), _('supannAutreMail - Other email addresses for this user. Each must be unique'),
               'supannAutreMail', FALSE
             )
           ),
           new SetAttribute(
             new MailAttribute(
-              _('Personal mail addresses'), _('supannMailPerso - Personal mail addresses for this user'),
+              _('Personal email addresses'), _('supannMailPerso - Personal email addresses for this user'),
               'supannMailPerso', FALSE
+            )
+          ),
+          new SetAttribute(
+            new CompositeAttribute(
+              _('supannMailPrive - Private email addresses for this user'),
+              'supannMailPrive',
+              [
+                new SelectAttribute(
+                  '', _('Email address type'),
+                  'supannMailPrive_prefix', TRUE,
+                  ['PERSO','PARENTS','PRO','SECOURS'],
+                  '',
+                  [_('Personal'),_('Legal representative'),_('Professional'),_('Secours')]
+                ),
+                new MailAttribute(
+                  '', _('Email address'),
+                  'supannMailPrive_email', TRUE
+                ),
+              ],
+              '/^{(.+)}(.*)$/',
+              '{%s}%s',
+              '',
+              _('Private email addresses')
+            )
+          ),
+          new SetAttribute(
+            new CompositeAttribute(
+              _('supannAdressePostalePrivee - Private addresses for this user'),
+              'supannAdressePostalePrivee',
+              [
+                new SelectAttribute(
+                  '', _('Address type'),
+                  'supannAdressePostalePrivee_prefix', TRUE,
+                  ['PERSO','PARENTS','PRO','TEMP'],
+                  '',
+                  [_('Personal'),_('Legal representative'),_('Professional'),_('Temporary')]
+                ),
+                new PostalAddressAttribute(
+                  '', _('Address'),
+                  'supannAdressePostalePrivee_address', TRUE
+                ),
+              ],
+              '/^{(.+)}(.*)$/',
+              '{%s}%s',
+              '',
+              _('Private addresses')
             )
           ),
           new BooleanAttribute(
