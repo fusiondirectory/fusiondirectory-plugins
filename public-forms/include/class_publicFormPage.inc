@@ -51,7 +51,7 @@ class publicFormPage extends standAlonePage
   function init ()
   {
     parent::init();
-    if ($_SERVER['REQUEST_URI'] != $this->request) {
+    if (!isset($_GET['captcha']) && ($_SERVER['REQUEST_URI'] != $this->request)) {
       /* Reset page if we’re called with a different token or form */
       $this->reset();
       $this->request = $_SERVER['REQUEST_URI'];
