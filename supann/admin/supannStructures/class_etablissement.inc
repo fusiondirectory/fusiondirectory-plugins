@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
 
-  Copyright (C) 2012-2019  FusionDirectory
+  Copyright (C) 2012-2020  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,6 +21,12 @@
 
 class etablissement extends simplePlugin
 {
+  protected static $rootAttributes = [
+    'o','description','telephoneNumber','facsimileTelephoneNumber','postalAddress','l',
+    'eduOrgHomePageURI','eduOrgLegalName','eduOrgSuperiorURI','eduOrgWhitePagesURI',
+    'supannEtablissement'
+  ];
+
   static function plInfo (): array
   {
     return [
@@ -154,10 +160,9 @@ class etablissement extends simplePlugin
     $this->attributesAccess['supannEtablissement']->setUnique('one');
     $this->attributesAccess['eduOrgLegalName']->setUnique('one');
 
-    $root_code = $this->get_root_code();
+    $rootCode = $this->get_root_code();
     $this->attributesAccess['set_root']->setInLdap(FALSE);
-    $this->attributesAccess['set_root']->setDisabled(($root_code !== FALSE) && !in_array($root_code, $this->supannEtablissement));
-    $this->set_root = (($root_code !== FALSE) && in_array($root_code, $this->supannEtablissement));
+    $this->set_root = (($rootCode !== FALSE) && in_array($rootCode, $this->supannEtablissement));
     $this->attributesAccess['set_root']->setInitialValue($this->set_root);
   }
 
@@ -170,22 +175,34 @@ class etablissement extends simplePlugin
   protected function ldap_remove (): array
   {
     global $config;
+
     $errors = parent::ldap_remove();
     if (!empty($errors)) {
       return $errors;
     }
 
-    /* If we're the root etablissement, delete it too */
-    $root_code = $this->get_root_code();
-    if (($root_code !== FALSE) && in_array($root_code, $this->supannEtablissement)) {
-      $dn   = 'o='.$this->o.','.$config->current['BASE'];
+    /* If we're the root etablissement, remove information */
+    $rootCode = $this->get_root_code();
+    if (($rootCode !== FALSE) && in_array($rootCode, $this->supannEtablissement)) {
+      /* Remove SupAnn attributes from root node */
       $ldap = $config->get_ldap_link();
-      $ldap->rmdir($dn);
+      $ldap->cat($config->current['BASE'], array_merge(static::$rootAttributes, ['objectClass']));
+      $baseAttrs = $ldap->fetch();
+      unset($baseAttrs['objectClass']['count']);
+      $rootAttrs = [];
+      $rootAttrs['objectClass'] = array_remove_entries(['supannOrg','eduOrg'], $baseAttrs['objectClass']);
+      foreach (static::$rootAttributes as $rootAttribute) {
+        $rootAttrs[$rootAttribute] = [];
+      }
+      $rootAttrs['o'] = $baseAttrs['dc'][0];
+      $ldap->cd($config->current['BASE']);
+      $ldap->modify($rootAttrs);
       if (!$ldap->success()) {
-        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()));
+        $errors[] = msgPool::ldaperror($ldap->get_error(), $config->current['BASE'], 0, get_class());
       }
     }
-    return [];
+
+    return $errors;
   }
 
   function ldap_save (): array
@@ -196,50 +213,50 @@ class etablissement extends simplePlugin
 
     $ldap = $config->get_ldap_link();
 
-    $wasRoot    = $this->attributesAccess['set_root']->getInitialValue();
-    $root_mode  = FALSE;
-    $root_code  = $this->get_root_code();
-    if (($root_code === FALSE) && ($this->set_root)) {
+    $wasRoot  = $this->attributesAccess['set_root']->getInitialValue();
+    $rootMode = FALSE;
+    $rootCode = $this->get_root_code();
+    if ($this->set_root) {
       /* Set this etablissement as root one */
-      $ldap->cat($this->dn);
-      $root_attrs = $ldap->fetch();
-      unset($root_attrs['count']);
-      unset($root_attrs['dn']);
-      foreach ($root_attrs as $key => $value) {
-        if (is_numeric($key)) {
-          unset($root_attrs[$key]);
-          continue;
-        }
-        if (is_array($root_attrs[$key])) {
-          unset($root_attrs[$key]['count']);
-        }
-      }
-      $root_mode  = 'add';
-    } elseif (($root_code !== FALSE) && $wasRoot && $this->set_root) {
-      /* We are the root etablissement, we need to update it */
-      $root_attrs = $this->attrs;
-      $root_mode  = 'modify';
-    } elseif (($root_code !== FALSE) && $wasRoot && !$this->set_root) {
-      /* We are the root etablissement, we want to delete it */
-      $root_mode = 'delete';
+      $rootMode = 'add';
+    } elseif (($rootCode !== FALSE) && $wasRoot && !$this->set_root) {
+      /* We were the root etablissement, we want to delete it */
+      $rootMode = 'remove';
     }
 
-    if ($root_mode) {
-      $dn = 'o='.$this->o.','.$config->current['BASE'];
-      if ($root_mode == 'delete') {
-        $ldap->rmdir($dn);
+    if ($rootMode) {
+      $ldap->cat($config->current['BASE'], array_merge(static::$rootAttributes, ['objectClass','dc']));
+      $baseAttrs = $ldap->fetch();
+      unset($baseAttrs['objectClass']['count']);
+      if ($rootMode == 'remove') {
+        /* Remove SupAnn attributes from root node */
+        $rootAttrs = [];
+        $rootAttrs['objectClass'] = array_remove_entries(['supannOrg','eduOrg'], $baseAttrs['objectClass']);
+        foreach (static::$rootAttributes as $rootAttribute) {
+          $rootAttrs[$rootAttribute] = [];
+        }
+        $rootAttrs['o'] = $baseAttrs['dc'][0];
       } else {
-        $root_attrs['objectClass'] = ['top','dcObject','organization','supannOrg','eduOrg'];
-        $root_attrs['dc'] = $root_attrs['o'];
-        unset($root_attrs['supannTypeEntite']);
-        unset($root_attrs['supannCodeEntite']);
-        unset($root_attrs['supannCodeEntiteParent']);
-        unset($root_attrs['supannRefId']);
-        $ldap->cd($dn);
-        $ldap->$root_mode($root_attrs);
+        /* Add/modify SupAnn attributes of root node */
+        $ldap->cat($this->dn, static::$rootAttributes);
+        $rootAttrs = $ldap->fetch();
+        unset($rootAttrs['count']);
+        unset($rootAttrs['dn']);
+        foreach ($rootAttrs as $key => $value) {
+          if (is_numeric($key)) {
+            unset($rootAttrs[$key]);
+            continue;
+          }
+          if (is_array($rootAttrs[$key])) {
+            unset($rootAttrs[$key]['count']);
+          }
+        }
+        $rootAttrs['objectClass'] = array_merge_unique($baseAttrs['objectClass'], ['dcObject','organization','supannOrg','eduOrg']);
       }
+      $ldap->cd($config->current['BASE']);
+      $ldap->modify($rootAttrs);
       if (!$ldap->success()) {
-        $errors[] = msgPool::ldaperror($ldap->get_error(), $dn, 0, get_class());
+        $errors[] = msgPool::ldaperror($ldap->get_error(), $config->current['BASE'], 0, get_class());
       }
     }
 
@@ -252,11 +269,10 @@ class etablissement extends simplePlugin
     $ldap = $config->get_ldap_link();
 
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=supannOrg)', ['*'], 'one');
+    $ldap->search('(objectClass=supannOrg)', ['*'], 'base');
 
     if ($ldap->count() > 1) {
-      msg_dialog::display(_('LDAP error'), 'There are several establishments at root!');
-      return FALSE;
+      throw new FusionDirectoryException('There are several establishments at root!');
     } elseif ($ldap->count() > 0) {
       $attr = $ldap->fetch();
       return $attr['supannEtablissement'][0];
