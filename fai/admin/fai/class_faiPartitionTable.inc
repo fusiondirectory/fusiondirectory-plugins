@@ -195,8 +195,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
         // Transform potential lvm information
         if (isset($subattrs['FAIlvmDevice'])) {
           for ($i = 0; $i < $subattrs['FAIlvmDevice']['count']; $i++) {
-            $name = $subattrs['FAIlvmDevice'][$i];
-            $diskInfos['FAIlvmDevice'][$name] = $name;
+            $diskInfos['FAIlvmDevice'][] = $subattrs['FAIlvmDevice'][$i];
           }
         }
 

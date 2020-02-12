@@ -179,9 +179,8 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
         $old_cn     = $this->value[$part['FAIpartitionNr']]['cn'];
         $new_cn     = $part['cn'];
         $lvmDevices = $this->plugin->lvmDevices;
-        if (isset($lvmDevices[$old_cn])) {
-          unset($lvmDevices[$old_cn]);
-          $lvmDevices[$new_cn]      = $new_cn;
+        if (($key = array_search($old_cn, $lvmDevices)) !== FALSE) {
+          $lvmDevices[$key]         = $new_cn;
           $this->plugin->lvmDevices = $lvmDevices;
         }
       }
