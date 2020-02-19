@@ -518,6 +518,14 @@ class dnsHost extends simplePlugin
     }
   }
 
+  function foreignKeyUpdate (string $field, $oldvalue, $newvalue, array $source)
+  {
+    parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
+    if (empty($this->fdDNSZoneDn)) {
+      $this->is_account = FALSE;
+    }
+  }
+
   /* Record example: array('host', 'aRecord', '192.168.1.1', '')
    * Fields are relativeDomainName, record type, record content, reverse zone (for a/aaaa) */
   function addRecord ($zoneDn, array $record)
