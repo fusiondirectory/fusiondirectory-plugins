@@ -62,7 +62,7 @@ class SecondFactorTotp
   static function earlyProcess ()
   {
     global $message;
-    if (isset($_POST['otpcode'])) {
+    if (!empty($_POST['otpcode'])) {
       $fdTOTPTokens = session::get('fdTOTPTokens');
 
       foreach ($fdTOTPTokens as $fdTOTPToken) {
