@@ -52,7 +52,7 @@ class SecondFactorRecoveryCode
   {
     global $message, $config, $ui;
 
-    if (isset($_POST['recoverycode'])) {
+    if (!empty($_POST['recoverycode'])) {
       $fdWebauthnRecoveryCodes = session::get('fdWebauthnRecoveryCode');
 
       foreach ($fdWebauthnRecoveryCodes as $key => $fdWebauthnRecoveryCode) {
@@ -102,7 +102,7 @@ class SecondFactorRecoveryCode
       return NULL;
     }
 
-    return '<label for="otpcode">'._('Or enter recovery Code here: ').'<input type="text" id="recoverycode" name="recoverycode"/></label>';
+    return '<label for="recoverycode">'._('Or enter recovery Code here: ').'<input type="text" id="recoverycode" name="recoverycode"/></label>';
   }
 
   static function redirect ()
