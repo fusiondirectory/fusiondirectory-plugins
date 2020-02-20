@@ -36,6 +36,7 @@ paths:
         content:
           application/json:
             schema:
+              title: LoginRequest
               type: object
               properties:
                 directory:
@@ -286,6 +287,7 @@ paths:
         content:
           application/json:
             schema:
+              title: ObjectCreationRequest
               type: object
               properties:
                 attrs:
@@ -334,8 +336,10 @@ paths:
           content:
             application/json:
               schema:
+                title: TabStateList
                 type: array
                 items:
+                  title: TabState
                   type: object
                   required: [class,name,active]
                   properties:
@@ -730,6 +734,7 @@ paths:
           content:
             application/json:
               schema:
+                title: RecoveryResponse
                 type: object
                 properties:
                   token:
@@ -756,6 +761,7 @@ paths:
         content:
           application/json:
             schema:
+              title: RecoveryRequest
               type: object
               properties:
                 token:
