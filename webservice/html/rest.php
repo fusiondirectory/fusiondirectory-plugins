@@ -182,7 +182,7 @@ class fdRestService extends fdRPCService
     header('Content-Type: application/'.$format);
     if (!is_callable('yaml_parse_file')) {
       /* Fallback when php-yaml is missing */
-      if (format != 'yaml') {
+      if ($format != 'yaml') {
         throw new WebServiceError('You need php-yaml to be able to convert to other formats', 406);
       } else {
         readfile($BASE_DIR.'/html/openapi.yaml');
