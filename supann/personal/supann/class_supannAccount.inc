@@ -117,15 +117,15 @@ class SupannCursusAnneeAttribute extends SupannPrefixedSelectAttribute
       [_('Licence'),_('Master'),_('Ph.D.'),_('Another class of degree'),_('Post-graduate year')]
     );
     $yearLabels = [
-      _('None'),_('1st year'),_('2nd year'),_('3rd year'),
+      _('1st year'),_('2nd year'),_('3rd year'),
       _('4th year'),_('5th year'),_('6th year'),
       _('7th year'),_('8th year'),_('9th year'),
     ];
     $this->prefixedChoices = [
-      'L' => [range(0, 3),array_slice($yearLabels, 0, 3 + 1)],
-      'M' => [range(0, 2),array_slice($yearLabels, 0, 2 + 1)],
-      'D' => [range(0, 9),array_slice($yearLabels, 0, 10)],
-      'X' => [range(0, 9),array_slice($yearLabels, 0, 10)],
+      'L' => [range(1, 3),array_slice($yearLabels, 0, 3)],
+      'M' => [range(1, 2),array_slice($yearLabels, 0, 2)],
+      'D' => [range(1, 9),array_slice($yearLabels, 0, 9)],
+      'X' => [range(1, 9),array_slice($yearLabels, 0, 9)],
       'B' => [range(0, 20),range(0, 20)],
     ];
     $this->attributes[0]->setSubmitForm(TRUE);
