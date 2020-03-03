@@ -101,7 +101,7 @@ class etablissement extends simplePlugin
           new StringAttribute(
             _('SupAnn code'), _('The SupAnn code for this establishment'),
             'supannCodeEntite', TRUE,
-            '', '', '/^[a-z0-9_-]*$/i'
+            '', '', '|^[a-zA-Z0-9_/-]*$|'
           ),
           new SetAttribute(
             new SelectAttribute(
