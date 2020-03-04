@@ -39,11 +39,11 @@ class SupannEtuInscriptionAttribute extends SupannCompositeAttribute
       ),
       new SelectAttribute(
         _('Registration type'), _('supannEtuRegimeInscription - The type of this registration'),
-        'supannEtuRegimeInscription_regimeinsc', TRUE
+        'supannEtuRegimeInscription_regimeinsc', FALSE
       ),
       new SelectAttribute(
         _('Disciplinary Sector'), _('supannEtuSecteurDisciplinaire - Disciplinary sector education diploma'),
-        'supannEtuSecteurDisciplinaire_sectdisc', TRUE
+        'supannEtuSecteurDisciplinaire_sectdisc', FALSE
       ),
       new SelectAttribute(
         _('Diploma type'), _('supannEtuTypeDiplome - Type of diploma'),
@@ -152,5 +152,32 @@ class SupannEtuInscriptionAttribute extends SupannCompositeAttribute
       $attribute->resetToDefault();
     }
     unset($attribute);
+  }
+
+  /* Remove SupAnn weirdness */
+  function readValues (string $value): array
+  {
+    $values = parent::readValues($value);
+
+    if ($values[2] == '{INCONNU}') {
+      $values[2] = '';
+    }
+    if ($values[3] == '{INCONNU}') {
+      $values[3] = '';
+    }
+
+    return $values;
+  }
+
+  /* Add {INCONNU} values for special cases regimeinsc and sectdisc */
+  function writeValues (array $values)
+  {
+    if ($values[2] == '') {
+      $values[2] = '{INCONNU}';
+    }
+    if ($values[3] == '') {
+      $values[3] = '{INCONNU}';
+    }
+    return parent::writeValues($values);
   }
 }
