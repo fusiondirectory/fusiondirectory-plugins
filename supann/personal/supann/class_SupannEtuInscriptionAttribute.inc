@@ -93,9 +93,9 @@ class SupannEtuInscriptionAttribute extends SupannCompositeAttribute
 
     $this->diplomas = [];
     foreach ($prefixedChoices as $prefix => $choices) {
-      [$choicesId, $choicesLines] = $choices;
+      list($choicesId, $choicesLines) = $choices;
       foreach ($choicesId as $i => $id) {
-        [$type,$sectdisc,$label1,$label2] = $choicesLines[$i];
+        list($type,$sectdisc,$label1,$label2) = $choicesLines[$i];
         if (!empty($label2)) {
           $label1 .= ' - '.$label2;
         }
