@@ -282,7 +282,6 @@ paths:
         - objects
       parameters:
         - $ref: '#/components/parameters/type'
-        - $ref: '#/components/parameters/base'
       requestBody:
         content:
           application/json:
