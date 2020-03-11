@@ -54,6 +54,7 @@ class automountMap extends simplePlugin
       ],
       'entries' => [
         'name'  => _('Entries'),
+        'class' => ['fullwidth'],
         'attrs' => [
           new SubNodesAttribute(
             _('Entries'), _('Entries in the automount table'),
@@ -78,5 +79,30 @@ class automountMap extends simplePlugin
         ]
       ]
     ];
+  }
+
+  public function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
+  {
+    parent::__construct($dn, $object, $parent, $mainTab);
+
+    $this->attributesAccess['automountEntries']->setLinearRendering(FALSE);
+  }
+
+  protected function shouldSave (): bool
+  {
+    return (parent::shouldSave() || $this->attributesAccess['automountEntries']->hasChanged());
+  }
+
+  protected function ldap_save (): array
+  {
+    global $config;
+
+    $errors = parent::ldap_save();
+
+    $ldap = $config->get_ldap_link();
+
+    $this->attributesAccess['automountEntries']->postLdapSave($ldap);
+
+    return $errors;
   }
 }
