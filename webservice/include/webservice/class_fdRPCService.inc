@@ -220,7 +220,7 @@ class fdRPCService
   protected function _ls ($type, $attrs = NULL, $ou = NULL, $filter = '', $scope = 'subtree', $templateSearch = FALSE)
   {
     global $config, $ui;
-    $this->checkAccess($type);
+    $this->checkAccess($type, NULL, $ou);
     if (!in_array($scope, ['base','one','subtree'])) {
       throw new WebServiceError(sprintf('Invalid scope "%s"', $scope));
     }
