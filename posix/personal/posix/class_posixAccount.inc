@@ -489,7 +489,7 @@ class posixAccount extends simplePlugin
             'uid' => $this->getUid(),
           ];
           $baseObject->attributesAccess['member']->addValue($this->dn, $attrs);
-          $tabObject->gen_tabs();
+          $tabObject->loadTabs();
           $posixTab = $tabObject->by_object['mixedGroup'];
         } else {
           $posixTab = $baseObject;

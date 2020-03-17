@@ -488,6 +488,7 @@ class fdRPCService
       }
       $tabobject->current = $tab;
       $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases is needed */
+      $tabobject->loadTabs();
     }
     $errors = $tabobject->save();
     if (!empty($errors)) {
