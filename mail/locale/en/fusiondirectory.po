@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-08-02 11:45+0200\n"
+"POT-Creation-Date: 2020-03-20 17:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -17,16 +17,206 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: config/mail/class_mailPluginConfig.inc:28
+#: admin/groups/mail/class_mailGroup.inc:46
+#: personal/mail/class_mailAccount.inc:73
+msgid "Mail"
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:29
+msgid "Mail plugin configuration"
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:41
+#: personal/mail/class_mailAccount.inc:74
+msgid "Mail settings"
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:44
+msgid "Account identification attribute"
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:45
+msgid "Which attribute will be used to create accounts."
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:50
+msgid "User account template"
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:51
+msgid ""
+"Override the user account creation syntax. Default is %PREFIX%%UATTRIB%."
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:55
+msgid "Group account template"
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:56
+msgid ""
+"Override the group account creation syntax. Default is %PREFIX%%UATTRIB%."
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:60
+msgid "Use cyrus UNIX style"
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:61
+msgid ""
+"Determines if \"foo/bar\" or \"foo.bar\" should be uses as namespaces in "
+"IMAP."
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:65
+msgid "Delete mailbox on account deletion"
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:66
+msgid ""
+"Determines if the mailbox should be removed from your IMAP server after the "
+"account is deleted in LDAP."
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:71
+msgid "Cyrus autocreate folders"
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:72
+msgid ""
+"List of personal IMAP folders that should be created along initial account "
+"creation."
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:77
+msgid "IMAP timeout"
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:78
+msgid "Sets the connection timeout for imap actions."
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:83
+msgid "Shared prefix"
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:84
+msgid "Prefix to add for mail shared folders."
+msgstr ""
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:57
+msgid "IMAP/POP3 generic service"
+msgstr ""
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:58
+msgid "IMAP/POP3"
+msgstr ""
+
+#: admin/systems/services/imap/class_serviceIMAP.inc:58
+msgid "Services"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:47
+msgid "Group mail options"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:60
+msgid "Information"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:63
+#: personal/mail/class_mailAccount.inc:99
+msgid "Primary address"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:63
+msgid "The primary mail address"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:67
+#: personal/mail/class_mailAccount.inc:103
+msgid "Server"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:67
+msgid "Email server"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:73
+#: personal/mail/class_mailAccount.inc:119
+msgid "Alternative addresses"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:73
+msgid "Alternative mail addresses for the group"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:78
+msgid "Forward messages to non group members"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:82
+msgid "Only allowed to receive local mail"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:82
+msgid ""
+"Whether this group mail is only allowed to receive messages from local "
+"senders"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:191
+#: personal/mail/class_mailAccount.inc:276
+#: personal/mail/class_mailAccount.inc:377
+#, php-format
+msgid "Mail method cannot connect: %s"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:194
+#: personal/mail/class_mailAccount.inc:380
+#, php-format
+msgid "Cannot update mailbox: %s"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:215
+#: admin/groups/mail/class_mailGroup.inc:219
 #: personal/mail/class_mailAccount.inc:45
-#: personal/mail/class_mailAccount.inc:258
-#: personal/mail/class_mailAccount.inc:261
-#: personal/mail/class_mailAccount.inc:329
-#: personal/mail/class_mailAccount.inc:340
-#: personal/mail/class_mailAccount.inc:369
-#: personal/mail/class_mailAccount.inc:373
-#: admin/groups/mail/class_mailGroup.inc:183
-#: admin/groups/mail/class_mailGroup.inc:187
+#: personal/mail/class_mailAccount.inc:276
+#: personal/mail/class_mailAccount.inc:279
+#: personal/mail/class_mailAccount.inc:383
+#: personal/mail/class_mailAccount.inc:394
+#: personal/mail/class_mailAccount.inc:423
+#: personal/mail/class_mailAccount.inc:427
 msgid "Mail error"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:215
+#: personal/mail/class_mailAccount.inc:423
+#, php-format
+msgid "Cannot remove mailbox, mail method cannot connect: %s"
+msgstr ""
+
+#: admin/groups/mail/class_mailGroup.inc:219
+#: personal/mail/class_mailAccount.inc:427
+#, php-format
+msgid "Cannot remove mailbox: %s"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:148
+msgid "Configuration error"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:149
+#, php-format
+msgid "The configured mail attribute '%s' is unsupported!"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:738
+msgid "Unknown"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:740
+msgid "Unlimited"
 msgstr ""
 
 #: personal/mail/class_mailAccount.inc:45
@@ -42,33 +232,12 @@ msgstr ""
 msgid "Part of the quota which is used"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:73
-#: config/mail/class_mailPluginConfig.inc:28
-#: admin/groups/mail/class_mailGroup.inc:46
-msgid "Mail"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:74
-#: config/mail/class_mailPluginConfig.inc:41
-msgid "Mail settings"
-msgstr ""
-
 #: personal/mail/class_mailAccount.inc:96
 msgid "Mail account"
 msgstr ""
 
 #: personal/mail/class_mailAccount.inc:99
-#: admin/groups/mail/class_mailGroup.inc:62
-msgid "Primary address"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:99
 msgid "Primary mail address"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:103
-#: admin/groups/mail/class_mailGroup.inc:66
-msgid "Server"
 msgstr ""
 
 #: personal/mail/class_mailAccount.inc:103
@@ -79,13 +248,12 @@ msgstr ""
 msgid "Quota size"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:115
-msgid "Other addresses and redirections"
+#: personal/mail/class_mailAccount.inc:108
+msgid "Define quota size in MiB"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:119
-#: admin/groups/mail/class_mailGroup.inc:72
-msgid "Alternative addresses"
+#: personal/mail/class_mailAccount.inc:115
+msgid "Other addresses and redirections"
 msgstr ""
 
 #: personal/mail/class_mailAccount.inc:119
@@ -142,178 +310,17 @@ msgstr ""
 msgid "Select if you want to forward mails without getting own copies of them"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:258
-#: personal/mail/class_mailAccount.inc:323
-#: admin/groups/mail/class_mailGroup.inc:159
-#, php-format
-msgid "Mail method cannot connect: %s"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:261
+#: personal/mail/class_mailAccount.inc:279
 #, php-format
 msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:326
-#: admin/groups/mail/class_mailGroup.inc:162
-#, php-format
-msgid "Cannot update mailbox: %s"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:329
+#: personal/mail/class_mailAccount.inc:383
 #, php-format
 msgid "Cannot write quota settings: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:340
+#: personal/mail/class_mailAccount.inc:394
 #, php-format
 msgid "Mail error saving sieve settings: %s"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:369
-#: admin/groups/mail/class_mailGroup.inc:183
-#, php-format
-msgid "Cannot remove mailbox, mail method cannot connect: %s"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:373
-#: admin/groups/mail/class_mailGroup.inc:187
-#, php-format
-msgid "Cannot remove mailbox: %s"
-msgstr ""
-
-#: personal/mail/class_mail-methods.inc:144
-msgid "Configuration error"
-msgstr ""
-
-#: personal/mail/class_mail-methods.inc:145
-#, php-format
-msgid "The configured mail attribute '%s' is unsupported!"
-msgstr ""
-
-#: personal/mail/class_mail-methods.inc:703
-msgid "Unknown"
-msgstr ""
-
-#: personal/mail/class_mail-methods.inc:705
-msgid "Unlimited"
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:29
-msgid "Mail plugin configuration"
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:44
-msgid "Account identification attribute"
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:45
-msgid "Which attribute will be used to create accounts."
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:50
-msgid "Mail user template"
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:51
-msgid "Override the user account creation syntax."
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:55
-msgid "Mail folder template"
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:56
-msgid "Override the methods default account creation syntax."
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:60
-msgid "Use cyrus UNIX style"
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:61
-msgid ""
-"Determines if 'foo/bar' or 'foo.bar' should be uses as namespaces in IMAP."
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:65
-msgid "Delete mailbox on account deletion"
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:66
-msgid ""
-"Determines if the mailbox should be removed from your IMAP server after the "
-"account is deleted in LDAP."
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:71
-msgid "Cyrus autocreate folders"
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:72
-msgid ""
-"List of personal IMAP folders that should be created along initial account "
-"creation."
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:77
-msgid "IMAP timeout"
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:78
-msgid "Sets the connection timeout for imap actions."
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:83
-msgid "Shared prefix"
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:84
-msgid "Prefix to add for mail shared folders."
-msgstr ""
-
-#: admin/groups/mail/class_mailGroup.inc:47
-msgid "Group mail options"
-msgstr ""
-
-#: admin/groups/mail/class_mailGroup.inc:59
-msgid "Information"
-msgstr ""
-
-#: admin/groups/mail/class_mailGroup.inc:62
-msgid "The primary mail address"
-msgstr ""
-
-#: admin/groups/mail/class_mailGroup.inc:66
-msgid "Email server"
-msgstr ""
-
-#: admin/groups/mail/class_mailGroup.inc:72
-msgid "Alternative mail addresses for the group"
-msgstr ""
-
-#: admin/groups/mail/class_mailGroup.inc:77
-msgid "Forward messages to non group members"
-msgstr ""
-
-#: admin/groups/mail/class_mailGroup.inc:81
-msgid "Only allowed to receive local mail"
-msgstr ""
-
-#: admin/groups/mail/class_mailGroup.inc:81
-msgid ""
-"Whether this group mail is only allowed to receive messages from local "
-"senders"
-msgstr ""
-
-#: admin/systems/services/imap/class_serviceIMAP.inc:32
-msgid "IMAP/POP3 generic service"
-msgstr ""
-
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
-msgid "IMAP/POP3"
-msgstr ""
-
-#: admin/systems/services/imap/class_serviceIMAP.inc:33
-msgid "Services"
 msgstr ""

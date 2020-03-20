@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Choi Chris <chulwon.choi@gmail.com>, 2019
+# Choi Chris <chulwon.choi@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-11-13 11:01+0000\n"
+"POT-Creation-Date: 2020-03-05 20:21+0000\n"
 "PO-Revision-Date: 2016-08-29 15:22+0000\n"
-"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2020\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -141,16 +141,16 @@ msgstr ""
 #: admin/supannStructures/class_etablissement.inc:114
 #: admin/supannStructures/class_entite.inc:101
 msgid "Reference IDs"
-msgstr ""
+msgstr "참조 ID"
 
 #: admin/supannStructures/class_etablissement.inc:114
 #: admin/supannStructures/class_entite.inc:101
 msgid "supannRefId - IDs/links for this entity on other systems"
-msgstr ""
+msgstr "supannRefId - 다른 시스템에서 이 엔티티에 대한 ID / 링크"
 
 #: admin/supannStructures/class_etablissement.inc:122
 msgid "Legal name"
-msgstr ""
+msgstr "법적 이름"
 
 #: admin/supannStructures/class_etablissement.inc:122
 msgid "The legal name of this establishment"
@@ -158,7 +158,7 @@ msgstr ""
 
 #: admin/supannStructures/class_etablissement.inc:126
 msgid "Home page URI"
-msgstr ""
+msgstr "홈페이지 URI"
 
 #: admin/supannStructures/class_etablissement.inc:126
 msgid "The URI of this establishment website home page"
@@ -166,7 +166,7 @@ msgstr ""
 
 #: admin/supannStructures/class_etablissement.inc:130
 msgid "Institution URI"
-msgstr ""
+msgstr "기관 URI"
 
 #: admin/supannStructures/class_etablissement.inc:130
 msgid "The URI of this establishment institution website"
@@ -174,7 +174,7 @@ msgstr ""
 
 #: admin/supannStructures/class_etablissement.inc:134
 msgid "White pages URI"
-msgstr ""
+msgstr "화이트 페이지 URI"
 
 #: admin/supannStructures/class_etablissement.inc:134
 msgid "The URI of this establishment white pages"
@@ -195,18 +195,18 @@ msgstr ""
 
 #: admin/supannStructures/class_supann.inc:53
 msgid "File error"
-msgstr ""
+msgstr "파일 오류"
 
 #: admin/supannStructures/class_supann.inc:54
 #, php-format
 msgid "Cannot read file: '%s'"
-msgstr ""
+msgstr "파일을 읽을 수 없습니다 : '%s'"
 
 #: admin/supannStructures/class_entite.inc:32
 #: admin/supannStructures/class_entite.inc:52
 #: personal/supann/class_supannAccount.inc:463
 msgid "Entity"
-msgstr ""
+msgstr "엔티티"
 
 #: admin/supannStructures/class_entite.inc:33
 msgid "SupAnn Entity Settings"
@@ -218,15 +218,15 @@ msgstr ""
 
 #: admin/supannStructures/class_entite.inc:55
 msgid "The name to write in the ou attribute for this entity"
-msgstr ""
+msgstr "이 엔티티의 ou 속성에 쓸 이름"
 
 #: admin/supannStructures/class_entite.inc:59
 msgid "Short description of this entity"
-msgstr ""
+msgstr "이 엔티티에 대한 간단한 설명"
 
 #: admin/supannStructures/class_entite.inc:65
 msgid "Administrative information"
-msgstr ""
+msgstr "관리적인 정보"
 
 #: admin/supannStructures/class_entite.inc:68
 msgid "Phone number of this entity"
@@ -238,11 +238,11 @@ msgstr ""
 
 #: admin/supannStructures/class_entite.inc:76
 msgid "Postal address"
-msgstr ""
+msgstr "우편 주소"
 
 #: admin/supannStructures/class_entite.inc:76
 msgid "Postal address of this entity"
-msgstr ""
+msgstr "이 엔티티의 우편 주소"
 
 #: admin/supannStructures/class_entite.inc:82
 msgid "SupAnn information"
@@ -251,7 +251,7 @@ msgstr ""
 #: admin/supannStructures/class_entite.inc:85
 #: personal/supann/class_supannAccount.inc:459
 msgid "Entity type"
-msgstr ""
+msgstr "엔터티 유형"
 
 #: admin/supannStructures/class_entite.inc:85
 msgid "The SupAnn type that best fits this entity"
@@ -259,7 +259,7 @@ msgstr ""
 
 #: admin/supannStructures/class_entite.inc:89
 msgid "Entity code"
-msgstr ""
+msgstr "엔티티 코드"
 
 #: admin/supannStructures/class_entite.inc:89
 msgid "The SupAnn code of this entity"
@@ -276,7 +276,7 @@ msgstr ""
 #: config/supann/class_supannConfig.inc:41
 #: personal/supann/class_supannAccount.inc:224
 msgid "SupAnn"
-msgstr ""
+msgstr "SupAnn"
 
 #: config/supann/class_supannConfig.inc:44
 msgid "SupAnn RDN"
@@ -303,19 +303,21 @@ msgstr "없음"
 
 #: personal/supann/class_supannAccount.inc:116
 msgid "Licence"
-msgstr ""
+msgstr "라이선스"
 
 #: personal/supann/class_supannAccount.inc:116
 msgid "Master"
-msgstr ""
+msgstr "마스터"
 
 #: personal/supann/class_supannAccount.inc:116
 msgid "Ph.D."
-msgstr ""
+msgstr "박사"
 
 #: personal/supann/class_supannAccount.inc:116
 msgid "Another class of degree"
 msgstr ""
+"다른 등급의 학위\n"
+" "
 
 #: personal/supann/class_supannAccount.inc:116
 msgid "Post-graduate year"
@@ -323,67 +325,67 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:119
 msgid "1st year"
-msgstr ""
+msgstr "1 년차"
 
 #: personal/supann/class_supannAccount.inc:119
 msgid "2nd year"
-msgstr ""
+msgstr "2 년차"
 
 #: personal/supann/class_supannAccount.inc:119
 msgid "3rd year"
-msgstr ""
+msgstr "3 년차"
 
 #: personal/supann/class_supannAccount.inc:120
 msgid "4th year"
-msgstr ""
+msgstr "4 년차"
 
 #: personal/supann/class_supannAccount.inc:120
 msgid "5th year"
-msgstr ""
+msgstr "5 년차"
 
 #: personal/supann/class_supannAccount.inc:120
 msgid "6th year"
-msgstr ""
+msgstr "6년차"
 
 #: personal/supann/class_supannAccount.inc:121
 msgid "7th year"
-msgstr ""
+msgstr "7 년차"
 
 #: personal/supann/class_supannAccount.inc:121
 msgid "8th year"
-msgstr ""
+msgstr "8 년차"
 
 #: personal/supann/class_supannAccount.inc:121
 msgid "9th year"
-msgstr ""
+msgstr "9 년차"
 
 #: personal/supann/class_supannAccount.inc:225
 msgid "SupAnn information management plugin"
-msgstr ""
+msgstr "SupAnn 정보 관리 플러그인"
 
 #: personal/supann/class_supannAccount.inc:242
 msgid "Identity"
-msgstr ""
+msgstr "신원"
 
 #: personal/supann/class_supannAccount.inc:245
 msgid "Civilite"
-msgstr ""
+msgstr "호칭"
 
 #: personal/supann/class_supannAccount.inc:245
 msgid "supannCivilite - Civility for this person"
-msgstr ""
+msgstr "supannCivilite - 이 사람에 대한 호칭"
 
 #: personal/supann/class_supannAccount.inc:250
 msgid "Alias login"
-msgstr ""
+msgstr "별칭 로그인"
 
 #: personal/supann/class_supannAccount.inc:250
 msgid "supannAliasLogin - An alias for the login of this user"
-msgstr ""
+msgstr "supannAliasLogin - 이 사용자의 로그인 별칭"
 
 #: personal/supann/class_supannAccount.inc:254
 msgid "eduPersonPrincipalName"
-msgstr ""
+msgstr "eduPersonPrincipalName"
 
 #: personal/supann/class_supannAccount.inc:254
 msgid ""
@@ -401,11 +403,11 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:263
 msgid "Ref ids"
-msgstr ""
+msgstr "참조 ID"
 
 #: personal/supann/class_supannAccount.inc:263
 msgid "supannRefId - IDs/links for this user on other systems"
-msgstr ""
+msgstr "supannRefId - 다른 시스템에서 이 사용자에 대한 ID / 링크"
 
 #: personal/supann/class_supannAccount.inc:273
 msgid "Contact"
@@ -413,28 +415,28 @@ msgstr "연락처"
 
 #: personal/supann/class_supannAccount.inc:277
 msgid "Other phone numbers"
-msgstr ""
+msgstr "다른 전화 번호"
 
 #: personal/supann/class_supannAccount.inc:277
 msgid "supannAutreTelephone - Other phone numbers for this user"
-msgstr ""
+msgstr "supannAutreTelephone - 이 사용자의 다른 전화 번호"
 
 #: personal/supann/class_supannAccount.inc:283
 msgid "Other mail addresses"
-msgstr ""
+msgstr "다른 메일 주소"
 
 #: personal/supann/class_supannAccount.inc:283
 msgid ""
 "supannAutreMail - Other mail addresses for this user. Each must be unique"
-msgstr ""
+msgstr "supannAutreMail - 이 사용자의 다른 메일 주소. 각각 고유해야 합니다"
 
 #: personal/supann/class_supannAccount.inc:289
 msgid "Personal mail addresses"
-msgstr ""
+msgstr "개인 메일 주소"
 
 #: personal/supann/class_supannAccount.inc:289
 msgid "supannMailPerso - Personal mail addresses for this user"
-msgstr ""
+msgstr "supannMailPerso - 이 사용자의 개인 메일 주소"
 
 #: personal/supann/class_supannAccount.inc:294
 msgid "Red list"
@@ -442,7 +444,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:294
 msgid "supannListeRouge - Should this person be on the red list"
-msgstr ""
+msgstr "supannListeRouge - 이 사람은 적색 목록에 있어야 합니다"
 
 #: personal/supann/class_supannAccount.inc:300
 msgid "Assignment"
@@ -454,7 +456,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:303
 msgid "supannEntiteAffectationPrincipale - Main assignment of the person"
-msgstr ""
+msgstr "supannEntiteAffectationPrincipale - 사람의 주요 임무"
 
 #: personal/supann/class_supannAccount.inc:308
 msgid "Assignments"
@@ -479,19 +481,19 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:321
 msgid "Affiliation"
-msgstr ""
+msgstr "Affiliation"
 
 #: personal/supann/class_supannAccount.inc:324
 msgid "Primary affiliation"
-msgstr ""
+msgstr "기본 제휴"
 
 #: personal/supann/class_supannAccount.inc:324
 msgid "eduPersonPrimaryAffiliation - Main status of the person"
-msgstr ""
+msgstr "eduPersonPrimaryAffiliation - 개인의 기본 상태"
 
 #: personal/supann/class_supannAccount.inc:329
 msgid "Affiliations"
-msgstr ""
+msgstr "Affiliations"
 
 #: personal/supann/class_supannAccount.inc:329
 msgid ""
@@ -507,23 +509,23 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:342
 msgid "Student profile"
-msgstr ""
+msgstr "학생 프로필"
 
 #: personal/supann/class_supannAccount.inc:345
 msgid "INE code"
-msgstr ""
+msgstr "INE 코드"
 
 #: personal/supann/class_supannAccount.inc:345
 msgid "supannCodeINE - INE code of this student"
-msgstr ""
+msgstr "supannCodeINE - 이 학생의 INE 코드"
 
 #: personal/supann/class_supannAccount.inc:349
 msgid "Student ID"
-msgstr ""
+msgstr "학생 아이디"
 
 #: personal/supann/class_supannAccount.inc:349
 msgid "supannEtuId - Scolarity id"
-msgstr ""
+msgstr "supannEtuId - 장학생 ID"
 
 #: personal/supann/class_supannAccount.inc:355
 msgid "Student registrations"
@@ -540,7 +542,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:378
 msgid "Year"
-msgstr ""
+msgstr "해"
 
 #: personal/supann/class_supannAccount.inc:378
 msgid "supannEtuAnneeInscription - The year this registration will begin"
@@ -556,23 +558,23 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:387
 msgid "Disciplinary Sector"
-msgstr ""
+msgstr "징계 분야"
 
 #: personal/supann/class_supannAccount.inc:387
 msgid "supannEtuSecteurDisciplinaire - Disciplinary sector education diploma"
-msgstr ""
+msgstr "supannEtuSecteurDisciplinaire - 징계 분야 교육 디플로마"
 
 #: personal/supann/class_supannAccount.inc:391
 msgid "Diploma type"
-msgstr ""
+msgstr "디플로마 유형"
 
 #: personal/supann/class_supannAccount.inc:391
 msgid "supannEtuTypeDiplome - Type of diploma"
-msgstr ""
+msgstr "supannEtuTypeDiplome - 디플로마 유형"
 
 #: personal/supann/class_supannAccount.inc:395
 msgid "Curriculum year "
-msgstr ""
+msgstr "커리큘럼 년도"
 
 #: personal/supann/class_supannAccount.inc:395
 msgid ""
@@ -582,7 +584,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:399
 msgid "Entity assignment"
-msgstr ""
+msgstr "엔터티 할당"
 
 #: personal/supann/class_supannAccount.inc:399
 msgid "supannEntiteAffectation - To wich entities does this user belong to"
@@ -590,55 +592,55 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:403
 msgid "Diploma"
-msgstr ""
+msgstr "Diploma"
 
 #: personal/supann/class_supannAccount.inc:403
 msgid "supannEtuDiplome - Diploma prepared by the student"
-msgstr ""
+msgstr "supannEtuDiplome - 학생이 준비한 졸업장"
 
 #: personal/supann/class_supannAccount.inc:407
 msgid "Step"
-msgstr ""
+msgstr "단계"
 
 #: personal/supann/class_supannAccount.inc:407
 msgid ""
 "supannEtuEtape - Step can be considered a split (semester, year, etc.) in "
 "time of education leading to a diploma"
-msgstr ""
+msgstr "supannEtuEtape - 단계는 졸업장으로 이어지는 교육 시간의 분할 (학기, 연도 등)로 간주 될 수 있습니다"
 
 #: personal/supann/class_supannAccount.inc:411
 msgid "educational element"
-msgstr ""
+msgstr "교육 요소"
 
 #: personal/supann/class_supannAccount.inc:411
 msgid ""
 "supannEtuElementPedagogique - Generic description of the content of "
 "education with a high level of granularity"
-msgstr ""
+msgstr "supannEtuElementPedagogique - 세분화 수준이 높은 교육 내용에 대한 일반적인 설명"
 
 #: personal/supann/class_supannAccount.inc:425
 msgid "Personal profile"
-msgstr ""
+msgstr "개인 프로필"
 
 #: personal/supann/class_supannAccount.inc:428
 msgid "Personal ID"
-msgstr ""
+msgstr "개인 ID"
 
 #: personal/supann/class_supannAccount.inc:428
 msgid "supannEmpId - Employee identifier"
-msgstr ""
+msgstr "supannEmpId - 직원 식별자"
 
 #: personal/supann/class_supannAccount.inc:432
 msgid "Personal corps"
-msgstr ""
+msgstr "개인 단쳋"
 
 #: personal/supann/class_supannAccount.inc:432
 msgid "supannEmpCorps"
-msgstr ""
+msgstr "supannEmpCorps"
 
 #: personal/supann/class_supannAccount.inc:437
 msgid "Activity"
-msgstr ""
+msgstr "Activity"
 
 #: personal/supann/class_supannAccount.inc:437
 msgid "supannActivite - Category of profession"
@@ -646,15 +648,15 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:444
 msgid "Roles"
-msgstr ""
+msgstr "역할"
 
 #: personal/supann/class_supannAccount.inc:451
 msgid "supannRoleEntite"
-msgstr ""
+msgstr "supannRoleEntite"
 
 #: personal/supann/class_supannAccount.inc:455
 msgid "Generic role"
-msgstr ""
+msgstr "일반적인 역할"
 
 #: personal/supann/class_supannAccount.inc:455
 msgid "supannRoleGenerique - Generic role of the person in the facility"
@@ -668,4 +670,4 @@ msgstr ""
 msgid ""
 "\"member\" and \"affiliate\" values are incompatible for "
 "eduPersonAffiliation. Please remove one of them."
-msgstr ""
+msgstr "\"member\"및 \"affiliate\"값은 eduPersonAffiliation과 호환되지 않습니다. 그중 하나를 제거하십시오."

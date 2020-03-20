@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-08-02 11:45+0200\n"
+"POT-Creation-Date: 2020-03-20 17:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -26,7 +26,7 @@ msgid "FusionDirectory audit plugin configuration"
 msgstr ""
 
 #: config/audit/class_auditConfig.inc:41
-#: admin/audit/class_auditManagement.inc:40
+#: admin/audit/class_auditManagement.inc:41
 msgid "Audit"
 msgstr ""
 
@@ -54,81 +54,98 @@ msgstr ""
 msgid "Number of days of audit to keep in the LDAP when cleaning"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:53 admin/audit/class_auditEvent.inc:56
+#: admin/audit/class_auditEvent.inc:43
+#, php-format
+msgid "Unknown user: %s"
+msgstr ""
+
+#: admin/audit/class_auditEvent.inc:57 admin/audit/class_auditEvent.inc:60
 msgid "Audit event"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:54
+#: admin/audit/class_auditEvent.inc:58
 msgid "An event like ldap modification which was registered by audit plugin"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:72
+#: admin/audit/class_auditEvent.inc:76
 msgid "Event"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:75
-#: admin/audit/class_auditManagement.inc:69
+#: admin/audit/class_auditEvent.inc:80
+#: admin/audit/class_auditManagement.inc:111
 msgid "Time"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:75
+#: admin/audit/class_auditEvent.inc:80
 msgid "Date and time this event happened"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:78
-#: admin/audit/class_auditManagement.inc:83
+#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditManagement.inc:125
 msgid "Action"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:78
+#: admin/audit/class_auditEvent.inc:83
 msgid "Action type"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:79
-#: admin/audit/class_auditManagement.inc:76
+#: admin/audit/class_auditEvent.inc:84
+#: admin/audit/class_auditManagement.inc:118
 msgid "Author"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:79
+#: admin/audit/class_auditEvent.inc:84
 msgid "Action author"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:80
+#: admin/audit/class_auditEvent.inc:85
 msgid "Object type"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:81
+#: admin/audit/class_auditEvent.inc:86
 msgid "Object"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:81
+#: admin/audit/class_auditEvent.inc:86
 msgid "Target object"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:82
+#: admin/audit/class_auditEvent.inc:87
 msgid "Attributes"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:82
+#: admin/audit/class_auditEvent.inc:87
 msgid "Target attributes"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:88
 msgid "Result"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:88
 msgid "Result or error"
 msgstr ""
 
-#: admin/audit/class_auditManagement.inc:41
+#: admin/audit/class_auditManagement.inc:42
 msgid "Audit events display"
 msgstr ""
 
-#: admin/audit/class_auditManagement.inc:90
+#: admin/audit/class_auditManagement.inc:132
 msgid "Type"
 msgstr ""
 
-#: admin/audit/class_auditManagement.inc:97
+#: admin/audit/class_auditManagement.inc:139
 msgid "Target"
+msgstr ""
+
+#: admin/audit/class_auditManagement.inc:157
+msgid "Newer than"
+msgstr ""
+
+#: admin/audit/class_auditManagement.inc:161
+msgid "Older than"
+msgstr ""
+
+#: admin/audit/audit-filter.tpl.c:2
+msgid "Filter"
 msgstr ""

@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-08-02 11:45+0200\n"
+"POT-Creation-Date: 2020-03-20 17:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -16,6 +16,59 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: config/personal/class_personalConfig.inc:28
+msgid "Personal configuration"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:29
+msgid "FusionDirectory personal plugin configuration"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:42
+#: personal/personal/class_personalInfo.inc:85
+msgid "Personal"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow use of private email for password recovery"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow users to use their private email address for password recovery"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:69
+msgid "Facebook"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:79
+msgid "Twitter"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:99
+msgid "Diaspora*"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:112
+msgid "Diaspora accounts must look like user@pod"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:122
+msgid "LinkedIn"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:132
+msgid "ORCID"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:145
+msgid "ORCID account IDs must look like XXXX-XXXX-XXXX-XXXX where X are digits"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:148
+msgid "Incorrect ORCID value, the checksum does not match"
+msgstr ""
 
 #: personal/personal/class_personalInfo.inc:30
 msgid "Site"
@@ -31,11 +84,6 @@ msgstr ""
 
 #: personal/personal/class_personalInfo.inc:36
 msgid "Id of this user on this website"
-msgstr ""
-
-#: personal/personal/class_personalInfo.inc:85
-#: config/personal/class_personalConfig.inc:42
-msgid "Personal"
 msgstr ""
 
 #: personal/personal/class_personalInfo.inc:86
@@ -130,44 +178,4 @@ msgstr ""
 
 #: personal/personal/class_personalInfo.inc:159
 msgid "Private email addresses of this user"
-msgstr ""
-
-#: personal/personal/class_socialHandlers.inc:68
-msgid "Facebook"
-msgstr ""
-
-#: personal/personal/class_socialHandlers.inc:78
-msgid "Twitter"
-msgstr ""
-
-#: personal/personal/class_socialHandlers.inc:98
-msgid "Google+"
-msgstr ""
-
-#: personal/personal/class_socialHandlers.inc:118
-msgid "Diaspora*"
-msgstr ""
-
-#: personal/personal/class_socialHandlers.inc:131
-msgid "Diaspora accounts must look like user@pod"
-msgstr ""
-
-#: personal/personal/class_socialHandlers.inc:141
-msgid "LinkedIn"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:28
-msgid "Personal configuration"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:29
-msgid "FusionDirectory personal plugin configuration"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:45
-msgid "Allow use of private email for password recovery"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:45
-msgid "Allow users to use their private email address for password recovery"
 msgstr ""
