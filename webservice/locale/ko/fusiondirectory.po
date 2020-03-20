@@ -5,16 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
-# Choi Chris <chulwon.choi@gmail.com>, 2019
+# Choi Chris <chulwon.choi@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-11-27 09:44+0000\n"
+"POT-Creation-Date: 2020-03-17 10:22+0000\n"
 "PO-Revision-Date: 2018-08-13 20:06+0000\n"
-"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2020\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,7 +34,7 @@ msgstr "'%s' 파일을 사용할 수 없습니다.  '%s' 를 실행해 주세요
 
 #: include/webservice/class_fdRPCService.inc:161
 msgid "Your password has expired, please set a new one."
-msgstr ""
+msgstr "비밀번호가 만료되었습니다. 새 비밀번호를 설정하십시오."
 
 #: include/webservice/class_fdRPCService.inc:165
 msgid "Account expired. Please contact your system administrator!"
@@ -45,54 +45,54 @@ msgstr ""
 msgid "Plugin"
 msgstr "플러그인"
 
-#: include/webservice/class_fdRPCService.inc:542
+#: include/webservice/class_fdRPCService.inc:543
 #, php-format
 msgid "Field \"%s\" is not multi-valuated"
 msgstr "\"%s\" 필드는 여러 값을 가질 수 없음"
 
-#: include/webservice/class_fdRPCService.inc:557
+#: include/webservice/class_fdRPCService.inc:558
 #, php-format
 msgid "Unknown field \"%s\""
 msgstr "잘못된 필드 \"%s\""
 
-#: include/webservice/class_fdRPCService.inc:615
+#: include/webservice/class_fdRPCService.inc:616
 #, php-format
 msgid "Cannot delete %s. It has been locked by %s."
 msgstr "'%s'를 지울 수 없습니다. %s에 의해 잠겨있습니다."
 
-#: include/webservice/class_fdRPCService.inc:659
-#: include/webservice/class_fdRPCService.inc:688
+#: include/webservice/class_fdRPCService.inc:660
+#: include/webservice/class_fdRPCService.inc:689
 #, php-format
 msgid "Failed to get password method for account \"%s\". It has not been locked!"
 msgstr "\"%s\" 계정의 패스워드를 가져올 수 없습니다. 잠겨있지 않습니다."
 
-#: include/webservice/class_fdRPCService.inc:684
+#: include/webservice/class_fdRPCService.inc:685
 #, php-format
 msgid "Password method \"%s\" failed locking. Account \"%s\" has not been locked!"
 msgstr "\"%s\"의 패스워드를 잠글 수 없습니다. \"%s\" 계정이 잠겨있지 않습니다."
 
-#: include/webservice/class_fdRPCService.inc:691
+#: include/webservice/class_fdRPCService.inc:692
 #, php-format
 msgid "Could not find account \"%s\" in LDAP. It has not been locked!"
 msgstr "LDAP에서 계정 \"%s\"을 찾을 수 없습니다. 잠겨있지 않습니다."
 
-#: include/webservice/class_fdRPCService.inc:729
-#: include/webservice/class_fdRPCService.inc:738
+#: include/webservice/class_fdRPCService.inc:730
+#: include/webservice/class_fdRPCService.inc:739
 #, php-format
 msgid "Failed to get password method for account \"%s\""
 msgstr "\"%s\" 계정의 패스워드를 가져올 수 없습니다. "
 
-#: include/webservice/class_fdRPCService.inc:741
+#: include/webservice/class_fdRPCService.inc:742
 #, php-format
 msgid "Could not find account \"%s\" in LDAP"
 msgstr "LDAP에서 계정 \"%s\"를 찾을 수 없습니다."
 
-#: include/webservice/class_fdRPCService.inc:760
-#: include/webservice/class_fdRPCService.inc:785
+#: include/webservice/class_fdRPCService.inc:761
+#: include/webservice/class_fdRPCService.inc:786
 msgid "Password recovery is not activated"
 msgstr ""
 
-#: include/webservice/class_fdRPCService.inc:795
+#: include/webservice/class_fdRPCService.inc:796
 msgid "This token is invalid"
 msgstr "토큰이 유효하지 않습니다."
 

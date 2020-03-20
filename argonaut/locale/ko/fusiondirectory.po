@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-11-27 09:44+0000\n"
+"POT-Creation-Date: 2020-03-17 10:22+0000\n"
 "PO-Revision-Date: 2018-08-13 19:49+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -39,6 +39,32 @@ msgstr "\"%s\"을 읽을 수 없습니다!"
 #, php-format
 msgid "\"%s\" is not a file!"
 msgstr "\"%s\"는 파일이 아닙니다!"
+
+#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:35
+#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:70
+msgid "zone"
+msgstr "영역"
+
+#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:35
+#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:70
+msgid "DNS zone this server should be declared as slave of"
+msgstr "이 서버의 DNS 영역은 다음 중 슬레이브로 선언되어야합니다."
+
+#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:39
+msgid "master"
+msgstr "마스터"
+
+#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:39
+msgid "Master IP(s) for this zone"
+msgstr "이 영역의 마스터 IP(s)"
+
+#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:43
+msgid "reverses"
+msgstr "역방향"
+
+#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:43
+msgid "This server should be slave of reverses zones as well"
+msgstr "이 서버는 역방향 영역의 슬레이브가 되어야 합니다"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:30
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:31
@@ -391,131 +417,105 @@ msgstr "상세 모드를 활성화할지 여부"
 msgid "Argonaut DNS settings"
 msgstr "Argonaut DNS 설정"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:50
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:49
 msgid "Ldap2zone global settings"
 msgstr "Ldap2zone 전역 설정"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:53
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:52
 msgid "Bind directory"
 msgstr "디렉토리 바인딩"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:53
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:52
 msgid "The directory in which conf file must be created"
 msgstr "conf 파일을 생성해야하는 디렉토리"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:58
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:57
 msgid "Bind cache directory"
 msgstr "캐시 디렉토리 바인딩"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:58
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:57
 msgid "The directory in which zone files must be created"
 msgstr "zone 파일을 생성해야하는 디렉토리"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:63
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:62
 msgid "TTL"
 msgstr "TTL"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:64
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:63
 msgid "Time to live"
 msgstr "Time to live"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:72
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:71
 msgid "rndc path"
 msgstr "rndc 경로"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:73
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:72
 msgid "path to rndc binary"
 msgstr "rndc 바이너리 경로"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:79
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:78
 msgid "Search base"
 msgstr "검색 기준"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:79
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:78
 msgid ""
 "LDAP base in which ldap2zone should search. Only usefull if you got several "
 "nodes for the same zone."
 msgstr "ldap2zone이 검색해야하는 LDAP 기본. 같은 존에 대해 여러 개의 노드가있는 경우에만 유용합니다."
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:85
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:84
 msgid "Ldap2zone master settings"
 msgstr "Ldap2zone 마스터 설정"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:88
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:87
 msgid "Ignore reverse zone"
 msgstr "역방향 영역 무시"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:88
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:87
 msgid "Do not write reverse zone"
 msgstr "역방향 영역 쓰지 않기"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:92
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:91
 msgid "Notify"
 msgstr "알림"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:97
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:96
 msgid "Allow update"
 msgstr "업데이트 허용"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:97
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:96
 msgid "Allow update (semicolon separated and ended)"
 msgstr "업데이트 허용 (세미콜론 분리 및 종료)"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:101
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:100
 msgid "Allow transfer"
 msgstr "전송 허용"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:101
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:100
 msgid "Allow transfer (semicolon separated and ended)"
 msgstr "전송 허용 (세미콜론 분리 및 종료)"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:105
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:104
 msgid "Check names"
 msgstr "이름 확인"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:105
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:104
 msgid ""
 "Cause any host name for the zone to be checked for compliance with RFC 952 "
 "and RFC 1123 and take the defined action"
 msgstr "영역의 모든 호스트 이름이 RFC 952 및 RFC 1123을 준수하는지 확인하고 정의 된 작업을 수행합니다"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:112
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:111
 msgid "Ldap2zone slave settings"
 msgstr "Ldap2zone 슬레이브 설정"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:117
-msgid "Manage DNS Slaves"
-msgstr "DNS 슬레이브 관리"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:159
-msgid "zone"
-msgstr "영역"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:159
-msgid "DNS zone this server should be declared as slave of"
-msgstr "이 서버의 DNS 영역은 다음 중 슬레이브로 선언되어야합니다."
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:125
-msgid "master"
-msgstr "마스터"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:125
-msgid "Master IP(s) for this zone"
-msgstr "이 영역의 마스터 IP(s)"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:129
-msgid "reverses"
-msgstr "역방향"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:129
-msgid "This server should be slave of reverses zones as well"
-msgstr "이 서버는 역방향 영역의 슬레이브가 되어야 합니다"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:136
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:115
 msgid "DNS slaves"
 msgstr "DNS 슬레이브"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:115
+msgid "Manage DNS Slaves"
+msgstr "DNS 슬레이브 관리"
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:30
 msgid "Deployment time frame"

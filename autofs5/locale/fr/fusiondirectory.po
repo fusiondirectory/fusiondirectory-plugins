@@ -1,0 +1,110 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# fusiondirectory <contact@fusiondirectory.org>, 2020
+# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2020-03-11 16:12+0100\n"
+"PO-Revision-Date: 2020-03-11 15:41+0000\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2020\n"
+"Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: config/autofs5/class_autofs5Config.inc:26
+msgid "Autofs configuration"
+msgstr "Configuration Autofs"
+
+#: config/autofs5/class_autofs5Config.inc:27
+msgid "FusionDirectory autofs plugin configuration"
+msgstr "Configuration du plugin autofs"
+
+#: config/autofs5/class_autofs5Config.inc:40
+msgid "AutoFS"
+msgstr "AutoFS"
+
+#: config/autofs5/class_autofs5Config.inc:43
+msgid "AutoFS RDN"
+msgstr "Branche AutoFS"
+
+#: config/autofs5/class_autofs5Config.inc:43
+msgid "Branch in which automount info will be stored"
+msgstr "Branche où seront stockés les points de montage automount"
+
+#: admin/autofs5/class_autofs5Management.inc:27
+msgid "Auto fs"
+msgstr "Auto FS"
+
+#: admin/autofs5/class_autofs5Management.inc:28
+msgid "Auto fs management"
+msgstr "Gestion Autofs"
+
+#: admin/autofs5/class_autofs5Management.inc:29
+msgid "Manage auto fs maps"
+msgstr "Gérer les montages autofs"
+
+#: admin/autofs5/class_automountMap.inc:27
+#: admin/autofs5/class_automountMap.inc:28
+#: admin/autofs5/class_automountMap.inc:31
+msgid "Autofs map"
+msgstr "Montages autofs"
+
+#: admin/autofs5/class_automountMap.inc:46
+msgid "Map"
+msgstr "Montages"
+
+#: admin/autofs5/class_automountMap.inc:50
+msgid "Name"
+msgstr "Nom"
+
+#: admin/autofs5/class_automountMap.inc:50
+msgid "Name of the map"
+msgstr "Nom du montage"
+
+#: admin/autofs5/class_automountMap.inc:56
+#: admin/autofs5/class_automountMap.inc:59
+msgid "Entries"
+msgstr "Entrées"
+
+#: admin/autofs5/class_automountMap.inc:59
+msgid "Entries in the automount table"
+msgstr "Entrées dans la table de montage automatique"
+
+#: admin/autofs5/class_automountMap.inc:63
+msgid "Path"
+msgstr "Chemin"
+
+#: admin/autofs5/class_automountMap.inc:63
+msgid "Absolute (direct) or relative (indirect) path for this entry"
+msgstr "Chemin absolu (direct) ou relatif (indirect) pour cette entrée"
+
+#: admin/autofs5/class_automountMap.inc:69
+msgid "Options"
+msgstr "Options"
+
+#: admin/autofs5/class_automountMap.inc:69
+msgid ""
+"The entry of this directory for the automount daemon.\n"
+" For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
+msgstr ""
+"L'entrée de ce répertoire pour le démon automount. \n"
+"Par exemple «auto.u» ou «-fstype=nfs domaine.tld:/mount/répertoire'"
+
+#: admin/autofs5/class_automountMap.inc:73
+msgid "Description"
+msgstr "Description"
+
+#: admin/autofs5/class_automountMap.inc:73
+msgid "Description of this entry"
+msgstr "Description de cette entrée"

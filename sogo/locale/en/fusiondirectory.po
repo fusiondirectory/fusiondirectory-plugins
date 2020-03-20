@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-08-02 11:45+0200\n"
+"POT-Creation-Date: 2020-03-20 17:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -17,56 +17,60 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: config/sogo/class_sogoConfig.inc:28
+#: config/sogo/class_sogoConfig.inc:26
 msgid "SOGo configuration"
 msgstr ""
 
-#: config/sogo/class_sogoConfig.inc:29
+#: config/sogo/class_sogoConfig.inc:27
 msgid "FusionDirectory sogo plugin configuration"
 msgstr ""
 
-#: config/sogo/class_sogoConfig.inc:42 admin/sogo/class_sogoManagement.inc:33
-#: admin/sogo/class_sogoManagement.inc:38
+#: config/sogo/class_sogoConfig.inc:40 admin/sogo/class_sogoManagement.inc:27
+#: admin/sogo/class_sogoManagement.inc:33
 msgid "SOGo"
 msgstr ""
 
-#: config/sogo/class_sogoConfig.inc:45
+#: config/sogo/class_sogoConfig.inc:43
 msgid "SOGo RDN"
 msgstr ""
 
-#: config/sogo/class_sogoConfig.inc:45
+#: config/sogo/class_sogoConfig.inc:43
 msgid "Branch in which SOGo objects will be stored"
 msgstr ""
 
-#: admin/sogo/class_sogoResource.inc:31 admin/sogo/class_sogoResource.inc:32
-#: admin/sogo/class_sogoResource.inc:35 admin/sogo/class_sogoResource.inc:53
+#: admin/sogo/class_sogoResource.inc:26 admin/sogo/class_sogoResource.inc:27
+#: admin/sogo/class_sogoResource.inc:31 admin/sogo/class_sogoResource.inc:48
 msgid "SOGo resource"
 msgstr ""
 
-#: admin/sogo/class_sogoResource.inc:57
+#: admin/sogo/class_sogoResource.inc:52
 msgid "Entry name"
 msgstr ""
 
-#: admin/sogo/class_sogoResource.inc:57
+#: admin/sogo/class_sogoResource.inc:52
 msgid "Account name"
 msgstr ""
 
-#: admin/sogo/class_sogoResource.inc:61
+#: admin/sogo/class_sogoResource.inc:56
 msgid "Mail"
 msgstr ""
 
-#: admin/sogo/class_sogoResource.inc:67
+#: admin/sogo/class_sogoResource.inc:62
 msgid "description"
 msgstr ""
 
-#: admin/sogo/class_sogoResource.inc:71
+#: admin/sogo/class_sogoResource.inc:66
 msgid "Multiplebookings"
 msgstr ""
 
-#: admin/sogo/class_sogoResource.inc:76
+#: admin/sogo/class_sogoResource.inc:71
 msgid "Kind"
 msgstr ""
 
-#: admin/sogo/class_sogoManagement.inc:34
+#: admin/sogo/class_sogoManagement.inc:28
 msgid "SOGo management"
+msgstr ""
+
+#: admin/sogo/class_sogoManagement.inc:29
+msgid "Manage SOGo resources"
 msgstr ""
