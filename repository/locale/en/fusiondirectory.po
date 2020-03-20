@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-08-02 11:45+0200\n"
+"POT-Creation-Date: 2020-03-20 17:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -46,6 +46,50 @@ msgstr ""
 msgid "Available repository types"
 msgstr ""
 
+#: admin/repository/class_repositoryDistribution.inc:30
+#: admin/repository/class_repositoryDistribution.inc:31
+#: admin/repository/class_repositoryDistribution.inc:33
+#: admin/repository/class_repositoryDistribution.inc:56
+msgid "Repository distribution"
+msgstr ""
+
+#: admin/repository/class_repositoryDistribution.inc:60
+#: admin/repository/class_buildRepository.inc:63
+#: admin/repository/class_repositorySection.inc:57
+msgid "Name"
+msgstr ""
+
+#: admin/repository/class_repositoryDistribution.inc:60
+msgid "Unique name for this distribution"
+msgstr ""
+
+#: admin/repository/class_repositoryDistribution.inc:64
+#: admin/repository/class_buildRepository.inc:67
+#: admin/repository/class_repositorySection.inc:61
+msgid "Description"
+msgstr ""
+
+#: admin/repository/class_repositoryDistribution.inc:64
+msgid "Description of this distribution"
+msgstr ""
+
+#: admin/repository/class_repositoryDistribution.inc:69
+msgid "Section"
+msgstr ""
+
+#: admin/repository/class_repositoryDistribution.inc:69
+msgid "The sections this distribution contains"
+msgstr ""
+
+#: admin/repository/class_repositoryDistribution.inc:76
+#: admin/repository/class_repositorySection.inc:66
+msgid "Based on"
+msgstr ""
+
+#: admin/repository/class_repositoryDistribution.inc:76
+msgid "The distributions this one is based on"
+msgstr ""
+
 #: admin/repository/class_buildRepository.inc:30
 #: admin/repository/class_buildRepository.inc:31
 #: admin/repository/class_buildRepository.inc:33
@@ -54,19 +98,7 @@ msgid "Build repository"
 msgstr ""
 
 #: admin/repository/class_buildRepository.inc:63
-#: admin/repository/class_repositoryDistribution.inc:60
-#: admin/repository/class_repositorySection.inc:57
-msgid "Name"
-msgstr ""
-
-#: admin/repository/class_buildRepository.inc:63
 msgid "Unique name for this repository"
-msgstr ""
-
-#: admin/repository/class_buildRepository.inc:67
-#: admin/repository/class_repositoryDistribution.inc:64
-#: admin/repository/class_repositorySection.inc:61
-msgid "Description"
 msgstr ""
 
 #: admin/repository/class_buildRepository.inc:67
@@ -125,43 +157,6 @@ msgstr ""
 msgid "Users of this repository"
 msgstr ""
 
-#: admin/repository/class_repositoryManagement.inc:28
-#: admin/repository/class_repositoryManagement.inc:29
-msgid "Repository management"
-msgstr ""
-
-#: admin/repository/class_repositoryDistribution.inc:30
-#: admin/repository/class_repositoryDistribution.inc:31
-#: admin/repository/class_repositoryDistribution.inc:33
-#: admin/repository/class_repositoryDistribution.inc:56
-msgid "Repository distribution"
-msgstr ""
-
-#: admin/repository/class_repositoryDistribution.inc:60
-msgid "Unique name for this distribution"
-msgstr ""
-
-#: admin/repository/class_repositoryDistribution.inc:64
-msgid "Description of this distribution"
-msgstr ""
-
-#: admin/repository/class_repositoryDistribution.inc:69
-msgid "Section"
-msgstr ""
-
-#: admin/repository/class_repositoryDistribution.inc:69
-msgid "The sections this distribution contains"
-msgstr ""
-
-#: admin/repository/class_repositoryDistribution.inc:76
-#: admin/repository/class_repositorySection.inc:66
-msgid "Based on"
-msgstr ""
-
-#: admin/repository/class_repositoryDistribution.inc:76
-msgid "The distributions this one is based on"
-msgstr ""
-
 #: admin/repository/class_repositorySection.inc:30
 #: admin/repository/class_repositorySection.inc:31
 #: admin/repository/class_repositorySection.inc:33
@@ -179,4 +174,9 @@ msgstr ""
 
 #: admin/repository/class_repositorySection.inc:66
 msgid "The sections this one is based on"
+msgstr ""
+
+#: admin/repository/class_repositoryManagement.inc:28
+#: admin/repository/class_repositoryManagement.inc:29
+msgid "Repository management"
 msgstr ""
