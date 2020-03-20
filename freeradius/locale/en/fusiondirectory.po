@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-08-02 11:45+0200\n"
+"POT-Creation-Date: 2020-03-20 17:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -17,104 +17,104 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: personal/freeradius/class_freeradiusAccount.inc:35
-#: admin/freeradius/class_freeradiusGroup.inc:34
+#: admin/freeradius/class_freeradiusGroup.inc:30
+#: personal/freeradius/class_freeradiusAccount.inc:31
 msgid "Freeradius"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:36
-#: admin/freeradius/class_freeradiusGroup.inc:35
+#: admin/freeradius/class_freeradiusGroup.inc:31
+#: personal/freeradius/class_freeradiusAccount.inc:32
 msgid "This Plugin is for Radius accounting based in FreeRadius"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:55
-#: admin/freeradius/class_freeradiusGroup.inc:49
+#: admin/freeradius/class_freeradiusGroup.inc:48
+#: personal/freeradius/class_freeradiusAccount.inc:53
 msgid "Support 802.1x"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:58
-#: admin/freeradius/class_freeradiusGroup.inc:52
+#: admin/freeradius/class_freeradiusGroup.inc:51
+#: personal/freeradius/class_freeradiusAccount.inc:56
 msgid "Tunnel medium type"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:58
-#: admin/freeradius/class_freeradiusGroup.inc:53
+#: admin/freeradius/class_freeradiusGroup.inc:52
+#: personal/freeradius/class_freeradiusAccount.inc:56
 msgid "Name of the tunnel medium type"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:63
-#: admin/freeradius/class_freeradiusGroup.inc:59
+#: admin/freeradius/class_freeradiusGroup.inc:58
+#: personal/freeradius/class_freeradiusAccount.inc:61
 msgid "Tunnel type"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:63
-#: admin/freeradius/class_freeradiusGroup.inc:60
+#: admin/freeradius/class_freeradiusGroup.inc:59
+#: personal/freeradius/class_freeradiusAccount.inc:61
 msgid "Name of the tunnel type"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:68
-#: admin/freeradius/class_freeradiusGroup.inc:66
+#: admin/freeradius/class_freeradiusGroup.inc:65
+#: personal/freeradius/class_freeradiusAccount.inc:66
 msgid "VLAN id"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:68
-#: admin/freeradius/class_freeradiusGroup.inc:67
+#: admin/freeradius/class_freeradiusGroup.inc:66
+#: personal/freeradius/class_freeradiusAccount.inc:66
 msgid "VLAN identifier"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:73
+#: personal/freeradius/class_freeradiusAccount.inc:71
 msgid "Expiration date"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:73
+#: personal/freeradius/class_freeradiusAccount.inc:71
 msgid "Date of the expiration account"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:80
-#: personal/freeradius/class_freeradiusAccount.inc:84
+#: personal/freeradius/class_freeradiusAccount.inc:78
+#: personal/freeradius/class_freeradiusAccount.inc:82
 msgid "Groups"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:85
+#: personal/freeradius/class_freeradiusAccount.inc:83
 msgid "FreeRadius Group"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:94
+#: personal/freeradius/class_freeradiusAccount.inc:92
 msgid "User preferences"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:97
+#: personal/freeradius/class_freeradiusAccount.inc:95
 msgid "Protocol"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:102
+#: personal/freeradius/class_freeradiusAccount.inc:100
 msgid "IP Address"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:107
+#: personal/freeradius/class_freeradiusAccount.inc:105
 msgid "IP Netmask"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:112
+#: personal/freeradius/class_freeradiusAccount.inc:110
 msgid "Framed-MTU"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:119
+#: personal/freeradius/class_freeradiusAccount.inc:117
 msgid "Compression"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:124
+#: personal/freeradius/class_freeradiusAccount.inc:122
 msgid "Service type"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:129
+#: personal/freeradius/class_freeradiusAccount.inc:127
 msgid "Session Timeout"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:136
+#: personal/freeradius/class_freeradiusAccount.inc:134
 msgid "Idle Timeout"
 msgstr ""
 
-#: personal/freeradius/class_freeradiusAccount.inc:143
+#: personal/freeradius/class_freeradiusAccount.inc:141
 msgid "Port limit"
 msgstr ""

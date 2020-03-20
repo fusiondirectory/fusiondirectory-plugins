@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-11-27 09:44+0000\n"
+"POT-Creation-Date: 2020-03-17 10:22+0000\n"
 "PO-Revision-Date: 2018-08-13 19:49+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -39,6 +39,32 @@ msgstr "Nelze načíst %s!"
 #, php-format
 msgid "\"%s\" is not a file!"
 msgstr "„%s“ není soubor!"
+
+#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:35
+#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:70
+msgid "zone"
+msgstr "zóna"
+
+#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:35
+#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:70
+msgid "DNS zone this server should be declared as slave of"
+msgstr "DNZ zóna které podřízeným by tento server měl být deklarován"
+
+#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:39
+msgid "master"
+msgstr "hlavní"
+
+#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:39
+msgid "Master IP(s) for this zone"
+msgstr "IP adresy hlavních pro tuto zónu"
+
+#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:43
+msgid "reverses"
+msgstr "obrací"
+
+#: admin/systems/services/argonaut/class_ArgonautSlaveZonesAttribute.inc:43
+msgid "This server should be slave of reverses zones as well"
+msgstr "Tento server by měl být také podřízený reverzních zón"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:30
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:31
@@ -401,47 +427,47 @@ msgstr "Zda zapnout výřečnější režim"
 msgid "Argonaut DNS settings"
 msgstr "nastavení DNS pro Argonaut"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:50
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:49
 msgid "Ldap2zone global settings"
 msgstr "Globální nastavení pro Ldap2zone"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:53
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:52
 msgid "Bind directory"
 msgstr "připojovací složka"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:53
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:52
 msgid "The directory in which conf file must be created"
 msgstr "Složka, ve které je třeba vytvořit soubor s nastaveními"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:58
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:57
 msgid "Bind cache directory"
 msgstr "Složka pro mezipaměť spojení"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:58
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:57
 msgid "The directory in which zone files must be created"
 msgstr "Složka, ve které je třeba vytvořit soubory s údaji zón"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:63
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:62
 msgid "TTL"
 msgstr "TTL"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:64
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:63
 msgid "Time to live"
 msgstr "Životnost (TTL)"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:72
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:71
 msgid "rndc path"
 msgstr "cesta k rndc"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:73
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:72
 msgid "path to rndc binary"
 msgstr "umístění spustitelného souboru rndc"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:79
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:78
 msgid "Search base"
 msgstr "Základ hledání"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:79
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:78
 msgid ""
 "LDAP base in which ldap2zone should search. Only usefull if you got several "
 "nodes for the same zone."
@@ -449,47 +475,47 @@ msgstr ""
 "LDAP základ, ve kterém má ldap2zone hledat. Užitečné pouze pokud máte více "
 "uzlů pro stejnou zónu."
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:85
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:84
 msgid "Ldap2zone master settings"
 msgstr "Nastavení hlavního ldap2zone"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:88
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:87
 msgid "Ignore reverse zone"
 msgstr "Nebrat v potaz reverzní zónu"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:88
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:87
 msgid "Do not write reverse zone"
 msgstr "Nezapisovat do reverzní zóny"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:92
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:91
 msgid "Notify"
 msgstr "Upozornit"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:97
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:96
 msgid "Allow update"
 msgstr "Umožnit akutalizace"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:97
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:96
 msgid "Allow update (semicolon separated and ended)"
 msgstr ""
 "povolena aktualizace (položky je třeba oddělovat a celý seznam zakončit "
 "středníkem – „;“ )"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:101
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:100
 msgid "Allow transfer"
 msgstr "Umožnit přenos"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:101
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:100
 msgid "Allow transfer (semicolon separated and ended)"
 msgstr ""
 "povolen přenos (položky je třeba oddělovat a celý seznam zakončit středníkem"
 " – „;“ )"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:105
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:104
 msgid "Check names"
 msgstr "Zkontrolovat názvy"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:105
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:104
 msgid ""
 "Cause any host name for the zone to be checked for compliance with RFC 952 "
 "and RFC 1123 and take the defined action"
@@ -497,43 +523,17 @@ msgstr ""
 "Způsobí že všechny názvy strojů pro zónu budou ověřovány na soulad s normami"
 " RFC 952 a RFC 1123 a podniknuta určená akce"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:112
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:111
 msgid "Ldap2zone slave settings"
 msgstr "Nastavení ldap2zone podřízeného"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:117
-msgid "Manage DNS Slaves"
-msgstr "Spravovat podřízená DNS"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:159
-msgid "zone"
-msgstr "zóna"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:121
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:159
-msgid "DNS zone this server should be declared as slave of"
-msgstr "DNZ zóna které podřízeným by tento server měl být deklarován"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:125
-msgid "master"
-msgstr "hlavní"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:125
-msgid "Master IP(s) for this zone"
-msgstr "IP adresy hlavních pro tuto zónu"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:129
-msgid "reverses"
-msgstr "obrací"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:129
-msgid "This server should be slave of reverses zones as well"
-msgstr "Tento server by měl být také podřízený reverzních zón"
-
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:136
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:115
 msgid "DNS slaves"
 msgstr "Podřízená DNS"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:115
+msgid "Manage DNS Slaves"
+msgstr "Spravovat podřízená DNS"
 
 #: admin/systems/argonaut/class_deploymentTimeframe.inc:30
 msgid "Deployment time frame"

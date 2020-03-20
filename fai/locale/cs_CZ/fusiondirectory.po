@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-11-27 09:44+0000\n"
+"POT-Creation-Date: 2020-03-17 10:22+0000\n"
 "PO-Revision-Date: 2018-08-13 19:53+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -34,14 +34,14 @@ msgstr "proměnná pro FAI"
 #: admin/fai/class_faiProfile.inc:46 admin/fai/class_faiPackage.inc:99
 #: admin/fai/class_faiHook.inc:47 admin/fai/class_faiTemplate.inc:165
 #: admin/fai/class_faiTemplateEntry.inc:139
-#: admin/fai/class_faiPartitionTable.inc:338
+#: admin/fai/class_faiPartitionTable.inc:337
 msgid "Properties"
 msgstr "Vlastnosti"
 
 #: admin/fai/class_faiVariable.inc:50 admin/fai/class_faiScript.inc:50
 #: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPackage.inc:102
 #: admin/fai/class_faiHook.inc:50 admin/fai/class_faiTemplate.inc:168
-#: admin/fai/class_faiPartitionTable.inc:341
+#: admin/fai/class_faiPartitionTable.inc:340
 msgid "Class name"
 msgstr "Název třídy"
 
@@ -51,20 +51,20 @@ msgid "Variables class name"
 msgstr "Název třídy proměnných"
 
 #: admin/fai/class_faiVariable.inc:54 admin/fai/class_faiVariable.inc:72
-#: admin/fai/class_faiDiskEntry.inc:247 admin/fai/class_faiPartition.inc:246
+#: admin/fai/class_faiDiskEntry.inc:246 admin/fai/class_faiPartition.inc:246
 #: admin/fai/class_faiScript.inc:54 admin/fai/class_faiScript.inc:72
 #: admin/fai/class_faiProfile.inc:53 admin/fai/class_faiPackage.inc:106
 #: admin/fai/class_faiHook.inc:54 admin/fai/class_faiHook.inc:72
 #: admin/fai/class_faiTemplate.inc:172
 #: admin/fai/class_faiTemplateEntry.inc:146
-#: admin/fai/class_faiPartitionTable.inc:345
+#: admin/fai/class_faiPartitionTable.inc:344
 msgid "Description"
 msgstr "Popis"
 
 #: admin/fai/class_faiVariable.inc:54 admin/fai/class_faiScript.inc:54
 #: admin/fai/class_faiProfile.inc:53 admin/fai/class_faiPackage.inc:106
 #: admin/fai/class_faiHook.inc:54 admin/fai/class_faiTemplate.inc:172
-#: admin/fai/class_faiPartitionTable.inc:345
+#: admin/fai/class_faiPartitionTable.inc:344
 msgid "Short description of the class"
 msgstr "Stručný popis třídy"
 
@@ -79,7 +79,7 @@ msgstr "Proměnné v této třídě"
 
 #: admin/fai/class_faiVariable.inc:68
 #: admin/fai/class_faiSimplePluginClass.inc:51
-#: admin/fai/class_faiDiskEntry.inc:241 admin/fai/class_faiPartition.inc:240
+#: admin/fai/class_faiDiskEntry.inc:240 admin/fai/class_faiPartition.inc:240
 #: admin/fai/class_faiScript.inc:68 admin/fai/class_faiHook.inc:68
 msgid "Name"
 msgstr "Název"
@@ -124,78 +124,78 @@ msgstr ""
 "Oddíl nemůže být smazán když je používán v definici jednotky datového "
 "úložiště „%s“!"
 
-#: admin/fai/class_faiDiskEntry.inc:226
+#: admin/fai/class_faiDiskEntry.inc:225
 msgid "Partition table entry"
 msgstr "položka tabulky rozdělení úložiště"
 
-#: admin/fai/class_faiDiskEntry.inc:227
+#: admin/fai/class_faiDiskEntry.inc:226
 msgid "FAI partition table entry"
 msgstr "položka tabulky rozdělení úložiště pro FAI"
 
-#: admin/fai/class_faiDiskEntry.inc:238 admin/fai/class_faiDiskEntry.inc:254
+#: admin/fai/class_faiDiskEntry.inc:237 admin/fai/class_faiDiskEntry.inc:253
 msgid "Device"
 msgstr "Zařízení"
 
-#: admin/fai/class_faiDiskEntry.inc:241
+#: admin/fai/class_faiDiskEntry.inc:240
 msgid "Disk name"
 msgstr "Název disku"
 
-#: admin/fai/class_faiDiskEntry.inc:247 admin/fai/class_faiPartition.inc:246
+#: admin/fai/class_faiDiskEntry.inc:246 admin/fai/class_faiPartition.inc:246
 msgid "Short description"
 msgstr "Stručný popis"
 
-#: admin/fai/class_faiDiskEntry.inc:251
+#: admin/fai/class_faiDiskEntry.inc:250
 msgid "fstab key"
 msgstr "položka v /etc/fstab"
 
-#: admin/fai/class_faiDiskEntry.inc:251
+#: admin/fai/class_faiDiskEntry.inc:250
 msgid "Key to use in fstab file"
 msgstr "Klíč který použít v souboru fstab"
 
-#: admin/fai/class_faiDiskEntry.inc:254
+#: admin/fai/class_faiDiskEntry.inc:253
 msgid "Label"
 msgstr "jmenovka"
 
-#: admin/fai/class_faiDiskEntry.inc:254
+#: admin/fai/class_faiDiskEntry.inc:253
 msgid "UUID"
 msgstr "UUID"
 
-#: admin/fai/class_faiDiskEntry.inc:257
+#: admin/fai/class_faiDiskEntry.inc:256
 msgid "Disk label"
 msgstr "Označení jednotky datového úložiště"
 
-#: admin/fai/class_faiDiskEntry.inc:263
+#: admin/fai/class_faiDiskEntry.inc:262
 msgid "Random init"
 msgstr "Náhodný limit"
 
-#: admin/fai/class_faiDiskEntry.inc:263
+#: admin/fai/class_faiDiskEntry.inc:262
 msgid "Initialise all encrypted partitions with random data"
 msgstr "Přepsat všechny oddíly k šifrování náhodnými daty"
 
-#: admin/fai/class_faiDiskEntry.inc:270
+#: admin/fai/class_faiDiskEntry.inc:269
 msgid "Partition entries"
 msgstr "Položky oddílů"
 
-#: admin/fai/class_faiDiskEntry.inc:275 admin/fai/class_faiPartition.inc:452
+#: admin/fai/class_faiDiskEntry.inc:274 admin/fai/class_faiPartition.inc:452
 msgid "Combined physical partitions"
 msgstr "Kombinované fyzické oddíly"
 
-#: admin/fai/class_faiDiskEntry.inc:275
+#: admin/fai/class_faiDiskEntry.inc:274
 msgid "Physical partitions combined in this LVM volume"
 msgstr "Fyzické oddíly zkombinované v tomto LVM svazku"
 
-#: admin/fai/class_faiDiskEntry.inc:281
-#: admin/fai/class_faiPartitionTable.inc:358
+#: admin/fai/class_faiDiskEntry.inc:280
+#: admin/fai/class_faiPartitionTable.inc:357
 msgid "Partitions in this class"
 msgstr "Oddíly v této třídě"
 
-#: admin/fai/class_faiDiskEntry.inc:579
+#: admin/fai/class_faiDiskEntry.inc:578
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration"
 msgstr "V nastavení máte čtyři položky primárního oddílu"
 
-#: admin/fai/class_faiDiskEntry.inc:583
+#: admin/fai/class_faiDiskEntry.inc:582
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions"
@@ -209,34 +209,34 @@ msgstr "Balíček"
 
 #: admin/fai/packageSelect/class_packageSelectManagementFilter.inc:50
 #: admin/fai/packageSelect/class_packageSelectManagementFilter.inc:55
-#: admin/fai/packageSelect/class_PackagesAttribute.inc:239
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:245
 #: admin/fai/class_faiPackageConfiguration.inc:59
 msgid "Infrastructure service"
 msgstr "Služba infrastruktury"
 
-#: admin/fai/packageSelect/class_PackagesAttribute.inc:115
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:121
 msgid "Mark for installation"
 msgstr "Označit k instalaci"
 
-#: admin/fai/packageSelect/class_PackagesAttribute.inc:119
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:125
 msgid "Mark for removal"
 msgstr "Označit k odebrání"
 
-#: admin/fai/packageSelect/class_PackagesAttribute.inc:124
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:130
 msgid "Edit configuration"
 msgstr "Upravit nastavení"
 
-#: admin/fai/packageSelect/class_PackagesAttribute.inc:203
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:209
 #: admin/fai/class_faiTemplate.inc:109
-#: admin/fai/class_faiPartitionTable.inc:247
-#: admin/fai/class_faiPartitionTable.inc:288
+#: admin/fai/class_faiPartitionTable.inc:246
+#: admin/fai/class_faiPartitionTable.inc:287
 #: admin/systems/services/repository/class_serviceRepository.inc:240
 #: admin/systems/services/repository/class_serviceRepository.inc:257
 #: admin/systems/services/repository/class_serviceRepository.inc:261
 msgid "LDAP error"
 msgstr "chyba LDAPu"
 
-#: admin/fai/packageSelect/class_PackagesAttribute.inc:258
+#: admin/fai/packageSelect/class_PackagesAttribute.inc:264
 msgid "Unkown packages"
 msgstr "Neznámé balíčky"
 
@@ -571,7 +571,7 @@ msgstr "profil FAI"
 msgid "FAI Profile"
 msgstr "Sada nastavení FAI"
 
-#: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPartitionTable.inc:341
+#: admin/fai/class_faiProfile.inc:49 admin/fai/class_faiPartitionTable.inc:340
 msgid "Partition table class name"
 msgstr "Název třídy tabulky oddílů"
 
@@ -794,16 +794,16 @@ msgstr "Přidat LVM"
 msgid "Add cryptsetup"
 msgstr "Přidat cryptsetup"
 
-#: admin/fai/class_faiPartitionTable.inc:317
+#: admin/fai/class_faiPartitionTable.inc:316
 msgid "Partition table"
 msgstr "Tabulka rozdělení úložiště"
 
-#: admin/fai/class_faiPartitionTable.inc:318
-#: admin/fai/class_faiPartitionTable.inc:323
+#: admin/fai/class_faiPartitionTable.inc:317
+#: admin/fai/class_faiPartitionTable.inc:322
 msgid "FAI partition table"
 msgstr "tabulka dělení úložiště pro FAI"
 
-#: admin/fai/class_faiPartitionTable.inc:351
+#: admin/fai/class_faiPartitionTable.inc:350
 msgid "Discs"
 msgstr "úložné jednotky"
 
