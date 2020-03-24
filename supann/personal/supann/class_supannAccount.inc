@@ -369,6 +369,19 @@ class supannAccount extends simplePlugin
     list ($codes, $labels) = supann::get_choices_for('affiliation');
     $this->attributesAccess['eduPersonAffiliation']->attribute->setChoices($codes, $labels);
 
+    $this->attributesAccess['supannEtuInscription']->setHeaders([
+      _('Establishment'),
+      _('Year'),
+      _('Registration type'),
+      _('Sector'),
+      _('Diploma type'),
+      _('Curriculum'),
+      _('Entity'),
+      _('Diploma'),
+      _('Step'),
+      _('Element'),
+      ''
+    ]);
     $this->attributesAccess['supannEtuInscription']->setLinearRendering(FALSE);
 
     $this->updateFieldsChoices();
