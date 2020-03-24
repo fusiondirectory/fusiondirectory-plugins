@@ -244,6 +244,7 @@ paths:
           schema:
             type: object
           style: deepObject
+          explode: true
           example:
             sn: 1
             title: "*"
