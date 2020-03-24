@@ -39,11 +39,11 @@ class SupannEtuInscriptionAttribute extends SupannCompositeAttribute
       ),
       new SelectAttribute(
         _('Registration type'), _('supannEtuRegimeInscription - The type of this registration'),
-        'supannEtuRegimeInscription_regimeinsc', FALSE
+        'supannEtuRegimeInscription_regimeinsc', TRUE
       ),
       new SelectAttribute(
         _('Disciplinary Sector'), _('supannEtuSecteurDisciplinaire - Disciplinary sector education diploma'),
-        'supannEtuSecteurDisciplinaire_sectdisc', FALSE
+        'supannEtuSecteurDisciplinaire_sectdisc', TRUE
       ),
       new SelectAttribute(
         _('Diploma type'), _('supannEtuTypeDiplome - Type of diploma'),
@@ -72,15 +72,30 @@ class SupannEtuInscriptionAttribute extends SupannCompositeAttribute
     ];
     parent::__construct($description, $ldapName, $attributes, $acl, $label);
 
+    /* supannEtuRegimeInscription */
     list ($codes, $labels) = supann::get_choices_for('eturegimeinscription_SISE', '{SISE}');
-    $this->attributes[2]->setChoices($codes, $labels); // supannEtuRegimeInscription
+    $key = array_search('{SISE}$', $codes);
+    if ($key !== FALSE) {
+      /* Move "empty" value as first one */
+      array_unshift($codes,   ...array_splice($codes,   $key, 1));
+      array_unshift($labels,  ...array_splice($labels,  $key, 1));
+    }
+    $this->attributes[2]->setChoices($codes, $labels);
 
+    /* supannEtuSecteurDisciplinaire */
     list ($codes, $labels) = supann::get_choices_for('discipline_SISE', '{SISE}');
-    $this->attributes[3]->setChoices($codes, $labels); // supannEtuSecteurDisciplinaire
+    $key = array_search('{SISE}-', $codes);
+    if ($key !== FALSE) {
+      /* Move "empty" value as first one */
+      array_unshift($codes,   ...array_splice($codes,   $key, 1));
+      array_unshift($labels,  ...array_splice($labels,  $key, 1));
+    }
+    $this->attributes[3]->setChoices($codes, $labels);
     $this->attributes[3]->setSubmitForm(TRUE);
 
+    /* supannEtuTypeDiplome */
     list ($codes, $labels) = supann::get_choices_for('typediplome_SISE', '{SISE}');
-    $this->attributes[4]->setChoices($codes, $labels); // supannEtuTypeDiplome
+    $this->attributes[4]->setChoices($codes, $labels);
     $this->attributes[4]->setSubmitForm(TRUE);
 
     $prefixedChoices = supann::get_prefixed_choices_for(
