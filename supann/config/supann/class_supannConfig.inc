@@ -128,6 +128,14 @@ class supannConfig extends simplePlugin
             [],
             TRUE
           ),
+          new SetAttribute(
+            new StringAttribute(
+              _('Card sources'), _('Multi service card possible sources, with format system@domain'),
+              'fdSupannCMSSources', FALSE,
+              '', '',
+              '/^.+@.+$/', 'unicampus@univ.example.com'
+            )
+          ),
         ]
       ],
     ];

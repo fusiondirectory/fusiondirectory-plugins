@@ -55,6 +55,6 @@ class SupannCursusAnneeAttribute extends SupannPrefixedSelectAttribute
   protected function supannUpdateSelect ()
   {
     $prefix = $this->attributes[0]->getValue();
-    $this->attributes[1]->setChoices($this->prefixedChoices[$prefix][0], $this->prefixedChoices[$prefix][1]);
+    $this->attributes[1]->setChoices($this->prefixedChoices[$prefix][0] ?? [], $this->prefixedChoices[$prefix][1] ?? []);
   }
 }
