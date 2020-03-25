@@ -61,10 +61,6 @@ class SupannCMSAffectationAttribute extends SupannCompositeAttribute
 
   function supannGetValues (&$values)
   {
-    if ($this->attributes[3]->getValue() !== TRUE) {
-      /* Card is not valid */
-      return;
-    }
     foreach ($this->attributes as &$attribute) {
       $shortname = preg_replace('/^([^_]+)_.*$/', '\\1', $attribute->getLdapName());
       if ($shortname == 'none') {
@@ -77,14 +73,27 @@ class SupannCMSAffectationAttribute extends SupannCompositeAttribute
       if ($value == '') {
         continue;
       }
-      $values[$shortname][$value] = $value;
+      if ($this->attributes[3]->getValue() === TRUE) {
+        /* Card is valid */
+        $values[$shortname][$value] = $value;
+      }
     }
     unset($attribute);
-    $format = $this->attributes[1]->getValue();
-    $id     = $this->attributes[2]->getValue();
-    $supannCMSIdEtiquette = '{'.$format.'}'.$id;
-    $supannCMSId          = 'x-'.strtolower(str_replace(':', '-', $format)).';'.$id;
-    $values['supannCMSIdEtiquette'][$supannCMSIdEtiquette] = $supannCMSIdEtiquette;
-    $values['supannCMSId'][$supannCMSId] = $supannCMSId;
+    if ($this->attributes[3]->getValue() === TRUE) {
+      /* Card is valid */
+      $format = $this->attributes[1]->getValue();
+      $id     = $this->attributes[2]->getValue();
+      $supannCMSIdEtiquette = '{'.$format.'}'.$id;
+      $supannCMSId          = 'x-'.strtolower(str_replace(':', '-', $format)).';'.$id;
+      $values['supannCMSIdEtiquette'][$supannCMSIdEtiquette] = $supannCMSIdEtiquette;
+      $values['supannCMSId'][$supannCMSId] = $supannCMSId;
+    } else {
+      if (!isset($values['supannCMSIdEtiquette'])) {
+        $values['supannCMSIdEtiquette'] = [];
+      }
+      if (!isset($values['supannCMSId'])) {
+        $values['supannCMSId'] = [];
+      }
+    }
   }
 }

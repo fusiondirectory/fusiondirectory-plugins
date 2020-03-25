@@ -63,9 +63,7 @@ class TaggedAttribute extends SetAttribute
           $attrs[$this->getLdapName().';'.$tag] = [];
         }
       }
-      if (empty($this->value)) {
-        $attrs[$this->getLdapName()] = [];
-      } else {
+      if (!empty($this->value)) {
         foreach ($this->value as $value) {
           list($tag, $tagvalue) = explode(';', $value, 2);
           if (empty($tag)) {
