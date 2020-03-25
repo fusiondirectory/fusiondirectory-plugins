@@ -24,6 +24,7 @@ class SupannCMSAffectationAttribute extends SupannCompositeAttribute
 {
   function __construct ($label, $description, $ldapName, $acl = '')
   {
+    global $config;
     list($types, $typeLabels)     = supann::get_choices_for('cmstype');
     list($formats, $formatLabels) = supann::get_choices_for('cmsformat');
     $attributes = [
@@ -48,7 +49,8 @@ class SupannCMSAffectationAttribute extends SupannCompositeAttribute
       ),
       new SelectAttribute(
         _('Source'), _('Card managing system and establishment'),
-        'supannCMSSource_source', FALSE
+        'supannCMSSource_source', FALSE,
+        $config->get_cfg_value('supannCMSSources', [])
       ),
       new GeneralizedTimeDateAttribute(
         _('End date'), _('End of validity date, if any'),
