@@ -44,8 +44,9 @@ class SupannCMSAffectationAttribute extends SupannCompositeAttribute
       ),
       new BooleanAttribute(
         _('Valid'), _('Card validity'),
-        'none_valid', TRUE,
-        TRUE
+        'none_valide', TRUE,
+        TRUE, '',
+        'vrai', 'faux'
       ),
       new SelectAttribute(
         _('Source'), _('Card managing system and establishment'),
@@ -59,6 +60,11 @@ class SupannCMSAffectationAttribute extends SupannCompositeAttribute
       ),
     ];
     parent::__construct($description, $ldapName, $attributes, $acl, $label);
+  }
+
+  protected function isValid (): bool
+  {
+    return ($this->attributes[3]->getValue() === TRUE);
   }
 
   function supannGetValues (&$values)
@@ -75,14 +81,12 @@ class SupannCMSAffectationAttribute extends SupannCompositeAttribute
       if ($value == '') {
         continue;
       }
-      if ($this->attributes[3]->getValue() === TRUE) {
-        /* Card is valid */
+      if ($this->isValid()) {
         $values[$shortname][$value] = $value;
       }
     }
     unset($attribute);
-    if ($this->attributes[3]->getValue() === TRUE) {
-      /* Card is valid */
+    if ($this->isValid()) {
       $format = $this->attributes[1]->getValue();
       $id     = $this->attributes[2]->getValue();
       $supannCMSIdEtiquette = '{'.$format.'}'.$id;
