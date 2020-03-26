@@ -22,7 +22,7 @@
 
 class SupannOrderedArrayAttribute extends OrderedArrayAttribute
 {
-  function supannPrepareSave ()
+  public function supannPrepareSave (bool $append = FALSE)
   {
     $values = [];
     foreach ($this->value as $value) {
@@ -33,7 +33,12 @@ class SupannOrderedArrayAttribute extends OrderedArrayAttribute
       if ($this->plugin->attributesAccess[$ldapName]->isVisible()) {
         continue;
       }
-      $this->plugin->attributesAccess[$ldapName]->setValue(array_values($array));
+      if ($append) {
+        $newValues = array_unique(array_merge($this->plugin->attributesAccess[$ldapName]->getValue(), array_values($array)));
+      } else {
+        $newValues = array_values($array);
+      }
+      $this->plugin->attributesAccess[$ldapName]->setValue($newValues);
     }
   }
 }

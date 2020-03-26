@@ -42,7 +42,7 @@ class supannCMS extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'status' => [
+      'cards' => [
         'name'  => _('Cards'),
         'class' => ['fullwidth'],
         'attrs' => [
@@ -64,6 +64,25 @@ class supannCMS extends simplePlugin
           ),
         ]
       ],
+      'apps' => [
+        'name'  => _('Applications'),
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new TaggedAttribute(new StringAttribute('', '', 'supannCMSAppId', FALSE)),
+          new HiddenArrayAttribute('supannCMSAppIdDomaine', FALSE, []),
+          new SupannOrderedArrayAttribute(
+            new SupannCMSAppAffectationAttribute(
+              _('Applications'), _('SupAnn CMS Application Affectation'),
+              'supannCMSAppAffectation'
+            ),
+            // no order
+            FALSE,
+            [],
+            // edit button
+            TRUE
+          ),
+        ]
+      ],
     ];
   }
 
@@ -74,6 +93,7 @@ class supannCMS extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['supannCMSId']->setVisible(FALSE);
+    $this->attributesAccess['supannCMSAppId']->setVisible(FALSE);
     $this->attributesAccess['supannCMSAffectation']->setLinearRendering(FALSE);
     $this->attributesAccess['supannCMSAffectation']->setHeaders([
       _('Type'),
@@ -84,11 +104,26 @@ class supannCMS extends simplePlugin
       _('End date'),
       ''
     ]);
+    $this->attributesAccess['supannCMSAppAffectation']->setLinearRendering(FALSE);
+    $this->attributesAccess['supannCMSAppAffectation']->setHeaders([
+      _('Type'),
+      _('Source'),
+      _('Domain'),
+      _('Id'),
+      _('Valid'),
+      _('End date'),
+      ''
+    ]);
   }
 
   protected function prepare_save (): array
   {
     $this->attributesAccess['supannCMSAffectation']->supannPrepareSave();
+    /* Both composite use common attributes, so we use append mode of supannPrepareSave,
+     *  but we need to empty application specific fields first */
+    $this->supannCMSAppId = [];
+    $this->supannCMSAppIdDomaine = [];
+    $this->attributesAccess['supannCMSAppAffectation']->supannPrepareSave(TRUE);
     return parent::prepare_save();
   }
 }

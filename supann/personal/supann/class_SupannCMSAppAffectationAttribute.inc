@@ -20,13 +20,12 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-class SupannCMSAffectationAttribute extends SupannCompositeAttribute
+class SupannCMSAppAffectationAttribute extends SupannCompositeAttribute
 {
   function __construct ($label, $description, $ldapName, $acl = '')
   {
     global $config;
     list($types, $typeLabels)     = supann::get_choices_for('cmstype');
-    list($formats, $formatLabels) = supann::get_choices_for('cmsformat');
     $attributes = [
       new SelectAttribute(
         _('Type'), _('supannCMSType - Card type'),
@@ -34,24 +33,24 @@ class SupannCMSAffectationAttribute extends SupannCompositeAttribute
         $types, '', $typeLabels
       ),
       new SelectAttribute(
-        _('Format'), _('Card format'),
-        'none_format', TRUE,
-        $formats, '', $formatLabels
+        _('Source'), _('Card managing system and establishment'),
+        'supannCMSSource_source', TRUE,
+        $config->get_cfg_value('supannCMSSources', [])
+      ),
+      new SelectAttribute(
+        _('Domain'), _('Application domain'),
+        'none_domaine', TRUE,
+        array_column($this->getConfigAppDomains(), 1)
       ),
       new StringAttribute(
-        _('Id'), _('Card id'),
+        _('Id'), _('Application id'),
         'none_id', TRUE
       ),
       new BooleanAttribute(
-        _('Valid'), _('Card validity'),
+        _('Valid'), _('Application validity'),
         'none_valide', TRUE,
         TRUE, '',
         'vrai', 'faux'
-      ),
-      new SelectAttribute(
-        _('Source'), _('Card managing system and establishment'),
-        'supannCMSSource_source', FALSE,
-        $config->get_cfg_value('supannCMSSources', [])
       ),
       new GeneralizedTimeDateAttribute(
         _('End date'), _('End of validity date, if any'),
@@ -64,7 +63,18 @@ class SupannCMSAffectationAttribute extends SupannCompositeAttribute
 
   protected function isValid (): bool
   {
-    return ($this->attributes[3]->getValue() === TRUE);
+    return ($this->attributes[4]->getValue() === TRUE);
+  }
+
+  protected function getConfigAppDomains (): array
+  {
+    global $config;
+    return array_map(
+      function ($supannCMSAppDomain) {
+        return explode(';', $supannCMSAppDomain, 2);
+      },
+      $config->get_cfg_value('supannCMSAppDomains', [])
+    );
   }
 
   function supannGetValues (&$values)
@@ -87,18 +97,19 @@ class SupannCMSAffectationAttribute extends SupannCompositeAttribute
     }
     unset($attribute);
     if ($this->isValid()) {
-      $format = $this->attributes[1]->getValue();
-      $id     = $this->attributes[2]->getValue();
-      $supannCMSIdEtiquette = '{'.$format.'}'.$id;
-      $supannCMSId          = 'x-'.strtolower(str_replace(':', '-', $format)).';'.$id;
-      $values['supannCMSIdEtiquette'][$supannCMSIdEtiquette] = $supannCMSIdEtiquette;
-      $values['supannCMSId'][$supannCMSId] = $supannCMSId;
+      $domains  = array_column($this->getConfigAppDomains(), 0, 1);
+      $domain   = $this->attributes[2]->getValue();
+      $id       = $this->attributes[3]->getValue();
+      $supannCMSAppIdDomaine  = $id.'@'.$domain;
+      $supannCMSAppId         = $domains[$domain].';'.$id;
+      $values['supannCMSAppIdDomaine'][$supannCMSAppIdDomaine] = $supannCMSAppIdDomaine;
+      $values['supannCMSAppId'][$supannCMSAppId] = $supannCMSAppId;
     } else {
-      if (!isset($values['supannCMSIdEtiquette'])) {
-        $values['supannCMSIdEtiquette'] = [];
+      if (!isset($values['supannCMSAppIdDomaine'])) {
+        $values['supannCMSAppIdDomaine'] = [];
       }
-      if (!isset($values['supannCMSId'])) {
-        $values['supannCMSId'] = [];
+      if (!isset($values['supannCMSAppId'])) {
+        $values['supannCMSAppId'] = [];
       }
     }
   }

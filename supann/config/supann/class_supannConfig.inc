@@ -136,6 +136,32 @@ class supannConfig extends simplePlugin
               '/^.+@.+$/', 'unicampus@univ.example.com'
             )
           ),
+          new OrderedArrayAttribute(
+            new CharSeparatedCompositeAttribute(
+              _('Domains for card applications'),
+              'fdSupannCMSAppDomains',
+              [
+                new StringAttribute(
+                  _('Option'), _('Attribute option to use, starting with x-'),
+                  'fdSupannCMSAppDomains_option', TRUE,
+                  '', '',
+                  '/^x-.+$/', 'x-biblio-xlsb'
+                ),
+                new StringAttribute(
+                  _('Domain'), _('Domain to use'),
+                  'fdSupannCMSAppDomains_domain', TRUE,
+                  '', '',
+                  '', 'xlsb.biblio.univ.example.com'
+                ),
+              ],
+              ';',
+              '',
+              _('Card application domains')
+            ),
+            FALSE,
+            [],
+            TRUE
+          ),
         ]
       ],
     ];
