@@ -30,14 +30,16 @@ class TaggedAttribute extends SetAttribute
   {
     $this->value  = [];
     $pattern      = '/^'.preg_quote($this->getLdapName(), '/').';(.+)$/';
-    for ($i = 0; $i < $attrs['count']; $i++) {
-      if ($attrs[$i] == $this->getLdapName()) {
-        for ($j = 0; $j < $attrs[$attrs[$i]]['count']; $j++) {
-          $this->value[] = ';'.$attrs[$attrs[$i]][$j];
-        }
-      } elseif (preg_match($pattern, $attrs[$i], $m)) {
-        for ($j = 0; $j < $attrs[$attrs[$i]]['count']; $j++) {
-          $this->value[] = $m[1].';'.$attrs[$attrs[$i]][$j];
+    if (!empty($attrs)) {
+      for ($i = 0; $i < $attrs['count']; $i++) {
+        if ($attrs[$i] == $this->getLdapName()) {
+          for ($j = 0; $j < $attrs[$attrs[$i]]['count']; $j++) {
+            $this->value[] = ';'.$attrs[$attrs[$i]][$j];
+          }
+        } elseif (preg_match($pattern, $attrs[$i], $m)) {
+          for ($j = 0; $j < $attrs[$attrs[$i]]['count']; $j++) {
+            $this->value[] = $m[1].';'.$attrs[$attrs[$i]][$j];
+          }
         }
       }
     }
