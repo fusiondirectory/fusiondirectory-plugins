@@ -49,6 +49,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     return [
       'status' => [
         'name'  => _('Status'),
+        'class' => ['fullwidth'],
         'attrs' => [
           new OrderedArrayAttribute(
             new CompositeAttribute(
@@ -179,13 +180,13 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
   {
     $errors = parent::check();
 
-    $labels = [];
+    $resources = [];
     foreach ($this->supannRessourceEtatDate as $line) {
-      $label = preg_replace('/^\{([^}]+)\}.*$/', '\1',  $line);
-      if (in_array($label, $labels)) {
-        $errors[] = sprintf(_('Label "%s" is present more than once in supannRessourceEtatDate'), $label);
+      $resource = preg_replace('/^\{([^}]+)\}.*$/', '\1',  $line);
+      if (in_array($resource, $resources)) {
+        $errors[] = sprintf(_('Resource "%s" is present more than once in supannRessourceEtatDate'), $resource);
       } else {
-        $labels[] = $label;
+        $resources[] = $resource;
       }
     }
 
