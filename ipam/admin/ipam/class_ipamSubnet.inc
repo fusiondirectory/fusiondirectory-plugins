@@ -77,6 +77,11 @@ class ipamSubnet extends simplePlugin
             'fdIpamReleaseDate', FALSE,
             ''
           ),
+          new ObjectsAttribute(
+            _('VLANs'), _('VLANs linked to this subnet'),
+            'fdIpamVlanDN', FALSE,
+            ['ipamVlan']
+          ),
         ]
       ],
       'ip' => [
