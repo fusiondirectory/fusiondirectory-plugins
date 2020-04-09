@@ -32,7 +32,8 @@ class networkInterface extends simplePlugin
       'plObjectType'  => ['networkInterface' => [
         'name'        => _('Network interface'),
         'ou'          => '',
-        'icon'        => 'geticon.php?context=category&icon=network&size=16',
+        'icon'        => 'images/empty.png',
+        'tabClass'    => 'simpleTabs_noSpecial',
       ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
