@@ -46,7 +46,6 @@ class interfacesManagement extends management implements SimpleTab
   var $cn;
 
   public static $columns = [
-    ['ObjectTypeColumn',     []],
     ['LinkColumn',           ['attributes' => 'nameAttr',                   'label' => 'Name']],
     ['Column',               ['attributes' => 'macAddress',                 'label' => 'Mac']],
     ['Column',               ['attributes' => 'fdNetworkInterfaceVlanId',   'label' => 'VLAN id']],
@@ -81,6 +80,8 @@ class interfacesManagement extends management implements SimpleTab
     $this->parent = $parent;
 
     parent::__construct(['networkInterface'], []);
+
+    $this->parent->getBaseObject()->setNetworkAttributesReadOnly(TRUE);
   }
 
   protected function setUpListing ()
@@ -108,18 +109,32 @@ class interfacesManagement extends management implements SimpleTab
   function save_object ()
   {
     // save_object of the dialog is called in management::execute
+
+    /* Sync base tab fields with interfaces */
+    $entryIterator = $this->listing->getIterator();
+
+    $macAddress   = [];
+    $ipHostNumber = [];
+    foreach ($entryIterator as $entry) {
+      if (!empty($entry['macAddress'])) {
+        array_push($macAddress, ...$entry['macAddress']);
+      }
+      if (!empty($entry['ipHostNumber'])) {
+        array_push($ipHostNumber, ...$entry['ipHostNumber']);
+      }
+    }
+    $this->parent->getBaseObject()->macAddress    = array_values(array_unique($macAddress));
+    $this->parent->getBaseObject()->ipHostNumber  = array_values(array_unique($ipHostNumber));
   }
 
   public function remove (bool $fulldelete = FALSE): array
   {
-    $errors = [];
-    return $errors;
+    return [];
   }
 
   public function save (): array
   {
-    $errors = [];
-    return $errors;
+    return [];
   }
 
   /*! \brief    Prepare active services to be copied.

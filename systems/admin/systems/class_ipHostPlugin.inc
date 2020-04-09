@@ -25,6 +25,8 @@
  */
 class ipHostPlugin extends simplePlugin
 {
+  protected $networkAttributesReadOnly = FALSE;
+
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     global $config;
@@ -50,5 +52,22 @@ class ipHostPlugin extends simplePlugin
       $objectclasses[] = 'ipHost';
     }
     return parent::mergeObjectClasses($objectclasses);
+  }
+
+  public function setNetworkAttributesReadOnly (bool $networkAttributesReadOnly)
+  {
+    $this->networkAttributesReadOnly = $networkAttributesReadOnly;
+  }
+
+  public function attrIsWriteable ($attr): bool
+  {
+    if (!is_object($attr)) {
+      $attr = $this->attributesAccess[$attr];
+    }
+    if ($this->networkAttributesReadOnly && in_array($attr->getLdapName(), ['ipHostNumber','macAddress'])) {
+      return FALSE;
+    } else {
+      return parent::attrIsWriteable($attr);
+    }
   }
 }
