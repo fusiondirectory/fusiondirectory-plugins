@@ -21,9 +21,9 @@
 
 class ImportServerAttribute extends ObjectSelectAttribute
 {
-  function __construct ($label, $description, $ldapName, $filter, $acl = "")
+  function __construct (string $label, string $description, string $ldapName, $objectFilter = '', $acl = '')
   {
-    parent::__construct($label, $description, $ldapName, TRUE, 'server', NULL, $filter, $acl);
+    parent::__construct($label, $description, $ldapName, TRUE, ['server'], 'dn', 'nameAttr', $objectFilter, $acl);
     $this->setInLdap(FALSE);
   }
 }

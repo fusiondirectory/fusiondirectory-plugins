@@ -212,6 +212,11 @@ class supannAccount extends simplePlugin
               'supannEtablissement', FALSE
             )
           ),
+          new ObjectsAttribute(
+            _('Parrain'), _('supannParrainDN - Person or structure responsible for this user'),
+            'supannParrainDN', FALSE,
+            ['user','entite','ogroup','group']
+          )
         ]
       ],
       'student' => [

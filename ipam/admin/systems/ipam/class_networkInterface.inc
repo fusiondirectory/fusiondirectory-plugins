@@ -54,9 +54,10 @@ class networkInterface extends simplePlugin
             _('Mac address'), _('Mac address of this system'),
             'macAddress', FALSE
           ),
-          new SelectAttribute(
+          new ObjectSelectAttribute(
             _('VLAN'), _('VLAN'),
-            'fdNetworkInterfaceVlanId', FALSE
+            'fdNetworkInterfaceVlanId', FALSE,
+            ['ipamVlan'], 'fdIpamVlanInnerId'
           ),
           new StringAttribute(
             _('VLAN tag'), _('VLAN tag'),
@@ -65,7 +66,7 @@ class networkInterface extends simplePlugin
           new ObjectSelectAttribute(
             _('Subnet'), _('Subnet'),
             'fdNetworkInterfaceSubnetDN', FALSE,
-            'ipamSubnet'
+            ['ipamSubnet']
           ),
           new SetAttribute(
             new IPAttribute(
@@ -83,8 +84,5 @@ class networkInterface extends simplePlugin
     global $config;
 
     parent::__construct($dn, $object, $parent, $mainTab);
-
-    $vlans    = objects::ls('ipamVlan', ['fdIpamVlanInnerId' => 1,'cn' => 1]);
-    $this->attributesAccess['fdNetworkInterfaceVlanId']->setChoices(array_column($vlans, 'fdIpamVlanInnerId'), array_column($vlans, 'cn'));
   }
 }
