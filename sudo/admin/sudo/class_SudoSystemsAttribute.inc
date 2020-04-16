@@ -48,7 +48,9 @@ class SudoSystemsAttribute extends SystemsAttribute
     parent::loadPostValue();
     if ($this->isVisible()) {
       if (isset($_POST['add'.$this->getHtmlId().'_ALL'])) {
-        $this->value = ['ALL'];
+        $this->value    = ['ALL'];
+        $this->displays = ['ALL'];
+        $this->types    = [FALSE];
       }
     }
   }
@@ -56,8 +58,18 @@ class SudoSystemsAttribute extends SystemsAttribute
   function addValue (string $dn, $entry = NULL)
   {
     if (isset($this->value[0]) && ($this->value[0] === 'ALL')) {
-      unset($this->value[0]);
+      $this->removeValue(0);
     }
     parent::addValue($dn, $entry);
+  }
+
+  protected function fillDisplayValue ($i)
+  {
+    if ($this->value[$i] === 'ALL') {
+      $this->displays[$i] = 'ALL';
+      $this->types[$i]    = FALSE;
+    } else {
+      parent::fillDisplayValue($i);
+    }
   }
 }
