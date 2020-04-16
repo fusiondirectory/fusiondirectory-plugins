@@ -20,19 +20,30 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class SudoUsersGroupsAttribute extends DialogAttribute
+class SudoUsersGroupsAttribute extends ObjectsAttribute
 {
-  protected $dialogClass = 'UserGroupSelectDialog';
-
-  function addValue (string $dn, $entry = NULL)
+  function __construct (string $label, string $description, string $ldapName, bool $required, array $defaultValue = [], string $store_attr = 'uid', string $display_attr = 'nameAttr', array $filterElementDefinitions = NULL, string $acl = '')
   {
-    if (in_array('posixGroup', $entry['objectClass']) || in_array('groupOfNames', $entry['objectClass'])) {
-      $name = trim("%".$entry['cn'][0]);
-    } elseif (isset($entry['uid'][0])) {
-      $name = trim($entry['uid'][0]);
+    parent::__construct($label, $description, $ldapName, $required, ['user', 'group', 'ogroup'], $defaultValue, $store_attr, $display_attr, $filterElementDefinitions, $acl);
+  }
+
+  function addValue (string $dn, $attrs = NULL)
+  {
+    if (
+        ($this->isTemplate() && ($attrs === NULL)) ||
+        ($this->store_attr == 'dn')
+      ) {
+      $value = $dn;
+    } elseif (in_array('posixGroup', $attrs['objectClass']) || in_array('groupOfNames', $attrs['objectClass'])) {
+      $value = trim('%'.$attrs['cn'][0]);
+    } elseif (isset($attrs['uid'][0])) {
+      $value = trim($attrs['uid'][0]);
     }
-    if (!in_array($name, $this->value) && !in_array("!".$name, $this->value)) {
-      $this->value[] = $name;
+    if (!in_array($value, $this->value) && !in_array('!'.$value, $this->value)) {
+      end($this->value);
+      $new_key = key($this->value) + 1;
+      $this->value[$new_key] = $value;
+      $this->fillDisplayValueFrom($new_key, $attrs);
     }
   }
 
@@ -40,13 +51,28 @@ class SudoUsersGroupsAttribute extends DialogAttribute
   {
     $used = [];
     foreach ($this->value as $name) {
-      $str = preg_replace("/^!/", "", $name);
-      if (preg_match("/^%/", $str)) {
-        $used['cn'][] = preg_replace("/^%/", "", $str);
+      $str = preg_replace('/^!/', '', $name);
+      if (preg_match('/^%/', $str)) {
+        $used['cn'][] = preg_replace('/^%/', '', $str);
       } else {
         $used['uid'][] = $str;
       }
     }
     return $used;
+  }
+
+  protected function fillDisplayValue ($i)
+  {
+    $value = $this->value[$i];
+    if (preg_match('/^%/', $value)) {
+      $objects = objects::ls(['group','ogroup'], $this->selectManagementParameters[2], NULL, '(cn='.ldap_escape_f(preg_replace('/^%/', '', $value)).')');
+    } else {
+      $objects = objects::ls(['user'], $this->selectManagementParameters[2], NULL, '(uid='.ldap_escape_f($value).')');
+    }
+    if (empty($objects) && $this->isTemplate()) {
+      $this->fillDisplayValueFrom($i, NULL);
+    } else {
+      $this->fillDisplayValueFrom($i, reset($objects));
+    }
   }
 }

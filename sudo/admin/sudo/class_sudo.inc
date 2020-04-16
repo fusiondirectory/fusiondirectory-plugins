@@ -100,6 +100,7 @@ class sudo extends simplePlugin
           new SudoSystemsAttribute(
             _('Systems'), _('A host name, IP address or IP network'),
             'sudoHost', FALSE,
+            ['terminal', 'workstation', 'server'],
             ['ALL']
           ),
           new SudoUsersGroupsAttribute(
