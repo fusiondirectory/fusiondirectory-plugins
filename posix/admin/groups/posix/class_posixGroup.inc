@@ -220,9 +220,10 @@ class posixGroup extends simplePlugin
   {
     $this->attributesAccess['memberUid']->addValue($dn,
       [
-        'dn'  => $dn,
-        'uid' => [$uid],
-        'cn'  => [$uid]
+        'dn'          => $dn,
+        'objectClass' => ['inetOrgPerson'],
+        'uid'         => [$uid],
+        'cn'          => [$uid]
       ]
     );
   }
