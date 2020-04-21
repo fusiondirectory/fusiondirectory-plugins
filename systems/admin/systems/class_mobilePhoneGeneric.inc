@@ -61,6 +61,8 @@ class mobilePhoneGeneric extends ipHostPlugin
             _('Description'), _('A short description of the mobile phone'),
             'description', FALSE
           ),
+          new HiddenArrayAttribute('ipHostNumber', FALSE),
+          new HiddenArrayAttribute('macAddress', FALSE),
         ]
       ],
       'phone' => [
@@ -94,20 +96,6 @@ class mobilePhoneGeneric extends ipHostPlugin
             '/[[:digit:]]+/'
           ),
         ]
-      ],
-      'network' => [
-        'name'      => _('Network settings'),
-        'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
-        'attrs'     => [
-          new IPAttribute(
-            _('IP address'), _('IP address this system uses'),
-            'ipHostNumber', FALSE
-          ),
-          new MacAddressAttribute(
-            _('Mac address'), _('Mac address of this system'),
-            'macAddress', FALSE
-          ),
-        ],
       ],
     ];
   }

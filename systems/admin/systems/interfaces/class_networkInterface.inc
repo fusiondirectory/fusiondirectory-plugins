@@ -42,7 +42,7 @@ class networkInterface extends simplePlugin
 
   static function getAttributesInfo (): array
   {
-    return [
+    $attributesInfo = [
       'main' => [
         'name'  => _('General information'),
         'attrs' => [
@@ -62,7 +62,9 @@ class networkInterface extends simplePlugin
           ),
         ],
       ],
-      'ipam' => [
+    ];
+    if (class_available('ipamVlan')) {
+      $attributesInfo['ipam'] = [
         'name'  => _('IPAM'),
         'attrs' => [
           new ObjectSelectAttribute(
@@ -79,18 +81,21 @@ class networkInterface extends simplePlugin
             'fdNetworkInterfaceSubnetDN', FALSE
           ),
         ]
-      ],
-    ];
+      ];
+    }
+    return $attributesInfo;
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     global $config;
 
-    parent::__construct($dn, $object, $parent, $mainTab);
+    parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
-    $this->attributesAccess['fdNetworkInterfaceVlanId']->setSubmitForm('vlanChanged');
-    $this->vlanChanged();
+    if (isset($this->attributesAccess['fdNetworkInterfaceVlanId'])) {
+      $this->attributesAccess['fdNetworkInterfaceVlanId']->setSubmitForm('vlanChanged');
+      $this->vlanChanged();
+    }
   }
 
   function vlanChanged ()
@@ -111,14 +116,16 @@ class networkInterface extends simplePlugin
   {
     $errors = parent::check();
 
-    if ($this->fdNetworkInterfaceVlanId != '') {
-      $filter = '(&(macAddress='.ldap_escape_f($this->macAddress).')(fdNetworkInterfaceVlanId='.ldap_escape_f($this->fdNetworkInterfaceVlanId).'))';
-    } else {
-      $filter = '(&(macAddress='.ldap_escape_f($this->macAddress).')(!(fdNetworkInterfaceVlanId=*)))';
-    }
-    $interfaces = objects::ls('networkInterface', ['cn' => 1], $this->base, $filter);
-    if (count($interfaces) > 0) {
-      $errors[] = sprintf(_('Interface "%s" already uses this Mac + VLAN combination'), reset($interfaces)['cn']);
+    if (class_available('ipamVlan')) {
+      if ($this->fdNetworkInterfaceVlanId != '') {
+        $filter = '(&(macAddress='.ldap_escape_f($this->macAddress).')(fdNetworkInterfaceVlanId='.ldap_escape_f($this->fdNetworkInterfaceVlanId).'))';
+      } else {
+        $filter = '(&(macAddress='.ldap_escape_f($this->macAddress).')(!(fdNetworkInterfaceVlanId=*)))';
+      }
+      $interfaces = objects::ls('networkInterface', ['cn' => 1], $this->base, $filter);
+      if (count($interfaces) > 0) {
+        $errors[] = sprintf(_('Interface "%s" already uses this Mac + VLAN combination'), reset($interfaces)['cn']);
+      }
     }
 
     return $errors;

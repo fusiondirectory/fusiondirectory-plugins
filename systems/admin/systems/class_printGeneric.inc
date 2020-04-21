@@ -95,26 +95,10 @@ class printGeneric extends ipHostPlugin
           new UsersAttribute(
             '', _('Users which are allowed to administrate this printer'),
             'fdPrinterAdminUsers', FALSE
-          )
+          ),
+          new HiddenArrayAttribute('ipHostNumber', TRUE),
+          new HiddenArrayAttribute('macAddress', FALSE),
         ]
-      ],
-      'network' => [
-        'name'      => _('Network settings'),
-        'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
-        'attrs'     => [
-          new SetAttribute(
-            new IPAttribute(
-              _('IP address'), _('IP address this system uses'),
-              'ipHostNumber', TRUE
-            )
-          ),
-          new SetAttribute(
-            new MacAddressAttribute(
-              _('Mac address'), _('Mac address of this system'),
-              'macAddress', FALSE
-            )
-          ),
-        ],
       ],
       'windows' => [
         'name'      => _('Windows paths'),

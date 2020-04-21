@@ -58,6 +58,8 @@ class phoneGeneric extends ipHostPlugin
             _('Description'), _('A short description of the phone'),
             'description', FALSE
           ),
+          new HiddenArrayAttribute('ipHostNumber', FALSE),
+          new HiddenArrayAttribute('macAddress', FALSE),
         ]
       ],
       'phone' => [
@@ -70,24 +72,6 @@ class phoneGeneric extends ipHostPlugin
           new StringAttribute(
             _('Telephone Number'), _('The telephone number of the phone'),
             'telephoneNumber', FALSE
-          ),
-        ]
-      ],
-      'network' => [
-        'name'      => _('Network settings'),
-        'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
-        'attrs'     => [
-          new SetAttribute(
-            new IPAttribute(
-              _('IP address'), _('IP addresses this system uses (v4 or v6)'),
-              'ipHostNumber', FALSE
-            )
-          ),
-          new SetAttribute(
-            new MacAddressAttribute(
-              _('Mac address'), _('Mac address of this system'),
-              'macAddress', FALSE
-            )
           ),
         ],
       ],
