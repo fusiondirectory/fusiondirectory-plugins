@@ -55,15 +55,6 @@ class networkInterface extends simplePlugin
             'macAddress', FALSE
           ),
           new ObjectSelectAttribute(
-            _('VLAN'), _('VLAN'),
-            'fdNetworkInterfaceVlanId', FALSE,
-            ['ipamVlan'], 'fdIpamVlanInnerId'
-          ),
-          new StringAttribute(
-            _('VLAN tag'), _('VLAN tag'),
-            'fdNetworkInterfaceVlanTag', FALSE
-          ),
-          new ObjectSelectAttribute(
             _('Subnet'), _('Subnet'),
             'fdNetworkInterfaceSubnetDN', FALSE,
             ['ipamSubnet']
@@ -73,6 +64,20 @@ class networkInterface extends simplePlugin
               _('IP address'), _('IP addresses this system uses (v4 or v6)'),
               'ipHostNumber', FALSE
             )
+          ),
+        ],
+      ],
+      'vlan' => [
+        'name'  => _('VLAN information'),
+        'attrs' => [
+          new ObjectSelectAttribute(
+            _('VLAN'), _('VLAN'),
+            'fdNetworkInterfaceVlanId', FALSE,
+            ['ipamVlan'], 'fdIpamVlanInnerId'
+          ),
+          new StringAttribute(
+            _('VLAN tag'), _('VLAN tag'),
+            'fdNetworkInterfaceVlanTag', FALSE
           ),
         ]
       ],
