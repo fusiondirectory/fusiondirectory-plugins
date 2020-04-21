@@ -37,8 +37,8 @@ class interfacesManagement extends management implements SimpleTab
   public $parent          = NULL;
   public $acl_category    = '';
 
-  protected $current      = '';
-  protected $backup       = NULL;
+  /* We store all interfaces opened objects in this array */
+  protected $interfaces   = [];
 
   var $read_only      = FALSE;
   var $acl;
@@ -81,19 +81,146 @@ class interfacesManagement extends management implements SimpleTab
     parent::__construct(['networkInterface'], []);
 
     $this->parent->getBaseObject()->setNetworkAttributesReadOnly(TRUE);
+
+    $this->listing->update();
+
+    $entryIterator = $this->listing->getIterator();
+
+    foreach ($entryIterator as $entry) {
+      $this->interfaces[$entry->dn] = objects::open($entry->dn, $entry->getTemplatedType());
+    }
   }
 
   protected function setUpListing ()
   {
     /* Set baseMode to FALSE */
     $this->listing  = new managementListing($this, FALSE);
-    $this->listing->setBase($this->dn);
+    if ($this->dn != 'new') {
+      $this->listing->setBase($this->dn);
+    } else {
+      $this->listing->setBase('new,'.$this->parent->getBaseObject()->base);
+    }
+  }
+
+  protected function setUpFilter (array $filterElementDefinitions)
+  {
+    $this->filter   = new interfacesManagementFilter($this, NULL, $filterElementDefinitions);
+  }
+
+  function editEntry (array $action)
+  {
+    global $ui;
+
+    // Do not create a new tabObject while there is already one opened,
+    //  the user may have just pressed F5 to reload the page.
+    if (is_object($this->tabObject)) {
+      return;
+    }
+
+    $target = array_pop($action['targets']);
+
+    $entry = $this->listing->getEntry($target);
+    if ($entry === NULL) {
+      trigger_error('Could not find '.$target.', open canceled');
+      return;
+    }
+
+    // Get the dn of the object
+    $this->currentDn = $target;
+
+    // Open object
+    $this->openTabObject($this->interfaces[$this->currentDn]);
+    logging::debug(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->currentDn, 'Edit entry initiated');
+    if (isset($action['subaction'])
+      && ($this->handleSubAction($action) === FALSE)) {
+      trigger_error('Was not able to handle subaction: '.$action['subaction']);
+    }
+  }
+
+  function saveChanges ()
+  {
+    if (($this->tabObject instanceOf simpleTabs) && ($this->dialogObject instanceOf templateDialog)) {
+      $this->tabObject->save_object();
+      $this->handleTemplateApply();
+      return;
+    }
+    if ($this->tabObject instanceOf simpleTabs) {
+      $this->tabObject->save_object();
+      $msgs = $this->tabObject->check();
+      if (count($msgs)) {
+        msg_dialog::displayChecks($msgs);
+        return;
+      } else {
+        if ($this->currentDn == 'new') {
+          $this->interfaces[$this->tabObject->getBaseObject()->cn] = $this->tabObject;
+          $this->filter->updateCache($this->tabObject->getBaseObject()->cn, $this->tabObject);
+        } else {
+          $this->filter->updateCache($this->currentDn, $this->tabObject);
+        }
+        logging::debug(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->currentDns, 'Entry saved in cache');
+        $this->closeDialogs();
+      }
+    }
+  }
+
+  function applyChanges ()
+  {
+    throw new FusionDirectoryException('Not implemented');
+  }
+
+  function cancelEdit ()
+  {
+    if (($this->tabObject instanceOf simpleTabs) && ($this->dialogObject instanceOf templateDialog)) {
+      $this->handleTemplateApply(TRUE);
+      return;
+    }
+    $this->filter->resetFromCache($this->currentDn, $this->tabObject);
+    $this->closeDialogs();
+  }
+
+  function removeRequested (array $action)
+  {
+    global $ui;
+    $disallowed       = [];
+    $this->currentDns = [];
+
+    logging::debug(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $action['targets'], 'Entry deletion requested');
+
+    // Check permissons for each target
+    foreach ($action['targets'] as $dn) {
+      $entry = $this->listing->getEntry($dn);
+      try {
+        if ($entry->checkAcl('d')) {
+          $this->currentDns[] = $dn;
+        } else {
+          $disallowed[] = $dn;
+        }
+      } catch (NonExistingObjectTypeException $e) {
+        trigger_error('Unknown object type received :'.$e->getMessage());
+      }
+    }
+    if (count($disallowed)) {
+      msg_dialog::display(_('Permission'), msgPool::permDelete($disallowed), INFO_DIALOG);
+    }
+
+    // We've at least one entry to delete.
+    if (count($this->currentDns)) {
+      $objects = [];
+      foreach ($this->currentDns as $dn) {
+        $this->interfaces[$dn] = NULL;
+        $this->filter->updateCache($dn, NULL);
+      }
+    }
   }
 
   function openTabObject ($object)
   {
     parent::openTabObject($object);
-    $this->tabObject->getBaseObject()->base = $this->dn;
+    if ($this->dn != 'new') {
+      $this->tabObject->getBaseObject()->base = $this->dn;
+    } else {
+      $this->tabObject->getBaseObject()->base = 'new,'.$this->parent->getBaseObject()->base;
+    }
   }
 
   /*! \brief    No checks here.
@@ -133,7 +260,28 @@ class interfacesManagement extends management implements SimpleTab
 
   public function save (): array
   {
-    return [];
+    global $config;
+
+    $errors = [];
+
+    foreach ($this->interfaces as $dn => $object) {
+      if ($object === NULL) {
+        try {
+          $object = objects::open($dn, $this->objectTypes[0]);
+          if (!$object->delete()) {
+            $errors[] = sprintf(_('Deletion of %s failed'), $dn);
+          }
+        } catch (NonExistingLdapNodeException $e) {
+          /* No need to delete if it does not exist */
+        }
+      } else {
+        logging::debug(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $dn, 'Saving subobject');
+        $object->getBaseObject()->base = $this->dn;
+        array_push($errors, ...$object->save());
+      }
+    }
+
+    return $errors;
   }
 
   /*! \brief    Prepare active services to be copied.

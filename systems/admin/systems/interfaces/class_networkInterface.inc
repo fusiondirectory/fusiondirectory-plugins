@@ -90,7 +90,7 @@ class networkInterface extends simplePlugin
   {
     global $config;
 
-    parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
+    parent::__construct($dn, $object, $parent, $mainTab);
 
     if (isset($this->attributesAccess['fdNetworkInterfaceVlanId'])) {
       $this->attributesAccess['fdNetworkInterfaceVlanId']->setSubmitForm('vlanChanged');
@@ -118,9 +118,9 @@ class networkInterface extends simplePlugin
 
     if (class_available('ipamVlan')) {
       if ($this->fdNetworkInterfaceVlanId != '') {
-        $filter = '(&(macAddress='.ldap_escape_f($this->macAddress).')(fdNetworkInterfaceVlanId='.ldap_escape_f($this->fdNetworkInterfaceVlanId).'))';
+        $filter = '(&(!(cn='.ldap_escape_f($this->cn).'))(macAddress='.ldap_escape_f($this->macAddress).')(fdNetworkInterfaceVlanId='.ldap_escape_f($this->fdNetworkInterfaceVlanId).'))';
       } else {
-        $filter = '(&(macAddress='.ldap_escape_f($this->macAddress).')(!(fdNetworkInterfaceVlanId=*)))';
+        $filter = '(&(!(cn='.ldap_escape_f($this->cn).'))(macAddress='.ldap_escape_f($this->macAddress).')(!(fdNetworkInterfaceVlanId=*)))';
       }
       $interfaces = objects::ls('networkInterface', ['cn' => 1], $this->base, $filter);
       if (count($interfaces) > 0) {
