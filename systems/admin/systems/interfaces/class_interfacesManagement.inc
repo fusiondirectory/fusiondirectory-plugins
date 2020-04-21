@@ -206,7 +206,6 @@ class interfacesManagement extends management implements SimpleTab
 
     // We've at least one entry to delete.
     if (count($this->currentDns)) {
-      $objects = [];
       foreach ($this->currentDns as $dn) {
         $this->interfaces[$dn] = NULL;
         $this->filter->updateCache($dn, NULL);
