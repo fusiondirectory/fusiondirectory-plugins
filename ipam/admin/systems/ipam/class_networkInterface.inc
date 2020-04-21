@@ -54,11 +54,6 @@ class networkInterface extends simplePlugin
             _('Mac address'), _('Mac address of this system'),
             'macAddress', FALSE
           ),
-          new ObjectSelectAttribute(
-            _('Subnet'), _('Subnet'),
-            'fdNetworkInterfaceSubnetDN', FALSE,
-            ['ipamSubnet']
-          ),
           new SetAttribute(
             new IPAttribute(
               _('IP address'), _('IP addresses this system uses (v4 or v6)'),
@@ -67,8 +62,8 @@ class networkInterface extends simplePlugin
           ),
         ],
       ],
-      'vlan' => [
-        'name'  => _('VLAN information'),
+      'ipam' => [
+        'name'  => _('IPAM'),
         'attrs' => [
           new ObjectSelectAttribute(
             _('VLAN'), _('VLAN'),
@@ -78,6 +73,10 @@ class networkInterface extends simplePlugin
           new StringAttribute(
             _('VLAN tag'), _('VLAN tag'),
             'fdNetworkInterfaceVlanTag', FALSE
+          ),
+          new SelectAttribute(
+            _('Subnet'), _('Subnet'),
+            'fdNetworkInterfaceSubnetDN', FALSE
           ),
         ]
       ],
@@ -89,5 +88,22 @@ class networkInterface extends simplePlugin
     global $config;
 
     parent::__construct($dn, $object, $parent, $mainTab);
+
+    $this->attributesAccess['fdNetworkInterfaceVlanId']->setSubmitForm('vlanChanged');
+    $this->vlanChanged();
+  }
+
+  function vlanChanged()
+  {
+    if ($this->fdNetworkInterfaceVlanId != '') {
+      /* Get the DN of our current VLAN */
+      $vlans    = objects::ls('ipamVlan', ['fdIpamVlanInnerId' => 1], NULL, '(fdIpamVlanInnerId='.ldap_escape_f($this->fdNetworkInterfaceVlanId).')');
+      $vlanDN   = key($vlans);
+      $subnets  = objects::ls('ipamSubnet', ['dn' => 'raw','cn' => 1], NULL, '(fdIpamVlanDN='.$vlanDN.')');
+    } else {
+      /* List all the subnets when no VLAN is selected */
+      $subnets  = objects::ls('ipamSubnet', ['dn' => 'raw','cn' => 1]);
+    }
+    $this->attributesAccess['fdNetworkInterfaceSubnetDN']->setChoices(array_column($subnets, 'dn'), array_column($subnets, 'cn'));
   }
 }
