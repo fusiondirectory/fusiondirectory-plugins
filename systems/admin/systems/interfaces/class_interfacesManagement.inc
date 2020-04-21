@@ -88,6 +88,7 @@ class interfacesManagement extends management implements SimpleTab
 
     foreach ($entryIterator as $entry) {
       $this->interfaces[$entry->dn] = objects::open($entry->dn, $entry->getTemplatedType());
+      $this->interfaces[$entry->dn]->getBaseObject()->base = $this->dn;
     }
   }
 
@@ -276,7 +277,10 @@ class interfacesManagement extends management implements SimpleTab
         }
       } else {
         logging::debug(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $dn, 'Saving subobject');
-        $object->getBaseObject()->base = $this->dn;
+        /* The move was already done if needed by main tab, so we need to update dn of subobjects */
+        $object->dn                     = str_replace($object->getBaseObject()->base, $this->dn, $object->dn);
+        $object->getBaseObject()->base  = $this->dn;
+        /* Save subobject and store errors if any */
         array_push($errors, ...$object->save());
       }
     }
