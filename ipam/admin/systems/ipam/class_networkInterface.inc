@@ -93,7 +93,7 @@ class networkInterface extends simplePlugin
     $this->vlanChanged();
   }
 
-  function vlanChanged()
+  function vlanChanged ()
   {
     if ($this->fdNetworkInterfaceVlanId != '') {
       /* Get the DN of our current VLAN */
@@ -105,5 +105,22 @@ class networkInterface extends simplePlugin
       $subnets  = objects::ls('ipamSubnet', ['dn' => 'raw','cn' => 1]);
     }
     $this->attributesAccess['fdNetworkInterfaceSubnetDN']->setChoices(array_column($subnets, 'dn'), array_column($subnets, 'cn'));
+  }
+
+  function check (): array
+  {
+    $errors = parent::check();
+
+    if ($this->fdNetworkInterfaceVlanId != '') {
+      $filter = '(&(macAddress='.ldap_escape_f($this->macAddress).')(fdNetworkInterfaceVlanId='.ldap_escape_f($this->fdNetworkInterfaceVlanId).'))';
+    } else {
+      $filter = '(&(macAddress='.ldap_escape_f($this->macAddress).')(!(fdNetworkInterfaceVlanId=*)))';
+    }
+    $interfaces = objects::ls('networkInterface', ['cn' => 1], $this->base, $filter);
+    if (count($interfaces) > 0) {
+      $errors[] = sprintf(_('Interface "%s" already uses this Mac + VLAN combination'), reset($interfaces)['cn']);
+    }
+
+    return $errors;
   }
 }
