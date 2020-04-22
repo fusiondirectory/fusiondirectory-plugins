@@ -44,6 +44,9 @@ class interfacesManagement extends management implements SimpleTab
   var $acl;
   var $cn;
 
+  /* We list all network interfaces attributes in neededAttrs to get all data */
+  public $neededAttrs = ['cn','macAddress','fdNetworkInterfaceVlanId','fdNetworkInterfaceVlanTag','fdNetworkInterfaceSubnetDN','ipHostNumber'];
+
   public static $columns = [
     ['LinkColumn',           ['attributes' => 'nameAttr',                   'label' => 'Name']],
     ['Column',               ['attributes' => 'macAddress',                 'label' => 'Mac']],
@@ -75,6 +78,9 @@ class interfacesManagement extends management implements SimpleTab
     $this->dn     = $dn;
     if (isset($object->attrs)) {
       $this->attrs = $object->attrs;
+      if (isset($object->is_template)) {
+        $this->setTemplate($object->is_template);
+      }
     }
     $this->parent = $parent;
 
@@ -82,12 +88,24 @@ class interfacesManagement extends management implements SimpleTab
 
     $this->parent->getBaseObject()->setNetworkAttributesReadOnly(TRUE);
 
+    if ($this->is_template) {
+      if (isset($this->attrs['networkInterfaces'])) {
+        unset($this->attrs['networkInterfaces']['count']);
+        $this->filter->loadTemplateValues($this->attrs['networkInterfaces']);
+      }
+    }
+
     $this->listing->update();
 
     $entryIterator = $this->listing->getIterator();
 
     foreach ($entryIterator as $entry) {
-      $this->interfaces[$entry->dn] = objects::open($entry->dn, $entry->getTemplatedType());
+      if ($this->is_template) {
+        $this->interfaces[$entry->dn] = objects::create($entry->getTemplatedType());
+        $this->filter->resetFromCache($entry->dn, $this->interfaces[$entry->dn]);
+      } else {
+        $this->interfaces[$entry->dn] = objects::open($entry->dn, $entry->getTemplatedType());
+      }
       $this->interfaces[$entry->dn]->getBaseObject()->base = $this->dn;
     }
   }
@@ -262,6 +280,10 @@ class interfacesManagement extends management implements SimpleTab
   {
     global $config;
 
+    if ($this->is_template) {
+      return $this->templateLdapSave();
+    }
+
     $errors = [];
 
     foreach ($this->interfaces as $dn => $object) {
@@ -287,6 +309,30 @@ class interfacesManagement extends management implements SimpleTab
     return $errors;
   }
 
+  protected function templateLdapSave (): array
+  {
+    global $config;
+
+    /* Check if the entry exists */
+    $ldap = $config->get_ldap_link();
+    if (!$ldap->dn_exists($this->dn)) {
+      return [sprintf(_('The entry %s is not existing'), $this->dn)];
+    }
+
+    $attrs = $this->filter->getTemplateAttrs();
+
+    /* Modify */
+    $ldap->cd($this->dn);
+    $ldap->modify($attrs);
+    $this->ldap_error = $ldap->get_error();
+
+    /* Check for errors */
+    if (!$ldap->success()) {
+      return [msgPool::ldaperror($this->ldap_error, $this->dn, 0, get_class())];
+    }
+    return [];
+  }
+
   /*! \brief    Prepare active services to be copied.
    */
   public function resetCopyInfos ()
@@ -303,6 +349,7 @@ class interfacesManagement extends management implements SimpleTab
 
   public function setTemplate (bool $bool)
   {
+    $this->is_template = $bool;
   }
 
   public function getRequiredAttributes (): array
@@ -312,6 +359,7 @@ class interfacesManagement extends management implements SimpleTab
 
   public function adapt_from_template (array $attrs, array $skip = [])
   {
+    trigger_error('Not implemented');
   }
 
   /*!

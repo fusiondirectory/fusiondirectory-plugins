@@ -94,4 +94,46 @@ class interfacesManagementFilter extends managementFilter
       }
     }
   }
+
+  function loadTemplateValues (array $networkInterfaces)
+  {
+    $entries  = [];
+    $row      = 0;
+    foreach ($networkInterfaces as $networkInterface) {
+      $values = json_decode($networkInterface, TRUE);
+      $entries[$values['dn']] = new ListingEntry($this->parent->listing, $this->parent->objectTypes[0], $values['dn'], $values, $row++);
+    }
+    $this->entriesCache = [$entries, [$this->parent->objectTypes[0] => $row]];
+  }
+
+  function getTemplateAttrs (): array
+  {
+    global $config;
+
+    $attrs = ['networkInterfaces' => []];
+
+    foreach ($this->entriesCache[0] as $dn => $entry) {
+      $arrayEntry = ['dn' => $dn];
+      foreach ($this->parent->neededAttrs as $attr) {
+        if (isset($entry[$attr])) {
+          $arrayEntry[$attr] = $entry[$attr];
+        }
+      }
+      $attrs['networkInterfaces'][] = json_encode($arrayEntry);
+    }
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cat($this->parent->dn);
+    $template_attrs = $ldap->fetch(TRUE);
+    if (!$template_attrs) {
+      trigger_error('It seems main tab has not been saved.');
+      $template_attrs = [
+        'objectClass'     => ['fdTemplate'],
+        'fdTemplateField' => []
+      ];
+    }
+    $template_attrs = templateHandling::fieldsToLDAP($template_attrs, $attrs);
+
+    return $template_attrs;
+  }
 }
