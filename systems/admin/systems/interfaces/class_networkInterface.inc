@@ -80,6 +80,11 @@ class networkInterface extends simplePlugin
             _('Subnet'), _('Subnet'),
             'fdNetworkInterfaceSubnetDN', FALSE
           ),
+          new ButtonAttribute(
+            _('Add free IP from subnet'), _('Adds a new IP from selected subnet'),
+            'fdAddFreeIp', _('Add IP'),
+            'addFreeIpFromSubnet'
+          ),
         ]
       ];
     }
@@ -129,5 +134,65 @@ class networkInterface extends simplePlugin
     }
 
     return $errors;
+  }
+
+  public function addFreeIpFromSubnet ()
+  {
+    global $config;
+
+    if (empty($this->fdNetworkInterfaceSubnetDN)) {
+      msg_dialog::display(_('Error'), _('No subnet selected'), ERROR_DIALOG);
+      return;
+    }
+    $subnets = objects::ls('ipamSubnet', ['dn' => 'raw','ipHostNumber' => 1,'fdIpamNetmask' => 1], $this->fdNetworkInterfaceSubnetDN, '', FALSE, 'base');
+    if (empty($subnets)) {
+      msg_dialog::display(_('Error'), _('Could not find selected subnet'), ERROR_DIALOG);
+      return;
+    }
+    $subnet = reset($subnets);
+    if (!isset($subnet['ipHostNumber'])) {
+      msg_dialog::display(_('Error'), _('Selected subnet has no IP'), ERROR_DIALOG);
+      return;
+    }
+    if (!isset($subnet['fdIpamNetmask'])) {
+      msg_dialog::display(_('Error'), _('Selected subnet has no netmask'), ERROR_DIALOG);
+      return;
+    }
+    $ldap = $config->get_ldap_link();
+    $base = $config->current['BASE'];
+    $ldap->cd($base);
+    $ips = $this->ipHostNumber;
+    foreach (static::ipRange($subnet['ipHostNumber'], $subnet['fdIpamNetmask']) as $ip) {
+      if (in_array($ip, $ips)) {
+        continue;
+      }
+      $filter = '(&(objectClass=ipHost)(ipHostNumber='.ldap_escape_f($ip).'))';
+      $ldap->search($filter, ['ipHostNumber']);
+      if ($ldap->count() === 0) {
+        $ips[]  = $ip;
+        $this->ipHostNumber = $ips;
+        return;
+      }
+    }
+    msg_dialog::display(_('Error'), _('Could not find any free IP in the selected subnet'), ERROR_DIALOG);
+    return;
+  }
+
+  /* Generator for IP range */
+  static public function ipRange ($ip, $netmask)
+  {
+    $mask = ip2long($netmask);
+    if ($mask === FALSE) {
+      throw new FusionDirectoryException('Invalid mask');
+    }
+    $ip   = ip2long($ip);
+    if ($ip === FALSE) {
+      throw new FusionDirectoryException('Invalid IP');
+    }
+    $long = ($ip & $mask);
+    do {
+      yield long2ip($long);
+      $long++;
+    } while (($long & $mask) == $ip);
   }
 }
