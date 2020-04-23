@@ -126,6 +126,22 @@ class interfacesManagement extends management implements SimpleTab
     $this->filter   = new interfacesManagementFilter($this, NULL, $filterElementDefinitions);
   }
 
+  /*! \brief    Get used IPs as of current objects states
+   */
+  public function getUsedIps (): array
+  {
+    $ips = [];
+
+    foreach ($this->interfaces as $object) {
+      if ($object === NULL) {
+        continue;
+      }
+      array_push($ips, ...$object->getBaseObject()->ipHostNumber);
+    }
+
+    return $ips;
+  }
+
   function editEntry (array $action)
   {
     global $ui;

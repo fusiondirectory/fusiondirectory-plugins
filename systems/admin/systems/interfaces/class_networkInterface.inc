@@ -142,21 +142,21 @@ class networkInterface extends simplePlugin
     $ldap = $config->get_ldap_link();
     $base = $config->current['BASE'];
     $ldap->cd($base);
-    $ips = $this->ipHostNumber;
+    $ips        = $this->ipHostNumber;
+    $parentIps  = array_merge_unique($this->parent->parent->getUsedIps(), $ips);
     foreach (static::ipRange($subnet['ipHostNumber'], $subnet['fdIpamNetmask']) as $ip) {
-      if (in_array($ip, $ips)) {
+      if (in_array($ip, $parentIps)) {
         continue;
       }
       $filter = '(&(objectClass=ipHost)(ipHostNumber='.ldap_escape_f($ip).'))';
       $ldap->search($filter, ['ipHostNumber']);
       if ($ldap->count() === 0) {
-        $ips[]  = $ip;
+        $ips[]              = $ip;
         $this->ipHostNumber = $ips;
         return;
       }
     }
     msg_dialog::display(_('Error'), _('Could not find any free IP in the selected subnet'), ERROR_DIALOG);
-    return;
   }
 
   /* Generator for IP range */
