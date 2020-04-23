@@ -241,11 +241,33 @@ class interfacesManagement extends management implements SimpleTab
     }
   }
 
-  /*! \brief    No checks here.
-   */
   public function check (): array
   {
-    return [];
+    $errors = [];
+
+    $ips      = [];
+    $macvlans = [];
+    foreach ($this->interfaces as $dn => $object) {
+      if ($object === NULL) {
+        continue;
+      }
+      $baseobject = $object->getBaseObject();
+      if (class_available('ipamVlan')) {
+        $macvlan = $baseobject->macAddress.$baseobject->fdNetworkInterfaceVlanId;
+        if (isset($macvlans[$macvlan])) {
+          $errors[] = sprintf(_('Interfaces "%s" and "%s" use the same Mac + VLAN combination'), $macvlans[$macvlan], $baseobject->cn);
+        }
+        $macvlans[$macvlan] = $baseobject->cn;
+      }
+      foreach ($baseobject->ipHostNumber as $ip) {
+        if (isset($ips[$ip])) {
+          $errors[] = sprintf(_('Interfaces "%s" and "%s" use the same IP address "%s"'), $ips[$ip], $baseobject->cn, $ip);
+        }
+        $ips[$ip] = $baseobject->cn;
+      }
+    }
+
+    return $errors;
   }
 
   /*! \brief    Keep posted form values in opened dialogs
