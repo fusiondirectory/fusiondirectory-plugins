@@ -32,11 +32,11 @@ class SupannCompositeAttribute extends CompositeAttribute
     $values = [];
     $m = [];
     foreach ($this->attributes as &$attribute) {
-      $shortname = preg_replace('/^[^_]+_/', '', $attribute->getLdapName());
+      list(, $shortname) = explode('_', $attribute->getLdapName());
       if (preg_match("/\\[$shortname=([^\\]]+)\\]/", $value, $m)) {
         $values[] = $m[1];
       } else {
-        $values[] = "";
+        $values[] = '';
       }
     }
     unset($attribute);
@@ -50,7 +50,7 @@ class SupannCompositeAttribute extends CompositeAttribute
     $i      = 0;
     foreach ($this->attributes as &$attribute) {
       if ($values[$i] != '') {
-        $shortname = preg_replace('/^[^_]+_/', '', $attribute->getLdapName());
+        list(, $shortname) = explode('_', $attribute->getLdapName());
         $value .= "[$shortname=".$values[$i]."]";
       }
       $i++;
@@ -62,15 +62,15 @@ class SupannCompositeAttribute extends CompositeAttribute
   function supannGetValues (&$values)
   {
     foreach ($this->attributes as &$attribute) {
-      $shortname = preg_replace('/^([^_]+)_.*$/', '\\1', $attribute->getLdapName());
+      list($attrname, ) = explode('_', $attribute->getLdapName());
       $value = $attribute->getValue();
-      if (!isset($values[$shortname])) {
-        $values[$shortname] = [];
+      if (!isset($values[$attrname])) {
+        $values[$attrname] = [];
       }
-      if ($value == "") {
+      if ($value == '') {
         continue;
       }
-      $values[$shortname][$value] = $value;
+      $values[$attrname][$value] = $value;
     }
     unset($attribute);
   }
