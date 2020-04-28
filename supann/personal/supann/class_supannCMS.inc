@@ -33,7 +33,7 @@ class supannCMS extends simplePlugin
       'plSelfModify'  => TRUE,
       'plPriority'    => 16,
       'plObjectClass' => ['supannCMS'],
-      'plObjectType'  => ['user'],
+      'plObjectType'  => ['user','group','ogroup-user','role','etablissement','entite'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
