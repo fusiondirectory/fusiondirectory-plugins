@@ -74,19 +74,21 @@ class SupannCMSAffectationAttribute extends SupannCompositeAttribute
       if ($attrname == 'none') {
         continue;
       }
-      $value = $attribute->getValue();
       if (!isset($values[$attrname])) {
         $values[$attrname] = [];
       }
-      if ($value == '') {
-        continue;
-      }
-      if ($this->isValid()) {
-        $values[$attrname][$value] = $value;
+      if (!$this->isTemplate()) {
+        $value = $attribute->getValue();
+        if ($value == '') {
+          continue;
+        }
+        if ($this->isValid()) {
+          $values[$attrname][$value] = $value;
+        }
       }
     }
     unset($attribute);
-    if ($this->isValid()) {
+    if ($this->isValid() && !$this->isTemplate()) {
       $format = $this->attributes[1]->getValue();
       $id     = $this->attributes[2]->getValue();
       $supannCMSIdEtiquette = '{'.$format.'}'.$id;

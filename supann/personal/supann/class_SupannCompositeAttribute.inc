@@ -33,7 +33,7 @@ class SupannCompositeAttribute extends CompositeAttribute
     $m = [];
     foreach ($this->attributes as &$attribute) {
       list(, $shortname) = explode('_', $attribute->getLdapName());
-      if (preg_match("/\\[$shortname=([^\\]]+)\\]/", $value, $m)) {
+      if (preg_match('/\\['.preg_quote($shortname, '/').'=(.+?)(\\]\\[|\\]$)/', $value, $m)) {
         $values[] = $m[1];
       } else {
         $values[] = '';
@@ -63,14 +63,16 @@ class SupannCompositeAttribute extends CompositeAttribute
   {
     foreach ($this->attributes as &$attribute) {
       list($attrname, ) = explode('_', $attribute->getLdapName());
-      $value = $attribute->getValue();
       if (!isset($values[$attrname])) {
         $values[$attrname] = [];
       }
-      if ($value == '') {
-        continue;
+      if (!$this->isTemplate()) {
+        $value = $attribute->getValue();
+        if ($value == '') {
+          continue;
+        }
+        $values[$attrname][$value] = $value;
       }
-      $values[$attrname][$value] = $value;
     }
     unset($attribute);
   }
