@@ -30,32 +30,32 @@ class SupannCMSAffectationAttribute extends SupannCompositeAttribute
     $attributes = [
       new SelectAttribute(
         _('Type'), _('supannCMSType - Card type'),
-        'supannCMSType_type', TRUE,
+        'supannCMSType_type_'.$ldapName, TRUE,
         $types, '', $typeLabels
       ),
       new SelectAttribute(
         _('Format'), _('Card format'),
-        'none_format', TRUE,
+        'none_format_'.$ldapName, TRUE,
         $formats, '', $formatLabels
       ),
       new StringAttribute(
         _('Id'), _('Card id'),
-        'none_id', TRUE
+        'none_id_'.$ldapName, TRUE
       ),
       new BooleanAttribute(
         _('Valid'), _('Card validity'),
-        'none_valide', TRUE,
+        'none_valide_'.$ldapName, TRUE,
         TRUE, '',
         'vrai', 'faux'
       ),
       new SelectAttribute(
         _('Source'), _('Card managing system and establishment'),
-        'supannCMSSource_source', FALSE,
+        'supannCMSSource_source_'.$ldapName, FALSE,
         $config->get_cfg_value('supannCMSSources', [])
       ),
       new GeneralizedTimeDateAttribute(
         _('End date'), _('End of validity date, if any'),
-        'supannCMSDateFin_datefin', FALSE,
+        'supannCMSDateFin_datefin_'.$ldapName, FALSE,
         ''
       ),
     ];
@@ -70,19 +70,19 @@ class SupannCMSAffectationAttribute extends SupannCompositeAttribute
   function supannGetValues (&$values)
   {
     foreach ($this->attributes as &$attribute) {
-      $shortname = preg_replace('/^([^_]+)_.*$/', '\\1', $attribute->getLdapName());
-      if ($shortname == 'none') {
+      list($attrname, ) = explode('_', $attribute->getLdapName());
+      if ($attrname == 'none') {
         continue;
       }
       $value = $attribute->getValue();
-      if (!isset($values[$shortname])) {
-        $values[$shortname] = [];
+      if (!isset($values[$attrname])) {
+        $values[$attrname] = [];
       }
       if ($value == '') {
         continue;
       }
       if ($this->isValid()) {
-        $values[$shortname][$value] = $value;
+        $values[$attrname][$value] = $value;
       }
     }
     unset($attribute);

@@ -29,32 +29,32 @@ class SupannCMSAppAffectationAttribute extends SupannCompositeAttribute
     $attributes = [
       new SelectAttribute(
         _('Type'), _('supannCMSType - Card type'),
-        'supannCMSType_type', TRUE,
+        'supannCMSType_type_'.$ldapName, TRUE,
         $types, '', $typeLabels
       ),
       new SelectAttribute(
         _('Source'), _('Card managing system and establishment'),
-        'supannCMSSource_source', TRUE,
+        'supannCMSSource_source_'.$ldapName, TRUE,
         $config->get_cfg_value('supannCMSSources', [])
       ),
       new SelectAttribute(
         _('Domain'), _('Application domain'),
-        'none_domaine', TRUE,
+        'none_domaine_'.$ldapName, TRUE,
         array_column($this->getConfigAppDomains(), 1)
       ),
       new StringAttribute(
         _('Id'), _('Application id'),
-        'none_id', TRUE
+        'none_id_'.$ldapName, TRUE
       ),
       new BooleanAttribute(
         _('Valid'), _('Application validity'),
-        'none_valide', TRUE,
+        'none_valide_'.$ldapName, TRUE,
         TRUE, '',
         'vrai', 'faux'
       ),
       new GeneralizedTimeDateAttribute(
         _('End date'), _('End of validity date, if any'),
-        'supannCMSDateFin_datefin', FALSE,
+        'supannCMSDateFin_datefin_'.$ldapName, FALSE,
         ''
       ),
     ];
@@ -80,19 +80,19 @@ class SupannCMSAppAffectationAttribute extends SupannCompositeAttribute
   function supannGetValues (&$values)
   {
     foreach ($this->attributes as &$attribute) {
-      $shortname = preg_replace('/^([^_]+)_.*$/', '\\1', $attribute->getLdapName());
-      if ($shortname == 'none') {
+      list($attrname, ) = explode('_', $attribute->getLdapName());
+      if ($attrname == 'none') {
         continue;
       }
       $value = $attribute->getValue();
-      if (!isset($values[$shortname])) {
-        $values[$shortname] = [];
+      if (!isset($values[$attrname])) {
+        $values[$attrname] = [];
       }
       if ($value == '') {
         continue;
       }
       if ($this->isValid()) {
-        $values[$shortname][$value] = $value;
+        $values[$attrname][$value] = $value;
       }
     }
     unset($attribute);
