@@ -126,4 +126,14 @@ class supannCMS extends simplePlugin
     $this->attributesAccess['supannCMSAppAffectation']->supannPrepareSave(TRUE);
     return parent::prepare_save();
   }
+
+  protected function prepare_remove ()
+  {
+    parent::prepare_remove();
+    /* Remove tagged values as well */
+    $this->supannCMSId    = [];
+    $this->supannCMSAppId = [];
+    $this->attributesAccess['supannCMSId']->fillLdapValue($this->attrs);
+    $this->attributesAccess['supannCMSAppId']->fillLdapValue($this->attrs);
+  }
 }
