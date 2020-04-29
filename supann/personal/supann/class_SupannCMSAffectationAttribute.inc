@@ -26,7 +26,13 @@ class SupannCMSAffectationAttribute extends SupannCompositeAttribute
   {
     global $config;
     list($types, $typeLabels)     = supann::get_choices_for('cmstype');
-    list($formats, $formatLabels) = supann::get_choices_for('cmsformat');
+    $formats      = [];
+    $formatLabels = [];
+    foreach ($config->get_cfg_value('SupannCMSFormats', ['MIFARE:XLSB;Mifare XLSB']) as $supannCMSFormat) {
+      list($format, $label) = explode(';', $supannCMSFormat);
+      $formats[]      = $format;
+      $formatLabels[] = $label;
+    }
     $attributes = [
       new SelectAttribute(
         _('Type'), _('supannCMSType - Card type'),

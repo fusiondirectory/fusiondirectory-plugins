@@ -137,6 +137,39 @@ class supannConfig extends simplePlugin
             )
           ),
           new OrderedArrayAttribute(
+            new CompositeAttribute(
+              _('Allowed formats for multiservice cards'),
+              'fdSupannCMSFormats',
+              [
+                new StringAttribute(
+                  _('Technology'), _('Technology name in uppercase'),
+                  'fdSupannCMSFormats_techno', TRUE,
+                  '', '',
+                  '/^[A-Z]+$/', 'MIFARE'
+                ),
+                new StringAttribute(
+                  _('Encoding'), _('Encoding name in uppercase'),
+                  'fdSupannCMSFormats_encoding', TRUE,
+                  '', '',
+                  '/^[A-Z]+$/', 'XLSB'
+                ),
+                new StringAttribute(
+                  _('Label'), _('Format label'),
+                  'fdSupannCMSFormats_label', TRUE,
+                  '', '',
+                  '', 'Mifare XLSB'
+                ),
+              ],
+              '/^([A-Z]*):([A-Z]*);(.*)$/',
+              '%s:%s;%s',
+              '',
+              _('Card formats')
+            ),
+            FALSE,
+            ['MIFARE:XLSB;Mifare XLSB'],
+            TRUE
+          ),
+          new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
               _('Domains for card applications'),
               'fdSupannCMSAppDomains',
