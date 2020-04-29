@@ -29,6 +29,11 @@ class SupannOrderedArrayAttribute extends OrderedArrayAttribute
       $this->attribute->setValue($value);
       $this->attribute->supannGetValues($values);
     }
+    if (empty($this->value)) {
+      /* All values were removed, we still need to sync individual attributes */
+      $this->attribute->setValue('');
+      $this->attribute->supannGetValues($values);
+    }
     foreach ($values as $ldapName => $array) {
       if ($this->plugin->attributesAccess[$ldapName]->isVisible()) {
         continue;
