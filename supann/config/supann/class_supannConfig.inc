@@ -128,6 +128,37 @@ class supannConfig extends simplePlugin
             [],
             TRUE
           ),
+          new OrderedArrayAttribute(
+            new CharSeparatedCompositeAttribute(
+              _('Card types and their labels. Please prefix with {ORIGIN} for non standard types.'),
+              'fdSupannCMSTypes',
+              [
+                new StringAttribute(
+                  _('Type'), _('Card type'),
+                  'fdSupannCMSTypes_type', TRUE
+                ),
+                new StringAttribute(
+                  _('Label'), _('Label shown for this type'),
+                  'fdSupannCMSTypes_label', TRUE
+                ),
+              ],
+              ';',
+              '',
+              _('Card types')
+            ),
+            FALSE,
+            [
+              'etudiant;étudiant',
+              'personnel;professionnelle',
+              'visiteur;visiteur, anonyme',
+              'invite;invité, nominative',
+              'lecteur;lecteur de bibliothèque',
+              'prestataire;prestataire de services',
+              'vehicule;véhicule',
+              'externe;externe',
+            ],
+            TRUE
+          ),
           new SetAttribute(
             new StringAttribute(
               _('Card sources'), _('Multi service card possible sources, with format system@domain'),

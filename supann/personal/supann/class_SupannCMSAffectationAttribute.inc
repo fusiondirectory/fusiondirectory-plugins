@@ -25,7 +25,13 @@ class SupannCMSAffectationAttribute extends SupannCompositeAttribute
   function __construct ($label, $description, $ldapName, $acl = '')
   {
     global $config;
-    list($types, $typeLabels)     = supann::get_choices_for('cmstype');
+    $types      = [];
+    $typeLabels = [];
+    foreach ($config->get_cfg_value('SupannCMSTypes', []) as $supannCMSType) {
+      list($type, $label) = explode(';', $supannCMSType);
+      $types[]      = $type;
+      $typeLabels[] = $label;
+    }
     $formats      = [];
     $formatLabels = [];
     foreach ($config->get_cfg_value('SupannCMSFormats', ['MIFARE:XLSB;Mifare XLSB']) as $supannCMSFormat) {
