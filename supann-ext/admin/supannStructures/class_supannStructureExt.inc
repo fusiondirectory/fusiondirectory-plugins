@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2017-2018  FusionDirectory
+
+  Copyright (C) 2017-2020  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,23 +21,18 @@
 
 class supannStructureExt extends simplePlugin
 {
-  var $objectclasses = ['fdSupannExt'];
-
-  var $mainTab = TRUE;
-
-  /* Return plugin information */
   static function plInfo (): array
   {
     return [
       'plShortName'   => _('SUPANN-Ext'),
       'plDescription' => _('SUPANN Non-Official Extension'),
       'plObjectType'  => ['entite', 'etablissement'],
+      'plObjectClass' => ['fdSupannExt'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
-  // The main function : information about attributes
   static function getAttributesInfo (): array
   {
     return [
