@@ -9,18 +9,16 @@
           {foreach from=$nodes key=key item=node}
             <li>
               <a href="#" onclick="Effect.toggle('toggle_{$key}', 'blind', {literal}{ duration: 0.3 }{/literal}); return false;">
-                {$node.name}
+                <img style="vertical-align:middle;" src="{$node.img|escape}" alt=""/>&nbsp;{$node.name|escape}
               </a>
               <div id="toggle_{$key}" style="overflow: visible; display: none;">
                 <table class="listingTable">
                   <tbody>
-                    {foreach from=$node.attrs key=label item=values}
-                      {foreach from=$values item=value}
-                        <tr>
-                          <th>{$label}</th>
-                          <td>{$value}</td>
-                        </tr>
-                      {/foreach}
+                    {foreach from=$node.attrs key=label item=value}
+                      <tr>
+                        <th>{$label|escape}</th>
+                        <td>{$value|escape}</td>
+                      </tr>
                     {/foreach}
                   </tbody>
                 </table>
