@@ -47,12 +47,26 @@ class ppolicyConfig extends simplePlugin
             'ou=ppolicies'
           ),
           new StringAttribute(
-            _('Default ppolicy cn'), _('What you put as default ppolicy in the overlay config'),
-            'fdPpolicyDefaultCn', FALSE,
-            'default'
+            _('Default ppolicy dn'), _('What you put as default ppolicy in the overlay config'),
+            'fdPpolicyDefaultDn', FALSE
           ),
+          new HiddenAttribute('fdPpolicyDefaultCn'),
         ]
       ],
     ];
+  }
+
+  function __construct (string $dn = NULL, $object = NULL, $parent = NULL, bool $mainTab = FALSE)
+  {
+    global $config;
+
+    parent::__construct($dn, $object, $parent, $mainTab);
+
+    if (!empty($this->fdPpolicyDefaultCn)) {
+      if (empty($this->fdPpolicyDefaultDn)) {
+        $this->fdPpolicyDefaultDn = 'cn='.$this->fdPpolicyDefaultCn.','.get_ou('ppolicyRDN').$config->current['BASE'];
+      }
+      $this->fdPpolicyDefaultCn = '';
+    }
   }
 }
