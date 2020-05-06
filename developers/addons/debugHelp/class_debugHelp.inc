@@ -82,17 +82,13 @@ class debugHelp extends simplePlugin
       }
       $node = [
         'img'       => $img,
-        'name'      => $infos['name'],
+        'name'      => $infos['name'].' ('.$type.')',
         'attrs'     => [],
         'subnodes'  => []
       ];
-      foreach (['aclCategory', 'mainAttr', 'ou', 'filter', 'tabClass', 'tabGroup', 'mainTab', 'management'] as $key) {
+      foreach (['description','aclCategory','ou','mainAttr','nameAttr','filter','filterRDN','tabClass','tabGroup','mainTab','management','templateActive','snapshotActive'] as $key) {
         if (isset($infos[$key])) {
-          if ($infos[$key] != '') {
-            $node['attrs'][$key] = [$infos[$key]];
-          } else {
-            $node['attrs'][$key] = '&nbsp;';
-          }
+          $node['attrs'][$key] = var_export($infos[$key], TRUE);
         }
       }
       try {
@@ -100,8 +96,9 @@ class debugHelp extends simplePlugin
       } catch (FusionDirectoryException $e) {
         $node['attrs']['count'] = $e->getMessage();
       }
-      $dump[] = $node;
+      $dump[$type] = $node;
     }
+    ksort($dump);
 
     $this->dump = $dump;
   }
