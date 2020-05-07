@@ -61,6 +61,12 @@ class supannConfig extends simplePlugin
             'fdSupannPasswordRecovery', FALSE,
             TRUE
           ),
+        ],
+      ],
+      'status' => [
+        'name'  => _('Status'),
+        'class' => ['fullwidth'],
+        'attrs' => [
           new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
               _('Custom resources and their labels'),
