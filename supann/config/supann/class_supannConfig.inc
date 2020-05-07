@@ -128,6 +128,12 @@ class supannConfig extends simplePlugin
             [],
             TRUE
           ),
+        ],
+      ],
+      'cms' => [
+        'name'  => _('Multiservice card'),
+        'class' => ['fullwidth'],
+        'attrs' => [
           new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
               _('Card types and their labels. Please prefix with {ORIGIN} for non standard types.'),
