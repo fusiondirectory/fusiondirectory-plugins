@@ -11,10 +11,18 @@ attributetype ( 1.3.6.1.4.1.38414.45.1.1 NAME 'fdPpolicyRDN'
   SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.38414.45.1.2 NAME 'fdPpolicyDefaultCn'
+  OBSOLETE
   DESC 'FusionDirectory - cn of the default ppolicy'
   EQUALITY caseExactIA5Match
   SUBSTR caseExactIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.45.1.3 NAME 'fdPpolicyDefaultDn'
+  DESC 'FusionDirectory - dn of the default ppolicy'
+  EQUALITY distinguishedNameMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.12
   SINGLE-VALUE)
 
 # Object Class
@@ -22,4 +30,4 @@ objectclass ( 1.3.6.1.4.1.38414.45.2.1 NAME 'fdPpolicyPluginConf'
   DESC 'FusionDirectory ppolicy plugin configuration'
   SUP top AUXILIARY
   MUST ( cn )
-  MAY ( fdPpolicyRDN $ fdPpolicyDefaultCn) )
+  MAY ( fdPpolicyRDN $ fdPpolicyDefaultCn $ fdPpolicyDefaultDn ) )
