@@ -189,10 +189,5 @@ class ppolicy extends simplePlugin
         ]
       ]
     );
-
-    if (objects::count('ppolicy') == 0) {
-      $this->attributesAccess['cn']->setDefaultValue($config->get_cfg_value('ppolicyDefaultCn', 'default'));
-      $this->attributesAccess['cn']->resetToDefault();
-    }
   }
 }

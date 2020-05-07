@@ -76,9 +76,8 @@ class dashboardPpolicy extends simplePlugin
     $ldap = $config->get_ldap_link();
 
     $defaultMaxAge = NULL;
-    $ppolicydn = $config->get_cfg_value('ppolicyDefaultCn', '');
+    $ppolicydn = $config->get_cfg_value('ppolicyDefaultDn', '');
     if (!empty($ppolicydn)) {
-      $ppolicydn = 'cn='.$ppolicydn.','.get_ou('ppolicyRDN').$config->current['BASE'];
       $ldap->cat($ppolicydn, ['pwdMaxAge']);
       $policy = $ldap->fetch();
       if (!$policy) {
