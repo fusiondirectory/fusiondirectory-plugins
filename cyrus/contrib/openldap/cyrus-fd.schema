@@ -39,4 +39,4 @@ attributetype ( 1.3.6.1.4.1.38414.14.1.6 NAME 'fdCyrusAcl'
 objectclass (1.3.6.1.4.1.38414.14.2.1 NAME 'fdCyrusServer' SUP top AUXILIARY
   DESC 'FusionDirectory - Cyrus server description'
   MUST ( cn $ fdCyrusConnect $ fdCyrusAdmin $ fdCyrusPassword )
-  MAY  ( fdCyrusUseSlashes $ fdCyrusSieveServer ))
+  MAY  ( fdCyrusUseSlashes $ fdCyrusAutocreateFolders $ fdCyrusSieveServer ))

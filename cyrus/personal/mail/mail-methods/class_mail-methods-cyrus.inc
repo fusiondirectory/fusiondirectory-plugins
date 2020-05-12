@@ -259,23 +259,19 @@ class mailMethodCyrus extends mailMethod
       $list = imap_listmailbox($this->imap_handle, $cfg['connect'], $this->account_id);
       if ($list === FALSE) {
         @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->account_id,
-          "<b>IMAP: Add account</b> on server :".$this->parent->gosaMailServer);
-        if (!imap_createmailbox($this->imap_handle, $cfg["connect"].$this->account_id)) {
+          'IMAP: Add account on server '.$this->parent->gosaMailServer);
+        if (!imap_createmailbox($this->imap_handle, $cfg['connect'].$this->account_id)) {
           $this->error = imap_last_error();
           return FALSE;
         }
 
         /* Autocreate configured default folders */
-        $folders = $config->get_cfg_value('cyrusAutocreateFolders', NULL);
-        if ($folders !== NULL) {
-          // Walk thru list of specified folders
-          foreach ($folders as $folder) {
-            @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<b>'.$this->account_id.'</b>',
-              '<b>IMAP: Add/Update account folder '.$folder.'</b> on server :'.$this->parent->gosaMailServer);
-            if (!imap_createmailbox($this->imap_handle, $cfg['connect'].$this->create_folder_id($folder))) {
-              $this->error = imap_last_error();
-              return FALSE;
-            }
+        foreach ($cfg['autocreate'] as $folder) {
+          @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $folder,
+            'IMAP: Add account folder on server '.$this->parent->gosaMailServer);
+          if (!imap_createmailbox($this->imap_handle, $cfg['connect'].$this->create_folder_id($folder))) {
+            $this->error = imap_last_error();
+            return FALSE;
           }
         }
       }
@@ -627,7 +623,10 @@ class mailMethodCyrus extends mailMethod
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search('(objectClass=fdCyrusServer)',
-                  ['cn','fdCyrusConnect','fdCyrusAdmin','fdCyrusPassword','fdCyrusSieveServer','fdCyrusUseSlashes']);
+                  [
+                    'cn','fdCyrusConnect','fdCyrusAdmin','fdCyrusPassword',
+                    'fdCyrusSieveServer','fdCyrusUseSlashes','fdCyrusAutocreateFolders'
+                  ]);
     while ($attrs = $ldap->fetch()) {
       sscanf($attrs['fdCyrusSieveServer'][0], '{%[^{}:]:%d/%[^{}]}', $sieve_server, $sieve_port, $sieve_option);
 
@@ -637,6 +636,7 @@ class mailMethodCyrus extends mailMethod
         'admin'         => $attrs['fdCyrusAdmin'][0],
         'password'      => $attrs['fdCyrusPassword'][0],
         'useSlashes'    => ($attrs['fdCyrusUseSlashes'][0] ?? 'FALSE'),
+        'autocreate'    => ($attrs['fdCyrusAutocreateFolders'] ?? []),
         'sieve_server'  => $sieve_server,
         'sieve_option'  => $sieve_option,
         'sieve_port'    => $sieve_port

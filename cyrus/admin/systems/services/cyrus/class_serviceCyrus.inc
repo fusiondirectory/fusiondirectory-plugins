@@ -38,9 +38,11 @@ class serviceCyrus extends simpleMailMethodService
    */
   static function getAttributesInfo (): array
   {
+    global $config;
+
     return  [
       'cyrus' => [
-        'name'  => _('Cyrus settings'),
+        'name'  => _('Connection'),
         'attrs' => [
           new CompositeAttribute(
             _('Connect URL for Cyrus server'),
@@ -78,15 +80,10 @@ class serviceCyrus extends simpleMailMethodService
             _('Password'), _('Admin user password'),
             'fdCyrusPassword', TRUE
           ),
-          new BooleanAttribute(
-            _('Use UNIX style'), _('Determines if "foo/bar" or "foo.bar" should be used as namespaces in IMAP'),
-            'fdCyrusUseSlashes', FALSE,
-            ($config->get_cfg_value('CyrusUseSlashes') === 'TRUE')
-          ),
         ]
       ],
       'sieve' => [
-        'name'  => _('Sieve settings'),
+        'name'  => _('Sieve'),
         'attrs' => [
           new CompositeAttribute(
             _('Sieve connect URL for Cyrus server'),
@@ -110,8 +107,25 @@ class serviceCyrus extends simpleMailMethodService
             '/^{(.*):(\\d+)\\/([^\\/]+)}$/',
             '{%s:%d/%s}'
           )
-        ]
-      ]
+        ],
+      ],
+      'settings' => [
+        'name'  => _('Settings'),
+        'attrs' => [
+          new BooleanAttribute(
+            _('Use UNIX style'), _('Determines if "foo/bar" or "foo.bar" should be used as namespaces in IMAP'),
+            'fdCyrusUseSlashes', FALSE,
+            ($config->get_cfg_value('CyrusUseSlashes') === 'TRUE')
+          ),
+          new SetAttribute(
+            new StringAttribute(
+              _('Autocreate folders'), _('List of personal IMAP folders that should be created along initial account creation.'),
+              'fdCyrusAutocreateFolders', FALSE
+            ),
+            $config->get_cfg_value('CyrusAutocreateFolders', [])
+          ),
+        ],
+      ],
     ];
   }
 }

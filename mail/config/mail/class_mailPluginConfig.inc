@@ -60,13 +60,6 @@ class mailPluginConfig extends simplePlugin
             _('Determines if the mailbox should be removed from your IMAP server after the account is deleted in LDAP.'),
             'fdCyrusDeleteMailbox'
           ),
-          new SetAttribute(
-            new StringAttribute(
-              _('Cyrus autocreate folders'),
-              _('List of personal IMAP folders that should be created along initial account creation.'),
-              'fdCyrusAutocreateFolders'
-            )
-          ),
           new IntAttribute(
             _('IMAP timeout'),
             _('Sets the connection timeout for imap actions.'),
