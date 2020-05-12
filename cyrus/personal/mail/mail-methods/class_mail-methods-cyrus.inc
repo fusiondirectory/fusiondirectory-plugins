@@ -21,7 +21,6 @@
 
 class mailMethodCyrus extends mailMethod
 {
-  protected $ServerList   = [];
   protected $imap_handle  = NULL;
   protected $quota_loaded = FALSE;
 
@@ -37,8 +36,16 @@ class mailMethodCyrus extends mailMethod
 
   protected function init ()
   {
+    $cfg = $this->getServerConfig();
+
+    if (isset($cfg['useSlashes']) && ($cfg['useSlashes'] === 'TRUE')) {
+      $this->useSlashesInId = TRUE;
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, 'Enabled', '<b>MAIL:</b> cyrusUseSlashes');
+    } else {
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, 'Disabled', '<b>MAIL:</b> cyrusUseSlashes');
+    }
+
     parent::init();
-    $this->ServerList = parent::getMailServers();
   }
 
   public function connect ()
@@ -47,37 +54,17 @@ class mailMethodCyrus extends mailMethod
     parent::connect();
     $this->connected = FALSE;
 
-    if (!count($this->ServerList)) {
-      $this->error = _("There are no IMAP compatible mail servers defined!");
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-          "<b>IMAP: No mail servers configured, check systems->server->service->imap.</b>", "");
+    $cfg = $this->getServerConfig();
+    if ($cfg === FALSE) {
       return FALSE;
-    } elseif (!isset($this->ServerList[$this->parent->gosaMailServer])) {
-      $this->error = _("Mail server for this account is invalid!");
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-          "<b>IMAP: The selected mail server '".$this->parent->gosaMailServer."' is invalid.</b>", "");
-      return FALSE;
-    } else {
-      $cfg = $this->ServerList[$this->parent->gosaMailServer];
-    }
-
-    /* For some reason, hiding errors with @ does not wor here... */
-    if (!isset($cfg['connect'])) {
-      $cfg['connect']   = "";
-    }
-    if (!isset($cfg['admin'])) {
-      $cfg['admin']     = "";
-    }
-    if (!isset($cfg['password'])) {
-      $cfg['password']  = "";
     }
 
     /* Setting connect timeout to 10 seconds,
         else the FusionDirectory UI may freeze for 60 seconds.
        (PHP default is 'default_socket_timeout = 60') */
-    $timeout = $config->get_cfg_value("imapTimeout", 10);
+    $timeout = $config->get_cfg_value('imapTimeout', 10);
     @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $timeout,
-          "<b>IMAP: Setting imap connect timeout to</b> (seconds)");
+          '<b>IMAP: Setting imap connect timeout to</b> (seconds)');
     imap_timeout(1, $timeout);
 
     $this->imap_handle = @imap_open($cfg['connect'], $cfg['admin'], $cfg['password'], OP_HALFOPEN);
@@ -101,18 +88,21 @@ class mailMethodCyrus extends mailMethod
   public function account_exists ()
   {
     if (!$this->is_connected() || !$this->imap_handle) {
-      trigger_error("Method not connected, catch error.");
+      trigger_error('Method not connected, catch error.');
       return [];
     }
 
     /* Get server config */
-    $cfg  = $this->ServerList[$this->parent->gosaMailServer];
-    $list = @imap_listmailbox($this->imap_handle, $cfg["connect"], $this->account_id);
+    $cfg  = $this->getServerConfig();
+    if ($cfg === FALSE) {
+      return FALSE;
+    }
+    $list = @imap_listmailbox($this->imap_handle, $cfg['connect'], $this->account_id);
     $res  = (is_array($list) && count($list));
     if ($res) {
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "", "<b>IMAP: Account exists in imap server.</b>");
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->account_id, '<b>IMAP: Account exists in imap server.</b>');
     } else {
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "", "<b>IMAP: Account seems NOT to exists in imap server.</b>");
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->account_id, '<b>IMAP: Account seems NOT to exists in imap server.</b>');
     }
     return $res;
   }
@@ -260,11 +250,15 @@ class mailMethodCyrus extends mailMethod
     }
 
     $this->build_account_id();
+
     if ($this->is_connected()) {
-      $cfg  = $this->ServerList[$this->parent->gosaMailServer];
-      $list = imap_listmailbox($this->imap_handle, $cfg["connect"], $this->account_id);
+      $cfg  = $this->getServerConfig();
+      if ($cfg === FALSE) {
+        return FALSE;
+      }
+      $list = imap_listmailbox($this->imap_handle, $cfg['connect'], $this->account_id);
       if ($list === FALSE) {
-        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
+        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->account_id,
           "<b>IMAP: Add account</b> on server :".$this->parent->gosaMailServer);
         if (!imap_createmailbox($this->imap_handle, $cfg["connect"].$this->account_id)) {
           $this->error = imap_last_error();
@@ -299,9 +293,13 @@ class mailMethodCyrus extends mailMethod
       return FALSE;
     }
 
+    $cfg = $this->getServerConfig();
+    if ($cfg === FALSE) {
+      return FALSE;
+    }
+
     $this->build_account_id();
 
-    $cfg = $this->ServerList[$this->parent->gosaMailServer];
     @imap_setacl($this->imap_handle, $this->account_id, $cfg["admin"], "lrswipcda");
 
     if ($config->get_cfg_value("cyrusDeleteMailbox", "TRUE") == "TRUE") {
@@ -326,8 +324,10 @@ class mailMethodCyrus extends mailMethod
 
     $result = [];
 
-    /* Get server config */
-    $cfg = $this->ServerList[$this->parent->gosaMailServer];
+    $cfg = $this->getServerConfig();
+    if ($cfg === FALSE) {
+      return FALSE;
+    }
 
     /* Create search string
        And prepare replacements
@@ -515,7 +515,10 @@ class mailMethodCyrus extends mailMethod
 
     /* Try to login into sieve
      */
-    $cfg    = $this->ServerList[$this->parent->gosaMailServer];
+    $cfg    = $this->getServerConfig();
+    if ($cfg === FALSE) {
+      return FALSE;
+    }
     $sieve  = new sieve($cfg["sieve_server"], $cfg["sieve_port"], $cfg["admin"],
                         $cfg["password"], $this->getUAttribValue(), $cfg["sieve_option"]);
     if (!$sieve->sieve_login()) {
@@ -624,18 +627,19 @@ class mailMethodCyrus extends mailMethod
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search('(objectClass=fdCyrusServer)',
-                  ['cn', 'fdCyrusConnect', 'fdCyrusAdmin', 'fdCyrusPassword', 'fdCyrusSieveServer']);
+                  ['cn','fdCyrusConnect','fdCyrusAdmin','fdCyrusPassword','fdCyrusSieveServer','fdCyrusUseSlashes']);
     while ($attrs = $ldap->fetch()) {
       sscanf($attrs['fdCyrusSieveServer'][0], '{%[^{}:]:%d/%[^{}]}', $sieve_server, $sieve_port, $sieve_option);
 
       $serverList[$attrs['cn'][0]] = [
-        "server_dn"     => $attrs['dn'],
-        "connect"       => $attrs['fdCyrusConnect'][0],
-        "admin"         => $attrs['fdCyrusAdmin'][0],
-        "password"      => $attrs['fdCyrusPassword'][0],
-        "sieve_server"  => $sieve_server,
-        "sieve_option"  => $sieve_option,
-        "sieve_port"    => $sieve_port
+        'server_dn'     => $attrs['dn'],
+        'connect'       => $attrs['fdCyrusConnect'][0],
+        'admin'         => $attrs['fdCyrusAdmin'][0],
+        'password'      => $attrs['fdCyrusPassword'][0],
+        'useSlashes'    => ($attrs['fdCyrusUseSlashes'][0] ?? 'FALSE'),
+        'sieve_server'  => $sieve_server,
+        'sieve_option'  => $sieve_option,
+        'sieve_port'    => $sieve_port
       ];
     }
 

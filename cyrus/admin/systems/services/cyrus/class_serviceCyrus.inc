@@ -78,6 +78,11 @@ class serviceCyrus extends simpleMailMethodService
             _('Password'), _('Admin user password'),
             'fdCyrusPassword', TRUE
           ),
+          new BooleanAttribute(
+            _('Use UNIX style'), _('Determines if "foo/bar" or "foo.bar" should be used as namespaces in IMAP'),
+            'fdCyrusUseSlashes', FALSE,
+            ($config->get_cfg_value('CyrusUseSlashes') === 'TRUE')
+          ),
         ]
       ],
       'sieve' => [

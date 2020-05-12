@@ -56,11 +56,6 @@ class mailPluginConfig extends simplePlugin
             'fdMailFolderCreation'
           ),
           new BooleanAttribute(
-            _('Use cyrus UNIX style'),
-            _('Determines if "foo/bar" or "foo.bar" should be uses as namespaces in IMAP.'),
-            'fdCyrusUseSlashes'
-          ),
-          new BooleanAttribute(
             _('Delete mailbox on account deletion'),
             _('Determines if the mailbox should be removed from your IMAP server after the account is deleted in LDAP.'),
             'fdCyrusDeleteMailbox'
