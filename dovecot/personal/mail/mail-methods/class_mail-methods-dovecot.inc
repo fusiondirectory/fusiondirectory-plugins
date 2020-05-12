@@ -44,34 +44,13 @@ class mailMethodDovecot extends mailMethod
       return FALSE;
     }
 
-    $servers = parent::getMailServers();
-
-    if (!count($servers)) {
-      $this->error = _("There are no IMAP compatible mail servers defined!");
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-          "<b>IMAP: No mail servers configured, check systems->server->service->imap.</b>", "");
+    $cfg = $this->getServerConfig();
+    if ($cfg === FALSE) {
       return FALSE;
-    } elseif (!isset($servers[$this->parent->gosaMailServer])) {
-      $this->error = _("Mail server for this account is invalid!");
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-          "<b>IMAP: The selected mail server '".$this->parent->gosaMailServer."' is invalid.</b>", "");
-      return FALSE;
-    } else {
-      $cfg = $servers[$this->parent->gosaMailServer];
-    }
-
-    /* For some reason, hiding errors with @ does not wor here... */
-    if (!isset($cfg['connect'])) {
-      $cfg['connect']   = "";
-    }
-    if (!isset($cfg['admin'])) {
-      $cfg['admin']     = "";
-    }
-    if (!isset($cfg['password'])) {
-      $cfg['password']  = "";
     }
 
     $this->build_account_id();
+
     $cfg['admin'] = $this->account_id.'*'.$cfg['admin'];
 
     /* Setting connect timeout to 10 seconds,
@@ -190,8 +169,10 @@ class mailMethodDovecot extends mailMethod
     @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
       "<b>Attempting to create folder through Argonaut</b> on server :".$this->parent->gosaMailServer);
 
-    $servers  = parent::getMailServers();
-    $cfg      = $servers[$this->parent->gosaMailServer];
+    $cfg = $this->getServerConfig();
+    if ($cfg === FALSE) {
+      return FALSE;
+    }
 
     $o_queue = new supportDaemon();
     if (!$o_queue->is_error()) {

@@ -31,16 +31,16 @@ class mailMethod
   /* Naming attribute for accounts, e.g. imap. */
   protected $uattrib        = 'mail';
 
-  /* The account prefixes, keep the '.' here! See FAQ cyrusUseSlashes */
+  /* The account prefixes, keep the '.' here! See FAQ useSlashesInId */
   protected $user_prefix    = 'user.';
   protected $share_prefix   = 'share.';
 
   /* Account ID creation
 
-      !!Depends on the attributes 'user_prefix'/'share_prefix' and the option 'cyrusUseSlashes'
+      !!Depends on the attributes 'user_prefix'/'share_prefix' and the option 'useSlashesInId'
 
       Examples - based on defaults :
-        %PREFIX%    => "user." or "user/"           (Depending on cyrusUseSlashes=FALSE/TRUE)
+        %PREFIX%    => "user." or "user/"           (Depending on useSlashesInId=FALSE/TRUE)
         %CN%        => "technical"                  (The groups cn)
         %UID%       => "john"                       (The users uid)
         %MAIL%      => "john@fusiondirectory.org"   (The mail address)
@@ -52,8 +52,8 @@ class mailMethod
   protected $user_id    = "%PREFIX%%UATTRIB%";
   protected $share_id   = "%PREFIX%%UATTRIB%";
 
-  /* Create accounts in cyrus style with '/' instead of '.' */
-  protected $cyrusUseSlashes = FALSE;
+  /* Create accounts with '/' instead of '.' */
+  protected $useSlashesInId = FALSE;
 
   /* gosaSharedFolderTarget settings,
    *  E.g.
@@ -125,13 +125,6 @@ class mailMethod
   protected function init ()
   {
     global $config;
-    /* Get config value for cyrusUseSlashes */
-    if ($config->get_cfg_value('cyrusUseSlashes') == 'TRUE') {
-      $this->cyrusUseSlashes = TRUE;
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, 'Enabled', '<b>MAIL:</b> cyrusUseSlashes');
-    } else {
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, 'Disabled', '<b>MAIL:</b> cyrusUseSlashes');
-    }
 
     /* Check if the mail account identification attribute
        is overridden in the configuration file */
@@ -340,11 +333,11 @@ class mailMethod
       $acc_string = $this->share_id;
     }
 
-    /* Create account prefix and respect "cyrusUseSlashes"
-       Do not replace escaped dots for cyrusUseSlashes.
+    /* Create account prefix and respect "useSlashesInId"
+       Do not replace escaped dots for useSlashesInId.
      */
     $uattrib = $this->uattrib;
-    if ($this->cyrusUseSlashes) {
+    if ($this->useSlashesInId) {
       $prefix     = preg_replace('/([^\\\\])\./', "\\1/", $prefix);
       $acc_string = preg_replace('/([^\\\\])\./', "\\1/", $acc_string);
     }
@@ -405,14 +398,14 @@ class mailMethod
               This function is mainly used to read and write folder permissions.
       @return String A valid folder id
    */
-  public function create_folder_id ($folder)
+  protected function create_folder_id ($folder)
   {
-    $cyrus_delim = ($this->cyrusUseSlashes ? '/' : '.');
+    $delim = ($this->useSlashesInId ? '/' : '.');
     if (!empty($folder)) {
       $folder = trim(preg_replace("/^INBOX[\.\/]*/i", '', $folder));
     }
     if (!empty($folder)) {
-      $folder = $cyrus_delim.$folder;
+      $folder = $delim.$folder;
     }
 
     /* We need to move the domain to the end
@@ -581,6 +574,27 @@ class mailMethod
     return TRUE;
   }
 
+  /*! \brief  Returns configuration of selected mail server
+      @return Array configuration
+  */
+  protected function getServerConfig ()
+  {
+    $serverList = parent::getMailServers();
+
+    if (!count($serverList)) {
+      $this->error = _('There are no IMAP compatible mail servers defined!');
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
+          '<b>IMAP: No mail servers configured, check systems->server->services</b>', '');
+      return FALSE;
+    } elseif (!isset($serverList[$this->parent->gosaMailServer])) {
+      $this->error = _('Mail server for this account is invalid!');
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->parent->gosaMailServer,
+          '<b>IMAP: The selected mail server is invalid</b>');
+      return FALSE;
+    } else {
+      return $serverList[$this->parent->gosaMailServer];
+    }
+  }
 
   /*! \brief  Returns all mail servers configured in FusionDirectory
       @return Array  All useable mail servers
