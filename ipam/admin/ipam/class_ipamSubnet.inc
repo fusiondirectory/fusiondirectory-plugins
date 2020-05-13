@@ -89,7 +89,7 @@ class ipamSubnet extends simplePlugin
         'attrs' => [
           new IPAttribute(
             _('IP'), _('Subnet IP'),
-            'ipHostNumber', FALSE
+            'ipHostNumber', TRUE
           ),
           new IPAttribute(
             _('Netmask'), _('Subnet netmask'),
