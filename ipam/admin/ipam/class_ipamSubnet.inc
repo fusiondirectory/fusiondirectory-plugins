@@ -87,13 +87,9 @@ class ipamSubnet extends simplePlugin
       'ip' => [
         'name'  => _('IP information'),
         'attrs' => [
-          new IPAttribute(
-            _('IP'), _('Subnet IP'),
-            'ipHostNumber', TRUE
-          ),
-          new IPAttribute(
-            _('Netmask'), _('Subnet netmask'),
-            'fdIpamNetmask', FALSE
+          new CIDRAttribute(
+            _('IP'), _('Subnet IP and mask size in CIDR notation'),
+            'fdIpamSubnetCIDR', TRUE
           ),
         ]
       ]
