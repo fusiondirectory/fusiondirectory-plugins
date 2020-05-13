@@ -408,8 +408,10 @@ class supannAccount extends simplePlugin
     $supannEntiteAffectation  = $this->supannEntiteAffectation;
     foreach ($this->supannEtuInscription as $inscription) {
       $values = $this->attributesAccess['supannEtuInscription']->attribute->readValues($inscription);
-      $supannEtablissement[]      = $values[0];
-      $supannEntiteAffectation[]  = $values[6];
+      $supannEtablissement[]  = $values[0];
+      if (!empty($values[6])) {
+        $supannEntiteAffectation[]  = $values[6];
+      }
     }
     $this->supannEtablissement      = array_values(array_unique($supannEtablissement));
     $this->supannEntiteAffectation  = array_values(array_unique($supannEntiteAffectation));
