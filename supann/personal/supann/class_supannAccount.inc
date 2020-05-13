@@ -370,6 +370,7 @@ class supannAccount extends simplePlugin
 
     $this->attributesAccess['supannEntiteAffectation']->attribute->setChoices($code_entites, $label_entites);
     $this->attributesAccess['supannEtablissement']->attribute->setChoices($code_etablissements, $label_etablissements);
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[0]->setChoices($code_etablissements, $label_etablissements);
     $this->supannInit();
   }
 
@@ -404,6 +405,13 @@ class supannAccount extends simplePlugin
     $label_ent  = $this->attributesAccess['supannEntiteAffectation']->getDisplayValues();
 
     /* Values */
+    $supannEtablissement = $this->supannEtablissement;
+    foreach ($this->supannEtuInscription as $inscription) {
+      $values = $this->attributesAccess['supannEtuInscription']->attribute->readValues($inscription);
+      $supannEtablissement[] = $values[0];
+    }
+    $this->supannEtablissement = array_values(array_unique($supannEtablissement));
+
     $supannTypeEntiteAffectation = $this->supannTypeEntiteAffectation;
     foreach ($code_ent as $code) {
       if (isset($this->entitesCache[$code]['supannTypeEntite'][0])) {
@@ -416,10 +424,6 @@ class supannAccount extends simplePlugin
     $this->attributesAccess['supannEntiteAffectationPrincipale']->setChoices(
       $code_ent, $label_ent
     );
-    $code_etab   = $this->attributesAccess['supannEtablissement']->getValue();
-    $label_etab  = $this->attributesAccess['supannEtablissement']->getDisplayValues();
-    // supannEtablissement
-    $this->attributesAccess['supannEtuInscription']->attribute->attributes[0]->setChoices($code_etab, $label_etab);
     // supannEntiteAffectation
     $this->attributesAccess['supannEtuInscription']->attribute->attributes[6]->setChoices($code_ent, $label_ent);
     // supannEntiteAffectation
