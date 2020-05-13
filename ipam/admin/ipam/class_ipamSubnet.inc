@@ -95,10 +95,6 @@ class ipamSubnet extends simplePlugin
             _('Netmask'), _('Subnet netmask'),
             'fdIpamNetmask', FALSE
           ),
-          new IPAttribute(
-            _('Broadcast'), _('Broadcast IP'),
-            'fdIpamBroadcast', FALSE
-          ),
         ]
       ]
     ];
