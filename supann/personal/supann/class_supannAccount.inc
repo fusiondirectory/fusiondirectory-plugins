@@ -24,6 +24,8 @@ class supannAccount extends simplePlugin
 {
   protected $displayHeader = TRUE;
 
+  protected $entitesCache = [];
+
   static function plInfo (): array
   {
     return [
@@ -330,12 +332,13 @@ class supannAccount extends simplePlugin
     /* list of entity stored in LDAP tree */
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=supannEntite)', ['supannCodeEntite', 'ou', 'o','supannEtablissement','description']);
+    $ldap->search('(objectClass=supannEntite)', ['supannCodeEntite','supannTypeEntite','ou','o','supannEtablissement','description']);
 
     $code_entites   = [];
     $label_entites  = [];
     $code_etablissements  = [];
     $label_etablissements = [];
+    $this->entitesCache   = [];
     while ($attrs = $ldap->fetch()) {
       if (isset($attrs['supannCodeEntite'][0])) {
         $code_entites[] = $attrs['supannCodeEntite'][0];
@@ -359,6 +362,7 @@ class supannAccount extends simplePlugin
             $label_etablissements[] = $attrs['o'][0].' ('.$attrs['supannEtablissement'][$i].')';
           }
         }
+        $this->entitesCache[$attrs['supannCodeEntite'][0]] = $attrs;
       }
     }
     array_multisort($label_entites,         $code_entites);
@@ -389,14 +393,26 @@ class supannAccount extends simplePlugin
     ]);
     $this->attributesAccess['supannEtuInscription']->setLinearRendering(FALSE);
 
-    $this->updateFieldsChoices();
+    $this->updateFieldsChoicesAndValues();
   }
 
   /* Update choices of fields which depends on other fields values */
-  function updateFieldsChoices ()
+  protected function updateFieldsChoicesAndValues ()
   {
+    global $config;
     $code_ent   = $this->attributesAccess['supannEntiteAffectation']->getValue();
     $label_ent  = $this->attributesAccess['supannEntiteAffectation']->getDisplayValues();
+
+    /* Values */
+    $supannTypeEntiteAffectation = $this->supannTypeEntiteAffectation;
+    foreach ($code_ent as $code) {
+      if (isset($this->entitesCache[$code]['supannTypeEntite'][0])) {
+        $supannTypeEntiteAffectation[] = $this->entitesCache[$code]['supannTypeEntite'][0];
+      }
+    }
+    $this->supannTypeEntiteAffectation = array_values(array_unique($supannTypeEntiteAffectation));
+
+    /* Choices */
     $this->attributesAccess['supannEntiteAffectationPrincipale']->setChoices(
       $code_ent, $label_ent
     );
@@ -434,13 +450,13 @@ class supannAccount extends simplePlugin
   function save_object ()
   {
     parent::save_object();
-    $this->updateFieldsChoices();
+    $this->updateFieldsChoicesAndValues();
   }
 
   function adapt_from_template (array $attrs, array $skip = [])
   {
     parent::adapt_from_template($attrs, $skip);
-    $this->updateFieldsChoices();
+    $this->updateFieldsChoicesAndValues();
   }
 
   protected function prepare_save (): array
