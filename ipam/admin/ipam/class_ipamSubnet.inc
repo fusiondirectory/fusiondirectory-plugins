@@ -54,7 +54,7 @@ class ipamSubnet extends simplePlugin
           ),
           new BooleanAttribute(
             _('Active'), _('Is this subnet active'),
-            'fdIpamActive', TRUE
+            'fdIpamActive', FALSE
           ),
           new StringAttribute(
             _('Organization'), _('Subnet organization'),
