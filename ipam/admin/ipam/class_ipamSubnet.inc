@@ -96,10 +96,6 @@ class ipamSubnet extends simplePlugin
             'fdIpamNetmask', FALSE
           ),
           new IPAttribute(
-            _('Gateway'), _('Gateway IP'),
-            'fdIpamGateway', FALSE
-          ),
-          new IPAttribute(
             _('Broadcast'), _('Broadcast IP'),
             'fdIpamBroadcast', FALSE
           ),
