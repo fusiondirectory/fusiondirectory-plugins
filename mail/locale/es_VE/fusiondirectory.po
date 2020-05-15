@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2019
+# fusiondirectory <contact@fusiondirectory.org>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-03-17 10:22+0000\n"
+"POT-Creation-Date: 2020-05-15 09:03+0000\n"
 "PO-Revision-Date: 2018-08-13 19:57+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2019\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2020\n"
 "Language-Team: Spanish (Venezuela) (https://www.transifex.com/fusiondirectory/teams/12202/es_VE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -206,46 +206,28 @@ msgid ""
 msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:59
-msgid "Use cyrus UNIX style"
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:60
-msgid "Determines if \"foo/bar\" or \"foo.bar\" should be uses as namespaces in IMAP."
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:64
 msgid "Delete mailbox on account deletion"
 msgstr ""
 
-#: config/mail/class_mailPluginConfig.inc:65
+#: config/mail/class_mailPluginConfig.inc:60
 msgid ""
 "Determines if the mailbox should be removed from your IMAP server after the "
 "account is deleted in LDAP."
 msgstr ""
 
-#: config/mail/class_mailPluginConfig.inc:70
-msgid "Cyrus autocreate folders"
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:71
-msgid ""
-"List of personal IMAP folders that should be created along initial account "
-"creation."
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:76
+#: config/mail/class_mailPluginConfig.inc:64
 msgid "IMAP timeout"
 msgstr ""
 
-#: config/mail/class_mailPluginConfig.inc:77
+#: config/mail/class_mailPluginConfig.inc:65
 msgid "Sets the connection timeout for imap actions."
 msgstr ""
 
-#: config/mail/class_mailPluginConfig.inc:82
+#: config/mail/class_mailPluginConfig.inc:70
 msgid "Shared prefix"
 msgstr ""
 
-#: config/mail/class_mailPluginConfig.inc:83
+#: config/mail/class_mailPluginConfig.inc:71
 msgid "Prefix to add for mail shared folders."
 msgstr ""
 
@@ -360,24 +342,32 @@ msgstr "No puedo guardar el parámetro de cuota: %s"
 msgid "Mail error saving sieve settings: %s"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:145
+#: personal/mail/class_mail-methods.inc:138
 msgid "Configuration error"
 msgstr "Error en la configuración"
 
-#: personal/mail/class_mail-methods.inc:146
+#: personal/mail/class_mail-methods.inc:139
 #, php-format
 msgid "The configured mail attribute '%s' is unsupported!"
 msgstr "¡El atributo '%s' configurado en el correo no esta soportado!"
 
-#: personal/mail/class_mail-methods.inc:152
+#: personal/mail/class_mail-methods.inc:145
 #, php-format
 msgid "%s (%s)"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:693
+#: personal/mail/class_mail-methods.inc:585
+msgid "There are no IMAP compatible mail servers defined!"
+msgstr "¡No se han definido servidores IMAP compatibles!"
+
+#: personal/mail/class_mail-methods.inc:590
+msgid "Mail server for this account is invalid!"
+msgstr "¡El servidor de correo para esta cuenta no es válido!"
+
+#: personal/mail/class_mail-methods.inc:707
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: personal/mail/class_mail-methods.inc:695
+#: personal/mail/class_mail-methods.inc:709
 msgid "Unlimited"
 msgstr "Sin limite"

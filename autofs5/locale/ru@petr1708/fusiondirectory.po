@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-03-11 16:12+0100\n"
+"POT-Creation-Date: 2020-05-15 09:03+0000\n"
 "PO-Revision-Date: 2020-03-11 15:41+0000\n"
 "Language-Team: Russian Petrine orthography (https://www.transifex.com/fusiondirectory/teams/12202/ru@petr1708/)\n"
 "MIME-Version: 1.0\n"
@@ -16,26 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru@petr1708\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-
-#: config/autofs5/class_autofs5Config.inc:26
-msgid "Autofs configuration"
-msgstr ""
-
-#: config/autofs5/class_autofs5Config.inc:27
-msgid "FusionDirectory autofs plugin configuration"
-msgstr ""
-
-#: config/autofs5/class_autofs5Config.inc:40
-msgid "AutoFS"
-msgstr ""
-
-#: config/autofs5/class_autofs5Config.inc:43
-msgid "AutoFS RDN"
-msgstr ""
-
-#: config/autofs5/class_autofs5Config.inc:43
-msgid "Branch in which automount info will be stored"
-msgstr ""
 
 #: admin/autofs5/class_autofs5Management.inc:27
 msgid "Auto fs"
@@ -68,36 +48,56 @@ msgid "Name of the map"
 msgstr ""
 
 #: admin/autofs5/class_automountMap.inc:56
-#: admin/autofs5/class_automountMap.inc:59
+#: admin/autofs5/class_automountMap.inc:60
 msgid "Entries"
 msgstr ""
 
-#: admin/autofs5/class_automountMap.inc:59
+#: admin/autofs5/class_automountMap.inc:60
 msgid "Entries in the automount table"
 msgstr ""
 
-#: admin/autofs5/class_automountMap.inc:63
+#: admin/autofs5/class_automountMap.inc:64
 msgid "Path"
 msgstr ""
 
-#: admin/autofs5/class_automountMap.inc:63
+#: admin/autofs5/class_automountMap.inc:64
 msgid "Absolute (direct) or relative (indirect) path for this entry"
 msgstr ""
 
-#: admin/autofs5/class_automountMap.inc:69
+#: admin/autofs5/class_automountMap.inc:70
 msgid "Options"
 msgstr ""
 
-#: admin/autofs5/class_automountMap.inc:69
+#: admin/autofs5/class_automountMap.inc:70
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
 msgstr ""
 
-#: admin/autofs5/class_automountMap.inc:73
+#: admin/autofs5/class_automountMap.inc:74
 msgid "Description"
 msgstr ""
 
-#: admin/autofs5/class_automountMap.inc:73
+#: admin/autofs5/class_automountMap.inc:74
 msgid "Description of this entry"
+msgstr ""
+
+#: config/autofs5/class_autofs5Config.inc:26
+msgid "Autofs configuration"
+msgstr ""
+
+#: config/autofs5/class_autofs5Config.inc:27
+msgid "FusionDirectory autofs plugin configuration"
+msgstr ""
+
+#: config/autofs5/class_autofs5Config.inc:40
+msgid "AutoFS"
+msgstr ""
+
+#: config/autofs5/class_autofs5Config.inc:43
+msgid "AutoFS RDN"
+msgstr ""
+
+#: config/autofs5/class_autofs5Config.inc:43
+msgid "Branch in which automount info will be stored"
 msgstr ""
