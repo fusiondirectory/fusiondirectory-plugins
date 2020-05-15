@@ -5,17 +5,17 @@
 # 
 # Translators:
 # Paola Penati <paola.penati@opensides.be>, 2018
-# fusiondirectory <contact@fusiondirectory.org>, 2019
 # Paola <paola.penati@fusiondirectory.org>, 2019
+# fusiondirectory <contact@fusiondirectory.org>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-03-17 10:22+0000\n"
+"POT-Creation-Date: 2020-05-15 09:03+0000\n"
 "PO-Revision-Date: 2018-08-13 19:57+0000\n"
-"Last-Translator: Paola <paola.penati@fusiondirectory.org>, 2019\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2020\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -216,20 +216,10 @@ msgstr ""
 "predefinita è %PREFIX %% UATTRIB%."
 
 #: config/mail/class_mailPluginConfig.inc:59
-msgid "Use cyrus UNIX style"
-msgstr "Usa lo stile cyrus UNIX"
-
-#: config/mail/class_mailPluginConfig.inc:60
-msgid "Determines if \"foo/bar\" or \"foo.bar\" should be uses as namespaces in IMAP."
-msgstr ""
-"Determina se \"foo / bar\" o \"foo.bar\" devono essere utilizzati come spazi"
-" dei nomi in IMAP."
-
-#: config/mail/class_mailPluginConfig.inc:64
 msgid "Delete mailbox on account deletion"
 msgstr "Rimuovi la mailbox alla rimozione dell'utente"
 
-#: config/mail/class_mailPluginConfig.inc:65
+#: config/mail/class_mailPluginConfig.inc:60
 msgid ""
 "Determines if the mailbox should be removed from your IMAP server after the "
 "account is deleted in LDAP."
@@ -237,31 +227,19 @@ msgstr ""
 "Determina se la milbox dovrà essere rimossa dal vostro server IMAP in "
 "seguito alla rimozione dell'account utente nell'annuario LDAP."
 
-#: config/mail/class_mailPluginConfig.inc:70
-msgid "Cyrus autocreate folders"
-msgstr "Creazione automatica delle cartelle da parte di cyrus"
-
-#: config/mail/class_mailPluginConfig.inc:71
-msgid ""
-"List of personal IMAP folders that should be created along initial account "
-"creation."
-msgstr ""
-"Elenco delle cartelle IMAP personali che dovranno essere create durante la "
-"creazione iniziale dell'account."
-
-#: config/mail/class_mailPluginConfig.inc:76
+#: config/mail/class_mailPluginConfig.inc:64
 msgid "IMAP timeout"
 msgstr "Timeout IMAP"
 
-#: config/mail/class_mailPluginConfig.inc:77
+#: config/mail/class_mailPluginConfig.inc:65
 msgid "Sets the connection timeout for imap actions."
 msgstr "Imposta il timeout di connessione per le azioni imap."
 
-#: config/mail/class_mailPluginConfig.inc:82
+#: config/mail/class_mailPluginConfig.inc:70
 msgid "Shared prefix"
 msgstr "Prefisso condiviso"
 
-#: config/mail/class_mailPluginConfig.inc:83
+#: config/mail/class_mailPluginConfig.inc:71
 msgid "Prefix to add for mail shared folders."
 msgstr "Prefisso da aggiungere per cartelle mail condivise."
 
@@ -375,24 +353,32 @@ msgstr "Impossibile impostare le quote : %s"
 msgid "Mail error saving sieve settings: %s"
 msgstr "Impostazioni del set di risparmio di errori di posta: %s"
 
-#: personal/mail/class_mail-methods.inc:145
+#: personal/mail/class_mail-methods.inc:138
 msgid "Configuration error"
 msgstr "Errore di configurazione"
 
-#: personal/mail/class_mail-methods.inc:146
+#: personal/mail/class_mail-methods.inc:139
 #, php-format
 msgid "The configured mail attribute '%s' is unsupported!"
 msgstr "L'attributo mail '%s' non è supportato !"
 
-#: personal/mail/class_mail-methods.inc:152
+#: personal/mail/class_mail-methods.inc:145
 #, php-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: personal/mail/class_mail-methods.inc:693
+#: personal/mail/class_mail-methods.inc:585
+msgid "There are no IMAP compatible mail servers defined!"
+msgstr "Non è stato definito nessun server IMAP compatibile !"
+
+#: personal/mail/class_mail-methods.inc:590
+msgid "Mail server for this account is invalid!"
+msgstr "Il server di posta elettronica di questo account non è valido !"
+
+#: personal/mail/class_mail-methods.inc:707
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#: personal/mail/class_mail-methods.inc:695
+#: personal/mail/class_mail-methods.inc:709
 msgid "Unlimited"
 msgstr "Illimitato"

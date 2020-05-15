@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2019
 # Rombout de Neef <rombout.deneef@digipolis.be>, 2020
+# fusiondirectory <contact@fusiondirectory.org>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-03-17 10:22+0000\n"
+"POT-Creation-Date: 2020-05-15 09:03+0000\n"
 "PO-Revision-Date: 2018-08-13 19:57+0000\n"
-"Last-Translator: Rombout de Neef <rombout.deneef@digipolis.be>, 2020\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -208,18 +208,10 @@ msgid ""
 msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:59
-msgid "Use cyrus UNIX style"
-msgstr "Gebruik cyrus UNIX style"
-
-#: config/mail/class_mailPluginConfig.inc:60
-msgid "Determines if \"foo/bar\" or \"foo.bar\" should be uses as namespaces in IMAP."
-msgstr ""
-
-#: config/mail/class_mailPluginConfig.inc:64
 msgid "Delete mailbox on account deletion"
 msgstr "Wis mailbox op account deletion"
 
-#: config/mail/class_mailPluginConfig.inc:65
+#: config/mail/class_mailPluginConfig.inc:60
 msgid ""
 "Determines if the mailbox should be removed from your IMAP server after the "
 "account is deleted in LDAP."
@@ -227,31 +219,19 @@ msgstr ""
 "Bepaald of de mailbox verwijdert moet worden van je IMAP server nadat het "
 "account is verwijdert in LDAP."
 
-#: config/mail/class_mailPluginConfig.inc:70
-msgid "Cyrus autocreate folders"
-msgstr "Cyrus autocreate folders"
-
-#: config/mail/class_mailPluginConfig.inc:71
-msgid ""
-"List of personal IMAP folders that should be created along initial account "
-"creation."
-msgstr ""
-"Lijst van persoonlijke IMAP folders die gecreëerd moeten worden bij de "
-"initiële account creatie."
-
-#: config/mail/class_mailPluginConfig.inc:76
+#: config/mail/class_mailPluginConfig.inc:64
 msgid "IMAP timeout"
 msgstr "IMAP timeout"
 
-#: config/mail/class_mailPluginConfig.inc:77
+#: config/mail/class_mailPluginConfig.inc:65
 msgid "Sets the connection timeout for imap actions."
 msgstr "Stelt de connectie timeout voor imap acties in."
 
-#: config/mail/class_mailPluginConfig.inc:82
+#: config/mail/class_mailPluginConfig.inc:70
 msgid "Shared prefix"
 msgstr "Gedeelde prefix"
 
-#: config/mail/class_mailPluginConfig.inc:83
+#: config/mail/class_mailPluginConfig.inc:71
 msgid "Prefix to add for mail shared folders."
 msgstr "Prefix bij te voegen voor mail gedeelde folders"
 
@@ -366,24 +346,32 @@ msgstr "Kan quota instellingen niet schrijven : %s"
 msgid "Mail error saving sieve settings: %s"
 msgstr "Mail fout, sieve configuratie bewaard: %s"
 
-#: personal/mail/class_mail-methods.inc:145
+#: personal/mail/class_mail-methods.inc:138
 msgid "Configuration error"
 msgstr "Configuratie fout"
 
-#: personal/mail/class_mail-methods.inc:146
+#: personal/mail/class_mail-methods.inc:139
 #, php-format
 msgid "The configured mail attribute '%s' is unsupported!"
 msgstr "De geconfigureerde mail attribuut '%s' is niet ondersteund!"
 
-#: personal/mail/class_mail-methods.inc:152
+#: personal/mail/class_mail-methods.inc:145
 #, php-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: personal/mail/class_mail-methods.inc:693
+#: personal/mail/class_mail-methods.inc:585
+msgid "There are no IMAP compatible mail servers defined!"
+msgstr "Er zijn geen IMAP compatibele mail servers gedefinieerd!"
+
+#: personal/mail/class_mail-methods.inc:590
+msgid "Mail server for this account is invalid!"
+msgstr "Mail server voor dit account is ongeldig!"
+
+#: personal/mail/class_mail-methods.inc:707
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: personal/mail/class_mail-methods.inc:695
+#: personal/mail/class_mail-methods.inc:709
 msgid "Unlimited"
 msgstr "Onbeperkt"

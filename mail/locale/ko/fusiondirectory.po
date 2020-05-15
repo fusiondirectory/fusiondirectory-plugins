@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-03-17 10:22+0000\n"
+"POT-Creation-Date: 2020-05-15 09:03+0000\n"
 "PO-Revision-Date: 2018-08-13 19:57+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2020\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -209,46 +209,28 @@ msgid ""
 msgstr "그룹 계정 생성 문법을 재정의합니다.  기본값은 %PREFIX1%%UATTRIB%."
 
 #: config/mail/class_mailPluginConfig.inc:59
-msgid "Use cyrus UNIX style"
-msgstr "cyrus 유닉스 방식 사용"
-
-#: config/mail/class_mailPluginConfig.inc:60
-msgid "Determines if \"foo/bar\" or \"foo.bar\" should be uses as namespaces in IMAP."
-msgstr "IMAP 네임스페이스에서 \"foo/bar\" 또는 \"foo.bar\"로 사용하지 여부를 결정"
-
-#: config/mail/class_mailPluginConfig.inc:64
 msgid "Delete mailbox on account deletion"
 msgstr "계정 삭제 시 메일박스 삭제"
 
-#: config/mail/class_mailPluginConfig.inc:65
+#: config/mail/class_mailPluginConfig.inc:60
 msgid ""
 "Determines if the mailbox should be removed from your IMAP server after the "
 "account is deleted in LDAP."
 msgstr "LDAP에서 계정이 삭제된 후 IMAP 서버에서 사서함을 제거할지 결정합니다."
 
-#: config/mail/class_mailPluginConfig.inc:70
-msgid "Cyrus autocreate folders"
-msgstr "Cyrus 자동생성 폴더"
-
-#: config/mail/class_mailPluginConfig.inc:71
-msgid ""
-"List of personal IMAP folders that should be created along initial account "
-"creation."
-msgstr "초기 계정 생성시 생성해야하는 개인 IMAP 폴더 목록입니다."
-
-#: config/mail/class_mailPluginConfig.inc:76
+#: config/mail/class_mailPluginConfig.inc:64
 msgid "IMAP timeout"
 msgstr "IMAP 타임아웃"
 
-#: config/mail/class_mailPluginConfig.inc:77
+#: config/mail/class_mailPluginConfig.inc:65
 msgid "Sets the connection timeout for imap actions."
 msgstr "imap의 접속 타임아웃 시간 설정"
 
-#: config/mail/class_mailPluginConfig.inc:82
+#: config/mail/class_mailPluginConfig.inc:70
 msgid "Shared prefix"
 msgstr "공유된 prefix"
 
-#: config/mail/class_mailPluginConfig.inc:83
+#: config/mail/class_mailPluginConfig.inc:71
 msgid "Prefix to add for mail shared folders."
 msgstr "메일 공유폴더의 추가되는 prefix"
 
@@ -360,24 +342,32 @@ msgstr "quota 설정을 쓸 수 없음: %s"
 msgid "Mail error saving sieve settings: %s"
 msgstr "sieve 설정 저장 메일 오류: %s"
 
-#: personal/mail/class_mail-methods.inc:145
+#: personal/mail/class_mail-methods.inc:138
 msgid "Configuration error"
 msgstr "설정 오류"
 
-#: personal/mail/class_mail-methods.inc:146
+#: personal/mail/class_mail-methods.inc:139
 #, php-format
 msgid "The configured mail attribute '%s' is unsupported!"
 msgstr "설정된 메일 속성'%s'은 지원되지 않습니다!"
 
-#: personal/mail/class_mail-methods.inc:152
+#: personal/mail/class_mail-methods.inc:145
 #, php-format
 msgid "%s (%s)"
 msgstr "%s(%s)"
 
-#: personal/mail/class_mail-methods.inc:693
+#: personal/mail/class_mail-methods.inc:585
+msgid "There are no IMAP compatible mail servers defined!"
+msgstr "정의된 IMAP 호환 메일 서버가 없습니다!"
+
+#: personal/mail/class_mail-methods.inc:590
+msgid "Mail server for this account is invalid!"
+msgstr "이 계정의 메일 서버가 유효하지 않습니다!"
+
+#: personal/mail/class_mail-methods.inc:707
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: personal/mail/class_mail-methods.inc:695
+#: personal/mail/class_mail-methods.inc:709
 msgid "Unlimited"
 msgstr "제한없음"

@@ -6,16 +6,16 @@
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
 # Paola Penati <paola.penati@opensides.be>, 2019
-# Paola <paola.penati@fusiondirectory.org>, 2019
+# Paola <paola.penati@fusiondirectory.org>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-03-17 10:22+0000\n"
+"POT-Creation-Date: 2020-05-15 09:03+0000\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
-"Last-Translator: Paola <paola.penati@fusiondirectory.org>, 2019\n"
+"Last-Translator: Paola <paola.penati@fusiondirectory.org>, 2020\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -285,8 +285,8 @@ msgid "Branch in which ppolicies will be stored"
 msgstr "Ramo nel quale verranno immagazinate ppolicies"
 
 #: config/ppolicy/class_ppolicyConfig.inc:50
-msgid "Default ppolicy cn"
-msgstr "Cn di ppolicy predefinito"
+msgid "Default ppolicy dn"
+msgstr "DN ppolicy predefinito"
 
 #: config/ppolicy/class_ppolicyConfig.inc:50
 msgid "What you put as default ppolicy in the overlay config"
@@ -329,17 +329,17 @@ msgstr "Data di scadenza"
 msgid "Email"
 msgstr "Indirizzo di posta elettronica"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:86
-#: addons/dashboard/class_dashBoardPPolicy.inc:139
+#: addons/dashboard/class_dashBoardPPolicy.inc:85
+#: addons/dashboard/class_dashBoardPPolicy.inc:138
 msgid "Configuration error"
 msgstr "Errore di configurazione"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:87
+#: addons/dashboard/class_dashBoardPPolicy.inc:86
 #, php-format
 msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
 msgstr "La ppolicy \"%s\" predefinta non é stata trovata nell'annuario LDAP"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:140
+#: addons/dashboard/class_dashBoardPPolicy.inc:139
 #, php-format
 msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
 msgstr ""
