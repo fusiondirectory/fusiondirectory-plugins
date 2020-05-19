@@ -1,0 +1,22 @@
+##
+## nextcloud-fd.schema - Fusion Directory NextCloud plugin
+##
+
+# Attributes
+attributetype ( 1.3.6.1.4.1.38414.80.1.1 NAME 'fdNextCloudQuota'
+  DESC 'FusionDirectory - NextCloud quota'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX  1.3.6.1.4.1.1466.115.121.1.15)
+
+attributetype ( 1.3.6.1.4.1.38414.80.1.2 NAME 'fdNextCloudHomeFolder'
+  DESC 'FusionDirectory - NextCloud home folder'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX  1.3.6.1.4.1.1466.115.121.1.15)
+
+# Objectclasses
+objectclass (1.3.6.1.4.1.38414.80.2.1 NAME 'fdNextCloudAccount'
+  DESC 'FusionDirectory - NextCloud Account'
+  MUST ( )
+  MAY ( fdNextCloudQuota $ fdNextCloudHomeFolder ) )
