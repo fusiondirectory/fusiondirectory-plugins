@@ -55,7 +55,7 @@ class networkInterface extends simplePlugin
             'cn', TRUE
           ),
           new MacAddressAttribute(
-            _('Mac address'), _('Mac address of this system'),
+            _('MAC address'), _('MAC address of this system'),
             'macAddress', FALSE
           ),
           new SetAttribute(

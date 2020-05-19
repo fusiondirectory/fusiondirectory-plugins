@@ -49,7 +49,7 @@ class interfacesManagement extends management implements SimpleTab
 
   public static $columns = [
     ['LinkColumn',           ['attributes' => 'nameAttr',                   'label' => 'Name']],
-    ['Column',               ['attributes' => 'macAddress',                 'label' => 'Mac']],
+    ['Column',               ['attributes' => 'macAddress',                 'label' => 'MAC']],
     ['Column',               ['attributes' => 'fdNetworkInterfaceVlanDN',   'label' => 'VLAN']],
     ['Column',               ['attributes' => 'fdNetworkInterfaceVlanTag',  'label' => 'VLAN tag']],
     ['Column',               ['attributes' => 'fdNetworkInterfaceSubnetDN', 'label' => 'Subnet']],
@@ -271,7 +271,7 @@ class interfacesManagement extends management implements SimpleTab
       if (class_available('ipamVlan')) {
         $macvlan = $baseobject->macAddress.$baseobject->fdNetworkInterfaceVlanDN;
         if (isset($macvlans[$macvlan])) {
-          $errors[] = sprintf(_('Interfaces "%s" and "%s" use the same Mac + VLAN combination'), $macvlans[$macvlan], $baseobject->cn);
+          $errors[] = sprintf(_('Interfaces "%s" and "%s" use the same MAC + VLAN combination'), $macvlans[$macvlan], $baseobject->cn);
         }
         $macvlans[$macvlan] = $baseobject->cn;
       }
