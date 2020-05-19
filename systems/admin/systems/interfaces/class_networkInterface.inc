@@ -69,8 +69,8 @@ class networkInterface extends simplePlugin
         'attrs' => [
           new ObjectSelectAttribute(
             _('VLAN'), _('VLAN'),
-            'fdNetworkInterfaceVlanId', FALSE,
-            ['ipamVlan'], 'fdIpamVlanInnerId'
+            'fdNetworkInterfaceVlanDN', FALSE,
+            ['ipamVlan']
           ),
           new BooleanAttribute(
             _('VLAN tag'), _('Whether this interface is going to send/receive tagged frames'),
@@ -97,19 +97,17 @@ class networkInterface extends simplePlugin
 
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    if (isset($this->attributesAccess['fdNetworkInterfaceVlanId'])) {
-      $this->attributesAccess['fdNetworkInterfaceVlanId']->setSubmitForm('vlanChanged');
+    if (isset($this->attributesAccess['fdNetworkInterfaceVlanDN'])) {
+      $this->attributesAccess['fdNetworkInterfaceVlanDN']->setSubmitForm('vlanChanged');
       $this->vlanChanged();
     }
   }
 
   function vlanChanged ()
   {
-    if ($this->fdNetworkInterfaceVlanId != '') {
-      /* Get the DN of our current VLAN */
-      $vlans    = objects::ls('ipamVlan', ['fdIpamVlanInnerId' => 1], NULL, '(fdIpamVlanInnerId='.ldap_escape_f($this->fdNetworkInterfaceVlanId).')');
-      $vlanDN   = key($vlans);
-      $subnets  = objects::ls('ipamSubnet', ['dn' => 'raw','cn' => 1], NULL, '(fdIpamVlanDN='.$vlanDN.')');
+    if ($this->fdNetworkInterfaceVlanDN != '') {
+      /* List subnets associated to our VLAN */
+      $subnets  = objects::ls('ipamSubnet', ['dn' => 'raw','cn' => 1], NULL, '(fdIpamVlanDN='.ldap_escape_f($this->fdNetworkInterfaceVlanDN).')');
     } else {
       /* List all the subnets when no VLAN is selected */
       $subnets  = objects::ls('ipamSubnet', ['dn' => 'raw','cn' => 1]);

@@ -45,12 +45,12 @@ class interfacesManagement extends management implements SimpleTab
   var $cn;
 
   /* We list all network interfaces attributes in neededAttrs to get all data */
-  public $neededAttrs = ['cn','macAddress','fdNetworkInterfaceVlanId','fdNetworkInterfaceVlanTag','fdNetworkInterfaceSubnetDN','ipHostNumber'];
+  public $neededAttrs = ['cn','macAddress','fdNetworkInterfaceVlanDN','fdNetworkInterfaceVlanTag','fdNetworkInterfaceSubnetDN','ipHostNumber'];
 
   public static $columns = [
     ['LinkColumn',           ['attributes' => 'nameAttr',                   'label' => 'Name']],
     ['Column',               ['attributes' => 'macAddress',                 'label' => 'Mac']],
-    ['Column',               ['attributes' => 'fdNetworkInterfaceVlanId',   'label' => 'VLAN id']],
+    ['Column',               ['attributes' => 'fdNetworkInterfaceVlanDN',   'label' => 'VLAN']],
     ['Column',               ['attributes' => 'fdNetworkInterfaceVlanTag',  'label' => 'VLAN tag']],
     ['Column',               ['attributes' => 'fdNetworkInterfaceSubnetDN', 'label' => 'Subnet']],
     ['IpColumn',             ['attributes' => 'ipHostNumber',               'label' => 'IP']],
@@ -269,7 +269,7 @@ class interfacesManagement extends management implements SimpleTab
       }
       $baseobject = $object->getBaseObject();
       if (class_available('ipamVlan')) {
-        $macvlan = $baseobject->macAddress.$baseobject->fdNetworkInterfaceVlanId;
+        $macvlan = $baseobject->macAddress.$baseobject->fdNetworkInterfaceVlanDN;
         if (isset($macvlans[$macvlan])) {
           $errors[] = sprintf(_('Interfaces "%s" and "%s" use the same Mac + VLAN combination'), $macvlans[$macvlan], $baseobject->cn);
         }
