@@ -35,6 +35,10 @@ class networkInterface extends simplePlugin
         'icon'        => 'images/empty.png',
         'tabClass'    => 'simpleTabs_noSpecial',
       ]],
+      'plForeignKeys' => [
+        'fdNetworkInterfaceVlanDN'    => 'ipamVlan',
+        'fdNetworkInterfaceSubnetDN'  => 'ipamSubnet',
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];

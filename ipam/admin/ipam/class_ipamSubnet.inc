@@ -32,6 +32,9 @@ class ipamSubnet extends simplePlugin
         'ou'          => get_ou('ipamSubnetRDN'),
         'icon'        => 'geticon.php?context=types&icon=subnet&size=16',
       ]],
+      'plForeignKeys' => [
+        'fdIpamVlanDN' => 'ipamVlan',
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
