@@ -36,7 +36,7 @@ class freeradiusAccount extends simplePlugin
       'plSelfModify'  => TRUE,
       'plPriority'    => 11,
       'plObjectClass' => ['radiusprofile'],
-      'plObjectType'  => ['user'],
+      'plObjectType'  => ['user','ipamVlan','ipamSubnet'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
