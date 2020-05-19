@@ -188,7 +188,7 @@ class networkInterface extends simplePlugin
     $long = ($net & $mask);
     do {
       yield inet_ntop($long);
-      $long = static::incrementIp($long);
+      $long = static::incrementBinaryIp($long);
     } while (($long & $mask) == $net);
   }
 
