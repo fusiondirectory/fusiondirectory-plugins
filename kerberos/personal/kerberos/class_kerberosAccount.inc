@@ -83,7 +83,8 @@ class kerberosAccount extends simplePlugin
           ),
           new IntAttribute(
             'krbPrincipalType', 'This specifies the type of the principal, the types could be any of the types mentioned in section 6.2 of RFC 4120',
-            'krbPrincipalType', FALSE
+            'krbPrincipalType', FALSE,
+            FALSE, FALSE
           ),
           new SetAttribute(
             new StringAttribute(
@@ -115,7 +116,8 @@ class kerberosAccount extends simplePlugin
           ),
           new IntAttribute(
             'krbLoginFailedCount', 'This attribute stores the number of failed authentication attempts happened for the principal since the last successful authentication.',
-            'krbLoginFailedCount', FALSE
+            'krbLoginFailedCount', FALSE,
+            FALSE, FALSE
           ),
           new SetAttribute(
             new StringAttribute(
@@ -142,15 +144,18 @@ class kerberosAccount extends simplePlugin
         'attrs' => [
           new IntAttribute(
             'krbTicketFlags', 'The krbTicketFlags attribute holds information about the kerberos flags for a principal',
-            'krbTicketFlags', FALSE
+            'krbTicketFlags', FALSE,
+            FALSE, FALSE
           ),
           new IntAttribute(
             'krbMaxTicketLife', 'The maximum ticket lifetime for a principal in seconds',
-            'krbMaxTicketLife', FALSE
+            'krbMaxTicketLife', FALSE,
+            FALSE, FALSE
           ),
           new IntAttribute(
             'krbMaxRenewableAge', 'Maximum renewable lifetime for a principal\'s ticket in seconds',
-            'krbMaxRenewableAge', FALSE
+            'krbMaxRenewableAge', FALSE,
+            FALSE, FALSE
           ),
         ],
       ],
