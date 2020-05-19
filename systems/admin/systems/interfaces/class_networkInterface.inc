@@ -72,8 +72,8 @@ class networkInterface extends simplePlugin
             'fdNetworkInterfaceVlanId', FALSE,
             ['ipamVlan'], 'fdIpamVlanInnerId'
           ),
-          new StringAttribute(
-            _('VLAN tag'), _('VLAN tag'),
+          new BooleanAttribute(
+            _('VLAN tag'), _('Whether this interface is going to send/receive tagged frames'),
             'fdNetworkInterfaceVlanTag', FALSE
           ),
           new SelectAttribute(
