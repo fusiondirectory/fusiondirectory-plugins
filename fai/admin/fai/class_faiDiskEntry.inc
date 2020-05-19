@@ -513,7 +513,7 @@ class faiDiskEntry extends simplePlugin
   /* Returns a list of available partitions that are useable in
    *  lvm disk setups.
    */
-  function getAvailablePartitions ()
+  function getAvailablePartitions (): array
   {
     $may  = [];
     $used = [];

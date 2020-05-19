@@ -538,7 +538,7 @@ class faiPartition extends simplePlugin
   /* Returns a list of all partitions that are useable
    *  for raid arrays.
    */
-  function getPartitionList ()
+  function getPartitionList (): array
   {
     $may = $used = [];
     foreach ($this->parent->parent->disks as $disk) {

@@ -225,12 +225,12 @@ class serviceRepository extends simpleService
     return $errors;
   }
 
-  static function createBranch ($distribution, $release)
+  static function createBranch (string $distribution, string $release)
   {
     global $config;
 
     // Check if FAI branch is here
-    $fai  = "ou=$distribution,".get_ou('faiBaseRDN').$config->current['BASE'];
+    $fai  = 'ou='.ldap_escape_dn($distribution).','.get_ou('faiBaseRDN').$config->current['BASE'];
     $ldap = $config->get_ldap_link();
     $ldap->cat($fai, ['dn']);
     if (!$ldap->count()) {
@@ -243,7 +243,7 @@ class serviceRepository extends simpleService
     }
 
     // Check if FAI release branch is here
-    $dn = "ou=$release,$fai";
+    $dn = 'ou='.ldap_escape_dn($release).','.$fai;
     $ldap->cat($dn, ['dn']);
     if (!$ldap->count()) {
       $ldap->cd($dn);
@@ -268,7 +268,7 @@ class serviceRepository extends simpleService
    *
    * \return array All configured repository servers
   */
-  static function getServers ()
+  static function getServers (): array
   {
     global $config;
 
@@ -305,7 +305,7 @@ class serviceRepository extends simpleService
    *
    * \return array All configured customs releases based on the given release
   */
-  static function getCustomReleases ($release)
+  static function getCustomReleases (string $release): array
   {
     $list     = [];
     $servers  = static::getServers();
@@ -319,13 +319,13 @@ class serviceRepository extends simpleService
     return array_values($list);
   }
 
-  static function getParentServers ($distribution, $dn = NULL)
+  static function getParentServers (string $distribution, string $dn = NULL): array
   {
     global $config;
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=FAIrepositoryServer)(FAIrepository=*|'.$distribution.'|*))', ['dn','cn']);
+    $ldap->search('(&(objectClass=FAIrepositoryServer)(FAIrepository=*|'.ldap_escape_f($distribution).'|*))', ['dn','cn']);
 
     $ret = [];
     while ($attr = $ldap->fetch()) {
@@ -339,12 +339,12 @@ class serviceRepository extends simpleService
     return $ret;
   }
 
-  static function getReleaseList ($distribution)
+  static function getReleaseList (string $distribution): array
   {
     global $config;
 
     $ldap = $config->get_ldap_link();
-    $ldap->cd('ou='.$distribution.','.get_ou('faiBaseRDN').$config->current['BASE']);
+    $ldap->cd('ou='.ldap_escape_dn($distribution).','.get_ou('faiBaseRDN').$config->current['BASE']);
     $ldap->search('(objectClass=FAIbranch)', ['ou'], 'one');
 
     $list = [];

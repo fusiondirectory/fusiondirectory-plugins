@@ -34,15 +34,15 @@ class FAIreleaseAttribute extends SelectAttribute
     }
     parent::setValue($value);
     if (isset($this->plugin)) {
-      $this->plugin->attributesAccess['FAIclass']->attributes['profil']->setChoices($this->plugin->cache['PROFILES'][$value]);
-      $this->plugin->attributesAccess['FAIdebianMirror']->setChoices($this->plugin->cache['SERVERS'][$value]);
+      $this->plugin->attributesAccess['FAIclass']->attributes['profil']->setChoices($this->plugin->cache['PROFILES'][$value] ?? []);
+      $this->plugin->attributesAccess['FAIdebianMirror']->setChoices($this->plugin->cache['SERVERS'][$value] ?? []);
     }
   }
 
   function setParent (simplePlugin &$plugin)
   {
     parent::setParent($plugin);
-    $this->setChoices(array_keys($this->plugin->cache['SERVERS']));
+    $this->setChoices(array_keys($this->plugin->cache['SERVERS'] ?? []));
   }
 }
 
