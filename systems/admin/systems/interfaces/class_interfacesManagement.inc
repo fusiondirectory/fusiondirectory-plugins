@@ -88,11 +88,9 @@ class interfacesManagement extends management implements SimpleTab
 
     $this->parent->getBaseObject()->setNetworkAttributesReadOnly(TRUE);
 
-    if ($this->is_template) {
-      if (isset($this->attrs['networkInterfaces'])) {
-        unset($this->attrs['networkInterfaces']['count']);
-        $this->filter->loadTemplateValues($this->attrs['networkInterfaces']);
-      }
+    if ($this->is_template && isset($this->attrs['networkInterfaces'])) {
+      unset($this->attrs['networkInterfaces']['count']);
+      $this->filter->loadTemplateValues($this->attrs['networkInterfaces']);
     }
 
     $this->listing->update();
@@ -263,7 +261,7 @@ class interfacesManagement extends management implements SimpleTab
 
     $ips      = [];
     $macvlans = [];
-    foreach ($this->interfaces as $dn => $object) {
+    foreach ($this->interfaces as $object) {
       if ($object === NULL) {
         continue;
       }
