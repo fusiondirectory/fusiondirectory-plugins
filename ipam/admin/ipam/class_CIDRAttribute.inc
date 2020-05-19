@@ -28,7 +28,7 @@ class CIDRAttribute extends StringAttribute
   function validate ()
   {
     list($ip,$bits) = explode('/', $this->getValue(), 2);
-    if (empty($ip) || empty($bits) || !tests::is_ip($ip) || !preg_match('/^[0-9]$/', $bits) || ($bits > 128)) {
+    if (empty($ip) || empty($bits) || !tests::is_ip($ip) || !preg_match('/^[0-9]+$/', $bits) || ($bits > 128)) {
       return msgPool::invalid($this->getLabel(), $this->getValue(), $this->example);
     }
   }
