@@ -54,7 +54,7 @@ class ipamSubnet extends simplePlugin
           ),
           new BooleanAttribute(
             _('Active'), _('Is this subnet active'),
-            'fdIpamActive', TRUE
+            'fdIpamActive', FALSE
           ),
           new StringAttribute(
             _('Organization'), _('Subnet organization'),
@@ -87,21 +87,9 @@ class ipamSubnet extends simplePlugin
       'ip' => [
         'name'  => _('IP information'),
         'attrs' => [
-          new IPAttribute(
-            _('IP'), _('Subnet IP'),
-            'ipHostNumber', FALSE
-          ),
-          new IPAttribute(
-            _('Netmask'), _('Subnet netmask'),
-            'fdIpamNetmask', FALSE
-          ),
-          new IPAttribute(
-            _('Gateway'), _('Gateway IP'),
-            'fdIpamGateway', FALSE
-          ),
-          new IPAttribute(
-            _('Broadcast'), _('Broadcast IP'),
-            'fdIpamBroadcast', FALSE
+          new CIDRAttribute(
+            _('IP'), _('Subnet IP and mask size in CIDR notation'),
+            'fdIpamSubnetCIDR', TRUE
           ),
         ]
       ]
