@@ -125,18 +125,14 @@ class networkInterface extends simplePlugin
       msg_dialog::display(_('Error'), _('No subnet selected'), ERROR_DIALOG);
       return;
     }
-    $subnets = objects::ls('ipamSubnet', ['dn' => 'raw','ipHostNumber' => 1,'fdIpamNetmask' => 1], $this->fdNetworkInterfaceSubnetDN, '', FALSE, 'base');
+    $subnets = objects::ls('ipamSubnet', ['dn' => 'raw','fdIpamSubnetCIDR' => 1], $this->fdNetworkInterfaceSubnetDN, '', FALSE, 'base');
     if (empty($subnets)) {
       msg_dialog::display(_('Error'), _('Could not find selected subnet'), ERROR_DIALOG);
       return;
     }
     $subnet = reset($subnets);
-    if (!isset($subnet['ipHostNumber'])) {
+    if (!isset($subnet['fdIpamSubnetCIDR'])) {
       msg_dialog::display(_('Error'), _('Selected subnet has no IP'), ERROR_DIALOG);
-      return;
-    }
-    if (!isset($subnet['fdIpamNetmask'])) {
-      msg_dialog::display(_('Error'), _('Selected subnet has no netmask'), ERROR_DIALOG);
       return;
     }
     $ldap = $config->get_ldap_link();
@@ -144,7 +140,7 @@ class networkInterface extends simplePlugin
     $ldap->cd($base);
     $ips        = $this->ipHostNumber;
     $parentIps  = array_merge_unique($this->parent->parent->getUsedIps(), $ips);
-    foreach (static::ipRange($subnet['ipHostNumber'], $subnet['fdIpamNetmask']) as $ip) {
+    foreach (static::ipRange($subnet['fdIpamSubnetCIDR']) as $ip) {
       if (in_array($ip, $parentIps)) {
         continue;
       }
@@ -159,21 +155,52 @@ class networkInterface extends simplePlugin
     msg_dialog::display(_('Error'), _('Could not find any free IP in the selected subnet'), ERROR_DIALOG);
   }
 
-  /* Generator for IP range */
-  static public function ipRange ($ip, $netmask)
+  /*!
+   * \brief Generator for IP range
+   */
+  static public function ipRange (string $cidr)
   {
-    $mask = ip2long($netmask);
-    if ($mask === FALSE) {
-      throw new FusionDirectoryException('Invalid mask');
+    // Get mask bits
+    list($net, $maskBits) = explode('/', $cidr);
+
+    // v4 or v6?
+    $size = ((strpos($net, ':') === FALSE) ? 4 : 16);
+
+    // Convert to binary
+    $net  = inet_pton($net);
+    if (!$net) {
+      throw new InvalidArgumentException('Invalid IP address');
     }
-    $ip   = ip2long($ip);
-    if ($ip === FALSE) {
-      throw new FusionDirectoryException('Invalid IP');
+
+    // Build mask
+    $solid      = floor($maskBits / 8);
+    $solidBits  = $solid * 8;
+    $mask       = str_repeat(chr(255), $solid);
+    for ($i = $solidBits; $i < $maskBits; $i += 8) {
+      $bits = max(0, min(8, $maskBits - $i));
+      $mask .= chr((pow(2, $bits) - 1) << (8 - $bits));
     }
-    $long = ($ip & $mask);
+    $mask = str_pad($mask, $size, chr(0));
+
+    $net  = ($net & $mask);
+    $long = ($net & $mask);
     do {
-      yield long2ip($long);
-      $long++;
-    } while (($long & $mask) == $ip);
+      yield inet_ntop($long);
+      $long = static::incrementIp($long);
+    } while (($long & $mask) == $net);
+  }
+
+  /*!
+   * \brief Takes an IPv4/IPv6 address in binary format, and increments it by given value
+   */
+  static protected function incrementBinaryIp (string $addr, int $increment = 1): string
+  {
+    for ($i = strlen($addr) - 1; $increment > 0 && $i >= 0; --$i) {
+      $val        = ord($addr[$i]) + $increment;
+      $increment  = $val / 256;
+      $addr[$i]   = chr($val % 256);
+    }
+
+    return $addr;
   }
 }
