@@ -37,16 +37,12 @@ class nextcloudAccount extends simplePlugin
     return [
       'plShortName'     => _('NextCloud'),
       'plDescription'   => _('NextCloud settings'),
-      'plFilter'        => '(objectClass=fdNextCloudAccount)',
-      'plIcon'          => 'geticon.php?context=applications&icon=internet-mail&size=48',
-      'plSmallIcon'     => 'geticon.php?context=applications&icon=internet-mail&size=16',
+      'plIcon'          => 'geticon.php?context=places&icon=folder&size=48',
+      'plSmallIcon'     => 'geticon.php?context=places&icon=folder&size=16',
       'plSelfModify'    => TRUE,
-      'plPriority'      => 4,
       'plObjectClass'   => ['fdNextCloudAccount'],
       'plObjectType'    => ['user'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo()),
-      'plForeignKeys'  => []
-      ]
     ];
   }
 
@@ -57,10 +53,10 @@ class nextcloudAccount extends simplePlugin
   {
     return  [
       'main' => [
-        'name'  => _('Mail account'),
+        'name'  => _('NextCloud account'),
         'attrs' => [
 	  new BytesSizeAttribute( 
-            _('File quota size'), _('Define quota size in Bytes'),
+            _('File quota'), _('Define quota size in Bytes'),
             'fdNextCloudQuota', FALSE
           ),
           new PathAttribute(
@@ -72,11 +68,4 @@ class nextcloudAccount extends simplePlugin
     ];
   }
 
-  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
-  {
-    global $config;
-    parent::__construct($dn, $object, $parent, $mainTab);
-
-    $this->mainSectionAttrs = array_keys($this->attributesInfo['main']['attrs']);
-  }
 }
