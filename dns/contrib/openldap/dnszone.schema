@@ -280,22 +280,6 @@ attributetype ( 1.3.6.1.4.1.2428.20.1.65534 NAME 'TYPE65534Record'
 	SUBSTR caseIgnoreIA5SubstringsMatch
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
 
-objectclass ( 1.3.6.1.4.1.2428.20.2 NAME 'dNSDomain2'
-	SUP 'dNSDomain' STRUCTURAL
-	MAY ( DNSTTL $ DNSClass $ WKSRecord $ PTRRecord $
-		HINFORecord $ MINFORecord $ TXTRecord $ RPRecord $
-		AFSDBRecord $ SIGRecord $ KEYRecord $ GPOSRecord $
-		AAAARecord $ LOCRecord $ NXTRecord $ SRVRecord $
-		NAPTRRecord $ KXRecord $ CERTRecord $ A6Record $
-		DNAMERecord $ APLRecord $ DSRecord $ SSHFPRecord $
-		IPSECKEYRecord $ RRSIGRecord $ NSECRecord $
-		DNSKEYRecord $ DHCIDRecord $ NSEC3Record $ NSEC3PARAMRecord $
-		TLSARecord $ CDSRecord $ CDNSKEYRecord $ OPENPGPKEYRecord $
-		SPFRecord $ EUI48Record $ EUI64Record $ TKEYRecord $
-		URIRecord $ CAARecord $ DLVRecord $ TYPE65226Record $
-		TYPE65534Record
-	) )
-
 objectclass ( 1.3.6.1.4.1.2428.20.3 NAME 'dNSZone'
 	SUP top STRUCTURAL
 	MUST ( zoneName $ relativeDomainName )
