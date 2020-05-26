@@ -73,7 +73,7 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
 
 class sshAccount extends simplePlugin implements UserTabLockingAction
 {
-  var $displayHeader = TRUE;
+  protected $displayHeader  = TRUE;
 
   static function plInfo (): array
   {

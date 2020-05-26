@@ -38,7 +38,7 @@ class GroupMailsAttribute extends MailsAttribute
 
 class mailGroup extends simplePlugin
 {
-  var $displayHeader  = TRUE;
+  protected $displayHeader  = TRUE;
 
   static function plInfo (): array
   {

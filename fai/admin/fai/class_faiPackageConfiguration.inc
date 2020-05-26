@@ -21,7 +21,7 @@
 
 class faiPackageConfiguration extends simplePlugin
 {
-  var $ignore_account = TRUE;
+  protected $ignore_account = TRUE;
 
   protected $packageName;
   protected $debconfAttributesTypes;

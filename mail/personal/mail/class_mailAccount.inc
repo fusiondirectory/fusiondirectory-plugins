@@ -63,7 +63,7 @@ class MailQuotaAttribute extends IntAttribute
  */
 class mailAccount extends simplePlugin
 {
-  var $displayHeader  = TRUE;
+  protected $displayHeader  = TRUE;
 
   private $mainSectionAttrs = [];
 

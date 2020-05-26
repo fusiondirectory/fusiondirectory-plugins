@@ -22,7 +22,7 @@ require_once('WebAuthn/WebAuthn.php');
 
 class webauthnAccount extends simplePlugin
 {
-  var $displayHeader = TRUE;
+  protected $displayHeader  = TRUE;
 
   static function plInfo (): array
   {

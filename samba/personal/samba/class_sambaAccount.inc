@@ -139,7 +139,7 @@ class WinstationsAttribute extends SystemsAttribute
 
 class sambaAccount extends simplePlugin implements UserTabLockingAction
 {
-  var $displayHeader = TRUE;
+  protected $displayHeader  = TRUE;
 
   var $SID      = "";
   var $ridBase  = 0;

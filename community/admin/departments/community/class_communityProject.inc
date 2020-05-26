@@ -20,7 +20,7 @@
 
 class communityProject extends communityOrganization
 {
-  var $displayHeader  = TRUE;
+  protected $displayHeader  = TRUE;
 
   static function plInfo (): array
   {

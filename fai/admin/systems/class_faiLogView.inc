@@ -140,8 +140,6 @@ class faiLogView extends simplePlugin
   var $mac;
   var $o_queue;
 
-  var $displayHeader  = FALSE;
-
   static function plInfo (): array
   {
     return [

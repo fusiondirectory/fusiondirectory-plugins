@@ -290,7 +290,7 @@ class fdRPCService
     foreach ($tabobject->by_object as $tab => $obj) {
       $tabs[$tab] = [
         'name'    => $tabobject->by_name[$tab],
-        'active'  => ($obj->is_account || $obj->ignore_account)
+        'active'  => $obj->isActive(),
       ];
     }
     return $tabs;
@@ -306,9 +306,9 @@ class fdRPCService
     $tabobject->current = $tab;
     if (!is_subclass_of($tabobject->by_object[$tab], 'simplePlugin')) {
       throw new WebServiceError('Tab '.$tab.' is not based on simplePlugin, can’t remove it', 501);
-    } elseif (!$tabobject->by_object[$tab]->displayHeader) {
+    } elseif (!$tabobject->by_object[$tab]->isActivatable()) {
       throw new WebServiceError('Tab '.$tab.' cannot be deactivated, can’t remove it');
-    } elseif (!$tabobject->by_object[$tab]->is_account) {
+    } elseif (!$tabobject->by_object[$tab]->isActive()) {
       throw new WebServiceError('Tab '.$tab.' is not activated on "'.$dn.'", can’t remove it');
     } elseif (!$tabobject->by_object[$tab]->acl_is_removeable()) {
       throw new WebServiceError('You don\'t have sufficient rights to disable tab "'.$tab.'"', 403);
@@ -397,8 +397,8 @@ class fdRPCService
     $_POST                  = $values;
     $_POST[$tab.'_posted']  = TRUE;
     if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
-        $tabobject->by_object[$tab]->displayHeader &&
-        !$tabobject->by_object[$tab]->is_account
+        $tabobject->by_object[$tab]->isActivatable() &&
+        !$tabobject->by_object[$tab]->isActive()
       ) {
       $_POST[$tab.'_modify_state'] = 1;
     }
@@ -469,8 +469,8 @@ class fdRPCService
         throw new WebServiceError('This tab does not exists: "'.$tab.'"', 404);
       }
       if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
-          $tabobject->by_object[$tab]->displayHeader &&
-          !$tabobject->by_object[$tab]->is_account
+          $tabobject->by_object[$tab]->isActivatable() &&
+          !$tabobject->by_object[$tab]->isActive()
         ) {
         list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
         if ($disabled) {
@@ -526,8 +526,8 @@ class fdRPCService
         throw new WebServiceError('This tab does not exists: "'.$tab.'"', 404);
       }
       if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
-          $tabobject->by_object[$tab]->displayHeader &&
-          !$tabobject->by_object[$tab]->is_account
+          $tabobject->by_object[$tab]->isActivatable() &&
+          !$tabobject->by_object[$tab]->isActive()
         ) {
         if ($tabobject->by_object[$tab]->acl_is_createable()) {
           $tabobject->by_object[$tab]->is_account = TRUE;

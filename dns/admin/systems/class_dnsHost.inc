@@ -141,7 +141,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
 
 class dnsHost extends simplePlugin
 {
-  var $displayHeader = TRUE;
+  protected $displayHeader  = TRUE;
 
   protected $zonesCache;
   protected $loaded = FALSE;

@@ -48,7 +48,7 @@ class FAIreleaseAttribute extends SelectAttribute
 
 class faiStartup extends simplePlugin
 {
-  var $displayHeader = TRUE;
+  protected $displayHeader  = TRUE;
 
   var $inheritance    = ['gosaGroupOfNames' => 'member'];
   var $sdaemon_available;

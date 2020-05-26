@@ -262,8 +262,8 @@ class sinapsDiffusionHandlerJob
       }
       if ($tabvalues === FALSE) {
         if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
-            $tabobject->by_object[$tab]->displayHeader &&
-            $tabobject->by_object[$tab]->is_account
+            $tabobject->by_object[$tab]->isActivatable() &&
+            $tabobject->by_object[$tab]->isActive()
           ) {
           list($disabled, , $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
           if ($disabled) {
@@ -273,8 +273,8 @@ class sinapsDiffusionHandlerJob
         }
       } else {
         if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
-            $tabobject->by_object[$tab]->displayHeader &&
-            !$tabobject->by_object[$tab]->is_account
+            $tabobject->by_object[$tab]->isActivatable() &&
+            !$tabobject->by_object[$tab]->isActive()
           ) {
           list($disabled, , $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
           if ($disabled) {

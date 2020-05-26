@@ -329,8 +329,6 @@ class SudoOptionAttribute extends Attribute
  */
 class sudoOption extends simplePlugin
 {
-  var $displayHeader = FALSE;
-
   static function plInfo (): array
   {
     return [
