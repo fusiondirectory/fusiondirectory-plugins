@@ -285,7 +285,7 @@ class fdRestService extends fdRPCService
     if (!is_subclass_of($object, 'simplePlugin')) {
       throw new WebServiceError('Invalid tab', 501);
     }
-    if (!$object->is_account && !$object->ignore_account) {
+    if (!$object->isActive()) {
       throw new WebServiceError(sprintf('Tab "%s" is inactive', $tab));
     }
     $attributes = [];
@@ -326,7 +326,7 @@ class fdRestService extends fdRPCService
       throw new WebServiceError('Not enough rights to read "'.$attribute.'"', 403);
     }
 
-    if (!$object->is_account && !$object->ignore_account) {
+    if (!$object->isActive()) {
       throw new WebServiceError(sprintf('Tab "%s" is inactive', $tab));
     }
 

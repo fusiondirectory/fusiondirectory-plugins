@@ -646,7 +646,7 @@ class servicesManagement extends management implements SimpleTab
   public function mergeObjectClasses (array $oc): array
   {
     foreach ($this->plugins as $plugin) {
-      if ($plugin->is_account || $plugin->ignore_account) {
+      if ($plugin->isActive()) {
         $oc = $plugin->mergeObjectClasses($oc);
       }
     }

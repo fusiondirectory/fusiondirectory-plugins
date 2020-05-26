@@ -290,7 +290,7 @@ class fdRPCService
     foreach ($tabobject->by_object as $tab => $obj) {
       $tabs[$tab] = [
         'name'    => $tabobject->by_name[$tab],
-        'active'  => ($obj->is_account || $obj->ignore_account)
+        'active'  => $obj->isActive(),
       ];
     }
     return $tabs;
