@@ -74,6 +74,9 @@ class interfacesManagementFilter extends managementFilter
       if (empty($value)) {
         $value = NULL;
       } elseif (!is_array($value)) {
+        if (is_bool($value)) {
+          $value = ($value ? 'TRUE' : 'FALSE');
+        }
         $value = [$value];
       }
       $this->entriesCache[0][$dn][$attr] = $value;
