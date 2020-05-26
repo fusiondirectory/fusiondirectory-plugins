@@ -21,8 +21,6 @@
 
 class fiInventory extends simplePlugin
 {
-  var $displayHeader  = FALSE;
-
   protected $filter = '';
 
   static $sections = [

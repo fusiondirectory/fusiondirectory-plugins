@@ -77,7 +77,7 @@ class SocialAccountAttribute extends CompositeAttribute
 
 class personalInfo extends simplePlugin
 {
-  var $displayHeader = TRUE;
+  protected $displayHeader  = TRUE;
 
   static function plInfo (): array
   {
