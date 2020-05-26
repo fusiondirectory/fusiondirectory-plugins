@@ -28,9 +28,7 @@
  */
 class nextcloudAccount extends simplePlugin
 {
-  var $displayHeader  = TRUE;
-
-  private $mainSectionAttrs = [];
+  protected $displayHeader  = TRUE;
 
   static function plInfo (): array
   {
@@ -55,8 +53,8 @@ class nextcloudAccount extends simplePlugin
       'main' => [
         'name'  => _('NextCloud account'),
         'attrs' => [
-	  new BytesSizeAttribute( 
-            _('File quota'), _('Define quota size in Bytes'),
+          new BytesSizeAttribute(
+            _('File quota'), _('Define quota size'),
             'fdNextCloudQuota', FALSE
           ),
           new PathAttribute(
@@ -67,5 +65,4 @@ class nextcloudAccount extends simplePlugin
       ]
     ];
   }
-
 }
