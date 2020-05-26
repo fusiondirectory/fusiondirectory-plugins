@@ -105,6 +105,12 @@ class networkInterface extends simplePlugin
       $this->attributesAccess['fdNetworkInterfaceVlanDN']->setSubmitForm('vlanChanged');
       $this->vlanChanged();
     }
+
+    $this->attributesAccess['fdNetworkInterfaceVlanDN']->setManagedAttributes(
+      [
+        'erase' => ['' => ['fdNetworkInterfaceVlanTagged']]
+      ]
+    );
   }
 
   function vlanChanged ()
