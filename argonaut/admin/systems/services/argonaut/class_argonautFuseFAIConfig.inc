@@ -20,8 +20,8 @@
 
 class argonautFuseFAIConfig extends simplePlugin
 {
-  var $showActions    = FALSE;
-  protected $displayHeader  = TRUE;
+  protected static $showActions = FALSE;
+  protected $displayHeader      = TRUE;
 
   static function plInfo (): array
   {
