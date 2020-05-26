@@ -1,8 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2007  Fabian Hicker
-  Copyright (C) 2011-2018  FusionDirectory
+  Copyright (C) 2020  FusionDirectory
   Copyright (C) 2020  Clement Oudot <clement.oudot@worteks.com>
 
   This program is free software; you can redistribute it and/or modify
