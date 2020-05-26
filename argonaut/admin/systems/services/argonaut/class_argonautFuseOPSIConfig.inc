@@ -22,7 +22,7 @@
 class argonautFuseOPSIConfig extends simplePlugin
 {
   var $showActions    = FALSE;
-  var $displayHeader  = TRUE;
+  protected $displayHeader  = TRUE;
 
   static function plInfo (): array
   {

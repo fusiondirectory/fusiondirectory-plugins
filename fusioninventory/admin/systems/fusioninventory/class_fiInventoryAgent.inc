@@ -20,7 +20,7 @@
 
 class fiInventoryAgent extends simplePlugin
 {
-  var $displayHeader  = TRUE;
+  protected $displayHeader  = TRUE;
 
   static function plInfo (): array
   {

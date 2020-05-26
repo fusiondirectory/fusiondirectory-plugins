@@ -22,7 +22,7 @@
 class argonautFuseLTSPConfig extends simplePlugin
 {
   var $showActions    = FALSE;
-  var $displayHeader  = TRUE;
+  protected $displayHeader  = TRUE;
 
   /* Return plugin information for acl handling */
   static function plInfo (): array

@@ -382,8 +382,8 @@ class fdRestService extends fdRPCService
     if (!is_subclass_of($object, 'simplePlugin')) {
       throw new WebServiceError('Invalid tab', 501);
     }
-    if ($tabobject->by_object[$tab]->displayHeader &&
-        !$tabobject->by_object[$tab]->is_account
+    if ($tabobject->by_object[$tab]->isActivatable() &&
+        !$tabobject->by_object[$tab]->isActive()
       ) {
       list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
       if ($disabled) {
@@ -465,7 +465,7 @@ class fdRestService extends fdRPCService
       throw new WebServiceError('Unknown attribute', 404);
     }
 
-    if ($object->displayHeader && !$object->is_account) {
+    if (!$object->isActive()) {
       throw new WebServiceError('Inactive tab', 400);
     }
 

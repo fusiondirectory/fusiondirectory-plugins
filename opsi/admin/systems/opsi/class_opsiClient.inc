@@ -20,7 +20,7 @@
 
 class opsiClient extends simplePlugin
 {
-  var $displayHeader  = TRUE;
+  protected $displayHeader  = TRUE;
 
   var $inheritance = ['gosaGroupOfNames' => 'member'];
 
