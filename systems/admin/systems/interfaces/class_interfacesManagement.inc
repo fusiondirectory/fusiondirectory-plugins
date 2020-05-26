@@ -45,15 +45,15 @@ class interfacesManagement extends management implements SimpleTab
   var $cn;
 
   /* We list all network interfaces attributes in neededAttrs to get all data */
-  public $neededAttrs = ['cn','macAddress','fdNetworkInterfaceVlanDN','fdNetworkInterfaceVlanTag','fdNetworkInterfaceSubnetDN','ipHostNumber'];
+  public $neededAttrs = ['cn','macAddress','fdNetworkInterfaceVlanDN','fdNetworkInterfaceVlanTagged','fdNetworkInterfaceSubnetDN','ipHostNumber'];
 
   public static $columns = [
-    ['LinkColumn',           ['attributes' => 'nameAttr',                   'label' => 'Name']],
-    ['Column',               ['attributes' => 'macAddress',                 'label' => 'MAC']],
-    ['Column',               ['attributes' => 'fdNetworkInterfaceVlanDN',   'label' => 'VLAN']],
-    ['Column',               ['attributes' => 'fdNetworkInterfaceVlanTag',  'label' => 'VLAN tag']],
-    ['Column',               ['attributes' => 'fdNetworkInterfaceSubnetDN', 'label' => 'Subnet']],
-    ['IpColumn',             ['attributes' => 'ipHostNumber',               'label' => 'IP']],
+    ['LinkColumn',           ['attributes' => 'nameAttr',                     'label' => 'Name']],
+    ['Column',               ['attributes' => 'macAddress',                   'label' => 'MAC']],
+    ['Column',               ['attributes' => 'fdNetworkInterfaceVlanDN',     'label' => 'VLAN']],
+    ['Column',               ['attributes' => 'fdNetworkInterfaceVlanTagged', 'label' => 'VLAN tagged']],
+    ['Column',               ['attributes' => 'fdNetworkInterfaceSubnetDN',   'label' => 'Subnet']],
+    ['IpColumn',             ['attributes' => 'ipHostNumber',                 'label' => 'IP']],
     ['ActionsColumn',        ['label' => 'Actions']],
   ];
 

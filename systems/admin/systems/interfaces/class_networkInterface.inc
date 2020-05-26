@@ -77,8 +77,8 @@ class networkInterface extends simplePlugin
             ['ipamVlan']
           ),
           new BooleanAttribute(
-            _('VLAN tag'), _('Whether this interface is going to send/receive tagged frames'),
-            'fdNetworkInterfaceVlanTag', FALSE
+            _('VLAN tagged'), _('Whether this interface is going to send/receive tagged frames'),
+            'fdNetworkInterfaceVlanTagged', FALSE
           ),
           new SelectAttribute(
             _('Subnet'), _('Subnet'),
