@@ -32,7 +32,6 @@ class interfacesManagement extends management implements SimpleTab
 
   /* Vars needed for simpleTabs */
   public $is_account      = TRUE;
-  public $ignore_account  = TRUE;
   public $dn;
   public $is_template     = FALSE;
   public $parent          = NULL;
@@ -238,5 +237,21 @@ class interfacesManagement extends management implements SimpleTab
    */
   public function fillHookAttrs (array &$addAttrs)
   {
+  }
+
+  /*!
+   * \brief Test whether a tab is active
+   */
+  public function isActive (): bool
+  {
+    return TRUE;
+  }
+
+  /*!
+   * \brief Test whether a tab can be deactivated
+   */
+  public function isActivatable (): bool
+  {
+    return FALSE;
   }
 }
