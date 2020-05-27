@@ -73,9 +73,11 @@ class freeradiusAccount extends simplePlugin
         'name'  => _('Groups'),
         'attrs' => [
           new SetAttribute(
-            new SelectAttribute(
+            new ObjectSelectAttribute(
               _('Groups'), _('FreeRadius Groups'),
-              'radiusGroupName', FALSE
+              'radiusGroupName', FALSE,
+              ['group'], 'cn', 'cn',
+              '(objectClass=radiusprofile)'
             )
           ),
         ],
@@ -160,23 +162,5 @@ class freeradiusAccount extends simplePlugin
         ],
       ],
     ];
-  }
-
-  /*!
-   * \brief Constructor of the freeradiusAccount
-   *        It will build the select groups choices
-   */
-  function __construct (string $dn = NULL, $object = NULL, $parent = NULL, bool $mainTab = FALSE)
-  {
-    global $config;
-    parent::__construct($dn, $object, $parent, $mainTab);
-    $ldap = $config->get_ldap_link();
-    $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=radiusprofile)(cn=*))', ['cn']);
-    $groups = [];
-    while ($attrs = $ldap->fetch()) {
-      $groups[] = $attrs['cn'][0];
-    }
-    $this->attributesAccess['radiusGroupName']->attribute->setChoices($groups);
   }
 }
