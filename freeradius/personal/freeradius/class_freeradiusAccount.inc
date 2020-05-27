@@ -29,7 +29,7 @@ class freeradiusAccount extends simplePlugin
   {
     return [
       'plShortName'   => _('Freeradius'),
-      'plDescription' => _('Radius accounting based on FreeRadius'),
+      'plDescription' => _('FreeRadius information'),
       'plFilter'      => '(objectClass=radiusprofile)',
       'plIcon'        => 'geticon.php?context=applications&icon=freeradius&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=freeradius&size=16',
