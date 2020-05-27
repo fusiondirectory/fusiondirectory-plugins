@@ -135,7 +135,30 @@ class freeradiusAccount extends simplePlugin
             2
           )
         ]
-      ]
+      ],
+      'advanced' => [
+        'name'  => _('Advanced'),
+        'attrs' => [
+          new SetAttribute(
+            new StringAttribute(
+              _('Control attributes'), _('Control attributes using format [qualifiers.]<attribute> <operator> <value>'),
+              'radiusControlAttribute', FALSE
+            )
+          ),
+          new SetAttribute(
+            new StringAttribute(
+              _('Reply attributes'), _('Reply attributes using format [qualifiers.]<attribute> <operator> <value>'),
+              'radiusReplyAttribute', FALSE
+            )
+          ),
+          new SetAttribute(
+            new StringAttribute(
+              _('Request attributes'), _('Request attributes using format [qualifiers.]<attribute> <operator> <value>'),
+              'radiusRequestAttribute', FALSE
+            )
+          ),
+        ],
+      ],
     ];
   }
 
