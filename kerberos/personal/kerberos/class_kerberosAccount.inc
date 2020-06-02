@@ -59,11 +59,9 @@ class kerberosAccount extends simplePlugin
             'krbUPEnabled', 'This flag is used to find whether directory User Password has to be used as kerberos password',
             'krbUPEnabled', FALSE
           ),
-          new SetAttribute(
-            new StringAttribute(
-              'krbPrincipalKey', 'This attribute holds the principal\'s key (krbPrincipalKey) that is encrypted with the master key (krbMKey). The attribute is ASN.1 encoded.',
-              'krbPrincipalKey', FALSE
-            )
+          new HiddenArrayAttribute(
+            'krbPrincipalKey', 'This attribute holds the principal\'s key (krbPrincipalKey) that is encrypted with the master key (krbMKey). The attribute is ASN.1 encoded.',
+            'krbPrincipalKey', FALSE
           ),
           new StringAttribute(
             'krbTicketPolicyReference', 'FDN pointing to a Kerberos Ticket Policy object.',
@@ -119,11 +117,12 @@ class kerberosAccount extends simplePlugin
             'krbLoginFailedCount', FALSE,
             FALSE, FALSE
           ),
-          new SetAttribute(
-            new StringAttribute(
+          new NoAddOrderedArrayAttribute(
+            new KrbExtraDataAttribute(
               'krbExtraData', 'This attribute holds the application specific data.',
               'krbExtraData', FALSE
-            )
+            ),
+            FALSE
           ),
           new SetAttribute(
             new StringAttribute(
