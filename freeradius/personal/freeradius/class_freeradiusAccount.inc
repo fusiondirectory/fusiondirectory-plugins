@@ -144,19 +144,28 @@ class freeradiusAccount extends simplePlugin
           new SetAttribute(
             new StringAttribute(
               _('Control attributes'), _('Control attributes using format [qualifiers.]<attribute> <operator> <value>'),
-              'radiusControlAttribute', FALSE
+              'radiusControlAttribute', FALSE,
+              '', '',
+              '/^&?[0-9a-zA-Z-_.:]+\s*[=~!+:*><-]{1,2}\s*.*$/',
+              'User-Name := "foo"'
             )
           ),
           new SetAttribute(
             new StringAttribute(
               _('Reply attributes'), _('Reply attributes using format [qualifiers.]<attribute> <operator> <value>'),
-              'radiusReplyAttribute', FALSE
+              'radiusReplyAttribute', FALSE,
+              '', '',
+              '/^&?[0-9a-zA-Z-_.:]+\s*[=~!+:*><-]{1,2}\s*.*$/',
+              'User-Name := "foo"'
             )
           ),
           new SetAttribute(
             new StringAttribute(
               _('Request attributes'), _('Request attributes using format [qualifiers.]<attribute> <operator> <value>'),
-              'radiusRequestAttribute', FALSE
+              'radiusRequestAttribute', FALSE,
+              '', '',
+              '/^&?[0-9a-zA-Z-_.:]+\s*[=~!+:*><-]{1,2}\s*.*$/',
+              'User-Name := "foo"'
             )
           ),
         ],
