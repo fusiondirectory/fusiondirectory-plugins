@@ -161,18 +161,21 @@ class mailMethodRenaterPartage extends mailMethod
   */
   public function check ()
   {
-    $messages = parent::check();
+    $errors   = parent::check();
     $servers  = static::getMailServers();
     $infos    = $servers[$this->parent->gosaMailServer];
 
     $alternates = $this->parent->gosaMailAlternateAddress;
     foreach ($alternates as $alternate) {
       if (!preg_match('/@'.preg_quote($infos['domain'], '/').'$/', $alternate)) {
-        $messages[] = sprintf(_('Email address "%s" does not use the correct partage domain "%s"'), $alternate, $infos['domain']);
+        $errors[] = new SimplePluginCheckError(
+          $this->parent,
+          htmlescape(sprintf(_('Email address "%s" does not use the correct partage domain "%s"'), $alternate, $infos['domain']))
+        );
       }
     }
 
-    return $messages;
+    return $errors;
   }
 
   /*! \brief  Returns the connection status of this method.

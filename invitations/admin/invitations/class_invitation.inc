@@ -111,16 +111,19 @@ class invitation extends simplePlugin
 
   function check (): array
   {
-    $messages = parent::check();
+    $errors = parent::check();
 
     $emails = explode("\n", $this->emails);
     foreach ($emails as $email) {
       if (!tests::is_email($email)) {
-        $messages[] = sprintf(_('"%s" is not a valid email address'), $email);
+        $errors[] = new SimplePluginCheckError(
+          $this->attributesAccess['emails'],
+          htmlescape(sprintf(_('"%s" is not a valid email address'), $email))
+        );
       }
     }
 
-    return $messages;
+    return $errors;
   }
 
   protected function shouldSave (): bool

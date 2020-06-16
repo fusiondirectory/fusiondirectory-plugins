@@ -62,7 +62,10 @@ class SocialAccountAttribute extends CompositeAttribute
     }
     $handlerClass = 'socialHandler_'.$this->attributes[0]->getValue();
     if (!class_available($handlerClass)) {
-      return 'Social handler "'.$handlerClass.'" does not exists';
+      return new SimplePluginCheckError(
+        $this,
+        htmlescape(sprintf(_('Social handler "%s" does not exists'), $handlerClass))
+      );
     }
     $handler      = new $handlerClass();
     $value = $this->attributes[1]->getValue();
@@ -70,7 +73,12 @@ class SocialAccountAttribute extends CompositeAttribute
       $value = $handler->validate($this->attributes[1]->getValue());
       $this->attributes[1]->setValue($value);
     } catch (socialHandlerInvalidValueException $e) {
-      return $e->getMessage();
+      new SimplePluginCheckError(
+        $this,
+        htmlescape($e->getMessage()),
+        0,
+        $e
+      );
     }
   }
 }

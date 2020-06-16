@@ -254,13 +254,13 @@ class mailGroup extends simplePlugin
       $this->attributesAccess['specialACLs']->attribute->attributes[0]->setChoices($this->getMemberEmailList());
     }
 
-    $messages = parent::check();
+    $errors = parent::check();
 
     if (!$this->is_template && is_object($this->mailMethod)) {
-      $messages = array_merge($messages, $this->mailMethod->check());
+      $errors = array_merge($errors, $this->mailMethod->check());
     }
 
-    return $messages;
+    return $errors;
   }
 
   protected function shouldSave (): bool

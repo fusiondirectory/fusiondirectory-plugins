@@ -368,30 +368,45 @@ class posixAccount extends simplePlugin
   {
     global $config;
 
-    $message = parent::check();
+    $errors = parent::check();
 
     /* Check shadow settings */
     if ($this->shadowWarning !== '') {
       if ($this->shadowMax === '') {
-        $message[] = msgPool::depends('shadowWarning', 'shadowMax');
+        $errors[] = new SimplePluginCheckError(
+          $this->attributesAccess['shadowWarning'],
+          msgPool::depends('shadowWarning', 'shadowMax')
+        );
       }
       if ($this->shadowWarning > $this->shadowMax) {
-        $message[] = msgPool::toobig('shadowWarning', 'shadowMax');
+        $errors[] = new SimplePluginCheckError(
+          $this->attributesAccess['shadowWarning'],
+          msgPool::toobig('shadowWarning', 'shadowMax')
+        );
       }
       if (($this->shadowMin !== '') && ($this->shadowWarning < $this->shadowMin)) {
-        $message[] = msgPool::toosmall('shadowWarning', 'shadowMin');
+        $errors[] = new SimplePluginCheckError(
+          $this->attributesAccess['shadowWarning'],
+          msgPool::toosmall('shadowWarning', 'shadowMin')
+        );
       }
     }
 
     if (($this->shadowInactive !== '') && ($this->shadowMax === '')) {
-      $message[] = msgPool::depends('shadowInactive', 'shadowMax');
+      $errors[] = new SimplePluginCheckError(
+        $this->attributesAccess['shadowInactive'],
+        msgPool::depends('shadowInactive', 'shadowMax')
+      );
     }
     if (($this->shadowMin !== '') && ($this->shadowMax !== '') &&
         ($this->shadowMin > $this->shadowMax)) {
-      $message[] = msgPool::toobig('shadowMin', 'shadowMax');
+      $errors[] = new SimplePluginCheckError(
+        $this->attributesAccess['shadowMin'],
+        msgPool::toobig('shadowMin', 'shadowMax')
+      );
     }
 
-    return $message;
+    return $errors;
   }
 
   protected function prepare_save (): array

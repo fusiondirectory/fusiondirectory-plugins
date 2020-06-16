@@ -78,7 +78,7 @@ class dhcpHost extends dhcpPlugin
 
   function check (): array
   {
-    $messages = parent::check();
+    $errors = parent::check();
     $dn = $this->dn;
     if (($dn == '') || ($dn == 'new')) {
       $dn = $this->compute_dn();
@@ -87,16 +87,22 @@ class dhcpHost extends dhcpPlugin
     foreach ($this->dhcpStatements as $statement) {
       if (preg_match('/^fixed-address (.+)$/', $statement, $m)) {
         if (!tests::is_ip($m[1])) {
-          $messages[] = sprintf(_('"%s" is not a valid IP address.'), $m[1]);
+          $errors[] = new SimplePluginCheckError(
+            $this,
+            htmlescape(sprintf(_('"%s" is not a valid IP address.'), $m[1]))
+          );
         } else {
           $error = $this->parentPlugin->attributesAccess['dhcpSections']->isIpInParentSubnet($dn, $m[1]);
           if ($error !== TRUE) {
-            $messages[] = $error;
+            $errors[] = new SimplePluginCheckError(
+              $this,
+              htmlescape($error)
+            );
           }
         }
       }
     }
 
-    return $messages;
+    return $errors;
   }
 }

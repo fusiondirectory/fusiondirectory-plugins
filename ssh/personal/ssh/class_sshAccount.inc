@@ -119,7 +119,7 @@ class sshAccount extends simplePlugin implements UserTabLockingAction
 
   function check (): array
   {
-    $message = parent::check();
+    $errors = parent::check();
 
     $fingerprints = [];
     $values = $this->attributesAccess['sshPublicKey']->getValue();
@@ -127,13 +127,16 @@ class sshAccount extends simplePlugin implements UserTabLockingAction
       $this->attributesAccess['sshPublicKey']->attribute->setValue($value);
       $arrayValue = $this->attributesAccess['sshPublicKey']->attribute->getArrayValue();
       if (in_array($arrayValue[1], $fingerprints)) {
-        $message[] = sprintf(_('Error : there are several keys with fingerprint %s'), $arrayValue[1]);
+        $errors[] = new SimplePluginCheckError(
+          $this->attributesAccess['sshPublicKey'],
+          htmlescape(sprintf(_('Error : there are several keys with fingerprint %s'), $arrayValue[1]))
+        );
       } else {
         $fingerprints[] = $arrayValue[1];
       }
     }
 
-    return $message;
+    return $errors;
   }
 
   public function fillLockingLDAPAttrs (string $mode, array &$modify)

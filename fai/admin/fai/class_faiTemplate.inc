@@ -128,7 +128,10 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
       $used_cn = [];
       foreach ($this->value as $value) {
         if (isset($used_cn[$value['cn']])) {
-          return sprintf(_('There are several files with the same path: %s'), $value['cn']);
+          return new SimplePluginCheckError(
+            $this,
+            htmlescape(sprintf(_('There are several files with the same path: %s'), $value['cn']))
+          );
         }
         $used_cn[$value['cn']] = TRUE;
       }

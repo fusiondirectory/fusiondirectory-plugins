@@ -472,30 +472,39 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
   /* Check for input problems */
   function check (): array
   {
-    $messages = parent::check();
+    $errors = parent::check();
 
     /* sambaHomePath requires sambaHomeDrive and vice versa */
     if (!empty($this->sambaHomePath) && empty($this->sambaHomeDrive)) {
-      $messages[] = sprintf(
-        _('Field "%s" is required when "%s" is filled! Fill both field or empty them.'),
-        $this->attributesAccess['sambaHomeDrive']->getLabel(),
-        $this->attributesAccess['sambaHomePath']->getLabel()
+      $errors[] = new SimplePluginCheckError(
+        $this->attributesAccess['sambaHomeDrive'],
+        htmlescape(sprintf(
+          _('Field "%s" is required when "%s" is filled! Fill both field or empty them.'),
+          $this->attributesAccess['sambaHomeDrive']->getLabel(),
+          $this->attributesAccess['sambaHomePath']->getLabel()
+        ))
       );
     }
     if (!empty($this->sambaHomeDrive) && empty($this->sambaHomePath)) {
-      $messages[] = sprintf(
-        _('Field "%s" is required when "%s" is filled! Fill both field or empty them.'),
-        $this->attributesAccess['sambaHomePath']->getLabel(),
-        $this->attributesAccess['sambaHomeDrive']->getLabel()
+      $errors[] = new SimplePluginCheckError(
+        $this->attributesAccess['sambaHomePath'],
+        htmlescape(sprintf(
+          _('Field "%s" is required when "%s" is filled! Fill both field or empty them.'),
+          $this->attributesAccess['sambaHomePath']->getLabel(),
+          $this->attributesAccess['sambaHomeDrive']->getLabel()
+        ))
       );
     }
 
     /* Too many workstations? Windows usrmgr only supports eight */
     if (count($this->attributesAccess['sambaUserWorkstations']->attributes[0]->getValue()) >= 8) {
-      $messages[] = _('The windows user manager allows eight clients at maximum!');
+      $errors[] = new SimplePluginCheckError(
+        $this->attributesAccess['sambaUserWorkstations'],
+        htmlescape(_('The windows user manager allows eight clients at maximum!'))
+      );
     }
 
-    return $messages;
+    return $errors;
   }
 
   function prepare_save (): array

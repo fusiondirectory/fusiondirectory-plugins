@@ -234,9 +234,12 @@ class SudoOptionAttribute extends Attribute
     $error = parent::check();
     if (!empty($error)) {
       return $error;
-    } elseif ($this->type == "INTEGER") {
+    } elseif ($this->type == 'INTEGER') {
       if (!is_numeric($this->value) && !empty($this->value)) {
-        return msgPool::invalid($this->getLabel(), $this->value);
+        return new SimplePluginCheckError(
+          $this,
+          SimplePluginCheckError::invalidValue('Value is not an integer')
+        );
       }
     }
   }

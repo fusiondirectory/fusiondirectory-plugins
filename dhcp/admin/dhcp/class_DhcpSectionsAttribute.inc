@@ -254,7 +254,10 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
       return $error;
     }
     if (empty($this->value) || empty($this->dhcpObjectCache[$this->value[0][0]]['cn']) || ($this->dhcpObjectCache[$this->value[0][0]]['cn'][0] == '')) {
-      return msgPool::required(_('Name'));
+      return new SimplePluginCheckError(
+        $this,
+        msgPool::required(_('Name'))
+      );
     }
   }
 

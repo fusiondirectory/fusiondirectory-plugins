@@ -141,7 +141,10 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
       $res1 = $this->attributes[1]->getValue() * $mp[$this->attributes[2]->getValue()];
       $res2 = $this->attributes[3]->getValue() * $mp[$this->attributes[4]->getValue()];
       if ($res1 > $res2) {
-        return msgPool::toobig(_('Minimum partition size'), '\''._('Maximum partition size').'\'');
+        return new SimplePluginCheckError(
+          $this,
+          msgPool::toobig(_('Minimum partition size'), '\''._('Maximum partition size').'\'')
+        );
       }
     }
   }
@@ -499,14 +502,20 @@ class faiPartition extends simplePlugin
 
   function check (): array
   {
-    $messages = parent::check();
+    $errors = parent::check();
 
     if ($this->FAIdiskType == 'raid') {
       $raidDevices = $this->attributesAccess['raidDevices']->attributes[0]->getValue();
       if (count($raidDevices) < 2) {
-        $messages[] = _('Raid arrays must contain at least two partitions!');
+        $errors[] = new SimplePluginCheckError(
+          $this->attributesAccess['raidDevices'],
+          htmlescape(_('Raid arrays must contain at least two partitions!'))
+        );
       } elseif (($this->FAIpartitionType == 'raid0') && (count($this->raidDevices) != 2)) {
-        $messages[] = _('Raid 0 arrays can only be realized with a combination of two partitions!');
+        $errors[] = new SimplePluginCheckError(
+          $this->attributesAccess['raidDevices'],
+          htmlescape(_('Raid 0 arrays can only be realized with a combination of two partitions!'))
+        );
       }
     }
 

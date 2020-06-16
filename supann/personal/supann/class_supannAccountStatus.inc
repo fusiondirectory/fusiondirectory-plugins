@@ -184,7 +184,10 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
     foreach ($this->supannRessourceEtatDate as $line) {
       $resource = preg_replace('/^\{([^}]+)\}.*$/', '\1',  $line);
       if (in_array($resource, $resources)) {
-        $errors[] = sprintf(_('Resource "%s" is present more than once in supannRessourceEtatDate'), $resource);
+        $errors[] = new SimplePluginCheckError(
+          $this->attributesAccess['supannRessourceEtatDate'],
+          htmlescape(sprintf(_('Resource "%s" is present more than once in supannRessourceEtatDate'), $resource))
+        );
       } else {
         $resources[] = $resource;
       }
