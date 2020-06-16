@@ -37,16 +37,16 @@ class RegistrationColumn extends LinkColumn
         try {
           $value = objects::link($value, 'user', '', NULL, FALSE, FALSE);
         } catch (NonExistingLdapNodeException $e) {
-          $value = _('invalid');
+          $value = htmlescape(_('invalid'));
         }
       } elseif ($this->attributes[0] == 'fdRegistrationInvitationDN') {
         try {
           $value = objects::link($value, 'invitation', '', NULL, FALSE, FALSE);
         } catch (NonExistingLdapNodeException $e) {
-          $value = _('invalid');
+          $value = htmlescape(_('invalid'));
         }
       } else {
-        $value = htmlentities($value, ENT_COMPAT, 'UTF-8');
+        $value = htmlescape($value);
       }
       return $this->renderLink($entry, $value);
     }

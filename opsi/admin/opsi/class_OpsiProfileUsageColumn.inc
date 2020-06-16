@@ -38,11 +38,11 @@ class OpsiProfileUsageColumn extends Column
       $result = '';
       if ($systems > 0) {
         $typeInfos = objects::infos('workstation');
-        $result .= '<img class="center" src="'.htmlentities($typeInfos['icon'], ENT_COMPAT, 'UTF-8').'" title="'.$typeInfos['name'].'" alt="'.$typeInfos['name'].'"/>&nbsp;'.$systems;
+        $result .= '<img class="center" src="'.htmlescape($typeInfos['icon']).'" title="'.htmlescape($typeInfos['name']).'" alt="'.htmlescape($typeInfos['name']).'"/>&nbsp;'.$systems;
       }
       if ($groups > 0) {
         $typeInfos = objects::infos('ogroup');
-        $result .= '<img class="center" src="'.htmlentities($typeInfos['icon'], ENT_COMPAT, 'UTF-8').'" title="'.$typeInfos['name'].'" alt="'.$typeInfos['name'].'"/>&nbsp;'.$groups;
+        $result .= '<img class="center" src="'.htmlescape($typeInfos['icon']).'" title="'.htmlescape($typeInfos['name']).'" alt="'.htmlescape($typeInfos['name']).'"/>&nbsp;'.$groups;
       }
       return $result;
     }

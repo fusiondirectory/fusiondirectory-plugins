@@ -38,6 +38,6 @@ class ServiceStatusColumn extends Column
         $img = 'images/empty.png';
         break;
     }
-    return '<img src="'.htmlentities($img, ENT_COMPAT, 'UTF-8').'" alt="'.htmlentities($value, ENT_COMPAT, 'UTF-8').'" title="'.htmlentities($value, ENT_COMPAT, 'UTF-8').'"/>';
+    return '<img src="'.htmlescape($img).'" alt="'.htmlescape($value).'" title="'.htmlescape($value).'"/>';
   }
 }

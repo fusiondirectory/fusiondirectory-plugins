@@ -247,7 +247,7 @@ class SudoOptionAttribute extends Attribute
   function renderFormInput (): string
   {
     $id = $this->getLdapName();
-    $value = htmlentities($this->value['value'], ENT_COMPAT, 'UTF-8');
+    $value = htmlescape($this->value['value']);
     $smarty = get_smarty();
     $smarty->assign("boolStringOptions", ["FALSE","TRUE","STRING"]);
     $smarty->assign("boolIntOptions", ["FALSE","TRUE","INTEGER"]);

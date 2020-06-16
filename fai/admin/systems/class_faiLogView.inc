@@ -44,7 +44,7 @@ class AvailableLogsAttribute extends Attribute
       $js .= 'document.mainform.'.$id.'_'.$var.'.value="'.$value.'";';
     }
     $js .= 'document.mainform.submit();';
-    return '<a href="javascript:'.htmlentities($js, ENT_COMPAT, 'UTF-8').'">'.$label."</a>";
+    return '<a href="javascript:'.htmlescape($js).'">'.htmlescape($label).'</a>';
   }
 
   function renderFormInput (): string
@@ -237,9 +237,9 @@ class faiLogView extends simplePlugin
   {
     $res = $this->o_queue->get_log_file($mac, $date, $file);
     if ($this->o_queue->is_error()) {
-      msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
+      msg_dialog::display(_('Error'), $this->o_queue->get_error(), ERROR_DIALOG);
     }
-    $res = nl2br(htmlentities($res));
+    $res = nl2br(htmlescape($res));
     return $res;
   }
 }

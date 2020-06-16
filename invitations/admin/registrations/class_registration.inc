@@ -69,7 +69,7 @@ class RegistrationStateAttribute extends DisplayLDAPAttribute
   {
     $values = static::getStates();
     if (isset($values[$value])) {
-      return sprintf('<img src="%2$s" alt="" class="center"/>&nbsp;%1$s', $values[$value][0], htmlentities($values[$value][1], ENT_COMPAT, 'UTF-8'));
+      return sprintf('<img src="%2$s" alt="" class="center"/>&nbsp;%1$s', htmlescape($values[$value][0]), htmlescape($values[$value][1]));
     }
 
     return $value;

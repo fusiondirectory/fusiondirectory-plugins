@@ -60,8 +60,8 @@ class SystemServicesColumn extends Column
     $result = '';
     foreach ($icons as $icon) {
       if (!empty($icon['icon'])) {
-        $result .= '<input type="image" src="'.htmlentities($icon['icon'], ENT_COMPAT, 'UTF-8').'" '.
-                    'alt="'.htmlentities($icon['title'], ENT_COMPAT, 'UTF-8').'" title="'.htmlentities($icon['title'], ENT_COMPAT, 'UTF-8').'" '.
+        $result .= '<input type="image" src="'.htmlescape($icon['icon']).'" '.
+                    'alt="'.htmlescape($icon['title']).'" title="'.htmlescape($icon['title']).'" '.
                     'name="listing_edit_service_'.$icon['class'].'_'.$entry->row.'"/>';
       }
     }

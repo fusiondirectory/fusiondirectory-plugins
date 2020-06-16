@@ -109,7 +109,7 @@ class opsiLogView extends simplePlugin
     if ($this->o_queue->is_error()) {
       msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
     } else {
-      $value = nl2br(htmlentities($res, ENT_COMPAT, 'UTF-8'));
+      $value = nl2br(htmlescape($res));
       $this->attributesAccess['display_log']->setPostValue($value);
       $this->attributesAccess['display_log']->setValue($value);
     }

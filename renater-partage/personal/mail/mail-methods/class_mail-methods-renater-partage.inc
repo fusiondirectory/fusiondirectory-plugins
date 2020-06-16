@@ -82,7 +82,7 @@ class mailMethodRenaterPartage extends mailMethod
     }
 
     @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $command, '<b>MAIL: Command</b>');
-    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, htmlentities($post, ENT_COMPAT, 'UTF-8'),
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, htmlescape($post),
       '<b>MAIL: Query</b>');
 
     // performs the HTTP(S) POST

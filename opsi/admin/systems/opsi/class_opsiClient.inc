@@ -372,7 +372,7 @@ class opsiClient extends simplePlugin
         }
         $text = '';
         foreach ($infos as $info) {
-          $text .= htmlentities(sprintf('%s - %s', $info['id'], $info['lastSeen']), ENT_COMPAT, 'UTF-8')."<br/>\n";
+          $text .= htmlescape(sprintf('%s - %s', $info['id'], $info['lastSeen']))."<br/>\n";
         }
         $this->lastSeen = $text;
       }
