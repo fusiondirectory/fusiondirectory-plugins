@@ -56,7 +56,7 @@ class WebauthnRegistrationsAttribute extends OrderedArrayAttribute
   function renderButtons ()
   {
     $id = $this->getHtmlId();
-    $buttons = $this->renderInputField('button', 'add'.$id, ['value' => '{msgPool type=addButton}', 'formnovalidate' => 'formnovalidate', 'class' => 'subattribute', 'onclick' => 'webauthnNewRegistration()']);
+    $buttons = $this->renderInputField('button', 'add'.$id, ['value' => msgPool::addButton(FALSE), 'formnovalidate' => 'formnovalidate', 'class' => 'subattribute', 'onclick' => 'webauthnNewRegistration()']);
     return $buttons;
   }
 }

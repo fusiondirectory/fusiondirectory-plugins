@@ -118,7 +118,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     $img = $this->renderInputField(
       'image', $id.'_insertDHCP_'.$key,
       [
-        'src'   => 'geticon.php?context=actions&amp;icon=document-new&amp;size=16',
+        'src'   => 'geticon.php?context=actions&icon=document-new&size=16',
         'title' => _('Insert new DHCP section'),
         'alt'   => _('Insert new DHCP section'),
         'class' => 'center',
