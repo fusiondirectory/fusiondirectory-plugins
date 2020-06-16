@@ -1,6 +1,6 @@
 <div id="{$sectionId}"  class="plugin-section fullwidth">
   <span class="legend">
-    {$section}
+    {if $sectionIcon}<img src="{$sectionIcon|escape}" alt=""/>{/if}{$section|escape}
   </span>
   <div>
     {if $attributes.events|@count == 0}
@@ -23,12 +23,12 @@
         <tbody>
           {foreach from=$attributes.events item=event}
             <tr>
-              <td>{$event.TIMESTAMP}</td>
-              <td>{$event.MAC}</td>
-              <td>{$event.HEADER}</td>
-              <td>{$event.OGROUP}</td>
+              <td>{$event.TIMESTAMP|escape}</td>
+              <td>{$event.MAC|escape}</td>
+              <td>{$event.HEADER|escape}</td>
+              <td>{$event.OGROUP|escape}</td>
               {if $event.ERROR}
-                <td style="background-color: #F0BBBB;"><b>{$event.ERROR}</b></td>
+                <td style="background-color: #F0BBBB;"><b>{$event.ERROR|escape}</b></td>
               {else}
                 <td></td>
               {/if}

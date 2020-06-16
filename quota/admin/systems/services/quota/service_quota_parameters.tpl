@@ -1,5 +1,5 @@
 <fieldset id="{$sectionId}" class="plugin-section{$sectionClasses}">
-  <legend><span><label for="{$attributes.quotaDeviceParameters.htmlid}">{$section}</label></span></legend>
+  <legend><span><label for="{$attributes.quotaDeviceParameters.htmlid}">{if $sectionIcon}<img src="{$sectionIcon|escape}" alt=""/>{/if}{$section|escape}</label></span></legend>
   <div>
   <table>
     <tr>
