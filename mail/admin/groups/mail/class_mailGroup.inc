@@ -340,10 +340,16 @@ class mailGroup extends simplePlugin
     if (!$this->is_template) {
       $this->mailMethod->connect();
       if (!$this->mailMethod->is_connected()) {
-        $errors[] = sprintf(_('Mail method cannot connect: %s'), $this->mailMethod->get_error());
+        $errors[] = new SimplePluginError(
+          $this,
+          htmlescape(sprintf(_('Mail method cannot connect: %s'), $this->mailMethod->get_error()))
+        );
       } else {
         if (!$this->mailMethod->updateMailbox()) {
-          $errors[] = sprintf(_('Cannot update mailbox: %s'), $this->mailMethod->get_error());
+          $errors[] = new SimplePluginError(
+            $this,
+            htmlescape(sprintf(_('Cannot update mailbox: %s'), $this->mailMethod->get_error()))
+          );
         }
         if ($this->mailMethod->groupAclsEnabled()) {
           $acls = [

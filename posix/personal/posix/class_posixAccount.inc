@@ -629,7 +629,12 @@ class posixAccount extends simplePlugin
               $errors = array_merge($errors, $msg);
             }
           } catch (FusionDirectoryException $e) {
-            $errors[] = 'Exception: '.$e->getMessage();
+            $errors[] = new SimplePluginError(
+              $this,
+              htmlescape('Exception: '.$e->getMessage()),
+              0,
+              $e
+            );
           }
         }
       }
@@ -647,7 +652,12 @@ class posixAccount extends simplePlugin
               $errors = array_merge($errors, $msg);
             }
           } catch (FusionDirectoryException $e) {
-            $errors[] = 'Exception: '.$e->getMessage();
+            $errors[] = new SimplePluginError(
+              $this,
+              htmlescape('Exception: '.$e->getMessage()),
+              0,
+              $e
+            );
           }
         }
       }

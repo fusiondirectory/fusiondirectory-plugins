@@ -97,7 +97,13 @@ class pgpServerInfo extends simplePlugin
       $ldap->cd($config->current['BASE']);
       $ldap->create_missing_trees($this->pgpBaseKeySpaceDN);
       if (!$ldap->success()) {
-        $errors[] = msgPool::ldaperror($ldap->get_error(), $this->pgpBaseKeySpaceDN, LDAP_MOD, get_class());
+        $errors[] = new SimplePluginLdapError(
+          $this,
+          $this->pgpBaseKeySpaceDN,
+          LDAP_ADD,
+          $ldap->get_error(),
+          $ldap->get_errno()
+        );
       }
     }
     /* Delete the old branch if empty */

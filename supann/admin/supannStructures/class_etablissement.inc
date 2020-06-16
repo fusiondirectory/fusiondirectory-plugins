@@ -198,7 +198,13 @@ class etablissement extends simplePlugin
       $ldap->cd($config->current['BASE']);
       $ldap->modify($rootAttrs);
       if (!$ldap->success()) {
-        $errors[] = msgPool::ldaperror($ldap->get_error(), $config->current['BASE'], 0, get_class());
+        $errors[] = new SimplePluginLdapError(
+          $this,
+          $config->current['BASE'],
+          LDAP_MOD,
+          $ldap->get_error(),
+          $ldap->get_errno()
+        );
       }
     }
 
@@ -256,7 +262,13 @@ class etablissement extends simplePlugin
       $ldap->cd($config->current['BASE']);
       $ldap->modify($rootAttrs);
       if (!$ldap->success()) {
-        $errors[] = msgPool::ldaperror($ldap->get_error(), $config->current['BASE'], 0, get_class());
+        $errors[] = new SimplePluginLdapError(
+          $this,
+          $config->current['BASE'],
+          LDAP_MOD,
+          $ldap->get_error(),
+          $ldap->get_errno()
+        );
       }
     }
 

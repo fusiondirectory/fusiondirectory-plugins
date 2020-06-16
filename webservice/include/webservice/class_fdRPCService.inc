@@ -552,7 +552,7 @@ class fdRPCService
             }
             $tabobject->by_object[$tab]->attributesAccess[$name]->setValue($attrvalues);
           } else {
-            throw new WebServiceError(msgPool::permModify($dn, $name), 403);
+            throw new WebServiceError(htmlunescape(msgPool::permModify($dn, $name)), 403);
           }
         } else {
           throw new WebServiceError(sprintf(_('Unknown field "%s"'), $name), 404);
@@ -609,7 +609,7 @@ class fdRPCService
     // Check permissions, are we allowed to remove this object?
     $acl = $ui->get_permissions($dn, $infos['aclCategory'].'/'.$infos['mainTab']);
     if (strpos($acl, 'd') === FALSE) {
-      throw new WebServiceError(msgPool::permDelete($dn), 403);
+      throw new WebServiceError(htmlunescape(msgPool::permDelete($dn)), 403);
     }
 
     if ($user = get_lock($dn)) {
@@ -645,7 +645,7 @@ class fdRPCService
       }
     }
     if (count($disallowed)) {
-      throw new WebServiceError(msgPool::permModify($disallowed), 403);
+      throw new WebServiceError(htmlunescape(msgPool::permModify($disallowed)), 403);
     }
 
     // Try to lock/unlock the entries.
@@ -714,7 +714,7 @@ class fdRPCService
       }
     }
     if (count($disallowed)) {
-      throw new WebServiceError(msgPool::permView($disallowed), 403);
+      throw new WebServiceError(htmlunescape(msgPool::permView($disallowed)), 403);
     }
 
     // Try to lock/unlock the entries.
@@ -765,7 +765,7 @@ class fdRPCService
     if ($dn !== FALSE) {
       /* No errors */
       if (strpos($ui->get_permissions($dn, 'user/user', 'userPassword'), 'w') === FALSE) {
-        throw new WebServiceError(msgPool::permModify($dn), 403);
+        throw new WebServiceError(htmlunescape(msgPool::permModify($dn)), 403);
       }
       $token = $pwRecovery->generateAndStoreToken();
       if ($token !== FALSE) {
