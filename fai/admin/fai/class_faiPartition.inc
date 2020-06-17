@@ -519,7 +519,7 @@ class faiPartition extends simplePlugin
       }
     }
 
-    return $messages;
+    return $errors;
   }
 
   function save (): array

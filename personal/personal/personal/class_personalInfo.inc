@@ -73,7 +73,7 @@ class SocialAccountAttribute extends CompositeAttribute
       $value = $handler->validate($this->attributes[1]->getValue());
       $this->attributes[1]->setValue($value);
     } catch (socialHandlerInvalidValueException $e) {
-      new SimplePluginCheckError(
+      return new SimplePluginCheckError(
         $this,
         htmlescape($e->getMessage()),
         0,
