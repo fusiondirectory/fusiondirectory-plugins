@@ -131,7 +131,11 @@ class dhcpConfiguration extends simplePlugin
     /* Save dhcp settings */
     $ldap   = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->create_missing_trees(preg_replace('/^[^,]+,/', '', $this->dn));
+    try {
+      $ldap->create_missing_trees(preg_replace('/^[^,]+,/', '', $this->dn));
+    } catch (FusionDirectoryError $error) {
+      return [$error];
+    }
     $cache  = $this->attributesAccess['dhcpSections']->getCache();
     $errors = [];
     $new    = ($this->orig_dn == 'new');

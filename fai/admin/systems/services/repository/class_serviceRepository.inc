@@ -235,9 +235,10 @@ class serviceRepository extends simpleService
     $ldap->cat($fai, ['dn']);
     if (!$ldap->count()) {
       $ldap->cd($config->current['BASE']);
-      $ldap->create_missing_trees($fai);
-      if (!$ldap->success()) {
-        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $fai, LDAP_ADD, get_class()), LDAP_ERROR);
+      try {
+        $ldap->create_missing_trees($fai);
+      } catch (FusionDirectoryError $error) {
+        $error->display();
         return;
       }
     }
@@ -252,9 +253,10 @@ class serviceRepository extends simpleService
         // Add classes OUs
         foreach (['Script', 'Hook', 'Template', 'Variable', 'Profile', 'Package', 'Partition'] as $type) {
           $ldap->cd($dn);
-          $ldap->create_missing_trees(get_ou('fai'.$type.'RDN').$dn);
-          if (!$ldap->success()) {
-            msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), get_ou('fai'.$type.'RDN').$dn, LDAP_ADD, get_class()), LDAP_ERROR);
+          try {
+            $ldap->create_missing_trees(get_ou('fai'.$type.'RDN').$dn);
+          } catch (FusionDirectoryError $error) {
+            $error->display();
           }
         }
       } else {

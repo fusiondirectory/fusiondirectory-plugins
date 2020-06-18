@@ -114,7 +114,11 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
   } else {
     /* Make sure branch is existing */
     $ldap->cd($config->current['BASE']);
-    $ldap->create_missing_trees(get_ou('inventoryRDN').$config->current['BASE']);
+    try {
+      $ldap->create_missing_trees(get_ou('inventoryRDN').$config->current['BASE']);
+    } catch (FusionDirectoryError $error) {
+      returnError($error->getMessage());
+    }
   }
   /* Create root node */
   $ldap->cd($dn);

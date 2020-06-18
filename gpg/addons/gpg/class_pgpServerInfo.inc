@@ -95,15 +95,10 @@ class pgpServerInfo extends simplePlugin
     if (!$ldap->count()) {
       @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->pgpBaseKeySpaceDN, "Creating branch");
       $ldap->cd($config->current['BASE']);
-      $ldap->create_missing_trees($this->pgpBaseKeySpaceDN);
-      if (!$ldap->success()) {
-        $errors[] = new SimplePluginLdapError(
-          $this,
-          $this->pgpBaseKeySpaceDN,
-          LDAP_ADD,
-          $ldap->get_error(),
-          $ldap->get_errno()
-        );
+      try {
+        $ldap->create_missing_trees($this->pgpBaseKeySpaceDN);
+      } catch (FusionDirectoryError $error) {
+        $errors[] = SimplePluginError::relocate($this, $error);
       }
     }
     /* Delete the old branch if empty */
