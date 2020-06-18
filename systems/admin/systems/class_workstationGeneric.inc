@@ -81,24 +81,8 @@ class workstationGeneric extends ipHostPlugin
             'locked',
             'unlocked'
           ),
-        ]
-      ],
-      'network' => [
-        'name'      => _('Network settings'),
-        'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
-        'attrs'     => [
-          new SetAttribute(
-            new IPAttribute(
-              _('IP address'), _('IP addresses this system uses (v4 or v6)'),
-              'ipHostNumber', TRUE
-            )
-          ),
-          new SetAttribute(
-            new MacAddressAttribute(
-              _('Mac address'), _('Mac address of this system'),
-              'macAddress', FALSE
-            )
-          ),
+          new HiddenArrayAttribute('ipHostNumber', TRUE),
+          new HiddenArrayAttribute('macAddress', FALSE),
         ],
       ],
     ];

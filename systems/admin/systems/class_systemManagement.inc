@@ -30,7 +30,7 @@ class systemManagement extends management
     ['ObjectTypeColumn',     []],
     ['LinkColumn',           ['attributes' => 'nameAttr',     'label' => 'Name']],
     ['IpColumn',             ['attributes' => 'ipHostNumber', 'label' => 'IP']],
-    ['Column',               ['attributes' => 'macAddress',   'label' => 'Mac']],
+    ['Column',               ['attributes' => 'macAddress',   'label' => 'MAC']],
     ['LinkColumn',           ['attributes' => 'description',  'label' => 'Description']],
     ['SystemServicesColumn', ['label' => 'Services']],
     ['SystemReleaseColumn',  ['label' => 'Release']],

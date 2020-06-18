@@ -50,6 +50,7 @@ class componentGeneric extends ipHostPlugin
       'main' => [
         'name'  => _('Properties'),
         'attrs' => [
+          new BaseSelectorAttribute(get_ou('componentRDN')),
           new HostNameAttribute(
             _('Name'), _('The name of the component'),
             'cn', TRUE
@@ -58,21 +59,8 @@ class componentGeneric extends ipHostPlugin
             _('Description'), _('A short description of the component'),
             'description', FALSE
           ),
-          new BaseSelectorAttribute(get_ou("componentRDN")),
-        ]
-      ],
-      'network' => [
-        'name'      => _('Network settings'),
-        'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
-        'attrs'     => [
-          new IPAttribute(
-            _('IP address'), _('IP address this system uses'),
-            'ipHostNumber', TRUE
-          ),
-          new MacAddressAttribute(
-            _('Mac address'), _('Mac address of this system'),
-            'macAddress', FALSE
-          ),
+          new HiddenArrayAttribute('ipHostNumber', TRUE),
+          new HiddenArrayAttribute('macAddress', FALSE),
         ],
       ],
     ];

@@ -63,7 +63,7 @@ class ipamVlan extends simplePlugin
           ),
           new IntAttribute(
             _('Inner ID'), _('Inner VLAN ID'),
-            'fdIpamVlanInnerId', FALSE,
+            'fdIpamVlanInnerId', TRUE,
             1, 4096
           ),
           new IntAttribute(
