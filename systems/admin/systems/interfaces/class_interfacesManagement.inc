@@ -269,13 +269,13 @@ class interfacesManagement extends management implements SimpleTab
       if (class_available('ipamVlan')) {
         $macvlan = $baseobject->macAddress.$baseobject->fdNetworkInterfaceVlanDN;
         if (isset($macvlans[$macvlan])) {
-          $errors[] = sprintf(_('Interfaces "%s" and "%s" use the same MAC + VLAN combination'), $macvlans[$macvlan], $baseobject->cn);
+          $errors[] = new SimplePluginCheckError($this, htmlescape(sprintf(_('Interfaces "%s" and "%s" use the same MAC + VLAN combination'), $macvlans[$macvlan], $baseobject->cn)));
         }
         $macvlans[$macvlan] = $baseobject->cn;
       }
       foreach ($baseobject->ipHostNumber as $ip) {
         if (isset($ips[$ip])) {
-          $errors[] = sprintf(_('Interfaces "%s" and "%s" use the same IP address "%s"'), $ips[$ip], $baseobject->cn, $ip);
+          $errors[] = new SimplePluginCheckError($this, htmlescape(sprintf(_('Interfaces "%s" and "%s" use the same IP address "%s"'), $ips[$ip], $baseobject->cn, $ip)));
         }
         $ips[$ip] = $baseobject->cn;
       }
