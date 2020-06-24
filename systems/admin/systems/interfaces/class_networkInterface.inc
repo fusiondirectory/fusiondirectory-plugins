@@ -129,17 +129,20 @@ class networkInterface extends simplePlugin
     global $config;
 
     if (empty($this->fdNetworkInterfaceSubnetDN)) {
-      msg_dialog::display(_('Error'), _('No subnet selected'), ERROR_DIALOG);
+      $error = new SimplePluginError($this, htmlescape(_('No subnet selected')));
+      $error->display();
       return;
     }
     $subnets = objects::ls('ipamSubnet', ['dn' => 'raw','fdIpamSubnetCIDR' => 1], $this->fdNetworkInterfaceSubnetDN, '', FALSE, 'base');
     if (empty($subnets)) {
-      msg_dialog::display(_('Error'), _('Could not find selected subnet'), ERROR_DIALOG);
+      $error = new SimplePluginError($this, htmlescape(_('Could not find selected subnet')));
+      $error->display();
       return;
     }
     $subnet = reset($subnets);
     if (!isset($subnet['fdIpamSubnetCIDR'])) {
-      msg_dialog::display(_('Error'), _('Selected subnet has no IP'), ERROR_DIALOG);
+      $error = new SimplePluginError($this, htmlescape(_('Selected subnet has no IP')));
+      $error->display();
       return;
     }
     $ldap = $config->get_ldap_link();
@@ -159,7 +162,8 @@ class networkInterface extends simplePlugin
         return;
       }
     }
-    msg_dialog::display(_('Error'), _('Could not find any free IP in the selected subnet'), ERROR_DIALOG);
+    $error = new SimplePluginError($this, htmlescape(_('Could not find any free IP in the selected subnet')));
+    $error->display();
   }
 
   /*!

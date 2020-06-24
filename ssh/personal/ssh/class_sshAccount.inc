@@ -58,7 +58,8 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
     if (preg_match($this->format, $line)) {
       $this->postValue = trim($line);
     } else {
-      msg_dialog::display(_("Upload error"), _("Unknown public key format!"), ERROR_DIALOG);
+      $error = new SimplePluginError($this, htmlescape(_('Unknown public key format!')));
+      $error->display();
     }
     @fclose($handle);
   }

@@ -808,7 +808,13 @@ class posixAccount extends simplePlugin
 
     /* Sanity check */
     if ($min >= $max) {
-      msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '.sprintf(_('%sPoolMin >= %sPoolMax!'), $attrib), ERROR_DIALOG);
+      $error = new FusionDirectoryError(
+        htmlescape(sprintf(
+          _('Cannot allocate a free ID: %s'),
+          sprintf(_('%sPoolMin >= %sPoolMax!'), $attrib)
+        ))
+      );
+      $error->display();
       return NULL;
     }
 
@@ -840,7 +846,8 @@ class posixAccount extends simplePlugin
         $ldap->cd('ou=idmap,'.$config->current['BASE']);
         $ldap->add($attrs);
         if (!$ldap->success()) {
-          msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), 'ou=idmap,'.$config->current['BASE'], LDAP_ADD, ERROR_DIALOG));
+          $error = new FusionDirectoryLdapError('ou=idmap,'.$config->current['BASE'], LDAP_ADD, $ldap->get_error(), $ldap->get_errno());
+          $error->display();
           return NULL;
         }
         $tries++;
@@ -848,7 +855,8 @@ class posixAccount extends simplePlugin
       }
       /* Bail out if it's not unique */
       if ($ldap->count() != 1) {
-        msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '._('sambaUnixIdPool is not unique!'), ERROR_DIALOG);
+        $error = new FusionDirectoryError(htmlescape(_('Cannot allocate a free ID:').' '._('sambaUnixIdPool is not unique!')));
+        $error->display();
         return NULL;
       }
 
@@ -859,19 +867,22 @@ class posixAccount extends simplePlugin
       $newAttr  = $oldAttr + 1;
 
       /* Sanity check */
-      if ($newAttr >= $max) {
-        msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '._('no ID available!'), ERROR_DIALOG);
-        return NULL;
-      }
-      if ($newAttr < $min) {
-        msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '._('no ID available!'), ERROR_DIALOG);
+      if (($newAttr >= $max) || ($newAttr < $min)) {
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Cannot allocate a free ID: %s'),
+            _('no ID available!')
+          ))
+        );
+        $error->display();
         return NULL;
       }
 
       $ldap->cd($dn);
       $ldap->modify([$attrib => $newAttr]);
       if (!$ldap->success()) {
-        msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '.$ldap->get_error(), ERROR_DIALOG);
+        $error = new FusionDirectoryLdapError($dn, LDAP_MOD, $ldap->get_error(), $ldap->get_errno());
+        $error->display();
         return NULL;
       } else {
         return $oldAttr;
@@ -880,7 +891,8 @@ class posixAccount extends simplePlugin
 
     /* Bail out if we had problems getting the next id */
     if (!$tries) {
-      msg_dialog::display(_('Error'), _('Cannot allocate a free ID:').' '._('maximum tries exceeded!'), ERROR_DIALOG);
+      $error = new FusionDirectoryError(htmlescape(_('Cannot allocate a free ID:').' '._('maximum tries exceeded!')));
+      $error->display();
     }
 
     return $id;
@@ -942,8 +954,7 @@ class posixAccount extends simplePlugin
 
     /* Should not happen */
     if ($id == $hwm) {
-      msg_dialog::display(_('Error'), _('Cannot allocate a free ID!'), ERROR_DIALOG);
-      exit;
+      throw new FatalError(htmlescape(_('Cannot allocate a free ID!')));
     }
   }
 

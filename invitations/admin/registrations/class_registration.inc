@@ -30,7 +30,8 @@ class RegistrationLastChangeAttribute extends DisplayLDAPAttribute
     try {
       $date = new DateTime($ldapDate);
     } catch (Exception $e) {
-      msg_dialog::display(_('Error'), $e->getMessage(), ERROR_DIALOG);
+      $error = new FusionDirectoryError(htmlescape($e->getMessage()), 0, $e);
+      $error->display();
       $date = new DateTime();
     }
     $date->setTimezone(timezone::getDefaultTimeZone());

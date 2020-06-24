@@ -72,14 +72,13 @@ class SecondFactorRecoveryCode
               INFO_DIALOG
             );
           } else {
-            msg_dialog::display(
-              _('Recovery code'),
-              sprintf(
+            $error = new FusionDirectoryError(
+              htmlescape(sprintf(
                 _('You connected using a recovery code as second factor, but we failed to delete it for future use: %s'),
                 msgPool::ldaperror($ldap->get_error(), $ui->dn, LDAP_MOD)
-              ),
-              ERROR_DIALOG
+              ))
             );
+            $error->display();
           }
 
           static::redirect();

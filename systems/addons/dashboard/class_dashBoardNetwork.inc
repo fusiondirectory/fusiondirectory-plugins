@@ -76,11 +76,15 @@ class dashboardNetwork extends simplePlugin
       $objects = objects::ls('server', ['cn' => 'raw', 'dhcpServiceDN' => 1], NULL, '(objectClass=dhcpServer)', TRUE);
     } catch (FusionDirectoryException $e) {
       $objects = [];
-      msg_dialog::display(
-        _('Error'),
-        sprintf(_('Statistics for DHCP could not be computed because of the following error: %s'), $e->getMessage()),
-        ERROR_DIALOG
+      $error = new FusionDirectoryError(
+        htmlescape(sprintf(
+          _('Statistics for DHCP could not be computed because of the following error: %s'),
+          $e->getMessage()
+        )),
+        0,
+        $e
       );
+      $error->display();
     }
 
     $servers = [];

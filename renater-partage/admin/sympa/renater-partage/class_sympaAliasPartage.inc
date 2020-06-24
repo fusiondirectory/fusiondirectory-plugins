@@ -201,12 +201,22 @@ class sympaAliasPartage extends simplePlugin
     /* Let the mailMethod remove this mailbox */
     if (!$this->is_template) {
       if (!$this->mailMethod->connect()) {
-        msg_dialog::display(_('Mail error'), sprintf(_('Cannot remove mailbox, mail method cannot connect: %s'),
-              $this->mailMethod->get_error()), ERROR_DIALOG);
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Cannot remove mailbox, mail method cannot connect: %s'),
+            $this->mailMethod->get_error()
+          ))
+        );
+        $error->display();
       } else {
         if (!$this->mailMethod->deleteMailbox()) {
-          msg_dialog::display(_('Mail error'), sprintf(_('Cannot remove mailbox: %s'),
-                $this->mailMethod->get_error()), ERROR_DIALOG);
+          $error = new FusionDirectoryError(
+            htmlescape(sprintf(
+              _('Cannot remove mailbox: %s'),
+              $this->mailMethod->get_error()
+            ))
+          );
+          $error->display();
         }
       }
     }

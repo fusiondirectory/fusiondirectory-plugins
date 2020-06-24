@@ -307,9 +307,7 @@ class servicesManagement extends management implements SimpleTab
     $this->dialogObject->save_object();
     $msgs = $this->dialogObject->check();
     if (count($msgs)) {
-      foreach ($msgs as $msg) {
-        msg_dialog::display(_('Error'), $msg, ERROR_DIALOG);
-      }
+      msg_dialog::displayChecks($msgs);
     } else {
       $this->plugins[$this->current] = $this->dialogObject;
       $this->closeDialogs();
@@ -356,7 +354,13 @@ class servicesManagement extends management implements SimpleTab
 
     /* Is this an existing action */
     if (!isset(static::$actionStatus[$action['action']])) {
-      msg_dialog::display(_('Error'), sprintf(_('Unknown action "%s"'), $action['action']), ERROR_DIALOG);
+      $error = new FusionDirectoryError(
+        htmlescape(sprintf(
+          _('Unknown action "%s"'),
+          $action['action']
+        ))
+      );
+      $error->display();
       return;
     }
 
@@ -376,17 +380,19 @@ class servicesManagement extends management implements SimpleTab
 
       $s_daemon = new supportDaemon();
       if ($s_daemon->is_error()) {
-        msg_dialog::display(
-          sprintf(_('Could not get execute action %s on service %s.'), $action, $service),
-          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-        );
+        $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+        $error->display();
       } else {
         $target = $this->parent->getBaseObject()->macAddress;
         if (empty($target)) {
-          msg_dialog::display(
-            sprintf(_('Could not get execute action %s on service %s.'), $action, $service),
-            _('This server has no mac address.'), ERROR_DIALOG
+          $error = new FusionDirectoryError(
+            htmlescape(sprintf(
+              _('Could not get execute action %s on service %s: This server has no mac address.'),
+              $action,
+              $service
+            ))
           );
+          $error->display();
           return;
         }
         if (is_array($target)) {
@@ -396,10 +402,8 @@ class servicesManagement extends management implements SimpleTab
           $res = $s_daemon->append_call('Service.is_running', $target, ['args' => [$service]]);
 
           if ($s_daemon->is_error()) {
-            msg_dialog::display(
-              sprintf(_('Could not get execute action %s on service %s.'), $action, $service),
-              msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-            );
+            $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+            $error->display();
           } else {
             $this->plugins[$service]->setStatus($res == 'yes' ? 'running' : 'stopped');
           }
@@ -407,10 +411,8 @@ class servicesManagement extends management implements SimpleTab
           $res = $s_daemon->append_call('Service.manage', $target, ['args' => [$service, $action]]);
 
           if ($s_daemon->is_error()) {
-            msg_dialog::display(
-              sprintf(_('Could not get execute action %s on service %s.'), $action, $service),
-              msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-            );
+            $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+            $error->display();
           } elseif (preg_match('/^done/', $res)) {
             $this->plugins[$service]->setStatus(static::$actionStatus[$action]);
           }

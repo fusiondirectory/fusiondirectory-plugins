@@ -241,7 +241,13 @@ class csvImport extends simplePlugin
       }
       if (count($msgs)) {
         $msg = '<ul><li>'.implode('</li><li>', $msgs).'</li></ul>';
-        msg_dialog::display(sprintf(_('Import failed for line %d'), $rownumber + 1), $msg, ERROR_DIALOG);
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Import failed for line %d:'),
+            $rownumber + 1
+          )).'<br/>'.$msg
+        );
+        $error->display();
         break;
       } else {
         $success++;

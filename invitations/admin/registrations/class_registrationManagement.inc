@@ -127,11 +127,14 @@ class registrationManagement extends management
     foreach ($action['targets'] as $dn) {
       // Lock registration object
       if ($user = get_lock($dn)) {
-        msg_dialog::display(
-          _('Error'),
-          sprintf(_('Cannot accept %s. It has been locked by %s.'), $dn, $user),
-          ERROR_DIALOG
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Cannot accept %s. It has been locked by %s.'),
+            $dn,
+            $user
+          ))
         );
+        $error->display();
         continue;
       }
       add_lock($dn, $ui->dn);
@@ -139,22 +142,27 @@ class registrationManagement extends management
       $entry = $this->listing->getEntry($dn);
 
       if (!$this->enableAcceptReject('accept', $entry)) {
-        msg_dialog::display(
-          _('Error'),
-          sprintf(_('Cannot accept registration %s, it\'s not in status "Filled".'), $dn),
-          ERROR_DIALOG
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Cannot accept registration %s, it\'s not in status "Filled".'),
+            $dn
+          ))
         );
+        $error->display();
         del_lock($dn);
         continue;
       }
 
       // Lock user object
       if ($user = get_lock($entry['fdRegistrationUserDN'][0])) {
-        msg_dialog::display(
-          _('Error'),
-          sprintf(_('Cannot move %s. It has been locked by %s.'), $entry['fdRegistrationUserDN'][0], $user),
-          ERROR_DIALOG
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Cannot move %s. It has been locked by %s.'),
+            $entry['fdRegistrationUserDN'][0],
+            $user
+          ))
         );
+        $error->display();
         del_lock($dn);
         continue;
       }
@@ -195,9 +203,14 @@ class registrationManagement extends management
             if (is_array($hn)) {
               $hn = $hn[0];
             }
-            msg_dialog::display(_('Account locking'),
-                sprintf(_('Unlocking failed using password method "%s". Account "%s" has not been unlocked!'),
-                  $hn, $entry['fdRegistrationUserDN'][0]), ERROR_DIALOG);
+            $error = new FusionDirectoryError(
+              htmlescape(sprintf(
+                _('Unlocking failed using password method "%s". Account "%s" has not been unlocked!'),
+                $hn,
+                $entry['fdRegistrationUserDN'][0]
+              ))
+            );
+            $error->display();
           }
         }
       }
@@ -230,11 +243,14 @@ class registrationManagement extends management
 
     foreach ($action['targets'] as $dn) {
       if ($user = get_lock($dn)) {
-        msg_dialog::display(
-          _('Error'),
-          sprintf(_('Cannot reject %s. It has been locked by %s.'), $dn, $user),
-          ERROR_DIALOG
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Cannot reject %s. It has been locked by %s.'),
+            $dn,
+            $user
+          ))
         );
+        $error->display();
         continue;
       }
       add_lock($dn, $ui->dn);
@@ -242,22 +258,27 @@ class registrationManagement extends management
       $entry = $this->listing->getEntry($dn);
 
       if (!$this->enableAcceptReject('reject', $entry)) {
-        msg_dialog::display(
-          _('Error'),
-          sprintf(_('Cannot reject registration %s, it\'s not in status "Filled".'), $dn),
-          ERROR_DIALOG
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Cannot reject registration %s, it\'s not in status "Filled".'),
+            $dn
+          ))
         );
+        $error->display();
         del_lock($dn);
         continue;
       }
 
       // Delete the user
       if ($user = get_lock($entry['fdRegistrationUserDN'][0])) {
-        msg_dialog::display(
-          _('Error'),
-          sprintf(_('Cannot delete %s. It has been locked by %s.'), $entry['fdRegistrationUserDN'][0], $user),
-          ERROR_DIALOG
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Cannot delete %s. It has been locked by %s.'),
+            $entry['fdRegistrationUserDN'][0],
+            $user
+          ))
         );
+        $error->display();
         del_lock($dn);
         continue;
       }

@@ -432,7 +432,8 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     }
 
     /* That should not happen... */
-    msg_dialog::display(_('Error'), _('The DHCP configuration set is unkown. Please contact your system administrator.'), ERROR_DIALOG);
+    $error = new SimplePluginError($this, htmlescape(_('The DHCP configuration set is unkown. Please contact your system administrator.')));
+    $error->display();
 
     return '';
   }

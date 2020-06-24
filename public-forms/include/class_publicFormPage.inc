@@ -226,14 +226,16 @@ class publicFormPage extends standAlonePage
       require_once($config->get_cfg_value('PublicFormSecurimagePath'));
       $securimage = new Securimage();
       if (!$securimage->check($_POST['captcha_code'])) {
-        msg_dialog::display(_('Error'), _('Captcha code was wrong!'), ERROR_DIALOG);
+        $error = new FusionDirectoryError(htmlescape(_('Captcha code was wrong!')));
+        $error->display();
         return;
       }
     }
 
     /* Check TOS checkbox */
     if (isset($this->form['fdPublicFormTosUrl']) && !isset($_POST['tosCheckBox'])) {
-      msg_dialog::display(_('Error'), _('You need to accept the terms of service to continue!'), ERROR_DIALOG);
+      $error = new FusionDirectoryError(htmlescape(_('You need to accept the terms of service to continue!')));
+      $error->display();
       return;
     }
     // Save values for later

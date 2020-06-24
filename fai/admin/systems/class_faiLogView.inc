@@ -195,7 +195,8 @@ class faiLogView extends simplePlugin
       /* Query for log files */
       $res = $this->o_queue->get_log_info_for_mac($this->mac);
       if ($this->o_queue->is_error()) {
-        msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
+        $error = new FusionDirectoryError(msgPool::siError($this->o_queue->get_error()));
+        $error->display();
       }
 
       /* Check if there is at least one log file */
@@ -237,7 +238,8 @@ class faiLogView extends simplePlugin
   {
     $res = $this->o_queue->get_log_file($mac, $date, $file);
     if ($this->o_queue->is_error()) {
-      msg_dialog::display(_('Error'), $this->o_queue->get_error(), ERROR_DIALOG);
+      $error = new FusionDirectoryError(msgPool::siError($this->o_queue->get_error()));
+      $error->display();
     }
     $res = nl2br(htmlescape($res));
     return $res;

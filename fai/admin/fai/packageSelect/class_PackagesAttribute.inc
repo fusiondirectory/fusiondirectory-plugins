@@ -206,7 +206,8 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
         }
         $ldap->add($attrs);
         if (!$ldap->success()) {
-          msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $vardn, LDAP_ADD, get_class()), LDAP_ERROR);
+          $error = new SimplePluginLdapError($this, $vardn, LDAP_ADD, $ldap->get_error(), $ldap->get_errno());
+          $error->display();
         }
       }
     }
@@ -242,7 +243,8 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
       }
       $ret = $q->FAI_get_packages($release, $attrs, array_keys($packages), -1, -1, TRUE);
       if ($q->is_error()) {
-        msg_dialog::display(_("Infrastructure service"), msgPool::siError($q->get_error()), ERROR_DIALOG);
+        $error = new FusionDirectoryError(msgPool::siError($q->get_error()));
+        $error->display();
         return $this->buffer;
       } else {
         foreach ($ret as $attr) {
@@ -261,7 +263,13 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     }
 
     if (count($packages) > 0) {
-      msg_dialog::display(_("Unkown packages"), "The following packages were not found on the repository : ".join(",", $packages), ERROR_DIALOG);
+      $error = new FusionDirectoryError(
+        htmlescape(sprintf(
+          _('The following packages were not found on the repository : %s'),
+          join(',', $packages)
+        ))
+      );
+      $error->display();
       foreach ($packages as $p => $pp) {
         unset($this->value[$p]);
       }

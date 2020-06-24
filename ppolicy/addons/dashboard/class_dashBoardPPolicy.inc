@@ -81,11 +81,14 @@ class dashboardPpolicy extends simplePlugin
       $ldap->cat($ppolicydn, ['pwdMaxAge']);
       $policy = $ldap->fetch();
       if (!$policy) {
-        msg_dialog::display(
-          _('Configuration error'),
-          sprintf(_('Default ppolicy "%s" could not be found in the LDAP!'), $ppolicydn),
-          ERROR_DIALOG
+        $error = new SimplePluginError(
+          $this,
+          htmlescape(sprintf(
+            _('Default ppolicy "%s" could not be found in the LDAP!'),
+            $ppolicydn
+          ))
         );
+        $error->display();
       } elseif (isset($policy['pwdMaxAge'][0])) {
         $defaultMaxAge = $policy['pwdMaxAge'][0];
       }
@@ -134,11 +137,15 @@ class dashboardPpolicy extends simplePlugin
           $ldap->cat($user['pwdPolicySubentry'], ['pwdMaxAge']);
           $policy = $ldap->fetch();
           if (!$policy) {
-            msg_dialog::display(
-              _('Configuration error'),
-              sprintf(_('Ppolicy "%s" set for user "%s" could not be found in the LDAP!'), $ppolicydn, $user['dn']),
-              ERROR_DIALOG
+            $error = new SimplePluginError(
+              $this,
+              htmlescape(sprintf(
+                _('Ppolicy "%s" set for user "%s" could not be found in the LDAP!'),
+                $ppolicydn,
+                $user['dn']
+              ))
             );
+            $error->display();
             continue;
           }
           if (isset($policy['pwdMaxAge'][0])) {

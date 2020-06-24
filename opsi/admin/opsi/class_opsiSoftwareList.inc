@@ -107,37 +107,20 @@ class opsiSoftwareList extends simplePlugin
     if (!isset($this->products[$this->fdOpsiServerDn])) {
       $s_daemon = new supportDaemon();
       if (!$s_daemon->is_available()) {
-        msg_dialog::display(
-          _("Could not contact argonaut server"),
-          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-        );
+        $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+        $error->display();
         return;
       }
-      $ldap = $config->get_ldap_link();
-      $ldap->cat($this->fdOpsiServerDn);
-      if ($attrs = $ldap->fetch()) {
-        if (isset($attrs['macAddress'])) {
-          $this->macAddress = $attrs['macAddress'][0];
-        } else {
-          msg_dialog::display(
-            _("No mac address"),
-            sprintf(_("Server %s has no mac address configured in the LDAP"), $this->fdOpsiServerDn), ERROR_DIALOG
-          );
-          return FALSE;
-        }
-      } else {
-        msg_dialog::display(
-          sprintf(_("Could not find %s in the LDAP"), $this->fdOpsiServerDn),
-          msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
-        );
+      try {
+        $this->macAddress = opsiProfile::getOpsiServerMac($this->fdOpsiServerDn);
+      } catch (FusionDirectoryError $error) {
+        $error->display();
         return FALSE;
       }
       $localboots = $s_daemon->append_call('OPSI.get_localboots', $this->macAddress, ['args' => [$opsi_args]]);
       if ($s_daemon->is_error()) {
-        msg_dialog::display(
-          _('Failed to contact OPSI server'),
-          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-        );
+        $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+        $error->display();
         return;
       }
       $this->products[$this->fdOpsiServerDn]['localboots'] = [];

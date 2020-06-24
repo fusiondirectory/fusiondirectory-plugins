@@ -376,11 +376,15 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       list ($domain, $type, $content, $reverse) = $line;
       if (!empty($reverse)) {
         if (!DnsRecordAttribute::matchReverseZone($type, $content, $reverse)) {
-          msg_dialog::display(
-            _('Error'),
-            sprintf(_('The IP %s does not match the selected reverse %s, it has been ignored'), $content, $reverse),
-            ERROR_DIALOG
+          $error = new SimplePluginError(
+            $this,
+            htmlescape(sprintf(
+              _('The IP %s does not match the selected reverse %s, it has been ignored'),
+              $content,
+              $reverse
+            ))
           );
+          $error->display();
         } else {
           if (!isset($ptrs[$reverse])) {
             $ptrs[$reverse] = [];
@@ -480,7 +484,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         }
         $ldap->modify($node);
         if (!$ldap->success()) {
-          msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $reverseDn, LDAP_MOD, get_class()), LDAP_ERROR);
+          $error = new SimplePluginLdapError($this, $reverseDn, LDAP_MOD, $ldap->get_error(), $ldap->get_errno());
+          $error->display();
         }
         unset($oldReverseZones[$reverseDn]);
       } else {
@@ -489,7 +494,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         }
         $ldap->add($node);
         if (!$ldap->success()) {
-          msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $reverseDn, LDAP_ADD, get_class()), LDAP_ERROR);
+          $error = new SimplePluginLdapError($this, $reverseDn, LDAP_ADD, $ldap->get_error(), $ldap->get_errno());
+          $error->display();
         }
       }
     }
@@ -497,7 +503,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     foreach (array_keys($oldReverseZones) as $dn) {
       $ldap->rmdir_recursive($dn);
       if (!$ldap->success()) {
-        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()), LDAP_ERROR);
+        $error = new SimplePluginLdapError($this, $dn, LDAP_DEL, $ldap->get_error(), $ldap->get_errno());
+        $error->display();
       }
     }
     /* Delete old records not present in new list */
@@ -505,7 +512,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       if (!isset($nodes[$dn])) {
         $ldap->rmdir_recursive($dn);
         if (!$ldap->success()) {
-          msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()), LDAP_ERROR);
+          $error = new SimplePluginLdapError($this, $dn, LDAP_DEL, $ldap->get_error(), $ldap->get_errno());
+          $error->display();
         }
       }
     }
@@ -522,11 +530,14 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
           }
         }
         $ldap->modify($node);
+        $operation = LDAP_MOD;
       } else {
         $ldap->add($node);
+        $operation = LDAP_ADD;
       }
       if (!$ldap->success()) {
-        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()), LDAP_ERROR);
+        $error = new SimplePluginLdapError($this, $dn, $operation, $ldap->get_error(), $ldap->get_errno());
+        $error->display();
       }
     }
 
@@ -560,13 +571,15 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
           if (isset($initialPtrs[$reverseZone][$ip])) {
             $ldap->modify($node);
             if (!$ldap->success()) {
-              msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()), LDAP_ERROR);
+              $error = new SimplePluginLdapError($this, $dn, LDAP_MOD, $ldap->get_error(), $ldap->get_errno());
+              $error->display();
             }
             unset($initialPtrs[$reverseZone][$ip]);
           } else {
             $ldap->add($node);
             if (!$ldap->success()) {
-              msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
+              $error = new SimplePluginLdapError($this, $dn, LDAP_ADD, $ldap->get_error(), $ldap->get_errno());
+              $error->display();
             }
           }
         }
@@ -578,7 +591,8 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
           $dn = 'relativeDomainName='.$relativeDomainName.','.$reverseDn;
           $ldap->rmdir_recursive($dn);
           if (!$ldap->success()) {
-            msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()), LDAP_ERROR);
+            $error = new SimplePluginLdapError($this, $dn, LDAP_DEL, $ldap->get_error(), $ldap->get_errno());
+            $error->display();
           }
         }
       }

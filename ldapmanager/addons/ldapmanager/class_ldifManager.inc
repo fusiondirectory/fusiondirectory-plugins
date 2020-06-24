@@ -134,9 +134,8 @@ class ldifManager extends simplePlugin
     $dn   = $this->single_export;
     $acl  = $this->attributesAccess['single_export']->getAcl();
     if (!$ldap->dn_exists($dn)) {
-      msg_dialog::display(_('LDAP error'),
-          sprintf(_('No such object %s!'), $dn),
-          ERROR_DIALOG);
+      $error = new FusionDirectoryError(htmlescape(sprintf(_('No such object %s!'), $dn)));
+      $error->display();
       $dn = '';
     }
     $this->save_export($dn, $acl, 'base', 'entryExport.ldif');
@@ -155,9 +154,8 @@ class ldifManager extends simplePlugin
     if (!empty($dn)) {
       // Check permissions
       if (!$this->acl_is_writeable($acl, $this->acl_skip_write())) {
-        msg_dialog::display(_('Permission error'),
-            sprintf(_('You have no permission to export %s!'), bold($dn)),
-            ERROR_DIALOG);
+        $error = new FusionDirectoryPermissionError(htmlescape(sprintf(_('You have no permission to export %s!'), $dn)));
+        $error->display();
       } else {
         $ldap = $config->get_ldap_link();
         try {
@@ -180,7 +178,8 @@ class ldifManager extends simplePlugin
   {
     global $config;
     if (empty($this->import)) {
-      msg_dialog::display(_('Warning'), _('Nothing to import, please upload a non-empty file or fill the textarea.'), WARNING_DIALOG);
+      $warning = new FusionDirectoryWarning(htmlescape(_('Nothing to import, please upload a non-empty file or fill the textarea.')));
+      $warning->display();
       return;
     }
     $ldap = $config->get_ldap_link();
@@ -188,7 +187,8 @@ class ldifManager extends simplePlugin
       $nb = $ldap->import_complete_ldif($this->import, !$this->overwrite, FALSE);
       msg_dialog::display(_('Success'), sprintf(_('%d entries successfully imported'), $nb), INFO_DIALOG);
     } catch (FusionDirectoryException $e) {
-      msg_dialog::display(_('LDAP error'), $e->getMessage(), ERROR_DIALOG);
+      $error = new FusionDirectoryError(htmlescape($e->getMessage()), 0, $e);
+      $error->display();
     }
   }
 

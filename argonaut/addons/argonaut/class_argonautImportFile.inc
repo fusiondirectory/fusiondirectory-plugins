@@ -112,19 +112,16 @@ class argonautImportFile extends simplePlugin
       return;
     } elseif (isset($_POST['start_import'])) {
       $events = $this->events;
-      $error  = FALSE;
+      $failed = FALSE;
       foreach ($events as $event) {
         if (!empty($event['ERROR'])) {
-          $error = TRUE;
+          $failed = TRUE;
           break;
         }
       }
-      if ($error) {
-        msg_dialog::display(
-          _('Import'),
-          _('Fix the errors in your CSV file first'),
-          ERROR_DIALOG
-        );
+      if ($failed) {
+        $error = new FusionDirectoryError(htmlescape(_('Fix the errors in your CSV file first')));
+        $error->display();
       } else {
         $success  = 0;
         $fail     = 0;
@@ -138,7 +135,8 @@ class argonautImportFile extends simplePlugin
           }
           $this->parent->o_queue->append_call($event['HEADER'], [$event['MAC']], $data);
           if ($this->parent->o_queue->is_error()) {
-            msg_dialog::display(_('Infrastructure service'), msgPool::siError($this->parent->o_queue->get_error()), ERROR_DIALOG);
+            $error = new FusionDirectoryError(msgPool::siError($this->parent->o_queue->get_error()));
+            $error->display();
             $fail++;
           } else {
             unset($events[$key]);
@@ -157,7 +155,8 @@ class argonautImportFile extends simplePlugin
     /* Some file checks */
     $lines = preg_split('/\n/', $str);
     if (empty($str) || !count($lines)) {
-      msg_dialog::display(_('Import'), msgPool::incorrectUpload(_('file is empty')), ERROR_DIALOG);
+      $error = new FusionDirectoryError(msgPool::incorrectUpload(_('file is empty')));
+      $error->display();
       return;
     }
 

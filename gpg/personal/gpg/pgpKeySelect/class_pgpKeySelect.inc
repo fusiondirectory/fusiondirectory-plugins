@@ -63,7 +63,8 @@ class pgpKeySelect extends selectManagement
 
     $infos = objects::infos($this->objectTypes[0]);
     if ($infos['ou'] == 'unknown') {
-      msg_dialog::display(_('Configuration error'), _('You need to configure GPG base dn through the addons section first'));
+      $error = new FusionDirectoryError(htmlescape(_('You need to configure GPG base dn through the addons section first')));
+      $error->display();
     }
   }
 

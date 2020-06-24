@@ -313,7 +313,7 @@ class argonautQueue extends management
   {
     if (count($action['targets']) == 1) {
       $entry  = $this->listing->getEntry($action['targets'][0]);
-      msg_dialog::display(_('Error detail'), $entry['ERROR']);
+      msg_dialog::display(_('Error detail'), $entry['ERROR'], INFO_DIALOG);
     }
   }
 
@@ -345,7 +345,8 @@ class argonautQueue extends management
     /* Tell the daemon that we want to update some entries */
     if (count($update_ids)) {
       if (!$this->o_queue->process_entries_now($update_ids)) {
-        msg_dialog::display(_('Error'), sprintf(_('Cannot update queue entries.')), ERROR_DIALOG);
+        $error = new FusionDirectoryError(htmlescape(_('Cannot update queue entries.')));
+        $error->display();
         return FALSE;
       }
     }

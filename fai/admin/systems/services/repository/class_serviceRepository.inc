@@ -260,7 +260,8 @@ class serviceRepository extends simpleService
           }
         }
       } else {
-        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
+        $error = new FusionDirectoryLdapError($dn, LDAP_ADD, $ldap->get_error(), $ldap->get_errno());
+        $error->display();
       }
     }
   }

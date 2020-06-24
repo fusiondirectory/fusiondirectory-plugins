@@ -87,11 +87,13 @@ class dashboardOpsi extends simplePlugin
         $stat['nb'] = count(objects::ls($stat['type'], NULL, NULL, $stat['filter'], TRUE));
       } catch (FusionDirectoryException $e) {
         $stat['nb'] = 0;
-        msg_dialog::display(
-          _('Error'),
-          sprintf(_('Statistics for OPSI could not be computed because of the following error: %s'), $e->getMessage()),
-          ERROR_DIALOG
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Statistics for OPSI could not be computed because of the following error: %s'),
+            $e->getMessage()
+          ))
         );
+        $error->display();
       }
     }
     unset($stat);

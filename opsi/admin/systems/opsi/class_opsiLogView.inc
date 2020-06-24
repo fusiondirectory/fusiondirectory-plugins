@@ -76,7 +76,8 @@ class opsiLogView extends simplePlugin
         /* Query for log files */
         $res = $this->o_queue->append_call('System.list_logs', $this->mac, ['args' => []]);
         if ($this->o_queue->is_error()) {
-          msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
+          $error = new FusionDirectoryError(msgPool::siError($this->o_queue->get_error()));
+          $error->display();
         }
 
         /* Check if there is at least one log file */
@@ -107,7 +108,8 @@ class opsiLogView extends simplePlugin
     }
     $res = $this->o_queue->append_call('System.get_log', $this->mac, ['args' => [$this->available_logs]]);
     if ($this->o_queue->is_error()) {
-      msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
+      $error = new FusionDirectoryError(msgPool::siError($this->o_queue->get_error()));
+      $error->display();
     } else {
       $value = nl2br(htmlescape($res));
       $this->attributesAccess['display_log']->setPostValue($value);

@@ -258,7 +258,13 @@ class mailMethodRenaterPartage extends mailMethod
         $count = count($this->parent->gosaMailForwardingAddress);
         $address = $this->parent->gosaMailForwardingAddress[0];
         if ($count > 1) {
-          msg_dialog::display(_('Warning'), sprintf(_('Several addresses were given in gosaMailForwardingAddress but only one is supported by PARTAGE. %s will be sent to PARTAGE.'), $address));
+          $warning = new FusionDirectoryWarning(
+            htmlescape(sprintf(
+              _('Several addresses were given in gosaMailForwardingAddress but only one is supported by PARTAGE. %s will be sent to PARTAGE.'),
+              $address
+            ))
+          );
+          $warning->display();
         }
         $account['zimbraPrefMailForwardingAddress'] = $address;
       }
@@ -489,11 +495,13 @@ class mailMethodRenaterPartage extends mailMethod
       foreach ($uids as $uid) {
         $ldap->search('(&(objectClass=inetOrgPerson)(uid='.$uid.'))');
         if ($ldap->count() > 1) {
-          msg_dialog::display(
-            _('PARTAGE error'),
-            sprintf(_('Several users have uid "%s". Ignoring this member.'), $uid),
-            ERROR_DIALOG
+          $error = new FusionDirectoryError(
+            htmlescape(sprintf(
+              _('Several users have uid "%s". Ignoring this member.'),
+              $uid
+            ))
           );
+          $error->display();
         } elseif ($ldap->count() == 1) {
           $attrs = $ldap->fetch();
           if (isset($attrs['mail'][0])) {

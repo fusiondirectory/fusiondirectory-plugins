@@ -105,7 +105,8 @@ class sambaGroup extends simplePlugin
         $this->sambaDomainName  = "DEFAULT";
         $this->setSID($config->get_cfg_value("sid"));
       } else {
-        msg_dialog::display(_("Configuration error"), _("Cannot find group SID in your configuration!"), ERROR_DIALOG);
+        $error = new SimplePluginError($this, htmlescape(_('Cannot find group SID in your configuration!')));
+        $error->display();
       }
     }
 
@@ -135,7 +136,8 @@ class sambaGroup extends simplePlugin
 
     // Generate rid / primaryGroupId
     if (!isset($config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'])) {
-      msg_dialog::display(_("Warning"), _("Undefined Samba SID detected. Please fix this problem manually!"), WARNING_DIALOG);
+      $error = new SimplePluginError($this, htmlescape(_('Undefined Samba SID detected. Please fix this problem manually!')));
+      $error->display();
     } else {
       $this->setSID($config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID']);
     }

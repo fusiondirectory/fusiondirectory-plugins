@@ -292,11 +292,14 @@ class mailGroup extends simplePlugin
       foreach ($uids as $uid) {
         $ldap->search('(&(objectClass=inetOrgPerson)(uid='.$uid.'))');
         if ($ldap->count() > 1) {
-          msg_dialog::display(
-            _('Error'),
-            sprintf(_('Several users have uid "%s". Ignoring this member.'), $uid),
-            ERROR_DIALOG
+          $error = new SimplePluginError(
+            $this,
+            htmlescape(sprintf(
+              _('Several users have uid "%s". Ignoring this member.'),
+              $uid
+            ))
           );
+          $error->display();
         } elseif ($ldap->count() == 1) {
           $attrs = $ldap->fetch();
           if (isset($attrs['mail'][0])) {
@@ -386,12 +389,22 @@ class mailGroup extends simplePlugin
     /* Let the mailMethod remove this mailbox */
     if (!$this->is_template) {
       if (!$this->mailMethod->connect()) {
-        msg_dialog::display(_('Mail error'), sprintf(_('Cannot remove mailbox, mail method cannot connect: %s'),
-              $this->mailMethod->get_error()), ERROR_DIALOG);
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Cannot remove mailbox, mail method cannot connect: %s'),
+            $this->mailMethod->get_error()
+          ))
+        );
+        $error->display();
       } else {
         if (!$this->mailMethod->deleteMailbox()) {
-          msg_dialog::display(_('Mail error'), sprintf(_('Cannot remove mailbox: %s'),
-                $this->mailMethod->get_error()), ERROR_DIALOG);
+          $error = new FusionDirectoryError(
+            htmlescape(sprintf(
+              _('Cannot remove mailbox: %s'),
+              $this->mailMethod->get_error()
+            ))
+          );
+          $error->display();
         }
       }
     }

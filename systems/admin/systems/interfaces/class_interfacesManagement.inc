@@ -233,7 +233,8 @@ class interfacesManagement extends management implements SimpleTab
       }
     }
     if (count($disallowed)) {
-      msg_dialog::display(_('Permission'), msgPool::permDelete($disallowed), INFO_DIALOG);
+      $error = new FusionDirectoryPermissionError(msgPool::permDelete($disallowed));
+      $error->display();
     }
 
     // We've at least one entry to delete.
