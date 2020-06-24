@@ -160,13 +160,17 @@ class ldifManager extends simplePlugin
             ERROR_DIALOG);
       } else {
         $ldap = $config->get_ldap_link();
-        $data = $ldap->generateLdif($dn, $this->export_filter, $scope);
-        if ($data === NULL) {
-          msg_dialog::display(_('Error'),
-              sprintf(_('Failed to generate ldap export, error was "%s"!'), $ldap->get_error()),
-              ERROR_DIALOG);
-        } else {
+        try {
+          $data = $ldap->generateLdif($dn, $this->export_filter, $scope);
           send_binary_content($data, $name);
+        } catch (LDIFExportException $e) {
+          $error = new FusionDirectoryError(
+            htmlescape(sprintf(
+              _('Failed to generate ldap export, error was "%s"!'),
+              $e->getMessage()
+            ))
+          );
+          $error->display();
         }
       }
     }
