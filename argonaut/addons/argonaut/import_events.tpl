@@ -28,7 +28,7 @@
               <td>{$event.HEADER|escape}</td>
               <td>{$event.OGROUP|escape}</td>
               {if $event.ERROR}
-                <td style="background-color: #F0BBBB;"><b>{$event.ERROR|escape}</b></td>
+                <td style="background-color: #F0BBBB;"><b>{$event.ERROR}</b></td>
               {else}
                 <td></td>
               {/if}

@@ -309,9 +309,14 @@ class mailMethodCyrus extends mailMethod
         return FALSE;
       }
     } else {
-      msg_dialog::display(_("Mail info"),
-        sprintf(_("LDAP entry has been removed but cyrus mailbox (%s) is kept.\nPlease delete it manually!"),
-        $this->account_id), INFO_DIALOG);
+      msg_dialog::display(
+        _('Mail info'),
+        nl2br(htmlescape(sprintf(
+          _("LDAP entry has been removed but cyrus mailbox (%s) is kept.\nPlease delete it manually!"),
+          $this->account_id
+        ))),
+        INFO_DIALOG
+      );
     }
     return TRUE;
   }

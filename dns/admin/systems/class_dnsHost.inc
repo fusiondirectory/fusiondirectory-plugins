@@ -346,7 +346,7 @@ class dnsHost extends simplePlugin
                 $error = new SimplePluginError($this, msgPool::siError($s_daemon->get_error()));
                 $error->display();
               } else {
-                msg_dialog::display(_('Ldap2zone'), sprintf(_('Ldap2Zone called for zone "%s"'), $zone), INFO_DIALOG);
+                msg_dialog::display(_('Ldap2zone'), htmlescape(sprintf(_('Ldap2Zone called for zone "%s"'), $zone)), INFO_DIALOG);
               }
             }
           } else {
@@ -470,7 +470,7 @@ class dnsHost extends simplePlugin
       }
 
       if (!empty($messages)) {
-        msg_dialog::display(_('DNS update'), implode("<br/>\n", $messages)."<br/>\n", INFO_DIALOG);
+        msg_dialog::display(_('DNS update'), implode("<br/>\n", array_map('htmlescape', $messages))."<br/>\n", INFO_DIALOG);
       }
 
       del_lock($lockedDns);
@@ -501,7 +501,7 @@ class dnsHost extends simplePlugin
       }
     }
     if (!empty($messages)) {
-      msg_dialog::display(_('DNS update'), implode("<br/>\n", $messages)."<br/>\n", INFO_DIALOG);
+      msg_dialog::display(_('DNS update'), implode("<br/>\n", array_map('htmlescape', $messages))."<br/>\n", INFO_DIALOG);
     }
 
     return parent::post_remove();

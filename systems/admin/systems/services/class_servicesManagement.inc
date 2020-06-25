@@ -348,7 +348,7 @@ class servicesManagement extends management implements SimpleTab
   {
     /* Skip if this is a new server */
     if ($this->dn == 'new') {
-      msg_dialog::display(_('Information'), _('Cannot update service status until it has been saved!'), INFO_DIALOG);
+      msg_dialog::display(_('Information'), htmlescape(_('Cannot update service status until it has been saved!')), INFO_DIALOG);
       return;
     }
 

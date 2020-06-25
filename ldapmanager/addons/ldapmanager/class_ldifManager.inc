@@ -185,7 +185,7 @@ class ldifManager extends simplePlugin
     $ldap = $config->get_ldap_link();
     try {
       $nb = $ldap->import_complete_ldif($this->import, !$this->overwrite, FALSE);
-      msg_dialog::display(_('Success'), sprintf(_('%d entries successfully imported'), $nb), INFO_DIALOG);
+      msg_dialog::display(_('Success'), htmlescape(sprintf(_('%d entries successfully imported'), $nb)), INFO_DIALOG);
     } catch (FusionDirectoryException $e) {
       $error = new FusionDirectoryError(htmlescape($e->getMessage()), 0, $e);
       $error->display();

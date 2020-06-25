@@ -68,7 +68,7 @@ class SecondFactorRecoveryCode
           if ($ldap->success()) {
             msg_dialog::display(
               _('Recovery code'),
-              _('You connected using a recovery code as second factor. This code has been deleted and will not be usable again in the future. Generate a new one if you need.'),
+              htmlescape(_('You connected using a recovery code as second factor. This code has been deleted and will not be usable again in the future. Generate a new one if you need.')),
               INFO_DIALOG
             );
           } else {

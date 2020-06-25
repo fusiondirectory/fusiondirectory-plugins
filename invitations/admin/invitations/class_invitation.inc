@@ -192,7 +192,7 @@ class invitation extends simplePlugin
     $this->emails = implode("\n", $failed);
 
     if ($success > 0) {
-      msg_dialog::display(_('Success'), sprintf(_('%d invitations were sent and saved successfully'), $success), INFO_DIALOG);
+      msg_dialog::display(_('Success'), htmlescape(sprintf(_('%d invitations were sent and saved successfully'), $success)), INFO_DIALOG);
     }
 
     return $errors;

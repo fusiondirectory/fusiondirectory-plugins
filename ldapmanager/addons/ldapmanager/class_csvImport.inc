@@ -254,7 +254,7 @@ class csvImport extends simplePlugin
       }
     }
     if ($success > 0) {
-      msg_dialog::display(_('Success'), sprintf(_('Successfully imported %d entries'), $success), INFO_DIALOG);
+      msg_dialog::display(_('Success'), htmlescape(sprintf(_('Successfully imported %d entries'), $success)), INFO_DIALOG);
     }
   }
 

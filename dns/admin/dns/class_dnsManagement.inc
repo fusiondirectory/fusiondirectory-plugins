@@ -109,7 +109,7 @@ class dnsManagement extends management
               $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
               $error->display();
             } else {
-              msg_dialog::display(_('Ldap2zone'), sprintf(_('Ldap2Zone called for zone "%s"'), $zoneName), INFO_DIALOG);
+              msg_dialog::display(_('Ldap2zone'), htmlescape(sprintf(_('Ldap2Zone called for zone "%s"'), $zoneName)), INFO_DIALOG);
             }
           }
         } else {

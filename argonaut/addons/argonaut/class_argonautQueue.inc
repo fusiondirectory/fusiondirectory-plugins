@@ -226,12 +226,18 @@ class argonautQueue extends management
       }
     }
     if (count($nodelete)) {
-      msg_dialog::display(_('Remove'),
-          sprintf(_('The following jobs couldn\'t be deleted, they have to be aborted: %s'),
-            '<br/>'.msgPool::buildList($nodelete)), INFO_DIALOG);
+      msg_dialog::display(
+        _('Remove'),
+        sprintf(
+          htmlescape(_('The following jobs couldn\'t be deleted, they have to be aborted: %s')),
+          '<br/>'.msgPool::buildList($nodelete)
+        ),
+        INFO_DIALOG
+      );
     }
     if (count($disallowed)) {
-      msg_dialog::display(_('Permission'), msgPool::permDelete($disallowed), INFO_DIALOG);
+      $error = new FusionDirectoryPermissionError(msgPool::permDelete($disallowed));
+      $error->display();
     }
 
     // We've at least one entry to delete.
@@ -292,7 +298,7 @@ class argonautQueue extends management
 
     $this->o_queue->append_call('wakeup', $macs, []);
     if ($this->o_queue->is_error()) {
-      msg_dialog::display(_('Info'), sprintf(_('%s'), $this->o_queue->get_error()), INFO_DIALOG);
+      msg_dialog::display(_('Info'), htmlescape($this->o_queue->get_error()), INFO_DIALOG);
     }
     // Removing the task.
     $this->o_queue->remove_entries($taskids);
@@ -313,7 +319,7 @@ class argonautQueue extends management
   {
     if (count($action['targets']) == 1) {
       $entry  = $this->listing->getEntry($action['targets'][0]);
-      msg_dialog::display(_('Error detail'), $entry['ERROR'], INFO_DIALOG);
+      msg_dialog::display(_('Error detail'), htmlescape($entry['ERROR']), INFO_DIALOG);
     }
   }
 

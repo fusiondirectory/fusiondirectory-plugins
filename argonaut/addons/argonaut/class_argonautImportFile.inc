@@ -143,7 +143,7 @@ class argonautImportFile extends simplePlugin
             $success++;
           }
         }
-        msg_dialog::display(_('Import'), sprintf(_('Import complete: %s events successfully send, %s failed'), $success, $fail), INFO_DIALOG);
+        msg_dialog::display(_('Import'), htmlescape(sprintf(_('Import complete: %s events successfully send, %s failed'), $success, $fail)), INFO_DIALOG);
         $this->events = $events;
       }
     }
