@@ -117,18 +117,42 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     list ($img, $nbicons) = parent::genRowIcons($key, $value);
     $key64 = base64_encode($key);
     if (preg_match('/\-$/', $value)) {
-      $img = '<input type="image" formnovalidate="formnovalidate" src="geticon.php?context=actions&icon=add&size=16"'.
-              ' name="'.$id.'_removal_'.$key64.'" class="center" alt="'._('Mark for installation').'" title="'._('Mark for installation').'"/>'.
-              $img;
+      $img = $this->renderInputField(
+        'image', $id.'_removal_'.$key64,
+        [
+          'src'             => 'geticon.php?context=actions&icon=add&size=16',
+          'title'           => _('Mark for installation'),
+          'alt'             => _('Mark for installation'),
+          'formnovalidate'  => 'formnovalidate',
+          'class'           => 'center'
+        ],
+        FALSE
+      ).$img;
     } else {
-      $img = '<input type="image" formnovalidate="formnovalidate" src="geticon.php?context=actions&icon=remove&size=16"'.
-              ' name="'.$id.'_removal_'.$key64.'" class="center" alt="'._('Mark for removal').'" title="'._('Mark for removal').'"/>'.
-              $img;
+      $img = $this->renderInputField(
+        'image', $id.'_removal_'.$key64,
+        [
+          'src'             => 'geticon.php?context=actions&icon=remove&size=16',
+          'title'           => _('Mark for removal'),
+          'alt'             => _('Mark for removal'),
+          'formnovalidate'  => 'formnovalidate',
+          'class'           => 'center'
+        ],
+        FALSE
+      ).$img;
     }
     if (isset($this->buffer[$key]['HASTEMPLATE']) && $this->buffer[$key]['HASTEMPLATE']) {
-      $img = '<input type="image" formnovalidate="formnovalidate" src="geticon.php?context=actions&icon=package-configure&size=16"'.
-              ' name="'.$id.'_config_'.$key64.'" class="center" alt="'._('Edit configuration').'" title="'._('Edit configuration').'"/>'.
-              $img;
+      $img = $this->renderInputField(
+        'image', $id.'_config_'.$key64,
+        [
+          'src'             => 'geticon.php?context=actions&icon=package-configure&size=16',
+          'title'           => _('Edit configuration'),
+          'alt'             => _('Edit configuration'),
+          'formnovalidate'  => 'formnovalidate',
+          'class'           => 'center'
+        ],
+        FALSE
+      ).$img;
     } else {
       $img = '<img src="images/empty.png" alt="" style="width:16px;"/>'.$img;
     }

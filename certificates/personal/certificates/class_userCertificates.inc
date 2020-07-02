@@ -31,7 +31,8 @@ class CertificateOrderedArrayAttribute extends OrderedArrayAttribute
         'title' => _('Download'),
         'alt'   => _('Download'),
         'class' => 'center'
-      ]
+      ],
+      FALSE
     ).$img;
     $nbicons++;
 

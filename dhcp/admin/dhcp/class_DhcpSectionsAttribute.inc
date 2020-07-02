@@ -122,7 +122,8 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
         'title' => _('Insert new DHCP section'),
         'alt'   => _('Insert new DHCP section'),
         'class' => 'center',
-      ]
+      ],
+      FALSE
     ).$img;
     $nbicons++;
 
