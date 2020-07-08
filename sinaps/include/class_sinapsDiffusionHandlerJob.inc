@@ -154,9 +154,9 @@ class sinapsDiffusionHandlerJob
       $values['entite']['supannRefId'] = array_values(array_unique($values['entite']['supannRefId']));
       $message = 'Entite updated';
     }
-    $error = $this->fillObject('entite', $values, $dn);
-    if ($error !== TRUE) {
-      $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 13, strip_tags(implode(', ', $error))));
+    $errors = $this->fillObject('entite', $values, $dn);
+    if ($errors !== TRUE) {
+      $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 13, strip_tags(implode(', ', $errors))));
     } else {
       $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 0, $message, $idObjApp));
     }
@@ -196,9 +196,9 @@ class sinapsDiffusionHandlerJob
       }
       $dn = '';
     }
-    $error = $this->fillObject('user', $values, $dn);
-    if ($error !== TRUE) {
-      $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 15, strip_tags(implode(', ', $error))));
+    $errors = $this->fillObject('user', $values, $dn);
+    if ($errors !== TRUE) {
+      $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 15, strip_tags(implode(', ', $errors))));
     } else {
       if ($values['lock']) {
         /* $values['lock'] means this was a deletion, so we must not send an object identifier in the answer */
@@ -267,7 +267,7 @@ class sinapsDiffusionHandlerJob
           ) {
           list($disabled, , $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
           if ($disabled) {
-            return $text;
+            return [$text];
           }
           $tabobject->by_object[$tab]->is_account = FALSE;
         }
@@ -278,7 +278,7 @@ class sinapsDiffusionHandlerJob
           ) {
           list($disabled, , $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
           if ($disabled) {
-            return $text;
+            return [$text];
           }
           $tabobject->by_object[$tab]->is_account = TRUE;
         }
