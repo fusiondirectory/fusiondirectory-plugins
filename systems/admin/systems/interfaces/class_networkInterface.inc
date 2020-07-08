@@ -102,15 +102,14 @@ class networkInterface extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     if (isset($this->attributesAccess['fdNetworkInterfaceVlanDN'])) {
+      $this->attributesAccess['fdNetworkInterfaceVlanDN']->setManagedAttributes(
+        [
+          'erase' => ['' => ['fdNetworkInterfaceVlanTagged']]
+        ]
+      );
       $this->attributesAccess['fdNetworkInterfaceVlanDN']->setSubmitForm('vlanChanged');
       $this->vlanChanged();
     }
-
-    $this->attributesAccess['fdNetworkInterfaceVlanDN']->setManagedAttributes(
-      [
-        'erase' => ['' => ['fdNetworkInterfaceVlanTagged']]
-      ]
-    );
   }
 
   function vlanChanged ()
