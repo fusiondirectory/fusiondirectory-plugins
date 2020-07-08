@@ -134,7 +134,7 @@ class interfacesManagement extends management implements SimpleTab
       if ($object === NULL) {
         continue;
       }
-      array_push($ips, ...$object->getBaseObject()->ipHostNumber);
+      $ips = array_merge($ips, $object->getBaseObject()->ipHostNumber);
     }
 
     return $ips;
@@ -338,7 +338,7 @@ class interfacesManagement extends management implements SimpleTab
         $object->dn                     = str_replace($object->getBaseObject()->base, $this->dn, $object->dn);
         $object->getBaseObject()->base  = $this->dn;
         /* Save subobject and store errors if any */
-        array_push($errors, ...$object->save());
+        $errors = array_merge($errors, $object->save());
       }
     }
 
