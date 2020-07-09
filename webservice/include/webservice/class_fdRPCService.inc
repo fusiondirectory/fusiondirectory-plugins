@@ -313,7 +313,7 @@ class fdRPCService
     } elseif (!$tabobject->by_object[$tab]->acl_is_removeable()) {
       throw new WebServiceError('You don\'t have sufficient rights to disable tab "'.$tab.'"', 403);
     } else {
-      list($disabled, $buttonHtmlText, $htmlText) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
+      list($disabled, , $htmlText) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
       if ($disabled) {
         throw new WebServiceError(htmlunescape($htmlText));
       }
@@ -472,7 +472,7 @@ class fdRPCService
           $tabobject->by_object[$tab]->isActivatable() &&
           !$tabobject->by_object[$tab]->isActive()
         ) {
-        list($disabled, $buttonHtmlText, $htmlText) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
+        list($disabled, , $htmlText) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
         if ($disabled) {
           throw new WebServiceError(htmlunescape($htmlText));
         }
