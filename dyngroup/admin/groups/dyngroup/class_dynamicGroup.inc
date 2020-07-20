@@ -1,0 +1,93 @@
+<?php
+
+/*
+  This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+  Copyright (C) 2003  Cajus Pollmeier
+  Copyright (C) 2011-2016  FusionDirectory
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+*/
+
+class dynamicGroup extends simplePlugin
+{
+  protected $locks = [];
+
+  static function plInfo (): array
+  {
+    if (class_available('mixedGroup')) {
+      return [];
+    }
+    return [
+      'plShortName'   => _('Dynamic Group'),
+      'plDescription' => _('Dynamic group information'),
+      'plObjectClass' => ['groupOfURLs','extensibleObject'],
+      'plObjectType'  => ['dyngroup' => [
+        'name'        => _('Dynamic group'),
+        'description' => _('Dynamic user group'),
+        'ou'          => get_ou('groupRDN'),
+        'icon'        => 'geticon.php?context=types&icon=user-group&size=16',
+        'mainAttr'    => 'cn',
+      ]],
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
+    ];
+  }
+
+  static function getAttributesInfo (): array
+  {
+    global $config;
+
+    $memberAttribute = new UsersAttribute(
+            '', _('Group members'),
+            'member', FALSE,
+            [], 'dn'
+          );
+    $memberAttribute->setDisabled(true);
+
+    return [
+      'main' => [
+        'name'  => _('Properties'),
+        'attrs' => [
+          new BaseSelectorAttribute(get_ou('groupRDN')),
+          new StringAttribute(
+            _('Name'), _('Name of this group'),
+            'cn', TRUE,
+            '', '', (strict_uid_mode() ? '/^[a-z0-9_-]+$/' : '/^[a-z0-9_.-]+$/i')
+          ),
+          new TextAreaAttribute(
+            _('Description'), _('Short description of this group'),
+            'description', FALSE
+          )
+        ]
+      ],
+      'members' => [
+        'name'  => _('Group members'),
+        'attrs' => [
+          $memberAttribute
+        ]
+      ],
+      'member URL' => [
+      	'name'  => _('member URL'),
+	'attrs' => [
+	 new SetAttribute(
+            new StringAttribute(
+              _('member URL'), _('URL of member of this group'),
+              'memberURL', FALSE
+            )
+          )
+	]
+      ]
+    ];
+  }
+}
