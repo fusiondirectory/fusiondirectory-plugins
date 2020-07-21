@@ -3,7 +3,8 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2020  FusionDirectory
+  Copyright (C) 2020  Worteks
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,23 +23,18 @@
 
 class dynamicGroup extends simplePlugin
 {
-  protected $locks = [];
 
   static function plInfo (): array
   {
-    if (class_available('mixedGroup')) {
-      return [];
-    }
     return [
-      'plShortName'   => _('Dynamic Group'),
+      'plShortName'   => _('Dynamic group'),
       'plDescription' => _('Dynamic group information'),
       'plObjectClass' => ['groupOfURLs','extensibleObject'],
       'plObjectType'  => ['dyngroup' => [
         'name'        => _('Dynamic group'),
-        'description' => _('Dynamic user group'),
-        'ou'          => get_ou('groupRDN'),
-        'icon'        => 'geticon.php?context=types&icon=user-group&size=16',
-        'mainAttr'    => 'cn',
+        'description' => _('Dynamic group'),
+        'ou'          => get_ou('ogroupRDN'),
+        'icon'        => 'geticon.php?context=types&icon=dyngroup&size=16',
       ]],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -83,7 +79,7 @@ class dynamicGroup extends simplePlugin
 	 new SetAttribute(
             new StringAttribute(
               _('member URL'), _('URL of member of this group'),
-              'memberURL', FALSE
+              'memberURL', FALSE, '', '', '/^ldap:\/\/\/[\w=,]+\?[\w=,]*\?\w+\?[&|()\w=*]+$/', 'ldap:///BASE_DN??SCOPE?FILTER'
             )
           )
 	]
