@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
@@ -36,24 +35,26 @@ class dynamicGroup extends simplePlugin
         'ou'          => get_ou('ogroupRDN'),
         'icon'        => 'geticon.php?context=types&icon=dyngroup&size=16',
       ]],
+
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
 
   static function getAttributesInfo (): array
   {
-    global $config;
-
     $memberAttribute = new SetAttribute(
       new StringAttribute(
-        '', _('Group members'), 'member', FALSE ));
+        '', _('Group members'),
+        'member', FALSE
+      )
+    );
     $memberAttribute->setDisabled(TRUE);
 
     return [
       'main' => [
         'name'  => _('Properties'),
         'attrs' => [
-          new BaseSelectorAttribute(get_ou('groupRDN')),
+          new BaseSelectorAttribute(get_ou('ogroupRDN')),
           new StringAttribute(
             _('Name'), _('Name of this group'),
             'cn', TRUE,
@@ -77,10 +78,13 @@ class dynamicGroup extends simplePlugin
           new SetAttribute(
             new StringAttribute(
               _('member URL'), _('URL of member of this group'),
-              'memberURL', FALSE, '', '', '/^ldap:\/\/\/[\w=,]+\?[\w=,]*\?\w+\?[&|()\w=*]+$/', 'ldap:///BASE_DN??SCOPE?FILTER'
+              'memberURL', FALSE,
+              '', '',
+              '/^ldap:\/\/\/[\w=,]+\?[\w=,]*\?\w+\?[&|()\w=*]+$/',
+              'ldap:///BASE_DN??SCOPE?FILTER'
             )
           )
-	]
+        ]
       ]
     ];
   }
