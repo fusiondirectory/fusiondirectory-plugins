@@ -44,12 +44,10 @@ class dynamicGroup extends simplePlugin
   {
     global $config;
 
-    $memberAttribute = new UsersAttribute(
-            '', _('Group members'),
-            'member', FALSE,
-            [], 'dn'
-          );
-    $memberAttribute->setDisabled(true);
+    $memberAttribute = new SetAttribute(
+      new StringAttribute(
+        '', _('Group members'), 'member', FALSE ));
+    $memberAttribute->setDisabled(TRUE);
 
     return [
       'main' => [
@@ -74,9 +72,9 @@ class dynamicGroup extends simplePlugin
         ]
       ],
       'member URL' => [
-      	'name'  => _('member URL'),
-	'attrs' => [
-	 new SetAttribute(
+        'name'  => _('member URL'),
+        'attrs' => [
+          new SetAttribute(
             new StringAttribute(
               _('member URL'), _('URL of member of this group'),
               'memberURL', FALSE, '', '', '/^ldap:\/\/\/[\w=,]+\?[\w=,]*\?\w+\?[&|()\w=*]+$/', 'ldap:///BASE_DN??SCOPE?FILTER'
