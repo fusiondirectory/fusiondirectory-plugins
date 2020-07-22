@@ -44,6 +44,9 @@ class interfacesManagement extends management implements SimpleTab
   var $acl;
   var $cn;
 
+  /* Used by template and webservice */
+  public $attributesAccess;
+
   /* We list all network interfaces attributes in neededAttrs to get all data */
   public $neededAttrs = ['cn','macAddress','fdNetworkInterfaceVlanDN','fdNetworkInterfaceVlanTagged','fdNetworkInterfaceSubnetDN','ipHostNumber'];
 
@@ -85,6 +88,12 @@ class interfacesManagement extends management implements SimpleTab
     $this->parent = $parent;
 
     parent::__construct(['networkInterface'], []);
+
+    $this->attributesAccess['networkInterfaces'] = new InterfacesAttribute(
+      _('Interfaces'), '',
+      'networkInterfaces', FALSE
+    );
+    $this->attributesAccess['networkInterfaces']->setParent($this);
 
     $this->parent->getBaseObject()->setNetworkAttributesReadOnly(TRUE);
 

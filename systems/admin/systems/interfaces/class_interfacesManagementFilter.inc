@@ -103,7 +103,11 @@ class interfacesManagementFilter extends managementFilter
     $entries  = [];
     $row      = 0;
     foreach ($networkInterfaces as $networkInterface) {
-      $values = json_decode($networkInterface, TRUE);
+      if (is_array($networkInterface)) {
+        $values = $networkInterface;
+      } else {
+        $values = json_decode($networkInterface, TRUE);
+      }
       $entries[$values['dn']] = new ListingEntry($this->parent->listing, $this->parent->objectTypes[0], $values['dn'], $values, $row++);
     }
     $this->entriesCache = [$entries, [$this->parent->objectTypes[0] => $row]];
@@ -113,17 +117,7 @@ class interfacesManagementFilter extends managementFilter
   {
     global $config;
 
-    $attrs = ['networkInterfaces' => []];
-
-    foreach ($this->entriesCache[0] as $dn => $entry) {
-      $arrayEntry = ['dn' => $dn];
-      foreach ($this->parent->neededAttrs as $attr) {
-        if (isset($entry[$attr])) {
-          $arrayEntry[$attr] = $entry[$attr];
-        }
-      }
-      $attrs['networkInterfaces'][] = json_encode($arrayEntry);
-    }
+    $attrs = ['networkInterfaces' => array_map('json_encode', $this->getInterfacesAsArrays())];
 
     $ldap = $config->get_ldap_link();
     $ldap->cat($this->parent->dn);
@@ -138,5 +132,22 @@ class interfacesManagementFilter extends managementFilter
     $template_attrs = templateHandling::fieldsToLDAP($template_attrs, $attrs);
 
     return $template_attrs;
+  }
+
+  function getInterfacesAsArrays (): array
+  {
+    $result = [];
+
+    foreach ($this->entriesCache[0] as $dn => $entry) {
+      $arrayEntry = ['dn' => $dn];
+      foreach ($this->parent->neededAttrs as $attr) {
+        if (isset($entry[$attr])) {
+          $arrayEntry[$attr] = $entry[$attr];
+        }
+      }
+      $result[] = $arrayEntry;
+    }
+
+    return $result;
   }
 }
