@@ -118,11 +118,12 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     $img = $this->renderInputField(
       'image', $id.'_insertDHCP_'.$key,
       [
-        'src'   => 'geticon.php?context=actions&amp;icon=document-new&amp;size=16',
+        'src'   => 'geticon.php?context=actions&icon=document-new&size=16',
         'title' => _('Insert new DHCP section'),
         'alt'   => _('Insert new DHCP section'),
         'class' => 'center',
-      ]
+      ],
+      FALSE
     ).$img;
     $nbicons++;
 
@@ -254,7 +255,10 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
       return $error;
     }
     if (empty($this->value) || empty($this->dhcpObjectCache[$this->value[0][0]]['cn']) || ($this->dhcpObjectCache[$this->value[0][0]]['cn'][0] == '')) {
-      return msgPool::required(_('Name'));
+      return new SimplePluginCheckError(
+        $this,
+        msgPool::required(_('Name'))
+      );
     }
   }
 
@@ -429,7 +433,8 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     }
 
     /* That should not happen... */
-    msg_dialog::display(_('Error'), _('The DHCP configuration set is unkown. Please contact your system administrator.'), ERROR_DIALOG);
+    $error = new SimplePluginError($this, htmlescape(_('The DHCP configuration set is unkown. Please contact your system administrator.')));
+    $error->display();
 
     return '';
   }

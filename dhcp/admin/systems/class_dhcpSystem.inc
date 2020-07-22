@@ -255,12 +255,18 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
       return $error;
     } else {
       if (!is_array($this->value)) {
-        return sprintf(_('The value for multivaluated field "%s" is not an array'), $this->getLabel());
+        return new SimplePluginCheckError(
+          $this,
+          SimplePluginCheckError::invalidValue(_('Value is not an array'))
+        );
       }
       foreach ($this->value as $value) {
         $error = dhcpSystem::dhcpIsIpInSubnet($this->nodesCache[$value[0]], $value[2]);
         if ($error !== TRUE) {
-          return $error;
+          return new SimplePluginCheckError(
+            $this,
+            htmlescape($error)
+          );
         }
       }
     }

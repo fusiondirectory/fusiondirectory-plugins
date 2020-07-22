@@ -39,8 +39,7 @@ class faiSimplePluginClass extends simplePlugin
   function check (): array
   {
     global $config;
-    /* Call common method to give check the hook */
-    $message = parent::check();
+    $errors = parent::check();
 
     /* Ensure that we do not overwrite an allready existing entry */
     $new_dn   = $this->compute_dn();
@@ -48,11 +47,14 @@ class faiSimplePluginClass extends simplePlugin
       $ldap     = $config->get_ldap_link();
       $ldap->cat($new_dn);
       if ($ldap->count() != 0) {
-        $message[] = msgPool::duplicated(_("Name"));
+        $errors[] = new SimplePluginCheckError(
+          $this,
+          msgPool::duplicated(_('Name'))
+        );
       }
     }
 
-    return $message;
+    return $errors;
   }
 
   function compute_dn (): string

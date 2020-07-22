@@ -168,10 +168,8 @@ class opsiProductProperties extends simplePlugin
     if (!isset($this->properties[$productid])) {
       $s_daemon = new supportDaemon();
       if (!$s_daemon->is_available()) {
-        msg_dialog::display(
-          _("Could not contact argonaut server"),
-          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-        );
+        $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+        $error->display();
         return;
       }
       $properties = $s_daemon->append_call(
@@ -183,10 +181,8 @@ class opsiProductProperties extends simplePlugin
         ]]
       );
       if ($s_daemon->is_error()) {
-        msg_dialog::display(
-          _('Failed to contact OPSI server'),
-          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-        );
+        $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+        $error->display();
         return;
       }
       $this->properties[$productid] = [];

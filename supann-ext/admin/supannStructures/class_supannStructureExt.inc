@@ -129,7 +129,10 @@ class supannStructureExt extends simplePlugin
       ($this->attributesAccess['fdSupannEndDate']->getValue() != '') &&
       ($this->attributesAccess['fdSupannStartDate']->getDateValue() > $this->attributesAccess['fdSupannEndDate']->getDateValue())
       ) {
-      $errors[] = _('Start date must be smaller than end date');
+      $errors[] = new SimplePluginCheckError(
+        $this->attributesAccess['fdSupannEndDate'],
+        htmlescape(sprintf(_('End date "%s" is older than start date "%s"'), $this->attributesAccess['fdSupannEndDate']->getDateValue()->format('Y-m-d'), $this->attributesAccess['fdSupannStartDate']->getDateValue()->format('Y-m-d')))
+      );
     }
 
     return $errors;

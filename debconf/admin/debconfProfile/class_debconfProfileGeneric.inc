@@ -68,7 +68,8 @@ class DebconfEntriesAttribute extends CompositeAttribute
           //~ 'owners'
           //~ 'template'
         } else {
-          msg_dialog::display(_("Error"),  _("There is no template for this profile"), ERROR_DIALOG);
+          $error = new SimplePluginError($this, htmlescape(_('There is no template for this profile')));
+          $error->display();
         }
       }
     }
@@ -82,9 +83,15 @@ class DebconfEntriesAttribute extends CompositeAttribute
       $dn = "cn=$cn,ou=questions,".$this->plugin->dn;
       $ldap->cat($dn, ["objectClass"]);
       if ($ldap->count() != 1) {
-        msg_dialog::display(_("Error"),
-          sprintf(_("Can't find entry %s in LDAP for profile %s"), $cn, $this->plugin->dn),
-          ERROR_DIALOG);
+        $error = new SimplePluginError(
+          $this,
+          htmlescape(sprintf(
+            _('Can\'t find entry %s in LDAP for profile %s'),
+            $cn,
+            $this->plugin->dn
+          ))
+        );
+        $error->display();
       } else {
         $attrs = [
           'value' => [$attribute->getValue()],
@@ -135,13 +142,17 @@ class DebconfImportAttribute extends FileAttribute
         $ldap->import_complete_ldif($str, FALSE, FALSE);
         $this->plugin->initially_was_account = TRUE;
       } catch (FusionDirectoryException $e) {
-        msg_dialog::display(_('LDAP error'), $e->getMessage(), ERROR_DIALOG);
+        $error = new SimplePluginError($this, htmlescape($e->getMessage()), 0, $e);
+        $error->display();
       }
     } else {
-      msg_dialog::display(_("LDIF error"),  "Could not found template name in the ldif ".
-                                            "was expecting ou=<b>name</b>,ou=templates,".
-                                            get_ou("debconfRDN").$config->current['BASE'],
-                                            ERROR_DIALOG);
+      $error = new SimplePluginError(
+        $this,
+        "Could not find template name in the ldif ".
+          "was expecting ou=<b>name</b>,ou=templates,".
+          htmlescape(get_ou("debconfRDN").$config->current['BASE'])
+      );
+      $error->display();
     }
   }
 

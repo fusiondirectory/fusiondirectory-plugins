@@ -131,7 +131,11 @@ class dhcpConfiguration extends simplePlugin
     /* Save dhcp settings */
     $ldap   = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->create_missing_trees(preg_replace('/^[^,]+,/', '', $this->dn));
+    try {
+      $ldap->create_missing_trees(preg_replace('/^[^,]+,/', '', $this->dn));
+    } catch (FusionDirectoryError $error) {
+      return [$error];
+    }
     $cache  = $this->attributesAccess['dhcpSections']->getCache();
     $errors = [];
     $new    = ($this->orig_dn == 'new');
@@ -148,7 +152,13 @@ class dhcpConfiguration extends simplePlugin
             $ldap->rmdir_recursive($dn);
             if (!$ldap->success()) {
               $this->ldap_error = $ldap->get_error();
-              $errors[] = msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class());
+              $errors[] = new SimplePluginLdapError(
+                $this,
+                $dn,
+                LDAP_DEL,
+                $ldap->get_error(),
+                $ldap->get_errno()
+              );
             }
           }
         }
@@ -201,13 +211,25 @@ class dhcpConfiguration extends simplePlugin
           $ldap->modify($attrs);
           if (!$ldap->success()) {
             $this->ldap_error = $ldap->get_error();
-            $errors[] = msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class());
+            $errors[] = new SimplePluginLdapError(
+              $this,
+              $dn,
+              LDAP_MOD,
+              $ldap->get_error(),
+              $ldap->get_errno()
+            );
           }
         } else {
           $ldap->add($attrs);
           if (!$ldap->success()) {
             $this->ldap_error = $ldap->get_error();
-            $errors[] = msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class());
+            $errors[] = new SimplePluginLdapError(
+              $this,
+              $dn,
+              LDAP_ADD,
+              $ldap->get_error(),
+              $ldap->get_errno()
+            );
           }
         }
       }

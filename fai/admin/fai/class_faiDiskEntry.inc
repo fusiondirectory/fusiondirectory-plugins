@@ -142,11 +142,13 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
      */
     if (isset($list[$this->postValue[$key]['cn']])) {
       $used = implode(',', array_values($list[$this->postValue[$key]['cn']]));
-      msg_dialog::display(
-        _('Error'),
-        sprintf(_('The partition cannot be deleted while it is used in the "%s" disk definition!'), $used),
-        ERROR_DIALOG
+      $error = new FusionDirectoryError(
+        htmlescape(sprintf(
+          _('The partition cannot be deleted while it is used in the "%s" disk definition!'),
+          $used
+        ))
       );
+      $error->display();
     } else {
       unset($this->postValue[$key]);
     }

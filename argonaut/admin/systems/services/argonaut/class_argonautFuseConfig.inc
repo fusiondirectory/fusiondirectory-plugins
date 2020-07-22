@@ -127,15 +127,15 @@ class argonautFuseConfig extends simpleService
 
   function check (): array
   {
-    $message = parent::check();
+    $errors = parent::check();
 
     foreach ($this->plugin as $plugin) {
       if ($plugin->is_account) {
-        $message = array_merge($message, $plugin->check());
+        $errors = array_merge($errors, $plugin->check());
       }
     }
 
-    return $message;
+    return $errors;
   }
 
   function set_acl_category (string $cat)

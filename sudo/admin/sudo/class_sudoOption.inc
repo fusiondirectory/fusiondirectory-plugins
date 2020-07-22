@@ -234,9 +234,12 @@ class SudoOptionAttribute extends Attribute
     $error = parent::check();
     if (!empty($error)) {
       return $error;
-    } elseif ($this->type == "INTEGER") {
+    } elseif ($this->type == 'INTEGER') {
       if (!is_numeric($this->value) && !empty($this->value)) {
-        return msgPool::invalid($this->getLabel(), $this->value);
+        return new SimplePluginCheckError(
+          $this,
+          SimplePluginCheckError::invalidValue('Value is not an integer')
+        );
       }
     }
   }
@@ -244,7 +247,7 @@ class SudoOptionAttribute extends Attribute
   function renderFormInput (): string
   {
     $id = $this->getLdapName();
-    $value = htmlentities($this->value['value'], ENT_COMPAT, 'UTF-8');
+    $value = htmlescape($this->value['value']);
     $smarty = get_smarty();
     $smarty->assign("boolStringOptions", ["FALSE","TRUE","STRING"]);
     $smarty->assign("boolIntOptions", ["FALSE","TRUE","INTEGER"]);

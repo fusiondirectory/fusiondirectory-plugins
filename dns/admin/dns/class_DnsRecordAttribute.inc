@@ -416,7 +416,10 @@ class DnsRecordAttribute extends CompositeAttribute
       $reverse  = $this->attributes[2]->getValue();
 
       if (!static::matchReverseZone($type, $ip, $reverse)) {
-        return _('The entered IP does not match the selected reverse zone');
+        return new SimplePluginCheckError(
+          $this,
+          htmlescape(_('The entered IP does not match the selected reverse zone'))
+        );
       }
     }
   }

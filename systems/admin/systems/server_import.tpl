@@ -9,7 +9,7 @@
 {/literal}
 </style><div></div>
 <fieldset id="{$sectionId}" class="plugin-section{$sectionClasses}">
-  <legend><span>{$section}</span></legend>
+  <legend><span>{if $sectionIcon}<img src="{$sectionIcon|escape}" alt=""/>{/if}{$section|escape}</span></legend>
   <div>
     <p class="warning">{t}Warning : Once you import your OPSI hosts into FusionDirectory, they will be managed by it, so if you delete them or deactivate their OPSI tab, they will be removed from OPSI.{/t}</p>
     <table>
@@ -25,7 +25,7 @@
             <table class="listingTable">
               <thead>
                 <tr>
-                  <th><img src="geticon.php?context=status&icon=dialog-information&size=16"/></th>
+                  <th><img src="geticon.php?context=status&amp;icon=dialog-information&amp;size=16"/></th>
                   <th>Host</th>
                   <th>Details</th>
                 </tr>
@@ -34,17 +34,17 @@
                 {foreach from=$importResult item=message key=id}
                   {if $message === TRUE}
                     <tr class="success">
-                      <td><img src="geticon.php?context=status&icon=task-complete&size=16"/></td>
-                      <td>{$id}</td>
+                      <td><img src="geticon.php?context=status&amp;icon=task-complete&amp;size=16"/></td>
+                      <td>{$id|escape}</td>
                       <td>saved</td>
                     </tr>
                   {else}
                     <tr class="error">
-                      <td><img src="geticon.php?context=status&icon=task-failure&size=16"/></td>
-                      <td>{$id}</td>
+                      <td><img src="geticon.php?context=status&amp;icon=task-failure&amp;size=16"/></td>
+                      <td>{$id|escape}</td>
                       <td>
                         {foreach from=$message item=line}
-                          {$line}<br/>
+                          {$line|escape}<br/>
                         {/foreach}
                       </td>
                     </tr>

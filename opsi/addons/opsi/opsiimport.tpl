@@ -9,13 +9,13 @@
 {/literal}
 </style><div></div>
 <fieldset id="{$sectionId}" class="plugin-section{$sectionClasses}">
-  <legend><span>{$section}</span></legend>
+  <legend><span>{if $sectionIcon}<img src="{$sectionIcon|escape}" alt=""/>{/if}{$section|escape}</span></legend>
   <div>
     <p class="warning">{t}Warning : Once you import your OPSI hosts into FusionDirectory, they will be managed by it, so if you delete them or deactivate their OPSI tab, they will be removed from OPSI.{/t}</p>
   <table>
     {foreach from=$attributes item=attribute key=id}
       <tr>
-        <td title="{$attribute.description}"><label for="{$attribute.htmlid}">{eval var=$attribute.label}</label></td>
+        <td title="{$attribute.description|escape}"><label for="{$attribute.htmlid|escape}">{eval var=$attribute.label}</label></td>
         <td>{eval var=$attribute.input}</td>
       </tr>
     {/foreach}

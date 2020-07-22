@@ -90,37 +90,20 @@ class opsiImport extends systemImport
     global $config;
     $s_daemon = new supportDaemon();
     if (!$s_daemon->is_available()) {
-      msg_dialog::display(
-        _('Argonaut server is not available'), $s_daemon->get_error(), ERROR_DIALOG
-      );
+      $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+      $error->display();
       return FALSE;
     }
-    $ldap = $config->get_ldap_link();
-    $ldap->cat($server_dn);
-    if ($attrs = $ldap->fetch()) {
-      if (isset($attrs['macAddress'])) {
-        $macAddress = $attrs['macAddress'][0];
-      } else {
-        msg_dialog::display(
-          _('No mac address'),
-          sprintf(_('Server "%s" has no mac address configured in the LDAP'), $server_dn),
-          ERROR_DIALOG
-        );
-        return FALSE;
-      }
-    } else {
-      msg_dialog::display(
-        sprintf(_('Could not find "%s" in the LDAP'), $server_dn),
-        msgPool::ldaperror($ldap->get_error(), $server_dn), ERROR_DIALOG
-      );
+    try {
+      $macAddress = static::getOpsiServerMac($server_dn);
+    } catch (FusionDirectoryError $error) {
+      $error->display();
       return FALSE;
     }
     $hosts = $s_daemon->append_call('OPSI.host_getObjects', $macAddress, ['args' => [[], ['type' => 'OpsiClient']]]);
     if ($s_daemon->is_error()) {
-      msg_dialog::display(
-        _('Could not get OPSI information'),
-        msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-      );
+      $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+      $error->display();
       return FALSE;
     }
 
@@ -139,10 +122,8 @@ class opsiImport extends systemImport
           ]]
         );
         if ($s_daemon->is_error()) {
-          msg_dialog::display(
-            _('Could not get OPSI information'),
-            msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-          );
+          $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+          $error->display();
           return FALSE;
         }
         $host['localboots'] = [];

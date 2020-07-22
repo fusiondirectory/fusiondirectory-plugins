@@ -112,11 +112,16 @@ class dashboardSystems extends simplePlugin
         }
       } catch (FusionDirectoryException $e) {
         unset($stats[$key]);
-        msg_dialog::display(
-          _('LDAP error'),
-          sprintf(_('Statistics for type "%s" could not be computed because of the following error: %s'), $stat['type'], $e->getMessage()),
-          ERROR_DIALOG
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Statistics for type "%s" could not be computed because of the following error: %s'),
+            $stat['type'],
+            $e->getMessage()
+          )),
+          0,
+          $e
         );
+        $error->display();
       }
     }
     unset($stat);

@@ -152,13 +152,13 @@ class SecondFactorWebAuthn
 
     $message = _('Trying to communicate with your device. Plug it in (if you haven\'t already) and press the button on the device now.');
 
-    return htmlentities($message, ENT_COMPAT, 'UTF-8').
+    return htmlescape($message).
       '<script type="text/javascript">'."\n".
       '<!-- '."\n".
       'webauthnCheckRegistration();'."\n".
       '-->'."\n".
       '</script>'."\n".
-      '<noscript>'._('Javascript is needed for WebAuthn second factor, please enable it for this page.').'</noscript>';
+      '<noscript>'.htmlescape(_('Javascript is needed for WebAuthn second factor, please enable it for this page.')).'</noscript>';
   }
 
   /* Same as redirect without redirection */

@@ -52,7 +52,7 @@ class socialHandler
 
   protected function link ($link, $text)
   {
-    return '<a href="'.$link.'">'.htmlentities($text).'</a>';
+    return '<a href="'.$link.'">'.htmlescape($text).'</a>';
   }
 
   /* Returns the value if ok or throws a socialHandlerInvalidValueException */

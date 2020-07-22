@@ -228,8 +228,13 @@ class mailMethodCyrus extends mailMethod
     }
 
     if (!imap_set_quota($this->imap_handle, $this->account_id, $this->quotaValue)) {
-      msg_dialog::display(_("IMAP error"), sprintf(_("Cannot modify IMAP mailbox quota: %s"),
-            '<br><br><i>'.imap_last_error().'</i>'), ERROR_DIALOG);
+      $error = new FusionDirectoryError(
+        htmlescape(sprintf(
+          _('Cannot modify IMAP mailbox quota: %s'),
+          imap_last_error()
+        ))
+      );
+      $error->display();
       @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id.": (".$debug_number.")</b>",
           "<b>IMAP: Set account quota</b> on server '".$this->parent->gosaMailServer."' <b>".imap_last_error()."</b>");
       return FALSE;
@@ -304,9 +309,14 @@ class mailMethodCyrus extends mailMethod
         return FALSE;
       }
     } else {
-      msg_dialog::display(_("Mail info"),
-        sprintf(_("LDAP entry has been removed but cyrus mailbox (%s) is kept.\nPlease delete it manually!"),
-        $this->account_id), INFO_DIALOG);
+      msg_dialog::display(
+        _('Mail info'),
+        nl2br(htmlescape(sprintf(
+          _("LDAP entry has been removed but cyrus mailbox (%s) is kept.\nPlease delete it manually!"),
+          $this->account_id
+        ))),
+        INFO_DIALOG
+      );
     }
     return TRUE;
   }

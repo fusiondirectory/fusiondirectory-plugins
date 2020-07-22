@@ -58,7 +58,7 @@ class ArgonautQueueColumn extends Column
     if (!empty($targetdn) && !empty($targettype)) {
       return objects::link($targetdn, $targettype, '', $text, TRUE);
     } else {
-      return htmlentities($text, ENT_COMPAT, 'UTF-8');
+      return htmlescape($text);
     }
   }
 
@@ -77,14 +77,14 @@ class ArgonautQueueColumn extends Column
         $str = mb_substr($str, 0, 18).'...';
       }
 
-      $str = htmlentities($str, ENT_COMPAT, 'UTF-8');
+      $str = htmlescape($str);
 
       if (isset($infos['listimg']) && !empty($infos['listimg'])) {
         $str = $infos['listimg']."&nbsp;".$str;
       }
     }
     if ($progress) {
-      $str .= "&nbsp;(".htmlentities($progress, ENT_COMPAT, 'UTF-8')."%)";
+      $str .= "&nbsp;(".htmlescape($progress)."%)";
     }
     return $str;
   }
@@ -95,7 +95,7 @@ class ArgonautQueueColumn extends Column
     if (!empty($periodic) && !preg_match('/none/i', $periodic)) {
       $tmp = explode('_', $periodic);
       if (count($tmp) == 2) {
-        $period = htmlentities($tmp[0], ENT_COMPAT, 'UTF-8').'&nbsp;'.htmlentities(_($tmp[1]), ENT_COMPAT, 'UTF-8');
+        $period = htmlescape($tmp[0]).'&nbsp;'.htmlescape(_($tmp[1]));
       }
     }
     return $period;
@@ -104,23 +104,23 @@ class ArgonautQueueColumn extends Column
   static function filterSchedule (string $stamp): string
   {
     if ($stamp == '19700101000000') {
-      return _('immediately');
+      return htmlescape(_('immediately'));
     } else {
-      return date('d.m.Y H:i:s', strtotime($stamp));
+      return htmlescape(date('d.m.Y H:i:s', strtotime($stamp)));
     }
   }
 
   static function filterStatus (int $row, string $status, string $substatus): string
   {
     if ($status == 'waiting') {
-      $status = '<img class="center" src="geticon.php?context=status&icon=task-waiting&size=16" alt="clock"/>&nbsp;'._('Waiting');
+      $status = '<img class="center" src="geticon.php?context=status&amp;icon=task-waiting&amp;size=16" alt="clock"/>&nbsp;'.htmlescape(_('Waiting'));
     }
     if ($status == 'error') {
-      $status = '<input class="center" type="image" src="geticon.php?context=status&icon=task-failure&size=16" title="'._('Show error').'" '.
-                'name="listing_showError_'.$row.'" style="padding:1px"/>'._('Error');
+      $status = '<input class="center" type="image" src="geticon.php?context=status&amp;icon=task-failure&amp;size=16" title="'.htmlescape(_('Show error')).'" '.
+                'name="listing_showError_'.$row.'" style="padding:1px"/>'.htmlescape(_('Error'));
     }
     if ($status == 'processed') {
-      $status = '<img class="center" src="geticon.php?context=status&icon=task-complete&size=16" alt=""/>&nbsp;'._('Processed');
+      $status = '<img class="center" src="geticon.php?context=status&amp;icon=task-complete&amp;size=16" alt=""/>&nbsp;'.htmlescape(_('Processed'));
     }
 
     /* Special handling for all entries that have
@@ -129,7 +129,7 @@ class ArgonautQueueColumn extends Column
     if ($status == 'processing' && $substatus) {
       $status = $substatus;
     } elseif ($status == 'processing') {
-      $status = preg_replace('/ /', '&nbsp;', _('in progress'));
+      $status = preg_replace('/ /', '&nbsp;', htmlescape(_('in progress')));
     }
 
     return $status;

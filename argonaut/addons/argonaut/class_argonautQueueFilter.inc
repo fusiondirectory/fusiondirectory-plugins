@@ -63,7 +63,8 @@ class argonautQueueFilter extends managementFilter
 
     $argonautEntries = $this->parent->o_queue->get_queued_entries($event_tags, 0, 9999999, 'id');
     if ($this->parent->o_queue->is_error()) {
-      msg_dialog::display(_('Error'), sprintf(_('Cannot load queue entries: <br/><br/>%s'), $this->parent->o_queue->get_error()), ERROR_DIALOG);
+      $error = new FusionDirectoryError(msgPool::siError($this->parent->o_queue->get_error()));
+      $error->display();
       return [[], []];
     }
 

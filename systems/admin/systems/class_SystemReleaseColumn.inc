@@ -73,7 +73,7 @@ class SystemReleaseColumn extends Column
     if (isset($entry['FAIclass'])) {
       foreach (explode(' ', $entry['FAIclass']) as $element) {
         if ($element[0] == ':') {
-          return '&nbsp;'.htmlentities(mb_substr($element, 1), ENT_COMPAT, 'UTF-8');
+          return '&nbsp;'.htmlescape(mb_substr($element, 1));
         }
       }
     }
@@ -81,14 +81,13 @@ class SystemReleaseColumn extends Column
     // Load information if needed
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=gosaGroupOfNames)(FAIclass=*)(member='.$entry->dn.'))', ['FAIclass','cn']);
+    $ldap->search('(&(objectClass=gosaGroupOfNames)(FAIclass=*)(member='.ldap_escape_f($entry->dn).'))', ['FAIclass','cn']);
     while ($attrs = $ldap->fetch()) {
-      $rel = htmlentities(preg_replace('/^.*:/', '', $attrs['FAIclass'][0]), ENT_COMPAT, 'UTF-8');
-      $sys = htmlentities(sprintf(_('Inherited from %s'), $attrs['cn'][0]), ENT_COMPAT, 'UTF-8');
-      $str = '&nbsp;<img class="center" src="plugins/ogroups/images/ogroup.png"
-          title="'.$sys.'"
-          alt="'.$sys.'"/>&nbsp;'.$rel;
-      return $str;
+      $rel = htmlescape(preg_replace('/^.*:/', '', $attrs['FAIclass'][0]));
+      $sys = htmlescape(sprintf(_('Inherited from %s'), $attrs['cn'][0]));
+      return '&nbsp;<img class="center" src="plugins/ogroups/images/ogroup.png"
+                        title="'.$sys.'"
+                        alt="'.$sys.'"/>&nbsp;'.$rel;
     }
 
     return '&nbsp;';

@@ -49,11 +49,13 @@ class supann
     if (file_exists(SUPANN_DIR.'/'.$type)) {
       $entiteList = fopen(SUPANN_DIR.'/'.$type, 'r');
       if ($entiteList === FALSE) {
-        msg_dialog::display(
-          _("File error"),
-          sprintf(_("Cannot read file: '%s'"), SUPANN_DIR.'/'.$type),
-          ERROR_DIALOG
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('Cannot read file: "%s"'),
+            SUPANN_DIR.'/'.$type
+          ))
         );
+        $error->display();
         return [[], []];
       }
       while (($line = fgets($entiteList)) !== FALSE) {

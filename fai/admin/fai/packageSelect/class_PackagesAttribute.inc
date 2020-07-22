@@ -117,18 +117,42 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     list ($img, $nbicons) = parent::genRowIcons($key, $value);
     $key64 = base64_encode($key);
     if (preg_match('/\-$/', $value)) {
-      $img = '<input type="image" formnovalidate="formnovalidate" src="geticon.php?context=actions&icon=add&size=16"'.
-              ' name="'.$id.'_removal_'.$key64.'" class="center" alt="'._('Mark for installation').'" title="'._('Mark for installation').'"/>'.
-              $img;
+      $img = $this->renderInputField(
+        'image', $id.'_removal_'.$key64,
+        [
+          'src'             => 'geticon.php?context=actions&icon=add&size=16',
+          'title'           => _('Mark for installation'),
+          'alt'             => _('Mark for installation'),
+          'formnovalidate'  => 'formnovalidate',
+          'class'           => 'center'
+        ],
+        FALSE
+      ).$img;
     } else {
-      $img = '<input type="image" formnovalidate="formnovalidate" src="geticon.php?context=actions&icon=remove&size=16"'.
-              ' name="'.$id.'_removal_'.$key64.'" class="center" alt="'._('Mark for removal').'" title="'._('Mark for removal').'"/>'.
-              $img;
+      $img = $this->renderInputField(
+        'image', $id.'_removal_'.$key64,
+        [
+          'src'             => 'geticon.php?context=actions&icon=remove&size=16',
+          'title'           => _('Mark for removal'),
+          'alt'             => _('Mark for removal'),
+          'formnovalidate'  => 'formnovalidate',
+          'class'           => 'center'
+        ],
+        FALSE
+      ).$img;
     }
     if (isset($this->buffer[$key]['HASTEMPLATE']) && $this->buffer[$key]['HASTEMPLATE']) {
-      $img = '<input type="image" formnovalidate="formnovalidate" src="geticon.php?context=actions&icon=package-configure&size=16"'.
-              ' name="'.$id.'_config_'.$key64.'" class="center" alt="'._('Edit configuration').'" title="'._('Edit configuration').'"/>'.
-              $img;
+      $img = $this->renderInputField(
+        'image', $id.'_config_'.$key64,
+        [
+          'src'             => 'geticon.php?context=actions&icon=package-configure&size=16',
+          'title'           => _('Edit configuration'),
+          'alt'             => _('Edit configuration'),
+          'formnovalidate'  => 'formnovalidate',
+          'class'           => 'center'
+        ],
+        FALSE
+      ).$img;
     } else {
       $img = '<img src="images/empty.png" alt="" style="width:16px;"/>'.$img;
     }
@@ -206,7 +230,8 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
         }
         $ldap->add($attrs);
         if (!$ldap->success()) {
-          msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $vardn, LDAP_ADD, get_class()), LDAP_ERROR);
+          $error = new SimplePluginLdapError($this, $vardn, LDAP_ADD, $ldap->get_error(), $ldap->get_errno());
+          $error->display();
         }
       }
     }
@@ -242,7 +267,8 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
       }
       $ret = $q->FAI_get_packages($release, $attrs, array_keys($packages), -1, -1, TRUE);
       if ($q->is_error()) {
-        msg_dialog::display(_("Infrastructure service"), msgPool::siError($q->get_error()), ERROR_DIALOG);
+        $error = new FusionDirectoryError(msgPool::siError($q->get_error()));
+        $error->display();
         return $this->buffer;
       } else {
         foreach ($ret as $attr) {
@@ -261,7 +287,13 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     }
 
     if (count($packages) > 0) {
-      msg_dialog::display(_("Unkown packages"), "The following packages were not found on the repository : ".join(",", $packages), ERROR_DIALOG);
+      $error = new FusionDirectoryError(
+        htmlescape(sprintf(
+          _('The following packages were not found on the repository : %s'),
+          join(',', $packages)
+        ))
+      );
+      $error->display();
       foreach ($packages as $p => $pp) {
         unset($this->value[$p]);
       }

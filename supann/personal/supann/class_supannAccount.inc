@@ -445,14 +445,17 @@ class supannAccount extends simplePlugin
 
   function check (): array
   {
-    $message = parent::check();
+    $errors = parent::check();
 
     $affiliations = $this->eduPersonAffiliation;
     if (in_array('member', $affiliations) && in_array('affiliate', $affiliations)) {
-      $message[] = _('"member" and "affiliate" values are incompatible for eduPersonAffiliation. Please remove one of them.');
+      $errors[] = new SimplePluginCheckError(
+        $this->attributesAccess['eduPersonAffiliation'],
+        htmlescape(_('"member" and "affiliate" values are incompatible for eduPersonAffiliation. Please remove one of them.'))
+      );
     }
 
-    return $message;
+    return $errors;
   }
 
   function save_object ()

@@ -101,7 +101,8 @@ class serviceShare extends simpleService
 
     $configEncodings = $config->get_cfg_value('encodings', NULL);
     if ($configEncodings === NULL) {
-      msg_dialog::display(_('Error'), _('You need to configure encodings first'), ERROR_DIALOG);
+      $error = new SimplePluginError($this, htmlescape(_('You need to configure encodings first')));
+      $error->display();
     } else {
       foreach ($configEncodings as $str) {
         $arr = explode("=", $str);

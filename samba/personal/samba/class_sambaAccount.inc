@@ -472,30 +472,39 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
   /* Check for input problems */
   function check (): array
   {
-    $messages = parent::check();
+    $errors = parent::check();
 
     /* sambaHomePath requires sambaHomeDrive and vice versa */
     if (!empty($this->sambaHomePath) && empty($this->sambaHomeDrive)) {
-      $messages[] = sprintf(
-        _('Field "%s" is required when "%s" is filled! Fill both field or empty them.'),
-        $this->attributesAccess['sambaHomeDrive']->getLabel(),
-        $this->attributesAccess['sambaHomePath']->getLabel()
+      $errors[] = new SimplePluginCheckError(
+        $this->attributesAccess['sambaHomeDrive'],
+        htmlescape(sprintf(
+          _('Field "%s" is required when "%s" is filled! Fill both field or empty them.'),
+          $this->attributesAccess['sambaHomeDrive']->getLabel(),
+          $this->attributesAccess['sambaHomePath']->getLabel()
+        ))
       );
     }
     if (!empty($this->sambaHomeDrive) && empty($this->sambaHomePath)) {
-      $messages[] = sprintf(
-        _('Field "%s" is required when "%s" is filled! Fill both field or empty them.'),
-        $this->attributesAccess['sambaHomePath']->getLabel(),
-        $this->attributesAccess['sambaHomeDrive']->getLabel()
+      $errors[] = new SimplePluginCheckError(
+        $this->attributesAccess['sambaHomePath'],
+        htmlescape(sprintf(
+          _('Field "%s" is required when "%s" is filled! Fill both field or empty them.'),
+          $this->attributesAccess['sambaHomePath']->getLabel(),
+          $this->attributesAccess['sambaHomeDrive']->getLabel()
+        ))
       );
     }
 
     /* Too many workstations? Windows usrmgr only supports eight */
     if (count($this->attributesAccess['sambaUserWorkstations']->attributes[0]->getValue()) >= 8) {
-      $messages[] = _('The windows user manager allows eight clients at maximum!');
+      $errors[] = new SimplePluginCheckError(
+        $this->attributesAccess['sambaUserWorkstations'],
+        htmlescape(_('The windows user manager allows eight clients at maximum!'))
+      );
     }
 
-    return $messages;
+    return $errors;
   }
 
   function prepare_save (): array
@@ -509,7 +518,8 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
 
     // Generate rid / primaryGroupId
     if (!isset($config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'])) {
-      msg_dialog::display(_("Warning"), _("Undefined Samba SID detected. Please fix this problem manually!"), WARNING_DIALOG);
+      $error = new SimplePluginError($this, htmlescape(_('Undefined Samba SID detected. Please fix this problem manually!')));
+      $error->display();
     } else {
       $this->SID      = $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'];
       $this->ridBase  = $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
@@ -538,11 +548,11 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
       $ldap->cd($config->current['BASE']);
       $ldap->search('(&(objectClass=posixGroup)(gidNumber='.$this->parent->by_object['posixAccount']->gidNumber.'))', ['cn']);
       if ($ldap->count() != 1) {
-        msg_dialog::display(
-          _("Warning"),
-          _("Cannot convert primary group to samba group: group cannot be identified!"),
-          WARNING_DIALOG
+        $error = new SimplePluginError(
+          $this,
+          htmlescape(_('Cannot convert primary group to samba group: group cannot be identified!'))
         );
+        $error->display();
       } else {
         $attrs = $ldap->fetch();
         try {
@@ -559,11 +569,10 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
           $this->attrs['sambaPrimaryGroupSID'] = $tabGroup->by_object['sambaGroup']->sambaSID;
         } else {
           if ($config->get_cfg_value('sambaPrimaryGroupWarning') == 'TRUE') {
-            msg_dialog::display(
-              _('Warning'),
-              _('Cannot convert primary group to samba group: group samba tab is disabled!'),
-              WARNING_DIALOG
+            $warning = new FusionDirectoryWarning(
+              htmlescape(_('Cannot convert primary group to samba group: group samba tab is disabled!'))
             );
+            $warning->display();
           }
         }
       }

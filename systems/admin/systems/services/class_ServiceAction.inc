@@ -44,8 +44,8 @@ class ServiceAction extends Action
     }
 
     // Render
-    return '<input type="image" src="'.htmlentities($this->icon, ENT_COMPAT, 'UTF-8').'"'.
-            ' title="'.$this->label.'" alt="'.$this->label.'" name="listing_'.$this->name.'_'.$entry->row.'"/>';
+    return '<input type="image" src="'.htmlescape($this->icon).'"'.
+            ' title="'.htmlescape($this->label).'" alt="'.htmlescape($this->label).'" name="listing_'.$this->name.'_'.$entry->row.'"/>';
   }
 
   function hasPermission (ListingEntry $entry = NULL): bool

@@ -27,11 +27,12 @@ class CertificateOrderedArrayAttribute extends OrderedArrayAttribute
     $img = $this->renderInputField(
       'image', $id.'_download_'.$key,
       [
-        'src'   => 'geticon.php?context=actions&amp;icon=document-save&amp;size=16',
+        'src'   => 'geticon.php?context=actions&icon=document-save&size=16',
         'title' => _('Download'),
         'alt'   => _('Download'),
         'class' => 'center'
-      ]
+      ],
+      FALSE
     ).$img;
     $nbicons++;
 

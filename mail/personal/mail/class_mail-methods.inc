@@ -135,8 +135,13 @@ class mailMethod
       } else {
         @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$new_uattrib."</b>",
           "<b>MAIL:</b> Unsupported 'mailAttribute' in FusionDirectory configuration specified");
-        msg_dialog::display(_("Configuration error"),
-            sprintf(_("The configured mail attribute '%s' is unsupported!"), $new_uattrib), ERROR_DIALOG);
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('The configured mail attribute "%s" is unsupported!'),
+            $new_uattrib
+          ))
+        );
+        $error->display();
       }
     }
 

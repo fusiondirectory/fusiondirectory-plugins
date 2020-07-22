@@ -56,7 +56,8 @@ class faiPackageConfiguration extends simplePlugin
     $q = new supportDaemon();
     $ret = $q->FAI_get_packages($release, ['package','template'], [$this->packageName], 0, 1, TRUE);
     if ($q->is_error()) {
-      msg_dialog::display(_('Infrastructure service'), msgPool::siError($q->get_error()), ERROR_DIALOG);
+      $error = new FusionDirectoryError(msgPool::siError($q->get_error()));
+      $error->display();
     }
 
     $tpl = '';

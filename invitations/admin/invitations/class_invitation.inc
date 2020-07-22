@@ -111,16 +111,19 @@ class invitation extends simplePlugin
 
   function check (): array
   {
-    $messages = parent::check();
+    $errors = parent::check();
 
     $emails = explode("\n", $this->emails);
     foreach ($emails as $email) {
       if (!tests::is_email($email)) {
-        $messages[] = sprintf(_('"%s" is not a valid email address'), $email);
+        $errors[] = new SimplePluginCheckError(
+          $this->attributesAccess['emails'],
+          htmlescape(sprintf(_('"%s" is not a valid email address'), $email))
+        );
       }
     }
 
-    return $messages;
+    return $errors;
   }
 
   protected function shouldSave (): bool
@@ -147,7 +150,10 @@ class invitation extends simplePlugin
       }
       $registrations = objects::count('registration', NULL, '(fdRegistrationEmailAddress='.ldap_escape_f($email).')');
       if ($registrations > 0) {
-        $errors[] = sprintf(_('There is already a registration object for "%s"'), $email);
+        $errors[] = new SimplePluginError(
+          $this,
+          htmlescape(sprintf(_('There is already a registration object for "%s"'), $email))
+        );
         $failed[] = $email;
         continue;
       }
@@ -166,13 +172,19 @@ class invitation extends simplePlugin
 
         $messages = $tabObject->save();
         if (!empty($messages)) {
-          $errors[] = sprintf(_('Failed to create registration object for "%s", because of the following errors: %s'), $email, implode("\n", $messages));
+          $errors[] = new SimplePluginError(
+            $this,
+            nl2br(htmlescape(sprintf(_('Failed to create registration object for "%s", because of the following errors: %s'), $email, implode("\n", $messages))))
+          );
           $failed[] = $email;
         } else {
           $success++;
         }
       } else {
-        $errors[] = sprintf(_('Failed to send invitation email to "%s". Check your email settings.'), $email);
+        $errors[] = new SimplePluginError(
+          $this,
+          htmlescape(sprintf(_('Failed to send invitation email to "%s". Check your email settings.'), $email))
+        );
         $failed[] = $email;
       }
     }
@@ -180,7 +192,7 @@ class invitation extends simplePlugin
     $this->emails = implode("\n", $failed);
 
     if ($success > 0) {
-      msg_dialog::display(_('Success'), sprintf(_('%d invitations were sent and saved successfully'), $success), INFO_DIALOG);
+      msg_dialog::display(_('Success'), htmlescape(sprintf(_('%d invitations were sent and saved successfully'), $success)), INFO_DIALOG);
     }
 
     return $errors;

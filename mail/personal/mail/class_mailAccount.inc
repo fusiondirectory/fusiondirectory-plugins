@@ -29,8 +29,14 @@ class MailQuotaAttribute extends IntAttribute
     $this->value = $mailMethod->getQuota($this->value);
     $this->quotaUsage = $mailMethod->getQuotaUsage();
     if ($mailMethod->is_error()) {
-      msg_dialog::display(_("Mail error"), sprintf(_("Cannot read quota settings: %s"),
-            $mailMethod->get_error()), ERROR_DIALOG);
+      $error = new SimplePluginError(
+        $this,
+        htmlescape(sprintf(
+          _('Cannot read quota settings: %s'),
+          $mailMethod->get_error()
+        ))
+      );
+      $error->display();
     }
   }
 
@@ -266,11 +272,24 @@ class mailAccount extends simplePlugin
           );
         }
       } elseif (!$this->mailMethod->is_connected()) {
-        msg_dialog::display(_('Mail error'), sprintf(_('Mail method cannot connect: %s'),
-              $this->mailMethod->get_error()), ERROR_DIALOG);
+        $error = new SimplePluginError(
+          $this,
+          htmlescape(sprintf(
+            _('Mail method cannot connect: %s'),
+            $this->mailMethod->get_error()
+          ))
+        );
+        $error->display();
       } elseif (!$this->mailMethod->account_exists()) {
-        msg_dialog::display(_('Mail error'), sprintf(_('Mailbox "%s" doesn\'t exists on mail server: %s'),
-              $this->mailMethod->get_account_id(), $this->gosaMailServer), ERROR_DIALOG);
+        $error = new SimplePluginError(
+          $this,
+          htmlescape(sprintf(
+            _('Mailbox "%s" doesn\'t exists on mail server: %s'),
+            $this->mailMethod->get_account_id(),
+            $this->gosaMailServer
+          ))
+        );
+        $error->display();
       }
 
       $this->attributesAccess['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
@@ -337,13 +356,13 @@ class mailAccount extends simplePlugin
 
   function check (): array
   {
-    $messages = parent::check();
+    $errors = parent::check();
 
     if (!$this->is_template && is_object($this->mailMethod)) {
-      $messages = array_merge($messages, $this->mailMethod->check());
+      $errors = array_merge($errors, $this->mailMethod->check());
     }
 
-    return $messages;
+    return $errors;
   }
 
   protected function shouldSave (): bool
@@ -367,13 +386,26 @@ class mailAccount extends simplePlugin
     if (!$this->is_template) {
       $this->mailMethod->connect();
       if (!$this->mailMethod->is_connected()) {
-        $errors[] = sprintf(_('Mail method cannot connect: %s'), $this->mailMethod->get_error());
+        $errors[] = new SimplePluginError(
+          $this,
+          htmlescape(sprintf(_('Mail method cannot connect: %s'), $this->mailMethod->get_error()))
+        );
       } else {
         if (!$this->mailMethod->updateMailbox()) {
-          $errors[] = sprintf(_('Cannot update mailbox: %s'), $this->mailMethod->get_error());
+          $errors[] = new SimplePluginError(
+            $this,
+            htmlescape(sprintf(_('Cannot update mailbox: %s'), $this->mailMethod->get_error()))
+          );
         }
         if (!$this->mailMethod->setQuota($this->gosaMailQuota)) {
-          msg_dialog::display(_('Mail error'), sprintf(_('Cannot write quota settings: %s'), $this->mailMethod->get_error()), ERROR_DIALOG);
+          $error = new SimplePluginError(
+            $this,
+            htmlescape(sprintf(
+              _('Cannot write quota settings: %s'),
+              $this->mailMethod->get_error()
+            ))
+          );
+          $error->display();
         }
 
         if (!is_integer(strpos($this->gosaMailDeliveryMode, 'C'))) {
@@ -384,7 +416,14 @@ class mailAccount extends simplePlugin
                 'Skipping sieve settings, the account doesn’t seem to be created already.', '');
           } else {
             if (!$this->mailMethod->saveSieveSettings()) {
-              msg_dialog::display(_('Mail error'), sprintf(_('Mail error saving sieve settings: %s'), $this->mailMethod->get_error()), ERROR_DIALOG);
+              $error = new SimplePluginError(
+                $this,
+                htmlescape(sprintf(
+                  _('Mail error saving sieve settings: %s'),
+                  $this->mailMethod->get_error()
+                ))
+              );
+              $error->display();
             }
           }
         } else {
@@ -413,12 +452,24 @@ class mailAccount extends simplePlugin
     /* Let the mailMethod remove this mailbox */
     if (!$this->is_template) {
       if (!$this->mailMethod->connect()) {
-        msg_dialog::display(_('Mail error'), sprintf(_('Cannot remove mailbox, mail method cannot connect: %s'),
-              $this->mailMethod->get_error()), ERROR_DIALOG);
+        $error = new SimplePluginError(
+          $this,
+          htmlescape(sprintf(
+            _('Cannot remove mailbox, mail method cannot connect: %s'),
+            $this->mailMethod->get_error()
+          ))
+        );
+        $error->display();
       } else {
         if (!$this->mailMethod->deleteMailbox()) {
-          msg_dialog::display(_('Mail error'), sprintf(_('Cannot remove mailbox: %s'),
-                $this->mailMethod->get_error()), ERROR_DIALOG);
+          $error = new SimplePluginError(
+            $this,
+            htmlescape(sprintf(
+              _('Cannot remove mailbox: %s'),
+              $this->mailMethod->get_error()
+            ))
+          );
+          $error->display();
         }
       }
     }

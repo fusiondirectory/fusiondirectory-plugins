@@ -111,16 +111,19 @@ class mixedGroup extends simplePlugin
   function check (): array
   {
     global $config;
-    $message = parent::check();
+    $errors = parent::check();
 
     /* Check ID's if they are forced by user */
     if ($this->force_id) {
-      if ($this->gidNumber < $config->get_cfg_value("minId")) {
-        $message[] = msgPool::toosmall(_("GID"), $config->get_cfg_value("minId"));
+      if ($this->gidNumber < $config->get_cfg_value('minId')) {
+        $errors[] = new SimplePluginCheckError(
+          $this->attributesAccess['gidNumber'],
+          msgPool::toosmall(_('GID'), $config->get_cfg_value('minId'))
+        );
       }
     }
 
-    return $message;
+    return $errors;
   }
 
   function resetCopyInfos ()

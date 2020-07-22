@@ -125,7 +125,13 @@ class systemManagement extends management
       if (isset($obj['macAddress'][0])) {
         $mac[] = $obj['macAddress'][0];
       } else {
-        msg_dialog::display(_('Action canceled'), sprintf(_('System %s has no mac address defined, cannot trigger action'), $dn), ERROR_DIALOG);
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('System %s has no mac address defined, cannot trigger action'),
+            $dn
+          ))
+        );
+        $error->display();
       }
     }
 
@@ -141,7 +147,13 @@ class systemManagement extends management
     if ($triggered && in_array($event, ['reinstall','update'])) {
       foreach ($mac as $key => $mac_address) {
         if ($o_queue->is_currently_installing($mac_address)) {
-          msg_dialog::display(_('Action canceled'), sprintf(_('System %s is currently installing'), $dn), ERROR_DIALOG);
+          $error = new FusionDirectoryError(
+            htmlescape(sprintf(
+              _('System %s is currently installing'),
+              $dn
+            ))
+          );
+          $error->display();
           unset($mac[$key]);
           logging::log('security', 'systems/'.get_class($this), '', [], 'Skip adding "argonautAction::'.$event.'" for mac "'.$mac_address.'", there is already a job in progress.');
         }
@@ -160,15 +172,16 @@ class systemManagement extends management
       if ($triggered) {
         $res = $o_queue->append($this->dialogObject);
         if ($o_queue->is_error()) {
-          msg_dialog::display(_('Infrastructure service'), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+          $error = new FusionDirectoryError(msgPool::siError($o_queue->get_error()));
+          $error->display();
         } else {
           if (is_array($res) && (count($res) > 1)) {
-            msg_dialog::display(_('Action triggered'), sprintf(_('Action called without error (results were "%s")'), implode(', ', $res)), INFO_DIALOG);
+            msg_dialog::display(_('Action triggered'), htmlescape(sprintf(_('Action called without error (results were "%s")'), implode(', ', $res))), INFO_DIALOG);
           } else {
             if (is_array($res)) {
               $res = $res[0];
             }
-            msg_dialog::display(_('Action triggered'), sprintf(_('Action called without error (result was "%s")'), $res), INFO_DIALOG);
+            msg_dialog::display(_('Action triggered'), htmlescape(sprintf(_('Action called without error (result was "%s")'), $res)), INFO_DIALOG);
           }
         }
         $this->closeDialogs();
@@ -192,7 +205,13 @@ class systemManagement extends management
       if (isset($obj['macAddress'][0])) {
         $macs[$dn] = $obj['macAddress'][0];
       } else {
-        msg_dialog::display(_('Action canceled'), sprintf(_('System %s has no mac address defined, cannot trigger action'), $dn), ERROR_DIALOG);
+        $error = new FusionDirectoryError(
+          htmlescape(sprintf(
+            _('System %s has no mac address defined, cannot trigger action'),
+            $dn
+          ))
+        );
+        $error->display();
       }
     }
 
@@ -204,25 +223,26 @@ class systemManagement extends management
 
     $res = $o_queue->append_call('ping', array_values($macs), ['fullresult' => 1]);
     if ($o_queue->is_error()) {
-      msg_dialog::display(_('Infrastructure service'), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+      $error = new FusionDirectoryError(msgPool::siError($o_queue->get_error()));
+      $error->display();
     } else {
       $dns = array_flip($macs);
-      $msg = '';
+      $html = '';
       if (!empty($res['results'])) {
-        $msg .= '<ul>'."\n";
+        $html .= '<ul>'."\n";
         foreach ($res['results'] as $mac => $on) {
-          $msg .= '<li style="list-style-type:'.($on ? 'disc' : 'circle').';">'.objects::link($dns[$mac], $this->listing->getEntry($dns[$mac])->type).' - '.($on ? 'On' : 'Off').'</li>'."\n";
+          $html .= '<li style="list-style-type:'.($on ? 'disc' : 'circle').';">'.objects::link($dns[$mac], $this->listing->getEntry($dns[$mac])->type).' - '.($on ? 'On' : 'Off').'</li>'."\n";
         }
-        $msg .= "</ul>\n";
+        $html .= "</ul>\n";
       }
       if (!empty($res['errors'])) {
-        $msg .= '<ul style="list-style-type:square;">'."\n";
+        $html .= '<ul style="list-style-type:square;">'."\n";
         foreach ($res['errors'] as $mac => $error) {
-          $msg .= '<li>'.objects::link($dns[$mac], $this->listing->getEntry($dns[$mac])->type).' - '.$error.'</li>'."\n";
+          $html .= '<li>'.objects::link($dns[$mac], $this->listing->getEntry($dns[$mac])->type).' - '.htmlescape($error).'</li>'."\n";
         }
-        $msg .= "</ul>\n";
+        $html .= "</ul>\n";
       }
-      msg_dialog::display(_('Ping results'), $msg, INFO_DIALOG);
+      msg_dialog::display(_('Ping results'), $html, INFO_DIALOG);
     }
   }
 

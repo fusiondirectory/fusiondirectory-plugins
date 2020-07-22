@@ -385,9 +385,9 @@ class fdRestService extends fdRPCService
     if ($tabobject->by_object[$tab]->isActivatable() &&
         !$tabobject->by_object[$tab]->isActive()
       ) {
-      list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
+      list($disabled, , $htmlText) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
       if ($disabled) {
-        throw new WebServiceError($text);
+        throw new WebServiceError(htmlunescape($htmlText));
       }
       if ($tabobject->by_object[$tab]->acl_is_createable()) {
         $tabobject->by_object[$tab]->is_account = TRUE;

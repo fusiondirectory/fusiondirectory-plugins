@@ -313,9 +313,9 @@ class fdRPCService
     } elseif (!$tabobject->by_object[$tab]->acl_is_removeable()) {
       throw new WebServiceError('You don\'t have sufficient rights to disable tab "'.$tab.'"', 403);
     } else {
-      list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
+      list($disabled, , $htmlText) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
       if ($disabled) {
-        throw new WebServiceError($text);
+        throw new WebServiceError(htmlunescape($htmlText));
       }
     }
     $_POST = [$tab.'_modify_state' => 1];
@@ -472,9 +472,9 @@ class fdRPCService
           $tabobject->by_object[$tab]->isActivatable() &&
           !$tabobject->by_object[$tab]->isActive()
         ) {
-        list($disabled, $buttonText, $text) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
+        list($disabled, , $htmlText) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
         if ($disabled) {
-          throw new WebServiceError($text);
+          throw new WebServiceError(htmlunescape($htmlText));
         }
         if ($tabobject->by_object[$tab]->acl_is_createable()) {
           $tabobject->by_object[$tab]->is_account = TRUE;
@@ -552,7 +552,7 @@ class fdRPCService
             }
             $tabobject->by_object[$tab]->attributesAccess[$name]->setValue($attrvalues);
           } else {
-            throw new WebServiceError(msgPool::permModify($dn, $name), 403);
+            throw new WebServiceError(htmlunescape(msgPool::permModify($dn, $name)), 403);
           }
         } else {
           throw new WebServiceError(sprintf(_('Unknown field "%s"'), $name), 404);
@@ -609,7 +609,7 @@ class fdRPCService
     // Check permissions, are we allowed to remove this object?
     $acl = $ui->get_permissions($dn, $infos['aclCategory'].'/'.$infos['mainTab']);
     if (strpos($acl, 'd') === FALSE) {
-      throw new WebServiceError(msgPool::permDelete($dn), 403);
+      throw new WebServiceError(htmlunescape(msgPool::permDelete($dn)), 403);
     }
 
     if ($user = get_lock($dn)) {
@@ -645,7 +645,7 @@ class fdRPCService
       }
     }
     if (count($disallowed)) {
-      throw new WebServiceError(msgPool::permModify($disallowed), 403);
+      throw new WebServiceError(htmlunescape(msgPool::permModify($disallowed)), 403);
     }
 
     // Try to lock/unlock the entries.
@@ -714,7 +714,7 @@ class fdRPCService
       }
     }
     if (count($disallowed)) {
-      throw new WebServiceError(msgPool::permView($disallowed), 403);
+      throw new WebServiceError(htmlunescape(msgPool::permView($disallowed)), 403);
     }
 
     // Try to lock/unlock the entries.
@@ -765,7 +765,7 @@ class fdRPCService
     if ($dn !== FALSE) {
       /* No errors */
       if (strpos($ui->get_permissions($dn, 'user/user', 'userPassword'), 'w') === FALSE) {
-        throw new WebServiceError(msgPool::permModify($dn), 403);
+        throw new WebServiceError(htmlunescape(msgPool::permModify($dn)), 403);
       }
       $token = $pwRecovery->generateAndStoreToken();
       if ($token !== FALSE) {

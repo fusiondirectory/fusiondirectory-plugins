@@ -334,8 +334,8 @@ class dnsHost extends simplePlugin
           if ($this->parent->by_object['argonautClient']->is_account) {
             $s_daemon = new supportDaemon();
             if ($s_daemon->is_error()) {
-              msg_dialog::display(_('Could not run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-              );
+              $error = new SimplePluginError($this, msgPool::siError($s_daemon->get_error()));
+              $error->display();
             } else {
               $target = $this->parent->getBaseObject()->macAddress;
               if (is_array($target)) {
@@ -343,13 +343,15 @@ class dnsHost extends simplePlugin
               }
               $s_daemon->append_call('Ldap2Zone.start', $target, ['args' => [$zone]]);
               if ($s_daemon->is_error()) {
-                msg_dialog::display(_('Could not run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG);
+                $error = new SimplePluginError($this, msgPool::siError($s_daemon->get_error()));
+                $error->display();
               } else {
-                msg_dialog::display(_('Ldap2zone'), sprintf(_('Ldap2Zone called for zone "%s"'), $zone), INFO_DIALOG);
+                msg_dialog::display(_('Ldap2zone'), htmlescape(sprintf(_('Ldap2Zone called for zone "%s"'), $zone)), INFO_DIALOG);
               }
             }
           } else {
-            msg_dialog::display(_('Error'), _('Argonaut client needs to be activated to use ldap2zone remotely'), ERROR_DIALOG);
+            $error = new SimplePluginError($this, htmlescape(_('Argonaut client needs to be activated to use ldap2zone remotely')));
+            $error->display();
           }
         }
       }
@@ -468,7 +470,7 @@ class dnsHost extends simplePlugin
       }
 
       if (!empty($messages)) {
-        msg_dialog::display(_('DNS update'), implode("<br/>\n", $messages)."<br/>\n", INFO_DIALOG);
+        msg_dialog::display(_('DNS update'), implode("<br/>\n", array_map('htmlescape', $messages))."<br/>\n", INFO_DIALOG);
       }
 
       del_lock($lockedDns);
@@ -499,7 +501,7 @@ class dnsHost extends simplePlugin
       }
     }
     if (!empty($messages)) {
-      msg_dialog::display(_('DNS update'), implode("<br/>\n", $messages)."<br/>\n", INFO_DIALOG);
+      msg_dialog::display(_('DNS update'), implode("<br/>\n", array_map('htmlescape', $messages))."<br/>\n", INFO_DIALOG);
     }
 
     return parent::post_remove();
