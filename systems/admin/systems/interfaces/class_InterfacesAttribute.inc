@@ -35,8 +35,17 @@ class InterfacesAttribute extends Attribute
     $this->plugin = $plugin;
   }
 
-  function renderAttribute (array &$attributes, bool $readOnly, bool $readable, bool $writable)
+  //~ function renderAttribute (array &$attributes, bool $readOnly, bool $readable, bool $writable)
+  //~ {
+  //~ }
+
+  function renderFormInput (): string
   {
+    $value = $this->getValue();
+    if (is_array($value)) {
+      $value = join(', ', $value);
+    }
+    return '{literal}'.htmlescape($value).'{/literal}';
   }
 
   function getValue ()

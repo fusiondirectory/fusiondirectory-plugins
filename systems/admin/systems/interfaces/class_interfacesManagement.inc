@@ -308,12 +308,14 @@ class interfacesManagement extends management implements SimpleTab
 
     $macAddress   = [];
     $ipHostNumber = [];
-    foreach ($entryIterator as $entry) {
-      if (!empty($entry['macAddress'])) {
-        array_push($macAddress, ...$entry['macAddress']);
-      }
-      if (!empty($entry['ipHostNumber'])) {
-        array_push($ipHostNumber, ...$entry['ipHostNumber']);
+    if (!$this->is_template) {
+      foreach ($entryIterator as $entry) {
+        if (!empty($entry['macAddress'])) {
+          array_push($macAddress, ...$entry['macAddress']);
+        }
+        if (!empty($entry['ipHostNumber'])) {
+          array_push($ipHostNumber, ...$entry['ipHostNumber']);
+        }
       }
     }
     $this->parent->getBaseObject()->macAddress    = array_values(array_unique($macAddress));

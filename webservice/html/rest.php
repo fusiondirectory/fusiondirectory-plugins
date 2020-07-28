@@ -314,17 +314,17 @@ class fdRestService extends fdRPCService
 
     $object = $tabobject->by_object[$tab];
 
-    //~ if (!is_subclass_of($object, 'simplePlugin')) {
-      //~ throw new WebServiceError('Invalid tab', 501);
-    //~ }
+    if (!is_subclass_of($object, 'SimpleTab')) {
+      throw new WebServiceError('Invalid tab', 501);
+    }
 
     if (!isset($object->attributesAccess[$attribute])) {
       throw new WebServiceError('Unknown attribute', 404);
     }
 
-    //~ if (!$object->attrIsReadable($attribute)) {
-      //~ throw new WebServiceError('Not enough rights to read "'.$attribute.'"', 403);
-    //~ }
+    if (!$object->attrIsReadable($attribute)) {
+      throw new WebServiceError('Not enough rights to read "'.$attribute.'"', 403);
+    }
 
     if (!$object->isActive()) {
       throw new WebServiceError(sprintf('Tab "%s" is inactive', $tab));
