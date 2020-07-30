@@ -112,7 +112,25 @@ class networkInterface extends simplePlugin
     }
   }
 
-  function vlanChanged ()
+  /* Override setTemplate method to hide the _template_cn special field */
+  public function setTemplate (bool $bool)
+  {
+    $this->is_template = $bool;
+    if ($this->is_template && $this->mainTab) {
+      $this->attributesInfo['main']['attrs']['_template_cn'] = new HiddenAttribute(
+        _('Template name'), _('This is the name of the template'),
+        '_template_cn', TRUE,
+        '', 'template_cn'
+      );
+      $this->attributesAccess['_template_cn'] =& $this->attributesInfo['main']['attrs']['_template_cn'];
+      $this->attributesAccess['_template_cn']->setInLdap(FALSE);
+      $this->attributesAccess['_template_cn']->setValue($this->_template_cn);
+      $this->attributesAccess['_template_cn']->setParent($this);
+      unset($this->_template_cn);
+    }
+  }
+
+  public function vlanChanged ()
   {
     if ($this->fdNetworkInterfaceVlanDN != '') {
       /* List subnets associated to our VLAN */

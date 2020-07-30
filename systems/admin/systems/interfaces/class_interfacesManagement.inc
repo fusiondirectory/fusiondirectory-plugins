@@ -44,6 +44,9 @@ class interfacesManagement extends management implements SimpleTab
   var $acl;
   var $cn;
 
+  /* Used by template and webservice */
+  public $attributesAccess;
+
   /* We list all network interfaces attributes in neededAttrs to get all data */
   public $neededAttrs = ['cn','macAddress','fdNetworkInterfaceVlanDN','fdNetworkInterfaceVlanTagged','fdNetworkInterfaceSubnetDN','ipHostNumber'];
 
@@ -86,6 +89,12 @@ class interfacesManagement extends management implements SimpleTab
 
     parent::__construct(['networkInterface'], []);
 
+    $this->attributesAccess['networkInterfaces'] = new InterfacesAttribute(
+      _('Interfaces'), '',
+      'networkInterfaces', FALSE
+    );
+    $this->attributesAccess['networkInterfaces']->setParent($this);
+
     $this->parent->getBaseObject()->setNetworkAttributesReadOnly(TRUE);
 
     if ($this->is_template && isset($this->attrs['networkInterfaces'])) {
@@ -99,7 +108,7 @@ class interfacesManagement extends management implements SimpleTab
 
     foreach ($entryIterator as $entry) {
       if ($this->is_template) {
-        $this->interfaces[$entry->dn] = objects::create($entry->getTemplatedType());
+        $this->interfaces[$entry->dn] = objects::createTemplate($entry->getTemplatedType());
         $this->filter->resetFromCache($entry->dn, $this->interfaces[$entry->dn]);
       } else {
         $this->interfaces[$entry->dn] = objects::open($entry->dn, $entry->getTemplatedType());
@@ -254,6 +263,9 @@ class interfacesManagement extends management implements SimpleTab
     } else {
       $this->tabObject->getBaseObject()->base = 'new,'.$this->parent->getBaseObject()->base;
     }
+    if ($this->is_template) {
+      $this->tabObject->setTemplateMode('');
+    }
   }
 
   public function check (): array
@@ -296,12 +308,14 @@ class interfacesManagement extends management implements SimpleTab
 
     $macAddress   = [];
     $ipHostNumber = [];
-    foreach ($entryIterator as $entry) {
-      if (!empty($entry['macAddress'])) {
-        array_push($macAddress, ...$entry['macAddress']);
-      }
-      if (!empty($entry['ipHostNumber'])) {
-        array_push($ipHostNumber, ...$entry['ipHostNumber']);
+    if (!$this->is_template) {
+      foreach ($entryIterator as $entry) {
+        if (!empty($entry['macAddress'])) {
+          array_push($macAddress, ...$entry['macAddress']);
+        }
+        if (!empty($entry['ipHostNumber'])) {
+          array_push($ipHostNumber, ...$entry['ipHostNumber']);
+        }
       }
     }
     $this->parent->getBaseObject()->macAddress    = array_values(array_unique($macAddress));
@@ -396,7 +410,23 @@ class interfacesManagement extends management implements SimpleTab
 
   public function adapt_from_template (array $attrs, array $skip = [])
   {
-    trigger_error('Not implemented');
+    $this->attrs = array_merge($this->attrs, $attrs);
+
+    if (isset($this->attrs['networkInterfaces']) && !in_array('networkInterfaces', $skip)) {
+      unset($this->attrs['networkInterfaces']['count']);
+      $this->filter->loadTemplateValues($this->attrs['networkInterfaces']);
+
+      $this->listing->update();
+
+      $entryIterator = $this->listing->getIterator();
+
+      $this->interfaces = [];
+      foreach ($entryIterator as $entry) {
+        $this->interfaces[$entry->dn] = objects::create($entry->getTemplatedType());
+        $this->filter->resetFromCache($entry->dn, $this->interfaces[$entry->dn]);
+        $this->interfaces[$entry->dn]->getBaseObject()->base = $this->dn;
+      }
+    }
   }
 
   /*!
@@ -433,7 +463,27 @@ class interfacesManagement extends management implements SimpleTab
    */
   public function showInTemplate (string $attr, array $templateAttrs): bool
   {
-    return FALSE;
+    return TRUE;
+  }
+
+  /*! \brief Check if logged in user have enough right to read this attribute value
+   *
+   * \param mixed $attr Attribute object or name (in this case it will be fetched from attributesAccess)
+   */
+  function attrIsReadable ($attr): bool
+  {
+    /* FIXME */
+    return TRUE;
+  }
+
+  /*! \brief Check if logged in user have enough right to write this attribute value
+   *
+   * \param mixed $attr Attribute object or name (in this case it will be fetched from attributesAccess)
+   */
+  function attrIsWriteable ($attr): bool
+  {
+    /* FIXME */
+    return TRUE;
   }
 
   /*!

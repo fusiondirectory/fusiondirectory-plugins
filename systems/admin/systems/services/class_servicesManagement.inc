@@ -52,6 +52,9 @@ class servicesManagement extends management implements SimpleTab
   var $acl;
   var $cn;
 
+  /* Used by template and webservice */
+  public $attributesAccess = [];
+
   /* Default columns */
   public static $columns = [
     ['Column',        ['attributes' => 'ServiceStatusColumn', 'label' => '!']],
@@ -616,6 +619,24 @@ class servicesManagement extends management implements SimpleTab
    * \brief Returns TRUE if this attribute should be asked in the creation by template dialog
    */
   public function showInTemplate (string $attr, array $templateAttrs): bool
+  {
+    return FALSE;
+  }
+
+  /*! \brief Check if logged in user have enough right to read this attribute value
+   *
+   * \param mixed $attr Attribute object or name (in this case it will be fetched from attributesAccess)
+   */
+  function attrIsReadable ($attr): bool
+  {
+    return FALSE;
+  }
+
+  /*! \brief Check if logged in user have enough right to write this attribute value
+   *
+   * \param mixed $attr Attribute object or name (in this case it will be fetched from attributesAccess)
+   */
+  function attrIsWriteable ($attr): bool
   {
     return FALSE;
   }
