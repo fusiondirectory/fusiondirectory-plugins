@@ -22,12 +22,14 @@
 /*!
  * \brief Fake attribute class which is used to allow editing interfaces through templates or webservice
  */
-class InterfacesAttribute extends Attribute
+class InterfacesAttribute extends DialogOrderedArrayAttribute
 {
   function __construct (string $label, string $description, string $ldapName, bool $required = FALSE, $defaultValue = '', string $acl = '')
   {
-    parent::__construct($label, $description, $ldapName, $required, $defaultValue, $acl);
+    Attribute::__construct($label, $description, $ldapName, $required, $defaultValue, $acl);
     $this->setInLdap(FALSE);
+    $this->edit_enabled = TRUE;
+    $this->attribute    = FALSE;
   }
 
   function setParent (&$plugin)
@@ -56,5 +58,48 @@ class InterfacesAttribute extends Attribute
   function setValue ($value)
   {
     return $this->plugin->filter->loadTemplateValues($value);
+  }
+
+  protected function getAttributeArrayValue ($key, $value)
+  {
+    /* FIXME Convert text value to displayable array value */
+    die('Pure virtual method');
+  }
+
+  function addValue (string $dn, $attrs = NULL)
+  {
+    /* FIXME */
+    if ($attrs !== NULL) {
+      $this->value[] = $attrs;
+      $this->reIndexValues();
+    }
+  }
+
+  protected function handleEdit ($key)
+  {
+    /* FIXME */
+    $this->editingValue = $this->value[$key];
+    $this->delPostValue($key);
+    $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, $this->editingValue));
+  }
+
+  /* readValue/writeValue? */
+
+  function computeLdapValue ()
+  {
+    throw new FusionDirectoryError('computeLdapValue should not be called on InterfacesAttribute');
+  }
+
+  protected function sortValues ()
+  {
+  }
+
+  protected function reIndexValues ()
+  {
+  }
+
+  function foreignKeyUpdate ($oldvalue, $newvalue, array $source)
+  {
+    throw new FusionDirectoryError('foreignKeyUpdate should not be called on InterfacesAttribute');
   }
 }

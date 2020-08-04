@@ -108,8 +108,9 @@ class interfacesManagementFilter extends managementFilter
       } else {
         $values = json_decode($networkInterface, TRUE);
       }
-      $entries[$values['dn']] = new ListingEntry($this->parent->listing, $this->parent->objectTypes[0], $values['dn'], $values, $row++);
-      $entries[$values['dn']]->aclBase = 'new,'.$this->parent->dn;
+      $entryKey           = ($values['dn'] ?? $values['cn'][0] ?? $values['cn']);
+      $entries[$entryKey] = new ListingEntry($this->parent->listing, $this->parent->objectTypes[0], ($values['dn'] ?? 'new'), $values, $row++);
+      $entries[$entryKey]->aclBase = 'new,'.$this->parent->dn;
     }
     $this->entriesCache = [$entries, [$this->parent->objectTypes[0] => $row]];
   }
