@@ -426,6 +426,9 @@ class interfacesManagement extends management implements SimpleTab
         $this->filter->resetFromCache($entry->dn, $this->interfaces[$entry->dn]);
         $this->interfaces[$entry->dn]->getBaseObject()->base = $this->dn;
       }
+
+      /* Fill ip/mac fields of main tab */
+      $this->save_object();
     }
   }
 
