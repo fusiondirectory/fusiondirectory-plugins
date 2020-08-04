@@ -68,7 +68,7 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
     return array_slice($value, 0, 3);
   }
 
-  function setParent (simplePlugin &$plugin)
+  function setParent (&$plugin)
   {
     parent::setParent($plugin);
     if (is_object($this->plugin)) {

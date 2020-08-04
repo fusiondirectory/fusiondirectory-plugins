@@ -55,7 +55,7 @@ class ArgonautSlaveZonesAttribute extends OrderedArrayAttribute
     );
   }
 
-  function setParent (simplePlugin &$plugin)
+  function setParent (&$plugin)
   {
     parent::setParent($plugin);
     /* If there are DNS zones from DNS plugin, replace DNS zone field with a SelectAttribute */

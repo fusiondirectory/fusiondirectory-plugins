@@ -26,7 +26,7 @@ class DebconfEntriesAttribute extends CompositeAttribute
     $this->setInLdap(FALSE);
   }
 
-  function setParent (simplePlugin &$plugin)
+  function setParent (&$plugin)
   {
     parent::setParent($plugin);
     if (is_object($this->plugin)) {

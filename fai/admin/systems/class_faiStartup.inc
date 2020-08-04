@@ -39,7 +39,7 @@ class FAIreleaseAttribute extends SelectAttribute
     }
   }
 
-  function setParent (simplePlugin &$plugin)
+  function setParent (&$plugin)
   {
     parent::setParent($plugin);
     $this->setChoices(array_keys($this->plugin->cache['SERVERS'] ?? []));
