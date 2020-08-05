@@ -113,7 +113,16 @@ class interfacesManagement extends management implements SimpleTab
       } else {
         $this->interfaces[$entry->dn] = objects::open($entry->dn, $entry->getTemplatedType());
       }
-      $this->interfaces[$entry->dn]->getBaseObject()->base = $this->dn;
+      $this->interfaces[$entry->dn]->getBaseObject()->base = $this->getInterfacesBase();
+    }
+  }
+
+  private function getInterfacesBase (): string
+  {
+    if ($this->dn != 'new') {
+      return $this->dn;
+    } else {
+      return 'new,'.$this->parent->getBaseObject()->base;
     }
   }
 
@@ -121,11 +130,7 @@ class interfacesManagement extends management implements SimpleTab
   {
     /* Set baseMode to FALSE */
     $this->listing  = new managementListing($this, FALSE);
-    if ($this->dn != 'new') {
-      $this->listing->setBase($this->dn);
-    } else {
-      $this->listing->setBase('new,'.$this->parent->getBaseObject()->base);
-    }
+    $this->listing->setBase($this->getInterfacesBase());
   }
 
   protected function setUpFilter (array $filterElementDefinitions)
@@ -258,11 +263,7 @@ class interfacesManagement extends management implements SimpleTab
   function openTabObject ($object)
   {
     parent::openTabObject($object);
-    if ($this->dn != 'new') {
-      $this->tabObject->getBaseObject()->base = $this->dn;
-    } else {
-      $this->tabObject->getBaseObject()->base = 'new,'.$this->parent->getBaseObject()->base;
-    }
+    $this->tabObject->getBaseObject()->base = $this->getInterfacesBase();
     if ($this->is_template) {
       $this->tabObject->setTemplateMode('');
     }
@@ -351,7 +352,7 @@ class interfacesManagement extends management implements SimpleTab
         logging::debug(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $dn, 'Saving subobject');
         /* The move was already done if needed by main tab, so we need to update dn of subobjects */
         $object->dn                     = str_replace($object->getBaseObject()->base, $this->dn, $object->dn);
-        $object->getBaseObject()->base  = $this->dn;
+        $object->getBaseObject()->base = $this->getInterfacesBase();
         /* Save subobject and store errors if any */
         $errors = array_merge($errors, $object->save());
       }
@@ -424,7 +425,7 @@ class interfacesManagement extends management implements SimpleTab
       foreach ($entryIterator as $entry) {
         $this->interfaces[$entry->dn] = objects::create($entry->getTemplatedType());
         $this->filter->resetFromCache($entry->dn, $this->interfaces[$entry->dn]);
-        $this->interfaces[$entry->dn]->getBaseObject()->base = $this->dn;
+        $this->interfaces[$entry->dn]->getBaseObject()->base = $this->getInterfacesBase();
       }
 
       /* Fill ip/mac fields of main tab */
