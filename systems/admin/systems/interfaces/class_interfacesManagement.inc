@@ -409,27 +409,38 @@ class interfacesManagement extends management implements SimpleTab
     return [];
   }
 
+  public function setNetworkInterfaces ($interfaces = NULL)
+  {
+    if ($interfaces !== NULL) {
+      $this->filter->loadTemplateValues($interfaces);
+    }
+
+    $this->listing->update();
+
+    $entryIterator = $this->listing->getIterator();
+
+    $this->interfaces = [];
+    foreach ($entryIterator as $entry) {
+      if ($this->is_template) {
+        $this->interfaces[$entry->dn] = objects::createTemplate($entry->getTemplatedType());
+      } else {
+        $this->interfaces[$entry->dn] = objects::create($entry->getTemplatedType());
+      }
+      $this->filter->resetFromCache($entry->dn, $this->interfaces[$entry->dn]);
+      $this->interfaces[$entry->dn]->getBaseObject()->base = $this->getInterfacesBase();
+    }
+
+    /* Fill ip/mac fields of main tab */
+    $this->save_object();
+  }
+
   public function adapt_from_template (array $attrs, array $skip = [])
   {
     $this->attrs = array_merge($this->attrs, $attrs);
 
     if (isset($this->attrs['networkInterfaces']) && !in_array('networkInterfaces', $skip)) {
       unset($this->attrs['networkInterfaces']['count']);
-      $this->filter->loadTemplateValues($this->attrs['networkInterfaces']);
-
-      $this->listing->update();
-
-      $entryIterator = $this->listing->getIterator();
-
-      $this->interfaces = [];
-      foreach ($entryIterator as $entry) {
-        $this->interfaces[$entry->dn] = objects::create($entry->getTemplatedType());
-        $this->filter->resetFromCache($entry->dn, $this->interfaces[$entry->dn]);
-        $this->interfaces[$entry->dn]->getBaseObject()->base = $this->getInterfacesBase();
-      }
-
-      /* Fill ip/mac fields of main tab */
-      $this->save_object();
+      $this->setNetworkInterfaces($this->attrs['networkInterfaces']);
     }
   }
 
