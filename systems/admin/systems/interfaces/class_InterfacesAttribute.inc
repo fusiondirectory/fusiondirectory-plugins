@@ -57,7 +57,7 @@ class InterfacesAttribute extends DialogOrderedArrayAttribute
 
   function setValue ($value)
   {
-    return $this->plugin->filter->loadTemplateValues($value);
+    return $this->plugin->setNetworkInterfaces($value);
   }
 
   protected function getAttributeArrayValue ($key, $value)
