@@ -417,17 +417,25 @@ class interfacesManagement extends management implements SimpleTab
 
     $this->listing->update();
 
+    $this->listing->setSortColumn(0, FALSE);
     $entryIterator = $this->listing->getIterator();
 
-    $this->interfaces = [];
+    ksort($this->interfaces);
+    reset($this->interfaces);
     foreach ($entryIterator as $entry) {
-      if ($this->is_template) {
-        $this->interfaces[$entry->dn] = objects::createTemplate($entry->getTemplatedType());
+      $key = key($this->interfaces);
+      if ($key === NULL) {
+        if ($this->is_template) {
+          $this->interfaces[$entry->dn] = objects::createTemplate($entry->getTemplatedType());
+        } else {
+          $this->interfaces[$entry->dn] = objects::create($entry->getTemplatedType());
+        }
+        $key = $entry->dn;
       } else {
-        $this->interfaces[$entry->dn] = objects::create($entry->getTemplatedType());
+        next($this->interfaces);
       }
-      $this->filter->resetFromCache($entry->dn, $this->interfaces[$entry->dn]);
-      $this->interfaces[$entry->dn]->getBaseObject()->base = $this->getInterfacesBase();
+      $this->filter->resetFromCache($entry->dn, $this->interfaces[$key]);
+      $this->interfaces[$key]->getBaseObject()->base = $this->getInterfacesBase();
     }
 
     /* Fill ip/mac fields of main tab */
