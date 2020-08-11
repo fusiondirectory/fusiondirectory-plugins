@@ -37,19 +37,6 @@ class InterfacesAttribute extends DialogOrderedArrayAttribute
     $this->plugin = $plugin;
   }
 
-  //~ function renderAttribute (array &$attributes, bool $readOnly, bool $readable, bool $writable)
-  //~ {
-  //~ }
-
-  function renderFormInput (): string
-  {
-    $value = $this->getValue();
-    if (is_array($value)) {
-      $value = join(', ', $value);
-    }
-    return '{literal}'.htmlescape($value).'{/literal}';
-  }
-
   function getValue ()
   {
     return $this->plugin->filter->getInterfacesAsArrays();
@@ -62,25 +49,36 @@ class InterfacesAttribute extends DialogOrderedArrayAttribute
 
   protected function getAttributeArrayValue ($key, $value)
   {
-    /* FIXME Convert text value to displayable array value */
-    die('Pure virtual method');
+    return [
+      $value['cn'][0] ?? '',
+      $value['macAddress'][0] ?? '',
+      implode(', ', ($value['ipHostNumber'] ?? [])),
+    ];
   }
 
   function addValue (string $dn, $attrs = NULL)
   {
-    /* FIXME */
-    if ($attrs !== NULL) {
-      $this->value[] = $attrs;
-      $this->reIndexValues();
-    }
+    throw new FusionDirectoryError('addValue should not be called on InterfacesAttribute');
   }
 
   protected function handleEdit ($key)
   {
-    /* FIXME */
-    $this->editingValue = $this->value[$key];
-    $this->delPostValue($key);
-    $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, $this->editingValue));
+    $this->plugin->editEntry(['targets' => [$this->getValue()[$key]['dn']], 'action' => 'edit', 'subaction' => NULL]);
+  }
+
+  function delPostValue ($key)
+  {
+    $this->plugin->removeRequested(['targets' => [$this->getValue()[$key]['dn']], 'action' => 'remove', 'subaction' => NULL]);
+  }
+
+  function loadPostValue ()
+  {
+    if ($this->isVisible()) {
+      OrderedArrayAttribute::loadPostValue();
+      if (isset($_POST['add'.$this->getHtmlId().'_dialog'])) {
+        $this->plugin->newEntry(['targets' => [], 'action' => 'new', 'subaction' => 'NETWORKINTERFACE']);
+      }
+    }
   }
 
   /* readValue/writeValue? */

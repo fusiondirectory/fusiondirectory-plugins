@@ -302,7 +302,15 @@ class interfacesManagement extends management implements SimpleTab
    */
   function save_object ()
   {
-    // save_object of the dialog is called in management::execute
+    /* save_object of the dialog is called in management::execute
+     * and template::save_object when used through a template
+     */
+
+    /* Useful if called for template::save_object */
+    if ($this->attrIsWriteable($this->attributesAccess['networkInterfaces'])) {
+      $this->attributesAccess['networkInterfaces']->loadPostValue();
+      $this->attributesAccess['networkInterfaces']->applyPostValue();
+    }
 
     /* Sync base tab fields with interfaces */
     $entryIterator = $this->listing->getIterator();
@@ -495,8 +503,10 @@ class interfacesManagement extends management implements SimpleTab
    */
   function attrIsReadable ($attr): bool
   {
-    /* FIXME */
-    return TRUE;
+    if (!is_object($attr)) {
+      $attr = $this->attributesAccess[$attr];
+    }
+    return (strpos($this->aclGetPermissions($attr->getAcl()), 'r') !== FALSE);
   }
 
   /*! \brief Check if logged in user have enough right to write this attribute value
@@ -505,8 +515,10 @@ class interfacesManagement extends management implements SimpleTab
    */
   function attrIsWriteable ($attr): bool
   {
-    /* FIXME */
-    return TRUE;
+    if (!is_object($attr)) {
+      $attr = $this->attributesAccess[$attr];
+    }
+    return (strpos($this->aclGetPermissions($attr->getAcl()), 'w') !== FALSE);
   }
 
   /*!
@@ -526,7 +538,41 @@ class interfacesManagement extends management implements SimpleTab
    */
   public function aclGetPermissions ($attribute = '0', string $base = NULL, bool $skipWrite = FALSE): string
   {
-    return '';
+    global $ui;
+    if ($attribute !== 'networkInterfaces') {
+      return '';
+    }
+    if (isset($this->parent) && isset($this->parent->ignoreAcls) && $this->parent->ignoreAcls) {
+      return 'cdmr'.($skipWrite ? '' : 'w');
+    }
+
+    if ($base === NULL) {
+      $base = $this->getAclBase();
+    }
+    $skipWrite  |= $this->read_only;
+
+    $infos  = objects::infos('networkInterface');
+    return $ui->get_permissions($base, $infos['aclCategory'].'/'.($this->is_template ? 'template' : $infos['mainTab']));
+  }
+
+  /*!
+   * \brief Get LDAP base to use for ACL checks
+   */
+  function getAclBase (bool $callParent = TRUE): string
+  {
+    global $config;
+
+    if (($this->parent instanceof simpleTabs) && $callParent) {
+      return $this->parent->getAclBase();
+    }
+    if (isset($this->dn) && ($this->dn != 'new')) {
+      return $this->dn;
+    }
+    if (isset($this->base)) {
+      return 'new,'.$this->base;
+    }
+
+    return $config->current['BASE'];
   }
 
   /*!
