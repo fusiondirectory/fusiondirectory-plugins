@@ -97,12 +97,15 @@ update-transifex:
 build-tarballs:
   stage: tarballs
   only:
-    - tags
+    - 1.4-dev
   script:
-    - tar -cvzf fusiondirectory-plugins.tar.gz *
+    - mkdir ../fusiondirectory-plugins-1.4/
+    - mv ./* ../fusiondirectory-plugins-1.4/
+    - mv  ../fusiondirectory-plugins-1.4/ ./
+    - tar -cvzf fusiondirectory-plugins-1.4.tar.gz *
   artifacts:
     paths:
-    - fusiondirectory-plugins.tar.gz
+      - fusiondirectory-plugins-1.4.tar.gz
     expire_in: 1h
 
 build-release:
