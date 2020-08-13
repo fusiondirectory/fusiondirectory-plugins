@@ -526,6 +526,21 @@ class interfacesManagement extends management implements SimpleTab
    */
   public function deserializeValues (array $values, bool $checkAcl = TRUE)
   {
+    foreach ($values as $name => $value) {
+      if (isset($this->attributesAccess[$name])) {
+        if (!$checkAcl || $this->attrIsWriteable($name)) {
+          $error = $this->attributesAccess[$name]->deserializeValue($value);
+          if (!empty($error)) {
+            return $error;
+          }
+        } else {
+          return new FusionDirectoryError(msgPool::permModify($this->dn, $name));
+        }
+      } else {
+        return new FusionDirectoryError(sprintf(_('Unknown field "%s"'), $name));
+      }
+    }
+    return TRUE;
   }
 
   public function aclHasPermissions (): bool
