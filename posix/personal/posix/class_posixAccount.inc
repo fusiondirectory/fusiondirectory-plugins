@@ -348,13 +348,15 @@ class posixAccount extends simplePlugin
 
     $this->savedGroupMembership = [];
 
-    $ldap = $config->get_ldap_link();
-    $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=posixGroup)(gidNumber='.ldap_escape_f($this->gidNumber).')(cn='.ldap_escape_f($this->getUid()).'))', ['cn','gidNumber']);
+    if (!empty($this->gidNumber)) {
+      $ldap = $config->get_ldap_link();
+      $ldap->cd($config->current['BASE']);
+      $ldap->search('(&(objectClass=posixGroup)(gidNumber='.ldap_escape_f($this->gidNumber).')(cn='.ldap_escape_f($this->getUid()).'))', ['cn','gidNumber']);
 
-    if ($ldap->count() > 0) {
-      /* The copied user had its own group: switch back to automatic */
-      $this->primaryGroup = 0;
+      if ($ldap->count() > 0) {
+        /* The copied user had its own group: switch back to automatic */
+        $this->primaryGroup = 0;
+      }
     }
 
     $this->force_ids = FALSE;
@@ -681,11 +683,13 @@ class posixAccount extends simplePlugin
       } else {
         $type = 'group';
       }
-      $groups = objects::ls($type, ['cn' => 1, 'memberUid' => '*'], NULL, '(&(objectClass=posixGroup)(gidNumber='.ldap_escape_f($this->gidNumber).')(cn='.ldap_escape_f($this->getUid()).'))');
-      foreach ($groups as $dn => $group) {
-        if (empty($group['memberUid']) || ((count($group['memberUid']) == 1) && ($group['memberUid'][0] == $this->getUid()))) {
-          $tabobject = objects::open($dn, $type);
-          $tabobject->delete();
+      if (!empty($this->gidNumber)) {
+        $groups = objects::ls($type, ['cn' => 1, 'memberUid' => '*'], NULL, '(&(objectClass=posixGroup)(gidNumber='.ldap_escape_f($this->gidNumber).')(cn='.ldap_escape_f($this->getUid()).'))');
+        foreach ($groups as $dn => $group) {
+          if (empty($group['memberUid']) || ((count($group['memberUid']) == 1) && ($group['memberUid'][0] == $this->getUid()))) {
+            $tabobject = objects::open($dn, $type);
+            $tabobject->delete();
+          }
         }
       }
     }
