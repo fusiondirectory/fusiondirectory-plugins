@@ -44,6 +44,11 @@ class ldifManager extends simplePlugin
       'export' => [
         'name'  => _('Export'),
         'attrs' => [
+          new IntAttribute(
+            _('Wrapping'), _('Wrap lines after this length in columns (0 to disable)'),
+            'wrap', FALSE,
+            0, FALSE, 100
+          ),
           new CompositeAttribute(
             _('DN of a single entry to export as ldif'),
             'single_export',
@@ -80,7 +85,7 @@ class ldifManager extends simplePlugin
             ],
             '', '%s%s', '',
             _('Export complete LDIF for')
-          )
+          ),
         ]
       ],
       'import' => [
@@ -117,6 +122,7 @@ class ldifManager extends simplePlugin
   {
     parent::__construct($dn, $object, $parent, $mainTab);
 
+    $this->attributesAccess['wrap']->setInLdap(FALSE);
     $this->attributesAccess['single_export']->setInLdap(FALSE);
     $this->attributesAccess['single_export']->setLinearRendering(TRUE);
     $this->attributesAccess['complete_export']->setInLdap(FALSE);
@@ -159,7 +165,7 @@ class ldifManager extends simplePlugin
       } else {
         $ldap = $config->get_ldap_link();
         try {
-          $data = $ldap->generateLdif($dn, $this->export_filter, $scope);
+          $data = $ldap->generateLdif($dn, $this->export_filter, $scope, 0, intval($this->wrap));
           send_binary_content($data, $name);
         } catch (LDIFExportException $e) {
           $error = new FusionDirectoryError(
