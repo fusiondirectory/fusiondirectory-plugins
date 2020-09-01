@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2020  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,14 +20,14 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class sambaLogonHours
+class sambaLogonHours implements FusionDirectoryDialog
 {
-  var $sambaLogonHours = "";
-  var $Matrix          = [];
-  var $timezone        = 0;
-  var $acl;
+  protected $sambaLogonHours = '';
+  protected $Matrix          = [];
+  protected $timezone        = 0;
+  protected $acl;
 
-  function __construct ($slh, $acl = 'rw')
+  public function __construct ($slh, $acl = 'rw')
   {
     $this->sambaLogonHours  = $slh;
     $this->acl              = $acl;
@@ -73,7 +74,28 @@ class sambaLogonHours
     }
   }
 
-  function execute ()
+  public function readPost ()
+  {
+    /* Check if dialog was opened and if there were any changes */
+    if (isset($_POST['sambaLogonHoursPosted'])) {
+      foreach ($this->Matrix as $day_key => $days) {
+        foreach ($days as $hour_key => $hour) {
+          if (isset($_POST['day_'.$day_key.'_'.$hour_key])) {
+            $this->Matrix[$day_key][$hour_key] = 1;
+          } else {
+            $this->Matrix[$day_key][$hour_key] = 0;
+          }
+        }
+      }
+    }
+  }
+
+  public function update (): bool
+  {
+    return TRUE;
+  }
+
+  public function render (): string
   {
     $week_days = msgPool::weekdays();
 
@@ -91,23 +113,7 @@ class sambaLogonHours
     return $smarty->fetch(get_template_path("sambaLogonHours.tpl", TRUE, dirname(__FILE__)));
   }
 
-  function save_object ()
-  {
-    /* Check if dialog was opened and if there were any changes */
-    if (isset($_POST['sambaLogonHoursPosted'])) {
-      foreach ($this->Matrix as $day_key => $days) {
-        foreach ($days as $hour_key => $hour) {
-          if (isset($_POST['day_'.$day_key.'_'.$hour_key])) {
-            $this->Matrix[$day_key][$hour_key] = 1;
-          } else {
-            $this->Matrix[$day_key][$hour_key] = 0;
-          }
-        }
-      }
-    }
-  }
-
-  function save ()
+  public function save ()
   {
     /* Convert Matrix to Hex */
     $slh = "";
@@ -151,30 +157,25 @@ class sambaLogonHours
   }
 }
 
-class SambaLogonHoursDialog
+class SambaLogonHoursDialog extends GenericDialog
 {
-  private $dialog;
-  private $sambaAttribute;
+  protected $dialogClass = 'sambaLogonHours';
 
-  function __construct ($simplePlugin, &$sambaAttribute)
+  protected $post_cancel = 'cancel_logonHours';
+  protected $post_finish = 'save_logonHours';
+
+  public function __construct ($simplePlugin, $sambaAttribute)
   {
-    $this->sambaAttribute = $sambaAttribute;
-    $this->dialog         = new sambaLogonHours(
+    $this->attribute  = $sambaAttribute;
+    $this->dialog     = new sambaLogonHours(
       $sambaAttribute->getValue(),
       $simplePlugin->aclGetPermissions('sambaLogonHours')
     );
   }
 
-  function execute ()
+  protected function handleFinish ()
   {
-    if (isset($_POST['cancel_logonHours'])) {
-      return FALSE;
-    }
-    $this->dialog->save_object();
-    if (isset($_POST['save_logonHours'])) {
-      $this->sambaAttribute->setValue($this->dialog->save());
-      return FALSE;
-    }
-    return $this->dialog->execute();
+    $this->attribute->setValue($this->dialog->save());
+    unset($this->dialog);
   }
 }

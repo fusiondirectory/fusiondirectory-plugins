@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2016  FusionDirectory
+
+  Copyright (C) 2015-2020  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -99,14 +100,14 @@ class DnsRecordPlugin extends simplePlugin
   {
   }
 
-  function execute (): string
+  public function render (): string
   {
     $smarty = get_smarty();
     $attr   = $this->attributesAccess['dnsRecord'];
     foreach ($this->attributesAccess as $attr) {
       $smarty->assign($attr->getAcl().'ACL', $this->aclGetPermissions($attr->getAcl(), NULL, $this->acl_skip_write()));
     }
-    return parent::execute();
+    return parent::render();
   }
 }
 
@@ -118,7 +119,7 @@ class DnsRecordDialog extends GenericDialog
 
   protected $plugin;
 
-  function __construct ($simplePlugin, &$attribute, $value = [])
+  function __construct ($simplePlugin, $attribute, $value = [])
   {
     $this->attribute  = $attribute;
     $this->plugin     = $simplePlugin;
@@ -128,26 +129,25 @@ class DnsRecordDialog extends GenericDialog
     }
   }
 
-  function dialog_execute ()
+  public function render (): string
   {
-    $this->dialog->save_object();
-    return $this->dialog->execute()."\n".
+    return $this->dialog->render()."\n".
     '<p class="plugbottom">'."\n".
     '  <input type="submit" name="add_finish" value="'.msgPool::addButton().'"/>&nbsp;'."\n".
     '  <input type="submit" formnovalidate="formnovalidate" name="add_cancel" value="'.msgPool::cancelButton().'"/>'."\n".
     '</p>';
   }
 
-  function handle_finish ()
+  protected function handleFinish ()
   {
-    $this->dialog->save_object();
+    $this->dialog->update();
 
     /* Check for errors */
     if (!$this->plugin->is_template) {
       $checks = $this->dialog->check();
       if (count($checks)) {
         msg_dialog::displayChecks($checks);
-        return $this->dialog_execute();
+        return;
       }
     }
     /* add new/edited zone */
@@ -157,15 +157,15 @@ class DnsRecordDialog extends GenericDialog
     }
     $ret = array_merge([$relativeSubdomainName], $this->dialog->dnsRecord);
     $this->attribute->addValue('', $ret);
-    return FALSE;
+    unset($this->dialog);
   }
 
-  function handle_cancel ()
+  protected function handleCancel ()
   {
     if ($this->initialDialogValue !== NULL) {
       $this->attribute->addValue('', $this->initialDialogValue);
     }
-    return FALSE;
+    unset($this->dialog);
   }
 }
 

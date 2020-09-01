@@ -214,9 +214,9 @@ class faiLogView extends simplePlugin
     return (count($this->attributesAccess['available_logs']->logs) > 0);
   }
 
-
-  function execute (): string
+  public function update (): bool
   {
+    parent::update();
     if ($this->available_logs['file'] == '') {
       $this->attributesInfo['selected']['name'] = _('Selected file');
       $this->display_log = '';
@@ -230,9 +230,8 @@ class faiLogView extends simplePlugin
       $this->display_log = $this->get_log($this->mac, $this->available_logs['time'], $this->available_logs['file']);
     }
 
-    return parent::execute();
+    return TRUE;
   }
-
 
   private function get_log ($mac, $date, $file)
   {

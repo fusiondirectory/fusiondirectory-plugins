@@ -63,7 +63,7 @@ class webauthnAccount extends simplePlugin
     ];
   }
 
-  function execute (): string
+  public function render (): string
   {
     global $smarty;
 
@@ -91,7 +91,7 @@ class webauthnAccount extends simplePlugin
 
     $smarty->append('js_files', 'include/webauthn.js');
 
-    return parent::execute();
+    return parent::render();
   }
 
   static public function initWebAuthnObject ()

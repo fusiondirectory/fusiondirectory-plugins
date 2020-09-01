@@ -88,11 +88,11 @@ class argonautImportFile extends simplePlugin
     $this->daemon_events  = argonautEventTypes::get_event_types();
   }
 
-  function execute (): string
+  public function render (): string
   {
     $smarty = get_smarty();
     $smarty->assign('jobtypes', join(',', array_keys($this->daemon_events)));
-    return parent::execute().
+    return parent::render().
     '<p class="plugbottom">'.
     ' <input type="submit" name="start_import" value="'._('Import').'" >'.
     ' <input type="submit" formnovalidate="formnovalidate" name="import_abort" value="'.msgPool::backButton().'">'.
@@ -104,7 +104,7 @@ class argonautImportFile extends simplePlugin
     $this->parse_csv($this->import);
   }
 
-  function save_object ()
+  public function readPost ()
   {
     /* Import started */
     if (isset($_POST['import_abort'])) {
@@ -147,7 +147,7 @@ class argonautImportFile extends simplePlugin
         $this->events = $events;
       }
     }
-    parent::save_object();
+    parent::readPost();
   }
 
   private function parse_csv ($str)

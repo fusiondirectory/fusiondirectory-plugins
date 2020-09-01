@@ -341,10 +341,11 @@ class dhcpSystem extends simplePlugin
     $this->attributesAccess['dhcpHosts']->setParent($this);
   }
 
-  function save_object ()
+  public function update (): bool
   {
-    parent::save_object();
+    parent::update();
     $this->is_account = $this->is_this_account($this->attrs);
+    return TRUE;
   }
 
   static function getDhcpParentNodes ()

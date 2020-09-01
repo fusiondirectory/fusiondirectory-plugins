@@ -307,7 +307,8 @@ class servicesManagement extends management implements SimpleTab
    */
   function saveService (array $action)
   {
-    $this->dialogObject->save_object();
+    $this->dialogObject->readPost();
+    $this->dialogObject->update();
     $msgs = $this->dialogObject->check();
     if (count($msgs)) {
       msg_dialog::displayChecks($msgs);
@@ -494,13 +495,6 @@ class servicesManagement extends management implements SimpleTab
   public function check (): array
   {
     return [];
-  }
-
-  /*! \brief    Keep posted form values in opened dialogs
-   */
-  function save_object ()
-  {
-    // save_object of the dialog is called in management::execute
   }
 
   /*! \brief Remove all active services

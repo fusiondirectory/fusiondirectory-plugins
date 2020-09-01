@@ -77,10 +77,11 @@ class nisObject extends simplePlugin
     $this->attributesAccess['nisMapName']->setChoices($this->getMountPoints());
   }
 
-  function save_object ()
+  public function update (): bool
   {
-    parent::save_object();
+    parent::update();
     $this->attributesAccess['nisMapName']->setChoices($this->getMountPoints());
+    return TRUE;
   }
 
   function getMountPoints ()

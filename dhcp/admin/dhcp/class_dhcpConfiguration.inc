@@ -107,16 +107,11 @@ class dhcpConfiguration extends simplePlugin
     $this->cn = $this->attributesAccess['dhcpSections']->getGlobalCn();
   }
 
-  function save_object ()
+  function update (): bool
   {
-    parent::save_object();
+    parent::update();
     $this->cn = $this->attributesAccess['dhcpSections']->getGlobalCn();
-  }
-
-  function save (): array
-  {
-    $this->cn = $this->attributesAccess['dhcpSections']->getGlobalCn();
-    return parent::save();
+    return TRUE;
   }
 
   protected function shouldSave (): bool

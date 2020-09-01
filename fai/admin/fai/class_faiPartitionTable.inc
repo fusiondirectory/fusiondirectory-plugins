@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2020  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -43,31 +44,25 @@ class DiskEntryDialog extends GenericDialog
     }
   }
 
-  function dialog_execute ()
+  protected function handleFinish ()
   {
-    $this->dialog->save_object();
-    return $this->dialog->execute();
-  }
-
-  function handle_finish ()
-  {
-    $this->dialog->save_object();
+    $this->dialog->update();
     $msgs = $this->dialog->check();
     if (count($msgs)) {
       msg_dialog::displayChecks($msgs);
-      return $this->dialog->execute();
+      return;
     }
 
     $this->attribute->diskConfigured($this->dialog->save());
-    return FALSE;
+    unset($this->dialog);
   }
 
-  function handle_cancel ()
+  protected function handleCancel ()
   {
     if ($this->initialDialogValue !== NULL) {
       $this->attribute->addValue('', $this->initialDialogValue);
     }
-    return FALSE;
+    unset($this->dialog);
   }
 }
 

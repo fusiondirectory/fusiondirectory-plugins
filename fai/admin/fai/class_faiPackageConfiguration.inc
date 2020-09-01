@@ -253,12 +253,12 @@ class faiPackageConfiguration extends simplePlugin
     $this->debconfAttributesTypes[$infos['Name']] = $infos['Type'];
   }
 
-  function execute (): string
+  public function render (): string
   {
     $smarty = get_smarty();
     $acl    = $this->aclGetPermissions('FAIpartitions');
     $smarty->assign('FAIpackageACL', $acl);
-    return parent::execute().
+    return parent::render().
       '<p class="plugbottom">'.
       '  <input type="submit" name="SaveObjectConfig" value="'.msgPool::applyButton().'"/>'.
       '  <input type="submit" formnovalidate="formnovalidate" name="CancelObjectConfig" value="'.msgPool::cancelButton().'"/>'.

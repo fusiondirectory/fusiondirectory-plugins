@@ -186,26 +186,25 @@ class interfacesManagement extends management implements SimpleTab
 
   function saveChanges ()
   {
-    if (($this->tabObject instanceOf simpleTabs) && ($this->dialogObject instanceOf templateDialog)) {
-      $this->tabObject->save_object();
-      $this->handleTemplateApply();
-      return;
-    }
     if ($this->tabObject instanceOf simpleTabs) {
-      $this->tabObject->save_object();
-      $msgs = $this->tabObject->check();
-      if (count($msgs)) {
-        msg_dialog::displayChecks($msgs);
-        return;
+      $this->tabObject->readPost();
+      $this->tabObject->update();
+      if ($this->dialogObject instanceOf templateDialog) {
+        $this->handleTemplateApply();
       } else {
-        if ($this->currentDn == 'new') {
-          $this->interfaces[$this->tabObject->getBaseObject()->cn] = $this->tabObject;
-          $this->filter->updateCache($this->tabObject->getBaseObject()->cn, $this->tabObject);
+        $msgs = $this->tabObject->check();
+        if (count($msgs)) {
+          msg_dialog::displayChecks($msgs);
         } else {
-          $this->filter->updateCache($this->currentDn, $this->tabObject);
+          if ($this->currentDn == 'new') {
+            $this->interfaces[$this->tabObject->getBaseObject()->cn] = $this->tabObject;
+            $this->filter->updateCache($this->tabObject->getBaseObject()->cn, $this->tabObject);
+          } else {
+            $this->filter->updateCache($this->currentDn, $this->tabObject);
+          }
+          logging::debug(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->currentDns, 'Entry saved in cache');
+          $this->closeDialogs();
         }
-        logging::debug(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->currentDns, 'Entry saved in cache');
-        $this->closeDialogs();
       }
     }
   }
@@ -298,37 +297,43 @@ class interfacesManagement extends management implements SimpleTab
     return $errors;
   }
 
-  /*! \brief    Keep posted form values in opened dialogs
-   */
-  function save_object ()
+  public function readPost ()
   {
-    /* save_object of the dialog is called in management::execute
-     * and template::save_object when used through a template
-     */
-
-    /* Useful if called for template::save_object */
+    /* Useful if called for template::update */
     if ($this->attrIsWriteable($this->attributesAccess['networkInterfaces'])) {
       $this->attributesAccess['networkInterfaces']->loadPostValue();
       $this->attributesAccess['networkInterfaces']->applyPostValue();
     }
+    parent::readPost();
+  }
 
-    /* Sync base tab fields with interfaces */
-    $entryIterator = $this->listing->getIterator();
+  public function update (): bool
+  {
+    parent::update();
 
-    $macAddress   = [];
-    $ipHostNumber = [];
-    if (!$this->is_template) {
-      foreach ($entryIterator as $entry) {
-        if (!empty($entry['macAddress'])) {
-          array_push($macAddress, ...$entry['macAddress']);
+    if ($this->renderCache === NULL) {
+      if (!$this->dialogOpened()) {
+        /* Sync base tab fields with interfaces */
+        $entryIterator = $this->listing->getIterator();
+
+        $macAddress   = [];
+        $ipHostNumber = [];
+        if (!$this->is_template) {
+          foreach ($entryIterator as $entry) {
+            if (!empty($entry['macAddress'])) {
+              array_push($macAddress, ...$entry['macAddress']);
+            }
+            if (!empty($entry['ipHostNumber'])) {
+              array_push($ipHostNumber, ...$entry['ipHostNumber']);
+            }
+          }
         }
-        if (!empty($entry['ipHostNumber'])) {
-          array_push($ipHostNumber, ...$entry['ipHostNumber']);
-        }
+        $this->parent->getBaseObject()->macAddress    = array_values(array_unique($macAddress));
+        $this->parent->getBaseObject()->ipHostNumber  = array_values(array_unique($ipHostNumber));
       }
     }
-    $this->parent->getBaseObject()->macAddress    = array_values(array_unique($macAddress));
-    $this->parent->getBaseObject()->ipHostNumber  = array_values(array_unique($ipHostNumber));
+
+    return TRUE;
   }
 
   public function remove (bool $fulldelete = FALSE): array
@@ -447,7 +452,7 @@ class interfacesManagement extends management implements SimpleTab
     }
 
     /* Fill ip/mac fields of main tab */
-    $this->save_object();
+    $this->update();
   }
 
   public function adapt_from_template (array $attrs, array $skip = [])

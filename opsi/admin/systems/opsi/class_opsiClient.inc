@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2018  FusionDirectory
+
+  Copyright (C) 2013-2020  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -132,9 +133,9 @@ class opsiClient extends simplePlugin
     }
   }
 
-  function save_object ()
+  public function update (): bool
   {
-    parent::save_object();
+    parent::update();
     if ($this->member_of_group) {
       if ($this->fdOpsiLocalbootInherit) {
         $this->fdOpsiServerDn = $this->group_attrs['fdOpsiServerDn'][0];
@@ -143,6 +144,7 @@ class opsiClient extends simplePlugin
         $this->attributesAccess['fdOpsiServerDn']->setDisabled(FALSE);
       }
     }
+    return TRUE;
   }
 
   function prepare_save (): array

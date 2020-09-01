@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2016  FusionDirectory
+  Copyright (C) 2011-2020  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -29,14 +30,16 @@ class DhcpSectionCreationDialog extends GenericDialog
   protected $initialObjectValue;
   protected $selectAttribute;
 
-  function __construct ($simplePlugin, &$attribute, $classtype, $parentdn, $editingValue = NULL)
+  protected $closed = FALSE;
+
+  public function __construct ($simplePlugin, $attribute, $classtype, $parentdn, $editingValue = NULL)
   {
     $this->plugin     = $simplePlugin;
     $this->attribute  = $attribute;
     $this->classtype  = $classtype;
     $this->parentdn   = $parentdn;
     if ($editingValue === NULL) {
-      $this->dialog = FALSE;
+      $this->dialog = NULL;
     } else {
       $this->dialog = new $classtype($this->plugin, $editingValue['dn'], $editingValue);
     }
@@ -55,33 +58,41 @@ class DhcpSectionCreationDialog extends GenericDialog
     );
   }
 
-  function execute ()
+  public function readPost ()
   {
-    if ($this->dialog !== FALSE) {
+    if (isset($this->dialog)) {
       if (isset($_POST['dhcp_cancel'])) {
-        return $this->handle_cancel();
-      }
-      if (isset($_POST['dhcp_save'])) {
-        return $this->save_dhcp();
+        $this->handleCancel();
+      } else {
+        $this->dialog->readPost();
+        if (isset($_POST['dhcp_save'])) {
+          $this->handleFinish();
+        }
       }
     } else {
       $this->selectAttribute->loadPostValue();
       $this->selectAttribute->applyPostValue();
       if (isset($_POST[$this->post_cancel])) {
-        return $this->handle_cancel();
-      }
-      if (isset($_POST[$this->post_finish]) || isset($_GET[$this->post_finish])) {
-        return $this->handle_finish();
+        $this->handleCancel();
+      } elseif (isset($_POST[$this->post_finish]) || isset($_GET[$this->post_finish])) {
+        $this->openDialog();
       }
     }
-    return $this->dialog_execute();
   }
 
-  function dialog_execute ()
+  public function update (): bool
   {
-    if ($this->dialog !== FALSE) {
-      $this->dialog->save_object();
-      return $this->dialog->execute();
+    if ($this->closed) {
+      return FALSE;
+    } elseif (isset($this->dialog)) {
+      $this->dialog->update();
+    }
+  }
+
+  public function render (): string
+  {
+    if (isset($this->dialog)) {
+      return $this->dialog->render();
     }
     $smarty   = get_smarty();
 
@@ -106,38 +117,37 @@ class DhcpSectionCreationDialog extends GenericDialog
     '</p>';
   }
 
-  function handle_finish ()
+  protected function openDialog ()
   {
     $section = $this->selectAttribute->getValue();
 
     if (isset(dhcpConfiguration::$sectionMap[$section])) {
       $this->dialog   = new $section($this->plugin, 'new', $this->parentdn);
       $this->parentdn = FALSE;
-      return $this->dialog->execute();
     } else {
-      return FALSE;
+      $this->closed = TRUE;
     }
   }
 
-  function handle_cancel ()
+  protected function handleCancel ()
   {
     if ($this->initialObjectValue !== NULL) {
       $this->attribute->editEnded($this->parentdn, $this->initialObjectValue);
     }
-    return FALSE;
+    $this->closed = TRUE;
   }
 
-  function save_dhcp ()
+  protected function handleFinish ()
   {
-    $this->dialog->save_object();
+    $this->dialog->update();
     $messages = $this->dialog->check();
     if (count($messages)) {
       msg_dialog::displayChecks($messages);
-      return $this->dialog_execute();
+      return;
     }
 
     $data   = $this->dialog->save();
     $this->attribute->editEnded($data['dn'], $data, ($this->parentdn === FALSE ? FALSE : $this->parentdn));
-    return FALSE;
+    $this->closed = TRUE;
   }
 }

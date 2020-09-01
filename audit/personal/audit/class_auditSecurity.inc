@@ -102,10 +102,11 @@ class auditSecurity extends simplePlugin
     $this->fdAuditSecurityLog = $events;
   }
 
-  public function execute (): string
+  public function update (): bool
   {
+    parent::update();
     $this->loadEvents();
-    return parent::execute();
+    return TRUE;
   }
 
   protected function getUid (): string

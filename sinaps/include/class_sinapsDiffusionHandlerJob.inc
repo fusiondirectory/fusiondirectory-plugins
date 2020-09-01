@@ -288,7 +288,7 @@ class sinapsDiffusionHandlerJob
         }
       }
       $tabobject->current = $tab;
-      $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases may be needed */
+      $tabobject->update();
     }
     $errors = $tabobject->save();
     if (empty($dn)) {

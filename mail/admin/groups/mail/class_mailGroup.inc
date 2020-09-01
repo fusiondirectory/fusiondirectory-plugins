@@ -312,20 +312,13 @@ class mailGroup extends simplePlugin
     return $newmembers;
   }
 
-  public function execute (): string
+  public function update (): bool
   {
+    parent::update();
     if ($this->is_account) {
       $this->attributesAccess['specialACLs']->attribute->attributes[0]->setChoices($this->getMemberEmailList());
     }
-    return parent::execute();
-  }
-
-  public function save_object ()
-  {
-    if ($this->is_account) {
-      $this->attributesAccess['specialACLs']->attribute->attributes[0]->setChoices($this->getMemberEmailList());
-    }
-    parent::save_object();
+    return TRUE;
   }
 
   public function ldap_save (): array

@@ -1,8 +1,9 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2019  FusionDirectory
+  Copyright (C) 2011-2020  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -53,30 +54,29 @@ class TOTPAddDialog extends GenericDialog
     $this->otp->setLabel($this->attribute->getUserUid());
     $this->otp->setIssuer(URL::getHostName());
     $this->otp->setParameter('image', URL::buildAbsoluteUrl('/geticon.php?context=applications&icon=fusiondirectory&size=48'));
+    $this->dialog = TRUE;
   }
 
-  function save_object ()
+  public function readPost ()
   {
-    $this->otpcode = ($_POST['otpcode'] ?? '');
-  }
-
-  function check (): array
-  {
-    /* Check that code was filled and correct */
-    if (empty($this->otpcode)) {
-      return [_('OTP code missing')];
-    } elseif (!$this->otp->verify($this->otpcode)) {
-      return [_('Wrong OTP code')];
+    if (isset($_POST[$this->post_cancel])) {
+      $this->handleCancel();
+    } else {
+      $this->otpcode = ($_POST['otpcode'] ?? '');
+      if (isset($_POST[$this->post_finish]) || isset($_GET[$this->post_finish])) {
+        $this->handleFinish();
+      }
     }
-
-    return [];
   }
 
-  function dialog_execute ()
+  public function update (): bool
+  {
+    return isset($this->dialog);
+  }
+
+  public function render (): string
   {
     global $config;
-
-    $this->save_object();
 
     $provisioningUri = $this->otp->getProvisioningUri();
 
@@ -119,7 +119,7 @@ class TOTPAddDialog extends GenericDialog
     return $smarty->fetch(get_template_path('simpleplugin.tpl'))."\n".$this->buttons();
   }
 
-  function buttons ()
+  protected function buttons (): string
   {
     return '<div style="width:100%; text-align:right; clear:both; float:none;">'.
            '  <input type="submit" name="'.$this->post_finish.'" value="'.msgPool::addButton().'"/>&nbsp;'.
@@ -127,21 +127,27 @@ class TOTPAddDialog extends GenericDialog
            '</div>';
   }
 
-  function handle_finish ()
+  protected function check (): array
   {
-    $this->save_object();
+    /* Check that code was filled and correct */
+    if (empty($this->otpcode)) {
+      return [_('OTP code missing')];
+    } elseif (!$this->otp->verify($this->otpcode)) {
+      return [_('Wrong OTP code')];
+    }
+
+    return [];
+  }
+
+  protected function handleFinish ()
+  {
     $msgs = $this->check();
     if (count($msgs)) {
       msg_dialog::displayChecks($msgs);
-      return $this->dialog_execute();
+      return;
     }
 
     $this->attribute->addValue('', [date('Y-m-d'), $this->otp->getProvisioningUri()]);
-    return FALSE;
-  }
-
-  function handle_cancel ()
-  {
-    return FALSE;
+    unset($this->dialog);
   }
 }

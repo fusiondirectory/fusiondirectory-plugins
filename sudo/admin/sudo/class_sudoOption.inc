@@ -365,7 +365,7 @@ class sudoOption extends simplePlugin
     ];
   }
 
-  function execute (): string
+  public function render (): string
   {
     $script = <<<SCRIPT
   <script type="text/javascript">
@@ -385,7 +385,7 @@ class sudoOption extends simplePlugin
    -->
   </script>
 SCRIPT;
-    return $script.parent::execute();
+    return $script.parent::render();
   }
 
   /*!  \brief   Escape special chars in function parameters.

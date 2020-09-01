@@ -27,46 +27,24 @@ class PackageConfigDialog extends GenericDialog
   protected $post_cancel = 'CancelObjectConfig';
   protected $post_finish = 'SaveObjectConfig';
 
-  function __construct ($simplePlugin, &$attribute, $key, $pkg_config)
+  function __construct ($simplePlugin, $attribute, $key, $pkg_config)
   {
     $this->attribute  = $attribute;
     $this->dialog     = new $this->dialogClass($simplePlugin->dn, $key, $simplePlugin->FAIdebianRelease, $pkg_config);
   }
 
-  function execute (): string
+  protected function handleFinish ()
   {
-    if (isset($_POST[$this->post_cancel])) {
-      return $this->handle_cancel();
-    }
-    if (isset($_POST[$this->post_finish]) || isset($_GET[$this->post_finish])) {
-      return $this->handle_finish();
-    }
-    return $this->dialog_execute();
-  }
-
-  function dialog_execute ()
-  {
-    $this->dialog->save_object();
-    return $this->dialog->execute();
-  }
-
-  function handle_finish ()
-  {
-    $this->dialog->save_object();
+    $this->dialog->update();
 
     $msgs = $this->dialog->check();
     if (count($msgs)) {
       msg_dialog::displayChecks($msgs);
-      return $this->dialog->execute();
+      return;
     }
 
     $this->attribute->packageConfigured($this->dialog->save());
-    return FALSE;
-  }
-
-  function handle_cancel ()
-  {
-    return FALSE;
+    unset($this->dialog);
   }
 }
 

@@ -400,9 +400,8 @@ class fdRestService extends fdRPCService
       throw new WebServiceError($error);
     }
 
-    /* Should not do much as POST is empty, but in some cases is needed */
     $tabobject->current = $tab;
-    $tabobject->save_object();
+    $tabobject->update();
 
     $errors = $tabobject->save();
     if (!empty($errors)) {

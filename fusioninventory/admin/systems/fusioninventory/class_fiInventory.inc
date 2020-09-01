@@ -155,7 +155,7 @@ class fiInventory extends simplePlugin
     $this->users_infos    = NULL;
   }
 
-  function execute (): string
+  public function render (): string
   {
     if ($this->hardware_infos === NULL) {
       $infos = $this->get_inventory_infos();
@@ -170,7 +170,7 @@ class fiInventory extends simplePlugin
     $smarty = get_smarty();
     $smarty->assign('usePrototype', 'true');
     $smarty->append('css_files', 'plugins/fusioninventory/inventory.css');
-    return parent::execute();
+    return parent::render();
   }
 
   function save (): array

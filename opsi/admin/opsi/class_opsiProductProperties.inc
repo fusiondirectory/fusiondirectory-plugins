@@ -149,10 +149,11 @@ class opsiProductProperties extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
   }
 
-  public function execute (): string
+  public function update (): bool
   {
+    parent::update();
     $this->updateProductList();
-    return parent::execute();
+    return TRUE;
   }
 
   private function updateProductList ()

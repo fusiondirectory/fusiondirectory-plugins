@@ -95,34 +95,40 @@ class argonautFuseConfig extends simpleService
     }
   }
 
-  /*! \brief This function display the service and return the html code
-   */
-  function execute (): string
+  public function readPost ()
+  {
+    parent::readPost();
+    if (isset($_POST[get_class($this).'_posted'])) {
+      foreach ($this->plugin as $plugin) {
+        $plugin->readPost();
+      }
+    }
+  }
+
+  public function update (): bool
+  {
+    parent::update();
+    foreach ($this->plugin as $plugin) {
+      $plugin->update();
+    }
+    return TRUE;
+  }
+
+  public function render (): string
   {
     $str = '<div style="width:100%; text-align:right; clear:both; float:none;">'.
            '  <input type="submit" name="SaveService" value="'.msgPool::saveButton().'"/>&nbsp;'.
            '  <input type="submit" formnovalidate="formnovalidate" name="CancelService" value="'.msgPool::cancelButton().'"/>'.
            '</div>';
 
-    $display = simplePlugin::execute();
+    $display = simplePlugin::render();
 
     foreach ($this->plugin as $plugin) {
       $display .= '<p class="seperator plugbottom">&nbsp;</p><div></div>';
-      $display .= $plugin->execute();
+      $display .= $plugin->render();
     }
 
     return $display.$str;
-  }
-
-  /* Save data to object */
-  function save_object ()
-  {
-    parent::save_object();
-    if (isset($_POST[get_class($this).'_posted'])) {
-      foreach ($this->plugin as $plugin) {
-        $plugin->save_object();
-      }
-    }
   }
 
   function check (): array

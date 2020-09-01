@@ -101,10 +101,11 @@ class sambaSystemTab extends simplePlugin
     $this->attributesAccess['uid']->setValue($this->parent->getBaseObject()->cn.'$');
   }
 
-  function save_object ()
+  function update (): bool
   {
-    parent::save_object();
+    parent::update();
     $this->update_uid();
+    return TRUE;
   }
 
   function prepare_save (): array
