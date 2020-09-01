@@ -122,10 +122,18 @@ build-release:
     paths:
       - fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"').tar.gz
 
-trigger-ci:
+trigger-ci-debian:
   stage: trigger
   only:
     - 1.4-dev
   trigger:
     project: debian/fusiondirectory
+    branch: 1.4-dev
+
+trigger-ci-redhat:
+  stage: trigger
+  only:
+    - 1.4-dev
+  trigger:
+    project: redhat/fusiondirectory
     branch: 1.4-dev
