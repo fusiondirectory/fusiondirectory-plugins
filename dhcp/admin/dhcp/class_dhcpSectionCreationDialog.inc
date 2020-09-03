@@ -87,6 +87,7 @@ class DhcpSectionCreationDialog extends GenericDialog
     } elseif (isset($this->dialog)) {
       $this->dialog->update();
     }
+    return TRUE;
   }
 
   public function render (): string
