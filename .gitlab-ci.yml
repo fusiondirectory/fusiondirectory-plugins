@@ -127,8 +127,8 @@ trigger-ci-debian:
   only:
     - 1.4-dev
   trigger:
-    project: debian/fusiondirectory
-    branch: 1.4-dev
+    project: debian/stretch-dev
+    branch: master
 
 trigger-ci-redhat:
   stage: trigger
