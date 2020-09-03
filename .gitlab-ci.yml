@@ -130,10 +130,10 @@ trigger-ci-debian:
     project: debian/stretch-dev
     branch: master
 
-trigger-ci-redhat:
+trigger-ci-centos7:
   stage: trigger
   only:
     - 1.4-dev
   trigger:
-    project: redhat/fusiondirectory
-    branch: 1.4-dev
+    project: centos/centos7-dev
+    branch: master
