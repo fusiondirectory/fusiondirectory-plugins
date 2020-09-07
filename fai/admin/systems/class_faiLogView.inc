@@ -79,11 +79,11 @@ class AvailableLogsAttribute extends Attribute
       $rtime = $data['REAL_DATE'];
       foreach ($data['FILES'] as $file) {
         $highlight = '';
-        if (($file == $this->value['file']) && ($time == $this->value['time']) && ($mac == $this->plugin->mac)) {
+        if (($file == $this->value['file']) && ($time == $this->value['time'])) {
           $highlight = 'background-color:#CCCCCC';
         }
 
-        $use_link = $this->js_link('%str%', ['time' => $time, 'file' => $file, 'mac' => $mac]);
+        $use_link = $this->js_link('%str%', ['time' => $time, 'file' => $file, 'mac' => $this->plugin->mac]);
         $to_add[$$sort_by.$file.$time] = [
           ['html' => preg_replace('/%str%/', $file, $use_link),
                 'attach' => ''],

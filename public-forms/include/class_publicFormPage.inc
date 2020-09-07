@@ -58,7 +58,7 @@ class publicFormPage extends standAlonePage
     }
   }
 
-  function readLdapConfig ()
+  protected function readLdapConfig (): bool
   {
     global $config;
 

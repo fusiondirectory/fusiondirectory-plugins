@@ -329,7 +329,7 @@ class fiInventory extends simplePlugin
       return;
     }
     if ($fallbackDn !== NULL) {
-      $this->matching = $attrs['dn'];
+      $this->matching = $fallbackDn;
     } else {
       $templates = [];
       foreach ($systemTypes as $type) {

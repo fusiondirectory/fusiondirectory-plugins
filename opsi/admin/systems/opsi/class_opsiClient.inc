@@ -170,19 +170,18 @@ class opsiClient extends simplePlugin
       }
       if (!empty($macAddresses)) {
         $ldap->cat($this->fdOpsiServerDn, ['macAddress']);
-        if ($attrs = $ldap->fetch()) {
-          $serverMac = $attrs['macAddress'][0];
+        if (($attrs = $ldap->fetch()) && isset($attrs['macAddress'][0])) {
+          $s_daemon   = new supportDaemon();
+          if ($s_daemon->is_available()) {
+            $s_daemon->append_call('OPSI.delete', [$attrs['macAddress'][0]], ['args' => [$macAddresses]]);
+            if ($s_daemon->is_error()) {
+              $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+              $error->display();
+            }
+          }
         } else {
           $error = new FusionDirectoryError(htmlescape(_('Could not get macAddress for OPSI server!')));
           $error->display();
-        }
-        $s_daemon   = new supportDaemon();
-        if ($s_daemon->is_available()) {
-          $s_daemon->append_call('OPSI.delete', [$serverMac], ['args' => [$macAddresses]]);
-          if ($s_daemon->is_error()) {
-            $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
-            $error->display();
-          }
         }
       }
     }
@@ -195,6 +194,8 @@ class opsiClient extends simplePlugin
     if ($this->is_account && !$this->is_template) {
       $this->update_or_insert();
     }
+
+    return $errors;
   }
 
   function getMacAddresses ()
@@ -338,7 +339,7 @@ class opsiClient extends simplePlugin
       return;
     }
     try {
-      $macAddress = static::getOpsiServerMac($fdOpsiServerDn);
+      $macAddress = opsiProfile::getOpsiServerMac($fdOpsiServerDn);
     } catch (FusionDirectoryError $error) {
       $error->display();
       return FALSE;

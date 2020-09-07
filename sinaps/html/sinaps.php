@@ -18,8 +18,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-ini_set('session.use_cookies', 0);
-ini_set('session.use_only_cookies', 1);
+ini_set('session.use_cookies',      '0');
+ini_set('session.use_only_cookies', '1');
 
 require_once('../include/php_setup.inc');
 require_once('functions.inc');
@@ -32,7 +32,7 @@ class sinapsHandler extends standAlonePage
 
   protected $request;
 
-  function readLdapConfig ()
+  protected function readLdapConfig (): bool
   {
     global $config;
 

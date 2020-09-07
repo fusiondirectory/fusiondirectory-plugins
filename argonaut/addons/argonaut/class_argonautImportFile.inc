@@ -20,6 +20,7 @@
 
 class argonautImportFile extends simplePlugin
 {
+  protected $daemon_events;
   protected $csv_fields = [
     '0' => 'TIMESTAMP',
     '1' => 'MAC',

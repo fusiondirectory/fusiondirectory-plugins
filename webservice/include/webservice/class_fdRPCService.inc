@@ -710,6 +710,7 @@ class fdRPCService
       $dns = [$dns];
     }
 
+    $disallowed = [];
     foreach ($dns as $dn) {
       if (strpos($ui->get_permissions($dn, 'user/user', 'userLock'), 'r') === FALSE) {
         $disallowed[] = $dn;

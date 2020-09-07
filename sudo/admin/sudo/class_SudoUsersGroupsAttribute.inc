@@ -38,6 +38,8 @@ class SudoUsersGroupsAttribute extends ObjectsAttribute
       $value = trim('%'.$attrs['cn'][0]);
     } elseif (isset($attrs['uid'][0])) {
       $value = trim($attrs['uid'][0]);
+    } else {
+      throw new SimplePluginError($this, 'Invalid value in addValue');
     }
     if (!in_array($value, $this->value) && !in_array('!'.$value, $this->value)) {
       end($this->value);

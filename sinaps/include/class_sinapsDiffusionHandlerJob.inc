@@ -29,6 +29,10 @@ class sinapsDiffusionHandlerJob
   protected $userBase;
   protected $userTemplate;
   protected $identifiantApplicationSync;
+  protected $userRoles;
+
+  protected $userMapping;
+  protected $structureMapping;
 
   protected $request;
 

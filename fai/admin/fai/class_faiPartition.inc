@@ -87,6 +87,8 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
         0,'',
         0,'',
       ];
+    } else {
+      throw new SimplePluginError($this, sprintf(_('Invalid value "%s"'), $value));
     }
   }
 

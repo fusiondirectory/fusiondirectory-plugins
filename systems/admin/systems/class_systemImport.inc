@@ -120,7 +120,7 @@ class systemImport extends simplePlugin
         $host['hardwareAddress'] = [$host['hardwareAddress']];
       }
 
-      if (empty($template_dn)) {
+      if (!isset($template)) {
         $objectType = $type;
         if (isset($host['objectType'])) {
           $objectType = $host['objectType'];

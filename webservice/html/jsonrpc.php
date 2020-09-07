@@ -26,8 +26,8 @@
  * Then the url of the webservice will be the url of your FusionDirectory instance followed by /jsonrpc.php
  */
 
-ini_set('session.use_cookies', 0);
-ini_set('session.use_only_cookies', 1);
+ini_set('session.use_cookies',      '0');
+ini_set('session.use_only_cookies', '1');
 
 require_once("../include/php_setup.inc");
 require_once("functions.inc");
@@ -39,13 +39,14 @@ class fdJSONRPCService extends fdRPCService
 {
   function __call ($method, $params)
   {
-    global $config;
+    global $config, $BASE_DIR;
+
     if (preg_match('/^_(.*)$/', $method, $m)) {
       throw new FusionDirectoryException("Non existing method '$m[1]'");
     }
 
     if ($method == 'listLdaps') {
-      $config = new config(CONFIG_DIR."/".CONFIG_FILE, $BASE_DIR);
+      $config = new config(CONFIG_DIR.'/'.CONFIG_FILE, $BASE_DIR);
       $ldaps = [];
       foreach ($config->data['LOCATIONS'] as $id => $location) {
         $ldaps[$id] = $location['NAME'];

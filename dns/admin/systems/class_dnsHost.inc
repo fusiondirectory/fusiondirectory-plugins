@@ -199,6 +199,8 @@ class dnsHost extends simplePlugin
 
   protected function reloadZoneChoices ()
   {
+    global $config;
+
     /* List DNS zones we can read */
     $this->zonesCache = objects::ls('dnsZone', NULL, NULL, '', TRUE);
     /* Check if some values are missing */

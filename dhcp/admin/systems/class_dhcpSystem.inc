@@ -421,6 +421,8 @@ class dhcpSystem extends simplePlugin
       /* Remove all records */
       $this->attributesAccess['dhcpHosts']->setValue([]);
       return $this->ldap_save();
+    } else {
+      return [];
     }
   }
 

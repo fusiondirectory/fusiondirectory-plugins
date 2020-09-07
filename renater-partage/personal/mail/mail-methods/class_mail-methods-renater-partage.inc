@@ -595,7 +595,7 @@ class mailMethodRenaterPartage extends mailMethod
       }
     }
 
-    if (!$this->updateMembers($infos)) {
+    if (!$this->updateMembers()) {
       return FALSE;
     }
 

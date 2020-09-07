@@ -98,7 +98,7 @@ class supportDaemon
             'verify_peer'       => TRUE,
             'verify_peer_name'  => TRUE,
           ];
-          $sshaMethod = new passwordMethodssha();
+          $sshaMethod = new passwordMethodSsha();
           $this->http_options['header'] = 'Authorization: Basic '.base64_encode('fd:'.$sshaMethod->generate_hash($ldap_infos['argonautServerToken'][0]));
         }
       }

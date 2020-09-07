@@ -98,6 +98,7 @@ class DnsRecordPlugin extends simplePlugin
 
   function save (): array
   {
+    return [];
   }
 
   public function render (): string
@@ -773,7 +774,7 @@ class dnsZone extends simplePlugin
               new DisplayLDAPAttribute(
                 _('Serial number'), _('Version number of the original copy of the zone'),
                 'soaRecord_serial', FALSE,
-                0, FALSE, date('Ymd').'01'
+                date('Ymd').'01'
               ),
               new TimeAttribute(
                 _('Refresh'), _('Time interval before the zone should be refreshed'),

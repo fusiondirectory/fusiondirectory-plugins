@@ -48,10 +48,13 @@ class PartitionDialog extends GenericDialog
     $this->dialog->update();
 
     $msgs = $this->dialog->check();
-    if (!count($msgs)) {
-      $new_partition = $this->dialog->save();
-      $msgs = $this->plugin->check_disks($new_partition);
+    if (count($msgs)) {
+      msg_dialog::displayChecks($msgs);
+      return;
     }
+
+    $new_partition = $this->dialog->save();
+    $msgs = $this->plugin->check_disks($new_partition);
     if (count($msgs)) {
       msg_dialog::displayChecks($msgs);
       return;
@@ -365,7 +368,7 @@ class faiDiskEntry extends simplePlugin
           if (preg_match('/^preserve_reinstall:(.*)$/', $option, $m)) {
             $preserve = preg_split('/,/', $m[1], -1, PREG_SPLIT_NO_EMPTY);
             foreach ($preserve as $presflag) {
-              if (isset($disk['partitions'][$bootflag])) {
+              if (isset($disk['partitions'][$presflag])) {
                 $disk['partitions'][$presflag]['preserve'] = 'reinstall';
               }
             }

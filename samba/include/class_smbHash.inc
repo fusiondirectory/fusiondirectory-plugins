@@ -146,7 +146,7 @@ class smbHash
   }
 
   /**
-  * @param integer count
+  * @param integer $count
   * @param array $data
   * @return array
   */
@@ -160,8 +160,8 @@ class smbHash
   }
 
   /**
-  * @param array in input data
-  * @param array p permutation
+  * @param array $in input data
+  * @param array $p permutation
   * @return array
   */
   private function permute ($in, $p, $n)
@@ -226,6 +226,8 @@ class smbHash
       $r[$i] = $pd1[32 + $i];
     }
 
+    $b  = [];
+    $cb = [];
     for ($i = 0; $i < 16; $i++) {
       $er = $this->permute($r, $this->perm4, 48);
       if ($forw) {
@@ -275,7 +277,7 @@ class smbHash
    * str_to_key
    *
    * @param string $str
-   * @return string key
+   * @return array key
    */
   private function str_to_key ($str)
   {
@@ -296,21 +298,23 @@ class smbHash
   /**
    * smb_hash
    *
-   * @param unknown_type $in
-   * @param unknown_type $key
-   * @param unknown_type $forw
-   * @return unknown
+   * @param array $in
+   * @param mixed $key
+   * @param mixed $forw
+   * @return array
    */
   private function smb_hash ($in, $key, $forw)
   {
     $key2 = $this->str_to_key($key);
 
+    $inb  = [];
+    $keyb = [];
     for ($i = 0; $i < 64; $i++) {
       $inb[$i] = ($in[$i / 8] & (1 << (7 - ($i % 8)))) ? 1 : 0;
       $keyb[$i] = ($key2[$i / 8] & (1 << (7 - ($i % 8)))) ? 1 : 0;
-      $outb[$i] = 0;
     }
     $outb = $this->doHash($inb, $keyb, $forw);
+    $out = [];
     for ($i = 0; $i < 8; $i++) {
       $out[$i] = 0;
     }
@@ -325,8 +329,8 @@ class smbHash
   /**
    * E_P16
    *
-   * @param unknown_type $in
-   * @return unknown
+   * @param mixed $in
+   * @return array
    */
   private function E_P16 ($in)
   {

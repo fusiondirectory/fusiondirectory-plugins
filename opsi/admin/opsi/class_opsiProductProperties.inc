@@ -58,12 +58,12 @@ class ProductPropertyAttribute extends CompositeAttribute
 
   function readValues (string $value): array
   {
-    trigger_error('Should never be called');
+    throw new FusionDirectoryException('Should never be called');
   }
 
   function writeValues (array $values)
   {
-    trigger_error('Should never be called');
+    throw new FusionDirectoryException('Should never be called');
   }
 
   function inputValue ($value)

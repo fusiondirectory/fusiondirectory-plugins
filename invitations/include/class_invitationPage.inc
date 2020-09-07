@@ -22,7 +22,7 @@ class invitationPage extends standAlonePage
 {
   protected $token;
 
-  function readLdapConfig ()
+  protected function readLdapConfig (): bool
   {
     global $config;
 

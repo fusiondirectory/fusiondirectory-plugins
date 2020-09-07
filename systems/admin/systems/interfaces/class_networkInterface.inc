@@ -118,7 +118,6 @@ class networkInterface extends simplePlugin
     $this->is_template = $bool;
     if ($this->is_template && $this->mainTab) {
       $this->attributesInfo['main']['attrs']['_template_cn'] = new HiddenAttribute(
-        _('Template name'), _('This is the name of the template'),
         '_template_cn', TRUE,
         '', 'template_cn'
       );

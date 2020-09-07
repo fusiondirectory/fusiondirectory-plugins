@@ -62,7 +62,7 @@ class ejbcaManagement extends management
         'download',
         _('Download'),
         'geticon.php?context=actions&icon=download&size=16',
-        1,
+        '1',
         'downloadEntry',
         ['ejbcaCertificate/ejbcaCertificate/r'],
         FALSE,

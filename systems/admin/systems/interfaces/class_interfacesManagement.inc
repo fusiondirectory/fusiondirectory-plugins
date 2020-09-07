@@ -44,6 +44,8 @@ class interfacesManagement extends management implements SimpleTab
   var $acl;
   var $cn;
 
+  public $attrs = [];
+
   /* Used by template and webservice */
   public $attributesAccess;
 
@@ -389,11 +391,10 @@ class interfacesManagement extends management implements SimpleTab
     /* Modify */
     $ldap->cd($this->dn);
     $ldap->modify($attrs);
-    $this->ldap_error = $ldap->get_error();
 
     /* Check for errors */
     if (!$ldap->success()) {
-      return [msgPool::ldaperror($this->ldap_error, $this->dn, 0, get_class())];
+      return [msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class())];
     }
     return [];
   }

@@ -272,6 +272,8 @@ class SudoOptionAttribute extends Attribute
       </select>';
       $display .= '<input type="text" name="'.$id.'_value" id="'.$id.'_value" value="'.$value.'"'.
           ($selected == "STRING" ? '' : 'disabled="disabled"').'/>';
+    } else {
+      throw new SimplePluginError($this, 'Invalid sudo option type');
     }
     return $this->renderAcl($display);
   }
@@ -321,6 +323,8 @@ class SudoOptionAttribute extends Attribute
           $option = "!".$option;
         }
       }
+    } else {
+      throw new SimplePluginError($this, 'Invalid sudo option type');
     }
 
     return $option;

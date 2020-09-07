@@ -55,6 +55,9 @@ class servicesManagement extends management implements SimpleTab
   /* Used by template and webservice */
   public $attributesAccess = [];
 
+  /* Used by services */
+  public $attrs = [];
+
   /* Default columns */
   public static $columns = [
     ['Column',        ['attributes' => 'ServiceStatusColumn', 'label' => '!']],
@@ -81,10 +84,10 @@ class servicesManagement extends management implements SimpleTab
     global $config;
 
     $this->dn     = $dn;
+    $this->parent = $parent;
     if (isset($object->attrs)) {
       $this->attrs = $object->attrs;
     }
-    $this->parent = $parent;
 
     // Initialize list of used and useable services.
     foreach ($config->data['TABS']['SERVERSERVICE'] as $plug) {

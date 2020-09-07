@@ -43,7 +43,7 @@ class sudoManagement extends management
         'new_default',
         _('Default'),
         'geticon.php?context=applications&icon=sudo&size=16',
-        0,
+        '0',
         'newEntryDefault',
         ['sudo/sudo/c'],
         TRUE,
