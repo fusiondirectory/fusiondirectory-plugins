@@ -40,9 +40,9 @@ class mailMethodCyrus extends mailMethod
 
     if (isset($cfg['useSlashes']) && ($cfg['useSlashes'] === 'TRUE')) {
       $this->useSlashesInId = TRUE;
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, 'Enabled', '<b>MAIL:</b> cyrusUseSlashes');
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, 'Enabled', '<b>MAIL:</b> useSlashesInId');
     } else {
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, 'Disabled', '<b>MAIL:</b> cyrusUseSlashes');
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, 'Disabled', '<b>MAIL:</b> useSlashesInId');
     }
 
     parent::init();
@@ -339,14 +339,14 @@ class mailMethodCyrus extends mailMethod
        And prepare replacements
      */
     if (preg_match("/\@/", $this->account_id)) {
-      if ($this->cyrusUseSlashes) {
+      if ($this->useSlashesInId) {
         $search = preg_replace("/\@/", "/*@", $this->account_id);
       } else {
         $search = preg_replace("/\@/", ".*@", $this->account_id);
       }
       $with_domain = TRUE;
     } else {
-      if ($this->cyrusUseSlashes) {
+      if ($this->useSlashesInId) {
         $search = $this->account_id."/*";
       } else {
         $search = $this->account_id.".*";
