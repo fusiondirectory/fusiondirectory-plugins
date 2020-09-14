@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2016  FusionDirectory
+
+  Copyright (C) 2016-2020  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -92,9 +93,9 @@ class dhcpPlugin extends simplePlugin
     }
   }
 
-  function execute (): string
+  public function render (): string
   {
-    return parent::execute()."\n".
+    return parent::render()."\n".
     '<p class="plugbottom">'."\n".
     '  <input type="submit" name="dhcp_save" value="'.msgPool::addButton().'"/>&nbsp;'."\n".
     '  <input type="submit" formnovalidate="formnovalidate" name="dhcp_cancel" value="'.msgPool::cancelButton().'"/>'."\n".

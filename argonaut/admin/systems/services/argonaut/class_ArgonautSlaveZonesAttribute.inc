@@ -23,8 +23,8 @@ class ArgonautSlaveZonesAttribute extends OrderedArrayAttribute
   function __construct (string $label, string $description, string $ldapName, bool $order = TRUE, array $values = [], bool $edit_enabled = FALSE, string $acl = '')
   {
     $zoneAttributeClass = 'StringAttribute';
-    if (class_available('ZoneNameAttribute')) {
-      $zoneAttributeClass = 'ZoneNameAttribute';
+    if (class_available('FQDNAttribute')) {
+      $zoneAttributeClass = 'FQDNAttribute';
     }
     parent::__construct(
       new PipeSeparatedCompositeAttribute(

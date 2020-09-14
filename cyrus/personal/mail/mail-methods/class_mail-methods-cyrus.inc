@@ -379,7 +379,7 @@ class mailMethodCyrus extends mailMethod
           mb_convert_encoding($str, "UTF-8", "UTF7-IMAP"));
         $result[] = $str;
       }
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, trim(implode($result, ", "), ", "),
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, trim(implode(', ', $result)),
           "<b>IMAP: Received mailbox folders.</b>");
       $this->error = imap_last_error();
     } else {
@@ -566,7 +566,7 @@ class mailMethodCyrus extends mailMethod
         } else {
           $new_name = "non_fusiondirectory_".date("Ymd_H-i-s");
           $sieve->sieve_sendscript($new_name, $script);
-          @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->sieve->error_raw,
+          @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $sieve->error_raw,
               "<b>SIEVE</b>: Non FusionDirectory sieve script. <b>Creating backup of the current sieve script '".$new_name."'.</b>");
         }
       }

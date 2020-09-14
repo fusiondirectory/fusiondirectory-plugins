@@ -58,12 +58,12 @@ class ProductPropertyAttribute extends CompositeAttribute
 
   function readValues (string $value): array
   {
-    trigger_error('Should never be called');
+    throw new FusionDirectoryException('Should never be called');
   }
 
   function writeValues (array $values)
   {
-    trigger_error('Should never be called');
+    throw new FusionDirectoryException('Should never be called');
   }
 
   function inputValue ($value)
@@ -149,10 +149,11 @@ class opsiProductProperties extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
   }
 
-  public function execute (): string
+  public function update (): bool
   {
+    parent::update();
     $this->updateProductList();
-    return parent::execute();
+    return TRUE;
   }
 
   private function updateProductList ()

@@ -95,7 +95,7 @@ class opsiImport extends systemImport
       return FALSE;
     }
     try {
-      $macAddress = static::getOpsiServerMac($server_dn);
+      $macAddress = opsiProfile::getOpsiServerMac($server_dn);
     } catch (FusionDirectoryError $error) {
       $error->display();
       return FALSE;

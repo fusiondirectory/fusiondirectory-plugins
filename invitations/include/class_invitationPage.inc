@@ -22,14 +22,14 @@ class invitationPage extends standAlonePage
 {
   protected $token;
 
-  function readLdapConfig ()
+  protected function readLdapConfig (): bool
   {
     global $config;
 
     return TRUE;
   }
 
-  function save_object ()
+  protected function readToken ()
   {
     global $ui;
 
@@ -94,7 +94,7 @@ class invitationPage extends standAlonePage
     $errorMessage = FALSE;
 
     try {
-      $this->save_object();
+      $this->readToken();
     } catch (FusionDirectoryException $e) {
       $errorMessage = $e->getMessage();
     }

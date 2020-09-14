@@ -66,7 +66,7 @@ class ldapDump extends simplePlugin
     return $ui->get_complete_category_acls($this->getAclBase(), $this->parent->acl_category);
   }
 
-  function execute (): string
+  public function render (): string
   {
     global $config;
     if ($this->dump === NULL) {
@@ -84,7 +84,7 @@ class ldapDump extends simplePlugin
     }
     $smarty = get_smarty();
     $smarty->assign('usePrototype', 'true');
-    return parent::execute();
+    return parent::render();
   }
 
   function dumpLdapNode ($attrs, $parent_dn = '')

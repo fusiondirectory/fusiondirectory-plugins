@@ -58,7 +58,7 @@ class publicFormPage extends standAlonePage
     }
   }
 
-  function readLdapConfig ()
+  protected function readLdapConfig (): bool
   {
     global $config;
 
@@ -289,7 +289,7 @@ class publicFormPage extends standAlonePage
     return $values;
   }
 
-  function save_object ()
+  protected function updateTemplate ()
   {
     global $config;
 
@@ -312,7 +312,8 @@ class publicFormPage extends standAlonePage
       $this->prepareTemplateObject();
     }
 
-    $this->template->save_object();
+    $this->template->readPost();
+    $this->template->update();
 
     if (isset($_POST['form_submit'])) {
       $this->submitForm();
@@ -362,14 +363,14 @@ class publicFormPage extends standAlonePage
       return;
     }
 
-    $this->save_object();
+    $this->updateTemplate();
 
     $smarty = get_smarty();
 
     $this->assignSmartyVars();
 
     if (!$this->done) {
-      $templateOutput = $this->template->execute();
+      $templateOutput = $this->template->render();
       // TODO - Check that no dialogs are opened?
       $smarty->assign('template_dialog', $templateOutput);
 

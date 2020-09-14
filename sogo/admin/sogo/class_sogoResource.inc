@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org)
-  Copyright (C) 2013-2016 FusionDirectory
+
+  Copyright (C) 2013-2020 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -87,10 +88,11 @@ class sogoResource extends simplePlugin
     $this->attributesAccess['cn']->setValue($this->attributesAccess['uid']->getValue());
   }
 
-  function save_object ()
+  public function update (): bool
   {
-    parent::save_object();
+    parent::update();
     $this->attributesAccess['sn']->setValue($this->attributesAccess['uid']->getValue());
     $this->attributesAccess['cn']->setValue($this->attributesAccess['uid']->getValue());
+    return TRUE;
   }
 }

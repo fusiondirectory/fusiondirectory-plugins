@@ -66,8 +66,8 @@ class serviceIMAP extends simpleMailMethodService
     return [];
   }
 
-  function execute (): string
+  function render (): string
   {
-    return '<b>This server runs an IMAP server</b>'.parent::execute();
+    return '<b>This server runs an IMAP server</b>'.parent::render();
   }
 }

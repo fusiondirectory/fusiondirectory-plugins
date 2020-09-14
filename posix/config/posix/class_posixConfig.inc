@@ -134,9 +134,10 @@ class posixConfig extends simplePlugin
     );
   }
 
-  function save_object ()
+  public function update (): bool
   {
-    parent::save_object();
+    parent::update();
     $this->attributesAccess['fdDefaultShell']->setChoices($this->fdShells);
+    return TRUE;
   }
 }

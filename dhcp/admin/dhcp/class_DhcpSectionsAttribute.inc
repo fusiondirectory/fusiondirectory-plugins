@@ -327,8 +327,9 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
           break;
         }
       }
-      if ($type_id === NULL) {
+      if (!isset($type)) {
         trigger_error('Unknown DHCP type for '.$dn);
+        continue;
       }
 
       if (($type_id == 'dhcpHost') && (preg_replace('/^[^,]+,/', '', $dn) != $this->subnet_expanded)) {
@@ -477,7 +478,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
         $this->dhcpObjectCache[$globalNode]['MODIFIED'] = TRUE;
       }
     } else {
-      return parent::foreignKeyCheck($value, $source);
+      return parent::foreignKeyUpdate($oldvalue, $newvalue, $source);
     }
   }
 

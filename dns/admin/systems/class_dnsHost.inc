@@ -199,6 +199,8 @@ class dnsHost extends simplePlugin
 
   protected function reloadZoneChoices ()
   {
+    global $config;
+
     /* List DNS zones we can read */
     $this->zonesCache = objects::ls('dnsZone', NULL, NULL, '', TRUE);
     /* Check if some values are missing */
@@ -313,20 +315,26 @@ class dnsHost extends simplePlugin
     }
   }
 
-  function execute (): string
+  public function update (): bool
   {
+    parent::update();
     $this->load();
+    return TRUE;
+  }
+
+  public function render (): string
+  {
     $smarty = get_smarty();
     $ui     = get_userinfo();
     $acl    = $ui->get_permissions($this->getAclBase(), 'dnsZone/dnsZone', 'dnsRecords', $this->read_only);
     $smarty->assign('dnsRecordsACL', $acl);
-    return parent::execute();
+    return parent::render();
   }
 
-  function save_object ()
+  public function readPost ()
   {
     $this->load();
-    parent::save_object();
+    parent::readPost();
     if (isset($_POST[get_class($this).'_posted'])) {
       foreach ($_POST as $name => $value) {
         if (preg_match('/^ldap2zone_refresh_(.+)$/', $name, $m)) {

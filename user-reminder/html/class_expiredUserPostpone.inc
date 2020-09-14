@@ -25,7 +25,18 @@ require_once('variables.inc');
 
 class expiredUserPostpone extends standAlonePage
 {
-  function readLdapConfig ()
+  protected $forward_postpone;
+  protected $alert_delay;
+  protected $postpone_days;
+  protected $mail_subject;
+  protected $mail_body;
+  protected $from_mail;
+  protected $use_alternate;
+
+  protected $message;
+  protected $uid;
+
+  protected function readLdapConfig (): bool
   {
     global $config;
     $this->forward_postpone = ($config->get_cfg_value('userReminderForwardConfirmation', 'TRUE') == 'TRUE');
@@ -178,6 +189,7 @@ class expiredUserPostpone extends standAlonePage
 
     $cn             = $userTabs->getBaseObject()->cn;
     $manager_dn     = $userTabs->getBaseObject()->manager;
+    $email_address  = '';
     if (isset($userTabs->by_object['mailAccount'])) {
       $email_address  = $userTabs->by_object['mailAccount']->mail;
     } elseif ($this->use_alternate && isset($userTabs->by_object['mailAccount']) && !empty($userTabs->by_object['mailAccount']->gosaMailAlternateAddress)) {
@@ -193,7 +205,7 @@ class expiredUserPostpone extends standAlonePage
       $ldap = $config->get_ldap_link();
       if (empty($manager_dn)) {
         $ldap->cat($userTabs->getBaseObject()->base, ['manager']);
-        if ($attrs = $ldap->fetch() && isset($attrs['manager'][0])) {
+        if (($attrs = $ldap->fetch()) && isset($attrs['manager'][0])) {
           $manager_dn = $attrs['manager'][0];
         }
       }

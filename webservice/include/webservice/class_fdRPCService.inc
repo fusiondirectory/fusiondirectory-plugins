@@ -319,7 +319,8 @@ class fdRPCService
       }
     }
     $_POST = [$tab.'_modify_state' => 1];
-    $tabobject->save_object();
+    $tabobject->readPost();
+    $tabobject->update();
     $errors = $tabobject->save();
     if (!empty($errors)) {
       throw new WebServiceErrors($errors);
@@ -402,7 +403,8 @@ class fdRPCService
       ) {
       $_POST[$tab.'_modify_state'] = 1;
     }
-    $tabobject->save_object();
+    $tabobject->readPost();
+    $tabobject->update();
     $errors = $tabobject->save();
     if (!empty($errors)) {
       throw new WebServiceErrors($errors);
@@ -487,7 +489,7 @@ class fdRPCService
         throw new WebServiceError($error);
       }
       $tabobject->current = $tab;
-      $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases is needed */
+      $tabobject->update();
       $tabobject->loadTabs();
     }
     $errors = $tabobject->save();
@@ -559,7 +561,7 @@ class fdRPCService
         }
       }
       $tabobject->current = $tab;
-      $tabobject->save_object(); /* Should not do much as POST is empty, but in some cases is needed */
+      $tabobject->update();
     }
     $errors = $tabobject->save();
     if (!empty($errors)) {
@@ -708,6 +710,7 @@ class fdRPCService
       $dns = [$dns];
     }
 
+    $disallowed = [];
     foreach ($dns as $dn) {
       if (strpos($ui->get_permissions($dn, 'user/user', 'userLock'), 'r') === FALSE) {
         $disallowed[] = $dn;

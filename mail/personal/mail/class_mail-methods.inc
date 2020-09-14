@@ -201,8 +201,8 @@ class mailMethod
       $this->parent->attrs['gosaSharedFolderTarget'] = [];
     }
     foreach ($this->attributes as $source => $dest) {
-      $this->attrs[$dest]   = [];
-      $this->attrs[$source] = [];
+      $this->parent->attrs[$dest]   = [];
+      $this->parent->attrs[$source] = [];
     }
   }
 
@@ -584,7 +584,7 @@ class mailMethod
   */
   protected function getServerConfig ()
   {
-    $serverList = parent::getMailServers();
+    $serverList = static::getMailServers();
 
     if (!count($serverList)) {
       $this->error = _('There are no IMAP compatible mail servers defined!');
@@ -609,7 +609,7 @@ class mailMethod
     if (session::global_is_set('mailServers')) {
       return session::global_get('mailServers');
     }
-    $methods = mailMethod::get_methods();
+    $methods = static::get_methods();
     $servers = [];
     foreach ($methods as $class) {
       $servers = array_merge($servers, $class::get_server_list());

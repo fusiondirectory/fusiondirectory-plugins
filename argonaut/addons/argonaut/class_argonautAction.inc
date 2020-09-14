@@ -155,7 +155,7 @@ class argonautAction extends ManagementDialog
     parent::loadAttributes();
   }
 
-  protected function handle_finish ()
+  protected function handleFinish ()
   {
     $msgs = $this->check();
     if (count($msgs)) {

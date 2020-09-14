@@ -60,8 +60,8 @@ class kerberosAccount extends simplePlugin
             'krbUPEnabled', FALSE
           ),
           new HiddenArrayAttribute(
-            'krbPrincipalKey', 'This attribute holds the principal\'s key (krbPrincipalKey) that is encrypted with the master key (krbMKey). The attribute is ASN.1 encoded.',
             'krbPrincipalKey', FALSE
+            // This attribute holds the principal's key (krbPrincipalKey) that is encrypted with the master key (krbMKey). The attribute is ASN.1 encoded.
           ),
           new StringAttribute(
             'krbTicketPolicyReference', 'FDN pointing to a Kerberos Ticket Policy object.',

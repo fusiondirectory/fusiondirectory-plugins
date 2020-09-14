@@ -150,7 +150,7 @@ class systemManagement extends management
           $error = new FusionDirectoryError(
             htmlescape(sprintf(
               _('System %s is currently installing'),
-              $dn
+              $mac_address
             ))
           );
           $error->display();

@@ -99,7 +99,7 @@ class AccessRightsAttribute extends CompositeAttribute
       $tmode    = preg_replace('/^./', '', $tmode);
       $nr       = 1;
       while ($nr < 5) {
-        $m[$type.$nr] = ($current & $nr ? 'TRUE' : 'FALSE');
+        $m[$type.$nr] = (($current & $nr) ? 'TRUE' : 'FALSE');
         $nr += $nr;
       }
     }
@@ -185,12 +185,12 @@ class faiTemplateEntry extends simplePlugin
     ];
   }
 
-  function save_object ()
+  public function readPost ()
   {
     if (isset($_FILES[$this->attributesAccess['FAItemplateFile']->getHtmlId()]['name'])) {
       $name = $_FILES[$this->attributesAccess['FAItemplateFile']->getHtmlId()]['name'];
     }
-    parent::save_object();
+    parent::readPost();
     if (preg_match('/^\/?$/', $this->cn) && isset($name)) {
       $this->cn = '/'.$name;
     }

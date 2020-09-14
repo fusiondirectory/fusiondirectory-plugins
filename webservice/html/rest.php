@@ -25,8 +25,8 @@
  *
  */
 
-ini_set('session.use_cookies', 0);
-ini_set('session.use_only_cookies', 1);
+ini_set('session.use_cookies',      '0');
+ini_set('session.use_only_cookies', '1');
 
 require_once('../include/php_setup.inc');
 require_once('functions.inc');
@@ -213,7 +213,7 @@ class fdRestService extends fdRPCService
         echo yaml_emit($data, YAML_UTF8_ENCODING);
         break;
       default:
-        throw new WebServiceError(sprintf('Unsupported openapi format: ', $format), 406);
+        throw new WebServiceError(sprintf('Unsupported openapi format: "%s"', $format), 406);
     }
     exit;
   }
@@ -269,7 +269,7 @@ class fdRestService extends fdRPCService
     $this->checkAccess($type, $tab, $dn);
 
     if ((strtolower($type) == 'configuration') && ($dn != CONFIGRDN.$config->current['BASE'])) {
-      throw new NonExistingLdapNodeException('Could not open configuration at dn '.$this->dn);
+      throw new NonExistingLdapNodeException('Could not open configuration at dn '.$dn);
     }
 
     $tabobject = objects::open($dn, $type);
@@ -400,9 +400,8 @@ class fdRestService extends fdRPCService
       throw new WebServiceError($error);
     }
 
-    /* Should not do much as POST is empty, but in some cases is needed */
     $tabobject->current = $tab;
-    $tabobject->save_object();
+    $tabobject->update();
 
     $errors = $tabobject->save();
     if (!empty($errors)) {

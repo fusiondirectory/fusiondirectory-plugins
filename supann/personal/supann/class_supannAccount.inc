@@ -458,10 +458,11 @@ class supannAccount extends simplePlugin
     return $errors;
   }
 
-  function save_object ()
+  public function update (): bool
   {
-    parent::save_object();
+    parent::update();
     $this->updateFieldsChoicesAndValues();
+    return TRUE;
   }
 
   function adapt_from_template (array $attrs, array $skip = [])

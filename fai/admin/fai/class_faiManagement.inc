@@ -51,7 +51,7 @@ class faiManagement extends management
     $this->filter   = new managementFilter($this, TRUE, $filterElementDefinitions);
   }
 
-  function execute (): string
+  public function render (): string
   {
     if ($this->listing->noFaiBranches()) {
       return $this->getHeader().
@@ -66,7 +66,7 @@ class faiManagement extends management
           '</div>'.
         '</div>';
     }
-    return parent::execute();
+    return parent::render();
   }
 
   static function mainInc ($classname = NULL, $objectTypes = FALSE)

@@ -103,11 +103,11 @@ class debugHelp extends simplePlugin
     $this->dump = $dump;
   }
 
-  function execute (): string
+  public function render (): string
   {
     $smarty = get_smarty();
     $smarty->assign('usePrototype', 'true');
-    return parent::execute();
+    return parent::render();
   }
 
   /*!

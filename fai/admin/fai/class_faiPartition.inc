@@ -87,6 +87,8 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
         0,'',
         0,'',
       ];
+    } else {
+      throw new SimplePluginError($this, sprintf(_('Invalid value "%s"'), $value));
     }
   }
 
@@ -474,12 +476,12 @@ class faiPartition extends simplePlugin
     parent::loadAttributes();
   }
 
-  function execute (): string
+  public function render (): string
   {
     $smarty = get_smarty();
     $acl    = $this->aclGetPermissions('FAIpartitions');
     $smarty->assign('FAIpartitionsACL', $acl);
-    parent::execute();
+    parent::render();
 
     $buttons = '<p class="plugbottom">
                   <input type="submit" name="PartitionSave" value="'.msgPool::saveButton().'">
@@ -492,12 +494,13 @@ class faiPartition extends simplePlugin
     }
   }
 
-  function save_object ()
+  public function update (): bool
   {
-    parent::save_object();
+    parent::update();
     if ($this->FAIfsType == 'swap') {
       $this->FAImountPoint = 'swap';
     }
+    return TRUE;
   }
 
   function check (): array

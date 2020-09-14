@@ -55,6 +55,9 @@ class servicesManagement extends management implements SimpleTab
   /* Used by template and webservice */
   public $attributesAccess = [];
 
+  /* Used by services */
+  public $attrs = [];
+
   /* Default columns */
   public static $columns = [
     ['Column',        ['attributes' => 'ServiceStatusColumn', 'label' => '!']],
@@ -81,10 +84,10 @@ class servicesManagement extends management implements SimpleTab
     global $config;
 
     $this->dn     = $dn;
+    $this->parent = $parent;
     if (isset($object->attrs)) {
       $this->attrs = $object->attrs;
     }
-    $this->parent = $parent;
 
     // Initialize list of used and useable services.
     foreach ($config->data['TABS']['SERVERSERVICE'] as $plug) {
@@ -307,7 +310,8 @@ class servicesManagement extends management implements SimpleTab
    */
   function saveService (array $action)
   {
-    $this->dialogObject->save_object();
+    $this->dialogObject->readPost();
+    $this->dialogObject->update();
     $msgs = $this->dialogObject->check();
     if (count($msgs)) {
       msg_dialog::displayChecks($msgs);
@@ -494,13 +498,6 @@ class servicesManagement extends management implements SimpleTab
   public function check (): array
   {
     return [];
-  }
-
-  /*! \brief    Keep posted form values in opened dialogs
-   */
-  function save_object ()
-  {
-    // save_object of the dialog is called in management::execute
   }
 
   /*! \brief Remove all active services

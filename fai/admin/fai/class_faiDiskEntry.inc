@@ -43,36 +43,33 @@ class PartitionDialog extends GenericDialog
     }
   }
 
-  function dialog_execute ()
+  protected function handleFinish ()
   {
-    $this->dialog->save_object();
-    return $this->dialog->execute();
-  }
-
-  function handle_finish ()
-  {
-    $this->dialog->save_object();
+    $this->dialog->update();
 
     $msgs = $this->dialog->check();
-    if (!count($msgs)) {
-      $new_partition = $this->dialog->save();
-      $msgs = $this->plugin->check_disks($new_partition);
-    }
     if (count($msgs)) {
       msg_dialog::displayChecks($msgs);
-      return $this->dialog->execute();
+      return;
+    }
+
+    $new_partition = $this->dialog->save();
+    $msgs = $this->plugin->check_disks($new_partition);
+    if (count($msgs)) {
+      msg_dialog::displayChecks($msgs);
+      return;
     }
 
     $this->attribute->updatePartition($new_partition);
-    return FALSE;
+    unset($this->dialog);
   }
 
-  function handle_cancel ()
+  protected function handleCancel ()
   {
     if ($this->initialDialogValue !== NULL) {
       $this->attribute->addPartition($this->initialDialogValue);
     }
-    return FALSE;
+    unset($this->dialog);
   }
 }
 
@@ -371,7 +368,7 @@ class faiDiskEntry extends simplePlugin
           if (preg_match('/^preserve_reinstall:(.*)$/', $option, $m)) {
             $preserve = preg_split('/,/', $m[1], -1, PREG_SPLIT_NO_EMPTY);
             foreach ($preserve as $presflag) {
-              if (isset($disk['partitions'][$bootflag])) {
+              if (isset($disk['partitions'][$presflag])) {
                 $disk['partitions'][$presflag]['preserve'] = 'reinstall';
               }
             }
@@ -399,12 +396,12 @@ class faiDiskEntry extends simplePlugin
     parent::loadAttributes();
   }
 
-  function execute (): string
+  public function render (): string
   {
     $smarty = get_smarty();
     $acl    = $this->aclGetPermissions('FAIpartitions');
     $smarty->assign('FAIpartitionsACL', $acl);
-    parent::execute();
+    parent::render();
 
     $buttons = '<p class="plugbottom">
                   <input type="submit" name="SaveDisk" value="'.msgPool::saveButton().'">

@@ -120,7 +120,7 @@ class systemImport extends simplePlugin
         $host['hardwareAddress'] = [$host['hardwareAddress']];
       }
 
-      if (empty($template_dn)) {
+      if (!isset($template)) {
         $objectType = $type;
         if (isset($host['objectType'])) {
           $objectType = $host['objectType'];
@@ -232,11 +232,11 @@ class systemImport extends simplePlugin
     $this->attributesAccess['template_dn']->setChoices(array_keys($templates), array_values($templates));
   }
 
-  function execute (): string
+  public function render (): string
   {
     $smarty = get_smarty();
     $smarty->assign('importResult', $this->messages);
-    return parent::execute();
+    return parent::render();
   }
 
   function save (): array

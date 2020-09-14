@@ -44,7 +44,6 @@ class posixAccount extends simplePlugin
     return [
       'plShortName'   => _('Unix'),
       'plDescription' => _('Edit users POSIX settings'),
-      'plFilter'      => '(objectClass=posixAccount)',
       'plIcon'        => 'geticon.php?context=applications&icon=os-linux&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=os-linux&size=16',
       'plSelfModify'  => TRUE,
