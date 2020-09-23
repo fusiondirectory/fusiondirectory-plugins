@@ -28,7 +28,7 @@ create_php_lint_rapport_stretch:
 
 # PHP codesniffer
 create_php_code_sniffer_rapport:
-  image: phpcodesniffer-cli:stretch
+  image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/phpcodesniffer-cli:stretch
   stage: codestyle
   only:
     - branches
@@ -39,7 +39,7 @@ create_php_code_sniffer_rapport:
 
 # Sonar publishing
 sonar_publish:
-  image: sonar-cli:3.1.0.1141
+  image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/sonar-cli:4.4.0.2170
   stage: codestyle
   only:
     - 1.4-dev
@@ -56,7 +56,7 @@ sonar_publish:
 
 # Sonar preview
 sonar_preview:
-  image: sonar-cli:3.1.0.1141
+  image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/sonar-cli:4.4.0.2170
   stage: codestyle
   except:
     - 1.4-dev
@@ -74,7 +74,7 @@ sonar_preview:
 
 # fusiondirectory-update-locale
 fusiondirectory-update-locale:
-  image: transifex-cli:stretch
+  image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/transifex-cli:stretch
   stage: transifex
   only:
     - branches
@@ -84,7 +84,7 @@ fusiondirectory-update-locale:
 
 # Update transifex
 update-transifex:
-  image: transifex-cli:stretch
+  image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/transifex-cli:stretch
   stage: transifex
   only:
     - /^1.*$/
