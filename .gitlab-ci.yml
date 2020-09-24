@@ -28,7 +28,7 @@ create_php_lint_rapport_stretch:
 
 # PHP codesniffer
 create_php_code_sniffer_rapport:
-  image: phpcodesniffer-cli:stretch
+  image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/phpcodesniffer-cli:stretch
   stage: codestyle
   only:
     - branches
@@ -39,7 +39,7 @@ create_php_code_sniffer_rapport:
 
 # Sonar publishing
 sonar_publish:
-  image: sonar-cli:3.1.0.1141
+  image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/sonar-cli:4.4.0.2170
   stage: codestyle
   only:
     - 1.4-dev
@@ -49,14 +49,14 @@ sonar_publish:
       -D sonar.projectName=FusionDirectory-Plugins-1.4-Dev
       -D sonar.projectVersion=1.4
       -D sonar.sourceEncoding=UTF-8
-      -D sonar.exclusions='mail/personal/mail/class_sieve.inc'
+      -D sonar.exclusions='mail/personal/mail/class_sieve.inc,**/html/themes/breezy/icons/**,**/html/themes/legacy/icons/**,applications/html/plugins/applications/images/default_icon.png'
       -D sonar.gitlab.project_id="$CI_PROJECT_PATH"
       -D sonar.gitlab.commit_sha="$CI_COMMIT_SHA"
       -D sonar.gitlab.ref_name="$CI_COMMIT_REF_NAME"
 
 # Sonar preview
 sonar_preview:
-  image: sonar-cli:3.1.0.1141
+  image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/sonar-cli:4.4.0.2170
   stage: codestyle
   except:
     - 1.4-dev
@@ -66,7 +66,7 @@ sonar_preview:
       -D sonar.projectName=FusionDirectory-Plugins-1.4-Dev
       -D sonar.projectVersion=1.4
       -D sonar.sourceEncoding=UTF-8
-      -D sonar.exclusions='mail/personal/mail/class_sieve.inc'
+      -D sonar.exclusions='mail/personal/mail/class_sieve.inc,**/html/themes/breezy/icons/**,**/html/themes/legacy/icons/**,applications/html/plugins/applications/images/default_icon.png'
       -D sonar.gitlab.project_id="$CI_PROJECT_PATH"
       -D sonar.gitlab.commit_sha="$CI_COMMIT_SHA"
       -D sonar.gitlab.ref_name="$CI_COMMIT_REF_NAME"
@@ -74,7 +74,7 @@ sonar_preview:
 
 # fusiondirectory-update-locale
 fusiondirectory-update-locale:
-  image: transifex-cli:stretch
+  image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/transifex-cli:stretch
   stage: transifex
   only:
     - branches
@@ -84,7 +84,7 @@ fusiondirectory-update-locale:
 
 # Update transifex
 update-transifex:
-  image: transifex-cli:stretch
+  image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/transifex-cli:stretch
   stage: transifex
   only:
     - /^1.*$/
