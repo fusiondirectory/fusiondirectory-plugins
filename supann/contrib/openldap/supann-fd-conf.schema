@@ -58,6 +58,18 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.9 NAME 'fdSupannCMSTypes'
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
 
+attributetype ( 1.3.6.1.4.1.38414.17.1.10 NAME 'fdSupannConsentementObjects'
+  DESC 'FusionDirectory - SupAnn possible tags for supannConsentement - format object;Label'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
+
+attributetype ( 1.3.6.1.4.1.38414.17.1.11 NAME 'fdSupannConsentementTypes'
+  DESC 'FusionDirectory - SupAnn possible values for supannConsentement - format type;Label'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
+
 # Object Class
 objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
   DESC 'FusionDirectory SupAnn plugin configuration'
@@ -66,5 +78,6 @@ objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
   MAY (
     fdSupannStructuresRDN $ fdSupannPasswordRecovery $
     fdSupannRessourceSubStates $ fdSupannRessourceSubStatesLabels $ fdSupannRessourceLabels $
-    fdSupannCMSTypes $ fdSupannCMSSources $ fdSupannCMSFormats $ fdSupannCMSAppDomains
+    fdSupannCMSTypes $ fdSupannCMSSources $ fdSupannCMSFormats $ fdSupannCMSAppDomains $
+    fdSupannConsentementObjects $ fdSupannConsentementTypes
   ) )

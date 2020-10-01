@@ -24,7 +24,7 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
 {
   protected $prefixedChoices;
 
-  function __construct (string $label, string $description, string $ldapName, bool $required, string $filename, string $acl = '')
+  function __construct (string $label, string $description, string $ldapName, bool $required, string $filename = '', string $acl = '')
   {
     $attributes = [
       new SelectAttribute('', '', $ldapName.'_prefix', $required),

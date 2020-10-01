@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
 
-  Copyright (C) 2013-2019 FusionDirectory
+  Copyright (C) 2013-2020 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -240,6 +240,70 @@ class supannConfig extends simplePlugin
           ),
         ]
       ],
+      'consent' => [
+        'name'  => _('Consent'),
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new OrderedArrayAttribute(
+            new CharSeparatedCompositeAttribute(
+              _('Objects which may be used as tag in supannConsentement'),
+              'fdSupannConsentementObjects',
+              [
+                new StringAttribute(
+                  _('Object'), _('Consent object'),
+                  'fdSupannConsentementObjects_object', TRUE
+                ),
+                new StringAttribute(
+                  _('Label'), _('Label shown for this object'),
+                  'fdSupannConsentementObjects_label', TRUE
+                ),
+              ],
+              ';',
+              '',
+              _('Consent objects')
+            ),
+            FALSE,
+            [
+              'JPEGPHOTO;Picture',
+              'SUPANNMAILPERSO;Personal email',
+              'MAIL;Email',
+              'MOBILE;Mobile',
+            ],
+            TRUE
+          ),
+          new OrderedArrayAttribute(
+            new CharSeparatedCompositeAttribute(
+              _('Types which may be used as value in supannConsentement'),
+              'fdSupannConsentementTypes',
+              [
+                new StringAttribute(
+                  _('Type'), _('Consent type'),
+                  'fdSupannConsentementTypes_type', TRUE
+                ),
+                new StringAttribute(
+                  _('Label'), _('Label shown for this type'),
+                  'fdSupannConsentementTypes_label', TRUE
+                ),
+              ],
+              ';',
+              '',
+              _('Consent types')
+            ),
+            FALSE,
+            [
+              'PUBLIC;Public',
+              'AUTH;Authenticated',
+              'PR;Resource people',
+              'APPRENANTS;APPRENANTS',
+              'INTERNE;Intern',
+              'FER;FER',
+              'EDUGAIN;EduGAIN',
+              'CGU;CGU',
+            ],
+            TRUE
+          ),
+        ]
+      ]
     ];
   }
 

@@ -316,6 +316,31 @@ class supannAccount extends simplePlugin
           )
         ]
       ],
+      'consentement' => [
+        'name'      => _('Consent'),
+        'class'     => ['fullwidth'],
+        'attrs'     => [
+          new OrderedArrayAttribute(
+            new CompositeAttribute(
+              _('supannConsentement - user consent on the usage of his information'),
+              'supannConsentement',
+              [
+                new SelectAttribute('', '', 'supannConsentement_prefix', TRUE),
+                new SelectAttribute('', '', 'supannConsentement_content', TRUE)
+              ],
+              '/^{(.*)}(.*)$/',
+              '{%s}%s',
+              '',
+              _('Consent')
+            ),
+            // no order
+            FALSE,
+            [],
+            // edit button
+            TRUE
+          )
+        ]
+      ],
     ];
   }
 
@@ -377,6 +402,8 @@ class supannAccount extends simplePlugin
 
   protected function supannInit ()
   {
+    global $config;
+
     list ($codes, $labels) = supann::get_choices_for('affiliation');
     $this->attributesAccess['eduPersonAffiliation']->attribute->setChoices($codes, $labels);
 
@@ -394,6 +421,24 @@ class supannAccount extends simplePlugin
       ''
     ]);
     $this->attributesAccess['supannEtuInscription']->setLinearRendering(FALSE);
+
+    $objects      = [];
+    $objectLabels = [];
+    foreach ($config->get_cfg_value('SupannConsentementObjects', []) as $supannConsentementObject) {
+      list($object, $label) = explode(';', $supannConsentementObject);
+      $objects[]      = $object;
+      $objectLabels[] = $label;
+    }
+    $this->attributesAccess['supannConsentement']->attribute->attributes[0]->setChoices($objects, $objectLabels);
+
+    $types      = [];
+    $typeLabels = [];
+    foreach ($config->get_cfg_value('SupannConsentementTypes', []) as $supannConsentementType) {
+      list($type, $label) = explode(';', $supannConsentementType);
+      $types[]      = $type;
+      $typeLabels[] = $label;
+    }
+    $this->attributesAccess['supannConsentement']->attribute->attributes[1]->setChoices($types, $typeLabels);
 
     $this->updateFieldsChoicesAndValues();
   }
