@@ -1,0 +1,46 @@
+##
+## archive-fd.schema - Needed by Fusion Directory for archive plugin
+##
+
+# Attributes
+attributetype ( 1.3.6.1.4.1.38414.81.1.1 NAME 'fdArchivedField'
+  DESC 'FusionDirectory - archived field'
+  EQUALITY octetStringMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.40)
+
+attributetype ( 1.3.6.1.4.1.38414.81.1.2 NAME 'fdArchivedUniqueField'
+  DESC 'FusionDirectory - archived field for unicity checks'
+  EQUALITY octetStringMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.40)
+
+attributetype ( 1.3.6.1.4.1.38414.81.1.3 NAME 'fdArchivedDateTime'
+  DESC 'FusionDirectory - archived object date and time'
+  EQUALITY generalizedTimeMatch
+  ORDERING generalizedTimeOrderingMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.24
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.81.1.4 NAME 'fdArchivedObjectType'
+  DESC 'FusionDirectory - archived object type'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.81.1.5 NAME 'fdArchivedOriginDn'
+  DESC 'FusionDirectory - archived object DN'
+  EQUALITY distinguishedNameMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.12
+  SINGLE-VALUE )
+
+# Objectclasses
+objectclass (1.3.6.1.4.1.38414.81.2.1 NAME 'fdArchivedObject'
+  DESC 'FusionDirectory - archived object'
+  MUST ( )
+  MAY (
+    fdArchivedField $ fdArchivedUniqueField $
+    fdArchivedDateTime $ fdArchivedObjectType $ fdArchivedOriginDn
+  ) )
