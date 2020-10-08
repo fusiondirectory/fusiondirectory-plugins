@@ -70,7 +70,8 @@ class archiveConfig extends simplePlugin
             ),
             // no order
             FALSE,
-            []
+            [],
+            TRUE
           ),
         ]
       ],

@@ -77,6 +77,64 @@ class archivedObject extends simplePlugin
     return $this->create_unique_dn('fdArchivedDateTime', get_ou('archiveRDN').$this->base);
   }
 
+  public static function listArchiveTypes (): array
+  {
+    global $config;
+
+    $types          = [];
+    $typesAndFields = $config->get_cfg_value('ArchivedTypesAndFields', []);
+    foreach ($typesAndFields as $typeAndFields) {
+      list($configType, , ) = explode('|', $typeAndFields);
+      $types[] = strtoupper($configType);
+    }
+
+    return array_unique($types);
+  }
+
+  /*!
+   * \brief Test if archive is active for a given type
+   */
+  public static function isArchiveActive (string $type): bool
+  {
+    global $config;
+
+    $typesAndFields = $config->get_cfg_value('ArchivedTypesAndFields', []);
+    foreach ($typesAndFields as $typeAndFields) {
+      list($configType, $fields, $uniquefields) = explode('|', $typeAndFields);
+      if (strtoupper($configType) == strtoupper($type)) {
+        return TRUE;
+      }
+    }
+
+    return FALSE;
+  }
+
+  /*!
+   * \brief Returns an action for a management class, or null
+   */
+  public static function getManagementAction (array $types, $callable)
+  {
+    $types = array_filter(
+      $types,
+      function ($type) {
+        $infos = objects::infos($type);
+        return (isset($infos['archiveActive']) && $infos['archiveActive']);
+      }
+    );
+    if (empty($types)) {
+      return NULL;
+    } else {
+      return new Action(
+        'archive', _('Archive'), 'geticon.php?context=actions&icon=archive&size=16',
+        '+', $callable,
+        ['/archive/c', 'r'],
+        TRUE,
+        TRUE,
+        $types
+      );
+    }
+  }
+
   /*!
    * \brief Archive object data and delete it
    */
@@ -84,10 +142,11 @@ class archivedObject extends simplePlugin
   {
     global $config;
 
-    $typesAndFields = $config->get_cfg_value('fdArchivedTypesAndFields', []);
+    $type = strtoupper($type);
+    $typesAndFields = $config->get_cfg_value('ArchivedTypesAndFields', []);
     foreach ($typesAndFields as $typeAndFields) {
       list($configType, $fields, $uniquefields) = explode('|', $typeAndFields);
-      if ($configType == $type) {
+      if (strtoupper($configType) == $type) {
         $fields       = explode(',', $fields);
         $uniquefields = explode(',', $uniquefields);
         $attrs = [];
@@ -140,6 +199,6 @@ class archivedObject extends simplePlugin
         return [];
       }
     }
-    return [new FusionDirectoryException('No configuration found for archiving type '.$type)];
+    return [new FusionDirectoryError(htmlescape(sprintf(_('No configuration found for archiving type %s'), $type)))];
   }
 }

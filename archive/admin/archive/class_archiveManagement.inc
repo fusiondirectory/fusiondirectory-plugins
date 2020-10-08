@@ -26,10 +26,11 @@ class archiveManagement extends management
 
   /* Default columns */
   public static $columns = [
-    ['ObjectTypeColumn',           []],
-    ['LdapGeneralizedTimeColumn',  ['attributes' => 'fdArchivedDateTime',   'label' => 'Time']],
-    ['LinkColumn',                 ['attributes' => 'fdArchivedObjectType', 'label' => 'Type']],
-    ['LinkColumn',                 ['attributes' => 'fdArchivedOriginDn',   'label' => 'Origin']],
+    ['ObjectTypeColumn',          []],
+    ['LdapGeneralizedTimeColumn', ['attributes' => 'fdArchivedDateTime',   'label' => 'Time']],
+    ['ObjectTypeColumn',          ['attributes' => 'fdArchivedObjectType', 'label' => 'Type']],
+    ['LinkColumn',                ['attributes' => 'fdArchivedOriginDn',   'label' => 'Origin']],
+    ['ActionsColumn',             ['label' => 'Actions']],
   ];
 
   public static function plInfo (): array
@@ -38,7 +39,7 @@ class archiveManagement extends management
       'plShortName'   => _('Archived objects'),
       'plTitle'       => _('Archived objects'),
       'plDescription' => _('Browse archived objects'),
-      'plIcon'        => 'geticon.php?context=mimetype&icon=application-x-archive&size=48',
+      'plIcon'        => 'geticon.php?context=mimetypes&icon=application-x-archive&size=48',
       'plSection'     => 'reporting',
       'plManages'     => ['archivedObject'],
     ];
@@ -48,22 +49,23 @@ class archiveManagement extends management
   {
     parent::__construct();
 
-    $this->filter->addElement(new DateFilterElement($this->filter, 'fdArchivedDateTime', _('Date'), date('Y-m-d')));
-
-    /*$items = [];
-    foreach (logging::$validActions as $validAction) {
-      $items[$validAction] = [
-        'name'    => $validAction,
-        'filter'  => '(fdAuditAction='.$validAction.')',
+    $types = [];
+    foreach (archivedObject::listArchiveTypes() as $type) {
+      $infos = objects::infos($type);
+      $types[$type] = [
+        'name'    => $infos['name'],
+        'icon'    => $infos['icon'],
+        'filter'  => '(fdArchivedObjectType='.$type.')',
       ];
     }
-    $this->filter->addElement(new CheckBoxesFilterElement($this->filter, _('Action'), $items, '|'));*/
+    $this->filter->addElement(new CheckBoxesFilterElement($this->filter, _('Archived types'), $types, '|'));
+
+    $this->filter->addElement(new DateFilterElement($this->filter, 'fdArchivedDateTime', _('Date')));
   }
 
   protected function setUpListing ()
   {
-    /* Disable multi select */
-    $this->listing  = new managementListing($this, TRUE, FALSE);
+    parent::setUpListing();
     /* Newer archives first */
     $this->listing->setSortColumn(1, TRUE);
   }
