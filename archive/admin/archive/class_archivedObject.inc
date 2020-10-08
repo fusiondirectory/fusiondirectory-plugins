@@ -44,14 +44,27 @@ class archivedObject extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'fields' => [
         'name'  => _('Data'),
+        'attrs' => [
+          new ArchivedFieldsAttribute(
+            _('Fields'), _('Archived fields'),
+            'fdArchivedField', FALSE
+          ),
+          new ArchivedFieldsAttribute(
+            _('Unique fields'), _('Archived unique fields'),
+            'fdArchivedUniqueField', FALSE
+          ),
+        ],
+      ],
+      'origin' => [
+        'name'  => _('Origin'),
         'attrs' => [
           new GeneralizedTimeDisplayAttribute(
             _('Time'), _('Date and time this object was archived'),
             'fdArchivedDateTime', TRUE
           ),
-          new DisplayLDAPAttribute(
+          new DisplayObjectTypeAttribute(
             _('Object type'), _('Object type'),
             'fdArchivedObjectType', TRUE
           ),
@@ -59,15 +72,7 @@ class archivedObject extends simplePlugin
             _('Origin DN'), _('DN of the object before deletion'),
             'fdArchivedOriginDn', TRUE
           ),
-          new DisplayLDAPArrayAttribute(
-            _('Fields'), _('Archived fields'),
-            'fdArchivedField', FALSE
-          ),
-          new DisplayLDAPArrayAttribute(
-            _('Unique fields'), _('Archived unique fields'),
-            'fdArchivedUniqueField', FALSE
-          ),
-        ]
+        ],
       ],
     ];
   }
