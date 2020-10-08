@@ -686,8 +686,8 @@ class posixAccount extends simplePlugin
         $groups = objects::ls($type, ['cn' => 1, 'memberUid' => '*'], NULL, '(&(objectClass=posixGroup)(gidNumber='.ldap_escape_f($this->gidNumber).')(cn='.ldap_escape_f($this->getUid()).'))');
         foreach ($groups as $dn => $group) {
           if (empty($group['memberUid']) || ((count($group['memberUid']) == 1) && ($group['memberUid'][0] == $this->getUid()))) {
-            $tabobject = objects::open($dn, $type);
-            $tabobject->delete();
+            $errors = objects::delete($dn, $type, FALSE);
+            msg_dialog::displayChecks($errors);
           }
         }
       }

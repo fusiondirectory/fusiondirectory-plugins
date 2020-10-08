@@ -356,10 +356,10 @@ class interfacesManagement extends management implements SimpleTab
     foreach ($this->interfaces as $dn => $object) {
       if ($object === NULL) {
         try {
-          $object = objects::open($dn, $this->objectTypes[0]);
-          if (!$object->delete()) {
-            $errors[] = sprintf(_('Deletion of %s failed'), $dn);
-          }
+          $errors = array_merge(
+            $errors,
+            objects::delete($dn, $this->objectTypes[0])
+          );
         } catch (NonExistingLdapNodeException $e) {
           /* No need to delete if it does not exist */
         }

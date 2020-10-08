@@ -130,10 +130,11 @@ class archivedObject extends simplePlugin
           return $errors;
         }
         /* Delete object */
-        $tabObject = objects::open($dn, $type);
-        if (!$tabObject->delete()) {
+        $errors = objects::delete($dn, $type, FALSE);
+        if (!empty($errors)) {
           /* Deletion failed */
-          $archivedObject->delete();
+          $archivedObject->delete(FALSE);
+          return $errors;
         }
         /* No errors */
         return [];
