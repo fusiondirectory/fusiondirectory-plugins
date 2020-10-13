@@ -105,7 +105,7 @@ class archivedObject extends simplePlugin
 
     $typesAndFields = $config->get_cfg_value('ArchivedTypesAndFields', []);
     foreach ($typesAndFields as $typeAndFields) {
-      list($configType, $fields, $uniquefields) = explode('|', $typeAndFields);
+      list($configType, , ) = explode('|', $typeAndFields);
       if (strtoupper($configType) == strtoupper($type)) {
         return TRUE;
       }
