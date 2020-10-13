@@ -285,12 +285,12 @@ class registrationManagement extends management
       add_lock($entry['fdRegistrationUserDN'][0], $ui->dn);
 
       // Delete the object
-      $userTabObject = objects::open($entry['fdRegistrationUserDN'][0], 'user');
-      $success = $userTabObject->delete();
+      $errors = objects::delete($entry['fdRegistrationUserDN'][0], 'user');
+      msg_dialog::displayChecks($errors);
 
       // Remove the lock for the user object
       del_lock($entry['fdRegistrationUserDN'][0]);
-      if ($success) {
+      if (empty($errors)) {
         // Upon success, update registration object status and history
         $tabObject  = objects::open($dn, 'registration');
         $baseObject = $tabObject->getBaseObject();

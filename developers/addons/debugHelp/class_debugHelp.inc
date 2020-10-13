@@ -86,7 +86,7 @@ class debugHelp extends simplePlugin
         'attrs'     => [],
         'subnodes'  => []
       ];
-      foreach (['description','aclCategory','ou','mainAttr','nameAttr','filter','filterRDN','tabClass','tabGroup','mainTab','management','templateActive','snapshotActive'] as $key) {
+      foreach (['description','aclCategory','ou','mainAttr','nameAttr','filter','filterRDN','tabClass','tabGroup','mainTab','management','templateActive','snapshotActive','archiveActive'] as $key) {
         if (isset($infos[$key])) {
           $node['attrs'][$key] = var_export($infos[$key], TRUE);
         }

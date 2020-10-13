@@ -620,11 +620,14 @@ class fdRPCService
     add_lock($dn, $ui->dn);
 
     // Delete the object
-    $tabobject = objects::open($dn, $type);
-    $tabobject->delete();
+    $errors = objects::delete($dn, $type);
 
     // Remove the lock for the current object.
     del_lock($dn);
+
+    if (!empty($errors)) {
+      throw new WebServiceErrors($errors);
+    }
   }
 
   /*!
