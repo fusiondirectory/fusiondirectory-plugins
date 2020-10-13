@@ -207,7 +207,7 @@ class archivedObject extends simplePlugin
     return [new FusionDirectoryError(htmlescape(sprintf(_('No configuration found for archiving type %s'), $type)))];
   }
 
-  public static function buildUniqueSearchFilter (string $type, string $ldapName, $values): ldapFilter
+  public static function buildUniqueSearchFilter (string $ldapName, $values): ldapFilter
   {
     if (!is_array($values)) {
       $values = [$values];
@@ -215,7 +215,7 @@ class archivedObject extends simplePlugin
     return new ldapFilter(
       '|',
       array_map(
-        function ($value)
+        function ($value) use ($ldapName)
         {
           return new ldapFilterLeaf('fdArchivedUniqueField', '=', $ldapName.':'.$value);
         },
