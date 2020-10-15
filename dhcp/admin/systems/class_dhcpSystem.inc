@@ -231,17 +231,17 @@ class DhcpHostsAttribute extends OrderedArrayAttribute
         trigger_error('Failed to parse '.$value[0].' to find DHCP configuration DN');
       }
       /* Check locking */
-      if ($locks = get_locks($configDn)) {
-        $errors[] = sprintf(_('"%s" is locked (by "%s" since %s), could not save modifications to this DHCP configuration'), $locks[0]['object'], $locks[0]['user'], date('%Y-%m-%d, %H:%M:%S', $locks[0]['timestamp']));
+      if ($locks = Lock::get($configDn)) {
+        $errors[] = sprintf(_('"%s" is locked (by "%s" since %s), could not save modifications to this DHCP configuration'), $locks[0]->objectDn, $locks[0]->userDn, date('%Y-%m-%d, %H:%M:%S', $locks[0]->timestamp));
         continue;
       } else {
         /* Lock the current entry */
-        add_lock($configDn, $ui->dn);
+        Lock::add($configDn);
       }
       $dhcpTabs = objects::open($configDn, 'dhcpConfiguration');
       $dhcpTabs->getBaseObject()->attributesAccess['dhcpSections']->addHost($value[0], $cn, $value[1], $value[2]);
       $msgs = $dhcpTabs->save();
-      del_lock($configDn);
+      Lock::deleteByObject($configDn);
       msg_dialog::displayChecks($msgs);
     }
 

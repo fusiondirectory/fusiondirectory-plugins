@@ -614,16 +614,16 @@ class fdRPCService
       throw new WebServiceError(htmlunescape(msgPool::permDelete($dn)), 403);
     }
 
-    if ($user = get_lock($dn)) {
-      throw new WebServiceError(sprintf(_('Cannot delete %s. It has been locked by %s.'), $dn, $user));
+    if (!empty($locks = Lock::get($dn))) {
+      throw new WebServiceError(sprintf(_('Cannot delete %s. It has been locked by %s.'), $dn, $locks[0]->userDn));
     }
-    add_lock($dn, $ui->dn);
+    Lock::add($dn);
 
     // Delete the object
     $errors = objects::delete($dn, $type);
 
     // Remove the lock for the current object.
-    del_lock($dn);
+    Lock::deleteByObject($dn);
 
     if (!empty($errors)) {
       throw new WebServiceErrors($errors);
