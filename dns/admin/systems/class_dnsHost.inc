@@ -123,17 +123,17 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
     }
 
     /* Check locking */
-    if ($locks = get_locks($this->getZoneDn())) {
-      return [sprintf(_('"%s" is locked (by "%s" since %s), could not save modifications to this DNS zone'), $locks[0]['object'], $locks[0]['user'], date('%Y-%m-%d, %H:%M:%S', $locks[0]['timestamp']))];
+    if ($locks = Lock::get($this->getZoneDn())) {
+      return [sprintf(_('"%s" is locked (by "%s" since %s), could not save modifications to this DNS zone'), $locks[0]->objectDn, $locks[0]->userDn, date('%Y-%m-%d, %H:%M:%S', $locks[0]->timestamp))];
     } else {
       /* Lock the current entry */
-      add_lock($this->getZoneDn(), $ui->dn);
+      Lock::add($this->getZoneDn());
     }
     $zoneTabs = objects::open($this->getZoneDn(), 'dnsZone');
     $zoneTabs->getBaseObject()->attributesAccess['dnsRecords']->setValue($this->getValue());
     $errors = $zoneTabs->save();
 
-    del_lock($this->getZoneDn());
+    Lock::deleteByObject($this->getZoneDn());
 
     return $errors;
   }
@@ -413,18 +413,18 @@ class dnsHost extends simplePlugin
       }
       foreach ($zonesToLock as $zoneDn) {
         /* Check locking */
-        if ($locks = get_locks($zoneDn)) {
-          $errors[] = sprintf(_('"%s" is locked (by "%s" since %s), could not save modifications to this DNS zone'), $locks[0]['object'], $locks[0]['user'], date('%Y-%m-%d, %H:%M:%S', $locks[0]['timestamp']));
+        if ($locks = Lock::get($zoneDn)) {
+          $errors[] = sprintf(_('"%s" is locked (by "%s" since %s), could not save modifications to this DNS zone'), $locks[0]->objectDn, $locks[0]->userDn, date('%Y-%m-%d, %H:%M:%S', $locks[0]->timestamp));
           break;
         } else {
           /* Lock the current entry */
-          add_lock($zoneDn, $ui->dn);
+          Lock::add($zoneDn);
           $lockedDns[] = $zoneDn;
         }
       }
 
       if (!empty($errors)) {
-        del_lock($lockedDns);
+        Lock::deleteByObject($lockedDns);
         return $errors;
       }
 
@@ -481,7 +481,7 @@ class dnsHost extends simplePlugin
         msg_dialog::display(_('DNS update'), implode("<br/>\n", array_map('htmlescape', $messages))."<br/>\n", INFO_DIALOG);
       }
 
-      del_lock($lockedDns);
+      Lock::deleteByObject($lockedDns);
     }
 
     return $errors;

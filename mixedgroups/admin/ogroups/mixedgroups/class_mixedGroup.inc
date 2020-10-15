@@ -182,7 +182,7 @@ class mixedGroup extends simplePlugin
     $errors = parent::save();
 
     foreach ($this->locks as $lock) {
-      del_lock($lock);
+      Lock::deleteByObject($lock);
     }
     $this->locks = [];
 

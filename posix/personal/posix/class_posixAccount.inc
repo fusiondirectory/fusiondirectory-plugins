@@ -600,7 +600,7 @@ class posixAccount extends simplePlugin
     $errors = parent::save();
 
     foreach ($this->locks as $lock) {
-      del_lock($lock);
+      Lock::deleteByObject($lock);
     }
     $this->locks = [];
 
@@ -777,20 +777,20 @@ class posixAccount extends simplePlugin
        to get real unique values.
      */
     $wait = 10;
-    while ($user = get_lock($attrib)) {
+    while (!empty($locks = Lock::get($attrib))) {
       sleep(1);
 
       /* Oups - timed out */
       if ($wait-- == 0) {
         msg_dialog::display(
           _('Warning'),
-          sprintf(_('Timeout while waiting for lock. Ignoring lock from %s!'), $user),
+          sprintf(_('Timeout while waiting for lock. Ignoring lock from %s!'), $locks[0]->userDn),
           WARNING_DIALOG
         );
         break;
       }
     }
-    add_lock($attrib, $dn);
+    Lock::add($attrib, $dn);
     return static::getNextId($attrib, $dn);
   }
 

@@ -126,18 +126,18 @@ class registrationManagement extends management
 
     foreach ($action['targets'] as $dn) {
       // Lock registration object
-      if ($user = get_lock($dn)) {
+      if (!empty($locks = Lock::get($dn))) {
         $error = new FusionDirectoryError(
           htmlescape(sprintf(
             _('Cannot accept %s. It has been locked by %s.'),
             $dn,
-            $user
+            $locks[0]->userDn
           ))
         );
         $error->display();
         continue;
       }
-      add_lock($dn, $ui->dn);
+      Lock::add($dn);
 
       $entry = $this->listing->getEntry($dn);
 
@@ -149,24 +149,24 @@ class registrationManagement extends management
           ))
         );
         $error->display();
-        del_lock($dn);
+        Lock::deleteByObject($dn);
         continue;
       }
 
       // Lock user object
-      if ($user = get_lock($entry['fdRegistrationUserDN'][0])) {
+      if (!empty($locks = Lock::get($entry['fdRegistrationUserDN'][0]))) {
         $error = new FusionDirectoryError(
           htmlescape(sprintf(
             _('Cannot move %s. It has been locked by %s.'),
             $entry['fdRegistrationUserDN'][0],
-            $user
+            $locks[0]->userDn
           ))
         );
         $error->display();
-        del_lock($dn);
+        Lock::deleteByObject($dn);
         continue;
       }
-      add_lock($entry['fdRegistrationUserDN'][0], $ui->dn);
+      Lock::add($entry['fdRegistrationUserDN'][0]);
 
       // TODO Détermine la date de peremption
       // Open the user
@@ -183,7 +183,7 @@ class registrationManagement extends management
       $errors = $userTabObject->save();
 
       // Remove the lock for the user object
-      del_lock($entry['fdRegistrationUserDN'][0]);
+      Lock::deleteByObject($entry['fdRegistrationUserDN'][0]);
 
       // Unlock the user password if needed
       $pwds = objects::ls('user', 'userPassword', $userTabObject->dn, '(userPassword=*)', FALSE, 'base');
@@ -230,7 +230,7 @@ class registrationManagement extends management
         msg_dialog::displayChecks($errors);
       }
       // Remove the lock for the registration object
-      del_lock($dn);
+      Lock::deleteByObject($dn);
     }
   }
 
@@ -242,18 +242,18 @@ class registrationManagement extends management
     @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $action, 'Reject');
 
     foreach ($action['targets'] as $dn) {
-      if ($user = get_lock($dn)) {
+      if (!empty($locks = Lock::get($dn))) {
         $error = new FusionDirectoryError(
           htmlescape(sprintf(
             _('Cannot reject %s. It has been locked by %s.'),
             $dn,
-            $user
+            $locks[0]->userDn
           ))
         );
         $error->display();
         continue;
       }
-      add_lock($dn, $ui->dn);
+      Lock::add($dn);
 
       $entry = $this->listing->getEntry($dn);
 
@@ -265,31 +265,31 @@ class registrationManagement extends management
           ))
         );
         $error->display();
-        del_lock($dn);
+        Lock::deleteByObject($dn);
         continue;
       }
 
       // Delete the user
-      if ($user = get_lock($entry['fdRegistrationUserDN'][0])) {
+      if (!empty($locks = Lock::get($entry['fdRegistrationUserDN'][0]))) {
         $error = new FusionDirectoryError(
           htmlescape(sprintf(
             _('Cannot delete %s. It has been locked by %s.'),
             $entry['fdRegistrationUserDN'][0],
-            $user
+            $locks[0]->userDn
           ))
         );
         $error->display();
-        del_lock($dn);
+        Lock::deleteByObject($dn);
         continue;
       }
-      add_lock($entry['fdRegistrationUserDN'][0], $ui->dn);
+      Lock::add($entry['fdRegistrationUserDN'][0]);
 
       // Delete the object
       $errors = objects::delete($entry['fdRegistrationUserDN'][0], 'user');
       msg_dialog::displayChecks($errors);
 
       // Remove the lock for the user object
-      del_lock($entry['fdRegistrationUserDN'][0]);
+      Lock::deleteByObject($entry['fdRegistrationUserDN'][0]);
       if (empty($errors)) {
         // Upon success, update registration object status and history
         $tabObject  = objects::open($dn, 'registration');
@@ -303,7 +303,7 @@ class registrationManagement extends management
         msg_dialog::displayChecks($messages);
       }
       // Remove the lock for the registration object
-      del_lock($dn);
+      Lock::deleteByObject($dn);
     }
   }
 
