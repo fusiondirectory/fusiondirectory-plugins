@@ -183,7 +183,11 @@ class sinapsDiffusionHandlerJob
           }
         }
         $values['supannAccount']['supannRefId'] = array_values(array_unique($values['supannAccount']['supannRefId']));
-        $message = 'User updated';
+        if ($values['lock']) {
+          $message = 'User deleted';
+        } else {
+          $message = 'User updated';
+        }
       }
     } else {
       if ($values['lock']) {
@@ -196,7 +200,12 @@ class sinapsDiffusionHandlerJob
     if ($error !== TRUE) {
       $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 15, strip_tags(implode(', ', $error))));
     } else {
-      $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 0, $message, $idObjApp));
+      if ($values['lock']) {
+        /* $values['lock'] means this was a deletion, so we must not send an object identifier in the answer */
+        $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 0, $message));
+      } else {
+        $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 0, $message, $idObjApp));
+      }
     }
   }
 
