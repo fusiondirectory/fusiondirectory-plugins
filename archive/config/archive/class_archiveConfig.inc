@@ -39,6 +39,7 @@ class archiveConfig extends simplePlugin
     return [
       'main' => [
         'name'  => _('Archive'),
+        'class' => ['fullwidth'],
         'attrs' => [
           new StringAttribute(
             _('Archive RDN'), _('Branch in which archived objects will be stored'),
@@ -84,6 +85,12 @@ class archiveConfig extends simplePlugin
     $choices = static::getManagedTypes();
     $this->attributesAccess['fdArchivedTypesAndFields']->attribute->attributes[0]->setChoices(array_keys($choices), array_values($choices));
     $this->attributesAccess['fdArchivedTypesAndFields']->setLinearRendering(FALSE);
+    $this->attributesAccess['fdArchivedTypesAndFields']->setHeaders([
+      _('Type'),
+      _('Fields'),
+      _('Unique Fields'),
+      '',
+    ]);
   }
 
   public static function getManagedTypes (): array
