@@ -82,6 +82,23 @@ class DnsRecordPlugin extends simplePlugin
 
     if (!empty($value)) {
       $this->relativeSubdomainName  = array_shift($value);
+      if ($value[0] === 'tXTRecord') {
+        if (preg_match('/^v=spf1 (.*)$/', $value[1], $m)) {
+          /* Convert TXT to SPF */
+          $value = [
+            'sPFRecord',
+            $m[1],
+            $value[2],
+          ];
+        } elseif (preg_match('/^v=DKIM1;(.*)$/', $value[1], $m)) {
+          /* Convert TXT to DKIM */
+          $value = [
+            'dKIMRecord',
+            $m[1],
+            $value[2],
+          ];
+        }
+      }
       $this->dnsRecord              = $value;
     } elseif (!($parent instanceof dnsZone)) {
       /* Read default values from system: cn and IPs */
@@ -94,6 +111,37 @@ class DnsRecordPlugin extends simplePlugin
       );
     }
     $this->attributesAccess['dnsRecord']->attributes[2]->setChoices($attribute->getReverseZones());
+  }
+
+  /*!
+   * \brief Get record value for DnsRecordsAttribute instance
+   *
+   * \return array containing:
+   * relativeSubdomainName, recordType, recordValue, reverseZone
+   */
+  public function getRecordValue (): array
+  {
+    $relativeSubdomainName = $this->relativeSubdomainName;
+    if ($relativeSubdomainName == '@') {
+      $relativeSubdomainName = '';
+    }
+    $record = $this->attributesAccess['dnsRecord']->getValue();
+    if ($record[0] == 'sPFRecord') {
+      /* Convert SPF to TXT */
+      $record = [
+        'tXTRecord',
+        'v=spf1 '.$record[1],
+        $record[2],
+      ];
+    } elseif ($record[0] == 'dKIMRecord') {
+      /* Convert DKIM to TXT */
+      $record = [
+        'tXTRecord',
+        'v=DKIM1; '.$record[1],
+        $record[2],
+      ];
+    }
+    return array_merge([$relativeSubdomainName], $record);
   }
 
   function save (): array
@@ -151,13 +199,8 @@ class DnsRecordDialog extends GenericDialog
         return;
       }
     }
-    /* add new/edited zone */
-    $relativeSubdomainName = $this->dialog->relativeSubdomainName;
-    if ($relativeSubdomainName == '@') {
-      $relativeSubdomainName = '';
-    }
-    $ret = array_merge([$relativeSubdomainName], $this->dialog->dnsRecord);
-    $this->attribute->addValue('', $ret);
+    /* Add new/edited record */
+    $this->attribute->addValue('', $this->dialog->getRecordValue());
     unset($this->dialog);
   }
 
