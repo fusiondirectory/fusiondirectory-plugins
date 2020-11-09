@@ -207,6 +207,8 @@ class DkimRecordAttribute extends CompositeAttribute
       /* Special case: empty public key means revoked key */
       $values['p'] = '';
     }
+    /* Remove newlines in public key data */
+    $values['p'] = str_replace(["\n", "\r"], '', $values['p']);
     return implode(
       '; ',
       array_map(
@@ -217,5 +219,21 @@ class DkimRecordAttribute extends CompositeAttribute
         $values
       )
     );
+  }
+
+  function check ()
+  {
+    $error = parent::check();
+    if (!empty($error)) {
+      return $error;
+    }
+    $p = str_replace(["\n", "\r"], '', $this->attributes['p']->getValue());
+    if (!empty($p) && (base64_decode($p, TRUE) === FALSE)) {
+      return new SimplePluginCheckError(
+        $this,
+        _('The "Public key" field does not contain valid base64 data')
+      );
+    }
+    return $error;
   }
 }
