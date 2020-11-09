@@ -203,6 +203,10 @@ class DkimRecordAttribute extends CompositeAttribute
         return ($value !== '');
       }
     );
+    if (!isset($values['p'])) {
+      /* Special case: empty public key means revoked key */
+      $values['p'] = '';
+    }
     return implode(
       '; ',
       array_map(
