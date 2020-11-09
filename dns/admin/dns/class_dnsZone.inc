@@ -119,7 +119,7 @@ class DnsRecordPlugin extends simplePlugin
    * \return array containing:
    * relativeSubdomainName, recordType, recordValue, reverseZone
    */
-  public function getRecordValue(): array
+  public function getRecordValue (): array
   {
     $relativeSubdomainName = $this->relativeSubdomainName;
     if ($relativeSubdomainName == '@') {
