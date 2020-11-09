@@ -88,6 +88,7 @@ class DnsRecordAttribute extends CompositeAttribute
     'certRecord'  => 'CERT',
     'cNAMERecord' => 'CNAME',
     'dSRecord'    => 'DS',
+    'dKIMRecord'  => 'DKIM (TXT)',
     //~ 'hInfoRecord' => 'HINFO',
     'KeyRecord'   => 'KEY',
     'kXRecord'    => 'KX',
@@ -305,6 +306,11 @@ class DnsRecordAttribute extends CompositeAttribute
     $this->attributes[1] = new SpfRecordAttribute($ldapName, TRUE);
   }
 
+  private function loadDkimRecordFields (string $ldapName)
+  {
+    $this->attributes[1] = new DkimRecordAttribute(_('DKIM Record'), $ldapName);
+  }
+
   protected function updateFields ()
   {
     $type = $this->attributes[0]->getValue();
@@ -324,6 +330,9 @@ class DnsRecordAttribute extends CompositeAttribute
             $ldapName, TRUE,
             reset($this->parentIPs6)
           );
+          break;
+        case 'dKIMRecord':
+          $this->loadDkimRecordFields($ldapName);
           break;
         case 'LocRecord':
           $this->loadLocRecordFields($ldapName);

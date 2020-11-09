@@ -82,13 +82,22 @@ class DnsRecordPlugin extends simplePlugin
 
     if (!empty($value)) {
       $this->relativeSubdomainName  = array_shift($value);
-      if (($value[0] === 'tXTRecord') && (preg_match('/^v=spf1 (.*)$/', $value[1], $m))) {
-        /* Convert TXT to SPF */
-        $value = [
-          'sPFRecord',
-          $m[1],
-          $value[2],
-        ];
+      if ($value[0] === 'tXTRecord') {
+        if (preg_match('/^v=spf1 (.*)$/', $value[1], $m)) {
+          /* Convert TXT to SPF */
+          $value = [
+            'sPFRecord',
+            $m[1],
+            $value[2],
+          ];
+        } elseif (preg_match('/^v=DKIM1;(.*)$/', $value[1], $m)) {
+          /* Convert TXT to DKIM */
+          $value = [
+            'dKIMRecord',
+            $m[1],
+            $value[2],
+          ];
+        }
       }
       $this->dnsRecord              = $value;
     } elseif (!($parent instanceof dnsZone)) {
@@ -117,11 +126,18 @@ class DnsRecordPlugin extends simplePlugin
       $relativeSubdomainName = '';
     }
     $record = $this->attributesAccess['dnsRecord']->getValue();
-    /* Convert SPF to TXT */
     if ($record[0] == 'sPFRecord') {
+      /* Convert SPF to TXT */
       $record = [
         'tXTRecord',
         'v=spf1 '.$record[1],
+        $record[2],
+      ];
+    } elseif ($record[0] == 'dKIMRecord') {
+      /* Convert DKIM to TXT */
+      $record = [
+        'tXTRecord',
+        'v=DKIM1; '.$record[1],
         $record[2],
       ];
     }
