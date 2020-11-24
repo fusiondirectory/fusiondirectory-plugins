@@ -4,6 +4,9 @@ image: debian:stretch
 # Define variable to disable SSL verification of GIT
 variables:
   GIT_SSL_NO_VERIFY: "true"
+  BRANCH_BUILD_DEBIAN_STRETCH: "master"
+  BRANCH_BUILD_DEBIAN_BUSTER: "master"
+  BRANCH_BUILD_CENTOS_7: "master"
 
 stages:
   - lint
@@ -122,18 +125,47 @@ build-release:
     paths:
       - fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"').tar.gz
 
-trigger-ci-debian:
+trigger-ci-debian-stretch:
   stage: trigger
   only:
     - 1.4-dev
+  variables:
+    GROUP: "$GROUP"
+    BRANCH_CORE: "$BRANCH_CORE"
+    BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
+    BRANCH_BUILD_DEBIAN_STRETCH: "$BRANCH_BUILD_DEBIAN_STRETCH"
+    BRANCH_BUILD_DEBIAN_BUSTER: "$BRANCH_BUILD_DEBIAN_BUSTER"
+    BRANCH_BUILD_CENTOS_7: "$BRANCH_BUILD_CENTOS_7"
   trigger:
     project: debian/stretch-dev
-    branch: master
+    branch: "$BRANCH_BUILD_DEBIAN_STRETCH"
+
+trigger-ci-debian-buster:
+  stage: trigger
+  only:
+    - 1.4-dev
+  variables:
+    GROUP: "$GROUP"
+    BRANCH_CORE: "$BRANCH_CORE"
+    BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
+    BRANCH_BUILD_DEBIAN_STRETCH: "$BRANCH_BUILD_DEBIAN_STRETCH"
+    BRANCH_BUILD_DEBIAN_BUSTER: "$BRANCH_BUILD_DEBIAN_BUSTER"
+    BRANCH_BUILD_CENTOS_7: "$BRANCH_BUILD_CENTOS_7"
+  trigger:
+    project: debian/buster-dev
+    branch: "$BRANCH_BUILD_DEBIAN_BUSTER"
 
 trigger-ci-centos7:
   stage: trigger
   only:
     - 1.4-dev
+  variables:
+    GROUP: "$GROUP"
+    BRANCH_CORE: "$BRANCH_CORE"
+    BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
+    BRANCH_BUILD_DEBIAN_STRETCH: "$BRANCH_BUILD_DEBIAN_STRETCH"
+    BRANCH_BUILD_DEBIAN_BUSTER: "$BRANCH_BUILD_DEBIAN_BUSTER"
+    BRANCH_BUILD_CENTOS_7: "$BRANCH_BUILD_CENTOS_7"
   trigger:
     project: centos/centos7-dev
-    branch: master
+    branch: "$BRANCH_BUILD_CENTOS_7"
