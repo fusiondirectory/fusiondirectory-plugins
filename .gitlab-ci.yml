@@ -4,9 +4,6 @@ image: debian:stretch
 # Define variable to disable SSL verification of GIT
 variables:
   GIT_SSL_NO_VERIFY: "true"
-  BRANCH_BUILD_DEBIAN_STRETCH: "master"
-  BRANCH_BUILD_DEBIAN_BUSTER: "master"
-  BRANCH_BUILD_CENTOS_7: "master"
 
 stages:
   - lint
