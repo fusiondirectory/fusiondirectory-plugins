@@ -127,10 +127,8 @@ trigger-ci-debian-stretch:
     BRANCH_CORE: "$BRANCH_CORE"
     BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
     BRANCH_BUILD_DEBIAN_STRETCH: "$BRANCH_BUILD_DEBIAN_STRETCH"
-    BRANCH_BUILD_DEBIAN_BUSTER: "$BRANCH_BUILD_DEBIAN_BUSTER"
-    BRANCH_BUILD_CENTOS_7: "$BRANCH_BUILD_CENTOS_7"
   trigger:
-    project: debian/stretch-dev
+    project: debian/stretch-fusiondirectory-dev
     branch: "$BRANCH_BUILD_DEBIAN_STRETCH"
 
 trigger-ci-debian-buster:
@@ -141,11 +139,9 @@ trigger-ci-debian-buster:
     GROUP: "$GROUP"
     BRANCH_CORE: "$BRANCH_CORE"
     BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
-    BRANCH_BUILD_DEBIAN_STRETCH: "$BRANCH_BUILD_DEBIAN_STRETCH"
     BRANCH_BUILD_DEBIAN_BUSTER: "$BRANCH_BUILD_DEBIAN_BUSTER"
-    BRANCH_BUILD_CENTOS_7: "$BRANCH_BUILD_CENTOS_7"
   trigger:
-    project: debian/buster-dev
+    project: debian/buster-fusionidrectory-dev
     branch: "$BRANCH_BUILD_DEBIAN_BUSTER"
 
 trigger-ci-centos7:
@@ -156,8 +152,6 @@ trigger-ci-centos7:
     GROUP: "$GROUP"
     BRANCH_CORE: "$BRANCH_CORE"
     BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
-    BRANCH_BUILD_DEBIAN_STRETCH: "$BRANCH_BUILD_DEBIAN_STRETCH"
-    BRANCH_BUILD_DEBIAN_BUSTER: "$BRANCH_BUILD_DEBIAN_BUSTER"
     BRANCH_BUILD_CENTOS_7: "$BRANCH_BUILD_CENTOS_7"
   trigger:
     project: centos/centos7-dev
