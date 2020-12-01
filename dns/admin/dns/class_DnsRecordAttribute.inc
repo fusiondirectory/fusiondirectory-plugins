@@ -60,7 +60,7 @@ class LocRecordLatLongAttribute extends CompositeAttribute
 
   function writeValues (array $values)
   {
-    /* The format is: d1 [m1 [s1]] {"N"|"S"|"E"|"W"} */
+    /* The format for lat/long is: degrees [minutes [seconds]] {"N"|"S"|"E"|"W"} */
     $str = $values['degrees'];
     if ($values['minutes'] != '') {
       $str .= ' '.$values['minutes'];
@@ -79,9 +79,16 @@ class DnsRecordAttribute extends CompositeAttribute
   protected $parentIPs6 = [''];
   protected $parentFQDN = '';
 
+  /*
+   * Not included records:
+   * a6Record     - A6
+   * hInfoRecord  - HINFO
+   * mDRecord     - MD
+   * mInfoRecord  - MINFO
+   * nXTRecord    - NXT
+  */
   public static $types = [
     'aRecord'     => 'A',
-    //~ 'a6Record'    => 'A6',
     'aAAARecord'  => 'AAAA',
     'aFSDBRecord' => 'AFSDB',
     'CAARecord'   => 'CAA',
@@ -89,17 +96,13 @@ class DnsRecordAttribute extends CompositeAttribute
     'cNAMERecord' => 'CNAME',
     'dSRecord'    => 'DS',
     'dKIMRecord'  => 'DKIM (TXT)',
-    //~ 'hInfoRecord' => 'HINFO',
     'KeyRecord'   => 'KEY',
     'kXRecord'    => 'KX',
     'LocRecord'   => 'LOC',
-    //~ 'mDRecord'    => 'MD',
-    //~ 'mInfoRecord' => 'MINFO',
     'mXRecord'    => 'MX',
     'nAPTRRecord' => 'NAPTR',
     'nSRecord'    => 'NS',
     'nSECRecord'  => 'NSEC',
-    //~ 'nXTRecord'   => 'NXT',
     'pTRRecord'   => 'PTR',
     'rRSIGRecord' => 'RRSIG',
     'SigRecord'   => 'SIG',

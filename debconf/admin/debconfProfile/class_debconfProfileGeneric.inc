@@ -51,8 +51,7 @@ class DebconfEntriesAttribute extends CompositeAttribute
         $this->attributes[$cn] = new StringAttribute($cn, $desc, "debconfentry_$cn", FALSE, $default);
         $this->attributes[$cn]->setInLdap(FALSE);
         $this->attributes[$cn]->setAcl($this->getAcl());
-        //~ 'choices'
-        //~ 'extendedDescription'
+        /* Ignored fields: choices,extendedDescription */
       }
     }
     $ldap->cd("ou=questions,".$this->plugin->dn);
@@ -64,9 +63,7 @@ class DebconfEntriesAttribute extends CompositeAttribute
           $this->attributes[$cn]->setValue($entry['value'][0]);
           // set initialValue
           $this->attributes[$cn]->loadValue([]);
-          //~ 'flags'
-          //~ 'owners'
-          //~ 'template'
+          /* Ignored fields: flags,owners,template */
         } else {
           $error = new SimplePluginError($this, htmlescape(_('There is no template for this profile')));
           $error->display();
