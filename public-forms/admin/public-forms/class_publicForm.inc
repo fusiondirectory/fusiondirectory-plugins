@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
 
-  Copyright (C) 2017-2019 FusionDirectory
+  Copyright (C) 2017-2020 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -32,9 +32,6 @@ class publicForm extends simplePlugin
         'ou'      => get_ou('publicFormRDN'),
         'icon'    => 'geticon.php?context=types&icon=publicform&size=16',
       ]],
-      //~ 'plForeignKeys'   => array(
-        //~ 'fdPublicFormTemplateDN' => '?',
-      //~ ),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
