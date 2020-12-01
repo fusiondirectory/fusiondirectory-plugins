@@ -1,7 +1,8 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2015-2016  FusionDirectory
+
+  Copyright (C) 2015-2020  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -142,9 +143,15 @@ class mixedGroup extends simplePlugin
     $members    = $this->parent->getBaseObject()->member;
     $memberUid  = [];
     foreach ($members as $dn) {
-      $ldap->cat($dn, ['uid']);
+      $ldap->cat($dn, ['uid','memberUid']);
       $attrs = $ldap->fetch();
-      $memberUid[] = $attrs['uid'][0];
+      if (isset($attrs['uid'][0])) {
+        $memberUid[] = $attrs['uid'][0];
+      }
+      if (isset($attrs['memberUid'][0])) {
+        unset($attrs['memberUid']['count']);
+        $memberUid = array_merge_unique($memberUid, $attrs['memberUid']);
+      }
     }
     $this->memberUid = $memberUid;
 
