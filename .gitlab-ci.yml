@@ -141,7 +141,7 @@ trigger-ci-debian-buster:
     BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
     BRANCH_BUILD_DEBIAN_BUSTER: "$BRANCH_BUILD_DEBIAN_BUSTER"
   trigger:
-    project: debian/buster-fusionidrectory-dev
+    project: debian/buster-fusiondirectory-dev
     branch: "$BRANCH_BUILD_DEBIAN_BUSTER"
 
 trigger-ci-centos7:
