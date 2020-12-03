@@ -206,3 +206,28 @@ class socialHandler_googlescholar extends socialHandler
     return $value;
   }
 }
+
+class socialHandler_matrix extends socialHandler
+{
+  static function getName ()
+  {
+    return _('Matrix');
+  }
+
+  protected $baseurl = '';
+
+  function linkify ($value)
+  {
+    return $value;
+  }
+
+  function validate ($value)
+  {
+    # Grammar specified in https://matrix.org/docs/spec/appendices#identifier-grammar
+    # Currently, we do not check the server name (valid DNS or IPv4 address or IPv6 address) and optional port number
+    if (!preg_match('/^@[-=\.\/\w]+:.+$/', $value)) {
+      throw new socialHandlerInvalidValueException(_('Matrix user IDs have the format \'@username:server\''));
+    }
+    return $value;
+  }
+}
