@@ -182,3 +182,27 @@ class socialHandler_github extends socialHandler
     return $value;
   }
 }
+
+class socialHandler_googlescholar extends socialHandler
+{
+  static function getName ()
+  {
+    return _('Google Scholar');
+  }
+
+  protected $baseurl = 'https://scholar.google.com/citations?user=';
+
+  function linkify ($value)
+  {
+    return $this->link($this->baseurl.$value, $value);
+  }
+
+  function validate ($value)
+  {
+    # Regex from https://www.wikidata.org/wiki/Property:P1960
+    if (!preg_match('/^[-\w]{12}$/', $value)) {
+      throw new socialHandlerInvalidValueException(_('Google Scholar account IDs have exactly 12 alphanumerical characters or hyphens or underscores'));
+    }
+    return $value;
+  }
+}
