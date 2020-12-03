@@ -124,7 +124,7 @@ trigger-ci-debian-stretch:
     - 1.4-dev
   variables:
     GROUP: "$GROUP"
-    BRANCH_CORE: "$BRANCH_CORE"
+    BRANCH_CORE: "$CI_COMMIT_REF_NAME"
     BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
     BRANCH_BUILD_DEBIAN_STRETCH: "$BRANCH_BUILD_DEBIAN_STRETCH"
   trigger:
@@ -137,7 +137,7 @@ trigger-ci-debian-buster:
     - 1.4-dev
   variables:
     GROUP: "$GROUP"
-    BRANCH_CORE: "$BRANCH_CORE"
+    BRANCH_CORE: "$CI_COMMIT_REF_NAME"
     BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
     BRANCH_BUILD_DEBIAN_BUSTER: "$BRANCH_BUILD_DEBIAN_BUSTER"
   trigger:
@@ -150,7 +150,7 @@ trigger-ci-centos7:
     - 1.4-dev
   variables:
     GROUP: "$GROUP"
-    BRANCH_CORE: "$BRANCH_CORE"
+    BRANCH_CORE: "$CI_COMMIT_REF_NAME"
     BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
     BRANCH_BUILD_CENTOS_7: "$BRANCH_BUILD_CENTOS_7"
   trigger:
