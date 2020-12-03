@@ -163,3 +163,22 @@ class socialHandler_orcid extends socialHandler
     return (($result == 10) ? "X" : (string)$result);
   }
 }
+
+class socialHandler_github extends socialHandler
+{
+  static function getName ()
+  {
+    return _('GitHub');
+  }
+
+  protected $baseurl = 'https://github.com';
+
+  function validate ($value)
+  {
+    # Regex from https://github.com/shinnn/github-username-regex
+    if (!preg_match('/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i', $value)) {
+      throw new socialHandlerInvalidValueException(_('GitHub account names have at most 39 characters, contain only alphanumeric characters or hyphens, cannot have multiple consecutive hyphens, and cannot begin or end with a hyphen'));
+    }
+    return $value;
+  }
+}
