@@ -19,14 +19,14 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class MailQuotaAttribute extends IntAttribute
+class MailQuotaAttribute extends BytesSizeAttribute
 {
   private $quotaUsage;
 
   function setMailMethod ($mailMethod)
   {
     /* Read quota */
-    $this->value = $mailMethod->getQuota($this->value);
+    $this->setValue($mailMethod->getQuota($this->getValue()));
     $this->quotaUsage = $mailMethod->getQuotaUsage();
     if ($mailMethod->is_error()) {
       $error = new SimplePluginError(
@@ -47,7 +47,7 @@ class MailQuotaAttribute extends IntAttribute
       'htmlid'        => $this->getHtmlId().'_usage',
       'label'         => '{literal}'._('Quota usage').'{/literal}',
       'description'   => _('Part of the quota which is used'),
-      'input'         => mailMethod::quota_to_image($this->quotaUsage, $this->value),
+      'input'         => mailMethod::quota_to_image($this->quotaUsage, $this->getValue()),
       'subattribute'  => FALSE,
       'required'      => FALSE,
       'readable'      => $readable,
