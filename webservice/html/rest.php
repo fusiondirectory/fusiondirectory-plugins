@@ -371,44 +371,49 @@ class fdRestService extends fdRPCService
 
     $this->checkAccess($type, $tab, $dn);
 
-    $tabobject = objects::open($dn, $type);
-    if ($tab === NULL) {
-      $object = $tabobject->getBaseObject();
-    } elseif (!isset($tabobject->by_object[$tab])) {
-      throw new WebServiceError('This tab does not exists: "'.$tab.'"', 404);
-    } else {
-      $object = $tabobject->by_object[$tab];
-    }
-    if (!is_subclass_of($object, 'simplePlugin')) {
-      throw new WebServiceError('Invalid tab', 501);
-    }
-    if ($tabobject->by_object[$tab]->isActivatable() &&
-        !$tabobject->by_object[$tab]->isActive()
-      ) {
-      list($disabled, , $htmlText) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
-      if ($disabled) {
-        throw new WebServiceError(htmlunescape($htmlText));
-      }
-      if ($tabobject->by_object[$tab]->acl_is_createable()) {
-        $tabobject->by_object[$tab]->is_account = TRUE;
+    static::addLockOrThrow($dn);
+    try {
+      $tabobject = objects::open($dn, $type);
+      if ($tab === NULL) {
+        $object = $tabobject->getBaseObject();
+      } elseif (!isset($tabobject->by_object[$tab])) {
+        throw new WebServiceError('This tab does not exists: "'.$tab.'"', 404);
       } else {
-        throw new WebServiceError('You don\'t have sufficient rights to enable tab "'.$tab.'"', 403);
+        $object = $tabobject->by_object[$tab];
       }
-    }
-    $error = $tabobject->by_object[$tab]->deserializeValues([$attribute => $input]);
-    if ($error !== TRUE) {
-      throw new WebServiceError($error);
-    }
+      if (!is_subclass_of($object, 'simplePlugin')) {
+        throw new WebServiceError('Invalid tab', 501);
+      }
+      if ($tabobject->by_object[$tab]->isActivatable() &&
+          !$tabobject->by_object[$tab]->isActive()
+        ) {
+        list($disabled, , $htmlText) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
+        if ($disabled) {
+          throw new WebServiceError(htmlunescape($htmlText));
+        }
+        if ($tabobject->by_object[$tab]->acl_is_createable()) {
+          $tabobject->by_object[$tab]->is_account = TRUE;
+        } else {
+          throw new WebServiceError('You don\'t have sufficient rights to enable tab "'.$tab.'"', 403);
+        }
+      }
+      $error = $tabobject->by_object[$tab]->deserializeValues([$attribute => $input]);
+      if ($error !== TRUE) {
+        throw new WebServiceError($error);
+      }
 
-    $tabobject->current = $tab;
-    $tabobject->update();
+      $tabobject->current = $tab;
+      $tabobject->update();
 
-    $errors = $tabobject->save();
-    if (!empty($errors)) {
-      throw new WebServiceErrors($errors);
+      $errors = $tabobject->save();
+      if (!empty($errors)) {
+        throw new WebServiceErrors($errors);
+      }
+
+      return $tabobject->dn;
+    } finally {
+      Lock::deleteByObject($dn);
     }
-
-    return $tabobject->dn;
   }
 
   protected function endpoint_objects_PATCH_5 (int &$responseCode, $input, string $type, string $dn, string $tab, string $attribute, string $values): string
@@ -448,38 +453,43 @@ class fdRestService extends fdRPCService
 
     $this->checkAccess($type, $tab, $dn);
 
-    $tabobject = objects::open($dn, $type);
+    static::addLockOrThrow($dn);
+    try {
+      $tabobject = objects::open($dn, $type);
 
-    if (!isset($tabobject->by_object[$tab])) {
-      throw new WebServiceError('This tab does not exists: "'.$tab.'"', 404);
+      if (!isset($tabobject->by_object[$tab])) {
+        throw new WebServiceError('This tab does not exists: "'.$tab.'"', 404);
+      }
+
+      $object = $tabobject->by_object[$tab];
+
+      if (!is_subclass_of($object, 'simplePlugin')) {
+        throw new WebServiceError('Invalid tab', 501);
+      }
+
+      if (!isset($object->attributesAccess[$attribute])) {
+        throw new WebServiceError('Unknown attribute', 404);
+      }
+
+      if (!$object->isActive()) {
+        throw new WebServiceError('Inactive tab', 400);
+      }
+
+      if (!$object->acl_is_readable($object->attributesAccess[$attribute]->getAcl())) {
+        throw new WebServiceError('Not enough rights to read "'.$attribute.'"', 403);
+      }
+
+      $object->attributesAccess[$attribute]->resetToDefault();
+
+      $errors = $tabobject->save();
+      if (!empty($errors)) {
+        throw new WebServiceErrors($errors);
+      }
+
+      return $object->attributesAccess[$attribute]->serializeValue();
+    } finally {
+      Lock::deleteByObject($dn);
     }
-
-    $object = $tabobject->by_object[$tab];
-
-    if (!is_subclass_of($object, 'simplePlugin')) {
-      throw new WebServiceError('Invalid tab', 501);
-    }
-
-    if (!isset($object->attributesAccess[$attribute])) {
-      throw new WebServiceError('Unknown attribute', 404);
-    }
-
-    if (!$object->isActive()) {
-      throw new WebServiceError('Inactive tab', 400);
-    }
-
-    if (!$object->acl_is_readable($object->attributesAccess[$attribute]->getAcl())) {
-      throw new WebServiceError('Not enough rights to read "'.$attribute.'"', 403);
-    }
-
-    $object->attributesAccess[$attribute]->resetToDefault();
-
-    $errors = $tabobject->save();
-    if (!empty($errors)) {
-      throw new WebServiceErrors($errors);
-    }
-
-    return $object->attributesAccess[$attribute]->serializeValue();
   }
 
   protected function endpoint_objects_DELETE_5 (int &$responseCode, $input, string $type, string $dn, string $tab, string $attribute, string $values)
