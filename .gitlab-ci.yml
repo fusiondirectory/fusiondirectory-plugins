@@ -47,11 +47,11 @@ sonar_publish:
   image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/sonar-cli:4.4.0.2170
   stage: codestyle
   only:
-    - 1.3-dev
+    - 1.3-fixes
   script:
     - /home/sonar/*/bin/sonar-scanner
-      -D sonar.projectKey=fusiondirectory-plugins-dev
-      -D sonar.projectName=FusionDirectory-Plugins-Dev
+      -D sonar.projectKey=FusionDirectory-Plugins-13
+      -D sonar.projectName=FusionDirectory-Plugins-1.3
       -D sonar.projectVersion=1.3
       -D sonar.sourceEncoding=UTF-8
       -D sonar.exclusions='mail/personal/mail/class_sieve.inc,**/html/themes/breezy/icons/**,**/html/themes/legacy/icons/**,applications/html/plugins/applications/images/default_icon.png'
@@ -64,11 +64,11 @@ sonar_preview:
   image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/sonar-cli:4.4.0.2170
   stage: codestyle
   except:
-    - 1.3-dev
+    - 1.3-fixes
   script:
     - /home/sonar/*/bin/sonar-scanner
-      -D sonar.projectKey=fusiondirectory-plugins-dev
-      -D sonar.projectName=FusionDirectory-Plugins-Dev
+      -D sonar.projectKey=FusionDirectory-Plugins-13
+      -D sonar.projectName=FusionDirectory-Plugins-1.3
       -D sonar.projectVersion=1.3
       -D sonar.sourceEncoding=UTF-8
       -D sonar.exclusions='mail/personal/mail/class_sieve.inc,**/html/themes/breezy/icons/**,**/html/themes/legacy/icons/**,applications/html/plugins/applications/images/default_icon.png'
