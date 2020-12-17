@@ -21,15 +21,6 @@
 
 class WebServiceError extends FusionDirectoryException
 {
-  public function toArray (): array
-  {
-    return [
-      'class'   => get_class($this),
-      'message' => $this->getMessage(),
-      'line'    => $this->getLine(),
-      'file'    => $this->getFile(),
-    ];
-  }
 }
 
 class WebServiceLockError extends WebServiceError
@@ -215,7 +206,11 @@ class fdRPCService
         $tabs = [$tabs];
       }
       foreach ($tabs as $tab) {
-        $pInfos = pluglist::pluginInfos($tab);
+        try {
+          $pInfos = pluglist::pluginInfos($tab);
+        } catch (UnknownClassException $e) {
+          throw new WebServiceError(sprintf('Tab "%s" of type "%s" does not exists', $tab, $type), 404);
+        }
         if ($pInfos === NULL) {
           throw new WebServiceError(sprintf('Tab "%s" of type "%s" does not exists', $tab, $type), 404);
         }
@@ -532,7 +527,7 @@ class fdRPCService
         }
         $error = $tabobject->by_object[$tab]->deserializeValues($tabvalues);
         if ($error !== TRUE) {
-          throw new WebServiceError($error);
+          throw new WebServiceErrors([$error]);
         }
         $tabobject->current = $tab;
         $tabobject->update();
