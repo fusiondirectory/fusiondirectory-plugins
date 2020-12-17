@@ -141,26 +141,28 @@ class fdRestService extends fdRPCService
     } catch (WebServiceErrors $e) {
       http_response_code(400);
       echo $e->toJson();
-    } catch (WebServiceError $e) {
-      if ($e->getCode() != 0) {
-        http_response_code($e->getCode());
-      } else {
-        http_response_code(400);
-      }
-      echo static::encodeJson([$e->toArray()]);
     } catch (NonExistingLdapNodeException $e) {
       http_response_code(404);
       echo static::encodeJson(
         [[
+          'class'   => get_class($this),
           'message' => $e->getMessage(),
           'line'    => $e->getLine(),
           'file'    => $e->getFile(),
         ]]
       );
+    } catch (FusionDirectoryException $e) {
+      if (($e instanceof WebServiceError) && ($e->getCode() != 0)) {
+        http_response_code($e->getCode());
+      } else {
+        http_response_code(400);
+      }
+      echo static::encodeJson([$e->toArray()]);
     } catch (Exception $e) {
       http_response_code(400);
       echo static::encodeJson(
         [[
+          'class'   => get_class($this),
           'message' => $e->getMessage(),
           'line'    => $e->getLine(),
           'file'    => $e->getFile(),
@@ -399,7 +401,7 @@ class fdRestService extends fdRPCService
       }
       $error = $tabobject->by_object[$tab]->deserializeValues([$attribute => $input]);
       if ($error !== TRUE) {
-        throw new WebServiceError($error);
+        throw new WebServiceErrors([$error]);
       }
 
       $tabobject->current = $tab;
