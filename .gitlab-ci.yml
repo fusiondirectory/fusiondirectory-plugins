@@ -127,18 +127,41 @@ build-release:
     paths:
       - fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"').tar.gz
 
-trigger-ci-debian:
+trigger-ci-debian-stretch:
   stage: trigger
   only:
     - 1.3-fixes
+  variables:
+    GROUP: "$GROUP"
+    BRANCH_CORE: "$CI_COMMIT_REF_NAME"
+    BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
+    BRANCH_BUILD_DEBIAN_STRETCH: "$BRANCH_BUILD_DEBIAN_STRETCH"
   trigger:
-    project: debian/fusiondirectory
-    branch: 1.3-fixes
+    project: debian/stretch-fusiondirectory-fixes
+    branch: "$BRANCH_BUILD_DEBIAN_STRETCH"
+
+trigger-ci-debian-buster:
+  stage: trigger
+  only:
+    - 1.3-fixes
+  variables:
+    GROUP: "$GROUP"
+    BRANCH_CORE: "$CI_COMMIT_REF_NAME"
+    BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
+    BRANCH_BUILD_DEBIAN_BUSTER: "$BRANCH_BUILD_DEBIAN_BUSTER"
+  trigger:
+    project: debian/buster-fusiondirectory-fixes
+    branch: "$BRANCH_BUILD_DEBIAN_BUSTER"
 
 trigger-ci-centos7:
   stage: trigger
   only:
     - 1.3-fixes
+  variables:
+    GROUP: "$GROUP"
+    BRANCH_CORE: "$CI_COMMIT_REF_NAME"
+    BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
+    BRANCH_BUILD_CENTOS_7: "$BRANCH_BUILD_CENTOS_7"
   trigger:
     project: centos/centos7-fixes
-    branch: master
+    branch: "$BRANCH_BUILD_CENTOS_7"
