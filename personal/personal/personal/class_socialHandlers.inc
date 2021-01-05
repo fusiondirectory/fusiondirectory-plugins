@@ -175,7 +175,7 @@ class socialHandler_github extends socialHandler
 
   function validate ($value)
   {
-    # Regex from https://github.com/shinnn/github-username-regex
+    /* Regex from https://github.com/shinnn/github-username-regex */
     if (!preg_match('/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i', $value)) {
       throw new socialHandlerInvalidValueException(_('GitHub account names have at most 39 characters, contain only alphanumeric characters or hyphens, cannot have multiple consecutive hyphens, and cannot begin or end with a hyphen'));
     }
@@ -199,7 +199,7 @@ class socialHandler_googlescholar extends socialHandler
 
   function validate ($value)
   {
-    # Regex from https://www.wikidata.org/wiki/Property:P1960
+    /* Regex from https://www.wikidata.org/wiki/Property:P1960 */
     if (!preg_match('/^[-\w]{12}$/', $value)) {
       throw new socialHandlerInvalidValueException(_('Google Scholar account IDs have exactly 12 alphanumerical characters or hyphens or underscores'));
     }
@@ -223,8 +223,9 @@ class socialHandler_matrix extends socialHandler
 
   function validate ($value)
   {
-    # Grammar specified in https://matrix.org/docs/spec/appendices#identifier-grammar
-    # Currently, we do not check the server name (valid DNS or IPv4 address or IPv6 address) and optional port number
+    /* Grammar specified in https://matrix.org/docs/spec/appendices#identifier-grammar
+     * Currently, we do not check the server name (valid DNS or IPv4 address or IPv6 address) and optional port number
+     */
     if (!preg_match('/^@[-=\.\/\w]+:.+$/', $value)) {
       throw new socialHandlerInvalidValueException(_('Matrix user IDs have the format \'@username:server\''));
     }
