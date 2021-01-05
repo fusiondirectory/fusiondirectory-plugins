@@ -163,3 +163,72 @@ class socialHandler_orcid extends socialHandler
     return (($result == 10) ? "X" : (string)$result);
   }
 }
+
+class socialHandler_github extends socialHandler
+{
+  static function getName ()
+  {
+    return _('GitHub');
+  }
+
+  protected $baseurl = 'https://github.com';
+
+  function validate ($value)
+  {
+    /* Regex from https://github.com/shinnn/github-username-regex */
+    if (!preg_match('/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i', $value)) {
+      throw new socialHandlerInvalidValueException(_('GitHub account names have at most 39 characters, contain only alphanumeric characters or hyphens, cannot have multiple consecutive hyphens, and cannot begin or end with a hyphen'));
+    }
+    return $value;
+  }
+}
+
+class socialHandler_googlescholar extends socialHandler
+{
+  static function getName ()
+  {
+    return _('Google Scholar');
+  }
+
+  protected $baseurl = 'https://scholar.google.com/citations?user=';
+
+  function linkify ($value)
+  {
+    return $this->link($this->baseurl.$value, $value);
+  }
+
+  function validate ($value)
+  {
+    /* Regex from https://www.wikidata.org/wiki/Property:P1960 */
+    if (!preg_match('/^[-\w]{12}$/', $value)) {
+      throw new socialHandlerInvalidValueException(_('Google Scholar account IDs have exactly 12 alphanumerical characters or hyphens or underscores'));
+    }
+    return $value;
+  }
+}
+
+class socialHandler_matrix extends socialHandler
+{
+  static function getName ()
+  {
+    return _('Matrix');
+  }
+
+  protected $baseurl = '';
+
+  function linkify ($value)
+  {
+    return $value;
+  }
+
+  function validate ($value)
+  {
+    /* Grammar specified in https://matrix.org/docs/spec/appendices#identifier-grammar
+     * Currently, we do not check the server name (valid DNS or IPv4 address or IPv6 address) and optional port number
+     */
+    if (!preg_match('/^@[-=\.\/\w]+:.+$/', $value)) {
+      throw new socialHandlerInvalidValueException(_('Matrix user IDs have the format \'@username:server\''));
+    }
+    return $value;
+  }
+}
