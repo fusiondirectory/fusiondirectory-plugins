@@ -30,6 +30,7 @@ class WebServiceLockError extends WebServiceError
 
   public function __construct (string $message, string $lockedDn, string $lockAuthor, int $code = 0, Throwable $previous = NULL)
   {
+    parent::__construct($message, $code, $previous);
     $this->lockedDn   = $lockedDn;
     $this->lockAuthor = $lockAuthor;
   }
