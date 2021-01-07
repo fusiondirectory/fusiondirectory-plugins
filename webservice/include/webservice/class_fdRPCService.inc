@@ -812,6 +812,50 @@ class fdRPCService
   }
 
   /*!
+   * \brief Archive an object
+   */
+  protected function _archiveObject (string $type, $dns)
+  {
+    global $config, $ui;
+
+    if (!class_available('archivedObject')) {
+      throw new WebServiceError(_('Archive action is not available: archive plugin is not installed'), 501);
+    }
+
+    // Filter out entries we are not allowed to modify
+    $disallowed = [];
+
+    if (!is_array($dns)) {
+      $dns = [$dns];
+    }
+
+    foreach ($dns as $dn) {
+      if (!archivedObject::hasPermissionToArchive($type, $dn)) {
+        $disallowed[] = $dn;
+      }
+    }
+    if (count($disallowed)) {
+      throw new WebServiceError(htmlunescape(msgPool::permModify($disallowed)), 403);
+    }
+
+    static::addLockOrThrow($dns);
+    try {
+      $errors = [];
+      foreach ($dns as $dn) {
+        $errors = array_merge(
+          $errors,
+          archivedObject::archiveObject($type, $dn)
+        );
+      }
+      if (!empty($errors)) {
+        throw new WebServiceErrors($errors);
+      }
+    } finally {
+      Lock::deleteByObject($dns);
+    }
+  }
+
+  /*!
    * \brief Generate recovery token for a user
    */
   protected function _recoveryGenToken ($email)

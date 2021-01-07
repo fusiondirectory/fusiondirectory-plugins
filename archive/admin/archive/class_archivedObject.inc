@@ -140,6 +140,21 @@ class archivedObject extends simplePlugin
     }
   }
 
+  public static function hasPermissionToArchive (string $type, string $dn): bool
+  {
+    global $ui;
+    $infos = objects::infos($type);
+    if (strpos($ui->get_permissions($dn, $infos['aclCategory'].'/'.$infos['mainTab'], '0'), 'r') === FALSE) {
+      /* Object read right */
+      return FALSE;
+    }
+    if (strpos($ui->get_permissions($dn, $infos['aclCategory'].'/archive', '0'), 'c') === FALSE) {
+      /* Archive creation right */
+      return FALSE;
+    }
+    return TRUE;
+  }
+
   /*!
    * \brief Archive object data and delete it
    */
