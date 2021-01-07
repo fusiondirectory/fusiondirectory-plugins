@@ -591,6 +591,15 @@ class fdRestService extends fdRPCService
     $responseCode = 204;
   }
 
+  protected function endpoint_archive_POST_2 (int &$responseCode, $input, string $type, string $dn)
+  {
+    $this->assertNoInput($input);
+
+    $this->_archiveObject($type, $dn);
+
+    $responseCode = 204;
+  }
+
   protected function endpoint_recovery_GET_0 (int &$responseCode, $input): array
   {
     $this->assertNoInput($input);

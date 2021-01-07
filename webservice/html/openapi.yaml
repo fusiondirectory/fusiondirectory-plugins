@@ -715,6 +715,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  '/archive/{type}/{dn}':
+    post:
+      summary: Archive an object (delete it)
+      operationId: archiveObject
+      tags:
+        - objects
+      parameters:
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/dn'
+      responses:
+        '204':
+          description: Success
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   '/recovery':
     get:
       summary: Generate recovery token for a user
