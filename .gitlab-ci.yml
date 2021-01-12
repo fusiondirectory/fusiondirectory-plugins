@@ -157,5 +157,5 @@ trigger-ci-centos7:
     BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
     BRANCH_BUILD_CENTOS_7: "$BRANCH_BUILD_CENTOS_7"
   trigger:
-    project: centos/centos7-dev
+    project: centos/centos7-fusiondirectory-dev
     branch: "$BRANCH_BUILD_CENTOS_7"
