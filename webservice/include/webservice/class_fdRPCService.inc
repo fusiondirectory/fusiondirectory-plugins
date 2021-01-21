@@ -232,7 +232,7 @@ class fdRPCService
   protected static function addLockOrThrow ($dn, string $user = NULL)
   {
     if (!empty($locks = Lock::get($dn))) {
-      throw new WebServiceLockError(sprintf(_('Cannot delete %s. It has been locked by %s.'), $dn, $locks[0]->userDn), $dn, $locks[0]->userDn);
+      throw new WebServiceLockError(sprintf(_('Cannot get a lock on %s. It has been locked by %s.'), $dn, $locks[0]->userDn), $dn, $locks[0]->userDn);
     }
     Lock::add($dn, $user);
   }
