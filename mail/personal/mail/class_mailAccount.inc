@@ -19,9 +19,19 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class MailQuotaAttribute extends BytesSizeAttribute
+class MailQuotaAttribute extends UnitIntAttribute
 {
   private $quotaUsage;
+
+  function __construct ($label, $description, $ldapName, $required, $min = FALSE, $max = FALSE, $defaultValue = "", $acl = "")
+  {
+    $units = [
+      1         => _('MiB'),
+      1024 ** 1 => _('GiB'),
+      1024 ** 2 => _('TiB'),
+    ];
+    parent::__construct($label, $description, $ldapName, $required, $units, $min, $max, $defaultValue, $acl);
+  }
 
   function setMailMethod ($mailMethod)
   {
