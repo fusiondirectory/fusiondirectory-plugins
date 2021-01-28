@@ -162,7 +162,17 @@ class fdRestService extends fdRPCService
       http_response_code(400);
       echo static::encodeJson(
         [[
-          'class'   => get_class($this),
+          'class'   => get_class($e),
+          'message' => $e->getMessage(),
+          'line'    => $e->getLine(),
+          'file'    => $e->getFile(),
+        ]]
+      );
+    } catch (Throwable $e) {
+      http_response_code(500);
+      echo static::encodeJson(
+        [[
+          'class'   => get_class($e),
           'message' => $e->getMessage(),
           'line'    => $e->getLine(),
           'file'    => $e->getFile(),
