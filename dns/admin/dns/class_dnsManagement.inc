@@ -103,7 +103,7 @@ class dnsManagement extends management
             if (is_array($target)) {
               $target = $target[0];
             }
-            $zoneName = $entry['zoneName'];
+            $zoneName = $entry['zoneName'][0];
             $s_daemon->append_call('Ldap2Zone.start', $target, ['args' => [$zoneName]]);
             if ($s_daemon->is_error()) {
               $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
