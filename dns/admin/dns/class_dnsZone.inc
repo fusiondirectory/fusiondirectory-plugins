@@ -309,7 +309,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       'aRecord'     => [],
       'aAAARecord'  => []
     ];
-    foreach (array_keys(DnsRecordAttribute::$types) as $type) {
+    foreach (DnsRecordAttribute::getLdapAttributesList() as $type) {
       if (isset($attrs[$type]['count'])) {
         for ($i = 0; $i < $attrs[$type]['count']; $i++) {
           $this->value[] = ['', $type, $attrs[$type][$i], ''];
@@ -327,7 +327,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     if (isset($attrs['dn'])) {
       $ldap = $config->get_ldap_link();
       $ldap->cd($attrs['dn']);
-      $ldap->search('(&(objectClass=dNSZone)(zoneName='.$attrs['zoneName'][0].'))', array_merge(['relativeDomainName'], array_keys(DnsRecordAttribute::$types)), 'one');
+      $ldap->search('(&(objectClass=dNSZone)(zoneName='.$attrs['zoneName'][0].'))', array_merge(['relativeDomainName'], DnsRecordAttribute::getLdapAttributesList()), 'one');
       while ($subattrs = $ldap->fetch()) {
         for ($i = 0; $i < $subattrs['count']; $i++) {
           $type = $subattrs[$i];
@@ -394,7 +394,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
 
   function fillLdapValue (array &$attrs)
   {
-    foreach (array_keys(DnsRecordAttribute::$types) as $type) {
+    foreach (DnsRecordAttribute::getLdapAttributesList() as $type) {
       if (!isset($attrs[$type])) {
         $attrs[$type] = [];
       }
@@ -568,7 +568,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
         if (!array_differs_recursive($initialNodes[$dn], $node)) {
           continue;
         }
-        foreach (array_keys(DnsRecordAttribute::$types) as $type) {
+        foreach (DnsRecordAttribute::getLdapAttributesList() as $type) {
           if (!isset($node[$type])) {
             $node[$type] = [];
           }
@@ -867,7 +867,7 @@ class dnsZone extends simplePlugin
   function prepareSavedAttributes ()
   {
     parent::prepareSavedAttributes();
-    foreach (array_keys(DnsRecordAttribute::$types) as $type) {
+    foreach (DnsRecordAttribute::getLdapAttributesList() as $type) {
       if (isset($this->attrs[$type])) {
         $this->saved_attributes[$type] = $this->attrs[$type];
       }
