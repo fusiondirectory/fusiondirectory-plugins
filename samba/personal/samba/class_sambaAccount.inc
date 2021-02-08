@@ -516,6 +516,11 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
       return $errors;
     }
 
+    if ($this->is_template) {
+      /* Skip synchronisations and generations on templates */
+      return $errors;
+    }
+
     // Generate rid / primaryGroupId
     if (!isset($config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'])) {
       $error = new SimplePluginError($this, htmlescape(_('Undefined Samba SID detected. Please fix this problem manually!')));
@@ -525,7 +530,7 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
       $this->ridBase  = $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
     }
 
-    // Need to generate a new uniqe uid/gid combination?
+    // Need to generate a new unique uid/gid combination?
     if (($this->sambaSID == '') || $this->attributesAccess['sambaDomainName']->hasChanged()) {
       $ldap = $config->get_ldap_link();
       if ($config->get_cfg_value('sambaDependsOnPosix', 'TRUE') !== 'FALSE') {
@@ -542,7 +547,7 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
       $this->attrs['sambaSID'] = $sid;
     }
 
-    if (!$this->is_template && isset($this->parent->by_object['posixAccount']) && $this->parent->by_object['posixAccount']->is_account) {
+    if (isset($this->parent->by_object['posixAccount']) && $this->parent->by_object['posixAccount']->is_account) {
       $ldap = $config->get_ldap_link();
       // Check for users primary group
       $ldap->cd($config->current['BASE']);
