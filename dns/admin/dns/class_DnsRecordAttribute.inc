@@ -112,6 +112,14 @@ class DnsRecordAttribute extends CompositeAttribute
     'tXTRecord'   => 'TXT',
   ];
 
+  public static function getLdapAttributesList (): array
+  {
+    /* DKIM record is not in LDAP schemas, filtering it out (it’s stored in tXTRecord anyway) */
+    $types = static::$types;
+    unset($types['dKIMRecord']);
+    return array_keys($types);
+  }
+
   /* Types which might match reverse zone records */
   public static $reverseTypes = [
     'aRecord', 'aAAARecord'
