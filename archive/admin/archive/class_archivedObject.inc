@@ -132,7 +132,7 @@ class archivedObject extends simplePlugin
       return new Action(
         'archive', _('Archive'), 'geticon.php?context=actions&icon=archive&size=16',
         '+', $callable,
-        ['/archive/c', 'r'],
+        ['/archivedObject/c', 'r'],
         TRUE,
         TRUE,
         $types
@@ -148,7 +148,7 @@ class archivedObject extends simplePlugin
       /* Object read right */
       return FALSE;
     }
-    if (strpos($ui->get_permissions($dn, $infos['aclCategory'].'/archive', '0'), 'c') === FALSE) {
+    if (strpos($ui->get_permissions($dn, $infos['aclCategory'].'/archivedObject', '0'), 'c') === FALSE) {
       /* Archive creation right */
       return FALSE;
     }
