@@ -33,7 +33,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
       'plFilter'      => '(supannRessourceEtatDate=*)',
       'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=supann-status&size=16',
-      'plSelfModify'  => FALSE,
+      'plSelfModify'  => TRUE,
       'plPriority'    => 15,
       'plObjectClass' => [],
       'plObjectType'  => ['user'],
