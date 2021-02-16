@@ -1,0 +1,45 @@
+# Dates
+
+attributetype ( 1.3.6.1.4.1.38414.84.10.1 NAME 'fdSubscriptionStartDate'
+  DESC 'FusionDirectory - Subscription Starting Date'
+  EQUALITY generalizedTimeMatch
+  ORDERING generalizedTimeOrderingMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.84.10.2 NAME 'fdSubscriptionEndDate'
+  DESC 'FusionDirectory - Subscription End Date'
+  EQUALITY generalizedTimeMatch
+  ORDERING generalizedTimeOrderingMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-VALUE )
+
+# Subscription attributes
+
+attributetype ( 1.3.6.1.4.1.38414.84.11.1 NAME 'fdSubscriptionType'
+  DESC 'FusionDirectory - Subscription type'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.84.11.2 NAME 'fdSubscriptionActive'
+  DESC 'FusionDirectory - Is this subscription active'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.84.11.3 NAME 'fdSubscriptionContractId'
+  DESC 'FusionDirectory - Subscription contract ID'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+# Object Classes
+
+objectclass ( 1.3.6.1.4.1.38414.84.2.1  NAME 'fdSubscription'
+  DESC 'FusionDirectory - Subscription'
+  MUST ( cn )
+  MAY (
+    fdSubscriptionStartDate $ fdSubscriptionEndDate $
+    fdSubscriptionType $ fdSubscriptionActive $ fdSubscriptionContractId $
+    uid $ userPassword $ description
+  )
+)
