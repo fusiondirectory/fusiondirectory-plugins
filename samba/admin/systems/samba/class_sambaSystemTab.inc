@@ -64,34 +64,18 @@ class sambaSystemTab extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['uid']->setUnique('whole');
-    $this->attributesAccess['sambaDomainName']->setChoices(array_keys($config->data['SERVERS']['SAMBA']));
+    $domains = sambaDomainManagement::getSambaDomains();
+    $this->attributesAccess['sambaDomainName']->setChoices(array_keys($domains));
     $this->attributesAccess['sambaDomainName']->setInLdap(FALSE);
 
-    // Get samba domain and its sid/rid base
+    /* Get samba domain */
     if ($this->sambaSID != '') {
-      $this->SID = preg_replace('/-[^-]+$/', '', $this->sambaSID);
-      $ldap = $config->get_ldap_link();
-      $ldap->cd($config->current['BASE']);
-      $ldap->search('(&(objectClass=sambaDomain)(sambaSID='.$this->SID.'))', ['sambaAlgorithmicRidBase','sambaDomainName']);
-      if ($ldap->count() != 0) {
-        $attrs = $ldap->fetch();
-        if (isset($attrs['sambaAlgorithmicRidBase'])) {
-          $this->ridBase = $attrs['sambaAlgorithmicRidBase'][0];
-        } else {
-          $this->ridBase = $config->get_cfg_value('sambaRidBase');
+      $SID  = preg_replace('/-[^-]+$/', '', $this->sambaSID);
+      foreach ($domains as $name => $domain) {
+        if ($domain['SID'] == $SID) {
+          $this->sambaDomainName = $name;
+          break;
         }
-        if ($this->sambaDomainName == '') {
-          $this->sambaDomainName = $attrs['sambaDomainName'][0];
-        }
-      } else {
-        // Fall back to a 'DEFAULT' domain, if none was found in LDAP.
-        if ($this->sambaDomainName == '') {
-          $this->sambaDomainName = 'DEFAULT';
-        }
-
-        // Nothing in ldap, use configured sid and rid values.
-        $this->ridBase  = $config->get_cfg_value('sambaRidBase');
-        $this->SID      = $config->get_cfg_value('sambaSid');
       }
     }
   }
@@ -121,21 +105,22 @@ class sambaSystemTab extends simplePlugin
     // If not get it from config and generate a new sid
 
     if (($this->sambaSID == '') || (substr_count($this->sambaSID, '-') < 7)) {
-      $this->SID      = $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'];
-      $this->ridBase  = $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
+      $domains  = sambaDomainManagement::getSambaDomains();
+      $SIDBase  = $domains[$this->sambaDomainName]['SID'];
+      $ridBase  = $domains[$this->sambaDomainName]['RIDBASE'];
 
       // create sambaSID for workstation
-      $uidNumber = $this->uidNumber;
+      $uidNumber  = $this->uidNumber;
+      $ldap       = $config->get_ldap_link();
+      $ldap->cd($config->current['BASE']);
       do {
-        $sid = $this->SID.'-'.($uidNumber * 2 + $this->ridBase);
-        $ldap = $config->get_ldap_link();
-        $ldap->cd($config->current['BASE']);
-        $ldap->search('(sambaSID='.$sid.')', ['sambaSID']);
+        $sambaSID = $SIDBase.'-'.($uidNumber * 2 + $ridBase);
+        $ldap->search('(sambaSID='.$sambaSID.')', ['sambaSID']);
         $uidNumber++;
       } while ($ldap->count() != 0);
       $uidNumber--;
-      $this->attrs['sambaSID']  = $sid;
-      $this->attrs['uidNumber'] = $uidNumber + $this->ridBase;
+      $this->attrs['sambaSID']  = $sambaSID;
+      $this->attrs['uidNumber'] = $uidNumber + $ridBase;
     }
 
     return $errors;

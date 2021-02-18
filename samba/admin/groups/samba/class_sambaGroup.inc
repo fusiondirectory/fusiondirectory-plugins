@@ -87,23 +87,21 @@ class sambaGroup extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['sambaDomainName']->setInLdap(FALSE);
-    $this->attributesAccess['sambaDomainName']->setChoices(array_keys($config->data['SERVERS']['SAMBA']));
+    $this->attributesAccess['sambaDomainName']->setChoices(array_keys(sambaDomainManagement::getSambaDomains()));
 
     /* Get samba Domain in case of samba 3 */
-    if ($this->sambaSID != "") {
+    if ($this->sambaSID != '') {
       /* Get domain name for SID */
-      $this->sambaDomainName = "DEFAULT";
-
-      foreach ($config->data['SERVERS']['SAMBA'] as $key => $val) {
+      foreach (sambaDomainManagement::getSambaDomains() as $key => $val) {
         if ($val['SID'] == $this->getSID()) {
           $this->sambaDomainName = $key;
           break;
         }
       }
     } else {
-      if ($config->get_cfg_value("sid") != "") {
-        $this->sambaDomainName  = "DEFAULT";
-        $this->setSID($config->get_cfg_value("sid"));
+      if ($config->get_cfg_value('sambaSID') != '') {
+        $this->sambaDomainName  = 'DEFAULT';
+        $this->setSID($config->get_cfg_value('sambaSID'));
       } else {
         $error = new SimplePluginError($this, htmlescape(_('Cannot find group SID in your configuration!')));
         $error->display();
@@ -135,15 +133,16 @@ class sambaGroup extends simplePlugin
     }
 
     // Generate rid / primaryGroupId
-    if (!isset($config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'])) {
+    $domains = sambaDomainManagement::getSambaDomains();
+    if (!isset($domains[$this->sambaDomainName]['SID'])) {
       $error = new SimplePluginError($this, htmlescape(_('Undefined Samba SID detected. Please fix this problem manually!')));
       $error->display();
     } else {
-      $this->setSID($config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID']);
+      $this->setSID($domains[$this->sambaDomainName]['SID']);
     }
 
     if ($this->getGID() == 0) {
-      if (($this->getSID() == "") ||
+      if (($this->getSID() == '') ||
           $this->attributesAccess['sambaDomainName']->hasChanged() ||
           $this->attributesAccess['sambaSID']->attributes[1]->hasChanged()) {
         $sid                      = $this->getSambaSID();
@@ -190,8 +189,7 @@ class sambaGroup extends simplePlugin
 
   function getRidBase ()
   {
-    global $config;
-    return $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
+    return sambaDomainManagement::getSambaDomains()[$this->sambaDomainName]['RIDBASE'];
   }
 
   function getSID ()

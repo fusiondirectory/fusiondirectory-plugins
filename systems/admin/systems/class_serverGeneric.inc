@@ -33,7 +33,6 @@ class serverGeneric extends workstationGeneric
           'description' => _('Server'),
           'icon'        => 'geticon.php?context=devices&icon=server&size=16',
           'ou'          => get_ou('serverRDN'),
-          'tabClass'    => 'servtabs',
         ]
       ],
       'plSearchAttrs' => ['description', 'ipHostNumber', 'macAddress'],
