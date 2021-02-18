@@ -141,9 +141,6 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
 {
   protected $displayHeader  = TRUE;
 
-  var $SID      = "";
-  var $ridBase  = 0;
-
   static function plInfo (): array
   {
     global $config;
@@ -383,7 +380,8 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
 
     parent::__construct($dn, $baseobject, $parent, $mainTab);
 
-    $this->attributesAccess['sambaDomainName']->setChoices(array_keys($config->data['SERVERS']['SAMBA']));
+    $domains = sambaDomainManagement::getSambaDomains();
+    $this->attributesAccess['sambaDomainName']->setChoices(array_keys($domains));
     $this->attributesAccess['TsLogin']->setManagedAttributes(
       [
         'disable' => [
@@ -421,31 +419,14 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
     $this->attributesAccess['fd_pwdCantChange']->setInitialValue($value);
     $this->attributesAccess['fd_pwdCantChange']->setValue($value);
 
-    // Get samba domain and its sid/rid base
-    if ($this->sambaSID != "") {
-      $this->SID = preg_replace("/-[^-]+$/", "", $this->sambaSID);
-      $ldap = $config->get_ldap_link();
-      $ldap->cd($config->current['BASE']);
-      $ldap->search("(&(objectClass=sambaDomain)(sambaSID=$this->SID))", ["sambaAlgorithmicRidBase","sambaDomainName"]);
-      if ($ldap->count() != 0) {
-        $attrs = $ldap->fetch();
-        if (isset($attrs['sambaAlgorithmicRidBase'])) {
-          $this->ridBase = $attrs['sambaAlgorithmicRidBase'][0];
-        } else {
-          $this->ridBase = $config->get_cfg_value("sambaRidBase");
+    /* Get samba domain */
+    if ($this->sambaSID != '') {
+      $SID = preg_replace('/-[^-]+$/', '', $this->sambaSID);
+      foreach ($domains as $name => $domain) {
+        if ($domain['SID'] == $SID) {
+          $this->sambaDomainName = $name;
+          break;
         }
-        if ($this->sambaDomainName == "") {
-          $this->sambaDomainName = $attrs['sambaDomainName'][0];
-        }
-      } else {
-        // Fall back to a 'DEFAULT' domain, if none was found in LDAP.
-        if ($this->sambaDomainName == "") {
-          $this->sambaDomainName = "DEFAULT";
-        }
-
-        // Nothing in ldap, use configured sid and rid values.
-        $this->ridBase  = $config->get_cfg_value("sambaRidBase");
-        $this->SID      = $config->get_cfg_value("sambaSid");
       }
     }
 
@@ -466,7 +447,7 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
     parent::resetCopyInfos();
 
     /* Set a new SID */
-    $this->sambaSID = "";
+    $this->sambaSID = '';
   }
 
   /* Check for input problems */
@@ -522,29 +503,29 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
     }
 
     // Generate rid / primaryGroupId
-    if (!isset($config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'])) {
+    $domains = sambaDomainManagement::getSambaDomains();
+    if (!isset($domains[$this->sambaDomainName]['SID'])) {
       $error = new SimplePluginError($this, htmlescape(_('Undefined Samba SID detected. Please fix this problem manually!')));
       $error->display();
     } else {
-      $this->SID      = $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'];
-      $this->ridBase  = $config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
-    }
-
-    // Need to generate a new unique uid/gid combination?
-    if (($this->sambaSID == '') || $this->attributesAccess['sambaDomainName']->hasChanged()) {
-      $ldap = $config->get_ldap_link();
-      if ($config->get_cfg_value('sambaDependsOnPosix', 'TRUE') !== 'FALSE') {
-        $tmpNumber = $this->parent->by_object['posixAccount']->uidNumber;
-      } else {
-        $tmpNumber = 1;
-      }
-      do {
-        $sid = $this->SID."-".($tmpNumber * 2 + $this->ridBase);
+      // Need to generate a new unique uid/gid combination?
+      if (($this->sambaSID == '') || $this->attributesAccess['sambaDomainName']->hasChanged()) {
+        $SIDBase  = $domains[$this->sambaDomainName]['SID'];
+        $ridBase  = $domains[$this->sambaDomainName]['RIDBASE'];
+        $ldap = $config->get_ldap_link();
         $ldap->cd($config->current['BASE']);
-        $ldap->search("(sambaSID=$sid)", ["sambaSID"]);
-        $tmpNumber++;
-      } while ($ldap->count() > 0);
-      $this->attrs['sambaSID'] = $sid;
+        if ($config->get_cfg_value('sambaDependsOnPosix', 'TRUE') !== 'FALSE') {
+          $tmpNumber = $this->parent->by_object['posixAccount']->uidNumber;
+        } else {
+          $tmpNumber = 1;
+        }
+        do {
+          $sambaSID = $SIDBase.'-'.($tmpNumber * 2 + $ridBase);
+          $ldap->search('(sambaSID='.$sambaSID.')', ['sambaSID']);
+          $tmpNumber++;
+        } while ($ldap->count() > 0);
+        $this->attrs['sambaSID'] = $sambaSID;
+      }
     }
 
     if (isset($this->parent->by_object['posixAccount']) && $this->parent->by_object['posixAccount']->is_account) {

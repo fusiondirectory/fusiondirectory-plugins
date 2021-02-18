@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
 
-  Copyright (C) 2013-2019 FusionDirectory
+  Copyright (C) 2013-2021 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -59,5 +59,41 @@ class sambaDomainManagement extends management
       unset($this->actionHandlers[$actionName]);
     }
     unset($this->actions['new']);
+  }
+
+  public static function getSambaDomains (): array
+  {
+    global $config;
+
+    if (isset($config->data['SERVERS']['SAMBA'])) {
+      return $config->data['SERVERS']['SAMBA'];
+    }
+
+    $domains  = objects::ls('sambaDomain', ['sambaDomainName' => 1, 'sambaSID' => 1, 'sambaAlgorithmicRidBase' => 1]);
+    $data     = [];
+    foreach ($domains as $domain) {
+      $data[$domain['sambaDomainName']] = [
+        'SID'     => ($domain['sambaSID'] ?? $config->get_cfg_value('SambaSID')),
+        'RIDBASE' => ($domain['sambaAlgorithmicRidBase'] ?? $config->get_cfg_value('SambaRidBase')),
+      ];
+    }
+
+    /* If no samba domains are found, create a fake one */
+    if ((count($data) == 0)) {
+      $data['DEFAULT'] = [
+        'SID'     => $config->get_cfg_value('SambaSID'),
+        'RIDBASE' => $config->get_cfg_value('SambaRidBase'),
+      ];
+    }
+
+    $config->data['SERVERS']['SAMBA'] = $data;
+    return $config->data['SERVERS']['SAMBA'];
+  }
+
+  public static function resetDomainsCache ()
+  {
+    global $config;
+
+    unset($config->data['SERVERS']['SAMBA']);
   }
 }

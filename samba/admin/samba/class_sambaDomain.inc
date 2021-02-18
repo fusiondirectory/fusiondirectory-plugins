@@ -136,4 +136,25 @@ class sambaDomain extends simplePlugin
     global $config;
     return 'sambaDomainName='.ldap_escape($this->sambaDomainName, '', LDAP_ESCAPE_DN).','.$config->current['BASE'];
   }
+
+  protected function prepare_save (): array
+  {
+    if (!$this->shouldSave()) {
+      /* Reset domains cache now as post_save won’t be called */
+      sambaDomainManagement::resetDomainsCache();
+    }
+    return parent::prepare_save();
+  }
+
+  protected function post_save ()
+  {
+    parent::post_save();
+    sambaDomainManagement::resetDomainsCache();
+  }
+
+  protected function post_remove ()
+  {
+    parent::post_remove();
+    sambaDomainManagement::resetDomainsCache();
+  }
 }
