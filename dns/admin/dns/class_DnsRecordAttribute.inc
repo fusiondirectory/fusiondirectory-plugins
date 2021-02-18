@@ -96,6 +96,7 @@ class DnsRecordAttribute extends CompositeAttribute
     'cNAMERecord' => 'CNAME',
     'dSRecord'    => 'DS',
     'dKIMRecord'  => 'DKIM (TXT)',
+    'dMARCRecord' => 'DMARC (TXT)',
     'KeyRecord'   => 'KEY',
     'kXRecord'    => 'KX',
     'LocRecord'   => 'LOC',
@@ -114,9 +115,10 @@ class DnsRecordAttribute extends CompositeAttribute
 
   public static function getLdapAttributesList (): array
   {
-    /* DKIM record is not in LDAP schemas, filtering it out (it’s stored in tXTRecord anyway) */
+    /* DKIM and DMARC records are not in LDAP schemas, filtering them out (it’s stored in tXTRecord anyway) */
     $types = static::$types;
     unset($types['dKIMRecord']);
+    unset($types['dMARCRecord']);
     return array_keys($types);
   }
 
@@ -322,6 +324,11 @@ class DnsRecordAttribute extends CompositeAttribute
     $this->attributes[1] = new DkimRecordAttribute(_('DKIM Record'), $ldapName);
   }
 
+  private function loadDmarcRecordFields (string $ldapName)
+  {
+    $this->attributes[1] = new DmarcRecordAttribute(_('DMARC Record'), $ldapName);
+  }
+
   protected function updateFields ()
   {
     $type = $this->attributes[0]->getValue();
@@ -344,6 +351,9 @@ class DnsRecordAttribute extends CompositeAttribute
           break;
         case 'dKIMRecord':
           $this->loadDkimRecordFields($ldapName);
+          break;
+        case 'dMARCRecord':
+          $this->loadDmarcRecordFields($ldapName);
           break;
         case 'LocRecord':
           $this->loadLocRecordFields($ldapName);

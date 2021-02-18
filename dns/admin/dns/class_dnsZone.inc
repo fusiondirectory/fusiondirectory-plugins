@@ -97,6 +97,13 @@ class DnsRecordPlugin extends simplePlugin
             $m[1],
             $value[2],
           ];
+        } elseif (preg_match('/^v=DMARC1;(.*)$/', $value[1], $m)) {
+          /* Convert TXT to DMARC */
+          $value = [
+            'dMARCRecord',
+            $m[1],
+            $value[2],
+          ];
         }
       }
       $this->dnsRecord              = $value;
@@ -138,6 +145,13 @@ class DnsRecordPlugin extends simplePlugin
       $record = [
         'tXTRecord',
         'v=DKIM1; '.$record[1],
+        $record[2],
+      ];
+    } elseif ($record[0] == 'dMARCRecord') {
+      /* Convert DMARC to TXT */
+      $record = [
+        'tXTRecord',
+        'v=DMARC1; '.$record[1],
         $record[2],
       ];
     }
