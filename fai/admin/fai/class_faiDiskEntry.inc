@@ -169,6 +169,8 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
     if ($this->plugin->FAIdiskType == 'disk') {
       if (preg_match('/^disk(\d+)$/', $this->plugin->cn)) {
         $part['cn'] = $this->plugin->cn.'.'.$part['FAIpartitionNr'];
+      } elseif (preg_match('/^nvme(\d+)/', $this->plugin->cn)) {
+        $part['cn'] = $this->plugin->cn.'p'.$part['FAIpartitionNr'];
       } else {
         $part['cn'] = $this->plugin->cn.$part['FAIpartitionNr'];
       }
