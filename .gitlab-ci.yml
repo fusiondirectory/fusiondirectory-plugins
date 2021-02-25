@@ -12,7 +12,8 @@ stages:
 build-release:
   stage: tarballs
   only:
-    - tags
+#    - tags
+    - master
   script: 
     - tar -cvzf fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"').tar.gz *
   artifacts:
