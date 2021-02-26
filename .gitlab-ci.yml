@@ -8,13 +8,16 @@ stages:
 build-release:
   stage: tarballs
   only:
-#    - tags
     - master
-  script: 
-    - tar -cvzf fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"').tar.gz *
+  script:
+    - release="$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"')"
+    - mkdir ../fusiondirectory-plugins-$release/
+    - mv ./* ../fusiondirectory-plugins-$release/
+    - mv  ../fusiondirectory-plugins-$release/ ./
+    - tar -cvzf fusiondirectory-plugins-$release.tar.gz *
   artifacts:
     paths:
-      - fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"').tar.gz
+    - fusiondirectory-plugins-*.tar.gz
 
 trigger-ci-debian-stretch:
   stage: trigger
