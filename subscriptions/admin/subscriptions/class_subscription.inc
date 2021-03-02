@@ -79,11 +79,11 @@ class subscription extends simplePlugin
             _('Active'), _('Whether this subscription is active'),
             'fdSubscriptionActive', FALSE
           ),
-          new DateAttribute(
+          new GeneralizedTimeDateAttribute(
             _('Start date'), _('Start date of this subscription'),
             'fdSubscriptionStartDate', FALSE
           ),
-          new DateAttribute(
+          new GeneralizedTimeDateAttribute(
             _('End date'), _('End date of this subscription'),
             'fdSubscriptionEndDate', FALSE
           ),
