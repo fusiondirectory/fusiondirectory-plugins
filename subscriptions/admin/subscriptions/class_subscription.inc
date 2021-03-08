@@ -37,7 +37,7 @@ class subscription extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo (): array
+  public static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -89,6 +89,37 @@ class subscription extends simplePlugin
           ),
         ]
       ],
+      'export' => [
+        'name'  => _('Export'),
+        'attrs' => [
+          new ButtonAttribute(
+            _('Subscription file'), _('Generate the subscription file to send to the client'),
+            'generateSubscriptionFile', _('Generate')
+          ),
+        ]
+      ],
     ];
+  }
+
+  public function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
+  {
+    parent::__construct($dn, $object, $parent, $mainTab);
+
+    $this->attributesAccess['generateSubscriptionFile']->setInLdap(FALSE);
+  }
+
+  public function handle_generateSubscriptionFile ()
+  {
+    $fileName     = 'fusiondirectory-subscription-'.$this->cn.'.ini';
+    $fileContent  = "[FusionDirectory Subscription]\n";
+    foreach (static::$subscriptionAttributes as $attr) {
+      $fileContent .= $attr.'='.$this->$attr."\n";
+    }
+
+    session::set('binary', $fileContent);
+    session::set('binarytype', 'octet-stream');
+    session::set('binaryfile', $fileName);
+    header('location: getbin.php');
+    exit();
   }
 }
