@@ -120,7 +120,7 @@ class subscription extends simplePlugin
   {
     $fileName     = 'fusiondirectory-subscription-'.strtolower($this->cn).'.ini';
     $fileContent  = "[FusionDirectory Subscription]\n";
-    foreach (static::$subscriptionAttributes as $attr => $iniVar) {
+    foreach (subscriptionInfo::$subscriptionAttributes as $attr => $iniVar) {
       if ($attr === 'fdSubscriptionName') {
         $fileContent .= $iniVar.'='.$this->cn."\n";
       } else {
