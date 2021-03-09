@@ -66,7 +66,7 @@ class subscription extends simplePlugin
             _('Login'), _('Login for this subscription'),
             'uid', TRUE
           ),
-          new UserPasswordAttribute(
+          new PasswordAttribute(
             _('Password'), _('Password'),
             'userPassword', FALSE
           ),
@@ -110,10 +110,10 @@ class subscription extends simplePlugin
 
   public function handle_generateSubscriptionFile ()
   {
-    $fileName     = 'fusiondirectory-subscription-'.$this->cn.'.ini';
+    $fileName     = 'fusiondirectory-subscription-'.strtolower($this->cn).'.ini';
     $fileContent  = "[FusionDirectory Subscription]\n";
-    foreach (static::$subscriptionAttributes as $attr) {
-      $fileContent .= $attr.'='.$this->$attr."\n";
+    foreach (static::$subscriptionAttributes as $attr => $iniVar) {
+      $fileContent .= $iniVar.'='.$this->$attr."\n";
     }
 
     session::set('binary', $fileContent);
