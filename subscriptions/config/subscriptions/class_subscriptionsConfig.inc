@@ -45,7 +45,29 @@ class subscriptionsConfig extends simplePlugin
             'fdSubscriptionRDN', TRUE,
             'ou=subscriptions'
           ),
-        ]
+          new OrderedArrayAttribute(
+            new CharSeparatedCompositeAttribute(
+              _('Subscription types and their labels'),
+              'fdSubscriptionTypes',
+              [
+                new StringAttribute(
+                  _('Type'), _('Subscription type'),
+                  'fdSubscriptionTypes_type', TRUE
+                ),
+                new StringAttribute(
+                  _('Label'), _('Label shown for this type'),
+                  'fdSubscriptionTypes_label', TRUE
+                ),
+              ],
+              ';',
+              '',
+              _('Subscription types')
+            ),
+            FALSE,
+            [],
+            TRUE
+          ),
+        ],
       ],
     ];
   }

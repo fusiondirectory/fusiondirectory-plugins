@@ -37,7 +37,7 @@ class subscription extends simplePlugin
     ];
   }
 
-  static function getAttributesInfo (): array
+  public static function getAttributesInfo (): array
   {
     return [
       'main' => [
@@ -49,7 +49,7 @@ class subscription extends simplePlugin
             _('Description'), _('Description of this subscription'),
             'description', FALSE
           ),
-          new StringAttribute(
+          new SelectAttribute(
             _('Type'), _('Subscription type'),
             'fdSubscriptionType', FALSE
           ),
@@ -66,7 +66,7 @@ class subscription extends simplePlugin
             _('Login'), _('Login for this subscription'),
             'uid', TRUE
           ),
-          new UserPasswordAttribute(
+          new PasswordAttribute(
             _('Password'), _('Password'),
             'userPassword', FALSE
           ),
@@ -89,6 +89,49 @@ class subscription extends simplePlugin
           ),
         ]
       ],
+      'export' => [
+        'name'  => _('Export'),
+        'attrs' => [
+          new ButtonAttribute(
+            _('Subscription file'), _('Generate the subscription file to send to the client'),
+            'generateSubscriptionFile', _('Generate')
+          ),
+        ]
+      ],
     ];
+  }
+
+  public function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
+  {
+    global $config;
+
+    parent::__construct($dn, $object, $parent, $mainTab);
+
+    $this->attributesAccess['generateSubscriptionFile']->setInLdap(FALSE);
+    foreach ($config->get_cfg_value('SubscriptionTypes', []) as $subscriptionType) {
+      list($type, $label) = explode(';', $subscriptionType);
+      $types[]      = $type;
+      $typeLabels[] = $label;
+    }
+    $this->attributesAccess['fdSubscriptionType']->setChoices($types, $typeLabels);
+  }
+
+  public function handle_generateSubscriptionFile ()
+  {
+    $fileName     = 'fusiondirectory-subscription-'.strtolower($this->cn).'.ini';
+    $fileContent  = "[FusionDirectory Subscription]\n";
+    foreach (subscriptionInfo::$subscriptionAttributes as $attr => $iniVar) {
+      if ($attr === 'fdSubscriptionName') {
+        $fileContent .= $iniVar.'='.$this->cn."\n";
+      } else {
+        $fileContent .= $iniVar.'='.$this->$attr."\n";
+      }
+    }
+
+    session::set('binary', $fileContent);
+    session::set('binarytype', 'octet-stream');
+    session::set('binaryfile', $fileName);
+    header('location: getbin.php');
+    exit();
   }
 }
