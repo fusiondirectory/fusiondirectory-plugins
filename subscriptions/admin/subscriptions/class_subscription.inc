@@ -49,7 +49,7 @@ class subscription extends simplePlugin
             _('Description'), _('Description of this subscription'),
             'description', FALSE
           ),
-          new StringAttribute(
+          new SelectAttribute(
             _('Type'), _('Subscription type'),
             'fdSubscriptionType', FALSE
           ),
@@ -103,9 +103,17 @@ class subscription extends simplePlugin
 
   public function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
+    global $config;
+
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['generateSubscriptionFile']->setInLdap(FALSE);
+    foreach ($config->get_cfg_value('SubscriptionTypes', []) as $subscriptionType) {
+      list($type, $label) = explode(';', $subscriptionType);
+      $types[]      = $type;
+      $typeLabels[] = $label;
+    }
+    $this->attributesAccess['fdSubscriptionType']->setChoices($types, $typeLabels);
   }
 
   public function handle_generateSubscriptionFile ()
