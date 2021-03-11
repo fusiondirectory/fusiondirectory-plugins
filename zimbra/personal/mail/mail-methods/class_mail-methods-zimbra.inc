@@ -263,15 +263,19 @@ class mailMethodZimbra extends mailMethod
     }
 
     if ($this->type == 'user') {
-      $command = 'CreateAccount';
-      $userTab = $this->parent->parent->getBaseObject();
-      if ($userTab->attributesAccess['userPassword']->getClear() != '') {
-        /* Password was changed so we have the clear text password */
-        $account['password'] = $userTab->attributesAccess['userPassword']->getClear();
-      } else {
-        /* If we don’t, just give the hash */
-        $account['password']      = '';
-        $account['userPassword']  = $userTab->userPassword;
+      $servers  = static::getMailServers();
+      $infos    = $servers[$this->parent->gosaMailServer];
+      $command  = 'CreateAccount';
+      if ($infos['password_sync']) {
+        $userTab = $this->parent->parent->getBaseObject();
+        if ($userTab->attributesAccess['userPassword']->getClear() != '') {
+          /* Password was changed so we have the clear text password */
+          $account['password'] = $userTab->attributesAccess['userPassword']->getClear();
+        } else {
+          /* If we don’t, just give the hash */
+          $account['password']      = '';
+          $account['userPassword']  = $userTab->userPassword;
+        }
       }
     } else {
       $command = 'CreateGroup';
@@ -282,6 +286,9 @@ class mailMethodZimbra extends mailMethod
 
   private function updateAccount ($infos)
   {
+    $servers  = static::getMailServers();
+    $infos    = $servers[$this->parent->gosaMailServer];
+
     /* Step 1 - We fill $account */
     $account = $this->getAccountArray($infos);
     unset($account['name']);
@@ -321,7 +328,7 @@ class mailMethodZimbra extends mailMethod
     }
 
     /* Step 4 - Call SetPassword for password change if needed */
-    if ($this->type == 'user') {
+    if (($this->type == 'user') && $infos['password_sync']) {
       $userTab = $this->parent->parent->getBaseObject();
       if ($userTab->attributesAccess['userPassword']->getClear() != '') {
         $account = [
@@ -602,7 +609,7 @@ class mailMethodZimbra extends mailMethod
     $ldap->search('(&(objectClass=fdZimbraServer)(fdZimbraServerMailDomain=*))',
                   ['cn', 'fdZimbraServerUri', 'fdZimbraServerMailDomain',
                   'fdZimbraServerUserAgent', 'fdZimbraServerDeletionType',
-                  'fdZimbraServerLogin', 'fdZimbraServerPassword']);
+                  'fdZimbraServerLogin', 'fdZimbraServerPassword', 'fdZimbraServerPasswordSync']);
     while ($attrs = $ldap->fetch()) {
       unset($attrs['fdZimbraServerMailDomain']['count']);
       foreach ($attrs['fdZimbraServerMailDomain'] as $domainAndCos) {
@@ -611,16 +618,18 @@ class mailMethodZimbra extends mailMethod
         foreach ($cosArray as $cos) {
           list ($cosName, $cosId) = explode('|', $cos);
           $deleteMode = (isset($attrs['fdZimbraServerDeletionType'][0]) ? $attrs['fdZimbraServerDeletionType'][0] : 'delete');
+          $pwdSync    = (isset($attrs['fdZimbraServerPasswordSync'][0]) ? ($attrs['fdZimbraServerPasswordSync'][0] === 'TRUE') : TRUE);
           $serverList[$attrs['cn'][0].' - '.$domain.' - '.$cosName] = [
-            'server_dn'   => $attrs['dn'],
-            'user_agent'  => $attrs['fdZimbraServerUserAgent'][0],
-            'uri'         => $attrs['fdZimbraServerUri'][0],
-            'login'       => $attrs['fdZimbraServerLogin'][0],
-            'password'    => $attrs['fdZimbraServerPassword'][0],
-            'delete_type' => $deleteMode,
-            'domain'      => $domain,
-            'cos_name'    => $cosName,
-            'cos_id'      => $cosId
+            'server_dn'     => $attrs['dn'],
+            'user_agent'    => $attrs['fdZimbraServerUserAgent'][0],
+            'uri'           => $attrs['fdZimbraServerUri'][0],
+            'login'         => $attrs['fdZimbraServerLogin'][0],
+            'password'      => $attrs['fdZimbraServerPassword'][0],
+            'password_sync' => $pwdSync,
+            'delete_type'   => $deleteMode,
+            'domain'        => $domain,
+            'cos_name'      => $cosName,
+            'cos_id'        => $cosId
           ];
         }
       }
