@@ -259,7 +259,6 @@ class mailMethodZimbra extends mailMethod
       if (isset($this->parent->parent->by_object['supannAccount']) && $this->parent->parent->by_object['supannAccount']->is_account) {
         $supannTab = $this->parent->parent->by_object['supannAccount'];
 
-        $account['carLicense']      = $supannTab->eduPersonPrincipalName;
         $account['zimbraHideInGal'] = ($supannTab->supannListeRouge ? 'TRUE' : 'FALSE');
       }
 
