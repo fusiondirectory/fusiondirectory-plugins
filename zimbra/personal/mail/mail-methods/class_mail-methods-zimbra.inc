@@ -80,20 +80,31 @@ class mailMethodZimbra extends mailMethod
     }
   }
 
+  private static function prettyPrintXML ($xml)
+  {
+    $domxml = new DOMDocument('1.0');
+
+    $domxml->preserveWhiteSpace = FALSE;
+    $domxml->formatOutput       = TRUE;
+
+    $domxml->loadXML($xml);
+
+    return $domxml->saveXML();
+  }
+
   protected function query (string $command, $data)
   {
     $request = ZimbraSoap\Request::build($command, $data);
 
     try {
       $response = $request->soapCall($this->soapClient)->toArray();
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, htmlescape($this->soapClient->__getLastRequest() ?? ''), '<b>MAIL: Query</b>');
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, htmlescape($this->soapClient->__getLastResponse() ?? ''), '<b>MAIL: Answer</b>');
       return $response;
     } catch (SoapFault $sf) {
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, htmlescape($this->soapClient->__getLastRequest() ?? ''), '<b>MAIL: Query</b>');
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, htmlescape($this->soapClient->__getLastResponse() ?? ''), '<b>MAIL: Answer</b>');
       $this->error = sprintf(_('Error while contacting Zimbra API: %s'), $sf->getMessage());
       return FALSE;
+    } finally {
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<pre>'.htmlescape(static::prettyPrintXML($this->soapClient->__getLastRequest() ?? '')).'</pre>', '<b>MAIL: Query</b>');
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<pre>'.htmlescape(static::prettyPrintXML($this->soapClient->__getLastResponse() ?? '')).'</pre>', '<b>MAIL: Answer</b>');
     }
   }
 
