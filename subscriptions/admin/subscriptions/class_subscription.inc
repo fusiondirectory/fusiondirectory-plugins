@@ -51,11 +51,11 @@ class subscription extends simplePlugin
           ),
           new SelectAttribute(
             _('Type'), _('Subscription type'),
-            'fdSubscriptionType', FALSE
+            'fdSubscriptionType', TRUE
           ),
           new StringAttribute(
             _('Contract'), _('Contract identifier from Dolibarr'),
-            'fdSubscriptionContractId', FALSE
+            'fdSubscriptionContractId', TRUE
           ),
         ]
       ],
@@ -68,7 +68,7 @@ class subscription extends simplePlugin
           ),
           new PasswordAttribute(
             _('Password'), _('Password'),
-            'userPassword', FALSE
+            'userPassword', TRUE
           ),
         ]
       ],
@@ -81,11 +81,11 @@ class subscription extends simplePlugin
           ),
           new GeneralizedTimeDateAttribute(
             _('Start date'), _('Start date of this subscription'),
-            'fdSubscriptionStartDate', FALSE
+            'fdSubscriptionStartDate', TRUE
           ),
           new GeneralizedTimeDateAttribute(
             _('End date'), _('End date of this subscription'),
-            'fdSubscriptionEndDate', FALSE
+            'fdSubscriptionEndDate', TRUE
           ),
         ]
       ],
@@ -108,6 +108,8 @@ class subscription extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['generateSubscriptionFile']->setInLdap(FALSE);
+    $types      = [];
+    $typeLabels = [];
     foreach ($config->get_cfg_value('SubscriptionTypes', []) as $subscriptionType) {
       list($type, $label) = explode(';', $subscriptionType);
       $types[]      = $type;
