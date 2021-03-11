@@ -40,7 +40,7 @@ class serviceZimbra extends simpleMailMethodService
         'class' => ['fullwidth'],
         'attrs' => [
           new URLAttribute(
-            _('URI'), _('URI of the Zimbra server'),
+            _('URI'), _('URI of the Zimbra server soap service, with port, usually 7071'),
             'fdZimbraServerUri', TRUE
           ),
           new StringAttribute(
@@ -101,5 +101,16 @@ class serviceZimbra extends simpleMailMethodService
   {
     parent::__construct($dn, $parent);
     $this->attributesAccess['fdZimbraServerMailDomain']->setLinearRendering(FALSE);
+  }
+
+  public function update (): bool
+  {
+    parent::update();
+
+    if (($this->fdZimbraServerUri != '') && !preg_match('/:\d+$/', $this->fdZimbraServerUri)) {
+      $this->fdZimbraServerUri = $this->fdZimbraServerUri . ':7071';
+    }
+
+    return TRUE;
   }
 }
