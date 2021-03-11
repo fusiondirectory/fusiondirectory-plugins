@@ -119,27 +119,6 @@ class mailMethodZimbra extends mailMethod
     unset($this->tokenLifetime);
   }
 
-  /*! \brief Checks data consistency
-  */
-  public function check ()
-  {
-    $errors   = parent::check();
-    $servers  = static::getMailServers();
-    $infos    = $servers[$this->parent->gosaMailServer];
-
-    $alternates = $this->parent->gosaMailAlternateAddress;
-    foreach ($alternates as $alternate) {
-      if (!preg_match('/@'.preg_quote($infos['domain'], '/').'$/', $alternate)) {
-        $errors[] = new SimplePluginCheckError(
-          $this->parent,
-          htmlescape(sprintf(_('Email address "%s" does not use the correct domain "%s"'), $alternate, $infos['domain']))
-        );
-      }
-    }
-
-    return $errors;
-  }
-
   /*! \brief  Returns the connection status of this method.
       @return Boolean True if this method is connected else false.
    */
