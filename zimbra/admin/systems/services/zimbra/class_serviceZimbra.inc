@@ -54,6 +54,11 @@ class serviceZimbra extends simpleMailMethodService
             [  'delete',   'disable'], '',
             [_('Delete'),_('Disable')]
           ),
+          new BooleanAttribute(
+            _('Password synchronization'), _('Should the password be synchronized to the Zimbra instance'),
+            'fdZimbraServerPasswordSync', FALSE,
+            TRUE
+          ),
           new StringAttribute(
             _('Login'), _('Login to use to contact the Zimbra API'),
             'fdZimbraServerLogin', TRUE

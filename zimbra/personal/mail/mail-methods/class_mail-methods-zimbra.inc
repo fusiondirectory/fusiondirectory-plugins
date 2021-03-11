@@ -119,27 +119,6 @@ class mailMethodZimbra extends mailMethod
     unset($this->tokenLifetime);
   }
 
-  /*! \brief Checks data consistency
-  */
-  public function check ()
-  {
-    $errors   = parent::check();
-    $servers  = static::getMailServers();
-    $infos    = $servers[$this->parent->gosaMailServer];
-
-    $alternates = $this->parent->gosaMailAlternateAddress;
-    foreach ($alternates as $alternate) {
-      if (!preg_match('/@'.preg_quote($infos['domain'], '/').'$/', $alternate)) {
-        $errors[] = new SimplePluginCheckError(
-          $this->parent,
-          htmlescape(sprintf(_('Email address "%s" does not use the correct domain "%s"'), $alternate, $infos['domain']))
-        );
-      }
-    }
-
-    return $errors;
-  }
-
   /*! \brief  Returns the connection status of this method.
       @return Boolean True if this method is connected else false.
    */
@@ -259,7 +238,6 @@ class mailMethodZimbra extends mailMethod
       if (isset($this->parent->parent->by_object['supannAccount']) && $this->parent->parent->by_object['supannAccount']->is_account) {
         $supannTab = $this->parent->parent->by_object['supannAccount'];
 
-        $account['carLicense']      = $supannTab->eduPersonPrincipalName;
         $account['zimbraHideInGal'] = ($supannTab->supannListeRouge ? 'TRUE' : 'FALSE');
       }
 
@@ -285,15 +263,19 @@ class mailMethodZimbra extends mailMethod
     }
 
     if ($this->type == 'user') {
-      $command = 'CreateAccount';
-      $userTab = $this->parent->parent->getBaseObject();
-      if ($userTab->attributesAccess['userPassword']->getClear() != '') {
-        /* Password was changed so we have the clear text password */
-        $account['password'] = $userTab->attributesAccess['userPassword']->getClear();
-      } else {
-        /* If we don’t, just give the hash */
-        $account['password']      = '';
-        $account['userPassword']  = $userTab->userPassword;
+      $servers  = static::getMailServers();
+      $infos    = $servers[$this->parent->gosaMailServer];
+      $command  = 'CreateAccount';
+      if ($infos['password_sync']) {
+        $userTab = $this->parent->parent->getBaseObject();
+        if ($userTab->attributesAccess['userPassword']->getClear() != '') {
+          /* Password was changed so we have the clear text password */
+          $account['password'] = $userTab->attributesAccess['userPassword']->getClear();
+        } else {
+          /* If we don’t, just give the hash */
+          $account['password']      = '';
+          $account['userPassword']  = $userTab->userPassword;
+        }
       }
     } else {
       $command = 'CreateGroup';
@@ -304,6 +286,9 @@ class mailMethodZimbra extends mailMethod
 
   private function updateAccount ($infos)
   {
+    $servers  = static::getMailServers();
+    $infos    = $servers[$this->parent->gosaMailServer];
+
     /* Step 1 - We fill $account */
     $account = $this->getAccountArray($infos);
     unset($account['name']);
@@ -343,7 +328,7 @@ class mailMethodZimbra extends mailMethod
     }
 
     /* Step 4 - Call SetPassword for password change if needed */
-    if ($this->type == 'user') {
+    if (($this->type == 'user') && $infos['password_sync']) {
       $userTab = $this->parent->parent->getBaseObject();
       if ($userTab->attributesAccess['userPassword']->getClear() != '') {
         $account = [
@@ -624,7 +609,7 @@ class mailMethodZimbra extends mailMethod
     $ldap->search('(&(objectClass=fdZimbraServer)(fdZimbraServerMailDomain=*))',
                   ['cn', 'fdZimbraServerUri', 'fdZimbraServerMailDomain',
                   'fdZimbraServerUserAgent', 'fdZimbraServerDeletionType',
-                  'fdZimbraServerLogin', 'fdZimbraServerPassword']);
+                  'fdZimbraServerLogin', 'fdZimbraServerPassword', 'fdZimbraServerPasswordSync']);
     while ($attrs = $ldap->fetch()) {
       unset($attrs['fdZimbraServerMailDomain']['count']);
       foreach ($attrs['fdZimbraServerMailDomain'] as $domainAndCos) {
@@ -633,16 +618,18 @@ class mailMethodZimbra extends mailMethod
         foreach ($cosArray as $cos) {
           list ($cosName, $cosId) = explode('|', $cos);
           $deleteMode = (isset($attrs['fdZimbraServerDeletionType'][0]) ? $attrs['fdZimbraServerDeletionType'][0] : 'delete');
+          $pwdSync    = (isset($attrs['fdZimbraServerPasswordSync'][0]) ? ($attrs['fdZimbraServerPasswordSync'][0] === 'TRUE') : TRUE);
           $serverList[$attrs['cn'][0].' - '.$domain.' - '.$cosName] = [
-            'server_dn'   => $attrs['dn'],
-            'user_agent'  => $attrs['fdZimbraServerUserAgent'][0],
-            'uri'         => $attrs['fdZimbraServerUri'][0],
-            'login'       => $attrs['fdZimbraServerLogin'][0],
-            'password'    => $attrs['fdZimbraServerPassword'][0],
-            'delete_type' => $deleteMode,
-            'domain'      => $domain,
-            'cos_name'    => $cosName,
-            'cos_id'      => $cosId
+            'server_dn'     => $attrs['dn'],
+            'user_agent'    => $attrs['fdZimbraServerUserAgent'][0],
+            'uri'           => $attrs['fdZimbraServerUri'][0],
+            'login'         => $attrs['fdZimbraServerLogin'][0],
+            'password'      => $attrs['fdZimbraServerPassword'][0],
+            'password_sync' => $pwdSync,
+            'delete_type'   => $deleteMode,
+            'domain'        => $domain,
+            'cos_name'      => $cosName,
+            'cos_id'        => $cosId
           ];
         }
       }

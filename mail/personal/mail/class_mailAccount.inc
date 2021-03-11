@@ -290,16 +290,6 @@ class mailAccount extends simplePlugin
           ))
         );
         $error->display();
-      } elseif (!$this->mailMethod->account_exists()) {
-        $error = new SimplePluginError(
-          $this,
-          htmlescape(sprintf(
-            _('Mailbox "%s" doesn\'t exists on mail server: %s'),
-            $this->mailMethod->get_account_id(),
-            $this->gosaMailServer
-          ))
-        );
-        $error->display();
       }
 
       $this->attributesAccess['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
