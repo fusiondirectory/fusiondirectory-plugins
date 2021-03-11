@@ -36,7 +36,7 @@ class MailQuotaAttribute extends UnitIntAttribute
   function setMailMethod ($mailMethod)
   {
     /* Read quota */
-    $this->setValue($mailMethod->getQuota($this->getValue()));
+    $this->setValue((string) $mailMethod->getQuota($this->getValue()));
     $this->quotaUsage = $mailMethod->getQuotaUsage();
     if ($mailMethod->is_error()) {
       $error = new SimplePluginError(
