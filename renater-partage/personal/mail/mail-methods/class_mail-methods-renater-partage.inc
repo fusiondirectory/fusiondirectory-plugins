@@ -252,7 +252,9 @@ class mailMethodRenaterPartage extends mailMethod
     ];
     if ($this->type == 'user') {
       $account['zimbraCOSId']                         = $infos['cos_id'];
-      $account['zimbraMailQuota']                     = $this->parent->gosaMailQuota * 1024 * 1024;
+      if (is_numeric($this->parent->gosaMailQuota)) {
+        $account['zimbraMailQuota']                   = $this->parent->gosaMailQuota * 1024 * 1024;
+      }
       $account['zimbraPrefMailLocalDeliveryDisabled'] = ($this->parent->flag_ownmailbox ? 'TRUE' : 'FALSE');
       if (!empty($this->parent->gosaMailForwardingAddress)) {
         $count = count($this->parent->gosaMailForwardingAddress);

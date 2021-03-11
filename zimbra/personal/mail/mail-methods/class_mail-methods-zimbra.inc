@@ -52,7 +52,7 @@ class mailMethodZimbra extends mailMethod
     $this->soapClient = new SoapClient(
       $infos['uri'].'/service/wsdl/ZimbraAdminService.wsdl',
       [
-        'location'      => $infos['uri'].':7071/service/admin/soap',
+        'location'      => $infos['uri'].'/service/admin/soap',
         'trace'         => TRUE,
         'exceptions'    => TRUE,
         'classmap'     => ZimbraSoap\Request::getMapping(),
@@ -200,7 +200,9 @@ class mailMethodZimbra extends mailMethod
     ];
     if ($this->type == 'user') {
       $account['zimbraCOSId']                         = $infos['cos_id'];
-      $account['zimbraMailQuota']                     = $this->parent->gosaMailQuota * 1024 * 1024;
+      if (is_numeric($this->parent->gosaMailQuota)) {
+        $account['zimbraMailQuota']                   = $this->parent->gosaMailQuota * 1024 * 1024;
+      }
       $account['zimbraPrefMailLocalDeliveryDisabled'] = ($this->parent->flag_ownmailbox ? 'TRUE' : 'FALSE');
       if (!empty($this->parent->gosaMailForwardingAddress)) {
         $count = count($this->parent->gosaMailForwardingAddress);
@@ -580,13 +582,17 @@ class mailMethodZimbra extends mailMethod
   }
 
   /*! \brief  Returns the quota restrictions in MiB.
-      @return Integer Quota restrictions.
+      @return int|null
    */
   public function getQuota ($quotaValue)
   {
     if ($this->cacheAccount()) {
       /* Server sends quota in bytes */
-      return (int)($this->cachedAccount['account']['zimbraMailQuota'] / (1024 * 1024));
+      if (isset($this->cachedAccount['account']['zimbraMailQuota']) && is_numeric($this->cachedAccount['account']['zimbraMailQuota'])) {
+        return (int)($this->cachedAccount['account']['zimbraMailQuota'] / (1024 * 1024));
+      } else {
+        return NULL;
+      }
     }
     return $quotaValue;
   }

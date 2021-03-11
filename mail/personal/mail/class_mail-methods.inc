@@ -488,7 +488,7 @@ class mailMethod
   }
 
   /*! \brief  Returns the quota restrictions.
-      @return Integer Quota restrictions.
+      @return int|null
    */
   public function getQuota ($quotaValue)
   {
