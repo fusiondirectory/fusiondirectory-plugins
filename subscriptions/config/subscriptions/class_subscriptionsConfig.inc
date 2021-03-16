@@ -67,6 +67,32 @@ class subscriptionsConfig extends simplePlugin
             [],
             TRUE
           ),
+          new StringAttribute(
+            _('Apt repository host'), _('Host for the apt repository, to use in auth.conf'),
+            'fdSubscriptionAptHost', FALSE
+          ),
+          new OrderedArrayAttribute(
+            new CharSeparatedCompositeAttribute(
+              _('Rpm repostiories'),
+              'fdSubscriptionRpmRepositories',
+              [
+                new StringAttribute(
+                  _('Repository'), _('Repository URL without scheme, to put after @ in baseurl'),
+                  'fdSubscriptionRpmRepositories_repo', TRUE
+                ),
+                new StringAttribute(
+                  _('Label'), _('Label shown for this repository'),
+                  'fdSubscriptionRpmRepositories_label', TRUE
+                ),
+              ],
+              ';',
+              '',
+              _('Rpm repostiories')
+            ),
+            FALSE,
+            [],
+            TRUE
+          ),
         ],
       ],
     ];

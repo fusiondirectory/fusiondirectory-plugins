@@ -96,6 +96,18 @@ class subscription extends simplePlugin
             _('Subscription file'), _('Generate the subscription file to send to the client'),
             'generateSubscriptionFile', _('Generate')
           ),
+          new ButtonAttribute(
+            _('APT auth.conf'), _('Generate the auth.conf file to send to the client if he uses Debian or a derivate'),
+            'generateAptFile', _('Generate')
+          ),
+          new SelectAttribute(
+            _('RPM distribution'), _('RPM distribution'),
+            'rpmRepository', TRUE
+          ),
+          new ButtonAttribute(
+            _('RPM'), _('Generate the fusiondirectory-subscription.repo file to send to the client if he uses an RPM based distribution'),
+            'generateRpmFile', _('Generate')
+          ),
         ]
       ],
     ];
@@ -108,14 +120,25 @@ class subscription extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['generateSubscriptionFile']->setInLdap(FALSE);
+    $this->attributesAccess['generateAptFile']->setInLdap(FALSE);
+    $this->attributesAccess['rpmDistribution']->setInLdap(FALSE);
+    $this->attributesAccess['generateRpmFile']->setInLdap(FALSE);
     $types      = [];
     $typeLabels = [];
     foreach ($config->get_cfg_value('SubscriptionTypes', []) as $subscriptionType) {
-      list($type, $label) = explode(';', $subscriptionType);
+      list($type, $label) = explode(';', $subscriptionType, 2);
       $types[]      = $type;
       $typeLabels[] = $label;
     }
     $this->attributesAccess['fdSubscriptionType']->setChoices($types, $typeLabels);
+    $rpmRepos       = [];
+    $rpmRepoLabels  = [];
+    foreach ($config->get_cfg_value('SubscriptionRpmRepositories', []) as $rpmRepository) {
+      list($repo, $label) = explode(';', $rpmRepository, 2);
+      $rpmRepos[]       = $repo;
+      $rpmRepoLabels[]  = $label;
+    }
+    $this->attributesAccess['rpmRepository']->setChoices($rpmRepos, $rpmRepoLabels);
   }
 
   public function handle_generateSubscriptionFile ()
@@ -129,11 +152,30 @@ class subscription extends simplePlugin
         $fileContent .= $iniVar.'='.$this->$attr."\n";
       }
     }
+    send_binary_content($fileContent, $fileName);
+  }
 
-    session::set('binary', $fileContent);
-    session::set('binarytype', 'octet-stream');
-    session::set('binaryfile', $fileName);
-    header('location: getbin.php');
-    exit();
+  public function handle_generateAptFile ()
+  {
+    global $config;
+
+    $fileName     = 'auth.conf';
+    $fileContent  = 'machine '.$config->get_cfg_value('SubscriptionAptHost')."\n";
+    $fileContent  .= ' login '.$this->uid."\n";
+    $fileContent  .= ' password '.$this->userPassword."\n";
+    send_binary_content($fileContent, $fileName);
+  }
+
+  public function handle_generateRpmFile ()
+  {
+    global $config;
+
+    $fileName     = 'fusiondirectory-subscription.repo';
+    $fileContent  = '[fusiondirectory-subscription]'."\n";
+    $fileContent  .= 'name=Fusiondirectory Packages for '.$this->attributesAccess['rpmRepository']->displayValue($this->rpmRepository)."\n";
+    $fileContent  .= 'baseurl=https://'.$this->uid.':'.$this->userPassword.'@'.$this->rpmRepository."\n";
+    $fileContent  .= 'enabled=1'."\n";
+    $fileContent  .= 'gpgcheck=1'."\n";
+    send_binary_content($fileContent, $fileName);
   }
 }

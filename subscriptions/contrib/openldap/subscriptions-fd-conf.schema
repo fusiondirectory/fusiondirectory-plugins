@@ -15,8 +15,21 @@ attributetype ( 1.3.6.1.4.1.38414.85.1.2 NAME 'fdSubscriptionTypes'
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{255})
 
+attributetype ( 1.3.6.1.4.1.38414.85.1.3 NAME 'fdSubscriptionAptHost'
+  DESC 'FusionDirectory - Host to use in APT auth.conf file'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.85.1.4 NAME 'fdSubscriptionRpmRepositories'
+  DESC 'FusionDirectory - Available RPM repositories - format url;Label'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
+
 objectclass ( 1.3.6.1.4.1.38414.85.2.1 NAME 'fdSubscriptionsPluginConf'
   DESC 'FusionDirectory subscriptions plugin configuration'
   SUP top AUXILIARY
   MUST ( cn )
-  MAY ( fdSubscriptionRDN $ fdSubscriptionTypes ) )
+  MAY ( fdSubscriptionRDN $ fdSubscriptionTypes $ fdSubscriptionAptHost $ fdSubscriptionRpmRepositories ) )
