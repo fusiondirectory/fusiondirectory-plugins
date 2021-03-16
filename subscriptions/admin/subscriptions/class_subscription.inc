@@ -121,7 +121,7 @@ class subscription extends simplePlugin
 
     $this->attributesAccess['generateSubscriptionFile']->setInLdap(FALSE);
     $this->attributesAccess['generateAptFile']->setInLdap(FALSE);
-    $this->attributesAccess['rpmDistribution']->setInLdap(FALSE);
+    $this->attributesAccess['rpmRepository']->setInLdap(FALSE);
     $this->attributesAccess['generateRpmFile']->setInLdap(FALSE);
     $types      = [];
     $typeLabels = [];
