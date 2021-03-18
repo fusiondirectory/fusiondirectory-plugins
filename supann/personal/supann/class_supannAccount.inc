@@ -171,7 +171,11 @@ class supannAccount extends simplePlugin
           new BooleanAttribute(
             _('Red list'), _('supannListeRouge - Should this person be on the red list'),
             'supannListeRouge', TRUE
-          )
+          ),
+          new MailsAttribute(
+            _('Forward messages to'), _('Addresses to which messages should be forwarded'),
+            'mailForwardingAddress'
+          ),
         ]
       ],
       'affectation' => [
@@ -353,6 +357,8 @@ class supannAccount extends simplePlugin
     $this->attributesAccess['supannRefId']->setUnique('whole');
     $this->attributesAccess['eduPersonPrincipalName']->setUnique('whole');
     $this->attributesAccess['supannAutreMail']->setUnique('whole');
+
+    $this->attributesAccess['mailForwardingAddress']->setVisible($config->get_cfg_value('SupannShowMailForwardingAddress') === 'TRUE');
 
     /* list of entity stored in LDAP tree */
     $ldap = $config->get_ldap_link();

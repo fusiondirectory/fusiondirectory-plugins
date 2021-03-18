@@ -61,6 +61,11 @@ class supannConfig extends simplePlugin
             'fdSupannPasswordRecovery', FALSE,
             TRUE
           ),
+          new BooleanAttribute(
+            _('Show mailForwardingAddress field'), _('Show the field mailForwardingAddress as an editable field'),
+            'fdSupannShowMailForwardingAddress', FALSE,
+            FALSE
+          ),
         ],
       ],
       'status' => [
