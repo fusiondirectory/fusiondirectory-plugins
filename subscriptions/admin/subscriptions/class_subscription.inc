@@ -32,6 +32,7 @@ class subscription extends simplePlugin
         'icon'        => 'geticon.php?context=types&icon=subscription&size=16',
         'ou'          => get_ou('subscriptionRDN'),
       ]],
+      'plSearchAttrs' => ['cn','description','fdSubscriptionContractId'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
