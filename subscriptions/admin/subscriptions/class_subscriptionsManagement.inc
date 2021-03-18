@@ -23,6 +23,17 @@ class subscriptionsManagement extends management
 {
   public static $skipTemplates = FALSE;
 
+  /* Default columns */
+  public static $columns = [
+    ['ObjectTypeColumn',          []],
+    ['LinkColumn',                ['attributes' => 'nameAttr',                'label' => 'Name']],
+    ['LinkColumn',                ['attributes' => 'description',             'label' => 'Description']],
+    ['LinkColumn',                ['attributes' => 'fdSubscriptionType',      'label' => 'Type']],
+    ['LdapGeneralizedTimeColumn', ['attributes' => 'fdSubscriptionStartDate', 'label' => 'Start date']],
+    ['LdapGeneralizedTimeColumn', ['attributes' => 'fdSubscriptionEndDate',   'label' => 'End date']],
+    ['ActionsColumn',             ['label' => 'Actions']],
+  ];
+
   public static function plInfo (): array
   {
     return [
