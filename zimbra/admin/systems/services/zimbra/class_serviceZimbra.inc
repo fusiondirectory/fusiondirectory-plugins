@@ -60,6 +60,11 @@ class serviceZimbra extends simpleMailMethodService
             TRUE
           ),
           new StringAttribute(
+            _('Id attribute'), _('Attribute to use for account id.'),
+            'fdZimbraServerIdAttribute', TRUE,
+            'mail'
+          ),
+          new StringAttribute(
             _('Login'), _('Login to use to contact the Zimbra API'),
             'fdZimbraServerLogin', TRUE
           ),

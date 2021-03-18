@@ -80,6 +80,40 @@ class mailMethodZimbra extends mailMethod
     }
   }
 
+  /*! \brief  Create a new account id, like 'user/name@domain.com'.
+   */
+  protected function build_account_id ()
+  {
+    if ($this->type == 'user') {
+      $servers  = static::getMailServers();
+      $infos    = $servers[$this->parent->gosaMailServer];
+      $attr     = $infos['id_attribute'];
+      $attrs    = [];
+      $this->parent->fillHookAttrs($attrs);
+      if (!isset($attrs[$attr]) && isset($this->parent->parent->by_object)) {
+        foreach ($this->parent->parent->by_object as $class => $object) {
+          if ($class != get_class($this->parent)) {
+            $object->fillHookAttrs($attrs);
+            if (isset($attrs[$attr])) {
+              break;
+            }
+          }
+        }
+      }
+      $acc_id = (string)($attrs[$attr] ?? '');
+      if (($acc_id === '') && isset($this->parent->attrs[$attr][0])) {
+        /* Fallback to LDAP if tab is not loaded yet */
+        $acc_id = $this->parent->attrs[$attr][0];
+      }
+      if ($this->account_id != $acc_id) {
+        $this->account_id = $acc_id;
+        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $acc_id, "<b>MAIL:</b> AccountID generated");
+      }
+    } else {
+      parent::build_account_id();
+    }
+  }
+
   private static function prettyPrintXML ($xml)
   {
     $domxml = new DOMDocument('1.0');
@@ -246,6 +280,12 @@ class mailMethodZimbra extends mailMethod
         $personalTab    = $this->parent->parent->by_object['personalInfo'];
         $account['co']  = $personalTab->co;
       }
+      $servers  = static::getMailServers();
+      $infos    = $servers[$this->parent->gosaMailServer];
+      $attr     = $infos['id_attribute'];
+      if ($attr !== 'mail') {
+        $account['zimbraPrefFromAddress'] = $this->parent->mail;
+      }
     }
 
     return $account;
@@ -356,6 +396,9 @@ class mailMethodZimbra extends mailMethod
       $command = 'RemoveDistributionListAlias';
     }
     foreach ($remove as $alias) {
+      if ($alias === '') {
+        continue;
+      }
       $answer = $this->query($command, ['zimbraId' => $this->cachedAccount['zimbraId'], 'alias' => $alias]);
       if ($answer === FALSE) {
         return FALSE;
@@ -367,6 +410,9 @@ class mailMethodZimbra extends mailMethod
       $command = 'AddDistributionListAlias';
     }
     foreach ($add as $alias) {
+      if ($alias === '') {
+        continue;
+      }
       $answer = $this->query($command, ['zimbraId' => $this->cachedAccount['zimbraId'], 'alias' => $alias]);
       if ($answer === FALSE) {
         return FALSE;
@@ -468,6 +514,8 @@ class mailMethodZimbra extends mailMethod
       if ($answer === FALSE) {
         return FALSE;
       }
+
+      $this->cacheAccount();
     } else {
       if ($this->account_id !== $this->initial_account_id) {
         /* Renaming */
@@ -504,6 +552,14 @@ class mailMethodZimbra extends mailMethod
         if (!$this->updateAccount($infos)) {
           return FALSE;
         }
+      }
+    }
+
+    if (($this->type == 'user') && ($infos['id_attribute'] !== 'mail')) {
+      $initialMail  = $this->parent->attributesAccess['mail']->getInitialValue();
+      $mail         = $this->parent->attributesAccess['mail']->getValue();
+      if (!$this->setAliases([$initialMail], [$mail])) {
+        return FALSE;
       }
     }
 
@@ -609,7 +665,8 @@ class mailMethodZimbra extends mailMethod
     $ldap->search('(&(objectClass=fdZimbraServer)(fdZimbraServerMailDomain=*))',
                   ['cn', 'fdZimbraServerUri', 'fdZimbraServerMailDomain',
                   'fdZimbraServerUserAgent', 'fdZimbraServerDeletionType',
-                  'fdZimbraServerLogin', 'fdZimbraServerPassword', 'fdZimbraServerPasswordSync']);
+                  'fdZimbraServerLogin', 'fdZimbraServerPassword', 'fdZimbraServerPasswordSync',
+                  'fdZimbraServerIdAttribute']);
     while ($attrs = $ldap->fetch()) {
       unset($attrs['fdZimbraServerMailDomain']['count']);
       foreach ($attrs['fdZimbraServerMailDomain'] as $domainAndCos) {
@@ -617,8 +674,9 @@ class mailMethodZimbra extends mailMethod
         $cosArray = explode(',', $cosString);
         foreach ($cosArray as $cos) {
           list ($cosName, $cosId) = explode('|', $cos);
-          $deleteMode = (isset($attrs['fdZimbraServerDeletionType'][0]) ? $attrs['fdZimbraServerDeletionType'][0] : 'delete');
-          $pwdSync    = (isset($attrs['fdZimbraServerPasswordSync'][0]) ? ($attrs['fdZimbraServerPasswordSync'][0] === 'TRUE') : TRUE);
+          $deleteMode   = (isset($attrs['fdZimbraServerDeletionType'][0]) ? $attrs['fdZimbraServerDeletionType'][0] : 'delete');
+          $pwdSync      = (isset($attrs['fdZimbraServerPasswordSync'][0]) ? ($attrs['fdZimbraServerPasswordSync'][0] === 'TRUE') : TRUE);
+          $idAttribute  = (isset($attrs['fdZimbraServerIdAttribute'][0]) ? $attrs['fdZimbraServerIdAttribute'][0] : 'mail');
           $serverList[$attrs['cn'][0].' - '.$domain.' - '.$cosName] = [
             'server_dn'     => $attrs['dn'],
             'user_agent'    => $attrs['fdZimbraServerUserAgent'][0],
@@ -626,10 +684,11 @@ class mailMethodZimbra extends mailMethod
             'login'         => $attrs['fdZimbraServerLogin'][0],
             'password'      => $attrs['fdZimbraServerPassword'][0],
             'password_sync' => $pwdSync,
+            'id_attribute'  => $idAttribute,
             'delete_type'   => $deleteMode,
             'domain'        => $domain,
             'cos_name'      => $cosName,
-            'cos_id'        => $cosId
+            'cos_id'        => $cosId,
           ];
         }
       }
