@@ -100,7 +100,10 @@ class mailMethodZimbra extends mailMethod
           }
         }
       }
-      $acc_id = (string)($attrs[$attr] ?? '');
+      $acc_id = ($attrs[$attr] ?? '');
+      if (is_array($acc_id)) {
+        $acc_id = $acc_id[0];
+      }
       if (($acc_id === '') && isset($this->parent->attrs[$attr][0])) {
         /* Fallback to LDAP if tab is not loaded yet */
         $acc_id = $this->parent->attrs[$attr][0];
@@ -502,7 +505,7 @@ class mailMethodZimbra extends mailMethod
     $infos = $servers[$this->parent->gosaMailServer];
 
     $this->build_account_id();
-    if (!$this->parent->initially_was_account) {
+    if ($this->parent->isMailboxCreation()) {
       /* Creation */
       if ($this->account_exists()) {
         $this->error = _('An account with the same email address already exists in the email server');
@@ -556,7 +559,11 @@ class mailMethodZimbra extends mailMethod
     }
 
     if (($this->type == 'user') && ($infos['id_attribute'] !== 'mail')) {
-      $initialMail  = $this->parent->attributesAccess['mail']->getInitialValue();
+      if ($this->parent->isMailboxCreation()) {
+        $initialMail  = '';
+      } else {
+        $initialMail  = $this->parent->attributesAccess['mail']->getInitialValue();
+      }
       $mail         = $this->parent->attributesAccess['mail']->getValue();
       if (!$this->setAliases([$initialMail], [$mail])) {
         return FALSE;
@@ -565,7 +572,11 @@ class mailMethodZimbra extends mailMethod
 
     /* Handle aliases */
     if (isset($this->parent->attrs['gosaMailAlternateAddress'])) {
-      $initialAliases = $this->parent->attributesAccess['gosaMailAlternateAddress']->getInitialValue();
+      if ($this->parent->isMailboxCreation()) {
+        $initialAliases = [];
+      } else {
+        $initialAliases = $this->parent->attributesAccess['gosaMailAlternateAddress']->getInitialValue();
+      }
       $aliases        = $this->parent->attributesAccess['gosaMailAlternateAddress']->getValue();
       if (!$this->setAliases($initialAliases, $aliases)) {
         return FALSE;
