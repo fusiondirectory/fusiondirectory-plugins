@@ -41,8 +41,10 @@ class mailMethodRenaterPartage extends mailMethod
   public function connect ()
   {
     parent::connect();
-    $servers = static::getMailServers();
-    $infos = $servers[$this->parent->gosaMailServer];
+    $infos = $this->getServerConfig();
+    if ($infos === FALSE) {
+      return FALSE;
+    }
 
     $this->connected = FALSE;
 
@@ -72,8 +74,10 @@ class mailMethodRenaterPartage extends mailMethod
 
   private function query ($command, $post)
   {
-    $servers = static::getMailServers();
-    $infos = $servers[$this->parent->gosaMailServer];
+    $infos = $this->getServerConfig();
+    if ($infos === FALSE) {
+      return FALSE;
+    }
 
     if (is_array($post)) {
       $post = http_build_query($post);
@@ -161,9 +165,11 @@ class mailMethodRenaterPartage extends mailMethod
   */
   public function check ()
   {
-    $errors   = parent::check();
-    $servers  = static::getMailServers();
-    $infos    = $servers[$this->parent->gosaMailServer];
+    $errors = parent::check();
+    $infos  = $this->getServerConfig();
+    if ($infos === FALSE) {
+      return FALSE;
+    }
 
     $alternates = $this->parent->gosaMailAlternateAddress;
     foreach ($alternates as $alternate) {
@@ -533,8 +539,10 @@ class mailMethodRenaterPartage extends mailMethod
   public function updateMailbox ()
   {
     parent::updateMailbox();
-    $servers = static::getMailServers();
-    $infos = $servers[$this->parent->gosaMailServer];
+    $infos = $this->getServerConfig();
+    if ($infos === FALSE) {
+      return FALSE;
+    }
 
     $this->build_account_id();
     if (!$this->parent->initially_was_account) {
@@ -607,8 +615,10 @@ class mailMethodRenaterPartage extends mailMethod
   public function deleteMailbox ()
   {
     parent::deleteMailbox();
-    $servers = static::getMailServers();
-    $infos = $servers[$this->parent->gosaMailServer];
+    $infos = $this->getServerConfig();
+    if ($infos === FALSE) {
+      return FALSE;
+    }
     $this->account_id = $this->initial_account_id;
     if ($this->account_exists()) {
       if ($this->type == 'user') {
