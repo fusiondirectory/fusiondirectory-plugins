@@ -83,7 +83,8 @@ class mailAccount extends simplePlugin
 
   private $mainSectionAttrs = [];
 
-  public $mailMethod = NULL;
+  public $mailMethod        = NULL;
+  public $initialMailMethod = NULL;
 
   static function plInfo (): array
   {
@@ -254,6 +255,9 @@ class mailAccount extends simplePlugin
   public function mailServerChanged ()
   {
     $this->mailMethod = mailMethod::getInstanceFromServer($this->gosaMailServer, $this);
+    if ($this->initialMailMethod === NULL) {
+      $this->initialMailMethod = $this->mailMethod;
+    }
 
     /* Initialize configured values */
     if (!$this->is_template && $this->initially_was_account) {
@@ -394,12 +398,25 @@ class mailAccount extends simplePlugin
           htmlescape(sprintf(_('Mail method cannot connect: %s'), $this->mailMethod->get_error()))
         );
       } else {
-        if ($this->attributesAccess['gosaMailServer']->hasChanged()) {
-          $previousMailMethod = mailMethod::getInstanceFromServer($this->attributesAccess['gosaMailServer']->getInitialValue(), $this);
-          if (!$previousMailMethod->deleteMailbox()) {
+        if ($this->initially_was_account && $this->attributesAccess['gosaMailServer']->hasChanged()) {
+          if (
+            ($this->initialMailMethod === NULL) ||
+            (get_class($this->initialMailMethod) !== mailMethod::getServerMethod($this->attributesAccess['gosaMailServer']->getInitialValue()))
+          ) {
             $errors[] = new SimplePluginError(
               $this,
-              htmlescape(sprintf(_('Cannot remove mailbox: %s'), $previousMailMethod->get_error()))
+              htmlescape(
+                sprintf(
+                  'Initial method wrong or missing: %s !== %s',
+                  ($this->initialMailMethod === NULL ? 'NULL' : get_class($this->initialMailMethod)),
+                  mailMethod::getServerMethod($this->attributesAccess['gosaMailServer']->getInitialValue())
+                )
+              )
+            );
+          } elseif (!$this->initialMailMethod->deleteMailbox()) {
+            $errors[] = new SimplePluginError(
+              $this,
+              htmlescape(sprintf(_('Cannot remove mailbox: %s'), $this->initialMailMethod->get_error()))
             );
           }
         }
