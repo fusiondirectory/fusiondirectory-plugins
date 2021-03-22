@@ -676,7 +676,7 @@ class mailMethod
     } else {
       $method = static::getServerMethod($server);
     }
-    $mailMethod = static::getInstance($method, $this);
+    $mailMethod = static::getInstance($method, $parent, $type);
     $mailMethod->fixAttributesOnLoad();
 
     return $mailMethod;
