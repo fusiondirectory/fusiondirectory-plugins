@@ -100,7 +100,10 @@ class mailMethodZimbra extends mailMethod
           }
         }
       }
-      $acc_id = (string)($attrs[$attr] ?? '');
+      $acc_id = ($attrs[$attr] ?? '');
+      if (is_array($acc_id)) {
+        $acc_id = $acc_id[0];
+      }
       if (($acc_id === '') && isset($this->parent->attrs[$attr][0])) {
         /* Fallback to LDAP if tab is not loaded yet */
         $acc_id = $this->parent->attrs[$attr][0];
