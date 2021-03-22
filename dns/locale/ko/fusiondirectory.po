@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-03-05 20:21+0000\n"
+"POT-Creation-Date: 2021-03-18 15:45+0000\n"
 "PO-Revision-Date: 2016-08-29 15:08+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2020\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -24,27 +24,27 @@ msgstr ""
 #: admin/dns/class_dnsAcl.inc:30 admin/dns/class_dnsAcl.inc:31
 #: admin/dns/class_dnsAcl.inc:33
 msgid "DNS acl"
-msgstr ""
+msgstr "DNS ACL"
 
 #: admin/dns/class_dnsAcl.inc:47
 msgid "Acl"
-msgstr ""
+msgstr "ACL"
 
 #: admin/dns/class_dnsAcl.inc:51
 msgid "ACL name"
-msgstr ""
+msgstr "ACL 이름"
 
 #: admin/dns/class_dnsAcl.inc:51
 msgid "Name of this acl"
-msgstr ""
+msgstr "이 ACL의 이름"
 
 #: admin/dns/class_dnsAcl.inc:56
 msgid "Address match list"
-msgstr ""
+msgstr "주소 일치 목록"
 
 #: admin/dns/class_dnsAcl.inc:56
 msgid "The ip address match list for this acl"
-msgstr ""
+msgstr "이 ACL의 IP 주소 일치 목록"
 
 #: admin/dns/class_dnsManagement.inc:34 admin/systems/class_dnsHost.inc:139
 msgid "DNS"
@@ -52,7 +52,7 @@ msgstr "DNS"
 
 #: admin/dns/class_dnsManagement.inc:35
 msgid "DNS Management"
-msgstr ""
+msgstr "DNS 관리"
 
 #: admin/dns/class_dnsManagement.inc:37
 msgid "Systems"
@@ -62,28 +62,28 @@ msgstr "시스템"
 #: admin/dns/class_dnsManagement.inc:99 admin/systems/class_dnsHost.inc:323
 #: admin/systems/class_dnsHost.inc:332
 msgid "Could not run ldap2zone"
-msgstr ""
+msgstr "ldap2zone을 실행할 수 없습니다"
 
 #: admin/dns/class_dnsManagement.inc:91
 msgid "More than one server matches the SOA"
-msgstr ""
+msgstr "둘 이상의 서버가 SOA와 일치"
 
 #: admin/dns/class_dnsManagement.inc:93
 msgid "Could not find the primary server"
-msgstr ""
+msgstr "기본 서버를 찾을 수 없습니다"
 
 #: admin/dns/class_dnsManagement.inc:109
 msgid "Could not get run ldap2zone"
-msgstr ""
+msgstr "ldap2zone을 실행할 수 없습니다"
 
 #: admin/dns/class_dnsManagement.inc:111 admin/systems/class_dnsHost.inc:334
 msgid "Ldap2zone"
-msgstr ""
+msgstr "Ldap2zone"
 
 #: admin/dns/class_dnsManagement.inc:111 admin/systems/class_dnsHost.inc:334
 #, php-format
 msgid "Ldap2Zone called for zone \"%s\""
-msgstr ""
+msgstr "Ldap2Zone이 \"%s\" 영역을 호출했습니다."
 
 #: admin/dns/class_dnsManagement.inc:115 admin/dns/class_dnsZone.inc:381
 #: admin/systems/class_dnsHost.inc:338
@@ -390,7 +390,7 @@ msgstr ""
 
 #: admin/dns/class_DnsRecordAttribute.inc:368 admin/dns/class_dnsZone.inc:188
 msgid "Content"
-msgstr ""
+msgstr "본문"
 
 #: admin/dns/class_DnsRecordAttribute.inc:368
 msgid "Content of this record"

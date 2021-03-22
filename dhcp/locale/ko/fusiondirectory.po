@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-03-05 20:21+0000\n"
+"POT-Creation-Date: 2021-03-18 15:45+0000\n"
 "PO-Revision-Date: 2016-08-29 15:08+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:39
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:39
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:39
-#: admin/systems/class_dhcpSystem.inc:291
+#: admin/systems/class_dhcpSystem.inc:304
 msgid "DHCP"
 msgstr "DHCP"
 
@@ -503,31 +503,31 @@ msgstr "Mac"
 msgid "IP"
 msgstr "IP"
 
-#: admin/systems/class_dhcpSystem.inc:233
+#: admin/systems/class_dhcpSystem.inc:246
 #, php-format
 msgid ""
 "\"%s\" is locked (by \"%s\" since %s), could not save modifications to this "
 "DHCP configuration"
 msgstr "\"%s\"은 (%s 이후로 \"%s\"에 의해) 잠겨 있으며 이 DHCP 구성에 대한 수정사항을 저장할 수 없습니다"
 
-#: admin/systems/class_dhcpSystem.inc:256
+#: admin/systems/class_dhcpSystem.inc:269
 #, php-format
 msgid "The value for multivaluated field \"%s\" is not an array"
 msgstr "다중화된 필드 \"%s\"의 값은 배열이 아닙니다."
 
-#: admin/systems/class_dhcpSystem.inc:292
+#: admin/systems/class_dhcpSystem.inc:305
 msgid "Edit the DHCP zones of a system"
 msgstr "시스템의 DHCP 영역 편집"
 
-#: admin/systems/class_dhcpSystem.inc:306
+#: admin/systems/class_dhcpSystem.inc:319
 msgid "DHCP zones"
 msgstr "DHCP 영역"
 
-#: admin/systems/class_dhcpSystem.inc:310
+#: admin/systems/class_dhcpSystem.inc:323
 msgid "DHCP hosts declared for this system"
 msgstr "이 시스템에 대해 선언 된 DHCP 호스트"
 
-#: admin/systems/class_dhcpSystem.inc:374
+#: admin/systems/class_dhcpSystem.inc:387
 #, php-format
 msgid "The ip %s is not in the network %s/%d"
 msgstr "IP %s이 (가) 네트워크 %s / %d에 없습니다."

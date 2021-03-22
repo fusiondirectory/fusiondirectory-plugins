@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-03-05 20:21+0000\n"
+"POT-Creation-Date: 2021-03-18 15:45+0000\n"
 "PO-Revision-Date: 2016-08-29 15:43+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2018\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -22,77 +22,77 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: admin/audit/class_auditEvent.inc:43
+#: admin/audit/class_auditEvent.inc:28
 #, php-format
 msgid "Unknown user: %s"
 msgstr "Utilisateur inconnu : %s"
 
-#: admin/audit/class_auditEvent.inc:57 admin/audit/class_auditEvent.inc:60
+#: admin/audit/class_auditEvent.inc:42 admin/audit/class_auditEvent.inc:45
 msgid "Audit event"
 msgstr "Événement d'audit"
 
-#: admin/audit/class_auditEvent.inc:58
+#: admin/audit/class_auditEvent.inc:43
 msgid "An event like ldap modification which was registered by audit plugin"
 msgstr ""
 "Un événement comme une modification LDAP qui a été enregistré par le plugin "
 "d'audit"
 
-#: admin/audit/class_auditEvent.inc:76
+#: admin/audit/class_auditEvent.inc:61
 msgid "Event"
 msgstr "Évènement"
 
-#: admin/audit/class_auditEvent.inc:80
+#: admin/audit/class_auditEvent.inc:65
 #: admin/audit/class_auditManagement.inc:111
 msgid "Time"
 msgstr "Temps"
 
-#: admin/audit/class_auditEvent.inc:80
+#: admin/audit/class_auditEvent.inc:65
 msgid "Date and time this event happened"
 msgstr "Date et heure à laquelle cet évènement est arrivé"
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:68
 #: admin/audit/class_auditManagement.inc:125
 msgid "Action"
 msgstr "Action"
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:68
 msgid "Action type"
 msgstr "Type d'action"
 
-#: admin/audit/class_auditEvent.inc:84
+#: admin/audit/class_auditEvent.inc:69
 #: admin/audit/class_auditManagement.inc:118
 msgid "Author"
 msgstr "Auteur"
 
-#: admin/audit/class_auditEvent.inc:84
+#: admin/audit/class_auditEvent.inc:69
 msgid "Action author"
 msgstr "Auteur de l'action"
 
-#: admin/audit/class_auditEvent.inc:85
+#: admin/audit/class_auditEvent.inc:70
 msgid "Object type"
 msgstr "Type d'objet"
 
-#: admin/audit/class_auditEvent.inc:86
+#: admin/audit/class_auditEvent.inc:71
 msgid "Object"
 msgstr "Objet"
 
-#: admin/audit/class_auditEvent.inc:86
+#: admin/audit/class_auditEvent.inc:71
 msgid "Target object"
 msgstr "Objet cible"
 
-#: admin/audit/class_auditEvent.inc:87
+#: admin/audit/class_auditEvent.inc:72
 msgid "Attributes"
 msgstr "Attributs"
 
-#: admin/audit/class_auditEvent.inc:87
+#: admin/audit/class_auditEvent.inc:72
 msgid "Target attributes"
 msgstr "Attributs cibles"
 
-#: admin/audit/class_auditEvent.inc:88
+#: admin/audit/class_auditEvent.inc:73
 msgid "Result"
 msgstr "Résultat"
 
-#: admin/audit/class_auditEvent.inc:88
+#: admin/audit/class_auditEvent.inc:73
 msgid "Result or error"
 msgstr "Résultat ou erreur"
 
