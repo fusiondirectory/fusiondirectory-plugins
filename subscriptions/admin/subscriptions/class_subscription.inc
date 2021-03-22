@@ -171,9 +171,12 @@ class subscription extends simplePlugin
   {
     global $config;
 
-    $fileName     = 'fusiondirectory-subscription.repo';
-    $fileContent  = '[fusiondirectory-subscription]'."\n";
-    $fileContent  .= 'name=Fusiondirectory Packages for '.$this->attributesAccess['rpmRepository']->displayValue($this->rpmRepository)."\n";
+    $label  = $this->attributesAccess['rpmRepository']->displayValue($this->rpmRepository);
+    $name   = strtolower(preg_replace(['/\s/','/[^[:alnum:]]/'], ['-',''], $label));
+
+    $fileName     = 'fusiondirectory-subscription-'.$name.'.repo';
+    $fileContent  = '[fusiondirectory-subscription-'.$name.']'."\n";
+    $fileContent  .= 'name=Fusiondirectory Packages for '.$label."\n";
     $fileContent  .= 'baseurl=https://'.$this->uid.':'.$this->userPassword.'@'.$this->rpmRepository."\n";
     $fileContent  .= 'enabled=1'."\n";
     $fileContent  .= 'gpgcheck=1'."\n";
