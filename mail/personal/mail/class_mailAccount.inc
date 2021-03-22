@@ -83,6 +83,8 @@ class mailAccount extends simplePlugin
 
   private $mainSectionAttrs = [];
 
+  public $mailMethod = NULL;
+
   static function plInfo (): array
   {
     return [
@@ -251,14 +253,7 @@ class mailAccount extends simplePlugin
 
   public function mailServerChanged ()
   {
-    /* Intialize the used mailMethod */
-    if ($this->gosaMailServer == '') {
-      $method = 'mailMethod';
-    } else {
-      $method = mailMethod::getServerMethod($this->gosaMailServer);
-    }
-    $this->mailMethod = mailMethod::getInstance($method, $this);
-    $this->mailMethod->fixAttributesOnLoad();
+    $this->mailMethod = mailMethod::getInstanceFromServer($this->gosaMailServer, $this);
 
     /* Initialize configured values */
     if (!$this->is_template && $this->initially_was_account) {
@@ -371,6 +366,14 @@ class mailAccount extends simplePlugin
     return TRUE;
   }
 
+  /*!
+  *  \brief Should the mail method create the mailbox? (mail server change or tab activation)
+  */
+  public function isMailboxCreation(): bool
+  {
+    return (!$this->initially_was_account || $this->attributesAccess['gosaMailServer']->hasChanged());
+  }
+
   public function ldap_save (): array
   {
     if (!empty($this->attrs)) {
@@ -391,6 +394,15 @@ class mailAccount extends simplePlugin
           htmlescape(sprintf(_('Mail method cannot connect: %s'), $this->mailMethod->get_error()))
         );
       } else {
+        if ($this->attributesAccess['gosaMailServer']->hasChanged()) {
+          $previousMailMethod = mailMethod::getInstanceFromServer($this->attributesAccess['gosaMailServer']->getInitialValue(), $this);
+          if (!$previousMailMethod->deleteMailbox()) {
+            $errors[] = new SimplePluginError(
+              $this,
+              htmlescape(sprintf(_('Cannot remove mailbox: %s'), $previousMailMethod->get_error()))
+            );
+          }
+        }
         if (!$this->mailMethod->updateMailbox()) {
           $errors[] = new SimplePluginError(
             $this,
@@ -434,8 +446,8 @@ class mailAccount extends simplePlugin
           }
         }
       }
+      $this->mailMethod->disconnect();
     }
-    $this->mailMethod->disconnect();
 
     if (!empty($errors) && !$this->initially_was_account) {
       /* Mail method failed to create, cancel ldap save */

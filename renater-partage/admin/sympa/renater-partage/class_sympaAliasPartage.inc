@@ -129,14 +129,7 @@ class sympaAliasPartage extends simplePlugin
 
   public function mailServerChanged ()
   {
-    /* Intialize the used mailMethod */
-    if ($this->gosaMailServer == '') {
-      $method = 'mailMethod';
-    } else {
-      $method = mailMethod::getServerMethod($this->gosaMailServer);
-    }
-    $this->mailMethod = mailMethod::getInstance($method, $this, 'sympaAlias');
-    $this->mailMethod->fixAttributesOnLoad();
+    $this->mailMethod = mailMethod::getInstanceFromServer($this->gosaMailServer, $this, 'sympaAlias');
   }
 
   function check (): array
@@ -154,6 +147,14 @@ class sympaAliasPartage extends simplePlugin
   {
     /* mail method might have something to save */
     return TRUE;
+  }
+
+  /*!
+  *  \brief Should the mail method create the mailbox? (mail server change or tab activation)
+  */
+  public function isMailboxCreation(): bool
+  {
+    return (!$this->initially_was_account || $this->attributesAccess['gosaMailServer']->hasChanged());
   }
 
   public function ldap_save (): array

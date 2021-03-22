@@ -668,6 +668,20 @@ class mailMethod
     return $obj;
   }
 
+  static public function getInstanceFromServer (string $server, $parent, string $type = NULL)
+  {
+    /* Intialize the used mailMethod */
+    if ($server == '') {
+      $method = 'mailMethod';
+    } else {
+      $method = static::getServerMethod($server);
+    }
+    $mailMethod = static::getInstance($method, $this);
+    $mailMethod->fixAttributesOnLoad();
+
+    return $mailMethod;
+  }
+
   /*! \brief  Returns configured acls
    */
   public function getFolderACLs (): array

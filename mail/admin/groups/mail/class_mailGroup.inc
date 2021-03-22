@@ -172,14 +172,7 @@ class mailGroup extends simplePlugin
 
   public function mailServerChanged ()
   {
-    /* Intialize the used mailMethod */
-    if ($this->gosaMailServer == '') {
-      $method = 'mailMethod';
-    } else {
-      $method = mailMethod::getServerMethod($this->gosaMailServer);
-    }
-    $this->mailMethod = mailMethod::getInstance($method, $this);
-    $this->mailMethod->fixAttributesOnLoad();
+    $this->mailMethod = mailMethod::getInstanceFromServer($this->gosaMailServer, $this);
 
     /* Initialize configured values */
     if (!$this->is_template && $this->is_account && $this->initially_was_account) {
@@ -319,6 +312,14 @@ class mailGroup extends simplePlugin
       $this->attributesAccess['specialACLs']->attribute->attributes[0]->setChoices($this->getMemberEmailList());
     }
     return TRUE;
+  }
+
+  /*!
+  *  \brief Should the mail method create the mailbox? (mail server change or tab activation)
+  */
+  public function isMailboxCreation(): bool
+  {
+    return (!$this->initially_was_account || $this->attributesAccess['gosaMailServer']->hasChanged());
   }
 
   public function ldap_save (): array
