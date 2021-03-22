@@ -317,7 +317,7 @@ class mailGroup extends simplePlugin
   /*!
   *  \brief Should the mail method create the mailbox? (mail server change or tab activation)
   */
-  public function isMailboxCreation(): bool
+  public function isMailboxCreation (): bool
   {
     return (!$this->initially_was_account || $this->attributesAccess['gosaMailServer']->hasChanged());
   }
