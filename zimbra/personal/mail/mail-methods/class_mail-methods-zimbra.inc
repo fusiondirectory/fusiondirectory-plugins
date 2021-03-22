@@ -43,8 +43,10 @@ class mailMethodZimbra extends mailMethod
   public function connect ()
   {
     parent::connect();
-    $servers = static::getMailServers();
-    $infos = $servers[$this->parent->gosaMailServer];
+    $infos = $this->getServerConfig();
+    if ($infos === FALSE) {
+      return FALSE;
+    }
 
     $this->connected = FALSE;
 
@@ -85,8 +87,10 @@ class mailMethodZimbra extends mailMethod
   protected function build_account_id ()
   {
     if ($this->type == 'user') {
-      $servers  = static::getMailServers();
-      $infos    = $servers[$this->parent->gosaMailServer];
+      $infos = $this->getServerConfig();
+      if ($infos === FALSE) {
+        return;
+      }
       $attr     = $infos['id_attribute'];
       $attrs    = [];
       $this->parent->fillHookAttrs($attrs);
@@ -209,7 +213,7 @@ class mailMethodZimbra extends mailMethod
   {
   }
 
-  private function getAccountArray ($infos)
+  private function getAccountArray (array $infos)
   {
     $account = [
       'name' => $this->account_id,
@@ -283,8 +287,6 @@ class mailMethodZimbra extends mailMethod
         $personalTab    = $this->parent->parent->by_object['personalInfo'];
         $account['co']  = $personalTab->co;
       }
-      $servers  = static::getMailServers();
-      $infos    = $servers[$this->parent->gosaMailServer];
       $attr     = $infos['id_attribute'];
       if ($attr !== 'mail') {
         $account['zimbraPrefFromAddress'] = $this->parent->mail;
@@ -294,7 +296,7 @@ class mailMethodZimbra extends mailMethod
     return $account;
   }
 
-  private function createAccount ($infos)
+  private function createAccount (array $infos)
   {
     $account = $this->getAccountArray($infos);
 
@@ -306,8 +308,6 @@ class mailMethodZimbra extends mailMethod
     }
 
     if ($this->type == 'user') {
-      $servers  = static::getMailServers();
-      $infos    = $servers[$this->parent->gosaMailServer];
       $command  = 'CreateAccount';
       if ($infos['password_sync']) {
         $userTab = $this->parent->parent->getBaseObject();
@@ -327,11 +327,8 @@ class mailMethodZimbra extends mailMethod
     return $this->query($command, $account);
   }
 
-  private function updateAccount ($infos)
+  private function updateAccount (array $infos)
   {
-    $servers  = static::getMailServers();
-    $infos    = $servers[$this->parent->gosaMailServer];
-
     /* Step 1 - We fill $account */
     $account = $this->getAccountArray($infos);
     unset($account['name']);
@@ -501,8 +498,10 @@ class mailMethodZimbra extends mailMethod
   public function updateMailbox ()
   {
     parent::updateMailbox();
-    $servers = static::getMailServers();
-    $infos = $servers[$this->parent->gosaMailServer];
+    $infos = $this->getServerConfig();
+    if ($infos === FALSE) {
+      return FALSE;
+    }
 
     $this->build_account_id();
     if ($this->parent->isMailboxCreation()) {
@@ -593,8 +592,10 @@ class mailMethodZimbra extends mailMethod
   public function deleteMailbox ()
   {
     parent::deleteMailbox();
-    $servers = static::getMailServers();
-    $infos = $servers[$this->parent->gosaMailServer];
+    $infos = $this->getServerConfig();
+    if ($infos === FALSE) {
+      return FALSE;
+    }
     $this->account_id = $this->initial_account_id;
     if ($this->account_exists()) {
       if ($this->type == 'user') {

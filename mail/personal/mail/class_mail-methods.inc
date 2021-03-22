@@ -87,6 +87,7 @@ class mailMethod
   protected $connected          = FALSE;
   protected $error              = '';
   protected $parent             = NULL;
+  protected $mailServer         = NULL;
 
   protected $acl_map = [
     ''            => 'none',
@@ -110,8 +111,10 @@ class mailMethod
     $this->parent = $parent;
 
     if (!isset($this->parent->gosaMailServer)) {
-      trigger_error('mailMethod with invalid parent object initialized.');
+      throw new FusionDirectoryException('mailMethod with invalid parent object initialized.');
     }
+
+    $this->mailServer = $this->parent->gosaMailServer;
 
     if (!in_array($this->type, ['user','group'])) {
       trigger_error('Unknown mail class type used "'.$type.'".');
@@ -243,7 +246,7 @@ class mailMethod
   {
     $this->reset_error();
     @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, get_class($this), '<b>MAIL: Connect method</b>');
-    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->parent->gosaMailServer, '<b>MAIL: Current server</b>');
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->mailServer, '<b>MAIL: Current server</b>');
 
     $this->connected = TRUE;
     return TRUE;
@@ -449,7 +452,7 @@ class mailMethod
   {
     $this->reset_error();
     @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
-        "<b>MAIL: Remove account</b> from server :".$this->parent->gosaMailServer);
+        "<b>MAIL: Remove account</b> from server :".$this->mailServer);
 
     return TRUE;
   }
@@ -591,13 +594,13 @@ class mailMethod
       @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
           '<b>IMAP: No mail servers configured, check systems->server->services</b>', '');
       return FALSE;
-    } elseif (!isset($serverList[$this->parent->gosaMailServer])) {
+    } elseif (!isset($serverList[$this->mailServer])) {
       $this->error = _('Mail server for this account is invalid!');
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->parent->gosaMailServer,
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->mailServer,
           '<b>IMAP: The selected mail server is invalid</b>');
       return FALSE;
     } else {
-      return $serverList[$this->parent->gosaMailServer];
+      return $serverList[$this->mailServer];
     }
   }
 

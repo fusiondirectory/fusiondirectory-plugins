@@ -167,7 +167,7 @@ class mailMethodDovecot extends mailMethod
   private function argonautCreateFolder ()
   {
     @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
-      "<b>Attempting to create folder through Argonaut</b> on server :".$this->parent->gosaMailServer);
+      "<b>Attempting to create folder through Argonaut</b> on server :".$this->mailServer);
 
     $cfg = $this->getServerConfig();
     if ($cfg === FALSE) {

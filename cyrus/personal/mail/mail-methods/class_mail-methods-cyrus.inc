@@ -236,11 +236,11 @@ class mailMethodCyrus extends mailMethod
       );
       $error->display();
       @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id.": (".$debug_number.")</b>",
-          "<b>IMAP: Set account quota</b> on server '".$this->parent->gosaMailServer."' <b>".imap_last_error()."</b>");
+          "<b>IMAP: Set account quota</b> on server '".$this->mailServer."' <b>".imap_last_error()."</b>");
       return FALSE;
     }
     @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id.": (".$debug_number.")</b>",
-        "<b>IMAP: Set account quota</b> on server :".$this->parent->gosaMailServer);
+        "<b>IMAP: Set account quota</b> on server :".$this->mailServer);
     return TRUE;
   }
 
@@ -264,7 +264,7 @@ class mailMethodCyrus extends mailMethod
       $list = imap_listmailbox($this->imap_handle, $cfg['connect'], $this->account_id);
       if ($list === FALSE) {
         @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->account_id,
-          'IMAP: Add account on server '.$this->parent->gosaMailServer);
+          'IMAP: Add account on server '.$this->mailServer);
         if (!imap_createmailbox($this->imap_handle, $cfg['connect'].$this->account_id)) {
           $this->error = imap_last_error();
           return FALSE;
@@ -273,7 +273,7 @@ class mailMethodCyrus extends mailMethod
         /* Autocreate configured default folders */
         foreach ($cfg['autocreate'] as $folder) {
           @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $folder,
-            'IMAP: Add account folder on server '.$this->parent->gosaMailServer);
+            'IMAP: Add account folder on server '.$this->mailServer);
           if (!imap_createmailbox($this->imap_handle, $cfg['connect'].$this->create_folder_id($folder))) {
             $this->error = imap_last_error();
             return FALSE;
