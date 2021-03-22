@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Choi Chris <chulwon.choi@gmail.com>, 2020
+# Choi Chris <chulwon.choi@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-03-05 20:21+0000\n"
+"POT-Creation-Date: 2021-03-18 15:45+0000\n"
 "PO-Revision-Date: 2016-08-29 15:22+0000\n"
-"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2020\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2021\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,11 +29,11 @@ msgstr "설립"
 
 #: admin/supannStructures/class_etablissement.inc:33
 msgid "SupAnn Establishment Settings"
-msgstr ""
+msgstr "SupAnn 설립 설정"
 
 #: admin/supannStructures/class_etablissement.inc:35
 msgid "SupAnn Establishment"
-msgstr ""
+msgstr "SupAnn 설립"
 
 #: admin/supannStructures/class_etablissement.inc:52
 msgid "Properties"
@@ -41,11 +41,11 @@ msgstr "설정"
 
 #: admin/supannStructures/class_etablissement.inc:55
 msgid "Root establishment"
-msgstr ""
+msgstr "Root 설립"
 
 #: admin/supannStructures/class_etablissement.inc:55
 msgid "Set this establishment as the root one"
-msgstr ""
+msgstr "이 시설을 root로 설정"
 
 #: admin/supannStructures/class_etablissement.inc:59
 #: admin/supannStructures/class_entite.inc:55
@@ -54,7 +54,7 @@ msgstr "명칭"
 
 #: admin/supannStructures/class_etablissement.inc:59
 msgid "The name to write in the o attribute for this establishment"
-msgstr ""
+msgstr "이 시설의 o 속성에 쓸 이름"
 
 #: admin/supannStructures/class_etablissement.inc:63
 #: admin/supannStructures/class_entite.inc:59
@@ -63,7 +63,7 @@ msgstr "설명"
 
 #: admin/supannStructures/class_etablissement.inc:63
 msgid "A short description of this establishment"
-msgstr ""
+msgstr "이 시설에 대한 간단한 설명"
 
 #: admin/supannStructures/class_etablissement.inc:69
 #: admin/supannStructures/class_etablissement.inc:72
@@ -72,7 +72,7 @@ msgstr "위치"
 
 #: admin/supannStructures/class_etablissement.inc:72
 msgid "Usually the city where this establishment is"
-msgstr ""
+msgstr "보통 이 시설이 있는 도시"
 
 #: admin/supannStructures/class_etablissement.inc:76
 msgid "Address"
@@ -80,7 +80,7 @@ msgstr "주소"
 
 #: admin/supannStructures/class_etablissement.inc:76
 msgid "The postal address of this establishment"
-msgstr ""
+msgstr "이 시설의 우편 주소"
 
 #: admin/supannStructures/class_etablissement.inc:80
 #: admin/supannStructures/class_entite.inc:68
@@ -89,7 +89,7 @@ msgstr "전화"
 
 #: admin/supannStructures/class_etablissement.inc:80
 msgid "Phone number of this establishment"
-msgstr ""
+msgstr "이 시설의 전화 번호"
 
 #: admin/supannStructures/class_etablissement.inc:84
 #: admin/supannStructures/class_entite.inc:72
@@ -98,11 +98,11 @@ msgstr "팩스"
 
 #: admin/supannStructures/class_etablissement.inc:84
 msgid "Fax number of this establishment"
-msgstr ""
+msgstr "이 시설의 팩스 번호"
 
 #: admin/supannStructures/class_etablissement.inc:90
 msgid "SupAnn properties"
-msgstr ""
+msgstr "SUPANN 속성"
 
 #: admin/supannStructures/class_etablissement.inc:93
 msgid "Establishment code"
@@ -110,33 +110,33 @@ msgstr "시설 코드"
 
 #: admin/supannStructures/class_etablissement.inc:93
 msgid "The code of this establishment (must have a prefix between {})"
-msgstr ""
+msgstr "이 시설의 코드 ({} 사이에 접두사가 있어야 함)"
 
 #: admin/supannStructures/class_etablissement.inc:98
 msgid "Establishment type"
-msgstr ""
+msgstr "시설 유형"
 
 #: admin/supannStructures/class_etablissement.inc:98
 msgid "The SupAnn type that best fits this Establishment"
-msgstr ""
+msgstr "이 시설에 가장 잘 맞는 SupAnn 유형"
 
 #: admin/supannStructures/class_etablissement.inc:102
 msgid "SupAnn code"
-msgstr ""
+msgstr "SupAnn 코드"
 
 #: admin/supannStructures/class_etablissement.inc:102
 msgid "The SupAnn code for this establishment"
-msgstr ""
+msgstr "이 시설의 SupAnn 코드"
 
 #: admin/supannStructures/class_etablissement.inc:108
 #: admin/supannStructures/class_entite.inc:95
 msgid "Parent entities"
-msgstr ""
+msgstr "부모 엔터티"
 
 #: admin/supannStructures/class_etablissement.inc:108
 #: admin/supannStructures/class_entite.inc:95
 msgid "The parent entities of this entity"
-msgstr ""
+msgstr "이 엔티티의 상위 엔티티"
 
 #: admin/supannStructures/class_etablissement.inc:114
 #: admin/supannStructures/class_entite.inc:101
@@ -154,7 +154,7 @@ msgstr "법적 이름"
 
 #: admin/supannStructures/class_etablissement.inc:122
 msgid "The legal name of this establishment"
-msgstr ""
+msgstr "이 시설의 법적 이름"
 
 #: admin/supannStructures/class_etablissement.inc:126
 msgid "Home page URI"
@@ -162,7 +162,7 @@ msgstr "홈페이지 URI"
 
 #: admin/supannStructures/class_etablissement.inc:126
 msgid "The URI of this establishment website home page"
-msgstr ""
+msgstr "이 시설 웹사이트 홈페이지의 URI"
 
 #: admin/supannStructures/class_etablissement.inc:130
 msgid "Institution URI"
@@ -170,7 +170,7 @@ msgstr "기관 URI"
 
 #: admin/supannStructures/class_etablissement.inc:130
 msgid "The URI of this establishment institution website"
-msgstr ""
+msgstr "이 설립 기관 웹사이트의 URI"
 
 #: admin/supannStructures/class_etablissement.inc:134
 msgid "White pages URI"
@@ -178,7 +178,7 @@ msgstr "화이트 페이지 URI"
 
 #: admin/supannStructures/class_etablissement.inc:134
 msgid "The URI of this establishment white pages"
-msgstr ""
+msgstr "이 시설 화이트 페이지의 URI"
 
 #: admin/supannStructures/class_etablissement.inc:186
 #: admin/supannStructures/class_etablissement.inc:259
@@ -191,7 +191,7 @@ msgstr ""
 
 #: admin/supannStructures/class_supannStructuresManagement.inc:36
 msgid "SupAnn structures management"
-msgstr ""
+msgstr "Supann 구조 관리"
 
 #: admin/supannStructures/class_supann.inc:53
 msgid "File error"
@@ -210,11 +210,11 @@ msgstr "엔티티"
 
 #: admin/supannStructures/class_entite.inc:33
 msgid "SupAnn Entity Settings"
-msgstr ""
+msgstr "SupAnn 엔티티 설정"
 
 #: admin/supannStructures/class_entite.inc:35
 msgid "SupAnn Entity"
-msgstr ""
+msgstr "SupAnn 엔티티"
 
 #: admin/supannStructures/class_entite.inc:55
 msgid "The name to write in the ou attribute for this entity"
@@ -230,11 +230,11 @@ msgstr "관리적인 정보"
 
 #: admin/supannStructures/class_entite.inc:68
 msgid "Phone number of this entity"
-msgstr ""
+msgstr "이 엔티티의 전화 번호"
 
 #: admin/supannStructures/class_entite.inc:72
 msgid "Fax number of this entity"
-msgstr ""
+msgstr "이 엔티티의 팩스 번호"
 
 #: admin/supannStructures/class_entite.inc:76
 msgid "Postal address"
@@ -246,7 +246,7 @@ msgstr "이 엔티티의 우편 주소"
 
 #: admin/supannStructures/class_entite.inc:82
 msgid "SupAnn information"
-msgstr ""
+msgstr "SupAnn 정보"
 
 #: admin/supannStructures/class_entite.inc:85
 #: personal/supann/class_supannAccount.inc:459
@@ -255,7 +255,7 @@ msgstr "엔터티 유형"
 
 #: admin/supannStructures/class_entite.inc:85
 msgid "The SupAnn type that best fits this entity"
-msgstr ""
+msgstr "이 시설에 가장 잘 맞는 SupAnn 유형"
 
 #: admin/supannStructures/class_entite.inc:89
 msgid "Entity code"
@@ -263,15 +263,15 @@ msgstr "엔티티 코드"
 
 #: admin/supannStructures/class_entite.inc:89
 msgid "The SupAnn code of this entity"
-msgstr ""
+msgstr "이 엔티티의 SupAnn 코드"
 
 #: config/supann/class_supannConfig.inc:28
 msgid "SupAnn configuration"
-msgstr ""
+msgstr "SupAnn 구성"
 
 #: config/supann/class_supannConfig.inc:29
 msgid "FusionDirectory SupAnn plugin configuration"
-msgstr ""
+msgstr "FusionDirectory SupAnn 플러그인 구성"
 
 #: config/supann/class_supannConfig.inc:41
 #: personal/supann/class_supannAccount.inc:224
@@ -280,21 +280,21 @@ msgstr "SupAnn"
 
 #: config/supann/class_supannConfig.inc:44
 msgid "SupAnn RDN"
-msgstr ""
+msgstr "SupAnn RDN"
 
 #: config/supann/class_supannConfig.inc:44
 msgid "Branch in which SupAnn structures will be stored"
-msgstr ""
+msgstr "SupAnn 구조가 저장될 브랜치"
 
 #: config/supann/class_supannConfig.inc:49
 msgid "SupAnn mail for recovery"
-msgstr ""
+msgstr "복구를 위한 SupAnn 메일"
 
 #: config/supann/class_supannConfig.inc:49
 msgid ""
 "Allow the use of mail addresses from the personal mail address field from "
 "SupAnn account for password recovery"
-msgstr ""
+msgstr "비밀번호 복구를 위해 SupAnn 계정의 개인 메일 주소 필드에서 메일 주소 사용 허용"
 
 #: personal/supann/class_supannAccount.inc:36
 #: personal/supann/class_supannAccount.inc:119

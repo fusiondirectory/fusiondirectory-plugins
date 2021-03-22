@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-03-05 20:21+0000\n"
+"POT-Creation-Date: 2021-03-18 15:45+0000\n"
 "PO-Revision-Date: 2016-08-29 15:10+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
@@ -50,7 +50,7 @@ msgid "Variables class name"
 msgstr "Όνομα κλάσης μεταβλητών"
 
 #: admin/fai/class_faiVariable.inc:55 admin/fai/class_faiVariable.inc:73
-#: admin/fai/class_faiDiskEntry.inc:247 admin/fai/class_faiPartition.inc:246
+#: admin/fai/class_faiDiskEntry.inc:249 admin/fai/class_faiPartition.inc:246
 #: admin/fai/class_faiScript.inc:57 admin/fai/class_faiScript.inc:75
 #: admin/fai/class_faiProfile.inc:56 admin/fai/class_faiPackage.inc:403
 #: admin/fai/class_faiHook.inc:55 admin/fai/class_faiHook.inc:73
@@ -78,7 +78,7 @@ msgstr "Μεταβλητές σε αυτή την κλάση"
 
 #: admin/fai/class_faiVariable.inc:69
 #: admin/fai/class_faiSimplePluginClass.inc:51
-#: admin/fai/class_faiDiskEntry.inc:241
+#: admin/fai/class_faiDiskEntry.inc:243
 #: admin/fai/packageSelect/selectPackage-list.xml:40
 #: admin/fai/class_faiPartition.inc:240 admin/fai/class_faiScript.inc:71
 #: admin/fai/class_faiHook.inc:69
@@ -123,78 +123,78 @@ msgid ""
 "definition!"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:226
+#: admin/fai/class_faiDiskEntry.inc:228
 msgid "Partition table entry"
 msgstr "Καταχώριση πίνακα κατατμήσεων"
 
-#: admin/fai/class_faiDiskEntry.inc:227
+#: admin/fai/class_faiDiskEntry.inc:229
 msgid "FAI partition table entry"
 msgstr "Καταχώριση πίνακα κατατμήσεων FAI"
 
-#: admin/fai/class_faiDiskEntry.inc:238 admin/fai/class_faiDiskEntry.inc:254
+#: admin/fai/class_faiDiskEntry.inc:240 admin/fai/class_faiDiskEntry.inc:256
 msgid "Device"
 msgstr "Συσκευή"
 
-#: admin/fai/class_faiDiskEntry.inc:241
+#: admin/fai/class_faiDiskEntry.inc:243
 msgid "Disk name"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:247 admin/fai/class_faiPartition.inc:246
+#: admin/fai/class_faiDiskEntry.inc:249 admin/fai/class_faiPartition.inc:246
 msgid "Short description"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:251
+#: admin/fai/class_faiDiskEntry.inc:253
 msgid "fstab key"
 msgstr "κλειδί fstab"
 
-#: admin/fai/class_faiDiskEntry.inc:251
+#: admin/fai/class_faiDiskEntry.inc:253
 msgid "Key to use in fstab file"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:254
+#: admin/fai/class_faiDiskEntry.inc:256
 msgid "Label"
 msgstr "Ετικέτα"
 
-#: admin/fai/class_faiDiskEntry.inc:254
+#: admin/fai/class_faiDiskEntry.inc:256
 msgid "UUID"
 msgstr "UUID"
 
-#: admin/fai/class_faiDiskEntry.inc:257
+#: admin/fai/class_faiDiskEntry.inc:259
 msgid "Disk label"
 msgstr "Ετικέτα δίσκου "
 
-#: admin/fai/class_faiDiskEntry.inc:263
+#: admin/fai/class_faiDiskEntry.inc:265
 msgid "Random init"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:263
+#: admin/fai/class_faiDiskEntry.inc:265
 msgid "Initialise all encrypted partitions with random data"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:270
+#: admin/fai/class_faiDiskEntry.inc:272
 msgid "Partition entries"
 msgstr "Καταχωρίσεις κατάτμησης"
 
-#: admin/fai/class_faiDiskEntry.inc:275 admin/fai/class_faiPartition.inc:452
+#: admin/fai/class_faiDiskEntry.inc:277 admin/fai/class_faiPartition.inc:452
 msgid "Combined physical partitions"
 msgstr "Συνδυασμένες φυσικές κατατμήσεις"
 
-#: admin/fai/class_faiDiskEntry.inc:275
+#: admin/fai/class_faiDiskEntry.inc:277
 msgid "Physical partitions combined in this LVM volume"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:281
+#: admin/fai/class_faiDiskEntry.inc:283
 #: admin/fai/class_faiPartitionTable.inc:351
 msgid "Partitions in this class"
 msgstr "Κατατμήσεις σε αυτή την κλάση"
 
-#: admin/fai/class_faiDiskEntry.inc:579
+#: admin/fai/class_faiDiskEntry.inc:581
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:583
+#: admin/fai/class_faiDiskEntry.inc:585
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions"
