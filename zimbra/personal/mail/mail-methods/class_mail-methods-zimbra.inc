@@ -232,7 +232,9 @@ class mailMethodZimbra extends mailMethod
    * */
   private function cleanCachedAccountArrays ()
   {
-    if (!is_array($this->cachedAccount['account']['zimbraMailAlias'])) {
+    if (!isset($this->cachedAccount['account']['zimbraMailAlias'])) {
+      $this->cachedAccount['account']['zimbraMailAlias'] = [];
+    } elseif (!is_array($this->cachedAccount['account']['zimbraMailAlias'])) {
       $this->cachedAccount['account']['zimbraMailAlias'] = [$this->cachedAccount['account']['zimbraMailAlias']];
     }
   }
