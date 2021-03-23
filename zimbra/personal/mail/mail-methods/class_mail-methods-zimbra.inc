@@ -427,7 +427,11 @@ class mailMethodZimbra extends mailMethod
       if ($alias === '') {
         continue;
       }
-      $answer = $this->query($command, ['zimbraId' => $this->cachedAccount['zimbraId'], 'alias' => $alias], ['account.NO_SUCH_DOMAIN']);
+      $answer = $this->query(
+        $command,
+        ['zimbraId' => $this->cachedAccount['zimbraId'], 'alias' => $alias],
+        ['account.NO_SUCH_DOMAIN','account.NO_SUCH_ALIAS']
+      );
       if ($this->is_error()) {
         return FALSE;
       }
@@ -638,7 +642,6 @@ class mailMethodZimbra extends mailMethod
           $this->error = sprintf(_('Invalid deletion mode: "%s"'), $infos['delete_type']);
         }
       } else {
-        /* FIXME: most likely there is another error code for no such group */
         $answer = $this->query('DeleteGroup', ['zimbraId' => $this->cachedAccount['zimbraId']], ['account.NO_SUCH_ACCOUNT']);
       }
       return ($answer !== FALSE);
