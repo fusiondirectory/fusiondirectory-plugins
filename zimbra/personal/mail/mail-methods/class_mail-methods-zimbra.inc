@@ -376,10 +376,6 @@ class mailMethodZimbra extends mailMethod
         unset($account[$key]);
       }
     }
-    /* If value of zimbraAccountStatus is not something we understand, do not touch it (example: closed) */
-    if (isset($this->cachedAccount['account']['zimbraAccountStatus']) && !in_array($this->cachedAccount['account']['zimbraAccountStatus'], ['active', 'locked'])) {
-      unset($account['zimbraAccountStatus']);
-    }
 
     /* Step 3 - We send update order if diff is not empty */
     if (!empty($account)) {
