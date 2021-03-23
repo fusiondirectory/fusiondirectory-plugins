@@ -232,7 +232,9 @@ class mailMethodZimbra extends mailMethod
    * */
   private function cleanCachedAccountArrays ()
   {
-    if (!is_array($this->cachedAccount['account']['zimbraMailAlias'])) {
+    if (!isset($this->cachedAccount['account']['zimbraMailAlias'])) {
+      $this->cachedAccount['account']['zimbraMailAlias'] = [];
+    } elseif (!is_array($this->cachedAccount['account']['zimbraMailAlias'])) {
       $this->cachedAccount['account']['zimbraMailAlias'] = [$this->cachedAccount['account']['zimbraMailAlias']];
     }
   }
@@ -306,6 +308,21 @@ class mailMethodZimbra extends mailMethod
         $account['zimbraHideInGal'] = ($supannTab->supannListeRouge ? 'TRUE' : 'FALSE');
       }
 
+      /* Lock zimbra account if MAIL is inactive or suspended in supannRessourceEtatDate */
+      if (isset($this->parent->parent->by_object['supannAccountStatus']) && $this->parent->parent->by_object['supannAccountStatus']->is_account) {
+        $supannStatusTab = $this->parent->parent->by_object['supannAccountStatus'];
+
+        foreach ($supannStatusTab->supannRessourceEtatDate as $line) {
+          list ($label, $state, $substate, $start, $end) = $supannStatusTab->attributesAccess['supannRessourceEtatDate']->attribute->readValues($line);
+          if ($label === 'MAIL') {
+            if ($state !== 'A') {
+              $account['zimbraAccountStatus'] = 'locked';
+            }
+            break;
+          }
+        }
+      }
+
       /* Sync fields from personal if tab is active */
       if (isset($this->parent->parent->by_object['personalInfo']) && $this->parent->parent->by_object['personalInfo']->is_account) {
         $personalTab    = $this->parent->parent->by_object['personalInfo'];
@@ -373,10 +390,6 @@ class mailMethodZimbra extends mailMethod
       } elseif (empty($value)) {
         unset($account[$key]);
       }
-    }
-    /* If value of zimbraAccountStatus is not something we understand, do not touch it (example: closed) */
-    if (isset($this->cachedAccount['account']['zimbraAccountStatus']) && !in_array($this->cachedAccount['account']['zimbraAccountStatus'], ['active', 'locked'])) {
-      unset($account['zimbraAccountStatus']);
     }
 
     /* Step 3 - We send update order if diff is not empty */
