@@ -232,6 +232,9 @@ class mailMethodZimbra extends mailMethod
    * */
   private function cleanCachedAccountArrays ()
   {
+    if (!is_array($this->cachedAccount['account']['zimbraMailAlias'])) {
+      $this->cachedAccount['account']['zimbraMailAlias'] = [$this->cachedAccount['account']['zimbraMailAlias']];
+    }
   }
 
   private function getAccountArray (array $infos)
@@ -410,8 +413,9 @@ class mailMethodZimbra extends mailMethod
     return TRUE;
   }
 
-  private function setAliases ($initialAliases, $aliases)
+  private function setAliases (array $aliases): bool
   {
+    $initialAliases = ($this->cachedAccount['account']['zimbraMailAlias'] ?? []);
     $remove = array_diff($initialAliases, $aliases);
     $add    = array_diff($aliases, $initialAliases);
     if ($this->type == 'user') {
@@ -423,8 +427,8 @@ class mailMethodZimbra extends mailMethod
       if ($alias === '') {
         continue;
       }
-      $answer = $this->query($command, ['zimbraId' => $this->cachedAccount['zimbraId'], 'alias' => $alias]);
-      if ($answer === FALSE) {
+      $answer = $this->query($command, ['zimbraId' => $this->cachedAccount['zimbraId'], 'alias' => $alias], ['account.NO_SUCH_DOMAIN']);
+      if ($this->is_error()) {
         return FALSE;
       }
     }
@@ -592,29 +596,19 @@ class mailMethodZimbra extends mailMethod
       }
     }
 
-    if (($this->type == 'user') && ($infos['id_attribute'] !== 'mail')) {
-      if ($this->parent->isMailboxCreation()) {
-        $initialMail  = '';
-      } else {
-        $initialMail  = $this->parent->attributesAccess['mail']->getInitialValue();
-      }
-      $mail         = $this->parent->attributesAccess['mail']->getValue();
-      if (!$this->setAliases([$initialMail], [$mail])) {
-        return FALSE;
-      }
+    /* Handle aliases */
+    if (isset($this->parent->attributesAccess['gosaMailAlternateAddress'])) {
+      $aliases = $this->parent->attributesAccess['gosaMailAlternateAddress']->getValue();
+    } else {
+      $aliases = [];
     }
 
-    /* Handle aliases */
-    if (isset($this->parent->attrs['gosaMailAlternateAddress'])) {
-      if ($this->parent->isMailboxCreation()) {
-        $initialAliases = [];
-      } else {
-        $initialAliases = $this->parent->attributesAccess['gosaMailAlternateAddress']->getInitialValue();
-      }
-      $aliases        = $this->parent->attributesAccess['gosaMailAlternateAddress']->getValue();
-      if (!$this->setAliases($initialAliases, $aliases)) {
-        return FALSE;
-      }
+    if (($this->type == 'user') && ($infos['id_attribute'] !== 'mail')) {
+      $aliases[] = $this->parent->attributesAccess['mail']->getValue();
+    }
+
+    if (!$this->setAliases($aliases)) {
+      return FALSE;
     }
 
     if (!$this->updateMembers()) {
