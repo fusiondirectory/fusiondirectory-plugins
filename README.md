@@ -39,6 +39,27 @@ This question can be solved by creating:
 * A plugin for its management in FusionDirectory with the simple plugin api
 * An Argonaut module for the client installed on the server
 
+## Installation and upgrade of FusionDirectory
+
+The installation and upgrade information is available on [Install FusionDirectory][fusiondirectory-install]
+
+## Migration to FusionDirectory
+
+To migrate an existing LDAP tree, you've to do all steps [Install FusionDirectory][fusiondirectory-install],
+plus some modifications:
+
+* FusionDirectory only shows users that have the objectClass inetOrgPerson
+
+* FusionDirectory only recognizes subtrees (or departments in FusionDirectory's view of things) that have the objectClass gosaDepartment.
+  You can hide subtrees from FusionDirectory by not putting this objectClass inside.
+
+The FusionDirectory setup may be used to do these migrations, but it is not meant
+to work in every possible circumstance. Please be carefull when using it on
+productive system.
+
+That should be all. Entries should be visible in FusionDirectory now.
+Be aware that if your naming policy of user cn's differs from the way FusionDirectory handles it, the entries get rewritten to a FusionDirectory style dn.
+
 ## Get help
 
 ### Community support
@@ -83,6 +104,8 @@ If you like us and want to send us a small contribution you can use the followin
 [FusionDirectory][FusionDirectory] is  [GPL 2 License](COPYING).
 
 [FusionDirectory]: https://www.fusiondirectory.org/
+
+[fusiondirectory-install]: https://fusiondirectory-user-manual.readthedocs.io/en/1.3/fusiondirectory/install/index.html
 
 [get help]: https://www.fusiondirectory.org/en/communaute/
 
