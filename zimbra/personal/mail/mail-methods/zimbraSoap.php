@@ -59,6 +59,8 @@ class Request
       'getMailboxResponse'          => 'ZimbraSoap\\getMailboxResponse',
       'endSessionRequest'           => 'ZimbraSoap\\endSessionRequest',
       'endSessionResponse'          => 'ZimbraSoap\\emptyResponse',
+      'getDistributionListRequest'  => 'ZimbraSoap\\getDistributionListRequest',
+      'getDistributionListResponse' => 'ZimbraSoap\\getDistributionListResponse',
     ];
   }
 
@@ -93,6 +95,8 @@ class Request
         return new removeAccountAliasRequest($data);
       case 'EndSession':
         return new endSessionRequest($data);
+      case 'GetGroup':
+        return new getDistributionListRequest($data);
       default:
         throw new FusionDirectoryException('Unsupported command '.$command);
     }
@@ -327,5 +331,44 @@ class endSessionRequest extends Request {
     $this->all            = ($data['all'] ?? NULL);
     $this->excludeCurrent = ($data['excludeCurrent'] ?? NULL);
     $this->sessionId      = ($data['sessionId'] ?? NULL);
+  }
+}
+
+class getDistributionListRequest extends Request {
+  /* distributionListSelector */
+  public $dl;
+  /* int  */
+  public $limit;
+  /* int  */
+  public $offset;
+  /* boolean  */
+  public $sortAscending;
+
+  public function __construct (array $data)
+  {
+    $this->dl = new \stdClass();
+    $this->dl->by = 'name';
+    $this->dl->_ = $data['name'];
+    $this->limit          = ($data['limit'] ?? NULL);
+    $this->offset         = ($data['offset'] ?? NULL);
+    $this->sortAscending  = ($data['sortAscending'] ?? NULL);
+  }
+}
+
+class getDistributionListResponse extends Response {
+  /* distributionListInfo */
+  public $dl;
+  /* boolean */
+  public $more;
+  /* int */
+  public $total;
+
+  public function toArray (): array
+  {
+    return [
+      'dl'    => $this->dl,
+      'more'  => $this->more,
+      'total' => $this->total,
+    ];
   }
 }

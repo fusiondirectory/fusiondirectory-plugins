@@ -133,7 +133,26 @@ class mailMethodZimbra extends mailMethod
     return $domxml->saveXML();
   }
 
-  protected function query (string $command, $data)
+  /*! \brief Checks data consistency
+  */
+  public function check ()
+  {
+    $errors = parent::check();
+
+    if (empty($this->account_id)) {
+      $errors[] = new SimplePluginError(
+        $this->parent,
+        htmlescape(_('Mail method failed to build account id'))
+      );
+    }
+
+    return $errors;
+  }
+
+  /**
+   * @param array $allowedErrorCodes Error codes which leave $this->error empty
+   */
+  protected function query (string $command, $data, array $allowedErrorCodes = [])
   {
     $request = ZimbraSoap\Request::build($command, $data);
 
@@ -141,7 +160,9 @@ class mailMethodZimbra extends mailMethod
       $response = $request->soapCall($this->soapClient)->toArray();
       return $response;
     } catch (SoapFault $sf) {
-      $this->error = sprintf(_('Error while contacting Zimbra API: %s'), $sf->getMessage());
+      if (!in_array_ics(($sf->detail->Error->Code ?? ''), $allowedErrorCodes)) {
+        $this->error = sprintf(_('Error while contacting Zimbra API: %s'), $sf->getMessage());
+      }
       return FALSE;
     } finally {
       @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<pre>'.htmlescape(static::prettyPrintXML($this->soapClient->__getLastRequest() ?? '')).'</pre>', '<b>MAIL: Query</b>');
@@ -192,7 +213,7 @@ class mailMethodZimbra extends mailMethod
       $command    = 'GetGroup';
       $answerkey  = 'group';
     }
-    $answer = $this->query($command, ['name' => $this->account_id]);
+    $answer = $this->query($command, ['name' => $this->account_id], ['account.NO_SUCH_ACCOUNT']);
     if (($answer !== FALSE) && isset($answer[$answerkey])) {
       $this->cachedAccount = [
         'account'   => $answer[$answerkey],
@@ -211,6 +232,9 @@ class mailMethodZimbra extends mailMethod
    * */
   private function cleanCachedAccountArrays ()
   {
+    if (!is_array($this->cachedAccount['account']['zimbraMailAlias'])) {
+      $this->cachedAccount['account']['zimbraMailAlias'] = [$this->cachedAccount['account']['zimbraMailAlias']];
+    }
   }
 
   private function getAccountArray (array $infos)
@@ -335,6 +359,9 @@ class mailMethodZimbra extends mailMethod
 
     /* Step 2 - We compute diff from server data */
     $this->cacheAccount();
+    if ($this->is_error()) {
+      return FALSE;
+    }
     foreach ($account as $key => $value) {
       if (isset($this->cachedAccount['account'][$key])) {
         if (is_array($value) && !is_array($this->cachedAccount['account'][$key])) {
@@ -386,8 +413,9 @@ class mailMethodZimbra extends mailMethod
     return TRUE;
   }
 
-  private function setAliases ($initialAliases, $aliases)
+  private function setAliases (array $aliases): bool
   {
+    $initialAliases = ($this->cachedAccount['account']['zimbraMailAlias'] ?? []);
     $remove = array_diff($initialAliases, $aliases);
     $add    = array_diff($aliases, $initialAliases);
     if ($this->type == 'user') {
@@ -399,8 +427,12 @@ class mailMethodZimbra extends mailMethod
       if ($alias === '') {
         continue;
       }
-      $answer = $this->query($command, ['zimbraId' => $this->cachedAccount['zimbraId'], 'alias' => $alias]);
-      if ($answer === FALSE) {
+      $answer = $this->query(
+        $command,
+        ['zimbraId' => $this->cachedAccount['zimbraId'], 'alias' => $alias],
+        ['account.NO_SUCH_DOMAIN','account.NO_SUCH_ALIAS']
+      );
+      if ($this->is_error()) {
         return FALSE;
       }
     }
@@ -430,6 +462,9 @@ class mailMethodZimbra extends mailMethod
     }
 
     $this->cacheAccount();
+    if ($this->is_error()) {
+      return FALSE;
+    }
     $oldmembers = [];
     if (isset($this->cachedAccount['account']['members'])) {
       $oldmembers = $this->cachedAccount['account']['members'];
@@ -498,15 +533,20 @@ class mailMethodZimbra extends mailMethod
   public function updateMailbox ()
   {
     parent::updateMailbox();
+    $this->reset_error();
     $infos = $this->getServerConfig();
     if ($infos === FALSE) {
       return FALSE;
     }
 
     $this->build_account_id();
+    $accountExists = $this->account_exists();
+    if ($this->is_error()) {
+      return FALSE;
+    }
     if ($this->parent->isMailboxCreation()) {
       /* Creation */
-      if ($this->account_exists()) {
+      if ($accountExists) {
         $this->error = _('An account with the same email address already exists in the email server');
         return FALSE;
       }
@@ -518,10 +558,13 @@ class mailMethodZimbra extends mailMethod
       }
 
       $this->cacheAccount();
+      if ($this->is_error()) {
+        return FALSE;
+      }
     } else {
       if ($this->account_id !== $this->initial_account_id) {
         /* Renaming */
-        if ($this->account_exists()) {
+        if ($accountExists) {
           $this->error = _('An account with the same email address already exists in the email server');
           return FALSE;
         }
@@ -544,7 +587,7 @@ class mailMethodZimbra extends mailMethod
         if (!$this->updateAccount($infos)) {
           return FALSE;
         }
-      } elseif (!$this->account_exists()) {
+      } elseif (!$accountExists) {
         $answer = $this->createAccount($infos);
 
         if ($answer === FALSE) {
@@ -557,29 +600,19 @@ class mailMethodZimbra extends mailMethod
       }
     }
 
-    if (($this->type == 'user') && ($infos['id_attribute'] !== 'mail')) {
-      if ($this->parent->isMailboxCreation()) {
-        $initialMail  = '';
-      } else {
-        $initialMail  = $this->parent->attributesAccess['mail']->getInitialValue();
-      }
-      $mail         = $this->parent->attributesAccess['mail']->getValue();
-      if (!$this->setAliases([$initialMail], [$mail])) {
-        return FALSE;
-      }
+    /* Handle aliases */
+    if (isset($this->parent->attributesAccess['gosaMailAlternateAddress'])) {
+      $aliases = $this->parent->attributesAccess['gosaMailAlternateAddress']->getValue();
+    } else {
+      $aliases = [];
     }
 
-    /* Handle aliases */
-    if (isset($this->parent->attrs['gosaMailAlternateAddress'])) {
-      if ($this->parent->isMailboxCreation()) {
-        $initialAliases = [];
-      } else {
-        $initialAliases = $this->parent->attributesAccess['gosaMailAlternateAddress']->getInitialValue();
-      }
-      $aliases        = $this->parent->attributesAccess['gosaMailAlternateAddress']->getValue();
-      if (!$this->setAliases($initialAliases, $aliases)) {
-        return FALSE;
-      }
+    if (($this->type == 'user') && ($infos['id_attribute'] !== 'mail')) {
+      $aliases[] = $this->parent->attributesAccess['mail']->getValue();
+    }
+
+    if (!$this->setAliases($aliases)) {
+      return FALSE;
     }
 
     if (!$this->updateMembers()) {
@@ -592,6 +625,7 @@ class mailMethodZimbra extends mailMethod
   public function deleteMailbox ()
   {
     parent::deleteMailbox();
+    $this->reset_error();
     $infos = $this->getServerConfig();
     if ($infos === FALSE) {
       return FALSE;
@@ -600,17 +634,19 @@ class mailMethodZimbra extends mailMethod
     if ($this->account_exists()) {
       if ($this->type == 'user') {
         if ($infos['delete_type'] == 'delete') {
-          $answer = $this->query('DeleteAccount', ['zimbraId' => $this->cachedAccount['zimbraId']]);
+          $answer = $this->query('DeleteAccount', ['zimbraId' => $this->cachedAccount['zimbraId']], ['account.NO_SUCH_ACCOUNT']);
         } elseif ($infos['delete_type'] == 'disable') {
-          $answer = $this->query('ModifyAccount', ['zimbraId' => $this->cachedAccount['zimbraId'], 'zimbraAccountStatus' => 'closed']);
+          $answer = $this->query('ModifyAccount', ['zimbraId' => $this->cachedAccount['zimbraId'], 'zimbraAccountStatus' => 'closed'], ['account.NO_SUCH_ACCOUNT']);
         } else {
           $answer = FALSE;
-          $this->error = _('Invalid deletion mode');
+          $this->error = sprintf(_('Invalid deletion mode: "%s"'), $infos['delete_type']);
         }
       } else {
-        $answer = $this->query('DeleteGroup', ['zimbraId' => $this->cachedAccount['zimbraId']]);
+        $answer = $this->query('DeleteGroup', ['zimbraId' => $this->cachedAccount['zimbraId']], ['account.NO_SUCH_ACCOUNT']);
       }
       return ($answer !== FALSE);
+    } elseif ($this->is_error()) {
+      return FALSE;
     }
     return TRUE;
   }

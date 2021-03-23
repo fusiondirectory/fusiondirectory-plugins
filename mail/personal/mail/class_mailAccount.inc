@@ -252,6 +252,15 @@ class mailAccount extends simplePlugin
     parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
   }
 
+  /*!
+   * \brief This function is called on the copied object to set its dn to where it will be saved
+   */
+  function resetCopyInfos ()
+  {
+    parent::resetCopyInfos();
+    $this->initialMailMethod = NULL;
+  }
+
   public function mailServerChanged ()
   {
     $this->mailMethod = mailMethod::getInstanceFromServer($this->gosaMailServer, $this);
@@ -285,6 +294,15 @@ class mailAccount extends simplePlugin
           $this,
           htmlescape(sprintf(
             _('Mail method cannot connect: %s'),
+            $this->mailMethod->get_error()
+          ))
+        );
+        $error->display();
+      } elseif ($this->mailMethod->is_error()) {
+        $error = new SimplePluginError(
+          $this,
+          htmlescape(sprintf(
+            _('Mail method error: %s'),
             $this->mailMethod->get_error()
           ))
         );
