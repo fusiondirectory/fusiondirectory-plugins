@@ -308,6 +308,21 @@ class mailMethodZimbra extends mailMethod
         $account['zimbraHideInGal'] = ($supannTab->supannListeRouge ? 'TRUE' : 'FALSE');
       }
 
+      /* Lock zimbra account if MAIL is inactive or suspended in supannRessourceEtatDate */
+      if (isset($this->parent->parent->by_object['supannAccountStatus']) && $this->parent->parent->by_object['supannAccountStatus']->is_account) {
+        $supannStatusTab = $this->parent->parent->by_object['supannAccountStatus'];
+
+        foreach ($supannStatusTab->supannRessourceEtatDate as $line) {
+          list ($label, $state, $substate, $start, $end) = $supannStatusTab->attributesAccess['supannRessourceEtatDate']->attribute->readValues($line);
+          if ($label === 'MAIL') {
+            if ($state !== 'A') {
+              $account['zimbraAccountStatus'] = 'locked';
+            }
+            break;
+          }
+        }
+      }
+
       /* Sync fields from personal if tab is active */
       if (isset($this->parent->parent->by_object['personalInfo']) && $this->parent->parent->by_object['personalInfo']->is_account) {
         $personalTab    = $this->parent->parent->by_object['personalInfo'];
