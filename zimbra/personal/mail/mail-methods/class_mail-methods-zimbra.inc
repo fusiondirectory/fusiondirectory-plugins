@@ -84,7 +84,7 @@ class mailMethodZimbra extends mailMethod
 
   /*! \brief Remove bogus soap object after unserialize
    */
-  public function __wakeup()
+  public function __wakeup ()
   {
     @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->account_id, "<b>MAIL:</b> __wakeup");
     $this->connected = FALSE;
@@ -566,59 +566,57 @@ class mailMethodZimbra extends mailMethod
     if ($this->is_error()) {
       return FALSE;
     }
-    if ($this->parent->isMailboxCreation()) {
-      /* Creation */
+    if ($this->parent->isMailboxCreation() && $accountExists) {
+      /* Creation with existing account */
+      if ($infos['create_type'] === 'error') {
+        $this->error = _('An account with the same email address already exists in the email server');
+        return FALSE;
+      } else {
+        msg_dialog::display(
+          _('Associating account'),
+          htmlescape(
+            sprinf(
+              _('Account "%s" already existing on Zimbra server, associating it'),
+              $this->account_id
+            ),
+            INFO_DIALOG
+          )
+        );
+      }
+    } elseif ($this->account_id !== $this->initial_account_id) {
+      /* Renaming */
       if ($accountExists) {
         $this->error = _('An account with the same email address already exists in the email server');
         return FALSE;
       }
 
-      $answer = $this->createAccount($infos);
+      $account = [
+        'zimbraId'  => $this->cachedAccount['zimbraId'],
+        'newName'   => $this->account_id,
+      ];
+      if ($this->type == 'user') {
+        $command = 'RenameAccount';
+      } else {
+        $command = 'RenameGroup';
+      }
+      if (!$this->query($command, $account)) {
+        return FALSE;
+      }
+    }
 
-      if ($answer === FALSE) {
+    /* If we made it to this point, we want to sync the account */
+    if ($accountExists) {
+      if (!$this->updateAccount($infos)) {
+        return FALSE;
+      }
+    } else {
+      if (!$this->createAccount($infos)) {
         return FALSE;
       }
 
       $this->cacheAccount();
       if ($this->is_error()) {
         return FALSE;
-      }
-    } else {
-      if ($this->account_id !== $this->initial_account_id) {
-        /* Renaming */
-        if ($accountExists) {
-          $this->error = _('An account with the same email address already exists in the email server');
-          return FALSE;
-        }
-
-        $account = [
-          'zimbraId'  => $this->cachedAccount['zimbraId'],
-          'newName'   => $this->account_id,
-        ];
-        if ($this->type == 'user') {
-          $command = 'RenameAccount';
-        } else {
-          $command = 'RenameGroup';
-        }
-        $answer = $this->query($command, $account);
-
-        if ($answer === FALSE) {
-          return FALSE;
-        }
-
-        if (!$this->updateAccount($infos)) {
-          return FALSE;
-        }
-      } elseif (!$accountExists) {
-        $answer = $this->createAccount($infos);
-
-        if ($answer === FALSE) {
-          return FALSE;
-        }
-      } else {
-        if (!$this->updateAccount($infos)) {
-          return FALSE;
-        }
       }
     }
 
@@ -745,6 +743,7 @@ class mailMethodZimbra extends mailMethod
         foreach ($cosArray as $cos) {
           list ($cosName, $cosId) = explode('|', $cos);
           $deleteMode   = (isset($attrs['fdZimbraServerDeletionType'][0]) ? $attrs['fdZimbraServerDeletionType'][0] : 'delete');
+          $createMode   = (isset($attrs['fdZimbraServerCreationType'][0]) ? $attrs['fdZimbraServerCreationType'][0] : 'error');
           $pwdSync      = (isset($attrs['fdZimbraServerPasswordSync'][0]) ? ($attrs['fdZimbraServerPasswordSync'][0] === 'TRUE') : TRUE);
           $idAttribute  = (isset($attrs['fdZimbraServerIdAttribute'][0]) ? $attrs['fdZimbraServerIdAttribute'][0] : 'mail');
           $serverList[$attrs['cn'][0].' - '.$domain.' - '.$cosName] = [
@@ -756,6 +755,7 @@ class mailMethodZimbra extends mailMethod
             'password_sync' => $pwdSync,
             'id_attribute'  => $idAttribute,
             'delete_type'   => $deleteMode,
+            'create_type'   => $createMode,
             'domain'        => $domain,
             'cos_name'      => $cosName,
             'cos_id'        => $cosId,
