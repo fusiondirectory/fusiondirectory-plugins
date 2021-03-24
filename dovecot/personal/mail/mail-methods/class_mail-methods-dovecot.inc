@@ -35,7 +35,7 @@ class mailMethodDovecot extends mailMethod
     return (parent::is_connected() && $this->imap_handle);
   }
 
-  public function connect ()
+  public function connect (): bool
   {
     global $config;
     parent::connect();

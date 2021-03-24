@@ -40,7 +40,7 @@ class mailMethodZimbra extends mailMethod
   /*! \brief  Connect to Zimbra API and store the auth token
       @return Boolean True if connection was successful
    */
-  public function connect ()
+  public function connect (): bool
   {
     parent::connect();
     $infos = $this->getServerConfig();

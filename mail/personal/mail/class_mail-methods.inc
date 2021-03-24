@@ -242,7 +242,7 @@ class mailMethod
               Not necessary for the base class.
       @return Boolean True if this method is connected else false.
    */
-  public function connect ()
+  public function connect (): bool
   {
     $this->reset_error();
     @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, get_class($this), '<b>MAIL: Connect method</b>');
@@ -442,6 +442,9 @@ class mailMethod
   public function updateMailbox ()
   {
     $this->reset_error();
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
+        "<b>MAIL: Update account</b> from server :".$this->mailServer);
+
     return TRUE;
   }
 
