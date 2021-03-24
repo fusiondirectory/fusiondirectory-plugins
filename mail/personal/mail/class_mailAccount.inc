@@ -431,7 +431,7 @@ class mailAccount extends simplePlugin
                 )
               )
             );
-          } elseif (!$this->initialMailMethod->deleteMailbox()) {
+          } elseif (!$this->initialMailMethod->connect() || !$this->initialMailMethod->deleteMailbox()) {
             $errors[] = new SimplePluginError(
               $this,
               htmlescape(sprintf(_('Cannot remove mailbox: %s'), $this->initialMailMethod->get_error()))
@@ -498,29 +498,27 @@ class mailAccount extends simplePlugin
   {
     /* Let the mailMethod remove this mailbox */
     if (!$this->is_template) {
-      if (!$this->mailMethod->connect()) {
+      if (!$this->initialMailMethod->connect()) {
         $error = new SimplePluginError(
           $this,
           htmlescape(sprintf(
             _('Cannot remove mailbox, mail method cannot connect: %s'),
-            $this->mailMethod->get_error()
+            $this->initialMailMethod->get_error()
           ))
         );
         $error->display();
-      } else {
-        if (!$this->mailMethod->deleteMailbox()) {
-          $error = new SimplePluginError(
-            $this,
-            htmlescape(sprintf(
-              _('Cannot remove mailbox: %s'),
-              $this->mailMethod->get_error()
-            ))
-          );
-          $error->display();
-        }
+      } elseif (!$this->initialMailMethod->deleteMailbox()) {
+        $error = new SimplePluginError(
+          $this,
+          htmlescape(sprintf(
+            _('Cannot remove mailbox: %s'),
+            $this->initialMailMethod->get_error()
+          ))
+        );
+        $error->display();
       }
+      $this->initialMailMethod->disconnect();
     }
-    $this->mailMethod->disconnect();
     parent::post_remove();
   }
 }

@@ -54,6 +54,12 @@ class serviceZimbra extends simpleMailMethodService
             [  'delete',   'disable'], '',
             [_('Delete'),_('Disable')]
           ),
+          new SelectAttribute(
+            _('Mailbox creation'), _('What to do when the Zimbra account already exists when mail tab is activated'),
+            'fdZimbraServerCreationType', TRUE,
+            [  'error',   'associate'], '',
+            [_('Error'),_('Associate')]
+          ),
           new BooleanAttribute(
             _('Password synchronization'), _('Should the password be synchronized to the Zimbra instance'),
             'fdZimbraServerPasswordSync', FALSE,

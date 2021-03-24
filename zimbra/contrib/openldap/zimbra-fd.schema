@@ -51,6 +51,12 @@ attributetype ( 1.3.6.1.4.1.38414.83.10.8 NAME 'fdZimbraServerIdAttribute'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{255}
   SINGLE-VALUE)
 
+attributetype ( 1.3.6.1.4.1.38414.83.10.9 NAME 'fdZimbraServerCreationType'
+  DESC 'FusionDirectory - When account already exists in Zimbra, show an error or associate the account - should contain error or associate'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
 # Objectclasses
 objectclass (1.3.6.1.4.1.38414.83.2.1 NAME 'fdZimbraServer' SUP top AUXILIARY
   DESC 'FusionDirectory - Zimbra server description'
@@ -58,6 +64,6 @@ objectclass (1.3.6.1.4.1.38414.83.2.1 NAME 'fdZimbraServer' SUP top AUXILIARY
   MAY  (
     fdZimbraServerMailDomain $ fdZimbraServerDeletionType $
     fdZimbraServerLogin $ fdZimbraServerPassword $ fdZimbraServerPasswordSync $
-    fdZimbraServerIdAttribute
+    fdZimbraServerIdAttribute $ fdZimbraServerCreationType
   ))
 

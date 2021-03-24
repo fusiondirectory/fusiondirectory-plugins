@@ -48,7 +48,7 @@ class mailMethodCyrus extends mailMethod
     parent::init();
   }
 
-  public function connect ()
+  public function connect (): bool
   {
     global $config;
     parent::connect();
