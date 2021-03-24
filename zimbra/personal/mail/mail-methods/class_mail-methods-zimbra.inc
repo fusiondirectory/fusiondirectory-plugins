@@ -82,6 +82,15 @@ class mailMethodZimbra extends mailMethod
     }
   }
 
+  /*! \brief Remove bogus soap object after unserialize
+   */
+  public function __wakeup()
+  {
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->account_id, "<b>MAIL:</b> __wakeup");
+    $this->connected = FALSE;
+    unset($this->soapClient);
+  }
+
   /*! \brief  Create a new account id, like 'user/name@domain.com'.
    */
   protected function build_account_id ()
