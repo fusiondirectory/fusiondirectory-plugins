@@ -205,7 +205,6 @@ class mailMethodZimbra extends mailMethod
   public function disconnect ()
   {
     parent::disconnect();
-    $this->query('EndSession', []);
     unset($this->token);
     unset($this->tokenTime);
     unset($this->tokenLifetime);
