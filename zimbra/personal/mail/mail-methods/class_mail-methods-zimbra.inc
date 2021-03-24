@@ -153,6 +153,27 @@ class mailMethodZimbra extends mailMethod
         $this->parent,
         htmlescape(_('Mail method failed to build account id'))
       );
+    } else {
+      if (!$this->is_connected()) {
+        $this->connect();
+      }
+      if ($this->parent->isMailboxCreation()) {
+        $infos = $this->getServerConfig();
+        if ($this->account_exists() && ($infos !== FALSE) && ($infos['create_type'] === 'error')) {
+          $errors[] = new SimplePluginError(
+            $this->parent,
+            htmlescape(_('An account with the same email address "%s" already exists in the email server'), $this->account_id)
+          );
+        }
+      } elseif ($this->account_id !== $this->initial_account_id) {
+        /* Renaming */
+        if ($this->account_exists()) {
+          $errors[] = new SimplePluginError(
+            $this->parent,
+            htmlescape(_('An account with the same email address "%s" already exists in the email server'), $this->account_id)
+          );
+        }
+      }
     }
 
     return $errors;
@@ -566,22 +587,24 @@ class mailMethodZimbra extends mailMethod
     if ($this->is_error()) {
       return FALSE;
     }
-    if ($this->parent->isMailboxCreation() && $accountExists) {
-      /* Creation with existing account */
-      if ($infos['create_type'] === 'error') {
-        $this->error = _('An account with the same email address already exists in the email server');
-        return FALSE;
-      } else {
-        msg_dialog::display(
-          _('Associating account'),
-          htmlescape(
-            sprinf(
-              _('Account "%s" already existing on Zimbra server, associating it'),
-              $this->account_id
-            ),
-            INFO_DIALOG
-          )
-        );
+    if ($this->parent->isMailboxCreation()) {
+      if ($accountExists) {
+        /* Creation with existing account */
+        if ($infos['create_type'] === 'error') {
+          $this->error = _('An account with the same email address already exists in the email server');
+          return FALSE;
+        } else {
+          msg_dialog::display(
+            _('Associating account'),
+            htmlescape(
+              sprinf(
+                _('Account "%s" already existing on Zimbra server, associating it'),
+                $this->account_id
+              ),
+              INFO_DIALOG
+            )
+          );
+        }
       }
     } elseif ($this->account_id !== $this->initial_account_id) {
       /* Renaming */
