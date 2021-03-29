@@ -38,7 +38,7 @@ class mailMethodRenaterPartage extends mailMethod
   /*! \brief  Connect to renater PARTAGE API and store the auth token
       @return Boolean True if connection was successful
    */
-  public function connect ()
+  public function connect (): bool
   {
     parent::connect();
     $infos = $this->getServerConfig();
