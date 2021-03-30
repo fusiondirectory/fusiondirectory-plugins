@@ -57,7 +57,8 @@ class mailMethodZimbra extends mailMethod
         'location'      => $infos['uri'].'/service/admin/soap',
         'trace'         => TRUE,
         'exceptions'    => TRUE,
-        'classmap'     => ZimbraSoap\Request::getMapping(),
+        'classmap'      => ZimbraSoap\Request::getMapping(),
+        'user_agent'    => $infos['user_agent'],
       ]
     );
 
