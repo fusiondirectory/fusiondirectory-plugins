@@ -187,17 +187,28 @@ class mailMethodZimbra extends mailMethod
   {
     $request = ZimbraSoap\Request::build($command, $data);
 
-    try {
-      $response = $request->soapCall($this->soapClient)->toArray();
-      return $response;
-    } catch (SoapFault $sf) {
-      if (!in_array_ics(($sf->detail->Error->Code ?? ''), $allowedErrorCodes)) {
+    $tries  = 0;
+    while (TRUE) {
+      /* Because of what seems to be a Zimbra bug there is a service.PERM_DENIED when you try
+       *  to access an entry which is not finished being created */
+      try {
+        $response = $request->soapCall($this->soapClient)->toArray();
+        return $response;
+      } catch (SoapFault $sf) {
+        if (in_array_ics(($sf->detail->Error->Code ?? ''), $allowedErrorCodes)) {
+          return FALSE;
+        } elseif ((($sf->detail->Error->Code ?? '') == 'service.PERM_DENIED') && ($tries < 4)) {
+          $tries++;
+          /* When retrying after service.PERM_DENIED, wait a few seconds */
+          sleep(3 * $tries);
+          continue;
+        }
         $this->error = sprintf(_('Error while contacting Zimbra API: %s'), $sf->getMessage());
+        return FALSE;
+      } finally {
+        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<pre>'.htmlescape(static::prettyPrintXML($this->soapClient->__getLastRequest() ?? '')).'</pre>', '<b>MAIL: Query</b>');
+        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<pre>'.htmlescape(static::prettyPrintXML($this->soapClient->__getLastResponse() ?? '')).'</pre>', '<b>MAIL: Answer</b>');
       }
-      return FALSE;
-    } finally {
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<pre>'.htmlescape(static::prettyPrintXML($this->soapClient->__getLastRequest() ?? '')).'</pre>', '<b>MAIL: Query</b>');
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<pre>'.htmlescape(static::prettyPrintXML($this->soapClient->__getLastResponse() ?? '')).'</pre>', '<b>MAIL: Answer</b>');
     }
   }
 
