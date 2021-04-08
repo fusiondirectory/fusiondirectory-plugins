@@ -163,7 +163,12 @@ class mailMethodZimbra extends mailMethod
         if ($this->account_exists() && ($infos !== FALSE) && ($infos['create_type'] === 'error')) {
           $errors[] = new SimplePluginError(
             $this->parent,
-            htmlescape(_('An account with the same email address "%s" already exists in the email server'), $this->account_id)
+            htmlescape(
+              sprintf(
+                _('An account with the same email address "%s" already exists in the email server'),
+                $this->account_id
+              )
+            )
           );
         }
       } elseif ($this->account_id !== $this->initial_account_id) {
@@ -171,7 +176,12 @@ class mailMethodZimbra extends mailMethod
         if ($this->account_exists()) {
           $errors[] = new SimplePluginError(
             $this->parent,
-            htmlescape(_('An account with the same email address "%s" already exists in the email server'), $this->account_id)
+            htmlescape(
+              sprintf(
+                _('An account with the same email address "%s" already exists in the email server'),
+                $this->account_id
+              )
+            )
           );
         }
       }
@@ -602,7 +612,10 @@ class mailMethodZimbra extends mailMethod
       if ($accountExists) {
         /* Creation with existing account */
         if ($infos['create_type'] === 'error') {
-          $this->error = _('An account with the same email address already exists in the email server');
+          $this->error = sprintf(
+            _('An account with the same email address "%s" already exists in the email server'),
+            $this->account_id
+          );
           return FALSE;
         } else {
           msg_dialog::display(
@@ -620,7 +633,10 @@ class mailMethodZimbra extends mailMethod
     } elseif ($this->account_id !== $this->initial_account_id) {
       /* Renaming */
       if ($accountExists) {
-        $this->error = _('An account with the same email address already exists in the email server');
+        $this->error = sprintf(
+          _('An account with the same email address "%s" already exists in the email server'),
+          $this->account_id
+        );
         return FALSE;
       }
 
@@ -766,7 +782,7 @@ class mailMethodZimbra extends mailMethod
     $ldap->cd($config->current['BASE']);
     $ldap->search('(&(objectClass=fdZimbraServer)(fdZimbraServerMailDomain=*))',
                   ['cn', 'fdZimbraServerUri', 'fdZimbraServerMailDomain',
-                  'fdZimbraServerUserAgent', 'fdZimbraServerDeletionType',
+                  'fdZimbraServerUserAgent', 'fdZimbraServerDeletionType', 'fdZimbraServerCreationType',
                   'fdZimbraServerLogin', 'fdZimbraServerPassword', 'fdZimbraServerPasswordSync',
                   'fdZimbraServerIdAttribute']);
     while ($attrs = $ldap->fetch()) {
