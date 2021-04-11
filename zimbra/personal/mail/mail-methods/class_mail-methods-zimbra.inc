@@ -621,7 +621,7 @@ class mailMethodZimbra extends mailMethod
           msg_dialog::display(
             _('Associating account'),
             htmlescape(
-              sprinf(
+              sprintf(
                 _('Account "%s" already existing on Zimbra server, associating it'),
                 $this->account_id
               ),
