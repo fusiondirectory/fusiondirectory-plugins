@@ -573,18 +573,21 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
 
     if ($this->parent->getBaseObject()->attributesAccess['userPassword']->hasChanged()) {
       $password = $this->parent->getBaseObject()->attributesAccess['userPassword']->getClear();
-      $smbHash = new smbHash();
-      if ($config->get_cfg_value('sambaGenLMPassword', 'FALSE') == 'TRUE') {
-        $this->attrs['sambaLMPassword'] = $smbHash->lmhash($password);
-      } else {
-        $this->attrs['sambaLMPassword'] = [];
-      }
-      $this->attrs['sambaNTPassword'] = $smbHash->nthash($password);
-      $this->attrs['sambaPwdLastSet'] = date('U');
+      if ($password !== '' ) {
+        $smbHash = new smbHash();
+        if ($config->get_cfg_value('sambaGenLMPassword', 'FALSE') == 'TRUE') {
+          $this->attrs['sambaLMPassword'] = $smbHash->lmhash($password);
+        } else {
+          $this->attrs['sambaLMPassword'] = [];
+        }
+        $this->attrs['sambaNTPassword'] = $smbHash->nthash($password);
+        $this->attrs['sambaPwdLastSet'] = date('U');
 
-      $this->attrs['sambaBadPasswordCount'] = '0';
-      $this->attrs['sambaBadPasswordTime']  = '0';
+        $this->attrs['sambaBadPasswordCount'] = '0';
+        $this->attrs['sambaBadPasswordTime']  = '0';
+      }
     }
+
 
     // Handle "sambaKickoffTime"
     if ($config->get_cfg_value('sambaExpirationSync') == 'samba') {
