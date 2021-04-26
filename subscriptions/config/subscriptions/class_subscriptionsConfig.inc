@@ -72,8 +72,35 @@ class subscriptionsConfig extends simplePlugin
             'fdSubscriptionHost', FALSE
           ),
           new OrderedArrayAttribute(
+            new CompositeAttribute(
+              _('Apt repositories'),
+              'fdSubscriptionAptRepositories',
+              [
+                new StringAttribute(
+                  _('Repository'), _('Repository path'),
+                  'fdSubscriptionAptRepositories_repo', TRUE
+                ),
+                new StringAttribute(
+                  _('Distribution'), _('Distribution name'),
+                  'fdSubscriptionAptRepositories_distro', TRUE
+                ),
+                new StringAttribute(
+                  _('Label'), _('Label shown for this repository'),
+                  'fdSubscriptionAptRepositories_label', TRUE
+                ),
+              ],
+              '/^([^ ]+) ([^ ;]+);(.+)$/',
+              '%s %s;%s',
+              '',
+              _('Rpm repositories')
+            ),
+            FALSE,
+            [],
+            TRUE
+          ),
+          new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
-              _('Rpm repostiories'),
+              _('Rpm repositories'),
               'fdSubscriptionRpmRepositories',
               [
                 new StringAttribute(
@@ -87,7 +114,7 @@ class subscriptionsConfig extends simplePlugin
               ],
               ';',
               '',
-              _('Rpm repostiories')
+              _('Rpm repositories')
             ),
             FALSE,
             [],

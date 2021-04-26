@@ -90,6 +90,19 @@ class subscription extends simplePlugin
           ),
         ]
       ],
+      'repositories' => [
+        'name'  => _('Repositories'),
+        'attrs' => [
+          new SelectAttribute(
+            _('Apt repository'), _('Apt repository'),
+            'fdSubscriptionAptRepository', TRUE
+          ),
+          new SelectAttribute(
+            _('RPM distribution'), _('RPM distribution'),
+            'fdSubscriptionRpmRepository', TRUE
+          ),
+        ]
+      ],
       'export' => [
         'name'  => _('Export'),
         'attrs' => [
@@ -99,11 +112,11 @@ class subscription extends simplePlugin
           ),
           new ButtonAttribute(
             _('APT auth.conf'), _('Generate the auth.conf file to send to the client if he uses Debian or a derivate'),
-            'generateAptFile', _('Generate')
+            'generateAptAuthFile', _('Generate')
           ),
-          new SelectAttribute(
-            _('RPM distribution'), _('RPM distribution'),
-            'rpmRepository', TRUE
+          new ButtonAttribute(
+            _('APT'), _('Generate the fusiondirectory-subscription.list file to send to the client if he uses an Apt based distribution'),
+            'generateAptFile', _('Generate')
           ),
           new ButtonAttribute(
             _('RPM'), _('Generate the fusiondirectory-subscription.repo file to send to the client if he uses an RPM based distribution'),
@@ -122,7 +135,6 @@ class subscription extends simplePlugin
 
     $this->attributesAccess['generateSubscriptionFile']->setInLdap(FALSE);
     $this->attributesAccess['generateAptFile']->setInLdap(FALSE);
-    $this->attributesAccess['rpmRepository']->setInLdap(FALSE);
     $this->attributesAccess['generateRpmFile']->setInLdap(FALSE);
     $types      = [];
     $typeLabels = [];
@@ -132,6 +144,14 @@ class subscription extends simplePlugin
       $typeLabels[] = $label;
     }
     $this->attributesAccess['fdSubscriptionType']->setChoices($types, $typeLabels);
+    $aptRepos       = [];
+    $aptRepoLabels  = [];
+    foreach ($config->get_cfg_value('SubscriptionAptRepositories', []) as $aptRepository) {
+      list($repo, $label) = explode(';', $aptRepository, 2);
+      $aptRepos[]       = $repo;
+      $aptRepoLabels[]  = $label;
+    }
+    $this->attributesAccess['fdSubscriptionAptRepository']->setChoices($aptRepos, $aptRepoLabels);
     $rpmRepos       = [];
     $rpmRepoLabels  = [];
     foreach ($config->get_cfg_value('SubscriptionRpmRepositories', []) as $rpmRepository) {
@@ -139,7 +159,7 @@ class subscription extends simplePlugin
       $rpmRepos[]       = $repo;
       $rpmRepoLabels[]  = $label;
     }
-    $this->attributesAccess['rpmRepository']->setChoices($rpmRepos, $rpmRepoLabels);
+    $this->attributesAccess['fdSubscriptionRpmRepository']->setChoices($rpmRepos, $rpmRepoLabels);
   }
 
   public function handle_generateSubscriptionFile ()
@@ -156,7 +176,7 @@ class subscription extends simplePlugin
     send_binary_content($fileContent, $fileName);
   }
 
-  public function handle_generateAptFile ()
+  public function handle_generateAptAuthFile ()
   {
     global $config;
 
@@ -167,17 +187,30 @@ class subscription extends simplePlugin
     send_binary_content($fileContent, $fileName);
   }
 
+  public function handle_generateAptFile ()
+  {
+    global $config;
+
+    $label  = $this->attributesAccess['fdSubscriptionAptRepository']->displayValue($this->fdSubscriptionAptRepository);
+    $name   = strtolower(preg_replace(['/\s/','/[^[:alnum:]]/'], ['-',''], $label));
+
+    $fileName     = 'fusiondirectory-subscription-'.$name.'.list';
+    $fileContent  = 'deb https://'.$config->get_cfg_value('SubscriptionHost').'/'.$this->fdSubscriptionAptRepository.' main'."\n";
+
+    send_binary_content($fileContent, $fileName);
+  }
+
   public function handle_generateRpmFile ()
   {
     global $config;
 
-    $label  = $this->attributesAccess['rpmRepository']->displayValue($this->rpmRepository);
+    $label  = $this->attributesAccess['fdSubscriptionRpmRepository']->displayValue($this->fdSubscriptionRpmRepository);
     $name   = strtolower(preg_replace(['/\s/','/[^[:alnum:]]/'], ['-',''], $label));
 
     $fileName     = 'fusiondirectory-subscription-'.$name.'.repo';
     $fileContent  = '[fusiondirectory-subscription-'.$name.']'."\n";
     $fileContent  .= 'name=Fusiondirectory Packages for '.$label."\n";
-    $fileContent  .= 'baseurl=https://'.$this->uid.':'.$this->userPassword.'@'.$config->get_cfg_value('SubscriptionHost').'/'.$this->rpmRepository."\n";
+    $fileContent  .= 'baseurl=https://'.$this->uid.':'.$this->userPassword.'@'.$config->get_cfg_value('SubscriptionHost').'/'.$this->fdSubscriptionRpmRepository."\n";
     $fileContent  .= 'enabled=1'."\n";
     $fileContent  .= 'gpgcheck=1'."\n";
     send_binary_content($fileContent, $fileName);
