@@ -6,6 +6,20 @@ attributetype ( 1.3.6.1.4.1.38414.84.11.2 NAME 'fdSubscriptionActive'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.84.11.3 NAME 'fdSubscriptionAptRepository'
+  DESC 'FusionDirectory - Last generated Apt repository'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.84.11.4 NAME 'fdSubscriptionRpmRepository'
+  DESC 'FusionDirectory - Last generated RPM repository'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
 # Object Classes
 
 objectclass ( 1.3.6.1.4.1.38414.84.2.1 NAME 'fdSubscription'
@@ -14,5 +28,6 @@ objectclass ( 1.3.6.1.4.1.38414.84.2.1 NAME 'fdSubscription'
   MAY (
     fdSubscriptionStartDate $ fdSubscriptionEndDate $
     fdSubscriptionType $ fdSubscriptionActive $ fdSubscriptionContractId $
-    uid $ userPassword $ description
+    uid $ userPassword $ description $
+    fdSubscriptionAptRepository $ fdSubscriptionRpmRepository
   ))
