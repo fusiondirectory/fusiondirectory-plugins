@@ -161,7 +161,7 @@ class subscription extends simplePlugin
     global $config;
 
     $fileName     = 'auth.conf';
-    $fileContent  = 'machine '.$config->get_cfg_value('SubscriptionAptHost')."\n";
+    $fileContent  = 'machine '.$config->get_cfg_value('SubscriptionHost')."\n";
     $fileContent  .= ' login '.$this->uid."\n";
     $fileContent  .= ' password '.$this->userPassword."\n";
     send_binary_content($fileContent, $fileName);
@@ -177,7 +177,7 @@ class subscription extends simplePlugin
     $fileName     = 'fusiondirectory-subscription-'.$name.'.repo';
     $fileContent  = '[fusiondirectory-subscription-'.$name.']'."\n";
     $fileContent  .= 'name=Fusiondirectory Packages for '.$label."\n";
-    $fileContent  .= 'baseurl=https://'.$this->uid.':'.$this->userPassword.'@'.$this->rpmRepository."\n";
+    $fileContent  .= 'baseurl=https://'.$this->uid.':'.$this->userPassword.'@'.$config->get_cfg_value('SubscriptionHost').'/'.$this->rpmRepository."\n";
     $fileContent  .= 'enabled=1'."\n";
     $fileContent  .= 'gpgcheck=1'."\n";
     send_binary_content($fileContent, $fileName);

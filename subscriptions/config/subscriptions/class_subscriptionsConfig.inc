@@ -68,8 +68,8 @@ class subscriptionsConfig extends simplePlugin
             TRUE
           ),
           new StringAttribute(
-            _('Apt repository host'), _('Host for the apt repository, to use in auth.conf'),
-            'fdSubscriptionAptHost', FALSE
+            _('Repositories host'), _('Host for the repositories, to use in auth.conf'),
+            'fdSubscriptionHost', FALSE
           ),
           new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
@@ -77,7 +77,7 @@ class subscriptionsConfig extends simplePlugin
               'fdSubscriptionRpmRepositories',
               [
                 new StringAttribute(
-                  _('Repository'), _('Repository URL without scheme, to put after @ in baseurl'),
+                  _('Repository'), _('Repository path'),
                   'fdSubscriptionRpmRepositories_repo', TRUE
                 ),
                 new StringAttribute(
