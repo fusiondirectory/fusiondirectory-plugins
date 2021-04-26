@@ -59,18 +59,20 @@ class schacAccount extends simplePlugin
   {
     parent::update();
 
-    if (($supannTab = $this->parent->getTabOrServiceObject('supannAccount')) !== FALSE) {
-      $ine = $supannTab->supannCodeINE;
-      $uniquecodes = $this->schacPersonalUniqueCode;
-      foreach ($uniquecodes as $key => $uniquecode) {
-        if (preg_match('/^urn:schac:personalUniqueCode:int:esi:fr:/', $uniquecode)) {
-          unset($uniquecodes[$key]);
+    if (!$this->is_template) {
+      if (($supannTab = $this->parent->getTabOrServiceObject('supannAccount')) !== FALSE) {
+        $ine = $supannTab->supannCodeINE;
+        $uniquecodes = $this->schacPersonalUniqueCode;
+        foreach ($uniquecodes as $key => $uniquecode) {
+          if (preg_match('/^urn:schac:personalUniqueCode:int:esi:fr:/', $uniquecode)) {
+            unset($uniquecodes[$key]);
+          }
         }
+        if (!empty($ine)) {
+          $uniquecodes[] = 'urn:schac:personalUniqueCode:int:esi:fr:'.$ine;
+        }
+        $this->schacPersonalUniqueCode = array_values($uniquecodes);
       }
-      if (!empty($ine)) {
-        $uniquecodes[] = 'urn:schac:personalUniqueCode:int:esi:fr:'.$ine;
-      }
-      $this->schacPersonalUniqueCode = array_values($uniquecodes);
     }
 
     return TRUE;
