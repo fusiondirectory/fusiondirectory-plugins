@@ -38,6 +38,7 @@ class subscriptionsConfig extends simplePlugin
     return [
       'main' => [
         'name'  => _('Subscriptions'),
+        'class' => ['fullwidth'],
         'attrs' => [
           new StringAttribute(
             _('Subscription RDN'), _('Branch in which subscriptions will be stored'),
