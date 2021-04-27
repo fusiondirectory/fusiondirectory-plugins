@@ -91,7 +91,7 @@ class subscriptionsConfig extends simplePlugin
               '/^([^ ]+) ([^ ;]+);(.+)$/',
               '%s %s;%s',
               '',
-              _('Rpm repositories')
+              _('Apt repositories')
             ),
             FALSE,
             [],
