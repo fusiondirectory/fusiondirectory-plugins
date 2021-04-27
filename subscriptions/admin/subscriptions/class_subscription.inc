@@ -194,7 +194,7 @@ class subscription extends simplePlugin
     $label  = $this->attributesAccess['fdSubscriptionAptRepository']->displayValue($this->fdSubscriptionAptRepository);
     $name   = strtolower(preg_replace(['/\s/','/[^[:alnum:]]/'], ['-',''], $label));
 
-    $fileName     = 'fusiondirectory-subscription-'.$name.'.list';
+    $fileName     = strtolower($this->cn).'-fusiondirectory-subscription-'.$name.'.list';
     $fileContent  = 'deb https://'.$config->get_cfg_value('SubscriptionHost').'/'.$this->fdSubscriptionAptRepository.' main'."\n";
 
     send_binary_content($fileContent, $fileName);
@@ -207,7 +207,7 @@ class subscription extends simplePlugin
     $label  = $this->attributesAccess['fdSubscriptionRpmRepository']->displayValue($this->fdSubscriptionRpmRepository);
     $name   = strtolower(preg_replace(['/\s/','/[^[:alnum:]]/'], ['-',''], $label));
 
-    $fileName     = 'fusiondirectory-subscription-'.$name.'.repo';
+    $fileName     = strtolower($this->cn).'-fusiondirectory-subscription-'.$name.'.repo';
     $fileContent  = '[fusiondirectory-subscription-'.$name.']'."\n";
     $fileContent  .= 'name=Fusiondirectory Packages for '.$label."\n";
     $fileContent  .= 'baseurl=https://'.$this->uid.':'.$this->userPassword.'@'.$config->get_cfg_value('SubscriptionHost').'/'.$this->fdSubscriptionRpmRepository."\n";
