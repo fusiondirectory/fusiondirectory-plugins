@@ -66,10 +66,6 @@ class subscriptionsConfig extends simplePlugin
             [],
             TRUE
           ),
-          new StringAttribute(
-            _('Repositories host'), _('Host for the repositories, to use in auth.conf'),
-            'fdSubscriptionHost', FALSE
-          ),
           new OrderedArrayAttribute(
             new CompositeAttribute(
               _('Apt repositories'),
@@ -118,6 +114,10 @@ class subscriptionsConfig extends simplePlugin
             FALSE,
             [],
             TRUE
+          ),
+          new StringAttribute(
+            _('Repositories host'), _('Host for the repositories, to use in auth.conf'),
+            'fdSubscriptionHost', FALSE
           ),
         ],
       ],
