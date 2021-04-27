@@ -677,8 +677,8 @@ class mailMethodZimbra extends mailMethod
       $aliases = [];
     }
 
-    if (($this->type == 'user') && ($infos['id_attribute'] !== 'mail')) {
-      $aliases[] = $this->parent->attributesAccess['mail']->getValue();
+    if (($this->type === 'user') && ($infos['id_attribute'] !== 'mail') && ($this->parent->mail !== $this->account_id)) {
+      $aliases[] = $this->parent->mail;
     }
 
     if (!$this->setAliases($aliases)) {
