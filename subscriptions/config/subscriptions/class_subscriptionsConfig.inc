@@ -72,8 +72,8 @@ class subscriptionsConfig extends simplePlugin
               'fdSubscriptionAptRepositories',
               [
                 new StringAttribute(
-                  _('Repository'), _('Repository path'),
-                  'fdSubscriptionAptRepositories_repo', TRUE
+                  _('Path'), _('Repository path'),
+                  'fdSubscriptionAptRepositories_path', TRUE
                 ),
                 new StringAttribute(
                   _('Distribution'), _('Distribution name'),
@@ -99,8 +99,8 @@ class subscriptionsConfig extends simplePlugin
               'fdSubscriptionRpmRepositories',
               [
                 new StringAttribute(
-                  _('Repository'), _('Repository path'),
-                  'fdSubscriptionRpmRepositories_repo', TRUE
+                  _('Path'), _('Repository path'),
+                  'fdSubscriptionRpmRepositories_path', TRUE
                 ),
                 new StringAttribute(
                   _('Label'), _('Label shown for this repository'),
