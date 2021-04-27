@@ -27,8 +27,7 @@ class subscriptionsConfig extends simplePlugin
       'plShortName'     => _('Subscriptions configuration'),
       'plDescription'   => _('FusionDirectory subscriptions plugin configuration'),
       'plObjectClass'   => ['fdSubscriptionsPluginConf'],
-      'plCategory'      => ['configuration'],
-      'plObjectType'    => ['smallConfig'],
+      'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
