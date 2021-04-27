@@ -27,8 +27,7 @@ class subscriptionsConfig extends simplePlugin
       'plShortName'     => _('Subscriptions configuration'),
       'plDescription'   => _('FusionDirectory subscriptions plugin configuration'),
       'plObjectClass'   => ['fdSubscriptionsPluginConf'],
-      'plCategory'      => ['configuration'],
-      'plObjectType'    => ['smallConfig'],
+      'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -67,18 +66,14 @@ class subscriptionsConfig extends simplePlugin
             [],
             TRUE
           ),
-          new StringAttribute(
-            _('Repositories host'), _('Host for the repositories, to use in auth.conf'),
-            'fdSubscriptionHost', FALSE
-          ),
           new OrderedArrayAttribute(
             new CompositeAttribute(
               _('Apt repositories'),
               'fdSubscriptionAptRepositories',
               [
                 new StringAttribute(
-                  _('Repository'), _('Repository path'),
-                  'fdSubscriptionAptRepositories_repo', TRUE
+                  _('Path'), _('Repository path'),
+                  'fdSubscriptionAptRepositories_path', TRUE
                 ),
                 new StringAttribute(
                   _('Distribution'), _('Distribution name'),
@@ -92,7 +87,7 @@ class subscriptionsConfig extends simplePlugin
               '/^([^ ]+) ([^ ;]+);(.+)$/',
               '%s %s;%s',
               '',
-              _('Rpm repositories')
+              _('Apt repositories')
             ),
             FALSE,
             [],
@@ -104,8 +99,8 @@ class subscriptionsConfig extends simplePlugin
               'fdSubscriptionRpmRepositories',
               [
                 new StringAttribute(
-                  _('Repository'), _('Repository path'),
-                  'fdSubscriptionRpmRepositories_repo', TRUE
+                  _('Path'), _('Repository path'),
+                  'fdSubscriptionRpmRepositories_path', TRUE
                 ),
                 new StringAttribute(
                   _('Label'), _('Label shown for this repository'),
@@ -119,6 +114,10 @@ class subscriptionsConfig extends simplePlugin
             FALSE,
             [],
             TRUE
+          ),
+          new StringAttribute(
+            _('Repositories host'), _('Host for the repositories, to use in auth.conf'),
+            'fdSubscriptionHost', FALSE
           ),
         ],
       ],
