@@ -28,7 +28,7 @@ class SupannCursusAnneeAttribute extends SupannPrefixedSelectAttribute
       new SelectAttribute('', '', $ldapName.'_prefix', $required),
       new SelectAttribute('', '', $ldapName.'_content', FALSE)
     ];
-    CompositeAttribute::__construct($description, $ldapName, $attributes, '/^{SUPANN}(.)(\\d*)$/', '{SUPANN}%s%s', $acl, $label);
+    CompositeAttribute::__construct($description, $ldapName, $attributes, '/^{SUPANN}(%askme%|.)(%askme%|\\d*)$/', '{SUPANN}%s%s', $acl, $label);
     $this->setLinearRendering(TRUE);
 
     $this->attributes[0]->setChoices(
