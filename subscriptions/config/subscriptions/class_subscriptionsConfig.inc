@@ -24,7 +24,7 @@ class subscriptionsConfig extends simplePlugin
   static function plInfo (): array
   {
     return [
-      'plShortName'     => _('Subscriptions configuration'),
+      'plShortName'     => _('Subscriptions'),
       'plDescription'   => _('FusionDirectory subscriptions plugin configuration'),
       'plObjectClass'   => ['fdSubscriptionsPluginConf'],
       'plObjectType'    => ['configuration'],
