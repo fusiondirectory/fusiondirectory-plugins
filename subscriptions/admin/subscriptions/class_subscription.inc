@@ -180,7 +180,7 @@ class subscription extends simplePlugin
   {
     global $config;
 
-    $fileName     = 'auth.conf';
+    $fileName     = strtolower($this->cn).'-auth.conf';
     $fileContent  = 'machine '.$config->get_cfg_value('SubscriptionHost')."\n";
     $fileContent  .= ' login '.$this->uid."\n";
     $fileContent  .= ' password '.$this->userPassword."\n";
