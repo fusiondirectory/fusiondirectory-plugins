@@ -428,6 +428,21 @@ class supannAccount extends simplePlugin
     ]);
     $this->attributesAccess['supannEtuInscription']->setLinearRendering(FALSE);
 
+    $mailPriveTypes = [
+      'PERSO'   => _('Personal'),
+      'PARENTS' => _('Legal representative'),
+      'PRO'     => _('Professional'),
+      'TEMP'    => _('Temporary'),
+    ];
+    foreach ($config->get_cfg_value('SupannMailPriveTypes', []) as $line) {
+      list($type,$label) = explode(':', $line, 2);
+      $mailPriveTypes[$type] = $label;
+    }
+    $this->attributesAccess['supannMailPrive']->attribute->attributes[0]->setChoices(
+      array_keys($mailPriveTypes),
+      array_values($mailPriveTypes)
+    );
+
     $objects      = [];
     $objectLabels = [];
     foreach ($config->get_cfg_value('SupannConsentementObjects', []) as $supannConsentementObject) {

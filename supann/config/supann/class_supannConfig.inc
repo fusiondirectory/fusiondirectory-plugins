@@ -66,6 +66,28 @@ class supannConfig extends simplePlugin
             'fdSupannShowMailForwardingAddress', FALSE,
             FALSE
           ),
+          new OrderedArrayAttribute(
+            new CharSeparatedCompositeAttribute(
+              _('Custom types and their labels'),
+              'fdSupannMailPriveTypes',
+              [
+                new StringAttribute(
+                  _('Type'), _('String that will be stored between {} in supannMailPrive'),
+                  'fdSupannMailPriveTypes_type', TRUE
+                ),
+                new StringAttribute(
+                  _('Label'), _('Label shown for this type'),
+                  'fdSupannMailPriveTypes_label', TRUE
+                ),
+              ],
+              ':',
+              '',
+              _('Custom supannMailPrive types')
+            ),
+            FALSE,
+            [],
+            TRUE
+          ),
         ],
       ],
       'status' => [
