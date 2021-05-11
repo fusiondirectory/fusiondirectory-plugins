@@ -54,11 +54,16 @@ class opsiImport extends systemImport
       -1,
       0,
       [
+        new StringAttribute(
+          _('Interface name'), _('How to name the network interface created on imported systems'),
+          'networkInterfaceName', TRUE,
+          'eth0'
+        ),
         new BooleanAttribute(
           _('Import localboot products'), _('Import localboot product list configured in OPSI in the FD OPSI tab'),
           'importLocalboots', FALSE,
           FALSE
-        )
+        ),
       ]
     );
     return $attributesInfo;
@@ -140,6 +145,28 @@ class opsiImport extends systemImport
         }
       }
       unset($host);
+    }
+
+    foreach ($hosts as $host) {
+      if (!empty($host['hardwareAddress'])) {
+        if (empty($host['ipAddress'])) {
+          $host['ipAddress'] = [];
+        } elseif (!is_array($host['ipAddress'])) {
+          $host['ipAddress'] = [$host['ipAddress']];
+        }
+        if (!is_array($host['hardwareAddress'])) {
+          $host['hardwareAddress'] = [$host['hardwareAddress']];
+        }
+        $host['interfaces'] = [
+          [
+            'cn'            => [$this->networkInterfaceName],
+            'ipHostNumber'  => $host['ipAddress'],
+            'macAddress'    => $host['hardwareAddress'],
+          ]
+        ];
+      }
+      unset($host['ipAddress']);
+      unset($host['hardwareAddress']);
     }
 
     return $hosts;

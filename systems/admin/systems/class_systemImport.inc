@@ -109,16 +109,6 @@ class systemImport extends simplePlugin
       }
       $cn   = $m[1];
       $zone = $m[2];
-      if (empty($host['ipAddress'])) {
-        $host['ipAddress'] = [];
-      } elseif (!is_array($host['ipAddress'])) {
-        $host['ipAddress'] = [$host['ipAddress']];
-      }
-      if (empty($host['hardwareAddress'])) {
-        $host['hardwareAddress'] = [];
-      } elseif (!is_array($host['hardwareAddress'])) {
-        $host['hardwareAddress'] = [$host['hardwareAddress']];
-      }
 
       if (!isset($template)) {
         $objectType = $type;
@@ -129,8 +119,10 @@ class systemImport extends simplePlugin
         $baseObject = $tabObject->getBaseObject();
         $baseObject->cn           = $cn;
         $baseObject->description  = $host['description'];
-        $baseObject->ipHostNumber = $host['ipAddress'];
-        $baseObject->macAddress   = $host['hardwareAddress'];
+        if (isset($host['interfaces'])) {
+          $tabObject->by_object['interfacesManagement']->networkInterfaces = $host['interfaces'];
+        }
+        $tabObject->update();
       } else {
         $template->reset();
         // For now we only need to import workstations
@@ -139,9 +131,10 @@ class systemImport extends simplePlugin
             'base'          => $base,
             'cn'            => $cn,
             'description'   => $host['description'],
-            'ipHostNumber'  => $host['ipAddress'],
-            'macAddress'    => $host['hardwareAddress'],
-          ]
+          ],
+          'interfacesManagement' => [
+            'networkInterfaces' => $host['interfaces'],
+          ],
         ];
         $error = $template->deserialize($values);
         if ($error !== TRUE) {
