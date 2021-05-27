@@ -508,6 +508,27 @@ class fdRPCService
       } else {
         $tabobject = objects::open($dn, $type);
       }
+      $infos              = objects::infos($type);
+      /* Note: This might not be exactly the right order but it’s the best we got */
+      $potentialTabsOrder = array_flip(array_map(
+        function ($a)
+        {
+          return $a['CLASS'];
+        },
+        $infos['tabClass']::getPotentialTabList($type, $infos)
+      ));
+      uksort(
+        $values,
+        function ($k1, $k2) use ($potentialTabsOrder) {
+          if (!isset($potentialTabsOrder[$k1])) {
+            return 1;
+          } elseif (!isset($potentialTabsOrder[$k2])) {
+            return -1;
+          } else {
+            return $potentialTabsOrder[$k1] <=> $potentialTabsOrder[$k2];
+          }
+        }
+      );
       foreach ($values as $tab => $tabvalues) {
         if (!isset($tabobject->by_object[$tab])) {
           throw new WebServiceError('This tab does not exists: "'.$tab.'"', 404);
@@ -573,6 +594,27 @@ class fdRPCService
     static::addLockOrThrow($dn);
     try {
       $tabobject = objects::open($dn, $type);
+      $infos     = objects::infos($type);
+      /* Note: This might not be exactly the right order but it’s the best we got */
+      $potentialTabsOrder = array_flip(array_map(
+        function ($a)
+        {
+          return $a['CLASS'];
+        },
+        $infos['tabClass']::getPotentialTabList($type, $infos)
+      ));
+      uksort(
+        $values,
+        function ($k1, $k2) use ($potentialTabsOrder) {
+          if (!isset($potentialTabsOrder[$k1])) {
+            return 1;
+          } elseif (!isset($potentialTabsOrder[$k2])) {
+            return -1;
+          } else {
+            return $potentialTabsOrder[$k1] <=> $potentialTabsOrder[$k2];
+          }
+        }
+      );
       foreach ($values as $tab => $tabvalues) {
         if (!isset($tabobject->by_object[$tab])) {
           throw new WebServiceError('This tab does not exists: "'.$tab.'"', 404);
