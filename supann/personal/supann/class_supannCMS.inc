@@ -25,6 +25,10 @@ class supannCMS extends simplePlugin
 
   static function plInfo (): array
   {
+    global $config;
+    if ($config->get_cfg_value('SupannShowCMS', 'TRUE') !== 'TRUE') {
+      return [];
+    }
     return [
       'plShortName'   => _('Multiservice card'),
       'plDescription' => _('SupAnn CMS management'),

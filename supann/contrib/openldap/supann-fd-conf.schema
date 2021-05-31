@@ -82,6 +82,24 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.13 NAME 'fdSupannMailPriveTypes'
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
 
+attributetype ( 1.3.6.1.4.1.38414.17.1.14 NAME 'fdSupannShowAccountStatus'
+  DESC 'FusionDirectory - SupAnn whether to show tab for account status'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.17.1.15 NAME 'fdSupannShowCMS'
+  DESC 'FusionDirectory - SupAnn whether to show tab for multiservice card'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.17.1.16 NAME 'fdSupannShowFranceConnect'
+  DESC 'FusionDirectory - SupAnn whether to show tab for France Connect'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
 # Object Class
 objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
   DESC 'FusionDirectory SupAnn plugin configuration'
@@ -92,5 +110,6 @@ objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
     fdSupannRessourceSubStates $ fdSupannRessourceSubStatesLabels $ fdSupannRessourceLabels $
     fdSupannCMSTypes $ fdSupannCMSSources $ fdSupannCMSFormats $ fdSupannCMSAppDomains $
     fdSupannConsentementObjects $ fdSupannConsentementTypes $ fdSupannShowMailForwardingAddress $
-    fdSupannMailPriveTypes
+    fdSupannMailPriveTypes $
+    fdSupannShowAccountStatus $ fdSupannShowCMS $ fdSupannShowFranceConnect
   ) )

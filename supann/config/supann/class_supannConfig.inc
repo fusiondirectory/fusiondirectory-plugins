@@ -330,7 +330,27 @@ class supannConfig extends simplePlugin
             TRUE
           ),
         ]
-      ]
+      ],
+      'features' => [
+        'name'  => _('Features'),
+        'attrs' => [
+          new BooleanAttribute(
+            _('SupAnn status'), _('Show SupAnn status tab'),
+            'fdSupannShowAccountStatus', FALSE,
+            TRUE
+          ),
+          new BooleanAttribute(
+            _('Multiservice card'), _('Show Multiservice card tab'),
+            'fdSupannShowCMS', FALSE,
+            TRUE
+          ),
+          new BooleanAttribute(
+            _('France Connect'), _('Show France Connect tab'),
+            'fdSupannShowFranceConnect', FALSE,
+            TRUE
+          ),
+        ],
+      ],
     ];
   }
 
