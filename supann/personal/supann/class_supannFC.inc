@@ -25,6 +25,10 @@ class supannFC extends simplePlugin
 
   static function plInfo (): array
   {
+    global $config;
+    if ($config->get_cfg_value('SupannShowFranceConnect', 'TRUE') !== 'TRUE') {
+      return [];
+    }
     return [
       'plShortName'   => _('France Connect'),
       'plDescription' => _('France Connect identity'),

@@ -27,6 +27,10 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
 
   static function plInfo (): array
   {
+    global $config;
+    if ($config->get_cfg_value('SupannShowAccountStatus', 'TRUE') !== 'TRUE') {
+      return [];
+    }
     return [
       'plShortName'   => _('SupAnn status'),
       'plDescription' => _('SupAnn status management'),
