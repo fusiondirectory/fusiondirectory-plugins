@@ -88,6 +88,50 @@ class supannConfig extends simplePlugin
             [],
             TRUE
           ),
+          new OrderedArrayAttribute(
+            new CharSeparatedCompositeAttribute(
+              _('Custom types and their labels'),
+              'fdSupannTelephonePriveTypes',
+              [
+                new StringAttribute(
+                  _('Type'), _('String that will be stored between {} in supannTelephonePrive'),
+                  'fdSupannTelephonePriveTypes_type', TRUE
+                ),
+                new StringAttribute(
+                  _('Label'), _('Label shown for this type'),
+                  'fdSupannTelephonePriveTypes_label', TRUE
+                ),
+              ],
+              ':',
+              '',
+              _('Custom supannTelephonePrive types')
+            ),
+            FALSE,
+            [],
+            TRUE
+          ),
+          new OrderedArrayAttribute(
+            new CharSeparatedCompositeAttribute(
+              _('Custom types and their labels'),
+              'fdSupannAdressePostalePriveeTypes',
+              [
+                new StringAttribute(
+                  _('Type'), _('String that will be stored between {} in supannAdressePostalePrivee'),
+                  'fdSupannAdressePostalePriveeTypes_type', TRUE
+                ),
+                new StringAttribute(
+                  _('Label'), _('Label shown for this type'),
+                  'fdSupannAdressePostalePriveeTypes_label', TRUE
+                ),
+              ],
+              ':',
+              '',
+              _('Custom supannAdressePostalePrivee types')
+            ),
+            FALSE,
+            [],
+            TRUE
+          ),
         ],
       ],
       'status' => [

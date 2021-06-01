@@ -94,10 +94,7 @@ class supannAccount extends simplePlugin
               [
                 new SelectAttribute(
                   '', _('Phone number type'),
-                  'supannTelephonePrive_prefix', TRUE,
-                  ['MOBPERSO','FIXEPERSO','MOBPARENTS','FIXEPARENTS','MOBPRO','FIXEPRO','SECOURS'],
-                  '',
-                  [_('Personal mobile'),_('Personal landline'),_('Legal representative mobile'),_('Legal representative landline'),_('Professional mobile'),_('Professional landline'),_('Secours')]
+                  'supannTelephonePrive_prefix', TRUE
                 ),
                 new PhoneNumberAttribute(
                   '', _('Phone number'),
@@ -129,10 +126,7 @@ class supannAccount extends simplePlugin
               [
                 new SelectAttribute(
                   '', _('Email address type'),
-                  'supannMailPrive_prefix', TRUE,
-                  ['PERSO','PARENTS','PRO','SECOURS'],
-                  '',
-                  [_('Personal'),_('Legal representative'),_('Professional'),_('Secours')]
+                  'supannMailPrive_prefix', TRUE
                 ),
                 new MailAttribute(
                   '', _('Email address'),
@@ -152,10 +146,7 @@ class supannAccount extends simplePlugin
               [
                 new SelectAttribute(
                   '', _('Address type'),
-                  'supannAdressePostalePrivee_prefix', TRUE,
-                  ['PERSO','PARENTS','PRO','TEMP'],
-                  '',
-                  [_('Personal'),_('Legal representative'),_('Professional'),_('Temporary')]
+                  'supannAdressePostalePrivee_prefix', TRUE
                 ),
                 new PostalAddressAttribute(
                   '', _('Address'),
@@ -428,6 +419,7 @@ class supannAccount extends simplePlugin
     ]);
     $this->attributesAccess['supannEtuInscription']->setLinearRendering(FALSE);
 
+    /* supannMailPrive */
     $mailPriveTypes = [
       'PERSO'   => _('Personal'),
       'PARENTS' => _('Legal representative'),
@@ -443,6 +435,42 @@ class supannAccount extends simplePlugin
       array_values($mailPriveTypes)
     );
 
+    /* supannTelephonePrive */
+    $telephonePriveTypes = [
+      'MOBPERSO'    => _('Personal mobile'),
+      'FIXEPERSO'   => _('Personal landline'),
+      'MOBPARENTS'  => _('Legal representative mobile'),
+      'FIXEPARENTS' => _('Legal representative landline'),
+      'MOBPRO'      => _('Professional mobile'),
+      'FIXEPRO'     => _('Professional landline'),
+      'SECOURS'     => _('Secours'),
+    ];
+    foreach ($config->get_cfg_value('SupannTelephonePriveTypes', []) as $line) {
+      list($type,$label) = explode(':', $line, 2);
+      $telephonePriveTypes[$type] = $label;
+    }
+    $this->attributesAccess['supannTelephonePrive']->attribute->attributes[0]->setChoices(
+      array_keys($telephonePriveTypes),
+      array_values($telephonePriveTypes)
+    );
+
+    /* supannAdressePostalePrivee */
+    $adressePostalePriveeTypes = [
+      'PERSO'   => _('Personal'),
+      'PARENTS' => _('Legal representative'),
+      'PRO'     => _('Professional'),
+      'TEMP'    => _('Temporary'),
+    ];
+    foreach ($config->get_cfg_value('SupannAdressePostalePriveeTypes', []) as $line) {
+      list($type,$label) = explode(':', $line, 2);
+      $adressePostalePriveeTypes[$type] = $label;
+    }
+    $this->attributesAccess['supannAdressePostalePrivee']->attribute->attributes[0]->setChoices(
+      array_keys($adressePostalePriveeTypes),
+      array_values($adressePostalePriveeTypes)
+    );
+
+    /* supannConsentement */
     $objects      = [];
     $objectLabels = [];
     foreach ($config->get_cfg_value('SupannConsentementObjects', []) as $supannConsentementObject) {

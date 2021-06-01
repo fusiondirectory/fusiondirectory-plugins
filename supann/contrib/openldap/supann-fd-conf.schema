@@ -100,6 +100,18 @@ attributetype ( 1.3.6.1.4.1.38414.17.1.16 NAME 'fdSupannShowFranceConnect'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.17.1.17 NAME 'fdSupannTelephonePriveTypes'
+  DESC 'FusionDirectory - SupAnn custom types for supannTelephonePrive - format type:label'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
+
+attributetype ( 1.3.6.1.4.1.38414.17.1.18 NAME 'fdSupannAdressePostalePriveeTypes'
+  DESC 'FusionDirectory - SupAnn custom types for supannAdressePostalePrivee - format type:label'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
+
 # Object Class
 objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
   DESC 'FusionDirectory SupAnn plugin configuration'
@@ -110,6 +122,6 @@ objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
     fdSupannRessourceSubStates $ fdSupannRessourceSubStatesLabels $ fdSupannRessourceLabels $
     fdSupannCMSTypes $ fdSupannCMSSources $ fdSupannCMSFormats $ fdSupannCMSAppDomains $
     fdSupannConsentementObjects $ fdSupannConsentementTypes $ fdSupannShowMailForwardingAddress $
-    fdSupannMailPriveTypes $
+    fdSupannMailPriveTypes $ fdSupannTelephonePriveTypes $ fdSupannAdressePostalePriveeTypes $
     fdSupannShowAccountStatus $ fdSupannShowCMS $ fdSupannShowFranceConnect
   ) )
