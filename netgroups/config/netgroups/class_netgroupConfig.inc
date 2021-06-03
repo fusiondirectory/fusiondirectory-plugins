@@ -36,7 +36,7 @@ class netgroupConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'netgroup' => [
         'name'  => _('Netgroup'),
         'attrs' => [
           new StringAttribute(

@@ -36,7 +36,7 @@ class sudoConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'sudo' => [
         'name'  => _('Sudo'),
         'attrs' => [
           new StringAttribute(

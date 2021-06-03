@@ -37,7 +37,7 @@ class ipamConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'ipam' => [
         'name'  => _('IPAM'),
         'attrs' => [
           new StringAttribute(

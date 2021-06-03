@@ -36,7 +36,7 @@ class aliasConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'alias' => [
         'name'  => _('Alias'),
         'attrs' => [
           new StringAttribute(

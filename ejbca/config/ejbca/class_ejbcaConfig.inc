@@ -37,7 +37,7 @@ class ejbcaConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'ejbca' => [
         'name'  => _('EJBCA'),
         'attrs' => [
           new StringAttribute(

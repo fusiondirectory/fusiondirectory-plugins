@@ -36,7 +36,7 @@ class communityConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'community' => [
         'name'  => _('Community'),
         'attrs' => [
           new SetAttribute(

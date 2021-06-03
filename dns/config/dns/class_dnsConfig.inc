@@ -37,7 +37,7 @@ class dnsConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'dns' => [
         'name'  => _('DNS'),
         'attrs' => [
           new StringAttribute(

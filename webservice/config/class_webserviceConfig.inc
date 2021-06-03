@@ -36,7 +36,7 @@ class webserviceConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'webservice' => [
         'name'  => _('Webservice'),
         'attrs' => [
           new BooleanAttribute(

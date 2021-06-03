@@ -38,7 +38,7 @@ class ppolicyConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'ppolicy' => [
         'name'  => _('Ppolicy'),
         'attrs' => [
           new StringAttribute(

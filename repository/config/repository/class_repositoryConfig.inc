@@ -36,7 +36,7 @@ class repositoryConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'repository' => [
         'name'  => _('Repository'),
         'attrs' => [
           new StringAttribute(

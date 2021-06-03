@@ -36,7 +36,7 @@ class fiConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'fusioninventory' => [
         'name'  => _('FusionInventory'),
         'attrs' => [
           new StringAttribute(

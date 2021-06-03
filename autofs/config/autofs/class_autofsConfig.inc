@@ -36,7 +36,7 @@ class autofsConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'autofs' => [
         'name'  => _('AutoFS'),
         'attrs' => [
           new StringAttribute(

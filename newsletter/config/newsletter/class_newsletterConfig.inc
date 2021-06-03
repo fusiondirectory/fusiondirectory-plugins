@@ -36,7 +36,7 @@ class newsletterConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'newsletter' => [
         'name'  => _('Newsletter'),
         'attrs' => [
           new SetAttribute(

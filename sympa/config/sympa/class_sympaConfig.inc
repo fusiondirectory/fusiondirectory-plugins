@@ -36,7 +36,7 @@ class sympaConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'sympa' => [
         'name'  => _('Sympa'),
         'attrs' => [
           new StringAttribute(

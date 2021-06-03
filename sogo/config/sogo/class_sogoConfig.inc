@@ -36,7 +36,7 @@ class sogoConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'sogo' => [
         'name'  => _('SOGo'),
         'attrs' => [
           new StringAttribute(

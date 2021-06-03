@@ -36,7 +36,7 @@ class opsiConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'opsi' => [
         'name'  => _('OPSI'),
         'attrs' => [
           new StringAttribute(

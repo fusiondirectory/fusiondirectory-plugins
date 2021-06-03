@@ -36,7 +36,7 @@ class publicFormsConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'public-forms' => [
         'name'  => _('Public forms'),
         'attrs' => [
           new StringAttribute(

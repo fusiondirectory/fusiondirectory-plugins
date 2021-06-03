@@ -37,7 +37,7 @@ class archiveConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'archive' => [
         'name'  => _('Archive'),
         'class' => ['fullwidth'],
         'attrs' => [

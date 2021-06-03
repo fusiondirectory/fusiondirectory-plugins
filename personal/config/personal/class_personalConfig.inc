@@ -36,7 +36,7 @@ class personalConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'personal' => [
         'name'  => _('Personal'),
         'attrs' => [
           new BooleanAttribute(

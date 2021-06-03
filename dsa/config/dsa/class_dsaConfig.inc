@@ -36,7 +36,7 @@ class dsaConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'dsa' => [
         'name'  => _('DSA'),
         'attrs' => [
           new StringAttribute(

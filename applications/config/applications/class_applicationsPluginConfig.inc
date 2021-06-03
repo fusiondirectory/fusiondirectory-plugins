@@ -36,7 +36,7 @@ class applicationsPluginConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'rdns' => [
+      'applications' => [
         'name'  => _('Applications'),
         'attrs' => [
           new StringAttribute(

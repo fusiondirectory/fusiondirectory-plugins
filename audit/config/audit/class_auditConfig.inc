@@ -36,7 +36,7 @@ class auditConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'audit' => [
         'name'  => _('Audit'),
         'attrs' => [
           new StringAttribute(

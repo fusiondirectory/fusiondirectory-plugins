@@ -37,7 +37,7 @@ class dhcpConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'dhcp' => [
         'name'  => _('DHCP'),
         'attrs' => [
           new StringAttribute(
