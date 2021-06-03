@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class applicationsPluginConfig extends simplePlugin
+class applicationsPluginConfig extends multiPluginSection
 {
   static function plInfo (): array
   {

@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ppolicyConfig extends simplePlugin
+class ppolicyConfig extends multiPluginSection
 {
   static function plInfo (): array
   {
@@ -56,17 +56,15 @@ class ppolicyConfig extends simplePlugin
     ];
   }
 
-  function __construct (string $dn = NULL, $object = NULL, $parent = NULL, bool $mainTab = FALSE)
+  public static function fixAttributesOnLoad (multiPlugin $multiPlugin)
   {
     global $config;
 
-    parent::__construct($dn, $object, $parent, $mainTab);
-
-    if (!empty($this->fdPpolicyDefaultCn)) {
-      if (empty($this->fdPpolicyDefaultDn)) {
-        $this->fdPpolicyDefaultDn = 'cn='.$this->fdPpolicyDefaultCn.','.get_ou('ppolicyRDN').$config->current['BASE'];
+    if (!empty($multiPlugin->fdPpolicyDefaultCn)) {
+      if (empty($multiPlugin->fdPpolicyDefaultDn)) {
+        $multiPlugin->fdPpolicyDefaultDn = 'cn='.$multiPlugin->fdPpolicyDefaultCn.','.get_ou('ppolicyRDN').$config->current['BASE'];
       }
-      $this->fdPpolicyDefaultCn = '';
+      $multiPlugin->fdPpolicyDefaultCn = '';
     }
   }
 }

@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class archiveConfig extends simplePlugin
+class archiveConfig extends multiPluginSection
 {
   static function plInfo (): array
   {
@@ -79,13 +79,12 @@ class archiveConfig extends simplePlugin
     ];
   }
 
-  function __construct (string $dn = NULL, $object = NULL, $parent = NULL, bool $mainTab = FALSE)
+  public static function fixAttributesOnLoad (multiPlugin $multiPlugin)
   {
-    parent::__construct($dn, $object, $parent, $mainTab);
     $choices = static::getManagedTypes();
-    $this->attributesAccess['fdArchivedTypesAndFields']->attribute->attributes[0]->setChoices(array_keys($choices), array_values($choices));
-    $this->attributesAccess['fdArchivedTypesAndFields']->setLinearRendering(FALSE);
-    $this->attributesAccess['fdArchivedTypesAndFields']->setHeaders([
+    $multiPlugin->attributesAccess['fdArchivedTypesAndFields']->attribute->attributes[0]->setChoices(array_keys($choices), array_values($choices));
+    $multiPlugin->attributesAccess['fdArchivedTypesAndFields']->setLinearRendering(FALSE);
+    $multiPlugin->attributesAccess['fdArchivedTypesAndFields']->setHeaders([
       _('Type'),
       _('Fields'),
       _('Unique Fields'),

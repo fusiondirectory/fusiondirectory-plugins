@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class sympaConfig extends simplePlugin
+class sympaConfig extends multiPluginSection
 {
   static function plInfo (): array
   {

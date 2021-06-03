@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class webauthnConfig extends simplePlugin
+class webauthnConfig extends multiPluginSection
 {
   static function plInfo (): array
   {
