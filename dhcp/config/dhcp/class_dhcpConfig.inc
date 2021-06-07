@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class dhcpConfig extends simplePlugin
+class dhcpConfig extends multiPluginSection
 {
   static function plInfo (): array
   {
@@ -37,7 +37,7 @@ class dhcpConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'dhcp' => [
         'name'  => _('DHCP'),
         'attrs' => [
           new StringAttribute(

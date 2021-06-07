@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class repositoryConfig extends simplePlugin
+class repositoryConfig extends multiPluginSection
 {
   static function plInfo (): array
   {
@@ -36,7 +36,7 @@ class repositoryConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'repository' => [
         'name'  => _('Repository'),
         'attrs' => [
           new StringAttribute(

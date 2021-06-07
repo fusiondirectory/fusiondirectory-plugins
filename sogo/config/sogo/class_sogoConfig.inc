@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class sogoConfig extends simplePlugin
+class sogoConfig extends multiPluginSection
 {
   static function plInfo (): array
   {
@@ -36,7 +36,7 @@ class sogoConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'sogo' => [
         'name'  => _('SOGo'),
         'attrs' => [
           new StringAttribute(

@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class publicFormsConfig extends simplePlugin
+class publicFormsConfig extends multiPluginSection
 {
   static function plInfo (): array
   {
@@ -36,7 +36,7 @@ class publicFormsConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'public-forms' => [
         'name'  => _('Public forms'),
         'attrs' => [
           new StringAttribute(

@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class dsaConfig extends simplePlugin
+class dsaConfig extends multiPluginSection
 {
   static function plInfo (): array
   {
@@ -36,7 +36,7 @@ class dsaConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'dsa' => [
         'name'  => _('DSA'),
         'attrs' => [
           new StringAttribute(

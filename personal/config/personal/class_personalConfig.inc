@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class personalConfig extends simplePlugin
+class personalConfig extends multiPluginSection
 {
   static function plInfo (): array
   {
@@ -36,7 +36,7 @@ class personalConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'personal' => [
         'name'  => _('Personal'),
         'attrs' => [
           new BooleanAttribute(

@@ -287,6 +287,12 @@ class fdRPCService
     unset($infos['tabClass']);
     $infos['tabs'] = $config->data['TABS'][$infos['tabGroup']];
     unset($infos['tabGroup']);
+    foreach ($infos['tabs'] as &$tab) {
+      if (isset($tab['SUBTABS'])) {
+        $tab['SUBTABS'] = $config->data['TABS'][$tab['SUBTABS']];
+      }
+    }
+    unset($tab);
     return $infos;
   }
 

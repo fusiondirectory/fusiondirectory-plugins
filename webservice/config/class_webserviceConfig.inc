@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class webserviceConfig extends simplePlugin
+class webserviceConfig extends multiPluginSection
 {
   static function plInfo (): array
   {
@@ -36,7 +36,7 @@ class webserviceConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'webservice' => [
         'name'  => _('Webservice'),
         'attrs' => [
           new BooleanAttribute(

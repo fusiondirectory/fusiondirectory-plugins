@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ejbcaConfig extends simplePlugin
+class ejbcaConfig extends multiPluginSection
 {
   static function plInfo (): array
   {
@@ -37,7 +37,7 @@ class ejbcaConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'main' => [
+      'ejbca' => [
         'name'  => _('EJBCA'),
         'attrs' => [
           new StringAttribute(
