@@ -96,7 +96,7 @@ class supannFC extends simplePlugin
               'supannFCSub', TRUE,
               '',
               '',
-              '/^[[:ascii:]]{1,255}$/',
+              '/^[[:ascii:]]{1,255}$/'
             )
           ),
         ],
