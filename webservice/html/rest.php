@@ -281,7 +281,7 @@ class fdRestService extends fdRPCService
     $this->checkAccess($type, $tab, $dn);
 
     if ((strtolower($type) == 'configuration') && ($dn != CONFIGRDN.$config->current['BASE'])) {
-      throw new NonExistingLdapNodeException('Could not open configuration at dn '.$dn);
+      throw new FusionDirectoryException('Could not open configuration at dn '.$dn);
     }
 
     $tabobject = objects::open($dn, $type);

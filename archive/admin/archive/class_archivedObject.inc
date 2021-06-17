@@ -178,7 +178,7 @@ class archivedObject extends simplePlugin
         }
         $objects = objects::ls('user', $attrs, $dn, '', FALSE, 'base');
         if (empty($objects)) {
-          throw new NonExistingLdapNodeException('Could not open dn '.$dn);
+          throw new NonExistingLdapNodeException($dn);
         }
 
         $fdArchivedField = [];
