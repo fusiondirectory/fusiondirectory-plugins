@@ -130,9 +130,18 @@ class AccessRightsAttribute extends CompositeAttribute
 
 class faiTemplateEntry extends simplePlugin
 {
-  var $objectclasses  = ['top', 'FAIclass', 'FAItemplateEntry'];
+  public static function plInfo (): array
+  {
+    return [
+      'plShortName'     => _('FAI Template Entry'),
+      'plDescription'   => _('FAI Template Entry'),
+      'plCategory'      => ['fai'],
+      'plObjectClass'   => ['FAIclass', 'FAItemplateEntry'],
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo()),
+    ];
+  }
 
-  static function getAttributesInfo (): array
+  public static function getAttributesInfo (): array
   {
     return [
       'main' => [
