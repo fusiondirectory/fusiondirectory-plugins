@@ -104,7 +104,7 @@ class faiPackage extends faiSimplePluginClass
               'dselect-upgrade', 'taskinst', 'taskrm',
               'hold', 'clean', 'aptitude', 'aptitude-r',
               'pending', 'dpkgc', 'yumi'],
-            'aptitude'
+            'install'
           ),
         ]
       ],
