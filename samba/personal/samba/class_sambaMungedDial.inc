@@ -194,7 +194,10 @@ class sambaMungedDial
 
     /* Encode paramName to UTF-16 */
     if (function_exists("recode")) {
+      /* PHP<7.4 */
+      // phpcs:disable PHPCompatibility.FunctionUse.RemovedFunctions, PHPCompatibility.Extensions.RemovedExtensions
       $utfName = recode("ISO8859-15..UTF-16", $paramName);
+      // phpcs:enable
     } else {
       $utfName = iconv("ISO8859-15", "UTF-16BE", $paramName);
     }

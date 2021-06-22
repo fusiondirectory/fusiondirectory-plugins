@@ -38,10 +38,10 @@ class KrbExtraDataAttribute extends \FusionDirectory\Core\SimplePlugin\Attribute
       $tag  = _('Last modification');
       //~ - 3-6: are the unix time stamp
       //~ - 7-end: zero-terminated string with the principal of the changer
-      $data     = unpack('Vtimestamp/a*user', $value, 2);
+      $data     = unpack('Vtimestamp/a*user', substr($value, 2));
       $content  = sprintf(_('%s - by "%s"'), date('Y-m-d, H:i:s', $data['timestamp']), $data['user']);
     } elseif ($prefix === hex2bin('0008')) {
-      $data     = unpack('vversion', $value, 2);
+      $data     = unpack('vversion', substr($value, 2));
       $tag      = _('Version');
       $content  = $data['version'];
     } else {

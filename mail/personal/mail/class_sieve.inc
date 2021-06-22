@@ -645,7 +645,7 @@ class sieve
     fputs($this->fp, "LISTSCRIPTS\r\n");
     sieve::get_response();    //should always return TRUE, even if there are no scripts...
     if (isset($this->found_script) and $this->found_script) {
-      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, implode($this->response, ", "),
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, implode(", ", $this->response),
           "<b>SIEVE: List scripts was successful</b>");
       return TRUE;
     } else {

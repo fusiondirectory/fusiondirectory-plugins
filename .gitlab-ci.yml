@@ -33,6 +33,10 @@ create_php_code_sniffer_rapport:
     - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
     - find . -type f -name '*.php' -o -name '*.inc' > ./filelist
     - phpcs --ignore=class_sieve.inc --standard=../dev-tools/php-codesniffer-rules/FDStandard/ruleset.xml --file-list=./filelist
+    - git clone --depth 1 https://github.com/PHPCompatibility/PHPCompatibility.git ../PHPCompatibility
+    - git clone --depth 1 https://github.com/PHPCSStandards/PHPCSUtils.git ../PHPCSUtils
+    - phpcs --config-set installed_paths /builds/fusiondirectory/PHPCompatibility,/builds/fusiondirectory/PHPCSUtils
+    - phpcs --standard=PHPCompatibility --runtime-set testVersion 7.0- --file-list=./filelist
 
 # Sonar publishing
 sonar_publish:
