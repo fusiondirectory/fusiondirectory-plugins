@@ -151,7 +151,7 @@ class webauthnAccount extends simplePlugin
     return $return;
   }
 
-  static public function serializeRegistration (object $data): string
+  static public function serializeRegistration ($data): string
   {
     $safeData = [];
     foreach (['rpId','credentialPublicKey','certificateChain','certificate','certificateIssuer','certificateSubject','signatureCounter'] as $stringField) {
