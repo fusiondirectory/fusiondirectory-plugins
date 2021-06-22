@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-class KrbExtraDataAttribute extends Attribute
+class KrbExtraDataAttribute extends \FusionDirectory\Core\SimplePlugin\Attribute
 {
   function renderFormInput (): string
   {

@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class MungedAttribute extends Attribute
+class MungedAttribute extends \FusionDirectory\Core\SimplePlugin\Attribute
 {
   protected $mungedObject;
   protected $attrList;

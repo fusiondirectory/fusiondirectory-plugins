@@ -21,7 +21,7 @@
 
 class TaggedAttribute extends SetAttribute
 {
-  function __construct (Attribute $attribute, array $values = [], bool $valueUnicity = TRUE)
+  function __construct (\FusionDirectory\Core\SimplePlugin\Attribute $attribute, array $values = [], bool $valueUnicity = TRUE)
   {
     parent::__construct($attribute, $values, $valueUnicity);
   }

@@ -21,7 +21,7 @@
 
 /*! \brief This class allows to display an object type
  */
-class DisplayObjectTypeAttribute extends Attribute
+class DisplayObjectTypeAttribute extends \FusionDirectory\Core\SimplePlugin\Attribute
 {
   public function renderFormInput (): string
   {
