@@ -26,7 +26,7 @@ class InterfacesAttribute extends DialogOrderedArrayAttribute
 {
   function __construct (string $label, string $description, string $ldapName, bool $required = FALSE, $defaultValue = '', string $acl = '')
   {
-    Attribute::__construct($label, $description, $ldapName, $required, $defaultValue, $acl);
+    \FusionDirectory\Core\SimplePlugin\Attribute::__construct($label, $description, $ldapName, $required, $defaultValue, $acl);
     $this->setInLdap(FALSE);
     $this->edit_enabled = TRUE;
     $this->attribute    = FALSE;

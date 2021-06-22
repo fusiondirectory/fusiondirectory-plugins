@@ -196,7 +196,7 @@ class ListSudoOptionAttribute extends SetAttribute
   }
 }
 
-class SudoOptionAttribute extends Attribute
+class SudoOptionAttribute extends \FusionDirectory\Core\SimplePlugin\Attribute
 {
   private $type;
 
