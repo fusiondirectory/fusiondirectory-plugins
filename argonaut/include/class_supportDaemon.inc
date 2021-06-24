@@ -286,7 +286,7 @@ class supportDaemon
   /*!
    * \brief  Returns the last error.
    *
-   * \return string Returns the last error.
+   * \return string Returns the last error (unescaped)
    */
   public function get_error ()
   {
@@ -299,8 +299,7 @@ class supportDaemon
         $ret .= $msg."\n";
       }
     }
-    $ret = str_replace(" ", "&nbsp;", $ret);
-    return nl2br($ret);
+    return $ret;
   }
 
   /*!
