@@ -298,7 +298,7 @@ class argonautQueue extends management
 
     $this->o_queue->append_call('wakeup', $macs, []);
     if ($this->o_queue->is_error()) {
-      msg_dialog::display(_('Info'), htmlescape($this->o_queue->get_error()), INFO_DIALOG);
+      msg_dialog::display(_('Info'), nl2br(htmlescape($this->o_queue->get_error())), INFO_DIALOG);
     }
     // Removing the task.
     $this->o_queue->remove_entries($taskids);
