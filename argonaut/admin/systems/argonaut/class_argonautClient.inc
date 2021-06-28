@@ -214,4 +214,12 @@ class argonautClient extends simplePlugin
       ]
     );
   }
+
+  /*!
+   * \brief Test whether argonaut client is active, either directly or through a group
+   */
+  public function isActiveOrInherited (): bool
+  {
+    return (parent::isActive() || $this->member_of_group);
+  }
 }

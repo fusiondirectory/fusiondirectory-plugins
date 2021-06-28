@@ -338,27 +338,28 @@ class dnsHost extends simplePlugin
     if (isset($_POST[get_class($this).'_posted'])) {
       foreach ($_POST as $name => $value) {
         if (preg_match('/^ldap2zone_refresh_(.+)$/', $name, $m)) {
-          $zone = base64_decode($m[1]);
-          if ($this->parent->by_object['argonautClient']->is_account) {
+          try {
+            $zone = base64_decode($m[1]);
+            if (!$this->parent->by_object['argonautClient']->isActiveOrInherited()) {
+              throw new SimplePluginError($this, htmlescape(_('Argonaut client needs to be activated to use ldap2zone remotely')));
+            }
             $s_daemon = new supportDaemon();
             if ($s_daemon->is_error()) {
-              $error = new SimplePluginError($this, msgPool::siError($s_daemon->get_error()));
-              $error->display();
-            } else {
-              $target = $this->parent->getBaseObject()->macAddress;
-              if (is_array($target)) {
-                $target = $target[0];
-              }
-              $s_daemon->append_call('Ldap2Zone.start', $target, ['args' => [$zone]]);
-              if ($s_daemon->is_error()) {
-                $error = new SimplePluginError($this, msgPool::siError($s_daemon->get_error()));
-                $error->display();
-              } else {
-                msg_dialog::display(_('Ldap2zone'), htmlescape(sprintf(_('Ldap2Zone called for zone "%s"'), $zone)), INFO_DIALOG);
-              }
+              throw new SimplePluginError($this, msgPool::siError($s_daemon->get_error()));
             }
-          } else {
-            $error = new SimplePluginError($this, htmlescape(_('Argonaut client needs to be activated to use ldap2zone remotely')));
+            $target = $this->parent->getBaseObject()->macAddress;
+            if (is_array($target)) {
+              if (count($target) === 0) {
+                throw new SimplePluginError($this, _('Cannot use argonaut client on a system without a Mac address'));
+              }
+              $target = $target[0];
+            }
+            $s_daemon->append_call('Ldap2Zone.start', $target, ['args' => [$zone]]);
+            if ($s_daemon->is_error()) {
+              throw new SimplePluginError($this, msgPool::siError($s_daemon->get_error()));
+            }
+            msg_dialog::display(_('Ldap2zone'), htmlescape(sprintf(_('Ldap2Zone called for zone "%s"'), $zone)), INFO_DIALOG);
+          } catch (SimplePluginError $error) {
             $error->display();
           }
         }

@@ -74,48 +74,46 @@ class dnsManagement extends management
         throw new FusionDirectoryException(sprintf(_('Invalid target "%s" passed for action "%s"'), $zoneDn, _('Refresh Zone')));
       }
       list ($fqdn) = explode(' ', $entry['sOARecord'][0]);
-      $servers = static::findServerByFQDN($fqdn, $zoneDn);
-      if (count($servers) > 1) {
-        $error = new FusionDirectoryError(
-          htmlescape(sprintf(
-            _('Could not run ldap2zone: %s'),
-            _('More than one server matches the SOA')
-          ))
-        );
-        $error->display();
-      } elseif (count($servers) == 0) {
-        $error = new FusionDirectoryError(
-          htmlescape(sprintf(
-            _('Could not run ldap2zone: %s'),
-            sprintf(_('Could not find the primary server "%s"'), $fqdn)
-          ))
-        );
-        $error->display();
-      } else {
-        $serverTabs = objects::open(key($servers), 'server');
-        if ($serverTabs->by_object['argonautClient']->is_account) {
-          $s_daemon = new supportDaemon();
-          if ($s_daemon->is_error()) {
-            $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
-            $error->display();
-          } else {
-            $target   = $serverTabs->getBaseObject()->macAddress;
-            if (is_array($target)) {
-              $target = $target[0];
-            }
-            $zoneName = $entry['zoneName'][0];
-            $s_daemon->append_call('Ldap2Zone.start', $target, ['args' => [$zoneName]]);
-            if ($s_daemon->is_error()) {
-              $error = new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
-              $error->display();
-            } else {
-              msg_dialog::display(_('Ldap2zone'), htmlescape(sprintf(_('Ldap2Zone called for zone "%s"'), $zoneName)), INFO_DIALOG);
-            }
-          }
-        } else {
-          $error = new FusionDirectoryError(htmlescape(_('Argonaut client needs to be activated to use ldap2zone remotely')));
-          $error->display();
+      try {
+        $servers = static::findServerByFQDN($fqdn, $zoneDn);
+        if (count($servers) > 1) {
+          throw new FusionDirectoryError(
+            htmlescape(sprintf(
+              _('Could not run ldap2zone: %s'),
+              _('More than one server matches the SOA')
+            ))
+          );
+        } elseif (count($servers) == 0) {
+          throw new FusionDirectoryError(
+            htmlescape(sprintf(
+              _('Could not run ldap2zone: %s'),
+              sprintf(_('Could not find the primary server "%s"'), $fqdn)
+            ))
+          );
         }
+        $serverTabs = objects::open(key($servers), 'server');
+        if (!$serverTabs->by_object['argonautClient']->isActiveOrInherited()) {
+          throw new FusionDirectoryError(htmlescape(_('Argonaut client needs to be activated to use ldap2zone remotely')));
+        }
+        $s_daemon = new supportDaemon();
+        if ($s_daemon->is_error()) {
+          throw new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+        }
+        $target   = $serverTabs->getBaseObject()->macAddress;
+        if (is_array($target)) {
+          if (count($target) === 0) {
+            throw new SimplePluginError($this, _('Cannot use argonaut client on a system without a Mac address'));
+          }
+          $target = $target[0];
+        }
+        $zoneName = $entry['zoneName'][0];
+        $s_daemon->append_call('Ldap2Zone.start', $target, ['args' => [$zoneName]]);
+        if ($s_daemon->is_error()) {
+          throw new FusionDirectoryError(msgPool::siError($s_daemon->get_error()));
+        }
+        msg_dialog::display(_('Ldap2zone'), htmlescape(sprintf(_('Ldap2Zone called for zone "%s"'), $zoneName)), INFO_DIALOG);
+      } catch (FusionDirectoryError $error) {
+        $error->display();
       }
     }
   }
