@@ -189,7 +189,7 @@ class fiInventory extends simplePlugin
         return array();
       }
       $macAddress   = $this->parent->getBaseObject()->macAddress;
-      if ($macAddress != '') {
+      if (!is_array($macAddress) && ($macAddress != '')) {
         $macAddress = array($macAddress);
       }
       $ipHostNumber = $this->parent->getBaseObject()->ipHostNumber;
