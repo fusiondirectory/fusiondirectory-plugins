@@ -481,8 +481,8 @@ class fdRestService extends fdRPCService
         throw new WebServiceError('Inactive tab', 400);
       }
 
-      if (!$object->attrIsReadable($attribute)) {
-        throw new WebServiceError('Not enough rights to read "'.$attribute.'"', 403);
+      if (!$object->attrIsWriteable($attribute)) {
+        throw new WebServiceError('Not enough rights to delete "'.$attribute.'"', 403);
       }
 
       $object->attributesAccess[$attribute]->resetToDefault();
