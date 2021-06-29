@@ -304,7 +304,7 @@ class fdRestService extends fdRPCService
     $fields = $object->attributesInfo;
     foreach ($fields as $section) {
       foreach ($section['attrs'] as $attr) {
-        if ($object->acl_is_readable($attr->getAcl())) {
+        if ($object->attrIsReadable($attr)) {
           $attributes[$attr->getLdapName()] = $attr->serializeValue();
         }
       }
@@ -393,23 +393,21 @@ class fdRestService extends fdRPCService
       } else {
         $object = $tabobject->by_object[$tab];
       }
-      if (!is_subclass_of($object, 'simplePlugin')) {
-        throw new WebServiceError('Invalid tab', 501);
-      }
-      if ($tabobject->by_object[$tab]->isActivatable() &&
-          !$tabobject->by_object[$tab]->isActive()
+      if (is_subclass_of($object, 'simplePlugin') &&
+          $object->isActivatable() &&
+          !$object->isActive()
         ) {
-        list($disabled, , $htmlText) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
+        list($disabled, , $htmlText) = $object->getDisplayHeaderInfos();
         if ($disabled) {
           throw new WebServiceError(htmlunescape($htmlText));
         }
-        if ($tabobject->by_object[$tab]->acl_is_createable()) {
-          $tabobject->by_object[$tab]->is_account = TRUE;
+        if ($object->acl_is_createable()) {
+          $object->is_account = TRUE;
         } else {
           throw new WebServiceError('You don\'t have sufficient rights to enable tab "'.$tab.'"', 403);
         }
       }
-      $error = $tabobject->by_object[$tab]->deserializeValues([$attribute => $input]);
+      $error = $object->deserializeValues([$attribute => $input]);
       if ($error !== TRUE) {
         throw new WebServiceErrors([$error]);
       }
@@ -475,10 +473,6 @@ class fdRestService extends fdRPCService
 
       $object = $tabobject->by_object[$tab];
 
-      if (!is_subclass_of($object, 'simplePlugin')) {
-        throw new WebServiceError('Invalid tab', 501);
-      }
-
       if (!isset($object->attributesAccess[$attribute])) {
         throw new WebServiceError('Unknown attribute', 404);
       }
@@ -487,7 +481,7 @@ class fdRestService extends fdRPCService
         throw new WebServiceError('Inactive tab', 400);
       }
 
-      if (!$object->acl_is_readable($object->attributesAccess[$attribute]->getAcl())) {
+      if (!$object->attrIsReadable($attribute)) {
         throw new WebServiceError('Not enough rights to read "'.$attribute.'"', 403);
       }
 
@@ -575,7 +569,7 @@ class fdRestService extends fdRPCService
     foreach ($fields as &$section) {
       $attributes = [];
       foreach ($section['attrs'] as $attr) {
-        if ($object->acl_is_readable($attr->getAcl())) {
+        if ($object->attrIsReadable($attr)) {
           $attributes[] = $attr->getLdapName();
         }
       }

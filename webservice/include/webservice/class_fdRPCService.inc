@@ -394,7 +394,7 @@ class fdRPCService
       foreach ($fields as &$section) {
         $attributes = [];
         foreach ($section['attrs'] as $attr) {
-          if ($object->acl_is_readable($attr->getAcl())) {
+          if ($object->attrIsReadable($attr)) {
             $attr->serializeAttribute($attributes, TRUE);
           }
         }
@@ -478,7 +478,7 @@ class fdRPCService
       foreach ($fields as &$section) {
         $attributes = [];
         foreach ($section['attrs'] as $attr) {
-          if ($object->acl_is_readable($attr->getAcl())) {
+          if ($object->attrIsReadable($attr)) {
             $attr->serializeAttribute($attributes, FALSE);
           }
         }
