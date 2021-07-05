@@ -12,8 +12,8 @@ stages:
 ## Stage lint
 
 # PHP lint (stretch)
-create_php_lint_rapport_stretch:
-  image: php:cli-stretch
+create_php_lint_rapport:
+  image: registry.fusiondirectory.org/fusiondirectory/fd/phpcodesniffer-cli:buster
   stage: lint
   only:
     - branches
