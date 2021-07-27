@@ -18,6 +18,42 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+class ArgonautTargetsAttribute extends SystemsAttribute
+{
+  /**
+   * @var array<string|null>
+   */
+  protected $valueDns = [];
+
+  public function __construct (string $label, string $description, string $ldapName, bool $required, array $objectTypes = ['terminal', 'workstation', 'server'], array $defaultValue = [], string $store_attr = 'macAddress', string $display_attr = 'cn', array $filterElementDefinitions = NULL, string $acl = '')
+  {
+    parent::__construct($label, $description, $ldapName, $required, $objectTypes, $defaultValue, $store_attr, $display_attr, $filterElementDefinitions, $acl);
+  }
+
+  protected function fillDisplayValueFrom ($i, $attrs)
+  {
+    parent::fillDisplayValueFrom($i, $attrs);
+    $this->valueDns[$i] = ($attrs['dn'] ?? NULL);
+  }
+
+  public function setValue ($value)
+  {
+    $this->valueDns = [];
+    parent::setValue($value);
+  }
+
+  protected function removeValue ($row)
+  {
+    parent::removeValue($row);
+    unset($this->valueDns[$row]);
+  }
+
+  public function getDnList(): array
+  {
+    return $this->valueDns;
+  }
+}
+
 class argonautAction extends ManagementDialog
 {
   protected $post_cancel = 'abort_event_dialog';
@@ -95,11 +131,9 @@ class argonautAction extends ManagementDialog
       'targets' => [
         'name'  => _('Targets'),
         'attrs' => [
-          new SystemsAttribute(
+          new ArgonautTargetsAttribute(
             '', _('Targets for this task'),
-            'targets', TRUE,
-            ['terminal', 'workstation', 'server'], [],
-            'macAddress'
+            'targets', TRUE
           )
         ]
       ]
@@ -147,6 +181,22 @@ class argonautAction extends ManagementDialog
     parent::loadAttributes();
   }
 
+  public function check (): array
+  {
+    $errors = parent::check();
+
+    foreach ($this->attributesAccess['targets']->getDnList() as $dn) {
+      if (!$this->acl_is_createable($dn)) {
+        $errors[] = new SimplePluginPermissionError(
+          $this->attributesAccess['targets'],
+          htmlescape(sprintf(_('Not enough permission to schedule an action for %s'), $dn))
+        );
+      }
+    }
+
+    return $errors;
+  }
+
   protected function handleFinish ()
   {
     $msgs = $this->check();
@@ -162,6 +212,9 @@ class argonautAction extends ManagementDialog
         $error->display();
       }
       $this->parent->closeDialogs();
+    } else {
+      $error = new FusionDirectoryError(_('Could not send action to argonaut server'));
+      $error->display();
     }
   }
 
