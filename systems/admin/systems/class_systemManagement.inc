@@ -135,7 +135,7 @@ class systemManagement extends management
       }
     }
 
-    if ((count($mac) == 0) && $triggered) {
+    if ((count($action['targets']) > 0) && (count($mac) == 0)) {
       return;
     }
 
@@ -160,7 +160,7 @@ class systemManagement extends management
       }
     }
 
-    if ((count($mac) == 0) && $triggered) {
+    if ((count($action['targets']) > 0) && (count($mac) == 0)) {
       return;
     }
 
@@ -169,7 +169,7 @@ class systemManagement extends management
     if (isset($events[$event])) {
       $this->dialogObject = new argonautAction($this, $event, $mac, !$triggered);
 
-      if ($triggered) {
+      if ($triggered && (count($mac) > 0)) {
         $res = $o_queue->append($this->dialogObject);
         if ($o_queue->is_error()) {
           $error = new FusionDirectoryError(msgPool::siError($o_queue->get_error()));
