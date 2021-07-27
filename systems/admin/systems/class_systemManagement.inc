@@ -24,7 +24,7 @@ class systemManagement extends management
 {
   public static $skipTemplates = FALSE;
 
-  protected $siActive = FALSE;
+  public $siActive = FALSE;
 
   public static $columns = [
     ['ObjectTypeColumn',     []],
@@ -72,11 +72,13 @@ class systemManagement extends management
       foreach ($events as $name => $infos) {
         $triggerActions[] = new Action(
           'trigger_'.$name, $infos['name'], $infos['img'],
-          '*', 'handleEvent'
+          '*', 'handleEvent',
+          ['argonautQueue/argonautAction/c']
         );
         $scheduleActions[] = new Action(
           'schedule_'.$name, $infos['name'], $infos['img'],
-          '*', 'handleEvent'
+          '*', 'handleEvent',
+          ['argonautQueue/argonautAction/c']
         );
       }
       $this->registerAction(
@@ -97,7 +99,8 @@ class systemManagement extends management
       $this->registerAction(
         new Action(
           'ping', _('Ping'), 'geticon.php?context=actions&icon=task-start&size=16',
-          '+', 'pingSystems'
+          '+', 'pingSystems',
+          ['argonautQueue/argonautAction/c']
         )
       );
     }
