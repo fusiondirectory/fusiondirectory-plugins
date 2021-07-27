@@ -18,16 +18,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class MacsAttribute extends GenericDialogAttribute
-{
-  protected $dialogClass = 'SystemSelectDialog';
-
-  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = [], $display_attr = 'cn', $acl = '')
-  {
-    parent::__construct($label, $description, $ldapName, $required, $defaultValue, 'macAddress', $display_attr, $acl);
-  }
-}
-
 class argonautAction extends ManagementDialog
 {
   protected $post_cancel = 'abort_event_dialog';
@@ -105,9 +95,11 @@ class argonautAction extends ManagementDialog
       'targets' => [
         'name'  => _('Targets'),
         'attrs' => [
-          new MacsAttribute(
+          new SystemsAttribute(
             '', _('Targets for this task'),
-            'targets', TRUE
+            'targets', TRUE,
+            ['terminal', 'workstation', 'server'], [],
+            'macAddress'
           )
         ]
       ]
