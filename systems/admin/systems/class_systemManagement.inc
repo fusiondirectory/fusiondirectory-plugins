@@ -24,7 +24,7 @@ class systemManagement extends management
 {
   public static $skipTemplates = FALSE;
 
-  protected $siActive = FALSE;
+  public $siActive = FALSE;
 
   public static $columns = [
     ['ObjectTypeColumn',     []],

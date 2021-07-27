@@ -48,7 +48,7 @@ class ArgonautTargetsAttribute extends SystemsAttribute
     unset($this->valueDns[$row]);
   }
 
-  public function getDnList(): array
+  public function getDnList (): array
   {
     return $this->valueDns;
   }
