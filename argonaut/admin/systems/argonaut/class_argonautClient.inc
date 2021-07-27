@@ -186,7 +186,7 @@ class argonautClient extends simplePlugin
             '/etc/ssl/certs/ca.cert'
           ),
           new StringAttribute(
-            _('CN of the certificate'), _('The CN in this client certificate'),
+            _('Name for peer verification'), _('The certificate name used for peer verification'),
             'argonautClientCertCN', FALSE
           ),
         ]
