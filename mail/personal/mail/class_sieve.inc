@@ -100,6 +100,21 @@ class sieve
   var $error_raw;
   var $responses;
 
+  var $token;
+  var $mtoken;
+  var $rtoken;
+  var $ltoken;
+  var $item;
+  var $x;
+  var $err_len;
+  var $err_recv;
+  var $response;
+  var $auth;
+  var $found_script;
+  var $cap_type;
+  var $modules;
+  var $module;
+
   protected $tls;
 
   //maybe we should add an errorlvl that the user will pass to new sieve = sieve(,,,,E_WARN)
@@ -218,21 +233,21 @@ class sieve
    *
    * This also loads some arrays up with some handy information:
    *
-   * @param $host string hostname to connect to. Usually the IMAP server where
+   * @param string $host hostname to connect to. Usually the IMAP server where
    * a SIEVE daemon, such as timsieved, is listening.
    *
-   * @param $port string Numeric port to connect to. SIEVE daemons usually
+   * @param string $port Numeric port to connect to. SIEVE daemons usually
    * listen to port 2000.
    *
-   * @param $user string is a super-user or proxy-user that has ACL rights to
+   * @param string $user is a super-user or proxy-user that has ACL rights to
    * login on behalf of the $auth.
    *
-   * @param $pass string password to use for authentication
+   * @param string $pass password to use for authentication
    *
-   * @param $auth string is the authorized user identity for which the SIEVE
+   * @param string $auth is the authorized user identity for which the SIEVE
    * scripts will be managed.
    *
-   * @param $auth_types string a string containing all the allowed
+   * @param string $auth_types a string containing all the allowed
    * authentication types allowed in order of preference, seperated by spaces.
    * (ex.  "PLAIN DIGEST-MD5 CRAM-MD5"  The method the library will try first
    * is PLAIN.) The default for this value is PLAIN.
@@ -274,8 +289,8 @@ class sieve
   /**
    * Tokenize a line of input by quote marks and return them as an array
    *
-   * @param $string string Input line to parse for quotes
-   * @return array Array of broken by quotes parts of original string
+   * @param string $string Input line to parse for quotes
+   * @return array|false Array of broken by quotes parts of original string
    */
   function parse_for_quotes ($string)
   {
@@ -306,7 +321,7 @@ class sieve
    *
    * This should probably be replaced by a smarter parser.
    *
-   * @param $string string Input that contains status responses.
+   * @param string $string Input that contains status responses.
    * @todo remove this function and dependencies
    */
   function status ($string)
@@ -497,8 +512,8 @@ class sieve
    * $sieve->error_raw), and return TRUE if it is successfully sent.  The
    * function does _not_ automatically make the script the active script.
    *
-   * @param $scriptname string The name of the SIEVE script.
-   * @param $script The script to be uploaded.
+   * @param string $scriptname The name of the SIEVE script.
+   * @param string $script The script to be uploaded.
    * @return boolean Returns TRUE if script has been successfully uploaded.
    */
   function sieve_sendscript ($scriptname, $script)
@@ -534,8 +549,8 @@ class sieve
    * timsieved src.  don't expect this function to work yet.  I might have
    * messed something up here, too.
    *
-   * @param $scriptname string The name of the SIEVE script.
-   * @param $scriptsize integer The size of the SIEVE script.
+   * @param string $scriptname The name of the SIEVE script.
+   * @param integer $scriptsize The size of the SIEVE script.
    * @return boolean
    * @todo Does not work; bug fix and test.
    */
@@ -551,7 +566,7 @@ class sieve
   /**
    * Set the script active on the sieve server.
    *
-   * @param $scriptname string The name of the SIEVE script.
+   * @param string $scriptname The name of the SIEVE script.
    * @return boolean
    */
   function sieve_setactivescript ($scriptname)
@@ -579,8 +594,8 @@ class sieve
    * If you want to display the script, you will need to change all CrLf to
    * '.'.
    *
-   * @param $scriptname string The name of the SIEVE script.
-   * @return arr SIEVE script data.
+   * @param string $scriptname The name of the SIEVE script.
+   * @return bool SIEVE script data.
    */
   function sieve_getscript ($scriptname)
   {
@@ -608,7 +623,7 @@ class sieve
    * If the script is currently active, the server will not have any active
    * script after the deletion.
    *
-   * @param $scriptname string The name of the SIEVE script.
+   * @param string $scriptname The name of the SIEVE script.
    * @return mixed
    */
   function sieve_deletescript ($scriptname)
@@ -934,7 +949,7 @@ class sieve
    * This function may not work with other versions and most certainly won't work
    * with other DIGEST-MD5 implentations
    *
-   * @param $input string Challenge supplied by timsieved.
+   * @param string $input Challenge supplied by timsieved.
    */
   static function decode_challenge ($input)
   {

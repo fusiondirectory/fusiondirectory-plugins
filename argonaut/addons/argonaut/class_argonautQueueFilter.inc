@@ -31,7 +31,7 @@ class argonautQueueFilter extends managementFilter
 
     $this->parent = $parent;
 
-    $this->pid = preg_replace('/[^0-9]/', '', microtime(TRUE));
+    $this->pid = preg_replace('/[^0-9]/', '', (string)microtime(TRUE));
 
     $this->types = [];
 

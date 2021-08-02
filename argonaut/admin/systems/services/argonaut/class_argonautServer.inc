@@ -132,7 +132,7 @@ class argonautServer extends simpleService
   {
     parent::__construct($dn, $parent);
     if ($this->argonautServerToken == '') {
-      $this->argonautServerToken = md5(random_int(0, PHP_INT_MAX));
+      $this->argonautServerToken = md5((string)random_int(0, PHP_INT_MAX));
     }
     $this->attributesAccess['argonautProtocol']->setManagedAttributes(
       [

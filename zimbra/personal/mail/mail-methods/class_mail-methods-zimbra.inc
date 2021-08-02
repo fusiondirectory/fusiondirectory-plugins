@@ -624,9 +624,9 @@ class mailMethodZimbra extends mailMethod
               sprintf(
                 _('Account "%s" already existing on Zimbra server, associating it'),
                 $this->account_id
-              ),
-              INFO_DIALOG
-            )
+              )
+            ),
+            INFO_DIALOG
           );
         }
       }

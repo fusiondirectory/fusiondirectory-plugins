@@ -87,7 +87,7 @@ class UsedOptionAttribute extends CompositeAttribute
 
   function readValues (string $value): array
   {
-    return $value;
+    return [$value];
   }
 
   function writeValues (array $values)
@@ -162,20 +162,16 @@ class ListSudoOptionAttribute extends SetAttribute
     parent::__construct(new StringAttribute(preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $name), $desc, $name, FALSE, $defaultValue, $acl));
   }
 
-  function getValue ()
-  {
-    if (count($this->value) <= 0) {
-      return preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $this->getLdapName()).'=';
-    } elseif (count($this->value) > 1) {
-      return preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $this->getLdapName()).'="'.implode(' ', $this->value).'"';
-    } else {
-      return preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $this->getLdapName()).'='.$this->value[0];
-    }
-  }
-
   function computeLdapValue ()
   {
-    return $this->getValue();
+    $values = $this->getValue();
+    if (count($values) <= 0) {
+      return preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $this->getLdapName()).'=';
+    } elseif (count($this->value) > 1) {
+      return preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $this->getLdapName()).'="'.implode(' ', $values).'"';
+    } else {
+      return preg_replace(['/_moins$/','/_plus$/'], ['-','+'], $this->getLdapName()).'='.$values[0];
+    }
   }
 
   function setValue ($value)

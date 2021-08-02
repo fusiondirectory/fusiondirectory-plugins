@@ -184,6 +184,7 @@ class DkimRecordAttribute extends CompositeAttribute
       $tagvalue = trim($tagvalue, " \t\n\r");
       $tags[$tagname] = $tagvalue;
     }
+    $values = [];
     foreach (array_keys($this->attributes) as $name) {
       if (isset($tags[$name])) {
         $values[] = $tags[$name];

@@ -191,6 +191,8 @@ class networkInterface extends simplePlugin
     // Get mask bits
     list($net, $maskBits) = explode('/', $cidr);
 
+    $maskBits = (int)$maskBits;
+
     // v4 or v6?
     $size = ((strpos($net, ':') === FALSE) ? 4 : 16);
 
@@ -201,7 +203,7 @@ class networkInterface extends simplePlugin
     }
 
     // Build mask
-    $solid      = floor($maskBits / 8);
+    $solid      = (int)floor($maskBits / 8);
     $solidBits  = $solid * 8;
     $mask       = str_repeat(chr(255), $solid);
     for ($i = $solidBits; $i < $maskBits; $i += 8) {

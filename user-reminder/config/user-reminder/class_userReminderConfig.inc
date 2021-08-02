@@ -175,9 +175,9 @@ class userReminderConfig extends simplePlugin
     ];
   }
 
-  function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
+  function __construct (string $dn = NULL, $object = NULL, $parent = NULL, bool $mainTab = FALSE, array $attributesInfo = NULL)
   {
-    parent::__construct($dn, $object, $parent, $mainTab);
+    parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
     if (!class_available('ppolicy')) {
       $this->attributesAccess['fdUserReminderForwardPpolicyAlert']->setDisabled(TRUE);

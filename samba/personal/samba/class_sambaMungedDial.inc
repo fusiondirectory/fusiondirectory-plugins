@@ -351,7 +351,7 @@ class sambaMungedDial
   /* Sets Terminal-Server-Login value: enabled/disabled */
   function setTsLogin ($checked)
   {
-    $flag = substr($this->ctx['CtxCfgFlags1'], 5, 1);
+    $flag = (int)substr($this->ctx['CtxCfgFlags1'], 5, 1);
 
     if ($checked) {
       $flag &= 0xFE;
@@ -372,7 +372,7 @@ class sambaMungedDial
   /* sets Broken-Connection value: disconnect/reset */
   function setBrokenConn ($checked)
   {
-    $flag = substr($this->ctx['CtxCfgFlags1'], 5, 1);
+    $flag = (int)substr($this->ctx['CtxCfgFlags1'], 5, 1);
 
     if ($checked) {
       $flag |= 4;
@@ -393,7 +393,7 @@ class sambaMungedDial
   /* sets Reconnection value: from any client/from previous client only */
   function setReConn ($checked)
   {
-    $flag = substr($this->ctx['CtxCfgFlags1'], 5, 1);
+    $flag = (int)substr($this->ctx['CtxCfgFlags1'], 5, 1);
 
     if ($checked) {
       $flag |= 2;

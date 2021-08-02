@@ -98,7 +98,7 @@ class Request
       case 'GetGroup':
         return new getDistributionListRequest($data);
       default:
-        throw new FusionDirectoryException('Unsupported command '.$command);
+        throw new \FusionDirectoryException('Unsupported command '.$command);
     }
   }
 

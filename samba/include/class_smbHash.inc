@@ -282,13 +282,13 @@ class smbHash
   private function str_to_key ($str)
   {
     $key[0] = $this->unsigned_shift_r($str[0], 1);
-    $key[1] = (($str[0] & 0x01) << 6) | $this->unsigned_shift_r($str[1], 2);
-    $key[2] = (($str[1] & 0x03) << 5) | $this->unsigned_shift_r($str[2], 3);
-    $key[3] = (($str[2] & 0x07) << 4) | $this->unsigned_shift_r($str[3], 4);
-    $key[4] = (($str[3] & 0x0F) << 3) | $this->unsigned_shift_r($str[4], 5);
-    $key[5] = (($str[4] & 0x1F) << 2) | $this->unsigned_shift_r($str[5], 6);
-    $key[6] = (($str[5] & 0x3F) << 1) | $this->unsigned_shift_r($str[6], 7);
-    $key[7] = $str[6] & 0x7F;
+    $key[1] = (((int)$str[0] & 0x01) << 6) | $this->unsigned_shift_r($str[1], 2);
+    $key[2] = (((int)$str[1] & 0x03) << 5) | $this->unsigned_shift_r($str[2], 3);
+    $key[3] = (((int)$str[2] & 0x07) << 4) | $this->unsigned_shift_r($str[3], 4);
+    $key[4] = (((int)$str[3] & 0x0F) << 3) | $this->unsigned_shift_r($str[4], 5);
+    $key[5] = (((int)$str[4] & 0x1F) << 2) | $this->unsigned_shift_r($str[5], 6);
+    $key[6] = (((int)$str[5] & 0x3F) << 1) | $this->unsigned_shift_r($str[6], 7);
+    $key[7] = (int)$str[6] & 0x7F;
     for ($i = 0; $i < 8; $i++) {
       $key[$i] = ($key[$i] << 1);
     }

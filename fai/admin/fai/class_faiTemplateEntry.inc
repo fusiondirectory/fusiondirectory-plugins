@@ -95,7 +95,7 @@ class AccessRightsAttribute extends CompositeAttribute
     $tmode  = "$value ";
     $m      = [];
     foreach (['s', 'u', 'g', 'o'] as $type) {
-      $current  = substr($tmode, 0, 1);
+      $current  = (int)substr($tmode, 0, 1);
       $tmode    = preg_replace('/^./', '', $tmode);
       $nr       = 1;
       while ($nr < 5) {

@@ -308,11 +308,11 @@ class posixAccount extends simplePlugin
       /* Status is not computed for templates */
       $current = floor(date('U') / EpochDaysDateAttribute::$secondsPerDay);
 
-      $shadowExpire     = $this->attributesAccess['shadowExpire']->getEpochDays();
-      $shadowInactive   = $this->attributesAccess['shadowInactive']->getValue();
-      $shadowMin        = $this->attributesAccess['shadowMin']->getValue();
-      $shadowMax        = $this->attributesAccess['shadowMax']->getValue();
-      $shadowLastChange = $this->attributesAccess['shadowLastChange']->getValue();
+      $shadowExpire     = (int)$this->attributesAccess['shadowExpire']->getEpochDays();
+      $shadowInactive   = (int)$this->attributesAccess['shadowInactive']->getValue();
+      $shadowMin        = (int)$this->attributesAccess['shadowMin']->getValue();
+      $shadowMax        = (int)$this->attributesAccess['shadowMax']->getValue();
+      $shadowLastChange = (int)$this->attributesAccess['shadowLastChange']->getValue();
       if (($current >= $shadowExpire) && ($shadowExpire > 0)) {
         $status = _('expired');
         if ($shadowInactive != '' && ($current - $shadowExpire) < $shadowInactive) {

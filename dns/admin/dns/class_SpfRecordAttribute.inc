@@ -21,7 +21,7 @@
 
 class SpfRecordAttribute extends OrderedArrayAttribute
 {
-  public function __construct (string $ldapName, bool $required = FALSE, array $defaultValue = [], string $acl = '')
+  public function __construct (string $ldapName, bool $required = FALSE, array $defaultValue = [])
   {
     $attribute = new StringAttribute(
       _('Terms'), '',
