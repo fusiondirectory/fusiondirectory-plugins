@@ -35,6 +35,20 @@ create_php_code_sniffer_rapport:
     - phpcs --config-set installed_paths /builds/fusiondirectory/PHPCompatibility,/builds/fusiondirectory/PHPCSUtils
     - phpcs --standard=PHPCompatibility --runtime-set testVersion 7.0- --file-list=./filelist
 
+# phpstan
+create_phpstan_rapport:
+  image: registry.fusiondirectory.org/fusiondirectory/fd/phpstan:buster
+  stage: codestyle
+  only:
+    - branches
+  script:
+    - test -d ../dev-tools/ && rm -Rf ../dev-tools/
+    - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
+    - test -d ../fusiondirectory/ && rm -Rf ../fusiondirectory/
+    - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/fusiondirectory.git ../fusiondirectory
+    - cp ../dev-tools/phpstan/fusiondirectory/1.4-dev/*.neon .
+    - /root/.composer/vendor/bin/phpstan analyse -c phpstan-plugins.neon
+
 # fusiondirectory-update-locale
 fusiondirectory-update-locale:
   image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/transifex-cli:stretch
