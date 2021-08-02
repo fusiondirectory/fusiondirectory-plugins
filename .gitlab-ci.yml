@@ -45,7 +45,7 @@ create_phpstan_rapport:
     - test -d ../dev-tools/ && rm -Rf ../dev-tools/
     - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
     - test -d ../fusiondirectory/ && rm -Rf ../fusiondirectory/
-    - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/fusiondirectory.git ../fusiondirectory
+    - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/fd.git ../fusiondirectory
     - cp ../dev-tools/phpstan/fusiondirectory/1.4-dev/*.neon .
     - /root/.composer/vendor/bin/phpstan analyse -c phpstan-plugins.neon
 
