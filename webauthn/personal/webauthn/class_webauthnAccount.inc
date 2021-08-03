@@ -18,7 +18,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-require_once('WebAuthn/WebAuthn.php');
+require_once('lbuchs/WebAuthn/WebAuthn.php');
+use lbuchs\WebAuthn;
 
 class webauthnAccount extends simplePlugin
 {
@@ -108,7 +109,7 @@ class webauthnAccount extends simplePlugin
     } else {
       $host = $_SERVER['SERVER_NAME'];
     }
-    $WebAuthn = new \WebAuthn\WebAuthn('FusionDirectory', $host, $formats);
+    $WebAuthn = new WebAuthn\WebAuthn('FusionDirectory', $host, $formats);
 
     return $WebAuthn;
   }
