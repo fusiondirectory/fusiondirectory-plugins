@@ -91,7 +91,7 @@ class DnsRecordAttribute extends CompositeAttribute
     'aRecord'     => 'A',
     'aAAARecord'  => 'AAAA',
     'aFSDBRecord' => 'AFSDB',
-    'CAARecord'   => 'CAA',
+    'cAARecord'   => 'CAA',
     'certRecord'  => 'CERT',
     'cNAMERecord' => 'CNAME',
     'dSRecord'    => 'DS',
