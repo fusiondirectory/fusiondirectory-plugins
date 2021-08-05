@@ -349,6 +349,31 @@ class DnsRecordAttribute extends CompositeAttribute
             reset($this->parentIPs6)
           );
           break;
+        case 'cAARecord':
+          $this->attributes[1] = new CompositeAttribute(
+            _('CAA Record'),
+            $ldapName,
+            [
+              new IntAttribute(
+                _('Flags'), _('Integer representing flags. As of 2021 it should be either 0 or 128 for "issuer critical" flag.'),
+                $ldapName.'_flags', TRUE,
+                0, 255,
+                0
+              ),
+              new SelectAttribute(
+                _('Tag'), _('Which kind of CAA property you want to set'),
+                $ldapName.'_tag', TRUE,
+                ['issue','issuewild','iodef','contactemail','contactphone']
+              ),
+              new StringAttribute(
+                _('Value'), _('Value for the specified tag, without quotes'),
+                $ldapName.'_value', FALSE
+              ),
+            ],
+            '/^([\d]+) ([[:alnum:]]+) "(.*)"$/',
+            '%d %s "%s"'
+          );
+          break;
         case 'dKIMRecord':
           $this->loadDkimRecordFields($ldapName);
           break;
