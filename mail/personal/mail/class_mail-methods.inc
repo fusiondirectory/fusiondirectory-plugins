@@ -86,7 +86,10 @@ class mailMethod
   protected $initial_account_id = '';
   protected $connected          = FALSE;
   protected $error              = '';
-  protected $parent             = NULL;
+  /**
+   * @var simplePlugin
+   */
+  protected $parent;
   protected $mailServer         = NULL;
 
   protected $acl_map = [
@@ -103,8 +106,8 @@ class mailMethod
   protected $acl_mapping = [];
 
   /*! \brief  Constructs the mail class
-      @param  Object  Plugin  The initator
-      @param  String          Open "user" or "group" account.
+      @param  simplePlugin  Plugin  The initator
+      @param  string        Open "user" or "group" account.
    */
   function __construct ($parent, $type = 'user')
   {

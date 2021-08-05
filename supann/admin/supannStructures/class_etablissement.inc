@@ -225,7 +225,7 @@ class etablissement extends simplePlugin
     if ($this->set_root) {
       /* Set this etablissement as root one */
       $rootMode = 'add';
-    } elseif (($rootCode !== FALSE) && $wasRoot && !$this->set_root) {
+    } elseif (($rootCode !== FALSE) && $wasRoot) {
       /* We were the root etablissement, we want to delete it */
       $rootMode = 'remove';
     }

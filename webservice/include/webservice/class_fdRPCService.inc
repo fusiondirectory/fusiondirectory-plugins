@@ -769,31 +769,26 @@ class fdRPCService
           }
           // Detect the password method and try to lock/unlock.
           $method = passwordMethod::get_method($val['userPassword'][0], $dn);
-          if ($method instanceOf passwordMethod) {
-            $success = TRUE;
-            if ($type == 'toggle') {
-              if ($method->is_locked($dn)) {
-                $success = $method->unlock_account($dn);
-              } else {
-                $success = $method->lock_account($dn);
-              }
-            } elseif ($type == 'lock' && !$method->is_locked($dn)) {
-              $success = $method->lock_account($dn);
-            } elseif ($type == 'unlock' && $method->is_locked($dn)) {
+          $success = TRUE;
+          if ($type == 'toggle') {
+            if ($method->is_locked($dn)) {
               $success = $method->unlock_account($dn);
+            } else {
+              $success = $method->lock_account($dn);
             }
+          } elseif ($type == 'lock' && !$method->is_locked($dn)) {
+            $success = $method->lock_account($dn);
+          } elseif ($type == 'unlock' && $method->is_locked($dn)) {
+            $success = $method->unlock_account($dn);
+          }
 
-            // Check if everything went fine.
-            if (!$success) {
-              $hn = $method->get_hash_name();
-              if (is_array($hn)) {
-                $hn = $hn[0];
-              }
-              $errors[] = sprintf(_('Password method "%s" failed locking. Account "%s" has not been locked!'), $hn, $dn);
+          // Check if everything went fine.
+          if (!$success) {
+            $hn = $method->get_hash_name();
+            if (is_array($hn)) {
+              $hn = $hn[0];
             }
-          } else {
-            // Can't lock unknown methods.
-            $errors[] = sprintf(_('Failed to get password method for account "%s". It has not been locked!'), $dn);
+            $errors[] = sprintf(_('Password method "%s" failed locking. Account "%s" has not been locked!'), $hn, $dn);
           }
         } else {
           $errors[] = sprintf(_('Could not find account "%s" in LDAP. It has not been locked!'), $dn);
@@ -843,12 +838,7 @@ class fdRPCService
         }
         // Detect the password method and try to lock/unlock.
         $method = passwordMethod::get_method($val['userPassword'][0], $dn);
-        if ($method instanceOf passwordMethod) {
-          $result[$dn] = $method->is_locked($dn);
-        } else {
-          // Can't lock unknown methods.
-          $errors[] = sprintf(_('Failed to get password method for account "%s"'), $dn);
-        }
+        $result[$dn] = $method->is_locked($dn);
       } else {
         $errors[] = sprintf(_('Could not find account "%s" in LDAP'), $dn);
       }

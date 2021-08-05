@@ -52,10 +52,10 @@ class ServiceAction extends Action
   {
     global $ui;
 
-    if ($entry === NULL) {
-      $class = NULL;
-    } else {
+    if ($entry instanceof ServiceListingEntry) {
       $class = $entry->getServiceName();
+    } else {
+      $class = NULL;
     }
 
     /*

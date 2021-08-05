@@ -328,23 +328,18 @@ class sinapsDiffusionHandlerJob
       }
       // Detect the password method and try to lock
       $method = passwordMethod::get_method($val['userPassword'][0], $dn);
-      if ($method instanceOf passwordMethod) {
-        $success = TRUE;
-        if (!$method->is_locked($dn)) {
-          $success = $method->lock_account($dn);
-        }
+      $success = TRUE;
+      if (!$method->is_locked($dn)) {
+        $success = $method->lock_account($dn);
+      }
 
-        // Check if everything went fine.
-        if (!$success) {
-          $hn = $method->get_hash_name();
-          if (is_array($hn)) {
-            $hn = $hn[0];
-          }
-          $errors[] = sprintf(_('Password method "%s" failed locking. Account "%s" has not been locked!'), $hn, $dn);
+      // Check if everything went fine.
+      if (!$success) {
+        $hn = $method->get_hash_name();
+        if (is_array($hn)) {
+          $hn = $hn[0];
         }
-      } else {
-        // Can't lock unknown methods.
-        $errors[] = sprintf(_('Failed to get password method for account "%s". It has not been locked!'), $dn);
+        $errors[] = sprintf(_('Password method "%s" failed locking. Account "%s" has not been locked!'), $hn, $dn);
       }
     } else {
       $errors[] = sprintf(_('Could not find account "%s" in LDAP. It has not been locked!'), $dn);

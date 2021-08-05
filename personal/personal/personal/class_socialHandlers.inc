@@ -156,7 +156,7 @@ class socialHandler_orcid extends socialHandler
     $baseDigits = str_split(str_replace('-', '', substr($orcid, 0, -1)));
     $sum = 0;
     foreach ($baseDigits as $baseDigit) {
-      $sum = ($sum + $baseDigit) * 2;
+      $sum = ($sum + (int)$baseDigit) * 2;
     }
     $remainder  = $sum % 11;
     $result     = (12 - $remainder) % 11;
