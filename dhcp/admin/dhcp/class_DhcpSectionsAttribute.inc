@@ -48,7 +48,8 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
         'alt'   => _('Expand'),
         'class' => 'center',
         'style' => 'padding:5px 6px 4px;'
-      ]
+      ],
+      FALSE
     );
     $subnetExpandedImg = $this->renderInputField(
       'image', $id.'_foldDHCP_'.$key,
@@ -58,7 +59,8 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
         'alt'   => _('Fold'),
         'class' => 'center',
         'style' => 'padding:6px 5px 6px 4px;'
-      ]
+      ],
+      FALSE
     );
     $dn = $value[0];
     if (empty($this->dhcpObjectCache[$dn])) {
@@ -97,9 +99,10 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
         ];
       }
     } else {
+      $ip = $dhcpObject->getStatement('fixed-address');
       return [
         ['html' => $link],
-        $dhcpObject->getStatement('fixed-address'),
+        (($ip === NULL) ? '' : $ip),
         preg_replace('/^[^ ]+ /', '', (isset($dhcpObject->dhcpHWAddress) ? $dhcpObject->dhcpHWAddress : '')),
       ];
     }
