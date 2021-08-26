@@ -97,9 +97,10 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
         ];
       }
     } else {
+      $ip = $dhcpObject->getStatement('fixed-address');
       return [
         ['html' => $link],
-        $dhcpObject->getStatement('fixed-address'),
+        (($ip === NULL) ? '' : $ip),
         preg_replace('/^[^ ]+ /', '', (isset($dhcpObject->dhcpHWAddress) ? $dhcpObject->dhcpHWAddress : '')),
       ];
     }
