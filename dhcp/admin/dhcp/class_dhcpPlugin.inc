@@ -102,11 +102,23 @@ class dhcpPlugin extends simplePlugin
     '</p>';
   }
 
+  /*
+   * Returns an array of attributes values, with all values being arrays.
+   * */
   function save (): array
   {
     $this->dn = $this->compute_dn();
     @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->dn, 'save');
     $this->prepare_save();
+    foreach ($this->attrs as $key => $value) {
+      if (!is_array($value)) {
+        if ($value == '') {
+          $this->attrs[$key] = [];
+        } else {
+          $this->attrs[$key] = [$value];
+        }
+      }
+    }
     $this->attrs['cn']          = [$this->cn];
     $this->attrs['objectClass'] = $this->objectclasses;
     $this->attrs['dn']          = $this->dn;
