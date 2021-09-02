@@ -423,7 +423,7 @@ class interfacesManagement extends management implements SimpleTab
     return [];
   }
 
-  public function setNetworkInterfaces ($interfaces = NULL)
+  public function setNetworkInterfaces (array $interfaces = NULL)
   {
     if ($interfaces !== NULL) {
       $this->filter->loadTemplateValues($interfaces);
@@ -434,22 +434,38 @@ class interfacesManagement extends management implements SimpleTab
     $this->listing->setSortColumn(0, FALSE);
     $entryIterator = $this->listing->getIterator();
 
-    ksort($this->interfaces);
-    reset($this->interfaces);
+    /* Build an index of interfaces cn */
+    $interfacesCnIndex = array_flip(array_filter(array_map(
+      function ($interface) {
+        if ($interface !== NULL) {
+          return $interface->getBaseObject()->cn;
+        } else {
+          return NULL;
+        }
+      },
+      $this->interfaces
+    )));
+
     foreach ($entryIterator as $entry) {
-      $key = key($this->interfaces);
-      if ($key === NULL) {
+      if (isset($interfacesCnIndex[$entry['cn'][0]])) {
+        $key = $interfacesCnIndex[$entry['cn'][0]];
+        unset($interfacesCnIndex[$entry['cn'][0]]);
+      } else {
         if ($this->is_template) {
           $this->interfaces[$entry->dn] = objects::createTemplate($entry->getTemplatedType());
         } else {
           $this->interfaces[$entry->dn] = objects::create($entry->getTemplatedType());
         }
         $key = $entry->dn;
-      } else {
-        next($this->interfaces);
       }
+      /* Push values from cache to the object */
       $this->filter->resetFromCache($entry->dn, $this->interfaces[$key]);
       $this->interfaces[$key]->getBaseObject()->base = $this->getInterfacesBase();
+    }
+
+    /* Set to NULL the rest of the interfaces array to delete the unused objects upon save */
+    foreach ($interfacesCnIndex as $key) {
+      $this->interfaces[$key] = NULL;
     }
 
     /* Fill ip/mac fields of main tab */
