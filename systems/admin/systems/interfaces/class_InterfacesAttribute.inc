@@ -24,7 +24,7 @@
  */
 class InterfacesAttribute extends DialogOrderedArrayAttribute
 {
-  function __construct (string $label, string $description, string $ldapName, bool $required = FALSE, $defaultValue = '', string $acl = '')
+  function __construct (string $label, string $description, string $ldapName, bool $required = FALSE, $defaultValue = [], string $acl = '')
   {
     \FusionDirectory\Core\SimplePlugin\Attribute::__construct($label, $description, $ldapName, $required, $defaultValue, $acl);
     $this->setInLdap(FALSE);
@@ -44,6 +44,7 @@ class InterfacesAttribute extends DialogOrderedArrayAttribute
 
   function setValue ($value)
   {
+    $this->checkValue($value);
     return $this->plugin->setNetworkInterfaces($value);
   }
 
