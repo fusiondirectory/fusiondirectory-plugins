@@ -294,19 +294,13 @@ class fdRestService extends fdRPCService
       }
       $object = $tabobject->by_object[$tab];
     }
-    if (!is_subclass_of($object, 'simplePlugin')) {
-      throw new WebServiceError('Invalid tab', 501);
-    }
     if (!$object->isActive()) {
       throw new WebServiceError(sprintf('Tab "%s" is inactive', $tab));
     }
     $attributes = [];
-    $fields = $object->attributesInfo;
-    foreach ($fields as $section) {
-      foreach ($section['attrs'] as $attr) {
-        if ($object->attrIsReadable($attr)) {
-          $attributes[$attr->getLdapName()] = $attr->serializeValue();
-        }
+    foreach ($object->attributesAccess as $attr) {
+      if ($object->attrIsReadable($attr)) {
+        $attributes[$attr->getLdapName()] = $attr->serializeValue();
       }
     }
     return (object)$attributes;
@@ -562,10 +556,13 @@ class fdRestService extends fdRPCService
       throw new WebServiceError('This tab does not exists: "'.$tab.'"', 404);
     }
     $object     = $tabobject->by_object[$tab];
-    if (!is_subclass_of($object, 'simplePlugin')) {
-      throw new WebServiceError('Invalid tab', 501);
+    if (is_subclass_of($object, 'simplePlugin')) {
+      $fields = $object->attributesInfo;
+    } elseif (!empty($object->attributesAccess)) {
+      $fields = ['main' => ['name' => '', 'attrs' => $object->attributesAccess]];
+    } else {
+      $fields = [];
     }
-    $fields = $object->attributesInfo;
     foreach ($fields as &$section) {
       $attributes = [];
       foreach ($section['attrs'] as $attr) {
