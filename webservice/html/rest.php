@@ -347,7 +347,19 @@ class fdRestService extends fdRPCService
       throw new WebServiceError('Missing parameter "attrs" in POST data');
     }
     if (isset($input['template'])) {
-      $result = $this->_usetemplate($type, $input['template'], $input['attrs']);
+      $templatefields = [];
+      $setfields      = [];
+      $templateData = $this->_gettemplate($type, $input['template']);
+      foreach ($input['attrs'] as $tab => $attrs) {
+        foreach ($attrs as $attr => $value) {
+          if (isset($templateData[$tab]['attrs'][$attr])) {
+            $templatefields[$tab][$attr] = $value;
+          } else {
+            $setfields[$tab][$attr] = $value;
+          }
+        }
+      }
+      $result = $this->_usetemplate($type, $input['template'], $templatefields, $setfields);
     } else {
       $result = $this->_setfields($type, NULL, $input['attrs']);
     }
