@@ -694,6 +694,7 @@ class fdRPCService
     if ($error !== TRUE) {
       throw new WebServiceError($error);
     }
+    /** @var simpleTabs */
     $tabobject = $template->apply();
 
     if (!empty($modifications)) {
