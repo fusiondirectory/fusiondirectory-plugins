@@ -685,7 +685,7 @@ class fdRPCService
   /*!
    * \brief
    */
-  protected function _usetemplate (string $type, string $dn, $values): string
+  protected function _usetemplate (string $type, string $dn, $values, $modifications = []): string
   {
     $this->checkAccess($type, NULL, $dn);
 
@@ -694,7 +694,59 @@ class fdRPCService
     if ($error !== TRUE) {
       throw new WebServiceError($error);
     }
+    /** @var simpleTabs */
     $tabobject = $template->apply();
+
+    if (!empty($modifications)) {
+      $infos              = objects::infos($type);
+      /* Note: This might not be exactly the right order but it’s the best we got */
+      $potentialTabsOrder = array_flip(array_map(
+        function ($a)
+        {
+          return $a['CLASS'];
+        },
+        $infos['tabClass']::getPotentialTabList($type, $infos)
+      ));
+      uksort(
+        $modifications,
+        function ($k1, $k2) use ($potentialTabsOrder) {
+          if (!isset($potentialTabsOrder[$k1])) {
+            return 1;
+          } elseif (!isset($potentialTabsOrder[$k2])) {
+            return -1;
+          } else {
+            return $potentialTabsOrder[$k1] <=> $potentialTabsOrder[$k2];
+          }
+        }
+      );
+      foreach ($modifications as $tab => $tabvalues) {
+        if (!isset($tabobject->by_object[$tab])) {
+          throw new WebServiceError('This tab does not exists: "'.$tab.'"', 404);
+        }
+        if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
+            $tabobject->by_object[$tab]->isActivatable() &&
+            !$tabobject->by_object[$tab]->isActive()
+          ) {
+          list($disabled, , $htmlText) = $tabobject->by_object[$tab]->getDisplayHeaderInfos();
+          if ($disabled) {
+            throw new WebServiceError(htmlunescape($htmlText));
+          }
+          if ($tabobject->by_object[$tab]->acl_is_createable()) {
+            $tabobject->by_object[$tab]->is_account = TRUE;
+          } else {
+            throw new WebServiceError('You don\'t have sufficient rights to enable tab "'.$tab.'"', 403);
+          }
+        }
+        $error = $tabobject->by_object[$tab]->deserializeValues($tabvalues);
+        if ($error !== TRUE) {
+          throw new WebServiceErrors([$error]);
+        }
+        $tabobject->current = $tab;
+        $tabobject->update();
+        $tabobject->loadTabs();
+      }
+    }
+
     $errors = $tabobject->save();
     if (!empty($errors)) {
       throw new WebServiceErrors($errors);
