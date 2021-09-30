@@ -80,7 +80,7 @@ class dynamicGroup extends simplePlugin
               _('member URL'), _('URL of member of this group'),
               'memberURL', FALSE,
               '', '',
-              '/^ldap:\/\/\/[\w=,]+\?[\w=,]*\?\w+\?[&|()\w=*]+$/',
+              '/^ldap:\/\/\/[\w _=,-]+\?[\w _=,-]*\?\w+\?.+$/',
               'ldap:///BASE_DN??SCOPE?FILTER'
             )
           )
