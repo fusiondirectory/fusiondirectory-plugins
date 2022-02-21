@@ -216,6 +216,19 @@ class posixGroup extends simplePlugin
     return $errors;
   }
 
+  //Below function allows GID to be retrieved from template
+
+  function adapt_from_template (array $attrs, array $skip = [])
+  {
+    parent::adapt_from_template($attrs, $skip);
+
+    if (isset($this->attrs['force_id'])) {
+      $this->force_id = ($this->attrs['force_id'][0] != 'FALSE');
+    }
+
+    $this->fromTemplate = TRUE;
+  }
+
   function addUser ($dn, $uid)
   {
     $this->attributesAccess['memberUid']->addValue($dn,
