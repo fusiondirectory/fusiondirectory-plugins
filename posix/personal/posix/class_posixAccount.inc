@@ -3,7 +3,7 @@
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
 
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2019  FusionDirectory
+  Copyright (C) 2011-2022  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -190,13 +190,7 @@ class posixAccount extends simplePlugin
 
     $this->attributesAccess['gecos']->setVisible(FALSE);
 
-    $this->attributesAccess['trustMode']->setInLdap(FALSE);
-    if (!class_available('systemManagement')) {
-      $this->attributesAccess['trustMode']->setChoices(
-            ['', 'fullaccess'],
-            [_('disabled'), _('full access')]
-      );
-    }
+    //As trustMode is not registered in ldap, only host, this is a way to put back the option to the proper value
     $this->attributesAccess['trustMode']->setManagedAttributes(
       [
         'multiplevalues' => ['notbyhost' => ['','fullaccess']],
@@ -224,7 +218,6 @@ class posixAccount extends simplePlugin
       ]
     );
     $this->attributesAccess['primaryGroup']->setInLdap(FALSE);
-
     $this->attributesAccess['mustchangepassword']->setInLdap(FALSE);
     $this->attributesAccess['shadowLastChange']->setVisible(FALSE);
     $this->attributesAccess['shadowMax']->setManagedAttributes(
@@ -251,7 +244,6 @@ class posixAccount extends simplePlugin
       $loginShellList[] = $loginShell;
     }
     $this->attributesAccess['loginShell']->setChoices($loginShellList);
-
     $secondaryGroups = [];
     $secondaryGroups[''] = '- '._('automatic').' -';
     $ldap = $config->get_ldap_link();
@@ -262,7 +254,6 @@ class posixAccount extends simplePlugin
     }
     asort($secondaryGroups);
     $this->attributesAccess['primaryGroup']->setChoices(array_keys($secondaryGroups), array_values($secondaryGroups));
-
     $this->attributesAccess['groupMembership']->setInLdap(FALSE);
     if (class_available('mixedGroup')) {
       $this->attributesAccess['groupMembership']->setDisabled(TRUE);
@@ -307,7 +298,6 @@ class posixAccount extends simplePlugin
     } else {
       /* Status is not computed for templates */
       $current = floor(date('U') / EpochDaysDateAttribute::$secondsPerDay);
-
       $shadowExpire     = (int)$this->attributesAccess['shadowExpire']->getEpochDays();
       $shadowInactive   = (int)$this->attributesAccess['shadowInactive']->getValue();
       $shadowMin        = (int)$this->attributesAccess['shadowMin']->getValue();
@@ -491,9 +481,7 @@ class posixAccount extends simplePlugin
           /* When creating a user through a template we bypass ACLs */
           $tabObject->setIgnoreAcls(TRUE);
         }
-
         $baseObject = $tabObject->getBaseObject();
-
         $baseObject->cn           = $groupcn;
         $baseObject->description  = sprintf(_('Group of user %s'), $this->getUid());
         $baseObject->base         = $this->parent->getBaseObject()->base;
@@ -560,7 +548,7 @@ class posixAccount extends simplePlugin
       $this->attrs['host'] = ['*'];
     }
 
-    /* Trust accounts */
+    //Register hosts selected within LDAP
     if (($this->trustMode != '') && !in_array('hostObject', $this->attrs['objectClass'])) {
       $this->attrs['objectClass'][] = 'hostObject';
     } elseif (($this->trustMode == '') && (($key = array_search('hostObject', $this->attrs['objectClass'])) !== FALSE)) {
@@ -597,6 +585,13 @@ class posixAccount extends simplePlugin
 
   function save (): array
   {
+    //Important to get attrs from ldap fdtemplate and to not register them within ldap afterwards
+    if ($this->is_template) {
+      $this->attributesAccess['trustMode']->setInLdap(TRUE);
+    } else {
+      $this->attributesAccess['trustMode']->setInLdap(FALSE);
+    }
+
     $errors = parent::save();
 
     foreach ($this->locks as $lock) {
@@ -702,6 +697,8 @@ class posixAccount extends simplePlugin
     /* Include global link_info */
 
     parent::adapt_from_template($attrs, $skip);
+
+    $this->attributesAccess['trustMode']->setInLdap(FALSE);
 
     $this->savedGroupMembership = $this->groupMembership;
     if (isset($this->attrs['posixGroups'])) {
