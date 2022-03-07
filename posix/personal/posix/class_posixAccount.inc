@@ -206,7 +206,6 @@ class posixAccount extends simplePlugin
     }
 
     $this->attributesAccess['uidNumber']->setUnique('whole');
-    $this->attributesAccess['force_ids']->setInLdap(FALSE);
     $this->attributesAccess['force_ids']->setManagedAttributes(
       [
         'disable' => [
@@ -217,8 +216,7 @@ class posixAccount extends simplePlugin
         ]
       ]
     );
-    $this->attributesAccess['primaryGroup']->setInLdap(FALSE);
-    $this->attributesAccess['mustchangepassword']->setInLdap(FALSE);
+
     $this->attributesAccess['shadowLastChange']->setVisible(FALSE);
     $this->attributesAccess['shadowMax']->setManagedAttributes(
       [
@@ -254,7 +252,7 @@ class posixAccount extends simplePlugin
     }
     asort($secondaryGroups);
     $this->attributesAccess['primaryGroup']->setChoices(array_keys($secondaryGroups), array_values($secondaryGroups));
-    $this->attributesAccess['groupMembership']->setInLdap(FALSE);
+
     if (class_available('mixedGroup')) {
       $this->attributesAccess['groupMembership']->setDisabled(TRUE);
       $this->attributesAccess['groupMembership']->setVisible(FALSE);
@@ -586,11 +584,11 @@ class posixAccount extends simplePlugin
   function save (): array
   {
     //Important to get attrs from ldap fdtemplate and to not register them within ldap afterwards
-    if ($this->is_template) {
-      $this->attributesAccess['trustMode']->setInLdap(TRUE);
-    } else {
-      $this->attributesAccess['trustMode']->setInLdap(FALSE);
-    }
+    $this->attributesAccess['trustMode']->setInLdap($this->is_template);
+    $this->attributesAccess['force_ids']->setInLdap($this->is_template);
+    $this->attributesAccess['primaryGroup']->setInLdap($this->is_template);
+    $this->attributesAccess['mustchangepassword']->setInLdap($this->is_template);
+    $this->attributesAccess['groupMembership']->setInLdap($this->is_template);
 
     $errors = parent::save();
 
@@ -698,7 +696,12 @@ class posixAccount extends simplePlugin
 
     parent::adapt_from_template($attrs, $skip);
 
+    /* fdTemplates attributes not required within LDAP upon save */
     $this->attributesAccess['trustMode']->setInLdap(FALSE);
+    $this->attributesAccess['force_ids']->setInLdap(FALSE);
+    $this->attributesAccess['primaryGroup']->setInLdap(FALSE);
+    $this->attributesAccess['mustchangepassword']->setInLdap(FALSE);
+    $this->attributesAccess['groupMembership']->setInLdap(FALSE);
 
     $this->savedGroupMembership = $this->groupMembership;
     if (isset($this->attrs['posixGroups'])) {
