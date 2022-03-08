@@ -187,13 +187,8 @@ class posixGroup extends simplePlugin
   function save (): array
   {
     //Important to get attrs from ldap fdtemplate and to not register them within ldap afterwards
-    if ($this->is_template) {
-      $this->attributesAccess['trustMode']->setInLdap(TRUE);
-      $this->attributesAccess['force_id']->setInLdap(TRUE);
-    } else {
-      $this->attributesAccess['trustMode']->setInLdap(FALSE);
-      $this->attributesAccess['force_id']->setInLdap(FALSE);
-    }
+    $this->attributesAccess['trustMode']->setInLdap($this->is_template);
+    $this->attributesAccess['force_id']->setInLdap($this->is_template);
 
     $errors = parent::save();
 
