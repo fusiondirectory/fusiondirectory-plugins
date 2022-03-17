@@ -2,8 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
 
-  Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2019  FusionDirectory
+  Copyright (C) 2011-2022  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class IEManager extends simplePlugin
+class ldapExport extends simplePlugin
 {
   /* Return plugin information for acl handling */
   static function plInfo (): array
@@ -50,7 +49,7 @@ class IEManager extends simplePlugin
                 _('Single Export')
               )
             ],
-            '', '%s%s', '',
+            '', '%s', '',
             _('Export single entry')
           ),
           new HiddenAttribute(
@@ -68,7 +67,7 @@ class IEManager extends simplePlugin
                 _('Complete Export ')
               )
             ],
-            '', '%s%s', '',
+            '', '%s', '',
             _('Export complete LDIF for')
           ),
         ]
@@ -84,13 +83,13 @@ class IEManager extends simplePlugin
     $this->attributesAccess['single_export']->setLinearRendering(TRUE);
     $this->attributesAccess['complete_export']->setInLdap(FALSE);
     $this->attributesAccess['complete_export']->setLinearRendering(TRUE);
+
   }
 
   function handle_single_submit ()
   {
     global $config;
     $ldap = $config->get_ldap_link();
-    var_dump($ldap);
     $dn   = $this->dn;
     $acl  = $this->attributesAccess['single_export']->getAcl();
     if (!$ldap->dn_exists($dn)) {
@@ -142,11 +141,5 @@ class IEManager extends simplePlugin
   function remove (bool $fulldelete = FALSE): array
   {
     return [];
-  }
-
-  function get_allowed_bases (): array
-  {
-    global $config;
-    return $config->getDepartmentTree();
   }
 }
