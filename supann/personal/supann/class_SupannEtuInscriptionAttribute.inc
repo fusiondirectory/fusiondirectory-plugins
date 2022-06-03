@@ -115,10 +115,12 @@ class SupannEtuInscriptionAttribute extends SupannCompositeAttribute
           $label1 .= ' - '.$label2;
         }
         if ($type[0] != '{') {
-          $type = '{'.$prefix.'}'.$type;
+          // $type cannot be used with another prefix than {SISE}
+          $type = '{SISE}'.$type;
         }
         if ($sectdisc[0] != '{') {
-          $sectdisc = '{'.$prefix.'}'.$sectdisc;
+          // $sectdisc cannot be used with another prefix than {SISE}
+          $sectdisc = '{SISE}'.$sectdisc;
         }
         $this->diplomas[$type][$sectdisc][$prefix][0][] = $id;
         $this->diplomas[$type][$sectdisc][$prefix][1][] = $label1;
