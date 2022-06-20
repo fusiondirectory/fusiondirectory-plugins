@@ -48,8 +48,12 @@ class supannPersonalExt extends simplePlugin
             'unique_ids', FALSE
           ),
           new StringAttribute(
-            _('User Unique Identifier'), _('eduPersonUniqueId - User Unique Identifier'),
+            _('Generated User Unique Identifier'), _('eduPersonUniqueId - User Unique Identifier'),
             'eduPersonUniqueId', FALSE
+          ),
+          new StringAttribute(
+            _('Establishment DNS'), _('DNS of the related users base establishment'),
+            'fdEduPersonUniqueIdDns', FALSE
           ),
         ]
       ],
@@ -62,24 +66,37 @@ class supannPersonalExt extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['eduPersonUniqueId']->setUnique('whole');
+    $this->attributesAccess['eduPersonUniqueId']->setDisabled(!$this->is_template);
     $this->attributesAccess['unique_ids']->setInLdap($this->is_template);
     $this->attributesAccess['unique_ids']->setManagedAttributes(
       [
         'disable' => [
           '' => [
-            'eduPersonUniqueId',
+            'fdEduPersonUniqueIdDns',
           ]
         ]
       ]
     );
 
     if (empty($this->attributesAccess['eduPersonUniqueId']->getValue())) {
-      error_log("Isset: " . $this->attributesAccess['eduPersonUniqueId']->getValue());
       $this->aUniqueId = $this->generateUniqueUserId();
       if (!$this->isUserUniqueIdExist($this->aUniqueId)) {
         $this->attributesAccess['eduPersonUniqueId']->setValue($this->aUniqueId);
       }
     }
+  }
+
+  /*
+   * Verify the DNS entry contains "@" char
+   */
+  protected function shouldSave (): bool
+  {
+    if (!strpos($this->attributesAccess['fdEduPersonUniqueIdDns']->getValue(), '@') !== FALSE) {
+      msg_dialog::display(_('Warning'), sprintf(_('Incorrect DNS entry !')), WARNING_DIALOG);
+      return FALSE;
+    }
+
+    return parent::shouldSave();
   }
 
   /*
