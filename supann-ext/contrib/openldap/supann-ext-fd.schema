@@ -41,6 +41,20 @@ attributetype ( 1.3.6.1.4.1.38414.66.1.6 NAME 'fdSupannRelationEntite'
   SUBSTR caseIgnoreIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{128} )
 
+attributetype ( 1.3.6.1.4.1.5923.1.1.1.13 
+          NAME 'eduPersonUniqueId' 
+          DESC 'eduPersonUniqueId per Internet2' 
+          EQUALITY caseIgnoreMatch 
+          SUBSTR caseIgnoreSubstringsMatch
+          SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' SINGLE-VALUE ) 
+
+attributetype ( 1.3.6.1.4.1.38414.66.1.7
+          NAME 'fdEduPersonUniqueIdDns' 
+          DESC 'Helper for eduPersonUniqueId DNS' 
+          EQUALITY caseIgnoreMatch 
+          SUBSTR caseIgnoreSubstringsMatch
+          SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' SINGLE-VALUE ) 
+
 # Object Class
 objectclass (1.3.6.1.4.1.38414.66.2.1 NAME 'fdSupannExt' SUP top AUXILIARY
   DESC 'FusionDirectory - audit event'
