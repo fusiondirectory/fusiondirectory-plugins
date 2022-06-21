@@ -91,8 +91,9 @@ class supannPersonalExt extends simplePlugin
    */
   protected function shouldSave (): bool
   {
-    if (!strpos($this->attributesAccess['fdEduPersonUniqueIdDns']->getValue(), '@') !== FALSE) {
-      msg_dialog::display(_('Warning'), sprintf(_('Incorrect DNS entry !')), WARNING_DIALOG);
+    preg_match('/^@.*/', $this->attributesAccess['fdEduPersonUniqueIdDns']->getValue(), $match);
+    if (empty($match[0]) || $this->attributesAccess['fdEduPersonUniqueIdDns']->getValue() !== $match[0]) {
+      msg_dialog::display(_('Warning'), sprintf(_('Incorrect DNS format or entry. Example : "@example.com" !')), WARNING_DIALOG);
       return FALSE;
     }
 
@@ -100,11 +101,46 @@ class supannPersonalExt extends simplePlugin
   }
 
   /*
+   * Save method, by interface rule, must remain public
+   */
+  public function save (): array
+  {
+    //Important to get attrs from ldap fdtemplate and to not register them within ldap afterwards
+    $this->attributesAccess['unique_ids']->setInLdap($this->is_template);
+    $this->attributesAccess['eduPersonUniqueId']->setValue($this->createFinaleUniqueUserID());
+
+    $errors = parent::save();
+    return $errors;
+  }
+
+
+  /*
+   * Form the unique ID and DNS together to create the proper userUniqueID.
+   * If DNS already set, replace it with the update one.
+   */
+  protected function createFinaleUniqueUserID () : string
+  {
+    $dns = $this->attributesAccess['fdEduPersonUniqueIdDns']->getValue();
+    $id  = $this->attributesAccess['eduPersonUniqueId']->getValue();
+
+    preg_match('/@.*/', $this->attributesAccess['eduPersonUniqueId']->getValue(), $match);
+    if (empty($match[0])) {
+      return $finalID = $id.$dns;
+    } else {
+      error_log('before_replace: ' .print_r($id, TRUE));
+      $id = str_replace($match, $dns, $id);
+      error_log('after_replace: ' .print_r($id, TRUE));
+      return $id;
+    }
+  }
+
+  /*
    * Generate a Uniquer User ID of maximum 64 char
    */
   protected function generateUniqueUserId (): string
   {
-    return $uniqueID = substr(base64_encode(uniqid('', TRUE)), 0, 63);
+    $uniqueID = substr(base64_encode(uniqid('', TRUE)), 0, 63);
+    return  trim($uniqueID, '=');
   }
 
   /*
