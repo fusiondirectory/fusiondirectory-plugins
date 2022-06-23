@@ -30,6 +30,7 @@ class supannPersonalExt extends simplePlugin
       'plDescription' => _('SUPANN Non-Official Extension'),
       'plObjectType'  => ['user'],
       'plObjectClass' => ['fdSupannExt'],
+      'plDepends'     => ['supannAccount'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
@@ -77,6 +78,11 @@ class supannPersonalExt extends simplePlugin
         ]
       ]
     );
+
+    //Allows the ID of once set to always remain set
+    if (!empty($this->attributesAccess['fdEduPersonUniqueIdDns']->getValue())) {
+      $this->attributesAccess['unique_ids']->setValue(TRUE);
+    }
 
     if (empty($this->attributesAccess['eduPersonUniqueId']->getValue())) {
       $this->aUniqueId = $this->generateUniqueUserId();
