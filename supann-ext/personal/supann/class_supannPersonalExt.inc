@@ -30,7 +30,7 @@ class supannPersonalExt extends simplePlugin
       'plDescription' => _('SUPANN Non-Official Extension'),
       'plObjectType'  => ['user'],
       'plObjectClass' => ['fdSupannExt'],
-
+     'plDepends'     => ['supannAccount'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
@@ -40,8 +40,8 @@ class supannPersonalExt extends simplePlugin
   {
     return [
 
-      'personnal' => [
-        'name'  => _('Personal profile'),
+      'personnalUniqueID' => [
+        'name'  => _('Personal Unique ID'),
         'attrs' => [
          new BooleanAttribute(
             _('Activate Unique ID'), _('Generate Unique ID for User'),
@@ -54,6 +54,17 @@ class supannPersonalExt extends simplePlugin
           new StringAttribute(
             _('Establishment DNS'), _('DNS of the related users base establishment'),
             'fdEduPersonUniqueIdDns', FALSE
+          ),
+        ]
+      ],
+      'populationCode' => [
+        'name'  => _('Population Code'),
+        'attrs' => [
+          new SetAttribute(
+            new PhoneNumberAttribute(
+              _('Other phone numbers'), _('supannAutreTelephone - Other phone numbers for this user'),
+              'supannCodePopulation', FALSE
+            ),
           ),
         ]
       ],
@@ -84,6 +95,7 @@ class supannPersonalExt extends simplePlugin
         $this->attributesAccess['eduPersonUniqueId']->setValue($this->aUniqueId);
       }
     }
+
   }
 
   /*
