@@ -36,8 +36,8 @@ class supannExtConfig extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-      'populationCodeConf' => [
-        'name'  => _('Population Codes'),
+      'localPopulationCodeConf' => [
+        'name'  => _('Local Population Codes'),
         'attrs' => [
          new SetAttribute(
             new CompositeAttribute(
@@ -45,18 +45,18 @@ class supannExtConfig extends simplePlugin
               'fdLocalPopulationCodeConf',
               [
                 new SelectAttribute(
-                  '', _('Main Population Code'),
-                  'fdMasterPopulationCodeM', TRUE
+                  'Main Code', _('Main Population Code'),
+                  'fdMainPopulationCode', FALSE,
                 ),
-               new StringAttribute(
+                new StringAttribute(
                   _('Local Population Code'), _('Local Population Code'),
-                  'fdLocalPopulationCode', TRUE, ''
+                  'fdLocalPopulationCode', FALSE, ''
                 ),
               ],
-              '/^{(.+)}(.*)$/',
-              '{%s}%s',
+              '/^{(.*)}(.*)/',
+              '{%s}:%s',
               '',
-              _('Population Codes')
+              _('Local Population Codes')
             )
           ),
         ]
@@ -68,13 +68,18 @@ class supannExtConfig extends simplePlugin
             new CompositeAttribute(
               _('Code Configuration'),
               'fdMainPopulationCodeConf',
-              [
+              [              
+               new SelectAttribute(
+                  _('Prefix'),    _('Prefix Of The Main Population Code'),
+                  'fdsupannMainPopulationCodePrefix', FALSE,
+                  ['SUPANN']
+                ),
                new StringAttribute(
                   _('Main Population Code'), _('Main Population Code'),
                   'fdMainPopulationCode', FALSE, ''
                 ),
               ],
-              '/^{(.+)}(.*)$/',
+              '/.*/',
               '{%s}%s',
               '',
               _('Main Population Codes')
@@ -92,23 +97,49 @@ class supannExtConfig extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $populationCodeMaster = [
-      'R'    => _('R'),
-      'RG'   => _('RG'),
-      'RGP'  => _('RGP'),
-      'RGPF' => _('RGPF'),
-      'RGPFT' => _('RGPFT'),
+      '{SUPANN}R'    => _('{SUPANN}R'),
+      '{SUPANN}RG'   => _('{SUPANN}RG'),
+      '{SUPANN}RGP'  => _('{SUPANN}RGP'),
+      '{SUPANN}RGPF' => _('{SUPANN}RGPF'),
+      '{SUPANN}RGPFT' => _('{SUPANN}RGPFT'),
     ];
-
+    
+    $populationCodeMaster += $this->attributesAccess['fdMainPopulationCodeConf']->getValue();
+    $populationCodeMaster = array_unique($populationCodeMaster);
+  
     $this->attributesAccess['fdLocalPopulationCodeConf']->attribute->attributes[0]->setChoices(
       array_keys($populationCodeMaster),
       array_values($populationCodeMaster)
     );
 
-    $this->attributesAccess['fdLocalPopulationCodeConf']->setValue(
-      array_keys($populationCodeMaster),
-      array_values($populationCodeMaster)
-    );
+    
+    if (empty($this->getLdapMainPopulationCodes())) {
+      $this->attributesAccess['fdMainPopulationCodeConf']->setValue(
+        array_keys($populationCodeMaster),
+        array_values($populationCodeMaster)
+      );
+    }
+  }
 
+  /*
+   * Return table of existing populationCodeMaster
+   */
+  protected function getLdapMainPopulationCodes (): array
+  {
+    global $config;
+    $populationCodeMaster = [];
+    
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(&(objectClass=fdSupannExt))');
+
+    while ($attrs = $ldap->fetch()) {
+      if (isset($attrs['fdMainPopulationCodeConf'][0])) {
+        $populationCodeMaster[] = $attrs['fdMainPopulationCodeConf'];
+      }
+    }
+
+    return $populationCodeMaster;
   }
 
 }

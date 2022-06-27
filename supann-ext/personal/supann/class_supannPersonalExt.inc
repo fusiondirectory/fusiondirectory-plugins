@@ -62,9 +62,9 @@ class supannPersonalExt extends simplePlugin
         'name'  => _('Population Code'),
         'attrs' => [
           new SetAttribute(
-            new PhoneNumberAttribute(
-              _('Other phone numbers'), _('supannAutreTelephone - Other phone numbers for this user'),
-              'supannCodePopulation', FALSE
+            new SelectAttribute(
+              'Main Code', _('Main Population Code'),
+              'supannCodePopulation', FALSE,
             ),
           ),
         ]
@@ -100,6 +100,15 @@ class supannPersonalExt extends simplePlugin
       if (!$this->isUserUniqueIdExist($this->aUniqueId)) {
         $this->attributesAccess['eduPersonUniqueId']->setValue($this->aUniqueId);
       }
+    }
+
+    $aCodePopulation = $this->getLdapPopulationCodes();
+    error_log('Code pop list : ' .print_r($aCodePopulation, TRUE));
+    if (!empty($aCodePopulation)) {
+      $this->attributesAccess['supannCodePopulation']->attribute->setChoices(
+
+        array_values($aCodePopulation[0])
+      );
     }
 
   }
@@ -182,5 +191,28 @@ class supannPersonalExt extends simplePlugin
     return FALSE;
   }
 
+  /*
+   * Return table of existing Population Codes containing main's and local's
+   */
+  protected function getLdapPopulationCodes (): array
+  {
+    global $config;
+    $populationCodes = [];
+    
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(&(objectClass=fdSupannExt))');
+
+    while ($attrs = $ldap->fetch()) {
+      if (isset($attrs['fdMainPopulationCodeConf'][0])) {
+        $populationCodes[] = $attrs['fdMainPopulationCodeConf'];
+      }
+      if (isset($attrs['fdLocalPopulationCodeConf'][0])) {
+        $populationCodes[] = $attrs['fdLocalPopulationCodeConf'];
+      }
+    }
+
+    return array_unique($populationCodes);
+  }
 
 }
