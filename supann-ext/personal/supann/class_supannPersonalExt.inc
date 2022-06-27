@@ -195,6 +195,7 @@ class supannPersonalExt extends simplePlugin
   {
     global $config;
     $result = [];
+    $populationCodes = [];
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
@@ -212,7 +213,6 @@ class supannPersonalExt extends simplePlugin
     //Verification if the values within the multidim assoc array match the patterns
     for ($i = 0; $i < count($populationCodes); $i++) {
       foreach ($populationCodes[$i] as $key => $value) {
-
         if (preg_match('/^{/', $value)) {
           $result[] = $value;
         }
