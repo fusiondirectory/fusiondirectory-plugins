@@ -53,7 +53,7 @@ class supannExtConfig extends simplePlugin
                   'fdLocalPopulationCode', FALSE, ''
                 ),
               ],
-              '/^{(.*)}(.*)/',
+              '/^{/',
               '{%s}:%s',
               '',
               _('Local Population Codes')
@@ -68,7 +68,7 @@ class supannExtConfig extends simplePlugin
             new CompositeAttribute(
               _('Code Configuration'),
               'fdMainPopulationCodeConf',
-              [              
+              [
                new SelectAttribute(
                   _('Prefix'),    _('Prefix Of The Main Population Code'),
                   'fdsupannMainPopulationCodePrefix', FALSE,
@@ -103,22 +103,14 @@ class supannExtConfig extends simplePlugin
       '{SUPANN}RGPF' => _('{SUPANN}RGPF'),
       '{SUPANN}RGPFT' => _('{SUPANN}RGPFT'),
     ];
-    
+
     $populationCodeMaster += $this->attributesAccess['fdMainPopulationCodeConf']->getValue();
     $populationCodeMaster = array_unique($populationCodeMaster);
-  
+
     $this->attributesAccess['fdLocalPopulationCodeConf']->attribute->attributes[0]->setChoices(
       array_keys($populationCodeMaster),
       array_values($populationCodeMaster)
     );
-
-    
-    if (empty($this->getLdapMainPopulationCodes())) {
-      $this->attributesAccess['fdMainPopulationCodeConf']->setValue(
-        array_keys($populationCodeMaster),
-        array_values($populationCodeMaster)
-      );
-    }
   }
 
   /*
@@ -128,7 +120,7 @@ class supannExtConfig extends simplePlugin
   {
     global $config;
     $populationCodeMaster = [];
-    
+
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search('(&(objectClass=fdSupannExt))');

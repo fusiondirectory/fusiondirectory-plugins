@@ -105,10 +105,7 @@ class supannPersonalExt extends simplePlugin
     $aCodePopulation = $this->getLdapPopulationCodes();
     error_log('Code pop list : ' .print_r($aCodePopulation, TRUE));
     if (!empty($aCodePopulation)) {
-      $this->attributesAccess['supannCodePopulation']->attribute->setChoices(
-
-        array_values($aCodePopulation[0])
-      );
+      $this->attributesAccess['supannCodePopulation']->attribute->setChoices($aCodePopulation);
     }
 
   }
@@ -197,8 +194,8 @@ class supannPersonalExt extends simplePlugin
   protected function getLdapPopulationCodes (): array
   {
     global $config;
-    $populationCodes = [];
-    
+    $result = [];
+
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search('(&(objectClass=fdSupannExt))');
@@ -212,7 +209,17 @@ class supannPersonalExt extends simplePlugin
       }
     }
 
-    return array_unique($populationCodes);
+    //Verification if the values within the multidim assoc array match the patterns
+    for ($i = 0; $i < count($populationCodes); $i++) {
+      foreach ($populationCodes[$i] as $key => $value) {
+
+        if (preg_match('/^{/', $value)) {
+          $result[] = $value;
+        }
+      }
+    }
+
+    return $result;
   }
 
 }
