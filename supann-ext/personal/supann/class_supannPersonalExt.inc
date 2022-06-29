@@ -40,12 +40,11 @@ class supannPersonalExt extends simplePlugin
   static function getAttributesInfo (): array
   {
     return [
-
-      'personnal' => [
-        'name'  => _('Personal profile'),
+      'personnalUniqueID' => [
+        'name'  => _('Personal Unique ID'),
         'attrs' => [
          new BooleanAttribute(
-            _('Activate Unique ID'), _('Generate Unique ID for User'),
+            _('Activate Unique ID (Cannot Be Unset)'), _('Generate Unique ID for User'),
             'unique_ids', FALSE
           ),
           new StringAttribute(
@@ -55,6 +54,17 @@ class supannPersonalExt extends simplePlugin
           new StringAttribute(
             _('Establishment DNS'), _('DNS of the related users base establishment'),
             'fdEduPersonUniqueIdDns', FALSE
+          ),
+        ]
+      ],
+      'populationCode' => [
+        'name'  => _('Population Code'),
+        'attrs' => [
+          new SetAttribute(
+            new SelectAttribute(
+              'Main Code', _('Main Population Code'),
+              'supannCodePopulation', FALSE,
+            ),
           ),
         ]
       ],
@@ -90,6 +100,11 @@ class supannPersonalExt extends simplePlugin
         $this->attributesAccess['eduPersonUniqueId']->setValue($this->aUniqueId);
       }
     }
+
+    $aCodePopulation = $this->getLdapPopulationCodes();
+    if (!empty($aCodePopulation)) {
+      $this->attributesAccess['supannCodePopulation']->attribute->setChoices($aCodePopulation);
+    }
   }
 
   /*
@@ -97,10 +112,14 @@ class supannPersonalExt extends simplePlugin
    */
   protected function shouldSave (): bool
   {
-    preg_match('/^@.*/', $this->attributesAccess['fdEduPersonUniqueIdDns']->getValue(), $match);
-    if (empty($match[0]) || $this->attributesAccess['fdEduPersonUniqueIdDns']->getValue() !== $match[0]) {
-      msg_dialog::display(_('Warning'), sprintf(_('Incorrect DNS format or entry. Example : "@example.com" !')), WARNING_DIALOG);
-      return FALSE;
+    if ($this->attributesAccess['unique_ids']->getValue() == TRUE ) {
+      preg_match('/^@.*/', $this->attributesAccess['fdEduPersonUniqueIdDns']->getValue(), $match);
+      if (empty($match[0]) || $this->attributesAccess['fdEduPersonUniqueIdDns']->getValue() !== $match[0]) {
+        msg_dialog::display(_('Warning'), sprintf(_('Incorrect DNS format or entry. Example : "@example.com" !')), WARNING_DIALOG);
+        return FALSE;
+      }
+    } else {
+        $this->attributesAccess['eduPersonUniqueId']->setInLdap($this->is_template);
     }
 
     return parent::shouldSave();
@@ -113,12 +132,17 @@ class supannPersonalExt extends simplePlugin
   {
     //Important to get attrs from ldap fdtemplate and to not register them within ldap afterwards
     $this->attributesAccess['unique_ids']->setInLdap($this->is_template);
+
+    //Combine DNS & UniqueID
     $this->attributesAccess['eduPersonUniqueId']->setValue($this->createFinaleUniqueUserID());
+
+    if ($this->attributesAccess['unique_ids']->getValue() == FALSE) {
+      $this->attributesAccess['eduPersonUniqueId']->setInLdap(FALSE);
+    }
 
     $errors = parent::save();
     return $errors;
   }
-
 
   /*
    * Form the unique ID and DNS together to create the proper userUniqueID.
@@ -133,9 +157,7 @@ class supannPersonalExt extends simplePlugin
     if (empty($match[0])) {
       return $finalID = $id.$dns;
     } else {
-      error_log('before_replace: ' .print_r($id, TRUE));
       $id = str_replace($match, $dns, $id);
-      error_log('after_replace: ' .print_r($id, TRUE));
       return $id;
     }
   }
@@ -161,7 +183,6 @@ class supannPersonalExt extends simplePlugin
     while ($attrs = $ldap->fetch()) {
       if (isset($attrs['eduPersonUniqueId'][0])) {
         if ($attrs['eduPersonUniqueId'][0] == $uniqueID) {
-          error_log('TRUE');
           return TRUE;
         }
       }
@@ -170,5 +191,38 @@ class supannPersonalExt extends simplePlugin
     return FALSE;
   }
 
+  /*
+   * Return table of existing Population Codes containing main's and local's
+   */
+  protected function getLdapPopulationCodes (): array
+  {
+    global $config;
+    $result = [];
+    $populationCodes = [];
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(&(objectClass=fdSupannExt))');
+
+    while ($attrs = $ldap->fetch()) {
+      if (isset($attrs['fdMainPopulationCodeConf'][0])) {
+        $populationCodes[] = $attrs['fdMainPopulationCodeConf'];
+      }
+      if (isset($attrs['fdLocalPopulationCodeConf'][0])) {
+        $populationCodes[] = $attrs['fdLocalPopulationCodeConf'];
+      }
+    }
+
+    //Verification if the values within the multidim assoc array match the patterns
+    for ($i = 0; $i < count($populationCodes); $i++) {
+      foreach ($populationCodes[$i] as $key => $value) {
+        if (preg_match('/^{/', $value)) {
+          $result[] = $value;
+        }
+      }
+    }
+
+    return $result;
+  }
 
 }
