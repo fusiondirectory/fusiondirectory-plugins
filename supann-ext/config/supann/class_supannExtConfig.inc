@@ -76,7 +76,7 @@ class supannExtConfig extends simplePlugin
                 ),
                 new StringAttribute(
                   _('Local Population Code'), _('Local Population Code'),
-                  'fdLocalPopulationCode', FALSE, ''
+                  'fdLocalPopulationCode', FALSE,
                 ),
               ],
               '/.*/',
@@ -95,21 +95,7 @@ class supannExtConfig extends simplePlugin
     global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    $populationCodeMaster = [
-      '{SUPANN}R'    => _('{SUPANN}R'),
-      '{SUPANN}RG'   => _('{SUPANN}RG'),
-      '{SUPANN}RGP'  => _('{SUPANN}RGP'),
-      '{SUPANN}RGPF' => _('{SUPANN}RGPF'),
-      '{SUPANN}RGPFT' => _('{SUPANN}RGPFT'),
-    ];
-
-    //Getting values from LDAP already registered and add the default ones, making array unique if already defined.
-    $populationCodeMaster += $this->attributesAccess['fdMainPopulationCodeConf']->getValue();
-    $populationCodeMaster = array_unique($populationCodeMaster);
-
-    $this->attributesAccess['fdLocalPopulationCodeConf']->attribute->attributes[0]->setChoices(
-      array_values($populationCodeMaster)
-    );
+    $this->setBasicMainCodes();
   }
 
   /*
@@ -118,7 +104,7 @@ class supannExtConfig extends simplePlugin
   protected function getLdapMainPopulationCodes (): array
   {
     global $config;
-    $populationCodeMaster = [];
+    $popCodeMaster = [];
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
@@ -126,11 +112,38 @@ class supannExtConfig extends simplePlugin
 
     while ($attrs = $ldap->fetch()) {
       if (isset($attrs['fdMainPopulationCodeConf'][0])) {
-        $populationCodeMaster[] = $attrs['fdMainPopulationCodeConf'];
+        $popCodeMaster[] = $attrs['fdMainPopulationCodeConf'];
       }
     }
 
-    return $populationCodeMaster;
+    return $popCodeMaster;
+  }
+
+  /*
+   * Required to make sure the basic template of population code is always available.
+   * In the tabl of Main and Local sections.
+   */
+  protected function setBasicMainCodes () : void
+  {
+    $this->populationCodeMaster = [
+      '{SUPANN}R'    => _('{SUPANN}R'),
+      '{SUPANN}RG'   => _('{SUPANN}RG'),
+      '{SUPANN}RGP'  => _('{SUPANN}RGP'),
+      '{SUPANN}RGPF' => _('{SUPANN}RGPF'),
+      '{SUPANN}RGPFT' => _('{SUPANN}RGPFT'),
+    ];
+
+    //Getting values from LDAP already registered and add the default ones, making array unique if already defined.
+    $this->populationCodeMaster += $this->attributesAccess['fdMainPopulationCodeConf']->getValue();
+    $this->populationCodeMaster = array_unique($this->populationCodeMaster);
+
+    $this->attributesAccess['fdLocalPopulationCodeConf']->attribute->attributes[0]->setChoices(
+      array_values($this->populationCodeMaster)
+    );
+
+    $this->attributesAccess['fdMainPopulationCodeConf']->setValue(
+      array_values($this->populationCodeMaster)
+    );
   }
 
   /*
@@ -140,8 +153,27 @@ class supannExtConfig extends simplePlugin
   {
     parent::update();
     $this->updateFieldsChoicesAndValues();
+    $this->attributesAccess['fdLocalPopulationCodeConf']->setValue($this->deleteLocalPopuplationCode());
 
     return TRUE;
+  }
+
+  /*
+   *  Local Population Code is deleted if the parent/main code is not existing.
+   */
+  protected function deleteLocalPopuplationCode () : array
+  {
+    $result = [];
+    foreach ($this->attributesAccess['fdMainPopulationCodeConf']->getValue() as $mCodes) {
+      foreach ($this->attributesAccess['fdLocalPopulationCodeConf']->getValue() as $lCodes) {
+        preg_match('/^{.*}(.*)/', $mCodes, $mainMatch);
+        preg_match('/^{.*}(.*):/', $lCodes, $localMatch);
+        if (isset($mainMatch[1], $localMatch[1]) && $mainMatch[1] == $localMatch[1]) {
+          $result[] = $lCodes;
+        }
+      }
+    }
+    return $result;
   }
 
   protected function updateFieldsChoicesAndValues ()
@@ -150,6 +182,17 @@ class supannExtConfig extends simplePlugin
       $this->attributesAccess['fdMainPopulationCodeConf']->getValue(),
       $this->attributesAccess['fdMainPopulationCodeConf']->getDisplayValues()
     );
+  }
+
+  /*
+   * Save method, by interface rule, must remain public
+   */
+  public function save (): array
+  {
+    $this->setBasicMainCodes();
+
+    $errors = parent::save();
+    return $errors;
   }
 
 }
