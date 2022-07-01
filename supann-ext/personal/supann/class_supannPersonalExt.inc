@@ -77,7 +77,7 @@ class supannPersonalExt extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
 
     $this->attributesAccess['eduPersonUniqueId']->setUnique('whole');
-    $this->attributesAccess['eduPersonUniqueId']->setDisabled(!$this->is_template);
+    $this->attributesAccess['eduPersonUniqueId']->setDisabled(TRUE);
     $this->attributesAccess['unique_ids']->setInLdap($this->is_template);
     $this->attributesAccess['unique_ids']->setManagedAttributes(
       [
@@ -95,10 +95,7 @@ class supannPersonalExt extends simplePlugin
     }
 
     if (empty($this->attributesAccess['eduPersonUniqueId']->getValue())) {
-      $this->aUniqueId = $this->generateUniqueUserId();
-      if (!$this->isUserUniqueIdExist($this->aUniqueId)) {
-        $this->attributesAccess['eduPersonUniqueId']->setValue($this->aUniqueId);
-      }
+      $this->setGeneratedUniqueID();
     }
 
     $aCodePopulation = $this->getLdapPopulationCodes();
@@ -223,6 +220,29 @@ class supannPersonalExt extends simplePlugin
     }
 
     return $result;
+  }
+
+  function adapt_from_template (array $attrs, array $skip = [])
+  {
+    parent::adapt_from_template($attrs, $skip);
+
+    //Allows the ID of once set to always remain set
+    if (!empty($this->attributesAccess['fdEduPersonUniqueIdDns']->getValue())) {
+      $this->attributesAccess['unique_ids']->setValue(TRUE);
+    }
+
+    //Make sure the ID cannot be re-used if adapted from template
+    $this->setGeneratedUniqueID();
+
+    $this->fromTemplate = TRUE;
+  }
+
+  protected function setGeneratedUniqueID () : void
+  {
+    $this->aUniqueId = $this->generateUniqueUserId();
+    if (!$this->isUserUniqueIdExist($this->aUniqueId)) {
+      $this->attributesAccess['eduPersonUniqueId']->setValue($this->aUniqueId);
+    }
   }
 
 }
