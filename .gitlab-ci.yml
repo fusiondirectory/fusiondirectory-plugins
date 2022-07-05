@@ -80,19 +80,6 @@ build-release:
     paths:
       - fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"').tar.gz
 
-trigger-ci-debian-stretch:
-  stage: trigger
-  only:
-    - 1.3-fixes
-  variables:
-    GROUP: "$GROUP"
-    BRANCH_CORE: "$CI_COMMIT_REF_NAME"
-    BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
-    BRANCH_BUILD_DEBIAN_STRETCH: "$BRANCH_BUILD_DEBIAN_STRETCH"
-  trigger:
-    project: debian/stretch-fusiondirectory-fixes
-    branch: "$BRANCH_BUILD_DEBIAN_STRETCH"
-
 trigger-ci-debian-buster:
   stage: trigger
   only:
