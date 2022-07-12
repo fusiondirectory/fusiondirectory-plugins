@@ -546,6 +546,9 @@ class posixAccount extends simplePlugin
       $this->attrs['host'] = ['*'];
     }
 
+    //Handle properly %askme% during template creation
+    $this->setAskMeHostAndTrustMode();
+
     //Register hosts selected within LDAP
     if (($this->trustMode != '') && !in_array('hostObject', $this->attrs['objectClass'])) {
       $this->attrs['objectClass'][] = 'hostObject';
@@ -719,6 +722,8 @@ class posixAccount extends simplePlugin
 
     $this->primaryGroup = $this->gidNumber;
 
+    //Thie below condition must be reworked in order to fix the %askme% disabling the table.
+    //A simple condition to put %askme% in both system lists and TrustMode options
     if ((count($this->host) == 1) && ($this->host[0] == '*')) {
       $this->trustMode = 'fullaccess';
     } elseif (count($this->host) > 0) {
@@ -739,6 +744,15 @@ class posixAccount extends simplePlugin
       }
     }
     return $ret;
+  }
+
+  function setAskMeHostAndTrustMode () : void
+  {
+    if ($this->trustMode == '%askme%') {
+      $this->attrs['host'] = ['%askme%'];
+    } elseif ($this->host[0] == '%askme%') {
+      $this->attrs['trustMode'] = '%askme%';
+    }
   }
 
   /*!
