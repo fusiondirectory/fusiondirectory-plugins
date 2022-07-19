@@ -21,13 +21,13 @@ create_php_lint_rapport_stretch:
 
 # PHP codesniffer
 create_php_code_sniffer_rapport:
-  image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/phpcodesniffer-cli:stretch
+  image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/phpcodesniffer-cli:buster
   stage: codestyle
   only:
     - branches
   script:
     - test -d ../dev-tools/ && rm -Rf ../dev-tools/
-    - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git -b 1.3 ../dev-tools
+    - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git -b ../dev-tools
     - find . -type f -name '*.php' -o -name '*.inc' > ./filelist
     - phpcs --ignore=class_sieve.inc --standard=../dev-tools/php-codesniffer-rules/FDStandard/ruleset.xml --file-list=./filelist
 
