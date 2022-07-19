@@ -27,7 +27,7 @@ create_php_code_sniffer_rapport:
     - branches
   script:
     - test -d ../dev-tools/ && rm -Rf ../dev-tools/
-    - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git -b ../dev-tools
+    - git clone --depth 1 https://gitlab.fusiondirectory.org/fusiondirectory/dev-tools.git ../dev-tools
     - find . -type f -name '*.php' -o -name '*.inc' > ./filelist
     - phpcs --ignore=class_sieve.inc --standard=../dev-tools/php-codesniffer-rules/FDStandard/ruleset.xml --file-list=./filelist
 
