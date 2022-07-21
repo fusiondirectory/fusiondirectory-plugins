@@ -299,7 +299,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
           }
         }
       }
-      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, count($packages), "$release done, packages left");
+      @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, count($packages), "$release done, packages left");
     }
 
     if (count($packages) > 0) {

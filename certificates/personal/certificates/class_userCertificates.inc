@@ -132,7 +132,7 @@ class userCertificates extends simplePlugin
         'name'  => _('Certificates'),
         'attrs' => [
           new CertificateOrderedArrayAttribute(
-            new CertificateFileAttribute (
+            new CertificateFileAttribute(
               '', _('Certificate content'),
               'userCertificate;binary', TRUE
             ),

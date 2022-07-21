@@ -49,7 +49,7 @@ class sympaAlias extends simplePlugin
         'name'  => _('Sympa list alias'),
         'attrs' => [
           new BaseSelectorAttribute(get_ou('sympaRDN')),
-          new StringAttribute (_('Name'), _('Name to identify this alias'), 'cn', TRUE),
+          new StringAttribute(_('Name'), _('Name to identify this alias'), 'cn', TRUE),
           new TextAreaAttribute(
             _('Description'), _('Description of this alias'),
             'description', FALSE

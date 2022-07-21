@@ -58,7 +58,7 @@ class supann
       }
       while (($line = fgets($entiteList)) !== FALSE) {
         $line = trim($line);
-        if (!preg_match ('/^#/', $line) && !empty($line)) {
+        if (!preg_match('/^#/', $line) && !empty($line)) {
           $entite_line = preg_split('/;/', $line);
 
           $entity_codes[]   = $prefix.$entite_line[0];

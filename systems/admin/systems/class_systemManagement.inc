@@ -357,7 +357,7 @@ class systemManagement extends simpleManagement
                                'alt="'.$infos['plShortName'].'" title="'.$infos['plShortName'].'" '.
                                'name="listing_edit_service_'.$class.'_'.$row.'"/>';
           } else {
-            @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $infos['plShortName']." ($class)", "No icon for");
+            @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $infos['plShortName']." ($class)", "No icon for");
           }
         }
       }

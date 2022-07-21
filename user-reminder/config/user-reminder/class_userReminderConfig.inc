@@ -105,7 +105,7 @@ class userReminderConfig extends simplePlugin
             'fdUserReminderAlertSubject', FALSE,
             _('[FusionDirectory] Your account is about to expire')
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Body (%s are cn, login, and link token)'),
             _('Body of the alert email, sent when the user is about to expire. Use %s for the cn, uid and token.'),
             'fdUserReminderAlertBody', FALSE,

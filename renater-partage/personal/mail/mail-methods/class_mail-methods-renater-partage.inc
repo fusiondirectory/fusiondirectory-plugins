@@ -82,8 +82,8 @@ class mailMethodRenaterPartage extends mailMethod
       $post = preg_replace('/%5B[0-9]+%5D/simU', '%5B%5D', $post);
     }
 
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $command, '<b>MAIL: Command</b>');
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, htmlentities($post, ENT_COMPAT, 'UTF-8'),
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $command, '<b>MAIL: Command</b>');
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, htmlentities($post, ENT_COMPAT, 'UTF-8'),
       '<b>MAIL: Query</b>');
 
     // performs the HTTP(S) POST
@@ -123,7 +123,7 @@ class mailMethodRenaterPartage extends mailMethod
         $response .= trim($row)."\n";
       }
       $response = xml::xml2array($response, FALSE);
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $response, '<b>MAIL: Answer</b>');
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $response, '<b>MAIL: Answer</b>');
 
       if (!isset($response['Response']['status'])) {
         $this->error = _('Partage API answer malformated');
@@ -139,7 +139,7 @@ class mailMethodRenaterPartage extends mailMethod
 
       return $response;
     } else {
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $fp, '<b>MAIL: No Answer</b>');
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $fp, '<b>MAIL: No Answer</b>');
       if (!empty($fp)) {
         $this->error = sprintf(_('Unable to connect to %s: %s'), $infos['uri'], implode("\n", $fp));
       } else {
@@ -664,7 +664,7 @@ class mailMethodRenaterPartage extends mailMethod
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search ('(&(objectClass=fdRenaterPartageServer)(fdRenaterPartageServerMailDomain=*))',
+    $ldap->search('(&(objectClass=fdRenaterPartageServer)(fdRenaterPartageServerMailDomain=*))',
                   ['cn', 'fdRenaterPartageServerUri', 'fdRenaterPartageServerMailDomain', 'fdRenaterPartageServerUserAgent', 'fdRenaterPartageServerDeletionType']);
     while ($attrs = $ldap->fetch()) {
       unset($attrs['fdRenaterPartageServerMailDomain']['count']);

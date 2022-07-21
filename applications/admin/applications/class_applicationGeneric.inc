@@ -121,7 +121,7 @@ class application extends simplePlugin
 
     if (file_exists($filename)) {
       $fd = fopen($filename, 'rb');
-      $this->attributesAccess['fdApplicationImage']->setDefaultValue(fread ($fd, filesize($filename)));
+      $this->attributesAccess['fdApplicationImage']->setDefaultValue(fread($fd, filesize($filename)));
       fclose($fd);
       if (empty($this->fdApplicationImage)) {
         $this->attributesAccess['fdApplicationImage']->resetToDefault();

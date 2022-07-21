@@ -126,7 +126,7 @@ class faiStartup extends simplePlugin
       }
       return FALSE;
     } else {
-      return parent::foreignKeyCheck ($field, $fieldvalue, $source);
+      return parent::foreignKeyCheck($field, $fieldvalue, $source);
     }
   }
 

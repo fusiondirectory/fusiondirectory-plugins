@@ -86,7 +86,7 @@ class mailMethodDovecot extends mailMethod
 
     /* Mailbox reachable? */
     if ($this->imap_handle === FALSE) {
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed</b> :".imap_last_error (),
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed</b> :".imap_last_error(),
         "<b>IMAP:</b> ".$cfg['admin']."@".$cfg['connect']);
       if ($cfg['mkdir']) {
         if ($this->argonautCreateFolder()) {
@@ -98,14 +98,14 @@ class mailMethodDovecot extends mailMethod
       if ($this->imap_handle === FALSE) {
         $this->error = imap_last_error();
 
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed</b> :".imap_last_error (),
+        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed</b> :".imap_last_error(),
           "<b>IMAP:</b> ".$cfg['admin']."@".$cfg['connect']);
 
         $this->connected = FALSE;
         return FALSE;
       }
     }
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>successful</b>",
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>successful</b>",
         "<b>IMAP:</b> ".$cfg['admin']."@".$cfg['connect']);
     $this->connected = TRUE;
 
@@ -157,7 +157,7 @@ class mailMethodDovecot extends mailMethod
       }
     } else {
       $this->error = imap_last_error();
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, imap_last_error(),
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, imap_last_error(),
           "<b>IMAP: Failed to receive account quota</b>");
     }
   }
@@ -187,7 +187,7 @@ class mailMethodDovecot extends mailMethod
    */
   private function argonautCreateFolder ()
   {
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
       "<b>Attempting to create folder through Argonaut</b> on server :".$this->parent->gosaMailServer);
 
     $servers  = parent::getMailServers();

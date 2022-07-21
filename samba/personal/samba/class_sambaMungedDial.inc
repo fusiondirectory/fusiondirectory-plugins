@@ -148,7 +148,7 @@ class sambaMungedDial
       return FALSE;
     }
 
-    return preg_match ("/\\\\.+$/", $path);
+    return preg_match("/\\\\.+$/", $path);
   }
 
   /* Encode full MungedDial-String */
@@ -193,7 +193,7 @@ class sambaMungedDial
     $result = "";
 
     /* Encode paramName to UTF-16 */
-    if (function_exists ("recode")) {
+    if (function_exists("recode")) {
       $utfName = recode("ISO8859-15..UTF-16", $paramName);
     } else {
       $utfName = iconv("ISO8859-15", "UTF-16BE", $paramName);

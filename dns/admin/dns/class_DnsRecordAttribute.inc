@@ -60,7 +60,6 @@ class LocRecordLatLongAttribute extends CompositeAttribute
 
   function writeValues ($values)
   {
-    /* The format is: d1 [m1 [s1]] {"N"|"S"|"E"|"W"} */
     $str = $values['degrees'];
     if ($values['minutes'] != '') {
       $str .= ' '.$values['minutes'];
@@ -81,23 +80,18 @@ class DnsRecordAttribute extends CompositeAttribute
 
   public static $types = [
     'aRecord'     => 'A',
-    //~ 'a6Record'    => 'A6',
     'aAAARecord'  => 'AAAA',
     'aFSDBRecord' => 'AFSDB',
     'certRecord'  => 'CERT',
     'cNAMERecord' => 'CNAME',
     'dSRecord'    => 'DS',
-    //~ 'hInfoRecord' => 'HINFO',
     'KeyRecord'   => 'KEY',
     'kXRecord'    => 'KX',
     'LocRecord'   => 'LOC',
-    //~ 'mDRecord'    => 'MD',
-    //~ 'mInfoRecord' => 'MINFO',
     'mXRecord'    => 'MX',
     'nAPTRRecord' => 'NAPTR',
     'nSRecord'    => 'NS',
     'nSECRecord'  => 'NSEC',
-    //~ 'nXTRecord'   => 'NXT',
     'pTRRecord'   => 'PTR',
     'rRSIGRecord' => 'RRSIG',
     'SigRecord'   => 'SIG',

@@ -547,20 +547,20 @@ class posixAccount extends simplePlugin
           );
           return $errors;
         } else {
-          @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
+          @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
             sprintf('Primary group "%s" created, using gidNumber "%s".', $tabObject->dn, $this->gidNumber), '');
         }
       } else {
         $attrs = $ldap->fetch();
         $this->gidNumber = $attrs['gidNumber'][0];
-        @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
+        @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
           'Found and used: <i>'.$attrs['dn'].'</i>',
           sprintf('Primary group "%s" exists, gidNumber is "%s".', $this->getUid(), $this->gidNumber));
       }
     } else {
       /* Primary group was selected by user */
       $this->gidNumber = $this->primaryGroup;
-      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
+      @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
         sprintf('Primary group "%s" for user "%s" manually selected.',
         $this->gidNumber, $this->getUid()), '');
     }
@@ -839,7 +839,7 @@ class posixAccount extends simplePlugin
 
       /* Look for ID map entry */
       $ldap->cd($config->current['BASE']);
-      $ldap->search ("(&(objectClass=sambaUnixIdPool)($attrib=*))", ["$attrib"]);
+      $ldap->search("(&(objectClass=sambaUnixIdPool)($attrib=*))", ["$attrib"]);
 
       /* If it does not exist, create one with these defaults */
       if ($ldap->count() == 0) {
@@ -925,7 +925,7 @@ class posixAccount extends simplePlugin
     } else {
       $oc = 'posixAccount';
     }
-    $ldap->search ("(&(objectClass=$oc)($attrib=*))", ["$attrib"]);
+    $ldap->search("(&(objectClass=$oc)($attrib=*))", ["$attrib"]);
 
     /* Get list of ids */
     while ($attrs = $ldap->fetch()) {

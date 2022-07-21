@@ -166,7 +166,7 @@ class supportDaemon
 
   private function new_state ($state_value)
   {
-    @DEBUG (DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $this->s_error, date ('H.i.s').' Setting state('.$state_value.') to ');
+    @DEBUG(DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $this->s_error, date('H.i.s').' Setting state('.$state_value.') to ');
     session::global_set('argonaut_state', [
       'date'  => time(),
       'error' => $this->s_error,
@@ -211,7 +211,7 @@ class supportDaemon
    */
   public function append_call ($action, $targets, $data)
   {
-    @DEBUG (DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, ['action' => $action, 'targets' => $targets, 'data' => $data], date('H.i.s').' Appending call to');
+    @DEBUG(DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, ['action' => $action, 'targets' => $targets, 'data' => $data], date('H.i.s').' Appending call to');
     if ($this->s_host == '') {
       $this->set_error($this->host_error);
       return FALSE;
@@ -229,7 +229,7 @@ class supportDaemon
         $tmpTargets = $targets;
       }
       $status = $client->action($action, $tmpTargets, $data);
-      @DEBUG (DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $status, date('H.i.s').' Answer');
+      @DEBUG(DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $status, date('H.i.s').' Answer');
       $this->reset_error();
       $this->new_state(TRUE);
       if (is_array($status) && !is_array($targets) && isset($status[0])) {
@@ -256,7 +256,7 @@ class supportDaemon
    */
   private function set_error ($str)
   {
-    @DEBUG (DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $str, date('H.i.s').' Setting error to');
+    @DEBUG(DEBUG_SI, __LINE__, __FUNCTION__, __FILE__, $str, date('H.i.s').' Setting error to');
     $this->b_error = TRUE;
     $this->s_error = $str;
   }

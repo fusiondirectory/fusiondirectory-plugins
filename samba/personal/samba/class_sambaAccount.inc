@@ -421,7 +421,7 @@ class sambaAccount extends simplePlugin
 
     // Get samba domain and its sid/rid base
     if ($this->sambaSID != "") {
-      $this->SID = preg_replace ("/-[^-]+$/", "", $this->sambaSID);
+      $this->SID = preg_replace("/-[^-]+$/", "", $this->sambaSID);
       $ldap = $config->get_ldap_link();
       $ldap->cd($config->current['BASE']);
       $ldap->search("(&(objectClass=sambaDomain)(sambaSID=$this->SID))", ["sambaAlgorithmicRidBase","sambaDomainName"]);

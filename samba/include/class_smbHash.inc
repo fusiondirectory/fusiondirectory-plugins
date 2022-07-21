@@ -361,9 +361,9 @@ class smbHash {
   */
   public function nthash ($password = "")
   {
-    if (function_exists ('mhash') && defined ('MHASH_MD4')) {
+    if (function_exists('mhash') && defined('MHASH_MD4')) {
       return strtoupper(bin2hex(mhash(MHASH_MD4, iconv('UTF-8', 'UTF-16LE', $password))));
-    } elseif (function_exists ('hash')) {
+    } elseif (function_exists('hash')) {
       return strtoupper(hash('md4', iconv('UTF-8', 'UTF-16LE', $password)));
     } else {
       die(_('Your PHP install does not have the mhash() nor the hash function. Cannot do MD4 hashes.'));

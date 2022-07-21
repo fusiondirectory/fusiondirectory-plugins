@@ -52,7 +52,7 @@ class mailAliasRedirection extends simplePlugin
         'name'  => _('Mail redirection'),
         'attrs' => [
           new BaseSelectorAttribute(get_ou('aliasRDN')),
-          new HostNameAttribute (_('Name'), _('Name to identify this redirection'), 'cn', TRUE),
+          new HostNameAttribute(_('Name'), _('Name to identify this redirection'), 'cn', TRUE),
           new TextAreaAttribute(
             _('Description'), _('Description of this redirection'),
             'description', FALSE

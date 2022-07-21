@@ -131,9 +131,9 @@ class mailMethod
     /* Get config value for cyrusUseSlashes */
     if ($config->get_cfg_value('cyrusUseSlashes') == 'TRUE') {
       $this->cyrusUseSlashes = TRUE;
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, 'Enabled', '<b>MAIL:</b> cyrusUseSlashes');
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, 'Enabled', '<b>MAIL:</b> cyrusUseSlashes');
     } else {
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, 'Disabled', '<b>MAIL:</b> cyrusUseSlashes');
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, 'Disabled', '<b>MAIL:</b> cyrusUseSlashes');
     }
 
     /* Check if the mail account identification attribute
@@ -143,7 +143,7 @@ class mailMethod
       if (in_array($new_uattrib, ['mail','uid'])) {
         $this->uattrib = $new_uattrib;
       } else {
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$new_uattrib."</b>",
+        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$new_uattrib."</b>",
           "<b>MAIL:</b> Unsupported 'mailAttribute' in FusionDirectory configuration specified");
         msg_dialog::display(_("Configuration error"),
             sprintf(_("The configured mail attribute '%s' is unsupported!"), $new_uattrib), ERROR_DIALOG);
@@ -158,19 +158,19 @@ class mailMethod
     /* Check if we have an individual user/folder creation syntax */
     $tmp = $config->get_cfg_value('mailUserCreation');
     if (!empty($tmp)) {
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<i>'.$tmp.'</i>',
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<i>'.$tmp.'</i>',
           '<b>MAIL:</b> User creation set to');
       $this->user_id  = $tmp;
     }
     $tmp = $config->get_cfg_value('mailFolderCreation');
     if (!empty($tmp)) {
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<i>'.$tmp.'</i>',
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<i>'.$tmp.'</i>',
           '<b>MAIL:</b> Shared folder creation set to');
       $this->share_id = $tmp;
     }
     $tmp = $config->get_cfg_value('mailSharedPrefix');
     if (!empty($tmp)) {
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<i>'.$tmp.'</i>',
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<i>'.$tmp.'</i>',
           '<b>MAIL:</b> Shared folder prefix set to');
       $this->mailSharedPrefix = $tmp;
     }
@@ -247,8 +247,8 @@ class mailMethod
   public function connect ()
   {
     $this->reset_error();
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, get_class ($this), '<b>MAIL: Connect method</b>');
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->parent->gosaMailServer, '<b>MAIL: Current server</b>');
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, get_class($this), '<b>MAIL: Connect method</b>');
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->parent->gosaMailServer, '<b>MAIL: Current server</b>');
 
     $this->connected = TRUE;
     return TRUE;
@@ -269,7 +269,7 @@ class mailMethod
   {
     $this->reset_error();
     if ($this->is_connected()) {
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, get_class ($this), '<b>MAIL: Disconnect method</b>');
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, get_class($this), '<b>MAIL: Disconnect method</b>');
       $this->connected = FALSE;
     }
   }
@@ -387,7 +387,7 @@ class mailMethod
     if (preg_match("/%/", $acc_id)) {
       $notr = preg_replace("/^[^%]*/", "", $acc_id);
       if (!empty($notr)) {
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Warning</b>",
+        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Warning</b>",
             sprintf("<b>MAIL: WARNING unknown pattern in account creation string '%s' near '%s'</b>", $acc_id, $notr));
 
         /* Remove incomprehensible patterns */
@@ -398,7 +398,7 @@ class mailMethod
 
     if ($this->account_id != $acc_id) {
       $this->account_id = $acc_id;
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $acc_id, "<b>MAIL:</b> AccountID generated");
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $acc_id, "<b>MAIL:</b> AccountID generated");
     }
   }
 
@@ -454,7 +454,7 @@ class mailMethod
     if (preg_match("/%/", $acc_id)) {
       $notr = preg_replace("/^[^%]*/", '', $acc_id);
       if (!empty($notr)) {
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<b>Warning</b>',
+        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '<b>Warning</b>',
             sprintf("<b>MAIL: WARNING unknown pattern in account creation string '%s' near '%s'</b>", $acc_id, $notr));
 
         /* Remove incomprehensible patterns */
@@ -493,7 +493,7 @@ class mailMethod
   public function deleteMailbox ()
   {
     $this->reset_error();
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
         "<b>MAIL: Remove account</b> from server :".$this->parent->gosaMailServer);
 
     return TRUE;
@@ -660,11 +660,11 @@ class mailMethod
     $methods = mailMethod::get_methods();
     foreach ($methods as $class) {
       if ($class::serverMatch($server)) {
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $class, 'Mail method for server "'.$server.'"');
+        @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $class, 'Mail method for server "'.$server.'"');
         return $class;
       }
     }
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '', 'No method found for server "'.$server.'"');
+    @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, '', 'No method found for server "'.$server.'"');
     return 'mailMethod';
   }
 

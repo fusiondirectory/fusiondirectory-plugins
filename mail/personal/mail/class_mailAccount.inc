@@ -237,7 +237,7 @@ class mailAccount extends simplePlugin
       mailMethod::resetMailServersCache();
       $this->attributesAccess['gosaMailServer']->setChoices(array_keys(mailMethod::getMailServers()));
     }
-    parent::foreignKeyUpdate ($field, $oldvalue, $newvalue, $source);
+    parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
   }
 
   public function mailServerChanged ()

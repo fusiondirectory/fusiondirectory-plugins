@@ -51,7 +51,7 @@ class mailAliasDistribution extends simplePlugin
         'name'  => _('Mail distribution'),
         'attrs' => [
           new BaseSelectorAttribute(get_ou('aliasRDN')),
-          new HostNameAttribute (_('Name'), _('Name to identify this alias'), 'cn', TRUE),
+          new HostNameAttribute(_('Name'), _('Name to identify this alias'), 'cn', TRUE),
           new TextAreaAttribute(
             _('Description'), _('Description of this alias'),
             'description', FALSE

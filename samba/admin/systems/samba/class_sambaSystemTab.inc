@@ -45,7 +45,7 @@ class sambaSystemTab extends simplePlugin
         'attrs' => [
           new HiddenAttribute('uid'),
           new HiddenAttribute('sambaSID'),
-          new HiddenAttribute ('homeDirectory', TRUE, '/dev/null'),
+          new HiddenAttribute('homeDirectory', TRUE, '/dev/null'),
           new HiddenAttribute('uidNumber', TRUE, 1000),
           new HiddenAttribute('gidNumber', TRUE, 515),
           new HiddenAttribute('sambaAcctFlags', TRUE, '[W          ]'),
@@ -69,7 +69,7 @@ class sambaSystemTab extends simplePlugin
 
     // Get samba domain and its sid/rid base
     if ($this->sambaSID != '') {
-      $this->SID = preg_replace ('/-[^-]+$/', '', $this->sambaSID);
+      $this->SID = preg_replace('/-[^-]+$/', '', $this->sambaSID);
       $ldap = $config->get_ldap_link();
       $ldap->cd($config->current['BASE']);
       $ldap->search('(&(objectClass=sambaDomain)(sambaSID='.$this->SID.'))', ['sambaAlgorithmicRidBase','sambaDomainName']);

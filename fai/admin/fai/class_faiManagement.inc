@@ -107,7 +107,6 @@ class faiManagement extends simpleManagement
 
   protected $departmentBrowser      = FALSE;
   protected $departmentRootVisible  = FALSE;
-  //~ protected $baseMode               = FALSE;
 
   protected $headpageClass = 'faiListing';
 

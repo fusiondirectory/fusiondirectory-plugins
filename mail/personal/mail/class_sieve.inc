@@ -442,7 +442,7 @@ class sieve
           "<b>SIEVE: Script '".$scriptname."' successfully send!</b>");
       return(TRUE);
     }else{
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
           "<b>SIEVE: Script couldn't be send!</b>");
       return(FALSE);
     }
@@ -471,7 +471,7 @@ class sieve
           "<b>SIEVE: Set active script '".$scriptname."' was successful!</b>");
       return(TRUE);
     }else{
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
           "<b>SIEVE: Set active script '".$scriptname."' failed!</b>");
       return(FALSE);
     }
@@ -490,7 +490,7 @@ class sieve
           "<b>SIEVE: Get script '".$scriptname."' was successful!</b>");
       return(TRUE);
     }else{
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
           "<b>SIEVE: Get script '".$scriptname."' failed!</b>");
       return(FALSE);
     }
@@ -509,7 +509,7 @@ class sieve
           "<b>SIEVE: Delete script '".$scriptname."' was successful!</b>");
       return(TRUE);
     }else{
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
           "<b>SIEVE: Delete  script '".$scriptname."' failed!</b>");
       return(FALSE);
     }
@@ -521,7 +521,7 @@ class sieve
     fputs($this->fp, "LISTSCRIPTS\r\n");
     sieve::get_response();    //should always return true, even if there are no scripts...
     if(isset($this->found_script) and $this->found_script){
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, implode($this->response,", "),
+      @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, implode($this->response,", "),
           "<b>SIEVE: List scripts was successful!</b>");
       return true;
     }else{
@@ -557,7 +557,7 @@ class sieve
 
       /* Check if PHP supports TLS encryption for sockets
        */
-      if(function_exists ("stream_socket_enable_crypto")){
+      if(function_exists("stream_socket_enable_crypto")){
 
         /* Initiate TLS and get response
          */
@@ -573,8 +573,8 @@ class sieve
               "<b>SIEVE: TLS couldn't be initiated. </b>");
           return (false);
         }
-        if (! preg_match ("/\\s*OK\\s/i", $linha)) {
-          @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"server returned '".trim ($linha)."' instead of 'OK'",
+        if (! preg_match("/\\s*OK\\s/i", $linha)) {
+          @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"server returned '".trim ($linha)."' instead of 'OK'",
               "<b>SIEVE: TLS couldn't be initiated. </b>");
           $this->error_raw = "expected an 'OK', but server replied: '" . trim($linha) . "'";
           return (false);
@@ -607,7 +607,7 @@ class sieve
 
         if(sieve::status($this->line) == F_NO){
           $this->error_raw = $this->line;
-          @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
+          @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
               "<b>SIEVE: Authentication for '".$this->user."-".$this->auth_in_use."' failed.</b>");
 
           return false;
