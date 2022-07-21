@@ -20,28 +20,28 @@
 
 class posixConfig extends simplePlugin
 {
-  var $objectclasses = array();
+  var $objectclasses = [];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('POSIX configuration'),
       'plDescription'   => _('FusionDirectory POSIX plugin configuration'),
       'plSelfModify'    => FALSE,
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Posix'),
-        'class' => array('critical'),
-        'attrs' => array(
+        'class' => ['critical'],
+        'attrs' => [
           new StringAttribute (
             _('POSIX groups RDN'), _('The branch where POSIX groups are stored.'),
             'fdGroupRDN', TRUE,
@@ -72,8 +72,8 @@ class posixConfig extends simplePlugin
           new SelectAttribute (
             _('Id allocation method'), _('Method to allocate user/group ids'),
             'fdIdAllocationMethod', TRUE,
-            array('traditional', 'pool'), 'traditional',
-            array(_('Traditional'), _('Samba unix id pool'))
+            ['traditional', 'pool'], 'traditional',
+            [_('Traditional'), _('Samba unix id pool')]
           ),
           new IntAttribute (
             _('Pool user id min'), _('Minimum value for user id when using pool method'),
@@ -95,26 +95,26 @@ class posixConfig extends simplePlugin
             'fdGidNumberPoolMax', FALSE,
             0, FALSE, 40000
           ),
-        )
-      ),
-      'shells' => array(
+        ]
+      ],
+      'shells' => [
         'name'  => _('Shells'),
-        'attrs' => array(
+        'attrs' => [
           new SetAttribute(
             new StringAttribute (
               _('Available shells'), _('Available POSIX shells for FD users.'),
               'fdShells', FALSE
             ),
-            array('/bin/ash','/bin/bash','/bin/csh','/bin/sh','/bin/ksh',
-                  '/bin/tcsh','/bin/dash','/bin/zsh','/sbin/nologin', '/bin/false', '/usr/bin/git-shell')
+            ['/bin/ash','/bin/bash','/bin/csh','/bin/sh','/bin/ksh',
+                  '/bin/tcsh','/bin/dash','/bin/zsh','/sbin/nologin', '/bin/false', '/usr/bin/git-shell']
           ),
           new SelectAttribute (
             _('Default shell'), _('Shell used by default when activating Unix tab.'),
             'fdDefaultShell', TRUE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
@@ -124,18 +124,18 @@ class posixConfig extends simplePlugin
     $this->attributesAccess['fdDefaultShell']->setChoices($this->fdShells);
 
     $this->attributesAccess['fdIdAllocationMethod']->setManagedAttributes(
-      array(
-        'erase' => array (
-          'traditional' => array (
+      [
+        'erase' => [
+          'traditional' => [
             'fdUidNumberPoolMin','fdUidNumberPoolMax',
             'fdGidNumberPoolMin','fdGidNumberPoolMax',
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
   }
 
-  function save_object()
+  function save_object ()
   {
     parent::save_object();
     $this->attributesAccess['fdDefaultShell']->setChoices($this->fdShells);

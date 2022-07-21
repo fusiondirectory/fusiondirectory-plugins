@@ -36,39 +36,39 @@ class CnNetgroupsAttribute extends DialogAttribute
   {
     $cns    = $this->getValue();
     $cns[]  = $this->plugin->cn;
-    return array('cn' => $cns);
+    return ['cn' => $cns];
   }
 }
 
 class netgroup extends simplePlugin
 {
-  var $objectclasses  = array("top", "nisNetgroup");
+  var $objectclasses  = ["top", "nisNetgroup"];
   var $mainTab        = TRUE;
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Netgroup'),
       'plDescription' => _('NIS Netgroup settings'),
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('netgroup' => array(
+      'plObjectType'  => ['netgroup' => [
         'name'    => _('NIS Netgroup'),
         'filter'  => 'objectClass=nisNetgroup',
         'ou'      => get_ou('netgroupRDN'),
         'icon'    => 'geticon.php?context=applications&icon=netgroups&size=16'
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Information'),
-        'attrs' => array(
+        'attrs' => [
           new HostNameAttribute(
             _('Name'), _('Name of this NIS netgroup'), 'cn'
           ),
@@ -76,36 +76,36 @@ class netgroup extends simplePlugin
             _('Description'), _('Description of this NIS netgroup'), 'description'
           ),
           new BaseSelectorAttribute(get_ou('netgroupRDN'))
-        )
-      ),
-      'users' => array(
+        ]
+      ],
+      'users' => [
         'name'  => _('User members'),
         'icon'  => 'geticon.php?context=types&icon=user&size=16',
-        'attrs' => array(
+        'attrs' => [
           new SetAttribute(
             new StringAttribute('nisNetgroupTriple', '', 'nisNetgroupTriple')
           ),
           new UsersAttribute(
             '', _('NIS netgroup members'), 'memberUsers',
-            FALSE, array(), 'dn', 'uid'
+            FALSE, [], 'dn', 'uid'
           ),
-        )
-      ),
-      'systems' => array(
+        ]
+      ],
+      'systems' => [
         'name'  => _('System members'),
         'icon'  => 'geticon.php?context=devices&icon=server&size=16',
-        'attrs' => array(
+        'attrs' => [
           new SystemsAttribute('', _('NIS netgroup members'), 'memberSystems', FALSE),
-        )
-      ),
-      'netgroups' => array(
+        ]
+      ],
+      'netgroups' => [
         'name'  => _('Netgroup members'),
         'icon'  => 'geticon.php?context=applications&icon=netgroups&size=16',
-        'attrs' => array(
+        'attrs' => [
           new CnNetgroupsAttribute('', _('NIS netgroup members'), 'memberNisNetgroup'),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -119,7 +119,7 @@ class netgroup extends simplePlugin
     $this->attributesAccess['memberSystems']->setInLdap(FALSE);
     $triples      = $this->attributesAccess['nisNetgroupTriple']->getValue();
     $usersfilter  = '(|';
-    $cns          = array();
+    $cns          = [];
     foreach ($triples as $triple) {
       if (preg_match('/^\(([^,]*),([^,]*),[^)]*\)$/', $triple, $matches)) {
         if ($matches[1] != "") {
@@ -133,8 +133,8 @@ class netgroup extends simplePlugin
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=posixAccount)'.$usersfilter.')', array('uid'));
-    $dns = array();
+    $ldap->search('(&(objectClass=posixAccount)'.$usersfilter.')', ['uid']);
+    $dns = [];
     while ($attrs = $ldap->fetch()) {
       $dns[] = $attrs['dn'];
     }
@@ -146,7 +146,7 @@ class netgroup extends simplePlugin
   {
     $memberUsers    = $this->attributesAccess['memberUsers']->getDisplayValues();
     $memberSystems  = $this->memberSystems;
-    $triples = array();
+    $triples = [];
 
     foreach ($memberUsers as $uid) {
       $triples[] = '(,'.$uid.',)';

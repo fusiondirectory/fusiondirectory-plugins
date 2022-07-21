@@ -22,39 +22,39 @@ class pgpServerInfo extends simplePlugin
 {
   var $mainTab = TRUE;
   /* This plugin only writes its objectClass */
-  var $objectclasses = array('pgpServerInfo');
+  var $objectclasses = ['pgpServerInfo'];
 
   /* Return plugin information for acl handling */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('GPG server info'),
       'plDescription' => _('GPG server info'),
       'plSection'     => 'conf',
       'plPriority'    => 5,
       'plIcon'        => 'geticon.php?context=applications&icon=gpg&size=48',
-      'plObjectType'    => array(
-        'pgpServerInfo' => array(
+      'plObjectType'    => [
+        'pgpServerInfo' => [
           'name'        => _('GPG server info'),
           'filter'      => 'objectClass=pgpServerInfo',
           'icon'        => 'geticon.php?context=applications&icon=gpg&size=16',
           'aclCategory' => 'configuration',
-        )
-      ),
+        ]
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo ()
   {
     global $config;
-    return array(
+    return [
       // Attributes are grouped by section
-      'main' => array(
+      'main' => [
         'name'  => _('GPG server info'),
-        'attrs' => array(
+        'attrs' => [
           new HiddenAttribute ('cn', TRUE, 'pgpServerInfo'),
           new StringAttribute (
             _('Software'), _('Which software this GPG key server is running'),
@@ -69,19 +69,19 @@ class pgpServerInfo extends simplePlugin
           new CompositeAttribute (
             _('Branch in which keys are stored'),
             'pgpBaseKeySpaceDN',
-            array(
+            [
               new StringAttribute(
                 _('Keys RDN'), _('Branch under base in which keys are stored'),
                 'BaseKeyBranchDN', TRUE,
                 'ou=PGP Keys,'
               )
-            ),
+            ],
             '/^(.*)'.$config->current['BASE'].'$/',
             '%s'.$config->current['BASE']
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   protected function ldap_save ()

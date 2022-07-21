@@ -32,7 +32,7 @@ class simpleMailMethodService extends simpleService
     return parent::prepare_save();
   }
 
-  protected function post_save()
+  protected function post_save ()
   {
     parent::post_save();
     mailMethod::resetMailServersCache();
@@ -48,18 +48,18 @@ class simpleMailMethodService extends simpleService
 class serviceIMAP extends simpleMailMethodService
 {
   /* This plugin only writes its objectClass */
-  var $objectclasses = array('fdImapServer');
+  var $objectclasses = ['fdImapServer'];
 
   /* Return plugin information for acl handling */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('IMAP/POP3 generic service'),
       'plDescription' => _('IMAP/POP3').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=imap&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -67,10 +67,10 @@ class serviceIMAP extends simpleMailMethodService
    */
   static function getAttributesInfo ()
   {
-    return array();
+    return [];
   }
 
-  function execute()
+  function execute ()
   {
     return '<b>This server runs an IMAP or POP3 server</b>'.parent::execute();
   }

@@ -22,15 +22,15 @@ class SubmittingOPSIProductAttribute extends SelectAttribute
 {
   function __construct ($label, $description, $ldapName, $required, $func, $acl = '')
   {
-    parent::__construct($label, $description, $ldapName, $required, array(), '', NULL, $acl);
+    parent::__construct($label, $description, $ldapName, $required, [], '', NULL, $acl);
     $this->setSubmitForm($func);
   }
 
-  function check()
+  function check ()
   {
   }
 
-  function displayValue($value)
+  function displayValue ($value)
   {
     return $value;
   }
@@ -40,14 +40,14 @@ class ProductPropertyAttribute extends CompositeAttribute
 {
   function __construct ($label, $description, $ldapName, $acl = "")
   {
-    parent::__construct ($description, $ldapName, array(new StringAttribute('', '', 'fake')), '', '', $acl, $label);
+    parent::__construct ($description, $ldapName, [new StringAttribute('', '', 'fake')], '', '', $acl, $label);
   }
 
-  function check()
+  function check ()
   {
   }
 
-  function displayValue($value)
+  function displayValue ($value)
   {
     $array = json_decode($value);
     if (is_array($array) && (count($array) == 1)) {
@@ -56,12 +56,12 @@ class ProductPropertyAttribute extends CompositeAttribute
     return $value;
   }
 
-  function readValues($value)
+  function readValues ($value)
   {
     trigger_error('Should never be called');
   }
 
-  function writeValues($values)
+  function writeValues ($values)
   {
     trigger_error('Should never be called');
   }
@@ -70,7 +70,7 @@ class ProductPropertyAttribute extends CompositeAttribute
   {
     $values = json_decode($value);
     if ($this->attributes[0] instanceof SetAttribute) {
-      return array($values);
+      return [$values];
     } else {
       return $values;
     }
@@ -83,41 +83,41 @@ class ProductPropertyAttribute extends CompositeAttribute
     if ($this->attributes[0] instanceof SetAttribute) {
       return json_encode($values);
     } else {
-      return json_encode(array($values));
+      return json_encode([$values]);
     }
   }
 }
 
 class opsiProductProperties extends simplePlugin
 {
-  var $objectclasses = array('opsiProductProperties');
+  var $objectclasses = ['opsiProductProperties'];
 
-  var $properties = array();
+  var $properties = [];
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Product properties'),
       'plDescription' => _('Product properties'),
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('opsiProfile'),
+      'plObjectType'  => ['opsiProfile'],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Name'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
               _('Properties of the products of this profile'),
               'fdOpsiProductProperty',
-              array(
+              [
                 new SubmittingOPSIProductAttribute(
                   '', '',
                   'productId', TRUE,
@@ -131,18 +131,18 @@ class opsiProductProperties extends simplePlugin
                 new ProductPropertyAttribute(
                   '', '', 'propertyValue'
                 ),
-              ),
+              ],
               '|', '', ''
             ),
             // no order
             FALSE,
-            array(),
+            [],
             // edit button
             TRUE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -151,20 +151,20 @@ class opsiProductProperties extends simplePlugin
     $this->attributesAccess['fdOpsiProductProperty']->setHeight('auto');
   }
 
-  public function execute()
+  public function execute ()
   {
     $this->updateProductList();
     return parent::execute();
   }
 
-  private function updateProductList()
+  private function updateProductList ()
   {
     $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[0]->setChoices(
       $this->parent->getBaseObject()->getProductList()
     );
   }
 
-  public function product_changed()
+  public function product_changed ()
   {
     $productid  = $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[0]->getValue();
     if (!isset($this->properties[$productid])) {
@@ -179,10 +179,10 @@ class opsiProductProperties extends simplePlugin
       $properties = $s_daemon->append_call(
         'OPSI.get_product_properties',
         $this->parent->getBaseObject()->macAddress,
-        array('args' => array(
-          array(),
-          array('productId' => $productid)
-        ))
+        ['args' => [
+          [],
+          ['productId' => $productid]
+        ]]
       );
       if ($s_daemon->is_error()) {
         msg_dialog::display(
@@ -191,13 +191,13 @@ class opsiProductProperties extends simplePlugin
         );
         return;
       }
-      $this->properties[$productid] = array();
+      $this->properties[$productid] = [];
       foreach ($properties as $property) {
         $this->properties[$productid][$property['propertyId']] = $property;
       }
     }
-    $choices_values = array();
-    $choices_labels = array();
+    $choices_values = [];
+    $choices_labels = [];
     foreach ($this->properties[$productid] as $property) {
       $choices_values[] = $property['propertyId'];
       $choices_labels[] = $property['propertyId'].' ('.join(',',
@@ -218,7 +218,7 @@ class opsiProductProperties extends simplePlugin
     $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[1]->setChoices($choices_values, $choices_labels);
   }
 
-  public function property_changed()
+  public function property_changed ()
   {
     $productid  = $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[0]->getValue();
     $propertyid = $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[1]->getValue();
@@ -256,7 +256,7 @@ class opsiProductProperties extends simplePlugin
     if ($property['multiValue']) {
       $attr = new SetAttribute($attr, $property['defaultValues']);
     }
-    $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[2]->setAttributes(array($attr));
+    $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[2]->setAttributes([$attr]);
   }
 }
 ?>

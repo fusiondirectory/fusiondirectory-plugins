@@ -22,7 +22,7 @@
 class sambaLogonHours
 {
   var $sambaLogonHours = "";
-  var $Matrix          = array();
+  var $Matrix          = [];
   var $timezone        = 0;
   var $acl;
 
@@ -64,7 +64,7 @@ class sambaLogonHours
     }
 
     /* Create matrix */
-    $this->Matrix = array();
+    $this->Matrix = [];
     for ($day = 0; $day < 7; $day++) {
       for ($hour  = 0; $hour < 24; $hour++) {
         $bitpos  = ($day * 24 + $hour) % 168;
@@ -73,14 +73,14 @@ class sambaLogonHours
     }
   }
 
-  function execute()
+  function execute ()
   {
     $week_days = msgPool::weekdays();
 
     $smarty = get_smarty();
     $smarty->assign("acl", preg_match("/w/i", $this->acl));
 
-    $hours = array();
+    $hours = [];
     for ($i = 0; $i < 24; $i++) {
       $hours[$i] = $i;
     }
@@ -91,7 +91,7 @@ class sambaLogonHours
     return $smarty->fetch(get_template_path("sambaLogonHours.tpl", TRUE, dirname(__FILE__)));
   }
 
-  function save_object()
+  function save_object ()
   {
     /* Check if dialog was opened and if there were any changes */
     if (isset($_POST['sambaLogonHoursPosted'])) {
@@ -107,7 +107,7 @@ class sambaLogonHours
     }
   }
 
-  function save()
+  function save ()
   {
     /* Convert Matrix to Hex */
     $slh = "";

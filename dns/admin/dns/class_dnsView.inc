@@ -20,30 +20,30 @@
 
 class dnsView extends simplePlugin
 {
-  var $objectclasses = array('fdDNSView');
+  var $objectclasses = ['fdDNSView'];
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('DNS view'),
       'plDescription' => _('DNS view'),
-      'plObjectType'  => array('dnsView' => array(
+      'plObjectType'  => ['dnsView' => [
         'name'        => _('DNS view'),
         'filter'      => '(objectClass=fdDNSView)',
         'ou'          => get_ou('dnsRDN'),
         'icon'        => 'geticon.php?context=applications&icon=dns&size=16'
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('View'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('dnsRDN')),
           new HostNameAttribute (
             _('View name'), _('Name of this view'),
@@ -67,9 +67,9 @@ class dnsView extends simplePlugin
               'fdDNSZoneDn', FALSE
             )
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)

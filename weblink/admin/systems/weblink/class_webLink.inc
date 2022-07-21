@@ -20,44 +20,44 @@
 
 class webLink extends simplePlugin
 {
-  var $objectclasses  = array('webLink');
+  var $objectclasses  = ['webLink'];
   var $displayHeader  = TRUE;
 
-  var $inheritance = array('gosaGroupOfNames' => 'member');
+  var $inheritance = ['gosaGroupOfNames' => 'member'];
 
   static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Web link'),
       'plDescription'   => _('Edit web link'),
       'plIcon'          => 'geticon.php?context=applications&icon=weblink&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=weblink&size=16',
       'plSelfModify'    => FALSE,
-      'plObjectType'    => array('workstation','server','ipmi','component','printer'),
+      'plObjectType'    => ['workstation','server','ipmi','component','printer'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'links' => array(
+    return [
+      'links' => [
         'name'  => _('Links'),
-        'attrs' => array(
+        'attrs' => [
           new DisplayAttribute (
             _('Links'), _('Web links to this computer'),
             'fdWebLink', FALSE
           ),
-        )
-      ),
-      'settings' => array(
+        ]
+      ],
+      'settings' => [
         'name'  => _('Settings'),
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute (
             _('Protocol'), _('Protocol to use to access this computer Web page'),
             'fdWebLinkProtocol', TRUE,
-            array('https', 'http')
+            ['https', 'http']
           ),
           new SetAttribute (
             new URLAttribute (
@@ -65,9 +65,9 @@ class webLink extends simplePlugin
               'fdWebLinkURL', FALSE
             )
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -77,7 +77,7 @@ class webLink extends simplePlugin
     $this->attributesAccess['fdWebLink']->setAllowHTML(TRUE);
   }
 
-  function renderAttributes($readOnly = FALSE)
+  function renderAttributes ($readOnly = FALSE)
   {
     $autoLinks = $this->computeLinks();
     $html = '';
@@ -103,7 +103,7 @@ class webLink extends simplePlugin
     return parent::renderAttributes($readOnly);
   }
 
-  function computeLinks()
+  function computeLinks ()
   {
     global $config;
     if ($this->member_of_group) {
@@ -114,7 +114,7 @@ class webLink extends simplePlugin
     $basetab  = $this->parent->getBaseObject();
     $hosts    = $basetab->ipHostNumber;
     if (!is_array($hosts)) {
-      $hosts = array($hosts);
+      $hosts = [$hosts];
     }
     if (isset($this->parent->by_object['dnsHost']) && ($this->parent->by_object['dnsHost']->is_account)) {
       $zones  = $this->parent->by_object['dnsHost']->fdDNSZoneDn;

@@ -22,35 +22,35 @@ class mailAliasRedirection extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array('top', 'mailAliasRedirection');
+  var $objectclasses = ['top', 'mailAliasRedirection'];
 
   /* Return plugin information for acl handling  */
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Temporary mail redirection'),
       'plDescription' => _('Temporary mail redirection'),
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('mailAliasRedirection' => array(
+      'plObjectType'  => ['mailAliasRedirection' => [
         'name'        => _('Temporary mail redirection'),
         'filter'      => 'objectClass=mailAliasRedirection',
         'aclCategory' => 'alias',
         'icon'        => 'geticon.php?context=applications&icon=alias-redirection&size=16',
         'ou'          => get_ou('aliasRDN'),
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo ()
   {
-    return array(
+    return [
       // Attributes are grouped by section
-      'main' => array(
+      'main' => [
         'name'  => _('Mail redirection'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute (get_ou('aliasRDN')),
           new HostNameAttribute (_('Name'), _('Name to identify this redirection'), 'cn', TRUE),
           new TextAreaAttribute (
@@ -76,9 +76,9 @@ class mailAliasRedirection extends simplePlugin
             'U',
             ''
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 

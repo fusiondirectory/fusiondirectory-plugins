@@ -21,27 +21,27 @@
 class dsaManagement extends simpleManagement
 {
   // Tab definition
-  protected $objectTypes  = array('simpleSecurityObject');
+  protected $objectTypes  = ['simpleSecurityObject'];
 
   protected $departmentBrowser      = TRUE;
   protected $departmentRootVisible  = TRUE;
   protected $baseMode               = TRUE;
 
   /* Return plugin information for acl handling */
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('DSA'),
       'plDescription' => _('DSA management'),
       'plIcon'        => 'geticon.php?context=applications&icon=dsa&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 55,
-      'plCategory'    => array('dsa' => array('description'  => _('DSA'),
-                                              'objectClass'  => array('simpleSecurityObject'))),
-      'plManages'     => array('simpleSecurityObject'),
+      'plCategory'    => ['dsa' => ['description'  => _('DSA'),
+                                              'objectClass'  => ['simpleSecurityObject']]],
+      'plManages'     => ['simpleSecurityObject'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 }
 ?>

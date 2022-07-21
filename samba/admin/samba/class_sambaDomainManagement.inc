@@ -21,25 +21,25 @@
 class sambaDomainManagement extends simpleManagement
 {
   // Tab definition
-  protected $objectTypes  = array('sambaDomain');
+  protected $objectTypes  = ['sambaDomain'];
 
   protected $departmentBrowser      = FALSE;
   protected $departmentRootVisible  = FALSE;
   protected $baseMode               = FALSE;
   protected $skipCpHandler          = TRUE;
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Samba domains'),
       'plDescription' => _('Samba domain management'),
       'plIcon'        => 'geticon.php?context=applications&icon=samba&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 40,
-      'plManages'     => array('sambaDomain'),
+      'plManages'     => ['sambaDomain'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 
   function configureHeadpage ()

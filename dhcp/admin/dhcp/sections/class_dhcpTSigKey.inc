@@ -20,24 +20,24 @@
 
 class dhcpTSigKey extends dhcpPlugin
 {
-  public $objectclasses = array('dhcpTSigKey');
+  public $objectclasses = ['dhcpTSigKey'];
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('DHCP DNS update key'),
       'plDescription'   => _('DHCP DNS update key'),
-      'plCategory'      => array('dhcpConfiguration'),
+      'plCategory'      => ['dhcpConfiguration'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('DHCP'),
-        'attrs' => array(
+        'attrs' => [
           new HostNameAttribute (
             _('Name'), _('Name of this DHCP configuration'),
             'cn', TRUE
@@ -45,7 +45,7 @@ class dhcpTSigKey extends dhcpPlugin
           new SelectAttribute (
             _('Algorithm'), _('Algorithm to generate TSIG Key'),
             'dhcpKeyAlgorithm', TRUE,
-            array('HMAC-MD5','RSAMD5','RSASHA1','DSA','DH')
+            ['HMAC-MD5','RSAMD5','RSASHA1','DSA','DH']
           ),
           new StringAttribute (
             _('Secret'), _('Secret to generate TSIG Key'),
@@ -55,8 +55,8 @@ class dhcpTSigKey extends dhcpPlugin
             _('Comments'), _('Comments about this DHCP object'),
             'dhcpComments', FALSE
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }

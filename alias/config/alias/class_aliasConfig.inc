@@ -20,35 +20,35 @@
 
 class aliasConfig extends simplePlugin
 {
-  var $objectclasses  = array("fdAliasPluginConf");
+  var $objectclasses  = ["fdAliasPluginConf"];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       "plShortName"     => _("Alias configuration"),
       "plDescription"   => _("FusionDirectory alias plugin configuration"),
       "plSelfModify"    => FALSE,
-      "plCategory"      => array("configuration"),
-      "plObjectType"    => array("smallConfig"),
+      "plCategory"      => ["configuration"],
+      "plObjectType"    => ["smallConfig"],
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Alias'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute (
             _('Alias RDN'), _('Branch in which aliases will be stored'),
             'fdAliasRDN', TRUE,
             'ou=alias'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

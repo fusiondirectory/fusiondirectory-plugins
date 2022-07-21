@@ -25,10 +25,10 @@ class socialHandlerInvalidValueException extends FusionDirectoryException
 
 class socialHandler
 {
-  static function listHandlers()
+  static function listHandlers ()
   {
     global $class_mapping;
-    $available = array();
+    $available = [];
     foreach ($class_mapping as $class => $path) {
       if (preg_match('/^socialHandler_(.+)/', $class, $m)) {
         $available[$m[1]] = $class::getName();
@@ -37,7 +37,7 @@ class socialHandler
     return $available;
   }
 
-  static function getName()
+  static function getName ()
   {
     die('Social handler missing getName method');
   }
@@ -45,18 +45,18 @@ class socialHandler
   protected $baseurl = '';
 
   /* Returns a link to the social profile page */
-  function linkify($value)
+  function linkify ($value)
   {
     return $this->link($this->baseurl.'/'.$value, $value);
   }
 
-  protected function link($link, $text)
+  protected function link ($link, $text)
   {
     return '<a href="'.$link.'">'.htmlentities($text).'</a>';
   }
 
   /* Returns the value if ok or throws a socialHandlerInvalidValueException */
-  function validate($value)
+  function validate ($value)
   {
     return $value;
   }
@@ -64,7 +64,7 @@ class socialHandler
 
 class socialHandler_facebook extends socialHandler
 {
-  static function getName()
+  static function getName ()
   {
     return _('Facebook');
   }
@@ -74,19 +74,19 @@ class socialHandler_facebook extends socialHandler
 
 class socialHandler_twitter extends socialHandler
 {
-  static function getName()
+  static function getName ()
   {
     return _('Twitter');
   }
 
   protected $baseurl = 'https://twitter.com';
 
-  function linkify($value)
+  function linkify ($value)
   {
     return $this->link($this->baseurl.'/'.$value, '@'.$value);
   }
 
-  function validate($value)
+  function validate ($value)
   {
     return preg_replace('/^@/', '', $value);
   }
@@ -94,19 +94,19 @@ class socialHandler_twitter extends socialHandler
 
 class socialHandler_diaspora extends socialHandler
 {
-  static function getName()
+  static function getName ()
   {
     return _('Diaspora*');
   }
 
   protected $baseurl = '';
 
-  function linkify($value)
+  function linkify ($value)
   {
     return $value;
   }
 
-  function validate($value)
+  function validate ($value)
   {
     if (!tests::is_email($value)) {
       throw new socialHandlerInvalidValueException(_('Diaspora accounts must look like user@pod'));
@@ -117,7 +117,7 @@ class socialHandler_diaspora extends socialHandler
 
 class socialHandler_linkedin extends socialHandler
 {
-  static function getName()
+  static function getName ()
   {
     return _('LinkedIn');
   }
@@ -127,19 +127,19 @@ class socialHandler_linkedin extends socialHandler
 
 class socialHandler_orcid extends socialHandler
 {
-  static function getName()
+  static function getName ()
   {
     return _('ORCID');
   }
 
   protected $baseurl = 'https://orcid.org';
 
-  function linkify($value)
+  function linkify ($value)
   {
     return $this->link($this->baseurl.'/'.$value, $value);
   }
 
-  function validate($value)
+  function validate ($value)
   {
     if (!preg_match('/^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]$/', $value)) {
       throw new socialHandlerInvalidValueException(_('ORCID account IDs must look like XXXX-XXXX-XXXX-XXXX where X are digits'));

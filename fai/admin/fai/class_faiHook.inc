@@ -20,33 +20,33 @@
 
 class faiHook extends faiSimplePluginClass
 {
-  var $objectclasses = array('top','FAIclass','FAIhook');
+  var $objectclasses = ['top','FAIclass','FAIhook'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Hook'),
       'plDescription' => _('FAI hook'),
-      'plObjectType'  => array(
-        'faiHook' => array(
+      'plObjectType'  => [
+        'faiHook' => [
           'name'        => _('FAI hook'),
           'filter'      => 'objectClass=FAIhook',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiHookRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-hook&size=16'
-        )
-      ),
+        ]
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new HostNameAttribute (
             _('Class name'), _('Variables class name'),
             'cn', TRUE
@@ -55,16 +55,16 @@ class faiHook extends faiSimplePluginClass
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
-        )
-      ),
-      'vars' => array(
+        ]
+      ],
+      'vars' => [
         'name'  => _('Hooks'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new SubNodesAttribute (
             '', _('Variables in this class'),
-            'hooks', array('FAIhookEntry','FAIclass','top'),
-            array(
+            'hooks', ['FAIhookEntry','FAIclass','top'],
+            [
               new StringAttribute (
                 _('Name'), _('The name of the variable'),
                 'cn', TRUE
@@ -76,24 +76,24 @@ class faiHook extends faiSimplePluginClass
               new SelectAttribute (
                 _('Task'), _('Task to run'),
                 'FAItask', TRUE,
-                array('chboot','configure','debconf','error','extrbase',
+                ['chboot','configure','debconf','error','extrbase',
                        'faiend','finish','install','instsoft','mirror',
                        'mountdisks','partition','prepareapt','repository',
-                       'savelog','setup','softupdate','sysinfo','updatebase')
+                       'savelog','setup','softupdate','sysinfo','updatebase']
               ),
               new FileTextAreaAttribute (
                 _('Script'), _('The script of this hook'),
                 'FAIscript', TRUE,
                 '.sh'
               ),
-            ),
+            ],
             FALSE, /* no order */
-            array(),
+            [],
             TRUE /* edit enabled */
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -104,7 +104,7 @@ class faiHook extends faiSimplePluginClass
     $this->attributesAccess['hooks']->setLinearRendering(FALSE);
   }
 
-  protected function shouldSave()
+  protected function shouldSave ()
   {
     /* We need ldap_save to always run */
     return TRUE;

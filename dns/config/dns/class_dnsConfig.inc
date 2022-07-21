@@ -20,27 +20,27 @@
 
 class dnsConfig extends simplePlugin
 {
-  var $objectclasses  = array("fdDnsPluginConf");
+  var $objectclasses  = ["fdDnsPluginConf"];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       "plShortName"     => _("DNS configuration"),
       "plDescription"   => _("FusionDirectory dns plugin configuration"),
       "plSelfModify"    => FALSE,
-      "plCategory"      => array("configuration"),
-      "plObjectType"    => array("smallConfig"),
+      "plCategory"      => ["configuration"],
+      "plObjectType"    => ["smallConfig"],
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('DNS config'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute (
             _('DNS RDN'), _('Branch in which DNS zones will be stored'),
             'fdDnsRDN', TRUE,
@@ -51,9 +51,9 @@ class dnsConfig extends simplePlugin
             'fdDNSFinalDot', FALSE,
             TRUE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

@@ -46,7 +46,7 @@ class PackageConfigDialog extends GenericDialog
   protected $post_cancel = 'CancelObjectConfig';
   protected $post_finish = 'SaveObjectConfig';
 
-  function __construct($simplePlugin, &$attribute, $key, $pkg_config)
+  function __construct ($simplePlugin, &$attribute, $key, $pkg_config)
   {
     $this->attribute  = $attribute;
     $this->dialog     = new $this->dialogClass($simplePlugin->dn, $key, $simplePlugin->FAIdebianRelease, $pkg_config);
@@ -92,10 +92,10 @@ class PackageConfigDialog extends GenericDialog
 class PackagesAttribute extends DialogOrderedArrayAttribute
 {
   protected $dialogClass        = 'PackageSelectDialog';
-  protected $buffer             = array();
-  protected $configuredPackages = array();
+  protected $buffer             = [];
+  protected $configuredPackages = [];
 
-  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = array(), $acl = "")
+  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = [], $acl = "")
   {
     OrderedArrayAttribute::__construct(
       new StringAttribute($label, $description, $ldapName, $required, "", $acl),
@@ -105,19 +105,19 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     );
   }
 
-  function addValue($value)
+  function addValue ($value)
   {
     $this->value[preg_replace('/\-$/', '', $value)] = $value;
   }
 
-  function readValue($value)
+  function readValue ($value)
   {
-    return array(preg_replace('/\-$/', '', $value), $value);
+    return [preg_replace('/\-$/', '', $value), $value];
   }
 
   function getFilterBlackList ()
   {
-    return array('PACKAGE' => array_keys($this->value));
+    return ['PACKAGE' => array_keys($this->value)];
   }
 
   function renderButtons ()
@@ -132,28 +132,28 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     return $buttons;
   }
 
-  public function htmlIds()
+  public function htmlIds ()
   {
     $id = $this->getHtmlId();
-    return array_merge(array('add'.$id), parent::htmlIds());
+    return array_merge(['add'.$id], parent::htmlIds());
   }
 
-  protected function getAttributeArrayValue($key, $value)
+  protected function getAttributeArrayValue ($key, $value)
   {
     if (!isset($this->buffer[$value])) {
       $this->genPkgs();
     }
     if (isset($this->buffer[$value])) {
-      return array(
+      return [
         $this->buffer[$value]['PACKAGE'],
         $this->buffer[$value]['VERSION'],
         base64_decode($this->buffer[$value]['DESCRIPTION']),
-      );
+      ];
     }
-    return array($value, '', '');
+    return [$value, '', ''];
   }
 
-  protected function genRowIcons($key, $value)
+  protected function genRowIcons ($key, $value)
   {
     $id = $this->getHtmlId();
     list ($img, $nbicons) = parent::genRowIcons($key, $value);
@@ -176,10 +176,10 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     }
     $nbicons += 2;
 
-    return array ($img, $nbicons);
+    return  [$img, $nbicons];
   }
 
-  protected function handleAddAndEditValue()
+  protected function handleAddAndEditValue ()
   {
     $id = $this->getHtmlId();
 
@@ -188,7 +188,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
         $key = preg_replace('/^'.$id.'_config_/', '', $name);
         $key = base64_decode(preg_replace('/_[xy]$/', '', $key));
         /* Open configuration dialog */
-        $pkg_config = array();
+        $pkg_config = [];
         if (isset($this->configuredPackages[$key])) {
           $pkg_config = $this->configuredPackages[$key];
         }
@@ -211,7 +211,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     parent::handleAddAndEditValue();
   }
 
-  function packageConfigured($packageConfig)
+  function packageConfigured ($packageConfig)
   {
     $this->configuredPackages = array_merge($this->configuredPackages, $packageConfig);
   }
@@ -221,8 +221,8 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
   {
     /* First delete all old nodes */
     $ldap->cd($this->plugin->dn);
-    $ldap->search('objectClass=FAIdebconfInfo', array('dn'), 'one');
-    $delete = array();
+    $ldap->search('objectClass=FAIdebconfInfo', ['dn'], 'one');
+    $delete = [];
     while ($attrs = $ldap->fetch()) {
       $delete[] = $attrs['dn'];
     }
@@ -233,7 +233,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     /* Then add our values */
     foreach ($this->configuredPackages as $pkgname => $pkgvars) {
       foreach ($pkgvars as $varname => $varinfos) {
-        $attrs = array('objectClass' => 'FAIdebconfInfo');
+        $attrs = ['objectClass' => 'FAIdebconfInfo'];
         $attrs['FAIpackage']           = $pkgname;
         $attrs['FAIvariable']          = $varname;
         $attrs['FAIvariableType']      = $varinfos['Type'];
@@ -257,7 +257,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
   /*! \brief  Reload the list of cached packages.
       @return Returns the currently cached list of packages.
    */
-  function genPkgs()
+  function genPkgs ()
   {
     if (empty($this->plugin->FAIdebianRelease)) {
       return;
@@ -268,7 +268,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
       return;
     }
 
-    $attrs = array('distribution','package','version','section','description','timestamp','hastemplate');
+    $attrs = ['distribution','package','version','section','description','timestamp','hastemplate'];
 
     // packages names that are not already in the buffer
     $packages = array_diff_key($this->value, $this->buffer);
@@ -299,7 +299,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
           }
         }
       }
-      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, count($packages), "$release done, packages left");
+      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, count ($packages), "$release done, packages left");
     }
 
     if (count($packages) > 0) {
@@ -312,7 +312,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     $this->genConfiguredPackages();
   }
 
-  function genConfiguredPackages()
+  function genConfiguredPackages ()
   {
     global $config;
     /* Fetch all package configurations from ldap */
@@ -328,10 +328,10 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     /* Search for configuration objects */
     $ldap = $config->get_ldap_link();
     $ldap->cd($this->plugin->dn);
-    $ldap->search($PackageFilter, array("FAIvariable","FAIvariableType",
-          "FAIvariableContent","FAIpackage","FAIdebianSection","FAIstate"));
+    $ldap->search($PackageFilter, ["FAIvariable","FAIvariableType",
+          "FAIvariableContent","FAIpackage","FAIdebianSection","FAIstate"]);
 
-    $this->configuredPackages = array();
+    $this->configuredPackages = [];
 
     /* Walk through configurations and append them to our list of ConfiguredPackages */
     while ($attr = $ldap->fetch()) {
@@ -342,16 +342,16 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
         }
       }
 
-      $tmp = array();
+      $tmp = [];
       $tmp['Name']  = $attr['FAIvariable'][0];
       $tmp['Type']  = $attr['FAIvariableType'][0];
       $tmp['Save']  = TRUE;
 
       if (isset($attr['FAIvariableContent'][0])) {
-        if (!in_array($attr['FAIvariableType'], array("multiselect"))) {
+        if (!in_array($attr['FAIvariableType'], ["multiselect"])) {
           $tmp['Value'] = $attr['FAIvariableContent'][0];
         } else {
-          $tmp['Value'] = array();
+          $tmp['Value'] = [];
           unset($attr['FAIvariableContent']['count']);
           foreach ($attr['FAIvariableContent'] as $attr) {
             $tmp['Value'][] = $attr;
@@ -368,33 +368,33 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
 
 class faiPackage extends faiSimplePluginClass
 {
-  var $objectclasses = array('top','FAIclass','FAIpackageList','FAIrepository');
+  var $objectclasses = ['top','FAIclass','FAIpackageList','FAIrepository'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Package'),
       'plDescription' => _('FAI Package list'),
-      'plObjectType'  => array(
-        'faiPackage' => array(
+      'plObjectType'  => [
+        'faiPackage' => [
           'name'        => _('FAI Package'),
           'filter'      => 'objectClass=FAIpackageList',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiPackageRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-packages&size=16'
-        )
-      ),
+        ]
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new HostNameAttribute (
             _('Class name'), _('Variables class name'),
             'cn', TRUE
@@ -403,11 +403,11 @@ class faiPackage extends faiSimplePluginClass
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
-        )
-      ),
-      'repo' => array(
+        ]
+      ],
+      'repo' => [
         'name'  => _('Repository'),
-        'attrs' => array(
+        'attrs' => [
           new DisplayLDAPAttribute (
             _('Release'), _('Debian release concerned'),
             'FAIdebianRelease', FALSE
@@ -419,25 +419,25 @@ class faiPackage extends faiSimplePluginClass
           new SelectAttribute (
             _('Install method'), _('Install method to use for this package list'),
             'FAIinstallMethod', TRUE,
-            array('install', 'ninstall', 'remove',
+            ['install', 'ninstall', 'remove',
               'dselect-upgrade', 'taskinst', 'taskrm',
               'hold', 'clean', 'aptitude', 'aptitude-r',
-              'pending', 'dpkgc', 'yumi'),
+              'pending', 'dpkgc', 'yumi'],
             'aptitude'
           ),
-        )
-      ),
-      'packages' => array(
+        ]
+      ],
+      'packages' => [
         'name'  => _('Packages'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new PackagesAttribute (
             '', _('Packages in this class'),
             'FAIpackage', TRUE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -454,7 +454,7 @@ class faiPackage extends faiSimplePluginClass
     session::set('packageSelect_Release', $this->FAIdebianRelease);
   }
 
-  function updateRelease()
+  function updateRelease ()
   {
     /* Assemble release name */
     $tmp = preg_replace('/'.preg_quote(get_ou('faiBaseRDN'), '/').'.*$/i', '', $this->base);
@@ -470,7 +470,7 @@ class faiPackage extends faiSimplePluginClass
     }
   }
 
-  protected function shouldSave()
+  protected function shouldSave ()
   {
     /* We need ldap_save to always run */
     return TRUE;
@@ -484,10 +484,10 @@ class faiPackage extends faiSimplePluginClass
     return $errors;
   }
 
-  function getServerInfos()
+  function getServerInfos ()
   {
     $servs    = serviceRepository::getServers();
-    $ret      = array();
+    $ret      = [];
     foreach ($servs as $serv) {
       if (isset($ret[$serv['FAI_RELEASE']])) {
         $ret[$serv['FAI_RELEASE']] = array_merge($ret[$serv['FAI_RELEASE']], $serv['SECTIONS']);

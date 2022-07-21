@@ -8,7 +8,7 @@ require_once('variables.inc');
 
 $http_raw_post_data = file_get_contents('php://input');
 
-function returnError($errorText)
+function returnError ($errorText)
 {
   $protocol = (isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
   header($protocol.' 500 '.$errorText);
@@ -71,11 +71,11 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
   $data = $data['REQUEST']['CONTENT'];
   $cpus = $data['CPUS'];
   if (!is_numeric(key($cpus))) {
-    $cpus = array($cpus);
+    $cpus = [$cpus];
   }
   $os = $data['OPERATINGSYSTEM'];
   if (!is_numeric(key($os))) {
-    $os = array($os);
+    $os = [$os];
   }
 
   /* Check if CONFIG_FILE is accessible */
@@ -83,8 +83,8 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
     returnError(sprintf(_('FusionDirectory configuration %s/%s is not readable. Aborted.'), CONFIG_DIR, CONFIG_FILE));
   }
 
-  $macs = array();
-  $ips  = array();
+  $macs = [];
+  $ips  = [];
   foreach ($data['NETWORKS'] as $network) {
     if (isset($network['MACADDR']) && ($network['MACADDR'] != '00:00:00:00:00:00')) {
       $macs[] = $network['MACADDR'];
@@ -127,13 +127,13 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
   /* Create root node */
   $ldap->cd($dn);
   $ldap->add(
-    array(
+    [
       'cn'                        => $_SERVER['REMOTE_ADDR'],
-      'objectClass'               => array('fdInventoryContent'),
+      'objectClass'               => ['fdInventoryContent'],
       'macAddress'                => $macs,
       'ipHostNumber'              => $ips,
       'fdInventoryVERSIONCLIENT'  => $data['VERSIONCLIENT'],
-    )
+    ]
   );
   if (!$ldap->success()) {
     returnError('LDAP: '.$ldap->get_error());
@@ -143,14 +143,14 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
 
   foreach ($data as $key => $objects) {
     if (!is_numeric(key($objects))) {
-      $objects = array($objects);
+      $objects = [$objects];
     }
     foreach ($objects as $i => $object) {
       $cn         = strtolower($key).$i;
-      $ldap_attrs = array(
+      $ldap_attrs = [
         'cn' => $cn,
         'objectClass' => 'fdInventory'.preg_replace('/_/', '', $key),
-      );
+      ];
       foreach ($object as $attr => $value) {
         if (!(is_array($value) && empty($value))) {
           $ldap_attrs['fdInventory'.preg_replace('/_/', '', $attr)] = $value;

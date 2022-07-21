@@ -20,25 +20,25 @@
 
 class opsiManagement extends simpleManagement
 {
-  protected $objectTypes  = array('opsiProfile', 'opsiSoftwareList');
+  protected $objectTypes  = ['opsiProfile', 'opsiSoftwareList'];
 
   protected $departmentBrowser      = TRUE;
   protected $departmentRootVisible  = FALSE;
   protected $baseMode               = TRUE;
 
   /* Return plugin information for acl handling */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('OPSI'),
       'plDescription' => _('OPSI profile management'),
       'plIcon'        => 'geticon.php?context=applications&icon=opsi&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 25,
-      'plManages'     => array('opsiProfile', 'opsiSoftwareList'),
+      'plManages'     => ['opsiProfile', 'opsiSoftwareList'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 
   function configureHeadpage ()
@@ -52,15 +52,15 @@ class opsiManagement extends simpleManagement
     $data = parent::parseXML($file);
     $data['list']['table']['layout'] = '|20px;c|||110px;c|150px;r|';
     $data['list']['table']['column'][4] = $data['list']['table']['column'][3];
-    $data['list']['table']['column'][3] = array(
+    $data['list']['table']['column'][3] = [
       'label'         => 'Usage',
       'value'         => '%{filter:filterUsage(objectType,dn)}',
       'export'        => 'true',
-    );
+    ];
     return $data;
   }
 
-  static function filterUsage($objectType, $dn)
+  static function filterUsage ($objectType, $dn)
   {
     if (empty($dn) || (strcasecmp($objectType, 'opsiProfile') != 0)) {
       return '&nbsp;';

@@ -20,26 +20,26 @@
 
 class dnsManagement extends simpleManagement
 {
-  protected $objectTypes  = array('dnsZone', 'dnsView', 'dnsAcl');
+  protected $objectTypes  = ['dnsZone', 'dnsView', 'dnsAcl'];
 
   protected $departmentBrowser      = TRUE;
   protected $departmentRootVisible  = TRUE;
   protected $baseMode               = TRUE;
 
-  protected $autoFilterAttributes = array('dn', 'cn', 'description', 'zoneName', 'relativeDomainName', 'sOARecord');
+  protected $autoFilterAttributes = ['dn', 'cn', 'description', 'zoneName', 'relativeDomainName', 'sOARecord'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('DNS'),
       'plDescription' => _('DNS Management'),
       'plIcon'        => 'geticon.php?context=applications&icon=dns&size=48',
-      'plSection'     => array('systems' => array('name' => _('Systems'), 'priority' => 10)),
+      'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 10]],
       'plPriority'    => 1,
-      'plManages'     => array('dnsZone', 'dnsView', 'dnsAcl'),
+      'plManages'     => ['dnsZone', 'dnsView', 'dnsAcl'],
 
-      'plProvidedAcls'  => array()
-    );
+      'plProvidedAcls'  => []
+    ];
   }
 
   function configureHeadpage ()
@@ -51,29 +51,29 @@ class dnsManagement extends simpleManagement
         $this->headpage->xmlData['actionmenu']['action'],
         2,
         0,
-        array(
-          array(
+        [
+          [
             'name'  => 'zonerefresh',
             'type'  => 'entry',
             'image' => 'geticon.php?context=actions&icon=view-refresh&size=16',
             'label' => 'Refresh Zone',
             'acl'   => 'dnsZone/dnsZone[w]',
-          )
-        )
+          ]
+        ]
       );
       array_splice(
         $this->headpage->xmlData['actiontriggers']['action'],
         2,
         0,
-        array(
-          array(
+        [
+          [
             'name'  => 'zonerefresh',
             'type'  => 'entry',
             'image' => 'geticon.php?context=actions&icon=view-refresh&size=16',
             'label' => 'Refresh Zone',
             'acl'   => '%acl[w]',
-          )
-        )
+          ]
+        ]
       );
     }
   }
@@ -104,7 +104,7 @@ class dnsManagement extends simpleManagement
               $target = $target[0];
             }
             $zoneName = $entry['zoneName'][0];
-            $s_daemon->append_call('Ldap2Zone.start', $target, array('args' => array($zoneName)));
+            $s_daemon->append_call('Ldap2Zone.start', $target, ['args' => [$zoneName]]);
             if ($s_daemon->is_error()) {
               msg_dialog::display(_('Could not get run ldap2zone'), msgPool::siError($s_daemon->get_error()), ERROR_DIALOG);
             } else {
@@ -118,14 +118,14 @@ class dnsManagement extends simpleManagement
     }
   }
 
-  public static function findServerByFQDN($fqdn, $zoneDn = NULL)
+  public static function findServerByFQDN ($fqdn, $zoneDn = NULL)
   {
     global $config;
     list ($serverCn, $serverZone) = explode('.', $fqdn, 2);
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ips = array();
-    $ldap->search('(&(|(aRecord=*)(aAAARecord=*))(relativeDomainName='.$serverCn.')(zoneName='.$serverZone.'))', array('aRecord', 'aAAARecord'));
+    $ips = [];
+    $ldap->search('(&(|(aRecord=*)(aAAARecord=*))(relativeDomainName='.$serverCn.')(zoneName='.$serverZone.'))', ['aRecord', 'aAAARecord']);
     while ($attrs = $ldap->fetch()) {
       if (isset($attrs['aRecord'])) {
         unset($attrs['aRecord']['count']);
@@ -143,7 +143,7 @@ class dnsManagement extends simpleManagement
       }
       return objects::ls('server', NULL, NULL, $filter);
     }
-    return array();
+    return [];
   }
 }
 ?>

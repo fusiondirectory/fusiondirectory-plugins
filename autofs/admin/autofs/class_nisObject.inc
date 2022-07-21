@@ -22,37 +22,37 @@ class nisObject extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses  = array('nisObject');
+  var $objectclasses  = ['nisObject'];
 
   /* Return plugin information for acl handling */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Directory'),
       'plDescription'   => _('Directory'),
-      'plObjectType'    => array('nisObject' => array(
+      'plObjectType'    => ['nisObject' => [
         'name'        => _('Directory'),
         'filter'      => 'objectClass=nisObject',
         'ou'          => get_ou('autofsRDN'),
         'icon'        => 'geticon.php?context=applications&icon=autofs-nis-object&size=16',
         'mainAttr'    => 'cn',
-      )),
-      'plForeignKeys'  => array(
-        'nisMapName'   => array(
-          array('nisMap', 'nisMapName'),
-        ),
-      ),
+      ]],
+      'plForeignKeys'  => [
+        'nisMapName'   => [
+          ['nisMap', 'nisMapName'],
+        ],
+      ],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Directory'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('autofsRDN')),
           new StringAttribute (
             _('Name'), _('Name of this directory'),
@@ -67,11 +67,11 @@ class nisObject extends simplePlugin
           new SelectAttribute (
             _('Mount point'), _('The mount point this directory will be placed in'),
             'nisMapName', TRUE,
-            array()
+            []
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -80,7 +80,7 @@ class nisObject extends simplePlugin
     $this->attributesAccess['nisMapName']->setChoices($this->getMountPoints());
   }
 
-  function save_object()
+  function save_object ()
   {
     parent::save_object();
     $this->attributesAccess['nisMapName']->setChoices($this->getMountPoints());
@@ -91,8 +91,8 @@ class nisObject extends simplePlugin
     global $config;
     $ldap = $config->get_ldap_link();
     $ldap->cd(get_ou('autofsRDN').$this->base);
-    $ldap->search('(objectClass=nisMap)', array('nisMapName'));
-    $nisMaps = array();
+    $ldap->search('(objectClass=nisMap)', ['nisMapName']);
+    $nisMaps = [];
     while ($attrs = $ldap->fetch()) {
       $nisMaps[] = $attrs['nisMapName'][0];
     }
@@ -100,13 +100,13 @@ class nisObject extends simplePlugin
   }
 
   /* We need to fix the base */
-  function get_allowed_bases()
+  function get_allowed_bases ()
   {
     $this->base = preg_replace('/^nisMapName=[^,]+,/', '', $this->base);
     return parent::get_allowed_bases();
   }
 
-  function compute_dn()
+  function compute_dn ()
   {
     return 'cn='.ldap_escape($this->attributesAccess['cn']->getValue(), '', LDAP_ESCAPE_DN).','.
             'nisMapName='.ldap_escape($this->nisMapName, '', LDAP_ESCAPE_DN).','.

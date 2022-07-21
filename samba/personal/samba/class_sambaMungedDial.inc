@@ -42,7 +42,7 @@ define ("FILEHEADER_OLD",
 class sambaMungedDial
 {
   /* Terminal server variables (samba3) */
-  var $ctx = array(
+  var $ctx = [
     'CtxCfgPresent'           => '551e0bb0',
     'CtxCfgFlags1'            => '00e00010',
     'CtxCallback'             => '',
@@ -59,27 +59,27 @@ class sambaMungedDial
     'CtxWFProfilePath'        => '',
     'CtxInitialProgram'       => '',
     'CtxCallbackNumber'       => ''
-  );
+  ];
 
   /* attribute list for save action */
-  var $ctxattributes = array("CtxCfgPresent", "CtxCfgFlags1", "CtxCallback",
+  var $ctxattributes = ["CtxCfgPresent", "CtxCfgFlags1", "CtxCallback",
         "CtxShadow", "CtxMaxConnectionTime", "CtxMaxDisconnectionTime",
         "CtxMaxIdleTime", "CtxKeyboardLayout", "CtxMinEncryptionLevel",
         "CtxWorkDirectory", "CtxNWLogonServer", "CtxWFHomeDir",
         "CtxWFHomeDirDrive", "CtxWFProfilePath", "CtxInitialProgram",
-        "CtxCallbackNumber");
+        "CtxCallbackNumber"];
 
   /* These parameters are treated as strings and get a trailing zero */
-  var $stringParams = array( "CtxWorkDirectory", "CtxNWLogonServer",
+  var $stringParams = [ "CtxWorkDirectory", "CtxNWLogonServer",
       "CtxWFHomeDir", "CtxWFHomeDirDrive",
-      "CtxWFProfilePath", "CtxInitialProgram", "CtxCallbackNumber");
+      "CtxWFProfilePath", "CtxInitialProgram", "CtxCallbackNumber"];
 
   /* These parameters are treated as time values and get converted */
-  var $timeParams = array("CtxMaxConnectionTime", "CtxMaxDisconnectionTime", "CtxMaxIdleTime");
+  var $timeParams = ["CtxMaxConnectionTime", "CtxMaxDisconnectionTime", "CtxMaxIdleTime"];
 
   var $old_behavior = FALSE;
 
-  function strhex($string)
+  function strhex ($string)
   {
     $hex = "";
 
@@ -90,7 +90,7 @@ class sambaMungedDial
     return $hex;
   }
 
-  function hexstr($hex)
+  function hexstr ($hex)
   {
     $string = "";
 
@@ -101,7 +101,7 @@ class sambaMungedDial
     return $string;
   }
 
-  function endian($src)
+  function endian ($src)
   {
     return substr($src, 2, 2).substr($src, 0, 2);
   }
@@ -124,7 +124,7 @@ class sambaMungedDial
     return (int)($usecs / (60 * 1000));
   }
 
-  function to8bit($string)
+  function to8bit ($string)
   {
     $result = "";
 
@@ -138,7 +138,7 @@ class sambaMungedDial
     return $result;
   }
 
-  function is_samba_path($path)
+  function is_samba_path ($path)
   {
     if ($path == "") {
       return TRUE;
@@ -188,12 +188,12 @@ class sambaMungedDial
   }
 
   /* Setup parameter given by paramName to MungedDial-Format */
-  function munge($paramName, $paramValue, $isString)
+  function munge ($paramName, $paramValue, $isString)
   {
     $result = "";
 
     /* Encode paramName to UTF-16 */
-    if (function_exists("recode")) {
+    if (function_exists ("recode")) {
       $utfName = recode("ISO8859-15..UTF-16", $paramName);
     } else {
       $utfName = iconv("ISO8859-15", "UTF-16BE", $paramName);
@@ -226,9 +226,9 @@ class sambaMungedDial
   }
 
   /* Takes a base64-encoded MungedDial-String and returns an array of included parameters and values */
-  function decode_munged($munge)
+  function decode_munged ($munge)
   {
-    $result = array(
+    $result = [
       'CtxCfgPresent'           => '551e0bb0',
       'CtxCfgFlags1'            => '00e00010',
       'CtxCallback'             => '',
@@ -245,7 +245,7 @@ class sambaMungedDial
       'CtxWFProfilePath'        => '',
       'CtxInitialProgram'       => '',
       'CtxCallbackNumber'       => ''
-    );
+    ];
 
     /*
      * Remove base64 encoding and skip FILEHEADER.
@@ -320,7 +320,7 @@ class sambaMungedDial
   /* Returns array of flags, which can be set on-demand with activated java-script */
   function getOnDemandFlags ()
   {
-    $result = array();
+    $result = [];
     foreach ($this->timeParams as $value) {
       if (!isset($this->ctx[$value]) || (isset($this->ctx[$value]) && $this->ctx[$value] == 0)) {
         $result[$value."Mode"] = "disabled";

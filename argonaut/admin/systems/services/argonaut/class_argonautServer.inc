@@ -22,22 +22,22 @@
 class argonautServer extends simpleService
 {
   /* This plugin only writes its objectClass */
-  var $objectclasses  = array("argonautServer");
+  var $objectclasses  = ["argonautServer"];
 
   /* Return plugin information for acl handling */
-  static function plInfo()
+  static function plInfo ()
   {
     $acls = parent::generatePlProvidedAcls(static::getAttributesInfo());
     unset($acls['simpleServiceStart']);
     unset($acls['simpleServiceStop']);
     unset($acls['simpleServiceRestart']);
-    return array(
+    return [
       'plShortName'   => _('Argonaut server'),
       'plDescription' => _('Argonaut server').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=argonaut&size=16',
 
       'plProvidedAcls'  => $acls,
-    );
+    ];
   }
 
     /*!
@@ -45,10 +45,10 @@ class argonautServer extends simpleService
    */
   static function getAttributesInfo ()
   {
-    return array (
-      'server' => array (
+    return  [
+      'server' => [
         'name'  => _('Argonaut server'),
-        'attrs' => array (
+        'attrs' => [
           new BooleanAttribute (
             _('Delete finished tasks'),
             _('Wether or not argonaut server should delete successfully finished tasks'),
@@ -64,7 +64,7 @@ class argonautServer extends simpleService
           new SelectAttribute (
             _('Protocol'), _('Protocol to use for argonaut'),
             'argonautProtocol', TRUE,
-            array('http', 'https')
+            ['http', 'https']
           ),
           new IntAttribute (
             _('Port'),
@@ -85,11 +85,11 @@ class argonautServer extends simpleService
             'argonautLogDir', FALSE,
             '/var/log/argonaut'
           )
-        )
-      ),
-      'wakeonlan' => array (
+        ]
+      ],
+      'wakeonlan' => [
         'name'  => _('Wake on lan'),
-        'attrs' => array (
+        'attrs' => [
           new StringAttribute (
             _('Interface'),
             _('Interface to use for sending WakeOnLan requests'),
@@ -101,11 +101,11 @@ class argonautServer extends simpleService
             'argonautIpTool', FALSE,
             '/sbin/ifconfig'
           ),
-        )
-      ),
-      'ssl' => array (
+        ]
+      ],
+      'ssl' => [
         'name'  => _('SSL paths'),
-        'attrs' => array (
+        'attrs' => [
           new TrimmedStringAttribute (
             _('Key'), _('Path to the private key file on Argonaut server'),
             'argonautKeyPath', FALSE,
@@ -126,9 +126,9 @@ class argonautServer extends simpleService
             'argonautCertCN', FALSE
           ),
           new HiddenAttribute ('argonautServerToken'),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $parent = NULL)
@@ -138,18 +138,18 @@ class argonautServer extends simpleService
       $this->argonautServerToken = md5(random_int(0, PHP_INT_MAX));
     }
     $this->attributesAccess['argonautProtocol']->setManagedAttributes(
-      array(
-        'disable' => array (
-          'http' => array (
+      [
+        'disable' => [
+          'http' => [
             'argonautKeyPath','argonautCertPath','argonautCaCertPath','argonautCertCN'
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
   }
 
   /*! \brief Get service information for serverService plugin */
-  function getListEntry()
+  function getListEntry ()
   {
     $fields = parent::getListEntry();
 

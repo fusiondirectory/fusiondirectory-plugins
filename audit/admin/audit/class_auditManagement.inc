@@ -20,11 +20,11 @@
 
 class auditManagement extends simpleManagement
 {
-  protected $objectTypes  = array('auditEvent');
+  protected $objectTypes  = ['auditEvent'];
 
-  protected $autoFilterAttributes = array(
+  protected $autoFilterAttributes = [
     'dn','fdAuditDateTime','fdAuditAction','fdAuditAuthorDN','fdAuditObjectType',
-    'fdAuditObject','fdAuditAttributes','fdAuditResult');
+    'fdAuditObject','fdAuditAttributes','fdAuditResult'];
 
   protected $departmentBrowser      = FALSE;
   protected $departmentRootVisible  = FALSE;
@@ -35,17 +35,17 @@ class auditManagement extends simpleManagement
 
   public static $skipSnapshots = TRUE;
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Audit'),
       'plDescription' => _('Audit events display'),
       'plIcon'        => 'geticon.php?context=applications&icon=audit&size=48',
       'plSection'     => 'reporting',
-      'plManages'     => array('auditEvent'),
+      'plManages'     => ['auditEvent'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 
   function configureHeadpage ()
@@ -71,24 +71,24 @@ class auditManagement extends simpleManagement
 
       $tag    = 'STARTDATE';
       $filter .= '$'.$tag;
-      $this->filter->elements[$tag] = array(
+      $this->filter->elements[$tag] = [
         'type'    => 'date',
         'tag'     => $tag,
         'default' => '',
         'unset'   => '',
         'set'     => '(fdAuditDateTime>=$)'
-      );
+      ];
       $this->filter->elementValues[$tag] = '';
 
       $tag    = 'ENDDATE';
       $filter .= '$'.$tag;
-      $this->filter->elements[$tag] = array(
+      $this->filter->elements[$tag] = [
         'type'    => 'date',
         'tag'     => $tag,
         'default' => '',
         'unset'   => '',
         'set'     => '(fdAuditDateTime<=$)'
-      );
+      ];
       $this->filter->elementValues[$tag] = '';
 
       $attributes = array_values(array_unique($attributes));
@@ -106,68 +106,68 @@ class auditManagement extends simpleManagement
   {
     $data = parent::parseXML($file);
     $data['list']['table']['layout'] = '|20px;c||||||50px;r|';
-    $columns = array (
-      array(
+    $columns = [
+      [
         'label'         => _('Time'),
         'sortAttribute' => 'fdAuditDateTime',
         'sortType'      => 'string',
         'value'         => '%{filter:filterDateTime(pid,row,dn,fdAuditDateTime)}',
         'export'        => 'true',
-      ),
-      array(
+      ],
+      [
         'label'         => _('Author'),
         'sortAttribute' => 'fdAuditAuthorDN',
         'sortType'      => 'string',
         'value'         => '%{filter:link(row,dn,"%s",fdAuditAuthorDN)}',
         'export'        => 'true',
-      ),
-      array(
+      ],
+      [
         'label'         => _('Action'),
         'sortAttribute' => 'fdAuditAction',
         'sortType'      => 'string',
         'value'         => '%{filter:link(row,dn,"%s",fdAuditAction)}',
         'export'        => 'true',
-      ),
-      array(
+      ],
+      [
         'label'         => _('Type'),
         'sortAttribute' => 'fdAuditObjectType',
         'sortType'      => 'string',
         'value'         => '%{filter:link(row,dn,"%s",fdAuditObjectType)}',
         'export'        => 'true',
-      ),
-      array(
+      ],
+      [
         'label'         => _('Target'),
         'sortAttribute' => 'fdAuditObject',
         'sortType'      => 'string',
         'value'         => '%{filter:link(row,dn,"%s",fdAuditObject)}',
         'export'        => 'true',
-      ),
-    );
+      ],
+    ];
     array_splice($data['list']['table']['column'], 1, count($data['list']['table']['column']), $columns);
     return $data;
   }
 
-  function renderList()
+  function renderList ()
   {
     global $config;
     $smarty = get_smarty();
-    $filters = array(
-      array(
+    $filters = [
+      [
         'id'    => 'STARTDATE',
         'label' => _('Newer than')
-      ),
-      array(
+      ],
+      [
         'id'    => 'ENDDATE',
         'label' => _('Older than')
-      ),
-    );
+      ],
+    ];
     $smarty->assign('dateFilters', $filters);
     $this->headpage->update();
     $display = $this->headpage->render();
     return $this->getHeader().$display;
   }
 
-  static function filterDateTime()
+  static function filterDateTime ()
   {
     $pid    = func_get_arg(0);
     $row    = func_get_arg(1);

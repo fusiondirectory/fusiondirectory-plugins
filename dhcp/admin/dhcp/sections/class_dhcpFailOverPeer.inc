@@ -20,24 +20,24 @@
 
 class dhcpFailOverPeer extends dhcpPlugin
 {
-  public $objectclasses = array('dhcpFailOverPeer');
+  public $objectclasses = ['dhcpFailOverPeer'];
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('DHCP failover peer'),
       'plDescription'   => _('DHCP failover peer'),
-      'plCategory'      => array('dhcpConfiguration'),
+      'plCategory'      => ['dhcpConfiguration'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('DHCP'),
-        'attrs' => array(
+        'attrs' => [
           new HostNameAttribute (
             _('Name'), _('Name of this DHCP configuration'),
             'cn', TRUE
@@ -93,8 +93,8 @@ class dhcpFailOverPeer extends dhcpPlugin
             _('Comments'), _('Comments about this DHCP object'),
             'dhcpComments', FALSE
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }

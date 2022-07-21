@@ -20,13 +20,13 @@
 
 class supann
 {
-  static $choices_for = array();
+  static $choices_for = [];
 
-  static function get_prefixed_choices_for($shortname)
+  static function get_prefixed_choices_for ($shortname)
   {
     $dir  = @opendir(SUPANN_DIR);
-    $m    = array();
-    $res  = array();
+    $m    = [];
+    $res  = [];
 
     while ($file = readdir($dir)) {
       if (preg_match('/^'.$shortname.'_(.+)$/', $file, $m)) {
@@ -39,13 +39,13 @@ class supann
     return $res;
   }
 
-  static function &get_choices_for($type, $prefix = '')
+  static function &get_choices_for ($type, $prefix = '')
   {
     if (isset(static::$choices_for[$prefix.$type])) {
       return static::$choices_for[$prefix.$type];
     }
-    $entity_codes   = array();
-    $entity_labels  = array();
+    $entity_codes   = [];
+    $entity_labels  = [];
     if (file_exists(SUPANN_DIR.'/'.$type)) {
       $entiteList = fopen(SUPANN_DIR.'/'.$type, 'r');
       if ($entiteList === FALSE) {
@@ -54,7 +54,7 @@ class supann
           sprintf(_("Cannot read file: '%s'"), SUPANN_DIR.'/'.$type),
           ERROR_DIALOG
         );
-        return array(array(), array());
+        return [[], []];
       }
       while (($line = fgets($entiteList)) !== FALSE) {
         $line = trim($line);
@@ -68,12 +68,12 @@ class supann
       fclose($entiteList);
     }
     array_multisort($entity_labels, $entity_codes);
-    static::$choices_for[$prefix.$type] = array($entity_codes, $entity_labels);
+    static::$choices_for[$prefix.$type] = [$entity_codes, $entity_labels];
     return static::$choices_for[$prefix.$type];
   }
 
   /* return the 64 first chars and "…" after if text is longer */
-  static function truncate_label($str, $len = 50)
+  static function truncate_label ($str, $len = 50)
   {
     if (mb_strlen($str) > $len) {
       return mb_substr($str, 0, $len).'…';

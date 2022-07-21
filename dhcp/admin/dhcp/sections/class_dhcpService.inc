@@ -20,28 +20,28 @@
 
 class dhcpService extends dhcpPlugin
 {
-  public $objectclasses = array('dhcpService');
+  public $objectclasses = ['dhcpService'];
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('DHCP service'),
       'plDescription'   => _('DHCP service'),
-      'plCategory'      => array('dhcpConfiguration'),
+      'plCategory'      => ['dhcpConfiguration'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
     $attributesInfo = parent::getAttributesInfo();
     $attributesInfo['main']['attrs'][2]->setDefaultValue(
-      array(
+      [
         'default-lease-time 600',
         'max-lease-time 7200',
         'authoritative',
         'ddns-update-style none'
-      )
+      ]
     );
     $attributesInfo['main']['attrs'][] = new ObjectSelectAttribute(_('DHCP Primary'), _('Primary DHCP server'), 'dhcpPrimaryDN', FALSE, 'server');
     $attributesInfo['main']['attrs'][] = new ObjectSelectAttribute(_('DHCP Secondary'), _('Secondary DHCP server'), 'dhcpSecondaryDN', FALSE, 'server');

@@ -20,35 +20,35 @@
 
 class dsaConfig extends simplePlugin
 {
-  var $objectclasses  = array("fdDsaPluginConf");
+  var $objectclasses  = ["fdDsaPluginConf"];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       "plShortName"     => _("DSA configuration"),
       "plDescription"   => _("FusionDirectory dsa plugin configuration"),
       "plSelfModify"    => FALSE,
-      "plCategory"      => array("configuration"),
-      "plObjectType"    => array("smallConfig"),
+      "plCategory"      => ["configuration"],
+      "plObjectType"    => ["smallConfig"],
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('DSA'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute (
             _('DSA RDN'), _('Branch in which Directory Service Account (dsa) will be stored'),
             'fdDSARDN', TRUE,
             'ou=dsa'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

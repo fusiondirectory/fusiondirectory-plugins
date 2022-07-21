@@ -20,24 +20,24 @@
 
 class dhcpPool extends dhcpPlugin
 {
-  public $objectclasses = array('dhcpPool');
+  public $objectclasses = ['dhcpPool'];
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('DHCP pool'),
       'plDescription'   => _('DHCP pool'),
-      'plCategory'      => array('dhcpConfiguration'),
+      'plCategory'      => ['dhcpConfiguration'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
     $attributesInfo = parent::getAttributesInfo();
-    $attributesInfo['pool'] = array(
+    $attributesInfo['pool'] = [
       'name'  => _('Pool'),
-      'attrs' => array(
+      'attrs' => [
         new SetAttribute (
           new StringAttribute (
             _('Range'), _('The starting & ending IP Addresses in the range (inclusive), separated by a space; if the range only contains one address, then just the address can be specified. Each range is defined as a separate value.'),
@@ -52,8 +52,8 @@ class dhcpPool extends dhcpPlugin
             'dhcpPermitList', FALSE
           )
         ),
-      )
-    );
+      ]
+    ];
     return $attributesInfo;
   }
 }

@@ -30,12 +30,12 @@ class mailMethodDovecot extends mailMethod
   protected $imap_handle  = NULL;
   protected $quota_loaded = FALSE;
 
-  public function is_connected()
+  public function is_connected ()
   {
     return (parent::is_connected() && $this->imap_handle);
   }
 
-  public function connect()
+  public function connect ()
   {
     global $config;
     parent::connect();
@@ -86,7 +86,7 @@ class mailMethodDovecot extends mailMethod
 
     /* Mailbox reachable? */
     if ($this->imap_handle === FALSE) {
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed</b> :".imap_last_error(),
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed</b> :".imap_last_error (),
         "<b>IMAP:</b> ".$cfg['admin']."@".$cfg['connect']);
       if ($cfg['mkdir']) {
         if ($this->argonautCreateFolder()) {
@@ -98,7 +98,7 @@ class mailMethodDovecot extends mailMethod
       if ($this->imap_handle === FALSE) {
         $this->error = imap_last_error();
 
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed</b> :".imap_last_error(),
+        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed</b> :".imap_last_error (),
           "<b>IMAP:</b> ".$cfg['admin']."@".$cfg['connect']);
 
         $this->connected = FALSE;
@@ -112,7 +112,7 @@ class mailMethodDovecot extends mailMethod
     return TRUE;
   }
 
-  protected function loadQuota()
+  protected function loadQuota ()
   {
     global $config;
     if (!$this->quotaEnabled()) {
@@ -157,7 +157,7 @@ class mailMethodDovecot extends mailMethod
       }
     } else {
       $this->error = imap_last_error();
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, imap_last_error(),
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, imap_last_error (),
           "<b>IMAP: Failed to receive account quota</b>");
     }
   }
@@ -173,7 +173,7 @@ class mailMethodDovecot extends mailMethod
   }
 
   /* Get quota usage in MB */
-  public function getQuotaUsage()
+  public function getQuotaUsage ()
   {
     parent::getQuotaUsage();
     if (!$this->quota_loaded) {
@@ -185,7 +185,7 @@ class mailMethodDovecot extends mailMethod
   /*
    * Create the folder for the user INBOX through Argonaut
    */
-  private function argonautCreateFolder()
+  private function argonautCreateFolder ()
   {
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
       "<b>Attempting to create folder through Argonaut</b> on server :".$this->parent->gosaMailServer);
@@ -196,8 +196,8 @@ class mailMethodDovecot extends mailMethod
     $o_queue = new supportDaemon();
     if (!$o_queue->is_error()) {
       $o_queue->append_call('Dovecot.create_mailbox',
-                            array($cfg['mac']),
-                            array('args' => array($this->account_id, $this->parent->uidNumber, $this->parent->gidNumber)));
+                            [$cfg['mac']],
+                            ['args' => [$this->account_id, $this->parent->uidNumber, $this->parent->gidNumber]]);
     }
     /* If we got an error while connecting or sending the call */
     if ($o_queue->is_error()) {
@@ -215,24 +215,24 @@ class mailMethodDovecot extends mailMethod
     return FALSE;
   }
 
-  static public function get_server_list()
+  static public function get_server_list ()
   {
     global $config;
-    $serverList = array();
+    $serverList = [];
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search ('(objectClass=fdDovecotServer)',
-                  array('cn', 'fdDovecotConnect', 'fdDovecotAdmin', 'fdDovecotPassword', 'fdDovecotArgonautMkdir', 'macAddress'));
+                  ['cn', 'fdDovecotConnect', 'fdDovecotAdmin', 'fdDovecotPassword', 'fdDovecotArgonautMkdir', 'macAddress']);
     while ($attrs = $ldap->fetch()) {
-      $serverList[$attrs['cn'][0]] = array(
+      $serverList[$attrs['cn'][0]] = [
         'server_dn' => $attrs['dn'],
         'connect'   => $attrs['fdDovecotConnect'][0],
         'admin'     => $attrs['fdDovecotAdmin'][0],
         'password'  => $attrs['fdDovecotPassword'][0],
         'mkdir'     => (isset($attrs['fdDovecotArgonautMkdir']) ? (strtoupper($attrs['fdDovecotArgonautMkdir'][0]) == 'TRUE') : TRUE),
         'mac'       => $attrs['macAddress'][0],
-      );
+      ];
     }
 
     return $serverList;

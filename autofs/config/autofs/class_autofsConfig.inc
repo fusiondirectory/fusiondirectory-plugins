@@ -20,35 +20,35 @@
 
 class autofsConfig extends simplePlugin
 {
-  var $objectclasses  = array("fdAutofsPluginConf");
+  var $objectclasses  = ["fdAutofsPluginConf"];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       "plShortName"     => _("Autofs configuration"),
       "plDescription"   => _("FusionDirectory autofs plugin configuration"),
       "plSelfModify"    => FALSE,
-      "plCategory"      => array("configuration"),
-      "plObjectType"    => array("smallConfig"),
+      "plCategory"      => ["configuration"],
+      "plObjectType"    => ["smallConfig"],
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('AutoFS'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute (
             _('AutoFS RDN'), _('Branch in which automount info will be stored'),
             'fdAutofsRDN', TRUE,
             'ou=autofs'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

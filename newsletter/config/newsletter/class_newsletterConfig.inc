@@ -20,36 +20,36 @@
 
 class newsletterConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdNewsletterPluginConf');
+  var $objectclasses  = ['fdNewsletterPluginConf'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Newsletter configuration'),
       'plDescription'   => _('FusionDirectory newsletter plugin configuration'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Newsletter'),
-        'attrs' => array(
+        'attrs' => [
           new SetAttribute(
             new StringAttribute (
               _('Newsletter choices'), _('Newsletters the user can choose from'),
               'fdNewsletterChoices', FALSE
             ),
-            array()
+            []
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

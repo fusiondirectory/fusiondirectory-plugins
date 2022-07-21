@@ -20,25 +20,25 @@
 
 class applicationsPluginConfig extends simplePlugin
 {
-  var $objectclasses = array('fdApplicationsPluginConf');
+  var $objectclasses = ['fdApplicationsPluginConf'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Applications'),
       'plDescription'   => _('Applications plugin configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'rdns' => array(
+    return [
+      'rdns' => [
         'name'  => _('Applications'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute (
             _('Application RDN'), _('Branch in which applications will be stored'),
             'fdApplicationsRDN', TRUE,
@@ -52,12 +52,12 @@ class applicationsPluginConfig extends simplePlugin
           new SelectAttribute (
             _('Show web applications in menu'), _('Whether to show web applications in FD main menu'),
             'fdWebappsMenu', TRUE,
-            array('none', 'allowed', 'all'), 'none',
-            array(_('None'), _('Only allowed'), _('All'))
+            ['none', 'allowed', 'all'], 'none',
+            [_('None'), _('Only allowed'), _('All')]
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }
 ?>

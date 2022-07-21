@@ -20,17 +20,17 @@
 
 class serviceDovecot extends simpleMailMethodService
 {
-  var $objectclasses = array('fdDovecotServer');
+  var $objectclasses = ['fdDovecotServer'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Dovecot (IMAP/POP3)'),
       'plDescription'   => _('Dovecot (IMAP/POP3)').' ('._('Services').')',
       'plIcon'          => 'geticon.php?context=applications&icon=dovecot&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -38,14 +38,14 @@ class serviceDovecot extends simpleMailMethodService
    */
   static function getAttributesInfo ()
   {
-      return array (
-      'connection' => array (
+      return  [
+      'connection' => [
         'name'  => _('Dovecot connection'),
-        'attrs' => array (
+        'attrs' => [
           new CompositeAttribute (
             _('Connect URL for Dovecot server'),
             'fdDovecotConnect',
-            array(
+            [
               new StringAttribute(
                 _('Hostname'), _('Hostname of the Dovecot server'),
                 'dovecotConnectURL', TRUE
@@ -58,23 +58,23 @@ class serviceDovecot extends simpleMailMethodService
               new SelectAttribute(
                 _('Option'), _('Options for contacting Dovecot server'),
                 'dovecotConnectOptions1', TRUE,
-                array('notls', 'tls', 'ssl'), 'notls'
+                ['notls', 'tls', 'ssl'], 'notls'
               ),
               new SelectAttribute(
                 _('Validate TLS/SSL Certificates'), _('Weither or not to validate server certificates on connection'),
                 'dovecotConnectOptions2', FALSE,
-                array('', '/validate-cert', '/novalidate-cert'), '',
-                array('', 'validate',       'no-validate')
+                ['', '/validate-cert', '/novalidate-cert'], '',
+                ['', 'validate',       'no-validate']
               )
-            ),
+            ],
             '/^{(.*):(\\d+)\\/([^\\/]+)(.*)}$/',
             '{%s:%d/%s%s}'
           ),
-        )
-      ),
-      'credentials' => array (
+        ]
+      ],
+      'credentials' => [
         'name'  => _('Master credentials'),
-        'attrs' => array (
+        'attrs' => [
           new StringAttribute (
             _('Admin user'), _('Dovecot server admin user'),
             'fdDovecotAdmin', TRUE
@@ -88,19 +88,19 @@ class serviceDovecot extends simpleMailMethodService
             'fdDovecotMailDir', TRUE,
             '/var/mail'
           ),
-        )
-      ),
-      'options' => array (
+        ]
+      ],
+      'options' => [
         'name'  => _('Options'),
-        'attrs' => array (
+        'attrs' => [
           new BooleanAttribute (
             _('Create the user folder via Argonaut'), _('Use argonaut to create the user mailbox on the Dovecot server'),
             'fdDovecotArgonautMkdir', TRUE,
             TRUE
           ),
-        )
-      )
-    );
+        ]
+      ]
+      ];
   }
 }
 ?>

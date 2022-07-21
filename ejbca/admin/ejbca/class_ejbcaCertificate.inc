@@ -22,30 +22,30 @@ class ejbcaCertificate extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array();
+  var $objectclasses = [];
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('EJBCA certificate'),
       'plDescription' => _('EJBCA certificate'),
-      'plObjectType'  => array('ejbcaCertificate' => array(
+      'plObjectType'  => ['ejbcaCertificate' => [
         'name'        => _('EJBCA certificate'),
         'filter'      => 'userCertificate;binary=*',
         'ou'          => get_ou('ejbcaRDN'),
         'icon'        => 'geticon.php?context=applications&icon=ejbca&size=16'
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Certificate'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute (get_ou('ejbcaRDN')),
           new HostNameAttribute (
             _('Name'), _('Common name'),
@@ -56,24 +56,24 @@ class ejbcaCertificate extends simplePlugin
             'userCertificate;binary', TRUE,
             '.der'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
-  function renderAttributes($readOnly = FALSE)
+  function renderAttributes ($readOnly = FALSE)
   {
     parent::renderAttributes(TRUE);
   }
 
-  function save()
+  function save ()
   {
-    return array();
+    return [];
   }
 
-  function remove($fulldelete = FALSE)
+  function remove ($fulldelete = FALSE)
   {
-    return array();
+    return [];
   }
 }
 ?>

@@ -20,49 +20,49 @@
 
 class supannStructuresManagement extends simpleManagement
 {
-  protected $objectTypes = array('etablissement', 'entite');
+  protected $objectTypes = ['etablissement', 'entite'];
 
-  protected $autoFilterAttributes = array('dn', 'ou', 'o', 'description', 'supannCodeEntite', 'supannCodeEntiteParent');
+  protected $autoFilterAttributes = ['dn', 'ou', 'o', 'description', 'supannCodeEntite', 'supannCodeEntiteParent'];
 
   protected $departmentBrowser      = FALSE;
   protected $departmentRootVisible  = FALSE;
   protected $baseMode               = FALSE;
 
   /* Return plugin information for acl handling */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('SupAnn structures'),
       'plDescription' => _('SupAnn structures management'),
       'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 40,
-      'plManages'     => array('etablissement', 'entite'),
+      'plManages'     => ['etablissement', 'entite'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 
   function parseXML ($file)
   {
     $data = parent::parseXML($file);
     $data['list']['table']['layout'] = '|20px;c|||||150px;r|';
-    $columns = array (
-      array(
+    $columns = [
+      [
         'label'         => 'supannCodeEntite',
         'sortAttribute' => 'supannCodeEntite',
         'sortType'      => 'string',
         'value'         => '%{filter:link(row,dn,"%s",supannCodeEntite)}',
         'export'        => 'true',
-      ),
-      array(
+      ],
+      [
         'label'         => 'supannCodeEntiteParent',
         'sortAttribute' => 'supannCodeEntiteParent',
         'sortType'      => 'string',
         'value'         => '%{filter:link(row,dn,"%s",supannCodeEntiteParent)}',
         'export'        => 'true',
-      ),
-    );
+      ],
+    ];
     array_splice($data['list']['table']['column'], 2, 0, $columns);
     return $data;
   }

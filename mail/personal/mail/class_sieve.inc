@@ -90,7 +90,7 @@ class sieve
   //also add a connection type, like PLAIN, MD5, etc...
 
 
-  function get_response()
+  function get_response ()
   {
     if($this->loggedin == false or feof($this->fp)){
       $this->error = EC_NOT_LOGGED_IN;
@@ -156,7 +156,7 @@ class sieve
     } /* end elseif */
     elseif($this->token[0][0] == "{"){
 
-      /* Unable wild assumption:  that the only function that gets here is the get_script(), doesn't really matter though */
+      /* Unable wild assumption:  that the only function that gets here is the get_script (), doesn't really matter though */
 
       /* the first line is the len field {xx}, which we don't care about at this point */
       $this->line = fgets($this->fp,1024);
@@ -171,7 +171,7 @@ class sieve
     } /* end elseif */
     elseif($this->token[0][0] == "\""){
 
-      /* I'm going under the _assumption_ that the only function that will get here is the listscripts().
+      /* I'm going under the _assumption_ that the only function that will get here is the listscripts ().
          I could very well be mistaken here, if I am, this part needs some rework */
 
       $this->found_script=false;
@@ -200,7 +200,7 @@ class sieve
     } /* end else */
   } /* end get_response() */
 
-  function __construct($host, $port, $user, $pass, $auth="",$options ="", $auth_types="PLAIN DIGEST-MD5")
+  function __construct ($host, $port, $user, $pass, $auth="",$options ="", $auth_types="PLAIN DIGEST-MD5")
   {
     $this->host=$host;
     $this->port=$port;
@@ -227,7 +227,7 @@ class sieve
         "<b>SIEVE: Host: $host:$port. Options: $options - Auth Types: $auth_types </b>");
   }
 
-  function parse_for_quotes($string)
+  function parse_for_quotes ($string)
   {
     /* This function tokenizes a line of input by quote marks and returns them as an array */
 
@@ -255,7 +255,7 @@ class sieve
       return false;
   } /* end function */
 
-  function status($string)
+  function status ($string)
   {
     //this should probably be replaced by a smarter parser.
 
@@ -282,7 +282,7 @@ class sieve
     } /* end switch */
   } /* end status() */
 
-  function sieve_login()
+  function sieve_login ()
   {
 
     $this->fp=@fsockopen($this->host,$this->port,$err_id,$err_str);
@@ -413,7 +413,7 @@ class sieve
 
   }
 
-  function sieve_logout()
+  function sieve_logout ()
   {
     if($this->loggedin==false)
       return false;
@@ -428,7 +428,7 @@ class sieve
     return true;
   }
 
-  function sieve_sendscript($scriptname, $script)
+  function sieve_sendscript ($scriptname, $script)
   {
     if($this->loggedin==false)
       return false;
@@ -442,7 +442,7 @@ class sieve
           "<b>SIEVE: Script '".$scriptname."' successfully send!</b>");
       return(TRUE);
     }else{
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim ($this->error_raw),
           "<b>SIEVE: Script couldn't be send!</b>");
       return(FALSE);
     }
@@ -450,7 +450,7 @@ class sieve
 
   //it appears the timsieved does not honor the NUMBER type.  see lex.c in timsieved src.
   //don't expect this function to work yet.  I might have messed something up here, too.
-  function sieve_havespace($scriptname, $scriptsize)
+  function sieve_havespace ($scriptname, $scriptsize)
   {
     if($this->loggedin==false)
       return false;
@@ -459,7 +459,7 @@ class sieve
 
   }
 
-  function sieve_setactivescript($scriptname)
+  function sieve_setactivescript ($scriptname)
   {
     if($this->loggedin==false)
       return false;
@@ -471,13 +471,13 @@ class sieve
           "<b>SIEVE: Set active script '".$scriptname."' was successful!</b>");
       return(TRUE);
     }else{
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim ($this->error_raw),
           "<b>SIEVE: Set active script '".$scriptname."' failed!</b>");
       return(FALSE);
     }
   }
 
-  function sieve_getscript($scriptname)
+  function sieve_getscript ($scriptname)
   {
     unset($this->script);
     if($this->loggedin==false)
@@ -490,14 +490,14 @@ class sieve
           "<b>SIEVE: Get script '".$scriptname."' was successful!</b>");
       return(TRUE);
     }else{
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim ($this->error_raw),
           "<b>SIEVE: Get script '".$scriptname."' failed!</b>");
       return(FALSE);
     }
   }
 
 
-  function sieve_deletescript($scriptname)
+  function sieve_deletescript ($scriptname)
   {
     if($this->loggedin==false)
       return false;
@@ -509,19 +509,19 @@ class sieve
           "<b>SIEVE: Delete script '".$scriptname."' was successful!</b>");
       return(TRUE);
     }else{
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim ($this->error_raw),
           "<b>SIEVE: Delete  script '".$scriptname."' failed!</b>");
       return(FALSE);
     }
   }
 
 
-  function sieve_listscripts()
+  function sieve_listscripts ()
   {
     fputs($this->fp, "LISTSCRIPTS\r\n");
     sieve::get_response();    //should always return true, even if there are no scripts...
     if(isset($this->found_script) and $this->found_script){
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, implode($this->response,", "),
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, implode ($this->response,", "),
           "<b>SIEVE: List scripts was successful!</b>");
       return true;
     }else{
@@ -533,7 +533,7 @@ class sieve
     }
   }
 
-  function sieve_alive()
+  function sieve_alive ()
   {
     if(!isset($this->fp) or $this->fp==0){
       $this->error = EC_NOT_LOGGED_IN;
@@ -548,7 +548,7 @@ class sieve
   }
 
 
-  function authenticate()
+  function authenticate ()
   {
 
     /* Check if a TLS bases connection is required
@@ -557,7 +557,7 @@ class sieve
 
       /* Check if PHP supports TLS encryption for sockets
        */
-      if(function_exists("stream_socket_enable_crypto")){
+      if(function_exists ("stream_socket_enable_crypto")){
 
         /* Initiate TLS and get response
          */
@@ -607,7 +607,7 @@ class sieve
 
         if(sieve::status($this->line) == F_NO){
           $this->error_raw = $this->line;
-          @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim($this->error_raw),
+          @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim ($this->error_raw),
               "<b>SIEVE: Authentication for '".$this->user."-".$this->auth_in_use."' failed.</b>");
 
           return false;

@@ -22,36 +22,36 @@ class sogoResource extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array('inetOrgPerson','top','CalendarResource');
+  var $objectclasses = ['inetOrgPerson','top','CalendarResource'];
 
   /* Return plugin information for acl handling */
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('SOGo resource'),
       'plDescription' => _('SOGo resource'),
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('sogoResource' => array(
+      'plObjectType'  => ['sogoResource' => [
         'name'        => _('SOGo resource'),
         'filter'      => 'objectClass=CalendarResource',
         'aclCategory' => 'sogo',
         'ou'          => get_ou('sogoRDN'),
         'icon'        => 'geticon.php?context=applications&icon=sogo&size=16',
         'mainAttr'    => 'uid'
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo ()
   {
-    return array(
+    return [
       // Attributes are grouped by section
-      'main' => array(
+      'main' => [
         'name'  => _('SOGo resource'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute (get_ou('sogoRDN')),
           new HostNameAttribute (
             _('Entry name'), _('Account name'),
@@ -75,11 +75,11 @@ class sogoResource extends simplePlugin
           new SelectAttribute (
             _('Kind'), _('Kind'),
             'Kind', FALSE,
-            array('location', 'thing', 'group')
+            ['location', 'thing', 'group']
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -92,7 +92,7 @@ class sogoResource extends simplePlugin
     $this->attributesAccess['cn']->setValue($this->attributesAccess['uid']->getValue());
   }
 
-  function save_object()
+  function save_object ()
   {
     parent::save_object();
     $this->attributesAccess['sn']->setValue($this->attributesAccess['uid']->getValue());

@@ -29,7 +29,7 @@ class workingTime extends CompositeAttribute
   /*!
    * \brief Write working time values
    */
-  function writeValues($values)
+  function writeValues ($values)
   {
     return $values[0] * 60 + $values[1];
   }
@@ -37,9 +37,9 @@ class workingTime extends CompositeAttribute
   /*!
    * \brief Read working time values
    */
-  function readValues($val)
+  function readValues ($val)
   {
-    $tab = array();
+    $tab = [];
     $val = intval($val);
     $tab[1] = $val % 60;
     $tab[0] = ($val - $tab[1]) / 60;
@@ -52,26 +52,26 @@ class proxyAccount extends simplePlugin
 {
   /* Definitions */
   var $displayHeader    = TRUE;
-  var $objectclasses    = array("gosaProxyAccount");
+  var $objectclasses    = ["gosaProxyAccount"];
 
   /*!
    * \brief  Static  Function returning an ACL information array.
    *
    * \return Array   Returns an ACL array
    */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Proxy'),
       'plDescription'   => _('This allow to store basic squid settings in ldap for each user'),
       'plIcon'          => 'geticon.php?context=applications&icon=squid&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=squid&size=16',
       'plSelfModify'    => TRUE,
       'plPriority'      => 9,
-      'plObjectType'    => array('user'),
+      'plObjectType'    => ['user'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -79,13 +79,13 @@ class proxyAccount extends simplePlugin
    */
   static function getAttributesInfo ()
   {
-    return array(
-      'section1' => array(
+    return [
+      'section1' => [
         'name'      => _('Proxy account'),
         'template'  => get_template_path('proxyAccount.tpl', TRUE, dirname(__FILE__)),
-        'class'     => array('fullwidth'),
+        'class'     => ['fullwidth'],
 
-        'attrs' => array (
+        'attrs' => [
           new BooleanAttribute(
             _('Filter unwanted content (i.e. pornographic or violence related)'),
             _('filterF'),
@@ -96,10 +96,10 @@ class proxyAccount extends simplePlugin
           new workingTime (
             _('Working Start'),
             'gosaProxyWorkingStart',
-            array (
-              new SelectAttribute ( '',  _('HourStart'),   'hourstart',   TRUE, array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24), 1, array('01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24')),
-              new SelectAttribute ( ':', _('MinuteStart'), 'minutestart', TRUE, array('00','15','30','45'))
-            ),
+             [
+              new SelectAttribute ( '',  _('HourStart'),   'hourstart',   TRUE, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24], 1, ['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24']),
+              new SelectAttribute ( ':', _('MinuteStart'), 'minutestart', TRUE, ['00','15','30','45'])
+            ],
             // read format (not used)
             '',
             // write format (not used)
@@ -111,20 +111,20 @@ class proxyAccount extends simplePlugin
           new workingTime (
             _('Working Stop'),
             'gosaProxyWorkingStop',
-            array (
-              new SelectAttribute ( _('-'), _('HourStart'), 'hourstop',   TRUE, array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24), 1, array('01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24')),
-              new SelectAttribute ( _(':'), _('MinuteStop'), 'minutestop', TRUE, array('00','15','30','45'))
-            ),
+             [
+              new SelectAttribute ( _('-'), _('HourStart'), 'hourstop',   TRUE, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24], 1, ['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24']),
+              new SelectAttribute ( _(':'), _('MinuteStop'), 'minutestop', TRUE, ['00','15','30','45'])
+            ],
             '',
             ''
           ),
           new CompositeAttribute (
             _('Restrict proxy usage by quota'),
             'gosaProxyQuota',
-            array(
+            [
               new IntAttribute    ('',  _('Up'), 'quota_size', FALSE, 0, FALSE, 21),
-              new SelectAttribute ('', '', 'quota_unit', FALSE, array('k','m','g'), '', array('KB','MB','GB')),
-            ),
+              new SelectAttribute ('', '', 'quota_unit', FALSE, ['k','m','g'], '', ['KB','MB','GB']),
+            ],
             '/^(\\d+)(.)$/',
             '%d%s',
              // acl
@@ -136,7 +136,7 @@ class proxyAccount extends simplePlugin
             _('per'),
             'gosaProxyQuotaPeriod',
             FALSE,
-            array ('h','d','w','m'), "", array (_("hour"),_("day"),_("week"),_("month"))
+             ['h','d','w','m'], "",  [_("hour"),_("day"),_("week"),_("month")]
           ),
           new BooleanAttribute (
             _('Start Working Hours'),
@@ -156,9 +156,9 @@ class proxyAccount extends simplePlugin
              // acl
             'gosaProxyQuota'
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -170,26 +170,26 @@ class proxyAccount extends simplePlugin
     $this->attributesInfo['section1']['attrs']['enableWorkingTime']->setValue(isset($this->attrs['gosaProxyWorkingStart']));
     $this->attributesInfo['section1']['attrs']['enableWorkingTime']->setInLdap(FALSE);
     $this->attributesInfo['section1']['attrs']['enableWorkingTime']->setManagedAttributes(
-      array(
-        'erase' => array(
-          FALSE => array(
+      [
+        'erase' => [
+          FALSE => [
             'gosaProxyWorkingStart',
             'gosaProxyWorkingStop',
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
     $this->attributesInfo['section1']['attrs']['enableQuota']->setValue(isset($this->attrs['gosaProxyQuota']));
     $this->attributesInfo['section1']['attrs']['enableQuota']->setInLdap(FALSE);
     $this->attributesInfo['section1']['attrs']['enableQuota']->setManagedAttributes(
-      array(
-        'erase' => array(
-          FALSE => array(
+      [
+        'erase' => [
+          FALSE => [
             'gosaProxyQuota',
             'gosaProxyQuotaPeriod',
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
   }
 }

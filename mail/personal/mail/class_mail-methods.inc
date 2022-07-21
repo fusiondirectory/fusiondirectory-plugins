@@ -63,9 +63,9 @@ class mailMethod
   protected $mailSharedPrefix = '';
 
   /* The attribute mapping for this class  Source --> Destination */
-  protected $attributes         = array();
-  protected $userObjectClasses  = array();
-  protected $shareObjectClasses = array();
+  protected $attributes         = [];
+  protected $userObjectClasses  = [];
+  protected $shareObjectClasses = [];
 
   /* Features */
   protected $enableQuota            = TRUE;
@@ -88,9 +88,9 @@ class mailMethod
   protected $error              = '';
   protected $parent             = NULL;
 
-  protected $default_acls = array('__anyone__' => 'p', '__member__' => 'lrswp');
+  protected $default_acls = ['__anyone__' => 'p', '__member__' => 'lrswp'];
 
-  protected $acl_map = array(
+  protected $acl_map = [
     'lrsw'      => 'read',
     'lrswp'     => 'post',
     'p'         => 'external post',
@@ -99,15 +99,15 @@ class mailMethod
     'lrswipcd'  => 'write',
     'lrswipcda' => 'admin',
     ' '         => 'none'
-  );
+  ];
 
-  protected $acl_mapping = array();
+  protected $acl_mapping = [];
 
   /*! \brief  Constructs the mail class
       @param  Object  Plugin  The initator
       @param  String          Open "user" or "group" account.
    */
-  function __construct($parent, $type = 'user')
+  function __construct ($parent, $type = 'user')
   {
     $this->parent = $parent;
 
@@ -115,7 +115,7 @@ class mailMethod
       trigger_error('mailMethod with invalid parent object initialized.');
     }
 
-    if (!in_array($this->type, array('user','group'))) {
+    if (!in_array($this->type, ['user','group'])) {
       trigger_error('Unknown mail class type used "'.$type.'".');
     } else {
       $this->type = $type;
@@ -125,7 +125,7 @@ class mailMethod
 
   /*! \brief  Intialize attributes and config settings.
    */
-  protected function init()
+  protected function init ()
   {
     global $config;
     /* Get config value for cyrusUseSlashes */
@@ -140,7 +140,7 @@ class mailMethod
        is overridden in the configuration file */
     if ($config->get_cfg_value('mailAttribute', '') != '') {
       $new_uattrib = strtolower($config->get_cfg_value('mailAttribute'));
-      if (in_array($new_uattrib, array('mail','uid'))) {
+      if (in_array($new_uattrib, ['mail','uid'])) {
         $this->uattrib = $new_uattrib;
       } else {
         @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$new_uattrib."</b>",
@@ -179,7 +179,7 @@ class mailMethod
     $this->initial_account_id = $this->account_id;
   }
 
-  public function fixAttributesOnLoad()
+  public function fixAttributesOnLoad ()
   {
     foreach ($this->attributes as $source => $dest) {
       if (isset($this->parent->attrs[$source])) {
@@ -194,7 +194,7 @@ class mailMethod
     }
   }
 
-  public function fixAttributesOnRemove()
+  public function fixAttributesOnRemove ()
   {
     /* Remove objectClasses */
     if ($this->type == 'user') {
@@ -203,15 +203,15 @@ class mailMethod
     } else {
       $this->parent->attrs['objectClass'] =
         array_remove_entries_ics($this->shareObjectClasses, $this->parent->attrs['objectClass']);
-      $this->parent->attrs['gosaSharedFolderTarget'] = array();
+      $this->parent->attrs['gosaSharedFolderTarget'] = [];
     }
     foreach ($this->attributes as $source => $dest) {
-      $this->attrs[$dest]   = array();
-      $this->attrs[$source] = array();
+      $this->attrs[$dest]   = [];
+      $this->attrs[$source] = [];
     }
   }
 
-  public function fixAttributesOnStore()
+  public function fixAttributesOnStore ()
   {
     foreach ($this->attributes as $source => $dest) {
       if (isset($this->parent->attrs[$dest])) {
@@ -244,10 +244,10 @@ class mailMethod
               Not necessary for the base class.
       @return Boolean True if this method is connected else false.
    */
-  public function connect()
+  public function connect ()
   {
     $this->reset_error();
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, get_class($this), '<b>MAIL: Connect method</b>');
+    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, get_class ($this), '<b>MAIL: Connect method</b>');
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->parent->gosaMailServer, '<b>MAIL: Current server</b>');
 
     $this->connected = TRUE;
@@ -257,7 +257,7 @@ class mailMethod
   /*! \brief  Returns the connection status of this method.
       @return Boolean True if this method is connected else false.
    */
-  public function is_connected()
+  public function is_connected ()
   {
     return $this->connected;
   }
@@ -265,27 +265,27 @@ class mailMethod
   /*! \brief  Disconnect this method. Close services like imap connection.
               Not necessary for the base class.
    */
-  public function disconnect()
+  public function disconnect ()
   {
     $this->reset_error();
     if ($this->is_connected()) {
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, get_class($this), '<b>MAIL: Disconnect method</b>');
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, get_class ($this), '<b>MAIL: Disconnect method</b>');
       $this->connected = FALSE;
     }
   }
 
   /*! \brief Checks data consistency
   */
-  public function check()
+  public function check ()
   {
-    return array();
+    return [];
   }
 
   /*! \brief  Returns true the current object represents a valid account
               (Some methods may check imap accounts here.)
       @return Boolean TRUE if this is a valid account else FALSE
   */
-  public function account_exists()
+  public function account_exists ()
   {
     $this->reset_error();
     return TRUE;
@@ -294,17 +294,17 @@ class mailMethod
   /*! \brief  Returns the last error occurred
       @return String  The last error message.
    */
-  public function get_error()
+  public function get_error ()
   {
     return $this->error;
   }
 
-  public function isModifyableMail()
+  public function isModifyableMail ()
   {
     return $this->modifyableMail;
   }
 
-  public function isModifyableServer()
+  public function isModifyableServer ()
   {
     return $this->modifyableServer;
   }
@@ -312,19 +312,19 @@ class mailMethod
   /*! \brief  Returns TRUE if the action caused an error.
       @return Boolean TRUE on error else FALSE
    */
-  public function is_error()
+  public function is_error ()
   {
     return ($this->error != '');
   }
 
   /*! \brief  Resets the error message.
    */
-  public function reset_error()
+  public function reset_error ()
   {
     $this->error = '';
   }
 
-  public function get_account_id()
+  public function get_account_id ()
   {
     $this->build_account_id();
     return $this->account_id;
@@ -332,7 +332,7 @@ class mailMethod
 
   /*! \brief  Create a new account id, like 'user/name@domain.com'.
    */
-  protected function build_account_id()
+  protected function build_account_id ()
   {
     /* Build account identicator */
     if ($this->type == "user") {
@@ -364,7 +364,7 @@ class mailMethod
 
     /* Create account_id
      */
-    $from   = array("/%cn%/i","/%uid%/i","/%prefix%/i","/%uattrib%/i","/%domain%/i","/%mailpart%/i","/%mail%/i");
+    $from   = ["/%cn%/i","/%uid%/i","/%prefix%/i","/%uattrib%/i","/%domain%/i","/%mailpart%/i","/%mail%/i"];
     $uid    = '';
     $cn     = '';
     $attrib = '';
@@ -379,7 +379,7 @@ class mailMethod
     if (isset($this->parent->$uattrib)) {
       $attrib = $this->parent->$uattrib;
     }
-    $to     = array($cn,$uid,$prefix,$attrib,$domain,$mailpart,$mail);
+    $to     = [$cn,$uid,$prefix,$attrib,$domain,$mailpart,$mail];
     $acc_id = trim(strtolower(preg_replace($from, $to, $acc_string)));
 
     /* Check for not replaced pattern.
@@ -408,7 +408,7 @@ class mailMethod
               This function is mainly used to read and write folder permissions.
       @return String A valid folder id
    */
-  public function create_folder_id($folder)
+  public function create_folder_id ($folder)
   {
     if (!empty($folder)) {
       $folder = trim(preg_replace("/^INBOX[\.\/]*/i", "", $folder));
@@ -446,8 +446,8 @@ class mailMethod
     }
 
     /* Create account_id */
-    $from   = array("/%cn%/i","/%uid%/i","/%prefix%/i","/%uattrib%/i","/%domain%/i","/%mailpart%/i","/%mail%/i");
-    $to     = array($this->parent->cn,$this->parent->uid,$prefix,$this->parent->$uattrib, $domain, $mailpart,$mail);
+    $from   = ["/%cn%/i","/%uid%/i","/%prefix%/i","/%uattrib%/i","/%domain%/i","/%mailpart%/i","/%mail%/i"];
+    $to     = [$this->parent->cn,$this->parent->uid,$prefix,$this->parent->$uattrib, $domain, $mailpart,$mail];
     $acc_id = trim(strtolower(preg_replace($from, $to, $acc_string)));
 
     /* Check for not replaced pattern */
@@ -473,7 +473,7 @@ class mailMethod
 
   /*! \brief Saves sieve settings
    */
-  public function saveSieveSettings()
+  public function saveSieveSettings ()
   {
     $this->reset_error();
     return TRUE;
@@ -481,7 +481,7 @@ class mailMethod
 
   /*! \brief  Creates or Updates the mailAccount represented by this class.
    */
-  public function updateMailbox()
+  public function updateMailbox ()
   {
     $this->reset_error();
     return TRUE;
@@ -490,7 +490,7 @@ class mailMethod
   /*! \brief  Removes the mailbox represented by this class,
                and update shared folder ACLs .
    */
-  public function deleteMailbox()
+  public function deleteMailbox ()
   {
     $this->reset_error();
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
@@ -502,7 +502,7 @@ class mailMethod
   /*! \brief  Returns the used mail attribute (mail,uid)
       @param  String  One out of 'mail','uid'
    */
-  public function getUAttrib()
+  public function getUAttrib ()
   {
     return $this->uattrib;
   }
@@ -510,7 +510,7 @@ class mailMethod
   /*! \brief  Returns the used mail attribute (mail,uid)
       @param  String  One out of 'mail','uid'
    */
-  public function getUAttribValue()
+  public function getUAttribValue ()
   {
     $uattrib = $this->getUAttrib();
     return $this->parent->$uattrib;
@@ -519,7 +519,7 @@ class mailMethod
   /*! \brief  Returns whether the quota settings are enabled or not
       @return Boolean TRUE if enabled else FALSE
    */
-  public function quotaEnabled()
+  public function quotaEnabled ()
   {
     return $this->enableQuota;
   }
@@ -527,7 +527,7 @@ class mailMethod
   /*! \brief  Returns the used quota
       @return Integer Quota used.
    */
-  public function getQuotaUsage()
+  public function getQuotaUsage ()
   {
     return -1;
   }
@@ -535,14 +535,14 @@ class mailMethod
   /*! \brief  Returns the quota restrictions.
       @return Integer Quota restrictions.
    */
-  public function getQuota($quotaValue)
+  public function getQuota ($quotaValue)
   {
     return $quotaValue;
   }
 
   /*! \brief  Sets the mail quota
    */
-  public function setQuota($number)
+  public function setQuota ($number)
   {
     if (!is_numeric($number)) {
       $number = (int) $number;
@@ -557,15 +557,15 @@ class mailMethod
   /*! \brief  Returns the list of configured mailbox folders
       @return Array The mailbox folders.
    */
-  public function getMailboxList()
+  public function getMailboxList ()
   {
-    return array("INBOX");
+    return ["INBOX"];
   }
 
   /*! \brief  Returns whether the vacation is enabled
       @return Boolean TRUE, FALSE
    */
-  public function vacationEnabled()
+  public function vacationEnabled ()
   {
     return $this->enableVacation;
   }
@@ -573,7 +573,7 @@ class mailMethod
   /*! \brief  Returns whether the vacation range is selectable or not
       @return Boolean TRUE, FALSE
    */
-  public function vacationRangeEnabled()
+  public function vacationRangeEnabled ()
   {
     return ($this->vacationEnabled() && $this->enableVacationRange);
   }
@@ -581,7 +581,7 @@ class mailMethod
   /*! \brief  Returns whether forwarding to group non-members is possible
       @return Boolean TRUE, FALSE
    */
-  public function groupForwardingEnabled()
+  public function groupForwardingEnabled ()
   {
     return $this->enableGroupForwarding;
   }
@@ -589,7 +589,7 @@ class mailMethod
   /*! \brief  Returns whether forcing to only send/recieve local mail is possible
       @return Boolean TRUE, FALSE
    */
-  public function localOnlyEnabled()
+  public function localOnlyEnabled ()
   {
     return $this->enableLocalOnly;
   }
@@ -597,14 +597,14 @@ class mailMethod
   /*! \brief  Returns whether forwarding without storing the mail is possible
       @return Boolean TRUE, FALSE
    */
-  public function forwardOnlyEnabled()
+  public function forwardOnlyEnabled ()
   {
     return $this->enableForwardOnly;
   }
 
   /*! \brief  Checks dependencies to other FusionDirectory plugins.
    */
-  public function accountCreateable(&$reason = "")
+  public function accountCreateable (&$reason = "")
   {
     return TRUE;
   }
@@ -612,7 +612,7 @@ class mailMethod
   /*! \brief  Checks whether this account is removeable or not.
               There may be some dependencies left, eg. kolab.
    */
-  public function accountRemoveable(&$reason = "")
+  public function accountRemoveable (&$reason = "")
   {
     return TRUE;
   }
@@ -621,13 +621,13 @@ class mailMethod
   /*! \brief  Returns all mail servers configured in FusionDirectory
       @return Array  All useable mail servers
   */
-  static public function getMailServers()
+  static public function getMailServers ()
   {
     if (session::global_is_set('mailServers')) {
       return session::global_get('mailServers');
     }
     $methods = mailMethod::get_methods();
-    $servers = array();
+    $servers = [];
     foreach ($methods as $class) {
       $servers = array_merge($servers, $class::get_server_list());
     }
@@ -635,7 +635,7 @@ class mailMethod
     return $servers;
   }
 
-  static public function resetMailServersCache()
+  static public function resetMailServersCache ()
   {
     session::global_un_set('mailServers');
   }
@@ -643,10 +643,10 @@ class mailMethod
   /*! \brief  Returns the available mailMethods
       @return Array   A list of all avaialable mailMethods_
    */
-  static public function get_methods()
+  static public function get_methods ()
   {
     global $class_mapping;
-    $available = array('mailMethod' => 'mailMethod');
+    $available = ['mailMethod' => 'mailMethod'];
     foreach ($class_mapping as $class => $path) {
       if (preg_match('/^mailMethod.+/', $class)) {
         $available[$class] = $class;
@@ -655,7 +655,7 @@ class mailMethod
     return $available;
   }
 
-  static public function getServerMethod($server)
+  static public function getServerMethod ($server)
   {
     $methods = mailMethod::get_methods();
     foreach ($methods as $class) {
@@ -668,12 +668,12 @@ class mailMethod
     return 'mailMethod';
   }
 
-  static public function serverMatch($server)
+  static public function serverMatch ($server)
   {
     return isset(static::get_server_list()[$server]);
   }
 
-  static public function getInstance($class, $parent, $type = NULL)
+  static public function getInstance ($class, $parent, $type = NULL)
   {
     if ($parent instanceof mailAccount) {
       $type = 'user';
@@ -687,7 +687,7 @@ class mailMethod
 
   /*! \brief  Returns configured acls
    */
-  public function  getFolderACLs($folder_acls)
+  public function  getFolderACLs ($folder_acls)
   {
     /* Merge given ACL with acl mapping
        This ensures that no ACL will accidentally overwritten by fusiondirectory.
@@ -703,7 +703,7 @@ class mailMethod
 
   /*! \brief  Write ACLs back to imap or what ever
    */
-  public function  setFolderACLs($array)
+  public function  setFolderACLs ($array)
   {
     return TRUE;
   }
@@ -711,7 +711,7 @@ class mailMethod
   /*! \brief  Returns a list of all possible acls.
       @return Array   ACLs.
   */
-  public function getAclTypes()
+  public function getAclTypes ()
   {
     return $this->acl_mapping;
   }
@@ -719,7 +719,7 @@ class mailMethod
   /*! \brief  Returns the configured mailMethod
       @return String  the configured mail method or ""
    */
-  static public function get_current_method()
+  static public function get_current_method ()
   {
     global $class_mapping, $config;
     $method = $config->get_cfg_value("mailmethod");
@@ -732,7 +732,7 @@ class mailMethod
     return "";
   }
 
-  static function quota_to_image($use, $quota)
+  static function quota_to_image ($use, $quota)
   {
     if ($use == -1) {
       return "&nbsp;&nbsp;"._("Unknown");
@@ -744,16 +744,16 @@ class mailMethod
     }
   }
 
-  static public function get_server_list()
+  static public function get_server_list ()
   {
     global $config;
-    $serverList = array();
+    $serverList = [];
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=fdImapServer)', array('cn'));
+    $ldap->search('(objectClass=fdImapServer)', ['cn']);
     while ($attrs = $ldap->fetch()) {
-      $serverList[$attrs['cn'][0]] = array(
+      $serverList[$attrs['cn'][0]] = [
         'server_dn'     => $attrs['dn'],
         'connect'       => '',
         'admin'         => '',
@@ -761,7 +761,7 @@ class mailMethod
         'sieve_server'  => '',
         'sieve_option'  => '',
         'sieve_port'    => ''
-      );
+      ];
     }
 
     return $serverList;
@@ -770,7 +770,7 @@ class mailMethod
   /*! \brief  Returns the default sharedFolder ACLs for this method.
       @return Array Returns an array containg acls for __member__ and __anyone__
    */
-  public function getDefaultACLs()
+  public function getDefaultACLs ()
   {
     $tmp = $this->default_acls;
     if (!isset($tmp['__member__'])) {
@@ -782,9 +782,9 @@ class mailMethod
     return $tmp;
   }
 
-  public function additionalInformations()
+  public function additionalInformations ()
   {
-    return array();
+    return [];
   }
 }
 ?>

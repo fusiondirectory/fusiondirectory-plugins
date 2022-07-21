@@ -22,33 +22,33 @@ class faiScript extends faiSimplePluginClass
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array('top','FAIclass','FAIscript');
+  var $objectclasses = ['top','FAIclass','FAIscript'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Script'),
       'plDescription' => _('FAI script'),
-      'plObjectType'  => array(
-        'faiScript' => array(
+      'plObjectType'  => [
+        'faiScript' => [
           'name'        => _('FAI script'),
           'filter'      => 'objectClass=FAIscript',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiScriptRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-script&size=16'
-        )
-      ),
+        ]
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new HostNameAttribute (
             _('Class name'), _('Variables class name'),
             'cn', TRUE
@@ -57,16 +57,16 @@ class faiScript extends faiSimplePluginClass
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
-        )
-      ),
-      'vars' => array(
+        ]
+      ],
+      'vars' => [
         'name'  => _('Scripts'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new SubNodesAttribute (
             '', _('Variables in this class'),
-            'scripts', array('FAIscriptEntry','FAIclass','top'),
-            array(
+            'scripts', ['FAIscriptEntry','FAIclass','top'],
+            [
               new StringAttribute (
                 _('Name'), _('The name of the variable'),
                 'cn', TRUE
@@ -85,14 +85,14 @@ class faiScript extends faiSimplePluginClass
                 'FAIscript', TRUE,
                 '.sh'
               ),
-            ),
+            ],
             FALSE, /* no order */
-            array(),
+            [],
             TRUE /* edit enabled */
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -103,7 +103,7 @@ class faiScript extends faiSimplePluginClass
     $this->attributesAccess['scripts']->setLinearRendering(FALSE);
   }
 
-  protected function shouldSave()
+  protected function shouldSave ()
   {
     /* We need ldap_save to always run */
     return TRUE;

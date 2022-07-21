@@ -22,34 +22,34 @@ class simpleSecurityObject extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array('organizationalRole', 'top', 'simpleSecurityObject');
+  var $objectclasses = ['organizationalRole', 'top', 'simpleSecurityObject'];
 
   /* Return plugin information for acl handling */
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Simple security object'),
       'plDescription' => _('Simple security object'),
-      'plObjectType'  => array('simpleSecurityObject' => array(
+      'plObjectType'  => ['simpleSecurityObject' => [
         'name'        => _('Simple security object'),
         'filter'      => 'objectClass=simpleSecurityObject',
         'aclCategory' => 'dsa',
         'ou'          => get_ou('dsaRDN'),
         'icon'        => 'geticon.php?context=applications&icon=dsa&size=16',
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo ()
   {
-    return array(
+    return [
       // Attributes are grouped by section
-      'main' => array(
+      'main' => [
         'name'  => _('Simple security object'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute (get_ou('dsaRDN')),
           new HostNameAttribute (
             _('Entry name'), _('Account name'),
@@ -59,18 +59,18 @@ class simpleSecurityObject extends simplePlugin
             _('Description'), _('Description of this simple security object'),
             'description', FALSE
           ),
-        )
-      ),
-      'password' => array(
+        ]
+      ],
+      'password' => [
         'name'  => _('Change password'),
-        'attrs' => array(
+        'attrs' => [
           new UserPasswordAttribute (
             _('Password'), _('Password'),
             'userPassword', FALSE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }
 

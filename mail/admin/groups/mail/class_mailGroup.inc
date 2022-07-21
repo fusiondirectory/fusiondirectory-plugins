@@ -31,34 +31,34 @@ class GroupMailsAttribute extends MailsAttribute
 
   function getFilterBlackList ()
   {
-    return array('mail' => $this->getForbiddenValues());
+    return ['mail' => $this->getForbiddenValues()];
   }
 }
 
 class mailGroup extends simplePlugin
 {
   var $displayHeader  = TRUE;
-  var $objectclasses  = array('fdGroupMail');
+  var $objectclasses  = ['fdGroupMail'];
   /* Return plugin information for acl handling */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Mail'),
       'plDescription'   => _('Group mail options'),
       'plIcon'          => 'geticon.php?context=applications&icon=internet-mail&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=internet-mail&size=16',
       'plPriority'      => 10,
-      'plObjectType'    => array('group', 'ogroup-user'),
+      'plObjectType'    => ['group', 'ogroup-user'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Information'),
-        'attrs' => array(
+        'attrs' => [
           new MailAttribute (
             _('Primary address'), _('The primary mail address'),
             'mail', TRUE
@@ -66,7 +66,7 @@ class mailGroup extends simplePlugin
           new SelectAttribute (
             _('Server'), _('Email server'),
             'gosaMailServer', TRUE,
-            array('')
+            ['']
           ),
           new SetAttribute (
             new StringAttribute (
@@ -83,9 +83,9 @@ class mailGroup extends simplePlugin
             'fdGroupMailLocalOnly', FALSE,
             FALSE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -98,7 +98,7 @@ class mailGroup extends simplePlugin
   }
 
   /* We need $mailAccount->cn to return the cn for mailMethod */
-  public function __get($name)
+  public function __get ($name)
   {
     if (($name == 'cn') && isset($this->parent)) {
       return $this->parent->getBaseObject()->$name;
@@ -108,7 +108,7 @@ class mailGroup extends simplePlugin
     }
   }
 
-  public function __isset($name)
+  public function __isset ($name)
   {
     if (($name == 'cn') && isset($this->parent)) {
       return isset($this->parent->getBaseObject()->$name);
@@ -118,7 +118,7 @@ class mailGroup extends simplePlugin
     }
   }
 
-  public function mailServerChanged()
+  public function mailServerChanged ()
   {
     /* Intialize the used mailMethod */
     if ($this->gosaMailServer == '') {
@@ -152,7 +152,7 @@ class mailGroup extends simplePlugin
     } else {
       $this->attributesAccess['gosaMailForwardingAddress']->setDisabled(TRUE);
       $this->attributesAccess['gosaMailForwardingAddress']->setVisible(FALSE);
-      $this->attributesAccess['gosaMailForwardingAddress']->setValue(array());
+      $this->attributesAccess['gosaMailForwardingAddress']->setValue([]);
     }
   }
 
@@ -167,13 +167,13 @@ class mailGroup extends simplePlugin
     return $messages;
   }
 
-  protected function shouldSave()
+  protected function shouldSave ()
   {
     /* mail method might have something to save (like password change from main tab for instance) */
     return TRUE;
   }
 
-  public function ldap_save()
+  public function ldap_save ()
   {
     if (!empty($this->attrs)) {
       $errors = parent::ldap_save();
@@ -182,7 +182,7 @@ class mailGroup extends simplePlugin
       }
     }
 
-    $errors = array();
+    $errors = [];
 
     /* Only do IMAP actions if we are not a template */
     if (!$this->is_template) {
@@ -207,7 +207,7 @@ class mailGroup extends simplePlugin
     return $errors;
   }
 
-  function post_remove()
+  function post_remove ()
   {
     /* Let the mailMethod remove this mailbox */
     if (!$this->is_template) {

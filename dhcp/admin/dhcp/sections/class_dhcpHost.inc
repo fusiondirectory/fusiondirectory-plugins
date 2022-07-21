@@ -20,52 +20,52 @@
 
 class dhcpHost extends dhcpPlugin
 {
-  public $objectclasses = array('dhcpHost');
+  public $objectclasses = ['dhcpHost'];
   private $parentPlugin;
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('DHCP host'),
       'plDescription'   => _('DHCP host'),
-      'plCategory'      => array('dhcpConfiguration'),
+      'plCategory'      => ['dhcpConfiguration'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
     $attributesInfo = parent::getAttributesInfo();
-    $attributesInfo['host'] = array(
+    $attributesInfo['host'] = [
       'name'  => _('Host'),
-      'attrs' => array(
+      'attrs' => [
         new CompositeAttribute(
           _('The client hardware address'), 'dhcpHWAddress',
-          array(
+          [
             new SelectAttribute (
               '', _('The hardware address type'),
               'dhcpHWAddress_type', TRUE,
-              array(  'ethernet',   'fddi',   'token-ring'), 'ethernet',
-              array(_('Ethernet'),_('FDDI'),_('Token Ring'))
+              [  'ethernet',   'fddi',   'token-ring'], 'ethernet',
+              [_('Ethernet'),_('FDDI'),_('Token Ring')]
             ),
             new StringAttribute (
               '', _('The client hardware address'),
               'dhcpHWAddress_address', TRUE
             ),
-          ),
+          ],
           '/^([^ ]+) ([^ ]+)$/',
           '%s %s',
           '',
           _('Hardware address')
         )
-      )
-    );
+      ]
+    ];
     $attributesInfo['host']['attrs'][0]->setRequired(TRUE);
     $attributesInfo['host']['attrs'][0]->setLinearRendering(TRUE);
     $attributesInfo['main']['attrs'][2]->setDefaultValue(
-      array(
+      [
         'fixed-address ip',
-      )
+      ]
     );
     return $attributesInfo;
   }
@@ -76,7 +76,7 @@ class dhcpHost extends dhcpPlugin
     parent::__construct($plugin, $dn, $attrs);
   }
 
-  function check()
+  function check ()
   {
     $messages = parent::check();
     $dn = $this->dn;

@@ -39,31 +39,31 @@ class BaseSelectorOrDnAttribute extends BaseSelectorAttribute
 class ldapmanager extends simplePlugin
 {
   /* Return plugin information for acl handling */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('LDIF'),
       'plDescription' => _('Export/Import the ldap tree to/from LDIF format'),
-      'plObjectType'  => array('ldapmanager' => array(
+      'plObjectType'  => ['ldapmanager' => [
         'name'      => _('LDAP Manager'),
         'tabClass'  => 'ldiftabs',
         'mainAttr'  => FALSE
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'export' => array(
+    return [
+      'export' => [
         'name'  => _('Export'),
-        'attrs' => array(
+        'attrs' => [
           new CompositeAttribute (
             _('DN of a single entry to export as ldif'),
             'single_export',
-            array(
+            [
               new StringAttribute (
                 '', '',
                 'single_dn', FALSE
@@ -73,7 +73,7 @@ class ldapmanager extends simplePlugin
                 'single_submit',
                 _('Export')
               )
-            ),
+            ],
             '', '%s%s', '',
             _('Export single entry')
           ),
@@ -86,22 +86,22 @@ class ldapmanager extends simplePlugin
           new CompositeAttribute (
             _('Download a complete snapshot of the running LDAP directory for this base as ldif'),
             'complete_export',
-            array(
+            [
               new BaseSelectorOrDnAttribute ('', '', ''),
               new ButtonAttribute (
                 '', '',
                 'complete_submit',
                 _('Export')
               )
-            ),
+            ],
             '', '%s%s', '',
             _('Export complete LDIF for')
           )
-        )
-      ),
-      'import' => array(
+        ]
+      ],
+      'import' => [
         'name'  => _('Import LDIF'),
-        'attrs' => array(
+        'attrs' => [
           new BooleanAttribute (
             _('Overwrite existing entries'), _('Remove fields that are not in the LDIF from the LDAP entries if they were existing.'),
             'overwrite', FALSE,
@@ -110,7 +110,7 @@ class ldapmanager extends simplePlugin
           new CompositeAttribute (
             _('Import an LDIF file into your LDAP. Remember that FusionDirectory will not check your LDIFs for FusionDirectory conformance.'),
             'import',
-            array(
+            [
               new FileTextAreaAttribute (
                 '', '',
                 'import_ldif_file', FALSE
@@ -120,13 +120,13 @@ class ldapmanager extends simplePlugin
                 'import_ldif_submit',
                 _('Import')
               )
-            ),
+            ],
             '', '%s%s', '',
             _('Import LDIF file')
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -143,7 +143,7 @@ class ldapmanager extends simplePlugin
     $this->attributesAccess['export_filter']->setInLdap(FALSE);
   }
 
-  function handle_single_submit()
+  function handle_single_submit ()
   {
     global $config;
     $ldap = $config->get_ldap_link();
@@ -158,13 +158,13 @@ class ldapmanager extends simplePlugin
     $this->save_export($dn, $acl, 'base', 'entryExport.ldif');
   }
 
-  function handle_complete_submit()
+  function handle_complete_submit ()
   {
     $acl    = $this->attributesAccess['complete_export']->getAcl();
     $this->save_export($this->complete_export, $acl, 'sub', 'fullExport.ldif');
   }
 
-  function save_export($dn, $acl, $scope, $name)
+  function save_export ($dn, $acl, $scope, $name)
   {
     global $config;
     // An LDIF export was asked
@@ -188,7 +188,7 @@ class ldapmanager extends simplePlugin
     }
   }
 
-  function handle_import_ldif_submit()
+  function handle_import_ldif_submit ()
   {
     global $config;
     if (empty($this->import)) {
@@ -204,17 +204,17 @@ class ldapmanager extends simplePlugin
     }
   }
 
-  function save()
+  function save ()
   {
-    return array();
+    return [];
   }
 
-  function remove($fulldelete = FALSE)
+  function remove ($fulldelete = FALSE)
   {
-    return array();
+    return [];
   }
 
-  function get_allowed_bases()
+  function get_allowed_bases ()
   {
     global $config;
     return $config->idepartments;

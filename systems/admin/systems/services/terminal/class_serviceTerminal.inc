@@ -21,25 +21,25 @@
 
 class serviceTerminal extends simpleService
 {
-  var $objectclasses = array('goTerminalServer');
+  var $objectclasses = ['goTerminalServer'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Terminal service'),
       'plDescription' => _('Terminal service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=devices&icon=terminal&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-      return array (
-      'section1' => array (
+      return  [
+      'section1' => [
         'name'  => _('Terminal service'),
-        'attrs' => array (
+        'attrs' => [
           new BooleanAttribute (
             _('Temporary disable login'),
             _('Disables the login on this terminal server'),
@@ -54,14 +54,14 @@ class serviceTerminal extends simpleService
               _('Supported session types'),
               _('The session types supported by this terminal server'),
               'gotoSessionType', FALSE,
-              array('XDMCP', 'LDM', 'SHELL', 'TELNET', 'RDP'),
+              ['XDMCP', 'LDM', 'SHELL', 'TELNET', 'RDP'],
               '',
-              array(_('XDMCP'), _('LDM'), _('Shell'), _('Telnet'), _('Windows RDP'))
+              [_('XDMCP'), _('LDM'), _('Shell'), _('Telnet'), _('Windows RDP')]
             )
           )
-        )
-      )
-    );
+        ]
+      ]
+      ];
   }
 }
 

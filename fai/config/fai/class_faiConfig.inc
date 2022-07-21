@@ -20,35 +20,35 @@
 
 class faiConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdFaiPluginConf');
+  var $objectclasses  = ['fdFaiPluginConf'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('FAI configuration'),
       'plDescription'   => _('FusionDirectory fai plugin configuration'),
       'plSelfModify'    => FALSE,
-      'plObjectType'    => array('configuration'),
+      'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    $attrs = array(
-      'main' => array(
+    $attrs = [
+      'main' => [
         'name'  => _('FAI'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute (
             _('Fai base RDN'), _('Branch in which fai branches will be stored'),
             'fdFaiBaseRDN', TRUE,
             'ou=fai,ou=configs,ou=systems'
           ),
-        )
-      ),
-    );
-    $rdns = array('Script', 'Hook', 'Template', 'Variable', 'Profile', 'Package', 'PartitionTable');
+        ]
+      ],
+    ];
+    $rdns = ['Script', 'Hook', 'Template', 'Variable', 'Profile', 'Package', 'PartitionTable'];
     foreach ($rdns as $rdn) {
       if ($rdn == 'PartitionTable') {
         $default = 'ou=disk';

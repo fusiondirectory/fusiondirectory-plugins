@@ -23,26 +23,26 @@ class workstationGeneric extends ipHostPlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array('fdWorkstation', 'ieee802Device');
+  var $objectclasses = ['fdWorkstation', 'ieee802Device'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Workstation'),
       'plDescription' => _('Workstation information'),
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('workstation' =>
-        array(
+      'plObjectType'  => ['workstation' =>
+        [
           'name'        => _('Workstation'),
           'description' => _('Workstation'),
           'filter'      => 'objectClass=fdWorkstation',
           'ou'          => get_ou('workstationRDN'),
           'icon'        => 'geticon.php?context=devices&icon=computer&size=16',
           'mainAttr'    => 'cn',
-        )
-      ),
+        ]
+      ],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ($word = NULL, $rdn = NULL)
@@ -53,10 +53,10 @@ class workstationGeneric extends ipHostPlugin
     if ($rdn === NULL) {
       $rdn = get_ou('workstationRDN');
     }
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute($rdn),
           new HostNameAttribute (
             _('Name'),
@@ -83,12 +83,12 @@ class workstationGeneric extends ipHostPlugin
             'locked',
             'unlocked'
           ),
-        )
-      ),
-      'network' => array(
+        ]
+      ],
+      'network' => [
         'name'      => _('Network settings'),
         'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
-        'attrs'     => array(
+        'attrs'     => [
           new SetAttribute(
             new IPAttribute(
               _('IP address'), _('IP addresses this system uses (v4 or v6)'),
@@ -101,9 +101,9 @@ class workstationGeneric extends ipHostPlugin
               'macAddress', FALSE
             )
           ),
-        ),
-      ),
-    );
+        ],
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -113,7 +113,7 @@ class workstationGeneric extends ipHostPlugin
     $this->attributesAccess['cn']->setUnique(TRUE);
   }
 
-  protected function post_remove()
+  protected function post_remove ()
   {
     /* Clean queue from entries with this mac */
     if (class_available('supportDaemon')) {

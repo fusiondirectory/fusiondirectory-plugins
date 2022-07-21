@@ -22,32 +22,32 @@ class faiProfile extends faiSimplePluginClass
 {
   var $mainTab = TRUE;
 
-  var $objectclasses    = array('top','FAIclass','FAIprofile');
+  var $objectclasses    = ['top','FAIclass','FAIprofile'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Profile'),
       'plDescription' => _('FAI profile'),
-      'plObjectType'  => array(
-        'faiProfile' => array(
+      'plObjectType'  => [
+        'faiProfile' => [
           'name'        => _('FAI Profile'),
           'filter'      => 'objectClass=FAIprofile',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiProfileRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-profile&size=16'
-        )
-      ),
+        ]
+      ],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new HostNameAttribute (
             _('Class name'), _('Partition table class name'),
             'cn', TRUE
@@ -66,9 +66,9 @@ class faiProfile extends faiSimplePluginClass
             ),
             ' '
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -78,8 +78,8 @@ class faiProfile extends faiSimplePluginClass
     $this->attributesAccess['cn']->setUnique(TRUE);
 
     /* Build filter */
-    $types    = array('faiVariable', 'faiHook', 'faiScript', 'faiPackage', 'faiPartitionTable', 'faiTemplate');
-    $choices  = array();
+    $types    = ['faiVariable', 'faiHook', 'faiScript', 'faiPackage', 'faiPartitionTable', 'faiTemplate'];
+    $choices  = [];
     foreach ($types as $type) {
       $choices = array_unique(array_merge($choices, objects::ls($type, NULL, $this->base)));
     }

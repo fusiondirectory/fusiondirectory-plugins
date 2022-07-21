@@ -21,7 +21,7 @@
 
 class systemManagement extends simpleManagement
 {
-  protected $objectTypes  = array('server','workstation','terminal','printer','component','phone','mobilePhone');
+  protected $objectTypes  = ['server','workstation','terminal','printer','component','phone','mobilePhone'];
 
   protected $departmentBrowser      = TRUE;
   protected $departmentRootVisible  = FALSE;
@@ -31,28 +31,28 @@ class systemManagement extends simpleManagement
   protected $autoFilter       = TRUE;
   protected $autoActions      = TRUE;
 
-  protected $autoFilterAttributes = array('dn', 'cn', 'description', 'ipHostNumber', 'macAddress', 'gotoMode', 'FAIstate', 'FAIclass');
+  protected $autoFilterAttributes = ['dn', 'cn', 'description', 'ipHostNumber', 'macAddress', 'gotoMode', 'FAIstate', 'FAIclass'];
 
   public static $skipTemplates = FALSE;
 
   protected $siActive = FALSE;
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Systems'),
       'plDescription' => _('Systems Management'),
       'plIcon'        => 'geticon.php?context=devices&icon=computer&size=48',
       'plSelfModify'  => FALSE,
-      'plSection'     => array('systems' => array('name' => _('Systems'), 'priority' => 10)),
+      'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 10]],
       'plPriority'    => 0,
-      'plManages'     => array('server','workstation','terminal','printer','component','phone','mobilePhone'),
+      'plManages'     => ['server','workstation','terminal','printer','component','phone','mobilePhone'],
 
-      'plProvidedAcls'  => array()
-    );
+      'plProvidedAcls'  => []
+    ];
   }
 
-  function __construct()
+  function __construct ()
   {
     $this->listXMLPath    = get_template_path('system-list.xml', TRUE, dirname(__FILE__));
 
@@ -74,24 +74,24 @@ class systemManagement extends simpleManagement
 
     // Register Daemon Events
     if ($this->siActive) {
-      $this->headpage->xmlData['actionmenu']['action'][2]['action'] = array();
-      $this->headpage->xmlData['actionmenu']['action'][3]['action'] = array();
+      $this->headpage->xmlData['actionmenu']['action'][2]['action'] = [];
+      $this->headpage->xmlData['actionmenu']['action'][3]['action'] = [];
       $events = argonautEventTypes::get_event_types();
       foreach ($events as $name => $data) {
         $this->registerAction('T_'.$name, 'handleEvent');
-        $this->headpage->xmlData['actionmenu']['action'][2]['action'][] = array(
+        $this->headpage->xmlData['actionmenu']['action'][2]['action'][] = [
         'name' => 'T_'.$name,
         'type' => 'entry',
         'image' => $data['img'],
         'label' => $data['name'],
-        );
+        ];
         $this->registerAction('S_'.$name, 'handleEvent');
-        $this->headpage->xmlData['actionmenu']['action'][3]['action'][] = array(
+        $this->headpage->xmlData['actionmenu']['action'][3]['action'][] = [
         'name' => 'S_'.$name,
         'type' => 'entry',
         'image' => $data['img'],
         'label' => $data['name'],
-        );
+        ];
       }
       $this->registerAction('ping', 'pingSystems');
     } else {
@@ -113,7 +113,7 @@ class systemManagement extends simpleManagement
   /*! \brief    Handle Argonaut events
    *            All schedules and triggered events are handled here.
    */
-  function handleEvent($action, array $target)
+  function handleEvent ($action, array $target)
   {
     if (!$this->siActive) {
       return;
@@ -130,7 +130,7 @@ class systemManagement extends simpleManagement
     $event = preg_replace('/^[TS]_/', '', $action);
 
     // Now send FAI/Argonaut events here.
-    $mac = array();
+    $mac = [];
 
     // Collect target mac addresses
     foreach ($target as $dn) {
@@ -151,12 +151,12 @@ class systemManagement extends simpleManagement
     /* Skip installation or update trigerred events,
      *  if this entry is currently processing.
      */
-    if ($triggered && in_array($event, array('reinstall','update'))) {
+    if ($triggered && in_array($event, ['reinstall','update'])) {
       foreach ($mac as $key => $mac_address) {
         if ($o_queue->is_currently_installing($mac_address)) {
           msg_dialog::display(_('Action canceled'), sprintf(_('System %s is currently installing'), $dn), ERROR_DIALOG);
           unset($mac[$key]);
-          logging::log('security', 'systems/'.get_class($this), '', array(), 'Skip adding "argonautAction::'.$event.'" for mac "'.$mac_address.'", there is already a job in progress.');
+          logging::log('security', 'systems/'.get_class($this), '', [], 'Skip adding "argonautAction::'.$event.'" for mac "'.$mac_address.'", there is already a job in progress.');
         }
       }
     }
@@ -191,14 +191,14 @@ class systemManagement extends simpleManagement
 
   /*! \brief Ping those systems and show the result in the list
    */
-  function pingSystems($action, array $target)
+  function pingSystems ($action, array $target)
   {
     if (!$this->siActive) {
       return;
     }
 
     $headpage = $this->getHeadpage();
-    $macs     = array();
+    $macs     = [];
 
     // Collect target mac addresses
     foreach ($target as $dn) {
@@ -216,7 +216,7 @@ class systemManagement extends simpleManagement
 
     $o_queue  = new supportDaemon();
 
-    $res = $o_queue->append_call('ping', array_values($macs), array('fullresult' => 1));
+    $res = $o_queue->append_call('ping', array_values($macs), ['fullresult' => 1]);
     if ($o_queue->is_error()) {
       msg_dialog::display(_('Infrastructure service'), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
     } else {
@@ -243,7 +243,7 @@ class systemManagement extends simpleManagement
   /*! \brief  Save event dialogs.
    *          And append the new Argonaut event.
    */
-  function saveEventDialog()
+  function saveEventDialog ()
   {
     $this->dialogObject->save_object();
     $msgs = $this->dialogObject->check();
@@ -264,7 +264,7 @@ class systemManagement extends simpleManagement
   /*! \brief  Detects actions/events send by the ui
    *           and the corresponding targets.
    */
-  function detectPostActions()
+  function detectPostActions ()
   {
     $action = parent::detectPostActions();
     if (isset($_POST['save_event_dialog'])) {
@@ -275,7 +275,7 @@ class systemManagement extends simpleManagement
     return $action;
   }
 
-  function handleSubAction($all)
+  function handleSubAction ($all)
   {
     if (parent::handleSubAction($all)) {
       return TRUE;
@@ -283,7 +283,7 @@ class systemManagement extends simpleManagement
       $service = $m[1];
       if (isset($this->tabObject->by_object['ServerService'])) {
         $this->tabObject->current = 'ServerService';
-        $all = array('action'  => 'edit', 'targets' => array($service));
+        $all = ['action'  => 'edit', 'targets' => [$service]];
         $this->tabObject->by_object['ServerService']->editEntry($all['action'], $all['targets'], $all);
       } else {
         trigger_error("Unknown tab: ServerService");
@@ -293,7 +293,7 @@ class systemManagement extends simpleManagement
     return FALSE;
   }
 
-  static function systemRelease($a, $b, $c, $objectclasses = NULL, $class = NULL)
+  static function systemRelease ($a, $b, $c, $objectclasses = NULL, $class = NULL)
   {
     global $config;
 
@@ -319,7 +319,7 @@ class systemManagement extends simpleManagement
     // Load information if needed
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=gosaGroupOfNames)(FAIclass=*)(member='.$b.'))', array('FAIclass','cn'));
+    $ldap->search('(&(objectClass=gosaGroupOfNames)(FAIclass=*)(member='.$b.'))', ['FAIclass','cn']);
     while ($attrs = $ldap->fetch()) {
       $rel = htmlentities(preg_replace('/^.*:/', '', $attrs['FAIclass'][0]), ENT_COMPAT, 'UTF-8');
       $sys = htmlentities(sprintf(_('Inherited from %s'), $attrs['cn'][0]), ENT_COMPAT, 'UTF-8');
@@ -332,10 +332,10 @@ class systemManagement extends simpleManagement
     return '&nbsp;';
   }
 
-  static function listServices($row, $dn, $attrs)
+  static function listServices ($row, $dn, $attrs)
   {
     global $config;
-    static $services = array();
+    static $services = [];
     if (empty($services)) {
       foreach ($config->data['TABS']['SERVERSERVICE'] as $plug) {
         if (class_available($plug['CLASS'])) {
@@ -347,7 +347,7 @@ class systemManagement extends simpleManagement
     }
 
     // Load information if needed
-    $services_imgs = array();
+    $services_imgs = [];
     if (!empty($attrs)) {
       foreach ($services as $class => $service) {
         if ($service->is_this_account($attrs)) {

@@ -20,28 +20,28 @@
 
 class sinapsConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdSinapsPluginConf');
+  var $objectclasses  = ['fdSinapsPluginConf'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('SINAPS configuration'),
       'plDescription'   => _('FusionDirectory SINAPS plugin configuration'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
     global $config;
 
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Sinaps'),
-        'attrs' => array(
+        'attrs' => [
           new BooleanAttribute (
             _('Enable SINAPS integration'), _('Whether to enable the SINAPS integration'),
             'fdSinapsEnabled', FALSE,
@@ -66,17 +66,17 @@ class sinapsConfig extends simplePlugin
             'fdSinapsUuidPrefix', TRUE,
             'LDAPUUID'
           ),
-        )
-      ),
-      'diffusion' => array(
+        ]
+      ],
+      'diffusion' => [
         'name'  => _('Diffusion'),
-        'attrs' => array(
+        'attrs' => [
           new SetAttribute(
             new StringAttribute(
               _('Applications identifiers to sync'), _('List of applications identifiers for which cross references should be synced from SINAPS'),
               'fdSinapsIdentifiantApplicationSync', FALSE
             ),
-            array('SAP')
+            ['SAP']
           ),
           new StringAttribute(
             _('User base'), _('Base in which users should be created when receiving a SINAPS diffusion'),
@@ -98,13 +98,13 @@ class sinapsConfig extends simplePlugin
               _('User roles'), _('Roles which means a user still exists if present'),
               'fdSinapsUserRole', TRUE
             ),
-            array('PR', 'EXT/PRA')
+            ['PR', 'EXT/PRA']
           ),
           new OrderedArrayAttribute(
             new PipeSeparatedCompositeAttribute(
               _('Which field to sync in diffusion'),
               'fdSinapsUserDiffusionMap',
-              array(
+              [
                 new StringAttribute(
                   '', _('XPath for the XML value to fetch'),
                   'fdSinapsUserDiffusionMap_sinaps', TRUE
@@ -117,25 +117,25 @@ class sinapsConfig extends simplePlugin
                   '', _('Name of the FD field'),
                   'fdSinapsUserDiffusionMap_field', TRUE
                 ),
-              ),
+              ],
               '',
               _('User field mapping')
             ),
             // no order
             FALSE,
-            array(
+            [
               'civilite|supannAccount|supannCivilite',
               'nomUsage|user|sn',
               'dateNaissance|personalInfo|dateOfBirth',
               'sexe|personalInfo|gender'
-            ),
+            ],
             TRUE
           ),
           new OrderedArrayAttribute(
             new PipeSeparatedCompositeAttribute(
               _('Which field to sync in diffusion'),
               'fdSinapsStructureDiffusionMap',
-              array(
+              [
                 new StringAttribute(
                   '', _('XPath for the XML value to fetch'),
                   'fdSinapsStructureDiffusionMap_sinaps', TRUE
@@ -148,27 +148,27 @@ class sinapsConfig extends simplePlugin
                   '', _('Name of the FD field'),
                   'fdSinapsStructureDiffusionMap_field', TRUE
                 ),
-              ),
+              ],
               '',
               _('Structure field mapping')
             ),
             // no order
             FALSE,
-            array(
+            [
               'libelle20|entite|ou',
               'descriptifLong|entite|description',
               'codeStructure|entite|supannCodeEntite',
               'codeSousType|entite|supannTypeEntite',
               'dateDebutValidite|supannStructureExt|fdSupannStartDate',
               'dateFinValidite|supannStructureExt|fdSupannEndDate',
-            ),
+            ],
             TRUE
           ),
-        )
-      ),
-      'acquisition' => array(
+        ]
+      ],
+      'acquisition' => [
         'name'  => _('Sinaps Acquisition'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute (
             _('Acquisition URL'), _('Full URL to which acquisition events should be sent'),
             'fdSinapsAcquisitionURL', FALSE
@@ -191,7 +191,7 @@ class sinapsConfig extends simplePlugin
             new PipeSeparatedCompositeAttribute(
               _('Which field to sync as contact methods in acquisition'),
               'fdSinapsAcquisitionContactMethodMap',
-              array(
+              [
                 new StringAttribute (
                   '', _('Name of an LDAP attribute'),
                   'fdSinapsAcquisitionContactMethodMap_ldap', TRUE
@@ -200,18 +200,18 @@ class sinapsConfig extends simplePlugin
                   '', _('Name of the Sinaps attribute'),
                   'fdSinapsAcquisitionContactMethodMap_sinaps', TRUE
                 ),
-              ),
+              ],
               '',
               _('Contact methods')
             ),
             // no order
             FALSE,
-            array('telephoneNumber|TELPRO','facsimileTelephoneNumber|FAXPRO','mail|MAILPRO','mobile|TELMOBILEPRO'),
+            ['telephoneNumber|TELPRO','facsimileTelephoneNumber|FAXPRO','mail|MAILPRO','mobile|TELMOBILEPRO'],
             TRUE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
@@ -224,8 +224,8 @@ class sinapsConfig extends simplePlugin
 
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
-    $this->attributesAccess['fdSinapsAcquisitionContactMethodMap']->setHeaders(array(_('LDAP'), _('Sinaps')));
-    $this->attributesAccess['fdSinapsUserDiffusionMap']->setHeaders(array(_('XPath'), _('Tab'), _('Field')));
-    $this->attributesAccess['fdSinapsStructureDiffusionMap']->setHeaders(array(_('XPath'), _('Tab'), _('Field')));
+    $this->attributesAccess['fdSinapsAcquisitionContactMethodMap']->setHeaders([_('LDAP'), _('Sinaps')]);
+    $this->attributesAccess['fdSinapsUserDiffusionMap']->setHeaders([_('XPath'), _('Tab'), _('Field')]);
+    $this->attributesAccess['fdSinapsStructureDiffusionMap']->setHeaders([_('XPath'), _('Tab'), _('Field')]);
   }
 }

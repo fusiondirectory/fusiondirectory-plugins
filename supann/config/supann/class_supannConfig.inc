@@ -20,26 +20,26 @@
 
 class supannConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdSupannPluginConf');
+  var $objectclasses  = ['fdSupannPluginConf'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('SupAnn configuration'),
       'plDescription'   => _('FusionDirectory SupAnn plugin configuration'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('SupAnn'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute (
             _('SupAnn RDN'), _('Branch in which SupAnn structures will be stored'),
             'fdSupannStructuresRDN', TRUE,
@@ -50,9 +50,9 @@ class supannConfig extends simplePlugin
             'fdSupannPasswordRecovery', FALSE,
             TRUE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

@@ -25,7 +25,7 @@ class SocialAccountAttribute extends CompositeAttribute
     $handlers = socialHandler::listHandlers();
     parent::__construct (
       $description, $ldapName,
-      array(
+      [
         new SelectAttribute(
           _('Site'), _('Website the account is on'),
           'socialSite', TRUE,
@@ -36,7 +36,7 @@ class SocialAccountAttribute extends CompositeAttribute
           _('Id'), _('Id of this user on this website'),
           'socialId', TRUE
         )
-      ),
+      ],
       '/^([^:]+):(.*)$/',
       '%s:%s',
       $acl, $label
@@ -47,10 +47,10 @@ class SocialAccountAttribute extends CompositeAttribute
   {
     $handlerClass = 'socialHandler_'.$this->attributes[0]->getValue();
     if (!class_available($handlerClass)) {
-      return array($handlerClass, $this->attributes[1]->getValue());
+      return [$handlerClass, $this->attributes[1]->getValue()];
     }
     $handler      = new $handlerClass();
-    return array($handlerClass::getName(), array('html' => $handler->linkify($this->attributes[1]->getValue())));
+    return [$handlerClass::getName(), ['html' => $handler->linkify($this->attributes[1]->getValue())]];
   }
 
   function check ()
@@ -77,29 +77,29 @@ class SocialAccountAttribute extends CompositeAttribute
 class personalInfo extends simplePlugin
 {
   var $displayHeader = TRUE;
-  var $objectclasses = array('fdPersonalInfo');
+  var $objectclasses = ['fdPersonalInfo'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Personal'),
       'plDescription'   => _('Personal information'),
       'plSelfModify'    => TRUE,
-      'plObjectType'    => array('user'),
+      'plObjectType'    => ['user'],
       'plIcon'          => 'geticon.php?context=applications&icon=user-info&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=user-info&size=16',
       'plPriority'      => 3,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Personal info'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute (
             _('Personal title'), _('Personal title - Examples of personal titles are "Ms", "Dr", "Prof" and "Rev"'),
             'personalTitle', FALSE
@@ -122,7 +122,7 @@ class personalInfo extends simplePlugin
           new SelectAttribute (
             _('Sex'), _('Gender'),
             'gender', FALSE,
-            array('', 'M', 'F'), '', array('', 'male', 'female')
+            ['', 'M', 'F'], '', ['', 'male', 'female']
           ),
           new StringAttribute (
             _('Country'), _('Country'),
@@ -142,11 +142,11 @@ class personalInfo extends simplePlugin
             _('Photo Visible'), _('Should the photo of the user be visible on external tools'),
             'fdPhotoVisible', FALSE, TRUE
           ),
-        )
-      ),
-      'contact' => array(
+        ]
+      ],
+      'contact' => [
         'name'  => _('Contact'),
-        'attrs' => array(
+        'attrs' => [
           new OrderedArrayAttribute(
             new SocialAccountAttribute(
               _('Social account'), _('Social accounts of this user'),
@@ -160,9 +160,9 @@ class personalInfo extends simplePlugin
               'fdPrivateMail'
             )
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }
 ?>

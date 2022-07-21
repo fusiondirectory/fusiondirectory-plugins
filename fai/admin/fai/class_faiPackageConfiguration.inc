@@ -27,19 +27,19 @@ class faiPackageConfiguration extends simplePlugin
   protected $debconfAttributesTypes;
   protected $generatedDebconfAttributes;
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('FAI package configuration'),
       'plDescription' => _('Configure debconf options of a package'),
-      'plObjectType'  => array('faiPackageConfiguration' => array(
+      'plObjectType'  => ['faiPackageConfiguration' => [
         'name'        => _('FAI package configuration'),
         'aclCategory' => 'fai',
         'icon'        => 'geticon.php?context=applications&icon=fai&size=16',
-      )),
+      ]],
 
-      'plProvidedAcls'  => array()
-    );
+      'plProvidedAcls'  => []
+    ];
   }
 
   /*! \brief  Configure a FAI package entry.
@@ -48,13 +48,13 @@ class faiPackageConfiguration extends simplePlugin
       @param  String  The release name (e.g. edge)
       @param  Array   The current package configuration.
    */
-  function __construct($dn, $packageName, $release, $values)
+  function __construct ($dn, $packageName, $release, $values)
   {
     $this->packageName  = $packageName;
 
     /* Read pkg debconf info from supportDaemon */
     $q = new supportDaemon();
-    $ret = $q->FAI_get_packages($release, array('package','template'), array($this->packageName), 0, 1, TRUE);
+    $ret = $q->FAI_get_packages($release, ['package','template'], [$this->packageName], 0, 1, TRUE);
     if ($q->is_error()) {
       msg_dialog::display(_('Infrastructure service'), msgPool::siError($q->get_error()), ERROR_DIALOG);
     }
@@ -73,23 +73,23 @@ class faiPackageConfiguration extends simplePlugin
     }
   }
 
-  protected function loadAttributesFromTemplate($tpl)
+  protected function loadAttributesFromTemplate ($tpl)
   {
-    $attributesInfo = array(
-      'main' => array(
+    $attributesInfo = [
+      'main' => [
         'name'  => sprintf(_('Debconf information for package "%s"'), $this->packageName),
-        'attrs' => array()
-      ),
-    );
+        'attrs' => []
+      ],
+    ];
 
     $lines                  = explode("\n", $tpl);
-    $infos                  = array();
+    $infos                  = [];
     $langcode               = session::global_get('lang').'.UTF-8';
     $in_description         = FALSE;
     $got_local_description  = FALSE;
 
-    $this->debconfAttributesTypes     = array();
-    $this->generatedDebconfAttributes = array();
+    $this->debconfAttributesTypes     = [];
+    $this->generatedDebconfAttributes = [];
 
     foreach ($lines as $line) {
       /* Reset description flag */
@@ -102,7 +102,7 @@ class faiPackageConfiguration extends simplePlugin
         if (!empty($infos)) {
           $this->insertDebconfAttribute($attributesInfo, $infos);
         }
-        $infos = array();
+        $infos = [];
         $infos['Name']     = trim(preg_replace('/^Template: /', '', $line));
         $infos['Default']  = '';
 
@@ -178,7 +178,7 @@ class faiPackageConfiguration extends simplePlugin
     return $attributesInfo;
   }
 
-  protected function insertDebconfAttribute(&$attributesInfo, $infos)
+  protected function insertDebconfAttribute (&$attributesInfo, $infos)
   {
     switch ($infos['Type']) {
       case 'boolean':
@@ -252,7 +252,7 @@ class faiPackageConfiguration extends simplePlugin
     $this->debconfAttributesTypes[$infos['Name']] = $infos['Type'];
   }
 
-  function execute()
+  function execute ()
   {
     $smarty = get_smarty();
     $acl    = $this->aclGetPermissions('FAIpartitions');
@@ -264,15 +264,15 @@ class faiPackageConfiguration extends simplePlugin
       '</p>';
   }
 
-  function save()
+  function save ()
   {
-    $tmp = array();
+    $tmp = [];
     foreach ($this->attributesAccess as $name => $attribute) {
-      $tmp[$this->packageName][$name] = array(
+      $tmp[$this->packageName][$name] = [
         'Name'  => $name,
         'Value' => $attribute->computeLdapValue(),
         'Type'  => $this->debconfAttributesTypes[$name],
-      );
+      ];
     }
 
     return $tmp;

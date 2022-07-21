@@ -23,17 +23,17 @@
 class serviceSpamAssassin extends simpleService {
 
   /* This plugin only writes its objectClass */
-  var $objectclasses = array('goSpamServer');
+  var $objectclasses = ['goSpamServer'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Spamassassin service'),
       'plDescription' => _('Spamassassin service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=spamassassin&size=16',
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -41,10 +41,10 @@ class serviceSpamAssassin extends simpleService {
   */
   static function getAttributesInfo ()
   {
-    return array (
-      'section1' => array (
+    return  [
+      'section1' => [
         'name'  => _('Spam tagging'),
-        'attrs' => array (
+        'attrs' => [
           new StringAttribute (
             _('Rewrite header'), _('Rewrite header'),
             'saRewriteHeader'
@@ -52,7 +52,7 @@ class serviceSpamAssassin extends simpleService {
           new SelectAttribute (
             _('Required score'), _('Select required score to tag mail as spam'),
             'saRequiredScore', FALSE,
-            array (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20)
+             [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
           ),
           new SetAttribute (
             new StringAttribute (
@@ -60,11 +60,11 @@ class serviceSpamAssassin extends simpleService {
               'saTrustedNetworks'
             )
           )
-        )
-      ),
-      'section2' => array (
+        ]
+      ],
+      'section2' => [
         'name'  => _('Flags'),
-        'attrs' => array (
+        'attrs' => [
           new BooleanAttribute (
             _('Enable use of bayes filtering'), '',
             'flag_enable_bayes', FALSE,
@@ -95,35 +95,35 @@ class serviceSpamAssassin extends simpleService {
             'flag_enable_pyzor', FALSE,
             FALSE, '', 'P', ''
           ),
-          new FlagsAttribute ('saFlags', array(
+          new FlagsAttribute ('saFlags', [
             'flag_enable_bayes',
             'flag_bayes_autolearn',
             'flag_enable_rblcheck',
             'flag_enable_razor',
             'flag_enable_ddc',
             'flag_enable_pyzor'
-          ))
-        )
-      ),
-      'section3' => array (
+          ])
+        ]
+      ],
+      'section3' => [
         'name' => _('Rules'),
-        'attrs' => array (
+        'attrs' => [
           new SetAttribute (
             new CompositeAttribute (
               _('Edit spam rule'),
               'saRule',
-              array (
+               [
                 new StringAttribute (_('Name'), '', 'ruleName'),
                 new TextAreaAttribute (_('Rule'), '', 'ruleDesc'),
-              ),
+              ],
               '/^([^:]*):(.*)$/',
               '%s:%s',
               '', _('Edit spam rule')
             )
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }
 

@@ -37,7 +37,7 @@ class SudoUsersGroupsAttribute extends DialogAttribute
 
   function getFilterBlackList ()
   {
-    $used = array();
+    $used = [];
     foreach ($this->value as $name) {
       $str = preg_replace("/^!/", "", $name);
       if (preg_match("/^%/", $str)) {
@@ -57,12 +57,12 @@ class SudoSystemsAttribute extends SystemsAttribute
     $id = $this->getHtmlId();
     $buttons  = $this->renderInputField(
       'submit', 'add'.$id.'_ALL',
-      array('value' => 'ALL')
+      ['value' => 'ALL']
     );
     return $buttons.parent::renderButtons();
   }
 
-  public function htmlIds()
+  public function htmlIds ()
   {
     $id = $this->getHtmlId();
     $ids = parent::htmlIds();
@@ -75,7 +75,7 @@ class SudoSystemsAttribute extends SystemsAttribute
     parent::loadPostValue();
     if ($this->isVisible()) {
       if (isset($_POST['add'.$this->getHtmlId().'_ALL'])) {
-        $this->value = array('ALL');
+        $this->value = ['ALL'];
       }
     }
   }
@@ -114,47 +114,47 @@ class defaultRoleAttribute extends BooleanAttribute
  */
 class sudo extends simplePlugin
 {
-  public $objectclasses = array('sudoRole');
+  public $objectclasses = ['sudoRole'];
   var $mainTab          = TRUE;
 
-  static function plInfo()
+  static function plInfo ()
   {
     $posixGroupClass = (class_available('mixedGroup') ? 'ogroup' : 'posixGroup');
-    return array(
+    return [
       'plShortName'   => _('Sudo'),
       'plDescription' => _('Sudo role'),
       'plIcon'        => 'geticon.php?context=applications&icon=sudo&size=48',
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('sudo' => array(
+      'plObjectType'  => ['sudo' => [
         'name'      => _('Sudo role'),
         'filter'    => 'objectClass=sudoRole',
         'icon'      => 'geticon.php?context=applications&icon=sudo&size=16',
         'ou'        => get_ou('sudoRDN'),
         'tabClass'  => 'sudotabs',
-      )),
-      'plForeignKeys'  => array(
-        'sudoUser'   => array(
-          array('user', 'uid', '(sudoUser=%oldvalue%)'),
-          array($posixGroupClass, 'cn', '(sudoUser=%|%%oldvalue%)'),
-        ),
-        'sudoHost'   => array(
-          array('serverGeneric', 'cn'),
-          array('workstationGeneric', 'cn'),
-          array('terminalGeneric', 'cn'),
-        ),
-      ),
+      ]],
+      'plForeignKeys'  => [
+        'sudoUser'   => [
+          ['user', 'uid', '(sudoUser=%oldvalue%)'],
+          [$posixGroupClass, 'cn', '(sudoUser=%|%%oldvalue%)'],
+        ],
+        'sudoHost'   => [
+          ['serverGeneric', 'cn'],
+          ['workstationGeneric', 'cn'],
+          ['terminalGeneric', 'cn'],
+        ],
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array (
-      'section1' => array (
+    return  [
+      'section1' => [
         'name'  => _('Role settings'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new defaultRoleAttribute (FALSE),
           new BaseSelectorAttribute (get_ou('sudoRDN')),
           new StringAttribute (
@@ -179,7 +179,7 @@ class sudo extends simplePlugin
               _('User(s) impersonated by sudo'),
               'sudoRunAsUser', FALSE
             ),
-            array('ALL')
+            ['ALL']
           ),
           new SetAttribute (
             new StringAttribute (
@@ -187,12 +187,12 @@ class sudo extends simplePlugin
               _('Group(s) impersonated by sudo'),
               'sudoRunAsGroup', FALSE
             ),
-            array('ALL')
+            ['ALL']
           ),
           new SudoSystemsAttribute (
             _('Systems'), _('A host name, IP address or IP network'),
             'sudoHost', FALSE,
-            array('ALL')
+            ['ALL']
           ),
           new SudoUsersGroupsAttribute (
             _('Users and groups'),
@@ -214,9 +214,9 @@ class sudo extends simplePlugin
             'sudoNotAfter', FALSE,
             ''
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -224,9 +224,9 @@ class sudo extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
     $this->attributesAccess['isDefaultRole']->setValue($this->is_default());
     $this->attributesAccess['isDefaultRole']->setManagedAttributes(
-      array(
-        'erase' => array(
-          TRUE => array(
+      [
+        'erase' => [
+          TRUE => [
             'base',
             'sudoUser',
             'sudoCommand',
@@ -234,24 +234,24 @@ class sudo extends simplePlugin
             'sudoRunAsUser',
             'sudoRunAsGroup',
             'sudoOrder',
-          )
-        ),
-        'disable' => array(
-          TRUE => array(
+          ]
+        ],
+        'disable' => [
+          TRUE => [
             'cn'
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
   }
 
 
-  public function set_default($state)
+  public function set_default ($state)
   {
     $this->attributesAccess['isDefaultRole']->setValue($state);
   }
 
-  public function is_default()
+  public function is_default ()
   {
     return preg_match("/^defaults$/i", $this->attributesAccess['cn']->getValue());
   }
@@ -265,7 +265,7 @@ class sudo extends simplePlugin
     }
   }
 
-  function foreignKeyUpdate($field, $oldvalue, $newvalue, $source)
+  function foreignKeyUpdate ($field, $oldvalue, $newvalue, $source)
   {
     if (($field == 'sudoUser') && (($source['CLASS'] == 'posixGroup') || ($source['CLASS'] == 'ogroup'))) {
       return parent::foreignKeyUpdate($field, '%'.$oldvalue, '%'.$newvalue, $source);

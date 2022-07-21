@@ -20,35 +20,35 @@
 
 class sudoConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdSudoPluginConf');
+  var $objectclasses  = ['fdSudoPluginConf'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Sudo configuration'),
       'plDescription'   => _('FusionDirectory sudo plugin configuration'),
       'plSelfModify'    => FALSE,
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Sudo'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute (
             _('Sudo RDN'), _('Branch in which sudoers will be stored'),
             'fdSudoRDN', TRUE,
             'ou=sudoers'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

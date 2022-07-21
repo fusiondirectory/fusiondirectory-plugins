@@ -25,27 +25,27 @@ class subContractingAccount extends simplePlugin
   var $displayHeader = TRUE;
 
   // Here we indicate which LDAP classes our plugin is using.
-  var $objectclasses = array('fdSubcontractingPerson');
+  var $objectclasses = ['fdSubcontractingPerson'];
 
   static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Subcontracting'),
       'plDescription' => _('Information needed for sub contracts'),
-      'plObjectType'  => array('user'),
+      'plObjectType'  => ['user'],
       'plIcon'        => 'geticon.php?context=applications&icon=subcontracting&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=subcontracting&size=16',
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('SubContracting Information'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute (
             _('Intermediate'),
             _('Contact to the final customer'),
@@ -81,9 +81,9 @@ class subContractingAccount extends simplePlugin
             FALSE,
             ''
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

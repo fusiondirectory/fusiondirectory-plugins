@@ -22,34 +22,34 @@ class sambaDomain extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array('sambaDomain');
+  var $objectclasses = ['sambaDomain'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Samba Domain'),
       'plDescription' => _('Samba Domain'),
-      'plObjectType'  => array(
-        'sambaDomain' => array(
+      'plObjectType'  => [
+        'sambaDomain' => [
           'name'        => _('Samba Domain'),
           'description' => _('Samba domain settings'),
           'filter'      => '(objectClass=sambaDomain)',
           'icon'        => 'geticon.php?context=applications&icon=samba&size=16',
           'ou'          => '',
           'mainAttr'    => 'sambaDomainName',
-        )
-      ),
+        ]
+      ],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute (
             _('Domain name'), _('Name of this domain'),
             'sambaDomainName', TRUE
@@ -129,9 +129,9 @@ class sambaDomain extends simplePlugin
             _('Allow Machine Password changes (default: 0 => off)'),
             'sambaRefuseMachinePwdChange'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function compute_dn ()

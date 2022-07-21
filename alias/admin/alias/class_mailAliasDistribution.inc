@@ -22,34 +22,34 @@ class mailAliasDistribution extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array('top', 'mailAliasDistribution');
+  var $objectclasses = ['top', 'mailAliasDistribution'];
 
   /* Return plugin information for acl handling  */
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Temporary mail distribution'),
       'plDescription' => _('Temporary mail distribution'),
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('mailAliasDistribution' => array(
+      'plObjectType'  => ['mailAliasDistribution' => [
         'name'        => _('Temporary mail distribution'),
         'filter'      => 'objectClass=mailAliasDistribution',
         'aclCategory' => 'alias',
         'icon'        => 'geticon.php?context=applications&icon=alias-distribution&size=16',
         'ou'          => get_ou('aliasRDN'),
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Mail distribution'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute (get_ou('aliasRDN')),
           new HostNameAttribute (_('Name'), _('Name to identify this alias'), 'cn', TRUE),
           new TextAreaAttribute (
@@ -78,9 +78,9 @@ class mailAliasDistribution extends simplePlugin
             'U',
             ''
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 
