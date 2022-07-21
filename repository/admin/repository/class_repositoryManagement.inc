@@ -20,24 +20,24 @@
 
 class repositoryManagement extends simpleManagement
 {
-  protected $objectTypes  = array('buildRepository', 'repoDistribution', 'repoSection');
+  protected $objectTypes  = ['buildRepository', 'repoDistribution', 'repoSection'];
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Repository management'),
       'plDescription' => _('Repository management'),
       'plIcon'        => 'geticon.php?context=applications&icon=repository&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 22,
-      'plCategory'    => array('repository' => array(
+      'plCategory'    => ['repository' => [
         'description'  => _('Repository'),
-        'objectClass'  => array('fdBuildRepository', 'fdBuildRepositoryDistribution', 'fdBuildRepositorySection')
-      )),
-      'plManages'     => array('buildRepository', 'repoDistribution', 'repoSection'),
+        'objectClass'  => ['fdBuildRepository', 'fdBuildRepositoryDistribution', 'fdBuildRepositorySection']
+      ]],
+      'plManages'     => ['buildRepository', 'repoDistribution', 'repoSection'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 }
 ?>

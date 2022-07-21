@@ -21,22 +21,22 @@
 
 class ldiftabs extends simpleTabs_noSpecial
 {
-  function save()
+  function save ()
   {
   }
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('LDAP import/export'),
       'plDescription' => _('Allows the import or export of the ldap tree'),
       'plIcon'        => 'geticon.php?context=applications&icon=ldapmanager&size=48',
       'plSection'     => 'conf',
       'plPriority'    => 10,
-      'plCategory'    => array('ldapmanager' => array('objectClass' => 'none', 'description' => _('Ldap manager'))),
+      'plCategory'    => ['ldapmanager' => ['objectClass' => 'none', 'description' => _('Ldap manager')]],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 }
 ?>

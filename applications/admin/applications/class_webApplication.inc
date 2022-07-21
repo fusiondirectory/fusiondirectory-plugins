@@ -20,64 +20,64 @@
 
 class webApplication extends simplePlugin
 {
-  var $objectclasses = array('fdWebApplication');
+  var $objectclasses = ['fdWebApplication'];
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Web application'),
       'plDescription' => _('Web applicationts names, icons and links'),
-      'plObjectType'  => array('webApplication' => array(
+      'plObjectType'  => ['webApplication' => [
         'name'        => _('Web application'),
         'filter'      => 'objectClass=fdWebApplication',
         'ou'          => get_ou('webappsRDN'),
         'icon'        => 'geticon.php?context=categories&icon=applications-internet&size=16'
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Application'),
-        'attrs' => array(
-          new BaseSelectorAttribute (get_ou('webappsRDN')),
-          new HostNameAttribute (
+        'attrs' => [
+          new BaseSelectorAttribute(get_ou('webappsRDN')),
+          new HostNameAttribute(
             _('Name'), _('Name or id for application'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('A short description of this application'),
             'description', FALSE
           ),
-          new URLAttribute (
+          new URLAttribute(
             _('URL'), _('Link to this application'),
             'labeledURI', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Display Name'), _('Displayed name for links to this application'),
             'fdApplicationTitle', TRUE
           ),
-        )
-      ),
-      'icon' => array(
+        ]
+      ],
+      'icon' => [
         'name'  => _('Icon'),
-        'attrs' => array(
-          new ImageAttribute (
+        'attrs' => [
+          new ImageAttribute(
             '', _('The icon for this application'),
             'fdApplicationImage', FALSE,
             48, 48, 'png'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Icon location'), _('Usual path to this application icon'),
             'fdApplicationImageLocation', FALSE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

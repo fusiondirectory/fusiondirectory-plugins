@@ -20,7 +20,7 @@
 
 class sudotabs extends simpleTabs
 {
-  function set_default($state)
+  function set_default ($state)
   {
     if (isset($this->by_object['sudo'])) {
       $this->by_object['sudo']->set_default($state);

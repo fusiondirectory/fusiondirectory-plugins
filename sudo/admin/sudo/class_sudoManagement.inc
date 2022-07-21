@@ -21,39 +21,39 @@
 
 class sudoManagement extends simpleManagement
 {
-  protected $objectTypes = array('sudo');
+  protected $objectTypes = ['sudo'];
 
-  protected $autoFilterAttributes = array('dn', 'cn', 'description', 'sudoUser', 'sudoHost');
+  protected $autoFilterAttributes = ['dn', 'cn', 'description', 'sudoUser', 'sudoHost'];
 
   /* Return plugin information for acl handling */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _("Sudo"),
       'plDescription' => _("Sudo management"),
       'plIcon'        => 'geticon.php?context=applications&icon=sudo&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 45,
-      'plManages'     => array('sudo'),
+      'plManages'     => ['sudo'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 
   function configureHeadpage ()
   {
     parent::configureHeadpage();
     $this->registerAction('new_default', 'newEntry');
-    $this->headpage->xmlData['actionmenu']['action'][0]['action'][] = array(
+    $this->headpage->xmlData['actionmenu']['action'][0]['action'][] = [
       'name'  => 'new_default',
       'type'  => 'entry',
       'image' => 'geticon.php?context=applications&icon=sudo&size=16',
       'label' => 'Default',
       'acl'   => 'sudo/sudo[c]',
-    );
+    ];
   }
 
-  function newEntry($action, array $target, array $all)
+  function newEntry ($action, array $target, array $all)
   {
     $str = parent::newEntry('new_SUDO', $target, $all);
 

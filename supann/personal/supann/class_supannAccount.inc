@@ -23,17 +23,17 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
 {
   protected $prefixedChoices;
 
-  function __construct($label, $description, $ldapName, $required, $filename, $acl = "")
+  function __construct ($label, $description, $ldapName, $required, $filename, $acl = "")
   {
-    $attributes = array(
+    $attributes = [
       new SelectAttribute('', '', $ldapName.'_prefix', $required),
       new SelectAttribute('', '', $ldapName.'_content', $required)
-    );
+    ];
     parent::__construct($description, $ldapName, $attributes, '/^{(.*)}(.*)$/', '{%s}%s', $acl, $label);
     $this->setLinearRendering(TRUE);
     $this->prefixedChoices = supann::get_prefixed_choices_for($filename);
     if (!$required) {
-      $this->prefixedChoices[''] = array(array(''), array(_('None')));
+      $this->prefixedChoices[''] = [[''], [_('None')]];
     }
     $this->attributes[0]->setChoices(array_keys($this->prefixedChoices));
     $this->attributes[0]->setSubmitForm(TRUE);
@@ -41,17 +41,17 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
     $this->setRequired($required);
   }
 
-  protected function supannUpdateSelect()
+  protected function supannUpdateSelect ()
   {
     $prefix = $this->attributes[0]->getValue();
     if (!isset($this->prefixedChoices[$prefix])) {
-      $this->prefixedChoices[$prefix] = array(array(), array());
+      $this->prefixedChoices[$prefix] = [[], []];
     }
     $this->attributes[1]->setChoices($this->prefixedChoices[$prefix][0], $this->prefixedChoices[$prefix][1]);
     $this->attributes[1]->setRequired($prefix != '');
   }
 
-  function applyPostValue()
+  function applyPostValue ()
   {
     parent::applyPostValue();
     $this->supannUpdateSelect();
@@ -83,7 +83,7 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
     }
   }
 
-  function displayValue($values)
+  function displayValue ($values)
   {
     if (!is_array($values)) {
       $values = $this->inputValue($values);
@@ -102,36 +102,36 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
 
 class SupannCursusAnneeAttribute extends SupannPrefixedSelectAttribute
 {
-  function __construct($label, $description, $ldapName, $required, $acl = "")
+  function __construct ($label, $description, $ldapName, $required, $acl = "")
   {
-    $attributes = array(
+    $attributes = [
       new SelectAttribute('', '', $ldapName.'_prefix', $required),
       new SelectAttribute('', '', $ldapName.'_content', FALSE)
-    );
+    ];
     CompositeAttribute::__construct($description, $ldapName, $attributes, '/^{SUPANN}(.)(\\d+)$/', '{SUPANN}%s%d', $acl, $label);
     $this->setLinearRendering(TRUE);
 
     $this->attributes[0]->setChoices(
-      array('L','M','D','X','B'),
-      array(_('Licence'),_('Master'),_('Ph.D.'),_('Another class of degree'),_('Post-graduate year'))
+      ['L','M','D','X','B'],
+      [_('Licence'),_('Master'),_('Ph.D.'),_('Another class of degree'),_('Post-graduate year')]
     );
-    $yearLabels = array(
+    $yearLabels = [
       _('None'),_('1st year'),_('2nd year'),_('3rd year'),
       _('4th year'),_('5th year'),_('6th year'),
       _('7th year'),_('8th year'),_('9th year'),
-    );
-    $this->prefixedChoices = array(
-      'L' => array(range(0, 3),array_slice($yearLabels, 0, 3 + 1)),
-      'M' => array(range(0, 2),array_slice($yearLabels, 0, 2 + 1)),
-      'D' => array(range(0, 9),array_slice($yearLabels, 0, 10)),
-      'X' => array(range(0, 9),array_slice($yearLabels, 0, 10)),
-      'B' => array(range(0, 20),range(0, 20)),
-    );
+    ];
+    $this->prefixedChoices = [
+      'L' => [range(0, 3),array_slice($yearLabels, 0, 3 + 1)],
+      'M' => [range(0, 2),array_slice($yearLabels, 0, 2 + 1)],
+      'D' => [range(0, 9),array_slice($yearLabels, 0, 10)],
+      'X' => [range(0, 9),array_slice($yearLabels, 0, 10)],
+      'B' => [range(0, 20),range(0, 20)],
+    ];
     $this->attributes[0]->setSubmitForm(TRUE);
     $this->supannUpdateSelect();
     $this->setRequired($required);
   }
-  protected function supannUpdateSelect()
+  protected function supannUpdateSelect ()
   {
     $prefix = $this->attributes[0]->getValue();
     $this->attributes[1]->setChoices($this->prefixedChoices[$prefix][0], $this->prefixedChoices[$prefix][1]);
@@ -140,15 +140,15 @@ class SupannCursusAnneeAttribute extends SupannPrefixedSelectAttribute
 
 class SupannCompositeAttribute extends CompositeAttribute
 {
-  function __construct($description, $ldapName, $attributes, $acl = "", $label = "Composite attribute")
+  function __construct ($description, $ldapName, $attributes, $acl = "", $label = "Composite attribute")
   {
     parent::__construct($description, $ldapName, $attributes, '', '', $acl, $label);
   }
 
-  function readValues($value)
+  function readValues ($value)
   {
-    $values = array();
-    $m = array();
+    $values = [];
+    $m = [];
     foreach ($this->attributes as &$attribute) {
       $shortname = preg_replace('/^[^_]+_/', '', $attribute->getLdapName());
       if (preg_match("/\\[$shortname=([^\\]]+)\\]/", $value, $m)) {
@@ -162,7 +162,7 @@ class SupannCompositeAttribute extends CompositeAttribute
     return $values;
   }
 
-  function writeValues($values)
+  function writeValues ($values)
   {
     $value  = '';
     $i      = 0;
@@ -177,13 +177,13 @@ class SupannCompositeAttribute extends CompositeAttribute
     return $value;
   }
 
-  function supannGetValues(&$values)
+  function supannGetValues (&$values)
   {
     foreach ($this->attributes as &$attribute) {
       $shortname = preg_replace('/^([^_]+)_.*$/', '\\1', $attribute->getLdapName());
       $value = $attribute->getValue();
       if (!isset($values[$shortname])) {
-        $values[$shortname] = array();
+        $values[$shortname] = [];
       }
       if ($value == "") {
         continue;
@@ -196,9 +196,9 @@ class SupannCompositeAttribute extends CompositeAttribute
 
 class SupannOrderedArrayAttribute extends OrderedArrayAttribute
 {
-  function supannPrepareSave()
+  function supannPrepareSave ()
   {
-    $values = array();
+    $values = [];
     foreach ($this->value as $value) {
       $this->attribute->setValue($value);
       $this->attribute->supannGetValues($values);
@@ -214,37 +214,37 @@ class SupannOrderedArrayAttribute extends OrderedArrayAttribute
 
 class supannAccount extends simplePlugin
 {
-  var $objectclasses = array('eduPerson', 'supannPerson');
+  var $objectclasses = ['eduPerson', 'supannPerson'];
 
   var $displayHeader = TRUE;
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('SupAnn'),
       'plDescription' => _('SupAnn information management plugin'),
       'plIcon'        => 'geticon.php?context=applications&icon=supann&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=supann&size=16',
       'plSelfModify'  => TRUE,
       'plPriority'    => 14,
-      'plObjectType'  => array('user'),
+      'plObjectType'  => ['user'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo ()
   {
     $year = intval(date('Y'));
-    return array(
-      'identity' => array(
+    return [
+      'identity' => [
         'name'  => _('Identity'),
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Civilite'), _('supannCivilite - Civility for this person'),
             'supannCivilite', FALSE,
-            array('', 'M.', 'Mme', 'Mlle')
+            ['', 'M.', 'Mme', 'Mlle']
           ),
           new StringAttribute(
             _('Alias login'), _('supannAliasLogin - An alias for the login of this user'),
@@ -267,11 +267,11 @@ class supannAccount extends simplePlugin
               '/^{[^}]+}.+$/'
             )
           ),
-        )
-      ),
-      'contact' => array(
+        ]
+      ],
+      'contact' => [
         'name'  => _('Contact'),
-        'attrs' => array(
+        'attrs' => [
           new SetAttribute(
             new PhoneNumberAttribute(
               _('Other phone numbers'), _('supannAutreTelephone - Other phone numbers for this user'),
@@ -294,11 +294,11 @@ class supannAccount extends simplePlugin
             _('Red list'), _('supannListeRouge - Should this person be on the red list'),
             'supannListeRouge', TRUE
           )
-        )
-      ),
-      'affectation' => array(
+        ]
+      ],
+      'affectation' => [
         'name'  => _('Assignment'),
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Primary assignment'), _('supannEntiteAffectationPrincipale - Main assignment of the person'),
             'supannEntiteAffectationPrincipale', FALSE
@@ -315,11 +315,11 @@ class supannAccount extends simplePlugin
               'supannTypeEntiteAffectation', FALSE, 'entite'
             )
           ),
-        )
-      ),
-      'affiliation' => array(
+        ]
+      ],
+      'affiliation' => [
         'name'  => _('Affiliation'),
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Primary affiliation'), _('eduPersonPrimaryAffiliation - Main status of the person'),
             'eduPersonPrimaryAffiliation', FALSE
@@ -336,11 +336,11 @@ class supannAccount extends simplePlugin
               'supannEtablissement', FALSE
             )
           ),
-        )
-      ),
-      'student' => array(
+        ]
+      ],
+      'student' => [
         'name'  => _('Student profile'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('INE code'), _('supannCodeINE - INE code of this student'),
             'supannCodeINE', FALSE
@@ -349,13 +349,13 @@ class supannAccount extends simplePlugin
             _('Student ID'), _('supannEtuId - Scolarity id'),
             'supannEtuId', FALSE
           ),
-        )
-      ),
-      'student2' => array(
+        ]
+      ],
+      'student2' => [
         'name'      => _('Student registrations'),
-        'class'     => array('fullwidth'),
+        'class'     => ['fullwidth'],
         'template'  => get_template_path('student_subscription.tpl', TRUE, dirname(__FILE__)),
-        'attrs'     => array(
+        'attrs'     => [
           /* These attributes are handled by the SupannOrderedArrayAttribute */
           new HiddenAttribute('supannEtuAnneeInscription'),
           new HiddenAttribute('supannEtuRegimeInscription'),
@@ -369,7 +369,7 @@ class supannAccount extends simplePlugin
             new SupannCompositeAttribute(
               _('supannEtuInscription - Registrations for this student'),
               'supannEtuInscription',
-              array(
+              [
                 new SelectAttribute(
                   _('Establishment'), _('supannEtablissement - Etablissement in which this registration was done'),
                   'supannEtablissement_etab', TRUE
@@ -411,19 +411,19 @@ class supannAccount extends simplePlugin
                   _('educational element'), _('supannEtuElementPedagogique - Generic description of the content of education with a high level of granularity'),
                   'supannEtuElementPedagogique_eltpedago', FALSE, 'etuelementpedagogique'
                 ),
-              )
+              ]
             ),
             // no order
             FALSE,
-            array(),
+            [],
             // no edit button
             FALSE
           )
-        )
-      ),
-      'personnal' => array(
+        ]
+      ],
+      'personnal' => [
         'name'  => _('Personal profile'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Personal ID'), _('supannEmpId - Employee identifier'),
             'supannEmpId', FALSE
@@ -438,19 +438,19 @@ class supannAccount extends simplePlugin
               'supannActivite', FALSE, 'activite'
             )
           )
-        )
-      ),
-      'personnal2' => array(
+        ]
+      ],
+      'personnal2' => [
         'name'      => _('Roles'),
-        'class'     => array('fullwidth'),
-        'attrs'     => array(
+        'class'     => ['fullwidth'],
+        'attrs'     => [
           /* These attributes are handled by the SupannOrderedArrayAttribute */
           new HiddenAttribute('supannRoleGenerique'),
           new SupannOrderedArrayAttribute(
             new SupannCompositeAttribute(
               _('supannRoleEntite'),
               'supannRoleEntite',
-              array(
+              [
                 new SupannPrefixedSelectAttribute(
                   _('Generic role'), _('supannRoleGenerique - Generic role of the person in the facility'),
                   'supannRoleGenerique_role', TRUE, 'role'
@@ -463,20 +463,20 @@ class supannAccount extends simplePlugin
                   _('Entity'), _('supannEntiteAffectation - Represents assignments of the person in an institution, a component, service, etc.'),
                   'supannEntiteAffectation_code', FALSE
                 ),
-              ),
+              ],
               '',
               // no label
               ''
             ),
             // no order
             FALSE,
-            array(),
+            [],
             // no edit button
             FALSE
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -487,12 +487,12 @@ class supannAccount extends simplePlugin
     /* list of entity stored in LDAP tree */
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=supannEntite)', array('supannCodeEntite', 'ou', 'o','supannEtablissement'));
+    $ldap->search('(objectClass=supannEntite)', ['supannCodeEntite', 'ou', 'o','supannEtablissement']);
 
-    $code_entites   = array();
-    $label_entites  = array();
-    $code_etablissements  = array();
-    $label_etablissements = array();
+    $code_entites   = [];
+    $label_entites  = [];
+    $code_etablissements  = [];
+    $label_etablissements = [];
     while ($attrs = $ldap->fetch()) {
       if (isset($attrs['supannCodeEntite'][0])) {
         $code_entites[] = $attrs['supannCodeEntite'][0];
@@ -515,7 +515,7 @@ class supannAccount extends simplePlugin
     $this->supannInit();
   }
 
-  function supannInit()
+  function supannInit ()
   {
     list ($codes, $labels) = supann::get_choices_for('affiliation');
     $this->attributesAccess['eduPersonAffiliation']->attribute->setChoices($codes, $labels);
@@ -534,7 +534,7 @@ class supannAccount extends simplePlugin
   }
 
   /* Update choices of fields which depends on other fields values */
-  function updateFieldsChoices()
+  function updateFieldsChoices ()
   {
     $code_ent   = $this->attributesAccess['supannEntiteAffectation']->getValue();
     $label_ent  = $this->attributesAccess['supannEntiteAffectation']->getDisplayValues();
@@ -560,7 +560,7 @@ class supannAccount extends simplePlugin
     );
   }
 
-  function check()
+  function check ()
   {
     $message = parent::check();
 
@@ -572,13 +572,13 @@ class supannAccount extends simplePlugin
     return $message;
   }
 
-  function save_object()
+  function save_object ()
   {
     parent::save_object();
     $this->updateFieldsChoices();
   }
 
-  function adapt_from_template($attrs, $skip = array())
+  function adapt_from_template ($attrs, $skip = [])
   {
     parent::adapt_from_template($attrs, $skip);
     $this->updateFieldsChoices();

@@ -21,20 +21,20 @@
 
 class argonautFuseLTSPConfig extends simplePlugin
 {
-  var $objectclasses  = array('argonautFuseLTSPConfig');
+  var $objectclasses  = ['argonautFuseLTSPConfig'];
   var $showActions    = FALSE;
   var $displayHeader  = TRUE;
 
   /* Return plugin information for acl handling */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Argonaut Fuse LTSP module settings'),
       'plDescription'   => _('Argonaut Fuse LTSP module settings').' ('._('Services').')',
-      'plCategory'      => array('server'),
-      'plObjectType'    => array('fusemodule'),
+      'plCategory'      => ['server'],
+      'plObjectType'    => ['fusemodule'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -42,17 +42,17 @@ class argonautFuseLTSPConfig extends simplePlugin
    */
   static function getAttributesInfo ()
   {
-    return array (
-      'ltsp' => array (
+    return  [
+      'ltsp' => [
         'name'  => _('LTSP'),
-        'attrs' => array (
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('LTSP server'),
             '',
             'argonautFuseLtspServer'
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }

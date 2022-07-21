@@ -20,39 +20,39 @@
 
 class applicationRights extends simplePlugin
 {
-  var $objectclasses = array('fdApplicationRights');
+  var $objectclasses = ['fdApplicationRights'];
 
   var $displayHeader = TRUE;
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Applications'),
       'plDescription' => _('Applications allowed for this role'),
-      'plObjectType'  => array('role'),
-      'plForeignKeys' => array(
+      'plObjectType'  => ['role'],
+      'plForeignKeys' => [
         'fdApplicationAllowed' => 'webApplication',
-      ),
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Application list'),
-        'attrs' => array(
-          new SetAttribute (
-            new SelectAttribute (
+        'attrs' => [
+          new SetAttribute(
+            new SelectAttribute(
               _('Applications'), _('The applications users with this role are allowed to launch'),
               'fdApplicationAllowed', TRUE
             )
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)

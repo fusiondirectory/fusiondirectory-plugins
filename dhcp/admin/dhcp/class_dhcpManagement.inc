@@ -20,26 +20,26 @@
 
 class dhcpManagement extends simpleManagement
 {
-  protected $objectTypes  = array('dhcpConfiguration');
+  protected $objectTypes  = ['dhcpConfiguration'];
 
   protected $departmentBrowser      = TRUE;
   protected $departmentRootVisible  = TRUE;
   protected $baseMode               = TRUE;
 
-  protected $autoFilterAttributes = array('dn', 'cn', 'description');
+  protected $autoFilterAttributes = ['dn', 'cn', 'description'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('DHCP'),
       'plDescription' => _('DHCP Management'),
       'plIcon'        => 'geticon.php?context=applications&icon=dhcp&size=48',
-      'plSection'     => array('systems' => array('name' => _('Systems'), 'priority' => 10)),
+      'plSection'     => ['systems' => ['name' => _('Systems'), 'priority' => 10]],
       'plPriority'    => 2,
-      'plManages'     => array('dhcpConfiguration'),
+      'plManages'     => ['dhcpConfiguration'],
 
-      'plProvidedAcls'  => array()
-    );
+      'plProvidedAcls'  => []
+    ];
   }
 }
 ?>

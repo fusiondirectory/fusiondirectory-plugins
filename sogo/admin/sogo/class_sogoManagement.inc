@@ -21,26 +21,26 @@
 class sogoManagement extends simpleManagement
 {
   // Tab definition
-  protected $objectTypes  = array('sogoResource');
+  protected $objectTypes  = ['sogoResource'];
 
   protected $departmentBrowser      = TRUE;
   protected $departmentRootVisible  = TRUE;
   protected $baseMode               = TRUE;
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('SOGo'),
       'plDescription' => _('SOGo management'),
       'plIcon'        => 'geticon.php?context=applications&icon=sogo&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 50,
-      'plCategory'    => array('sogo' => array('description'  => _('SOGo'),
-                                              'objectClass'  => array('sogoResource'))),
-      'plManages'     => array('sogoResource'),
+      'plCategory'    => ['sogo' => ['description'  => _('SOGo'),
+                                              'objectClass'  => ['sogoResource']]],
+      'plManages'     => ['sogoResource'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 }
 ?>

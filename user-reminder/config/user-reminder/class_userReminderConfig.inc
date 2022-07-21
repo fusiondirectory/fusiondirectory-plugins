@@ -20,66 +20,66 @@
 
 class userReminderConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdUserReminderPluginConf');
+  var $objectclasses  = ['fdUserReminderPluginConf'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('User reminder'),
       'plDescription'   => _('Configuration for the reminder of accounts expiration'),
-      'plObjectType'    => array('configuration'),
+      'plObjectType'    => ['configuration'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('User reminder settings'),
-        'attrs' => array(
-          new IntAttribute (
+        'attrs' => [
+          new IntAttribute(
             _('Delay before expiration'), _('Days before expiration to send the first mail'),
             'fdUserReminderAlertDelay', TRUE,
             1, FALSE, 15
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Delay before sending again'), _('Days before sending a second mail (0 to disable)'),
             'fdUserReminderResendDelay', TRUE,
             0, FALSE, 7
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Extension of the validity'), _('Extension of the duration of the account in days'),
             'fdUserReminderPostponeDays', TRUE,
             1, FALSE, 15
           ),
-          new MailAttribute (
+          new MailAttribute(
             _('Sender email address'), _('Email address from which mails will be sent'),
             'fdUserReminderEmail', TRUE,
             'to.be@chang.ed'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Allow use of alternate addresses'), _('Whether the field gosaMailAlternateAddress should be used as well to send reminders'),
             'fdUserReminderUseAlternate', TRUE,
             TRUE
           ),
-        )
-      ),
-      'emailppolicy' => array(
+        ]
+      ],
+      'emailppolicy' => [
         'name'  => _('Ppolicy email settings'),
-        'attrs' => array(
-          new BooleanAttribute (
+        'attrs' => [
+          new BooleanAttribute(
             _('Forward alerts to the manager'), _('Forward ppolicy alerts to the manager'),
             'fdUserReminderForwardPpolicyAlert', FALSE,
             TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Subject'), _('Subject of the ppolicy alert email'),
             'fdUserReminderPpolicyAlertSubject', FALSE,
             _('[FusionDirectory] Your password is about to expire')
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Body (%s are cn and login)'),
             _('Body of the ppolicy alert email, sent when the user password is about to expire. Use %s for the cn and uid.'),
             'fdUserReminderPpolicyAlertBody', FALSE,
@@ -90,22 +90,22 @@ class userReminderConfig extends simplePlugin
               (empty($_SERVER['REQUEST_URI']) ? $_SERVER['PATH_INFO'] : $_SERVER['REQUEST_URI']).
               "\n")
           )
-        )
-      ),
-      'email1' => array(
+        ]
+      ],
+      'email1' => [
         'name'  => _('Alert email settings'),
-        'attrs' => array(
-          new BooleanAttribute (
+        'attrs' => [
+          new BooleanAttribute(
             _('Forward alerts to the manager'), _('Forward alerts to the manager'),
             'fdUserReminderForwardAlert', TRUE,
             TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Subject'), _('Subject of the alert email'),
             'fdUserReminderAlertSubject', FALSE,
             _('[FusionDirectory] Your account is about to expire')
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Body (%s are cn, login, and link token)'),
             _('Body of the alert email, sent when the user is about to expire. Use %s for the cn, uid and token.'),
             'fdUserReminderAlertBody', FALSE,
@@ -116,35 +116,35 @@ class userReminderConfig extends simplePlugin
               (empty($_SERVER['REQUEST_URI']) ? $_SERVER['PATH_INFO'] : $_SERVER['REQUEST_URI']).
               '/expired_postpone.php?uid=%2$s&token=%3$s'."\n")
           )
-        )
-      ),
-      'email2' => array(
+        ]
+      ],
+      'email2' => [
         'name'  => _('Confirmation email settings'),
-        'attrs' => array(
-          new BooleanAttribute (
+        'attrs' => [
+          new BooleanAttribute(
             _('Forward confirmation to the manager'), _('Forward account extension confirmation to the manager'),
             'fdUserReminderForwardConfirmation', TRUE,
             TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Subject'), _('Subject of the confirmation email'),
             'fdUserReminderConfirmationSubject', FALSE,
             _('[FusionDirectory] Your account expiration has been postponed')
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Body (%s are cn and login)'),
             _('Body of the confirmation email, sent when the user has postponed expiration. Use %s for the cn and uid.'),
             'fdUserReminderConfirmationBody', FALSE,
             _('Dear %1$s,'."\n".' your account %2$s expiration has been successfully postponed.'."\n")
           ),
-          new HiddenAttribute (
+          new HiddenAttribute(
             'fdReminderTokenRDN',
             FALSE,
             'ou=reminder'
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
@@ -158,7 +158,7 @@ class userReminderConfig extends simplePlugin
     }
   }
 
-  protected function post_save()
+  protected function post_save ()
   {
     global $config;
     $ldap = $config->get_ldap_link();

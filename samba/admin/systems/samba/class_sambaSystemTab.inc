@@ -21,41 +21,41 @@
 
 class sambaSystemTab extends simplePlugin
 {
-  var $objectclasses = array('posixAccount','sambaSamAccount');
+  var $objectclasses = ['posixAccount','sambaSamAccount'];
   var $displayHeader = TRUE;
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Samba'),
       'plDescription' => _('Windows workstation information'),
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('workstation'),
+      'plObjectType'  => ['workstation'],
       'plPriority'    => 6,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ($word = NULL, $rdn = NULL)
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
-          new HiddenAttribute ('uid'),
-          new HiddenAttribute ('sambaSID'),
-          new HiddenAttribute ('homeDirectory', TRUE, '/dev/null'),
-          new HiddenAttribute ('uidNumber', TRUE, 1000),
-          new HiddenAttribute ('gidNumber', TRUE, 515),
-          new HiddenAttribute ('sambaAcctFlags', TRUE, '[W          ]'),
-          new SelectAttribute (
+        'attrs' => [
+          new HiddenAttribute('uid'),
+          new HiddenAttribute('sambaSID'),
+          new HiddenAttribute('homeDirectory', TRUE, '/dev/null'),
+          new HiddenAttribute('uidNumber', TRUE, 1000),
+          new HiddenAttribute('gidNumber', TRUE, 515),
+          new HiddenAttribute('sambaAcctFlags', TRUE, '[W          ]'),
+          new SelectAttribute(
             _('Domain'), _('Samba domain name'),
             'sambaDomainName', TRUE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -69,10 +69,10 @@ class sambaSystemTab extends simplePlugin
 
     // Get samba domain and its sid/rid base
     if ($this->sambaSID != '') {
-      $this->SID = preg_replace ('/-[^-]+$/', '', $this->sambaSID);
+      $this->SID = preg_replace('/-[^-]+$/', '', $this->sambaSID);
       $ldap = $config->get_ldap_link();
       $ldap->cd($config->current['BASE']);
-      $ldap->search('(&(objectClass=sambaDomain)(sambaSID='.$this->SID.'))', array('sambaAlgorithmicRidBase','sambaDomainName'));
+      $ldap->search('(&(objectClass=sambaDomain)(sambaSID='.$this->SID.'))', ['sambaAlgorithmicRidBase','sambaDomainName']);
       if ($ldap->count() != 0) {
         $attrs = $ldap->fetch();
         if (isset($attrs['sambaAlgorithmicRidBase'])) {
@@ -96,18 +96,18 @@ class sambaSystemTab extends simplePlugin
     }
   }
 
-  protected function update_uid()
+  protected function update_uid ()
   {
     $this->attributesAccess['uid']->setValue($this->parent->getBaseObject()->cn.'$');
   }
 
-  function save_object()
+  function save_object ()
   {
     parent::save_object();
     $this->update_uid();
   }
 
-  function prepare_save()
+  function prepare_save ()
   {
     global $config;
     $this->update_uid();
@@ -129,7 +129,7 @@ class sambaSystemTab extends simplePlugin
         $sid = $this->SID.'-'.($uidNumber * 2 + $this->ridBase);
         $ldap = $config->get_ldap_link();
         $ldap->cd($config->current['BASE']);
-        $ldap->search('(sambaSID='.$sid.')', array('sambaSID'));
+        $ldap->search('(sambaSID='.$sid.')', ['sambaSID']);
         $uidNumber++;
       } while ($ldap->count() != 0);
       $uidNumber--;

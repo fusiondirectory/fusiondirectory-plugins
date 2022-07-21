@@ -20,71 +20,71 @@
 
 class faiVariable extends faiSimplePluginClass
 {
-  var $objectclasses = array('top','FAIclass','FAIvariable');
+  var $objectclasses = ['top','FAIclass','FAIvariable'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Variable'),
       'plDescription' => _('FAI variable'),
-      'plObjectType'  => array(
-        'faiVariable' => array(
+      'plObjectType'  => [
+        'faiVariable' => [
           'name'        => _('FAI variable'),
           'filter'      => 'objectClass=FAIvariable',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiVariableRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-variable&size=16'
-        )
-      ),
+        ]
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
-          new HostNameAttribute (
+        'attrs' => [
+          new HostNameAttribute(
             _('Class name'), _('Variables class name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
-        )
-      ),
-      'vars' => array(
+        ]
+      ],
+      'vars' => [
         'name'  => _('Variables'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
-          new SubNodesAttribute (
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new SubNodesAttribute(
             '', _('Variables in this class'),
-            'variables', array('FAIvariableEntry','FAIclass','top'),
-            array(
-              new StringAttribute (
+            'variables', ['FAIvariableEntry','FAIclass','top'],
+            [
+              new StringAttribute(
                 _('Name'), _('The name of the variable'),
                 'cn', TRUE
               ),
-              new StringAttribute (
+              new StringAttribute(
                 _('Description'), _('A short description of the variable'),
                 'description', FALSE
               ),
-              new StringAttribute (
+              new StringAttribute(
                 _('Content'), _('The content of the variable'),
                 'FAIvariableContent', TRUE
               ),
-            ),
+            ],
             FALSE, /* no order */
-            array(),
+            [],
             TRUE /* edit enabled */
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -95,7 +95,7 @@ class faiVariable extends faiSimplePluginClass
     $this->attributesAccess['variables']->setLinearRendering(FALSE);
   }
 
-  protected function shouldSave()
+  protected function shouldSave ()
   {
     /* We need ldap_save to always run */
     return TRUE;

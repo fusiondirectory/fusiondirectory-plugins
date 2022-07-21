@@ -22,18 +22,18 @@
 class serviceSympa extends simpleService
 {
   /* This plugin only writes its objectClass */
-  var $objectclasses  = array("sympaServer");
+  var $objectclasses  = ["sympaServer"];
 
   /* Return plugin information for acl handling */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Sympa Server'),
       'plDescription' => _('Sympa Server').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=sympa&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
     /*!
@@ -41,25 +41,25 @@ class serviceSympa extends simpleService
    */
   static function getAttributesInfo ()
   {
-    return array (
-      'main' => array (
+    return  [
+      'main' => [
         'name'  => _('Sympa server'),
-        'attrs' => array (
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('URL'), _('URL to access the sympa server'),
             'sympaServerURL', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('User'), _('User to access sympa server SOAP API.'),
             'sympaServerUser', FALSE
           ),
-          new PasswordAttribute (
+          new PasswordAttribute(
             _('Password'), _('Password to access sympa server SOAP API.'),
             'sympaServerPassword', FALSE
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

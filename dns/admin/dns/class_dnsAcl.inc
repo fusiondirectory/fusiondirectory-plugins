@@ -22,43 +22,43 @@ class dnsAcl extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array('fdDNSAcl');
+  var $objectclasses = ['fdDNSAcl'];
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('DNS acl'),
       'plDescription' => _('DNS acl'),
-      'plObjectType'  => array('dnsAcl' => array(
+      'plObjectType'  => ['dnsAcl' => [
         'name'        => _('DNS acl'),
         'filter'      => '(objectClass=fdDNSAcl)',
         'ou'          => get_ou('dnsRDN'),
         'icon'        => 'geticon.php?context=categories&icon=acl&size=16'
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Acl'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('dnsRDN')),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('ACL name'), _('Name of this acl'),
             'cn', TRUE
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Address match list'), _('The ip address match list for this acl'),
               'fdDNSAclMatchList', FALSE
             )
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }

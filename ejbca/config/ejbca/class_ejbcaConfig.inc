@@ -20,35 +20,35 @@
 
 class ejbcaConfig extends simplePlugin
 {
-  var $objectclasses  = array("fdEjbcaPluginConf");
+  var $objectclasses  = ["fdEjbcaPluginConf"];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       "plShortName"     => _("EJBCA plugin configuration"),
       "plDescription"   => _("FusionDirectory ejbca plugin configuration"),
       "plSelfModify"    => FALSE,
-      "plCategory"      => array("configuration"),
-      "plObjectType"    => array("smallConfig"),
+      "plCategory"      => ["configuration"],
+      "plObjectType"    => ["smallConfig"],
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('EJBCA plugin'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('EJBCA RDN'), _('Branch in which ejbca certificates are stored'),
             'fdEjbcaRDN', TRUE,
             'ou=certificates'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

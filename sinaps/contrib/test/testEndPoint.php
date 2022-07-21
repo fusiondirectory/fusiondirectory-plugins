@@ -9,17 +9,17 @@ sendPost(
   file_get_contents($argv[2])
 );
 
-function sendPost($url, $xml)
+function sendPost ($url, $xml)
 {
   // performs the HTTP(S) POST
-  $opts = array (
-    'http' => array (
+  $opts = [
+    'http' => [
       'method'  => 'POST',
       'header'  => 'Content-type: application/xml',
       'content' => $xml,
-    ),
+    ],
     'ssl' => []
-  );
+  ];
 
   $context  = stream_context_create($opts);
   $fp = fopenWithErrorHandling($url, 'r', FALSE, $context);
@@ -41,9 +41,9 @@ function sendPost($url, $xml)
 }
 
 /* Calls fopen, gives errors as an array if any, file handle if successful */
-function fopenWithErrorHandling(...$args)
+function fopenWithErrorHandling (...$args)
 {
-  $errors = array();
+  $errors = [];
   set_error_handler(
     function ($errno, $errstr, $errfile, $errline, $errcontext) use (&$errors)
     {

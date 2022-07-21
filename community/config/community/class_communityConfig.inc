@@ -20,36 +20,36 @@
 
 class communityConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdCommunityPluginConf');
+  var $objectclasses  = ['fdCommunityPluginConf'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Community configuration'),
       'plDescription'   => _('FusionDirectory community plugin configuration'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Community'),
-        'attrs' => array(
+        'attrs' => [
           new SetAttribute(
-            new StringAttribute (
+            new StringAttribute(
               _('Membership type choices'), _('Community membership types available in the user community tab'),
               'fdCommunityMembershipTypeChoices', FALSE
             ),
-            array()
+            []
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

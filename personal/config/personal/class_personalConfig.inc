@@ -20,34 +20,34 @@
 
 class personalConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdPersonalPluginConf');
+  var $objectclasses  = ['fdPersonalPluginConf'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Personal configuration'),
       'plDescription'   => _('FusionDirectory personal plugin configuration'),
       'plSelfModify'    => FALSE,
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Personal'),
-        'attrs' => array(
-          new BooleanAttribute (
+        'attrs' => [
+          new BooleanAttribute(
             _('Allow use of private email for password recovery'), _('Allow users to use their private email address for password recovery'),
             'fdPrivateEmailPasswordRecovery', FALSE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

@@ -20,44 +20,44 @@
 
 class dnsView extends simplePlugin
 {
-  var $objectclasses = array('fdDNSView');
+  var $objectclasses = ['fdDNSView'];
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('DNS view'),
       'plDescription' => _('DNS view'),
-      'plObjectType'  => array('dnsView' => array(
+      'plObjectType'  => ['dnsView' => [
         'name'        => _('DNS view'),
         'filter'      => '(objectClass=fdDNSView)',
         'ou'          => get_ou('dnsRDN'),
         'icon'        => 'geticon.php?context=applications&icon=dns&size=16'
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('View'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('dnsRDN')),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('View name'), _('Name of this view'),
             'cn', TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Match clients ACL'), _('Name of the ACL to use for the source IP address of the incoming requests'),
             'fdDNSViewMatchClientsAcl', FALSE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Match destinations ACL'), _('Name of the ACL to use for the destination IP address of the incoming requests'),
             'fdDNSViewMatchDestinationsAcl', FALSE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Match recursive only'), _('Match only recursive queries in this view'),
             'fdDNSViewMatchRecursiveOnly', FALSE
           ),
@@ -67,9 +67,9 @@ class dnsView extends simplePlugin
               'fdDNSZoneDn', FALSE
             )
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)

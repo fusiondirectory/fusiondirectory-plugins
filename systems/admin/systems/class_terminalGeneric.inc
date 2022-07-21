@@ -20,7 +20,7 @@
 
 class terminalGeneric extends workstationGeneric
 {
-  var $objectclasses = array('fdTerminal', 'ieee802Device');
+  var $objectclasses = ['fdTerminal', 'ieee802Device'];
 
   /*!
    *  \brief The main function : information about attributes
@@ -37,24 +37,24 @@ class terminalGeneric extends workstationGeneric
   }
 
   /* Return plugin information for acl handling */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Terminal'),
       'plDescription' => _('Terminal information'),
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('terminal' =>
-        array(
+      'plObjectType'  => ['terminal' =>
+        [
           'name'        => _('Terminal'),
           'description' => _('Terminal'),
           'filter'      => 'objectClass=fdTerminal',
           'icon'        => 'geticon.php?context=devices&icon=terminal&size=16',
           'ou'          => get_ou('terminalRDN'),
-        )
-      ),
+        ]
+      ],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 }
 

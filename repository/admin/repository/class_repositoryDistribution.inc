@@ -22,65 +22,65 @@ class repositoryDistribution extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array('fdBuildRepositoryDistribution');
+  var $objectclasses = ['fdBuildRepositoryDistribution'];
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Repository distribution'),
       'plDescription' => _('Repository distribution'),
-      'plObjectType'  => array('repoDistribution' => array(
+      'plObjectType'  => ['repoDistribution' => [
         'name'        => _('Repository distribution'),
         'filter'      => 'objectClass=fdBuildRepositoryDistribution',
         'aclCategory' => 'repository',
         'ou'          => get_ou('repositoryRDN'),
         'icon'        => 'geticon.php?context=applications&icon=repository-distribution&size=16'
-      )),
-      'plForeignKeys'  => array(
-        'fdBasedOn' => array(
-          array('repositoryDistribution', 'cn'),
-        ),
-        'fdRepoSection' => array(
-          array('repositorySection', 'cn'),
-        ),
-      ),
+      ]],
+      'plForeignKeys'  => [
+        'fdBasedOn' => [
+          ['repositoryDistribution', 'cn'],
+        ],
+        'fdRepoSection' => [
+          ['repositorySection', 'cn'],
+        ],
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Repository distribution'),
-        'attrs' => array(
-          new BaseSelectorAttribute (get_ou('repositoryRDN')),
-          new StringAttribute (
+        'attrs' => [
+          new BaseSelectorAttribute(get_ou('repositoryRDN')),
+          new StringAttribute(
             _('Name'), _('Unique name for this distribution'),
             'cn', TRUE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Description'), _('Description of this distribution'),
             'description', FALSE
           ),
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Section'), _('The sections this distribution contains'),
               'fdRepoSection', TRUE,
-              array()
+              []
             )
           ),
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Based on'), _('The distributions this one is based on'),
               'fdBasedOn', FALSE,
-              array()
+              []
             )
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)

@@ -20,35 +20,35 @@
 
 class sympaConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdSympaPluginConf');
+  var $objectclasses  = ['fdSympaPluginConf'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Sympa configuration'),
       'plDescription'   => _('FusionDirectory sympa plugin configuration'),
       'plSelfModify'    => FALSE,
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Sympa'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Sympa RDN'), _('Branch in which Sympa objects will be stored'),
             'fdSympaRDN', TRUE,
             'ou=sympa'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

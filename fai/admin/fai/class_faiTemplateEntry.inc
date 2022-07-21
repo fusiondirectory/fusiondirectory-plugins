@@ -23,7 +23,7 @@ class AccessRightsAttribute extends CompositeAttribute
 {
   function __construct ($label, $description, $ldapName, $acl = "")
   {
-    $attributes = array(
+    $attributes = [
       'u4' => new BooleanAttribute('', '', 'ur', FALSE, TRUE),
       'u2' => new BooleanAttribute('', '', 'uw', FALSE, TRUE),
       'u1' => new BooleanAttribute('', '', 'ue', FALSE),
@@ -36,12 +36,12 @@ class AccessRightsAttribute extends CompositeAttribute
       'o2' => new BooleanAttribute('', '', 'ow', FALSE),
       'o1' => new BooleanAttribute('', '', 'oe', FALSE),
       's1' => new BooleanAttribute('', '', 'os', FALSE),
-    );
-    parent::__construct ($description, $ldapName, $attributes, FALSE, FALSE, $acl, $label);
+    ];
+    parent::__construct($description, $ldapName, $attributes, FALSE, FALSE, $acl, $label);
     $this->setLinearRendering(TRUE);
   }
 
-  function renderFormInput()
+  function renderFormInput ()
   {
     foreach ($this->attributes as &$attribute) {
       $attribute->setDisabled($this->disabled);
@@ -90,11 +90,11 @@ class AccessRightsAttribute extends CompositeAttribute
     return $display;
   }
 
-  function readValues($value)
+  function readValues ($value)
   {
     $tmode  = "$value ";
-    $m      = array();
-    foreach (array('s', 'u', 'g', 'o') as $type) {
+    $m      = [];
+    foreach (['s', 'u', 'g', 'o'] as $type) {
       $current  = substr($tmode, 0, 1);
       $tmode    = preg_replace('/^./', '', $tmode);
       $nr       = 1;
@@ -103,17 +103,17 @@ class AccessRightsAttribute extends CompositeAttribute
         $nr += $nr;
       }
     }
-    $values = array();
+    $values = [];
     foreach (array_keys($this->attributes) as $name) {
       $values[] = $m[$name];
     }
     return $values;
   }
 
-  function writeValues($values)
+  function writeValues ($values)
   {
     $tmode  = '';
-    foreach (array('s', 'u', 'g', 'o') as $type) {
+    foreach (['s', 'u', 'g', 'o'] as $type) {
       $nr   = 1;
       $dest = 0;
       while ($nr < 5) {
@@ -130,62 +130,62 @@ class AccessRightsAttribute extends CompositeAttribute
 
 class faiTemplateEntry extends simplePlugin
 {
-  var $objectclasses  = array('top', 'FAIclass', 'FAItemplateEntry');
+  var $objectclasses  = ['top', 'FAIclass', 'FAItemplateEntry'];
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
-          new PathAttribute (
+        'attrs' => [
+          new PathAttribute(
             _('File path'), _('Complete absolute template file path and name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the file'),
             'description', FALSE
           ),
-          new HiddenAttribute (
+          new HiddenAttribute(
             'FAItemplatePath', TRUE
           ),
-        )
-      ),
-      'template' => array(
+        ]
+      ],
+      'template' => [
         'name'  => _('Template attributes'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
-          new FileTextAreaAttribute (
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new FileTextAreaAttribute(
             _('Template file content'), _('Content of the template file'),
             'FAItemplateFile', TRUE
           ),
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('Owner and group of the file'), 'FAIowner',
-            array(
-              new StringAttribute (
+            [
+              new StringAttribute(
                 _('Owner'), _('File owner'),
                 'owner', TRUE,
                 'root'
               ),
-              new StringAttribute (
+              new StringAttribute(
                 _('Group'), _('File group'),
                 'group', TRUE,
                 'root'
               ),
-            ),
+            ],
             '/^([^.]+)\.([^.]+)$/',
             '%s.%s'
           ),
-          new AccessRightsAttribute (
+          new AccessRightsAttribute(
             _('Access'), _('Access rights'),
             'FAImode'
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
-  function save_object()
+  function save_object ()
   {
     if (isset($_FILES[$this->attributesAccess['FAItemplateFile']->getHtmlId()]['name'])) {
       $name = $_FILES[$this->attributesAccess['FAItemplateFile']->getHtmlId()]['name'];

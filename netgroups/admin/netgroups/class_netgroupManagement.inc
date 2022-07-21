@@ -22,24 +22,24 @@
 class netgroupManagement extends simpleManagement
 {
   // Tab definition
-  protected $objectTypes  = array('netgroup');
+  protected $objectTypes  = ['netgroup'];
 
   protected $departmentBrowser      = TRUE;
   protected $departmentRootVisible  = FALSE;
   protected $baseMode               = TRUE;
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('NIS Netgroups'),
       'plDescription' => _('NIS Netgroup management'),
       'plIcon'        => 'geticon.php?context=applications&icon=netgroups&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 25,
-      'plManages'     => array('netgroup'),
+      'plManages'     => ['netgroup'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 }
 

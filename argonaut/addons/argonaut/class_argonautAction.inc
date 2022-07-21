@@ -22,36 +22,36 @@ class MacsAttribute extends GenericDialogAttribute
 {
   protected $dialogClass = 'SystemSelectDialog';
 
-  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = array(), $display_attr = 'cn', $acl = '')
+  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = [], $display_attr = 'cn', $acl = '')
   {
-    parent::__construct ($label, $description, $ldapName, $required, $defaultValue, 'macAddress', $display_attr, $acl);
+    parent::__construct($label, $description, $ldapName, $required, $defaultValue, 'macAddress', $display_attr, $acl);
   }
 }
 
 class argonautAction extends simplePlugin
 {
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Argonaut task'),
       'plDescription' => _('Schedule an argonaut task'),
-      'plObjectType'  => array('argonautTask' => array(
+      'plObjectType'  => ['argonautTask' => [
         'name'        => _('Argonaut task'),
         'aclCategory' => 'argonautQueue',
         'icon'        => 'geticon.php?context=applications&icon=argonaut&size=16',
-      )),
+      ]],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
     $events = argonautEventTypes::get_event_types();
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Schedule'),
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Action'), _('The action you are about to schedule'),
             'action', TRUE,
@@ -79,7 +79,7 @@ class argonautAction extends simplePlugin
           ),
           new CompositeAttribute(
             _('How often this task should be repeated'), 'period',
-            array(
+            [
               new IntAttribute(
                 '', '',
                 'periodValue', FALSE,
@@ -88,51 +88,51 @@ class argonautAction extends simplePlugin
               new SelectAttribute(
                 '', '',
                 'periodType', TRUE,
-                array('minutes',    'hours',    'days',     'weeks',    'months'), 'days',
-                array(_('Minutes'), _('Hours'), _('Days'),  _('Weeks'), _('Months'))
+                ['minutes',    'hours',    'days',     'weeks',    'months'], 'days',
+                [_('Minutes'), _('Hours'), _('Days'),  _('Weeks'), _('Months')]
               )
-            ),
+            ],
             '/^(\d+)_(minutes|hours|days|weeks|months)$/',
             '%s_%s',
             '',
             _('Period')
           )
-        )
-      ),
-      'targets' => array(
+        ]
+      ],
+      'targets' => [
         'name'  => _('Targets'),
-        'attrs' => array(
+        'attrs' => [
           new MacsAttribute(
             '', _('Targets for this task'),
             'targets', TRUE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
-  public function __construct($action, array $targets, $scheduled)
+  public function __construct ($action, array $targets, $scheduled)
   {
     global $config;
     parent::__construct($config->current['BASE']);
 
     $this->attributesAccess['scheduled']->setManagedAttributes(
-      array(
-        'erase' => array (
-          FALSE => array (
+      [
+        'erase' => [
+          FALSE => [
             'datetime', 'period'
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
     $this->attributesAccess['periodical']->setManagedAttributes(
-      array(
-        'disable' => array (
-          FALSE => array (
+      [
+        'disable' => [
+          FALSE => [
             'period'
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
     $this->attributesAccess['period']->setLinearRendering(TRUE);
 
@@ -143,7 +143,7 @@ class argonautAction extends simplePlugin
     $this->scheduled  = $scheduled;
   }
 
-  protected function loadAttributes()
+  protected function loadAttributes ()
   {
     foreach ($this->attributesAccess as &$attribute) {
       $attribute->setInLdap(FALSE);
@@ -152,7 +152,7 @@ class argonautAction extends simplePlugin
     parent::loadAttributes();
   }
 
-  function execute()
+  function execute ()
   {
     return parent::execute().$this->getFooter();
   }
@@ -160,7 +160,7 @@ class argonautAction extends simplePlugin
   /*! \brief  Returns the plugin footer (save cancel), displayed in the template.
     @return String  HTML footer part.
    */
-  protected function getFooter()
+  protected function getFooter ()
   {
     if (!$this->displayPlugin) {
       return '';
@@ -175,10 +175,10 @@ class argonautAction extends simplePlugin
     That should be written.
     @return Array e.g. 'status' => 'bla blub'
    */
-  public function computeData()
+  public function computeData ()
   {
     timezone::get_default_timezone();
-    $ret = array('args' => array());
+    $ret = ['args' => []];
     if ($this->scheduled) {
       $timestamp = strtotime($this->datetime);
       if ($timestamp === FALSE) {

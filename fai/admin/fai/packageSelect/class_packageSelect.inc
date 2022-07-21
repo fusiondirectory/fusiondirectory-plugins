@@ -21,14 +21,14 @@
 
 class packageSelect extends simpleSelectManagement
 {
-  protected $objectTypes  = array();
+  protected $objectTypes  = [];
   protected $autoFilter   = FALSE;
 
   protected $departmentBrowser      = FALSE;
   protected $departmentRootVisible  = FALSE;
   protected $baseMode               = FALSE;
 
-  function __construct()
+  function __construct ()
   {
     $this->filterXMLPath  = get_template_path('selectPackage-filter.xml', TRUE, dirname(__FILE__));
     $this->listXMLPath    = get_template_path('selectPackage-list.xml',   TRUE, dirname(__FILE__));
@@ -41,14 +41,14 @@ class packageSelect extends simpleSelectManagement
     parent::__construct();
   }
 
-  function save()
+  function save ()
   {
     $act = $this->detectPostActions();
     $headpage = $this->getHeadpage();
     if (!isset($act['targets'])) {
-      return array();
+      return [];
     }
-    $ret = array();
+    $ret = [];
     foreach ($act['targets'] as $dn) {
       $ret[] = $headpage->getEntry($dn);
     }

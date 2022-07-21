@@ -22,28 +22,28 @@
 class puppetNode extends simplePlugin
 {
   var $displayHeader  = TRUE;
-  var $objectclasses  = array("puppetClient");
+  var $objectclasses  = ["puppetClient"];
 
   static function getAttributesInfo ()
   {
-    return array(
+    return [
       // Attributes are grouped by section
-      'section1' => array(
+      'section1' => [
         'name'  => _("Puppet node settings"),
-        'attrs' => array(
-          new SetAttribute (
-            new StringAttribute (_("Puppet class"), _("Puppet Node Class"), "puppetClass")
+        'attrs' => [
+          new SetAttribute(
+            new StringAttribute(_("Puppet class"), _("Puppet Node Class"), "puppetClass")
           ),
-          new SelectAttribute (_("Parent node"), _("Puppet Parent Node"),       "parentNode", FALSE),
-          new SelectAttribute (_("Environment"), _("Puppet Node Environment"),  "environment", TRUE),
-          new SetAttribute (
-            new CompositeAttribute (
+          new SelectAttribute(_("Parent node"), _("Puppet Parent Node"),       "parentNode", FALSE),
+          new SelectAttribute(_("Environment"), _("Puppet Node Environment"),  "environment", TRUE),
+          new SetAttribute(
+            new CompositeAttribute(
               _("A variable setting for puppet"),
               'puppetVar',
-              array(
-                new StringAttribute ('',   _('Name of the variable'),   'puppetVar'),
-                new StringAttribute ('=',  _('Value of the variable'),  'puppetVarValue'),
-              ),
+              [
+                new StringAttribute('',   _('Name of the variable'),   'puppetVar'),
+                new StringAttribute('=',  _('Value of the variable'),  'puppetVarValue'),
+              ],
                // sscanf format
               '%[^ =]=%[^ ]',
               // sprintf format
@@ -53,23 +53,23 @@ class puppetNode extends simplePlugin
               'Puppet Vars'
             )
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   // We also need this function that return some information about the plugin
   static function plInfo ()
   {
-    return array(
+    return [
       "plShortName"       => _("Puppet"),
       "plDescription"     => _("Support for puppet schema in order to edit puppet classes and puppet vars"),
       "plSelfModify"      => FALSE,
-      "plObjectType"      => array("server", "workstation"),
+      "plObjectType"      => ["server", "workstation"],
 
       // But simplePlugin can generate the ACL list for us
       "plProvidedAcls"    => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -79,14 +79,14 @@ class puppetNode extends simplePlugin
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=puppetClient)', array('cn'));
-    $nodes = array();
+    $ldap->search('(objectClass=puppetClient)', ['cn']);
+    $nodes = [];
     while ($attrs = $ldap->fetch()) {
       $nodes[] = $attrs['cn'][0];
     }
     $this->attributesAccess['parentNode']->setChoices($nodes);
-    $ldap->search('(objectClass=puppetServer)', array('puppetAvailableEnvironment'));
-    $envs = array();
+    $ldap->search('(objectClass=puppetServer)', ['puppetAvailableEnvironment']);
+    $envs = [];
     if ($attrs = $ldap->fetch()) {
       $envs = $attrs['puppetAvailableEnvironment'];
       unset($envs['count']);
@@ -94,14 +94,14 @@ class puppetNode extends simplePlugin
     $this->attributesAccess['environment']->setChoices($envs);
   }
 
-  public function getDisplayHeaderInfos()
+  public function getDisplayHeaderInfos ()
   {
     list($disabled,$buttonText,$text) = parent::getDisplayHeaderInfos();
     if (!$this->is_account && !$disabled && empty($this->attributesAccess['environment']->getChoices())) {
       $disabled = TRUE;
       $text     = _('You need to add the puppet service to a server to be able to use this tab');
     }
-    return array($disabled,$buttonText,$text);
+    return [$disabled,$buttonText,$text];
   }
 }
 

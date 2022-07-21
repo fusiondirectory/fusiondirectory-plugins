@@ -21,20 +21,20 @@
 
 class ppolicyManagement extends simpleManagement
 {
-  protected $objectTypes  = array('ppolicy');
+  protected $objectTypes  = ['ppolicy'];
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Password policies'),
       'plDescription' => _('Password policies management'),
       'plIcon'        => 'geticon.php?context=applications&icon=ppolicy&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 57,
-      'plManages'     => array('ppolicy'),
+      'plManages'     => ['ppolicy'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 }
 ?>

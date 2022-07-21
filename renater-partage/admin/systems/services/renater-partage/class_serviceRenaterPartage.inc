@@ -20,26 +20,26 @@
 
 class serviceRenaterPartage extends simpleMailMethodService
 {
-  var $objectclasses = array('fdRenaterPartageServer');
+  var $objectclasses = ['fdRenaterPartageServer'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Renater Partage'),
       'plDescription'   => _('Renater Partage'),
       'plIcon'          => 'geticon.php?context=applications&icon=renater-partage&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array (
-      'main' => array (
+    return  [
+      'main' => [
         'name'  => _('Settings'),
-        'class' => array('fullwidth'),
-        'attrs' => array (
+        'class' => ['fullwidth'],
+        'attrs' => [
           new URLAttribute(
             _('URI'), _('URI to contact the Renater Partage API'),
             'fdRenaterPartageServerUri', TRUE
@@ -52,46 +52,46 @@ class serviceRenaterPartage extends simpleMailMethodService
           new SelectAttribute(
             _('Mailbox deletion'), _('What to do with the PARTAGE account when mail tab is deactivated or user is deleted'),
             'fdRenaterPartageServerDeletionType', TRUE,
-            array(  'delete',   'disable'), '',
-            array(_('Delete'),_('Disable'))
+            [  'delete',   'disable'], '',
+            [_('Delete'),_('Disable')]
           ),
-        )
-      ),
-      'domains' => array(
+        ]
+      ],
+      'domains' => [
         'template'  => get_template_path('renater_domains.tpl', TRUE, dirname(__FILE__)),
         'name'      => _('Domains'),
-        'class'     => array('fullwidth'),
-        'attrs'     => array(
+        'class'     => ['fullwidth'],
+        'attrs'     => [
           new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
               _('Domains handled by this Renater Partage server'),
               'fdRenaterPartageServerMailDomain',
-              array(
-                new StringAttribute (
+              [
+                new StringAttribute(
                   _('Domain'), _('Domain handled by this server'),
                   'renaterPartageDomain', TRUE
                 ),
-                new StringAttribute (
+                new StringAttribute(
                   _('Key'), _('Key for this domain'),
                   'renaterPartageDomainKey', TRUE
                 ),
-                new StringAttribute (
+                new StringAttribute(
                   _('Classes of service'), _('Possible classes of service for this domain and their ids, separated by commas. Format is cos1Name|cos1Id,cos2Name|cos2Id.'),
                   'renaterPartageDomainCOS', TRUE,
                   '', '',
                   '/^[^,|]+\|[^,|]+(,[^,|]+\|[^,|]+)*$/',
                   'cos1|cos1id,cos2|cos2id'
                 )
-              ),
+              ],
               ':',
               '',
               _('Domains')
             ),
-            FALSE, array(), TRUE
+            FALSE, [], TRUE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $parent = NULL)

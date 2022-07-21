@@ -21,31 +21,31 @@
 
 class serviceQuota extends simpleService
 {
-  var $objectclasses = array('quotaService');
+  var $objectclasses = ['quotaService'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Quota service'),
       'plDescription' => _('Quota service').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=quota&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'template'  => get_template_path('service_quota_parameters.tpl', TRUE, dirname(__FILE__)),
         'name'      => _('Shares'),
-        'attrs'     => array(
+        'attrs'     => [
           new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
               _('Quotas for the shares this server hosts'),
               'quotaDeviceParameters',
-              array(
+              [
                 new SelectAttribute(
                   _('Device'), _('Device concerned by this quota'),
                   'quotaDevice', TRUE
@@ -63,20 +63,20 @@ class serviceQuota extends simpleService
                   _('Comment'), _('Short comment about this quota'),
                   'quotaDesc', FALSE
                 ),
-              ),
+              ],
               ':'
             ),
             // no order
             FALSE,
-            array(),
+            [],
             // edit button
             TRUE
           )
-        )
-      ),
-      'message' => array(
+        ]
+      ],
+      'message' => [
         'name'      => _('Quota warning message'),
-        'attrs'     => array(
+        'attrs'     => [
           new SelectAttribute(
             _('Charset'), _('Charset use for the message'),
             'quotaMsgCharsetSupport', TRUE
@@ -109,11 +109,11 @@ class serviceQuota extends simpleService
             _('Signature'), _('Signature to put at the end of the mail'),
             'quotaMsgSignatureSupport', FALSE
           ),
-        )
-      ),
-      'ldap' => array(
+        ]
+      ],
+      'ldap' => [
         'name'      => _('LDAP message support'),
-        'attrs'     => array(
+        'attrs'     => [
           new SelectAttribute(
             _('LDAP server'), _('The LDAP server to bind to'),
             'quotaLdapServer', TRUE
@@ -126,9 +126,9 @@ class serviceQuota extends simpleService
             _('Bind user password'), _('The password of the user used for bind'),
             'quotaLdapServerUserPassword', FALSE
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $parent = NULL)
@@ -149,8 +149,8 @@ class serviceQuota extends simpleService
     );
 
     /* get all encodings types available */
-    $charsets = array();
-    $configEncodings = $config->get_cfg_value('encodings', array());
+    $charsets = [];
+    $configEncodings = $config->get_cfg_value('encodings', []);
     foreach ($configEncodings as $str) {
       $arr = explode("=", $str);
       if (count($arr) == 2) {
@@ -165,10 +165,10 @@ class serviceQuota extends simpleService
 
   }
 
-  function getShares()
+  function getShares ()
   {
     /* loading of each array of any share delared on this server  */
-    $shareInfos = array();
+    $shareInfos = [];
     if (isset($this->attrs['goExportEntry'])) {
       for ($i = 0; $i < $this->attrs['goExportEntry']['count']; $i++) {
         $parts = explode("|", $this->attrs['goExportEntry'][$i]);
@@ -180,7 +180,7 @@ class serviceQuota extends simpleService
     return $shareInfos;
   }
 
-  function getLdapServers()
+  function getLdapServers ()
   {
     /* Get List of server with LDAP service */
     return objects::ls('server', NULL, NULL, '(objectClass=goLdapServer)');

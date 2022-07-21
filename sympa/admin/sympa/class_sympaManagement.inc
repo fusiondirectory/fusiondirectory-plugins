@@ -22,23 +22,23 @@
 class sympaManagement extends simpleManagement
 {
   // Tab definition
-  protected $objectTypes  = array('sympaAlias');
+  protected $objectTypes  = ['sympaAlias'];
 
-  protected $autoFilterAttributes = array('dn', 'cn', 'description');
+  protected $autoFilterAttributes = ['dn', 'cn', 'description'];
 
   /* Return plugin information for acl handling  */
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Sympa'),
       'plDescription' => _('Sympa management'),
       'plIcon'        => 'geticon.php?context=applications&icon=sympa&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 26,
-      'plManages'     => array('sympaAlias'),
+      'plManages'     => ['sympaAlias'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 }
 ?>

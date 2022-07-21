@@ -20,7 +20,7 @@
 
 class serverGeneric extends workstationGeneric
 {
-  var $objectclasses = array('fdServer', 'ieee802Device');
+  var $objectclasses = ['fdServer', 'ieee802Device'];
 
   static function getAttributesInfo ($word = NULL, $rdn = NULL)
   {
@@ -33,24 +33,24 @@ class serverGeneric extends workstationGeneric
     return parent::getAttributesInfo($word, $rdn);
   }
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Server'),
       'plDescription' => _('Server information'),
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array(
-        'server' => array(
+      'plObjectType'  => [
+        'server' => [
           'name'        => _('Server'),
           'description' => _('Server'),
           'filter'      => 'objectClass=fdServer',
           'icon'        => 'geticon.php?context=devices&icon=server&size=16',
           'ou'          => get_ou('serverRDN'),
           'tabClass'    => 'servtabs',
-        )
-      ),
+        ]
+      ],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 }
 ?>

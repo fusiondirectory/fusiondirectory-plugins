@@ -35,7 +35,7 @@ class jsonRPCServer {
    * @param object $object
    * @return boolean
    */
-  public static function handle($object)
+  public static function handle ($object)
   {
     // checks if a JSON-RCP request has been received
     if (
@@ -52,25 +52,25 @@ class jsonRPCServer {
 
     // executes the task on local object
     try {
-      if (($result = @call_user_func_array(array($object,$request['method']), $request['params'])) !== FALSE) {
-        $response = array (
+      if (($result = @call_user_func_array([$object,$request['method']], $request['params'])) !== FALSE) {
+        $response = [
                   'id' => $request['id'],
                   'result' => $result,
                   'error' => NULL
-                  );
+                  ];
       } else {
-        $response = array (
+        $response = [
                   'id' => $request['id'],
                   'result' => NULL,
                   'error' => 'unknown method or incorrect parameters'
-                  );
+                  ];
       }
     } catch (Exception $e) {
-      $response = array (
+      $response = [
                 'id' => $request['id'],
                 'result' => NULL,
                 'error' => $e->getMessage()
-                );
+                ];
     }
 
     // output the response
@@ -79,11 +79,11 @@ class jsonRPCServer {
       header('content-type: text/javascript');
       $res = json_encode($response);
       if ($res === FALSE) {
-        $response = array (
+        $response = [
           'id' => $request['id'],
           'result' => NULL,
           'error' => 'Failed to encode response: '.json_last_error_msg()
-        );
+        ];
         echo json_encode($response);
       } else {
         echo $res;

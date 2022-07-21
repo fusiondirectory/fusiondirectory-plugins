@@ -20,15 +20,15 @@
 
 class dhcpSubClass extends dhcpPlugin
 {
-  public $objectclasses = array('dhcpSubClass');
+  public $objectclasses = ['dhcpSubClass'];
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('DHCP subclass'),
       'plDescription'   => _('DHCP subclass'),
-      'plCategory'      => array('dhcpConfiguration'),
+      'plCategory'      => ['dhcpConfiguration'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 }

@@ -20,15 +20,15 @@
 
 class fiInventoryAgent extends simplePlugin
 {
-  var $objectclasses  = array('fusionInventoryAgent');
+  var $objectclasses  = ['fusionInventoryAgent'];
   var $displayHeader  = TRUE;
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Configuration'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Server'), _('Server which FI will send inventory infos'),
             'fiAgentServer', FALSE
@@ -43,11 +43,11 @@ class fiInventoryAgent extends simplePlugin
             'fiAgentWait', FALSE,
             0, FALSE
           ),
-        ),
-      ),
-      'http' => array(
+        ],
+      ],
+      'http' => [
         'name'  => _('Web Interface'),
-        'attrs' => array(
+        'attrs' => [
           new BooleanAttribute(
             _('Disable web interface'), _('Do not use web interface'),
             'fiAgentNoHttpd', FALSE
@@ -65,22 +65,22 @@ class fiInventoryAgent extends simplePlugin
             _('Trust'), _('IPs allowed to launch inventory task through web interface'),
             'fiAgentHttpdTrust', FALSE
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   /* Return plugin information */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('FusionInventory'),
       'plDescription' => _('FusionInventory agent configuration'),
       'plPriority'    => 90,
-      'plObjectType'  => array('workstation', 'server'),
+      'plObjectType'  => ['workstation', 'server'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 }
 ?>

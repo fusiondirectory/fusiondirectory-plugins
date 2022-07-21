@@ -22,26 +22,26 @@ class componentGeneric extends ipHostPlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array('device', 'ieee802Device');
+  var $objectclasses = ['device', 'ieee802Device'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Component'),
       'plDescription' => _('Component information'),
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array(
-        'component' => array(
+      'plObjectType'  => [
+        'component' => [
           'name'        => _('Network device'),
           'description' => _('Network device'),
           'filter'      => '(&(objectClass=ieee802Device)(objectClass=device))',
           'icon'        => 'geticon.php?context=devices&icon=network-device&size=16',
           'ou'          => get_ou('componentRDN'),
-        )
-      ),
+        ]
+      ],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -49,25 +49,25 @@ class componentGeneric extends ipHostPlugin
    */
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
-          new HostNameAttribute (
+        'attrs' => [
+          new HostNameAttribute(
             _('Name'), _('The name of the component'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('A short description of the component'),
             'description', FALSE
           ),
           new BaseSelectorAttribute(get_ou("componentRDN")),
-        )
-      ),
-      'network' => array(
+        ]
+      ],
+      'network' => [
         'name'      => _('Network settings'),
         'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
-        'attrs'     => array(
+        'attrs'     => [
           new IPAttribute(
             _('IP address'), _('IP address this system uses'),
             'ipHostNumber', TRUE
@@ -76,9 +76,9 @@ class componentGeneric extends ipHostPlugin
             _('Mac address'), _('Mac address of this system'),
             'macAddress', FALSE
           ),
-        ),
-      ),
-    );
+        ],
+      ],
+    ];
   }
 }
 
