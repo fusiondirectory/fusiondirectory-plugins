@@ -46,22 +46,22 @@ class argonautFuseOPSIConfig extends simplePlugin
       'opsi' => [
         'name'  => _('OPSI'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Opsi admin'),
             '',
             'argonautFuseOpsiAdmin'
           ),
-          new PasswordAttribute (
+          new PasswordAttribute(
             _('Opsi password'),
             '',
             'argonautFuseOpsiPassword'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Opsi server'),
             '',
             'argonautFuseOpsiServer'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Opsi lang'),
             '',
             'argonautFuseOpsiLang'

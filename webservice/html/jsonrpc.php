@@ -591,7 +591,7 @@ class fdRPCService
       if ($user = get_lock($dn)) {
         return ['errors' => [sprintf(_('Cannot delete %s. It has been locked by %s.'), $dn, $user)]];
       }
-      add_lock ($dn, $ui->dn);
+      add_lock($dn, $ui->dn);
 
       // Delete the object
       $tabobject = objects::open($dn, $type);

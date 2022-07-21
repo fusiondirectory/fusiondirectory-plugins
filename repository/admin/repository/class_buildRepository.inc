@@ -58,27 +58,27 @@ class buildRepository extends simplePlugin
       'main' => [
         'name'  => _('Build repository'),
         'attrs' => [
-          new BaseSelectorAttribute (get_ou('repositoryRDN')),
-          new HostNameAttribute (
+          new BaseSelectorAttribute(get_ou('repositoryRDN')),
+          new HostNameAttribute(
             _('Name'), _('Unique name for this repository'),
             'cn', TRUE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Description'), _('Description of this repository'),
             'description', FALSE
           ),
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Distribution sections'), _('The distribution sections this repository provides'),
               'fdRepoDistributionSection', TRUE,
               []
             )
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Private'), _('Is this repository private or public?'),
             'fdRepoPrivate', FALSE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Type'), _('Repository type'),
             'fdRepoType', TRUE,
             $config->get_cfg_value('repositoryTypes', ['debian'])
@@ -88,7 +88,7 @@ class buildRepository extends simplePlugin
       'users' => [
         'name'  => _('Members'),
         'attrs' => [
-          new UsersAttribute (
+          new UsersAttribute(
             _('Admins'), _('Admins of this repository'),
             'fdRepoAdmin', FALSE
           ),

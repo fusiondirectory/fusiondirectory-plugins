@@ -82,16 +82,16 @@ class faiStartup extends simplePlugin
       'main' => [
         'name'  => _('FAI settings'),
         'attrs' => [
-          new HiddenAttribute ('FAIstate'),
-          new CompositeAttribute (
+          new HiddenAttribute('FAIstate'),
+          new CompositeAttribute(
             _('FAI profil and release to be applied to this computer'),
             'FAIclass',
             [
-              'release' => new FAIreleaseAttribute (
+              'release' => new FAIreleaseAttribute(
                 _('Release'), _('FAI debian release to be installed on this computer'),
                 'FAIrelease', TRUE
               ),
-              'profil' => new SelectAttribute (
+              'profil' => new SelectAttribute(
                 _('Profil'), _('FAI profil to be applied to this computer'),
                 'FAIprofile', TRUE
               ),
@@ -99,7 +99,7 @@ class faiStartup extends simplePlugin
             '/^(?P<profil>.+) :(?P<release>.+)$/',
             '%2$s :%1$s'
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Repository'), _('FAI Debian repository to be used for installation'),
             'FAIdebianMirror', TRUE
           ),

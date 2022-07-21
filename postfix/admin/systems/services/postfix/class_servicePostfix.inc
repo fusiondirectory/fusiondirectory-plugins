@@ -70,27 +70,27 @@ class servicePostfix extends simpleService
       'section1' => [
         'name'  => _('Information'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Hostname'), _('The host name.'),
             'postfixMyHostname', TRUE,
             '', '', '/^([^\.]+\.)*[^\.]+$/', 'smtp'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Domain'), _('The domain.'),
             'postfixMyDomain', TRUE,
             '', '', '/^([^\.]+\.)*[^\.]+$/', 'example.org'
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Max mail header size (KB)'), _('This value specifies the maximal header size.'),
             'postfixHeaderSizeLimit', FALSE,
             FALSE, FALSE, 0
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Max mailbox size (KB)'), _('Defines the maximal size of mail box.'),
             'postfixMailboxSizeLimit', FALSE,
             FALSE, FALSE, 0
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Max message size (KB)'), _('Specify the maximal size of a message.'),
             'postfixMessageSizeLimit', FALSE,
             FALSE, FALSE, 0
@@ -100,52 +100,52 @@ class servicePostfix extends simpleService
       'routing' => [
         'name' => _('Domains and routing'),
         'attrs' => [
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Domains to accept mail for'), _('Postfix networks'),
               'postfixMyDestinations'
             )
           ),
-          new SubNodesAttribute (
+          new SubNodesAttribute(
             _('Transport table'), _('Transport table'),
             'fdPostfixTransportTable', 'fdPostfixTransportTable',
             [
-              new StringAttribute ('', '', 'fdTransportTableMatch'),
-              new CompositeAttribute (
+              new StringAttribute('', '', 'fdTransportTableMatch'),
+              new CompositeAttribute(
                 _('Transport rule'),
                 'fdTransportTableRule',
                 [
-                  new StringAttribute ('', '', 'transport', TRUE, 'smtp'),
-                  new StringAttribute ('', '', 'nexthop', FALSE),
+                  new StringAttribute('', '', 'transport', TRUE, 'smtp'),
+                  new StringAttribute('', '', 'nexthop', FALSE),
                 ],
                 '/^([^:]+):(.*)$/',
                 '%s:%s', '', ''
               )
             ]
           ),
-          new SubNodesAttribute (
+          new SubNodesAttribute(
             _('Catchall table'), _('Catchall table'),
             'fdPostfixCatchallTable', 'fdPostfixCatchallTable',
             [
-              new MailDomainAttribute (
+              new MailDomainAttribute(
                 _('Domain'), _('Domain concerned by this catchall rule'),
                 'fdCatchallTableDomain', TRUE
               ),
-              new MailAttribute (
+              new MailAttribute(
                 _('Recipient'), _('Recipient mail address for this catchall rule'),
                 'fdCatchallTableRecipient', TRUE
               )
             ]
           ),
-          new SubNodesAttribute (
+          new SubNodesAttribute(
             _('Domain alias table'), _('Domain alias table'),
             'fdPostfixDomainAliasTable', 'fdPostfixDomainAliasTable',
             [
-              new MailDomainAttribute (
+              new MailDomainAttribute(
                 _('From'), _('Domain concerned by this alias rule'),
                 'fdDomainAliasTableFrom', TRUE
               ),
-              new MailDomainAttribute (
+              new MailDomainAttribute(
                 _('To'), _('Recipient domain for this alias rule'),
                 'fdDomainAliasTableTo', TRUE
               )
@@ -156,28 +156,28 @@ class servicePostfix extends simpleService
       'section3' => [
         'name' => _('Restrictions'),
         'attrs' => [
-          new OrderedArrayAttribute (
-            new CompositeAttribute (
+          new OrderedArrayAttribute(
+            new CompositeAttribute(
              _('Restrictions for sender'),
             'postfixSenderRestrictions',
               [
-                new StringAttribute ('', '', 'first2'),
-                new SelectAttribute ('', '', 'filter2', TRUE, ['FILTER'], 'FILTER'),
-                new StringAttribute ('', '', 'second2'),
+                new StringAttribute('', '', 'first2'),
+                new SelectAttribute('', '', 'filter2', TRUE, ['FILTER'], 'FILTER'),
+                new StringAttribute('', '', 'second2'),
               ],
               '/^(.*) ([^:]+) (.*)$/',
               '%s %s %s',
               '', _('For sender')
             )
           ),
-          new OrderedArrayAttribute (
-            new CompositeAttribute (
+          new OrderedArrayAttribute(
+            new CompositeAttribute(
              _('Restrictions for recipient'),
             'postfixRecipientRestrictions',
               [
-                new StringAttribute ('', '', 'first3'),
-                new SelectAttribute ('', '', 'filter3', TRUE, ['FILTER'], 'FILTER'),
-                new StringAttribute ('', '', 'second3'),
+                new StringAttribute('', '', 'first3'),
+                new SelectAttribute('', '', 'filter3', TRUE, ['FILTER'], 'FILTER'),
+                new StringAttribute('', '', 'second3'),
               ],
               '/^(.*) ([^:]+) (.*)$/',
               '%s %s %s',

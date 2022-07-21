@@ -48,11 +48,11 @@ class deploymentTimeframe extends simplePlugin
               _('Time frames in which deployment is authorized'),
               'argonautDeploymentTimeframe',
               [
-                new TimeHiAttribute (
+                new TimeHiAttribute(
                   '', _('Opening time for this frame as HH:MM'),
                   'begin', TRUE
                 ),
-                new TimeHiAttribute (
+                new TimeHiAttribute(
                   _('->'), _('Closing time for this frame as HH:MM'),
                   'end', TRUE
                 )

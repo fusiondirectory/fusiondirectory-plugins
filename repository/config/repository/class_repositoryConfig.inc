@@ -41,13 +41,13 @@ class repositoryConfig extends simplePlugin
       'main' => [
         'name'  => _('Repository'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Repository RDN'), _('Branch in which repository objects will be stored'),
             'fdRepositoryRDN', TRUE,
             'ou=repository'
           ),
           new SetAttribute(
-            new StringAttribute (
+            new StringAttribute(
               _('Repository types'), _('Available repository types'),
               'fdRepositoryTypes', TRUE
             ),

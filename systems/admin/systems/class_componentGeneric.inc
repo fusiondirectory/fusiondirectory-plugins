@@ -53,11 +53,11 @@ class componentGeneric extends ipHostPlugin
       'main' => [
         'name'  => _('Properties'),
         'attrs' => [
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'), _('The name of the component'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('A short description of the component'),
             'description', FALSE
           ),

@@ -67,22 +67,22 @@ class nagiosAccount extends simplePlugin
             _('Mail address'), _('Email of the nagios alias'),
             $prefix.'Email', TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Host notification period'), _('Host notification period'),
             $prefix.'ContactHostNotificationPeriod', FALSE,
             ['24x7','24x5','8x5']
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Service notification period'), _('Service notification period'),
             $prefix.'ContactServiceNotificationPeriod', FALSE,
             ['24x7','24x5','8x5']
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Service notification options'), _('Service notification options'),
             $prefix.'ContactServiceNotificationOptions', FALSE,
             ['w,u,c,r,f','w,u,c,r','w,u,c','c,w','n']
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Host notification options'), _('Host notification options'),
             $prefix.'ContactHostNotificationOptions', FALSE,
             ['d,u,r,f','d,u,r','d,u','n']

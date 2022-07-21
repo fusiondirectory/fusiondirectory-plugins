@@ -41,7 +41,7 @@ class webserviceConfig extends simplePlugin
       'main' => [
         'name'  => _('Webservice'),
         'attrs' => [
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Force SSL'), _('Allow only HTTPS JSON-RPC requests'),
             'fdWebserviceForceSSL', TRUE,
             TRUE

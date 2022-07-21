@@ -47,12 +47,12 @@ class dnsAcl extends simplePlugin
         'name'  => _('Acl'),
         'attrs' => [
           new BaseSelectorAttribute(get_ou('dnsRDN')),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('ACL name'), _('Name of this acl'),
             'cn', TRUE
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Address match list'), _('The ip address match list for this acl'),
               'fdDNSAclMatchList', FALSE
             )

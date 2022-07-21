@@ -48,7 +48,7 @@ class pureftpdAccount extends simplePlugin
       'section1' => [
         'name'  => _('Bandwidth'),
         'attrs' => [
-          new IntAttribute (
+          new IntAttribute(
             _('Upload bandwidth')._(' (kb/sec)'),
             _('Upload bandwidth'),
             'FTPUploadBandwidth',
@@ -57,7 +57,7 @@ class pureftpdAccount extends simplePlugin
             FALSE,
             ''
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Download bandwidth')._(' (kb/sec)'),
             _('Download bandwidth in kb/sec'),
             'FTPDownloadBandwidth',
@@ -71,7 +71,7 @@ class pureftpdAccount extends simplePlugin
       'section2' => [
         'name'  => _('Ratio'),
         'attrs' => [
-          new IntAttribute (
+          new IntAttribute(
             _('Uploaded files'),
             _('Uploaded files'),
             'FTPUploadRatio',
@@ -80,7 +80,7 @@ class pureftpdAccount extends simplePlugin
             FALSE,
             ''
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Downloaded files'),
             _('Downloaded files'),
             'FTPDownloadRatio',
@@ -94,7 +94,7 @@ class pureftpdAccount extends simplePlugin
       'section3' => [
         'name' => ('Quota'),
         'attrs' => [
-          new IntAttribute (
+          new IntAttribute(
             _('Files'),
             _('Quota files'),
             'FTPQuotaFiles',
@@ -103,7 +103,7 @@ class pureftpdAccount extends simplePlugin
             FALSE,
             ''
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Size')._(' (MB)'),
             _('Files size'),
             'FTPQuotaMBytes',
@@ -117,7 +117,7 @@ class pureftpdAccount extends simplePlugin
       'section4' => [
         'name' => _('Miscellaneous'),
         'attrs' => [
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Enable FTP access'), _('Enable or disable FTP access'),
             'FTPStatus', FALSE,
             TRUE

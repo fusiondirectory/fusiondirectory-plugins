@@ -23,7 +23,7 @@ class FaiPartitionSizeAttribute extends CompositeAttribute
 {
   function __construct ($label, $description, $ldapName, $acl = "")
   {
-    parent::__construct (
+    parent::__construct(
       $description, $ldapName,
       [
         new SelectAttribute(
@@ -228,25 +228,25 @@ class faiPartition extends simplePlugin
       'main' => [
         'name'  => _('Partition'),
         'attrs' => [
-          new HiddenAttribute ('FAIdiskType'),
-          new HiddenAttribute ('FAIpartitionNr', FALSE, 'undefined'),
-          new SelectAttribute (
+          new HiddenAttribute('FAIdiskType'),
+          new HiddenAttribute('FAIpartitionNr', FALSE, 'undefined'),
+          new SelectAttribute(
             _('Type'), _('Partition type'),
             'FAIpartitionType', TRUE,
             ['primary', 'logical'], '',
             [_('Primary'), _('Logical')]
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Name'), _('Partition name'),
             'cn', TRUE,
             '', 'FAIpartitions',
             '/[a-z0-9_-]/i'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description'),
             'description', FALSE
           ),
-          new FaiPartitionSizeAttribute (
+          new FaiPartitionSizeAttribute(
             _('Size'), _('Size of this partition'),
             'FAIpartitionSize', FALSE
           ),
@@ -296,15 +296,15 @@ class faiPartition extends simplePlugin
             _('Password'), _('Password to use for encryption. Leave empty to use a encryption key file instead.'),
             'cryptsetupPassword', FALSE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Resize'), _('Resize existing partition'),
             'resize', FALSE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Bootable'), _('Wether or not this partition can be booted'),
             'bootable', FALSE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Preserve'), _('Does the partition need to be preserved'),
             'preserve', FALSE,
             ['','always','reinstall'], '',
@@ -315,13 +315,13 @@ class faiPartition extends simplePlugin
       'fs' => [
         'name'  => _('Filesystem'),
         'attrs' => [
-          new SelectAttribute (
+          new SelectAttribute(
             _('Filesystem'), _('The filesystem this partition should be formatted with'),
             'FAIfsType', TRUE,
             ['swap','vfat','ext2','ext3','ext4','reiserfs','xfs','btrfs','-'], 'ext4',
             [_('swap'),_('fat32'),_('ext2'),_('ext3'),_('ext4'),_('reiser fs'),_('xfs'),_('btrfs'),_('LVM/RAID')]
           ),
-          new FaiMountPointAttribute (
+          new FaiMountPointAttribute(
             _('Mount point'), _('Mount point for this partition'),
             'FAImountPoint', TRUE
           ),
@@ -330,16 +330,16 @@ class faiPartition extends simplePlugin
       'options' => [
         'name'  => _('Options'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Mount options'), _('Filesystem mount options'),
             'FAImountOptions', FALSE,
             'defaults'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Create options'), _('Filesystem create options'),
             'FAIfsCreateOptions', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Tune options'), _('Filesystem tune options'),
             'FAIfsTuneOptions', FALSE
           ),

@@ -355,7 +355,7 @@ class fiInventory extends simplePlugin
 
   function createSystem ()
   {
-    list ($type, $dn) = explode(':', $_POST['matching_template'], 2);
+    list($type, $dn) = explode(':', $_POST['matching_template'], 2);
     $infos = objects::infos($type);
 
     $values = [

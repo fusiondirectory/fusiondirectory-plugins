@@ -41,8 +41,8 @@ class servicePuppet extends simpleService {
       'main' => [
         'name'  => _('Puppet server'),
         'attrs' => [
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Environments'),
               _('Available environments for puppet nodes'),
               'puppetAvailableEnvironment',

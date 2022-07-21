@@ -44,7 +44,7 @@ class serviceCyrus extends simpleMailMethodService
       'cyrus' => [
         'name'  => _('Cyrus settings'),
         'attrs' => [
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('Connect URL for Cyrus server'),
             'fdCyrusConnect',
             [
@@ -72,11 +72,11 @@ class serviceCyrus extends simpleMailMethodService
             '/^{(.*):(\\d+)\\/([^\\/]+)(.*)}$/',
             '{%s:%d/%s%s}'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Admin user'), _('Imap server admin user'),
             'fdCyrusAdmin', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Password'), _('Admin user password'),
             'fdCyrusPassword', TRUE
           ),
@@ -85,7 +85,7 @@ class serviceCyrus extends simpleMailMethodService
       'sieve' => [
         'name'  => _('Sieve settings'),
         'attrs' => [
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('Sieve connect URL for Cyrus server'),
             'fdCyrusSieveServer',
             [

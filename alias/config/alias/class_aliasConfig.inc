@@ -41,7 +41,7 @@ class aliasConfig extends simplePlugin
       'main' => [
         'name'  => _('Alias'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Alias RDN'), _('Branch in which aliases will be stored'),
             'fdAliasRDN', TRUE,
             'ou=alias'

@@ -43,13 +43,13 @@ class sambaSystemTab extends simplePlugin
       'main' => [
         'name'  => _('Properties'),
         'attrs' => [
-          new HiddenAttribute ('uid'),
-          new HiddenAttribute ('sambaSID'),
+          new HiddenAttribute('uid'),
+          new HiddenAttribute('sambaSID'),
           new HiddenAttribute ('homeDirectory', TRUE, '/dev/null'),
-          new HiddenAttribute ('uidNumber', TRUE, 1000),
-          new HiddenAttribute ('gidNumber', TRUE, 515),
-          new HiddenAttribute ('sambaAcctFlags', TRUE, '[W          ]'),
-          new SelectAttribute (
+          new HiddenAttribute('uidNumber', TRUE, 1000),
+          new HiddenAttribute('gidNumber', TRUE, 515),
+          new HiddenAttribute('sambaAcctFlags', TRUE, '[W          ]'),
+          new SelectAttribute(
             _('Domain'), _('Samba domain name'),
             'sambaDomainName', TRUE
           ),

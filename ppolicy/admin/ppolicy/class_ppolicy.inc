@@ -50,9 +50,9 @@ class ppolicy extends simplePlugin
       'main' => [
         'name'  => _('Policy'),
         'attrs' => [
-          new BaseSelectorAttribute (get_ou('ppolicyRDN')),
+          new BaseSelectorAttribute(get_ou('ppolicyRDN')),
           new HiddenAttribute('pwdAttribute', TRUE, 'userPassword'),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Policy name'), _('Policy name'),
             'cn', TRUE
           ),
@@ -106,7 +106,7 @@ class ppolicy extends simplePlugin
             [0, 1, 2], 0,
             [_('Disabled'), _('Ignore errors'), _('Reject on errors')]
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Check module'), _('Name of a user supplied password quality check module that will be called to perform password quality checks and is only relevant if pwdCheckQuality is either 1 or 2'),
             'pwdCheckModule', FALSE
           ),

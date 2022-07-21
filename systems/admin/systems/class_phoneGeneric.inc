@@ -52,11 +52,11 @@ class phoneGeneric extends ipHostPlugin
         'name'  => _('Properties'),
         'attrs' => [
           new BaseSelectorAttribute(get_ou('phoneRDN')),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'), _('The name of the phone'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('A short description of the phone'),
             'description', FALSE
           ),
@@ -65,11 +65,11 @@ class phoneGeneric extends ipHostPlugin
       'phone' => [
         'name'  => _('Phone'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Serial Number'), _('The serial number of the phone'),
             'serialNumber', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Telephone Number'), _('The telephone number of the phone'),
             'telephoneNumber', FALSE
           ),

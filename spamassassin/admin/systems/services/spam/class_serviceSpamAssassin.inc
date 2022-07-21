@@ -45,17 +45,17 @@ class serviceSpamAssassin extends simpleService {
       'section1' => [
         'name'  => _('Spam tagging'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Rewrite header'), _('Rewrite header'),
             'saRewriteHeader'
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Required score'), _('Select required score to tag mail as spam'),
             'saRequiredScore', FALSE,
              [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Trusted networks'), _('Trusted networks'),
               'saTrustedNetworks'
             )
@@ -65,37 +65,37 @@ class serviceSpamAssassin extends simpleService {
       'section2' => [
         'name'  => _('Flags'),
         'attrs' => [
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Enable use of bayes filtering'), '',
             'flag_enable_bayes', FALSE,
             FALSE, '', 'B', ''
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Enable bayes auto learning'), '',
             'flag_bayes_autolearn', FALSE,
             FALSE, '', 'b', ''
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Enable RBL checks'), '',
             'flag_enable_rblcheck', FALSE,
             FALSE, '', 'C', ''
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Enable use of Razor'), '',
             'flag_enable_razor', FALSE,
             FALSE, '', 'R', ''
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Enable use of DCC'), '',
             'flag_enable_ddc', FALSE,
             FALSE, '', 'D', ''
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Enable use of Pyzor'), '',
             'flag_enable_pyzor', FALSE,
             FALSE, '', 'P', ''
           ),
-          new FlagsAttribute ('saFlags', [
+          new FlagsAttribute('saFlags', [
             'flag_enable_bayes',
             'flag_bayes_autolearn',
             'flag_enable_rblcheck',
@@ -108,13 +108,13 @@ class serviceSpamAssassin extends simpleService {
       'section3' => [
         'name' => _('Rules'),
         'attrs' => [
-          new SetAttribute (
-            new CompositeAttribute (
+          new SetAttribute(
+            new CompositeAttribute(
               _('Edit spam rule'),
               'saRule',
                [
-                new StringAttribute (_('Name'), '', 'ruleName'),
-                new TextAreaAttribute (_('Rule'), '', 'ruleDesc'),
+                new StringAttribute(_('Name'), '', 'ruleName'),
+                new TextAreaAttribute(_('Rule'), '', 'ruleDesc'),
               ],
               '/^([^:]*):(.*)$/',
               '%s:%s',

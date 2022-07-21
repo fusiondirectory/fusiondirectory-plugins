@@ -59,26 +59,26 @@ class mailGroup extends simplePlugin
       'main' => [
         'name'  => _('Information'),
         'attrs' => [
-          new MailAttribute (
+          new MailAttribute(
             _('Primary address'), _('The primary mail address'),
             'mail', TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Server'), _('Email server'),
             'gosaMailServer', TRUE,
             ['']
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Alternative addresses'), _('Alternative mail addresses for the group'),
               'gosaMailAlternateAddress'
             )
           ),
-          new GroupMailsAttribute (
+          new GroupMailsAttribute(
             _('Forward messages to non group members'), _('Forward messages to non group members'),
             'gosaMailForwardingAddress'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Only allowed to receive local mail'), _('Whether this group mail is only allowed to receive messages from local senders'),
             'fdGroupMailLocalOnly', FALSE,
             FALSE

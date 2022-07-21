@@ -25,7 +25,7 @@ class DnsRecordsFilteredAttribute extends DnsRecordsAttribute
 
   function __construct ($label, $description, $ldapName, $zoneDn, $defaultValue = [], $acl = "")
   {
-    parent::__construct ($label, $description, $ldapName, FALSE, $defaultValue, $acl);
+    parent::__construct($label, $description, $ldapName, FALSE, $defaultValue, $acl);
     $this->zoneDn = $zoneDn;
   }
 
@@ -267,7 +267,7 @@ class dnsHost extends simplePlugin
         /* Fetch SOA record */
         $ldap->cat($dn);
         if ($attrs = $ldap->fetch()) {
-          list ($fqdn) = explode(' ', $attrs['sOARecord'][0]);
+          list($fqdn) = explode(' ', $attrs['sOARecord'][0]);
           $servers = dnsManagement::findServerByFQDN($fqdn, $dn);
           if (isset($servers[$this->dn])) {
             $fqdn = '<strong>'.$fqdn.'</strong>';

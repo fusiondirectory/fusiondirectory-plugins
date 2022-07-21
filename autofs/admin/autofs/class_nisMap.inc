@@ -49,7 +49,7 @@ class nisMap extends simplePlugin
         'name'  => _('Mount point'),
         'attrs' => [
           new BaseSelectorAttribute(get_ou('autofsRDN')),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'), _('Name of the mount point'),
             'nisMapName', TRUE
           )

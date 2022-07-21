@@ -42,21 +42,21 @@ class sinapsConfig extends simplePlugin
       'main' => [
         'name'  => _('Sinaps'),
         'attrs' => [
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Enable SINAPS integration'), _('Whether to enable the SINAPS integration'),
             'fdSinapsEnabled', FALSE,
             TRUE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Dry run mode'), _('Do not insert data in FusionDirectory, dump it to a file'),
             'fdSinapsDryRun', FALSE,
             FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Dump folder'), _('Folder in which received transactions should be dumped (leave empty to disable)'),
             'fdSinapsDumpFolder', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Application identifier'), _('Application identifier present in cross references with FusionDirectory'),
             'fdSinapsIdentifiantApplication', TRUE,
             'FUSIONDIRECTORY'
@@ -83,18 +83,18 @@ class sinapsConfig extends simplePlugin
             'fdSinapsUserBase', TRUE,
             $config->current['BASE']
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('User template'), _('User template to use for user creation from SINAPS diffusion'),
             'fdSinapsUserTemplate', FALSE
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('API Tokens'), _('One of these API tokens will need to be present in the diffusion URL used by SINAPS'),
               'fdSinapsFDToken', FALSE
             )
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('User roles'), _('Roles which means a user still exists if present'),
               'fdSinapsUserRole', TRUE
             ),
@@ -169,34 +169,34 @@ class sinapsConfig extends simplePlugin
       'acquisition' => [
         'name'  => _('Sinaps Acquisition'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Acquisition URL'), _('Full URL to which acquisition events should be sent'),
             'fdSinapsAcquisitionURL', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Login'), _('Login to use for Basic Auth when contacting SINAPS services'),
             'fdSinapsLogin', FALSE,
             'fusiondirectory'
           ),
-          new PasswordAttribute (
+          new PasswordAttribute(
             _('Password'), _('Password to use for Basic Auth when contacting SINAPS services'),
             'fdSinapsPassword', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Acquisition external type'), _('Set in typeExterne tag when sending acquisition data'),
             'fdSinapsAcquisitionTypeExterne', TRUE,
             'FD'
           ),
-          new OrderedArrayAttribute (
+          new OrderedArrayAttribute(
             new PipeSeparatedCompositeAttribute(
               _('Which field to sync as contact methods in acquisition'),
               'fdSinapsAcquisitionContactMethodMap',
               [
-                new StringAttribute (
+                new StringAttribute(
                   '', _('Name of an LDAP attribute'),
                   'fdSinapsAcquisitionContactMethodMap_ldap', TRUE
                 ),
-                new StringAttribute (
+                new StringAttribute(
                   '', _('Name of the Sinaps attribute'),
                   'fdSinapsAcquisitionContactMethodMap_sinaps', TRUE
                 ),

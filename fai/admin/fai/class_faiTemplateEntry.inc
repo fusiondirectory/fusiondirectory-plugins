@@ -37,7 +37,7 @@ class AccessRightsAttribute extends CompositeAttribute
       'o1' => new BooleanAttribute('', '', 'oe', FALSE),
       's1' => new BooleanAttribute('', '', 'os', FALSE),
     ];
-    parent::__construct ($description, $ldapName, $attributes, FALSE, FALSE, $acl, $label);
+    parent::__construct($description, $ldapName, $attributes, FALSE, FALSE, $acl, $label);
     $this->setLinearRendering(TRUE);
   }
 
@@ -138,15 +138,15 @@ class faiTemplateEntry extends simplePlugin
       'main' => [
         'name'  => _('Properties'),
         'attrs' => [
-          new PathAttribute (
+          new PathAttribute(
             _('File path'), _('Complete absolute template file path and name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the file'),
             'description', FALSE
           ),
-          new HiddenAttribute (
+          new HiddenAttribute(
             'FAItemplatePath', TRUE
           ),
         ]
@@ -155,19 +155,19 @@ class faiTemplateEntry extends simplePlugin
         'name'  => _('Template attributes'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new FileTextAreaAttribute (
+          new FileTextAreaAttribute(
             _('Template file content'), _('Content of the template file'),
             'FAItemplateFile', TRUE
           ),
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('Owner and group of the file'), 'FAIowner',
             [
-              new StringAttribute (
+              new StringAttribute(
                 _('Owner'), _('File owner'),
                 'owner', TRUE,
                 'root'
               ),
-              new StringAttribute (
+              new StringAttribute(
                 _('Group'), _('File group'),
                 'group', TRUE,
                 'root'
@@ -176,7 +176,7 @@ class faiTemplateEntry extends simplePlugin
             '/^([^.]+)\.([^.]+)$/',
             '%s.%s'
           ),
-          new AccessRightsAttribute (
+          new AccessRightsAttribute(
             _('Access'), _('Access rights'),
             'FAImode'
           )

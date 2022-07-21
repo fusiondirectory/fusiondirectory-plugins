@@ -55,18 +55,18 @@ class pgpServerInfo extends simplePlugin
       'main' => [
         'name'  => _('GPG server info'),
         'attrs' => [
-          new HiddenAttribute ('cn', TRUE, 'pgpServerInfo'),
-          new StringAttribute (
+          new HiddenAttribute('cn', TRUE, 'pgpServerInfo'),
+          new StringAttribute(
             _('Software'), _('Which software this GPG key server is running'),
             'pgpSoftware', FALSE,
             'OpenLDAP 2.4.33'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('GPG version'), _('Which version of GPG this key server is running'),
             'pgpVersion', FALSE,
             'gpg (GnuPG) 1.4.13'
           ),
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('Branch in which keys are stored'),
             'pgpBaseKeySpaceDN',
             [
@@ -97,7 +97,7 @@ class pgpServerInfo extends simplePlugin
     $ldap = $config->get_ldap_link();
     $ldap->cat($this->pgpBaseKeySpaceDN);
     if (!$ldap->count()) {
-      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->pgpBaseKeySpaceDN, "Creating branch");
+      @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->pgpBaseKeySpaceDN, "Creating branch");
       $ldap->cd($config->current['BASE']);
       $ldap->create_missing_trees($this->pgpBaseKeySpaceDN);
       if (!$ldap->success()) {
@@ -114,10 +114,10 @@ class pgpServerInfo extends simplePlugin
         $ldap->search('(objectClass=*)');
         if (!$ldap->count()) {
           /* Old branch is empty */
-          @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $dn, "Deleting old empty branch");
+          @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $dn, "Deleting old empty branch");
           $ldap->rmdir($dn);
         } else {
-          @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $dn, "Old branch is not empty");
+          @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $dn, "Old branch is not empty");
         }
       }
     }

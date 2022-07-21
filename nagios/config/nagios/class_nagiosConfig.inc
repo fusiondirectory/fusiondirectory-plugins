@@ -41,7 +41,7 @@ class nagiosConfig extends simplePlugin
       'main' => [
         'name'  => _('Nagios'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Lconf prefix'), _('Prefix used for lconf LDAP fields'),
             'fdLconfPrefix', TRUE,
             'lconf'

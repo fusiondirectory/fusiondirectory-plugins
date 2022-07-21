@@ -54,17 +54,17 @@ class nisObject extends simplePlugin
         'name'  => _('Directory'),
         'attrs' => [
           new BaseSelectorAttribute(get_ou('autofsRDN')),
-          new StringAttribute (
+          new StringAttribute(
             _('Name'), _('Name of this directory'),
             'cn', TRUE,
             '', '',
             '/^[a-z0-9\.\-\/]*$/i', 'nfsPartage'
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Automount entry'), _("The entry of this directory for the automount daemon.\n For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"),
             'nisMapEntry', TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Mount point'), _('The mount point this directory will be placed in'),
             'nisMapName', TRUE,
             []

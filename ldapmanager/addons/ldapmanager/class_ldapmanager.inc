@@ -60,15 +60,15 @@ class ldapmanager extends simplePlugin
       'export' => [
         'name'  => _('Export'),
         'attrs' => [
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('DN of a single entry to export as ldif'),
             'single_export',
             [
-              new StringAttribute (
+              new StringAttribute(
                 '', '',
                 'single_dn', FALSE
               ),
-              new ButtonAttribute (
+              new ButtonAttribute(
                 '', '',
                 'single_submit',
                 _('Export')
@@ -77,18 +77,18 @@ class ldapmanager extends simplePlugin
             '', '%s%s', '',
             _('Export single entry')
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Filter'), _('Filter to use for selecting objects to export'),
             'export_filter', FALSE,
             '(objectClass=*)',
             'complete_export'
           ),
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('Download a complete snapshot of the running LDAP directory for this base as ldif'),
             'complete_export',
             [
-              new BaseSelectorOrDnAttribute ('', '', ''),
-              new ButtonAttribute (
+              new BaseSelectorOrDnAttribute('', '', ''),
+              new ButtonAttribute(
                 '', '',
                 'complete_submit',
                 _('Export')
@@ -102,20 +102,20 @@ class ldapmanager extends simplePlugin
       'import' => [
         'name'  => _('Import LDIF'),
         'attrs' => [
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Overwrite existing entries'), _('Remove fields that are not in the LDIF from the LDAP entries if they were existing.'),
             'overwrite', FALSE,
             FALSE, 'import'
           ),
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('Import an LDIF file into your LDAP. Remember that FusionDirectory will not check your LDIFs for FusionDirectory conformance.'),
             'import',
             [
-              new FileTextAreaAttribute (
+              new FileTextAreaAttribute(
                 '', '',
                 'import_ldif_file', FALSE
               ),
-              new ButtonAttribute (
+              new ButtonAttribute(
                 '', '',
                 'import_ldif_submit',
                 _('Import')

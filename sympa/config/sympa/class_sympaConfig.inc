@@ -41,7 +41,7 @@ class sympaConfig extends simplePlugin
       'main' => [
         'name'  => _('Sympa'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Sympa RDN'), _('Branch in which Sympa objects will be stored'),
             'fdSympaRDN', TRUE,
             'ou=sympa'

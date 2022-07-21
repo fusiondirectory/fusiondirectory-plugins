@@ -52,17 +52,17 @@ class repositorySection extends simplePlugin
       'main' => [
         'name'  => _('Repository section'),
         'attrs' => [
-          new BaseSelectorAttribute (get_ou('repositoryRDN')),
-          new StringAttribute (
+          new BaseSelectorAttribute(get_ou('repositoryRDN')),
+          new StringAttribute(
             _('Name'), _('Unique name for this section'),
             'cn', TRUE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Description'), _('Description of this section'),
             'description', FALSE
           ),
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Based on'), _('The sections this one is based on'),
               'fdBasedOn', FALSE,
               []

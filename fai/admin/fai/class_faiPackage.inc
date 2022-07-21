@@ -156,7 +156,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
   protected function genRowIcons ($key, $value)
   {
     $id = $this->getHtmlId();
-    list ($img, $nbicons) = parent::genRowIcons($key, $value);
+    list($img, $nbicons) = parent::genRowIcons($key, $value);
     $key64 = base64_encode($key);
     if (preg_match('/\-$/', $value)) {
       $img = '<input type="image" src="geticon.php?context=actions&icon=add&size=16"'.
@@ -299,7 +299,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
           }
         }
       }
-      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, count ($packages), "$release done, packages left");
+      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, count($packages), "$release done, packages left");
     }
 
     if (count($packages) > 0) {
@@ -395,11 +395,11 @@ class faiPackage extends faiSimplePluginClass
       'main' => [
         'name'  => _('Properties'),
         'attrs' => [
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Class name'), _('Variables class name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
@@ -408,15 +408,15 @@ class faiPackage extends faiSimplePluginClass
       'repo' => [
         'name'  => _('Repository'),
         'attrs' => [
-          new DisplayLDAPAttribute (
+          new DisplayLDAPAttribute(
             _('Release'), _('Debian release concerned'),
             'FAIdebianRelease', FALSE
           ),
-          new DisplayLDAPArrayAttribute (
+          new DisplayLDAPArrayAttribute(
             _('Sections'), _('Sections concerned'),
             'FAIdebianSection', FALSE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Install method'), _('Install method to use for this package list'),
             'FAIinstallMethod', TRUE,
             ['install', 'ninstall', 'remove',
@@ -431,7 +431,7 @@ class faiPackage extends faiSimplePluginClass
         'name'  => _('Packages'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new PackagesAttribute (
+          new PackagesAttribute(
             '', _('Packages in this class'),
             'FAIpackage', TRUE
           )

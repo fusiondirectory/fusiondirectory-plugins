@@ -41,7 +41,7 @@ class opsiConfig extends simplePlugin
       'main' => [
         'name'  => _('OPSI'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('OPSI RDN'), _('Branch in which OPSI profiles will be stored'),
             'fdOpsiRDN', TRUE,
             'ou=opsi'

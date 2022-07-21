@@ -116,7 +116,7 @@ class AvailableSudoOptionAttribute extends SelectAttribute
   {
     $choices = sudoOptions::listOptions();
     sort($choices);
-    parent::__construct ($label, $description, $ldapName, $required, $choices, "", NULL, $acl);
+    parent::__construct($label, $description, $ldapName, $required, $choices, "", NULL, $acl);
     $this->setInLdap(FALSE);
   }
 
@@ -340,7 +340,7 @@ class sudoOption extends simplePlugin
       'available_options' => [
         'name'  => _('Available options'),
         'attrs' => [
-          new AvailableSudoOptionAttribute (
+          new AvailableSudoOptionAttribute(
             _('Option'), _('Add a new sudo option'), 'availableSudoOptions'
           ),
         ]
@@ -348,7 +348,7 @@ class sudoOption extends simplePlugin
       'used_options' => [
         'name'  => _('Used sudo role options'),
         'attrs' => [
-          new UsedOptionAttribute (_('Used sudo role options'), 'sudoOption')
+          new UsedOptionAttribute(_('Used sudo role options'), 'sudoOption')
         ],
         'template' => get_template_path('usedoptions_section.tpl', TRUE, dirname(__FILE__))
       ],

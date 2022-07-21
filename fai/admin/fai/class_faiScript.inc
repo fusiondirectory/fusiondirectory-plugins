@@ -49,11 +49,11 @@ class faiScript extends faiSimplePluginClass
       'main' => [
         'name'  => _('Properties'),
         'attrs' => [
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Class name'), _('Variables class name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
@@ -63,24 +63,24 @@ class faiScript extends faiSimplePluginClass
         'name'  => _('Scripts'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new SubNodesAttribute (
+          new SubNodesAttribute(
             '', _('Variables in this class'),
             'scripts', ['FAIscriptEntry','FAIclass','top'],
             [
-              new StringAttribute (
+              new StringAttribute(
                 _('Name'), _('The name of the variable'),
                 'cn', TRUE
               ),
-              new StringAttribute (
+              new StringAttribute(
                 _('Description'), _('A short description of the variable'),
                 'description', FALSE
               ),
-              new IntAttribute (
+              new IntAttribute(
                 _('Priority'), _('Priority of this script (smaller is done first)'),
                 'FAIpriority', TRUE,
                 0, 99, 1
               ),
-              new FileTextAreaAttribute (
+              new FileTextAreaAttribute(
                 _('Script'), _('The script itself'),
                 'FAIscript', TRUE,
                 '.sh'

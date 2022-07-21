@@ -58,22 +58,22 @@ class workstationGeneric extends ipHostPlugin
         'name'  => _('Properties'),
         'attrs' => [
           new BaseSelectorAttribute($rdn),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'),
             sprintf(_('The name of the %s'), $word),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'),
             sprintf(_('A short description of the %s'), $word),
             'description', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Location'),
             sprintf(_('The location of the %s'), $word),
             'l', FALSE
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             sprintf(_('Lock this %s'), $word),
             sprintf(_('This will prevent the %s from being reinstalled'), $word),
             'fdMode',

@@ -44,16 +44,16 @@ class ipmiClient extends simplePlugin
       'main' => [
         'name'  => _('IPMI client settings'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('IP'), _('IP of the IPMI interface'),
             'fdIpmiIP', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('User login'), _('IPMI user login'),
             'fdIpmiLogin', TRUE,
             ''
           ),
-          new PasswordAttribute (
+          new PasswordAttribute(
             _('User password'), _('IPMI user password'),
             'fdIpmiPassword', TRUE
           ),

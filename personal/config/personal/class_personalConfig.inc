@@ -41,7 +41,7 @@ class personalConfig extends simplePlugin
       'main' => [
         'name'  => _('Personal'),
         'attrs' => [
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Allow use of private email for password recovery'), _('Allow users to use their private email address for password recovery'),
             'fdPrivateEmailPasswordRecovery', FALSE
           ),

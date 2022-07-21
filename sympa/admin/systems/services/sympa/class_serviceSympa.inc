@@ -45,15 +45,15 @@ class serviceSympa extends simpleService
       'main' => [
         'name'  => _('Sympa server'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('URL'), _('URL to access the sympa server'),
             'sympaServerURL', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('User'), _('User to access sympa server SOAP API.'),
             'sympaServerUser', FALSE
           ),
-          new PasswordAttribute (
+          new PasswordAttribute(
             _('Password'), _('Password to access sympa server SOAP API.'),
             'sympaServerPassword', FALSE
           )

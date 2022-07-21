@@ -60,7 +60,7 @@ class auditEvent extends simplePlugin
       'main' => [
         'name'  => _('Event'),
         'attrs' => [
-          new HiddenAttribute ('fdAuditId'),
+          new HiddenAttribute('fdAuditId'),
           new GeneralizedTimeDisplayAttribute(
             _('Time'), _('Date and time this event happened'),
             'fdAuditDateTime', TRUE

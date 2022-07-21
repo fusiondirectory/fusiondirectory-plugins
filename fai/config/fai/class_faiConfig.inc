@@ -40,7 +40,7 @@ class faiConfig extends simplePlugin
       'main' => [
         'name'  => _('FAI'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Fai base RDN'), _('Branch in which fai branches will be stored'),
             'fdFaiBaseRDN', TRUE,
             'ou=fai,ou=configs,ou=systems'
@@ -55,7 +55,7 @@ class faiConfig extends simplePlugin
       } else {
         $default = 'ou='.strtolower($rdn).'s';
       }
-      $attrs['main']['attrs'][] = new StringAttribute (
+      $attrs['main']['attrs'][] = new StringAttribute(
         sprintf(_('Fai %s RDN'), _(strtolower($rdn))),
         sprintf(_('Relative branch in which fai %s will be stored'), _(strtolower($rdn).'s')),
         'fdFai'.$rdn.'RDN', TRUE,

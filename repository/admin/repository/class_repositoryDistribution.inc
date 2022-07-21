@@ -55,24 +55,24 @@ class repositoryDistribution extends simplePlugin
       'main' => [
         'name'  => _('Repository distribution'),
         'attrs' => [
-          new BaseSelectorAttribute (get_ou('repositoryRDN')),
-          new StringAttribute (
+          new BaseSelectorAttribute(get_ou('repositoryRDN')),
+          new StringAttribute(
             _('Name'), _('Unique name for this distribution'),
             'cn', TRUE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Description'), _('Description of this distribution'),
             'description', FALSE
           ),
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Section'), _('The sections this distribution contains'),
               'fdRepoSection', TRUE,
               []
             )
           ),
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Based on'), _('The distributions this one is based on'),
               'fdBasedOn', FALSE,
               []

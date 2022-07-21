@@ -136,7 +136,7 @@ class PgpKeyAttribute extends GenericDialogAttribute
 
   function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = [], $acl = '')
   {
-    parent::__construct ($label, $description, $ldapName, $required, $defaultValue, 'dn', NULL, $acl);
+    parent::__construct($label, $description, $ldapName, $required, $defaultValue, 'dn', NULL, $acl);
     $this->displayed_values = [
       'pgpKeyID'          => _('Key ID'),
       'pgpUserID'         => _('User ID'),

@@ -23,7 +23,7 @@ class SocialAccountAttribute extends CompositeAttribute
   function __construct ($label, $description, $ldapName, $acl = "")
   {
     $handlers = socialHandler::listHandlers();
-    parent::__construct (
+    parent::__construct(
       $description, $ldapName,
       [
         new SelectAttribute(
@@ -100,7 +100,7 @@ class personalInfo extends simplePlugin
       'main' => [
         'name'  => _('Personal info'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Personal title'), _('Personal title - Examples of personal titles are "Ms", "Dr", "Prof" and "Rev"'),
             'personalTitle', FALSE
           ),
@@ -110,35 +110,35 @@ class personalInfo extends simplePlugin
               'fdNickName'
             )
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Badge Number'), _('Company badge number'),
             'fdBadge', FALSE
           ),
-          new DateAttribute (
+          new DateAttribute(
             _('Date of birth'), _('Date of birth'),
             'dateOfBirth', FALSE,
             'Y-m-d', ''
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Sex'), _('Gender'),
             'gender', FALSE,
             ['', 'M', 'F'], '', ['', 'male', 'female']
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Country'), _('Country'),
             'co', FALSE
           ),
-          new GeneralizedTimeDateAttribute (
+          new GeneralizedTimeDateAttribute(
             _('Start date'), _('Date this user joined the company'),
             'fdContractStartDate', FALSE,
             ''
           ),
-          new GeneralizedTimeDateAttribute (
+          new GeneralizedTimeDateAttribute(
             _('End date'), _('Date this user is supposed to leave the company'),
             'fdContractEndDate', FALSE,
             ''
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Photo Visible'), _('Should the photo of the user be visible on external tools'),
             'fdPhotoVisible', FALSE, TRUE
           ),

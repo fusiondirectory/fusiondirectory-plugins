@@ -46,35 +46,35 @@ class subContractingAccount extends simplePlugin
       'main' => [
         'name'  => _('SubContracting Information'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Intermediate'),
             _('Contact to the final customer'),
             'fdMissionIntermediate',
             FALSE,
             ''
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Final Customer'),
             _('Final Customer for this mission'),
             'fdMissionFinalCustomer',
             FALSE,
             ''
           ),
-          new MailAttribute (
+          new MailAttribute(
             _('Mail Address'),
             _('Mail address assigned for this mission'),
             'fdMissionMail',
             FALSE,
             ''
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Phone'),
             _('Phone number assigned for this mission'),
             'fdMissionPhone',
             FALSE,
             ''
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Street Address'),
             _('Address where this mission is executed'),
             'fdMissionAddress',

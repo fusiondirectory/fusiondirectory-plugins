@@ -37,7 +37,7 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
 
   function __construct ($label, $description, $ldapName, $values = [], $acl = '')
   {
-    parent::__construct ($label, $description, $ldapName, FALSE, $values, $acl);
+    parent::__construct($label, $description, $ldapName, FALSE, $values, $acl);
   }
 
   protected function loadAttrValue ($attrs)
@@ -165,11 +165,11 @@ class faiTemplate extends faiSimplePluginClass
       'main' => [
         'name'  => _('Properties'),
         'attrs' => [
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Class name'), _('Template class name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
@@ -179,7 +179,7 @@ class faiTemplate extends faiSimplePluginClass
         'name'  => _('Template files'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new FAITemplateFilesAttribute (
+          new FAITemplateFilesAttribute(
             '', _('Template files in this class'), 'templateFiles'
           ),
         ]

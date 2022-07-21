@@ -116,7 +116,7 @@ class dashboardNetwork extends simplePlugin
     $servers  = [];
     $zones    = objects::ls('dnsZone', ['zoneName' => 1, 'sOARecord' => 1], NULL, '', TRUE);
     foreach ($zones as $zonedn => $zone) {
-      list ($fqdn)  = explode(' ', $zone['sOARecord']);
+      list($fqdn)  = explode(' ', $zone['sOARecord']);
       $search = dnsManagement::findServerByFQDN($fqdn, $zonedn);
       foreach ($search as $dn => $name) {
         if (!isset($servers[$dn])) {

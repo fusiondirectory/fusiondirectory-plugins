@@ -39,17 +39,17 @@ class applicationsPluginConfig extends simplePlugin
       'rdns' => [
         'name'  => _('Applications'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Application RDN'), _('Branch in which applications will be stored'),
             'fdApplicationsRDN', TRUE,
             'ou=apps'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Web applications RDN'), _('Branch in which web applications will be stored'),
             'fdWebappsRDN', TRUE,
             'ou=apps'
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Show web applications in menu'), _('Whether to show web applications in FD main menu'),
             'fdWebappsMenu', TRUE,
             ['none', 'allowed', 'all'], 'none',

@@ -44,29 +44,29 @@ class sympaAliasPartage extends simplePlugin
             'gosaMailServer', TRUE,
             ['']
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Display name'), _('Name to display for this group'),
             'displayName'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Hide from global catalog'), _('Whether this group should be hidden from the global catalog'),
             'fdRenaterPartageGroupHideInGal', FALSE,
             FALSE
           ),
-          new HiddenAttribute (
+          new HiddenAttribute(
             'fdRenaterPartageGroupMailStatus', TRUE, 'enabled'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             'fdRenaterPartageGroupSendShareMessageToNewMembers', '',
             'fdRenaterPartageGroupSendShareMessageToNewMembers', FALSE,
             FALSE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Notes'), _('Notes about this group'),
             'fdRenaterPartageGroupNotes', FALSE
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Alternative addresses'), _('Alternative mail addresses for the list'),
               'gosaMailAlternateAddress'
             )

@@ -46,7 +46,7 @@ class argonautFuseLTSPConfig extends simplePlugin
       'ltsp' => [
         'name'  => _('LTSP'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('LTSP server'),
             '',
             'argonautFuseLtspServer'

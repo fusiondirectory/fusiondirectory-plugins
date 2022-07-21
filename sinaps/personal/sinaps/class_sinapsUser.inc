@@ -44,7 +44,7 @@ class sinapsUser extends simplePlugin
         'name'  => _('Sinaps'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new DisplayAttribute (
+          new DisplayAttribute(
             '', '',
             'sinaps_explanation', FALSE,
             _('This tab takes care of sending Acquisition event to Sinaps whenever a user is modified.')

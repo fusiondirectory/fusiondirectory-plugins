@@ -95,16 +95,16 @@ class mailAccount extends simplePlugin
       'main' => [
         'name'  => _('Mail account'),
         'attrs' => [
-          new MailAttribute (
+          new MailAttribute(
             _('Primary address'), _('Primary mail address'),
             'mail', TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Server'), _('Specify the mail server where the user will be hosted on'),
             'gosaMailServer', FALSE,
             []
           ),
-          new MailQuotaAttribute (
+          new MailQuotaAttribute(
             _('Quota size'), _('Define quota size in MiB'),
             'gosaMailQuota', FALSE,
             0, FALSE
@@ -114,13 +114,13 @@ class mailAccount extends simplePlugin
       'other_addresses' => [
         'name'  => _('Other addresses and redirections'),
         'attrs' => [
-          new SetAttribute (
-            new MailAttribute (
+          new SetAttribute(
+            new MailAttribute(
               _('Alternative addresses'), _('List of alternative mail addresses'),
               'gosaMailAlternateAddress'
             )
           ),
-          new MailsAttribute (
+          new MailsAttribute(
             _('Forward messages to'), _('Addresses to which messages should be forwarded'),
             'gosaMailForwardingAddress'
           )
@@ -129,23 +129,23 @@ class mailAccount extends simplePlugin
       'options1' => [
         'name' => _('Vacation message'),
         'attrs' => [
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Activate vacation message'),
             _('Select to automatically response with the vacation message defined below'),
             'flag_vacation', FALSE, FALSE, '',
             'V', ''
           ),
-          new DateAttribute (
+          new DateAttribute(
             _('from'), 'Starting date for vacation message',
             'gosaVacationStart', FALSE,
             'U'
           ),
-          new DateAttribute (
+          new DateAttribute(
             _('till'), 'Ending date for vacation message',
             'gosaVacationStop', FALSE,
             'U'
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Vacation message'), 'The message you wish be sent during your absence',
             'gosaVacationMessage'
           ),
@@ -154,18 +154,18 @@ class mailAccount extends simplePlugin
       'advanced' => [
          'name' => _('Advanced mail options'),
          'attrs' => [
-          new FlagsAttribute ('gosaMailDeliveryMode', [
+          new FlagsAttribute('gosaMailDeliveryMode', [
             'flag_ownmailbox',
             'flag_vacation',
             'flag_localonly'
           ]),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('User is only allowed to send and receive local mails'),
             _('Select if user can only send and receive inside his own domain'),
             'flag_localonly', FALSE, FALSE, '',
             'L', ''
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('No delivery to own mailbox'),
             _('Select if you want to forward mails without getting own copies of them'),
             'flag_ownmailbox', FALSE, FALSE, '',
@@ -314,7 +314,7 @@ class mailAccount extends simplePlugin
     if ($this->mailMethod->vacationRangeEnabled()) {
       $this->attributesAccess['gosaVacationStop']->setDisabled(FALSE);
       $this->attributesAccess['gosaVacationStart']->setDisabled(FALSE);
-      $this->attributesAccess['flag_vacation']->setManagedAttributes (
+      $this->attributesAccess['flag_vacation']->setManagedAttributes(
          [
           'erase' => [
             FALSE => [
@@ -330,7 +330,7 @@ class mailAccount extends simplePlugin
       $this->attributesAccess['gosaVacationStop']->setDisabled(TRUE);
       $this->attributesAccess['gosaVacationStop']->setVisible(FALSE);
       $this->attributesAccess['gosaVacationStop']->setValue('');
-      $this->attributesAccess['flag_vacation']->setManagedAttributes (
+      $this->attributesAccess['flag_vacation']->setManagedAttributes(
          [
           'erase' => [
             FALSE => [
@@ -387,7 +387,7 @@ class mailAccount extends simplePlugin
           /* Do not write sieve settings if this account is new and
              doesn't seem to exist. */
           if (!$this->initially_was_account && !$this->mailMethod->account_exists()) {
-            @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
+            @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
                 'Skipping sieve settings, the account doesn’t seem to be created already.', '');
           } else {
             if (!$this->mailMethod->saveSieveSettings()) {
@@ -396,7 +396,7 @@ class mailAccount extends simplePlugin
           }
         } else {
           if ($this->sieve_management) {
-            @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
+            @DEBUG(DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
                 'User uses an own sieve script, skipping sieve update.', '');
             $this->sieve_management->save();
           }

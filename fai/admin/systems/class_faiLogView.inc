@@ -32,7 +32,7 @@ class AvailableLogsAttribute extends Attribute
       // TRUE means up
       'sort_up'  => TRUE
     ];
-    parent::__construct ('', $description, $ldapName, FALSE, $value, $acl);
+    parent::__construct('', $description, $ldapName, FALSE, $value, $acl);
     $this->setInLdap(FALSE);
   }
 

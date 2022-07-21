@@ -23,7 +23,7 @@ class CertificateOrderedArrayAttribute extends OrderedArrayAttribute
   protected function genRowIcons ($key, $value)
   {
     $id = $this->getHtmlId();
-    list ($img, $nbicons) = parent::genRowIcons($key, $value);
+    list($img, $nbicons) = parent::genRowIcons($key, $value);
     $img = $this->renderInputField(
       'image', $id.'_download_'.$key,
       [

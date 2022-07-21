@@ -44,8 +44,8 @@ class applicationRights extends simplePlugin
       'main' => [
         'name'  => _('Application list'),
         'attrs' => [
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Applications'), _('The applications users with this role are allowed to launch'),
               'fdApplicationAllowed', TRUE
             )

@@ -42,7 +42,7 @@ class serviceDovecot extends simpleMailMethodService
       'connection' => [
         'name'  => _('Dovecot connection'),
         'attrs' => [
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('Connect URL for Dovecot server'),
             'fdDovecotConnect',
             [
@@ -75,15 +75,15 @@ class serviceDovecot extends simpleMailMethodService
       'credentials' => [
         'name'  => _('Master credentials'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Admin user'), _('Dovecot server admin user'),
             'fdDovecotAdmin', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Password'), _('Admin user password'),
             'fdDovecotPassword', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Mail directory'), _('Path to the directory in which user maildirs must be created'),
             'fdDovecotMailDir', TRUE,
             '/var/mail'
@@ -93,7 +93,7 @@ class serviceDovecot extends simpleMailMethodService
       'options' => [
         'name'  => _('Options'),
         'attrs' => [
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Create the user folder via Argonaut'), _('Use argonaut to create the user mailbox on the Dovecot server'),
             'fdDovecotArgonautMkdir', TRUE,
             TRUE

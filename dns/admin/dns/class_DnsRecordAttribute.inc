@@ -26,7 +26,7 @@ class LocRecordAttribute extends CompositeAttribute
                   '(?P<long>[[:digit:] \.]+ [EW])\s+'.
                   '(?P<alt>[[:digit:]\.]+)m?'.
                   '(\s+(?P<size>[[:digit:]\.]+)m?(\s+(?P<hp>[[:digit:]\.]+)m?(\s+(?P<vp>[[:digit:]\.]+)m?)?)?)?$/';
-    parent::__construct ($description, $ldapName, $attributes, $readFormat, FALSE, $acl, $label);
+    parent::__construct($description, $ldapName, $attributes, $readFormat, FALSE, $acl, $label);
   }
 
   function writeValues ($values)
@@ -54,7 +54,7 @@ class LocRecordLatLongAttribute extends CompositeAttribute
                   '(\s+(?P<minutes>[[:digit:]]+)(\s+(?P<seconds>[[:digit:]\.]+))?)?'.
                   '\s+(?P<dir>[NSEW])$/';
     $attributes['seconds']->setStep(.001);
-    parent::__construct ($description, $ldapName, $attributes, $readFormat, FALSE, $acl, $label);
+    parent::__construct($description, $ldapName, $attributes, $readFormat, FALSE, $acl, $label);
     $this->setLinearRendering(TRUE);
   }
 

@@ -46,7 +46,7 @@ class newsletterSubscriptions extends simplePlugin
         'name'  => _('Personal info'),
         'attrs' => [
           new SetAttribute(
-            new SelectAttribute (
+            new SelectAttribute(
               _('Subscriptions'), _('Newsletter you are subscribed to'),
               'fdNewsletterSubscriptions', FALSE,
               $config->get_cfg_value('newsletterChoices', [])

@@ -42,13 +42,13 @@ class dhcpHost extends dhcpPlugin
         new CompositeAttribute(
           _('The client hardware address'), 'dhcpHWAddress',
           [
-            new SelectAttribute (
+            new SelectAttribute(
               '', _('The hardware address type'),
               'dhcpHWAddress_type', TRUE,
               [  'ethernet',   'fddi',   'token-ring'], 'ethernet',
               [_('Ethernet'),_('FDDI'),_('Token Ring')]
             ),
-            new StringAttribute (
+            new StringAttribute(
               '', _('The client hardware address'),
               'dhcpHWAddress_address', TRUE
             ),

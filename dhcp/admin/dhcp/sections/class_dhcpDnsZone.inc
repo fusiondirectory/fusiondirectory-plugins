@@ -38,19 +38,19 @@ class dhcpDnsZone extends dhcpPlugin
       'main' => [
         'name'  => _('DHCP'),
         'attrs' => [
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'), _('Name of this DHCP configuration'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('DNS Zone Server'), _('Master server of the DNS Zone'),
             'dhcpDnsZoneServer', TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Tsig key'), _('The TSig key DN'),
             'dhcpKeyDN', FALSE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Comments'), _('Comments about this DHCP object'),
             'dhcpComments', FALSE
           ),

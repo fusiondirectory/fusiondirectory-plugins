@@ -42,12 +42,12 @@ class ppolicyConfig extends simplePlugin
       'main' => [
         'name'  => _('Ppolicy plugin'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Ppolicy RDN'), _('Branch in which ppolicies will be stored'),
             'fdPpolicyRDN', TRUE,
             'ou=ppolicies'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Default ppolicy cn'), _('What you put as default ppolicy in the overlay config'),
             'fdPpolicyDefaultCn', FALSE,
             'default'

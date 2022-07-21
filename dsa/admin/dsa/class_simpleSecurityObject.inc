@@ -50,12 +50,12 @@ class simpleSecurityObject extends simplePlugin
       'main' => [
         'name'  => _('Simple security object'),
         'attrs' => [
-          new BaseSelectorAttribute (get_ou('dsaRDN')),
-          new HostNameAttribute (
+          new BaseSelectorAttribute(get_ou('dsaRDN')),
+          new HostNameAttribute(
             _('Entry name'), _('Account name'),
             'cn', TRUE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Description'), _('Description of this simple security object'),
             'description', FALSE
           ),
@@ -64,7 +64,7 @@ class simpleSecurityObject extends simplePlugin
       'password' => [
         'name'  => _('Change password'),
         'attrs' => [
-          new UserPasswordAttribute (
+          new UserPasswordAttribute(
             _('Password'), _('Password'),
             'userPassword', FALSE
           )

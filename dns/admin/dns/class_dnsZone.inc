@@ -45,12 +45,12 @@ class DnsRecordPlugin extends simplePlugin
         'name'  => _('Record'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Subdomain'), _('Relative subdomain name'),
             'relativeSubdomainName', FALSE,
             '', 'dnsRecord'
           ),
-          new DnsRecordAttribute (
+          new DnsRecordAttribute(
             _('Record'), _('DNS Record'),
             'dnsRecord', TRUE
           ),
@@ -357,7 +357,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       }
     }
     foreach ($this->value as $line) {
-      list ($domain, $type, $content) = $line;
+      list($domain, $type, $content) = $line;
       // Only save root records here
       if (empty($domain)) {
         $attrs[$type][] = $content;
@@ -374,7 +374,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     $ptrs       = [];
     $nsRecords  = [];
     foreach ($value as $line) {
-      list ($domain, $type, $content, $reverse) = $line;
+      list($domain, $type, $content, $reverse) = $line;
       if (!empty($reverse)) {
         if (!DnsRecordAttribute::matchReverseZone($type, $content, $reverse)) {
           msg_dialog::display(
@@ -456,9 +456,9 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
     unset($newSoa[2]);
     $soaChanged = array_differs($initialSoa, $newSoa);
     /* Compute values into $nodes and $ptrs */
-    list ($nodes, $ptrs, $nsRecords) = $this->valueToNodes($this->value);
+    list($nodes, $ptrs, $nsRecords) = $this->valueToNodes($this->value);
     /* List all old nodes */
-    list ($initialNodes, $initialPtrs, ) = $this->valueToNodes($this->getInitialValue());
+    list($initialNodes, $initialPtrs, ) = $this->valueToNodes($this->getInitialValue());
     /* Update reverse zones top nodes */
     $oldReverseZones = $this->initialReverseZones;
     foreach ($this->reverseZones as $reverseZone) {
@@ -644,7 +644,7 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
 
   protected function genRowIcons ($key, $value)
   {
-    list ($img, $nbicons) = parent::genRowIcons($key, $value);
+    list($img, $nbicons) = parent::genRowIcons($key, $value);
     if ($this->canWriteRecord($value)) {
       return [$img, $nbicons];
     } else {
@@ -718,24 +718,24 @@ class dnsZone extends simplePlugin
         'name'  => _('Zone'),
         'attrs' => [
           new BaseSelectorAttribute(get_ou('dnsRDN')),
-          new FQDNAttribute (
+          new FQDNAttribute(
             _('Zone name'), _('Zone name'),
             'zoneName', TRUE
           ),
-          new HiddenAttribute (
+          new HiddenAttribute(
             // Relative domain name
             'relativeDomainName', TRUE,
             '@'
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Reverse zones'), sprintf(_('Reverse zones for this zone in the form xx.xx.in-addr.arpa%1$s or x.x.ip6.arpa%1$s'), (dnsZone::finalDot() ? '.' : '')),
               'reverseZones', FALSE,
               '', '',
               '/^.*\.(in-addr|ip6)\.arpa'.(dnsZone::finalDot() ? '\.' : '').'$/i', '11.168.192.in-addr.arpa'.(dnsZone::finalDot() ? '.' : '')
             )
           ),
-          new HiddenAttribute (
+          new HiddenAttribute(
             'dNSClass', TRUE,
             'IN'
           ),
@@ -744,7 +744,7 @@ class dnsZone extends simplePlugin
       'soa' => [
         'name'  => _('SOA record'),
         'attrs' => [
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('SOA Record'),
             'sOARecord',
             [

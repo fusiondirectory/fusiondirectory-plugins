@@ -95,7 +95,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
 
   function __construct ($label, $description, $ldapName, $values = [], $acl = '')
   {
-    parent::__construct ($label, $description, $ldapName, FALSE, $values, $acl);
+    parent::__construct($label, $description, $ldapName, FALSE, $values, $acl);
     $this->disks = &$this->value;
   }
 
@@ -330,11 +330,11 @@ class faiPartitionTable extends faiSimplePluginClass
       'main' => [
         'name'  => _('Properties'),
         'attrs' => [
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Class name'), _('Partition table class name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
@@ -344,10 +344,10 @@ class faiPartitionTable extends faiSimplePluginClass
         'name'  => _('Discs'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new HiddenAttribute (
+          new HiddenAttribute(
             'FAIpartitionMethod', FALSE, 'setup-storage'
           ),
-          new PartitionTableAttribute (
+          new PartitionTableAttribute(
             '', _('Partitions in this class'), 'FAIpartitions'
           )
         ]

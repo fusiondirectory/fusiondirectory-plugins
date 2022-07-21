@@ -49,15 +49,15 @@ class argonautImportFile extends simplePlugin
         'name'  => _('Import actions from CSV file'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('Import a list of task into argonaut'),
             'import',
             [
-              new FileAttribute (
+              new FileAttribute(
                 '', '',
                 'import_file', FALSE
               ),
-              new ButtonAttribute (
+              new ButtonAttribute(
                 '', '',
                 'import_submit',
                 _('Upload')

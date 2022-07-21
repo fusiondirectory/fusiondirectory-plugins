@@ -42,29 +42,29 @@ class csvimport extends simplePlugin
       'import' => [
         'name'  => _('Import CSV'),
         'attrs' => [
-          new SelectAttribute (
+          new SelectAttribute(
             _('Object type'), _('Type of objects you wish to import'),
             'type', TRUE,
             [], '', NULL,
             'import_file'
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Template'), _('Select a template to apply to imported entries'),
             'template_dn', TRUE,
             [], '', NULL,
             'import_file'
           ),
-          new FileAttribute (
+          new FileAttribute(
             _('CSV file'), _('Import a CSV file into your LDAP'),
             'import_file', FALSE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Separator'), _('Character used as separator in the CSV file'),
             'separator', TRUE,
             [',', ';'], '', NULL,
             'import_file'
           ),
-          new HiddenAttribute (
+          new HiddenAttribute(
             'valueSeparator', FALSE, '|'
           ),
           new SetAttribute(
@@ -75,7 +75,7 @@ class csvimport extends simplePlugin
               'import_file'
             )
           ),
-          new ButtonAttribute (
+          new ButtonAttribute(
             '', '',
             'import_submit',
             _('Import'),
@@ -87,7 +87,7 @@ class csvimport extends simplePlugin
       'fields' => [
         'name'  => _('Template filling'),
         'attrs' => [
-          new CompositeAttribute (
+          new CompositeAttribute(
             _('Select fields associations'),
             'fields',
             [],
@@ -95,7 +95,7 @@ class csvimport extends simplePlugin
             'import_file',
             ''
           ),
-          new ButtonAttribute (
+          new ButtonAttribute(
             '', '',
             'import_submit_fields',
             _('Import'),

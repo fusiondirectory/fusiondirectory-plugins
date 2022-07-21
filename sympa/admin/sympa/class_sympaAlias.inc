@@ -48,19 +48,19 @@ class sympaAlias extends simplePlugin
       'main' => [
         'name'  => _('Sympa list alias'),
         'attrs' => [
-          new BaseSelectorAttribute (get_ou('sympaRDN')),
+          new BaseSelectorAttribute(get_ou('sympaRDN')),
           new StringAttribute (_('Name'), _('Name to identify this alias'), 'cn', TRUE),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Description'), _('Description of this alias'),
             'description', FALSE
           ),
           new SetAttribute(
-            new MailAttribute (
+            new MailAttribute(
               _('Email address'), _('Email address'),
               'mail', TRUE
             )
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Sympa server'), _('Sympa server for this alias'),
             'sympaServerURL', TRUE,
             []

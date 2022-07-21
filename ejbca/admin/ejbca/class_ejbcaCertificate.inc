@@ -46,12 +46,12 @@ class ejbcaCertificate extends simplePlugin
       'main' => [
         'name'  => _('Certificate'),
         'attrs' => [
-          new BaseSelectorAttribute (get_ou('ejbcaRDN')),
-          new HostNameAttribute (
+          new BaseSelectorAttribute(get_ou('ejbcaRDN')),
+          new HostNameAttribute(
             _('Name'), _('Common name'),
             'cn', TRUE
           ),
-          new FileDownloadAttribute (
+          new FileDownloadAttribute(
             _('Certificate'), _('Certificate content'),
             'userCertificate;binary', TRUE,
             '.der'

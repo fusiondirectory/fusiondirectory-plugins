@@ -44,14 +44,14 @@ class argonautFuseConfig extends simpleService
       'main' => [
         'name'  => _('Basic settings'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Default mode'),
             '',
             'argonautFuseDefaultMode',
             TRUE,
             'install'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Log directory'),
             _('Directory in which argonaut-fuse will store its log'),
             'argonautFuseLogDir',
@@ -63,7 +63,7 @@ class argonautFuseConfig extends simpleService
       'tftp' => [
         'name'  => _('TFTP'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Pxelinux cfg path'),
             _('Path where argonaut-fuse should store pxelinux.cfg'),
             'argonautFusePxelinuxCfg',
@@ -83,9 +83,9 @@ class argonautFuseConfig extends simpleService
     /* Load modules */
     $this->plugin = [];
     foreach ($config->data['TABS']['FUSEMODULETABS'] as $plug) {
-      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $plug['CLASS'], "Loading Fuse module");
+      @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $plug['CLASS'], "Loading Fuse module");
       if (!plugin_available($plug['CLASS'])) {
-        @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $plug['CLASS'], "Fuse module not available");
+        @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $plug['CLASS'], "Fuse module not available");
         continue;
       }
       $name = $plug['CLASS'];

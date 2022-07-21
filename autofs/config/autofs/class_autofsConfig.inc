@@ -41,7 +41,7 @@ class autofsConfig extends simplePlugin
       'main' => [
         'name'  => _('AutoFS'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('AutoFS RDN'), _('Branch in which automount info will be stored'),
             'fdAutofsRDN', TRUE,
             'ou=autofs'

@@ -40,7 +40,7 @@ class serviceTerminal extends simpleService
       'section1' => [
         'name'  => _('Terminal service'),
         'attrs' => [
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Temporary disable login'),
             _('Disables the login on this terminal server'),
             'goXdmcpIsEnabled', FALSE,
@@ -49,8 +49,8 @@ class serviceTerminal extends simpleService
             1,
             0
           ),
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Supported session types'),
               _('The session types supported by this terminal server'),
               'gotoSessionType', FALSE,

@@ -48,12 +48,12 @@ class systemImport extends simplePlugin
             'type', TRUE,
             [], '', NULL
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Template'), _('Select a template to apply to imported entries'),
             'template_dn', FALSE,
             [], '', NULL
           ),
-          new ButtonAttribute (
+          new ButtonAttribute(
             '', '',
             'import',
             _('Import')

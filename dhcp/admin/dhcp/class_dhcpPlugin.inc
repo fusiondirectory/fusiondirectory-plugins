@@ -30,11 +30,11 @@ class dhcpPlugin extends simplePlugin
       'main' => [
         'name'  => _('DHCP'),
         'attrs' => [
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'), _('Name of this DHCP configuration'),
             'cn', TRUE
           ),
-          new OrderedArrayAttribute (
+          new OrderedArrayAttribute(
             new StringAttribute(
               _('Options'), _('The DHCP options'),
               'dhcpOption', FALSE
@@ -42,14 +42,14 @@ class dhcpPlugin extends simplePlugin
             // Order disabled, Default values, Edit enabled
             FALSE, [], TRUE
           ),
-          new OrderedArrayAttribute (
+          new OrderedArrayAttribute(
             new StringAttribute(
               _('Statements'), _('The DHCP statements'),
               'dhcpStatements', FALSE
             ),
             FALSE, [], TRUE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Comments'), _('Comments about this DHCP object'),
             'dhcpComments', FALSE
           ),
@@ -105,7 +105,7 @@ class dhcpPlugin extends simplePlugin
   function save ()
   {
     $this->dn = $this->compute_dn();
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->dn, 'save');
+    @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->dn, 'save');
     $this->prepare_save();
     $this->attrs['cn']          = [$this->cn];
     $this->attrs['objectClass'] = $this->objectclasses;

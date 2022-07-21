@@ -41,7 +41,7 @@ class netgroupConfig extends simplePlugin
       'main' => [
         'name'  => _('Netgroup'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Netgroup RDN'), _('Branch in which netgroups will be stored'),
             'fdNetgroupRDN', TRUE,
             'ou=netgroups'

@@ -80,7 +80,7 @@ class freeradiusAccount extends simplePlugin {
         'name'  => _('Groups'),
         'attrs' => [
           new SetAttribute(
-              new SelectAttribute (
+              new SelectAttribute(
               _('Groups'),
               _('FreeRadius Group'),
               'radiusGroupName',

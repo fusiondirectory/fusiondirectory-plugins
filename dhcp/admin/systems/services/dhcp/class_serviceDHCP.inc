@@ -44,7 +44,7 @@ class serviceDHCP extends simpleService
         'class' => ['fullwidth'],
         'attrs' => [
           new SetAttribute(
-            new SelectAttribute (
+            new SelectAttribute(
               '', _('The DN of dhcpService object(s) which contain the configuration information'),
               'dhcpServiceDN'
             )

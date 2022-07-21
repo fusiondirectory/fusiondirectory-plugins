@@ -792,7 +792,7 @@ class posixAccount extends simplePlugin
      */
     $wait = 10;
     while ($user = get_lock($attrib)) {
-      sleep (1);
+      sleep(1);
 
       /* Oups - timed out */
       if ($wait-- == 0) {
@@ -838,7 +838,7 @@ class posixAccount extends simplePlugin
     while ($tries--) {
 
       /* Look for ID map entry */
-      $ldap->cd ($config->current['BASE']);
+      $ldap->cd($config->current['BASE']);
       $ldap->search ("(&(objectClass=sambaUnixIdPool)($attrib=*))", ["$attrib"]);
 
       /* If it does not exist, create one with these defaults */
@@ -919,7 +919,7 @@ class posixAccount extends simplePlugin
     $ids = [];
     $ldap = $config->get_ldap_link();
 
-    $ldap->cd ($config->current['BASE']);
+    $ldap->cd($config->current['BASE']);
     if (preg_match('/gidNumber/i', $attrib)) {
       $oc = 'posixGroup';
     } else {
@@ -980,7 +980,7 @@ class posixAccount extends simplePlugin
       $command = $config->get_cfg_value('nextIdHook');
 
       $command .= ' '.escapeshellarg($dn).' '.escapeshellarg($attrib);
-      @DEBUG (DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, 'Execute');
+      @DEBUG(DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, 'Execute');
       exec($command, $output, $returnCode);
 
       $str = implode("\n", $output);

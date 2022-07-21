@@ -41,7 +41,7 @@ class communityConfig extends simplePlugin
         'name'  => _('Community'),
         'attrs' => [
           new SetAttribute(
-            new StringAttribute (
+            new StringAttribute(
               _('Membership type choices'), _('Community membership types available in the user community tab'),
               'fdCommunityMembershipTypeChoices', FALSE
             ),

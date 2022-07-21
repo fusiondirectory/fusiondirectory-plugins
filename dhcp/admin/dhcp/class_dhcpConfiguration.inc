@@ -96,7 +96,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
   protected function genRowIcons ($key, $value)
   {
     $id = $this->getHtmlId();
-    list ($img, $nbicons) = parent::genRowIcons($key, $value);
+    list($img, $nbicons) = parent::genRowIcons($key, $value);
 
     if ($key == 0) {
       /* Remove delete button on first row */
@@ -224,7 +224,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
   function fillLdapValue (&$attrs)
   {
     /* Remove crap made by plugin */
-    unset ($attrs[$this->getLdapName()]);
+    unset($attrs[$this->getLdapName()]);
   }
 
   function setParent (&$plugin)
@@ -348,7 +348,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
   function reload ($erase = TRUE)
   {
     global $config;
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $erase, 'reload');
+    @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $erase, 'reload');
     /* Init LDAP and load list */
     $ldap = $config->get_ldap_link();
 
@@ -554,7 +554,7 @@ class dhcpConfiguration extends simplePlugin
         'attrs' => [
           new BaseSelectorAttribute(get_ou('dhcpRDN')),
           new HiddenAttribute('cn'),
-          new DhcpSectionsAttribute (
+          new DhcpSectionsAttribute(
             '', _('The DHCP sections handled by this server'),
             'dhcpSections', FALSE
           )

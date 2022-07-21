@@ -38,16 +38,16 @@ class dhcpPool extends dhcpPlugin
     $attributesInfo['pool'] = [
       'name'  => _('Pool'),
       'attrs' => [
-        new SetAttribute (
-          new StringAttribute (
+        new SetAttribute(
+          new StringAttribute(
             _('Range'), _('The starting & ending IP Addresses in the range (inclusive), separated by a space; if the range only contains one address, then just the address can be specified. Each range is defined as a separate value.'),
             'dhcpRange', TRUE,
             '', '',
             '/^[0-9\.:]+(\s[0-9\.:]+)?$/'
           )
         ),
-        new SetAttribute (
-          new StringAttribute (
+        new SetAttribute(
+          new StringAttribute(
             _('Permit list'), _('This attribute contains the permit lists associated with a pool. Each permit list is defined as a separate value.'),
             'dhcpPermitList', FALSE
           )

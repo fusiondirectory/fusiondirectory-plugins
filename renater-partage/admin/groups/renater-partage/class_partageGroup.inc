@@ -41,27 +41,27 @@ class partageGroup extends simplePlugin
       'main' => [
         'name'  => _('Information'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Display name'), _('Name to display for this group'),
             'displayName'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Hide from global catalog'), _('Whether this group should be hidden from the global catalog'),
             'fdRenaterPartageGroupHideInGal', FALSE,
             FALSE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Type'), _('Type of PARTAGE group'),
             'fdRenaterPartageGroupMailStatus', TRUE,
             ['enabled','disabled'], 'enabled',
             [_('Distribution list'), _('Group')]
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Alert new members'), _('Send a message to alert new members, they have joined this group'),
             'fdRenaterPartageGroupSendShareMessageToNewMembers', FALSE,
             TRUE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Notes'), _('Notes about this group'),
             'fdRenaterPartageGroupNotes', FALSE
           ),

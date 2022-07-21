@@ -41,7 +41,7 @@ class sogoConfig extends simplePlugin
       'main' => [
         'name'  => _('SOGo'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('SOGo RDN'), _('Branch in which SOGo objects will be stored'),
             'fdSogoRDN', TRUE,
             'ou=resources'

@@ -40,7 +40,7 @@ class dhcpConfig extends simplePlugin
       'main' => [
         'name'  => _('DHCP config'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('DHCP RDN'), _('Branch in which DHCP configurations will be stored'),
             'fdDhcpRDN', TRUE,
             'ou=dhcp'

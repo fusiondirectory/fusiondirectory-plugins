@@ -41,7 +41,7 @@ class ejbcaConfig extends simplePlugin
       'main' => [
         'name'  => _('EJBCA plugin'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('EJBCA RDN'), _('Branch in which ejbca certificates are stored'),
             'fdEjbcaRDN', TRUE,
             'ou=certificates'

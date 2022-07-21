@@ -49,7 +49,7 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
 
   function __construct ($description, $ldapName, $acl = "")
   {
-    parent::__construct ($description, $ldapName, [], "", "", $acl);
+    parent::__construct($description, $ldapName, [], "", "", $acl);
   }
 
   function setParent (&$plugin)
@@ -73,7 +73,7 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
         continue;
       }
       $value = (isset(static::$argonautService_defaults[$name]) ? static::$argonautService_defaults[$name] : "");
-      $this->attributes[$name] = new StringAttribute ($name, "Service $name",
+      $this->attributes[$name] = new StringAttribute($name, "Service $name",
                                                       "service_$name", FALSE,
                                                       $value, $this->getAcl());
     }
@@ -140,27 +140,27 @@ class argonautClient extends simplePlugin
       'main' => [
         'name'  => _("Argonaut client settings"),
         'attrs' => [
-          new IntAttribute (
+          new IntAttribute(
             _('Client port'), _('Port used by argonaut client for JSON-RPC'),
             'argonautClientPort', TRUE,
             0 /*min*/, FALSE /*no max*/, 8081 /*default value*/
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Protocol'), _('Protocol to use for argonaut'),
             'argonautClientProtocol', TRUE,
             ['http', 'https']
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('WakeOnLan interface'), _('Interface used by argonaut for WakeOnLan'),
             'argonautClientWakeOnLanInterface', TRUE,
             'eth0'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('TaskId file'), _('File which argonaut will use to store its task id when booting'),
             'argonautTaskIdFile', TRUE,
             '/tmp/argonaut'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Log directory'), _('Directory in which argonaut client should write its logs'),
             'argonautClientLogDir', TRUE,
             '/var/log/argonaut'
@@ -170,22 +170,22 @@ class argonautClient extends simplePlugin
       'ssl' => [
         'name'  => _('SSL paths'),
         'attrs' => [
-          new TrimmedStringAttribute (
+          new TrimmedStringAttribute(
             _('Key'), _('Path to the private key file on Argonaut client'),
             'argonautClientKeyPath', FALSE,
             '/etc/ssl/private/argonaut.key'
           ),
-          new TrimmedStringAttribute (
+          new TrimmedStringAttribute(
             _('Certificate'), _('Path to the certificate file on Argonaut client'),
             'argonautClientCertPath', FALSE,
             '/etc/ssl/certs/argonaut.cert'
           ),
-          new TrimmedStringAttribute (
+          new TrimmedStringAttribute(
             _('CA certificate'), _('Path to the CA certificate file on Argonaut client'),
             'argonautClientCaCertPath', FALSE,
             '/etc/ssl/certs/ca.cert'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('CN of the certificate'), _('The CN in this client certificate'),
             'argonautClientCertCN', FALSE
           ),
@@ -194,7 +194,7 @@ class argonautClient extends simplePlugin
       'serviceNames' => [
         'name'  => _("Service names"),
         'attrs' => [
-          new ArgonautServiceNameAttribute (_("Argonaut service names"), "argonautServiceName"),
+          new ArgonautServiceNameAttribute(_("Argonaut service names"), "argonautServiceName"),
         ]
       ],
     ];

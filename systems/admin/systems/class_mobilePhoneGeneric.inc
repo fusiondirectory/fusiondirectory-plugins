@@ -56,11 +56,11 @@ class mobilePhoneGeneric extends ipHostPlugin
         'name'  => _('Properties'),
         'attrs' => [
           new BaseSelectorAttribute(get_ou('mobilePhoneRDN')),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'), _('The name of the mobile phone'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('A short description of the mobile phone'),
             'description', FALSE
           ),
@@ -69,16 +69,16 @@ class mobilePhoneGeneric extends ipHostPlugin
       'phone' => [
         'name'  => _('Phone'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Serial Number'), _('The serial number of the mobile phone'),
             'serialNumber', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('IMEI Number'), _('The IMEI number of the mobile phone'),
             'fdMobileIMEI', FALSE, '', '',
             '/[[:digit:]]+/'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('OS'), _('The Operating System installed on this phone'),
             'fdMobileOS', FALSE
           ),
@@ -87,11 +87,11 @@ class mobilePhoneGeneric extends ipHostPlugin
       'simcard' => [
         'name'  => _('SimCard'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Telephone Number'), _('The telephone number of the mobile phone'),
             'telephoneNumber', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('PUK Number'), _('The PUK number of the simcard in this mobile phone'),
             'fdMobilePUK', FALSE, '', '',
             '/[[:digit:]]+/'

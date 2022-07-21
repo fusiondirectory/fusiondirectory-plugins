@@ -21,7 +21,7 @@
 */
 
 /* File header is treated as constant. It cannot be defined inside the class if $PHP_VERSION < 5 */
-define ("FILEHEADER",
+define("FILEHEADER",
         "20002000200020002000200020002000".
         "20002000200020002000200020002000".
         "20002000200020002000200020002000".
@@ -30,7 +30,7 @@ define ("FILEHEADER",
         "20002000200020002000200020002000".
         "5000");
 /* This is the old header, it is needed to automatically convert old mungedDials to new ones */
-define ("FILEHEADER_OLD",
+define("FILEHEADER_OLD",
         "6d000800200020002000200020002000".
         "20002000200020002000200020002000".
         "20002000200020002000200064000100".
@@ -517,7 +517,7 @@ class sambaMungedDial
   function setCtxMaxConnectionTimeF ($checked)
   {
     if ($checked) {
-      unset ($this->ctx['CtxMaxConnectionTime']);
+      unset($this->ctx['CtxMaxConnectionTime']);
     }
   }
 
@@ -532,7 +532,7 @@ class sambaMungedDial
   function setCtxMaxDisconnectionTimeF ($checked)
   {
     if ($checked) {
-      unset ($this->ctx['CtxMaxDisconnectionTime']);
+      unset($this->ctx['CtxMaxDisconnectionTime']);
     }
   }
 
@@ -547,7 +547,7 @@ class sambaMungedDial
   function setCtxMaxIdleTimeF ($checked)
   {
     if ($checked) {
-      unset ($this->ctx['CtxMaxIdleTime']);
+      unset($this->ctx['CtxMaxIdleTime']);
     }
   }
 }

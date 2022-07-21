@@ -82,7 +82,7 @@ class DiskPartitionsAttribute extends DialogOrderedArrayAttribute
 
   function __construct ($label, $description, $ldapName, $values = [], $acl = '')
   {
-    parent::__construct ($label, $description, $ldapName, FALSE, $values, $acl);
+    parent::__construct($label, $description, $ldapName, FALSE, $values, $acl);
   }
 
   protected function loadAttrValue ($attrs)
@@ -239,47 +239,47 @@ class faiDiskEntry extends simplePlugin
       'main' => [
         'name'  => _('Device'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Name'), _('Disk name'),
             'cn', TRUE,
             '', 'FAIpartitions',
             '/[a-z0-9_-]/i'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description'),
             'description', FALSE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('fstab key'), _('Key to use in fstab file'),
             'fstabkey', TRUE,
             ['device', 'label', 'uuid'], '',
             [_('Device'), _('Label'), _('UUID')]
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Disk label'), _('Disk label'),
             'disklabel', TRUE,
             ['msdos', 'gpt'], '',
             ['MSDOS', 'GPT']
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Random init'), _('Initialise all encrypted partitions with random data'),
             'randinit', FALSE
           ),
-          new HiddenAttribute ('FAIdiskType')
+          new HiddenAttribute('FAIdiskType')
         ]
       ],
       'partitions' => [
         'name'  => _('Partition entries'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Combined physical partitions'), _('Physical partitions combined in this LVM volume'),
               'lvmDevices', FALSE,
               []
             )
           ),
-          new DiskPartitionsAttribute (
+          new DiskPartitionsAttribute(
             '', _('Partitions in this class'), 'partitions'
           )
         ]

@@ -52,27 +52,27 @@ class sogoResource extends simplePlugin
       'main' => [
         'name'  => _('SOGo resource'),
         'attrs' => [
-          new BaseSelectorAttribute (get_ou('sogoRDN')),
-          new HostNameAttribute (
+          new BaseSelectorAttribute(get_ou('sogoRDN')),
+          new HostNameAttribute(
             _('Entry name'), _('Account name'),
             'uid', TRUE
           ),
-          new MailAttribute (
+          new MailAttribute(
             _('Mail'), _('Mail'),
             'mail', TRUE
           ),
-          new HiddenAttribute ('sn'),
-          new HiddenAttribute ('cn'),
-          new TextAreaAttribute (
+          new HiddenAttribute('sn'),
+          new HiddenAttribute('cn'),
+          new TextAreaAttribute(
             _('description'), _('description'),
             'description', FALSE
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Multiplebookings'), _('Multiplebookings'),
             'Multiplebookings', FALSE,
             0, FALSE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Kind'), _('Kind'),
             'Kind', FALSE,
             ['location', 'thing', 'group']

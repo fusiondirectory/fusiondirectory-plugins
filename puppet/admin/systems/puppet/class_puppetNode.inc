@@ -31,18 +31,18 @@ class puppetNode extends simplePlugin
       'section1' => [
         'name'  => _("Puppet node settings"),
         'attrs' => [
-          new SetAttribute (
-            new StringAttribute (_("Puppet class"), _("Puppet Node Class"), "puppetClass")
+          new SetAttribute(
+            new StringAttribute(_("Puppet class"), _("Puppet Node Class"), "puppetClass")
           ),
-          new SelectAttribute (_("Parent node"), _("Puppet Parent Node"),       "parentNode", FALSE),
-          new SelectAttribute (_("Environment"), _("Puppet Node Environment"),  "environment", TRUE),
-          new SetAttribute (
-            new CompositeAttribute (
+          new SelectAttribute(_("Parent node"), _("Puppet Parent Node"),       "parentNode", FALSE),
+          new SelectAttribute(_("Environment"), _("Puppet Node Environment"),  "environment", TRUE),
+          new SetAttribute(
+            new CompositeAttribute(
               _("A variable setting for puppet"),
               'puppetVar',
               [
-                new StringAttribute ('',   _('Name of the variable'),   'puppetVar'),
-                new StringAttribute ('=',  _('Value of the variable'),  'puppetVarValue'),
+                new StringAttribute('',   _('Name of the variable'),   'puppetVar'),
+                new StringAttribute('=',  _('Value of the variable'),  'puppetVarValue'),
               ],
                // sscanf format
               '%[^ =]=%[^ ]',

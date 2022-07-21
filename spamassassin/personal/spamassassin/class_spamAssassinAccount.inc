@@ -33,17 +33,17 @@ class spamAssassinAccount extends simplePlugin
         'attrs' => [
         //~ A user object will have multiple spamassassin attributes, one for each preference setting.
         //~ The attributes themselves should be stored in the database. A spamassassin LDAP attribute should be set to the name of a SpamAssassin configuration directive followed by the value for the directive, separated by a space.
-          new SetAttribute (
-            new CompositeAttribute (
+          new SetAttribute(
+            new CompositeAttribute(
               _('SpamAssassin user preferences settings'),
             'fdSpamAssassinRules',
               [
-                new SelectAttribute (
+                new SelectAttribute(
                   _('Directive'),    _('The name of a SpamAssassin configuration directive'),
                   'fdSpamAssassinRules_directive', TRUE,
                   ['score', 'whitelist_from', 'required_score']
                 ),
-                new StringAttribute (
+                new StringAttribute(
                   _('Value'), _('The value for the directive'),
                   'fdSpamAssassinRules_value'
                 ),

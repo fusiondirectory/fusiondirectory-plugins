@@ -40,12 +40,12 @@ class fiConfig extends simplePlugin
       'main' => [
         'name'  => _('FusionInventory'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Inventory RDN'), _('Branch in which inventory objects will be stored'),
             'fdInventoryRDN', TRUE,
             'ou=inventory'
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Inventory matching'), _('Criteria to link an inventory result to a system'),
             'fdInventoryMatching', TRUE,
             ['mac','ip','both','either'], 'mac',

@@ -37,7 +37,7 @@ class EjbcaUserCertsAttribute extends GenericDialogAttribute
 
   function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = [], $acl = '')
   {
-    parent::__construct ($label, $description, $ldapName, $required, $defaultValue, 'dn', NULL, $acl);
+    parent::__construct($label, $description, $ldapName, $required, $defaultValue, 'dn', NULL, $acl);
   }
 
   function addValue ($dn, $entry)

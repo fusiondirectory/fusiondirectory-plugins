@@ -45,11 +45,11 @@ class debconfStartup extends simplePlugin
       'main' => [
         'name'  => _('Debconf settings'),
         'attrs' => [
-          new SelectAttribute (
+          new SelectAttribute(
             _('Profile'), _('Debconf preseed profile to be used for installation'),
             'debconfProfile', TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Release'), _('Debian release to install'),
             'debconfDebianRelease', TRUE,
             ['squeeze', 'unstable', 'wheezy']

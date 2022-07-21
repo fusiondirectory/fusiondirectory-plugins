@@ -47,11 +47,11 @@ class faiVariable extends faiSimplePluginClass
       'main' => [
         'name'  => _('Properties'),
         'attrs' => [
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Class name'), _('Variables class name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
@@ -61,19 +61,19 @@ class faiVariable extends faiSimplePluginClass
         'name'  => _('Variables'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new SubNodesAttribute (
+          new SubNodesAttribute(
             '', _('Variables in this class'),
             'variables', ['FAIvariableEntry','FAIclass','top'],
             [
-              new StringAttribute (
+              new StringAttribute(
                 _('Name'), _('The name of the variable'),
                 'cn', TRUE
               ),
-              new StringAttribute (
+              new StringAttribute(
                 _('Description'), _('A short description of the variable'),
                 'description', FALSE
               ),
-              new StringAttribute (
+              new StringAttribute(
                 _('Content'), _('The content of the variable'),
                 'FAIvariableContent', TRUE
               ),

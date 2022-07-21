@@ -51,20 +51,20 @@ class mailAliasRedirection extends simplePlugin
       'main' => [
         'name'  => _('Mail redirection'),
         'attrs' => [
-          new BaseSelectorAttribute (get_ou('aliasRDN')),
+          new BaseSelectorAttribute(get_ou('aliasRDN')),
           new HostNameAttribute (_('Name'), _('Name to identify this redirection'), 'cn', TRUE),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Description'), _('Description of this redirection'),
             'description', FALSE
           ),
           new SetAttribute(
-            new MailAttribute (
+            new MailAttribute(
               _('Redirect from'), _('Mail address from which you want to redirect'),
               'mail', TRUE
             )
           ),
           new SetAttribute(
-            new MailAttribute (
+            new MailAttribute(
               _('Redirect to'), _('Destination of this redirection'),
               'gosaMailForwardingAddress', TRUE
             )

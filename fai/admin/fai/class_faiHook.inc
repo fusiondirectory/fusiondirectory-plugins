@@ -47,11 +47,11 @@ class faiHook extends faiSimplePluginClass
       'main' => [
         'name'  => _('Properties'),
         'attrs' => [
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Class name'), _('Variables class name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
@@ -61,19 +61,19 @@ class faiHook extends faiSimplePluginClass
         'name'  => _('Hooks'),
         'class' => ['fullwidth'],
         'attrs' => [
-          new SubNodesAttribute (
+          new SubNodesAttribute(
             '', _('Variables in this class'),
             'hooks', ['FAIhookEntry','FAIclass','top'],
             [
-              new StringAttribute (
+              new StringAttribute(
                 _('Name'), _('The name of the variable'),
                 'cn', TRUE
               ),
-              new StringAttribute (
+              new StringAttribute(
                 _('Description'), _('A short description of the variable'),
                 'description', FALSE
               ),
-              new SelectAttribute (
+              new SelectAttribute(
                 _('Task'), _('Task to run'),
                 'FAItask', TRUE,
                 ['chboot','configure','debconf','error','extrbase',
@@ -81,7 +81,7 @@ class faiHook extends faiSimplePluginClass
                        'mountdisks','partition','prepareapt','repository',
                        'savelog','setup','softupdate','sysinfo','updatebase']
               ),
-              new FileTextAreaAttribute (
+              new FileTextAreaAttribute(
                 _('Script'), _('The script of this hook'),
                 'FAIscript', TRUE,
                 '.sh'

@@ -50,23 +50,23 @@ class mailAliasDistribution extends simplePlugin
       'main' => [
         'name'  => _('Mail distribution'),
         'attrs' => [
-          new BaseSelectorAttribute (get_ou('aliasRDN')),
+          new BaseSelectorAttribute(get_ou('aliasRDN')),
           new HostNameAttribute (_('Name'), _('Name to identify this alias'), 'cn', TRUE),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Description'), _('Description of this alias'),
             'description', FALSE
           ),
-          new MailAttribute (
+          new MailAttribute(
             _('Email address'), _('Email address'),
             'mail', TRUE
           ),
           new SetAttribute(
-            new MailAttribute (
+            new MailAttribute(
               _('Email aliases'), _('Aliases for this email address'),
               'gosaMailAlternateAddress', TRUE
             )
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Mail server'), _('Mail server for this alias'),
             'gosaMailServer', FALSE,
             array_keys(mailMethod::getMailServers())

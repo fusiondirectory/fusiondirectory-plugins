@@ -83,7 +83,7 @@ class mailMethodRenaterPartage extends mailMethod
     }
 
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $command, '<b>MAIL: Command</b>');
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, htmlentities ($post, ENT_COMPAT, 'UTF-8'),
+    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, htmlentities($post, ENT_COMPAT, 'UTF-8'),
       '<b>MAIL: Query</b>');
 
     // performs the HTTP(S) POST
@@ -672,7 +672,7 @@ class mailMethodRenaterPartage extends mailMethod
         list($domain, $key, $cosString) = explode(':', $domainAndKey, 3);
         $cosArray = explode(',', $cosString);
         foreach ($cosArray as $cos) {
-          list ($cosName, $cosId) = explode('|', $cos);
+          list($cosName, $cosId) = explode('|', $cos);
           $deleteMode = (isset($attrs['fdRenaterPartageServerDeletionType'][0]) ? $attrs['fdRenaterPartageServerDeletionType'][0] : 'delete');
           $serverList[$attrs['cn'][0].' - '.$domain.' - '.$cosName] = [
             'server_dn'   => $attrs['dn'],

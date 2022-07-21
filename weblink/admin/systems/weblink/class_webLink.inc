@@ -45,7 +45,7 @@ class webLink extends simplePlugin
       'links' => [
         'name'  => _('Links'),
         'attrs' => [
-          new DisplayAttribute (
+          new DisplayAttribute(
             _('Links'), _('Web links to this computer'),
             'fdWebLink', FALSE
           ),
@@ -54,13 +54,13 @@ class webLink extends simplePlugin
       'settings' => [
         'name'  => _('Settings'),
         'attrs' => [
-          new SelectAttribute (
+          new SelectAttribute(
             _('Protocol'), _('Protocol to use to access this computer Web page'),
             'fdWebLinkProtocol', TRUE,
             ['https', 'http']
           ),
-          new SetAttribute (
-            new URLAttribute (
+          new SetAttribute(
+            new URLAttribute(
               _('Arbitrary links'), _('Any URL you want to associate to this computer'),
               'fdWebLinkURL', FALSE
             )

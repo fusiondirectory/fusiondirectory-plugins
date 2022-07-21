@@ -24,7 +24,7 @@ class MacsAttribute extends GenericDialogAttribute
 
   function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = [], $display_attr = 'cn', $acl = '')
   {
-    parent::__construct ($label, $description, $ldapName, $required, $defaultValue, 'macAddress', $display_attr, $acl);
+    parent::__construct($label, $description, $ldapName, $required, $defaultValue, 'macAddress', $display_attr, $acl);
   }
 }
 

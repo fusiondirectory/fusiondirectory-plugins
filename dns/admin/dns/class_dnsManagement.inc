@@ -85,7 +85,7 @@ class dnsManagement extends simpleManagement
     }
     foreach ($targets as $zoneDn) {
       $entry = $this->getHeadpage()->getEntry($zoneDn);
-      list ($fqdn) = explode(' ', $entry['sOARecord'][0]);
+      list($fqdn) = explode(' ', $entry['sOARecord'][0]);
       $servers = static::findServerByFQDN($fqdn, $zoneDn);
       if (count($servers) > 1) {
         msg_dialog::display(_('Could not run ldap2zone'), _('More than one server matches the SOA'), ERROR_DIALOG);
@@ -121,7 +121,7 @@ class dnsManagement extends simpleManagement
   public static function findServerByFQDN ($fqdn, $zoneDn = NULL)
   {
     global $config;
-    list ($serverCn, $serverZone) = explode('.', $fqdn, 2);
+    list($serverCn, $serverZone) = explode('.', $fqdn, 2);
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ips = [];

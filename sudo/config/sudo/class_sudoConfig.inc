@@ -41,7 +41,7 @@ class sudoConfig extends simplePlugin
       'main' => [
         'name'  => _('Sudo'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Sudo RDN'), _('Branch in which sudoers will be stored'),
             'fdSudoRDN', TRUE,
             'ou=sudoers'

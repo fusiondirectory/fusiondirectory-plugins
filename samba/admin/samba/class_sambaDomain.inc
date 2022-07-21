@@ -50,15 +50,15 @@ class sambaDomain extends simplePlugin
       'main' => [
         'name'  => _('Properties'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('Domain name'), _('Name of this domain'),
             'sambaDomainName', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('SID'), _('SID of this domain'),
             'sambaSID', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Rid base'), _('Algorithmic rid base'),
             'sambaAlgorithmicRidBase', FALSE
           ),

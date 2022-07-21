@@ -41,7 +41,7 @@ class newsletterConfig extends simplePlugin
         'name'  => _('Newsletter'),
         'attrs' => [
           new SetAttribute(
-            new StringAttribute (
+            new StringAttribute(
               _('Newsletter choices'), _('Newsletters the user can choose from'),
               'fdNewsletterChoices', FALSE
             ),

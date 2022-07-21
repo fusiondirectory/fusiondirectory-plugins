@@ -40,12 +40,12 @@ class supannConfig extends simplePlugin
       'main' => [
         'name'  => _('SupAnn'),
         'attrs' => [
-          new StringAttribute (
+          new StringAttribute(
             _('SupAnn RDN'), _('Branch in which SupAnn structures will be stored'),
             'fdSupannStructuresRDN', TRUE,
             'ou=structures'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('SupAnn mail for recovery'), _('Allow the use of mail addresses from the personal mail address field from SupAnn account for password recovery'),
             'fdSupannPasswordRecovery', FALSE,
             TRUE
