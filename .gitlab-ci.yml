@@ -8,9 +8,9 @@ stages:
 
 ## Stage lint
 
-# PHP lint (stretch)
-create_php_lint_rapport_stretch:
-  image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/phpcodesniffer-cli:stretch
+# PHP lint
+create_php_lint_rapport:
+  image: registry.fusiondirectory.org/fusiondirectory/fd/phpcodesniffer-cli:buster
   stage: lint
   only:
     - branches
@@ -33,7 +33,7 @@ create_php_code_sniffer_rapport:
 
 # fusiondirectory-update-locale
 fusiondirectory-update-locale:
-  image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/transifex-cli:stretch
+  image: registry.fusiondirectory.org/fusiondirectory/fd/transifex-cli:buster
   stage: transifex
   only:
     - branches
@@ -44,7 +44,7 @@ fusiondirectory-update-locale:
 
 # Update transifex
 update-transifex:
-  image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/transifex-cli:stretch
+  image: registry.fusiondirectory.org/fusiondirectory/fd/transifex-cli:buster
   stage: transifex
   only:
     - /^1.*$/
