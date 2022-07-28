@@ -51,7 +51,7 @@ create_phpstan_rapport:
 
 # fusiondirectory-update-locale
 fusiondirectory-update-locale:
-  image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/transifex-cli:buster
+  image: registry.fusiondirectory.org/fusiondirectory/fd/transifex-cli:buster
   stage: transifex
   only:
     - /^1.*$/
@@ -62,7 +62,7 @@ fusiondirectory-update-locale:
 
 # Update transifex
 update-transifex:
-  image: registry.fusiondirectory.org/fusiondirectory/fd-plugins/transifex-cli:buster
+  image: registry.fusiondirectory.org/fusiondirectory/fd/transifex-cli:buster
   stage: transifex
   only:
     - /^1.*$/
