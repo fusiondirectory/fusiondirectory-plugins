@@ -32,7 +32,11 @@ class mailAliasRedirection extends simplePlugin
         'icon'        => 'geticon.php?context=applications&icon=alias-redirection&size=16',
         'ou'          => get_ou('aliasRDN'),
       ]],
-
+      'plForeignKeys'  => [
+        'mail' => [
+          ['mailAccount','mail', 'mail=%oldvalue%', '*']
+        ]
+      ],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
