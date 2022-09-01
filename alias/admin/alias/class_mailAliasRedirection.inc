@@ -35,6 +35,9 @@ class mailAliasRedirection extends simplePlugin
       'plForeignKeys'  => [
         'mail' => [
           ['mailAccount','mail', 'mail=%oldvalue%', '*']
+        ],
+        'gosaMailForwardingAddress' => [
+          ['mailAccount', 'gosaMailForwardingAddress', 'gosaMailForwardingAddress=%oldvalue%', '*']
         ]
       ],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
