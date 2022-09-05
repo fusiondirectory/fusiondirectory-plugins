@@ -32,7 +32,14 @@ class mailAliasDistribution extends simplePlugin
         'icon'        => 'geticon.php?context=applications&icon=alias-distribution&size=16',
         'ou'          => get_ou('aliasRDN'),
       ]],
-
+      'plForeignKeys'  => [
+        'mail' => [
+          ['mailAccount','mail', 'mail=%oldvalue%', '*']
+        ],
+        'gosaMailAlternateAddress' => [
+          ['mailAccount','gosaMailAlternateAddress']
+        ],
+      ],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
   }
