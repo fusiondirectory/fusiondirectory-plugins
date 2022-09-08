@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2021-03-18 15:45+0000\n"
+"POT-Creation-Date: 2022-07-28 17:06+0000\n"
 "PO-Revision-Date: 2016-08-29 15:08+0000\n"
 "Language-Team: Japanese (https://www.transifex.com/fusiondirectory/teams/12202/ja/)\n"
 "MIME-Version: 1.0\n"
@@ -142,127 +142,127 @@ msgstr ""
 msgid "DNS zones in this view"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:117 admin/dns/class_dnsZone.inc:187
+#: admin/dns/class_DnsRecordAttribute.inc:111 admin/dns/class_dnsZone.inc:187
 msgid "Type"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:120
+#: admin/dns/class_DnsRecordAttribute.inc:114
 msgid "Reverse zone"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:120
+#: admin/dns/class_DnsRecordAttribute.inc:114
 msgid "Reverse zone this record should be in, if any"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:153
+#: admin/dns/class_DnsRecordAttribute.inc:147
 msgid "LOC Record"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:157
+#: admin/dns/class_DnsRecordAttribute.inc:151
 msgid "Latitude"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:161
-#: admin/dns/class_DnsRecordAttribute.inc:188
+#: admin/dns/class_DnsRecordAttribute.inc:155
+#: admin/dns/class_DnsRecordAttribute.inc:182
 msgid "Degrees"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:166
-#: admin/dns/class_DnsRecordAttribute.inc:193
+#: admin/dns/class_DnsRecordAttribute.inc:160
+#: admin/dns/class_DnsRecordAttribute.inc:187
 msgid "Minutes"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:171
-#: admin/dns/class_DnsRecordAttribute.inc:198
+#: admin/dns/class_DnsRecordAttribute.inc:165
+#: admin/dns/class_DnsRecordAttribute.inc:192
 msgid "Seconds"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:176
+#: admin/dns/class_DnsRecordAttribute.inc:170
 msgid "North/South"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:179
+#: admin/dns/class_DnsRecordAttribute.inc:173
 msgid "North"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:179
+#: admin/dns/class_DnsRecordAttribute.inc:173
 msgid "South"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:184
+#: admin/dns/class_DnsRecordAttribute.inc:178
 msgid "Longitude"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:203
+#: admin/dns/class_DnsRecordAttribute.inc:197
 msgid "East/West"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:206
+#: admin/dns/class_DnsRecordAttribute.inc:200
 msgid "East"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:206
+#: admin/dns/class_DnsRecordAttribute.inc:200
 msgid "West"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:211
+#: admin/dns/class_DnsRecordAttribute.inc:205
 msgid "Altitude (meters)"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:216
+#: admin/dns/class_DnsRecordAttribute.inc:210
 msgid "Size (meters)"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:221
+#: admin/dns/class_DnsRecordAttribute.inc:215
 msgid "Horizontal precision (meters)"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:226
+#: admin/dns/class_DnsRecordAttribute.inc:220
 msgid "Vertical precision (meters)"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:237
+#: admin/dns/class_DnsRecordAttribute.inc:231
 msgid "NAPTR Record"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:241
+#: admin/dns/class_DnsRecordAttribute.inc:235
 msgid "Order"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:241
+#: admin/dns/class_DnsRecordAttribute.inc:235
 msgid ""
 "Integer specifying the order in which the NAPTR records MUST be processed to"
 " ensure the correct ordering of rules.  Low numbers are processed before "
 "high numbers."
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:246
+#: admin/dns/class_DnsRecordAttribute.inc:240
 msgid "Preference"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:246
+#: admin/dns/class_DnsRecordAttribute.inc:240
 msgid ""
 "Integer that specifies the order in which NAPTR records with equal \"order\""
 " values SHOULD be processed, low numbers being processed before high "
 "numbers."
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:251
+#: admin/dns/class_DnsRecordAttribute.inc:245
 msgid "Flags"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:251
+#: admin/dns/class_DnsRecordAttribute.inc:245
 msgid ""
 "Flags to control aspects of the rewriting and interpretation of the fields "
 "in the record. Flags are single characters from the set [A-Z0-9].  The case "
 "of the alphabetic characters is not significant."
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:255
+#: admin/dns/class_DnsRecordAttribute.inc:249
 msgid "Service"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:255
+#: admin/dns/class_DnsRecordAttribute.inc:249
 msgid ""
 "Specifies the service(s) available down this rewrite path. It may also "
 "specify the particular protocol that is used to talk with a service. A "
@@ -270,129 +270,129 @@ msgid ""
 "terminal."
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:259
+#: admin/dns/class_DnsRecordAttribute.inc:253
 msgid "Regular Expression"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:259
+#: admin/dns/class_DnsRecordAttribute.inc:253
 msgid ""
 "A STRING containing a substitution expression that is applied to the "
 "original string held by the client in order to construct the next domain "
 "name to lookup."
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:263
+#: admin/dns/class_DnsRecordAttribute.inc:257
 msgid "Replacement"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:263
+#: admin/dns/class_DnsRecordAttribute.inc:257
 msgid ""
 "The next NAME to query for NAPTR, SRV, or address records depending on the "
 "value of the flags field."
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:274
+#: admin/dns/class_DnsRecordAttribute.inc:268
 msgid "SRV Record"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:278
-#: admin/dns/class_DnsRecordAttribute.inc:330
+#: admin/dns/class_DnsRecordAttribute.inc:272
+#: admin/dns/class_DnsRecordAttribute.inc:324
 msgid "Priority"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:278
+#: admin/dns/class_DnsRecordAttribute.inc:272
 msgid "Priority of the target host, lower value means more preferred"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:283
+#: admin/dns/class_DnsRecordAttribute.inc:277
 msgid "Weight"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:283
+#: admin/dns/class_DnsRecordAttribute.inc:277
 msgid ""
 "Relative weight for records with the same priority, higher value means more "
 "preferred"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:288
+#: admin/dns/class_DnsRecordAttribute.inc:282
 msgid "Port"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:288
+#: admin/dns/class_DnsRecordAttribute.inc:282
 msgid "TCP or UDP port on which the service is to be found"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:293
-#: admin/dns/class_DnsRecordAttribute.inc:309
-#: admin/dns/class_DnsRecordAttribute.inc:316
-#: admin/dns/class_DnsRecordAttribute.inc:335
-#: admin/dns/class_DnsRecordAttribute.inc:347
+#: admin/dns/class_DnsRecordAttribute.inc:287
+#: admin/dns/class_DnsRecordAttribute.inc:303
+#: admin/dns/class_DnsRecordAttribute.inc:310
+#: admin/dns/class_DnsRecordAttribute.inc:329
+#: admin/dns/class_DnsRecordAttribute.inc:341
 msgid "Target"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:293
+#: admin/dns/class_DnsRecordAttribute.inc:287
 msgid ""
 "Canonical hostname of the machine providing the service, ending in a dot"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:309
+#: admin/dns/class_DnsRecordAttribute.inc:303
 msgid "An IPv4 address"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:316
+#: admin/dns/class_DnsRecordAttribute.inc:310
 msgid "An IPv6 address"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:326
+#: admin/dns/class_DnsRecordAttribute.inc:320
 msgid "MX Record"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:330
+#: admin/dns/class_DnsRecordAttribute.inc:324
 msgid ""
 "Preference given to this RR among others at the same owner, lower values are"
 " preferred"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:335
+#: admin/dns/class_DnsRecordAttribute.inc:329
 msgid ""
 "Domain name which specifies a host willing to act as a mail exchange for the"
 " owner name"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:347
+#: admin/dns/class_DnsRecordAttribute.inc:341
 msgid ""
 "Domain name which specifies a host which should be authoritative for the "
 "specified class and domain"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:356 admin/dns/class_dnsZone.inc:45
+#: admin/dns/class_DnsRecordAttribute.inc:350 admin/dns/class_dnsZone.inc:45
 #: admin/dns/class_dnsZone.inc:54
 msgid "Record"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:356
+#: admin/dns/class_DnsRecordAttribute.inc:350
 msgid ""
 "SSHFP record content. Can be obtained using \"ssh-keygen -r some.host.tld\","
 " or sshfp command for instance"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:362
+#: admin/dns/class_DnsRecordAttribute.inc:356
 msgid "Redirect to"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:362
+#: admin/dns/class_DnsRecordAttribute.inc:356
 msgid "Domain that this subdomain is an alias of"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:368 admin/dns/class_dnsZone.inc:188
+#: admin/dns/class_DnsRecordAttribute.inc:362 admin/dns/class_dnsZone.inc:188
 msgid "Content"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:368
+#: admin/dns/class_DnsRecordAttribute.inc:362
 msgid "Content of this record"
 msgstr ""
 
-#: admin/dns/class_DnsRecordAttribute.inc:418
+#: admin/dns/class_DnsRecordAttribute.inc:412
 msgid "The entered IP does not match the selected reverse zone"
 msgstr ""
 
