@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2021-03-18 15:45+0000\n"
+"POT-Creation-Date: 2022-07-28 17:06+0000\n"
 "PO-Revision-Date: 2016-08-29 15:07+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: admin/debconfProfile/class_debconfProfileManagement.inc:32
 #: admin/systems/debconf/class_debconfStartup.inc:33
@@ -30,29 +30,29 @@ msgstr "Debconf"
 msgid "Debconf profile management"
 msgstr "Gestion des profils Debconf"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:71
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:85
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:66
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:80
 msgid "Error"
 msgstr "Erreur"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:71
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:66
 msgid "There is no template for this profile"
 msgstr "Il n'y a pas de modèle pour ce profil"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:86
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:81
 #, php-format
 msgid "Can't find entry %s in LDAP for profile %s"
 msgstr "Impossible de trouver l'entrée %s dans l'annuaire pour le profil %s"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:138
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:133
 msgid "LDAP error"
 msgstr "Erreur LDAP"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:141
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:136
 msgid "LDIF error"
 msgstr "Erreur LDIF"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:151
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:146
 #, php-format
 msgid ""
 "In order to import a debconf file, please run the following command : "
@@ -65,38 +65,38 @@ msgstr ""
 "template.ldif </i><br/>Avec <b>fichier</b> le nom du fichier debconf, et "
 "<b>nom</b> le nom désiré pour le modèle.<br/>"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:167
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:171
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:162
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:166
 msgid "Debconf profile"
 msgstr "Profil Debconf"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:168
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:163
 msgid "Debconf profile information"
 msgstr "Informations du profil Debconf"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:186
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:181
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:184
 #: admin/debconfProfile/debconfProfile-filter.tpl.c:5
 msgid "Name"
 msgstr "Nom"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:188
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:183
 msgid "Import a debconf file"
 msgstr "Importer un fichier Debconf"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:184
 msgid "Name of this debconf template"
 msgstr "Nom de ce modèle Debconf"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:193
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:188
 msgid "Entries"
 msgstr "Entrées"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:195
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:190
 msgid "Debconf template answers"
 msgstr "Réponses du modèle Debconf"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:210
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:205
 msgid "Import"
 msgstr "Importer"
 

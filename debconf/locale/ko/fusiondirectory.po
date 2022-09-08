@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2021-03-18 15:45+0000\n"
+"POT-Creation-Date: 2022-07-28 17:06+0000\n"
 "PO-Revision-Date: 2016-08-29 15:07+0000\n"
 "Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
@@ -30,29 +30,29 @@ msgstr "Debconf"
 msgid "Debconf profile management"
 msgstr "Debconf 프로필 관리"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:71
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:85
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:66
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:80
 msgid "Error"
 msgstr "오류"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:71
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:66
 msgid "There is no template for this profile"
 msgstr "이 프로필에 대한 템플릿이 없습니다"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:86
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:81
 #, php-format
 msgid "Can't find entry %s in LDAP for profile %s"
 msgstr "프로필 %s의 LDAP에서 항목 %s를 찾을 수 없습니다."
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:138
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:133
 msgid "LDAP error"
 msgstr "lDAP 오류"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:141
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:136
 msgid "LDIF error"
 msgstr "LDIF 오류"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:151
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:146
 #, php-format
 msgid ""
 "In order to import a debconf file, please run the following command : "
@@ -65,38 +65,38 @@ msgstr ""
 "<b>filename</b> the file name, and <b>name</b> the desired name for the "
 "template.<br/>"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:167
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:171
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:162
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:166
 msgid "Debconf profile"
 msgstr "Debconfi 프로필"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:168
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:163
 msgid "Debconf profile information"
 msgstr "Debconf 프로필 정보"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:186
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:181
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:184
 #: admin/debconfProfile/debconfProfile-filter.tpl.c:5
 msgid "Name"
 msgstr "명칭"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:188
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:183
 msgid "Import a debconf file"
 msgstr "debconf 파일 임포트"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:184
 msgid "Name of this debconf template"
 msgstr "debconf 템플릿의 이름"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:193
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:188
 msgid "Entries"
 msgstr "항목"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:195
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:190
 msgid "Debconf template answers"
 msgstr "Debconf 템플릿 응답"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:210
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:205
 msgid "Import"
 msgstr "임포트"
 
