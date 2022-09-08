@@ -546,6 +546,10 @@ class posixAccount extends simplePlugin
       $this->attrs['host'] = ['*'];
     }
 
+    //Handle properly %askme% during template creation
+    $this->setAskMeHostAndTrustMode();
+
+
     //Register hosts selected within LDAP
     if (($this->trustMode != '') && !in_array('hostObject', $this->attrs['objectClass'])) {
       $this->attrs['objectClass'][] = 'hostObject';
@@ -739,6 +743,17 @@ class posixAccount extends simplePlugin
       }
     }
     return $ret;
+  }
+
+  function setAskMeHostAndTrustMode () : void
+  {
+    if ($this->trustMode == '%askme%') {
+      $this->attrs['host'] = ['%askme%'];
+    } elseif (isset($this->host[0]) && !empty($this->host[0])) {
+      if ($this->host[0] == '%askme%') {
+        $this->attrs['trustMode'] = '%askme%';
+      }
+    }
   }
 
   /*!
