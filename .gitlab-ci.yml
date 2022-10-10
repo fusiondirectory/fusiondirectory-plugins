@@ -3,57 +3,16 @@ image: debian:stretch
 
 stages:
   - tarballs
-  - trigger
 
 build-release:
   stage: tarballs
   only:
-    - master
+    - tags
   script:
-    - release="$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"')"
-    - mkdir ../fusiondirectory-plugins-$release/
-    - mv ./* ../fusiondirectory-plugins-$release/
-    - mv  ../fusiondirectory-plugins-$release/ ./
-    - tar -cvzf fusiondirectory-plugins-$release.tar.gz *
+    - mkdir ../fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"')/
+    - mv ./* ../fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"')/
+    - mv  ../fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"')/ ./
+    - tar -cvzf fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"').tar.gz *
   artifacts:
     paths:
-    - fusiondirectory-plugins-*.tar.gz
-
-trigger-ci-debian-stretch:
-  stage: trigger
-  only:
-    - master
-  variables:
-    GROUP: "$GROUP"
-    BRANCH_CORE: "$CI_COMMIT_REF_NAME"
-    BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
-    BRANCH_BUILD_DEBIAN_STRETCH: "$BRANCH_BUILD_DEBIAN_STRETCH"
-  trigger:
-    project: debian/stretch-fusiondirectory-release
-    branch: "$BRANCH_BUILD_DEBIAN_STRETCH"
-
-trigger-ci-debian-buster:
-  stage: trigger
-  only:
-    - master
-  variables:
-    GROUP: "$GROUP"
-    BRANCH_CORE: "$CI_COMMIT_REF_NAME"
-    BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
-    BRANCH_BUILD_DEBIAN_BUSTER: "$BRANCH_BUILD_DEBIAN_BUSTER"
-  trigger:
-    project: debian/buster-fusiondirectory-release
-    branch: "$BRANCH_BUILD_DEBIAN_BUSTER"
-
-trigger-ci-centos7:
-  stage: trigger
-  only:
-    - master
-  variables:
-    GROUP: "$GROUP"
-    BRANCH_CORE: "$CI_COMMIT_REF_NAME"
-    BRANCH_PLUGIN: "$CI_COMMIT_REF_NAME"
-    BRANCH_BUILD_CENTOS_7: "$BRANCH_BUILD_CENTOS_7"
-  trigger:
-    project: centos/centos7-fusiondirectory-release
-    branch: "$BRANCH_BUILD_CENTOS_7"
+      - fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"').tar.gz
