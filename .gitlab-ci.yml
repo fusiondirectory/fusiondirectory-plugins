@@ -7,7 +7,7 @@ stages:
 build-release:
   stage: tarballs
   only:
-    - tags
+    - master
   script:
     - mkdir ../fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"')/
     - mv ./* ../fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"')/
