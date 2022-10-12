@@ -9,6 +9,9 @@ build-release:
   only:
     - master
   script:
+    - pwd
+    - ls -lash
+    - grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"'
     - mkdir ../fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"')/
     - mv ./* ../fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"')/
     - mv  ../fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"')/ ./
