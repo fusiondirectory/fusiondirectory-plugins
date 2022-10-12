@@ -16,4 +16,4 @@ build-release:
     - tar -cvzf fusiondirectory-plugins-$VERSION.tar.gz *
   artifacts:
     paths:
-      - *.tar.gz
+      - ./*.tar.gz
