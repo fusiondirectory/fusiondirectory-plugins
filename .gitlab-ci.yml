@@ -9,13 +9,11 @@ build-release:
   only:
     - master
   script:
-    - pwd
-    - ls -lash
-    - grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"'
-    - mkdir ../fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"')/
-    - mv ./* ../fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"')/
-    - mv  ../fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"')/ ./
-    - tar -cvzf fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"').tar.gz *
+    - VERSION=$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"')
+    - mkdir ../fusiondirectory-plugins-$VERSION/
+    - mv ./* ../fusiondirectory-plugins-$VERSION/
+    - mv  ../fusiondirectory-plugins-$VERSION/ ./
+    - tar -cvzf fusiondirectory-plugins-$VERSION.tar.gz *
   artifacts:
     paths:
-      - fusiondirectory-plugins-$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"').tar.gz
+      - fusiondirectory-plugins-$VERSION.tar.gz
