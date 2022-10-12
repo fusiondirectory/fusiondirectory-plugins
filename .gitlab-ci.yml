@@ -7,7 +7,7 @@ stages:
 build-release:
   stage: tarballs
   only:
-    - master
+    - tags
   script:
     - VERSION=$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"')
     - mkdir ../fusiondirectory-plugins-$VERSION/
