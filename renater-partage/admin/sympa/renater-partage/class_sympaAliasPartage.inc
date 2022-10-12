@@ -21,59 +21,59 @@
 class sympaAliasPartage extends simplePlugin
 {
   var $displayHeader  = TRUE;
-  var $objectclasses  = array('fdRenaterPartageSympaAlias');
+  var $objectclasses  = ['fdRenaterPartageSympaAlias'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'    => _('Partage'),
       'plDescription'  => _('Partage sympa options'),
-      'plObjectType'   => array('sympaAlias'),
+      'plObjectType'   => ['sympaAlias'],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Information'),
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Server'), _('Email server'),
             'gosaMailServer', TRUE,
-            array('')
+            ['']
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Display name'), _('Name to display for this group'),
             'displayName'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Hide from global catalog'), _('Whether this group should be hidden from the global catalog'),
             'fdRenaterPartageGroupHideInGal', FALSE,
             FALSE
           ),
-          new HiddenAttribute (
+          new HiddenAttribute(
             'fdRenaterPartageGroupMailStatus', TRUE, 'enabled'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             'fdRenaterPartageGroupSendShareMessageToNewMembers', '',
             'fdRenaterPartageGroupSendShareMessageToNewMembers', FALSE,
             FALSE
           ),
-          new TextAreaAttribute (
+          new TextAreaAttribute(
             _('Notes'), _('Notes about this group'),
             'fdRenaterPartageGroupNotes', FALSE
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Alternative addresses'), _('Alternative mail addresses for the list'),
               'gosaMailAlternateAddress'
             )
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -87,7 +87,7 @@ class sympaAliasPartage extends simplePlugin
   }
 
   /* We need $mailAccount->cn to return the cn for mailMethod */
-  public function __get($name)
+  public function __get ($name)
   {
     if (($name == 'cn') && isset($this->parent)) {
       return $this->parent->getBaseObject()->$name;
@@ -103,7 +103,7 @@ class sympaAliasPartage extends simplePlugin
     }
   }
 
-  public function __isset($name)
+  public function __isset ($name)
   {
     if (($name == 'cn') && isset($this->parent)) {
       return isset($this->parent->getBaseObject()->$name);
@@ -115,7 +115,7 @@ class sympaAliasPartage extends simplePlugin
     }
   }
 
-  private function getEmailDomain()
+  private function getEmailDomain ()
   {
     $servers  = mailMethod::getMailServers();
     $infos    = $servers[$this->gosaMailServer];
@@ -126,7 +126,7 @@ class sympaAliasPartage extends simplePlugin
     }
   }
 
-  public function mailServerChanged()
+  public function mailServerChanged ()
   {
     /* Intialize the used mailMethod */
     if ($this->gosaMailServer == '') {
@@ -149,13 +149,13 @@ class sympaAliasPartage extends simplePlugin
     return $messages;
   }
 
-  protected function shouldSave()
+  protected function shouldSave ()
   {
     /* mail method might have something to save */
     return TRUE;
   }
 
-  public function ldap_save()
+  public function ldap_save ()
   {
     if (!empty($this->attrs)) {
       $errors = parent::ldap_save();
@@ -164,7 +164,7 @@ class sympaAliasPartage extends simplePlugin
       }
     }
 
-    $errors = array();
+    $errors = [];
 
     /* Only do IMAP actions if we are not a template */
     if (!$this->is_template) {
@@ -189,7 +189,7 @@ class sympaAliasPartage extends simplePlugin
     return $errors;
   }
 
-  function post_remove()
+  function post_remove ()
   {
     /* Let the mailMethod remove this mailbox */
     if (!$this->is_template) {

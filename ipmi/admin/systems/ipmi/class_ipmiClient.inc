@@ -20,46 +20,46 @@
 
 class ipmiClient extends simplePlugin
 {
-  var $objectclasses  = array('ipmiClient');
+  var $objectclasses  = ['ipmiClient'];
   var $displayHeader  = TRUE;
 
   static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('IPMI client'),
       'plDescription'   => _('Edit IPMI client settings'),
       'plIcon'          => 'geticon.php?context=applications&icon=ipmi&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=ipmi&size=16',
       'plSelfModify'    => FALSE,
-      'plCategory'      => array('workstation','server'),
-      'plObjectType'    => array('workstation','server'),
+      'plCategory'      => ['workstation','server'],
+      'plObjectType'    => ['workstation','server'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('IPMI client settings'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('IP'), _('IP of the IPMI interface'),
             'fdIpmiIP', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('User login'), _('IPMI user login'),
             'fdIpmiLogin', TRUE,
             ''
           ),
-          new PasswordAttribute (
+          new PasswordAttribute(
             _('User password'), _('IPMI user password'),
             'fdIpmiPassword', TRUE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 

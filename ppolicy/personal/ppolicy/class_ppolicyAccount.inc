@@ -21,28 +21,28 @@
 
 class ppolicyAccount extends simplePlugin
 {
-  var $objectclasses = array();
+  var $objectclasses = [];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Password policy'),
       'plDescription'   => _('Edit user\'s password policy'),
       'plSelfModify'    => TRUE,
-      'plObjectType'    => array('user', 'simpleSecurityObject'),
+      'plObjectType'    => ['user', 'simpleSecurityObject'],
       'plIcon'          => 'geticon.php?context=applications&icon=ppolicy&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=ppolicy&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Password policy'),
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Policy'), _('Use a specific policy for this user'),
             'pwdPolicySubentry', FALSE
@@ -58,12 +58,12 @@ class ppolicyAccount extends simplePlugin
           new SelectAttribute(
             _('Reset locking / force change'), _('Resets the lock status of this account and/or force a password change'),
             'pwdReset', FALSE,
-            array('', 'TRUE', 'FALSE'), '',
-            array('', _('Force password change (resets locking)'), _('Reset locking (same password)'))
+            ['', 'TRUE', 'FALSE'], '',
+            ['', _('Force password change (resets locking)'), _('Reset locking (same password)')]
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -97,7 +97,7 @@ class ppolicyAccount extends simplePlugin
     }
   }
 
-  protected function loadAttributes()
+  protected function loadAttributes ()
   {
     global $config;
     if ($this->dn != 'new') {
@@ -113,14 +113,14 @@ class ppolicyAccount extends simplePlugin
   {
     $errors = parent::prepare_save();
     if (!empty($this->pwdReset)) {
-      $this->attrs['pwdAccountLockedTime'] = array();
+      $this->attrs['pwdAccountLockedTime'] = [];
     } else {
       unset($this->attrs['pwdAccountLockedTime']);
     }
     return $errors;
   }
 
-  function remove($fulldelete = FALSE)
+  function remove ($fulldelete = FALSE)
   {
     /* ppolicy fields are not real fields, they can’t be removed through ldap_modify
      * It’s not possible to remove ppolicy info from a user node anyway */

@@ -6,22 +6,22 @@
 # Translators:
 # MCMic, 2018
 # fusiondirectory <contact@fusiondirectory.org>, 2018
-# Benoit Mortier <benoit.mortier@opensides.be>, 2018
+# Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2018
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-06-27 08:29+0000\n"
+"POT-Creation-Date: 2022-07-28 17:06+0000\n"
 "PO-Revision-Date: 2016-08-29 15:23+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>, 2018\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2018\n"
 "Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: admin/systems/class_phoneGeneric.inc:32
 #: admin/systems/class_phoneGeneric.inc:36
@@ -1070,6 +1070,7 @@ msgid "Only one system is configured to run an argonaut client."
 msgid_plural "%1 systems are configured to run an argonaut client."
 msgstr[0] "Seul un système est configure pour exécuter un client Argonaut"
 msgstr[1] "%1 systèmes sont configurés pour exécuter un client Argonaut."
+msgstr[2] "%1 systèmes sont configurés pour exécuter un client Argonaut."
 
 #: addons/dashboard/systems_stats.tpl.c:11
 msgid "But no system is configured to run an argonaut client!"
@@ -1086,5 +1087,8 @@ msgstr[0] ""
 "Un système est configuré pour exécuter un client Argonaut, mais il n’y a pas"
 " de serveur Argonaut configuré !"
 msgstr[1] ""
+"%1 systèmes sont configurés pour exécuter un client Argonaut, mais il n’y a "
+"pas de serveur Argonaut configuré !"
+msgstr[2] ""
 "%1 systèmes sont configurés pour exécuter un client Argonaut, mais il n’y a "
 "pas de serveur Argonaut configuré !"

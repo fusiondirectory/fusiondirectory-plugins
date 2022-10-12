@@ -23,82 +23,82 @@
 class serviceLDAP extends simpleService
 {
   /* This plugin only writes its objectClass */
-  var $objectclasses    = array('goLdapServer');
+  var $objectclasses    = ['goLdapServer'];
 
   // The main function : information about attributes
   static function getAttributesInfo ()
   {
     global $config;
-    return array(
+    return [
       // Attributes are grouped by section
-      'main' => array(
+      'main' => [
         'name'  => _('LDAP service'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
-          new StringAttribute (
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new StringAttribute(
             _('LDAP Base'), _('The LDAP base to use for this LDAP server'),
             'goLdapBase', TRUE,
             $config->current['BASE']
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('LDAP URI'), _('The LDAP URI to use in order to contact this LDAP server'),
             'goLdapURI', TRUE,
             'ldap://'._('fill-in-your-servers-dns-name').':389/',
             '',
             '/^ldap[si]?:\/\/([0-9a-z_.-]+|\[[0-9a-f:]+\])(:[0-9]+)?(\/.*)?$/'
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Size limit'), _('Limit the number of record returned'),
             'goLdapSizeLimit', FALSE,
             0, FALSE, ''
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Time limit'), _('Time limit for the result to be returned'),
             'goLdapTimeLimit', FALSE,
             0, FALSE, 15
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Deref'), _('Specifies how alias dereferencing is done when performing a search'),
             'goLdapDeref', TRUE,
-            array('never','searching','finding','always'), 'never'
+            ['never','searching','finding','always'], 'never'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('TLS Cert'), _('Filepath to tls certificate'),
             'goLdapTlsCert', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('TLS Key'), _('Filepath to tls key'),
             'goLdapTlsKey', FALSE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('TLS CaCert'), _('Filepath to tls ca certificate'),
             'goLdapTlsCaCert', FALSE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('TLS ReqCert'), _('Specifies what checks to perform on server certificates in a TLS session, if any'),
             'goLdapReqCert', TRUE,
-            array('never','allow','try','demand'), 'never'
+            ['never','allow','try','demand'], 'never'
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('TLS CrlCheck'), _('Specifies if the Certificate Revocation List (CRL) of the CA should be used to verify if the server certificates have  not  been  revoked'),
             'goLdapCrlCheck', TRUE,
-            array('none','peer','all'), 'none'
+            ['none','peer','all'], 'none'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   /* Return plugin information for acl handling */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('LDAP service'),
       'plDescription' => _('LDAP').' ('._('Services').')',
       'plIcon'        => 'geticon.php?context=applications&icon=ldap&size=16',
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 }
 ?>

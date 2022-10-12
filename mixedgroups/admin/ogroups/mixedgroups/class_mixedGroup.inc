@@ -20,28 +20,28 @@
 
 class mixedGroup extends simplePlugin
 {
-  var $objectclasses  = array('posixGroup');
-  protected $locks    = array();
+  var $objectclasses  = ['posixGroup'];
+  protected $locks    = [];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Posix group'),
       'plDescription' => _('Posix group settings'),
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('ogroup-user'),
+      'plObjectType'  => ['ogroup-user'],
       'plPriority'    => 1,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new BooleanAttribute(
             _('Force GID'), _('Force GID value for this group'),
             'force_id', FALSE
@@ -53,28 +53,28 @@ class mixedGroup extends simplePlugin
           ),
           new HiddenAttribute(
             'memberUid', FALSE,
-            array()
+            []
           )
-        )
-      ),
-      'system_trust' => array(
+        ]
+      ],
+      'system_trust' => [
         'name'  => _('System trust'),
         'icon'  => 'geticon.php?context=status&icon=locked&size=16',
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Trust mode'), _('Type of authorization for those hosts'),
             'trustMode', FALSE,
-            array('', 'fullaccess', 'byhost'),
+            ['', 'fullaccess', 'byhost'],
             '',
-            array(_('disabled'), _('full access'), _('allow access to these hosts'))
+            [_('disabled'), _('full access'), _('allow access to these hosts')]
           ),
           new SystemsAttribute(
             '', _('Only allow this group to connect to this list of hosts'),
             'host', FALSE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -83,12 +83,12 @@ class mixedGroup extends simplePlugin
 
     $this->attributesAccess['trustMode']->setInLdap(FALSE);
     $this->attributesAccess['trustMode']->setManagedAttributes(
-      array(
-        'multiplevalues' => array('notbyhost' => array('','fullaccess')),
-        'erase' => array(
-          'notbyhost' => array('host')
-        )
-      )
+      [
+        'multiplevalues' => ['notbyhost' => ['','fullaccess']],
+        'erase' => [
+          'notbyhost' => ['host']
+        ]
+      ]
     );
     if ((count($this->host) == 1) && ($this->host[0] == '*')) {
       $this->trustMode = 'fullaccess';
@@ -99,17 +99,17 @@ class mixedGroup extends simplePlugin
     $this->attributesAccess['gidNumber']->setUnique(TRUE);
     $this->attributesAccess['force_id']->setInLdap(FALSE);
     $this->attributesAccess['force_id']->setManagedAttributes(
-      array(
-        'disable' => array (
-          FALSE => array (
+      [
+        'disable' => [
+          FALSE => [
             'gidNumber',
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
   }
 
-  function check()
+  function check ()
   {
     global $config;
     $message = parent::check();
@@ -124,7 +124,7 @@ class mixedGroup extends simplePlugin
     return $message;
   }
 
-  function resetCopyInfos()
+  function resetCopyInfos ()
   {
     parent::resetCopyInfos();
 
@@ -133,14 +133,14 @@ class mixedGroup extends simplePlugin
     $this->gidNumber = "";
   }
 
-  function prepare_save()
+  function prepare_save ()
   {
     global $config;
     $ldap = $config->get_ldap_link();
     $members    = $this->parent->getBaseObject()->member;
-    $memberUid  = array();
+    $memberUid  = [];
     foreach ($members as $dn) {
-      $ldap->cat($dn, array('uid'));
+      $ldap->cat($dn, ['uid']);
       $attrs = $ldap->fetch();
       $memberUid[] = $attrs['uid'][0];
     }
@@ -162,7 +162,7 @@ class mixedGroup extends simplePlugin
     }
 
     if ($this->trustMode == 'fullaccess') {
-      $this->attrs['host'] = array('*');
+      $this->attrs['host'] = ['*'];
     }
 
     /* Trust accounts */
@@ -175,24 +175,24 @@ class mixedGroup extends simplePlugin
     return $errors;
   }
 
-  function save()
+  function save ()
   {
     $errors = parent::save();
 
     foreach ($this->locks as $lock) {
       del_lock($lock);
     }
-    $this->locks = array();
+    $this->locks = [];
 
     return $errors;
   }
 
-  function addUser($dn, $uid)
+  function addUser ($dn, $uid)
   {
-    $this->attributesAccess['memberUid']->addValue($dn, array('uid' => array($uid), 'cn' => array($uid)));
+    $this->attributesAccess['memberUid']->addValue($dn, ['uid' => [$uid], 'cn' => [$uid]]);
   }
 
-  function removeUser($uid)
+  function removeUser ($uid)
   {
     $this->attributesAccess['memberUid']->searchAndRemove($uid);
   }

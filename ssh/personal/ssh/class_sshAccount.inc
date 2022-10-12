@@ -43,16 +43,16 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
           $type = $match[3];
           break;
       }
-      return array(
+      return [
         $type,
         $fingerprint,
         $comment
-      );
+      ];
     }
     return parent::getArrayValue();
   }
 
-  function readFile($handle)
+  function readFile ($handle)
   {
     $line = fgets($handle);
     if (preg_match($this->format, $line)) {
@@ -63,7 +63,7 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
     @fclose($handle);
   }
 
-  function fingerprint($data)
+  function fingerprint ($data)
   {
     $result = md5($data);
     $result = preg_replace('/(..)/', '\1:', $result);
@@ -74,17 +74,17 @@ class SSHPublicKeyAttribute extends FileTextAreaAttribute
 class sshAccount extends simplePlugin
 {
   var $displayHeader = TRUE;
-  var $objectclasses = array('ldapPublicKey');
+  var $objectclasses = ['ldapPublicKey'];
 
   // The main function : information about attributes
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('SSH Keys'),
         'icon'  => 'geticon.php?context=status&icon=dialog-password&size=16',
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new OrderedArrayAttribute(
             new SSHPublicKeyAttribute(
               '', _('SSH public keys for this user'),
@@ -92,36 +92,36 @@ class sshAccount extends simplePlugin
             ),
             // no order
             FALSE,
-            array(),
+            [],
             // edit enabled
             TRUE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('SSH'),
       'plDescription'   => _('Edit user\'s SSH public keys'),
       'plSelfModify'    => TRUE,
-      'plDepends'       => array('posixAccount'),
+      'plDepends'       => ['posixAccount'],
       'plPriority'      => 6,
-      'plObjectType'    => array('user'),
+      'plObjectType'    => ['user'],
       'plIcon'          => 'geticon.php?context=applications&icon=ssh&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=ssh&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
-  function check()
+  function check ()
   {
     $message = parent::check();
 
-    $fingerprints = array();
+    $fingerprints = [];
     $values = $this->attributesAccess['sshPublicKey']->getValue();
     foreach ($values as $value) {
       $this->attributesAccess['sshPublicKey']->attribute->setValue($value);

@@ -30,23 +30,23 @@
 
 class nagiosAccount extends simplePlugin
 {
-  var $objectclasses  = array('lconfContact');
+  var $objectclasses  = ['lconfContact'];
 
   var $displayHeader  = TRUE;
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Nagios'),
       'plDescription' => _('Nagios account settings'),
       'plIcon'        => 'geticon.php?context=applications&icon=nagios&size=48',
       'plSmallIcon'   => 'geticon.php?context=applications&icon=nagios&size=16',
       'plSelfModify'  => TRUE,
       'plPriority'    => 7,
-      'plObjectType'  => array('user'),
+      'plObjectType'  => ['user'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -55,10 +55,10 @@ class nagiosAccount extends simplePlugin
   static function getAttributesInfo ()
   {
     $prefix = static::get_prefix();
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Nagios Account'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Alias'), _('Name of the nagios alias'),
             $prefix.'Alias', TRUE
@@ -67,25 +67,25 @@ class nagiosAccount extends simplePlugin
             _('Mail address'), _('Email of the nagios alias'),
             $prefix.'Email', TRUE
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Host notification period'), _('Host notification period'),
             $prefix.'ContactHostNotificationPeriod', FALSE,
-            array('24x7','24x5','8x5')
+            ['24x7','24x5','8x5']
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Service notification period'), _('Service notification period'),
             $prefix.'ContactServiceNotificationPeriod', FALSE,
-            array('24x7','24x5','8x5')
+            ['24x7','24x5','8x5']
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Service notification options'), _('Service notification options'),
             $prefix.'ContactServiceNotificationOptions', FALSE,
-            array('w,u,c,r,f','w,u,c,r','w,u,c','c,w','n')
+            ['w,u,c,r,f','w,u,c,r','w,u,c','c,w','n']
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Host notification options'), _('Host notification options'),
             $prefix.'ContactHostNotificationOptions', FALSE,
-            array('d,u,r,f','d,u,r','d,u','n')
+            ['d,u,r,f','d,u,r','d,u','n']
           ),
           new StringAttribute(
             _('Pager'), _($prefix.' Pager'),
@@ -99,12 +99,12 @@ class nagiosAccount extends simplePlugin
             _('Host notification commands'), _('Host notification commands'),
             $prefix.'ContactHostNotificationCommands', FALSE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
-  static function get_prefix()
+  static function get_prefix ()
   {
     global $config;
     return $config->get_cfg_value('lconfPrefix', 'lconf');
@@ -113,7 +113,7 @@ class nagiosAccount extends simplePlugin
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     $prefix = static::get_prefix();
-    $this->objectclasses = array($prefix.'Contact');
+    $this->objectclasses = [$prefix.'Contact'];
     parent::__construct($dn, $object, $parent, $mainTab);
   }
 }

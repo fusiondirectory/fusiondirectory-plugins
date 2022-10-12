@@ -5,15 +5,16 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
+# LOUKAS SKOUROLIAKOS, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-06-27 08:29+0000\n"
+"POT-Creation-Date: 2022-07-28 17:06+0000\n"
 "PO-Revision-Date: 2016-08-29 15:43+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
+"Last-Translator: LOUKAS SKOUROLIAKOS, 2021\n"
 "Language-Team: Greek (Greece) (https://www.transifex.com/fusiondirectory/teams/12202/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,75 +22,75 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/audit/class_auditEvent.inc:43
+#: admin/audit/class_auditEvent.inc:28
 #, php-format
 msgid "Unknown user: %s"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:57 admin/audit/class_auditEvent.inc:60
+#: admin/audit/class_auditEvent.inc:42 admin/audit/class_auditEvent.inc:45
 msgid "Audit event"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:58
+#: admin/audit/class_auditEvent.inc:43
 msgid "An event like ldap modification which was registered by audit plugin"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:76
+#: admin/audit/class_auditEvent.inc:61
 msgid "Event"
-msgstr ""
+msgstr "Γεγονός"
 
-#: admin/audit/class_auditEvent.inc:80
+#: admin/audit/class_auditEvent.inc:65
 #: admin/audit/class_auditManagement.inc:111
 msgid "Time"
-msgstr ""
+msgstr "Χρόνος"
 
-#: admin/audit/class_auditEvent.inc:80
+#: admin/audit/class_auditEvent.inc:65
 msgid "Date and time this event happened"
-msgstr ""
+msgstr "Ημέρα και χρόνος τέλεσης του συμβάντος"
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:68
 #: admin/audit/class_auditManagement.inc:125
 msgid "Action"
 msgstr "Ενέργεια"
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:68
 msgid "Action type"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:84
+#: admin/audit/class_auditEvent.inc:69
 #: admin/audit/class_auditManagement.inc:118
 msgid "Author"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:84
+#: admin/audit/class_auditEvent.inc:69
 msgid "Action author"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:85
+#: admin/audit/class_auditEvent.inc:70
 msgid "Object type"
 msgstr "Τύπος αντικειμένου"
 
-#: admin/audit/class_auditEvent.inc:86
+#: admin/audit/class_auditEvent.inc:71
 msgid "Object"
 msgstr "Αντικείμενο"
 
-#: admin/audit/class_auditEvent.inc:86
+#: admin/audit/class_auditEvent.inc:71
 msgid "Target object"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:87
+#: admin/audit/class_auditEvent.inc:72
 msgid "Attributes"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:87
+#: admin/audit/class_auditEvent.inc:72
 msgid "Target attributes"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:88
+#: admin/audit/class_auditEvent.inc:73
 msgid "Result"
 msgstr ""
 
-#: admin/audit/class_auditEvent.inc:88
+#: admin/audit/class_auditEvent.inc:73
 msgid "Result or error"
 msgstr ""
 

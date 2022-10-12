@@ -37,7 +37,7 @@ class SudoUsersGroupsAttribute extends DialogAttribute
 
   function getFilterBlackList ()
   {
-    $used = array();
+    $used = [];
     foreach ($this->value as $name) {
       $str = preg_replace("/^!/", "", $name);
       if (preg_match("/^%/", $str)) {
@@ -57,12 +57,12 @@ class SudoSystemsAttribute extends SystemsAttribute
     $id = $this->getHtmlId();
     $buttons  = $this->renderInputField(
       'submit', 'add'.$id.'_ALL',
-      array('value' => 'ALL')
+      ['value' => 'ALL']
     );
     return $buttons.parent::renderButtons();
   }
 
-  public function htmlIds()
+  public function htmlIds ()
   {
     $id = $this->getHtmlId();
     $ids = parent::htmlIds();
@@ -75,7 +75,7 @@ class SudoSystemsAttribute extends SystemsAttribute
     parent::loadPostValue();
     if ($this->isVisible()) {
       if (isset($_POST['add'.$this->getHtmlId().'_ALL'])) {
-        $this->value = array('ALL');
+        $this->value = ['ALL'];
       }
     }
   }
@@ -114,109 +114,109 @@ class defaultRoleAttribute extends BooleanAttribute
  */
 class sudo extends simplePlugin
 {
-  public $objectclasses = array('sudoRole');
+  public $objectclasses = ['sudoRole'];
   var $mainTab          = TRUE;
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    $posixGroupClass = (class_available('mixedGroup') ? 'ogroup' : 'posixGroup');
+    return [
       'plShortName'   => _('Sudo'),
       'plDescription' => _('Sudo role'),
       'plIcon'        => 'geticon.php?context=applications&icon=sudo&size=48',
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('sudo' => array(
+      'plObjectType'  => ['sudo' => [
         'name'      => _('Sudo role'),
         'filter'    => 'objectClass=sudoRole',
         'icon'      => 'geticon.php?context=applications&icon=sudo&size=16',
         'ou'        => get_ou('sudoRDN'),
         'tabClass'  => 'sudotabs',
-      )),
-      'plForeignKeys'  => array(
-        'sudoUser'   => array(
-          array('user', 'uid', '(sudoUser=%oldvalue%)'),
-          array('posixGroup', 'cn', '(sudoUser=%|%%oldvalue%)'),
-          array('mixedGroup', 'cn', '(sudoUser=%|%%oldvalue%)'),
-        ),
-        'sudoHost'   => array(
-          array('serverGeneric', 'cn'),
-          array('workstationGeneric', 'cn'),
-          array('terminalGeneric', 'cn'),
-        ),
-      ),
+      ]],
+      'plForeignKeys'  => [
+        'sudoUser'   => [
+          ['user', 'uid', '(sudoUser=%oldvalue%)'],
+          [$posixGroupClass, 'cn', '(sudoUser=%|%%oldvalue%)'],
+        ],
+        'sudoHost'   => [
+          ['serverGeneric', 'cn'],
+          ['workstationGeneric', 'cn'],
+          ['terminalGeneric', 'cn'],
+        ],
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array (
-      'section1' => array (
+    return  [
+      'section1' => [
         'name'  => _('Role settings'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
-          new defaultRoleAttribute (FALSE),
-          new BaseSelectorAttribute (get_ou('sudoRDN')),
-          new StringAttribute (
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new defaultRoleAttribute(FALSE),
+          new BaseSelectorAttribute(get_ou('sudoRDN')),
+          new StringAttribute(
             _('Name'), _('Name of the role'),
             'cn', TRUE,
             ''
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Description for the new sudo role'),
             'description', FALSE
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Commands'),
               _('A Unix command with optional command line arguments, potentially including globbing characters (aka wild cards)'),
               'sudoCommand', FALSE
             )
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Run as (user)'),
               _('User(s) impersonated by sudo'),
               'sudoRunAsUser', FALSE
             ),
-            array('ALL')
+            ['ALL']
           ),
-          new SetAttribute (
-            new StringAttribute (
+          new SetAttribute(
+            new StringAttribute(
               _('Run as (group)'),
               _('Group(s) impersonated by sudo'),
               'sudoRunAsGroup', FALSE
             ),
-            array('ALL')
+            ['ALL']
           ),
-          new SudoSystemsAttribute (
+          new SudoSystemsAttribute(
             _('Systems'), _('A host name, IP address or IP network'),
             'sudoHost', FALSE,
-            array('ALL')
+            ['ALL']
           ),
-          new SudoUsersGroupsAttribute (
+          new SudoUsersGroupsAttribute(
             _('Users and groups'),
             _("A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"),
             'sudoUser', FALSE
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Priority'), _('This rule priority compared to others'),
             'sudoOrder', FALSE,
             0, FALSE, 0
           ),
-          new GeneralizedTimeDateAttribute (
+          new GeneralizedTimeDateAttribute(
             _('Valid starting from'), _('Start of time interval for which the entry is valid (leave empty to disable)'),
             'sudoNotBefore', FALSE,
             ''
           ),
-          new GeneralizedTimeDateAttribute (
+          new GeneralizedTimeDateAttribute(
             _('Valid until'), _('End of time interval for which the entry is valid (leave empty to disable)'),
             'sudoNotAfter', FALSE,
             ''
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -224,9 +224,9 @@ class sudo extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab);
     $this->attributesAccess['isDefaultRole']->setValue($this->is_default());
     $this->attributesAccess['isDefaultRole']->setManagedAttributes(
-      array(
-        'erase' => array(
-          TRUE => array(
+      [
+        'erase' => [
+          TRUE => [
             'base',
             'sudoUser',
             'sudoCommand',
@@ -234,40 +234,40 @@ class sudo extends simplePlugin
             'sudoRunAsUser',
             'sudoRunAsGroup',
             'sudoOrder',
-          )
-        ),
-        'disable' => array(
-          TRUE => array(
+          ]
+        ],
+        'disable' => [
+          TRUE => [
             'cn'
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
   }
 
 
-  public function set_default($state)
+  public function set_default ($state)
   {
     $this->attributesAccess['isDefaultRole']->setValue($state);
   }
 
-  public function is_default()
+  public function is_default ()
   {
     return preg_match("/^defaults$/i", $this->attributesAccess['cn']->getValue());
   }
 
   function foreignKeyCheck ($field, $fieldvalue, $source)
   {
-    if (($field == 'sudoUser') && (($source['CLASS'] == 'posixGroup') || ($source['CLASS'] == 'mixedGroup'))) {
+    if (($field == 'sudoUser') && (($source['CLASS'] == 'posixGroup') || ($source['CLASS'] == 'ogroup'))) {
       return parent::foreignKeyCheck($field, '%'.$fieldvalue, $source);
     } else {
       return parent::foreignKeyCheck($field, $fieldvalue, $source);
     }
   }
 
-  function foreignKeyUpdate($field, $oldvalue, $newvalue, $source)
+  function foreignKeyUpdate ($field, $oldvalue, $newvalue, $source)
   {
-    if (($field == 'sudoUser') && (($source['CLASS'] == 'posixGroup') || ($source['CLASS'] == 'mixedGroup'))) {
+    if (($field == 'sudoUser') && (($source['CLASS'] == 'posixGroup') || ($source['CLASS'] == 'ogroup'))) {
       return parent::foreignKeyUpdate($field, '%'.$oldvalue, '%'.$newvalue, $source);
     } else {
       return parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);

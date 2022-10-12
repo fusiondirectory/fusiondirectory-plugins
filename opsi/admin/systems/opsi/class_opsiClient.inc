@@ -20,10 +20,10 @@
 
 class opsiClient extends simplePlugin
 {
-  var $objectclasses  = array('opsiClient');
+  var $objectclasses  = ['opsiClient'];
   var $displayHeader  = TRUE;
 
-  var $inheritance = array('gosaGroupOfNames' => 'member');
+  var $inheritance = ['gosaGroupOfNames' => 'member'];
 
   var $initialMembers;
   var $products;
@@ -32,29 +32,29 @@ class opsiClient extends simplePlugin
 
   static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('OPSI client'),
       'plDescription' => _('Edit OPSI client settings'),
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('workstation', 'ogroup-dynamic'),
-      'plDepends'     => array('sambaSystemTab'),
-      'plConflicts'   => array('debconfStartup','faiStartup'),
+      'plObjectType'  => ['workstation', 'ogroup-dynamic'],
+      'plDepends'     => ['sambaSystemTab'],
+      'plConflicts'   => ['debconfStartup','faiStartup'],
       'plPriority'    => 8,
-      'plForeignKeys'   => array(
+      'plForeignKeys'   => [
         'fdOpsiServerDn'  => 'serverGeneric',
         'fdOpsiProfileDn' => 'opsiProfile',
-      ),
+      ],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('OPSI Client'),
-        'attrs' => array(
+        'attrs' => [
           new SubmittingOPSIServerAttribute(
             _('OPSI Server'), _('The OPSI Server this client is connected to'),
             'fdOpsiServerDn', TRUE
@@ -63,16 +63,16 @@ class opsiClient extends simplePlugin
             _('OPSI Profile'), _('The OPSI Profile to apply to this client'),
             'fdOpsiProfileDn', FALSE
           ),
-        )
-      ),
-      'products' => array(
+        ]
+      ],
+      'products' => [
         'name'  => _('Softwares'),
-        'attrs' => array(
+        'attrs' => [
           new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
               _('The localboot products to setup on this host'),
               'fdOpsiLocalbootProduct',
-              array(
+              [
                 new SelectAttribute(
                   '', '',
                   'fdOpsiLocalbootProduct_product', TRUE
@@ -80,42 +80,42 @@ class opsiClient extends simplePlugin
                 new SelectAttribute(
                   '', '',
                   'fdOpsiLocalbootProduct_action', TRUE,
-                  array('setup', 'always', 'once', 'custom', 'userlogin', 'update')
+                  ['setup', 'always', 'once', 'custom', 'userlogin', 'update']
                 )
-              ),
+              ],
               '|', '', _('Localboot products')
             ),
             FALSE, // non-ordered
-            array(),
+            [],
             TRUE // edition
           ),
           new BooleanAttribute(
             _('Inherit group localboots'), _('If this is checked localboot configured in the group OPSI tab will be installed along with the localboots configured here'),
             'fdOpsiLocalbootInherit', FALSE
           ),
-        )
-      ),
-      'infos' => array(
+        ]
+      ],
+      'infos' => [
         'name'  => _('Information'),
-        'attrs' => array(
+        'attrs' => [
           new DisplayAttribute(
             _('Last seen'), _('Last time this OPSI client was seen by the OPSI server'),
             'lastSeen', FALSE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     parent::__construct($dn, $object, $parent, $mainTab);
     if ($object instanceof ogroup) {
-      $this->initialMembers = array();
+      $this->initialMembers = [];
       if (isset($object->saved_attributes['member'])) {
         $this->initialMembers = $object->saved_attributes['member'];
         if (!is_array($this->initialMembers)) {
-          $this->initialMembers = array($this->initialMembers);
+          $this->initialMembers = [$this->initialMembers];
         }
       }
     }
@@ -132,7 +132,7 @@ class opsiClient extends simplePlugin
     }
   }
 
-  function save_object()
+  function save_object ()
   {
     parent::save_object();
     if ($this->member_of_group) {
@@ -145,7 +145,7 @@ class opsiClient extends simplePlugin
     }
   }
 
-  function prepare_save()
+  function prepare_save ()
   {
     if ($this->member_of_group && (($this->fdOpsiProfileDn == 'inherited') || $this->fdOpsiLocalbootInherit)) {
       $this->fdOpsiServerDn = 'inherited';
@@ -153,21 +153,21 @@ class opsiClient extends simplePlugin
     return parent::prepare_save();
   }
 
-  function save()
+  function save ()
   {
     global $config;
     if ($this->initially_was_account && $this->editing_group() && !$this->is_template) {
       $oldMembers = array_diff($this->initialMembers, $this->parent->getBaseObject()->member);
-      $macAddresses = array();
+      $macAddresses = [];
       $ldap = $config->get_ldap_link();
       foreach ($oldMembers as $member) {
-        $ldap->cat($member, array('macAddress'), '(&(!(objectClass=opsiClient))(macAddress=*))');
+        $ldap->cat($member, ['macAddress'], '(&(!(objectClass=opsiClient))(macAddress=*))');
         if ($attrs = $ldap->fetch()) {
           $macAddresses[] = $attrs['macAddress'][0];
         }
       }
       if (!empty($macAddresses)) {
-        $ldap->cat($this->fdOpsiServerDn, array('macAddress'));
+        $ldap->cat($this->fdOpsiServerDn, ['macAddress']);
         if ($attrs = $ldap->fetch()) {
           $serverMac = $attrs['macAddress'][0];
         } else {
@@ -178,7 +178,7 @@ class opsiClient extends simplePlugin
         }
         $s_daemon   = new supportDaemon();
         if ($s_daemon->is_available()) {
-          $s_daemon->append_call('OPSI.delete', array($serverMac), array('args' => array($macAddresses)));
+          $s_daemon->append_call('OPSI.delete', [$serverMac], ['args' => [$macAddresses]]);
           if ($s_daemon->is_error()) {
             msg_dialog::display(
               _('Could not remove OPSI information'),
@@ -199,14 +199,14 @@ class opsiClient extends simplePlugin
     }
   }
 
-  function getMacAddresses()
+  function getMacAddresses ()
   {
     global $config;
-    $macAddresses = array();
+    $macAddresses = [];
     if ($this->editing_group()) {
       $ldap = $config->get_ldap_link();
       foreach ($this->parent->getBaseObject()->member as $member) {
-        $ldap->cat($member, array('macAddress'), '(macAddress=*)');
+        $ldap->cat($member, ['macAddress'], '(macAddress=*)');
         if ($attrs = $ldap->fetch()) {
           $macAddresses[] = $attrs['macAddress'][0];
         } else {
@@ -224,24 +224,24 @@ class opsiClient extends simplePlugin
     } else {
       $macAddresses = $this->parent->getBaseObject()->macAddress;
       if (!is_array($macAddresses)) {
-        $macAddresses = array($macAddresses);
+        $macAddresses = [$macAddresses];
       } elseif (count($macAddresses) > 1) {
-        $macAddresses = array(reset($macAddresses));
+        $macAddresses = [reset($macAddresses)];
       }
     }
     return $macAddresses;
   }
 
-  function update_or_insert()
+  function update_or_insert ()
   {
     global $config;
     $s_daemon     = new supportDaemon();
     $macAddresses = $this->getMacAddresses();
     if (!empty($macAddresses) && $s_daemon->is_available()) {
       if (!$this->editing_group() && !empty($this->initialOpsiId)) {
-        $s_daemon->append_call('OPSI.update_or_insert', reset($macAddresses), array('args' => array($this->initialOpsiId)));
+        $s_daemon->append_call('OPSI.update_or_insert', reset($macAddresses), ['args' => [$this->initialOpsiId]]);
       } else {
-        $s_daemon->append_call('OPSI.update_or_insert', $macAddresses, array());
+        $s_daemon->append_call('OPSI.update_or_insert', $macAddresses, []);
       }
       if ($s_daemon->is_error()) {
         msg_dialog::display(
@@ -252,7 +252,7 @@ class opsiClient extends simplePlugin
     }
   }
 
-  function remove($fulldelete = FALSE)
+  function remove ($fulldelete = FALSE)
   {
     if ($this->member_of_group && !$this->is_template) {
       // If the winstation is member of an ogroup which has OPSI activated, we must update_or_insert information
@@ -263,16 +263,16 @@ class opsiClient extends simplePlugin
     return parent::remove($fulldelete);
   }
 
-  protected function ldap_remove()
+  protected function ldap_remove ()
   {
     global $config;
 
     if (!$this->is_template) {
-      $macAddresses = array();
+      $macAddresses = [];
       if ($this->editing_group()) {
         $ldap = $config->get_ldap_link();
         foreach ($this->initialMembers as $member) {
-          $ldap->cat($member, array('macAddress'), '(&(!(objectClass=opsiClient))(macAddress=*))');
+          $ldap->cat($member, ['macAddress'], '(&(!(objectClass=opsiClient))(macAddress=*))');
           if ($attrs = $ldap->fetch()) {
             $macAddresses[] = $attrs['macAddress'][0];
           }
@@ -280,16 +280,16 @@ class opsiClient extends simplePlugin
       } elseif (!$this->member_of_group) {
         $macAddresses = $this->parent->getBaseObject()->macAddress;
         if (!is_array($macAddresses)) {
-          $macAddresses = array($macAddresses);
+          $macAddresses = [$macAddresses];
         } elseif (count($macAddresses) > 1) {
-          $macAddresses = array($macAddresses[0]);
+          $macAddresses = [$macAddresses[0]];
         }
       }
 
       if (!empty($macAddresses)) {
         $s_daemon   = new supportDaemon();
         if ($s_daemon->is_available()) {
-          $s_daemon->append_call('OPSI.delete', $macAddresses, array());
+          $s_daemon->append_call('OPSI.delete', $macAddresses, []);
           if ($s_daemon->is_error()) {
             msg_dialog::display(
               _('Could not remove OPSI information'),
@@ -313,9 +313,9 @@ class opsiClient extends simplePlugin
     }
 
     $ldap = $config->get_ldap_link();
-    $ldap->search('(&(objectClass=opsiProfile)(fdOpsiServerDn='.$fdOpsiServerDn.'))', array('cn'));
-    $profilesdn    = array();
-    $profileslabel = array();
+    $ldap->search('(&(objectClass=opsiProfile)(fdOpsiServerDn='.$fdOpsiServerDn.'))', ['cn']);
+    $profilesdn    = [];
+    $profileslabel = [];
     while ($attrs = $ldap->fetch()) {
       $profilesdn[]    = $attrs['dn'];
       $profileslabel[] = $attrs['cn'][0];
@@ -324,11 +324,11 @@ class opsiClient extends simplePlugin
       $profilesdn[]     = 'inherited';
       $profileslabel[]  = sprintf(_('Inherited (%s)'), ldap_explode_dn($this->group_attrs['fdOpsiProfileDn'][0], 1)[0]);
       $this->attributesAccess['fdOpsiProfileDn']->setManagedAttributes(
-        array(
-          'disable' => array(
-            'inherited' => array('fdOpsiServerDn')
-          )
-        )
+        [
+          'disable' => [
+            'inherited' => ['fdOpsiServerDn']
+          ]
+        ]
       );
     }
     $this->attributesAccess['fdOpsiProfileDn']->setChoices($profilesdn, $profileslabel);
@@ -361,7 +361,7 @@ class opsiClient extends simplePlugin
     }
     $macAddresses = $this->getMacAddresses();
     if (!empty($macAddresses)) {
-      $infos = $s_daemon->append_call('OPSI.host_getObjects', $macAddress, array('args' => array(array('lastSeen', 'hardwareAddress'), array('hardwareAddress' => $macAddresses))));
+      $infos = $s_daemon->append_call('OPSI.host_getObjects', $macAddress, ['args' => [['lastSeen', 'hardwareAddress'], ['hardwareAddress' => $macAddresses]]]);
       if ($s_daemon->is_error()) {
         $this->lastSeen = sprintf(_('Failed to contact OPSI server: %s'), $s_daemon->get_error());
       } elseif (count($infos) == 0) {
@@ -378,8 +378,8 @@ class opsiClient extends simplePlugin
       }
     }
     if (!isset($this->products[$this->fdOpsiServerDn])) {
-      $opsi_args  = array('id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript','updateScript','productVersion','packageVersion');
-      $localboots = $s_daemon->append_call('OPSI.get_localboots', $macAddress, array('args' => array($opsi_args)));
+      $opsi_args  = ['id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript','updateScript','productVersion','packageVersion'];
+      $localboots = $s_daemon->append_call('OPSI.get_localboots', $macAddress, ['args' => [$opsi_args]]);
       if ($s_daemon->is_error()) {
         msg_dialog::display(
           _('Failed to contact OPSI server'),
@@ -387,7 +387,7 @@ class opsiClient extends simplePlugin
         );
         return;
       }
-      $this->products[$this->fdOpsiServerDn]['localboots'] = array();
+      $this->products[$this->fdOpsiServerDn]['localboots'] = [];
       foreach ($localboots as $localboot) {
         $this->products[$this->fdOpsiServerDn]['localboots'][$localboot['id']] = $localboot;
       }
@@ -399,7 +399,7 @@ class opsiClient extends simplePlugin
       );
       return;
     }
-    $choices = array();
+    $choices = [];
     foreach ($this->products[$this->fdOpsiServerDn]['localboots'] as $id => $infos) {
       $choices[$id] = sprintf(_('%s (%s-%s)'), $infos['id'], $infos['productVersion'], $infos['packageVersion']);
     }
@@ -413,8 +413,8 @@ class opsiClient extends simplePlugin
   {
     $localboot = $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->getValue();
 
-    $actions = array();
-    foreach (array('setup', 'always', 'once', 'custom', 'userLogin', 'update') as $action) {
+    $actions = [];
+    foreach (['setup', 'always', 'once', 'custom', 'userLogin', 'update'] as $action) {
       if (!empty($this->products[$this->fdOpsiServerDn]['localboots'][$localboot][$action.'Script'])) {
         $actions[] = strtolower($action);
       }

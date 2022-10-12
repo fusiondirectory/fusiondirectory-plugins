@@ -22,7 +22,7 @@ class DebconfEntriesAttribute extends CompositeAttribute
 {
   function __construct ($description, $ldapName, $acl = "")
   {
-    parent::__construct ($description, $ldapName, array(), "", "", $acl);
+    parent::__construct($description, $ldapName, [], "", "", $acl);
     $this->setInLdap(FALSE);
   }
 
@@ -37,7 +37,7 @@ class DebconfEntriesAttribute extends CompositeAttribute
   function loadEntries ()
   {
     global $config;
-    $this->attributes = array();
+    $this->attributes = [];
 
     /* Load template */
     $ldap = $config->get_ldap_link();
@@ -48,11 +48,9 @@ class DebconfEntriesAttribute extends CompositeAttribute
         $cn     = $entry['cn'][0];
         $desc   = (isset($entry['description'][0]) ? $entry['description'][0] : '');
         $default  = (isset($entry['value'][0]) ? $entry['default'][0] : '');
-        $this->attributes[$cn] = new StringAttribute ($cn, $desc, "debconfentry_$cn", FALSE, $default);
+        $this->attributes[$cn] = new StringAttribute($cn, $desc, "debconfentry_$cn", FALSE, $default);
         $this->attributes[$cn]->setInLdap(FALSE);
         $this->attributes[$cn]->setAcl($this->getAcl());
-        //~ 'choices'
-        //~ 'extendedDescription'
       }
     }
     $ldap->cd("ou=questions,".$this->plugin->dn);
@@ -64,9 +62,6 @@ class DebconfEntriesAttribute extends CompositeAttribute
           $this->attributes[$cn]->setValue($entry['value'][0]);
           // set initialValue
           $this->attributes[$cn]->loadValue(NULL);
-          //~ 'flags'
-          //~ 'owners'
-          //~ 'template'
         } else {
           msg_dialog::display(_("Error"),  _("There is no template for this profile"), ERROR_DIALOG);
         }
@@ -74,21 +69,21 @@ class DebconfEntriesAttribute extends CompositeAttribute
     }
   }
 
-  function saveInLdap()
+  function saveInLdap ()
   {
     global $config;
     $ldap = $config->get_ldap_link();
     foreach ($this->attributes as $cn => $attribute) {
       $dn = "cn=$cn,ou=questions,".$this->plugin->dn;
-      $ldap->cat($dn, array("objectClass"));
+      $ldap->cat($dn, ["objectClass"]);
       if ($ldap->count() != 1) {
         msg_dialog::display(_("Error"),
           sprintf(_("Can't find entry %s in LDAP for profile %s"), $cn, $this->plugin->dn),
           ERROR_DIALOG);
       } else {
-        $attrs = array(
-          'value' => array($attribute->getValue()),
-        );
+        $attrs = [
+          'value' => [$attribute->getValue()],
+        ];
         $ldap->cd($dn);
         $ldap->modify($attrs);
       }
@@ -100,7 +95,7 @@ class DebconfImportAttribute extends FileAttribute
 {
   function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = "", $acl = "")
   {
-    parent::__construct ($label, $description, $ldapName, $required, $defaultValue, $acl);
+    parent::__construct($label, $description, $ldapName, $required, $defaultValue, $acl);
     $this->setInLdap(FALSE);
   }
 
@@ -108,15 +103,15 @@ class DebconfImportAttribute extends FileAttribute
    *
    *  \param filehandle $handle The handle on the opened uploaded file
    */
-  function readFile($handle)
+  function readFile ($handle)
   {
     global $config;
-    $matches = array();
+    $matches = [];
     $str = fread($handle, 1024);
     // removing breaklines
-    $tmp = str_replace ("\n", "", $str);
+    $tmp = str_replace("\n", "", $str);
     // removing spaces
-    $tmp = str_replace (" ", "", $tmp);
+    $tmp = str_replace(" ", "", $tmp);
     if (preg_match( "/dn:.*,ou=templates,ou=([^,=]+),".get_ou("debconfRDN").
                     $config->current['BASE']."/",
                     // searching for dn: containing the template name
@@ -145,7 +140,7 @@ class DebconfImportAttribute extends FileAttribute
     }
   }
 
-  function renderFormInput()
+  function renderFormInput ()
   {
     global $config;
     return sprintf(_("In order to import a debconf file, please run the following command : <br/>".
@@ -159,43 +154,43 @@ class debconfProfileGeneric extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses   = array("top","organizationalUnit");
+  var $objectclasses   = ["top","organizationalUnit"];
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Debconf profile'),
       'plDescription' => _('Debconf profile information'),
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('debconfProfile' => array(
+      'plObjectType'  => ['debconfProfile' => [
         'name'      => _('Debconf profile'),
         'filter'    => '(&(objectClass=organizationalUnit)(!(objectClass=gosaDepartment)))',
         'ou'        => get_ou('debconfRDN'),
         'icon'      => 'geticon.php?context=applications&icon=debconf&size=16',
         'mainAttr'  => 'ou',
-      )),
+      ]],
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
+    return [
       // Attributes are grouped by section
-      'main' => array(
+      'main' => [
         'name'  => _("Name"),
-        'attrs' => array(
-          new DebconfImportAttribute ("", _("Import a debconf file"), "import"),
-          new StringAttribute (_("Name"), _("Name of this debconf template"), "ou", TRUE),
-        )
-      ),
-      'entries' => array(
+        'attrs' => [
+          new DebconfImportAttribute("", _("Import a debconf file"), "import"),
+          new StringAttribute(_("Name"), _("Name of this debconf template"), "ou", TRUE),
+        ]
+      ],
+      'entries' => [
         'name'  => _("Entries"),
-        'attrs' => array(
-          new DebconfEntriesAttribute (_("Debconf template answers"), "debconfEntries"),
-        )
-      ),
-    );
+        'attrs' => [
+          new DebconfEntriesAttribute(_("Debconf template answers"), "debconfEntries"),
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -214,7 +209,7 @@ class debconfProfileGeneric extends simplePlugin
     }
   }
 
-  function ldap_save()
+  function ldap_save ()
   {
     $errors = parent::ldap_save();
     if (!empty($errors)) {

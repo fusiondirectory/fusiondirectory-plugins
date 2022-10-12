@@ -5,21 +5,22 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2017
+# Paola <paola.penati@fusiondirectory.org>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-06-27 08:29+0000\n"
+"POT-Creation-Date: 2022-07-28 17:06+0000\n"
 "PO-Revision-Date: 2016-08-29 15:14+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
+"Last-Translator: Paola <paola.penati@fusiondirectory.org>, 2019\n"
 "Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it_IT\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: admin/groups/mail/class_mailGroup.inc:46
 #: config/mail/class_mailPluginConfig.inc:28
@@ -147,33 +148,36 @@ msgid "Which attribute will be used to create accounts."
 msgstr "Quale attributo verrà utilizzato per creare degli account."
 
 #: config/mail/class_mailPluginConfig.inc:50
-msgid "Mail user template"
-msgstr "Modello per utente mail"
+msgid "User account template"
+msgstr "Modello di account utente"
 
 #: config/mail/class_mailPluginConfig.inc:51
-msgid "Override the user account creation syntax."
-msgstr "Sovrascrivere la sintassi per la creazione dell'account utente."
+msgid ""
+"Override the user account creation syntax. Default is %PREFIX%%UATTRIB%."
+msgstr ""
+"Sostituisci la sintassi di creazione dell'account utente. L'impostazione "
+"predefinita è %PREFIX%% UATTRIB%."
 
 #: config/mail/class_mailPluginConfig.inc:55
-msgid "Mail folder template"
-msgstr "Modello per la cartella mail"
+msgid "Group account template"
+msgstr "Modello di account di gruppo"
 
 #: config/mail/class_mailPluginConfig.inc:56
-msgid "Override the methods default account creation syntax."
+msgid ""
+"Override the group account creation syntax. Default is %PREFIX%%UATTRIB%."
 msgstr ""
-"Sovrascrivere i metodi predefiniti per la sintassi della creazione degli "
-"account."
+"Sostituisci la sintassi di creazione dell'account di gruppo. L'impostazione "
+"predefinita è %PREFIX %% UATTRIB%."
 
 #: config/mail/class_mailPluginConfig.inc:60
 msgid "Use cyrus UNIX style"
 msgstr "Usa lo stile cyrus UNIX"
 
 #: config/mail/class_mailPluginConfig.inc:61
-msgid ""
-"Determines if 'foo/bar' or 'foo.bar' should be uses as namespaces in IMAP."
+msgid "Determines if \"foo/bar\" or \"foo.bar\" should be uses as namespaces in IMAP."
 msgstr ""
-"Determina se ' foo / bar' o ' foo.bar ' dovrebbe essere usato come namespace"
-" in IMAP ."
+"Determina se \"foo / bar\" o \"foo.bar\" devono essere utilizzati come spazi"
+" dei nomi in IMAP."
 
 #: config/mail/class_mailPluginConfig.inc:65
 msgid "Delete mailbox on account deletion"
@@ -244,6 +248,10 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:108
 msgid "Quota size"
 msgstr "Dimensione della quota"
+
+#: personal/mail/class_mailAccount.inc:108
+msgid "Define quota size in MiB"
+msgstr "Definire la dimensione della quota in MiB"
 
 #: personal/mail/class_mailAccount.inc:115
 msgid "Other addresses and redirections"

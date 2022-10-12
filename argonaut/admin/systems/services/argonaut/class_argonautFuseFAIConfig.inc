@@ -20,59 +20,59 @@
 
 class argonautFuseFAIConfig extends simplePlugin
 {
-  var $objectclasses  = array('argonautFuseFAIConfig');
+  var $objectclasses  = ['argonautFuseFAIConfig'];
   var $showActions    = FALSE;
   var $displayHeader  = TRUE;
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Argonaut Fuse FAI module settings'),
       'plDescription'   => _('Argonaut Fuse FAI module settings'),
-      'plCategory'      => array('server'),
-      'plObjectType'    => array('fusemodule'),
+      'plCategory'      => ['server'],
+      'plObjectType'    => ['fusemodule'],
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array (
-      'fai' => array (
+    return  [
+      'fai' => [
         'name'  => _('FAI'),
-        'attrs' => array (
-          new IntAttribute (
+        'attrs' => [
+          new IntAttribute(
             _('FAI version'), _('Version of FAI installed on the server'),
             'argonautFuseFaiVersion', TRUE,
             4, 5, 5
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('FAI flags'), _('Flags to pass to FAI'),
             'argonautFuseFaiFlags', FALSE,
             'verbose,sshd,syslogd,createvt,reboot'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('NFS root'), '',
             'argonautFuseNfsRoot', TRUE,
             '/srv/fai/nfsroot'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('FAI 4 command line'), _('Command line for FAI 4 - should be "ip=dhcp root=/dev/nfs boot=live union=aufs"'),
             'argonautFuseFai4Cmdline', TRUE,
             'ip=dhcp root=/dev/nfs boot=live union=aufs'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('FAI 5 command line'), _('Command line for FAI 5 - should be "ip=dhcp rootovl"'),
             'argonautFuseFai5Cmdline', TRUE,
             'ip=dhcp rootovl'
           ),
-          new BooleanAttribute (
+          new BooleanAttribute(
             _('Multiple distro mode'), _('This enables a mode for multiple distributions usage which adds the release as a suffix to kernel, initrd and nfsroot in the PXE file'),
             'argonautFuseMultipleReleaseMode'
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE, $attributesInfo = NULL)
@@ -80,16 +80,16 @@ class argonautFuseFAIConfig extends simplePlugin
     parent::__construct($dn, $object, $parent, $mainTab, $attributesInfo);
 
     $this->attributesAccess['argonautFuseFaiVersion']->setManagedAttributes(
-      array(
-        'disable' => array (
-          4 => array (
+      [
+        'disable' => [
+          4 => [
             'argonautFuseFai5Cmdline'
-          ),
-          5 => array (
+          ],
+          5 => [
             'argonautFuseFai4Cmdline'
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
   }
 }

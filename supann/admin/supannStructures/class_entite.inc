@@ -21,36 +21,36 @@
 
 class entite extends simplePlugin
 {
-  var $objectclasses = array('top','supannEntite','organizationalUnit');
+  var $objectclasses = ['top','supannEntite','organizationalUnit'];
 
   var $mainTab = TRUE;
 
   /* Return plugin information */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Entity'),
       'plDescription' => _('SupAnn Entity Settings'),
-      'plObjectType'  => array('entite' => array(
+      'plObjectType'  => ['entite' => [
         'name'        => _('SupAnn Entity'),
         'filter'      => '(&(objectClass=supannEntite)(objectClass=organizationalUnit))',
         'ou'          => get_ou('supannStructuresRDN'),
         'mainAttr'    => 'supannCodeEntite',
         'icon'        => 'geticon.php?context=applications&icon=supann-entite&size=16',
         'nameAttr'    => 'ou',
-      )),
+      ]],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Entity'),
-        'attrs' => array(
+        'attrs' => [
           new StringAttribute(
             _('Name'), _('The name to write in the ou attribute for this entity'),
             'ou', TRUE
@@ -59,11 +59,11 @@ class entite extends simplePlugin
             _('Description'), _('Short description of this entity'),
             'description', FALSE
           ),
-        )
-      ),
-      'admin' => array(
+        ]
+      ],
+      'admin' => [
         'name'  => _('Administrative information'),
-        'attrs' => array(
+        'attrs' => [
           new PhoneNumberAttribute(
             _('Telephone'), _('Phone number of this entity'),
             'telephoneNumber', FALSE
@@ -76,11 +76,11 @@ class entite extends simplePlugin
             _('Postal address'), _('Postal address of this entity'),
             'postalAddress', FALSE
           ),
-        )
-      ),
-      'supann' => array(
+        ]
+      ],
+      'supann' => [
         'name'  => _('SupAnn information'),
-        'attrs' => array(
+        'attrs' => [
           new SupannPrefixedSelectAttribute(
             _('Entity type'), _('The SupAnn type that best fits this entity'),
             'supannTypeEntite', FALSE, 'entite'
@@ -88,7 +88,7 @@ class entite extends simplePlugin
           new StringAttribute(
             _('Entity code'), _('The SupAnn code of this entity'),
             'supannCodeEntite', TRUE,
-            '', '', '/^[a-z0-9_-]*$/i'
+            '', '', '|^[a-zA-Z0-9_/-]*$|'
           ),
           new SetAttribute(
             new SelectAttribute(
@@ -105,9 +105,9 @@ class entite extends simplePlugin
               '/^{[^}]+}.+$/'
             )
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -117,10 +117,10 @@ class entite extends simplePlugin
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=supannEntite)', array('supannCodeEntite','ou','o'));
+    $ldap->search('(objectClass=supannEntite)', ['supannCodeEntite','ou','o']);
 
-    $entity_codes   = array('');
-    $entity_labels  = array('');
+    $entity_codes   = [''];
+    $entity_labels  = [''];
     while ($attrs = $ldap->fetch()) {
       if (isset($attrs['supannCodeEntite'][0])) {
         $entity_codes[] = $attrs['supannCodeEntite'][0];

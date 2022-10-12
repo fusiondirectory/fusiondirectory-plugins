@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-06-27 08:29+0000\n"
+"POT-Creation-Date: 2022-07-28 17:06+0000\n"
 "PO-Revision-Date: 2016-08-29 15:43+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -22,76 +22,76 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: admin/audit/class_auditEvent.inc:43
+#: admin/audit/class_auditEvent.inc:28
 #, php-format
 msgid "Unknown user: %s"
 msgstr "Neznámý uživatel: %s"
 
-#: admin/audit/class_auditEvent.inc:57 admin/audit/class_auditEvent.inc:60
+#: admin/audit/class_auditEvent.inc:42 admin/audit/class_auditEvent.inc:45
 msgid "Audit event"
 msgstr "Auditní událost"
 
-#: admin/audit/class_auditEvent.inc:58
+#: admin/audit/class_auditEvent.inc:43
 msgid "An event like ldap modification which was registered by audit plugin"
 msgstr ""
 "Úprava-událost v LDAP která byla zaznamenána auditním zásuvným modulem"
 
-#: admin/audit/class_auditEvent.inc:76
+#: admin/audit/class_auditEvent.inc:61
 msgid "Event"
 msgstr "Událost"
 
-#: admin/audit/class_auditEvent.inc:80
+#: admin/audit/class_auditEvent.inc:65
 #: admin/audit/class_auditManagement.inc:111
 msgid "Time"
 msgstr "Čas"
 
-#: admin/audit/class_auditEvent.inc:80
+#: admin/audit/class_auditEvent.inc:65
 msgid "Date and time this event happened"
 msgstr "Datum a čas události"
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:68
 #: admin/audit/class_auditManagement.inc:125
 msgid "Action"
 msgstr "Akce"
 
-#: admin/audit/class_auditEvent.inc:83
+#: admin/audit/class_auditEvent.inc:68
 msgid "Action type"
 msgstr "Typ akce"
 
-#: admin/audit/class_auditEvent.inc:84
+#: admin/audit/class_auditEvent.inc:69
 #: admin/audit/class_auditManagement.inc:118
 msgid "Author"
 msgstr "Autor"
 
-#: admin/audit/class_auditEvent.inc:84
+#: admin/audit/class_auditEvent.inc:69
 msgid "Action author"
 msgstr "Autor akce"
 
-#: admin/audit/class_auditEvent.inc:85
+#: admin/audit/class_auditEvent.inc:70
 msgid "Object type"
 msgstr "Typ objektu"
 
-#: admin/audit/class_auditEvent.inc:86
+#: admin/audit/class_auditEvent.inc:71
 msgid "Object"
 msgstr "Objekt"
 
-#: admin/audit/class_auditEvent.inc:86
+#: admin/audit/class_auditEvent.inc:71
 msgid "Target object"
 msgstr "Cílový objekt"
 
-#: admin/audit/class_auditEvent.inc:87
+#: admin/audit/class_auditEvent.inc:72
 msgid "Attributes"
 msgstr "Atributy"
 
-#: admin/audit/class_auditEvent.inc:87
+#: admin/audit/class_auditEvent.inc:72
 msgid "Target attributes"
 msgstr "Atributy cíle"
 
-#: admin/audit/class_auditEvent.inc:88
+#: admin/audit/class_auditEvent.inc:73
 msgid "Result"
 msgstr "Výsledek"
 
-#: admin/audit/class_auditEvent.inc:88
+#: admin/audit/class_auditEvent.inc:73
 msgid "Result or error"
 msgstr "Výsledek nebo chyba"
 

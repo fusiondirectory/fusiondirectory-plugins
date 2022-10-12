@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Choi Chris <chulwon.choi@gmail.com>, 2018
+# Choi Chris <chulwon.choi@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-06-27 08:29+0000\n"
+"POT-Creation-Date: 2022-07-28 17:06+0000\n"
 "PO-Revision-Date: 2016-08-29 15:18+0000\n"
-"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2018\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2021\n"
 "Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,6 +25,10 @@ msgstr ""
 #: admin/systems/services/quota/class_serviceQuota.inc:30
 msgid "Quota service"
 msgstr ""
+" \n"
+"\n"
+" \n"
+"할당량 서비스"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:30
 msgid "Services"
@@ -36,76 +40,76 @@ msgstr "공유"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:46
 msgid "Quotas for the shares this server hosts"
-msgstr ""
+msgstr "이 서버 호스트의 공유 할당량"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:50
 #: personal/quota/class_quotaAccount.inc:129
 msgid "Device"
-msgstr ""
+msgstr "디바이스"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:50
 msgid "Device concerned by this quota"
-msgstr ""
+msgstr "이 할당량에 관련된 장치"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:54
 msgid "Quota block size"
-msgstr ""
+msgstr "할당량 블록 크기"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:54
 msgid "Quota block size on this share (usually 1024)"
-msgstr ""
+msgstr "이 공유의 할당량 블록 크기 (일반적으로 1024)"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:63
 msgid "Comment"
-msgstr ""
+msgstr "주석"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:63
 msgid "Short comment about this quota"
-msgstr ""
+msgstr "이 할당량에 대한 간단한 의견"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:78
 msgid "Quota warning message"
-msgstr ""
+msgstr "할당량 경고 메시지"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:81
 msgid "Charset"
-msgstr ""
+msgstr "문자셋"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:81
 msgid "Charset use for the message"
-msgstr ""
+msgstr "메시지의 문자셋 사용"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:85
 msgid "Mail command"
-msgstr ""
+msgstr "메일 명령"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:85
 msgid "Command allowing the server to send mails"
-msgstr ""
+msgstr "서버가 메일을 보내도록 허용하는 명령"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:89
 msgid "Support contact"
-msgstr ""
+msgstr "지원 연락처"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:89
 msgid "Email address to contact the administrator"
-msgstr ""
+msgstr "관리자에게 연락할 이메일 주소"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:93
 msgid "From"
-msgstr ""
+msgstr "From"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:93
 msgid "Email from which the email is sent"
-msgstr ""
+msgstr "이메일이 발송된 메일주소"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:97
 msgid "CC"
-msgstr ""
+msgstr "참조"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:97
 msgid "Send a copy of this email to"
-msgstr ""
+msgstr "이 이메일의 사본을 발송"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:101
 msgid "Subject"
@@ -113,51 +117,51 @@ msgstr "제목"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:101
 msgid "Subject of the sent warning email"
-msgstr ""
+msgstr "전송된 경고 이메일의 제목"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:105
 msgid "Content"
-msgstr ""
+msgstr "본문"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:105
 msgid "Content of the sent email"
-msgstr ""
+msgstr "전송된 이메일 내용"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:109
 msgid "Signature"
-msgstr ""
+msgstr "서명"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:109
 msgid "Signature to put at the end of the mail"
-msgstr ""
+msgstr "메일의 끝에 넣을 서명"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:115
 msgid "LDAP message support"
-msgstr ""
+msgstr "LDAP 메시지 지원"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:118
 msgid "LDAP server"
-msgstr ""
+msgstr "LDAP  서버"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:118
 msgid "The LDAP server to bind to"
-msgstr ""
+msgstr "바인딩 할 LDAP 서버"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:122
 msgid "Bind user dn"
-msgstr ""
+msgstr "사용자 DN 바인딩"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:122
 msgid "The user dn to use for bind"
-msgstr ""
+msgstr "바인드에 사용할 suer dn"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:126
 msgid "Bind user password"
-msgstr ""
+msgstr "사용자 비밀번호 바인딩"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:126
 msgid "The password of the user used for bind"
-msgstr ""
+msgstr "바인드에 사용된 사용자의 비밀번호"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:159
 msgid "Warning"
@@ -171,59 +175,59 @@ msgstr "잘못된 인코딩 값 : %s"
 #: admin/systems/services/quota/class_serviceQuota.inc:176
 #, php-format
 msgid "(%s by %s)"
-msgstr ""
+msgstr "(%s 중 %s)"
 
 #: personal/quota/class_quotaAccount.inc:101
 msgid "Quota"
-msgstr ""
+msgstr "할당량"
 
 #: personal/quota/class_quotaAccount.inc:102
 msgid "Plugin for quota support"
-msgstr ""
+msgstr "할당량 지원을 위한 플러그인"
 
 #: personal/quota/class_quotaAccount.inc:120
 msgid "Quota information"
-msgstr ""
+msgstr "할당량 정보"
 
 #: personal/quota/class_quotaAccount.inc:125
 msgid "Quota information for this user"
-msgstr ""
+msgstr "이 사용자의 할당량 정보"
 
 #: personal/quota/class_quotaAccount.inc:129
 msgid "Device this quota is for"
-msgstr ""
+msgstr "이 할당량의 기기"
 
 #: personal/quota/class_quotaAccount.inc:133
 msgid "Block soft limit"
-msgstr ""
+msgstr "소프트 제한 차단"
 
 #: personal/quota/class_quotaAccount.inc:133
 msgid "Soft limit for the block the user can use"
-msgstr ""
+msgstr "사용자가 사용할 수 있는 블록에 대한 소프트 제한"
 
 #: personal/quota/class_quotaAccount.inc:142
 msgid "Block hard limit"
-msgstr ""
+msgstr "하드 제한 차단"
 
 #: personal/quota/class_quotaAccount.inc:142
 msgid "Hard limit for the block the user can use"
-msgstr ""
+msgstr "사용자가 사용할 수있는 블록에 대한 하드 제한"
 
 #: personal/quota/class_quotaAccount.inc:151
 msgid "Inode soft limit"
-msgstr ""
+msgstr "Inode 소프트 제한"
 
 #: personal/quota/class_quotaAccount.inc:151
 msgid "Soft limit for the inodes the user can use"
-msgstr ""
+msgstr "사용자가 사용할 수있는 inode에 대한 소프트 제한"
 
 #: personal/quota/class_quotaAccount.inc:160
 msgid "Inode hard limit"
-msgstr ""
+msgstr "Inode 하드 제한"
 
 #: personal/quota/class_quotaAccount.inc:160
 msgid "Hard limit for the inodes the user can use"
-msgstr ""
+msgstr "사용자가 사용할 수있는 inode에 대한 하드 제한"
 
 #: personal/quota/class_quotaAccount.inc:169
 msgid "Server"
@@ -231,4 +235,4 @@ msgstr "서버"
 
 #: personal/quota/class_quotaAccount.inc:169
 msgid "Server hosting the device this quota is for"
-msgstr ""
+msgstr "이 할당량의 대상 장치를 호스팅하는 서버"

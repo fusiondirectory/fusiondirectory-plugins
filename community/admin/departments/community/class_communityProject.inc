@@ -20,38 +20,38 @@
 
 class communityProject extends communityOrganization
 {
-  var $objectclasses  = array('fdCommunityProject');
+  var $objectclasses  = ['fdCommunityProject'];
   var $displayHeader  = TRUE;
 
   static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Community project'),
       'plDescription'   => _('Community project dates and alternate address'),
-      'plObjectType'    => array('department'),
+      'plObjectType'    => ['department'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
     $infos = array_merge(
-      array(
-        'project' => array(
+      [
+        'project' => [
           'name'  => _('Project'),
-          'attrs' => array(
-            new StringAttribute (
+          'attrs' => [
+            new StringAttribute(
               _('Project full name'), _('Full name of this project'),
               'fdProjectFullName', FALSE
             ),
-            new StringAttribute (
+            new StringAttribute(
               _('Project key'), _('ID used for this project in other softwares or databases'),
               'fdProjectKey', FALSE
             ),
-          )
-        )
-      ),
+          ]
+        ]
+      ],
       parent::getAttributesInfo()
     );
     unset($infos['membership']);

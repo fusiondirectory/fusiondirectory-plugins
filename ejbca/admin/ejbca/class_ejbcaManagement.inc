@@ -20,25 +20,25 @@
 
 class ejbcaManagement extends simpleManagement
 {
-  protected $objectTypes      = array('ejbcaCertificate');
+  protected $objectTypes      = ['ejbcaCertificate'];
   protected $autoActions      = FALSE;
 
-  protected $autoFilterAttributes = array('dn', 'cn', 'description', 'userCertificate');
+  protected $autoFilterAttributes = ['dn', 'cn', 'description', 'userCertificate'];
 
   public static $skipSnapshots = TRUE;
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('EJBCA'),
       'plDescription' => _('EJBCA certificates management'),
       'plIcon'        => 'geticon.php?context=applications&icon=ejbca&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 50,
-      'plManages'     => array('ejbcaCertificate'),
+      'plManages'     => ['ejbcaCertificate'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 
   function configureHeadpage ()
@@ -46,18 +46,18 @@ class ejbcaManagement extends simpleManagement
     parent::configureHeadpage();
     unset($this->headpage->xmlData['actionmenu']['action'][0]);
     $downloadAction =
-      array(
+      [
         'name'  => 'download',
         'type'  => 'entry',
         'image' => 'geticon.php?context=actions&amp;icon=download&amp;size=16',
         'label' => _('Download'),
         'acl'   => 'ejbcaCertificate/ejbcaCertificate[r]',
-      );
+      ];
     array_unshift($this->headpage->xmlData['actiontriggers']['action'], $downloadAction);
     $this->registerAction('download', 'downloadEntry');
   }
 
-  function downloadEntry($action, array $targets)
+  function downloadEntry ($action, array $targets)
   {
     $entry = $this->headpage->getEntry($targets[0]);
     session::set('binary', $entry['userCertificate;binary'][0]);

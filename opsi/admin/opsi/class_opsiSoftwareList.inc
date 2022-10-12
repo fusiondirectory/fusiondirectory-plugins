@@ -21,38 +21,38 @@
 class opsiSoftwareList extends simplePlugin
 {
   var $mainTab = TRUE;
-  var $objectclasses   = array('opsiSoftwareList');
+  var $objectclasses   = ['opsiSoftwareList'];
 
   var $macAddress = NULL;
   var $products;
 
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('OPSI list'),
       'plDescription' => _('OPSI software list'),
       'plIcon'        => 'geticon.php?context=applications&icon=opsi-software-list&size=16',
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('opsiSoftwareList' => array(
+      'plObjectType'  => ['opsiSoftwareList' => [
         'name'    => _('OPSI software list'),
         'filter'  => 'objectClass=opsiSoftwareList',
         'ou'      => get_ou('opsiRDN'),
         'icon'    => 'geticon.php?context=applications&icon=opsi-software-list&size=16',
-      )),
-      'plForeignKeys'   => array(
+      ]],
+      'plForeignKeys'   => [
         'fdOpsiServerDn' => 'serverGeneric',
-      ),
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Infos'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('opsiRDN')),
           new SubmittingOPSIServerAttribute(
             _('OPSI server'), _('OPSI server to use for deployment'),
@@ -62,16 +62,16 @@ class opsiSoftwareList extends simplePlugin
             _('Name'), _('Name of this OPSI profile'),
             'cn', TRUE
           ),
-        )
-      ),
-      'products' => array(
+        ]
+      ],
+      'products' => [
         'name'  => _('Softwares'),
-        'attrs' => array(
+        'attrs' => [
           new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
               _('The localboot products to install with this list'),
               'fdOpsiLocalbootProduct',
-              array(
+              [
                 new SelectAttribute(
                   '', '',
                   'fdOpsiLocalbootProduct_product', TRUE
@@ -79,18 +79,18 @@ class opsiSoftwareList extends simplePlugin
                 new SelectAttribute(
                   '', '',
                   'fdOpsiLocalbootProduct_action', TRUE,
-                  array('setup', 'always', 'once', 'custom', 'userlogin', 'update')
+                  ['setup', 'always', 'once', 'custom', 'userlogin', 'update']
                 )
-              ),
+              ],
               '|', '', _('Localboot products')
             ),
             FALSE, // non-ordered
-            array(),
+            [],
             TRUE // edition
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -105,7 +105,7 @@ class opsiSoftwareList extends simplePlugin
   {
     global $config;
     if ($opsi_args == NULL) {
-      $opsi_args = array('id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript','updateScript','productVersion','packageVersion');
+      $opsi_args = ['id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript','updateScript','productVersion','packageVersion'];
     }
     if (!isset($this->products[$this->fdOpsiServerDn])) {
       $s_daemon = new supportDaemon();
@@ -135,7 +135,7 @@ class opsiSoftwareList extends simplePlugin
         );
         return FALSE;
       }
-      $localboots = $s_daemon->append_call('OPSI.get_localboots', $this->macAddress, array('args' => array($opsi_args)));
+      $localboots = $s_daemon->append_call('OPSI.get_localboots', $this->macAddress, ['args' => [$opsi_args]]);
       if ($s_daemon->is_error()) {
         msg_dialog::display(
           _('Failed to contact OPSI server'),
@@ -143,12 +143,12 @@ class opsiSoftwareList extends simplePlugin
         );
         return;
       }
-      $this->products[$this->fdOpsiServerDn]['localboots'] = array();
+      $this->products[$this->fdOpsiServerDn]['localboots'] = [];
       foreach ($localboots as $localboot) {
         $this->products[$this->fdOpsiServerDn]['localboots'][$localboot['id']] = $localboot;
       }
     }
-    $choices = array();
+    $choices = [];
     foreach ($this->products[$this->fdOpsiServerDn]['localboots'] as $id => $infos) {
       $choices[$id] = sprintf(_('%s (%s-%s)'), $infos['id'], $infos['productVersion'], $infos['packageVersion']);
     }
@@ -162,8 +162,8 @@ class opsiSoftwareList extends simplePlugin
   {
     $localboot = $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->getValue();
 
-    $actions = array();
-    foreach (array('setup', 'always', 'once', 'custom', 'userLogin', 'update') as $action) {
+    $actions = [];
+    foreach (['setup', 'always', 'once', 'custom', 'userLogin', 'update'] as $action) {
       if (!empty($this->products[$this->fdOpsiServerDn]['localboots'][$localboot][$action.'Script'])) {
         $actions[] = strtolower($action);
       }

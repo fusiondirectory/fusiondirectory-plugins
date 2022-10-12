@@ -22,40 +22,42 @@
 
 class posixGroup extends simplePlugin
 {
-  public $objectclasses = array('posixGroup');
-  protected $locks      = array();
+  public $objectclasses = ['posixGroup'];
+  protected $locks      = [];
 
-  static function plInfo()
+  static function plInfo ()
   {
     if (class_available('mixedGroup')) {
-      return array();
+      return [];
     }
-    return array(
+    return [
       'plShortName'   => _('Group'),
       'plDescription' => _('POSIX group information'),
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('group' => array(
+      'plObjectType'  => ['group' => [
         'name'        => _('POSIX group'),
         'description' => _('POSIX user group'),
         'ou'          => get_ou('groupRDN'),
         'filter'      => 'objectClass=posixGroup',
         'icon'        => 'geticon.php?context=types&icon=user-group&size=16',
         'mainAttr'    => 'cn',
-      )),
-      'plForeignKeys'  => array(
-        'memberUid' => array('user','uid')
-      ),
+      ]],
+      'plForeignKeys'  => [
+        'memberUid' => ['user','uid']
+      ],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    global $config;
+
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('groupRDN')),
           new StringAttribute(
             _('Name'), _('Name of this group'),
@@ -73,38 +75,38 @@ class posixGroup extends simplePlugin
           new IntAttribute(
             _('GID'), _('GID value for this group'),
             'gidNumber', FALSE,
-            0, FALSE, ''
+            $config->get_cfg_value('minId', 0), FALSE, ''
           )
-        )
-      ),
-      'members' => array(
+        ]
+      ],
+      'members' => [
         'name'  => _('Group members'),
-        'attrs' => array(
+        'attrs' => [
           new UsersAttribute(
             '', _('Group members'),
             'memberUid', FALSE,
-            array(), 'uid'
+            [], 'uid'
           )
-        )
-      ),
-      'system_trust' => array(
+        ]
+      ],
+      'system_trust' => [
         'name'  => _('System trust'),
         'icon'  => 'geticon.php?context=status&icon=locked&size=16',
-        'attrs' => array(
+        'attrs' => [
           new SelectAttribute(
             _('Trust mode'), _('Type of authorization for those hosts'),
             'trustMode', FALSE,
-            array('', 'fullaccess', 'byhost'),
+            ['', 'fullaccess', 'byhost'],
             '',
-            array(_('disabled'), _('full access'), _('allow access to these hosts'))
+            [_('disabled'), _('full access'), _('allow access to these hosts')]
           ),
           new SystemsAttribute(
             '', _('Only allow this group to connect to this list of hosts'),
             'host', FALSE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -113,12 +115,12 @@ class posixGroup extends simplePlugin
 
     $this->attributesAccess['trustMode']->setInLdap(FALSE);
     $this->attributesAccess['trustMode']->setManagedAttributes(
-      array(
-        'multiplevalues' => array('notbyhost' => array('','fullaccess')),
-        'erase' => array(
-          'notbyhost' => array('host')
-        )
-      )
+      [
+        'multiplevalues' => ['notbyhost' => ['','fullaccess']],
+        'erase' => [
+          'notbyhost' => ['host']
+        ]
+      ]
     );
     if ((count($this->host) == 1) && ($this->host[0] == '*')) {
       $this->trustMode = 'fullaccess';
@@ -129,32 +131,26 @@ class posixGroup extends simplePlugin
     $this->attributesAccess['gidNumber']->setUnique(TRUE);
     $this->attributesAccess['force_id']->setInLdap(FALSE);
     $this->attributesAccess['force_id']->setManagedAttributes(
-      array(
-        'disable' => array (
-          FALSE => array (
+      [
+        'disable' => [
+          FALSE => [
             'gidNumber',
-          )
-        )
-      )
+          ]
+        ]
+      ]
     );
-  }
-
-  function check()
-  {
-    global $config;
-    $message = parent::check();
-
-    /* Check ID's if they are forced by user */
-    if ($this->force_id) {
-      if ($this->gidNumber < $config->get_cfg_value("minId")) {
-        $message[] = msgPool::toosmall(_("GID"), $config->get_cfg_value("minId"));
+    if ($this->is_template) {
+      /* Template specific handling */
+      if (isset($this->attrs['force_id'])) {
+        $this->force_id = ($this->attrs['force_id'][0] != 'FALSE');
+      }
+      if (!$this->force_id) {
+        $this->gidNumber = '';
       }
     }
-
-    return $message;
   }
 
-  function resetCopyInfos()
+  function resetCopyInfos ()
   {
     parent::resetCopyInfos();
 
@@ -163,15 +159,19 @@ class posixGroup extends simplePlugin
     $this->gidNumber = "";
   }
 
-  function prepare_save()
+  function prepare_save ()
   {
     if (!$this->force_id) {
       /* Handle gidNumber */
-      if ($this->attributesAccess['gidNumber']->getInitialValue() != "") {
-        $this->gidNumber = $this->attributesAccess['gidNumber']->getInitialValue();
+      if ($this->is_template) {
+        $this->gidNumber = '';
       } else {
-        $this->gidNumber = posixAccount::getNextIdLock('gidNumber', $this->dn);
-        $this->locks[] = 'gidNumber';
+        if ($this->attributesAccess['gidNumber']->getInitialValue() != '') {
+          $this->gidNumber = $this->attributesAccess['gidNumber']->getInitialValue();
+        } else {
+          $this->gidNumber = posixAccount::getNextIdLock('gidNumber', $this->dn);
+          $this->locks[] = 'gidNumber';
+        }
       }
     }
 
@@ -181,7 +181,7 @@ class posixGroup extends simplePlugin
     }
 
     if ($this->trustMode == 'fullaccess') {
-      $this->attrs['host'] = array('*');
+      $this->attrs['host'] = ['*'];
     }
 
     /* Trust accounts */
@@ -191,33 +191,45 @@ class posixGroup extends simplePlugin
       unset($this->attrs['objectClass'][$key]);
     }
 
+    if ($this->is_template) {
+      if ($this->force_id) {
+        if ($this->gidNumber == '%askme%') {
+          $this->attrs['force_id'] = '%askme%';
+        } else {
+          $this->attrs['force_id'] = 'TRUE';
+        }
+      } else {
+        $this->attrs['force_id']   = 'FALSE';
+      }
+    }
+
     return $errors;
   }
 
-  function save()
+  function save ()
   {
     $errors = parent::save();
 
     foreach ($this->locks as $lock) {
       del_lock($lock);
     }
-    $this->locks = array();
+    $this->locks = [];
 
     return $errors;
   }
 
-  function addUser($dn, $uid)
+  function addUser ($dn, $uid)
   {
     $this->attributesAccess['memberUid']->addValue($dn,
-      array(
+      [
         'dn'  => $dn,
-        'uid' => array($uid),
-        'cn'  => array($uid)
-      )
+        'uid' => [$uid],
+        'cn'  => [$uid]
+      ]
     );
   }
 
-  function removeUser($uid)
+  function removeUser ($uid)
   {
     $this->attributesAccess['memberUid']->searchAndRemove($uid);
   }

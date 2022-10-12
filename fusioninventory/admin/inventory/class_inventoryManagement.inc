@@ -25,27 +25,27 @@ class inventoryManagement extends simpleManagement
   protected $baseMode               = FALSE;
   protected $skipCpHandler          = TRUE;
   protected $autoActions            = FALSE;
-  protected $autoFilterAttributes   = array('dn', 'cn', 'macAddress');
+  protected $autoFilterAttributes   = ['dn', 'cn', 'macAddress'];
 
-  protected $objectTypes = array('inventory');
+  protected $objectTypes = ['inventory'];
 
   public static $skipSnapshots = TRUE;
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Inventory objects'),
       'plDescription' => _('Browse inventory objects'),
       'plIcon'        => 'geticon.php?context=applications&icon=fusioninventory&size=48',
       'plSection'     => 'reporting',
       'plPriority'    => 5,
-      'plManages'     => array('inventory'),
+      'plManages'     => ['inventory'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 
-  function __construct()
+  function __construct ()
   {
     $this->listXMLPath  = get_template_path('inventory-list.xml', TRUE, dirname(__FILE__));
     parent::__construct();
@@ -57,17 +57,17 @@ class inventoryManagement extends simpleManagement
     $this->headpage->registerElementFilter('filterOS', 'inventoryManagement::filterOS');
   }
 
-  static function filterOS()
+  static function filterOS ()
   {
     $pid    = func_get_arg(0);
     $row    = func_get_arg(1);
     $dn     = func_get_arg(2);
-    $trans  = array();
+    $trans  = [];
 
     global $config;
     $ldap = $config->get_ldap_link();
     $ldap->cd($dn);
-    $ldap->search('(objectClass=fdInventoryOPERATINGSYSTEM)', array('fdInventoryNAME','fdInventoryFQDN'), 'one');
+    $ldap->search('(objectClass=fdInventoryOPERATINGSYSTEM)', ['fdInventoryNAME','fdInventoryFQDN'], 'one');
     while ($attrs = $ldap->fetch()) {
       $link = $attrs['fdInventoryNAME'][0];
       if (isset($attrs['fdInventoryFQDN'][0])) {

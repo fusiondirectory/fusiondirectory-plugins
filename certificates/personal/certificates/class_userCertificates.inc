@@ -20,25 +20,25 @@
 
 class CertificateOrderedArrayAttribute extends OrderedArrayAttribute
 {
-  protected function genRowIcons($key, $value)
+  protected function genRowIcons ($key, $value)
   {
     $id = $this->getHtmlId();
-    list ($img, $nbicons) = parent::genRowIcons($key, $value);
+    list($img, $nbicons) = parent::genRowIcons($key, $value);
     $img = $this->renderInputField(
       'image', $id.'_download_'.$key,
-      array(
+      [
         'src'   => 'geticon.php?context=actions&amp;icon=document-save&amp;size=16',
         'title' => _('Download'),
         'alt'   => _('Download'),
         'class' => 'center'
-      )
+      ]
     ).$img;
     $nbicons++;
 
-    return array ($img, $nbicons);
+    return  [$img, $nbicons];
   }
 
-  protected function handlePostValueActions($id, $postValue)
+  protected function handlePostValueActions ($id, $postValue)
   {
     if (parent::handlePostValueActions($id, $postValue)) {
       return TRUE;
@@ -72,9 +72,9 @@ class CertificateFileAttribute extends FileAttribute
     }
     $infos = openssl_x509_parse($value, TRUE);
     if (empty($infos)) {
-      return array(_('Unknown format'), $this->displayValue($this->getValue()), '');
+      return [_('Unknown format'), $this->displayValue($this->getValue()), ''];
     }
-    $values = array('','','');
+    $values = ['','',''];
     if (isset($infos['subject']['CN'])) {
       $values[0] = $infos['subject']['CN'];
     }
@@ -109,38 +109,38 @@ class CertificateFileAttribute extends FileAttribute
 class userCertificates extends simplePlugin
 {
   var $displayHeader = TRUE;
-  var $objectclasses = array('strongAuthenticationUser');
+  var $objectclasses = ['strongAuthenticationUser'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Certificates'),
       'plDescription'   => _('User certificates'),
       'plSelfModify'    => TRUE,
-      'plObjectType'    => array('user'),
+      'plObjectType'    => ['user'],
       'plIcon'          => 'geticon.php?context=types&icon=certificate&size=48',
       'plSmallIcon'     => 'geticon.php?context=types&icon=certificate&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Certificates'),
-        'attrs' => array(
+        'attrs' => [
           new CertificateOrderedArrayAttribute(
-            new CertificateFileAttribute (
+            new CertificateFileAttribute(
               '', _('Certificate content'),
               'userCertificate;binary', TRUE
             ),
             FALSE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

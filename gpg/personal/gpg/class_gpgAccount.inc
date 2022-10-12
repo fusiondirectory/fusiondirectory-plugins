@@ -21,37 +21,37 @@
 class gpgAccount extends simplePlugin
 {
   var $displayHeader = TRUE;
-  var $objectclasses = array('fdGpgAccount');
+  var $objectclasses = ['fdGpgAccount'];
 
   // The main function : information about attributes
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('GPG keys'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
+        'class' => ['fullwidth'],
+        'attrs' => [
           new PgpKeyAttribute(
             '', _('GPG keys of this user'),
             'fdUserKeyDN', TRUE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('GPG'),
       'plDescription'   => _('Edit user\'s GPG IDs'),
       'plSelfModify'    => TRUE,
-      'plObjectType'    => array('user'),
+      'plObjectType'    => ['user'],
       'plIcon'          => 'geticon.php?context=applications&icon=gpg&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=gpg&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 }
 ?>

@@ -20,35 +20,35 @@
 
 class nagiosConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdNagiosPluginConf');
+  var $objectclasses  = ['fdNagiosPluginConf'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Nagios configuration'),
       'plDescription'   => _('FusionDirectory nagios plugin configuration'),
       'plSelfModify'    => FALSE,
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Nagios'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Lconf prefix'), _('Prefix used for lconf LDAP fields'),
             'fdLconfPrefix', TRUE,
             'lconf'
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

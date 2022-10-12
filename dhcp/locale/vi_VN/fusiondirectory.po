@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-06-27 08:29+0000\n"
+"POT-Creation-Date: 2022-07-28 17:06+0000\n"
 "PO-Revision-Date: 2016-08-29 15:08+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Vietnamese (Viet Nam) (https://www.transifex.com/fusiondirectory/teams/12202/vi_VN/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:39
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:39
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:39
-#: admin/systems/class_dhcpSystem.inc:291
+#: admin/systems/class_dhcpSystem.inc:304
 msgid "DHCP"
 msgstr ""
 
@@ -501,31 +501,31 @@ msgstr ""
 msgid "IP"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:233
+#: admin/systems/class_dhcpSystem.inc:246
 #, php-format
 msgid ""
 "\"%s\" is locked (by \"%s\" since %s), could not save modifications to this "
 "DHCP configuration"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:256
+#: admin/systems/class_dhcpSystem.inc:269
 #, php-format
 msgid "The value for multivaluated field \"%s\" is not an array"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:292
+#: admin/systems/class_dhcpSystem.inc:305
 msgid "Edit the DHCP zones of a system"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:306
+#: admin/systems/class_dhcpSystem.inc:319
 msgid "DHCP zones"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:310
+#: admin/systems/class_dhcpSystem.inc:323
 msgid "DHCP hosts declared for this system"
 msgstr ""
 
-#: admin/systems/class_dhcpSystem.inc:374
+#: admin/systems/class_dhcpSystem.inc:387
 #, php-format
 msgid "The ip %s is not in the network %s/%d"
 msgstr ""

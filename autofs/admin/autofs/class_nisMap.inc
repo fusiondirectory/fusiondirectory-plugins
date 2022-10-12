@@ -22,40 +22,40 @@ class nisMap extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses  = array('nisMap', 'top');
+  var $objectclasses  = ['nisMap', 'top'];
 
   /* Return plugin information for acl handling */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Mount point'),
       'plDescription'   => _('Autofs mount point'),
-      'plObjectType'    => array('nisMap' => array(
+      'plObjectType'    => ['nisMap' => [
         'name'        => _('Mount point'),
         'filter'      => 'objectClass=nisMap',
         'ou'          => get_ou('autofsRDN'),
         'icon'        => 'geticon.php?context=applications&icon=autofs-nis-netmap&size=16',
         'mainAttr'    => 'nisMapName',
-      )),
+      ]],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Mount point'),
-        'attrs' => array(
+        'attrs' => [
           new BaseSelectorAttribute(get_ou('autofsRDN')),
-          new HostNameAttribute (
+          new HostNameAttribute(
             _('Name'), _('Name of the mount point'),
             'nisMapName', TRUE
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }
 

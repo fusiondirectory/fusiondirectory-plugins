@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-06-27 08:29+0000\n"
+"POT-Creation-Date: 2022-07-28 17:06+0000\n"
 "PO-Revision-Date: 2016-08-29 15:08+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/fusiondirectory/teams/12202/cs_CZ/)\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: admin/dhcp/sections/class_dhcpTSigKey.inc:39
 #: admin/dhcp/sections/class_dhcpFailOverPeer.inc:39
 #: admin/dhcp/sections/class_dhcpDnsZone.inc:39
-#: admin/systems/class_dhcpSystem.inc:291
+#: admin/systems/class_dhcpSystem.inc:304
 msgid "DHCP"
 msgstr "DHCP"
 
@@ -528,7 +528,7 @@ msgstr "Mac"
 msgid "IP"
 msgstr "IP adresa"
 
-#: admin/systems/class_dhcpSystem.inc:233
+#: admin/systems/class_dhcpSystem.inc:246
 #, php-format
 msgid ""
 "\"%s\" is locked (by \"%s\" since %s), could not save modifications to this "
@@ -537,24 +537,24 @@ msgstr ""
 "„%s“ je uzamčeno („%s“ od „%s“), není možné uložit úpravy v tomto DHCP "
 "nastavení"
 
-#: admin/systems/class_dhcpSystem.inc:256
+#: admin/systems/class_dhcpSystem.inc:269
 #, php-format
 msgid "The value for multivaluated field \"%s\" is not an array"
 msgstr "Hodnota pro vícehodnotovou kolonku „%s“ není pole"
 
-#: admin/systems/class_dhcpSystem.inc:292
+#: admin/systems/class_dhcpSystem.inc:305
 msgid "Edit the DHCP zones of a system"
 msgstr "Upravit DHCP zóny systému"
 
-#: admin/systems/class_dhcpSystem.inc:306
+#: admin/systems/class_dhcpSystem.inc:319
 msgid "DHCP zones"
 msgstr "DHCP zóny"
 
-#: admin/systems/class_dhcpSystem.inc:310
+#: admin/systems/class_dhcpSystem.inc:323
 msgid "DHCP hosts declared for this system"
 msgstr "DHCP stroje deklarované pro tento systém"
 
-#: admin/systems/class_dhcpSystem.inc:374
+#: admin/systems/class_dhcpSystem.inc:387
 #, php-format
 msgid "The ip %s is not in the network %s/%d"
 msgstr "IP adresa %s není v síti %s/%d"

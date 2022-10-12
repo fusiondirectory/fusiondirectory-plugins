@@ -39,12 +39,48 @@ This question can be solved by creating:
 * A plugin for its management in FusionDirectory with the simple plugin api
 * An Argonaut module for the client installed on the server
 
+## Installation and upgrade of FusionDirectory
+
+The installation and upgrade information is available on [Install FusionDirectory][fusiondirectory-install]
+
+## Migration to FusionDirectory
+
+To migrate an existing LDAP tree, you've to do all steps [Install FusionDirectory][fusiondirectory-install],
+plus some modifications:
+
+* FusionDirectory only shows users that have the objectClass inetOrgPerson
+
+* FusionDirectory only recognizes subtrees (or departments in FusionDirectory's view of things) that have the objectClass gosaDepartment.
+  You can hide subtrees from FusionDirectory by not putting this objectClass inside.
+
+The FusionDirectory setup may be used to do these migrations, but it is not meant
+to work in every possible circumstance. Please be carefull when using it on
+productive system.
+
+That should be all. Entries should be visible in FusionDirectory now.
+Be aware that if your naming policy of user cn's differs from the way FusionDirectory handles it, the entries get rewritten to a FusionDirectory style dn.
+
 ## Get help
 
-There are a couple ways you can try [to get help][get help].You can also join the `#fusiondirectory` IRC channel at freenode.net.
+### Community support
 
-You can [register on our system][register] and enter issues [FusionDirectory][issues-core] for the core program, and 
-[FusionDirectory Plugins][issues-plugins] for plugins.
+There are a couple ways you can try [to get help][get help].You can also join the `#fusiondirectory` IRC channel at libera.chat.
+
+### Professional support
+
+Professional support is provided through of subscription.
+
+We have two type of subscription :
+
+* [FusionDirectory][subscription-fusiondirectory] : Global subscription for FusionDirectory and all the plugins
+* [FusionDirectory Plus][subscription-fusiondirectory-plus] : Expert Support on Education, Deployement and Infrastructure plugins
+
+The subscription provides access to FusionDirectory's stable enterprise repository, providing reliable software updates and security enhancements,
+as well as technical help and support.
+
+Choose the plan that's right for you. Our subscriptions are flexible and scalable according to your needs
+
+The subscription period is one year from the date of purchase and gives you access to the extensive infrastructure of enterprise-class software and services.
 
 ## IRC Etiquette
 
@@ -55,10 +91,22 @@ You can [register on our system][register] and enter issues [FusionDirectory][is
 * You should treat IRC as what it is: asynchronous chat.  Sure the messages can
   be instant but in most channels people are in different time zones.  At times
   chat replies can be in excess of 24hrs.
-  
-## Donate
 
-If you like [FusionDirectory][FusionDirectory] and would like to [donate][donate-liberapay] even a small amount you can go to our Liberapay account
+### Best practice badge
+
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/351/badge)](https://bestpractices.coreinfrastructure.org/projects/351)
+  
+## Crowfunding
+
+If you like us and want to send us a small contribution you can use the following crowfunding services
+
+* [donate-liberapay]
+
+* [donate-kofi]
+
+* [donate-opencollective]
+
+* [donate-communitybridge]
   
 ## License
 
@@ -66,12 +114,20 @@ If you like [FusionDirectory][FusionDirectory] and would like to [donate][donate
 
 [FusionDirectory]: https://www.fusiondirectory.org/
 
-[get help]: https://www.fusiondirectory.org/contact-us/
+[fusiondirectory-install]: https://fusiondirectory-user-manual.readthedocs.io/en/1.3/fusiondirectory/install/index.html
+
+[get help]: https://www.fusiondirectory.org/en/communaute/
+
+[subscription-fusiondirectory]: https://www.fusiondirectory.org/en/subscription-fusiondirectory/
+
+[subscription-fusiondirectory-plus]: https://www.fusiondirectory.org/en/subscriptions-fusiondirectory-plus/
 
 [register]: https://register.fusiondirectory.org
 
-[issues-core]: https://gitlab.fusiondirectory.org/fusiondirectory/fd/issues
-
-[issues-plugins]: https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/issues
-
 [donate-liberapay]: https://liberapay.com/fusiondirectory/donate
+
+[donate-kofi]: https://ko-fi.com/fusiondirectory
+
+[donate-opencollective]: https://opencollective.com/fusiondirectory
+
+[donate-communitybridge]: https://funding.communitybridge.org/projects/fusiondirectory

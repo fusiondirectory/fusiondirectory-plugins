@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-06-27 08:29+0000\n"
+"POT-Creation-Date: 2022-07-28 17:06+0000\n"
 "PO-Revision-Date: 2016-08-29 15:14+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: Arabic (https://www.transifex.com/fusiondirectory/teams/12202/ar/)\n"
@@ -143,19 +143,21 @@ msgid "Which attribute will be used to create accounts."
 msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:50
-msgid "Mail user template"
+msgid "User account template"
 msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:51
-msgid "Override the user account creation syntax."
+msgid ""
+"Override the user account creation syntax. Default is %PREFIX%%UATTRIB%."
 msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:55
-msgid "Mail folder template"
+msgid "Group account template"
 msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:56
-msgid "Override the methods default account creation syntax."
+msgid ""
+"Override the group account creation syntax. Default is %PREFIX%%UATTRIB%."
 msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:60
@@ -163,8 +165,7 @@ msgid "Use cyrus UNIX style"
 msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:61
-msgid ""
-"Determines if 'foo/bar' or 'foo.bar' should be uses as namespaces in IMAP."
+msgid "Determines if \"foo/bar\" or \"foo.bar\" should be uses as namespaces in IMAP."
 msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:65
@@ -230,6 +231,10 @@ msgstr ""
 
 #: personal/mail/class_mailAccount.inc:108
 msgid "Quota size"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:108
+msgid "Define quota size in MiB"
 msgstr ""
 
 #: personal/mail/class_mailAccount.inc:115

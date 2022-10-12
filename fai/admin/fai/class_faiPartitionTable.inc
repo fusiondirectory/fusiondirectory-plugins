@@ -28,7 +28,7 @@ class DiskEntryDialog extends GenericDialog
 
   protected $initialDialogValue = NULL;
 
-  function __construct($simplePlugin, $attribute, $disk = array(), $diskType = 'disk')
+  function __construct ($simplePlugin, $attribute, $disk = [], $diskType = 'disk')
   {
     $this->attribute = $attribute;
     if (isset($disk['FAIdiskType'])) {
@@ -78,7 +78,7 @@ class DiskEntryDialog extends GenericDialog
 class PartitionTableAttribute extends DialogOrderedArrayAttribute
 {
   protected $dialogClass = 'DiskEntryDialog';
-  protected $partitionAttributes  = array(
+  protected $partitionAttributes  = [
     'cn','description',
     'FAIpartitionNr',     'FAIpartitionSize',
     'FAIpartitionType',   'FAIpartitionFlags',
@@ -86,16 +86,16 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
     'FAIfsType',
     'FAIfsCreateOptions', 'FAIfsTuneOptions',
     'FAIlvmDevice'
-  );
+  ];
 
   protected $diskFilter = '(&(objectClass=FAIclass)(objectClass=FAIpartitionDisk))';
   protected $partFilter = '(&(objectClass=FAIclass)(objectClass=FAIpartitionEntry))';
 
   public $disks;
 
-  function __construct ($label, $description, $ldapName, $values = array(), $acl = '')
+  function __construct ($label, $description, $ldapName, $values = [], $acl = '')
   {
-    parent::__construct ($label, $description, $ldapName, FALSE, $values, $acl);
+    parent::__construct($label, $description, $ldapName, FALSE, $values, $acl);
     $this->disks = &$this->value;
   }
 
@@ -105,14 +105,14 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
     $buttons = $this->renderInputField(
       'submit',
       'add'.$id.'_dialog',
-      array('value' => _('Add disk'))
+      ['value' => _('Add disk')]
     );
 
     if (!isset($this->value['raid'])) {
       $buttons .= $this->renderInputField(
         'submit',
         'add'.$id.'_dialog_raid',
-        array('value' => _('Add RAID'))
+        ['value' => _('Add RAID')]
       );
     }
 
@@ -120,7 +120,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
       $buttons .= $this->renderInputField(
         'submit',
         'add'.$id.'_dialog_lvm',
-        array('value' => _('Add LVM'))
+        ['value' => _('Add LVM')]
       );
     }
 
@@ -128,7 +128,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
       $buttons .= $this->renderInputField(
         'submit',
         'add'.$id.'_dialog_cryptsetup',
-        array('value' => _('Add cryptsetup'))
+        ['value' => _('Add cryptsetup')]
       );
     }
 
@@ -142,13 +142,13 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
       parent::loadPostValue();
       parent::applyPostValue();
       if (isset($_POST['add'.$id.'_dialog'])) {
-        $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, array(), 'disk'));
+        $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, [], 'disk'));
       } elseif (isset($_POST['add'.$id.'_dialog_raid'])) {
-        $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, array(), 'raid'));
+        $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, [], 'raid'));
       } elseif (isset($_POST['add'.$id.'_dialog_lvm'])) {
-        $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, array(), 'lvm'));
+        $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, [], 'lvm'));
       } elseif (isset($_POST['add'.$id.'_dialog_cryptsetup'])) {
-        $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, array(), 'cryptsetup'));
+        $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, [], 'cryptsetup'));
       }
     }
   }
@@ -160,14 +160,14 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
       /* Fetch disks */
       $ldap = $config->get_ldap_link();
       $ldap->cd($attrs['dn']);
-      $ldap->search($this->diskFilter, array('*'), 'one');
-      $this->value = array();
+      $ldap->search($this->diskFilter, ['*'], 'one');
+      $this->value = [];
       while ($subattrs = $ldap->fetch()) {
-        $diskInfos = array(
+        $diskInfos = [
           'description' => '',
           'FAIdiskType' => 'disk'
-        );
-        foreach (array('cn', 'description','FAIdiskType') as $attr) {
+        ];
+        foreach (['cn', 'description','FAIdiskType'] as $attr) {
           if (isset($subattrs[$attr][0])) {
             $diskInfos[$attr] = $subattrs[$attr][0];
           }
@@ -177,7 +177,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
         }
 
         // Get disk options, without 'count' index.
-        $diskInfos['FAIdiskOption'] = array();
+        $diskInfos['FAIdiskOption'] = [];
         if (isset($subattrs['FAIdiskOption'])) {
           for ($i = 0; $i < $subattrs['FAIdiskOption']['count']; $i++) {
             $diskInfos['FAIdiskOption'][] = $subattrs['FAIdiskOption'][$i];
@@ -194,17 +194,17 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
 
         $diskInfos['dn']                              = $subattrs['dn'];
         $this->value[$diskInfos['cn']]                = $diskInfos;
-        $this->value[$diskInfos['cn']]['partitions']  = array();
+        $this->value[$diskInfos['cn']]['partitions']  = [];
       }
       /* Fetch partitions */
       foreach ($this->value as $name => $disk) {
         $ldap->cd($disk['dn']);
-        $ldap->search($this->partFilter, array('*'), 'one');
+        $ldap->search($this->partFilter, ['*'], 'one');
         while ($obj = $ldap->fetch()) {
-          $partitionInfos = array(
+          $partitionInfos = [
             'description'       => '',
             'FAIpartitionSize'  => '',
-          );
+          ];
           foreach ($this->partitionAttributes as $attr) {
             if (isset($obj[$attr][0])) {
               $partitionInfos[$attr] = $obj[$attr][0];
@@ -228,8 +228,8 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
   {
     /* First delete all old nodes */
     $ldap->cd($this->plugin->dn);
-    $ldap->search($this->diskFilter, array('dn'), 'one');
-    $delete = array();
+    $ldap->search($this->diskFilter, ['dn'], 'one');
+    $delete = [];
     while ($attrs = $ldap->fetch()) {
       $delete[] = $attrs['dn'];
     }
@@ -242,14 +242,14 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
     /* Then add our values */
     foreach ($this->value as $val) {
       $attrs = $val;
-      $attrs['objectClass'] = array('top','FAIClass','FAIpartitionDisk');
+      $attrs['objectClass'] = ['top','FAIClass','FAIpartitionDisk'];
       unset($attrs['partitions']);
       $disk_dn = $this->compute_disk_dn($val);
       $this->ldap_add($ldap, $disk_dn, $attrs);
       /* disk added, now add partition */
       foreach ($val['partitions'] as $part) {
         $attrs = $part;
-        $attrs['objectClass'] = array('top','FAIClass','FAIpartitionEntry');
+        $attrs['objectClass'] = ['top','FAIClass','FAIpartitionEntry'];
         $dn = $this->compute_part_dn($part, $disk_dn);
         $this->ldap_add($ldap, $dn, $attrs);
       }
@@ -281,14 +281,14 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  protected function getAttributeArrayValue($key, $value)
+  protected function getAttributeArrayValue ($key, $value)
   {
-    return array(
+    return [
       $value['FAIdiskType'],
       $value['cn'],
       $value['description'],
       count($value['partitions']),
-    );
+    ];
   }
 
   function diskConfigured ($disk)
@@ -303,56 +303,56 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
 
 class faiPartitionTable extends faiSimplePluginClass
 {
-  var $objectclasses    = array('top','FAIclass','FAIpartitionTable');
+  var $objectclasses    = ['top','FAIclass','FAIpartitionTable'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Partition table'),
       'plDescription' => _('FAI partition table'),
-      'plObjectType'  => array(
-        'faiPartitionTable' => array(
+      'plObjectType'  => [
+        'faiPartitionTable' => [
           'name'        => _('FAI partition table'),
           'filter'      => 'objectClass=FAIpartitionTable',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiPartitionTableRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-partitiontable&size=16'
-        )
-      ),
+        ]
+      ],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Properties'),
-        'attrs' => array(
-          new HostNameAttribute (
+        'attrs' => [
+          new HostNameAttribute(
             _('Class name'), _('Partition table class name'),
             'cn', TRUE
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Description'), _('Short description of the class'),
             'description', FALSE
           ),
-        )
-      ),
-      'table' => array(
+        ]
+      ],
+      'table' => [
         'name'  => _('Discs'),
-        'class' => array('fullwidth'),
-        'attrs' => array(
-          new HiddenAttribute (
+        'class' => ['fullwidth'],
+        'attrs' => [
+          new HiddenAttribute(
             'FAIpartitionMethod', FALSE, 'setup-storage'
           ),
-          new PartitionTableAttribute (
+          new PartitionTableAttribute(
             '', _('Partitions in this class'), 'FAIpartitions'
           )
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -362,7 +362,7 @@ class faiPartitionTable extends faiSimplePluginClass
     $this->attributesAccess['cn']->setUnique(TRUE);
   }
 
-  protected function shouldSave()
+  protected function shouldSave ()
   {
     /* We need ldap_save to always run */
     return TRUE;
@@ -376,9 +376,9 @@ class faiPartitionTable extends faiSimplePluginClass
     return $errors;
   }
 
-  function getUsedDiskNames()
+  function getUsedDiskNames ()
   {
-    $ret = array();
+    $ret = [];
     foreach ($this->FAIpartitions as $disk) {
       $ret[] = $disk['cn'];
     }

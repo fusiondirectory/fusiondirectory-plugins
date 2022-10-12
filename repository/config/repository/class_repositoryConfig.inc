@@ -20,42 +20,42 @@
 
 class repositoryConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdRepositoryPluginConf');
+  var $objectclasses  = ['fdRepositoryPluginConf'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Repository configuration'),
       'plDescription'   => _('FusionDirectory repository plugin configuration'),
       'plSelfModify'    => FALSE,
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Repository'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Repository RDN'), _('Branch in which repository objects will be stored'),
             'fdRepositoryRDN', TRUE,
             'ou=repository'
           ),
           new SetAttribute(
-            new StringAttribute (
+            new StringAttribute(
               _('Repository types'), _('Available repository types'),
               'fdRepositoryTypes', TRUE
             ),
-            array('debian')
+            ['debian']
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

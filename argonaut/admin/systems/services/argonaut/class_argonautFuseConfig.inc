@@ -21,18 +21,18 @@
 
 class argonautFuseConfig extends simpleService
 {
-  var $objectclasses  = array('argonautFuseConfig');
+  var $objectclasses  = ['argonautFuseConfig'];
 
   /* Return plugin information for acl handling */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Argonaut Fuse'),
       'plDescription'   => _('Argonaut Fuse settings'),
       'plIcon'          => 'geticon.php?context=applications&icon=argonaut-fuse&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -40,39 +40,39 @@ class argonautFuseConfig extends simpleService
    */
   static function getAttributesInfo ()
   {
-    return array (
-      'main' => array (
+    return  [
+      'main' => [
         'name'  => _('Basic settings'),
-        'attrs' => array (
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Default mode'),
             '',
             'argonautFuseDefaultMode',
             TRUE,
             'install'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Log directory'),
             _('Directory in which argonaut-fuse will store its log'),
             'argonautFuseLogDir',
             TRUE,
             '/var/log/argonaut'
           ),
-        )
-      ),
-      'tftp' => array (
+        ]
+      ],
+      'tftp' => [
         'name'  => _('TFTP'),
-        'attrs' => array (
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Pxelinux cfg path'),
             _('Path where argonaut-fuse should store pxelinux.cfg'),
             'argonautFusePxelinuxCfg',
             TRUE,
             '/srv/tftp/pxelinux.cfg'
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 
   function __construct ($dn = NULL, $parent = NULL)
@@ -81,11 +81,11 @@ class argonautFuseConfig extends simpleService
     parent::__construct($dn, $parent);
 
     /* Load modules */
-    $this->plugin = array();
+    $this->plugin = [];
     foreach ($config->data['TABS']['FUSEMODULETABS'] as $plug) {
-      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $plug['CLASS'], "Loading Fuse module");
+      @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $plug['CLASS'], "Loading Fuse module");
       if (!plugin_available($plug['CLASS'])) {
-        @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $plug['CLASS'], "Fuse module not available");
+        @DEBUG(DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $plug['CLASS'], "Fuse module not available");
         continue;
       }
       $name = $plug['CLASS'];
@@ -119,7 +119,7 @@ class argonautFuseConfig extends simpleService
 
 
   /* Save data to object */
-  function save_object()
+  function save_object ()
   {
     parent::save_object();
     if (isset($_POST[get_class($this)."_posted"])) {
@@ -130,7 +130,7 @@ class argonautFuseConfig extends simpleService
     }
   }
 
-  function check()
+  function check ()
   {
     $message = parent::check();
 
@@ -144,7 +144,7 @@ class argonautFuseConfig extends simpleService
     return $message;
   }
 
-  function set_acl_category($cat)
+  function set_acl_category ($cat)
   {
     parent::set_acl_category($cat);
     foreach ($this->plugin as &$plugin) {
@@ -153,7 +153,7 @@ class argonautFuseConfig extends simpleService
     unset($plugin);
   }
 
-  function set_acl_base($base)
+  function set_acl_base ($base)
   {
     parent::set_acl_base($base);
     foreach ($this->plugin as &$plugin) {
@@ -163,7 +163,7 @@ class argonautFuseConfig extends simpleService
   }
 
   /* Save to LDAP */
-  function save()
+  function save ()
   {
     $errors = parent::save();
     if (!empty($errors)) {
@@ -185,9 +185,9 @@ class argonautFuseConfig extends simpleService
     unset($plugin);
   }
 
-  function remove($fulldelete = FALSE)
+  function remove ($fulldelete = FALSE)
   {
-    $errors = array();
+    $errors = [];
     /* Remove objects */
     foreach ($this->plugin as &$plugin) {
       $plugin->dn = $this->dn;

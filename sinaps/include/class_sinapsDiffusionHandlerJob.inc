@@ -32,7 +32,7 @@ class sinapsDiffusionHandlerJob
 
   protected $request;
 
-  function __construct(sinapsRequest $request)
+  function __construct (sinapsRequest $request)
   {
     global $config;
 
@@ -46,20 +46,31 @@ class sinapsDiffusionHandlerJob
     $this->identifiantApplication     = $config->get_cfg_value('SinapsIdentifiantApplication');
     $this->userBase                   = $config->get_cfg_value('SinapsUserBase', $config->current['BASE']);
     $this->userTemplate               = $config->get_cfg_value('SinapsUserTemplate');
-    $this->identifiantApplicationSync = $config->get_cfg_value('SinapsIdentifiantApplicationSync', array());
-    $this->userRoles                  = $config->get_cfg_value('SinapsUserRole', array('PR', 'EXT/PRA'));
+    $this->identifiantApplicationSync = $config->get_cfg_value('SinapsIdentifiantApplicationSync', []);
+    $this->userRoles                  = $config->get_cfg_value('SinapsUserRole', ['PR', 'EXT/PRA']);
+
+    $this->userMapping = [];
+    foreach ($config->get_cfg_value('SinapsUserDiffusionMap', []) as $line) {
+      list($sinaps, $tab, $field) = explode('|', $line);
+      $this->userMapping[$sinaps] = [$tab,$field];
+    }
+    $this->structureMapping = [];
+    foreach ($config->get_cfg_value('SinapsStructureDiffusionMap', []) as $line) {
+      list($sinaps, $tab, $field) = explode('|', $line);
+      $this->structureMapping[$sinaps] = [$tab,$field];
+    }
   }
 
-  function handleRequest()
+  function handleRequest ()
   {
     if ($this->request->codeOperation() != 'DIFFUSION') {
       throw new FusionDirectoryException('Invalid operation '.$this->request->codeOperation());
     }
 
     if ($this->request->codeDomaine() == 'STRUCTURE') {
-      $this->handleStructureDiffusion($this->request->getSupannEntiteValues($this->identifiantApplication, $this->identifiantApplicationSync, $this->uuidPrefix, array($this, 'ldapUuidToCodeEntite')));
+      $this->handleStructureDiffusion($this->request->getSupannEntiteValues($this->identifiantApplication, $this->identifiantApplicationSync, $this->uuidPrefix, [$this, 'ldapUuidToCodeEntite'], $this->structureMapping));
     } elseif ($this->request->codeDomaine() == 'PERSONNE') {
-      $this->handlePersonneDiffusion($this->request->getUserValues($this->identifiantApplication, $this->identifiantApplicationSync, $this->uuidPrefix, array($this, 'ldapUuidToCodeEntite'), $this->userRoles));
+      $this->handlePersonneDiffusion($this->request->getUserValues($this->identifiantApplication, $this->identifiantApplicationSync, $this->uuidPrefix, [$this, 'ldapUuidToCodeEntite'], $this->userRoles, $this->userMapping));
     } else {
       throw new FusionDirectoryException('Invalid domain '.$this->request->codeDomaine());
     }
@@ -73,7 +84,7 @@ class sinapsDiffusionHandlerJob
     if (!preg_match('/^{'.$this->uuidPrefix.'}/', $uuid)) {
       $uuid = '{'.$this->uuidPrefix.'}'.$uuid;
     }
-    $entites = objects::ls(array('entite','etablissement'), array('supannCodeEntite' => 1, 'supannTypeEntite' => 1), NULL, '(supannRefId='.$uuid.')');
+    $entites = objects::ls(['entite','etablissement'], ['supannCodeEntite' => 1, 'supannTypeEntite' => 1], NULL, '(supannRefId='.$uuid.')');
     if (empty($entites)) {
       $error = 'Could not find entite '.$uuid;
       $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 10, $error));
@@ -94,7 +105,7 @@ class sinapsDiffusionHandlerJob
     }
   }
 
-  public static function dumpFile($fileName, $fileContent)
+  public static function dumpFile ($fileName, $fileContent)
   {
     global $config;
     $dumpFolder = $config->get_cfg_value('SinapsDumpFolder');
@@ -119,11 +130,11 @@ class sinapsDiffusionHandlerJob
     }
   }
 
-  function handleStructureDiffusion($values)
+  function handleStructureDiffusion ($values)
   {
     $uuid     = $values['entite']['supannRefId'][0];
     $idObjApp = preg_replace('/^{'.$this->uuidPrefix.'}/', '', $uuid);
-    $entites  = objects::ls('entite', array('supannRefId' => '*'), NULL, '(supannRefId='.$uuid.')');
+    $entites  = objects::ls('entite', ['supannRefId' => '*'], NULL, '(supannRefId='.$uuid.')');
     $message  = 'Entite created';
     if (empty($entites)) {
       $dn = '';
@@ -151,11 +162,11 @@ class sinapsDiffusionHandlerJob
     }
   }
 
-  function handlePersonneDiffusion($values)
+  function handlePersonneDiffusion ($values)
   {
     $uuid     = $values['supannAccount']['supannRefId'][0];
     $idObjApp = preg_replace('/^{'.$this->uuidPrefix.'}/', '', $uuid);
-    $users    = objects::ls('user', array('supannRefId' => '*'), NULL, '(supannRefId='.$uuid.')');
+    $users    = objects::ls('user', ['supannRefId' => '*'], NULL, '(supannRefId='.$uuid.')');
     $message  = 'User created';
     if (!empty($users)) {
       if (count($users) > 1) {
@@ -172,7 +183,11 @@ class sinapsDiffusionHandlerJob
           }
         }
         $values['supannAccount']['supannRefId'] = array_values(array_unique($values['supannAccount']['supannRefId']));
-        $message = 'User updated';
+        if ($values['lock']) {
+          $message = 'User deleted';
+        } else {
+          $message = 'User updated';
+        }
       }
     } else {
       if ($values['lock']) {
@@ -185,11 +200,16 @@ class sinapsDiffusionHandlerJob
     if ($error !== TRUE) {
       $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 15, strip_tags(implode(', ', $error))));
     } else {
-      $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 0, $message, $idObjApp));
+      if ($values['lock']) {
+        /* $values['lock'] means this was a deletion, so we must not send an object identifier in the answer */
+        $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 0, $message));
+      } else {
+        $this->sendAcquittementFonctionnel(sinapsRequest::acquittementFonctionnel(200, 0, $message, $idObjApp));
+      }
     }
   }
 
-  function fillObject($type, $values, &$dn)
+  function fillObject ($type, $values, &$dn)
   {
     global $config;
 
@@ -214,7 +234,7 @@ class sinapsDiffusionHandlerJob
         $template = new template($type, $this->userTemplate);
         $error    = $template->deserialize($values);
         if ($error !== TRUE) {
-          return array($error);
+          return [$error];
         }
         $tabobject  = $template->apply();
         $errors     = $tabobject->save();
@@ -238,7 +258,7 @@ class sinapsDiffusionHandlerJob
     }
     foreach ($values as $tab => $tabvalues) {
       if (!isset($tabobject->by_object[$tab])) {
-        return array('This tab does not exists: "'.$tab.'"');
+        return ['This tab does not exists: "'.$tab.'"'];
       }
       if ($tabvalues === FALSE) {
         if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
@@ -287,14 +307,14 @@ class sinapsDiffusionHandlerJob
     return TRUE;
   }
 
-  protected function lockUser($dn)
+  protected function lockUser ($dn)
   {
     global $config;
 
     // Try to lock the entry
     $ldap   = $config->get_ldap_link();
-    $errors = array();
-    $ldap->cat($dn, array('userPassword'));
+    $errors = [];
+    $ldap->cat($dn, ['userPassword']);
     if ($ldap->count() == 1) {
       // We can't lock empty passwords.
       $val = $ldap->fetch();
@@ -329,7 +349,7 @@ class sinapsDiffusionHandlerJob
     return $errors;
   }
 
-  function sendAcquittementFonctionnel($xml)
+  function sendAcquittementFonctionnel ($xml)
   {
     static::dumpFile(
       $this->request->identifiantTransaction().'-acquittement.xml',
@@ -339,14 +359,14 @@ class sinapsDiffusionHandlerJob
     exit();
   }
 
-  public static function sendPostRequest($url, $user, $password, $data)
+  public static function sendPostRequest ($url, $user, $password, $data)
   {
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_URL,         $url);
     curl_setopt($ch, CURLOPT_POST,        1);
     curl_setopt($ch, CURLOPT_POSTFIELDS,  $data);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/xml'));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: text/xml']);
     curl_setopt($ch, CURLOPT_USERPWD, "$user:$password");
     curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 

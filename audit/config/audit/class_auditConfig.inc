@@ -20,47 +20,47 @@
 
 class auditConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdAuditPluginConf');
+  var $objectclasses  = ['fdAuditPluginConf'];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('Audit configuration'),
       'plDescription'   => _('FusionDirectory audit plugin configuration'),
-      'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plCategory'      => ['configuration'],
+      'plObjectType'    => ['smallConfig'],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('Audit'),
-        'attrs' => array(
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Audit RDN'), _('Branch in which audit events will be stored'),
             'fdAuditRDN', TRUE,
             'ou=audit'
           ),
-          new SetAttribute (
-            new SelectAttribute (
+          new SetAttribute(
+            new SelectAttribute(
               _('Actions to audit'), _('Which actions should be stored in LDAP audit log'),
               'fdAuditActions', TRUE,
               logging::$validActions
             ),
-            array('modify','create','remove')
+            ['modify','create','remove']
           ),
-          new IntAttribute (
+          new IntAttribute(
             _('Days to keep'), _('Number of days of audit to keep in the LDAP when cleaning'),
             'fdAuditRotationDelay', TRUE,
             1, FALSE, 120
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 }
 ?>

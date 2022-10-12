@@ -20,45 +20,45 @@
 
 class autofsManagement extends simpleManagement
 {
-  protected $objectTypes  = array('nisMap', 'nisObject');
+  protected $objectTypes  = ['nisMap', 'nisObject'];
 
-  protected $autoFilterAttributes = array('dn', 'cn', 'description', 'nisMapName', 'nisMapEntry');
+  protected $autoFilterAttributes = ['dn', 'cn', 'description', 'nisMapName', 'nisMapEntry'];
 
   /* Return plugin information for acl handling */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Auto fs'),
       'plDescription' => _('Auto fs management'),
       'plIcon'        => 'geticon.php?context=applications&icon=autofs&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 5,
-      'plManages'     => array('nisMap', 'nisObject'),
+      'plManages'     => ['nisMap', 'nisObject'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 
   function parseXML ($file)
   {
     $data = parent::parseXML($file);
     $data['list']['table']['layout'] = '|20px;c||||150px;r|';
-    $columns = array(
-      array(
+    $columns = [
+      [
         'label'         => 'Mount point',
         'sortAttribute' => 'nisMapName',
         'sortType'      => 'string',
         'value'         => '%{filter:link(row,dn,"%s",nisMapName)}',
         'export'        => 'true',
-      ),
-      array(
+      ],
+      [
         'label'         => 'Automount entry',
         'sortAttribute' => 'nisMapEntry',
         'sortType'      => 'string',
         'value'         => '%{filter:link(row,dn,"%s",nisMapEntry)}',
         'export'        => 'true',
-      ),
-    );
+      ],
+    ];
     array_splice($data['list']['table']['column'], 2, 1, $columns);
     return $data;
   }

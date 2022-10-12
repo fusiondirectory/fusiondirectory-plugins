@@ -20,54 +20,54 @@
 
 class sympaAlias extends simplePlugin
 {
-  var $objectclasses = array('sympaAlias');
+  var $objectclasses = ['sympaAlias'];
 
   /* Return plugin information for acl handling */
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Sympa list alias'),
       'plDescription' => _('Sympa list alias'),
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('sympaAlias' => array(
+      'plObjectType'  => ['sympaAlias' => [
         'name'        => _('Sympa list alias'),
         'filter'      => 'objectClass=sympaAlias',
         'icon'        => 'geticon.php?context=applications&icon=sympa&size=16',
         'ou'          => get_ou('sympaRDN'),
-      )),
+      ]],
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   // The main function : information about attributes
   static function getAttributesInfo ()
   {
-    return array(
+    return [
       // Attributes are grouped by section
-      'main' => array(
+      'main' => [
         'name'  => _('Sympa list alias'),
-        'attrs' => array(
-          new BaseSelectorAttribute (get_ou('sympaRDN')),
-          new StringAttribute (_('Name'), _('Name to identify this alias'), 'cn', TRUE),
-          new TextAreaAttribute (
+        'attrs' => [
+          new BaseSelectorAttribute(get_ou('sympaRDN')),
+          new StringAttribute(_('Name'), _('Name to identify this alias'), 'cn', TRUE),
+          new TextAreaAttribute(
             _('Description'), _('Description of this alias'),
             'description', FALSE
           ),
           new SetAttribute(
-            new MailAttribute (
+            new MailAttribute(
               _('Email address'), _('Email address'),
               'mail', TRUE
             )
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Sympa server'), _('Sympa server for this alias'),
             'sympaServerURL', TRUE,
-            array()
+            []
           )
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -77,8 +77,8 @@ class sympaAlias extends simplePlugin
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(objectClass=sympaServer)', array('sympaServerURL'));
-    $server = array();
+    $ldap->search('(objectClass=sympaServer)', ['sympaServerURL']);
+    $server = [];
     while ($attrs = $ldap->fetch()) {
         $server[] = $attrs['sympaServerURL'][0];
     }

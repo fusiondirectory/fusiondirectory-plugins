@@ -51,61 +51,61 @@ class faiStartup extends simplePlugin
   var $displayHeader = TRUE;
 
   /* attribute list for save action */
-  var $objectclasses  = array("FAIobject");
+  var $objectclasses  = ["FAIobject"];
 
-  var $inheritance    = array("gosaGroupOfNames" => "member");
+  var $inheritance    = ["gosaGroupOfNames" => "member"];
   var $sdaemon_available;
 
-  var $cache = array();
+  var $cache = [];
 
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'     => _('FAI'),
       'plDescription'   => _('Full automated installation'),
       'plSelfModify'    => FALSE,
       'plPriority'      => 9,
-      'plObjectType'    => array('workstation', 'server', 'ogroup-dynamic'),
-      'plForeignKeys'  => array(
-        'FAIclass'   => array(
-          array('faiProfile', 'cn', '(FAIclass=%oldvalue% :*)'),
-        ),
-      ),
+      'plObjectType'    => ['workstation', 'server', 'ogroup-dynamic'],
+      'plForeignKeys'  => [
+        'FAIclass'   => [
+          ['faiProfile', 'cn', '(FAIclass=%oldvalue% :*)'],
+        ],
+      ],
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   static function getAttributesInfo ()
   {
-    return array(
-      'main' => array(
+    return [
+      'main' => [
         'name'  => _('FAI settings'),
-        'attrs' => array(
-          new HiddenAttribute ('FAIstate'),
-          new CompositeAttribute (
+        'attrs' => [
+          new HiddenAttribute('FAIstate'),
+          new CompositeAttribute(
             _('FAI profil and release to be applied to this computer'),
             'FAIclass',
-            array(
-              'release' => new FAIreleaseAttribute (
+            [
+              'release' => new FAIreleaseAttribute(
                 _('Release'), _('FAI debian release to be installed on this computer'),
                 'FAIrelease', TRUE
               ),
-              'profil' => new SelectAttribute (
+              'profil' => new SelectAttribute(
                 _('Profil'), _('FAI profil to be applied to this computer'),
                 'FAIprofile', TRUE
               ),
-            ),
+            ],
             '/^(?P<profil>.+) :(?P<release>.+)$/',
             '%2$s :%1$s'
           ),
-          new SelectAttribute (
+          new SelectAttribute(
             _('Repository'), _('FAI Debian repository to be used for installation'),
             'FAIdebianMirror', TRUE
           ),
-        )
-      ),
-    );
+        ]
+      ],
+    ];
   }
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
@@ -126,11 +126,11 @@ class faiStartup extends simplePlugin
       }
       return FALSE;
     } else {
-      return parent::foreignKeyCheck ($field, $fieldvalue, $source);
+      return parent::foreignKeyCheck($field, $fieldvalue, $source);
     }
   }
 
-  function foreignKeyUpdate($field, $oldvalue, $newvalue, $source)
+  function foreignKeyUpdate ($field, $oldvalue, $newvalue, $source)
   {
     if ($field == 'FAIclass') {
       if ($this->attributesAccess['FAIclass']->attributes['profil']->getValue() == $oldvalue) {
@@ -144,19 +144,19 @@ class faiStartup extends simplePlugin
   /* Updates release and profiles list
    *  if not already done ($this->cache).
    */
-  function update_fai_cache()
+  function update_fai_cache ()
   {
     /* Get the list of available servers and their releases */
     if (!isset($this->cache['SERVERS'])) {
       $tmp = serviceRepository::getServers();
-      $this->cache['SERVERS'] = array();
+      $this->cache['SERVERS'] = [];
       foreach ($tmp as $entry) {
         if ($entry['INSTALL'] != 'install') {
             continue;
         }
         $rel = $entry['FAI_RELEASE'];
         if (!isset($this->cache['SERVERS'][$rel])) {
-          $this->cache['SERVERS'][$rel] = array();
+          $this->cache['SERVERS'][$rel] = [];
         }
         $this->cache['SERVERS'][$rel][] = $entry['URL'];
         uksort($this->cache['SERVERS'][$rel], 'strnatcasecmp');
@@ -164,7 +164,7 @@ class faiStartup extends simplePlugin
     }
 
     if (!isset($this->cache['PROFILES'])) {
-      $this->cache['PROFILES'] = array();
+      $this->cache['PROFILES'] = [];
       foreach (array_keys($this->cache['SERVERS']) as $release) {
         /* Get the list of available profiles for each release */
         $tmp = objects::ls('faiProfile', 'cn', NULL, "(ou:dn:=$release)");

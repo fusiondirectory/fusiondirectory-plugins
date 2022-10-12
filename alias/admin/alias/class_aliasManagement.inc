@@ -22,25 +22,25 @@
 class aliasManagement extends simpleManagement
 {
   // Tab definition
-  protected $objectTypes  = array('mailAliasDistribution','mailAliasRedirection');
+  protected $objectTypes  = ['mailAliasDistribution','mailAliasRedirection'];
 
-  protected $autoFilterAttributes = array('dn', 'cn', 'description', 'aliasExpirationDate');
+  protected $autoFilterAttributes = ['dn', 'cn', 'description', 'aliasExpirationDate'];
 
   /* Return plugin information for acl handling  */
-  public static function plInfo()
+  public static function plInfo ()
   {
-    return array(
+    return [
       'plShortName'   => _('Aliases'),
       'plDescription' => _('Alias management'),
       'plIcon'        => 'geticon.php?context=applications&icon=alias&size=48',
       'plSection'     => 'accounts',
       'plPriority'    => 26,
-      'plCategory'    => array('alias' => array('description'  => _('Mail aliases'),
-                                                'objectClass'  => array('mailAliasRedirection','mailAliasDistribution'))),
-      'plManages'     => array('mailAliasDistribution','mailAliasRedirection'),
+      'plCategory'    => ['alias' => ['description'  => _('Mail aliases'),
+                                                'objectClass'  => ['mailAliasRedirection','mailAliasDistribution']]],
+      'plManages'     => ['mailAliasDistribution','mailAliasRedirection'],
 
-      'plProvidedAcls' => array()
-    );
+      'plProvidedAcls' => []
+    ];
   }
 
   function configureHeadpage ()
@@ -54,17 +54,17 @@ class aliasManagement extends simpleManagement
     $data = parent::parseXML($file);
     $data['list']['table']['layout'] = '|20px;c|||110px;c|100px;r|';
     $data['list']['table']['column'][4] = $data['list']['table']['column'][3];
-    $data['list']['table']['column'][3] = array(
+    $data['list']['table']['column'][3] = [
       'label'         => 'Expiration date',
       'sortAttribute' => 'aliasExpirationDate',
       'sortType'      => 'integer',
       'value'         => '%{filter:filterDate(aliasExpirationDate)}',
       'export'        => 'true',
-    );
+    ];
     return $data;
   }
 
-  static function filterDate()
+  static function filterDate ()
   {
     if (func_num_args() == 0) {
       return '&nbsp;';

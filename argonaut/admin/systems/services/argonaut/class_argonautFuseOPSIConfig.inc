@@ -21,20 +21,20 @@
 
 class argonautFuseOPSIConfig extends simplePlugin
 {
-  var $objectclasses  = array("argonautFuseOPSIConfig");
+  var $objectclasses  = ["argonautFuseOPSIConfig"];
   var $showActions    = FALSE;
   var $displayHeader     = TRUE;
 
   /* Return plugin information for acl handling */
-  static function plInfo()
+  static function plInfo ()
   {
-    return array(
+    return [
       "plShortName"     => _("Argonaut Fuse OPSI module settings"),
       "plDescription"   => _("Argonaut Fuse OPSI module settings")." ("._("Services").")",
-      "plCategory"      => array("server"),
-      "plObjectType"    => array("fusemodule"),
+      "plCategory"      => ["server"],
+      "plObjectType"    => ["fusemodule"],
       "plProvidedAcls"  => parent::generatePlProvidedAcls(static::getAttributesInfo())
-    );
+    ];
   }
 
   /*!
@@ -42,32 +42,32 @@ class argonautFuseOPSIConfig extends simplePlugin
    */
   static function getAttributesInfo ()
   {
-    return array (
-      'opsi' => array (
+    return  [
+      'opsi' => [
         'name'  => _('OPSI'),
-        'attrs' => array (
-          new StringAttribute (
+        'attrs' => [
+          new StringAttribute(
             _('Opsi admin'),
             '',
             'argonautFuseOpsiAdmin'
           ),
-          new PasswordAttribute (
+          new PasswordAttribute(
             _('Opsi password'),
             '',
             'argonautFuseOpsiPassword'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Opsi server'),
             '',
             'argonautFuseOpsiServer'
           ),
-          new StringAttribute (
+          new StringAttribute(
             _('Opsi lang'),
             '',
             'argonautFuseOpsiLang'
           ),
-        )
-      )
-    );
+        ]
+      ]
+    ];
   }
 }

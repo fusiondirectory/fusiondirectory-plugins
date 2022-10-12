@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR FusionDirectory Project
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2017-08-02 11:45+0200\n"
+"POT-Creation-Date: 2020-03-20 17:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -62,46 +62,9 @@ msgstr ""
 msgid "IP or Mac address"
 msgstr ""
 
-#: html/collect.php:75
+#: html/collect.php:83
 #, php-format
 msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
-msgstr ""
-
-#: admin/inventory/inventory-list.xml:7
-msgid "NO LABEL"
-msgstr ""
-
-#: admin/inventory/inventory-list.xml:28
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:56
-msgid "IP"
-msgstr ""
-
-#: admin/inventory/inventory-list.xml:36
-msgid "Macs"
-msgstr ""
-
-#: admin/inventory/inventory-list.xml:44
-msgid "Operating Systems"
-msgstr ""
-
-#: admin/inventory/inventory-list.xml:50
-msgid "Actions"
-msgstr ""
-
-#: admin/inventory/inventory-list.xml:61 admin/inventory/inventory-list.xml:85
-msgid "Edit"
-msgstr ""
-
-#: admin/inventory/inventory-list.xml:68 admin/inventory/inventory-list.xml:92
-msgid "Remove"
-msgstr ""
-
-#: admin/inventory/class_inventoryManagement.inc:36
-msgid "Inventory objects"
-msgstr ""
-
-#: admin/inventory/class_inventoryManagement.inc:37
-msgid "Browse inventory objects"
 msgstr ""
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:30
@@ -146,6 +109,11 @@ msgid "Do not use web interface"
 msgstr ""
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:56
+#: admin/inventory/inventory-list.xml:28
+msgid "IP"
+msgstr ""
+
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:56
 msgid "Network interface to listen to"
 msgstr ""
 
@@ -183,12 +151,12 @@ msgid "Matching system"
 msgstr ""
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:96
-#: admin/systems/fusioninventory/class_fiInventory.inc:372
+#: admin/systems/fusioninventory/class_fiInventory.inc:378
 msgid "System"
 msgstr ""
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:96
-#: admin/systems/fusioninventory/class_fiInventory.inc:372
+#: admin/systems/fusioninventory/class_fiInventory.inc:378
 msgid "System entry matching this inventory"
 msgstr ""
 
@@ -208,14 +176,46 @@ msgstr ""
 msgid "Processes"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:320
+#: admin/systems/fusioninventory/class_fiInventory.inc:326
 msgid "Create a system based on this inventory"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:335
+#: admin/systems/fusioninventory/class_fiInventory.inc:341
 msgid "Create"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:340
+#: admin/systems/fusioninventory/class_fiInventory.inc:346
 msgid "No matching system"
+msgstr ""
+
+#: admin/inventory/inventory-list.xml:7
+msgid "NO LABEL"
+msgstr ""
+
+#: admin/inventory/inventory-list.xml:36
+msgid "Macs"
+msgstr ""
+
+#: admin/inventory/inventory-list.xml:44
+msgid "Operating Systems"
+msgstr ""
+
+#: admin/inventory/inventory-list.xml:50
+msgid "Actions"
+msgstr ""
+
+#: admin/inventory/inventory-list.xml:61 admin/inventory/inventory-list.xml:85
+msgid "Edit"
+msgstr ""
+
+#: admin/inventory/inventory-list.xml:68 admin/inventory/inventory-list.xml:92
+msgid "Remove"
+msgstr ""
+
+#: admin/inventory/class_inventoryManagement.inc:37
+msgid "Inventory objects"
+msgstr ""
+
+#: admin/inventory/class_inventoryManagement.inc:38
+msgid "Browse inventory objects"
 msgstr ""

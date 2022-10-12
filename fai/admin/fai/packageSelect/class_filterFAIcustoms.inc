@@ -20,9 +20,9 @@
 
 class filterFAIcustoms extends filter
 {
-  var $customs = array();
+  var $customs = [];
 
-  function __construct($filename)
+  function __construct ($filename)
   {
     $release = session::get('packageSelect_Release');
     $this->customs = serviceRepository::getCustomReleases($release);
@@ -30,28 +30,28 @@ class filterFAIcustoms extends filter
     parent::__construct($filename);
   }
 
-  function load($filename)
+  function load ($filename)
   {
     $res = parent::load($filename);
 
     foreach ($this->customs as $custom) {
-      $this->elements[$custom] = array(
+      $this->elements[$custom] = [
         'type'    => 'checkbox',
         'tag'     => $custom,
         'default' => 'false',
-        'set'     => array(),
-        'unset'   => array()
-      );
+        'set'     => [],
+        'unset'   => []
+      ];
       $this->elementValues[$custom] = '';
     }
     return $res;
   }
 
-  function render()
+  function render ()
   {
     $smarty = get_smarty();
 
-    $customs = array();
+    $customs = [];
     foreach ($this->customs as $custom) {
       $customs[$custom] = $this->getCheckbox($this->elements[$custom]);
     }

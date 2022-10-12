@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2019-06-27 08:29+0000\n"
+"POT-Creation-Date: 2022-07-28 17:06+0000\n"
 "PO-Revision-Date: 2016-08-29 15:14+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2017\n"
 "Language-Team: German (https://www.transifex.com/fusiondirectory/teams/12202/de/)\n"
@@ -143,29 +143,30 @@ msgid "Which attribute will be used to create accounts."
 msgstr "Welches Attribut verwendet werden wird um Konten zu erstellen."
 
 #: config/mail/class_mailPluginConfig.inc:50
-msgid "Mail user template"
-msgstr "Mailbenutzer-Vorlage"
+msgid "User account template"
+msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:51
-msgid "Override the user account creation syntax."
-msgstr "Überschreiben der Benutzerkontenerstellungs-Syntax"
+msgid ""
+"Override the user account creation syntax. Default is %PREFIX%%UATTRIB%."
+msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:55
-msgid "Mail folder template"
-msgstr "Mailordnervorlage"
+msgid "Group account template"
+msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:56
-msgid "Override the methods default account creation syntax."
-msgstr "Überschreiben der Methoden standard Kontenerstellungssyntax."
+msgid ""
+"Override the group account creation syntax. Default is %PREFIX%%UATTRIB%."
+msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:60
 msgid "Use cyrus UNIX style"
 msgstr "cyrus UNIX-Stil benutzen"
 
 #: config/mail/class_mailPluginConfig.inc:61
-msgid ""
-"Determines if 'foo/bar' or 'foo.bar' should be uses as namespaces in IMAP."
-msgstr "Entscheidet ob 'foo/bar' Nutzen als Namespace in IMAP sein soll ."
+msgid "Determines if \"foo/bar\" or \"foo.bar\" should be uses as namespaces in IMAP."
+msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:65
 msgid "Delete mailbox on account deletion"
@@ -235,6 +236,10 @@ msgstr "Wählen Sie den Mail-Server, auf dem dieses Konto angelegt werden soll"
 #: personal/mail/class_mailAccount.inc:108
 msgid "Quota size"
 msgstr "Kontingent-Größe"
+
+#: personal/mail/class_mailAccount.inc:108
+msgid "Define quota size in MiB"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:115
 msgid "Other addresses and redirections"
