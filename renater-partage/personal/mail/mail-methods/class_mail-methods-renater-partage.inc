@@ -546,12 +546,8 @@ class mailMethodRenaterPartage extends mailMethod
 
     $this->build_account_id();
     if (!$this->parent->initially_was_account) {
+      
       /* Creation */
-      if ($this->account_exists()) {
-        $this->error = _('An account with the same email address already exists in Partage');
-        return FALSE;
-      }
-
       $answer = $this->createAccount($infos);
 
       if ($answer === FALSE) {
@@ -559,12 +555,8 @@ class mailMethodRenaterPartage extends mailMethod
       }
     } else {
       if ($this->account_id !== $this->initial_account_id) {
-        /* Renaming */
-        if ($this->account_exists()) {
-          $this->error = _('An account with the same email address already exists in Partage');
-          return FALSE;
-        }
-
+      
+      /* Renaming */
         $account = [
           'name'    => $this->initial_account_id,
           'newname' => $this->account_id
