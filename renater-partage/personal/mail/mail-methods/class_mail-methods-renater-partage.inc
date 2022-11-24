@@ -546,7 +546,7 @@ class mailMethodRenaterPartage extends mailMethod
 
     $this->build_account_id();
     if (!$this->parent->initially_was_account) {
-      
+
       /* Creation */
       $answer = $this->createAccount($infos);
 
@@ -555,8 +555,8 @@ class mailMethodRenaterPartage extends mailMethod
       }
     } else {
       if ($this->account_id !== $this->initial_account_id) {
-      
-      /* Renaming */
+
+        /* Renaming */
         $account = [
           'name'    => $this->initial_account_id,
           'newname' => $this->account_id
