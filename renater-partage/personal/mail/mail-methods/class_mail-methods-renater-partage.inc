@@ -536,6 +536,73 @@ class mailMethodRenaterPartage extends mailMethod
     return TRUE;
   }
 
+    /*
+     * Allows simple verification if the account is in another status than active.
+     */
+  public function isAccountNotActive () : BOOL
+  {
+    if (!in_array($this->cachedAccount['account']['zimbraAccountStatus'], ['active'])) {
+      return TRUE;
+    }
+    return FALSE;
+  }
+
+  /*
+   * Modifies the status of the processed account to active.
+   */
+  public function setActiveStatus () : BOOL
+  {
+    $this->account_id = $this->initial_account_id;
+
+    if ($this->account_exists()) {
+      if ($this->type == 'user') {
+        $answer = $this->query('ModifyAccount', ['name' => $this->initial_account_id, 'zimbraAccountStatus' => 'active']);
+      }
+      return ($answer !== FALSE);
+    }
+    return FALSE;
+  }
+
+  /*
+   * Retrieve backend configuration attributes values
+   */
+  function getPartageBackendConfiguration ()
+  {
+        global $config;
+
+        $result = [];
+    $populationCodes = [];
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(&(objectClass=fdPartageConf))');
+    $attrs = $ldap->fetch();
+
+    //testing
+    print_r($attrs);
+  }
+
+
+  /*
+   * Verify the backend config if the non active account can be re-activated to updates Partage.
+   */
+  public function canBeActivated () : BOOL
+  {
+    // testing
+    return TRUE;
+  }
+
+  /*
+   * Verify the backend config if LDAP can be trusted and pushes its updates to Partage.
+   */
+  public function ldapOverridePartage () : BOOL
+  {
+    $this->getPartageBackendConfiguration();
+    //testing
+    return TRUE;
+  }
+
+
   public function updateMailbox ()
   {
     parent::updateMailbox();
@@ -547,16 +614,46 @@ class mailMethodRenaterPartage extends mailMethod
     $this->build_account_id();
     if (!$this->parent->initially_was_account) {
 
-      /* Creation */
-      $answer = $this->createAccount($infos);
+            /* Creation */
+      if ($this->account_exists()) {
+        // Switch from creation to Update logic
+        if (!$this->ldapOverridePartage()) {
+          $this->error = _('This account already exists is not allowed to be updated !');
 
-      if ($answer === FALSE) {
-        return FALSE;
+          return FALSE;
+        }
+        if ($this->isAccountNotActive()) {
+          if ($this->canBeActivated()) {
+
+            $this->setActiveStatus();
+            $answer = $this->updateAccount($infos);
+            if ($answer === FALSE) {
+              return FALSE;
+            }
+
+          } else {
+            echo "Really inactive" .PHP_EOL;
+            $this->error = _('This account is not in active status, activate first !');
+
+                        return FALSE;
+          }
+        }
+      } else {
+        // Continue creation
+        $answer = $this->createAccount($infos);
+        if ($answer === FALSE) {
+          return FALSE;
+        }
       }
+
     } else {
       if ($this->account_id !== $this->initial_account_id) {
 
-        /* Renaming */
+            /* Renaming */
+        // if ($this->account_exists()) {
+        //   $this->error = _('An account with the same email address already exists in Partage');
+        //   return FALSE;
+        // }
         $account = [
           'name'    => $this->initial_account_id,
           'newname' => $this->account_id
