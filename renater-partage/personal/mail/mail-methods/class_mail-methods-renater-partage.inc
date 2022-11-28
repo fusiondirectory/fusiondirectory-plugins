@@ -49,7 +49,7 @@ class mailMethodRenaterPartage extends mailMethod
     $this->connected = FALSE;
 
     //Microtime is used instead of time function due to a peculiar bug while clicking on Apply.
-    $ts = microtime(true);
+    $ts = microtime(TRUE);
     $preauth = hash_hmac('sha1', $infos['domain'].'|'.$ts, $infos['key']);
 
     $request = [
@@ -557,9 +557,9 @@ class mailMethodRenaterPartage extends mailMethod
 
     if ($this->account_exists()) {
       if ($this->type == 'user') {
-        $answer = $this->query('ModifyAccount', ['name' => $this->initial_account_id, 'zimbraAccountStatus' => 'active']); 
-      	return ($answer !== FALSE);
-			}
+        $answer = $this->query('ModifyAccount', ['name' => $this->initial_account_id, 'zimbraAccountStatus' => 'active']);
+          return ($answer !== FALSE);
+      }
     }
     return FALSE;
   }
@@ -571,39 +571,49 @@ class mailMethodRenaterPartage extends mailMethod
   {
     global $config;
 
-    $result = [];
-    $populationCodes = [];
-
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=fdPartageConf))');
+    $ldap->search('(&(objectClass=fdRenaterPartageConf))');
     $attrs = $ldap->fetch();
 
-    //testing
-    print_r($attrs);
+    // This contains a full array of the backend configuration attributes.
+    return $attrs;
   }
 
-
-  /*
+    /*
    * Verify the backend config if the non active account can be re-activated to updates Partage.
    */
   public function canBeActivated () : BOOL
   {
-    // testing
-    return TRUE;
+        $result = $this->getPartageBackendConfiguration();
+
+    if ($result['fdRenaterPartageConfActivateAccount'][0] === 'TRUE') {
+        return TRUE;
+    }
+
+        return FALSE;
   }
+
 
   /*
    * Verify the backend config if LDAP can be trusted and pushes its updates to Partage.
    */
   public function ldapOverridePartage () : BOOL
   {
-    $this->getPartageBackendConfiguration();
-    //testing
-    return TRUE;
+        $result = $this->getPartageBackendConfiguration();
+
+    if ($result['fdRenaterPartageConfOverride'][0] === 'TRUE') {
+        return TRUE;
+    }
+
+        return FALSE;
   }
 
-
+  /*
+   * This method will create and update mailbox.
+   * In case the mailbox exists within Renater, it might be updated.
+   * Depending on the flags in the backend configuration.
+   */
   public function updateMailbox ()
   {
     parent::updateMailbox();
@@ -619,7 +629,7 @@ class mailMethodRenaterPartage extends mailMethod
       if ($this->account_exists()) {
         // Switch from creation to Update logic and verify if LDAP can overidde partage.
         if (!$this->ldapOverridePartage()) {
-          $this->error = _('This account already exists is not allowed to be updated !');
+          $this->error = _('This account already exists and is not allowed to be updated !');
 
           return FALSE;
         }
@@ -627,23 +637,41 @@ class mailMethodRenaterPartage extends mailMethod
         if ($this->isAccountNotActive()) {
           if ($this->canBeActivated()) {
 
-            $this->setActiveStatus();
+                        // Activate the account
+            if (!$this->setActiveStatus()) {
+              $this->error = _('This account was not set into active state for some reasons...');
+
+              return FALSE;
+            }
+            // As the account can be activated and updated -> update Partage.
             $answer = $this->updateAccount($infos);
-            
+
             if ($answer === FALSE) {
               return FALSE;
             }
 
+            return TRUE;
+
           } else {
-            echo "Really inactive" .PHP_EOL;
+
+            // Account can be updated but not set to active state.
             $this->error = _('This account is not in active status, activate first !');
 
             return FALSE;
           }
         }
+        // Update the account as LDAP is ticked to be right and account is Active.
+        $answer = $this->updateAccount($infos);
+
+        if ($answer === FALSE) {
+          return FALSE;
+        }
+
+        return TRUE;
+
       } else {
-        
-        // Continue creation
+
+        // Continue the creation of the account as it does not exist yet.
         $answer = $this->createAccount($infos);
         if ($answer === FALSE) {
           return FALSE;
@@ -651,60 +679,13 @@ class mailMethodRenaterPartage extends mailMethod
       }
 
     } else {
+      // This means a modification of e-mails address wich is not allowed.
       if ($this->account_id !== $this->initial_account_id) {
+        $this->error = _('Attempt to rename address-email or e-mail address already exist !');
 
-        /* Renaming */
-        // Verify if the account exist and if LDAP is allowed to modify datas
-        if ($this->account_exists() && !$this->ldapOverridePartage) {
-          $this->error = _('This account already exists is not allowed to be updated !');
-
-          return FALSE;
-        }
-        $account = [
-          'name'    => $this->initial_account_id,
-          'newname' => $this->account_id
-        ];
-        if ($this->type == 'user') {
-          $command = 'RenameAccount';
-        } else {
-          $command = 'RenameGroup';
-        }
-        $answer = $this->query($command, $account);
-
-        if ($answer === FALSE) {
-          return FALSE;
-        }
-
-        if (!$this->updateAccount($infos)) {
-          return FALSE;
-        }
-      } elseif (!$this->account_exists()) {
-        $answer = $this->createAccount($infos);
-
-        if ($answer === FALSE) {
-          return FALSE;
-        }
-      } else {
-        if (!$this->updateAccount($infos)) {
-          return FALSE;
-        }
-      }
-    }
-
-    /* Handle aliases */
-    if (isset($this->parent->attrs['gosaMailAlternateAddress'])) {
-      $initialAliases = $this->parent->attributesAccess['gosaMailAlternateAddress']->getInitialValue();
-      $aliases        = $this->parent->attributesAccess['gosaMailAlternateAddress']->getValue();
-      if (!$this->setAliases($initialAliases, $aliases)) {
         return FALSE;
       }
     }
-
-    if (!$this->updateMembers()) {
-      return FALSE;
-    }
-
-    return TRUE;
   }
 
   public function deleteMailbox ()
