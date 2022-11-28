@@ -48,7 +48,8 @@ class mailMethodRenaterPartage extends mailMethod
 
     $this->connected = FALSE;
 
-    $ts = time();
+    //Microtime is used instead of time function due to a peculiar bug while clicking on Apply.
+    $ts = microtime(true);
     $preauth = hash_hmac('sha1', $infos['domain'].'|'.$ts, $infos['key']);
 
     $request = [
@@ -556,9 +557,9 @@ class mailMethodRenaterPartage extends mailMethod
 
     if ($this->account_exists()) {
       if ($this->type == 'user') {
-        $answer = $this->query('ModifyAccount', ['name' => $this->initial_account_id, 'zimbraAccountStatus' => 'active']);
-      }
-      return ($answer !== FALSE);
+        $answer = $this->query('ModifyAccount', ['name' => $this->initial_account_id, 'zimbraAccountStatus' => 'active']); 
+      	return ($answer !== FALSE);
+			}
     }
     return FALSE;
   }
@@ -568,9 +569,9 @@ class mailMethodRenaterPartage extends mailMethod
    */
   function getPartageBackendConfiguration ()
   {
-        global $config;
+    global $config;
 
-        $result = [];
+    $result = [];
     $populationCodes = [];
 
     $ldap = $config->get_ldap_link();
@@ -614,19 +615,21 @@ class mailMethodRenaterPartage extends mailMethod
     $this->build_account_id();
     if (!$this->parent->initially_was_account) {
 
-            /* Creation */
+      /* Creation */
       if ($this->account_exists()) {
-        // Switch from creation to Update logic
+        // Switch from creation to Update logic and verify if LDAP can overidde partage.
         if (!$this->ldapOverridePartage()) {
           $this->error = _('This account already exists is not allowed to be updated !');
 
           return FALSE;
         }
+        // Verify if the account is in active state and can be activated if not.
         if ($this->isAccountNotActive()) {
           if ($this->canBeActivated()) {
 
             $this->setActiveStatus();
             $answer = $this->updateAccount($infos);
+            
             if ($answer === FALSE) {
               return FALSE;
             }
@@ -635,10 +638,11 @@ class mailMethodRenaterPartage extends mailMethod
             echo "Really inactive" .PHP_EOL;
             $this->error = _('This account is not in active status, activate first !');
 
-                        return FALSE;
+            return FALSE;
           }
         }
       } else {
+        
         // Continue creation
         $answer = $this->createAccount($infos);
         if ($answer === FALSE) {
@@ -649,11 +653,13 @@ class mailMethodRenaterPartage extends mailMethod
     } else {
       if ($this->account_id !== $this->initial_account_id) {
 
-            /* Renaming */
-        // if ($this->account_exists()) {
-        //   $this->error = _('An account with the same email address already exists in Partage');
-        //   return FALSE;
-        // }
+        /* Renaming */
+        // Verify if the account exist and if LDAP is allowed to modify datas
+        if ($this->account_exists() && !$this->ldapOverridePartage) {
+          $this->error = _('This account already exists is not allowed to be updated !');
+
+          return FALSE;
+        }
         $account = [
           'name'    => $this->initial_account_id,
           'newname' => $this->account_id
