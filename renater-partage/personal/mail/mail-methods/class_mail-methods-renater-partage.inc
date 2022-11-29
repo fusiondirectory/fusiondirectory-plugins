@@ -675,6 +675,8 @@ class mailMethodRenaterPartage extends mailMethod
         if ($answer === FALSE) {
           return FALSE;
         }
+
+        return TRUE;
       }
 
     } else {
@@ -689,7 +691,7 @@ class mailMethodRenaterPartage extends mailMethod
       if (!$this->updateAccount($infos)) {
         return FALSE;
       }
-      
+
       /* Handle aliases */
       if (isset($this->parent->attrs['gosaMailAlternateAddress'])) {
         $initialAliases = $this->parent->attributesAccess['gosaMailAlternateAddress']->getInitialValue();
