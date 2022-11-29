@@ -55,13 +55,38 @@ class PartageConf extends simplePlugin
           ),
         ]
       ],
+      'partageConfToken' => [
+        'name'  => _('Partage Plugin Token Configuration'),
+        'attrs' => [
+          new StringAttribute(
+            _('Access Token'), _('The access token received'),
+            'fdRenaterPartageConfToken', FALSE, 'Token will be stored here'
+          ),
+          new IntAttribute(
+            _('Token lifetime'), _('Defines lifetime of the access token in seconds. Max 4min59'/*5min is server token expiry*/),
+            'fdRenaterPartageConfTokenLifetime', TRUE,
+            1, 299, 270
+          ),
+          new DateTimeAttribute(
+           _('Time of the last received token'), '',
+           'fdRenaterPartageConfLastReceivedTime', FALSE
+          ),
+        ]
+      ],
     ];
   }
+
+
 
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
+
+    // Token is received by Partage API.
+    $this->attributesAccess['fdRenaterPartageConfToken']->setDisabled(TRUE);
+    // This information is unrequired to be seen.
+    $this->attributesAccess['fdRenaterPartageConfLastReceivedTime']->setVisible(FALSE);
   }
 
 }

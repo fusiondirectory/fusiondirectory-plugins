@@ -610,12 +610,60 @@ class mailMethodRenaterPartage extends mailMethod
   }
 
   /*
+  * Update the time of the received access token
+  * Can return an LDAP error.
+  */
+  public function setTokenReceivedTime ()
+  {
+    // prepare data
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+
+    $attrs = [
+      'objectClass'    => ['fdRenaterPartageConf'],
+      'fdRenaterPartageConfLastReceivedTime' => date("YmdHis")
+    ];
+
+    $ldap->modify($attrs);
+
+    if (!$ldap->success()) {
+      return new SimplePluginLdapError(NULL, $this->dn, (LDAP_MOD), $ldap->get_error(), $ldap->get_errno());
+    }
+
+  }
+
+  /*
+   * Verification if the access-token expiry time is expired
+   */
+  public function verifTokenExpiration () : BOOL
+  {
+    $tokenRecTime = $this->getPartageBackendConfiguration();
+    $tokenRecTime = $tokenRecTime['fdRenaterPartageConfLastReceivedTime'][0];
+
+    $date = (new DateTime)->format('Y-m-d-H-i-s');
+    $dateEx  = explode('-', $date);
+    $dateStringerized = implode("", $dateEx);
+
+    if ($tokenRecTime < $dateStringerized) {
+      return TRUE;
+    }
+
+    return FALSE;
+  }
+
+
+  /*
    * This method will create and update mailbox.
    * In case the mailbox exists within Renater, it might be updated.
    * Depending on the flags in the backend configuration.
    */
   public function updateMailbox ()
   {
+    echo "Testing" .PHP_EOL;
+    $this->setTokenReceivedTime();
+
     parent::updateMailbox();
     $infos = $this->getServerConfig();
     if ($infos === FALSE) {
