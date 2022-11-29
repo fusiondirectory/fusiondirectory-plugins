@@ -537,9 +537,9 @@ class mailMethodRenaterPartage extends mailMethod
     return TRUE;
   }
 
-    /*
-     * Allows simple verification if the account is in another status than active.
-     */
+  /*
+   * Allows simple verification if the account is in another status than active.
+   */
   public function isAccountNotActive () : BOOL
   {
     if (!in_array($this->cachedAccount['account']['zimbraAccountStatus'], ['active'])) {
@@ -603,7 +603,7 @@ class mailMethodRenaterPartage extends mailMethod
     $result = $this->getPartageBackendConfiguration();
 
     if ($result['fdRenaterPartageConfOverride'][0] === 'TRUE') {
-        return TRUE;
+      return TRUE;
     }
 
     return FALSE;
@@ -684,6 +684,21 @@ class mailMethodRenaterPartage extends mailMethod
 
         return FALSE;
       }
+      
+      /* Handle aliases */
+      if (isset($this->parent->attrs['gosaMailAlternateAddress'])) {
+        $initialAliases = $this->parent->attributesAccess['gosaMailAlternateAddress']->getInitialValue();
+        $aliases        = $this->parent->attributesAccess['gosaMailAlternateAddress']->getValue();
+        if (!$this->setAliases($initialAliases, $aliases)) {
+          return FALSE;
+        }
+      }
+
+      if (!$this->updateMembers()) {
+        return FALSE;
+      }
+
+      return TRUE;
     }
   }
 
