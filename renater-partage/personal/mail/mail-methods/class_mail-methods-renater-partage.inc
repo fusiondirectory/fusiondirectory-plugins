@@ -684,6 +684,11 @@ class mailMethodRenaterPartage extends mailMethod
 
         return FALSE;
       }
+
+      // Update the account information (username / lastname ) as account exists and email did not change.
+      if (!$this->updateAccount($infos)) {
+        return FALSE;
+      }
       
       /* Handle aliases */
       if (isset($this->parent->attrs['gosaMailAlternateAddress'])) {
