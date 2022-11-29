@@ -567,7 +567,7 @@ class mailMethodRenaterPartage extends mailMethod
   /*
    * Retrieve backend configuration attributes values
    */
-  function getPartageBackendConfiguration ()
+  public function getPartageBackendConfiguration ()
   {
     global $config;
 
@@ -580,18 +580,18 @@ class mailMethodRenaterPartage extends mailMethod
     return $attrs;
   }
 
-    /*
+  /*
    * Verify the backend config if the non active account can be re-activated to updates Partage.
    */
   public function canBeActivated () : BOOL
   {
-        $result = $this->getPartageBackendConfiguration();
+    $result = $this->getPartageBackendConfiguration();
 
     if ($result['fdRenaterPartageConfActivateAccount'][0] === 'TRUE') {
-        return TRUE;
+      return TRUE;
     }
 
-        return FALSE;
+    return FALSE;
   }
 
 
@@ -600,13 +600,13 @@ class mailMethodRenaterPartage extends mailMethod
    */
   public function ldapOverridePartage () : BOOL
   {
-        $result = $this->getPartageBackendConfiguration();
+    $result = $this->getPartageBackendConfiguration();
 
     if ($result['fdRenaterPartageConfOverride'][0] === 'TRUE') {
         return TRUE;
     }
 
-        return FALSE;
+    return FALSE;
   }
 
   /*
@@ -625,7 +625,6 @@ class mailMethodRenaterPartage extends mailMethod
     $this->build_account_id();
     if (!$this->parent->initially_was_account) {
 
-      /* Creation */
       if ($this->account_exists()) {
         // Switch from creation to Update logic and verify if LDAP can overidde partage.
         if (!$this->ldapOverridePartage()) {
@@ -637,7 +636,7 @@ class mailMethodRenaterPartage extends mailMethod
         if ($this->isAccountNotActive()) {
           if ($this->canBeActivated()) {
 
-                        // Activate the account
+            // Activate the account
             if (!$this->setActiveStatus()) {
               $this->error = _('This account was not set into active state for some reasons...');
 
@@ -660,7 +659,7 @@ class mailMethodRenaterPartage extends mailMethod
             return FALSE;
           }
         }
-        // Update the account as LDAP is ticked to be right and account is Active.
+        // Update the account as LDAP override is ticked and account is Active.
         $answer = $this->updateAccount($infos);
 
         if ($answer === FALSE) {
@@ -679,7 +678,7 @@ class mailMethodRenaterPartage extends mailMethod
       }
 
     } else {
-      // This means a modification of e-mails address wich is not allowed.
+      // This means a modification of e-mails address which is not allowed.
       if ($this->account_id !== $this->initial_account_id) {
         $this->error = _('Attempt to rename address-email or e-mail address already exist !');
 
@@ -691,17 +690,25 @@ class mailMethodRenaterPartage extends mailMethod
   public function deleteMailbox ()
   {
     parent::deleteMailbox();
+
+    $deletion_mode = $this->getPartageBackendConfiguration();
+    $deletion_mode = $deletion_mode['fdRenaterPartageConfDeleteOption'][0];
+
     $infos = $this->getServerConfig();
     if ($infos === FALSE) {
       return FALSE;
     }
+
     $this->account_id = $this->initial_account_id;
     if ($this->account_exists()) {
       if ($this->type == 'user') {
-        if ($infos['delete_type'] == 'delete') {
+        if ($deletion_mode == 'delete') {
+
           $answer = $this->query('DeleteAccount', ['name' => $this->initial_account_id]);
-        } elseif ($infos['delete_type'] == 'disable') {
+
+        } elseif ($deletion_mode == 'disable') {
           $answer = $this->query('ModifyAccount', ['name' => $this->initial_account_id, 'zimbraAccountStatus' => 'closed']);
+
         } else {
           $answer = FALSE;
           $this->error = _('Invalid value in fdRenaterPartageServerDeletionType');
@@ -709,6 +716,7 @@ class mailMethodRenaterPartage extends mailMethod
       } else {
         $answer = $this->query('DeleteGroup', ['name' => $this->initial_account_id]);
       }
+
       return ($answer !== FALSE);
     }
     return TRUE;
@@ -763,7 +771,7 @@ class mailMethodRenaterPartage extends mailMethod
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search('(&(objectClass=fdRenaterPartageServer)(fdRenaterPartageServerMailDomain=*))',
-                  ['cn', 'fdRenaterPartageServerUri', 'fdRenaterPartageServerMailDomain', 'fdRenaterPartageServerUserAgent', 'fdRenaterPartageServerDeletionType']);
+                  ['cn', 'fdRenaterPartageServerUri', 'fdRenaterPartageServerMailDomain', 'fdRenaterPartageServerUserAgent']);
     while ($attrs = $ldap->fetch()) {
       unset($attrs['fdRenaterPartageServerMailDomain']['count']);
       foreach ($attrs['fdRenaterPartageServerMailDomain'] as $domainAndKey) {
@@ -771,12 +779,10 @@ class mailMethodRenaterPartage extends mailMethod
         $cosArray = explode(',', $cosString);
         foreach ($cosArray as $cos) {
           list ($cosName, $cosId) = explode('|', $cos);
-          $deleteMode = (isset($attrs['fdRenaterPartageServerDeletionType'][0]) ? $attrs['fdRenaterPartageServerDeletionType'][0] : 'delete');
           $serverList[$attrs['cn'][0].' - '.$domain.' - '.$cosName] = [
             'server_dn'   => $attrs['dn'],
             'user_agent'  => $attrs['fdRenaterPartageServerUserAgent'][0],
             'uri'         => $attrs['fdRenaterPartageServerUri'][0],
-            'delete_type' => $deleteMode,
             'domain'      => $domain,
             'key'         => $key,
             'cos_name'    => $cosName,
