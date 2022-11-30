@@ -581,7 +581,7 @@ class mailMethodRenaterPartage extends mailMethod
     if ($this->account_exists()) {
       if ($this->type == 'user') {
         $answer = $this->query('ModifyAccount', ['name' => $this->initial_account_id, 'zimbraAccountStatus' => 'active']);
-          return ($answer !== FALSE);
+        return ($answer !== FALSE);
       }
     }
     return FALSE;
@@ -641,12 +641,20 @@ class mailMethodRenaterPartage extends mailMethod
   {
     global $config;
 
+    $partageConf = $this->getPartageBackendConfiguration();
+    $tokenLifetime = $partageConf['fdRenaterPartageConfTokenLifetime'][0];
+
     $ldap = $config->get_ldap_link();
     $ldap->cd('cn=config,'.$config->data['OBJECTS']['CONFIGURATION']['ou'].$config->current['BASE']);
 
+    // strtotime added time will be replace by the seconds from backend configuration.
+    $dateToken = date('Y-m-d-H-i-s', strtotime("+4 min"));
+    $dateEx  = explode('-', $dateToken);
+    $dateToken = implode("", $dateEx);
+
     // Set the received time of the token to "now".
     $attrs = [
-      'fdRenaterPartageConfLastReceivedTime' => date("YmdHis"),
+      'fdRenaterPartageConfLastReceivedTime' => $dateToken,
       'fdRenaterPartageConfToken' => $newToken
     ];
 
@@ -659,7 +667,7 @@ class mailMethodRenaterPartage extends mailMethod
     }
   }
 
-  /*
+   /*
    * Verification if the access-token expiry time is expired
    * and a previous token was set. (In case no token was ever received).
    */
@@ -671,30 +679,25 @@ class mailMethodRenaterPartage extends mailMethod
 
     // If no previous token was ever registered
     preg_match('/(^Token).*/', $previousToken, $match);
-    if ($match[1] == 'Token') {
+    if (isset($match[1]) && $match[1] == 'Token') {
+
       return FALSE;
     }
 
-    $tokenLifetime = $partageConf['fdRenaterPartageConfTokenLifetime'][0];
     $tokenRecTime  = $partageConf['fdRenaterPartageConfLastReceivedTime'][0];
 
-    // Multiplication is required to have the minutes and have proper time verification.
-    $tokenRecTime = $tokenRecTime + $tokenLifeTime * 100;
-    echo "Rec Time adapted :" .$tokenRecTime . PHP_EOL;
-
-    $date = (new DateTime)->format('Y-m-d-H-i-s');
+        $date = (new DateTime)->format('Y-m-d-H-i-s');
     $dateEx  = explode('-', $date);
     $dateStringerized = implode("", $dateEx);
 
     // If token time adapted with lifetime is lower than now, token has not expired.
-    if ($tokenRecTime < $dateStringerized) {
+    if ($tokenRecTime > $dateStringerized) {
+
       return TRUE;
     }
 
     return FALSE;
   }
-
-
 
 
   /*
