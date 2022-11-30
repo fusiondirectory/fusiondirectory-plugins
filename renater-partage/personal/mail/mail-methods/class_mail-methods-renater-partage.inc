@@ -649,7 +649,7 @@ class mailMethodRenaterPartage extends mailMethod
     $ldap->cd($dn);
 
     // strtotime added time will be replace by the seconds from backend configuration.
-    $dateToken = date('Y-m-d-H-i-s', strtotime("+4 min"));
+    $dateToken = date('Y-m-d-H-i-s', strtotime('+'.$tokenLifetime.' sec'));
     $dateEx  = explode('-', $dateToken);
     $dateToken = implode("", $dateEx);
 
@@ -674,7 +674,7 @@ class mailMethodRenaterPartage extends mailMethod
    */
   public function verifTokenExpiration () : BOOL
   {
-    // retrieve the lifetime set within conf.
+    // retrieve the previous token set within conf.
     $partageConf = $this->getPartageBackendConfiguration();
     $previousToken = $partageConf['fdRenaterPartageConfToken'][0];
 
@@ -687,11 +687,11 @@ class mailMethodRenaterPartage extends mailMethod
 
     $tokenRecTime  = $partageConf['fdRenaterPartageConfLastReceivedTime'][0];
 
-        $date = (new DateTime)->format('Y-m-d-H-i-s');
+    $date = (new DateTime)->format('Y-m-d-H-i-s');
     $dateEx  = explode('-', $date);
     $dateStringerized = implode("", $dateEx);
 
-    // If token time adapted with lifetime is lower than now, token has not expired.
+    // If token time is higher than now, no expiry.
     if ($tokenRecTime > $dateStringerized) {
 
       return TRUE;
