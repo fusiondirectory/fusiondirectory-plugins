@@ -76,8 +76,6 @@ class PartageConf extends simplePlugin
     ];
   }
 
-
-
   function __construct ($dn = NULL, $object = NULL, $parent = NULL, $mainTab = FALSE)
   {
     global $config;

@@ -46,30 +46,53 @@ class mailMethodRenaterPartage extends mailMethod
       return FALSE;
     }
 
-    $this->connected = FALSE;
+    // Verification if token exists and is expired, true if not expired.
+    if ($this->verifTokenExpiration()) {
+      $partageConf = $this->getPartageBackendConfiguration();
+      $this->token = $partageConf['fdRenaterPartageConfToken'][0];
 
-    //Microtime is used instead of time function due to a peculiar bug while clicking on Apply.
-    $ts = microtime(TRUE);
-    $preauth = hash_hmac('sha1', $infos['domain'].'|'.$ts, $infos['key']);
-
-    $request = [
-      'domain'    => $infos['domain'],
-      'timestamp' => $ts,
-      'preauth'   => $preauth
-    ];
-
-    $response = $this->query('Auth', $request);
-
-    if ($response === FALSE) {
-      return FALSE;
-    } elseif (!isset($response['Response']['token'])) {
-      $this->error = _('Server did not return auth token');
-      return FALSE;
-    } else {
-      $this->token      = $response['Response']['token'];
+      $ts = microtime(TRUE);
       $this->tokenTime  = $ts;
-      $this->connected  = TRUE;
+
+      $this->connected = TRUE;
       return TRUE;
+
+      // token expired a new one is required
+    } else {
+
+      $this->connected = FALSE;
+
+      //Microtime is used instead of time function due to a peculiar bug while clicking on Apply.
+      $ts = microtime(TRUE);
+      $preauth = hash_hmac('sha1', $infos['domain'].'|'.$ts, $infos['key']);
+
+      $request = [
+        'domain'    => $infos['domain'],
+        'timestamp' => $ts,
+        'preauth'   => $preauth
+      ];
+
+      $response = $this->query('Auth', $request);
+
+      if ($response === FALSE) {
+
+        return FALSE;
+      } elseif (!isset($response['Response']['token'])) {
+        $this->error = _('Server did not return auth token');
+
+        return FALSE;
+      } else {
+        $this->token  = $response['Response']['token'];
+        // Save token within LDAP.
+        // Update LDAP lastTime
+        $this->registerNewTokenInformation($this->token);
+
+        // Verify if the follow is actually benificial, triggers is_connected method!
+        $this->tokenTime  = $ts;
+
+        $this->connected  = TRUE;
+        return TRUE;
+      }
     }
   }
 
@@ -191,7 +214,7 @@ class mailMethodRenaterPartage extends mailMethod
   public function is_connected ()
   {
     /* If the token is older than 5 minutes it will get rejected. 5min = 300sec */
-    return (parent::is_connected() && (time() - $this->tokenTime < 250));
+    return (parent::is_connected() && (time() - $this->tokenTime < 299));
   }
 
   /*! \brief  Returns true the current object represents a valid account
@@ -610,48 +633,68 @@ class mailMethodRenaterPartage extends mailMethod
   }
 
   /*
-  * Update the time of the received access token
-  * Can return an LDAP error.
-  */
-  public function setTokenReceivedTime ()
+   * Register the new information about the access token received.
+   * Token itself and time
+   * Can return an LDAP error.
+   */
+  public function registerNewTokenInformation (string $newToken)
   {
-    // prepare data
     global $config;
 
     $ldap = $config->get_ldap_link();
-    $ldap->cd($config->current['BASE']);
+    $ldap->cd('cn=config,'.$config->data['OBJECTS']['CONFIGURATION']['ou'].$config->current['BASE']);
 
+    // Set the received time of the token to "now".
     $attrs = [
-      'objectClass'    => ['fdRenaterPartageConf'],
-      'fdRenaterPartageConfLastReceivedTime' => date("YmdHis")
+      'fdRenaterPartageConfLastReceivedTime' => date("YmdHis"),
+      'fdRenaterPartageConfToken' => $newToken
     ];
 
     $ldap->modify($attrs);
 
     if (!$ldap->success()) {
-      return new SimplePluginLdapError(NULL, $this->dn, (LDAP_MOD), $ldap->get_error(), $ldap->get_errno());
+      $error = new FusionDirectoryLdapError($this->dn, LDAP_MOD, $ldap->get_error(), $ldap->get_errno());
+      $error->display();
+      return NULL;
     }
-
   }
 
   /*
    * Verification if the access-token expiry time is expired
+   * and a previous token was set. (In case no token was ever received).
    */
   public function verifTokenExpiration () : BOOL
   {
-    $tokenRecTime = $this->getPartageBackendConfiguration();
-    $tokenRecTime = $tokenRecTime['fdRenaterPartageConfLastReceivedTime'][0];
+    // retrieve the lifetime set within conf.
+    $partageConf = $this->getPartageBackendConfiguration();
+    $previousToken = $partageConf['fdRenaterPartageConfToken'][0];
+
+    // If no previous token was ever registered
+    preg_match('/(^Token).*/', $previousToken, $match);
+    if ($match[1] == 'Token') {
+      return FALSE;
+    }
+
+    $tokenLifetime = $partageConf['fdRenaterPartageConfTokenLifetime'][0];
+    $tokenRecTime  = $partageConf['fdRenaterPartageConfLastReceivedTime'][0];
+
+    // Multiplication is required to have the minutes and have proper time verification.
+    $tokenRecTime = $tokenRecTime + $tokenLifeTime * 100;
+    echo "Rec Time adapted :" .$tokenRecTime . PHP_EOL;
 
     $date = (new DateTime)->format('Y-m-d-H-i-s');
     $dateEx  = explode('-', $date);
     $dateStringerized = implode("", $dateEx);
 
+    // If token time adapted with lifetime is lower than now, token has not expired.
     if ($tokenRecTime < $dateStringerized) {
       return TRUE;
     }
 
     return FALSE;
   }
+
+
 
 
   /*
@@ -661,9 +704,6 @@ class mailMethodRenaterPartage extends mailMethod
    */
   public function updateMailbox ()
   {
-    echo "Testing" .PHP_EOL;
-    $this->setTokenReceivedTime();
-
     parent::updateMailbox();
     $infos = $this->getServerConfig();
     if ($infos === FALSE) {
