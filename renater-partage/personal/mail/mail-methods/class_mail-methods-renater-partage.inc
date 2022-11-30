@@ -645,7 +645,8 @@ class mailMethodRenaterPartage extends mailMethod
     $tokenLifetime = $partageConf['fdRenaterPartageConfTokenLifetime'][0];
 
     $ldap = $config->get_ldap_link();
-    $ldap->cd('cn=config,'.$config->data['OBJECTS']['CONFIGURATION']['ou'].$config->current['BASE']);
+    $dn = 'cn=config,'.$config->data['OBJECTS']['CONFIGURATION']['ou'].$config->current['BASE'];
+    $ldap->cd($dn);
 
     // strtotime added time will be replace by the seconds from backend configuration.
     $dateToken = date('Y-m-d-H-i-s', strtotime("+4 min"));
@@ -661,7 +662,7 @@ class mailMethodRenaterPartage extends mailMethod
     $ldap->modify($attrs);
 
     if (!$ldap->success()) {
-      $error = new FusionDirectoryLdapError($this->dn, LDAP_MOD, $ldap->get_error(), $ldap->get_errno());
+      $error = new FusionDirectoryLdapError($dn, LDAP_MOD, $ldap->get_error(), $ldap->get_errno());
       $error->display();
       return NULL;
     }
