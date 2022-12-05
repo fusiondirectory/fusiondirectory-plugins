@@ -46,29 +46,53 @@ class mailMethodRenaterPartage extends mailMethod
       return FALSE;
     }
 
-    $this->connected = FALSE;
+    // Verification if token exists and is expired, true if not expired.
+    if ($this->verifTokenExpiration()) {
+      $partageConf = $this->getPartageBackendConfiguration();
+      $this->token = $partageConf['fdRenaterPartageConfToken'][0];
 
-    $ts = time();
-    $preauth = hash_hmac('sha1', $infos['domain'].'|'.$ts, $infos['key']);
-
-    $request = [
-      'domain'    => $infos['domain'],
-      'timestamp' => $ts,
-      'preauth'   => $preauth
-    ];
-
-    $response = $this->query('Auth', $request);
-
-    if ($response === FALSE) {
-      return FALSE;
-    } elseif (!isset($response['Response']['token'])) {
-      $this->error = _('Server did not return auth token');
-      return FALSE;
-    } else {
-      $this->token      = $response['Response']['token'];
+      $ts = microtime(TRUE);
       $this->tokenTime  = $ts;
-      $this->connected  = TRUE;
+
+      $this->connected = TRUE;
       return TRUE;
+
+      // token expired a new one is required
+    } else {
+
+      $this->connected = FALSE;
+
+      //Microtime is used instead of time function due to a peculiar bug while clicking on Apply.
+      $ts = microtime(TRUE);
+      $preauth = hash_hmac('sha1', $infos['domain'].'|'.$ts, $infos['key']);
+
+      $request = [
+        'domain'    => $infos['domain'],
+        'timestamp' => $ts,
+        'preauth'   => $preauth
+      ];
+
+      $response = $this->query('Auth', $request);
+
+      if ($response === FALSE) {
+
+        return FALSE;
+      } elseif (!isset($response['Response']['token'])) {
+        $this->error = _('Server did not return auth token');
+
+        return FALSE;
+      } else {
+        $this->token  = $response['Response']['token'];
+        // Save token within LDAP.
+        // Update LDAP lastTime
+        $this->registerNewTokenInformation($this->token);
+
+        // Verify if the follow is actually benificial, triggers is_connected method!
+        $this->tokenTime  = $ts;
+
+        $this->connected  = TRUE;
+        return TRUE;
+      }
     }
   }
 
@@ -190,7 +214,7 @@ class mailMethodRenaterPartage extends mailMethod
   public function is_connected ()
   {
     /* If the token is older than 5 minutes it will get rejected. 5min = 300sec */
-    return (parent::is_connected() && (time() - $this->tokenTime < 250));
+    return (parent::is_connected() && (time() - $this->tokenTime < 299));
   }
 
   /*! \brief  Returns true the current object represents a valid account
@@ -536,6 +560,152 @@ class mailMethodRenaterPartage extends mailMethod
     return TRUE;
   }
 
+  /*
+   * Allows simple verification if the account is in another status than active.
+   */
+  public function isAccountNotActive () : BOOL
+  {
+    if (!in_array($this->cachedAccount['account']['zimbraAccountStatus'], ['active'])) {
+      return TRUE;
+    }
+    return FALSE;
+  }
+
+  /*
+   * Modifies the status of the processed account to active.
+   */
+  public function setActiveStatus () : BOOL
+  {
+    $this->account_id = $this->initial_account_id;
+
+    if ($this->account_exists()) {
+      if ($this->type == 'user') {
+        $answer = $this->query('ModifyAccount', ['name' => $this->initial_account_id, 'zimbraAccountStatus' => 'active']);
+        return ($answer !== FALSE);
+      }
+    }
+    return FALSE;
+  }
+
+  /*
+   * Retrieve backend configuration attributes values
+   */
+  public function getPartageBackendConfiguration ()
+  {
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(&(objectClass=fdRenaterPartageConf))');
+    $attrs = $ldap->fetch();
+
+    // This contains a full array of the backend configuration attributes.
+    return $attrs;
+  }
+
+  /*
+   * Verify the backend config if the non active account can be re-activated to updates Partage.
+   */
+  public function canBeActivated () : BOOL
+  {
+    $result = $this->getPartageBackendConfiguration();
+
+    if ($result['fdRenaterPartageConfActivateAccount'][0] === 'TRUE') {
+      return TRUE;
+    }
+
+    return FALSE;
+  }
+
+
+  /*
+   * Verify the backend config if LDAP can be trusted and pushes its updates to Partage.
+   */
+  public function ldapOverridePartage () : BOOL
+  {
+    $result = $this->getPartageBackendConfiguration();
+
+    if ($result['fdRenaterPartageConfOverride'][0] === 'TRUE') {
+      return TRUE;
+    }
+
+    return FALSE;
+  }
+
+  /*
+   * Register the new information about the access token received.
+   * Token itself and time
+   * Can return an LDAP error.
+   */
+  public function registerNewTokenInformation (string $newToken)
+  {
+    global $config;
+
+    $partageConf = $this->getPartageBackendConfiguration();
+    $tokenLifetime = $partageConf['fdRenaterPartageConfTokenLifetime'][0];
+
+    $ldap = $config->get_ldap_link();
+    $dn = 'cn=config,'.$config->data['OBJECTS']['CONFIGURATION']['ou'].$config->current['BASE'];
+    $ldap->cd($dn);
+
+    // strtotime added time will be replace by the seconds from backend configuration.
+    $dateToken = date('Y-m-d-H-i-s', strtotime('+'.$tokenLifetime.' sec'));
+    $dateEx  = explode('-', $dateToken);
+    $dateToken = implode("", $dateEx);
+
+    // Set the received time of the token to "now".
+    $attrs = [
+      'fdRenaterPartageConfLastReceivedTime' => $dateToken,
+      'fdRenaterPartageConfToken' => $newToken
+    ];
+
+    $ldap->modify($attrs);
+
+    if (!$ldap->success()) {
+      $error = new FusionDirectoryLdapError($dn, LDAP_MOD, $ldap->get_error(), $ldap->get_errno());
+      $error->display();
+      return NULL;
+    }
+  }
+
+   /*
+   * Verification if the access-token expiry time is expired
+   * and a previous token was set. (In case no token was ever received).
+   */
+  public function verifTokenExpiration () : BOOL
+  {
+    // retrieve the previous token set within conf.
+    $partageConf = $this->getPartageBackendConfiguration();
+    $previousToken = $partageConf['fdRenaterPartageConfToken'][0];
+
+    // If no previous token was ever registered
+    preg_match('/(^Token).*/', $previousToken, $match);
+    if (isset($match[1]) && $match[1] == 'Token') {
+
+      return FALSE;
+    }
+
+    $tokenRecTime  = $partageConf['fdRenaterPartageConfLastReceivedTime'][0];
+
+    $date = (new DateTime)->format('Y-m-d-H-i-s');
+    $dateEx  = explode('-', $date);
+    $dateStringerized = implode("", $dateEx);
+
+    // If token time is higher than now, no expiry.
+    if ($tokenRecTime > $dateStringerized) {
+
+      return TRUE;
+    }
+
+    return FALSE;
+  }
+
+
+  /*
+   * This method will create and update mailbox.
+   * In case the mailbox exists within Renater, it might be updated.
+   * Depending on the flags in the backend configuration.
+   */
   public function updateMailbox ()
   {
     parent::updateMailbox();
@@ -546,86 +716,113 @@ class mailMethodRenaterPartage extends mailMethod
 
     $this->build_account_id();
     if (!$this->parent->initially_was_account) {
-      /* Creation */
+
       if ($this->account_exists()) {
-        $this->error = _('An account with the same email address already exists in Partage');
-        return FALSE;
-      }
+        // Switch from creation to Update logic and verify if LDAP can overidde partage.
+        if (!$this->ldapOverridePartage()) {
+          $this->error = _('This account already exists and is not allowed to be updated !');
 
-      $answer = $this->createAccount($infos);
-
-      if ($answer === FALSE) {
-        return FALSE;
-      }
-    } else {
-      if ($this->account_id !== $this->initial_account_id) {
-        /* Renaming */
-        if ($this->account_exists()) {
-          $this->error = _('An account with the same email address already exists in Partage');
           return FALSE;
         }
+        // Verify if the account is in active state and can be activated if not.
+        if ($this->isAccountNotActive()) {
+          if ($this->canBeActivated()) {
 
-        $account = [
-          'name'    => $this->initial_account_id,
-          'newname' => $this->account_id
-        ];
-        if ($this->type == 'user') {
-          $command = 'RenameAccount';
-        } else {
-          $command = 'RenameGroup';
+            // Activate the account
+            if (!$this->setActiveStatus()) {
+              $this->error = _('This account was not set into active state for some reasons...');
+
+              return FALSE;
+            }
+            // As the account can be activated and updated -> update Partage.
+            $answer = $this->updateAccount($infos);
+
+            if ($answer === FALSE) {
+              return FALSE;
+            }
+
+            return TRUE;
+
+          } else {
+
+            // Account can be updated but not set to active state.
+            $this->error = _('This account is not in active status, activate first !');
+
+            return FALSE;
+          }
         }
-        $answer = $this->query($command, $account);
+        // Update the account as LDAP override is ticked and account is Active.
+        $answer = $this->updateAccount($infos);
 
         if ($answer === FALSE) {
           return FALSE;
         }
 
-        if (!$this->updateAccount($infos)) {
-          return FALSE;
-        }
-      } elseif (!$this->account_exists()) {
-        $answer = $this->createAccount($infos);
+        return TRUE;
 
-        if ($answer === FALSE) {
-          return FALSE;
-        }
       } else {
-        if (!$this->updateAccount($infos)) {
+
+        // Continue the creation of the account as it does not exist yet.
+        $answer = $this->createAccount($infos);
+        if ($answer === FALSE) {
+          return FALSE;
+        }
+
+        return TRUE;
+      }
+
+    } else {
+      // This means a modification of e-mails address which is not allowed.
+      if ($this->account_id !== $this->initial_account_id) {
+        $this->error = _('Attempt to rename address-email or e-mail address already exist !');
+
+        return FALSE;
+      }
+
+      // Update the account information (username / lastname ) as account exists and email did not change.
+      if (!$this->updateAccount($infos)) {
+        return FALSE;
+      }
+
+      /* Handle aliases */
+      if (isset($this->parent->attrs['gosaMailAlternateAddress'])) {
+        $initialAliases = $this->parent->attributesAccess['gosaMailAlternateAddress']->getInitialValue();
+        $aliases        = $this->parent->attributesAccess['gosaMailAlternateAddress']->getValue();
+        if (!$this->setAliases($initialAliases, $aliases)) {
           return FALSE;
         }
       }
-    }
 
-    /* Handle aliases */
-    if (isset($this->parent->attrs['gosaMailAlternateAddress'])) {
-      $initialAliases = $this->parent->attributesAccess['gosaMailAlternateAddress']->getInitialValue();
-      $aliases        = $this->parent->attributesAccess['gosaMailAlternateAddress']->getValue();
-      if (!$this->setAliases($initialAliases, $aliases)) {
+      if (!$this->updateMembers()) {
         return FALSE;
       }
-    }
 
-    if (!$this->updateMembers()) {
-      return FALSE;
+      return TRUE;
     }
-
-    return TRUE;
   }
 
   public function deleteMailbox ()
   {
     parent::deleteMailbox();
+
+    $deletion_mode = $this->getPartageBackendConfiguration();
+    $deletion_mode = $deletion_mode['fdRenaterPartageConfDeleteOption'][0];
+
     $infos = $this->getServerConfig();
     if ($infos === FALSE) {
       return FALSE;
     }
+
     $this->account_id = $this->initial_account_id;
     if ($this->account_exists()) {
       if ($this->type == 'user') {
-        if ($infos['delete_type'] == 'delete') {
+        if ($deletion_mode == 'delete') {
+
           $answer = $this->query('DeleteAccount', ['name' => $this->initial_account_id]);
-        } elseif ($infos['delete_type'] == 'disable') {
+
+        } elseif ($deletion_mode == 'disable') {
           $answer = $this->query('ModifyAccount', ['name' => $this->initial_account_id, 'zimbraAccountStatus' => 'closed']);
+
         } else {
           $answer = FALSE;
           $this->error = _('Invalid value in fdRenaterPartageServerDeletionType');
@@ -633,6 +830,7 @@ class mailMethodRenaterPartage extends mailMethod
       } else {
         $answer = $this->query('DeleteGroup', ['name' => $this->initial_account_id]);
       }
+
       return ($answer !== FALSE);
     }
     return TRUE;
@@ -687,7 +885,7 @@ class mailMethodRenaterPartage extends mailMethod
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search('(&(objectClass=fdRenaterPartageServer)(fdRenaterPartageServerMailDomain=*))',
-                  ['cn', 'fdRenaterPartageServerUri', 'fdRenaterPartageServerMailDomain', 'fdRenaterPartageServerUserAgent', 'fdRenaterPartageServerDeletionType']);
+                  ['cn', 'fdRenaterPartageServerUri', 'fdRenaterPartageServerMailDomain', 'fdRenaterPartageServerUserAgent']);
     while ($attrs = $ldap->fetch()) {
       unset($attrs['fdRenaterPartageServerMailDomain']['count']);
       foreach ($attrs['fdRenaterPartageServerMailDomain'] as $domainAndKey) {
@@ -695,12 +893,10 @@ class mailMethodRenaterPartage extends mailMethod
         $cosArray = explode(',', $cosString);
         foreach ($cosArray as $cos) {
           list ($cosName, $cosId) = explode('|', $cos);
-          $deleteMode = (isset($attrs['fdRenaterPartageServerDeletionType'][0]) ? $attrs['fdRenaterPartageServerDeletionType'][0] : 'delete');
           $serverList[$attrs['cn'][0].' - '.$domain.' - '.$cosName] = [
             'server_dn'   => $attrs['dn'],
             'user_agent'  => $attrs['fdRenaterPartageServerUserAgent'][0],
             'uri'         => $attrs['fdRenaterPartageServerUri'][0],
-            'delete_type' => $deleteMode,
             'domain'      => $domain,
             'key'         => $key,
             'cos_name'    => $cosName,

@@ -148,7 +148,6 @@ class sieve
           $this->err_len = substr($this->mtoken, 1, $this->x);
           $this->x++;
         }
-        //print "<br>Trying to receive $this->err_len bytes for result<br>";
         $this->line = fgets($this->fp, $this->err_len);
         $this->error_raw[] = substr($this->line, 0, strlen($this->line) - 2);    //we want to be nice and strip crlf's
         $this->err_recv = strlen($this->line);
