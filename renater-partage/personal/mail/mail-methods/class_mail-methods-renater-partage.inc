@@ -57,7 +57,10 @@ class mailMethodRenaterPartage extends mailMethod
       $dn = $infos['domain'];
       foreach ($allTokens as $token) {
         if (preg_grep("/^dn:$dn\|/", [$token])) {
-          $this->token = $token;
+          $validToken = $token;
+          // only take the token, discard time and domain.
+          preg_match('/\|token:(.*)\|/', $validToken, $match);
+          $this->token = $match[1];
         }
       }
 
