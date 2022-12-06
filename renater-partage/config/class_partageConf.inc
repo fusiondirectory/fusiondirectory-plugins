@@ -59,7 +59,7 @@ class PartageConf extends simplePlugin
         'name'  => _('Partage Plugin Token Configuration'),
         'attrs' => [
           new HiddenArrayAttribute(
-            'fdRenaterPartageConfToken', FALSE, 'Token will be stored here'
+            'fdRenaterPartageConfToken', FALSE
           ),
           new IntAttribute(
             _('Token lifetime'), _('Defines lifetime of the access token in seconds. Max 4min59'/*5min is server token expiry*/),
