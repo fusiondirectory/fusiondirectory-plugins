@@ -54,8 +54,9 @@ class mailMethodRenaterPartage extends mailMethod
       unset($allTokens['count']);
 
       // Find the proper token for the assign domain.
+      $dn = $infos['domain'];
       foreach ($allTokens as $token) {
-        if (preg_grep("/^dn:$domain\|/", [$token])) {
+        if (preg_grep("/^dn:$dn\|/", [$token])) {
           $this->token = $token;
         }
       }
