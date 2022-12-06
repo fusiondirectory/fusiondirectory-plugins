@@ -40,6 +40,9 @@ class mailMethodRenaterPartage extends mailMethod
    */
   public function connect (): bool
   {
+		// TESTING
+		$this->registerNewTokenInformation('domain.name|token-abc123');
+
     parent::connect();
     $infos = $this->getServerConfig();
     if ($infos === FALSE) {
@@ -47,8 +50,11 @@ class mailMethodRenaterPartage extends mailMethod
     }
 
     // Verification if token exists and is expired, true if not expired.
-    if ($this->verifTokenExpiration()) {
+    if ($this->verifTokenExpiration(/*$infos['domain']*/"domain.one")) {
       $partageConf = $this->getPartageBackendConfiguration();
+      
+			// !!!! DEV NEEDED HERE !!!!
+			//There a retrieval of the multipe array base on the infos[DOMAIN] is required
       $this->token = $partageConf['fdRenaterPartageConfToken'][0];
 
       $ts = microtime(TRUE);
@@ -83,9 +89,9 @@ class mailMethodRenaterPartage extends mailMethod
         return FALSE;
       } else {
         $this->token  = $response['Response']['token'];
-        // Save token within LDAP.
-        // Update LDAP lastTime
-        $this->registerNewTokenInformation($this->token);
+        
+				// Save token within LDAP with domain and time.
+        $this->registerNewTokenInformation($this->token.'|'.$infos['domain']);
 
         // Verify if the follow is actually benificial, triggers is_connected method!
         $this->tokenTime  = $ts;
@@ -634,7 +640,6 @@ class mailMethodRenaterPartage extends mailMethod
 
   /*
    * Register the new information about the access token received.
-   * Token itself and time
    * Can return an LDAP error.
    */
   public function registerNewTokenInformation (string $newToken)
@@ -643,6 +648,11 @@ class mailMethodRenaterPartage extends mailMethod
 
     $partageConf = $this->getPartageBackendConfiguration();
     $tokenLifetime = $partageConf['fdRenaterPartageConfTokenLifetime'][0];
+		
+		// !!!!! DEV REQUIRED HERE !!!!!
+		// Previous token requiring a re-save logic (if not they will be overriden).
+		$existingTokens = $partageConf['fdRenaterPartageConfToken'];
+		unset($existingTokens['count']);
 
     $ldap = $config->get_ldap_link();
     $dn = 'cn=config,'.$config->data['OBJECTS']['CONFIGURATION']['ou'].$config->current['BASE'];
@@ -653,51 +663,74 @@ class mailMethodRenaterPartage extends mailMethod
     $dateEx  = explode('-', $dateToken);
     $dateToken = implode("", $dateEx);
 
+		// !!!!! HERE DEV REQUIRED !!!! mostly a foreach existing tokens, re-save them with same infos.
     // Set the received time of the token to "now".
-    $attrs = [
-      'fdRenaterPartageConfLastReceivedTime' => $dateToken,
-      'fdRenaterPartageConfToken' => $newToken
-    ];
+    
+		/* $attrs = [ */
+      /* //'fdRenaterPartageConfLastReceivedTime' => $dateToken, */
+      /* 'fdRenaterPartageConfToken' => $newToken.'|'.$dateToken */
+    /* ]; */
 
-    $ldap->modify($attrs);
+    /* $ldap->modify($attrs); */
 
-    if (!$ldap->success()) {
-      $error = new FusionDirectoryLdapError($dn, LDAP_MOD, $ldap->get_error(), $ldap->get_errno());
-      $error->display();
-      return NULL;
-    }
+    /* if (!$ldap->success()) { */
+      /* $error = new FusionDirectoryLdapError($dn, LDAP_MOD, $ldap->get_error(), $ldap->get_errno()); */
+      /* $error->display(); */
+      /* return NULL; */
+    /* } */
   }
 
    /*
-   * Verification if the access-token expiry time is expired
+   * Verification if the access-token expiry time is expired and supress it from LDAP if expired.
    * and a previous token was set. (In case no token was ever received).
    */
-  public function verifTokenExpiration () : BOOL
+  public function verifTokenExpiration (string $domain) : BOOL
   {
-    // retrieve the previous token set within conf.
+    
+		echo 'Within Verif : '.$domain.PHP_EOL; 
+		// retrieve the previous token set within conf.
     $partageConf = $this->getPartageBackendConfiguration();
-    $previousToken = $partageConf['fdRenaterPartageConfToken'][0];
+    
+		// Required when no token has even been registed - a simple string exists.
+		$firstToken = $partageConf['fdRenaterPartageConfToken'][0];
 
-    // If no previous token was ever registered
-    preg_match('/(^Token).*/', $previousToken, $match);
+		$allTokens = $partageConf['fdRenaterPartageConfToken'];
+		unset($allTokens['count']); 
+    
+		// If no previous token was ever registered
+    preg_match('/(^Token).*/', $firstToken, $match);
     if (isset($match[1]) && $match[1] == 'Token') {
 
       return FALSE;
     }
 
-    $tokenRecTime  = $partageConf['fdRenaterPartageConfLastReceivedTime'][0];
-
+		// !!!! DEV NEEDED HERE !!!! we need to be able to verify the proper time for the proper domain token.
+    /* $tokenRecTime  = $partageConf['fdRenaterPartageConfLastReceivedTime'][0]; */
+		foreach ($allTokens as $token) {
+      if (preg_grep("/^dn:$domain\|/", [$token])){
+        $validToken = $token;
+      }
+    }		
+    
+    if (isset($validToken) && !empty($validToken)) {
+      preg_match('/\|date:(\d*)/', $validToken, $match);
+      $tokenRecTime = $match[1];
+      echo 'time = '.$tokenRecTime.PHP_EOL;
+    }
+   	
     $date = (new DateTime)->format('Y-m-d-H-i-s');
-    $dateEx  = explode('-', $date);
+    $dateEx = explode('-', $date);
     $dateStringerized = implode("", $dateEx);
 
     // If token time is higher than now, no expiry.
     if ($tokenRecTime > $dateStringerized) {
 
       return TRUE;
-    }
+    } else {
 
-    return FALSE;
+      // Remove the token from LDAP
+      return FALSE;
+    }
   }
 
 

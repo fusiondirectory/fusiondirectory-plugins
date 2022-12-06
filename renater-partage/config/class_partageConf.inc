@@ -58,8 +58,7 @@ class PartageConf extends simplePlugin
       'partageConfToken' => [
         'name'  => _('Partage Plugin Token Configuration'),
         'attrs' => [
-          new StringAttribute(
-            _('Access Token'), _('The access token received'),
+          new HiddenArrayAttribute(
             'fdRenaterPartageConfToken', FALSE, 'Token will be stored here'
           ),
           new IntAttribute(
@@ -81,8 +80,6 @@ class PartageConf extends simplePlugin
     global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
 
-    // Token is received by Partage API.
-    $this->attributesAccess['fdRenaterPartageConfToken']->setDisabled(TRUE);
     // This information is unrequired to be seen.
     $this->attributesAccess['fdRenaterPartageConfLastReceivedTime']->setVisible(FALSE);
   }

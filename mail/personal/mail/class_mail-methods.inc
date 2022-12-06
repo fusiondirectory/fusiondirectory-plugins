@@ -260,6 +260,8 @@ class mailMethod
    */
   public function is_connected ()
   {
+    // testing
+    //return TRUE;
     return $this->connected;
   }
 
