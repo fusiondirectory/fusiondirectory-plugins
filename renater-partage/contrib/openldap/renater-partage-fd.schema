@@ -75,11 +75,6 @@ attributetype ( 1.3.6.1.4.1.38414.63.11.9 NAME 'fdRenaterPartageConfTokenLifetim
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
   SINGLE-VALUE)
 
-attributetype ( 1.3.6.1.4.1.38414.63.11.10 NAME 'fdRenaterPartageConfLastReceivedTime'
-  DESC 'Store the time of the last received token - important for renewal'
-  EQUALITY caseExactIA5Match
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
-
 # Objectclasses
 objectclass (1.3.6.1.4.1.38414.63.2.1 NAME 'fdRenaterPartageServer' SUP top AUXILIARY
   DESC 'FusionDirectory - Renater Partage server description'
@@ -102,6 +97,6 @@ objectclass (1.3.6.1.4.1.38414.63.2.3 NAME 'fdRenaterPartageSympaAlias' SUP top 
 objectclass (1.3.6.1.4.1.38414.63.2.4 NAME 'fdRenaterPartageConf' SUP top AUXILIARY
   DESC 'FusionDirectory - Renater Partage Configuration'
   MUST ( fdRenaterPartageConfDeleteOption $ fdRenaterPartageConfTokenLifetime )
-  MAY  ( fdRenaterPartageConfOverride $ fdRenaterPartageConfActivateAccount $ fdRenaterPartageConfToken $ fdRenaterPartageConfLastReceivedTime ))
+  MAY  ( fdRenaterPartageConfOverride $ fdRenaterPartageConfActivateAccount $ fdRenaterPartageConfToken ))
 
 

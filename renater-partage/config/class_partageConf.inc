@@ -66,10 +66,6 @@ class PartageConf extends simplePlugin
             'fdRenaterPartageConfTokenLifetime', TRUE,
             1, 299, 270
           ),
-          new DateTimeAttribute(
-           _('Time of the last received token'), '',
-           'fdRenaterPartageConfLastReceivedTime', FALSE
-          ),
         ]
       ],
     ];
@@ -79,9 +75,6 @@ class PartageConf extends simplePlugin
   {
     global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
-
-    // This information is unrequired to be seen.
-    $this->attributesAccess['fdRenaterPartageConfLastReceivedTime']->setVisible(FALSE);
   }
 
 }

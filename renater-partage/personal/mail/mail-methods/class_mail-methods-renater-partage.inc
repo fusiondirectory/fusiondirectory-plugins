@@ -40,22 +40,25 @@ class mailMethodRenaterPartage extends mailMethod
    */
   public function connect (): bool
   {
-		// TESTING
-		$this->registerNewTokenInformation('domain.one|token-abc123');
-
-    parent::connect();
+      parent::connect();
     $infos = $this->getServerConfig();
     if ($infos === FALSE) {
       return FALSE;
     }
 
     // Verification if token exists and is expired, true if not expired.
-    if ($this->verifTokenExpiration(/*$infos['domain']*/"domain.one")) {
+    if ($this->verifTokenExpiration($infos['domain'])) {
+
       $partageConf = $this->getPartageBackendConfiguration();
-      
-			// !!!! DEV NEEDED HERE !!!!
-			//There a retrieval of the multipe array base on the infos[DOMAIN] is required
-      $this->token = $partageConf['fdRenaterPartageConfToken'][0];
+      $allTokens = $partageConf['fdRenaterPartageConfToken'];
+      unset($allTokens['count']);
+
+      // Find the proper token for the assign domain.
+      foreach ($allTokens as $token) {
+        if (preg_grep("/^dn:$domain\|/", [$token])) {
+          $this->token = $token;
+        }
+      }
 
       $ts = microtime(TRUE);
       $this->tokenTime  = $ts;
@@ -63,7 +66,7 @@ class mailMethodRenaterPartage extends mailMethod
       $this->connected = TRUE;
       return TRUE;
 
-      // token expired a new one is required
+      // token is expired or a new one is required.
     } else {
 
       $this->connected = FALSE;
@@ -88,10 +91,11 @@ class mailMethodRenaterPartage extends mailMethod
 
         return FALSE;
       } else {
+
         $this->token  = $response['Response']['token'];
-        
-				// Save token within LDAP with domain and time.
-        $this->registerNewTokenInformation($this->token.'|'.$infos['domain']);
+
+        // Save token within LDAP with domain and time.
+        $this->registerNewTokenInformation('dn:'.$infos['domain'].'|token:'.$this->token);
 
         // Verify if the follow is actually benificial, triggers is_connected method!
         $this->tokenTime  = $ts;
@@ -649,13 +653,15 @@ class mailMethodRenaterPartage extends mailMethod
 
     // strtotime added time will be replace by the seconds from backend configuration.
     $dateToken = date('Y-m-d-H-i-s', strtotime('+'.$tokenLifetime.' sec'));
-    $dateEx  = explode('-', $dateToken);
+    $dateEx = explode('-', $dateToken);
     $dateToken = implode("", $dateEx);
 
-    $finalToken = $newToken.'|'.$dateToken;
- 
-    $existingTokens = $partageConf['fdRenaterPartageConfToken'];
-		unset($existingTokens['count']);
+    $finalToken = $newToken.'|date:'.$dateToken;
+
+    if (isset($partageConf['fdRenaterPartageConfToken']) && !empty($partageConf['fdRenaterPartageConfToken'])) {
+      $existingTokens = $partageConf['fdRenaterPartageConfToken'];
+      unset($existingTokens['count']);
+    }
 
     // Push the new token within existing ones.
     $existingTokens[] = $finalToken;
@@ -668,11 +674,10 @@ class mailMethodRenaterPartage extends mailMethod
    * Updates or Delete tokens within LDAP base on time expiry
    * Args takes an associative key/value array and a mode. TRUE to modify, FALSE to delete.
    */
-  public function modifyTokenInLdap(array $attrs, bool $mode) 
+  public function modifyTokenInLdap (array $attrs, bool $mode)
   {
-    global $config; 
+    global $config;
 
-    echo "withinTokenInLdap" .PHP_EOL;
     $ldap = $config->get_ldap_link();
     $dn = 'cn=config,'.$config->data['OBJECTS']['CONFIGURATION']['ou'].$config->current['BASE'];
     $ldap->cd($dn);
@@ -681,7 +686,6 @@ class mailMethodRenaterPartage extends mailMethod
       $ldap->modify($attrs);
     } else {
       $ldap->rm($attrs);
-      echo "DELETE" .PHP_EOL;
     }
 
     if (!$ldap->success()) {
@@ -698,8 +702,7 @@ class mailMethodRenaterPartage extends mailMethod
    */
   public function verifTokenExpiration (string $domain) : BOOL
   {
-		echo 'Within Verif : '.$domain.PHP_EOL; 
-		// retrieve the previous token set within conf.
+    // retrieve the previous token set within conf.
     $partageConf = $this->getPartageBackendConfiguration();
 
     // If no previous token was ever registered for that domain, return FALSE.
@@ -714,23 +717,20 @@ class mailMethodRenaterPartage extends mailMethod
 
     // Find the proper token for the assign domain.
     foreach ($allTokens as $token) {
-      if (preg_grep("/^dn:$domain\|/", [$token])){
+      if (preg_grep("/^dn:$domain\|/", [$token])) {
         $validToken = $token;
       }
-    }		
-    
+    }
+
     // FALSE if token is non existent for that domain. Creation required.
     if (isset($validToken) && !empty($validToken)) {
       preg_match('/\|date:(\d*)/', $validToken, $match);
       $tokenRecTime = $match[1];
-      echo 'time = '.$tokenRecTime.PHP_EOL;
-   
-    } else {
 
-      echo "No tokens were ever registerd for that domain." .PHP_EOL; 
+    } else {
       return FALSE;
     }
-   	
+
     $date = (new DateTime)->format('Y-m-d-H-i-s');
     $dateEx = explode('-', $date);
     $dateStringerized = implode("", $dateEx);
