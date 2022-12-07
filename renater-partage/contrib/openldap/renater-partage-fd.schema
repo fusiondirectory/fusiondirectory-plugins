@@ -81,6 +81,12 @@ attributetype ( 1.3.6.1.4.1.38414.63.11.10 NAME 'fdRenaterPartageConfPortProtect
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
   SINGLE-VALUE)
 
+attributetype ( 1.3.6.1.4.1.38414.63.11.11 NAME 'fdRenaterPartageConfTimeProtection'
+  DESC 'FusionDirectory - Time protection between a re-try after a parallel scripting detection'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE)
+
 # Objectclasses
 objectclass (1.3.6.1.4.1.38414.63.2.1 NAME 'fdRenaterPartageServer' SUP top AUXILIARY
   DESC 'FusionDirectory - Renater Partage server description'
@@ -102,7 +108,8 @@ objectclass (1.3.6.1.4.1.38414.63.2.3 NAME 'fdRenaterPartageSympaAlias' SUP top 
 
 objectclass (1.3.6.1.4.1.38414.63.2.4 NAME 'fdRenaterPartageConf' SUP top AUXILIARY
   DESC 'FusionDirectory - Renater Partage Configuration'
-  MUST ( fdRenaterPartageConfDeleteOption $ fdRenaterPartageConfTokenLifetime $ fdRenaterPartageConfPortProtection )
+  MUST ( fdRenaterPartageConfDeleteOption $ fdRenaterPartageConfTokenLifetime $ 
+  fdRenaterPartageConfPortProtection $ fdRenaterPartageConfTimeProtection )
   MAY  ( fdRenaterPartageConfOverride $ fdRenaterPartageConfActivateAccount $ fdRenaterPartageConfToken ))
 
 

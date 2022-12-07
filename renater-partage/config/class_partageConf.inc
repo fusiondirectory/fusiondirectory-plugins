@@ -66,10 +66,20 @@ class PartageConf extends simplePlugin
             'fdRenaterPartageConfTokenLifetime', TRUE,
             1, 299, 270
           ),
+        ]
+      ],
+      'partageAdvanceConf' => [
+        'name'  => _('Partage Plugin Advanced Configuration'),
+        'attrs' => [
           new IntAttribute(
-            _('Port protection'), _('Set the TCP port to be used to open the protective socket against parallel script'),
+            _('Port protection against parallel execution'), _('Set the TCP port to be used for the protective socket against parallel script'),
             'fdRenaterPartageConfPortProtection', TRUE,
             1025, 65535, 20825
+          ),
+          new IntAttribute(
+            _('Timelapse between parallel detection (sec)'), _('Set the required timelapse to respect after a parallel script detection'),
+            'fdRenaterPartageConfTimeProtection', TRUE,
+            1, 60, 5
           ),
         ]
       ],

@@ -47,13 +47,15 @@ class mailMethodRenaterPartage extends mailMethod
     }
 
     $partageConf = $this->getPartageBackendConfiguration();
-    // Protection for parallel script execution ran at the exact same time. 4sec delay is not enough.
 
-    $port = $partageConf['fdRenaterPartageConfPortProtection'][0] ?? '20825';
-    $stream = @stream_socket_server('tcp://127.0.0.1:'.$port);
+    // Protection for parallel script execution ran at the exact same time. 5sec is the ideal.
+    $portProtection = $partageConf['fdRenaterPartageConfPortProtection'][0] ?? '20825';
+    $timeProtection = $partageConf['fdRenaterPartageConfTimeProtection'][0] ?? '5';
+
+    $stream = @stream_socket_server('tcp://127.0.0.1:'.$portProtection);
 
     if (!$stream) {
-      sleep(5);
+      sleep($timeProtection);
     }
 
     // Verification if token exists and is expired, true if not expired.
