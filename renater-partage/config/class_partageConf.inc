@@ -66,6 +66,11 @@ class PartageConf extends simplePlugin
             'fdRenaterPartageConfTokenLifetime', TRUE,
             1, 299, 270
           ),
+          new IntAttribute(
+            _('Port protection'), _('Set the TCP port to be used to open the protective socket against parallel script'),
+            'fdRenaterPartageConfPortProtection', TRUE,
+            1025, 65535, 20825
+          ),
         ]
       ],
     ];

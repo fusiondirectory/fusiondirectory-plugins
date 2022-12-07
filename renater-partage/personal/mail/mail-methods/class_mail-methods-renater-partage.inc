@@ -32,7 +32,6 @@ class mailMethodRenaterPartage extends mailMethod
   private $http_options = [];
   private $ssl_options = [];
   private $token;
-  private $tokenTime;
   private $cachedAccount;
 
   /*! \brief  Connect to renater PARTAGE API and store the auth token
@@ -40,32 +39,43 @@ class mailMethodRenaterPartage extends mailMethod
    */
   public function connect (): bool
   {
-      parent::connect();
+    parent::connect();
     $infos = $this->getServerConfig();
+
     if ($infos === FALSE) {
       return FALSE;
+    }
+
+    $partageConf = $this->getPartageBackendConfiguration();
+    // Protection for parallel script execution ran at the exact same time. 4sec delay is not enough.
+
+    $port = $partageConf['fdRenaterPartageConfPortProtection'][0] ?? '20825';
+    $stream = @stream_socket_server('tcp://127.0.0.1:'.$port);
+
+    if (!$stream) {
+      sleep(5);
     }
 
     // Verification if token exists and is expired, true if not expired.
     if ($this->verifTokenExpiration($infos['domain'])) {
 
-      $partageConf = $this->getPartageBackendConfiguration();
       $allTokens = $partageConf['fdRenaterPartageConfToken'];
       unset($allTokens['count']);
 
       // Find the proper token for the assign domain.
       $dn = $infos['domain'];
+
       foreach ($allTokens as $token) {
         if (preg_grep("/^dn:$dn\|/", [$token])) {
           $validToken = $token;
+
           // only take the token, discard time and domain.
           preg_match('/\|token:(.*)\|/', $validToken, $match);
           $this->token = $match[1];
         }
       }
 
-      $ts = microtime(TRUE);
-      $this->tokenTime  = $ts;
+      fclose($stream);
 
       $this->connected = TRUE;
       return TRUE;
@@ -97,12 +107,7 @@ class mailMethodRenaterPartage extends mailMethod
       } else {
 
         $this->token  = $response['Response']['token'];
-
-        // Save token within LDAP with domain and time.
         $this->registerNewTokenInformation('dn:'.$infos['domain'].'|token:'.$this->token);
-
-        // Verify if the follow is actually benificial, triggers is_connected method!
-        $this->tokenTime  = $ts;
 
         $this->connected  = TRUE;
         return TRUE;
@@ -196,7 +201,6 @@ class mailMethodRenaterPartage extends mailMethod
   {
     parent::disconnect();
     unset($this->token);
-    unset($this->tokenTime);
   }
 
   /*! \brief Checks data consistency
@@ -227,8 +231,13 @@ class mailMethodRenaterPartage extends mailMethod
    */
   public function is_connected ()
   {
-    /* If the token is older than 5 minutes it will get rejected. 5min = 300sec */
-    return (parent::is_connected() && (time() - $this->tokenTime < 299));
+    $infos = $this->getServerConfig();
+    if ($infos === FALSE) {
+      return FALSE;
+    }
+
+    // Return TRUE of FALSE based on token lifetime verification.
+    return (parent::is_connected() && $this->verifTokenExpiration($infos['domain']));
   }
 
   /*! \brief  Returns true the current object represents a valid account
@@ -595,6 +604,7 @@ class mailMethodRenaterPartage extends mailMethod
     if ($this->account_exists()) {
       if ($this->type == 'user') {
         $answer = $this->query('ModifyAccount', ['name' => $this->initial_account_id, 'zimbraAccountStatus' => 'active']);
+
         return ($answer !== FALSE);
       }
     }
@@ -610,6 +620,7 @@ class mailMethodRenaterPartage extends mailMethod
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
+
     $ldap->search('(&(objectClass=fdRenaterPartageConf))');
     $attrs = $ldap->fetch();
 
@@ -656,9 +667,7 @@ class mailMethodRenaterPartage extends mailMethod
     $tokenLifetime = $partageConf['fdRenaterPartageConfTokenLifetime'][0];
 
     // strtotime added time will be replace by the seconds from backend configuration.
-    $dateToken = date('Y-m-d-H-i-s', strtotime('+'.$tokenLifetime.' sec'));
-    $dateEx = explode('-', $dateToken);
-    $dateToken = implode("", $dateEx);
+    $dateToken = time() + $tokenLifetime;
 
     $finalToken = $newToken.'|date:'.$dateToken;
 
@@ -735,14 +744,12 @@ class mailMethodRenaterPartage extends mailMethod
       return FALSE;
     }
 
-    $date = (new DateTime)->format('Y-m-d-H-i-s');
-    $dateEx = explode('-', $date);
-    $dateStringerized = implode("", $dateEx);
+    $now = time();
 
     // Token is not expired on TRUE, delete from LDAP on FALSE.
-    if ($tokenRecTime > $dateStringerized) {
+    if ($tokenRecTime > $now) {
 
-      return TRUE;
+            return TRUE;
     } else {
 
       $attrs = ['fdRenaterPartageConfToken' => $validToken];
