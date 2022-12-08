@@ -58,18 +58,28 @@ class PartageConf extends simplePlugin
       'partageConfToken' => [
         'name'  => _('Partage Plugin Token Configuration'),
         'attrs' => [
-          new StringAttribute(
-            _('Access Token'), _('The access token received'),
-            'fdRenaterPartageConfToken', FALSE, 'Token will be stored here'
+          new HiddenArrayAttribute(
+            'fdRenaterPartageConfToken', FALSE
           ),
           new IntAttribute(
             _('Token lifetime'), _('Defines lifetime of the access token in seconds. Max 4min59'/*5min is server token expiry*/),
             'fdRenaterPartageConfTokenLifetime', TRUE,
             1, 299, 270
           ),
-          new DateTimeAttribute(
-           _('Time of the last received token'), '',
-           'fdRenaterPartageConfLastReceivedTime', FALSE
+        ]
+      ],
+      'partageAdvanceConf' => [
+        'name'  => _('Partage Plugin Advanced Configuration'),
+        'attrs' => [
+          new IntAttribute(
+            _('Port protection against parallel execution'), _('Set the TCP port to be used for the protective socket against parallel script'),
+            'fdRenaterPartageConfPortProtection', TRUE,
+            1025, 65535, 20825
+          ),
+          new IntAttribute(
+            _('Timelapse between parallel detection (sec)'), _('Set the required timelapse to respect after a parallel script detection'),
+            'fdRenaterPartageConfTimeProtection', TRUE,
+            1, 60, 5
           ),
         ]
       ],
@@ -80,11 +90,6 @@ class PartageConf extends simplePlugin
   {
     global $config;
     parent::__construct($dn, $object, $parent, $mainTab);
-
-    // Token is received by Partage API.
-    $this->attributesAccess['fdRenaterPartageConfToken']->setDisabled(TRUE);
-    // This information is unrequired to be seen.
-    $this->attributesAccess['fdRenaterPartageConfLastReceivedTime']->setVisible(FALSE);
   }
 
 }
