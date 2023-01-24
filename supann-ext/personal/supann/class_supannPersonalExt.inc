@@ -179,8 +179,9 @@ class supannPersonalExt extends simplePlugin
     $populationCodes = [];
 
     $ldap = $config->get_ldap_link();
-    $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=fdSupannExt))');
+    $dn = 'cn=config,'.$config->data['OBJECTS']['CONFIGURATION']['ou'].$config->current['BASE'];
+    $ldap->cd($dn);
+    $ldap->search('(objectClass=fdSupannExt)');
 
     while ($attrs = $ldap->fetch()) {
       if (isset($attrs['fdMainPopulationCodeConf'][0])) {
@@ -214,7 +215,6 @@ class supannPersonalExt extends simplePlugin
 
     //Make sure the ID cannot be re-used if adapted from template
     $this->setGeneratedUniqueID();
-
     $this->fromTemplate = TRUE;
   }
 
