@@ -371,6 +371,9 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
   function __construct ($dn = NULL, $baseobject = NULL, $parent = NULL, $mainTab = FALSE)
   {
     global $config;
+
+    parent::__construct($dn, $baseobject, $parent, $mainTab);
+
     // User wants me to fake the idMappings? This is useful for
     //  making winbind resolve the user names in a reasonable amount
     //  of time in combination with larger databases.
@@ -378,7 +381,6 @@ class sambaAccount extends simplePlugin implements UserTabLockingAction
       $this->objectclasses[] = 'sambaIdmapEntry';
     }
 
-    parent::__construct($dn, $baseobject, $parent, $mainTab);
 
     $domains = sambaDomainManagement::getSambaDomains();
     $this->attributesAccess['sambaDomainName']->setChoices(array_keys($domains));
