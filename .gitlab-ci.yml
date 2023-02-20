@@ -76,7 +76,7 @@ update-transifex:
 build-tarballs:
   stage: tarballs
   only:
-    - 1.4-dev
+    - $TARBALLS_TRIGGER_VERSION
   script:
     - mkdir ../fusiondirectory-plugins-$VERSION/
     - mv ./* ../fusiondirectory-plugins-$VERSION/
@@ -90,7 +90,7 @@ build-tarballs:
 trigger-ci-debian-buster:
   stage: trigger
   only:
-    - 1.4-dev
+    - $TARBALLS_TRIGGER_VERSION
   variables:
     GROUP: "$GROUP"
     BRANCH_CORE: "$CI_COMMIT_REF_NAME"
