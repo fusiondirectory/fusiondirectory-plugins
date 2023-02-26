@@ -91,6 +91,7 @@ build-tarballs:
 trigger-ci-debian-buster:
   stage: trigger
   only:
+    variables:
     - $TARBALLS_TRIGGER_VERSION
   variables:
     GROUP: "$GROUP"
