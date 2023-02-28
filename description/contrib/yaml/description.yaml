@@ -1,0 +1,24 @@
+information:
+  name : %name_of_plugin%
+  description : %description_plugin%
+  version : "1.4"
+  authors :
+    - "FusionDirectory"
+  status : Stable
+  screenshotUrl:
+    - %to_be_define% 
+  logoUrl : "https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/raw/fusiondirectory-1.4/%name_of_plugin%/html/themes/breezy/icons/48/apps/%name_of_plugin%.png"
+  tags: ["plugin", %name_of_plugin%, %tag_demonstration% ] // https://gitlab.fusiondirectory.org/applications/demonstration/-/blob/bulleyes-selenium/demoInstall.sh
+  license: "GPLv2"
+  origin: "package"
+
+support:
+  provider: fusiondirectory
+  homeUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins
+  ticketUrl : https://gitlab.fusiondirectory.org/fusiondirectory/fd-plugins/-/issues
+  schemaUrl: "https://schemas.fusiondirectory.org/"
+  contractUrl: https://www.fusiondirectory.org/abonnements-fusiondirectory/
+
+requirement:
+  fdVersion : 1.4
+  phpVersion : 7.3.0
