@@ -26,7 +26,7 @@ class autofs5Management extends management
     return [
       'plShortName'   => _('Auto fs'),
       'plTitle'       => _('Auto fs management'),
-      'plDescription' => _('Manage auto fs maps'),
+      'plDescription' => _('Manage autofs maps'),
       'plIcon'        => 'geticon.php?context=applications&icon=autofs&size=48',
       'plSection'     => 'systems',
       'plPriority'    => 5,

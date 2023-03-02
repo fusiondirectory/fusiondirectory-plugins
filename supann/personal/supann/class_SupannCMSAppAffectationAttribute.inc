@@ -39,7 +39,7 @@ class SupannCMSAppAffectationAttribute extends SupannCompositeAttribute
         $types, '', $typeLabels
       ),
       new SelectAttribute(
-        _('Source'), _('Card managing system and establishment'),
+        _('Source'), _('Card management system and establishment'),
         'supannCMSSource_source_'.$ldapName, TRUE,
         $config->get_cfg_value('supannCMSSources', [])
       ),
