@@ -29,7 +29,7 @@ class subscription extends simplePlugin
       'plObjectClass' => ['fdSubscription'],
       'plObjectType'  => ['subscription' => [
         'name'        => _('Subscription'),
-        'icon'        => 'geticon.php?context=types&icon=subscription&size=16',
+        'icon'        => 'geticon.php?context=applications&icon=subscription&size=16',
         'ou'          => get_ou('subscriptionRDN'),
       ]],
       'plSearchAttrs' => ['cn','description','fdSubscriptionContractId'],

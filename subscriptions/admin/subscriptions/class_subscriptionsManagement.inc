@@ -40,7 +40,7 @@ class subscriptionsManagement extends management
       'plShortName'   => _('Subscriptions'),
       'plTitle'       => _('Subscription management'),
       'plDescription' => _('Manage subscriptions'),
-      'plIcon'        => 'geticon.php?context=types&icon=subscription&size=48',
+      'plIcon'        => 'geticon.php?context=applications&icon=subscription&size=48',
       'plSection'     => 'accounts',
       'plManages'     => ['subscription'],
 
