@@ -252,7 +252,7 @@ class supannAccountStatus extends simplePlugin implements UserTabLockingAction
         'SupannSursis'    => _('Extension'),
       ],
       'I' => [
-        'SupannPrecree'       => _('Precreated'),
+        'SupannPrecree'       => _('Pre-created'),
         'SupannCree'          => _('Created'),
         'SupannExpire'        => _('Expired'),
         'SupannInactif'       => _('Inactive'),

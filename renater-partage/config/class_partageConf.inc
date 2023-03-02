@@ -24,7 +24,7 @@ class PartageConf extends simplePlugin
   {
     return [
       'plShortName'     => _('Partage'),
-      'plTitle'         => _('Partageconfiguration'),
+      'plTitle'         => _('Renater-Partage configuration page'),
       'plDescription'   => _('FusionDirectory Partage plugin configuration'),
       'plObjectClass'   => ['fdRenaterPartageConf'],
       'plObjectType'    => ['configuration'],
@@ -72,7 +72,7 @@ class PartageConf extends simplePlugin
         'name'  => _('Partage Plugin Advanced Configuration'),
         'attrs' => [
           new IntAttribute(
-            _('Port protection against parallel execution'), _('Set the TCP port to be used for the protective socket against parallel script'),
+            _('Port protection against parallel script execution'), _('Set the TCP port to be used for the protective socket against parallel script execution'),
             'fdRenaterPartageConfPortProtection', TRUE,
             1025, 65535, 20825
           ),

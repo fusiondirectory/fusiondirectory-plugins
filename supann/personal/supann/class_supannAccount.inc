@@ -439,11 +439,11 @@ class supannAccount extends simplePlugin
     $telephonePriveTypes = [
       'MOBPERSO'    => _('Personal mobile'),
       'FIXEPERSO'   => _('Personal landline'),
-      'MOBPARENTS'  => _('Legal representative mobile'),
-      'FIXEPARENTS' => _('Legal representative landline'),
+      'MOBPARENTS'  => _('Legal guardian mobile'),
+      'FIXEPARENTS' => _('Legal guardian landline'),
       'MOBPRO'      => _('Professional mobile'),
       'FIXEPRO'     => _('Professional landline'),
-      'SECOURS'     => _('Secours'),
+      'SECOURS'     => _('Emergency phone'),
     ];
     foreach ($config->get_cfg_value('SupannTelephonePriveTypes', []) as $line) {
       list($type,$label) = explode(':', $line, 2);
