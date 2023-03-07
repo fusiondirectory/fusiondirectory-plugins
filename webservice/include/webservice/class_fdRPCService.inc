@@ -127,7 +127,7 @@ class fdRPCService
           require_once("$BASE_DIR/$path");
         } else {
           throw new FusionDirectoryException(sprintf(_("Cannot locate file '%s' - please run '%s' to fix this"),
-                "$BASE_DIR/$path", "<b>fusiondirectory-setup</b>"));
+                "$BASE_DIR/$path", "<b>fusiondirectory-configuration-manager --update-cache</b>"));
         }
       }
     }
