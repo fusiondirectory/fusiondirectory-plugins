@@ -71,7 +71,7 @@ class RecoveryCodesAttribute extends DialogOrderedArrayAttribute
     $this->value[] = [date('c'), password_hash($randomhash, PASSWORD_DEFAULT)];
     msg_dialog::display(
       _('Recovery code'),
-      htmlescape(sprintf(_('Here is your recovery code: %s<br/><br/>Print and hide it. Do not save it on your computer. You may only use it once.'), $randomhash)),
+      htmlescape(sprintf(_('Here is your recovery code: %s'), $randomhash)).'<br><br>Print and hide it. Do not save it on your computer. You may only use it once.',
       INFO_DIALOG
     );
   }
