@@ -19,8 +19,13 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+// We have to setup the proper path to the required file.
+$root_path = dirname($_SERVER['DOCUMENT_ROOT']); //FD root folder
+$subdirectory = "/include";
+$required_path = $root_path . $subdirectory; // FD/include/
+
 /* Require PHPQRCODE */
-require_once('/usr/share/phpqrcode/qrlib.php');
+require_once($required_path.'/variables_webauthn.inc');
 
 $data = urldecode($_GET['data']);
 
