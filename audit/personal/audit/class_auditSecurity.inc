@@ -28,6 +28,8 @@ class auditSecurity extends simplePlugin
       'plDescription' => _('Security audit'),
       'plObjectType'  => ['user'],
       'plSelfModify'  => TRUE,
+      'plIcon'          => 'geticon.php?context=applications&icon=audit&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=audit&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(static::getAttributesInfo())
     ];
