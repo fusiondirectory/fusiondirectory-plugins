@@ -127,7 +127,7 @@ function webauthnCheckRegistration()
  */
 function recursiveBase64StrToArrayBuffer(obj)
 {
-  let prefix = '?BINARY?B?';
+  let prefix = '=?BINARY?B?';
   let suffix = '?=';
   if (typeof obj === 'object') {
     for (let key in obj) {
