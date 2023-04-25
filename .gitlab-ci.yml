@@ -87,6 +87,20 @@ build-tarballs:
       - fusiondirectory-plugins-$VERSION.tar.gz
     expire_in: 30d
 
+build-release:
+  stage: tarballs
+  only:
+    - tags
+  script:
+    - VERSION=$(grep '%' Changelog.md | head -n1 | cut -d ' ' -f3 | tr -d '"')
+    - mkdir ../fusiondirectory-$VERSION/
+    - mv ./* ../fusiondirectory-$VERSION/
+    - mv  ../fusiondirectory-$VERSION/ ./
+    - tar -cvzf fusiondirectory-$VERSION.tar.gz *
+  artifacts:
+    paths:
+      - ./*.tar.gz
+
 trigger-ci-debian-buster:
   stage: trigger
   only:
