@@ -4,22 +4,89 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2018
+# fusiondirectory <contact@fusiondirectory.org>, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
-"Language-Team: Spanish (Colombia) (https://www.transifex.com/fusiondirectory/teams/12202/es_CO/)\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
+"Language-Team: Spanish (Colombia) (https://app.transifex.com/fusiondirectory/teams/12202/es_CO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es_CO\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: personal/ppolicy/class_ppolicyAccount.inc:28
+#: personal/ppolicy/class_ppolicyAccount.inc:43
+#: admin/ppolicy/class_ppolicy.inc:27 admin/ppolicy/class_ppolicy.inc:31
+msgid "Password policy"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:29
+msgid "Edit user's password policy"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:46
+#: admin/ppolicy/class_ppolicy.inc:47
+msgid "Policy"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:46
+msgid "Use a specific policy for this user"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:50
+msgid "Last password change"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:50
+msgid "Last time the password for the entry was changed"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:54
+msgid "Account locked time"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:54
+msgid "Time the account was locked"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:58
+msgid "Reset locking / force change"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:58
+msgid "Resets the lock status of this account and/or force a password change"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:61
+msgid "Force password change (resets locking)"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:61
+msgid "Reset locking (same password)"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:76
+msgid "Use the default"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:82
+msgid "Never"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:89
+msgid "Unlocked"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:91
+msgid "Locked permanently"
+msgstr ""
 
 #: admin/ppolicy/class_ppolicyManagement.inc:28
 msgid "Password policies"
@@ -33,19 +100,8 @@ msgstr ""
 msgid "Manage password policies"
 msgstr ""
 
-#: admin/ppolicy/class_ppolicy.inc:27 admin/ppolicy/class_ppolicy.inc:31
-#: personal/ppolicy/class_ppolicyAccount.inc:28
-#: personal/ppolicy/class_ppolicyAccount.inc:43
-msgid "Password policy"
-msgstr ""
-
 #: admin/ppolicy/class_ppolicy.inc:28
 msgid "Password policy for ppolicy overlay"
-msgstr ""
-
-#: admin/ppolicy/class_ppolicy.inc:47
-#: personal/ppolicy/class_ppolicyAccount.inc:46
-msgid "Policy"
 msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:52
@@ -82,7 +138,7 @@ msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:70
 msgid "Minimum password age"
-msgstr ""
+msgstr "Fecha mínima de contraseña"
 
 #: admin/ppolicy/class_ppolicy.inc:70
 msgid "Minimum time between password changes"
@@ -90,7 +146,7 @@ msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:75
 msgid "Maximum password age"
-msgstr ""
+msgstr "Fecha máxima de contraseña"
 
 #: admin/ppolicy/class_ppolicy.inc:75
 msgid ""
@@ -148,7 +204,7 @@ msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:103
 msgid "Disabled"
-msgstr ""
+msgstr "Desactivado"
 
 #: admin/ppolicy/class_ppolicy.inc:103
 msgid "Ignore errors"
@@ -295,77 +351,16 @@ msgstr ""
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:65
 msgid "Email"
-msgstr ""
+msgstr "Correo Electrónico"
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:85
-#: addons/dashboard/class_dashBoardPPolicy.inc:138
-msgid "Configuration error"
-msgstr "Error de configuración"
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:86
+#: addons/dashboard/class_dashBoardPPolicy.inc:87
 #, php-format
 msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:139
+#: addons/dashboard/class_dashBoardPPolicy.inc:143
 #, php-format
 msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
-msgstr ""
-
-#: personal/ppolicy/class_ppolicyAccount.inc:29
-msgid "Edit user's password policy"
-msgstr ""
-
-#: personal/ppolicy/class_ppolicyAccount.inc:46
-msgid "Use a specific policy for this user"
-msgstr ""
-
-#: personal/ppolicy/class_ppolicyAccount.inc:50
-msgid "Last password change"
-msgstr ""
-
-#: personal/ppolicy/class_ppolicyAccount.inc:50
-msgid "Last time the password for the entry was changed"
-msgstr ""
-
-#: personal/ppolicy/class_ppolicyAccount.inc:54
-msgid "Account locked time"
-msgstr ""
-
-#: personal/ppolicy/class_ppolicyAccount.inc:54
-msgid "Time the account was locked"
-msgstr ""
-
-#: personal/ppolicy/class_ppolicyAccount.inc:58
-msgid "Reset locking / force change"
-msgstr ""
-
-#: personal/ppolicy/class_ppolicyAccount.inc:58
-msgid "Resets the lock status of this account and/or force a password change"
-msgstr ""
-
-#: personal/ppolicy/class_ppolicyAccount.inc:61
-msgid "Force password change (resets locking)"
-msgstr ""
-
-#: personal/ppolicy/class_ppolicyAccount.inc:61
-msgid "Reset locking (same password)"
-msgstr ""
-
-#: personal/ppolicy/class_ppolicyAccount.inc:76
-msgid "Use the default"
-msgstr ""
-
-#: personal/ppolicy/class_ppolicyAccount.inc:82
-msgid "Never"
-msgstr ""
-
-#: personal/ppolicy/class_ppolicyAccount.inc:89
-msgid "Unlocked"
-msgstr ""
-
-#: personal/ppolicy/class_ppolicyAccount.inc:91
-msgid "Locked permanently"
 msgstr ""
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:2
@@ -373,6 +368,7 @@ msgid "There is one locked account"
 msgid_plural "There are %1 locked accounts"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:5
 msgid "There is no locked account"

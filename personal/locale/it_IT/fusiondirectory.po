@@ -5,46 +5,23 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
-# Paola Penati <paola.penati@fusiondirectory.org>, 2018
-# Paola <paola.penati@fusiondirectory.org>, 2019
+# Paola Penati <paola.penati@opensides.be>, 2018
+# Paola <paola.penati@fusiondirectory.org>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 19:59+0000\n"
-"Last-Translator: Paola <paola.penati@fusiondirectory.org>, 2019\n"
-"Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
+"Last-Translator: Paola <paola.penati@fusiondirectory.org>, 2021\n"
+"Language-Team: Italian (Italy) (https://app.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it_IT\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: config/personal/class_personalConfig.inc:26
-msgid "Personal configuration"
-msgstr "Configurazione personale"
-
-#: config/personal/class_personalConfig.inc:27
-msgid "FusionDirectory personal plugin configuration"
-msgstr "Configurazione del plugin personale di FusionDirectory"
-
-#: config/personal/class_personalConfig.inc:40
-#: personal/personal/class_personalInfo.inc:85
-msgid "Personal"
-msgstr "Personale"
-
-#: config/personal/class_personalConfig.inc:43
-msgid "Allow use of private email for password recovery"
-msgstr "Permetti l'uso dell'email privata per recuperare la password"
-
-#: config/personal/class_personalConfig.inc:43
-msgid "Allow users to use their private email address for password recovery"
-msgstr ""
-"Permette agli utenti l'uso delle loro email private per recuperare la "
-"password"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: personal/personal/class_personalInfo.inc:31
 msgid "Site"
@@ -62,97 +39,107 @@ msgstr "Id"
 msgid "Id of this user on this website"
 msgstr "L'id di questo utente è sul sito web"
 
-#: personal/personal/class_personalInfo.inc:86
+#: personal/personal/class_personalInfo.inc:67
+#, php-format
+msgid "Social handler \"%s\" does not exists"
+msgstr "Il gestore sociale \"%s\" non esiste"
+
+#: personal/personal/class_personalInfo.inc:93
+#: config/personal/class_personalConfig.inc:40
+msgid "Personal"
+msgstr "Personale"
+
+#: personal/personal/class_personalInfo.inc:94
 msgid "Personal information"
 msgstr "Informazioni personali"
 
-#: personal/personal/class_personalInfo.inc:103
+#: personal/personal/class_personalInfo.inc:111
 msgid "Personal info"
 msgstr "Informazioni personali"
 
-#: personal/personal/class_personalInfo.inc:106
+#: personal/personal/class_personalInfo.inc:114
 msgid "Personal title"
 msgstr "Titolo personale"
 
-#: personal/personal/class_personalInfo.inc:106
+#: personal/personal/class_personalInfo.inc:114
 msgid "Personal title - Examples of personal titles are \"Ms\", \"Dr\", \"Prof\" and \"Rev\""
 msgstr ""
 "Titolo personale - Esempi di titoli personali sono \"Sig\", \"Dott.\", "
 "\"Prof\" e \"Don\""
 
-#: personal/personal/class_personalInfo.inc:111
+#: personal/personal/class_personalInfo.inc:119
 msgid "Nickname"
 msgstr "Soprannome"
 
-#: personal/personal/class_personalInfo.inc:111
+#: personal/personal/class_personalInfo.inc:119
 msgid "Nicknames for this user"
 msgstr "Soprannome di questo utente"
 
-#: personal/personal/class_personalInfo.inc:116
+#: personal/personal/class_personalInfo.inc:124
 msgid "Badge Number"
 msgstr "Numero di matricola"
 
-#: personal/personal/class_personalInfo.inc:116
+#: personal/personal/class_personalInfo.inc:124
 msgid "Company badge number"
 msgstr "NUmero di matricola della Società"
 
-#: personal/personal/class_personalInfo.inc:120
+#: personal/personal/class_personalInfo.inc:128
 msgid "Date of birth"
 msgstr "Data di nascita"
 
-#: personal/personal/class_personalInfo.inc:127
+#: personal/personal/class_personalInfo.inc:135
 msgid "Sex"
 msgstr "Sesso"
 
-#: personal/personal/class_personalInfo.inc:127
+#: personal/personal/class_personalInfo.inc:135
 msgid "Gender"
 msgstr "Sesso"
 
-#: personal/personal/class_personalInfo.inc:132
+#: personal/personal/class_personalInfo.inc:140
 msgid "Country"
 msgstr "Stato"
 
-#: personal/personal/class_personalInfo.inc:136
+#: personal/personal/class_personalInfo.inc:144
 msgid "Start date"
 msgstr "Data d'inizio"
 
-#: personal/personal/class_personalInfo.inc:136
+#: personal/personal/class_personalInfo.inc:144
 msgid "Date this user joined the company"
 msgstr "Data alla quale l'utente ha integrato la Societa"
 
-#: personal/personal/class_personalInfo.inc:141
+#: personal/personal/class_personalInfo.inc:149
 msgid "End date"
 msgstr "Data di fine"
 
-#: personal/personal/class_personalInfo.inc:141
+#: personal/personal/class_personalInfo.inc:149
 msgid "Date this user is supposed to leave the company"
 msgstr "Data alla quale l'utente dovrebbe lasciare la società"
 
-#: personal/personal/class_personalInfo.inc:146
+#: personal/personal/class_personalInfo.inc:154
 msgid "Photo Visible"
 msgstr "Foto Visibile"
 
-#: personal/personal/class_personalInfo.inc:146
+#: personal/personal/class_personalInfo.inc:154
 msgid "Should the photo of the user be visible on external tools"
 msgstr "La foto dell'utente dovrebbe essere visibile su strumenti esterni"
 
-#: personal/personal/class_personalInfo.inc:152
+#: personal/personal/class_personalInfo.inc:160
 msgid "Contact"
 msgstr "Contatto"
 
-#: personal/personal/class_personalInfo.inc:156
+#: personal/personal/class_personalInfo.inc:164
 msgid "Social account"
 msgstr "Account social"
 
-#: personal/personal/class_personalInfo.inc:156
+#: personal/personal/class_personalInfo.inc:164
 msgid "Social accounts of this user"
 msgstr "Account social di questo utente"
 
-#: personal/personal/class_personalInfo.inc:163
+#: personal/personal/class_personalInfo.inc:171
 msgid "Private email"
 msgstr "Email personale"
 
-#: personal/personal/class_personalInfo.inc:163
+#: personal/personal/class_personalInfo.inc:171
 msgid "Private email addresses of this user"
 msgstr "Indirizzo email personale di questo utente"
 
@@ -190,3 +177,55 @@ msgstr ""
 #: personal/personal/class_socialHandlers.inc:148
 msgid "Incorrect ORCID value, the checksum does not match"
 msgstr "Valore ORCID errato, il checksum non corrisponde"
+
+#: personal/personal/class_socialHandlers.inc:171
+msgid "GitHub"
+msgstr "GitHub"
+
+#: personal/personal/class_socialHandlers.inc:180
+msgid ""
+"GitHub account names have at most 39 characters, contain only alphanumeric "
+"characters or hyphens, cannot have multiple consecutive hyphens, and cannot "
+"begin or end with a hyphen"
+msgstr ""
+"I nomi degli account GitHub hanno al massimo 39 caratteri, contengono solo "
+"caratteri alfanumerici o trattini, non possono avere più trattini "
+"consecutivi e non possono iniziare o terminare con un trattino"
+
+#: personal/personal/class_socialHandlers.inc:190
+msgid "Google Scholar"
+msgstr "Google Scholar"
+
+#: personal/personal/class_socialHandlers.inc:204
+msgid ""
+"Google Scholar account IDs have exactly 12 alphanumerical characters or "
+"hyphens or underscores"
+msgstr ""
+"Gli ID account Google Scholar hanno esattamente 12 caratteri alfanumerici o "
+"trattini o trattini bassi"
+
+#: personal/personal/class_socialHandlers.inc:214
+msgid "Matrix"
+msgstr "Matrice"
+
+#: personal/personal/class_socialHandlers.inc:230
+msgid "Matrix user IDs have the format '@username:server'"
+msgstr "Gli ID utente della matrice hanno il formato \"@username: server\""
+
+#: config/personal/class_personalConfig.inc:26
+msgid "Personal configuration"
+msgstr "Configurazione personale"
+
+#: config/personal/class_personalConfig.inc:27
+msgid "FusionDirectory personal plugin configuration"
+msgstr "Configurazione del plugin personale di FusionDirectory"
+
+#: config/personal/class_personalConfig.inc:43
+msgid "Allow use of private email for password recovery"
+msgstr "Permetti l'uso dell'email privata per recuperare la password"
+
+#: config/personal/class_personalConfig.inc:43
+msgid "Allow users to use their private email address for password recovery"
+msgstr ""
+"Permette agli utenti l'uso delle loro email private per recuperare la "
+"password"

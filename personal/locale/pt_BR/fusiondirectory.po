@@ -4,43 +4,22 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2018
+# fusiondirectory <contact@fusiondirectory.org>, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 19:59+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/fusiondirectory/teams/12202/pt_BR/)\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
+"Language-Team: Portuguese (Brazil) (https://app.transifex.com/fusiondirectory/teams/12202/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt_BR\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: config/personal/class_personalConfig.inc:26
-msgid "Personal configuration"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:27
-msgid "FusionDirectory personal plugin configuration"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:40
-#: personal/personal/class_personalInfo.inc:85
-msgid "Personal"
-msgstr "Pessoal"
-
-#: config/personal/class_personalConfig.inc:43
-msgid "Allow use of private email for password recovery"
-msgstr ""
-
-#: config/personal/class_personalConfig.inc:43
-msgid "Allow users to use their private email address for password recovery"
-msgstr ""
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: personal/personal/class_personalInfo.inc:31
 msgid "Site"
@@ -58,95 +37,105 @@ msgstr ""
 msgid "Id of this user on this website"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:86
-msgid "Personal information"
+#: personal/personal/class_personalInfo.inc:67
+#, php-format
+msgid "Social handler \"%s\" does not exists"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:103
+#: personal/personal/class_personalInfo.inc:93
+#: config/personal/class_personalConfig.inc:40
+msgid "Personal"
+msgstr "Pessoal"
+
+#: personal/personal/class_personalInfo.inc:94
+msgid "Personal information"
+msgstr "Informação pessoal"
+
+#: personal/personal/class_personalInfo.inc:111
 msgid "Personal info"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:106
+#: personal/personal/class_personalInfo.inc:114
 msgid "Personal title"
 msgstr "Título pessoal"
 
-#: personal/personal/class_personalInfo.inc:106
+#: personal/personal/class_personalInfo.inc:114
 msgid "Personal title - Examples of personal titles are \"Ms\", \"Dr\", \"Prof\" and \"Rev\""
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:111
+#: personal/personal/class_personalInfo.inc:119
 msgid "Nickname"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:111
+#: personal/personal/class_personalInfo.inc:119
 msgid "Nicknames for this user"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:116
+#: personal/personal/class_personalInfo.inc:124
 msgid "Badge Number"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:116
+#: personal/personal/class_personalInfo.inc:124
 msgid "Company badge number"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:120
+#: personal/personal/class_personalInfo.inc:128
 msgid "Date of birth"
 msgstr "Data de nascimento"
 
-#: personal/personal/class_personalInfo.inc:127
+#: personal/personal/class_personalInfo.inc:135
 msgid "Sex"
 msgstr "Sexo"
 
-#: personal/personal/class_personalInfo.inc:127
+#: personal/personal/class_personalInfo.inc:135
 msgid "Gender"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:132
+#: personal/personal/class_personalInfo.inc:140
 msgid "Country"
 msgstr "País"
 
-#: personal/personal/class_personalInfo.inc:136
+#: personal/personal/class_personalInfo.inc:144
 msgid "Start date"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:136
+#: personal/personal/class_personalInfo.inc:144
 msgid "Date this user joined the company"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:141
+#: personal/personal/class_personalInfo.inc:149
 msgid "End date"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:141
+#: personal/personal/class_personalInfo.inc:149
 msgid "Date this user is supposed to leave the company"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:146
+#: personal/personal/class_personalInfo.inc:154
 msgid "Photo Visible"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:146
+#: personal/personal/class_personalInfo.inc:154
 msgid "Should the photo of the user be visible on external tools"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:152
+#: personal/personal/class_personalInfo.inc:160
 msgid "Contact"
 msgstr "Contato"
 
-#: personal/personal/class_personalInfo.inc:156
+#: personal/personal/class_personalInfo.inc:164
 msgid "Social account"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:156
+#: personal/personal/class_personalInfo.inc:164
 msgid "Social accounts of this user"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:163
+#: personal/personal/class_personalInfo.inc:171
 msgid "Private email"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:163
+#: personal/personal/class_personalInfo.inc:171
 msgid "Private email addresses of this user"
 msgstr ""
 
@@ -181,4 +170,49 @@ msgstr ""
 
 #: personal/personal/class_socialHandlers.inc:148
 msgid "Incorrect ORCID value, the checksum does not match"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:171
+msgid "GitHub"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:180
+msgid ""
+"GitHub account names have at most 39 characters, contain only alphanumeric "
+"characters or hyphens, cannot have multiple consecutive hyphens, and cannot "
+"begin or end with a hyphen"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:190
+msgid "Google Scholar"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:204
+msgid ""
+"Google Scholar account IDs have exactly 12 alphanumerical characters or "
+"hyphens or underscores"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:214
+msgid "Matrix"
+msgstr ""
+
+#: personal/personal/class_socialHandlers.inc:230
+msgid "Matrix user IDs have the format '@username:server'"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:26
+msgid "Personal configuration"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:27
+msgid "FusionDirectory personal plugin configuration"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:43
+msgid "Allow use of private email for password recovery"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:43
+msgid "Allow users to use their private email address for password recovery"
 msgstr ""

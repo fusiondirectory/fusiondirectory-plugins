@@ -4,22 +4,194 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# fusiondirectory <contact@fusiondirectory.org>, 2018
+# fusiondirectory <contact@fusiondirectory.org>, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2018\n"
-"Language-Team: Portuguese (https://www.transifex.com/fusiondirectory/teams/12202/pt/)\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
+"Language-Team: Portuguese (https://app.transifex.com/fusiondirectory/teams/12202/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: admin/public-forms/class_publicForm.inc:27
+#: admin/public-forms/class_publicForm.inc:31
+msgid "Public form"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:28
+msgid "Public form which creates objects inside FusionDirectory"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:46
+#: include/class_publicFormPage.inc:392
+msgid "Form"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:50
+msgid "Name"
+msgstr "Nome"
+
+#: admin/public-forms/class_publicForm.inc:50
+msgid "Name used to identify this form"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:54
+msgid "Title"
+msgstr "Título"
+
+#: admin/public-forms/class_publicForm.inc:54
+msgid "Title of this form"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:58
+msgid "Text"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:58
+msgid "Text of the public form, shown before the form"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:62
+msgid "Object type"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:62
+msgid "Type of objects you wish to create from this form"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:67
+msgid "Template"
+msgstr "Modelo"
+
+#: admin/public-forms/class_publicForm.inc:67
+msgid "Object template used by this form"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:72
+msgid "Confirmation text"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:72
+msgid "Text shown once the object is created"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:77
+msgid "Private"
+msgstr "Particular"
+
+#: admin/public-forms/class_publicForm.inc:77
+msgid "Restrict this form to invitations"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:82
+msgid "Creation base"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:82
+msgid "Base in which objects will get created"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:87
+msgid "TOS URL"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:87
+msgid ""
+"Terms of service URL. If filled, this adds a mandatory checkbox to agree to "
+"the terms at this URL."
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:91
+msgid "Captcha"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:91
+msgid "Add a captcha to the form"
+msgstr ""
+
+#: admin/public-forms/class_publicForm.inc:96
+msgid "Link"
+msgstr "Link"
+
+#: admin/public-forms/class_publicForm.inc:96
+msgid "Link to the public form as currently saved in the LDAP"
+msgstr ""
+
+#: admin/public-forms/class_publicFormManagement.inc:27
+#: config/public-forms/class_publicFormsConfig.inc:40
+msgid "Public forms"
+msgstr ""
+
+#: admin/public-forms/class_publicFormManagement.inc:28
+msgid "Public forms management"
+msgstr ""
+
+#: admin/public-forms/class_publicFormManagement.inc:29
+msgid "Manage public forms"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:27
+#: admin/public-forms/class_publicFormAlteration.inc:42
+msgid "Altered fields"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:28
+#: admin/public-forms/class_publicFormAlteration.inc:47
+msgid "Alteration on form fields"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:51
+#: admin/public-forms/class_publicFormAlteration.inc:100
+msgid "Field"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:51
+msgid "LDAP name of a form field"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:55
+#: admin/public-forms/class_publicFormAlteration.inc:101
+msgid "Mandatory"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:55
+msgid "Should this field be mandatory"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:61
+#: admin/public-forms/class_publicFormAlteration.inc:102
+msgid "Read only"
+msgstr "Somente leitura"
+
+#: admin/public-forms/class_publicFormAlteration.inc:61
+msgid "Should this field be read only"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:67
+#: admin/public-forms/class_publicFormAlteration.inc:103
+msgid "Imported"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:67
+msgid "Should this field be imported from HTTP headers"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:73
+#: admin/public-forms/class_publicFormAlteration.inc:104
+msgid "Hidden"
+msgstr ""
+
+#: admin/public-forms/class_publicFormAlteration.inc:73
+msgid "Should this field be hidden away"
+msgstr ""
 
 #: include/class_publicFormPage.inc:72
 msgid "Invalid link, both token and form are provided"
@@ -64,193 +236,17 @@ msgstr ""
 msgid "Form \"%s\" is private and requires an invitation"
 msgstr ""
 
-#: include/class_publicFormPage.inc:229 include/class_publicFormPage.inc:236
-msgid "Error"
-msgstr "Erro"
-
 #: include/class_publicFormPage.inc:229
 msgid "Captcha code was wrong!"
 msgstr ""
 
-#: include/class_publicFormPage.inc:236
+#: include/class_publicFormPage.inc:237
 msgid "You need to accept the terms of service to continue!"
 msgstr ""
 
-#: include/class_publicFormPage.inc:387
+#: include/class_publicFormPage.inc:390
 #, php-format
 msgid "Form - %s"
-msgstr ""
-
-#: include/class_publicFormPage.inc:389
-#: admin/public-forms/class_publicForm.inc:49
-msgid "Form"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:27
-#: admin/public-forms/class_publicFormAlteration.inc:42
-msgid "Altered fields"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:28
-#: admin/public-forms/class_publicFormAlteration.inc:47
-msgid "Alteration on form fields"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:51
-#: admin/public-forms/class_publicFormAlteration.inc:100
-msgid "Field"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:51
-msgid "LDAP name of a form field"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:55
-#: admin/public-forms/class_publicFormAlteration.inc:101
-msgid "Mandatory"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:55
-msgid "Should this field be mandatory"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:61
-#: admin/public-forms/class_publicFormAlteration.inc:102
-msgid "Read only"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:61
-msgid "Should this field be read only"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:67
-#: admin/public-forms/class_publicFormAlteration.inc:103
-msgid "Imported"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:67
-msgid "Should this field be imported from HTTP headers"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:73
-#: admin/public-forms/class_publicFormAlteration.inc:104
-msgid "Hidden"
-msgstr ""
-
-#: admin/public-forms/class_publicFormAlteration.inc:73
-msgid "Should this field be hidden away"
-msgstr ""
-
-#: admin/public-forms/class_publicFormManagement.inc:27
-#: config/public-forms/class_publicFormsConfig.inc:40
-msgid "Public forms"
-msgstr ""
-
-#: admin/public-forms/class_publicFormManagement.inc:28
-msgid "Public forms management"
-msgstr ""
-
-#: admin/public-forms/class_publicFormManagement.inc:29
-msgid "Manage public forms"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:27
-#: admin/public-forms/class_publicForm.inc:31
-msgid "Public form"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:28
-msgid "Public form which creates objects inside FusionDirectory"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:53
-msgid "Name"
-msgstr "Nome"
-
-#: admin/public-forms/class_publicForm.inc:53
-msgid "Name used to identify this form"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:57
-msgid "Title"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:57
-msgid "Title of this form"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:61
-msgid "Text"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:61
-msgid "Text of the public form, shown before the form"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:65
-msgid "Object type"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:65
-msgid "Type of objects you wish to create from this form"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:70
-msgid "Template"
-msgstr "Modelo"
-
-#: admin/public-forms/class_publicForm.inc:70
-msgid "Object template used by this form"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:75
-msgid "Confirmation text"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:75
-msgid "Text shown once the object is created"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:80
-msgid "Private"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:80
-msgid "Restrict this form to invitations"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:85
-msgid "Creation base"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:85
-msgid "Base in which objects will get created"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:90
-msgid "TOS URL"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:90
-msgid ""
-"Terms of service URL. If filled, this adds a mandatory checkbox to agree to "
-"the terms at this URL."
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:94
-msgid "Captcha"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:94
-msgid "Add a captcha to the form"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:99
-msgid "Link"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:99
-msgid "Link to the public form as currently saved in the LDAP"
 msgstr ""
 
 #: config/public-forms/class_publicFormsConfig.inc:26

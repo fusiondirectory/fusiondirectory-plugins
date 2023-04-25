@@ -12,15 +12,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 20:02+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@fusiondirectory.org>, 2019\n"
-"Language-Team: French (https://www.transifex.com/fusiondirectory/teams/12202/fr/)\n"
+"Language-Team: French (https://app.transifex.com/fusiondirectory/teams/12202/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: admin/sogo/class_sogoManagement.inc:27
 #: admin/sogo/class_sogoManagement.inc:33 config/sogo/class_sogoConfig.inc:40
@@ -35,32 +35,32 @@ msgstr "Gestion SOGo"
 msgid "Manage SOGo resources"
 msgstr "Gérer les ressources SOGo"
 
-#: admin/sogo/class_sogoResource.inc:26 admin/sogo/class_sogoResource.inc:27
-#: admin/sogo/class_sogoResource.inc:31 admin/sogo/class_sogoResource.inc:48
+#: admin/sogo/class_sogoResource.inc:27 admin/sogo/class_sogoResource.inc:28
+#: admin/sogo/class_sogoResource.inc:32 admin/sogo/class_sogoResource.inc:49
 msgid "SOGo resource"
 msgstr "Ressource SOGo"
 
-#: admin/sogo/class_sogoResource.inc:52
+#: admin/sogo/class_sogoResource.inc:53
 msgid "Entry name"
 msgstr "Nom"
 
-#: admin/sogo/class_sogoResource.inc:52
+#: admin/sogo/class_sogoResource.inc:53
 msgid "Account name"
 msgstr "Nom du compte"
 
-#: admin/sogo/class_sogoResource.inc:56
+#: admin/sogo/class_sogoResource.inc:57
 msgid "Mail"
 msgstr "Courriel"
 
-#: admin/sogo/class_sogoResource.inc:62
+#: admin/sogo/class_sogoResource.inc:63
 msgid "description"
 msgstr "Description"
 
-#: admin/sogo/class_sogoResource.inc:66
+#: admin/sogo/class_sogoResource.inc:67
 msgid "Multiplebookings"
 msgstr "Nombre de réservations maximum"
 
-#: admin/sogo/class_sogoResource.inc:71
+#: admin/sogo/class_sogoResource.inc:72
 msgid "Kind"
 msgstr "Type"
 

@@ -5,115 +5,167 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
-# Choi Chris <chulwon.choi@gmail.com>, 2020
+# Choi Chris <chulwon.choi@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 20:00+0000\n"
-"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2020\n"
-"Language-Team: Korean (https://www.transifex.com/fusiondirectory/teams/12202/ko/)\n"
+"Last-Translator: Choi Chris <chulwon.choi@gmail.com>, 2021\n"
+"Language-Team: Korean (https://app.transifex.com/fusiondirectory/teams/12202/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: include/class_publicFormPage.inc:72
-msgid "Invalid link, both token and form are provided"
-msgstr ""
+#: admin/public-forms/class_publicForm.inc:27
+#: admin/public-forms/class_publicForm.inc:31
+msgid "Public form"
+msgstr "공용 양식"
 
-#: include/class_publicFormPage.inc:86
-#, php-format
-msgid "Could not find any invitation matching token \"%s\""
-msgstr ""
+#: admin/public-forms/class_publicForm.inc:28
+msgid "Public form which creates objects inside FusionDirectory"
+msgstr "FusionDirectory 내부에 개체를 생성하는 공용 양식"
 
-#: include/class_publicFormPage.inc:88 include/class_publicFormPage.inc:106
-#, php-format
-msgid "Found several invitations matching token \"%s\""
-msgstr ""
-
-#: include/class_publicFormPage.inc:92
-#, php-format
-msgid "The invitation matching token \"%s\" does not exist anymore"
-msgstr ""
-
-#: include/class_publicFormPage.inc:104
-#, php-format
-msgid "Could not find any invitation matching registration with token \"%s\""
-msgstr ""
-
-#: include/class_publicFormPage.inc:153
-msgid "Form name or token missing from URL"
-msgstr ""
-
-#: include/class_publicFormPage.inc:156
-#, php-format
-msgid "Form \"%s\" could not be found"
-msgstr ""
-
-#: include/class_publicFormPage.inc:158
-#, php-format
-msgid "Found several forms named \"%s\""
-msgstr ""
-
-#: include/class_publicFormPage.inc:167
-#, php-format
-msgid "Form \"%s\" is private and requires an invitation"
-msgstr ""
-
-#: include/class_publicFormPage.inc:229 include/class_publicFormPage.inc:236
-msgid "Error"
-msgstr "오류"
-
-#: include/class_publicFormPage.inc:229
-msgid "Captcha code was wrong!"
-msgstr ""
-
-#: include/class_publicFormPage.inc:236
-msgid "You need to accept the terms of service to continue!"
-msgstr ""
-
-#: include/class_publicFormPage.inc:387
-#, php-format
-msgid "Form - %s"
-msgstr ""
-
-#: include/class_publicFormPage.inc:389
-#: admin/public-forms/class_publicForm.inc:49
+#: admin/public-forms/class_publicForm.inc:46
+#: include/class_publicFormPage.inc:392
 msgid "Form"
-msgstr ""
+msgstr "양식"
+
+#: admin/public-forms/class_publicForm.inc:50
+msgid "Name"
+msgstr "명칭"
+
+#: admin/public-forms/class_publicForm.inc:50
+msgid "Name used to identify this form"
+msgstr "이 양식을 식별하는 데 사용되는 이름"
+
+#: admin/public-forms/class_publicForm.inc:54
+msgid "Title"
+msgstr "제목"
+
+#: admin/public-forms/class_publicForm.inc:54
+msgid "Title of this form"
+msgstr "이 양식의 제목"
+
+#: admin/public-forms/class_publicForm.inc:58
+msgid "Text"
+msgstr "텍스트"
+
+#: admin/public-forms/class_publicForm.inc:58
+msgid "Text of the public form, shown before the form"
+msgstr "양식 앞에 표시된 공개 양식의 텍스트"
+
+#: admin/public-forms/class_publicForm.inc:62
+msgid "Object type"
+msgstr "오브젝트 타입"
+
+#: admin/public-forms/class_publicForm.inc:62
+msgid "Type of objects you wish to create from this form"
+msgstr "이 양식에서 만들려는 개체 유형"
+
+#: admin/public-forms/class_publicForm.inc:67
+msgid "Template"
+msgstr "템플릿"
+
+#: admin/public-forms/class_publicForm.inc:67
+msgid "Object template used by this form"
+msgstr "이 양식에서 사용하는 개체 템플릿"
+
+#: admin/public-forms/class_publicForm.inc:72
+msgid "Confirmation text"
+msgstr "확인 텍스트"
+
+#: admin/public-forms/class_publicForm.inc:72
+msgid "Text shown once the object is created"
+msgstr "개체가 생성되면 표시되는 텍스트"
+
+#: admin/public-forms/class_publicForm.inc:77
+msgid "Private"
+msgstr "프라이"
+
+#: admin/public-forms/class_publicForm.inc:77
+msgid "Restrict this form to invitations"
+msgstr "이 양식을 초대장으로 제한"
+
+#: admin/public-forms/class_publicForm.inc:82
+msgid "Creation base"
+msgstr "생성 기반"
+
+#: admin/public-forms/class_publicForm.inc:82
+msgid "Base in which objects will get created"
+msgstr "개체가 생성되는 기반"
+
+#: admin/public-forms/class_publicForm.inc:87
+msgid "TOS URL"
+msgstr "서비스 약관 URL"
+
+#: admin/public-forms/class_publicForm.inc:87
+msgid ""
+"Terms of service URL. If filled, this adds a mandatory checkbox to agree to "
+"the terms at this URL."
+msgstr "서비스 약관 URL. 채워지면 이 URL의 약관에 동의하는 필수 확인란이 추가됩니다."
+
+#: admin/public-forms/class_publicForm.inc:91
+msgid "Captcha"
+msgstr "캡차"
+
+#: admin/public-forms/class_publicForm.inc:91
+msgid "Add a captcha to the form"
+msgstr "양식에 캡차 추가"
+
+#: admin/public-forms/class_publicForm.inc:96
+msgid "Link"
+msgstr "링크"
+
+#: admin/public-forms/class_publicForm.inc:96
+msgid "Link to the public form as currently saved in the LDAP"
+msgstr "현재 LDAP에 저장된 공개 양식에 연결"
+
+#: admin/public-forms/class_publicFormManagement.inc:27
+#: config/public-forms/class_publicFormsConfig.inc:40
+msgid "Public forms"
+msgstr "공개 양식"
+
+#: admin/public-forms/class_publicFormManagement.inc:28
+msgid "Public forms management"
+msgstr "공용 양식 관리"
+
+#: admin/public-forms/class_publicFormManagement.inc:29
+msgid "Manage public forms"
+msgstr "공용 양식 관리"
 
 #: admin/public-forms/class_publicFormAlteration.inc:27
 #: admin/public-forms/class_publicFormAlteration.inc:42
 msgid "Altered fields"
-msgstr ""
+msgstr "변경된 필드"
 
 #: admin/public-forms/class_publicFormAlteration.inc:28
 #: admin/public-forms/class_publicFormAlteration.inc:47
 msgid "Alteration on form fields"
-msgstr ""
+msgstr "양식 필드 변경"
 
 #: admin/public-forms/class_publicFormAlteration.inc:51
 #: admin/public-forms/class_publicFormAlteration.inc:100
 msgid "Field"
-msgstr ""
+msgstr "필드"
 
 #: admin/public-forms/class_publicFormAlteration.inc:51
 msgid "LDAP name of a form field"
-msgstr ""
+msgstr "양식 필드의 LDAP 이름"
 
 #: admin/public-forms/class_publicFormAlteration.inc:55
 #: admin/public-forms/class_publicFormAlteration.inc:101
 msgid "Mandatory"
-msgstr ""
+msgstr "필수"
 
 #: admin/public-forms/class_publicFormAlteration.inc:55
 msgid "Should this field be mandatory"
-msgstr ""
+msgstr "이 필드는 필수입니다."
 
 #: admin/public-forms/class_publicFormAlteration.inc:61
 #: admin/public-forms/class_publicFormAlteration.inc:102
@@ -122,16 +174,16 @@ msgstr "읽기 전용"
 
 #: admin/public-forms/class_publicFormAlteration.inc:61
 msgid "Should this field be read only"
-msgstr ""
+msgstr "이 필드는 읽기 전용이어야 합니다."
 
 #: admin/public-forms/class_publicFormAlteration.inc:67
 #: admin/public-forms/class_publicFormAlteration.inc:103
 msgid "Imported"
-msgstr ""
+msgstr "가져오기"
 
 #: admin/public-forms/class_publicFormAlteration.inc:67
 msgid "Should this field be imported from HTTP headers"
-msgstr ""
+msgstr "이 필드는 HTTP 헤더에서 가져와야 합니다."
 
 #: admin/public-forms/class_publicFormAlteration.inc:73
 #: admin/public-forms/class_publicFormAlteration.inc:104
@@ -140,154 +192,98 @@ msgstr "숨김"
 
 #: admin/public-forms/class_publicFormAlteration.inc:73
 msgid "Should this field be hidden away"
-msgstr ""
+msgstr "이 필드는 숨김처리 되어야 합니다."
 
-#: admin/public-forms/class_publicFormManagement.inc:27
-#: config/public-forms/class_publicFormsConfig.inc:40
-msgid "Public forms"
-msgstr ""
+#: include/class_publicFormPage.inc:72
+msgid "Invalid link, both token and form are provided"
+msgstr "잘못된 링크, 토큰과 양식이 모두 제공되었습니다."
 
-#: admin/public-forms/class_publicFormManagement.inc:28
-msgid "Public forms management"
-msgstr ""
+#: include/class_publicFormPage.inc:86
+#, php-format
+msgid "Could not find any invitation matching token \"%s\""
+msgstr "\"%s\" 토큰과 일치하는 초대를 찾을 수 없습니다."
 
-#: admin/public-forms/class_publicFormManagement.inc:29
-msgid "Manage public forms"
-msgstr ""
+#: include/class_publicFormPage.inc:88 include/class_publicFormPage.inc:106
+#, php-format
+msgid "Found several invitations matching token \"%s\""
+msgstr "\"%s\" 토큰과 일치하는 초대장을 여러 개 찾았습니다."
 
-#: admin/public-forms/class_publicForm.inc:27
-#: admin/public-forms/class_publicForm.inc:31
-msgid "Public form"
-msgstr ""
+#: include/class_publicFormPage.inc:92
+#, php-format
+msgid "The invitation matching token \"%s\" does not exist anymore"
+msgstr "초대와 일치하는 토큰 \"%s\"이 더 이상 존재하지 않습니다."
 
-#: admin/public-forms/class_publicForm.inc:28
-msgid "Public form which creates objects inside FusionDirectory"
-msgstr ""
+#: include/class_publicFormPage.inc:104
+#, php-format
+msgid "Could not find any invitation matching registration with token \"%s\""
+msgstr "\"%s\" 토큰이 있는 등록과 일치하는 초대를 찾을 수 없습니다."
 
-#: admin/public-forms/class_publicForm.inc:53
-msgid "Name"
-msgstr "명칭"
+#: include/class_publicFormPage.inc:153
+msgid "Form name or token missing from URL"
+msgstr "URL에 양식 이름 또는 토큰이 없습니다."
 
-#: admin/public-forms/class_publicForm.inc:53
-msgid "Name used to identify this form"
-msgstr ""
+#: include/class_publicFormPage.inc:156
+#, php-format
+msgid "Form \"%s\" could not be found"
+msgstr "\"%s\"  양식을 찾을 수 없습니다."
 
-#: admin/public-forms/class_publicForm.inc:57
-msgid "Title"
-msgstr ""
+#: include/class_publicFormPage.inc:158
+#, php-format
+msgid "Found several forms named \"%s\""
+msgstr "이름이 \"%s\"인 여러 양식을 찾았습니다."
 
-#: admin/public-forms/class_publicForm.inc:57
-msgid "Title of this form"
-msgstr ""
+#: include/class_publicFormPage.inc:167
+#, php-format
+msgid "Form \"%s\" is private and requires an invitation"
+msgstr "\"%s\" 양식은 비공개이며 초대가 필요합니다."
 
-#: admin/public-forms/class_publicForm.inc:61
-msgid "Text"
-msgstr ""
+#: include/class_publicFormPage.inc:229
+msgid "Captcha code was wrong!"
+msgstr "보안 문자 코드가 잘못되었습니다!"
 
-#: admin/public-forms/class_publicForm.inc:61
-msgid "Text of the public form, shown before the form"
-msgstr ""
+#: include/class_publicFormPage.inc:237
+msgid "You need to accept the terms of service to continue!"
+msgstr "계속하려면 서비스 약관에 동의해야합니다!"
 
-#: admin/public-forms/class_publicForm.inc:65
-msgid "Object type"
-msgstr "오브젝트 타입"
-
-#: admin/public-forms/class_publicForm.inc:65
-msgid "Type of objects you wish to create from this form"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:70
-msgid "Template"
-msgstr "템플릿"
-
-#: admin/public-forms/class_publicForm.inc:70
-msgid "Object template used by this form"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:75
-msgid "Confirmation text"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:75
-msgid "Text shown once the object is created"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:80
-msgid "Private"
-msgstr "프라이"
-
-#: admin/public-forms/class_publicForm.inc:80
-msgid "Restrict this form to invitations"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:85
-msgid "Creation base"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:85
-msgid "Base in which objects will get created"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:90
-msgid "TOS URL"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:90
-msgid ""
-"Terms of service URL. If filled, this adds a mandatory checkbox to agree to "
-"the terms at this URL."
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:94
-msgid "Captcha"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:94
-msgid "Add a captcha to the form"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:99
-msgid "Link"
-msgstr ""
-
-#: admin/public-forms/class_publicForm.inc:99
-msgid "Link to the public form as currently saved in the LDAP"
-msgstr ""
+#: include/class_publicFormPage.inc:390
+#, php-format
+msgid "Form - %s"
+msgstr "양식 - %s"
 
 #: config/public-forms/class_publicFormsConfig.inc:26
 msgid "Public forms configuration"
-msgstr ""
+msgstr "공개 양식 구성"
 
 #: config/public-forms/class_publicFormsConfig.inc:27
 msgid "FusionDirectory public forms plugin configuration"
-msgstr ""
+msgstr "FusionDirectory 공용 양식 플러그인 구성"
 
 #: config/public-forms/class_publicFormsConfig.inc:43
 msgid "Public forms RDN"
-msgstr ""
+msgstr "공개 양식 RDN"
 
 #: config/public-forms/class_publicFormsConfig.inc:43
 msgid "Branch in which public forms will be stored"
-msgstr ""
+msgstr "공개 양식이 저장 될 브랜치"
 
 #: config/public-forms/class_publicFormsConfig.inc:48
 msgid "Securimage path"
-msgstr ""
+msgstr "Securimage 경로"
 
 #: config/public-forms/class_publicFormsConfig.inc:48
 msgid ""
 "If you wish to use captchas in your forms, you need to install securimage. "
 "Specify here the path to the main class."
-msgstr ""
+msgstr "양식에 캡차를 사용하려면 securimage를 설치해야합니다. 여기에 기본 클래스의 경로를 지정하십시오."
 
 #: config/public-forms/class_publicFormsConfig.inc:52
 msgid "Securimage URI"
-msgstr ""
+msgstr "Securimage URI"
 
 #: config/public-forms/class_publicFormsConfig.inc:52
 msgid "The base URI at which securimage is available"
-msgstr ""
+msgstr "securimage를 사용할 수있는 기본 URI"
 
 #: ihtml/themes/breezy/public-form.tpl.c:2
 msgid "I agree to the <a target=\"_blank\" href=\"%1\">terms of service</a>"
-msgstr ""
+msgstr "<a target=\"_blank\" href=\"%1\">서비스 약관</a>에 동의합니다"

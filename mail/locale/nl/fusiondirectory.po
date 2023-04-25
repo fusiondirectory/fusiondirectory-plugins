@@ -5,28 +5,223 @@
 # 
 # Translators:
 # Rombout de Neef <rombout.deneef@digipolis.be>, 2020
-# fusiondirectory <contact@fusiondirectory.org>, 2020
+# fusiondirectory <contact@fusiondirectory.org>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 19:57+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2020\n"
-"Language-Team: Dutch (https://www.transifex.com/fusiondirectory/teams/12202/nl/)\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2021\n"
+"Language-Team: Dutch (https://app.transifex.com/fusiondirectory/teams/12202/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: personal/mail/class_mailAccount.inc:29
+msgid "MiB"
+msgstr "MiB"
+
+#: personal/mail/class_mailAccount.inc:30
+msgid "GiB"
+msgstr "GiB"
+
+#: personal/mail/class_mailAccount.inc:31
+msgid "TiB"
+msgstr "TiB"
+
+#: personal/mail/class_mailAccount.inc:45
+#, php-format
+msgid "Cannot read quota settings: %s"
+msgstr "Kan quota instelling : %s niet lezen"
+
+#: personal/mail/class_mailAccount.inc:58
+msgid "Quota usage"
+msgstr "Quota gebruik"
+
+#: personal/mail/class_mailAccount.inc:59
+msgid "Part of the quota which is used"
+msgstr "Gedeelte van de gebruikte quota "
+
+#: personal/mail/class_mailAccount.inc:92
 #: admin/groups/mail/class_mailGroup.inc:46
 #: config/mail/class_mailPluginConfig.inc:26
-#: personal/mail/class_mailAccount.inc:73
 msgid "Mail"
 msgstr "E-mail"
+
+#: personal/mail/class_mailAccount.inc:93
+#: config/mail/class_mailPluginConfig.inc:40
+msgid "Mail settings"
+msgstr "E-mail instellingen"
+
+#: personal/mail/class_mailAccount.inc:117
+msgid "Mail account"
+msgstr "E-mail account"
+
+#: personal/mail/class_mailAccount.inc:120
+#: admin/groups/mail/class_mailGroup.inc:65
+msgid "Primary address"
+msgstr "Primair adres"
+
+#: personal/mail/class_mailAccount.inc:120
+msgid "Primary mail address"
+msgstr "Primaire e-mail adres"
+
+#: personal/mail/class_mailAccount.inc:124
+#: admin/groups/mail/class_mailGroup.inc:69
+msgid "Server"
+msgstr "Server"
+
+#: personal/mail/class_mailAccount.inc:124
+msgid "Specify the mail server where the user will be hosted on"
+msgstr "Specificeer de mailserver waarop het account opgeslagen wordt"
+
+#: personal/mail/class_mailAccount.inc:129
+msgid "Quota size"
+msgstr "Quota grootte"
+
+#: personal/mail/class_mailAccount.inc:129
+msgid "Define quota size in MiB"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:136
+msgid "Other addresses and redirections"
+msgstr "andere adressen en omleidingen"
+
+#: personal/mail/class_mailAccount.inc:140
+#: admin/groups/mail/class_mailGroup.inc:75
+msgid "Alternative addresses"
+msgstr "Alternatieve adressen"
+
+#: personal/mail/class_mailAccount.inc:140
+msgid "List of alternative mail addresses"
+msgstr "Lijst met alternatieve E-mail adressen"
+
+#: personal/mail/class_mailAccount.inc:145
+msgid "Forward messages to"
+msgstr "Stuur berichten door naar"
+
+#: personal/mail/class_mailAccount.inc:145
+msgid "Addresses to which messages should be forwarded"
+msgstr "Adressen om boodschappen naartoe te versturen"
+
+#: personal/mail/class_mailAccount.inc:151
+#: personal/mail/class_mailAccount.inc:170
+msgid "Vacation message"
+msgstr "Afwezigheidsbericht"
+
+#: personal/mail/class_mailAccount.inc:154
+msgid "Activate vacation message"
+msgstr "Activeer afwezigheidsbericht"
+
+#: personal/mail/class_mailAccount.inc:155
+msgid ""
+"Select to automatically response with the vacation message defined below"
+msgstr ""
+"Selecteer om automatisch te reageren met het onderstaande "
+"afwezigheidsbericht"
+
+#: personal/mail/class_mailAccount.inc:160
+msgid "from"
+msgstr "van"
+
+#: personal/mail/class_mailAccount.inc:165
+msgid "till"
+msgstr "tot"
+
+#: personal/mail/class_mailAccount.inc:176
+msgid "Advanced mail options"
+msgstr "Geavanceerde E-mail opties"
+
+#: personal/mail/class_mailAccount.inc:184
+msgid "User is only allowed to send and receive local mails"
+msgstr "De gebruiker mag alleen lokale E-mails versturen en ontvangen"
+
+#: personal/mail/class_mailAccount.inc:185
+msgid "Select if user can only send and receive inside his own domain"
+msgstr ""
+"Selecteer om alleen binnen het eigen domein E-mail te laten ontvangen en "
+"versturen"
+
+#: personal/mail/class_mailAccount.inc:190
+msgid "No delivery to own mailbox"
+msgstr "Geen aflevering in eigen mailbox"
+
+#: personal/mail/class_mailAccount.inc:191
+msgid "Select if you want to forward mails without getting own copies of them"
+msgstr ""
+"Selecteer indien u E-mail door wil sturen zonder zelf kopieën te ontvangen"
+
+#: personal/mail/class_mailAccount.inc:296
+#: personal/mail/class_mailAccount.inc:416
+#: admin/groups/mail/class_mailGroup.inc:342
+#, php-format
+msgid "Mail method cannot connect: %s"
+msgstr "Mail methode kan niet verbinden : %s"
+
+#: personal/mail/class_mailAccount.inc:305
+#, php-format
+msgid "Mail method error: %s"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:437
+#: personal/mail/class_mailAccount.inc:514
+#: admin/groups/mail/class_mailGroup.inc:397
+#, php-format
+msgid "Cannot remove mailbox: %s"
+msgstr "Kan mailbox niet verwijderen : %s"
+
+#: personal/mail/class_mailAccount.inc:444
+#: admin/groups/mail/class_mailGroup.inc:348
+#, php-format
+msgid "Cannot update mailbox: %s"
+msgstr "Kan mailbox : %s niet updaten"
+
+#: personal/mail/class_mailAccount.inc:451
+#, php-format
+msgid "Cannot write quota settings: %s"
+msgstr "Kan quota instellingen niet schrijven : %s"
+
+#: personal/mail/class_mailAccount.inc:469
+#, php-format
+msgid "Mail error saving sieve settings: %s"
+msgstr "Mail fout, sieve configuratie bewaard: %s"
+
+#: personal/mail/class_mailAccount.inc:505
+#: admin/groups/mail/class_mailGroup.inc:388
+#, php-format
+msgid "Cannot remove mailbox, mail method cannot connect: %s"
+msgstr "Kan mailbox niet verwijderen, mail methode kan niet verbinden: %s"
+
+#: personal/mail/class_mail-methods.inc:146
+#, php-format
+msgid "The configured mail attribute \"%s\" is unsupported!"
+msgstr ""
+
+#: personal/mail/class_mail-methods.inc:156
+#, php-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+#: personal/mail/class_mail-methods.inc:599
+msgid "There are no IMAP compatible mail servers defined!"
+msgstr "Er zijn geen IMAP compatibele mail servers gedefinieerd!"
+
+#: personal/mail/class_mail-methods.inc:604
+msgid "Mail server for this account is invalid!"
+msgstr "Mail server voor dit account is ongeldig!"
+
+#: personal/mail/class_mail-methods.inc:735
+msgid "Unknown"
+msgstr "Onbekend"
+
+#: personal/mail/class_mail-methods.inc:737
+msgid "Unlimited"
+msgstr "Onbeperkt"
 
 #: admin/groups/mail/class_mailGroup.inc:47
 msgid "Group mail options"
@@ -37,27 +232,12 @@ msgid "Information"
 msgstr "Informatie"
 
 #: admin/groups/mail/class_mailGroup.inc:65
-#: personal/mail/class_mailAccount.inc:101
-msgid "Primary address"
-msgstr "Primair adres"
-
-#: admin/groups/mail/class_mailGroup.inc:65
 msgid "The primary mail address"
 msgstr "Het primaire e-mailadres"
 
 #: admin/groups/mail/class_mailGroup.inc:69
-#: personal/mail/class_mailAccount.inc:105
-msgid "Server"
-msgstr "Server"
-
-#: admin/groups/mail/class_mailGroup.inc:69
 msgid "Email server"
 msgstr "Emailserver"
-
-#: admin/groups/mail/class_mailGroup.inc:75
-#: personal/mail/class_mailAccount.inc:121
-msgid "Alternative addresses"
-msgstr "Alternatieve adressen"
 
 #: admin/groups/mail/class_mailGroup.inc:75
 msgid "Alternative mail addresses for the group"
@@ -114,51 +294,10 @@ msgstr "ACL"
 msgid "Special ACLs"
 msgstr ""
 
-#: admin/groups/mail/class_mailGroup.inc:296
-msgid "Error"
-msgstr "Fout"
-
-#: admin/groups/mail/class_mailGroup.inc:297
+#: admin/groups/mail/class_mailGroup.inc:291
 #, php-format
 msgid "Several users have uid \"%s\". Ignoring this member."
 msgstr "Verscheidene gebruikers hebben uid \"%s\". Dit lid wordt genegeerd."
-
-#: admin/groups/mail/class_mailGroup.inc:343
-#: personal/mail/class_mailAccount.inc:269
-#: personal/mail/class_mailAccount.inc:370
-#, php-format
-msgid "Mail method cannot connect: %s"
-msgstr "Mail methode kan niet verbinden : %s"
-
-#: admin/groups/mail/class_mailGroup.inc:346
-#: personal/mail/class_mailAccount.inc:373
-#, php-format
-msgid "Cannot update mailbox: %s"
-msgstr "Kan mailbox : %s niet updaten"
-
-#: admin/groups/mail/class_mailGroup.inc:383
-#: admin/groups/mail/class_mailGroup.inc:387
-#: personal/mail/class_mailAccount.inc:32
-#: personal/mail/class_mailAccount.inc:269
-#: personal/mail/class_mailAccount.inc:272
-#: personal/mail/class_mailAccount.inc:376
-#: personal/mail/class_mailAccount.inc:387
-#: personal/mail/class_mailAccount.inc:416
-#: personal/mail/class_mailAccount.inc:420
-msgid "Mail error"
-msgstr "Mail fout"
-
-#: admin/groups/mail/class_mailGroup.inc:383
-#: personal/mail/class_mailAccount.inc:416
-#, php-format
-msgid "Cannot remove mailbox, mail method cannot connect: %s"
-msgstr "Kan mailbox niet verwijderen, mail methode kan niet verbinden: %s"
-
-#: admin/groups/mail/class_mailGroup.inc:387
-#: personal/mail/class_mailAccount.inc:420
-#, php-format
-msgid "Cannot remove mailbox: %s"
-msgstr "Kan mailbox niet verwijderen : %s"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:52
 msgid "IMAP generic service"
@@ -175,11 +314,6 @@ msgstr "Services"
 #: config/mail/class_mailPluginConfig.inc:27
 msgid "Mail plugin configuration"
 msgstr "Mail plugin configuratie"
-
-#: config/mail/class_mailPluginConfig.inc:40
-#: personal/mail/class_mailAccount.inc:74
-msgid "Mail settings"
-msgstr "E-mail instellingen"
 
 #: config/mail/class_mailPluginConfig.inc:43
 msgid "Account identification attribute"
@@ -234,144 +368,3 @@ msgstr "Gedeelde prefix"
 #: config/mail/class_mailPluginConfig.inc:71
 msgid "Prefix to add for mail shared folders."
 msgstr "Prefix bij te voegen voor mail gedeelde folders"
-
-#: personal/mail/class_mailAccount.inc:32
-#, php-format
-msgid "Cannot read quota settings: %s"
-msgstr "Kan quota instelling : %s niet lezen"
-
-#: personal/mail/class_mailAccount.inc:42
-msgid "Quota usage"
-msgstr "Quota gebruik"
-
-#: personal/mail/class_mailAccount.inc:43
-msgid "Part of the quota which is used"
-msgstr "Gedeelte van de gebruikte quota "
-
-#: personal/mail/class_mailAccount.inc:98
-msgid "Mail account"
-msgstr "E-mail account"
-
-#: personal/mail/class_mailAccount.inc:101
-msgid "Primary mail address"
-msgstr "Primaire e-mail adres"
-
-#: personal/mail/class_mailAccount.inc:105
-msgid "Specify the mail server where the user will be hosted on"
-msgstr "Specificeer de mailserver waarop het account opgeslagen wordt"
-
-#: personal/mail/class_mailAccount.inc:110
-msgid "Quota size"
-msgstr "Quota grootte"
-
-#: personal/mail/class_mailAccount.inc:110
-msgid "Define quota size in MiB"
-msgstr ""
-
-#: personal/mail/class_mailAccount.inc:117
-msgid "Other addresses and redirections"
-msgstr "andere adressen en omleidingen"
-
-#: personal/mail/class_mailAccount.inc:121
-msgid "List of alternative mail addresses"
-msgstr "Lijst met alternatieve E-mail adressen"
-
-#: personal/mail/class_mailAccount.inc:126
-msgid "Forward messages to"
-msgstr "Stuur berichten door naar"
-
-#: personal/mail/class_mailAccount.inc:126
-msgid "Addresses to which messages should be forwarded"
-msgstr "Adressen om boodschappen naartoe te versturen"
-
-#: personal/mail/class_mailAccount.inc:132
-#: personal/mail/class_mailAccount.inc:151
-msgid "Vacation message"
-msgstr "Afwezigheidsbericht"
-
-#: personal/mail/class_mailAccount.inc:135
-msgid "Activate vacation message"
-msgstr "Activeer afwezigheidsbericht"
-
-#: personal/mail/class_mailAccount.inc:136
-msgid ""
-"Select to automatically response with the vacation message defined below"
-msgstr ""
-"Selecteer om automatisch te reageren met het onderstaande "
-"afwezigheidsbericht"
-
-#: personal/mail/class_mailAccount.inc:141
-msgid "from"
-msgstr "van"
-
-#: personal/mail/class_mailAccount.inc:146
-msgid "till"
-msgstr "tot"
-
-#: personal/mail/class_mailAccount.inc:157
-msgid "Advanced mail options"
-msgstr "Geavanceerde E-mail opties"
-
-#: personal/mail/class_mailAccount.inc:165
-msgid "User is only allowed to send and receive local mails"
-msgstr "De gebruiker mag alleen lokale E-mails versturen en ontvangen"
-
-#: personal/mail/class_mailAccount.inc:166
-msgid "Select if user can only send and receive inside his own domain"
-msgstr ""
-"Selecteer om alleen binnen het eigen domein E-mail te laten ontvangen en "
-"versturen"
-
-#: personal/mail/class_mailAccount.inc:171
-msgid "No delivery to own mailbox"
-msgstr "Geen aflevering in eigen mailbox"
-
-#: personal/mail/class_mailAccount.inc:172
-msgid "Select if you want to forward mails without getting own copies of them"
-msgstr ""
-"Selecteer indien u E-mail door wil sturen zonder zelf kopieën te ontvangen"
-
-#: personal/mail/class_mailAccount.inc:272
-#, php-format
-msgid "Mailbox \"%s\" doesn't exists on mail server: %s"
-msgstr "Mailbox \"%s\" bestaat niet op mail sever: %s"
-
-#: personal/mail/class_mailAccount.inc:376
-#, php-format
-msgid "Cannot write quota settings: %s"
-msgstr "Kan quota instellingen niet schrijven : %s"
-
-#: personal/mail/class_mailAccount.inc:387
-#, php-format
-msgid "Mail error saving sieve settings: %s"
-msgstr "Mail fout, sieve configuratie bewaard: %s"
-
-#: personal/mail/class_mail-methods.inc:138
-msgid "Configuration error"
-msgstr "Configuratie fout"
-
-#: personal/mail/class_mail-methods.inc:139
-#, php-format
-msgid "The configured mail attribute '%s' is unsupported!"
-msgstr "De geconfigureerde mail attribuut '%s' is niet ondersteund!"
-
-#: personal/mail/class_mail-methods.inc:145
-#, php-format
-msgid "%s (%s)"
-msgstr "%s (%s)"
-
-#: personal/mail/class_mail-methods.inc:585
-msgid "There are no IMAP compatible mail servers defined!"
-msgstr "Er zijn geen IMAP compatibele mail servers gedefinieerd!"
-
-#: personal/mail/class_mail-methods.inc:590
-msgid "Mail server for this account is invalid!"
-msgstr "Mail server voor dit account is ongeldig!"
-
-#: personal/mail/class_mail-methods.inc:707
-msgid "Unknown"
-msgstr "Onbekend"
-
-#: personal/mail/class_mail-methods.inc:709
-msgid "Unlimited"
-msgstr "Onbeperkt"

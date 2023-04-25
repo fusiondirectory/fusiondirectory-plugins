@@ -5,73 +5,22 @@
 # 
 # Translators:
 # fusiondirectory <contact@fusiondirectory.org>, 2018
-# Paola Penati <paola.penati@fusiondirectory.org>, 2019
+# Paola Penati <paola.penati@opensides.be>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 20:05+0000\n"
-"Last-Translator: Paola Penati <paola.penati@fusiondirectory.org>, 2019\n"
-"Language-Team: Italian (Italy) (https://www.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
+"Last-Translator: Paola Penati <paola.penati@opensides.be>, 2019\n"
+"Language-Team: Italian (Italy) (https://app.transifex.com/fusiondirectory/teams/12202/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it_IT\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:27
-#: admin/systems/services/sympa/class_serviceSympa.inc:28
-msgid "Sympa Server"
-msgstr "Server Sympa"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:28
-msgid "Services"
-msgstr "Servizi"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:43
-#: admin/sympa/class_sympaAlias.inc:61
-msgid "Sympa server"
-msgstr "Server Sympa"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:46
-msgid "URL"
-msgstr "URL"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:46
-msgid "URL to access the sympa server"
-msgstr "URL d'accesso al Server Sympa"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:50
-msgid "User"
-msgstr "Utente"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:50
-msgid "User to access sympa server SOAP API."
-msgstr "Nome utente per accedere al SOAP API del Server Sympa."
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:54
-msgid "Password"
-msgstr "Password"
-
-#: admin/systems/services/sympa/class_serviceSympa.inc:54
-msgid "Password to access sympa server SOAP API."
-msgstr "Password per accedere al SOAP API del Server Sympa."
-
-#: admin/sympa/class_sympaManagement.inc:28
-#: config/sympa/class_sympaConfig.inc:40
-msgid "Sympa"
-msgstr "Sympa"
-
-#: admin/sympa/class_sympaManagement.inc:29
-msgid "Sympa management"
-msgstr "Gestione di Sympa"
-
-#: admin/sympa/class_sympaManagement.inc:30
-msgid "Manage sympa aliases"
-msgstr "Gestisci gli alias sympa"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: admin/sympa/class_sympaAlias.inc:26 admin/sympa/class_sympaAlias.inc:27
 #: admin/sympa/class_sympaAlias.inc:30 admin/sympa/class_sympaAlias.inc:46
@@ -99,8 +48,59 @@ msgid "Email address"
 msgstr "Indirizzo di posta elettronica"
 
 #: admin/sympa/class_sympaAlias.inc:61
+#: admin/systems/services/sympa/class_serviceSympa.inc:43
+msgid "Sympa server"
+msgstr "Server Sympa"
+
+#: admin/sympa/class_sympaAlias.inc:61
 msgid "Sympa server for this alias"
 msgstr "Server Sympa per questo alias"
+
+#: admin/sympa/class_sympaManagement.inc:28
+#: config/sympa/class_sympaConfig.inc:40
+msgid "Sympa"
+msgstr "Sympa"
+
+#: admin/sympa/class_sympaManagement.inc:29
+msgid "Sympa management"
+msgstr "Gestione di Sympa"
+
+#: admin/sympa/class_sympaManagement.inc:30
+msgid "Manage sympa aliases"
+msgstr "Gestisci gli alias sympa"
+
+#: admin/systems/services/sympa/class_serviceSympa.inc:27
+#: admin/systems/services/sympa/class_serviceSympa.inc:28
+msgid "Sympa Server"
+msgstr "Server Sympa"
+
+#: admin/systems/services/sympa/class_serviceSympa.inc:28
+msgid "Services"
+msgstr "Servizi"
+
+#: admin/systems/services/sympa/class_serviceSympa.inc:46
+msgid "URL"
+msgstr "URL"
+
+#: admin/systems/services/sympa/class_serviceSympa.inc:46
+msgid "URL to access the sympa server"
+msgstr "URL d'accesso al Server Sympa"
+
+#: admin/systems/services/sympa/class_serviceSympa.inc:50
+msgid "User"
+msgstr "Utente"
+
+#: admin/systems/services/sympa/class_serviceSympa.inc:50
+msgid "User to access sympa server SOAP API."
+msgstr "Nome utente per accedere al SOAP API del Server Sympa."
+
+#: admin/systems/services/sympa/class_serviceSympa.inc:54
+msgid "Password"
+msgstr "Password"
+
+#: admin/systems/services/sympa/class_serviceSympa.inc:54
+msgid "Password to access sympa server SOAP API."
+msgstr "Password per accedere al SOAP API del Server Sympa."
 
 #: config/sympa/class_sympaConfig.inc:26
 msgid "Sympa configuration"

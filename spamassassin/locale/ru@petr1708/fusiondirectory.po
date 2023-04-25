@@ -3,19 +3,59 @@
 # This file is distributed under the same license as the FusionDirectory package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# fusiondirectory <contact@fusiondirectory.org>, 2023
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2020-05-15 09:03+0000\n"
+"POT-Creation-Date: 2023-03-01 07:51+0100\n"
 "PO-Revision-Date: 2018-08-13 20:03+0000\n"
-"Language-Team: Russian Petrine orthography (https://www.transifex.com/fusiondirectory/teams/12202/ru@petr1708/)\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>, 2023\n"
+"Language-Team: Russian Petrine orthography (https://app.transifex.com/fusiondirectory/teams/12202/ru@petr1708/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru@petr1708\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:28
+msgid "SpamAssassin"
+msgstr ""
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:29
+msgid "Edit user's spam rules"
+msgstr ""
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:45
+msgid "Spam rules"
+msgstr ""
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:52
+msgid "SpamAssassin user preferences settings"
+msgstr ""
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:56
+msgid "Directive"
+msgstr ""
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:56
+msgid "The name of a SpamAssassin configuration directive"
+msgstr ""
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:61
+msgid "Value"
+msgstr ""
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:61
+msgid "The value for the directive"
+msgstr ""
+
+#: personal/spamassassin/class_spamAssassinAccount.inc:68
+msgid "SpamAssassin user rules"
+msgstr ""
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:28
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:29
@@ -24,7 +64,7 @@ msgstr ""
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:29
 msgid "Services"
-msgstr ""
+msgstr "Сервисы"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:44
 msgid "Spam tagging"
@@ -48,7 +88,7 @@ msgstr ""
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:64
 msgid "Flags"
-msgstr ""
+msgstr "Flags"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:67
 msgid "Enable use of bayes filtering"
@@ -85,44 +125,8 @@ msgstr ""
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:114
 msgid "Name"
-msgstr ""
+msgstr "Фамилия"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:115
 msgid "Rule"
-msgstr ""
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:28
-msgid "SpamAssassin"
-msgstr ""
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:29
-msgid "Edit user's spam rules"
-msgstr ""
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:45
-msgid "Spam rules"
-msgstr ""
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:52
-msgid "SpamAssassin user preferences settings"
-msgstr ""
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:56
-msgid "Directive"
-msgstr ""
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:56
-msgid "The name of a SpamAssassin configuration directive"
-msgstr ""
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:61
-msgid "Value"
-msgstr ""
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:61
-msgid "The value for the directive"
-msgstr ""
-
-#: personal/spamassassin/class_spamAssassinAccount.inc:68
-msgid "SpamAssassin user rules"
 msgstr ""
